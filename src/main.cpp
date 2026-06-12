@@ -494,8 +494,8 @@ public:
         }
         frame.steer = std::clamp(steerAxis, -1.0f, 1.0f);
 
-        float rt = std::max(trigger(5), trigger(2));
-        float lt = std::max(trigger(4), trigger(3));
+        float rt = trigger(5);
+        float lt = trigger(2);
         frame.throttle = std::max(rt, button(0) ? 1.0f : 0.0f);
         frame.brake = std::max(lt, button(1) ? 1.0f : 0.0f);
 
@@ -1281,8 +1281,8 @@ private:
             car.player = i == 0;
             car.racerIndex = i == 0 ? selectedRacer_ : static_cast<int>(i % racers_.size());
             car.kartIndex = i == 0 ? selectedKart_ : static_cast<int>(i % karts_.size());
-            car.lap = 0;
-            float start = track_.totalLength() - static_cast<float>(i) * 105.0f;
+            float start = -static_cast<float>(i) * 105.0f;
+            car.lap = start < 0.0f ? -1 : 0;
             placeOnTrack(track_, car, start, offsets[i]);
             car.progress = wrapProgress(start, track_.totalLength());
             car.lastSafeProgress = car.progress;
