@@ -11,6 +11,13 @@ controller-first play, and arcade kart handling tuned for a familiar feel.
 
 ## Build
 
+Requirements on a typical Linux desktop:
+
+- `g++`
+- `make`
+- X11 runtime and development headers/libraries
+- Linux joystick devices exposed as `/dev/input/js*`
+
 ```sh
 make
 ```
@@ -31,10 +38,25 @@ Gamepad required for normal play.
 - Start: pause or resume
 - Select / Back: reset car to the last safe racing line
 
+## Baseline Features
+
+- 10 adapted cosmetic racers
+- 8 maxed-out cars unlocked from the start
+- Single original beach-harbor course
+- Infinite laps with live position, speed, and FPS display
+- No powerups and no character supers
+- Lightweight X11 software renderer targeting 60 FPS
+
 ## Development
 
 Run a headless physics/input smoke test:
 
 ```sh
 make self-test
+```
+
+There is also a development-only keyboard flag for machines without a gamepad:
+
+```sh
+./build/harbor_karts --dev-keyboard
 ```
