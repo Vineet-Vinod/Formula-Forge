@@ -23,5 +23,19 @@ scripts/bootstrap_deps.sh
 The script verifies both archive checksums, extracts them into `build/deps/src`,
 builds static SDL3, and installs it into `build/deps/install`.
 
+## Local Patches
+
+- `patches/SDL3-3.4.10-x11-missing-extension.patch`
+  - Removes SDL's dynamic lookup for the unused `XMissingExtension` Xlib symbol.
+  - Reason: this laptop's `libX11.so.6` does not export that symbol, so SDL's
+    dynamic X11 backend rejected Xwayland before connecting to `DISPLAY`.
+
+## Local Build Flags
+
+- `NO_SHARED_MEMORY`
+  - Disables SDL's optional X11 MIT-SHM framebuffer path.
+  - Reason: this build intentionally avoids a hard Xext dependency; without
+    XShm symbols loaded, SDL's X11 framebuffer path can crash while probing MIT-SHM.
+
 No proprietary Beach Buggy Racing assets, names, tracks, character art, or
 game data are vendored here.

@@ -8,6 +8,7 @@ assets, track, car roster, and handling code are original to this repository.
 - Source: <https://github.com/libsdl-org/SDL/releases/download/release-3.4.10/SDL3-3.4.10.tar.gz>
 - SHA-256: `12b34280415ec8418c864408b93d008a20a6530687ee613d60bfbd20411f2785`
 - Use: windowing, fullscreen display, controller/gamepad input, timing.
+- Local modification: `third_party/patches/SDL3-3.4.10-x11-missing-extension.patch`
 - Full license text: `third_party/licenses/SDL3-3.4.10-LICENSE.txt`
 
 ```text

@@ -45,6 +45,14 @@ if [[ ! -d "$src_dir/libXext-${xext_version}" ]]; then
     tar -xJf "$xext_tar" -C "$src_dir"
 fi
 
+sdl_src="$src_dir/SDL3-${sdl_version}"
+sdl_x11sym="$sdl_src/src/video/x11/SDL_x11sym.h"
+sdl_patch="$repo_root/third_party/patches/SDL3-${sdl_version}-x11-missing-extension.patch"
+
+if grep -q 'SDL_X11_SYM(int,XMissingExtension' "$sdl_x11sym"; then
+    patch -d "$sdl_src" -p1 < "$sdl_patch"
+fi
+
 xorg_include="$deps_dir/xorg-include"
 mkdir -p "$xorg_include/X11/extensions"
 cp "$src_dir/libXext-${xext_version}"/include/X11/extensions/*.h "$xorg_include/X11/extensions/"
@@ -56,12 +64,12 @@ rm -f "$tmp_xorg_include"
 ln -s "$xorg_include" "$tmp_xorg_include"
 trap 'rm -f "$tmp_xorg_include"' EXIT
 
-cmake -S "$src_dir/SDL3-${sdl_version}" \
+cmake -S "$sdl_src" \
     -B "$deps_dir/sdl-build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="$install_dir" \
     -DCMAKE_INCLUDE_PATH="$tmp_xorg_include" \
-    -DCMAKE_C_FLAGS="-I$tmp_xorg_include" \
+    -DCMAKE_C_FLAGS="-I$tmp_xorg_include -DNO_SHARED_MEMORY" \
     -DSDL_SHARED=OFF \
     -DSDL_STATIC=ON \
     -DSDL_TESTS=OFF \
@@ -94,8 +102,8 @@ cmake --build "$deps_dir/sdl-build" --target SDL3-static -j "$jobs"
 rm -rf "$install_dir"
 mkdir -p "$install_dir/include" "$install_dir/lib" "$install_dir/share/licenses/SDL3"
 cp "$deps_dir/sdl-build/libSDL3.a" "$install_dir/lib/"
-cp -R "$src_dir/SDL3-${sdl_version}/include/SDL3" "$install_dir/include/"
+cp -R "$sdl_src/include/SDL3" "$install_dir/include/"
 cp "$deps_dir/sdl-build/include-revision/SDL3/SDL_revision.h" "$install_dir/include/SDL3/"
-cp "$src_dir/SDL3-${sdl_version}/LICENSE.txt" "$install_dir/share/licenses/SDL3/LICENSE.txt"
+cp "$sdl_src/LICENSE.txt" "$install_dir/share/licenses/SDL3/LICENSE.txt"
 
 echo "Dependencies are ready in $install_dir"
