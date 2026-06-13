@@ -387,6 +387,9 @@ struct Kart {
     int nearest = 0;
     float lane = 0.0f;
     float aiTempo = 1.0f;
+    float aiAggression = 0.8f;
+    float aiRisk = 0.5f;
+    float aiPassBias = 1.0f;
     bool drifting = false;
     float driftCharge = 0.0f;
     float boostTimer = 0.0f;
@@ -888,7 +891,7 @@ public:
         const DriverAuditResult driftLine = runDriverAudit(DriverStyle::DriftLine);
         const bool skillOrder = brakeLine.score > noBrake.score * 1.20f && driftLine.score > brakeLine.score * 1.03f &&
                                 driftLine.boostFrames > 300;
-        const bool ok = stable && progressJumps == 0 && fullThrottleJumps == 0 && caveToggles <= 8 && barrierHits < 120 &&
+        const bool ok = stable && progressJumps == 0 && fullThrottleJumps == 0 && caveToggles <= 8 && barrierHits < 8 &&
                         leftTurns > 40 && rightTurns > 40 && turnRatio < 2.35f && highCurveSamples > 120 &&
                         highCurveTooFast < highCurveSamples * 55 / 100 && skillOrder;
 
@@ -1003,6 +1006,9 @@ private:
             kart.vel = tp.tangent * (i == 0 ? 0.0f : 8.0f);
             kart.nearest = track_.nearestIndex(kart.pos);
             kart.aiTempo = 0.94f + 0.035f * static_cast<float>((i * 7) % 5);
+            kart.aiAggression = 0.64f + 0.08f * static_cast<float>((i * 5 + 2) % 5);
+            kart.aiRisk = 0.35f + 0.11f * static_cast<float>((i * 3 + 1) % 5);
+            kart.aiPassBias = (i % 2 == 0 ? -1.0f : 1.0f) * (0.75f + 0.12f * static_cast<float>(i % 3));
             karts_.push_back(kart);
         }
         camera_.yaw = karts_[0].heading;
@@ -1234,17 +1240,20 @@ private:
     void updateAi(Kart& kart, float dt, int index) {
         const TrackPoint center = track_.sample(kart.progress);
         const float speed = length(kart.vel);
-        const float lookahead = 48.0f + speed * 0.58f;
+        const float lookahead = 44.0f + speed * (0.54f + kart.aiAggression * 0.08f);
         const TrackPoint target = track_.sample(kart.progress + lookahead);
-        float laneTarget = ((index % 3) - 1) * 9.0f + std::sin(kart.progress * 0.006f + index) * 5.0f;
+        float laneTarget = ((index % 3) - 1) * 7.5f + std::sin(kart.progress * 0.006f + index) * (3.0f + kart.aiRisk * 3.5f);
         for (size_t otherIndex = 0; otherIndex < karts_.size(); ++otherIndex) {
             if (otherIndex == static_cast<size_t>(index)) {
                 continue;
             }
             const Kart& other = karts_[otherIndex];
             const float ahead = progressAhead(kart.progress, other.progress, track_.totalLength());
-            if (ahead > 10.0f && ahead < 130.0f && std::abs(other.lane - laneTarget) < 17.0f) {
-                laneTarget += (index % 2 == 0 ? -1.0f : 1.0f) * lerp(18.0f, 7.0f, ahead / 130.0f);
+            const float behind = progressAhead(other.progress, kart.progress, track_.totalLength());
+            if (ahead > 10.0f && ahead < 145.0f && std::abs(other.lane - laneTarget) < 18.0f) {
+                laneTarget += kart.aiPassBias * lerp(20.0f, 7.0f, ahead / 145.0f) * (0.75f + kart.aiAggression * 0.35f);
+            } else if (behind > 10.0f && behind < 90.0f && std::abs(other.lane - laneTarget) < 15.0f && index != 0) {
+                laneTarget -= kart.aiPassBias * lerp(8.0f, 3.0f, behind / 90.0f) * (0.55f + kart.aiAggression * 0.25f);
             }
         }
         const float half = target.width * 0.5f - 7.0f;
@@ -1253,13 +1262,19 @@ private:
         const Vec2 toTarget = normalize(desired - kart.pos);
         const Vec2 forward = fromAngle(kart.heading);
         const float angleError = std::atan2(cross(forward, toTarget), dot(forward, toTarget));
-        const float curveSlow = std::clamp(center.curvature * 4.2f, 0.0f, 0.42f);
-        const float targetSpeed = kart.spec.maxSpeed * (0.83f - curveSlow) * kart.aiTempo;
+        const float curveSlow = std::clamp(center.curvature * (4.55f - kart.aiRisk * 0.55f), 0.0f, 0.45f);
+        const float pressure =
+            index == 0 ? 1.0f
+                       : (progressAhead(kart.progress, karts_[0].progress, track_.totalLength()) < 260.0f ? 1.0f + kart.aiAggression * 0.045f
+                                                                                                          : 1.0f);
+        const float mistake = std::sin(kart.progress * 0.018f + static_cast<float>(index) * 1.7f) > 0.985f ? kart.aiRisk : 0.0f;
+        const float targetSpeed = kart.spec.maxSpeed * (0.80f + kart.aiAggression * 0.06f - curveSlow + mistake * 0.035f) *
+                                  kart.aiTempo * pressure;
 
         InputState ai;
-        ai.steer = std::clamp(angleError * 1.9f, -1.0f, 1.0f);
+        ai.steer = std::clamp(angleError * (1.78f + kart.aiAggression * 0.26f) - mistake * 0.10f * kart.aiPassBias, -1.0f, 1.0f);
         ai.throttle = speed < targetSpeed ? 1.0f : 0.25f;
-        ai.brake = (speed > targetSpeed + 10.0f || std::abs(angleError) > 0.62f) ? 0.38f : 0.0f;
+        ai.brake = (speed > targetSpeed + 10.0f || std::abs(angleError) > 0.62f) ? 0.34f : 0.0f;
         integrateKart(kart, ai, dt);
     }
 
