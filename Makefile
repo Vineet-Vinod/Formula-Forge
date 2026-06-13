@@ -13,7 +13,7 @@ deps: $(SDL_LIB)
 $(SDL_LIB): scripts/bootstrap_deps.sh third_party/_cache/SDL3-3.4.10.tar.gz third_party/_cache/libXext-1.3.6.tar.xz
 	scripts/bootstrap_deps.sh
 
-$(TARGET): CMakeLists.txt src/main.cpp src/harbor_karts.cpp src/track_layout.hpp $(SDL_LIB)
+$(TARGET): CMakeLists.txt src/main.cpp src/harbor_karts.cpp src/core_math.hpp src/track_layout.hpp $(SDL_LIB)
 	cmake -S . -B $(GAME_BUILD_DIR) -DCMAKE_BUILD_TYPE=Release
 	cmake --build $(GAME_BUILD_DIR) --parallel
 
