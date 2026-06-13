@@ -16,7 +16,10 @@ endif()
 
 find_package(Threads REQUIRED)
 
-add_executable(harbor_karts src/main.cpp)
+add_executable(harbor_karts
+    src/main.cpp
+    src/harbor_karts.cpp
+)
 
 target_compile_definitions(harbor_karts PRIVATE SDL_MAIN_HANDLED)
 target_compile_options(harbor_karts PRIVATE -Wall -Wextra -Wpedantic)

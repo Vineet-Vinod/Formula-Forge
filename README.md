@@ -75,12 +75,20 @@ Gamepad is the intended input.
 
 ```sh
 make self-test
-SDL_VIDEODRIVER=dummy ./build/game/harbor_karts --smoke-render
+make race-audit
+./build/game/harbor_karts --smoke-render --dev-keyboard
 ```
 
-`--self-test` runs a deterministic physics/AI smoke test without SDL. The dummy
-render smoke verifies SDL startup and framebuffer presentation in headless
-environments. A real visible window still needs a desktop video device.
+`--self-test` runs a deterministic physics/AI smoke test without SDL.
+`--race-audit` runs a longer headless simulation and reports progress jumps,
+cave transitions, turn balance, no-brake corner speed, and off-road excursions.
+The smoke render verifies SDL startup and framebuffer presentation.
+
+## Source Layout
+
+- `src/main.cpp`: process entry point only
+- `src/harbor_karts.cpp`: SDL platform loop, renderer, simulation, controller input
+- `src/track_layout.hpp`: Shark Harbor control-point layout data
 
 ## Third-Party Code
 
