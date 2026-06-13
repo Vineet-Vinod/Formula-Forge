@@ -39,6 +39,7 @@ Gamepad required for normal play.
 - B / Circle: back
 - Start: pause or resume
 - Select / Back: reset car to the last safe racing line
+- Start + Select / Back: quit
 
 ## Baseline Features
 

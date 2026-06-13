@@ -442,6 +442,7 @@ struct InputFrame {
     bool back = false;
     bool start = false;
     bool select = false;
+    bool quit = false;
     bool connected = false;
 };
 
@@ -560,6 +561,7 @@ public:
         frame.back = justPressed(1) || justPressed(6) || justPressed(8);
         frame.start = justPressed(7) || justPressed(9);
         frame.select = justPressed(6) || justPressed(8);
+        frame.quit = (button(6) && button(7)) || (button(8) && button(9));
         return frame;
     }
 
@@ -1855,6 +1857,7 @@ InputFrame mergeKeyboardInput(const InputFrame& controller, const std::array<boo
     out.back = out.back || ((keys[7] && !prevKeys[7]) || (keys[9] && !prevKeys[9]));
     out.start = out.start || (keys[10] && !prevKeys[10]);
     out.select = out.select || (keys[11] && !prevKeys[11]);
+    out.quit = out.quit || (keys[7] && !prevKeys[7]);
     return out;
 }
 
@@ -1897,6 +1900,10 @@ int runGame(bool devKeyboard) {
         prevKeys = keys;
         window.poll(devKeyboard, keys);
         InputFrame input = mergeKeyboardInput(controllers.poll(), keys, prevKeys, devKeyboard);
+        if (input.quit) {
+            window.close();
+            continue;
+        }
 
         int physicsSteps = 0;
         while (accumulator >= fixedDt && physicsSteps < 8) {
