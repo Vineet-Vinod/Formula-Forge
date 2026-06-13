@@ -1954,6 +1954,64 @@ bool capturePlaytest(const std::filesystem::path& outputDir) {
     return captureIndex == captureSteps.size();
 }
 
+bool perfAudit() {
+    std::vector<uint32_t> pixels(static_cast<size_t>(kFrameW * kFrameH));
+    Renderer renderer(pixels, kFrameW, kFrameH);
+    Game game;
+
+    struct StressSection {
+        float phase;
+        float speed;
+    };
+    const std::array<StressSection, 7> sections = {{
+        {0.04f, 58.0f},
+        {0.20f, 76.0f},
+        {0.35f, 82.0f},
+        {0.50f, 74.0f},
+        {0.66f, 94.0f},
+        {0.79f, 86.0f},
+        {0.92f, 100.0f},
+    }};
+
+    constexpr int kFrames = 420;
+    std::vector<double> frameMs;
+    frameMs.reserve(kFrames);
+    for (int frame = 0; frame < kFrames; ++frame) {
+        if (frame % 60 == 0) {
+            const StressSection& section = sections[static_cast<size_t>((frame / 60) % static_cast<int>(sections.size()))];
+            game.placeForSectionCapture(section.phase, section.speed);
+        }
+        const auto start = std::chrono::steady_clock::now();
+        game.updateAutoplay(kFixedDt);
+        game.render(renderer, 60.0f, true);
+        const auto end = std::chrono::steady_clock::now();
+        frameMs.push_back(std::chrono::duration<double, std::milli>(end - start).count());
+    }
+
+    std::sort(frameMs.begin(), frameMs.end());
+    const auto percentile = [&frameMs](double p) {
+        const size_t index = std::min(frameMs.size() - 1, static_cast<size_t>(std::round((frameMs.size() - 1) * p)));
+        return frameMs[index];
+    };
+    double total = 0.0;
+    for (double ms : frameMs) {
+        total += ms;
+    }
+    const double avg = total / static_cast<double>(frameMs.size());
+    const double p50 = percentile(0.50);
+    const double p95 = percentile(0.95);
+    const double max = frameMs.back();
+    const bool ok = p95 <= 16.67 && max <= 28.0;
+
+    std::cout << std::fixed << std::setprecision(3)
+              << "perf-audit frames=" << kFrames << " avg_ms=" << avg << " p50_ms=" << p50 << " p95_ms=" << p95
+              << " max_ms=" << max << " p95_fps=" << (1000.0 / std::max(0.001, p95)) << "\n";
+    if (!ok) {
+        std::cerr << "perf-audit failed\n";
+    }
+    return ok;
+}
+
 }  // namespace
 
 int runHarborKarts(int argc, char** argv) {
@@ -1971,6 +2029,11 @@ int runHarborKarts(int argc, char** argv) {
     if (const auto outputDir = argValue(argc, argv, "--capture-playtest")) {
         const bool ok = capturePlaytest(*outputDir);
         std::cout << (ok ? "capture-playtest passed\n" : "capture-playtest failed\n");
+        return ok ? 0 : 1;
+    }
+    if (hasArg(argc, argv, "--perf-audit")) {
+        const bool ok = perfAudit();
+        std::cout << (ok ? "perf-audit passed\n" : "perf-audit failed\n");
         return ok ? 0 : 1;
     }
 

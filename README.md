@@ -77,6 +77,7 @@ Gamepad is the intended input.
 make self-test
 make race-audit
 make capture-playtest
+make perf-audit
 ./build/game/harbor_karts --smoke-render --dev-keyboard
 ```
 
@@ -86,6 +87,8 @@ cave transitions, turn balance, no-brake corner speed, and off-road excursions.
 `--capture-playtest` writes deterministic garage and race frames to
 `build/playtest_frames` so visual and camera changes can be inspected without a
 working video device.
+`--perf-audit` renders 420 worst-case section frames without sleeping and fails
+if p95 frame time misses the 60fps budget.
 The smoke render verifies SDL startup and framebuffer presentation.
 
 ## Source Layout
