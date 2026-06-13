@@ -447,6 +447,8 @@ public:
                 uint8_t type = event.type & ~JS_EVENT_INIT;
                 if (type == JS_EVENT_AXIS && event.number < d.axes.size()) {
                     if (initEvent) {
+                        d.axisCenters[event.number] = event.value;
+                        d.axes[event.number] = event.value;
                         continue;
                     }
                     d.axes[event.number] = event.value;
@@ -474,7 +476,13 @@ public:
             if (index >= dev->axes.size()) {
                 return 0.0f;
             }
-            return std::clamp(static_cast<float>(dev->axes[index]) / 32767.0f, -1.0f, 1.0f);
+            float center = index < dev->axisCenters.size() ? static_cast<float>(dev->axisCenters[index]) : 0.0f;
+            float raw = static_cast<float>(dev->axes[index]);
+            float span = raw >= center ? 32767.0f - center : center + 32767.0f;
+            if (span < 1.0f) {
+                return 0.0f;
+            }
+            return std::clamp((raw - center) / span, -1.0f, 1.0f);
         };
         auto button = [&](size_t index) -> bool {
             return index < dev->buttons.size() && dev->buttons[index];
@@ -536,6 +544,7 @@ private:
         std::string path;
         std::string name;
         std::vector<int16_t> axes;
+        std::vector<int16_t> axisCenters;
         std::vector<bool> buttons;
         std::vector<bool> prevButtons;
         bool touched = false;
@@ -569,6 +578,7 @@ private:
             d.path = path;
             d.name = name;
             d.axes.assign(std::max<uint8_t>(axes, 8), 0);
+            d.axisCenters.assign(std::max<uint8_t>(axes, 8), 0);
             d.buttons.assign(std::max<uint8_t>(buttons, 16), false);
             d.prevButtons = d.buttons;
             devices_.push_back(std::move(d));
