@@ -628,6 +628,7 @@ struct Kart {
     float boostTimer = 0.0f;
     float boostPower = 0.0f;
     float slip = 0.0f;
+    float contactTimer = 0.0f;
 };
 
 struct InputState {
@@ -883,6 +884,7 @@ public:
             for (size_t i = 1; i < karts_.size(); ++i) {
                 updateAi(karts_[i], dt, static_cast<int>(i));
             }
+            resolveKartContacts();
             updateCamera(dt);
             updateAmbient(dt);
             computeRacePosition();
@@ -923,6 +925,7 @@ public:
         for (size_t ai = 1; ai < karts_.size(); ++ai) {
             updateAi(karts_[ai], dt, static_cast<int>(ai));
         }
+        resolveKartContacts();
         updateCamera(dt);
         updateAmbient(dt);
         computeRacePosition();
@@ -948,6 +951,7 @@ public:
             kart.boostTimer = 0.0f;
             kart.boostPower = 0.0f;
             kart.slip = 0.0f;
+            kart.contactTimer = 0.0f;
         }
         camera_.yaw = karts_[0].heading;
         caveBlend_ = track_.pointAtIndex(karts_[0].nearest).zone == 3 ? 1.0f : 0.0f;
@@ -1194,6 +1198,48 @@ private:
         return delta;
     }
 
+    void resolveKartContacts() {
+        constexpr float kKartRadius = 15.5f;
+        for (size_t a = 0; a < karts_.size(); ++a) {
+            for (size_t b = a + 1; b < karts_.size(); ++b) {
+                Vec2 delta = karts_[b].pos - karts_[a].pos;
+                float dist = length(delta);
+                if (dist < 0.001f) {
+                    delta = fromAngle(karts_[a].heading + static_cast<float>(b) * 0.37f);
+                    dist = 1.0f;
+                }
+                const float minDist = kKartRadius * 2.0f;
+                if (dist >= minDist) {
+                    continue;
+                }
+
+                const Vec2 normal = delta / dist;
+                const float penetration = minDist - dist;
+                const Vec2 push = normal * (penetration * 0.52f);
+                karts_[a].pos -= push;
+                karts_[b].pos += push;
+
+                const float relSpeed = dot(karts_[b].vel - karts_[a].vel, normal);
+                if (relSpeed < 0.0f) {
+                    const Vec2 impulse = normal * (-relSpeed * 0.46f);
+                    karts_[a].vel -= impulse;
+                    karts_[b].vel += impulse;
+                }
+                const Vec2 tangent{-normal.y, normal.x};
+                const float sideRub = dot(karts_[b].vel - karts_[a].vel, tangent);
+                const Vec2 rub = tangent * (sideRub * 0.035f);
+                karts_[a].vel += rub;
+                karts_[b].vel -= rub;
+                karts_[a].vel *= 0.985f;
+                karts_[b].vel *= 0.985f;
+                karts_[a].contactTimer = 0.16f;
+                karts_[b].contactTimer = 0.16f;
+                updateProgress(karts_[a]);
+                updateProgress(karts_[b]);
+            }
+        }
+    }
+
     void integrateKart(Kart& kart, const InputState& input, float dt) {
         updateProgress(kart);
         const TrackPoint& center = track_.pointAtIndex(kart.nearest);
@@ -1207,6 +1253,7 @@ private:
         float speed = dot(kart.vel, forward);
         float sideSpeed = dot(kart.vel, right);
         const float absSpeed = std::abs(speed);
+        kart.contactTimer = std::max(0.0f, kart.contactTimer - dt);
 
         const bool wantsDrift = input.brake > 0.18f && std::abs(input.steer) > 0.23f && absSpeed > 32.0f;
         if (wantsDrift) {
@@ -1304,7 +1351,19 @@ private:
         const float speed = length(kart.vel);
         const float lookahead = 48.0f + speed * 0.58f;
         const TrackPoint target = track_.sample(kart.progress + lookahead);
-        const float laneTarget = ((index % 3) - 1) * 9.0f + std::sin(kart.progress * 0.006f + index) * 5.0f;
+        float laneTarget = ((index % 3) - 1) * 9.0f + std::sin(kart.progress * 0.006f + index) * 5.0f;
+        for (size_t otherIndex = 0; otherIndex < karts_.size(); ++otherIndex) {
+            if (otherIndex == static_cast<size_t>(index)) {
+                continue;
+            }
+            const Kart& other = karts_[otherIndex];
+            const float ahead = progressAhead(kart.progress, other.progress, track_.totalLength());
+            if (ahead > 10.0f && ahead < 130.0f && std::abs(other.lane - laneTarget) < 17.0f) {
+                laneTarget += (index % 2 == 0 ? -1.0f : 1.0f) * lerp(18.0f, 7.0f, ahead / 130.0f);
+            }
+        }
+        const float half = target.width * 0.5f - 7.0f;
+        laneTarget = std::clamp(laneTarget, -half, half);
         const Vec2 desired = target.pos + target.normal * laneTarget;
         const Vec2 toTarget = normalize(desired - kart.pos);
         const Vec2 forward = fromAngle(kart.heading);
@@ -1332,6 +1391,7 @@ private:
         kart.boostTimer = 0.0f;
         kart.boostPower = 0.0f;
         kart.slip = 0.0f;
+        kart.contactTimer = 0.0f;
     }
 
     void updateCamera(float dt) {
@@ -1517,6 +1577,7 @@ private:
         const int y = static_cast<int>(p.p.y);
         const int w = std::max(7, static_cast<int>((playerHood ? 78.0f : 28.0f) * s));
         const int h = std::max(5, static_cast<int>((playerHood ? 34.0f : 15.0f) * s));
+        const uint32_t body = mixColor(kart.spec.body, rgb(255, 244, 196), std::clamp(kart.contactTimer * 4.0f, 0.0f, 0.45f));
         r.fillCircle(x - w / 3, y + h / 2, std::max(2, h / 3), rgb(21, 24, 28));
         r.fillCircle(x + w / 3, y + h / 2, std::max(2, h / 3), rgb(21, 24, 28));
         r.fillCircle(x - w / 3, y + h / 3, std::max(3, h / 3), rgb(28, 31, 36));
@@ -1524,7 +1585,7 @@ private:
         r.fillQuad({static_cast<float>(x - w / 2), static_cast<float>(y + h / 4)},
                    {static_cast<float>(x + w / 2), static_cast<float>(y + h / 4)},
                    {static_cast<float>(x + w / 3), static_cast<float>(y - h / 2)},
-                   {static_cast<float>(x - w / 3), static_cast<float>(y - h / 2)}, kart.spec.body);
+                   {static_cast<float>(x - w / 3), static_cast<float>(y - h / 2)}, body);
         r.fillQuad({static_cast<float>(x - w / 4), static_cast<float>(y - h / 2)},
                    {static_cast<float>(x + w / 4), static_cast<float>(y - h / 2)},
                    {static_cast<float>(x + w / 6), static_cast<float>(y - h)},
@@ -1540,6 +1601,7 @@ private:
         const int h = static_cast<int>(lerp(82.0f, 56.0f, speedN));
         const int x = kFrameW / 2;
         const int wheel = static_cast<int>(lerp(28.0f, 19.0f, speedN));
+        const uint32_t body = mixColor(kart.spec.body, rgb(255, 244, 196), std::clamp(kart.contactTimer * 4.0f, 0.0f, 0.45f));
         r.fillCircle(x - w / 3, yBase - 10, wheel, rgb(24, 27, 31));
         r.fillCircle(x + w / 3, yBase - 10, wheel, rgb(24, 27, 31));
         r.fillCircle(x - w / 3, yBase - 10, std::max(8, wheel / 2), shade(kart.spec.accent, 0.72f));
@@ -1547,7 +1609,7 @@ private:
         r.fillQuad({static_cast<float>(x - w / 2), static_cast<float>(yBase)},
                    {static_cast<float>(x + w / 2), static_cast<float>(yBase)},
                    {static_cast<float>(x + w / 3), static_cast<float>(yBase - h)},
-                   {static_cast<float>(x - w / 3), static_cast<float>(yBase - h)}, kart.spec.body);
+                   {static_cast<float>(x - w / 3), static_cast<float>(yBase - h)}, body);
         r.fillQuad({static_cast<float>(x - w / 4), static_cast<float>(yBase - h)},
                    {static_cast<float>(x + w / 4), static_cast<float>(yBase - h)},
                    {static_cast<float>(x + w / 6), static_cast<float>(yBase - h - 32)},
