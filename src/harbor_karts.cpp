@@ -820,6 +820,18 @@ float carScore(const Kart& kart, float totalLength) {
     return static_cast<float>(kart.lap) * totalLength + kart.progress;
 }
 
+std::string formatRaceTime(float seconds) {
+    if (!std::isfinite(seconds) || seconds <= 0.0f || seconds > 5999.0f) {
+        return "--:--.-";
+    }
+    const int minutes = static_cast<int>(seconds) / 60;
+    const int whole = static_cast<int>(seconds) % 60;
+    const int tenths = static_cast<int>(seconds * 10.0f) % 10;
+    std::ostringstream out;
+    out << minutes << ":" << std::setw(2) << std::setfill('0') << whole << "." << tenths;
+    return out.str();
+}
+
 enum class DriverStyle { NoBrake, BrakeLine, DriftLine };
 
 struct DriverAuditResult {
@@ -890,12 +902,14 @@ public:
         }
 
         if (mode_ == Mode::Race && hasController) {
+            const int oldPlayerLap = karts_[0].lap;
             updatePlayer(karts_[0], input, dt);
             for (size_t i = 1; i < karts_.size(); ++i) {
                 updateAi(karts_[i], dt, static_cast<int>(i));
             }
             resolveKartContacts();
             updateParticles(dt);
+            updateRaceTimers(dt, oldPlayerLap);
             updateCamera(dt);
             updateAmbient(dt);
             computeRacePosition();
@@ -932,12 +946,14 @@ public:
         if (mode_ != Mode::Race) {
             startRaceForDiagnostics();
         }
+        const int oldPlayerLap = karts_[0].lap;
         updateAi(karts_[0], dt, 0);
         for (size_t ai = 1; ai < karts_.size(); ++ai) {
             updateAi(karts_[ai], dt, static_cast<int>(ai));
         }
         resolveKartContacts();
         updateParticles(dt);
+        updateRaceTimers(dt, oldPlayerLap);
         updateCamera(dt);
         updateAmbient(dt);
         computeRacePosition();
@@ -1163,6 +1179,10 @@ private:
     void resetRace() {
         karts_.clear();
         particles_.clear();
+        raceTime_ = 0.0f;
+        lapTime_ = 0.0f;
+        lastLap_ = 0.0f;
+        bestLap_ = 0.0f;
         const std::array<float, 8> lanes = {-13.0f, 13.0f, -5.5f, 5.5f, -16.0f, 16.0f, -8.0f, 8.0f};
         for (int i = 0; i < 8; ++i) {
             Kart kart;
@@ -1479,6 +1499,16 @@ private:
         }
     }
 
+    void updateRaceTimers(float dt, int oldPlayerLap) {
+        raceTime_ += dt;
+        lapTime_ += dt;
+        if (karts_[0].lap > oldPlayerLap && lapTime_ > 8.0f) {
+            lastLap_ = lapTime_;
+            bestLap_ = bestLap_ <= 0.0f ? lapTime_ : std::min(bestLap_, lapTime_);
+            lapTime_ = 0.0f;
+        }
+    }
+
     void drawRoad(Renderer& r) {
         struct Band {
             ScreenPoint left;
@@ -1768,12 +1798,14 @@ private:
     void renderHud(Renderer& r, float fps, bool hasController) {
         const Kart& player = karts_[0];
         const int speed = static_cast<int>(std::round(length(player.vel) * 1.8f));
-        r.fillRect(16, 16, 202, 46, rgb(15, 39, 51));
+        r.fillRect(16, 16, 226, 56, rgb(15, 39, 51));
         r.drawText(28, 24, std::to_string(speed) + " KMH", 2, rgb(255, 246, 211));
         r.drawText(28, 46, cars_[selectedCar_].name, 1, rgb(246, 234, 184));
-        r.fillRect(764, 16, 178, 46, rgb(15, 39, 51));
+        r.drawText(28, 60, "LAP " + formatRaceTime(lapTime_), 1, rgb(214, 237, 222));
+        r.fillRect(740, 16, 202, 56, rgb(15, 39, 51));
         r.drawText(778, 24, "P" + std::to_string(racePosition_) + "/8", 2, rgb(246, 234, 184));
-        r.drawText(778, 46, "LAP " + std::to_string(std::max(0, player.lap)), 1, rgb(255, 246, 211));
+        r.drawText(752, 46, "LAP " + std::to_string(std::max(0, player.lap)), 1, rgb(255, 246, 211));
+        r.drawText(752, 60, "BEST " + formatRaceTime(bestLap_ > 0.0f ? bestLap_ : lastLap_), 1, rgb(214, 237, 222));
         r.fillRect(18, 496, 154, 14, rgb(22, 41, 45));
         r.fillRect(21, 499, static_cast<int>(148.0f * player.driftCharge), 8,
                    player.drifting ? rgb(255, 191, 69) : rgb(77, 177, 176));
@@ -1846,6 +1878,10 @@ private:
     int selectedRacer_ = 0;
     int racePosition_ = 1;
     float caveBlend_ = 0.0f;
+    float raceTime_ = 0.0f;
+    float lapTime_ = 0.0f;
+    float lastLap_ = 0.0f;
+    float bestLap_ = 0.0f;
     bool quitRequested_ = false;
 };
 
