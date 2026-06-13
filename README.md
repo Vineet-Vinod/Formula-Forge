@@ -1,22 +1,25 @@
-# Harbor Karts
+# Shark Harbor Karts
 
-Harbor Karts is an original Linux/C++ beach-harbor kart racer built for this
-workspace. It uses X11 software rendering and the Linux joystick API directly,
-so it has no SDL/raylib/GLFW dependency.
+Shark Harbor Karts is an original Linux/C++ arcade kart racer aimed at a
+bright tropical beach-buggy feel without copying proprietary Beach Buggy
+Racing assets, names, tracks, or game data.
 
-This project intentionally does not copy proprietary Beach Buggy Racing content.
-It provides an adapted baseline: beach-harbor course, cosmetic racer roster,
-eight maxed-out kart classes, no powerups, no character supers, infinite laps,
-controller-first play, and arcade kart handling tuned for a familiar feel.
+The current build uses vendored SDL3 for fullscreen windowing and controller
+input, then renders the game through a low-overhead software framebuffer. The
+game starts in a controller-only garage where all 8 maxed cars and all cosmetic
+drivers are available.
 
 ## Build
 
-Requirements on a typical Linux desktop:
+Requirements:
 
 - `g++`
 - `make`
-- X11 runtime and development headers/libraries
-- Linux joystick devices exposed as `/dev/input/js*`
+- `cmake`
+- Linux with X11 runtime libraries
+
+The SDL3 source dependency is vendored and pinned. The first build verifies and
+builds it automatically:
 
 ```sh
 make
@@ -25,43 +28,60 @@ make
 The executable is:
 
 ```sh
-./build/harbor_karts
+./build/game/harbor_karts
+```
+
+## Run
+
+```sh
+make run
+```
+
+The game opens fullscreen by default. For debugging:
+
+```sh
+./build/game/harbor_karts --windowed
+./build/game/harbor_karts --dev-keyboard --windowed
 ```
 
 ## Controls
 
-Gamepad required for normal play.
+Gamepad is the intended input.
 
-- Left stick or D-pad: steer / menu navigation
-- Right trigger: accelerate
-- Left trigger: brake or reverse
-- A / Cross: confirm
-- B / Circle: back
+- Left stick / D-pad: steer, garage selection
+- RT: accelerate
+- LT: brake, reverse at low speed, drift setup while steering
+- A / Cross: confirm, race, resume
+- B / Circle: back to garage from pause
 - Start: pause or resume
-- Select / Back: reset car to the last safe racing line
-- Start + Select / Back: quit
+- Back / Select: reset kart to racing line
+- Start + Back / Select: quit
 
-## Baseline Features
+## Current Gameplay
 
-- 10 adapted cosmetic racers
-- 8 maxed-out cars unlocked from the start
-- Fullscreen X11 renderer
-- Forward chase camera that starts close and pulls back at speed
-- 3 original beach-harbor course layouts with tighter technical sections
-- Infinite laps with live position, speed, and FPS display
-- No powerups and no character supers
-- Lightweight X11 software renderer targeting 60 FPS
+- One original Shark Harbor course with beach, dock, market, cave, cliff, pier,
+  and lagoon sections
+- Infinite laps
+- 8-car racing pack with AI opponents
+- 8 maxed-out kart classes
+- 10 cosmetic drivers
+- No powerups and no character super powers
+- Speed-reactive camera that starts near hood view and pulls back at speed
+- Drift handling with brake-and-steer initiation, lateral slip, speed retention,
+  off-road drag, and barrier recovery
+- Fullscreen SDL3 Linux build with controller/gamepad support
 
-## Development
-
-Run a headless physics/input smoke test:
+## Verification
 
 ```sh
 make self-test
+SDL_VIDEODRIVER=dummy ./build/game/harbor_karts --smoke-render
 ```
 
-There is also a development-only keyboard flag for machines without a gamepad:
+`--self-test` runs a deterministic physics/AI smoke test without SDL. The dummy
+render smoke verifies SDL startup and framebuffer presentation in headless
+environments. A real visible window still needs a desktop video device.
 
-```sh
-./build/harbor_karts --dev-keyboard
-```
+## Third-Party Code
+
+See `THIRD_PARTY_LICENSES.md` and `third_party/README.md`.

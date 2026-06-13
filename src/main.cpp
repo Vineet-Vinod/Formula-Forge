@@ -1,21 +1,14 @@
-#include <X11/Xlib.h>
-#include <X11/Xatom.h>
-#include <X11/Xutil.h>
-#include <X11/keysym.h>
-#include <fcntl.h>
-#include <linux/joystick.h>
-#include <sys/ioctl.h>
-#include <unistd.h>
+#include <SDL3/SDL.h>
 
 #include <algorithm>
 #include <array>
 #include <chrono>
 #include <cmath>
 #include <cstdint>
-#include <cstring>
 #include <iostream>
 #include <limits>
 #include <optional>
+#include <random>
 #include <string>
 #include <string_view>
 #include <thread>
@@ -23,10 +16,11 @@
 
 namespace {
 
-constexpr int kScreenW = 960;
-constexpr int kScreenH = 540;
+constexpr int kFrameW = 960;
+constexpr int kFrameH = 540;
 constexpr float kPi = 3.14159265358979323846f;
 constexpr float kTwoPi = 2.0f * kPi;
+constexpr float kFixedDt = 1.0f / 120.0f;
 
 constexpr uint32_t rgb(uint8_t r, uint8_t g, uint8_t b) {
     return (static_cast<uint32_t>(r) << 16) | (static_cast<uint32_t>(g) << 8) |
@@ -35,10 +29,31 @@ constexpr uint32_t rgb(uint8_t r, uint8_t g, uint8_t b) {
 
 uint32_t shade(uint32_t color, float amount) {
     amount = std::clamp(amount, 0.0f, 2.0f);
-    uint8_t r = static_cast<uint8_t>(std::clamp(((color >> 16) & 255) * amount, 0.0f, 255.0f));
-    uint8_t g = static_cast<uint8_t>(std::clamp(((color >> 8) & 255) * amount, 0.0f, 255.0f));
-    uint8_t b = static_cast<uint8_t>(std::clamp((color & 255) * amount, 0.0f, 255.0f));
-    return rgb(r, g, b);
+    const auto channel = [amount](uint32_t v) {
+        return static_cast<uint8_t>(std::clamp(static_cast<float>(v) * amount, 0.0f, 255.0f));
+    };
+    return rgb(channel((color >> 16) & 255), channel((color >> 8) & 255), channel(color & 255));
+}
+
+float smoothstep(float t) {
+    t = std::clamp(t, 0.0f, 1.0f);
+    return t * t * (3.0f - 2.0f * t);
+}
+
+float wrapAngle(float angle) {
+    while (angle <= -kPi) {
+        angle += kTwoPi;
+    }
+    while (angle > kPi) {
+        angle -= kTwoPi;
+    }
+    return angle;
+}
+
+float lerp(float a, float b, float t) { return a + (b - a) * t; }
+
+float lerpAngle(float a, float b, float t) {
+    return a + wrapAngle(b - a) * std::clamp(t, 0.0f, 1.0f);
 }
 
 struct Vec2 {
@@ -70,21 +85,23 @@ struct Vec2 {
 };
 
 float dot(Vec2 a, Vec2 b) { return a.x * b.x + a.y * b.y; }
+float cross(Vec2 a, Vec2 b) { return a.x * b.y - a.y * b.x; }
 float lengthSq(Vec2 v) { return dot(v, v); }
 float length(Vec2 v) { return std::sqrt(lengthSq(v)); }
 
 Vec2 normalize(Vec2 v) {
-    float len = length(v);
-    if (len <= 0.00001f) {
+    const float len = length(v);
+    if (len < 0.0001f) {
         return {1.0f, 0.0f};
     }
     return v / len;
 }
 
 Vec2 lerp(Vec2 a, Vec2 b, float t) { return a + (b - a) * t; }
-float lerp(float a, float b, float t) { return a + (b - a) * t; }
+Vec2 fromAngle(float angle) { return {std::cos(angle), std::sin(angle)}; }
+float angleOf(Vec2 v) { return std::atan2(v.y, v.x); }
 
-float wrapProgress(float value, float total) {
+float wrapDistance(float value, float total) {
     while (value < 0.0f) {
         value += total;
     }
@@ -105,38 +122,10 @@ float progressAhead(float from, float to, float total) {
     return delta;
 }
 
-float wrapAngle(float angle) {
-    while (angle <= -kPi) {
-        angle += kTwoPi;
-    }
-    while (angle > kPi) {
-        angle -= kTwoPi;
-    }
-    return angle;
-}
-
-Vec2 fromAngle(float angle) { return {std::cos(angle), std::sin(angle)}; }
-float angleOf(Vec2 v) { return std::atan2(v.y, v.x); }
-
-struct Camera {
-    Vec2 pos;
-    float yaw = 0.0f;
-    float zoom = 0.36f;
-    int screenW = kScreenW;
-    int screenH = kScreenH;
-    bool perspective = false;
-    float height = 125.0f;
-    float fov = 520.0f;
-    float horizon = 210.0f;
-};
-
-struct Projection {
-    Vec2 screen;
-    float depth = 0.0f;
-    float scale = 1.0f;
-};
-
 std::array<uint8_t, 7> glyph(char ch) {
+    if (ch >= 'a' && ch <= 'z') {
+        ch = static_cast<char>(ch - 'a' + 'A');
+    }
     switch (ch) {
         case 'A': return {0x0E, 0x11, 0x11, 0x1F, 0x11, 0x11, 0x11};
         case 'B': return {0x1E, 0x11, 0x11, 0x1E, 0x11, 0x11, 0x1E};
@@ -179,9 +168,9 @@ std::array<uint8_t, 7> glyph(char ch) {
         case '+': return {0x00, 0x04, 0x04, 0x1F, 0x04, 0x04, 0x00};
         case '/': return {0x01, 0x01, 0x02, 0x04, 0x08, 0x10, 0x10};
         case '.': return {0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x0C};
-        case '|': return {0x04, 0x04, 0x04, 0x04, 0x04, 0x04, 0x04};
-        case '>': return {0x10, 0x08, 0x04, 0x02, 0x04, 0x08, 0x10};
+        case '%': return {0x19, 0x19, 0x02, 0x04, 0x08, 0x13, 0x13};
         case '<': return {0x01, 0x02, 0x04, 0x08, 0x04, 0x02, 0x01};
+        case '>': return {0x10, 0x08, 0x04, 0x02, 0x04, 0x08, 0x10};
         case ' ': return {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
         default: return {0x1F, 0x11, 0x02, 0x04, 0x04, 0x00, 0x04};
     }
@@ -189,112 +178,115 @@ std::array<uint8_t, 7> glyph(char ch) {
 
 class Renderer {
 public:
-    Renderer(uint32_t* pixels, int width, int height) : pixels_(pixels), width_(width), height_(height) {}
+    Renderer(std::vector<uint32_t>& pixels, int width, int height) : pixels_(pixels), width_(width), height_(height) {}
 
-    int width() const { return width_; }
-    int height() const { return height_; }
-
-    void clear(uint32_t color) {
-        std::fill(pixels_, pixels_ + width_ * height_, color);
-    }
+    void clear(uint32_t color) { std::fill(pixels_.begin(), pixels_.end(), color); }
 
     void setPixel(int x, int y, uint32_t color) {
         if (x < 0 || y < 0 || x >= width_ || y >= height_) {
             return;
         }
-        pixels_[y * width_ + x] = color;
+        pixels_[static_cast<size_t>(y * width_ + x)] = color;
     }
 
     void fillRect(int x, int y, int w, int h, uint32_t color) {
-        int x0 = std::clamp(x, 0, width_);
-        int y0 = std::clamp(y, 0, height_);
-        int x1 = std::clamp(x + w, 0, width_);
-        int y1 = std::clamp(y + h, 0, height_);
+        const int x0 = std::clamp(x, 0, width_);
+        const int y0 = std::clamp(y, 0, height_);
+        const int x1 = std::clamp(x + w, 0, width_);
+        const int y1 = std::clamp(y + h, 0, height_);
         for (int yy = y0; yy < y1; ++yy) {
-            uint32_t* row = pixels_ + yy * width_;
+            auto* row = pixels_.data() + yy * width_;
             std::fill(row + x0, row + x1, color);
         }
     }
 
-    void drawCircle(int cx, int cy, int radius, uint32_t color) {
+    void drawSky(uint32_t top, uint32_t horizon, uint32_t sea, int horizonY) {
+        horizonY = std::clamp(horizonY, 0, height_);
+        for (int y = 0; y < horizonY; ++y) {
+            float t = static_cast<float>(y) / std::max(1, horizonY);
+            uint8_t r = static_cast<uint8_t>(lerp((top >> 16) & 255, (horizon >> 16) & 255, t));
+            uint8_t g = static_cast<uint8_t>(lerp((top >> 8) & 255, (horizon >> 8) & 255, t));
+            uint8_t b = static_cast<uint8_t>(lerp(top & 255, horizon & 255, t));
+            fillRect(0, y, width_, 1, rgb(r, g, b));
+        }
+        for (int y = horizonY; y < height_; ++y) {
+            float t = static_cast<float>(y - horizonY) / std::max(1, height_ - horizonY);
+            fillRect(0, y, width_, 1, shade(sea, 0.78f + 0.25f * t));
+        }
+    }
+
+    void fillCircle(int cx, int cy, int radius, uint32_t color) {
         if (radius <= 0) {
             return;
         }
-        int x0 = std::max(0, cx - radius);
-        int x1 = std::min(width_ - 1, cx + radius);
-        int y0 = std::max(0, cy - radius);
-        int y1 = std::min(height_ - 1, cy + radius);
-        int r2 = radius * radius;
+        const int x0 = std::max(0, cx - radius);
+        const int x1 = std::min(width_ - 1, cx + radius);
+        const int y0 = std::max(0, cy - radius);
+        const int y1 = std::min(height_ - 1, cy + radius);
+        const int r2 = radius * radius;
         for (int y = y0; y <= y1; ++y) {
-            int dy = y - cy;
+            const int dy = y - cy;
             for (int x = x0; x <= x1; ++x) {
-                int dx = x - cx;
+                const int dx = x - cx;
                 if (dx * dx + dy * dy <= r2) {
-                    pixels_[y * width_ + x] = color;
+                    pixels_[static_cast<size_t>(y * width_ + x)] = color;
                 }
             }
         }
     }
 
     void drawLine(Vec2 a, Vec2 b, int thickness, uint32_t color) {
-        float dist = length(b - a);
-        int steps = std::max(1, static_cast<int>(dist / std::max(1, thickness)));
-        for (int i = 0; i <= steps; ++i) {
-            float t = static_cast<float>(i) / static_cast<float>(steps);
-            Vec2 p = lerp(a, b, t);
-            drawCircle(static_cast<int>(std::round(p.x)), static_cast<int>(std::round(p.y)), thickness, color);
-        }
-    }
-
-    void fillPolygon(const std::vector<Vec2>& points, uint32_t color) {
-        if (points.size() < 3) {
+        const float dx = b.x - a.x;
+        const float dy = b.y - a.y;
+        const int steps = static_cast<int>(std::max(std::abs(dx), std::abs(dy)));
+        if (steps <= 0) {
+            fillCircle(static_cast<int>(a.x), static_cast<int>(a.y), std::max(1, thickness / 2), color);
             return;
         }
-        float minY = points[0].y;
-        float maxY = points[0].y;
-        for (Vec2 p : points) {
-            minY = std::min(minY, p.y);
-            maxY = std::max(maxY, p.y);
+        const int radius = std::max(1, thickness / 2);
+        for (int i = 0; i <= steps; ++i) {
+            const float t = static_cast<float>(i) / steps;
+            fillCircle(static_cast<int>(lerp(a.x, b.x, t)), static_cast<int>(lerp(a.y, b.y, t)), radius, color);
         }
-        int y0 = std::max(0, static_cast<int>(std::floor(minY)));
-        int y1 = std::min(height_ - 1, static_cast<int>(std::ceil(maxY)));
-        std::vector<float> xs;
-        xs.reserve(points.size());
-        for (int y = y0; y <= y1; ++y) {
-            float scanY = static_cast<float>(y) + 0.5f;
-            xs.clear();
-            for (size_t i = 0; i < points.size(); ++i) {
-                Vec2 a = points[i];
-                Vec2 b = points[(i + 1) % points.size()];
-                if ((a.y <= scanY && b.y > scanY) || (b.y <= scanY && a.y > scanY)) {
-                    float t = (scanY - a.y) / (b.y - a.y);
-                    xs.push_back(lerp(a.x, b.x, t));
-                }
-            }
-            std::sort(xs.begin(), xs.end());
-            for (size_t i = 0; i + 1 < xs.size(); i += 2) {
-                int x0 = std::max(0, static_cast<int>(std::ceil(xs[i])));
-                int x1 = std::min(width_ - 1, static_cast<int>(std::floor(xs[i + 1])));
-                if (x1 >= x0) {
-                    uint32_t* row = pixels_ + y * width_;
-                    std::fill(row + x0, row + x1 + 1, color);
+    }
+
+    void fillTriangle(Vec2 a, Vec2 b, Vec2 c, uint32_t color) {
+        const float area = edge(a, b, c);
+        if (std::abs(area) < 0.001f) {
+            return;
+        }
+        const int minX = std::clamp(static_cast<int>(std::floor(std::min({a.x, b.x, c.x}))), 0, width_ - 1);
+        const int maxX = std::clamp(static_cast<int>(std::ceil(std::max({a.x, b.x, c.x}))), 0, width_ - 1);
+        const int minY = std::clamp(static_cast<int>(std::floor(std::min({a.y, b.y, c.y}))), 0, height_ - 1);
+        const int maxY = std::clamp(static_cast<int>(std::ceil(std::max({a.y, b.y, c.y}))), 0, height_ - 1);
+        const bool positive = area > 0.0f;
+        for (int y = minY; y <= maxY; ++y) {
+            for (int x = minX; x <= maxX; ++x) {
+                const Vec2 p{static_cast<float>(x) + 0.5f, static_cast<float>(y) + 0.5f};
+                const float w0 = edge(b, c, p);
+                const float w1 = edge(c, a, p);
+                const float w2 = edge(a, b, p);
+                if (positive ? (w0 >= 0.0f && w1 >= 0.0f && w2 >= 0.0f)
+                             : (w0 <= 0.0f && w1 <= 0.0f && w2 <= 0.0f)) {
+                    pixels_[static_cast<size_t>(y * width_ + x)] = color;
                 }
             }
         }
     }
 
-    void drawText(int x, int y, std::string_view text, uint32_t color, int scale = 2) {
+    void fillQuad(Vec2 a, Vec2 b, Vec2 c, Vec2 d, uint32_t color) {
+        fillTriangle(a, b, c, color);
+        fillTriangle(a, c, d, color);
+    }
+
+    void drawText(int x, int y, std::string_view text, int scale, uint32_t color) {
         int cursor = x;
-        for (char raw : text) {
-            char ch = raw;
-            if (ch >= 'a' && ch <= 'z') {
-                ch = static_cast<char>(ch - 'a' + 'A');
-            }
-            auto rows = glyph(ch);
-            for (int yy = 0; yy < 7; ++yy) {
-                for (int xx = 0; xx < 5; ++xx) {
-                    if ((rows[yy] & (1u << (4 - xx))) != 0u) {
-                        fillRect(cursor + xx * scale, y + yy * scale, scale, scale, color);
+        for (char ch : text) {
+            const auto bits = glyph(ch);
+            for (int row = 0; row < 7; ++row) {
+                for (int col = 0; col < 5; ++col) {
+                    if (bits[row] & (1 << (4 - col))) {
+                        fillRect(cursor + col * scale, y + row * scale, scale, scale, color);
                     }
                 }
             }
@@ -302,1656 +294,1139 @@ public:
         }
     }
 
-    void drawTextCentered(int cx, int y, std::string_view text, uint32_t color, int scale = 2) {
-        int width = static_cast<int>(text.size()) * 6 * scale;
-        drawText(cx - width / 2, y, text, color, scale);
-    }
+    int width() const { return width_; }
+    int height() const { return height_; }
 
 private:
-    uint32_t* pixels_ = nullptr;
+    static float edge(Vec2 a, Vec2 b, Vec2 c) { return (c.x - a.x) * (b.y - a.y) - (c.y - a.y) * (b.x - a.x); }
+
+    std::vector<uint32_t>& pixels_;
     int width_ = 0;
     int height_ = 0;
 };
 
-class AppWindow {
-public:
-    bool open() {
-        display_ = XOpenDisplay(nullptr);
-        if (!display_) {
-            std::cerr << "Unable to open X11 display. Set DISPLAY or run make self-test for headless checks.\n";
-            return false;
-        }
-        screen_ = DefaultScreen(display_);
-        visual_ = DefaultVisual(display_, screen_);
-        depth_ = DefaultDepth(display_, screen_);
-        width_ = std::max(kScreenW, DisplayWidth(display_, screen_));
-        height_ = std::max(kScreenH, DisplayHeight(display_, screen_));
-        window_ = XCreateSimpleWindow(display_, RootWindow(display_, screen_), 0, 0, width_, height_, 0,
-                                      BlackPixel(display_, screen_), BlackPixel(display_, screen_));
-        XStoreName(display_, window_, "Harbor Karts");
-
-        XSizeHints hints{};
-        hints.flags = PMinSize;
-        hints.min_width = kScreenW;
-        hints.min_height = kScreenH;
-        XSetWMNormalHints(display_, window_, &hints);
-
-        wmDelete_ = XInternAtom(display_, "WM_DELETE_WINDOW", False);
-        XSetWMProtocols(display_, window_, &wmDelete_, 1);
-        XSelectInput(display_, window_, ExposureMask | KeyPressMask | KeyReleaseMask | StructureNotifyMask);
-        Atom wmState = XInternAtom(display_, "_NET_WM_STATE", False);
-        Atom fullscreen = XInternAtom(display_, "_NET_WM_STATE_FULLSCREEN", False);
-        XChangeProperty(display_, window_, wmState, XA_ATOM, 32, PropModeReplace,
-                        reinterpret_cast<unsigned char*>(&fullscreen), 1);
-        XMapWindow(display_, window_);
-        gc_ = XCreateGC(display_, window_, 0, nullptr);
-
-        pixels_.assign(width_ * height_, 0);
-        image_ = XCreateImage(display_, visual_, depth_, ZPixmap, 0, reinterpret_cast<char*>(pixels_.data()),
-                              width_, height_, 32, 0);
-        if (!image_ || image_->bits_per_pixel != 32) {
-            std::cerr << "Unsupported X11 image format; expected 32 bits per pixel.\n";
-            return false;
-        }
-        running_ = true;
-        return true;
-    }
-
-    ~AppWindow() {
-        if (image_) {
-            image_->data = nullptr;
-            XDestroyImage(image_);
-        }
-        if (gc_) {
-            XFreeGC(display_, gc_);
-        }
-        if (window_) {
-            XDestroyWindow(display_, window_);
-        }
-        if (display_) {
-            XCloseDisplay(display_);
-        }
-    }
-
-    void poll(bool devKeyboard, std::array<bool, 256>& keys) {
-        if (!display_) {
-            return;
-        }
-        while (XPending(display_) > 0) {
-            XEvent event{};
-            XNextEvent(display_, &event);
-            if (event.type == ClientMessage &&
-                static_cast<Atom>(event.xclient.data.l[0]) == wmDelete_) {
-                running_ = false;
-            } else if (devKeyboard && (event.type == KeyPress || event.type == KeyRelease)) {
-                KeySym sym = XLookupKeysym(&event.xkey, 0);
-                bool down = event.type == KeyPress;
-                auto setKey = [&](KeySym key, uint8_t slot) {
-                    if (sym == key) {
-                        keys[slot] = down;
-                    }
-                };
-                setKey(XK_Left, 1);
-                setKey(XK_Right, 2);
-                setKey(XK_Up, 3);
-                setKey(XK_Down, 4);
-                setKey(XK_Return, 5);
-                setKey(XK_space, 6);
-                setKey(XK_Escape, 7);
-                setKey(XK_z, 8);
-                setKey(XK_x, 9);
-                setKey(XK_p, 10);
-                setKey(XK_r, 11);
-            }
-        }
-    }
-
-    bool running() const { return running_; }
-    void close() { running_ = false; }
-
-    Renderer renderer() { return Renderer(pixels_.data(), width_, height_); }
-
-    void present() {
-        image_->data = reinterpret_cast<char*>(pixels_.data());
-        XPutImage(display_, window_, gc_, image_, 0, 0, 0, 0, width_, height_);
-        XFlush(display_);
-    }
-
-private:
-    Display* display_ = nullptr;
-    int screen_ = 0;
-    Visual* visual_ = nullptr;
-    int depth_ = 0;
-    ::Window window_ = 0;
-    GC gc_ = nullptr;
-    Atom wmDelete_ = 0;
-    XImage* image_ = nullptr;
-    std::vector<uint32_t> pixels_;
-    int width_ = kScreenW;
-    int height_ = kScreenH;
-    bool running_ = false;
-};
-
-struct InputFrame {
-    float steer = 0.0f;
-    float throttle = 0.0f;
-    float brake = 0.0f;
-    bool left = false;
-    bool right = false;
-    bool confirm = false;
-    bool back = false;
-    bool start = false;
-    bool select = false;
-    bool quit = false;
-    bool connected = false;
-};
-
-float axisWithDeadzone(float value, float deadzone = 0.18f) {
-    if (std::abs(value) < deadzone) {
-        return 0.0f;
-    }
-    float sign = value < 0.0f ? -1.0f : 1.0f;
-    return sign * std::clamp((std::abs(value) - deadzone) / (1.0f - deadzone), 0.0f, 1.0f);
-}
-
-class ControllerManager {
-public:
-    ControllerManager() { scan(); }
-    ~ControllerManager() {
-        for (Device& d : devices_) {
-            if (d.fd >= 0) {
-                close(d.fd);
-            }
-        }
-    }
-
-    InputFrame poll() {
-        for (Device& d : devices_) {
-            d.prevButtons = d.buttons;
-        }
-
-        auto now = std::chrono::steady_clock::now();
-        if (now >= nextScan_) {
-            scan();
-            nextScan_ = now + std::chrono::seconds(1);
-        }
-
-        js_event event{};
-        for (Device& d : devices_) {
-            while (read(d.fd, &event, sizeof(event)) == static_cast<ssize_t>(sizeof(event))) {
-                bool initEvent = (event.type & JS_EVENT_INIT) != 0;
-                uint8_t type = event.type & ~JS_EVENT_INIT;
-                if (type == JS_EVENT_AXIS && event.number < d.axes.size()) {
-                    if (initEvent) {
-                        d.axisCenters[event.number] = event.value;
-                        d.axes[event.number] = event.value;
-                        continue;
-                    }
-                    d.axes[event.number] = event.value;
-                    d.touched = true;
-                } else if (type == JS_EVENT_BUTTON && event.number < d.buttons.size()) {
-                    if (initEvent) {
-                        continue;
-                    }
-                    d.buttons[event.number] = event.value != 0;
-                    if (event.value != 0) {
-                        d.touched = true;
-                    }
-                }
-            }
-        }
-
-        InputFrame frame;
-        Device* dev = activeDevice();
-        if (!dev) {
-            return frame;
-        }
-        frame.connected = true;
-
-        auto axis = [&](size_t index) -> float {
-            if (index >= dev->axes.size()) {
-                return 0.0f;
-            }
-            float center = index < dev->axisCenters.size() ? static_cast<float>(dev->axisCenters[index]) : 0.0f;
-            float raw = static_cast<float>(dev->axes[index]);
-            float span = raw >= center ? 32767.0f - center : center + 32767.0f;
-            if (span < 1.0f) {
-                return 0.0f;
-            }
-            return std::clamp((raw - center) / span, -1.0f, 1.0f);
-        };
-        auto button = [&](size_t index) -> bool {
-            return index < dev->buttons.size() && dev->buttons[index];
-        };
-        auto justPressed = [&](size_t index) -> bool {
-            return index < dev->buttons.size() && index < dev->prevButtons.size() && dev->buttons[index] &&
-                   !dev->prevButtons[index];
-        };
-        auto trigger = [&](size_t index) -> float {
-            float value = axis(index);
-            return value > 0.12f ? std::clamp(value, 0.0f, 1.0f) : 0.0f;
-        };
-
-        float steerAxis = axisWithDeadzone(axis(0));
-        float dpadX = axisWithDeadzone(axis(6), 0.5f);
-        if (std::abs(dpadX) > std::abs(steerAxis)) {
-            steerAxis = dpadX;
-        }
-        if (button(13) || button(14)) {
-            steerAxis = -1.0f;
-        }
-        if (button(11) || button(15)) {
-            steerAxis = 1.0f;
-        }
-        frame.steer = std::clamp(steerAxis, -1.0f, 1.0f);
-
-        float rt = trigger(5);
-        float lt = trigger(2);
-        frame.throttle = rt;
-        frame.brake = lt;
-
-        bool leftNow = frame.steer < -0.55f;
-        bool rightNow = frame.steer > 0.55f;
-        frame.left = leftNow && !dev->lastMenuLeft;
-        frame.right = rightNow && !dev->lastMenuRight;
-        dev->lastMenuLeft = leftNow;
-        dev->lastMenuRight = rightNow;
-
-        frame.confirm = justPressed(0) || justPressed(7) || justPressed(9);
-        frame.back = justPressed(1) || justPressed(6) || justPressed(8);
-        frame.start = justPressed(7) || justPressed(9);
-        frame.select = justPressed(6) || justPressed(8);
-        frame.quit = (button(6) && button(7)) || (button(8) && button(9));
-        return frame;
-    }
-
-    std::string activeName() const {
-        const Device* best = nullptr;
-        for (const Device& d : devices_) {
-            if (!best || d.touched) {
-                best = &d;
-            }
-        }
-        return best ? best->name : std::string();
-    }
-
-private:
-    struct Device {
-        int fd = -1;
-        std::string path;
-        std::string name;
-        std::vector<int16_t> axes;
-        std::vector<int16_t> axisCenters;
-        std::vector<bool> buttons;
-        std::vector<bool> prevButtons;
-        bool touched = false;
-        bool lastMenuLeft = false;
-        bool lastMenuRight = false;
-    };
-
-    void scan() {
-        for (int i = 0; i < 16; ++i) {
-            std::string path = "/dev/input/js" + std::to_string(i);
-            bool known = std::any_of(devices_.begin(), devices_.end(), [&](const Device& d) {
-                return d.path == path;
-            });
-            if (known) {
-                continue;
-            }
-            int fd = ::open(path.c_str(), O_RDONLY | O_NONBLOCK);
-            if (fd < 0) {
-                continue;
-            }
-            uint8_t axes = 0;
-            uint8_t buttons = 0;
-            char name[128] = {};
-            ioctl(fd, JSIOCGAXES, &axes);
-            ioctl(fd, JSIOCGBUTTONS, &buttons);
-            if (ioctl(fd, JSIOCGNAME(sizeof(name)), name) < 0) {
-                std::strncpy(name, "Linux gamepad", sizeof(name) - 1);
-            }
-            Device d;
-            d.fd = fd;
-            d.path = path;
-            d.name = name;
-            d.axes.assign(std::max<uint8_t>(axes, 8), 0);
-            d.axisCenters.assign(std::max<uint8_t>(axes, 8), 0);
-            d.buttons.assign(std::max<uint8_t>(buttons, 16), false);
-            d.prevButtons = d.buttons;
-            devices_.push_back(std::move(d));
-        }
-    }
-
-    Device* activeDevice() {
-        if (devices_.empty()) {
-            return nullptr;
-        }
-        for (Device& d : devices_) {
-            if (d.touched) {
-                return &d;
-            }
-        }
-        return &devices_.front();
-    }
-
-    std::vector<Device> devices_;
-    std::chrono::steady_clock::time_point nextScan_ = std::chrono::steady_clock::now();
-};
-
-enum class Surface {
-    Asphalt,
-    Boardwalk,
-    Tunnel,
-};
-
 struct TrackPoint {
     Vec2 pos;
-    float width;
-    Surface surface;
-};
-
-struct TrackSegment {
-    Vec2 a;
-    Vec2 b;
-    float start = 0.0f;
-    float length = 0.0f;
-    float widthA = 300.0f;
-    float widthB = 300.0f;
-    Surface surface = Surface::Asphalt;
-};
-
-struct TrackQuery {
-    Vec2 point;
-    Vec2 tangent;
-    Vec2 normal;
+    Vec2 tangent{1.0f, 0.0f};
+    Vec2 normal{0.0f, 1.0f};
     float progress = 0.0f;
-    float signedDistance = 0.0f;
-    float distance = 0.0f;
-    float halfWidth = 150.0f;
-    float t = 0.0f;
-    int segment = 0;
-    Surface surface = Surface::Asphalt;
+    float width = 48.0f;
+    float elevation = 0.0f;
+    float curvature = 0.0f;
+    uint32_t roadColor = rgb(180, 124, 75);
+    uint32_t shoulderColor = rgb(224, 190, 105);
+    int zone = 0;
+};
+
+struct Prop {
+    enum class Type { Palm, Rock, Hut, Boat, Banner, SharkSign, Torch };
+    Type type = Type::Palm;
+    float progress = 0.0f;
+    float side = 0.0f;
+    float scale = 1.0f;
+    uint32_t color = rgb(46, 141, 81);
 };
 
 class Track {
 public:
-    explicit Track(int layout = 0) {
-        setLayout(layout);
-    }
+    Track() { build(); }
 
-    void setLayout(int layout) {
-        layout_ = ((layout % 3) + 3) % 3;
-        if (layout_ == 1) {
-            name_ = "PIER SLALOM";
-            points_ = {
-                {{-260.0f, 1540.0f}, 280.0f, Surface::Asphalt},
-                {{460.0f, 1460.0f}, 255.0f, Surface::Asphalt},
-                {{760.0f, 900.0f}, 215.0f, Surface::Boardwalk},
-                {{520.0f, 420.0f}, 205.0f, Surface::Boardwalk},
-                {{1120.0f, 120.0f}, 205.0f, Surface::Boardwalk},
-                {{1720.0f, -260.0f}, 230.0f, Surface::Asphalt},
-                {{1640.0f, -920.0f}, 220.0f, Surface::Asphalt},
-                {{920.0f, -1280.0f}, 205.0f, Surface::Tunnel},
-                {{140.0f, -1140.0f}, 205.0f, Surface::Tunnel},
-                {{-420.0f, -1500.0f}, 215.0f, Surface::Asphalt},
-                {{-1060.0f, -1120.0f}, 205.0f, Surface::Boardwalk},
-                {{-1740.0f, -1260.0f}, 200.0f, Surface::Boardwalk},
-                {{-2280.0f, -680.0f}, 215.0f, Surface::Boardwalk},
-                {{-2060.0f, -160.0f}, 205.0f, Surface::Boardwalk},
-                {{-2460.0f, 360.0f}, 230.0f, Surface::Asphalt},
-                {{-1960.0f, 1040.0f}, 250.0f, Surface::Asphalt},
-                {{-1120.0f, 1180.0f}, 240.0f, Surface::Asphalt},
-            };
-        } else if (layout_ == 2) {
-            name_ = "CAVEBACK RUN";
-            points_ = {
-                {{-220.0f, 1900.0f}, 335.0f, Surface::Asphalt},
-                {{760.0f, 1780.0f}, 330.0f, Surface::Asphalt},
-                {{1560.0f, 1180.0f}, 300.0f, Surface::Asphalt},
-                {{2140.0f, 320.0f}, 280.0f, Surface::Asphalt},
-                {{2700.0f, -360.0f}, 260.0f, Surface::Boardwalk},
-                {{2300.0f, -1040.0f}, 235.0f, Surface::Boardwalk},
-                {{1500.0f, -1260.0f}, 245.0f, Surface::Tunnel},
-                {{620.0f, -1720.0f}, 250.0f, Surface::Tunnel},
-                {{-220.0f, -1880.0f}, 260.0f, Surface::Tunnel},
-                {{-840.0f, -1300.0f}, 240.0f, Surface::Asphalt},
-                {{-1560.0f, -1480.0f}, 245.0f, Surface::Asphalt},
-                {{-2380.0f, -840.0f}, 260.0f, Surface::Boardwalk},
-                {{-2600.0f, 80.0f}, 270.0f, Surface::Boardwalk},
-                {{-2060.0f, 880.0f}, 295.0f, Surface::Asphalt},
-                {{-1160.0f, 1420.0f}, 315.0f, Surface::Asphalt},
-            };
-        } else {
-            name_ = "HARBOR GP";
-            points_ = {
-                {{-180.0f, 1680.0f}, 320.0f, Surface::Asphalt},
-                {{620.0f, 1580.0f}, 300.0f, Surface::Asphalt},
-                {{1080.0f, 1180.0f}, 260.0f, Surface::Boardwalk},
-                {{860.0f, 720.0f}, 220.0f, Surface::Boardwalk},
-                {{1480.0f, 520.0f}, 230.0f, Surface::Boardwalk},
-                {{2180.0f, 80.0f}, 260.0f, Surface::Asphalt},
-                {{2300.0f, -620.0f}, 250.0f, Surface::Asphalt},
-                {{1700.0f, -1160.0f}, 225.0f, Surface::Tunnel},
-                {{880.0f, -1460.0f}, 230.0f, Surface::Tunnel},
-                {{240.0f, -1260.0f}, 220.0f, Surface::Tunnel},
-                {{-380.0f, -1680.0f}, 235.0f, Surface::Asphalt},
-                {{-980.0f, -1160.0f}, 230.0f, Surface::Asphalt},
-                {{-1580.0f, -1280.0f}, 215.0f, Surface::Boardwalk},
-                {{-2280.0f, -680.0f}, 240.0f, Surface::Boardwalk},
-                {{-2440.0f, -60.0f}, 220.0f, Surface::Boardwalk},
-                {{-2080.0f, 420.0f}, 230.0f, Surface::Boardwalk},
-                {{-2440.0f, 920.0f}, 255.0f, Surface::Asphalt},
-                {{-1660.0f, 1460.0f}, 295.0f, Surface::Asphalt},
-                {{-880.0f, 1340.0f}, 305.0f, Surface::Asphalt},
-            };
-        }
-        build();
-    }
-
-    const std::vector<TrackSegment>& segments() const { return segments_; }
     float totalLength() const { return totalLength_; }
-    const std::string& name() const { return name_; }
-    float minX() const { return minX_; }
-    float maxX() const { return maxX_; }
-    float minY() const { return minY_; }
-    float maxY() const { return maxY_; }
+    const std::vector<Prop>& props() const { return props_; }
 
-    TrackQuery query(Vec2 pos) const {
-        TrackQuery best;
-        float bestDistSq = std::numeric_limits<float>::max();
-        for (size_t i = 0; i < segments_.size(); ++i) {
-            const TrackSegment& s = segments_[i];
-            Vec2 ab = s.b - s.a;
-            float t = std::clamp(dot(pos - s.a, ab) / std::max(1.0f, dot(ab, ab)), 0.0f, 1.0f);
-            Vec2 p = lerp(s.a, s.b, t);
-            Vec2 diff = pos - p;
-            float distSq = lengthSq(diff);
-            if (distSq < bestDistSq) {
-                Vec2 tangent = normalize(ab);
-                Vec2 normal{-tangent.y, tangent.x};
-                bestDistSq = distSq;
-                best.point = p;
-                best.tangent = tangent;
-                best.normal = normal;
-                best.progress = s.start + s.length * t;
-                best.signedDistance = dot(diff, normal);
-                best.distance = std::sqrt(distSq);
-                best.halfWidth = lerp(s.widthA, s.widthB, t) * 0.5f;
-                best.t = t;
-                best.segment = static_cast<int>(i);
-                best.surface = s.surface;
+    TrackPoint sample(float progress) const {
+        progress = wrapDistance(progress, totalLength_);
+        const float u = progress / totalLength_ * static_cast<float>(samples_.size());
+        const int i0 = static_cast<int>(std::floor(u)) % static_cast<int>(samples_.size());
+        const int i1 = (i0 + 1) % static_cast<int>(samples_.size());
+        const float t = u - std::floor(u);
+        TrackPoint out = samples_[i0];
+        const TrackPoint& a = samples_[i0];
+        const TrackPoint& b = samples_[i1];
+        out.pos = lerp(a.pos, b.pos, t);
+        out.tangent = normalize(lerp(a.tangent, b.tangent, t));
+        out.normal = {-out.tangent.y, out.tangent.x};
+        out.progress = progress;
+        out.width = lerp(a.width, b.width, t);
+        out.elevation = lerp(a.elevation, b.elevation, t);
+        out.curvature = lerp(a.curvature, b.curvature, t);
+        return out;
+    }
+
+    int nearestIndex(Vec2 pos) const {
+        int best = 0;
+        float bestDist = std::numeric_limits<float>::max();
+        for (int i = 0; i < static_cast<int>(samples_.size()); ++i) {
+            const float d = lengthSq(samples_[i].pos - pos);
+            if (d < bestDist) {
+                best = i;
+                bestDist = d;
             }
         }
         return best;
     }
 
-    TrackQuery sample(float progress) const {
-        float p = wrapProgress(progress, totalLength_);
-        for (size_t i = 0; i < segments_.size(); ++i) {
-            const TrackSegment& s = segments_[i];
-            if (p <= s.start + s.length || i == segments_.size() - 1) {
-                float t = std::clamp((p - s.start) / std::max(1.0f, s.length), 0.0f, 1.0f);
-                Vec2 tangent = normalize(s.b - s.a);
-                Vec2 normal{-tangent.y, tangent.x};
-                TrackQuery q;
-                q.point = lerp(s.a, s.b, t);
-                q.tangent = tangent;
-                q.normal = normal;
-                q.progress = p;
-                q.halfWidth = lerp(s.widthA, s.widthB, t) * 0.5f;
-                q.t = t;
-                q.segment = static_cast<int>(i);
-                q.surface = s.surface;
-                return q;
-            }
-        }
-        return query(points_.front().pos);
-    }
+    const TrackPoint& pointAtIndex(int index) const { return samples_[static_cast<size_t>(index) % samples_.size()]; }
 
 private:
+    static Vec2 catmull(Vec2 p0, Vec2 p1, Vec2 p2, Vec2 p3, float t) {
+        const float t2 = t * t;
+        const float t3 = t2 * t;
+        return (p1 * 2.0f + (p2 - p0) * t + (p0 * 2.0f - p1 * 5.0f + p2 * 4.0f - p3) * t2 +
+                (p3 - p0 + (p1 - p2) * 3.0f) * t3) *
+               0.5f;
+    }
+
+    static TrackPoint decorate(TrackPoint point, float phase) {
+        phase -= std::floor(phase);
+        point.width = 50.0f;
+        point.roadColor = rgb(199, 137, 78);
+        point.shoulderColor = rgb(235, 203, 126);
+        point.zone = 0;
+
+        if (phase < 0.14f) {
+            point.zone = 0;
+            point.width = 58.0f;
+            point.roadColor = rgb(209, 151, 82);
+            point.shoulderColor = rgb(238, 204, 124);
+        } else if (phase < 0.29f) {
+            point.zone = 1;
+            point.width = 37.0f;
+            point.roadColor = rgb(138, 91, 59);
+            point.shoulderColor = rgb(108, 73, 52);
+            point.elevation += 8.0f;
+        } else if (phase < 0.42f) {
+            point.zone = 2;
+            point.width = 42.0f;
+            point.roadColor = rgb(153, 96, 82);
+            point.shoulderColor = rgb(225, 173, 95);
+        } else if (phase < 0.58f) {
+            point.zone = 3;
+            point.width = 40.0f;
+            point.roadColor = rgb(76, 75, 82);
+            point.shoulderColor = rgb(47, 51, 59);
+            point.elevation += 22.0f * smoothstep((phase - 0.42f) / 0.16f);
+        } else if (phase < 0.72f) {
+            point.zone = 4;
+            point.width = 46.0f;
+            point.roadColor = rgb(115, 121, 103);
+            point.shoulderColor = rgb(63, 116, 93);
+            point.elevation += 20.0f * (1.0f - smoothstep((phase - 0.58f) / 0.14f));
+        } else if (phase < 0.85f) {
+            point.zone = 5;
+            point.width = 35.0f;
+            point.roadColor = rgb(132, 82, 48);
+            point.shoulderColor = rgb(54, 157, 160);
+            point.elevation += 7.0f;
+        } else {
+            point.zone = 6;
+            point.width = 55.0f;
+            point.roadColor = rgb(188, 124, 74);
+            point.shoulderColor = rgb(230, 192, 111);
+        }
+
+        point.elevation += 3.0f * std::sin(phase * kTwoPi * 5.0f);
+        return point;
+    }
+
     void build() {
-        totalLength_ = 0.0f;
-        segments_.clear();
-        minX_ = minY_ = std::numeric_limits<float>::max();
-        maxX_ = maxY_ = -std::numeric_limits<float>::max();
-        for (size_t i = 0; i < points_.size(); ++i) {
-            const TrackPoint& a = points_[i];
-            const TrackPoint& b = points_[(i + 1) % points_.size()];
-            TrackSegment s;
-            s.a = a.pos;
-            s.b = b.pos;
-            s.start = totalLength_;
-            s.length = length(b.pos - a.pos);
-            s.widthA = a.width;
-            s.widthB = b.width;
-            s.surface = a.surface;
-            totalLength_ += s.length;
-            segments_.push_back(s);
-            float pad = std::max(a.width, b.width) * 0.5f + 520.0f;
-            minX_ = std::min(minX_, std::min(a.pos.x, b.pos.x) - pad);
-            maxX_ = std::max(maxX_, std::max(a.pos.x, b.pos.x) + pad);
-            minY_ = std::min(minY_, std::min(a.pos.y, b.pos.y) - pad);
-            maxY_ = std::max(maxY_, std::max(a.pos.y, b.pos.y) + pad);
+        const std::vector<Vec2> control = {
+            {0.0f, 0.0f},       {190.0f, -68.0f},  {402.0f, -28.0f},  {528.0f, 148.0f},
+            {455.0f, 324.0f},   {236.0f, 354.0f},  {93.0f, 238.0f},   {178.0f, 101.0f},
+            {362.0f, 107.0f},   {496.0f, 282.0f},  {337.0f, 510.0f},  {39.0f, 531.0f},
+            {-144.0f, 361.0f},  {-352.0f, 429.0f}, {-548.0f, 245.0f}, {-509.0f, 8.0f},
+            {-661.0f, -150.0f}, {-506.0f, -348.0f}, {-250.0f, -416.0f}, {-10.0f, -331.0f},
+            {-121.0f, -169.0f}, {-318.0f, -206.0f}, {-314.0f, -31.0f}, {-94.0f, 58.0f},
+        };
+
+        std::vector<Vec2> dense;
+        constexpr int kSteps = 28;
+        for (int i = 0; i < static_cast<int>(control.size()); ++i) {
+            const Vec2 p0 = control[(i - 1 + control.size()) % control.size()];
+            const Vec2 p1 = control[i];
+            const Vec2 p2 = control[(i + 1) % control.size()];
+            const Vec2 p3 = control[(i + 2) % control.size()];
+            for (int s = 0; s < kSteps; ++s) {
+                dense.push_back(catmull(p0, p1, p2, p3, static_cast<float>(s) / kSteps));
+            }
+        }
+
+        std::vector<float> cumulative(dense.size() + 1, 0.0f);
+        for (size_t i = 0; i < dense.size(); ++i) {
+            cumulative[i + 1] = cumulative[i] + length(dense[(i + 1) % dense.size()] - dense[i]);
+        }
+        totalLength_ = cumulative.back();
+
+        constexpr int kSampleCount = 2304;
+        samples_.resize(kSampleCount);
+        for (int i = 0; i < kSampleCount; ++i) {
+            const float desired = totalLength_ * static_cast<float>(i) / kSampleCount;
+            auto it = std::upper_bound(cumulative.begin(), cumulative.end(), desired);
+            int seg = std::max(0, static_cast<int>(it - cumulative.begin()) - 1);
+            if (seg >= static_cast<int>(dense.size())) {
+                seg = static_cast<int>(dense.size()) - 1;
+            }
+            const float span = cumulative[seg + 1] - cumulative[seg];
+            const float t = span > 0.001f ? (desired - cumulative[seg]) / span : 0.0f;
+            TrackPoint point;
+            point.progress = desired;
+            point.pos = lerp(dense[seg], dense[(seg + 1) % dense.size()], t);
+            samples_[i] = decorate(point, desired / totalLength_);
+        }
+
+        for (int i = 0; i < kSampleCount; ++i) {
+            TrackPoint& point = samples_[i];
+            const Vec2 prev = samples_[(i - 2 + kSampleCount) % kSampleCount].pos;
+            const Vec2 next = samples_[(i + 2) % kSampleCount].pos;
+            point.tangent = normalize(next - prev);
+            point.normal = {-point.tangent.y, point.tangent.x};
+        }
+        for (int i = 0; i < kSampleCount; ++i) {
+            const Vec2 a = samples_[(i - 5 + kSampleCount) % kSampleCount].tangent;
+            const Vec2 b = samples_[(i + 5) % kSampleCount].tangent;
+            samples_[i].curvature = std::abs(wrapAngle(angleOf(b) - angleOf(a)));
+        }
+
+        buildProps();
+    }
+
+    void buildProps() {
+        std::mt19937 rng(1776);
+        std::uniform_real_distribution<float> jitter(-11.0f, 11.0f);
+        const int count = 112;
+        for (int i = 0; i < count; ++i) {
+            const float p = totalLength_ * (static_cast<float>(i) + 0.37f) / count + jitter(rng);
+            const TrackPoint tp = sample(p);
+            Prop prop;
+            prop.progress = wrapDistance(p, totalLength_);
+            prop.side = (i % 2 == 0 ? -1.0f : 1.0f) * (tp.width * 0.5f + 42.0f + static_cast<float>((i * 13) % 50));
+            prop.scale = 0.8f + static_cast<float>((i * 7) % 9) * 0.08f;
+            if (tp.zone == 1 || tp.zone == 5) {
+                prop.type = (i % 3 == 0) ? Prop::Type::Boat : Prop::Type::Banner;
+                prop.color = rgb(195, 77, 65);
+            } else if (tp.zone == 3) {
+                prop.type = (i % 2 == 0) ? Prop::Type::Torch : Prop::Type::Rock;
+                prop.color = rgb(218, 126, 49);
+            } else if (i % 11 == 0) {
+                prop.type = Prop::Type::SharkSign;
+                prop.color = rgb(58, 125, 161);
+            } else if (i % 5 == 0) {
+                prop.type = Prop::Type::Hut;
+                prop.color = rgb(176, 102, 60);
+            } else if (i % 4 == 0) {
+                prop.type = Prop::Type::Rock;
+                prop.color = rgb(113, 105, 91);
+            } else {
+                prop.type = Prop::Type::Palm;
+                prop.color = rgb(42, 148, 79);
+            }
+            props_.push_back(prop);
         }
     }
 
-    int layout_ = 0;
-    std::string name_ = "HARBOR GP";
-    std::vector<TrackPoint> points_;
-    std::vector<TrackSegment> segments_;
+    std::vector<TrackPoint> samples_;
+    std::vector<Prop> props_;
     float totalLength_ = 1.0f;
-    float minX_ = -2600.0f;
-    float maxX_ = 2600.0f;
-    float minY_ = -2000.0f;
-    float maxY_ = 2000.0f;
 };
 
-struct Racer {
+struct KartSpec {
     std::string name;
-    std::string role;
-    uint32_t primary;
-    uint32_t accent;
+    uint32_t body = rgb(230, 60, 48);
+    uint32_t accent = rgb(255, 211, 78);
+    uint32_t glass = rgb(83, 194, 213);
+    float maxSpeed = 124.0f;
+    float accel = 92.0f;
+    float brake = 140.0f;
+    float grip = 1.0f;
+    float drift = 1.0f;
 };
 
-struct KartDef {
-    std::string name;
-    uint32_t body;
-    uint32_t trim;
-    float maxSpeed = 540.0f;
-    float accel = 640.0f;
-    float brake = 920.0f;
-    float reverse = 430.0f;
-    float turnRate = 2.55f;
-    float grip = 9.0f;
-};
-
-std::vector<Racer> makeRacers() {
-    return {
-        {"CORAL ACE", "ADAPTED ROSTER", rgb(240, 86, 75), rgb(255, 214, 90)},
-        {"BOLT REX", "ADAPTED ROSTER", rgb(49, 140, 240), rgb(255, 246, 128)},
-        {"MARA WAVE", "ADAPTED ROSTER", rgb(40, 188, 158), rgb(255, 255, 255)},
-        {"KITO DRIFT", "ADAPTED ROSTER", rgb(122, 92, 235), rgb(255, 175, 55)},
-        {"LUX NOVA", "ADAPTED ROSTER", rgb(234, 78, 176), rgb(60, 240, 225)},
-        {"SPROCKET", "ADAPTED ROSTER", rgb(240, 152, 54), rgb(55, 55, 60)},
-        {"VEGA GLOW", "ADAPTED ROSTER", rgb(96, 220, 92), rgb(42, 70, 60)},
-        {"RIPTIDE", "ADAPTED ROSTER", rgb(34, 102, 180), rgb(240, 240, 240)},
-        {"FLINT MAX", "ADAPTED ROSTER", rgb(160, 102, 66), rgb(244, 210, 150)},
-        {"JUNO STAR", "ADAPTED ROSTER", rgb(250, 216, 78), rgb(50, 70, 120)},
-    };
-}
-
-std::vector<KartDef> makeKarts() {
-    return {
-        {"SAND RAIL", rgb(220, 64, 58), rgb(255, 232, 100), 548.0f, 650.0f, 930.0f, 430.0f, 2.58f, 9.1f},
-        {"TIDE BUGGY", rgb(34, 143, 230), rgb(235, 250, 255), 542.0f, 675.0f, 920.0f, 420.0f, 2.65f, 8.9f},
-        {"REEF ROD", rgb(36, 186, 145), rgb(245, 188, 64), 558.0f, 628.0f, 900.0f, 410.0f, 2.48f, 9.4f},
-        {"DOCK DASH", rgb(128, 84, 48), rgb(250, 212, 82), 536.0f, 695.0f, 940.0f, 445.0f, 2.72f, 8.8f},
-        {"SUN SKIPPER", rgb(246, 184, 42), rgb(60, 70, 86), 552.0f, 642.0f, 910.0f, 425.0f, 2.54f, 9.2f},
-        {"CAVE RUNNER", rgb(90, 94, 108), rgb(80, 220, 230), 566.0f, 604.0f, 940.0f, 405.0f, 2.38f, 9.6f},
-        {"PALM GT", rgb(86, 194, 88), rgb(248, 246, 220), 540.0f, 684.0f, 930.0f, 435.0f, 2.70f, 8.7f},
-        {"HARBOR 8", rgb(226, 74, 168), rgb(58, 210, 230), 560.0f, 620.0f, 915.0f, 420.0f, 2.50f, 9.3f},
-    };
-}
-
-struct KartState {
+struct Kart {
+    KartSpec spec;
+    std::string racer;
     Vec2 pos;
     Vec2 vel;
-    float yaw = 0.0f;
-    float yawVel = 0.0f;
+    float heading = 0.0f;
     float progress = 0.0f;
-    float lastSafeProgress = 0.0f;
-    float lineOffset = 0.0f;
     int lap = 0;
-    int racerIndex = 0;
-    int kartIndex = 0;
-    bool player = false;
-    bool wrongWay = false;
-    float wrongWayTimer = 0.0f;
+    int nearest = 0;
+    float lane = 0.0f;
+    float aiTempo = 1.0f;
+    bool drifting = false;
+    float driftCharge = 0.0f;
+    float slip = 0.0f;
 };
 
-struct DriveInput {
+struct InputState {
     float steer = 0.0f;
     float throttle = 0.0f;
     float brake = 0.0f;
+    bool a = false;
+    bool b = false;
+    bool start = false;
+    bool back = false;
+    bool left = false;
+    bool right = false;
+    bool up = false;
+    bool down = false;
 };
 
-void placeOnTrack(const Track& track, KartState& state, float progress, float lineOffset) {
-    TrackQuery q = track.sample(progress);
-    state.pos = q.point + q.normal * lineOffset;
-    state.vel = q.tangent * 5.0f;
-    state.yaw = angleOf(q.tangent);
-    state.yawVel = 0.0f;
-    state.progress = q.progress;
-    state.lastSafeProgress = q.progress;
-    state.lineOffset = lineOffset;
+struct Camera {
+    Vec2 pos;
+    float yaw = 0.0f;
+    float height = 42.0f;
+    float horizon = 150.0f;
+    float focal = 500.0f;
+};
+
+struct ScreenPoint {
+    Vec2 p;
+    float depth = 0.0f;
+    float scale = 0.0f;
+    bool visible = false;
+};
+
+ScreenPoint projectPoint(Vec2 world, float elevation, const Camera& camera) {
+    const Vec2 forward = fromAngle(camera.yaw);
+    const Vec2 right{-forward.y, forward.x};
+    const Vec2 rel = world - camera.pos;
+    const float depth = dot(rel, forward);
+    if (depth < 3.0f) {
+        return {};
+    }
+    const float side = dot(rel, right);
+    ScreenPoint out;
+    out.depth = depth;
+    out.scale = camera.focal / depth;
+    out.p.x = kFrameW * 0.5f + side * out.scale;
+    out.p.y = camera.horizon + (camera.height - elevation) * out.scale;
+    out.visible = out.p.y > -220.0f && out.p.y < kFrameH + 260.0f && out.p.x > -700.0f && out.p.x < kFrameW + 700.0f;
+    return out;
 }
 
-void applyKartPhysics(const Track& track, const KartDef& kart, KartState& state, const DriveInput& input, float dt) {
-    TrackQuery before = track.query(state.pos);
-    Vec2 forward = fromAngle(state.yaw);
-    Vec2 right{-forward.y, forward.x};
-
-    float roadRatio = before.distance / std::max(1.0f, before.halfWidth);
-    bool onRoad = roadRatio <= 1.0f;
-    bool onShoulder = roadRatio <= 1.35f;
-
-    float gripFactor = onRoad ? 1.0f : (onShoulder ? 0.50f : 0.26f);
-    float speedFactor = onRoad ? 1.0f : (onShoulder ? 0.62f : 0.34f);
-    float dragFactor = onRoad ? 1.0f : (onShoulder ? 3.0f : 6.0f);
-    if (onRoad) {
-        float edgeLoad = std::clamp((roadRatio - 0.68f) / 0.32f, 0.0f, 1.0f);
-        gripFactor *= 1.0f - edgeLoad * 0.18f;
-        speedFactor *= 1.0f - edgeLoad * 0.10f;
-        dragFactor *= 1.0f + edgeLoad * 0.34f;
-    }
-    if (before.surface == Surface::Boardwalk) {
-        gripFactor *= 0.93f;
-        dragFactor *= 1.04f;
-    } else if (before.surface == Surface::Tunnel) {
-        gripFactor *= 1.08f;
-    }
-
-    float speedForward = dot(state.vel, forward);
-    float speedSide = dot(state.vel, right);
-    float absSpeed = std::abs(speedForward);
-    float steeringAtSpeed = std::clamp(absSpeed / 260.0f, 0.20f, 1.0f);
-    float speedT = std::clamp(absSpeed / std::max(1.0f, kart.maxSpeed), 0.0f, 1.15f);
-    float highSpeedUndersteer = lerp(1.10f, 0.66f, std::clamp(speedT, 0.0f, 1.0f));
-    bool driftInput = input.brake > 0.22f && std::abs(input.steer) > 0.34f && speedForward > 155.0f;
-    float drift = driftInput ? 1.34f : 1.0f;
-    float targetYawVel = input.steer * kart.turnRate * steeringAtSpeed * highSpeedUndersteer * drift;
-    if (speedForward < -20.0f) {
-        targetYawVel *= -0.55f;
-    }
-    state.yawVel += (targetYawVel - state.yawVel) * std::clamp(8.5f * dt, 0.0f, 1.0f);
-    state.yaw = wrapAngle(state.yaw + state.yawVel * dt);
-
-    forward = fromAngle(state.yaw);
-    right = {-forward.y, forward.x};
-    speedForward = dot(state.vel, forward);
-    speedSide = dot(state.vel, right);
-
-    float maxSpeed = kart.maxSpeed * speedFactor;
-    float engineCurve = std::clamp(1.0f - std::max(0.0f, speedForward) / std::max(1.0f, maxSpeed), 0.12f, 1.0f);
-    float accel = input.throttle * kart.accel * engineCurve;
-    float brake = 0.0f;
-    if (input.brake > 0.01f) {
-        brake = (speedForward > 24.0f) ? input.brake * kart.brake : input.brake * kart.reverse;
-    }
-
-    float rolling = 1.45f * dragFactor;
-    float air = 0.0020f * speedForward * std::abs(speedForward);
-    float longitudinalAccel = accel - brake - rolling * speedForward - air;
-    speedForward += longitudinalAccel * dt;
-
-    float sideGrip = kart.grip * gripFactor;
-    if (drift > 1.0f) {
-        sideGrip *= 0.48f;
-    }
-    speedSide -= speedSide * std::clamp(sideGrip * dt, 0.0f, 0.92f);
-    float slipLoss = std::clamp(std::abs(speedSide) / 360.0f, 0.0f, 1.0f) * (driftInput ? 14.0f : 42.0f);
-    if (speedForward > 0.0f) {
-        speedForward = std::max(0.0f, speedForward - slipLoss * dt);
-    }
-    if (!onRoad) {
-        speedSide -= speedSide * std::clamp(3.2f * dt, 0.0f, 0.85f);
-    }
-
-    state.vel = forward * speedForward + right * speedSide;
-    float maxMagnitude = kart.maxSpeed * 1.18f;
-    float currentSpeed = length(state.vel);
-    if (currentSpeed > maxMagnitude) {
-        state.vel *= maxMagnitude / currentSpeed;
-    }
-    state.pos += state.vel * dt;
-
-    TrackQuery after = track.query(state.pos);
-    float softLimit = after.halfWidth + 28.0f;
-    float hardLimit = after.halfWidth + 88.0f;
-    if (std::abs(after.signedDistance) > softLimit) {
-        float sign = after.signedDistance < 0.0f ? -1.0f : 1.0f;
-        Vec2 limitPoint = after.point + after.normal * (sign * softLimit);
-        Vec2 correction = limitPoint - state.pos;
-        state.pos += correction * 0.72f;
-        Vec2 n = after.normal * sign;
-        float intoWall = dot(state.vel, n);
-        if (intoWall > 0.0f) {
-            state.vel -= n * (intoWall * 1.55f);
-            state.vel *= 0.62f;
-        }
-    }
-    if (std::abs(after.signedDistance) > hardLimit + 180.0f) {
-        placeOnTrack(track, state, state.lastSafeProgress, state.lineOffset);
-    }
-
-    float prev = state.progress;
-    after = track.query(state.pos);
-    float delta = after.progress - prev;
-    if (delta < -track.totalLength() * 0.5f) {
-        ++state.lap;
-    } else if (delta > track.totalLength() * 0.5f) {
-        --state.lap;
-    } else if (state.player) {
-        if (delta < -12.0f && length(state.vel) > 80.0f) {
-            state.wrongWayTimer += dt;
-        } else {
-            state.wrongWayTimer = std::max(0.0f, state.wrongWayTimer - dt * 2.0f);
-        }
-        state.wrongWay = state.wrongWayTimer > 0.55f;
-    }
-    state.progress = after.progress;
-    if (after.distance <= after.halfWidth * 0.82f && dot(state.vel, after.tangent) > 45.0f) {
-        state.lastSafeProgress = after.progress;
-    }
+std::vector<KartSpec> makeCars() {
+    return {
+        {"TIDE HOPPER", rgb(224, 57, 56), rgb(255, 202, 63), rgb(79, 195, 212), 124.0f, 93.0f, 142.0f, 1.02f, 1.00f},
+        {"REEF RUNNER", rgb(35, 151, 211), rgb(255, 235, 90), rgb(111, 222, 227), 128.0f, 86.0f, 138.0f, 0.97f, 1.08f},
+        {"DUNE FOX", rgb(240, 139, 45), rgb(47, 61, 76), rgb(95, 201, 217), 120.0f, 102.0f, 148.0f, 1.08f, 0.96f},
+        {"PIER SHARK", rgb(61, 81, 103), rgb(232, 67, 61), rgb(91, 205, 217), 132.0f, 78.0f, 134.0f, 0.93f, 1.16f},
+        {"MANGO MULE", rgb(246, 199, 62), rgb(30, 133, 76), rgb(110, 210, 222), 116.0f, 111.0f, 152.0f, 1.13f, 0.90f},
+        {"LAGOON GT", rgb(34, 184, 143), rgb(238, 73, 95), rgb(151, 232, 235), 129.0f, 90.0f, 139.0f, 1.00f, 1.05f},
+        {"TIKI RAIL", rgb(132, 78, 44), rgb(248, 125, 54), rgb(98, 196, 210), 121.0f, 98.0f, 146.0f, 1.05f, 1.02f},
+        {"STORM BUGGY", rgb(116, 105, 175), rgb(255, 213, 65), rgb(101, 215, 229), 126.0f, 95.0f, 144.0f, 1.00f, 1.10f},
+    };
 }
 
-DriveInput aiInputFor(const Track& track, const KartState& state) {
-    float speed = length(state.vel);
-    float lookAhead = 260.0f + std::clamp(speed * 0.92f, 0.0f, 520.0f);
-    TrackQuery target = track.sample(state.progress + lookAhead);
-    TrackQuery nearTarget = track.sample(state.progress + lookAhead * 0.55f);
-    Vec2 targetPoint = target.point + target.normal * state.lineOffset;
-    Vec2 toTarget = targetPoint - state.pos;
-    float angleError = wrapAngle(angleOf(toTarget) - state.yaw);
-    float bend = std::abs(wrapAngle(angleOf(target.tangent) - angleOf(nearTarget.tangent)));
-    DriveInput input;
-    input.steer = std::clamp(angleError * 1.55f, -1.0f, 1.0f);
-    input.throttle = 1.0f;
-    float sharpness = std::max(std::abs(angleError), bend * 1.35f);
-    if (sharpness > 0.46f && speed > 180.0f) {
-        input.brake = std::clamp((sharpness - 0.40f) * 0.86f, 0.0f, 0.62f);
-        input.throttle = std::clamp(0.86f - input.brake * 0.82f, 0.28f, 1.0f);
+std::vector<std::string> makeRacers() {
+    return {"KAI", "MAYA", "BRUNO", "LANI", "REX", "NOVA", "SKIP", "ZARA", "COBALT", "TESS"};
+}
+
+float axisUnit(Sint16 value) {
+    const float f = static_cast<float>(value) / 32767.0f;
+    return std::abs(f) < 0.11f ? 0.0f : std::clamp(f, -1.0f, 1.0f);
+}
+
+float triggerUnit(Sint16 value) {
+    if (value <= 0) {
+        return 0.0f;
     }
+    return std::clamp(static_cast<float>(value) / 32767.0f, 0.0f, 1.0f);
+}
+
+InputState readGamepad(SDL_Gamepad* pad, bool devKeyboard) {
+    InputState input;
+    if (pad) {
+        input.steer = axisUnit(SDL_GetGamepadAxis(pad, SDL_GAMEPAD_AXIS_LEFTX));
+        input.throttle = triggerUnit(SDL_GetGamepadAxis(pad, SDL_GAMEPAD_AXIS_RIGHT_TRIGGER));
+        input.brake = triggerUnit(SDL_GetGamepadAxis(pad, SDL_GAMEPAD_AXIS_LEFT_TRIGGER));
+        input.a = SDL_GetGamepadButton(pad, SDL_GAMEPAD_BUTTON_SOUTH);
+        input.b = SDL_GetGamepadButton(pad, SDL_GAMEPAD_BUTTON_EAST);
+        input.start = SDL_GetGamepadButton(pad, SDL_GAMEPAD_BUTTON_START);
+        input.back = SDL_GetGamepadButton(pad, SDL_GAMEPAD_BUTTON_BACK);
+        input.left = SDL_GetGamepadButton(pad, SDL_GAMEPAD_BUTTON_DPAD_LEFT) || input.steer < -0.55f;
+        input.right = SDL_GetGamepadButton(pad, SDL_GAMEPAD_BUTTON_DPAD_RIGHT) || input.steer > 0.55f;
+        input.up = SDL_GetGamepadButton(pad, SDL_GAMEPAD_BUTTON_DPAD_UP);
+        input.down = SDL_GetGamepadButton(pad, SDL_GAMEPAD_BUTTON_DPAD_DOWN);
+    }
+    if (devKeyboard) {
+        int keyCount = 0;
+        const bool* keys = SDL_GetKeyboardState(&keyCount);
+        const auto key = [&](SDL_Scancode code) { return static_cast<int>(code) < keyCount && keys[code]; };
+        const float left = key(SDL_SCANCODE_LEFT) || key(SDL_SCANCODE_A) ? 1.0f : 0.0f;
+        const float right = key(SDL_SCANCODE_RIGHT) || key(SDL_SCANCODE_D) ? 1.0f : 0.0f;
+        input.steer = std::clamp(input.steer + right - left, -1.0f, 1.0f);
+        input.throttle = std::max(input.throttle, key(SDL_SCANCODE_W) || key(SDL_SCANCODE_UP) ? 1.0f : 0.0f);
+        input.brake = std::max(input.brake, key(SDL_SCANCODE_S) || key(SDL_SCANCODE_DOWN) ? 1.0f : 0.0f);
+        input.a = input.a || key(SDL_SCANCODE_RETURN) || key(SDL_SCANCODE_SPACE);
+        input.b = input.b || key(SDL_SCANCODE_ESCAPE);
+        input.start = input.start || key(SDL_SCANCODE_P);
+        input.back = input.back || key(SDL_SCANCODE_R);
+        input.left = input.left || key(SDL_SCANCODE_LEFT);
+        input.right = input.right || key(SDL_SCANCODE_RIGHT);
+        input.up = input.up || key(SDL_SCANCODE_UP);
+        input.down = input.down || key(SDL_SCANCODE_DOWN);
+    }
+    input.steer = std::copysign(std::pow(std::abs(input.steer), 1.35f), input.steer);
     return input;
 }
 
-struct Prop {
-    float progress = 0.0f;
-    float offset = 0.0f;
-    int type = 0;
-    float scale = 1.0f;
-};
+bool pressed(bool now, bool prev) { return now && !prev; }
 
-std::vector<Prop> makeProps(float trackLength = 9800.0f) {
-    std::vector<Prop> props = {
-        {260.0f, -360.0f, 0, 1.0f}, {620.0f, 380.0f, 0, 0.9f},  {1030.0f, -320.0f, 1, 1.0f},
-        {1480.0f, 330.0f, 2, 1.1f}, {2020.0f, -380.0f, 3, 1.0f}, {2500.0f, 360.0f, 0, 1.2f},
-        {3060.0f, -330.0f, 4, 1.0f}, {3560.0f, 330.0f, 1, 1.0f}, {4100.0f, -360.0f, 2, 1.0f},
-        {4680.0f, 380.0f, 0, 0.9f}, {5320.0f, -340.0f, 3, 1.2f}, {5860.0f, 350.0f, 4, 1.0f},
-        {6460.0f, -330.0f, 1, 0.95f}, {7080.0f, 370.0f, 0, 1.1f}, {7750.0f, -360.0f, 2, 1.0f},
-        {8380.0f, 360.0f, 0, 1.0f}, {9000.0f, -390.0f, 4, 1.0f}, {9630.0f, 360.0f, 1, 1.0f},
-    };
-    for (float p = 10100.0f; p < trackLength; p += 520.0f) {
-        int type = static_cast<int>(p / 520.0f) % 5;
-        float side = (static_cast<int>(p / 260.0f) % 2 == 0) ? -1.0f : 1.0f;
-        props.push_back({p, side * (320.0f + std::fmod(p, 190.0f)), type, 0.85f + std::fmod(p, 180.0f) / 600.0f});
-    }
-    return props;
+float carScore(const Kart& kart, float totalLength) {
+    return static_cast<float>(kart.lap) * totalLength + kart.progress;
 }
-
-Vec2 project(Vec2 world, const Camera& camera) {
-    Vec2 d = world - camera.pos;
-    Vec2 forward = fromAngle(camera.yaw);
-    Vec2 right{-forward.y, forward.x};
-    return {camera.screenW * 0.5f + dot(d, right) * camera.zoom,
-            camera.screenH * 0.63f - dot(d, forward) * camera.zoom};
-}
-
-void drawWorldLine(Renderer& r, Vec2 a, Vec2 b, const Camera& camera, int thickness, uint32_t color) {
-    r.drawLine(project(a, camera), project(b, camera), thickness, color);
-}
-
-void drawRibbon(Renderer& r, Vec2 a, Vec2 b, float halfWidth, const Camera& camera, uint32_t color) {
-    Vec2 tangent = normalize(b - a);
-    Vec2 normal{-tangent.y, tangent.x};
-    std::vector<Vec2> poly = {
-        project(a + normal * halfWidth, camera),
-        project(b + normal * halfWidth, camera),
-        project(b - normal * halfWidth, camera),
-        project(a - normal * halfWidth, camera),
-    };
-    r.fillPolygon(poly, color);
-    int radius = static_cast<int>(std::ceil(halfWidth * camera.zoom));
-    Vec2 sa = project(a, camera);
-    Vec2 sb = project(b, camera);
-    r.drawCircle(static_cast<int>(sa.x), static_cast<int>(sa.y), radius, color);
-    r.drawCircle(static_cast<int>(sb.x), static_cast<int>(sb.y), radius, color);
-}
-
-uint32_t surfaceColor(Surface surface) {
-    switch (surface) {
-        case Surface::Boardwalk: return rgb(118, 83, 50);
-        case Surface::Tunnel: return rgb(65, 69, 76);
-        case Surface::Asphalt:
-        default: return rgb(83, 91, 94);
-    }
-}
-
-std::optional<Projection> projectGround(Vec2 world, const Camera& camera) {
-    Vec2 d = world - camera.pos;
-    Vec2 forward = fromAngle(camera.yaw);
-    Vec2 right{-forward.y, forward.x};
-    float depth = dot(d, forward);
-    if (depth < 35.0f) {
-        return std::nullopt;
-    }
-    float lateral = dot(d, right);
-    float scale = camera.fov / depth;
-    Projection p;
-    p.depth = depth;
-    p.scale = scale;
-    p.screen = {camera.screenW * 0.5f + lateral * scale, camera.horizon + camera.height * scale};
-    if (p.screen.x < -camera.screenW * 0.75f || p.screen.x > camera.screenW * 1.75f ||
-        p.screen.y < -camera.screenH * 0.5f || p.screen.y > camera.screenH * 1.4f) {
-        return std::nullopt;
-    }
-    return p;
-}
-
-bool perspectiveQuad(Renderer& r, const Camera& camera, Vec2 a, Vec2 b, Vec2 c, Vec2 d, uint32_t color) {
-    auto pa = projectGround(a, camera);
-    auto pb = projectGround(b, camera);
-    auto pc = projectGround(c, camera);
-    auto pd = projectGround(d, camera);
-    if (!pa || !pb || !pc || !pd) {
-        return false;
-    }
-    r.fillPolygon({pa->screen, pb->screen, pc->screen, pd->screen}, color);
-    return true;
-}
-
-void drawPerspectiveBackground(Renderer& r, const Camera& camera, float animTime) {
-    int horizon = static_cast<int>(camera.horizon);
-    for (int y = 0; y < horizon; y += 3) {
-        float t = static_cast<float>(y) / std::max(1, horizon);
-        uint32_t color = rgb(static_cast<uint8_t>(35 + t * 42), static_cast<uint8_t>(116 + t * 54),
-                             static_cast<uint8_t>(150 + t * 58));
-        r.fillRect(0, y, r.width(), 3, color);
-    }
-    for (int y = horizon; y < r.height(); y += 3) {
-        float t = static_cast<float>(y - horizon) / std::max(1, r.height() - horizon);
-        uint32_t color = rgb(static_cast<uint8_t>(54 + t * 86), static_cast<uint8_t>(144 + t * 50),
-                             static_cast<uint8_t>(166 - t * 62));
-        r.fillRect(0, y, r.width(), 3, color);
-    }
-    r.fillRect(0, horizon - 2, r.width(), 4, rgb(225, 215, 155));
-    for (int i = 0; i < 20; ++i) {
-        int y = horizon + 18 + i * 24;
-        int shift = static_cast<int>(std::sin(animTime * 1.2f + i * 0.7f) * 70.0f);
-        r.drawLine({static_cast<float>(-80 + shift), static_cast<float>(y)},
-                   {static_cast<float>(r.width() + 80 + shift), static_cast<float>(y + 12)}, 1,
-                   rgb(67, 158, 178));
-    }
-}
-
-void drawPerspectiveTrack(Renderer& r, const Track& track, const Camera& camera, float playerProgress) {
-    constexpr float nearDist = 45.0f;
-    constexpr float farDist = 4300.0f;
-    constexpr float step = 58.0f;
-    for (float d = farDist; d >= nearDist; d -= step) {
-        TrackQuery q0 = track.sample(playerProgress + d);
-        TrackQuery q1 = track.sample(playerProgress + d + step);
-        float shoulder0 = q0.halfWidth + 94.0f;
-        float shoulder1 = q1.halfWidth + 94.0f;
-        uint32_t shoulder = q0.surface == Surface::Boardwalk ? rgb(85, 59, 38) : rgb(186, 154, 94);
-        perspectiveQuad(r, camera, q0.point - q0.normal * shoulder0, q0.point + q0.normal * shoulder0,
-                        q1.point + q1.normal * shoulder1, q1.point - q1.normal * shoulder1, shoulder);
-        perspectiveQuad(r, camera, q0.point - q0.normal * (q0.halfWidth + 8.0f),
-                        q0.point + q0.normal * (q0.halfWidth + 8.0f),
-                        q1.point + q1.normal * (q1.halfWidth + 8.0f),
-                        q1.point - q1.normal * (q1.halfWidth + 8.0f), rgb(52, 50, 45));
-        perspectiveQuad(r, camera, q0.point - q0.normal * q0.halfWidth, q0.point + q0.normal * q0.halfWidth,
-                        q1.point + q1.normal * q1.halfWidth, q1.point - q1.normal * q1.halfWidth,
-                        surfaceColor(q0.surface));
-
-        if (static_cast<int>((playerProgress + d) / 210.0f) % 2 == 0) {
-            float stripe = std::min(q0.halfWidth * 0.04f, 10.0f);
-            perspectiveQuad(r, camera, q0.point - q0.normal * stripe, q0.point + q0.normal * stripe,
-                            q1.point + q1.normal * stripe, q1.point - q1.normal * stripe,
-                            q0.surface == Surface::Tunnel ? rgb(150, 156, 158) : rgb(232, 224, 178));
-        }
-    }
-}
-
-void drawPerspectiveProp(Renderer& r, const Track& track, const Prop& prop, const Camera& camera) {
-    TrackQuery q = track.sample(prop.progress);
-    Vec2 pos = q.point + q.normal * prop.offset;
-    auto projected = projectGround(pos, camera);
-    if (!projected) {
-        return;
-    }
-    int size = std::clamp(static_cast<int>(projected->scale * 46.0f * prop.scale), 3, 90);
-    int x = static_cast<int>(projected->screen.x);
-    int y = static_cast<int>(projected->screen.y);
-    if (prop.type == 0) {
-        r.fillRect(x - size / 6, y - size * 2, std::max(2, size / 3), size * 2, rgb(118, 75, 42));
-        r.drawCircle(x - size / 2, y - size * 2, size / 2, rgb(56, 145, 78));
-        r.drawCircle(x + size / 2, y - size * 2, size / 2, rgb(43, 128, 72));
-        r.drawCircle(x, y - size * 5 / 2, size / 2, rgb(74, 166, 86));
-    } else if (prop.type == 4) {
-        std::vector<Vec2> boat = {{static_cast<float>(x - size * 2), static_cast<float>(y)},
-                                  {static_cast<float>(x + size * 2), static_cast<float>(y)},
-                                  {static_cast<float>(x + size), static_cast<float>(y - size)},
-                                  {static_cast<float>(x - size), static_cast<float>(y - size)}};
-        r.fillPolygon(boat, rgb(236, 230, 205));
-        r.drawLine({static_cast<float>(x), static_cast<float>(y - size)},
-                   {static_cast<float>(x), static_cast<float>(y - size * 3)}, std::max(1, size / 12), rgb(60, 60, 60));
-    } else {
-        r.drawCircle(x, y - size / 2, size / 2, prop.type == 2 ? rgb(36, 58, 68) : rgb(220, 80, 56));
-    }
-}
-
-void drawPerspectiveKart(Renderer& r, const KartState& state, const KartDef& kart, const Racer& racer,
-                         const Camera& camera) {
-    auto projected = projectGround(state.pos, camera);
-    if (!projected) {
-        return;
-    }
-    int w = std::clamp(static_cast<int>(projected->scale * 86.0f), 18, 170);
-    int h = std::clamp(static_cast<int>(projected->scale * 62.0f), 12, 128);
-    int x = static_cast<int>(projected->screen.x);
-    int y = static_cast<int>(projected->screen.y);
-    r.drawCircle(x, y + h / 4, std::max(3, w / 2), rgb(24, 34, 38));
-    std::vector<Vec2> body = {{static_cast<float>(x - w / 2), static_cast<float>(y)},
-                              {static_cast<float>(x + w / 2), static_cast<float>(y)},
-                              {static_cast<float>(x + w * 2 / 5), static_cast<float>(y - h)},
-                              {static_cast<float>(x - w * 2 / 5), static_cast<float>(y - h)}};
-    r.fillPolygon(body, kart.body);
-    r.fillRect(x - w / 4, y - h * 3 / 4, w / 2, std::max(3, h / 3), shade(racer.primary, 0.76f));
-    r.fillRect(x - w / 2, y - h / 6, std::max(3, w / 5), std::max(3, h / 5), rgb(16, 16, 16));
-    r.fillRect(x + w * 3 / 10, y - h / 6, std::max(3, w / 5), std::max(3, h / 5), rgb(16, 16, 16));
-}
-
-void drawPlayerHood(Renderer& r, const KartDef& kart, const Racer& racer, float speed) {
-    float speedT = std::clamp(speed / 560.0f, 0.0f, 1.0f);
-    int w = r.width();
-    int h = r.height();
-    int cx = w / 2;
-    int hoodTop = static_cast<int>(h - lerp(112.0f, 176.0f, speedT));
-    int hoodHalf = static_cast<int>(lerp(w * 0.25f, w * 0.17f, speedT));
-    std::vector<Vec2> hood = {{static_cast<float>(cx - hoodHalf), static_cast<float>(h + 28)},
-                              {static_cast<float>(cx + hoodHalf), static_cast<float>(h + 28)},
-                              {static_cast<float>(cx + hoodHalf * 2 / 3), static_cast<float>(hoodTop)},
-                              {static_cast<float>(cx - hoodHalf * 2 / 3), static_cast<float>(hoodTop)}};
-    r.fillPolygon(hood, kart.body);
-    std::vector<Vec2> stripe = {{static_cast<float>(cx - hoodHalf / 5), static_cast<float>(h + 20)},
-                                {static_cast<float>(cx + hoodHalf / 5), static_cast<float>(h + 20)},
-                                {static_cast<float>(cx + hoodHalf / 8), static_cast<float>(hoodTop + 8)},
-                                {static_cast<float>(cx - hoodHalf / 8), static_cast<float>(hoodTop + 8)}};
-    r.fillPolygon(stripe, kart.trim);
-    r.fillRect(cx - hoodHalf / 4, hoodTop + 14, hoodHalf / 2, 22, shade(racer.primary, 0.75f));
-    if (speedT > 0.45f) {
-        int wheelY = h - 32;
-        r.drawCircle(cx - hoodHalf - 12, wheelY, 26, rgb(14, 14, 14));
-        r.drawCircle(cx + hoodHalf + 12, wheelY, 26, rgb(14, 14, 14));
-    }
-}
-
-void drawTrack(Renderer& r, const Track& track, const Camera& camera) {
-    const uint32_t sand = rgb(202, 176, 115);
-    const uint32_t wetSand = rgb(174, 144, 91);
-    const uint32_t edge = rgb(76, 72, 62);
-    for (const TrackSegment& s : track.segments()) {
-        float wide = std::max(s.widthA, s.widthB) * 0.5f + 260.0f;
-        drawRibbon(r, s.a, s.b, wide, camera, sand);
-    }
-    for (const TrackSegment& s : track.segments()) {
-        float wide = std::max(s.widthA, s.widthB) * 0.5f + 76.0f;
-        uint32_t shoulder = s.surface == Surface::Boardwalk ? rgb(91, 64, 41) : wetSand;
-        drawRibbon(r, s.a, s.b, wide, camera, shoulder);
-    }
-    for (const TrackSegment& s : track.segments()) {
-        float half = std::max(s.widthA, s.widthB) * 0.5f + 10.0f;
-        drawRibbon(r, s.a, s.b, half, camera, edge);
-    }
-    for (const TrackSegment& s : track.segments()) {
-        float half = std::max(s.widthA, s.widthB) * 0.5f;
-        drawRibbon(r, s.a, s.b, half, camera, surfaceColor(s.surface));
-    }
-
-    for (float p = 0.0f; p < track.totalLength(); p += 155.0f) {
-        TrackQuery q = track.sample(p);
-        if (q.surface == Surface::Boardwalk) {
-            drawWorldLine(r, q.point - q.normal * (q.halfWidth * 0.9f), q.point + q.normal * (q.halfWidth * 0.9f),
-                          camera, 1, rgb(82, 58, 38));
-        } else if (static_cast<int>(p / 155.0f) % 2 == 0) {
-            drawWorldLine(r, q.point - q.tangent * 35.0f, q.point + q.tangent * 35.0f, camera, 2,
-                          q.surface == Surface::Tunnel ? rgb(140, 148, 152) : rgb(225, 215, 170));
-        }
-    }
-
-    TrackQuery start = track.sample(0.0f);
-    for (int i = -3; i <= 2; ++i) {
-        Vec2 center = start.point + start.normal * (i * start.halfWidth / 3.0f + start.halfWidth / 6.0f);
-        uint32_t color = (i & 1) ? rgb(24, 24, 24) : rgb(240, 240, 228);
-        std::vector<Vec2> cell = {
-            project(center - start.normal * 24.0f - start.tangent * 22.0f, camera),
-            project(center + start.normal * 24.0f - start.tangent * 22.0f, camera),
-            project(center + start.normal * 24.0f + start.tangent * 22.0f, camera),
-            project(center - start.normal * 24.0f + start.tangent * 22.0f, camera),
-        };
-        r.fillPolygon(cell, color);
-    }
-}
-
-void drawProp(Renderer& r, const Track& track, const Prop& prop, const Camera& camera, float anim) {
-    TrackQuery q = track.sample(prop.progress);
-    Vec2 pos = q.point + q.normal * prop.offset;
-    Vec2 screen = project(pos, camera);
-    if (screen.x < -80.0f || screen.x > camera.screenW + 80.0f || screen.y < -80.0f ||
-        screen.y > camera.screenH + 80.0f) {
-        return;
-    }
-    int x = static_cast<int>(screen.x);
-    int y = static_cast<int>(screen.y);
-    int s = std::max(2, static_cast<int>(14.0f * prop.scale * camera.zoom / 0.36f));
-    switch (prop.type) {
-        case 0: {
-            r.drawLine({static_cast<float>(x), static_cast<float>(y + s * 2)},
-                       {static_cast<float>(x + s / 2), static_cast<float>(y - s)}, std::max(2, s / 3),
-                       rgb(112, 72, 42));
-            r.drawCircle(x - s, y - s, s, rgb(54, 142, 82));
-            r.drawCircle(x + s, y - s, s, rgb(42, 126, 74));
-            r.drawCircle(x, y - s * 2, s, rgb(70, 162, 84));
-            break;
-        }
-        case 1:
-            r.fillRect(x - s, y - s, s * 2, s * 2, rgb(134, 83, 42));
-            r.drawLine({static_cast<float>(x - s), static_cast<float>(y)},
-                       {static_cast<float>(x + s), static_cast<float>(y)}, 1, rgb(84, 52, 28));
-            r.drawLine({static_cast<float>(x), static_cast<float>(y - s)},
-                       {static_cast<float>(x), static_cast<float>(y + s)}, 1, rgb(84, 52, 28));
-            break;
-        case 2: {
-            std::vector<Vec2> fin = {{static_cast<float>(x - s), static_cast<float>(y + s)},
-                                     {static_cast<float>(x), static_cast<float>(y - s - static_cast<int>(std::sin(anim) * 3.0f))},
-                                     {static_cast<float>(x + s), static_cast<float>(y + s)}};
-            r.fillPolygon(fin, rgb(36, 58, 68));
-            break;
-        }
-        case 3:
-            r.drawCircle(x, y, s, rgb(228, 56, 48));
-            r.drawCircle(x, y, std::max(1, s / 2), rgb(238, 238, 220));
-            break;
-        case 4: {
-            std::vector<Vec2> boat = {{static_cast<float>(x - s * 2), static_cast<float>(y + s)},
-                                      {static_cast<float>(x + s * 2), static_cast<float>(y + s)},
-                                      {static_cast<float>(x + s), static_cast<float>(y - s)},
-                                      {static_cast<float>(x - s), static_cast<float>(y - s)}};
-            r.fillPolygon(boat, rgb(226, 226, 210));
-            r.drawLine({static_cast<float>(x), static_cast<float>(y - s)},
-                       {static_cast<float>(x), static_cast<float>(y - s * 3)}, 1, rgb(70, 70, 70));
-            std::vector<Vec2> sail = {{static_cast<float>(x), static_cast<float>(y - s * 3)},
-                                      {static_cast<float>(x), static_cast<float>(y - s)},
-                                      {static_cast<float>(x + s * 2), static_cast<float>(y - s)}};
-            r.fillPolygon(sail, rgb(250, 214, 92));
-            break;
-        }
-        default:
-            break;
-    }
-}
-
-void drawKart(Renderer& r, const KartState& state, const KartDef& kart, const Racer& racer, const Camera& camera) {
-    Vec2 f = fromAngle(state.yaw);
-    Vec2 right{-f.y, f.x};
-    float halfL = state.player ? 38.0f : 34.0f;
-    float halfW = state.player ? 22.0f : 20.0f;
-    Vec2 shadow = {8.0f / camera.zoom, 10.0f / camera.zoom};
-    std::vector<Vec2> shadowPoly = {
-        project(state.pos + shadow + f * halfL + right * halfW, camera),
-        project(state.pos + shadow + f * halfL - right * halfW, camera),
-        project(state.pos + shadow - f * halfL - right * halfW, camera),
-        project(state.pos + shadow - f * halfL + right * halfW, camera),
-    };
-    r.fillPolygon(shadowPoly, rgb(28, 42, 48));
-
-    std::vector<Vec2> body = {
-        project(state.pos + f * halfL + right * halfW, camera),
-        project(state.pos + f * halfL - right * halfW, camera),
-        project(state.pos - f * halfL - right * halfW, camera),
-        project(state.pos - f * halfL + right * halfW, camera),
-    };
-    r.fillPolygon(body, kart.body);
-
-    std::vector<Vec2> nose = {
-        project(state.pos + f * (halfL + 10.0f), camera),
-        project(state.pos + f * 8.0f + right * (halfW * 0.82f), camera),
-        project(state.pos + f * 8.0f - right * (halfW * 0.82f), camera),
-    };
-    r.fillPolygon(nose, kart.trim);
-
-    std::vector<Vec2> cabin = {
-        project(state.pos + f * 7.0f + right * 12.0f, camera),
-        project(state.pos + f * 7.0f - right * 12.0f, camera),
-        project(state.pos - f * 17.0f - right * 10.0f, camera),
-        project(state.pos - f * 17.0f + right * 10.0f, camera),
-    };
-    r.fillPolygon(cabin, shade(racer.primary, 0.76f));
-
-    for (float side : {-1.0f, 1.0f}) {
-        for (float fore : {-22.0f, 22.0f}) {
-            Vec2 wheel = state.pos + f * fore + right * (side * (halfW + 5.0f));
-            Vec2 ws = project(wheel, camera);
-            r.drawCircle(static_cast<int>(ws.x), static_cast<int>(ws.y), 4, rgb(18, 18, 18));
-        }
-    }
-}
-
-void drawMinimap(Renderer& r, const Track& track, const std::vector<KartState>& cars) {
-    int x = r.width() - 184;
-    int y = 18;
-    int w = 154;
-    int h = 112;
-    r.fillRect(x - 8, y - 8, w + 16, h + 16, rgb(28, 44, 52));
-    r.fillRect(x - 5, y - 5, w + 10, h + 10, rgb(40, 74, 82));
-    float minX = track.minX();
-    float maxX = track.maxX();
-    float minY = track.minY();
-    float maxY = track.maxY();
-    auto mapPoint = [&](Vec2 p) -> Vec2 {
-        float sx = (p.x - minX) / (maxX - minX);
-        float sy = (p.y - minY) / (maxY - minY);
-        return {x + sx * w, y + h - sy * h};
-    };
-    Vec2 prev = mapPoint(track.sample(0.0f).point);
-    for (float p = 90.0f; p <= track.totalLength() + 90.0f; p += 90.0f) {
-        Vec2 cur = mapPoint(track.sample(p).point);
-        r.drawLine(prev, cur, 1, rgb(220, 202, 136));
-        prev = cur;
-    }
-    for (const KartState& car : cars) {
-        Vec2 mp = mapPoint(car.pos);
-        r.drawCircle(static_cast<int>(mp.x), static_cast<int>(mp.y), car.player ? 4 : 2,
-                     car.player ? rgb(255, 255, 255) : rgb(235, 94, 84));
-    }
-}
-
-enum class Mode {
-    SelectRacer,
-    SelectKart,
-    SelectTrack,
-    Race,
-};
 
 class Game {
 public:
-    Game() : racers_(makeRacers()), karts_(makeKarts()), props_(makeProps(track_.totalLength())) {
-        resetRace();
-    }
+    enum class Mode { Garage, Race, Pause };
 
-    void update(const InputFrame& input, float dt) {
-        inputConnected_ = input.connected || devKeyboard_;
-        if (mode_ == Mode::SelectRacer) {
-            if (input.left) {
+    Game() : track_(), cars_(makeCars()), racers_(makeRacers()) { resetRace(); }
+
+    void update(float dt, const InputState& input, bool hasController) {
+        if (input.start && input.back) {
+            quitRequested_ = true;
+        }
+
+        const bool leftPressed = pressed(input.left, prevInput_.left);
+        const bool rightPressed = pressed(input.right, prevInput_.right);
+        const bool upPressed = pressed(input.up, prevInput_.up);
+        const bool downPressed = pressed(input.down, prevInput_.down);
+        const bool aPressed = pressed(input.a, prevInput_.a);
+        const bool bPressed = pressed(input.b, prevInput_.b);
+        const bool startPressed = pressed(input.start, prevInput_.start);
+        const bool backPressed = pressed(input.back, prevInput_.back);
+
+        if (mode_ == Mode::Garage) {
+            if (leftPressed) {
+                selectedCar_ = (selectedCar_ + static_cast<int>(cars_.size()) - 1) % static_cast<int>(cars_.size());
+            }
+            if (rightPressed) {
+                selectedCar_ = (selectedCar_ + 1) % static_cast<int>(cars_.size());
+            }
+            if (upPressed) {
                 selectedRacer_ = (selectedRacer_ + static_cast<int>(racers_.size()) - 1) % static_cast<int>(racers_.size());
             }
-            if (input.right) {
+            if (downPressed) {
                 selectedRacer_ = (selectedRacer_ + 1) % static_cast<int>(racers_.size());
             }
-            if (input.confirm) {
-                mode_ = Mode::SelectKart;
-            }
-        } else if (mode_ == Mode::SelectKart) {
-            if (input.left) {
-                selectedKart_ = (selectedKart_ + static_cast<int>(karts_.size()) - 1) % static_cast<int>(karts_.size());
-            }
-            if (input.right) {
-                selectedKart_ = (selectedKart_ + 1) % static_cast<int>(karts_.size());
-            }
-            if (input.back) {
-                mode_ = Mode::SelectRacer;
-            }
-            if (input.confirm) {
-                mode_ = Mode::SelectTrack;
-            }
-        } else if (mode_ == Mode::SelectTrack) {
-            if (input.left) {
-                selectedTrack_ = (selectedTrack_ + 2) % 3;
-                track_.setLayout(selectedTrack_);
-                props_ = makeProps(track_.totalLength());
-            }
-            if (input.right) {
-                selectedTrack_ = (selectedTrack_ + 1) % 3;
-                track_.setLayout(selectedTrack_);
-                props_ = makeProps(track_.totalLength());
-            }
-            if (input.back) {
-                mode_ = Mode::SelectKart;
-            }
-            if (input.confirm) {
+            if ((aPressed || startPressed) && hasController) {
                 resetRace();
                 mode_ = Mode::Race;
-                paused_ = false;
             }
-        } else if (mode_ == Mode::Race) {
-            if (input.start) {
-                paused_ = !paused_;
-            }
-            if (paused_) {
-                if (input.back) {
-                    mode_ = Mode::SelectKart;
-                }
-                return;
-            }
-            if (input.select) {
-                placeOnTrack(track_, cars_.front(), cars_.front().lastSafeProgress, cars_.front().lineOffset);
-            }
-            DriveInput playerInput{input.steer, input.throttle, input.brake};
-            applyKartPhysics(track_, karts_[cars_[0].kartIndex], cars_[0], playerInput, dt);
-            for (size_t i = 1; i < cars_.size(); ++i) {
-                DriveInput ai = aiInputFor(track_, cars_[i]);
-                applyKartPhysics(track_, karts_[cars_[i].kartIndex], cars_[i], ai, dt);
-            }
-            updateRacePosition();
+            prevInput_ = input;
+            return;
         }
-        animTime_ += dt;
+
+        if (mode_ == Mode::Pause) {
+            if (aPressed || startPressed) {
+                mode_ = Mode::Race;
+            }
+            if (bPressed) {
+                mode_ = Mode::Garage;
+            }
+            prevInput_ = input;
+            return;
+        }
+
+        if (startPressed) {
+            mode_ = Mode::Pause;
+        }
+        if (backPressed) {
+            resetPlayerToTrack();
+        }
+
+        if (mode_ == Mode::Race && hasController) {
+            updatePlayer(karts_[0], input, dt);
+            for (size_t i = 1; i < karts_.size(); ++i) {
+                updateAi(karts_[i], dt, static_cast<int>(i));
+            }
+            updateCamera(dt);
+            computeRacePosition();
+        }
+
+        prevInput_ = input;
     }
 
-    void render(Renderer& r, float fps, std::string_view controllerName) {
-        Camera camera = currentCamera();
-        camera.screenW = r.width();
-        camera.screenH = r.height();
-        if (mode_ == Mode::Race) {
-            camera.fov = r.height() * 0.92f;
-            camera.horizon = r.height() * 0.40f;
-            drawPerspectiveBackground(r, camera, animTime_);
-            drawPerspectiveTrack(r, track_, camera, cars_[0].progress);
-            drawPerspectiveSceneObjects(r, camera);
-            drawPlayerHood(r, karts_[cars_[0].kartIndex], racers_[cars_[0].racerIndex], length(cars_[0].vel));
-            drawHud(r, fps);
-        } else {
-            camera.zoom *= std::min(r.width() / static_cast<float>(kScreenW), r.height() / static_cast<float>(kScreenH));
-            drawBackground(r, camera);
-            drawTrack(r, track_, camera);
-            for (const Prop& prop : props_) {
-                drawProp(r, track_, prop, camera, animTime_);
-            }
-            for (size_t i = 1; i < cars_.size(); ++i) {
-                drawKart(r, cars_[i], karts_[cars_[i].kartIndex], racers_[cars_[i].racerIndex], camera);
-            }
-            drawKart(r, cars_[0], karts_[cars_[0].kartIndex], racers_[cars_[0].racerIndex], camera);
-            drawMenu(r, controllerName);
+    void render(Renderer& r, float fps, bool hasController) {
+        if (mode_ == Mode::Garage) {
+            renderGarage(r, fps, hasController);
+            return;
         }
-        if (!inputConnected_) {
-            drawControllerOverlay(r);
+
+        renderRace(r, fps, hasController);
+        if (mode_ == Mode::Pause) {
+            r.fillRect(0, 0, kFrameW, kFrameH, 0x000000);
+            renderRace(r, fps, hasController);
+            r.fillRect(290, 192, 380, 116, rgb(20, 36, 48));
+            r.drawText(374, 216, "PAUSED", 5, rgb(245, 237, 198));
+            r.drawText(338, 266, "A/START RESUME", 2, rgb(245, 237, 198));
         }
     }
 
-    void setDevKeyboard(bool enabled) {
-        devKeyboard_ = enabled;
-        inputConnected_ = enabled;
-    }
+    bool quitRequested() const { return quitRequested_; }
 
     bool selfTest() {
-        for (int layout = 0; layout < 3; ++layout) {
-            selectedTrack_ = layout;
-            track_.setLayout(selectedTrack_);
-            props_ = makeProps(track_.totalLength());
-            resetRace();
-            DriveInput input;
-            input.throttle = 1.0f;
-            for (int i = 0; i < 720; ++i) {
-                input.steer = std::sin(i * 0.018f) * 0.25f;
-                applyKartPhysics(track_, karts_[cars_[0].kartIndex], cars_[0], input, 1.0f / 120.0f);
-                for (size_t j = 1; j < cars_.size(); ++j) {
-                    DriveInput ai = aiInputFor(track_, cars_[j]);
-                    applyKartPhysics(track_, karts_[cars_[j].kartIndex], cars_[j], ai, 1.0f / 120.0f);
-                }
+        resetRace();
+        mode_ = Mode::Race;
+        for (int i = 0; i < 1200; ++i) {
+            updateAi(karts_[0], kFixedDt, 0);
+            for (size_t ai = 1; ai < karts_.size(); ++ai) {
+                updateAi(karts_[ai], kFixedDt, static_cast<int>(ai));
             }
-            for (const KartState& car : cars_) {
-                if (!std::isfinite(car.pos.x) || !std::isfinite(car.pos.y) || !std::isfinite(car.yaw)) {
-                    return false;
-                }
-            }
-            if (track_.totalLength() < 6500.0f) {
+            if (!std::isfinite(karts_[0].pos.x) || !std::isfinite(karts_[0].pos.y) || length(karts_[0].vel) > 240.0f) {
+                std::cerr << "self-test instability at step " << i << "\n";
                 return false;
             }
         }
-        selectedTrack_ = 0;
-        track_.setLayout(selectedTrack_);
-        props_ = makeProps(track_.totalLength());
-        resetRace();
-        return !cars_.empty() && racers_.size() == 10 && karts_.size() == 8;
+        const float finalSpeed = length(karts_[0].vel);
+        const bool ok = finalSpeed > 20.0f && track_.totalLength() > 2000.0f;
+        if (!ok) {
+            std::cerr << "self-test final speed " << finalSpeed << ", track length " << track_.totalLength() << "\n";
+        }
+        return ok;
     }
 
 private:
     void resetRace() {
-        cars_.clear();
-        cars_.resize(8);
-        std::array<float, 8> offsets = {-42.0f, 42.0f, -88.0f, 88.0f, -20.0f, 20.0f, -70.0f, 70.0f};
-        for (size_t i = 0; i < cars_.size(); ++i) {
-            KartState& car = cars_[i];
-            car.player = i == 0;
-            car.racerIndex = i == 0 ? selectedRacer_ : static_cast<int>(i % racers_.size());
-            car.kartIndex = i == 0 ? selectedKart_ : static_cast<int>(i % karts_.size());
-            float start = -static_cast<float>(i) * 105.0f;
-            car.lap = start < 0.0f ? -1 : 0;
-            placeOnTrack(track_, car, start, offsets[i]);
-            car.progress = wrapProgress(start, track_.totalLength());
-            car.lastSafeProgress = car.progress;
+        karts_.clear();
+        const std::array<float, 8> lanes = {-13.0f, 13.0f, -5.5f, 5.5f, -16.0f, 16.0f, -8.0f, 8.0f};
+        for (int i = 0; i < 8; ++i) {
+            Kart kart;
+            kart.spec = cars_[i == 0 ? selectedCar_ : i % static_cast<int>(cars_.size())];
+            kart.racer = racers_[i == 0 ? selectedRacer_ : (i * 3) % static_cast<int>(racers_.size())];
+            const float rawProgress = 42.0f - static_cast<float>(i / 2) * 24.0f;
+            kart.lap = rawProgress < 0.0f ? -1 : 0;
+            kart.progress = wrapDistance(rawProgress, track_.totalLength());
+            TrackPoint tp = track_.sample(kart.progress);
+            kart.lane = lanes[i];
+            kart.pos = tp.pos + tp.normal * kart.lane;
+            kart.heading = angleOf(tp.tangent);
+            kart.vel = tp.tangent * (i == 0 ? 0.0f : 8.0f);
+            kart.nearest = track_.nearestIndex(kart.pos);
+            kart.aiTempo = 0.94f + 0.035f * static_cast<float>((i * 7) % 5);
+            karts_.push_back(kart);
         }
+        camera_.yaw = karts_[0].heading;
+        updateCamera(1.0f);
+    }
+
+    void updateProgress(Kart& kart) {
+        const float oldProgress = kart.progress;
+        kart.nearest = track_.nearestIndex(kart.pos);
+        const TrackPoint& tp = track_.pointAtIndex(kart.nearest);
+        kart.progress = tp.progress;
+        if (oldProgress > track_.totalLength() * 0.76f && kart.progress < track_.totalLength() * 0.24f) {
+            kart.lap += 1;
+        } else if (oldProgress < track_.totalLength() * 0.24f && kart.progress > track_.totalLength() * 0.76f) {
+            kart.lap -= 1;
+        }
+    }
+
+    void integrateKart(Kart& kart, const InputState& input, float dt) {
+        updateProgress(kart);
+        const TrackPoint& center = track_.pointAtIndex(kart.nearest);
+        kart.lane = dot(kart.pos - center.pos, center.normal);
+        const float halfWidth = center.width * 0.5f;
+        const float offroad = std::max(0.0f, std::abs(kart.lane) - halfWidth);
+        const float surfaceGrip = std::clamp(1.0f - offroad / 70.0f, 0.35f, 1.0f);
+
+        Vec2 forward = fromAngle(kart.heading);
+        Vec2 right{-forward.y, forward.x};
+        float speed = dot(kart.vel, forward);
+        float sideSpeed = dot(kart.vel, right);
+        const float absSpeed = std::abs(speed);
+
+        const bool wantsDrift = input.brake > 0.18f && std::abs(input.steer) > 0.23f && absSpeed > 32.0f;
+        if (wantsDrift) {
+            kart.drifting = true;
+        } else if (kart.drifting && (absSpeed < 24.0f || std::abs(input.steer) < 0.08f)) {
+            kart.drifting = false;
+            kart.driftCharge = 0.0f;
+        }
+
+        if (input.throttle > 0.01f) {
+            const float accelFalloff = std::clamp(1.15f - std::abs(speed) / kart.spec.maxSpeed, 0.24f, 1.0f);
+            speed += input.throttle * kart.spec.accel * accelFalloff * dt;
+        }
+        if (input.brake > 0.01f) {
+            if (speed > 6.0f) {
+                speed -= input.brake * kart.spec.brake * (kart.drifting ? 0.34f : 1.0f) * dt;
+            } else {
+                speed -= input.brake * 55.0f * dt;
+            }
+        }
+
+        speed -= speed * std::abs(speed) * 0.0016f * dt;
+        speed -= speed * offroad * 0.012f * dt;
+        speed = std::clamp(speed, -42.0f, kart.spec.maxSpeed * (offroad > 1.0f ? 0.72f : 1.0f));
+
+        const float speedFactor = std::clamp(absSpeed / 100.0f, 0.0f, 1.35f);
+        float yawRate = input.steer * (1.35f + 1.42f * speedFactor) * surfaceGrip * kart.spec.grip;
+        if (kart.drifting) {
+            yawRate *= 1.34f * kart.spec.drift;
+            sideSpeed += input.steer * (22.0f + absSpeed * 0.33f) * dt;
+            sideSpeed *= std::exp(-dt * 1.25f * surfaceGrip);
+            kart.driftCharge = std::clamp(kart.driftCharge + dt * (0.35f + std::abs(input.steer)), 0.0f, 1.0f);
+            speed -= speed * 0.0007f * dt;
+        } else {
+            sideSpeed *= std::exp(-dt * (5.0f + 2.7f * kart.spec.grip) * surfaceGrip);
+            kart.driftCharge = std::max(0.0f, kart.driftCharge - dt * 2.0f);
+        }
+        yawRate *= speed >= -1.0f ? 1.0f : -0.55f;
+        kart.heading = wrapAngle(kart.heading + yawRate * dt);
+
+        forward = fromAngle(kart.heading);
+        right = {-forward.y, forward.x};
+        kart.vel = forward * speed + right * sideSpeed;
+        kart.pos += kart.vel * dt;
+        kart.slip = sideSpeed;
+
+        updateProgress(kart);
+        const TrackPoint& after = track_.pointAtIndex(kart.nearest);
+        const float lane = dot(kart.pos - after.pos, after.normal);
+        const float hardLimit = after.width * 0.5f + 18.0f;
+        if (std::abs(lane) > hardLimit) {
+            const float sign = lane > 0.0f ? 1.0f : -1.0f;
+            const float excess = std::abs(lane) - hardLimit;
+            kart.pos -= after.normal * (sign * excess * 0.92f);
+            kart.vel = kart.vel - after.normal * (dot(kart.vel, after.normal) * 1.35f);
+            kart.vel *= 0.78f;
+            kart.drifting = false;
+        }
+    }
+
+    void updatePlayer(Kart& kart, const InputState& input, float dt) { integrateKart(kart, input, dt); }
+
+    void updateAi(Kart& kart, float dt, int index) {
+        const TrackPoint center = track_.sample(kart.progress);
+        const float speed = length(kart.vel);
+        const float lookahead = 48.0f + speed * 0.58f;
+        const TrackPoint target = track_.sample(kart.progress + lookahead);
+        const float laneTarget = ((index % 3) - 1) * 9.0f + std::sin(kart.progress * 0.006f + index) * 5.0f;
+        const Vec2 desired = target.pos + target.normal * laneTarget;
+        const Vec2 toTarget = normalize(desired - kart.pos);
+        const Vec2 forward = fromAngle(kart.heading);
+        const float angleError = std::atan2(cross(forward, toTarget), dot(forward, toTarget));
+        const float curveSlow = std::clamp(center.curvature * 4.2f, 0.0f, 0.42f);
+        const float targetSpeed = kart.spec.maxSpeed * (0.83f - curveSlow) * kart.aiTempo;
+
+        InputState ai;
+        ai.steer = std::clamp(angleError * 1.9f, -1.0f, 1.0f);
+        ai.throttle = speed < targetSpeed ? 1.0f : 0.25f;
+        ai.brake = (speed > targetSpeed + 10.0f || std::abs(angleError) > 0.62f) ? 0.38f : 0.0f;
+        integrateKart(kart, ai, dt);
+    }
+
+    void resetPlayerToTrack() {
+        Kart& kart = karts_[0];
+        const TrackPoint tp = track_.sample(kart.progress);
+        kart.pos = tp.pos;
+        kart.heading = angleOf(tp.tangent);
+        kart.vel = tp.tangent * 26.0f;
+        kart.drifting = false;
+        kart.slip = 0.0f;
+    }
+
+    void updateCamera(float dt) {
+        const Kart& player = karts_[0];
+        const float speedN = std::clamp(length(player.vel) / player.spec.maxSpeed, 0.0f, 1.0f);
+        const float pullback = smoothstep(speedN);
+        const float back = lerp(7.0f, 92.0f, pullback);
+        camera_.height = lerp(29.0f, 64.0f, pullback);
+        camera_.horizon = lerp(178.0f, 132.0f, pullback);
+        camera_.focal = lerp(455.0f, 535.0f, pullback);
+
+        const float targetYaw = player.heading + std::clamp(player.slip * 0.012f, -0.34f, 0.34f);
+        camera_.yaw = lerpAngle(camera_.yaw, targetYaw, 1.0f - std::exp(-dt * 7.5f));
+        const Vec2 forward = fromAngle(camera_.yaw);
+        const Vec2 right{-forward.y, forward.x};
+        camera_.pos = player.pos - forward * back + right * std::clamp(player.slip * 0.16f, -9.0f, 9.0f);
+    }
+
+    void computeRacePosition() {
         racePosition_ = 1;
-    }
-
-    Camera currentCamera() const {
-        if (mode_ == Mode::Race) {
-            const KartState& player = cars_.front();
-            float speed = length(player.vel);
-            float speedT = std::clamp(speed / 560.0f, 0.0f, 1.0f);
-            Vec2 forward = fromAngle(player.yaw);
-            Vec2 right{-forward.y, forward.x};
-            Camera camera;
-            float chaseDistance = lerp(42.0f, 350.0f, speedT);
-            float lateralSway = std::clamp(dot(player.vel, right) * 0.045f, -30.0f, 30.0f);
-            camera.pos = player.pos - forward * chaseDistance + right * lateralSway;
-            camera.yaw = wrapAngle(player.yaw + player.yawVel * 0.08f);
-            camera.perspective = true;
-            camera.height = lerp(86.0f, 172.0f, speedT);
-            return camera;
+        const float playerScore = carScore(karts_[0], track_.totalLength());
+        for (size_t i = 1; i < karts_.size(); ++i) {
+            if (carScore(karts_[i], track_.totalLength()) > playerScore) {
+                racePosition_ += 1;
+            }
         }
-        TrackQuery q = track_.sample(620.0f + std::sin(animTime_ * 0.25f) * 120.0f);
-        Camera camera;
-        camera.pos = q.point;
-        camera.yaw = angleOf(q.tangent) + 0.25f * std::sin(animTime_ * 0.2f);
-        camera.zoom = 0.30f;
-        return camera;
     }
 
-    void drawPerspectiveSceneObjects(Renderer& r, const Camera& camera) {
-        struct Candidate {
-            size_t index = 0;
-            float depth = 0.0f;
+    void drawRoad(Renderer& r) {
+        struct Band {
+            ScreenPoint left;
+            ScreenPoint right;
+            ScreenPoint leftOuter;
+            ScreenPoint rightOuter;
+            ScreenPoint centerLeft;
+            ScreenPoint centerRight;
+            TrackPoint tp;
+            float distance = 0.0f;
         };
 
-        std::vector<std::pair<float, const Prop*>> visibleProps;
-        for (const Prop& prop : props_) {
-            float ahead = progressAhead(cars_[0].progress, wrapProgress(prop.progress, track_.totalLength()),
-                                        track_.totalLength());
-            if (ahead > 35.0f && ahead < 4300.0f) {
-                visibleProps.push_back({ahead, &prop});
-            }
-        }
-        std::sort(visibleProps.begin(), visibleProps.end(), [](const auto& a, const auto& b) {
-            return a.first > b.first;
-        });
-        for (const auto& item : visibleProps) {
-            drawPerspectiveProp(r, track_, *item.second, camera);
+        std::vector<Band> bands;
+        float dist = 5.0f;
+        for (int i = 0; i < 172; ++i) {
+            const float t = static_cast<float>(i) / 171.0f;
+            dist += lerp(4.2f, 15.5f, t * t);
+            const TrackPoint tp = track_.sample(karts_[0].progress + dist);
+            const float half = tp.width * 0.5f;
+            const float outer = half + lerp(120.0f, 240.0f, t);
+            Band band;
+            band.tp = tp;
+            band.distance = dist;
+            band.left = projectPoint(tp.pos - tp.normal * half, tp.elevation, camera_);
+            band.right = projectPoint(tp.pos + tp.normal * half, tp.elevation, camera_);
+            band.leftOuter = projectPoint(tp.pos - tp.normal * outer, tp.elevation - 4.0f, camera_);
+            band.rightOuter = projectPoint(tp.pos + tp.normal * outer, tp.elevation - 4.0f, camera_);
+            band.centerLeft = projectPoint(tp.pos - tp.normal * 1.2f, tp.elevation + 0.2f, camera_);
+            band.centerRight = projectPoint(tp.pos + tp.normal * 1.2f, tp.elevation + 0.2f, camera_);
+            bands.push_back(band);
         }
 
-        std::vector<Candidate> visibleCars;
-        for (size_t i = 1; i < cars_.size(); ++i) {
-            auto projected = projectGround(cars_[i].pos, camera);
-            if (projected) {
-                visibleCars.push_back({i, projected->depth});
+        for (int i = static_cast<int>(bands.size()) - 1; i > 0; --i) {
+            const Band& far = bands[static_cast<size_t>(i)];
+            const Band& near = bands[static_cast<size_t>(i - 1)];
+            if (!far.left.visible && !near.left.visible) {
+                continue;
             }
-        }
-        std::sort(visibleCars.begin(), visibleCars.end(), [](const Candidate& a, const Candidate& b) {
-            return a.depth > b.depth;
-        });
-        for (Candidate candidate : visibleCars) {
-            const KartState& car = cars_[candidate.index];
-            drawPerspectiveKart(r, car, karts_[car.kartIndex], racers_[car.racerIndex], camera);
+
+            const float fog = std::clamp(1.05f - far.distance / 1350.0f, 0.58f, 1.05f);
+            const uint32_t leftTerrain = shade(far.tp.shoulderColor, fog * (far.tp.zone == 3 ? 0.55f : 1.0f));
+            const uint32_t rightTerrain = shade(far.tp.shoulderColor, fog * (far.tp.zone == 5 ? 0.82f : 1.0f));
+            r.fillQuad(far.leftOuter.p, far.left.p, near.left.p, near.leftOuter.p, leftTerrain);
+            r.fillQuad(far.right.p, far.rightOuter.p, near.rightOuter.p, near.right.p, rightTerrain);
+
+            float stripShade = ((static_cast<int>(far.tp.progress / 34.0f) & 1) == 0) ? 1.0f : 0.92f;
+            if (far.tp.zone == 1 || far.tp.zone == 5) {
+                stripShade = ((static_cast<int>(far.tp.progress / 11.0f) & 1) == 0) ? 1.07f : 0.86f;
+            }
+            const uint32_t road = shade(far.tp.roadColor, fog * stripShade);
+            r.fillQuad(far.left.p, far.right.p, near.right.p, near.left.p, road);
+
+            if ((static_cast<int>(far.tp.progress / 30.0f) & 1) == 0 && far.tp.zone != 3) {
+                r.fillQuad(far.centerLeft.p, far.centerRight.p, near.centerRight.p, near.centerLeft.p,
+                           shade(rgb(248, 229, 148), fog));
+            }
+            if (i % 4 == 0) {
+                r.drawLine(far.left.p, near.left.p, 2, shade(rgb(250, 239, 172), fog * 0.85f));
+                r.drawLine(far.right.p, near.right.p, 2, shade(rgb(250, 239, 172), fog * 0.85f));
+            }
         }
     }
 
-    void drawBackground(Renderer& r, const Camera&) {
-        r.clear(rgb(43, 125, 150));
-        for (int y = 0; y < r.height(); y += 34) {
-            int shift = static_cast<int>(std::sin(animTime_ * 0.8f + y * 0.07f) * 22.0f);
-            r.drawLine({static_cast<float>(-40 + shift), static_cast<float>(y)},
-                       {static_cast<float>(r.width() + 40 + shift), static_cast<float>(y + 14)}, 1,
-                       rgb(54, 143, 166));
+    void drawProp(Renderer& r, const Prop& prop) {
+        const TrackPoint tp = track_.sample(prop.progress);
+        const Vec2 world = tp.pos + tp.normal * prop.side;
+        const ScreenPoint p = projectPoint(world, tp.elevation, camera_);
+        if (!p.visible || p.depth > 900.0f) {
+            return;
+        }
+        const float s = std::clamp(p.scale * prop.scale, 0.12f, 3.6f);
+        const int x = static_cast<int>(p.p.x);
+        const int y = static_cast<int>(p.p.y);
+        const int w = std::max(3, static_cast<int>(18.0f * s));
+        const int h = std::max(5, static_cast<int>(42.0f * s));
+
+        switch (prop.type) {
+            case Prop::Type::Palm:
+                r.drawLine({static_cast<float>(x), static_cast<float>(y)}, {static_cast<float>(x + w / 4), static_cast<float>(y - h)},
+                           std::max(2, w / 4), rgb(121, 75, 43));
+                for (int i = 0; i < 5; ++i) {
+                    const float a = -2.6f + i * 0.62f;
+                    const Vec2 top{static_cast<float>(x + w / 4), static_cast<float>(y - h)};
+                    const Vec2 tip = top + Vec2{std::cos(a) * w * 1.5f, std::sin(a) * h * 0.55f};
+                    r.fillTriangle(top, top + Vec2{static_cast<float>(-w / 3), static_cast<float>(w / 5)}, tip, prop.color);
+                }
+                break;
+            case Prop::Type::Rock:
+                r.fillTriangle({static_cast<float>(x - w), static_cast<float>(y)}, {static_cast<float>(x), static_cast<float>(y - h / 2)},
+                               {static_cast<float>(x + w), static_cast<float>(y)}, shade(prop.color, 0.9f));
+                r.fillTriangle({static_cast<float>(x - w / 2), static_cast<float>(y)}, {static_cast<float>(x + w / 2), static_cast<float>(y - h / 3)},
+                               {static_cast<float>(x + w), static_cast<float>(y)}, shade(prop.color, 1.15f));
+                break;
+            case Prop::Type::Hut:
+                r.fillRect(x - w, y - h / 2, w * 2, h / 2, rgb(164, 94, 55));
+                r.fillTriangle({static_cast<float>(x - w - 4), static_cast<float>(y - h / 2)},
+                               {static_cast<float>(x), static_cast<float>(y - h)},
+                               {static_cast<float>(x + w + 4), static_cast<float>(y - h / 2)}, rgb(93, 61, 37));
+                break;
+            case Prop::Type::Boat:
+                r.fillQuad({static_cast<float>(x - w), static_cast<float>(y - h / 3)},
+                           {static_cast<float>(x + w), static_cast<float>(y - h / 3)},
+                           {static_cast<float>(x + w / 2), static_cast<float>(y)},
+                           {static_cast<float>(x - w / 2), static_cast<float>(y)}, rgb(202, 64, 58));
+                r.fillTriangle({static_cast<float>(x), static_cast<float>(y - h / 3)},
+                               {static_cast<float>(x), static_cast<float>(y - h)},
+                               {static_cast<float>(x + w), static_cast<float>(y - h / 2)}, rgb(246, 221, 139));
+                break;
+            case Prop::Type::Banner:
+                r.drawLine({static_cast<float>(x - w), static_cast<float>(y)}, {static_cast<float>(x - w), static_cast<float>(y - h)}, 2,
+                           rgb(78, 52, 37));
+                r.drawLine({static_cast<float>(x + w), static_cast<float>(y)}, {static_cast<float>(x + w), static_cast<float>(y - h)}, 2,
+                           rgb(78, 52, 37));
+                r.fillRect(x - w, y - h, w * 2, std::max(3, h / 4), prop.color);
+                break;
+            case Prop::Type::SharkSign:
+                r.drawLine({static_cast<float>(x), static_cast<float>(y)}, {static_cast<float>(x), static_cast<float>(y - h)}, 3,
+                           rgb(76, 55, 38));
+                r.fillRect(x - w, y - h, w * 2, h / 3, prop.color);
+                if (w > 11) {
+                    r.drawText(x - w + 3, y - h + 3, "SHARK", std::max(1, w / 18), rgb(245, 244, 218));
+                }
+                break;
+            case Prop::Type::Torch:
+                r.drawLine({static_cast<float>(x), static_cast<float>(y)}, {static_cast<float>(x), static_cast<float>(y - h)}, 2,
+                           rgb(78, 52, 34));
+                r.fillCircle(x, y - h, std::max(2, w / 2), rgb(245, 116, 43));
+                r.fillCircle(x, y - h - std::max(1, w / 4), std::max(1, w / 3), rgb(255, 212, 73));
+                break;
         }
     }
 
-    void drawMenu(Renderer& r, std::string_view controllerName) {
-        int w = r.width();
-        int h = r.height();
-        int cx = w / 2;
-        r.fillRect(0, 0, w, 92, rgb(24, 38, 46));
-        r.drawTextCentered(cx, 18, "HARBOR KARTS", rgb(246, 230, 152), 4);
-        r.drawTextCentered(cx, 66, "ORIGINAL BEACH HARBOR RACING BASELINE", rgb(210, 226, 224), 2);
+    void drawKartBillboard(Renderer& r, const Kart& kart, const ScreenPoint& p, bool playerHood) {
+        const float s = std::clamp(p.scale, 0.08f, 6.0f);
+        const int x = static_cast<int>(p.p.x);
+        const int y = static_cast<int>(p.p.y);
+        const int w = std::max(8, static_cast<int>((playerHood ? 78.0f : 34.0f) * s));
+        const int h = std::max(5, static_cast<int>((playerHood ? 34.0f : 18.0f) * s));
+        r.fillCircle(x - w / 3, y + h / 3, std::max(3, h / 3), rgb(28, 31, 36));
+        r.fillCircle(x + w / 3, y + h / 3, std::max(3, h / 3), rgb(28, 31, 36));
+        r.fillQuad({static_cast<float>(x - w / 2), static_cast<float>(y + h / 4)},
+                   {static_cast<float>(x + w / 2), static_cast<float>(y + h / 4)},
+                   {static_cast<float>(x + w / 3), static_cast<float>(y - h / 2)},
+                   {static_cast<float>(x - w / 3), static_cast<float>(y - h / 2)}, kart.spec.body);
+        r.fillQuad({static_cast<float>(x - w / 4), static_cast<float>(y - h / 2)},
+                   {static_cast<float>(x + w / 4), static_cast<float>(y - h / 2)},
+                   {static_cast<float>(x + w / 6), static_cast<float>(y - h)},
+                   {static_cast<float>(x - w / 6), static_cast<float>(y - h)}, kart.spec.glass);
+        r.fillRect(x - w / 2, y - h / 8, w, std::max(2, h / 5), kart.spec.accent);
+    }
 
-        if (mode_ == Mode::SelectRacer) {
-            const Racer& racer = racers_[selectedRacer_];
-            r.drawTextCentered(cx, 130, "SELECT RACER", rgb(255, 255, 255), 3);
-            r.drawTextCentered(cx, 174, "<  " + racer.name + "  >", rgb(255, 236, 122), 4);
-            r.drawCircle(cx, 270, 58, racer.primary);
-            r.drawCircle(cx, 252, 36, racer.accent);
-            r.fillRect(cx - 70, 310, 140, 22, shade(racer.primary, 0.7f));
-            r.drawTextCentered(cx, 360, "COSMETIC ONLY - NO SUPER POWERS", rgb(232, 242, 234), 2);
-            r.drawTextCentered(cx, 394,
-                               std::to_string(selectedRacer_ + 1) + "/" + std::to_string(racers_.size()),
-                               rgb(246, 230, 152), 2);
+    void drawPlayerBuggy(Renderer& r) {
+        const Kart& kart = karts_[0];
+        const float speedN = std::clamp(length(kart.vel) / kart.spec.maxSpeed, 0.0f, 1.0f);
+        const int yBase = static_cast<int>(lerp(514.0f, 468.0f, smoothstep(speedN)));
+        const int w = static_cast<int>(lerp(238.0f, 170.0f, speedN));
+        const int h = static_cast<int>(lerp(92.0f, 74.0f, speedN));
+        const int x = kFrameW / 2;
+        r.fillCircle(x - w / 3, yBase - 10, 31, rgb(24, 27, 31));
+        r.fillCircle(x + w / 3, yBase - 10, 31, rgb(24, 27, 31));
+        r.fillCircle(x - w / 3, yBase - 10, 15, shade(kart.spec.accent, 0.72f));
+        r.fillCircle(x + w / 3, yBase - 10, 15, shade(kart.spec.accent, 0.72f));
+        r.fillQuad({static_cast<float>(x - w / 2), static_cast<float>(yBase)},
+                   {static_cast<float>(x + w / 2), static_cast<float>(yBase)},
+                   {static_cast<float>(x + w / 3), static_cast<float>(yBase - h)},
+                   {static_cast<float>(x - w / 3), static_cast<float>(yBase - h)}, kart.spec.body);
+        r.fillQuad({static_cast<float>(x - w / 4), static_cast<float>(yBase - h)},
+                   {static_cast<float>(x + w / 4), static_cast<float>(yBase - h)},
+                   {static_cast<float>(x + w / 6), static_cast<float>(yBase - h - 42)},
+                   {static_cast<float>(x - w / 6), static_cast<float>(yBase - h - 42)}, kart.spec.glass);
+        r.fillRect(x - w / 2 + 12, yBase - h / 2, w - 24, 16, kart.spec.accent);
+        r.drawLine({static_cast<float>(x - 54), static_cast<float>(yBase - h - 8)},
+                   {static_cast<float>(x - 20), static_cast<float>(yBase - h - 40)}, 5, rgb(40, 42, 47));
+        r.drawLine({static_cast<float>(x + 54), static_cast<float>(yBase - h - 8)},
+                   {static_cast<float>(x + 20), static_cast<float>(yBase - h - 40)}, 5, rgb(40, 42, 47));
+        if (kart.drifting) {
+            r.fillCircle(x - w / 2 - 12, yBase - 3, 18, rgb(218, 226, 218));
+            r.fillCircle(x + w / 2 + 12, yBase - 4, 18, rgb(218, 226, 218));
+        }
+    }
+
+    void renderRace(Renderer& r, float fps, bool hasController) {
+        const TrackPoint playerTrack = track_.pointAtIndex(karts_[0].nearest);
+        const bool cave = playerTrack.zone == 3;
+        r.drawSky(cave ? rgb(24, 36, 54) : rgb(74, 187, 232), cave ? rgb(64, 72, 83) : rgb(224, 240, 220),
+                  cave ? rgb(48, 53, 61) : rgb(35, 163, 178), static_cast<int>(camera_.horizon));
+        if (!cave) {
+            r.fillCircle(820, 68, 34, rgb(255, 220, 93));
+            r.fillRect(0, static_cast<int>(camera_.horizon) - 3, kFrameW, 5, rgb(32, 136, 162));
         } else {
-            if (mode_ == Mode::SelectKart) {
-                const KartDef& kart = karts_[selectedKart_];
-                r.drawTextCentered(cx, 130, "SELECT MAXED CAR", rgb(255, 255, 255), 3);
-                r.drawTextCentered(cx, 174, "<  " + kart.name + "  >", rgb(255, 236, 122), 4);
-                drawGarageKart(r, cx, 282, kart);
-                r.drawText(cx - 180, 360, "SPEED", rgb(232, 242, 234), 2);
-                r.drawText(cx - 180, 388, "ACCEL", rgb(232, 242, 234), 2);
-                r.drawText(cx - 180, 416, "GRIP", rgb(232, 242, 234), 2);
-                drawFullBar(r, cx - 70, 360);
-                drawFullBar(r, cx - 70, 388);
-                drawFullBar(r, cx - 70, 416);
-                r.drawText(cx + 158, 388, "MAX", rgb(255, 236, 122), 2);
+            r.fillRect(0, 0, kFrameW, 60, rgb(24, 30, 39));
+            r.fillRect(0, kFrameH - 70, kFrameW, 70, rgb(23, 25, 31));
+        }
+
+        drawRoad(r);
+
+        struct DrawItem {
+            float depth = 0.0f;
+            int index = 0;
+            bool kart = false;
+        };
+        std::vector<DrawItem> items;
+        for (size_t i = 1; i < karts_.size(); ++i) {
+            const float ahead = progressAhead(karts_[0].progress, karts_[i].progress, track_.totalLength());
+            if (ahead < 880.0f) {
+                const TrackPoint tp = track_.sample(karts_[i].progress);
+                const ScreenPoint p = projectPoint(karts_[i].pos, tp.elevation + 6.0f, camera_);
+                if (p.visible) {
+                    items.push_back({p.depth, static_cast<int>(i), true});
+                }
+            }
+        }
+        for (int i = 0; i < static_cast<int>(track_.props().size()); ++i) {
+            const float ahead = progressAhead(karts_[0].progress, track_.props()[static_cast<size_t>(i)].progress, track_.totalLength());
+            if (ahead < 900.0f) {
+                const TrackPoint tp = track_.sample(track_.props()[static_cast<size_t>(i)].progress);
+                const ScreenPoint p = projectPoint(tp.pos + tp.normal * track_.props()[static_cast<size_t>(i)].side, tp.elevation, camera_);
+                if (p.visible) {
+                    items.push_back({p.depth, i, false});
+                }
+            }
+        }
+        std::sort(items.begin(), items.end(), [](const DrawItem& a, const DrawItem& b) { return a.depth > b.depth; });
+        for (const DrawItem& item : items) {
+            if (item.kart) {
+                const Kart& kart = karts_[static_cast<size_t>(item.index)];
+                const TrackPoint tp = track_.sample(kart.progress);
+                drawKartBillboard(r, kart, projectPoint(kart.pos, tp.elevation + 6.0f, camera_), false);
             } else {
-                r.drawTextCentered(cx, 130, "SELECT TRACK", rgb(255, 255, 255), 3);
-                r.drawTextCentered(cx, 174, "<  " + track_.name() + "  >", rgb(255, 236, 122), 4);
-                r.drawTextCentered(cx, 246, "TECHNICAL HARBOR LAYOUT", rgb(232, 242, 234), 2);
-                r.drawTextCentered(cx, 284, "BRAKE BEFORE HAIRPINS  HIT CLEAN APEXES", rgb(255, 236, 122), 2);
-                r.drawTextCentered(cx, 330, "LENGTH " + std::to_string(static_cast<int>(track_.totalLength())) + "M",
-                                   rgb(166, 214, 220), 2);
+                drawProp(r, track_.props()[static_cast<size_t>(item.index)]);
             }
         }
 
-        std::string pad = controllerName.empty() ? "NO GAMEPAD" : std::string(controllerName);
-        r.drawTextCentered(cx, h - 48, "A CONFIRM  B BACK  LEFT/RIGHT CHOOSE", rgb(210, 226, 224), 2);
-        r.drawTextCentered(cx, h - 24, pad, rgb(166, 214, 220), 1);
+        drawPlayerBuggy(r);
+        renderHud(r, fps, hasController);
     }
 
-    void drawGarageKart(Renderer& r, int cx, int cy, const KartDef& kart) {
-        r.fillRect(cx - 92, cy - 30, 184, 58, rgb(22, 30, 34));
-        r.fillRect(cx - 72, cy - 26, 144, 52, kart.body);
-        std::vector<Vec2> nose = {{static_cast<float>(cx + 104), static_cast<float>(cy)},
-                                  {static_cast<float>(cx + 58), static_cast<float>(cy - 29)},
-                                  {static_cast<float>(cx + 58), static_cast<float>(cy + 29)}};
-        r.fillPolygon(nose, kart.trim);
-        r.fillRect(cx - 26, cy - 20, 48, 40, shade(kart.body, 0.62f));
-        r.drawCircle(cx - 58, cy - 34, 13, rgb(12, 12, 12));
-        r.drawCircle(cx + 58, cy - 34, 13, rgb(12, 12, 12));
-        r.drawCircle(cx - 58, cy + 34, 13, rgb(12, 12, 12));
-        r.drawCircle(cx + 58, cy + 34, 13, rgb(12, 12, 12));
-    }
-
-    void drawFullBar(Renderer& r, int x, int y) {
-        r.fillRect(x, y, 210, 14, rgb(38, 54, 60));
-        for (int i = 0; i < 10; ++i) {
-            r.fillRect(x + i * 21 + 2, y + 2, 17, 10, rgb(86, 222, 142));
+    void renderHud(Renderer& r, float fps, bool hasController) {
+        const Kart& player = karts_[0];
+        const int speed = static_cast<int>(std::round(length(player.vel) * 1.8f));
+        r.fillRect(16, 16, 238, 56, rgb(19, 45, 57));
+        r.drawText(28, 25, "SHARK HARBOR", 2, rgb(246, 234, 184));
+        r.drawText(28, 49, std::to_string(speed) + " KMH", 2, rgb(255, 246, 211));
+        r.fillRect(720, 16, 222, 56, rgb(19, 45, 57));
+        r.drawText(736, 25, "POS " + std::to_string(racePosition_) + "/8", 2, rgb(246, 234, 184));
+        r.drawText(736, 49, "LAP " + std::to_string(std::max(0, player.lap)), 2, rgb(255, 246, 211));
+        r.fillRect(18, 484, 184, 18, rgb(22, 41, 45));
+        r.fillRect(21, 487, static_cast<int>(178.0f * player.driftCharge), 12,
+                   player.drifting ? rgb(255, 191, 69) : rgb(77, 177, 176));
+        r.drawText(22, 509, player.drifting ? "DRIFT" : cars_[selectedCar_].name, 2, rgb(252, 240, 200));
+        r.drawText(786, 510, std::to_string(static_cast<int>(fps)) + " FPS", 2, rgb(245, 237, 198));
+        if (!hasController) {
+            r.fillRect(260, 206, 440, 92, rgb(24, 35, 46));
+            r.drawText(300, 232, "CONNECT GAMEPAD", 4, rgb(255, 227, 145));
+            r.drawText(326, 276, "CONTROLLER ONLY", 2, rgb(245, 237, 198));
         }
     }
 
-    void drawHud(Renderer& r, float fps) {
-        const KartState& player = cars_.front();
-        int speed = static_cast<int>(length(player.vel) * 0.22f);
-        r.fillRect(0, 0, 420, 86, rgb(24, 38, 46));
-        r.drawText(16, 14, "LAP " + std::to_string(std::max(0, player.lap + 1)) + "  POS " +
-                              std::to_string(racePosition_) + "/8",
-                   rgb(255, 244, 170), 2);
-        r.drawText(16, 40, "SPEED " + std::to_string(speed) + "  FPS " + std::to_string(static_cast<int>(fps + 0.5f)),
-                   rgb(224, 240, 236), 2);
-        r.drawText(16, 66, racers_[selectedRacer_].name + " | " + karts_[selectedKart_].name, rgb(166, 214, 220), 1);
-        drawMinimap(r, track_, cars_);
-        if (player.wrongWay) {
-            r.drawTextCentered(r.width() / 2, 96, "WRONG WAY", rgb(255, 88, 72), 4);
-        }
-        if (paused_) {
-            r.fillRect(0, 0, r.width(), r.height(), rgb(20, 30, 36));
-            r.drawTextCentered(r.width() / 2, r.height() / 2 - 62, "PAUSED", rgb(255, 244, 170), 5);
-            r.drawTextCentered(r.width() / 2, r.height() / 2 + 20, "START RESUME  B GARAGE", rgb(224, 240, 236), 2);
-        }
+    void drawGarageCar(Renderer& r, int cx, int cy, const KartSpec& spec) {
+        r.fillCircle(cx - 120, cy + 62, 48, rgb(24, 27, 31));
+        r.fillCircle(cx + 120, cy + 62, 48, rgb(24, 27, 31));
+        r.fillCircle(cx - 120, cy + 62, 22, shade(spec.accent, 0.8f));
+        r.fillCircle(cx + 120, cy + 62, 22, shade(spec.accent, 0.8f));
+        r.fillQuad({static_cast<float>(cx - 170), static_cast<float>(cy + 70)},
+                   {static_cast<float>(cx + 170), static_cast<float>(cy + 70)},
+                   {static_cast<float>(cx + 115), static_cast<float>(cy - 80)},
+                   {static_cast<float>(cx - 115), static_cast<float>(cy - 80)}, spec.body);
+        r.fillQuad({static_cast<float>(cx - 72), static_cast<float>(cy - 80)},
+                   {static_cast<float>(cx + 72), static_cast<float>(cy - 80)},
+                   {static_cast<float>(cx + 46), static_cast<float>(cy - 145)},
+                   {static_cast<float>(cx - 46), static_cast<float>(cy - 145)}, spec.glass);
+        r.fillRect(cx - 142, cy - 18, 284, 28, spec.accent);
+        r.drawLine({static_cast<float>(cx - 118), static_cast<float>(cy - 76)},
+                   {static_cast<float>(cx - 44), static_cast<float>(cy - 140)}, 8, rgb(37, 42, 48));
+        r.drawLine({static_cast<float>(cx + 118), static_cast<float>(cy - 76)},
+                   {static_cast<float>(cx + 44), static_cast<float>(cy - 140)}, 8, rgb(37, 42, 48));
     }
 
-    void drawControllerOverlay(Renderer& r) {
-        int x = r.width() / 2 - 340;
-        int y = r.height() / 2 - 73;
-        r.fillRect(x, y, 680, 146, rgb(24, 38, 46));
-        r.fillRect(x + 8, y + 8, 664, 130, rgb(35, 58, 66));
-        r.drawTextCentered(r.width() / 2, y + 28, "CONNECT A GAMEPAD", rgb(255, 244, 170), 4);
-        r.drawTextCentered(r.width() / 2, y + 86, "NORMAL PLAY IS CONTROLLER ONLY", rgb(224, 240, 236), 2);
-        r.drawTextCentered(r.width() / 2, y + 114, "LINUX /DEV/INPUT/JS0 STYLE DEVICES", rgb(166, 214, 220), 1);
-    }
-
-    void updateRacePosition() {
-        float playerScore = cars_[0].lap * track_.totalLength() + cars_[0].progress;
-        int pos = 1;
-        for (size_t i = 1; i < cars_.size(); ++i) {
-            float score = cars_[i].lap * track_.totalLength() + cars_[i].progress;
-            if (score > playerScore) {
-                ++pos;
-            }
+    void renderGarage(Renderer& r, float fps, bool hasController) {
+        r.drawSky(rgb(71, 184, 232), rgb(229, 241, 217), rgb(43, 166, 175), 210);
+        r.fillRect(0, 250, kFrameW, 290, rgb(226, 187, 103));
+        r.fillRect(0, 328, kFrameW, 34, rgb(135, 87, 53));
+        for (int x = 0; x < kFrameW; x += 70) {
+            r.fillRect(x, 328, 4, 34, rgb(88, 58, 43));
         }
-        racePosition_ = pos;
+        r.fillCircle(826, 76, 38, rgb(255, 220, 93));
+        r.drawText(52, 42, "SHARK HARBOR KARTS", 5, rgb(20, 45, 56));
+        r.drawText(56, 86, "ONE TRACK / INFINITE LAPS / NO POWERS", 2, rgb(20, 45, 56));
+
+        drawGarageCar(r, 488, 342, cars_[selectedCar_]);
+        r.fillRect(58, 386, 310, 92, rgb(22, 45, 56));
+        r.drawText(82, 410, "< " + cars_[selectedCar_].name + " >", 3, rgb(255, 237, 173));
+        r.drawText(82, 448, "MAXED DEFAULT", 2, rgb(242, 233, 203));
+        r.fillRect(608, 386, 294, 92, rgb(22, 45, 56));
+        r.drawText(634, 410, racers_[selectedRacer_], 4, rgb(255, 237, 173));
+        r.drawText(634, 452, "COSMETIC DRIVER", 2, rgb(242, 233, 203));
+
+        if (hasController) {
+            r.drawText(312, 496, "A/START RACE", 3, rgb(22, 45, 56));
+        } else {
+            r.fillRect(292, 484, 376, 40, rgb(22, 45, 56));
+            r.drawText(318, 496, "CONNECT GAMEPAD", 3, rgb(255, 230, 148));
+        }
+        r.drawText(816, 16, std::to_string(static_cast<int>(fps)) + " FPS", 2, rgb(22, 45, 56));
     }
 
     Track track_;
-    std::vector<Racer> racers_;
-    std::vector<KartDef> karts_;
-    std::vector<KartState> cars_;
-    std::vector<Prop> props_;
-    Mode mode_ = Mode::SelectRacer;
+    std::vector<KartSpec> cars_;
+    std::vector<std::string> racers_;
+    std::vector<Kart> karts_;
+    Camera camera_;
+    InputState prevInput_;
+    Mode mode_ = Mode::Garage;
+    int selectedCar_ = 0;
     int selectedRacer_ = 0;
-    int selectedKart_ = 0;
-    int selectedTrack_ = 0;
     int racePosition_ = 1;
-    bool paused_ = false;
-    bool inputConnected_ = false;
-    bool devKeyboard_ = false;
-    float animTime_ = 0.0f;
+    bool quitRequested_ = false;
 };
 
-InputFrame mergeKeyboardInput(const InputFrame& controller, const std::array<bool, 256>& keys,
-                              const std::array<bool, 256>& prevKeys, bool enabled) {
-    if (!enabled) {
-        return controller;
+SDL_Gamepad* openFirstGamepad() {
+    int count = 0;
+    SDL_JoystickID* ids = SDL_GetGamepads(&count);
+    SDL_Gamepad* pad = nullptr;
+    for (int i = 0; i < count && !pad; ++i) {
+        if (SDL_IsGamepad(ids[i])) {
+            pad = SDL_OpenGamepad(ids[i]);
+        }
     }
-    InputFrame out = controller;
-    out.connected = true;
-    float steer = 0.0f;
-    if (keys[1]) {
-        steer -= 1.0f;
+    SDL_free(ids);
+    if (pad) {
+        std::cout << "Using gamepad: " << SDL_GetGamepadName(pad) << "\n";
     }
-    if (keys[2]) {
-        steer += 1.0f;
-    }
-    if (std::abs(steer) > std::abs(out.steer)) {
-        out.steer = steer;
-    }
-    out.throttle = std::max(out.throttle, (keys[3] || keys[6] || keys[8]) ? 1.0f : 0.0f);
-    out.brake = std::max(out.brake, (keys[4] || keys[9]) ? 1.0f : 0.0f);
-    out.left = out.left || (keys[1] && !prevKeys[1]);
-    out.right = out.right || (keys[2] && !prevKeys[2]);
-    out.confirm = out.confirm || ((keys[5] && !prevKeys[5]) || (keys[6] && !prevKeys[6]) || (keys[8] && !prevKeys[8]));
-    out.back = out.back || ((keys[7] && !prevKeys[7]) || (keys[9] && !prevKeys[9]));
-    out.start = out.start || (keys[10] && !prevKeys[10]);
-    out.select = out.select || (keys[11] && !prevKeys[11]);
-    out.quit = out.quit || (keys[7] && !prevKeys[7]);
-    return out;
+    return pad;
 }
 
-int runSelfTest() {
-    Game game;
-    if (!game.selfTest()) {
-        std::cerr << "harbor_karts self-test failed\n";
-        return 1;
-    }
-    std::cout << "harbor_karts self-test: ok\n";
-    return 0;
+SDL_Rect letterboxRect(int windowW, int windowH) {
+    const float scale = std::min(static_cast<float>(windowW) / kFrameW, static_cast<float>(windowH) / kFrameH);
+    SDL_Rect rect;
+    rect.w = static_cast<int>(kFrameW * scale);
+    rect.h = static_cast<int>(kFrameH * scale);
+    rect.x = (windowW - rect.w) / 2;
+    rect.y = (windowH - rect.h) / 2;
+    return rect;
 }
 
-int runGame(bool devKeyboard) {
-    AppWindow window;
-    if (!window.open()) {
-        return 1;
+bool hasArg(int argc, char** argv, std::string_view arg) {
+    for (int i = 1; i < argc; ++i) {
+        if (arg == argv[i]) {
+            return true;
+        }
     }
-
-    ControllerManager controllers;
-    Game game;
-    game.setDevKeyboard(devKeyboard);
-    std::array<bool, 256> keys{};
-    std::array<bool, 256> prevKeys{};
-
-    auto last = std::chrono::steady_clock::now();
-    auto fpsTime = last;
-    int fpsFrames = 0;
-    float fps = 60.0f;
-    float accumulator = 0.0f;
-    constexpr float fixedDt = 1.0f / 120.0f;
-    constexpr float maxFrame = 1.0f / 20.0f;
-
-    while (window.running()) {
-        auto frameStart = std::chrono::steady_clock::now();
-        std::chrono::duration<float> elapsed = frameStart - last;
-        last = frameStart;
-        accumulator += std::min(elapsed.count(), maxFrame);
-
-        prevKeys = keys;
-        window.poll(devKeyboard, keys);
-        InputFrame input = mergeKeyboardInput(controllers.poll(), keys, prevKeys, devKeyboard);
-        if (input.quit) {
-            window.close();
-            continue;
-        }
-
-        int physicsSteps = 0;
-        while (accumulator >= fixedDt && physicsSteps < 8) {
-            game.update(input, fixedDt);
-            accumulator -= fixedDt;
-            ++physicsSteps;
-        }
-        if (physicsSteps == 8) {
-            accumulator = 0.0f;
-        }
-
-        Renderer renderer = window.renderer();
-        game.render(renderer, fps, controllers.activeName());
-        window.present();
-
-        ++fpsFrames;
-        auto now = std::chrono::steady_clock::now();
-        std::chrono::duration<float> fpsElapsed = now - fpsTime;
-        if (fpsElapsed.count() >= 0.5f) {
-            fps = fpsFrames / fpsElapsed.count();
-            fpsFrames = 0;
-            fpsTime = now;
-        }
-
-        auto target = frameStart + std::chrono::microseconds(16666);
-        std::this_thread::sleep_until(target);
-    }
-    return 0;
+    return false;
 }
 
 }  // namespace
 
 int main(int argc, char** argv) {
-    bool selfTest = false;
-    bool devKeyboard = false;
-    for (int i = 1; i < argc; ++i) {
-        std::string_view arg(argv[i]);
-        if (arg == "--self-test") {
-            selfTest = true;
-        } else if (arg == "--dev-keyboard") {
-            devKeyboard = true;
-        } else if (arg == "--help" || arg == "-h") {
-            std::cout << "Usage: harbor_karts [--self-test] [--dev-keyboard]\n";
-            return 0;
+    Game game;
+    if (hasArg(argc, argv, "--self-test")) {
+        const bool ok = game.selfTest();
+        std::cout << (ok ? "self-test passed\n" : "self-test failed\n");
+        return ok ? 0 : 1;
+    }
+
+    const bool devKeyboard = hasArg(argc, argv, "--dev-keyboard");
+    const bool smokeRender = hasArg(argc, argv, "--smoke-render");
+    const bool windowed = hasArg(argc, argv, "--windowed") || smokeRender;
+
+    SDL_SetAppMetadata("Shark Harbor Karts", "0.2.0", "local.harbor.karts");
+    if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD | SDL_INIT_EVENTS)) {
+        std::cerr << "SDL_Init failed: " << SDL_GetError() << "\n";
+        return 1;
+    }
+
+    SDL_Window* window = SDL_CreateWindow("Shark Harbor Karts", 1280, 720, windowed ? SDL_WINDOW_RESIZABLE : SDL_WINDOW_FULLSCREEN);
+    if (!window) {
+        std::cerr << "SDL_CreateWindow failed: " << SDL_GetError() << "\n";
+        SDL_Quit();
+        return 1;
+    }
+    SDL_SetWindowMinimumSize(window, 960, 540);
+
+    std::vector<uint32_t> pixels(static_cast<size_t>(kFrameW * kFrameH));
+    Renderer renderer(pixels, kFrameW, kFrameH);
+    SDL_Surface* frame =
+        SDL_CreateSurfaceFrom(kFrameW, kFrameH, SDL_PIXELFORMAT_XRGB8888, pixels.data(), kFrameW * static_cast<int>(sizeof(uint32_t)));
+    if (!frame) {
+        std::cerr << "SDL_CreateSurfaceFrom failed: " << SDL_GetError() << "\n";
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return 1;
+    }
+
+    SDL_Gamepad* pad = openFirstGamepad();
+    auto previous = std::chrono::steady_clock::now();
+    auto fpsStamp = previous;
+    int frames = 0;
+    int totalFrames = 0;
+    float fps = 60.0f;
+    double accumulator = 0.0;
+    bool running = true;
+
+    while (running && !game.quitRequested()) {
+        const auto frameStart = std::chrono::steady_clock::now();
+        const double frameTime = std::chrono::duration<double>(frameStart - previous).count();
+        previous = frameStart;
+        accumulator = std::min(0.12, accumulator + frameTime);
+
+        SDL_Event event;
+        while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_EVENT_QUIT) {
+                running = false;
+            }
+            if (devKeyboard && event.type == SDL_EVENT_KEY_DOWN && event.key.key == SDLK_ESCAPE) {
+                running = false;
+            }
+            if (event.type == SDL_EVENT_GAMEPAD_REMOVED && pad && event.gdevice.which == SDL_GetGamepadID(pad)) {
+                SDL_CloseGamepad(pad);
+                pad = nullptr;
+            }
+        }
+
+        SDL_UpdateGamepads();
+        if (!pad || !SDL_GamepadConnected(pad)) {
+            if (pad) {
+                SDL_CloseGamepad(pad);
+                pad = nullptr;
+            }
+            pad = openFirstGamepad();
+        }
+
+        const bool hasController = pad != nullptr || devKeyboard;
+        const InputState input = readGamepad(pad, devKeyboard);
+        int steps = 0;
+        while (accumulator >= kFixedDt && steps < 8) {
+            game.update(kFixedDt, input, hasController);
+            accumulator -= kFixedDt;
+            ++steps;
+        }
+
+        game.render(renderer, fps, pad != nullptr);
+
+        SDL_Surface* screen = SDL_GetWindowSurface(window);
+        if (screen) {
+            SDL_FillSurfaceRect(screen, nullptr, 0x00000000);
+            const SDL_Rect dst = letterboxRect(screen->w, screen->h);
+            SDL_BlitSurfaceScaled(frame, nullptr, screen, &dst, SDL_SCALEMODE_LINEAR);
+            SDL_UpdateWindowSurface(window);
+        }
+
+        ++frames;
+        ++totalFrames;
+        if (smokeRender && totalFrames >= 12) {
+            running = false;
+        }
+        const auto now = std::chrono::steady_clock::now();
+        const double fpsElapsed = std::chrono::duration<double>(now - fpsStamp).count();
+        if (fpsElapsed >= 0.5) {
+            fps = static_cast<float>(frames / fpsElapsed);
+            frames = 0;
+            fpsStamp = now;
+        }
+
+        const double used = std::chrono::duration<double>(std::chrono::steady_clock::now() - frameStart).count();
+        if (used < 1.0 / 60.0) {
+            std::this_thread::sleep_for(std::chrono::duration<double>((1.0 / 60.0) - used));
         }
     }
-    if (selfTest) {
-        return runSelfTest();
+
+    if (pad) {
+        SDL_CloseGamepad(pad);
     }
-    return runGame(devKeyboard);
+    SDL_DestroySurface(frame);
+    SDL_DestroyWindow(window);
+    SDL_Quit();
+    return 0;
 }
