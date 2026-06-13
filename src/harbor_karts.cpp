@@ -928,6 +928,34 @@ public:
         computeRacePosition();
     }
 
+    void placeForSectionCapture(float phase, float speed) {
+        resetRace();
+        mode_ = Mode::Race;
+        const float progress = wrapDistance(track_.totalLength() * phase, track_.totalLength());
+        for (size_t i = 0; i < karts_.size(); ++i) {
+            Kart& kart = karts_[i];
+            const float offset = i == 0 ? 0.0f : 52.0f + static_cast<float>(i) * 32.0f;
+            const TrackPoint tp = track_.sample(progress + offset);
+            kart.progress = wrapDistance(progress + offset, track_.totalLength());
+            kart.lap = 0;
+            kart.lane = i == 0 ? 0.0f : ((static_cast<int>(i) % 3) - 1) * 8.0f;
+            kart.pos = tp.pos + tp.normal * kart.lane;
+            kart.heading = angleOf(tp.tangent);
+            kart.vel = tp.tangent * (i == 0 ? speed : std::max(28.0f, speed * (0.74f + static_cast<float>(i % 3) * 0.06f)));
+            kart.nearest = track_.nearestIndex(kart.pos);
+            kart.drifting = false;
+            kart.driftCharge = 0.0f;
+            kart.boostTimer = 0.0f;
+            kart.boostPower = 0.0f;
+            kart.slip = 0.0f;
+        }
+        camera_.yaw = karts_[0].heading;
+        caveBlend_ = track_.pointAtIndex(karts_[0].nearest).zone == 3 ? 1.0f : 0.0f;
+        updateCamera(1.0f);
+        updateAmbient(1.0f);
+        computeRacePosition();
+    }
+
     bool selfTest() {
         resetRace();
         mode_ = Mode::Race;
@@ -1786,7 +1814,32 @@ bool capturePlaytest(const std::filesystem::path& outputDir) {
         }
         game.updateAutoplay(kFixedDt);
     }
-    std::cout << "captured " << (captureIndex + 1) << " frames to " << outputDir << "\n";
+
+    struct SectionCapture {
+        const char* name;
+        float phase;
+        float speed;
+    };
+    const std::array<SectionCapture, 7> sections = {{
+        {"section_00_beach.ppm", 0.04f, 58.0f},
+        {"section_01_dock.ppm", 0.20f, 76.0f},
+        {"section_02_market.ppm", 0.35f, 82.0f},
+        {"section_03_cave.ppm", 0.50f, 74.0f},
+        {"section_04_cliff.ppm", 0.66f, 94.0f},
+        {"section_05_pier.ppm", 0.79f, 86.0f},
+        {"section_06_lagoon.ppm", 0.92f, 100.0f},
+    }};
+    int sectionFrames = 0;
+    for (const SectionCapture& section : sections) {
+        game.placeForSectionCapture(section.phase, section.speed);
+        game.render(renderer, 60.0f, true);
+        if (!savePpm(outputDir / section.name, pixels, kFrameW, kFrameH)) {
+            return false;
+        }
+        ++sectionFrames;
+    }
+
+    std::cout << "captured " << (captureIndex + 1 + sectionFrames) << " frames to " << outputDir << "\n";
     return captureIndex == captureSteps.size();
 }
 
