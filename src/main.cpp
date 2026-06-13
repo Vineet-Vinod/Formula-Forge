@@ -633,9 +633,23 @@ float triggerUnit(Sint16 value) {
     return std::clamp(static_cast<float>(value) / 32767.0f, 0.0f, 1.0f);
 }
 
+bool joystickButton(SDL_Joystick* joystick, int button) {
+    return joystick && button >= 0 && button < SDL_GetNumJoystickButtons(joystick) && SDL_GetJoystickButton(joystick, button);
+}
+
+float joystickAxis(SDL_Joystick* joystick, int axis) {
+    if (!joystick || axis < 0 || axis >= SDL_GetNumJoystickAxes(joystick)) {
+        return 0.0f;
+    }
+    return axisUnit(SDL_GetJoystickAxis(joystick, axis));
+}
+
+float strongerAxis(float a, float b) { return std::abs(b) > std::abs(a) ? b : a; }
+
 InputState readGamepad(SDL_Gamepad* pad, bool devKeyboard) {
     InputState input;
     if (pad) {
+        SDL_Joystick* joystick = SDL_GetGamepadJoystick(pad);
         input.steer = axisUnit(SDL_GetGamepadAxis(pad, SDL_GAMEPAD_AXIS_LEFTX));
         input.throttle = triggerUnit(SDL_GetGamepadAxis(pad, SDL_GAMEPAD_AXIS_RIGHT_TRIGGER));
         input.brake = triggerUnit(SDL_GetGamepadAxis(pad, SDL_GAMEPAD_AXIS_LEFT_TRIGGER));
@@ -647,6 +661,21 @@ InputState readGamepad(SDL_Gamepad* pad, bool devKeyboard) {
         input.right = SDL_GetGamepadButton(pad, SDL_GAMEPAD_BUTTON_DPAD_RIGHT) || input.steer > 0.55f;
         input.up = SDL_GetGamepadButton(pad, SDL_GAMEPAD_BUTTON_DPAD_UP);
         input.down = SDL_GetGamepadButton(pad, SDL_GAMEPAD_BUTTON_DPAD_DOWN);
+
+        // Some XInput-compatible USB receivers report as a gamepad but have a
+        // broken logical button map. Keep the SDL gamepad path, but also accept
+        // the raw Linux/xpad button indices for the same physical controls.
+        input.steer = strongerAxis(input.steer, joystickAxis(joystick, 0));
+        input.throttle = std::max(input.throttle, std::max(0.0f, joystickAxis(joystick, 5)));
+        input.brake = std::max(input.brake, std::max(0.0f, joystickAxis(joystick, 2)));
+        input.a = input.a || joystickButton(joystick, 0);
+        input.b = input.b || joystickButton(joystick, 1);
+        input.back = input.back || joystickButton(joystick, 6);
+        input.start = input.start || joystickButton(joystick, 7);
+        input.left = input.left || joystickButton(joystick, 11) || joystickAxis(joystick, 6) < -0.55f;
+        input.right = input.right || joystickButton(joystick, 12) || joystickAxis(joystick, 6) > 0.55f;
+        input.up = input.up || joystickButton(joystick, 13) || joystickAxis(joystick, 7) < -0.55f;
+        input.down = input.down || joystickButton(joystick, 14) || joystickAxis(joystick, 7) > 0.55f;
     }
     if (devKeyboard) {
         int keyCount = 0;
@@ -668,6 +697,37 @@ InputState readGamepad(SDL_Gamepad* pad, bool devKeyboard) {
     }
     input.steer = std::copysign(std::pow(std::abs(input.steer), 1.35f), input.steer);
     return input;
+}
+
+void printControllerSnapshot(SDL_Gamepad* pad) {
+    if (!pad) {
+        std::cout << "controller: none\n";
+        return;
+    }
+    SDL_Joystick* joystick = SDL_GetGamepadJoystick(pad);
+    std::cout << "gamepad buttons A/B/X/Y="
+              << SDL_GetGamepadButton(pad, SDL_GAMEPAD_BUTTON_SOUTH) << "/"
+              << SDL_GetGamepadButton(pad, SDL_GAMEPAD_BUTTON_EAST) << "/"
+              << SDL_GetGamepadButton(pad, SDL_GAMEPAD_BUTTON_WEST) << "/"
+              << SDL_GetGamepadButton(pad, SDL_GAMEPAD_BUTTON_NORTH)
+              << " start/back=" << SDL_GetGamepadButton(pad, SDL_GAMEPAD_BUTTON_START) << "/"
+              << SDL_GetGamepadButton(pad, SDL_GAMEPAD_BUTTON_BACK)
+              << " axes LX/LT/RT=" << SDL_GetGamepadAxis(pad, SDL_GAMEPAD_AXIS_LEFTX) << "/"
+              << SDL_GetGamepadAxis(pad, SDL_GAMEPAD_AXIS_LEFT_TRIGGER) << "/"
+              << SDL_GetGamepadAxis(pad, SDL_GAMEPAD_AXIS_RIGHT_TRIGGER);
+    if (joystick) {
+        const int buttons = SDL_GetNumJoystickButtons(joystick);
+        const int axes = SDL_GetNumJoystickAxes(joystick);
+        std::cout << " | raw buttons";
+        for (int i = 0; i < std::min(buttons, 12); ++i) {
+            std::cout << " " << i << ":" << SDL_GetJoystickButton(joystick, i);
+        }
+        std::cout << " | raw axes";
+        for (int i = 0; i < std::min(axes, 8); ++i) {
+            std::cout << " " << i << ":" << SDL_GetJoystickAxis(joystick, i);
+        }
+    }
+    std::cout << "\n";
 }
 
 bool pressed(bool now, bool prev) { return now && !prev; }
@@ -1283,7 +1343,13 @@ SDL_Gamepad* openFirstGamepad() {
     }
     SDL_free(ids);
     if (pad) {
-        std::cout << "Using gamepad: " << SDL_GetGamepadName(pad) << "\n";
+        SDL_Joystick* joystick = SDL_GetGamepadJoystick(pad);
+        std::cout << "Using gamepad: " << SDL_GetGamepadName(pad);
+        if (joystick) {
+            std::cout << " (" << SDL_GetNumJoystickAxes(joystick) << " axes, "
+                      << SDL_GetNumJoystickButtons(joystick) << " buttons)";
+        }
+        std::cout << "\n";
     }
     return pad;
 }
@@ -1319,7 +1385,8 @@ int main(int argc, char** argv) {
 
     const bool devKeyboard = hasArg(argc, argv, "--dev-keyboard");
     const bool smokeRender = hasArg(argc, argv, "--smoke-render");
-    const bool windowed = hasArg(argc, argv, "--windowed") || smokeRender;
+    const bool diagnoseController = hasArg(argc, argv, "--diagnose-controller");
+    const bool windowed = hasArg(argc, argv, "--windowed") || smokeRender || diagnoseController;
 
     SDL_SetAppMetadata("Shark Harbor Karts", "0.2.0", "local.harbor.karts");
     if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD | SDL_INIT_EVENTS)) {
@@ -1354,6 +1421,7 @@ int main(int argc, char** argv) {
     float fps = 60.0f;
     double accumulator = 0.0;
     bool running = true;
+    auto diagnosticStamp = previous;
 
     while (running && !game.quitRequested()) {
         const auto frameStart = std::chrono::steady_clock::now();
@@ -1386,6 +1454,10 @@ int main(int argc, char** argv) {
 
         const bool hasController = pad != nullptr || devKeyboard;
         const InputState input = readGamepad(pad, devKeyboard);
+        if (diagnoseController && std::chrono::duration<double>(frameStart - diagnosticStamp).count() >= 0.25) {
+            printControllerSnapshot(pad);
+            diagnosticStamp = frameStart;
+        }
         int steps = 0;
         while (accumulator >= kFixedDt && steps < 8) {
             game.update(kFixedDt, input, hasController);
@@ -1406,6 +1478,9 @@ int main(int argc, char** argv) {
         ++frames;
         ++totalFrames;
         if (smokeRender && totalFrames >= 12) {
+            running = false;
+        }
+        if (diagnoseController && totalFrames >= 1800) {
             running = false;
         }
         const auto now = std::chrono::steady_clock::now();
