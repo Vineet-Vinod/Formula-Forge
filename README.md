@@ -92,6 +92,7 @@ The smoke render verifies SDL startup and framebuffer presentation.
 
 - `src/main.cpp`: process entry point only
 - `src/core_math.hpp`: math, color, and geometry helpers
+- `src/renderer.hpp`: low-overhead software renderer and bitmap text
 - `src/harbor_karts.cpp`: SDL platform loop, renderer, simulation, controller input
 - `src/track_layout.hpp`: Shark Harbor control-point layout data
 
