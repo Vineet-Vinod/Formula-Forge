@@ -511,8 +511,8 @@ public:
 
         float rt = trigger(5);
         float lt = trigger(2);
-        frame.throttle = std::max(rt, button(0) ? 1.0f : 0.0f);
-        frame.brake = std::max(lt, button(1) ? 1.0f : 0.0f);
+        frame.throttle = rt;
+        frame.brake = lt;
 
         bool leftNow = frame.steer < -0.55f;
         bool rightNow = frame.steer > 0.55f;

@@ -33,8 +33,10 @@ The executable is:
 Gamepad required for normal play.
 
 - Left stick or D-pad: steer / menu navigation
-- A / Cross / right trigger: accelerate / confirm
-- B / Circle / left trigger: brake or reverse / back
+- Right trigger: accelerate
+- Left trigger: brake or reverse
+- A / Cross: confirm
+- B / Circle: back
 - Start: pause or resume
 - Select / Back: reset car to the last safe racing line
 
