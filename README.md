@@ -4,10 +4,10 @@ Shark Harbor Karts is an original Linux/C++ arcade kart racer aimed at a
 bright tropical beach-buggy feel without copying proprietary Beach Buggy
 Racing assets, names, tracks, or game data.
 
-The current build uses vendored SDL3 for fullscreen windowing and controller
-input, then renders the game through a low-overhead software framebuffer. The
-game starts in a controller-only garage where all 8 maxed cars and all cosmetic
-drivers are available.
+The primary build is now `harbor_karts_3d`: vendored SDL3 for Linux windowing
+and controller input, plus vendored raylib for a real 3D camera, track, karts,
+props, particles, and HUD. The older SDL software framebuffer build is still
+kept as `harbor_karts` for diagnostics and comparison.
 
 ## Build
 
@@ -28,7 +28,7 @@ make
 The executable is:
 
 ```sh
-./build/game/harbor_karts
+./build/game/harbor_karts_3d
 ```
 
 ## Run
@@ -37,11 +37,12 @@ The executable is:
 make run
 ```
 
-The game opens fullscreen by default. For debugging:
+`make run` launches the 3D game. It opens fullscreen by default. For debugging:
 
 ```sh
-./build/game/harbor_karts --windowed
-./build/game/harbor_karts --dev-keyboard --windowed
+./build/game/harbor_karts_3d --windowed
+./build/game/harbor_karts_3d --dev-keyboard --windowed
+./build/game/harbor_karts_3d --diagnose-controller --windowed
 ```
 
 ## Controls
@@ -67,10 +68,13 @@ Gamepad is the intended input.
 - 8 maxed-out kart classes
 - 10 cosmetic drivers
 - No powerups and no character super powers
-- Speed-reactive camera that starts near hood view and pulls back at speed
-- Drift handling with brake-and-steer initiation, lateral slip, speed retention,
-  off-road drag, and barrier recovery
-- Fullscreen SDL3 Linux build with controller/gamepad support
+- Raylib 3D course with wide road mesh, shoulders, simple banking, tropical
+  environment props, water/sand bands, and chunky 3D kart silhouettes
+- Speed-reactive chase camera that pulls back at speed and looks toward the
+  upcoming corner
+- Drift handling on RB/R1 with locked drift direction, charge tiers, boost
+  release, off-road drag, kart contacts, and wall speed scrub
+- Fullscreen Linux build with controller/gamepad support
 
 ## Verification
 
@@ -79,6 +83,9 @@ make self-test
 make race-audit
 make capture-playtest
 make perf-audit
+make smoke-3d
+make capture-playtest-3d
+make handling-audit-3d
 ./build/game/harbor_karts --smoke-render --dev-keyboard
 ```
 
@@ -91,13 +98,19 @@ working video device.
 `--perf-audit` renders 420 worst-case section frames without sleeping and fails
 if p95 frame time misses the 60fps budget.
 The smoke render verifies SDL startup and framebuffer presentation.
+`capture-playtest-3d` writes deterministic 3D frames to `build/playtest_frames`
+for visual inspection.
 
 ## Source Layout
 
 - `src/main.cpp`: process entry point only
+- `src/main3d.cpp`: 3D process entry point only
 - `src/core_math.hpp`: math, color, and geometry helpers
 - `src/renderer.hpp`: low-overhead software renderer and bitmap text
 - `src/harbor_karts.cpp`: SDL platform loop, renderer, simulation, controller input
+- `src/harbor_karts_3d.cpp`: raylib 3D renderer, simulation, controller input,
+  capture harness, and 3D race loop
+- `src/harbor_karts_3d.hpp`: 3D entry-point declaration
 - `src/track_layout.hpp`: Shark Harbor control-point layout data
 
 ## Third-Party Code

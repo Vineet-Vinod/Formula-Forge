@@ -1,13 +1,15 @@
 BUILD_DIR := build
 GAME_BUILD_DIR := $(BUILD_DIR)/game
 TARGET := $(GAME_BUILD_DIR)/harbor_karts
+TARGET_3D := $(GAME_BUILD_DIR)/harbor_karts_3d
 LEGACY_TARGET := $(BUILD_DIR)/harbor_karts
+LEGACY_TARGET_3D := $(BUILD_DIR)/harbor_karts_3d
 SDL_LIB := $(BUILD_DIR)/deps/install/lib/libSDL3.a
 RAYLIB_LIB := $(BUILD_DIR)/deps/raylib-install/lib/libraylib.a
 
-.PHONY: all deps clean clean-all run self-test race-audit capture-playtest perf-audit
+.PHONY: all deps clean clean-all run run-2d run-3d self-test race-audit capture-playtest capture-playtest-3d perf-audit smoke-3d handling-audit-3d
 
-all: $(TARGET) $(LEGACY_TARGET)
+all: $(TARGET) $(TARGET_3D) $(LEGACY_TARGET) $(LEGACY_TARGET_3D)
 
 deps: $(SDL_LIB) $(RAYLIB_LIB)
 
@@ -17,15 +19,27 @@ $(SDL_LIB): scripts/bootstrap_deps.sh third_party/_cache/SDL3-3.4.10.tar.gz thir
 $(RAYLIB_LIB): scripts/bootstrap_raylib.sh third_party/_cache/raylib-6.0.tar.gz $(SDL_LIB)
 	scripts/bootstrap_raylib.sh
 
-$(TARGET): CMakeLists.txt src/main.cpp src/harbor_karts.cpp src/core_math.hpp src/renderer.hpp src/track_layout.hpp $(SDL_LIB)
+$(TARGET): CMakeLists.txt src/main.cpp src/harbor_karts.cpp src/core_math.hpp src/renderer.hpp src/track_layout.hpp $(SDL_LIB) $(RAYLIB_LIB)
+	cmake -S . -B $(GAME_BUILD_DIR) -DCMAKE_BUILD_TYPE=Release
+	cmake --build $(GAME_BUILD_DIR) --parallel
+
+$(TARGET_3D): CMakeLists.txt src/main3d.cpp src/harbor_karts_3d.cpp src/harbor_karts_3d.hpp src/core_math.hpp src/track_layout.hpp $(SDL_LIB) $(RAYLIB_LIB)
 	cmake -S . -B $(GAME_BUILD_DIR) -DCMAKE_BUILD_TYPE=Release
 	cmake --build $(GAME_BUILD_DIR) --parallel
 
 $(LEGACY_TARGET): $(TARGET)
 	ln -sf game/harbor_karts $@
 
-run: $(TARGET)
+$(LEGACY_TARGET_3D): $(TARGET_3D)
+	ln -sf game/harbor_karts_3d $@
+
+run: run-3d
+
+run-2d: $(TARGET)
 	$(TARGET)
+
+run-3d: $(TARGET_3D)
+	$(TARGET_3D)
 
 self-test: $(TARGET)
 	$(TARGET) --self-test
@@ -36,11 +50,20 @@ race-audit: $(TARGET)
 capture-playtest: $(TARGET)
 	$(TARGET) --capture-playtest build/playtest_frames
 
+capture-playtest-3d: $(TARGET_3D)
+	$(TARGET_3D) --capture-playtest
+
 perf-audit: $(TARGET)
 	$(TARGET) --perf-audit
 
+smoke-3d: $(TARGET_3D)
+	$(TARGET_3D) --smoke-render
+
+handling-audit-3d: $(TARGET_3D)
+	$(TARGET_3D) --handling-audit
+
 clean:
-	rm -rf $(GAME_BUILD_DIR) $(LEGACY_TARGET)
+	rm -rf $(GAME_BUILD_DIR) $(LEGACY_TARGET) $(LEGACY_TARGET_3D)
 
 clean-all:
 	rm -rf $(BUILD_DIR)
