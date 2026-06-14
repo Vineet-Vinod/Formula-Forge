@@ -44,10 +44,14 @@ library against that SDL3 install, and installs it into
   - Disables SDL's optional X11 MIT-SHM framebuffer path.
   - Reason: this build intentionally avoids a hard Xext dependency; without
     XShm symbols loaded, SDL's X11 framebuffer path can crash while probing MIT-SHM.
-- `GRAPHICS_API_OPENGL_SOFTWARE`
-  - Builds raylib's 3D API on its CPU framebuffer backend.
-  - Reason: this laptop has OpenGL runtime libraries but not OpenGL development
-    headers, so a hardware GL raylib build is not currently reproducible here.
+- `SDL_OPENGLES=ON`
+  - Enables SDL's X11/EGL OpenGL ES window path.
+  - Reason: this laptop has EGL/GLES runtime libraries but not GLX development
+    headers.
+- `GRAPHICS_API_OPENGL_ES2`
+  - Builds raylib's 3D API on OpenGL ES 2 through SDL3.
+  - Reason: this gives hardware acceleration without relying on missing system
+    GLX development headers.
 
 No proprietary Beach Buggy Racing assets, names, tracks, character art, or
 game data are vendored here.

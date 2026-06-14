@@ -48,8 +48,9 @@ the full upstream `COPYING` file is included verbatim at the path above.
 - Use: 3D rendering, camera, geometry helpers, and gamepad abstraction for the
   new playable 3D build.
 - Local build choice: compiled as a static library with the SDL3 platform
-  backend, Raylib software renderer, and audio disabled. This avoids relying on
-  missing system OpenGL development headers on the target laptop.
+  backend, OpenGL ES 2 renderer, and audio disabled. This avoids relying on
+  missing system GLX development headers while still using hardware EGL/GLES
+  acceleration on the target laptop.
 - Full license text: `third_party/licenses/raylib-6.0-LICENSE.txt`
 
 raylib is distributed under the zlib/libpng license; the full upstream

@@ -5,9 +5,10 @@ bright tropical beach-buggy feel without copying proprietary Beach Buggy
 Racing assets, names, tracks, or game data.
 
 The primary build is now `harbor_karts_3d`: vendored SDL3 for Linux windowing
-and controller input, plus vendored raylib for a real 3D camera, track, karts,
-props, particles, and HUD. The older SDL software framebuffer build is still
-kept as `harbor_karts` for diagnostics and comparison.
+and controller input, plus vendored raylib on SDL/EGL/OpenGL ES 2 for a real 3D
+camera, track, karts, props, particles, and HUD. The older SDL software
+framebuffer build is still kept as `harbor_karts` for diagnostics and
+comparison.
 
 ## Build
 

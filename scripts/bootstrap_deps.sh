@@ -77,7 +77,7 @@ cmake -S "$sdl_src" \
     -DSDL_INSTALL_TESTS=OFF \
     -DSDL_WAYLAND=OFF \
     -DSDL_OPENGL=OFF \
-    -DSDL_OPENGLES=OFF \
+    -DSDL_OPENGLES=ON \
     -DSDL_VULKAN=OFF \
     -DSDL_CAMERA=OFF \
     -DSDL_ALSA=OFF \
