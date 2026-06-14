@@ -702,6 +702,19 @@ struct AuditResult3D {
     int lap = 0;
 };
 
+struct RaceAuditResult3D {
+    float playerScore = 0.0f;
+    float topAiScore = 0.0f;
+    float tailAiScore = 0.0f;
+    float spread = 0.0f;
+    int overtakes = 0;
+    int contacts = 0;
+    int progressJumps = 0;
+    int playerBest = kKartCount;
+    int playerWorst = 1;
+    int playerFinal = kKartCount;
+};
+
 void drawQuad(Vector3 a, Vector3 b, Vector3 c, Vector3 d, Color color) {
     DrawTriangle3D(a, b, c, color);
     DrawTriangle3D(a, c, d, color);
@@ -825,6 +838,85 @@ public:
         return ok;
     }
 
+    bool runRaceAudit() {
+        startRace();
+        RaceAuditResult3D result;
+        std::array<float, kKartCount> previousScores{};
+        for (int i = 0; i < kKartCount; ++i) {
+            previousScores[static_cast<size_t>(i)] = raceScore(karts_[static_cast<size_t>(i)]);
+        }
+
+        constexpr int frames = static_cast<int>(80.0f / kFixedDt);
+        for (int frame = 0; frame < frames; ++frame) {
+            std::array<float, kKartCount> beforeContact{};
+            std::array<float, kKartCount> beforeProgress{};
+            for (int i = 0; i < kKartCount; ++i) {
+                beforeContact[static_cast<size_t>(i)] = karts_[static_cast<size_t>(i)].contactTimer;
+                beforeProgress[static_cast<size_t>(i)] = karts_[static_cast<size_t>(i)].progress;
+            }
+
+            update(kFixedDt, scriptedInput(), true);
+
+            std::array<std::pair<float, int>, kKartCount> order{};
+            for (int i = 0; i < kKartCount; ++i) {
+                const Kart3D& kart = karts_[static_cast<size_t>(i)];
+                const float progressDelta = signedDistanceToLoop(beforeProgress[static_cast<size_t>(i)], kart.progress, track_.totalLength());
+                if (i == 0 && (progressDelta < -40.0f || progressDelta > 90.0f)) {
+                    ++result.progressJumps;
+                }
+                if (beforeContact[static_cast<size_t>(i)] <= 0.001f && kart.contactTimer > 0.05f) {
+                    ++result.contacts;
+                }
+                const float score = raceScore(kart);
+                order[static_cast<size_t>(i)] = {score, i};
+            }
+
+            for (int a = 0; a < kKartCount; ++a) {
+                for (int b = a + 1; b < kKartCount; ++b) {
+                    const float before = previousScores[static_cast<size_t>(a)] - previousScores[static_cast<size_t>(b)];
+                    const float after = orderScore(order, a) - orderScore(order, b);
+                    if (std::abs(before) > 6.0f && std::abs(after) > 6.0f && before * after < 0.0f) {
+                        ++result.overtakes;
+                    }
+                }
+            }
+
+            for (int i = 0; i < kKartCount; ++i) {
+                previousScores[static_cast<size_t>(i)] = orderScore(order, i);
+            }
+            result.playerBest = std::min(result.playerBest, playerPosition_);
+            result.playerWorst = std::max(result.playerWorst, playerPosition_);
+        }
+
+        std::array<float, kKartCount> finalScores{};
+        for (int i = 0; i < kKartCount; ++i) {
+            finalScores[static_cast<size_t>(i)] = raceScore(karts_[static_cast<size_t>(i)]);
+        }
+        result.playerScore = finalScores[0];
+        result.topAiScore = finalScores[1];
+        result.tailAiScore = finalScores[1];
+        for (int i = 1; i < kKartCount; ++i) {
+            result.topAiScore = std::max(result.topAiScore, finalScores[static_cast<size_t>(i)]);
+            result.tailAiScore = std::min(result.tailAiScore, finalScores[static_cast<size_t>(i)]);
+        }
+        result.spread = std::max(result.topAiScore, result.playerScore) - std::min(result.tailAiScore, result.playerScore);
+        result.playerFinal = playerPosition_;
+
+        const bool stable = result.progressJumps == 0;
+        const bool pressure = result.topAiScore > result.playerScore - 520.0f && result.playerScore > result.tailAiScore - 520.0f;
+        const bool activePack = result.overtakes >= 5 && result.playerBest < result.playerWorst;
+        const bool tailRecovered = result.tailAiScore > result.playerScore - 2600.0f && result.spread < 3600.0f;
+        const bool cleanEnough = result.contacts < 150;
+        const bool ok = stable && pressure && activePack && tailRecovered && cleanEnough;
+
+        std::cout << "race-audit-3d player=" << result.playerScore << " top_ai=" << result.topAiScore << " tail_ai=" << result.tailAiScore
+                  << " spread=" << result.spread << " overtakes=" << result.overtakes << " contacts=" << result.contacts
+                  << " progress_jumps=" << result.progressJumps << " player_pos=" << result.playerFinal << " best=" << result.playerBest
+                  << " worst=" << result.playerWorst << " stable=" << stable << " pressure=" << pressure << " active_pack=" << activePack
+                  << " tail_recovered=" << tailRecovered << " clean=" << cleanEnough << "\n";
+        return ok;
+    }
+
 private:
     void updateGarage(const Input3D& input, bool hasController) {
         garageSpin_ += GetFrameTime();
@@ -905,9 +997,35 @@ private:
 
     void updatePlayer(Kart3D& kart, const Input3D& input, float dt) { integrateKart(kart, input, dt, true); }
 
+    float raceScore(const Kart3D& kart) const { return static_cast<float>(kart.lap) * track_.totalLength() + kart.progress; }
+
+    static float orderScore(const std::array<std::pair<float, int>, kKartCount>& order, int kartIndex) {
+        for (const auto& entry : order) {
+            if (entry.second == kartIndex) {
+                return entry.first;
+            }
+        }
+        return 0.0f;
+    }
+
     void updateAi(Kart3D& kart, float dt, int index) {
-        const TrackPoint3D center = track_.sample(kart.progress);
-        const float speed = length(kart.vel);
+        TrackPoint3D center = track_.sample(kart.progress);
+        float speed = length(kart.vel);
+        if (raceTime_ > 8.0f && kart.lap == 0 && kart.progress < 140.0f && speed < 34.0f) {
+            const TrackPoint3D recovery = track_.sample(260.0f + static_cast<float>(index) * 28.0f);
+            const float lane = (index % 2 == 0 ? -1.0f : 1.0f) * 18.0f;
+            kart.pos = recovery.pos + recovery.normal * lane;
+            kart.heading = angleOf(recovery.tangent);
+            kart.vel = recovery.tangent * 72.0f;
+            kart.nearest = track_.nearestIndex(kart.pos);
+            kart.progress = track_.pointAtIndex(kart.nearest).progress;
+            kart.previousProgress = kart.progress;
+            kart.lane = lane;
+            kart.drifting = false;
+            kart.contactTimer = 0.0f;
+            center = track_.sample(kart.progress);
+            speed = length(kart.vel);
+        }
         const float lookahead = 78.0f + speed * (0.70f + kart.aiRisk * 0.18f);
         const TrackPoint3D future = track_.sample(kart.progress + lookahead);
         const TrackPoint3D apex = track_.sample(kart.progress + 135.0f + speed * 0.52f);
@@ -938,7 +1056,13 @@ private:
         const Vec2 toTarget = normalize(targetPos - kart.pos);
         const float angleError = std::atan2(cross(forward, toTarget), dot(forward, toTarget));
         const float futureCorner = std::max(center.curvature, std::max(future.curvature, apex.curvature));
-        const float targetSpeed = kart.spec.maxSpeed * kart.aiTempo * std::clamp(1.06f - futureCorner * 2.25f, 0.74f, 1.08f);
+        float leaderScore = raceScore(karts_[0]);
+        for (const Kart3D& other : karts_) {
+            leaderScore = std::max(leaderScore, raceScore(other));
+        }
+        const float leaderGap = leaderScore - raceScore(kart);
+        const float catchup = std::clamp((leaderGap - 700.0f) / 2000.0f, 0.0f, 0.10f);
+        const float targetSpeed = kart.spec.maxSpeed * (kart.aiTempo + catchup) * std::clamp(1.07f - futureCorner * 2.05f, 0.76f, 1.10f);
 
         Input3D ai;
         ai.steer = std::clamp(angleError * (1.92f + kart.aiRisk * 0.36f), -1.0f, 1.0f);
@@ -1209,8 +1333,8 @@ private:
                     }
                     ka.vel *= 0.985f;
                     kb.vel *= 0.985f;
-                    ka.contactTimer = 0.13f;
-                    kb.contactTimer = 0.13f;
+                    ka.contactTimer = 0.22f;
+                    kb.contactTimer = 0.22f;
                 }
             }
         }
@@ -1655,12 +1779,14 @@ private:
 
 int runHarborKarts3D(int argc, char** argv) {
     const bool windowed = hasArg(argc, argv, "--windowed") || hasArg(argc, argv, "--smoke-render") ||
-                          hasArg(argc, argv, "--diagnose-controller") || hasArg(argc, argv, "--handling-audit");
+                          hasArg(argc, argv, "--diagnose-controller") || hasArg(argc, argv, "--handling-audit") ||
+                          hasArg(argc, argv, "--race-audit");
     const bool devKeyboard = hasArg(argc, argv, "--dev-keyboard");
     const bool smokeRender = hasArg(argc, argv, "--smoke-render");
     const bool capturePlaytest = hasArg(argc, argv, "--capture-playtest");
     const bool diagnoseController = hasArg(argc, argv, "--diagnose-controller");
     const bool handlingAudit = hasArg(argc, argv, "--handling-audit");
+    const bool raceAudit = hasArg(argc, argv, "--race-audit");
     const std::filesystem::path launchDir = std::filesystem::current_path();
     const std::filesystem::path captureDir = launchDir / "build" / "playtest_frames";
 
@@ -1683,6 +1809,11 @@ int runHarborKarts3D(int argc, char** argv) {
     }
     if (handlingAudit) {
         const bool ok = game.runHandlingAudit();
+        CloseWindow();
+        return ok ? 0 : 1;
+    }
+    if (raceAudit) {
+        const bool ok = game.runRaceAudit();
         CloseWindow();
         return ok ? 0 : 1;
     }
