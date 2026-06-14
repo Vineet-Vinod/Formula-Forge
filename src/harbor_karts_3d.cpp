@@ -50,6 +50,7 @@ Vector3 toWorld(Vec2 p, float elevation = 0.0f) {
 Vector3 add(Vector3 a, Vector3 b) { return {a.x + b.x, a.y + b.y, a.z + b.z}; }
 Vector3 sub(Vector3 a, Vector3 b) { return {a.x - b.x, a.y - b.y, a.z - b.z}; }
 Vector3 mul(Vector3 a, float s) { return {a.x * s, a.y * s, a.z * s}; }
+Vector3 lift(Vector3 v, float amount) { return {v.x, v.y + amount, v.z}; }
 
 float signedDistanceToLoop(float from, float to, float total) {
     float d = to - from;
@@ -342,6 +343,14 @@ private:
             } else {
                 prop.type = Prop3D::Type::Palm;
                 prop.color = Color{48, 156, 86, 255};
+            }
+            if (prop.type == Prop3D::Type::Chevron) {
+                const float outside = std::abs(tp.signedCurvature) > 0.015f ? -std::copysign(1.0f, tp.signedCurvature) : sideSign;
+                prop.side = outside * (tp.width * 0.5f + 48.0f);
+                prop.scale *= 1.42f;
+            } else if (prop.type == Prop3D::Type::Palm || prop.type == Prop3D::Type::Crane || prop.type == Prop3D::Type::Cliff ||
+                       prop.type == Prop3D::Type::Crystal) {
+                prop.side += sideSign * 46.0f;
             }
             props_.push_back(prop);
         }
@@ -707,6 +716,18 @@ void drawLocalWheel(float x, float z, float radius, float width, Color tire, Col
     DrawCylinderEx({x - width * 0.52f, radius, z}, {x + width * 0.52f, radius, z}, radius * 0.42f, radius * 0.42f, 10, hub);
 }
 
+void drawSkyGradient() {
+    const int w = GetScreenWidth();
+    const int h = GetScreenHeight();
+    constexpr int kBands = 36;
+    for (int i = 0; i < kBands; ++i) {
+        const float t = static_cast<float>(i) / static_cast<float>(kBands - 1);
+        const int y0 = i * h / kBands;
+        const int y1 = (i + 1) * h / kBands + 1;
+        DrawRectangle(0, y0, w, y1 - y0, mix(Color{69, 189, 237, 255}, Color{177, 238, 244, 255}, t));
+    }
+}
+
 class Game3D {
 public:
     enum class Mode { Garage, Race, Pause };
@@ -748,6 +769,7 @@ public:
     void render(float fps, bool hasController) {
         BeginDrawing();
         ClearBackground(Color{91, 196, 232, 255});
+        drawSkyGradient();
         BeginMode3D(camera_);
         rlDisableBackfaceCulling();
         drawEnvironment();
@@ -1270,8 +1292,8 @@ private:
         const Vec2 apexDir = normalize((future.pos + future.normal * std::clamp(player.lane * 0.3f, -20.0f, 20.0f)) - player.pos);
         const Vec2 blended = normalize(lerp(forward2, apexDir, std::clamp(0.27f + future.curvature * 3.0f, 0.27f, 0.57f)));
         const float speed = length(player.vel);
-        const float back = lerp(104.0f, 210.0f, std::clamp(speed / 150.0f, 0.0f, 1.0f));
-        const float height = lerp(62.0f, 118.0f, std::clamp(speed / 150.0f, 0.0f, 1.0f));
+        const float back = lerp(88.0f, 222.0f, std::clamp(speed / 150.0f, 0.0f, 1.0f));
+        const float height = lerp(72.0f, 126.0f, std::clamp(speed / 150.0f, 0.0f, 1.0f));
         const TrackPoint3D ground = track_.sample(player.progress);
         const Vector3 focus = toWorld(player.pos, ground.elevation + 12.0f);
         const Vector3 desiredPos = toWorld(player.pos - blended * back, ground.elevation + height);
@@ -1313,37 +1335,63 @@ private:
             const float shoulderA = a.width * 0.5f + 32.0f;
             const float shoulderB = b.width * 0.5f + 32.0f;
             const Color shoulder = shade(mix(a.shoulder, b.shoulder, 0.5f), (i / stride) % 2 == 0 ? 1.0f : 0.95f);
-            drawQuad(track_.roadPoint(a, -shoulderA), track_.roadPoint(b, -shoulderB), track_.roadPoint(b, shoulderB),
-                     track_.roadPoint(a, shoulderA), shoulder);
 
             const float halfA = a.width * 0.5f;
             const float halfB = b.width * 0.5f;
+            drawQuad(track_.roadPoint(a, -shoulderA), track_.roadPoint(b, -shoulderB), track_.roadPoint(b, -halfB),
+                     track_.roadPoint(a, -halfA), shoulder);
+            drawQuad(track_.roadPoint(a, halfA), track_.roadPoint(b, halfB), track_.roadPoint(b, shoulderB), track_.roadPoint(a, shoulderA),
+                     shoulder);
+
             const Color road = shade(mix(a.road, b.road, 0.5f), (i / stride) % 2 == 0 ? 1.05f : 0.96f);
-            drawQuad(track_.roadPoint(a, -halfA), track_.roadPoint(b, -halfB), track_.roadPoint(b, halfB), track_.roadPoint(a, halfA), road);
+            drawQuad(lift(track_.roadPoint(a, -halfA), 0.028f), lift(track_.roadPoint(b, -halfB), 0.028f),
+                     lift(track_.roadPoint(b, halfB), 0.028f), lift(track_.roadPoint(a, halfA), 0.028f), road);
+
+            const Color lip = a.zone == 3 ? Color{23, 30, 39, 255} : Color{74, 59, 45, 255};
+            const float lipWidth = 4.8f;
+            drawQuad(lift(track_.roadPoint(a, -halfA - lipWidth), 0.052f), lift(track_.roadPoint(b, -halfB - lipWidth), 0.052f),
+                     lift(track_.roadPoint(b, -halfB), 0.052f), lift(track_.roadPoint(a, -halfA), 0.052f), lip);
+            drawQuad(lift(track_.roadPoint(a, halfA), 0.052f), lift(track_.roadPoint(b, halfB), 0.052f),
+                     lift(track_.roadPoint(b, halfB + lipWidth), 0.052f), lift(track_.roadPoint(a, halfA + lipWidth), 0.052f), lip);
+
+            if ((a.zone == 1 || a.zone == 5) && (i / stride) % 5 == 0) {
+                const Color plank = shade(road, 0.72f);
+                drawQuad(lift(track_.roadPoint(a, -halfA + 7.0f), 0.062f), lift(track_.roadPoint(b, -halfB + 7.0f), 0.062f),
+                         lift(track_.roadPoint(b, halfB - 7.0f), 0.062f), lift(track_.roadPoint(a, halfA - 7.0f), 0.062f),
+                         plank);
+            }
         }
 
-        for (int i = 0; i < track_.sampleCount(); i += 18) {
+        for (int i = 0; i < track_.sampleCount(); i += 10) {
             const TrackPoint3D& p = samples[static_cast<size_t>(i)];
+            const bool curveMarker = p.curvature > 0.030f || p.zone == 1 || p.zone == 5;
+            if (!curveMarker && i % 20 != 0) {
+                continue;
+            }
             for (float side : {-1.0f, 1.0f}) {
                 const float lane = side * (p.width * 0.5f + 3.5f);
-                const Vector3 pos = track_.roadPoint(p, lane);
+                const Vector3 pos = lift(track_.roadPoint(p, lane), 0.09f);
                 rlPushMatrix();
                 rlTranslatef(pos.x, pos.y + 0.16f, pos.z);
                 rlRotatef(90.0f - angleOf(p.tangent) * RAD2DEG, 0.0f, 1.0f, 0.0f);
-                DrawCubeV({0.0f, 0.0f, 0.0f}, {0.32f, 0.18f, 1.15f}, (i / 18) % 2 == 0 ? Color{255, 237, 136, 255} : Color{255, 255, 234, 255});
+                const Color curb = (i / 10) % 2 == 0 ? Color{255, 232, 83, 255} : Color{255, 255, 236, 255};
+                DrawCubeV({0.0f, 0.0f, 0.0f}, {0.44f, 0.22f, curveMarker ? 1.55f : 1.15f}, curb);
                 rlPopMatrix();
             }
         }
 
-        const TrackPoint3D start = track_.sample(0.0f);
-        const Vector3 gate = track_.roadPoint(start, 0.0f);
-        rlPushMatrix();
-        rlTranslatef(gate.x, gate.y + 2.8f, gate.z);
-        rlRotatef(90.0f - angleOf(start.tangent) * RAD2DEG, 0.0f, 1.0f, 0.0f);
-        DrawCubeV({0.0f, 0.0f, 0.0f}, {start.width * kRenderScale + 3.0f, 0.55f, 0.55f}, Color{255, 235, 106, 255});
-        DrawCubeV({-start.width * kRenderScale * 0.5f, -1.6f, 0.0f}, {0.5f, 4.6f, 0.5f}, Color{48, 130, 166, 255});
-        DrawCubeV({start.width * kRenderScale * 0.5f, -1.6f, 0.0f}, {0.5f, 4.6f, 0.5f}, Color{48, 130, 166, 255});
-        rlPopMatrix();
+        const bool showGate = mode_ == Mode::Garage || karts_.empty() || (karts_[0].lap == 0 && karts_[0].progress < 34.0f);
+        if (showGate) {
+            const TrackPoint3D start = track_.sample(0.0f);
+            const Vector3 gate = track_.roadPoint(start, 0.0f);
+            rlPushMatrix();
+            rlTranslatef(gate.x, gate.y + 4.15f, gate.z);
+            rlRotatef(90.0f - angleOf(start.tangent) * RAD2DEG, 0.0f, 1.0f, 0.0f);
+            DrawCubeV({0.0f, 0.0f, 0.0f}, {start.width * kRenderScale + 3.0f, 0.34f, 0.42f}, Color{255, 235, 106, 255});
+            DrawCubeV({-start.width * kRenderScale * 0.5f, -2.35f, 0.0f}, {0.46f, 5.1f, 0.46f}, Color{48, 130, 166, 255});
+            DrawCubeV({start.width * kRenderScale * 0.5f, -2.35f, 0.0f}, {0.46f, 5.1f, 0.46f}, Color{48, 130, 166, 255});
+            rlPopMatrix();
+        }
     }
 
     void drawProp(const Prop3D& prop) {
@@ -1439,9 +1487,55 @@ private:
         drawLocalBox({0.0f, h * 1.42f, -l * 0.16f}, {w * 0.46f, h * 0.42f, l * 0.34f}, kart.spec.glass);
         drawLocalBox({0.0f, h * 0.92f, l * 0.40f}, {w * 0.92f, h * 0.17f, l * 0.12f}, kart.spec.accent);
         drawLocalBox({0.0f, h * 0.90f, -l * 0.52f}, {w * 0.58f, h * 0.15f, l * 0.15f}, kart.spec.accent);
+        drawLocalBox({0.0f, h * 0.52f, l * 0.58f}, {w * 1.05f, h * 0.20f, l * 0.12f}, shade(kart.spec.accent, 0.92f));
+        drawLocalBox({0.0f, h * 0.50f, -l * 0.66f}, {w * 0.88f, h * 0.18f, l * 0.11f}, shade(kart.spec.accent, 0.82f));
 
-        const float tireR = std::max(0.36f, h * 0.42f);
-        const float tireW = w * 0.28f;
+        const Color fender = shade(kart.spec.body, 0.78f);
+        for (float sx : {-1.0f, 1.0f}) {
+            drawLocalBox({sx * w * 0.57f, h * 0.62f, l * 0.34f}, {w * 0.30f, h * 0.22f, l * 0.28f}, fender);
+            drawLocalBox({sx * w * 0.57f, h * 0.60f, -l * 0.38f}, {w * 0.29f, h * 0.20f, l * 0.26f}, fender);
+        }
+
+        switch (kart.spec.bodyStyle % 8) {
+            case 0:
+                drawLocalBox({0.0f, h * 1.58f, -l * 0.66f}, {w * 0.95f, h * 0.14f, l * 0.20f}, kart.spec.accent);
+                drawLocalBox({-w * 0.42f, h * 1.30f, -l * 0.58f}, {w * 0.09f, h * 0.72f, l * 0.08f}, shade(kart.spec.body, 0.72f));
+                drawLocalBox({w * 0.42f, h * 1.30f, -l * 0.58f}, {w * 0.09f, h * 0.72f, l * 0.08f}, shade(kart.spec.body, 0.72f));
+                break;
+            case 1:
+                drawLocalBox({0.0f, h * 0.92f, l * 0.58f}, {w * 0.54f, h * 0.30f, l * 0.30f}, shade(kart.spec.body, 1.12f));
+                drawLocalBox({0.0f, h * 1.72f, -l * 0.30f}, {w * 0.16f, h * 0.72f, l * 0.14f}, kart.spec.accent);
+                break;
+            case 2:
+                for (float sx : {-1.0f, 1.0f}) {
+                    drawLocalBox({sx * w * 0.34f, h * 1.74f, -l * 0.12f}, {w * 0.08f, h * 1.10f, l * 0.08f}, shade(kart.spec.accent, 0.88f));
+                }
+                drawLocalBox({0.0f, h * 2.18f, -l * 0.12f}, {w * 0.82f, h * 0.10f, l * 0.12f}, shade(kart.spec.accent, 0.88f));
+                break;
+            case 3:
+                drawLocalBox({0.0f, h * 0.82f, l * 0.68f}, {w * 0.42f, h * 0.22f, l * 0.42f}, shade(kart.spec.body, 1.12f));
+                drawLocalBox({0.0f, h * 1.02f, -l * 0.66f}, {w * 0.34f, h * 0.18f, l * 0.20f}, kart.spec.accent);
+                break;
+            case 4:
+                drawLocalBox({0.0f, h * 1.34f, -l * 0.18f}, {w * 0.78f, h * 0.30f, l * 0.56f}, shade(kart.spec.body, 1.08f));
+                drawLocalBox({0.0f, h * 1.72f, -l * 0.20f}, {w * 0.50f, h * 0.22f, l * 0.26f}, kart.spec.glass);
+                break;
+            case 5:
+                drawLocalBox({-w * 0.30f, h * 0.74f, -l * 0.76f}, {w * 0.16f, h * 0.16f, l * 0.30f}, Color{45, 49, 52, 255});
+                drawLocalBox({w * 0.30f, h * 0.74f, -l * 0.76f}, {w * 0.16f, h * 0.16f, l * 0.30f}, Color{45, 49, 52, 255});
+                break;
+            case 6:
+                drawLocalBox({-w * 0.38f, h * 1.84f, -l * 0.10f}, {w * 0.08f, h * 0.10f, l * 0.72f}, kart.spec.accent);
+                drawLocalBox({w * 0.38f, h * 1.84f, -l * 0.10f}, {w * 0.08f, h * 0.10f, l * 0.72f}, kart.spec.accent);
+                break;
+            default:
+                drawLocalBox({-w * 0.46f, h * 1.12f, -l * 0.52f}, {w * 0.14f, h * 0.62f, l * 0.20f}, kart.spec.accent);
+                drawLocalBox({w * 0.46f, h * 1.12f, -l * 0.52f}, {w * 0.14f, h * 0.62f, l * 0.20f}, kart.spec.accent);
+                break;
+        }
+
+        const float tireR = std::max(0.42f, h * 0.48f);
+        const float tireW = w * 0.32f;
         drawLocalWheel(-w * 0.55f, l * 0.35f, tireR, tireW, Color{25, 29, 32, 255}, kart.spec.accent);
         drawLocalWheel(w * 0.55f, l * 0.35f, tireR, tireW, Color{25, 29, 32, 255}, kart.spec.accent);
         drawLocalWheel(-w * 0.55f, -l * 0.38f, tireR, tireW, Color{25, 29, 32, 255}, kart.spec.accent);
@@ -1513,12 +1607,12 @@ private:
                  Color{218, 242, 231, 255});
 
         const int meterX = 34;
-        const int meterY = GetScreenHeight() - 54;
-        DrawRectangle(meterX, meterY, 210, 18, Color{10, 43, 55, 210});
+        const int meterY = GetScreenHeight() - 86;
+        DrawRectangle(meterX, meterY, 232, 22, Color{10, 43, 55, 210});
         const float charge = player.drifting ? std::clamp(player.driftCharge / 1.2f, 0.0f, 1.0f) : std::clamp(player.boostTimer / 1.15f, 0.0f, 1.0f);
-        DrawRectangle(meterX + 3, meterY + 3, static_cast<int>(204.0f * charge), 12,
+        DrawRectangle(meterX + 3, meterY + 3, static_cast<int>(226.0f * charge), 16,
                       player.boostTimer > 0.0f ? Color{255, 169, 43, 255} : Color{90, 218, 231, 255});
-        DrawText(player.drifting ? "DRIFT" : "BOOST", meterX, meterY - 22, 16, Color{230, 247, 241, 255});
+        DrawText(player.drifting ? "DRIFT" : "BOOST", meterX, meterY - 25, 18, Color{230, 247, 241, 255});
 
         DrawText(TextFormat("%.0f FPS", fps), w - 104, GetScreenHeight() - 34, 18, Color{255, 235, 164, 255});
         if (!hasController) {
@@ -1570,7 +1664,7 @@ int runHarborKarts3D(int argc, char** argv) {
     const std::filesystem::path launchDir = std::filesystem::current_path();
     const std::filesystem::path captureDir = launchDir / "build" / "playtest_frames";
 
-    SetTraceLogLevel(LOG_WARNING);
+    SetTraceLogLevel(LOG_ERROR);
     SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_RESIZABLE);
     InitWindow(1280, 720, "Shark Harbor Karts 3D");
     ChangeDirectory(launchDir.string().c_str());
