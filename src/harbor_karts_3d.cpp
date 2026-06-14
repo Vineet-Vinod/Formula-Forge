@@ -1780,13 +1780,14 @@ private:
 int runHarborKarts3D(int argc, char** argv) {
     const bool windowed = hasArg(argc, argv, "--windowed") || hasArg(argc, argv, "--smoke-render") ||
                           hasArg(argc, argv, "--diagnose-controller") || hasArg(argc, argv, "--handling-audit") ||
-                          hasArg(argc, argv, "--race-audit");
+                          hasArg(argc, argv, "--race-audit") || hasArg(argc, argv, "--perf-audit");
     const bool devKeyboard = hasArg(argc, argv, "--dev-keyboard");
     const bool smokeRender = hasArg(argc, argv, "--smoke-render");
     const bool capturePlaytest = hasArg(argc, argv, "--capture-playtest");
     const bool diagnoseController = hasArg(argc, argv, "--diagnose-controller");
     const bool handlingAudit = hasArg(argc, argv, "--handling-audit");
     const bool raceAudit = hasArg(argc, argv, "--race-audit");
+    const bool perfAudit = hasArg(argc, argv, "--perf-audit");
     const std::filesystem::path launchDir = std::filesystem::current_path();
     const std::filesystem::path captureDir = launchDir / "build" / "playtest_frames";
 
@@ -1803,7 +1804,7 @@ int runHarborKarts3D(int argc, char** argv) {
 
     ControllerReader controller;
     Game3D game;
-    if (capturePlaytest) {
+    if (capturePlaytest || perfAudit) {
         std::filesystem::create_directories(captureDir);
         game.startRace();
     }
@@ -1822,8 +1823,13 @@ int runHarborKarts3D(int argc, char** argv) {
     double accumulator = 0.0;
     int frames = 0;
     double diagnosticStamp = GetTime();
+    std::vector<float> frameTimesMs;
+    if (perfAudit) {
+        frameTimesMs.reserve(520);
+    }
 
     while (!WindowShouldClose()) {
+        const double frameBegin = GetTime();
         const double now = GetTime();
         accumulator += std::min(0.10, now - previous);
         previous = now;
@@ -1845,12 +1851,33 @@ int runHarborKarts3D(int argc, char** argv) {
             controller.printSnapshot();
             diagnosticStamp = now;
         }
+        if (perfAudit && frames > 30) {
+            frameTimesMs.push_back(static_cast<float>((GetTime() - frameBegin) * 1000.0));
+        }
         ++frames;
-        if ((smokeRender && frames > 180) || (capturePlaytest && frames > 430) || (diagnoseController && frames > 900)) {
+        if ((smokeRender && frames > 180) || (capturePlaytest && frames > 430) || (diagnoseController && frames > 900) ||
+            (perfAudit && frames > 520)) {
             break;
         }
     }
 
     CloseWindow();
+    if (perfAudit) {
+        std::sort(frameTimesMs.begin(), frameTimesMs.end());
+        const auto percentile = [&](float p) {
+            if (frameTimesMs.empty()) {
+                return 0.0f;
+            }
+            const size_t index = std::min(frameTimesMs.size() - 1, static_cast<size_t>(p * static_cast<float>(frameTimesMs.size() - 1)));
+            return frameTimesMs[index];
+        };
+        const float p50 = percentile(0.50f);
+        const float p95 = percentile(0.95f);
+        const float maxFrame = frameTimesMs.empty() ? 0.0f : frameTimesMs.back();
+        const bool ok = p95 <= 19.2f && maxFrame <= 34.0f;
+        std::cout << "perf-audit-3d frames=" << frameTimesMs.size() << " p50_ms=" << p50 << " p95_ms=" << p95 << " max_ms=" << maxFrame
+                  << " ok=" << ok << "\n";
+        return ok ? 0 : 1;
+    }
     return 0;
 }

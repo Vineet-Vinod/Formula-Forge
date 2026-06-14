@@ -88,6 +88,7 @@ make smoke-3d
 make capture-playtest-3d
 make handling-audit-3d
 make race-audit-3d
+make perf-audit-3d
 ./build/game/harbor_karts --smoke-render --dev-keyboard
 ```
 
@@ -104,6 +105,8 @@ The smoke render verifies SDL startup and framebuffer presentation.
 for visual inspection.
 `race-audit-3d` runs the 3D scripted player against live AI and reports pack
 pressure, overtakes, contacts, and progress stability.
+`perf-audit-3d` records 3D frame timings and fails if p95 misses the 60fps
+budget.
 `--diagnose-controller` prints both raylib and direct SDL controller readings,
 which helps with USB receivers that expose a partial or unusual mapping.
 
