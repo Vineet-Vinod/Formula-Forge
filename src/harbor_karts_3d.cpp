@@ -85,6 +85,7 @@ struct TrackPoint3D {
     float signedCurvature = 0.0f;
     Color road = {206, 122, 67, 255};
     Color shoulder = {239, 199, 111, 255};
+    Color natural = {244, 207, 124, 255};
     int zone = 0;
 };
 
@@ -107,6 +108,95 @@ struct Prop3D {
     float scale = 1.0f;
     Color color = {60, 159, 91, 255};
 };
+
+struct ZoneMaterial3D {
+    Color road = {214, 142, 76, 255};
+    Color shoulder = {240, 198, 108, 255};
+    Color natural = {244, 207, 124, 255};
+};
+
+ZoneMaterial3D baseZoneMaterial(int zone) {
+    switch (zone) {
+        case 1:
+            return {{150, 101, 65, 255}, {176, 128, 82, 255}, {204, 168, 103, 255}};
+        case 2:
+            return {{211, 134, 84, 255}, {232, 181, 100, 255}, {229, 174, 98, 255}};
+        case 3:
+            return {{98, 98, 99, 255}, {111, 108, 99, 255}, {125, 119, 101, 255}};
+        case 4:
+            return {{137, 153, 100, 255}, {122, 166, 96, 255}, {109, 169, 94, 255}};
+        case 5:
+            return {{147, 108, 74, 255}, {123, 150, 124, 255}, {82, 168, 166, 255}};
+        case 6:
+            return {{216, 149, 82, 255}, {239, 200, 112, 255}, {241, 199, 109, 255}};
+        default:
+            return {{224, 156, 86, 255}, {242, 205, 119, 255}, {244, 209, 130, 255}};
+    }
+}
+
+ZoneMaterial3D mixMaterial(ZoneMaterial3D a, ZoneMaterial3D b, float t) {
+    return {mix(a.road, b.road, t), mix(a.shoulder, b.shoulder, t), mix(a.natural, b.natural, t)};
+}
+
+int zoneForPhase(float phase) {
+    if (phase < 0.14f) {
+        return 0;
+    }
+    if (phase < 0.29f) {
+        return 1;
+    }
+    if (phase < 0.42f) {
+        return 2;
+    }
+    if (phase < 0.58f) {
+        return 3;
+    }
+    if (phase < 0.72f) {
+        return 4;
+    }
+    if (phase < 0.85f) {
+        return 5;
+    }
+    return 6;
+}
+
+float trackWidthForZone(int zone) {
+    switch (zone) {
+        case 1:
+            return 176.0f;
+        case 2:
+            return 204.0f;
+        case 3:
+            return 170.0f;
+        case 4:
+            return 198.0f;
+        case 5:
+            return 174.0f;
+        case 6:
+            return 230.0f;
+        default:
+            return 226.0f;
+    }
+}
+
+ZoneMaterial3D materialForPhase(float phase) {
+    ZoneMaterial3D material = baseZoneMaterial(zoneForPhase(phase));
+    static constexpr float kBlend = 0.034f;
+    static constexpr std::array<std::array<float, 3>, 6> kBoundaries = {{{0.14f, 0.0f, 1.0f},
+                                                                        {0.29f, 1.0f, 2.0f},
+                                                                        {0.42f, 2.0f, 3.0f},
+                                                                        {0.58f, 3.0f, 4.0f},
+                                                                        {0.72f, 4.0f, 5.0f},
+                                                                        {0.85f, 5.0f, 6.0f}}};
+    for (const auto& boundary : kBoundaries) {
+        const float p = boundary[0];
+        if (phase >= p - kBlend && phase <= p + kBlend) {
+            const float t = smoothstep((phase - (p - kBlend)) / (kBlend * 2.0f));
+            material = mixMaterial(baseZoneMaterial(static_cast<int>(boundary[1])), baseZoneMaterial(static_cast<int>(boundary[2])), t);
+        }
+    }
+    return material;
+}
 
 class Track3D {
 public:
@@ -138,6 +228,7 @@ public:
         out.signedCurvature = lerp(a.signedCurvature, b.signedCurvature, t);
         out.road = mix(a.road, b.road, t);
         out.shoulder = mix(a.shoulder, b.shoulder, t);
+        out.natural = mix(a.natural, b.natural, t);
         out.zone = t < 0.5f ? a.zone : b.zone;
         return out;
     }
@@ -196,52 +287,26 @@ private:
 
     static TrackPoint3D decorate(TrackPoint3D point, float phase) {
         phase -= std::floor(phase);
-        point.width = 178.0f;
-        point.road = {212, 130, 67, 255};
-        point.shoulder = {245, 202, 105, 255};
-        point.zone = 0;
+        const ZoneMaterial3D material = materialForPhase(phase);
+        point.zone = zoneForPhase(phase);
+        point.width = trackWidthForZone(point.zone);
+        point.road = material.road;
+        point.shoulder = material.shoulder;
+        point.natural = material.natural;
 
         if (phase < 0.14f) {
-            point.zone = 0;
-            point.width = 226.0f;
-            point.road = {224, 155, 78, 255};
-            point.shoulder = {250, 219, 125, 255};
             point.elevation += 2.0f;
         } else if (phase < 0.29f) {
-            point.zone = 1;
-            point.width = 176.0f;
-            point.road = {143, 87, 49, 255};
-            point.shoulder = {112, 76, 50, 255};
             point.elevation += 13.0f;
         } else if (phase < 0.42f) {
-            point.zone = 2;
-            point.width = 204.0f;
-            point.road = {198, 98, 76, 255};
-            point.shoulder = {238, 175, 81, 255};
             point.elevation += 5.0f;
         } else if (phase < 0.58f) {
-            point.zone = 3;
-            point.width = 170.0f;
-            point.road = {76, 76, 86, 255};
-            point.shoulder = {49, 54, 64, 255};
             point.elevation += 32.0f * smoothstep((phase - 0.42f) / 0.16f);
         } else if (phase < 0.72f) {
-            point.zone = 4;
-            point.width = 198.0f;
-            point.road = {128, 136, 96, 255};
-            point.shoulder = {68, 142, 88, 255};
             point.elevation += 28.0f * (1.0f - smoothstep((phase - 0.58f) / 0.14f));
         } else if (phase < 0.85f) {
-            point.zone = 5;
-            point.width = 174.0f;
-            point.road = {144, 82, 47, 255};
-            point.shoulder = {48, 170, 184, 255};
             point.elevation += 11.0f;
         } else {
-            point.zone = 6;
-            point.width = 230.0f;
-            point.road = {213, 130, 68, 255};
-            point.shoulder = {246, 207, 111, 255};
             point.elevation += 4.0f;
         }
 
@@ -796,6 +861,44 @@ void drawQuad(Vector3 a, Vector3 b, Vector3 c, Vector3 d, Color color) {
     DrawTriangle3D(a, c, d, color);
 }
 
+void gradientVertex(Vector3 v, Color color) {
+    rlColor4ub(color.r, color.g, color.b, color.a);
+    rlVertex3f(v.x, v.y, v.z);
+}
+
+void drawGradientQuad(Vector3 a, Vector3 b, Vector3 c, Vector3 d, Color ca, Color cb, Color cc, Color cd) {
+    rlBegin(RL_TRIANGLES);
+    gradientVertex(a, ca);
+    gradientVertex(b, cb);
+    gradientVertex(c, cc);
+    gradientVertex(a, ca);
+    gradientVertex(c, cc);
+    gradientVertex(d, cd);
+    rlEnd();
+    rlColor4ub(255, 255, 255, 255);
+}
+
+void drawFlatOval(Vector3 pos, float radiusX, float radiusZ, float height, Color color, int segments = 48) {
+    rlPushMatrix();
+    rlTranslatef(pos.x, pos.y, pos.z);
+    rlScalef(radiusX, 1.0f, radiusZ);
+    DrawCylinder({0.0f, 0.0f, 0.0f}, 1.0f, 1.0f, height, segments, color);
+    rlPopMatrix();
+}
+
+void drawGradientOval(Vector3 pos, float radiusX, float radiusZ, Color center, Color edge, int segments = 72) {
+    rlBegin(RL_TRIANGLES);
+    for (int i = 0; i < segments; ++i) {
+        const float a0 = static_cast<float>(i) / static_cast<float>(segments) * kTwoPi;
+        const float a1 = static_cast<float>(i + 1) / static_cast<float>(segments) * kTwoPi;
+        gradientVertex(pos, center);
+        gradientVertex({pos.x + std::cos(a0) * radiusX, pos.y, pos.z + std::sin(a0) * radiusZ}, edge);
+        gradientVertex({pos.x + std::cos(a1) * radiusX, pos.y, pos.z + std::sin(a1) * radiusZ}, edge);
+    }
+    rlEnd();
+    rlColor4ub(255, 255, 255, 255);
+}
+
 void drawLocalBox(Vector3 pos, Vector3 size, Color color) {
     DrawCubeV(pos, size, color);
 }
@@ -914,43 +1017,44 @@ float offroadReachForZone(int zone) {
 }
 
 Color naturalSurfaceColor(int zone) {
-    switch (zone) {
-        case 1:
-            return {151, 103, 61, 255};
-        case 2:
-            return {224, 159, 86, 255};
-        case 3:
-            return {61, 65, 76, 255};
-        case 4:
-            return {76, 155, 91, 255};
-        case 5:
-            return {61, 171, 181, 255};
-        case 6:
-            return {244, 203, 111, 255};
-        default:
-            return {248, 214, 128, 255};
-    }
+    return baseZoneMaterial(zone).natural;
 }
 
 Color surfaceColorAt(const TrackPoint3D& point, float lane) {
     const float half = point.width * 0.5f;
     const float absLane = std::abs(lane);
-    const Color natural = naturalSurfaceColor(point.zone);
-    Color base = point.road;
+    const Color natural = point.natural;
+    const float shoulderT = smoothstep((absLane - half * 0.18f) / std::max(half * 1.18f, 1.0f));
+    const float wildT = smoothstep((absLane - half * 0.56f) / std::max(offroadReachForZone(point.zone) * 1.04f, 1.0f));
+    const float crown = smoothstep(absLane / std::max(half * 0.72f, 1.0f));
+    Color base = mix(mix(shade(point.road, 1.04f), shade(point.road, 0.995f), crown), point.shoulder, shoulderT * 0.84f);
+    base = mix(base, natural, wildT * 0.94f);
 
-    if (absLane < half * 0.54f) {
-        const float crown = std::abs(lane) / std::max(half * 0.54f, 1.0f);
-        base = mix(shade(point.road, 1.05f), point.road, crown);
-    } else if (absLane < half) {
-        base = mix(point.road, point.shoulder, smoothstep((absLane - half * 0.54f) / std::max(half * 0.46f, 1.0f)));
-    } else {
-        const float blend = smoothstep((absLane - half) / 84.0f);
-        base = mix(point.shoulder, natural, blend);
-    }
+    const float grain = 0.5f + 0.5f * std::sin(point.progress * 0.018f + lane * 0.047f + static_cast<float>(point.zone) * 1.7f);
+    const float broad = 0.5f + 0.5f * std::sin(point.progress * 0.0041f - lane * 0.013f);
+    return shade(base, 0.972f + grain * 0.026f + broad * 0.022f);
+}
 
-    const float grain = 0.5f + 0.5f * std::sin(point.progress * 0.019f + lane * 0.061f + static_cast<float>(point.zone) * 1.7f);
-    const float broad = 0.5f + 0.5f * std::sin(point.progress * 0.0047f - lane * 0.018f);
-    return shade(base, 0.955f + grain * 0.045f + broad * 0.030f);
+std::array<float, 17> surfaceCuts(const TrackPoint3D& point) {
+    const float half = point.width * 0.5f;
+    const float reach = offroadReachForZone(point.zone);
+    return {-half - reach,
+            -half - reach * 0.68f,
+            -half - reach * 0.42f,
+            -half - reach * 0.20f,
+            -half - reach * 0.04f,
+            -half * 0.82f,
+            -half * 0.54f,
+            -half * 0.26f,
+            0.0f,
+            half * 0.26f,
+            half * 0.54f,
+            half * 0.82f,
+            half + reach * 0.04f,
+            half + reach * 0.20f,
+            half + reach * 0.42f,
+            half + reach * 0.68f,
+            half + reach};
 }
 
 class Game3D {
@@ -1011,6 +1115,52 @@ public:
     void startRace() {
         resetRace();
         mode_ = Mode::Race;
+    }
+
+    void setupSectionTour(float phase, int variant) {
+        resetRace();
+        mode_ = Mode::Race;
+        particles_.clear();
+        raceTime_ = phase * 18.0f;
+
+        const float baseProgress = wrapDistance(track_.totalLength() * phase, track_.totalLength());
+        static constexpr std::array<float, kKartCount> kProgressOffset = {0.0f, 72.0f, 148.0f, 226.0f, -74.0f, -142.0f, 304.0f, -214.0f};
+        static constexpr std::array<float, kKartCount> kLaneOffset = {0.0f, -22.0f, 26.0f, -6.0f, 28.0f, -30.0f, 12.0f, -14.0f};
+
+        for (int i = 0; i < kKartCount; ++i) {
+            Kart3D& kart = karts_[static_cast<size_t>(i)];
+            const float progress = wrapDistance(baseProgress + kProgressOffset[static_cast<size_t>(i)] +
+                                                    static_cast<float>((variant * (i + 3)) % 17) * 2.0f,
+                                                track_.totalLength());
+            const TrackPoint3D point = track_.sample(progress);
+            const float lane = std::clamp(kLaneOffset[static_cast<size_t>(i)], -point.width * 0.42f, point.width * 0.42f);
+            kart.pos = point.pos + point.normal * lane;
+            kart.heading = angleOf(point.tangent) + static_cast<float>((i % 3) - 1) * 0.018f;
+            kart.vel = point.tangent * (i == 0 ? 104.0f : 82.0f + static_cast<float>((i * 7) % 20));
+            kart.nearest = track_.nearestIndex(kart.pos);
+            kart.progress = track_.pointAtIndex(kart.nearest).progress;
+            kart.previousProgress = kart.progress;
+            kart.lap = 0;
+            kart.lane = lane;
+            kart.contactTimer = 0.0f;
+            kart.drifting = false;
+            kart.boostTimer = i == 0 && variant % 3 == 1 ? 0.35f : 0.0f;
+            kart.driftCharge = 0.0f;
+            kart.steerSmoothed = (variant % 2 == 0 ? -0.18f : 0.18f) * std::clamp(point.curvature * 7.0f, 0.0f, 1.0f);
+        }
+
+        updateRaceOrder();
+        const Kart3D& player = karts_[0];
+        const TrackPoint3D ground = track_.sample(player.progress);
+        const TrackPoint3D future = track_.sample(player.progress + 150.0f);
+        const Vec2 view = normalize(lerp(fromAngle(player.heading), future.tangent, 0.35f));
+        const Vec2 side = ground.normal * (variant % 2 == 0 ? 24.0f : -16.0f);
+        const float groundY = bankedElevation(ground, player.lane);
+        camera_.position = toWorld(player.pos - view * 190.0f + side, groundY + 82.0f);
+        camera_.target = toWorld(player.pos + view * 122.0f + ground.normal * 6.0f, groundY + 13.0f);
+        camera_.up = {0.0f, 1.0f, 0.0f};
+        camera_.fovy = 60.0f;
+        camera_.projection = CAMERA_PERSPECTIVE;
     }
 
     Input3D scriptedInput() const {
@@ -1154,6 +1304,10 @@ public:
         std::cout << "rear_ok=" << rearOk << " head_ok=" << headOk << " side_ok=" << sideOk << "\n";
         return ok;
     }
+
+    float playerRaceScoreForCapture() const { return raceScore(karts_[0]); }
+
+    float lapLengthForCapture() const { return track_.totalLength(); }
 
 private:
     void updateGarage(const Input3D& input, bool hasController) {
@@ -1800,30 +1954,32 @@ private:
         const Vec2 blended = normalize(lerp(forward2, apexDir, std::clamp(0.18f + future.curvature * 2.25f, 0.18f, 0.46f)));
         const float speed = length(player.vel);
         const float speedT = std::clamp(speed / 150.0f, 0.0f, 1.0f);
-        const float back = lerp(62.0f, 164.0f, speedT);
-        const float height = lerp(34.0f, 72.0f, speedT);
+        const float back = lerp(76.0f, 190.0f, speedT);
+        const float height = lerp(38.0f, 82.0f, speedT);
         const TrackPoint3D ground = track_.sample(player.progress);
         const float playerGround = bankedElevation(ground, player.lane);
         const Vector3 desiredPos = toWorld(player.pos - blended * back, playerGround + height);
-        const Vector3 desiredTarget = toWorld(player.pos + blended * (58.0f + speed * 0.24f), playerGround + 12.0f);
+        const Vector3 desiredTarget = toWorld(player.pos + blended * (72.0f + speed * 0.26f), playerGround + 13.0f);
         const float blend = 1.0f - std::exp(-dt * 7.5f);
         camera_.position = add(camera_.position, mul(sub(desiredPos, camera_.position), blend));
         camera_.target = add(camera_.target, mul(sub(desiredTarget, camera_.target), blend));
         camera_.up = {0.0f, 1.0f, 0.0f};
-        camera_.fovy = lerp(49.0f, 58.0f, std::clamp(speed / 155.0f, 0.0f, 1.0f));
+        camera_.fovy = lerp(51.0f, 60.0f, std::clamp(speed / 155.0f, 0.0f, 1.0f));
         camera_.projection = CAMERA_PERSPECTIVE;
     }
 
     void drawEnvironment() {
-        DrawPlane({0.0f, -0.34f, 0.0f}, {330.0f, 310.0f}, Color{37, 177, 194, 255});
-        DrawPlane({0.0f, -0.24f, -13.0f}, {265.0f, 245.0f}, Color{247, 214, 135, 255});
-        DrawPlane({-56.0f, -0.18f, 12.0f}, {76.0f, 74.0f}, Color{79, 162, 93, 255});
-        DrawPlane({68.0f, -0.17f, -58.0f}, {92.0f, 72.0f}, Color{88, 172, 98, 255});
+        DrawPlane({0.0f, -0.36f, 0.0f}, {340.0f, 320.0f}, Color{42, 178, 196, 255});
+        drawGradientOval({0.0f, -0.302f, -12.0f}, 160.0f, 142.0f, Color{242, 206, 124, 255}, Color{58, 179, 190, 255}, 96);
+        drawGradientOval({-42.0f, -0.245f, 20.0f}, 82.0f, 66.0f, Color{230, 194, 110, 255}, Color{219, 190, 112, 255}, 72);
+        drawGradientOval({-58.0f, -0.198f, 13.0f}, 49.0f, 44.0f, Color{105, 166, 92, 255}, Color{224, 190, 111, 255}, 72);
+        drawGradientOval({68.0f, -0.188f, -57.0f}, 59.0f, 45.0f, Color{112, 174, 95, 255}, Color{225, 191, 111, 255}, 72);
+        drawGradientOval({44.0f, -0.258f, 58.0f}, 48.0f, 34.0f, Color{88, 176, 164, 255}, Color{123, 186, 152, 255}, 64);
 
         for (int i = 0; i < 18; ++i) {
             const float x = -138.0f + static_cast<float>((i * 47) % 286);
             const float z = -122.0f + static_cast<float>((i * 61) % 244);
-            DrawCubeV({x, 0.02f, z}, {9.0f + static_cast<float>(i % 4) * 2.0f, 0.05f, 0.28f}, Color{240, 249, 229, 160});
+            drawFlatOval({x, -0.315f, z}, 3.6f + static_cast<float>(i % 4) * 0.7f, 0.18f, 0.012f, Color{226, 247, 232, 128}, 18);
         }
 
         DrawSphere({-92.0f, 58.0f, -72.0f}, 9.0f, Color{255, 219, 90, 255});
@@ -1841,52 +1997,44 @@ private:
             const TrackPoint3D& b = samples[static_cast<size_t>((i + stride) % track_.sampleCount())];
             const float halfA = a.width * 0.5f;
             const float halfB = b.width * 0.5f;
-            const float reachA = offroadReachForZone(a.zone);
-            const float reachB = offroadReachForZone(b.zone);
-            const std::array<float, 9> cutsA = {-halfA - reachA, -halfA - 124.0f, -halfA - 54.0f, -halfA * 0.60f, 0.0f,
-                                                halfA * 0.60f,  halfA + 54.0f,  halfA + 124.0f, halfA + reachA};
-            const std::array<float, 9> cutsB = {-halfB - reachB, -halfB - 124.0f, -halfB - 54.0f, -halfB * 0.60f, 0.0f,
-                                                halfB * 0.60f,  halfB + 54.0f,  halfB + 124.0f, halfB + reachB};
+            const std::array<float, 17> cutsA = surfaceCuts(a);
+            const std::array<float, 17> cutsB = surfaceCuts(b);
 
             for (size_t band = 0; band + 1 < cutsA.size(); ++band) {
-                const float midA = (cutsA[band] + cutsA[band + 1]) * 0.5f;
-                const float midB = (cutsB[band] + cutsB[band + 1]) * 0.5f;
-                const Color surface = mix(surfaceColorAt(a, midA), surfaceColorAt(b, midB), 0.5f);
-                drawQuad(lift(track_.roadPoint(a, cutsA[band]), 0.018f), lift(track_.roadPoint(b, cutsB[band]), 0.018f),
-                         lift(track_.roadPoint(b, cutsB[band + 1]), 0.018f), lift(track_.roadPoint(a, cutsA[band + 1]), 0.018f),
-                         surface);
+                drawGradientQuad(lift(track_.roadPoint(a, cutsA[band]), 0.018f), lift(track_.roadPoint(b, cutsB[band]), 0.018f),
+                                 lift(track_.roadPoint(b, cutsB[band + 1]), 0.018f),
+                                 lift(track_.roadPoint(a, cutsA[band + 1]), 0.018f), surfaceColorAt(a, cutsA[band]),
+                                 surfaceColorAt(b, cutsB[band]), surfaceColorAt(b, cutsB[band + 1]),
+                                 surfaceColorAt(a, cutsA[band + 1]));
             }
 
-            if ((a.zone == 1 || a.zone == 5) && (i / stride) % 5 == 0) {
-                Color plank = shade(mix(a.road, b.road, 0.5f), 0.76f);
-                plank.a = 210;
-                drawQuad(lift(track_.roadPoint(a, -halfA * 0.92f), 0.052f), lift(track_.roadPoint(b, -halfB * 0.92f), 0.052f),
-                         lift(track_.roadPoint(b, halfB * 0.92f), 0.052f), lift(track_.roadPoint(a, halfA * 0.92f), 0.052f), plank);
+            if ((a.zone == 1 || a.zone == 5) && (i / stride) % 8 == 0) {
+                Color plank = shade(mix(mix(a.road, b.road, 0.5f), mix(a.shoulder, b.shoulder, 0.5f), 0.48f), 0.94f);
+                plank.a = 126;
+                drawQuad(lift(track_.roadPoint(a, -halfA * 0.80f), 0.050f), lift(track_.roadPoint(b, -halfB * 0.80f), 0.050f),
+                         lift(track_.roadPoint(b, halfB * 0.80f), 0.050f), lift(track_.roadPoint(a, halfA * 0.80f), 0.050f), plank);
             }
 
-            if ((i / stride) % 2 == 0) {
+            if ((i / stride) % 7 == 0) {
                 for (float lane : {-28.0f, 28.0f}) {
-                    Color rut = shade(surfaceColorAt(a, lane), 0.70f);
-                    rut.a = 92;
-                    drawQuad(lift(track_.roadPoint(a, lane - 2.8f), 0.056f), lift(track_.roadPoint(b, lane - 2.8f), 0.056f),
-                             lift(track_.roadPoint(b, lane + 2.8f), 0.056f), lift(track_.roadPoint(a, lane + 2.8f), 0.056f), rut);
+                    Color rut = shade(surfaceColorAt(a, lane), 0.93f);
+                    rut.a = 44;
+                    drawQuad(lift(track_.roadPoint(a, lane - 1.3f), 0.055f), lift(track_.roadPoint(b, lane - 1.3f), 0.055f),
+                             lift(track_.roadPoint(b, lane + 1.3f), 0.055f), lift(track_.roadPoint(a, lane + 1.3f), 0.055f), rut);
                 }
             }
 
-            if ((i / stride) % 17 == 0) {
+            if ((i / stride) % 47 == 0) {
                 for (float side : {-1.0f, 1.0f}) {
                     const float noise = static_cast<float>((i * 31 + (side > 0.0f ? 19 : 7)) % 76);
                     const float lane = side * (a.width * 0.5f + 42.0f + noise);
                     const Vector3 pos = lift(track_.roadPoint(a, lane), 0.066f);
-                    Color chip = shade(naturalSurfaceColor(a.zone), side > 0.0f ? 0.92f : 1.08f);
+                    Color chip = mix(surfaceColorAt(a, lane), naturalSurfaceColor(a.zone), 0.50f);
                     if (a.zone == 3) {
-                        chip = shade(chip, 0.82f);
+                        chip = shade(chip, 0.92f);
                     }
-                    rlPushMatrix();
-                    rlTranslatef(pos.x, pos.y, pos.z);
-                    rlRotatef(90.0f - angleOf(a.tangent) * RAD2DEG + noise * 0.7f, 0.0f, 1.0f, 0.0f);
-                    DrawCubeV({0.0f, 0.0f, 0.0f}, {0.42f + noise * 0.006f, 0.035f, 0.88f + noise * 0.010f}, chip);
-                    rlPopMatrix();
+                    chip = shade(chip, side > 0.0f ? 0.99f : 1.02f);
+                    drawFlatOval(pos, 0.22f + noise * 0.003f, 0.11f + noise * 0.002f, 0.020f, chip, 10);
                 }
             }
         }
@@ -2283,10 +2431,13 @@ int runHarborKarts3D(int argc, char** argv) {
     const bool windowed = hasArg(argc, argv, "--windowed") || hasArg(argc, argv, "--smoke-render") ||
                           hasArg(argc, argv, "--diagnose-controller") || hasArg(argc, argv, "--handling-audit") ||
                           hasArg(argc, argv, "--race-audit") || hasArg(argc, argv, "--collision-audit") ||
-                          hasArg(argc, argv, "--perf-audit");
+                          hasArg(argc, argv, "--perf-audit") || hasArg(argc, argv, "--capture-lap") ||
+                          hasArg(argc, argv, "--capture-driven-lap") || hasArg(argc, argv, "--capture-section-tour");
     const bool devKeyboard = hasArg(argc, argv, "--dev-keyboard");
     const bool smokeRender = hasArg(argc, argv, "--smoke-render");
     const bool capturePlaytest = hasArg(argc, argv, "--capture-playtest");
+    const bool captureDrivenLap = hasArg(argc, argv, "--capture-lap") || hasArg(argc, argv, "--capture-driven-lap");
+    const bool captureSectionTour = hasArg(argc, argv, "--capture-section-tour");
     const bool diagnoseController = hasArg(argc, argv, "--diagnose-controller");
     const bool handlingAudit = hasArg(argc, argv, "--handling-audit");
     const bool raceAudit = hasArg(argc, argv, "--race-audit");
@@ -2296,7 +2447,11 @@ int runHarborKarts3D(int argc, char** argv) {
     const std::filesystem::path captureDir = launchDir / "build" / "playtest_frames";
 
     SetTraceLogLevel(LOG_ERROR);
-    SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_RESIZABLE | FLAG_MSAA_4X_HINT);
+    unsigned int configFlags = FLAG_WINDOW_RESIZABLE | FLAG_MSAA_4X_HINT;
+    if (!(smokeRender || capturePlaytest || captureDrivenLap || captureSectionTour || perfAudit)) {
+        configFlags |= FLAG_VSYNC_HINT;
+    }
+    SetConfigFlags(configFlags);
     InitWindow(1280, 720, "Shark Harbor Karts 3D");
     ChangeDirectory(launchDir.string().c_str());
     SetTargetFPS(120);
@@ -2308,7 +2463,7 @@ int runHarborKarts3D(int argc, char** argv) {
 
     ControllerReader controller;
     Game3D game;
-    if (capturePlaytest || perfAudit) {
+    if (capturePlaytest || captureDrivenLap || captureSectionTour || perfAudit) {
         std::filesystem::create_directories(captureDir);
     }
     if (perfAudit) {
@@ -2328,6 +2483,48 @@ int runHarborKarts3D(int argc, char** argv) {
         const bool ok = game.runCollisionAudit();
         CloseWindow();
         return ok ? 0 : 1;
+    }
+    if (captureSectionTour) {
+        static constexpr std::array<float, 9> kTourPhases = {0.035f, 0.135f, 0.245f, 0.355f, 0.465f,
+                                                             0.575f, 0.690f, 0.805f, 0.920f};
+        for (size_t i = 0; i < kTourPhases.size(); ++i) {
+            game.setupSectionTour(kTourPhases[i], static_cast<int>(i));
+            game.render(60.0f, true);
+            const std::filesystem::path path =
+                std::filesystem::path("../playtest_frames") / TextFormat("harbor_karts_3d_section_tour_%02d.png", static_cast<int>(i));
+            TakeScreenshot(path.string().c_str());
+        }
+        CloseWindow();
+        return 0;
+    }
+    if (captureDrivenLap) {
+        game.startRace();
+        const float startScore = game.playerRaceScoreForCapture();
+        const float lapLength = game.lapLengthForCapture();
+        static constexpr std::array<float, 10> kLapMilestones = {0.03f, 0.12f, 0.22f, 0.32f, 0.42f,
+                                                                 0.52f, 0.62f, 0.72f, 0.84f, 0.96f};
+        size_t nextCapture = 0;
+        int simFrames = 0;
+        float distance = 0.0f;
+        const int maxFrames = static_cast<int>(170.0f / kFixedDt);
+        while ((nextCapture < kLapMilestones.size() || distance < lapLength) && simFrames < maxFrames) {
+            const Input3D input = game.scriptedInput();
+            game.update(kFixedDt, input, true);
+            ++simFrames;
+            distance = game.playerRaceScoreForCapture() - startScore;
+            if (nextCapture < kLapMilestones.size() && distance >= lapLength * kLapMilestones[nextCapture]) {
+                game.render(60.0f, true);
+                const std::filesystem::path path = std::filesystem::path("../playtest_frames") /
+                                                   TextFormat("harbor_karts_3d_driven_lap_%02d.png",
+                                                              static_cast<int>(nextCapture));
+                TakeScreenshot(path.string().c_str());
+                ++nextCapture;
+            }
+        }
+        CloseWindow();
+        std::cout << "capture-driven-lap frames=" << simFrames << " captures=" << nextCapture
+                  << " distance=" << distance << " lap_length=" << lapLength << "\n";
+        return nextCapture == kLapMilestones.size() && distance >= lapLength ? 0 : 1;
     }
 
     double previous = GetTime();
