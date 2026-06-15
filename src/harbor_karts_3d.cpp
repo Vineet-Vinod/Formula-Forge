@@ -88,6 +88,16 @@ struct TrackPoint3D {
     int zone = 0;
 };
 
+float bankedElevation(const TrackPoint3D& point, float lane) {
+    const float half = std::max(1.0f, point.width * 0.5f);
+    return point.elevation + point.bank * std::clamp(lane / half, -1.2f, 1.2f);
+}
+
+float bankRollDegrees(const TrackPoint3D& point) {
+    const float half = std::max(1.0f, point.width * 0.5f);
+    return -std::atan2(point.bank, half) * RAD2DEG;
+}
+
 struct Prop3D {
     enum class Type { Palm, Rock, Hut, Boat, Market, Crane, Crystal, Torch, Gate, Chevron, Cliff, Sail };
 
@@ -163,9 +173,7 @@ public:
     }
 
     Vector3 roadPoint(const TrackPoint3D& point, float lane) const {
-        const float half = std::max(1.0f, point.width * 0.5f);
-        const float banked = point.elevation + point.bank * std::clamp(lane / half, -1.2f, 1.2f);
-        return toWorld(point.pos + point.normal * lane, banked);
+        return toWorld(point.pos + point.normal * lane, bankedElevation(point, lane));
     }
 
 private:
@@ -1082,8 +1090,11 @@ private:
     void updateGarageCamera(float dt) {
         (void)dt;
         const TrackPoint3D start = track_.sample(kRaceStartProgress);
-        const Vector3 focus = toWorld(start.pos + start.tangent * 32.0f + start.normal * 10.0f, start.elevation + 11.0f);
-        camera_.position = toWorld(start.pos + start.tangent * 88.0f + start.normal * 112.0f, start.elevation + 42.0f);
+        const float focusLane = 10.0f;
+        const float cameraLane = 112.0f;
+        const Vector3 focus = toWorld(start.pos + start.tangent * 32.0f + start.normal * focusLane, bankedElevation(start, focusLane) + 11.0f);
+        camera_.position =
+            toWorld(start.pos + start.tangent * 88.0f + start.normal * cameraLane, bankedElevation(start, cameraLane) + 42.0f);
         camera_.target = focus;
         camera_.up = {0.0f, 1.0f, 0.0f};
         camera_.fovy = 42.0f;
@@ -1109,6 +1120,7 @@ private:
             kart.progress = track_.pointAtIndex(kart.nearest).progress;
             kart.previousProgress = kart.progress;
             kart.lap = 0;
+            kart.lane = lane;
             kart.aiTempo = 0.830f - static_cast<float>(i) * 0.004f;
             kart.aiRisk = 0.25f + static_cast<float>((i * 7) % 9) * 0.055f;
             kart.aiPass = (i % 2 == 0) ? -1.0f : 1.0f;
@@ -1546,18 +1558,20 @@ private:
         const Vec2 forward = fromAngle(kart.heading);
         const Vec2 rear = kart.pos - forward * (kart.spec.length * 0.46f);
         const Vec2 baseVel = kart.vel * -0.10f - forward * 10.0f;
+        const float rearLane = dot(rear - center.pos, center.normal);
+        const float surfaceElevation = bankedElevation(center, rearLane);
         if (kart.boostTimer > 0.0f) {
-            emitParticle(rear, baseVel - forward * 36.0f, center.elevation + 4.0f, 0.20f, 4.8f, Color{255, 181, 45, 210});
-            emitParticle(rear - Vec2{-forward.y, forward.x} * 8.0f, baseVel - forward * 24.0f, center.elevation + 3.0f, 0.18f, 3.8f,
+            emitParticle(rear, baseVel - forward * 36.0f, surfaceElevation + 4.0f, 0.20f, 4.8f, Color{255, 181, 45, 210});
+            emitParticle(rear - Vec2{-forward.y, forward.x} * 8.0f, baseVel - forward * 24.0f, surfaceElevation + 3.0f, 0.18f, 3.8f,
                          Color{244, 67, 43, 205});
         } else if (kart.drifting) {
-            emitParticle(rear, baseVel, center.elevation + 2.5f, 0.46f, 5.5f, Color{226, 232, 219, 185});
+            emitParticle(rear, baseVel, surfaceElevation + 2.5f, 0.46f, 5.5f, Color{226, 232, 219, 185});
         } else if (offroad > 2.0f && length(kart.vel) > 28.0f) {
             Color dust = mix(naturalSurfaceColor(center.zone), Color{242, 232, 194, 255}, 0.34f);
             dust.a = 184;
-            emitParticle(rear, baseVel, center.elevation + 2.0f, 0.42f, 5.8f, dust);
+            emitParticle(rear, baseVel, surfaceElevation + 2.0f, 0.42f, 5.8f, dust);
         } else if (kart.contactTimer > 0.14f) {
-            emitParticle(kart.pos, baseVel, center.elevation + 5.0f, 0.22f, 4.5f, Color{245, 231, 165, 210});
+            emitParticle(kart.pos, baseVel, surfaceElevation + 5.0f, 0.22f, 4.5f, Color{245, 231, 165, 210});
         }
     }
 
@@ -1619,8 +1633,9 @@ private:
         const float back = lerp(62.0f, 164.0f, speedT);
         const float height = lerp(34.0f, 72.0f, speedT);
         const TrackPoint3D ground = track_.sample(player.progress);
-        const Vector3 desiredPos = toWorld(player.pos - blended * back, ground.elevation + height);
-        const Vector3 desiredTarget = toWorld(player.pos + blended * (58.0f + speed * 0.24f), ground.elevation + 12.0f);
+        const float playerGround = bankedElevation(ground, player.lane);
+        const Vector3 desiredPos = toWorld(player.pos - blended * back, playerGround + height);
+        const Vector3 desiredTarget = toWorld(player.pos + blended * (58.0f + speed * 0.24f), playerGround + 12.0f);
         const float blend = 1.0f - std::exp(-dt * 7.5f);
         camera_.position = add(camera_.position, mul(sub(desiredPos, camera_.position), blend));
         camera_.target = add(camera_.target, mul(sub(desiredTarget, camera_.target), blend));
@@ -1875,13 +1890,19 @@ private:
 
     void drawKart(const Kart3D& kart, bool player) {
         const TrackPoint3D ground = track_.sample(kart.progress);
-        const Vector3 base = toWorld(kart.pos, ground.elevation + 3.2f);
+        const float surfaceElevation = bankedElevation(ground, kart.lane);
+        const Vector3 base = toWorld(kart.pos, surfaceElevation + 3.2f);
         const float w = kart.spec.width * kRenderScale;
         const float l = kart.spec.length * kRenderScale;
         const float h = kart.spec.height * kRenderScale;
 
-        DrawCylinder(add(toWorld(kart.pos, ground.elevation + 0.05f), {0.0f, 0.02f, 0.0f}), w * 0.78f, w * 0.78f, 0.035f, 18,
-                     Color{28, 35, 37, 90});
+        const Vector3 shadow = add(toWorld(kart.pos, surfaceElevation + 0.05f), {0.0f, 0.02f, 0.0f});
+        rlPushMatrix();
+        rlTranslatef(shadow.x, shadow.y, shadow.z);
+        rlRotatef(90.0f - kart.heading * RAD2DEG, 0.0f, 1.0f, 0.0f);
+        rlRotatef(bankRollDegrees(ground), 0.0f, 0.0f, 1.0f);
+        DrawCylinder({0.0f, 0.0f, 0.0f}, w * 0.78f, w * 0.78f, 0.035f, 18, Color{28, 35, 37, 90});
+        rlPopMatrix();
 
         rlPushMatrix();
         rlTranslatef(base.x, base.y, base.z);
@@ -1892,6 +1913,7 @@ private:
         const float pitch = std::sin(kart.progress * 0.052f + static_cast<float>(kart.spec.bodyStyle) * 0.7f) * 1.8f * speedT -
                             kart.brakeHold * 1.2f + (kart.boostTimer > 0.0f ? 1.2f : 0.0f);
         rlTranslatef(0.0f, bounce + (kart.contactTimer > 0.0f ? std::sin(kart.contactTimer * 80.0f) * 0.035f : 0.0f), 0.0f);
+        rlRotatef(bankRollDegrees(ground), 0.0f, 0.0f, 1.0f);
         rlRotatef(pitch, 1.0f, 0.0f, 0.0f);
         const float lean = std::clamp(kart.steerSmoothed * length(kart.vel) / 150.0f, -0.55f, 0.55f);
         rlRotatef(-lean * 8.0f, 0.0f, 0.0f, 1.0f);
