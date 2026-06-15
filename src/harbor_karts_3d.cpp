@@ -723,13 +723,73 @@ struct RaceAuditResult3D {
     float topAiScore = 0.0f;
     float tailAiScore = 0.0f;
     float spread = 0.0f;
+    float maxOverlap = 0.0f;
     int overtakes = 0;
     int contacts = 0;
     int progressJumps = 0;
+    int overlapFrames = 0;
     int playerBest = kKartCount;
     int playerWorst = 1;
     int playerFinal = kKartCount;
 };
+
+struct CollisionAuditResult3D {
+    const char* name = "";
+    float maxOverlap = 0.0f;
+    int overlapFrames = 0;
+    int contactFrames = 0;
+};
+
+struct KartContact3D {
+    bool touching = false;
+    Vec2 normal{1.0f, 0.0f};
+    float penetration = 0.0f;
+};
+
+float contactHalfLength(const Kart3D& kart) {
+    return kart.spec.length * 0.59f;
+}
+
+float contactHalfWidth(const Kart3D& kart) {
+    return kart.spec.width * 0.64f;
+}
+
+float projectedKartExtent(const Kart3D& kart, Vec2 axis) {
+    const Vec2 forward = fromAngle(kart.heading);
+    const Vec2 right{-forward.y, forward.x};
+    return std::abs(dot(axis, forward)) * contactHalfLength(kart) + std::abs(dot(axis, right)) * contactHalfWidth(kart);
+}
+
+KartContact3D kartContact(const Kart3D& a, const Kart3D& b) {
+    const Vec2 af = fromAngle(a.heading);
+    const Vec2 ar{-af.y, af.x};
+    const Vec2 bf = fromAngle(b.heading);
+    const Vec2 br{-bf.y, bf.x};
+    const Vec2 delta = b.pos - a.pos;
+    const std::array<Vec2, 4> axes = {af, ar, bf, br};
+
+    KartContact3D contact;
+    contact.touching = true;
+    contact.penetration = std::numeric_limits<float>::max();
+
+    for (Vec2 axis : axes) {
+        axis = normalize(axis);
+        const float projectedDistance = std::abs(dot(delta, axis));
+        const float overlap = projectedKartExtent(a, axis) + projectedKartExtent(b, axis) - projectedDistance;
+        if (overlap <= 0.0f) {
+            return {};
+        }
+        if (overlap < contact.penetration) {
+            contact.penetration = overlap;
+            contact.normal = dot(delta, axis) < 0.0f ? axis * -1.0f : axis;
+        }
+    }
+
+    if (lengthSq(delta) < 0.0001f) {
+        contact.normal = af;
+    }
+    return contact;
+}
 
 void drawQuad(Vector3 a, Vector3 b, Vector3 c, Vector3 d, Color color) {
     DrawTriangle3D(a, b, c, color);
@@ -1028,6 +1088,11 @@ public:
             for (int i = 0; i < kKartCount; ++i) {
                 previousScores[static_cast<size_t>(i)] = orderScore(order, i);
             }
+            const float overlap = maxKartOverlap();
+            result.maxOverlap = std::max(result.maxOverlap, overlap);
+            if (overlap > 1.25f) {
+                ++result.overlapFrames;
+            }
             result.playerBest = std::min(result.playerBest, playerPosition_);
             result.playerWorst = std::max(result.playerWorst, playerPosition_);
         }
@@ -1051,19 +1116,42 @@ public:
         const bool activePack = (result.overtakes >= 5 || result.playerWorst - result.playerBest >= 2) && result.playerBest < result.playerWorst;
         const bool tailRecovered = result.tailAiScore > result.playerScore - 2600.0f && result.spread < 3600.0f;
         const bool cleanEnough = result.contacts < 150;
-        const bool ok = stable && pressure && activePack && tailRecovered && cleanEnough;
+        const bool separated = result.maxOverlap < 2.0f && result.overlapFrames < 4;
+        const bool ok = stable && pressure && activePack && tailRecovered && cleanEnough && separated;
 
         std::cout << "race-audit-3d player=" << result.playerScore << " top_ai=" << result.topAiScore << " tail_ai=" << result.tailAiScore
                   << " spread=" << result.spread << " overtakes=" << result.overtakes << " contacts=" << result.contacts
                   << " progress_jumps=" << result.progressJumps << " player_pos=" << result.playerFinal << " best=" << result.playerBest
                   << " worst=" << result.playerWorst << " stable=" << stable << " pressure=" << pressure << " active_pack=" << activePack
-                  << " tail_recovered=" << tailRecovered << " clean=" << cleanEnough << " scores=";
+                  << " tail_recovered=" << tailRecovered << " clean=" << cleanEnough << " separated=" << separated
+                  << " max_overlap=" << result.maxOverlap << " overlap_frames=" << result.overlapFrames << " scores=";
         for (int i = 0; i < kKartCount; ++i) {
             const Kart3D& kart = karts_[static_cast<size_t>(i)];
             std::cout << (i == 0 ? "" : ",") << i << ":" << finalScores[static_cast<size_t>(i)] << "/" << kart.lap << "/"
                       << static_cast<int>(kart.progress);
         }
         std::cout << "\n";
+        return ok;
+    }
+
+    bool runCollisionAudit() {
+        const CollisionAuditResult3D rearEnd = simulateCollisionScenario("rear_end", 0);
+        const CollisionAuditResult3D headOn = simulateCollisionScenario("head_on", 1);
+        const CollisionAuditResult3D sideSwipe = simulateCollisionScenario("side_swipe", 2);
+        const bool rearOk = rearEnd.contactFrames > 0 && rearEnd.maxOverlap < 1.25f && rearEnd.overlapFrames == 0;
+        const bool headOk = headOn.contactFrames > 0 && headOn.maxOverlap < 1.25f && headOn.overlapFrames == 0;
+        const bool sideOk = sideSwipe.contactFrames > 0 && sideSwipe.maxOverlap < 1.25f && sideSwipe.overlapFrames == 0;
+        const bool ok = rearOk && headOk && sideOk;
+
+        auto print = [](const CollisionAuditResult3D& r) {
+            std::cout << r.name << "_max_overlap=" << r.maxOverlap << " " << r.name << "_overlap_frames=" << r.overlapFrames << " "
+                      << r.name << "_contact_frames=" << r.contactFrames << " ";
+        };
+        std::cout << "collision-audit-3d ";
+        print(rearEnd);
+        print(headOn);
+        print(sideSwipe);
+        std::cout << "rear_ok=" << rearOk << " head_ok=" << headOk << " side_ok=" << sideOk << "\n";
         return ok;
     }
 
@@ -1354,6 +1442,69 @@ private:
         return std::clamp(std::atan2(cross(forward, toTarget), dot(forward, toTarget)) * 1.95f, -1.0f, 1.0f);
     }
 
+    CollisionAuditResult3D simulateCollisionScenario(const char* name, int scenario) {
+        resetRace();
+        CollisionAuditResult3D result;
+        result.name = name;
+
+        const TrackPoint3D base = track_.sample(2600.0f + static_cast<float>(scenario) * 860.0f);
+        const Vec2 forward = base.tangent;
+        const Vec2 right = base.normal;
+        const float heading = angleOf(forward);
+
+        for (int i = 2; i < kKartCount; ++i) {
+            TrackPoint3D park = track_.sample(5200.0f + static_cast<float>(i) * 540.0f);
+            Kart3D& kart = karts_[static_cast<size_t>(i)];
+            kart.pos = park.pos + park.normal * (680.0f + static_cast<float>(i) * 40.0f);
+            kart.vel = {};
+            kart.heading = angleOf(park.tangent);
+            updateProgress(kart);
+        }
+
+        auto place = [&](int index, Vec2 pos, float kartHeading, Vec2 vel) {
+            Kart3D& kart = karts_[static_cast<size_t>(index)];
+            kart.pos = pos;
+            kart.heading = kartHeading;
+            kart.vel = vel;
+            kart.drifting = false;
+            kart.boostTimer = 0.0f;
+            kart.contactTimer = 0.0f;
+            updateProgress(kart);
+        };
+
+        if (scenario == 0) {
+            place(0, base.pos - forward * 92.0f, heading, forward * 126.0f);
+            place(1, base.pos, heading, forward * 44.0f);
+        } else if (scenario == 1) {
+            place(0, base.pos - forward * 88.0f, heading, forward * 98.0f);
+            place(1, base.pos + forward * 88.0f, wrapAngle(heading + kPi), forward * -96.0f);
+        } else {
+            place(0, base.pos - forward * 44.0f - right * 34.0f, heading, forward * 92.0f + right * 18.0f);
+            place(1, base.pos + forward * 8.0f + right * 22.0f, heading, forward * 80.0f - right * 12.0f);
+        }
+
+        constexpr int kFrames = static_cast<int>(3.2f / kFixedDt);
+        for (int frame = 0; frame < kFrames; ++frame) {
+            for (int i = 0; i < 2; ++i) {
+                Kart3D& kart = karts_[static_cast<size_t>(i)];
+                kart.contactTimer = std::max(0.0f, kart.contactTimer - kFixedDt);
+                kart.pos += kart.vel * kFixedDt;
+                kart.vel *= std::exp(-kFixedDt * 0.08f);
+                updateProgress(kart);
+            }
+            solveKartContacts();
+            const float overlap = maxKartOverlap();
+            result.maxOverlap = std::max(result.maxOverlap, overlap);
+            if (overlap > 1.25f) {
+                ++result.overlapFrames;
+            }
+            if (karts_[0].contactTimer > 0.05f || karts_[1].contactTimer > 0.05f) {
+                ++result.contactFrames;
+            }
+        }
+        return result;
+    }
+
     void integrateKart(Kart3D& kart, const Input3D& rawInput, float dt, bool player) {
         updateProgress(kart);
         const TrackPoint3D center = track_.pointAtIndex(kart.nearest);
@@ -1499,54 +1650,73 @@ private:
     }
 
     void solveKartContacts() {
-        for (int a = 0; a < kKartCount; ++a) {
-            for (int b = a + 1; b < kKartCount; ++b) {
-                Kart3D& ka = karts_[static_cast<size_t>(a)];
-                Kart3D& kb = karts_[static_cast<size_t>(b)];
-                const Vec2 delta = kb.pos - ka.pos;
-                const float minDist = (ka.spec.width + kb.spec.width) * 0.46f;
-                const float d2 = lengthSq(delta);
-                if (d2 < minDist * minDist && d2 > 0.0001f) {
-                    const float d = std::sqrt(d2);
-                    const Vec2 n = delta / d;
-                    const float push = (minDist - d) * 0.52f;
+        std::array<bool, kKartCount> moved{};
+        constexpr int kContactIterations = 4;
+        for (int iter = 0; iter < kContactIterations; ++iter) {
+            for (int a = 0; a < kKartCount; ++a) {
+                for (int b = a + 1; b < kKartCount; ++b) {
+                    Kart3D& ka = karts_[static_cast<size_t>(a)];
+                    Kart3D& kb = karts_[static_cast<size_t>(b)];
+                    const KartContact3D contact = kartContact(ka, kb);
+                    if (!contact.touching || contact.penetration < 0.05f) {
+                        continue;
+                    }
+
+                    const Vec2 n = contact.normal;
                     const bool aPlayer = a == 0;
                     const bool bPlayer = b == 0;
-                    if (aPlayer) {
-                        ka.pos -= n * (push * 0.20f);
-                        kb.pos += n * (push * 1.10f);
-                    } else if (bPlayer) {
-                        ka.pos -= n * (push * 1.10f);
-                        kb.pos += n * (push * 0.20f);
-                    } else {
-                        ka.pos -= n * push;
-                        kb.pos += n * push;
-                    }
-                    const float va = dot(ka.vel, n);
-                    const float vb = dot(kb.vel, n);
-                    const float rel = va - vb;
-                    if (rel > 0.0f) {
-                        const float impulse = rel * 0.38f;
-                        if (aPlayer) {
-                            ka.vel -= n * (impulse * 0.18f);
-                            kb.vel += n * (impulse * 0.84f);
-                            kb.vel *= 0.92f;
-                        } else if (bPlayer) {
-                            ka.vel -= n * (impulse * 0.84f);
-                            kb.vel += n * (impulse * 0.18f);
-                            ka.vel *= 0.92f;
-                        } else {
-                            ka.vel -= n * impulse;
-                            kb.vel += n * impulse;
+                    const float invA = aPlayer ? 0.58f : 1.0f;
+                    const float invB = bPlayer ? 0.58f : 1.0f;
+                    const float invSum = invA + invB;
+                    const float correctionDepth = std::max(0.0f, contact.penetration - 0.18f);
+                    const Vec2 correction = n * (correctionDepth * 0.86f / invSum);
+                    ka.pos -= correction * invA;
+                    kb.pos += correction * invB;
+                    moved[static_cast<size_t>(a)] = true;
+                    moved[static_cast<size_t>(b)] = true;
+
+                    if (iter == 0) {
+                        const Vec2 relativeVelocity = kb.vel - ka.vel;
+                        const float closingSpeed = dot(relativeVelocity, n);
+                        if (closingSpeed < 0.0f) {
+                            const float impulse = -(1.0f + 0.18f) * closingSpeed / invSum;
+                            ka.vel -= n * (impulse * invA);
+                            kb.vel += n * (impulse * invB);
+
+                            const Vec2 tangent{-n.y, n.x};
+                            const float tangentSpeed = dot(kb.vel - ka.vel, tangent);
+                            const float tangentImpulse = std::clamp(-tangentSpeed * 0.16f / invSum, -impulse * 0.42f, impulse * 0.42f);
+                            ka.vel -= tangent * (tangentImpulse * invA);
+                            kb.vel += tangent * (tangentImpulse * invB);
                         }
+
+                        ka.vel *= aPlayer ? 0.990f : 0.974f;
+                        kb.vel *= bPlayer ? 0.990f : 0.974f;
                     }
-                    ka.vel *= 0.985f;
-                    kb.vel *= 0.985f;
+
                     ka.contactTimer = 0.22f;
                     kb.contactTimer = 0.22f;
                 }
             }
         }
+        for (int i = 0; i < kKartCount; ++i) {
+            if (moved[static_cast<size_t>(i)]) {
+                updateProgress(karts_[static_cast<size_t>(i)]);
+            }
+        }
+    }
+
+    float maxKartOverlap() const {
+        float maxOverlap = 0.0f;
+        for (int a = 0; a < kKartCount; ++a) {
+            for (int b = a + 1; b < kKartCount; ++b) {
+                const KartContact3D contact = kartContact(karts_[static_cast<size_t>(a)], karts_[static_cast<size_t>(b)]);
+                if (contact.touching) {
+                    maxOverlap = std::max(maxOverlap, contact.penetration);
+                }
+            }
+        }
+        return maxOverlap;
     }
 
     void emitFx(const Kart3D& kart, const TrackPoint3D& center, float offroad, float dt) {
@@ -2112,13 +2282,15 @@ private:
 int runHarborKarts3D(int argc, char** argv) {
     const bool windowed = hasArg(argc, argv, "--windowed") || hasArg(argc, argv, "--smoke-render") ||
                           hasArg(argc, argv, "--diagnose-controller") || hasArg(argc, argv, "--handling-audit") ||
-                          hasArg(argc, argv, "--race-audit") || hasArg(argc, argv, "--perf-audit");
+                          hasArg(argc, argv, "--race-audit") || hasArg(argc, argv, "--collision-audit") ||
+                          hasArg(argc, argv, "--perf-audit");
     const bool devKeyboard = hasArg(argc, argv, "--dev-keyboard");
     const bool smokeRender = hasArg(argc, argv, "--smoke-render");
     const bool capturePlaytest = hasArg(argc, argv, "--capture-playtest");
     const bool diagnoseController = hasArg(argc, argv, "--diagnose-controller");
     const bool handlingAudit = hasArg(argc, argv, "--handling-audit");
     const bool raceAudit = hasArg(argc, argv, "--race-audit");
+    const bool collisionAudit = hasArg(argc, argv, "--collision-audit");
     const bool perfAudit = hasArg(argc, argv, "--perf-audit");
     const std::filesystem::path launchDir = std::filesystem::current_path();
     const std::filesystem::path captureDir = launchDir / "build" / "playtest_frames";
@@ -2149,6 +2321,11 @@ int runHarborKarts3D(int argc, char** argv) {
     }
     if (raceAudit) {
         const bool ok = game.runRaceAudit();
+        CloseWindow();
+        return ok ? 0 : 1;
+    }
+    if (collisionAudit) {
+        const bool ok = game.runCollisionAudit();
         CloseWindow();
         return ok ? 0 : 1;
     }
