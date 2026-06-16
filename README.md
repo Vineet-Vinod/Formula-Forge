@@ -50,7 +50,7 @@ make run
 
 Gamepad is the intended input.
 
-- Left stick / D-pad: steer, garage selection
+- Left stick / D-pad: steer, car and lap selection in the garage
 - RT: accelerate
 - LT: brake, reverse at low speed
 - RB / R1: drift setup while steering
@@ -64,8 +64,8 @@ Gamepad is the intended input.
 
 - One original Shark Harbor course with beach, dock, market, cave, cliff, pier,
   and lagoon sections
-- Infinite laps
-- 8-car racing pack with AI opponents
+- 2, 5, 10, or infinite lap race selection
+- 6-car racing pack with AI opponents
 - 8 maxed-out kart classes
 - 10 cosmetic drivers
 - No powerups and no character super powers
