@@ -1,0 +1,4 @@
+- Commit regularly
+- Feel free to tear up and rewrite entire sections of code with impunity
+- Get real 3D graphics - don't try cutting corners
+- get it as similar to the beach buggy racing experience as possible
