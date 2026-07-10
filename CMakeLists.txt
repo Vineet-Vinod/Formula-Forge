@@ -34,6 +34,7 @@ target_link_libraries(harbor_karts PRIVATE "${SDL3_LIBRARY}" Threads::Threads dl
 
 add_executable(harbor_karts_3d
     src/main3d.cpp
+    src/arcade_vehicle.cpp
     src/harbor_karts_3d.cpp
 )
 

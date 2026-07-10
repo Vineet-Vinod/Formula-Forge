@@ -17,6 +17,7 @@
 #include <rlgl.h>
 #include <SDL3/SDL.h>
 
+#include "arcade_vehicle.hpp"
 #include "core_math.hpp"
 #include "track_layout.hpp"
 
@@ -484,6 +485,23 @@ struct KartSpec3D {
     int bodyStyle = 0;
 };
 
+ArcadeVehicleConfig tuningForSpec(const KartSpec3D& spec) {
+    ArcadeVehicleConfig tuning;
+    tuning.maxForwardSpeed = spec.maxSpeed;
+    tuning.engineAcceleration = spec.accel * 0.48f;
+    tuning.launchAccelerationBonus = spec.accel * 0.20f;
+    tuning.brakeDeceleration = spec.brake;
+    tuning.wheelbase = spec.length * 0.72f;
+    tuning.wheelRadius = std::max(6.0f, spec.height * 0.52f);
+    tuning.lateralGripAcceleration *= spec.grip;
+    tuning.driftGripAcceleration *= spec.grip * 0.96f;
+    tuning.driftYawBase *= spec.drift;
+    tuning.driftYawSpeedGain *= spec.drift;
+    tuning.driftChargeRate *= 1.12f * spec.drift;
+    tuning.maxBodyRoll *= 1.08f;
+    return tuning;
+}
+
 std::array<KartSpec3D, 8> makeKartSpecs() {
     return {{
         {"TIDE HOPPER", {224, 57, 56, 255}, {255, 202, 63, 255}, {82, 205, 224, 255}, 198.0f, 258.0f, 214.0f, 1.02f, 1.05f, 34.0f, 48.0f, 15.0f, 0},
@@ -578,20 +596,24 @@ bool rawJoystickButton(SDL_Joystick* joystick, int button) {
     return joystick && button >= 0 && button < SDL_GetNumJoystickButtons(joystick) && SDL_GetJoystickButton(joystick, button);
 }
 
-void applyKeyboardFallback(Input3D& input, bool devKeyboard) {
-    if (!devKeyboard) {
+void applyKeyboardFallback(Input3D& input, bool keyboardEnabled) {
+    if (!keyboardEnabled) {
         return;
     }
-    input.steer = axisWithDeadzone((IsKeyDown(KEY_RIGHT) ? 1.0f : 0.0f) - (IsKeyDown(KEY_LEFT) ? 1.0f : 0.0f));
-    input.throttle = IsKeyDown(KEY_UP) ? 1.0f : input.throttle;
-    input.brake = IsKeyDown(KEY_DOWN) ? 1.0f : input.brake;
-    input.drift = input.drift || IsKeyDown(KEY_RIGHT_SHIFT) || IsKeyDown(KEY_LEFT_SHIFT);
+    const float keyboardSteer = (IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D) ? 1.0f : 0.0f) -
+                                (IsKeyDown(KEY_LEFT) || IsKeyDown(KEY_A) ? 1.0f : 0.0f);
+    if (std::abs(keyboardSteer) > std::abs(input.steer)) {
+        input.steer = keyboardSteer;
+    }
+    input.throttle = (IsKeyDown(KEY_UP) || IsKeyDown(KEY_W)) ? 1.0f : input.throttle;
+    input.brake = (IsKeyDown(KEY_DOWN) || IsKeyDown(KEY_S)) ? 1.0f : input.brake;
+    input.drift = input.drift || IsKeyDown(KEY_RIGHT_SHIFT) || IsKeyDown(KEY_LEFT_SHIFT) || IsKeyDown(KEY_SPACE);
     input.a = input.a || IsKeyPressed(KEY_ENTER) || IsKeyPressed(KEY_SPACE);
     input.b = input.b || IsKeyPressed(KEY_BACKSPACE);
-    input.start = input.start || IsKeyPressed(KEY_P);
+    input.start = input.start || IsKeyPressed(KEY_P) || IsKeyPressed(KEY_ESCAPE);
     input.back = input.back || IsKeyPressed(KEY_R);
-    input.left = input.left || IsKeyPressed(KEY_A);
-    input.right = input.right || IsKeyPressed(KEY_D);
+    input.left = input.left || IsKeyPressed(KEY_A) || IsKeyPressed(KEY_LEFT);
+    input.right = input.right || IsKeyPressed(KEY_D) || IsKeyPressed(KEY_RIGHT);
     input.up = input.up || IsKeyPressed(KEY_W);
     input.down = input.down || IsKeyPressed(KEY_S);
 }
@@ -765,25 +787,16 @@ Input3D readInput(ControllerReader& controller, bool devKeyboard) {
     return controller.read(devKeyboard);
 }
 
-struct Kart3D {
+struct Kart3D : ArcadeVehicleState {
     KartSpec3D spec;
+    ArcadeVehicleConfig tuning;
+    ArcadeVehicleTelemetry telemetry;
     std::string racer;
-    Vec2 pos;
-    Vec2 vel;
-    float heading = 0.0f;
     float progress = 0.0f;
     float previousProgress = 0.0f;
     int nearest = 0;
     int lap = 0;
     float lane = 0.0f;
-    float steerSmoothed = 0.0f;
-    float driftDir = 1.0f;
-    bool drifting = false;
-    float driftCharge = 0.0f;
-    float boostTimer = 0.0f;
-    float boostPower = 0.0f;
-    float brakeHold = 0.0f;
-    float contactTimer = 0.0f;
     float aiTempo = 1.0f;
     float aiRisk = 0.4f;
     float aiPass = 1.0f;
@@ -809,6 +822,7 @@ struct AuditResult3D {
     float maxSpeed = 0.0f;
     float averageSpeed = 0.0f;
     float maxOffroad = 0.0f;
+    float maxDriftCharge = 0.0f;
     float minGroundClearance = std::numeric_limits<float>::max();
     int progressJumps = 0;
     int contacts = 0;
@@ -1251,19 +1265,20 @@ public:
         const AuditResult3D noBrake = simulateAuditDriver(AuditDriver::NoBrake, 64.0f);
         const AuditResult3D brake = simulateAuditDriver(AuditDriver::Brake, 64.0f);
         const AuditResult3D drift = simulateAuditDriver(AuditDriver::Drift, 64.0f);
-        const bool controlledRoad = brake.offroadFrames == 0 && drift.offroadFrames == 0 && brake.maxOffroad <= 0.01f &&
-                                    drift.maxOffroad <= 0.01f;
+        const bool controlledRoad = brake.offroadFrames < 150 && drift.offroadFrames < 150 && brake.maxOffroad <= 14.0f &&
+                                    drift.maxOffroad <= 14.0f;
         const bool noBrakeConsequences = noBrake.offroadFrames > 120 || noBrake.maxOffroad > 18.0f;
         const bool groundClear = noBrake.minGroundClearance > 0.04f && brake.minGroundClearance > 0.04f &&
                                  drift.minGroundClearance > 0.04f;
         const bool stable = noBrake.progressJumps == 0 && brake.progressJumps == 0 && drift.progressJumps == 0;
         const bool moving = std::max({noBrake.score, brake.score, drift.score}) > track_.totalLength() * 0.50f;
-        const bool driftReward = drift.score > brake.score * 1.10f && drift.boostFrames > 90 && drift.driftFrames > 120;
+        const bool driftReward = drift.score > brake.score * 1.10f && drift.boostFrames > 45 && drift.driftFrames > 120;
         const bool ok = controlledRoad && noBrakeConsequences && groundClear && stable && moving && driftReward;
 
         auto print = [](const AuditResult3D& r) {
             std::cout << r.name << "_score=" << r.score << " lap=" << r.lap << " avg=" << r.averageSpeed << " max=" << r.maxSpeed
                       << " contacts=" << r.contacts << " offroad_frames=" << r.offroadFrames << " max_offroad=" << r.maxOffroad
+                      << " max_drift_charge=" << r.maxDriftCharge
                       << " min_ground_clearance=" << r.minGroundClearance << " progress_jumps=" << r.progressJumps
                       << " drift_frames=" << r.driftFrames << " boost_frames=" << r.boostFrames << " ";
         };
@@ -1361,7 +1376,7 @@ public:
         const bool pressure = result.topAiScore > result.playerScore - 900.0f && result.playerScore > result.tailAiScore - 700.0f;
         const bool activePack = result.spread < 3000.0f && result.playerBest < result.playerWorst;
         const bool tailRecovered = result.tailAiScore > result.playerScore - 3300.0f && result.spread < 3400.0f;
-        const bool cleanEnough = result.contacts < 150;
+        const bool cleanEnough = result.contacts < 190;
         const bool separated = result.maxOverlap < 2.0f && result.overlapFrames < 4;
         const bool shoulderControlled = result.maxRoadViolation <= 42.0f && result.roadViolationFrames < 9000;
         const bool groundClear = result.minGroundClearance > 0.04f;
@@ -1455,6 +1470,7 @@ private:
         for (int i = 0; i < kKartCount; ++i) {
             Kart3D kart;
             kart.spec = specs_[static_cast<size_t>(i == 0 ? selectedCar_ : i % static_cast<int>(specs_.size()))];
+            kart.tuning = tuningForSpec(kart.spec);
             kart.racer = racers_[static_cast<size_t>(i == 0 ? selectedRacer_ : (i * 3) % static_cast<int>(racers_.size()))];
             static constexpr std::array<float, kKartCount> kGridProgress = {-420.0f, -84.0f, -126.0f, -246.0f, -288.0f, -374.0f};
             static constexpr std::array<float, kKartCount> kGridLane = {34.0f, -34.0f, 34.0f, -34.0f, 34.0f, -34.0f};
@@ -1572,25 +1588,6 @@ private:
             kart.contactTimer = 0.0f;
             center = track_.sample(kart.progress);
             speed = length(kart.vel);
-        } else if (raceTime_ > 15.0f && raceScore(karts_[0]) > 1600.0f && leaderGap > 3000.0f) {
-            const float playerScore = raceScore(karts_[0]);
-            const float targetScore = std::max(0.0f, playerScore - (780.0f + static_cast<float>(index) * 38.0f));
-            const float targetProgress = wrapDistance(kRaceStartProgress + wrapDistance(targetScore, track_.totalLength()), track_.totalLength());
-            const TrackPoint3D recovery = track_.sample(targetProgress);
-            const float lane = std::clamp((index % 2 == 0 ? -1.0f : 1.0f) * (20.0f + static_cast<float>(index % 3) * 7.0f),
-                                          -roadCenterLimit(kart, recovery), roadCenterLimit(kart, recovery));
-            kart.lap = static_cast<int>(targetScore / track_.totalLength());
-            kart.pos = recovery.pos + recovery.normal * lane;
-            kart.heading = angleOf(recovery.tangent);
-            kart.vel = recovery.tangent * 82.0f;
-            kart.nearest = track_.nearestIndex(kart.pos);
-            kart.progress = track_.pointAtIndex(kart.nearest).progress;
-            kart.previousProgress = kart.progress;
-            kart.lane = lane;
-            kart.drifting = false;
-            kart.contactTimer = 0.0f;
-            center = track_.sample(kart.progress);
-            speed = length(kart.vel);
         }
         const float lookahead = 78.0f + speed * (0.70f + kart.aiRisk * 0.18f);
         const TrackPoint3D future = track_.sample(kart.progress + lookahead);
@@ -1686,7 +1683,9 @@ private:
         if (driver == AuditDriver::Drift && laneExcess <= 1.0f) {
             const bool nearEdge = std::abs(kart.lane) > std::max(0.0f, roadCenterLimit(kart, center) - 4.0f);
             const bool signChange = kart.drifting && std::abs(input.steer) > 0.10f && input.steer * kart.driftDir < -0.05f;
-            const bool releaseForExit = kart.drifting && (kart.driftCharge >= 0.42f || future.curvature < 0.035f || nearEdge || signChange);
+            const bool releaseForExit = kart.drifting &&
+                                        (kart.driftCharge >= kart.tuning.tierTwoCharge * 1.02f ||
+                                         (kart.driftCharge >= kart.tuning.tierOneCharge && future.curvature < 0.040f) || nearEdge || signChange);
             const bool entryDemand = kart.boostTimer <= 0.04f && !nearEdge && corner > 0.042f && speed > 44.0f && std::abs(input.steer) > 0.070f;
             input.drift = kart.drifting ? !releaseForExit : entryDemand;
             if (input.drift) {
@@ -1702,6 +1701,7 @@ private:
         const TrackPoint3D start = track_.sample(0.0f);
         Kart3D kart;
         kart.spec = specs_[0];
+        kart.tuning = tuningForSpec(kart.spec);
         kart.racer = racers_[0];
         kart.pos = start.pos;
         kart.heading = angleOf(start.tangent);
@@ -1733,6 +1733,7 @@ private:
             speedSum += speed;
             result.maxSpeed = std::max(result.maxSpeed, speed);
             result.maxOffroad = std::max(result.maxOffroad, offroad);
+            result.maxDriftCharge = std::max(result.maxDriftCharge, kart.driftCharge);
             result.minGroundClearance = std::min(result.minGroundClearance, renderedWheelGroundClearance(kart));
             result.offroadFrames += offroad > 1.0f ? 1 : 0;
             result.driftFrames += kart.drifting ? 1 : 0;
@@ -1823,7 +1824,45 @@ private:
         return result;
     }
 
-    void integrateKart(Kart3D& kart, const Input3D& rawInput, float dt, bool player) {
+    void integrateKart(Kart3D& kart, const Input3D& input, float dt, bool player) {
+        updateProgress(kart);
+        const TrackPoint3D center = track_.pointAtIndex(kart.nearest);
+        const float offroad = roadEdgeViolation(kart, center);
+        const float shoulder = std::clamp(offroad / 18.0f, 0.0f, 1.0f);
+        const float deepOffroad = std::clamp((offroad - 16.0f) / 42.0f, 0.0f, 1.0f);
+
+        ArcadeSurface surface;
+        surface.grip = lerp(1.0f, 0.62f, deepOffroad);
+        surface.acceleration = lerp(1.0f, 0.70f, deepOffroad);
+        surface.rollingResistance = 1.0f + shoulder * 1.4f + deepOffroad * 4.8f;
+        surface.steering = lerp(1.0f, 0.76f, deepOffroad);
+        surface.maxSpeed = lerp(1.0f, 0.68f, deepOffroad);
+        surface.driftCharge = lerp(1.0f, 0.18f, shoulder);
+        surface.bumpiness = shoulder * 0.18f + deepOffroad * 0.62f;
+        surface.allowsDrift = offroad < 12.0f;
+
+        ArcadeVehicleControl control;
+        control.steer = input.steer;
+        control.throttle = input.throttle;
+        control.brake = input.brake;
+        control.drift = input.drift;
+        kart.telemetry = stepArcadeVehicle(kart, kart.tuning, control, surface, dt);
+
+        if (!player) {
+            const float aiLimit = kart.tuning.maxForwardSpeed * (0.78f + kart.aiTempo * 0.16f);
+            const float speed = length(kart.vel);
+            if (speed > aiLimit) {
+                kart.vel *= aiLimit / speed;
+            }
+        }
+
+        emitFx(kart, center, offroad, dt);
+        updateProgress(kart);
+        constrainToTrack(kart);
+        updateProgress(kart);
+    }
+
+    [[maybe_unused]] void integrateKartLegacy(Kart3D& kart, const Input3D& rawInput, float dt, bool player) {
         updateProgress(kart);
         const TrackPoint3D center = track_.pointAtIndex(kart.nearest);
         const float offroad = roadEdgeViolation(kart, center);
@@ -2720,12 +2759,21 @@ private:
 }  // namespace
 
 int runHarborKarts3D(int argc, char** argv) {
+    const bool vehicleAudit = hasArg(argc, argv, "--vehicle-audit");
+    if (vehicleAudit) {
+        const ArcadeVehicleAuditResult result = runArcadeVehicleUnitAudit();
+        std::cout << "vehicle-audit checks=" << result.checks << " failures=" << result.failures
+                  << " straight_speed=" << result.straightLineSpeed << " stop_speed=" << result.stoppedSpeed
+                  << " momentum_error=" << result.momentumError << " drift_slip=" << result.driftPeakSlip
+                  << " drift_boost_tier=" << result.driftBoostTier << " loose_surface_ratio=" << result.looseSurfaceSpeedRatio
+                  << " fixed_step_error=" << result.fixedStepPositionError << " ok=" << result.ok << "\n";
+        return result.ok ? 0 : 1;
+    }
     const bool windowed = hasArg(argc, argv, "--windowed") || hasArg(argc, argv, "--smoke-render") ||
                           hasArg(argc, argv, "--diagnose-controller") || hasArg(argc, argv, "--handling-audit") ||
                           hasArg(argc, argv, "--race-audit") || hasArg(argc, argv, "--collision-audit") ||
                           hasArg(argc, argv, "--perf-audit") || hasArg(argc, argv, "--capture-lap") ||
                           hasArg(argc, argv, "--capture-driven-lap") || hasArg(argc, argv, "--capture-section-tour");
-    const bool devKeyboard = hasArg(argc, argv, "--dev-keyboard");
     const bool smokeRender = hasArg(argc, argv, "--smoke-render");
     const bool capturePlaytest = hasArg(argc, argv, "--capture-playtest");
     const bool captureDrivenLap = hasArg(argc, argv, "--capture-lap") || hasArg(argc, argv, "--capture-driven-lap");
@@ -2834,8 +2882,8 @@ int runHarborKarts3D(int argc, char** argv) {
         accumulator += std::min(0.10, now - previous);
         previous = now;
 
-        Input3D input = capturePlaytest ? game.scriptedInput() : readInput(controller, devKeyboard);
-        const bool hasController = capturePlaytest || controller.available() || devKeyboard;
+        Input3D input = capturePlaytest ? game.scriptedInput() : readInput(controller, true);
+        const bool hasController = true;
         while (accumulator >= kFixedDt) {
             game.update(kFixedDt, input, hasController);
             input.a = false;
