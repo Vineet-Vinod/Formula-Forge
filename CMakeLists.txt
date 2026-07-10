@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.20)
 
 project(HarborKarts LANGUAGES CXX)
 
+include(CTest)
+
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -35,14 +37,22 @@ target_link_libraries(harbor_karts PRIVATE "${SDL3_LIBRARY}" Threads::Threads dl
 add_executable(harbor_karts_3d
     src/main3d.cpp
     src/arcade_hud.cpp
+    src/arcade_race.cpp
+    src/arcade_render.cpp
     src/arcade_vehicle.cpp
     src/harbor_karts_3d.cpp
+    src/track_renderer.cpp
 )
 
 target_compile_definitions(harbor_karts_3d PRIVATE SDL_MAIN_HANDLED)
 target_compile_options(harbor_karts_3d PRIVATE -Wall -Wextra -Wpedantic)
 target_include_directories(harbor_karts_3d PRIVATE "${RAYLIB_INCLUDE_DIR}" "${SDL3_INCLUDE_DIR}")
 target_link_libraries(harbor_karts_3d PRIVATE "${RAYLIB_LIBRARY}" "${SDL3_LIBRARY}" Threads::Threads dl m)
+
+if(BUILD_TESTING)
+    add_test(NAME arcade_vehicle_audit COMMAND harbor_karts_3d --vehicle-audit)
+    add_test(NAME arcade_race_flow_audit COMMAND harbor_karts_3d --race-flow-audit)
+endif()
 
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
     target_compile_options(harbor_karts PRIVATE -O3)
