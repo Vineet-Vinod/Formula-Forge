@@ -1,3 +1,7 @@
 build/
 *.o
 *.d
+
+# BBR gameplay
+gameplay.mp4
+bbr_gamepad_*
