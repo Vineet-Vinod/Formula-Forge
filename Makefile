@@ -23,7 +23,7 @@ $(TARGET): CMakeLists.txt src/main.cpp src/harbor_karts.cpp src/core_math.hpp sr
 	cmake -S . -B $(GAME_BUILD_DIR) -DCMAKE_BUILD_TYPE=Release
 	cmake --build $(GAME_BUILD_DIR) --parallel
 
-$(TARGET_3D): CMakeLists.txt src/main3d.cpp src/arcade_hud.cpp src/arcade_hud.hpp src/arcade_race.cpp src/arcade_race.hpp src/arcade_render.cpp src/arcade_render.hpp src/arcade_vehicle.cpp src/arcade_vehicle.hpp src/harbor_karts_3d.cpp src/harbor_karts_3d.hpp src/core_math.hpp src/track_renderer.cpp src/track_renderer.hpp src/track_layout.hpp $(SDL_LIB) $(RAYLIB_LIB)
+$(TARGET_3D): CMakeLists.txt src/main3d.cpp src/arcade_audio.cpp src/arcade_audio.hpp src/arcade_hud.cpp src/arcade_hud.hpp src/arcade_race.cpp src/arcade_race.hpp src/arcade_render.cpp src/arcade_render.hpp src/arcade_vehicle.cpp src/arcade_vehicle.hpp src/harbor_karts_3d.cpp src/harbor_karts_3d.hpp src/core_math.hpp src/track_renderer.cpp src/track_renderer.hpp src/track_layout.hpp $(SDL_LIB) $(RAYLIB_LIB)
 	cmake -S . -B $(GAME_BUILD_DIR) -DCMAKE_BUILD_TYPE=Release
 	cmake --build $(GAME_BUILD_DIR) --parallel
 
