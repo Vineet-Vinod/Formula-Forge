@@ -12,7 +12,7 @@ namespace {
 constexpr std::array<float, 13> kLaneCuts = {
     -1.72f, -1.38f, -1.08f, -0.94f, -0.80f, -0.42f, 0.0f, 0.42f, 0.80f, 0.94f, 1.08f, 1.38f, 1.72f,
 };
-constexpr size_t kSegmentsPerChunk = 48;
+constexpr size_t kSegmentsPerChunk = 12;
 
 Vector3 add(Vector3 a, Vector3 b) { return {a.x + b.x, a.y + b.y, a.z + b.z}; }
 Vector3 subtract(Vector3 a, Vector3 b) { return {a.x - b.x, a.y - b.y, a.z - b.z}; }
@@ -140,10 +140,15 @@ Texture2D makeDetailTexture() {
             hash ^= hash << 13;
             hash ^= hash >> 17;
             hash ^= hash << 5;
-            const int grain = static_cast<int>(hash & 15u) - 8;
-            const int striation = static_cast<int>(3.0f * std::sin(static_cast<float>(y) * 0.31f + static_cast<float>(x) * 0.07f));
-            const unsigned char value = static_cast<unsigned char>(std::clamp(238 + grain + striation, 214, 252));
-            ImageDrawPixel(&image, x, y, {value, value, static_cast<unsigned char>(std::min(255, value + 3)), 255});
+            const int grain = static_cast<int>(hash & 31u) - 16;
+            const float macro = std::sin(static_cast<float>(x) * 0.105f + static_cast<float>(y) * 0.029f) * 10.0f;
+            const float crossGrain = std::sin(static_cast<float>(x) * 0.037f - static_cast<float>(y) * 0.071f) * 7.0f;
+            const int aggregate = ((x / 7 + y / 5) % 11 == 0) ? -17 : 0;
+            const int raw = static_cast<int>(226.0f + macro + crossGrain) + grain + aggregate;
+            const unsigned char value = static_cast<unsigned char>(std::clamp(raw, 180, 255));
+            ImageDrawPixel(&image, x, y,
+                           {value, static_cast<unsigned char>(std::clamp(raw - 2, 176, 255)),
+                            static_cast<unsigned char>(std::clamp(raw - 5, 172, 255)), 255});
         }
     }
     Texture2D texture = LoadTextureFromImage(image);
@@ -198,7 +203,10 @@ void TrackRenderer::draw(float progress, float visibleRange) const {
     const float chunkAllowance = totalProgress_ / std::max(1.0f, static_cast<float>(chunks_.size())) * 0.60f;
     for (const Chunk& chunk : chunks_) {
         const float distance = signedLoopDistance(progress, chunk.progress, totalProgress_);
-        if (distance >= -32.0f - chunkAllowance && distance <= visibleRange + chunkAllowance) {
+        // Retain a long forward corridor, but reject geometry behind the chase
+        // camera so it cannot cross the near plane. Small chunks make the edge
+        // move smoothly instead of dropping a large section at once.
+        if (distance >= -24.0f - chunkAllowance && distance <= visibleRange + chunkAllowance) {
             DrawModel(chunk.model, {}, 1.0f, WHITE);
         }
     }

@@ -129,14 +129,14 @@ void drawStatRow(const char* label, float value, Rectangle bounds, Color color, 
 }
 
 void drawRaceProgress(const RaceHudViewModel& viewModel, const Metrics& m) {
-    const float width = 410.0f * m.scale;
-    const Rectangle panel{(m.width - width) * 0.5f, m.margin, width, 66.0f * m.scale};
-    drawPanel(panel, kInk, kAqua, m.scale);
+    const float width = 440.0f * m.scale;
+    const Rectangle panel{(m.width - width) * 0.5f, m.margin, width, 52.0f * m.scale};
+    DrawRectangleRec(panel, Fade(kInk, 0.78f));
 
     const std::string time = formatTime(viewModel.raceTimeSeconds);
-    drawCenteredText(time, {panel.x + panel.width * 0.5f, panel.y + 18.0f * m.scale}, 21.0f * m.scale, kPaper);
+    drawCenteredText(time, {panel.x + panel.width * 0.5f, panel.y + 13.0f * m.scale}, 16.0f * m.scale, kPaper);
 
-    const Rectangle rail{panel.x + 28.0f * m.scale, panel.y + 43.0f * m.scale, panel.width - 56.0f * m.scale, 7.0f * m.scale};
+    const Rectangle rail{panel.x + 24.0f * m.scale, panel.y + 34.0f * m.scale, panel.width - 48.0f * m.scale, 6.0f * m.scale};
     DrawRectangleRec(rail, Color{7, 18, 21, 240});
     DrawRectangleRec({rail.x, rail.y, rail.width * clamp01(viewModel.raceProgress), rail.height}, kSun);
 
@@ -152,62 +152,25 @@ void drawRaceProgress(const RaceHudViewModel& viewModel, const Metrics& m) {
     }
 }
 
-void drawSpeedPanel(const RaceHudViewModel& viewModel, const Metrics& m) {
-    const Rectangle panel{m.margin, m.margin, 304.0f * m.scale, 112.0f * m.scale};
-    drawPanel(panel, kInk, kSun, m.scale);
-
-    std::array<char, 8> speed{};
-    std::snprintf(speed.data(), speed.size(), "%03d", std::clamp(viewModel.speedKph, 0, 999));
-    drawText(speed.data(), {panel.x + 24.0f * m.scale, panel.y + 13.0f * m.scale}, 48.0f * m.scale, kSun);
-    drawText("KM/H", {panel.x + 176.0f * m.scale, panel.y + 36.0f * m.scale}, 17.0f * m.scale, kPaperMuted);
-
-    std::string name = viewModel.vehicleName.empty() ? "RACE VEHICLE" : viewModel.vehicleName;
-    if (!viewModel.driverName.empty()) {
-        name += " / ";
-        name += viewModel.driverName;
-    }
-    drawFittedText(name, {panel.x + 24.0f * m.scale, panel.y + 76.0f * m.scale, panel.width - 42.0f * m.scale,
-                          23.0f * m.scale},
-                   18.0f * m.scale, 12.0f * m.scale, kPaper);
+void drawPlacePanel(const RaceHudViewModel& viewModel, const Metrics& m) {
+    const Rectangle panel{m.margin, m.margin, 184.0f * m.scale, 82.0f * m.scale};
+    DrawRectangleRec(panel, Fade(kInk, 0.76f));
+    drawText("PLACE", {panel.x + 13.0f * m.scale, panel.y + 10.0f * m.scale}, 15.0f * m.scale, kPaper);
+    std::array<char, 20> place{};
+    std::snprintf(place.data(), place.size(), "%d/%d", std::clamp(viewModel.position, 1, std::max(1, viewModel.racerCount)),
+                  std::max(1, viewModel.racerCount));
+    drawText(place.data(), {panel.x + 69.0f * m.scale, panel.y + 24.0f * m.scale}, 38.0f * m.scale, kPaper);
 }
 
-void drawPositionPanel(const RaceHudViewModel& viewModel, const Metrics& m) {
-    const float width = 224.0f * m.scale;
-    const Rectangle panel{m.width - m.margin - width, m.margin, width, 112.0f * m.scale};
-    drawPanel(panel, kInk, kCoral, m.scale);
-
-    std::array<char, 20> position{};
-    std::snprintf(position.data(), position.size(), "%d", std::clamp(viewModel.position, 1, std::max(1, viewModel.racerCount)));
-    drawText(position.data(), {panel.x + 24.0f * m.scale, panel.y + 11.0f * m.scale}, 50.0f * m.scale, kSun);
-
-    std::array<char, 20> field{};
-    std::snprintf(field.data(), field.size(), "/ %d", std::max(1, viewModel.racerCount));
-    drawText(field.data(), {panel.x + 80.0f * m.scale, panel.y + 36.0f * m.scale}, 20.0f * m.scale, kPaperMuted);
-
+void drawLapPanel(const RaceHudViewModel& viewModel, const Metrics& m) {
+    const float width = 184.0f * m.scale;
+    const Rectangle panel{m.width - m.margin - width, m.margin, width, 82.0f * m.scale};
+    DrawRectangleRec(panel, Fade(kInk, 0.76f));
+    drawText("LAP", {panel.x + 15.0f * m.scale, panel.y + 10.0f * m.scale}, 15.0f * m.scale, kPaper);
     const std::string lap = lapText(viewModel.currentLap, viewModel.totalLaps);
-    drawFittedText(lap, {panel.x + 24.0f * m.scale, panel.y + 78.0f * m.scale, panel.width - 42.0f * m.scale,
-                         20.0f * m.scale},
-                   17.0f * m.scale, 12.0f * m.scale, kPaper);
-}
-
-void drawChargePanel(const RaceHudViewModel& viewModel, const Metrics& m) {
-    const float width = 310.0f * m.scale;
-    const float bannerOffset = viewModel.controllerConnected ? 0.0f : 48.0f * m.scale;
-    const Rectangle panel{m.margin, m.height - m.margin - bannerOffset - 60.0f * m.scale, width, 60.0f * m.scale};
-    drawPanel(panel, kInkSoft, viewModel.boostActive ? kCoral : kAqua, m.scale);
-
-    const char* label = viewModel.boostActive ? "BOOST" : "DRIFT CHARGE";
-    const float charge = viewModel.boostActive ? viewModel.boostCharge : viewModel.driftCharge;
-    drawText(label, {panel.x + 18.0f * m.scale, panel.y + 10.0f * m.scale}, 14.0f * m.scale,
-             viewModel.boostActive ? kSun : kPaper);
-
-    const Rectangle rail{panel.x + 18.0f * m.scale, panel.y + 34.0f * m.scale, panel.width - 36.0f * m.scale, 12.0f * m.scale};
-    DrawRectangleRec(rail, Color{7, 19, 22, 235});
-    const Rectangle fill = inset(rail, 2.0f * m.scale);
-    DrawRectangleRec({fill.x, fill.y, fill.width * clamp01(charge), fill.height}, viewModel.boostActive ? kCoral : kAqua);
-    if (charge >= 0.98f) {
-        DrawRectangleLinesEx(rail, 2.0f * m.scale, kSun);
-    }
+    drawFittedText(lap.substr(4), {panel.x + 55.0f * m.scale, panel.y + 24.0f * m.scale, panel.width - 66.0f * m.scale,
+                                  42.0f * m.scale},
+                   34.0f * m.scale, 18.0f * m.scale, kPaper);
 }
 
 void drawRaceAlert(const RaceHudViewModel& viewModel, const Metrics& m) {
@@ -230,10 +193,9 @@ void drawRaceAlert(const RaceHudViewModel& viewModel, const Metrics& m) {
 
 void DrawRaceHud(const RaceHudViewModel& viewModel) {
     const Metrics m = metrics();
-    drawSpeedPanel(viewModel, m);
+    drawPlacePanel(viewModel, m);
     drawRaceProgress(viewModel, m);
-    drawPositionPanel(viewModel, m);
-    drawChargePanel(viewModel, m);
+    drawLapPanel(viewModel, m);
     drawRaceAlert(viewModel, m);
     if (!viewModel.controllerConnected) {
         drawConnectionBanner(m);

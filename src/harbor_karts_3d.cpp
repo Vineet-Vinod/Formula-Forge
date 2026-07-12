@@ -2290,7 +2290,7 @@ private:
         const auto& samples = track_.samples();
         if (trackRenderer_.ready()) {
             const float viewProgress = mode_ == Mode::Garage || karts_.empty() ? kRaceStartProgress : karts_[0].progress;
-            trackRenderer_.draw(viewProgress * kRenderScale, 90.0f);
+            trackRenderer_.draw(viewProgress * kRenderScale, 260.0f);
         } else {
             constexpr int stride = 2;
             for (int i = 0; i < track_.sampleCount(); i += stride) {
@@ -2342,19 +2342,27 @@ private:
             }
         }
 
-        for (int i = 0; i < track_.sampleCount(); i += 48) {
+        for (int i = 0; i < track_.sampleCount(); i += 24) {
             const TrackPoint3D& p = samples[static_cast<size_t>(i)];
-            if (p.curvature < 0.040f && p.zone != 3) {
+            if (p.curvature < 0.028f) {
                 continue;
             }
             const float outside = std::abs(p.signedCurvature) > 0.004f ? -std::copysign(1.0f, p.signedCurvature) : 1.0f;
-            const float lane = outside * (p.width * 0.5f + 116.0f);
+            const float lane = outside * (p.width * 0.5f + 28.0f);
             const Vector3 pos = lift(track_.roadPoint(p, lane), 0.08f);
             rlPushMatrix();
-            rlTranslatef(pos.x, pos.y + 0.36f, pos.z);
+            rlTranslatef(pos.x, pos.y + 0.72f, pos.z);
             rlRotatef(90.0f - angleOf(p.tangent) * RAD2DEG, 0.0f, 1.0f, 0.0f);
-            DrawCubeV({0.0f, 0.0f, 0.0f}, {0.18f, 0.72f, 1.35f}, shade(naturalSurfaceColor(p.zone), 0.72f));
-            DrawCubeV({0.0f, 0.18f, 0.0f}, {0.22f, 0.20f, 1.02f}, Color{255, 224, 96, 235});
+            DrawCubeV({0.0f, 0.0f, 0.0f}, {0.22f, 1.36f, 2.35f}, Color{30, 39, 43, 255});
+            DrawCubeV({0.0f, -1.15f, 0.0f}, {0.20f, 1.05f, 0.20f}, Color{225, 225, 208, 255});
+            const float arrowDirection = outside > 0.0f ? -1.0f : 1.0f;
+            for (float z : {-0.62f, 0.0f, 0.62f}) {
+                rlPushMatrix();
+                rlTranslatef(-0.13f, 0.13f, z + arrowDirection * 0.12f);
+                rlRotatef(arrowDirection * 42.0f, 1.0f, 0.0f, 0.0f);
+                DrawCubeV({0.0f, 0.0f, 0.0f}, {0.07f, 0.16f, 0.72f}, Color{255, 213, 54, 255});
+                rlPopMatrix();
+            }
             rlPopMatrix();
         }
 
@@ -2827,6 +2835,19 @@ private:
                    lengthSq(karts_[static_cast<size_t>(b)].pos - karts_[0].pos);
         });
         for (int index : order) {
+            if (index != 0) {
+                const Kart3D& kart = karts_[static_cast<size_t>(index)];
+                const TrackPoint3D ground = track_.sample(kart.progress);
+                const Vector3 center = toWorld(kart.pos, bankedElevation(ground, kart.lane));
+                const Vector3 offset = sub(center, camera_.position);
+                const float distanceSq = offset.x * offset.x + offset.y * offset.y + offset.z * offset.z;
+                // Opponents can pass between the chase camera and player. Their
+                // large close-up body panels then cross the near plane and cover
+                // most of the screen, so fade that unsafe camera volume out.
+                if (distanceSq < 10.5f * 10.5f) {
+                    continue;
+                }
+            }
             drawKart(karts_[static_cast<size_t>(index)], index == 0);
         }
     }
