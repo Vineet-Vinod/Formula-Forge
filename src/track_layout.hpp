@@ -7,13 +7,17 @@ struct TrackControlPoint {
     float y = 0.0f;
 };
 
-inline constexpr std::array<TrackControlPoint, 32> kSharkHarborControlPoints = {{
-    {0.0f, -1180.0f},    {0.0f, -900.0f},     {20.0f, -650.0f},    {160.0f, -420.0f},
-    {430.0f, -300.0f},   {760.0f, -340.0f},   {1050.0f, -520.0f},  {1240.0f, -780.0f},
-    {1210.0f, -1040.0f}, {980.0f, -1210.0f},  {630.0f, -1210.0f},  {320.0f, -1060.0f},
-    {90.0f, -880.0f},    {-190.0f, -760.0f},  {-520.0f, -810.0f},  {-890.0f, -700.0f},
-    {-1140.0f, -450.0f}, {-1190.0f, -130.0f}, {-1010.0f, 140.0f},  {-700.0f, 240.0f},
-    {-390.0f, 210.0f},   {-150.0f, 300.0f},   {-40.0f, 560.0f},    {-210.0f, 860.0f},
-    {-560.0f, 1030.0f},  {-940.0f, 950.0f},   {-1180.0f, 680.0f},  {-1210.0f, 330.0f},
-    {-1050.0f, 20.0f},   {-770.0f, -170.0f},  {-520.0f, -420.0f},  {-260.0f, -770.0f},
+inline constexpr float kSharkHarborCourseScale = 0.94f;
+
+// A deliberately non-self-approaching coastal loop. The old three-lobed route
+// put unrelated road branches in the driver's forward view; this perimeter
+// layout keeps the next piece of road unambiguous while retaining varied bends.
+inline constexpr std::array<TrackControlPoint, 26> kSharkHarborControlPoints = {{
+    {-610.0f, -1160.0f}, {-210.0f, -1220.0f}, {250.0f, -1215.0f},  {690.0f, -1120.0f},
+    {1040.0f, -930.0f},  {1310.0f, -680.0f},  {1490.0f, -380.0f},  {1540.0f, -25.0f},
+    {1480.0f, 330.0f},   {1320.0f, 650.0f},   {1080.0f, 900.0f},   {770.0f, 1070.0f},
+    {420.0f, 1160.0f},   {55.0f, 1140.0f},    {-280.0f, 1060.0f},  {-580.0f, 900.0f},
+    {-800.0f, 710.0f},   {-990.0f, 525.0f},   {-1230.0f, 350.0f},  {-1450.0f, 80.0f},
+    {-1510.0f, -220.0f}, {-1420.0f, -500.0f}, {-1210.0f, -700.0f}, {-950.0f, -790.0f},
+    {-790.0f, -940.0f},  {-710.0f, -1080.0f},
 }};

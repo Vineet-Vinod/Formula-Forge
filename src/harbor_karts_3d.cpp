@@ -156,55 +156,34 @@ ZoneMaterial3D mixMaterial(ZoneMaterial3D a, ZoneMaterial3D b, float t) {
 }
 
 int zoneForPhase(float phase) {
-    if (phase < 0.14f) {
+    if (phase < 0.30f) {
         return 0;
     }
-    if (phase < 0.29f) {
-        return 1;
-    }
-    if (phase < 0.42f) {
+    if (phase < 0.60f) {
         return 2;
     }
-    if (phase < 0.58f) {
-        return 3;
-    }
-    if (phase < 0.72f) {
+    if (phase < 0.90f) {
         return 4;
     }
-    if (phase < 0.85f) {
-        return 5;
-    }
-    return 6;
+    return 0;
 }
 
 float trackWidthForZone(int zone) {
     switch (zone) {
-        case 1:
-            return 176.0f;
         case 2:
-            return 204.0f;
-        case 3:
-            return 170.0f;
+            return 190.0f;
         case 4:
-            return 198.0f;
-        case 5:
-            return 174.0f;
-        case 6:
-            return 230.0f;
+            return 202.0f;
         default:
-            return 226.0f;
+            return 216.0f;
     }
 }
 
 ZoneMaterial3D materialForPhase(float phase) {
     ZoneMaterial3D material = baseZoneMaterial(zoneForPhase(phase));
     static constexpr float kBlend = 0.034f;
-    static constexpr std::array<std::array<float, 3>, 6> kBoundaries = {{{0.14f, 0.0f, 1.0f},
-                                                                        {0.29f, 1.0f, 2.0f},
-                                                                        {0.42f, 2.0f, 3.0f},
-                                                                        {0.58f, 3.0f, 4.0f},
-                                                                        {0.72f, 4.0f, 5.0f},
-                                                                        {0.85f, 5.0f, 6.0f}}};
+    static constexpr std::array<std::array<float, 3>, 3> kBoundaries = {
+        {{0.30f, 0.0f, 2.0f}, {0.60f, 2.0f, 4.0f}, {0.90f, 4.0f, 0.0f}}};
     for (const auto& boundary : kBoundaries) {
         const float p = boundary[0];
         if (phase >= p - kBlend && phase <= p + kBlend) {
@@ -384,7 +363,7 @@ private:
                 wrapped += count;
             }
             const TrackControlPoint& p = control[static_cast<size_t>(wrapped)];
-            return Vec2{p.x, p.y};
+            return Vec2{p.x * kSharkHarborCourseScale, p.y * kSharkHarborCourseScale};
         };
 
         std::vector<Vec2> dense;
@@ -447,8 +426,8 @@ private:
 
     void buildProps() {
         std::mt19937 rng(3119);
-        std::uniform_real_distribution<float> jitter(-28.0f, 28.0f);
-        const int count = 128;
+        std::uniform_real_distribution<float> jitter(-24.0f, 24.0f);
+        const int count = 156;
         for (int i = 0; i < count; ++i) {
             const float p = wrapDistance(totalLength_ * (static_cast<float>(i) + 0.23f) / count + jitter(rng), totalLength_);
             if (std::abs(signedDistanceToLoop(kRaceStartProgress, p, totalLength_)) < 620.0f) {
@@ -458,33 +437,19 @@ private:
             Prop3D prop;
             prop.progress = p;
             const float sideSign = (i % 2 == 0) ? -1.0f : 1.0f;
-            prop.side = sideSign * (tp.width * 0.5f + 230.0f + static_cast<float>((i * 17) % 156));
+            prop.side = sideSign * (tp.width * 0.5f + 130.0f + static_cast<float>((i * 17) % 145));
             prop.scale = 0.75f + static_cast<float>((i * 11) % 9) * 0.09f;
 
-            if (tp.zone == 1 || tp.zone == 5) {
-                prop.type = (i % 7 == 0) ? Prop3D::Type::Crane : ((i % 4 == 0) ? Prop3D::Type::Boat : Prop3D::Type::Sail);
-                prop.color = (i % 4 == 0) ? Color{232, 74, 61, 255} : Color{245, 191, 56, 255};
+            if (tp.zone == 0) {
+                prop.type = (i % 9 == 0) ? Prop3D::Type::Boat
+                                         : ((i % 5 == 0) ? Prop3D::Type::Hut : ((i % 3 == 0) ? Prop3D::Type::Sail : Prop3D::Type::Palm));
+                prop.color = (i % 4 == 0) ? Color{235, 82, 62, 255} : Color{245, 191, 56, 255};
             } else if (tp.zone == 2) {
-                prop.type = (i % 4 == 0) ? Prop3D::Type::Market : ((i % 6 == 0) ? Prop3D::Type::Hut : Prop3D::Type::Palm);
-                prop.color = (i % 3 == 0) ? Color{238, 69, 91, 255} : Color{49, 177, 156, 255};
-            } else if (tp.zone == 3) {
-                prop.type = (i % 3 == 0) ? Prop3D::Type::Crystal : ((i % 2 == 0) ? Prop3D::Type::Torch : Prop3D::Type::Rock);
-                prop.color = (i % 3 == 0) ? Color{111, 218, 236, 255} : Color{238, 115, 45, 255};
-            } else if (tp.zone == 4 && i % 3 == 0) {
-                prop.type = Prop3D::Type::Cliff;
-                prop.color = Color{112, 126, 91, 255};
-            } else if (i % 13 == 0) {
-                prop.type = Prop3D::Type::Chevron;
-                prop.color = Color{237, 62, 54, 255};
-            } else if (i % 8 == 0) {
-                prop.type = Prop3D::Type::Hut;
-                prop.color = Color{181, 93, 53, 255};
-            } else if (i % 5 == 0) {
-                prop.type = Prop3D::Type::Rock;
-                prop.color = Color{119, 111, 92, 255};
+                prop.type = (i % 5 == 0) ? Prop3D::Type::Market : ((i % 7 == 0) ? Prop3D::Type::Crane : Prop3D::Type::Hut);
+                prop.color = (i % 3 == 0) ? Color{238, 69, 91, 255} : Color{48, 167, 157, 255};
             } else {
-                prop.type = Prop3D::Type::Palm;
-                prop.color = Color{48, 156, 86, 255};
+                prop.type = (i % 6 == 0) ? Prop3D::Type::Cliff : ((i % 4 == 0) ? Prop3D::Type::Rock : Prop3D::Type::Palm);
+                prop.color = (i % 6 == 0) ? Color{93, 116, 82, 255} : Color{45, 145, 76, 255};
             }
             if (prop.type == Prop3D::Type::Chevron) {
                 const float outside = std::abs(tp.signedCurvature) > 0.015f ? -std::copysign(1.0f, tp.signedCurvature) : sideSign;
@@ -492,7 +457,7 @@ private:
                 prop.scale *= 1.30f;
             } else if (prop.type == Prop3D::Type::Palm || prop.type == Prop3D::Type::Crane || prop.type == Prop3D::Type::Cliff ||
                        prop.type == Prop3D::Type::Crystal) {
-                prop.side += sideSign * 132.0f;
+                prop.side += sideSign * 72.0f;
             }
             props_.push_back(prop);
         }
@@ -502,13 +467,13 @@ private:
             const TrackPoint3D tp = sample(p);
             props_.push_back({type, p, sideSign * (tp.width * 0.5f + extra), scale, color});
         };
-        addLandmark(0.115f, 1.0f, 150.0f, 1.55f, Prop3D::Type::Chevron, Color{238, 62, 54, 255});
-        addLandmark(0.195f, -1.0f, 230.0f, 2.25f, Prop3D::Type::Crane, Color{226, 84, 57, 255});
-        addLandmark(0.315f, 1.0f, 244.0f, 2.10f, Prop3D::Type::Market, Color{239, 70, 91, 255});
-        addLandmark(0.455f, -1.0f, 210.0f, 1.75f, Prop3D::Type::Torch, Color{249, 122, 43, 255});
-        addLandmark(0.555f, 1.0f, 236.0f, 2.20f, Prop3D::Type::Crystal, Color{109, 219, 244, 255});
-        addLandmark(0.710f, -1.0f, 238.0f, 2.15f, Prop3D::Type::Crane, Color{236, 92, 51, 255});
-        addLandmark(0.870f, 1.0f, 250.0f, 2.25f, Prop3D::Type::Hut, Color{177, 92, 51, 255});
+        addLandmark(0.105f, 1.0f, 92.0f, 1.70f, Prop3D::Type::Chevron, Color{238, 62, 54, 255});
+        addLandmark(0.205f, -1.0f, 160.0f, 2.15f, Prop3D::Type::Boat, Color{239, 191, 56, 255});
+        addLandmark(0.325f, 1.0f, 142.0f, 2.20f, Prop3D::Type::Market, Color{239, 70, 91, 255});
+        addLandmark(0.455f, -1.0f, 136.0f, 2.00f, Prop3D::Type::Crane, Color{236, 92, 51, 255});
+        addLandmark(0.610f, 1.0f, 145.0f, 2.25f, Prop3D::Type::Hut, Color{52, 151, 90, 255});
+        addLandmark(0.765f, -1.0f, 138.0f, 2.45f, Prop3D::Type::Cliff, Color{92, 117, 83, 255});
+        addLandmark(0.900f, 1.0f, 142.0f, 2.10f, Prop3D::Type::Palm, Color{47, 157, 84, 255});
     }
 
     std::vector<TrackPoint3D> samples_;
@@ -2348,22 +2313,44 @@ private:
     }
 
     void drawEnvironment() {
-        DrawPlane({0.0f, -0.36f, 0.0f}, {340.0f, 320.0f}, Color{42, 178, 196, 255});
-        drawGradientOval({0.0f, -0.302f, -12.0f}, 160.0f, 142.0f, Color{242, 206, 124, 255}, Color{58, 179, 190, 255}, 96);
-        drawGradientOval({-42.0f, -0.245f, 20.0f}, 82.0f, 66.0f, Color{230, 194, 110, 255}, Color{219, 190, 112, 255}, 72);
-        drawGradientOval({-58.0f, -0.198f, 13.0f}, 49.0f, 44.0f, Color{105, 166, 92, 255}, Color{224, 190, 111, 255}, 72);
-        drawGradientOval({68.0f, -0.188f, -57.0f}, 59.0f, 45.0f, Color{112, 174, 95, 255}, Color{225, 191, 111, 255}, 72);
-        drawGradientOval({44.0f, -0.258f, 58.0f}, 48.0f, 34.0f, Color{88, 176, 164, 255}, Color{123, 186, 152, 255}, 64);
+        DrawPlane({0.0f, -0.44f, 0.0f}, {390.0f, 340.0f}, Color{37, 166, 192, 255});
 
-        for (int i = 0; i < 18; ++i) {
-            const float x = -138.0f + static_cast<float>((i * 47) % 286);
-            const float z = -122.0f + static_cast<float>((i * 61) % 244);
-            drawFlatOval({x, -0.315f, z}, 3.6f + static_cast<float>(i % 4) * 0.7f, 0.18f, 0.012f, Color{226, 247, 232, 128}, 18);
+        // One continuous island sits beneath the complete loop. Overlapping
+        // terrain plates mark sectors without ever exposing a floating road.
+        drawFlatOval({0.0f, -0.43f, -3.0f}, 166.0f, 130.0f, 0.16f, Color{213, 173, 91, 255}, 112);
+        drawFlatOval({0.0f, -0.31f, -3.0f}, 158.0f, 122.0f, 0.10f, Color{230, 193, 108, 255}, 112);
+        drawGradientOval({0.0f, -0.36f, -3.0f}, 164.0f, 128.0f, Color{227, 188, 105, 255}, Color{214, 173, 91, 255}, 112);
+        drawGradientOval({0.0f, -0.31f, -3.0f}, 157.0f, 121.0f, Color{235, 199, 115, 255}, Color{224, 184, 98, 255}, 112);
+        drawFlatOval({0.0f, -0.255f, -42.0f}, 148.0f, 72.0f, 0.035f, Color{237, 201, 117, 255}, 96);
+        drawFlatOval({84.0f, -0.225f, 4.0f}, 70.0f, 78.0f, 0.035f, Color{218, 180, 108, 255}, 80);
+        drawFlatOval({-25.0f, -0.175f, 65.0f}, 124.0f, 57.0f, 0.035f, Color{107, 157, 82, 255}, 92);
+        drawFlatOval({-96.0f, -0.145f, 21.0f}, 49.0f, 61.0f, 0.035f, Color{95, 150, 79, 255}, 64);
+        drawGradientOval({0.0f, -0.285f, -42.0f}, 148.0f, 72.0f, Color{244, 210, 128, 255}, Color{226, 187, 102, 255}, 96);
+        drawGradientOval({84.0f, -0.235f, 4.0f}, 70.0f, 78.0f, Color{205, 165, 101, 255}, Color{229, 193, 118, 255}, 80);
+        drawGradientOval({-25.0f, -0.19f, 65.0f}, 124.0f, 57.0f, Color{80, 147, 77, 255}, Color{160, 176, 99, 255}, 92);
+        drawGradientOval({-96.0f, -0.16f, 21.0f}, 49.0f, 61.0f, Color{73, 139, 75, 255}, Color{187, 181, 102, 255}, 64);
+
+        // Foam and exposed reefs make the shoreline readable in the distance.
+        for (int i = 0; i < 28; ++i) {
+            const float angle = kTwoPi * static_cast<float>(i) / 28.0f;
+            const float x = std::cos(angle) * (157.0f + static_cast<float>(i % 3) * 1.8f);
+            const float z = -3.0f + std::sin(angle) * (121.0f + static_cast<float>((i + 1) % 4));
+            drawFlatOval({x, -0.37f, z}, 4.2f + static_cast<float>(i % 4) * 0.65f, 0.26f, 0.014f,
+                         Color{222, 245, 231, 155}, 18);
         }
 
-        DrawSphere({-92.0f, 58.0f, -72.0f}, 9.0f, Color{255, 219, 90, 255});
+        // Permanent jungle ridge silhouettes replace isolated scenery that
+        // previously appeared to pop as the road renderer culled chunks.
+        for (int i = 0; i < 11; ++i) {
+            const float x = -119.0f + static_cast<float>(i) * 23.0f;
+            const float height = 6.0f + static_cast<float>((i * 7) % 5) * 1.5f;
+            DrawSphere({x, height * 0.34f, 105.0f + std::sin(static_cast<float>(i) * 1.8f) * 5.0f}, height,
+                       i % 2 == 0 ? Color{64, 121, 71, 255} : Color{78, 137, 73, 255});
+        }
+
+        DrawSphere({-116.0f, 56.0f, -86.0f}, 8.5f, Color{255, 219, 90, 255});
         for (int i = 0; i < 6; ++i) {
-            DrawCubeV({-76.0f + static_cast<float>(i) * 25.0f, 45.0f + std::sin(static_cast<float>(i)) * 5.0f, -82.0f},
+            DrawCubeV({-78.0f + static_cast<float>(i) * 27.0f, 45.0f + std::sin(static_cast<float>(i)) * 5.0f, -98.0f},
                       {13.0f, 2.4f, 3.0f}, Color{236, 252, 255, 205});
         }
     }
@@ -2446,6 +2433,37 @@ private:
                 rlPopMatrix();
             }
             rlPopMatrix();
+        }
+
+        // Low sector-specific edge geometry follows the same lane boundary as
+        // collision resolution. It gives every corner a stable silhouette and
+        // communicates exactly how much shoulder remains available.
+        constexpr int boundaryStride = 10;
+        for (int i = 0; i < track_.sampleCount(); i += boundaryStride) {
+            const TrackPoint3D& p = samples[static_cast<size_t>(i)];
+            const TrackPoint3D& next = samples[static_cast<size_t>((i + boundaryStride) % track_.sampleCount())];
+            const float segmentLength = length(next.pos - p.pos) * kRenderScale * 1.05f;
+            for (float side : {-1.0f, 1.0f}) {
+                const float lane = side * (p.width * 0.5f + 18.0f);
+                const Vector3 edge = track_.roadPoint(p, lane);
+                rlPushMatrix();
+                rlTranslatef(edge.x, edge.y + (p.zone == 2 ? 0.53f : 0.34f), edge.z);
+                rlRotatef(90.0f - angleOf(p.tangent) * RAD2DEG, 0.0f, 1.0f, 0.0f);
+                if (p.zone == 0) {
+                    DrawCubeV({0.0f, 0.0f, 0.0f}, {0.24f, 0.30f, segmentLength}, Color{113, 76, 45, 255});
+                    DrawCubeV({0.0f, -0.31f, -segmentLength * 0.42f}, {0.34f, 0.72f, 0.34f}, Color{86, 62, 42, 255});
+                    DrawCubeV({0.0f, -0.31f, segmentLength * 0.42f}, {0.34f, 0.72f, 0.34f}, Color{86, 62, 42, 255});
+                } else if (p.zone == 2) {
+                    const Color wall = ((i / boundaryStride) % 2 == 0) ? Color{238, 116, 83, 255} : Color{242, 199, 119, 255};
+                    DrawCubeV({0.0f, 0.0f, 0.0f}, {0.56f, 1.04f, segmentLength}, wall);
+                    DrawCubeV({0.0f, 0.58f, 0.0f}, {0.68f, 0.16f, segmentLength}, Color{250, 226, 153, 255});
+                } else {
+                    const float rise = 0.58f + static_cast<float>((i / boundaryStride) % 3) * 0.12f;
+                    DrawCubeV({0.0f, 0.0f, 0.0f}, {0.72f, rise, segmentLength}, Color{76, 101, 67, 255});
+                    DrawCubeV({0.0f, rise * 0.48f, 0.0f}, {0.84f, 0.22f, segmentLength * 0.96f}, Color{111, 129, 75, 255});
+                }
+                rlPopMatrix();
+            }
         }
 
         if (mode_ != Mode::Garage) {
