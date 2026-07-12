@@ -878,7 +878,16 @@ struct ArcadeRender::Impl {
         const float l = std::max(2.0f, spec.length);
         const float h = std::max(0.55f, spec.bodyHeight);
         const float bodyBase = spec.wheelRadius * 0.64f + std::max(0.05f, spec.rideHeight);
-        Matrix root = compose(state.position, {1.0f, 1.0f, 1.0f}, {state.pitchRadians, state.headingRadians, state.rollRadians});
+        const float travel = std::max(spec.wheelRadius * 0.30f, std::max(0.0f, state.suspensionTravel));
+        float averageCompression = 0.0f;
+        for (float compression : state.suspensionCompression) {
+            averageCompression += clamp01(compression);
+        }
+        averageCompression /= static_cast<float>(state.suspensionCompression.size());
+        const float groundedWheelBottom = (0.48f - averageCompression) * travel;
+        Vector3 rootPosition = state.position;
+        rootPosition.y -= groundedWheelBottom * (1.0f - clamp01(state.airborneAmount));
+        Matrix root = compose(rootPosition, {1.0f, 1.0f, 1.0f}, {state.pitchRadians, state.headingRadians, state.rollRadians});
 
         const float grounded = 1.0f - 0.74f * clamp01(state.airborneAmount);
         const Color shadowColor{24, 31, 31, static_cast<unsigned char>((110 + static_cast<int>(55.0f * clamp01(state.speedNormalized))) * grounded)};
