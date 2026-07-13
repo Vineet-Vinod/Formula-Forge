@@ -9,10 +9,12 @@
 namespace harbor {
 namespace {
 
-constexpr std::array<float, 13> kLaneCuts = {
-    -1.72f, -1.38f, -1.08f, -0.94f, -0.80f, -0.42f, 0.0f, 0.42f, 0.80f, 0.94f, 1.08f, 1.38f, 1.72f,
+constexpr std::array<float, 19> kLaneCuts = {
+    -3.40f, -2.70f, -2.10f, -1.72f, -1.38f, -1.08f, -0.94f, -0.80f, -0.42f, 0.0f,
+    0.42f,  0.80f,  0.94f,  1.08f,  1.38f,  1.72f,  2.10f,  2.70f,  3.40f,
 };
 constexpr size_t kSegmentsPerChunk = 12;
+constexpr float kTerrainSurfaceY = -0.18f;
 
 Vector3 add(Vector3 a, Vector3 b) { return {a.x + b.x, a.y + b.y, a.z + b.z}; }
 Vector3 subtract(Vector3 a, Vector3 b) { return {a.x - b.x, a.y - b.y, a.z - b.z}; }
@@ -27,6 +29,11 @@ Vector3 normalize3(Vector3 value) {
     return magnitude > 0.00001f ? scale(value, 1.0f / magnitude) : Vector3{0.0f, 1.0f, 0.0f};
 }
 float distance3(Vector3 a, Vector3 b) { return length3(subtract(a, b)); }
+
+float smoothstep01(float value) {
+    value = std::clamp(value, 0.0f, 1.0f);
+    return value * value * (3.0f - 2.0f * value);
+}
 
 Color shade(Color color, float amount) {
     const auto channel = [amount](unsigned char value) {
@@ -56,7 +63,10 @@ Color surfaceColor(const TrackRenderSample& sample, float lane) {
 
 Vector3 samplePoint(const TrackRenderSample& sample, float lane) {
     const float crown = std::max(0.0f, 1.0f - std::abs(lane) / 0.82f) * 0.045f;
-    return add(sample.center, add(scale(sample.lateral, sample.halfWidth * lane), {0.0f, crown, 0.0f}));
+    Vector3 point = add(sample.center, add(scale(sample.lateral, sample.halfWidth * lane), {0.0f, crown, 0.0f}));
+    const float terrainBlend = smoothstep01((std::abs(lane) - 1.38f) / (3.40f - 1.38f));
+    point.y += (kTerrainSurfaceY - point.y) * terrainBlend;
+    return point;
 }
 
 void appendVertex(std::vector<float>& vertices, std::vector<float>& texcoords, std::vector<float>& normals,
@@ -107,13 +117,16 @@ Model makeSurfaceChunk(std::span<const TrackRenderSample> samples, size_t start,
         const TrackRenderSample& previous = samples[(index + samples.size() - 1) % samples.size()];
         const TrackRenderSample& next = samples[(index + 1) % samples.size()];
         const Vector3 forward = normalize3(subtract(next.center, previous.center));
-        Vector3 normal = normalize3(cross3(sample.lateral, forward));
-        if (normal.y < 0.0f) {
-            normal = negate(normal);
-        }
         const float distance = sample.progress + (unwrapped >= samples.size() ? totalProgress : 0.0f);
         for (size_t column = 0; column < columns; ++column) {
             const float lane = kLaneCuts[column];
+            const float leftLane = kLaneCuts[column > 0 ? column - 1 : column];
+            const float rightLane = kLaneCuts[column + 1 < columns ? column + 1 : column];
+            const Vector3 across = normalize3(subtract(samplePoint(sample, rightLane), samplePoint(sample, leftLane)));
+            Vector3 normal = normalize3(cross3(across, forward));
+            if (normal.y < 0.0f) {
+                normal = negate(normal);
+            }
             appendVertex(vertices, texcoords, normals, colors, samplePoint(sample, lane), normal, lane * 1.8f,
                          distance * 0.022f, surfaceColor(sample, lane));
         }

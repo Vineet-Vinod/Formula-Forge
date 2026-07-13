@@ -33,16 +33,21 @@ constexpr float kFixedDt = 1.0f / 120.0f;
 constexpr float kRenderScale = 0.085f;
 constexpr int kKartCount = 6;
 constexpr int kSampleCount = 1536;
-constexpr float kRaceStartProgress = 0.0f;
+constexpr float kRaceStartPhase = 0.795f;
 constexpr float kRoadSurfaceRatio = 0.40f;
 constexpr float kRoadLaneInset = 4.0f;
 constexpr float kHardBoundaryInset = 18.0f;
+constexpr float kTerrainSurfaceY = -0.18f;
 constexpr float kTrackSurfaceLift = 0.018f;
 constexpr float kKartWheelGroundClearance = 0.42f;
 constexpr float kContactProgressWindow = 240.0f;
 constexpr float kContactVerticalWindow = 7.0f;
 constexpr int kInfiniteLaps = 0;
 constexpr std::array<int, 4> kLapOptions = {2, 5, 10, kInfiniteLaps};
+
+float raceStartProgress(float trackLength) {
+    return trackLength * kRaceStartPhase;
+}
 
 Color mix(Color a, Color b, float t) {
     t = std::clamp(t, 0.0f, 1.0f);
@@ -430,7 +435,7 @@ private:
         const int count = 156;
         for (int i = 0; i < count; ++i) {
             const float p = wrapDistance(totalLength_ * (static_cast<float>(i) + 0.23f) / count + jitter(rng), totalLength_);
-            if (std::abs(signedDistanceToLoop(kRaceStartProgress, p, totalLength_)) < 620.0f) {
+            if (std::abs(signedDistanceToLoop(raceStartProgress(totalLength_), p, totalLength_)) < 620.0f) {
                 continue;
             }
             const TrackPoint3D tp = sample(p);
@@ -1276,6 +1281,17 @@ std::array<float, 17> surfaceCuts(const TrackPoint3D& point) {
             half + reach};
 }
 
+Vector3 terrainSurfacePoint(const Track3D& track, const TrackPoint3D& point, float lane) {
+    Vector3 result = track.roadPoint(point, lane);
+    const float half = point.width * 0.5f;
+    const float reach = offroadReachForZone(point.zone);
+    const float blendStart = half + reach * 0.20f;
+    const float blendEnd = half + reach;
+    const float blend = smoothstep((std::abs(lane) - blendStart) / std::max(1.0f, blendEnd - blendStart));
+    result.y = lerp(result.y, kTerrainSurfaceY, blend);
+    return result;
+}
+
 class Game3D {
 public:
     enum class Mode { Garage, Race, Pause };
@@ -1466,8 +1482,11 @@ public:
         }
         if (passingSide != 0.0f) {
             const TrackPoint3D future = track_.sample(player.progress + 145.0f);
-            const float passingLane = passingSide * std::max(0.0f, roadCenterLimit(player, future) - 5.0f);
-            input.steer = aiSteerForProgress(player, 0, passingLane);
+            const TrackPoint3D apex = track_.sample(player.progress + 240.0f);
+            if (std::max(future.curvature, apex.curvature) < 0.038f) {
+                const float passingLane = passingSide * std::max(0.0f, roadCenterLimit(player, future) * 0.68f);
+                input.steer = aiSteerForProgress(player, 0, passingLane);
+            }
         }
         return input;
     }
@@ -1795,7 +1814,7 @@ private:
 
     void updateGarageCamera(float dt) {
         (void)dt;
-        const TrackPoint3D start = track_.sample(kRaceStartProgress);
+        const TrackPoint3D start = track_.sample(raceStartProgress(track_.totalLength()));
         const float focusLane = 10.0f;
         const float cameraLane = 148.0f;
         const Vector3 focus = toWorld(start.pos + start.tangent * 32.0f + start.normal * focusLane, bankedElevation(start, focusLane) + 11.0f);
@@ -1809,7 +1828,8 @@ private:
 
     void resetRace() {
         karts_.clear();
-        const TrackPoint3D start = track_.sample(kRaceStartProgress);
+        const float startProgress = raceStartProgress(track_.totalLength());
+        const TrackPoint3D start = track_.sample(startProgress);
         for (int i = 0; i < kKartCount; ++i) {
             Kart3D kart;
             kart.spec = specs_[static_cast<size_t>(i == 0 ? selectedCar_ : i % static_cast<int>(specs_.size()))];
@@ -1817,7 +1837,7 @@ private:
             kart.racer = racers_[static_cast<size_t>(i == 0 ? selectedRacer_ : (i * 3) % static_cast<int>(racers_.size()))];
             static constexpr std::array<float, kKartCount> kGridProgress = {-420.0f, -84.0f, -126.0f, -246.0f, -288.0f, -374.0f};
             static constexpr std::array<float, kKartCount> kGridLane = {34.0f, -34.0f, 34.0f, -34.0f, 34.0f, -34.0f};
-            const float stagger = kRaceStartProgress + kGridProgress[static_cast<size_t>(i)];
+            const float stagger = startProgress + kGridProgress[static_cast<size_t>(i)];
             const TrackPoint3D grid = track_.sample(stagger);
             const float lane = std::clamp(kGridLane[static_cast<size_t>(i)], -roadCenterLimit(kart, grid), roadCenterLimit(kart, grid));
             kart.pos = grid.pos + grid.normal * lane;
@@ -1864,13 +1884,13 @@ private:
     }
 
     void updateProgress(Kart3D& kart) {
-        const float oldRaceProgress = progressAhead(kRaceStartProgress, kart.progress, track_.totalLength());
+        const float oldRaceProgress = progressAhead(raceStartProgress(track_.totalLength()), kart.progress, track_.totalLength());
         kart.nearest = track_.nearestIndexNear(kart.pos, kart.nearest, 4);
         const TrackPoint3D& center = track_.pointAtIndex(kart.nearest);
         kart.previousProgress = kart.progress;
         kart.progress = center.progress;
         kart.lane = dot(kart.pos - center.pos, center.normal);
-        const float newRaceProgress = progressAhead(kRaceStartProgress, kart.progress, track_.totalLength());
+        const float newRaceProgress = progressAhead(raceStartProgress(track_.totalLength()), kart.progress, track_.totalLength());
         if (oldRaceProgress > track_.totalLength() * 0.70f && newRaceProgress < track_.totalLength() * 0.30f) {
             ++kart.lap;
         } else if (oldRaceProgress < track_.totalLength() * 0.30f && newRaceProgress > track_.totalLength() * 0.70f &&
@@ -1883,7 +1903,9 @@ private:
         integrateKart(kart, canonicalPlayerInput(input), dt, true);
     }
 
-    float raceLapProgress(const Kart3D& kart) const { return progressAhead(kRaceStartProgress, kart.progress, track_.totalLength()); }
+    float raceLapProgress(const Kart3D& kart) const {
+        return progressAhead(raceStartProgress(track_.totalLength()), kart.progress, track_.totalLength());
+    }
 
     float raceScore(const Kart3D& kart) const { return static_cast<float>(kart.lap) * track_.totalLength() + raceLapProgress(kart); }
 
@@ -2425,7 +2447,8 @@ private:
         if (raceFlow_) {
             const ArcadeCheckpointResetInfo reset = raceFlow_->lastValidReset(0);
             if (reset.valid) {
-                resetProgress = wrapDistance(kRaceStartProgress + reset.normalizedTrackProgress * track_.totalLength(), track_.totalLength());
+                resetProgress = wrapDistance(raceStartProgress(track_.totalLength()) + reset.normalizedTrackProgress * track_.totalLength(),
+                                             track_.totalLength());
             }
         }
         const TrackPoint3D tp = track_.sample(resetProgress);
@@ -2553,7 +2576,8 @@ private:
     void drawTrack() {
         const auto& samples = track_.samples();
         if (trackRenderer_.ready()) {
-            const float viewProgress = mode_ == Mode::Garage || karts_.empty() ? kRaceStartProgress : karts_[0].progress;
+            const float viewProgress =
+                mode_ == Mode::Garage || karts_.empty() ? raceStartProgress(track_.totalLength()) : karts_[0].progress;
             trackRenderer_.draw(viewProgress * kRenderScale, 260.0f);
         } else {
             constexpr int stride = 2;
@@ -2566,10 +2590,10 @@ private:
             const std::array<float, 17> cutsB = surfaceCuts(b);
 
             for (size_t band = 0; band + 1 < cutsA.size(); ++band) {
-                drawGradientQuad(lift(track_.roadPoint(a, cutsA[band]), kTrackSurfaceLift),
-                                 lift(track_.roadPoint(b, cutsB[band]), kTrackSurfaceLift),
-                                 lift(track_.roadPoint(b, cutsB[band + 1]), kTrackSurfaceLift),
-                                 lift(track_.roadPoint(a, cutsA[band + 1]), kTrackSurfaceLift), surfaceColorAt(a, cutsA[band]),
+                drawGradientQuad(lift(terrainSurfacePoint(track_, a, cutsA[band]), kTrackSurfaceLift),
+                                 lift(terrainSurfacePoint(track_, b, cutsB[band]), kTrackSurfaceLift),
+                                 lift(terrainSurfacePoint(track_, b, cutsB[band + 1]), kTrackSurfaceLift),
+                                 lift(terrainSurfacePoint(track_, a, cutsA[band + 1]), kTrackSurfaceLift), surfaceColorAt(a, cutsA[band]),
                                  surfaceColorAt(b, cutsB[band]), surfaceColorAt(b, cutsB[band + 1]),
                                  surfaceColorAt(a, cutsA[band + 1]));
             }
@@ -2662,8 +2686,9 @@ private:
         }
 
         if (mode_ != Mode::Garage) {
-            const TrackPoint3D start = track_.sample(kRaceStartProgress);
-            const TrackPoint3D after = track_.sample(kRaceStartProgress + 10.0f);
+            const float startProgress = raceStartProgress(track_.totalLength());
+            const TrackPoint3D start = track_.sample(startProgress);
+            const TrackPoint3D after = track_.sample(startProgress + 10.0f);
             const float half = start.width * 0.5f;
             constexpr int kCells = 12;
             for (int cell = 0; cell < kCells; ++cell) {
@@ -2693,7 +2718,7 @@ private:
 
     void drawProp(const Prop3D& prop) {
         const TrackPoint3D p = track_.sample(prop.progress);
-        const Vector3 base = track_.roadPoint(p, prop.side);
+        const Vector3 base = terrainSurfacePoint(track_, p, prop.side);
         const float s = prop.scale;
         if (renderer_.ready()) {
             arcade_render::TropicalPropKind kind = arcade_render::TropicalPropKind::RockCluster;
@@ -3115,7 +3140,7 @@ private:
 
     void drawKarts() {
         if (mode_ == Mode::Garage) {
-            const TrackPoint3D start = track_.sample(kRaceStartProgress + 52.0f);
+            const TrackPoint3D start = track_.sample(raceStartProgress(track_.totalLength()) + 52.0f);
             Kart3D preview = karts_[0];
             preview.spec = specs_[static_cast<size_t>(selectedCar_)];
             preview.racer = racers_[static_cast<size_t>(selectedRacer_)];
