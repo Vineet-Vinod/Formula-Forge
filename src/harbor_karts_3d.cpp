@@ -2157,7 +2157,7 @@ private:
         control.steer = input.steer;
         control.throttle = input.throttle;
         control.brake = input.brake;
-        control.drift = !player && input.drift;
+        control.drift = input.drift;
         kart.telemetry = stepArcadeVehicle(kart, kart.tuning, control, surface, dt);
 
         const bool stuckOffroad = length(kart.vel) < 14.0f && offroad > 6.0f && input.throttle > 0.55f;
@@ -3267,6 +3267,7 @@ int runHarborKarts3D(int argc, char** argv) {
                   << " brake_load_2s=" << result.brakeLoadAfterRelease
                   << " jump_apex=" << result.jumpApex << " jump_airtime=" << result.jumpAirTime
                   << " landing_impulse=" << result.jumpLandingImpulse << " jump_step_error=" << result.jumpFixedStepError
+                  << " jump_pitch_up=" << result.jumpNoseUpPitch << " jump_pitch_down=" << result.jumpNoseDownPitch
                   << " fixed_step_error=" << result.fixedStepPositionError << " ok=" << result.ok << "\n";
         return result.ok ? 0 : 1;
     }

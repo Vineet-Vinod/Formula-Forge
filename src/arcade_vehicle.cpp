@@ -271,7 +271,9 @@ ArcadeVehicleTelemetry stepSingle(ArcadeVehicleState& state,
 
     if (control.brake > 0.0f) {
         if (forwardSpeed > 2.0f) {
-            driveAcceleration -= control.brake * config.brakeDeceleration;
+            const bool activeDrift = state.driftPhase == ArcadeDriftPhase::Entry || state.driftPhase == ArcadeDriftPhase::Sustain;
+            const float brakingScale = activeDrift ? config.driftBrakeDecelerationScale : 1.0f;
+            driveAcceleration -= control.brake * config.brakeDeceleration * brakingScale;
         } else if (forwardSpeed < -2.0f || state.brakeHold >= config.reverseDelay) {
             driveAcceleration -= control.brake * config.reverseAcceleration * surface.acceleration;
         }
@@ -373,12 +375,16 @@ ArcadeVehicleTelemetry stepSingle(ArcadeVehicleState& state,
                                    landingCompression;
     const float accelerationPitch = std::clamp(-longitudinalAcceleration / std::max(1.0f, config.brakeDeceleration), -1.0f, 1.0f) *
                                     config.maxBodyPitch;
-    const float pitchTarget = accelerationPitch + state.brakeLoad * config.maxBrakePitch + landingCompression * 0.045f;
+    const float landingPitch = std::min(config.maxLandingPitch, state.landingImpulse * config.landingPitchScale);
+    const float flightPitch = std::clamp(-std::atan2(state.verticalSpeed, std::max(1.0f, std::abs(state.forwardSpeed))),
+                                         -config.maxAirPitchUp, config.maxAirPitchDown);
+    const float pitchTarget = state.grounded ? accelerationPitch + state.brakeLoad * config.maxBrakePitch + landingPitch : flightPitch;
     const float rollTarget = std::clamp(-lateralAcceleration / std::max(1.0f, config.lateralGripAcceleration), -1.0f, 1.0f) *
                              config.maxBodyRoll;
     springStep(state.suspensionCompression, state.suspensionVelocity, suspensionTarget, config.suspensionFrequency,
                config.suspensionDamping, dt);
-    springStep(state.bodyPitch, state.bodyPitchVelocity, pitchTarget, config.bodyFrequency, config.bodyDamping, dt);
+    springStep(state.bodyPitch, state.bodyPitchVelocity, pitchTarget,
+               state.grounded ? config.bodyFrequency : config.airPitchFrequency, config.bodyDamping, dt);
     springStep(state.bodyRoll, state.bodyRollVelocity, rollTarget, config.bodyFrequency, config.bodyDamping, dt);
 
     ArcadeVehicleTelemetry out = sampleTelemetry(state, config);
@@ -409,6 +415,8 @@ struct JumpScriptResult {
     float apex = 0.0f;
     float airTime = 0.0f;
     float landingImpulse = 0.0f;
+    float noseUpPitch = 0.0f;
+    float noseDownPitch = 0.0f;
 };
 
 JumpScriptResult simulateJump(float dt) {
@@ -427,6 +435,8 @@ JumpScriptResult simulateJump(float dt) {
         result.apex = std::max(result.apex, telemetry.elevation);
         result.airTime = std::max(result.airTime, telemetry.airborneTime);
         result.landingImpulse = std::max(result.landingImpulse, telemetry.landingImpulse);
+        result.noseUpPitch = std::min(result.noseUpPitch, state.bodyPitch);
+        result.noseDownPitch = std::max(result.noseDownPitch, state.bodyPitch);
         if (launched && telemetry.grounded && result.airTime > 0.1f) {
             break;
         }
@@ -641,8 +651,8 @@ ArcadeVehicleAuditResult runArcadeVehicleUnitAudit() {
         stepArcadeVehicle(brakeTurn, config, recoverControl, road, kInternalStep);
     }
     result.brakeRecoverySlip = std::abs(brakeTurn.slipAngle);
-    check(result.brakeOversteerPeakYaw > 1.0f);
-    check(result.brakeOversteerPeakSlip > 0.35f && result.brakeOversteerPeakSlip < 0.85f);
+    check(result.brakeOversteerPeakYaw > 0.80f);
+    check(result.brakeOversteerPeakSlip > 0.22f && result.brakeOversteerPeakSlip < 0.62f);
     check(result.brakeRecoverySlip < 0.10f);
 
     ArcadeVehicleState brakeRelease;
@@ -661,10 +671,14 @@ ArcadeVehicleAuditResult runArcadeVehicleUnitAudit() {
     result.jumpApex = jump120.apex;
     result.jumpAirTime = jump120.airTime;
     result.jumpLandingImpulse = jump120.landingImpulse;
+    result.jumpNoseUpPitch = jump120.noseUpPitch;
+    result.jumpNoseDownPitch = jump120.noseDownPitch;
     result.jumpFixedStepError = std::abs(jump120.apex - jump60.apex) + std::abs(jump120.airTime - jump60.airTime);
     check(result.jumpApex > 7.0f);
     check(result.jumpAirTime > 0.70f && result.jumpAirTime < 1.25f);
     check(result.jumpLandingImpulse > 30.0f);
+    check(result.jumpNoseUpPitch < -0.08f);
+    check(result.jumpNoseDownPitch > 0.08f);
     check(jump120.state.grounded && jump60.state.grounded);
     check(result.jumpFixedStepError < 0.75f);
 

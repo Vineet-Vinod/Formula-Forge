@@ -89,11 +89,12 @@ struct ArcadeVehicleConfig {
     float brakeReleaseResponse = 2.4f;
     float brakeOversteerMinSpeed = 32.0f;
     float brakeOversteerSteerThreshold = 0.06f;
-    float brakeOversteerYawGain = 8.30f;
-    float brakeOversteerSlip = 0.62f;
-    float brakeRearGripScale = 0.08f;
-    float brakeSlipResponse = 22.0f;
-    float brakeSlipRecovery = 1.8f;
+    float brakeOversteerYawGain = 4.80f;
+    float brakeOversteerSlip = 0.42f;
+    float brakeRearGripScale = 0.22f;
+    float brakeSlipResponse = 18.0f;
+    float brakeSlipRecovery = 4.2f;
+    float driftBrakeDecelerationScale = 0.62f;
 
     float lateralGripAcceleration = 310.0f;
     float lateralGripResponse = 14.0f;
@@ -137,6 +138,11 @@ struct ArcadeVehicleConfig {
     float maxBodyPitch = 0.085f;
     float maxBrakePitch = 0.16f;
     float maxBodyRoll = 0.12f;
+    float maxAirPitchUp = 0.34f;
+    float maxAirPitchDown = 0.42f;
+    float airPitchFrequency = 3.8f;
+    float landingPitchScale = 0.0032f;
+    float maxLandingPitch = 0.14f;
 
     float gravity = 94.0f;
     float airControlScale = 0.26f;
@@ -216,6 +222,8 @@ struct ArcadeVehicleAuditResult {
     float jumpApex = 0.0f;
     float jumpAirTime = 0.0f;
     float jumpLandingImpulse = 0.0f;
+    float jumpNoseUpPitch = 0.0f;
+    float jumpNoseDownPitch = 0.0f;
     float jumpFixedStepError = 0.0f;
 };
 
