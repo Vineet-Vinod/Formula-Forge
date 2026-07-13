@@ -928,6 +928,7 @@ struct AuditResult3D {
     float maxSpeed = 0.0f;
     float averageSpeed = 0.0f;
     float maxOffroad = 0.0f;
+    float maxOffroadPhase = 0.0f;
     float maxDriftCharge = 0.0f;
     float maxSlip = 0.0f;
     float minGroundClearance = std::numeric_limits<float>::max();
@@ -1451,7 +1452,24 @@ public:
     }
 
     Input3D scriptedInput() const {
-        return auditInput(AuditDriver::Drift, karts_[0]);
+        const Kart3D& player = karts_[0];
+        Input3D input = auditInput(AuditDriver::Drift, player);
+        float nearestTraffic = std::numeric_limits<float>::max();
+        float passingSide = 0.0f;
+        for (int i = 1; i < kKartCount; ++i) {
+            const Kart3D& other = karts_[static_cast<size_t>(i)];
+            const float ahead = progressAhead(player.progress, other.progress, track_.totalLength());
+            if (ahead > 8.0f && ahead < 190.0f && std::abs(other.lane - player.lane) < 52.0f && ahead < nearestTraffic) {
+                nearestTraffic = ahead;
+                passingSide = other.lane >= 0.0f ? -1.0f : 1.0f;
+            }
+        }
+        if (passingSide != 0.0f) {
+            const TrackPoint3D future = track_.sample(player.progress + 145.0f);
+            const float passingLane = passingSide * std::max(0.0f, roadCenterLimit(player, future) - 5.0f);
+            input.steer = aiSteerForProgress(player, 0, passingLane);
+        }
+        return input;
     }
 
     Mode mode() const { return mode_; }
@@ -1476,6 +1494,7 @@ public:
         auto print = [](const AuditResult3D& r) {
             std::cout << r.name << "_score=" << r.score << " lap=" << r.lap << " avg=" << r.averageSpeed << " max=" << r.maxSpeed
                       << " contacts=" << r.contacts << " offroad_frames=" << r.offroadFrames << " max_offroad=" << r.maxOffroad
+                      << " max_offroad_phase=" << r.maxOffroadPhase
                       << " max_drift_charge=" << r.maxDriftCharge
                       << " max_slip=" << r.maxSlip << " brake_drift_frames=" << r.brakeDriftFrames
                       << " min_ground_clearance=" << r.minGroundClearance << " progress_jumps=" << r.progressJumps
@@ -2057,7 +2076,10 @@ private:
             const float speed = std::max(0.0f, dot(kart.vel, fromAngle(kart.heading)));
             speedSum += speed;
             result.maxSpeed = std::max(result.maxSpeed, speed);
-            result.maxOffroad = std::max(result.maxOffroad, offroad);
+            if (offroad > result.maxOffroad) {
+                result.maxOffroad = offroad;
+                result.maxOffroadPhase = kart.progress / track_.totalLength();
+            }
             result.maxDriftCharge = std::max(result.maxDriftCharge, kart.driftCharge);
             result.maxSlip = std::max(result.maxSlip, std::abs(kart.slipAngle));
             result.maxAirTime = std::max(result.maxAirTime, kart.airborneTime);
