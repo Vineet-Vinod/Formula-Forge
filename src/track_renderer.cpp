@@ -63,10 +63,74 @@ Color surfaceColor(const TrackRenderSample& sample, float lane) {
 
 Vector3 samplePoint(const TrackRenderSample& sample, float lane) {
     const float crown = std::max(0.0f, 1.0f - std::abs(lane) / 0.82f) * 0.045f;
-    Vector3 point = add(sample.center, add(scale(sample.lateral, sample.halfWidth * lane), {0.0f, crown, 0.0f}));
+    Vector3 point = add(sample.center, add(scale(sample.lateral, sample.halfWidth * lane),
+                                           {0.0f, crown + sample.bankHeight * std::clamp(lane, -1.2f, 1.2f), 0.0f}));
     const float terrainBlend = smoothstep01((std::abs(lane) - 1.38f) / (3.40f - 1.38f));
     point.y += (kTerrainSurfaceY - point.y) * terrainBlend;
     return point;
+}
+
+struct SurfaceVertex {
+    Vector3 position{};
+    float u = 0.0f;
+    float v = 0.0f;
+    float lane = 0.0f;
+    Color color = WHITE;
+};
+
+Vector3 horizontalLateral(Vector3 from, Vector3 to) {
+    const Vector3 delta = subtract(to, from);
+    const float magnitude = std::sqrt(delta.x * delta.x + delta.z * delta.z);
+    return magnitude > 0.00001f ? Vector3{-delta.z / magnitude, 0.0f, delta.x / magnitude} : Vector3{1.0f, 0.0f, 0.0f};
+}
+
+TrackRenderSample orientSample(TrackRenderSample sample, Vector3 horizontal) {
+    sample.lateral = horizontal;
+    return sample;
+}
+
+SurfaceVertex surfaceVertex(const TrackRenderSample& sample, float lane, float distance) {
+    return {samplePoint(sample, lane), lane * 1.8f, distance * 0.022f, lane, surfaceColor(sample, lane)};
+}
+
+template <typename Visitor>
+void visitSurfaceTriangles(std::span<const TrackRenderSample> samples, size_t start, size_t segmentCount, float totalProgress,
+                           Visitor&& visitor) {
+    for (size_t segment = 0; segment < segmentCount; ++segment) {
+        const size_t unwrapped = start + segment;
+        const size_t index = unwrapped % samples.size();
+        const size_t nextIndex = (index + 1) % samples.size();
+        const size_t afterIndex = (index + 2) % samples.size();
+        const TrackRenderSample& rawCurrent = samples[index];
+        const TrackRenderSample& rawNext = samples[nextIndex];
+        const Vector3 segmentLateral = horizontalLateral(rawCurrent.center, rawNext.center);
+        const Vector3 followingLateral = horizontalLateral(rawNext.center, samples[afterIndex].center);
+        const TrackRenderSample current = orientSample(rawCurrent, segmentLateral);
+        const TrackRenderSample next = orientSample(rawNext, segmentLateral);
+        const TrackRenderSample incomingJoin = orientSample(rawNext, segmentLateral);
+        const TrackRenderSample outgoingJoin = orientSample(rawNext, followingLateral);
+        const float currentDistance = rawCurrent.progress + (unwrapped >= samples.size() ? totalProgress : 0.0f);
+        const float nextDistance = rawNext.progress + (unwrapped + 1 >= samples.size() ? totalProgress : 0.0f);
+
+        for (size_t column = 0; column + 1 < kLaneCuts.size(); ++column) {
+            const float laneA = kLaneCuts[column];
+            const float laneB = kLaneCuts[column + 1];
+            const float lane = (laneA + laneB) * 0.5f;
+            const SurfaceVertex a = surfaceVertex(current, laneA, currentDistance);
+            const SurfaceVertex b = surfaceVertex(next, laneA, nextDistance);
+            const SurfaceVertex c = surfaceVertex(next, laneB, nextDistance);
+            const SurfaceVertex d = surfaceVertex(current, laneB, currentDistance);
+            visitor(a, c, b, rawCurrent.progress, lane, false);
+            visitor(a, d, c, rawCurrent.progress, lane, false);
+
+            const SurfaceVertex joinA = surfaceVertex(incomingJoin, laneA, nextDistance);
+            const SurfaceVertex joinB = surfaceVertex(outgoingJoin, laneA, nextDistance);
+            const SurfaceVertex joinC = surfaceVertex(outgoingJoin, laneB, nextDistance);
+            const SurfaceVertex joinD = surfaceVertex(incomingJoin, laneB, nextDistance);
+            visitor(joinA, joinC, joinB, rawNext.progress, lane, true);
+            visitor(joinA, joinD, joinC, rawNext.progress, lane, true);
+        }
+    }
 }
 
 void appendVertex(std::vector<float>& vertices, std::vector<float>& texcoords, std::vector<float>& normals,
@@ -97,50 +161,32 @@ Mesh uploadMesh(std::vector<float>& vertices, std::vector<float>& texcoords, std
 }
 
 Model makeSurfaceChunk(std::span<const TrackRenderSample> samples, size_t start, size_t segmentCount, float totalProgress) {
-    const size_t rows = segmentCount + 1;
-    const size_t columns = kLaneCuts.size();
     std::vector<float> vertices;
     std::vector<float> texcoords;
     std::vector<float> normals;
     std::vector<unsigned char> colors;
     std::vector<unsigned short> indices;
-    vertices.reserve(rows * columns * 3);
-    texcoords.reserve(rows * columns * 2);
-    normals.reserve(rows * columns * 3);
-    colors.reserve(rows * columns * 4);
-    indices.reserve(segmentCount * (columns - 1) * 6);
+    const size_t triangleCount = segmentCount * (kLaneCuts.size() - 1) * 4;
+    vertices.reserve(triangleCount * 9);
+    texcoords.reserve(triangleCount * 6);
+    normals.reserve(triangleCount * 9);
+    colors.reserve(triangleCount * 12);
+    indices.reserve(triangleCount * 3);
 
-    for (size_t row = 0; row < rows; ++row) {
-        const size_t unwrapped = start + row;
-        const size_t index = unwrapped % samples.size();
-        const TrackRenderSample& sample = samples[index];
-        const TrackRenderSample& previous = samples[(index + samples.size() - 1) % samples.size()];
-        const TrackRenderSample& next = samples[(index + 1) % samples.size()];
-        const Vector3 forward = normalize3(subtract(next.center, previous.center));
-        const float distance = sample.progress + (unwrapped >= samples.size() ? totalProgress : 0.0f);
-        for (size_t column = 0; column < columns; ++column) {
-            const float lane = kLaneCuts[column];
-            const float leftLane = kLaneCuts[column > 0 ? column - 1 : column];
-            const float rightLane = kLaneCuts[column + 1 < columns ? column + 1 : column];
-            const Vector3 across = normalize3(subtract(samplePoint(sample, rightLane), samplePoint(sample, leftLane)));
-            Vector3 normal = normalize3(cross3(across, forward));
-            if (normal.y < 0.0f) {
-                normal = negate(normal);
-            }
-            appendVertex(vertices, texcoords, normals, colors, samplePoint(sample, lane), normal, lane * 1.8f,
-                         distance * 0.022f, surfaceColor(sample, lane));
-        }
-    }
-
-    for (size_t row = 0; row < segmentCount; ++row) {
-        for (size_t column = 0; column + 1 < columns; ++column) {
-            const auto a = static_cast<unsigned short>(row * columns + column);
-            const auto b = static_cast<unsigned short>((row + 1) * columns + column);
-            const auto c = static_cast<unsigned short>((row + 1) * columns + column + 1);
-            const auto d = static_cast<unsigned short>(row * columns + column + 1);
-            indices.insert(indices.end(), {a, c, b, a, d, c});
-        }
-    }
+    visitSurfaceTriangles(samples, start, segmentCount, totalProgress,
+                          [&](SurfaceVertex a, SurfaceVertex b, SurfaceVertex c, float, float, bool) {
+                              Vector3 normal = normalize3(cross3(subtract(b.position, a.position), subtract(c.position, a.position)));
+                              if (normal.y < 0.0f) {
+                                  std::swap(b, c);
+                                  normal = negate(normal);
+                              }
+                              const auto first = static_cast<unsigned short>(vertices.size() / 3);
+                              appendVertex(vertices, texcoords, normals, colors, a.position, normal, a.u, a.v, a.color);
+                              appendVertex(vertices, texcoords, normals, colors, b.position, normal, b.u, b.v, b.color);
+                              appendVertex(vertices, texcoords, normals, colors, c.position, normal, c.u, c.v, c.color);
+                              indices.insert(indices.end(), {first, static_cast<unsigned short>(first + 1),
+                                                            static_cast<unsigned short>(first + 2)});
+                          });
     return LoadModelFromMesh(uploadMesh(vertices, texcoords, normals, colors, indices));
 }
 
@@ -183,6 +229,63 @@ float signedLoopDistance(float from, float to, float total) {
 }
 
 }  // namespace
+
+TrackGradientAudit AuditTrackGradients(std::span<const TrackRenderSample> samples, float limitDegrees) {
+    TrackGradientAudit result;
+    if (samples.size() < 3) {
+        return result;
+    }
+
+    const float totalProgress = samples.back().progress + distance3(samples.back().center, samples.front().center);
+    const auto inspectTriangle = [&](Vector3 a, Vector3 b, Vector3 c, float progress, float lane, bool join) {
+        const Vector3 normal = normalize3(cross3(subtract(b, a), subtract(c, a)));
+        const float vertical = std::clamp(std::abs(normal.y), 0.0f, 1.0f);
+        const float gradient = std::acos(vertical) * RAD2DEG;
+        if (join) {
+            result.maxJoinGradientDegrees = std::max(result.maxJoinGradientDegrees, gradient);
+        } else {
+            result.maxSegmentGradientDegrees = std::max(result.maxSegmentGradientDegrees, gradient);
+        }
+        const bool core = std::abs(lane) <= 0.80f;
+        const size_t phaseBin = std::min(TrackGradientAudit::kPhaseBinCount - 1,
+                                         static_cast<size_t>(progress / std::max(0.001f, totalProgress) *
+                                                             static_cast<float>(TrackGradientAudit::kPhaseBinCount)));
+        result.phaseMaxGradientDegrees[phaseBin] = std::max(result.phaseMaxGradientDegrees[phaseBin], gradient);
+        const bool road = std::abs(lane) <= 1.38f;
+        if (core) {
+            result.maxCoreGradientDegrees = std::max(result.maxCoreGradientDegrees, gradient);
+        }
+        if (road) {
+            result.maxRoadGradientDegrees = std::max(result.maxRoadGradientDegrees, gradient);
+        } else {
+            result.maxTerrainGradientDegrees = std::max(result.maxTerrainGradientDegrees, gradient);
+        }
+        if (gradient > limitDegrees) {
+            ++result.trianglesAboveLimit;
+            result.joinTrianglesAboveLimit += join ? 1 : 0;
+            result.segmentTrianglesAboveLimit += join ? 0 : 1;
+            result.coreTrianglesAboveLimit += core ? 1 : 0;
+            ++result.phaseTrianglesAboveLimit[phaseBin];
+            if (road) {
+                ++result.roadTrianglesAboveLimit;
+            } else {
+                ++result.terrainTrianglesAboveLimit;
+            }
+        }
+        if (gradient > result.maxGradientDegrees) {
+            result.maxGradientDegrees = gradient;
+            result.progress = progress;
+            result.lane = lane;
+        }
+    };
+
+    visitSurfaceTriangles(samples, 0, samples.size(), totalProgress,
+                          [&](const SurfaceVertex& a, const SurfaceVertex& b, const SurfaceVertex& c, float progress, float lane,
+                              bool join) {
+                              inspectTriangle(a.position, b.position, c.position, progress, lane, join);
+                          });
+    return result;
+}
 
 void TrackRenderer::build(std::span<const TrackRenderSample> samples, Shader shader) {
     unload();

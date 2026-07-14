@@ -185,6 +185,21 @@ float trackWidthForZone(int zone) {
     }
 }
 
+float trackWidthForPhase(float phase) {
+    phase -= std::floor(phase);
+    constexpr float kBlend = 0.034f;
+    static constexpr std::array<std::array<float, 3>, 3> kBoundaries = {
+        {{0.30f, 0.0f, 2.0f}, {0.60f, 2.0f, 4.0f}, {0.90f, 4.0f, 0.0f}}};
+    float width = trackWidthForZone(zoneForPhase(phase));
+    for (const auto& boundary : kBoundaries) {
+        if (phase >= boundary[0] - kBlend && phase <= boundary[0] + kBlend) {
+            const float blend = smoothstep((phase - boundary[0] + kBlend) / (kBlend * 2.0f));
+            width = lerp(trackWidthForZone(static_cast<int>(boundary[1])), trackWidthForZone(static_cast<int>(boundary[2])), blend);
+        }
+    }
+    return width;
+}
+
 ZoneMaterial3D materialForPhase(float phase) {
     ZoneMaterial3D material = baseZoneMaterial(zoneForPhase(phase));
     static constexpr float kBlend = 0.034f;
@@ -347,7 +362,7 @@ private:
         phase -= std::floor(phase);
         const ZoneMaterial3D material = materialForPhase(phase);
         point.zone = zoneForPhase(phase);
-        point.width = trackWidthForZone(point.zone);
+        point.width = trackWidthForPhase(phase);
         point.road = material.road;
         point.shoulder = material.shoulder;
         point.natural = material.natural;
@@ -424,6 +439,23 @@ private:
             const TrackPoint3D& elevationNext = samples_[static_cast<size_t>((i + 2) % kSampleCount)];
             const float horizontalSpan = std::max(0.01f, length(elevationNext.pos - elevationPrev.pos));
             p.grade = (elevationNext.elevation - elevationPrev.elevation) / horizontalSpan;
+        }
+
+        std::array<float, kSampleCount> smoothedBank{};
+        constexpr int kBankSmoothingRadius = 24;
+        for (int i = 0; i < kSampleCount; ++i) {
+            float weightedBank = 0.0f;
+            float totalWeight = 0.0f;
+            for (int offset = -kBankSmoothingRadius; offset <= kBankSmoothingRadius; ++offset) {
+                const int index = (i + offset + kSampleCount) % kSampleCount;
+                const float weight = static_cast<float>(kBankSmoothingRadius + 1 - std::abs(offset));
+                weightedBank += samples_[static_cast<size_t>(index)].bank * weight;
+                totalWeight += weight;
+            }
+            smoothedBank[static_cast<size_t>(i)] = weightedBank / totalWeight;
+        }
+        for (int i = 0; i < kSampleCount; ++i) {
+            samples_[static_cast<size_t>(i)].bank = smoothedBank[static_cast<size_t>(i)];
         }
 
         buildProps();
@@ -1728,6 +1760,40 @@ public:
 
     float lapLengthForCapture() const { return track_.totalLength(); }
 
+    bool runTerrainAudit() const {
+        constexpr float kGradientLimitDegrees = 40.0f;
+        const harbor::TrackGradientAudit result = harbor::AuditTrackGradients(trackRenderSamples(), kGradientLimitDegrees);
+        float maxCenterlineGradient = 0.0f;
+        for (const TrackPoint3D& point : track_.samples()) {
+            maxCenterlineGradient = std::max(maxCenterlineGradient, std::atan(std::abs(point.grade)) * RAD2DEG);
+        }
+        const bool ok = result.trianglesAboveLimit == 0 && result.maxGradientDegrees <= kGradientLimitDegrees;
+        std::cout << "terrain-audit max_gradient_deg=" << result.maxGradientDegrees
+                  << " max_centerline_gradient_deg=" << maxCenterlineGradient
+                  << " max_core_gradient_deg=" << result.maxCoreGradientDegrees
+                  << " max_road_gradient_deg=" << result.maxRoadGradientDegrees
+                  << " max_terrain_gradient_deg=" << result.maxTerrainGradientDegrees
+                  << " max_segment_gradient_deg=" << result.maxSegmentGradientDegrees
+                  << " max_join_gradient_deg=" << result.maxJoinGradientDegrees
+                  << " max_gradient_phase=" << result.progress / (track_.totalLength() * kRenderScale)
+                  << " max_gradient_lane=" << result.lane << " triangles_above_40=" << result.trianglesAboveLimit
+                  << " core_triangles_above_40=" << result.coreTrianglesAboveLimit
+                  << " road_triangles_above_40=" << result.roadTrianglesAboveLimit
+                  << " terrain_triangles_above_40=" << result.terrainTrianglesAboveLimit
+                  << " segment_triangles_above_40=" << result.segmentTrianglesAboveLimit
+                  << " join_triangles_above_40=" << result.joinTrianglesAboveLimit
+                  << " ok=" << ok << "\n";
+        std::cout << "terrain-audit-bins";
+        for (size_t i = 0; i < harbor::TrackGradientAudit::kPhaseBinCount; ++i) {
+            if (result.phaseTrianglesAboveLimit[i] > 0) {
+                std::cout << " " << i << ":" << result.phaseMaxGradientDegrees[i] << "/"
+                          << result.phaseTrianglesAboveLimit[i];
+            }
+        }
+        std::cout << "\n";
+        return ok;
+    }
+
 private:
     void updateAudio(float dt, const Input3D& input, bool driving) {
         ArcadeAudioInput audioInput;
@@ -1772,18 +1838,24 @@ private:
         return inputs;
     }
 
-    void buildTrackRenderer() {
+    std::vector<harbor::TrackRenderSample> trackRenderSamples() const {
         std::vector<harbor::TrackRenderSample> samples;
         samples.reserve(track_.samples().size());
         for (const TrackPoint3D& point : track_.samples()) {
             const Vector3 center = lift(track_.roadPoint(point, 0.0f), kTrackSurfaceLift);
             const Vector3 lanePoint = lift(track_.roadPoint(point, 1.0f), kTrackSurfaceLift);
             Vector3 lateral = sub(lanePoint, center);
-            const float magnitude = std::sqrt(lateral.x * lateral.x + lateral.y * lateral.y + lateral.z * lateral.z);
+            lateral.y = 0.0f;
+            const float magnitude = std::sqrt(lateral.x * lateral.x + lateral.z * lateral.z);
             lateral = magnitude > 0.0001f ? mul(lateral, 1.0f / magnitude) : Vector3{1.0f, 0.0f, 0.0f};
             samples.push_back({center, lateral, point.width * 0.5f * kRenderScale, point.progress * kRenderScale, point.road,
-                               point.shoulder, point.natural, point.zone});
+                               point.shoulder, point.natural, point.zone, point.bank * kRenderScale});
         }
+        return samples;
+    }
+
+    void buildTrackRenderer() {
+        const std::vector<harbor::TrackRenderSample> samples = trackRenderSamples();
         trackRenderer_.build(samples, {});
     }
 
@@ -3369,6 +3441,7 @@ int runHarborKarts3D(int argc, char** argv) {
     const bool windowed = hasArg(argc, argv, "--windowed") || hasArg(argc, argv, "--smoke-render") ||
                           hasArg(argc, argv, "--diagnose-controller") || hasArg(argc, argv, "--handling-audit") ||
                           hasArg(argc, argv, "--race-audit") || hasArg(argc, argv, "--collision-audit") ||
+                          hasArg(argc, argv, "--terrain-audit") ||
                           hasArg(argc, argv, "--perf-audit") || hasArg(argc, argv, "--capture-lap") ||
                           hasArg(argc, argv, "--capture-driven-lap") || hasArg(argc, argv, "--capture-section-tour");
     const bool smokeRender = hasArg(argc, argv, "--smoke-render");
@@ -3379,6 +3452,7 @@ int runHarborKarts3D(int argc, char** argv) {
     const bool handlingAudit = hasArg(argc, argv, "--handling-audit");
     const bool raceAudit = hasArg(argc, argv, "--race-audit");
     const bool collisionAudit = hasArg(argc, argv, "--collision-audit");
+    const bool terrainAudit = hasArg(argc, argv, "--terrain-audit");
     const bool perfAudit = hasArg(argc, argv, "--perf-audit");
     const std::filesystem::path launchDir = std::filesystem::current_path();
     const std::filesystem::path captureDir = launchDir / "build" / "playtest_frames";
@@ -3407,7 +3481,7 @@ int runHarborKarts3D(int argc, char** argv) {
 
     ControllerReader controller(sdlInputReady);
     const bool automatedRun = smokeRender || capturePlaytest || captureDrivenLap || captureSectionTour || handlingAudit || raceAudit ||
-                              collisionAudit || perfAudit || diagnoseController;
+                              collisionAudit || terrainAudit || perfAudit || diagnoseController;
     Game3D game(!automatedRun);
     bool runtimeCleaned = false;
     const auto cleanupRuntime = [&]() {
@@ -3440,6 +3514,11 @@ int runHarborKarts3D(int argc, char** argv) {
     }
     if (collisionAudit) {
         const bool ok = game.runCollisionAudit();
+        cleanupRuntime();
+        return ok ? 0 : 1;
+    }
+    if (terrainAudit) {
+        const bool ok = game.runTerrainAudit();
         cleanupRuntime();
         return ok ? 0 : 1;
     }

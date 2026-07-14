@@ -1,5 +1,6 @@
 #pragma once
 
+#include <array>
 #include <span>
 #include <vector>
 
@@ -16,7 +17,30 @@ struct TrackRenderSample {
     Color shoulder{224, 175, 102, 255};
     Color terrain{224, 195, 118, 255};
     int zone = 0;
+    float bankHeight = 0.0f;
 };
+
+struct TrackGradientAudit {
+    static constexpr size_t kPhaseBinCount = 20;
+    float maxGradientDegrees = 0.0f;
+    float maxCoreGradientDegrees = 0.0f;
+    float maxRoadGradientDegrees = 0.0f;
+    float maxTerrainGradientDegrees = 0.0f;
+    float progress = 0.0f;
+    float lane = 0.0f;
+    int trianglesAboveLimit = 0;
+    int coreTrianglesAboveLimit = 0;
+    int roadTrianglesAboveLimit = 0;
+    int terrainTrianglesAboveLimit = 0;
+    int segmentTrianglesAboveLimit = 0;
+    int joinTrianglesAboveLimit = 0;
+    float maxSegmentGradientDegrees = 0.0f;
+    float maxJoinGradientDegrees = 0.0f;
+    std::array<float, kPhaseBinCount> phaseMaxGradientDegrees{};
+    std::array<int, kPhaseBinCount> phaseTrianglesAboveLimit{};
+};
+
+TrackGradientAudit AuditTrackGradients(std::span<const TrackRenderSample> samples, float limitDegrees);
 
 class TrackRenderer {
 public:
