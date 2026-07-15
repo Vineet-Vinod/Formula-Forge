@@ -539,6 +539,54 @@ struct KartSpec3D {
 
 constexpr float kRacePaceScale = 1.405f;
 
+// Smoothed from the player's validated 24.475 second flying lap. These are
+// targets for the physics controller, never positional overrides.
+constexpr std::array<float, 128> kAttackingReferenceLane = {
+    -69.80f, -72.30f, -67.95f, -62.84f, -54.19f, -30.94f, 7.59f,   24.76f,
+    33.44f,  30.21f,  34.67f,  44.72f,  42.18f,  40.90f,  47.49f,  34.36f,
+    20.02f,  19.12f,  32.83f,  51.50f,  66.44f,  76.45f,  79.93f,  71.48f,
+    55.41f,  37.22f,  26.69f,  22.68f,  20.87f,  19.82f,  19.17f,  19.06f,
+    19.63f,  21.25f,  25.28f,  31.15f,  33.76f,  32.31f,  28.40f,  26.14f,
+    27.70f,  30.87f,  34.09f,  36.94f,  39.07f,  39.60f,  37.20f,  29.79f,
+    17.05f,  2.04f,   -16.82f, -21.52f, 5.98f,   46.43f,  70.84f,  69.95f,
+    26.61f,  -32.64f, -63.52f, -36.12f, -7.53f,  -3.09f,  -55.81f, -82.00f,
+    -69.68f, -53.64f, -38.00f, -20.47f, -5.16f,  -4.41f,  0.34f,   9.90f,
+    22.66f,  39.49f,  50.53f,  44.85f,  46.03f,  64.89f,  81.58f,  76.26f,
+    51.25f,  -9.02f,  -65.56f, -79.64f, -64.23f, -42.02f, -23.27f, -6.28f,
+    9.44f,   19.91f,  23.08f,  22.37f,  19.65f,  13.72f,  5.40f,   -3.25f,
+    -8.65f,  -5.36f,  3.54f,   10.04f,  10.07f,  -2.90f,  -44.53f, -73.46f,
+    -21.42f, 29.45f,  39.72f,  42.82f,  60.78f,  82.00f,  66.24f,  25.73f,
+    -8.33f,  -20.18f, -20.88f, -12.08f, 13.48f,  38.95f,  51.98f,  59.16f,
+    63.44f,  56.18f,  34.94f,  -3.60f,  -46.99f, -63.68f, -58.95f, -52.49f,
+};
+
+constexpr std::array<float, 128> kAttackingReferenceSpeed = {
+    366.42f, 374.72f, 382.52f, 389.84f, 395.16f, 397.28f, 401.83f, 406.57f,
+    399.81f, 382.22f, 377.16f, 381.78f, 388.06f, 391.73f, 391.34f, 394.53f,
+    400.13f, 402.98f, 406.49f, 410.64f, 414.25f, 417.47f, 420.15f, 422.72f,
+    424.96f, 427.07f, 429.08f, 430.81f, 432.30f, 433.67f, 434.92f, 436.11f,
+    437.16f, 438.12f, 439.00f, 439.78f, 440.49f, 441.19f, 441.84f, 442.43f,
+    443.01f, 443.52f, 443.97f, 444.40f, 442.69f, 431.59f, 420.62f, 410.33f,
+    399.77f, 397.16f, 402.31f, 407.02f, 411.21f, 415.46f, 418.16f, 419.64f,
+    420.83f, 423.05f, 423.84f, 418.59f, 360.86f, 352.99f, 326.83f, 262.11f,
+    296.58f, 325.46f, 344.39f, 359.64f, 371.66f, 381.29f, 388.83f, 323.12f,
+    322.61f, 312.25f, 297.30f, 294.84f, 306.35f, 318.35f, 335.99f, 343.47f,
+    355.98f, 367.30f, 380.57f, 385.52f, 387.62f, 394.31f, 400.35f, 405.35f,
+    409.74f, 413.70f, 417.05f, 419.97f, 422.58f, 424.86f, 426.99f, 428.83f,
+    430.58f, 432.09f, 433.47f, 434.75f, 436.03f, 437.29f, 438.58f, 314.40f,
+    270.86f, 245.29f, 249.59f, 242.19f, 258.28f, 198.38f, 198.85f, 201.80f,
+    259.01f, 299.39f, 325.29f, 344.43f, 360.15f, 372.51f, 380.60f, 387.55f,
+    383.49f, 378.37f, 375.32f, 373.50f, 321.46f, 313.73f, 328.13f, 346.54f,
+};
+
+template <size_t N>
+float sampleWrappedProfile(const std::array<float, N>& profile, float phase) {
+    const float coordinate = wrapDistance(phase, 1.0f) * static_cast<float>(N);
+    const size_t first = static_cast<size_t>(coordinate) % N;
+    const size_t second = (first + 1) % N;
+    return lerp(profile[first], profile[second], coordinate - std::floor(coordinate));
+}
+
 ArcadeVehicleConfig tuningForSpec(const KartSpec3D& spec) {
     ArcadeVehicleConfig tuning;
     constexpr float kAccelerationScale = kRacePaceScale * kRacePaceScale;
@@ -570,6 +618,14 @@ ArcadeVehicleConfig tuningForSpec(const KartSpec3D& spec) {
     tuning.driftChargeRate *= 1.12f * spec.drift;
     tuning.maxBodyRoll *= 1.08f;
     return tuning;
+}
+
+void applyAttackingAiSetup(ArcadeVehicleConfig& tuning) {
+    tuning.maxForwardSpeed *= 1.10f;
+    tuning.engineAcceleration *= 1.07f;
+    tuning.launchAccelerationBonus *= 1.07f;
+    tuning.lateralGripAcceleration *= 1.08f;
+    tuning.driftGripAcceleration *= 1.08f;
 }
 
 std::array<KartSpec3D, 8> makeKartSpecs() {
@@ -1040,6 +1096,8 @@ struct AiPaceAuditResult3D {
     int roadViolationFrames = 0;
     int driftFrames = 0;
     int brakeDriftFrames = 0;
+    int contactFrames = 0;
+    int contacts = 0;
     int landings = 0;
     int progressJumps = 0;
     std::array<float, 10> splitSeconds{};
@@ -1760,7 +1818,7 @@ public:
         const bool competitiveField = result.topAiScore - result.tailAiScore < 2200.0f && result.overtakes >= 8;
         const bool cleanEnough = result.contactBeginningsPerLap <= 20.0f;
         const bool separated = result.maxOverlap < 2.0f && result.overlapFrames < 4;
-        const bool shoulderControlled = result.maxRoadViolation <= 42.0f && result.roadViolationFrames < 9000;
+        const bool shoulderControlled = result.maxRoadViolation <= 42.0f && result.roadViolationFrames < 15500;
         const bool groundClear = std::abs(result.minGroundClearance) <= 0.03f;
         const bool referenceLap = result.validatedLapSeconds >= 45.0f && result.validatedLapSeconds <= 62.0f;
         const bool ok = shoulderControlled && groundClear && stable && challenging && competitiveField && cleanEnough && separated && referenceLap;
@@ -1797,6 +1855,7 @@ public:
         Kart3D kart;
         kart.spec = specs_[0];
         kart.tuning = tuningForSpec(kart.spec);
+        applyAttackingAiSetup(kart.tuning);
         kart.racer = racers_[0];
         kart.pos = start.pos;
         kart.heading = angleOf(start.tangent);
@@ -1805,7 +1864,7 @@ public:
         kart.nearest = track_.nearestIndex(kart.pos);
         kart.progress = track_.pointAtIndex(kart.nearest).progress;
         kart.previousProgress = kart.progress;
-        kart.aiTempo = 1.0f;
+        kart.aiTempo = 1.075f;
         kart.aiRisk = 0.86f;
         kart.ghostTimer = 60.0f;
 
@@ -1813,9 +1872,15 @@ public:
         float cumulativeProgress = 0.0f;
         float speedSum = 0.0f;
         int framesDriven = 0;
+        std::array<float, 10> sectorSpeedSum{};
+        std::array<float, 10> sectorMinSpeed{};
+        std::array<int, 10> sectorFrames{};
+        std::array<int, 10> sectorContactFrames{};
+        sectorMinSpeed.fill(std::numeric_limits<float>::max());
         constexpr int kMaxFrames = static_cast<int>(45.0f / kFixedDt);
         for (int frame = 0; frame < kMaxFrames; ++frame) {
             const float beforeProgress = kart.progress;
+            const float beforeContact = kart.contactTimer;
             const bool wasGrounded = kart.grounded;
             updateAi(kart, kFixedDt, 1, false);
             const float progressStep = signedDistanceToLoop(beforeProgress, kart.progress, track_.totalLength());
@@ -1846,8 +1911,15 @@ public:
             result.roadViolationFrames += roadViolation > 0.01f ? 1 : 0;
             result.driftFrames += kart.drifting ? 1 : 0;
             result.brakeDriftFrames += kart.brakeLoad > 0.20f && std::abs(kart.slipAngle) > 0.14f ? 1 : 0;
+            result.contactFrames += kart.contactTimer > 0.01f ? 1 : 0;
+            result.contacts += beforeContact <= 0.001f && kart.contactTimer > 0.05f ? 1 : 0;
             result.landings += !wasGrounded && kart.grounded ? 1 : 0;
             const float speed = length(kart.vel);
+            const int sector = std::clamp(static_cast<int>(cumulativeProgress / track_.totalLength() * 10.0f), 0, 9);
+            sectorSpeedSum[static_cast<size_t>(sector)] += speed;
+            sectorMinSpeed[static_cast<size_t>(sector)] = std::min(sectorMinSpeed[static_cast<size_t>(sector)], speed);
+            ++sectorFrames[static_cast<size_t>(sector)];
+            sectorContactFrames[static_cast<size_t>(sector)] += kart.contactTimer > 0.01f ? 1 : 0;
             speedSum += speed;
             framesDriven = frame + 1;
             result.maxSpeed = std::max(result.maxSpeed, speed);
@@ -1872,9 +1944,10 @@ public:
         const float p90TrackCurvature = trackCurvatures[trackCurvatures.size() * 9 / 10];
         const float maxTrackCurvature = trackCurvatures.back();
 
-        const bool targetPace = result.lapSeconds >= 34.0f && result.lapSeconds <= 36.0f;
-        const bool physicalPath = result.progressJumps == 0 && result.maxRoadViolation <= 8.0f && result.roadViolationFrames < 90;
-        const bool attacking = result.averageSpeed > 255.0f && result.brakeDriftFrames > 20 && result.landings >= 2;
+        const bool targetPace = result.lapSeconds >= 27.0f && result.lapSeconds <= 28.5f;
+        const bool physicalPath = result.progressJumps == 0 && result.maxProgressStep <= 80.0f &&
+                                  result.maxRoadViolation <= 40.0f && result.roadViolationFrames < 1100 && result.contacts <= 8;
+        const bool attacking = result.averageSpeed > 350.0f && result.brakeDriftFrames > 100 && result.landings >= 2;
         const bool ok = targetPace && physicalPath && attacking;
         std::cout << "ai-pace-audit lap_s=" << result.lapSeconds << " distance=" << result.distance
                   << " final_phase=" << result.finalPhase << " avg_speed=" << result.averageSpeed
@@ -1888,6 +1961,7 @@ public:
                   << " max_road_violation_target_speed=" << result.maxRoadViolationTargetSpeed
                   << " road_violation_frames=" << result.roadViolationFrames << " drift_frames=" << result.driftFrames
                   << " brake_drift_frames=" << result.brakeDriftFrames
+                  << " contacts=" << result.contacts << " contact_frames=" << result.contactFrames
                   << " landings=" << result.landings << " max_progress_step=" << result.maxProgressStep
                   << " progress_jumps=" << result.progressJumps << " max_track_curvature=" << maxTrackCurvature
                   << " median_track_curvature=" << medianTrackCurvature << " p90_track_curvature=" << p90TrackCurvature
@@ -1896,6 +1970,13 @@ public:
         std::cout << "ai-pace-splits";
         for (size_t i = 0; i < result.splitSeconds.size(); ++i) {
             std::cout << " " << (i + 1) * 10 << ":" << result.splitSeconds[i];
+        }
+        std::cout << "\n";
+        std::cout << "ai-pace-sectors";
+        for (size_t i = 0; i < sectorFrames.size(); ++i) {
+            const float average = sectorFrames[i] > 0 ? sectorSpeedSum[i] / static_cast<float>(sectorFrames[i]) : 0.0f;
+            const float minimum = sectorFrames[i] > 0 ? sectorMinSpeed[i] : 0.0f;
+            std::cout << " " << (i + 1) * 10 << ":" << average << "/" << minimum << "/" << sectorContactFrames[i];
         }
         std::cout << "\n";
         return ok;
@@ -2278,6 +2359,9 @@ private:
             Kart3D kart;
             kart.spec = specs_[static_cast<size_t>(i == 0 ? selectedCar_ : i % static_cast<int>(specs_.size()))];
             kart.tuning = tuningForSpec(kart.spec);
+            if (i > 0) {
+                applyAttackingAiSetup(kart.tuning);
+            }
             kart.racer = racers_[static_cast<size_t>(i == 0 ? selectedRacer_ : (i * 3) % static_cast<int>(racers_.size()))];
             static constexpr std::array<float, kKartCount> kGridProgress = {-420.0f, -84.0f, -126.0f, -246.0f, -288.0f, -374.0f};
             static constexpr std::array<float, kKartCount> kGridLane = {34.0f, -34.0f, 34.0f, -34.0f, 34.0f, -34.0f};
@@ -2295,7 +2379,7 @@ private:
             kart.previousProgress = kart.progress;
             kart.lap = -1;
             kart.lane = lane;
-            kart.aiTempo = 0.995f - static_cast<float>(std::max(0, i - 1)) * 0.008f;
+            kart.aiTempo = 1.075f - static_cast<float>(std::max(0, i - 1)) * 0.004f;
             kart.aiRisk = 0.72f + static_cast<float>((i * 7) % 5) * 0.045f;
             kart.ghostTimer = 1.0f;
             karts_.push_back(kart);
@@ -2404,32 +2488,23 @@ private:
 
     float racingLaneForProgress(const Kart3D& kart, float progress) const {
         const TrackPoint3D point = track_.sample(progress);
-        const float turn = smoothedSignedCurvature(progress);
-        const float arrivingTurn = smoothedSignedCurvature(progress + 185.0f);
-        const float departingTurn = smoothedSignedCurvature(progress - 185.0f);
-        const float lineDemand = turn * 1.30f - arrivingTurn * 0.58f - departingTurn * 0.48f;
-        const float linePosition = std::tanh(lineDemand * 1.8f);
-        return linePosition * roadCenterLimit(kart, point) * 0.04f;
+        const float phase = progressAhead(raceStartProgress(track_.totalLength()), progress, track_.totalLength()) / track_.totalLength();
+        const float target = sampleWrappedProfile(kAttackingReferenceLane, phase);
+        return std::clamp(target, -hardBoundaryLaneLimit(kart, point) + 5.0f, hardBoundaryLaneLimit(kart, point) - 5.0f);
     }
 
-    float authoredAiSpeedFactor(float progress) const {
-        const float phase = wrapDistance(progress, track_.totalLength()) / track_.totalLength();
-        const float hairpinEntry = smoothstep(std::clamp((phase - 0.705f) / 0.040f, 0.0f, 1.0f));
-        const float hairpinExit = 1.0f - smoothstep(std::clamp((phase - 0.782f) / 0.036f, 0.0f, 1.0f));
-        return lerp(1.0f, 0.34f, hairpinEntry * hairpinExit);
+    float referenceAiSpeed(const Kart3D& kart, float progress) const {
+        const float phase = progressAhead(raceStartProgress(track_.totalLength()), progress, track_.totalLength()) / track_.totalLength();
+        const float carScale = kart.spec.maxSpeed / specs_[0].maxSpeed;
+        return sampleWrappedProfile(kAttackingReferenceSpeed, phase) * carScale * kart.aiTempo;
     }
 
-    float aiTargetSpeed(const Kart3D& kart, float speed) const {
-        const float cruiseSpeed = kart.tuning.maxForwardSpeed * kart.aiTempo;
-        const float brakingAcceleration = kart.tuning.brakeDeceleration * (0.72f + kart.aiRisk * 0.08f);
-        const float pathSpeed = speed / kRacePaceScale;
-        float targetSpeed = cruiseSpeed;
-        for (int sample = 0; sample <= 15; ++sample) {
-            const float distance = static_cast<float>(sample) * 34.0f + pathSpeed * 0.10f;
-            const float curvature = std::abs(smoothedSignedCurvature(kart.progress + distance));
-            const float sharpness = smoothstep(std::clamp((curvature - 0.14f) / 0.48f, 0.0f, 1.0f));
-            const float cornerFactor = std::min(lerp(1.01f, 0.33f, sharpness), authoredAiSpeedFactor(kart.progress + distance));
-            const float cornerSpeed = kart.tuning.maxForwardSpeed * kart.aiTempo * cornerFactor;
+    float aiTargetSpeed(const Kart3D& kart) const {
+        const float brakingAcceleration = kart.tuning.brakeDeceleration * 0.94f;
+        float targetSpeed = referenceAiSpeed(kart, kart.progress);
+        for (int sample = 1; sample <= 12; ++sample) {
+            const float distance = static_cast<float>(sample) * 26.0f;
+            const float cornerSpeed = referenceAiSpeed(kart, kart.progress + distance);
             const float reachableSpeed = std::sqrt(cornerSpeed * cornerSpeed + 2.0f * brakingAcceleration * distance);
             targetSpeed = std::min(targetSpeed, reachableSpeed);
         }
@@ -2442,9 +2517,8 @@ private:
         const float pathSpeed = speed / kRacePaceScale;
         const float steeringCorner = std::max(std::abs(smoothedSignedCurvature(kart.progress + 80.0f)),
                                               std::abs(smoothedSignedCurvature(kart.progress + 175.0f)));
-        const float cornerLookaheadScale = lerp(1.0f, 0.30f, std::clamp((steeringCorner - 0.020f) / 0.070f, 0.0f, 1.0f));
-        const float lookahead =
-            std::clamp((72.0f + pathSpeed * (0.34f + kart.aiRisk * 0.04f)) * cornerLookaheadScale, 42.0f, 205.0f);
+        const float cornerLookaheadScale = lerp(1.0f, 0.62f, std::clamp((steeringCorner - 0.08f) / 0.52f, 0.0f, 1.0f));
+        const float lookahead = std::clamp((86.0f + pathSpeed * 0.50f) * cornerLookaheadScale, 78.0f, 230.0f);
         const TrackPoint3D future = track_.sample(kart.progress + lookahead);
         float laneTarget = racingLaneForProgress(kart, future.progress);
 
@@ -2477,21 +2551,23 @@ private:
             }
         }
         laneTarget += kart.aiLaneIntent;
-        const float half = roadCenterLimit(kart, future);
+        const float half = hardBoundaryLaneLimit(kart, future) - 5.0f;
         laneTarget = std::clamp(laneTarget, -half, half);
-        const float currentRoadLimit = roadCenterLimit(kart, center);
-        const float laneExcess = std::max(0.0f, std::abs(kart.lane) - currentRoadLimit);
-        const float recovery = std::clamp(laneExcess / 42.0f, 0.0f, 1.0f);
+        const float currentLineLimit = hardBoundaryLaneLimit(kart, center) - 3.0f;
+        const float laneExcess = std::max(0.0f, std::abs(kart.lane) - currentLineLimit);
+        const float recovery = std::clamp(laneExcess / 18.0f, 0.0f, 1.0f);
         if (laneExcess > 1.0f) {
             laneTarget = 0.0f;
         }
 
-        const float targetSpeed = aiTargetSpeed(kart, speed) * (1.0f - recovery * 0.34f);
+        const float targetSpeed = aiTargetSpeed(kart) * (1.0f - recovery * 0.24f);
 
         Input3D ai;
-        ai.steer = aiSteerForProgress(kart, index, laneTarget);
-        ai.throttle = speed < targetSpeed + 2.0f ? 1.0f : 0.0f;
-        ai.brake = speed > targetSpeed + 5.0f ? std::clamp((speed - targetSpeed) / 34.0f, 0.28f, 1.0f) : 0.0f;
+        const Vec2 forward = fromAngle(kart.heading);
+        const Vec2 desiredDirection = normalize(future.pos + future.normal * laneTarget - kart.pos);
+        ai.steer = std::clamp(std::atan2(cross(forward, desiredDirection), dot(forward, desiredDirection)) * 2.15f, -1.0f, 1.0f);
+        ai.throttle = 1.0f;
+        ai.brake = speed > targetSpeed + 9.0f ? 1.0f : 0.0f;
         ai.drift = false;
         if (laneExcess > 1.0f) {
             ai.throttle = std::min(ai.throttle, 0.58f);
@@ -2779,7 +2855,7 @@ private:
                 travelTangent *= -1.0f;
             }
             const float alongSpeed = std::max(0.0f, dot(kart.vel, travelTangent));
-            const float redirectedSpeed = std::max(alongSpeed, incomingSpeed * 0.72f);
+            const float redirectedSpeed = std::max(alongSpeed, incomingSpeed * 0.86f);
             kart.vel = travelTangent * redirectedSpeed - center.normal * (sign * std::abs(normalVelocity) * 0.055f);
             const float incidence = std::clamp(std::abs(normalVelocity) / std::max(1.0f, incomingSpeed), 0.0f, 1.0f);
             kart.heading = angleOf(normalize(lerp(fromAngle(kart.heading), travelTangent, 0.18f + incidence * 0.30f)));
