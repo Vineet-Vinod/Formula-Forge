@@ -44,6 +44,49 @@ constexpr float kContactProgressWindow = 240.0f;
 constexpr float kContactVerticalWindow = 7.0f;
 constexpr int kInfiniteLaps = 0;
 constexpr std::array<int, 4> kLapOptions = {2, 5, 10, kInfiniteLaps};
+constexpr float kLoadingScreenSeconds = 2.35f;
+
+constexpr std::array<const char*, 10> kDriverBackstories = {
+    "A fearless island courier who knows every shortcut the tide leaves behind.",
+    "A patient mechanic who wins races by reading the sand before every turn.",
+    "A dockside strongman with a soft touch for keeping heavy buggies balanced.",
+    "A reef guide whose calm lines stay fast when the course gets crowded.",
+    "A former stunt rider who treats every dune like an invitation to fly.",
+    "A night-race specialist chasing the perfect lap from sunrise to sunset.",
+    "A cheerful pier runner who turns quick reactions into daring overtakes.",
+    "A rally navigator who traded mountain notes for the freedom of the coast.",
+    "A quiet engineer who measures grip by feel and never wastes a movement.",
+    "A surf champion bringing sharp balance and relentless focus to four wheels.",
+};
+
+constexpr std::array<const char*, 8> kCarBackstories = {
+    "The original cove buggy: forgiving, lively, and ready for any stretch of coast.",
+    "Built from a rescue runabout, with long travel suspension for rough sand.",
+    "A compact dune sprinter tuned to launch hard and hold a clean racing line.",
+    "Low, fast, and happiest sideways through the harbor's sweeping corners.",
+    "A reinforced workhorse that shrugs off traffic and charges out of slow turns.",
+    "A balanced grand tourer developed for long, fast runs beside the lagoon.",
+    "A hand-built sand rail with direct steering and a punchy mid-range engine.",
+    "Storm-tested bodywork wrapped around a bold tune for confident late braking.",
+};
+
+struct MapSpec3D {
+    const char* name;
+    const char* subtitle;
+    const char* backstory;
+};
+
+constexpr std::array<MapSpec3D, 1> kMaps = {{
+    {"SUNSET COVE", "COAST / JUNGLE / HARBOR",
+     "A fast island loop through golden beaches, a busy waterfront, and shaded jungle climbs."},
+}};
+
+struct RaceResult3D {
+    int kartIndex = 0;
+    int position = 1;
+    float finishTimeSeconds = 0.0f;
+    int lapsCompleted = 0;
+};
 
 float raceStartProgress(float trackLength) {
     return trackLength * kRaceStartPhase;
@@ -779,8 +822,8 @@ void applyKeyboardFallback(Input3D& input, bool keyboardEnabled) {
     input.back = input.back || IsKeyPressed(KEY_R);
     input.left = input.left || IsKeyPressed(KEY_A) || IsKeyPressed(KEY_LEFT);
     input.right = input.right || IsKeyPressed(KEY_D) || IsKeyPressed(KEY_RIGHT);
-    input.up = input.up || IsKeyPressed(KEY_W);
-    input.down = input.down || IsKeyPressed(KEY_S);
+    input.up = input.up || IsKeyPressed(KEY_W) || IsKeyPressed(KEY_UP);
+    input.down = input.down || IsKeyPressed(KEY_S) || IsKeyPressed(KEY_DOWN);
     input.pageLeft = input.pageLeft || IsKeyPressed(KEY_Q);
     input.pageRight = input.pageRight || IsKeyPressed(KEY_E);
     input.quit = input.quit || IsKeyPressed(KEY_F10);
@@ -1426,7 +1469,7 @@ Vector3 terrainSurfacePoint(const Track3D& track, const TrackPoint3D& point, flo
 
 class Game3D {
 public:
-    enum class Mode { Garage, Race, Pause };
+    enum class Mode { Loading, Garage, Race, Pause, Results };
 
     explicit Game3D(bool enableAudio = true) : specs_(makeKartSpecs()), racers_(makeRacers()) {
         renderer_.initialize();
@@ -1455,6 +1498,17 @@ public:
     }
 
     void update(float dt, const Input3D& input, bool hasController) {
+        presentationTime_ += dt;
+        if (mode_ == Mode::Loading) {
+            loadingTime_ += dt;
+            updateAudio(dt, input, false);
+            if (loadingTime_ >= kLoadingScreenSeconds || input.a || input.start) {
+                mode_ = Mode::Garage;
+                selectionStage_ = harbor::ui::SelectionStage::Driver;
+            }
+            return;
+        }
+
         if (mode_ == Mode::Garage) {
             updateGarage(input, hasController);
             updateGarageCamera(dt);
@@ -1462,14 +1516,19 @@ public:
             return;
         }
 
-        if (input.start) {
-            mode_ = mode_ == Mode::Race ? Mode::Pause : Mode::Race;
-        }
         if (mode_ == Mode::Pause) {
+            updatePause(input);
             updateAudio(dt, input, false);
-            if (input.b) {
-                mode_ = Mode::Garage;
-            }
+            return;
+        }
+        if (mode_ == Mode::Results) {
+            updateResults(input);
+            updateAudio(dt, input, false);
+            return;
+        }
+        if (input.start) {
+            mode_ = Mode::Pause;
+            pauseAction_ = harbor::ui::PauseAction::Resume;
             return;
         }
 
@@ -1510,8 +1569,22 @@ public:
         updateAudio(dt, playerInput, !raceFinished_);
     }
 
-    void render(float fps, bool hasController) {
+    void render(float fps, bool hasController, const char* capturePath = nullptr) {
         BeginDrawing();
+        if (mode_ == Mode::Loading) {
+            ClearBackground(Color{21, 128, 160, 255});
+            harbor::ui::LoadingScreenViewModel loading;
+            loading.progress = std::clamp(loadingTime_ / kLoadingScreenSeconds, 0.0f, 1.0f);
+            loading.presentationTimeSeconds = presentationTime_;
+            loading.statusText = loading.progress < 0.72f ? "BUILDING THE STARTING GRID" : "READY TO RACE";
+            harbor::ui::DrawLoadingScreen(loading);
+            if (capturePath) {
+                rlDrawRenderBatchActive();
+                TakeScreenshot(capturePath);
+            }
+            EndDrawing();
+            return;
+        }
         ClearBackground(Color{91, 196, 232, 255});
         drawSkyGradient();
         arcade_render::DirectionalLightFog lighting;
@@ -1529,14 +1602,35 @@ public:
         drawParticles();
         drawKarts();
         EndMode3D();
+        // Keep the dense world pass from sharing a near-capacity rlgl batch
+        // with the menu/HUD primitives that must remain complete and crisp.
+        rlDrawRenderBatchActive();
         drawSpeedFx();
         drawHud(fps, hasController);
+        if (capturePath) {
+            rlDrawRenderBatchActive();
+            TakeScreenshot(capturePath);
+        }
         EndDrawing();
     }
 
     void startRace() {
         resetRace();
         mode_ = Mode::Race;
+        pauseAction_ = harbor::ui::PauseAction::Resume;
+        resultsAction_ = harbor::ui::ResultsAction::Replay;
+    }
+
+    void showResultsCapture() {
+        static constexpr std::array<int, kKartCount> kCaptureOrder = {1, 0, 4, 2, 5, 3};
+        static constexpr std::array<float, kKartCount> kCaptureTimes = {101.42f, 103.87f, 106.15f, 108.74f, 111.26f, 115.90f};
+        resultCount_ = kKartCount;
+        for (int i = 0; i < kKartCount; ++i) {
+            results_[static_cast<size_t>(i)] = {kCaptureOrder[static_cast<size_t>(i)], i + 1,
+                                                kCaptureTimes[static_cast<size_t>(i)], std::max(1, targetLaps())};
+        }
+        mode_ = Mode::Results;
+        resultsAction_ = harbor::ui::ResultsAction::Replay;
     }
 
     void setupSectionTour(float phase, int variant) {
@@ -2093,41 +2187,126 @@ private:
     }
 
     void updateGarage(const Input3D& input, bool hasController) {
-        garageSpin_ += GetFrameTime();
-        if (input.left) {
-            selectedCar_ = (selectedCar_ + static_cast<int>(specs_.size()) - 1) % static_cast<int>(specs_.size());
+        garageSpin_ += kFixedDt;
+        const int direction = (input.right || input.down || input.pageRight ? 1 : 0) -
+                              (input.left || input.up || input.pageLeft ? 1 : 0);
+        auto wrapChoice = [direction](int& value, int count) {
+            if (direction != 0 && count > 0) {
+                value = (value + direction + count) % count;
+            }
+        };
+        switch (selectionStage_) {
+            case harbor::ui::SelectionStage::Driver:
+                wrapChoice(selectedRacer_, static_cast<int>(racers_.size()));
+                break;
+            case harbor::ui::SelectionStage::Car:
+                wrapChoice(selectedCar_, static_cast<int>(specs_.size()));
+                break;
+            case harbor::ui::SelectionStage::Map:
+                wrapChoice(selectedMap_, static_cast<int>(kMaps.size()));
+                break;
+            case harbor::ui::SelectionStage::Laps:
+                wrapChoice(selectedLapOption_, static_cast<int>(kLapOptions.size()));
+                break;
         }
-        if (input.right) {
-            selectedCar_ = (selectedCar_ + 1) % static_cast<int>(specs_.size());
-        }
-        if (input.up) {
-            selectedRacer_ = (selectedRacer_ + static_cast<int>(racers_.size()) - 1) % static_cast<int>(racers_.size());
-        }
-        if (input.down) {
-            selectedRacer_ = (selectedRacer_ + 1) % static_cast<int>(racers_.size());
-        }
-        if (input.pageLeft) {
-            selectedLapOption_ = (selectedLapOption_ + static_cast<int>(kLapOptions.size()) - 1) % static_cast<int>(kLapOptions.size());
-        }
-        if (input.pageRight) {
-            selectedLapOption_ = (selectedLapOption_ + 1) % static_cast<int>(kLapOptions.size());
+        syncGaragePreview();
+
+        if (input.b || input.back) {
+            const int stage = static_cast<int>(selectionStage_);
+            if (stage > static_cast<int>(harbor::ui::SelectionStage::Driver)) {
+                selectionStage_ = static_cast<harbor::ui::SelectionStage>(stage - 1);
+            }
+            return;
         }
         if ((input.a || input.start) && hasController) {
-            startRace();
+            const int stage = static_cast<int>(selectionStage_);
+            if (selectionStage_ == harbor::ui::SelectionStage::Laps) {
+                startRace();
+            } else {
+                selectionStage_ = static_cast<harbor::ui::SelectionStage>(stage + 1);
+            }
+        }
+    }
+
+    void syncGaragePreview() {
+        if (karts_.empty()) {
+            return;
+        }
+        Kart3D& preview = karts_[0];
+        preview.spec = specs_[static_cast<size_t>(selectedCar_)];
+        preview.tuning = tuningForSpec(preview.spec);
+        preview.racer = racers_[static_cast<size_t>(selectedRacer_)];
+    }
+
+    void goHome() {
+        mode_ = Mode::Garage;
+        selectionStage_ = harbor::ui::SelectionStage::Driver;
+        pauseAction_ = harbor::ui::PauseAction::Resume;
+        resultsAction_ = harbor::ui::ResultsAction::Replay;
+        resultCount_ = 0;
+        resetRace();
+        syncGaragePreview();
+    }
+
+    void updatePause(const Input3D& input) {
+        if (input.back || input.b || input.start) {
+            mode_ = Mode::Race;
+            return;
+        }
+        const int direction = (input.down || input.right ? 1 : 0) - (input.up || input.left ? 1 : 0);
+        if (direction != 0) {
+            const int count = 3;
+            pauseAction_ = static_cast<harbor::ui::PauseAction>(
+                (static_cast<int>(pauseAction_) + direction + count) % count);
+        }
+        if (!input.a) {
+            return;
+        }
+        switch (pauseAction_) {
+            case harbor::ui::PauseAction::Resume:
+                mode_ = Mode::Race;
+                break;
+            case harbor::ui::PauseAction::Restart:
+                startRace();
+                break;
+            case harbor::ui::PauseAction::Home:
+                goHome();
+                break;
+            default:
+                mode_ = Mode::Race;
+                break;
+        }
+    }
+
+    void updateResults(const Input3D& input) {
+        if (input.left || input.up) {
+            resultsAction_ = harbor::ui::ResultsAction::Replay;
+        }
+        if (input.right || input.down) {
+            resultsAction_ = harbor::ui::ResultsAction::Home;
+        }
+        if (input.b || input.back) {
+            goHome();
+            return;
+        }
+        if (input.a || input.start) {
+            if (resultsAction_ == harbor::ui::ResultsAction::Replay) {
+                startRace();
+            } else {
+                goHome();
+            }
         }
     }
 
     void updateGarageCamera(float dt) {
         (void)dt;
-        const TrackPoint3D start = track_.sample(raceStartProgress(track_.totalLength()));
-        const float focusLane = 10.0f;
-        const float cameraLane = 148.0f;
-        const Vector3 focus = toWorld(start.pos + start.tangent * 32.0f + start.normal * focusLane, bankedElevation(start, focusLane) + 11.0f);
-        camera_.position =
-            toWorld(start.pos + start.tangent * 132.0f + start.normal * cameraLane, bankedElevation(start, cameraLane) + 50.0f);
-        camera_.target = focus;
+        const TrackPoint3D start = track_.sample(raceStartProgress(track_.totalLength()) + 52.0f);
+        const float orbit = std::sin(garageSpin_ * 0.32f) * 8.0f;
+        camera_.position = toWorld(start.pos - start.tangent * 72.0f + start.normal * (18.0f + orbit),
+                                   bankedElevation(start, 18.0f) + 27.0f);
+        camera_.target = toWorld(start.pos + start.tangent * 4.0f, bankedElevation(start, 0.0f) + 8.0f);
         camera_.up = {0.0f, 1.0f, 0.0f};
-        camera_.fovy = 48.0f;
+        camera_.fovy = 44.0f;
         camera_.projection = CAMERA_PERSPECTIVE;
     }
 
@@ -2169,6 +2348,7 @@ private:
         finishTime_ = 0.0f;
         countdownGoTimer_ = 0.0f;
         raceFinished_ = false;
+        resultCount_ = 0;
         playerPosition_ = 1;
         ArcadeRaceConfig raceConfig;
         raceConfig.lapCount = static_cast<uint32_t>(std::max(1, targetLaps()));
@@ -2242,6 +2422,44 @@ private:
             karts_[0].vel *= 0.35f;
             karts_[0].boostTimer = 0.0f;
             karts_[0].drifting = false;
+            buildRaceResults();
+            mode_ = Mode::Results;
+        }
+    }
+
+    void buildRaceResults() {
+        const int winningLaps = std::max(1, targetLaps());
+        std::array<std::pair<float, int>, kKartCount> projected{};
+        for (int i = 0; i < kKartCount; ++i) {
+            float time = finishTime_;
+            if (raceFlow_) {
+                const ArcadeRacerRaceState& state = raceFlow_->racer(static_cast<size_t>(i));
+                if (state.finished && state.finishTimeSeconds >= 0.0) {
+                    time = static_cast<float>(state.finishTimeSeconds);
+                } else {
+                    const float progress = static_cast<float>(std::max(0.0, state.validatedRaceProgress));
+                    const float elapsedPerLap = raceTime_ / std::max(0.55f, progress);
+                    const float expectedLap = std::clamp(elapsedPerLap, 38.0f, 72.0f);
+                    const float remainingLaps = std::max(0.0f, static_cast<float>(winningLaps) - progress);
+                    time = std::max(finishTime_ + 0.8f + static_cast<float>(i) * 0.21f,
+                                    raceTime_ + remainingLaps * expectedLap);
+                }
+            } else if (i > 0) {
+                time += 1.2f + static_cast<float>(i) * 0.8f;
+            }
+            projected[static_cast<size_t>(i)] = {time, i};
+        }
+        std::sort(projected.begin(), projected.end(), [](const auto& a, const auto& b) {
+            return a.first == b.first ? a.second < b.second : a.first < b.first;
+        });
+        resultCount_ = kKartCount;
+        for (int place = 0; place < kKartCount; ++place) {
+            results_[static_cast<size_t>(place)] = {
+                projected[static_cast<size_t>(place)].second,
+                place + 1,
+                projected[static_cast<size_t>(place)].first,
+                winningLaps,
+            };
         }
     }
 
@@ -3562,27 +3780,81 @@ private:
         (void)fps;
         if (mode_ == Mode::Garage) {
             const KartSpec3D& spec = specs_[static_cast<size_t>(selectedCar_)];
-            harbor::ui::GarageHudViewModel view;
-            view.eventName = "SUNSET COVE GRAND PRIX";
-            view.vehicleName = spec.name;
             static constexpr std::array<const char*, 4> kClasses = {"ALL-ROUNDER", "RALLY", "DRIFTER", "HEAVY"};
-            view.vehicleClass = kClasses[static_cast<size_t>(spec.bodyStyle) % kClasses.size()];
-            view.driverName = racers_[static_cast<size_t>(selectedRacer_)];
+            static constexpr std::array<const char*, 10> kDriverRoles = {
+                "ISLAND COURIER", "CREW CHIEF", "DOCKSIDE ACE", "REEF GUIDE", "STUNT RIDER",
+                "NIGHT RACER", "PIER RUNNER", "RALLY NAVIGATOR", "RACE ENGINEER", "SURF CHAMPION",
+            };
+            harbor::ui::SelectionHudViewModel view;
+            view.stage = selectionStage_;
+            view.mapName = kMaps[static_cast<size_t>(selectedMap_)].name;
+            view.mapDescription = kMaps[static_cast<size_t>(selectedMap_)].backstory;
             view.stats.speed = std::clamp((spec.maxSpeed - 178.0f) / 34.0f, 0.12f, 1.0f);
             view.stats.acceleration = std::clamp((spec.accel - 214.0f) / 82.0f, 0.12f, 1.0f);
             view.stats.handling = std::clamp((spec.grip * 0.58f + spec.drift * 0.42f - 0.88f) / 0.36f, 0.12f, 1.0f);
             view.stats.strength = std::clamp((spec.width - 30.0f) / 12.0f * 0.62f + (spec.height - 12.0f) / 8.0f * 0.38f,
                                              0.12f, 1.0f);
-            view.vehicleIndex = selectedCar_;
-            view.vehicleCount = static_cast<int>(specs_.size());
-            view.driverIndex = selectedRacer_;
-            view.driverCount = static_cast<int>(racers_.size());
+            switch (selectionStage_) {
+                case harbor::ui::SelectionStage::Driver:
+                    view.itemName = racers_[static_cast<size_t>(selectedRacer_)];
+                    view.itemSubtitle = kDriverRoles[static_cast<size_t>(selectedRacer_)];
+                    view.backstory = kDriverBackstories[static_cast<size_t>(selectedRacer_)];
+                    view.itemIndex = selectedRacer_;
+                    view.itemCount = static_cast<int>(racers_.size());
+                    break;
+                case harbor::ui::SelectionStage::Car:
+                    view.itemName = spec.name;
+                    view.itemSubtitle = kClasses[static_cast<size_t>(spec.bodyStyle) % kClasses.size()];
+                    view.backstory = kCarBackstories[static_cast<size_t>(selectedCar_)];
+                    view.itemIndex = selectedCar_;
+                    view.itemCount = static_cast<int>(specs_.size());
+                    break;
+                case harbor::ui::SelectionStage::Map:
+                    view.itemName = kMaps[static_cast<size_t>(selectedMap_)].name;
+                    view.itemSubtitle = kMaps[static_cast<size_t>(selectedMap_)].subtitle;
+                    view.backstory = kMaps[static_cast<size_t>(selectedMap_)].backstory;
+                    view.itemIndex = selectedMap_;
+                    view.itemCount = static_cast<int>(kMaps.size());
+                    break;
+                case harbor::ui::SelectionStage::Laps:
+                    view.itemName = "RACE DISTANCE";
+                    view.itemSubtitle = "SUNSET COVE GRAND PRIX";
+                    view.backstory = targetLaps() == kInfiniteLaps
+                                         ? "Endless mode keeps the race running until you decide the session is over."
+                                         : "Every racer must complete the selected distance. The first across the line wins.";
+                    view.itemIndex = selectedLapOption_;
+                    view.itemCount = static_cast<int>(kLapOptions.size());
+                    break;
+            }
             view.lapOptions = kLapOptions;
             view.selectedLapOption = selectedLapOption_;
-            view.presentationTimeSeconds = garageSpin_;
-            view.canStart = true;
+            view.presentationTimeSeconds = presentationTime_;
+            view.canContinue = true;
             view.controllerConnected = hasController;
-            harbor::ui::DrawGarageHud(view);
+            view.navigationHint = "D-PAD / WASD / ARROWS  CHOOSE";
+            view.confirmHint = "A / ENTER  CONTINUE";
+            view.backHint = "B / BACKSPACE  BACK";
+            harbor::ui::DrawSelectionHud(view);
+        } else if (mode_ == Mode::Results) {
+            harbor::ui::ResultsHudViewModel view;
+            view.eventName = "SUNSET COVE GRAND PRIX";
+            view.rowCount = resultCount_;
+            view.totalLaps = targetLaps();
+            view.selectedAction = resultsAction_;
+            view.presentationTimeSeconds = presentationTime_;
+            view.controllerConnected = hasController;
+            for (int i = 0; i < resultCount_; ++i) {
+                const RaceResult3D& result = results_[static_cast<size_t>(i)];
+                const Kart3D& kart = karts_[static_cast<size_t>(result.kartIndex)];
+                harbor::ui::ResultRowViewModel& row = view.rows[static_cast<size_t>(i)];
+                row.position = result.position;
+                row.driverName = kart.racer;
+                row.vehicleName = kart.spec.name;
+                row.finishTimeSeconds = result.finishTimeSeconds;
+                row.lapsCompleted = result.lapsCompleted;
+                row.isPlayer = result.kartIndex == 0;
+            }
+            harbor::ui::DrawResultsHud(view);
         } else {
             const Kart3D& player = karts_[0];
             const int laps = targetLaps();
@@ -3626,8 +3898,7 @@ private:
             view.currentLap = std::max(1, karts_[0].lap + 1);
             view.totalLaps = targetLaps();
             view.raceTimeSeconds = raceTime_;
-            view.showRestart = false;
-            view.showQuit = false;
+            view.selectedAction = pauseAction_;
             view.visible = true;
             harbor::ui::DrawPauseHud(view);
         }
@@ -3644,14 +3915,22 @@ private:
     harbor::TrackRenderer trackRenderer_;
     Texture2D particleTexture_{};
     Camera camera_{};
-    Mode mode_ = Mode::Garage;
+    Mode mode_ = Mode::Loading;
+    harbor::ui::SelectionStage selectionStage_ = harbor::ui::SelectionStage::Driver;
+    harbor::ui::PauseAction pauseAction_ = harbor::ui::PauseAction::Resume;
+    harbor::ui::ResultsAction resultsAction_ = harbor::ui::ResultsAction::Replay;
     int selectedCar_ = 0;
     int selectedRacer_ = 0;
+    int selectedMap_ = 0;
     int selectedLapOption_ = 0;
     int playerPosition_ = 1;
+    std::array<RaceResult3D, kKartCount> results_{};
+    int resultCount_ = 0;
     float raceTime_ = 0.0f;
     float finishTime_ = 0.0f;
     float garageSpin_ = 0.0f;
+    float loadingTime_ = 0.0f;
+    float presentationTime_ = 0.0f;
     float fxAccumulator_ = 0.0f;
     float cameraFov_ = 58.0f;
     float cameraElevation_ = 0.0f;
@@ -3730,9 +4009,10 @@ int runHarborKarts3D(int argc, char** argv) {
         configFlags |= FLAG_VSYNC_HINT;
     }
     SetConfigFlags(configFlags);
-    InitWindow(1280, 720, "Shark Harbor Karts 3D");
+    InitWindow(1280, 720, "Formula Buggy");
     SetExitKey(KEY_NULL);
     ChangeDirectory(launchDir.string().c_str());
+    harbor::ui::InitializeUiFont("assets/fonts/NotoSansDisplay-Bold.ttf", 72);
     SetTargetFPS(120);
     if (!windowed) {
         const int monitor = GetCurrentMonitor();
@@ -3756,6 +4036,7 @@ int runHarborKarts3D(int argc, char** argv) {
             return;
         }
         game.shutdown();
+        harbor::ui::ShutdownUiFont();
         controller.shutdown();
         if (sdlInputReady) {
             SDL_QuitSubSystem(kSdlInputFlags);
@@ -3799,10 +4080,9 @@ int runHarborKarts3D(int argc, char** argv) {
                                                              0.575f, 0.690f, 0.805f, 0.920f};
         for (size_t i = 0; i < kTourPhases.size(); ++i) {
             game.setupSectionTour(kTourPhases[i], static_cast<int>(i));
-            game.render(60.0f, true);
             const std::filesystem::path path =
                 std::filesystem::path("../playtest_frames") / TextFormat("harbor_karts_3d_section_tour_%02d.png", static_cast<int>(i));
-            TakeScreenshot(path.string().c_str());
+            game.render(60.0f, true, path.string().c_str());
         }
         cleanupRuntime();
         return 0;
@@ -3823,11 +4103,10 @@ int runHarborKarts3D(int argc, char** argv) {
             ++simFrames;
             distance = game.playerRaceScoreForCapture() - startScore;
             if (nextCapture < kLapMilestones.size() && distance >= lapLength * kLapMilestones[nextCapture]) {
-                game.render(60.0f, true);
                 const std::filesystem::path path = std::filesystem::path("../playtest_frames") /
                                                    TextFormat("harbor_karts_3d_driven_lap_%02d.png",
                                                               static_cast<int>(nextCapture));
-                TakeScreenshot(path.string().c_str());
+                game.render(60.0f, true, path.string().c_str());
                 ++nextCapture;
             }
         }
@@ -3871,16 +4150,51 @@ int runHarborKarts3D(int argc, char** argv) {
             input.pageRight = false;
             accumulator -= kFixedDt;
         }
-        game.render(static_cast<float>(GetFPS()), hasController);
-
-        if (capturePlaytest && frames == 70) {
-            const std::filesystem::path path = std::filesystem::path("../playtest_frames") / "harbor_karts_3d_garage.png";
-            TakeScreenshot(path.string().c_str());
-            game.startRace();
+        std::string frameCapturePath;
+        if (capturePlaytest) {
+            const char* captureName = frames == 20  ? "formula_buggy_loading.png"
+                                      : frames == 65  ? "formula_buggy_driver.png"
+                                      : frames == 110 ? "formula_buggy_car.png"
+                                      : frames == 155 ? "formula_buggy_map.png"
+                                      : frames == 200 ? "formula_buggy_laps.png"
+                                      : frames == 290 ? "formula_buggy_race.png"
+                                      : frames == 335 ? "formula_buggy_pause.png"
+                                      : frames == 380 ? "formula_buggy_results.png"
+                                                      : nullptr;
+            if (captureName) {
+                frameCapturePath = (std::filesystem::path("../playtest_frames") / captureName).string();
+            }
         }
-        if (capturePlaytest && (frames == 190 || frames == 360 || frames == 500)) {
-            const std::filesystem::path path = std::filesystem::path("../playtest_frames") / TextFormat("harbor_karts_3d_%03d.png", frames);
-            TakeScreenshot(path.string().c_str());
+        game.render(static_cast<float>(GetFPS()), hasController, frameCapturePath.empty() ? nullptr : frameCapturePath.c_str());
+
+        if (capturePlaytest) {
+            if (frames == 20) {
+                Input3D confirm;
+                confirm.a = true;
+                game.update(kFixedDt, confirm, true);
+            } else if (frames == 65) {
+                Input3D confirm;
+                confirm.a = true;
+                game.update(kFixedDt, confirm, true);
+            } else if (frames == 110) {
+                Input3D confirm;
+                confirm.a = true;
+                game.update(kFixedDt, confirm, true);
+            } else if (frames == 155) {
+                Input3D confirm;
+                confirm.a = true;
+                game.update(kFixedDt, confirm, true);
+            } else if (frames == 200) {
+                Input3D confirm;
+                confirm.a = true;
+                game.update(kFixedDt, confirm, true);
+            } else if (frames == 290) {
+                Input3D pause;
+                pause.start = true;
+                game.update(kFixedDt, pause, true);
+            } else if (frames == 335) {
+                game.showResultsCapture();
+            }
         }
 
         if (diagnoseController && now - diagnosticStamp > 0.25) {

@@ -43,24 +43,6 @@ struct RaceHudViewModel {
     bool controllerConnected = true;
 };
 
-struct GarageHudViewModel {
-    std::string eventName;
-    std::string vehicleName;
-    std::string vehicleClass;
-    std::string driverName;
-    VehicleStatsViewModel stats;
-    int vehicleIndex = 0;
-    int vehicleCount = 1;
-    int driverIndex = 0;
-    int driverCount = 1;
-    std::array<int, 4> lapOptions = {2, 5, 10, 0};
-    int lapOptionCount = 4;
-    int selectedLapOption = 0;
-    float presentationTimeSeconds = 0.0f;
-    bool canStart = true;
-    bool controllerConnected = true;
-};
-
 struct CountdownHudViewModel {
     float secondsRemaining = 3.0f;
     bool visible = false;
@@ -104,8 +86,6 @@ enum class PauseAction {
     Resume,
     Restart,
     Home,
-    Garage = Home,
-    Quit,
 };
 
 struct PauseHudViewModel {
@@ -114,9 +94,6 @@ struct PauseHudViewModel {
     int totalLaps = 2;
     float raceTimeSeconds = 0.0f;
     PauseAction selectedAction = PauseAction::Resume;
-    bool showRestart = true;
-    bool showGarage = true;
-    bool showQuit = true;
     bool visible = false;
 };
 
@@ -145,7 +122,6 @@ struct ResultsHudViewModel {
 };
 
 void DrawRaceHud(const RaceHudViewModel& viewModel);
-void DrawGarageHud(const GarageHudViewModel& viewModel);
 void DrawCountdownHud(const CountdownHudViewModel& viewModel);
 void DrawLoadingScreen(const LoadingScreenViewModel& viewModel);
 void DrawSelectionHud(const SelectionHudViewModel& viewModel);

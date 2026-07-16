@@ -1,6 +1,6 @@
-# Shark Harbor Karts
+# Formula Buggy
 
-Shark Harbor Karts is an original Linux/C++ arcade kart racer aimed at a
+Formula Buggy is an original Linux/C++ arcade kart racer aimed at a
 bright tropical beach-buggy feel without copying proprietary Beach Buggy
 Racing assets, names, tracks, or game data.
 
@@ -50,24 +50,25 @@ make run
 
 Gamepad and keyboard are both supported.
 
-- Left stick / D-pad or A/D / arrows: steer; select a car in the garage
+- Left stick / D-pad or A/D / arrows: steer; change the highlighted menu choice
 - RT: accelerate
 - LT or B / Circle: identical hard brake and corner-entry slide; hold at low
   speed to reverse
 - W / up and S / down: keyboard accelerate and brake
-- D-pad up/down or W/S: select a driver in the garage
-- LB/RB or Q/E: select lap count in the garage
-- A / Cross or Enter: confirm and race
-- B / Circle or Backspace: back to garage from pause
-- Start or Escape: pause or resume
-- Back / Select or R: reset to the last valid checkpoint
+- D-pad or arrows/WASD: navigate driver, car, map, lap, pause, and results screens
+- LB/RB or Q/E: previous/next choice on selection screens
+- A / Cross or Enter: confirm, select, or start
+- B / Circle or Backspace: return to the previous selection stage
+- Start or Escape: pause the race
+- Back / Select: resume from pause; R resets to the last valid checkpoint while racing
 - Start + Back / Select or F10: quit
 
 ## Current Gameplay
 
 - One original Sunset Cove coastal loop with distinct beach, town, and jungle
   sectors, three authored jumps, continuous terrain, and visible edge barriers
-- 2, 5, 10, or infinite lap race selection
+- Staged driver, car, map, and 2/5/10/infinite-lap race selection
+- Formula Buggy startup screen, beach-themed selection flow, full race results, replay/home actions, and pause controls
 - 6-car racing pack with AI opponents
 - 8 distinct vehicle tunes across four custom chassis families
 - 10 selectable original drivers with varied headwear and colors
@@ -117,7 +118,7 @@ without opening a window. `--race-flow-audit` runs 20 checks for countdowns, che
 wrong-way state, finish ordering, infinite races, and discontinuity handling.
 `--race-audit` runs a longer headless simulation and reports progress jumps,
 cave transitions, turn balance, no-brake corner speed, and off-road excursions.
-`--capture-playtest` writes deterministic garage and race frames to
+`--capture-playtest` writes deterministic loading, selection, pause, result, and race frames to
 `build/playtest_frames` so visual and camera changes can be inspected without a
 working video device.
 `--perf-audit` renders 420 worst-case section frames without sleeping and fails
@@ -142,7 +143,7 @@ which helps with USB receivers that expose a partial or unusual mapping.
 - `src/arcade_audio.*`: procedural SDL3 vehicle soundscape and DSP audit
 - `src/arcade_race.*`: checkpoint race director and unit audit
 - `src/arcade_render.*`: GLES2 lighting plus custom vehicle/driver/prop meshes
-- `src/arcade_hud.*`: responsive garage, race, countdown, and pause HUD
+- `src/arcade_hud.*`: responsive loading, selection, race, countdown, pause, and results UI
 - `src/track_renderer.*`: textured, chunk-culled GPU road mesh
 - `src/core_math.hpp`: math, color, and geometry helpers
 - `src/renderer.hpp`: low-overhead software renderer and bitmap text

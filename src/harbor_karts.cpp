@@ -2196,13 +2196,13 @@ int runHarborKarts(int argc, char** argv) {
     const bool diagnoseController = hasArg(argc, argv, "--diagnose-controller");
     const bool windowed = hasArg(argc, argv, "--windowed") || smokeRender || diagnoseController;
 
-    SDL_SetAppMetadata("Shark Harbor Karts", "0.2.0", "local.harbor.karts");
+    SDL_SetAppMetadata("Formula Buggy", "0.3.0", "local.formula.buggy");
     if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD | SDL_INIT_EVENTS)) {
         std::cerr << "SDL_Init failed: " << SDL_GetError() << "\n";
         return 1;
     }
 
-    SDL_Window* window = SDL_CreateWindow("Shark Harbor Karts", 1280, 720, windowed ? SDL_WINDOW_RESIZABLE : SDL_WINDOW_FULLSCREEN);
+    SDL_Window* window = SDL_CreateWindow("Formula Buggy", 1280, 720, windowed ? SDL_WINDOW_RESIZABLE : SDL_WINDOW_FULLSCREEN);
     if (!window) {
         std::cerr << "SDL_CreateWindow failed: " << SDL_GetError() << "\n";
         SDL_Quit();
