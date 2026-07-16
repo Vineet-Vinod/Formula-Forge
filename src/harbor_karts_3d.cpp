@@ -2,13 +2,10 @@
 
 #include <algorithm>
 #include <array>
-#include <chrono>
 #include <cmath>
 #include <cstdint>
 #include <cstdlib>
 #include <filesystem>
-#include <fstream>
-#include <iomanip>
 #include <iostream>
 #include <limits>
 #include <memory>
@@ -1103,52 +1100,6 @@ struct AiPaceAuditResult3D {
     std::array<float, 10> splitSeconds{};
 };
 
-struct PlayerLapTraceSample {
-    double raceTime = 0.0;
-    double lapTime = 0.0;
-    float lapProgress = 0.0f;
-    float x = 0.0f;
-    float z = 0.0f;
-    float trackProgress = 0.0f;
-    float lane = 0.0f;
-    float roadCenterLimit = 0.0f;
-    float roadViolation = 0.0f;
-    float curvature = 0.0f;
-    float signedCurvature = 0.0f;
-    float grade = 0.0f;
-    float trackElevation = 0.0f;
-    float bank = 0.0f;
-    float launchVelocity = 0.0f;
-    float speed = 0.0f;
-    float forwardSpeed = 0.0f;
-    float lateralSpeed = 0.0f;
-    float heading = 0.0f;
-    float headingError = 0.0f;
-    float steerInput = 0.0f;
-    float throttleInput = 0.0f;
-    float brakeInput = 0.0f;
-    bool brakeButton = false;
-    bool driftInput = false;
-    float steerSmoothed = 0.0f;
-    float steerAngle = 0.0f;
-    float yawRate = 0.0f;
-    float slipAngle = 0.0f;
-    float brakeLoad = 0.0f;
-    float brakeSlip = 0.0f;
-    bool drifting = false;
-    ArcadeDriftPhase driftPhase = ArcadeDriftPhase::Grip;
-    float driftCharge = 0.0f;
-    float boostTimer = 0.0f;
-    float elevation = 0.0f;
-    float verticalSpeed = 0.0f;
-    bool grounded = true;
-    float airborneTime = 0.0f;
-    float bodyPitch = 0.0f;
-    float bodyRoll = 0.0f;
-    float suspensionCompression = 0.0f;
-    float contactTimer = 0.0f;
-};
-
 struct CollisionAuditResult3D {
     const char* name = "";
     float maxOverlap = 0.0f;
@@ -1477,8 +1428,7 @@ class Game3D {
 public:
     enum class Mode { Garage, Race, Pause };
 
-    explicit Game3D(bool enableAudio = true, bool recordPlayerLaps = true)
-        : specs_(makeKartSpecs()), racers_(makeRacers()), recordPlayerLaps_(recordPlayerLaps) {
+    explicit Game3D(bool enableAudio = true) : specs_(makeKartSpecs()), racers_(makeRacers()) {
         renderer_.initialize();
         if (enableAudio) {
             audio_.initialize();
@@ -1529,7 +1479,6 @@ public:
             raceTime_ = static_cast<float>(raceFlow_->raceTimeSeconds());
             if (raceFlow_->phase() == ArcadeRacePhase::Racing) {
                 countdownGoTimer_ = 0.72f;
-                beginPlayerLapTrace();
             }
             updateCamera(dt);
             updateAudio(dt, input, false);
@@ -1554,7 +1503,6 @@ public:
             for (int i = 0; i < kKartCount; ++i) {
                 karts_[static_cast<size_t>(i)].lap = static_cast<int>(raceFlow_->racer(static_cast<size_t>(i)).completedLaps);
             }
-            recordPlayerLapFrame(canonicalPlayerInput(playerInput));
         }
         updateRaceOrder();
         updateFinishState();
@@ -1982,23 +1930,6 @@ public:
         return ok;
     }
 
-    bool runPlayerLapRecorderAudit() {
-        recordPlayerLaps_ = true;
-        lapRecorderAuditMode_ = true;
-        startRace();
-        constexpr int kMaxFrames = static_cast<int>(120.0f / kFixedDt);
-        for (int frame = 0; frame < kMaxFrames && savedPlayerLapCount_ == 0; ++frame) {
-            update(kFixedDt, scriptedInput(), true);
-        }
-        const bool ok = savedPlayerLapCount_ == 1 && lastSavedPlayerLapSamples_ > 1000 &&
-                        lastSavedPlayerLapSeconds_ > 20.0 && std::filesystem::exists(lastSavedPlayerLapPath_) &&
-                        std::filesystem::exists(playerLapOutputDirectory() / "latest.csv");
-        std::cout << "player-lap-recorder-audit saved=" << savedPlayerLapCount_
-                  << " samples=" << lastSavedPlayerLapSamples_ << " lap_s=" << lastSavedPlayerLapSeconds_
-                  << " path=" << lastSavedPlayerLapPath_.string() << " ok=" << ok << "\n";
-        return ok;
-    }
-
     bool runCollisionAudit() {
         const CollisionAuditResult3D rearEnd = simulateCollisionScenario("rear_end", 0);
         const CollisionAuditResult3D headOn = simulateCollisionScenario("head_on", 1);
@@ -2097,157 +2028,6 @@ public:
     }
 
 private:
-    std::filesystem::path playerLapOutputDirectory() const {
-        const std::filesystem::path base = std::filesystem::path("build") / "player_laps";
-        return lapRecorderAuditMode_ ? base / "audit" : base;
-    }
-
-    void beginPlayerLapTrace() {
-        if (!recordPlayerLaps_ || !raceFlow_) {
-            return;
-        }
-        playerLapTrace_.clear();
-        playerLapTraceActive_ = true;
-        playerLapStartTime_ = raceFlow_->raceTimeSeconds();
-    }
-
-    bool writePlayerLapTrace(const std::filesystem::path& path, double lapSeconds, uint32_t lapNumber) const {
-        std::ofstream output(path, std::ios::trunc);
-        if (!output) {
-            return false;
-        }
-        output << "# format=harbor_karts_player_lap_v1\n"
-               << "# car=" << karts_[0].spec.name << "\n"
-               << "# driver=" << karts_[0].racer << "\n"
-               << "# validated_lap=" << lapNumber << "\n"
-               << "# lap_time_s=" << std::fixed << std::setprecision(6) << lapSeconds << "\n"
-               << "# track_length=" << track_.totalLength() << "\n"
-               << "# sample_rate_hz=" << static_cast<int>(std::lround(1.0f / kFixedDt)) << "\n"
-               << "race_time_s,lap_time_s,lap_progress,x,z,track_progress,lane,road_center_limit,road_violation,curvature,"
-                  "signed_curvature,grade,track_elevation,bank,launch_velocity,speed,forward_speed,lateral_speed,heading,"
-                  "heading_error,steer_input,throttle_input,brake_input,brake_button,drift_input,steer_smoothed,steer_angle,yaw_rate,"
-                  "slip_angle,brake_load,brake_slip,drifting,drift_phase,drift_charge,boost_timer,elevation,vertical_speed,"
-                  "grounded,airborne_time,body_pitch,body_roll,suspension_compression,contact_timer\n";
-        output << std::fixed << std::setprecision(6);
-        for (const PlayerLapTraceSample& sample : playerLapTrace_) {
-            output << sample.raceTime << ',' << sample.lapTime << ',' << sample.lapProgress << ',' << sample.x << ',' << sample.z
-                   << ',' << sample.trackProgress << ',' << sample.lane << ',' << sample.roadCenterLimit << ',' << sample.roadViolation
-                   << ',' << sample.curvature << ',' << sample.signedCurvature << ',' << sample.grade << ',' << sample.trackElevation
-                   << ',' << sample.bank << ',' << sample.launchVelocity << ',' << sample.speed << ',' << sample.forwardSpeed << ','
-                   << sample.lateralSpeed << ',' << sample.heading << ',' << sample.headingError << ',' << sample.steerInput << ','
-                   << sample.throttleInput << ',' << sample.brakeInput << ',' << static_cast<int>(sample.brakeButton) << ','
-                   << static_cast<int>(sample.driftInput) << ','
-                   << sample.steerSmoothed << ',' << sample.steerAngle << ',' << sample.yawRate << ',' << sample.slipAngle << ','
-                   << sample.brakeLoad << ',' << sample.brakeSlip << ',' << static_cast<int>(sample.drifting) << ','
-                   << static_cast<int>(sample.driftPhase) << ',' << sample.driftCharge << ',' << sample.boostTimer << ','
-                   << sample.elevation << ',' << sample.verticalSpeed << ',' << static_cast<int>(sample.grounded) << ','
-                   << sample.airborneTime << ',' << sample.bodyPitch << ',' << sample.bodyRoll << ','
-                   << sample.suspensionCompression << ',' << sample.contactTimer << '\n';
-        }
-        return output.good();
-    }
-
-    void savePlayerLapTrace(double crossingTime, uint32_t lapNumber) {
-        const double lapSeconds = crossingTime - playerLapStartTime_;
-        if (playerLapTrace_.size() < 120 || lapSeconds <= 1.0) {
-            playerLapTrace_.clear();
-            playerLapStartTime_ = crossingTime;
-            return;
-        }
-
-        const std::filesystem::path directory = playerLapOutputDirectory();
-        std::error_code error;
-        std::filesystem::create_directories(directory, error);
-        if (error) {
-            std::cerr << "player lap recorder: cannot create " << directory << ": " << error.message() << "\n";
-            return;
-        }
-        const auto timestamp = std::chrono::duration_cast<std::chrono::microseconds>(
-                                   std::chrono::system_clock::now().time_since_epoch())
-                                   .count();
-        const std::filesystem::path path = directory / ("lap_" + std::to_string(timestamp) + ".csv");
-        if (!writePlayerLapTrace(path, lapSeconds, lapNumber)) {
-            std::cerr << "player lap recorder: cannot write " << path << "\n";
-            return;
-        }
-        std::filesystem::copy_file(path, directory / "latest.csv", std::filesystem::copy_options::overwrite_existing, error);
-        if (error) {
-            std::cerr << "player lap recorder: cannot update latest.csv: " << error.message() << "\n";
-        }
-        ++savedPlayerLapCount_;
-        lastSavedPlayerLapSamples_ = playerLapTrace_.size();
-        lastSavedPlayerLapSeconds_ = lapSeconds;
-        lastSavedPlayerLapPath_ = path;
-        std::cout << "player-lap-recorded lap_s=" << lapSeconds << " samples=" << playerLapTrace_.size()
-                  << " path=" << path.string() << "\n";
-        playerLapTrace_.clear();
-        playerLapStartTime_ = crossingTime;
-    }
-
-    void recordPlayerLapFrame(const Input3D& input) {
-        if (!recordPlayerLaps_ || !playerLapTraceActive_ || !raceFlow_ || karts_.empty() ||
-            raceFlow_->phase() == ArcadeRacePhase::Countdown) {
-            return;
-        }
-        const Kart3D& kart = karts_[0];
-        const TrackPoint3D& trackPoint = track_.pointAtIndex(kart.nearest);
-        PlayerLapTraceSample sample;
-        sample.raceTime = raceFlow_->raceTimeSeconds();
-        sample.lapTime = sample.raceTime - playerLapStartTime_;
-        sample.lapProgress = raceLapProgress(kart) / track_.totalLength();
-        sample.x = kart.pos.x;
-        sample.z = kart.pos.y;
-        sample.trackProgress = kart.progress;
-        sample.lane = kart.lane;
-        sample.roadCenterLimit = roadCenterLimit(kart, trackPoint);
-        sample.roadViolation = roadEdgeViolation(kart, trackPoint);
-        sample.curvature = trackPoint.curvature;
-        sample.signedCurvature = trackPoint.signedCurvature;
-        sample.grade = trackPoint.grade;
-        sample.trackElevation = trackPoint.elevation;
-        sample.bank = trackPoint.bank;
-        sample.launchVelocity = trackPoint.launchVelocity;
-        sample.speed = length(kart.vel);
-        sample.forwardSpeed = kart.forwardSpeed;
-        sample.lateralSpeed = kart.lateralSpeed;
-        sample.heading = kart.heading;
-        sample.headingError = wrapAngle(angleOf(trackPoint.tangent) - kart.heading);
-        sample.steerInput = input.steer;
-        sample.throttleInput = input.throttle;
-        sample.brakeInput = input.brake;
-        sample.brakeButton = input.bHeld;
-        sample.driftInput = input.drift;
-        sample.steerSmoothed = kart.steerSmoothed;
-        sample.steerAngle = kart.steerAngle;
-        sample.yawRate = kart.yawRate;
-        sample.slipAngle = kart.slipAngle;
-        sample.brakeLoad = kart.brakeLoad;
-        sample.brakeSlip = kart.brakeSlip;
-        sample.drifting = kart.drifting;
-        sample.driftPhase = kart.driftPhase;
-        sample.driftCharge = kart.driftCharge;
-        sample.boostTimer = kart.boostTimer;
-        sample.elevation = kart.elevation;
-        sample.verticalSpeed = kart.verticalSpeed;
-        sample.grounded = kart.grounded;
-        sample.airborneTime = kart.airborneTime;
-        sample.bodyPitch = kart.bodyPitch;
-        sample.bodyRoll = kart.bodyRoll;
-        sample.suspensionCompression = kart.suspensionCompression;
-        sample.contactTimer = kart.contactTimer;
-        playerLapTrace_.push_back(sample);
-
-        for (const ArcadeRaceEvent& event : raceFlow_->events()) {
-            if (event.racerIndex == 0 && event.type == ArcadeRaceEventType::LapCompleted) {
-                savePlayerLapTrace(event.raceTimeSeconds, event.completedLaps);
-                break;
-            }
-        }
-        if (raceFlow_->racer(0).finished) {
-            playerLapTraceActive_ = false;
-        }
-    }
-
     void updateAudio(float dt, const Input3D& input, bool driving) {
         ArcadeAudioInput audioInput;
         audioInput.deltaTime = dt;
@@ -2390,13 +2170,6 @@ private:
         countdownGoTimer_ = 0.0f;
         raceFinished_ = false;
         playerPosition_ = 1;
-        playerLapTrace_.clear();
-        playerLapTraceActive_ = false;
-        playerLapStartTime_ = 0.0;
-        savedPlayerLapCount_ = 0;
-        lastSavedPlayerLapSamples_ = 0;
-        lastSavedPlayerLapSeconds_ = 0.0;
-        lastSavedPlayerLapPath_.clear();
         ArcadeRaceConfig raceConfig;
         raceConfig.lapCount = static_cast<uint32_t>(std::max(1, targetLaps()));
         raceConfig.infiniteLaps = targetLaps() == kInfiniteLaps;
@@ -3884,15 +3657,6 @@ private:
     float cameraElevation_ = 0.0f;
     float countdownGoTimer_ = 0.0f;
     bool raceFinished_ = false;
-    bool recordPlayerLaps_ = true;
-    bool lapRecorderAuditMode_ = false;
-    bool playerLapTraceActive_ = false;
-    double playerLapStartTime_ = 0.0;
-    std::vector<PlayerLapTraceSample> playerLapTrace_;
-    int savedPlayerLapCount_ = 0;
-    size_t lastSavedPlayerLapSamples_ = 0;
-    double lastSavedPlayerLapSeconds_ = 0.0;
-    std::filesystem::path lastSavedPlayerLapPath_;
 };
 
 }  // namespace
@@ -3942,7 +3706,6 @@ int runHarborKarts3D(int argc, char** argv) {
     const bool windowed = hasArg(argc, argv, "--windowed") || hasArg(argc, argv, "--smoke-render") ||
                           hasArg(argc, argv, "--diagnose-controller") || hasArg(argc, argv, "--handling-audit") ||
                           hasArg(argc, argv, "--race-audit") || hasArg(argc, argv, "--ai-pace-audit") ||
-                          hasArg(argc, argv, "--lap-recorder-audit") ||
                           hasArg(argc, argv, "--collision-audit") ||
                           hasArg(argc, argv, "--terrain-audit") ||
                           hasArg(argc, argv, "--perf-audit") || hasArg(argc, argv, "--capture-lap") ||
@@ -3955,7 +3718,6 @@ int runHarborKarts3D(int argc, char** argv) {
     const bool handlingAudit = hasArg(argc, argv, "--handling-audit");
     const bool raceAudit = hasArg(argc, argv, "--race-audit");
     const bool aiPaceAudit = hasArg(argc, argv, "--ai-pace-audit");
-    const bool lapRecorderAudit = hasArg(argc, argv, "--lap-recorder-audit");
     const bool collisionAudit = hasArg(argc, argv, "--collision-audit");
     const bool terrainAudit = hasArg(argc, argv, "--terrain-audit");
     const bool perfAudit = hasArg(argc, argv, "--perf-audit");
@@ -3986,8 +3748,8 @@ int runHarborKarts3D(int argc, char** argv) {
 
     ControllerReader controller(sdlInputReady);
     const bool automatedRun = smokeRender || capturePlaytest || captureDrivenLap || captureSectionTour || handlingAudit || raceAudit ||
-                              aiPaceAudit || lapRecorderAudit || collisionAudit || terrainAudit || perfAudit || diagnoseController;
-    Game3D game(!automatedRun, !automatedRun || lapRecorderAudit);
+                              aiPaceAudit || collisionAudit || terrainAudit || perfAudit || diagnoseController;
+    Game3D game(!automatedRun);
     bool runtimeCleaned = false;
     const auto cleanupRuntime = [&]() {
         if (runtimeCleaned) {
@@ -4019,11 +3781,6 @@ int runHarborKarts3D(int argc, char** argv) {
     }
     if (aiPaceAudit) {
         const bool ok = game.runAiPaceAudit();
-        cleanupRuntime();
-        return ok ? 0 : 1;
-    }
-    if (lapRecorderAudit) {
-        const bool ok = game.runPlayerLapRecorderAudit();
         cleanupRuntime();
         return ok ? 0 : 1;
     }

@@ -57,7 +57,6 @@ if(BUILD_TESTING)
     add_test(NAME arcade_race_flow_audit COMMAND harbor_karts_3d --race-flow-audit)
     add_test(NAME track_gradient_audit COMMAND harbor_karts_3d --terrain-audit)
     add_test(NAME ai_attacking_pace_audit COMMAND harbor_karts_3d --ai-pace-audit)
-    add_test(NAME player_lap_recorder_audit COMMAND harbor_karts_3d --lap-recorder-audit)
 endif()
 
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
