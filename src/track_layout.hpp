@@ -85,33 +85,25 @@ inline constexpr std::array<TrackControlPoint, 121> kSpaControlPoints = {{
 // simulation unit represents one metre over Spa's 7,004 m lap.
 inline constexpr float kSpaCourseScale = 2.9584332f;
 
-// Distance is normalized lap phase converted to metres. Elevation is relative
-// to Eau Rouge so interpolation spans the supplied 102.2 m total relief.
-inline constexpr std::array<TrackElevationPoint, 26> kSpaElevationProfile = {{
-    {0.00f, 65.408f},    // Start/finish
-    {245.14f, 70.518f},
-    {385.22f, 73.584f},  // La Source
-    {525.30f, 61.320f},
-    {700.40f, 32.704f},
-    {875.50f, 0.000f},   // Eau Rouge, low point
-    {980.56f, 14.308f},
-    {1120.64f, 59.276f},  // Raidillon climb
-    {1260.72f, 93.002f},
-    {1470.84f, 100.156f},  // Kemmel
-    {1891.08f, 102.200f},  // Highest point
-    {2171.24f, 96.068f},   // Les Combes
-    {2451.40f, 84.826f},
-    {2731.56f, 71.540f},
-    {3081.76f, 59.276f},
-    {3431.96f, 49.056f},  // Pouhon
-    {3852.20f, 44.968f},  // Fagnes
-    {4342.48f, 38.836f},
-    {4762.72f, 29.638f},  // Stavelot
-    {5253.00f, 17.374f},
-    {5603.20f, 12.264f},  // Low return
-    {5883.36f, 18.396f},
-    {6233.56f, 36.792f},  // Blanchimont climb
-    {6513.72f, 55.188f},
-    {6723.84f, 64.386f},  // Bus Stop
-    {7004.00f, 65.408f},
+// FIA distance/altitude stations, shifted to a zero datum and normalized from
+// their 99 m sampled span to the published 102.2 m overall circuit relief.
+inline constexpr std::array<TrackElevationPoint, 18> kSpaElevationProfile = {{
+    {0.0f, 47.4869f},
+    {220.0f, 55.7455f},
+    {690.0f, 34.0667f},
+    {890.0f, 20.6465f},
+    {1130.0f, 45.4222f},
+    {1490.0f, 61.9394f},
+    {2200.0f, 96.0061f},
+    {2470.0f, 102.2000f},
+    {2870.0f, 88.7798f},
+    {3110.0f, 70.1980f},
+    {3600.0f, 30.9697f},
+    {4280.0f, 7.2263f},
+    {4740.0f, 3.0970f},
+    {5100.0f, 0.0000f},
+    {5700.0f, 14.4525f},
+    {6000.0f, 24.7758f},
+    {6540.0f, 39.2283f},
+    {7004.0f, 47.4869f},
 }};

@@ -63,7 +63,12 @@ Color surfaceColor(const TrackRenderSample& sample, float lane) {
 
 Vector3 samplePoint(const TrackRenderSample& sample, float lane) {
     const float crown = std::max(0.0f, 1.0f - std::abs(lane) / 0.82f) * 0.045f;
-    Vector3 point = add(sample.center, add(scale(sample.lateral, sample.halfWidth * lane),
+    const float laneMagnitude = std::abs(lane);
+    const float spreadStart = sample.terrainSpread < 0.999f ? 1.04f : 1.38f;
+    const float spreadLane = laneMagnitude <= spreadStart
+                                 ? lane
+                                 : std::copysign(spreadStart + (laneMagnitude - spreadStart) * sample.terrainSpread, lane);
+    Vector3 point = add(sample.center, add(scale(sample.lateral, sample.halfWidth * spreadLane),
                                            {0.0f, crown + sample.bankHeight * std::clamp(lane, -1.2f, 1.2f), 0.0f}));
     const float terrainBlend = smoothstep01((std::abs(lane) - 1.38f) / (3.40f - 1.38f));
     point.y += (kTerrainSurfaceY - point.y) * terrainBlend;
@@ -308,7 +313,7 @@ void TrackRenderer::build(std::span<const TrackRenderSample> samples, Shader sha
     ready_ = !chunks_.empty();
 }
 
-void TrackRenderer::draw(float progress, float visibleRange) const {
+void TrackRenderer::draw(float progress, float visibleRange, float rearVisibleRange) const {
     if (!ready_) {
         return;
     }
@@ -322,7 +327,7 @@ void TrackRenderer::draw(float progress, float visibleRange) const {
         // Retain a long forward corridor, but reject geometry behind the chase
         // camera so it cannot cross the near plane. Small chunks make the edge
         // move smoothly instead of dropping a large section at once.
-        if (distance >= -24.0f - chunkAllowance && distance <= visibleRange + chunkAllowance) {
+        if (distance >= -rearVisibleRange - chunkAllowance && distance <= visibleRange + chunkAllowance) {
             DrawModel(chunk.model, {}, 1.0f, WHITE);
         }
     }

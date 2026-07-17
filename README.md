@@ -86,6 +86,8 @@ Gamepad and keyboard are both supported.
   and automatic stuck recovery
 - Procedural engine, drivetrain, road, wind, tire-scrub, and landing audio
 - Reference-calibrated 49-53 second baseline race laps with pack interaction
+- Two selectable beach circuits, including the 7.004 km, 19-turn Spa Coast
+  layout with a distance-calibrated 102.2 m elevation profile
 - Grid countdown, ordered checkpoints, shortcut-resistant laps, wrong-way
   detection, finish order, and checkpoint reset ghosting
 - Fullscreen Linux build with controller/gamepad support
@@ -104,6 +106,9 @@ make race-flow-audit-3d
 make capture-playtest-3d
 make handling-audit-3d
 make race-audit-3d
+make spa-audit-3d
+make capture-spa-tour-3d
+make spa-perf-audit-3d
 make collision-audit-3d
 make perf-audit-3d
 ./build/game/harbor_karts --smoke-render --dev-keyboard
@@ -128,6 +133,9 @@ The smoke render verifies SDL startup and framebuffer presentation.
 for visual inspection.
 `race-audit-3d` runs the 3D scripted player against live AI and validates lap
 pace, pack pressure, contact rate, overtakes, and every kart's progress stability.
+`spa-audit-3d` verifies Spa Coast's lap length, sampled FIA elevation stations,
+overall relief, mesh length, and maximum grade without opening a window.
+`capture-spa-tour-3d` writes nine course views for visual inspection.
 `collision-audit-3d` runs deterministic rear-end, head-on, and side-swipe
 contact cases and fails if the kart bodies remain overlapped.
 `perf-audit-3d` records 3D frame timings and fails if p95 misses the 60fps
@@ -151,7 +159,7 @@ which helps with USB receivers that expose a partial or unusual mapping.
 - `src/harbor_karts_3d.cpp`: raylib 3D renderer, simulation, controller input,
   capture harness, and 3D race loop
 - `src/harbor_karts_3d.hpp`: 3D entry-point declaration
-- `src/track_layout.hpp`: Breakwater circuit control-point layout data
+- `src/track_layout.hpp`: Sunset Cove and Spa Coast centerline/elevation data
 
 ## Third-Party Code
 

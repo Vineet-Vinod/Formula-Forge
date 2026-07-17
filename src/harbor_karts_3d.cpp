@@ -33,7 +33,7 @@ constexpr float kFixedDt = 1.0f / 120.0f;
 constexpr float kRenderScale = 0.085f;
 constexpr int kKartCount = 6;
 constexpr int kSampleCount = 1536;
-constexpr float kRaceStartPhase = 0.795f;
+constexpr float kSunsetCoveStartPhase = 0.795f;
 constexpr float kRoadSurfaceRatio = 0.40f;
 constexpr float kRoadLaneInset = 4.0f;
 constexpr float kHardBoundaryInset = 18.0f;
@@ -71,14 +71,18 @@ constexpr std::array<const char*, 8> kCarBackstories = {
 };
 
 struct MapSpec3D {
+    TrackLayoutId layout;
     const char* name;
+    const char* eventName;
     const char* subtitle;
     const char* backstory;
 };
 
-constexpr std::array<MapSpec3D, 1> kMaps = {{
-    {"SUNSET COVE", "COAST / JUNGLE / HARBOR",
+constexpr std::array<MapSpec3D, 2> kMaps = {{
+    {TrackLayoutId::SunsetCove, "SUNSET COVE", "SUNSET COVE GRAND PRIX", "COAST / JUNGLE / HARBOR",
      "A fast island loop through golden beaches, a busy waterfront, and shaded jungle climbs."},
+    {TrackLayoutId::SpaCoast, "SPA COAST", "SPA COAST GRAND PRIX", "7.004 KM / 19 TURNS / 102.2 M RELIEF",
+     "A legendary Ardennes-shaped challenge reimagined beside the sea, from a tidal Eau Rouge to the high Kemmel ridge."},
 }};
 
 struct RaceResult3D {
@@ -87,10 +91,6 @@ struct RaceResult3D {
     float finishTimeSeconds = 0.0f;
     int lapsCompleted = 0;
 };
-
-float raceStartProgress(float trackLength) {
-    return trackLength * kRaceStartPhase;
-}
 
 Color mix(Color a, Color b, float t) {
     t = std::clamp(t, 0.0f, 1.0f);
@@ -312,11 +312,29 @@ float rampLaunchForPhase(float phase) {
     return 0.0f;
 }
 
+float spaElevationForDistance(float distanceMeters) {
+    distanceMeters = wrapDistance(distanceMeters, kSpaTargetLength);
+    for (size_t i = 0; i + 1 < kSpaElevationProfile.size(); ++i) {
+        const TrackElevationPoint& a = kSpaElevationProfile[i];
+        const TrackElevationPoint& b = kSpaElevationProfile[i + 1];
+        if (distanceMeters >= a.distanceMeters && distanceMeters <= b.distanceMeters) {
+            const float t = (distanceMeters - a.distanceMeters) /
+                            std::max(0.001f, b.distanceMeters - a.distanceMeters);
+            return lerp(a.elevationMeters, b.elevationMeters, t);
+        }
+    }
+    return kSpaElevationProfile.back().elevationMeters;
+}
+
 class Track3D {
 public:
-    Track3D() { build(); }
+    explicit Track3D(TrackLayoutId layout = TrackLayoutId::SunsetCove) : layout_(layout) { build(); }
 
     float totalLength() const { return totalLength_; }
+    float startProgress() const {
+        return totalLength_ * (layout_ == TrackLayoutId::SpaCoast ? kSpaStartPhase : kSunsetCoveStartPhase);
+    }
+    TrackLayoutId layout() const { return layout_; }
     int sampleCount() const { return static_cast<int>(samples_.size()); }
     const std::vector<TrackPoint3D>& samples() const { return samples_; }
     const std::vector<Prop3D>& props() const { return props_; }
@@ -336,7 +354,8 @@ public:
         out.normal = {-out.tangent.y, out.tangent.x};
         out.progress = progress;
         out.width = lerp(a.width, b.width, t);
-        out.elevation = lerp(a.elevation, b.elevation, t);
+        out.elevation = layout_ == TrackLayoutId::SpaCoast ? spaElevationForDistance(progress)
+                                                           : lerp(a.elevation, b.elevation, t);
         out.bank = lerp(a.bank, b.bank, t);
         out.curvature = lerp(a.curvature, b.curvature, t);
         out.signedCurvature = lerp(a.signedCurvature, b.signedCurvature, t);
@@ -383,6 +402,16 @@ public:
         return toWorld(point.pos + point.normal * lane, bankedElevation(point, lane));
     }
 
+    void rebuild(TrackLayoutId layout) {
+        if (layout == layout_ && !samples_.empty()) {
+            return;
+        }
+        layout_ = layout;
+        samples_.clear();
+        props_.clear();
+        build();
+    }
+
 private:
     int wrappedIndex(int index) const {
         const int count = sampleCount();
@@ -401,32 +430,37 @@ private:
                0.5f;
     }
 
-    static TrackPoint3D decorate(TrackPoint3D point, float phase) {
+    TrackPoint3D decorate(TrackPoint3D point, float phase, float progress) const {
         phase -= std::floor(phase);
         const ZoneMaterial3D material = materialForPhase(phase);
         point.zone = zoneForPhase(phase);
-        point.width = trackWidthForPhase(phase);
+        point.width = layout_ == TrackLayoutId::SpaCoast ? trackWidthForPhase(phase) * 0.82f : trackWidthForPhase(phase);
         point.road = material.road;
         point.shoulder = material.shoulder;
         point.natural = material.natural;
 
-        point.elevation += elevationForPhase(phase);
-        point.elevation += 0.55f * std::sin(phase * kTwoPi * 3.0f);
-        point.elevation += rampHeightForPhase(phase);
-        point.launchVelocity = rampLaunchForPhase(phase);
+        if (layout_ == TrackLayoutId::SpaCoast) {
+            point.elevation = spaElevationForDistance(progress);
+            point.launchVelocity = 0.0f;
+        } else {
+            point.elevation += elevationForPhase(phase);
+            point.elevation += 0.55f * std::sin(phase * kTwoPi * 3.0f);
+            point.elevation += rampHeightForPhase(phase);
+            point.launchVelocity = rampLaunchForPhase(phase);
+        }
         return point;
     }
 
-    void build() {
-        const auto& control = kBreakwaterControlPoints;
-        const auto controlPoint = [&control](int index) {
+    template <size_t N>
+    void buildFromControl(const std::array<TrackControlPoint, N>& control, float scale, float targetLength) {
+        const auto controlPoint = [&control, scale](int index) {
             const int count = static_cast<int>(control.size());
             int wrapped = index % count;
             if (wrapped < 0) {
                 wrapped += count;
             }
             const TrackControlPoint& p = control[static_cast<size_t>(wrapped)];
-            return Vec2{p.x * kBreakwaterCourseScale, p.y * kBreakwaterCourseScale};
+            return Vec2{p.x * scale, p.y * scale};
         };
 
         std::vector<Vec2> dense;
@@ -445,7 +479,17 @@ private:
         for (size_t i = 0; i < dense.size(); ++i) {
             cumulative[i + 1] = cumulative[i] + length(dense[(i + 1) % dense.size()] - dense[i]);
         }
-        totalLength_ = cumulative.back();
+        if (targetLength > 0.0f) {
+            const float correction = targetLength / std::max(0.001f, cumulative.back());
+            for (Vec2& point : dense) {
+                point *= correction;
+            }
+            cumulative.assign(dense.size() + 1, 0.0f);
+            for (size_t i = 0; i < dense.size(); ++i) {
+                cumulative[i + 1] = cumulative[i] + length(dense[(i + 1) % dense.size()] - dense[i]);
+            }
+        }
+        totalLength_ = targetLength > 0.0f ? targetLength : cumulative.back();
 
         samples_.resize(kSampleCount);
         for (int i = 0; i < kSampleCount; ++i) {
@@ -460,7 +504,7 @@ private:
             TrackPoint3D point;
             point.progress = desired;
             point.pos = lerp(dense[static_cast<size_t>(seg)], dense[static_cast<size_t>((seg + 1) % dense.size())], t);
-            samples_[static_cast<size_t>(i)] = decorate(point, desired / totalLength_);
+            samples_[static_cast<size_t>(i)] = decorate(point, desired / totalLength_, desired);
         }
 
         for (int i = 0; i < kSampleCount; ++i) {
@@ -504,13 +548,21 @@ private:
         buildProps();
     }
 
+    void build() {
+        if (layout_ == TrackLayoutId::SpaCoast) {
+            buildFromControl(kSpaControlPoints, kSpaCourseScale, kSpaTargetLength);
+        } else {
+            buildFromControl(kBreakwaterControlPoints, kBreakwaterCourseScale, 0.0f);
+        }
+    }
+
     void buildProps() {
         std::mt19937 rng(3119);
         std::uniform_real_distribution<float> jitter(-24.0f, 24.0f);
         const int count = 156;
         for (int i = 0; i < count; ++i) {
             const float p = wrapDistance(totalLength_ * (static_cast<float>(i) + 0.23f) / count + jitter(rng), totalLength_);
-            if (std::abs(signedDistanceToLoop(raceStartProgress(totalLength_), p, totalLength_)) < 620.0f) {
+            if (std::abs(signedDistanceToLoop(startProgress(), p, totalLength_)) < 620.0f) {
                 continue;
             }
             const TrackPoint3D tp = sample(p);
@@ -559,7 +611,43 @@ private:
     std::vector<TrackPoint3D> samples_;
     std::vector<Prop3D> props_;
     float totalLength_ = 1.0f;
+    TrackLayoutId layout_ = TrackLayoutId::SunsetCove;
 };
+
+bool runSpaGeometryAudit() {
+    Track3D track(TrackLayoutId::SpaCoast);
+    float planarLength = 0.0f;
+    float surfaceLength = 0.0f;
+    float maxGrade = 0.0f;
+    for (int i = 0; i < track.sampleCount(); ++i) {
+        const TrackPoint3D& a = track.pointAtIndex(i);
+        const TrackPoint3D& b = track.pointAtIndex(i + 1);
+        const float planar = length(b.pos - a.pos);
+        const float rise = b.elevation - a.elevation;
+        planarLength += planar;
+        surfaceLength += std::sqrt(planar * planar + rise * rise);
+        maxGrade = std::max(maxGrade, std::abs(a.grade));
+    }
+
+    float stationError = 0.0f;
+    float minElevation = std::numeric_limits<float>::max();
+    float maxElevation = std::numeric_limits<float>::lowest();
+    for (const TrackElevationPoint& station : kSpaElevationProfile) {
+        const float sampled = track.sample(station.distanceMeters).elevation;
+        stationError = std::max(stationError, std::abs(sampled - station.elevationMeters));
+        minElevation = std::min(minElevation, sampled);
+        maxElevation = std::max(maxElevation, sampled);
+    }
+    const float lengthError = std::abs(track.totalLength() - kSpaTargetLength);
+    const float relief = maxElevation - minElevation;
+    const bool ok = lengthError <= 0.01f && std::abs(relief - kSpaElevationRelief) <= 0.03f &&
+                    stationError <= 0.03f && std::abs(planarLength - kSpaTargetLength) <= 1.5f &&
+                    std::isfinite(surfaceLength) && maxGrade <= 0.25f;
+    std::cout << "spa-audit length_m=" << track.totalLength() << " planar_mesh_m=" << planarLength
+              << " surface_mesh_m=" << surfaceLength << " relief_m=" << relief
+              << " station_error_m=" << stationError << " max_grade=" << maxGrade << " ok=" << ok << "\n";
+    return ok;
+}
 
 struct KartSpec3D {
     std::string name;
@@ -1615,10 +1703,18 @@ public:
     }
 
     void startRace() {
+        activateSelectedMap();
         resetRace();
         mode_ = Mode::Race;
         pauseAction_ = harbor::ui::PauseAction::Resume;
         resultsAction_ = harbor::ui::ResultsAction::Replay;
+    }
+
+    void selectMapForCapture(int index) {
+        selectedMap_ = std::clamp(index, 0, static_cast<int>(kMaps.size()) - 1);
+        activateSelectedMap();
+        resetRace();
+        syncGaragePreview();
     }
 
     void showResultsCapture() {
@@ -1892,7 +1988,7 @@ public:
 
     bool runAiPaceAudit() {
         particles_.clear();
-        const float startProgress = raceStartProgress(track_.totalLength());
+        const float startProgress = track_.startProgress();
         const TrackPoint3D start = track_.sample(startProgress);
         Kart3D kart;
         kart.spec = specs_[0];
@@ -2175,8 +2271,11 @@ private:
             lateral.y = 0.0f;
             const float magnitude = std::sqrt(lateral.x * lateral.x + lateral.z * lateral.z);
             lateral = magnitude > 0.0001f ? mul(lateral, 1.0f / magnitude) : Vector3{1.0f, 0.0f, 0.0f};
-            samples.push_back({center, lateral, point.width * 0.5f * kRenderScale, point.progress * kRenderScale, point.road,
-                               point.shoulder, point.natural, point.zone, point.bank * kRenderScale});
+            const float visualWidthScale = track_.layout() == TrackLayoutId::SpaCoast ? 0.82f : 1.0f;
+            samples.push_back({center, lateral, point.width * 0.5f * kRenderScale * visualWidthScale,
+                               point.progress * kRenderScale, point.road,
+                               point.shoulder, point.natural, point.zone, point.bank * kRenderScale,
+                               track_.layout() == TrackLayoutId::SpaCoast ? 0.15f : 1.0f});
         }
         return samples;
     }
@@ -2186,8 +2285,19 @@ private:
         trackRenderer_.build(samples, {});
     }
 
+    const MapSpec3D& selectedMap() const { return kMaps[static_cast<size_t>(selectedMap_)]; }
+
+    void activateSelectedMap() {
+        if (track_.layout() == selectedMap().layout) {
+            return;
+        }
+        track_.rebuild(selectedMap().layout);
+        buildTrackRenderer();
+    }
+
     void updateGarage(const Input3D& input, bool hasController) {
         garageSpin_ += kFixedDt;
+        const int previousMap = selectedMap_;
         const int direction = (input.right || input.down || input.pageRight ? 1 : 0) -
                               (input.left || input.up || input.pageLeft ? 1 : 0);
         auto wrapChoice = [direction](int& value, int count) {
@@ -2208,6 +2318,10 @@ private:
             case harbor::ui::SelectionStage::Laps:
                 wrapChoice(selectedLapOption_, static_cast<int>(kLapOptions.size()));
                 break;
+        }
+        if (selectedMap_ != previousMap) {
+            activateSelectedMap();
+            resetRace();
         }
         syncGaragePreview();
 
@@ -2300,7 +2414,7 @@ private:
 
     void updateGarageCamera(float dt) {
         (void)dt;
-        const TrackPoint3D start = track_.sample(raceStartProgress(track_.totalLength()) + 52.0f);
+        const TrackPoint3D start = track_.sample(track_.startProgress() + 52.0f);
         const float orbit = std::sin(garageSpin_ * 0.32f) * 8.0f;
         camera_.position = toWorld(start.pos - start.tangent * 72.0f + start.normal * (18.0f + orbit),
                                    bankedElevation(start, 18.0f) + 27.0f);
@@ -2312,7 +2426,7 @@ private:
 
     void resetRace() {
         karts_.clear();
-        const float startProgress = raceStartProgress(track_.totalLength());
+        const float startProgress = track_.startProgress();
         const TrackPoint3D start = track_.sample(startProgress);
         for (int i = 0; i < kKartCount; ++i) {
             Kart3D kart;
@@ -2354,8 +2468,14 @@ private:
         raceConfig.lapCount = static_cast<uint32_t>(std::max(1, targetLaps()));
         raceConfig.infiniteLaps = targetLaps() == kInfiniteLaps;
         raceConfig.countdownSeconds = 3.0f;
-        raceConfig.checkpointGates = {{0.0f, 0.0f}, {0.18f, 0.18f}, {0.38f, 0.38f},
-                                      {0.58f, 0.58f}, {0.78f, 0.78f}};
+        if (track_.layout() == TrackLayoutId::SpaCoast) {
+            raceConfig.checkpointGates = {{0.0f, 0.0f}, {0.10f, 0.10f}, {0.21f, 0.21f}, {0.32f, 0.32f},
+                                          {0.43f, 0.43f}, {0.54f, 0.54f}, {0.65f, 0.65f}, {0.76f, 0.76f},
+                                          {0.87f, 0.87f}};
+        } else {
+            raceConfig.checkpointGates = {{0.0f, 0.0f}, {0.18f, 0.18f}, {0.38f, 0.38f},
+                                          {0.58f, 0.58f}, {0.78f, 0.78f}};
+        }
         raceFlow_ = std::make_unique<ArcadeRaceFlow>(raceConfig, kKartCount);
         const auto inputs = currentRaceInputs();
         raceFlow_->update(0.0f, inputs);
@@ -2371,13 +2491,13 @@ private:
     }
 
     void updateProgress(Kart3D& kart) {
-        const float oldRaceProgress = progressAhead(raceStartProgress(track_.totalLength()), kart.progress, track_.totalLength());
+        const float oldRaceProgress = progressAhead(track_.startProgress(), kart.progress, track_.totalLength());
         kart.nearest = track_.nearestIndexNear(kart.pos, kart.nearest, 4);
         const TrackPoint3D& center = track_.pointAtIndex(kart.nearest);
         kart.previousProgress = kart.progress;
         kart.progress = center.progress;
         kart.lane = dot(kart.pos - center.pos, center.normal);
-        const float newRaceProgress = progressAhead(raceStartProgress(track_.totalLength()), kart.progress, track_.totalLength());
+        const float newRaceProgress = progressAhead(track_.startProgress(), kart.progress, track_.totalLength());
         if (oldRaceProgress > track_.totalLength() * 0.70f && newRaceProgress < track_.totalLength() * 0.30f) {
             ++kart.lap;
         } else if (oldRaceProgress < track_.totalLength() * 0.30f && newRaceProgress > track_.totalLength() * 0.70f &&
@@ -2391,7 +2511,7 @@ private:
     }
 
     float raceLapProgress(const Kart3D& kart) const {
-        return progressAhead(raceStartProgress(track_.totalLength()), kart.progress, track_.totalLength());
+        return progressAhead(track_.startProgress(), kart.progress, track_.totalLength());
     }
 
     float raceScore(const Kart3D& kart) const { return static_cast<float>(kart.lap) * track_.totalLength() + raceLapProgress(kart); }
@@ -2479,13 +2599,26 @@ private:
 
     float racingLaneForProgress(const Kart3D& kart, float progress) const {
         const TrackPoint3D point = track_.sample(progress);
-        const float phase = progressAhead(raceStartProgress(track_.totalLength()), progress, track_.totalLength()) / track_.totalLength();
+        if (track_.layout() == TrackLayoutId::SpaCoast) {
+            const float turn = smoothedSignedCurvature(progress + 42.0f);
+            const float limit = std::max(0.0f, hardBoundaryLaneLimit(kart, point) - 5.0f);
+            const float target = std::clamp(turn * 118.0f, -limit * 0.52f, limit * 0.52f);
+            return std::clamp(target, -limit, limit);
+        }
+        const float phase = progressAhead(track_.startProgress(), progress, track_.totalLength()) / track_.totalLength();
         const float target = sampleWrappedProfile(kAttackingReferenceLane, phase);
         return std::clamp(target, -hardBoundaryLaneLimit(kart, point) + 5.0f, hardBoundaryLaneLimit(kart, point) - 5.0f);
     }
 
     float referenceAiSpeed(const Kart3D& kart, float progress) const {
-        const float phase = progressAhead(raceStartProgress(track_.totalLength()), progress, track_.totalLength()) / track_.totalLength();
+        if (track_.layout() == TrackLayoutId::SpaCoast) {
+            const float nearCorner = std::max(track_.sample(progress).curvature,
+                                              track_.sample(progress + 48.0f).curvature);
+            const float cornerLoad = std::clamp(nearCorner / 0.72f, 0.0f, 1.0f);
+            const float pace = lerp(0.94f, 0.43f, smoothstep(cornerLoad));
+            return kart.tuning.maxForwardSpeed * pace * (kart.aiTempo / 1.075f);
+        }
+        const float phase = progressAhead(track_.startProgress(), progress, track_.totalLength()) / track_.totalLength();
         const float carScale = kart.spec.maxSpeed / specs_[0].maxSpeed;
         return sampleWrappedProfile(kAttackingReferenceSpeed, phase) * carScale * kart.aiTempo;
     }
@@ -3002,7 +3135,7 @@ private:
         if (raceFlow_) {
             const ArcadeCheckpointResetInfo reset = raceFlow_->lastValidReset(0);
             if (reset.valid) {
-                resetProgress = wrapDistance(raceStartProgress(track_.totalLength()) + reset.normalizedTrackProgress * track_.totalLength(),
+                resetProgress = wrapDistance(track_.startProgress() + reset.normalizedTrackProgress * track_.totalLength(),
                                              track_.totalLength());
             }
         }
@@ -3130,10 +3263,16 @@ private:
 
     void drawTrack() {
         const auto& samples = track_.samples();
+        const float viewProgress =
+            mode_ == Mode::Garage || karts_.empty() ? track_.startProgress() : karts_[0].progress;
+        const auto detailVisible = [&](float progress) {
+            const float distance = signedDistanceToLoop(viewProgress, progress, track_.totalLength());
+            return distance >= -320.0f && distance <= 860.0f;
+        };
         if (trackRenderer_.ready()) {
-            const float viewProgress =
-                mode_ == Mode::Garage || karts_.empty() ? raceStartProgress(track_.totalLength()) : karts_[0].progress;
-            trackRenderer_.draw(viewProgress * kRenderScale, 260.0f);
+            const bool spa = track_.layout() == TrackLayoutId::SpaCoast;
+            const float spaLoopRange = track_.totalLength() * kRenderScale;
+            trackRenderer_.draw(viewProgress * kRenderScale, spa ? spaLoopRange : 260.0f, spa ? spaLoopRange : 24.0f);
         } else {
             constexpr int stride = 2;
             for (int i = 0; i < track_.sampleCount(); i += stride) {
@@ -3187,7 +3326,7 @@ private:
 
         for (int i = 0; i < track_.sampleCount(); i += 24) {
             const TrackPoint3D& p = samples[static_cast<size_t>(i)];
-            if (p.curvature < 0.028f) {
+            if (!detailVisible(p.progress) || p.curvature < 0.028f) {
                 continue;
             }
             const float outside = std::abs(p.signedCurvature) > 0.004f ? -std::copysign(1.0f, p.signedCurvature) : 1.0f;
@@ -3212,12 +3351,21 @@ private:
         // Low sector-specific edge geometry follows the same lane boundary as
         // collision resolution. It gives every corner a stable silhouette and
         // communicates exactly how much shoulder remains available.
-        constexpr int boundaryStride = 10;
+        const int boundaryStride = track_.layout() == TrackLayoutId::SpaCoast ? 3 : 10;
         for (int i = 0; i < track_.sampleCount(); i += boundaryStride) {
             const TrackPoint3D& p = samples[static_cast<size_t>(i)];
+            if (!detailVisible(p.progress)) {
+                continue;
+            }
             const TrackPoint3D& next = samples[static_cast<size_t>((i + boundaryStride) % track_.sampleCount())];
             const float segmentLength = length(next.pos - p.pos) * kRenderScale * 1.05f;
             for (float side : {-1.0f, 1.0f}) {
+                if (track_.layout() == TrackLayoutId::SpaCoast && p.curvature > 0.060f) {
+                    const float outside = -std::copysign(1.0f, p.signedCurvature);
+                    if (side != outside) {
+                        continue;
+                    }
+                }
                 const float lane = side * (p.width * 0.5f + 18.0f);
                 const Vector3 edge = track_.roadPoint(p, lane);
                 rlPushMatrix();
@@ -3240,8 +3388,8 @@ private:
             }
         }
 
-        if (mode_ != Mode::Garage) {
-            const float startProgress = raceStartProgress(track_.totalLength());
+        if (mode_ != Mode::Garage && detailVisible(track_.startProgress())) {
+            const float startProgress = track_.startProgress();
             const TrackPoint3D start = track_.sample(startProgress);
             const TrackPoint3D after = track_.sample(startProgress + 10.0f);
             const float half = start.width * 0.5f;
@@ -3400,6 +3548,11 @@ private:
     bool shouldDrawRaceProp(const Prop3D& prop) const {
         if (mode_ == Mode::Garage || karts_.empty()) {
             return true;
+        }
+
+        const float courseDistance = signedDistanceToLoop(karts_[0].progress, prop.progress, track_.totalLength());
+        if (courseDistance < -420.0f || courseDistance > 1000.0f) {
+            return false;
         }
 
         const bool largeOccluder = prop.type == Prop3D::Type::Palm || prop.type == Prop3D::Type::Hut ||
@@ -3695,7 +3848,7 @@ private:
 
     void drawKarts() {
         if (mode_ == Mode::Garage) {
-            const TrackPoint3D start = track_.sample(raceStartProgress(track_.totalLength()) + 52.0f);
+            const TrackPoint3D start = track_.sample(track_.startProgress() + 52.0f);
             Kart3D preview = karts_[0];
             preview.spec = specs_[static_cast<size_t>(selectedCar_)];
             preview.racer = racers_[static_cast<size_t>(selectedRacer_)];
@@ -3787,8 +3940,30 @@ private:
             };
             harbor::ui::SelectionHudViewModel view;
             view.stage = selectionStage_;
-            view.mapName = kMaps[static_cast<size_t>(selectedMap_)].name;
-            view.mapDescription = kMaps[static_cast<size_t>(selectedMap_)].backstory;
+            view.mapName = selectedMap().name;
+            view.mapDescription = selectedMap().backstory;
+            constexpr int kPreviewPoints = 128;
+            std::array<Vec2, kPreviewPoints> previewPoints{};
+            Vec2 previewMin{std::numeric_limits<float>::max(), std::numeric_limits<float>::max()};
+            Vec2 previewMax{std::numeric_limits<float>::lowest(), std::numeric_limits<float>::lowest()};
+            for (int i = 0; i < kPreviewPoints; ++i) {
+                const float progress = track_.startProgress() +
+                                       track_.totalLength() * static_cast<float>(i) / kPreviewPoints;
+                const Vec2 point = track_.sample(progress).pos;
+                previewPoints[static_cast<size_t>(i)] = point;
+                previewMin.x = std::min(previewMin.x, point.x);
+                previewMin.y = std::min(previewMin.y, point.y);
+                previewMax.x = std::max(previewMax.x, point.x);
+                previewMax.y = std::max(previewMax.y, point.y);
+            }
+            const Vec2 previewSpan{std::max(1.0f, previewMax.x - previewMin.x),
+                                   std::max(1.0f, previewMax.y - previewMin.y)};
+            view.coursePolylinePointCount = kPreviewPoints;
+            for (int i = 0; i < kPreviewPoints; ++i) {
+                const Vec2 point = previewPoints[static_cast<size_t>(i)];
+                view.coursePolyline[static_cast<size_t>(i * 2)] = (point.x - previewMin.x) / previewSpan.x;
+                view.coursePolyline[static_cast<size_t>(i * 2 + 1)] = (point.y - previewMin.y) / previewSpan.y;
+            }
             view.stats.speed = std::clamp((spec.maxSpeed - 178.0f) / 34.0f, 0.12f, 1.0f);
             view.stats.acceleration = std::clamp((spec.accel - 214.0f) / 82.0f, 0.12f, 1.0f);
             view.stats.handling = std::clamp((spec.grip * 0.58f + spec.drift * 0.42f - 0.88f) / 0.36f, 0.12f, 1.0f);
@@ -3810,15 +3985,15 @@ private:
                     view.itemCount = static_cast<int>(specs_.size());
                     break;
                 case harbor::ui::SelectionStage::Map:
-                    view.itemName = kMaps[static_cast<size_t>(selectedMap_)].name;
-                    view.itemSubtitle = kMaps[static_cast<size_t>(selectedMap_)].subtitle;
-                    view.backstory = kMaps[static_cast<size_t>(selectedMap_)].backstory;
+                    view.itemName = selectedMap().name;
+                    view.itemSubtitle = selectedMap().subtitle;
+                    view.backstory = selectedMap().backstory;
                     view.itemIndex = selectedMap_;
                     view.itemCount = static_cast<int>(kMaps.size());
                     break;
                 case harbor::ui::SelectionStage::Laps:
                     view.itemName = "RACE DISTANCE";
-                    view.itemSubtitle = "SUNSET COVE GRAND PRIX";
+                    view.itemSubtitle = selectedMap().eventName;
                     view.backstory = targetLaps() == kInfiniteLaps
                                          ? "Endless mode keeps the race running until you decide the session is over."
                                          : "Every racer must complete the selected distance. The first across the line wins.";
@@ -3837,7 +4012,7 @@ private:
             harbor::ui::DrawSelectionHud(view);
         } else if (mode_ == Mode::Results) {
             harbor::ui::ResultsHudViewModel view;
-            view.eventName = "SUNSET COVE GRAND PRIX";
+            view.eventName = selectedMap().eventName;
             view.rowCount = resultCount_;
             view.totalLaps = targetLaps();
             view.selectedAction = resultsAction_;
@@ -3894,7 +4069,7 @@ private:
         }
         if (mode_ == Mode::Pause) {
             harbor::ui::PauseHudViewModel view;
-            view.eventName = "SUNSET COVE GRAND PRIX";
+            view.eventName = selectedMap().eventName;
             view.currentLap = std::max(1, karts_[0].lap + 1);
             view.totalLaps = targetLaps();
             view.raceTimeSeconds = raceTime_;
@@ -3941,6 +4116,9 @@ private:
 }  // namespace
 
 int runHarborKarts3D(int argc, char** argv) {
+    if (hasArg(argc, argv, "--spa-audit")) {
+        return runSpaGeometryAudit() ? 0 : 1;
+    }
     const bool inputAudit = hasArg(argc, argv, "--input-audit");
     if (inputAudit) {
         const bool ok = controllerContractAudit();
@@ -3987,19 +4165,24 @@ int runHarborKarts3D(int argc, char** argv) {
                           hasArg(argc, argv, "--race-audit") || hasArg(argc, argv, "--ai-pace-audit") ||
                           hasArg(argc, argv, "--collision-audit") ||
                           hasArg(argc, argv, "--terrain-audit") ||
-                          hasArg(argc, argv, "--perf-audit") || hasArg(argc, argv, "--capture-lap") ||
-                          hasArg(argc, argv, "--capture-driven-lap") || hasArg(argc, argv, "--capture-section-tour");
+                          hasArg(argc, argv, "--perf-audit") || hasArg(argc, argv, "--spa-perf-audit") ||
+                          hasArg(argc, argv, "--capture-lap") ||
+                          hasArg(argc, argv, "--capture-driven-lap") || hasArg(argc, argv, "--capture-spa-lap") ||
+                          hasArg(argc, argv, "--capture-section-tour") || hasArg(argc, argv, "--capture-spa-tour");
     const bool smokeRender = hasArg(argc, argv, "--smoke-render");
     const bool capturePlaytest = hasArg(argc, argv, "--capture-playtest");
-    const bool captureDrivenLap = hasArg(argc, argv, "--capture-lap") || hasArg(argc, argv, "--capture-driven-lap");
-    const bool captureSectionTour = hasArg(argc, argv, "--capture-section-tour");
+    const bool captureSpaLap = hasArg(argc, argv, "--capture-spa-lap");
+    const bool captureDrivenLap = hasArg(argc, argv, "--capture-lap") || hasArg(argc, argv, "--capture-driven-lap") || captureSpaLap;
+    const bool captureSpaTour = hasArg(argc, argv, "--capture-spa-tour");
+    const bool captureSectionTour = hasArg(argc, argv, "--capture-section-tour") || captureSpaTour;
     const bool diagnoseController = hasArg(argc, argv, "--diagnose-controller");
     const bool handlingAudit = hasArg(argc, argv, "--handling-audit");
     const bool raceAudit = hasArg(argc, argv, "--race-audit");
     const bool aiPaceAudit = hasArg(argc, argv, "--ai-pace-audit");
     const bool collisionAudit = hasArg(argc, argv, "--collision-audit");
     const bool terrainAudit = hasArg(argc, argv, "--terrain-audit");
-    const bool perfAudit = hasArg(argc, argv, "--perf-audit");
+    const bool spaPerfAudit = hasArg(argc, argv, "--spa-perf-audit");
+    const bool perfAudit = hasArg(argc, argv, "--perf-audit") || spaPerfAudit;
     const std::filesystem::path launchDir = std::filesystem::current_path();
     const std::filesystem::path captureDir = launchDir / "build" / "playtest_frames";
 
@@ -4048,6 +4231,9 @@ int runHarborKarts3D(int argc, char** argv) {
         std::filesystem::create_directories(captureDir);
     }
     if (perfAudit) {
+        if (spaPerfAudit) {
+            game.selectMapForCapture(1);
+        }
         game.startRace();
     }
     if (handlingAudit) {
@@ -4076,18 +4262,26 @@ int runHarborKarts3D(int argc, char** argv) {
         return ok ? 0 : 1;
     }
     if (captureSectionTour) {
+        if (captureSpaTour) {
+            game.selectMapForCapture(1);
+        }
         static constexpr std::array<float, 9> kTourPhases = {0.035f, 0.135f, 0.245f, 0.355f, 0.465f,
                                                              0.575f, 0.690f, 0.805f, 0.920f};
         for (size_t i = 0; i < kTourPhases.size(); ++i) {
             game.setupSectionTour(kTourPhases[i], static_cast<int>(i));
             const std::filesystem::path path =
-                std::filesystem::path("../playtest_frames") / TextFormat("harbor_karts_3d_section_tour_%02d.png", static_cast<int>(i));
+                std::filesystem::path("../playtest_frames") /
+                TextFormat(captureSpaTour ? "formula_buggy_spa_tour_%02d.png" : "harbor_karts_3d_section_tour_%02d.png",
+                           static_cast<int>(i));
             game.render(60.0f, true, path.string().c_str());
         }
         cleanupRuntime();
         return 0;
     }
     if (captureDrivenLap) {
+        if (captureSpaLap) {
+            game.selectMapForCapture(1);
+        }
         game.startRace();
         const float startScore = game.playerRaceScoreForCapture();
         const float lapLength = game.lapLengthForCapture();
@@ -4180,6 +4374,10 @@ int runHarborKarts3D(int argc, char** argv) {
                 Input3D confirm;
                 confirm.a = true;
                 game.update(kFixedDt, confirm, true);
+            } else if (frames == 130) {
+                Input3D nextMap;
+                nextMap.right = true;
+                game.update(kFixedDt, nextMap, true);
             } else if (frames == 155) {
                 Input3D confirm;
                 confirm.a = true;
