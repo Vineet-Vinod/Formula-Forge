@@ -19,6 +19,7 @@ struct TrackRenderSample {
     int zone = 0;
     float bankHeight = 0.0f;
     float terrainSpread = 1.0f;
+    float terrainEdgeElevation = -0.18f;
 };
 
 struct TrackGradientAudit {
@@ -50,7 +51,8 @@ public:
     TrackRenderer& operator=(const TrackRenderer&) = delete;
 
     void build(std::span<const TrackRenderSample> samples, Shader shader);
-    void draw(float progress, float visibleRange = 170.0f, float rearVisibleRange = 24.0f) const;
+    void draw(float progress, float visibleRange = 170.0f, float rearVisibleRange = 24.0f,
+              Vector3 cameraPosition = {}, float spatialRange = 0.0f) const;
     void unload();
     bool ready() const { return ready_; }
 
@@ -58,6 +60,8 @@ private:
     struct Chunk {
         Model model{};
         float progress = 0.0f;
+        Vector3 center{};
+        float radius = 0.0f;
     };
 
     std::vector<Chunk> chunks_;

@@ -14,7 +14,6 @@ constexpr std::array<float, 19> kLaneCuts = {
     0.42f,  0.80f,  0.94f,  1.08f,  1.38f,  1.72f,  2.10f,  2.70f,  3.40f,
 };
 constexpr size_t kSegmentsPerChunk = 12;
-constexpr float kTerrainSurfaceY = -0.18f;
 
 Vector3 add(Vector3 a, Vector3 b) { return {a.x + b.x, a.y + b.y, a.z + b.z}; }
 Vector3 subtract(Vector3 a, Vector3 b) { return {a.x - b.x, a.y - b.y, a.z - b.z}; }
@@ -71,7 +70,7 @@ Vector3 samplePoint(const TrackRenderSample& sample, float lane) {
     Vector3 point = add(sample.center, add(scale(sample.lateral, sample.halfWidth * spreadLane),
                                            {0.0f, crown + sample.bankHeight * std::clamp(lane, -1.2f, 1.2f), 0.0f}));
     const float terrainBlend = smoothstep01((std::abs(lane) - 1.38f) / (3.40f - 1.38f));
-    point.y += (kTerrainSurfaceY - point.y) * terrainBlend;
+    point.y += (sample.terrainEdgeElevation - point.y) * terrainBlend;
     return point;
 }
 
@@ -308,12 +307,23 @@ void TrackRenderer::build(std::span<const TrackRenderSample> samples, Shader sha
             model.materials[0].shader = shader;
         }
         const size_t midpoint = (start + segmentCount / 2) % samples.size();
-        chunks_.push_back({model, samples[midpoint].progress});
+        Vector3 center{};
+        for (size_t offset = 0; offset <= segmentCount; ++offset) {
+            center = add(center, samples[(start + offset) % samples.size()].center);
+        }
+        center = scale(center, 1.0f / static_cast<float>(segmentCount + 1));
+        float radius = 0.0f;
+        for (size_t offset = 0; offset <= segmentCount; ++offset) {
+            const TrackRenderSample& sample = samples[(start + offset) % samples.size()];
+            radius = std::max(radius, distance3(center, sample.center) + sample.halfWidth * 3.4f);
+        }
+        chunks_.push_back({model, samples[midpoint].progress, center, radius});
     }
     ready_ = !chunks_.empty();
 }
 
-void TrackRenderer::draw(float progress, float visibleRange, float rearVisibleRange) const {
+void TrackRenderer::draw(float progress, float visibleRange, float rearVisibleRange,
+                         Vector3 cameraPosition, float spatialRange) const {
     if (!ready_) {
         return;
     }
@@ -327,7 +337,11 @@ void TrackRenderer::draw(float progress, float visibleRange, float rearVisibleRa
         // Retain a long forward corridor, but reject geometry behind the chase
         // camera so it cannot cross the near plane. Small chunks make the edge
         // move smoothly instead of dropping a large section at once.
-        if (distance >= -rearVisibleRange - chunkAllowance && distance <= visibleRange + chunkAllowance) {
+        const bool courseVisible = distance >= -rearVisibleRange - chunkAllowance &&
+                                   distance <= visibleRange + chunkAllowance;
+        const bool spatialVisible = spatialRange > 0.0f &&
+                                    distance3(cameraPosition, chunk.center) <= spatialRange + chunk.radius;
+        if (courseVisible || spatialVisible) {
             DrawModel(chunk.model, {}, 1.0f, WHITE);
         }
     }
