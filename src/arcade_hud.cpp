@@ -212,6 +212,94 @@ void drawStatRow(const char* label, float value, Rectangle bounds, Color color, 
     }
 }
 
+void drawCourseSchematic(const SelectionHudViewModel& viewModel, Rectangle bounds, float scale) {
+    DrawRectangleRec(bounds, Fade(kInk, 0.92f));
+    DrawRectangleLinesEx(bounds, 1.0f * scale, Fade(kPaper, 0.32f));
+
+    const float waveGap = 32.0f * scale;
+    for (float y = bounds.y + waveGap; y < bounds.y + bounds.height; y += waveGap) {
+        for (float x = bounds.x - waveGap; x < bounds.x + bounds.width; x += waveGap * 2.0f) {
+            DrawLineEx({x, y}, {x + waveGap * 0.5f, y - 3.0f * scale}, 1.0f * scale, Fade(kAqua, 0.10f));
+            DrawLineEx({x + waveGap * 0.5f, y - 3.0f * scale}, {x + waveGap, y}, 1.0f * scale,
+                       Fade(kAqua, 0.10f));
+        }
+    }
+
+    const int count = std::clamp(viewModel.coursePolylinePointCount, 0, kMaxCoursePolylinePoints);
+    if (count < 3) {
+        drawCenteredText("COURSE SCHEMATIC", {bounds.x + bounds.width * 0.5f, bounds.y + bounds.height * 0.48f},
+                         16.0f * scale, kPaperMuted);
+        drawCenteredText("PREVIEW UNAVAILABLE", {bounds.x + bounds.width * 0.5f, bounds.y + bounds.height * 0.58f},
+                         12.0f * scale, Fade(kPaperMuted, 0.72f));
+        return;
+    }
+
+    float minX = 1.0f;
+    float minY = 1.0f;
+    float maxX = 0.0f;
+    float maxY = 0.0f;
+    for (int index = 0; index < count; ++index) {
+        const float x = clamp01(viewModel.coursePolyline[static_cast<size_t>(index) * 2]);
+        const float y = clamp01(viewModel.coursePolyline[static_cast<size_t>(index) * 2 + 1]);
+        minX = std::min(minX, x);
+        minY = std::min(minY, y);
+        maxX = std::max(maxX, x);
+        maxY = std::max(maxY, y);
+    }
+
+    const float rangeX = std::max(0.001f, maxX - minX);
+    const float rangeY = std::max(0.001f, maxY - minY);
+    const Rectangle drawingBounds = inset(bounds, 26.0f * scale);
+    const float fitScale = std::min(drawingBounds.width / rangeX, drawingBounds.height / rangeY);
+    const float fittedWidth = rangeX * fitScale;
+    const float fittedHeight = rangeY * fitScale;
+    const float originX = drawingBounds.x + (drawingBounds.width - fittedWidth) * 0.5f;
+    const float originY = drawingBounds.y + (drawingBounds.height - fittedHeight) * 0.5f;
+
+    std::array<Vector2, kMaxCoursePolylinePoints> points{};
+    for (int index = 0; index < count; ++index) {
+        const float x = clamp01(viewModel.coursePolyline[static_cast<size_t>(index) * 2]);
+        const float y = clamp01(viewModel.coursePolyline[static_cast<size_t>(index) * 2 + 1]);
+        points[static_cast<size_t>(index)] = {originX + (x - minX) * fitScale,
+                                              originY + (maxY - y) * fitScale};
+    }
+
+    const auto drawCircuitPass = [&](float thickness, Color color) {
+        for (int index = 0; index < count; ++index) {
+            const Vector2 from = points[static_cast<size_t>(index)];
+            const Vector2 to = points[static_cast<size_t>((index + 1) % count)];
+            DrawLineEx(from, to, thickness, color);
+            DrawCircleV(from, thickness * 0.5f, color);
+        }
+    };
+    drawCircuitPass(15.0f * scale, Fade(kSandShade, 0.86f));
+    drawCircuitPass(11.0f * scale, kPaper);
+    drawCircuitPass(5.0f * scale, kCoral);
+    drawCircuitPass(2.0f * scale, Fade(kSun, 0.88f));
+
+    const Vector2 start = points[0];
+    const Vector2 next = points[1];
+    const float tangentLength = std::max(0.001f, std::sqrt((next.x - start.x) * (next.x - start.x) +
+                                                          (next.y - start.y) * (next.y - start.y)));
+    const Vector2 normal{-(next.y - start.y) / tangentLength, (next.x - start.x) / tangentLength};
+    const Vector2 gateA{start.x - normal.x * 9.0f * scale, start.y - normal.y * 9.0f * scale};
+    const Vector2 gateB{start.x + normal.x * 9.0f * scale, start.y + normal.y * 9.0f * scale};
+    DrawLineEx(gateA, gateB, 5.0f * scale, kInk);
+    DrawLineEx(gateA, gateB, 2.0f * scale, kPaper);
+    DrawCircleV(start, 5.5f * scale, kSun);
+    DrawCircleLines(static_cast<int>(start.x), static_cast<int>(start.y), 8.0f * scale, kPaper);
+
+    const bool labelLeft = start.x > bounds.x + bounds.width * 0.68f;
+    const float labelWidth = 52.0f * scale;
+    const float labelX = labelLeft ? start.x - labelWidth - 12.0f * scale : start.x + 12.0f * scale;
+    const float labelY = std::clamp(start.y - 12.0f * scale, bounds.y + 5.0f * scale,
+                                    bounds.y + bounds.height - 25.0f * scale);
+    const Rectangle startLabel{labelX, labelY, labelWidth, 20.0f * scale};
+    DrawRectangleRec(startLabel, kSun);
+    drawCenteredText("START", {startLabel.x + startLabel.width * 0.5f, startLabel.y + startLabel.height * 0.5f},
+                     10.0f * scale, kInk);
+}
+
 void drawRaceProgress(const RaceHudViewModel& viewModel, const Metrics& m) {
     const float width = 440.0f * m.scale;
     const Rectangle panel{(m.width - width) * 0.5f, m.margin, width, 52.0f * m.scale};
@@ -424,6 +512,27 @@ void DrawSelectionHud(const SelectionHudViewModel& viewModel) {
                              selected ? kInkSoft : kPaperMuted);
             x += optionWidth + optionGap;
         }
+    } else if (stage == 2) {
+        const std::string name = !viewModel.mapName.empty() ? viewModel.mapName : viewModel.itemName;
+        drawFittedText(name.empty() ? "SELECT COURSE" : name,
+                       {showcase.x + 28.0f * m.scale, showcase.y + 68.0f * m.scale,
+                        showcase.width - 56.0f * m.scale, 48.0f * m.scale},
+                       34.0f * m.scale, 20.0f * m.scale, kInk);
+        if (!viewModel.itemSubtitle.empty()) {
+            drawFittedText(viewModel.itemSubtitle,
+                           {showcase.x + 30.0f * m.scale, showcase.y + 112.0f * m.scale,
+                            showcase.width - 60.0f * m.scale, 26.0f * m.scale},
+                           15.0f * m.scale, 11.0f * m.scale, kCoral);
+        }
+
+        const Rectangle schematic{showcase.x + 28.0f * m.scale, showcase.y + 150.0f * m.scale,
+                                  showcase.width - 56.0f * m.scale, showcase.height - 206.0f * m.scale};
+        drawCourseSchematic(viewModel, schematic, m.scale);
+
+        const float arrowY = showcase.y + showcase.height - 29.0f * m.scale;
+        drawCenteredText("<", {showcase.x + 39.0f * m.scale, arrowY}, 25.0f * m.scale, kSea);
+        drawCenteredText("SELECT COURSE", {showcase.x + showcase.width * 0.5f, arrowY}, 11.0f * m.scale, kInkSoft);
+        drawCenteredText(">", {showcase.x + showcase.width - 39.0f * m.scale, arrowY}, 25.0f * m.scale, kSea);
     } else {
         const std::string name = stage == 2 && !viewModel.mapName.empty() ? viewModel.mapName : viewModel.itemName;
         drawFittedText(name.empty() ? kStageNames[static_cast<size_t>(stage)] : name,

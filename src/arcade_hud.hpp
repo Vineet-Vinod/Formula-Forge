@@ -7,6 +7,7 @@ namespace harbor::ui {
 
 inline constexpr int kMaxHudRacers = 8;
 inline constexpr int kMaxResultRacers = 10;
+inline constexpr int kMaxCoursePolylinePoints = 192;
 
 // Call after InitWindow and before the first frame. The default raylib font is
 // retained as a fallback when the bundled face cannot be loaded.
@@ -68,6 +69,10 @@ struct SelectionHudViewModel {
     std::string backstory;
     std::string mapName;
     std::string mapDescription;
+    // Normalized x/y pairs. The first point marks the start and the circuit is
+    // closed by the HUD when at least three points are supplied.
+    std::array<float, kMaxCoursePolylinePoints * 2> coursePolyline{};
+    int coursePolylinePointCount = 0;
     VehicleStatsViewModel stats;
     int itemIndex = 0;
     int itemCount = 1;
