@@ -48,8 +48,8 @@
   "runtime_geometry": {
     "centerline_samples": 1024,
     "mesh_objects": 19,
-    "vertices": 31995,
-    "triangles": 37086,
+    "vertices": 41211,
+    "triangles": 46814,
     "materials": 26
   },
   "measured_bounds_blender": {
