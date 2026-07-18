@@ -69,6 +69,10 @@ bool isMetricCircuit(TrackLayoutId layout) {
     return layout != TrackLayoutId::SunsetCove;
 }
 
+float speedKphPerSimulationUnit(TrackLayoutId layout) {
+    return isMetricCircuit(layout) ? 3.6f / kSpaSimulationUnitsPerMeter : 1.22f;
+}
+
 const TrackCatalogEntry* catalogEntryForLayout(TrackLayoutId layout) {
     switch (layout) {
         case TrackLayoutId::Suzuka:
@@ -2238,7 +2242,7 @@ public:
         const Kart3D& player = karts_[0];
         const TrackPoint3D point = track_.sample(player.progress);
         const float unitsPerMeter = isMetricCircuit(track_.layout()) ? kSpaSimulationUnitsPerMeter : 1.0f;
-        const float speedKphScale = isMetricCircuit(track_.layout()) ? 3.6f / kSpaSimulationUnitsPerMeter : 1.22f;
+        const float speedKphScale = speedKphPerSimulationUnit(track_.layout());
         const float speedKph = std::max(0.0f, player.telemetry.forwardSpeed) * speedKphScale;
         const float roadClearance = (roadCenterLimit(player, point) - std::abs(player.lane)) / unitsPerMeter;
         const float barrierClearance = (hardBoundaryLaneLimit(player, point) - std::abs(player.lane)) / unitsPerMeter;
@@ -2453,6 +2457,16 @@ public:
             }
         }
         const float terminalSpeedKph = straightLine.forwardSpeed / kSpaSimulationUnitsPerMeter * 3.6f;
+        track_.rebuild(TrackLayoutId::SunsetCove);
+        const ArcadeVehicleConfig sunsetTuning = selectedTrackTuning(specs_[0]);
+        ArcadeVehicleState sunsetStraightLine;
+        sunsetStraightLine.grounded = true;
+        for (int frame = 0; frame < kStraightLineFrames; ++frame) {
+            stepArcadeVehicle(sunsetStraightLine, sunsetTuning, fullThrottle, road, kFixedDt);
+        }
+        const float sunsetTerminalSpeedKph = sunsetStraightLine.forwardSpeed *
+                                             speedKphPerSimulationUnit(TrackLayoutId::SunsetCove);
+        track_.rebuild(TrackLayoutId::Monza);
         const float mechanicalGripG = formulaTuning.lateralGripAcceleration /
                                       (kSpaSimulationUnitsPerMeter * kStandardGravityMetersPerSecondSquared);
         const float highSpeedGripG = mechanicalGripG * (1.0f + formulaTuning.downforceGripGain);
@@ -2602,6 +2616,7 @@ public:
                                       attack.driftFrames == 0 && attack.maxSlip < 0.14f &&
                                       attack.score > brake.score;
         const bool formulaPerformance = terminalSpeedKph >= 305.0f && terminalSpeedKph <= 330.0f &&
+                                        sunsetTerminalSpeedKph >= 305.0f && sunsetTerminalSpeedKph <= 330.0f &&
                                         zeroToOneHundredSeconds >= 2.5f && zeroToOneHundredSeconds <= 3.0f &&
                                         zeroToTwoHundredSeconds >= 5.5f && zeroToTwoHundredSeconds <= 7.0f;
         const bool formulaGrip = mechanicalGripG >= 1.6f && mechanicalGripG <= 2.0f &&
@@ -2662,6 +2677,7 @@ public:
                   << " measured_lap_s=" << measuredLapSeconds
                   << " formula_cornering=" << formulaCornering
                   << " terminal_kph=" << terminalSpeedKph
+                  << " sunset_terminal_kph=" << sunsetTerminalSpeedKph
                   << " zero_to_100_s=" << zeroToOneHundredSeconds
                   << " zero_to_200_s=" << zeroToTwoHundredSeconds
                   << " mechanical_grip_g=" << mechanicalGripG
@@ -3521,45 +3537,45 @@ private:
     int activeKartCount() const { return isTimeTrial() ? 1 : kKartCount; }
     ArcadeVehicleConfig selectedTrackTuning(const KartSpec3D& spec) const {
         ArcadeVehicleConfig tuning = tuningForSpec(spec);
-        if (isMetricCircuit(track_.layout())) {
-            const float targetTopSpeedKph = std::clamp(318.0f + (spec.maxSpeed - 198.0f) * 0.55f, 305.0f, 330.0f);
-            const float accelerationScale = std::pow(spec.accel / 258.0f, 0.22f);
-            const float brakingScale = std::pow(spec.brake / 214.0f, 0.25f);
-            tuning.maxForwardSpeed = targetTopSpeedKph / 3.6f * kSpaSimulationUnitsPerMeter;
-            tuning.engineAcceleration = 200.0f * accelerationScale;
-            tuning.launchAccelerationBonus = 5.0f * accelerationScale;
-            tuning.brakeDeceleration = 4.65f * kStandardGravityMetersPerSecondSquared *
-                                       kSpaSimulationUnitsPerMeter * brakingScale;
-            tuning.brakeLowSpeedScale = 0.28f;
-            tuning.brakeFullEffectSpeed = 0.72f;
-            tuning.brakeSpeedCurveExponent = 2.0f;
-            tuning.rollingResistance = 3.2f;
-            tuning.aerodynamicDrag = 0.0000185f;
-            tuning.maxSteerLowSpeed = 0.32f;
-            tuning.maxSteerHighSpeed = 0.075f;
-            tuning.maxYawRateLowSpeed = 1.55f;
-            tuning.maxYawRateHighSpeed = 0.42f;
-            tuning.brakeLoadResponse = 20.0f;
-            tuning.brakeReleaseResponse = 24.0f;
-            tuning.brakeOversteerMinSpeed = tuning.maxForwardSpeed * 0.18f;
-            tuning.brakeOversteerFullSpeed = tuning.maxForwardSpeed;
-            tuning.brakeOversteerSteerThreshold = 0.18f;
-            tuning.brakeOversteerYawGain = 0.18f;
-            tuning.brakeYawLimitScale = 1.03f;
-            tuning.brakeOversteerSlip = 0.035f;
-            tuning.brakeRearGripScale = 0.86f;
-            tuning.brakeSlipResponse = 14.0f;
-            tuning.brakeSlipRecovery = 24.0f;
-            tuning.throttleCatchStrength = 0.0f;
-            tuning.accelerationGripUsageScale = 0.82f;
-            tuning.lateralGripAcceleration = 1.78f * kStandardGravityMetersPerSecondSquared *
-                                             kSpaSimulationUnitsPerMeter * spec.grip;
-            tuning.downforceGripGain = 1.20f;
-            tuning.tireLimitedYawScale = 0.88f;
-            tuning.brakingLateralGripUsage = 0.68f;
-            tuning.steerResponse *= 0.90f;
-            tuning.steerReturnResponse *= 1.08f;
-        }
+        const float kphPerUnit = speedKphPerSimulationUnit(track_.layout());
+        const float metricKphPerUnit = 3.6f / kSpaSimulationUnitsPerMeter;
+        const float targetTopSpeedKph = std::clamp(318.0f + (spec.maxSpeed - 198.0f) * 0.55f, 305.0f, 330.0f);
+        const float accelerationScale = std::pow(spec.accel / 258.0f, 0.22f);
+        const float brakingScale = std::pow(spec.brake / 214.0f, 0.25f);
+        tuning.maxForwardSpeed = targetTopSpeedKph / kphPerUnit;
+        tuning.engineAcceleration = 200.0f * metricKphPerUnit / kphPerUnit * accelerationScale;
+        tuning.launchAccelerationBonus = 5.0f * metricKphPerUnit / kphPerUnit * accelerationScale;
+        tuning.brakeDeceleration = 4.65f * kStandardGravityMetersPerSecondSquared * 3.6f /
+                                   kphPerUnit * brakingScale;
+        tuning.brakeLowSpeedScale = 0.28f;
+        tuning.brakeFullEffectSpeed = 0.72f;
+        tuning.brakeSpeedCurveExponent = 2.0f;
+        tuning.rollingResistance = 3.2f * metricKphPerUnit / kphPerUnit;
+        tuning.aerodynamicDrag = 0.0000185f * kphPerUnit / metricKphPerUnit;
+        tuning.maxSteerLowSpeed = 0.32f;
+        tuning.maxSteerHighSpeed = 0.075f;
+        tuning.maxYawRateLowSpeed = 1.55f;
+        tuning.maxYawRateHighSpeed = 0.42f;
+        tuning.brakeLoadResponse = 20.0f;
+        tuning.brakeReleaseResponse = 24.0f;
+        tuning.brakeOversteerMinSpeed = tuning.maxForwardSpeed * 0.18f;
+        tuning.brakeOversteerFullSpeed = tuning.maxForwardSpeed;
+        tuning.brakeOversteerSteerThreshold = 0.18f;
+        tuning.brakeOversteerYawGain = 0.18f;
+        tuning.brakeYawLimitScale = 1.03f;
+        tuning.brakeOversteerSlip = 0.035f;
+        tuning.brakeRearGripScale = 0.86f;
+        tuning.brakeSlipResponse = 14.0f;
+        tuning.brakeSlipRecovery = 24.0f;
+        tuning.throttleCatchStrength = 0.0f;
+        tuning.accelerationGripUsageScale = 0.82f;
+        tuning.lateralGripAcceleration = 1.78f * kStandardGravityMetersPerSecondSquared * 3.6f /
+                                         kphPerUnit * spec.grip;
+        tuning.downforceGripGain = 1.20f;
+        tuning.tireLimitedYawScale = 0.88f;
+        tuning.brakingLateralGripUsage = 0.68f;
+        tuning.steerResponse *= 0.90f;
+        tuning.steerReturnResponse *= 1.08f;
         return tuning;
     }
     std::string sessionEventName() const {
@@ -5531,9 +5547,7 @@ private:
             harbor::ui::RaceHudViewModel view;
             view.vehicleName = player.spec.name;
             view.driverName = player.racer;
-            const float speedKphScale = isMetricCircuit(track_.layout())
-                                            ? 3.6f / kSpaSimulationUnitsPerMeter
-                                            : 1.22f;
+            const float speedKphScale = speedKphPerSimulationUnit(track_.layout());
             view.speedKph = static_cast<int>(std::max(0.0f, player.telemetry.forwardSpeed) * speedKphScale + 0.5f);
             const float gearRatio = std::clamp(std::max(0.0f, player.telemetry.forwardSpeed) /
                                                    std::max(1.0f, player.tuning.maxForwardSpeed),
