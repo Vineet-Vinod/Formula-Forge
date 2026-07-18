@@ -197,26 +197,44 @@ ArcadeVehicleTelemetry stepSingle(ArcadeVehicleState& state,
     float lateralResponse = config.lateralGripResponse;
     float lateralAccelerationLimit = config.lateralGripAcceleration * surface.grip;
 
+    const float brakeFullSpeed = config.brakeOversteerFullSpeed > config.brakeOversteerMinSpeed
+                                     ? config.brakeOversteerFullSpeed
+                                     : config.maxForwardSpeed;
     const float brakeSpeed = smoothstep((absForwardSpeed - config.brakeOversteerMinSpeed) /
-                                        std::max(1.0f, config.maxForwardSpeed - config.brakeOversteerMinSpeed));
+                                        std::max(1.0f, brakeFullSpeed - config.brakeOversteerMinSpeed));
     const float brakeSteer = smoothstep((std::abs(state.steerSmoothed) - config.brakeOversteerSteerThreshold) /
                                         std::max(0.01f, 1.0f - config.brakeOversteerSteerThreshold));
-    const float brakeOversteer = state.grounded ? state.brakeLoad * brakeSpeed * brakeSteer : 0.0f;
+    const float liveBrakeLoad = config.throttleCatchStrength > 0.0f
+                                    ? (control.brake > 0.01f ? control.brake : 0.0f)
+                                    : state.brakeLoad;
+    const float brakeOversteer = state.grounded ? liveBrakeLoad * brakeSpeed * brakeSteer : 0.0f;
+    const float catchSlideSeverity = smoothstep((std::max(std::abs(state.brakeSlip), std::abs(state.slipAngle)) - 0.04f) / 0.20f);
+    const float throttleCatch = state.grounded && state.driftPhase == ArcadeDriftPhase::Grip && control.brake < 0.05f
+                                    ? config.throttleCatchStrength * smoothstep(control.throttle) * catchSlideSeverity
+                                    : 0.0f;
     const float signedBrakeSlip = -state.steerSmoothed * config.brakeOversteerSlip * brakeOversteer;
-    const float brakeSlipResponse = std::abs(signedBrakeSlip) > std::abs(state.brakeSlip) ? config.brakeSlipResponse
-                                                                                          : config.brakeSlipRecovery;
+    const float brakeSlipResponse = std::abs(signedBrakeSlip) > std::abs(state.brakeSlip)
+                                        ? config.brakeSlipResponse
+                                        : lerp(config.brakeSlipRecovery, config.throttleCatchSlipRecovery, throttleCatch);
     state.brakeSlip = expApproach(state.brakeSlip, signedBrakeSlip, brakeSlipResponse, dt);
 
     if (state.driftPhase == ArcadeDriftPhase::Grip) {
         const float brakeSlide = std::clamp(std::abs(state.brakeSlip) / std::max(0.01f, config.brakeOversteerSlip), 0.0f, 1.0f);
         const float brakeSlideDirection = state.brakeSlip < 0.0f ? 1.0f : -1.0f;
-        targetSlip = state.brakeSlip;
-        targetYawRate += brakeSlideDirection * config.brakeOversteerYawGain * brakeSlide * brakeSpeed;
+        targetSlip = state.brakeSlip * (1.0f - throttleCatch * 0.95f);
+        if (liveBrakeLoad > 0.0f) {
+            targetYawRate += brakeSlideDirection * config.brakeOversteerYawGain * brakeSlide * brakeSpeed;
+        }
         targetYawRate = std::clamp(targetYawRate, -yawLimit * config.brakeYawLimitScale,
                                    yawLimit * config.brakeYawLimitScale);
+        const float catchYawRate = std::clamp(kinematicYaw, -yawLimit, yawLimit) * (1.0f - throttleCatch * 0.78f);
+        targetYawRate = lerp(targetYawRate, catchYawRate, throttleCatch * 0.96f);
         lateralResponse = lerp(config.lateralGripResponse, config.driftLateralResponse, brakeSlide * 0.86f);
-        const float rearGripFalloff = std::max(config.brakeRearGripScale, std::pow(1.0f - brakeSlide, 3.0f));
+        lateralResponse = lerp(lateralResponse, config.throttleCatchLateralResponse, throttleCatch);
+        const float rearGripFalloff = lerp(std::max(config.brakeRearGripScale, std::pow(1.0f - brakeSlide, 3.0f)),
+                                           1.0f, throttleCatch);
         lateralAccelerationLimit *= rearGripFalloff;
+        yawResponse = std::max(yawResponse, config.throttleCatchYawResponse * throttleCatch);
     }
 
     if (state.driftPhase == ArcadeDriftPhase::Entry || state.driftPhase == ArcadeDriftPhase::Sustain) {
@@ -260,7 +278,10 @@ ArcadeVehicleTelemetry stepSingle(ArcadeVehicleState& state,
         state.brakeHold = 0.0f;
     }
 
-    const float speedForTorque = std::clamp(safeRatio(std::max(0.0f, forwardSpeed), config.maxForwardSpeed), 0.0f, 1.25f);
+    const float torqueReferenceSpeed = config.throttleCatchStrength > 0.0f && forwardSpeed > -2.0f
+                                           ? std::max(std::max(0.0f, forwardSpeed), length(state.vel) * 0.90f)
+                                           : std::max(0.0f, forwardSpeed);
+    const float speedForTorque = std::clamp(safeRatio(torqueReferenceSpeed, config.maxForwardSpeed), 0.0f, 1.25f);
     const float torqueCurve = std::clamp(1.0f - 0.78f * smoothstep(speedForTorque), 0.0f, 1.0f);
     const float launchCurve = 1.0f - smoothstep(speedForTorque / 0.42f);
     if (control.throttle > 0.0f) {
@@ -284,6 +305,9 @@ ArcadeVehicleTelemetry stepSingle(ArcadeVehicleState& state,
 
     if (!state.grounded) {
         driveAcceleration *= config.airDriveScale;
+    }
+    if (driveAcceleration > 0.0f && throttleCatch > 0.0f) {
+        driveAcceleration *= lerp(1.0f, config.throttleCatchDriveScale, throttleCatch);
     }
 
     const bool boostActive = state.boostTimer > 0.0f;
@@ -318,7 +342,12 @@ ArcadeVehicleTelemetry stepSingle(ArcadeVehicleState& state,
     // existing velocity around the turn. The correction term then controls
     // sideslip without ever rotating velocity as a shortcut.
     float lateralAcceleration = state.yawRate * forwardSpeed + (desiredLateralSpeed - lateralSpeed) * lateralResponse;
-    const float longitudinalUsage = std::clamp(std::abs(driveAcceleration) / std::max(1.0f, config.brakeDeceleration), 0.0f, 1.0f);
+    const float gripDriveAcceleration = driveAcceleration > 0.0f
+                                            ? driveAcceleration * config.accelerationGripUsageScale
+                                            : driveAcceleration;
+    const float longitudinalUsage = std::clamp(std::abs(gripDriveAcceleration) /
+                                                   std::max(1.0f, config.brakeDeceleration),
+                                               0.0f, 1.0f);
     const float combinedGripScale = std::sqrt(std::max(0.36f, 1.0f - longitudinalUsage * longitudinalUsage * 0.64f));
     lateralAccelerationLimit *= combinedGripScale;
     lateralAcceleration = std::clamp(lateralAcceleration, -lateralAccelerationLimit, lateralAccelerationLimit);

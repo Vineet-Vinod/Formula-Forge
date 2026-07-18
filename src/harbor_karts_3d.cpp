@@ -2541,58 +2541,114 @@ public:
         const float fullLockHeading = std::abs(fullLock.heading);
 
         ArcadeVehicleState braked = movingKart(0.72f);
-        ArcadeVehicleState reference = braked;
         const float initialSpeed = length(braked.vel);
         ArcadeVehicleControl brakeControl;
         brakeControl.steer = 0.70f;
-        brakeControl.throttle = 0.35f;
-        brakeControl.brake = 0.75f;
-        ArcadeVehicleControl referenceControl = brakeControl;
-        referenceControl.brake = 0.0f;
+        brakeControl.brake = 1.0f;
         float peakBrakeSlip = 0.0f;
-        float maxRelativeLateral = 0.0f;
-        for (int frame = 0; frame < static_cast<int>(0.55f / kFixedDt); ++frame) {
+        float peakBrakeYaw = 0.0f;
+        for (int frame = 0; frame < static_cast<int>(0.40f / kFixedDt); ++frame) {
             stepArcadeVehicle(braked, tuning, brakeControl, road, kFixedDt);
-            stepArcadeVehicle(reference, tuning, referenceControl, road, kFixedDt);
             peakBrakeSlip = std::max(peakBrakeSlip, std::abs(braked.slipAngle));
-            maxRelativeLateral = std::max(maxRelativeLateral, std::abs(braked.pos.y - reference.pos.y));
+            peakBrakeYaw = std::max(peakBrakeYaw, std::abs(braked.yawRate));
         }
-        const float releaseHeadingDelta = std::abs(wrapAngle(braked.heading - reference.heading));
+        const float brakeHeadingRotation = std::abs(braked.heading);
         const float releaseSpeedRatio = length(braked.vel) / initialSpeed;
 
-        ArcadeVehicleControl countersteer;
-        countersteer.steer = -0.18f;
-        countersteer.throttle = 0.50f;
-        for (int frame = 0; frame < static_cast<int>(0.45f / kFixedDt); ++frame) {
-            stepArcadeVehicle(braked, tuning, countersteer, road, kFixedDt);
-            stepArcadeVehicle(reference, tuning, countersteer, road, kFixedDt);
-            peakBrakeSlip = std::max(peakBrakeSlip, std::abs(braked.slipAngle));
-            maxRelativeLateral = std::max(maxRelativeLateral, std::abs(braked.pos.y - reference.pos.y));
-        }
-        countersteer.steer = 0.0f;
-        for (int frame = 0; frame < static_cast<int>(0.70f / kFixedDt); ++frame) {
-            stepArcadeVehicle(braked, tuning, countersteer, road, kFixedDt);
-            stepArcadeVehicle(reference, tuning, countersteer, road, kFixedDt);
-            maxRelativeLateral = std::max(maxRelativeLateral, std::abs(braked.pos.y - reference.pos.y));
+        std::array<float, 3> brakeRotation{};
+        constexpr std::array<float, 3> kBrakeLevels = {0.25f, 0.60f, 1.0f};
+        for (size_t level = 0; level < kBrakeLevels.size(); ++level) {
+            ArcadeVehicleState modulation = movingKart(0.72f);
+            ArcadeVehicleControl modulationControl;
+            modulationControl.steer = 0.70f;
+            modulationControl.brake = kBrakeLevels[level];
+            for (int frame = 0; frame < static_cast<int>(0.30f / kFixedDt); ++frame) {
+                stepArcadeVehicle(modulation, tuning, modulationControl, road, kFixedDt);
+            }
+            brakeRotation[level] = std::abs(modulation.heading);
         }
 
-        const float relativeLateralMeters = maxRelativeLateral / simulationUnits;
+        ArcadeVehicleState powered = braked;
+        ArcadeVehicleState coast = braked;
+        ArcadeVehicleState aligned = braked;
+        const float releaseSpeed = length(braked.vel);
+        aligned.heading = angleOf(aligned.vel);
+        aligned.yawRate = 0.0f;
+        aligned.brakeSlip = 0.0f;
+        aligned.slipAngle = 0.0f;
+        aligned.steerSmoothed = 0.0f;
+        const Vec2 releasePos = braked.pos;
+        const Vec2 releaseLeft{-std::sin(braked.heading), std::cos(braked.heading)};
+        ArcadeVehicleControl powerControl;
+        powerControl.steer = 0.20f;
+        powerControl.throttle = 1.0f;
+        ArcadeVehicleControl coastControl = powerControl;
+        coastControl.throttle = 0.0f;
+        ArcadeVehicleControl alignedControl;
+        alignedControl.throttle = 1.0f;
+        float poweredSpeedAtPointTwo = releaseSpeed;
+        float alignedSpeedAtPointTwo = releaseSpeed;
+        for (int frame = 0; frame < static_cast<int>(0.45f / kFixedDt); ++frame) {
+            stepArcadeVehicle(powered, tuning, powerControl, road, kFixedDt);
+            stepArcadeVehicle(coast, tuning, coastControl, road, kFixedDt);
+            stepArcadeVehicle(aligned, tuning, alignedControl, road, kFixedDt);
+            if (frame == static_cast<int>(0.20f / kFixedDt) - 1) {
+                poweredSpeedAtPointTwo = length(powered.vel);
+                alignedSpeedAtPointTwo = length(aligned.vel);
+            }
+        }
+
+        const float poweredLateralMeters = std::abs(dot(powered.pos - releasePos, releaseLeft)) / simulationUnits;
+        const float coastLateralMeters = std::abs(dot(coast.pos - releasePos, releaseLeft)) / simulationUnits;
+        const float poweredSeparationMeters = length(powered.pos - coast.pos) / simulationUnits;
+        const float poweredAdditionalRotation = std::abs(wrapAngle(powered.heading - braked.heading));
+        const float poweredSpeedGainMetersPerSecond = (poweredSpeedAtPointTwo - releaseSpeed) / simulationUnits;
+        const float alignedSpeedGainMetersPerSecond = (alignedSpeedAtPointTwo - releaseSpeed) / simulationUnits;
+        const float catchSlip = std::abs(powered.slipAngle);
+        const float catchYaw = std::abs(powered.yawRate);
+        const float coastSlip = std::abs(coast.slipAngle);
+        const float coastYaw = std::abs(coast.yawRate);
+        const float poweredCatchSpeed = length(powered.vel);
+        const float coastCatchSpeed = length(coast.vel);
+
+        powerControl.steer = 0.0f;
+        powerControl.throttle = 0.80f;
+        for (int frame = 0; frame < static_cast<int>(0.55f / kFixedDt); ++frame) {
+            stepArcadeVehicle(powered, tuning, powerControl, road, kFixedDt);
+        }
+
         const float renderedLapLength = track_.totalLength() * trackProgressRenderScale(track_.layout());
         const float expectedRenderedLapLength = kSpaTargetLength * kSpaSimulationUnitsPerMeter * kRenderScale;
         const bool renderedScaleValid = std::abs(renderedLapLength - expectedRenderedLapLength) < 0.5f;
         const bool steeringProgressive = gentleLateralMeters < 1.5f && fullLockHeading > 0.25f;
-        const bool brakeControllable = peakBrakeSlip > 0.03f && peakBrakeSlip < 0.10f &&
-                                       releaseHeadingDelta > 0.01f && releaseHeadingDelta < 0.08f &&
-                                       relativeLateralMeters < 1.6f && releaseSpeedRatio > 0.62f &&
-                                       std::abs(braked.slipAngle) < 0.02f && braked.brakeLoad < 0.01f;
-        const bool ok = renderedScaleValid && steeringProgressive && brakeControllable;
+        const bool brakeRotationStrong = peakBrakeSlip > 0.55f && peakBrakeSlip < 0.95f && peakBrakeYaw > 1.50f &&
+                                         brakeHeadingRotation > 0.32f && brakeHeadingRotation < 0.80f &&
+                                         releaseSpeedRatio > 0.45f && releaseSpeedRatio < 0.85f;
+        const bool brakeModulates = brakeRotation[0] < brakeRotation[1] && brakeRotation[1] < brakeRotation[2];
+        const bool throttleCatches = catchSlip <= coastSlip + 0.02f && catchSlip <= peakBrakeSlip * 0.60f &&
+                                     catchYaw <= coastYaw + 0.08f && catchYaw <= peakBrakeYaw * 0.30f &&
+                                     poweredLateralMeters <= coastLateralMeters + 0.50f && poweredLateralMeters < 5.0f &&
+                                     poweredSeparationMeters < 2.0f && poweredCatchSpeed >= coastCatchSpeed &&
+                                     poweredAdditionalRotation < 0.35f && poweredSpeedGainMetersPerSecond > -4.0f &&
+                                     poweredSpeedGainMetersPerSecond <= alignedSpeedGainMetersPerSecond + 0.50f &&
+                                     std::abs(powered.slipAngle) < 0.06f && std::abs(powered.yawRate) < 0.12f &&
+                                     powered.brakeLoad < 0.01f;
+        const bool ok = renderedScaleValid && steeringProgressive && brakeRotationStrong && brakeModulates && throttleCatches;
         std::cout << "spa-control-audit rendered_lap=" << renderedLapLength
                   << " gentle_lateral_m=" << gentleLateralMeters << " full_lock_heading=" << fullLockHeading
-                  << " brake_peak_slip=" << peakBrakeSlip << " brake_heading_delta=" << releaseHeadingDelta
-                  << " brake_relative_lateral_m=" << relativeLateralMeters << " brake_speed_ratio=" << releaseSpeedRatio
-                  << " recovery_slip=" << std::abs(braked.slipAngle) << " recovery_load=" << braked.brakeLoad
+                  << " brake_peak_slip=" << peakBrakeSlip << " brake_peak_yaw=" << peakBrakeYaw
+                  << " brake_heading=" << brakeHeadingRotation << " brake_speed_ratio=" << releaseSpeedRatio
+                  << " brake_modulation=" << brakeRotation[0] << "," << brakeRotation[1] << "," << brakeRotation[2]
+                  << " catch_slip=" << catchSlip << "/" << coastSlip << " catch_yaw=" << catchYaw << "/" << coastYaw
+                  << " catch_lateral_m=" << poweredLateralMeters << "/" << coastLateralMeters
+                  << " catch_separation_m=" << poweredSeparationMeters << " catch_rotation=" << poweredAdditionalRotation
+                  << " catch_speed=" << poweredCatchSpeed << "/" << coastCatchSpeed
+                  << " launch_gain_mps=" << poweredSpeedGainMetersPerSecond << "/" << alignedSpeedGainMetersPerSecond
+                  << " recovery_slip=" << std::abs(powered.slipAngle) << " recovery_yaw=" << std::abs(powered.yawRate)
+                  << " recovery_load=" << powered.brakeLoad
                   << " rendered_scale=" << renderedScaleValid << " steering=" << steeringProgressive
-                  << " braking=" << brakeControllable << " ok=" << ok << "\n";
+                  << " brake_rotation=" << brakeRotationStrong << " brake_modulates=" << brakeModulates
+                  << " throttle_catch=" << throttleCatches << " ok=" << ok << "\n";
         return ok;
     }
 
@@ -2718,9 +2774,9 @@ private:
         ArcadeVehicleConfig tuning = tuningForSpec(spec);
         if (track_.layout() == TrackLayoutId::SpaCoast) {
             tuning.maxForwardSpeed *= kSpaVehiclePaceScale;
-            tuning.engineAcceleration *= 1.35f;
-            tuning.launchAccelerationBonus *= 1.35f;
-            tuning.brakeDeceleration *= 0.68f;
+            tuning.engineAcceleration *= 0.60f;
+            tuning.launchAccelerationBonus *= 0.55f;
+            tuning.brakeDeceleration *= 0.82f;
             tuning.boostAcceleration *= 1.35f;
             // Angular response is dimensionless. Scaling it by the track's
             // metres-to-simulation ratio made half-stick input nearly inert.
@@ -2730,14 +2786,23 @@ private:
             tuning.maxYawRateHighSpeed *= 0.22f;
             tuning.driftYawBase *= 0.56f;
             tuning.driftYawSpeedGain *= 0.56f;
-            tuning.brakeLoadResponse = 10.0f;
+            tuning.brakeLoadResponse = 20.0f;
             tuning.brakeReleaseResponse = 18.0f;
-            tuning.brakeOversteerYawGain *= 0.18f;
-            tuning.brakeYawLimitScale = 1.05f;
-            tuning.brakeOversteerSlip *= 0.55f;
-            tuning.brakeRearGripScale = std::max(tuning.brakeRearGripScale, 0.75f);
-            tuning.brakeSlipResponse = 9.0f;
-            tuning.brakeSlipRecovery = 18.0f;
+            tuning.brakeOversteerMinSpeed = 85.0f;
+            tuning.brakeOversteerFullSpeed = 310.0f;
+            tuning.brakeOversteerSteerThreshold = 0.04f;
+            tuning.brakeOversteerYawGain = 3.20f;
+            tuning.brakeYawLimitScale = 4.80f;
+            tuning.brakeOversteerSlip = 0.68f;
+            tuning.brakeRearGripScale = 0.12f;
+            tuning.brakeSlipResponse = 20.0f;
+            tuning.brakeSlipRecovery = 22.0f;
+            tuning.throttleCatchStrength = 1.0f;
+            tuning.throttleCatchSlipRecovery = 40.0f;
+            tuning.throttleCatchYawResponse = 30.0f;
+            tuning.throttleCatchLateralResponse = 40.0f;
+            tuning.throttleCatchDriveScale = 0.85f;
+            tuning.accelerationGripUsageScale = 0.10f;
             tuning.steerResponse *= 0.78f;
             tuning.steerReturnResponse *= 1.00f;
         }
@@ -3248,7 +3313,7 @@ private:
             const bool entryDemand = kart.boostTimer <= 0.04f && !nearEdge && corner > 0.042f &&
                                      speed > 44.0f * kRacePaceScale && std::abs(input.steer) > 0.070f;
             input.drift = false;
-            if (entryDemand && kart.brakeLoad < 0.72f) {
+            if (entryDemand && track_.layout() != TrackLayoutId::SpaCoast && kart.brakeLoad < 0.72f) {
                 input.throttle = 1.0f;
                 input.brake = 1.0f;
             }
