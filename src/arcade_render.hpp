@@ -1,6 +1,7 @@
 #pragma once
 
 #include <array>
+#include <cstddef>
 #include <cstdint>
 #include <memory>
 
@@ -53,6 +54,7 @@ struct DriverVisualSpec {
     Color hair{44, 31, 24, 255};
     Color gloves{34, 42, 47, 255};
     DriverHeadwear headwearStyle = DriverHeadwear::Helmet;
+    std::uint8_t variant = 0;
 };
 
 struct BuggyVisualSpec {
@@ -113,6 +115,18 @@ struct TropicalPropState {
 BuggyVisualSpec MakeBuggyVisualSpec(BuggyBodyStyle style, Color body, Color accent);
 TropicalPropSpec MakeTropicalPropSpec(TropicalPropKind kind, std::uint32_t variant = 0);
 
+struct AuthoredAssetAuditResult {
+    int loadedCars = 0;
+    int loadedDrivers = 0;
+    int loadedTracks = 0;
+    int dimensionChecks = 0;
+    int animationChecks = 0;
+    int loadFailures = 0;
+    int clipFailures = 0;
+    int failures = 0;
+    bool ok = false;
+};
+
 class ArcadeRender {
 public:
     ArcadeRender();
@@ -128,11 +142,15 @@ public:
     bool initialize();
     void shutdown();
     bool ready() const;
+    [[nodiscard]] AuthoredAssetAuditResult auditAuthoredAssets() const;
 
     void setLighting(const DirectionalLightFog& lighting);
     // Borrowed handle for static world materials. The caller must not unload it,
     // and it becomes invalid after shutdown().
     Shader worldShader() const;
+    // Draws one complete authored world layer. A false return means callers
+    // must retain the procedural environment, road, and prop fallback.
+    bool drawAuthoredTrack(std::size_t trackIndex);
     void drawBuggy(const BuggyVisualSpec& spec, const BuggyRenderState& state);
     void drawTropicalProp(const TropicalPropSpec& spec, const TropicalPropState& state);
 

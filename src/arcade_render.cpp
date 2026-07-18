@@ -5,6 +5,8 @@
 #include <cmath>
 #include <cstddef>
 #include <cstdint>
+#include <optional>
+#include <string>
 #include <utility>
 #include <vector>
 
@@ -16,6 +18,8 @@
 #if defined(__GNUC__)
 #pragma GCC diagnostic pop
 #endif
+
+#include "glb_asset.hpp"
 
 namespace arcade_render {
 namespace {
@@ -613,6 +617,9 @@ struct ArcadeRender::Impl {
     Mesh roof{};
     Mesh boatHull{};
     Mesh shadow{};
+    std::array<std::optional<formula_buggy::assets::GlbAsset>, 4> authoredCars{};
+    std::array<std::optional<formula_buggy::assets::GlbAsset>, 6> authoredDrivers{};
+    std::array<std::optional<formula_buggy::assets::GlbAsset>, 6> authoredTracks{};
 
     int sunDirectionLoc = -1;
     int sunColorLoc = -1;
@@ -635,6 +642,173 @@ struct ArcadeRender::Impl {
         material.maps[MATERIAL_MAP_DIFFUSE].color = color;
         setUniform(glossLoc, &gloss, SHADER_UNIFORM_FLOAT);
         DrawMesh(mesh, material, transform);
+    }
+
+    void loadAuthoredAssets() {
+        static constexpr std::array<const char*, 4> kCarPaths = {
+            "assets_src/vehicles/tidebreaker/tidebreaker.glb",
+            "assets_src/vehicles/reefrunner/reefrunner.glb",
+            "assets_src/vehicles/sunskipper/sunskipper.glb",
+            "assets_src/vehicles/boardwalk/boardwalk.glb",
+        };
+        static constexpr std::array<const char*, 6> kDriverPaths = {
+            "assets_src/drivers/imani_reef/imani_reef.glb",
+            "assets_src/drivers/dax_calder/dax_calder.glb",
+            "assets_src/drivers/marina_quill/marina_quill.glb",
+            "assets_src/drivers/niko_brass/niko_brass.glb",
+            "assets_src/drivers/sol_vega/sol_vega.glb",
+            "assets_src/drivers/bea_torque/bea_torque.glb",
+        };
+        struct TrackAssetSpec {
+            const char* path;
+            float worldScale;
+            formula_buggy::assets::DimensionLimits dimensions;
+        };
+        // These scales and raw glTF bounds mirror each asset's checked-in
+        // runtime_alignment and measured_bounds_gltf_y_up metadata.
+        static constexpr std::array<TrackAssetSpec, 6> kTrackSpecs = {{
+            {"assets_src/tracks/sunset_cove/sunset_cove.glb", 0.085f,
+             {{4900.0f, 200.0f, 2520.0f}, {5070.0f, 230.0f, 2670.0f}}},
+            {"assets_src/tracks/spa/spa.glb", 1.445f,
+             {{2850.0f, 110.0f, 2000.0f}, {2970.0f, 122.0f, 2100.0f}}},
+            {"assets_src/tracks/suzuka/suzuka.glb", 1.445f,
+             {{2860.0f, 48.0f, 1640.0f}, {2990.0f, 57.0f, 1720.0f}}},
+            {"assets_src/tracks/silverstone/silverstone.glb", 1.445f,
+             {{2340.0f, 22.0f, 2070.0f}, {2440.0f, 28.0f, 2170.0f}}},
+            {"assets_src/tracks/monza/monza.glb", 1.445f,
+             {{2010.0f, 24.0f, 2350.0f}, {2110.0f, 30.0f, 2470.0f}}},
+            {"assets_src/tracks/interlagos/interlagos.glb", 1.445f,
+             {{1620.0f, 53.0f, 1510.0f}, {1700.0f, 62.0f, 1600.0f}}},
+        }};
+        formula_buggy::assets::GlbLoadOptions carOptions;
+        carOptions.dimensions = formula_buggy::assets::DimensionLimits{
+            {1.55f, 0.90f, 3.35f}, {2.25f, 1.90f, 4.55f}};
+        formula_buggy::assets::GlbLoadOptions driverOptions;
+        driverOptions.dimensions = formula_buggy::assets::DimensionLimits{
+            {0.45f, 0.80f, 0.45f}, {1.20f, 1.60f, 1.40f}};
+        for (size_t i = 0; i < kCarPaths.size(); ++i) {
+            std::string error;
+            authoredCars[i] = formula_buggy::assets::GlbAsset::load(kCarPaths[i], carOptions, &error);
+            if (!authoredCars[i] && FileExists(kCarPaths[i])) {
+                TraceLog(LOG_ERROR, "Authored car rejected: %s", error.c_str());
+            }
+        }
+        for (size_t i = 0; i < kDriverPaths.size(); ++i) {
+            std::string error;
+            authoredDrivers[i] = formula_buggy::assets::GlbAsset::load(kDriverPaths[i], driverOptions, &error);
+            if (!authoredDrivers[i] && FileExists(kDriverPaths[i])) {
+                TraceLog(LOG_ERROR, "Authored driver rejected: %s", error.c_str());
+            }
+        }
+        for (size_t i = 0; i < kTrackSpecs.size(); ++i) {
+            const TrackAssetSpec& spec = kTrackSpecs[i];
+            formula_buggy::assets::GlbLoadOptions options;
+            options.metersToWorld = spec.worldScale;
+            options.dimensions = spec.dimensions;
+            options.loadAnimations = false;
+            std::string error;
+            authoredTracks[i] = formula_buggy::assets::GlbAsset::load(spec.path, options, &error);
+            if (!authoredTracks[i] && FileExists(spec.path)) {
+                TraceLog(LOG_ERROR, "Authored track rejected: %s", error.c_str());
+            }
+        }
+    }
+
+    [[nodiscard]] AuthoredAssetAuditResult auditAuthoredAssets() const {
+        static constexpr std::array<std::string_view, 5> kExpectedClips = {
+            "idle", "accelerate", "brake", "turn_left", "turn_right"};
+        AuthoredAssetAuditResult result;
+        const auto inspect = [&](const auto& assets, int& loadedCount) {
+            for (const auto& asset : assets) {
+                if (!asset) {
+                    ++result.loadFailures;
+                    ++result.failures;
+                    continue;
+                }
+                ++loadedCount;
+                ++result.dimensionChecks;
+                ++result.animationChecks;
+                if (asset->animationCount() != static_cast<int>(kExpectedClips.size())) {
+                    ++result.clipFailures;
+                    ++result.failures;
+                }
+                for (const std::string_view clip : kExpectedClips) {
+                    ++result.animationChecks;
+                    if (asset->countAnimation(clip) != 1) {
+                        ++result.clipFailures;
+                        ++result.failures;
+                    }
+                }
+            }
+        };
+        inspect(authoredCars, result.loadedCars);
+        inspect(authoredDrivers, result.loadedDrivers);
+        for (const auto& track : authoredTracks) {
+            if (!track) {
+                ++result.loadFailures;
+                ++result.failures;
+                continue;
+            }
+            ++result.loadedTracks;
+            ++result.dimensionChecks;
+        }
+        result.ok = result.loadedCars == static_cast<int>(authoredCars.size()) &&
+                    result.loadedDrivers == static_cast<int>(authoredDrivers.size()) &&
+                    result.loadedTracks == static_cast<int>(authoredTracks.size()) &&
+                    result.failures == 0;
+        return result;
+    }
+
+    void drawAuthoredModel(const formula_buggy::assets::GlbAsset& asset, Matrix transform, float gloss = 0.12f) {
+        setUniform(glossLoc, &gloss, SHADER_UNIFORM_FLOAT);
+        const Model& model = asset.model();
+        for (int meshIndex = 0; meshIndex < model.meshCount; ++meshIndex) {
+            const int materialIndex = model.meshMaterial != nullptr ? model.meshMaterial[meshIndex] : 0;
+            Material loadedMaterial = model.materials[std::clamp(materialIndex, 0, model.materialCount - 1)];
+            loadedMaterial.shader = shader;
+            DrawMesh(model.meshes[meshIndex], loadedMaterial, childTransform(model.transform, transform));
+        }
+    }
+
+    bool drawAuthoredTrack(size_t trackIndex) {
+        if (trackIndex >= authoredTracks.size() || !authoredTracks[trackIndex]) {
+            return false;
+        }
+        const auto& track = *authoredTracks[trackIndex];
+        const float scale = track.metersToWorld();
+        drawAuthoredModel(track, MatrixScale(scale, scale, scale), 0.08f);
+        return true;
+    }
+
+    bool drawAuthoredBuggy(const BuggyVisualSpec& spec, const BuggyRenderState& state, Matrix root) {
+        const size_t carIndex = std::min(static_cast<size_t>(spec.style), authoredCars.size() - 1);
+        auto& car = authoredCars[carIndex];
+        auto& driver = authoredDrivers[spec.driver.variant % authoredDrivers.size()];
+        if (!car || !driver) {
+            return false;
+        }
+        std::string_view clip = "idle";
+        if (state.brakeAmount > 0.10f) {
+            clip = "brake";
+        } else if (state.steeringRadians < -0.06f) {
+            clip = "turn_left";
+        } else if (state.steeringRadians > 0.06f) {
+            clip = "turn_right";
+        } else if (state.speedNormalized > 0.03f) {
+            clip = "accelerate";
+        }
+        car->sampleAnimation(clip, state.visualTime, 0);
+        const Vector3 carDimensions = car->dimensionsMeters();
+        const float carScale = spec.length / std::max(0.01f, carDimensions.z);
+        const Matrix carTransform = childTransform(MatrixScale(carScale, carScale, carScale), root);
+        drawAuthoredModel(*car, carTransform);
+
+        driver->sampleAnimation(clip, state.visualTime, 0);
+        Matrix driverLocal = compose({0.0f, 1.00f * carScale, -0.10f * carScale},
+                                     {carScale, carScale, carScale},
+                                     {0.0f, 0.0f, -state.driverLean * 0.035f});
+        drawAuthoredModel(*driver, childTransform(driverLocal, root));
+        return true;
     }
 
     void drawPart(Mesh mesh, Matrix parent, Vector3 position, Vector3 scale, Color color, float gloss = 0.12f,
@@ -895,6 +1069,20 @@ struct ArcadeRender::Impl {
         Matrix shadowTransform = compose(add(shadowPosition, {0.0f, 0.018f, 0.0f}), {w * 0.73f, 1.0f, l * 0.43f},
                                           {0.0f, state.headingRadians, 0.0f});
         draw(shadow, shadowTransform, shadowColor, 0.0f);
+
+        if (drawAuthoredBuggy(spec, state, root)) {
+            drawDust(spec, state, root, bodyBase);
+            const float boost = clamp01(state.boostAmount);
+            if (boost > 0.01f) {
+                const float flameLength = h * (0.45f + boost * 0.72f);
+                for (float side : {-1.0f, 1.0f}) {
+                    drawPart(cone, root, {side * w * 0.21f, bodyBase + h * 0.28f, -l * 0.63f},
+                             {h * 0.14f, flameLength, h * 0.14f}, Color{255, 167, 42, 220}, 0.08f,
+                             {-kPi * 0.5f, 0.0f, 0.0f});
+                }
+            }
+            return;
+        }
 
         drawBox(root, {0.0f, bodyBase - h * 0.01f, 0.0f}, {w * 0.72f, h * 0.19f, l * 0.70f}, shade(spec.trim, 0.68f),
                 0.28f);
@@ -1236,6 +1424,7 @@ bool ArcadeRender::initialize() {
     impl_->roof = makeHipRoof();
     impl_->boatHull = makeBoatHull();
     impl_->shadow = makeGroundDisc(28);
+    impl_->loadAuthoredAssets();
     impl_->initialized = true;
     setLighting(DirectionalLightFog{});
     return true;
@@ -1256,12 +1445,31 @@ void ArcadeRender::shutdown() {
     }
     UnloadMaterial(impl_->material);
     impl_->material = {};
+    for (auto& car : impl_->authoredCars) {
+        car.reset();
+    }
+    for (auto& driver : impl_->authoredDrivers) {
+        driver.reset();
+    }
+    for (auto& track : impl_->authoredTracks) {
+        track.reset();
+    }
     impl_->shader = {};
     impl_->initialized = false;
 }
 
 bool ArcadeRender::ready() const {
     return impl_ && impl_->initialized;
+}
+
+AuthoredAssetAuditResult ArcadeRender::auditAuthoredAssets() const {
+    if (!ready()) {
+        AuthoredAssetAuditResult result;
+        result.loadFailures = 1;
+        result.failures = 1;
+        return result;
+    }
+    return impl_->auditAuthoredAssets();
 }
 
 void ArcadeRender::setLighting(const DirectionalLightFog& lighting) {
@@ -1289,6 +1497,10 @@ void ArcadeRender::setLighting(const DirectionalLightFog& lighting) {
 
 Shader ArcadeRender::worldShader() const {
     return ready() ? impl_->shader : Shader{};
+}
+
+bool ArcadeRender::drawAuthoredTrack(std::size_t trackIndex) {
+    return ready() && impl_->drawAuthoredTrack(trackIndex);
 }
 
 void ArcadeRender::drawBuggy(const BuggyVisualSpec& spec, const BuggyRenderState& state) {

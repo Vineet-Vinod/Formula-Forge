@@ -78,28 +78,20 @@ float trackProgressRenderScale(TrackLayoutId layout) {
     return isMetricCircuit(layout) ? kSpaSimulationUnitsPerMeter * kRenderScale : kRenderScale;
 }
 
-constexpr std::array<const char*, 10> kDriverBackstories = {
-    "A fearless island courier who knows every shortcut the tide leaves behind.",
-    "A patient mechanic who wins races by reading the sand before every turn.",
-    "A dockside strongman with a soft touch for keeping heavy buggies balanced.",
-    "A reef guide whose calm lines stay fast when the course gets crowded.",
-    "A former stunt rider who treats every dune like an invitation to fly.",
-    "A night-race specialist chasing the perfect lap from sunrise to sunset.",
-    "A cheerful pier runner who turns quick reactions into daring overtakes.",
-    "A rally navigator who traded mountain notes for the freedom of the coast.",
-    "A quiet engineer who measures grip by feel and never wastes a movement.",
-    "A surf champion bringing sharp balance and relentless focus to four wheels.",
+constexpr std::array<const char*, 6> kDriverBackstories = {
+    "A fearless reef courier whose calm focus holds up when the pack gets crowded.",
+    "A sharp crew chief who can hear a missed shift before the driver feels it.",
+    "A coastal sprint specialist who turns late braking into clean overtakes.",
+    "A precise rally navigator with an instinct for changing grip and elevation.",
+    "A bold open-face racer who attacks every apex with measured confidence.",
+    "A dockside engineer who builds strong cars and drives them even harder.",
 };
 
-constexpr std::array<const char*, 8> kCarBackstories = {
-    "The original cove buggy: forgiving, lively, and ready for any stretch of coast.",
-    "Built from a rescue runabout, with long travel suspension for rough sand.",
-    "A compact dune sprinter tuned to launch hard and hold a clean racing line.",
-    "Low, fast, and happiest sideways through the harbor's sweeping corners.",
-    "A reinforced workhorse that shrugs off traffic and charges out of slow turns.",
-    "A balanced grand tourer developed for long, fast runs beside the lagoon.",
-    "A hand-built sand rail with direct steering and a punchy mid-range engine.",
-    "Storm-tested bodywork wrapped around a bold tune for confident late braking.",
+constexpr std::array<const char*, 4> kCarBackstories = {
+    "An open-cockpit cove buggy with forgiving grip and long-travel suspension.",
+    "A roof-rack rally truck built to stay composed over rough sand and high curbs.",
+    "A compact coastal GT tuned for hard launches and fast direction changes.",
+    "A reinforced beach bruiser that trades agility for stability and strength.",
 };
 
 struct MapSpec3D {
@@ -1020,21 +1012,24 @@ void applyAttackingAiSetup(ArcadeVehicleConfig& tuning) {
     tuning.brakeSlipRecovery = 4.2f;
 }
 
-std::array<KartSpec3D, 8> makeKartSpecs() {
+std::array<KartSpec3D, 4> makeKartSpecs() {
     return {{
-        {"TIDE HOPPER", {224, 57, 56, 255}, {255, 202, 63, 255}, {82, 205, 224, 255}, 198.0f, 258.0f, 214.0f, 1.02f, 1.05f, 34.0f, 48.0f, 15.0f, 0},
-        {"REEF RUNNER", {35, 151, 211, 255}, {255, 235, 90, 255}, {111, 222, 227, 255}, 204.0f, 240.0f, 208.0f, 0.98f, 1.14f, 32.0f, 51.0f, 14.0f, 1},
-        {"DUNE FOX", {240, 139, 45, 255}, {47, 61, 76, 255}, {95, 201, 217, 255}, 190.0f, 278.0f, 222.0f, 1.09f, 1.00f, 38.0f, 46.0f, 16.0f, 2},
-        {"PIER SHARK", {61, 81, 103, 255}, {232, 67, 61, 255}, {91, 205, 217, 255}, 210.0f, 224.0f, 204.0f, 0.94f, 1.22f, 33.0f, 55.0f, 13.0f, 3},
-        {"MANGO MULE", {246, 199, 62, 255}, {30, 133, 76, 255}, {110, 210, 222, 255}, 184.0f, 292.0f, 232.0f, 1.15f, 0.96f, 41.0f, 44.0f, 18.0f, 4},
-        {"LAGOON GT", {34, 184, 143, 255}, {238, 73, 95, 255}, {151, 232, 235, 255}, 206.0f, 246.0f, 212.0f, 1.01f, 1.11f, 32.0f, 52.0f, 14.0f, 5},
-        {"TIKI RAIL", {132, 78, 44, 255}, {248, 125, 54, 255}, {98, 196, 210, 255}, 194.0f, 266.0f, 220.0f, 1.06f, 1.08f, 36.0f, 47.0f, 19.0f, 6},
-        {"STORM BUGGY", {116, 105, 175, 255}, {255, 213, 65, 255}, {101, 215, 229, 255}, 202.0f, 254.0f, 216.0f, 1.01f, 1.16f, 34.0f, 50.0f, 15.0f, 7},
+        {"TIDEBREAKER XR", {224, 57, 56, 255}, {255, 202, 63, 255}, {82, 205, 224, 255}, 198.0f, 258.0f, 214.0f, 1.02f, 1.05f, 34.0f, 48.0f, 15.0f, 0},
+        {"REEFRUNNER R4", {35, 151, 211, 255}, {255, 235, 90, 255}, {111, 222, 227, 255}, 204.0f, 240.0f, 208.0f, 0.98f, 1.14f, 32.0f, 51.0f, 14.0f, 1},
+        {"SUNSKIPPER GT", {240, 139, 45, 255}, {47, 61, 76, 255}, {95, 201, 217, 255}, 190.0f, 278.0f, 222.0f, 1.09f, 1.00f, 38.0f, 46.0f, 16.0f, 2},
+        {"BOARDWALK BRUISER", {61, 81, 103, 255}, {232, 67, 61, 255}, {91, 205, 217, 255}, 210.0f, 224.0f, 204.0f, 0.94f, 1.22f, 38.0f, 52.0f, 18.0f, 3},
     }};
 }
 
-std::array<std::string, 10> makeRacers() {
-    return {"KAI", "MAYA", "BRUNO", "LANI", "REX", "NOVA", "SKIP", "ZARA", "COBALT", "TESS"};
+std::array<std::string, 6> makeRacers() {
+    return {"IMANI REEF", "DAX CALDER", "MARINA QUILL", "NIKO BRASS", "SOL VEGA", "BEA TORQUE"};
+}
+
+std::uint8_t racerAssetVariant(std::string_view racer) {
+    static constexpr std::array<std::string_view, 6> kNames = {
+        "IMANI REEF", "DAX CALDER", "MARINA QUILL", "NIKO BRASS", "SOL VEGA", "BEA TORQUE"};
+    const auto match = std::find(kNames.begin(), kNames.end(), racer);
+    return match == kNames.end() ? 0u : static_cast<std::uint8_t>(std::distance(kNames.begin(), match));
 }
 
 uint32_t stableHash(std::string_view text) {
@@ -1863,6 +1858,10 @@ public:
         }
     }
 
+    [[nodiscard]] arcade_render::AuthoredAssetAuditResult auditAuthoredAssets() const {
+        return renderer_.auditAuthoredAssets();
+    }
+
     void update(float dt, const Input3D& input, bool hasController) {
         presentationTime_ += dt;
         if (mode_ == Mode::Loading) {
@@ -1978,14 +1977,19 @@ public:
         lighting.cameraPosition = camera_.position;
         lighting.fogStart = isMetricCircuit(track_.layout()) ? 10000.0f : 74.0f;
         lighting.fogEnd = isMetricCircuit(track_.layout()) ? 12000.0f : 235.0f;
-        lighting.exposure = 0.80f;
+        lighting.exposure = 1.0f;
         renderer_.setLighting(lighting);
         BeginMode3D(camera_);
         rlDisableBackfaceCulling();
-        drawEnvironment();
+        const bool authoredTrackDrawn = renderer_.drawAuthoredTrack(static_cast<size_t>(track_.layout()));
+        if (!authoredTrackDrawn) {
+            drawEnvironment();
+        }
         rlEnableBackfaceCulling();
-        drawTrack();
-        drawProps();
+        if (!authoredTrackDrawn) {
+            drawTrack();
+            drawProps();
+        }
         drawParticles();
         drawKarts();
         EndMode3D();
@@ -2122,6 +2126,13 @@ public:
         activateSelectedMap();
         resetRace();
         syncGaragePreview();
+    }
+
+    void showMapSelectionForCapture(int index) {
+        selectMapForCapture(index);
+        mode_ = Mode::Garage;
+        selectionStage_ = harbor::ui::SelectionStage::Map;
+        updateGarageCamera(1.0f);
     }
 
     void showResultsCapture() {
@@ -2542,7 +2553,7 @@ public:
         Kart3D light;
         Kart3D heavy;
         light.spec = specs_[1];
-        heavy.spec = specs_[4];
+        heavy.spec = specs_[3];
         const float invLight = inverseKartMass(light);
         const float invHeavy = inverseKartMass(heavy);
         const float lightResponseFirst = invLight / (invLight + invHeavy);
@@ -4450,6 +4461,7 @@ private:
             spec.driver.headwear = racerColor(kart.racer);
             spec.driver.gloves = shade(kart.spec.body, 0.48f);
             spec.driver.headwearStyle = static_cast<arcade_render::DriverHeadwear>((hash >> 4) % 4u);
+            spec.driver.variant = racerAssetVariant(kart.racer);
 
             arcade_render::BuggyRenderState state;
             state.position = lift(vehicleSurface, kTrackSurfaceLift);
@@ -4680,9 +4692,9 @@ private:
         if (mode_ == Mode::Garage) {
             const KartSpec3D& spec = specs_[static_cast<size_t>(selectedCar_)];
             static constexpr std::array<const char*, 4> kClasses = {"ALL-ROUNDER", "RALLY", "DRIFTER", "HEAVY"};
-            static constexpr std::array<const char*, 10> kDriverRoles = {
-                "ISLAND COURIER", "CREW CHIEF", "DOCKSIDE ACE", "REEF GUIDE", "STUNT RIDER",
-                "NIGHT RACER", "PIER RUNNER", "RALLY NAVIGATOR", "RACE ENGINEER", "SURF CHAMPION",
+            static constexpr std::array<const char*, 6> kDriverRoles = {
+                "REEF COURIER", "CREW CHIEF", "COASTAL SPRINTER",
+                "RALLY NAVIGATOR", "APEX HUNTER", "RACE ENGINEER",
             };
             harbor::ui::SelectionHudViewModel view;
             view.stage = selectionStage_;
@@ -4873,8 +4885,8 @@ private:
     }
 
     Track3D track_;
-    std::array<KartSpec3D, 8> specs_;
-    std::array<std::string, 10> racers_;
+    std::array<KartSpec3D, 4> specs_;
+    std::array<std::string, 6> racers_;
     std::vector<Kart3D> karts_;
     std::vector<Particle3D> particles_;
     std::unique_ptr<ArcadeRaceFlow> raceFlow_;
@@ -4963,7 +4975,8 @@ int runHarborKarts3D(int argc, char** argv) {
                   << " fixed_step_error=" << result.fixedStepPositionError << " ok=" << result.ok << "\n";
         return result.ok ? 0 : 1;
     }
-    const bool windowed = hasArg(argc, argv, "--windowed") || hasArg(argc, argv, "--smoke-render") ||
+    const bool assetAudit = hasArg(argc, argv, "--asset-audit");
+    const bool windowed = hasArg(argc, argv, "--windowed") || hasArg(argc, argv, "--smoke-render") || assetAudit ||
                           hasArg(argc, argv, "--diagnose-controller") || hasArg(argc, argv, "--handling-audit") ||
                           hasArg(argc, argv, "--race-audit") || hasArg(argc, argv, "--ai-pace-audit") ||
                           hasArg(argc, argv, "--time-trial-audit") ||
@@ -4974,7 +4987,8 @@ int runHarborKarts3D(int argc, char** argv) {
                           hasArg(argc, argv, "--capture-lap") ||
                           hasArg(argc, argv, "--capture-driven-lap") || hasArg(argc, argv, "--capture-spa-lap") ||
                           hasArg(argc, argv, "--capture-time-trial") ||
-                          hasArg(argc, argv, "--capture-section-tour") || hasArg(argc, argv, "--capture-spa-tour");
+                          hasArg(argc, argv, "--capture-section-tour") || hasArg(argc, argv, "--capture-spa-tour") ||
+                          hasArg(argc, argv, "--capture-map-gallery");
     const bool smokeRender = hasArg(argc, argv, "--smoke-render");
     const bool capturePlaytest = hasArg(argc, argv, "--capture-playtest");
     const bool captureSpaLap = hasArg(argc, argv, "--capture-spa-lap");
@@ -4982,6 +4996,7 @@ int runHarborKarts3D(int argc, char** argv) {
     const bool captureTimeTrial = hasArg(argc, argv, "--capture-time-trial");
     const bool captureSpaTour = hasArg(argc, argv, "--capture-spa-tour");
     const bool captureSectionTour = hasArg(argc, argv, "--capture-section-tour") || captureSpaTour;
+    const bool captureMapGallery = hasArg(argc, argv, "--capture-map-gallery");
     const bool diagnoseController = hasArg(argc, argv, "--diagnose-controller");
     const bool handlingAudit = hasArg(argc, argv, "--handling-audit");
     const bool raceAudit = hasArg(argc, argv, "--race-audit");
@@ -4997,7 +5012,7 @@ int runHarborKarts3D(int argc, char** argv) {
 
     SetTraceLogLevel(LOG_ERROR);
     unsigned int configFlags = FLAG_WINDOW_RESIZABLE | FLAG_MSAA_4X_HINT;
-    if (!(smokeRender || capturePlaytest || captureDrivenLap || captureTimeTrial || captureSectionTour || perfAudit)) {
+    if (!(assetAudit || smokeRender || capturePlaytest || captureDrivenLap || captureTimeTrial || captureSectionTour || perfAudit)) {
         configFlags |= FLAG_VSYNC_HINT;
     }
     SetConfigFlags(configFlags);
@@ -5019,7 +5034,7 @@ int runHarborKarts3D(int argc, char** argv) {
     }
 
     ControllerReader controller(sdlInputReady);
-    const bool automatedRun = smokeRender || capturePlaytest || captureDrivenLap || captureTimeTrial || captureSectionTour || handlingAudit || raceAudit ||
+    const bool automatedRun = assetAudit || smokeRender || capturePlaytest || captureDrivenLap || captureTimeTrial || captureSectionTour || captureMapGallery || handlingAudit || raceAudit ||
                               aiPaceAudit || timeTrialAudit || collisionAudit || spaControlAudit || terrainAudit || perfAudit || diagnoseController;
     Game3D game(!automatedRun);
     bool runtimeCleaned = false;
@@ -5036,8 +5051,21 @@ int runHarborKarts3D(int argc, char** argv) {
         CloseWindow();
         runtimeCleaned = true;
     };
-    if (capturePlaytest || captureDrivenLap || captureTimeTrial || captureSectionTour || perfAudit) {
+    if (capturePlaytest || captureDrivenLap || captureTimeTrial || captureSectionTour || captureMapGallery || perfAudit) {
         std::filesystem::create_directories(captureDir);
+    }
+    if (assetAudit) {
+        const arcade_render::AuthoredAssetAuditResult result = game.auditAuthoredAssets();
+        cleanupRuntime();
+        std::cout << "asset-audit cars=" << result.loadedCars << "/4"
+                  << " drivers=" << result.loadedDrivers << "/6"
+                  << " tracks=" << result.loadedTracks << "/6"
+                  << " dimension_checks=" << result.dimensionChecks
+                  << " animation_checks=" << result.animationChecks
+                  << " load_failures=" << result.loadFailures
+                  << " clip_failures=" << result.clipFailures
+                  << " failures=" << result.failures << " ok=" << result.ok << "\n";
+        return result.ok ? 0 : 1;
     }
     if (perfAudit) {
         if (spaPerfAudit) {
@@ -5103,6 +5131,16 @@ int runHarborKarts3D(int argc, char** argv) {
         const bool ok = game.runTerrainAudit();
         cleanupRuntime();
         return ok ? 0 : 1;
+    }
+    if (captureMapGallery) {
+        for (int mapIndex = 0; mapIndex < static_cast<int>(kMaps.size()); ++mapIndex) {
+            game.showMapSelectionForCapture(mapIndex);
+            const std::filesystem::path path = std::filesystem::path("../playtest_frames") /
+                                               TextFormat("formula_buggy_map_%02d.png", mapIndex);
+            game.render(60.0f, true, path.string().c_str());
+        }
+        cleanupRuntime();
+        return 0;
     }
     if (captureSectionTour) {
         if (captureSpaTour) {

@@ -41,6 +41,7 @@ add_executable(harbor_karts_3d
     src/arcade_race.cpp
     src/arcade_render.cpp
     src/arcade_vehicle.cpp
+    src/glb_asset.cpp
     src/harbor_karts_3d.cpp
     src/track_catalog.cpp
     src/track_renderer.cpp
@@ -64,6 +65,11 @@ if(BUILD_TESTING)
     add_test(NAME spa_geometry_audit COMMAND harbor_karts_3d --spa-audit)
     add_test(NAME track_catalog_audit COMMAND harbor_karts_3d --track-catalog-audit)
     add_test(NAME time_trial_session_audit COMMAND harbor_karts_3d --time-trial-audit --windowed)
+    add_test(NAME authored_asset_audit COMMAND harbor_karts_3d --asset-audit)
+    set_tests_properties(authored_asset_audit PROPERTIES
+        WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+        ENVIRONMENT "SDL_VIDEODRIVER=offscreen"
+    )
 endif()
 
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
