@@ -436,7 +436,6 @@ def make_safety_barriers(samples, half_widths, materials, parent, detail_scale):
     grounding = []
     for side in (-1, 1):
         wall_side_start = len(wall_vertices)
-        fence_side_start = len(fence_vertices)
         for index, point in enumerate(samples):
             _, _, normal = track_frame(samples, index)
             lateral = half_widths[index] + wall_offset
@@ -452,13 +451,6 @@ def make_safety_barriers(samples, half_widths, materials, parent, detail_scale):
                                    point[1] + normal[1] * inner, base_z + wall_height),
                                   (point[0] + normal[0] * outer,
                                    point[1] + normal[1] * outer, base_z + wall_height)))
-            fence_lateral = side * (lateral + wall_thickness * 0.5)
-            fence_vertices.extend(((point[0] + normal[0] * fence_lateral,
-                                    point[1] + normal[1] * fence_lateral,
-                                    base_z + wall_height),
-                                   (point[0] + normal[0] * fence_lateral,
-                                    point[1] + normal[1] * fence_lateral,
-                                    base_z + wall_height + fence_height)))
         for index in range(count):
             base = wall_side_start + index * 4
             nxt = wall_side_start + ((index + 1) % count) * 4
@@ -466,9 +458,38 @@ def make_safety_barriers(samples, half_widths, materials, parent, detail_scale):
                                (base + 1, base + 3, nxt + 3, nxt + 1),
                                (base + 2, nxt + 2, nxt + 3, base + 3)))
             wall_indices.extend((((index // 12) + (1 if side > 0 else 0)) % 2,) * 3)
-            fence_base = fence_side_start + index * 2
-            fence_next = fence_side_start + ((index + 1) % count) * 2
-            fence_faces.append((fence_base, fence_next, fence_next + 1, fence_base + 1))
+        # Three uninterrupted rails read as fencing without relying on alpha blending.
+        for rail in range(3):
+            rail_start = len(fence_vertices)
+            rail_z = wall_height + fence_height * (0.22 + rail * 0.34)
+            rail_thickness = 0.10 * detail_scale
+            for index, point in enumerate(samples):
+                _, _, normal = track_frame(samples, index)
+                lateral = half_widths[index] + wall_offset + wall_thickness * 0.5
+                base_z = shoulder_ground_z(point[2], half_widths[index],
+                                            half_widths[index] + wall_offset, detail_scale)
+                fence_lateral = side * lateral
+                fence_vertices.extend(((point[0] + normal[0] * fence_lateral,
+                                        point[1] + normal[1] * fence_lateral,
+                                        base_z + rail_z - rail_thickness * 0.5),
+                                       (point[0] + normal[0] * fence_lateral,
+                                        point[1] + normal[1] * fence_lateral,
+                                        base_z + rail_z + rail_thickness * 0.5)))
+            for index in range(count):
+                base = rail_start + index * 2
+                nxt = rail_start + ((index + 1) % count) * 2
+                fence_faces.append((base, nxt, nxt + 1, base + 1))
+        for index in range(0, count, 16):
+            point, tangent, normal = track_frame(samples, index)
+            lateral = half_widths[index] + wall_offset + wall_thickness * 0.5
+            base_z = shoulder_ground_z(point[2], half_widths[index],
+                                        half_widths[index] + wall_offset, detail_scale)
+            center = (point[0] + normal[0] * side * lateral,
+                      point[1] + normal[1] * side * lateral,
+                      base_z + wall_height + fence_height * 0.5)
+            add_oriented_box_geometry(fence_vertices, fence_faces, center,
+                                      (0.14 * detail_scale, 0.14 * detail_scale, fence_height),
+                                      tangent, normal)
     wall = mesh_object("continuous_safety_barriers", wall_vertices, wall_faces,
                        materials[:2], wall_indices, parent)
     fence = mesh_object("continuous_catch_fence", fence_vertices, fence_faces,
@@ -476,6 +497,8 @@ def make_safety_barriers(samples, half_widths, materials, parent, detail_scale):
     wall["sample_count_per_side"] = count
     wall["grounding_contract"] = "shoulder_grade"
     fence["sample_count_per_side"] = count
+    fence["rail_count_per_side"] = 3
+    fence["post_interval_samples"] = 16
     return wall, fence, grounding
 
 

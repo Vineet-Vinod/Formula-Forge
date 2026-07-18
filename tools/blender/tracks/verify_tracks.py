@@ -156,7 +156,10 @@ def verify(root: Path, slug: str):
     limits = bpy.data.objects["track_limit_lines"]
     if (len(barrier.data.vertices), len(barrier.data.polygons)) != (SAMPLES*8, SAMPLES*6):
         raise ValueError(f"{slug}: continuous barrier topology changed")
-    if (len(fence.data.vertices), len(fence.data.polygons)) != (SAMPLES*4, SAMPLES*2):
+    fence_posts = (SAMPLES//16)*2
+    expected_fence_topology = (SAMPLES*12 + fence_posts*8,
+                               SAMPLES*6 + fence_posts*6)
+    if (len(fence.data.vertices), len(fence.data.polygons)) != expected_fence_topology:
         raise ValueError(f"{slug}: continuous fence topology changed")
     if (len(limits.data.vertices), len(limits.data.polygons)) != (SAMPLES*4, SAMPLES*2):
         raise ValueError(f"{slug}: track-limit line topology changed")
