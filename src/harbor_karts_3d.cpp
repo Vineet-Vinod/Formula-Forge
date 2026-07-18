@@ -59,6 +59,11 @@ constexpr std::array<int, 4> kLapOptions = {2, 5, 10, kInfiniteLaps};
 constexpr int kRaceLapOptionCount = 3;
 constexpr float kLoadingScreenSeconds = 2.35f;
 constexpr float kMenuSteerThreshold = 0.20f;
+constexpr float kTcamBackMeters = 0.68f;
+constexpr float kTcamHeightMeters = 1.84f;
+constexpr float kTcamLookAheadMeters = 38.0f;
+constexpr float kTcamTargetHeightMeters = 0.38f;
+constexpr float kTcamFovDegrees = 80.0f;
 
 bool isMetricCircuit(TrackLayoutId layout) {
     return layout != TrackLayoutId::SunsetCove;
@@ -2458,12 +2463,15 @@ public:
                                       tcam.position.z - cameraKartPosition.z};
         const Vec2 cameraViewPlanar{tcam.target.x - tcam.position.x,
                                     tcam.target.z - tcam.position.z};
+        const float speedVibrationTolerance = 0.012f * kSpaSimulationUnitsPerMeter * kRenderScale;
         const bool fixedTcam = std::abs(length(cameraPlanarOffset) -
-                                        0.48f * kSpaSimulationUnitsPerMeter * kRenderScale) < 0.001f &&
+                                        kTcamBackMeters * kSpaSimulationUnitsPerMeter * kRenderScale) <
+                                    speedVibrationTolerance &&
                                 std::abs((tcam.position.y - cameraKartPosition.y) -
-                                         1.72f * kSpaSimulationUnitsPerMeter * kRenderScale) < 0.001f &&
+                                         kTcamHeightMeters * kSpaSimulationUnitsPerMeter * kRenderScale) <
+                                    speedVibrationTolerance &&
                                 dot(normalize(cameraViewPlanar), fromAngle(cameraKart.heading)) > 0.999f &&
-                                std::abs(tcam.fovy - 76.0f) < 0.001f;
+                                std::abs(tcam.fovy - kTcamFovDegrees) < 0.001f;
         const bool ok = controlledRoad && noBrakeConsequences && groundClear && stable && moving &&
                         inputContract && formulaCornering && formulaPerformance && formulaGrip && fixedTcam;
 
@@ -4321,20 +4329,28 @@ private:
         const float renderElevation = lerp(player.previousRenderElevation, player.elevation, alpha);
         const Vec2 forward = fromAngle(renderHeading);
 
-        // Formula 1's broadcast T-cam is rigidly mounted above the roll hoop.
-        // Keep this transform car-fixed: no chase lag, velocity steering,
-        // speed pullback, shake, or dynamic lens changes.
-        constexpr float kCameraBackMeters = 0.48f;
-        constexpr float kCameraHeightMeters = 1.72f;
-        constexpr float kLookAheadMeters = 34.0f;
-        constexpr float kTargetHeightMeters = 0.32f;
+        // The broadcast T-cam stays rigidly attached above and just behind the
+        // roll hoop. Road vibration is millimetric; there is no chase lag,
+        // velocity steering, speed pullback, or dynamic lens change.
+        const float speedN = std::clamp(std::max(0.0f, player.telemetry.forwardSpeed) /
+                                            std::max(1.0f, player.tuning.maxForwardSpeed),
+                                        0.0f, 1.0f);
+        const float vibration = smoothstep(std::clamp((speedN - 0.48f) / 0.52f, 0.0f, 1.0f));
+        const Vec2 right{-forward.y, forward.x};
+        const float lateralVibrationMeters =
+            vibration * (std::sin(raceTime_ * 83.0f) * 0.0035f + std::sin(raceTime_ * 131.0f) * 0.0015f);
+        const float verticalVibrationMeters =
+            vibration * (std::sin(raceTime_ * 97.0f) * 0.0055f + std::sin(raceTime_ * 149.0f) * 0.0020f);
+        const Vec2 mountPos = renderPos - forward * (kTcamBackMeters * kSpaSimulationUnitsPerMeter) +
+                              right * (lateralVibrationMeters * kSpaSimulationUnitsPerMeter);
         Camera camera{};
-        camera.position = toWorld(renderPos - forward * (kCameraBackMeters * kSpaSimulationUnitsPerMeter),
-                                  renderElevation + kCameraHeightMeters * kSpaSimulationUnitsPerMeter);
-        camera.target = toWorld(renderPos + forward * (kLookAheadMeters * kSpaSimulationUnitsPerMeter),
-                                renderElevation + kTargetHeightMeters * kSpaSimulationUnitsPerMeter);
+        camera.position = toWorld(mountPos,
+                                  renderElevation + (kTcamHeightMeters + verticalVibrationMeters) *
+                                                        kSpaSimulationUnitsPerMeter);
+        camera.target = toWorld(renderPos + forward * (kTcamLookAheadMeters * kSpaSimulationUnitsPerMeter),
+                                renderElevation + kTcamTargetHeightMeters * kSpaSimulationUnitsPerMeter);
         camera.up = {0.0f, 1.0f, 0.0f};
-        camera.fovy = 76.0f;
+        camera.fovy = kTcamFovDegrees;
         camera.projection = CAMERA_PERSPECTIVE;
         return camera;
     }
@@ -5059,7 +5075,10 @@ private:
             return;
         }
         const Kart3D& player = karts_[0];
-        float amount = std::clamp((length(player.vel) / player.tuning.maxForwardSpeed - 0.42f) / 0.58f, 0.0f, 1.0f);
+        const float speedN = std::clamp(std::max(0.0f, player.telemetry.forwardSpeed) /
+                                            std::max(1.0f, player.tuning.maxForwardSpeed),
+                                        0.0f, 1.0f);
+        float amount = smoothstep(std::clamp((speedN - 0.22f) / 0.78f, 0.0f, 1.0f));
         if (player.boostTimer > 0.0f) {
             amount = std::max(amount, 0.72f + player.boostPower * 0.28f);
         }
@@ -5068,18 +5087,25 @@ private:
         }
         const float width = static_cast<float>(GetScreenWidth());
         const float height = static_cast<float>(GetScreenHeight());
-        const Vector2 center{width * 0.5f, height * 0.48f};
-        for (int i = 0; i < 22; ++i) {
-            const float seed = std::fmod(static_cast<float>(i) * 0.6180339f + raceTime_ * (0.31f + i * 0.003f), 1.0f);
-            const float angle = static_cast<float>(i) / 22.0f * kTwoPi + 0.19f;
-            const Vector2 direction{std::cos(angle), std::sin(angle)};
-            const float radial = lerp(0.34f, 0.72f, seed);
-            const float radius = std::min(width, height) * radial;
-            const float lineLength = lerp(16.0f, 58.0f, amount) * (0.65f + seed * 0.7f);
-            const Vector2 start{center.x + direction.x * radius, center.y + direction.y * radius};
+        const Vector2 center{width * 0.5f, height * 0.43f};
+        for (int i = 0; i < 30; ++i) {
+            const float seed = std::fmod(static_cast<float>(i) * 0.6180339f +
+                                             raceTime_ * (0.34f + amount * 0.92f + i * 0.002f),
+                                         1.0f);
+            const float bandSeed = std::fmod(static_cast<float>(i) * 0.381966f, 1.0f);
+            const bool leftSide = (i & 1) == 0;
+            const float x = width * (leftSide ? lerp(0.03f, 0.22f, bandSeed)
+                                              : lerp(0.78f, 0.97f, bandSeed));
+            const float y = height * lerp(0.55f, 0.96f, seed);
+            const Vector2 start{x, y};
+            Vector2 direction{start.x - center.x, start.y - center.y};
+            const float directionLength = std::max(1.0f, std::sqrt(direction.x * direction.x + direction.y * direction.y));
+            direction.x /= directionLength;
+            direction.y /= directionLength;
+            const float lineLength = lerp(8.0f, 76.0f, amount) * (0.50f + seed * 0.82f);
             const Vector2 end{start.x + direction.x * lineLength, start.y + direction.y * lineLength};
-            const unsigned char alpha = static_cast<unsigned char>((22.0f + seed * 44.0f) * amount);
-            DrawLineEx(start, end, 1.0f + amount * 1.5f, Color{224, 249, 247, alpha});
+            const unsigned char alpha = static_cast<unsigned char>((12.0f + seed * 54.0f) * amount);
+            DrawLineEx(start, end, 0.8f + amount * 1.7f, Color{231, 244, 239, alpha});
         }
     }
 
@@ -5207,6 +5233,10 @@ private:
                                             ? 3.6f / kSpaSimulationUnitsPerMeter
                                             : 1.22f;
             view.speedKph = static_cast<int>(std::max(0.0f, player.telemetry.forwardSpeed) * speedKphScale + 0.5f);
+            const float gearRatio = std::clamp(std::max(0.0f, player.telemetry.forwardSpeed) /
+                                                   std::max(1.0f, player.tuning.maxForwardSpeed),
+                                               0.0f, 1.0f);
+            view.gear = view.speedKph < 3 ? 0 : std::min(8, 1 + static_cast<int>(gearRatio * 7.99f));
             view.currentLap = laps == kInfiniteLaps ? std::max(1, player.lap + 1) : std::clamp(player.lap + 1, 1, laps);
             view.totalLaps = laps;
             view.position = playerPosition_;

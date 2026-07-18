@@ -26,6 +26,7 @@ struct RaceHudViewModel {
     std::string vehicleName;
     std::string driverName;
     int speedKph = 0;
+    int gear = 0;
     int currentLap = 1;
     int totalLaps = 2;
     int position = 1;

@@ -65,10 +65,15 @@ class ArcadeSynth {
             controls_.grounded = approach(controls_.grounded, target_.grounded, 25.0f, dt);
 
             const float load = clamp01(controls_.throttle * 0.82f + controls_.brake * 0.18f);
-            const float rpm = clamp01(0.08f + controls_.speed * 0.78f + controls_.throttle * 0.14f);
-            const float engineHz = 52.0f + rpm * 172.0f;
+            const float gearPosition = controls_.speed * 7.0f;
+            const float gearFraction = controls_.speed > 0.995f
+                                           ? 1.0f
+                                           : gearPosition - std::floor(gearPosition);
+            const float gearSweep = gearFraction * gearFraction * (3.0f - 2.0f * gearFraction);
+            const float rpm = clamp01(0.28f + controls_.speed * 0.25f + gearSweep * 0.38f + controls_.throttle * 0.10f);
+            const float engineHz = 88.0f + rpm * 330.0f;
             enginePhase_ = wrapPhase(enginePhase_ + engineHz * dt);
-            firingPhase_ = wrapPhase(firingPhase_ + engineHz * (2.02f + load * 0.06f) * dt);
+            firingPhase_ = wrapPhase(firingPhase_ + engineHz * (3.01f + load * 0.08f) * dt);
 
             const float fundamental = std::sin(2.0f * kPi * enginePhase_);
             const float second = std::sin(4.0f * kPi * enginePhase_ + 0.18f);
@@ -76,16 +81,16 @@ class ArcadeSynth {
             const float firing = std::tanh(std::sin(2.0f * kPi * firingPhase_) * (1.4f + load * 1.7f));
             const float loadFlutter = 0.94f + 0.06f * std::sin(2.0f * kPi * modulationPhase_);
             modulationPhase_ = wrapPhase(modulationPhase_ + (7.0f + rpm * 13.0f) * dt);
-            const float engine = (fundamental * 0.48f + second * (0.18f + load * 0.11f) +
-                                  third * 0.08f + firing * 0.15f) *
-                                 (0.13f + load * 0.12f + rpm * 0.055f) * loadFlutter;
+            const float engine = (fundamental * 0.36f + second * (0.17f + load * 0.10f) +
+                                  third * (0.10f + rpm * 0.06f) + firing * 0.22f) *
+                                 (0.13f + load * 0.12f + rpm * 0.060f) * loadFlutter;
 
             const float noise = randomBipolar();
             roadNoise_ += (noise - roadNoise_) * 0.055f;
             windNoise_ += (noise - windNoise_) * 0.008f;
             scrubNoise_ += (noise - scrubNoise_) * 0.31f;
-            const float road = roadNoise_ * controls_.speed * controls_.grounded * 0.075f;
-            const float wind = (noise - windNoise_) * controls_.speed * controls_.speed * 0.085f;
+            const float road = roadNoise_ * controls_.speed * controls_.grounded * 0.090f;
+            const float wind = (noise - windNoise_) * controls_.speed * controls_.speed * 0.115f;
             const float scrubAmount = clamp01(controls_.slip * 1.35f + controls_.brake * controls_.speed * 0.55f);
             const float scrub = (noise - scrubNoise_ * 0.42f) * scrubAmount * controls_.grounded * 0.12f;
 

@@ -389,6 +389,24 @@ void drawRaceAlert(const RaceHudViewModel& viewModel, const Metrics& m) {
                      30.0f * m.scale, viewModel.finished ? kSun : kPaper);
 }
 
+void drawTelemetryPanel(const RaceHudViewModel& viewModel, const Metrics& m) {
+    const float width = 202.0f * m.scale;
+    const float height = 76.0f * m.scale;
+    const Rectangle panel{m.width - m.margin - width, m.height - m.margin - height, width, height};
+    DrawRectangleRec(panel, Fade(kInk, 0.86f));
+    DrawRectangleRec({panel.x, panel.y, 5.0f * m.scale, panel.height}, kSun);
+
+    const std::string gear = viewModel.gear > 0 ? std::to_string(std::clamp(viewModel.gear, 1, 8)) : "N";
+    drawCenteredText(gear, {panel.x + 42.0f * m.scale, panel.y + panel.height * 0.52f}, 42.0f * m.scale, kSun);
+    DrawLineEx({panel.x + 78.0f * m.scale, panel.y + 12.0f * m.scale},
+               {panel.x + 78.0f * m.scale, panel.y + panel.height - 12.0f * m.scale},
+               1.0f * m.scale, Fade(kOutline, 0.80f));
+
+    const std::string speed = std::to_string(std::max(0, viewModel.speedKph));
+    drawCenteredText(speed, {panel.x + 139.0f * m.scale, panel.y + 28.0f * m.scale}, 29.0f * m.scale, kPaper);
+    drawCenteredText("KM/H", {panel.x + 139.0f * m.scale, panel.y + 57.0f * m.scale}, 11.0f * m.scale, kPaperMuted);
+}
+
 void drawRouteMap(const RaceHudViewModel& viewModel, const Metrics& m) {
     const int count = std::clamp(viewModel.coursePolylinePointCount, 0, kMaxCoursePolylinePoints);
     if (count < 3) {
@@ -472,6 +490,7 @@ void DrawRaceHud(const RaceHudViewModel& viewModel) {
     }
     drawLapPanel(viewModel, m);
     drawRouteMap(viewModel, m);
+    drawTelemetryPanel(viewModel, m);
     drawRaceAlert(viewModel, m);
     if (!viewModel.controllerConnected) {
         drawConnectionBanner(m);
