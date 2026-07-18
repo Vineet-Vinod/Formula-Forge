@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "asset": "tidebreaker",
+  "units": "meters",
+  "axes_blender": {
+    "right": "+X",
+    "front": "-Y",
+    "up": "+Z"
+  },
+  "measured_bounds_blender": {
+    "min": [
+      -1.0083,
+      -1.99,
+      0.04
+    ],
+    "max": [
+      1.0083,
+      2.03,
+      1.605
+    ],
+    "dimensions": [
+      2.0167,
+      4.02,
+      1.565
+    ]
+  },
+  "runtime_budget": {
+    "mesh_objects": 50,
+    "vertices": 6636,
+    "triangles": 13092
+  },
+  "verification": {
+    "status": "passed",
+    "required_nodes_present": true,
+    "named_actions_present": [
+      "accelerate",
+      "brake",
+      "idle",
+      "turn_left",
+      "turn_right"
+    ],
+    "action_channel_counts": {
+      "accelerate": 27,
+      "brake": 27,
+      "idle": 27,
+      "turn_left": 27,
+      "turn_right": 27
+    },
+    "skin_count": 1,
+    "exported_meshes": 50,
+    "dimension_error_percent": {
+      "width_x": 5.04,
+      "length_y": 0.0,
+      "height_z": 3.4
+    },
+    "dimension_tolerance_percent": 8.0
+  },
+  "required_nodes": [
+    "car_root",
+    "body",
+    "wheel_FL",
+    "wheel_FR",
+    "wheel_RL",
+    "wheel_RR",
+    "steering",
+    "brake_lights",
+    "driver_mount",
+    "vehicle_rig",
+    "seat_anchor"
+  ],
+  "source": "tidebreaker.blend",
+  "export": "tidebreaker.glb",
+  "preview": "tidebreaker_preview.png",
+  "type": "vehicle",
+  "display_name": "Tidebreaker XR",
+  "family": "open beach buggy",
+  "target_dimensions_m": {
+    "width_x": 1.92,
+    "length_y": 4.02,
+    "height_z": 1.62
+  },
+  "animation_clips": {
+    "accelerate": [
+      1,
+      24
+    ],
+    "turn_left": [
+      30,
+      50
+    ],
+    "turn_right": [
+      30,
+      50
+    ],
+    "brake": [
+      60,
+      72
+    ],
+    "idle": [
+      80,
+      108
+    ]
+  },
+  "mounts": {
+    "driver_object": "driver_mount",
+    "driver_bone": "seat_anchor",
+    "gltf_local_y_up_z_forward_m": [
+      0.0,
+      1.0,
+      -0.1
+    ]
+  }
+}
