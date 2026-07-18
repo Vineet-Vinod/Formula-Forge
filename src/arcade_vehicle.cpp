@@ -307,7 +307,15 @@ ArcadeVehicleTelemetry stepSingle(ArcadeVehicleState& state,
     if (control.brake > 0.0f) {
         if (forwardSpeed > 2.0f) {
             const bool activeDrift = state.driftPhase == ArcadeDriftPhase::Entry || state.driftPhase == ArcadeDriftPhase::Sustain;
-            const float brakingScale = activeDrift ? config.driftBrakeDecelerationScale : 1.0f;
+            const float normalizedBrakeSpeed = safeRatio(absForwardSpeed, config.maxForwardSpeed);
+            const float fullEffectSpeed = std::max(0.01f, config.brakeFullEffectSpeed);
+            const float brakeSpeedRatio = std::clamp(normalizedBrakeSpeed / fullEffectSpeed, 0.0f, 1.0f);
+            const float aeroBrakeBlend = std::pow(smoothstep(brakeSpeedRatio),
+                                                  std::max(0.01f, config.brakeSpeedCurveExponent));
+            const float speedDependentBrake = lerp(std::clamp(config.brakeLowSpeedScale, 0.0f, 1.0f),
+                                                   1.0f, aeroBrakeBlend);
+            const float brakingScale = (activeDrift ? config.driftBrakeDecelerationScale : 1.0f) *
+                                       speedDependentBrake;
             driveAcceleration -= control.brake * config.brakeDeceleration * brakingScale;
         } else if (forwardSpeed < -2.0f || state.brakeHold >= config.reverseDelay) {
             driveAcceleration -= control.brake * config.reverseAcceleration * surface.acceleration;

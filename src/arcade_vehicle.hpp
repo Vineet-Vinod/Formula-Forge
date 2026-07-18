@@ -66,6 +66,9 @@ struct ArcadeVehicleConfig {
     float engineAcceleration = 96.0f;
     float launchAccelerationBonus = 34.0f;
     float brakeDeceleration = 190.0f;
+    float brakeLowSpeedScale = 1.0f;
+    float brakeFullEffectSpeed = 1.0f;
+    float brakeSpeedCurveExponent = 1.0f;
     float reverseAcceleration = 58.0f;
     float reverseDelay = 0.22f;
     float rollingResistance = 3.8f;
