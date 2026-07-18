@@ -9,25 +9,25 @@
   },
   "measured_bounds_blender": {
     "min": [
-      -0.9633,
-      -1.96,
-      0.03
+      -1.0111,
+      -2.555,
+      -0.0
     ],
     "max": [
-      0.9633,
-      1.98,
-      1.565
+      1.0111,
+      2.36,
+      1.12
     ],
     "dimensions": [
-      1.9267,
-      3.94,
-      1.535
+      2.0222,
+      4.915,
+      1.12
     ]
   },
   "runtime_budget": {
-    "mesh_objects": 47,
-    "vertices": 6614,
-    "triangles": 13060
+    "mesh_objects": 108,
+    "vertices": 11322,
+    "triangles": 22232
   },
   "verification": {
     "status": "passed",
@@ -47,11 +47,11 @@
       "turn_right": 27
     },
     "skin_count": 1,
-    "exported_meshes": 47,
+    "exported_meshes": 108,
     "dimension_error_percent": {
-      "width_x": 4.71,
-      "length_y": 0.0,
-      "height_z": 0.99
+      "width_x": 0.38,
+      "length_y": 0.1,
+      "height_z": 0.88
     },
     "dimension_tolerance_percent": 8.0
   },
@@ -72,12 +72,25 @@
   "export": "reefrunner.glb",
   "preview": "reefrunner_preview.png",
   "type": "vehicle",
-  "display_name": "Reefrunner R4",
-  "family": "rally hatch",
+  "display_name": "Reefrunner FA",
+  "family": "agile formula",
+  "vehicle_class": "formula",
   "target_dimensions_m": {
-    "width_x": 1.84,
-    "length_y": 3.94,
-    "height_z": 1.52
+    "width_x": 2.03,
+    "length_y": 4.92,
+    "height_z": 1.13
+  },
+  "hard_points_m": {
+    "wheelbase": 3.17,
+    "front_track_centers": 1.63,
+    "rear_track_centers": 1.55,
+    "ground_clearance": 0.07,
+    "tire_contact_z": 0.0,
+    "seat_anchor_blender": [
+      0.0,
+      0.12,
+      0.74
+    ]
   },
   "animation_clips": {
     "accelerate": [
@@ -106,8 +119,8 @@
     "driver_bone": "seat_anchor",
     "gltf_local_y_up_z_forward_m": [
       0.0,
-      1.0,
-      -0.1
+      0.74,
+      -0.12
     ]
   }
 }
