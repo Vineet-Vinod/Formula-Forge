@@ -10,6 +10,10 @@ struct TrackControlPoint {
 enum class TrackLayoutId {
     SunsetCove,
     SpaCoast,
+    Suzuka,
+    Silverstone,
+    Monza,
+    Interlagos,
 };
 
 struct TrackElevationPoint {

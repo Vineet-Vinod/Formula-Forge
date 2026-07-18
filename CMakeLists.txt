@@ -42,6 +42,7 @@ add_executable(harbor_karts_3d
     src/arcade_render.cpp
     src/arcade_vehicle.cpp
     src/harbor_karts_3d.cpp
+    src/track_catalog.cpp
     src/track_renderer.cpp
 )
 
@@ -61,6 +62,7 @@ if(BUILD_TESTING)
     add_test(NAME collision_dynamics_audit COMMAND harbor_karts_3d --collision-audit)
     add_test(NAME spa_control_audit COMMAND harbor_karts_3d --spa-control-audit)
     add_test(NAME spa_geometry_audit COMMAND harbor_karts_3d --spa-audit)
+    add_test(NAME track_catalog_audit COMMAND harbor_karts_3d --track-catalog-audit)
     add_test(NAME time_trial_session_audit COMMAND harbor_karts_3d --time-trial-audit --windowed)
 endif()
 

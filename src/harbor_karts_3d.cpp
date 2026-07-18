@@ -26,6 +26,7 @@
 #include "core_math.hpp"
 #include "track_renderer.hpp"
 #include "track_layout.hpp"
+#include "track_catalog.hpp"
 #include "track_clearance_audit.hpp"
 
 namespace {
@@ -52,8 +53,29 @@ constexpr int kRaceLapOptionCount = 3;
 constexpr float kLoadingScreenSeconds = 2.35f;
 constexpr float kMenuSteerThreshold = 0.20f;
 
+bool isMetricCircuit(TrackLayoutId layout) {
+    return layout != TrackLayoutId::SunsetCove;
+}
+
+const TrackCatalogEntry* catalogEntryForLayout(TrackLayoutId layout) {
+    switch (layout) {
+        case TrackLayoutId::Suzuka:
+            return findTrackCatalogEntry(CatalogCircuitId::Suzuka);
+        case TrackLayoutId::Silverstone:
+            return findTrackCatalogEntry(CatalogCircuitId::Silverstone);
+        case TrackLayoutId::Monza:
+            return findTrackCatalogEntry(CatalogCircuitId::Monza);
+        case TrackLayoutId::Interlagos:
+            return findTrackCatalogEntry(CatalogCircuitId::Interlagos);
+        case TrackLayoutId::SunsetCove:
+        case TrackLayoutId::SpaCoast:
+            return nullptr;
+    }
+    return nullptr;
+}
+
 float trackProgressRenderScale(TrackLayoutId layout) {
-    return layout == TrackLayoutId::SpaCoast ? kSpaSimulationUnitsPerMeter * kRenderScale : kRenderScale;
+    return isMetricCircuit(layout) ? kSpaSimulationUnitsPerMeter * kRenderScale : kRenderScale;
 }
 
 constexpr std::array<const char*, 10> kDriverBackstories = {
@@ -88,11 +110,19 @@ struct MapSpec3D {
     const char* backstory;
 };
 
-constexpr std::array<MapSpec3D, 2> kMaps = {{
+constexpr std::array<MapSpec3D, 6> kMaps = {{
     {TrackLayoutId::SunsetCove, "SUNSET COVE", "SUNSET COVE GRAND PRIX", "COAST / JUNGLE / HARBOR",
      "A fast island loop through golden beaches, a busy waterfront, and shaded jungle climbs."},
     {TrackLayoutId::SpaCoast, "SPA COAST", "SPA COAST GRAND PRIX", "7.004 KM / 19 TURNS / 102.2 M RELIEF",
      "A legendary Ardennes-shaped challenge reimagined beside the sea, from a tidal Eau Rouge to the high Kemmel ridge."},
+    {TrackLayoutId::Suzuka, "SUZUKA", "SUZUKA GRAND PRIX", "5.807 KM / 18 TURNS / FIGURE EIGHT",
+     "A flowing coastal figure-eight with rhythmic esses, a climbing crossover and a committed final sector."},
+    {TrackLayoutId::Silverstone, "SILVERSTONE", "SILVERSTONE GRAND PRIX", "5.891 KM / 18 TURNS / FAST SWEEPERS",
+     "A windswept shoreline airfield circuit built around fast direction changes and long, open straights."},
+    {TrackLayoutId::Monza, "MONZA", "MONZA GRAND PRIX", "5.793 KM / 11 TURNS / HIGH SPEED",
+     "Long palm-lined parkland straights broken by heavy braking zones, chicanes and one broad final curve."},
+    {TrackLayoutId::Interlagos, "INTERLAGOS", "INTERLAGOS GRAND PRIX", "4.309 KM / 15 TURNS / ANTI-CLOCKWISE",
+     "A compact bowl-shaped coastal lap that drops through an opening S and climbs hard back to the line."},
 }};
 
 struct RaceResult3D {
@@ -341,6 +371,22 @@ float spaElevationForDistance(float distanceMeters) {
     return kSpaElevationProfile.back().elevationMeters;
 }
 
+float metricTrackElevationMeters(TrackLayoutId layout, float distanceMeters) {
+    if (layout == TrackLayoutId::SpaCoast) {
+        return spaElevationForDistance(distanceMeters);
+    }
+    const TrackCatalogEntry* entry = catalogEntryForLayout(layout);
+    return entry != nullptr ? sampleTrackElevationMeters(*entry, distanceMeters) : 0.0f;
+}
+
+float metricTrackWidthMeters(TrackLayoutId layout, float distanceMeters, float phase) {
+    if (layout == TrackLayoutId::SpaCoast) {
+        return spaRoadWidthMetersForPhase(phase);
+    }
+    const TrackCatalogEntry* entry = catalogEntryForLayout(layout);
+    return entry != nullptr ? sampleTrackWidthMeters(*entry, distanceMeters) : 14.0f;
+}
+
 struct TrackProjection3D {
     float progress = 0.0f;
     float lane = 0.0f;
@@ -353,7 +399,11 @@ public:
 
     float totalLength() const { return totalLength_; }
     float startProgress() const {
-        return totalLength_ * (layout_ == TrackLayoutId::SpaCoast ? kSpaStartPhase : kSunsetCoveStartPhase);
+        if (layout_ == TrackLayoutId::SpaCoast) {
+            return totalLength_ * kSpaStartPhase;
+        }
+        const TrackCatalogEntry* entry = catalogEntryForLayout(layout_);
+        return totalLength_ * (entry != nullptr ? entry->startPhase : kSunsetCoveStartPhase);
     }
     TrackLayoutId layout() const { return layout_; }
     int sampleCount() const { return static_cast<int>(samples_.size()); }
@@ -375,8 +425,8 @@ public:
         out.normal = {-out.tangent.y, out.tangent.x};
         out.progress = progress;
         out.width = lerp(a.width, b.width, t);
-        out.elevation = layout_ == TrackLayoutId::SpaCoast
-                            ? spaElevationForDistance(progress) * kSpaSimulationUnitsPerMeter
+        out.elevation = isMetricCircuit(layout_)
+                            ? metricTrackElevationMeters(layout_, progress) * kSpaSimulationUnitsPerMeter
                             : lerp(a.elevation, b.elevation, t);
         out.bank = lerp(a.bank, b.bank, t);
         out.curvature = lerp(a.curvature, b.curvature, t);
@@ -480,16 +530,16 @@ private:
         phase -= std::floor(phase);
         const ZoneMaterial3D material = materialForPhase(phase);
         point.zone = zoneForPhase(phase);
-        point.width = layout_ == TrackLayoutId::SpaCoast
-                          ? spaRoadWidthMetersForPhase(phase) * kSpaSimulationUnitsPerMeter /
+        point.width = isMetricCircuit(layout_)
+                          ? metricTrackWidthMeters(layout_, progress, phase) * kSpaSimulationUnitsPerMeter /
                                 (kRoadSurfaceRatio * 2.0f)
                           : trackWidthForPhase(phase);
         point.road = material.road;
         point.shoulder = material.shoulder;
         point.natural = material.natural;
 
-        if (layout_ == TrackLayoutId::SpaCoast) {
-            point.elevation = spaElevationForDistance(progress) * kSpaSimulationUnitsPerMeter;
+        if (isMetricCircuit(layout_)) {
+            point.elevation = metricTrackElevationMeters(layout_, progress) * kSpaSimulationUnitsPerMeter;
             point.launchVelocity = 0.0f;
         } else {
             point.elevation += elevationForPhase(phase);
@@ -500,8 +550,7 @@ private:
         return point;
     }
 
-    template <size_t N>
-    void buildFromControl(const std::array<TrackControlPoint, N>& control, float scale, float targetLength,
+    void buildFromControl(std::span<const TrackControlPoint> control, float scale, float targetLength,
                           float simulationUnitsPerDistance = 1.0f, bool mirrorVertical = false) {
         const auto controlPoint = [&control, scale, mirrorVertical](int index) {
             const int count = static_cast<int>(control.size());
@@ -603,19 +652,21 @@ private:
     void build() {
         if (layout_ == TrackLayoutId::SpaCoast) {
             buildFromControl(kSpaControlPoints, kSpaCourseScale, kSpaTargetLength, kSpaSimulationUnitsPerMeter, true);
-        } else {
+        } else if (layout_ == TrackLayoutId::SunsetCove) {
             buildFromControl(kBreakwaterControlPoints, kBreakwaterCourseScale, 0.0f);
+        } else if (const TrackCatalogEntry* entry = catalogEntryForLayout(layout_)) {
+            buildFromControl(entry->centerline, 1.0f, entry->targetLengthMeters, kSpaSimulationUnitsPerMeter);
         }
     }
 
     void buildProps() {
         std::mt19937 rng(3119);
         std::uniform_real_distribution<float> jitter(-24.0f, 24.0f);
-        const bool spa = layout_ == TrackLayoutId::SpaCoast;
-        const int count = spa ? 360 : 156;
+        const bool metricCircuit = isMetricCircuit(layout_);
+        const int count = metricCircuit ? 360 : 156;
         for (int i = 0; i < count; ++i) {
             const float p = wrapDistance(totalLength_ * (static_cast<float>(i) + 0.23f) / count + jitter(rng), totalLength_);
-            const float startClearance = spa ? 90.0f : 620.0f;
+            const float startClearance = metricCircuit ? 90.0f : 620.0f;
             if (std::abs(signedDistanceToLoop(startProgress(), p, totalLength_)) < startClearance) {
                 continue;
             }
@@ -623,10 +674,10 @@ private:
             Prop3D prop;
             prop.progress = p;
             const float sideSign = (i % 2 == 0) ? -1.0f : 1.0f;
-            const float baseSetback = spa ? 48.0f : 130.0f;
-            const int setbackRange = spa ? 130 : 145;
+            const float baseSetback = metricCircuit ? 48.0f : 130.0f;
+            const int setbackRange = metricCircuit ? 130 : 145;
             prop.side = sideSign * (tp.width * 0.5f + baseSetback + static_cast<float>((i * 17) % setbackRange));
-            prop.scale = spa ? 1.05f + static_cast<float>((i * 11) % 10) * 0.11f
+            prop.scale = metricCircuit ? 1.05f + static_cast<float>((i * 11) % 10) * 0.11f
                              : 0.75f + static_cast<float>((i * 11) % 9) * 0.09f;
 
             if (tp.zone == 0) {
@@ -664,7 +715,7 @@ private:
         addLandmark(0.765f, -1.0f, 138.0f, 2.45f, Prop3D::Type::Cliff, Color{92, 117, 83, 255});
         addLandmark(0.900f, 1.0f, 142.0f, 2.10f, Prop3D::Type::Palm, Color{47, 157, 84, 255});
 
-        if (spa) {
+        if (metricCircuit) {
             struct ScenicCluster {
                 float phase;
                 Prop3D::Type anchor;
@@ -709,6 +760,67 @@ private:
     float totalLength_ = 1.0f;
     TrackLayoutId layout_ = TrackLayoutId::SunsetCove;
 };
+
+bool runTrackCatalogAudit() {
+    struct LayoutEntry {
+        TrackLayoutId layout;
+        CatalogCircuitId catalog;
+    };
+    constexpr std::array<LayoutEntry, 4> kLayouts = {{
+        {TrackLayoutId::Suzuka, CatalogCircuitId::Suzuka},
+        {TrackLayoutId::Silverstone, CatalogCircuitId::Silverstone},
+        {TrackLayoutId::Monza, CatalogCircuitId::Monza},
+        {TrackLayoutId::Interlagos, CatalogCircuitId::Interlagos},
+    }};
+
+    bool allOk = true;
+    for (const LayoutEntry& item : kLayouts) {
+        const TrackCatalogEntry* catalog = findTrackCatalogEntry(item.catalog);
+        if (catalog == nullptr) {
+            std::cout << "track-catalog-audit missing_catalog=1 ok=0\n";
+            allOk = false;
+            continue;
+        }
+
+        Track3D track(item.layout);
+        float planarMeters = 0.0f;
+        float minElevation = std::numeric_limits<float>::max();
+        float maxElevation = std::numeric_limits<float>::lowest();
+        float minWidth = std::numeric_limits<float>::max();
+        float maxWidth = 0.0f;
+        bool finite = true;
+        for (int i = 0; i < track.sampleCount(); ++i) {
+            const TrackPoint3D& a = track.pointAtIndex(i);
+            const TrackPoint3D& b = track.pointAtIndex(i + 1);
+            planarMeters += length(b.pos - a.pos) / kSpaSimulationUnitsPerMeter;
+            const float elevation = a.elevation / kSpaSimulationUnitsPerMeter;
+            const float width = a.width * kRoadSurfaceRatio * 2.0f / kSpaSimulationUnitsPerMeter;
+            minElevation = std::min(minElevation, elevation);
+            maxElevation = std::max(maxElevation, elevation);
+            minWidth = std::min(minWidth, width);
+            maxWidth = std::max(maxWidth, width);
+            finite = finite && std::isfinite(a.pos.x) && std::isfinite(a.pos.y) &&
+                     std::isfinite(a.elevation) && std::isfinite(a.width) &&
+                     std::abs(length(a.tangent) - 1.0f) < 0.01f;
+        }
+        const float relief = maxElevation - minElevation;
+        const bool ok = finite && std::abs(track.totalLength() - catalog->targetLengthMeters) < 0.01f &&
+                        std::abs(planarMeters - catalog->targetLengthMeters) < 2.0f &&
+                        std::abs(relief - catalog->nominalElevationReliefMeters) < 0.10f &&
+                        minWidth >= 9.0f && maxWidth <= 17.0f;
+        std::cout << "track-catalog-audit name=" << catalog->displayName
+                  << " target_m=" << catalog->targetLengthMeters
+                  << " planar_m=" << planarMeters
+                  << " turns=" << catalog->turnCount
+                  << " relief_m=" << relief
+                  << " width_m=" << minWidth << "," << maxWidth
+                  << " clockwise=" << catalog->clockwise
+                  << " finite=" << finite
+                  << " ok=" << ok << "\n";
+        allOk = allOk && ok;
+    }
+    return allOk;
+}
 
 bool runSpaGeometryAudit() {
     Track3D track(TrackLayoutId::SpaCoast);
@@ -1714,7 +1826,7 @@ Vector3 terrainSurfacePoint(const Track3D& track, const TrackPoint3D& point, flo
     const float blendStart = half + reach * 0.20f;
     const float blendEnd = half + reach;
     const float blend = smoothstep((std::abs(lane) - blendStart) / std::max(1.0f, blendEnd - blendStart));
-    const float terrainEdgeElevation = track.layout() == TrackLayoutId::SpaCoast
+    const float terrainEdgeElevation = isMetricCircuit(track.layout())
                                            ? point.elevation * kRenderScale - 2.4f
                                            : kTerrainSurfaceY;
     result.y = lerp(result.y, terrainEdgeElevation, blend);
@@ -1864,8 +1976,8 @@ public:
         drawSkyGradient();
         arcade_render::DirectionalLightFog lighting;
         lighting.cameraPosition = camera_.position;
-        lighting.fogStart = track_.layout() == TrackLayoutId::SpaCoast ? 10000.0f : 74.0f;
-        lighting.fogEnd = track_.layout() == TrackLayoutId::SpaCoast ? 12000.0f : 235.0f;
+        lighting.fogStart = isMetricCircuit(track_.layout()) ? 10000.0f : 74.0f;
+        lighting.fogEnd = isMetricCircuit(track_.layout()) ? 12000.0f : 235.0f;
         lighting.exposure = 0.80f;
         renderer_.setLighting(lighting);
         BeginMode3D(camera_);
@@ -2750,13 +2862,13 @@ private:
             samples.push_back({center, lateral, point.width * 0.5f * kRenderScale,
                                point.progress * trackProgressRenderScale(track_.layout()), point.road,
                                point.shoulder, point.natural, point.zone, point.bank * kRenderScale,
-                               track_.layout() == TrackLayoutId::SpaCoast ? 0.68f : 1.0f,
-                               track_.layout() == TrackLayoutId::SpaCoast
+                               isMetricCircuit(track_.layout()) ? 0.68f : 1.0f,
+                               isMetricCircuit(track_.layout())
                                    ? point.elevation * kRenderScale - 2.4f
                                    : kTerrainSurfaceY,
-                               track_.layout() == TrackLayoutId::SpaCoast ? -0.40f : kTerrainSurfaceY,
-                               track_.layout() == TrackLayoutId::SpaCoast ? 65.0f : 0.0f,
-                               track_.layout() == TrackLayoutId::SpaCoast});
+                               isMetricCircuit(track_.layout()) ? -0.40f : kTerrainSurfaceY,
+                               isMetricCircuit(track_.layout()) ? 65.0f : 0.0f,
+                               isMetricCircuit(track_.layout())});
         }
         return samples;
     }
@@ -2772,7 +2884,7 @@ private:
     int activeKartCount() const { return isTimeTrial() ? 1 : kKartCount; }
     ArcadeVehicleConfig selectedTrackTuning(const KartSpec3D& spec) const {
         ArcadeVehicleConfig tuning = tuningForSpec(spec);
-        if (track_.layout() == TrackLayoutId::SpaCoast) {
+        if (isMetricCircuit(track_.layout())) {
             tuning.maxForwardSpeed *= kSpaVehiclePaceScale;
             tuning.engineAcceleration *= 0.60f;
             tuning.launchAccelerationBonus *= 0.55f;
@@ -2971,7 +3083,7 @@ private:
             kart.racer = racers_[static_cast<size_t>(i == 0 ? selectedRacer_ : (i * 3) % static_cast<int>(racers_.size()))];
             static constexpr std::array<float, kKartCount> kGridProgress = {-420.0f, -84.0f, -126.0f, -246.0f, -288.0f, -374.0f};
             static constexpr std::array<float, kKartCount> kGridLane = {34.0f, -34.0f, 34.0f, -34.0f, 34.0f, -34.0f};
-            const float gridScale = track_.layout() == TrackLayoutId::SpaCoast
+            const float gridScale = isMetricCircuit(track_.layout())
                                         ? 1.0f / kSpaSimulationUnitsPerMeter
                                         : 1.0f;
             const float stagger = startProgress +
@@ -3010,7 +3122,7 @@ private:
         raceConfig.lapCount = static_cast<uint32_t>(std::max(1, targetLaps()));
         raceConfig.infiniteLaps = targetLaps() == kInfiniteLaps;
         raceConfig.countdownSeconds = 3.0f;
-        if (track_.layout() == TrackLayoutId::SpaCoast) {
+        if (isMetricCircuit(track_.layout())) {
             raceConfig.checkpointGates = {{0.0f, 0.0f}, {0.10f, 0.10f}, {0.21f, 0.21f}, {0.32f, 0.32f},
                                           {0.43f, 0.43f}, {0.54f, 0.54f}, {0.65f, 0.65f}, {0.76f, 0.76f},
                                           {0.87f, 0.87f}};
@@ -3036,7 +3148,7 @@ private:
     void updateProgress(Kart3D& kart) {
         const float oldRaceProgress = progressAhead(track_.startProgress(), kart.progress, track_.totalLength());
         kart.previousProgress = kart.progress;
-        if (track_.layout() == TrackLayoutId::SpaCoast) {
+        if (isMetricCircuit(track_.layout())) {
             const TrackProjection3D projection = track_.projectNear(kart.pos, kart.nearest, 6);
             kart.progress = projection.progress;
             kart.nearest = projection.nearest;
@@ -3154,7 +3266,7 @@ private:
 
     float racingLaneForProgress(const Kart3D& kart, float progress) const {
         const TrackPoint3D point = track_.sample(progress);
-        if (track_.layout() == TrackLayoutId::SpaCoast) {
+        if (isMetricCircuit(track_.layout())) {
             const float turn = smoothedSignedCurvature(progress + 42.0f);
             const float limit = std::max(0.0f, hardBoundaryLaneLimit(kart, point) - 5.0f);
             const float target = std::clamp(turn * 118.0f, -limit * 0.52f, limit * 0.52f);
@@ -3166,7 +3278,7 @@ private:
     }
 
     float referenceAiSpeed(const Kart3D& kart, float progress) const {
-        if (track_.layout() == TrackLayoutId::SpaCoast) {
+        if (isMetricCircuit(track_.layout())) {
             const float nearCorner = std::max(track_.sample(progress).curvature,
                                               track_.sample(progress + 48.0f).curvature);
             const float cornerLoad = std::clamp(nearCorner / 0.72f, 0.0f, 1.0f);
@@ -3193,7 +3305,7 @@ private:
     void updateAi(Kart3D& kart, float dt, int index, bool raceTraffic = true) {
         TrackPoint3D center = track_.sample(kart.progress);
         float speed = length(kart.vel);
-        const float distanceSpeed = track_.layout() == TrackLayoutId::SpaCoast
+        const float distanceSpeed = isMetricCircuit(track_.layout())
                                         ? speed / kSpaSimulationUnitsPerMeter
                                         : speed;
         const float pathSpeed = distanceSpeed / kRacePaceScale;
@@ -3263,13 +3375,13 @@ private:
 
     Input3D auditInput(AuditDriver driver, const Kart3D& kart) const {
         const float speed = length(kart.vel);
-        const float distanceSpeed = track_.layout() == TrackLayoutId::SpaCoast
+        const float distanceSpeed = isMetricCircuit(track_.layout())
                                         ? speed / kSpaSimulationUnitsPerMeter
                                         : speed;
         const float pathSpeed = distanceSpeed / kRacePaceScale;
         const TrackPoint3D future = track_.sample(kart.progress + 95.0f + pathSpeed * 0.88f);
         const TrackPoint3D apex = track_.sample(kart.progress + 155.0f + pathSpeed * 0.58f);
-        const TrackPoint3D center = track_.layout() == TrackLayoutId::SpaCoast
+        const TrackPoint3D center = isMetricCircuit(track_.layout())
                                         ? track_.sample(kart.progress)
                                         : track_.pointAtIndex(kart.nearest);
         const float corner = std::max(future.curvature, apex.curvature);
@@ -3282,13 +3394,13 @@ private:
 
         Input3D input;
         input.steer = aiSteerForProgress(kart, 0, laneTarget);
-        if (track_.layout() == TrackLayoutId::SpaCoast) {
+        if (isMetricCircuit(track_.layout())) {
             const float laneLimit = std::max(1.0f, roadCenterLimit(kart, center));
             input.steer = std::clamp(input.steer - kart.lane / laneLimit * 0.70f, -1.0f, 1.0f);
         }
         input.throttle = 1.0f;
 
-        const float targetScale = track_.layout() == TrackLayoutId::SpaCoast
+        const float targetScale = isMetricCircuit(track_.layout())
                                       ? std::clamp(1.00f - corner * 4.20f, 0.28f, 0.98f)
                                       : std::clamp((driver == AuditDriver::Drift ? 1.06f : 1.04f) - corner * 3.15f, 0.56f, 1.05f);
         const float targetSpeed = kart.tuning.maxForwardSpeed * targetScale;
@@ -3313,7 +3425,7 @@ private:
             const bool entryDemand = kart.boostTimer <= 0.04f && !nearEdge && corner > 0.042f &&
                                      speed > 44.0f * kRacePaceScale && std::abs(input.steer) > 0.070f;
             input.drift = false;
-            if (entryDemand && track_.layout() != TrackLayoutId::SpaCoast && kart.brakeLoad < 0.72f) {
+            if (entryDemand && !isMetricCircuit(track_.layout()) && kart.brakeLoad < 0.72f) {
                 input.throttle = 1.0f;
                 input.brake = 1.0f;
             }
@@ -3385,7 +3497,7 @@ private:
     float aiSteerForProgress(const Kart3D& kart, int index, float laneTarget) const {
         (void)index;
         const float speed = length(kart.vel);
-        const float distanceSpeed = track_.layout() == TrackLayoutId::SpaCoast
+        const float distanceSpeed = isMetricCircuit(track_.layout())
                                         ? speed / kSpaSimulationUnitsPerMeter
                                         : speed;
         const float pathSpeed = distanceSpeed / kRacePaceScale;
@@ -3395,14 +3507,14 @@ private:
         const float horizonScale = lerp(1.0f, 0.30f, std::clamp((steeringCurvature - 0.08f) / 0.48f, 0.0f, 1.0f));
         const float steeringHorizon = std::clamp((128.0f + pathSpeed * 0.65f) * horizonScale, 55.0f, 340.0f);
         const TrackPoint3D future = track_.sample(kart.progress + steeringHorizon);
-        if (track_.layout() != TrackLayoutId::SpaCoast) {
+        if (!isMetricCircuit(track_.layout())) {
             laneTarget -= std::copysign(13.0f, future.signedCurvature) *
                           std::clamp(future.curvature * 4.0f, 0.0f, 1.0f);
         }
         const Vec2 desired = future.pos + future.normal * laneTarget;
         const Vec2 forward = fromAngle(kart.heading);
         const Vec2 toTarget = normalize(desired - kart.pos);
-        const float steeringGain = track_.layout() == TrackLayoutId::SpaCoast ? 1.40f : 1.95f;
+        const float steeringGain = isMetricCircuit(track_.layout()) ? 1.40f : 1.95f;
         return std::clamp(std::atan2(cross(forward, toTarget), dot(forward, toTarget)) * steeringGain, -1.0f, 1.0f);
     }
 
@@ -3525,12 +3637,12 @@ private:
     }
 
     void constrainToTrack(Kart3D& kart) {
-        const TrackPoint3D center = track_.layout() == TrackLayoutId::SpaCoast
+        const TrackPoint3D center = isMetricCircuit(track_.layout())
                                         ? track_.sample(kart.progress)
                                         : track_.pointAtIndex(kart.nearest);
         const float lane = dot(kart.pos - center.pos, center.normal);
         const float driveableLimit = hardBoundaryLaneLimit(kart, center);
-        if (track_.layout() != TrackLayoutId::SpaCoast) {
+        if (!isMetricCircuit(track_.layout())) {
             if (std::abs(lane) <= driveableLimit) {
                 return;
             }
@@ -3556,7 +3668,7 @@ private:
             return;
         }
         if (std::abs(lane) <= driveableLimit) {
-            const float releaseInset = track_.layout() == TrackLayoutId::SpaCoast
+            const float releaseInset = isMetricCircuit(track_.layout())
                                            ? 0.45f * kSpaSimulationUnitsPerMeter
                                            : 4.0f;
             if (std::abs(lane) < driveableLimit - releaseInset) {
@@ -3790,9 +3902,9 @@ private:
         const Vec2 velocityDirection = speed > 12.0f ? normalize(player.vel) : forward2;
         const Vec2 chaseDirection = normalize(lerp(forward2, velocityDirection, 0.32f));
         const float speedT = std::clamp(speed / std::max(1.0f, player.tuning.maxForwardSpeed), 0.0f, 1.0f);
-        const bool spa = track_.layout() == TrackLayoutId::SpaCoast;
-        const float back = spa ? lerp(92.0f, 110.0f, speedT) : lerp(64.0f, 69.0f, speedT);
-        const float height = spa ? lerp(38.0f, 43.0f, speedT) : lerp(27.0f, 30.0f, speedT);
+        const bool metricCircuit = isMetricCircuit(track_.layout());
+        const float back = metricCircuit ? lerp(92.0f, 110.0f, speedT) : lerp(64.0f, 69.0f, speedT);
+        const float height = metricCircuit ? lerp(38.0f, 43.0f, speedT) : lerp(27.0f, 30.0f, speedT);
         const TrackPoint3D ground = track_.sample(player.progress);
         const float playerGround = bankedElevation(ground, player.lane);
         const float impactShake = std::clamp(player.contactTimer / 0.22f, 0.0f, 1.0f);
@@ -3809,7 +3921,7 @@ private:
         cameraElevation_ = lerp(cameraElevation_, desiredElevation, 1.0f - std::exp(-dt * verticalResponse));
         const Vector3 desiredPos = toWorld(desiredPlanar, cameraElevation_ + height + verticalShake);
         Vector3 desiredTarget{};
-        if (spa) {
+        if (metricCircuit) {
             const TrackPoint3D preview = track_.sample(player.progress + lerp(18.0f, 28.0f, speedT));
             desiredTarget = toWorld(preview.pos, preview.elevation + 8.0f);
         } else {
@@ -3829,7 +3941,7 @@ private:
     }
 
     void drawEnvironment() {
-        if (track_.layout() == TrackLayoutId::SpaCoast) {
+        if (isMetricCircuit(track_.layout())) {
             Vector3 oceanCenter = karts_.empty() ? Vector3{} : toWorld(karts_[0].pos);
             oceanCenter.y = -0.44f;
             DrawPlane(oceanCenter, {3200.0f, 3200.0f}, Color{37, 166, 192, 255});
@@ -3927,7 +4039,7 @@ private:
         const float viewProgress =
             mode_ == Mode::Garage || karts_.empty() ? track_.startProgress() : karts_[0].progress;
         const auto detailVisible = [&](float progress) {
-            if (track_.layout() == TrackLayoutId::SpaCoast) {
+            if (isMetricCircuit(track_.layout())) {
                 const float distance = signedDistanceToLoop(viewProgress, progress, track_.totalLength()) *
                                        trackProgressRenderScale(track_.layout());
                 return distance >= -kSpaRenderRearRange && distance <= kSpaRenderForwardRange;
@@ -3936,11 +4048,11 @@ private:
             return distance >= -700.0f && distance <= 2500.0f;
         };
         if (trackRenderer_.ready()) {
-            const bool spa = track_.layout() == TrackLayoutId::SpaCoast;
+            const bool metricCircuit = isMetricCircuit(track_.layout());
             const float progressScale = trackProgressRenderScale(track_.layout());
             trackRenderer_.draw(viewProgress * progressScale,
-                                spa ? kSpaRenderForwardRange : 260.0f,
-                                spa ? kSpaRenderRearRange : 24.0f,
+                                metricCircuit ? kSpaRenderForwardRange : 260.0f,
+                                metricCircuit ? kSpaRenderRearRange : 24.0f,
                                 camera_.position, 0.0f);
         } else {
             constexpr int stride = 2;
@@ -4001,7 +4113,7 @@ private:
         // Low sector-specific edge geometry follows the same lane boundary as
         // collision resolution. It gives every corner a stable silhouette and
         // communicates exactly how much shoulder remains available.
-        const int boundaryStride = track_.layout() == TrackLayoutId::SpaCoast ? 3 : 10;
+        const int boundaryStride = isMetricCircuit(track_.layout()) ? 3 : 10;
         for (int i = 0; i < track_.sampleCount(); i += boundaryStride) {
             const TrackPoint3D& p = samples[static_cast<size_t>(i)];
             if (!detailVisible(p.progress)) {
@@ -4010,7 +4122,7 @@ private:
             const TrackPoint3D& next = samples[static_cast<size_t>((i + boundaryStride) % track_.sampleCount())];
             const float segmentLength = length(next.pos - p.pos) * kRenderScale * 1.05f;
             for (float side : {-1.0f, 1.0f}) {
-                const float lane = track_.layout() == TrackLayoutId::SpaCoast
+                const float lane = isMetricCircuit(track_.layout())
                                        ? side * (roadSurfaceHalfWidth(p) + 14.0f)
                                        : side * (p.width * 0.5f + 18.0f);
                 const Vector3 edge = track_.roadPoint(p, lane);
@@ -4119,7 +4231,7 @@ private:
             state.scale = s * scaleMultiplier;
             state.windPhase = raceTime_ * 1.4f + prop.progress * 0.011f;
             renderer_.drawTropicalProp(spec, state);
-            if (track_.layout() == TrackLayoutId::SpaCoast && prop.type == Prop3D::Type::Palm) {
+            if (isMetricCircuit(track_.layout()) && prop.type == Prop3D::Type::Palm) {
                 const Vector3 along{p.tangent.x, 0.0f, p.tangent.y};
                 const Vector3 lateral{p.normal.x, 0.0f, p.normal.y};
                 for (int tree = 0; tree < 2; ++tree) {
@@ -4214,14 +4326,14 @@ private:
         const Vector3 propCenter = lift(terrainSurfacePoint(track_, point, prop.side), 2.2f * prop.scale);
         const Vector3 cameraToProp = sub(propCenter, camera_.position);
         const float cameraDistanceSq = cameraToProp.x * cameraToProp.x + cameraToProp.y * cameraToProp.y + cameraToProp.z * cameraToProp.z;
-        if (track_.layout() == TrackLayoutId::SpaCoast) {
+        if (isMetricCircuit(track_.layout())) {
             const float courseDistance = signedDistanceToLoop(karts_[0].progress, prop.progress, track_.totalLength()) *
                                          trackProgressRenderScale(track_.layout());
             if (courseDistance < -kSpaRenderRearRange || courseDistance > kSpaRenderForwardRange) {
                 return false;
             }
         }
-        const float fadeSafeRange = (track_.layout() == TrackLayoutId::SpaCoast ? 1050.0f : 275.0f) + prop.scale * 5.0f;
+        const float fadeSafeRange = (isMetricCircuit(track_.layout()) ? 1050.0f : 275.0f) + prop.scale * 5.0f;
         return cameraDistanceSq <= fadeSafeRange * fadeSafeRange;
     }
 
@@ -4683,7 +4795,7 @@ private:
             harbor::ui::RaceHudViewModel view;
             view.vehicleName = player.spec.name;
             view.driverName = player.racer;
-            const float speedKphScale = track_.layout() == TrackLayoutId::SpaCoast
+            const float speedKphScale = isMetricCircuit(track_.layout())
                                             ? 3.6f / kSpaSimulationUnitsPerMeter
                                             : 1.22f;
             view.speedKph = static_cast<int>(std::max(0.0f, player.telemetry.forwardSpeed) * speedKphScale + 0.5f);
@@ -4804,6 +4916,9 @@ private:
 }  // namespace
 
 int runHarborKarts3D(int argc, char** argv) {
+    if (hasArg(argc, argv, "--track-catalog-audit")) {
+        return runTrackCatalogAudit() ? 0 : 1;
+    }
     if (hasArg(argc, argv, "--spa-audit")) {
         return runSpaGeometryAudit() ? 0 : 1;
     }
