@@ -5036,6 +5036,7 @@ int runHarborKarts3D(int argc, char** argv) {
                           hasArg(argc, argv, "--capture-driven-lap") || hasArg(argc, argv, "--capture-spa-lap") ||
                           hasArg(argc, argv, "--capture-time-trial") ||
                           hasArg(argc, argv, "--capture-section-tour") || hasArg(argc, argv, "--capture-spa-tour") ||
+                          hasArg(argc, argv, "--capture-suzuka-tour") ||
                           hasArg(argc, argv, "--capture-map-gallery");
     const bool smokeRender = hasArg(argc, argv, "--smoke-render");
     const bool capturePlaytest = hasArg(argc, argv, "--capture-playtest");
@@ -5043,7 +5044,8 @@ int runHarborKarts3D(int argc, char** argv) {
     const bool captureDrivenLap = hasArg(argc, argv, "--capture-lap") || hasArg(argc, argv, "--capture-driven-lap") || captureSpaLap;
     const bool captureTimeTrial = hasArg(argc, argv, "--capture-time-trial");
     const bool captureSpaTour = hasArg(argc, argv, "--capture-spa-tour");
-    const bool captureSectionTour = hasArg(argc, argv, "--capture-section-tour") || captureSpaTour;
+    const bool captureSuzukaTour = hasArg(argc, argv, "--capture-suzuka-tour");
+    const bool captureSectionTour = hasArg(argc, argv, "--capture-section-tour") || captureSpaTour || captureSuzukaTour;
     const bool captureMapGallery = hasArg(argc, argv, "--capture-map-gallery");
     const bool diagnoseController = hasArg(argc, argv, "--diagnose-controller");
     const bool handlingAudit = hasArg(argc, argv, "--handling-audit");
@@ -5193,6 +5195,8 @@ int runHarborKarts3D(int argc, char** argv) {
     if (captureSectionTour) {
         if (captureSpaTour) {
             game.selectMapForCapture(1);
+        } else if (captureSuzukaTour) {
+            game.selectMapForCapture(2);
         }
         static constexpr std::array<float, 9> kTourPhases = {0.035f, 0.135f, 0.245f, 0.355f, 0.465f,
                                                              0.575f, 0.690f, 0.805f, 0.920f};
@@ -5200,7 +5204,9 @@ int runHarborKarts3D(int argc, char** argv) {
             game.setupSectionTour(kTourPhases[i], static_cast<int>(i));
             const std::filesystem::path path =
                 std::filesystem::path("../playtest_frames") /
-                TextFormat(captureSpaTour ? "formula_buggy_spa_tour_%02d.png" : "harbor_karts_3d_section_tour_%02d.png",
+                TextFormat(captureSpaTour ? "formula_buggy_spa_tour_%02d.png"
+                                         : (captureSuzukaTour ? "formula_buggy_suzuka_tour_%02d.png"
+                                                              : "harbor_karts_3d_section_tour_%02d.png"),
                            static_cast<int>(i));
             game.render(60.0f, true, path.string().c_str());
         }

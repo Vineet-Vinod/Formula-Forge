@@ -161,6 +161,7 @@ make spa-audit-3d
 make track-catalog-audit-3d
 make time-trial-audit-3d
 make capture-spa-tour-3d
+make capture-suzuka-tour-3d
 make capture-map-gallery-3d
 make capture-time-trial-3d
 make spa-perf-audit-3d
@@ -200,7 +201,8 @@ contracts. `capture-map-gallery-3d` writes a selection-screen preview for every
 circuit.
 `time-trial-audit-3d` drives a complete solo Spa lap and verifies one-racer
 flow, infinite laps, best-lap timing, parked opponents, and no results transition.
-`capture-spa-tour-3d` writes nine course views for visual inspection.
+`capture-spa-tour-3d` and `capture-suzuka-tour-3d` write nine course views for
+visual inspection, including Suzuka's runtime bridge approach and crossover.
 `capture-time-trial-3d` writes the live and paused solo timing HUD states.
 `collision-audit-3d` runs deterministic rear-end, head-on, and side-swipe
 contact cases and fails if the formula car bodies remain overlapped.

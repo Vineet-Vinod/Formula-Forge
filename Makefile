@@ -8,7 +8,7 @@ SDL_LIB := $(BUILD_DIR)/deps/install/lib/libSDL3.a
 RAYLIB_LIB := $(BUILD_DIR)/deps/raylib-install/lib/libraylib.a
 GAME_SOURCES := $(wildcard src/*.cpp src/*.hpp) CMakeLists.txt
 
-.PHONY: all deps assets assets-validate assets-preview clean clean-all run run-2d run-3d self-test input-audit-3d audio-audit-3d vehicle-audit-3d race-flow-audit-3d race-audit race-audit-3d capture-playtest capture-playtest-3d capture-lap-3d capture-section-tour-3d capture-spa-tour-3d capture-map-gallery-3d capture-time-trial-3d spa-audit-3d track-catalog-audit-3d asset-audit-3d time-trial-audit-3d perf-audit perf-audit-3d spa-perf-audit-3d smoke-3d handling-audit-3d collision-audit-3d terrain-audit-3d ai-pace-audit-3d
+.PHONY: all deps assets assets-validate assets-preview clean clean-all run run-2d run-3d self-test input-audit-3d audio-audit-3d vehicle-audit-3d race-flow-audit-3d race-audit race-audit-3d capture-playtest capture-playtest-3d capture-lap-3d capture-section-tour-3d capture-spa-tour-3d capture-suzuka-tour-3d capture-map-gallery-3d capture-time-trial-3d spa-audit-3d track-catalog-audit-3d asset-audit-3d time-trial-audit-3d perf-audit perf-audit-3d spa-perf-audit-3d smoke-3d handling-audit-3d collision-audit-3d terrain-audit-3d ai-pace-audit-3d
 
 all: $(TARGET) $(TARGET_3D) $(LEGACY_TARGET) $(LEGACY_TARGET_3D)
 
@@ -78,6 +78,9 @@ capture-section-tour-3d: $(TARGET_3D)
 
 capture-spa-tour-3d: $(TARGET_3D)
 	$(TARGET_3D) --capture-spa-tour
+
+capture-suzuka-tour-3d: $(TARGET_3D)
+	$(TARGET_3D) --capture-suzuka-tour
 
 capture-map-gallery-3d: $(TARGET_3D)
 	$(TARGET_3D) --capture-map-gallery
