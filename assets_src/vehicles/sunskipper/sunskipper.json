@@ -9,25 +9,25 @@
   },
   "measured_bounds_blender": {
     "min": [
-      -0.9208,
-      -1.81,
-      0.02
+      -1.0111,
+      -2.555,
+      -0.0
     ],
     "max": [
-      0.9208,
-      1.92,
-      1.2881
+      1.0111,
+      2.36,
+      1.0337
     ],
     "dimensions": [
-      1.8417,
-      3.73,
-      1.2681
+      2.0222,
+      4.915,
+      1.0337
     ]
   },
   "runtime_budget": {
-    "mesh_objects": 48,
-    "vertices": 6444,
-    "triangles": 12716
+    "mesh_objects": 104,
+    "vertices": 10848,
+    "triangles": 21300
   },
   "verification": {
     "status": "passed",
@@ -47,11 +47,11 @@
       "turn_right": 27
     },
     "skin_count": 1,
-    "exported_meshes": 48,
+    "exported_meshes": 104,
     "dimension_error_percent": {
-      "width_x": 3.47,
-      "length_y": 0.27,
-      "height_z": 0.93
+      "width_x": 0.38,
+      "length_y": 0.1,
+      "height_z": 1.55
     },
     "dimension_tolerance_percent": 8.0
   },
@@ -72,12 +72,25 @@
   "export": "sunskipper.glb",
   "preview": "sunskipper_preview.png",
   "type": "vehicle",
-  "display_name": "Sunskipper GT",
-  "family": "compact roadster",
+  "display_name": "Sunskipper F1",
+  "family": "low-drag formula",
+  "vehicle_class": "formula",
   "target_dimensions_m": {
-    "width_x": 1.78,
-    "length_y": 3.72,
-    "height_z": 1.28
+    "width_x": 2.03,
+    "length_y": 4.92,
+    "height_z": 1.05
+  },
+  "hard_points_m": {
+    "wheelbase": 3.2,
+    "front_track_centers": 1.61,
+    "rear_track_centers": 1.55,
+    "ground_clearance": 0.07,
+    "tire_contact_z": 0.0,
+    "seat_anchor_blender": [
+      0.0,
+      0.12,
+      0.74
+    ]
   },
   "animation_clips": {
     "accelerate": [
@@ -106,8 +119,8 @@
     "driver_bone": "seat_anchor",
     "gltf_local_y_up_z_forward_m": [
       0.0,
-      1.0,
-      -0.1
+      0.74,
+      -0.12
     ]
   }
 }
