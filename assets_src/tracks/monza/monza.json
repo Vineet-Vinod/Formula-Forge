@@ -1,0 +1,245 @@
+{
+  "schema_version": 1,
+  "asset": "monza",
+  "type": "track_world",
+  "display_name": "Monza",
+  "venue": "Autodromo Nazionale Monza inspired coastal parkland",
+  "country": "Italy",
+  "units": "meter",
+  "coordinate_unit": "meter",
+  "axes_blender": {
+    "right": "+X",
+    "front": "-Y",
+    "up": "+Z"
+  },
+  "target_lap_length": {
+    "value": 5793.0,
+    "unit": "meter"
+  },
+  "target_lap_length_m": 5793.0,
+  "measured_planar_centerline_asset_units": 5791.8922,
+  "measured_surface_centerline_asset_units": 5792.01,
+  "turn_count": 11,
+  "clockwise": true,
+  "road_width_asset_units": {
+    "min": 10.0,
+    "max": 12.0,
+    "unit": "meter",
+    "profile": "kMonzaWidth",
+    "formula": null
+  },
+  "road_width_cpp_world_units": {
+    "min": 14.45,
+    "max": 17.34
+  },
+  "source_centerline": {
+    "file": "src/track_catalog.cpp",
+    "symbol": "kMonzaCenterline",
+    "control_points": 72,
+    "normalization_scale": 1.61670026,
+    "control_sha256": "db43f056c3dc880b1a9a81f68c73ab4c5f34edd430387d05aceae59c13abeafd",
+    "elevation_symbol": "kMonzaElevation",
+    "elevation_sha256": "65925246a37248a737a4dceb5170dab41fb00982c56c4c46b08a75d550ab1463",
+    "width_symbol": "kMonzaWidth",
+    "width_sha256": "7dea1b27465df4460c72021633fce2613276ed85caf598bd968dd992f267c32e",
+    "catmull_rom_steps_per_control_segment": 32,
+    "closed_loop_arc_length_resampling": true
+  },
+  "runtime_geometry": {
+    "centerline_samples": 1024,
+    "mesh_objects": 12,
+    "vertices": 13823,
+    "triangles": 13478,
+    "materials": 15
+  },
+  "measured_bounds_blender": {
+    "min": [
+      -1032.49,
+      -1151.892,
+      -5.0
+    ],
+    "max": [
+      1025.085,
+      1254.648,
+      21.72
+    ],
+    "dimensions": [
+      2057.575,
+      2406.54,
+      26.72
+    ]
+  },
+  "measured_bounds_gltf_y_up": {
+    "min": [
+      -1032.49,
+      -5.0,
+      -1254.648
+    ],
+    "max": [
+      1025.085,
+      21.72,
+      1151.892
+    ],
+    "dimensions": [
+      2057.575,
+      26.72,
+      2406.54
+    ]
+  },
+  "expected_bounds_cpp_world": {
+    "min": [
+      -1491.948,
+      -7.225,
+      -1812.966
+    ],
+    "max": [
+      1481.248,
+      31.385,
+      1664.484
+    ],
+    "dimensions": [
+      2973.196,
+      38.61,
+      3477.45
+    ]
+  },
+  "runtime_alignment": {
+    "cpp_layout_id": "TrackLayoutId::Monza",
+    "asset_origin": "C++ catalog plan origin and zero-elevation datum; not the start line",
+    "blender_to_gltf_matrix_row_major": [
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        -1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "gltf_and_raylib_axes": {
+      "right": "+X",
+      "up": "+Y",
+      "course_plan_y": "+Z"
+    },
+    "cpp_simulation_units_per_asset_unit": 17.0,
+    "cpp_render_scale": 0.085,
+    "recommended_glb_uniform_scale": 1.445,
+    "recommended_world_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "recommended_yaw_degrees": 0.0,
+    "mapping": "cppWorld = gltfPosition * recommended_glb_uniform_scale",
+    "road_surface_offset_above_centerline_asset_units": 0.06,
+    "opaque_layer_elevations_asset_units": {
+      "ocean": -5.0,
+      "sand": -0.8,
+      "vegetation": -0.4,
+      "embankment_outer": -0.2
+    },
+    "visual_replacement_scope": [
+      "road",
+      "runoff",
+      "curbs",
+      "terrain",
+      "ocean",
+      "props",
+      "start_gantry"
+    ],
+    "authoritative_runtime_system": "Track3D remains authoritative for physics, progress, elevation and width",
+    "start": {
+      "phase": 0.0,
+      "position_blender": [
+        -32.334005,
+        808.350131,
+        10.8
+      ],
+      "forward_blender": [
+        0.60461696,
+        -0.79651638,
+        0.0
+      ],
+      "position_gltf_raylib": [
+        -32.334005,
+        10.8,
+        -808.350131
+      ],
+      "forward_gltf_raylib": [
+        0.60461696,
+        0.0,
+        0.79651638
+      ]
+    }
+  },
+  "material_roles": {
+    "road": "asphalt",
+    "runoff": "runoff",
+    "curb_primary": "curb_red",
+    "curb_secondary": "curb_white",
+    "sand": "beach_sand",
+    "vegetation": "island_vegetation",
+    "ocean": "ocean_water",
+    "palm_trunk": "palm_trunk",
+    "palm_fronds": "palm_fronds",
+    "house_primary": "house_coral",
+    "house_secondary": "house_sun",
+    "house_roof": "house_roof",
+    "rocks": "coastal_stone",
+    "gantry": "gantry_metal",
+    "start_banner": "start_banner"
+  },
+  "required_materials": [
+    "asphalt",
+    "beach_sand",
+    "coastal_stone",
+    "curb_red",
+    "curb_white",
+    "gantry_metal",
+    "house_coral",
+    "house_roof",
+    "house_sun",
+    "island_vegetation",
+    "ocean_water",
+    "palm_fronds",
+    "palm_trunk",
+    "runoff",
+    "start_banner"
+  ],
+  "required_nodes": [
+    "map_root",
+    "circuit_root",
+    "terrain_root",
+    "scenery_root",
+    "track_surface",
+    "track_runoff",
+    "track_curbs",
+    "track_embankment",
+    "sand_island",
+    "ocean",
+    "palm_groves",
+    "coastal_houses",
+    "coastal_rocks",
+    "start_gantry",
+    "start_finish_line"
+  ],
+  "source": "monza.blend",
+  "export": "monza.glb",
+  "preview": "monza_preview.png"
+}
