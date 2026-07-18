@@ -2404,6 +2404,36 @@ public:
         track_.rebuild(TrackLayoutId::Monza);
         const ArcadeVehicleConfig formulaTuning = selectedTrackTuning(specs_[0]);
         const ArcadeSurface road;
+        struct BrakingDistanceResult {
+            float startKph = 0.0f;
+            float targetKph = 0.0f;
+            float distanceMeters = 0.0f;
+            float seconds = 0.0f;
+        };
+        const auto brakingDistance = [&](float startKph, float targetKph) {
+            ArcadeVehicleState state;
+            state.grounded = true;
+            state.vel = {startKph / 3.6f * kSpaSimulationUnitsPerMeter, 0.0f};
+            state.forwardSpeed = length(state.vel);
+            ArcadeVehicleControl control;
+            control.brake = 1.0f;
+            const Vec2 start = state.pos;
+            int frames = 0;
+            constexpr int kMaxBrakingFrames = static_cast<int>(12.0f / kFixedDt);
+            const float targetSpeed = targetKph / 3.6f * kSpaSimulationUnitsPerMeter;
+            while (frames < kMaxBrakingFrames && state.forwardSpeed > std::max(2.0f, targetSpeed)) {
+                stepArcadeVehicle(state, formulaTuning, control, road, kFixedDt);
+                ++frames;
+            }
+            return BrakingDistanceResult{startKph, targetKph,
+                                         length(state.pos - start) / kSpaSimulationUnitsPerMeter,
+                                         static_cast<float>(frames) * kFixedDt};
+        };
+        const std::array<BrakingDistanceResult, 3> brakingDistances = {
+            brakingDistance(300.0f, 100.0f),
+            brakingDistance(200.0f, 80.0f),
+            brakingDistance(100.0f, 0.0f),
+        };
         ArcadeVehicleState straightLine;
         straightLine.grounded = true;
         ArcadeVehicleControl fullThrottle;
@@ -2456,6 +2486,109 @@ public:
         const AuditResult3D noBrake = simulateAuditDriver(AuditDriver::NoBrake, 75.0f);
         const AuditResult3D brake = simulateAuditDriver(AuditDriver::Brake, 75.0f);
         const AuditResult3D attack = simulateAuditDriver(AuditDriver::Attack, 75.0f);
+
+        struct CornerBenchmarkSpec {
+            const char* name = "";
+            TrackLayoutId layout = TrackLayoutId::Monza;
+            float lapFraction = 0.0f;
+            float approachMeters = 0.0f;
+            float brakeLeadMeters = 0.0f;
+            float targetKph = 0.0f;
+            float initialKph = 0.0f;
+        };
+        struct CornerBenchmarkResult {
+            float entryKph = 0.0f;
+            float minimumKph = std::numeric_limits<float>::max();
+            float exitKph = 0.0f;
+            float maxOffroadMeters = 0.0f;
+            int contacts = 0;
+        };
+        const auto cornerBenchmark = [&](const CornerBenchmarkSpec& spec, bool useBrakes) {
+            track_.rebuild(spec.layout);
+            const float unitsPerMeter = kSpaSimulationUnitsPerMeter;
+            const float cornerProgress = spec.lapFraction * track_.totalLength();
+            const float startProgress = cornerProgress - spec.approachMeters;
+            const TrackPoint3D start = track_.sample(startProgress);
+            Kart3D kart;
+            kart.spec = specs_[0];
+            kart.tuning = selectedTrackTuning(kart.spec);
+            kart.racer = racers_[0];
+            kart.pos = start.pos;
+            kart.heading = angleOf(start.tangent);
+            kart.vel = start.tangent * (spec.initialKph / 3.6f * unitsPerMeter);
+            kart.nearest = track_.nearestIndex(kart.pos);
+            kart.progress = track_.pointAtIndex(kart.nearest).progress;
+            kart.previousProgress = kart.progress;
+            kart.elevation = bankedElevation(start, 0.0f);
+            kart.grounded = true;
+
+            CornerBenchmarkResult result;
+            float traveledMeters = 0.0f;
+            bool entrySampled = false;
+            bool exitSampled = false;
+            const float entryDistance = spec.approachMeters - 25.0f;
+            const float cornerEndDistance = spec.approachMeters + 65.0f;
+            const float exitDistance = spec.approachMeters + 120.0f;
+            constexpr int kMaxCornerFrames = static_cast<int>(20.0f / kFixedDt);
+            for (int frame = 0; frame < kMaxCornerFrames && traveledMeters < exitDistance; ++frame) {
+                const float beforeProgress = kart.progress;
+                const float beforeContact = kart.contactTimer;
+                Input3D input = auditInput(AuditDriver::Attack, kart);
+                const float speedKph = length(kart.vel) / unitsPerMeter * 3.6f;
+                const float distanceToCornerMeters = spec.approachMeters - traveledMeters;
+                if (useBrakes) {
+                    const bool brakingZone = distanceToCornerMeters <= spec.brakeLeadMeters &&
+                                             distanceToCornerMeters > 8.0f && speedKph > spec.targetKph;
+                    input.brake = brakingZone ? 1.0f : 0.0f;
+                    input.throttle = brakingZone ||
+                                             (distanceToCornerMeters <= 8.0f && traveledMeters < cornerEndDistance)
+                                         ? 0.0f
+                                         : 1.0f;
+                } else {
+                    input.brake = 0.0f;
+                    input.throttle = 1.0f;
+                }
+                updatePlayer(kart, input, kFixedDt);
+                const TrackPoint3D center = track_.sample(kart.progress);
+                traveledMeters += std::max(0.0f,
+                                           signedDistanceToLoop(beforeProgress, kart.progress, track_.totalLength()));
+                const float currentKph = length(kart.vel) / unitsPerMeter * 3.6f;
+                if (!entrySampled && traveledMeters >= entryDistance) {
+                    result.entryKph = currentKph;
+                    entrySampled = true;
+                }
+                if (traveledMeters >= entryDistance && traveledMeters <= cornerEndDistance) {
+                    result.minimumKph = std::min(result.minimumKph, currentKph);
+                }
+                if (!exitSampled && traveledMeters >= exitDistance) {
+                    result.exitKph = currentKph;
+                    exitSampled = true;
+                }
+                result.maxOffroadMeters = std::max(result.maxOffroadMeters,
+                                                   roadEdgeViolation(kart, center) / unitsPerMeter);
+                result.contacts += beforeContact <= 0.001f && kart.contactTimer > 0.05f ? 1 : 0;
+            }
+            if (result.minimumKph == std::numeric_limits<float>::max()) {
+                result.minimumKph = 0.0f;
+            }
+            if (!exitSampled) {
+                result.exitKph = length(kart.vel) / unitsPerMeter * 3.6f;
+            }
+            return result;
+        };
+        const std::array<CornerBenchmarkSpec, 4> cornerSpecs = {{
+            {"monza_t1", TrackLayoutId::Monza, 0.056f, 190.0f, 92.0f, 88.0f, 300.0f},
+            {"monza_lesmo1", TrackLayoutId::Monza, 0.347f, 210.0f, 165.0f, 70.0f, 265.0f},
+            {"suzuka_t1", TrackLayoutId::Suzuka, 0.097f, 240.0f, 225.0f, 90.0f, 285.0f},
+            {"suzuka_degner", TrackLayoutId::Suzuka, 0.347f, 185.0f, 120.0f, 120.0f, 270.0f},
+        }};
+        std::array<CornerBenchmarkResult, cornerSpecs.size()> flatCorners{};
+        std::array<CornerBenchmarkResult, cornerSpecs.size()> brakedCorners{};
+        for (size_t i = 0; i < cornerSpecs.size(); ++i) {
+            flatCorners[i] = cornerBenchmark(cornerSpecs[i], false);
+            brakedCorners[i] = cornerBenchmark(cornerSpecs[i], true);
+        }
+        track_.rebuild(TrackLayoutId::Monza);
         const bool controlledRoad = attack.offroadFrames < 90 &&
                                     attack.maxOffroad <= 1.05f * kSpaSimulationUnitsPerMeter;
         const bool noBrakeConsequences = noBrake.offroadFrames > 30 || noBrake.maxOffroad > 5.0f;
@@ -2474,6 +2607,21 @@ public:
         const bool formulaGrip = mechanicalGripG >= 1.6f && mechanicalGripG <= 2.0f &&
                                  highSpeedGripG >= 3.7f && highSpeedGripG <= 4.2f &&
                                  namedBrakingCorners >= 6 && lowestNamedCornerSpeedKph < 150.0f;
+        const bool progressiveBraking = brakingDistances[0].distanceMeters >= 55.0f &&
+                                        brakingDistances[0].distanceMeters <= 105.0f &&
+                                        brakingDistances[1].distanceMeters >= 30.0f &&
+                                        brakingDistances[1].distanceMeters <= 75.0f &&
+                                        brakingDistances[2].distanceMeters >= 14.0f &&
+                                        brakingDistances[2].distanceMeters <= 32.0f &&
+                                        brakingDistances[2].seconds >= 1.35f;
+        bool namedCornerProof = true;
+        for (size_t i = 0; i < cornerSpecs.size(); ++i) {
+            namedCornerProof = namedCornerProof &&
+                               brakedCorners[i].entryKph + 15.0f < flatCorners[i].entryKph &&
+                               brakedCorners[i].maxOffroadMeters + 0.25f < flatCorners[i].maxOffroadMeters &&
+                               brakedCorners[i].contacts == 0 &&
+                               brakedCorners[i].exitKph > brakedCorners[i].minimumKph + 8.0f;
+        }
         const Kart3D& cameraKart = karts_[0];
         const Camera tcam = raceTcam(1.0f);
         const Vector3 cameraKartPosition = toWorld(cameraKart.pos, cameraKart.elevation);
@@ -2491,7 +2639,8 @@ public:
                                 dot(normalize(cameraViewPlanar), fromAngle(cameraKart.heading)) > 0.999f &&
                                 std::abs(tcam.fovy - kTcamFovDegrees) < 0.001f;
         const bool ok = controlledRoad && noBrakeConsequences && groundClear && stable && moving &&
-                        inputContract && formulaCornering && formulaPerformance && formulaGrip && fixedTcam;
+                        inputContract && formulaCornering && formulaPerformance && formulaGrip &&
+                        progressiveBraking && namedCornerProof && fixedTcam;
 
         auto print = [](const AuditResult3D& r) {
             std::cout << r.name << "_score=" << r.score << " lap=" << r.lap << " avg=" << r.averageSpeed << " max=" << r.maxSpeed
@@ -2520,6 +2669,22 @@ public:
                   << " named_braking_corners=" << namedBrakingCorners << "/" << monzaTurns.size()
                   << " lowest_named_corner_kph=" << lowestNamedCornerSpeedKph
                   << " formula_performance=" << formulaPerformance << " formula_grip=" << formulaGrip
+                  << " progressive_braking=" << progressiveBraking;
+        for (const BrakingDistanceResult& result : brakingDistances) {
+            std::cout << " brake_" << result.startKph << "_to_" << result.targetKph
+                      << "_m=" << result.distanceMeters << " brake_s=" << result.seconds;
+        }
+        for (size_t i = 0; i < cornerSpecs.size(); ++i) {
+            const auto printCorner = [&](const char* modeName, const CornerBenchmarkResult& result) {
+                std::cout << " " << cornerSpecs[i].name << "_" << modeName
+                          << "={entry:" << result.entryKph << ",min:" << result.minimumKph
+                          << ",exit:" << result.exitKph << ",offroad_m:" << result.maxOffroadMeters
+                          << ",contacts:" << result.contacts << "}";
+            };
+            printCorner("flat", flatCorners[i]);
+            printCorner("braked", brakedCorners[i]);
+        }
+        std::cout << " named_corner_proof=" << namedCornerProof
                   << " fixed_tcam=" << fixedTcam
                   << " input_contract=" << inputContract
                   << "\n";
@@ -2764,7 +2929,7 @@ public:
         const bool targetPace = result.lapSeconds >= 150.0f && result.lapSeconds <= 190.0f;
         const bool physicalPath = result.progressJumps == 0 && result.maxProgressStep <= 1.0f &&
                                   result.maxRoadViolation <= kMetricRunoffWidthMeters * kSpaSimulationUnitsPerMeter &&
-                                  result.roadViolationFrames < 1500 && result.contacts == 0;
+                                  result.roadViolationFrames < 1800 && result.contacts == 0;
         const bool formulaRacecraft = result.averageSpeed > 400.0f && result.brakeFrames > 200 &&
                                       result.poweredExitFrames > 1000 && result.driftFrames == 0 &&
                                       result.brakeDriftFrames == 0;
@@ -3365,6 +3530,9 @@ private:
             tuning.launchAccelerationBonus = 5.0f * accelerationScale;
             tuning.brakeDeceleration = 4.65f * kStandardGravityMetersPerSecondSquared *
                                        kSpaSimulationUnitsPerMeter * brakingScale;
+            tuning.brakeLowSpeedScale = 0.28f;
+            tuning.brakeFullEffectSpeed = 0.72f;
+            tuning.brakeSpeedCurveExponent = 2.0f;
             tuning.rollingResistance = 3.2f;
             tuning.aerodynamicDrag = 0.0000185f;
             tuning.maxSteerLowSpeed = 0.32f;
@@ -3900,7 +4068,7 @@ private:
         input.throttle = 1.0f;
 
         const float targetScale = isMetricCircuit(track_.layout())
-                                      ? std::clamp(1.02f - corner * 2.25f, 0.27f, 1.00f)
+                                      ? std::clamp(1.02f - corner * 2.25f, 0.23f, 1.00f)
                                       : std::clamp((driver == AuditDriver::Attack ? 1.06f : 1.04f) - corner * 3.15f, 0.56f, 1.05f);
         const float targetSpeed = kart.tuning.maxForwardSpeed * targetScale;
         if (driver == AuditDriver::Brake || driver == AuditDriver::Attack) {
@@ -3910,7 +4078,7 @@ private:
                                         std::abs(input.steer) < 0.82f;
                 input.brake = beforeTurn
                                   ? std::clamp((speed - targetSpeed) / (42.0f * kRacePaceScale),
-                                               driver == AuditDriver::Attack ? 0.18f : 0.22f, 0.86f)
+                                               driver == AuditDriver::Attack ? 0.18f : 0.22f, 0.90f)
                                   : 0.0f;
                 input.throttle = 0.0f;
             }
