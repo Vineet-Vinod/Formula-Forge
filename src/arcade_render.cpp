@@ -1059,9 +1059,8 @@ struct ArcadeRender::Impl {
         }
         averageCompression /= static_cast<float>(state.suspensionCompression.size());
         const float groundedWheelBottom = (0.48f - averageCompression) * travel;
-        Vector3 rootPosition = state.position;
-        rootPosition.y -= groundedWheelBottom * (1.0f - clamp01(state.airborneAmount));
-        Matrix root = compose(rootPosition, {1.0f, 1.0f, 1.0f}, {state.pitchRadians, state.headingRadians, state.rollRadians});
+        const Matrix authoredRoot = compose(state.position, {1.0f, 1.0f, 1.0f},
+                                            {state.pitchRadians, state.headingRadians, state.rollRadians});
 
         const float grounded = 1.0f - 0.74f * clamp01(state.airborneAmount);
         const Color shadowColor{24, 31, 31, static_cast<unsigned char>((110 + static_cast<int>(55.0f * clamp01(state.speedNormalized))) * grounded)};
@@ -1070,19 +1069,27 @@ struct ArcadeRender::Impl {
                                           {0.0f, state.headingRadians, 0.0f});
         draw(shadow, shadowTransform, shadowColor, 0.0f);
 
-        if (drawAuthoredBuggy(spec, state, root)) {
-            drawDust(spec, state, root, bodyBase);
+        // Authored vehicles use a tire-contact origin. Applying the procedural
+        // suspension root correction to them pushed all four tires below the
+        // road at low speed, when compression approaches its resting value.
+        if (drawAuthoredBuggy(spec, state, authoredRoot)) {
+            drawDust(spec, state, authoredRoot, bodyBase);
             const float boost = clamp01(state.boostAmount);
             if (boost > 0.01f) {
                 const float flameLength = h * (0.45f + boost * 0.72f);
                 for (float side : {-1.0f, 1.0f}) {
-                    drawPart(cone, root, {side * w * 0.21f, bodyBase + h * 0.28f, -l * 0.63f},
+                    drawPart(cone, authoredRoot, {side * w * 0.21f, bodyBase + h * 0.28f, -l * 0.63f},
                              {h * 0.14f, flameLength, h * 0.14f}, Color{255, 167, 42, 220}, 0.08f,
                              {-kPi * 0.5f, 0.0f, 0.0f});
                 }
             }
             return;
         }
+
+        Vector3 rootPosition = state.position;
+        rootPosition.y -= groundedWheelBottom * (1.0f - clamp01(state.airborneAmount));
+        Matrix root = compose(rootPosition, {1.0f, 1.0f, 1.0f},
+                              {state.pitchRadians, state.headingRadians, state.rollRadians});
 
         drawBox(root, {0.0f, bodyBase - h * 0.01f, 0.0f}, {w * 0.72f, h * 0.19f, l * 0.70f}, shade(spec.trim, 0.68f),
                 0.28f);

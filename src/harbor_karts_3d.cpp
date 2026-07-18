@@ -41,6 +41,11 @@ constexpr float kSunsetCoveStartPhase = 0.795f;
 constexpr float kRoadSurfaceRatio = 0.40f;
 constexpr float kRoadLaneInset = 4.0f;
 constexpr float kHardBoundaryInset = 18.0f;
+constexpr float kMetricCurbWidthMeters = 0.85f;
+constexpr float kMetricRunoffWidthMeters = 4.0f;
+constexpr float kMetricBarrierOffsetMeters = 6.0f;
+constexpr float kMetricBarrierThicknessMeters = 0.34f;
+constexpr float kMetricRoadSurfaceOffsetMeters = 0.06f;
 constexpr float kTerrainSurfaceY = -0.18f;
 constexpr float kTrackSurfaceLift = 0.018f;
 constexpr float kKartWheelGroundClearance = 0.42f;
@@ -76,6 +81,12 @@ const TrackCatalogEntry* catalogEntryForLayout(TrackLayoutId layout) {
 
 float trackProgressRenderScale(TrackLayoutId layout) {
     return isMetricCircuit(layout) ? kSpaSimulationUnitsPerMeter * kRenderScale : kRenderScale;
+}
+
+float authoredRoadSurfaceLift(TrackLayoutId layout) {
+    return isMetricCircuit(layout)
+               ? kMetricRoadSurfaceOffsetMeters * kSpaSimulationUnitsPerMeter * kRenderScale
+               : kTrackSurfaceLift;
 }
 
 constexpr std::array<const char*, 6> kDriverBackstories = {
@@ -185,6 +196,7 @@ struct TrackPoint3D {
     Color shoulder = {239, 199, 111, 255};
     Color natural = {244, 207, 124, 255};
     int zone = 0;
+    bool metricCircuit = false;
 };
 
 float bankedElevation(const TrackPoint3D& point, float lane) {
@@ -522,6 +534,7 @@ private:
         phase -= std::floor(phase);
         const ZoneMaterial3D material = materialForPhase(phase);
         point.zone = zoneForPhase(phase);
+        point.metricCircuit = isMetricCircuit(layout_);
         point.width = isMetricCircuit(layout_)
                           ? metricTrackWidthMeters(layout_, progress, phase) * kSpaSimulationUnitsPerMeter /
                                 (kRoadSurfaceRatio * 2.0f)
@@ -614,7 +627,10 @@ private:
             TrackPoint3D& p = samples_[static_cast<size_t>(i)];
             p.signedCurvature = signedTurn;
             p.curvature = std::abs(signedTurn);
-            p.bank = std::clamp(-signedTurn * 140.0f, -13.0f, 13.0f);
+            // The checked-in metric track meshes are flat across each road
+            // section. Crossfall here would place the physics and tire contact
+            // planes above/below the rendered tarmac near either edge.
+            p.bank = isMetricCircuit(layout_) ? 0.0f : std::clamp(-signedTurn * 140.0f, -13.0f, 13.0f);
             const TrackPoint3D& elevationPrev = samples_[static_cast<size_t>((i - 2 + kSampleCount) % kSampleCount)];
             const TrackPoint3D& elevationNext = samples_[static_cast<size_t>((i + 2) % kSampleCount)];
             const float horizontalSpan = std::max(0.01f, length(elevationNext.pos - elevationPrev.pos));
@@ -1531,11 +1547,11 @@ struct KartContact3D {
 };
 
 float contactHalfLength(const Kart3D& kart) {
-    return kart.spec.length * 0.59f;
+    return kart.spec.length * 0.50f;
 }
 
 float contactHalfWidth(const Kart3D& kart) {
-    return kart.spec.width * 0.64f;
+    return kart.spec.width * 0.50f;
 }
 
 float roadSurfaceHalfWidth(const TrackPoint3D& point) {
@@ -1549,6 +1565,25 @@ float roadCenterLimit(const Kart3D& kart, const TrackPoint3D& point) {
 float roadEdgeViolation(const Kart3D& kart, const TrackPoint3D& point) {
     const float lane = dot(kart.pos - point.pos, point.normal);
     return std::max(0.0f, std::abs(lane) - roadCenterLimit(kart, point));
+}
+
+struct MetricCircuitEnvelope3D {
+    float asphaltOuter = 0.0f;
+    float curbOuter = 0.0f;
+    float runoffOuter = 0.0f;
+    float barrierInnerFace = 0.0f;
+    float barrierCenter = 0.0f;
+};
+
+MetricCircuitEnvelope3D metricCircuitEnvelope(const TrackPoint3D& point) {
+    const float units = kSpaSimulationUnitsPerMeter;
+    const float asphalt = roadSurfaceHalfWidth(point);
+    const float barrierCenter = asphalt + kMetricBarrierOffsetMeters * units;
+    return {asphalt,
+            asphalt + kMetricCurbWidthMeters * units,
+            asphalt + kMetricRunoffWidthMeters * units,
+            barrierCenter - kMetricBarrierThicknessMeters * units * 0.5f,
+            barrierCenter};
 }
 
 float activeRendererWheelGroundClearance(const Kart3D& kart) {
@@ -1781,6 +1816,10 @@ float offroadReachForZone(int zone) {
 }
 
 float hardBoundaryLaneLimit(const Kart3D& kart, const TrackPoint3D& point) {
+    if (point.metricCircuit) {
+        const MetricCircuitEnvelope3D envelope = metricCircuitEnvelope(point);
+        return std::max(0.0f, envelope.barrierInnerFace - projectedKartExtent(kart, point.normal));
+    }
     const bool metricSpaWidth = point.width > 260.0f;
     const float shoulder = metricSpaWidth ? 0.75f * kSpaSimulationUnitsPerMeter
                                           : std::min(42.0f, offroadReachForZone(point.zone) * 0.22f);
@@ -2599,7 +2638,98 @@ public:
         heavy.ghostTimer = 0.0f;
         const bool jumpClears = !shouldTestKartContact(light, heavy);
 
+        float maxBarrierWidthStepMeters = 0.0f;
+        float minCurbWidthMeters = std::numeric_limits<float>::max();
+        float minRunoffBeyondCurbMeters = std::numeric_limits<float>::max();
+        float minBarrierBeyondRunoffMeters = std::numeric_limits<float>::max();
+        float maxBoundaryContractError = 0.0f;
+        bool envelopeOrdered = true;
+        constexpr std::array<TrackLayoutId, 5> kMetricLayouts = {
+            TrackLayoutId::SpaCoast, TrackLayoutId::Suzuka, TrackLayoutId::Silverstone,
+            TrackLayoutId::Monza, TrackLayoutId::Interlagos};
+        for (TrackLayoutId layout : kMetricLayouts) {
+            track_.rebuild(layout);
+            Kart3D contractKart;
+            contractKart.spec = specs_[0];
+            for (int i = 0; i < track_.sampleCount(); ++i) {
+                const TrackPoint3D& point = track_.pointAtIndex(i);
+                const TrackPoint3D& next = track_.pointAtIndex(i + 1);
+                contractKart.heading = angleOf(point.tangent);
+                const MetricCircuitEnvelope3D envelope = metricCircuitEnvelope(point);
+                const MetricCircuitEnvelope3D nextEnvelope = metricCircuitEnvelope(next);
+                const float expectedBoundary = envelope.barrierInnerFace - projectedKartExtent(contractKart, point.normal);
+                maxBoundaryContractError = std::max(maxBoundaryContractError,
+                                                    std::abs(hardBoundaryLaneLimit(contractKart, point) - expectedBoundary));
+                maxBarrierWidthStepMeters = std::max(maxBarrierWidthStepMeters,
+                                                     std::abs(nextEnvelope.barrierInnerFace - envelope.barrierInnerFace) /
+                                                         kSpaSimulationUnitsPerMeter);
+                minCurbWidthMeters = std::min(minCurbWidthMeters,
+                                              (envelope.curbOuter - envelope.asphaltOuter) /
+                                                  kSpaSimulationUnitsPerMeter);
+                minRunoffBeyondCurbMeters = std::min(minRunoffBeyondCurbMeters,
+                                                     (envelope.runoffOuter - envelope.curbOuter) /
+                                                         kSpaSimulationUnitsPerMeter);
+                minBarrierBeyondRunoffMeters = std::min(minBarrierBeyondRunoffMeters,
+                                                        (envelope.barrierInnerFace - envelope.runoffOuter) /
+                                                            kSpaSimulationUnitsPerMeter);
+                envelopeOrdered = envelopeOrdered && envelope.asphaltOuter < envelope.curbOuter &&
+                                  envelope.curbOuter < envelope.runoffOuter &&
+                                  envelope.runoffOuter < envelope.barrierInnerFace &&
+                                  envelope.barrierInnerFace < envelope.barrierCenter;
+            }
+        }
+        const bool widthTransitions = maxBarrierWidthStepMeters < 0.20f && maxBoundaryContractError < 0.001f;
+        const bool footprintExact = std::abs(contactHalfWidth(light) - light.spec.width * 0.5f) < 0.001f &&
+                                    std::abs(contactHalfLength(light) - light.spec.length * 0.5f) < 0.001f;
+
         track_.rebuild(TrackLayoutId::SpaCoast);
+        const TrackPoint3D traversalPoint = track_.sample(3200.0f);
+        const MetricCircuitEnvelope3D traversalEnvelope = metricCircuitEnvelope(traversalPoint);
+        const auto laneDoesNotCollide = [&](float lane) {
+            Kart3D kart;
+            kart.spec = specs_[0];
+            kart.heading = angleOf(traversalPoint.tangent);
+            kart.vel = traversalPoint.tangent * 120.0f;
+            kart.pos = traversalPoint.pos + traversalPoint.normal * lane;
+            kart.progress = traversalPoint.progress;
+            kart.nearest = track_.nearestIndex(kart.pos);
+            const Vec2 beforePosition = kart.pos;
+            const Vec2 beforeVelocity = kart.vel;
+            constrainToTrack(kart);
+            return length(kart.pos - beforePosition) < 0.001f && length(kart.vel - beforeVelocity) < 0.001f &&
+                   kart.contactTimer <= 0.001f && !kart.barrierContact;
+        };
+        const float curbCenter = (traversalEnvelope.asphaltOuter + traversalEnvelope.curbOuter) * 0.5f;
+        const float runoffCenter = (traversalEnvelope.curbOuter + traversalEnvelope.runoffOuter) * 0.5f;
+        const bool curbsDriveable = laneDoesNotCollide(curbCenter) && laneDoesNotCollide(-curbCenter);
+        const bool runoffDriveable = laneDoesNotCollide(runoffCenter) && laneDoesNotCollide(-runoffCenter);
+
+        Kart3D onsetKart;
+        onsetKart.spec = specs_[0];
+        onsetKart.heading = angleOf(traversalPoint.tangent);
+        onsetKart.vel = traversalPoint.tangent * 80.0f + traversalPoint.normal * 20.0f;
+        onsetKart.progress = traversalPoint.progress;
+        onsetKart.nearest = track_.nearestIndex(traversalPoint.pos);
+        const float onsetLimit = hardBoundaryLaneLimit(onsetKart, traversalPoint);
+        onsetKart.pos = traversalPoint.pos + traversalPoint.normal * (onsetLimit - 0.25f);
+        constrainToTrack(onsetKart);
+        const bool beforeBarrierClear = !onsetKart.barrierContact && onsetKart.contactTimer <= 0.001f;
+        onsetKart.pos = traversalPoint.pos + traversalPoint.normal * (onsetLimit + 0.25f);
+        constrainToTrack(onsetKart);
+        const bool visibleBarrierOnset = beforeBarrierClear && onsetKart.barrierContact && onsetKart.contactTimer > 0.05f;
+
+        Kart3D directKart;
+        directKart.spec = specs_[0];
+        directKart.heading = angleOf(traversalPoint.normal);
+        directKart.vel = traversalPoint.normal * 160.0f;
+        directKart.progress = traversalPoint.progress;
+        directKart.nearest = track_.nearestIndex(traversalPoint.pos);
+        const float directLimit = hardBoundaryLaneLimit(directKart, traversalPoint);
+        directKart.pos = traversalPoint.pos + traversalPoint.normal * (directLimit + 2.0f);
+        constrainToTrack(directKart);
+        const float directStopSpeed = length(directKart.vel);
+        const bool directBarrierStops = directKart.barrierContact && directStopSpeed < 5.0f;
+
         Kart3D wallKart;
         wallKart.spec = specs_[0];
         wallKart.tuning = selectedTrackTuning(wallKart.spec);
@@ -2642,9 +2772,43 @@ public:
         const TrackPoint3D finalShoulderPoint = track_.sample(shoulderKart.progress);
         const bool noAutomaticRecovery = roadEdgeViolation(shoulderKart, finalShoulderPoint) > 5.0f &&
                                          shoulderKart.ghostTimer <= 0.001f;
+
+        track_.rebuild(TrackLayoutId::Monza);
+        const TrackPoint3D slowStart = track_.sample(track_.startProgress());
+        Kart3D slowKart;
+        slowKart.spec = specs_[0];
+        slowKart.tuning = selectedTrackTuning(slowKart.spec);
+        slowKart.pos = slowStart.pos + slowStart.normal * roadSurfaceHalfWidth(slowStart);
+        slowKart.heading = angleOf(slowStart.tangent);
+        slowKart.vel = slowStart.tangent * 8.0f;
+        slowKart.progress = slowStart.progress;
+        slowKart.previousProgress = slowStart.progress;
+        slowKart.nearest = track_.nearestIndex(slowKart.pos);
+        slowKart.elevation = bankedElevation(slowStart, roadSurfaceHalfWidth(slowStart));
+        slowKart.grounded = true;
+        float maxSlowPhysicsClearance = 0.0f;
+        float maxSlowRenderContactError = 0.0f;
+        Input3D coastInput;
+        for (int frame = 0; frame < static_cast<int>(3.0f / kFixedDt); ++frame) {
+            integrateKart(slowKart, coastInput, kFixedDt);
+            const TrackPoint3D slowGround = track_.sample(slowKart.progress);
+            const float lane = dot(slowKart.pos - slowGround.pos, slowGround.normal);
+            const float physicsGround = bankedElevation(slowGround, lane);
+            maxSlowPhysicsClearance = std::max(maxSlowPhysicsClearance,
+                                               std::abs(slowKart.elevation - physicsGround));
+            const float renderedTireContact = slowKart.elevation * kRenderScale + authoredRoadSurfaceLift(track_.layout());
+            const float renderedRoadSurface = physicsGround * kRenderScale +
+                                              kMetricRoadSurfaceOffsetMeters * kSpaSimulationUnitsPerMeter * kRenderScale;
+            maxSlowRenderContactError = std::max(maxSlowRenderContactError,
+                                                 std::abs(renderedTireContact - renderedRoadSurface));
+        }
+        const bool lowSpeedTiresGrounded = slowKart.grounded && maxSlowPhysicsClearance < 0.001f &&
+                                           maxSlowRenderContactError < 0.001f;
         const bool rearPushes = rearEnd.strikerSpeedAfterContact > 100.0f && rearEnd.targetSpeedAfterContact > 48.0f;
         const bool ok = rearOk && headOk && sideOk && massComparable && roleSymmetric && jumpClears && wallGlances &&
-                        noAutomaticRecovery && rearPushes;
+                        noAutomaticRecovery && rearPushes && envelopeOrdered && widthTransitions && footprintExact &&
+                        curbsDriveable && runoffDriveable && visibleBarrierOnset && directBarrierStops &&
+                        lowSpeedTiresGrounded;
 
         auto print = [](const CollisionAuditResult3D& r) {
             std::cout << r.name << "_max_overlap=" << r.maxOverlap << " " << r.name << "_overlap_frames=" << r.overlapFrames << " "
@@ -2660,6 +2824,17 @@ public:
                   << " rear_striker_speed=" << rearEnd.strikerSpeedAfterContact
                   << " rear_target_speed=" << rearEnd.targetSpeedAfterContact << " rear_pushes=" << rearPushes
                   << " wall_retention=" << wallRetention << " wall_forward=" << wallForwardSpeed << " wall_glances=" << wallGlances
+                  << " direct_stop_speed=" << directStopSpeed << " direct_barrier_stops=" << directBarrierStops
+                  << " curbs_driveable=" << curbsDriveable << " runoff_driveable=" << runoffDriveable
+                  << " visible_barrier_onset=" << visibleBarrierOnset << " footprint_exact=" << footprintExact
+                  << " envelope_ordered=" << envelopeOrdered << " min_curb_width_m=" << minCurbWidthMeters
+                  << " min_runoff_beyond_curb_m=" << minRunoffBeyondCurbMeters
+                  << " min_barrier_beyond_runoff_m=" << minBarrierBeyondRunoffMeters
+                  << " max_barrier_width_step_m=" << maxBarrierWidthStepMeters
+                  << " boundary_contract_error=" << maxBoundaryContractError
+                  << " low_speed_physics_clearance=" << maxSlowPhysicsClearance
+                  << " low_speed_render_contact_error=" << maxSlowRenderContactError
+                  << " low_speed_tires_grounded=" << lowSpeedTiresGrounded
                   << " no_automatic_recovery=" << noAutomaticRecovery << "\n";
         return ok;
     }
@@ -3666,8 +3841,12 @@ private:
         const float roadHalf = roadSurfaceHalfWidth(center);
         const float tireCoverage = std::clamp((laneAbs + halfFootprint - roadHalf) / std::max(1.0f, halfFootprint * 2.0f), 0.0f, 1.0f);
         const float shoulder = smoothstep(tireCoverage);
-        const float beyondShoulder = std::max(0.0f, laneAbs + halfFootprint - center.width * 0.5f);
-        const float deepOffroad = smoothstep(std::clamp(beyondShoulder / 58.0f, 0.0f, 1.0f));
+        const float driveableOuter = center.metricCircuit
+                                         ? metricCircuitEnvelope(center).runoffOuter
+                                         : center.width * 0.5f;
+        const float beyondDriveable = std::max(0.0f, laneAbs + halfFootprint - driveableOuter);
+        const float deepOffroadDistance = center.metricCircuit ? 2.0f * kSpaSimulationUnitsPerMeter : 58.0f;
+        const float deepOffroad = smoothstep(std::clamp(beyondDriveable / deepOffroadDistance, 0.0f, 1.0f));
 
         ArcadeSurface surface;
         surface.grip = lerp(1.0f, 0.92f, shoulder) * lerp(1.0f, 0.70f, deepOffroad);
@@ -3744,8 +3923,9 @@ private:
             const float incomingSpeed = length(kart.vel);
             const float alongVelocity = dot(kart.vel, center.tangent);
             const float incidence = std::clamp(std::abs(normalVelocity) / std::max(1.0f, incomingSpeed), 0.0f, 1.0f);
-            const float tangentRetention = lerp(0.91f, 0.76f, incidence);
-            const float restitution = lerp(0.20f, 0.27f, incidence);
+            const float impactSeverity = incidence * incidence;
+            const float tangentRetention = lerp(0.96f, 0.18f, impactSeverity);
+            const float restitution = lerp(0.06f, 0.015f, incidence);
             kart.vel = center.tangent * (alongVelocity * tangentRetention) -
                        center.normal * (sign * std::abs(normalVelocity) * restitution);
             kart.yawRate *= lerp(0.92f, 0.84f, incidence);
@@ -4483,6 +4663,7 @@ private:
         const float surfaceElevation = bankedElevation(ground, renderLane);
         const Vector3 groundSurface = toWorld(renderPos, surfaceElevation);
         const Vector3 vehicleSurface = toWorld(renderPos, renderElevation);
+        const float roadSurfaceLift = authoredRoadSurfaceLift(track_.layout());
         if (renderer_.ready()) {
             const auto style = static_cast<arcade_render::BuggyBodyStyle>(kart.spec.bodyStyle % 4);
             arcade_render::BuggyVisualSpec spec = arcade_render::MakeBuggyVisualSpec(style, kart.spec.body, kart.spec.accent);
@@ -4512,11 +4693,12 @@ private:
             spec.driver.variant = racerAssetVariant(kart.racer);
 
             arcade_render::BuggyRenderState state;
-            state.position = lift(vehicleSurface, kTrackSurfaceLift);
-            state.shadowPosition = lift(groundSurface, kTrackSurfaceLift + 0.005f);
+            state.position = lift(vehicleSurface, roadSurfaceLift);
+            state.shadowPosition = lift(groundSurface, roadSurfaceLift + 0.005f);
             state.useGroundShadowPosition = true;
             state.headingRadians = kPi * 0.5f - renderHeading;
-            state.pitchRadians = kart.bodyPitch;
+            const float roadPitch = kart.grounded ? -std::atan(ground.grade) : 0.0f;
+            state.pitchRadians = kart.bodyPitch + roadPitch;
             state.rollRadians = kart.bodyRoll + (kart.grounded ? bankRollDegrees(ground) * DEG2RAD : 0.0f);
             state.steeringRadians = kart.steerAngle;
             state.wheelSpinRadians = kart.wheelSpin;
@@ -4542,7 +4724,7 @@ private:
             (void)player;
             return;
         }
-        const Vector3 base = lift(vehicleSurface, kTrackSurfaceLift + kKartWheelGroundClearance);
+        const Vector3 base = lift(vehicleSurface, roadSurfaceLift + kKartWheelGroundClearance);
         const float w = kart.spec.width * kRenderScale;
         const float l = kart.spec.length * kRenderScale;
         const float h = kart.spec.height * kRenderScale;
