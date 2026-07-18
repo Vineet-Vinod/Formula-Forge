@@ -1,0 +1,245 @@
+{
+  "schema_version": 1,
+  "asset": "spa",
+  "type": "track_world",
+  "display_name": "Spa Coast",
+  "venue": "Spa-Francorchamps inspired coastal circuit",
+  "country": "Belgium",
+  "units": "meter",
+  "coordinate_unit": "meter",
+  "axes_blender": {
+    "right": "+X",
+    "front": "-Y",
+    "up": "+Z"
+  },
+  "target_lap_length": {
+    "value": 7004.0,
+    "unit": "meter"
+  },
+  "target_lap_length_m": 7004.0,
+  "measured_planar_centerline_asset_units": 7002.9281,
+  "measured_surface_centerline_asset_units": 7010.1294,
+  "turn_count": 19,
+  "clockwise": true,
+  "road_width_asset_units": {
+    "min": 14.0,
+    "max": 16.0,
+    "unit": "meter",
+    "profile": null,
+    "formula": "spaRoadWidthMetersForPhase"
+  },
+  "road_width_cpp_world_units": {
+    "min": 20.23,
+    "max": 23.12
+  },
+  "source_centerline": {
+    "file": "src/track_layout.hpp",
+    "symbol": "kSpaControlPoints",
+    "control_points": 121,
+    "normalization_scale": 3.01895429,
+    "control_sha256": "1a425770be3d40ff01bbf5ea49231f5c2c828e296c54b374ba195cc51cb99a87",
+    "elevation_symbol": "kSpaElevationProfile",
+    "elevation_sha256": "bc002da1e0d8080a4f06c42c81ca31b2f0a0e810516b570469a12e95ce120fda",
+    "width_symbol": null,
+    "width_sha256": null,
+    "catmull_rom_steps_per_control_segment": 32,
+    "closed_loop_arc_length_resampling": true
+  },
+  "runtime_geometry": {
+    "centerline_samples": 1024,
+    "mesh_objects": 12,
+    "vertices": 13823,
+    "triangles": 13478,
+    "materials": 15
+  },
+  "measured_bounds_blender": {
+    "min": [
+      -1430.912,
+      -1060.966,
+      -5.0
+    ],
+    "max": [
+      1476.781,
+      986.777,
+      110.869
+    ],
+    "dimensions": [
+      2907.693,
+      2047.743,
+      115.869
+    ]
+  },
+  "measured_bounds_gltf_y_up": {
+    "min": [
+      -1430.912,
+      -5.0,
+      -986.777
+    ],
+    "max": [
+      1476.781,
+      110.869,
+      1060.966
+    ],
+    "dimensions": [
+      2907.693,
+      115.869,
+      2047.743
+    ]
+  },
+  "expected_bounds_cpp_world": {
+    "min": [
+      -2067.668,
+      -7.225,
+      -1425.893
+    ],
+    "max": [
+      2133.949,
+      160.206,
+      1533.096
+    ],
+    "dimensions": [
+      4201.616,
+      167.431,
+      2958.989
+    ]
+  },
+  "runtime_alignment": {
+    "cpp_layout_id": "TrackLayoutId::SpaCoast",
+    "asset_origin": "C++ catalog plan origin and zero-elevation datum; not the start line",
+    "blender_to_gltf_matrix_row_major": [
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        -1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "gltf_and_raylib_axes": {
+      "right": "+X",
+      "up": "+Y",
+      "course_plan_y": "+Z"
+    },
+    "cpp_simulation_units_per_asset_unit": 17.0,
+    "cpp_render_scale": 0.085,
+    "recommended_glb_uniform_scale": 1.445,
+    "recommended_world_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "recommended_yaw_degrees": 0.0,
+    "mapping": "cppWorld = gltfPosition * recommended_glb_uniform_scale",
+    "road_surface_offset_above_centerline_asset_units": 0.06,
+    "opaque_layer_elevations_asset_units": {
+      "ocean": -5.0,
+      "sand": -0.8,
+      "vegetation": -0.4,
+      "embankment_outer": -0.2
+    },
+    "visual_replacement_scope": [
+      "road",
+      "runoff",
+      "curbs",
+      "terrain",
+      "ocean",
+      "props",
+      "start_gantry"
+    ],
+    "authoritative_runtime_system": "Track3D remains authoritative for physics, progress, elevation and width",
+    "start": {
+      "phase": 0.0,
+      "position_blender": [
+        -597.752949,
+        -419.634646,
+        47.4869
+      ],
+      "forward_blender": [
+        -0.54714763,
+        -0.83703612,
+        0.0
+      ],
+      "position_gltf_raylib": [
+        -597.752949,
+        47.4869,
+        419.634646
+      ],
+      "forward_gltf_raylib": [
+        -0.54714763,
+        0.0,
+        0.83703612
+      ]
+    }
+  },
+  "material_roles": {
+    "road": "asphalt",
+    "runoff": "runoff",
+    "curb_primary": "curb_red",
+    "curb_secondary": "curb_white",
+    "sand": "beach_sand",
+    "vegetation": "island_vegetation",
+    "ocean": "ocean_water",
+    "palm_trunk": "palm_trunk",
+    "palm_fronds": "palm_fronds",
+    "house_primary": "house_coral",
+    "house_secondary": "house_sun",
+    "house_roof": "house_roof",
+    "rocks": "coastal_stone",
+    "gantry": "gantry_metal",
+    "start_banner": "start_banner"
+  },
+  "required_materials": [
+    "asphalt",
+    "beach_sand",
+    "coastal_stone",
+    "curb_red",
+    "curb_white",
+    "gantry_metal",
+    "house_coral",
+    "house_roof",
+    "house_sun",
+    "island_vegetation",
+    "ocean_water",
+    "palm_fronds",
+    "palm_trunk",
+    "runoff",
+    "start_banner"
+  ],
+  "required_nodes": [
+    "map_root",
+    "circuit_root",
+    "terrain_root",
+    "scenery_root",
+    "track_surface",
+    "track_runoff",
+    "track_curbs",
+    "track_embankment",
+    "sand_island",
+    "ocean",
+    "palm_groves",
+    "coastal_houses",
+    "coastal_rocks",
+    "start_gantry",
+    "start_finish_line"
+  ],
+  "source": "spa.blend",
+  "export": "spa.glb",
+  "preview": "spa_preview.png"
+}
