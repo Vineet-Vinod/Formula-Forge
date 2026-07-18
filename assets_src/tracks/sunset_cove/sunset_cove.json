@@ -1,0 +1,245 @@
+{
+  "schema_version": 1,
+  "asset": "sunset_cove",
+  "type": "track_world",
+  "display_name": "Sunset Cove",
+  "venue": "Sunset Cove Grand Prix",
+  "country": "Fictional coast",
+  "units": "sunset_course_unit",
+  "coordinate_unit": "sunset_course_unit",
+  "axes_blender": {
+    "right": "+X",
+    "front": "-Y",
+    "up": "+Z"
+  },
+  "target_lap_length": {
+    "value": 9766.9457,
+    "unit": "sunset_course_unit"
+  },
+  "target_lap_length_m": null,
+  "measured_planar_centerline_asset_units": 9766.0118,
+  "measured_surface_centerline_asset_units": 9770.2509,
+  "turn_count": 16,
+  "clockwise": true,
+  "road_width_asset_units": {
+    "min": 152.0,
+    "max": 172.8,
+    "unit": "sunset_course_unit",
+    "profile": null,
+    "formula": "trackWidthForPhase * (kRoadSurfaceRatio * 2)"
+  },
+  "road_width_cpp_world_units": {
+    "min": 12.92,
+    "max": 14.688
+  },
+  "source_centerline": {
+    "file": "src/track_layout.hpp",
+    "symbol": "kBreakwaterControlPoints",
+    "control_points": 57,
+    "normalization_scale": 1.0,
+    "control_sha256": "bdf617f66baa74e28334618da5a0482b960aef8cc147957594e70bdd4a9eeeae",
+    "elevation_symbol": null,
+    "elevation_sha256": null,
+    "width_symbol": null,
+    "width_sha256": null,
+    "catmull_rom_steps_per_control_segment": 32,
+    "closed_loop_arc_length_resampling": true
+  },
+  "runtime_geometry": {
+    "centerline_samples": 1024,
+    "mesh_objects": 12,
+    "vertices": 13823,
+    "triangles": 13478,
+    "materials": 15
+  },
+  "measured_bounds_blender": {
+    "min": [
+      -2474.015,
+      -1295.07,
+      -60.0
+    ],
+    "max": [
+      2511.229,
+      1299.764,
+      155.597
+    ],
+    "dimensions": [
+      4985.244,
+      2594.834,
+      215.597
+    ]
+  },
+  "measured_bounds_gltf_y_up": {
+    "min": [
+      -2474.015,
+      -60.0,
+      -1299.764
+    ],
+    "max": [
+      2511.229,
+      155.597,
+      1295.07
+    ],
+    "dimensions": [
+      4985.244,
+      215.597,
+      2594.834
+    ]
+  },
+  "expected_bounds_cpp_world": {
+    "min": [
+      -210.291,
+      -5.1,
+      -110.48
+    ],
+    "max": [
+      213.454,
+      13.226,
+      110.081
+    ],
+    "dimensions": [
+      423.746,
+      18.326,
+      220.561
+    ]
+  },
+  "runtime_alignment": {
+    "cpp_layout_id": "TrackLayoutId::SunsetCove",
+    "asset_origin": "C++ catalog plan origin and zero-elevation datum; not the start line",
+    "blender_to_gltf_matrix_row_major": [
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        -1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "gltf_and_raylib_axes": {
+      "right": "+X",
+      "up": "+Y",
+      "course_plan_y": "+Z"
+    },
+    "cpp_simulation_units_per_asset_unit": 1.0,
+    "cpp_render_scale": 0.085,
+    "recommended_glb_uniform_scale": 0.085,
+    "recommended_world_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "recommended_yaw_degrees": 0.0,
+    "mapping": "cppWorld = gltfPosition * recommended_glb_uniform_scale",
+    "road_surface_offset_above_centerline_asset_units": 0.2,
+    "opaque_layer_elevations_asset_units": {
+      "ocean": -60.0,
+      "sand": -9.600000000000001,
+      "vegetation": -4.800000000000001,
+      "embankment_outer": -2.4000000000000004
+    },
+    "visual_replacement_scope": [
+      "road",
+      "runoff",
+      "curbs",
+      "terrain",
+      "ocean",
+      "props",
+      "start_gantry"
+    ],
+    "authoritative_runtime_system": "Track3D remains authoritative for physics, progress, elevation and width",
+    "start": {
+      "phase": 0.795,
+      "position_blender": [
+        -1324.778625,
+        -115.410591,
+        17.704275
+      ],
+      "forward_blender": [
+        -0.04606199,
+        0.99893858,
+        0.0
+      ],
+      "position_gltf_raylib": [
+        -1324.778625,
+        17.704275,
+        115.410591
+      ],
+      "forward_gltf_raylib": [
+        -0.04606199,
+        0.0,
+        -0.99893858
+      ]
+    }
+  },
+  "material_roles": {
+    "road": "asphalt",
+    "runoff": "runoff",
+    "curb_primary": "curb_red",
+    "curb_secondary": "curb_white",
+    "sand": "beach_sand",
+    "vegetation": "island_vegetation",
+    "ocean": "ocean_water",
+    "palm_trunk": "palm_trunk",
+    "palm_fronds": "palm_fronds",
+    "house_primary": "house_coral",
+    "house_secondary": "house_sun",
+    "house_roof": "house_roof",
+    "rocks": "coastal_stone",
+    "gantry": "gantry_metal",
+    "start_banner": "start_banner"
+  },
+  "required_materials": [
+    "asphalt",
+    "beach_sand",
+    "coastal_stone",
+    "curb_red",
+    "curb_white",
+    "gantry_metal",
+    "house_coral",
+    "house_roof",
+    "house_sun",
+    "island_vegetation",
+    "ocean_water",
+    "palm_fronds",
+    "palm_trunk",
+    "runoff",
+    "start_banner"
+  ],
+  "required_nodes": [
+    "map_root",
+    "circuit_root",
+    "terrain_root",
+    "scenery_root",
+    "track_surface",
+    "track_runoff",
+    "track_curbs",
+    "track_embankment",
+    "sand_island",
+    "ocean",
+    "palm_groves",
+    "coastal_houses",
+    "coastal_rocks",
+    "start_gantry",
+    "start_finish_line"
+  ],
+  "source": "sunset_cove.blend",
+  "export": "sunset_cove.glb",
+  "preview": "sunset_cove_preview.png"
+}
