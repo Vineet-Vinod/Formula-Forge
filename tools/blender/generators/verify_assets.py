@@ -103,6 +103,20 @@ def validate_manifest(path: Path, kind: str, slug: str, triangle_limit: int) -> 
             and manifest.get("export") == f"{slug}.glb"
             and manifest.get("preview") == f"{slug}_preview.png",
             f"manifest filenames mismatch: {path}")
+    if kind == "vehicles":
+        require(manifest.get("vehicle_class") == "formula",
+                f"vehicle is not formula class: {path}")
+        width, length, height = dimensions
+        require(1.90 <= width <= 2.15 and 4.70 <= length <= 5.20
+                and 0.90 <= height <= 1.20,
+                f"formula dimensions outside runtime envelope: {path}")
+        hard_points = manifest.get("hard_points_m", {})
+        require(3.0 <= hard_points.get("wheelbase", 0) <= 3.5,
+                f"formula wheelbase outside runtime envelope: {path}")
+        require(abs(hard_points.get("tire_contact_z", 1)) <= 0.01,
+                f"tires do not contact the ground plane: {path}")
+        require(hard_points.get("seat_anchor_blender") == [0.0, 0.12, 0.74],
+                f"formula seat anchor mismatch: {path}")
     return manifest
 
 
@@ -141,6 +155,12 @@ def validate_asset(root: Path, kind: str, slug: str, spec: dict) -> str:
     node_names = {node.get("name") for node in glb.get("nodes", [])}
     missing_nodes = set(manifest.get("required_nodes", [])) - node_names
     require(not missing_nodes, f"missing required nodes {sorted(missing_nodes)}: {paths['glb']}")
+    if kind == "vehicles":
+        formula_nodes = {"front_wing_main", "rear_wing_main",
+                         "cockpit_cavity", "halo_pillar", "rear_diffuser"}
+        missing_formula_nodes = formula_nodes - node_names
+        require(not missing_formula_nodes,
+                f"missing formula components {sorted(missing_formula_nodes)}: {paths['glb']}")
     return (f"{kind[:-1]:7} {slug:14} dims={manifest['measured_bounds_blender']['dimensions']} "
             f"tris={manifest['runtime_budget']['triangles']:5} "
             f"skin=1 joints={len(joints)} clips=5 preview=720x540")
