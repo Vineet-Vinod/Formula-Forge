@@ -7,6 +7,7 @@ Run from the repository root:
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 import random
@@ -32,9 +33,14 @@ TRACKS = {
         "target_length": None,
         "elevation": None,
         "width": 14.0,
+        "width_formula": "trackWidthForPhase * (kRoadSurfaceRatio * 2)",
         "turns": 16,
         "clockwise": True,
         "palette": "sunset",
+        "cpp_layout_id": "TrackLayoutId::SunsetCove",
+        "start_phase": 0.795,
+        "cpp_simulation_units_per_asset_unit": 1.0,
+        "coordinate_unit": "sunset_course_unit",
     },
     "spa": {
         "display_name": "Spa Coast",
@@ -46,10 +52,15 @@ TRACKS = {
         "target_length": 7004.0,
         "elevation": "kSpaElevationProfile",
         "width": 13.0,
+        "width_formula": "spaRoadWidthMetersForPhase",
         "turns": 19,
         "clockwise": True,
         "palette": "highland",
-        "mirror_y": True,
+        "runtime_mirror_y": True,
+        "cpp_layout_id": "TrackLayoutId::SpaCoast",
+        "start_phase": 0.0,
+        "cpp_simulation_units_per_asset_unit": 17.0,
+        "coordinate_unit": "meter",
     },
     "suzuka": {
         "display_name": "Suzuka",
@@ -63,6 +74,10 @@ TRACKS = {
         "turns": 18,
         "clockwise": True,
         "palette": "japan",
+        "cpp_layout_id": "TrackLayoutId::Suzuka",
+        "start_phase": 0.0,
+        "cpp_simulation_units_per_asset_unit": 17.0,
+        "coordinate_unit": "meter",
     },
     "silverstone": {
         "display_name": "Silverstone",
@@ -76,6 +91,10 @@ TRACKS = {
         "turns": 18,
         "clockwise": True,
         "palette": "airfield",
+        "cpp_layout_id": "TrackLayoutId::Silverstone",
+        "start_phase": 0.0,
+        "cpp_simulation_units_per_asset_unit": 17.0,
+        "coordinate_unit": "meter",
     },
     "monza": {
         "display_name": "Monza",
@@ -89,6 +108,10 @@ TRACKS = {
         "turns": 11,
         "clockwise": True,
         "palette": "parkland",
+        "cpp_layout_id": "TrackLayoutId::Monza",
+        "start_phase": 0.0,
+        "cpp_simulation_units_per_asset_unit": 17.0,
+        "coordinate_unit": "meter",
     },
     "interlagos": {
         "display_name": "Interlagos",
@@ -102,6 +125,10 @@ TRACKS = {
         "turns": 15,
         "clockwise": False,
         "palette": "hillside",
+        "cpp_layout_id": "TrackLayoutId::Interlagos",
+        "start_phase": 0.0,
+        "cpp_simulation_units_per_asset_unit": 17.0,
+        "coordinate_unit": "meter",
     },
 }
 
@@ -163,6 +190,15 @@ def mesh_object(name, vertices, faces, materials, material_indices=None, parent=
         for polygon, index in zip(mesh.polygons, material_indices):
             polygon.material_index = index
     return obj
+
+
+def planar_fan(name, perimeter, material, parent):
+    """Triangulate large flat layers explicitly to avoid driver-dependent n-gon seams."""
+    count = len(perimeter)
+    center = tuple(sum(vertex[axis] for vertex in perimeter)/count for axis in range(3))
+    vertices = [center, *perimeter]
+    faces = [(0,index+1,((index+1) % count)+1) for index in range(count)]
+    return mesh_object(name, vertices, faces, [material], parent=parent)
 
 
 def cpp_pairs(path: Path, symbol: str):
@@ -235,6 +271,77 @@ def sample_stations(stations, distance, total, fallback):
     return stations[-1][1]
 
 
+def smoothstep(value):
+    value = max(0.0, min(1.0, value))
+    return value * value * (3.0 - 2.0 * value)
+
+
+def sunset_elevation(phase):
+    """Match elevationForPhase + procedural detail in harbor_karts_3d.cpp."""
+    phase %= 1.0
+    stations = ((0.00,4.0),(0.20,4.0),(0.29,7.0),(0.40,20.0),(0.56,36.0),
+                (0.67,34.0),(0.78,18.0),(0.89,5.0),(1.00,4.0))
+    elevation = stations[-1][1]
+    for a, b in zip(stations, stations[1:]):
+        if a[0] <= phase <= b[0]:
+            blend = smoothstep((phase-a[0])/max(0.001,b[0]-a[0]))
+            elevation = a[1] + (b[1]-a[1])*blend
+            break
+    elevation += 0.55 * math.sin(phase * math.tau * 3.0)
+    for center in (0.145, 0.735):
+        distance = phase-center
+        while distance > 0.5:
+            distance -= 1.0
+        while distance < -0.5:
+            distance += 1.0
+        if -0.008 <= distance < -0.001:
+            elevation += 12.0*smoothstep((distance+0.008)/0.007)
+        elif -0.001 <= distance <= 0.012:
+            elevation += 12.0*(1.0-smoothstep((distance+0.001)/0.013))
+    return elevation
+
+
+def runtime_track_width(phase):
+    """Port trackWidthForPhase from harbor_karts_3d.cpp."""
+    phase %= 1.0
+    zone_width = 216.0 if phase < 0.30 or phase >= 0.90 else (190.0 if phase < 0.60 else 202.0)
+    for boundary, width_a, width_b in ((0.30,216.0,190.0),(0.60,190.0,202.0),(0.90,202.0,216.0)):
+        if boundary-0.034 <= phase <= boundary+0.034:
+            blend = smoothstep((phase-boundary+0.034)/0.068)
+            zone_width = width_a+(width_b-width_a)*blend
+    return zone_width
+
+
+def sunset_road_width(phase):
+    """Match the visible runtime road width: trackWidthForPhase * 0.8."""
+    return runtime_track_width(phase)*0.8
+
+
+def spa_road_width(phase):
+    """Port spaRoadWidthMetersForPhase from harbor_karts_3d.cpp."""
+    normalized = max(0.0,min(1.0,(runtime_track_width(phase)-190.0)/26.0))
+    return 14.0+2.0*normalized
+
+
+def pair_digest(pairs):
+    canonical = json.dumps(pairs, separators=(",", ":"), ensure_ascii=True)
+    return hashlib.sha256(canonical.encode("ascii")).hexdigest()
+
+
+def loop_pose(samples, phase):
+    count = len(samples)
+    u = (phase % 1.0) * count
+    index = int(math.floor(u)) % count
+    blend = u-math.floor(u)
+    a, b = samples[index], samples[(index+1) % count]
+    position = tuple(a[axis]+(b[axis]-a[axis])*blend for axis in range(3))
+    prev = samples[(index-1) % count]
+    nxt = samples[(index+1) % count]
+    dx,dy = nxt[0]-prev[0],nxt[1]-prev[1]
+    inv = 1.0/max(0.001,math.hypot(dx,dy))
+    return position, (dx*inv,dy*inv,0.0)
+
+
 def make_strip(name, samples, half_widths, z_offset, material, parent):
     verts = []
     count = len(samples)
@@ -251,7 +358,7 @@ def make_strip(name, samples, half_widths, z_offset, material, parent):
     return mesh_object(name, verts, faces, [material], parent=parent)
 
 
-def make_curbs(samples, half_widths, materials, parent):
+def make_curbs(samples, half_widths, materials, parent, curb_width=0.85):
     verts, faces, indices = [], [], []
     count = len(samples)
     for side in (-1, 1):
@@ -261,7 +368,7 @@ def make_curbs(samples, half_widths, materials, parent):
             inv = 1.0 / max(0.001, math.hypot(dx, dy))
             nx, ny = -dy * inv, dx * inv
             inner = side * half_widths[i]
-            outer = side * (half_widths[i] + 0.85)
+            outer = side * (half_widths[i] + curb_width)
             base = len(verts)
             verts.extend([(point[0] + nx*inner, point[1] + ny*inner, point[2]+0.09),
                           (point[0] + nx*outer, point[1] + ny*outer, point[2]+0.09)])
@@ -272,7 +379,7 @@ def make_curbs(samples, half_widths, materials, parent):
     return mesh_object("track_curbs", verts, faces, materials, indices, parent)
 
 
-def make_embankment(samples, half_widths, material, parent):
+def make_embankment(samples, half_widths, material, parent, detail_scale=1.0):
     """Create sloped terrain shoulders from the road grade to the island datum."""
     verts, faces = [], []
     count = len(samples)
@@ -283,10 +390,11 @@ def make_embankment(samples, half_widths, material, parent):
             dx, dy = nxt[0]-prev[0], nxt[1]-prev[1]
             inv = 1.0/max(0.001, math.hypot(dx,dy))
             nx, ny = -dy*inv, dx*inv
-            inner = side*(half_widths[i]+4.0)
-            outer = side*(half_widths[i]+30.0)
-            verts.extend([(point[0]+nx*inner, point[1]+ny*inner, point[2]-0.35),
-                          (point[0]+nx*outer, point[1]+ny*outer, 0.16)])
+            inner = side*(half_widths[i]+4.0*detail_scale)
+            outer = side*(half_widths[i]+30.0*detail_scale)
+            inner_z = max(-0.15*detail_scale, point[2]-0.35*detail_scale)
+            verts.extend([(point[0]+nx*inner, point[1]+ny*inner, inner_z),
+                          (point[0]+nx*outer, point[1]+ny*outer, -0.20*detail_scale)])
         for i in range(count):
             base = side_start+i*2
             next_base = side_start+((i+1) % count)*2
@@ -368,23 +476,30 @@ def make_world(slug, spec):
     source = REPO / spec["source_file"]
     controls = cpp_pairs(source, spec["centerline"])
     scale = spec.get("source_scale", 1.0)
-    mirror = -1.0 if spec.get("mirror_y") else 1.0
-    controls = [(x * scale, y * scale * mirror) for x, y in controls]
-    dense = dense_closed(controls)
+    runtime_mirror = -1.0 if spec.get("runtime_mirror_y") else 1.0
+    runtime_controls = [(x * scale, y * scale * runtime_mirror) for x, y in controls]
+    dense = dense_closed(runtime_controls)
     authored_length = length_closed(dense)
     target_length = spec["target_length"] or authored_length
     normalization = target_length / authored_length
     dense = [(x * normalization, y * normalization) for x, y in dense]
-    center2 = resample_closed(dense, SAMPLES)
+    runtime_center2 = resample_closed(dense, SAMPLES)
     elevations = cpp_pairs(source, spec["elevation"]) if spec.get("elevation") else []
     widths = cpp_pairs(source, spec["width_profile"]) if spec.get("width_profile") else []
     center = []
     half_widths = []
-    for i, (x, y) in enumerate(center2):
+    detail_scale = 12.0 if slug == "sunset_cove" else 1.0
+    surface_offset = 0.20 if slug == "sunset_cove" else 0.06
+    for i, (runtime_x, runtime_y) in enumerate(runtime_center2):
         distance = target_length * i / SAMPLES
-        z = sample_stations(elevations, distance, target_length, 0.0)
-        width = sample_stations(widths, distance, target_length, spec.get("width", 13.0))
-        center.append((x, y, z + 1.2))
+        z = (sunset_elevation(i/SAMPLES) if slug == "sunset_cove" else
+             sample_stations(elevations, distance, target_length, 0.0))
+        width = (sunset_road_width(i/SAMPLES) if slug == "sunset_cove" else
+                 spa_road_width(i/SAMPLES) if slug == "spa" else
+                 sample_stations(widths, distance, target_length, spec.get("width", 13.0)))
+        # glTF Y-up conversion maps Blender (x, y, z) to (x, z, -y).
+        # Negating runtime Y here therefore makes raylib GLB Z equal C++ track Y.
+        center.append((runtime_x, -runtime_y, z))
         half_widths.append(width * 0.5)
 
     min_x, max_x = min(p[0] for p in center), max(p[0] for p in center)
@@ -414,7 +529,7 @@ def make_world(slug, spec):
 
     root = empty("map_root")
     root["asset_id"] = f"formula_buggy.track.{slug}"
-    root["units"] = "meters"
+    root["units"] = spec["coordinate_unit"]
     root["target_lap_length_m"] = target_length
     circuit = empty("circuit_root", root)
     terrain = empty("terrain_root", root)
@@ -423,21 +538,24 @@ def make_world(slug, spec):
     # Octagonal island leaves ocean visible on every side without a costly terrain grid.
     ix0, ix1, iy0, iy1 = min_x-margin, max_x+margin, min_y-margin, max_y+margin
     chamfer = min(span_x, span_y) * 0.09
-    island = [(ix0+chamfer,iy0,0), (ix1-chamfer,iy0,0), (ix1,iy0+chamfer,0),
-              (ix1,iy1-chamfer,0), (ix1-chamfer,iy1,0), (ix0+chamfer,iy1,0),
-              (ix0,iy1-chamfer,0), (ix0,iy0+chamfer,0)]
-    mesh_object("sand_island", island, [tuple(range(8))], [materials["sand"]], parent=terrain)
+    sand_z = -0.80*detail_scale
+    island = [(ix0+chamfer,iy0,sand_z), (ix1-chamfer,iy0,sand_z),
+              (ix1,iy0+chamfer,sand_z), (ix1,iy1-chamfer,sand_z),
+              (ix1-chamfer,iy1,sand_z), (ix0+chamfer,iy1,sand_z),
+              (ix0,iy1-chamfer,sand_z), (ix0,iy0+chamfer,sand_z)]
+    planar_fan("sand_island", island, materials["sand"], terrain)
     # Slightly smaller green interior keeps a beach band around the island.
-    green = [(cx+(x-cx)*0.90, cy+(y-cy)*0.90, 0.12) for x,y,_ in island]
-    mesh_object("island_vegetation", green, [tuple(range(8))], [materials["grass"]], parent=terrain)
+    green = [(cx+(x-cx)*0.90, cy+(y-cy)*0.90, -0.40*detail_scale) for x,y,_ in island]
+    planar_fan("island_vegetation", green, materials["grass"], terrain)
     ocean_scale = 1.28
-    ocean = [(cx+(x-cx)*ocean_scale, cy+(y-cy)*ocean_scale, -2.5) for x,y,_ in island]
-    mesh_object("ocean", ocean, [tuple(range(8))], [materials["water"]], parent=terrain)
+    ocean = [(cx+(x-cx)*ocean_scale, cy+(y-cy)*ocean_scale, -5.0*detail_scale) for x,y,_ in island]
+    planar_fan("ocean", ocean, materials["water"], terrain)
 
-    make_embankment(center, half_widths, materials["grass"], terrain)
-    make_strip("track_runoff", center, [w+4.0 for w in half_widths], 0.00, materials["shoulder"], circuit)
-    make_strip("track_surface", center, half_widths, 0.06, materials["asphalt"], circuit)
-    make_curbs(center, half_widths, [materials["red"], materials["white"]], circuit)
+    make_embankment(center, half_widths, materials["grass"], terrain, detail_scale)
+    make_strip("track_runoff", center, [w+4.0*detail_scale for w in half_widths], 0.00, materials["shoulder"], circuit)
+    make_strip("track_surface", center, half_widths, surface_offset, materials["asphalt"], circuit)
+    make_curbs(center, half_widths, [materials["red"], materials["white"]], circuit,
+               0.85*detail_scale)
 
     # Place scenery well outside the road ribbon at evenly distributed course stations.
     palms, houses, rocks = [], [], []
@@ -448,32 +566,45 @@ def make_world(slug, spec):
         inv = 1.0/max(0.001, math.hypot(dx,dy))
         nx, ny = -dy*inv, dx*inv
         side = -1 if index % 2 else 1
-        setback = half_widths[i] + 14 + rng.uniform(0, 10)
-        palms.append((p[0]+nx*side*setback, p[1]+ny*side*setback, max(0.2,p[2]-1.2), rng.uniform(0.8,1.4)))
+        setback = half_widths[i] + (14 + rng.uniform(0, 10))*detail_scale
+        palms.append((p[0]+nx*side*setback, p[1]+ny*side*setback, max(0.2,p[2]),
+                      rng.uniform(0.8,1.4)*detail_scale))
         if index % 5 == 1:
-            houses.append((p[0]+nx*side*(setback+5), p[1]+ny*side*(setback+5), max(0.2,p[2]-1.2), rng.uniform(1.0,1.55)))
+            houses.append((p[0]+nx*side*(setback+5*detail_scale),
+                           p[1]+ny*side*(setback+5*detail_scale), max(0.2,p[2]),
+                           rng.uniform(1.0,1.55)*detail_scale))
         if index % 4 == 2:
-            rocks.append((p[0]-nx*side*(setback+4), p[1]-ny*side*(setback+4), max(0.1,p[2]-1.2), rng.uniform(0.9,1.7)))
+            rocks.append((p[0]-nx*side*(setback+4*detail_scale),
+                          p[1]-ny*side*(setback+4*detail_scale), max(0.1,p[2]),
+                          rng.uniform(0.9,1.7)*detail_scale))
     combined_palms(palms, [materials["trunk"], materials["leaf"]], scenery)
     combined_houses(houses, [materials["wall_a"], materials["wall_b"], materials["roof"]], scenery)
     combined_rocks(rocks, [materials["rock"]], scenery)
 
     # Start/finish stripe and a 20 m-wide gantry aligned to the opening centerline tangent.
-    p, nxt = center[0], center[1]
-    heading = math.atan2(nxt[1]-p[1], nxt[0]-p[0])
+    start_phase = spec["start_phase"]
+    p, start_forward = loop_pose(center, start_phase)
+    heading = math.atan2(start_forward[1], start_forward[0])
     gantry = empty("start_gantry", circuit, p)
     gantry.rotation_euler.z = heading
     gv, gf, gi = [], [], []
+    gantry_half_span = max(10.0*detail_scale, half_widths[int(start_phase*SAMPLES)%SAMPLES]+3.0*detail_scale)
+    gantry_height = 10.5*detail_scale
     for center_box, size, material_index in [
-        ((0,-10,5.5),(0.55,0.55,11),0), ((0,10,5.5),(0.55,0.55,11),0),
-        ((0,0,10.5),(0.75,21,0.75),0), ((0,0,9.2),(0.35,16,1.8),1)]:
+        ((0,-gantry_half_span,gantry_height*0.52),(0.55*detail_scale,0.55*detail_scale,gantry_height*1.04),0),
+        ((0,gantry_half_span,gantry_height*0.52),(0.55*detail_scale,0.55*detail_scale,gantry_height*1.04),0),
+        ((0,0,gantry_height),(0.75*detail_scale,gantry_half_span*2+detail_scale,0.75*detail_scale),0),
+        ((0,0,gantry_height-1.3*detail_scale),(0.35*detail_scale,gantry_half_span*1.6,1.8*detail_scale),1)]:
         old = len(gf)
         add_box_geometry(gv,gf,center_box,size)
         gi.extend([material_index]*(len(gf)-old))
     mesh_object("start_gantry_mesh", gv, gf, [materials["gantry"],materials["banner"]],gi,gantry)
     # Thin white line across the asphalt.
-    line_verts = [(-0.8,-max(half_widths[0],7),0.16),(0.8,-max(half_widths[0],7),0.16),
-                  (0.8,max(half_widths[0],7),0.16),(-0.8,max(half_widths[0],7),0.16)]
+    start_half_width = half_widths[int(start_phase*SAMPLES)%SAMPLES]
+    line_verts = [(-0.8*detail_scale,-start_half_width,surface_offset+0.10*detail_scale),
+                  (0.8*detail_scale,-start_half_width,surface_offset+0.10*detail_scale),
+                  (0.8*detail_scale,start_half_width,surface_offset+0.10*detail_scale),
+                  (-0.8*detail_scale,start_half_width,surface_offset+0.10*detail_scale)]
     line = mesh_object("start_finish_line", line_verts, [(0,1,2,3)], [materials["white"]], parent=gantry)
 
     planar = length_closed([(p[0],p[1]) for p in center])
@@ -490,6 +621,17 @@ def make_world(slug, spec):
         "bounds": [min_x-margin, max_x+margin, min_y-margin, max_y+margin, min_z, max_z],
         "center": [cx, cy, (min_z+max_z)*0.5],
         "source": spec["source_file"],
+        "control_sha256": pair_digest(controls),
+        "elevation_sha256": pair_digest(elevations) if elevations else None,
+        "width_sha256": pair_digest(widths) if widths else None,
+        "start_phase": start_phase,
+        "start_position_blender": [round(v, 6) for v in p],
+        "start_forward_blender": [round(v, 8) for v in start_forward],
+        "surface_offset": surface_offset,
+        "opaque_layer_elevations": {"ocean": -5.0*detail_scale,
+                                    "sand": sand_z,
+                                    "vegetation": -0.40*detail_scale,
+                                    "embankment_outer": -0.20*detail_scale},
     }
 
 
@@ -534,6 +676,14 @@ def object_bounds(objects):
             "dimensions": [round(maxs[i]-mins[i],3) for i in range(3)]}
 
 
+def transform_bounds_blender_to_gltf(bounds):
+    minimum, maximum = bounds["min"], bounds["max"]
+    gltf_min = [minimum[0], minimum[2], -maximum[1]]
+    gltf_max = [maximum[0], maximum[2], -minimum[1]]
+    return {"min": gltf_min, "max": gltf_max,
+            "dimensions": [round(gltf_max[i]-gltf_min[i],3) for i in range(3)]}
+
+
 def export_track(slug, spec, output_root):
     info = make_world(slug, spec)
     output = output_root / slug
@@ -552,6 +702,27 @@ def export_track(slug, spec, output_root):
     render_preview(preview, info)
     bpy.ops.wm.save_as_mainfile(filepath=str(blend), compress=True)
     meshes = [obj for obj in asset_objects if obj.type == "MESH"]
+    bounds_blender = object_bounds(asset_objects)
+    bounds_gltf = transform_bounds_blender_to_gltf(bounds_blender)
+    cpp_scale = spec["cpp_simulation_units_per_asset_unit"] * 0.085
+    bounds_cpp_world = {
+        "min": [round(v*cpp_scale,3) for v in bounds_gltf["min"]],
+        "max": [round(v*cpp_scale,3) for v in bounds_gltf["max"]],
+        "dimensions": [round(v*cpp_scale,3) for v in bounds_gltf["dimensions"]],
+    }
+    start_b = info["start_position_blender"]
+    forward_b = info["start_forward_blender"]
+    start_gltf = [start_b[0], start_b[2], -start_b[1]]
+    forward_gltf = [forward_b[0], forward_b[2], -forward_b[1]]
+    material_roles = {
+        "road": "asphalt", "runoff": "runoff", "curb_primary": "curb_red",
+        "curb_secondary": "curb_white", "sand": "beach_sand",
+        "vegetation": "island_vegetation", "ocean": "ocean_water",
+        "palm_trunk": "palm_trunk", "palm_fronds": "palm_fronds",
+        "house_primary": "house_coral", "house_secondary": "house_sun",
+        "house_roof": "house_roof", "rocks": "coastal_stone",
+        "gantry": "gantry_metal", "start_banner": "start_banner",
+    }
     metadata = {
         "schema_version": 1,
         "asset": slug,
@@ -559,24 +730,61 @@ def export_track(slug, spec, output_root):
         "display_name": spec["display_name"],
         "venue": spec["venue"],
         "country": spec["country"],
-        "units": "meters",
+        "units": spec["coordinate_unit"],
+        "coordinate_unit": spec["coordinate_unit"],
         "axes_blender": {"right": "+X", "front": "-Y", "up": "+Z"},
-        "target_lap_length_m": info["target_length_m"],
-        "measured_planar_centerline_m": info["measured_planar_centerline_m"],
-        "measured_surface_centerline_m": info["measured_surface_centerline_m"],
+        "target_lap_length": {"value": info["target_length_m"], "unit": spec["coordinate_unit"]},
+        "target_lap_length_m": info["target_length_m"] if spec["coordinate_unit"] == "meter" else None,
+        "measured_planar_centerline_asset_units": info["measured_planar_centerline_m"],
+        "measured_surface_centerline_asset_units": info["measured_surface_centerline_m"],
         "turn_count": spec["turns"],
         "clockwise": spec["clockwise"],
-        "road_width_m": {"min": info["road_width_min_m"], "max": info["road_width_max_m"],
-                         "profile": spec.get("width_profile")},
+        "road_width_asset_units": {"min": info["road_width_min_m"], "max": info["road_width_max_m"],
+                                   "unit": spec["coordinate_unit"],
+                                   "profile": spec.get("width_profile"),
+                                   "formula": spec.get("width_formula")},
+        "road_width_cpp_world_units": {"min": round(info["road_width_min_m"]*cpp_scale,3),
+                                       "max": round(info["road_width_max_m"]*cpp_scale,3)},
         "source_centerline": {"file": info["source"], "symbol": spec["centerline"],
                               "control_points": info["control_point_count"],
-                              "normalization_scale": info["normalization_scale"]},
+                              "normalization_scale": info["normalization_scale"],
+                              "control_sha256": info["control_sha256"],
+                              "elevation_symbol": spec.get("elevation"),
+                              "elevation_sha256": info["elevation_sha256"],
+                              "width_symbol": spec.get("width_profile"),
+                              "width_sha256": info["width_sha256"],
+                              "catmull_rom_steps_per_control_segment": 32,
+                              "closed_loop_arc_length_resampling": True},
         "runtime_geometry": {"centerline_samples": info["sample_count"],
                              "mesh_objects": len(meshes),
                              "vertices": sum(len(obj.data.vertices) for obj in meshes),
                              "triangles": sum(len(poly.vertices)-2 for obj in meshes for poly in obj.data.polygons),
                              "materials": len({mat.name for obj in meshes for mat in obj.data.materials})},
-        "measured_bounds_blender": object_bounds(asset_objects),
+        "measured_bounds_blender": bounds_blender,
+        "measured_bounds_gltf_y_up": bounds_gltf,
+        "expected_bounds_cpp_world": bounds_cpp_world,
+        "runtime_alignment": {
+            "cpp_layout_id": spec["cpp_layout_id"],
+            "asset_origin": "C++ catalog plan origin and zero-elevation datum; not the start line",
+            "blender_to_gltf_matrix_row_major": [[1,0,0,0],[0,0,1,0],[0,-1,0,0],[0,0,0,1]],
+            "gltf_and_raylib_axes": {"right": "+X", "up": "+Y", "course_plan_y": "+Z"},
+            "cpp_simulation_units_per_asset_unit": spec["cpp_simulation_units_per_asset_unit"],
+            "cpp_render_scale": 0.085,
+            "recommended_glb_uniform_scale": round(cpp_scale, 6),
+            "recommended_world_position": [0.0,0.0,0.0],
+            "recommended_yaw_degrees": 0.0,
+            "mapping": "cppWorld = gltfPosition * recommended_glb_uniform_scale",
+            "road_surface_offset_above_centerline_asset_units": info["surface_offset"],
+            "opaque_layer_elevations_asset_units": info["opaque_layer_elevations"],
+            "visual_replacement_scope": ["road", "runoff", "curbs", "terrain", "ocean", "props", "start_gantry"],
+            "authoritative_runtime_system": "Track3D remains authoritative for physics, progress, elevation and width",
+            "start": {"phase": info["start_phase"],
+                      "position_blender": start_b, "forward_blender": forward_b,
+                      "position_gltf_raylib": [round(v,6) for v in start_gltf],
+                      "forward_gltf_raylib": [round(v,8) for v in forward_gltf]},
+        },
+        "material_roles": material_roles,
+        "required_materials": sorted(material_roles.values()),
         "required_nodes": ["map_root", "circuit_root", "terrain_root", "scenery_root",
                            "track_surface", "track_runoff", "track_curbs", "track_embankment", "sand_island",
                            "ocean", "palm_groves", "coastal_houses", "coastal_rocks",
