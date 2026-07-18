@@ -76,8 +76,9 @@ Gamepad and keyboard are both supported.
   Niko Brass, Sol Vega, and Bea Torque
 - No powerups and no character super powers
 - Blender-authored circuit worlds with medium-gray tarmac, continuous track
-  limits, curbs, runoff, safety walls, catch fences, grounded grandstands and
-  spectators, pit buildings, trees, palms, rocks, sandy terrain, ocean, and start gantries
+  limits, driveable curbs and runoff, collision-aligned safety walls, catch
+  fences, grounded grandstands and spectators, pit buildings, trees, palms,
+  rocks, sandy terrain, ocean, and start gantries
 - Suzuka's only centerline crossover is an open bridge with audited vertical
   clearance; the other real circuits contain no false self-intersections
 - Meter-scaled GLB car and driver meshes with named `idle`, `accelerate`,
@@ -85,12 +86,13 @@ Gamepad and keyboard are both supported.
 - Runtime dust, brake lights, ground shadows, soft particles, body pitch/roll,
   and airborne presentation; the procedural track, car, and driver renderers
   remain as fallbacks when an authored GLB cannot be loaded
-- Speed-reactive ground-referenced chase camera with restrained
-  pullback, smooth FOV, collision shake, and landing kick
+- One fixed 80-degree broadcast T-cam mounted above and just behind the cockpit,
+  with restrained road vibration and no chase interpolation or camera switching
 - Momentum-preserving formula handling with a combined tire-grip budget,
   speed-sensitive steering, aerodynamic downforce, brake/load transfer,
   high-speed understeer, stable braking zones, powered corner exits, real
-  gravity, landing compression, collision response, and stuck recovery
+  gravity, grounded low-speed tire contact, landing compression, visible-wall
+  collision response, and stuck recovery
 - Formula-aware AI that scans upcoming curvature, brakes before turn-in,
   coasts at the tire limit, accelerates from the apex, and does not drift
 - Procedural engine, drivetrain, road, wind, tire-scrub, and landing audio
@@ -217,7 +219,12 @@ flow, infinite laps, best-lap timing, parked opponents, and no results transitio
 visual inspection, including Suzuka's runtime bridge approach and crossover.
 `capture-time-trial-3d` writes the live and paused solo timing HUD states.
 `collision-audit-3d` runs deterministic rear-end, head-on, and side-swipe
-contact cases and fails if the formula car bodies remain overlapped.
+contact cases; it also proves that curbs and runoff remain driveable, contact
+begins at the visible barrier, and the rendered tires stay on the road datum at
+low speed. `handling-audit-3d` checks formula acceleration, a 305-330 km/h speed
+envelope in both track unit systems, progressive stopping distances, fixed
+T-cam geometry, and flat-versus-braked behavior through named Monza and Suzuka
+corners.
 `perf-audit-3d` records 3D frame timings and fails if p95 misses the 60fps
 budget.
 `--diagnose-controller` prints both raylib and direct SDL controller readings,
