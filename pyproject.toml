@@ -1,0 +1,7 @@
+[project]
+name = "formula-buggy"
+version = "0.1.0"
+description = "Use Blender Python API to design game assets"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
