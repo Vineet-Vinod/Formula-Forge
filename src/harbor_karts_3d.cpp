@@ -32,6 +32,8 @@ namespace {
 
 constexpr float kFixedDt = 1.0f / 120.0f;
 constexpr float kRenderScale = 0.085f;
+constexpr float kSpaRenderForwardRange = 850.0f;
+constexpr float kSpaRenderRearRange = 170.0f;
 constexpr int kKartCount = 6;
 constexpr int kSampleCount = 1536;
 constexpr float kSunsetCoveStartPhase = 0.795f;
@@ -48,6 +50,11 @@ constexpr int kInfiniteLaps = 0;
 constexpr std::array<int, 4> kLapOptions = {2, 5, 10, kInfiniteLaps};
 constexpr int kRaceLapOptionCount = 3;
 constexpr float kLoadingScreenSeconds = 2.35f;
+constexpr float kMenuSteerThreshold = 0.20f;
+
+float trackProgressRenderScale(TrackLayoutId layout) {
+    return layout == TrackLayoutId::SpaCoast ? kSpaSimulationUnitsPerMeter * kRenderScale : kRenderScale;
+}
 
 constexpr std::array<const char*, 10> kDriverBackstories = {
     "A fearless island courier who knows every shortcut the tide leaves behind.",
@@ -894,6 +901,7 @@ void applyAttackingAiSetup(ArcadeVehicleConfig& tuning) {
     tuning.brakeReleaseResponse = 2.4f * kRacePaceScale;
     tuning.brakeOversteerSteerThreshold = 0.06f;
     tuning.brakeOversteerYawGain = 4.80f;
+    tuning.brakeYawLimitScale = 1.20f;
     tuning.brakeOversteerSlip = 0.42f;
     tuning.brakeRearGripScale = 0.22f;
     tuning.brakeSlipResponse = 18.0f;
@@ -957,13 +965,13 @@ struct Input3D {
 
 float axisWithDeadzone(float value) {
     value = std::clamp(value, -1.0f, 1.0f);
-    const float dead = 0.11f;
+    const float dead = 0.14f;
     if (std::abs(value) < dead) {
         return 0.0f;
     }
     const float sign = value < 0.0f ? -1.0f : 1.0f;
     const float normalized = (std::abs(value) - dead) / (1.0f - dead);
-    const float curved = 0.72f * normalized + 0.28f * normalized * normalized * normalized;
+    const float curved = 0.25f * normalized + 0.75f * normalized * normalized * normalized;
     return sign * curved;
 }
 
@@ -1005,7 +1013,13 @@ bool controllerContractAudit() {
     for (size_t i = 0; i < bSequence.size(); ++i) {
         bReleaseClears = bReleaseClears && canonicalPlayerInput(bSequence[i]).brake == expectedBrake[i];
     }
-    return canonicalBrake(0.0f, false) == 0.0f && std::abs(canonicalBrake(0.20f, false) - 0.20f) < 0.0001f &&
+    const bool steeringCurve = axisWithDeadzone(0.10f) == 0.0f && axisWithDeadzone(0.18f) < 0.015f &&
+                               axisWithDeadzone(0.30f) > 0.045f && axisWithDeadzone(0.30f) < 0.060f &&
+                               axisWithDeadzone(0.60f) > 0.23f && axisWithDeadzone(0.60f) < 0.27f &&
+                               axisWithDeadzone(0.90f) > 0.70f && axisWithDeadzone(1.0f) == 1.0f &&
+                               std::abs(axisWithDeadzone(-0.60f) + axisWithDeadzone(0.60f)) < 0.0001f;
+    return steeringCurve && canonicalBrake(0.0f, false) == 0.0f &&
+           std::abs(canonicalBrake(0.20f, false) - 0.20f) < 0.0001f &&
            std::abs(canonicalBrake(0.55f, false) - 0.55f) < 0.0001f && canonicalBrake(1.0f, false) == 1.0f &&
            canonicalBrake(0.0f, true) == 1.0f && canonicalBrake(1.0f, true) == 1.0f && bReleaseClears &&
            zeroReleased == 0.0f && zeroPressed == 1.0f && signedReleased == 0.0f && signedHalf > 0.45f &&
@@ -1133,8 +1147,8 @@ private:
             input.bHeld = IsGamepadButtonDown(0, GAMEPAD_BUTTON_RIGHT_FACE_RIGHT);
             input.start = IsGamepadButtonDown(0, GAMEPAD_BUTTON_MIDDLE_RIGHT);
             input.back = IsGamepadButtonDown(0, GAMEPAD_BUTTON_MIDDLE_LEFT);
-            input.left = IsGamepadButtonDown(0, GAMEPAD_BUTTON_LEFT_FACE_LEFT) || input.steer < -0.55f;
-            input.right = IsGamepadButtonDown(0, GAMEPAD_BUTTON_LEFT_FACE_RIGHT) || input.steer > 0.55f;
+            input.left = IsGamepadButtonDown(0, GAMEPAD_BUTTON_LEFT_FACE_LEFT) || input.steer < -kMenuSteerThreshold;
+            input.right = IsGamepadButtonDown(0, GAMEPAD_BUTTON_LEFT_FACE_RIGHT) || input.steer > kMenuSteerThreshold;
             input.up = IsGamepadButtonDown(0, GAMEPAD_BUTTON_LEFT_FACE_UP);
             input.down = IsGamepadButtonDown(0, GAMEPAD_BUTTON_LEFT_FACE_DOWN);
             const float dpadSteer = (IsGamepadButtonDown(0, GAMEPAD_BUTTON_LEFT_FACE_RIGHT) ? 1.0f : 0.0f) -
@@ -1235,8 +1249,8 @@ private:
             input.bHeld = input.bHeld || SDL_GetGamepadButton(pad_, SDL_GAMEPAD_BUTTON_EAST);
             input.start = input.start || SDL_GetGamepadButton(pad_, SDL_GAMEPAD_BUTTON_START);
             input.back = input.back || SDL_GetGamepadButton(pad_, SDL_GAMEPAD_BUTTON_BACK);
-            input.left = input.left || SDL_GetGamepadButton(pad_, SDL_GAMEPAD_BUTTON_DPAD_LEFT) || input.steer < -0.55f;
-            input.right = input.right || SDL_GetGamepadButton(pad_, SDL_GAMEPAD_BUTTON_DPAD_RIGHT) || input.steer > 0.55f;
+            input.left = input.left || SDL_GetGamepadButton(pad_, SDL_GAMEPAD_BUTTON_DPAD_LEFT) || input.steer < -kMenuSteerThreshold;
+            input.right = input.right || SDL_GetGamepadButton(pad_, SDL_GAMEPAD_BUTTON_DPAD_RIGHT) || input.steer > kMenuSteerThreshold;
             input.up = input.up || SDL_GetGamepadButton(pad_, SDL_GAMEPAD_BUTTON_DPAD_UP);
             input.down = input.down || SDL_GetGamepadButton(pad_, SDL_GAMEPAD_BUTTON_DPAD_DOWN);
             input.pageLeft = input.pageLeft || SDL_GetGamepadButton(pad_, SDL_GAMEPAD_BUTTON_LEFT_SHOULDER);
@@ -1257,8 +1271,8 @@ private:
             input.pageLeft = input.pageLeft || rawJoystickButton(joystick_, 4);
             input.pageRight = input.pageRight || rawJoystickButton(joystick_, 5);
             input.bHeld = input.bHeld || rawJoystickButton(joystick_, 1);
-            input.left = input.left || rawJoystickButton(joystick_, 11) || input.steer < -0.55f;
-            input.right = input.right || rawJoystickButton(joystick_, 12) || input.steer > 0.55f;
+            input.left = input.left || rawJoystickButton(joystick_, 11) || input.steer < -kMenuSteerThreshold;
+            input.right = input.right || rawJoystickButton(joystick_, 12) || input.steer > kMenuSteerThreshold;
             input.up = input.up || rawJoystickButton(joystick_, 13);
             input.down = input.down || rawJoystickButton(joystick_, 14);
         }
@@ -2495,6 +2509,93 @@ public:
         return ok;
     }
 
+    bool runSpaControlAudit() {
+        track_.rebuild(TrackLayoutId::SpaCoast);
+        const ArcadeVehicleConfig tuning = selectedTrackTuning(specs_[0]);
+        const ArcadeSurface road;
+        const float simulationUnits = kSpaSimulationUnitsPerMeter;
+
+        const auto movingKart = [&](float speedScale) {
+            ArcadeVehicleState kart;
+            kart.vel = {tuning.maxForwardSpeed * speedScale, 0.0f};
+            kart.grounded = true;
+            return kart;
+        };
+
+        ArcadeVehicleState gentle = movingKart(0.70f);
+        ArcadeVehicleControl gentleControl;
+        gentleControl.steer = axisWithDeadzone(0.20f);
+        gentleControl.throttle = 0.35f;
+        for (int frame = 0; frame < static_cast<int>(1.0f / kFixedDt); ++frame) {
+            stepArcadeVehicle(gentle, tuning, gentleControl, road, kFixedDt);
+        }
+        const float gentleLateralMeters = std::abs(gentle.pos.y) / simulationUnits;
+
+        ArcadeVehicleState fullLock = movingKart(0.70f);
+        ArcadeVehicleControl fullLockControl;
+        fullLockControl.steer = 1.0f;
+        fullLockControl.throttle = 0.35f;
+        for (int frame = 0; frame < static_cast<int>(1.0f / kFixedDt); ++frame) {
+            stepArcadeVehicle(fullLock, tuning, fullLockControl, road, kFixedDt);
+        }
+        const float fullLockHeading = std::abs(fullLock.heading);
+
+        ArcadeVehicleState braked = movingKart(0.72f);
+        ArcadeVehicleState reference = braked;
+        const float initialSpeed = length(braked.vel);
+        ArcadeVehicleControl brakeControl;
+        brakeControl.steer = 0.70f;
+        brakeControl.throttle = 0.35f;
+        brakeControl.brake = 0.75f;
+        ArcadeVehicleControl referenceControl = brakeControl;
+        referenceControl.brake = 0.0f;
+        float peakBrakeSlip = 0.0f;
+        float maxRelativeLateral = 0.0f;
+        for (int frame = 0; frame < static_cast<int>(0.55f / kFixedDt); ++frame) {
+            stepArcadeVehicle(braked, tuning, brakeControl, road, kFixedDt);
+            stepArcadeVehicle(reference, tuning, referenceControl, road, kFixedDt);
+            peakBrakeSlip = std::max(peakBrakeSlip, std::abs(braked.slipAngle));
+            maxRelativeLateral = std::max(maxRelativeLateral, std::abs(braked.pos.y - reference.pos.y));
+        }
+        const float releaseHeadingDelta = std::abs(wrapAngle(braked.heading - reference.heading));
+        const float releaseSpeedRatio = length(braked.vel) / initialSpeed;
+
+        ArcadeVehicleControl countersteer;
+        countersteer.steer = -0.18f;
+        countersteer.throttle = 0.50f;
+        for (int frame = 0; frame < static_cast<int>(0.45f / kFixedDt); ++frame) {
+            stepArcadeVehicle(braked, tuning, countersteer, road, kFixedDt);
+            stepArcadeVehicle(reference, tuning, countersteer, road, kFixedDt);
+            peakBrakeSlip = std::max(peakBrakeSlip, std::abs(braked.slipAngle));
+            maxRelativeLateral = std::max(maxRelativeLateral, std::abs(braked.pos.y - reference.pos.y));
+        }
+        countersteer.steer = 0.0f;
+        for (int frame = 0; frame < static_cast<int>(0.70f / kFixedDt); ++frame) {
+            stepArcadeVehicle(braked, tuning, countersteer, road, kFixedDt);
+            stepArcadeVehicle(reference, tuning, countersteer, road, kFixedDt);
+            maxRelativeLateral = std::max(maxRelativeLateral, std::abs(braked.pos.y - reference.pos.y));
+        }
+
+        const float relativeLateralMeters = maxRelativeLateral / simulationUnits;
+        const float renderedLapLength = track_.totalLength() * trackProgressRenderScale(track_.layout());
+        const float expectedRenderedLapLength = kSpaTargetLength * kSpaSimulationUnitsPerMeter * kRenderScale;
+        const bool renderedScaleValid = std::abs(renderedLapLength - expectedRenderedLapLength) < 0.5f;
+        const bool steeringProgressive = gentleLateralMeters < 1.5f && fullLockHeading > 0.25f;
+        const bool brakeControllable = peakBrakeSlip > 0.03f && peakBrakeSlip < 0.10f &&
+                                       releaseHeadingDelta > 0.01f && releaseHeadingDelta < 0.08f &&
+                                       relativeLateralMeters < 1.6f && releaseSpeedRatio > 0.62f &&
+                                       std::abs(braked.slipAngle) < 0.02f && braked.brakeLoad < 0.01f;
+        const bool ok = renderedScaleValid && steeringProgressive && brakeControllable;
+        std::cout << "spa-control-audit rendered_lap=" << renderedLapLength
+                  << " gentle_lateral_m=" << gentleLateralMeters << " full_lock_heading=" << fullLockHeading
+                  << " brake_peak_slip=" << peakBrakeSlip << " brake_heading_delta=" << releaseHeadingDelta
+                  << " brake_relative_lateral_m=" << relativeLateralMeters << " brake_speed_ratio=" << releaseSpeedRatio
+                  << " recovery_slip=" << std::abs(braked.slipAngle) << " recovery_load=" << braked.brakeLoad
+                  << " rendered_scale=" << renderedScaleValid << " steering=" << steeringProgressive
+                  << " braking=" << brakeControllable << " ok=" << ok << "\n";
+        return ok;
+    }
+
     float playerRaceScoreForCapture() const {
         return raceFlow_ ? static_cast<float>(raceFlow_->racer(0).continuousTrackProgress * static_cast<double>(track_.totalLength()))
                          : raceScore(karts_[0]);
@@ -2591,12 +2692,15 @@ private:
             const float magnitude = std::sqrt(lateral.x * lateral.x + lateral.z * lateral.z);
             lateral = magnitude > 0.0001f ? mul(lateral, 1.0f / magnitude) : Vector3{1.0f, 0.0f, 0.0f};
             samples.push_back({center, lateral, point.width * 0.5f * kRenderScale,
-                               point.progress * kRenderScale, point.road,
+                               point.progress * trackProgressRenderScale(track_.layout()), point.road,
                                point.shoulder, point.natural, point.zone, point.bank * kRenderScale,
                                track_.layout() == TrackLayoutId::SpaCoast ? 0.68f : 1.0f,
                                track_.layout() == TrackLayoutId::SpaCoast
                                    ? point.elevation * kRenderScale - 2.4f
-                                   : kTerrainSurfaceY});
+                                   : kTerrainSurfaceY,
+                               track_.layout() == TrackLayoutId::SpaCoast ? -0.40f : kTerrainSurfaceY,
+                               track_.layout() == TrackLayoutId::SpaCoast ? 65.0f : 0.0f,
+                               track_.layout() == TrackLayoutId::SpaCoast});
         }
         return samples;
     }
@@ -2616,7 +2720,7 @@ private:
             tuning.maxForwardSpeed *= kSpaVehiclePaceScale;
             tuning.engineAcceleration *= 1.35f;
             tuning.launchAccelerationBonus *= 1.35f;
-            tuning.brakeDeceleration *= 1.35f;
+            tuning.brakeDeceleration *= 0.68f;
             tuning.boostAcceleration *= 1.35f;
             // Angular response is dimensionless. Scaling it by the track's
             // metres-to-simulation ratio made half-stick input nearly inert.
@@ -2626,12 +2730,16 @@ private:
             tuning.maxYawRateHighSpeed *= 0.22f;
             tuning.driftYawBase *= 0.56f;
             tuning.driftYawSpeedGain *= 0.56f;
-            tuning.brakeOversteerYawGain *= 0.42f;
-            tuning.brakeOversteerSlip *= 0.88f;
-            tuning.brakeRearGripScale = std::max(tuning.brakeRearGripScale, 0.62f);
-            tuning.brakeReleaseResponse *= 1.35f;
-            tuning.steerResponse *= 1.20f;
-            tuning.steerReturnResponse *= 1.12f;
+            tuning.brakeLoadResponse = 10.0f;
+            tuning.brakeReleaseResponse = 18.0f;
+            tuning.brakeOversteerYawGain *= 0.18f;
+            tuning.brakeYawLimitScale = 1.05f;
+            tuning.brakeOversteerSlip *= 0.55f;
+            tuning.brakeRearGripScale = std::max(tuning.brakeRearGripScale, 0.75f);
+            tuning.brakeSlipResponse = 9.0f;
+            tuning.brakeSlipRecovery = 18.0f;
+            tuning.steerResponse *= 0.78f;
+            tuning.steerReturnResponse *= 1.00f;
         }
         return tuning;
     }
@@ -3671,6 +3779,12 @@ private:
             for (int ridge = 0; ridge < 18; ++ridge) {
                 const float progress = track_.totalLength() * (static_cast<float>(ridge) + 0.35f) / 18.0f;
                 const TrackPoint3D point = track_.sample(progress);
+                const float viewProgress = karts_.empty() ? track_.startProgress() : karts_[0].progress;
+                const float courseDistance = signedDistanceToLoop(viewProgress, progress, track_.totalLength()) *
+                                             trackProgressRenderScale(track_.layout());
+                if (courseDistance < -kSpaRenderRearRange || courseDistance > kSpaRenderForwardRange) {
+                    continue;
+                }
                 const float side = ridge % 2 == 0 ? -1.0f : 1.0f;
                 const float lane = side * (point.width * 0.5f + 310.0f + static_cast<float>((ridge * 47) % 150));
                 const Vector3 base = terrainSurfacePoint(track_, point, lane);
@@ -3686,11 +3800,14 @@ private:
                     const float outwardOffset = static_cast<float>((mound * 13 + ridge * 5) % 18);
                     const Vector3 center = add(base, add(mul(along, alongOffset), mul(outward, outwardOffset)));
                     const float height = 4.0f + static_cast<float>((ridge * 7 + mound * 5) % 6);
+                    const float oceanY = -0.44f;
+                    const float verticalRadius = std::max(height, (center.y - oceanY) * 0.5f + height * 0.35f);
+                    const float supportedCenterY = (center.y + oceanY) * 0.5f;
                     const Color ridgeColor = (ridge + mound) % 3 == 0 ? Color{179, 160, 92, 255}
                                                                       : ((ridge + mound) % 2 == 0 ? Color{72, 133, 76, 255}
                                                                                                    : Color{91, 151, 79, 255});
-                    drawLocalEllipsoid(add(center, {0.0f, height * 0.20f, 0.0f}),
-                                       {20.0f + mound * 3.4f, height, 13.0f + (ridge + mound) % 7}, ridgeColor);
+                    drawLocalEllipsoid({center.x, supportedCenterY, center.z},
+                                       {20.0f + mound * 3.4f, verticalRadius, 13.0f + (ridge + mound) % 7}, ridgeColor);
                 }
             }
             if (useEnvironmentShader) {
@@ -3746,19 +3863,19 @@ private:
             mode_ == Mode::Garage || karts_.empty() ? track_.startProgress() : karts_[0].progress;
         const auto detailVisible = [&](float progress) {
             if (track_.layout() == TrackLayoutId::SpaCoast) {
-                const Vector3 center = track_.roadPoint(track_.sample(progress), 0.0f);
-                const Vector3 offset = sub(center, camera_.position);
-                return offset.x * offset.x + offset.y * offset.y + offset.z * offset.z < 900.0f * 900.0f;
+                const float distance = signedDistanceToLoop(viewProgress, progress, track_.totalLength()) *
+                                       trackProgressRenderScale(track_.layout());
+                return distance >= -kSpaRenderRearRange && distance <= kSpaRenderForwardRange;
             }
             const float distance = signedDistanceToLoop(viewProgress, progress, track_.totalLength());
             return distance >= -700.0f && distance <= 2500.0f;
         };
         if (trackRenderer_.ready()) {
             const bool spa = track_.layout() == TrackLayoutId::SpaCoast;
-            const float spaCircuitRange = track_.totalLength() * kRenderScale;
-            trackRenderer_.draw(viewProgress * kRenderScale,
-                                spa ? spaCircuitRange : 260.0f,
-                                spa ? spaCircuitRange : 24.0f,
+            const float progressScale = trackProgressRenderScale(track_.layout());
+            trackRenderer_.draw(viewProgress * progressScale,
+                                spa ? kSpaRenderForwardRange : 260.0f,
+                                spa ? kSpaRenderRearRange : 24.0f,
                                 camera_.position, 0.0f);
         } else {
             constexpr int stride = 2;
@@ -4032,7 +4149,14 @@ private:
         const Vector3 propCenter = lift(terrainSurfacePoint(track_, point, prop.side), 2.2f * prop.scale);
         const Vector3 cameraToProp = sub(propCenter, camera_.position);
         const float cameraDistanceSq = cameraToProp.x * cameraToProp.x + cameraToProp.y * cameraToProp.y + cameraToProp.z * cameraToProp.z;
-        const float fadeSafeRange = (track_.layout() == TrackLayoutId::SpaCoast ? 900.0f : 275.0f) + prop.scale * 5.0f;
+        if (track_.layout() == TrackLayoutId::SpaCoast) {
+            const float courseDistance = signedDistanceToLoop(karts_[0].progress, prop.progress, track_.totalLength()) *
+                                         trackProgressRenderScale(track_.layout());
+            if (courseDistance < -kSpaRenderRearRange || courseDistance > kSpaRenderForwardRange) {
+                return false;
+            }
+        }
+        const float fadeSafeRange = (track_.layout() == TrackLayoutId::SpaCoast ? 1050.0f : 275.0f) + prop.scale * 5.0f;
         return cameraDistanceSq <= fadeSafeRange * fadeSafeRange;
     }
 
@@ -4664,6 +4788,7 @@ int runHarborKarts3D(int argc, char** argv) {
                           hasArg(argc, argv, "--race-audit") || hasArg(argc, argv, "--ai-pace-audit") ||
                           hasArg(argc, argv, "--time-trial-audit") ||
                           hasArg(argc, argv, "--collision-audit") ||
+                          hasArg(argc, argv, "--spa-control-audit") ||
                           hasArg(argc, argv, "--terrain-audit") ||
                           hasArg(argc, argv, "--perf-audit") || hasArg(argc, argv, "--spa-perf-audit") ||
                           hasArg(argc, argv, "--capture-lap") ||
@@ -4683,6 +4808,7 @@ int runHarborKarts3D(int argc, char** argv) {
     const bool aiPaceAudit = hasArg(argc, argv, "--ai-pace-audit");
     const bool timeTrialAudit = hasArg(argc, argv, "--time-trial-audit");
     const bool collisionAudit = hasArg(argc, argv, "--collision-audit");
+    const bool spaControlAudit = hasArg(argc, argv, "--spa-control-audit");
     const bool terrainAudit = hasArg(argc, argv, "--terrain-audit");
     const bool spaPerfAudit = hasArg(argc, argv, "--spa-perf-audit");
     const bool perfAudit = hasArg(argc, argv, "--perf-audit") || spaPerfAudit;
@@ -4714,7 +4840,7 @@ int runHarborKarts3D(int argc, char** argv) {
 
     ControllerReader controller(sdlInputReady);
     const bool automatedRun = smokeRender || capturePlaytest || captureDrivenLap || captureTimeTrial || captureSectionTour || handlingAudit || raceAudit ||
-                              aiPaceAudit || timeTrialAudit || collisionAudit || terrainAudit || perfAudit || diagnoseController;
+                              aiPaceAudit || timeTrialAudit || collisionAudit || spaControlAudit || terrainAudit || perfAudit || diagnoseController;
     Game3D game(!automatedRun);
     bool runtimeCleaned = false;
     const auto cleanupRuntime = [&]() {
@@ -4785,6 +4911,11 @@ int runHarborKarts3D(int argc, char** argv) {
     }
     if (collisionAudit) {
         const bool ok = game.runCollisionAudit();
+        cleanupRuntime();
+        return ok ? 0 : 1;
+    }
+    if (spaControlAudit) {
+        const bool ok = game.runSpaControlAudit();
         cleanupRuntime();
         return ok ? 0 : 1;
     }

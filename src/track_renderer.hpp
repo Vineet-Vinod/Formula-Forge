@@ -20,6 +20,9 @@ struct TrackRenderSample {
     float bankHeight = 0.0f;
     float terrainSpread = 1.0f;
     float terrainEdgeElevation = -0.18f;
+    float terrainSkirtBottom = -0.18f;
+    float terrainSkirtOutset = 0.0f;
+    bool drawTerrainSkirt = false;
 };
 
 struct TrackGradientAudit {

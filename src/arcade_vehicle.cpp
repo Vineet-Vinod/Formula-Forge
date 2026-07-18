@@ -212,7 +212,8 @@ ArcadeVehicleTelemetry stepSingle(ArcadeVehicleState& state,
         const float brakeSlideDirection = state.brakeSlip < 0.0f ? 1.0f : -1.0f;
         targetSlip = state.brakeSlip;
         targetYawRate += brakeSlideDirection * config.brakeOversteerYawGain * brakeSlide * brakeSpeed;
-        targetYawRate = std::clamp(targetYawRate, -yawLimit * 1.20f, yawLimit * 1.20f);
+        targetYawRate = std::clamp(targetYawRate, -yawLimit * config.brakeYawLimitScale,
+                                   yawLimit * config.brakeYawLimitScale);
         lateralResponse = lerp(config.lateralGripResponse, config.driftLateralResponse, brakeSlide * 0.86f);
         const float rearGripFalloff = std::max(config.brakeRearGripScale, std::pow(1.0f - brakeSlide, 3.0f));
         lateralAccelerationLimit *= rearGripFalloff;
@@ -653,7 +654,8 @@ ArcadeVehicleAuditResult runArcadeVehicleUnitAudit() {
         stepArcadeVehicle(brakeTurn, config, recoverControl, road, kInternalStep);
     }
     result.brakeRecoverySlip = std::abs(brakeTurn.slipAngle);
-    check(result.brakeOversteerPeakYaw > 0.45f && result.brakeOversteerPeakYaw <= config.maxYawRateHighSpeed * 1.20f + 0.02f);
+    check(result.brakeOversteerPeakYaw > 0.45f &&
+          result.brakeOversteerPeakYaw <= config.maxYawRateHighSpeed * config.brakeYawLimitScale + 0.02f);
     check(result.brakeOversteerPeakSlip > 0.02f && result.brakeOversteerPeakSlip < 0.18f);
     check(result.brakeRecoverySlip < 0.06f);
 

@@ -177,20 +177,79 @@ Model makeSurfaceChunk(std::span<const TrackRenderSample> samples, size_t start,
     colors.reserve(triangleCount * 12);
     indices.reserve(triangleCount * 3);
 
+    const auto appendTriangle = [&](SurfaceVertex a, SurfaceVertex b, SurfaceVertex c, bool faceUp) {
+        Vector3 normal = normalize3(cross3(subtract(b.position, a.position), subtract(c.position, a.position)));
+        if (faceUp && normal.y < 0.0f) {
+            std::swap(b, c);
+            normal = negate(normal);
+        }
+        const auto first = static_cast<unsigned short>(vertices.size() / 3);
+        appendVertex(vertices, texcoords, normals, colors, a.position, normal, a.u, a.v, a.color);
+        appendVertex(vertices, texcoords, normals, colors, b.position, normal, b.u, b.v, b.color);
+        appendVertex(vertices, texcoords, normals, colors, c.position, normal, c.u, c.v, c.color);
+        indices.insert(indices.end(), {first, static_cast<unsigned short>(first + 1),
+                                      static_cast<unsigned short>(first + 2)});
+    };
+
     visitSurfaceTriangles(samples, start, segmentCount, totalProgress,
                           [&](SurfaceVertex a, SurfaceVertex b, SurfaceVertex c, float, float, bool) {
-                              Vector3 normal = normalize3(cross3(subtract(b.position, a.position), subtract(c.position, a.position)));
-                              if (normal.y < 0.0f) {
-                                  std::swap(b, c);
-                                  normal = negate(normal);
-                              }
-                              const auto first = static_cast<unsigned short>(vertices.size() / 3);
-                              appendVertex(vertices, texcoords, normals, colors, a.position, normal, a.u, a.v, a.color);
-                              appendVertex(vertices, texcoords, normals, colors, b.position, normal, b.u, b.v, b.color);
-                              appendVertex(vertices, texcoords, normals, colors, c.position, normal, c.u, c.v, c.color);
-                              indices.insert(indices.end(), {first, static_cast<unsigned short>(first + 1),
-                                                            static_cast<unsigned short>(first + 2)});
+                              appendTriangle(a, b, c, true);
                           });
+
+    for (size_t segment = 0; segment < segmentCount; ++segment) {
+        const size_t index = (start + segment) % samples.size();
+        const size_t nextIndex = (index + 1) % samples.size();
+        const size_t afterIndex = (index + 2) % samples.size();
+        if (!samples[index].drawTerrainSkirt && !samples[nextIndex].drawTerrainSkirt) {
+            continue;
+        }
+        const Vector3 lateral = horizontalLateral(samples[index].center, samples[nextIndex].center);
+        const Vector3 followingLateral = horizontalLateral(samples[nextIndex].center, samples[afterIndex].center);
+        const TrackRenderSample current = orientSample(samples[index], lateral);
+        const TrackRenderSample next = orientSample(samples[nextIndex], lateral);
+        const TrackRenderSample nextOutgoing = orientSample(samples[nextIndex], followingLateral);
+        for (float lane : {-kLaneCuts.back(), kLaneCuts.back()}) {
+            const float side = lane < 0.0f ? -1.0f : 1.0f;
+            const Vector3 topCurrent = samplePoint(current, lane);
+            const Vector3 topNext = samplePoint(next, lane);
+            const Vector3 bottomCurrent = add(add(topCurrent, scale(current.lateral, side * current.terrainSkirtOutset)),
+                                              {0.0f, current.terrainSkirtBottom - topCurrent.y, 0.0f});
+            const Vector3 bottomNext = add(add(topNext, scale(next.lateral, side * next.terrainSkirtOutset)),
+                                           {0.0f, next.terrainSkirtBottom - topNext.y, 0.0f});
+            const Color topColor = shade(current.terrain, 0.72f);
+            const Color bottomColor = shade(current.terrain, 0.48f);
+            const float textureDistance = current.progress * 0.022f;
+            const SurfaceVertex a{topCurrent, lane * 1.8f, textureDistance, lane, topColor};
+            const SurfaceVertex b{topNext, lane * 1.8f, textureDistance + 1.0f, lane, topColor};
+            const SurfaceVertex c{bottomNext, lane * 1.8f + 1.0f, textureDistance + 1.0f, lane, bottomColor};
+            const SurfaceVertex d{bottomCurrent, lane * 1.8f + 1.0f, textureDistance, lane, bottomColor};
+            if (lane > 0.0f) {
+                appendTriangle(a, c, b, false);
+                appendTriangle(a, d, c, false);
+            } else {
+                appendTriangle(a, b, c, false);
+                appendTriangle(a, c, d, false);
+            }
+
+            const Vector3 joinTopIncoming = samplePoint(next, lane);
+            const Vector3 joinTopOutgoing = samplePoint(nextOutgoing, lane);
+            const Vector3 joinBottomIncoming = add(add(joinTopIncoming, scale(next.lateral, side * next.terrainSkirtOutset)),
+                                                   {0.0f, next.terrainSkirtBottom - joinTopIncoming.y, 0.0f});
+            const Vector3 joinBottomOutgoing = add(add(joinTopOutgoing, scale(nextOutgoing.lateral, side * nextOutgoing.terrainSkirtOutset)),
+                                                   {0.0f, nextOutgoing.terrainSkirtBottom - joinTopOutgoing.y, 0.0f});
+            const SurfaceVertex joinA{joinTopIncoming, lane * 1.8f, textureDistance + 1.0f, lane, topColor};
+            const SurfaceVertex joinB{joinTopOutgoing, lane * 1.8f, textureDistance + 1.0f, lane, topColor};
+            const SurfaceVertex joinC{joinBottomOutgoing, lane * 1.8f + 1.0f, textureDistance + 1.0f, lane, bottomColor};
+            const SurfaceVertex joinD{joinBottomIncoming, lane * 1.8f + 1.0f, textureDistance + 1.0f, lane, bottomColor};
+            if (lane > 0.0f) {
+                appendTriangle(joinA, joinC, joinB, false);
+                appendTriangle(joinA, joinD, joinC, false);
+            } else {
+                appendTriangle(joinA, joinB, joinC, false);
+                appendTriangle(joinA, joinC, joinD, false);
+            }
+        }
+    }
     return LoadModelFromMesh(uploadMesh(vertices, texcoords, normals, colors, indices));
 }
 
