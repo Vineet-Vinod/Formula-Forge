@@ -63,6 +63,16 @@ def glb_json(path: Path):
         return json.loads(handle.read(size).decode("utf-8"))
 
 
+def mesh_has_edge(mesh, first: int, second: int) -> bool:
+    wanted = {first, second}
+    for polygon in mesh.polygons:
+        vertices = list(polygon.vertices)
+        for index, vertex in enumerate(vertices):
+            if {vertex, vertices[(index+1) % len(vertices)]} == wanted:
+                return True
+    return False
+
+
 def verify(root: Path, slug: str):
     folder = root / slug
     paths = {ext: folder / f"{slug}{ext}" for ext in (".json", ".glb", ".blend", "_preview.png")}
@@ -165,6 +175,19 @@ def verify(root: Path, slug: str):
         raise ValueError(f"{slug}: track-limit line topology changed")
     if not presentation["barriers_continuous"] or presentation["barrier_samples_per_side"] != SAMPLES:
         raise ValueError(f"{slug}: barrier continuity metadata is stale")
+    for side in range(2):
+        barrier_start = side*SAMPLES*4
+        if not mesh_has_edge(barrier.data, barrier_start, barrier_start+(SAMPLES-1)*4):
+            raise ValueError(f"{slug}: safety barrier side {side} has an open seam")
+        limit_start = side*SAMPLES*2
+        if not mesh_has_edge(limits.data, limit_start, limit_start+(SAMPLES-1)*2):
+            raise ValueError(f"{slug}: track-limit side {side} has an open seam")
+        fence_side_stride = SAMPLES*6 + (SAMPLES//16)*8
+        fence_side_start = side*fence_side_stride
+        for rail in range(3):
+            rail_start = fence_side_start + rail*SAMPLES*2
+            if not mesh_has_edge(fence.data, rail_start, rail_start+(SAMPLES-1)*2):
+                raise ValueError(f"{slug}: catch-fence side {side} rail {rail} has an open seam")
 
     detail_scale = 12.0 if slug == "sunset_cove" else 1.0
     grounding = meta["grounding_contract"]
