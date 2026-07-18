@@ -76,6 +76,13 @@ TRACKS = {
         "palette": "japan",
         "cpp_layout_id": "TrackLayoutId::Suzuka",
         "start_phase": 0.0,
+        "bridge_crossing": {
+            "lower_distance_m": 2272.0,
+            "lower_section": "Degner to Hairpin",
+            "upper_distance_m": 4645.0,
+            "upper_section": "Spoon to 130R",
+            "minimum_clearance_m": 10.0,
+        },
         "cpp_simulation_units_per_asset_unit": 17.0,
         "coordinate_unit": "meter",
     },
@@ -1029,6 +1036,7 @@ def make_world(slug, spec):
         "barrier_grounding": barrier_grounding,
         "bridge": ({"lower_station": crossing["lower_station"],
                     "upper_station": crossing["upper_station"],
+                    **spec["bridge_crossing"],
                     "planar_separation_asset_units": round(crossing["planar_distance"], 6),
                     "clearance_asset_units": round(bridge_clearance, 6),
                     "embankment_open_stations": bridge_stations}

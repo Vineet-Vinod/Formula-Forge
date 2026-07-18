@@ -254,9 +254,15 @@ def verify(root: Path, slug: str):
                 raise ValueError(f"suzuka: stale bridge {key}")
         bridge = bpy.data.objects["suzuka_bridge_structure"]
         upper, lower = crossing["upper_station"], crossing["lower_station"]
+        catalog_bridge = spec["bridge_crossing"]
+        station_tolerance = target_length/SAMPLES*1.5
+        if abs(lower*target_length/SAMPLES-catalog_bridge["lower_distance_m"]) > station_tolerance:
+            raise ValueError("suzuka: lower crossover station differs from catalog declaration")
+        if abs(upper*target_length/SAMPLES-catalog_bridge["upper_distance_m"]) > station_tolerance:
+            raise ValueError("suzuka: upper crossover station differs from catalog declaration")
         actual_clearance = ((expected[upper][2] + surface_offset - 0.62*detail_scale) -
                             (expected[lower][2] + surface_offset))
-        if actual_clearance < 5.5*detail_scale:
+        if actual_clearance < catalog_bridge["minimum_clearance_m"]*detail_scale:
             raise ValueError(f"suzuka: bridge clearance is only {actual_clearance:.3f}")
         if abs(actual_clearance-bridge_meta["clearance_asset_units"]) > tolerance:
             raise ValueError("suzuka: bridge clearance metadata is stale")
