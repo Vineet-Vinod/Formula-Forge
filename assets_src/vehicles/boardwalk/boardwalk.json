@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "asset": "boardwalk",
+  "units": "meters",
+  "axes_blender": {
+    "right": "+X",
+    "front": "-Y",
+    "up": "+Z"
+  },
+  "measured_bounds_blender": {
+    "min": [
+      -1.0211,
+      -1.94,
+      0.03
+    ],
+    "max": [
+      1.0211,
+      2.19,
+      1.66
+    ],
+    "dimensions": [
+      2.0423,
+      4.13,
+      1.63
+    ]
+  },
+  "runtime_budget": {
+    "mesh_objects": 48,
+    "vertices": 6444,
+    "triangles": 12716
+  },
+  "verification": {
+    "status": "passed",
+    "required_nodes_present": true,
+    "named_actions_present": [
+      "accelerate",
+      "brake",
+      "idle",
+      "turn_left",
+      "turn_right"
+    ],
+    "action_channel_counts": {
+      "accelerate": 27,
+      "brake": 27,
+      "idle": 27,
+      "turn_left": 27,
+      "turn_right": 27
+    },
+    "skin_count": 1,
+    "exported_meshes": 48,
+    "dimension_error_percent": {
+      "width_x": 4.2,
+      "length_y": 1.2,
+      "height_z": 4.49
+    },
+    "dimension_tolerance_percent": 8.0
+  },
+  "required_nodes": [
+    "car_root",
+    "body",
+    "wheel_FL",
+    "wheel_FR",
+    "wheel_RL",
+    "wheel_RR",
+    "steering",
+    "brake_lights",
+    "driver_mount",
+    "vehicle_rig",
+    "seat_anchor"
+  ],
+  "source": "boardwalk.blend",
+  "export": "boardwalk.glb",
+  "preview": "boardwalk_preview.png",
+  "type": "vehicle",
+  "display_name": "Boardwalk Bruiser",
+  "family": "surf utility coupe",
+  "target_dimensions_m": {
+    "width_x": 1.96,
+    "length_y": 4.18,
+    "height_z": 1.56
+  },
+  "animation_clips": {
+    "accelerate": [
+      1,
+      24
+    ],
+    "turn_left": [
+      30,
+      50
+    ],
+    "turn_right": [
+      30,
+      50
+    ],
+    "brake": [
+      60,
+      72
+    ],
+    "idle": [
+      80,
+      108
+    ]
+  },
+  "mounts": {
+    "driver_object": "driver_mount",
+    "driver_bone": "seat_anchor",
+    "gltf_local_y_up_z_forward_m": [
+      0.0,
+      1.0,
+      -0.1
+    ]
+  }
+}
