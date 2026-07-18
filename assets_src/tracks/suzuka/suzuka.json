@@ -17,8 +17,8 @@
     "unit": "meter"
   },
   "target_lap_length_m": 5807.0,
-  "measured_planar_centerline_asset_units": 5806.5252,
-  "measured_surface_centerline_asset_units": 5807.9732,
+  "measured_planar_centerline_asset_units": 5806.0359,
+  "measured_surface_centerline_asset_units": 5808.059,
   "turn_count": 18,
   "clockwise": true,
   "road_width_asset_units": {
@@ -35,11 +35,11 @@
   "source_centerline": {
     "file": "src/track_catalog.cpp",
     "symbol": "kSuzukaCenterline",
-    "control_points": 71,
-    "normalization_scale": 1.83346175,
-    "control_sha256": "b52f65355ba241d08e714e7da601c04ff1d4744a50f2296e89fad128ad0583a8",
+    "control_points": 72,
+    "normalization_scale": 1.9974466,
+    "control_sha256": "24ee2c6e2fd81eae0954f67290668bca9fce8c60dc3508919b2cd1f6869bb563",
     "elevation_symbol": "kSuzukaElevation",
-    "elevation_sha256": "37d265e7f716f30d6a407c797da44ef0be9eb464400eb5e0bbc511bd8aa2aaa3",
+    "elevation_sha256": "8a260458f420258a1e8602fea06f90b55b39ebd8a83ea46f6dd2c861cf6bd503",
     "width_symbol": "kSuzukaWidth",
     "width_sha256": "1666c1aeb0463e8959d35db5e0aa985cc857744ef71d3d341f8e46b37bb710e0",
     "catmull_rom_steps_per_control_segment": 32,
@@ -47,60 +47,60 @@
   },
   "runtime_geometry": {
     "centerline_samples": 1024,
-    "mesh_objects": 12,
-    "vertices": 13823,
-    "triangles": 13478,
-    "materials": 15
+    "mesh_objects": 20,
+    "vertices": 41327,
+    "triangles": 46910,
+    "materials": 27
   },
   "measured_bounds_blender": {
     "min": [
-      -623.316,
-      -636.198,
+      -1518.119,
+      -876.809,
       -5.0
     ],
     "max": [
-      2296.849,
-      1042.005,
-      47.161
+      1514.094,
+      876.521,
+      39.745
     ],
     "dimensions": [
-      2920.165,
-      1678.203,
-      52.161
+      3032.213,
+      1753.33,
+      44.745
     ]
   },
   "measured_bounds_gltf_y_up": {
     "min": [
-      -623.316,
+      -1518.119,
       -5.0,
-      -1042.005
+      -876.521
     ],
     "max": [
-      2296.849,
-      47.161,
-      636.198
+      1514.094,
+      39.745,
+      876.809
     ],
     "dimensions": [
-      2920.165,
-      52.161,
-      1678.203
+      3032.213,
+      44.745,
+      1753.33
     ]
   },
   "expected_bounds_cpp_world": {
     "min": [
-      -900.692,
+      -2193.682,
       -7.225,
-      -1505.697
+      -1266.573
     ],
     "max": [
-      3318.947,
-      68.148,
-      919.306
+      2187.866,
+      57.432,
+      1266.989
     ],
     "dimensions": [
-      4219.638,
-      75.373,
-      2425.003
+      4381.548,
+      64.657,
+      2533.562
     ]
   },
   "runtime_alignment": {
@@ -157,9 +157,16 @@
     "visual_replacement_scope": [
       "road",
       "runoff",
+      "track_limits",
       "curbs",
+      "barriers",
+      "fencing",
       "terrain",
       "ocean",
+      "grandstands",
+      "spectators",
+      "marshal_posts",
+      "pit_buildings",
       "props",
       "start_gantry"
     ],
@@ -167,24 +174,24 @@
     "start": {
       "phase": 0.0,
       "position_blender": [
-        770.053933,
-        641.711611,
-        9.0
+        520.844188,
+        -503.833933,
+        14.0
       ],
       "forward_blender": [
-        -0.92420887,
-        0.38188737,
+        0.99999848,
+        -0.00174156,
         0.0
       ],
       "position_gltf_raylib": [
-        770.053933,
-        9.0,
-        -641.711611
+        520.844188,
+        14.0,
+        503.833933
       ],
       "forward_gltf_raylib": [
-        -0.92420887,
+        0.99999848,
         0.0,
-        -0.38188737
+        0.00174156
       ]
     }
   },
@@ -198,29 +205,455 @@
     "ocean": "ocean_water",
     "palm_trunk": "palm_trunk",
     "palm_fronds": "palm_fronds",
-    "house_primary": "house_coral",
-    "house_secondary": "house_sun",
-    "house_roof": "house_roof",
+    "tree_canopy": "tree_canopy",
     "rocks": "coastal_stone",
     "gantry": "gantry_metal",
-    "start_banner": "start_banner"
+    "start_banner": "start_banner",
+    "barrier_primary": "barrier_white",
+    "barrier_secondary": "barrier_red",
+    "catch_fence": "catch_fence",
+    "grandstand": "grandstand_concrete",
+    "grandstand_canopy": "grandstand_canopy",
+    "spectator_red": "spectator_red",
+    "spectator_blue": "spectator_blue",
+    "spectator_yellow": "spectator_yellow",
+    "spectator_white": "spectator_white",
+    "marshal_post": "marshal_orange",
+    "marshal_roof": "marshal_roof",
+    "pit_wall": "pit_building_wall",
+    "pit_roof": "pit_building_roof",
+    "bridge": "bridge_concrete"
+  },
+  "presentation_contract": {
+    "asphalt_base_color_rgba": [
+      0.22,
+      0.235,
+      0.245,
+      1
+    ],
+    "asphalt_relative_luminance": 0.232533,
+    "asphalt_luminance_range": [
+      0.2,
+      0.3
+    ],
+    "barriers_continuous": true,
+    "barrier_samples_per_side": 1024,
+    "opaque_materials_only": true
+  },
+  "grounding_contract": {
+    "terrain_function": "shoulder_ground_z",
+    "tolerance_asset_units": 0.002,
+    "instances": [
+      {
+        "kind": "vegetation",
+        "station": 10,
+        "side": 1,
+        "lateral": 29.838495,
+        "base_z": 3.446899
+      },
+      {
+        "kind": "vegetation",
+        "station": 38,
+        "side": -1,
+        "lateral": 27.037405,
+        "base_z": 4.116336
+      },
+      {
+        "kind": "vegetation",
+        "station": 67,
+        "side": 1,
+        "lateral": 27.297901,
+        "base_z": 3.217849
+      },
+      {
+        "kind": "vegetation",
+        "station": 95,
+        "side": -1,
+        "lateral": 26.282901,
+        "base_z": 2.65861
+      },
+      {
+        "kind": "vegetation",
+        "station": 124,
+        "side": 1,
+        "lateral": 21.070163,
+        "base_z": 3.797149
+      },
+      {
+        "kind": "vegetation",
+        "station": 152,
+        "side": -1,
+        "lateral": 23.489105,
+        "base_z": 5.276102
+      },
+      {
+        "kind": "vegetation",
+        "station": 181,
+        "side": 1,
+        "lateral": 23.944318,
+        "base_z": 6.853602
+      },
+      {
+        "kind": "vegetation",
+        "station": 209,
+        "side": -1,
+        "lateral": 21.060006,
+        "base_z": 10.886606
+      },
+      {
+        "kind": "vegetation",
+        "station": 238,
+        "side": 1,
+        "lateral": 28.313882,
+        "base_z": 7.032795
+      },
+      {
+        "kind": "vegetation",
+        "station": 266,
+        "side": -1,
+        "lateral": 25.803791,
+        "base_z": 11.890762
+      },
+      {
+        "kind": "vegetation",
+        "station": 294,
+        "side": 1,
+        "lateral": 25.920073,
+        "base_z": 13.422232
+      },
+      {
+        "kind": "vegetation",
+        "station": 323,
+        "side": -1,
+        "lateral": 21.125836,
+        "base_z": 17.047684
+      },
+      {
+        "kind": "vegetation",
+        "station": 351,
+        "side": 1,
+        "lateral": 21.628779,
+        "base_z": 13.422414
+      },
+      {
+        "kind": "vegetation",
+        "station": 380,
+        "side": -1,
+        "lateral": 25.252759,
+        "base_z": 7.455608
+      },
+      {
+        "kind": "vegetation",
+        "station": 408,
+        "side": 1,
+        "lateral": 25.964764,
+        "base_z": 5.251279
+      },
+      {
+        "kind": "vegetation",
+        "station": 437,
+        "side": -1,
+        "lateral": 23.444587,
+        "base_z": 7.506639
+      },
+      {
+        "kind": "vegetation",
+        "station": 465,
+        "side": 1,
+        "lateral": 28.276491,
+        "base_z": 5.091874
+      },
+      {
+        "kind": "vegetation",
+        "station": 494,
+        "side": -1,
+        "lateral": 23.240493,
+        "base_z": 7.751719
+      },
+      {
+        "kind": "vegetation",
+        "station": 522,
+        "side": 1,
+        "lateral": 24.916182,
+        "base_z": 5.644117
+      },
+      {
+        "kind": "vegetation",
+        "station": 550,
+        "side": -1,
+        "lateral": 21.048791,
+        "base_z": 6.122915
+      },
+      {
+        "kind": "vegetation",
+        "station": 579,
+        "side": 1,
+        "lateral": 26.535885,
+        "base_z": 2.806096
+      },
+      {
+        "kind": "vegetation",
+        "station": 607,
+        "side": -1,
+        "lateral": 26.794069,
+        "base_z": 1.806242
+      },
+      {
+        "kind": "vegetation",
+        "station": 636,
+        "side": 1,
+        "lateral": 22.880755,
+        "base_z": 1.350627
+      },
+      {
+        "kind": "vegetation",
+        "station": 664,
+        "side": -1,
+        "lateral": 20.206575,
+        "base_z": 0.204798
+      },
+      {
+        "kind": "vegetation",
+        "station": 693,
+        "side": 1,
+        "lateral": 29.020986,
+        "base_z": 0.802913
+      },
+      {
+        "kind": "vegetation",
+        "station": 721,
+        "side": -1,
+        "lateral": 26.87065,
+        "base_z": 3.053949
+      },
+      {
+        "kind": "vegetation",
+        "station": 750,
+        "side": 1,
+        "lateral": 21.923705,
+        "base_z": 8.161361
+      },
+      {
+        "kind": "vegetation",
+        "station": 778,
+        "side": -1,
+        "lateral": 20.567333,
+        "base_z": 12.415334
+      },
+      {
+        "kind": "vegetation",
+        "station": 806,
+        "side": 1,
+        "lateral": 27.149495,
+        "base_z": 8.865062
+      },
+      {
+        "kind": "vegetation",
+        "station": 835,
+        "side": -1,
+        "lateral": 27.679998,
+        "base_z": 9.040727
+      },
+      {
+        "kind": "vegetation",
+        "station": 863,
+        "side": 1,
+        "lateral": 24.372355,
+        "base_z": 12.383783
+      },
+      {
+        "kind": "vegetation",
+        "station": 892,
+        "side": -1,
+        "lateral": 30.132549,
+        "base_z": 6.21121
+      },
+      {
+        "kind": "vegetation",
+        "station": 920,
+        "side": 1,
+        "lateral": 25.042517,
+        "base_z": 10.581594
+      },
+      {
+        "kind": "vegetation",
+        "station": 949,
+        "side": -1,
+        "lateral": 22.069627,
+        "base_z": 11.797629
+      },
+      {
+        "kind": "vegetation",
+        "station": 977,
+        "side": 1,
+        "lateral": 28.437595,
+        "base_z": 5.868449
+      },
+      {
+        "kind": "vegetation",
+        "station": 1006,
+        "side": -1,
+        "lateral": 23.790442,
+        "base_z": 7.680018
+      },
+      {
+        "kind": "grandstand",
+        "station": 81,
+        "side": -1,
+        "lateral": 23.778547,
+        "base_z": 3.833007
+      },
+      {
+        "kind": "grandstand",
+        "station": 245,
+        "side": 1,
+        "lateral": 21.279021,
+        "base_z": 15.165879
+      },
+      {
+        "kind": "grandstand",
+        "station": 440,
+        "side": -1,
+        "lateral": 22.080253,
+        "base_z": 8.435948
+      },
+      {
+        "kind": "grandstand",
+        "station": 634,
+        "side": 1,
+        "lateral": 22.026224,
+        "base_z": 1.545127
+      },
+      {
+        "kind": "grandstand",
+        "station": 839,
+        "side": -1,
+        "lateral": 21.917427,
+        "base_z": 15.446525
+      },
+      {
+        "kind": "marshal",
+        "station": 30,
+        "side": -1,
+        "lateral": 17.288351,
+        "base_z": 8.641843
+      },
+      {
+        "kind": "marshal",
+        "station": 143,
+        "side": 1,
+        "lateral": 16.872763,
+        "base_z": 7.03451
+      },
+      {
+        "kind": "marshal",
+        "station": 317,
+        "side": -1,
+        "lateral": 15.029957,
+        "base_z": 25.548573
+      },
+      {
+        "kind": "marshal",
+        "station": 501,
+        "side": 1,
+        "lateral": 16.302,
+        "base_z": 11.49899
+      },
+      {
+        "kind": "marshal",
+        "station": 716,
+        "side": -1,
+        "lateral": 15.531528,
+        "base_z": 6.532572
+      },
+      {
+        "kind": "marshal",
+        "station": 931,
+        "side": 1,
+        "lateral": 17.425389,
+        "base_z": 16.740943
+      },
+      {
+        "kind": "pit",
+        "station": 988,
+        "side": 1,
+        "lateral": 20.201334,
+        "base_z": 10.873163
+      }
+    ],
+    "barrier_samples": 2048,
+    "barrier_max_authored_error": 0.0
+  },
+  "bridge_contract": {
+    "lower_station": 401,
+    "upper_station": 820,
+    "lower_distance_m": 2272.0,
+    "lower_section": "Degner to Hairpin",
+    "upper_distance_m": 4645.0,
+    "upper_section": "Spoon to 130R",
+    "minimum_clearance_m": 10.0,
+    "planar_separation_asset_units": 1.223825,
+    "clearance_asset_units": 15.324048,
+    "embankment_open_stations": [
+      806,
+      807,
+      808,
+      809,
+      810,
+      811,
+      812,
+      813,
+      814,
+      815,
+      816,
+      817,
+      818,
+      819,
+      820,
+      821,
+      822,
+      823,
+      824,
+      825,
+      826,
+      827,
+      828,
+      829,
+      830,
+      831,
+      832,
+      833,
+      834
+    ]
   },
   "required_materials": [
     "asphalt",
+    "barrier_red",
+    "barrier_white",
     "beach_sand",
+    "bridge_concrete",
+    "catch_fence",
     "coastal_stone",
     "curb_red",
     "curb_white",
     "gantry_metal",
-    "house_coral",
-    "house_roof",
-    "house_sun",
+    "grandstand_canopy",
+    "grandstand_concrete",
     "island_vegetation",
+    "marshal_orange",
+    "marshal_roof",
     "ocean_water",
     "palm_fronds",
     "palm_trunk",
+    "pit_building_roof",
+    "pit_building_wall",
     "runoff",
-    "start_banner"
+    "spectator_blue",
+    "spectator_red",
+    "spectator_white",
+    "spectator_yellow",
+    "start_banner",
+    "tree_canopy"
   ],
   "required_nodes": [
     "map_root",
@@ -229,15 +662,23 @@
     "scenery_root",
     "track_surface",
     "track_runoff",
+    "track_limit_lines",
     "track_curbs",
     "track_embankment",
+    "continuous_safety_barriers",
+    "continuous_catch_fence",
     "sand_island",
     "ocean",
     "palm_groves",
-    "coastal_houses",
+    "park_trees",
     "coastal_rocks",
+    "formula_grandstands",
+    "grandstand_spectators",
+    "marshal_posts",
+    "pit_buildings",
     "start_gantry",
-    "start_finish_line"
+    "start_finish_line",
+    "suzuka_bridge_structure"
   ],
   "source": "suzuka.blend",
   "export": "suzuka.glb",
