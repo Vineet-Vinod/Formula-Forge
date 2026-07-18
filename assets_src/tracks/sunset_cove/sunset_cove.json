@@ -583,6 +583,7 @@
     "barrier_samples": 2048,
     "barrier_max_authored_error": 0.0
   },
+  "bridge_contract": null,
   "required_materials": [
     "asphalt",
     "barrier_red",
