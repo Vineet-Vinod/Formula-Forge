@@ -32,9 +32,11 @@ Spa similarly reproduces its procedural 14-16 meter phase-based width.
 Opaque world layers are strictly separated rather than coplanar: ocean, sand,
 vegetation, embankment, runoff, and asphalt rise in that order. The exact
 numeric levels are recorded in `runtime_alignment.opaque_layer_elevations_asset_units`.
-The three kilometer-scale base layers use explicit shared-center triangle fans;
-they must not be converted back to n-gons because driver triangulation can
-produce visible precision seams at runtime.
+The kilometer-scale base layers do not overlap: vegetation is an inner triangle
+fan, sand is only the beach ring outside it, and ocean is only the water ring
+outside the coast. Rings use explicit shared-edge triangles. Do not convert
+these layers back to overlapping n-gons; their depth precision is insufficient
+at the full metric-circuit scale.
 
 Metadata records the start pose in both Blender and glTF/raylib axes, Blender
 and glTF bounds, stable node/material role names, source-array hashes, spline

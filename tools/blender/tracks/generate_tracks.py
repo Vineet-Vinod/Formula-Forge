@@ -201,6 +201,21 @@ def planar_fan(name, perimeter, material, parent):
     return mesh_object(name, vertices, faces, [material], parent=parent)
 
 
+def planar_ring(name, outer, inner, material, parent):
+    """Build an explicit non-overlapping annulus between matching perimeters."""
+    if len(outer) != len(inner):
+        raise ValueError(f"{name}: ring perimeters must have matching vertex counts")
+    count = len(outer)
+    vertices = [*outer, *inner]
+    faces = []
+    for index in range(count):
+        outer_next = (index+1) % count
+        inner_index = count+index
+        inner_next = count+outer_next
+        faces.extend(((index,outer_next,inner_next),(index,inner_next,inner_index)))
+    return mesh_object(name, vertices, faces, [material], parent=parent)
+
+
 def cpp_pairs(path: Path, symbol: str):
     text = path.read_text(encoding="utf-8")
     start = text.index(symbol)
@@ -543,13 +558,15 @@ def make_world(slug, spec):
               (ix1,iy0+chamfer,sand_z), (ix1,iy1-chamfer,sand_z),
               (ix1-chamfer,iy1,sand_z), (ix0+chamfer,iy1,sand_z),
               (ix0,iy1-chamfer,sand_z), (ix0,iy0+chamfer,sand_z)]
-    planar_fan("sand_island", island, materials["sand"], terrain)
-    # Slightly smaller green interior keeps a beach band around the island.
+    # Slightly smaller green interior defines the inner edge of the beach ring.
     green = [(cx+(x-cx)*0.90, cy+(y-cy)*0.90, -0.40*detail_scale) for x,y,_ in island]
+    sand_inner = [(x,y,sand_z) for x,y,_ in green]
+    planar_ring("sand_island", island, sand_inner, materials["sand"], terrain)
     planar_fan("island_vegetation", green, materials["grass"], terrain)
     ocean_scale = 1.28
     ocean = [(cx+(x-cx)*ocean_scale, cy+(y-cy)*ocean_scale, -5.0*detail_scale) for x,y,_ in island]
-    planar_fan("ocean", ocean, materials["water"], terrain)
+    ocean_inner = [(x,y,-5.0*detail_scale) for x,y,_ in island]
+    planar_ring("ocean", ocean, ocean_inner, materials["water"], terrain)
 
     make_embankment(center, half_widths, materials["grass"], terrain, detail_scale)
     make_strip("track_runoff", center, [w+4.0*detail_scale for w in half_widths], 0.00, materials["shoulder"], circuit)

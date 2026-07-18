@@ -166,8 +166,10 @@ def verify(root: Path, slug: str):
         z_values = [vertex.co.z for vertex in layer_mesh.vertices]
         if max(abs(value-layers[layer_name]) for value in z_values) > 0.002:
             raise ValueError(f"{slug}: {object_name} elevation differs from layer contract")
-        if len(layer_mesh.vertices) != 9 or len(layer_mesh.polygons) != 8 or any(len(face.vertices) != 3 for face in layer_mesh.polygons):
-            raise ValueError(f"{slug}: {object_name} must remain an explicit shared-center triangle fan")
+        expected_topology = (9,8) if object_name == "island_vegetation" else (16,16)
+        if ((len(layer_mesh.vertices),len(layer_mesh.polygons)) != expected_topology or
+                any(len(face.vertices) != 3 for face in layer_mesh.polygons)):
+            raise ValueError(f"{slug}: {object_name} explicit non-overlap topology changed")
     unit = meta["coordinate_unit"]
     print(f"PASS {slug:12} length={target_length:7.1f} {unit} "
           f"surface={meta['measured_surface_centerline_asset_units']:7.1f} "
