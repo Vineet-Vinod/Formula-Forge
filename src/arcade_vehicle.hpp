@@ -1,5 +1,6 @@
 #pragma once
 
+#include <array>
 #include <cstdint>
 
 #include "core_math.hpp"
@@ -39,6 +40,14 @@ struct ArcadeVehicleState {
     float lateralSpeed = 0.0f;
     float slipAngle = 0.0f;
     float engineLoad = 0.0f;
+    int gear = 1;
+    float engineRpmNormalized = 0.333f;
+    float shiftTimer = 0.0f;
+    float shiftRejectTimer = 0.0f;
+    float engineBrakingApplied = 0.0f;
+    float aerodynamicDragApplied = 0.0f;
+    float rollingResistanceApplied = 0.0f;
+    float tireLongitudinalUsage = 0.0f;
     float tractionUtilization = 0.0f;
     float distanceTravelled = 0.0f;
     float wheelSpin = 0.0f;
@@ -74,6 +83,17 @@ struct ArcadeVehicleConfig {
     float rollingResistance = 3.8f;
     float aerodynamicDrag = 0.00038f;
     float overspeedResponse = 4.5f;
+    std::array<float, 8> gearRedlineSpeedRatios = {0.352f, 0.456f, 0.560f, 0.663f, 0.767f, 0.862f, 0.953f, 1.038f};
+    std::array<float, 8> gearDriveScales = {1.08f, 1.05f, 1.03f, 1.01f, 1.00f, 0.99f, 0.98f, 0.97f};
+    float idleRpmNormalized = 0.333f;
+    float automaticUpshiftRpm = 0.96f;
+    float automaticDownshiftRpm = 0.50f;
+    float downshiftOverrevRpm = 1.08f;
+    float shiftDuration = 0.075f;
+    float shiftRejectDuration = 0.28f;
+    float engineBrakingAcceleration = 18.0f;
+    float engineBrakingLowGearScale = 1.20f;
+    float engineBrakingHighGearScale = 0.52f;
 
     float wheelbase = 38.0f;
     float wheelRadius = 8.0f;
@@ -112,6 +132,9 @@ struct ArcadeVehicleConfig {
     float downforceGripGain = 0.48f;
     float tireLimitedYawScale = 0.92f;
     float brakingLateralGripUsage = 0.58f;
+    float combinedGripExponent = 2.20f;
+    float combinedGripFloor = 0.30f;
+    float trailBrakeTurnInGain = 0.13f;
     float driftGripAcceleration = 240.0f;
     float driftLateralResponse = 3.8f;
 
@@ -173,6 +196,9 @@ struct ArcadeVehicleControl {
     bool drift = false;
     // Optional explicit rising edge. Keep drift=true on the same frame.
     bool driftPressed = false;
+    bool shiftUpPressed = false;
+    bool shiftDownPressed = false;
+    bool automaticShift = true;
 };
 
 struct ArcadeSurface {
@@ -207,6 +233,14 @@ struct ArcadeVehicleTelemetry {
     float airborneTime = 0.0f;
     float landingImpulse = 0.0f;
     float brakeLoad = 0.0f;
+    int gear = 1;
+    float engineRpmNormalized = 0.0f;
+    float shiftRemainingSeconds = 0.0f;
+    bool shiftRejected = false;
+    float engineBrakingAcceleration = 0.0f;
+    float aerodynamicDragAcceleration = 0.0f;
+    float rollingResistanceAcceleration = 0.0f;
+    float tireLongitudinalUsage = 0.0f;
     bool grounded = true;
     ArcadeDriftPhase driftPhase = ArcadeDriftPhase::Grip;
     int driftTier = 0;
@@ -228,6 +262,11 @@ struct ArcadeVehicleAuditResult {
     int driftBoostTier = 0;
     float looseSurfaceSpeedRatio = 0.0f;
     float shoulderSpeedRatio = 0.0f;
+    float firstGearLimitedSpeed = 0.0f;
+    int automaticTopGear = 0;
+    int rejectedDownshiftGear = 0;
+    float lowGearCoastLoss = 0.0f;
+    float highGearCoastLoss = 0.0f;
     float fixedStepPositionError = 0.0f;
     float brakeOversteerPeakYaw = 0.0f;
     float brakeOversteerPeakSlip = 0.0f;

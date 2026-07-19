@@ -5,6 +5,9 @@
 
 struct ArcadeAudioInput {
     float speedNormalized = 0.0f;
+    float engineRpmNormalized = 0.333f;
+    int gear = 1;
+    bool shiftActive = false;
     float throttle = 0.0f;
     float brake = 0.0f;
     float slip = 0.0f;

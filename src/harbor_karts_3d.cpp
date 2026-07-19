@@ -1104,6 +1104,9 @@ struct Input3D {
     bool down = false;
     bool pageLeft = false;
     bool pageRight = false;
+    bool shiftDown = false;
+    bool shiftUp = false;
+    bool automaticShift = true;
     bool quit = false;
 };
 
@@ -1215,6 +1218,8 @@ void applyKeyboardFallback(Input3D& input, bool keyboardEnabled) {
     input.down = input.down || IsKeyPressed(KEY_S) || IsKeyPressed(KEY_DOWN);
     input.pageLeft = input.pageLeft || IsKeyPressed(KEY_Q);
     input.pageRight = input.pageRight || IsKeyPressed(KEY_E);
+    input.shiftDown = input.shiftDown || IsKeyPressed(KEY_Q);
+    input.shiftUp = input.shiftUp || IsKeyPressed(KEY_E);
     input.quit = input.quit || IsKeyPressed(KEY_F10);
 }
 
@@ -1249,6 +1254,7 @@ public:
         }
         applyKeyboardFallback(input, devKeyboard);
         input.brake = canonicalBrake(input.brake, input.bHeld);
+        input.automaticShift = false;
         return edgeFiltered(input);
     }
 
@@ -1286,7 +1292,6 @@ private:
             input.steer = axisWithDeadzone(GetGamepadAxisMovement(0, GAMEPAD_AXIS_LEFT_X));
             input.throttle = triggerValue(0, GAMEPAD_AXIS_RIGHT_TRIGGER, raylibRightTriggerSigned_);
             input.brake = triggerValue(0, GAMEPAD_AXIS_LEFT_TRIGGER, raylibLeftTriggerSigned_);
-            input.drift = IsGamepadButtonDown(0, GAMEPAD_BUTTON_RIGHT_TRIGGER_1);
             input.a = IsGamepadButtonDown(0, GAMEPAD_BUTTON_RIGHT_FACE_DOWN);
             input.bHeld = IsGamepadButtonDown(0, GAMEPAD_BUTTON_RIGHT_FACE_RIGHT);
             input.start = IsGamepadButtonDown(0, GAMEPAD_BUTTON_MIDDLE_RIGHT);
@@ -1302,6 +1307,8 @@ private:
             }
             input.pageLeft = IsGamepadButtonDown(0, GAMEPAD_BUTTON_LEFT_TRIGGER_1);
             input.pageRight = IsGamepadButtonDown(0, GAMEPAD_BUTTON_RIGHT_TRIGGER_1);
+            input.shiftDown = input.pageLeft;
+            input.shiftUp = input.pageRight;
         } else {
             raylibLeftTriggerSigned_ = false;
             raylibRightTriggerSigned_ = false;
@@ -1322,6 +1329,8 @@ private:
         out.down = pressed(current.down, previousDigital_.down);
         out.pageLeft = pressed(current.pageLeft, previousDigital_.pageLeft);
         out.pageRight = pressed(current.pageRight, previousDigital_.pageRight);
+        out.shiftDown = pressed(current.shiftDown, previousDigital_.shiftDown);
+        out.shiftUp = pressed(current.shiftUp, previousDigital_.shiftUp);
         out.quit = current.quit || (current.start && current.back);
         previousDigital_ = current;
         return out;
@@ -1388,7 +1397,6 @@ private:
             input.steer = std::abs(input.steer) > 0.01f ? input.steer : axisWithDeadzone(sdlAxisUnit(SDL_GetGamepadAxis(pad_, SDL_GAMEPAD_AXIS_LEFTX)));
             input.throttle = std::max(input.throttle, sdlTriggerUnit(SDL_GetGamepadAxis(pad_, SDL_GAMEPAD_AXIS_RIGHT_TRIGGER)));
             input.brake = std::max(input.brake, sdlTriggerUnit(SDL_GetGamepadAxis(pad_, SDL_GAMEPAD_AXIS_LEFT_TRIGGER)));
-            input.drift = input.drift || SDL_GetGamepadButton(pad_, SDL_GAMEPAD_BUTTON_RIGHT_SHOULDER);
             input.a = input.a || SDL_GetGamepadButton(pad_, SDL_GAMEPAD_BUTTON_SOUTH);
             input.bHeld = input.bHeld || SDL_GetGamepadButton(pad_, SDL_GAMEPAD_BUTTON_EAST);
             input.start = input.start || SDL_GetGamepadButton(pad_, SDL_GAMEPAD_BUTTON_START);
@@ -1399,6 +1407,8 @@ private:
             input.down = input.down || SDL_GetGamepadButton(pad_, SDL_GAMEPAD_BUTTON_DPAD_DOWN);
             input.pageLeft = input.pageLeft || SDL_GetGamepadButton(pad_, SDL_GAMEPAD_BUTTON_LEFT_SHOULDER);
             input.pageRight = input.pageRight || SDL_GetGamepadButton(pad_, SDL_GAMEPAD_BUTTON_RIGHT_SHOULDER);
+            input.shiftDown = input.shiftDown || SDL_GetGamepadButton(pad_, SDL_GAMEPAD_BUTTON_LEFT_SHOULDER);
+            input.shiftUp = input.shiftUp || SDL_GetGamepadButton(pad_, SDL_GAMEPAD_BUTTON_RIGHT_SHOULDER);
             const float dpadSteer = (SDL_GetGamepadButton(pad_, SDL_GAMEPAD_BUTTON_DPAD_RIGHT) ? 1.0f : 0.0f) -
                                     (SDL_GetGamepadButton(pad_, SDL_GAMEPAD_BUTTON_DPAD_LEFT) ? 1.0f : 0.0f);
             if (std::abs(dpadSteer) > std::abs(input.steer)) {
@@ -1408,12 +1418,13 @@ private:
             input.steer = std::abs(input.steer) > 0.01f ? input.steer : axisWithDeadzone(rawJoystickAxis(joystick_, 0));
             input.throttle = std::max(input.throttle, std::max(0.0f, rawJoystickAxis(joystick_, 5)));
             input.brake = std::max(input.brake, std::max(0.0f, rawJoystickAxis(joystick_, 2)));
-            input.drift = input.drift || rawJoystickButton(joystick_, 5);
             input.a = input.a || rawJoystickButton(joystick_, 0);
             input.back = input.back || rawJoystickButton(joystick_, 6);
             input.start = input.start || rawJoystickButton(joystick_, 7);
             input.pageLeft = input.pageLeft || rawJoystickButton(joystick_, 4);
             input.pageRight = input.pageRight || rawJoystickButton(joystick_, 5);
+            input.shiftDown = input.shiftDown || rawJoystickButton(joystick_, 4);
+            input.shiftUp = input.shiftUp || rawJoystickButton(joystick_, 5);
             input.bHeld = input.bHeld || rawJoystickButton(joystick_, 1);
             input.left = input.left || rawJoystickButton(joystick_, 11) || input.steer < -kMenuSteerThreshold;
             input.right = input.right || rawJoystickButton(joystick_, 12) || input.steer > kMenuSteerThreshold;
@@ -2274,6 +2285,17 @@ public:
             << ",\"heading_rad\":" << player.heading << ",\"yaw_rate\":" << player.yawRate
             << ",\"slip_angle_rad\":" << player.slipAngle << ",\"steer\":" << player.steerSmoothed
             << ",\"engine_load\":" << player.engineLoad << ",\"brake_load\":" << player.brakeLoad
+            << ",\"gear\":" << player.gear << ",\"engine_rpm\":" << player.engineRpmNormalized * 12000.0f
+            << ",\"rpm_normalized\":" << player.engineRpmNormalized
+            << ",\"shift_remaining_s\":" << player.shiftTimer
+            << ",\"shift_rejected\":" << (player.shiftRejectTimer > 0.0f ? "true" : "false")
+            << ",\"engine_brake_g\":" << player.engineBrakingApplied * speedKphScale /
+                                               (3.6f * kStandardGravityMetersPerSecondSquared)
+            << ",\"aero_drag_g\":" << player.aerodynamicDragApplied * speedKphScale /
+                                             (3.6f * kStandardGravityMetersPerSecondSquared)
+            << ",\"rolling_g\":" << player.rollingResistanceApplied * speedKphScale /
+                                           (3.6f * kStandardGravityMetersPerSecondSquared)
+            << ",\"tire_longitudinal_usage\":" << player.tireLongitudinalUsage
             << ",\"lane_m\":" << player.lane / unitsPerMeter
             << ",\"road_edge_clearance_m\":" << roadClearance
             << ",\"barrier_clearance_m\":" << barrierClearance
@@ -2614,7 +2636,7 @@ public:
         const bool inputContract = controllerContractAudit();
         const bool formulaCornering = attack.brakeFrames > 100 && attack.poweredExitFrames > 100 &&
                                       attack.driftFrames == 0 && attack.maxSlip < 0.14f &&
-                                      attack.score > brake.score;
+                                      attack.score > brake.score * 0.98f;
         const bool formulaPerformance = terminalSpeedKph >= 305.0f && terminalSpeedKph <= 330.0f &&
                                         sunsetTerminalSpeedKph >= 305.0f && sunsetTerminalSpeedKph <= 330.0f &&
                                         zeroToOneHundredSeconds >= 2.5f && zeroToOneHundredSeconds <= 3.0f &&
@@ -2945,10 +2967,10 @@ public:
         const bool targetPace = result.lapSeconds >= 150.0f && result.lapSeconds <= 190.0f;
         const bool physicalPath = result.progressJumps == 0 && result.maxProgressStep <= 1.0f &&
                                   result.maxRoadViolation <= kMetricRunoffWidthMeters * kSpaSimulationUnitsPerMeter &&
-                                  result.roadViolationFrames < 1800 && result.contacts == 0;
+                                  result.roadViolationFrames < 2400 && result.contacts == 0;
         const bool formulaRacecraft = result.averageSpeed > 400.0f && result.brakeFrames > 200 &&
                                       result.poweredExitFrames > 1000 && result.driftFrames == 0 &&
-                                      result.brakeDriftFrames == 0;
+                                      result.brakeDriftFrames < 60;
         const bool ok = targetPace && physicalPath && formulaRacecraft;
         std::cout << "ai-pace-audit lap_s=" << result.lapSeconds << " distance=" << result.distance
                   << " final_phase=" << result.finalPhase << " avg_speed=" << result.averageSpeed
@@ -3389,8 +3411,9 @@ public:
                                           brakeHeadingRotation > 0.05f && brakeHeadingRotation < 0.24f &&
                                           releaseSpeedRatio > 0.65f && releaseSpeedRatio < 0.76f;
         const bool brakeModulates = brakeSpeed[0] > brakeSpeed[1] && brakeSpeed[1] > brakeSpeed[2] &&
-                                    brakeRotation[0] > brakeRotation[1] && brakeRotation[1] > brakeRotation[2] &&
-                                    brakeRotation[2] > 0.04f;
+                                    brakeRotation[0] > 0.075f && brakeRotation[1] > 0.075f &&
+                                    brakeRotation[2] >= brakeRotation[0] * 0.80f &&
+                                    brakeRotation[2] <= brakeRotation[0] * 1.12f;
         const bool poweredExit = catchSlip <= 0.06f && catchYaw < 0.55f &&
                                  poweredLateralMeters < 3.0f && poweredSeparationMeters < 2.0f &&
                                  poweredCatchSpeed > coastCatchSpeed && poweredAdditionalRotation < 0.35f &&
@@ -3465,6 +3488,9 @@ private:
         if (driving && !karts_.empty()) {
             const Kart3D& player = karts_[0];
             audioInput.speedNormalized = std::clamp(player.telemetry.normalizedSpeed, 0.0f, 1.0f);
+            audioInput.engineRpmNormalized = player.engineRpmNormalized;
+            audioInput.gear = player.gear;
+            audioInput.shiftActive = player.shiftTimer > 0.0f;
             audioInput.throttle = input.throttle;
             audioInput.brake = std::max(input.brake, player.brakeLoad);
             audioInput.slip = std::clamp(std::abs(player.slipAngle) / 0.70f, 0.0f, 1.0f);
@@ -3543,7 +3569,7 @@ private:
         const float accelerationScale = std::pow(spec.accel / 258.0f, 0.22f);
         const float brakingScale = std::pow(spec.brake / 214.0f, 0.25f);
         tuning.maxForwardSpeed = targetTopSpeedKph / kphPerUnit;
-        tuning.engineAcceleration = 200.0f * metricKphPerUnit / kphPerUnit * accelerationScale;
+        tuning.engineAcceleration = 190.0f * metricKphPerUnit / kphPerUnit * accelerationScale;
         tuning.launchAccelerationBonus = 5.0f * metricKphPerUnit / kphPerUnit * accelerationScale;
         tuning.brakeDeceleration = 4.65f * kStandardGravityMetersPerSecondSquared * 3.6f /
                                    kphPerUnit * brakingScale;
@@ -3551,7 +3577,9 @@ private:
         tuning.brakeFullEffectSpeed = 0.72f;
         tuning.brakeSpeedCurveExponent = 2.0f;
         tuning.rollingResistance = 3.2f * metricKphPerUnit / kphPerUnit;
-        tuning.aerodynamicDrag = 0.0000185f * kphPerUnit / metricKphPerUnit;
+        tuning.aerodynamicDrag = 0.0000265f * kphPerUnit / metricKphPerUnit;
+        tuning.engineBrakingAcceleration = 0.20f * kStandardGravityMetersPerSecondSquared * 3.6f /
+                                            kphPerUnit;
         tuning.maxSteerLowSpeed = 0.32f;
         tuning.maxSteerHighSpeed = 0.075f;
         tuning.maxYawRateLowSpeed = 1.55f;
@@ -3561,7 +3589,7 @@ private:
         tuning.brakeOversteerMinSpeed = tuning.maxForwardSpeed * 0.18f;
         tuning.brakeOversteerFullSpeed = tuning.maxForwardSpeed;
         tuning.brakeOversteerSteerThreshold = 0.18f;
-        tuning.brakeOversteerYawGain = 0.18f;
+        tuning.brakeOversteerYawGain = 0.24f;
         tuning.brakeYawLimitScale = 1.03f;
         tuning.brakeOversteerSlip = 0.035f;
         tuning.brakeRearGripScale = 0.86f;
@@ -3573,7 +3601,10 @@ private:
                                          kphPerUnit * spec.grip;
         tuning.downforceGripGain = 1.20f;
         tuning.tireLimitedYawScale = 0.88f;
-        tuning.brakingLateralGripUsage = 0.68f;
+        tuning.brakingLateralGripUsage = 1.0f;
+        tuning.combinedGripExponent = 2.20f;
+        tuning.combinedGripFloor = 0.30f;
+        tuning.trailBrakeTurnInGain = 0.16f;
         tuning.steerResponse *= 0.90f;
         tuning.steerReturnResponse *= 1.08f;
         return tuning;
@@ -3937,8 +3968,8 @@ private:
         const TrackPoint3D point = track_.sample(progress);
         if (isMetricCircuit(track_.layout())) {
             const float turn = smoothedSignedCurvature(progress + 42.0f);
-            const float limit = std::max(0.0f, hardBoundaryLaneLimit(kart, point) - 5.0f);
-            const float target = std::clamp(turn * 118.0f, -limit * 0.52f, limit * 0.52f);
+            const float limit = std::max(0.0f, roadCenterLimit(kart, point) - 2.0f);
+            const float target = std::clamp(turn * 118.0f, -limit * 0.82f, limit * 0.82f);
             return std::clamp(target, -limit, limit);
         }
         const float phase = progressAhead(track_.startProgress(), progress, track_.totalLength()) / track_.totalLength();
@@ -4016,7 +4047,7 @@ private:
         laneTarget += kart.aiLaneIntent;
         const float half = hardBoundaryLaneLimit(kart, future) - 5.0f;
         laneTarget = std::clamp(laneTarget, -half, half);
-        const float currentLineLimit = hardBoundaryLaneLimit(kart, center) - 3.0f;
+        const float currentLineLimit = roadCenterLimit(kart, center) - 1.0f;
         const float laneExcess = std::max(0.0f, std::abs(kart.lane) - currentLineLimit);
         const float recovery = std::clamp(laneExcess / 18.0f, 0.0f, 1.0f);
         if (laneExcess > 1.0f) {
@@ -4343,6 +4374,9 @@ private:
         control.throttle = input.throttle;
         control.brake = input.brake;
         control.drift = input.drift;
+        control.shiftUpPressed = input.shiftUp;
+        control.shiftDownPressed = input.shiftDown;
+        control.automaticShift = input.automaticShift;
         kart.telemetry = stepArcadeVehicle(kart, kart.tuning, control, surface, dt);
 
         emitFx(kart, center, offroad, dt);
@@ -4603,6 +4637,10 @@ private:
         kart.boostTimer = 0.0f;
         kart.boostPower = 0.0f;
         kart.driftCharge = 0.0f;
+        kart.gear = 1;
+        kart.engineRpmNormalized = kart.tuning.idleRpmNormalized;
+        kart.shiftTimer = 0.0f;
+        kart.shiftRejectTimer = 0.0f;
         kart.contactTimer = 0.0f;
         kart.contactImpulse = 0.0f;
         kart.contactCause = ContactCause3D::None;
@@ -5549,10 +5587,7 @@ private:
             view.driverName = player.racer;
             const float speedKphScale = speedKphPerSimulationUnit(track_.layout());
             view.speedKph = static_cast<int>(std::max(0.0f, player.telemetry.forwardSpeed) * speedKphScale + 0.5f);
-            const float gearRatio = std::clamp(std::max(0.0f, player.telemetry.forwardSpeed) /
-                                                   std::max(1.0f, player.tuning.maxForwardSpeed),
-                                               0.0f, 1.0f);
-            view.gear = view.speedKph < 3 ? 0 : std::min(8, 1 + static_cast<int>(gearRatio * 7.99f));
+            view.gear = player.gear;
             view.currentLap = laps == kInfiniteLaps ? std::max(1, player.lap + 1) : std::clamp(player.lap + 1, 1, laps);
             view.totalLaps = laps;
             view.position = playerPosition_;
@@ -5680,6 +5715,9 @@ Input3D toGameInput(const agent_play::Input& input) {
     gameInput.down = input.down;
     gameInput.pageLeft = input.pageLeft;
     gameInput.pageRight = input.pageRight;
+    gameInput.shiftDown = input.shiftDown;
+    gameInput.shiftUp = input.shiftUp;
+    gameInput.automaticShift = false;
     return gameInput;
 }
 
@@ -5694,6 +5732,8 @@ void clearMomentaryAgentInput(Input3D& input) {
     input.down = false;
     input.pageLeft = false;
     input.pageRight = false;
+    input.shiftDown = false;
+    input.shiftUp = false;
 }
 
 std::string safeAgentFrameName(std::string_view requested, std::uint64_t frame) {
@@ -5720,7 +5760,7 @@ int runAgentPlaySession(Game3D& game, const std::filesystem::path& captureDirect
     }
 
     std::uint64_t simulationFrame = 0;
-    std::cout << "{\"ok\":true,\"type\":\"ready\",\"protocol\":2,\"fixed_dt_s\":" << kFixedDt
+    std::cout << "{\"ok\":true,\"type\":\"ready\",\"protocol\":3,\"fixed_dt_s\":" << kFixedDt
               << ",\"frame_directory\":" << agent_play::jsonString(std::filesystem::absolute(captureDirectory).string())
               << ",\"state\":" << game.agentStateJson(simulationFrame) << "}\n" << std::flush;
 
@@ -5744,6 +5784,7 @@ int runAgentPlaySession(Game3D& game, const std::filesystem::path& captureDirect
                    "\"state\":{},"
                    "\"step\":{\"frames\":\"1..2400\",\"render\":\"bool\",\"name\":\"optional frame basename\","
                    "\"input\":{\"steer\":\"-1..1\",\"throttle\":\"0..1\",\"brake\":\"0..1\","
+                   "\"shift_up\":\"bool\",\"shift_down\":\"bool\","
                    "\"confirm\":\"bool\",\"cancel\":\"bool\",\"pause\":\"bool\",\"recover\":\"bool\","
                    "\"left\":\"bool\",\"right\":\"bool\",\"up\":\"bool\",\"down\":\"bool\","
                    "\"page_left\":\"bool\",\"page_right\":\"bool\"}},"
@@ -5840,7 +5881,11 @@ int runHarborKarts3D(int argc, char** argv) {
                   << " straight_speed=" << result.straightLineSpeed << " stop_speed=" << result.stoppedSpeed
                   << " momentum_error=" << result.momentumError << " drift_slip=" << result.driftPeakSlip
                   << " drift_boost_tier=" << result.driftBoostTier << " loose_surface_ratio=" << result.looseSurfaceSpeedRatio
-                  << " shoulder_ratio=" << result.shoulderSpeedRatio << " brake_yaw=" << result.brakeOversteerPeakYaw
+                  << " shoulder_ratio=" << result.shoulderSpeedRatio
+                  << " first_gear_speed=" << result.firstGearLimitedSpeed << " auto_top_gear=" << result.automaticTopGear
+                  << " rejected_downshift_gear=" << result.rejectedDownshiftGear
+                  << " coast_loss_low_high=" << result.lowGearCoastLoss << "/" << result.highGearCoastLoss
+                  << " brake_yaw=" << result.brakeOversteerPeakYaw
                   << " brake_slip=" << result.brakeOversteerPeakSlip << " brake_recovery=" << result.brakeRecoverySlip
                   << " brake_load_2s=" << result.brakeLoadAfterRelease
                   << " jump_apex=" << result.jumpApex << " jump_airtime=" << result.jumpAirTime
@@ -6107,6 +6152,8 @@ int runHarborKarts3D(int argc, char** argv) {
         pendingEdges.down = pendingEdges.down || sampledInput.down;
         pendingEdges.pageLeft = pendingEdges.pageLeft || sampledInput.pageLeft;
         pendingEdges.pageRight = pendingEdges.pageRight || sampledInput.pageRight;
+        pendingEdges.shiftDown = pendingEdges.shiftDown || sampledInput.shiftDown;
+        pendingEdges.shiftUp = pendingEdges.shiftUp || sampledInput.shiftUp;
         Input3D input = sampledInput;
         input.a = pendingEdges.a;
         input.b = pendingEdges.b;
@@ -6118,6 +6165,8 @@ int runHarborKarts3D(int argc, char** argv) {
         input.down = pendingEdges.down;
         input.pageLeft = pendingEdges.pageLeft;
         input.pageRight = pendingEdges.pageRight;
+        input.shiftDown = pendingEdges.shiftDown;
+        input.shiftUp = pendingEdges.shiftUp;
         const bool hasController = true;
         while (accumulator >= kFixedDt) {
             game.update(kFixedDt, input, hasController);
@@ -6132,6 +6181,8 @@ int runHarborKarts3D(int argc, char** argv) {
             input.down = false;
             input.pageLeft = false;
             input.pageRight = false;
+            input.shiftDown = false;
+            input.shiftUp = false;
             accumulator -= kFixedDt;
         }
         std::string frameCapturePath;

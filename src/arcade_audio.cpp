@@ -28,6 +28,8 @@ float approach(float current, float target, float response, float dt) {
 
 struct SynthControls {
     float speed = 0.0f;
+    float rpm = 0.333f;
+    float shift = 0.0f;
     float throttle = 0.0f;
     float brake = 0.0f;
     float slip = 0.0f;
@@ -38,6 +40,9 @@ class ArcadeSynth {
   public:
     void setInput(const ArcadeAudioInput& input) {
         target_.speed = clamp01(input.speedNormalized);
+        target_.rpm = std::clamp(std::isfinite(input.engineRpmNormalized) ? input.engineRpmNormalized : 0.333f,
+                                 0.20f, 1.10f);
+        target_.shift = input.shiftActive ? 1.0f : 0.0f;
         target_.throttle = clamp01(input.throttle);
         target_.brake = clamp01(input.brake);
         target_.slip = clamp01(std::abs(input.slip));
@@ -59,18 +64,16 @@ class ArcadeSynth {
         constexpr float dt = 1.0f / static_cast<float>(kSampleRate);
         for (std::size_t frame = 0; frame < frames; ++frame) {
             controls_.speed = approach(controls_.speed, target_.speed, 5.5f, dt);
+            controls_.rpm = approach(controls_.rpm, target_.rpm, 18.0f, dt);
+            controls_.shift = approach(controls_.shift, target_.shift, 28.0f, dt);
             controls_.throttle = approach(controls_.throttle, target_.throttle, 11.0f, dt);
             controls_.brake = approach(controls_.brake, target_.brake, 15.0f, dt);
             controls_.slip = approach(controls_.slip, target_.slip, 18.0f, dt);
             controls_.grounded = approach(controls_.grounded, target_.grounded, 25.0f, dt);
 
-            const float load = clamp01(controls_.throttle * 0.82f + controls_.brake * 0.18f);
-            const float gearPosition = controls_.speed * 7.0f;
-            const float gearFraction = controls_.speed > 0.995f
-                                           ? 1.0f
-                                           : gearPosition - std::floor(gearPosition);
-            const float gearSweep = gearFraction * gearFraction * (3.0f - 2.0f * gearFraction);
-            const float rpm = clamp01(0.28f + controls_.speed * 0.25f + gearSweep * 0.38f + controls_.throttle * 0.10f);
+            const float load = clamp01((controls_.throttle * 0.82f + controls_.brake * 0.18f) *
+                                       (1.0f - controls_.shift * 0.88f));
+            const float rpm = clamp01(controls_.rpm);
             const float engineHz = 88.0f + rpm * 330.0f;
             enginePhase_ = wrapPhase(enginePhase_ + engineHz * dt);
             firingPhase_ = wrapPhase(firingPhase_ + engineHz * (3.01f + load * 0.08f) * dt);
