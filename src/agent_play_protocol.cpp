@@ -238,6 +238,8 @@ private:
             else if (key == "down") parsed = parseBool(result_.command.input.down);
             else if (key == "page_left") parsed = parseBool(result_.command.input.pageLeft);
             else if (key == "page_right") parsed = parseBool(result_.command.input.pageRight);
+            else if (key == "shift_up") parsed = parseBool(result_.command.input.shiftUp);
+            else if (key == "shift_down") parsed = parseBool(result_.command.input.shiftDown);
             else parsed = skipValue();
             if (!parsed) {
                 error_ = "input field has the wrong type or range";
@@ -354,16 +356,19 @@ std::string contactTelemetryJson(bool barrierContact, bool vehicleContact, float
 
 bool runProtocolParserAudit() {
     const ParseResult step = parseCommand(
-        R"({"cmd":"step","id":17,"frames":120,"render":true,"input":{"steer":-0.5,"throttle":1,"brake":0.25,"confirm":true,"page_right":true}})");
+        R"({"cmd":"step","id":17,"frames":120,"render":true,"input":{"steer":-0.5,"throttle":1,"brake":0.25,"confirm":true,"page_right":true,"shift_up":true,"shift_down":true}})");
     const bool stepValid = step.ok && step.command.type == CommandType::Step && step.command.requestId == 17 &&
                            step.command.frames == 120 && step.command.render && step.command.input.steer == -0.5f &&
                            step.command.input.throttle == 1.0f && step.command.input.brake == 0.25f &&
-                           step.command.input.confirm && step.command.input.pageRight;
+                           step.command.input.confirm && step.command.input.pageRight && step.command.input.shiftUp &&
+                           step.command.input.shiftDown;
     const bool commandsValid = parseCommand(R"({"cmd":"state"})").ok && parseCommand(R"({"cmd":"frame","name":"turn_1"})").ok &&
                                parseCommand(R"({"cmd":"reset"})").ok && parseCommand(R"({"cmd":"help"})").ok &&
                                parseCommand(R"({"cmd":"quit"})").ok;
     const bool errorsValid = !parseCommand(R"({"cmd":"step","frames":0})").ok &&
                              !parseCommand(R"({"cmd":"step","input":{"steer":2}})").ok &&
+                             !parseCommand(R"({"cmd":"step","input":{"shift_up":1}})").ok &&
+                             !parseCommand(R"({"cmd":"step","input":{"shift_down":"true"}})").ok &&
                              !parseCommand(R"({"cmd":"unknown"})").ok && !parseCommand("not json").ok;
     const bool escapingValid = jsonString("a\n\"b") == "\"a\\n\\\"b\"";
     const bool contactTelemetryValid =

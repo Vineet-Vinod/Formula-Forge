@@ -14,7 +14,7 @@ cmake --build build/game --parallel
 
 The process writes one JSON object per line and then waits for one JSON command
 per line on standard input. Keep the process alive across the full play session.
-The initial `ready` response contains protocol version `2`, the fixed timestep,
+The initial `ready` response contains protocol version `3`, the fixed timestep,
 the frame directory, and the initial state.
 
 ## Commands
@@ -22,11 +22,12 @@ the frame directory, and the initial state.
 ```json
 {"cmd":"state","id":1}
 {"cmd":"step","id":2,"frames":120,"input":{"throttle":1.0,"steer":-0.2}}
-{"cmd":"step","id":3,"frames":1,"input":{"confirm":true}}
-{"cmd":"frame","id":4,"name":"turn_entry"}
-{"cmd":"reset","id":5}
-{"cmd":"help","id":6}
-{"cmd":"quit","id":7}
+{"cmd":"step","id":3,"frames":1,"input":{"shift_up":true}}
+{"cmd":"step","id":4,"frames":1,"input":{"confirm":true}}
+{"cmd":"frame","id":5,"name":"turn_entry"}
+{"cmd":"reset","id":6}
+{"cmd":"help","id":7}
+{"cmd":"quit","id":8}
 ```
 
 `step` accepts between 1 and 2400 simulation frames. Analog `steer`,
@@ -44,6 +45,8 @@ fire only on its first frame:
 | `recover` | boolean | Reset to track in a race; back in menus |
 | `left`, `right`, `up`, `down` | boolean | Menu navigation |
 | `page_left`, `page_right` | boolean | Alternate menu navigation |
+| `shift_up` | boolean | Request one sequential upshift |
+| `shift_down` | boolean | Request one sequential downshift |
 
 Add `"render":true` and an optional `"name":"basename"` to a `step`
 command to receive a rendered `frame_path` in the same response. `frame` renders
@@ -57,6 +60,8 @@ Every successful `state`, `step`, `frame`, and `reset` response includes:
 - Current screen, garage selection stage, and selected session/driver/car/map/laps.
 - Race phase, countdown, race time, lap progress, position, and wrong-way state.
 - Speed, position, heading, yaw, slip, steering, engine/brake load, and elevation.
+- Transmission gear, engine RPM, normalized RPM, remaining shift-cut time, and
+  whether the latest downshift was rejected to prevent an over-rev.
 - Signed clearances to the road edge and physical barrier, plus road/contact/grounded flags.
 - Separate `barrier_contact` and `vehicle_contact` flags, the last `contact_impulse`,
   and a `contact_cause` of `none`, `barrier`, or `vehicle`.
@@ -66,6 +71,11 @@ Every successful `state`, `step`, `frame`, and `reset` response includes:
 runoff. `barrier_clearance_m` reaches zero at the physical collision boundary.
 Use the rendered frame to evaluate the visible scene and telemetry to make
 precise control decisions.
+
+Protocol v3 transmission telemetry is reported in the `car` object as `gear`,
+`engine_rpm`, `rpm_normalized`, `shift_remaining_s`, and `shift_rejected`.
+`shift_rejected` remains true only for the short rejection reporting window; a
+client should sample it immediately after a downshift request.
 
 Contact telemetry remains active for the short collision response window, so a
 multi-frame `step` can still report an impact that happened near the end of the

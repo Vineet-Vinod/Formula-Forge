@@ -22,6 +22,8 @@ struct Input {
     bool down = false;
     bool pageLeft = false;
     bool pageRight = false;
+    bool shiftUp = false;
+    bool shiftDown = false;
 };
 
 struct Command {
