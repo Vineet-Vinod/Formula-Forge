@@ -17,12 +17,12 @@ from generate_tracks import (ASPHALT_MAX_LUMINANCE, ASPHALT_MIN_LUMINANCE, SAMPL
                              TRACKS as TRACK_SPECS, cpp_pairs, dense_closed,
                              find_crossover, length_closed, loop_pose, pair_digest,
                              resample_closed, sample_stations,
-                             shoulder_ground_z, spa_road_width, sunset_elevation, sunset_road_width,
+                             shoulder_ground_z, spa_road_width,
                              transform_bounds_blender_to_gltf)
 
 
 REPO = Path(__file__).resolve().parents[3]
-TRACK_NAMES = ("sunset_cove", "spa", "suzuka", "silverstone", "monza", "interlagos")
+TRACK_NAMES = ("spa", "suzuka", "silverstone", "monza", "interlagos")
 
 
 def expected_centerline(slug: str):
@@ -43,11 +43,9 @@ def expected_centerline(slug: str):
     centerline, road_widths = [], []
     for index,(x,y) in enumerate(runtime_plan):
         distance = target*index/SAMPLES
-        elevation = (sunset_elevation(index/SAMPLES) if slug == "sunset_cove" else
-                     sample_stations(elevations,distance,target,0.0))
+        elevation = sample_stations(elevations,distance,target,0.0)
         centerline.append((x,-y,elevation))
-        road_widths.append(sunset_road_width(index/SAMPLES) if slug == "sunset_cove" else
-                           spa_road_width(index/SAMPLES) if slug == "spa" else
+        road_widths.append(spa_road_width(index/SAMPLES) if slug == "spa" else
                            sample_stations(widths,distance,target,spec.get("width",13.0)))
     return centerline, road_widths, raw_controls, elevations, widths
 
@@ -189,7 +187,7 @@ def verify(root: Path, slug: str):
             if not mesh_has_edge(fence.data, rail_start, rail_start+(SAMPLES-1)*2):
                 raise ValueError(f"{slug}: catch-fence side {side} rail {rail} has an open seam")
 
-    detail_scale = 12.0 if slug == "sunset_cove" else 1.0
+    detail_scale = 1.0
     grounding = meta["grounding_contract"]
     tolerance = grounding["tolerance_asset_units"]
     if grounding["barrier_samples"] != SAMPLES*2:

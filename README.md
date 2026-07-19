@@ -72,8 +72,8 @@ them.
 
 ## Current Gameplay
 
-- Six selectable circuits: the original Sunset Cove plus meter-scaled Spa,
-  Suzuka, Silverstone, Monza, and Interlagos layouts with audited turn order,
+- Five selectable meter-scaled circuits: Spa, Suzuka, Silverstone, Monza, and
+  Interlagos layouts with audited turn order,
   handedness, dimensions, and elevation
 - Staged driver, car, map, and 2/5/10/infinite-lap race selection
 - Formula Buggy startup screen, beach-themed selection flow, full race results, replay/home actions, and pause controls
@@ -222,7 +222,7 @@ branch clearance without opening a window.
 `track-catalog-audit-3d` verifies lap length, travel direction, turn landmarks,
 elevation relief, road width, handedness, self-intersections, and Suzuka bridge separation.
 `--asset-audit` opens every production GLB through the C++ loader and requires
-all four cars, six drivers, and six tracks to pass dimension and animation
+all four cars, six drivers, and five tracks to pass dimension and animation
 contracts. `capture-map-gallery-3d` writes a selection-screen preview for every
 circuit.
 `time-trial-audit-3d` drives a complete solo Spa lap and verifies one-racer
@@ -262,7 +262,7 @@ which helps with USB receivers that expose a partial or unusual mapping.
 - `src/harbor_karts_3d.cpp`: raylib 3D renderer, simulation, controller input,
   capture harness, and 3D race loop
 - `src/harbor_karts_3d.hpp`: 3D entry-point declaration
-- `src/track_layout.hpp`: Sunset Cove and Spa Coast centerline/elevation data
+- `src/track_layout.hpp`: Spa Coast centerline/elevation data
 - `src/track_catalog.*`: Suzuka, Silverstone, Monza, and Interlagos geometry contracts
 - `tools/build_assets.py`: manifest-driven Blender source/export/validation CLI
 - `tools/blender/generators/`: production vehicle and driver generators and verifier

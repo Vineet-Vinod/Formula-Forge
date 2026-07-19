@@ -1,4 +1,4 @@
-"""Build the six Formula Buggy coastal circuit world assets with bpy.
+"""Build the five Formula Buggy coastal circuit world assets with bpy.
 
 Run from the repository root:
     uv run python tools/blender/tracks/generate_tracks.py --track all
@@ -23,25 +23,6 @@ DEFAULT_OUTPUT = REPO / "assets_src" / "tracks"
 SAMPLES = 1024
 
 TRACKS = {
-    "sunset_cove": {
-        "display_name": "Sunset Cove",
-        "venue": "Sunset Cove Grand Prix",
-        "country": "Fictional coast",
-        "source_file": "src/track_layout.hpp",
-        "centerline": "kBreakwaterControlPoints",
-        "source_scale": 1.5,
-        "target_length": None,
-        "elevation": None,
-        "width": 14.0,
-        "width_formula": "trackWidthForPhase * (kRoadSurfaceRatio * 2)",
-        "turns": 16,
-        "clockwise": True,
-        "palette": "sunset",
-        "cpp_layout_id": "TrackLayoutId::SunsetCove",
-        "start_phase": 0.795,
-        "cpp_simulation_units_per_asset_unit": 1.0,
-        "coordinate_unit": "sunset_course_unit",
-    },
     "spa": {
         "display_name": "Spa Coast",
         "venue": "Spa-Francorchamps inspired coastal circuit",
@@ -140,7 +121,6 @@ TRACKS = {
 }
 
 PALETTES = {
-    "sunset": {"sand": (0.66, 0.36, 0.12, 1), "grass": (0.12, 0.30, 0.16, 1), "roof": (0.72, 0.12, 0.045, 1)},
     "highland": {"sand": (0.58, 0.39, 0.18, 1), "grass": (0.10, 0.26, 0.12, 1), "roof": (0.22, 0.08, 0.04, 1)},
     "japan": {"sand": (0.72, 0.49, 0.22, 1), "grass": (0.10, 0.34, 0.19, 1), "roof": (0.68, 0.045, 0.035, 1)},
     "airfield": {"sand": (0.59, 0.44, 0.25, 1), "grass": (0.18, 0.31, 0.20, 1), "roof": (0.18, 0.29, 0.36, 1)},
@@ -302,31 +282,6 @@ def smoothstep(value):
     return value * value * (3.0 - 2.0 * value)
 
 
-def sunset_elevation(phase):
-    """Match elevationForPhase + procedural detail in harbor_karts_3d.cpp."""
-    phase %= 1.0
-    stations = ((0.00,4.0),(0.20,4.0),(0.29,7.0),(0.40,20.0),(0.56,36.0),
-                (0.67,34.0),(0.78,18.0),(0.89,5.0),(1.00,4.0))
-    elevation = stations[-1][1]
-    for a, b in zip(stations, stations[1:]):
-        if a[0] <= phase <= b[0]:
-            blend = smoothstep((phase-a[0])/max(0.001,b[0]-a[0]))
-            elevation = a[1] + (b[1]-a[1])*blend
-            break
-    elevation += 0.55 * math.sin(phase * math.tau * 3.0)
-    for center in (0.145, 0.735):
-        distance = phase-center
-        while distance > 0.5:
-            distance -= 1.0
-        while distance < -0.5:
-            distance += 1.0
-        if -0.008 <= distance < -0.001:
-            elevation += 12.0*smoothstep((distance+0.008)/0.007)
-        elif -0.001 <= distance <= 0.012:
-            elevation += 12.0*(1.0-smoothstep((distance+0.001)/0.013))
-    return elevation
-
-
 def runtime_track_width(phase):
     """Port trackWidthForPhase from harbor_karts_3d.cpp."""
     phase %= 1.0
@@ -336,11 +291,6 @@ def runtime_track_width(phase):
             blend = smoothstep((phase-boundary+0.034)/0.068)
             zone_width = width_a+(width_b-width_a)*blend
     return zone_width
-
-
-def sunset_road_width(phase):
-    """Match the visible runtime road width: trackWidthForPhase * 0.8."""
-    return runtime_track_width(phase)*0.8
 
 
 def spa_road_width(phase):
@@ -812,7 +762,8 @@ def combined_park_trees(locations, materials, parent):
 
 def make_world(slug, spec):
     reset_scene()
-    rng = random.Random(7901 + list(TRACKS).index(slug) * 101)
+    seed_index = {"spa": 1, "suzuka": 2, "silverstone": 3, "monza": 4, "interlagos": 5}[slug]
+    rng = random.Random(7901 + seed_index * 101)
     palette = PALETTES[spec["palette"]]
     source = REPO / spec["source_file"]
     controls = cpp_pairs(source, spec["centerline"])
@@ -829,14 +780,12 @@ def make_world(slug, spec):
     widths = cpp_pairs(source, spec["width_profile"]) if spec.get("width_profile") else []
     center = []
     half_widths = []
-    detail_scale = 12.0 if slug == "sunset_cove" else 1.0
-    surface_offset = 0.20 if slug == "sunset_cove" else 0.06
+    detail_scale = 1.0
+    surface_offset = 0.06
     for i, (runtime_x, runtime_y) in enumerate(runtime_center2):
         distance = target_length * i / SAMPLES
-        z = (sunset_elevation(i/SAMPLES) if slug == "sunset_cove" else
-             sample_stations(elevations, distance, target_length, 0.0))
-        width = (sunset_road_width(i/SAMPLES) if slug == "sunset_cove" else
-                 spa_road_width(i/SAMPLES) if slug == "spa" else
+        z = sample_stations(elevations, distance, target_length, 0.0)
+        width = (spa_road_width(i/SAMPLES) if slug == "spa" else
                  sample_stations(widths, distance, target_length, spec.get("width", 13.0)))
         # glTF Y-up conversion maps Blender (x, y, z) to (x, z, -y).
         # Negating runtime Y here therefore makes raylib GLB Z equal C++ track Y.

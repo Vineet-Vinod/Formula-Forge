@@ -619,7 +619,7 @@ struct ArcadeRender::Impl {
     Mesh shadow{};
     std::array<std::optional<formula_buggy::assets::GlbAsset>, 4> authoredCars{};
     std::array<std::optional<formula_buggy::assets::GlbAsset>, 6> authoredDrivers{};
-    std::array<std::optional<formula_buggy::assets::GlbAsset>, 6> authoredTracks{};
+    std::array<std::optional<formula_buggy::assets::GlbAsset>, 5> authoredTracks{};
 
     int sunDirectionLoc = -1;
     int sunColorLoc = -1;
@@ -666,9 +666,7 @@ struct ArcadeRender::Impl {
         };
         // These scales and raw glTF bounds mirror each asset's checked-in
         // runtime_alignment and measured_bounds_gltf_y_up metadata.
-        static constexpr std::array<TrackAssetSpec, 6> kTrackSpecs = {{
-            {"assets_src/tracks/sunset_cove/sunset_cove.glb", 0.085f,
-             {{4900.0f, 200.0f, 2520.0f}, {5070.0f, 230.0f, 2670.0f}}},
+        static constexpr std::array<TrackAssetSpec, 5> kTrackSpecs = {{
             {"assets_src/tracks/spa/spa.glb", 1.445f,
              {{3000.0f, 104.0f, 1990.0f}, {3120.0f, 111.0f, 2090.0f}}},
             {"assets_src/tracks/suzuka/suzuka.glb", 1.445f,

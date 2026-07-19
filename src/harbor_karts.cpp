@@ -220,7 +220,7 @@ private:
     }
 
     void build() {
-        const auto& control = kBreakwaterControlPoints;
+        const auto& control = kSpaControlPoints;
         const auto controlPoint = [&control](int index) {
             const int count = static_cast<int>(control.size());
             int wrapped = index % count;
@@ -228,7 +228,7 @@ private:
                 wrapped += count;
             }
             const TrackControlPoint& point = control[static_cast<size_t>(wrapped)];
-            return Vec2{point.x, point.y};
+            return Vec2{point.x * kSpaCourseScale, point.y * kSpaCourseScale};
         };
 
         std::vector<Vec2> dense;
