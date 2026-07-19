@@ -28,6 +28,21 @@ float speedSteerFactor(float normalizedSpeed, float fadeStart) {
     return smoothstep((normalizedSpeed - fadeStart) / span);
 }
 
+float serviceBrakeScale(const ArcadeVehicleConfig& config, float absForwardSpeed) {
+    const float normalizedBrakeSpeed = safeRatio(absForwardSpeed, config.maxForwardSpeed);
+    const float fullEffectSpeed = std::max(0.01f, config.brakeFullEffectSpeed);
+    const float brakeSpeedRatio = std::clamp(normalizedBrakeSpeed / fullEffectSpeed, 0.0f, 1.0f);
+    const float aeroBrakeBlend = std::pow(smoothstep(brakeSpeedRatio),
+                                          std::max(0.01f, config.brakeSpeedCurveExponent));
+    return lerp(std::clamp(config.brakeLowSpeedScale, 0.0f, 1.0f), 1.0f, aeroBrakeBlend);
+}
+
+float combinedGripScale(const ArcadeVehicleConfig& config, float longitudinalUsage) {
+    const float gripPower = std::max(1.1f, config.combinedGripExponent);
+    const float gripRemaining = std::max(0.0f, 1.0f - std::pow(std::clamp(longitudinalUsage, 0.0f, 1.0f), gripPower));
+    return std::max(config.combinedGripFloor, std::pow(gripRemaining, 1.0f / gripPower));
+}
+
 void springStep(float& value, float& velocity, float target, float frequency, float damping, float dt) {
     if (frequency <= 0.0f) {
         value = target;
@@ -187,8 +202,10 @@ ArcadeVehicleTelemetry stepSingle(ArcadeVehicleState& state,
         }
     }
     state.engineRpmNormalized = std::clamp(gearboxRpm, config.idleRpmNormalized, 1.25f);
+    const float previousBrakeLoad = state.brakeLoad;
     const float brakeResponse = control.brake > state.brakeLoad ? config.brakeLoadResponse : config.brakeReleaseResponse;
     state.brakeLoad = expApproach(state.brakeLoad, control.brake, brakeResponse, dt);
+    const float brakeReleaseRate = std::max(0.0f, previousBrakeLoad - state.brakeLoad) / std::max(dt, 0.0001f);
 
     const float steerResponse = std::abs(control.steer) > std::abs(state.steerSmoothed) ? config.steerResponse : config.steerReturnResponse;
     state.steerSmoothed = expApproach(state.steerSmoothed, control.steer, steerResponse, dt);
@@ -237,6 +254,17 @@ ArcadeVehicleTelemetry stepSingle(ArcadeVehicleState& state,
     const float downforceSpeed = std::clamp(normalizedSpeed, 0.0f, 1.25f);
     const float downforceGrip = 1.0f + config.downforceGripGain * downforceSpeed * downforceSpeed;
     float lateralAccelerationLimit = config.lateralGripAcceleration * surface.grip * downforceGrip;
+    const float estimatedBrakeUsage = control.brake * serviceBrakeScale(config, absForwardSpeed);
+    const float estimatedDriveUsage = control.throttle * config.engineAcceleration * config.accelerationGripUsageScale /
+                                      std::max(1.0f, config.brakeDeceleration);
+    const float estimatedEngineBrakeUsage = control.throttle < 0.08f
+                                                ? config.engineBrakingAcceleration /
+                                                      std::max(1.0f, config.brakeDeceleration)
+                                                : 0.0f;
+    const float estimatedLongitudinalUsage = std::clamp(
+        std::abs(estimatedDriveUsage - estimatedBrakeUsage - estimatedEngineBrakeUsage), 0.0f, 1.0f);
+    const float availableGripScale = combinedGripScale(config, estimatedLongitudinalUsage);
+    lateralAccelerationLimit *= availableGripScale;
 
     const float brakeFullSpeed = config.brakeOversteerFullSpeed > config.brakeOversteerMinSpeed
                                      ? config.brakeOversteerFullSpeed
@@ -272,9 +300,6 @@ ArcadeVehicleTelemetry stepSingle(ArcadeVehicleState& state,
         targetYawRate = lerp(targetYawRate, catchYawRate, throttleCatch * 0.96f);
         lateralResponse = lerp(config.lateralGripResponse, config.driftLateralResponse, brakeSlide * 0.86f);
         lateralResponse = lerp(lateralResponse, config.throttleCatchLateralResponse, throttleCatch);
-        const float rearGripFalloff = lerp(std::max(config.brakeRearGripScale, std::pow(1.0f - brakeSlide, 3.0f)),
-                                           1.0f, throttleCatch);
-        lateralAccelerationLimit *= rearGripFalloff;
         yawResponse = std::max(yawResponse, config.throttleCatchYawResponse * throttleCatch);
     }
 
@@ -301,10 +326,13 @@ ArcadeVehicleTelemetry stepSingle(ArcadeVehicleState& state,
     }
 
     if (state.grounded && state.driftPhase == ArcadeDriftPhase::Grip) {
-        const float trailBrakeWindow = 4.0f * state.brakeLoad * (1.0f - state.brakeLoad);
-        targetYawRate *= 1.0f + config.trailBrakeTurnInGain * trailBrakeWindow * brakeSteer;
+        const float partialBrakeWindow = 4.0f * state.brakeLoad * (1.0f - state.brakeLoad);
+        const float releaseSupport = smoothstep(brakeReleaseRate / 3.0f);
+        const float trailBrakeSupport = std::max(partialBrakeWindow * 0.65f, releaseSupport);
+        targetYawRate *= 1.0f + config.trailBrakeTurnInGain * trailBrakeSupport * brakeSteer;
         const float tireYawLimit = lateralAccelerationLimit * config.tireLimitedYawScale /
-                                   std::max(12.0f, absForwardSpeed);
+                                   std::max(12.0f, absForwardSpeed) *
+                                   (1.0f + config.trailBrakeTurnInGain * trailBrakeSupport);
         targetYawRate = std::clamp(targetYawRate, -tireYawLimit, tireYawLimit);
     }
 
@@ -348,15 +376,8 @@ ArcadeVehicleTelemetry stepSingle(ArcadeVehicleState& state,
     if (control.brake > 0.0f) {
         if (forwardSpeed > 2.0f) {
             const bool activeDrift = state.driftPhase == ArcadeDriftPhase::Entry || state.driftPhase == ArcadeDriftPhase::Sustain;
-            const float normalizedBrakeSpeed = safeRatio(absForwardSpeed, config.maxForwardSpeed);
-            const float fullEffectSpeed = std::max(0.01f, config.brakeFullEffectSpeed);
-            const float brakeSpeedRatio = std::clamp(normalizedBrakeSpeed / fullEffectSpeed, 0.0f, 1.0f);
-            const float aeroBrakeBlend = std::pow(smoothstep(brakeSpeedRatio),
-                                                  std::max(0.01f, config.brakeSpeedCurveExponent));
-            const float speedDependentBrake = lerp(std::clamp(config.brakeLowSpeedScale, 0.0f, 1.0f),
-                                                   1.0f, aeroBrakeBlend);
             const float brakingScale = (activeDrift ? config.driftBrakeDecelerationScale : 1.0f) *
-                                       speedDependentBrake;
+                                       serviceBrakeScale(config, absForwardSpeed);
             driveAcceleration -= control.brake * config.brakeDeceleration * brakingScale;
         } else if (forwardSpeed < -2.0f || state.brakeHold >= config.reverseDelay) {
             driveAcceleration -= control.brake * config.reverseAcceleration * surface.acceleration;
@@ -423,11 +444,6 @@ ArcadeVehicleTelemetry stepSingle(ArcadeVehicleState& state,
                                                    std::max(1.0f, config.brakeDeceleration),
                                                0.0f, 1.0f);
     state.tireLongitudinalUsage = longitudinalUsage;
-    const float gripPower = std::max(1.1f, config.combinedGripExponent);
-    const float gripRemaining = std::max(0.0f, 1.0f - std::pow(longitudinalUsage, gripPower));
-    const float combinedGripScale = std::max(config.combinedGripFloor,
-                                             std::pow(gripRemaining, 1.0f / gripPower));
-    lateralAccelerationLimit *= combinedGripScale;
     lateralAcceleration = std::clamp(lateralAcceleration, -lateralAccelerationLimit, lateralAccelerationLimit);
 
     // Forces are applied in world space. Changing heading never rotates the
@@ -444,7 +460,10 @@ ArcadeVehicleTelemetry stepSingle(ArcadeVehicleState& state,
     state.forwardSpeed = dot(state.vel, forward);
     state.lateralSpeed = dot(state.vel, left);
     state.slipAngle = std::atan2(state.lateralSpeed, std::max(1.0f, std::abs(state.forwardSpeed)));
-    state.engineLoad = std::clamp(std::abs(driveAcceleration) / std::max(1.0f, config.engineAcceleration + config.launchAccelerationBonus), 0.0f, 1.5f);
+    const float engineBrakeLoad = safeRatio(state.engineBrakingApplied,
+                                            std::max(1.0f, config.engineBrakingAcceleration));
+    state.engineLoad = std::clamp(control.throttle * (shiftCut ? 0.08f : 0.92f) + engineBrakeLoad * 0.34f,
+                                  0.0f, 1.0f);
     state.tractionUtilization = lateralAccelerationLimit > 0.001f ? std::clamp(std::abs(lateralAcceleration) / lateralAccelerationLimit, 0.0f, 1.0f) : 0.0f;
 
     if (state.driftPhase == ArcadeDriftPhase::Sustain) {
@@ -568,6 +587,27 @@ int arcadeDriftTier(float charge, const ArcadeVehicleConfig& config) {
         return 1;
     }
     return 0;
+}
+
+int arcadeRecommendedGear(float absForwardSpeed, const ArcadeVehicleConfig& config) {
+    const float speed = std::max(0.0f, absForwardSpeed);
+    for (size_t index = 0; index < config.gearRedlineSpeedRatios.size(); ++index) {
+        const float redlineSpeed = config.maxForwardSpeed * config.gearRedlineSpeedRatios[index];
+        if (safeRatio(speed, redlineSpeed) <= 0.90f) {
+            return static_cast<int>(index) + 1;
+        }
+    }
+    return static_cast<int>(config.gearRedlineSpeedRatios.size());
+}
+
+void syncArcadeTransmissionToSpeed(ArcadeVehicleState& state, const ArcadeVehicleConfig& config) {
+    state.gear = arcadeRecommendedGear(std::abs(dot(state.vel, fromAngle(state.heading))), config);
+    const float redlineSpeed = config.maxForwardSpeed *
+                               config.gearRedlineSpeedRatios[static_cast<size_t>(state.gear - 1)];
+    state.engineRpmNormalized = std::max(config.idleRpmNormalized,
+                                         safeRatio(std::abs(dot(state.vel, fromAngle(state.heading))), redlineSpeed));
+    state.shiftTimer = 0.0f;
+    state.shiftRejectTimer = 0.0f;
 }
 
 ArcadeVehicleTelemetry stepArcadeVehicle(ArcadeVehicleState& state,
@@ -755,16 +795,41 @@ ArcadeVehicleAuditResult runArcadeVehicleUnitAudit() {
 
     ArcadeVehicleControl oneUpshift = manualThrottle;
     oneUpshift.shiftUpPressed = true;
+    const ArcadeVehicleState beforeUpshift = firstGear;
     stepArcadeVehicle(firstGear, config, oneUpshift, road, 0.25f);
     check(firstGear.gear == 2);
     check(firstGear.shiftTimer <= config.shiftDuration);
 
-    ArcadeVehicleState rejectedDownshift;
-    rejectedDownshift.gear = 5;
-    rejectedDownshift.vel = {config.maxForwardSpeed * 0.75f, 0.0f};
+    ArcadeVehicleState shiftCutBaseline;
+    shiftCutBaseline.gear = 1;
+    shiftCutBaseline.vel = {config.maxForwardSpeed * 0.20f, 0.0f};
+    ArcadeVehicleState shiftedCut = shiftCutBaseline;
+    ArcadeVehicleState uninterruptedDrive = shiftCutBaseline;
+    stepArcadeVehicle(shiftedCut, config, oneUpshift, road, kInternalStep);
+    stepArcadeVehicle(uninterruptedDrive, config, manualThrottle, road, kInternalStep);
+    check(shiftedCut.gear == 2 && shiftedCut.shiftTimer > 0.0f);
+    check(shiftedCut.forwardSpeed < uninterruptedDrive.forwardSpeed);
+
     ArcadeVehicleControl downshift;
     downshift.automaticShift = false;
     downshift.shiftDownPressed = true;
+    ArcadeVehicleState acceptedDownshift;
+    acceptedDownshift.gear = 4;
+    acceptedDownshift.vel = {config.maxForwardSpeed * 0.42f, 0.0f};
+    stepArcadeVehicle(acceptedDownshift, config, downshift, road, kInternalStep);
+    check(acceptedDownshift.gear == 3 && acceptedDownshift.shiftTimer > 0.0f &&
+          acceptedDownshift.shiftRejectTimer <= 0.0f);
+
+    ArcadeVehicleState simultaneousPaddles = beforeUpshift;
+    ArcadeVehicleControl simultaneous = manualThrottle;
+    simultaneous.shiftUpPressed = true;
+    simultaneous.shiftDownPressed = true;
+    stepArcadeVehicle(simultaneousPaddles, config, simultaneous, road, kInternalStep);
+    check(simultaneousPaddles.gear == beforeUpshift.gear && simultaneousPaddles.shiftTimer <= 0.0f);
+
+    ArcadeVehicleState rejectedDownshift;
+    rejectedDownshift.gear = 5;
+    rejectedDownshift.vel = {config.maxForwardSpeed * 0.75f, 0.0f};
     stepArcadeVehicle(rejectedDownshift, config, downshift, road, kInternalStep);
     result.rejectedDownshiftGear = rejectedDownshift.gear;
     check(rejectedDownshift.gear == 5 && rejectedDownshift.shiftRejectTimer > 0.0f);

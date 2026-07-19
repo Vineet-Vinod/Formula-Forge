@@ -86,6 +86,7 @@ struct ArcadeVehicleConfig {
     std::array<float, 8> gearRedlineSpeedRatios = {0.352f, 0.456f, 0.560f, 0.663f, 0.767f, 0.862f, 0.953f, 1.038f};
     std::array<float, 8> gearDriveScales = {1.08f, 1.05f, 1.03f, 1.01f, 1.00f, 0.99f, 0.98f, 0.97f};
     float idleRpmNormalized = 0.333f;
+    float redlineRpm = 12000.0f;
     float automaticUpshiftRpm = 0.96f;
     float automaticDownshiftRpm = 0.50f;
     float downshiftOverrevRpm = 1.08f;
@@ -116,7 +117,6 @@ struct ArcadeVehicleConfig {
     float brakeOversteerYawGain = 1.35f;
     float brakeYawLimitScale = 1.08f;
     float brakeOversteerSlip = 0.22f;
-    float brakeRearGripScale = 0.60f;
     float brakeSlipResponse = 10.0f;
     float brakeSlipRecovery = 12.0f;
     float throttleCatchStrength = 0.0f;
@@ -131,7 +131,6 @@ struct ArcadeVehicleConfig {
     float lateralGripResponse = 14.0f;
     float downforceGripGain = 0.48f;
     float tireLimitedYawScale = 0.92f;
-    float brakingLateralGripUsage = 0.58f;
     float combinedGripExponent = 2.20f;
     float combinedGripFloor = 0.30f;
     float trailBrakeTurnInGain = 0.13f;
@@ -281,6 +280,8 @@ struct ArcadeVehicleAuditResult {
 };
 
 int arcadeDriftTier(float charge, const ArcadeVehicleConfig& config);
+int arcadeRecommendedGear(float absForwardSpeed, const ArcadeVehicleConfig& config);
+void syncArcadeTransmissionToSpeed(ArcadeVehicleState& state, const ArcadeVehicleConfig& config);
 
 ArcadeVehicleTelemetry stepArcadeVehicle(ArcadeVehicleState& state,
                                          const ArcadeVehicleConfig& config,
