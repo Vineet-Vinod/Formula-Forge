@@ -72,7 +72,7 @@
   "export": "formula_dash.glb",
   "preview": "formula_dash_preview.png",
   "type": "vehicle",
-  "display_name": "Formula / Dash",
+  "display_name": "Dash",
   "model_name": "Formula",
   "livery_name": "Dash",
   "livery_policy": "original geometry; no logos or sponsorship marks",

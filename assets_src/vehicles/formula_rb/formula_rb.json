@@ -72,7 +72,7 @@
   "export": "formula_rb.glb",
   "preview": "formula_rb_preview.png",
   "type": "vehicle",
-  "display_name": "Formula / RB",
+  "display_name": "RB",
   "model_name": "Formula",
   "livery_name": "RB",
   "livery_policy": "original geometry; no logos or sponsorship marks",

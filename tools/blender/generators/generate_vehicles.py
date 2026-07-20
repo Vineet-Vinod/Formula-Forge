@@ -19,7 +19,7 @@ from asset_helpers import (ASSET_PROP, add_wheel, asset_objects, bar,
 # roles and original geometric paint graphics vary.
 VEHICLES = {
     "formula_marc": {
-        "display_name": "Formula / Marc", "model_name": "Formula",
+        "display_name": "Marc", "model_name": "Formula",
         "livery_name": "Marc", "pattern": "marc",
         "family": "Formula livery",
         "dimensions_target_m": [2.03, 4.92, 1.13],
@@ -37,7 +37,7 @@ VEHICLES = {
                   "rear_flap": "accent"},
     },
     "formula_fiery": {
-        "display_name": "Formula / Fiery", "model_name": "Formula",
+        "display_name": "Fiery", "model_name": "Formula",
         "livery_name": "Fiery", "pattern": "fiery",
         "family": "Formula livery", "dimensions_target_m": [2.03, 4.92, 1.13],
         "paint": (0.74, 0.010, 0.018, 1),
@@ -53,7 +53,7 @@ VEHICLES = {
                   "rear_flap": "secondary"},
     },
     "formula_macl": {
-        "display_name": "Formula / MacL", "model_name": "Formula",
+        "display_name": "MacL", "model_name": "Formula",
         "livery_name": "MacL", "pattern": "macl",
         "family": "Formula livery", "dimensions_target_m": [2.03, 4.92, 1.13],
         "paint": (1.00, 0.25, 0.010, 1),
@@ -69,7 +69,7 @@ VEHICLES = {
                   "rear_flap": "paint"},
     },
     "formula_rb": {
-        "display_name": "Formula / RB", "model_name": "Formula",
+        "display_name": "RB", "model_name": "Formula",
         "livery_name": "RB", "pattern": "rb",
         "family": "Formula livery", "dimensions_target_m": [2.03, 4.92, 1.13],
         "paint": (0.010, 0.035, 0.16, 1),
@@ -85,7 +85,7 @@ VEHICLES = {
                   "rear_flap": "accent"},
     },
     "formula_dash": {
-        "display_name": "Formula / Dash", "model_name": "Formula",
+        "display_name": "Dash", "model_name": "Formula",
         "livery_name": "Dash", "pattern": "dash",
         "family": "Formula livery", "dimensions_target_m": [2.03, 4.92, 1.13],
         "paint": (0.92, 0.93, 0.91, 1),
