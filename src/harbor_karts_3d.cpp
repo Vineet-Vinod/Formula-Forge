@@ -2058,6 +2058,10 @@ public:
                 UnloadTexture(particleTexture_);
                 particleTexture_ = {};
             }
+            if (IsTextureValid(loadingScreenTexture_)) {
+                UnloadTexture(loadingScreenTexture_);
+                loadingScreenTexture_ = {};
+            }
             for (Texture2D& texture : carPreviewTextures_) {
                 if (IsTextureValid(texture)) {
                     UnloadTexture(texture);
@@ -2165,11 +2169,32 @@ public:
     void render(float fps, bool hasController, const char* capturePath = nullptr, float interpolation = 1.0f) {
         BeginDrawing();
         if (mode_ == Mode::Loading) {
-            ClearBackground(Color{21, 128, 160, 255});
+            ClearBackground(Color{3, 3, 7, 255});
+            const bool hasLoadingArtwork = IsTextureValid(loadingScreenTexture_);
+            if (hasLoadingArtwork) {
+                const float screenWidth = static_cast<float>(std::max(1, GetScreenWidth()));
+                const float screenHeight = static_cast<float>(std::max(1, GetScreenHeight()));
+                const float screenAspect = screenWidth / screenHeight;
+                const float textureWidth = static_cast<float>(loadingScreenTexture_.width);
+                const float textureHeight = static_cast<float>(loadingScreenTexture_.height);
+                const float textureAspect = textureWidth / textureHeight;
+                Rectangle source{0.0f, 0.0f, textureWidth, textureHeight};
+                if (screenAspect > textureAspect) {
+                    source.height = textureWidth / screenAspect;
+                    source.y = (textureHeight - source.height) * 0.5f;
+                } else {
+                    source.width = textureHeight * screenAspect;
+                    source.x = (textureWidth - source.width) * 0.5f;
+                }
+                DrawTexturePro(loadingScreenTexture_, source,
+                               {0.0f, 0.0f, screenWidth, screenHeight},
+                               {0.0f, 0.0f}, 0.0f, WHITE);
+            }
             harbor::ui::LoadingScreenViewModel loading;
             loading.progress = std::clamp(loadingTime_ / kLoadingScreenSeconds, 0.0f, 1.0f);
             loading.presentationTimeSeconds = presentationTime_;
             loading.statusText = loading.progress < 0.72f ? "BUILDING THE STARTING GRID" : "READY TO RACE";
+            loading.cinematicBackground = hasLoadingArtwork;
             harbor::ui::DrawLoadingScreen(loading);
             if (capturePath) {
                 rlDrawRenderBatchActive();
@@ -3841,6 +3866,11 @@ private:
     }
 
     void loadGaragePreviewTextures() {
+        loadingScreenTexture_ = LoadTexture(
+            "assets_src/ui/loading_screen/loading_screen.png");
+        if (IsTextureValid(loadingScreenTexture_)) {
+            SetTextureFilter(loadingScreenTexture_, TEXTURE_FILTER_BILINEAR);
+        }
         static constexpr std::array<const char*, 5> kCarPreviewPaths = {
             "assets_src/vehicles/formula_marc/formula_marc_preview.png",
             "assets_src/vehicles/formula_fiery/formula_fiery_preview.png",
@@ -6201,6 +6231,7 @@ private:
     ArcadeAudio audio_;
     harbor::TrackRenderer trackRenderer_;
     Texture2D particleTexture_{};
+    Texture2D loadingScreenTexture_{};
     std::array<Texture2D, 5> carPreviewTextures_{};
     std::array<Texture2D, 1> driverPreviewTextures_{};
     Camera camera_{};

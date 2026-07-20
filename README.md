@@ -85,6 +85,8 @@ them.
 - One realistic-proportioned Blender-authored Standard Driver shared by every
   car, with fitted overalls, gauntlet gloves, driving boots, HANS-style collar,
   closed helmet, smoked visor, and the common animation rig
+- A Blender-rendered loading screen featuring all five cars in a red-lit
+  semicircle with the Standard Driver centered in the foreground
 - No powerups and no character super powers
 - Blender-authored circuit worlds with medium-gray tarmac, continuous track
   limits, driveable curbs and runoff, collision-aligned safety walls, catch

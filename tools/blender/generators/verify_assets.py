@@ -182,6 +182,30 @@ def validate_asset(root: Path, kind: str, slug: str, spec: dict) -> str:
             f"skin=1 joints={len(joints)} clips=5 preview=720x540")
 
 
+def validate_loading_artwork(root: Path) -> str:
+    directory = root / "ui" / "loading_screen"
+    blend_path = directory / "loading_screen.blend"
+    png_path = directory / "loading_screen.png"
+    manifest_path = directory / "loading_screen.json"
+    for path in (blend_path, png_path, manifest_path):
+        require(path.is_file() and path.stat().st_size > 0,
+                f"missing loading-screen asset: {path}")
+    with blend_path.open("rb") as stream:
+        magic = stream.read(7)
+        require(magic == b"BLENDER" or magic[:4] == b"\x28\xb5\x2f\xfd",
+                f"invalid loading-screen Blender source: {blend_path}")
+    require(read_png_dimensions(png_path) == (1280, 720),
+            f"loading screen must be 1280x720: {png_path}")
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    expected_cars = ["formula_fiery", "formula_marc", "formula_macl",
+                     "formula_rb", "formula_dash"]
+    require(manifest.get("type") == "ui_artwork"
+            and manifest.get("vehicles") == expected_cars
+            and manifest.get("driver") == "standard_driver",
+            f"loading-screen composition mismatch: {manifest_path}")
+    return "ui      loading_screen cars=5 driver=1 preview=1280x720"
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--asset-root", type=Path,
@@ -204,11 +228,16 @@ def main() -> int:
             except (OSError, ValueError, VerificationError, json.JSONDecodeError) as error:
                 failures.append(str(error))
 
+    try:
+        print(validate_loading_artwork(args.asset_root))
+    except (OSError, ValueError, VerificationError, json.JSONDecodeError) as error:
+        failures.append(str(error))
+
     if failures:
         for failure in failures:
             print(f"ERROR: {failure}", file=sys.stderr)
         return 1
-    print(f"PASS: {checked} assets, {checked} skins, {checked * 5} exact gameplay clips")
+    print(f"PASS: {checked} assets, {checked} skins, {checked * 5} exact gameplay clips, 1 UI artwork")
     return 0
 
 

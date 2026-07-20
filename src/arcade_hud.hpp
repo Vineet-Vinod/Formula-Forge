@@ -54,6 +54,7 @@ struct LoadingScreenViewModel {
     float progress = 0.0f;
     float presentationTimeSeconds = 0.0f;
     std::string statusText = "WARMING UP THE ENGINES";
+    bool cinematicBackground = false;
 };
 
 enum class SelectionStage {

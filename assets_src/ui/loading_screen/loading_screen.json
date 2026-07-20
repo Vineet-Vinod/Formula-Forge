@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "asset": "loading_screen",
+  "type": "ui_artwork",
+  "resolution": [
+    1280,
+    720
+  ],
+  "composition": "five Formula liveries in a semicircle with the Standard Driver centered in front",
+  "lighting": "dark studio with red arena and rim lights",
+  "vehicles": [
+    "formula_fiery",
+    "formula_marc",
+    "formula_macl",
+    "formula_rb",
+    "formula_dash"
+  ],
+  "driver": "standard_driver",
+  "source": "loading_screen.blend",
+  "render": "loading_screen.png"
+}

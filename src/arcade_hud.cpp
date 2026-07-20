@@ -485,22 +485,38 @@ void DrawRaceHud(const RaceHudViewModel& viewModel) {
 
 void DrawLoadingScreen(const LoadingScreenViewModel& viewModel) {
     const Metrics m = metrics();
-    drawBeachBackdrop(m, viewModel.presentationTimeSeconds);
-
-    const float stripeWidth = 46.0f * m.scale;
-    for (int stripe = -3; stripe < static_cast<int>(m.width / stripeWidth) + 4; ++stripe) {
-        const float travel = std::fmod(viewModel.presentationTimeSeconds * 24.0f, stripeWidth * 2.0f);
-        const float x = static_cast<float>(stripe) * stripeWidth * 2.0f + travel;
-        DrawTriangle({x, 0.0f}, {x + stripeWidth, 0.0f}, {x - 22.0f * m.scale, m.height * 0.54f}, Fade(kPaper, 0.055f));
+    if (viewModel.cinematicBackground) {
+        DrawRectangleGradientV(0, 0, static_cast<int>(m.width),
+                               static_cast<int>(m.height * 0.30f),
+                               Fade(BLACK, 0.78f), BLANK);
+        DrawRectangleGradientV(0, static_cast<int>(m.height * 0.66f),
+                               static_cast<int>(m.width),
+                               static_cast<int>(m.height * 0.34f),
+                               BLANK, Fade(BLACK, 0.76f));
+    } else {
+        drawBeachBackdrop(m, viewModel.presentationTimeSeconds);
+        const float stripeWidth = 46.0f * m.scale;
+        for (int stripe = -3; stripe < static_cast<int>(m.width / stripeWidth) + 4; ++stripe) {
+            const float travel = std::fmod(viewModel.presentationTimeSeconds * 24.0f, stripeWidth * 2.0f);
+            const float x = static_cast<float>(stripe) * stripeWidth * 2.0f + travel;
+            DrawTriangle({x, 0.0f}, {x + stripeWidth, 0.0f},
+                         {x - 22.0f * m.scale, m.height * 0.54f},
+                         Fade(kPaper, 0.055f));
+        }
     }
 
-    drawFormulaBuggyLogo(m, m.height * 0.35f, 1.18f);
+    const float logoY = viewModel.cinematicBackground ? m.height * 0.145f : m.height * 0.35f;
+    const float logoScale = viewModel.cinematicBackground ? 0.88f : 1.18f;
+    drawFormulaBuggyLogo(m, logoY, logoScale);
     const float railWidth = std::min(430.0f * m.scale, m.width - 2.0f * m.margin);
-    const Rectangle rail{(m.width - railWidth) * 0.5f, m.height * 0.73f, railWidth, 8.0f * m.scale};
-    DrawRectangleRec(rail, Fade(kInk, 0.42f));
+    const float railY = viewModel.cinematicBackground ? m.height * 0.885f : m.height * 0.73f;
+    const Rectangle rail{(m.width - railWidth) * 0.5f, railY, railWidth, 8.0f * m.scale};
+    DrawRectangleRec(rail, Fade(viewModel.cinematicBackground ? BLACK : kInk, 0.62f));
     DrawRectangleRec({rail.x, rail.y, rail.width * clamp01(viewModel.progress), rail.height}, kCoral);
     DrawCircleV({rail.x + rail.width * clamp01(viewModel.progress), rail.y + rail.height * 0.5f}, 7.0f * m.scale, kSun);
-    drawCenteredText(viewModel.statusText, {m.width * 0.5f, rail.y + 32.0f * m.scale}, 15.0f * m.scale, kInk);
+    drawCenteredText(viewModel.statusText, {m.width * 0.5f, rail.y + 32.0f * m.scale},
+                     15.0f * m.scale,
+                     viewModel.cinematicBackground ? kPaper : kInk);
 }
 
 void DrawSelectionHud(const SelectionHudViewModel& viewModel) {
