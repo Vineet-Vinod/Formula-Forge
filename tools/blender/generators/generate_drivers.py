@@ -154,12 +154,6 @@ def make_standard_driver(torso, head, arm_l, arm_r, leg_l, leg_r, mats):
             mats["helmet_blue"], head)
     bar("helmet_rear_spoiler", (-0.090, 0.130, 0.125),
         (0.090, 0.130, 0.125), 0.010, mats["helmet_red"], head)
-    curved_helmet_panel("helmet_chin_intake", (0, 0.000, 0.004),
-                        0.135, 0.153, 0.015, 19, 0.004, 0.001,
-                        mats["visor_trim"], head, segments=10)
-    curved_helmet_panel("helmet_vent_bank", (0, 0.000, -0.025),
-                        0.135, 0.156, 0.010, 18, 0.004, 0.001,
-                        mats["visor_trim"], head, segments=10)
 
     # Tapered sleeves, subtle elbow folds and gauntlet gloves. Hands converge
     # on the common steering-wheel hard point shared by all five cars.
