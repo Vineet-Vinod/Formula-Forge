@@ -9,6 +9,7 @@ from pathlib import Path
 from asset_helpers import (ASSET_PROP, asset_objects, bar, build_rigid_rig,
                            cone, create_rig_action, cube, cylinder, empty,
                            export_asset, material, reset_scene, sphere, torus)
+import bpy
 from mathutils import Vector
 
 
@@ -24,6 +25,55 @@ DRIVERS = {
 REQUIRED = ["driver_root", "root", "head", "arm_L", "arm_R",
             "driver_rig", "driver_root_bone", "head_bone", "arm_L_bone",
             "arm_R_bone"]
+
+
+def curved_helmet_panel(name, center, radius_x, radius_y, height,
+                        sweep_degrees, thickness, edge_taper, mat, owner,
+                        segments=18):
+    """Build a thin wraparound panel conforming to the helmet ellipsoid."""
+    vertices = []
+    sweep = math.radians(sweep_degrees)
+    for layer in range(2):
+        inset = layer * thickness
+        for index in range(segments + 1):
+            angle = -sweep + 2.0 * sweep * index / segments
+            edge = abs(angle / sweep) ** 1.6
+            half_height = height * 0.5 - edge_taper * edge
+            layer_radius_x = radius_x - inset
+            layer_radius_y = radius_y - inset
+            x = center[0] + layer_radius_x * math.sin(angle)
+            y = center[1] - layer_radius_y * math.cos(angle)
+            vertices.extend(((x, y, center[2] - half_height),
+                             (x, y, center[2] + half_height)))
+
+    stride = (segments + 1) * 2
+    faces = []
+    for index in range(segments):
+        outer = index * 2
+        outer_next = outer + 2
+        inner = stride + outer
+        inner_next = inner + 2
+        faces.extend((
+            (outer, outer_next, outer_next + 1, outer + 1),
+            (inner + 1, inner_next + 1, inner_next, inner),
+            (outer + 1, outer_next + 1, inner_next + 1, inner + 1),
+            (outer, inner, inner_next, outer_next),
+        ))
+    faces.extend(((0, 1, stride + 1, stride),
+                  (segments * 2, stride + segments * 2,
+                   stride + segments * 2 + 1, segments * 2 + 1)))
+
+    mesh = bpy.data.meshes.new(f"{name}_mesh")
+    mesh.from_pydata(vertices, [], faces)
+    mesh.update()
+    obj = bpy.data.objects.new(name, mesh)
+    bpy.context.scene.collection.objects.link(obj)
+    obj[ASSET_PROP] = True
+    obj.data.materials.append(mat)
+    obj.parent = owner
+    for polygon in mesh.polygons:
+        polygon.use_smooth = True
+    return obj
 
 
 def tapered_bar(name, start, end, start_radius, end_radius, mat, owner):
@@ -81,24 +131,20 @@ def make_standard_driver(torso, head, arm_l, arm_r, leg_l, leg_r, mats):
            mats["helmet_red"], head, 22, 14)
     sphere("helmet_lower_shell", (0, -0.002, 0.018),
            (0.138, 0.120, 0.122), mats["helmet_white"], head, 18, 10)
-    cube("helmet_chin_guard", (0, -0.112, -0.005),
-         (0.218, 0.072, 0.098), mats["helmet_white"], head, 0.022)
-    cube("helmet_chin_lip", (0, -0.153, -0.034),
-         (0.160, 0.025, 0.040), mats["helmet_white"], head, 0.010)
+    sphere("helmet_chin_guard", (0, -0.042, -0.008),
+           (0.125, 0.120, 0.094), mats["helmet_white"], head, 20, 12)
+    sphere("helmet_chin_lip", (0, -0.108, -0.036),
+           (0.087, 0.061, 0.040), mats["helmet_white"], head, 16, 8)
 
-    # A flat central pane plus angled side panes reads as one wide curved visor
-    # instead of the floating black eye mask used by the previous model.
-    front_visor = cube("helmet_visor", (0, -0.129, 0.112),
-                       (0.232, 0.012, 0.074), mats["visor"], head, 0.013)
-    front_visor.rotation_euler.x = math.radians(-3)
-    visor_strip = cube("visor_reinforcement", (0, -0.136, 0.154),
-                       (0.238, 0.010, 0.012), mats["helmet_white"], head, 0.003)
-    visor_strip.rotation_euler.x = math.radians(-3)
+    # The visor and its upper reinforcement are continuous curved meshes that
+    # track the crown radius from cheek to cheek.
+    curved_helmet_panel("helmet_visor", (0, 0.004, 0.112),
+                        0.140, 0.137, 0.078, 67, 0.006, 0.012,
+                        mats["visor"], head, segments=20)
+    curved_helmet_panel("visor_reinforcement", (0, 0.004, 0.157),
+                        0.143, 0.140, 0.012, 68, 0.005, 0.001,
+                        mats["helmet_white"], head, segments=20)
     for side in (-1, 1):
-        side_visor = cube(f"helmet_visor_side_{side:+}",
-                          (side * 0.126, -0.104, 0.111),
-                          (0.032, 0.082, 0.072), mats["visor"], head, 0.010)
-        side_visor.rotation_euler.z = side * math.radians(13)
         cylinder(f"helmet_hinge_{side:+}", (side * 0.145, -0.050, 0.112),
                  0.023, 0.014, mats["visor_trim"], head,
                  rotation=(0, math.pi / 2, 0), vertices=16, bevel=0.003)
@@ -106,16 +152,14 @@ def make_standard_driver(torso, head, arm_l, arm_r, leg_l, leg_r, mats):
             (side * 0.118, -0.112, 0.050),
             (side * 0.086, -0.144, -0.040), 0.006,
             mats["helmet_blue"], head)
-    cube("helmet_center_stripe", (0, 0.020, 0.284),
-         (0.044, 0.185, 0.012), mats["helmet_white"], head, 0.005)
-    cube("helmet_crown_accent", (0.032, 0.020, 0.282),
-         (0.010, 0.180, 0.014), mats["helmet_blue"], head, 0.004)
-    cube("helmet_rear_spoiler", (0, 0.130, 0.125),
-         (0.205, 0.032, 0.026), mats["helmet_red"], head, 0.007)
-    cube("helmet_chin_intake", (0, -0.153, 0.004),
-         (0.070, 0.010, 0.016), mats["visor_trim"], head, 0.003)
-    cube("helmet_vent_bank", (0, -0.159, -0.024),
-         (0.074, 0.008, 0.012), mats["visor_trim"], head, 0.002)
+    bar("helmet_rear_spoiler", (-0.090, 0.130, 0.125),
+        (0.090, 0.130, 0.125), 0.010, mats["helmet_red"], head)
+    curved_helmet_panel("helmet_chin_intake", (0, 0.000, 0.004),
+                        0.135, 0.153, 0.015, 19, 0.004, 0.001,
+                        mats["visor_trim"], head, segments=10)
+    curved_helmet_panel("helmet_vent_bank", (0, 0.000, -0.025),
+                        0.135, 0.156, 0.010, 18, 0.004, 0.001,
+                        mats["visor_trim"], head, segments=10)
 
     # Tapered sleeves, subtle elbow folds and gauntlet gloves. Hands converge
     # on the common steering-wheel hard point shared by all five cars.
