@@ -9,25 +9,25 @@
   },
   "measured_bounds_blender": {
     "min": [
-      -0.3209,
-      -0.492,
-      -0.4469
+      -0.3024,
+      -0.5719,
+      -0.4407
     ],
     "max": [
-      0.3209,
-      0.1558,
-      0.6396
+      0.3024,
+      0.1271,
+      0.6199
     ],
     "dimensions": [
-      0.6418,
-      0.6478,
-      1.0865
+      0.6049,
+      0.699,
+      1.0607
     ]
   },
   "runtime_budget": {
-    "mesh_objects": 32,
-    "vertices": 5672,
-    "triangles": 11224
+    "mesh_objects": 46,
+    "vertices": 5384,
+    "triangles": 10604
   },
   "verification": {
     "status": "passed",
@@ -47,11 +47,11 @@
       "turn_right": 21
     },
     "skin_count": 1,
-    "exported_meshes": 32,
+    "exported_meshes": 46,
     "dimension_error_percent": {
-      "width_x": 1.26,
-      "depth_y": 1.85,
-      "seated_height_z": 1.23
+      "width_x": 6.94,
+      "depth_y": 5.91,
+      "seated_height_z": 3.57
     },
     "dimension_tolerance_percent": 8.0
   },
@@ -72,7 +72,8 @@
   "preview": "imani_reef_preview.png",
   "type": "driver",
   "display_name": "Imani Reef",
-  "silhouette": "twin-bun navigator",
+  "silhouette": "realistic human racing driver with twin buns",
+  "design_style": "realistic human",
   "target_seated_pose_height_m": 1.1,
   "target_dimensions_m": {
     "width_x": 0.65,

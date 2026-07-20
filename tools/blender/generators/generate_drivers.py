@@ -6,17 +6,20 @@ import argparse
 import math
 from pathlib import Path
 
-from asset_helpers import (asset_objects, bar, build_rigid_rig, cone,
+from asset_helpers import (ASSET_PROP, asset_objects, bar, build_rigid_rig, cone,
                            create_rig_action, cube, cylinder, empty,
                            export_asset, material, reset_scene, sphere, torus)
 
 
 DRIVERS = {
     "imani_reef": {
-        "display_name": "Imani Reef", "silhouette": "twin-bun navigator",
-        "skin": (0.24, 0.09, 0.045, 1), "shirt": (0.98, 0.46, 0.06, 1),
-        "accent": (0.06, 0.72, 0.68, 1), "hair": (0.018, 0.010, 0.008, 1),
-        "feature": "buns",
+        "display_name": "Imani Reef",
+        "silhouette": "realistic human racing driver with twin buns",
+        "skin": (0.24, 0.085, 0.042, 1),
+        "shirt": (0.018, 0.045, 0.085, 1),
+        "accent": (0.015, 0.64, 0.56, 1),
+        "hair": (0.012, 0.006, 0.004, 1),
+        "feature": "buns", "realistic": True,
     },
     "dax_calder": {
         "display_name": "Dax Calder", "silhouette": "mohawk mechanic",
@@ -111,6 +114,115 @@ def make_hair(feature, head, mats):
         cube("headband", (0, -0.08, 0.16), (0.40, 0.055, 0.055), mats["accent"], head, 0.025)
 
 
+def make_realistic_imani(torso, head, arm_l, arm_r, leg_l, leg_r, mats):
+    """Build an adult-proportioned seated human within the shared driver rig."""
+    # Layered ellipsoids give the torso a ribcage/waist transition without the
+    # round toy silhouette of the original single sphere.
+    sphere("torso_shell", (0, 0.01, 0.08), (0.245, 0.145, 0.285),
+           mats["shirt"], torso, 20, 12)
+    sphere("waist", (0, 0.015, -0.125), (0.195, 0.125, 0.155),
+           mats["dark"], torso, 18, 10)
+    cube("chest_panel", (0, -0.139, 0.115), (0.25, 0.018, 0.30),
+         mats["accent"], torso, 0.018)
+    for side in (-1, 1):
+        bar(f"suit_piping_{side:+}", (side * 0.115, -0.148, 0.25),
+            (side * 0.075, -0.151, -0.04), 0.010,
+            mats["detail"], torso)
+    cylinder("neck", (0, 0, 0.365), 0.060, 0.105,
+             mats["skin"], torso, vertices=16, bevel=0.010)
+    torus("suit_collar", (0, 0, 0.325), 0.074, 0.018,
+          mats["accent"], torso, major_segments=18, minor_segments=6)
+
+    # A smaller cranium, separate jaw and subtle features produce a readable
+    # human face while staying efficient enough for the game camera.
+    sphere("cranium", (0, 0.0, 0.105), (0.128, 0.112, 0.158),
+           mats["skin"], head, 22, 14)
+    sphere("jaw", (0, -0.016, 0.015), (0.105, 0.100, 0.105),
+           mats["skin"], head, 18, 10)
+    for side in (-1, 1):
+        sphere(f"ear_{side:+}", (side * 0.126, 0.0, 0.080),
+               (0.020, 0.014, 0.034), mats["skin"], head, 12, 8)
+        sphere(f"eye_white_{side:+}", (side * 0.045, -0.112, 0.108),
+               (0.024, 0.010, 0.012), mats["white"], head, 14, 8)
+        sphere(f"iris_{side:+}", (side * 0.045, -0.121, 0.108),
+               (0.009, 0.005, 0.009), mats["dark"], head, 12, 8)
+        bar(f"brow_{side:+}", (side * 0.072, -0.119, 0.142),
+            (side * 0.020, -0.123, 0.147), 0.006,
+            mats["hair"], head)
+    sphere("nose_bridge", (0, -0.116, 0.085), (0.016, 0.021, 0.040),
+           mats["skin"], head, 14, 8)
+    sphere("nose_tip", (0, -0.137, 0.063), (0.022, 0.018, 0.016),
+           mats["skin"], head, 14, 8)
+    bar("upper_lip", (-0.024, -0.124, 0.023),
+        (0.024, -0.124, 0.023), 0.006, mats["mouth"], head)
+    bar("lower_lip", (-0.021, -0.122, 0.012),
+        (0.021, -0.122, 0.012), 0.005, mats["mouth"], head)
+
+    # Close-fitting natural hair and compact twin buns preserve Imani's visual
+    # identity without the oversized spherical shapes of the old design.
+    sphere("hair_cap", (0, 0.018, 0.155), (0.134, 0.116, 0.108),
+           mats["hair"], head, 20, 12)
+    for side in (-1, 1):
+        sphere(f"hair_bun_{side:+}", (side * 0.105, 0.025, 0.226),
+               (0.060, 0.055, 0.060), mats["hair"], head, 16, 10)
+        detail = mats["accent"] if side > 0 else mats["detail"]
+        torus(f"bun_band_{side:+}", (side * 0.105, -0.005, 0.215),
+              0.041, 0.008, detail, head,
+              rotation=(math.pi / 2, 0, 0),
+              major_segments=16, minor_segments=6)
+
+    # Limbs taper from shoulder/hip to the extremities. The hands meet near
+    # the steering-wheel position and the legs retain the common seated pose.
+    for side, arm in ((-1, arm_l), (1, arm_r)):
+        sphere(f"shoulder_{side:+}", (0, 0, 0.070),
+               (0.055, 0.060, 0.068), mats["shirt"], arm, 16, 10)
+        elbow = (side * 0.045, -0.195, -0.020)
+        hand = (-side * 0.145, -0.410, -0.080)
+        bar(f"upper_arm_{side:+}", (0, 0, 0.055), elbow,
+            0.047, mats["shirt"], arm)
+        bar(f"forearm_{side:+}", elbow, hand, 0.044,
+            mats["skin"], arm)
+        sphere(f"hand_{side:+}", hand, (0.046, 0.038, 0.052),
+               mats["skin"], arm, 16, 10)
+        torus(f"cuff_{side:+}",
+              tuple(elbow[index] * 0.22 + hand[index] * 0.78
+                    for index in range(3)),
+              0.047, 0.009, mats["accent"], arm,
+              rotation=(math.radians(68), 0, 0),
+              major_segments=16, minor_segments=6)
+
+    for side, leg in ((-1, leg_l), (1, leg_r)):
+        knee = (0, -0.305, -0.105)
+        ankle = (0, -0.500, -0.315)
+        bar(f"thigh_{side:+}", (0, 0, 0.075), knee,
+            0.082, mats["dark"], leg)
+        bar(f"shin_{side:+}", knee, ankle, 0.066,
+            mats["shirt"], leg)
+        sphere(f"knee_panel_{side:+}", knee, (0.086, 0.072, 0.078),
+               mats["accent"], leg, 16, 10)
+        cube(f"boot_{side:+}", (0, -0.575, -0.390),
+             (0.145, 0.245, 0.135), mats["dark"], leg, 0.045)
+        cube(f"boot_stripe_{side:+}", (0, -0.660, -0.355),
+             (0.150, 0.025, 0.030), mats["accent"], leg, 0.010)
+
+
+def add_realistic_driver_preview_context(mats):
+    """Add a non-exported seat and wheel so the authored pose reads clearly."""
+    seat_back = cube("PREVIEW_seat_back", (0, 0.115, -0.015),
+                     (0.42, 0.10, 0.62), mats["dark"], bevel=0.065)
+    seat_back.rotation_euler.x = math.radians(-8)
+    seat_base = cube("PREVIEW_seat_base", (0, 0.035, -0.325),
+                     (0.40, 0.44, 0.10), mats["dark"], bevel=0.045)
+    wheel = torus("PREVIEW_steering_wheel", (0, -0.355, 0.105),
+                  0.135, 0.016, mats["dark"],
+                  rotation=(math.radians(68), 0, 0),
+                  major_segments=20, minor_segments=6)
+    column = bar("PREVIEW_steering_column", (0, -0.34, 0.09),
+                 (0, -0.04, -0.10), 0.014, mats["metal"])
+    for obj in (seat_back, seat_base, wheel, column):
+        obj[ASSET_PROP] = False
+
+
 def build_driver(slug: str):
     reset_scene()
     spec = DRIVERS[slug]
@@ -118,6 +230,8 @@ def build_driver(slug: str):
         "skin": material(f"{slug}_skin", spec["skin"], roughness=0.62),
         "shirt": material(f"{slug}_shirt", spec["shirt"], roughness=0.44),
         "accent": material(f"{slug}_accent", spec["accent"], metallic=0.06, roughness=0.38),
+        "detail": material(f"{slug}_detail", (0.82, 0.88, 0.84, 1),
+                           metallic=0.04, roughness=0.46),
         "hair": material(f"{slug}_hair", spec["hair"], roughness=0.70),
         "dark": material(f"{slug}_dark", (0.012, 0.016, 0.02, 1), roughness=0.62),
         "white": material(f"{slug}_eyes", (0.96, 0.96, 0.91, 1), roughness=0.40),
@@ -131,40 +245,45 @@ def build_driver(slug: str):
     root = empty("root", owner=driver_root)
     torso = empty("torso", (0, 0, 0.12), root)
     head = empty("head", (0, -0.02, 0.47), root)
-    arm_l = empty("arm_L", (-0.25, -0.02, 0.25), root)
-    arm_r = empty("arm_R", (0.25, -0.02, 0.25), root)
+    arm_x = 0.28 if spec.get("realistic") else 0.25
+    arm_l = empty("arm_L", (-arm_x, -0.02, 0.25), root)
+    arm_r = empty("arm_R", (arm_x, -0.02, 0.25), root)
     leg_l = empty("leg_L", (-0.145, 0, -0.08), root)
     leg_r = empty("leg_R", (0.145, 0, -0.08), root)
 
-    sphere("torso_shell", (0, 0, 0), (0.29, 0.19, 0.30), mats["shirt"], torso)
-    cube("harness_buckle", (0, -0.205, -0.01), (0.17, 0.035, 0.15), mats["accent"], torso, 0.025)
-    for x in (-0.14, 0.14):
-        bar(f"harness_{x:+}", (x, -0.185, 0.22), (x * 0.35, -0.21, 0.04),
-            0.024, mats["accent"], torso)
-    cube("harness_belt", (0, -0.198, -0.11), (0.38, 0.03, 0.055), mats["accent"], torso, 0.018)
-    cylinder("collar", (0, -0.01, 0.29), 0.11, 0.055, mats["accent"], torso, bevel=0.012)
-    make_face(head, mats)
-    make_hair(spec["feature"], head, mats)
+    if spec.get("realistic"):
+        make_realistic_imani(torso, head, arm_l, arm_r,
+                             leg_l, leg_r, mats)
+    else:
+        sphere("torso_shell", (0, 0, 0), (0.29, 0.19, 0.30), mats["shirt"], torso)
+        cube("harness_buckle", (0, -0.205, -0.01), (0.17, 0.035, 0.15), mats["accent"], torso, 0.025)
+        for x in (-0.14, 0.14):
+            bar(f"harness_{x:+}", (x, -0.185, 0.22), (x * 0.35, -0.21, 0.04),
+                0.024, mats["accent"], torso)
+        cube("harness_belt", (0, -0.198, -0.11), (0.38, 0.03, 0.055), mats["accent"], torso, 0.018)
+        cylinder("collar", (0, -0.01, 0.29), 0.11, 0.055, mats["accent"], torso, bevel=0.012)
+        make_face(head, mats)
+        make_hair(spec["feature"], head, mats)
 
-    for side, arm in (("L", arm_l), ("R", arm_r)):
-        sign = -1 if side == "L" else 1
-        bar(f"upper_arm_{side}", (0, 0, 0), (sign * 0.075, -0.20, -0.15),
-            0.075, mats["shirt"], arm)
-        bar(f"forearm_{side}", (sign * 0.075, -0.20, -0.15),
-            (-sign * 0.02, -0.43, -0.20), 0.065, mats["skin"], arm)
-        sphere(f"hand_{side}", (-sign * 0.02, -0.44, -0.20),
-               (0.075, 0.065, 0.075), mats["skin"], arm)
-    for side, leg in (("L", leg_l), ("R", leg_r)):
-        bar(f"thigh_{side}", (0, 0, 0), (0, -0.30, -0.13), 0.10, mats["dark"], leg)
-        bar(f"shin_{side}", (0, -0.30, -0.13), (0, -0.39, -0.38), 0.085, mats["shirt"], leg)
-        cube(f"shoe_{side}", (0, -0.46, -0.40), (0.19, 0.28, 0.13), mats["accent"], leg, 0.05)
+        for side, arm in (("L", arm_l), ("R", arm_r)):
+            sign = -1 if side == "L" else 1
+            bar(f"upper_arm_{side}", (0, 0, 0), (sign * 0.075, -0.20, -0.15),
+                0.075, mats["shirt"], arm)
+            bar(f"forearm_{side}", (sign * 0.075, -0.20, -0.15),
+                (-sign * 0.02, -0.43, -0.20), 0.065, mats["skin"], arm)
+            sphere(f"hand_{side}", (-sign * 0.02, -0.44, -0.20),
+                   (0.075, 0.065, 0.075), mats["skin"], arm)
+        for side, leg in (("L", leg_l), ("R", leg_r)):
+            bar(f"thigh_{side}", (0, 0, 0), (0, -0.30, -0.13), 0.10, mats["dark"], leg)
+            bar(f"shin_{side}", (0, -0.30, -0.13), (0, -0.39, -0.38), 0.085, mats["shirt"], leg)
+            cube(f"shoe_{side}", (0, -0.46, -0.40), (0.19, 0.28, 0.13), mats["accent"], leg, 0.05)
 
     bones = {
         "driver_root_bone": {"head": (0, 0, 0), "tail": (0, 0, 0.18)},
         "torso_bone": {"head": (0, 0, 0.05), "tail": (0, 0, 0.38), "parent": "driver_root_bone"},
         "head_bone": {"head": (0, -0.02, 0.38), "tail": (0, -0.02, 0.61), "parent": "torso_bone"},
-        "arm_L_bone": {"head": (-0.25, -0.02, 0.25), "tail": (-0.32, -0.22, 0.10), "parent": "torso_bone"},
-        "arm_R_bone": {"head": (0.25, -0.02, 0.25), "tail": (0.32, -0.22, 0.10), "parent": "torso_bone"},
+        "arm_L_bone": {"head": (-arm_x, -0.02, 0.25), "tail": (-arm_x - 0.07, -0.22, 0.10), "parent": "torso_bone"},
+        "arm_R_bone": {"head": (arm_x, -0.02, 0.25), "tail": (arm_x + 0.07, -0.22, 0.10), "parent": "torso_bone"},
         "leg_L_bone": {"head": (-0.145, 0, -0.08), "tail": (-0.145, -0.30, -0.22), "parent": "driver_root_bone"},
         "leg_R_bone": {"head": (0.145, 0, -0.08), "tail": (0.145, -0.30, -0.22), "parent": "driver_root_bone"},
     }
@@ -213,6 +332,8 @@ def build_driver(slug: str):
     # A common compact seated envelope keeps every silhouette compatible with
     # the same vehicle seat anchor while preserving proportions.
     driver_root.scale = (0.82, 0.82, 0.82)
+    if spec.get("realistic"):
+        add_realistic_driver_preview_context(mats)
     return spec
 
 
@@ -229,6 +350,8 @@ def main():
             "type": "driver",
             "display_name": spec["display_name"],
             "silhouette": spec["silhouette"],
+            "design_style": ("realistic human" if spec.get("realistic")
+                             else "stylized human"),
             "target_seated_pose_height_m": 1.1,
             "target_dimensions_m": {"width_x": 0.65, "depth_y": 0.66,
                                     "seated_height_z": 1.1},
@@ -237,8 +360,12 @@ def main():
                                 "brake": [60, 74], "turn_left": [80, 100],
                                 "turn_right": [80, 100]},
         }
+        camera = ((2.15, -3.15, 1.55) if spec.get("realistic")
+                  else (2.6, -3.6, 1.8))
+        target = ((0, -0.12, 0.08) if spec.get("realistic")
+                  else (0, -0.08, 0.08))
         export_asset(args.output_root / slug, slug, metadata, REQUIRED,
-                     (2.6, -3.6, 1.8), (0, -0.08, 0.08))
+                     camera, target)
 
 
 if __name__ == "__main__":

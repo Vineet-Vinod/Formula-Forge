@@ -141,10 +141,11 @@ def bar(name: str, start, end, radius, mat=None, owner=None):
 
 
 def torus(name: str, location, major_radius, minor_radius, mat=None, owner=None,
-          rotation=(0.0, 0.0, 0.0)):
+          rotation=(0.0, 0.0, 0.0), major_segments=28, minor_segments=10):
     bpy.ops.mesh.primitive_torus_add(major_radius=major_radius,
                                      minor_radius=minor_radius,
-                                     major_segments=28, minor_segments=10,
+                                     major_segments=major_segments,
+                                     minor_segments=minor_segments,
                                      location=location, rotation=rotation)
     return _finish_mesh(bpy.context.object, name, mat, owner, smooth=True)
 
