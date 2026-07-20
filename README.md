@@ -82,8 +82,9 @@ them.
   logo-free liveries: Marc, Fiery, MacL, RB, and Dash. Every livery shares the
   same front and rear wings, connected exposed suspension, sidepods, open
   cockpit, halo, diffuser, dimensions, hard points, and gameplay specification
-- One Blender-authored Standard Driver shared by every car, with a full race
-  suit, gloves, boots, closed helmet, smoked visor, and the common animation rig
+- One realistic-proportioned Blender-authored Standard Driver shared by every
+  car, with fitted overalls, gauntlet gloves, driving boots, HANS-style collar,
+  closed helmet, smoked visor, and the common animation rig
 - No powerups and no character super powers
 - Blender-authored circuit worlds with medium-gray tarmac, continuous track
   limits, driveable curbs and runoff, collision-aligned safety walls, catch

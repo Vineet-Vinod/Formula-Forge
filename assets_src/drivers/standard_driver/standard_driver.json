@@ -9,25 +9,25 @@
   },
   "measured_bounds_blender": {
     "min": [
-      -0.3024,
-      -0.5719,
-      -0.4407
+      -0.2975,
+      -0.6002,
+      -0.433
     ],
     "max": [
-      0.3024,
-      0.1271,
-      0.6158
+      0.2975,
+      0.1263,
+      0.6175
     ],
     "dimensions": [
-      0.6049,
-      0.699,
-      1.0566
+      0.5949,
+      0.7265,
+      1.0504
     ]
   },
   "runtime_budget": {
-    "mesh_objects": 42,
-    "vertices": 4750,
-    "triangles": 9344
+    "mesh_objects": 53,
+    "vertices": 5724,
+    "triangles": 11240
   },
   "verification": {
     "status": "passed",
@@ -47,11 +47,11 @@
       "turn_right": 21
     },
     "skin_count": 1,
-    "exported_meshes": 42,
+    "exported_meshes": 53,
     "dimension_error_percent": {
-      "width_x": 6.94,
-      "depth_y": 5.91,
-      "seated_height_z": 3.95
+      "width_x": 0.85,
+      "depth_y": 0.9,
+      "seated_height_z": 0.04
     },
     "dimension_tolerance_percent": 8.0
   },
@@ -72,13 +72,13 @@
   "preview": "standard_driver_preview.png",
   "type": "driver",
   "display_name": "Standard Driver",
-  "silhouette": "anonymous helmeted formula racing driver",
-  "design_style": "standard helmeted human",
+  "silhouette": "realistic-proportioned helmeted formula racing driver",
+  "design_style": "realistic modern formula driver",
   "target_seated_pose_height_m": 1.1,
   "target_dimensions_m": {
-    "width_x": 0.65,
-    "depth_y": 0.66,
-    "seated_height_z": 1.1
+    "width_x": 0.6,
+    "depth_y": 0.72,
+    "seated_height_z": 1.05
   },
   "attachment": {
     "driver_origin": "pelvis",

@@ -124,8 +124,8 @@ def validate_manifest(path: Path, kind: str, slug: str, triangle_limit: int) -> 
     else:
         require(manifest.get("display_name") == "Standard Driver",
                 f"unexpected driver identity: {path}")
-        require(manifest.get("design_style") == "standard helmeted human",
-                f"driver is not the standard helmeted design: {path}")
+        require(manifest.get("design_style") == "realistic modern formula driver",
+                f"driver is not the realistic modern formula design: {path}")
     return manifest
 
 
@@ -171,8 +171,9 @@ def validate_asset(root: Path, kind: str, slug: str, spec: dict) -> str:
         require(not missing_formula_nodes,
                 f"missing formula components {sorted(missing_formula_nodes)}: {paths['glb']}")
     else:
-        standard_nodes = {"helmet_shell", "helmet_visor", "glove_-1",
-                          "glove_+1", "boot_-1", "boot_+1"}
+        standard_nodes = {"helmet_shell", "helmet_visor", "hans_collar",
+                          "suit_zipper", "glove_-1", "glove_+1",
+                          "boot_-1", "boot_+1"}
         missing_standard_nodes = standard_nodes - node_names
         require(not missing_standard_nodes,
                 f"missing standard driver equipment {sorted(missing_standard_nodes)}: {paths['glb']}")

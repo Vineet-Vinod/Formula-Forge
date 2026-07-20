@@ -7,15 +7,16 @@ import math
 from pathlib import Path
 
 from asset_helpers import (ASSET_PROP, asset_objects, bar, build_rigid_rig,
-                           create_rig_action, cube, cylinder, empty,
+                           cone, create_rig_action, cube, cylinder, empty,
                            export_asset, material, reset_scene, sphere, torus)
+from mathutils import Vector
 
 
 DRIVERS = {
     "standard_driver": {
         "display_name": "Standard Driver",
-        "silhouette": "anonymous helmeted formula racing driver",
-        "shirt": (0.018, 0.035, 0.075, 1),
+        "silhouette": "realistic-proportioned helmeted formula racing driver",
+        "suit": (0.018, 0.035, 0.075, 1),
         "accent": (0.96, 0.22, 0.025, 1),
     },
 }
@@ -25,99 +26,141 @@ REQUIRED = ["driver_root", "root", "head", "arm_L", "arm_R",
             "arm_R_bone"]
 
 
+def tapered_bar(name, start, end, start_radius, end_radius, mat, owner):
+    """Create a low-cost tapered limb segment between two authored points."""
+    start_v, end_v = Vector(start), Vector(end)
+    direction = end_v - start_v
+    obj = cone(name, (start_v + end_v) * 0.5,
+               start_radius, end_radius, direction.length,
+               mat, owner, vertices=16)
+    obj.rotation_mode = "QUATERNION"
+    obj.rotation_quaternion = direction.to_track_quat("Z", "Y")
+    return obj
+
+
 def make_standard_driver(torso, head, arm_l, arm_r, leg_l, leg_r, mats):
-    """Build the anonymous, fully equipped driver shared by every car."""
-    sphere("torso_shell", (0, 0.01, 0.08), (0.245, 0.145, 0.285),
-           mats["shirt"], torso, 20, 12)
-    sphere("waist", (0, 0.015, -0.125), (0.195, 0.125, 0.155),
-           mats["shirt"], torso, 18, 10)
-    cube("chest_panel", (0, -0.139, 0.115), (0.25, 0.018, 0.30),
-         mats["detail"], torso, 0.018)
-    cube("harness_buckle", (0, -0.155, 0.025), (0.080, 0.025, 0.085),
-         mats["metal"], torso, 0.014)
+    """Build a logo-free modern Formula driver in a compact seated pose."""
+    # Close-cut multi-layer overalls: shaped ribcage and waist, high collar,
+    # shoulder epaulettes, front zip and restrained contrast seams. Modern F1
+    # racewear reads as fabric rather than body armour.
+    sphere("torso_shell", (0, 0.012, 0.090), (0.250, 0.142, 0.270),
+           mats["suit"], torso, 22, 14)
+    sphere("waist", (0, 0.020, -0.128), (0.192, 0.118, 0.145),
+           mats["suit"], torso, 18, 10)
+    cylinder("suit_collar", (0, -0.002, 0.350), 0.075, 0.075,
+             mats["suit_detail"], torso, vertices=20, bevel=0.012)
+    cube("suit_zipper", (0, -0.143, 0.105), (0.012, 0.010, 0.270),
+         mats["zipper"], torso, 0.004)
+    cube("waist_seam", (0, -0.120, -0.095), (0.335, 0.012, 0.018),
+         mats["accent"], torso, 0.004)
     for side in (-1, 1):
-        bar(f"suit_piping_{side:+}", (side * 0.120, -0.148, 0.26),
-            (side * 0.078, -0.151, -0.05), 0.010,
+        bar(f"chest_seam_{side:+}", (side * 0.170, -0.126, 0.270),
+            (side * 0.105, -0.147, -0.055), 0.007,
             mats["accent"], torso)
-        bar(f"harness_{side:+}", (side * 0.105, -0.151, 0.25),
-            (side * 0.035, -0.168, 0.045), 0.018,
-            mats["dark"], torso)
-    cylinder("balaclava_neck", (0, 0, 0.365), 0.064, 0.105,
-             mats["dark"], torso, vertices=16, bevel=0.010)
-    torus("hans_collar", (0, 0, 0.325), 0.082, 0.022,
-          mats["dark"], torso, major_segments=18, minor_segments=6)
+        cube(f"shoulder_epaulette_{side:+}",
+             (side * 0.198, -0.060, 0.270),
+             (0.090, 0.082, 0.018), mats["suit_detail"], torso, 0.007)
+        bar(f"shoulder_piping_{side:+}",
+            (side * 0.232, -0.100, 0.255),
+            (side * 0.155, -0.138, 0.210), 0.008,
+            mats["accent"], torso)
 
-    # Full-face helmet: smooth shell, chin bar, smoked visor and simple
-    # center stripe. There is deliberately no face or individual identity.
-    sphere("helmet_shell", (0, 0.0, 0.105), (0.145, 0.128, 0.175),
-           mats["detail"], head, 22, 14)
-    sphere("helmet_chin_guard", (0, -0.030, 0.012),
-           (0.118, 0.108, 0.098), mats["detail"], head, 18, 10)
-    cube("helmet_visor", (0, -0.127, 0.112),
-         (0.225, 0.018, 0.075), mats["glass"], head, 0.018)
-    cube("helmet_visor_brow", (0, -0.125, 0.160),
-         (0.238, 0.023, 0.025), mats["dark"], head, 0.010)
-    cube("helmet_center_stripe", (0, 0.000, 0.272),
-         (0.045, 0.190, 0.018), mats["accent"], head, 0.007)
+    # The black HANS/FHR yoke sits over the shoulders with short forward legs;
+    # it is visually separate from the suit and tucked under the helmet.
+    torus("hans_collar", (0, 0.018, 0.330), 0.094, 0.024,
+          mats["hans"], torso, major_segments=20, minor_segments=6)
     for side in (-1, 1):
-        cylinder(f"helmet_hinge_{side:+}", (side * 0.142, -0.025, 0.105),
-                 0.028, 0.018, mats["accent"], head,
-                 rotation=(0, math.pi / 2, 0), vertices=12, bevel=0.004)
-        cube(f"helmet_side_panel_{side:+}",
-             (side * 0.130, 0.025, 0.010),
-             (0.025, 0.105, 0.080), mats["shirt"], head, 0.009)
-    for x in (-0.045, 0.0, 0.045):
-        cube(f"helmet_vent_{x:+}", (x, -0.148, -0.005),
-             (0.022, 0.010, 0.010), mats["dark"], head, 0.003)
+        bar(f"hans_leg_{side:+}", (side * 0.077, 0.000, 0.325),
+            (side * 0.105, -0.123, 0.258), 0.022,
+            mats["hans"], torso)
 
-    # Long sleeves and gloves keep all skin covered. Hands converge on the
-    # common steering-wheel hard point used by every Formula livery.
+    # Full-face carbon-style helmet. The curved smoke visor, narrow eyeport,
+    # deep chin section, pivot hardware and rear aero lip reproduce the modern
+    # Formula silhouette without copying a driver's personal graphics.
+    sphere("helmet_shell", (0, 0.004, 0.105), (0.150, 0.132, 0.178),
+           mats["helmet"], head, 28, 18)
+    sphere("helmet_chin_guard", (0, -0.037, 0.006),
+           (0.126, 0.116, 0.100), mats["helmet"], head, 22, 12)
+    sphere("helmet_visor", (0, -0.132, 0.113),
+           (0.126, 0.012, 0.055), mats["visor"], head, 24, 10)
+    bar("visor_reinforcement", (-0.112, -0.139, 0.161),
+        (0.112, -0.139, 0.161), 0.009, mats["visor_trim"], head)
+    cube("helmet_center_stripe", (0, 0.015, 0.273),
+         (0.038, 0.185, 0.014), mats["accent"], head, 0.006)
+    cube("helmet_rear_spoiler", (0, 0.128, 0.118),
+         (0.205, 0.035, 0.030), mats["helmet"], head, 0.008)
+    cube("helmet_chin_intake", (0, -0.151, 0.010),
+         (0.070, 0.010, 0.020), mats["visor_trim"], head, 0.004)
+    for side in (-1, 1):
+        cylinder(f"helmet_hinge_{side:+}", (side * 0.143, -0.035, 0.113),
+                 0.025, 0.014, mats["accent"], head,
+                 rotation=(0, math.pi / 2, 0), vertices=16, bevel=0.003)
+        bar(f"helmet_cheek_line_{side:+}",
+            (side * 0.115, -0.112, 0.040),
+            (side * 0.090, -0.135, -0.040), 0.006,
+            mats["accent"], head)
+
+    # Tapered sleeves, subtle elbow folds and gauntlet gloves. Hands converge
+    # on the common steering-wheel hard point shared by all five cars.
     for side, arm in ((-1, arm_l), (1, arm_r)):
-        sphere(f"shoulder_{side:+}", (0, 0, 0.070),
-               (0.055, 0.060, 0.068), mats["shirt"], arm, 16, 10)
-        elbow = (side * 0.045, -0.195, -0.020)
-        hand = (-side * 0.145, -0.410, -0.080)
-        bar(f"upper_arm_{side:+}", (0, 0, 0.055), elbow,
-            0.047, mats["shirt"], arm)
-        bar(f"forearm_{side:+}", elbow, hand, 0.044,
-            mats["shirt"], arm)
-        sphere(f"glove_{side:+}", hand, (0.048, 0.040, 0.054),
+        shoulder = (0, 0, 0.065)
+        elbow = (side * 0.035, -0.190, -0.025)
+        wrist = (-side * 0.128, -0.360, -0.082)
+        hand = (-side * 0.145, -0.405, -0.090)
+        sphere(f"shoulder_{side:+}", shoulder,
+               (0.058, 0.061, 0.070), mats["suit"], arm, 16, 10)
+        tapered_bar(f"upper_arm_{side:+}", shoulder, elbow,
+                    0.052, 0.046, mats["suit"], arm)
+        sphere(f"elbow_fold_{side:+}", elbow,
+               (0.049, 0.046, 0.050), mats["suit_shadow"], arm, 14, 8)
+        tapered_bar(f"forearm_{side:+}", elbow, wrist,
+                    0.046, 0.039, mats["suit"], arm)
+        tapered_bar(f"glove_cuff_{side:+}", wrist, hand,
+                    0.049, 0.043, mats["gloves"], arm)
+        sphere(f"glove_{side:+}", hand, (0.049, 0.039, 0.051),
                mats["gloves"], arm, 16, 10)
-        torus(f"glove_cuff_{side:+}",
-              tuple(elbow[index] * 0.22 + hand[index] * 0.78
-                    for index in range(3)),
-              0.047, 0.009, mats["accent"], arm,
-              rotation=(math.radians(68), 0, 0),
-              major_segments=16, minor_segments=6)
+        cube(f"glove_top_panel_{side:+}",
+             (hand[0], hand[1] - 0.020, hand[2] + 0.022),
+             (0.058, 0.014, 0.045), mats["accent"], arm, 0.006)
 
+    # The legs keep a realistic pedal-box bend. Boots are slim, flat-soled
+    # fireproof driving shoes rather than the square blocks from the first pass.
     for side, leg in ((-1, leg_l), (1, leg_r)):
-        knee = (0, -0.305, -0.105)
-        ankle = (0, -0.500, -0.315)
-        bar(f"thigh_{side:+}", (0, 0, 0.075), knee,
-            0.082, mats["shirt"], leg)
-        bar(f"shin_{side:+}", knee, ankle, 0.066,
-            mats["shirt"], leg)
-        sphere(f"knee_panel_{side:+}", knee, (0.086, 0.072, 0.078),
-               mats["detail"], leg, 16, 10)
-        cube(f"boot_{side:+}", (0, -0.575, -0.390),
-             (0.145, 0.245, 0.135), mats["dark"], leg, 0.045)
-        cube(f"boot_stripe_{side:+}", (0, -0.660, -0.355),
-             (0.150, 0.025, 0.030), mats["accent"], leg, 0.010)
+        hip = (0, 0, 0.075)
+        knee = (0, -0.300, -0.105)
+        ankle = (0, -0.500, -0.310)
+        toe = (0, -0.635, -0.370)
+        tapered_bar(f"thigh_{side:+}", hip, knee,
+                    0.086, 0.072, mats["suit"], leg)
+        sphere(f"knee_panel_{side:+}", knee,
+               (0.078, 0.070, 0.076), mats["suit_shadow"], leg, 16, 10)
+        tapered_bar(f"shin_{side:+}", knee, ankle,
+                    0.068, 0.052, mats["suit"], leg)
+        tapered_bar(f"boot_ankle_{side:+}", ankle, toe,
+                    0.053, 0.046, mats["boots"], leg)
+        sphere(f"boot_{side:+}", (0, -0.620, -0.390),
+               (0.064, 0.112, 0.050), mats["boots"], leg, 18, 10)
+        cube(f"boot_sole_{side:+}", (0, -0.620, -0.438),
+             (0.128, 0.220, 0.020), mats["sole"], leg, 0.006)
+        bar(f"leg_piping_{side:+}",
+            (side * 0.060, -0.080, 0.035),
+            (side * 0.052, -0.438, -0.270), 0.007,
+            mats["accent"], leg)
 
 
 def add_standard_driver_preview_context(mats):
     """Add a non-exported seat and wheel so the authored pose reads clearly."""
     seat_back = cube("PREVIEW_seat_back", (0, 0.115, -0.015),
-                     (0.42, 0.10, 0.62), mats["dark"], bevel=0.065)
+                     (0.42, 0.10, 0.62), mats["preview_dark"], bevel=0.065)
     seat_back.rotation_euler.x = math.radians(-8)
     seat_base = cube("PREVIEW_seat_base", (0, 0.035, -0.325),
-                     (0.40, 0.44, 0.10), mats["dark"], bevel=0.045)
+                     (0.40, 0.44, 0.10), mats["preview_dark"], bevel=0.045)
     wheel = torus("PREVIEW_steering_wheel", (0, -0.355, 0.105),
-                  0.135, 0.016, mats["dark"],
+                  0.135, 0.016, mats["preview_dark"],
                   rotation=(math.radians(68), 0, 0),
                   major_segments=20, minor_segments=6)
     column = bar("PREVIEW_steering_column", (0, -0.34, 0.09),
-                 (0, -0.04, -0.10), 0.014, mats["metal"])
+                 (0, -0.04, -0.10), 0.014, mats["zipper"])
     for obj in (seat_back, seat_base, wheel, column):
         obj[ASSET_PROP] = False
 
@@ -126,16 +169,30 @@ def build_driver(slug: str):
     reset_scene()
     spec = DRIVERS[slug]
     mats = {
-        "shirt": material(f"{slug}_shirt", spec["shirt"], roughness=0.44),
-        "accent": material(f"{slug}_accent", spec["accent"], metallic=0.06, roughness=0.38),
-        "detail": material(f"{slug}_detail", (0.82, 0.88, 0.84, 1),
-                           metallic=0.04, roughness=0.46),
-        "dark": material(f"{slug}_dark", (0.012, 0.016, 0.02, 1), roughness=0.62),
-        "metal": material(f"{slug}_metal", (0.40, 0.45, 0.48, 1), metallic=0.72, roughness=0.22),
-        "glass": material(f"{slug}_glass", (0.008, 0.018, 0.028, 1),
-                          metallic=0.28, roughness=0.10),
+        "suit": material(f"{slug}_suit", spec["suit"], roughness=0.72),
+        "suit_detail": material(f"{slug}_suit_detail", (0.76, 0.80, 0.82, 1),
+                                roughness=0.70),
+        "suit_shadow": material(f"{slug}_suit_shadow", (0.028, 0.055, 0.105, 1),
+                                roughness=0.76),
+        "accent": material(f"{slug}_accent", spec["accent"], roughness=0.55),
+        "zipper": material(f"{slug}_zipper", (0.18, 0.20, 0.22, 1),
+                           metallic=0.38, roughness=0.34),
+        "hans": material(f"{slug}_hans", (0.010, 0.012, 0.016, 1),
+                         roughness=0.32),
+        "helmet": material(f"{slug}_helmet", (0.88, 0.90, 0.91, 1),
+                           metallic=0.08, roughness=0.19),
+        "visor": material(f"{slug}_visor", (0.006, 0.012, 0.020, 1),
+                          metallic=0.45, roughness=0.08),
+        "visor_trim": material(f"{slug}_visor_trim", (0.025, 0.028, 0.032, 1),
+                               metallic=0.48, roughness=0.20),
         "gloves": material(f"{slug}_gloves", (0.010, 0.013, 0.018, 1),
-                           roughness=0.52),
+                           roughness=0.62),
+        "boots": material(f"{slug}_boots", (0.014, 0.018, 0.024, 1),
+                          roughness=0.66),
+        "sole": material(f"{slug}_sole", (0.004, 0.005, 0.006, 1),
+                         roughness=0.82),
+        "preview_dark": material(f"{slug}_preview_dark", (0.010, 0.013, 0.017, 1),
+                                 roughness=0.52),
     }
     driver_root = empty("driver_root")
     driver_root["asset_id"] = f"formula_buggy.driver.{slug}"
@@ -222,17 +279,17 @@ def main():
             "type": "driver",
             "display_name": spec["display_name"],
             "silhouette": spec["silhouette"],
-            "design_style": "standard helmeted human",
+            "design_style": "realistic modern formula driver",
             "target_seated_pose_height_m": 1.1,
-            "target_dimensions_m": {"width_x": 0.65, "depth_y": 0.66,
-                                    "seated_height_z": 1.1},
+            "target_dimensions_m": {"width_x": 0.60, "depth_y": 0.72,
+                                    "seated_height_z": 1.05},
             "attachment": {"driver_origin": "pelvis", "vehicle_bone": "seat_anchor"},
             "animation_clips": {"idle": [1, 32], "accelerate": [40, 54],
                                 "brake": [60, 74], "turn_left": [80, 100],
                                 "turn_right": [80, 100]},
         }
-        camera = (2.15, -3.15, 1.55)
-        target = (0, -0.12, 0.08)
+        camera = (1.95, -2.90, 1.42)
+        target = (0, -0.15, 0.05)
         export_asset(args.output_root / slug, slug, metadata, REQUIRED,
                      camera, target)
 
