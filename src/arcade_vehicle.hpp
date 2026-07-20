@@ -44,6 +44,7 @@ struct ArcadeVehicleState {
     float engineRpmNormalized = 0.333f;
     float shiftTimer = 0.0f;
     float shiftRejectTimer = 0.0f;
+    int queuedManualShifts = 0;
     float engineBrakingApplied = 0.0f;
     float aerodynamicDragApplied = 0.0f;
     float rollingResistanceApplied = 0.0f;
@@ -91,6 +92,7 @@ struct ArcadeVehicleConfig {
     float automaticDownshiftRpm = 0.50f;
     float automaticBrakingDownshiftRpm = 0.50f;
     float downshiftOverrevRpm = 1.08f;
+    float manualDownshiftOverrevRpm = 1.08f;
     float shiftDuration = 0.075f;
     float shiftRejectDuration = 0.28f;
     float engineBrakingAcceleration = 18.0f;

@@ -181,8 +181,21 @@ ArcadeVehicleTelemetry stepSingle(ArcadeVehicleState& state,
     };
     float gearboxRpm = rpmForGear(state.gear);
     int requestedGear = state.gear;
-    if (state.shiftTimer <= 0.0f && control.shiftUpPressed != control.shiftDownPressed) {
-        requestedGear += control.shiftUpPressed ? 1 : -1;
+    if (!control.automaticShift && control.shiftUpPressed != control.shiftDownPressed) {
+        const int shiftRequest = control.shiftUpPressed ? 1 : -1;
+        state.queuedManualShifts = std::clamp(state.queuedManualShifts + shiftRequest, -7, 7);
+    }
+    if (control.automaticShift) {
+        state.queuedManualShifts = 0;
+    }
+    if (state.gear <= 1 && state.queuedManualShifts < 0) {
+        state.queuedManualShifts = 0;
+    } else if (state.gear >= static_cast<int>(config.gearRedlineSpeedRatios.size()) &&
+               state.queuedManualShifts > 0) {
+        state.queuedManualShifts = 0;
+    }
+    if (state.shiftTimer <= 0.0f && !control.automaticShift && state.queuedManualShifts != 0) {
+        requestedGear += state.queuedManualShifts > 0 ? 1 : -1;
     } else if (state.shiftTimer <= 0.0f && control.automaticShift) {
         const float automaticDownshiftRpm = lerp(config.automaticDownshiftRpm,
                                                  config.automaticBrakingDownshiftRpm,
@@ -196,12 +209,18 @@ ArcadeVehicleTelemetry stepSingle(ArcadeVehicleState& state,
     requestedGear = std::clamp(requestedGear, 1, static_cast<int>(config.gearRedlineSpeedRatios.size()));
     if (requestedGear != state.gear) {
         const float requestedRpm = rpmForGear(requestedGear);
-        if (requestedGear < state.gear && requestedRpm > config.downshiftOverrevRpm) {
+        const float downshiftLimit = control.automaticShift
+                                         ? config.downshiftOverrevRpm
+                                         : config.manualDownshiftOverrevRpm;
+        if (requestedGear < state.gear && requestedRpm > downshiftLimit) {
             state.shiftRejectTimer = config.shiftRejectDuration;
         } else {
             state.gear = requestedGear;
             state.shiftTimer = config.shiftDuration;
             gearboxRpm = requestedRpm;
+            if (!control.automaticShift && state.queuedManualShifts != 0) {
+                state.queuedManualShifts += state.queuedManualShifts > 0 ? -1 : 1;
+            }
         }
     }
     state.engineRpmNormalized = std::clamp(gearboxRpm, config.idleRpmNormalized, 1.25f);
@@ -611,6 +630,7 @@ void syncArcadeTransmissionToSpeed(ArcadeVehicleState& state, const ArcadeVehicl
                                          safeRatio(std::abs(dot(state.vel, fromAngle(state.heading))), redlineSpeed));
     state.shiftTimer = 0.0f;
     state.shiftRejectTimer = 0.0f;
+    state.queuedManualShifts = 0;
 }
 
 ArcadeVehicleTelemetry stepArcadeVehicle(ArcadeVehicleState& state,
@@ -835,7 +855,48 @@ ArcadeVehicleAuditResult runArcadeVehicleUnitAudit() {
     rejectedDownshift.vel = {config.maxForwardSpeed * 0.75f, 0.0f};
     stepArcadeVehicle(rejectedDownshift, config, downshift, road, kInternalStep);
     result.rejectedDownshiftGear = rejectedDownshift.gear;
-    check(rejectedDownshift.gear == 5 && rejectedDownshift.shiftRejectTimer > 0.0f);
+    check(rejectedDownshift.gear == 5 && rejectedDownshift.shiftRejectTimer > 0.0f &&
+          rejectedDownshift.queuedManualShifts == -1);
+    ArcadeVehicleControl manualBrake;
+    manualBrake.automaticShift = false;
+    manualBrake.brake = 1.0f;
+    for (int frame = 0; frame < 240 && rejectedDownshift.gear == 5; ++frame) {
+        stepArcadeVehicle(rejectedDownshift, config, manualBrake, road, kInternalStep);
+    }
+    check(rejectedDownshift.gear == 4 && rejectedDownshift.queuedManualShifts == 0);
+
+    ArcadeVehicleState bufferedDuringCut;
+    bufferedDuringCut.gear = 4;
+    bufferedDuringCut.vel = {config.maxForwardSpeed * 0.34f, 0.0f};
+    bufferedDuringCut.shiftTimer = 0.05f;
+    stepArcadeVehicle(bufferedDuringCut, config, downshift, road, kInternalStep);
+    check(bufferedDuringCut.gear == 4 && bufferedDuringCut.queuedManualShifts == -1);
+    ArcadeVehicleControl manualCoast;
+    manualCoast.automaticShift = false;
+    for (int frame = 0; frame < 20; ++frame) {
+        stepArcadeVehicle(bufferedDuringCut, config, manualCoast, road, kInternalStep);
+    }
+    check(bufferedDuringCut.gear == 3 && bufferedDuringCut.queuedManualShifts == 0);
+
+    ArcadeVehicleState stackedDownshifts;
+    stackedDownshifts.gear = 6;
+    stackedDownshifts.vel = {config.maxForwardSpeed * 0.30f, 0.0f};
+    stepArcadeVehicle(stackedDownshifts, config, downshift, road, kInternalStep);
+    stepArcadeVehicle(stackedDownshifts, config, downshift, road, kInternalStep);
+    stepArcadeVehicle(stackedDownshifts, config, downshift, road, kInternalStep);
+    for (int frame = 0; frame < 40; ++frame) {
+        stepArcadeVehicle(stackedDownshifts, config, manualCoast, road, kInternalStep);
+    }
+    check(stackedDownshifts.gear == 3 && stackedDownshifts.queuedManualShifts == 0);
+
+    ArcadeVehicleControl cancelDownshift = manualCoast;
+    cancelDownshift.shiftUpPressed = true;
+    ArcadeVehicleState cancelledQueue;
+    cancelledQueue.gear = 5;
+    cancelledQueue.queuedManualShifts = -1;
+    cancelledQueue.shiftTimer = 0.04f;
+    stepArcadeVehicle(cancelledQueue, config, cancelDownshift, road, kInternalStep);
+    check(cancelledQueue.gear == 5 && cancelledQueue.queuedManualShifts == 0);
 
     ArcadeVehicleState lowGearCoast;
     ArcadeVehicleState highGearCoast;
@@ -843,8 +904,6 @@ ArcadeVehicleAuditResult runArcadeVehicleUnitAudit() {
     highGearCoast.gear = 8;
     lowGearCoast.vel = {config.maxForwardSpeed * 0.45f, 0.0f};
     highGearCoast.vel = lowGearCoast.vel;
-    ArcadeVehicleControl manualCoast;
-    manualCoast.automaticShift = false;
     const float coastStartSpeed = lowGearCoast.forwardSpeed = highGearCoast.forwardSpeed = length(lowGearCoast.vel);
     for (int i = 0; i < 120; ++i) {
         stepArcadeVehicle(lowGearCoast, config, manualCoast, road, kInternalStep);

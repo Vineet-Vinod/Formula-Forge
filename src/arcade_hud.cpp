@@ -21,7 +21,6 @@ constexpr Color kPaperMuted = {186, 207, 194, 255};
 constexpr Color kSun = {255, 205, 67, 255};
 constexpr Color kCoral = {238, 79, 67, 255};
 constexpr Color kAqua = {65, 203, 205, 255};
-constexpr Color kLeaf = {92, 190, 113, 255};
 constexpr Color kOutline = {105, 143, 139, 190};
 constexpr Color kSky = {97, 203, 218, 255};
 constexpr Color kSkyDeep = {35, 151, 181, 255};
@@ -197,19 +196,6 @@ void drawConnectionBanner(const Metrics& m) {
     DrawRectangleRec(banner, Fade(kCoral, 0.96f));
     DrawRectangleRec({0.0f, banner.y, banner.width, 3.0f * m.scale}, kSun);
     drawCenteredText("CONTROLLER DISCONNECTED", {m.width * 0.5f, banner.y + banner.height * 0.5f}, 19.0f * m.scale, kPaper);
-}
-
-void drawStatRow(const char* label, float value, Rectangle bounds, Color color, float scale) {
-    drawText(label, {bounds.x, bounds.y}, 15.0f * scale, kPaperMuted);
-    const float labelWidth = 102.0f * scale;
-    const Rectangle rail{bounds.x + labelWidth, bounds.y + 2.0f * scale, bounds.width - labelWidth, 12.0f * scale};
-    DrawRectangleRec(rail, Color{8, 22, 25, 210});
-    const Rectangle fill = inset(rail, 2.0f * scale);
-    DrawRectangleRec({fill.x, fill.y, fill.width * clamp01(value), fill.height}, color);
-    for (int tick = 1; tick < 5; ++tick) {
-        const float x = fill.x + fill.width * static_cast<float>(tick) / 5.0f;
-        DrawLineEx({x, fill.y}, {x, fill.y + fill.height}, 1.0f * scale, Fade(kInk, 0.65f));
-    }
 }
 
 void drawCourseSchematic(const SelectionHudViewModel& viewModel, Rectangle bounds, float scale) {
@@ -748,7 +734,7 @@ void DrawSelectionHud(const SelectionHudViewModel& viewModel) {
     }
 
     drawPanel(detail, Fade(kInk, 0.96f), stage == 2 ? kSun : kCoral, m.scale);
-    const char* detailTitle = stage == 1 ? "DRIVER STORY" : stage == 2 ? "RIDE PROFILE" :
+    const char* detailTitle = stage == 1 ? "DRIVER STORY" : stage == 2 ? "LIVERY NOTES" :
                               stage == 3 ? "COURSE NOTES" : "RACE FORMAT";
     drawText(detailTitle, {detail.x + 24.0f * m.scale, detail.y + 23.0f * m.scale}, 16.0f * m.scale, kAqua);
     const std::string description = stage == 3 ? viewModel.mapDescription : viewModel.backstory;
@@ -756,16 +742,6 @@ void DrawSelectionHud(const SelectionHudViewModel& viewModel) {
                     {detail.x + 24.0f * m.scale, detail.y + 61.0f * m.scale, detail.width - 48.0f * m.scale,
                      104.0f * m.scale},
                     17.0f * m.scale, 25.0f * m.scale, kPaper, 4);
-    if (stage == 2) {
-        const float x = detail.x + 24.0f * m.scale;
-        const float width = detail.width - 48.0f * m.scale;
-        const float baseY = detail.y + detail.height - 142.0f * m.scale;
-        drawStatRow("SPEED", viewModel.stats.speed, {x, baseY, width, 18.0f * m.scale}, kCoral, m.scale);
-        drawStatRow("ACCEL", viewModel.stats.acceleration, {x, baseY + 30.0f * m.scale, width, 18.0f * m.scale}, kSun, m.scale);
-        drawStatRow("HANDLING", viewModel.stats.handling, {x, baseY + 60.0f * m.scale, width, 18.0f * m.scale}, kAqua, m.scale);
-        drawStatRow("STRENGTH", viewModel.stats.strength, {x, baseY + 90.0f * m.scale, width, 18.0f * m.scale}, kLeaf, m.scale);
-    }
-
     const Rectangle footer{0.0f, m.height - footerHeight, m.width, footerHeight};
     DrawRectangleRec(footer, Fade(kInk, 0.96f));
     drawText(viewModel.navigationHint, {m.margin, footer.y + 21.0f * m.scale}, 15.0f * m.scale, kPaperMuted);

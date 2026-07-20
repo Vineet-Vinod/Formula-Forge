@@ -15,13 +15,6 @@ bool InitializeUiFont(const char* fontPath, int baseSize = 64);
 void ShutdownUiFont();
 bool IsUiFontLoaded();
 
-struct VehicleStatsViewModel {
-    float speed = 0.0f;
-    float acceleration = 0.0f;
-    float handling = 0.0f;
-    float strength = 0.0f;
-};
-
 struct RaceHudViewModel {
     std::string vehicleName;
     std::string driverName;
@@ -88,7 +81,6 @@ struct SelectionHudViewModel {
     // closed by the HUD when at least three points are supplied.
     std::array<float, kMaxCoursePolylinePoints * 2> coursePolyline{};
     int coursePolylinePointCount = 0;
-    VehicleStatsViewModel stats;
     int itemIndex = 0;
     int itemCount = 1;
     std::array<int, 4> lapOptions = {2, 5, 10, 0};
