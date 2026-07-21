@@ -135,6 +135,9 @@ struct ResultsHudViewModel {
     std::array<ResultRowViewModel, kMaxResultRacers> rows{};
     int rowCount = 0;
     int totalLaps = 0;
+    float bestLapTimeSeconds = 0.0f;
+    bool isTimeTrial = false;
+    bool hasBestLap = false;
     ResultsAction selectedAction = ResultsAction::Replay;
     float presentationTimeSeconds = 0.0f;
     bool controllerConnected = true;

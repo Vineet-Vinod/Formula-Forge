@@ -3814,6 +3814,8 @@ public:
     }
 
     float lapLengthForCapture() const { return track_.totalLength(); }
+    bool showingResultsForCapture() const { return mode_ == Mode::Results; }
+    bool showingGarageForCapture() const { return mode_ == Mode::Garage; }
 
     bool runTerrainAudit() const {
         constexpr float kGradientLimitDegrees = 40.0f;
@@ -3858,9 +3860,7 @@ private:
             audioInput.speedNormalized = std::clamp(player.telemetry.normalizedSpeed, 0.0f, 1.0f);
             audioInput.engineRpmNormalized = player.engineRpmNormalized;
             audioInput.shiftActive = player.shiftTimer > 0.0f;
-            audioInput.shiftAlert = player.shiftTimer <= 0.0f &&
-                                    player.gear < static_cast<int>(player.tuning.gearRedlineSpeedRatios.size()) &&
-                                    player.engineRpmNormalized >= player.tuning.automaticUpshiftRpm;
+            audioInput.shiftAlert = playerShiftRecommended();
             audioInput.throttle = input.throttle;
             audioInput.brake = std::max(input.brake, player.brakeLoad);
             audioInput.slip = std::clamp(std::abs(player.slipAngle) / 0.70f, 0.0f, 1.0f);
@@ -3944,6 +3944,17 @@ private:
 
     bool isTimeTrial() const { return selectedSession_ == harbor::ui::GameModeOption::TimeTrial; }
     int activeKartCount() const { return isTimeTrial() ? 1 : kKartCount; }
+
+    bool playerShiftRecommended() const {
+        if (karts_.empty()) {
+            return false;
+        }
+        const Kart3D& player = karts_[0];
+        constexpr float kShiftAlertLead = 0.06f;
+        return player.shiftTimer <= 0.0f &&
+               player.gear < static_cast<int>(player.tuning.gearRedlineSpeedRatios.size()) &&
+               player.engineRpmNormalized >= player.tuning.automaticUpshiftRpm - kShiftAlertLead;
+    }
     ArcadeVehicleConfig selectedTrackTuning(const KartSpec3D& spec) const {
         ArcadeVehicleConfig tuning = tuningForSpec(spec);
         const float kphPerUnit = speedKphPerSimulationUnit(track_.layout());
@@ -4292,10 +4303,10 @@ private:
     }
 
     void updateFinishState() {
-        if (isTimeTrial()) {
+        const int laps = targetLaps();
+        if (isTimeTrial() && laps == kInfiniteLaps) {
             return;
         }
-        const int laps = targetLaps();
         const bool validatedFinish = raceFlow_ && raceFlow_->racer(0).finished;
         const bool legacyFinish = !raceFlow_ && laps != kInfiniteLaps && karts_[0].lap >= laps;
         if (!raceFinished_ && (validatedFinish || legacyFinish)) {
@@ -4304,9 +4315,19 @@ private:
             karts_[0].vel *= 0.35f;
             karts_[0].boostTimer = 0.0f;
             karts_[0].drifting = false;
-            buildRaceResults();
+            if (isTimeTrial()) {
+                buildTimeTrialResult();
+            } else {
+                buildRaceResults();
+            }
             mode_ = Mode::Results;
         }
+    }
+
+    void buildTimeTrialResult() {
+        resultCount_ = 1;
+        results_[0] = {0, 1, finishTime_, std::max(1, targetLaps())};
+        resultsAction_ = harbor::ui::ResultsAction::Replay;
     }
 
     void buildRaceResults() {
@@ -6080,6 +6101,9 @@ private:
             view.eventName = sessionEventName();
             view.rowCount = resultCount_;
             view.totalLaps = targetLaps();
+            view.isTimeTrial = isTimeTrial();
+            view.bestLapTimeSeconds = bestLapTime_;
+            view.hasBestLap = hasBestLap_;
             view.selectedAction = resultsAction_;
             view.presentationTimeSeconds = presentationTime_;
             view.controllerConnected = hasController;
@@ -6156,9 +6180,7 @@ private:
             view.boostCharge = std::clamp(player.boostTimer / player.tuning.tierThreeBoostDuration, 0.0f, 1.0f);
             view.presentationTimeSeconds = raceTime_;
             view.boostActive = player.boostTimer > 0.0f;
-            view.shiftRecommended = player.shiftTimer <= 0.0f &&
-                                    player.gear < static_cast<int>(player.tuning.gearRedlineSpeedRatios.size()) &&
-                                    player.engineRpmNormalized >= player.tuning.automaticUpshiftRpm;
+            view.shiftRecommended = playerShiftRecommended();
             view.wrongWay = raceFlow_ && raceFlow_->racer(0).wrongWay;
             view.finished = raceFinished_;
             view.controllerConnected = hasController;
@@ -6567,11 +6589,26 @@ int runFormulaForge(int argc, char** argv) {
         pause.start = true;
         game.update(kFixedDt, pause, true);
         game.render(60.0f, true, "../playtest_frames/formula_forge_time_trial_pause.png");
+        game.update(kFixedDt, pause, true);
+        while (!game.showingResultsForCapture() && framesDriven < kMaxTimeTrialCaptureFrames) {
+            game.update(kFixedDt, game.scriptedInput(), true);
+            ++framesDriven;
+        }
+        game.render(60.0f, true, "../playtest_frames/formula_forge_time_trial_results.png");
         const float distance = game.playerRaceScoreForCapture() - startScore;
+        const bool resultsShown = game.showingResultsForCapture();
+        Input3D chooseHome;
+        chooseHome.right = true;
+        game.update(kFixedDt, chooseHome, true);
+        Input3D confirmHome;
+        confirmHome.a = true;
+        game.update(kFixedDt, confirmHome, true);
+        const bool homeWorks = game.showingGarageForCapture();
         cleanupRuntime();
         std::cout << "capture-time-trial frames=" << framesDriven
-                  << " distance=" << distance << "\n";
-        return framesDriven < kMaxTimeTrialCaptureFrames ? 0 : 1;
+                  << " distance=" << distance << " results=" << resultsShown
+                  << " home=" << homeWorks << "\n";
+        return framesDriven < kMaxTimeTrialCaptureFrames && resultsShown && homeWorks ? 0 : 1;
     }
     if (collisionAudit) {
         const bool ok = game.runCollisionAudit();

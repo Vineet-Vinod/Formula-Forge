@@ -48,9 +48,14 @@ class ArcadeSynth {
         target_.slip = clamp01(std::abs(input.slip));
         target_.grounded = input.grounded ? 1.0f : 0.0f;
 
-        if (input.shiftAlert && !wasShiftAlert_) {
+        const float inputStep = std::clamp(std::isfinite(input.deltaTime) ? input.deltaTime : 0.0f, 0.0f, 0.10f);
+        shiftAlertRepeatTimer_ = std::max(0.0f, shiftAlertRepeatTimer_ - inputStep);
+        if (input.shiftAlert && (!wasShiftAlert_ || shiftAlertRepeatTimer_ <= 0.0f)) {
             shiftAlertEnvelope_ = 1.0f;
             shiftAlertPhase_ = 0.0f;
+            shiftAlertRepeatTimer_ = 0.38f;
+        } else if (!input.shiftAlert) {
+            shiftAlertRepeatTimer_ = 0.0f;
         }
         wasShiftAlert_ = input.shiftAlert;
 
@@ -108,11 +113,11 @@ class ArcadeSynth {
             landingEnvelope_ *= 0.99908f;
             if (landingEnvelope_ < 0.00001f) landingEnvelope_ = 0.0f;
 
-            shiftAlertPhase_ = wrapPhase(shiftAlertPhase_ + 980.0f * dt);
+            shiftAlertPhase_ = wrapPhase(shiftAlertPhase_ + 1760.0f * dt);
             const float shiftBeep = (std::sin(2.0f * kPi * shiftAlertPhase_) +
-                                     std::sin(4.0f * kPi * shiftAlertPhase_) * 0.22f) *
-                                    shiftAlertEnvelope_ * 0.19f;
-            shiftAlertEnvelope_ *= 0.99982f;
+                                     std::sin(4.0f * kPi * shiftAlertPhase_) * 0.28f) *
+                                    shiftAlertEnvelope_ * 0.44f;
+            shiftAlertEnvelope_ *= 0.99955f;
             if (shiftAlertEnvelope_ < 0.00001f) shiftAlertEnvelope_ = 0.0f;
 
             const float airMute = 0.72f + controls_.grounded * 0.28f;
@@ -147,6 +152,7 @@ class ArcadeSynth {
     float landingEnvelope_ = 0.0f;
     float shiftAlertPhase_ = 0.0f;
     float shiftAlertEnvelope_ = 0.0f;
+    float shiftAlertRepeatTimer_ = 0.0f;
     float previousLandingImpulse_ = 0.0f;
     float roadNoise_ = 0.0f;
     float windNoise_ = 0.0f;
@@ -352,7 +358,7 @@ ArcadeAudioAuditResult runArcadeAudioUnitAudit() {
     nearRedline.shiftAlert = true;
     const SignalMetrics shiftAlertMetrics = measure(renderScenario(nearRedline, 4));
     result.shiftAlertRmsIncrease = shiftAlertMetrics.rms - nearRedlineMetrics.rms;
-    check(result.shiftAlertRmsIncrease > 0.015f);
+    check(result.shiftAlertRmsIncrease > 0.040f);
 
     const std::vector<float> repeat = renderScenario(fast, 18);
     result.deterministicHash = hashSamples(fastSignal);
