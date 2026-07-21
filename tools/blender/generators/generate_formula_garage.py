@@ -41,6 +41,19 @@ def cube(name: str, location: tuple[float, float, float], dimensions: tuple[floa
     return obj
 
 
+def cylinder(name: str, location: tuple[float, float, float], radius: float, depth: float,
+             surface: bpy.types.Material, vertices: int = 64, bevel: float = 0.0) -> bpy.types.Object:
+    bpy.ops.mesh.primitive_cylinder_add(vertices=vertices, radius=radius, depth=depth, location=location)
+    obj = bpy.context.object
+    obj.name = name
+    obj.data.materials.append(surface)
+    if bevel > 0.0:
+        modifier = obj.modifiers.new("Edge softening", "BEVEL")
+        modifier.width = bevel
+        modifier.segments = 3
+    return obj
+
+
 def area_light(name: str, location: tuple[float, float, float], target: tuple[float, float, float],
                color: tuple[float, float, float], energy: float, size: float) -> None:
     data = bpy.data.lights.new(name, "AREA")
@@ -69,6 +82,9 @@ def build_scene(output_dir: Path) -> None:
                          emission=(1.0, 0.004, 0.010, 1.0), emission_strength=18.0)
     white_light = material("FORGE_white_light", (0.35, 0.36, 0.39, 1.0), roughness=0.15,
                            emission=(0.72, 0.76, 0.84, 1.0), emission_strength=5.0)
+    pedestal_top = material("FORGE_pedestal_top", (0.030, 0.036, 0.048, 1.0), metallic=0.68, roughness=0.23)
+    pedestal_edge = material("FORGE_pedestal_edge", (0.19, 0.004, 0.008, 1.0), metallic=0.32, roughness=0.20,
+                             emission=(1.0, 0.006, 0.012, 1.0), emission_strength=3.2)
 
     cube("FORGE_floor", (0.0, 0.0, -0.15), (22.0, 20.0, 0.30), graphite)
     cube("FORGE_back_wall", (0.0, 5.6, 3.8), (22.0, 0.35, 8.0), wall)
@@ -87,6 +103,12 @@ def build_scene(output_dir: Path) -> None:
     for x in (-6.8, -2.25, 2.25, 6.8):
         cube(f"FORGE_ceiling_light_{x:+.2f}", (x, 0.7, 7.48), (2.4, 0.24, 0.055), white_light, 0.03)
 
+    # A low display plinth gives the composited live car a clear contact plane.
+    # The larger dark base and inset top leave a slim illuminated edge instead
+    # of a bright disc competing with the livery.
+    cylinder("FORGE_pedestal_edge", (0.0, 0.35, 0.055), 4.42, 0.17, pedestal_edge, bevel=0.05)
+    cylinder("FORGE_pedestal_top", (0.0, 0.35, 0.145), 4.27, 0.20, pedestal_top, bevel=0.07)
+
     # A red floor frame echoes the loading-screen arena without copying it.
     cube("FORGE_floor_strip_back", (0.0, 2.7, -0.002), (13.5, 0.055, 0.035), red_light, 0.02)
     cube("FORGE_floor_strip_front", (0.0, -3.7, -0.002), (13.5, 0.055, 0.035), red_light, 0.02)
@@ -96,7 +118,8 @@ def build_scene(output_dir: Path) -> None:
     area_light("FORGE_red_rim_left", (-6.8, -0.5, 3.1), (0.0, 0.6, 1.0), (1.0, 0.005, 0.012), 1250.0, 4.0)
     area_light("FORGE_red_rim_right", (6.8, -0.5, 3.1), (0.0, 0.6, 1.0), (1.0, 0.005, 0.012), 1250.0, 4.0)
     area_light("FORGE_softbox", (0.0, -2.4, 6.9), (0.0, 0.4, 0.7), (0.38, 0.44, 0.56), 900.0, 5.0)
-    area_light("FORGE_back_glow", (0.0, 4.5, 2.6), (0.0, 0.0, 0.8), (1.0, 0.008, 0.014), 650.0, 3.0)
+    area_light("FORGE_overhead_spot", (0.0, 0.2, 7.15), (0.0, 0.35, 0.2), (1.0, 0.94, 0.88), 2100.0, 4.2)
+    area_light("FORGE_back_glow", (0.0, 4.5, 2.6), (0.0, 0.0, 0.8), (1.0, 0.008, 0.014), 220.0, 3.0)
 
     camera_data = bpy.data.cameras.new("FORGE_camera")
     camera = bpy.data.objects.new("FORGE_camera", camera_data)
@@ -137,7 +160,7 @@ def build_scene(output_dir: Path) -> None:
         "type": "ui_background",
         "resolution": [1280, 720],
         "composition": "empty Formula garage bay for a live rotating car overlay",
-        "lighting": "dark graphite studio with red vertical and floor lights",
+        "lighting": "dark graphite studio with red practicals and a neutral overhead display light",
         "source": blend_path.name,
         "render": png_path.name,
     }

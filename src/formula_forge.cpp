@@ -2229,12 +2229,14 @@ public:
         lighting.fogEnd = isMetricCircuit(track_.layout()) ? 12000.0f : 235.0f;
         lighting.exposure = 1.0f;
         if (mode_ == Mode::Garage) {
-            lighting.sunDirection = {-0.30f, 0.72f, -0.62f};
-            lighting.sunColor = {255, 176, 165, 255};
-            lighting.skyAmbient = {132, 139, 157, 255};
-            lighting.groundAmbient = {104, 35, 38, 255};
+            // Neutral, menu-only key light keeps every livery color readable
+            // while the authored garage supplies the red atmosphere.
+            lighting.sunDirection = {-0.24f, 0.92f, -0.31f};
+            lighting.sunColor = {255, 246, 232, 255};
+            lighting.skyAmbient = {188, 194, 207, 255};
+            lighting.groundAmbient = {118, 92, 94, 255};
             lighting.fogColor = {8, 4, 7, 255};
-            lighting.exposure = 1.22f;
+            lighting.exposure = 1.46f;
         }
         renderer_.setLighting(lighting);
         BeginMode3D(camera_);
@@ -4033,11 +4035,7 @@ private:
                 break;
             case harbor::ui::SelectionStage::Map:
                 wrapChoice(selectedMap_, static_cast<int>(kMaps.size()), horizontal);
-                if (isTimeTrial()) {
-                    selectedLapOption_ = kLapOptionCount - 1;
-                } else {
-                    wrapChoice(selectedLapOption_, kLapOptionCount, vertical);
-                }
+                wrapChoice(selectedLapOption_, kLapOptionCount, vertical);
                 break;
         }
         if (selectedMap_ != previousMap) {
@@ -4275,7 +4273,7 @@ private:
     float raceScore(const Kart3D& kart) const { return static_cast<float>(kart.lap) * track_.totalLength() + raceLapProgress(kart); }
 
     int targetLaps() const {
-        return isTimeTrial() ? kInfiniteLaps : kLapOptions[static_cast<size_t>(selectedLapOption_)];
+        return kLapOptions[static_cast<size_t>(selectedLapOption_)];
     }
 
     const char* lapOptionText(int index) const {
@@ -5739,7 +5737,7 @@ private:
         const Vector3 vehicleSurface = toWorld(renderPos, renderElevation);
         const float roadSurfaceLift = authoredRoadSurfaceLift(track_.layout());
         if (renderer_.ready()) {
-            const auto style = static_cast<arcade_render::FormulaBodyStyle>(kart.spec.bodyStyle % 4);
+            const auto style = static_cast<arcade_render::FormulaBodyStyle>(kart.spec.bodyStyle % 5);
             arcade_render::FormulaVisualSpec spec = arcade_render::MakeFormulaVisualSpec(style, kart.spec.body, kart.spec.accent);
             spec.glass = kart.spec.glass;
             spec.width = kart.spec.width * kRenderScale * 0.88f;
@@ -6036,9 +6034,9 @@ private:
             switch (selectionStage_) {
                 case harbor::ui::SelectionStage::Mode:
                     view.itemName = isTimeTrial() ? "TIME TRIAL" : "RACE";
-                    view.itemSubtitle = isTimeTrial() ? "SOLO / INFINITE LAPS" : "FULL GRID / FINITE DISTANCE";
+                    view.itemSubtitle = isTimeTrial() ? "SOLO / HOT LAPS" : "FULL GRID / RACE DISTANCE";
                     view.backstory = isTimeTrial()
-                                         ? "A clear circuit, unlimited laps, and one target: your best time."
+                                         ? "A clear circuit, your chosen run length, and one target: your best time."
                                          : "Race the full field over a chosen distance and fight for the podium.";
                     view.itemIndex = isTimeTrial() ? 1 : 0;
                     view.itemCount = 2;
@@ -6060,7 +6058,7 @@ private:
             view.lapOptions = kLapOptions;
             view.lapOptionCount = kLapOptionCount;
             view.selectedLapOption = selectedLapOption_;
-            view.lapsAdjustable = !isTimeTrial();
+            view.lapsAdjustable = true;
             view.presentationTimeSeconds = presentationTime_;
             view.canContinue = true;
             view.controllerConnected = hasController;
@@ -6071,9 +6069,7 @@ private:
                 view.navigationHint = "LEFT / RIGHT   CAR";
                 view.confirmHint = "A / ENTER   CONTINUE";
             } else {
-                view.navigationHint = isTimeTrial()
-                                          ? "LT / RT OR LEFT / RIGHT   TRACK"
-                                          : "LT / RT OR LEFT / RIGHT   TRACK     UP / DOWN   LAPS";
+                view.navigationHint = "LT / RT OR LEFT / RIGHT   TRACK     UP / DOWN   LAPS";
                 view.confirmHint = isTimeTrial() ? "A / ENTER   START TIME TRIAL" : "A / ENTER   START RACE";
             }
             view.backHint = "B / BACKSPACE  BACK";

@@ -14,6 +14,7 @@ enum class FormulaBodyStyle : std::uint8_t {
     Rally,
     Speedster,
     Utility,
+    Dash,
 };
 
 enum class DriverHeadwear : std::uint8_t {

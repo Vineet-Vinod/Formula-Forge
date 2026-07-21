@@ -7,7 +7,7 @@
     720
   ],
   "composition": "empty Formula garage bay for a live rotating car overlay",
-  "lighting": "dark graphite studio with red vertical and floor lights",
+  "lighting": "dark graphite studio with red practicals and a neutral overhead display light",
   "source": "formula_garage.blend",
   "render": "formula_garage_background.png"
 }

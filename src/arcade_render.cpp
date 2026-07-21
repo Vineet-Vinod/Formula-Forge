@@ -436,6 +436,10 @@ Mesh makeBody(FormulaBodyStyle style) {
             sections = {{{1.00f, 0.64f, 0.13f, 0.50f}, {0.76f, 0.94f, 0.02f, 0.84f}, {0.34f, 1.00f, 0.00f, 0.98f},
                          {-0.22f, 1.00f, 0.00f, 1.00f}, {-0.75f, 0.98f, 0.03f, 0.96f}, {-1.00f, 0.78f, 0.11f, 0.72f}}};
             break;
+        case FormulaBodyStyle::Dash:
+            sections = {{{1.00f, 0.38f, 0.22f, 0.25f}, {0.78f, 0.78f, 0.11f, 0.48f}, {0.35f, 0.98f, 0.03f, 0.64f},
+                         {-0.24f, 1.00f, 0.03f, 0.65f}, {-0.76f, 0.91f, 0.12f, 0.56f}, {-1.00f, 0.58f, 0.24f, 0.38f}}};
+            break;
     }
 
     MeshBuilder builder;
@@ -992,6 +996,10 @@ struct ArcadeRender::Impl {
                 drawBox(root, {0.0f, bodyBase + h * 1.42f, -l * 0.23f}, {w * 0.76f, h * 0.08f, l * 0.37f},
                         shade(spec.trim, 1.12f), 0.32f);
                 break;
+            case FormulaBodyStyle::Dash:
+                drawBox(root, {0.0f, bodyBase + h * 1.18f, -l * 0.47f}, {w * 0.98f, h * 0.11f, l * 0.19f}, spec.accent,
+                        0.42f);
+                break;
         }
     }
 
@@ -1299,6 +1307,13 @@ FormulaVisualSpec MakeFormulaVisualSpec(FormulaBodyStyle style, Color body, Colo
             spec.wheelWidth = 0.47f;
             spec.rideHeight = 0.34f;
             break;
+        case FormulaBodyStyle::Dash:
+            spec.width = 2.25f;
+            spec.length = 4.52f;
+            spec.bodyHeight = 0.96f;
+            spec.wheelRadius = 0.57f;
+            spec.rideHeight = 0.20f;
+            break;
     }
     return spec;
 }
@@ -1413,7 +1428,7 @@ bool ArcadeRender::initialize() {
     impl_->bodies[1] = makeBody(FormulaBodyStyle::Rally);
     impl_->bodies[2] = makeBody(FormulaBodyStyle::Speedster);
     impl_->bodies[3] = makeBody(FormulaBodyStyle::Utility);
-    impl_->bodies[4] = makeBody(FormulaBodyStyle::Speedster);
+    impl_->bodies[4] = makeBody(FormulaBodyStyle::Dash);
     impl_->box = makeUnitBox();
     impl_->cylinder = makeCylinder(14);
     impl_->cone = makeCone(14);
