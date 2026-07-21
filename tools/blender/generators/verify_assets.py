@@ -237,7 +237,7 @@ def validate_garage_artwork(root: Path) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--asset-root", type=Path,
-                        default=Path(__file__).resolve().parents[3] / "assets_src")
+                        default=Path(__file__).resolve().parents[3] / "assets")
     args = parser.parse_args()
 
     failures = []

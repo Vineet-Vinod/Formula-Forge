@@ -1,22 +1,28 @@
 BUILD_DIR := build
 GAME_BUILD_DIR := $(BUILD_DIR)/game
-TARGET := $(GAME_BUILD_DIR)/formula_forge_legacy
-TARGET_3D := $(GAME_BUILD_DIR)/formula_forge
-LEGACY_TARGET := $(BUILD_DIR)/formula_forge_legacy
-LEGACY_TARGET_3D := $(BUILD_DIR)/formula_forge
+TARGET := $(GAME_BUILD_DIR)/formula_forge
 SDL_LIB := $(BUILD_DIR)/deps/install/lib/libSDL3.a
 RAYLIB_LIB := $(BUILD_DIR)/deps/raylib-install/lib/libraylib.a
 GAME_SOURCES := $(wildcard src/*.cpp src/*.hpp) CMakeLists.txt
 
-.PHONY: all deps assets assets-validate assets-preview clean clean-all run run-2d run-3d agent-play-3d agent-play-audit-3d self-test input-audit-3d audio-audit-3d vehicle-audit-3d race-flow-audit-3d race-audit race-audit-3d capture-playtest capture-playtest-3d capture-lap-3d capture-section-tour-3d capture-spa-tour-3d capture-suzuka-tour-3d capture-map-gallery-3d capture-time-trial-3d spa-audit-3d track-catalog-audit-3d asset-audit-3d time-trial-audit-3d perf-audit perf-audit-3d spa-perf-audit-3d smoke-3d handling-audit-3d collision-audit-3d terrain-audit-3d ai-pace-audit-3d ai-pace-audit-spa-3d ai-pace-audit-suzuka-3d ai-pace-audit-silverstone-3d ai-pace-audit-interlagos-3d
+.PHONY: all deps test assets assets-validate clean clean-all run \
+	agent-play agent-play-audit input-audit audio-audit vehicle-audit \
+	race-flow-audit race-audit handling-audit collision-audit terrain-audit \
+	spa-audit track-catalog-audit asset-audit time-trial-audit perf-audit \
+	spa-perf-audit smoke ai-pace-audit ai-pace-audit-spa \
+	ai-pace-audit-suzuka ai-pace-audit-silverstone ai-pace-audit-interlagos \
+	capture-playtest capture-lap capture-section-tour capture-spa-tour \
+	capture-suzuka-tour capture-map-gallery capture-time-trial
 
-all: $(TARGET) $(TARGET_3D) $(LEGACY_TARGET) $(LEGACY_TARGET_3D)
+all: $(TARGET)
 
 deps: $(SDL_LIB) $(RAYLIB_LIB)
 
+test: $(TARGET)
+	ctest --test-dir $(GAME_BUILD_DIR) --output-on-failure
+
 assets:
 	uv sync --frozen
-	uv run --no-sync python tools/build_assets.py build all
 	uv run --no-sync python tools/blender/generators/generate_vehicles.py --asset all
 	uv run --no-sync python tools/blender/generators/generate_drivers.py --asset all
 	uv run --no-sync python tools/blender/generators/generate_loading_screen.py
@@ -25,13 +31,8 @@ assets:
 
 assets-validate:
 	uv sync --frozen
-	uv run --no-sync python tools/build_assets.py validate all
 	uv run --no-sync python tools/blender/generators/verify_assets.py
 	uv run --no-sync python tools/blender/tracks/verify_tracks.py --track all
-
-assets-preview:
-	uv sync --frozen
-	uv run --no-sync python tools/build_assets.py preview all
 
 $(SDL_LIB): scripts/bootstrap_deps.sh third_party/_cache/SDL3-3.4.10.tar.gz third_party/_cache/libXext-1.3.6.tar.xz
 	scripts/bootstrap_deps.sh
@@ -39,125 +40,102 @@ $(SDL_LIB): scripts/bootstrap_deps.sh third_party/_cache/SDL3-3.4.10.tar.gz thir
 $(RAYLIB_LIB): scripts/bootstrap_raylib.sh third_party/_cache/raylib-6.0.tar.gz $(SDL_LIB)
 	scripts/bootstrap_raylib.sh
 
-$(TARGET) $(TARGET_3D) &: $(GAME_SOURCES) $(SDL_LIB) $(RAYLIB_LIB)
+$(TARGET): $(GAME_SOURCES) $(SDL_LIB) $(RAYLIB_LIB)
 	cmake -S . -B $(GAME_BUILD_DIR) -DCMAKE_BUILD_TYPE=Release
 	cmake --build $(GAME_BUILD_DIR) --parallel
 
-$(LEGACY_TARGET): $(TARGET)
-	ln -sf game/formula_forge_legacy $@
-
-$(LEGACY_TARGET_3D): $(TARGET_3D)
-	ln -sf game/formula_forge $@
-
-run: run-3d
-
-run-2d: $(TARGET)
+run: $(TARGET)
 	$(TARGET)
 
-run-3d: $(TARGET_3D)
-	$(TARGET_3D)
+agent-play: $(TARGET)
+	$(TARGET) --agent-play
 
-agent-play-3d: $(TARGET_3D)
-	$(TARGET_3D) --agent-play
+agent-play-audit: $(TARGET)
+	$(TARGET) --agent-play-audit
 
-agent-play-audit-3d: $(TARGET_3D)
-	$(TARGET_3D) --agent-play-audit
+input-audit: $(TARGET)
+	$(TARGET) --input-audit
 
-self-test: $(TARGET)
-	$(TARGET) --self-test
+audio-audit: $(TARGET)
+	$(TARGET) --audio-audit
+
+vehicle-audit: $(TARGET)
+	$(TARGET) --vehicle-audit
+
+race-flow-audit: $(TARGET)
+	$(TARGET) --race-flow-audit
 
 race-audit: $(TARGET)
 	$(TARGET) --race-audit
 
-race-audit-3d: $(TARGET_3D)
-	$(TARGET_3D) --race-audit
+handling-audit: $(TARGET)
+	$(TARGET) --handling-audit
 
-capture-playtest: $(TARGET)
-	$(TARGET) --capture-playtest build/playtest_frames
+collision-audit: $(TARGET)
+	$(TARGET) --collision-audit
 
-capture-playtest-3d: $(TARGET_3D)
-	$(TARGET_3D) --capture-playtest
+terrain-audit: $(TARGET)
+	$(TARGET) --terrain-audit
 
-capture-lap-3d: $(TARGET_3D)
-	$(TARGET_3D) --capture-lap
+spa-audit: $(TARGET)
+	$(TARGET) --spa-audit
 
-capture-section-tour-3d: $(TARGET_3D)
-	$(TARGET_3D) --capture-section-tour
+track-catalog-audit: $(TARGET)
+	$(TARGET) --track-catalog-audit
 
-capture-spa-tour-3d: $(TARGET_3D)
-	$(TARGET_3D) --capture-spa-tour
+asset-audit: $(TARGET)
+	SDL_VIDEODRIVER=offscreen $(TARGET) --asset-audit
 
-capture-suzuka-tour-3d: $(TARGET_3D)
-	$(TARGET_3D) --capture-suzuka-tour
-
-capture-map-gallery-3d: $(TARGET_3D)
-	$(TARGET_3D) --capture-map-gallery
-
-capture-time-trial-3d: $(TARGET_3D)
-	$(TARGET_3D) --capture-time-trial
-
-spa-audit-3d: $(TARGET_3D)
-	$(TARGET_3D) --spa-audit
-
-track-catalog-audit-3d: $(TARGET_3D)
-	$(TARGET_3D) --track-catalog-audit
-
-asset-audit-3d: $(TARGET_3D)
-	SDL_VIDEODRIVER=offscreen $(TARGET_3D) --asset-audit
-
-time-trial-audit-3d: $(TARGET_3D)
-	$(TARGET_3D) --time-trial-audit --windowed
+time-trial-audit: $(TARGET)
+	$(TARGET) --time-trial-audit --windowed
 
 perf-audit: $(TARGET)
 	$(TARGET) --perf-audit
 
-perf-audit-3d: $(TARGET_3D)
-	$(TARGET_3D) --perf-audit
+spa-perf-audit: $(TARGET)
+	$(TARGET) --spa-perf-audit
 
-spa-perf-audit-3d: $(TARGET_3D)
-	$(TARGET_3D) --spa-perf-audit
+smoke: $(TARGET)
+	$(TARGET) --smoke-render
 
-smoke-3d: $(TARGET_3D)
-	$(TARGET_3D) --smoke-render
+ai-pace-audit: $(TARGET)
+	$(TARGET) --ai-pace-audit
 
-handling-audit-3d: $(TARGET_3D)
-	$(TARGET_3D) --handling-audit
+ai-pace-audit-spa: $(TARGET)
+	$(TARGET) --ai-pace-audit-spa
 
-vehicle-audit-3d: $(TARGET_3D)
-	$(TARGET_3D) --vehicle-audit
+ai-pace-audit-suzuka: $(TARGET)
+	$(TARGET) --ai-pace-audit-suzuka
 
-audio-audit-3d: $(TARGET_3D)
-	$(TARGET_3D) --audio-audit
+ai-pace-audit-silverstone: $(TARGET)
+	$(TARGET) --ai-pace-audit-silverstone
 
-input-audit-3d: $(TARGET_3D)
-	$(TARGET_3D) --input-audit
+ai-pace-audit-interlagos: $(TARGET)
+	$(TARGET) --ai-pace-audit-interlagos
 
-race-flow-audit-3d: $(TARGET_3D)
-	$(TARGET_3D) --race-flow-audit
+capture-playtest: $(TARGET)
+	$(TARGET) --capture-playtest
 
-collision-audit-3d: $(TARGET_3D)
-	$(TARGET_3D) --collision-audit
+capture-lap: $(TARGET)
+	$(TARGET) --capture-lap
 
-terrain-audit-3d: $(TARGET_3D)
-	$(TARGET_3D) --terrain-audit
+capture-section-tour: $(TARGET)
+	$(TARGET) --capture-section-tour
 
-ai-pace-audit-3d: $(TARGET_3D)
-	$(TARGET_3D) --ai-pace-audit
+capture-spa-tour: $(TARGET)
+	$(TARGET) --capture-spa-tour
 
-ai-pace-audit-spa-3d: $(TARGET_3D)
-	$(TARGET_3D) --ai-pace-audit-spa
+capture-suzuka-tour: $(TARGET)
+	$(TARGET) --capture-suzuka-tour
 
-ai-pace-audit-suzuka-3d: $(TARGET_3D)
-	$(TARGET_3D) --ai-pace-audit-suzuka
+capture-map-gallery: $(TARGET)
+	$(TARGET) --capture-map-gallery
 
-ai-pace-audit-silverstone-3d: $(TARGET_3D)
-	$(TARGET_3D) --ai-pace-audit-silverstone
-
-ai-pace-audit-interlagos-3d: $(TARGET_3D)
-	$(TARGET_3D) --ai-pace-audit-interlagos
+capture-time-trial: $(TARGET)
+	$(TARGET) --capture-time-trial
 
 clean:
-	rm -rf $(GAME_BUILD_DIR) $(LEGACY_TARGET) $(LEGACY_TARGET_3D)
+	rm -rf $(GAME_BUILD_DIR)
 
 clean-all:
 	rm -rf $(BUILD_DIR)

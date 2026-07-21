@@ -328,7 +328,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--asset", choices=["all", *DRIVERS], default="all")
     parser.add_argument("--output-root", type=Path,
-                        default=Path(__file__).resolve().parents[3] / "assets_src" / "drivers")
+                        default=Path(__file__).resolve().parents[3] / "assets" / "drivers")
     args = parser.parse_args()
     targets = DRIVERS if args.asset == "all" else [args.asset]
     for slug in targets:

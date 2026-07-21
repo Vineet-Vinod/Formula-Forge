@@ -72,7 +72,8 @@ freely, subject to the following restrictions:
 
 - Source: <https://www.x.org/releases/individual/lib/libXext-1.3.6.tar.xz>
 - SHA-256: `edb59fa23994e405fdc5b400afdf5820ae6160b94f35e3dc3da4457a16e89753`
-- Use: X11 extension headers needed while building SDL on this laptop.
+- Use: X11 extension headers needed to build SDL without a system development
+  package.
 - Full license text: `third_party/licenses/libXext-1.3.6-COPYING.txt`
 
 The libXext distribution contains multiple permissive copyright notice blocks;
@@ -83,11 +84,10 @@ the full upstream `COPYING` file is included verbatim at the path above.
 - Source: <https://github.com/raysan5/raylib/archive/refs/tags/6.0.tar.gz>
 - SHA-256: `2b3ee1e2120c7a0796b33062c7e9a694dd8a8caa56a96319ac8c8ecf54a90d0b`
 - Use: 3D rendering, camera, geometry helpers, and gamepad abstraction for the
-  new playable 3D build.
+  game.
 - Local build choice: compiled as a static library with the SDL3 platform
-  backend, OpenGL ES 2 renderer, and audio disabled. This avoids relying on
-  missing system GLX development headers while still using hardware EGL/GLES
-  acceleration on the target laptop.
+  backend, OpenGL ES 2 renderer, and audio disabled. This avoids requiring GLX
+  development headers while retaining hardware EGL/GLES acceleration.
 - Full license text: `third_party/licenses/raylib-6.0-LICENSE.txt`
 
 raylib is distributed under the zlib/libpng license; the full upstream

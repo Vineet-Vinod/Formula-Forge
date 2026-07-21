@@ -173,7 +173,7 @@ def main() -> None:
     parser.add_argument("--output-dir", type=Path)
     args = parser.parse_args()
     output_dir = args.output_dir.resolve() if args.output_dir else (
-        args.project_root.resolve() / "assets_src" / "ui" / "formula_garage")
+        args.project_root.resolve() / "assets" / "ui" / "formula_garage")
     build_scene(output_dir)
 
 

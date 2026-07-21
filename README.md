@@ -1,284 +1,132 @@
 # Formula Forge
 
-Formula Forge is an original Linux/C++ arcade formula racer that combines
-open-wheel cars and circuit driving with a bright tropical setting.
+Formula Forge is an open-source, Linux-native arcade formula racing game built
+in C++20. Race a six-car grid or chase lap times on five original,
+real-world-inspired circuits with controller and steering-wheel input.
 
-The primary build is `formula_forge`: vendored SDL3 input plus vendored
-raylib on SDL/EGL/OpenGL ES 2. The game uses a fixed-step arcade vehicle model,
-checkpoint-validated races, custom GPU meshes, a stylized lighting/fog pass,
-procedural SDL3 vehicle audio, and a responsive HUD. The older SDL software
-framebuffer build remains only for diagnostics and comparison.
+![Three Formula Forge cars racing](docs/images/formula_forge.png)
 
-## Build
+## Highlights
 
-Requirements:
+- Spa, Suzuka, Silverstone, Monza, and Interlagos-inspired circuits with
+  authored elevation, track limits, runoff, barriers, scenery, and pit areas
+- Five logo-free car liveries sharing one Blender-authored formula car and
+  driver specification
+- Race and Time Trial sessions with configurable race distances
+- Eight-speed manual sequential transmission and momentum-preserving arcade
+  handling with tire grip, downforce, drag, load transfer, and trail braking
+- Six-car races against curvature-aware AI that uses racing lines, passing
+  moves, safe following gaps, and modest player-pace adaptation
+- Fixed broadcast T-cam, responsive HUD, procedural vehicle audio, and a full
+  loading/menu/garage/race/results flow
+- Deterministic audits for vehicle dynamics, race rules, collisions, assets,
+  track geometry, performance, and AI pace on every circuit
 
-- `g++`
-- `make`
-- `cmake`
-- Linux with X11 runtime libraries
+## Build and run
 
-The SDL3 source dependency is vendored and pinned. The first build verifies and
-builds it automatically:
+Formula Forge currently targets Linux. You need a C++20 compiler, CMake 3.20+
+and GNU Make, plus X11/EGL/OpenGL ES runtime libraries. SDL3 and raylib source
+archives are pinned in `third_party/` and compiled automatically on the first
+build.
 
 ```sh
 make
-```
-
-The executable is:
-
-```sh
-./build/game/formula_forge
-```
-
-## Run
-
-```sh
 make run
 ```
 
-`make run` launches the 3D game. It opens fullscreen by default. For debugging:
+The executable is written to `build/game/formula_forge`. Run it from the
+repository root so it can find `assets/`. The game starts fullscreen; use this
+for a window while debugging:
 
 ```sh
 ./build/game/formula_forge --windowed
-./build/game/formula_forge --diagnose-controller --windowed
 ```
 
 ## Controls
 
-Formula Forge supports gamepads and steering wheels. The
-DragonRise Wired Wheel (`0079:189c`) is detected automatically, with a linear,
-low-deadzone steering profile and analog accelerator/brake pedals.
+Formula Forge is designed for gamepads and steering wheels. A DragonRise Wired
+Wheel (`0079:189c`) is recognized automatically. Multiple SDL input devices are
+merged, so a wheel and gamepad can stay connected together.
 
-- Left stick / D-pad or wheel rim: steer; change the highlighted menu choice
+- Left stick, D-pad, or wheel rim: steer and navigate menus
 - RT or accelerator pedal: accelerate
-- LT or B / Circle: brake for corner entry; hold at low speed to reverse
-- RB or right paddle: shift up; LB or left paddle: shift down
-- D-pad left/right or wheel rim: choose the session and car
-- LT/RT, LB/RB, D-pad left/right, or wheel rim: cycle tracks on the map screen
-- D-pad up/down: choose 2, 5, 10, or infinite laps for a race
-- A / Cross: confirm, select, or start
-- B / Circle: return to the previous selection stage
-- Start: pause the race
-- Back / Select: resume from pause or reset to the last valid checkpoint while racing
-- Start + Back / Select: quit
+- LT, B/Circle, or brake pedal: brake; hold at low speed to reverse
+- RB/right paddle and LB/left paddle: shift up and down
+- A/Cross: confirm
+- B/Circle: go back
+- Start: pause
+- Back/Select: resume or reset to the last checkpoint
+- Start + Back/Select: quit
 
-Wheel controls use the rim for steering, accelerator and brake pedals for RT
-and LT, the wheel's A/B buttons for confirm/back, the D-pad for menus, and the
-shoulder/paddle buttons for shifting. Multiple connected SDL input devices are
-merged, so a wheel and gamepad do not need to be unplugged to switch between
-them.
+## Test and diagnostic tools
 
-## Current Gameplay
+Run the full CTest suite:
 
-- Five selectable meter-scaled circuits: Spa, Suzuka, Silverstone, Monza, and
-  Interlagos layouts with audited turn order,
-  handedness, dimensions, and elevation
-- Streamlined session, car, and combined map/laps selection with 2/5/10/infinite race distances
-- Formula Forge startup screen, Blender-authored dark garage with red lighting,
-  live rotating car previews, full race results, replay/home actions, and pause controls
-- 6-car racing pack with AI opponents
-- One original Blender-authored open-wheel Formula model with five selectable,
-  logo-free liveries: Marc, Fiery, MacL, RB, and Dash. Every livery shares the
-  same front and rear wings, connected exposed suspension, sidepods, open
-  cockpit, halo, diffuser, dimensions, hard points, and gameplay specification
-- One realistic-proportioned Blender-authored Standard Driver shared by every
-  car, with fitted overalls, gauntlet gloves, driving boots, HANS-style collar,
-  closed helmet, smoked visor, and the common animation rig
-- A Blender-rendered Formula Forge loading screen featuring all five cars in a
-  red-lit semicircle
-- A Blender-rendered graphite Formula garage used behind the pre-race flow,
-  with a menu-only Lato Heavy Italic face; race HUD styling remains unchanged
-- No powerups and no character super powers
-- Blender-authored circuit worlds with medium-gray tarmac, continuous track
-  limits, driveable curbs and runoff, collision-aligned safety walls, catch
-  fences, grounded grandstands and spectators, pit buildings, trees, palms,
-  rocks, sandy terrain, ocean, and start gantries
-- Suzuka's only centerline crossover is an open bridge with audited vertical
-  clearance; the other real circuits contain no false self-intersections
-- Meter-scaled GLB car and driver meshes with named `idle`, `accelerate`,
-  `brake`, `turn_left`, and `turn_right` animation clips
-- Runtime dust, brake lights, ground shadows, soft particles, body pitch/roll,
-  and airborne presentation; the procedural track, car, and driver renderers
-  remain as fallbacks when an authored GLB cannot be loaded
-- One fixed 80-degree broadcast T-cam mounted above and just behind the cockpit,
-  with restrained road vibration and no chase interpolation or camera switching
-- Momentum-preserving formula handling with a combined tire-grip budget,
-  speed-sensitive steering, aerodynamic downforce, brake/load transfer,
-  trail braking, high-speed understeer, stable braking zones, powered corner
-  exits, real gravity, grounded low-speed tire contact, landing compression,
-  visible-wall collision response, and stuck recovery
-- Eight-speed manual sequential transmission with paddle edge detection,
-  downshift over-rev protection, shift torque interruption, gear-dependent
-  engine braking, rolling resistance, and speed-squared aerodynamic drag
-- Formula-aware AI that plans an outside-apex-exit racing line, scans upcoming
-  curvature, brakes before turn-in, commits to corner exits, and does not drift
-- Procedural engine, drivetrain, road, wind, tire-scrub, and landing audio
-- Circuit-specific AI pace with persistent passing moves, safe following gaps,
-  modest player-pace adaptation, and deterministic pace/track-limit audits for
-  all five circuits
-- Metric lap-length, elevation, road-width, and grade-separation contracts for
-  Spa-Francorchamps, Suzuka, Silverstone, Monza, and Interlagos
-- Race and Time Trial sessions: full-grid finite races or solo infinite-lap
-  running with current and best lap timing
-- Grid countdown, ordered checkpoints, shortcut-resistant laps, wrong-way
-  detection, finish order, and checkpoint reset ghosting
-- Fullscreen Linux build with controller/gamepad support
+```sh
+make test
+```
 
-## Blender Asset Pipeline
+Useful focused checks include:
 
-The production flow is:
+```sh
+make smoke
+make asset-audit
+make race-audit
+make handling-audit
+make track-catalog-audit
+make ai-pace-audit
+make ai-pace-audit-spa
+make ai-pace-audit-suzuka
+make ai-pace-audit-silverstone
+make ai-pace-audit-interlagos
+```
 
-`Blender Python source -> .blend -> .glb -> C++ GlbAsset loader -> raylib`
+The Monza AI audit is calibrated around a 75-second player lap. Each other
+circuit has its own deterministic pace and track-limit contract.
 
-`uv` pins the Python and `bpy` versions. Editable sources, runtime exports,
-preview renders, and integration metadata live together under
-`assets_src/{vehicles,drivers,tracks}/<asset>/`.
+For model-driven playtesting, `make agent-play` starts a persistent JSONL
+harness that accepts menu/driving inputs, advances fixed simulation frames,
+returns telemetry, and writes requested observations under `build/`. See the
+[agent play protocol](docs/agent_play_protocol.md) for its command schema.
+
+Additional capture and audit targets are listed by `make -qp` and in the
+[Makefile](Makefile).
+
+## Blender asset pipeline
+
+Editable `.blend` sources, runtime `.glb` exports, previews, and metadata live
+together under `assets/`. Python 3.11 and `bpy` 5.0.1 are pinned by `uv`:
 
 ```sh
 uv sync --frozen
-
-# Manifest-driven pipeline smoke asset
-uv run --no-sync python tools/build_assets.py list
-uv run --no-sync python tools/build_assets.py build smoke_kart
-uv run --no-sync python tools/build_assets.py validate smoke_kart
-uv run --no-sync python tools/build_assets.py preview smoke_kart
-
-# Production cars and drivers
-uv run --no-sync python tools/blender/generators/generate_vehicles.py --asset all
-uv run --no-sync python tools/blender/generators/generate_drivers.py --asset all
-uv run --no-sync python tools/blender/generators/verify_assets.py
-
-# Production circuit worlds
-uv run --no-sync python tools/blender/tracks/generate_tracks.py --track all
-uv run --no-sync python tools/blender/tracks/verify_tracks.py --track all
+make assets-validate
 ```
 
-Formula car exports are 2.02-2.04 m wide, 4.915 m long, and 1.03-1.12 m
-high, with 3.17-3.20 m wheelbases and tire contact at Z=0. Seated driver exports stay near 0.64 m wide,
-0.65 m deep, and 1.07-1.16 m high, and attach at the common seat anchor. The verifiers check dimensions,
-required nodes and materials, mesh budgets, previews, skins, and exactly one of
-each gameplay animation; the C++ loader independently enforces runtime bounds.
-Blender authoring uses X width, Y length, Z height; raylib/glTF runtime bounds
-use X width, Y height, Z length. See `tools/ASSET_PIPELINE.md` and
-`tools/blender/tracks/README.md` for the full coordinate and track-alignment
-contracts.
-
-## Verification
+To regenerate all production assets:
 
 ```sh
-make self-test
-make race-audit
-make capture-playtest
-make perf-audit
-make smoke-3d
-make audio-audit-3d
-make vehicle-audit-3d
-make race-flow-audit-3d
-make capture-playtest-3d
-make handling-audit-3d
-make race-audit-3d
-make spa-audit-3d
-make track-catalog-audit-3d
-make time-trial-audit-3d
-make capture-spa-tour-3d
-make capture-suzuka-tour-3d
-make capture-map-gallery-3d
-make capture-time-trial-3d
-make spa-perf-audit-3d
-make collision-audit-3d
-make perf-audit-3d
-make agent-play-audit-3d
-./build/game/formula_forge_legacy --smoke-render
-SDL_VIDEODRIVER=offscreen ./build/game/formula_forge --asset-audit
+make assets
 ```
 
-Model-driven playtesting is available through the persistent JSONL harness:
+The pipeline uses meter-scale Blender scenes and verifies dimensions, required
+nodes and materials, animations, mesh budgets, circuit geometry, and
+clearances. Read [the asset pipeline guide](tools/README.md) and
+[the track guide](tools/blender/tracks/README.md) before changing generated
+assets.
 
-```sh
-make agent-play-3d
-```
+## Repository layout
 
-It accepts menu and driving inputs, advances deterministic fixed simulation
-frames, returns gameplay telemetry, and writes requested observations to
-`build/agent_play_frames`. See [the agent play protocol](docs/agent_play_protocol.md)
-for the command schema and recommended vision-agent loop.
+- `src/`: game, rendering, vehicle, race, audio, HUD, asset-loading, and track code
+- `assets/`: fonts plus editable and runtime vehicle, driver, UI, and circuit assets
+- `tools/blender/`: reproducible Blender generators and validators
+- `scripts/`: pinned SDL3 and raylib bootstrap scripts
+- `docs/`: engineering notes, demo material, and repository images
+- `third_party/`: pinned source archives, patches, and license texts
 
-`--self-test` runs a deterministic physics/AI smoke test without SDL.
-`--audio-audit` runs nine hardware-independent DSP checks for engine load,
-speed, tire scrub, landing response, output bounds, and determinism.
-`--vehicle-audit` runs deterministic unit checks for momentum, steering,
-manual shifting, engine braking, drag, surfaces, jumping, landing, and fixed-step consistency
-without opening a window. `--race-flow-audit` runs 20 checks for countdowns, checkpoints,
-wrong-way state, finish ordering, infinite races, and discontinuity handling.
-`--race-audit` runs a longer headless simulation and reports progress jumps,
-pack balance, contacts, track-limit excursions, and lap pace. `--ai-pace-audit`
-runs two deterministic Monza laps and validates the second, flying lap against
-the 75-second player benchmark. Track-specific variants are available as
-`--ai-pace-audit-spa`, `--ai-pace-audit-suzuka`,
-`--ai-pace-audit-silverstone`, and `--ai-pace-audit-interlagos`.
-`--capture-playtest` writes deterministic loading, selection, pause, result, and race frames to
-`build/playtest_frames` so visual and camera changes can be inspected without a
-working video device.
-`--perf-audit` renders 420 worst-case section frames without sleeping and fails
-if p95 frame time misses the 60fps budget.
-The smoke render verifies SDL startup and framebuffer presentation.
-`capture-playtest-3d` writes deterministic 3D frames to `build/playtest_frames`
-for visual inspection.
-`race-audit-3d` runs the 3D scripted player against live AI and validates lap
-pace, pack pressure, contact rate, overtakes, and every car's progress stability.
-`spa-audit-3d` verifies Spa-Francorchamps' lap length, sampled FIA elevation stations,
-overall relief, mesh length, road width, two-kart passing room, and non-local
-branch clearance without opening a window.
-`track-catalog-audit-3d` verifies lap length, travel direction, turn landmarks,
-elevation relief, road width, handedness, self-intersections, and Suzuka bridge separation.
-`--asset-audit` opens every production GLB through the C++ loader and requires
-all four cars, six drivers, and five tracks to pass dimension and animation
-contracts. `capture-map-gallery-3d` writes a selection-screen preview for every
-circuit.
-`time-trial-audit-3d` drives a complete solo Spa lap and verifies one-racer
-flow, infinite laps, best-lap timing, parked opponents, and no results transition.
-`capture-spa-tour-3d` and `capture-suzuka-tour-3d` write nine course views for
-visual inspection, including Suzuka's runtime bridge approach and crossover.
-`capture-time-trial-3d` writes the live and paused solo timing HUD states.
-`collision-audit-3d` runs deterministic rear-end, head-on, and side-swipe
-contact cases; it also proves that curbs and runoff remain driveable, contact
-begins at the visible barrier, and the rendered tires stay on the road datum at
-low speed. `handling-audit-3d` checks formula acceleration, a 305-330 km/h speed
-envelope in both track unit systems, progressive stopping distances, natural
-coast-down, quadratic aero loss, trail braking, fixed T-cam geometry, and
-flat-versus-braked behavior through named Monza and Suzuka corners. The
-[formula handling targets](docs/formula_handling_targets.md) map representative
-qualifying speeds and gears for all five real-world-inspired circuits,
-including a full-throttle eighth-gear regression for Suzuka's 130R.
-`perf-audit-3d` records 3D frame timings and fails if p95 misses the 60fps
-budget.
-`--diagnose-controller` prints both raylib and direct SDL controller readings,
-which helps with USB receivers that expose a partial or unusual mapping.
+## Contributing
 
-## Source Layout
+Contributions are welcome. Start with [CONTRIBUTING.md](CONTRIBUTING.md), and
+please run `make test` before submitting a change.
 
-- `src/formula_forge_legacy_main.cpp`: legacy process entry point only
-- `src/formula_forge_main.cpp`: primary 3D process entry point only
-- `src/arcade_vehicle.*`: deterministic arcade vehicle dynamics and unit audit
-- `src/arcade_audio.*`: procedural SDL3 vehicle soundscape and DSP audit
-- `src/arcade_race.*`: checkpoint race director and unit audit
-- `src/arcade_render.*`: GLES2 lighting, authored asset integration, and procedural fallbacks
-- `src/glb_asset.*`: RAII raylib GLB loader, dimension checks, and named animation sampling
-- `src/arcade_hud.*`: responsive loading, selection, race, countdown, pause, and results UI
-- `src/track_renderer.*`: textured, chunk-culled GPU road mesh
-- `src/core_math.hpp`: math, color, and geometry helpers
-- `src/renderer.hpp`: low-overhead software renderer and bitmap text
-- `src/formula_forge_legacy.cpp`: legacy SDL platform loop and software renderer
-- `src/formula_forge.cpp`: raylib 3D renderer, simulation, controller input,
-  capture harness, and 3D race loop
-- `src/formula_forge.hpp`: primary entry-point declaration
-- `src/track_layout.hpp`: Spa-Francorchamps centerline/elevation data
-- `src/track_catalog.*`: Suzuka, Silverstone, Monza, and Interlagos geometry contracts
-- `tools/build_assets.py`: manifest-driven Blender source/export/validation CLI
-- `tools/blender/generators/`: production vehicle, driver, UI-garage generators and verifier
-- `tools/blender/tracks/`: production circuit-world generator and verifier
-
-## Third-Party Code
-
-See `THIRD_PARTY_LICENSES.md` and `third_party/README.md`.
+Formula Forge is MIT licensed. Third-party code and fonts retain their own
+licenses; see [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md).

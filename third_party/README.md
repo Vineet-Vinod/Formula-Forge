@@ -1,7 +1,7 @@
 # Third-Party Dependencies
 
-The game vendors only source release archives that are needed to produce the
-Linux executable on this machine. Generated build trees stay under `build/`.
+The game vendors only the source release archives needed to produce the Linux
+executable. Generated dependency and game build trees stay under `build/`.
 
 ## Vendored Archives
 
@@ -12,7 +12,8 @@ Linux executable on this machine. Generated build trees stay under `build/`.
 - `libXext-1.3.6.tar.xz`
   - Source: `https://www.x.org/releases/individual/lib/libXext-1.3.6.tar.xz`
   - SHA-256: `edb59fa23994e405fdc5b400afdf5820ae6160b94f35e3dc3da4457a16e89753`
-  - Purpose: headers needed by SDL's X11 backend on this laptop.
+  - Purpose: headers needed to build SDL's X11 backend without a system
+    development package.
 - `raylib-6.0.tar.gz`
   - Source: `https://github.com/raysan5/raylib/archive/refs/tags/6.0.tar.gz`
   - SHA-256: `2b3ee1e2120c7a0796b33062c7e9a694dd8a8caa56a96319ac8c8ecf54a90d0b`
@@ -35,8 +36,9 @@ library against that SDL3 install, and installs it into
 
 - `patches/SDL3-3.4.10-x11-missing-extension.patch`
   - Removes SDL's dynamic lookup for the unused `XMissingExtension` Xlib symbol.
-  - Reason: this laptop's `libX11.so.6` does not export that symbol, so SDL's
-    dynamic X11 backend rejected Xwayland before connecting to `DISPLAY`.
+  - Reason: some `libX11.so.6` installations do not export that symbol, which
+    can make SDL's dynamic X11 backend reject Xwayland before connecting to
+    `DISPLAY`.
 
 ## Local Build Flags
 

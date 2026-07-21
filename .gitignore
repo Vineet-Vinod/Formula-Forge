@@ -1,4 +1,11 @@
 build/
+.cache/
+.idea/
+.vscode/
+.DS_Store
+compile_commands.json
+*.swp
+*.swo
 *.o
 *.d
 .venv/

@@ -650,14 +650,14 @@ struct ArcadeRender::Impl {
 
     void loadAuthoredAssets() {
         static constexpr std::array<const char*, 5> kCarPaths = {
-            "assets_src/vehicles/formula_marc/formula_marc.glb",
-            "assets_src/vehicles/formula_fiery/formula_fiery.glb",
-            "assets_src/vehicles/formula_macl/formula_macl.glb",
-            "assets_src/vehicles/formula_rb/formula_rb.glb",
-            "assets_src/vehicles/formula_dash/formula_dash.glb",
+            "assets/vehicles/formula_marc/formula_marc.glb",
+            "assets/vehicles/formula_fiery/formula_fiery.glb",
+            "assets/vehicles/formula_macl/formula_macl.glb",
+            "assets/vehicles/formula_rb/formula_rb.glb",
+            "assets/vehicles/formula_dash/formula_dash.glb",
         };
         static constexpr std::array<const char*, 1> kDriverPaths = {
-            "assets_src/drivers/standard_driver/standard_driver.glb",
+            "assets/drivers/standard_driver/standard_driver.glb",
         };
         struct TrackAssetSpec {
             const char* path;
@@ -667,15 +667,15 @@ struct ArcadeRender::Impl {
         // These scales and raw glTF bounds mirror each asset's checked-in
         // runtime_alignment and measured_bounds_gltf_y_up metadata.
         static constexpr std::array<TrackAssetSpec, 5> kTrackSpecs = {{
-            {"assets_src/tracks/spa/spa.glb", 1.445f,
+            {"assets/tracks/spa/spa.glb", 1.445f,
              {{3000.0f, 110.0f, 1990.0f}, {3120.0f, 118.0f, 2090.0f}}},
-            {"assets_src/tracks/suzuka/suzuka.glb", 1.445f,
+            {"assets/tracks/suzuka/suzuka.glb", 1.445f,
              {{2970.0f, 50.0f, 1710.0f}, {3090.0f, 57.0f, 1800.0f}}},
-            {"assets_src/tracks/silverstone/silverstone.glb", 1.445f,
+            {"assets/tracks/silverstone/silverstone.glb", 1.445f,
              {{2530.0f, 23.0f, 1960.0f}, {2650.0f, 27.0f, 2060.0f}}},
-            {"assets_src/tracks/monza/monza.glb", 1.445f,
+            {"assets/tracks/monza/monza.glb", 1.445f,
              {{3320.0f, 24.0f, 1850.0f}, {3460.0f, 30.0f, 1960.0f}}},
-            {"assets_src/tracks/interlagos/interlagos.glb", 1.445f,
+            {"assets/tracks/interlagos/interlagos.glb", 1.445f,
              {{1280.0f, 51.0f, 1750.0f}, {1360.0f, 57.0f, 1860.0f}}},
         }};
         formula_forge::assets::GlbLoadOptions carOptions;

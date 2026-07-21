@@ -1,4 +1,4 @@
-#include "formula_forge.hpp"
+#include "game.hpp"
 
 #include <algorithm>
 #include <array>
@@ -3354,7 +3354,7 @@ public:
         const bool referenceLap = result.validatedLapSeconds >= 45.0f && result.validatedLapSeconds <= 62.0f;
         const bool ok = shoulderControlled && groundClear && stable && challenging && competitiveField && cleanEnough && separated && referenceLap;
 
-        std::cout << "race-audit-3d player=" << result.playerScore << " top_ai=" << result.topAiScore << " tail_ai=" << result.tailAiScore
+        std::cout << "race-audit player=" << result.playerScore << " top_ai=" << result.topAiScore << " tail_ai=" << result.tailAiScore
                   << " spread=" << result.spread << " overtakes=" << result.overtakes << " contacts=" << result.contacts
                   << " progress_jumps=" << result.progressJumps << " player_pos=" << result.playerFinal << " best=" << result.playerBest
                   << " worst=" << result.playerWorst << " stable=" << stable << " challenging=" << challenging
@@ -3882,7 +3882,7 @@ public:
                       << r.name << "_impulse=" << r.maxContactImpulse << " "
                       << r.name << "_vehicle_telemetry=" << r.vehicleTelemetry << " ";
         };
-        std::cout << "collision-audit-3d ";
+        std::cout << "collision-audit ";
         print(rearEnd);
         print(headOn);
         print(sideSwipe);
@@ -4170,12 +4170,12 @@ private:
 
     void loadMenuTextures() {
         loadingScreenTexture_ = LoadTexture(
-            "assets_src/ui/formula_forge_loading/formula_forge_loading.png");
+            "assets/ui/formula_forge_loading/formula_forge_loading.png");
         if (IsTextureValid(loadingScreenTexture_)) {
             SetTextureFilter(loadingScreenTexture_, TEXTURE_FILTER_BILINEAR);
         }
         garageBackgroundTexture_ = LoadTexture(
-            "assets_src/ui/formula_garage/formula_garage_background.png");
+            "assets/ui/formula_garage/formula_garage_background.png");
         if (IsTextureValid(garageBackgroundTexture_)) {
             SetTextureFilter(garageBackgroundTexture_, TEXTURE_FILTER_BILINEAR);
         }
@@ -7364,7 +7364,7 @@ int runFormulaForge(int argc, char** argv) {
         const float p95 = percentile(0.95f);
         const float maxFrame = frameTimesMs.empty() ? 0.0f : frameTimesMs.back();
         const bool ok = p95 <= 19.2f && maxFrame <= 34.0f;
-        std::cout << "perf-audit-3d frames=" << frameTimesMs.size() << " p50_ms=" << p50 << " p95_ms=" << p95 << " max_ms=" << maxFrame
+        std::cout << "perf-audit frames=" << frameTimesMs.size() << " p50_ms=" << p50 << " p95_ms=" << p95 << " max_ms=" << maxFrame
                   << " ok=" << ok << "\n";
         return ok ? 0 : 1;
     }

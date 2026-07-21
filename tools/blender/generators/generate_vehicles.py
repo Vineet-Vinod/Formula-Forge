@@ -895,7 +895,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--asset", choices=["all", *VEHICLES], default="all")
     parser.add_argument("--output-root", type=Path,
-                        default=Path(__file__).resolve().parents[3] / "assets_src" / "vehicles")
+                        default=Path(__file__).resolve().parents[3] / "assets" / "vehicles")
     args = parser.parse_args()
     targets = VEHICLES if args.asset == "all" else [args.asset]
     for slug in targets:

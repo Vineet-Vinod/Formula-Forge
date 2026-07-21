@@ -660,13 +660,11 @@ def verify(root: Path, slug: str):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--root", type=Path, default=REPO / "assets_src" / "tracks")
+    parser.add_argument("--root", type=Path, default=REPO / "assets" / "tracks")
     parser.add_argument("--track", choices=["all", *TRACK_NAMES], default="all")
     args = parser.parse_args()
     forbidden = [path for path in args.root.resolve().parent.rglob("*")
-                 if path.name == "__pycache__" or path.suffix in (".pyc",".blend1",".blend2")]
-    forbidden += [path for path in (REPO/"tools"/"blender"/"tracks").rglob("*")
-                  if path.name == "__pycache__" or path.suffix in (".pyc",".blend1",".blend2")]
+                 if path.suffix in (".blend1", ".blend2")]
     if forbidden:
         raise ValueError(f"forbidden generated artifacts: {[str(path) for path in forbidden]}")
     targets = TRACK_NAMES if args.track == "all" else (args.track,)

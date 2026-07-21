@@ -80,7 +80,7 @@ def build_scene(project_root: Path, output_dir: Path) -> None:
              (0.075, 0.075, height), red_emission, bevel=0.025)
 
     for slug, location, yaw in CAR_LAYOUT:
-        import_glb(project_root / "assets_src" / "vehicles" / slug / f"{slug}.glb",
+        import_glb(project_root / "assets" / "vehicles" / slug / f"{slug}.glb",
                    f"LOADING_{slug}", location, yaw)
 
     # Cool front fill preserves every livery; saturated red rim lights deliver
@@ -153,7 +153,7 @@ def main() -> None:
     args = parser.parse_args()
     project_root = args.project_root.resolve()
     output_dir = (args.output_dir.resolve() if args.output_dir else
-                  project_root / "assets_src" / "ui" / "formula_forge_loading")
+                  project_root / "assets" / "ui" / "formula_forge_loading")
     build_scene(project_root, output_dir)
 
 

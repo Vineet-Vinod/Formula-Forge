@@ -24,26 +24,16 @@ endif()
 
 find_package(Threads REQUIRED)
 
-add_executable(formula_forge_legacy
-    src/formula_forge_legacy_main.cpp
-    src/formula_forge_legacy.cpp
-)
-
-target_compile_definitions(formula_forge_legacy PRIVATE SDL_MAIN_HANDLED)
-target_compile_options(formula_forge_legacy PRIVATE -Wall -Wextra -Wpedantic)
-target_include_directories(formula_forge_legacy PRIVATE "${SDL3_INCLUDE_DIR}")
-target_link_libraries(formula_forge_legacy PRIVATE "${SDL3_LIBRARY}" Threads::Threads dl m)
-
 add_executable(formula_forge
     src/agent_play_protocol.cpp
-    src/formula_forge_main.cpp
+    src/main.cpp
     src/arcade_audio.cpp
     src/arcade_hud.cpp
     src/arcade_race.cpp
     src/arcade_render.cpp
     src/arcade_vehicle.cpp
     src/glb_asset.cpp
-    src/formula_forge.cpp
+    src/game.cpp
     src/track_catalog.cpp
     src/track_renderer.cpp
 )
@@ -80,6 +70,5 @@ if(BUILD_TESTING)
 endif()
 
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
-    target_compile_options(formula_forge_legacy PRIVATE -O3)
     target_compile_options(formula_forge PRIVATE -O3)
 endif()

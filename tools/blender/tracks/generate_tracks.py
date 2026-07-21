@@ -20,7 +20,7 @@ from mathutils.kdtree import KDTree
 
 
 REPO = Path(__file__).resolve().parents[3]
-DEFAULT_OUTPUT = REPO / "assets_src" / "tracks"
+DEFAULT_OUTPUT = REPO / "assets" / "tracks"
 SAMPLES = 2048
 RUNOFF_TRANSITION_METERS = 4.0
 TERRAIN_REACH_METERS = 36.0
@@ -372,7 +372,7 @@ def smoothstep(value):
 
 
 def runtime_track_width(phase):
-    """Port trackWidthForPhase from formula_forge.cpp."""
+    """Port trackWidthForPhase from game.cpp."""
     phase %= 1.0
     zone_width = 216.0 if phase < 0.30 or phase >= 0.90 else (190.0 if phase < 0.60 else 202.0)
     for boundary, width_a, width_b in ((0.30,216.0,190.0),(0.60,190.0,202.0),(0.90,202.0,216.0)):
@@ -383,7 +383,7 @@ def runtime_track_width(phase):
 
 
 def spa_road_width(phase):
-    """Port spaRoadWidthMetersForPhase from formula_forge.cpp."""
+    """Port spaRoadWidthMetersForPhase from game.cpp."""
     normalized = max(0.0,min(1.0,(runtime_track_width(phase)-190.0)/26.0))
     return 14.0+2.0*normalized
 

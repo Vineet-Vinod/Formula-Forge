@@ -3,7 +3,7 @@
 The generator reads the authoritative centerline/elevation/width arrays from
 `src/track_layout.hpp` and `src/track_catalog.cpp`, then authors a Blender world
 in meters for each playable layout. Generated artifacts live under
-`assets_src/tracks/<slug>/`.
+`assets/tracks/<slug>/`.
 
 ```sh
 uv sync
