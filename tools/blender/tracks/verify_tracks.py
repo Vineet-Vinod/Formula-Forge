@@ -487,6 +487,21 @@ def verify(root: Path, slug: str):
             not embankment.get("nearest_section_grounding") or
             embankment.get("radial_step_m") != GROUND_RADIAL_STEP_METERS):
         raise ValueError(f"{slug}: terrain shoulder tessellation contract changed")
+    max_embankment_span = spec.get("max_embankment_longitudinal_span_m")
+    if grounding.get("max_embankment_longitudinal_span_asset_units") != max_embankment_span:
+        raise ValueError(f"{slug}: embankment span metadata is stale")
+    if max_embankment_span is not None:
+        if embankment.get("max_longitudinal_span_m") != max_embankment_span:
+            raise ValueError(f"{slug}: embankment span clipping contract is stale")
+        for polygon in embankment.data.polygons:
+            vertices = list(polygon.vertices)
+            longitudinal_span = max(
+                math.dist(embankment.data.vertices[vertices[0]].co,
+                          embankment.data.vertices[vertices[1]].co),
+                math.dist(embankment.data.vertices[vertices[2]].co,
+                          embankment.data.vertices[vertices[3]].co))
+            if longitudinal_span > max_embankment_span + tolerance:
+                raise ValueError(f"{slug}: grass embankment contains a {longitudinal_span:.3f}m span")
     if ("embankment_underlay_gap_asset_units" in grounding and
             embankment.get("underlay_gap_m") != EMBANKMENT_UNDERLAY_GAP_METERS):
         raise ValueError(f"{slug}: terrain underlay can z-fight with runoff surfaces")

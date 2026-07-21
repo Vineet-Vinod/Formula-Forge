@@ -217,7 +217,7 @@
     "centerline_samples": 2048,
     "mesh_objects": 23,
     "vertices": 292899,
-    "triangles": 408348,
+    "triangles": 407248,
     "materials": 31
   },
   "measured_bounds_blender": {
@@ -431,6 +431,7 @@
     "embankment_underlay_gap_asset_units": 0.04,
     "runoff_transition_asset_units": 4.0,
     "terrain_reach_asset_units": 36.0,
+    "max_embankment_longitudinal_span_asset_units": 6.0,
     "vegetation_setback_asset_units": 29.0,
     "vegetation_canopy_clearance_asset_units": 22.0,
     "outer_edge_follows_local_centerline": true,

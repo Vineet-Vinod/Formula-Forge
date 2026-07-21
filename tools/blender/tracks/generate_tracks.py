@@ -97,6 +97,7 @@ TRACKS = {
         "start_phase": 0.0,
         "vegetation_setback_m": 29.0,
         "vegetation_canopy_clearance_m": 22.0,
+        "max_embankment_longitudinal_span_m": 6.0,
         "cpp_simulation_units_per_asset_unit": 17.0,
         "coordinate_unit": "meter",
     },
@@ -139,6 +140,7 @@ TRACKS = {
         "start_phase": 0.0,
         "vegetation_setback_m": 29.0,
         "vegetation_canopy_clearance_m": 22.0,
+        "max_embankment_longitudinal_span_m": 6.0,
         "cpp_simulation_units_per_asset_unit": 17.0,
         "coordinate_unit": "meter",
     },
@@ -907,7 +909,8 @@ def make_starting_grid_slots(samples, half_widths, bank_angles, start_phase, tar
 
 
 def make_embankment(samples, half_widths, bank_angles, material, parent, projector,
-                    surface_offset, detail_scale=1.0, skip_indices=None):
+                    surface_offset, detail_scale=1.0, skip_indices=None,
+                    max_longitudinal_span=None):
     """Create sloped terrain shoulders from the road grade to the island datum."""
     verts, faces = [], []
     skip_indices = set(skip_indices or ())
@@ -941,12 +944,23 @@ def make_embankment(samples, half_widths, bank_angles, material, parent, project
                 a = side_start + index * row_width + band
                 b = side_start + next_index * row_width + band
                 face = (a, b, b + 1, a + 1)
+                # A fast normal rotation on the outside of a tight corner can
+                # stretch an offset-curve cell into a broad lawn sheet. Those
+                # cells hang across the driver's view even though their probe
+                # points still belong to the same circuit branch.
+                longitudinal_span = max(math.dist(verts[a], verts[b]),
+                                        math.dist(verts[a + 1], verts[b + 1]))
+                if (max_longitudinal_span is not None and
+                        longitudinal_span > max_longitudinal_span):
+                    continue
                 if projector.face_owned([verts[vertex] for vertex in face], index):
                     faces.append(face)
     obj = mesh_object("track_embankment", verts, faces, [material], parent=parent)
     obj["nearest_section_grounding"] = True
     obj["radial_step_m"] = GROUND_RADIAL_STEP_METERS
     obj["underlay_gap_m"] = EMBANKMENT_UNDERLAY_GAP_METERS
+    if max_longitudinal_span is not None:
+        obj["max_longitudinal_span_m"] = max_longitudinal_span
     return obj
 
 
@@ -1358,7 +1372,8 @@ def make_world(slug, spec):
         upper = crossing["upper_station"]
         bridge_skip = {(upper+offset) % SAMPLES for offset in range(-15,16)}
     make_embankment(center, half_widths, bank_angles, materials["grass"], terrain,
-                    ground_projector, surface_offset, detail_scale, bridge_skip)
+                    ground_projector, surface_offset, detail_scale, bridge_skip,
+                    spec.get("max_embankment_longitudinal_span_m"))
     make_track_runoff(center, half_widths, materials["shoulder"], circuit,
                       ground_projector, surface_offset)
     make_strip("track_surface", center, half_widths, surface_offset, materials["asphalt"],
@@ -1738,6 +1753,8 @@ def export_track(slug, spec, output_root):
             "embankment_underlay_gap_asset_units": EMBANKMENT_UNDERLAY_GAP_METERS,
             "runoff_transition_asset_units": RUNOFF_TRANSITION_METERS,
             "terrain_reach_asset_units": TERRAIN_REACH_METERS,
+            "max_embankment_longitudinal_span_asset_units":
+                spec.get("max_embankment_longitudinal_span_m"),
             "vegetation_setback_asset_units": info["vegetation_setback"],
             "vegetation_canopy_clearance_asset_units": info["vegetation_canopy_clearance"],
             "outer_edge_follows_local_centerline": True,
