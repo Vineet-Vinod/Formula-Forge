@@ -16,9 +16,6 @@ tarmac, continuous track-limit lines, bank-following curbs, profiled grass,
 gravel and asphalt runoff, concrete/Tecpro safety barriers, and catch fencing.
 Grounded combined meshes provide grandstands and spectators, pit facilities,
 marshal posts and vegetation while keeping the runtime draw-call count bounded.
-Interlagos and Silverstone also close exposed elevated shoulder boundaries down
-to the infield datum. These support faces keep clipped lawn meshes from reading
-as unsupported bridges beside nearby track sections.
 
 `verify_tracks.py` treats those presentation details as runtime contracts. It
 checks opaque material parity between BLEND and GLB, asphalt luminance,

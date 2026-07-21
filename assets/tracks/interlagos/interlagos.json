@@ -153,9 +153,9 @@
   },
   "runtime_geometry": {
     "centerline_samples": 2048,
-    "mesh_objects": 24,
-    "vertices": 358043,
-    "triangles": 440716,
+    "mesh_objects": 23,
+    "vertices": 341283,
+    "triangles": 432336,
     "materials": 31
   },
   "measured_bounds_blender": {
@@ -372,8 +372,6 @@
     "vegetation_setback_asset_units": 29.0,
     "vegetation_canopy_clearance_asset_units": 22.0,
     "outer_edge_follows_local_centerline": true,
-    "embankment_boundary_support": true,
-    "embankment_support_datum_asset_units": -0.4,
     "tolerance_asset_units": 0.002,
     "instances": [
       {
@@ -822,8 +820,7 @@
     "starting_grid_slots",
     "gravel_runoff_zones",
     "grass_runoff_zones",
-    "asphalt_runoff_zones",
-    "track_embankment_support"
+    "asphalt_runoff_zones"
   ],
   "source": "interlagos.blend",
   "export": "interlagos.glb",

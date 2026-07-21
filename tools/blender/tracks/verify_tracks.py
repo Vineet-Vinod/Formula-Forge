@@ -487,22 +487,6 @@ def verify(root: Path, slug: str):
             not embankment.get("nearest_section_grounding") or
             embankment.get("radial_step_m") != GROUND_RADIAL_STEP_METERS):
         raise ValueError(f"{slug}: terrain shoulder tessellation contract changed")
-    expects_embankment_support = bool(spec.get("support_embankment_boundaries"))
-    if bool(grounding.get("embankment_boundary_support")) != expects_embankment_support:
-        raise ValueError(f"{slug}: embankment boundary support metadata is stale")
-    if expects_embankment_support:
-        support = bpy.data.objects.get("track_embankment_support")
-        support_datum = grounding.get("embankment_support_datum_asset_units")
-        if (support is None or not support.get("closes_exposed_embankment_edges") or
-                support.get("support_datum_z") != support_datum or
-                support.get("supported_boundary_edges") != len(support.data.polygons) or
-                not support.data.polygons):
-            raise ValueError(f"{slug}: elevated grass embankment has unsupported boundaries")
-        if any(abs(support.data.vertices[index].co.z - support_datum) > tolerance
-               for polygon in support.data.polygons for index in polygon.vertices[2:]):
-            raise ValueError(f"{slug}: embankment support does not reach the infield datum")
-    elif "track_embankment_support" in bpy.data.objects:
-        raise ValueError(f"{slug}: unexpected embankment boundary support")
     if ("embankment_underlay_gap_asset_units" in grounding and
             embankment.get("underlay_gap_m") != EMBANKMENT_UNDERLAY_GAP_METERS):
         raise ValueError(f"{slug}: terrain underlay can z-fight with runoff surfaces")

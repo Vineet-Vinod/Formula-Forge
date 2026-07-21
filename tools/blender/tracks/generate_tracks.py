@@ -97,7 +97,6 @@ TRACKS = {
         "start_phase": 0.0,
         "vegetation_setback_m": 29.0,
         "vegetation_canopy_clearance_m": 22.0,
-        "support_embankment_boundaries": True,
         "cpp_simulation_units_per_asset_unit": 17.0,
         "coordinate_unit": "meter",
     },
@@ -140,7 +139,6 @@ TRACKS = {
         "start_phase": 0.0,
         "vegetation_setback_m": 29.0,
         "vegetation_canopy_clearance_m": 22.0,
-        "support_embankment_boundaries": True,
         "cpp_simulation_units_per_asset_unit": 17.0,
         "coordinate_unit": "meter",
     },
@@ -909,8 +907,7 @@ def make_starting_grid_slots(samples, half_widths, bank_angles, start_phase, tar
 
 
 def make_embankment(samples, half_widths, bank_angles, material, parent, projector,
-                    surface_offset, detail_scale=1.0, skip_indices=None,
-                    support_datum_z=None):
+                    surface_offset, detail_scale=1.0, skip_indices=None):
     """Create sloped terrain shoulders from the road grade to the island datum."""
     verts, faces = [], []
     skip_indices = set(skip_indices or ())
@@ -950,37 +947,7 @@ def make_embankment(samples, half_widths, bank_angles, material, parent, project
     obj["nearest_section_grounding"] = True
     obj["radial_step_m"] = GROUND_RADIAL_STEP_METERS
     obj["underlay_gap_m"] = EMBANKMENT_UNDERLAY_GAP_METERS
-    support = None
-    if support_datum_z is not None:
-        # Bisector clipping leaves open edges where an elevated shoulder meets
-        # the low infield. From the T-cam those unbacked grass sheets read as
-        # bridges. Close every exposed edge except the runoff seam down to the
-        # opaque infield datum so the shoulder has a visible earth face.
-        edge_uses = {}
-        for face in faces:
-            for edge_index, first in enumerate(face):
-                second = face[(edge_index + 1) % len(face)]
-                key = (min(first, second), max(first, second))
-                edge_uses[key] = edge_uses.get(key, 0) + 1
-        support_vertices, support_faces = [], []
-        for (first, second), uses in edge_uses.items():
-            if uses != 1 or (first % row_width == 0 and second % row_width == 0):
-                continue
-            top_first, top_second = verts[first], verts[second]
-            if max(top_first[2], top_second[2]) <= support_datum_z + 0.01:
-                continue
-            base = len(support_vertices)
-            support_vertices.extend((top_first, top_second,
-                                     (top_second[0], top_second[1], support_datum_z),
-                                     (top_first[0], top_first[1], support_datum_z)))
-            support_faces.append((base, base + 1, base + 2, base + 3))
-        support = mesh_object("track_embankment_support", support_vertices, support_faces,
-                              [material], parent=parent)
-        support["closes_exposed_embankment_edges"] = True
-        support["supported_boundary_edges"] = len(support_faces)
-        support["support_datum_z"] = support_datum_z
-        obj["boundary_support_object"] = support.name
-    return obj, support
+    return obj
 
 
 def find_crossover(samples):
@@ -1390,10 +1357,8 @@ def make_world(slug, spec):
     if crossing:
         upper = crossing["upper_station"]
         bridge_skip = {(upper+offset) % SAMPLES for offset in range(-15,16)}
-    _, embankment_support = make_embankment(
-        center, half_widths, bank_angles, materials["grass"], terrain,
-        ground_projector, surface_offset, detail_scale, bridge_skip,
-        infield_z if spec.get("support_embankment_boundaries") else None)
+    make_embankment(center, half_widths, bank_angles, materials["grass"], terrain,
+                    ground_projector, surface_offset, detail_scale, bridge_skip)
     make_track_runoff(center, half_widths, materials["shoulder"], circuit,
                       ground_projector, surface_offset)
     make_strip("track_surface", center, half_widths, surface_offset, materials["asphalt"],
@@ -1554,8 +1519,6 @@ def make_world(slug, spec):
                                     "verge": sand_z,
                                     "infield": infield_z},
         "grounded_instances": grounded_instances,
-        "embankment_support": (embankment_support.name if embankment_support else None),
-        "embankment_support_datum": (infield_z if embankment_support else None),
         "vegetation_setback": vegetation_setback,
         "vegetation_canopy_clearance": vegetation_clearance,
         "barrier_grounding": barrier_grounding,
@@ -1678,8 +1641,6 @@ def export_track(slug, spec, output_root):
     if info["bridge"]:
         material_roles["bridge"] = "bridge_concrete"
         required_nodes.append("suzuka_bridge_structure")
-    if info["embankment_support"]:
-        required_nodes.append(info["embankment_support"])
     metadata = {
         "schema_version": 1,
         "asset": slug,
@@ -1780,8 +1741,6 @@ def export_track(slug, spec, output_root):
             "vegetation_setback_asset_units": info["vegetation_setback"],
             "vegetation_canopy_clearance_asset_units": info["vegetation_canopy_clearance"],
             "outer_edge_follows_local_centerline": True,
-            "embankment_boundary_support": bool(info["embankment_support"]),
-            "embankment_support_datum_asset_units": info["embankment_support_datum"],
             "tolerance_asset_units": 0.002,
             "instances": info["grounded_instances"],
             "barrier_samples": len(info["barrier_grounding"]),
