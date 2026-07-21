@@ -1,7 +1,7 @@
 [project]
-name = "formula-buggy"
+name = "formula-forge"
 version = "0.1.0"
-description = "Reproducible Blender asset pipeline for Formula Buggy"
+description = "Reproducible Blender asset pipeline for Formula Forge"
 readme = "README.md"
 requires-python = ">=3.11,<3.12"
 dependencies = [

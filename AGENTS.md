@@ -1,4 +1,4 @@
-# Open Formula
+# Formula Forge
 
 This project is an open source formula racing game. The following parts of the game are complete and should not be altered:
 - Drivability
