@@ -258,8 +258,7 @@
     "opaque_layer_elevations_asset_units": {
       "outskirts": -5.0,
       "verge": -0.8,
-      "infield": -0.4,
-      "embankment_outer": -0.2
+      "infield": -0.4
     },
     "visual_replacement_scope": [
       "road",
@@ -360,6 +359,9 @@
   },
   "grounding_contract": {
     "terrain_function": "shoulder_ground_z",
+    "runoff_transition_asset_units": 4.0,
+    "terrain_reach_asset_units": 36.0,
+    "outer_edge_follows_local_centerline": true,
     "tolerance_asset_units": 0.002,
     "instances": [
       {
@@ -367,336 +369,336 @@
         "station": 10,
         "side": 1,
         "lateral": 24.830303,
-        "base_z": 18.311856
+        "base_z": 41.136466
       },
       {
         "kind": "vegetation",
         "station": 38,
         "side": -1,
         "lateral": 29.417879,
-        "base_z": 12.29919
+        "base_z": 43.282555
       },
       {
         "kind": "vegetation",
         "station": 67,
         "side": 1,
         "lateral": 26.319806,
-        "base_z": 15.869266
+        "base_z": 39.030522
       },
       {
         "kind": "vegetation",
         "station": 95,
         "side": -1,
         "lateral": 24.778119,
-        "base_z": 17.352962
+        "base_z": 36.128044
       },
       {
         "kind": "vegetation",
         "station": 124,
         "side": 1,
         "lateral": 27.924743,
-        "base_z": 11.1939
+        "base_z": 31.139266
       },
       {
         "kind": "vegetation",
         "station": 152,
         "side": -1,
         "lateral": 25.729932,
-        "base_z": 11.053651
+        "base_z": 25.885756
       },
       {
         "kind": "vegetation",
         "station": 181,
         "side": 1,
         "lateral": 20.073448,
-        "base_z": 12.699123
+        "base_z": 20.281831
       },
       {
         "kind": "vegetation",
         "station": 209,
         "side": -1,
         "lateral": 21.517624,
-        "base_z": 8.933896
+        "base_z": 16.005668
       },
       {
         "kind": "vegetation",
         "station": 238,
         "side": 1,
         "lateral": 29.452226,
-        "base_z": 2.657478
+        "base_z": 11.410746
       },
       {
         "kind": "vegetation",
         "station": 266,
         "side": -1,
         "lateral": 29.179302,
-        "base_z": 1.667416
+        "base_z": 7.191058
       },
       {
         "kind": "vegetation",
         "station": 294,
         "side": 1,
         "lateral": 28.97739,
-        "base_z": 0.895104
+        "base_z": 4.072897
       },
       {
         "kind": "vegetation",
         "station": 323,
         "side": -1,
         "lateral": 18.785098,
-        "base_z": 1.063169
+        "base_z": 1.896
       },
       {
         "kind": "vegetation",
         "station": 351,
         "side": 1,
         "lateral": 26.238887,
-        "base_z": -0.076635
+        "base_z": 0.150198
       },
       {
         "kind": "vegetation",
         "station": 380,
         "side": -1,
         "lateral": 18.487035,
-        "base_z": 0.567962
+        "base_z": 1.150486
       },
       {
         "kind": "vegetation",
         "station": 408,
         "side": 1,
         "lateral": 25.969628,
-        "base_z": 0.93546
+        "base_z": 2.888459
       },
       {
         "kind": "vegetation",
         "station": 437,
         "side": -1,
         "lateral": 18.883505,
-        "base_z": 2.823124
+        "base_z": 4.79111
       },
       {
         "kind": "vegetation",
         "station": 465,
         "side": 1,
         "lateral": 26.894872,
-        "base_z": 2.33388
+        "base_z": 7.665048
       },
       {
         "kind": "vegetation",
         "station": 494,
         "side": -1,
         "lateral": 21.766078,
-        "base_z": 4.558827
+        "base_z": 9.337864
       },
       {
         "kind": "vegetation",
         "station": 522,
         "side": 1,
         "lateral": 27.48326,
-        "base_z": 3.220228
+        "base_z": 11.574913
       },
       {
         "kind": "vegetation",
         "station": 550,
         "side": -1,
         "lateral": 18.525225,
-        "base_z": 7.025103
+        "base_z": 11.333595
       },
       {
         "kind": "vegetation",
         "station": 579,
         "side": 1,
         "lateral": 26.679696,
-        "base_z": 3.116017
+        "base_z": 10.391307
       },
       {
         "kind": "vegetation",
         "station": 607,
         "side": -1,
         "lateral": 19.163844,
-        "base_z": 5.621329
+        "base_z": 9.425656
       },
       {
         "kind": "vegetation",
         "station": 636,
         "side": 1,
         "lateral": 19.640574,
-        "base_z": 4.334686
+        "base_z": 7.596141
       },
       {
         "kind": "vegetation",
         "station": 664,
         "side": -1,
         "lateral": 25.361053,
-        "base_z": 2.804748
+        "base_z": 8.133691
       },
       {
         "kind": "vegetation",
         "station": 693,
         "side": 1,
         "lateral": 18.44009,
-        "base_z": 6.591174
+        "base_z": 10.475677
       },
       {
         "kind": "vegetation",
         "station": 721,
         "side": -1,
         "lateral": 21.55655,
-        "base_z": 6.752716
+        "base_z": 13.19621
       },
       {
         "kind": "vegetation",
         "station": 750,
         "side": 1,
         "lateral": 19.334241,
-        "base_z": 10.082347
+        "base_z": 16.723339
       },
       {
         "kind": "vegetation",
         "station": 778,
         "side": -1,
         "lateral": 21.840807,
-        "base_z": 10.56396
+        "base_z": 20.435055
       },
       {
         "kind": "vegetation",
         "station": 806,
         "side": 1,
         "lateral": 21.047918,
-        "base_z": 12.583416
+        "base_z": 23.079549
       },
       {
         "kind": "vegetation",
         "station": 835,
         "side": -1,
         "lateral": 21.727466,
-        "base_z": 14.792083
+        "base_z": 27.254885
       },
       {
         "kind": "vegetation",
         "station": 863,
         "side": 1,
         "lateral": 24.123321,
-        "base_z": 13.876835
+        "base_z": 30.288472
       },
       {
         "kind": "vegetation",
         "station": 892,
         "side": -1,
         "lateral": 20.112334,
-        "base_z": 22.507627
+        "base_z": 35.35196
       },
       {
         "kind": "vegetation",
         "station": 920,
         "side": 1,
         "lateral": 22.520369,
-        "base_z": 20.076003
+        "base_z": 36.622899
       },
       {
         "kind": "vegetation",
         "station": 949,
         "side": -1,
         "lateral": 20.910419,
-        "base_z": 24.235925
+        "base_z": 39.65427
       },
       {
         "kind": "vegetation",
         "station": 977,
         "side": 1,
         "lateral": 26.323445,
-        "base_z": 15.48421
+        "base_z": 39.493732
       },
       {
         "kind": "vegetation",
         "station": 1006,
         "side": -1,
         "lateral": 22.742415,
-        "base_z": 21.771167
+        "base_z": 40.990907
       },
       {
         "kind": "grandstand",
         "station": 81,
         "side": -1,
         "lateral": 23.210101,
-        "base_z": 20.439174
+        "base_z": 38.057402
       },
       {
         "kind": "grandstand",
         "station": 245,
         "side": 1,
         "lateral": 21.931388,
-        "base_z": 5.391795
+        "base_z": 10.329179
       },
       {
         "kind": "grandstand",
         "station": 440,
         "side": -1,
         "lateral": 21.260367,
-        "base_z": 2.523662
+        "base_z": 5.087445
       },
       {
         "kind": "grandstand",
         "station": 634,
         "side": 1,
         "lateral": 21.0,
-        "base_z": 3.987047
+        "base_z": 7.700636
       },
       {
         "kind": "grandstand",
         "station": 839,
         "side": -1,
         "lateral": 21.94495,
-        "base_z": 14.914969
+        "base_z": 27.788145
       },
       {
         "kind": "marshal",
         "station": 30,
         "side": -1,
         "lateral": 16.763,
-        "base_z": 33.171108
+        "base_z": 43.235586
       },
       {
         "kind": "marshal",
         "station": 143,
         "side": 1,
         "lateral": 17.111452,
-        "base_z": 21.119574
+        "base_z": 27.624208
       },
       {
         "kind": "marshal",
         "station": 317,
         "side": -1,
         "lateral": 15.674628,
-        "base_z": 1.633069
+        "base_z": 2.315113
       },
       {
         "kind": "marshal",
         "station": 501,
         "side": 1,
         "lateral": 15.062914,
-        "base_z": 7.881041
+        "base_z": 10.390842
       },
       {
         "kind": "marshal",
         "station": 716,
         "side": -1,
         "lateral": 15.166322,
-        "base_z": 9.486811
+        "base_z": 12.51979
       },
       {
         "kind": "marshal",
         "station": 931,
         "side": 1,
         "lateral": 16.917212,
-        "base_z": 28.559311
+        "base_z": 37.371321
       },
       {
         "kind": "pit",
         "station": 988,
         "side": 1,
         "lateral": 19.661501,
-        "base_z": 25.649271
+        "base_z": 39.579907
       }
     ],
     "barrier_samples": 2048,

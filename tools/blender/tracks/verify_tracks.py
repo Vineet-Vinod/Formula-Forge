@@ -13,9 +13,11 @@ sys.dont_write_bytecode = True
 
 import bpy
 
-from generate_tracks import (ASPHALT_MAX_LUMINANCE, ASPHALT_MIN_LUMINANCE, SAMPLES,
+from generate_tracks import (ASPHALT_MAX_LUMINANCE, ASPHALT_MIN_LUMINANCE,
+                             RUNOFF_TRANSITION_METERS, SAMPLES, TERRAIN_REACH_METERS,
                              TRACKS as TRACK_SPECS, cpp_pairs, dense_closed,
-                             active_zone, bank_height, find_crossover, length_closed,
+                             active_zone, bank_height, canonical_runoff_zones,
+                             cpp_runoff_zones, find_crossover, length_closed,
                              load_course_design, loop_pose, pair_digest,
                              resample_closed, sample_stations,
                              shoulder_ground_z, spa_road_width,
@@ -231,10 +233,18 @@ def verify(root: Path, slug: str):
     detail_scale = 1.0
     grounding = meta["grounding_contract"]
     tolerance = grounding["tolerance_asset_units"]
+    if (grounding["runoff_transition_asset_units"] != RUNOFF_TRANSITION_METERS or
+            grounding["terrain_reach_asset_units"] != TERRAIN_REACH_METERS or
+            not grounding["outer_edge_follows_local_centerline"]):
+        raise ValueError(f"{slug}: terrain height contract is stale")
     if grounding["barrier_samples"] != SAMPLES*2:
         raise ValueError(f"{slug}: barrier grounding sample count changed")
     max_barrier_ground_error = 0.0
     course_design = load_course_design(slug)
+    runtime_runoff = cpp_runoff_zones(REPO / spec["source_file"],
+                                      spec["runtime_runoff_profile"])
+    if canonical_runoff_zones(runtime_runoff) != canonical_runoff_zones(course_design["runoff_zones"]):
+        raise ValueError(f"{slug}: Blender and runtime runoff profiles differ")
     for side_index, side in enumerate((-1, 1)):
         side_start = side_index * SAMPLES * 4
         for index, point in enumerate(expected):
@@ -248,6 +258,23 @@ def verify(root: Path, slug: str):
             max_barrier_ground_error = max(max_barrier_ground_error, abs(actual_z-wanted_z))
     if max_barrier_ground_error > tolerance:
         raise ValueError(f"{slug}: safety barrier floats by {max_barrier_ground_error:.6f}")
+
+    embankment = bpy.data.objects["track_embankment"]
+    max_embankment_ground_error = 0.0
+    for side_index, side in enumerate((-1, 1)):
+        side_start = side_index * SAMPLES * 2
+        for index, point in enumerate(expected):
+            half_width = expected_widths[index] * 0.5
+            for vertex_offset, distance in ((0, half_width + RUNOFF_TRANSITION_METERS),
+                                            (1, half_width + TERRAIN_REACH_METERS)):
+                wanted_z = shoulder_ground_z(point[2], half_width, side * distance,
+                                             detail_scale, expected_banks[index])
+                actual_z = embankment.data.vertices[side_start + index*2 + vertex_offset].co.z
+                max_embankment_ground_error = max(max_embankment_ground_error,
+                                                   abs(actual_z - wanted_z))
+    if max_embankment_ground_error > tolerance:
+        raise ValueError(f"{slug}: terrain shoulder differs from contact plane by "
+                         f"{max_embankment_ground_error:.6f}")
 
     object_groups = {
         "vegetation": ("palm_groves", "park_trees", "coastal_rocks"),
@@ -343,7 +370,7 @@ def verify(root: Path, slug: str):
     if alignment["blender_to_gltf_matrix_row_major"] != [[1,0,0,0],[0,0,1,0],[0,-1,0,0],[0,0,0,1]]:
         raise ValueError(f"{slug}: Blender/glTF basis contract changed")
     layers = alignment["opaque_layer_elevations_asset_units"]
-    layer_values = [layers[name] for name in ("outskirts","verge","infield","embankment_outer")]
+    layer_values = [layers[name] for name in ("outskirts","verge","infield")]
     if not all(a < b for a,b in zip(layer_values,layer_values[1:])):
         raise ValueError(f"{slug}: opaque terrain layers are not strictly separated")
     for object_name,layer_name in (("terrain_outskirts","outskirts"),("terrain_verge","verge"),
@@ -361,7 +388,7 @@ def verify(root: Path, slug: str):
           f"surface={meta['measured_surface_centerline_asset_units']:7.1f} "
           f"meshes={geometry['mesh_objects']:2} verts={geometry['vertices']:5} "
           f"materials={geometry['materials']:2} align_error={max_error:.6f} width_error={max_width_error:.6f} "
-          f"ground_error={max(max_barrier_ground_error,max_prop_ground_error):.6f} "
+          f"ground_error={max(max_barrier_ground_error,max_prop_ground_error,max_embankment_ground_error):.6f} "
           f"tarmac_luma={luminance:.3f} "
           f"preview={paths['_preview.png'].stat().st_size//1024:4}KiB")
 

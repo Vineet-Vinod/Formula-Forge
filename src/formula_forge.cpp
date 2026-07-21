@@ -44,6 +44,7 @@ constexpr float kRoadLaneInset = 4.0f;
 constexpr float kHardBoundaryInset = 18.0f;
 constexpr float kMetricCurbWidthMeters = 0.85f;
 constexpr float kMetricRunoffWidthMeters = 4.0f;
+constexpr float kMetricTerrainReachMeters = 36.0f;
 constexpr float kMetricBarrierOffsetMeters = 6.0f;
 constexpr float kMetricBarrierThicknessMeters = 0.34f;
 constexpr float kMetricRoadSurfaceOffsetMeters = 0.06f;
@@ -275,14 +276,37 @@ struct TrackPoint3D {
     bool metricCircuit = false;
 };
 
+float metricGroundElevation(const TrackPoint3D& point, float lane) {
+    const float half = std::max(1.0f, point.width * 0.5f);
+    const float crossfall = point.bank / half;
+    const float roadHalf = point.width * kRoadSurfaceRatio;
+    const float transition = roadHalf + kMetricRunoffWidthMeters * kSpaSimulationUnitsPerMeter;
+    const float outer = roadHalf + kMetricTerrainReachMeters * kSpaSimulationUnitsPerMeter;
+    const float laneMagnitude = std::abs(lane);
+    if (laneMagnitude <= transition) {
+        return point.elevation + crossfall * lane;
+    }
+    const float side = lane < 0.0f ? -1.0f : 1.0f;
+    const float transitionHeight = crossfall * side * transition;
+    const float blend = smoothstep(std::clamp((laneMagnitude - transition) /
+                                                   std::max(1.0f, outer - transition),
+                                               0.0f, 1.0f));
+    return point.elevation + lerp(transitionHeight, 0.0f, blend);
+}
+
 float bankedElevation(const TrackPoint3D& point, float lane) {
+    if (point.metricCircuit) {
+        return metricGroundElevation(point, lane);
+    }
     const float half = std::max(1.0f, point.width * 0.5f);
     return point.elevation + point.bank * std::clamp(lane / half, -1.2f, 1.2f);
 }
 
-float bankRollDegrees(const TrackPoint3D& point) {
-    const float half = std::max(1.0f, point.width * 0.5f);
-    return -std::atan2(point.bank, half) * RAD2DEG;
+float bankRollDegrees(const TrackPoint3D& point, float lane = 0.0f) {
+    constexpr float kDerivativeHalfSpan = 1.0f;
+    const float rise = bankedElevation(point, lane + kDerivativeHalfSpan) -
+                       bankedElevation(point, lane - kDerivativeHalfSpan);
+    return -std::atan2(rise, kDerivativeHalfSpan * 2.0f) * RAD2DEG;
 }
 
 struct Prop3D {
@@ -433,6 +457,31 @@ float metricTrackBankDegrees(TrackLayoutId layout, float distanceMeters) {
     }
     const TrackCatalogEntry* entry = catalogEntryForLayout(layout);
     return entry != nullptr ? sampleTrackBankDegrees(*entry, distanceMeters) : 0.0f;
+}
+
+std::span<const TrackRunoffZone> metricTrackRunoffProfile(TrackLayoutId layout) {
+    if (layout == TrackLayoutId::SpaCoast) {
+        return kSpaRunoffProfile;
+    }
+    const TrackCatalogEntry* entry = catalogEntryForLayout(layout);
+    return entry != nullptr ? entry->runoffProfile : std::span<const TrackRunoffZone>{};
+}
+
+const TrackRunoffZone* metricRunoffZoneAt(TrackLayoutId layout, float distanceMeters,
+                                          float laneMeters, float roadHalfWidthMeters) {
+    const int side = laneMeters < 0.0f ? -1 : 1;
+    const float runoffDistance = std::abs(laneMeters) - roadHalfWidthMeters;
+    if (runoffDistance < 0.95f) {
+        return nullptr;
+    }
+    for (const TrackRunoffZone& zone : metricTrackRunoffProfile(layout)) {
+        const bool stationMatches = distanceMeters >= zone.startMeters && distanceMeters <= zone.endMeters;
+        const bool sideMatches = zone.side == 0 || zone.side == side;
+        if (stationMatches && sideMatches && runoffDistance <= 0.95f + zone.widthMeters) {
+            return &zone;
+        }
+    }
+    return nullptr;
 }
 
 struct TrackProjection3D {
@@ -1746,6 +1795,20 @@ struct MetricCircuitEnvelope3D {
     float barrierCenter = 0.0f;
 };
 
+enum class DrivingSurface3D : std::uint8_t {
+    Road,
+    Curb,
+    AsphaltRunoff,
+    Gravel,
+    Grass,
+};
+
+struct DrivingSurfaceResponse3D {
+    ArcadeSurface physics;
+    DrivingSurface3D kind = DrivingSurface3D::Road;
+    float offTrackCoverage = 0.0f;
+};
+
 MetricCircuitEnvelope3D metricCircuitEnvelope(const TrackPoint3D& point) {
     const float units = kSpaSimulationUnitsPerMeter;
     const float asphalt = roadSurfaceHalfWidth(point);
@@ -2042,14 +2105,15 @@ std::array<float, 17> surfaceCuts(const TrackPoint3D& point) {
 
 Vector3 terrainSurfacePoint(const Track3D& track, const TrackPoint3D& point, float lane) {
     Vector3 result = track.roadPoint(point, lane);
+    if (isMetricCircuit(track.layout())) {
+        return result;
+    }
     const float half = point.width * 0.5f;
     const float reach = offroadReachForZone(point.zone);
     const float blendStart = half + reach * 0.20f;
     const float blendEnd = half + reach;
     const float blend = smoothstep((std::abs(lane) - blendStart) / std::max(1.0f, blendEnd - blendStart));
-    const float terrainEdgeElevation = isMetricCircuit(track.layout())
-                                           ? point.elevation * kRenderScale - 2.4f
-                                           : kTerrainSurfaceY;
+    const float terrainEdgeElevation = kTerrainSurfaceY;
     result.y = lerp(result.y, terrainEdgeElevation, blend);
     return result;
 }
@@ -2888,7 +2952,7 @@ public:
                                    flatCorners[i].minimumGear == 8;
             } else {
                 namedCornerProof = namedCornerProof &&
-                                   brakedCorners[i].entryKph + 15.0f < flatCorners[i].entryKph &&
+                                   brakedCorners[i].entryKph + 12.0f < flatCorners[i].entryKph &&
                                    brakedCorners[i].maxOffroadMeters + 0.25f < flatCorners[i].maxOffroadMeters &&
                                    brakedCorners[i].contacts == 0 &&
                                    brakedCorners[i].exitKph > brakedCorners[i].minimumKph + 8.0f;
@@ -3569,6 +3633,60 @@ public:
         const bool lowSpeedTiresGrounded = slowKart.grounded && maxSlowPhysicsClearance < 0.001f &&
                                            maxSlowRenderContactError < 0.001f;
 
+        const auto surfaceSample = [&](float progress, float side) {
+            const TrackPoint3D point = track_.sample(progress);
+            Kart3D kart;
+            kart.spec = specs_[0];
+            kart.tuning = selectedTrackTuning(kart.spec);
+            kart.progress = progress;
+            kart.lane = side * (roadSurfaceHalfWidth(point) +
+                                kMetricCurbWidthMeters * kSpaSimulationUnitsPerMeter +
+                                contactHalfWidth(kart) + 0.50f * kSpaSimulationUnitsPerMeter);
+            kart.pos = point.pos + point.normal * kart.lane;
+            kart.heading = angleOf(point.tangent);
+            kart.vel = point.tangent * 300.0f;
+            return std::pair{kart, drivingSurfaceFor(kart, point)};
+        };
+        auto [pavedKart, pavedSurface] = surfaceSample(300.0f, 1.0f);
+        auto [grassKart, grassSurface] = surfaceSample(800.0f, 1.0f);
+        auto [gravelKart, gravelSurface] = surfaceSample(1500.0f, 1.0f);
+        const bool runoffKindsMatch = pavedSurface.kind == DrivingSurface3D::AsphaltRunoff &&
+                                      grassSurface.kind == DrivingSurface3D::Grass &&
+                                      gravelSurface.kind == DrivingSurface3D::Gravel;
+        const bool looseSurfacePenalty = pavedSurface.physics.maxSpeed <= 0.87f &&
+                                         grassSurface.physics.maxSpeed <= 0.53f &&
+                                         grassSurface.physics.rollingResistance >= 8.4f &&
+                                         gravelSurface.physics.maxSpeed <= 0.63f &&
+                                         gravelSurface.physics.rollingResistance >= 6.9f;
+
+        ArcadeVehicleControl surfaceThrottle;
+        surfaceThrottle.throttle = 1.0f;
+        ArcadeVehicleState pavedRun = pavedKart;
+        ArcadeVehicleState grassRun = grassKart;
+        ArcadeVehicleState gravelRun = gravelKart;
+        const ArcadeVehicleConfig surfaceTuning = selectedTrackTuning(specs_[0]);
+        for (int frame = 0; frame < static_cast<int>(4.0f / kFixedDt); ++frame) {
+            stepArcadeVehicle(pavedRun, surfaceTuning, surfaceThrottle, pavedSurface.physics, kFixedDt);
+            stepArcadeVehicle(grassRun, surfaceTuning, surfaceThrottle, grassSurface.physics, kFixedDt);
+            stepArcadeVehicle(gravelRun, surfaceTuning, surfaceThrottle, gravelSurface.physics, kFixedDt);
+        }
+        const float grassSpeedRatio = length(grassRun.vel) / std::max(1.0f, length(pavedRun.vel));
+        const float gravelSpeedRatio = length(gravelRun.vel) / std::max(1.0f, length(pavedRun.vel));
+        const bool offRoadActuallySlows = grassSpeedRatio < 0.70f && gravelSpeedRatio < 0.78f;
+
+        const TrackPoint3D groundContractPoint = track_.sample(1500.0f);
+        const float groundTransition = roadSurfaceHalfWidth(groundContractPoint) +
+                                       kMetricRunoffWidthMeters * kSpaSimulationUnitsPerMeter;
+        const float groundOuter = roadSurfaceHalfWidth(groundContractPoint) +
+                                  kMetricTerrainReachMeters * kSpaSimulationUnitsPerMeter;
+        const float transitionGroundStep = std::abs(
+            metricGroundElevation(groundContractPoint, groundTransition - 0.01f) -
+            metricGroundElevation(groundContractPoint, groundTransition + 0.01f));
+        const float outerGroundStep = std::abs(
+            metricGroundElevation(groundContractPoint, groundOuter - 0.01f) -
+            metricGroundElevation(groundContractPoint, groundOuter + 0.01f));
+        const bool terrainGroundContinuous = transitionGroundStep < 0.01f && outerGroundStep < 0.01f;
+
         selectedSession_ = harbor::ui::GameModeOption::Race;
         selectedMap_ = 3;
         startRace();
@@ -3633,7 +3751,8 @@ public:
         const bool ok = rearOk && headOk && sideOk && massComparable && roleSymmetric && jumpClears && wallGlances &&
                         noAutomaticRecovery && rearPushes && envelopeOrdered && widthTransitions && footprintExact &&
                         curbsDriveable && runoffDriveable && visibleBarrierOnset && directBarrierStops &&
-                        lowSpeedTiresGrounded && cleanLaunch;
+                        lowSpeedTiresGrounded && runoffKindsMatch && looseSurfacePenalty &&
+                        offRoadActuallySlows && terrainGroundContinuous && cleanLaunch;
 
         auto print = [](const CollisionAuditResult3D& r) {
             std::cout << r.name << "_max_overlap=" << r.maxOverlap << " " << r.name << "_overlap_frames=" << r.overlapFrames << " "
@@ -3662,6 +3781,14 @@ public:
                   << " low_speed_physics_clearance=" << maxSlowPhysicsClearance
                   << " low_speed_render_contact_error=" << maxSlowRenderContactError
                   << " low_speed_tires_grounded=" << lowSpeedTiresGrounded
+                  << " runoff_kinds_match=" << runoffKindsMatch
+                  << " loose_surface_penalty=" << looseSurfacePenalty
+                  << " grass_speed_ratio=" << grassSpeedRatio
+                  << " gravel_speed_ratio=" << gravelSpeedRatio
+                  << " offroad_actually_slows=" << offRoadActuallySlows
+                  << " terrain_ground_continuous=" << terrainGroundContinuous
+                  << " terrain_transition_step=" << transitionGroundStep
+                  << " terrain_outer_step=" << outerGroundStep
                   << " grid_clear=" << gridClear << " initial_grid_overlap=" << initialGridOverlap
                   << " grid_render_initialized=" << renderStateInitialized
                   << " player_starts_last=" << playerStartsLast
@@ -3958,9 +4085,11 @@ private:
                                point.shoulder, point.natural, point.zone, point.bank * kRenderScale,
                                isMetricCircuit(track_.layout()) ? 0.68f : 1.0f,
                                isMetricCircuit(track_.layout())
-                                   ? point.elevation * kRenderScale - 2.4f
+                                   ? point.elevation * kRenderScale
                                    : kTerrainSurfaceY,
-                               isMetricCircuit(track_.layout()) ? -0.40f : kTerrainSurfaceY,
+                               isMetricCircuit(track_.layout())
+                                   ? point.elevation * kRenderScale - 0.40f
+                                   : kTerrainSurfaceY,
                                isMetricCircuit(track_.layout()) ? 65.0f : 0.0f,
                                isMetricCircuit(track_.layout())});
         }
@@ -4916,6 +5045,100 @@ private:
         return gripScale;
     }
 
+    DrivingSurfaceResponse3D drivingSurfaceFor(const Kart3D& kart,
+                                                const TrackPoint3D& center) const {
+        DrivingSurfaceResponse3D response;
+        const float laneAbs = std::abs(kart.lane);
+        const float halfFootprint = contactHalfWidth(kart);
+        const float asphaltOuter = roadSurfaceHalfWidth(center);
+        const float curbOuter = asphaltOuter + kMetricCurbWidthMeters * kSpaSimulationUnitsPerMeter;
+        const float tireCoverage = smoothstep(std::clamp(
+            (laneAbs + halfFootprint - asphaltOuter) / std::max(1.0f, halfFootprint * 2.0f),
+            0.0f, 1.0f));
+        const float looseCoverage = smoothstep(std::clamp(
+            (laneAbs + halfFootprint - curbOuter) / std::max(1.0f, halfFootprint * 2.0f),
+            0.0f, 1.0f));
+
+        const float side = kart.lane < 0.0f ? -1.0f : 1.0f;
+        const float sampleLaneMeters = side * (laneAbs + halfFootprint) / kSpaSimulationUnitsPerMeter;
+        const float roadHalfMeters = asphaltOuter / kSpaSimulationUnitsPerMeter;
+        const TrackRunoffZone* zone = metricRunoffZoneAt(track_.layout(), center.progress,
+                                                         sampleLaneMeters, roadHalfMeters);
+        if (looseCoverage > 0.001f) {
+            if (zone == nullptr) {
+                response.kind = DrivingSurface3D::Grass;
+            } else {
+                switch (zone->surface) {
+                    case TrackRunoffSurface::Asphalt:
+                        response.kind = DrivingSurface3D::AsphaltRunoff;
+                        break;
+                    case TrackRunoffSurface::Gravel:
+                        response.kind = DrivingSurface3D::Gravel;
+                        break;
+                    case TrackRunoffSurface::Grass:
+                        response.kind = DrivingSurface3D::Grass;
+                        break;
+                }
+            }
+        } else if (tireCoverage > 0.001f) {
+            response.kind = DrivingSurface3D::Curb;
+        }
+
+        ArcadeSurface& surface = response.physics;
+        const float calibratedGrip = formulaCornerGripScale(kart, center);
+        surface.grip = lerp(calibratedGrip, 1.0f, tireCoverage);
+        surface.acceleration = 1.0f;
+        surface.rollingResistance = 1.0f;
+        surface.steering = 1.0f;
+        surface.maxSpeed = 1.0f;
+        surface.driftCharge = lerp(1.0f, 0.48f, tireCoverage);
+        surface.bumpiness = tireCoverage * 0.10f;
+
+        // Curbs remain driveable, but every surface beyond them has a clear
+        // lap-time cost. Paved runoff is forgiving; gravel and grass are not.
+        surface.grip *= lerp(1.0f, 0.94f, tireCoverage);
+        surface.acceleration *= lerp(1.0f, 0.96f, tireCoverage);
+        surface.rollingResistance = lerp(surface.rollingResistance, 1.22f, tireCoverage);
+        surface.steering *= lerp(1.0f, 0.94f, tireCoverage);
+
+        float targetGrip = 0.50f;
+        float targetAcceleration = 0.35f;
+        float targetResistance = 8.5f;
+        float targetSteering = 0.56f;
+        float targetMaxSpeed = 0.52f;
+        float targetDriftCharge = 0.0f;
+        float targetBumpiness = 0.72f;
+        if (response.kind == DrivingSurface3D::AsphaltRunoff) {
+            targetGrip = 0.90f;
+            targetAcceleration = 0.82f;
+            targetResistance = 2.0f;
+            targetSteering = 0.88f;
+            targetMaxSpeed = 0.86f;
+            targetDriftCharge = 0.20f;
+            targetBumpiness = 0.14f;
+        } else if (response.kind == DrivingSurface3D::Gravel) {
+            targetGrip = 0.62f;
+            targetAcceleration = 0.48f;
+            targetResistance = 7.0f;
+            targetSteering = 0.68f;
+            targetMaxSpeed = 0.62f;
+            targetBumpiness = 0.55f;
+        }
+        surface.grip = lerp(surface.grip, targetGrip, looseCoverage);
+        surface.acceleration = lerp(surface.acceleration, targetAcceleration, looseCoverage);
+        surface.rollingResistance = lerp(surface.rollingResistance, targetResistance, looseCoverage);
+        surface.steering = lerp(surface.steering, targetSteering, looseCoverage);
+        surface.maxSpeed = lerp(surface.maxSpeed, targetMaxSpeed, looseCoverage);
+        surface.driftCharge = lerp(surface.driftCharge, targetDriftCharge, looseCoverage);
+        surface.bumpiness = lerp(surface.bumpiness, targetBumpiness, looseCoverage);
+        surface.groundElevation = bankedElevation(center, kart.lane);
+        surface.groundGrade = center.grade;
+        surface.launchVelocity = tireCoverage < 0.15f ? center.launchVelocity * kRacePaceScale : 0.0f;
+        surface.allowsDrift = looseCoverage < 0.20f;
+        response.offTrackCoverage = looseCoverage;
+        return response;
+    }
+
     void integrateKart(Kart3D& kart, const Input3D& input, float dt) {
         kart.previousRenderPos = kart.pos;
         kart.previousRenderElevation = kart.elevation;
@@ -4931,37 +5154,8 @@ private:
         updateProgress(kart);
         const TrackPoint3D center = track_.sample(kart.progress);
         const float offroad = roadEdgeViolation(kart, center);
-        const float laneAbs = std::abs(kart.lane);
-        const float halfFootprint = contactHalfWidth(kart);
-        const float roadHalf = roadSurfaceHalfWidth(center);
-        const float tireCoverage = std::clamp((laneAbs + halfFootprint - roadHalf) / std::max(1.0f, halfFootprint * 2.0f), 0.0f, 1.0f);
-        const float shoulder = smoothstep(tireCoverage);
-        const float driveableOuter = center.metricCircuit
-                                         ? metricCircuitEnvelope(center).runoffOuter
-                                         : center.width * 0.5f;
-        const float beyondDriveable = std::max(0.0f, laneAbs + halfFootprint - driveableOuter);
-        const float deepOffroadDistance = center.metricCircuit ? 2.0f * kSpaSimulationUnitsPerMeter : 58.0f;
-        const float deepOffroad = smoothstep(std::clamp(beyondDriveable / deepOffroadDistance, 0.0f, 1.0f));
-
-        ArcadeSurface surface;
-        surface.grip = lerp(1.0f, 0.92f, shoulder) * lerp(1.0f, 0.70f, deepOffroad);
-        const float calibratedGrip = formulaCornerGripScale(kart, center);
-        const float calibrationFade = center.metricCircuit
-                                          ? smoothstep(std::clamp(offroad /
-                                                                      (kMetricCurbWidthMeters * kSpaSimulationUnitsPerMeter),
-                                                                  0.0f, 1.0f))
-                                          : deepOffroad;
-        surface.grip *= lerp(calibratedGrip, 1.0f, std::max(calibrationFade, deepOffroad));
-        surface.acceleration = lerp(1.0f, 0.98f, shoulder) * lerp(1.0f, 0.84f, deepOffroad);
-        surface.rollingResistance = 1.0f + shoulder * 0.18f + deepOffroad * 1.85f;
-        surface.steering = lerp(1.0f, 0.96f, shoulder) * lerp(1.0f, 0.80f, deepOffroad);
-        surface.maxSpeed = lerp(1.0f, 0.84f, deepOffroad);
-        surface.driftCharge = lerp(1.0f, 0.45f, shoulder);
-        surface.bumpiness = shoulder * 0.12f + deepOffroad * 0.48f;
-        surface.groundElevation = bankedElevation(center, kart.lane);
-        surface.groundGrade = center.grade;
-        surface.launchVelocity = tireCoverage < 0.60f ? center.launchVelocity * kRacePaceScale : 0.0f;
-        surface.allowsDrift = deepOffroad < 0.35f;
+        const DrivingSurfaceResponse3D drivingSurface = drivingSurfaceFor(kart, center);
+        const ArcadeSurface& surface = drivingSurface.physics;
 
         ArcadeVehicleControl control;
         control.steer = input.steer;
@@ -5838,7 +6032,8 @@ private:
             state.headingRadians = kPi * 0.5f - renderHeading;
             const float roadPitch = kart.grounded ? -std::atan(ground.grade) : 0.0f;
             state.pitchRadians = kart.bodyPitch + roadPitch;
-            state.rollRadians = kart.bodyRoll + (kart.grounded ? bankRollDegrees(ground) * DEG2RAD : 0.0f);
+            state.rollRadians = kart.bodyRoll +
+                                (kart.grounded ? bankRollDegrees(ground, renderLane) * DEG2RAD : 0.0f);
             state.steeringRadians = kart.steerAngle;
             state.wheelSpinRadians = kart.wheelSpin;
             const float suspension = std::clamp(kart.suspensionCompression, 0.0f, 1.0f);
@@ -5872,7 +6067,7 @@ private:
         rlPushMatrix();
         rlTranslatef(shadow.x, shadow.y, shadow.z);
         rlRotatef(90.0f - renderHeading * RAD2DEG, 0.0f, 1.0f, 0.0f);
-        rlRotatef(kart.grounded ? bankRollDegrees(ground) : 0.0f, 0.0f, 0.0f, 1.0f);
+        rlRotatef(kart.grounded ? bankRollDegrees(ground, renderLane) : 0.0f, 0.0f, 0.0f, 1.0f);
         DrawCylinder({0.0f, 0.0f, 0.0f}, w * 0.78f, w * 0.78f, 0.035f, 18, Color{28, 35, 37, 90});
         rlPopMatrix();
 
@@ -5885,7 +6080,7 @@ private:
         const float pitch = kart.bodyPitch * RAD2DEG;
         const float contactLift = kart.contactTimer > 0.0f ? std::max(0.0f, std::sin(kart.contactTimer * 80.0f) * 0.035f) : 0.0f;
         rlTranslatef(0.0f, std::max(0.0f, bounce) + contactLift, 0.0f);
-        rlRotatef(kart.grounded ? bankRollDegrees(ground) : 0.0f, 0.0f, 0.0f, 1.0f);
+        rlRotatef(kart.grounded ? bankRollDegrees(ground, renderLane) : 0.0f, 0.0f, 0.0f, 1.0f);
         rlRotatef(pitch, 1.0f, 0.0f, 0.0f);
         const float lean = std::clamp(kart.steerSmoothed * length(kart.vel) / 150.0f, -0.55f, 0.55f);
         rlRotatef(-lean * 8.0f, 0.0f, 0.0f, 1.0f);

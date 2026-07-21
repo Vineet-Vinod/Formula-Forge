@@ -668,11 +668,11 @@ struct ArcadeRender::Impl {
         // runtime_alignment and measured_bounds_gltf_y_up metadata.
         static constexpr std::array<TrackAssetSpec, 5> kTrackSpecs = {{
             {"assets_src/tracks/spa/spa.glb", 1.445f,
-             {{3000.0f, 104.0f, 1990.0f}, {3120.0f, 111.0f, 2090.0f}}},
+             {{3000.0f, 110.0f, 1990.0f}, {3120.0f, 118.0f, 2090.0f}}},
             {"assets_src/tracks/suzuka/suzuka.glb", 1.445f,
-             {{2970.0f, 42.0f, 1710.0f}, {3090.0f, 48.0f, 1800.0f}}},
+             {{2970.0f, 50.0f, 1710.0f}, {3090.0f, 57.0f, 1800.0f}}},
             {"assets_src/tracks/silverstone/silverstone.glb", 1.445f,
-             {{2530.0f, 18.0f, 1960.0f}, {2650.0f, 23.0f, 2060.0f}}},
+             {{2530.0f, 23.0f, 1960.0f}, {2650.0f, 27.0f, 2060.0f}}},
             {"assets_src/tracks/monza/monza.glb", 1.445f,
              {{3320.0f, 24.0f, 1850.0f}, {3460.0f, 30.0f, 1960.0f}}},
             {"assets_src/tracks/interlagos/interlagos.glb", 1.445f,

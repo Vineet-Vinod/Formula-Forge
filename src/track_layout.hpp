@@ -1,6 +1,7 @@
 #pragma once
 
 #include <array>
+#include <cstdint>
 
 struct TrackControlPoint {
     float x = 0.0f;
@@ -25,6 +26,21 @@ struct TrackElevationPoint {
 struct TrackBankPoint {
     float distanceMeters = 0.0f;
     float angleDegrees = 0.0f;
+};
+
+enum class TrackRunoffSurface : std::uint8_t {
+    Asphalt,
+    Gravel,
+    Grass,
+};
+
+// Side uses the driver's frame: -1 right, 0 both, +1 left.
+struct TrackRunoffZone {
+    float startMeters = 0.0f;
+    float endMeters = 0.0f;
+    std::int8_t side = 0;
+    TrackRunoffSurface surface = TrackRunoffSurface::Grass;
+    float widthMeters = 0.0f;
 };
 
 inline constexpr float kSpaTargetLength = 7004.0f;
@@ -117,4 +133,16 @@ inline constexpr std::array<TrackBankPoint, 25> kSpaBankProfile = {{
     {3980.0f, 0.0f},  {4280.0f, 1.8f},  {4470.0f, -1.8f}, {4740.0f, 1.5f},
     {5100.0f, 0.8f},  {5700.0f, -1.8f}, {6250.0f, 0.0f},  {6540.0f, 2.0f},
     {7004.0f, 0.0f},
+}};
+
+inline constexpr std::array<TrackRunoffZone, 9> kSpaRunoffProfile = {{
+    {120.0f, 360.0f, 1, TrackRunoffSurface::Gravel, 17.0f},
+    {560.0f, 1180.0f, 0, TrackRunoffSurface::Asphalt, 9.0f},
+    {2050.0f, 2450.0f, 0, TrackRunoffSurface::Gravel, 13.0f},
+    {2700.0f, 3060.0f, 1, TrackRunoffSurface::Gravel, 18.0f},
+    {3430.0f, 3880.0f, -1, TrackRunoffSurface::Gravel, 16.0f},
+    {4100.0f, 4600.0f, 0, TrackRunoffSurface::Gravel, 12.0f},
+    {4660.0f, 5260.0f, 1, TrackRunoffSurface::Grass, 10.0f},
+    {5530.0f, 6200.0f, -1, TrackRunoffSurface::Gravel, 13.0f},
+    {6370.0f, 6860.0f, 0, TrackRunoffSurface::Asphalt, 11.0f},
 }};

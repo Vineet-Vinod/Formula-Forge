@@ -21,6 +21,8 @@ from mathutils import Vector
 REPO = Path(__file__).resolve().parents[3]
 DEFAULT_OUTPUT = REPO / "assets_src" / "tracks"
 SAMPLES = 1024
+RUNOFF_TRANSITION_METERS = 4.0
+TERRAIN_REACH_METERS = 36.0
 
 TRACKS = {
     "spa": {
@@ -33,6 +35,7 @@ TRACKS = {
         "target_length": 7004.0,
         "elevation": "kSpaElevationProfile",
         "bank_profile": "kSpaBankProfile",
+        "runtime_runoff_profile": "kSpaRunoffProfile",
         "width": 13.0,
         "width_formula": "spaRoadWidthMetersForPhase",
         "turns": 19,
@@ -53,6 +56,7 @@ TRACKS = {
         "target_length": 5807.0,
         "elevation": "kSuzukaElevation",
         "bank_profile": "kSuzukaBank",
+        "runtime_runoff_profile": "kSuzukaRunoff",
         "width_profile": "kSuzukaWidth",
         "turns": 18,
         "clockwise": True,
@@ -79,6 +83,7 @@ TRACKS = {
         "target_length": 5891.0,
         "elevation": "kSilverstoneElevation",
         "bank_profile": "kSilverstoneBank",
+        "runtime_runoff_profile": "kSilverstoneRunoff",
         "width_profile": "kSilverstoneWidth",
         "turns": 18,
         "clockwise": True,
@@ -98,6 +103,7 @@ TRACKS = {
         "target_length": 5793.0,
         "elevation": "kMonzaElevation",
         "bank_profile": "kMonzaBank",
+        "runtime_runoff_profile": "kMonzaRunoff",
         "width_profile": "kMonzaWidth",
         "turns": 11,
         "clockwise": True,
@@ -118,6 +124,7 @@ TRACKS = {
         "elevation": "kInterlagosElevation",
         "width_profile": "kInterlagosWidth",
         "bank_profile": "kInterlagosBank",
+        "runtime_runoff_profile": "kInterlagosRunoff",
         "turns": 15,
         "clockwise": False,
         "palette": "hillside",
@@ -227,6 +234,31 @@ def cpp_pairs(path: Path, symbol: str):
     if not result:
         raise ValueError(f"No pairs parsed for {symbol} in {path}")
     return result
+
+
+def cpp_runoff_zones(path: Path, symbol: str):
+    text = path.read_text(encoding="utf-8")
+    start = text.index(symbol)
+    equal = text.index("=", start)
+    end = text.index("};", equal)
+    body = text[equal:end]
+    number = r"(-?\d+(?:\.\d+)?)f?"
+    pattern = (r"\{\s*" + number + r"\s*,\s*" + number + r"\s*,\s*(-?\d+)\s*,\s*"
+               r"TrackRunoffSurface::(Asphalt|Gravel|Grass)\s*,\s*" + number + r"\s*\}")
+    side_names = {-1: "right", 0: "both", 1: "left"}
+    result = []
+    for start_m, end_m, side, surface, width_m in re.findall(pattern, body):
+        result.append({"start_m": float(start_m), "end_m": float(end_m),
+                       "side": side_names[int(side)], "surface": surface.lower(),
+                       "width_m": float(width_m)})
+    if not result:
+        raise ValueError(f"No runoff zones parsed for {symbol} in {path}")
+    return result
+
+
+def canonical_runoff_zones(zones):
+    return [(float(zone["start_m"]), float(zone["end_m"]), zone["side"], zone["surface"],
+             float(zone["width_m"])) for zone in zones]
 
 
 def catmull(p0, p1, p2, p3, t):
@@ -400,18 +432,18 @@ def track_frame(samples, index):
 
 def shoulder_ground_z(point_z, half_width, lateral_distance, detail_scale,
                       bank_angle=0.0, runoff_width=4.0):
-    """Match make_embankment's shoulder grade at a lateral track offset."""
+    """Road-matched terrain height shared by runoff, scenery, barriers and physics."""
     signed_lateral = lateral_distance
     lateral_distance = abs(lateral_distance)
+    side = -1.0 if signed_lateral < 0.0 else 1.0
     inner_distance = half_width + runoff_width * detail_scale
-    outer_distance = half_width + 30.0 * detail_scale
-    inner_z = max(-0.15 * detail_scale,
-                  point_z + bank_height(math.copysign(inner_distance, signed_lateral), bank_angle) -
-                  0.12 * detail_scale)
-    outer_z = -0.20 * detail_scale
-    blend = max(0.0, min(1.0, (lateral_distance - inner_distance) /
-                              max(0.001, outer_distance - inner_distance)))
-    return inner_z + (outer_z - inner_z) * blend
+    outer_distance = half_width + TERRAIN_REACH_METERS * detail_scale
+    if lateral_distance <= inner_distance:
+        return point_z + bank_height(signed_lateral, bank_angle)
+    inner_z = point_z + bank_height(side * inner_distance, bank_angle)
+    blend = smoothstep((lateral_distance - inner_distance) /
+                       max(0.001, outer_distance - inner_distance))
+    return inner_z + (point_z - inner_z) * blend
 
 
 def make_track_limits(samples, half_widths, material, parent, detail_scale, surface_offset,
@@ -583,17 +615,21 @@ def make_surface_runoff_zones(samples, half_widths, bank_angles, zones, material
                 base = len(vertices)
                 vertices.extend((
                     (point[0] + normal[0] * signed[0], point[1] + normal[1] * signed[0],
-                     point[2] + surface_offset + 0.018 + bank_height(signed[0], bank_angles[index])),
+                     surface_offset + 0.018 + shoulder_ground_z(
+                         point[2], half_widths[index], signed[0], 1.0, bank_angles[index])),
                     (point[0] + normal[0] * signed[1], point[1] + normal[1] * signed[1],
-                     point[2] + surface_offset + 0.018 + bank_height(signed[1], bank_angles[index])),
+                     surface_offset + 0.018 + shoulder_ground_z(
+                         point[2], half_widths[index], signed[1], 1.0, bank_angles[index])),
                     (samples[nxt_index][0] + next_normal[0] * next_signed[1],
                      samples[nxt_index][1] + next_normal[1] * next_signed[1],
-                     samples[nxt_index][2] + surface_offset + 0.018 +
-                     bank_height(next_signed[1], bank_angles[nxt_index])),
+                     surface_offset + 0.018 + shoulder_ground_z(
+                         samples[nxt_index][2], half_widths[nxt_index], next_signed[1], 1.0,
+                         bank_angles[nxt_index])),
                     (samples[nxt_index][0] + next_normal[0] * next_signed[0],
                      samples[nxt_index][1] + next_normal[1] * next_signed[0],
-                     samples[nxt_index][2] + surface_offset + 0.018 +
-                     bank_height(next_signed[0], bank_angles[nxt_index])),
+                     surface_offset + 0.018 + shoulder_ground_z(
+                         samples[nxt_index][2], half_widths[nxt_index], next_signed[0], 1.0,
+                         bank_angles[nxt_index])),
                 ))
                 faces.append((base, base + 1, base + 2, base + 3))
         if faces:
@@ -670,11 +706,13 @@ def make_embankment(samples, half_widths, bank_angles, material, parent, detail_
             inv = 1.0/max(0.001, math.hypot(dx,dy))
             nx, ny = -dy*inv, dx*inv
             inner = side*(half_widths[i]+4.0*detail_scale)
-            outer = side*(half_widths[i]+30.0*detail_scale)
+            outer = side*(half_widths[i]+TERRAIN_REACH_METERS*detail_scale)
             inner_z = shoulder_ground_z(point[2], half_widths[i], inner, detail_scale,
                                          bank_angles[i])
+            outer_z = shoulder_ground_z(point[2], half_widths[i], outer, detail_scale,
+                                         bank_angles[i])
             verts.extend([(point[0]+nx*inner, point[1]+ny*inner, inner_z),
-                          (point[0]+nx*outer, point[1]+ny*outer, -0.20*detail_scale)])
+                          (point[0]+nx*outer, point[1]+ny*outer, outer_z)])
         for i in range(count):
             if i in skip_indices or (i+1) % count in skip_indices:
                 continue
@@ -945,6 +983,9 @@ def make_world(slug, spec):
     palette = PALETTES[spec["palette"]]
     course_design = load_course_design(slug)
     source = REPO / spec["source_file"]
+    runtime_runoff = cpp_runoff_zones(source, spec["runtime_runoff_profile"])
+    if canonical_runoff_zones(runtime_runoff) != canonical_runoff_zones(course_design["runoff_zones"]):
+        raise ValueError(f"{slug}: Blender and runtime runoff profiles differ")
     controls = cpp_pairs(source, spec["centerline"])
     scale = spec.get("source_scale", 1.0)
     runtime_mirror = -1.0 if spec.get("runtime_mirror_y") else 1.0
@@ -1197,8 +1238,7 @@ def make_world(slug, spec):
         "surface_offset": surface_offset,
         "opaque_layer_elevations": {"outskirts": -5.0*detail_scale,
                                     "verge": sand_z,
-                                    "infield": -0.40*detail_scale,
-                                    "embankment_outer": -0.20*detail_scale},
+                                    "infield": -0.40*detail_scale},
         "grounded_instances": grounded_instances,
         "barrier_grounding": barrier_grounding,
         "bridge": ({"lower_station": crossing["lower_station"],
@@ -1407,6 +1447,9 @@ def export_track(slug, spec, output_root):
         },
         "grounding_contract": {
             "terrain_function": "shoulder_ground_z",
+            "runoff_transition_asset_units": RUNOFF_TRANSITION_METERS,
+            "terrain_reach_asset_units": TERRAIN_REACH_METERS,
+            "outer_edge_follows_local_centerline": True,
             "tolerance_asset_units": 0.002,
             "instances": info["grounded_instances"],
             "barrier_samples": len(info["barrier_grounding"]),

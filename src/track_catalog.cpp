@@ -62,6 +62,17 @@ constexpr TrackBankPoint kSuzukaBank[] = {
     {5140.0f, 2.1f},  {5270.0f, -1.8f}, {5440.0f, 0.0f},  {5807.0f, 0.0f},
 };
 
+constexpr TrackRunoffZone kSuzukaRunoff[] = {
+    {420.0f, 790.0f, 1, TrackRunoffSurface::Gravel, 18.0f},
+    {760.0f, 1450.0f, 0, TrackRunoffSurface::Grass, 9.0f},
+    {1570.0f, 2070.0f, 1, TrackRunoffSurface::Gravel, 14.0f},
+    {2480.0f, 2850.0f, -1, TrackRunoffSurface::Gravel, 18.0f},
+    {3260.0f, 4010.0f, -1, TrackRunoffSurface::Gravel, 19.0f},
+    {4560.0f, 4940.0f, -1, TrackRunoffSurface::Gravel, 17.0f},
+    {5000.0f, 5360.0f, 0, TrackRunoffSurface::Asphalt, 12.0f},
+    {5370.0f, 5710.0f, -1, TrackRunoffSurface::Gravel, 11.0f},
+};
+
 // The Spoon-to-130R back straight is the bridge; the Degner-to-hairpin branch
 // passes beneath it. These stations match the sole plan-view intersection.
 constexpr TrackGradeSeparation kSuzukaCrossings[] = {{2315.7f, 4660.5f, 10.0f}};
@@ -119,6 +130,21 @@ constexpr TrackBankPoint kSilverstoneBank[] = {
     {5420.0f, 0.0f},  {5567.0f, 2.2f},  {5760.0f, 0.0f},  {5891.0f, 0.0f},
 };
 
+constexpr TrackRunoffZone kSilverstoneRunoff[] = {
+    {175.0f, 365.0f, 1, TrackRunoffSurface::Asphalt, 20.0f},
+    {625.0f, 825.0f, 1, TrackRunoffSurface::Asphalt, 24.0f},
+    {815.0f, 1020.0f, -1, TrackRunoffSurface::Asphalt, 20.0f},
+    {1740.0f, 1950.0f, -1, TrackRunoffSurface::Gravel, 18.0f},
+    {1950.0f, 2210.0f, 1, TrackRunoffSurface::Gravel, 16.0f},
+    {2830.0f, 3090.0f, 1, TrackRunoffSurface::Gravel, 24.0f},
+    {3340.0f, 3495.0f, -1, TrackRunoffSurface::Grass, 15.0f},
+    {3480.0f, 3650.0f, 1, TrackRunoffSurface::Gravel, 17.0f},
+    {3625.0f, 3810.0f, -1, TrackRunoffSurface::Grass, 14.0f},
+    {4800.0f, 5050.0f, 1, TrackRunoffSurface::Gravel, 25.0f},
+    {5240.0f, 5410.0f, -1, TrackRunoffSurface::Gravel, 18.0f},
+    {5450.0f, 5780.0f, 1, TrackRunoffSurface::Gravel, 20.0f},
+};
+
 constexpr TrackControlPoint kMonzaCenterline[] = {
     {54.576f, -241.388f}, {18.926f, -241.927f}, {-16.724f, -242.397f},
     {-52.375f, -242.832f}, {-88.026f, -243.263f}, {-118.985f, -235.531f},
@@ -170,6 +196,16 @@ constexpr TrackBankPoint kMonzaBank[] = {
     {3377.0f, -2.2f}, {3460.0f, 0.0f},  {3540.0f, 2.1f},  {3580.0f, 0.0f},
     {3621.0f, -2.2f}, {3770.0f, 0.0f},  {4430.0f, 0.0f},  {4669.0f, 2.8f},
     {5050.0f, 1.4f},  {5260.0f, 0.0f},  {5793.0f, 0.0f},
+};
+
+constexpr TrackRunoffZone kMonzaRunoff[] = {
+    {220.0f, 530.0f, 0, TrackRunoffSurface::Asphalt, 24.0f},
+    {720.0f, 1060.0f, 1, TrackRunoffSurface::Grass, 18.0f},
+    {1460.0f, 1750.0f, 0, TrackRunoffSurface::Gravel, 22.0f},
+    {1900.0f, 2160.0f, 1, TrackRunoffSurface::Gravel, 20.0f},
+    {2370.0f, 2660.0f, 1, TrackRunoffSurface::Gravel, 20.0f},
+    {3210.0f, 3740.0f, 0, TrackRunoffSurface::Gravel, 22.0f},
+    {4480.0f, 5080.0f, 1, TrackRunoffSurface::Gravel, 24.0f},
 };
 
 constexpr TrackControlPoint kInterlagosCenterline[] = {
@@ -230,6 +266,15 @@ constexpr TrackBankPoint kInterlagosBank[] = {
     {720.0f, -2.0f},  {1120.0f, 0.0f},  {1450.0f, 1.2f}, {1700.0f, 2.0f},
     {2150.0f, 2.4f},  {2500.0f, -2.0f}, {2870.0f, 2.2f}, {3250.0f, -2.4f},
     {3600.0f, -4.0f}, {4050.0f, -3.5f}, {4309.0f, -3.5f},
+};
+
+constexpr TrackRunoffZone kInterlagosRunoff[] = {
+    {250.0f, 700.0f, -1, TrackRunoffSurface::Asphalt, 18.0f},
+    {1120.0f, 1710.0f, 1, TrackRunoffSurface::Gravel, 14.0f},
+    {1710.0f, 2440.0f, 0, TrackRunoffSurface::Grass, 12.0f},
+    {2440.0f, 3150.0f, 0, TrackRunoffSurface::Grass, 10.0f},
+    {3150.0f, 3540.0f, -1, TrackRunoffSurface::Gravel, 13.0f},
+    {3540.0f, 4309.0f, 1, TrackRunoffSurface::Grass, 12.0f},
 };
 
 // Named race-order landmarks make a mirrored outline fail independently of
@@ -296,6 +341,7 @@ constexpr std::array<TrackCatalogEntry, 4> kCatalog = {{
      kSuzukaElevation,
      kSuzukaWidth,
      kSuzukaBank,
+     kSuzukaRunoff,
      kSuzukaCrossings},
     {CatalogCircuitId::Silverstone,
      "Silverstone",
@@ -312,6 +358,7 @@ constexpr std::array<TrackCatalogEntry, 4> kCatalog = {{
      kSilverstoneElevation,
      kSilverstoneWidth,
      kSilverstoneBank,
+     kSilverstoneRunoff,
      {}},
     {CatalogCircuitId::Monza,
      "Monza",
@@ -328,6 +375,7 @@ constexpr std::array<TrackCatalogEntry, 4> kCatalog = {{
      kMonzaElevation,
      kMonzaWidth,
      kMonzaBank,
+     kMonzaRunoff,
      {}},
     {CatalogCircuitId::Interlagos,
      "Interlagos",
@@ -344,6 +392,7 @@ constexpr std::array<TrackCatalogEntry, 4> kCatalog = {{
      kInterlagosElevation,
      kInterlagosWidth,
      kInterlagosBank,
+     kInterlagosRunoff,
      {}},
 }};
 

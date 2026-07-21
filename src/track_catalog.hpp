@@ -43,6 +43,7 @@ struct TrackCatalogEntry {
     std::span<const TrackElevationPoint> elevationProfile;
     std::span<const TrackWidthPoint> widthProfile;
     std::span<const TrackBankPoint> bankProfile;
+    std::span<const TrackRunoffZone> runoffProfile;
     std::span<const TrackGradeSeparation> gradeSeparations;
 };
 

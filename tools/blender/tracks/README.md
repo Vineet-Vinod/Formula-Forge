@@ -37,9 +37,11 @@ origin with zero yaw. Use the per-asset
 all meter-based circuits). The GLB centerline datum then maps to C++ world
 coordinates exactly; the visible asphalt is 0.06 meters above that datum. Spa
 reproduces its procedural 14-16 meter phase-based width.
-Opaque world layers are strictly separated rather than coplanar: outer terrain,
-verge, infield, embankment, runoff, and asphalt rise in that order. The exact
-numeric levels are recorded in `runtime_alignment.opaque_layer_elevations_asset_units`.
+Opaque world base layers are strictly separated rather than coplanar. The local
+embankment follows each centerline's elevation, carries crossfall through the
+first four metres of runoff, then eases back to the local centerline height by
+36 metres. This same height function grounds runoff, barriers, scenery, and the
+runtime vehicle contact plane.
 The kilometer-scale base layers do not overlap: infield is an inner triangle
 fan, with successively darker grass/ground rings beyond it. Rings use explicit
 shared-edge triangles. Do not convert
