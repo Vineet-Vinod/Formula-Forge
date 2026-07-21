@@ -417,22 +417,22 @@ std::array<Vector3, 8> bodyRing(const BodySection& section) {
              {-w, y + h * 0.25f, section.z}}};
 }
 
-Mesh makeBody(BuggyBodyStyle style) {
+Mesh makeBody(FormulaBodyStyle style) {
     std::array<BodySection, 6> sections{};
     switch (style) {
-        case BuggyBodyStyle::BeachBuggy:
+        case FormulaBodyStyle::Standard:
             sections = {{{1.00f, 0.50f, 0.18f, 0.35f}, {0.77f, 0.91f, 0.06f, 0.72f}, {0.35f, 1.00f, 0.02f, 0.87f},
                          {-0.20f, 0.98f, 0.03f, 0.82f}, {-0.72f, 0.89f, 0.11f, 0.70f}, {-1.00f, 0.65f, 0.20f, 0.47f}}};
             break;
-        case BuggyBodyStyle::Rally:
+        case FormulaBodyStyle::Rally:
             sections = {{{1.00f, 0.46f, 0.22f, 0.34f}, {0.74f, 0.88f, 0.08f, 0.64f}, {0.30f, 0.98f, 0.03f, 0.92f},
                          {-0.24f, 1.00f, 0.03f, 0.94f}, {-0.72f, 0.94f, 0.07f, 0.82f}, {-1.00f, 0.72f, 0.16f, 0.61f}}};
             break;
-        case BuggyBodyStyle::Speedster:
+        case FormulaBodyStyle::Speedster:
             sections = {{{1.00f, 0.38f, 0.22f, 0.25f}, {0.78f, 0.78f, 0.11f, 0.48f}, {0.35f, 0.98f, 0.03f, 0.64f},
                          {-0.24f, 1.00f, 0.03f, 0.65f}, {-0.76f, 0.91f, 0.12f, 0.56f}, {-1.00f, 0.58f, 0.24f, 0.38f}}};
             break;
-        case BuggyBodyStyle::Utility:
+        case FormulaBodyStyle::Utility:
             sections = {{{1.00f, 0.64f, 0.13f, 0.50f}, {0.76f, 0.94f, 0.02f, 0.84f}, {0.34f, 1.00f, 0.00f, 0.98f},
                          {-0.22f, 1.00f, 0.00f, 1.00f}, {-0.75f, 0.98f, 0.03f, 0.96f}, {-1.00f, 0.78f, 0.11f, 0.72f}}};
             break;
@@ -617,9 +617,9 @@ struct ArcadeRender::Impl {
     Mesh roof{};
     Mesh boatHull{};
     Mesh shadow{};
-    std::array<std::optional<formula_buggy::assets::GlbAsset>, 5> authoredCars{};
-    std::array<std::optional<formula_buggy::assets::GlbAsset>, 1> authoredDrivers{};
-    std::array<std::optional<formula_buggy::assets::GlbAsset>, 5> authoredTracks{};
+    std::array<std::optional<formula_forge::assets::GlbAsset>, 5> authoredCars{};
+    std::array<std::optional<formula_forge::assets::GlbAsset>, 1> authoredDrivers{};
+    std::array<std::optional<formula_forge::assets::GlbAsset>, 5> authoredTracks{};
 
     int sunDirectionLoc = -1;
     int sunColorLoc = -1;
@@ -658,7 +658,7 @@ struct ArcadeRender::Impl {
         struct TrackAssetSpec {
             const char* path;
             float worldScale;
-            formula_buggy::assets::DimensionLimits dimensions;
+            formula_forge::assets::DimensionLimits dimensions;
         };
         // These scales and raw glTF bounds mirror each asset's checked-in
         // runtime_alignment and measured_bounds_gltf_y_up metadata.
@@ -674,34 +674,34 @@ struct ArcadeRender::Impl {
             {"assets_src/tracks/interlagos/interlagos.glb", 1.445f,
              {{1280.0f, 51.0f, 1750.0f}, {1360.0f, 57.0f, 1860.0f}}},
         }};
-        formula_buggy::assets::GlbLoadOptions carOptions;
-        carOptions.dimensions = formula_buggy::assets::DimensionLimits{
+        formula_forge::assets::GlbLoadOptions carOptions;
+        carOptions.dimensions = formula_forge::assets::DimensionLimits{
             {1.90f, 0.90f, 4.70f}, {2.15f, 1.30f, 5.10f}};
-        formula_buggy::assets::GlbLoadOptions driverOptions;
-        driverOptions.dimensions = formula_buggy::assets::DimensionLimits{
+        formula_forge::assets::GlbLoadOptions driverOptions;
+        driverOptions.dimensions = formula_forge::assets::DimensionLimits{
             {0.45f, 0.80f, 0.45f}, {1.20f, 1.60f, 1.40f}};
         for (size_t i = 0; i < kCarPaths.size(); ++i) {
             std::string error;
-            authoredCars[i] = formula_buggy::assets::GlbAsset::load(kCarPaths[i], carOptions, &error);
+            authoredCars[i] = formula_forge::assets::GlbAsset::load(kCarPaths[i], carOptions, &error);
             if (!authoredCars[i] && FileExists(kCarPaths[i])) {
                 TraceLog(LOG_ERROR, "Authored car rejected: %s", error.c_str());
             }
         }
         for (size_t i = 0; i < kDriverPaths.size(); ++i) {
             std::string error;
-            authoredDrivers[i] = formula_buggy::assets::GlbAsset::load(kDriverPaths[i], driverOptions, &error);
+            authoredDrivers[i] = formula_forge::assets::GlbAsset::load(kDriverPaths[i], driverOptions, &error);
             if (!authoredDrivers[i] && FileExists(kDriverPaths[i])) {
                 TraceLog(LOG_ERROR, "Authored driver rejected: %s", error.c_str());
             }
         }
         for (size_t i = 0; i < kTrackSpecs.size(); ++i) {
             const TrackAssetSpec& spec = kTrackSpecs[i];
-            formula_buggy::assets::GlbLoadOptions options;
+            formula_forge::assets::GlbLoadOptions options;
             options.metersToWorld = spec.worldScale;
             options.dimensions = spec.dimensions;
             options.loadAnimations = false;
             std::string error;
-            authoredTracks[i] = formula_buggy::assets::GlbAsset::load(spec.path, options, &error);
+            authoredTracks[i] = formula_forge::assets::GlbAsset::load(spec.path, options, &error);
             if (!authoredTracks[i] && FileExists(spec.path)) {
                 TraceLog(LOG_ERROR, "Authored track rejected: %s", error.c_str());
             }
@@ -753,7 +753,7 @@ struct ArcadeRender::Impl {
         return result;
     }
 
-    void drawAuthoredModel(const formula_buggy::assets::GlbAsset& asset, Matrix transform, float gloss = 0.12f) {
+    void drawAuthoredModel(const formula_forge::assets::GlbAsset& asset, Matrix transform, float gloss = 0.12f) {
         setUniform(glossLoc, &gloss, SHADER_UNIFORM_FLOAT);
         const Model& model = asset.model();
         for (int meshIndex = 0; meshIndex < model.meshCount; ++meshIndex) {
@@ -774,7 +774,7 @@ struct ArcadeRender::Impl {
         return true;
     }
 
-    bool drawAuthoredBuggy(const BuggyVisualSpec& spec, const BuggyRenderState& state, Matrix root) {
+    bool drawAuthoredFormulaCar(const FormulaVisualSpec& spec, const FormulaRenderState& state, Matrix root) {
         const size_t carIndex = std::min(static_cast<size_t>(spec.style), authoredCars.size() - 1);
         auto& car = authoredCars[carIndex];
         auto& driver = authoredDrivers[spec.driver.variant % authoredDrivers.size()];
@@ -847,7 +847,7 @@ struct ArcadeRender::Impl {
         draw(spring, childTransform(local, parent), color, 0.42f);
     }
 
-    void drawDriver(const BuggyVisualSpec& spec, const BuggyRenderState& state, Matrix root, float bodyBase) {
+    void drawDriver(const FormulaVisualSpec& spec, const FormulaRenderState& state, Matrix root, float bodyBase) {
         const float w = spec.width;
         const float l = spec.length;
         const float h = spec.bodyHeight;
@@ -906,7 +906,7 @@ struct ArcadeRender::Impl {
         }
     }
 
-    void drawWheelAndSuspension(const BuggyVisualSpec& spec, const BuggyRenderState& state, Matrix root, int index,
+    void drawWheelAndSuspension(const FormulaVisualSpec& spec, const FormulaRenderState& state, Matrix root, int index,
                                 float bodyBase) {
         const bool front = index < 2;
         const bool left = (index & 1) == 0;
@@ -945,12 +945,12 @@ struct ArcadeRender::Impl {
                  shade(spec.trim, 1.42f), 0.68f, {0.0f, 0.0f, kPi * 0.5f});
     }
 
-    void drawStyleDetails(const BuggyVisualSpec& spec, Matrix root, float bodyBase) {
+    void drawStyleDetails(const FormulaVisualSpec& spec, Matrix root, float bodyBase) {
         const float w = spec.width;
         const float l = spec.length;
         const float h = spec.bodyHeight;
         switch (spec.style) {
-            case BuggyBodyStyle::BeachBuggy:
+            case FormulaBodyStyle::Standard:
                 drawRod(root, {-w * 0.38f, bodyBase + h * 0.72f, -l * 0.28f},
                         {-w * 0.35f, bodyBase + h * 2.14f, -l * 0.22f}, h * 0.055f, spec.trim, 0.40f);
                 drawRod(root, {w * 0.38f, bodyBase + h * 0.72f, -l * 0.28f},
@@ -962,7 +962,7 @@ struct ArcadeRender::Impl {
                 drawRod(root, {w * 0.35f, bodyBase + h * 2.14f, -l * 0.22f},
                         {w * 0.29f, bodyBase + h * 0.92f, l * 0.10f}, h * 0.047f, spec.trim, 0.36f);
                 break;
-            case BuggyBodyStyle::Rally:
+            case FormulaBodyStyle::Rally:
                 drawBox(root, {0.0f, bodyBase + h * 1.18f, -l * 0.12f}, {w * 0.77f, h * 0.65f, l * 0.40f},
                         shade(spec.body, 0.96f), 0.32f, {-0.04f, 0.0f, 0.0f});
                 drawBox(root, {0.0f, bodyBase + h * 1.26f, l * 0.10f}, {w * 0.62f, h * 0.43f, h * 0.055f}, spec.glass,
@@ -972,7 +972,7 @@ struct ArcadeRender::Impl {
                 drawPart(sphere, root, {w * 0.31f, bodyBase + h * 0.86f, l * 0.48f}, {h * 0.12f, h * 0.12f, h * 0.06f},
                          {255, 242, 196, 255}, 0.78f);
                 break;
-            case BuggyBodyStyle::Speedster:
+            case FormulaBodyStyle::Speedster:
                 drawBox(root, {0.0f, bodyBase + h * 1.18f, -l * 0.47f}, {w * 0.98f, h * 0.11f, l * 0.19f}, spec.accent,
                         0.42f);
                 drawRod(root, {-w * 0.39f, bodyBase + h * 0.69f, -l * 0.43f},
@@ -982,7 +982,7 @@ struct ArcadeRender::Impl {
                 drawBox(root, {0.0f, bodyBase + h * 0.65f, l * 0.49f}, {w * 0.50f, h * 0.16f, l * 0.12f}, spec.accent,
                         0.36f, {-0.10f, 0.0f, 0.0f});
                 break;
-            case BuggyBodyStyle::Utility:
+            case FormulaBodyStyle::Utility:
                 drawRod(root, {-w * 0.39f, bodyBase + h * 0.72f, l * 0.42f},
                         {-w * 0.46f, bodyBase + h * 0.47f, l * 0.60f}, h * 0.060f, spec.trim, 0.42f);
                 drawRod(root, {w * 0.39f, bodyBase + h * 0.72f, l * 0.42f},
@@ -995,7 +995,7 @@ struct ArcadeRender::Impl {
         }
     }
 
-    void drawVehicleSignals(const BuggyVisualSpec& spec, const BuggyRenderState& state, Matrix root, float bodyBase) {
+    void drawVehicleSignals(const FormulaVisualSpec& spec, const FormulaRenderState& state, Matrix root, float bodyBase) {
         const float w = spec.width;
         const float l = spec.length;
         const float h = spec.bodyHeight;
@@ -1022,7 +1022,7 @@ struct ArcadeRender::Impl {
         }
     }
 
-    void drawDust(const BuggyVisualSpec& spec, const BuggyRenderState& state, Matrix root, float bodyBase) {
+    void drawDust(const FormulaVisualSpec& spec, const FormulaRenderState& state, Matrix root, float bodyBase) {
         const float amount = clamp01(state.dustAmount) * (0.35f + 0.65f * clamp01(state.speedNormalized));
         if (amount < 0.015f) {
             return;
@@ -1041,7 +1041,7 @@ struct ArcadeRender::Impl {
         }
     }
 
-    void drawBuggy(const BuggyVisualSpec& spec, const BuggyRenderState& state) {
+    void drawFormulaCar(const FormulaVisualSpec& spec, const FormulaRenderState& state) {
         const float w = std::max(1.2f, spec.width);
         const float l = std::max(2.0f, spec.length);
         const float h = std::max(0.55f, spec.bodyHeight);
@@ -1066,7 +1066,7 @@ struct ArcadeRender::Impl {
         // Authored vehicles use a tire-contact origin. Applying the procedural
         // suspension root correction to them pushed all four tires below the
         // road at low speed, when compression approaches its resting value.
-        if (drawAuthoredBuggy(spec, state, authoredRoot)) {
+        if (drawAuthoredFormulaCar(spec, state, authoredRoot)) {
             drawDust(spec, state, authoredRoot, bodyBase);
             const float boost = clamp01(state.boostAmount);
             if (boost > 0.01f) {
@@ -1265,33 +1265,33 @@ struct ArcadeRender::Impl {
     }
 };
 
-BuggyVisualSpec MakeBuggyVisualSpec(BuggyBodyStyle style, Color body, Color accent) {
-    BuggyVisualSpec spec;
+FormulaVisualSpec MakeFormulaVisualSpec(FormulaBodyStyle style, Color body, Color accent) {
+    FormulaVisualSpec spec;
     spec.style = style;
     spec.body = body;
     spec.accent = accent;
     spec.rim = accent;
     switch (style) {
-        case BuggyBodyStyle::BeachBuggy:
+        case FormulaBodyStyle::Standard:
             spec.width = 2.45f;
             spec.length = 4.15f;
             spec.bodyHeight = 1.12f;
             spec.wheelRadius = 0.64f;
             break;
-        case BuggyBodyStyle::Rally:
+        case FormulaBodyStyle::Rally:
             spec.width = 2.32f;
             spec.length = 4.35f;
             spec.bodyHeight = 1.18f;
             spec.wheelRadius = 0.58f;
             break;
-        case BuggyBodyStyle::Speedster:
+        case FormulaBodyStyle::Speedster:
             spec.width = 2.25f;
             spec.length = 4.52f;
             spec.bodyHeight = 0.96f;
             spec.wheelRadius = 0.57f;
             spec.rideHeight = 0.20f;
             break;
-        case BuggyBodyStyle::Utility:
+        case FormulaBodyStyle::Utility:
             spec.width = 2.62f;
             spec.length = 4.02f;
             spec.bodyHeight = 1.28f;
@@ -1409,11 +1409,11 @@ bool ArcadeRender::initialize() {
 
     impl_->material = LoadMaterialDefault();
     impl_->material.shader = impl_->shader;
-    impl_->bodies[0] = makeBody(BuggyBodyStyle::BeachBuggy);
-    impl_->bodies[1] = makeBody(BuggyBodyStyle::Rally);
-    impl_->bodies[2] = makeBody(BuggyBodyStyle::Speedster);
-    impl_->bodies[3] = makeBody(BuggyBodyStyle::Utility);
-    impl_->bodies[4] = makeBody(BuggyBodyStyle::Speedster);
+    impl_->bodies[0] = makeBody(FormulaBodyStyle::Standard);
+    impl_->bodies[1] = makeBody(FormulaBodyStyle::Rally);
+    impl_->bodies[2] = makeBody(FormulaBodyStyle::Speedster);
+    impl_->bodies[3] = makeBody(FormulaBodyStyle::Utility);
+    impl_->bodies[4] = makeBody(FormulaBodyStyle::Speedster);
     impl_->box = makeUnitBox();
     impl_->cylinder = makeCylinder(14);
     impl_->cone = makeCone(14);
@@ -1505,9 +1505,9 @@ bool ArcadeRender::drawAuthoredTrack(std::size_t trackIndex) {
     return ready() && impl_->drawAuthoredTrack(trackIndex);
 }
 
-void ArcadeRender::drawBuggy(const BuggyVisualSpec& spec, const BuggyRenderState& state) {
+void ArcadeRender::drawFormulaCar(const FormulaVisualSpec& spec, const FormulaRenderState& state) {
     if (ready()) {
-        impl_->drawBuggy(spec, state);
+        impl_->drawFormulaCar(spec, state);
     }
 }
 

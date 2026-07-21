@@ -73,7 +73,7 @@ wheels = [
 ]
 
 [[package]]
-name = "formula-buggy"
+name = "formula-forge"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [

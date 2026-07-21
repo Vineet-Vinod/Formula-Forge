@@ -465,7 +465,7 @@ std::vector<KartSpec> makeCars() {
         {"MANGO MULE", rgb(246, 199, 62), rgb(30, 133, 76), rgb(110, 210, 222), 116.0f, 111.0f, 152.0f, 1.13f, 0.90f, 4, 1.24f, 1.18f, 0.84f},
         {"LAGOON GT", rgb(34, 184, 143), rgb(238, 73, 95), rgb(151, 232, 235), 129.0f, 90.0f, 139.0f, 1.00f, 1.05f, 5, 0.94f, 0.92f, 1.22f},
         {"TIKI RAIL", rgb(132, 78, 44), rgb(248, 125, 54), rgb(98, 196, 210), 121.0f, 98.0f, 146.0f, 1.05f, 1.02f, 6, 1.08f, 1.28f, 0.90f},
-        {"STORM BUGGY", rgb(116, 105, 175), rgb(255, 213, 65), rgb(101, 215, 229), 126.0f, 95.0f, 144.0f, 1.00f, 1.10f, 7, 1.02f, 0.96f, 1.08f},
+        {"STORM", rgb(116, 105, 175), rgb(255, 213, 65), rgb(101, 215, 229), 126.0f, 95.0f, 144.0f, 1.00f, 1.10f, 7, 1.02f, 0.96f, 1.08f},
     };
 }
 
@@ -1681,7 +1681,7 @@ private:
         r.fillRect(x + w / 8, y - h / 7, std::max(2, w / 9), std::max(2, h / 7), rgb(255, 238, 150));
     }
 
-    void drawPlayerBuggy(Renderer& r) {
+    void drawPlayerCar(Renderer& r) {
         const Kart& kart = karts_[0];
         const float speedN = std::clamp(length(kart.vel) / kart.spec.maxSpeed, 0.0f, 1.0f);
         const float pullback = smoothstep(speedN);
@@ -1826,7 +1826,7 @@ private:
         }
 
         drawParticles(r);
-        drawPlayerBuggy(r);
+        drawPlayerCar(r);
         renderHud(r, fps, hasController);
     }
 
@@ -1943,7 +1943,7 @@ private:
             r.fillRect(x, 328, 4, 34, rgb(88, 58, 43));
         }
         r.fillCircle(826, 76, 38, rgb(255, 220, 93));
-        r.drawText(52, 42, "SHARK HARBOR KARTS", 5, rgb(20, 45, 56));
+        r.drawText(52, 42, "FORMULA FORGE LEGACY", 5, rgb(20, 45, 56));
         r.drawText(56, 86, "ONE TRACK / INFINITE LAPS / NO POWERS", 2, rgb(20, 45, 56));
         for (int i = 0; i < static_cast<int>(cars_.size()); ++i) {
             drawGarageThumbnail(r, 136 + i * 92, 164, cars_[static_cast<size_t>(i)], i == selectedCar_);
@@ -2168,7 +2168,7 @@ bool perfAudit() {
 
 }  // namespace
 
-int runHarborKarts(int argc, char** argv) {
+int runFormulaForgeLegacy(int argc, char** argv) {
     Game game;
     if (hasArg(argc, argv, "--self-test")) {
         const bool ok = game.selfTest();
@@ -2196,13 +2196,13 @@ int runHarborKarts(int argc, char** argv) {
     const bool diagnoseController = hasArg(argc, argv, "--diagnose-controller");
     const bool windowed = hasArg(argc, argv, "--windowed") || smokeRender || diagnoseController;
 
-    SDL_SetAppMetadata("Formula Buggy", "0.3.0", "local.formula.buggy");
+    SDL_SetAppMetadata("Formula Forge", "0.3.0", "local.formula.forge");
     if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD | SDL_INIT_EVENTS)) {
         std::cerr << "SDL_Init failed: " << SDL_GetError() << "\n";
         return 1;
     }
 
-    SDL_Window* window = SDL_CreateWindow("Formula Buggy", 1280, 720, windowed ? SDL_WINDOW_RESIZABLE : SDL_WINDOW_FULLSCREEN);
+    SDL_Window* window = SDL_CreateWindow("Formula Forge", 1280, 720, windowed ? SDL_WINDOW_RESIZABLE : SDL_WINDOW_FULLSCREEN);
     if (!window) {
         std::cerr << "SDL_CreateWindow failed: " << SDL_GetError() << "\n";
         SDL_Quit();

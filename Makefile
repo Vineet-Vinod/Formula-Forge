@@ -1,9 +1,9 @@
 BUILD_DIR := build
 GAME_BUILD_DIR := $(BUILD_DIR)/game
-TARGET := $(GAME_BUILD_DIR)/harbor_karts
-TARGET_3D := $(GAME_BUILD_DIR)/harbor_karts_3d
-LEGACY_TARGET := $(BUILD_DIR)/harbor_karts
-LEGACY_TARGET_3D := $(BUILD_DIR)/harbor_karts_3d
+TARGET := $(GAME_BUILD_DIR)/formula_forge_legacy
+TARGET_3D := $(GAME_BUILD_DIR)/formula_forge
+LEGACY_TARGET := $(BUILD_DIR)/formula_forge_legacy
+LEGACY_TARGET_3D := $(BUILD_DIR)/formula_forge
 SDL_LIB := $(BUILD_DIR)/deps/install/lib/libSDL3.a
 RAYLIB_LIB := $(BUILD_DIR)/deps/raylib-install/lib/libraylib.a
 GAME_SOURCES := $(wildcard src/*.cpp src/*.hpp) CMakeLists.txt
@@ -42,10 +42,10 @@ $(TARGET) $(TARGET_3D) &: $(GAME_SOURCES) $(SDL_LIB) $(RAYLIB_LIB)
 	cmake --build $(GAME_BUILD_DIR) --parallel
 
 $(LEGACY_TARGET): $(TARGET)
-	ln -sf game/harbor_karts $@
+	ln -sf game/formula_forge_legacy $@
 
 $(LEGACY_TARGET_3D): $(TARGET_3D)
-	ln -sf game/harbor_karts_3d $@
+	ln -sf game/formula_forge $@
 
 run: run-3d
 

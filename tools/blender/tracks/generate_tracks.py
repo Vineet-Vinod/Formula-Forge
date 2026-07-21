@@ -1,4 +1,4 @@
-"""Build the five Formula Buggy coastal circuit world assets with bpy.
+"""Build the five Formula Forge coastal circuit world assets with bpy.
 
 Run from the repository root:
     uv run python tools/blender/tracks/generate_tracks.py --track all
@@ -287,7 +287,7 @@ def smoothstep(value):
 
 
 def runtime_track_width(phase):
-    """Port trackWidthForPhase from harbor_karts_3d.cpp."""
+    """Port trackWidthForPhase from formula_forge.cpp."""
     phase %= 1.0
     zone_width = 216.0 if phase < 0.30 or phase >= 0.90 else (190.0 if phase < 0.60 else 202.0)
     for boundary, width_a, width_b in ((0.30,216.0,190.0),(0.60,190.0,202.0),(0.90,202.0,216.0)):
@@ -298,7 +298,7 @@ def runtime_track_width(phase):
 
 
 def spa_road_width(phase):
-    """Port spaRoadWidthMetersForPhase from harbor_karts_3d.cpp."""
+    """Port spaRoadWidthMetersForPhase from formula_forge.cpp."""
     normalized = max(0.0,min(1.0,(runtime_track_width(phase)-190.0)/26.0))
     return 14.0+2.0*normalized
 
@@ -837,7 +837,7 @@ def make_world(slug, spec):
     }
 
     root = empty("map_root")
-    root["asset_id"] = f"formula_buggy.track.{slug}"
+    root["asset_id"] = f"formula_forge.track.{slug}"
     root["units"] = spec["coordinate_unit"]
     root["target_lap_length_m"] = target_length
     circuit = empty("circuit_root", root)

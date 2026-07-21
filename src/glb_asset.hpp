@@ -6,7 +6,7 @@
 
 #include <raylib.h>
 
-namespace formula_buggy::assets {
+namespace formula_forge::assets {
 
 struct DimensionLimits {
     // raylib/glTF axes: width X, height Y, length Z, all in meters.
@@ -59,4 +59,4 @@ private:
     bool loaded_ = false;
 };
 
-}  // namespace formula_buggy::assets
+}  // namespace formula_forge::assets

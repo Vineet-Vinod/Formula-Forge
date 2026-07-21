@@ -1,2 +1,1 @@
-"""Formula Buggy's Blender-authored asset pipeline."""
-
+"""Formula Forge's Blender-authored asset pipeline."""

@@ -1,4 +1,4 @@
-"""Validate generated Formula Buggy track artifacts and glTF scene contracts."""
+"""Validate generated Formula Forge track artifacts and glTF scene contracts."""
 
 from __future__ import annotations
 

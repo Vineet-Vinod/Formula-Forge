@@ -3,7 +3,7 @@
 Formula Forge is an original Linux/C++ arcade formula racer that combines
 open-wheel cars and circuit driving with a bright tropical setting.
 
-The primary build is `harbor_karts_3d`: vendored SDL3 input plus vendored
+The primary build is `formula_forge`: vendored SDL3 input plus vendored
 raylib on SDL/EGL/OpenGL ES 2. The game uses a fixed-step arcade vehicle model,
 checkpoint-validated races, custom GPU meshes, a stylized lighting/fog pass,
 procedural SDL3 vehicle audio, and a responsive HUD. The older SDL software
@@ -28,7 +28,7 @@ make
 The executable is:
 
 ```sh
-./build/game/harbor_karts_3d
+./build/game/formula_forge
 ```
 
 ## Run
@@ -40,9 +40,9 @@ make run
 `make run` launches the 3D game. It opens fullscreen by default. For debugging:
 
 ```sh
-./build/game/harbor_karts_3d --windowed
-./build/game/harbor_karts_3d --dev-keyboard --windowed
-./build/game/harbor_karts_3d --diagnose-controller --windowed
+./build/game/formula_forge --windowed
+./build/game/formula_forge --dev-keyboard --windowed
+./build/game/formula_forge --diagnose-controller --windowed
 ```
 
 ## Controls
@@ -186,8 +186,8 @@ make spa-perf-audit-3d
 make collision-audit-3d
 make perf-audit-3d
 make agent-play-audit-3d
-./build/game/harbor_karts --smoke-render --dev-keyboard
-SDL_VIDEODRIVER=offscreen ./build/game/harbor_karts_3d --asset-audit
+./build/game/formula_forge_legacy --smoke-render --dev-keyboard
+SDL_VIDEODRIVER=offscreen ./build/game/formula_forge --asset-audit
 ```
 
 Model-driven playtesting is available through the persistent JSONL harness:
@@ -251,8 +251,8 @@ which helps with USB receivers that expose a partial or unusual mapping.
 
 ## Source Layout
 
-- `src/main.cpp`: process entry point only
-- `src/main3d.cpp`: 3D process entry point only
+- `src/formula_forge_legacy_main.cpp`: legacy process entry point only
+- `src/formula_forge_main.cpp`: primary 3D process entry point only
 - `src/arcade_vehicle.*`: deterministic arcade vehicle dynamics and unit audit
 - `src/arcade_audio.*`: procedural SDL3 vehicle soundscape and DSP audit
 - `src/arcade_race.*`: checkpoint race director and unit audit
@@ -262,10 +262,10 @@ which helps with USB receivers that expose a partial or unusual mapping.
 - `src/track_renderer.*`: textured, chunk-culled GPU road mesh
 - `src/core_math.hpp`: math, color, and geometry helpers
 - `src/renderer.hpp`: low-overhead software renderer and bitmap text
-- `src/harbor_karts.cpp`: SDL platform loop, renderer, simulation, controller input
-- `src/harbor_karts_3d.cpp`: raylib 3D renderer, simulation, controller input,
+- `src/formula_forge_legacy.cpp`: legacy SDL platform loop and software renderer
+- `src/formula_forge.cpp`: raylib 3D renderer, simulation, controller input,
   capture harness, and 3D race loop
-- `src/harbor_karts_3d.hpp`: 3D entry-point declaration
+- `src/formula_forge.hpp`: primary entry-point declaration
 - `src/track_layout.hpp`: Spa Coast centerline/elevation data
 - `src/track_catalog.*`: Suzuka, Silverstone, Monza, and Interlagos geometry contracts
 - `tools/build_assets.py`: manifest-driven Blender source/export/validation CLI

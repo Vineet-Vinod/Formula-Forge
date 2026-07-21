@@ -1,4 +1,4 @@
-"""Fast structural verification for generated Formula Buggy vehicle assets."""
+"""Fast structural verification for generated Formula Forge vehicle assets."""
 
 from __future__ import annotations
 

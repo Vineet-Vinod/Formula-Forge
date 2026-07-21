@@ -253,7 +253,7 @@ def build_driver(slug: str):
                                  roughness=0.52),
     }
     driver_root = empty("driver_root")
-    driver_root["asset_id"] = f"formula_buggy.driver.{slug}"
+    driver_root["asset_id"] = f"formula_forge.driver.{slug}"
     driver_root["attach_to"] = "seat_anchor"
     root = empty("root", owner=driver_root)
     torso = empty("torso", (0, 0, 0.12), root)

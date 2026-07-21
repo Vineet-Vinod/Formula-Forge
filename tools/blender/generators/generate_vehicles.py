@@ -705,7 +705,7 @@ def build_vehicle(slug: str):
     spec = VEHICLES[slug]
     mats = common_materials(spec)
     root = empty("car_root")
-    root["asset_id"] = f"formula_buggy.vehicle.{slug}"
+    root["asset_id"] = f"formula_forge.vehicle.{slug}"
     root["units"] = "meters"
     root["vehicle_class"] = "formula"
     body = empty("body", owner=root)

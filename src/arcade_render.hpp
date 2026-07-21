@@ -9,8 +9,8 @@
 
 namespace arcade_render {
 
-enum class BuggyBodyStyle : std::uint8_t {
-    BeachBuggy,
+enum class FormulaBodyStyle : std::uint8_t {
+    Standard,
     Rally,
     Speedster,
     Utility,
@@ -57,8 +57,8 @@ struct DriverVisualSpec {
     std::uint8_t variant = 0;
 };
 
-struct BuggyVisualSpec {
-    BuggyBodyStyle style = BuggyBodyStyle::BeachBuggy;
+struct FormulaVisualSpec {
+    FormulaBodyStyle style = FormulaBodyStyle::Standard;
     Color body{225, 58, 52, 255};
     Color accent{255, 202, 61, 255};
     Color trim{38, 45, 49, 255};
@@ -73,7 +73,7 @@ struct BuggyVisualSpec {
     float rideHeight = 0.28f;
 };
 
-struct BuggyRenderState {
+struct FormulaRenderState {
     // World-space tire contact-plane origin. Forward is local +Z.
     Vector3 position{};
     Vector3 shadowPosition{};
@@ -112,7 +112,7 @@ struct TropicalPropState {
     float windPhase = 0.0f;
 };
 
-BuggyVisualSpec MakeBuggyVisualSpec(BuggyBodyStyle style, Color body, Color accent);
+FormulaVisualSpec MakeFormulaVisualSpec(FormulaBodyStyle style, Color body, Color accent);
 TropicalPropSpec MakeTropicalPropSpec(TropicalPropKind kind, std::uint32_t variant = 0);
 
 struct AuthoredAssetAuditResult {
@@ -151,7 +151,7 @@ public:
     // Draws one complete authored world layer. A false return means callers
     // must retain the procedural environment, road, and prop fallback.
     bool drawAuthoredTrack(std::size_t trackIndex);
-    void drawBuggy(const BuggyVisualSpec& spec, const BuggyRenderState& state);
+    void drawFormulaCar(const FormulaVisualSpec& spec, const FormulaRenderState& state);
     void drawTropicalProp(const TropicalPropSpec& spec, const TropicalPropState& state);
 
 private:

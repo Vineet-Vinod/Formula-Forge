@@ -6,7 +6,7 @@
 #include <filesystem>
 #include <utility>
 
-namespace formula_buggy::assets {
+namespace formula_forge::assets {
 namespace {
 
 constexpr float kAnimationFramesPerSecond = 60.0f;
@@ -213,4 +213,4 @@ void GlbAsset::release() {
     }
 }
 
-}  // namespace formula_buggy::assets
+}  // namespace formula_forge::assets

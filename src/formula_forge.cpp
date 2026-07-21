@@ -1,4 +1,4 @@
-#include "harbor_karts_3d.hpp"
+#include "formula_forge.hpp"
 
 #include <algorithm>
 #include <array>
@@ -1751,7 +1751,7 @@ float activeRendererWheelGroundClearance(const Kart3D& kart) {
         averageBottom += (0.48f - value) * travel;
     }
     averageBottom /= static_cast<float>(compression.size());
-    // The active renderer lowers the buggy root by this average wheel-bottom
+    // The active renderer lowers the Formula car root by this average wheel-bottom
     // offset while grounded, leaving the tire contact plane on the track.
     const float rendererRootCorrection = -averageBottom;
     return rendererRootCorrection + averageBottom;
@@ -5739,8 +5739,8 @@ private:
         const Vector3 vehicleSurface = toWorld(renderPos, renderElevation);
         const float roadSurfaceLift = authoredRoadSurfaceLift(track_.layout());
         if (renderer_.ready()) {
-            const auto style = static_cast<arcade_render::BuggyBodyStyle>(kart.spec.bodyStyle % 4);
-            arcade_render::BuggyVisualSpec spec = arcade_render::MakeBuggyVisualSpec(style, kart.spec.body, kart.spec.accent);
+            const auto style = static_cast<arcade_render::FormulaBodyStyle>(kart.spec.bodyStyle % 4);
+            arcade_render::FormulaVisualSpec spec = arcade_render::MakeFormulaVisualSpec(style, kart.spec.body, kart.spec.accent);
             spec.glass = kart.spec.glass;
             spec.width = kart.spec.width * kRenderScale * 0.88f;
             spec.length = kart.spec.length * kRenderScale * 1.02f;
@@ -5766,7 +5766,7 @@ private:
             spec.driver.headwearStyle = static_cast<arcade_render::DriverHeadwear>((hash >> 4) % 4u);
             spec.driver.variant = racerAssetVariant(kart.racer);
 
-            arcade_render::BuggyRenderState state;
+            arcade_render::FormulaRenderState state;
             state.position = lift(vehicleSurface, roadSurfaceLift);
             state.shadowPosition = lift(groundSurface, roadSurfaceLift + 0.005f);
             state.useGroundShadowPosition = true;
@@ -5794,7 +5794,7 @@ private:
             state.visualTime = raceTime_ + static_cast<float>(hash & 255u) * 0.013f;
             state.damageFlash = std::clamp(kart.contactTimer / 0.22f, 0.0f, 1.0f);
             state.driverLean = std::clamp(-kart.steerSmoothed - kart.slipAngle * 0.45f, -1.0f, 1.0f);
-            renderer_.drawBuggy(spec, state);
+            renderer_.drawFormulaCar(spec, state);
             (void)player;
             return;
         }
@@ -6404,7 +6404,7 @@ int runAgentPlaySession(Game3D& game, const std::filesystem::path& captureDirect
 
 }  // namespace
 
-int runHarborKarts3D(int argc, char** argv) {
+int runFormulaForge(int argc, char** argv) {
     if (hasArg(argc, argv, "--agent-play-audit")) {
         const bool ok = agent_play::runProtocolParserAudit();
         std::cout << "agent-play-protocol-audit commands=6 bounds=valid escaping=valid contact_schema=valid ok=" << ok << "\n";
@@ -6505,7 +6505,7 @@ int runHarborKarts3D(int argc, char** argv) {
         configFlags |= FLAG_VSYNC_HINT;
     }
     SetConfigFlags(configFlags);
-    InitWindow(1280, 720, "Formula Buggy");
+    InitWindow(1280, 720, "Formula Forge");
     SetExitKey(KEY_NULL);
     ChangeDirectory(launchDir.string().c_str());
     harbor::ui::InitializeUiFont("assets/fonts/NotoSansDisplay-Bold.ttf", 72);
@@ -6600,11 +6600,11 @@ int runHarborKarts3D(int argc, char** argv) {
             game.update(kFixedDt, game.scriptedInput(), true);
             ++framesDriven;
         }
-        game.render(60.0f, true, "../playtest_frames/formula_buggy_time_trial.png");
+        game.render(60.0f, true, "../playtest_frames/formula_forge_time_trial.png");
         Input3D pause;
         pause.start = true;
         game.update(kFixedDt, pause, true);
-        game.render(60.0f, true, "../playtest_frames/formula_buggy_time_trial_pause.png");
+        game.render(60.0f, true, "../playtest_frames/formula_forge_time_trial_pause.png");
         const float distance = game.playerRaceScoreForCapture() - startScore;
         cleanupRuntime();
         std::cout << "capture-time-trial frames=" << framesDriven
@@ -6630,7 +6630,7 @@ int runHarborKarts3D(int argc, char** argv) {
         for (int mapIndex = 0; mapIndex < static_cast<int>(kMaps.size()); ++mapIndex) {
             game.showMapSelectionForCapture(mapIndex);
             const std::filesystem::path path = std::filesystem::path("../playtest_frames") /
-                                               TextFormat("formula_buggy_map_%02d.png", mapIndex);
+                                               TextFormat("formula_forge_map_%02d.png", mapIndex);
             game.render(60.0f, true, path.string().c_str());
         }
         cleanupRuntime();
@@ -6648,9 +6648,9 @@ int runHarborKarts3D(int argc, char** argv) {
             game.setupSectionTour(kTourPhases[i], static_cast<int>(i));
             const std::filesystem::path path =
                 std::filesystem::path("../playtest_frames") /
-                TextFormat(captureSpaTour ? "formula_buggy_spa_tour_%02d.png"
-                                         : (captureSuzukaTour ? "formula_buggy_suzuka_tour_%02d.png"
-                                                              : "harbor_karts_3d_section_tour_%02d.png"),
+                TextFormat(captureSpaTour ? "formula_forge_spa_tour_%02d.png"
+                                         : (captureSuzukaTour ? "formula_forge_suzuka_tour_%02d.png"
+                                                              : "formula_forge_section_tour_%02d.png"),
                            static_cast<int>(i));
             game.render(60.0f, true, path.string().c_str());
         }
@@ -6677,7 +6677,7 @@ int runHarborKarts3D(int argc, char** argv) {
             distance = game.playerRaceScoreForCapture() - startScore;
             if (nextCapture < kLapMilestones.size() && distance >= lapLength * kLapMilestones[nextCapture]) {
                 const std::filesystem::path path = std::filesystem::path("../playtest_frames") /
-                                                   TextFormat("harbor_karts_3d_driven_lap_%02d.png",
+                                                   TextFormat("formula_forge_driven_lap_%02d.png",
                                                               static_cast<int>(nextCapture));
                 game.render(60.0f, true, path.string().c_str());
                 ++nextCapture;
@@ -6754,15 +6754,15 @@ int runHarborKarts3D(int argc, char** argv) {
         }
         std::string frameCapturePath;
         if (capturePlaytest) {
-            const char* captureName = frames == 20  ? "formula_buggy_loading.png"
-                                      : frames == 65  ? "formula_buggy_mode.png"
-                                      : frames == 110 ? "formula_buggy_driver.png"
-                                      : frames == 155 ? "formula_buggy_car.png"
-                                      : frames == 200 ? "formula_buggy_map.png"
-                                      : frames == 245 ? "formula_buggy_laps.png"
-                                      : frames == 335 ? "formula_buggy_race.png"
-                                      : frames == 380 ? "formula_buggy_pause.png"
-                                      : frames == 425 ? "formula_buggy_results.png"
+            const char* captureName = frames == 20  ? "formula_forge_loading.png"
+                                      : frames == 65  ? "formula_forge_mode.png"
+                                      : frames == 110 ? "formula_forge_driver.png"
+                                      : frames == 155 ? "formula_forge_car.png"
+                                      : frames == 200 ? "formula_forge_map.png"
+                                      : frames == 245 ? "formula_forge_laps.png"
+                                      : frames == 335 ? "formula_forge_race.png"
+                                      : frames == 380 ? "formula_forge_pause.png"
+                                      : frames == 425 ? "formula_forge_results.png"
                                                       : nullptr;
             if (captureName) {
                 frameCapturePath = (std::filesystem::path("../playtest_frames") / captureName).string();

@@ -1,4 +1,4 @@
-"""Shared deterministic Blender helpers for Formula Buggy authored assets."""
+"""Shared deterministic Blender helpers for Formula Forge authored assets."""
 
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ import bpy
 from mathutils import Vector
 
 
-ASSET_PROP = "formula_buggy_asset"
+ASSET_PROP = "formula_forge_asset"
 
 
 def reset_scene() -> None:

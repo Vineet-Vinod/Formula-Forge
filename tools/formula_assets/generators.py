@@ -52,9 +52,9 @@ def build_smoke_kart(runtime_collection) -> None:
 
     root = bpy.data.objects.new("FB_Root", None)
     runtime_collection.objects.link(root)
-    root["formula_buggy.units"] = "meters"
-    root["formula_buggy.forward"] = "+Y"
-    root["formula_buggy.up"] = "+Z"
+    root["formula_forge.units"] = "meters"
+    root["formula_forge.forward"] = "+Y"
+    root["formula_forge.up"] = "+Z"
 
     chassis = _cube(runtime_collection, "chassis", (0.0, 0.0, 0.48), (0.63, 1.02, 0.22), red, 0.16)
     nose = _cube(runtime_collection, "nose", (0.0, 0.83, 0.57), (0.42, 0.47, 0.18), cream, 0.12)
@@ -91,4 +91,3 @@ def build_smoke_kart(runtime_collection) -> None:
 GENERATORS: dict[str, Callable] = {
     "smoke_kart": build_smoke_kart,
 }
-

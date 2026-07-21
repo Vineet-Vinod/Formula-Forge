@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(FormulaBuggy LANGUAGES CXX)
+project(FormulaForge LANGUAGES CXX)
 
 include(CTest)
 
@@ -24,50 +24,50 @@ endif()
 
 find_package(Threads REQUIRED)
 
-add_executable(harbor_karts
-    src/main.cpp
-    src/harbor_karts.cpp
+add_executable(formula_forge_legacy
+    src/formula_forge_legacy_main.cpp
+    src/formula_forge_legacy.cpp
 )
 
-target_compile_definitions(harbor_karts PRIVATE SDL_MAIN_HANDLED)
-target_compile_options(harbor_karts PRIVATE -Wall -Wextra -Wpedantic)
-target_include_directories(harbor_karts PRIVATE "${SDL3_INCLUDE_DIR}")
-target_link_libraries(harbor_karts PRIVATE "${SDL3_LIBRARY}" Threads::Threads dl m)
+target_compile_definitions(formula_forge_legacy PRIVATE SDL_MAIN_HANDLED)
+target_compile_options(formula_forge_legacy PRIVATE -Wall -Wextra -Wpedantic)
+target_include_directories(formula_forge_legacy PRIVATE "${SDL3_INCLUDE_DIR}")
+target_link_libraries(formula_forge_legacy PRIVATE "${SDL3_LIBRARY}" Threads::Threads dl m)
 
-add_executable(harbor_karts_3d
+add_executable(formula_forge
     src/agent_play_protocol.cpp
-    src/main3d.cpp
+    src/formula_forge_main.cpp
     src/arcade_audio.cpp
     src/arcade_hud.cpp
     src/arcade_race.cpp
     src/arcade_render.cpp
     src/arcade_vehicle.cpp
     src/glb_asset.cpp
-    src/harbor_karts_3d.cpp
+    src/formula_forge.cpp
     src/track_catalog.cpp
     src/track_renderer.cpp
 )
 
-target_compile_definitions(harbor_karts_3d PRIVATE SDL_MAIN_HANDLED)
-target_compile_options(harbor_karts_3d PRIVATE -Wall -Wextra -Wpedantic)
-target_include_directories(harbor_karts_3d PRIVATE "${RAYLIB_INCLUDE_DIR}" "${SDL3_INCLUDE_DIR}")
-target_link_libraries(harbor_karts_3d PRIVATE "${RAYLIB_LIBRARY}" "${SDL3_LIBRARY}" Threads::Threads dl m)
+target_compile_definitions(formula_forge PRIVATE SDL_MAIN_HANDLED)
+target_compile_options(formula_forge PRIVATE -Wall -Wextra -Wpedantic)
+target_include_directories(formula_forge PRIVATE "${RAYLIB_INCLUDE_DIR}" "${SDL3_INCLUDE_DIR}")
+target_link_libraries(formula_forge PRIVATE "${RAYLIB_LIBRARY}" "${SDL3_LIBRARY}" Threads::Threads dl m)
 
 if(BUILD_TESTING)
-    add_test(NAME agent_play_protocol_audit COMMAND harbor_karts_3d --agent-play-audit)
-    add_test(NAME controller_input_audit COMMAND harbor_karts_3d --input-audit)
-    add_test(NAME arcade_audio_audit COMMAND harbor_karts_3d --audio-audit)
-    add_test(NAME arcade_vehicle_audit COMMAND harbor_karts_3d --vehicle-audit)
-    add_test(NAME arcade_race_flow_audit COMMAND harbor_karts_3d --race-flow-audit)
-    add_test(NAME track_gradient_audit COMMAND harbor_karts_3d --terrain-audit)
-    add_test(NAME ai_attacking_pace_audit COMMAND harbor_karts_3d --ai-pace-audit)
-    add_test(NAME handling_dynamics_audit COMMAND harbor_karts_3d --handling-audit)
-    add_test(NAME collision_dynamics_audit COMMAND harbor_karts_3d --collision-audit)
-    add_test(NAME spa_control_audit COMMAND harbor_karts_3d --spa-control-audit)
-    add_test(NAME spa_geometry_audit COMMAND harbor_karts_3d --spa-audit)
-    add_test(NAME track_catalog_audit COMMAND harbor_karts_3d --track-catalog-audit)
-    add_test(NAME time_trial_session_audit COMMAND harbor_karts_3d --time-trial-audit --windowed)
-    add_test(NAME authored_asset_audit COMMAND harbor_karts_3d --asset-audit)
+    add_test(NAME agent_play_protocol_audit COMMAND formula_forge --agent-play-audit)
+    add_test(NAME controller_input_audit COMMAND formula_forge --input-audit)
+    add_test(NAME arcade_audio_audit COMMAND formula_forge --audio-audit)
+    add_test(NAME arcade_vehicle_audit COMMAND formula_forge --vehicle-audit)
+    add_test(NAME arcade_race_flow_audit COMMAND formula_forge --race-flow-audit)
+    add_test(NAME track_gradient_audit COMMAND formula_forge --terrain-audit)
+    add_test(NAME ai_attacking_pace_audit COMMAND formula_forge --ai-pace-audit)
+    add_test(NAME handling_dynamics_audit COMMAND formula_forge --handling-audit)
+    add_test(NAME collision_dynamics_audit COMMAND formula_forge --collision-audit)
+    add_test(NAME spa_control_audit COMMAND formula_forge --spa-control-audit)
+    add_test(NAME spa_geometry_audit COMMAND formula_forge --spa-audit)
+    add_test(NAME track_catalog_audit COMMAND formula_forge --track-catalog-audit)
+    add_test(NAME time_trial_session_audit COMMAND formula_forge --time-trial-audit --windowed)
+    add_test(NAME authored_asset_audit COMMAND formula_forge --asset-audit)
     set_tests_properties(authored_asset_audit PROPERTIES
         WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
         ENVIRONMENT "SDL_VIDEODRIVER=offscreen"
@@ -75,6 +75,6 @@ if(BUILD_TESTING)
 endif()
 
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
-    target_compile_options(harbor_karts PRIVATE -O3)
-    target_compile_options(harbor_karts_3d PRIVATE -O3)
+    target_compile_options(formula_forge_legacy PRIVATE -O3)
+    target_compile_options(formula_forge PRIVATE -O3)
 endif()

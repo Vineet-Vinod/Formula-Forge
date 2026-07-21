@@ -1,6 +1,6 @@
 # Agent Play Protocol
 
-`harbor_karts_3d --agent-play` exposes the production game as a persistent
+`formula_forge --agent-play` exposes the production game as a persistent
 JSONL process. It is intended for a vision-capable model, evaluation agent, or
 other automation client. The session uses the same menus, fixed-step physics,
 AI, race flow, renderer, and collision code as interactive play.
@@ -9,7 +9,7 @@ Build and launch it from the repository root:
 
 ```sh
 cmake --build build/game --parallel
-./build/game/harbor_karts_3d --agent-play
+./build/game/formula_forge --agent-play
 ```
 
 The process writes one JSON object per line and then waits for one JSON command
