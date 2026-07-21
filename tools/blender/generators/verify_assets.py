@@ -121,6 +121,13 @@ def validate_manifest(path: Path, kind: str, slug: str, triangle_limit: int) -> 
                 f"tires do not contact the ground plane: {path}")
         require(hard_points.get("seat_anchor_blender") == [0.0, 0.12, 0.74],
                 f"formula seat anchor mismatch: {path}")
+        animation_contract = manifest.get("animation_contract", {})
+        require(animation_contract.get("wheel_only_rotation") is True,
+                f"wheel-only animation contract missing: {path}")
+        require(animation_contract.get("fixed_suspension_meshes", 0) >= 24,
+                f"suspension is not isolated from wheel animation: {path}")
+        require(animation_contract.get("rotating_wheel_meshes", 0) >= 12,
+                f"wheel meshes are not assigned to rotating bones: {path}")
     else:
         require(manifest.get("display_name") == "Standard Driver",
                 f"unexpected driver identity: {path}")

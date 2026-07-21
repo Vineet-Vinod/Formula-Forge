@@ -812,16 +812,14 @@ def build_vehicle(slug: str):
     }
 
     def group_for_object(obj):
+        # Suspension parts deliberately share the corner prefix in names such
+        # as wheel_FL_lower_0. Only meshes parented beneath the actual wheel
+        # pivot may inherit wheel spin or steering animation.
         current = obj
         while current:
-            if current.name.startswith("wheel_FL"):
-                return "wheel_FL_anim"
-            if current.name.startswith("wheel_FR"):
-                return "wheel_FR_anim"
-            if current.name.startswith("wheel_RL"):
-                return "wheel_RL_anim"
-            if current.name.startswith("wheel_RR"):
-                return "wheel_RR_anim"
+            for wheel_name, wheel_pivot in wheels.items():
+                if current == wheel_pivot:
+                    return f"{wheel_name}_anim"
             if current.name == "steering":
                 return "steering_anim"
             if current.name == "brake_lights":
@@ -831,6 +829,29 @@ def build_vehicle(slug: str):
 
     rig = build_rigid_rig("vehicle_rig", bone_specs, asset_objects(), root,
                           group_for_object)
+    suspension_tokens = ("lower", "upper", "upright", "pushrod")
+    suspension_meshes = [
+        obj for obj in asset_objects()
+        if obj.type == "MESH" and any(
+            obj.name.startswith(f"{corner}_{token}")
+            for corner in positions for token in suspension_tokens)
+    ]
+    rotating_wheel_meshes = [
+        obj for obj in asset_objects()
+        if obj.type == "MESH" and any(
+            group.name == f"{corner}_anim" for corner in positions
+            for group in obj.vertex_groups)
+    ]
+    wrongly_animated_suspension = [
+        obj.name for obj in suspension_meshes
+        if {group.name for group in obj.vertex_groups} != {"body_anim"}
+    ]
+    if wrongly_animated_suspension or not rotating_wheel_meshes:
+        raise RuntimeError(
+            "Vehicle animation isolation failed: "
+            f"suspension={wrongly_animated_suspension}, "
+            f"rotating_wheel_meshes={len(rotating_wheel_meshes)}"
+        )
     wheel_channels = [
         {"bone": f"{name}_anim", "index": 0,
          "keys": [(1, 0), (24, -math.tau * 3.5)]}
@@ -862,7 +883,12 @@ def build_vehicle(slug: str):
          "keys": [(80, 0), (94, 0.005), (108, 0)]},
     ])
 
-    return spec, positions
+    animation_contract = {
+        "wheel_only_rotation": True,
+        "fixed_suspension_meshes": len(suspension_meshes),
+        "rotating_wheel_meshes": len(rotating_wheel_meshes),
+    }
+    return spec, positions, animation_contract
 
 
 def main():
@@ -873,7 +899,7 @@ def main():
     args = parser.parse_args()
     targets = VEHICLES if args.asset == "all" else [args.asset]
     for slug in targets:
-        spec, positions = build_vehicle(slug)
+        spec, positions, animation_contract = build_vehicle(slug)
         wheelbase = abs(positions["wheel_RL"][1] - positions["wheel_FL"][1])
         metadata = {
             "type": "vehicle",
@@ -897,6 +923,7 @@ def main():
             "animation_clips": {"accelerate": [1, 24], "turn_left": [30, 50],
                                 "turn_right": [30, 50], "brake": [60, 72],
                                 "idle": [80, 108]},
+            "animation_contract": animation_contract,
             "mounts": {"driver_object": "driver_mount", "driver_bone": "seat_anchor",
                        "gltf_local_y_up_z_forward_m": [0.0, 0.74, -0.12]},
         }

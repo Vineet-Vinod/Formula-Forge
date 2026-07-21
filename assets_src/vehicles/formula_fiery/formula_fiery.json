@@ -117,6 +117,11 @@
       108
     ]
   },
+  "animation_contract": {
+    "wheel_only_rotation": true,
+    "fixed_suspension_meshes": 40,
+    "rotating_wheel_meshes": 48
+  },
   "mounts": {
     "driver_object": "driver_mount",
     "driver_bone": "seat_anchor",
