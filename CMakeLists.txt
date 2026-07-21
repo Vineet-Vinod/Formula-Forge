@@ -56,6 +56,7 @@ target_link_libraries(formula_forge PRIVATE "${RAYLIB_LIBRARY}" "${SDL3_LIBRARY}
 if(BUILD_TESTING)
     add_test(NAME agent_play_protocol_audit COMMAND formula_forge --agent-play-audit)
     add_test(NAME controller_input_audit COMMAND formula_forge --input-audit)
+    add_test(NAME race_grid_alignment_audit COMMAND formula_forge --grid-audit)
     add_test(NAME arcade_audio_audit COMMAND formula_forge --audio-audit)
     add_test(NAME arcade_vehicle_audit COMMAND formula_forge --vehicle-audit)
     add_test(NAME arcade_race_flow_audit COMMAND formula_forge --race-flow-audit)

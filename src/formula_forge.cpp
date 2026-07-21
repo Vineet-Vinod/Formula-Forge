@@ -65,6 +65,8 @@ constexpr float kTcamHeightMeters = 1.84f;
 constexpr float kTcamLookAheadMeters = 38.0f;
 constexpr float kTcamTargetHeightMeters = 0.38f;
 constexpr float kTcamFovDegrees = 80.0f;
+constexpr float kGridFirstRowClearanceMeters = 1.0f;
+constexpr float kGridSlotGapMeters = 3.0f;
 
 bool isMetricCircuit(TrackLayoutId layout) {
     (void)layout;
@@ -2442,6 +2444,81 @@ public:
         return ok;
     }
 
+    bool runGridAlignmentAudit() {
+        selectedSession_ = harbor::ui::GameModeOption::Race;
+        float maxSlotPositionErrorMeters = 0.0f;
+        float maxHeadingErrorDegrees = 0.0f;
+        float maxPlayerStartDistanceMeters = 0.0f;
+        bool playerLastOnEveryGrid = true;
+        bool gridClearOnEveryTrack = true;
+
+        for (int map = 0; map < static_cast<int>(kMaps.size()); ++map) {
+            selectedMap_ = map;
+            startRace();
+
+            float longestCar = 0.0f;
+            float widestCar = 0.0f;
+            for (const KartSpec3D& spec : specs_) {
+                longestCar = std::max(longestCar, spec.length);
+                widestCar = std::max(widestCar, spec.width);
+            }
+            const float unitsPerMeter = isMetricCircuit(track_.layout()) ? kSpaSimulationUnitsPerMeter : 1.0f;
+            const float firstRowInsetMeters = longestCar / unitsPerMeter * 0.5f + kGridFirstRowClearanceMeters;
+            const float slotSpacingMeters = longestCar / unitsPerMeter + kGridSlotGapMeters;
+            const float columnOffset = std::max(widestCar * 0.95f, 2.0f * unitsPerMeter);
+            static constexpr std::array<float, kKartCount> kGridSide = {-1.0f, 1.0f, -1.0f, 1.0f, -1.0f, 1.0f};
+
+            std::array<float, kKartCount> distanceBehindStartMeters{};
+            for (int i = 0; i < kKartCount; ++i) {
+                const int gridSlot = i == 0 ? kKartCount - 1 : i - 1;
+                const float expectedProgress = track_.startProgress() - firstRowInsetMeters -
+                                               static_cast<float>(gridSlot) * slotSpacingMeters;
+                const TrackPoint3D expectedPoint = track_.sample(expectedProgress);
+                const Kart3D& kart = karts_[static_cast<size_t>(i)];
+                const float expectedLane = std::clamp(kGridSide[static_cast<size_t>(gridSlot)] * columnOffset,
+                                                      -roadCenterLimit(kart, expectedPoint),
+                                                      roadCenterLimit(kart, expectedPoint));
+                const Vec2 expectedPosition = expectedPoint.pos + expectedPoint.normal * expectedLane;
+                maxSlotPositionErrorMeters = std::max(
+                    maxSlotPositionErrorMeters, length(kart.pos - expectedPosition) / unitsPerMeter);
+                maxHeadingErrorDegrees = std::max(
+                    maxHeadingErrorDegrees, std::abs(wrapAngle(kart.heading - angleOf(expectedPoint.tangent))) * RAD2DEG);
+                const TrackProjection3D actualProjection = track_.projectNear(kart.pos, kart.nearest, 6);
+                distanceBehindStartMeters[static_cast<size_t>(gridSlot)] =
+                    -signedDistanceToLoop(track_.startProgress(), actualProjection.progress, track_.totalLength());
+            }
+
+            maxPlayerStartDistanceMeters = std::max(maxPlayerStartDistanceMeters,
+                                                    distanceBehindStartMeters.back());
+            for (int slot = 1; slot < kKartCount; ++slot) {
+                playerLastOnEveryGrid = playerLastOnEveryGrid &&
+                                        distanceBehindStartMeters[static_cast<size_t>(slot)] >
+                                            distanceBehindStartMeters[static_cast<size_t>(slot - 1)];
+            }
+            playerLastOnEveryGrid = playerLastOnEveryGrid && playerPosition_ == kKartCount;
+
+            for (int a = 0; a < kKartCount; ++a) {
+                for (int b = a + 1; b < kKartCount; ++b) {
+                    gridClearOnEveryTrack = gridClearOnEveryTrack &&
+                                            !kartContact(karts_[static_cast<size_t>(a)],
+                                                         karts_[static_cast<size_t>(b)]).touching;
+                }
+            }
+        }
+
+        const bool slotsAligned = maxSlotPositionErrorMeters < 0.05f && maxHeadingErrorDegrees < 0.05f;
+        const bool compactGrid = maxPlayerStartDistanceMeters < 50.0f;
+        const bool ok = slotsAligned && compactGrid && playerLastOnEveryGrid && gridClearOnEveryTrack;
+        std::cout << "grid-alignment-audit tracks=" << kMaps.size()
+                  << " max_slot_error_m=" << maxSlotPositionErrorMeters
+                  << " max_heading_error_deg=" << maxHeadingErrorDegrees
+                  << " player_start_distance_m=" << maxPlayerStartDistanceMeters
+                  << " player_last=" << playerLastOnEveryGrid
+                  << " grid_clear=" << gridClearOnEveryTrack
+                  << " ok=" << ok << "\n";
+        return ok;
+    }
+
     void selectMapForCapture(int index) {
         selectedMap_ = std::clamp(index, 0, static_cast<int>(kMaps.size()) - 1);
         activateSelectedMap();
@@ -3716,8 +3793,7 @@ public:
             }
         }
         const float launchDistanceMeters =
-            signedDistanceToLoop(launchStartProgress, karts_[0].progress, track_.totalLength()) /
-            kSpaSimulationUnitsPerMeter;
+            signedDistanceToLoop(launchStartProgress, karts_[0].progress, track_.totalLength());
         const bool cleanLaunch = gridClear && renderStateInitialized && playerStartsLast &&
                                  minimumGreenGhost >= 1.49f &&
                                  launchVehicleContactFrames == 0 && launchMaxOverlap < 0.05f &&
@@ -4310,8 +4386,10 @@ private:
             widestCar = std::max(widestCar, spec.width);
         }
         const float unitsPerMeter = isMetricCircuit(track_.layout()) ? kSpaSimulationUnitsPerMeter : 1.0f;
-        const float firstRowInset = longestCar * 0.5f + 1.0f * unitsPerMeter;
-        const float rowSpacing = longestCar + 3.0f * unitsPerMeter;
+        // Track progress is measured in meters even though vehicle dimensions
+        // and lateral positions use simulation units.
+        const float firstRowInsetMeters = longestCar / unitsPerMeter * 0.5f + kGridFirstRowClearanceMeters;
+        const float rowSpacingMeters = longestCar / unitsPerMeter + kGridSlotGapMeters;
         const float columnOffset = std::max(widestCar * 0.95f, 2.0f * unitsPerMeter);
         static constexpr std::array<float, kKartCount> kGridSide = {-1.0f, 1.0f, -1.0f, 1.0f, -1.0f, 1.0f};
         for (int i = 0; i < kKartCount; ++i) {
@@ -4327,8 +4405,8 @@ private:
             const int gridSlot = isTimeTrial() ? 0 : (i == 0 ? kKartCount - 1 : i - 1);
             const float stagger = isTimeTrial() && i == 0
                                       ? startProgress
-                                      : startProgress - firstRowInset -
-                                            static_cast<float>(gridSlot) * rowSpacing;
+                                      : startProgress - firstRowInsetMeters -
+                                            static_cast<float>(gridSlot) * rowSpacingMeters;
             const TrackPoint3D grid = track_.sample(stagger);
             const float lane = isTimeTrial() && i == 0
                                    ? 0.0f
@@ -6714,6 +6792,7 @@ int runFormulaForge(int argc, char** argv) {
                           hasArg(argc, argv, "--diagnose-controller") || hasArg(argc, argv, "--handling-audit") ||
                           hasArg(argc, argv, "--race-audit") || hasArg(argc, argv, "--ai-pace-audit") ||
                           hasArg(argc, argv, "--time-trial-audit") ||
+                          hasArg(argc, argv, "--grid-audit") ||
                           hasArg(argc, argv, "--collision-audit") ||
                           hasArg(argc, argv, "--spa-control-audit") ||
                           hasArg(argc, argv, "--terrain-audit") ||
@@ -6738,6 +6817,7 @@ int runFormulaForge(int argc, char** argv) {
     const bool raceAudit = hasArg(argc, argv, "--race-audit");
     const bool aiPaceAudit = hasArg(argc, argv, "--ai-pace-audit");
     const bool timeTrialAudit = hasArg(argc, argv, "--time-trial-audit");
+    const bool gridAudit = hasArg(argc, argv, "--grid-audit");
     const bool collisionAudit = hasArg(argc, argv, "--collision-audit");
     const bool spaControlAudit = hasArg(argc, argv, "--spa-control-audit");
     const bool terrainAudit = hasArg(argc, argv, "--terrain-audit");
@@ -6772,7 +6852,7 @@ int runFormulaForge(int argc, char** argv) {
 
     ControllerReader controller(sdlInputReady);
     const bool automatedRun = agentPlay || assetAudit || smokeRender || capturePlaytest || captureDrivenLap || captureTimeTrial || captureSectionTour || captureMapGallery || handlingAudit || raceAudit ||
-                              aiPaceAudit || timeTrialAudit || collisionAudit || spaControlAudit || terrainAudit || perfAudit || diagnoseController;
+                              aiPaceAudit || timeTrialAudit || gridAudit || collisionAudit || spaControlAudit || terrainAudit || perfAudit || diagnoseController;
     Game3D game(!automatedRun);
     bool runtimeCleaned = false;
     const auto cleanupRuntime = [&]() {
@@ -6832,6 +6912,11 @@ int runFormulaForge(int argc, char** argv) {
     }
     if (timeTrialAudit) {
         const bool ok = game.runTimeTrialAudit();
+        cleanupRuntime();
+        return ok ? 0 : 1;
+    }
+    if (gridAudit) {
+        const bool ok = game.runGridAlignmentAudit();
         cleanupRuntime();
         return ok ? 0 : 1;
     }
