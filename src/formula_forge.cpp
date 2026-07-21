@@ -2603,8 +2603,10 @@ public:
         raceTime_ = phase * 18.0f;
 
         const float baseProgress = wrapDistance(track_.totalLength() * phase, track_.totalLength());
-        static constexpr std::array<float, kKartCount> kProgressOffset = {0.0f, 78.0f, 156.0f, -82.0f, -112.0f, 244.0f};
-        static constexpr std::array<float, kKartCount> kLaneOffset = {0.0f, -22.0f, 26.0f, -30.0f, 28.0f, 10.0f};
+        // Keep the capture-only field close enough to read as an active race
+        // in screenshots while retaining safe longitudinal separation.
+        static constexpr std::array<float, kKartCount> kProgressOffset = {0.0f, 15.0f, 24.0f, 34.0f, 45.0f, 57.0f};
+        static constexpr std::array<float, kKartCount> kLaneOffset = {0.0f, -20.0f, 20.0f, -8.0f, 8.0f, 0.0f};
 
         for (int i = 0; i < kKartCount; ++i) {
             Kart3D& kart = karts_[static_cast<size_t>(i)];
@@ -6935,6 +6937,11 @@ int runFormulaForge(int argc, char** argv) {
                                                              0.575f, 0.690f, 0.805f, 0.920f};
         for (size_t i = 0; i < kTourPhases.size(); ++i) {
             game.setupSectionTour(kTourPhases[i], static_cast<int>(i));
+            // Let the staged pack settle into live vehicle dynamics so gallery
+            // frames show genuine driving telemetry instead of a static pose.
+            for (int frame = 0; frame < 45; ++frame) {
+                game.update(kFixedDt, game.scriptedInput(), true);
+            }
             const std::filesystem::path path =
                 std::filesystem::path("../playtest_frames") /
                 TextFormat(captureSpaTour ? "formula_forge_spa_tour_%02d.png"
