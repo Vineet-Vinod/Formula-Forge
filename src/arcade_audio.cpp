@@ -113,18 +113,21 @@ class ArcadeSynth {
             landingEnvelope_ *= 0.99908f;
             if (landingEnvelope_ < 0.00001f) landingEnvelope_ = 0.0f;
 
-            shiftAlertPhase_ = wrapPhase(shiftAlertPhase_ + 1760.0f * dt);
-            const float shiftBeep = (std::sin(2.0f * kPi * shiftAlertPhase_) +
-                                     std::sin(4.0f * kPi * shiftAlertPhase_) * 0.28f) *
-                                    shiftAlertEnvelope_ * 0.44f;
-            shiftAlertEnvelope_ *= 0.99955f;
+            shiftAlertPhase_ = wrapPhase(shiftAlertPhase_ + 1350.0f * dt);
+            const float shiftWave = std::sin(2.0f * kPi * shiftAlertPhase_) +
+                                    std::sin(4.0f * kPi * shiftAlertPhase_) * 0.30f;
+            const float shiftBeep = std::tanh(shiftWave * 2.4f) * shiftAlertEnvelope_ * 0.52f;
+            const float shiftDuck = std::clamp(shiftAlertEnvelope_ * 0.78f, 0.0f, 0.72f);
+            shiftAlertEnvelope_ *= 0.99970f;
             if (shiftAlertEnvelope_ < 0.00001f) shiftAlertEnvelope_ = 0.0f;
 
             const float airMute = 0.72f + controls_.grounded * 0.28f;
-            const float center = engine * airMute + road + wind + scrub + thump + shiftBeep;
+            const float center = engine * airMute + road + wind + scrub + thump;
             const float stereoMotion = (noise - roadNoise_) * (0.008f + controls_.speed * 0.014f);
-            stereo[frame * 2] = softLimit(center + stereoMotion);
-            stereo[frame * 2 + 1] = softLimit(center - stereoMotion);
+            const float baseLeft = softLimit(center + stereoMotion) * (1.0f - shiftDuck);
+            const float baseRight = softLimit(center - stereoMotion) * (1.0f - shiftDuck);
+            stereo[frame * 2] = std::clamp(baseLeft + shiftBeep, -0.88f, 0.88f);
+            stereo[frame * 2 + 1] = std::clamp(baseRight + shiftBeep, -0.88f, 0.88f);
         }
     }
 
@@ -358,7 +361,8 @@ ArcadeAudioAuditResult runArcadeAudioUnitAudit() {
     nearRedline.shiftAlert = true;
     const SignalMetrics shiftAlertMetrics = measure(renderScenario(nearRedline, 4));
     result.shiftAlertRmsIncrease = shiftAlertMetrics.rms - nearRedlineMetrics.rms;
-    check(result.shiftAlertRmsIncrease > 0.040f);
+    check(result.shiftAlertRmsIncrease > 0.12f);
+    check(shiftAlertMetrics.peak < 0.90f);
 
     const std::vector<float> repeat = renderScenario(fast, 18);
     result.deterministicHash = hashSamples(fastSignal);
