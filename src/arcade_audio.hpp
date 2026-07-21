@@ -54,3 +54,4 @@ class ArcadeAudio {
 };
 
 ArcadeAudioAuditResult runArcadeAudioUnitAudit();
+bool playArcadeShiftBeepPreview();

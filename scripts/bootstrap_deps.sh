@@ -64,7 +64,7 @@ rm -f "$tmp_xorg_include"
 ln -s "$xorg_include" "$tmp_xorg_include"
 trap 'rm -f "$tmp_xorg_include"' EXIT
 
-cmake -S "$sdl_src" \
+cmake --fresh -S "$sdl_src" \
     -B "$deps_dir/sdl-build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="$install_dir" \
@@ -80,7 +80,8 @@ cmake -S "$sdl_src" \
     -DSDL_OPENGLES=ON \
     -DSDL_VULKAN=OFF \
     -DSDL_CAMERA=OFF \
-    -DSDL_ALSA=OFF \
+    -DSDL_ALSA=ON \
+    -DSDL_ALSA_SHARED=ON \
     -DSDL_JACK=OFF \
     -DSDL_PIPEWIRE=OFF \
     -DSDL_PULSEAUDIO=OFF \

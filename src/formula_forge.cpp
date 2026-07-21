@@ -6414,6 +6414,11 @@ int runFormulaForge(int argc, char** argv) {
                   << " deterministic_hash=" << result.deterministicHash << " ok=" << result.ok << "\n";
         return result.ok ? 0 : 1;
     }
+    if (hasArg(argc, argv, "--shift-beep-preview")) {
+        const bool ok = playArcadeShiftBeepPreview();
+        std::cout << "shift-beep-preview device_ready=" << ok << "\n";
+        return ok ? 0 : 1;
+    }
     const bool raceFlowAudit = hasArg(argc, argv, "--race-flow-audit");
     if (raceFlowAudit) {
         const ArcadeRaceAuditResult result = runArcadeRaceUnitAudit();

@@ -4,6 +4,7 @@
 #include <array>
 #include <cmath>
 #include <cstddef>
+#include <cstdio>
 #include <cstring>
 #include <utility>
 #include <vector>
@@ -48,14 +49,9 @@ class ArcadeSynth {
         target_.slip = clamp01(std::abs(input.slip));
         target_.grounded = input.grounded ? 1.0f : 0.0f;
 
-        const float inputStep = std::clamp(std::isfinite(input.deltaTime) ? input.deltaTime : 0.0f, 0.0f, 0.10f);
-        shiftAlertRepeatTimer_ = std::max(0.0f, shiftAlertRepeatTimer_ - inputStep);
-        if (input.shiftAlert && (!wasShiftAlert_ || shiftAlertRepeatTimer_ <= 0.0f)) {
+        if (input.shiftAlert && !wasShiftAlert_) {
             shiftAlertEnvelope_ = 1.0f;
             shiftAlertPhase_ = 0.0f;
-            shiftAlertRepeatTimer_ = 0.38f;
-        } else if (!input.shiftAlert) {
-            shiftAlertRepeatTimer_ = 0.0f;
         }
         wasShiftAlert_ = input.shiftAlert;
 
@@ -114,11 +110,9 @@ class ArcadeSynth {
             if (landingEnvelope_ < 0.00001f) landingEnvelope_ = 0.0f;
 
             shiftAlertPhase_ = wrapPhase(shiftAlertPhase_ + 1350.0f * dt);
-            const float shiftWave = std::sin(2.0f * kPi * shiftAlertPhase_) +
-                                    std::sin(4.0f * kPi * shiftAlertPhase_) * 0.30f;
-            const float shiftBeep = std::tanh(shiftWave * 2.4f) * shiftAlertEnvelope_ * 0.52f;
-            const float shiftDuck = std::clamp(shiftAlertEnvelope_ * 0.78f, 0.0f, 0.72f);
-            shiftAlertEnvelope_ *= 0.99970f;
+            const float shiftBeep = std::sin(2.0f * kPi * shiftAlertPhase_) * shiftAlertEnvelope_ * 0.82f;
+            const float shiftDuck = std::clamp(shiftAlertEnvelope_ * 0.88f, 0.0f, 0.78f);
+            shiftAlertEnvelope_ *= 0.99940f;
             if (shiftAlertEnvelope_ < 0.00001f) shiftAlertEnvelope_ = 0.0f;
 
             const float airMute = 0.72f + controls_.grounded * 0.28f;
@@ -155,7 +149,6 @@ class ArcadeSynth {
     float landingEnvelope_ = 0.0f;
     float shiftAlertPhase_ = 0.0f;
     float shiftAlertEnvelope_ = 0.0f;
-    float shiftAlertRepeatTimer_ = 0.0f;
     float previousLandingImpulse_ = 0.0f;
     float roadNoise_ = 0.0f;
     float windNoise_ = 0.0f;
@@ -380,4 +373,30 @@ ArcadeAudioAuditResult runArcadeAudioUnitAudit() {
 
     result.ok = result.failures == 0;
     return result;
+}
+
+bool playArcadeShiftBeepPreview() {
+    ArcadeAudio audio;
+    if (!audio.initialize()) {
+        std::fprintf(stderr, "shift beep preview could not open audio: %s\navailable SDL audio drivers:", SDL_GetError());
+        const int driverCount = SDL_GetNumAudioDrivers();
+        for (int driver = 0; driver < driverCount; ++driver) {
+            std::fprintf(stderr, " %s", SDL_GetAudioDriver(driver));
+        }
+        std::fprintf(stderr, "\n");
+        return false;
+    }
+
+    ArcadeAudioInput input;
+    input.speedNormalized = 0.92f;
+    input.engineRpmNormalized = 0.92f;
+    input.throttle = 1.0f;
+    input.deltaTime = 1.0f / 120.0f;
+    for (int frame = 0; frame < 120; ++frame) {
+        input.shiftAlert = frame >= 12 && frame < 36;
+        audio.update(input);
+        SDL_Delay(8);
+    }
+    audio.shutdown();
+    return true;
 }
