@@ -33,6 +33,27 @@ make run ARGS="--windowed"
 Python 3.11, [`uv`](https://docs.astral.sh/uv/), and the pinned `bpy` package
 are only required when regenerating or validating Blender assets.
 
+## How Codex and GPT-5.6 were used
+
+GPT-5.6 Sol High was an active engineering partner throughout Formula Forge.
+It helped implement and iterate on the physics, AI, race rules, renderer, 
+interface, controller support, procedural audio, Blender assets, tests,
+and development tools.
+
+The most useful workflow paired subjective playtesting with programmatic
+feedback. After playing a build, feedback such as “the car feels slow” or “the
+AI enters this corner badly” could be turned into a measurable engineering
+problem. Deterministic audits then checked acceleration, braking, grip,
+shifting, collisions, lap validity, track limits, and circuit-specific AI pace
+before another change was accepted.
+
+A persistent JSONL [agent-play protocol](docs/agent_play_protocol.md) lets a
+model navigate menus, drive deterministic simulation frames, inspect telemetry,
+and request screenshots. Codex also uses Blender through Python to generate and
+validate cars, drivers, tracks, garage scenes, and runtime assets. These tools
+gave the agent a closed feedback loop: build, observe, measure, change, and
+verify.
+
 ## What is this
 
 Formula Forge is an original, open-source, Linux-native 3D formula racing game
@@ -122,27 +143,6 @@ The validators check dimensions, materials, animations, mesh budgets, circuit
 geometry, landmark order, and clearances. See the
 [asset pipeline guide](tools/README.md) and
 [track guide](tools/blender/tracks/README.md) before changing generated assets.
-
-## How Codex and GPT-5.6 were used
-
-GPT-5.6 Sol High was an active engineering partner throughout Formula Forge.
-It helped implement and iterate on the physics, AI, race rules, renderer, 
-interface, controller support, procedural audio, Blender assets, tests,
-and development tools.
-
-The most useful workflow paired subjective playtesting with programmatic
-feedback. After playing a build, feedback such as “the car feels slow” or “the
-AI enters this corner badly” could be turned into a measurable engineering
-problem. Deterministic audits then checked acceleration, braking, grip,
-shifting, collisions, lap validity, track limits, and circuit-specific AI pace
-before another change was accepted.
-
-A persistent JSONL [agent-play protocol](docs/agent_play_protocol.md) lets a
-model navigate menus, drive deterministic simulation frames, inspect telemetry,
-and request screenshots. Codex also uses Blender through Python to generate and
-validate cars, drivers, tracks, garage scenes, and runtime assets. These tools
-gave the agent a closed feedback loop: build, observe, measure, change, and
-verify.
 
 ## Future work
 
