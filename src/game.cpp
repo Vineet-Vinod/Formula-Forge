@@ -6912,6 +6912,8 @@ int runFormulaForge(int argc, char** argv) {
                           hasArg(argc, argv, "--capture-time-trial") ||
                           hasArg(argc, argv, "--capture-section-tour") || hasArg(argc, argv, "--capture-spa-tour") ||
                           hasArg(argc, argv, "--capture-suzuka-tour") ||
+                          hasArg(argc, argv, "--capture-silverstone-tour") ||
+                          hasArg(argc, argv, "--capture-interlagos-tour") ||
                           hasArg(argc, argv, "--capture-map-gallery");
     const bool smokeRender = hasArg(argc, argv, "--smoke-render");
     const bool capturePlaytest = hasArg(argc, argv, "--capture-playtest");
@@ -6920,7 +6922,10 @@ int runFormulaForge(int argc, char** argv) {
     const bool captureTimeTrial = hasArg(argc, argv, "--capture-time-trial");
     const bool captureSpaTour = hasArg(argc, argv, "--capture-spa-tour");
     const bool captureSuzukaTour = hasArg(argc, argv, "--capture-suzuka-tour");
-    const bool captureSectionTour = hasArg(argc, argv, "--capture-section-tour") || captureSpaTour || captureSuzukaTour;
+    const bool captureSilverstoneTour = hasArg(argc, argv, "--capture-silverstone-tour");
+    const bool captureInterlagosTour = hasArg(argc, argv, "--capture-interlagos-tour");
+    const bool captureSectionTour = hasArg(argc, argv, "--capture-section-tour") || captureSpaTour ||
+                                    captureSuzukaTour || captureSilverstoneTour || captureInterlagosTour;
     const bool captureMapGallery = hasArg(argc, argv, "--capture-map-gallery");
     const bool diagnoseController = hasArg(argc, argv, "--diagnose-controller");
     const bool handlingAudit = hasArg(argc, argv, "--handling-audit");
@@ -7098,11 +7103,20 @@ int runFormulaForge(int argc, char** argv) {
             game.selectMapForCapture(0);
         } else if (captureSuzukaTour) {
             game.selectMapForCapture(1);
+        } else if (captureSilverstoneTour) {
+            game.selectMapForCapture(2);
+        } else if (captureInterlagosTour) {
+            game.selectMapForCapture(4);
         }
         static constexpr std::array<float, 9> kTourPhases = {0.035f, 0.135f, 0.245f, 0.355f, 0.465f,
                                                              0.575f, 0.690f, 0.805f, 0.920f};
-        for (size_t i = 0; i < kTourPhases.size(); ++i) {
-            game.setupSectionTour(kTourPhases[i], static_cast<int>(i));
+        const bool detailedCircuitTour = captureSilverstoneTour || captureInterlagosTour;
+        const size_t tourFrameCount = detailedCircuitTour ? 72 : kTourPhases.size();
+        for (size_t i = 0; i < tourFrameCount; ++i) {
+            const float phase = detailedCircuitTour
+                                    ? (static_cast<float>(i) + 0.5f) / static_cast<float>(tourFrameCount)
+                                    : kTourPhases[i];
+            game.setupSectionTour(phase, static_cast<int>(i));
             // Let the staged pack settle into live vehicle dynamics so gallery
             // frames show genuine driving telemetry instead of a static pose.
             for (int frame = 0; frame < 45; ++frame) {
@@ -7112,7 +7126,9 @@ int runFormulaForge(int argc, char** argv) {
                 std::filesystem::path("../playtest_frames") /
                 TextFormat(captureSpaTour ? "formula_forge_spa_tour_%02d.png"
                                          : (captureSuzukaTour ? "formula_forge_suzuka_tour_%02d.png"
-                                                              : "formula_forge_section_tour_%02d.png"),
+                                            : (captureSilverstoneTour ? "formula_forge_silverstone_tour_%03d.png"
+                                               : (captureInterlagosTour ? "formula_forge_interlagos_tour_%03d.png"
+                                                                        : "formula_forge_section_tour_%02d.png"))),
                            static_cast<int>(i));
             game.render(60.0f, true, path.string().c_str());
         }

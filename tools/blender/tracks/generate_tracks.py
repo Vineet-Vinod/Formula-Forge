@@ -97,6 +97,7 @@ TRACKS = {
         "start_phase": 0.0,
         "vegetation_setback_m": 29.0,
         "vegetation_canopy_clearance_m": 22.0,
+        "embankment_reach_m": 8.0,
         "max_embankment_longitudinal_span_m": 6.0,
         "cpp_simulation_units_per_asset_unit": 17.0,
         "coordinate_unit": "meter",
@@ -140,6 +141,7 @@ TRACKS = {
         "start_phase": 0.0,
         "vegetation_setback_m": 29.0,
         "vegetation_canopy_clearance_m": 22.0,
+        "embankment_reach_m": 8.0,
         "max_embankment_longitudinal_span_m": 6.0,
         "cpp_simulation_units_per_asset_unit": 17.0,
         "coordinate_unit": "meter",
@@ -910,12 +912,14 @@ def make_starting_grid_slots(samples, half_widths, bank_angles, start_phase, tar
 
 def make_embankment(samples, half_widths, bank_angles, material, parent, projector,
                     surface_offset, detail_scale=1.0, skip_indices=None,
-                    max_longitudinal_span=None):
+                    max_longitudinal_span=None, reach_m=TERRAIN_REACH_METERS):
     """Create sloped terrain shoulders from the road grade to the island datum."""
+    if reach_m < RUNOFF_TRANSITION_METERS:
+        raise ValueError("embankment reach cannot end inside the four-metre runoff shoulder")
     verts, faces = [], []
     skip_indices = set(skip_indices or ())
     count = len(samples)
-    radial_extent = TERRAIN_REACH_METERS - RUNOFF_TRANSITION_METERS
+    radial_extent = reach_m - RUNOFF_TRANSITION_METERS
     band_count = max(1, int(math.ceil(radial_extent / GROUND_RADIAL_STEP_METERS)))
     row_width = band_count + 1
     for side in (-1, 1):
@@ -923,7 +927,7 @@ def make_embankment(samples, half_widths, bank_angles, material, parent, project
         for index, point in enumerate(samples):
             _, _, normal = track_frame(samples, index)
             reach = max(RUNOFF_TRANSITION_METERS,
-                        projector.owned_reach(index, side, TERRAIN_REACH_METERS))
+                        projector.owned_reach(index, side, reach_m))
             for band in range(row_width):
                 extra = RUNOFF_TRANSITION_METERS + (
                     reach - RUNOFF_TRANSITION_METERS) * band / band_count
@@ -958,6 +962,7 @@ def make_embankment(samples, half_widths, bank_angles, material, parent, project
     obj = mesh_object("track_embankment", verts, faces, [material], parent=parent)
     obj["nearest_section_grounding"] = True
     obj["radial_step_m"] = GROUND_RADIAL_STEP_METERS
+    obj["reach_m"] = reach_m
     obj["underlay_gap_m"] = EMBANKMENT_UNDERLAY_GAP_METERS
     if max_longitudinal_span is not None:
         obj["max_longitudinal_span_m"] = max_longitudinal_span
@@ -1373,7 +1378,8 @@ def make_world(slug, spec):
         bridge_skip = {(upper+offset) % SAMPLES for offset in range(-15,16)}
     make_embankment(center, half_widths, bank_angles, materials["grass"], terrain,
                     ground_projector, surface_offset, detail_scale, bridge_skip,
-                    spec.get("max_embankment_longitudinal_span_m"))
+                    spec.get("max_embankment_longitudinal_span_m"),
+                    spec.get("embankment_reach_m", TERRAIN_REACH_METERS))
     make_track_runoff(center, half_widths, materials["shoulder"], circuit,
                       ground_projector, surface_offset)
     make_strip("track_surface", center, half_widths, surface_offset, materials["asphalt"],
@@ -1753,6 +1759,8 @@ def export_track(slug, spec, output_root):
             "embankment_underlay_gap_asset_units": EMBANKMENT_UNDERLAY_GAP_METERS,
             "runoff_transition_asset_units": RUNOFF_TRANSITION_METERS,
             "terrain_reach_asset_units": TERRAIN_REACH_METERS,
+            "embankment_reach_asset_units":
+                spec.get("embankment_reach_m", TERRAIN_REACH_METERS),
             "max_embankment_longitudinal_span_asset_units":
                 spec.get("max_embankment_longitudinal_span_m"),
             "vegetation_setback_asset_units": info["vegetation_setback"],

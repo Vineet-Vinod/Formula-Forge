@@ -481,11 +481,17 @@ def verify(root: Path, slug: str):
         raise ValueError(f"{slug}: safety barrier floats by {max_barrier_ground_error:.6f}")
 
     embankment = bpy.data.objects["track_embankment"]
-    embankment_rows = int(math.ceil((TERRAIN_REACH_METERS - RUNOFF_TRANSITION_METERS) /
+    embankment_reach = spec.get("embankment_reach_m", TERRAIN_REACH_METERS)
+    embankment_rows = int(math.ceil((embankment_reach - RUNOFF_TRANSITION_METERS) /
                                     GROUND_RADIAL_STEP_METERS)) + 1
+    custom_embankment_reach_stale = (
+        "embankment_reach_m" in spec and
+        (embankment.get("reach_m") != embankment_reach or
+         grounding.get("embankment_reach_asset_units") != embankment_reach))
     if (len(embankment.data.vertices) != SAMPLES * 2 * embankment_rows or
             not embankment.get("nearest_section_grounding") or
-            embankment.get("radial_step_m") != GROUND_RADIAL_STEP_METERS):
+            embankment.get("radial_step_m") != GROUND_RADIAL_STEP_METERS or
+            custom_embankment_reach_stale):
         raise ValueError(f"{slug}: terrain shoulder tessellation contract changed")
     max_embankment_span = spec.get("max_embankment_longitudinal_span_m")
     if grounding.get("max_embankment_longitudinal_span_asset_units") != max_embankment_span:

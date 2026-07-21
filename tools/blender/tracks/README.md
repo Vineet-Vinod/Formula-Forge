@@ -16,8 +16,9 @@ tarmac, continuous track-limit lines, bank-following curbs, profiled grass,
 gravel and asphalt runoff, concrete/Tecpro safety barriers, and catch fencing.
 Grounded combined meshes provide grandstands and spectators, pit facilities,
 marshal posts and vegetation while keeping the runtime draw-call count bounded.
-Interlagos and Silverstone additionally reject overlong terrain cells at abrupt
-outer-corner normal changes. This prevents wide lawn faces from hanging across
+Interlagos and Silverstone limit their local grass embankment to eight metres
+from the road edge and reject overlong terrain cells at abrupt outer-corner
+normal changes. This prevents a nearby bend's lawn ribbon from hanging across
 the T-cam view while leaving the road and its four-metre shoulder untouched.
 
 `verify_tracks.py` treats those presentation details as runtime contracts. It
@@ -42,7 +43,9 @@ reproduces its procedural 14-16 meter phase-based width.
 Opaque world base layers are strictly separated rather than coplanar. The local
 embankment follows each centerline's elevation, carries crossfall through the
 first four metres of runoff, then eases back to the local centerline height by
-36 metres. This same height function grounds runoff, barriers, scenery, and the
+36 metres. Interlagos and Silverstone render only the first eight metres of that
+field because their nearby bends overlap a full-width grass ribbon in T-cam.
+The same height function still grounds runoff, barriers, scenery, and the
 runtime vehicle contact plane.
 The kilometer-scale base layers do not overlap: infield is an inner triangle
 fan, with successively darker grass/ground rings beyond it. Rings use explicit
