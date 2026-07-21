@@ -1170,7 +1170,11 @@ def make_world(slug, spec):
         z = sample_stations(elevations, distance, target_length, 0.0)
         width = (spa_road_width(i/SAMPLES) if slug == "spa" else
                  sample_stations(widths, distance, target_length, spec.get("width", 13.0)))
-        bank_angle = sample_stations(banks, distance, target_length, 0.0)
+        runtime_bank_angle = sample_stations(banks, distance, target_length, 0.0)
+        # Blender's lateral normal maps to the negative runtime normal after
+        # the Blender Z-up -> glTF/raylib Y-up basis conversion. Invert the
+        # crossfall here so the exported road and runtime tire plane agree.
+        bank_angle = -runtime_bank_angle
         # glTF Y-up conversion maps Blender (x, y, z) to (x, z, -y).
         # Negating runtime Y here therefore makes raylib GLB Z equal C++ track Y.
         # runtime_mirror_y corrects the handedness reversal introduced when the
@@ -1621,6 +1625,7 @@ def export_track(slug, spec, output_root):
             "terrain_function": "shoulder_ground_z",
             "profiled_runoff_surface_offset_asset_units": info["surface_offset"],
             "nearest_section_projection": True,
+            "blender_lateral_to_runtime_sign": -1,
             "nearest_branch_bisector_clipping": True,
             "branch_reach_probe_step_asset_units": 0.25,
             "radial_step_asset_units": GROUND_RADIAL_STEP_METERS,

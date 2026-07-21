@@ -66,7 +66,9 @@ def expected_centerline(slug: str):
         centerline.append((x,-y,elevation))
         road_widths.append(spa_road_width(index/SAMPLES) if slug == "spa" else
                            sample_stations(widths,distance,target,spec.get("width",13.0)))
-        bank_angles.append(sample_stations(banks,distance,target,0.0))
+        # A positive Blender lateral offset becomes a negative runtime lane
+        # after the exported basis transform.
+        bank_angles.append(-sample_stations(banks,distance,target,0.0))
     return centerline, road_widths, bank_angles, raw_controls, elevations, widths, banks
 
 
@@ -420,6 +422,7 @@ def verify(root: Path, slug: str):
     tolerance = grounding["tolerance_asset_units"]
     if (grounding["profiled_runoff_surface_offset_asset_units"] != surface_offset or
             not grounding["nearest_section_projection"] or
+            grounding["blender_lateral_to_runtime_sign"] != -1 or
             not grounding["nearest_branch_bisector_clipping"] or
             grounding["branch_reach_probe_step_asset_units"] != 0.25 or
             grounding["radial_step_asset_units"] != GROUND_RADIAL_STEP_METERS or

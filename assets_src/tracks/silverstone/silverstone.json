@@ -48,8 +48,8 @@
     "closed_loop_arc_length_resampling": true
   },
   "bank_profile": {
-    "min_angle_degrees": -1.997,
-    "max_angle_degrees": 2.393,
+    "min_angle_degrees": -2.393,
+    "max_angle_degrees": 1.997,
     "sign_convention": "positive raises driver-left edge",
     "follows_runtime_contact_plane": true
   },
@@ -229,12 +229,12 @@
     "max": [
       1299.896,
       1004.619,
-      19.42
+      19.353
     ],
     "dimensions": [
       2594.448,
       2009.231,
-      24.42
+      24.353
     ]
   },
   "measured_bounds_gltf_y_up": {
@@ -245,12 +245,12 @@
     ],
     "max": [
       1299.896,
-      19.42,
+      19.353,
       1004.612
     ],
     "dimensions": [
       2594.447,
-      24.42,
+      24.353,
       2009.231
     ]
   },
@@ -262,12 +262,12 @@
     ],
     "max": [
       1878.35,
-      28.062,
+      27.965,
       1451.664
     ],
     "dimensions": [
       3748.976,
-      35.287,
+      35.19,
       2903.339
     ]
   },
@@ -423,6 +423,7 @@
     "terrain_function": "shoulder_ground_z",
     "profiled_runoff_surface_offset_asset_units": 0.06,
     "nearest_section_projection": true,
+    "blender_lateral_to_runtime_sign": -1,
     "nearest_branch_bisector_clipping": true,
     "branch_reach_probe_step_asset_units": 0.25,
     "radial_step_asset_units": 1.0,
@@ -444,14 +445,14 @@
         "station": 77,
         "side": -1,
         "lateral": 25.216219,
-        "base_z": 4.690821
+        "base_z": 4.995237
       },
       {
         "kind": "vegetation",
         "station": 134,
         "side": 1,
         "lateral": 27.451528,
-        "base_z": 5.324187
+        "base_z": 5.313888
       },
       {
         "kind": "vegetation",
@@ -465,14 +466,14 @@
         "station": 248,
         "side": 1,
         "lateral": 23.929044,
-        "base_z": 5.480387
+        "base_z": 5.119163
       },
       {
         "kind": "vegetation",
         "station": 305,
         "side": -1,
         "lateral": 27.456062,
-        "base_z": 4.18368
+        "base_z": 3.956494
       },
       {
         "kind": "vegetation",
@@ -514,21 +515,21 @@
         "station": 646,
         "side": -1,
         "lateral": 23.904581,
-        "base_z": 0.43402
+        "base_z": -0.007138
       },
       {
         "kind": "vegetation",
         "station": 703,
         "side": 1,
         "lateral": 30.902486,
-        "base_z": 1.045084
+        "base_z": 0.834001
       },
       {
         "kind": "vegetation",
         "station": 760,
         "side": -1,
         "lateral": 20.745941,
-        "base_z": 1.638172
+        "base_z": 1.693117
       },
       {
         "kind": "vegetation",
@@ -556,14 +557,14 @@
         "station": 988,
         "side": -1,
         "lateral": 21.098847,
-        "base_z": 5.360264
+        "base_z": 5.594656
       },
       {
         "kind": "vegetation",
         "station": 1045,
         "side": 1,
         "lateral": 21.519139,
-        "base_z": 6.864688
+        "base_z": 6.438827
       },
       {
         "kind": "vegetation",
@@ -584,21 +585,21 @@
         "station": 1215,
         "side": -1,
         "lateral": 29.050386,
-        "base_z": 9.365145
+        "base_z": 9.288188
       },
       {
         "kind": "vegetation",
         "station": 1272,
         "side": 1,
         "lateral": 30.84084,
-        "base_z": 9.980374
+        "base_z": 9.913726
       },
       {
         "kind": "vegetation",
         "station": 1329,
         "side": -1,
         "lateral": 23.577376,
-        "base_z": 10.693632
+        "base_z": 10.441235
       },
       {
         "kind": "vegetation",
@@ -640,42 +641,42 @@
         "station": 1670,
         "side": -1,
         "lateral": 24.486376,
-        "base_z": 6.687164
+        "base_z": 6.879044
       },
       {
         "kind": "vegetation",
         "station": 1727,
         "side": 1,
         "lateral": 21.618105,
-        "base_z": 6.036653
+        "base_z": 5.594307
       },
       {
         "kind": "vegetation",
         "station": 1784,
         "side": -1,
         "lateral": 22.897472,
-        "base_z": 4.921861
+        "base_z": 4.773851
       },
       {
         "kind": "vegetation",
         "station": 1841,
         "side": 1,
         "lateral": 31.360973,
-        "base_z": 3.762934
+        "base_z": 3.99753
       },
       {
         "kind": "vegetation",
         "station": 1898,
         "side": -1,
         "lateral": 22.520299,
-        "base_z": 3.549177
+        "base_z": 3.713238
       },
       {
         "kind": "vegetation",
         "station": 1955,
         "side": 1,
         "lateral": 26.182249,
-        "base_z": 4.011621
+        "base_z": 3.683076
       },
       {
         "kind": "vegetation",
@@ -710,42 +711,42 @@
         "station": 1269,
         "side": 1,
         "lateral": 22.913659,
-        "base_z": 10.01489
+        "base_z": 9.813907
       },
       {
         "kind": "grandstand",
         "station": 1679,
         "side": -1,
         "lateral": 23.513789,
-        "base_z": 6.477107
+        "base_z": 6.783536
       },
       {
         "kind": "marshal",
         "station": 61,
         "side": -1,
         "lateral": 17.216993,
-        "base_z": 4.625438
+        "base_z": 4.793387
       },
       {
         "kind": "marshal",
         "station": 286,
         "side": 1,
         "lateral": 16.346463,
-        "base_z": 4.469181
+        "base_z": 4.490785
       },
       {
         "kind": "marshal",
         "station": 634,
         "side": -1,
         "lateral": 17.382234,
-        "base_z": 0.299307
+        "base_z": -0.178153
       },
       {
         "kind": "marshal",
         "station": 1003,
         "side": 1,
         "lateral": 16.284993,
-        "base_z": 6.034122
+        "base_z": 5.538849
       },
       {
         "kind": "marshal",
@@ -759,14 +760,14 @@
         "station": 1863,
         "side": 1,
         "lateral": 17.369686,
-        "base_z": 3.288633
+        "base_z": 3.724894
       },
       {
         "kind": "pit",
         "station": 1976,
         "side": 1,
         "lateral": 20.204978,
-        "base_z": 4.063935
+        "base_z": 3.790024
       }
     ],
     "barrier_samples": 4096,
