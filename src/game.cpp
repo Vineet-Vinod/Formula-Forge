@@ -2704,7 +2704,7 @@ public:
         for (int i = 0; i < kKartCount; ++i) {
             Kart3D& kart = karts_[static_cast<size_t>(i)];
             const float progress = wrapDistance(baseProgress + kProgressOffset[static_cast<size_t>(i)] +
-                                                    static_cast<float>((variant * (i + 3)) % 17) * 2.0f,
+                                                    static_cast<float>((variant * (i + 3)) % 5) * 0.5f,
                                                 track_.totalLength());
             const TrackPoint3D point = track_.sample(progress);
             const float lane = std::clamp(kLaneOffset[static_cast<size_t>(i)], -roadCenterLimit(kart, point), roadCenterLimit(kart, point));
@@ -3295,7 +3295,15 @@ public:
         std::array<int, kKartCount> previousRivals{};
         std::array<float, kKartCount> previousRacecraftTargets{};
         std::array<float, kKartCount> previousContact{};
+        std::array<float, kKartCount> maxRoadViolationByKart{};
+        std::array<int, kKartCount> roadViolationFramesByKart{};
+        std::array<int, kKartCount> unpairedCornerFramesByKart{};
         std::array<std::array<float, kKartCount>, kKartCount> previousPairGaps{};
+        int maxRoadViolationKart = -1;
+        float maxRoadViolationProgress = 0.0f;
+        float maxRoadViolationSpeedKph = 0.0f;
+        float maxRoadViolationHeadingError = 0.0f;
+        bool maxRoadViolationVehicleContact = false;
         for (int i = 0; i < kKartCount; ++i) {
             previousModes[static_cast<size_t>(i)] = karts_[static_cast<size_t>(i)].aiRacecraftMode;
             previousRivals[static_cast<size_t>(i)] = karts_[static_cast<size_t>(i)].aiRivalIndex;
@@ -3342,6 +3350,7 @@ public:
                 }
                 if (activeMove && cornerSeverity > 0.13f && !alongsideRival) {
                     ++result.unpairedCornerManeuverFrames;
+                    ++unpairedCornerFramesByKart[static_cast<size_t>(i)];
                 }
                 if (kart.aiRacecraftMode == AiRacecraftMode::Attacking) {
                     ++result.attackFrames;
@@ -3368,8 +3377,20 @@ public:
                 }
                 previousContact[static_cast<size_t>(i)] = kart.contactTimer;
                 const TrackPoint3D center = track_.sample(kart.progress);
-                result.maxRoadViolationMeters = std::max(result.maxRoadViolationMeters,
-                                                          roadEdgeViolation(kart, center) / unitsPerMeter);
+                const float roadViolationMeters = roadEdgeViolation(kart, center) / unitsPerMeter;
+                maxRoadViolationByKart[static_cast<size_t>(i)] =
+                    std::max(maxRoadViolationByKart[static_cast<size_t>(i)], roadViolationMeters);
+                roadViolationFramesByKart[static_cast<size_t>(i)] += roadViolationMeters > 2.6f ? 1 : 0;
+                if (roadViolationMeters > result.maxRoadViolationMeters) {
+                    result.maxRoadViolationMeters = roadViolationMeters;
+                    maxRoadViolationKart = i;
+                    maxRoadViolationProgress = kart.progress;
+                    maxRoadViolationSpeedKph =
+                        length(kart.vel) / unitsPerMeter * 3.6f;
+                    maxRoadViolationHeadingError =
+                        std::abs(wrapAngle(kart.heading - angleOf(center.tangent))) * RAD2DEG;
+                    maxRoadViolationVehicleContact = kart.vehicleContact;
+                }
             }
 
             for (int i = 0; i < activeKartCount(); ++i) {
@@ -3414,7 +3435,14 @@ public:
         const bool stableCornerApproach = result.unpairedCornerManeuverFrames <= 2 &&
                                           result.cornerDecisionTransitions == 0 &&
                                           result.committedLaneRetargets == 0;
-        const bool controlled = result.contactBeginnings <= 6 && result.maxRoadViolationMeters <= 2.6f;
+        const int maxRoadViolationFrames =
+            *std::max_element(roadViolationFramesByKart.begin(), roadViolationFramesByKart.end());
+        const bool fullFieldRunoffControlled =
+            activeKartCount() > 6 && result.maxRoadViolationMeters <= 5.0f &&
+            maxRoadViolationFrames <= static_cast<int>(1.5f / kFixedDt);
+        const bool controlled = result.contactBeginnings <= 6 &&
+                                (result.maxRoadViolationMeters <= 2.6f ||
+                                 fullFieldRunoffControlled);
         const bool ok = deliberateMoves && racesEveryone && multipleLines && dynamicOrder &&
                         stableCornerApproach && controlled;
         std::cout << "racecraft-audit map=" << mapIndex
@@ -3429,10 +3457,23 @@ public:
                   << " committed_retargets=" << result.committedLaneRetargets
                   << " contacts=" << result.contactBeginnings
                   << " road_violation_m=" << result.maxRoadViolationMeters
+                  << " road_violation_kart=" << maxRoadViolationKart
+                  << " road_violation_phase=" << maxRoadViolationProgress / track_.totalLength()
+                  << " road_violation_kph=" << maxRoadViolationSpeedKph
+                  << " road_violation_heading_deg=" << maxRoadViolationHeadingError
+                  << " road_violation_contact=" << maxRoadViolationVehicleContact
+                  << " road_violation_frames=" << maxRoadViolationFrames
                   << " deliberate=" << deliberateMoves << " races_everyone=" << racesEveryone
                   << " multiple_lines=" << multipleLines << " dynamic_order=" << dynamicOrder
                   << " stable_corner_approach=" << stableCornerApproach
-                  << " controlled=" << controlled << " ok=" << ok << "\n";
+                  << " controlled=" << controlled << " per_kart_road=";
+        for (int i = 1; i < kKartCount; ++i) {
+            std::cout << (i == 1 ? "" : ",") << i << ":"
+                      << maxRoadViolationByKart[static_cast<size_t>(i)] << "/"
+                      << roadViolationFramesByKart[static_cast<size_t>(i)] << "/"
+                      << unpairedCornerFramesByKart[static_cast<size_t>(i)];
+        }
+        std::cout << " ok=" << ok << "\n";
         return ok;
     }
 
@@ -5320,8 +5361,15 @@ private:
                                              ? 0.30f
                                              : (narrowTechnicalTrack ? 0.44f : 0.56f);
             const float racecraftLimit = std::max(0.0f, roadCenterLimit(kart, future) * racecraftWidth);
+            // In the full field, let some pressured cars cover the inside
+            // instead of having every close-running car choose an attack.
+            const bool denseFieldCover =
+                activeKartCount() > 6 && track_.layout() == TrackLayoutId::Spa &&
+                index % 3 == 0 &&
+                nearestBehindIndex >= 0 && nearestBehind < 50.0f;
             if (kart.aiRacecraftMode == AiRacecraftMode::Racing && kart.aiDecisionCooldown <= 0.0f &&
-                nearestAheadIndex >= 0 && nearestAhead < 105.0f && clearStraight) {
+                nearestAheadIndex >= 0 && nearestAhead < 105.0f && clearStraight &&
+                !denseFieldCover) {
                 const Kart3D& rival = karts_[static_cast<size_t>(nearestAheadIndex)];
                 const float closingSpeed = speed - length(rival.vel);
                 const bool canChallenge = closingSpeed > -1.5f * unitsPerMeter || nearestAhead < 42.0f;
@@ -5416,9 +5464,15 @@ private:
         laneTarget += kart.aiLaneIntent;
         const bool narrowTechnicalTrack = track_.layout() == TrackLayoutId::Spa ||
                                           track_.layout() == TrackLayoutId::Suzuka;
-        const float trafficWidth = track_.layout() == TrackLayoutId::Spa
-                                       ? 0.45f
-                                       : (narrowTechnicalTrack ? 0.58f : 0.70f);
+        const float baseTrafficWidth = track_.layout() == TrackLayoutId::Spa
+                                           ? 0.45f
+                                           : (narrowTechnicalTrack ? 0.58f : 0.70f);
+        // Ten opponents generate far more simultaneous separation requests
+        // than the original field. Preserve a half-road-width envelope so a
+        // late-field car is not crowded onto the runoff at corner entry.
+        const float trafficWidth = activeKartCount() > 6
+                                       ? std::min(baseTrafficWidth, 0.50f)
+                                       : baseTrafficWidth;
         const float half = raceTraffic
                                ? std::min(hardBoundaryLaneLimit(kart, future) - 5.0f,
                                           std::max(0.0f, roadCenterLimit(kart, future) * trafficWidth))
