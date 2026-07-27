@@ -393,7 +393,7 @@ constexpr AiTimeTrialProfile aiTimeTrialProfile(TrackLayoutId layout) {
         case TrackLayoutId::Silverstone:
             return {6, 0.75f, 1.000f, 0.76f, 16.0f, 0.30f, 50.0f, 0.86f, 0.72f, 91.292f};
         case TrackLayoutId::Monza:
-            return {2, 0.725f, 1.020f, 0.56f, 17.25f, 0.235f, 50.0f, 0.86f, 0.72f, 71.742f};
+            return {2, 0.800f, 1.020f, 0.53f, 16.75f, 0.250f, 50.0f, 0.86f, 0.72f, 71.1583f};
         case TrackLayoutId::Interlagos:
             return {6, 0.75f, 1.000f, 0.68f, 12.0f, 0.30f, 50.0f, 0.86f, 0.72f, 73.075f};
         case TrackLayoutId::Shanghai:
@@ -413,6 +413,15 @@ constexpr AiTimeTrialProfile aiTimeTrialProfile(TrackLayoutId layout) {
     }
     return {6, 0.50f, 0.985f, 0.82f, 10.0f, 0.25f, 38.0f, 0.86f, 0.72f, 120.0f};
 }
+
+constexpr std::array<float, 24>
+    kMonzaOptimizedLineOffsetsMeters = {
+        -0.0401622f, 0.0f, 0.0f, 0.0f,
+        1.5f, 0.0f, 0.102342f, -0.0687563f,
+        0.0f, 0.0f, 0.0f, 0.0f,
+        0.0f, 2.75f, 0.0f, 0.0f,
+        2.5f, 0.0f, -2.6162f, 0.0f,
+        -3.0f, 0.0f, 0.0f, 0.0f};
 
 Color mix(Color a, Color b, float t) {
     t = std::clamp(t, 0.0f, 1.0f);
@@ -1874,6 +1883,21 @@ struct AiPaceAuditResult3D {
     int physicallyFlatCorners = 0;
     int flatCornersTakenFlat = 0;
     std::array<float, 10> splitSeconds{};
+};
+
+struct MonzaOptimizationCandidate {
+    AiTimeTrialProfile profile =
+        aiTimeTrialProfile(TrackLayoutId::Monza);
+    std::array<float, 24> laneOffsetsMeters =
+        kMonzaOptimizedLineOffsetsMeters;
+};
+
+struct MonzaOptimizationReplay {
+    float seconds = std::numeric_limits<float>::max();
+    float maximumRoadViolationMeters = 0.0f;
+    int barrierContacts = 0;
+    int progressJumps = 0;
+    bool completed = false;
 };
 
 struct CollisionAuditResult3D {
@@ -3901,6 +3925,317 @@ public:
         return ok;
     }
 
+    bool runMonzaMinimumTimeAudit() {
+        const AiTimeTrialProfile baselineProfile =
+            aiTimeTrialProfile(TrackLayoutId::Monza);
+        MonzaOptimizationCandidate best;
+        best.profile = baselineProfile;
+        MonzaOptimizationReplay bestReplay =
+            replayMonzaOptimizationCandidate(best);
+        const float baselineReplaySeconds =
+            bestReplay.seconds;
+        const auto cleanReplay =
+            [](const MonzaOptimizationReplay& replay) {
+                return replay.completed &&
+                       replay.progressJumps == 0 &&
+                       replay.barrierContacts == 0 &&
+                       replay.maximumRoadViolationMeters <= 4.5f;
+            };
+        const auto betterReplay =
+            [&](const MonzaOptimizationReplay& candidate,
+                const MonzaOptimizationReplay& incumbent) {
+                if (!cleanReplay(candidate)) {
+                    return false;
+                }
+                if (!cleanReplay(incumbent)) {
+                    return true;
+                }
+                if (candidate.seconds <
+                    incumbent.seconds - kFixedDt * 0.25f) {
+                    return true;
+                }
+                return std::abs(candidate.seconds -
+                                incumbent.seconds) <=
+                           kFixedDt * 0.25f &&
+                       candidate.maximumRoadViolationMeters <
+                           incumbent.maximumRoadViolationMeters;
+            };
+        const auto printImprovement =
+            [&](int evaluation,
+                const MonzaOptimizationCandidate& candidate,
+                const MonzaOptimizationReplay& replay) {
+                std::cout
+                    << "monza-minimum-search evaluation="
+                    << evaluation
+                    << " lap_s=" << replay.seconds
+                    << " road_violation_m="
+                    << replay.maximumRoadViolationMeters
+                    << " span="
+                    << candidate.profile.smoothingSpan
+                    << " road_fraction="
+                    << candidate.profile.roadFraction
+                    << " speed_reserve="
+                    << candidate.profile.speedReserve
+                    << " brake_fraction="
+                    << candidate.profile.brakePlanningFraction
+                    << " lookahead="
+                    << candidate.profile.lookaheadBaseMeters
+                    << "/"
+                    << candidate.profile.lookaheadSpeedSeconds
+                    << "/"
+                    << candidate.profile.lookaheadMaximumMeters
+                    << " gains="
+                    << candidate.profile.headingGain
+                    << "/"
+                    << candidate.profile.crossTrackGain
+                    << "\n";
+                std::cout.flush();
+            };
+
+        int evaluations = 1;
+        printImprovement(evaluations, best, bestReplay);
+
+        // First search the global line construction variables. These change
+        // the entire geometric trajectory rather than merely retuning the
+        // follower around the existing line.
+        for (int span = 1; span <= 8; ++span) {
+            for (int fractionStep = 10;
+                 fractionStep <= 19; ++fractionStep) {
+                MonzaOptimizationCandidate candidate = best;
+                candidate.profile.smoothingSpan = span;
+                candidate.profile.roadFraction =
+                    static_cast<float>(fractionStep) * 0.05f;
+                const MonzaOptimizationReplay replay =
+                    replayMonzaOptimizationCandidate(candidate);
+                ++evaluations;
+                if (betterReplay(replay, bestReplay)) {
+                    best = candidate;
+                    bestReplay = replay;
+                    printImprovement(
+                        evaluations, best, bestReplay);
+                }
+            }
+        }
+
+        // Coordinate descent on the exact closed-loop replay. Step sizes are
+        // reduced after each complete pass so the final answer is resolved at
+        // the 120 Hz lap-time granularity rather than at a coarse hand-tuned
+        // profile.
+        std::array<float, 8> steps = {
+            0.04f, 0.08f, 4.0f, 0.04f,
+            6.0f, 0.12f, 0.12f, 0.0f};
+        for (int pass = 0; pass < 4; ++pass) {
+            for (int parameter = 0;
+                 parameter < 7; ++parameter) {
+                for (float direction : {-1.0f, 1.0f}) {
+                    MonzaOptimizationCandidate candidate = best;
+                    AiTimeTrialProfile& profile =
+                        candidate.profile;
+                    switch (parameter) {
+                        case 0:
+                            profile.speedReserve = std::clamp(
+                                profile.speedReserve +
+                                    direction * steps[0],
+                                0.94f, 1.12f);
+                            break;
+                        case 1:
+                            profile.brakePlanningFraction =
+                                std::clamp(
+                                    profile.brakePlanningFraction +
+                                        direction * steps[1],
+                                    0.35f, 0.88f);
+                            break;
+                        case 2:
+                            profile.lookaheadBaseMeters =
+                                std::clamp(
+                                    profile.lookaheadBaseMeters +
+                                        direction * steps[2],
+                                    6.0f, 30.0f);
+                            break;
+                        case 3:
+                            profile.lookaheadSpeedSeconds =
+                                std::clamp(
+                                    profile.lookaheadSpeedSeconds +
+                                        direction * steps[3],
+                                    0.08f, 0.45f);
+                            break;
+                        case 4:
+                            profile.lookaheadMaximumMeters =
+                                std::clamp(
+                                    profile.lookaheadMaximumMeters +
+                                        direction * steps[4],
+                                    24.0f, 76.0f);
+                            break;
+                        case 5:
+                            profile.headingGain = std::clamp(
+                                profile.headingGain +
+                                    direction * steps[5],
+                                0.45f, 1.40f);
+                            break;
+                        default:
+                            profile.crossTrackGain =
+                                std::clamp(
+                                    profile.crossTrackGain +
+                                        direction * steps[6],
+                                    0.35f, 1.30f);
+                            break;
+                    }
+                    const MonzaOptimizationReplay replay =
+                        replayMonzaOptimizationCandidate(
+                            candidate);
+                    ++evaluations;
+                    if (betterReplay(replay, bestReplay)) {
+                        best = candidate;
+                        bestReplay = replay;
+                        printImprovement(
+                            evaluations, best, bestReplay);
+                    }
+                }
+            }
+            for (int parameter = 0;
+                 parameter < 7; ++parameter) {
+                steps[static_cast<size_t>(parameter)] *=
+                    0.5f;
+            }
+        }
+
+        // Finally perturb 24 spatial control points on the line itself.
+        // Interpolation keeps the path continuous; every candidate is clamped
+        // to the authored road/runoff envelope before the exact replay.
+        for (float laneStepMeters : {1.0f, 0.5f, 0.25f}) {
+            for (size_t knot = 0;
+                 knot < best.laneOffsetsMeters.size(); ++knot) {
+                for (float direction : {-1.0f, 1.0f}) {
+                    MonzaOptimizationCandidate candidate = best;
+                    candidate.laneOffsetsMeters[knot] =
+                        std::clamp(
+                            candidate.laneOffsetsMeters[knot] +
+                                direction * laneStepMeters,
+                            -3.0f, 3.0f);
+                    const MonzaOptimizationReplay replay =
+                        replayMonzaOptimizationCandidate(
+                            candidate);
+                    ++evaluations;
+                    if (betterReplay(replay, bestReplay)) {
+                        best = candidate;
+                        bestReplay = replay;
+                        printImprovement(
+                            evaluations, best, bestReplay);
+                    }
+                }
+            }
+        }
+
+        // Deterministic multi-knot perturbations test combinations that
+        // one-coordinate-at-a-time descent cannot reach.
+        std::mt19937 generator(1205793);
+        std::uniform_int_distribution<int> knotDistribution(
+            0,
+            static_cast<int>(
+                best.laneOffsetsMeters.size()) -
+                1);
+        std::normal_distribution<float> lanePerturbation(
+            0.0f, 0.30f);
+        for (int iteration = 0; iteration < 96; ++iteration) {
+            MonzaOptimizationCandidate candidate = best;
+            for (int perturbation = 0;
+                 perturbation < 4; ++perturbation) {
+                const size_t knot = static_cast<size_t>(
+                    knotDistribution(generator));
+                candidate.laneOffsetsMeters[knot] =
+                    std::clamp(
+                        candidate.laneOffsetsMeters[knot] +
+                            lanePerturbation(generator),
+                        -3.0f, 3.0f);
+            }
+            const MonzaOptimizationReplay replay =
+                replayMonzaOptimizationCandidate(candidate);
+            ++evaluations;
+            if (betterReplay(replay, bestReplay)) {
+                best = candidate;
+                bestReplay = replay;
+                printImprovement(
+                    evaluations, best, bestReplay);
+            }
+        }
+        for (size_t knot = 0;
+             knot < best.laneOffsetsMeters.size(); ++knot) {
+            for (float direction : {-1.0f, 1.0f}) {
+                MonzaOptimizationCandidate candidate = best;
+                candidate.laneOffsetsMeters[knot] =
+                    std::clamp(
+                        candidate.laneOffsetsMeters[knot] +
+                            direction * 0.125f,
+                        -3.0f, 3.0f);
+                const MonzaOptimizationReplay replay =
+                    replayMonzaOptimizationCandidate(candidate);
+                ++evaluations;
+                if (betterReplay(replay, bestReplay)) {
+                    best = candidate;
+                    bestReplay = replay;
+                    printImprovement(
+                        evaluations, best, bestReplay);
+                }
+            }
+        }
+
+        const MonzaOptimizationReplay verificationA =
+            replayMonzaOptimizationCandidate(best);
+        const MonzaOptimizationReplay verificationB =
+            replayMonzaOptimizationCandidate(best);
+        const bool deterministic =
+            verificationA.completed &&
+            verificationB.completed &&
+            std::abs(verificationA.seconds -
+                     verificationB.seconds) <
+                kFixedDt * 0.25f &&
+            std::abs(
+                verificationA.maximumRoadViolationMeters -
+                verificationB.maximumRoadViolationMeters) <
+                0.001f;
+        const bool ok =
+            deterministic &&
+            cleanReplay(verificationA) &&
+            cleanReplay(verificationB);
+        std::cout
+            << "monza-minimum-time-audit"
+            << " hz=120"
+            << " evaluations=" << evaluations
+            << " baseline_s=" << baselineReplaySeconds
+            << " minimum_s=" << verificationA.seconds
+            << " repeat_s=" << verificationB.seconds
+            << " road_violation_m="
+            << verificationA.maximumRoadViolationMeters
+            << " barrier_contacts="
+            << verificationA.barrierContacts
+            << " progress_jumps="
+            << verificationA.progressJumps
+            << " span=" << best.profile.smoothingSpan
+            << " road_fraction="
+            << best.profile.roadFraction
+            << " speed_reserve="
+            << best.profile.speedReserve
+            << " brake_fraction="
+            << best.profile.brakePlanningFraction
+            << " lookahead="
+            << best.profile.lookaheadBaseMeters
+            << "/"
+            << best.profile.lookaheadSpeedSeconds
+            << "/"
+            << best.profile.lookaheadMaximumMeters
+            << " gains="
+            << best.profile.headingGain
+            << "/" << best.profile.crossTrackGain
+            << " deterministic=" << deterministic
+            << " ok=" << ok << "\n";
+        std::cout << "monza-minimum-line-offsets-m";
+        for (float offset : best.laneOffsetsMeters) {
+            std::cout << " " << offset;
+        }
+        std::cout << "\n";
+        return ok;
+    }
+
     bool runAiPaceAudit(TrackLayoutId layout = TrackLayoutId::Monza) {
         particles_.clear();
         track_.rebuild(layout);
@@ -5581,6 +5916,104 @@ private:
         return evaluation;
     }
 
+    MonzaOptimizationReplay replayMonzaOptimizationCandidate(
+        const MonzaOptimizationCandidate& candidate) {
+        particles_.clear();
+        track_.rebuild(TrackLayoutId::Monza);
+        aiOptimizationProfileActive_ = true;
+        aiOptimizationProfile_ = candidate.profile;
+        aiOptimizationLaneOffsetsMeters_ =
+            candidate.laneOffsetsMeters;
+
+        const float startProgress = track_.startProgress();
+        const TrackPoint3D start =
+            track_.sample(startProgress);
+        Kart3D kart;
+        kart.spec = specs_[0];
+        kart.tuning = selectedTrackTuning(kart.spec);
+        kart.racer = racers_[0];
+        kart.pos = start.pos;
+        kart.heading = angleOf(start.tangent);
+        kart.elevation = bankedElevation(start, 0.0f);
+        kart.grounded = true;
+        kart.nearest = track_.nearestIndex(kart.pos);
+        kart.progress =
+            track_.pointAtIndex(kart.nearest).progress;
+        kart.previousProgress = kart.progress;
+        kart.aiTempo = 1.110f;
+        kart.ghostTimer = 300.0f;
+        buildAiLapPlan(kart);
+
+        MonzaOptimizationReplay result;
+        float lapProgress = 0.0f;
+        int completedLaps = 0;
+        int flyingLapStartFrame = 0;
+        bool previousBarrierContact = false;
+        constexpr int kMaximumFrames =
+            static_cast<int>(240.0f / kFixedDt);
+        for (int frame = 0;
+             frame < kMaximumFrames; ++frame) {
+            const float beforeProgress = kart.progress;
+            updateAi(kart, kFixedDt, 1, false);
+            const float progressStep = signedDistanceToLoop(
+                beforeProgress, kart.progress,
+                track_.totalLength());
+            if (progressStep < -40.0f ||
+                progressStep > 90.0f) {
+                if (completedLaps >= 1) {
+                    ++result.progressJumps;
+                }
+            } else {
+                lapProgress += progressStep;
+            }
+            if (completedLaps >= 1) {
+                const TrackPoint3D center =
+                    track_.sample(kart.progress);
+                result.maximumRoadViolationMeters =
+                    std::max(
+                        result.maximumRoadViolationMeters,
+                        roadEdgeViolation(kart, center) /
+                            kTrackSimulationUnitsPerMeter);
+                if (!previousBarrierContact &&
+                    kart.barrierContact) {
+                    ++result.barrierContacts;
+                }
+            }
+            previousBarrierContact = kart.barrierContact;
+            if (lapProgress < track_.totalLength()) {
+                continue;
+            }
+            lapProgress -= track_.totalLength();
+            ++completedLaps;
+            if (completedLaps == 1) {
+                flyingLapStartFrame = frame + 1;
+                result.maximumRoadViolationMeters = 0.0f;
+                result.barrierContacts = 0;
+                result.progressJumps = 0;
+                previousBarrierContact = kart.barrierContact;
+            } else {
+                result.seconds =
+                    static_cast<float>(
+                        frame + 1 - flyingLapStartFrame) *
+                    kFixedDt;
+                result.completed = true;
+                break;
+            }
+        }
+        aiOptimizationProfileActive_ = false;
+        aiOptimizationLaneOffsetsMeters_.fill(0.0f);
+        return result;
+    }
+
+    AiTimeTrialProfile activeAiTimeTrialProfile(
+        TrackLayoutId layout) const {
+        if (aiOptimizationProfileActive_ &&
+            layout == TrackLayoutId::Monza) {
+            return aiOptimizationProfile_;
+        }
+        return aiTimeTrialProfile(layout);
+    }
+
     void buildAiLapPlan(const Kart3D& kart) {
         aiLapPlanLayout_ = track_.layout();
         aiLapSpeedPlan_.clear();
@@ -5594,7 +6027,7 @@ private:
 
         const int count = track_.sampleCount();
         const AiTimeTrialProfile profile =
-            aiTimeTrialProfile(track_.layout());
+            activeAiTimeTrialProfile(track_.layout());
         aiLapLanePlan_.assign(static_cast<size_t>(count), 0.0f);
 
         const auto smoothedCandidate =
@@ -5641,6 +6074,41 @@ private:
 
         aiLapLanePlan_ = smoothedCandidate(
             profile.smoothingSpan, profile.roadFraction);
+        if (track_.layout() == TrackLayoutId::Monza) {
+            const std::array<float, 24>& lineOffsetsMeters =
+                aiOptimizationProfileActive_
+                    ? aiOptimizationLaneOffsetsMeters_
+                    : kMonzaOptimizedLineOffsetsMeters;
+            const float knotCount = static_cast<float>(
+                lineOffsetsMeters.size());
+            for (int i = 0; i < count; ++i) {
+                const float coordinate =
+                    static_cast<float>(i) /
+                    static_cast<float>(count) * knotCount;
+                const size_t first =
+                    static_cast<size_t>(
+                        std::floor(coordinate)) %
+                    lineOffsetsMeters.size();
+                const size_t second =
+                    (first + 1) %
+                    lineOffsetsMeters.size();
+                const float offsetMeters = lerp(
+                    lineOffsetsMeters[first],
+                    lineOffsetsMeters[second],
+                    coordinate - std::floor(coordinate));
+                const TrackPoint3D& point =
+                    track_.pointAtIndex(i);
+                const float laneLimit =
+                    roadCenterLimit(kart, point) *
+                    profile.roadFraction;
+                aiLapLanePlan_[static_cast<size_t>(i)] =
+                    std::clamp(
+                        aiLapLanePlan_[static_cast<size_t>(i)] +
+                            offsetMeters *
+                                kTrackSimulationUnitsPerMeter,
+                        -laneLimit, laneLimit);
+            }
+        }
         AiLapEvaluation modelPlan =
             evaluateAiLapTrajectory(kart, aiLapLanePlan_);
         aiLapModelSeconds_ = modelPlan.seconds;
@@ -6171,7 +6639,7 @@ private:
                                         : speed;
         if (opponentController && isMetricCircuit(track_.layout())) {
             const AiTimeTrialProfile profile =
-                aiTimeTrialProfile(track_.layout());
+                activeAiTimeTrialProfile(track_.layout());
             const float normalizedSpeed = speed / std::max(1.0f, kart.tuning.maxForwardSpeed);
             const float steerFade = smoothstep((normalizedSpeed - kart.tuning.steerFadeStart) /
                                                std::max(0.001f, 1.0f - kart.tuning.steerFadeStart));
@@ -7872,6 +8340,11 @@ private:
     int aiLapSelectedSmoothingSpan_ = 0;
     float aiLapSelectedRoadFraction_ = 0.0f;
     TrackLayoutId aiLapPlanLayout_ = TrackLayoutId::Spa;
+    bool aiOptimizationProfileActive_ = false;
+    AiTimeTrialProfile aiOptimizationProfile_ =
+        aiTimeTrialProfile(TrackLayoutId::Monza);
+    std::array<float, 24>
+        aiOptimizationLaneOffsetsMeters_{};
     std::array<KartSpec3D, 11> specs_;
     std::array<std::string, kKartCount> racers_;
     std::vector<Kart3D> karts_;
@@ -8125,6 +8598,8 @@ int runFormulaForge(int argc, char** argv) {
     const bool aiPaceAuditHockenheim = hasArg(argc, argv, "--ai-pace-audit-hockenheim");
     const bool aiPaceAuditBuddh = hasArg(argc, argv, "--ai-pace-audit-buddh");
     const bool aiPhysicsParityAudit = hasArg(argc, argv, "--ai-physics-parity-audit");
+    const bool monzaMinimumTimeAudit =
+        hasArg(argc, argv, "--monza-minimum-time-audit");
     const bool aiPaceAudit = hasArg(argc, argv, "--ai-pace-audit") || aiPaceAuditSpa || aiPaceAuditSuzuka ||
                              aiPaceAuditSilverstone || aiPaceAuditInterlagos || aiPaceAuditShanghai ||
                              aiPaceAuditBahrain || aiPaceAuditSepang ||
@@ -8180,6 +8655,7 @@ int runFormulaForge(int argc, char** argv) {
     const bool windowed = agentPlay || hasArg(argc, argv, "--windowed") || hasArg(argc, argv, "--smoke-render") || assetAudit ||
                           hasArg(argc, argv, "--diagnose-controller") || hasArg(argc, argv, "--handling-audit") ||
                           hasArg(argc, argv, "--race-audit") || racecraftAudit || aiPaceAudit || aiPhysicsParityAudit ||
+                          monzaMinimumTimeAudit ||
                           hasArg(argc, argv, "--time-trial-audit") ||
                           hasArg(argc, argv, "--grid-audit") ||
                           hasArg(argc, argv, "--collision-audit") ||
@@ -8218,7 +8694,8 @@ int runFormulaForge(int argc, char** argv) {
     const bool perfAudit = hasArg(argc, argv, "--perf-audit") || spaPerfAudit;
     const bool backgroundAudit = assetAudit || handlingAudit || raceAudit || racecraftAudit ||
                                  aiPaceAudit || aiPhysicsParityAudit || timeTrialAudit || gridAudit ||
-                                 collisionAudit || spaControlAudit || terrainAudit || diagnoseController;
+                                 collisionAudit || spaControlAudit || terrainAudit || diagnoseController ||
+                                 monzaMinimumTimeAudit;
     const std::filesystem::path launchDir = std::filesystem::current_path();
     const std::filesystem::path captureDir = launchDir / "build" / "playtest_frames";
 
@@ -8322,6 +8799,11 @@ int runFormulaForge(int argc, char** argv) {
     }
     if (aiPhysicsParityAudit) {
         const bool ok = game.runAiPhysicsParityAudit();
+        cleanupRuntime();
+        return ok ? 0 : 1;
+    }
+    if (monzaMinimumTimeAudit) {
+        const bool ok = game.runMonzaMinimumTimeAudit();
         cleanupRuntime();
         return ok ? 0 : 1;
     }
