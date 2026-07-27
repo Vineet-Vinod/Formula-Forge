@@ -330,6 +330,9 @@ TRACKS = {
         # Keep spectator structures on the non-runoff side of Turns 1-3,
         # the following straight, and the late-lap asphalt escape road.
         "grandstand_sides": (1, -1, -1, 1, 1),
+        # Turn 3 curls back inside the nominal 36 m right-side barrier offset.
+        # Require the authored barrier to stay clear of the opposite asphalt.
+        "minimum_barrier_road_clearance_m": 0.5,
         "cpp_simulation_units_per_asset_unit": 17.0,
         "coordinate_unit": "meter",
     },
@@ -569,6 +572,27 @@ def active_zone(zones, distance, side, total):
                 distance, float(zone["start_m"]), float(zone["end_m"]), total):
             result = zone
     return result
+
+
+def barrier_offset(zone, distance, total):
+    """Sample a barrier offset, including an optional smooth end offset."""
+    if zone is None:
+        return 6.0
+    start_offset = float(zone.get("offset_m", 6.0))
+    end_offset = float(zone.get("end_offset_m", start_offset))
+    if end_offset == start_offset:
+        return start_offset
+    start = float(zone["start_m"]) % total
+    raw_end = float(zone["end_m"])
+    end = total if raw_end == total else raw_end % total
+    sample = distance % total
+    if start <= end:
+        progress = (sample - start) / max(0.001, end - start)
+    else:
+        span = total - start + end
+        along = sample - start if sample >= start else total - start + sample
+        progress = along / max(0.001, span)
+    return start_offset + (end_offset - start_offset) * smoothstep(progress)
 
 
 def bank_height(lateral, angle_degrees):
@@ -1799,7 +1823,7 @@ def make_world(slug, spec):
         for index in range(SAMPLES):
             distance = target_length * index / SAMPLES
             zone = active_zone(course_design["barrier_zones"], distance, side, target_length)
-            barrier_offsets[side].append(float(zone.get("offset_m", 6.0)) if zone else 6.0)
+            barrier_offsets[side].append(barrier_offset(zone, distance, target_length))
             barrier_types[side].append(zone.get("type", "concrete") if zone else "concrete")
 
     min_x, max_x = min(p[0] for p in center), max(p[0] for p in center)

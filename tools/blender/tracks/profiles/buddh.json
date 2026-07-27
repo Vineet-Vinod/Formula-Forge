@@ -29,6 +29,9 @@
     {"start_m": 1970.0, "end_m": 2630.0, "side": "left", "type": "tecpro", "offset_m": 36.0},
     {"start_m": 2650.0, "end_m": 3320.0, "side": "right", "type": "tecpro", "offset_m": 34.0},
     {"start_m": 3340.0, "end_m": 4010.0, "side": "left", "type": "tecpro", "offset_m": 36.0},
-    {"start_m": 4030.0, "end_m": 4690.0, "side": "right", "type": "tecpro", "offset_m": 34.0}
+    {"start_m": 4030.0, "end_m": 4690.0, "side": "right", "type": "tecpro", "offset_m": 34.0},
+    {"start_m": 550.0, "end_m": 620.0, "side": "right", "type": "tecpro",
+     "offset_m": 36.0, "end_offset_m": 6.0},
+    {"start_m": 620.0, "end_m": 710.0, "side": "right", "type": "tecpro", "offset_m": 6.0}
   ]
 }

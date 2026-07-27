@@ -168,6 +168,21 @@
         "side": "right",
         "type": "tecpro",
         "offset_m": 34.0
+      },
+      {
+        "start_m": 550.0,
+        "end_m": 620.0,
+        "side": "right",
+        "type": "tecpro",
+        "offset_m": 36.0,
+        "end_offset_m": 6.0
+      },
+      {
+        "start_m": 620.0,
+        "end_m": 710.0,
+        "side": "right",
+        "type": "tecpro",
+        "offset_m": 6.0
       }
     ]
   },

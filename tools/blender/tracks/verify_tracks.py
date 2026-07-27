@@ -30,10 +30,10 @@ from generate_tracks import (ASPHALT_MAX_LUMINANCE, ASPHALT_MIN_LUMINANCE,
                              TERRAIN_ROAD_CARVE_RADIUS_METERS,
                              TERRAIN_ROAD_CLEARANCE_METERS,
                              TRACKS as TRACK_SPECS, cpp_pairs, dense_closed,
-                             active_zone, bank_height, canonical_runoff_zones,
+                             active_zone, bank_height, barrier_offset, canonical_runoff_zones,
                              cpp_runoff_zones, find_crossover, length_closed,
                              interpolated_track_frame, load_course_design, loop_pose, pair_digest,
-                             resample_closed, sample_stations,
+                             nearest_road_edge_clearance, resample_closed, sample_stations,
                              shoulder_ground_z, spa_road_width, track_frame,
                              transform_bounds_blender_to_gltf)
 
@@ -520,7 +520,7 @@ def verify(root: Path, slug: str):
         for index, point in enumerate(expected):
             distance = target_length * index / SAMPLES
             zone = active_zone(course_design["barrier_zones"], distance, side, target_length)
-            offset = float(zone.get("offset_m", 6.0)) if zone else 6.0
+            offset = barrier_offset(zone, distance, target_length)
             lateral = expected_widths[index]*0.5 + offset*detail_scale
             wanted_z = shoulder_ground_z(point[2], expected_widths[index]*0.5,
                                          side*lateral, detail_scale, expected_banks[index])
@@ -528,6 +528,24 @@ def verify(root: Path, slug: str):
             max_barrier_ground_error = max(max_barrier_ground_error, abs(actual_z-wanted_z))
     if max_barrier_ground_error > tolerance:
         raise ValueError(f"{slug}: safety barrier floats by {max_barrier_ground_error:.6f}")
+    required_barrier_clearance = spec.get("minimum_barrier_road_clearance_m")
+    if required_barrier_clearance is not None:
+        half_widths = [width * 0.5 for width in expected_widths]
+        minimum_barrier_clearance = float("inf")
+        for side_index in range(2):
+            side_start = side_index * SAMPLES * 4
+            for index in range(SAMPLES):
+                for vertex_offset in (0, 1):
+                    vertex = barrier.data.vertices[
+                        side_start + index*4 + vertex_offset].co
+                    minimum_barrier_clearance = min(
+                        minimum_barrier_clearance,
+                        nearest_road_edge_clearance(
+                            vertex.x, vertex.y, expected, half_widths))
+        if minimum_barrier_clearance < required_barrier_clearance:
+            raise ValueError(
+                f"{slug}: safety barrier enters a nearby asphalt branch "
+                f"({minimum_barrier_clearance:.3f}m clearance)")
 
     embankment = bpy.data.objects["track_embankment"]
     embankment_reach = spec.get("embankment_reach_m", TERRAIN_REACH_METERS)
@@ -620,11 +638,11 @@ def verify(root: Path, slug: str):
                     f"{slug}: grandstand occupies profiled runoff at station {index}")
             barrier_zone = active_zone(
                 course_design["barrier_zones"], distance, side, target_length)
-            barrier_offset = (
+            stand_barrier_offset = (
                 float(barrier_zone.get("offset_m", 6.0)) if barrier_zone else 6.0)
             inner_footprint_offset = (
                 instance["lateral"] - half_width - canopy_half_depth)
-            if inner_footprint_offset < barrier_offset + 1.0:
+            if inner_footprint_offset < stand_barrier_offset + 1.0:
                 raise ValueError(
                     f"{slug}: grandstand canopy is inside the safety barrier "
                     f"at station {index}")
