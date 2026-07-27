@@ -106,7 +106,7 @@ struct MapSpec3D {
     const char* backstory;
 };
 
-constexpr std::array<MapSpec3D, 11> kMaps = {{
+constexpr std::array<MapSpec3D, 12> kMaps = {{
     {TrackLayoutId::Spa, "SPA-FRANCORCHAMPS", "BELGIAN GRAND PRIX", "7.004 KM / 19 TURNS / 102.2 M RELIEF",
      "An Ardennes classic that climbs steeply from Eau Rouge to Raidillon and the Kemmel Straight before descending home."},
     {TrackLayoutId::Suzuka, "SUZUKA", "SUZUKA GRAND PRIX", "5.807 KM / 18 TURNS / FIGURE EIGHT",
@@ -129,6 +129,8 @@ constexpr std::array<MapSpec3D, 11> kMaps = {{
      "A steep climb to Turn 1 opens an anti-clockwise lap of rapid esses, a long back straight and stadium corners."},
     {TrackLayoutId::Istanbul, "ISTANBUL PARK", "TURKISH GRAND PRIX", "5.338 KM / 14 TURNS / ANTI-CLOCKWISE",
      "A steep, flowing lap is defined by the sustained four-apex Turn 8 and the heavy braking sequence at the end."},
+    {TrackLayoutId::Hockenheim, "HOCKENHEIM", "GERMAN GRAND PRIX", "4.574 KM / 17 TURNS / CLOCKWISE",
+     "The modern layout pairs the long Parabolika run and hairpin with a compact, technical stadium section."},
 }};
 
 struct RaceResult3D {
@@ -283,6 +285,18 @@ constexpr std::array<FormulaCornerTarget, 9> kIstanbulFormulaTargets = {{
     {"Back straight", 0.760f, 310.0f, 8, true},
 }};
 
+constexpr std::array<FormulaCornerTarget, 9> kHockenheimFormulaTargets = {{
+    {"Nordkurve", 0.061f, 175.0f, 5, false},
+    {"Turn 2", 0.183f, 95.0f, 3, false},
+    {"Turn 3", 0.214f, 145.0f, 4, false},
+    {"Spitzkehre", 0.458f, 65.0f, 2, false},
+    {"Turn 7", 0.557f, 135.0f, 4, false},
+    {"Mercedes", 0.618f, 115.0f, 3, false},
+    {"Mobil 1", 0.763f, 170.0f, 5, false},
+    {"Sachs", 0.832f, 90.0f, 2, false},
+    {"Parabolika", 0.340f, 310.0f, 8, true},
+}};
+
 std::span<const FormulaCornerTarget> formulaCornerTargets(TrackLayoutId layout) {
     switch (layout) {
         case TrackLayoutId::Spa: return kSpaFormulaTargets;
@@ -296,6 +310,7 @@ std::span<const FormulaCornerTarget> formulaCornerTargets(TrackLayoutId layout) 
         case TrackLayoutId::Sepang: return kSepangFormulaTargets;
         case TrackLayoutId::Cota: return kCotaFormulaTargets;
         case TrackLayoutId::Istanbul: return kIstanbulFormulaTargets;
+        case TrackLayoutId::Hockenheim: return kHockenheimFormulaTargets;
     }
     return {};
 }
@@ -340,6 +355,8 @@ constexpr AiCircuitProfile aiCircuitProfile(TrackLayoutId layout) {
             return {"cota", 93.0f, 105.0f, 111.0f, 109.0f, 116.0f, 1800, 4.5f, 2.5f};
         case TrackLayoutId::Istanbul:
             return {"istanbul", 83.0f, 93.0f, 98.0f, 97.0f, 102.0f, 1800, 4.5f, 2.5f};
+        case TrackLayoutId::Hockenheim:
+            return {"hockenheim", 72.0f, 78.0f, 83.0f, 82.0f, 87.0f, 1800, 4.5f, 2.5f};
     }
     return {"unknown", 90.0f, 60.0f, 220.0f, 60.0f, 230.0f, 1500, 4.5f, 2.5f};
 }
@@ -3181,7 +3198,8 @@ public:
                                      TrackLayoutId::Monza, TrackLayoutId::Interlagos,
                                      TrackLayoutId::Shanghai, TrackLayoutId::Bahrain,
                                      TrackLayoutId::Jeddah, TrackLayoutId::Sepang,
-                                     TrackLayoutId::Cota, TrackLayoutId::Istanbul}) {
+                                     TrackLayoutId::Cota, TrackLayoutId::Istanbul,
+                                     TrackLayoutId::Hockenheim}) {
             track_.rebuild(layout);
             const ArcadeVehicleConfig layoutTuning = selectedTrackTuning(specs_[0]);
             for (const FormulaCornerTarget& target : formulaCornerTargets(layout)) {
@@ -4033,11 +4051,11 @@ public:
         float minBarrierBeyondRunoffMeters = std::numeric_limits<float>::max();
         float maxBoundaryContractError = 0.0f;
         bool envelopeOrdered = true;
-        constexpr std::array<TrackLayoutId, 11> kMetricLayouts = {
+        constexpr std::array<TrackLayoutId, 12> kMetricLayouts = {
             TrackLayoutId::Spa, TrackLayoutId::Suzuka, TrackLayoutId::Silverstone,
             TrackLayoutId::Monza, TrackLayoutId::Interlagos, TrackLayoutId::Shanghai,
             TrackLayoutId::Bahrain, TrackLayoutId::Jeddah, TrackLayoutId::Sepang,
-            TrackLayoutId::Cota, TrackLayoutId::Istanbul};
+            TrackLayoutId::Cota, TrackLayoutId::Istanbul, TrackLayoutId::Hockenheim};
         for (TrackLayoutId layout : kMetricLayouts) {
             track_.rebuild(layout);
             Kart3D contractKart;
@@ -5242,6 +5260,9 @@ private:
         if (track_.layout() == TrackLayoutId::Istanbul) {
             racingLineWidth = 0.40f;
         }
+        if (track_.layout() == TrackLayoutId::Hockenheim) {
+            racingLineWidth = 0.40f;
+        }
         for (int iteration = 0; iteration < 90; ++iteration) {
             for (int i = 0; i < count; ++i) {
                 const TrackPoint3D& point = track_.pointAtIndex(i);
@@ -5968,7 +5989,8 @@ private:
                 track_.layout() == TrackLayoutId::Jeddah ||
                 track_.layout() == TrackLayoutId::Sepang ||
                 track_.layout() == TrackLayoutId::Cota ||
-                track_.layout() == TrackLayoutId::Istanbul) {
+                track_.layout() == TrackLayoutId::Istanbul ||
+                track_.layout() == TrackLayoutId::Hockenheim) {
                 const float previewMeters =
                     std::clamp(8.0f + distanceSpeed * 0.12f, 10.0f, 24.0f);
                 const float tangentSpanMeters = 5.0f;
@@ -7887,11 +7909,12 @@ int runFormulaForge(int argc, char** argv) {
     const bool aiPaceAuditSepang = hasArg(argc, argv, "--ai-pace-audit-sepang");
     const bool aiPaceAuditCota = hasArg(argc, argv, "--ai-pace-audit-cota");
     const bool aiPaceAuditIstanbul = hasArg(argc, argv, "--ai-pace-audit-istanbul");
+    const bool aiPaceAuditHockenheim = hasArg(argc, argv, "--ai-pace-audit-hockenheim");
     const bool aiPhysicsParityAudit = hasArg(argc, argv, "--ai-physics-parity-audit");
     const bool aiPaceAudit = hasArg(argc, argv, "--ai-pace-audit") || aiPaceAuditSpa || aiPaceAuditSuzuka ||
                              aiPaceAuditSilverstone || aiPaceAuditInterlagos || aiPaceAuditShanghai ||
                              aiPaceAuditBahrain || aiPaceAuditJeddah || aiPaceAuditSepang ||
-                             aiPaceAuditCota || aiPaceAuditIstanbul;
+                             aiPaceAuditCota || aiPaceAuditIstanbul || aiPaceAuditHockenheim;
     TrackLayoutId aiPaceAuditLayout = TrackLayoutId::Monza;
     if (aiPaceAuditSpa) {
         aiPaceAuditLayout = TrackLayoutId::Spa;
@@ -7913,6 +7936,8 @@ int runFormulaForge(int argc, char** argv) {
         aiPaceAuditLayout = TrackLayoutId::Cota;
     } else if (aiPaceAuditIstanbul) {
         aiPaceAuditLayout = TrackLayoutId::Istanbul;
+    } else if (aiPaceAuditHockenheim) {
+        aiPaceAuditLayout = TrackLayoutId::Hockenheim;
     }
     const bool racecraftAuditSpa = hasArg(argc, argv, "--racecraft-audit-spa");
     const bool racecraftAuditSuzuka = hasArg(argc, argv, "--racecraft-audit-suzuka");

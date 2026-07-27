@@ -86,6 +86,7 @@ TRACKS = {
         "clockwise": True,
         "start_node": 395005281,
         "source": "https://www.openstreetmap.org/relation/284588",
+        "smoothing_iterations": 2,
     },
     "buddh": {
         "symbol": "kBuddhCenterline",

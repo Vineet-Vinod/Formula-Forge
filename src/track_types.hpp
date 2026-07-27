@@ -21,6 +21,7 @@ enum class TrackLayoutId {
     Sepang,
     Cota,
     Istanbul,
+    Hockenheim,
 };
 
 struct TrackElevationPoint {

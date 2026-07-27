@@ -14,6 +14,7 @@ namespace {
 #include "track_data/sepang_centerline.inc"
 #include "track_data/cota_centerline.inc"
 #include "track_data/istanbul_centerline.inc"
+#include "track_data/hockenheim_centerline.inc"
 
 // Starts after the Bus Stop and follows Spa's 19 turns in race order. These
 // survey-space points retain La Source, Eau Rouge/Raidillon, the Kemmel run,
@@ -691,7 +692,54 @@ constexpr TrackTurnExpectation kIstanbulTurns[] = {
     {"Turns 12-14", 0.915f, TrackTurnDirection::Left},
 };
 
-constexpr std::array<TrackCatalogEntry, 11> kCatalog = {{
+constexpr TrackElevationPoint kHockenheimElevation[] = {
+    {0.0f, 2.0f},    {380.0f, 3.1f},  {760.0f, 5.0f},  {1140.0f, 4.2f},
+    {1520.0f, 2.8f}, {1900.0f, 1.4f}, {2280.0f, 0.0f}, {2660.0f, 0.8f},
+    {3040.0f, 2.1f}, {3420.0f, 3.6f}, {3800.0f, 4.6f}, {4180.0f, 3.0f},
+    {4574.0f, 2.0f},
+};
+
+constexpr TrackWidthPoint kHockenheimWidth[] = {
+    {0.0f, 18.0f},   {200.0f, 16.0f},  {560.0f, 12.0f},  {920.0f, 14.0f},
+    {1280.0f, 12.0f}, {1660.0f, 14.0f}, {2040.0f, 12.0f}, {2420.0f, 16.0f},
+    {2800.0f, 12.0f}, {3180.0f, 14.0f}, {3560.0f, 12.0f}, {3940.0f, 15.0f},
+    {4300.0f, 16.0f}, {4574.0f, 18.0f},
+};
+
+constexpr TrackBankPoint kHockenheimBank[] = {
+    {0.0f, 0.0f},    {180.0f, 0.0f},    {360.0f, 2.0f},   {620.0f, -1.6f},
+    {900.0f, 1.8f},  {1180.0f, -1.5f}, {1480.0f, 1.8f},  {1790.0f, -1.5f},
+    {2110.0f, 2.0f}, {2440.0f, -1.6f}, {2780.0f, 1.9f},  {3130.0f, -1.5f},
+    {3480.0f, 2.1f}, {3840.0f, -1.6f}, {4180.0f, 1.9f},  {4450.0f, -1.4f},
+    {4574.0f, 0.0f},
+};
+
+constexpr TrackRunoffZone kHockenheimRunoff[] = {
+    {100.0f, 620.0f, -1, TrackRunoffSurface::Asphalt, 24.0f},
+    {590.0f, 1120.0f, 1, TrackRunoffSurface::Gravel, 22.0f},
+    {1200.0f, 1740.0f, -1, TrackRunoffSurface::Asphalt, 22.0f},
+    {1820.0f, 2360.0f, 1, TrackRunoffSurface::Gravel, 28.0f},
+    {2440.0f, 3000.0f, -1, TrackRunoffSurface::Asphalt, 24.0f},
+    {3080.0f, 3640.0f, 1, TrackRunoffSurface::Gravel, 22.0f},
+    {3720.0f, 4260.0f, -1, TrackRunoffSurface::Asphalt, 22.0f},
+    {4340.0f, 4574.0f, 1, TrackRunoffSurface::Asphalt, 24.0f},
+};
+
+constexpr TrackTurnExpectation kHockenheimTurns[] = {
+    {"Nordkurve", 0.061f, TrackTurnDirection::Right},
+    {"Turn 2", 0.183f, TrackTurnDirection::Right},
+    {"Turn 3", 0.214f, TrackTurnDirection::Left},
+    {"Spitzkehre", 0.458f, TrackTurnDirection::Right},
+    {"Turn 7", 0.557f, TrackTurnDirection::Right},
+    {"Mercedes", 0.618f, TrackTurnDirection::Left},
+    {"Turn 9", 0.656f, TrackTurnDirection::Right},
+    {"Mobil 1", 0.763f, TrackTurnDirection::Right},
+    {"Sachs", 0.832f, TrackTurnDirection::Left},
+    {"Sudkurve entry", 0.908f, TrackTurnDirection::Right},
+    {"Sudkurve exit", 0.939f, TrackTurnDirection::Right},
+};
+
+constexpr std::array<TrackCatalogEntry, 12> kCatalog = {{
     {TrackLayoutId::Spa,
      "Spa-Francorchamps",
      "Circuit de Spa-Francorchamps",
@@ -901,6 +949,25 @@ constexpr std::array<TrackCatalogEntry, 11> kCatalog = {{
      kIstanbulBank,
      kIstanbulRunoff,
      {}},
+    {TrackLayoutId::Hockenheim,
+     "Hockenheim",
+     "Hockenheimring",
+     "Germany",
+     "The modern short course combines Parabolika and its hairpin with a tight, amphitheatre-like stadium section.",
+     "rhine-parkland",
+     4574.0f,
+     17,
+     0.0f,
+     5.0f,
+     true,
+     1.0f,
+     true,
+     kHockenheimCenterline,
+     kHockenheimElevation,
+     kHockenheimWidth,
+     kHockenheimBank,
+     kHockenheimRunoff,
+     {}},
 }};
 
 float wrapDistance(float distance, float totalLength) noexcept {
@@ -1005,6 +1072,8 @@ std::span<const TrackTurnExpectation> trackTurnExpectations(TrackLayoutId id) no
             return kCotaTurns;
         case TrackLayoutId::Istanbul:
             return kIstanbulTurns;
+        case TrackLayoutId::Hockenheim:
+            return kHockenheimTurns;
     }
     return {};
 }
@@ -1068,6 +1137,9 @@ TrackShapeAuditResult auditTrackCatalogShape(const TrackCatalogEntry& track) noe
             break;
         case TrackLayoutId::Istanbul:
             expectedAspect = 1.147f;
+            break;
+        case TrackLayoutId::Hockenheim:
+            expectedAspect = 1.587f;
             break;
     }
     result.aspectMatches = std::abs(result.aspectRatio - expectedAspect) <= expectedAspect * 0.12f;
