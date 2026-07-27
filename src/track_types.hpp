@@ -17,6 +17,7 @@ enum class TrackLayoutId {
     Interlagos,
     Shanghai,
     Bahrain,
+    Jeddah,
 };
 
 struct TrackElevationPoint {

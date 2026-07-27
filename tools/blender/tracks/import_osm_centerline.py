@@ -50,6 +50,7 @@ TRACKS = {
         "clockwise": False,
         "start": (21.6369468, 39.1027829),
         "source": "https://www.openstreetmap.org/way/1007989410",
+        "smoothing_iterations": 2,
     },
     "sepang": {
         "symbol": "kSepangCenterline",

@@ -10,6 +10,7 @@ namespace {
 
 #include "track_data/shanghai_centerline.inc"
 #include "track_data/bahrain_centerline.inc"
+#include "track_data/jeddah_centerline.inc"
 
 // Starts after the Bus Stop and follows Spa's 19 turns in race order. These
 // survey-space points retain La Source, Eau Rouge/Raidillon, the Kemmel run,
@@ -504,7 +505,48 @@ constexpr TrackTurnExpectation kBahrainTurns[] = {
     {"Turn 15", 0.930f, TrackTurnDirection::Left},
 };
 
-constexpr std::array<TrackCatalogEntry, 7> kCatalog = {{
+constexpr TrackElevationPoint kJeddahElevation[] = {
+    {0.0f, 2.0f},    {520.0f, 3.2f},  {1080.0f, 5.5f}, {1640.0f, 7.8f},
+    {2240.0f, 9.8f}, {2810.0f, 8.1f}, {3410.0f, 5.6f}, {4020.0f, 3.4f},
+    {4620.0f, 1.1f}, {5230.0f, 0.0f}, {5780.0f, 0.9f}, {6174.0f, 2.0f},
+};
+
+constexpr TrackWidthPoint kJeddahWidth[] = {
+    {0.0f, 13.0f},    {580.0f, 12.0f},  {1120.0f, 13.0f}, {1680.0f, 12.0f},
+    {2260.0f, 14.0f}, {2860.0f, 12.0f}, {3480.0f, 13.0f}, {4100.0f, 12.0f},
+    {4720.0f, 14.0f}, {5300.0f, 12.0f}, {5840.0f, 15.0f}, {6174.0f, 13.0f},
+};
+
+constexpr TrackBankPoint kJeddahBank[] = {
+    {0.0f, 0.0f},    {420.0f, 0.0f},    {780.0f, 1.6f},   {1120.0f, -1.4f},
+    {1510.0f, 1.5f}, {1910.0f, -1.4f}, {2320.0f, 1.6f},  {2780.0f, -1.3f},
+    {3220.0f, 1.5f}, {3660.0f, -1.4f}, {4100.0f, 1.5f},  {4540.0f, -1.3f},
+    {5010.0f, 1.5f}, {5480.0f, -1.2f}, {5890.0f, 1.4f},  {6174.0f, 0.0f},
+};
+
+constexpr TrackRunoffZone kJeddahRunoff[] = {
+    {120.0f, 760.0f, 1, TrackRunoffSurface::Asphalt, 12.0f},
+    {820.0f, 1510.0f, -1, TrackRunoffSurface::Asphalt, 10.0f},
+    {1580.0f, 2260.0f, 1, TrackRunoffSurface::Asphalt, 11.0f},
+    {2350.0f, 3060.0f, -1, TrackRunoffSurface::Asphalt, 10.0f},
+    {3160.0f, 3860.0f, 1, TrackRunoffSurface::Asphalt, 12.0f},
+    {3940.0f, 4660.0f, -1, TrackRunoffSurface::Asphalt, 10.0f},
+    {4750.0f, 5480.0f, 1, TrackRunoffSurface::Asphalt, 12.0f},
+    {5540.0f, 6174.0f, -1, TrackRunoffSurface::Asphalt, 14.0f},
+};
+
+constexpr TrackTurnExpectation kJeddahTurns[] = {
+    {"Turn 1", 0.040f, TrackTurnDirection::Left},
+    {"Turns 4-7", 0.244f, TrackTurnDirection::Left},
+    {"Turn 13", 0.424f, TrackTurnDirection::Left},
+    {"Turn 16", 0.508f, TrackTurnDirection::Left},
+    {"Turn 18", 0.582f, TrackTurnDirection::Right},
+    {"Turn 22", 0.621f, TrackTurnDirection::Left},
+    {"Turns 23-24", 0.738f, TrackTurnDirection::Left},
+    {"Turn 27 approach", 0.847f, TrackTurnDirection::Right},
+};
+
+constexpr std::array<TrackCatalogEntry, 8> kCatalog = {{
     {TrackLayoutId::Spa,
      "Spa-Francorchamps",
      "Circuit de Spa-Francorchamps",
@@ -638,6 +680,25 @@ constexpr std::array<TrackCatalogEntry, 7> kCatalog = {{
      kBahrainBank,
      kBahrainRunoff,
      {}},
+    {TrackLayoutId::Jeddah,
+     "Jeddah",
+     "Jeddah Corniche Circuit",
+     "Saudi Arabia",
+     "A flat, ultra-fast anti-clockwise street circuit threading 27 bends beside the Red Sea.",
+     "jeddah-corniche",
+     6174.0f,
+     27,
+     0.0f,
+     9.8f,
+     false,
+     1.0f,
+     true,
+     kJeddahCenterline,
+     kJeddahElevation,
+     kJeddahWidth,
+     kJeddahBank,
+     kJeddahRunoff,
+     {}},
 }};
 
 float wrapDistance(float distance, float totalLength) noexcept {
@@ -734,6 +795,8 @@ std::span<const TrackTurnExpectation> trackTurnExpectations(TrackLayoutId id) no
             return kShanghaiTurns;
         case TrackLayoutId::Bahrain:
             return kBahrainTurns;
+        case TrackLayoutId::Jeddah:
+            return kJeddahTurns;
     }
     return {};
 }
@@ -785,6 +848,9 @@ TrackShapeAuditResult auditTrackCatalogShape(const TrackCatalogEntry& track) noe
             break;
         case TrackLayoutId::Bahrain:
             expectedAspect = 0.672f;
+            break;
+        case TrackLayoutId::Jeddah:
+            expectedAspect = 0.213f;
             break;
     }
     result.aspectMatches = std::abs(result.aspectRatio - expectedAspect) <= expectedAspect * 0.12f;
