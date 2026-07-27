@@ -37,7 +37,7 @@ constexpr float kFixedDt = 1.0f / 120.0f;
 constexpr float kRenderScale = 0.085f;
 constexpr float kSpaRenderForwardRange = 850.0f;
 constexpr float kSpaRenderRearRange = 170.0f;
-constexpr int kKartCount = 6;
+constexpr int kKartCount = 11;
 constexpr int kSampleCount = 1536;
 constexpr float kRoadSurfaceRatio = 0.40f;
 constexpr float kRoadLaneInset = 4.0f;
@@ -67,12 +67,12 @@ constexpr float kTcamTargetHeightMeters = 0.38f;
 constexpr float kTcamFovDegrees = 80.0f;
 constexpr float kGridFirstRowClearanceMeters = 1.0f;
 constexpr float kGridSlotGapMeters = 3.0f;
-constexpr std::array<float, kKartCount> kAuthoredGridSide = {-1.0f, 1.0f, -1.0f, 1.0f, -1.0f, 1.0f};
 
 float runtimeGridSideForSlot(int slot) {
     // Blender's plan-Y axis becomes the opposite lateral direction after the
     // authored glTF track is transformed into raylib world space.
-    return -kAuthoredGridSide[static_cast<size_t>(slot)];
+    const float authoredSide = slot % 2 == 0 ? -1.0f : 1.0f;
+    return -authoredSide;
 }
 
 bool isMetricCircuit(TrackLayoutId layout) {
@@ -1128,8 +1128,9 @@ std::array<KartSpec3D, 11> makeKartSpecs() {
     }};
 }
 
-std::array<std::string, 6> makeRacers() {
-    return {"Dark", "Max", "Charles", "Lewis", "Oscar", "George"};
+std::array<std::string, kKartCount> makeRacers() {
+    return {"Dark", "Max", "Charles", "Lewis", "Oscar", "George",
+            "Lando", "Fernando", "Carlos", "Pierre", "Alex"};
 }
 
 std::uint8_t racerAssetVariant(std::string_view racer) {
@@ -2441,13 +2442,29 @@ public:
         selectedSession_ = formula_forge::ui::GameModeOption::Race;
         float maxSlotPositionErrorMeters = 0.0f;
         float maxHeadingErrorDegrees = 0.0f;
+        float maxElevationErrorMeters = 0.0f;
         float maxPlayerStartDistanceMeters = 0.0f;
+        float expectedPlayerStartDistanceMeters = 0.0f;
         bool playerLastOnEveryGrid = true;
         bool gridClearOnEveryTrack = true;
+        bool fullUniqueFieldOnEveryTrack = true;
 
         for (int map = 0; map < static_cast<int>(kMaps.size()); ++map) {
             selectedMap_ = map;
             startRace();
+            fullUniqueFieldOnEveryTrack =
+                fullUniqueFieldOnEveryTrack && karts_.size() == static_cast<size_t>(kKartCount);
+            std::array<int, kKartCount> liveryCounts{};
+            for (const Kart3D& kart : karts_) {
+                if (kart.spec.bodyStyle < 0 || kart.spec.bodyStyle >= kKartCount) {
+                    fullUniqueFieldOnEveryTrack = false;
+                    continue;
+                }
+                ++liveryCounts[static_cast<size_t>(kart.spec.bodyStyle)];
+            }
+            fullUniqueFieldOnEveryTrack =
+                fullUniqueFieldOnEveryTrack &&
+                std::all_of(liveryCounts.begin(), liveryCounts.end(), [](int count) { return count == 1; });
 
             float longestCar = 0.0f;
             float widestCar = 0.0f;
@@ -2458,6 +2475,9 @@ public:
             const float unitsPerMeter = isMetricCircuit(track_.layout()) ? kTrackSimulationUnitsPerMeter : 1.0f;
             const float firstRowInsetMeters = longestCar / unitsPerMeter * 0.5f + kGridFirstRowClearanceMeters;
             const float slotSpacingMeters = longestCar / unitsPerMeter + kGridSlotGapMeters;
+            expectedPlayerStartDistanceMeters =
+                std::max(expectedPlayerStartDistanceMeters,
+                         firstRowInsetMeters + static_cast<float>(kKartCount - 1) * slotSpacingMeters);
             const float columnOffset = std::max(widestCar * 0.95f, 2.0f * unitsPerMeter);
             std::array<float, kKartCount> distanceBehindStartMeters{};
             for (int i = 0; i < kKartCount; ++i) {
@@ -2474,6 +2494,9 @@ public:
                     maxSlotPositionErrorMeters, length(kart.pos - expectedPosition) / unitsPerMeter);
                 maxHeadingErrorDegrees = std::max(
                     maxHeadingErrorDegrees, std::abs(wrapAngle(kart.heading - angleOf(expectedPoint.tangent))) * RAD2DEG);
+                maxElevationErrorMeters = std::max(
+                    maxElevationErrorMeters,
+                    std::abs(kart.elevation - bankedElevation(expectedPoint, expectedLane)) / unitsPerMeter);
                 const TrackProjection3D actualProjection = track_.projectNear(kart.pos, kart.nearest, 6);
                 distanceBehindStartMeters[static_cast<size_t>(gridSlot)] =
                     -signedDistanceToLoop(track_.startProgress(), actualProjection.progress, track_.totalLength());
@@ -2497,15 +2520,41 @@ public:
             }
         }
 
-        const bool slotsAligned = maxSlotPositionErrorMeters < 0.05f && maxHeadingErrorDegrees < 0.05f;
-        const bool compactGrid = maxPlayerStartDistanceMeters < 50.0f;
-        const bool ok = slotsAligned && compactGrid && playerLastOnEveryGrid && gridClearOnEveryTrack;
+        // Exercise every possible player selection once: each must replace
+        // that livery's AI entry while retaining the complete 11-car field.
+        for (int selected = 0; selected < kKartCount; ++selected) {
+            selectedCar_ = selected;
+            selectedMap_ = 0;
+            startRace();
+            std::array<int, kKartCount> liveryCounts{};
+            for (const Kart3D& kart : karts_) {
+                if (kart.spec.bodyStyle >= 0 && kart.spec.bodyStyle < kKartCount) {
+                    ++liveryCounts[static_cast<size_t>(kart.spec.bodyStyle)];
+                } else {
+                    fullUniqueFieldOnEveryTrack = false;
+                }
+            }
+            fullUniqueFieldOnEveryTrack =
+                fullUniqueFieldOnEveryTrack &&
+                std::all_of(liveryCounts.begin(), liveryCounts.end(), [](int count) { return count == 1; }) &&
+                karts_[0].spec.bodyStyle == selected;
+        }
+
+        const bool slotsAligned = maxSlotPositionErrorMeters < 0.05f &&
+                                  maxHeadingErrorDegrees < 0.05f &&
+                                  maxElevationErrorMeters < 0.01f;
+        const bool compactGrid =
+            maxPlayerStartDistanceMeters < expectedPlayerStartDistanceMeters + 0.25f;
+        const bool ok = slotsAligned && compactGrid && playerLastOnEveryGrid &&
+                        gridClearOnEveryTrack && fullUniqueFieldOnEveryTrack;
         std::cout << "grid-alignment-audit tracks=" << kMaps.size()
                   << " max_slot_error_m=" << maxSlotPositionErrorMeters
                   << " max_heading_error_deg=" << maxHeadingErrorDegrees
+                  << " max_elevation_error_m=" << maxElevationErrorMeters
                   << " player_start_distance_m=" << maxPlayerStartDistanceMeters
                   << " player_last=" << playerLastOnEveryGrid
                   << " grid_clear=" << gridClearOnEveryTrack
+                  << " unique_liveries=" << fullUniqueFieldOnEveryTrack
                   << " ok=" << ok << "\n";
         return ok;
     }
@@ -2625,8 +2674,10 @@ public:
 
     void showResultsCapture() {
         selectedSession_ = formula_forge::ui::GameModeOption::Race;
-        static constexpr std::array<int, kKartCount> kCaptureOrder = {1, 0, 4, 2, 5, 3};
-        static constexpr std::array<float, kKartCount> kCaptureTimes = {101.42f, 103.87f, 106.15f, 108.74f, 111.26f, 115.90f};
+        static constexpr std::array<int, kKartCount> kCaptureOrder = {1, 0, 4, 2, 5, 3, 7, 6, 9, 8, 10};
+        static constexpr std::array<float, kKartCount> kCaptureTimes = {
+            101.42f, 103.87f, 106.15f, 108.74f, 111.26f, 115.90f,
+            118.35f, 121.08f, 124.44f, 127.91f, 131.62f};
         resultCount_ = kKartCount;
         for (int i = 0; i < kKartCount; ++i) {
             results_[static_cast<size_t>(i)] = {kCaptureOrder[static_cast<size_t>(i)], i + 1,
@@ -2645,8 +2696,10 @@ public:
         const float baseProgress = wrapDistance(track_.totalLength() * phase, track_.totalLength());
         // Keep the capture-only field close enough to read as an active race
         // in screenshots while retaining safe longitudinal separation.
-        static constexpr std::array<float, kKartCount> kProgressOffset = {0.0f, 15.0f, 24.0f, 34.0f, 45.0f, 57.0f};
-        static constexpr std::array<float, kKartCount> kLaneOffset = {0.0f, -20.0f, 20.0f, -8.0f, 8.0f, 0.0f};
+        static constexpr std::array<float, kKartCount> kProgressOffset = {
+            0.0f, 15.0f, 24.0f, 34.0f, 45.0f, 57.0f, 69.0f, 82.0f, 96.0f, 111.0f, 127.0f};
+        static constexpr std::array<float, kKartCount> kLaneOffset = {
+            0.0f, -20.0f, 20.0f, -8.0f, 8.0f, 0.0f, -16.0f, 16.0f, -4.0f, 4.0f, 12.0f};
 
         for (int i = 0; i < kKartCount; ++i) {
             Kart3D& kart = karts_[static_cast<size_t>(i)];
@@ -4711,11 +4764,20 @@ private:
         const float columnOffset = std::max(widestCar * 0.95f, 2.0f * unitsPerMeter);
         for (int i = 0; i < kKartCount; ++i) {
             Kart3D kart;
-            kart.spec = specs_[static_cast<size_t>(i == 0 ? selectedCar_ : i % static_cast<int>(specs_.size()))];
+            int specIndex = selectedCar_;
+            if (i > 0) {
+                // Fill the AI field from every unselected entry, so the
+                // player's chosen livery is replaced rather than duplicated.
+                specIndex = i - 1;
+                if (specIndex >= selectedCar_) {
+                    ++specIndex;
+                }
+            }
+            kart.spec = specs_[static_cast<size_t>(specIndex)];
             kart.tuning = selectedTrackTuning(kart.spec);
             kart.racer = racers_[static_cast<size_t>(i == 0 ? selectedRacer_ : i)];
             // The player always takes the final grid slot. AI indices retain
-            // their stable simulation identities while filling slots 1-5.
+            // their stable simulation identities while filling slots 1-10.
             const int gridSlot = isTimeTrial() ? 0 : (i == 0 ? kKartCount - 1 : i - 1);
             const float stagger = isTimeTrial() && i == 0
                                       ? startProgress
@@ -7356,7 +7418,7 @@ private:
     std::vector<float> aiLapLanePlan_;
     TrackLayoutId aiLapPlanLayout_ = TrackLayoutId::Spa;
     std::array<KartSpec3D, 11> specs_;
-    std::array<std::string, 6> racers_;
+    std::array<std::string, kKartCount> racers_;
     std::vector<Kart3D> karts_;
     std::vector<Particle3D> particles_;
     std::unique_ptr<ArcadeRaceFlow> raceFlow_;

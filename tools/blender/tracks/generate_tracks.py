@@ -22,6 +22,7 @@ from mathutils.kdtree import KDTree
 REPO = Path(__file__).resolve().parents[3]
 DEFAULT_OUTPUT = REPO / "assets" / "tracks"
 SAMPLES = 2048
+STARTING_GRID_SLOT_COUNT = 11
 RUNOFF_TRANSITION_METERS = 4.0
 TERRAIN_REACH_METERS = 36.0
 GROUND_RADIAL_STEP_METERS = 1.0
@@ -850,8 +851,9 @@ def make_surface_runoff_zones(samples, half_widths, bank_angles, zones, material
 
 
 def make_starting_grid_slots(samples, half_widths, bank_angles, start_phase, target_length,
-                             material, parent, surface_offset, slot_count=6):
-    """Author six staggered F1-style grid boxes immediately before the line."""
+                             material, parent, surface_offset,
+                             slot_count=STARTING_GRID_SLOT_COUNT):
+    """Author the full staggered starting grid immediately before the line."""
     vertices, faces = [], []
     count = len(samples)
     # Mirrors initializeRace(): 83.6 simulation-unit car length, 17 units/m,
@@ -1498,13 +1500,25 @@ def make_world(slug, spec):
         add_box_geometry(gv,gf,center_box,size)
         gi.extend([material_index]*(len(gf)-old))
     mesh_object("start_gantry_mesh", gv, gf, [materials["gantry"],materials["banner"]],gi,gantry)
-    # Thin white line across the asphalt.
-    start_half_width = half_widths[int(start_phase*SAMPLES)%SAMPLES]
-    line_verts = [(-0.8*detail_scale,-start_half_width,surface_offset+0.10*detail_scale),
-                  (0.8*detail_scale,-start_half_width,surface_offset+0.10*detail_scale),
-                  (0.8*detail_scale,start_half_width,surface_offset+0.10*detail_scale),
-                  (-0.8*detail_scale,start_half_width,surface_offset+0.10*detail_scale)]
+    # Thin white line across the asphalt. Each lateral edge follows the road's
+    # crossfall so banked start straights do not receive a floating flat quad.
+    start_index = int(start_phase*SAMPLES) % SAMPLES
+    start_half_width = half_widths[start_index]
+    start_bank_angle = bank_angles[start_index]
+    line_height = surface_offset + 0.10*detail_scale
+    line_verts = [
+        (-0.8*detail_scale, -start_half_width,
+         line_height + bank_height(-start_half_width, start_bank_angle)),
+        (0.8*detail_scale, -start_half_width,
+         line_height + bank_height(-start_half_width, start_bank_angle)),
+        (0.8*detail_scale, start_half_width,
+         line_height + bank_height(start_half_width, start_bank_angle)),
+        (-0.8*detail_scale, start_half_width,
+         line_height + bank_height(start_half_width, start_bank_angle)),
+    ]
     line = mesh_object("start_finish_line", line_verts, [(0,1,2,3)], [materials["white"]], parent=gantry)
+    line["bank_conforming"] = True
+    line["bank_angle_degrees"] = start_bank_angle
     make_starting_grid_slots(center, half_widths, bank_angles, start_phase, target_length,
                              materials["white"], circuit, surface_offset)
 
@@ -1744,7 +1758,7 @@ def export_track(slug, spec, output_root):
             "barrier_samples_per_side": SAMPLES,
             "tecpro_barrier_samples": info["tecpro_samples"],
             "profiled_runoff_objects": info["profiled_runoff_objects"],
-            "starting_grid_slots": 6,
+            "starting_grid_slots": STARTING_GRID_SLOT_COUNT,
             "opaque_materials_only": True,
         },
         "grounding_contract": {

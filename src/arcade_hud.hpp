@@ -5,8 +5,8 @@
 
 namespace formula_forge::ui {
 
-inline constexpr int kMaxHudRacers = 8;
-inline constexpr int kMaxResultRacers = 10;
+inline constexpr int kMaxHudRacers = 11;
+inline constexpr int kMaxResultRacers = 11;
 inline constexpr int kMaxCoursePolylinePoints = 192;
 
 // Call after InitWindow and before the first frame. The default raylib font is

@@ -19,7 +19,8 @@ from generate_tracks import (ASPHALT_MAX_LUMINANCE, ASPHALT_MIN_LUMINANCE,
                              EMBANKMENT_UNDERLAY_GAP_METERS,
                              GROUND_RADIAL_STEP_METERS,
                              OFFROAD_VISUAL_CLEARANCE_METERS,
-                             RUNOFF_TRANSITION_METERS, SAMPLES, TERRAIN_REACH_METERS,
+                             RUNOFF_TRANSITION_METERS, SAMPLES,
+                             STARTING_GRID_SLOT_COUNT, TERRAIN_REACH_METERS,
                              TRACKS as TRACK_SPECS, cpp_pairs, dense_closed,
                              active_zone, bank_height, canonical_runoff_zones,
                              cpp_runoff_zones, find_crossover, length_closed,
@@ -368,6 +369,7 @@ def verify(root: Path, slug: str):
     barrier = bpy.data.objects["continuous_safety_barriers"]
     fence = bpy.data.objects["continuous_catch_fence"]
     limits = bpy.data.objects["track_limit_lines"]
+    start_line = bpy.data.objects["start_finish_line"]
     grid_slots = bpy.data.objects["starting_grid_slots"]
     if (len(barrier.data.vertices), len(barrier.data.polygons)) != (SAMPLES*8, SAMPLES*6):
         raise ValueError(f"{slug}: continuous barrier topology changed")
@@ -378,17 +380,32 @@ def verify(root: Path, slug: str):
         raise ValueError(f"{slug}: continuous fence topology changed")
     if (len(limits.data.vertices), len(limits.data.polygons)) != (SAMPLES*4, SAMPLES*2):
         raise ValueError(f"{slug}: track-limit line topology changed")
-    if (len(grid_slots.data.vertices), len(grid_slots.data.polygons)) != (6*16, 6*4):
+    expected_grid_topology = (STARTING_GRID_SLOT_COUNT*16, STARTING_GRID_SLOT_COUNT*4)
+    if (len(grid_slots.data.vertices), len(grid_slots.data.polygons)) != expected_grid_topology:
         raise ValueError(f"{slug}: starting grid slot topology changed")
-    if grid_slots.get("slot_count") != 6 or not grid_slots.get("before_start_finish"):
+    if (grid_slots.get("slot_count") != STARTING_GRID_SLOT_COUNT or
+            presentation["starting_grid_slots"] != STARTING_GRID_SLOT_COUNT or
+            not grid_slots.get("before_start_finish")):
         raise ValueError(f"{slug}: starting grid slot contract is stale")
+    start_index = int(spec["start_phase"] * SAMPLES) % SAMPLES
+    expected_start_bank = expected_banks[start_index]
+    start_line_base_z = surface_offset + 0.10
+    max_start_line_bank_error = max(
+        abs(vertex.co.z -
+            (start_line_base_z + bank_height(vertex.co.y, expected_start_bank)))
+        for vertex in start_line.data.vertices)
+    if (not start_line.get("bank_conforming") or
+            abs(start_line.get("bank_angle_degrees", 999.0) - expected_start_bank) > 0.002 or
+            max_start_line_bank_error > 0.002):
+        raise ValueError(f"{slug}: start/finish line does not follow road bank "
+                         f"(error {max_start_line_bank_error:.6f})")
     car_length = 83.6 / 17.0
     first_center_inset = car_length * 0.5 + 1.0
     row_spacing = car_length + 3.0
     start_progress = spec["start_phase"] * target_length
     exact_grid_alignment = grid_slots.get("runtime_distance_alignment") == "exact_progress"
     max_grid_alignment_error = 0.0
-    for slot in range(6):
+    for slot in range(STARTING_GRID_SLOT_COUNT):
         distance_behind = first_center_inset + slot * row_spacing
         if exact_grid_alignment:
             point, _, normal, index, blend = interpolated_track_frame(
