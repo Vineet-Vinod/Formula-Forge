@@ -26,8 +26,8 @@ STARTING_GRID_SLOT_COUNT = 11
 RUNOFF_TRANSITION_METERS = 4.0
 TERRAIN_REACH_METERS = 36.0
 MOUNTAIN_REACH_METERS = 240.0
-TERRAIN_GRID_STEP_METERS = 18.0
-TERRAIN_ROAD_CLEARANCE_METERS = 0.35
+TERRAIN_GRID_STEP_METERS = 10.0
+TERRAIN_ROAD_CLEARANCE_METERS = 1.0
 TERRAIN_ROAD_CARVE_RADIUS_METERS = 42.0
 TERRAIN_VERGE_WIDTH_METERS = 80.0
 TERRAIN_FLOOR_WIDTH_METERS = 220.0
@@ -527,6 +527,12 @@ class TrackGroundProjector:
         for index, point in enumerate(samples):
             self.tree.insert((point[0], point[1], 0.0), index)
         self.tree.balance()
+        self.terrain_sample_indices = list(range(0, self.count, 16))
+        self.terrain_tree = KDTree(len(self.terrain_sample_indices))
+        for tree_index, sample_index in enumerate(self.terrain_sample_indices):
+            point = samples[sample_index]
+            self.terrain_tree.insert((point[0], point[1], 0.0), tree_index)
+        self.terrain_tree.balance()
 
     def index_distance(self, first, second):
         delta = abs(first-second)
@@ -573,7 +579,7 @@ class TrackGroundProjector:
         return best
 
     def minimum_nearby_ground(self, x, y, edge_radius):
-        """Return the lowest road-owned ground field near a terrain vertex."""
+        """Return the lowest nearby road field and its asphalt-edge distance."""
         candidates = set()
         search_radius = edge_radius + max(self.half_widths)
         for _, index, _ in self.tree.find_range((x, y, 0.0), search_radius):
@@ -602,8 +608,24 @@ class TrackGroundProjector:
             bank = self.bank_angles[index]+(
                 self.bank_angles[next_index]-self.bank_angles[index])*blend
             ground = shoulder_ground_z(center_z, half_width, lane, 1.0, bank)
-            lowest = ground if lowest is None else min(lowest, ground)
+            edge_distance = max(0.0, distance-half_width)
+            if lowest is None or ground < lowest[0]:
+                lowest = (ground, edge_distance)
         return lowest
+
+    def blended_elevation(self, x, y):
+        """Blend broad hill height across nearby course branches."""
+        weighted_height = 0.0
+        total_weight = 0.0
+        for _, tree_index, distance in self.terrain_tree.find_n(
+                (x, y, 0.0), min(16, len(self.terrain_sample_indices))):
+            sample_index = self.terrain_sample_indices[tree_index]
+            weight = math.exp(-((distance/180.0)**2))
+            weighted_height += self.samples[sample_index][2]*weight
+            total_weight += weight
+        if total_weight <= 0.000001:
+            return 0.0
+        return weighted_height/total_weight
 
     def opposite_bridge_branch(self, source_index, candidate_index):
         if not self.crossing:
@@ -715,10 +737,15 @@ def make_continuous_terrain(bounds, projector, materials, parent):
                     1.0-smoothstep(edge_distance / TERRAIN_REACH_METERS))
                 height = exact_ground-underlay_clearance
             else:
+                branch_blend = smoothstep(
+                    (edge_distance-TERRAIN_REACH_METERS) / 72.0)
+                landscape_height = (
+                    center_z+(projector.blended_elevation(x, y)-center_z)*
+                    branch_blend)
                 mountain_falloff = 1.0-smoothstep(
                     (edge_distance-TERRAIN_REACH_METERS) /
                     (MOUNTAIN_REACH_METERS-TERRAIN_REACH_METERS))
-                height = max(0.0, center_z)*mountain_falloff
+                height = max(0.0, landscape_height)*mountain_falloff
             # The rectangular boundary is the circuit-wide zero datum and
             # joins the two outer floor rings without a vertical seam.
             if row in (0, rows-1) or column in (0, columns-1):
@@ -726,23 +753,30 @@ def make_continuous_terrain(bounds, projector, materials, parent):
             heights.append(height)
             edge_distances.append(edge_distance)
 
-    # A light far-field relaxation removes nearest-section Voronoi ridges.
-    # The precise 36 m road shoulder remains untouched.
-    for _ in range(2):
+    # Diffuse the broad foundation in every region so nearby high and low
+    # branches form a hillside instead of a terraced ownership wall. The
+    # separate detailed embankment retains the exact road-edge profile.
+    raw_heights = list(heights)
+    for _ in range(12):
         relaxed = list(heights)
         for row in range(1, rows-1):
             for column in range(1, columns-1):
                 index = row*columns+column
                 far_weight = smoothstep(
                     (edge_distances[index]-TERRAIN_REACH_METERS) / 72.0)
-                if far_weight <= 0.0:
-                    continue
                 neighbour_average = (
                     heights[index-columns]+heights[index+columns]+
                     heights[index-1]+heights[index+1])*0.25
                 relaxed[index] = heights[index]+(
-                    neighbour_average-heights[index])*0.48*far_weight
+                    neighbour_average-heights[index])*(0.38+0.22*far_weight)
         heights = relaxed
+    for row in range(1, rows-1):
+        for column in range(1, columns-1):
+            index = row*columns+column
+            road_anchor = 0.28*(1.0-smoothstep(
+                edge_distances[index] / TERRAIN_REACH_METERS))
+            heights[index] += (
+                raw_heights[index]-heights[index])*road_anchor
 
     # Coarse mountain cells must never interpolate above a nearby lower road,
     # especially where two circuit branches approach in plan view. Carve a
@@ -756,9 +790,62 @@ def make_continuous_terrain(bounds, projector, materials, parent):
             nearby_ground = projector.minimum_nearby_ground(
                 x, y, TERRAIN_ROAD_CARVE_RADIUS_METERS)
             if nearby_ground is not None:
-                heights[index] = min(
+                ground_height, edge_distance = nearby_ground
+                full_carve_radius = TERRAIN_GRID_STEP_METERS*2.2
+                carve_weight = 1.0-smoothstep(
+                    (edge_distance-full_carve_radius) /
+                    max(0.001, TERRAIN_ROAD_CARVE_RADIUS_METERS-
+                        full_carve_radius))
+                carved_height = min(
                     heights[index],
-                    nearby_ground-TERRAIN_ROAD_CLEARANCE_METERS)
+                    ground_height-TERRAIN_ROAD_CLEARANCE_METERS)
+                heights[index] = (
+                    heights[index]+(carved_height-heights[index])*carve_weight)
+
+    # Rasterize the complete drivable corridor into the heightfield cells as a
+    # final clearance guarantee. A vertex-only distance carve is not enough at
+    # hairpins and grade-separated crossings: one coarse quad can bridge
+    # between two road branches even though each of its corners is individually
+    # clear. Capping all four corners of every road-touched cell to the lowest
+    # sampled shoulder field keeps the triangulated terrain below both roads.
+    cell_caps = [math.inf] * len(heights)
+    for index, point in enumerate(projector.samples):
+        next_index = (index+1) % projector.count
+        nxt = projector.samples[next_index]
+        for longitudinal_blend in (0.0, 0.5):
+            center_x = point[0]+(nxt[0]-point[0])*longitudinal_blend
+            center_y = point[1]+(nxt[1]-point[1])*longitudinal_blend
+            center_z = point[2]+(nxt[2]-point[2])*longitudinal_blend
+            dx, dy = nxt[0]-point[0], nxt[1]-point[1]
+            inverse_length = 1.0/max(0.000001, math.hypot(dx, dy))
+            normal = (-dy*inverse_length, dx*inverse_length)
+            half_width = projector.half_widths[index]+(
+                projector.half_widths[next_index]-
+                projector.half_widths[index])*longitudinal_blend
+            bank = projector.bank_angles[index]+(
+                projector.bank_angles[next_index]-
+                projector.bank_angles[index])*longitudinal_blend
+            lateral_extent = half_width+6.0
+            lateral_steps = max(2, int(math.ceil(lateral_extent)))
+            for lateral_index in range(-lateral_steps, lateral_steps+1):
+                lane = lateral_extent*lateral_index/lateral_steps
+                x = center_x+normal[0]*lane
+                y = center_y+normal[1]*lane
+                column = max(0, min(columns-2,
+                    int(math.floor((x-min_x)/step_x))))
+                row = max(0, min(rows-2,
+                    int(math.floor((y-min_y)/step_y))))
+                cap = shoulder_ground_z(
+                    center_z, half_width, lane, 1.0, bank
+                )-TERRAIN_ROAD_CLEARANCE_METERS
+                for vertex_index in (
+                        row*columns+column, row*columns+column+1,
+                        (row+1)*columns+column, (row+1)*columns+column+1):
+                    cell_caps[vertex_index] = min(
+                        cell_caps[vertex_index], cap)
+    for index, cap in enumerate(cell_caps):
+        if math.isfinite(cap):
+            heights[index] = min(heights[index], cap)
 
     vertices = []
     for row in range(rows):

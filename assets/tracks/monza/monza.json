@@ -167,59 +167,59 @@
   "runtime_geometry": {
     "centerline_samples": 2048,
     "mesh_objects": 23,
-    "vertices": 339403,
-    "triangles": 431682,
+    "vertices": 391614,
+    "triangles": 531604,
     "materials": 31
   },
   "measured_bounds_blender": {
     "min": [
-      -1694.644,
-      -950.472,
-      -5.0
+      -1723.858,
+      -1142.392,
+      -1.211
     ],
     "max": [
-      1695.402,
-      951.976,
+      1724.615,
+      1143.896,
       21.72
     ],
     "dimensions": [
-      3390.046,
-      1902.449,
-      26.72
+      3448.473,
+      2286.288,
+      22.931
     ]
   },
   "measured_bounds_gltf_y_up": {
     "min": [
-      -1694.644,
-      -5.0,
-      -951.976
+      -1723.858,
+      -1.211,
+      -1143.896
     ],
     "max": [
-      1695.402,
+      1724.615,
       21.72,
-      950.472
+      1142.392
     ],
     "dimensions": [
-      3390.046,
-      26.72,
-      1902.448
+      3448.473,
+      22.931,
+      2286.288
     ]
   },
   "expected_bounds_cpp_world": {
     "min": [
-      -2448.761,
-      -7.225,
-      -1375.605
+      -2490.975,
+      -1.75,
+      -1652.93
     ],
     "max": [
-      2449.856,
+      2492.069,
       31.385,
-      1373.432
+      1650.756
     ],
     "dimensions": [
-      4898.616,
-      38.61,
-      2749.037
+      4983.043,
+      33.135,
+      3303.686
     ]
   },
   "runtime_alignment": {
@@ -268,11 +268,7 @@
     "recommended_yaw_degrees": 0.0,
     "mapping": "cppWorld = gltfPosition * recommended_glb_uniform_scale",
     "road_surface_offset_above_centerline_asset_units": 0.06,
-    "opaque_layer_elevations_asset_units": {
-      "outskirts": -5.0,
-      "verge": -0.8,
-      "infield": -0.4
-    },
+    "terrain_floor_level_asset_units": 0.0,
     "visual_replacement_scope": [
       "road",
       "runoff",
@@ -368,6 +364,7 @@
       "asphalt_runoff_zones"
     ],
     "starting_grid_slots": 11,
+    "continuous_zero_level_terrain": true,
     "opaque_materials_only": true
   },
   "grounding_contract": {
@@ -382,6 +379,21 @@
     "embankment_underlay_gap_asset_units": 0.04,
     "runoff_transition_asset_units": 4.0,
     "terrain_reach_asset_units": 36.0,
+    "continuous_terrain": {
+      "continuous": true,
+      "floor_level_m": 0.0,
+      "mountain_reach_m": 240.0,
+      "road_underlay_clearance_m": 1.0,
+      "road_carve_radius_m": 42.0,
+      "grid_step_target_m": 10.0,
+      "grid_step_x_m": 9.994642289704458,
+      "grid_step_y_m": 9.978036318272364,
+      "grid_columns": 286,
+      "grid_rows": 170,
+      "boundary_vertices": 908,
+      "height_min_m": -1.2107874383283923,
+      "height_max_m": 12.46085322805272
+    },
     "embankment_reach_asset_units": 36.0,
     "max_embankment_longitudinal_span_asset_units": null,
     "vegetation_setback_asset_units": 13.0,

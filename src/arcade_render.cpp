@@ -674,15 +674,15 @@ struct ArcadeRender::Impl {
         // runtime_alignment and measured_bounds_gltf_y_up metadata.
         static constexpr std::array<TrackAssetSpec, 5> kTrackSpecs = {{
             {"assets/tracks/spa/spa.glb", 1.445f,
-             {{3000.0f, 110.0f, 1990.0f}, {3120.0f, 118.0f, 2090.0f}}},
+             {{3150.0f, 108.0f, 2350.0f}, {3230.0f, 115.0f, 2440.0f}}},
             {"assets/tracks/suzuka/suzuka.glb", 1.445f,
-             {{2970.0f, 50.0f, 1710.0f}, {3090.0f, 57.0f, 1800.0f}}},
+             {{3100.0f, 45.0f, 2110.0f}, {3180.0f, 53.0f, 2200.0f}}},
             {"assets/tracks/silverstone/silverstone.glb", 1.445f,
-             {{2530.0f, 23.0f, 1960.0f}, {2650.0f, 27.0f, 2060.0f}}},
+             {{2780.0f, 17.0f, 2320.0f}, {2870.0f, 23.0f, 2420.0f}}},
             {"assets/tracks/monza/monza.glb", 1.445f,
-             {{3320.0f, 24.0f, 1850.0f}, {3460.0f, 30.0f, 1960.0f}}},
+             {{3400.0f, 19.0f, 2240.0f}, {3500.0f, 26.0f, 2335.0f}}},
             {"assets/tracks/interlagos/interlagos.glb", 1.445f,
-             {{1280.0f, 51.0f, 1750.0f}, {1360.0f, 57.0f, 1860.0f}}},
+             {{1790.0f, 49.0f, 2160.0f}, {1880.0f, 56.0f, 2260.0f}}},
         }};
         formula_forge::assets::GlbLoadOptions carOptions;
         carOptions.dimensions = formula_forge::assets::DimensionLimits{
