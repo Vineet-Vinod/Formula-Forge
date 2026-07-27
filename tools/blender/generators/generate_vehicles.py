@@ -57,7 +57,7 @@ VEHICLES = {
     "formula_mercedes": two_tone_spec("Mercedes", "#0B0D0E", "#27F4D2"),
     "formula_ferrari": two_tone_spec("Ferrari", "#E8002D", "#F4F4F2"),
     "formula_mclaren": two_tone_spec("Mclaren", "#FF5F00", "#111217"),
-    "formula_red_bull": two_tone_spec("Red Bull", "#142948", "#F4F4F2"),
+    "formula_red_bull": two_tone_spec("Red Bull", "#030929", "#E60205"),
     "formula_racing_bulls": two_tone_spec("Racing Bulls", "#F4F4F2", "#6692FF"),
     "formula_alpine": two_tone_spec("Alpine", "#00A1E8", "#FF87BC"),
     "formula_audi": two_tone_spec("Audi", "#C7CBCC", "#FF2D00"),

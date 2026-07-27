@@ -218,8 +218,8 @@ def validate_loading_artwork(root: Path) -> str:
             f"loading screen must be 1280x720: {png_path}")
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     expected_cars = [
-        "formula_mercedes", "formula_ferrari", "formula_mclaren",
-        "formula_red_bull", "formula_racing_bulls",
+        "formula_fiery", "formula_marc", "formula_macl",
+        "formula_rb", "formula_dash",
     ]
     require(manifest.get("type") == "ui_artwork"
             and manifest.get("vehicles") == expected_cars
