@@ -106,7 +106,7 @@ struct MapSpec3D {
     const char* backstory;
 };
 
-constexpr std::array<MapSpec3D, 13> kMaps = {{
+constexpr std::array<MapSpec3D, 12> kMaps = {{
     {TrackLayoutId::Spa, "SPA-FRANCORCHAMPS", "BELGIAN GRAND PRIX", "7.004 KM / 19 TURNS / 102.2 M RELIEF",
      "An Ardennes classic that climbs steeply from Eau Rouge to Raidillon and the Kemmel Straight before descending home."},
     {TrackLayoutId::Suzuka, "SUZUKA", "SUZUKA GRAND PRIX", "5.807 KM / 18 TURNS / FIGURE EIGHT",
@@ -121,8 +121,6 @@ constexpr std::array<MapSpec3D, 13> kMaps = {{
      "Tightening and opening snail complexes frame a long back straight and one of the lap's hardest braking zones."},
     {TrackLayoutId::Bahrain, "BAHRAIN", "BAHRAIN GRAND PRIX", "5.412 KM / 15 TURNS / CLOCKWISE",
      "Floodlit desert straights lead into hard braking zones, a downhill off-camber left and traction-heavy exits."},
-    {TrackLayoutId::Jeddah, "JEDDAH", "SAUDI ARABIAN GRAND PRIX", "6.174 KM / 27 TURNS / ANTI-CLOCKWISE",
-     "A flat-out Corniche street circuit sweeps beside the Red Sea through fast blind bends and close walls."},
     {TrackLayoutId::Sepang, "SEPANG", "MALAYSIAN GRAND PRIX", "5.543 KM / 15 TURNS / TROPICAL",
      "Two long straights bookend opposing hairpins, while broad linked bends reward commitment in humid conditions."},
     {TrackLayoutId::Cota, "COTA", "UNITED STATES GRAND PRIX", "5.513 KM / 20 TURNS / 30.9 M RELIEF",
@@ -216,39 +214,27 @@ constexpr std::array<FormulaCornerTarget, 9> kInterlagosFormulaTargets = {{
 }};
 
 constexpr std::array<FormulaCornerTarget, 9> kShanghaiFormulaTargets = {{
-    {"Turns 1-2", 0.055f, 108.0f, 3, false},
-    {"Turns 3-4", 0.168f, 95.0f, 3, false},
-    {"Turn 6", 0.205f, 82.0f, 2, false},
-    {"Turns 7-8", 0.358f, 188.0f, 6, false},
-    {"Turns 9-10", 0.427f, 150.0f, 4, false},
-    {"Turn 11", 0.500f, 90.0f, 3, false},
-    {"Turns 12-13", 0.663f, 135.0f, 5, false},
-    {"Turn 14", 0.899f, 70.0f, 2, false},
-    {"Turn 5 exit", 0.180f, 285.0f, 8, true},
+    {"Turns 1-2", 0.107f, 108.0f, 3, false},
+    {"Turns 3-4", 0.135f, 95.0f, 3, false},
+    {"Turn 6", 0.258f, 82.0f, 2, false},
+    {"Turns 7-8", 0.369f, 188.0f, 6, false},
+    {"Turns 9-10", 0.436f, 150.0f, 4, false},
+    {"Turn 11", 0.539f, 90.0f, 3, false},
+    {"Turns 12-13", 0.562f, 135.0f, 5, false},
+    {"Turn 14", 0.848f, 70.0f, 2, false},
+    {"Back straight", 0.750f, 315.0f, 8, true},
 }};
 
 constexpr std::array<FormulaCornerTarget, 9> kBahrainFormulaTargets = {{
-    {"Turn 1", 0.045f, 82.0f, 2, false},
-    {"Turns 2-3", 0.068f, 145.0f, 4, false},
-    {"Turn 4", 0.194f, 105.0f, 3, false},
-    {"Turns 5-7", 0.275f, 205.0f, 6, false},
-    {"Turn 8", 0.335f, 90.0f, 2, false},
-    {"Turn 10", 0.561f, 78.0f, 2, false},
-    {"Turns 11-12", 0.705f, 195.0f, 5, false},
-    {"Turn 13", 0.780f, 125.0f, 3, false},
+    {"Turn 1", 0.099f, 82.0f, 2, false},
+    {"Turns 2-3", 0.129f, 145.0f, 4, false},
+    {"Turn 4", 0.247f, 105.0f, 3, false},
+    {"Turns 5-7", 0.313f, 205.0f, 6, false},
+    {"Turn 8", 0.381f, 90.0f, 2, false},
+    {"Turn 10", 0.464f, 78.0f, 2, false},
+    {"Turns 11-12", 0.636f, 195.0f, 5, false},
+    {"Turn 13", 0.723f, 125.0f, 3, false},
     {"Main straight", 0.965f, 285.0f, 8, true},
-}};
-
-constexpr std::array<FormulaCornerTarget, 9> kJeddahFormulaTargets = {{
-    {"Turns 1-2", 0.040f, 135.0f, 4, false},
-    {"Turns 4-7", 0.244f, 205.0f, 6, false},
-    {"Turns 8-12", 0.335f, 250.0f, 7, false},
-    {"Turn 13", 0.424f, 175.0f, 5, false},
-    {"Turns 16-17", 0.508f, 205.0f, 6, false},
-    {"Turns 18-22", 0.605f, 235.0f, 7, false},
-    {"Turns 23-24", 0.738f, 255.0f, 7, false},
-    {"Turn 27", 0.858f, 155.0f, 4, false},
-    {"Back straight", 0.920f, 315.0f, 8, true},
 }};
 
 constexpr std::array<FormulaCornerTarget, 9> kSepangFormulaTargets = {{
@@ -320,7 +306,6 @@ std::span<const FormulaCornerTarget> formulaCornerTargets(TrackLayoutId layout) 
         case TrackLayoutId::Interlagos: return kInterlagosFormulaTargets;
         case TrackLayoutId::Shanghai: return kShanghaiFormulaTargets;
         case TrackLayoutId::Bahrain: return kBahrainFormulaTargets;
-        case TrackLayoutId::Jeddah: return kJeddahFormulaTargets;
         case TrackLayoutId::Sepang: return kSepangFormulaTargets;
         case TrackLayoutId::Cota: return kCotaFormulaTargets;
         case TrackLayoutId::Istanbul: return kIstanbulFormulaTargets;
@@ -359,11 +344,9 @@ constexpr AiCircuitProfile aiCircuitProfile(TrackLayoutId layout) {
         case TrackLayoutId::Interlagos:
             return {"interlagos", 68.5f, 73.0f, 79.0f, 78.0f, 84.0f, 1500, 4.5f, 2.5f};
         case TrackLayoutId::Shanghai:
-            return {"shanghai", 91.0f, 102.5f, 105.5f, 106.5f, 110.0f, 1500, 4.5f, 2.7f};
+            return {"shanghai", 91.0f, 102.5f, 107.5f, 106.5f, 112.5f, 1500, 4.5f, 2.7f};
         case TrackLayoutId::Bahrain:
             return {"bahrain", 90.0f, 93.0f, 99.0f, 98.0f, 103.0f, 1800, 4.5f, 2.5f};
-        case TrackLayoutId::Jeddah:
-            return {"jeddah", 88.0f, 90.0f, 97.0f, 94.5f, 101.0f, 1800, 4.5f, 2.5f};
         case TrackLayoutId::Sepang:
             return {"sepang", 91.0f, 98.0f, 103.0f, 102.0f, 108.0f, 1800, 4.5f, 2.5f};
         case TrackLayoutId::Cota:
@@ -3214,7 +3197,7 @@ public:
         for (TrackLayoutId layout : {TrackLayoutId::Spa, TrackLayoutId::Suzuka, TrackLayoutId::Silverstone,
                                      TrackLayoutId::Monza, TrackLayoutId::Interlagos,
                                      TrackLayoutId::Shanghai, TrackLayoutId::Bahrain,
-                                     TrackLayoutId::Jeddah, TrackLayoutId::Sepang,
+                                     TrackLayoutId::Sepang,
                                      TrackLayoutId::Cota, TrackLayoutId::Istanbul,
                                      TrackLayoutId::Hockenheim, TrackLayoutId::Buddh}) {
             track_.rebuild(layout);
@@ -4087,10 +4070,10 @@ public:
         float minBarrierBeyondRunoffMeters = std::numeric_limits<float>::max();
         float maxBoundaryContractError = 0.0f;
         bool envelopeOrdered = true;
-        constexpr std::array<TrackLayoutId, 13> kMetricLayouts = {
+        constexpr std::array<TrackLayoutId, 12> kMetricLayouts = {
             TrackLayoutId::Spa, TrackLayoutId::Suzuka, TrackLayoutId::Silverstone,
             TrackLayoutId::Monza, TrackLayoutId::Interlagos, TrackLayoutId::Shanghai,
-            TrackLayoutId::Bahrain, TrackLayoutId::Jeddah, TrackLayoutId::Sepang,
+            TrackLayoutId::Bahrain, TrackLayoutId::Sepang,
             TrackLayoutId::Cota, TrackLayoutId::Istanbul, TrackLayoutId::Hockenheim,
             TrackLayoutId::Buddh};
         for (TrackLayoutId layout : kMetricLayouts) {
@@ -5285,9 +5268,6 @@ private:
         if (track_.layout() == TrackLayoutId::Bahrain) {
             racingLineWidth = 0.45f;
         }
-        if (track_.layout() == TrackLayoutId::Jeddah) {
-            racingLineWidth = 0.0f;
-        }
         if (track_.layout() == TrackLayoutId::Sepang) {
             racingLineWidth = 0.45f;
         }
@@ -5348,14 +5328,11 @@ private:
             const float phase = static_cast<float>(i) / static_cast<float>(count);
             float cornerSpeedScale = 0.99f;
             if (track_.layout() == TrackLayoutId::Shanghai &&
-                phase >= 0.33f && phase <= 0.40f) {
+                phase >= 0.52f && phase <= 0.60f) {
                 cornerSpeedScale = 0.52f;
             } else if (track_.layout() == TrackLayoutId::Shanghai &&
-                       phase >= 0.62f && phase <= 0.70f) {
+                       phase >= 0.81f && phase <= 0.90f) {
                 cornerSpeedScale = 0.72f;
-            } else if (track_.layout() == TrackLayoutId::Jeddah &&
-                       phase >= 0.39f && phase <= 0.47f) {
-                cornerSpeedScale = 0.78f;
             }
             aiLapSpeedPlan_[static_cast<size_t>(i)] =
                 std::min(kart.tuning.maxForwardSpeed,
@@ -6032,7 +6009,6 @@ private:
             const float maxSteer = lerp(kart.tuning.maxSteerLowSpeed,
                                         kart.tuning.maxSteerHighSpeed, steerFade);
             if (track_.layout() == TrackLayoutId::Shanghai ||
-                track_.layout() == TrackLayoutId::Jeddah ||
                 track_.layout() == TrackLayoutId::Sepang ||
                 track_.layout() == TrackLayoutId::Cota ||
                 track_.layout() == TrackLayoutId::Istanbul ||
@@ -7952,7 +7928,6 @@ int runFormulaForge(int argc, char** argv) {
     const bool aiPaceAuditInterlagos = hasArg(argc, argv, "--ai-pace-audit-interlagos");
     const bool aiPaceAuditShanghai = hasArg(argc, argv, "--ai-pace-audit-shanghai");
     const bool aiPaceAuditBahrain = hasArg(argc, argv, "--ai-pace-audit-bahrain");
-    const bool aiPaceAuditJeddah = hasArg(argc, argv, "--ai-pace-audit-jeddah");
     const bool aiPaceAuditSepang = hasArg(argc, argv, "--ai-pace-audit-sepang");
     const bool aiPaceAuditCota = hasArg(argc, argv, "--ai-pace-audit-cota");
     const bool aiPaceAuditIstanbul = hasArg(argc, argv, "--ai-pace-audit-istanbul");
@@ -7961,7 +7936,7 @@ int runFormulaForge(int argc, char** argv) {
     const bool aiPhysicsParityAudit = hasArg(argc, argv, "--ai-physics-parity-audit");
     const bool aiPaceAudit = hasArg(argc, argv, "--ai-pace-audit") || aiPaceAuditSpa || aiPaceAuditSuzuka ||
                              aiPaceAuditSilverstone || aiPaceAuditInterlagos || aiPaceAuditShanghai ||
-                             aiPaceAuditBahrain || aiPaceAuditJeddah || aiPaceAuditSepang ||
+                             aiPaceAuditBahrain || aiPaceAuditSepang ||
                              aiPaceAuditCota || aiPaceAuditIstanbul || aiPaceAuditHockenheim ||
                              aiPaceAuditBuddh;
     TrackLayoutId aiPaceAuditLayout = TrackLayoutId::Monza;
@@ -7977,8 +7952,6 @@ int runFormulaForge(int argc, char** argv) {
         aiPaceAuditLayout = TrackLayoutId::Shanghai;
     } else if (aiPaceAuditBahrain) {
         aiPaceAuditLayout = TrackLayoutId::Bahrain;
-    } else if (aiPaceAuditJeddah) {
-        aiPaceAuditLayout = TrackLayoutId::Jeddah;
     } else if (aiPaceAuditSepang) {
         aiPaceAuditLayout = TrackLayoutId::Sepang;
     } else if (aiPaceAuditCota) {
@@ -8107,7 +8080,7 @@ int runFormulaForge(int argc, char** argv) {
         cleanupRuntime();
         std::cout << "asset-audit cars=" << result.loadedCars << "/11"
                   << " drivers=" << result.loadedDrivers << "/1"
-                  << " tracks=" << result.loadedTracks << "/5"
+                  << " tracks=" << result.loadedTracks << "/12"
                   << " dimension_checks=" << result.dimensionChecks
                   << " animation_checks=" << result.animationChecks
                   << " load_failures=" << result.loadFailures

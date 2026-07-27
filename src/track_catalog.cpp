@@ -10,7 +10,6 @@ namespace {
 
 #include "track_data/shanghai_centerline.inc"
 #include "track_data/bahrain_centerline.inc"
-#include "track_data/jeddah_centerline.inc"
 #include "track_data/sepang_centerline.inc"
 #include "track_data/cota_centerline.inc"
 #include "track_data/istanbul_centerline.inc"
@@ -454,15 +453,16 @@ constexpr TrackRunoffZone kShanghaiRunoff[] = {
 };
 
 constexpr TrackTurnExpectation kShanghaiTurns[] = {
-    {"Turn 1 tightening entry", 0.028f, TrackTurnDirection::Right},
-    {"Turn 2 tightening exit", 0.075f, TrackTurnDirection::Right},
-    {"Turns 3-4 switchback", 0.168f, TrackTurnDirection::Left},
-    {"Turn 6 hairpin", 0.205f, TrackTurnDirection::Right},
-    {"Turn 7", 0.345f, TrackTurnDirection::Left},
-    {"Turn 8", 0.370f, TrackTurnDirection::Right},
-    {"Turns 12-13 opening snail", 0.663f, TrackTurnDirection::Right},
-    {"Turn 14 hairpin", 0.899f, TrackTurnDirection::Right},
-    {"Turn 16", 0.947f, TrackTurnDirection::Left},
+    {"Turns 1-2 tightening spiral", 0.107f, TrackTurnDirection::Right},
+    {"Turns 3-4 switchback", 0.135f, TrackTurnDirection::Left},
+    {"Turn 6 hairpin", 0.258f, TrackTurnDirection::Right},
+    {"Turn 7", 0.339f, TrackTurnDirection::Left},
+    {"Turn 8", 0.398f, TrackTurnDirection::Right},
+    {"Turns 9-10", 0.436f, TrackTurnDirection::Left},
+    {"Turn 11", 0.539f, TrackTurnDirection::Left},
+    {"Turns 12-13 opening snail", 0.562f, TrackTurnDirection::Right},
+    {"Turn 14 hairpin", 0.848f, TrackTurnDirection::Right},
+    {"Turn 16", 0.914f, TrackTurnDirection::Left},
 };
 
 constexpr TrackElevationPoint kBahrainElevation[] = {
@@ -499,56 +499,19 @@ constexpr TrackRunoffZone kBahrainRunoff[] = {
 };
 
 constexpr TrackTurnExpectation kBahrainTurns[] = {
-    {"Turns 2-3", 0.068f, TrackTurnDirection::Left},
-    {"Turn 4", 0.194f, TrackTurnDirection::Right},
-    {"Turn 8", 0.335f, TrackTurnDirection::Right},
-    {"Turn 10", 0.561f, TrackTurnDirection::Right},
-    {"Turn 11", 0.581f, TrackTurnDirection::Left},
-    {"Turn 12", 0.710f, TrackTurnDirection::Right},
-    {"Turn 13", 0.780f, TrackTurnDirection::Right},
-    {"Turn 14", 0.845f, TrackTurnDirection::Right},
-    {"Turn 15", 0.930f, TrackTurnDirection::Left},
-};
-
-constexpr TrackElevationPoint kJeddahElevation[] = {
-    {0.0f, 2.0f},    {520.0f, 3.2f},  {1080.0f, 5.5f}, {1640.0f, 7.8f},
-    {2240.0f, 9.8f}, {2810.0f, 8.1f}, {3410.0f, 5.6f}, {4020.0f, 3.4f},
-    {4620.0f, 1.1f}, {5230.0f, 0.0f}, {5780.0f, 0.9f}, {6174.0f, 2.0f},
-};
-
-constexpr TrackWidthPoint kJeddahWidth[] = {
-    {0.0f, 13.0f},    {580.0f, 12.0f},  {1120.0f, 13.0f}, {1680.0f, 12.0f},
-    {2260.0f, 14.0f}, {2860.0f, 12.0f}, {3480.0f, 13.0f}, {4100.0f, 12.0f},
-    {4720.0f, 14.0f}, {5300.0f, 12.0f}, {5840.0f, 15.0f}, {6174.0f, 13.0f},
-};
-
-constexpr TrackBankPoint kJeddahBank[] = {
-    {0.0f, 0.0f},    {420.0f, 0.0f},    {780.0f, 1.6f},   {1120.0f, -1.4f},
-    {1510.0f, 1.5f}, {1910.0f, -1.4f}, {2320.0f, 1.6f},  {2780.0f, -1.3f},
-    {3220.0f, 1.5f}, {3660.0f, -1.4f}, {4100.0f, 1.5f},  {4540.0f, -1.3f},
-    {5010.0f, 1.5f}, {5480.0f, -1.2f}, {5890.0f, 1.4f},  {6174.0f, 0.0f},
-};
-
-constexpr TrackRunoffZone kJeddahRunoff[] = {
-    {120.0f, 760.0f, 1, TrackRunoffSurface::Asphalt, 12.0f},
-    {820.0f, 1510.0f, -1, TrackRunoffSurface::Asphalt, 10.0f},
-    {1580.0f, 2260.0f, 1, TrackRunoffSurface::Asphalt, 11.0f},
-    {2350.0f, 3060.0f, -1, TrackRunoffSurface::Asphalt, 10.0f},
-    {3160.0f, 3860.0f, 1, TrackRunoffSurface::Asphalt, 12.0f},
-    {3940.0f, 4660.0f, -1, TrackRunoffSurface::Asphalt, 10.0f},
-    {4750.0f, 5480.0f, 1, TrackRunoffSurface::Asphalt, 12.0f},
-    {5540.0f, 6174.0f, -1, TrackRunoffSurface::Asphalt, 14.0f},
-};
-
-constexpr TrackTurnExpectation kJeddahTurns[] = {
-    {"Turn 1", 0.040f, TrackTurnDirection::Left},
-    {"Turns 4-7", 0.244f, TrackTurnDirection::Left},
-    {"Turn 13", 0.424f, TrackTurnDirection::Left},
-    {"Turn 16", 0.508f, TrackTurnDirection::Left},
-    {"Turn 18", 0.582f, TrackTurnDirection::Right},
-    {"Turn 22", 0.621f, TrackTurnDirection::Left},
-    {"Turns 23-24", 0.738f, TrackTurnDirection::Left},
-    {"Turn 27 approach", 0.847f, TrackTurnDirection::Right},
+    {"Turn 1", 0.099f, TrackTurnDirection::Right},
+    {"Turn 2", 0.119f, TrackTurnDirection::Left},
+    {"Turn 3", 0.139f, TrackTurnDirection::Right},
+    {"Turn 4", 0.247f, TrackTurnDirection::Right},
+    {"Turn 5", 0.288f, TrackTurnDirection::Left},
+    {"Turn 6", 0.313f, TrackTurnDirection::Right},
+    {"Turn 7", 0.338f, TrackTurnDirection::Left},
+    {"Turn 8", 0.381f, TrackTurnDirection::Right},
+    {"Turns 9-10", 0.464f, TrackTurnDirection::Left},
+    {"Turn 11", 0.601f, TrackTurnDirection::Left},
+    {"Turn 12", 0.671f, TrackTurnDirection::Right},
+    {"Turn 13", 0.723f, TrackTurnDirection::Right},
+    {"Turn 14", 0.873f, TrackTurnDirection::Right},
 };
 
 constexpr TrackElevationPoint kSepangElevation[] = {
@@ -788,7 +751,7 @@ constexpr TrackTurnExpectation kBuddhTurns[] = {
     {"Turn 16", 0.918f, TrackTurnDirection::Left},
 };
 
-constexpr std::array<TrackCatalogEntry, 13> kCatalog = {{
+constexpr std::array<TrackCatalogEntry, 12> kCatalog = {{
     {TrackLayoutId::Spa,
      "Spa-Francorchamps",
      "Circuit de Spa-Francorchamps",
@@ -921,25 +884,6 @@ constexpr std::array<TrackCatalogEntry, 13> kCatalog = {{
      kBahrainWidth,
      kBahrainBank,
      kBahrainRunoff,
-     {}},
-    {TrackLayoutId::Jeddah,
-     "Jeddah",
-     "Jeddah Corniche Circuit",
-     "Saudi Arabia",
-     "A flat, ultra-fast anti-clockwise street circuit threading 27 bends beside the Red Sea.",
-     "jeddah-corniche",
-     6174.0f,
-     27,
-     0.0f,
-     9.8f,
-     false,
-     1.0f,
-     true,
-     kJeddahCenterline,
-     kJeddahElevation,
-     kJeddahWidth,
-     kJeddahBank,
-     kJeddahRunoff,
      {}},
     {TrackLayoutId::Sepang,
      "Sepang",
@@ -1132,8 +1076,6 @@ std::span<const TrackTurnExpectation> trackTurnExpectations(TrackLayoutId id) no
             return kShanghaiTurns;
         case TrackLayoutId::Bahrain:
             return kBahrainTurns;
-        case TrackLayoutId::Jeddah:
-            return kJeddahTurns;
         case TrackLayoutId::Sepang:
             return kSepangTurns;
         case TrackLayoutId::Cota:
@@ -1195,9 +1137,6 @@ TrackShapeAuditResult auditTrackCatalogShape(const TrackCatalogEntry& track) noe
             break;
         case TrackLayoutId::Bahrain:
             expectedAspect = 0.672f;
-            break;
-        case TrackLayoutId::Jeddah:
-            expectedAspect = 0.213f;
             break;
         case TrackLayoutId::Sepang:
             expectedAspect = 1.226f;

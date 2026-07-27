@@ -17,7 +17,6 @@ enum class TrackLayoutId {
     Interlagos,
     Shanghai,
     Bahrain,
-    Jeddah,
     Sepang,
     Cota,
     Istanbul,

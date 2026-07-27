@@ -25,8 +25,8 @@ TRACKS = {
         "bbox": (121.205, 31.328, 121.235, 31.352),
         "way": 156328670,
         "clockwise": True,
-        # FIA race start is 190 m beyond the control line toward Turn 1.
-        "start": (31.3390674, 121.2168157),
+        # The circuit relation identifies the official start on the pit straight.
+        "start_node": 1686043686,
         "source": "https://www.openstreetmap.org/way/156328670",
         "sample_spacing_m": 20.0,
         "smoothing_iterations": 2,
@@ -36,22 +36,10 @@ TRACKS = {
         "bbox": (50.500, 26.015, 50.530, 26.045),
         "ways": (4818385, 881756729, 881756728),
         "clockwise": True,
-        "start": (26.0320851, 50.5124434),
+        # FIA race start, projected onto the western start/finish straight.
+        "start": (26.0320851, 50.5104761),
         "source": "https://www.openstreetmap.org/relation/284538",
         "smoothing_iterations": 3,
-    },
-    "jeddah": {
-        "symbol": "kJeddahCenterline",
-        "bbox": (39.095, 21.615, 39.125, 21.650),
-        "ways": (
-            1007989410, 1359884757, 1257884699, 1359884761,
-            1359884760, 1359884759, 1359884758, 1359884756,
-            1359884762,
-        ),
-        "clockwise": False,
-        "start": (21.6369468, 39.1027829),
-        "source": "https://www.openstreetmap.org/way/1007989410",
-        "smoothing_iterations": 2,
     },
     "sepang": {
         "symbol": "kSepangCenterline",
@@ -182,10 +170,15 @@ def signed_area(points):
 
 
 def point_line_distance(point, first, second):
+    _, projection = project_onto_segment(point, first, second)
+    return math.dist(point, projection)
+
+
+def project_onto_segment(point, first, second):
     dx, dy = second[0] - first[0], second[1] - first[1]
     length_squared = dx * dx + dy * dy
     if length_squared <= 1.0e-12:
-        return math.dist(point, first)
+        return 0.0, first
     blend = max(
         0.0,
         min(
@@ -195,7 +188,7 @@ def point_line_distance(point, first, second):
         ),
     )
     projection = (first[0] + dx * blend, first[1] + dy * blend)
-    return math.dist(point, projection)
+    return blend, projection
 
 
 def simplify_open(points, tolerance):
@@ -279,17 +272,29 @@ def controls_for(spec):
 
     if spec.get("start_node") in route:
         start = route.index(spec["start_node"])
+        route = route[start:] + route[:start]
+        points = points[start:] + points[:start]
     else:
         latitude, longitude = spec["start"]
-        start = min(
-            range(len(route)),
-            key=lambda index: (
-                nodes[route[index]][0] - latitude
-            ) ** 2
-            + (nodes[route[index]][1] - longitude) ** 2,
+        latitude_origin = sum(nodes[node][0] for node in route) / len(route)
+        longitude_origin = sum(nodes[node][1] for node in route) / len(route)
+        target = (
+            (longitude - longitude_origin)
+            * 111_320.0
+            * math.cos(math.radians(latitude_origin)),
+            (latitude - latitude_origin) * 111_320.0,
         )
-    route = route[start:] + route[:start]
-    points = points[start:] + points[:start]
+        candidates = []
+        for index, first in enumerate(points):
+            blend, projection = project_onto_segment(
+                target, first, points[(index + 1) % len(points)]
+            )
+            candidates.append(
+                (math.dist(target, projection), index, blend, projection)
+            )
+        _, segment, _, projection = min(candidates)
+        route = route[segment + 1 :] + route[: segment + 1]
+        points = [projection] + points[segment + 1 :] + points[: segment + 1]
 
     center_x = 0.5 * (min(point[0] for point in points) + max(point[0] for point in points))
     center_y = 0.5 * (min(point[1] for point in points) + max(point[1] for point in points))
