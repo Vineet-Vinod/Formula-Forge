@@ -55,6 +55,8 @@ TRACKS = {
         "runtime_mirror_y": False,
         "cpp_layout_id": "TrackLayoutId::Spa",
         "start_phase": 0.0,
+        "embankment_reach_m": 8.0,
+        "max_embankment_longitudinal_span_m": 6.0,
         "cpp_simulation_units_per_asset_unit": 17.0,
         "coordinate_unit": "meter",
     },
@@ -1589,10 +1591,16 @@ def make_world(slug, spec):
 
     materials = {
         "asphalt": mat("asphalt", ASPHALT_COLOR, 0.87),
-        "shoulder": mat("runoff", (0.30, 0.33, 0.31, 1), 0.92),
+        "shoulder": mat(
+            "runoff",
+            palette["grass"] if slug == "spa" else (0.30, 0.33, 0.31, 1),
+            0.98 if slug == "spa" else 0.92),
         "gravel": mat("runoff_gravel", (0.52, 0.40, 0.24, 1), 0.98),
         "runoff_grass": mat("runoff_grass", palette["grass"], 0.98),
-        "runoff_asphalt": mat("runoff_asphalt", (0.24, 0.255, 0.265, 1), 0.94),
+        "runoff_asphalt": mat(
+            "runoff_asphalt",
+            palette["grass"] if slug == "spa" else (0.24, 0.255, 0.265, 1),
+            0.98 if slug == "spa" else 0.94),
         "red": mat("curb_red", (0.72, 0.035, 0.025, 1), 0.60),
         "white": mat("curb_white", (0.90, 0.88, 0.78, 1), 0.65),
         "sand": mat("terrain_verge", tuple(min(1.0, channel * 1.02) for channel in palette["grass"][:3]) + (1,), 0.98),
@@ -1671,15 +1679,24 @@ def make_world(slug, spec):
                     ground_projector, surface_offset, detail_scale, bridge_skip,
                     spec.get("max_embankment_longitudinal_span_m"),
                     spec.get("embankment_reach_m", TERRAIN_REACH_METERS))
-    make_track_runoff(center, half_widths, materials["shoulder"], circuit,
-                      ground_projector, surface_offset)
-    make_strip("track_surface", center, half_widths, surface_offset, materials["asphalt"],
-               circuit, bank_angles)
+    generic_runoff = make_track_runoff(
+        center, half_widths, materials["shoulder"], circuit,
+        ground_projector, surface_offset)
+    track_surface = make_strip(
+        "track_surface", center, half_widths, surface_offset,
+        materials["asphalt"], circuit, bank_angles)
     runoff_objects = make_surface_runoff_zones(
         center, half_widths, bank_angles, course_design["runoff_zones"],
         {"gravel": materials["gravel"], "grass": materials["runoff_grass"],
          "asphalt": materials["runoff_asphalt"]},
         circuit, target_length, surface_offset, ground_projector)
+    if slug == "spa":
+        smooth_objects = [generic_runoff, track_surface]
+        smooth_objects.extend(
+            obj for obj in runoff_objects if obj.name == "asphalt_runoff_zones")
+        for obj in smooth_objects:
+            for polygon in obj.data.polygons:
+                polygon.use_smooth = True
     make_curbs(center, half_widths, bank_angles, [materials["red"], materials["white"]], circuit,
                0.85*detail_scale)
     make_track_limits(center, half_widths, materials["white"], circuit, detail_scale,

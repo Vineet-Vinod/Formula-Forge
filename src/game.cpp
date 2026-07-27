@@ -7969,8 +7969,8 @@ int runFormulaForge(int argc, char** argv) {
         } else if (captureInterlagosTour) {
             game.selectMapForCapture(4);
         }
-        static constexpr std::array<float, 9> kTourPhases = {0.035f, 0.135f, 0.245f, 0.355f, 0.465f,
-                                                             0.575f, 0.690f, 0.805f, 0.920f};
+        static constexpr std::array<float, 10> kTourPhases = {0.035f, 0.102f, 0.135f, 0.245f, 0.355f,
+                                                              0.465f, 0.575f, 0.690f, 0.805f, 0.920f};
         const bool detailedCircuitTour = captureSilverstoneTour || captureInterlagosTour;
         const size_t tourFrameCount = detailedCircuitTour ? 72 : kTourPhases.size();
         for (size_t i = 0; i < tourFrameCount; ++i) {
