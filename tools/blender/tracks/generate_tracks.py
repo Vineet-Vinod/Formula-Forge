@@ -179,6 +179,30 @@ TRACKS = {
         "cpp_simulation_units_per_asset_unit": 17.0,
         "coordinate_unit": "meter",
     },
+    "bahrain": {
+        "display_name": "Bahrain",
+        "venue": "Bahrain International Circuit",
+        "country": "Bahrain",
+        "source_file": "src/track_catalog.cpp",
+        "centerline": "kBahrainCenterline",
+        "target_length": 5412.0,
+        "elevation": "kBahrainElevation",
+        "width_profile": "kBahrainWidth",
+        "bank_profile": "kBahrainBank",
+        "runtime_runoff_profile": "kBahrainRunoff",
+        "turns": 15,
+        "clockwise": True,
+        "palette": "desert",
+        "runtime_mirror_y": True,
+        "cpp_layout_id": "TrackLayoutId::Bahrain",
+        "start_phase": 0.0,
+        "vegetation_setback_m": 29.0,
+        "vegetation_canopy_clearance_m": 22.0,
+        "embankment_reach_m": 8.0,
+        "max_embankment_longitudinal_span_m": 6.0,
+        "cpp_simulation_units_per_asset_unit": 17.0,
+        "coordinate_unit": "meter",
+    },
 }
 
 PALETTES = {
@@ -188,6 +212,7 @@ PALETTES = {
     "parkland": {"sand": (0.68, 0.48, 0.23, 1), "grass": (0.13, 0.34, 0.15, 1), "roof": (0.66, 0.18, 0.055, 1)},
     "hillside": {"sand": (0.64, 0.42, 0.16, 1), "grass": (0.08, 0.31, 0.15, 1), "roof": (0.82, 0.38, 0.045, 1)},
     "wetland": {"sand": (0.50, 0.45, 0.28, 1), "grass": (0.16, 0.34, 0.16, 1), "roof": (0.74, 0.08, 0.035, 1)},
+    "desert": {"sand": (0.63, 0.48, 0.30, 1), "grass": (0.32, 0.29, 0.18, 1), "roof": (0.55, 0.15, 0.06, 1)},
 }
 
 ASPHALT_COLOR = (0.35, 0.365, 0.38, 1)
@@ -1567,7 +1592,7 @@ def make_world(slug, spec):
     reset_scene()
     seed_index = {
         "spa": 1, "suzuka": 2, "silverstone": 3, "monza": 4,
-        "interlagos": 5, "shanghai": 6,
+        "interlagos": 5, "shanghai": 6, "bahrain": 7,
     }[slug]
     rng = random.Random(7901 + seed_index * 101)
     palette = PALETTES[spec["palette"]]

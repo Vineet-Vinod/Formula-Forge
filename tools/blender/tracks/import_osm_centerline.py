@@ -28,6 +28,7 @@ TRACKS = {
         # FIA race start is 190 m beyond the control line toward Turn 1.
         "start": (31.3390674, 121.2168157),
         "source": "https://www.openstreetmap.org/way/156328670",
+        "sample_spacing_m": 35.0,
     },
     "bahrain": {
         "symbol": "kBahrainCenterline",
@@ -36,6 +37,7 @@ TRACKS = {
         "clockwise": True,
         "start": (26.0320851, 50.5124434),
         "source": "https://www.openstreetmap.org/relation/284538",
+        "smoothing_iterations": 3,
     },
     "jeddah": {
         "symbol": "kJeddahCenterline",
@@ -241,6 +243,24 @@ def resample_closed(points, spacing):
     return result
 
 
+def smooth_closed(points, iterations):
+    """Round mapper-node corners without changing ordering or adding shortcuts."""
+    smoothed = list(points)
+    for _ in range(iterations):
+        smoothed = [
+            (
+                smoothed[(index - 1) % len(smoothed)][0] * 0.25
+                + point[0] * 0.50
+                + smoothed[(index + 1) % len(smoothed)][0] * 0.25,
+                smoothed[(index - 1) % len(smoothed)][1] * 0.25
+                + point[1] * 0.50
+                + smoothed[(index + 1) % len(smoothed)][1] * 0.25,
+            )
+            for index, point in enumerate(smoothed)
+        ]
+    return smoothed
+
+
 def controls_for(spec):
     nodes, ways, relations = fetch_map(spec)
     way_ids = route_way_ids(spec, relations)
@@ -269,7 +289,8 @@ def controls_for(spec):
     points = [(point[0] - center_x, point[1] - center_y) for point in points]
     # Uniform stationing prevents Catmull-Rom from amplifying clusters of
     # survey nodes into tiny hooks while preserving the mapped racing line.
-    controls = resample_closed(points, 35.0)
+    controls = resample_closed(points, spec.get("sample_spacing_m", 20.0))
+    controls = smooth_closed(controls, spec.get("smoothing_iterations", 0))
     return way_ids, points, controls
 
 
@@ -283,6 +304,8 @@ def render(slug, spec, way_ids, source_points, controls):
         f"// Source: {spec['source']}",
         f"// OSM way sequence: {', '.join(str(way) for way in way_ids)}.",
         f"// Raw projected loop length: {raw_length:.3f} m. Runtime normalizes to the FIA length.",
+        f"// Uniform source sampling: {spec.get('sample_spacing_m', 20.0):.1f} m.",
+        f"// Circular smoothing passes: {spec.get('smoothing_iterations', 0)}.",
         f"constexpr TrackControlPoint {spec['symbol']}[] = {{",
     ]
     for start in range(0, len(controls), 3):

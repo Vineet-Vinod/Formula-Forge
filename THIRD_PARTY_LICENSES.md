@@ -12,7 +12,7 @@ attributed OpenStreetMap data below.
 - Use: meter-projected centerline control points for the additional real-world
   circuits under `src/track_data/`.
 - Local modification: selected raceway ways are stitched in mapped one-way
-  order, centered, resampled at uniform 35 m stations, and normalized at
+  order, centered, uniformly resampled to remove node-density artifacts, and normalized at
   runtime to the authoritative FIA lap length.
 
 FIA and circuit publications are used only to validate factual length,

@@ -1,0 +1,873 @@
+{
+  "schema_version": 1,
+  "asset": "bahrain",
+  "type": "track_world",
+  "display_name": "Bahrain",
+  "venue": "Bahrain International Circuit",
+  "country": "Bahrain",
+  "units": "meter",
+  "coordinate_unit": "meter",
+  "axes_blender": {
+    "right": "+X",
+    "front": "-Y",
+    "up": "+Z"
+  },
+  "target_lap_length": {
+    "value": 5412.0,
+    "unit": "meter"
+  },
+  "target_lap_length_m": 5412.0,
+  "measured_planar_centerline_asset_units": 5411.8414,
+  "measured_surface_centerline_asset_units": 5411.9727,
+  "turn_count": 15,
+  "clockwise": true,
+  "road_width_asset_units": {
+    "min": 14.0,
+    "max": 22.0,
+    "unit": "meter",
+    "profile": "kBahrainWidth",
+    "formula": null
+  },
+  "road_width_cpp_world_units": {
+    "min": 20.23,
+    "max": 31.79
+  },
+  "source_centerline": {
+    "file": "src/track_catalog.cpp",
+    "symbol": "kBahrainCenterline",
+    "control_points": 271,
+    "normalization_scale": 1.02320713,
+    "control_sha256": "51bfb72d82be1134e8f783a2f2988770eb8c4f69abc78a524b1ef0294cacf8d7",
+    "elevation_symbol": "kBahrainElevation",
+    "elevation_sha256": "a58049fdacebe684aaac50e70523e9bd62b929c1f7b3ff3ad19560b9e11e28c0",
+    "width_symbol": "kBahrainWidth",
+    "width_sha256": "1b1511bbced3310a557748550c54f8e5fe28d54101d0a385b2a5aa335b1f289d",
+    "bank_symbol": "kBahrainBank",
+    "bank_sha256": "211a7d8b6bb7a1346d58e646e487666c72fc4193758374ad9d62946d6f49b0ae",
+    "catmull_rom_steps_per_control_segment": 32,
+    "closed_loop_arc_length_resampling": true
+  },
+  "bank_profile": {
+    "min_angle_degrees": -1.999,
+    "max_angle_degrees": 1.79,
+    "sign_convention": "positive raises driver-left edge",
+    "follows_runtime_contact_plane": true
+  },
+  "course_design_profile": {
+    "sources": [
+      {
+        "title": "FIA 2025 Bahrain Grand Prix circuit map",
+        "url": "https://www.fia.com/system/files/decision-document/2025_sakhir_event_-_circuit_map_-_bahrain_2025_0.pdf"
+      },
+      {
+        "title": "Formula 1 Bahrain circuit guide",
+        "url": "https://www.formula1.com/en/racing/2025/bahrain/circuit"
+      },
+      {
+        "title": "Formula 1 circuit elevation comparison",
+        "url": "https://www.formula1.com/en/latest/article/highs-and-lows-which-f1-track-has-the-most-elevation-changes-.7I9JEcBw3R2AqXbnJ6hyvc"
+      },
+      {
+        "title": "OpenStreetMap Bahrain GP centerline",
+        "url": "https://www.openstreetmap.org/way/4818385"
+      }
+    ],
+    "runoff_zones": [
+      {
+        "start_m": 180.0,
+        "end_m": 720.0,
+        "side": "right",
+        "surface": "asphalt",
+        "width_m": 24.0
+      },
+      {
+        "start_m": 690.0,
+        "end_m": 1160.0,
+        "side": "left",
+        "surface": "asphalt",
+        "width_m": 20.0
+      },
+      {
+        "start_m": 1370.0,
+        "end_m": 1840.0,
+        "side": "right",
+        "surface": "gravel",
+        "width_m": 22.0
+      },
+      {
+        "start_m": 2040.0,
+        "end_m": 2620.0,
+        "side": "left",
+        "surface": "asphalt",
+        "width_m": 20.0
+      },
+      {
+        "start_m": 2820.0,
+        "end_m": 3420.0,
+        "side": "right",
+        "surface": "gravel",
+        "width_m": 26.0
+      },
+      {
+        "start_m": 3470.0,
+        "end_m": 4030.0,
+        "side": "left",
+        "surface": "asphalt",
+        "width_m": 22.0
+      },
+      {
+        "start_m": 4250.0,
+        "end_m": 4740.0,
+        "side": "right",
+        "surface": "gravel",
+        "width_m": 20.0
+      },
+      {
+        "start_m": 4830.0,
+        "end_m": 5412.0,
+        "side": "left",
+        "surface": "asphalt",
+        "width_m": 24.0
+      }
+    ],
+    "barrier_zones": [
+      {
+        "start_m": 150.0,
+        "end_m": 750.0,
+        "side": "right",
+        "type": "tecpro",
+        "offset_m": 30.0
+      },
+      {
+        "start_m": 1340.0,
+        "end_m": 1870.0,
+        "side": "right",
+        "type": "tecpro",
+        "offset_m": 28.0
+      },
+      {
+        "start_m": 2790.0,
+        "end_m": 3450.0,
+        "side": "right",
+        "type": "tecpro",
+        "offset_m": 32.0
+      },
+      {
+        "start_m": 4220.0,
+        "end_m": 4770.0,
+        "side": "right",
+        "type": "tecpro",
+        "offset_m": 26.0
+      },
+      {
+        "start_m": 4800.0,
+        "end_m": 5412.0,
+        "side": "left",
+        "type": "tecpro",
+        "offset_m": 30.0
+      }
+    ]
+  },
+  "runtime_geometry": {
+    "centerline_samples": 2048,
+    "mesh_objects": 22,
+    "vertices": 277602,
+    "triangles": 266946,
+    "materials": 30
+  },
+  "measured_bounds_blender": {
+    "min": [
+      -992.833,
+      -1187.996,
+      -1.068
+    ],
+    "max": [
+      987.445,
+      1184.109,
+      25.709
+    ],
+    "dimensions": [
+      1980.278,
+      2372.104,
+      26.777
+    ]
+  },
+  "measured_bounds_gltf_y_up": {
+    "min": [
+      -992.833,
+      -1.068,
+      -1184.109
+    ],
+    "max": [
+      987.445,
+      25.709,
+      1187.996
+    ],
+    "dimensions": [
+      1980.278,
+      26.777,
+      2372.105
+    ]
+  },
+  "expected_bounds_cpp_world": {
+    "min": [
+      -1434.644,
+      -1.543,
+      -1711.038
+    ],
+    "max": [
+      1426.858,
+      37.15,
+      1716.654
+    ],
+    "dimensions": [
+      2861.502,
+      38.693,
+      3427.692
+    ]
+  },
+  "runtime_alignment": {
+    "cpp_layout_id": "TrackLayoutId::Bahrain",
+    "asset_origin": "C++ catalog plan origin and zero-elevation datum; not the start line",
+    "blender_to_gltf_matrix_row_major": [
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        -1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "gltf_and_raylib_axes": {
+      "right": "+X",
+      "up": "+Y",
+      "course_plan_y": "+Z"
+    },
+    "source_plan_y_reflected": true,
+    "cpp_simulation_units_per_asset_unit": 17.0,
+    "cpp_render_scale": 0.085,
+    "recommended_glb_uniform_scale": 1.445,
+    "recommended_world_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "recommended_yaw_degrees": 0.0,
+    "mapping": "cppWorld = gltfPosition * recommended_glb_uniform_scale",
+    "road_surface_offset_above_centerline_asset_units": 0.06,
+    "terrain_floor_level_asset_units": 0.0,
+    "visual_replacement_scope": [
+      "road",
+      "runoff",
+      "track_limits",
+      "curbs",
+      "barriers",
+      "fencing",
+      "terrain",
+      "grandstands",
+      "spectators",
+      "marshal_posts",
+      "pit_buildings",
+      "props",
+      "start_gantry",
+      "starting_grid_slots"
+    ],
+    "authoritative_runtime_system": "Track3D remains authoritative for physics, progress, elevation and width",
+    "start": {
+      "phase": 0.0,
+      "position_blender": [
+        -190.165091,
+        68.025879,
+        8.1
+      ],
+      "forward_blender": [
+        -0.03828581,
+        -0.99926683,
+        0.0
+      ],
+      "position_gltf_raylib": [
+        -190.165091,
+        8.1,
+        -68.025879
+      ],
+      "forward_gltf_raylib": [
+        -0.03828581,
+        0.0,
+        0.99926683
+      ]
+    }
+  },
+  "material_roles": {
+    "road": "asphalt",
+    "runoff": "runoff",
+    "curb_primary": "curb_red",
+    "curb_secondary": "curb_white",
+    "verge": "terrain_verge",
+    "infield": "infield_grass",
+    "outskirts": "terrain_outskirts",
+    "palm_trunk": "palm_trunk",
+    "palm_fronds": "palm_fronds",
+    "tree_canopy": "tree_canopy",
+    "rocks": "coastal_stone",
+    "gantry": "gantry_metal",
+    "start_banner": "start_banner",
+    "barrier_primary": "barrier_white",
+    "barrier_secondary": "barrier_red",
+    "barrier_tecpro_primary": "tecpro_blue",
+    "barrier_tecpro_secondary": "tecpro_red",
+    "catch_fence": "catch_fence",
+    "grandstand": "grandstand_concrete",
+    "grandstand_canopy": "grandstand_canopy",
+    "spectator_red": "spectator_red",
+    "spectator_blue": "spectator_blue",
+    "spectator_yellow": "spectator_yellow",
+    "spectator_white": "spectator_white",
+    "marshal_post": "marshal_orange",
+    "marshal_roof": "marshal_roof",
+    "pit_wall": "pit_building_wall",
+    "pit_roof": "pit_building_roof",
+    "runoff_gravel": "runoff_gravel",
+    "runoff_asphalt": "runoff_asphalt"
+  },
+  "presentation_contract": {
+    "asphalt_base_color_rgba": [
+      0.35,
+      0.365,
+      0.38,
+      1
+    ],
+    "asphalt_relative_luminance": 0.362894,
+    "asphalt_luminance_range": [
+      0.32,
+      0.42
+    ],
+    "barriers_continuous": true,
+    "barrier_samples_per_side": 2048,
+    "tecpro_barrier_samples": 1117,
+    "profiled_runoff_objects": [
+      "gravel_runoff_zones",
+      "asphalt_runoff_zones"
+    ],
+    "starting_grid_slots": 11,
+    "continuous_zero_level_terrain": true,
+    "opaque_materials_only": true
+  },
+  "grounding_contract": {
+    "terrain_function": "shoulder_ground_z",
+    "profiled_runoff_surface_offset_asset_units": 0.06,
+    "nearest_section_projection": true,
+    "blender_lateral_to_runtime_sign": -1,
+    "nearest_branch_bisector_clipping": true,
+    "branch_reach_probe_step_asset_units": 0.25,
+    "radial_step_asset_units": 1.0,
+    "offroad_visual_clearance_asset_units": 0.1,
+    "embankment_underlay_gap_asset_units": 0.04,
+    "runoff_transition_asset_units": 4.0,
+    "terrain_reach_asset_units": 36.0,
+    "continuous_terrain": {
+      "continuous": true,
+      "floor_level_m": 0.0,
+      "mountain_reach_m": 240.0,
+      "road_underlay_clearance_m": 1.0,
+      "road_carve_radius_m": 42.0,
+      "grid_step_target_m": 10.0,
+      "grid_step_x_m": 9.930059298581133,
+      "grid_step_y_m": 9.955641647613199,
+      "grid_columns": 140,
+      "grid_rows": 179,
+      "boundary_vertices": 634,
+      "height_min_m": -1.0679530973999987,
+      "height_max_m": 16.52437238888445
+    },
+    "embankment_reach_asset_units": 8.0,
+    "max_embankment_longitudinal_span_asset_units": 6.0,
+    "vegetation_setback_asset_units": 29.0,
+    "vegetation_canopy_clearance_asset_units": 22.0,
+    "outer_edge_follows_local_centerline": true,
+    "tolerance_asset_units": 0.002,
+    "instances": [
+      {
+        "kind": "vegetation",
+        "station": 77,
+        "side": -1,
+        "lateral": 39.977624,
+        "base_z": 9.81685,
+        "canopy_radius": 2.833004,
+        "road_edge_clearance": 26.927229
+      },
+      {
+        "kind": "vegetation",
+        "station": 134,
+        "side": 1,
+        "lateral": 39.535664,
+        "base_z": 11.111262,
+        "canopy_radius": 2.611117,
+        "road_edge_clearance": 27.520556
+      },
+      {
+        "kind": "vegetation",
+        "station": 191,
+        "side": -1,
+        "lateral": 42.208627,
+        "base_z": 12.648211,
+        "canopy_radius": 3.954567,
+        "road_edge_clearance": 29.850141
+      },
+      {
+        "kind": "vegetation",
+        "station": 248,
+        "side": 1,
+        "lateral": 37.150182,
+        "base_z": 14.172137,
+        "canopy_radius": 3.124659,
+        "road_edge_clearance": 26.603954
+      },
+      {
+        "kind": "vegetation",
+        "station": 305,
+        "side": -1,
+        "lateral": 40.937402,
+        "base_z": 15.398502,
+        "canopy_radius": 3.508342,
+        "road_edge_clearance": 30.210549
+      },
+      {
+        "kind": "vegetation",
+        "station": 362,
+        "side": 1,
+        "lateral": 42.300491,
+        "base_z": 16.034433,
+        "canopy_radius": 4.115124,
+        "road_edge_clearance": 30.593834
+      },
+      {
+        "kind": "vegetation",
+        "station": 419,
+        "side": -1,
+        "lateral": 38.67283,
+        "base_z": 16.680604,
+        "canopy_radius": 2.979469,
+        "road_edge_clearance": 27.723808
+      },
+      {
+        "kind": "vegetation",
+        "station": 476,
+        "side": 1,
+        "lateral": 40.117836,
+        "base_z": 16.174071,
+        "canopy_radius": 3.456538,
+        "road_edge_clearance": 28.961009
+      },
+      {
+        "kind": "vegetation",
+        "station": 533,
+        "side": -1,
+        "lateral": 40.355012,
+        "base_z": 15.07222,
+        "canopy_radius": 4.42814,
+        "road_edge_clearance": 28.554033
+      },
+      {
+        "kind": "vegetation",
+        "station": 589,
+        "side": 1,
+        "lateral": 38.023865,
+        "base_z": 13.956717,
+        "canopy_radius": 2.936533,
+        "road_edge_clearance": 28.036198
+      },
+      {
+        "kind": "vegetation",
+        "station": 646,
+        "side": -1,
+        "lateral": 36.693427,
+        "base_z": 12.686243,
+        "canopy_radius": 3.219013,
+        "road_edge_clearance": 26.203977
+      },
+      {
+        "kind": "vegetation",
+        "station": 703,
+        "side": 1,
+        "lateral": 36.70268,
+        "base_z": 11.411867,
+        "canopy_radius": 4.394252,
+        "road_edge_clearance": 24.717507
+      },
+      {
+        "kind": "vegetation",
+        "station": 760,
+        "side": -1,
+        "lateral": 37.590414,
+        "base_z": 10.061965,
+        "canopy_radius": 3.399327,
+        "road_edge_clearance": 26.279684
+      },
+      {
+        "kind": "vegetation",
+        "station": 817,
+        "side": 1,
+        "lateral": 37.008998,
+        "base_z": 8.624294,
+        "canopy_radius": 3.17908,
+        "road_edge_clearance": 26.047891
+      },
+      {
+        "kind": "vegetation",
+        "station": 874,
+        "side": -1,
+        "lateral": 42.027877,
+        "base_z": 7.213244,
+        "canopy_radius": 4.110579,
+        "road_edge_clearance": 30.436525
+      },
+      {
+        "kind": "vegetation",
+        "station": 931,
+        "side": 1,
+        "lateral": 37.74185,
+        "base_z": 5.764802,
+        "canopy_radius": 3.505862,
+        "road_edge_clearance": 27.056468
+      },
+      {
+        "kind": "vegetation",
+        "station": 988,
+        "side": -1,
+        "lateral": 40.014363,
+        "base_z": 4.557698,
+        "canopy_radius": 3.338632,
+        "road_edge_clearance": 29.675731
+      },
+      {
+        "kind": "vegetation",
+        "station": 1045,
+        "side": 1,
+        "lateral": 37.307682,
+        "base_z": 3.521248,
+        "canopy_radius": 5.445413,
+        "road_edge_clearance": 24.862269
+      },
+      {
+        "kind": "vegetation",
+        "station": 1101,
+        "side": -1,
+        "lateral": 38.977471,
+        "base_z": 2.560583,
+        "canopy_radius": 2.633962,
+        "road_edge_clearance": 29.343509
+      },
+      {
+        "kind": "vegetation",
+        "station": 1158,
+        "side": 1,
+        "lateral": 37.200669,
+        "base_z": 1.628712,
+        "canopy_radius": 2.669552,
+        "road_edge_clearance": 27.531117
+      },
+      {
+        "kind": "vegetation",
+        "station": 1215,
+        "side": -1,
+        "lateral": 41.47669,
+        "base_z": 1.018152,
+        "canopy_radius": 4.218179,
+        "road_edge_clearance": 30.258499
+      },
+      {
+        "kind": "vegetation",
+        "station": 1272,
+        "side": 1,
+        "lateral": 37.268688,
+        "base_z": 0.414826,
+        "canopy_radius": 2.528988,
+        "road_edge_clearance": 27.7397
+      },
+      {
+        "kind": "vegetation",
+        "station": 1329,
+        "side": -1,
+        "lateral": 41.658862,
+        "base_z": 0.315282,
+        "canopy_radius": 3.384169,
+        "road_edge_clearance": 31.266057
+      },
+      {
+        "kind": "vegetation",
+        "station": 1386,
+        "side": 1,
+        "lateral": 38.774647,
+        "base_z": 1.206238,
+        "canopy_radius": 5.468062,
+        "road_edge_clearance": 25.643049
+      },
+      {
+        "kind": "vegetation",
+        "station": 1443,
+        "side": -1,
+        "lateral": 42.647534,
+        "base_z": 2.137221,
+        "canopy_radius": 2.984641,
+        "road_edge_clearance": 31.343495
+      },
+      {
+        "kind": "vegetation",
+        "station": 1500,
+        "side": 1,
+        "lateral": 43.317587,
+        "base_z": 3.112341,
+        "canopy_radius": 2.559753,
+        "road_edge_clearance": 31.784285
+      },
+      {
+        "kind": "vegetation",
+        "station": 1557,
+        "side": -1,
+        "lateral": 42.610997,
+        "base_z": 4.158877,
+        "canopy_radius": 3.984771,
+        "road_edge_clearance": 30.241095
+      },
+      {
+        "kind": "vegetation",
+        "station": 1613,
+        "side": 1,
+        "lateral": 42.6317,
+        "base_z": 5.183562,
+        "canopy_radius": 3.491145,
+        "road_edge_clearance": 31.385145
+      },
+      {
+        "kind": "vegetation",
+        "station": 1670,
+        "side": -1,
+        "lateral": 38.305555,
+        "base_z": 6.208951,
+        "canopy_radius": 3.372386,
+        "road_edge_clearance": 27.818724
+      },
+      {
+        "kind": "vegetation",
+        "station": 1727,
+        "side": 1,
+        "lateral": 37.033767,
+        "base_z": 7.071233,
+        "canopy_radius": 3.993882,
+        "road_edge_clearance": 26.039885
+      },
+      {
+        "kind": "vegetation",
+        "station": 1784,
+        "side": -1,
+        "lateral": 40.578041,
+        "base_z": 7.946427,
+        "canopy_radius": 2.966371,
+        "road_edge_clearance": 30.611669
+      },
+      {
+        "kind": "vegetation",
+        "station": 1841,
+        "side": 1,
+        "lateral": 37.8527,
+        "base_z": 8.799701,
+        "canopy_radius": 2.592376,
+        "road_edge_clearance": 28.260324
+      },
+      {
+        "kind": "vegetation",
+        "station": 1898,
+        "side": -1,
+        "lateral": 36.994386,
+        "base_z": 8.617027,
+        "canopy_radius": 5.100433,
+        "road_edge_clearance": 24.893953
+      },
+      {
+        "kind": "vegetation",
+        "station": 1955,
+        "side": 1,
+        "lateral": 37.440285,
+        "base_z": 8.391633,
+        "canopy_radius": 2.616715,
+        "road_edge_clearance": 27.823549
+      },
+      {
+        "kind": "vegetation",
+        "station": 2012,
+        "side": -1,
+        "lateral": 38.994322,
+        "base_z": 8.226379,
+        "canopy_radius": 3.797122,
+        "road_edge_clearance": 27.589974
+      },
+      {
+        "kind": "grandstand",
+        "station": 163,
+        "side": -1,
+        "lateral": 24.886477,
+        "base_z": 12.122347
+      },
+      {
+        "kind": "grandstand",
+        "station": 491,
+        "side": 1,
+        "lateral": 23.614118,
+        "base_z": 15.78708
+      },
+      {
+        "kind": "grandstand",
+        "station": 880,
+        "side": -1,
+        "lateral": 23.449063,
+        "base_z": 7.186135
+      },
+      {
+        "kind": "grandstand",
+        "station": 1269,
+        "side": 1,
+        "lateral": 23.0,
+        "base_z": 0.538433
+      },
+      {
+        "kind": "grandstand",
+        "station": 1679,
+        "side": -1,
+        "lateral": 23.01324,
+        "base_z": 6.48065
+      },
+      {
+        "kind": "marshal",
+        "station": 61,
+        "side": -1,
+        "lateral": 20.380011,
+        "base_z": 9.460102
+      },
+      {
+        "kind": "marshal",
+        "station": 286,
+        "side": 1,
+        "lateral": 17.089443,
+        "base_z": 15.085677
+      },
+      {
+        "kind": "marshal",
+        "station": 634,
+        "side": -1,
+        "lateral": 17.202967,
+        "base_z": 12.984862
+      },
+      {
+        "kind": "marshal",
+        "station": 1003,
+        "side": 1,
+        "lateral": 17.0,
+        "base_z": 4.168981
+      },
+      {
+        "kind": "marshal",
+        "station": 1433,
+        "side": -1,
+        "lateral": 18.203541,
+        "base_z": 2.152876
+      },
+      {
+        "kind": "marshal",
+        "station": 1863,
+        "side": 1,
+        "lateral": 17.0,
+        "base_z": 8.71398
+      },
+      {
+        "kind": "pit",
+        "station": 1976,
+        "side": 1,
+        "lateral": 20.0,
+        "base_z": 8.185049
+      }
+    ],
+    "barrier_samples": 4096,
+    "barrier_max_authored_error": 0.0
+  },
+  "bridge_contract": null,
+  "required_materials": [
+    "asphalt",
+    "barrier_red",
+    "barrier_white",
+    "catch_fence",
+    "coastal_stone",
+    "curb_red",
+    "curb_white",
+    "gantry_metal",
+    "grandstand_canopy",
+    "grandstand_concrete",
+    "infield_grass",
+    "marshal_orange",
+    "marshal_roof",
+    "palm_fronds",
+    "palm_trunk",
+    "pit_building_roof",
+    "pit_building_wall",
+    "runoff",
+    "runoff_asphalt",
+    "runoff_gravel",
+    "spectator_blue",
+    "spectator_red",
+    "spectator_white",
+    "spectator_yellow",
+    "start_banner",
+    "tecpro_blue",
+    "tecpro_red",
+    "terrain_outskirts",
+    "terrain_verge",
+    "tree_canopy"
+  ],
+  "required_nodes": [
+    "map_root",
+    "circuit_root",
+    "terrain_root",
+    "scenery_root",
+    "track_surface",
+    "track_runoff",
+    "track_limit_lines",
+    "track_curbs",
+    "track_embankment",
+    "continuous_safety_barriers",
+    "continuous_catch_fence",
+    "terrain_verge",
+    "terrain_infield",
+    "terrain_outskirts",
+    "palm_groves",
+    "park_trees",
+    "coastal_rocks",
+    "formula_grandstands",
+    "grandstand_spectators",
+    "marshal_posts",
+    "pit_buildings",
+    "start_gantry",
+    "start_finish_line",
+    "starting_grid_slots",
+    "gravel_runoff_zones",
+    "asphalt_runoff_zones"
+  ],
+  "source": "bahrain.blend",
+  "export": "bahrain.glb",
+  "preview": "bahrain_preview.png"
+}

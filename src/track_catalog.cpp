@@ -9,6 +9,7 @@
 namespace {
 
 #include "track_data/shanghai_centerline.inc"
+#include "track_data/bahrain_centerline.inc"
 
 // Starts after the Bus Stop and follows Spa's 19 turns in race order. These
 // survey-space points retain La Source, Eau Rouge/Raidillon, the Kemmel run,
@@ -458,7 +459,52 @@ constexpr TrackTurnExpectation kShanghaiTurns[] = {
     {"Turn 16", 0.947f, TrackTurnDirection::Left},
 };
 
-constexpr std::array<TrackCatalogEntry, 6> kCatalog = {{
+constexpr TrackElevationPoint kBahrainElevation[] = {
+    {0.0f, 8.1f},    {320.0f, 10.8f}, {760.0f, 15.2f}, {1160.0f, 16.9f},
+    {1580.0f, 13.8f}, {2050.0f, 9.7f}, {2530.0f, 5.1f}, {3020.0f, 1.8f},
+    {3460.0f, 0.0f}, {3890.0f, 2.6f}, {4380.0f, 6.0f}, {4860.0f, 8.8f},
+    {5412.0f, 8.1f},
+};
+
+constexpr TrackWidthPoint kBahrainWidth[] = {
+    {0.0f, 22.0f},   {260.0f, 20.0f},  {720.0f, 14.0f},  {1120.0f, 16.0f},
+    {1580.0f, 14.0f}, {2050.0f, 16.0f}, {2550.0f, 14.0f}, {3030.0f, 14.0f},
+    {3510.0f, 14.0f}, {3970.0f, 18.0f}, {4440.0f, 14.0f},
+    {4920.0f, 14.0f}, {5300.0f, 14.0f}, {5412.0f, 22.0f},
+};
+
+constexpr TrackBankPoint kBahrainBank[] = {
+    {0.0f, 0.0f},    {260.0f, 0.0f},    {390.0f, 2.0f},   {620.0f, -1.4f},
+    {860.0f, 1.8f},  {1160.0f, 0.0f},   {1510.0f, 1.8f}, {1840.0f, -1.6f},
+    {2190.0f, 1.6f}, {2510.0f, 0.0f},   {2920.0f, 2.0f}, {3260.0f, -1.8f},
+    {3590.0f, 1.8f}, {3990.0f, 0.0f},   {4360.0f, 1.8f}, {4740.0f, -1.5f},
+    {5110.0f, 1.6f}, {5412.0f, 0.0f},
+};
+
+constexpr TrackRunoffZone kBahrainRunoff[] = {
+    {180.0f, 720.0f, -1, TrackRunoffSurface::Asphalt, 24.0f},
+    {690.0f, 1160.0f, 1, TrackRunoffSurface::Asphalt, 20.0f},
+    {1370.0f, 1840.0f, -1, TrackRunoffSurface::Gravel, 22.0f},
+    {2040.0f, 2620.0f, 1, TrackRunoffSurface::Asphalt, 20.0f},
+    {2820.0f, 3420.0f, -1, TrackRunoffSurface::Gravel, 26.0f},
+    {3470.0f, 4030.0f, 1, TrackRunoffSurface::Asphalt, 22.0f},
+    {4250.0f, 4740.0f, -1, TrackRunoffSurface::Gravel, 20.0f},
+    {4830.0f, 5412.0f, 1, TrackRunoffSurface::Asphalt, 24.0f},
+};
+
+constexpr TrackTurnExpectation kBahrainTurns[] = {
+    {"Turns 2-3", 0.068f, TrackTurnDirection::Left},
+    {"Turn 4", 0.194f, TrackTurnDirection::Right},
+    {"Turn 8", 0.335f, TrackTurnDirection::Right},
+    {"Turn 10", 0.561f, TrackTurnDirection::Right},
+    {"Turn 11", 0.581f, TrackTurnDirection::Left},
+    {"Turn 12", 0.710f, TrackTurnDirection::Right},
+    {"Turn 13", 0.780f, TrackTurnDirection::Right},
+    {"Turn 14", 0.845f, TrackTurnDirection::Right},
+    {"Turn 15", 0.930f, TrackTurnDirection::Left},
+};
+
+constexpr std::array<TrackCatalogEntry, 7> kCatalog = {{
     {TrackLayoutId::Spa,
      "Spa-Francorchamps",
      "Circuit de Spa-Francorchamps",
@@ -573,6 +619,25 @@ constexpr std::array<TrackCatalogEntry, 6> kCatalog = {{
      kShanghaiBank,
      kShanghaiRunoff,
      {}},
+    {TrackLayoutId::Bahrain,
+     "Bahrain",
+     "Bahrain International Circuit",
+     "Bahrain",
+     "A floodlit desert lap of long straights, heavy braking zones and traction-limited technical corners.",
+     "sakhir-desert",
+     5412.0f,
+     15,
+     0.0f,
+     16.9f,
+     true,
+     1.0f,
+     true,
+     kBahrainCenterline,
+     kBahrainElevation,
+     kBahrainWidth,
+     kBahrainBank,
+     kBahrainRunoff,
+     {}},
 }};
 
 float wrapDistance(float distance, float totalLength) noexcept {
@@ -667,6 +732,8 @@ std::span<const TrackTurnExpectation> trackTurnExpectations(TrackLayoutId id) no
             return kInterlagosTurns;
         case TrackLayoutId::Shanghai:
             return kShanghaiTurns;
+        case TrackLayoutId::Bahrain:
+            return kBahrainTurns;
     }
     return {};
 }
@@ -715,6 +782,9 @@ TrackShapeAuditResult auditTrackCatalogShape(const TrackCatalogEntry& track) noe
             break;
         case TrackLayoutId::Shanghai:
             expectedAspect = 1.14f;
+            break;
+        case TrackLayoutId::Bahrain:
+            expectedAspect = 0.672f;
             break;
     }
     result.aspectMatches = std::abs(result.aspectRatio - expectedAspect) <= expectedAspect * 0.12f;
