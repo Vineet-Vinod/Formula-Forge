@@ -435,7 +435,11 @@ def make_strip(name, samples, half_widths, z_offset, material, parent, bank_angl
                        point[2] + z_offset + bank_height(width, bank)),
                       (point[0] - nx * width, point[1] - ny * width,
                        point[2] + z_offset + bank_height(-width, bank))])
-    faces = [(i*2, ((i+1) % count)*2, ((i+1) % count)*2+1, i*2+1) for i in range(count)]
+    # Wind the visible asphalt upward. The previous order produced downward
+    # normals on every circuit; steep grades then lit like the underside of the
+    # road and broke into dark horizontal bands.
+    faces = [(i*2+1, ((i+1) % count)*2+1, ((i+1) % count)*2, i*2)
+             for i in range(count)]
     return mesh_object(name, verts, faces, [material], parent=parent)
 
 

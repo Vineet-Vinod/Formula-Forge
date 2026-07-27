@@ -357,6 +357,12 @@ def verify(root: Path, slug: str):
         raise ValueError(f"{slug}: road width/catalog error {max_width_error:.6f}")
     if max_bank_error > 0.002:
         raise ValueError(f"{slug}: road bank/catalog error {max_bank_error:.6f}")
+    minimum_road_normal_z = min(
+        polygon.normal.z for polygon in surface.data.polygons)
+    if minimum_road_normal_z < 0.5:
+        raise ValueError(
+            f"{slug}: asphalt faces point downward "
+            f"(minimum normal z={minimum_road_normal_z:.4f})")
 
     presentation = meta["presentation_contract"]
     asphalt = bpy.data.materials["asphalt"]
