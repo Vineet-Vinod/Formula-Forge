@@ -25,6 +25,12 @@ SAMPLES = 2048
 STARTING_GRID_SLOT_COUNT = 11
 RUNOFF_TRANSITION_METERS = 4.0
 TERRAIN_REACH_METERS = 36.0
+MOUNTAIN_REACH_METERS = 240.0
+TERRAIN_GRID_STEP_METERS = 18.0
+TERRAIN_ROAD_CLEARANCE_METERS = 0.35
+TERRAIN_ROAD_CARVE_RADIUS_METERS = 42.0
+TERRAIN_VERGE_WIDTH_METERS = 80.0
+TERRAIN_FLOOR_WIDTH_METERS = 220.0
 GROUND_RADIAL_STEP_METERS = 1.0
 OFFROAD_VISUAL_CLEARANCE_METERS = 0.10
 EMBANKMENT_UNDERLAY_GAP_METERS = 0.04
@@ -526,6 +532,79 @@ class TrackGroundProjector:
         delta = abs(first-second)
         return min(delta, self.count-delta)
 
+    def nearest_frame(self, x, y):
+        """Return the nearest road frame without imposing a source-section owner."""
+        candidates = set()
+        for _, index, _ in self.tree.find_n((x, y, 0.0), 24):
+            candidates.add((index-1) % self.count)
+            candidates.add(index)
+        best = None
+        for index in candidates:
+            next_index = (index+1) % self.count
+            point = self.samples[index]
+            nxt = self.samples[next_index]
+            dx, dy = nxt[0]-point[0], nxt[1]-point[1]
+            length_squared = max(0.000001, dx*dx+dy*dy)
+            blend = max(0.0, min(1.0, ((x-point[0])*dx+(y-point[1])*dy) /
+                                      length_squared))
+            center_x = point[0]+dx*blend
+            center_y = point[1]+dy*blend
+            distance_squared = (x-center_x)**2+(y-center_y)**2
+            inv = 1.0/math.sqrt(length_squared)
+            normal = (-dy*inv, dx*inv)
+            lane = (x-center_x)*normal[0]+(y-center_y)*normal[1]
+            center_z = point[2]+(nxt[2]-point[2])*blend
+            half_width = self.half_widths[index]+(
+                self.half_widths[next_index]-self.half_widths[index])*blend
+            bank = self.bank_angles[index]+(
+                self.bank_angles[next_index]-self.bank_angles[index])*blend
+            # At Suzuka's grade-separated crossover, equal planar candidates
+            # belong to two different elevations. The terrain supports the
+            # lower road; the upper road remains on its authored bridge deck.
+            closer = best is None or distance_squared < best[0] - 0.25
+            same_planar_place_but_lower = (
+                best is not None and abs(distance_squared-best[0]) <= 0.25 and
+                center_z < best[1])
+            if closer or same_planar_place_but_lower:
+                best = (distance_squared, center_z, half_width, lane, bank,
+                        index if blend < 0.5 else next_index)
+        if best is None:
+            raise ValueError("terrain projection found no road frame")
+        return best
+
+    def minimum_nearby_ground(self, x, y, edge_radius):
+        """Return the lowest road-owned ground field near a terrain vertex."""
+        candidates = set()
+        search_radius = edge_radius + max(self.half_widths)
+        for _, index, _ in self.tree.find_range((x, y, 0.0), search_radius):
+            candidates.add((index-1) % self.count)
+            candidates.add(index)
+        lowest = None
+        for index in candidates:
+            next_index = (index+1) % self.count
+            point = self.samples[index]
+            nxt = self.samples[next_index]
+            dx, dy = nxt[0]-point[0], nxt[1]-point[1]
+            length_squared = max(0.000001, dx*dx+dy*dy)
+            blend = max(0.0, min(1.0, ((x-point[0])*dx+(y-point[1])*dy) /
+                                      length_squared))
+            center_x = point[0]+dx*blend
+            center_y = point[1]+dy*blend
+            distance = math.hypot(x-center_x, y-center_y)
+            half_width = self.half_widths[index]+(
+                self.half_widths[next_index]-self.half_widths[index])*blend
+            if distance > half_width+edge_radius:
+                continue
+            inv = 1.0/math.sqrt(length_squared)
+            normal = (-dy*inv, dx*inv)
+            lane = (x-center_x)*normal[0]+(y-center_y)*normal[1]
+            center_z = point[2]+(nxt[2]-point[2])*blend
+            bank = self.bank_angles[index]+(
+                self.bank_angles[next_index]-self.bank_angles[index])*blend
+            ground = shoulder_ground_z(center_z, half_width, lane, 1.0, bank)
+            lowest = ground if lowest is None else min(lowest, ground)
+        return lowest
+
     def opposite_bridge_branch(self, source_index, candidate_index):
         if not self.crossing:
             return False
@@ -612,6 +691,123 @@ class TrackGroundProjector:
             if not owned:
                 return False
         return True
+
+
+def make_continuous_terrain(bounds, projector, materials, parent):
+    """Create a gapless zero-level floor whose smooth hills support the road."""
+    min_x, max_x, min_y, max_y = bounds
+    columns = max(3, int(math.ceil((max_x-min_x) / TERRAIN_GRID_STEP_METERS)) + 1)
+    rows = max(3, int(math.ceil((max_y-min_y) / TERRAIN_GRID_STEP_METERS)) + 1)
+    step_x = (max_x-min_x) / (columns-1)
+    step_y = (max_y-min_y) / (rows-1)
+    heights, edge_distances = [], []
+    for row in range(rows):
+        y = min_y + row*step_y
+        for column in range(columns):
+            x = min_x + column*step_x
+            distance_squared, center_z, half_width, lane, bank, _ = (
+                projector.nearest_frame(x, y))
+            edge_distance = max(0.0, math.sqrt(distance_squared)-half_width)
+            if edge_distance <= TERRAIN_REACH_METERS:
+                exact_ground = shoulder_ground_z(
+                    center_z, half_width, lane, 1.0, bank)
+                underlay_clearance = TERRAIN_ROAD_CLEARANCE_METERS * (
+                    1.0-smoothstep(edge_distance / TERRAIN_REACH_METERS))
+                height = exact_ground-underlay_clearance
+            else:
+                mountain_falloff = 1.0-smoothstep(
+                    (edge_distance-TERRAIN_REACH_METERS) /
+                    (MOUNTAIN_REACH_METERS-TERRAIN_REACH_METERS))
+                height = max(0.0, center_z)*mountain_falloff
+            # The rectangular boundary is the circuit-wide zero datum and
+            # joins the two outer floor rings without a vertical seam.
+            if row in (0, rows-1) or column in (0, columns-1):
+                height = 0.0
+            heights.append(height)
+            edge_distances.append(edge_distance)
+
+    # A light far-field relaxation removes nearest-section Voronoi ridges.
+    # The precise 36 m road shoulder remains untouched.
+    for _ in range(2):
+        relaxed = list(heights)
+        for row in range(1, rows-1):
+            for column in range(1, columns-1):
+                index = row*columns+column
+                far_weight = smoothstep(
+                    (edge_distances[index]-TERRAIN_REACH_METERS) / 72.0)
+                if far_weight <= 0.0:
+                    continue
+                neighbour_average = (
+                    heights[index-columns]+heights[index+columns]+
+                    heights[index-1]+heights[index+1])*0.25
+                relaxed[index] = heights[index]+(
+                    neighbour_average-heights[index])*0.48*far_weight
+        heights = relaxed
+
+    # Coarse mountain cells must never interpolate above a nearby lower road,
+    # especially where two circuit branches approach in plan view. Carve a
+    # broad underlay corridor using the lowest local road field; the detailed
+    # asphalt, runoff, and embankment meshes cover it without a visible gap.
+    for row in range(1, rows-1):
+        y = min_y + row*step_y
+        for column in range(1, columns-1):
+            x = min_x + column*step_x
+            index = row*columns+column
+            nearby_ground = projector.minimum_nearby_ground(
+                x, y, TERRAIN_ROAD_CARVE_RADIUS_METERS)
+            if nearby_ground is not None:
+                heights[index] = min(
+                    heights[index],
+                    nearby_ground-TERRAIN_ROAD_CLEARANCE_METERS)
+
+    vertices = []
+    for row in range(rows):
+        y = min_y + row*step_y
+        for column in range(columns):
+            x = min_x + column*step_x
+            vertices.append((x, y, heights[row*columns+column]))
+
+    faces, material_indices = [], []
+    for row in range(rows-1):
+        for column in range(columns-1):
+            first = row*columns+column
+            face = (first, first+1, first+1+columns, first+columns)
+            faces.append(face)
+            material_indices.append(0)
+
+    obj = mesh_object("terrain_infield", vertices, faces, materials,
+                      material_indices, parent)
+    for polygon in obj.data.polygons:
+        polygon.use_smooth = True
+    obj["continuous_heightfield"] = True
+    obj["floor_level_m"] = 0.0
+    obj["mountain_reach_m"] = MOUNTAIN_REACH_METERS
+    obj["grid_step_target_m"] = TERRAIN_GRID_STEP_METERS
+    obj["grid_columns"] = columns
+    obj["grid_rows"] = rows
+
+    boundary_indices = (
+        list(range(columns)) +
+        [row*columns+columns-1 for row in range(1, rows)] +
+        list(range((rows-1)*columns+columns-2, (rows-1)*columns-1, -1)) +
+        [row*columns for row in range(rows-2, 0, -1)])
+    boundary = [(vertices[index][0], vertices[index][1], 0.0)
+                for index in boundary_indices]
+    return obj, boundary, {
+        "continuous": True,
+        "floor_level_m": 0.0,
+        "mountain_reach_m": MOUNTAIN_REACH_METERS,
+        "road_underlay_clearance_m": TERRAIN_ROAD_CLEARANCE_METERS,
+        "road_carve_radius_m": TERRAIN_ROAD_CARVE_RADIUS_METERS,
+        "grid_step_target_m": TERRAIN_GRID_STEP_METERS,
+        "grid_step_x_m": step_x,
+        "grid_step_y_m": step_y,
+        "grid_columns": columns,
+        "grid_rows": rows,
+        "boundary_vertices": len(boundary),
+        "height_min_m": min(heights),
+        "height_max_m": max(heights),
+    }
 
 
 def make_track_limits(samples, half_widths, material, parent, detail_scale, surface_offset,
@@ -1299,7 +1495,8 @@ def make_world(slug, spec):
     min_z, max_z = min(p[2] for p in center), max(p[2] for p in center)
     span_x, span_y = max_x-min_x, max_y-min_y
     cx, cy = (min_x+max_x)*0.5, (min_y+max_y)*0.5
-    margin = max(180.0, min(span_x, span_y) * 0.12)
+    margin = max(MOUNTAIN_REACH_METERS + 40.0,
+                 min(span_x, span_y) * 0.18)
     crossing = find_crossover(center) if slug == "suzuka" else None
     ground_projector = TrackGroundProjector(center, half_widths, bank_angles, crossing)
 
@@ -1311,9 +1508,9 @@ def make_world(slug, spec):
         "runoff_asphalt": mat("runoff_asphalt", (0.24, 0.255, 0.265, 1), 0.94),
         "red": mat("curb_red", (0.72, 0.035, 0.025, 1), 0.60),
         "white": mat("curb_white", (0.90, 0.88, 0.78, 1), 0.65),
-        "sand": mat("terrain_verge", tuple(min(1.0, channel * 1.18) for channel in palette["grass"][:3]) + (1,), 0.98),
+        "sand": mat("terrain_verge", tuple(min(1.0, channel * 1.02) for channel in palette["grass"][:3]) + (1,), 0.98),
         "grass": mat("infield_grass", palette["grass"], 0.98),
-        "water": mat("terrain_outskirts", tuple(channel * 0.62 for channel in palette["grass"][:3]) + (1,), 0.99),
+        "water": mat("terrain_outskirts", tuple(channel * 0.94 for channel in palette["grass"][:3]) + (1,), 0.99),
         "trunk": mat("palm_trunk", (0.30, 0.13, 0.045, 1), 0.90),
         "leaf": mat("palm_fronds", (0.025, 0.29, 0.10, 1), 0.88),
         "rock": mat("coastal_stone", (0.25, 0.27, 0.25, 1), 0.96),
@@ -1346,33 +1543,38 @@ def make_world(slug, spec):
     terrain = empty("terrain_root", root)
     scenery = empty("scenery_root", root)
 
-    # Nested non-overlapping inland terrain rings avoid kilometer-scale z-fighting.
+    # A continuous heightfield forms both the zero-datum world floor and the
+    # broad green hills supporting every elevated road section. Two coplanar-
+    # edge-only rings extend that floor beyond the circuit without overlap.
     ix0, ix1, iy0, iy1 = min_x-margin, max_x+margin, min_y-margin, max_y+margin
-    chamfer = min(span_x, span_y) * 0.09
-    # Keep the opaque underlay below the lowest tire-contact height reachable
-    # from the road. It fills microscopic ownership seams without ever rising
-    # through a banked shoulder and visually swallowing a car.
-    reachable_ground_min = min(
-        shoulder_ground_z(point[2], half_widths[index],
-                          side * (half_widths[index] + 5.5 * detail_scale),
-                          detail_scale, bank_angles[index])
-        for index, point in enumerate(center) for side in (-1, 1))
-    infield_z = min(-0.40 * detail_scale,
-                    reachable_ground_min - 0.15 * detail_scale)
-    sand_z = min(-0.80 * detail_scale, infield_z - 0.40 * detail_scale)
-    island = [(ix0+chamfer,iy0,sand_z), (ix1-chamfer,iy0,sand_z),
-              (ix1,iy0+chamfer,sand_z), (ix1,iy1-chamfer,sand_z),
-              (ix1-chamfer,iy1,sand_z), (ix0+chamfer,iy1,sand_z),
-              (ix0,iy1-chamfer,sand_z), (ix0,iy0+chamfer,sand_z)]
-    # Slightly smaller infield defines a contrasting close-cut verge ring.
-    green = [(cx+(x-cx)*0.90, cy+(y-cy)*0.90, infield_z) for x,y,_ in island]
-    sand_inner = [(x,y,sand_z) for x,y,_ in green]
-    planar_ring("terrain_verge", island, sand_inner, materials["sand"], terrain)
-    planar_fan("terrain_infield", green, materials["grass"], terrain)
-    outskirts_scale = 1.28
-    outskirts = [(cx+(x-cx)*outskirts_scale, cy+(y-cy)*outskirts_scale, -5.0*detail_scale) for x,y,_ in island]
-    outskirts_inner = [(x,y,-5.0*detail_scale) for x,y,_ in island]
-    planar_ring("terrain_outskirts", outskirts, outskirts_inner, materials["water"], terrain)
+    _, terrain_boundary, terrain_contract = make_continuous_terrain(
+        (ix0, ix1, iy0, iy1), ground_projector,
+        [materials["grass"], materials["sand"], materials["water"]], terrain)
+
+    def expanded_floor_boundary(boundary, extra):
+        expanded = []
+        epsilon = 0.001
+        for x, y, _ in boundary:
+            if abs(x-ix0) <= epsilon:
+                x -= extra
+            elif abs(x-ix1) <= epsilon:
+                x += extra
+            if abs(y-iy0) <= epsilon:
+                y -= extra
+            elif abs(y-iy1) <= epsilon:
+                y += extra
+            expanded.append((x, y, 0.0))
+        return expanded
+
+    verge_outer = expanded_floor_boundary(
+        terrain_boundary, TERRAIN_VERGE_WIDTH_METERS)
+    floor_outer = expanded_floor_boundary(
+        terrain_boundary, TERRAIN_VERGE_WIDTH_METERS +
+        TERRAIN_FLOOR_WIDTH_METERS)
+    planar_ring("terrain_verge", verge_outer, terrain_boundary,
+                materials["sand"], terrain)
+    planar_ring("terrain_outskirts", floor_outer, verge_outer,
+                materials["water"], terrain)
 
     bridge_skip = set()
     if crossing:
@@ -1550,9 +1752,7 @@ def make_world(slug, spec):
         "start_position_blender": [round(v, 6) for v in p],
         "start_forward_blender": [round(v, 8) for v in start_forward],
         "surface_offset": surface_offset,
-        "opaque_layer_elevations": {"outskirts": -5.0*detail_scale,
-                                    "verge": sand_z,
-                                    "infield": infield_z},
+        "terrain_contract": terrain_contract,
         "grounded_instances": grounded_instances,
         "vegetation_setback": vegetation_setback,
         "vegetation_canopy_clearance": vegetation_clearance,
@@ -1736,7 +1936,8 @@ def export_track(slug, spec, output_root):
             "recommended_yaw_degrees": 0.0,
             "mapping": "cppWorld = gltfPosition * recommended_glb_uniform_scale",
             "road_surface_offset_above_centerline_asset_units": info["surface_offset"],
-            "opaque_layer_elevations_asset_units": info["opaque_layer_elevations"],
+            "terrain_floor_level_asset_units":
+                info["terrain_contract"]["floor_level_m"],
             "visual_replacement_scope": ["road", "runoff", "track_limits", "curbs", "barriers",
                                          "fencing", "terrain", "grandstands", "spectators",
                                          "marshal_posts", "pit_buildings", "props", "start_gantry",
@@ -1759,6 +1960,7 @@ def export_track(slug, spec, output_root):
             "tecpro_barrier_samples": info["tecpro_samples"],
             "profiled_runoff_objects": info["profiled_runoff_objects"],
             "starting_grid_slots": STARTING_GRID_SLOT_COUNT,
+            "continuous_zero_level_terrain": True,
             "opaque_materials_only": True,
         },
         "grounding_contract": {
@@ -1773,6 +1975,7 @@ def export_track(slug, spec, output_root):
             "embankment_underlay_gap_asset_units": EMBANKMENT_UNDERLAY_GAP_METERS,
             "runoff_transition_asset_units": RUNOFF_TRANSITION_METERS,
             "terrain_reach_asset_units": TERRAIN_REACH_METERS,
+            "continuous_terrain": info["terrain_contract"],
             "embankment_reach_asset_units":
                 spec.get("embankment_reach_m", TERRAIN_REACH_METERS),
             "max_embankment_longitudinal_span_asset_units":

@@ -18,9 +18,14 @@ from mathutils.bvhtree import BVHTree
 from generate_tracks import (ASPHALT_MAX_LUMINANCE, ASPHALT_MIN_LUMINANCE,
                              EMBANKMENT_UNDERLAY_GAP_METERS,
                              GROUND_RADIAL_STEP_METERS,
+                             MOUNTAIN_REACH_METERS,
                              OFFROAD_VISUAL_CLEARANCE_METERS,
                              RUNOFF_TRANSITION_METERS, SAMPLES,
-                             STARTING_GRID_SLOT_COUNT, TERRAIN_REACH_METERS,
+                             STARTING_GRID_SLOT_COUNT,
+                             TERRAIN_GRID_STEP_METERS,
+                             TERRAIN_REACH_METERS,
+                             TERRAIN_ROAD_CARVE_RADIUS_METERS,
+                             TERRAIN_ROAD_CLEARANCE_METERS,
                              TRACKS as TRACK_SPECS, cpp_pairs, dense_closed,
                              active_zone, bank_height, canonical_runoff_zones,
                              cpp_runoff_zones, find_crossover, length_closed,
@@ -448,6 +453,7 @@ def verify(root: Path, slug: str):
     detail_scale = 1.0
     grounding = meta["grounding_contract"]
     tolerance = grounding["tolerance_asset_units"]
+    terrain_contract = grounding.get("continuous_terrain", {})
     if (grounding["profiled_runoff_surface_offset_asset_units"] != surface_offset or
             not grounding["nearest_section_projection"] or
             grounding["blender_lateral_to_runtime_sign"] != -1 or
@@ -461,6 +467,16 @@ def verify(root: Path, slug: str):
             grounding["terrain_reach_asset_units"] != TERRAIN_REACH_METERS or
             not grounding["outer_edge_follows_local_centerline"]):
         raise ValueError(f"{slug}: terrain height contract is stale")
+    if (not terrain_contract.get("continuous") or
+            terrain_contract.get("floor_level_m") != 0.0 or
+            terrain_contract.get("mountain_reach_m") != MOUNTAIN_REACH_METERS or
+            terrain_contract.get("grid_step_target_m") != TERRAIN_GRID_STEP_METERS or
+            terrain_contract.get("road_underlay_clearance_m") !=
+            TERRAIN_ROAD_CLEARANCE_METERS or
+            terrain_contract.get("road_carve_radius_m") !=
+            TERRAIN_ROAD_CARVE_RADIUS_METERS or
+            not presentation.get("continuous_zero_level_terrain")):
+        raise ValueError(f"{slug}: continuous terrain contract is stale")
     if grounding["barrier_samples"] != SAMPLES*2:
         raise ValueError(f"{slug}: barrier grounding sample count changed")
     max_barrier_ground_error = 0.0
@@ -653,20 +669,39 @@ def verify(root: Path, slug: str):
         raise ValueError(f"{slug}: C++ world scale metadata is stale")
     if alignment["blender_to_gltf_matrix_row_major"] != [[1,0,0,0],[0,0,1,0],[0,-1,0,0],[0,0,0,1]]:
         raise ValueError(f"{slug}: Blender/glTF basis contract changed")
-    layers = alignment["opaque_layer_elevations_asset_units"]
-    layer_values = [layers[name] for name in ("outskirts","verge","infield")]
-    if not all(a < b for a,b in zip(layer_values,layer_values[1:])):
-        raise ValueError(f"{slug}: opaque terrain layers are not strictly separated")
-    for object_name,layer_name in (("terrain_outskirts","outskirts"),("terrain_verge","verge"),
-                                   ("terrain_infield","infield")):
-        layer_mesh = bpy.data.objects[object_name].data
-        z_values = [vertex.co.z for vertex in layer_mesh.vertices]
-        if max(abs(value-layers[layer_name]) for value in z_values) > 0.002:
-            raise ValueError(f"{slug}: {object_name} elevation differs from layer contract")
-        expected_topology = (9,8) if object_name == "terrain_infield" else (16,16)
-        if ((len(layer_mesh.vertices),len(layer_mesh.polygons)) != expected_topology or
-                any(len(face.vertices) != 3 for face in layer_mesh.polygons)):
-            raise ValueError(f"{slug}: {object_name} explicit non-overlap topology changed")
+    if alignment.get("terrain_floor_level_asset_units") != 0.0:
+        raise ValueError(f"{slug}: runtime terrain floor datum is stale")
+    terrain_mesh = bpy.data.objects["terrain_infield"]
+    columns = terrain_contract["grid_columns"]
+    rows = terrain_contract["grid_rows"]
+    if (not terrain_mesh.get("continuous_heightfield") or
+            terrain_mesh.get("grid_columns") != columns or
+            terrain_mesh.get("grid_rows") != rows or
+            (len(terrain_mesh.data.vertices), len(terrain_mesh.data.polygons)) !=
+            (columns*rows, (columns-1)*(rows-1)) or
+            any(len(face.vertices) != 4 for face in terrain_mesh.data.polygons)):
+        raise ValueError(f"{slug}: continuous terrain grid topology changed")
+    boundary_indices = (
+        list(range(columns)) +
+        [row*columns+columns-1 for row in range(1, rows)] +
+        list(range((rows-1)*columns+columns-2, (rows-1)*columns-1, -1)) +
+        [row*columns for row in range(rows-2, 0, -1)])
+    if (len(boundary_indices) != terrain_contract["boundary_vertices"] or
+            max(abs(terrain_mesh.data.vertices[index].co.z)
+                for index in boundary_indices) > tolerance):
+        raise ValueError(f"{slug}: terrain heightfield does not meet the zero-level floor")
+    terrain_heights = [vertex.co.z for vertex in terrain_mesh.data.vertices]
+    if (abs(min(terrain_heights)-terrain_contract["height_min_m"]) > tolerance or
+            abs(max(terrain_heights)-terrain_contract["height_max_m"]) > tolerance):
+        raise ValueError(f"{slug}: terrain height range metadata is stale")
+    boundary_count = terrain_contract["boundary_vertices"]
+    for object_name in ("terrain_verge", "terrain_outskirts"):
+        floor_mesh = bpy.data.objects[object_name].data
+        if ((len(floor_mesh.vertices), len(floor_mesh.polygons)) !=
+                (boundary_count*2, boundary_count*2) or
+                any(len(face.vertices) != 3 for face in floor_mesh.polygons) or
+                max(abs(vertex.co.z) for vertex in floor_mesh.vertices) > tolerance):
+            raise ValueError(f"{slug}: {object_name} zero-level floor ring changed")
     boundary_intersection = audit_road_boundary_intersections(meta, expected, expected_widths)
     if boundary_intersection is not None:
         raise ValueError(f"{slug}: folded/intersecting road boundary {boundary_intersection}")

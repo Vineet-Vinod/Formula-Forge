@@ -16,6 +16,11 @@ tarmac, continuous track-limit lines, bank-following curbs, profiled grass,
 gravel and asphalt runoff, concrete/Tecpro safety barriers, and catch fencing.
 Grounded combined meshes provide grandstands and spectators, pit facilities,
 marshal posts and vegetation while keeping the runtime draw-call count bounded.
+Every circuit sits on a continuous green heightfield: its outer boundary and
+wide surrounding floor are exactly at elevation zero, while broad, smoothly
+shaded hills rise beneath the catalogued road elevation. The detailed local
+shoulder remains layered above that foundation, so there are no terrain holes
+between the road, runoff, mountains, or circuit-wide floor.
 Interlagos and Silverstone limit their local grass embankment to eight metres
 from the road edge and reject overlong terrain cells at abrupt outer-corner
 normal changes. This prevents a nearby bend's lawn ribbon from hanging across
@@ -40,18 +45,19 @@ origin with zero yaw. Use the per-asset
 all meter-based circuits). The GLB centerline datum then maps to C++ world
 coordinates exactly; the visible asphalt is 0.06 meters above that datum. Spa
 reproduces its procedural 14-16 meter phase-based width.
-Opaque world base layers are strictly separated rather than coplanar. The local
-embankment follows each centerline's elevation, carries crossfall through the
-first four metres of runoff, then eases back to the local centerline height by
-36 metres. Interlagos and Silverstone render only the first eight metres of that
-field because their nearby bends overlap a full-width grass ribbon in T-cam.
-The same height function still grounds runoff, barriers, scenery, and the
-runtime vehicle contact plane.
-The kilometer-scale base layers do not overlap: infield is an inner triangle
-fan, with successively darker grass/ground rings beyond it. Rings use explicit
-shared-edge triangles. Do not convert
-these layers back to overlapping n-gons; their depth precision is insufficient
-at the full metric-circuit scale.
+The local embankment follows each centerline's elevation, carries crossfall
+through the first four metres of runoff, then eases back to the local
+centerline height by 36 metres. Interlagos and Silverstone render only the first
+eight metres of that detailed field because their nearby bends overlap a
+full-width grass ribbon in T-cam. The continuous mountain heightfield remains
+under those trimmed areas and tapers to the zero datum over 240 metres. The
+same height function still grounds runoff, barriers, scenery, and the runtime
+vehicle contact plane.
+
+The kilometer-scale heightfield is a complete quad grid with no omitted cells.
+Its boundary joins explicit verge and outer-floor triangle rings at exactly
+zero elevation. The rings share edges but never overlap, avoiding both visible
+cracks and long-distance z-fighting.
 
 Metadata records the start pose in both Blender and glTF/raylib axes, Blender
 and glTF bounds, stable node/material role names, source-array hashes, spline
