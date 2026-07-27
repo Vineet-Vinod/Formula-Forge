@@ -17,8 +17,8 @@
     "unit": "meter"
   },
   "target_lap_length_m": 5451.0,
-  "measured_planar_centerline_asset_units": 5450.6731,
-  "measured_surface_centerline_asset_units": 5450.7594,
+  "measured_planar_centerline_asset_units": 5450.7649,
+  "measured_surface_centerline_asset_units": 5450.8512,
   "turn_count": 16,
   "clockwise": true,
   "road_width_asset_units": {
@@ -35,9 +35,9 @@
   "source_centerline": {
     "file": "src/track_catalog.cpp",
     "symbol": "kShanghaiCenterline",
-    "control_points": 156,
-    "normalization_scale": 1.00165913,
-    "control_sha256": "7dac9e9bcd0c6ff363cbd34e154d305d832ff967d450a76772ee02c016f9602e",
+    "control_points": 273,
+    "normalization_scale": 1.02181326,
+    "control_sha256": "460d30c229c9b3f580817738602a5d96158dd898c5c0a0d9821e241385a8a398",
     "elevation_symbol": "kShanghaiElevation",
     "elevation_sha256": "40262cb63cb38afa87c010ad57d27e306a0f784d0fec91656fabaa077e9cff56",
     "width_symbol": "kShanghaiWidth",
@@ -185,59 +185,59 @@
   "runtime_geometry": {
     "centerline_samples": 2048,
     "mesh_objects": 22,
-    "vertices": 242692,
-    "triangles": 256116,
+    "vertices": 244314,
+    "triangles": 258006,
     "materials": 30
   },
   "measured_bounds_blender": {
     "min": [
-      -1195.468,
-      -1116.636,
+      -1202.425,
+      -1122.493,
       -1.225
     ],
     "max": [
-      1192.998,
-      1119.823,
+      1199.267,
+      1129.08,
       17.257
     ],
     "dimensions": [
-      2388.466,
-      2236.459,
+      2401.691,
+      2251.573,
       18.482
     ]
   },
   "measured_bounds_gltf_y_up": {
     "min": [
-      -1195.468,
+      -1202.425,
       -1.225,
-      -1119.823
+      -1129.08
     ],
     "max": [
-      1192.998,
+      1199.267,
       17.257,
-      1116.636
+      1122.493
     ],
     "dimensions": [
-      2388.466,
+      2401.692,
       18.482,
-      2236.459
+      2251.573
     ]
   },
   "expected_bounds_cpp_world": {
     "min": [
-      -1727.451,
+      -1737.504,
       -1.77,
-      -1618.144
+      -1631.521
     ],
     "max": [
-      1723.882,
+      1732.941,
       24.936,
-      1613.539
+      1622.002
     ],
     "dimensions": [
-      3451.333,
+      3470.445,
       26.706,
-      3231.683
+      3253.523
     ]
   },
   "runtime_alignment": {
@@ -307,24 +307,24 @@
     "start": {
       "phase": 0.0,
       "position_blender": [
-        -460.382568,
-        -154.188395,
+        -469.73982,
+        -157.373548,
         1.2
       ],
       "forward_blender": [
-        -0.65925882,
-        0.75191609,
+        -0.65926817,
+        0.75190789,
         0.0
       ],
       "position_gltf_raylib": [
-        -460.382568,
+        -469.73982,
         1.2,
-        154.188395
+        157.373548
       ],
       "forward_gltf_raylib": [
-        -0.65925882,
+        -0.65926817,
         0.0,
-        -0.75191609
+        -0.75190789
       ]
     }
   },
@@ -402,13 +402,13 @@
       "road_underlay_clearance_m": 1.0,
       "road_carve_radius_m": 42.0,
       "grid_step_target_m": 10.0,
-      "grid_step_x_m": 9.99142956455662,
-      "grid_step_y_m": 9.978409620984877,
-      "grid_columns": 180,
-      "grid_rows": 165,
-      "boundary_vertices": 686,
+      "grid_step_x_m": 9.954095028128567,
+      "grid_step_y_m": 9.949235763432013,
+      "grid_columns": 182,
+      "grid_rows": 167,
+      "boundary_vertices": 694,
       "height_min_m": -1.2250893737836095,
-      "height_max_m": 6.958601588014137
+      "height_max_m": 6.960862774140613
     },
     "embankment_reach_asset_units": 8.0,
     "max_embankment_longitudinal_span_asset_units": 6.0,
@@ -433,7 +433,7 @@
         "lateral": 37.050821,
         "base_z": 3.733013,
         "canopy_radius": 2.618136,
-        "road_edge_clearance": 26.700736
+        "road_edge_clearance": 26.700739
       },
       {
         "kind": "vegetation",
@@ -451,7 +451,7 @@
         "lateral": 36.315055,
         "base_z": 6.93543,
         "canopy_radius": 5.361786,
-        "road_edge_clearance": 23.637822
+        "road_edge_clearance": 23.637931
       },
       {
         "kind": "vegetation",
@@ -460,7 +460,7 @@
         "lateral": 38.892118,
         "base_z": 6.71229,
         "canopy_radius": 3.822468,
-        "road_edge_clearance": 28.20982
+        "road_edge_clearance": 28.209897
       },
       {
         "kind": "vegetation",
@@ -478,7 +478,7 @@
         "lateral": 37.71392,
         "base_z": 4.706146,
         "canopy_radius": 5.9982,
-        "road_edge_clearance": 25.031588
+        "road_edge_clearance": 25.030306
       },
       {
         "kind": "vegetation",
@@ -487,7 +487,7 @@
         "lateral": 36.418937,
         "base_z": 3.74104,
         "canopy_radius": 2.962288,
-        "road_edge_clearance": 26.615354
+        "road_edge_clearance": 26.616125
       },
       {
         "kind": "vegetation",
@@ -532,7 +532,7 @@
         "lateral": 37.280842,
         "base_z": 3.536903,
         "canopy_radius": 5.82529,
-        "road_edge_clearance": 24.896428
+        "road_edge_clearance": 24.896496
       },
       {
         "kind": "vegetation",
@@ -541,7 +541,7 @@
         "lateral": 40.996479,
         "base_z": 2.813128,
         "canopy_radius": 2.629088,
-        "road_edge_clearance": 28.620626
+        "road_edge_clearance": 31.365853
       },
       {
         "kind": "vegetation",
@@ -559,7 +559,7 @@
         "lateral": 39.232317,
         "base_z": 4.044905,
         "canopy_radius": 4.073867,
-        "road_edge_clearance": 28.405409
+        "road_edge_clearance": 28.405431
       },
       {
         "kind": "vegetation",
@@ -631,7 +631,7 @@
         "lateral": 37.482784,
         "base_z": 1.449301,
         "canopy_radius": 2.668597,
-        "road_edge_clearance": 27.856078
+        "road_edge_clearance": 27.857148
       },
       {
         "kind": "vegetation",
@@ -640,7 +640,7 @@
         "lateral": 37.01224,
         "base_z": 0.779793,
         "canopy_radius": 5.076498,
-        "road_edge_clearance": 25.012906
+        "road_edge_clearance": 25.012896
       },
       {
         "kind": "vegetation",

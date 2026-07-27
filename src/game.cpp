@@ -219,10 +219,10 @@ constexpr std::array<FormulaCornerTarget, 9> kShanghaiFormulaTargets = {{
     {"Turns 1-2", 0.055f, 108.0f, 3, false},
     {"Turns 3-4", 0.168f, 95.0f, 3, false},
     {"Turn 6", 0.205f, 82.0f, 2, false},
-    {"Turns 7-8", 0.358f, 225.0f, 6, false},
+    {"Turns 7-8", 0.358f, 188.0f, 6, false},
     {"Turns 9-10", 0.427f, 150.0f, 4, false},
     {"Turn 11", 0.500f, 90.0f, 3, false},
-    {"Turns 12-13", 0.663f, 185.0f, 5, false},
+    {"Turns 12-13", 0.663f, 135.0f, 5, false},
     {"Turn 14", 0.899f, 70.0f, 2, false},
     {"Turn 5 exit", 0.180f, 285.0f, 8, true},
 }};
@@ -241,7 +241,7 @@ constexpr std::array<FormulaCornerTarget, 9> kBahrainFormulaTargets = {{
 
 constexpr std::array<FormulaCornerTarget, 9> kJeddahFormulaTargets = {{
     {"Turns 1-2", 0.040f, 135.0f, 4, false},
-    {"Turns 4-7", 0.244f, 225.0f, 6, false},
+    {"Turns 4-7", 0.244f, 205.0f, 6, false},
     {"Turns 8-12", 0.335f, 250.0f, 7, false},
     {"Turn 13", 0.424f, 175.0f, 5, false},
     {"Turns 16-17", 0.508f, 205.0f, 6, false},
@@ -359,11 +359,11 @@ constexpr AiCircuitProfile aiCircuitProfile(TrackLayoutId layout) {
         case TrackLayoutId::Interlagos:
             return {"interlagos", 68.5f, 73.0f, 79.0f, 78.0f, 84.0f, 1500, 4.5f, 2.5f};
         case TrackLayoutId::Shanghai:
-            return {"shanghai", 91.0f, 104.0f, 109.0f, 108.0f, 113.0f, 1500, 4.5f, 2.5f};
+            return {"shanghai", 91.0f, 102.5f, 105.5f, 106.5f, 110.0f, 1500, 4.5f, 2.7f};
         case TrackLayoutId::Bahrain:
             return {"bahrain", 90.0f, 93.0f, 99.0f, 98.0f, 103.0f, 1800, 4.5f, 2.5f};
         case TrackLayoutId::Jeddah:
-            return {"jeddah", 88.0f, 91.0f, 97.0f, 95.0f, 101.0f, 1800, 4.5f, 2.5f};
+            return {"jeddah", 88.0f, 90.0f, 97.0f, 94.5f, 101.0f, 1800, 4.5f, 2.5f};
         case TrackLayoutId::Sepang:
             return {"sepang", 91.0f, 98.0f, 103.0f, 102.0f, 108.0f, 1800, 4.5f, 2.5f};
         case TrackLayoutId::Cota:
@@ -3280,6 +3280,16 @@ public:
                 const float yawRateMargin = realizedYawRate - requiredYawRate;
                 minimumYawRateMargin = std::min(minimumYawRateMargin, yawRateMargin);
                 formulaDynamicsMap = formulaDynamicsMap && yawRateMargin >= -0.02f;
+                if (yawRateMargin < -0.02f) {
+                    std::cout << "handling-map-yaw-failure track="
+                              << aiCircuitProfile(layout).name
+                              << " corner=" << target.name
+                              << " phase=" << target.lapFraction
+                              << " target_kph=" << target.speedKph
+                              << " required_yaw=" << requiredYawRate
+                              << " realized_yaw=" << realizedYawRate
+                              << " margin=" << yawRateMargin << "\n";
+                }
                 ++formulaDynamicsChecks;
 
                 for (float phaseOffset = -0.014f; phaseOffset <= 0.0141f; phaseOffset += 0.002f) {
@@ -3305,6 +3315,15 @@ public:
                                                         scale;
                     const float requiredAcceleration = speedMetersPerSecond * speedMetersPerSecond * curvaturePerMeter;
                     formulaGripMap = formulaGripMap && availableAcceleration + 0.01f >= requiredAcceleration;
+                    if (availableAcceleration + 0.01f < requiredAcceleration) {
+                        std::cout << "handling-map-grip-failure track="
+                                  << aiCircuitProfile(layout).name
+                                  << " corner=" << target.name
+                                  << " phase=" << target.lapFraction + phaseOffset
+                                  << " target_kph=" << target.speedKph
+                                  << " available_mps2=" << availableAcceleration
+                                  << " required_mps2=" << requiredAcceleration << "\n";
+                    }
                     ++formulaGripChecks;
                 }
             }
@@ -5261,7 +5280,7 @@ private:
             racingLineWidth = 0.25f;
         }
         if (track_.layout() == TrackLayoutId::Shanghai) {
-            racingLineWidth = 0.35f;
+            racingLineWidth = 0.0f;
         }
         if (track_.layout() == TrackLayoutId::Bahrain) {
             racingLineWidth = 0.45f;
@@ -5327,11 +5346,17 @@ private:
                                             std::max(0.01f, 16.0f * track_.totalLength() /
                                                                  static_cast<float>(count));
             const float phase = static_cast<float>(i) / static_cast<float>(count);
-            const float cornerSpeedScale =
-                track_.layout() == TrackLayoutId::Jeddah &&
-                        phase >= 0.39f && phase <= 0.47f
-                    ? 0.78f
-                    : 0.99f;
+            float cornerSpeedScale = 0.99f;
+            if (track_.layout() == TrackLayoutId::Shanghai &&
+                phase >= 0.33f && phase <= 0.40f) {
+                cornerSpeedScale = 0.52f;
+            } else if (track_.layout() == TrackLayoutId::Shanghai &&
+                       phase >= 0.62f && phase <= 0.70f) {
+                cornerSpeedScale = 0.72f;
+            } else if (track_.layout() == TrackLayoutId::Jeddah &&
+                       phase >= 0.39f && phase <= 0.47f) {
+                cornerSpeedScale = 0.78f;
+            }
             aiLapSpeedPlan_[static_cast<size_t>(i)] =
                 std::min(kart.tuning.maxForwardSpeed,
                          physicalSpeedForCurvature(kart, point, curvaturePerMeter,

@@ -28,7 +28,8 @@ TRACKS = {
         # FIA race start is 190 m beyond the control line toward Turn 1.
         "start": (31.3390674, 121.2168157),
         "source": "https://www.openstreetmap.org/way/156328670",
-        "sample_spacing_m": 35.0,
+        "sample_spacing_m": 20.0,
+        "smoothing_iterations": 2,
     },
     "bahrain": {
         "symbol": "kBahrainCenterline",
