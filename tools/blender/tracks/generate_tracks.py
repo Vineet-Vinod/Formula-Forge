@@ -251,6 +251,30 @@ TRACKS = {
         "cpp_simulation_units_per_asset_unit": 17.0,
         "coordinate_unit": "meter",
     },
+    "cota": {
+        "display_name": "COTA",
+        "venue": "Circuit of the Americas",
+        "country": "United States",
+        "source_file": "src/track_catalog.cpp",
+        "centerline": "kCotaCenterline",
+        "target_length": 5513.0,
+        "elevation": "kCotaElevation",
+        "width_profile": "kCotaWidth",
+        "bank_profile": "kCotaBank",
+        "runtime_runoff_profile": "kCotaRunoff",
+        "turns": 20,
+        "clockwise": False,
+        "palette": "texas",
+        "runtime_mirror_y": True,
+        "cpp_layout_id": "TrackLayoutId::Cota",
+        "start_phase": 0.0,
+        "vegetation_setback_m": 29.0,
+        "vegetation_canopy_clearance_m": 22.0,
+        "embankment_reach_m": 8.0,
+        "max_embankment_longitudinal_span_m": 6.0,
+        "cpp_simulation_units_per_asset_unit": 17.0,
+        "coordinate_unit": "meter",
+    },
 }
 
 PALETTES = {
@@ -263,6 +287,7 @@ PALETTES = {
     "desert": {"sand": (0.63, 0.48, 0.30, 1), "grass": (0.32, 0.29, 0.18, 1), "roof": (0.55, 0.15, 0.06, 1)},
     "corniche": {"sand": (0.58, 0.50, 0.36, 1), "grass": (0.11, 0.30, 0.22, 1), "roof": (0.12, 0.36, 0.48, 1)},
     "tropical": {"sand": (0.69, 0.51, 0.27, 1), "grass": (0.08, 0.37, 0.16, 1), "roof": (0.28, 0.20, 0.10, 1)},
+    "texas": {"sand": (0.66, 0.46, 0.24, 1), "grass": (0.19, 0.34, 0.15, 1), "roof": (0.66, 0.12, 0.045, 1)},
 }
 
 ASPHALT_COLOR = (0.35, 0.365, 0.38, 1)
@@ -1642,7 +1667,7 @@ def make_world(slug, spec):
     reset_scene()
     seed_index = {
         "spa": 1, "suzuka": 2, "silverstone": 3, "monza": 4,
-        "interlagos": 5, "shanghai": 6, "bahrain": 7, "jeddah": 8, "sepang": 9,
+        "interlagos": 5, "shanghai": 6, "bahrain": 7, "jeddah": 8, "sepang": 9, "cota": 10,
     }[slug]
     rng = random.Random(7901 + seed_index * 101)
     palette = PALETTES[spec["palette"]]

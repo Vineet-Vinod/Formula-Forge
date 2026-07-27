@@ -68,6 +68,7 @@ TRACKS = {
         "clockwise": False,
         "start_node": 7909207460,
         "source": "https://www.openstreetmap.org/relation/6537729",
+        "smoothing_iterations": 2,
     },
     "istanbul": {
         "symbol": "kIstanbulCenterline",

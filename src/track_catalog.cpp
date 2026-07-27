@@ -12,6 +12,7 @@ namespace {
 #include "track_data/bahrain_centerline.inc"
 #include "track_data/jeddah_centerline.inc"
 #include "track_data/sepang_centerline.inc"
+#include "track_data/cota_centerline.inc"
 
 // Starts after the Bus Stop and follows Spa's 19 turns in race order. These
 // survey-space points retain La Source, Eau Rouge/Raidillon, the Kemmel run,
@@ -592,7 +593,57 @@ constexpr TrackTurnExpectation kSepangTurns[] = {
     {"Turn 15", 0.931f, TrackTurnDirection::Left},
 };
 
-constexpr std::array<TrackCatalogEntry, 9> kCatalog = {{
+constexpr TrackElevationPoint kCotaElevation[] = {
+    {0.0f, 5.0f},    {180.0f, 16.5f}, {260.0f, 24.5f}, {300.0f, 28.5f},
+    {330.0f, 30.5f}, {360.0f, 30.9f}, {390.0f, 30.5f}, {430.0f, 28.5f},
+    {480.0f, 25.0f}, {560.0f, 20.0f}, {920.0f, 13.2f}, {1360.0f, 8.0f},
+    {1840.0f, 2.4f}, {2310.0f, 0.0f},
+    {2780.0f, 3.8f}, {3260.0f, 9.5f}, {3740.0f, 14.2f}, {4220.0f, 10.4f},
+    {4680.0f, 6.2f}, {5140.0f, 3.9f}, {5513.0f, 5.0f},
+};
+
+constexpr TrackWidthPoint kCotaWidth[] = {
+    {0.0f, 13.0f},    {300.0f, 16.0f},  {720.0f, 13.0f},  {1180.0f, 14.0f},
+    {1640.0f, 13.0f}, {2100.0f, 15.0f}, {2580.0f, 13.0f}, {3060.0f, 16.0f},
+    {3540.0f, 13.0f}, {4020.0f, 14.0f}, {4500.0f, 13.0f}, {4980.0f, 15.0f},
+    {5513.0f, 13.0f},
+};
+
+constexpr TrackBankPoint kCotaBank[] = {
+    {0.0f, 0.0f},    {160.0f, 0.0f},    {330.0f, 1.0f},   {590.0f, 0.0f},
+    {880.0f, 2.2f},  {1180.0f, -1.8f}, {1490.0f, 2.1f},  {1810.0f, -1.7f},
+    {2150.0f, 2.2f}, {2510.0f, -1.8f}, {2870.0f, 2.3f},  {3240.0f, -1.8f},
+    {3620.0f, 2.1f}, {4010.0f, -1.7f}, {4400.0f, 2.1f},  {4790.0f, -1.6f},
+    {5170.0f, 2.0f}, {5513.0f, 0.0f},
+};
+
+constexpr TrackRunoffZone kCotaRunoff[] = {
+    {120.0f, 700.0f, 1, TrackRunoffSurface::Asphalt, 28.0f},
+    {670.0f, 1330.0f, -1, TrackRunoffSurface::Gravel, 24.0f},
+    {1410.0f, 2050.0f, 1, TrackRunoffSurface::Asphalt, 22.0f},
+    {2130.0f, 2780.0f, -1, TrackRunoffSurface::Gravel, 26.0f},
+    {2860.0f, 3510.0f, 1, TrackRunoffSurface::Asphalt, 28.0f},
+    {3590.0f, 4250.0f, -1, TrackRunoffSurface::Gravel, 24.0f},
+    {4330.0f, 4970.0f, 1, TrackRunoffSurface::Asphalt, 24.0f},
+    {5050.0f, 5513.0f, -1, TrackRunoffSurface::Asphalt, 26.0f},
+};
+
+constexpr TrackTurnExpectation kCotaTurns[] = {
+    {"Turn 1", 0.064f, TrackTurnDirection::Left},
+    {"Esses entry", 0.191f, TrackTurnDirection::Left},
+    {"Esses middle", 0.261f, TrackTurnDirection::Left},
+    {"Esses switch", 0.293f, TrackTurnDirection::Right},
+    {"Esses exit", 0.306f, TrackTurnDirection::Left},
+    {"Turn 11", 0.414f, TrackTurnDirection::Left},
+    {"Turn 12", 0.631f, TrackTurnDirection::Left},
+    {"Turn 13", 0.675f, TrackTurnDirection::Right},
+    {"Turn 15", 0.726f, TrackTurnDirection::Left},
+    {"Turn 16", 0.783f, TrackTurnDirection::Right},
+    {"Turn 19", 0.866f, TrackTurnDirection::Left},
+    {"Turn 20", 0.917f, TrackTurnDirection::Left},
+};
+
+constexpr std::array<TrackCatalogEntry, 10> kCatalog = {{
     {TrackLayoutId::Spa,
      "Spa-Francorchamps",
      "Circuit de Spa-Francorchamps",
@@ -764,6 +815,25 @@ constexpr std::array<TrackCatalogEntry, 9> kCatalog = {{
      kSepangBank,
      kSepangRunoff,
      {}},
+    {TrackLayoutId::Cota,
+     "COTA",
+     "Circuit of the Americas",
+     "United States",
+     "An anti-clockwise lap climbing steeply to Turn 1 before fast esses, a long back straight and stadium corners.",
+     "texas-hills",
+     5513.0f,
+     20,
+     0.0f,
+     30.9f,
+     false,
+     1.0f,
+     true,
+     kCotaCenterline,
+     kCotaElevation,
+     kCotaWidth,
+     kCotaBank,
+     kCotaRunoff,
+     {}},
 }};
 
 float wrapDistance(float distance, float totalLength) noexcept {
@@ -864,6 +934,8 @@ std::span<const TrackTurnExpectation> trackTurnExpectations(TrackLayoutId id) no
             return kJeddahTurns;
         case TrackLayoutId::Sepang:
             return kSepangTurns;
+        case TrackLayoutId::Cota:
+            return kCotaTurns;
     }
     return {};
 }
@@ -921,6 +993,9 @@ TrackShapeAuditResult auditTrackCatalogShape(const TrackCatalogEntry& track) noe
             break;
         case TrackLayoutId::Sepang:
             expectedAspect = 1.226f;
+            break;
+        case TrackLayoutId::Cota:
+            expectedAspect = 1.751f;
             break;
     }
     result.aspectMatches = std::abs(result.aspectRatio - expectedAspect) <= expectedAspect * 0.12f;

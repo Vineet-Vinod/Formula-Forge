@@ -40,7 +40,7 @@ VISIBLE_CONTACT_TOLERANCE_METERS = 0.05
 
 
 REPO = Path(__file__).resolve().parents[3]
-TRACK_NAMES = ("spa", "suzuka", "silverstone", "monza", "interlagos", "shanghai", "bahrain", "jeddah", "sepang")
+TRACK_NAMES = ("spa", "suzuka", "silverstone", "monza", "interlagos", "shanghai", "bahrain", "jeddah", "sepang", "cota")
 EXPECTED_SOURCE_PLAN_Y_REFLECTION = {
     "spa": False,
     "suzuka": True,
@@ -51,6 +51,7 @@ EXPECTED_SOURCE_PLAN_Y_REFLECTION = {
     "bahrain": True,
     "jeddah": True,
     "sepang": True,
+    "cota": True,
 }
 
 
