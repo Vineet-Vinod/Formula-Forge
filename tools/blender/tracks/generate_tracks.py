@@ -323,6 +323,31 @@ TRACKS = {
         "cpp_simulation_units_per_asset_unit": 17.0,
         "coordinate_unit": "meter",
     },
+    "buddh": {
+        "display_name": "Buddh",
+        "venue": "Buddh International Circuit",
+        "country": "India",
+        "source_file": "src/track_catalog.cpp",
+        "centerline": "kBuddhCenterline",
+        "target_length": 5125.0,
+        "elevation": "kBuddhElevation",
+        "width_profile": "kBuddhWidth",
+        "bank_profile": "kBuddhBank",
+        "runtime_runoff_profile": "kBuddhRunoff",
+        "turns": 16,
+        "clockwise": True,
+        "palette": "yamuna",
+        "runtime_mirror_y": True,
+        "cpp_layout_id": "TrackLayoutId::Buddh",
+        "start_phase": 0.0,
+        "vegetation_setback_m": 29.0,
+        "vegetation_canopy_clearance_m": 22.0,
+        "embankment_reach_m": 8.0,
+        "max_embankment_longitudinal_span_m": 6.0,
+        "surface_underlay_skip_ranges_m": ((600.0, 760.0),),
+        "cpp_simulation_units_per_asset_unit": 17.0,
+        "coordinate_unit": "meter",
+    },
 }
 
 PALETTES = {
@@ -338,6 +363,7 @@ PALETTES = {
     "texas": {"sand": (0.66, 0.46, 0.24, 1), "grass": (0.19, 0.34, 0.15, 1), "roof": (0.66, 0.12, 0.045, 1)},
     "anatolian": {"sand": (0.65, 0.49, 0.28, 1), "grass": (0.23, 0.35, 0.16, 1), "roof": (0.54, 0.11, 0.045, 1)},
     "rhine": {"sand": (0.67, 0.50, 0.27, 1), "grass": (0.10, 0.34, 0.14, 1), "roof": (0.42, 0.08, 0.035, 1)},
+    "yamuna": {"sand": (0.70, 0.55, 0.33, 1), "grass": (0.23, 0.34, 0.15, 1), "roof": (0.72, 0.20, 0.055, 1)},
 }
 
 ASPHALT_COLOR = (0.35, 0.365, 0.38, 1)
@@ -1229,9 +1255,11 @@ def make_curbs(samples, half_widths, bank_angles, materials, parent, curb_width=
     return mesh_object("track_curbs", verts, faces, materials, indices, parent)
 
 
-def make_track_runoff(samples, half_widths, material, parent, projector, surface_offset):
+def make_track_runoff(samples, half_widths, material, parent, projector, surface_offset,
+                      skip_indices=None):
     """Build the four-metre generic shoulder without spanning beneath the road."""
     vertices, faces = [], []
+    skip_indices = set(skip_indices or ())
     count = len(samples)
     band_count = int(round(RUNOFF_TRANSITION_METERS / GROUND_RADIAL_STEP_METERS))
     row_width = band_count + 1
@@ -1250,6 +1278,8 @@ def make_track_runoff(samples, half_widths, material, parent, projector, surface
                 vertices.append((x, y, z + surface_offset - clearance))
         for index in range(count):
             next_index = (index + 1) % count
+            if index in skip_indices or next_index in skip_indices:
+                continue
             for band in range(band_count):
                 a = side_start + index * row_width + band
                 b = side_start + next_index * row_width + band
@@ -1720,6 +1750,7 @@ def make_world(slug, spec):
         "interlagos": 5, "shanghai": 6, "bahrain": 7, "jeddah": 8, "sepang": 9, "cota": 10,
         "istanbul": 11,
         "hockenheim": 12,
+        "buddh": 13,
     }[slug]
     rng = random.Random(7901 + seed_index * 101)
     palette = PALETTES[spec["palette"]]
@@ -1866,16 +1897,24 @@ def make_world(slug, spec):
                 materials["water"], terrain)
 
     bridge_skip = set()
+    runoff_skip = set()
     if crossing:
         upper = crossing["upper_station"]
         bridge_skip = {(upper+offset) % SAMPLES for offset in range(-15,16)}
+    for start_m, end_m in spec.get("surface_underlay_skip_ranges_m", ()):
+        skipped = {
+            index for index in range(SAMPLES)
+            if start_m <= target_length * index / SAMPLES <= end_m
+        }
+        bridge_skip.update(skipped)
+        runoff_skip.update(skipped)
     make_embankment(center, half_widths, bank_angles, materials["grass"], terrain,
                     ground_projector, surface_offset, detail_scale, bridge_skip,
                     spec.get("max_embankment_longitudinal_span_m"),
                     spec.get("embankment_reach_m", TERRAIN_REACH_METERS))
     generic_runoff = make_track_runoff(
         center, half_widths, materials["shoulder"], circuit,
-        ground_projector, surface_offset)
+        ground_projector, surface_offset, runoff_skip)
     track_surface = make_strip(
         "track_surface", center, half_widths, surface_offset,
         materials["asphalt"], circuit, bank_angles)

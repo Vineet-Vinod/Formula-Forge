@@ -15,6 +15,7 @@ namespace {
 #include "track_data/cota_centerline.inc"
 #include "track_data/istanbul_centerline.inc"
 #include "track_data/hockenheim_centerline.inc"
+#include "track_data/buddh_centerline.inc"
 
 // Starts after the Bus Stop and follows Spa's 19 turns in race order. These
 // survey-space points retain La Source, Eau Rouge/Raidillon, the Kemmel run,
@@ -739,7 +740,55 @@ constexpr TrackTurnExpectation kHockenheimTurns[] = {
     {"Sudkurve exit", 0.939f, TrackTurnDirection::Right},
 };
 
-constexpr std::array<TrackCatalogEntry, 12> kCatalog = {{
+constexpr TrackElevationPoint kBuddhElevation[] = {
+    {0.0f, 2.0f},    {300.0f, 0.0f},  {620.0f, 6.0f},  {900.0f, 14.0f},
+    {1260.0f, 11.5f}, {1620.0f, 8.0f}, {1980.0f, 5.2f}, {2340.0f, 2.4f},
+    {2700.0f, 1.0f}, {3060.0f, 3.8f}, {3420.0f, 7.2f}, {3780.0f, 10.4f},
+    {4140.0f, 8.2f}, {4500.0f, 5.0f}, {4840.0f, 3.0f}, {5125.0f, 2.0f},
+};
+
+constexpr TrackWidthPoint kBuddhWidth[] = {
+    {0.0f, 25.0f},   {180.0f, 22.0f},  {520.0f, 18.0f},  {880.0f, 20.0f},
+    {1240.0f, 18.0f}, {1600.0f, 20.0f}, {1960.0f, 18.0f}, {2320.0f, 22.0f},
+    {2680.0f, 18.0f}, {3040.0f, 20.0f}, {3400.0f, 18.0f}, {3760.0f, 20.0f},
+    {4120.0f, 18.0f}, {4480.0f, 20.0f}, {4840.0f, 22.0f}, {5125.0f, 25.0f},
+};
+
+constexpr TrackBankPoint kBuddhBank[] = {
+    {0.0f, 0.0f},    {180.0f, 0.0f},    {360.0f, 2.2f},   {620.0f, -1.7f},
+    {900.0f, 2.0f},  {1190.0f, -1.6f}, {1490.0f, 2.1f},  {1800.0f, -1.6f},
+    {2120.0f, 2.0f}, {2450.0f, -1.6f}, {2790.0f, 2.2f},  {3140.0f, -1.7f},
+    {3490.0f, 2.1f}, {3850.0f, -1.6f}, {4210.0f, 2.0f},  {4560.0f, -1.5f},
+    {4860.0f, 2.0f}, {5125.0f, 0.0f},
+};
+
+constexpr TrackRunoffZone kBuddhRunoff[] = {
+    {100.0f, 680.0f, -1, TrackRunoffSurface::Asphalt, 28.0f},
+    {650.0f, 1240.0f, 1, TrackRunoffSurface::Gravel, 26.0f},
+    {1320.0f, 1920.0f, -1, TrackRunoffSurface::Asphalt, 24.0f},
+    {2000.0f, 2600.0f, 1, TrackRunoffSurface::Gravel, 28.0f},
+    {2680.0f, 3290.0f, -1, TrackRunoffSurface::Asphalt, 26.0f},
+    {3370.0f, 3980.0f, 1, TrackRunoffSurface::Gravel, 28.0f},
+    {4060.0f, 4660.0f, -1, TrackRunoffSurface::Asphalt, 26.0f},
+    {4740.0f, 5125.0f, 1, TrackRunoffSurface::Asphalt, 28.0f},
+};
+
+constexpr TrackTurnExpectation kBuddhTurns[] = {
+    {"Turn 1", 0.061f, TrackTurnDirection::Right},
+    {"Turn 3", 0.136f, TrackTurnDirection::Right},
+    {"Turn 4", 0.388f, TrackTurnDirection::Right},
+    {"Turns 5-6", 0.497f, TrackTurnDirection::Left},
+    {"Turn 7", 0.517f, TrackTurnDirection::Left},
+    {"Turn 8", 0.558f, TrackTurnDirection::Right},
+    {"Turn 9", 0.578f, TrackTurnDirection::Left},
+    {"Turn 10", 0.687f, TrackTurnDirection::Right},
+    {"Turn 11", 0.755f, TrackTurnDirection::Left},
+    {"Turn 12", 0.782f, TrackTurnDirection::Right},
+    {"Turns 13-14", 0.837f, TrackTurnDirection::Right},
+    {"Turn 16", 0.918f, TrackTurnDirection::Left},
+};
+
+constexpr std::array<TrackCatalogEntry, 13> kCatalog = {{
     {TrackLayoutId::Spa,
      "Spa-Francorchamps",
      "Circuit de Spa-Francorchamps",
@@ -968,6 +1017,25 @@ constexpr std::array<TrackCatalogEntry, 12> kCatalog = {{
      kHockenheimBank,
      kHockenheimRunoff,
      {}},
+    {TrackLayoutId::Buddh,
+     "Buddh",
+     "Buddh International Circuit",
+     "India",
+     "A very wide clockwise lap with a steep opening climb, long straights and a sweeping technical middle sector.",
+     "yamuna-plains",
+     5125.0f,
+     16,
+     0.0f,
+     14.0f,
+     true,
+     1.0f,
+     true,
+     kBuddhCenterline,
+     kBuddhElevation,
+     kBuddhWidth,
+     kBuddhBank,
+     kBuddhRunoff,
+     {}},
 }};
 
 float wrapDistance(float distance, float totalLength) noexcept {
@@ -1074,6 +1142,8 @@ std::span<const TrackTurnExpectation> trackTurnExpectations(TrackLayoutId id) no
             return kIstanbulTurns;
         case TrackLayoutId::Hockenheim:
             return kHockenheimTurns;
+        case TrackLayoutId::Buddh:
+            return kBuddhTurns;
     }
     return {};
 }
@@ -1140,6 +1210,9 @@ TrackShapeAuditResult auditTrackCatalogShape(const TrackCatalogEntry& track) noe
             break;
         case TrackLayoutId::Hockenheim:
             expectedAspect = 1.587f;
+            break;
+        case TrackLayoutId::Buddh:
+            expectedAspect = 0.515f;
             break;
     }
     result.aspectMatches = std::abs(result.aspectRatio - expectedAspect) <= expectedAspect * 0.12f;

@@ -1,0 +1,34 @@
+{
+  "sources": [
+    {
+      "title": "FIA Indian Grand Prix circuit map",
+      "url": "https://www.fia.com/sites/default/files/external_archive/node3786/16-india-circuit-print.pdf"
+    },
+    {
+      "title": "Formula 1 Buddh circuit guide",
+      "url": "https://www.formula1.com/en/information/india-buddh-international-circuit-greater-noida.7A2kcvRJtwckDXgy8ryF2n"
+    },
+    {
+      "title": "OpenStreetMap Buddh centerline",
+      "url": "https://www.openstreetmap.org/relation/2532569"
+    }
+  ],
+  "runoff_zones": [
+    {"start_m": 100.0, "end_m": 680.0, "side": "right", "surface": "asphalt", "width_m": 28.0},
+    {"start_m": 650.0, "end_m": 1240.0, "side": "left", "surface": "gravel", "width_m": 26.0},
+    {"start_m": 1320.0, "end_m": 1920.0, "side": "right", "surface": "asphalt", "width_m": 24.0},
+    {"start_m": 2000.0, "end_m": 2600.0, "side": "left", "surface": "gravel", "width_m": 28.0},
+    {"start_m": 2680.0, "end_m": 3290.0, "side": "right", "surface": "asphalt", "width_m": 26.0},
+    {"start_m": 3370.0, "end_m": 3980.0, "side": "left", "surface": "gravel", "width_m": 28.0},
+    {"start_m": 4060.0, "end_m": 4660.0, "side": "right", "surface": "asphalt", "width_m": 26.0},
+    {"start_m": 4740.0, "end_m": 5125.0, "side": "left", "surface": "asphalt", "width_m": 28.0}
+  ],
+  "barrier_zones": [
+    {"start_m": 70.0, "end_m": 710.0, "side": "right", "type": "tecpro", "offset_m": 36.0},
+    {"start_m": 620.0, "end_m": 1270.0, "side": "left", "type": "tecpro", "offset_m": 34.0},
+    {"start_m": 1970.0, "end_m": 2630.0, "side": "left", "type": "tecpro", "offset_m": 36.0},
+    {"start_m": 2650.0, "end_m": 3320.0, "side": "right", "type": "tecpro", "offset_m": 34.0},
+    {"start_m": 3340.0, "end_m": 4010.0, "side": "left", "type": "tecpro", "offset_m": 36.0},
+    {"start_m": 4030.0, "end_m": 4690.0, "side": "right", "type": "tecpro", "offset_m": 34.0}
+  ]
+}

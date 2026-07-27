@@ -95,6 +95,7 @@ TRACKS = {
         "clockwise": True,
         "start_node": 1986414860,
         "source": "https://www.openstreetmap.org/relation/2532569",
+        "smoothing_iterations": 2,
     },
 }
 
