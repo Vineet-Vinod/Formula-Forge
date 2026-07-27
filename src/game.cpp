@@ -1766,6 +1766,7 @@ struct Kart3D : ArcadeVehicleState {
     float aiCommandTargetSpeed = 0.0f;
     float aiCommandThrottle = 0.0f;
     float aiCommandBrake = 0.0f;
+    bool aiCollisionBrakeConstraint = false;
     float launchLane = 0.0f;
     float launchLaneTimer = 0.0f;
     float ghostTimer = 0.0f;
@@ -1846,6 +1847,9 @@ struct RacecraftAuditResult3D {
     int unpairedCornerManeuverFrames = 0;
     int cornerDecisionTransitions = 0;
     int committedLaneRetargets = 0;
+    int clearPhysicsFlatFrames = 0;
+    int unnecessaryPhysicsFlatBrakeFrames = 0;
+    float minimumClearPhysicsFlatThrottle = 1.0f;
     float maxClosePackLaneSpreadMeters = 0.0f;
     float maxRoadViolationMeters = 0.0f;
 };
@@ -3439,22 +3443,24 @@ public:
         return ok;
     }
 
-    bool runRacecraftAudit(int mapIndex = 2) {
+    bool runRacecraftAudit(int mapIndex = 2, bool flatCommitmentOnly = false) {
         selectMapForCapture(mapIndex);
-        float straightProgress = 0.0f;
-        float straightSeverity = std::numeric_limits<float>::max();
-        for (int sample = 0; sample < 256; ++sample) {
-            const float progress = track_.totalLength() * static_cast<float>(sample) / 256.0f;
-            const float severity = std::max({std::abs(smoothedSignedCurvature(progress)),
-                                             std::abs(smoothedSignedCurvature(progress + 45.0f)),
-                                             std::abs(smoothedSignedCurvature(progress + 95.0f)),
-                                             std::abs(smoothedSignedCurvature(progress + 175.0f))});
-            if (severity < straightSeverity) {
-                straightSeverity = severity;
-                straightProgress = progress;
+        float auditProgress = track_.totalLength() * 0.035f;
+        if (!flatCommitmentOnly) {
+            float straightSeverity = std::numeric_limits<float>::max();
+            for (int sample = 0; sample < 256; ++sample) {
+                const float progress = track_.totalLength() * static_cast<float>(sample) / 256.0f;
+                const float severity = std::max({std::abs(smoothedSignedCurvature(progress)),
+                                                 std::abs(smoothedSignedCurvature(progress + 45.0f)),
+                                                 std::abs(smoothedSignedCurvature(progress + 95.0f)),
+                                                 std::abs(smoothedSignedCurvature(progress + 175.0f))});
+                if (severity < straightSeverity) {
+                    straightSeverity = severity;
+                    auditProgress = progress;
+                }
             }
         }
-        setupSectionTour(straightProgress / track_.totalLength(), 3);
+        setupSectionTour(auditProgress / track_.totalLength(), 3);
 
         // Put one opponent in the player's tow so the audit proves that the
         // same attack logic targets a human-driven car, not only other AI.
@@ -3519,6 +3525,15 @@ public:
             bool sideBySideThisFrame = false;
             for (int i = 1; i < activeKartCount(); ++i) {
                 const Kart3D& kart = karts_[static_cast<size_t>(i)];
+                if (isPhysicsValidatedFlatSequence(kart) &&
+                    !kart.aiCollisionBrakeConstraint) {
+                    ++result.clearPhysicsFlatFrames;
+                    result.minimumClearPhysicsFlatThrottle =
+                        std::min(result.minimumClearPhysicsFlatThrottle,
+                                 kart.aiCommandThrottle);
+                    result.unnecessaryPhysicsFlatBrakeFrames +=
+                        kart.aiCommandBrake > 0.005f ? 1 : 0;
+                }
                 const bool activeMove = kart.aiRacecraftMode == AiRacecraftMode::Attacking ||
                                         kart.aiRacecraftMode == AiRacecraftMode::Defending;
                 const float cornerSeverity = std::max({std::abs(smoothedSignedCurvature(kart.progress)),
@@ -3629,8 +3644,17 @@ public:
         const bool controlled = result.contactBeginnings <= 6 &&
                                 (result.maxRoadViolationMeters <= 2.6f ||
                                  fullFieldRunoffControlled);
+        const bool sampledFlatSequence = result.clearPhysicsFlatFrames >= 30;
+        const bool observedFlatCommitment =
+            sampledFlatSequence &&
+            result.unnecessaryPhysicsFlatBrakeFrames == 0 &&
+            result.minimumClearPhysicsFlatThrottle >= 0.995f;
+        const bool flatCommitment =
+            track_.layout() != TrackLayoutId::Monza ||
+            !sampledFlatSequence ||
+            observedFlatCommitment;
         const bool ok = deliberateMoves && racesEveryone && multipleLines && dynamicOrder &&
-                        stableCornerApproach && controlled;
+                        stableCornerApproach && controlled && flatCommitment;
         std::cout << "racecraft-audit map=" << mapIndex
                   << " attacks=" << result.attackTransitions << "/" << result.attackFrames
                   << " defenses=" << result.defenseTransitions << "/" << result.defenseFrames
@@ -3641,6 +3665,11 @@ public:
                   << " unpaired_corner_frames=" << result.unpairedCornerManeuverFrames
                   << " corner_decisions=" << result.cornerDecisionTransitions
                   << " committed_retargets=" << result.committedLaneRetargets
+                  << " clear_flat_frames=" << result.clearPhysicsFlatFrames
+                  << " unnecessary_flat_brakes="
+                  << result.unnecessaryPhysicsFlatBrakeFrames
+                  << " min_clear_flat_throttle="
+                  << result.minimumClearPhysicsFlatThrottle
                   << " contacts=" << result.contactBeginnings
                   << " road_violation_m=" << result.maxRoadViolationMeters
                   << " road_violation_kart=" << maxRoadViolationKart
@@ -3652,15 +3681,19 @@ public:
                   << " deliberate=" << deliberateMoves << " races_everyone=" << racesEveryone
                   << " multiple_lines=" << multipleLines << " dynamic_order=" << dynamicOrder
                   << " stable_corner_approach=" << stableCornerApproach
-                  << " controlled=" << controlled << " per_kart_road=";
+                  << " controlled=" << controlled
+                  << " flat_commitment=" << flatCommitment
+                  << " per_kart_road=";
         for (int i = 1; i < kKartCount; ++i) {
             std::cout << (i == 1 ? "" : ",") << i << ":"
                       << maxRoadViolationByKart[static_cast<size_t>(i)] << "/"
                       << roadViolationFramesByKart[static_cast<size_t>(i)] << "/"
                       << unpairedCornerFramesByKart[static_cast<size_t>(i)];
         }
-        std::cout << " ok=" << ok << "\n";
-        return ok;
+        const bool selectedResult =
+            flatCommitmentOnly ? observedFlatCommitment : ok;
+        std::cout << " ok=" << selectedResult << "\n";
+        return selectedResult;
     }
 
     bool runRaceAudit() {
@@ -5660,23 +5693,26 @@ private:
         return point.pos + point.normal * (plannedAiLane(progress) + laneOffset);
     }
 
-    bool isPhysicallyFlatCorner(const Kart3D& kart,
-                                bool soloTimeTrial) const {
+    bool isPhysicsValidatedFlatSequence(
+        const Kart3D& kart) const {
+        if (track_.layout() != TrackLayoutId::Monza) {
+            return false;
+        }
+        const float phase =
+            wrapDistance(kart.progress, track_.totalLength()) /
+            track_.totalLength();
+        // Exact 120 Hz vehicle replays prove the constructed Rettifilo,
+        // Curva Grande and Roggia sequence is clean at full throttle.
+        // Race traffic may still impose a separate collision constraint.
+        return phase >= 0.040f && phase <= 0.310f;
+    }
+
+    bool isPhysicallyFlatCorner(const Kart3D& kart) const {
         if (!isMetricCircuit(track_.layout())) {
             return false;
         }
-        if (soloTimeTrial &&
-            track_.layout() == TrackLayoutId::Monza) {
-            const float phase =
-                wrapDistance(kart.progress, track_.totalLength()) /
-                track_.totalLength();
-            // Exact 120 Hz vehicle replays prove the constructed Rettifilo,
-            // Curva Grande and Roggia sequence is clean at full throttle.
-            // This interval is retained only after the replay completes with
-            // no contacts or progress jumps and inside the road audit limit.
-            if (phase >= 0.040f && phase <= 0.310f) {
-                return true;
-            }
+        if (isPhysicsValidatedFlatSequence(kart)) {
+            return true;
         }
         const float maximumSpeed = kart.tuning.maxForwardSpeed;
         if (plannedAiTheoreticalSpeed(kart.progress) >=
@@ -6043,7 +6079,7 @@ private:
         }
         targetSpeed = std::min(targetSpeed, kart.tuning.maxForwardSpeed);
         const bool committedFlatCorner =
-            isPhysicallyFlatCorner(kart, !raceTraffic);
+            isPhysicallyFlatCorner(kart);
 
         // A real driver backs out before a missed apex becomes an excursion.
         // This is a control response, not extra grip: the car still has to
@@ -6076,6 +6112,7 @@ private:
                                    kart.tuning.maxForwardSpeed * lerp(1.0f, 0.52f, controlInstability));
         }
 
+        bool collisionSpeedConstraint = false;
         if (raceTraffic) {
             float followingSpeed = std::numeric_limits<float>::max();
             for (int i = 0; i < activeKartCount(); ++i) {
@@ -6100,6 +6137,8 @@ private:
                                                   gapSpeedMetersPerSecond * kTrackSimulationUnitsPerMeter);
                 }
             }
+            collisionSpeedConstraint =
+                followingSpeed < targetSpeed - 1.0f;
             targetSpeed = std::min(targetSpeed, followingSpeed);
         }
 
@@ -6108,14 +6147,17 @@ private:
         ai.steer = aiSteerForProgress(kart, index, laneTarget, false, true);
         const float speedError = speed - targetSpeed;
         const float brakeBand = std::max(12.0f, kart.tuning.maxForwardSpeed * 0.035f);
-        if (speedError > 1.0f && !committedFlatCorner) {
+        const bool mayBrakeForTarget =
+            !committedFlatCorner || collisionSpeedConstraint;
+        if (speedError > 1.0f && mayBrakeForTarget) {
             ai.throttle = 0.0f;
             const float minimumBrake = track_.layout() == TrackLayoutId::Suzuka ? 0.38f : 0.08f;
             ai.brake = std::clamp(minimumBrake + speedError / brakeBand,
                                   minimumBrake, 1.0f);
         } else {
             const bool speedLimitedSection = targetSpeed < kart.tuning.maxForwardSpeed * 0.985f;
-            if (!committedFlatCorner && speedLimitedSection && speedError > -brakeBand) {
+            if (mayBrakeForTarget && speedLimitedSection &&
+                speedError > -brakeBand) {
                 // Feed in only the longitudinal grip the planned corner speed
                 // can absorb. This is exit traction management, not cruising:
                 // unrestricted sections still receive full throttle.
@@ -6147,6 +6189,7 @@ private:
                 if (ahead > 0.10f && ahead < emergencyGap && lateralGap < collisionWidth) {
                     // Hold station behind an occupied corridor until the
                     // lateral pass is genuinely established.
+                    collisionSpeedConstraint = true;
                     ai.throttle = 0.0f;
                     ai.brake = std::max(ai.brake, tightSuzukaCorridor ? 1.0f : 0.92f);
                 }
@@ -6168,6 +6211,7 @@ private:
         kart.aiCommandTargetSpeed = targetSpeed;
         kart.aiCommandThrottle = ai.throttle;
         kart.aiCommandBrake = ai.brake;
+        kart.aiCollisionBrakeConstraint = collisionSpeedConstraint;
         integrateKart(kart, ai, dt);
     }
 
@@ -8324,9 +8368,10 @@ int runFormulaForge(int argc, char** argv) {
     const bool racecraftAuditSilverstone = hasArg(argc, argv, "--racecraft-audit-silverstone");
     const bool racecraftAuditMonza = hasArg(argc, argv, "--racecraft-audit-monza");
     const bool racecraftAuditInterlagos = hasArg(argc, argv, "--racecraft-audit-interlagos");
+    const bool raceFlatAuditMonza = hasArg(argc, argv, "--race-flat-audit-monza");
     const bool racecraftAudit = hasArg(argc, argv, "--racecraft-audit") || racecraftAuditSpa ||
                                 racecraftAuditSuzuka || racecraftAuditSilverstone || racecraftAuditMonza ||
-                                racecraftAuditInterlagos;
+                                racecraftAuditInterlagos || raceFlatAuditMonza;
     int racecraftAuditMap = 2;
     if (racecraftAuditSpa) {
         racecraftAuditMap = 0;
@@ -8334,7 +8379,7 @@ int runFormulaForge(int argc, char** argv) {
         racecraftAuditMap = 1;
     } else if (racecraftAuditSilverstone) {
         racecraftAuditMap = 2;
-    } else if (racecraftAuditMonza) {
+    } else if (racecraftAuditMonza || raceFlatAuditMonza) {
         racecraftAuditMap = 3;
     } else if (racecraftAuditInterlagos) {
         racecraftAuditMap = 4;
@@ -8467,7 +8512,7 @@ int runFormulaForge(int argc, char** argv) {
         return ok ? 0 : 1;
     }
     if (racecraftAudit) {
-        const bool ok = game.runRacecraftAudit(racecraftAuditMap);
+        const bool ok = game.runRacecraftAudit(racecraftAuditMap, raceFlatAuditMonza);
         cleanupRuntime();
         return ok ? 0 : 1;
     }
