@@ -195,8 +195,8 @@
   "runtime_geometry": {
     "centerline_samples": 2048,
     "mesh_objects": 23,
-    "vertices": 311743,
-    "triangles": 416400,
+    "vertices": 312711,
+    "triangles": 418168,
     "materials": 31
   },
   "measured_bounds_blender": {
@@ -208,12 +208,12 @@
     "max": [
       1530.562,
       1021.038,
-      110.117
+      110.122
     ],
     "dimensions": [
       3060.794,
       2042.842,
-      115.117
+      115.122
     ]
   },
   "measured_bounds_gltf_y_up": {
@@ -224,12 +224,12 @@
     ],
     "max": [
       1530.562,
-      110.117,
+      110.122,
       1021.804
     ],
     "dimensions": [
       3060.793,
-      115.117,
+      115.122,
       2042.842
     ]
   },
@@ -241,12 +241,12 @@
     ],
     "max": [
       2211.662,
-      159.119,
+      159.126,
       1476.507
     ],
     "dimensions": [
       4422.846,
-      166.344,
+      166.351,
       2951.907
     ]
   },
@@ -395,7 +395,7 @@
       "grass_runoff_zones",
       "asphalt_runoff_zones"
     ],
-    "starting_grid_slots": 6,
+    "starting_grid_slots": 11,
     "opaque_materials_only": true
   },
   "grounding_contract": {
@@ -407,8 +407,13 @@
     "branch_reach_probe_step_asset_units": 0.25,
     "radial_step_asset_units": 1.0,
     "offroad_visual_clearance_asset_units": 0.1,
+    "embankment_underlay_gap_asset_units": 0.04,
     "runoff_transition_asset_units": 4.0,
     "terrain_reach_asset_units": 36.0,
+    "embankment_reach_asset_units": 36.0,
+    "max_embankment_longitudinal_span_asset_units": null,
+    "vegetation_setback_asset_units": 13.0,
+    "vegetation_canopy_clearance_asset_units": 6.0,
     "outer_edge_follows_local_centerline": true,
     "tolerance_asset_units": 0.002,
     "instances": [
@@ -416,253 +421,325 @@
         "kind": "vegetation",
         "station": 21,
         "side": 1,
-        "lateral": 27.023735,
-        "base_z": 50.182896
+        "lateral": 24.285674,
+        "base_z": 50.182896,
+        "canopy_radius": 4.697047,
+        "road_edge_clearance": 11.588626
       },
       {
         "kind": "vegetation",
         "station": 77,
         "side": -1,
-        "lateral": 26.447525,
-        "base_z": 53.995214
+        "lateral": 23.971377,
+        "base_z": 54.043958,
+        "canopy_radius": 3.831827,
+        "road_edge_clearance": 12.13955
       },
       {
         "kind": "vegetation",
         "station": 134,
         "side": 1,
-        "lateral": 28.05206,
-        "base_z": 44.808262
+        "lateral": 24.846578,
+        "base_z": 44.824055,
+        "canopy_radius": 2.797208,
+        "road_edge_clearance": 14.049371
       },
       {
         "kind": "vegetation",
         "station": 191,
         "side": -1,
-        "lateral": 27.573882,
-        "base_z": 35.612227
+        "lateral": 24.585754,
+        "base_z": 35.572085,
+        "canopy_radius": 5.813381,
+        "road_edge_clearance": 10.772327
       },
       {
         "kind": "vegetation",
         "station": 248,
         "side": 1,
-        "lateral": 22.44503,
-        "base_z": 23.386638
+        "lateral": 21.788198,
+        "base_z": 23.3842,
+        "canopy_radius": 2.913614,
+        "road_edge_clearance": 10.87454
       },
       {
         "kind": "vegetation",
         "station": 305,
         "side": -1,
-        "lateral": 29.856371,
-        "base_z": 36.403717
+        "lateral": 25.830748,
+        "base_z": 36.383215,
+        "canopy_radius": 2.857376,
+        "road_edge_clearance": 14.973371
       },
       {
         "kind": "vegetation",
         "station": 362,
         "side": 1,
-        "lateral": 21.471495,
-        "base_z": 50.377898
+        "lateral": 21.257179,
+        "base_z": 50.377898,
+        "canopy_radius": 4.93744,
+        "road_edge_clearance": 8.31974
       },
       {
         "kind": "vegetation",
         "station": 419,
         "side": -1,
-        "lateral": 31.494184,
-        "base_z": 59.321757
+        "lateral": 26.7241,
+        "base_z": 59.321757,
+        "canopy_radius": 3.401453,
+        "road_edge_clearance": 15.322616
       },
       {
         "kind": "vegetation",
         "station": 476,
         "side": 1,
-        "lateral": 26.940392,
-        "base_z": 68.555192
+        "lateral": 24.240214,
+        "base_z": 68.555192,
+        "canopy_radius": 2.75963,
+        "road_edge_clearance": 13.480583
       },
       {
         "kind": "vegetation",
         "station": 533,
         "side": -1,
-        "lateral": 25.014216,
-        "base_z": 77.908447
+        "lateral": 23.189572,
+        "base_z": 77.908447,
+        "canopy_radius": 4.904394,
+        "road_edge_clearance": 10.285179
       },
       {
         "kind": "vegetation",
         "station": 589,
         "side": 1,
-        "lateral": 26.180176,
-        "base_z": 87.097609
+        "lateral": 23.717117,
+        "base_z": 87.097609,
+        "canopy_radius": 2.957703,
+        "road_edge_clearance": 12.997963
       },
       {
         "kind": "vegetation",
         "station": 646,
         "side": -1,
-        "lateral": 22.513538,
-        "base_z": 96.469722
+        "lateral": 21.454205,
+        "base_z": 96.485356,
+        "canopy_radius": 3.735473,
+        "road_edge_clearance": 10.535727
       },
       {
         "kind": "vegetation",
         "station": 703,
         "side": 1,
-        "lateral": 21.307643,
-        "base_z": 100.869837
+        "lateral": 20.71326,
+        "base_z": 100.875518,
+        "canopy_radius": 5.918027,
+        "road_edge_clearance": 7.795233
       },
       {
         "kind": "vegetation",
         "station": 760,
         "side": -1,
-        "lateral": 21.81663,
-        "base_z": 97.969302
+        "lateral": 20.990889,
+        "base_z": 97.974021,
+        "canopy_radius": 3.203665,
+        "road_edge_clearance": 10.787023
       },
       {
         "kind": "vegetation",
         "station": 817,
         "side": 1,
-        "lateral": 27.159711,
-        "base_z": 91.089989
+        "lateral": 23.905297,
+        "base_z": 91.017423,
+        "canopy_radius": 3.645604,
+        "road_edge_clearance": 13.259693
       },
       {
         "kind": "vegetation",
         "station": 874,
         "side": -1,
-        "lateral": 24.71371,
-        "base_z": 79.672417
+        "lateral": 22.571115,
+        "base_z": 79.689331,
+        "canopy_radius": 5.381949,
+        "road_edge_clearance": 10.188611
       },
       {
         "kind": "vegetation",
         "station": 931,
         "side": 1,
-        "lateral": 23.85548,
-        "base_z": 64.412584
+        "lateral": 22.102989,
+        "base_z": 64.428619,
+        "canopy_radius": 3.45114,
+        "road_edge_clearance": 11.651849
       },
       {
         "kind": "vegetation",
         "station": 988,
         "side": -1,
-        "lateral": 30.953558,
-        "base_z": 48.655993
+        "lateral": 25.974668,
+        "base_z": 48.644567,
+        "canopy_radius": 3.597225,
+        "road_edge_clearance": 15.377442
       },
       {
         "kind": "vegetation",
         "station": 1045,
         "side": 1,
-        "lateral": 23.786884,
-        "base_z": 32.87824
+        "lateral": 22.065573,
+        "base_z": 32.856449,
+        "canopy_radius": 5.766162,
+        "road_edge_clearance": 9.299411
       },
       {
         "kind": "vegetation",
         "station": 1101,
         "side": -1,
-        "lateral": 23.937188,
-        "base_z": 25.32208
+        "lateral": 22.147557,
+        "base_z": 25.337439,
+        "canopy_radius": 3.518847,
+        "road_edge_clearance": 11.628689
       },
       {
         "kind": "vegetation",
         "station": 1158,
         "side": 1,
-        "lateral": 30.822132,
-        "base_z": 18.384436
+        "lateral": 25.902981,
+        "base_z": 18.380361,
+        "canopy_radius": 3.805851,
+        "road_edge_clearance": 15.095748
       },
       {
         "kind": "vegetation",
         "station": 1215,
         "side": -1,
-        "lateral": 20.238712,
-        "base_z": 11.748488
+        "lateral": 20.204327,
+        "base_z": 11.748756,
+        "canopy_radius": 5.223784,
+        "road_edge_clearance": 7.817478
       },
       {
         "kind": "vegetation",
         "station": 1272,
         "side": 1,
-        "lateral": 29.986017,
-        "base_z": 6.560935
+        "lateral": 25.636905,
+        "base_z": 6.541928,
+        "canopy_radius": 2.719992,
+        "road_edge_clearance": 15.498942
       },
       {
         "kind": "vegetation",
         "station": 1329,
         "side": -1,
-        "lateral": 23.712871,
-        "base_z": 4.728063
+        "lateral": 22.234992,
+        "base_z": 4.716804,
+        "canopy_radius": 3.121018,
+        "road_edge_clearance": 11.650226
       },
       {
         "kind": "vegetation",
         "station": 1386,
         "side": 1,
-        "lateral": 24.907843,
-        "base_z": 2.911215
+        "lateral": 22.886796,
+        "base_z": 2.88423,
+        "canopy_radius": 5.211249,
+        "road_edge_clearance": 10.210528
       },
       {
         "kind": "vegetation",
         "station": 1443,
         "side": -1,
-        "lateral": 29.656143,
-        "base_z": 1.509118
+        "lateral": 25.476777,
+        "base_z": 1.552801,
+        "canopy_radius": 3.714058,
+        "road_edge_clearance": 14.301181
       },
       {
         "kind": "vegetation",
         "station": 1500,
         "side": 1,
-        "lateral": 21.04274,
-        "base_z": 0.614541
+        "lateral": 20.778557,
+        "base_z": 0.613158,
+        "canopy_radius": 2.46931,
+        "road_edge_clearance": 10.847709
       },
       {
         "kind": "vegetation",
         "station": 1557,
         "side": -1,
-        "lateral": 31.186069,
-        "base_z": 5.403862
+        "lateral": 26.311283,
+        "base_z": 5.396011,
+        "canopy_radius": 4.78257,
+        "road_edge_clearance": 14.067152
       },
       {
         "kind": "vegetation",
         "station": 1613,
         "side": 1,
-        "lateral": 23.410507,
-        "base_z": 10.166219
+        "lateral": 22.070067,
+        "base_z": 10.177735,
+        "canopy_radius": 3.100629,
+        "road_edge_clearance": 11.507899
       },
       {
         "kind": "vegetation",
         "station": 1670,
         "side": -1,
-        "lateral": 22.964935,
-        "base_z": 14.591485
+        "lateral": 21.827028,
+        "base_z": 14.574561,
+        "canopy_radius": 3.452245,
+        "road_edge_clearance": 10.913218
       },
       {
         "kind": "vegetation",
         "station": 1727,
         "side": 1,
-        "lateral": 25.282798,
-        "base_z": 21.683623
+        "lateral": 23.091317,
+        "base_z": 21.705742,
+        "canopy_radius": 4.614282,
+        "road_edge_clearance": 11.014598
       },
       {
         "kind": "vegetation",
         "station": 1784,
         "side": -1,
-        "lateral": 25.362411,
-        "base_z": 27.424371
+        "lateral": 23.138656,
+        "base_z": 27.414632,
+        "canopy_radius": 3.569876,
+        "road_edge_clearance": 12.098629
       },
       {
         "kind": "vegetation",
         "station": 1841,
         "side": 1,
-        "lateral": 20.769754,
-        "base_z": 32.647618
+        "lateral": 20.746236,
+        "base_z": 32.64756,
+        "canopy_radius": 2.520755,
+        "road_edge_clearance": 10.506441
       },
       {
         "kind": "vegetation",
         "station": 1898,
         "side": -1,
-        "lateral": 21.43256,
-        "base_z": 38.191849
+        "lateral": 21.228205,
+        "base_z": 38.194604,
+        "canopy_radius": 5.910024,
+        "road_edge_clearance": 7.334816
       },
       {
         "kind": "vegetation",
         "station": 1955,
         "side": 1,
-        "lateral": 23.417195,
-        "base_z": 41.622379
+        "lateral": 22.31847,
+        "base_z": 41.609116,
+        "canopy_radius": 2.828734,
+        "road_edge_clearance": 11.489733
       },
       {
         "kind": "vegetation",
         "station": 2012,
         "side": -1,
-        "lateral": 23.001508,
-        "base_z": 45.376343
+        "lateral": 22.091732,
+        "base_z": 45.380531,
+        "canopy_radius": 3.789464,
+        "road_edge_clearance": 10.302268
       },
       {
         "kind": "grandstand",

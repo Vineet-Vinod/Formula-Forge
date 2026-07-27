@@ -154,8 +154,8 @@
   "runtime_geometry": {
     "centerline_samples": 2048,
     "mesh_objects": 23,
-    "vertices": 226595,
-    "triangles": 203058,
+    "vertices": 226675,
+    "triangles": 203098,
     "materials": 31
   },
   "measured_bounds_blender": {
@@ -354,7 +354,7 @@
       "grass_runoff_zones",
       "asphalt_runoff_zones"
     ],
-    "starting_grid_slots": 6,
+    "starting_grid_slots": 11,
     "opaque_materials_only": true
   },
   "grounding_contract": {
