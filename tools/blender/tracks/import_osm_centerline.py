@@ -77,6 +77,7 @@ TRACKS = {
         "clockwise": False,
         "start_node": 1893855303,
         "source": "https://www.openstreetmap.org/way/179048507",
+        "smoothing_iterations": 2,
     },
     "hockenheim": {
         "symbol": "kHockenheimCenterline",

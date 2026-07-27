@@ -13,6 +13,7 @@ namespace {
 #include "track_data/jeddah_centerline.inc"
 #include "track_data/sepang_centerline.inc"
 #include "track_data/cota_centerline.inc"
+#include "track_data/istanbul_centerline.inc"
 
 // Starts after the Bus Stop and follows Spa's 19 turns in race order. These
 // survey-space points retain La Source, Eau Rouge/Raidillon, the Kemmel run,
@@ -643,7 +644,54 @@ constexpr TrackTurnExpectation kCotaTurns[] = {
     {"Turn 20", 0.917f, TrackTurnDirection::Left},
 };
 
-constexpr std::array<TrackCatalogEntry, 10> kCatalog = {{
+constexpr TrackElevationPoint kIstanbulElevation[] = {
+    {0.0f, 18.0f},   {360.0f, 9.0f},  {720.0f, 1.8f},  {1060.0f, 0.0f},
+    {1420.0f, 6.2f}, {1780.0f, 14.5f}, {2160.0f, 23.8f}, {2540.0f, 31.5f},
+    {2920.0f, 40.9f}, {3300.0f, 35.6f}, {3700.0f, 27.8f}, {4100.0f, 20.4f},
+    {4500.0f, 13.8f}, {4900.0f, 16.2f}, {5338.0f, 18.0f},
+};
+
+constexpr TrackWidthPoint kIstanbulWidth[] = {
+    {0.0f, 21.5f},   {220.0f, 19.0f},  {620.0f, 14.5f},  {1040.0f, 16.0f},
+    {1460.0f, 14.5f}, {1880.0f, 16.0f}, {2300.0f, 14.5f}, {2740.0f, 17.0f},
+    {3180.0f, 14.5f}, {3620.0f, 16.0f}, {4060.0f, 14.5f}, {4500.0f, 17.0f},
+    {4920.0f, 18.0f}, {5200.0f, 19.0f}, {5338.0f, 21.5f},
+};
+
+constexpr TrackBankPoint kIstanbulBank[] = {
+    {0.0f, 0.0f},    {220.0f, 0.0f},    {420.0f, 2.4f},   {700.0f, -1.8f},
+    {980.0f, 2.1f},  {1280.0f, -1.8f}, {1600.0f, 2.2f},  {1940.0f, -1.7f},
+    {2290.0f, 2.2f}, {2640.0f, -1.7f}, {3010.0f, 2.8f},  {3400.0f, 3.2f},
+    {3780.0f, 2.6f}, {4160.0f, -1.7f}, {4540.0f, 2.1f},  {4900.0f, -1.6f},
+    {5180.0f, 2.0f}, {5338.0f, 0.0f},
+};
+
+constexpr TrackRunoffZone kIstanbulRunoff[] = {
+    {120.0f, 700.0f, 1, TrackRunoffSurface::Asphalt, 26.0f},
+    {670.0f, 1280.0f, -1, TrackRunoffSurface::Gravel, 24.0f},
+    {1360.0f, 1980.0f, 1, TrackRunoffSurface::Asphalt, 24.0f},
+    {2060.0f, 2690.0f, -1, TrackRunoffSurface::Gravel, 28.0f},
+    {2770.0f, 3420.0f, 1, TrackRunoffSurface::Asphalt, 30.0f},
+    {3500.0f, 4130.0f, -1, TrackRunoffSurface::Gravel, 26.0f},
+    {4210.0f, 4820.0f, 1, TrackRunoffSurface::Asphalt, 24.0f},
+    {4900.0f, 5338.0f, -1, TrackRunoffSurface::Asphalt, 26.0f},
+};
+
+constexpr TrackTurnExpectation kIstanbulTurns[] = {
+    {"Turn 1", 0.046f, TrackTurnDirection::Left},
+    {"Turn 2", 0.183f, TrackTurnDirection::Left},
+    {"Turn 3", 0.209f, TrackTurnDirection::Right},
+    {"Turn 4", 0.242f, TrackTurnDirection::Left},
+    {"Turn 6", 0.353f, TrackTurnDirection::Right},
+    {"Turn 7", 0.425f, TrackTurnDirection::Left},
+    {"Turn 8", 0.614f, TrackTurnDirection::Left},
+    {"Turn 9", 0.627f, TrackTurnDirection::Right},
+    {"Turn 10", 0.869f, TrackTurnDirection::Left},
+    {"Turn 11", 0.889f, TrackTurnDirection::Right},
+    {"Turns 12-14", 0.915f, TrackTurnDirection::Left},
+};
+
+constexpr std::array<TrackCatalogEntry, 11> kCatalog = {{
     {TrackLayoutId::Spa,
      "Spa-Francorchamps",
      "Circuit de Spa-Francorchamps",
@@ -834,6 +882,25 @@ constexpr std::array<TrackCatalogEntry, 10> kCatalog = {{
      kCotaBank,
      kCotaRunoff,
      {}},
+    {TrackLayoutId::Istanbul,
+     "Istanbul Park",
+     "Intercity Istanbul Park",
+     "Turkey",
+     "An anti-clockwise roller-coaster with steep gradients, a four-apex Turn 8 and a long back straight.",
+     "anatolian-hills",
+     5338.0f,
+     14,
+     0.0f,
+     40.9f,
+     false,
+     1.0f,
+     true,
+     kIstanbulCenterline,
+     kIstanbulElevation,
+     kIstanbulWidth,
+     kIstanbulBank,
+     kIstanbulRunoff,
+     {}},
 }};
 
 float wrapDistance(float distance, float totalLength) noexcept {
@@ -936,6 +1003,8 @@ std::span<const TrackTurnExpectation> trackTurnExpectations(TrackLayoutId id) no
             return kSepangTurns;
         case TrackLayoutId::Cota:
             return kCotaTurns;
+        case TrackLayoutId::Istanbul:
+            return kIstanbulTurns;
     }
     return {};
 }
@@ -996,6 +1065,9 @@ TrackShapeAuditResult auditTrackCatalogShape(const TrackCatalogEntry& track) noe
             break;
         case TrackLayoutId::Cota:
             expectedAspect = 1.751f;
+            break;
+        case TrackLayoutId::Istanbul:
+            expectedAspect = 1.147f;
             break;
     }
     result.aspectMatches = std::abs(result.aspectRatio - expectedAspect) <= expectedAspect * 0.12f;

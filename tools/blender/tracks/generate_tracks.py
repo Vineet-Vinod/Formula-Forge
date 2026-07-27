@@ -275,6 +275,30 @@ TRACKS = {
         "cpp_simulation_units_per_asset_unit": 17.0,
         "coordinate_unit": "meter",
     },
+    "istanbul": {
+        "display_name": "Istanbul Park",
+        "venue": "Intercity Istanbul Park",
+        "country": "Turkey",
+        "source_file": "src/track_catalog.cpp",
+        "centerline": "kIstanbulCenterline",
+        "target_length": 5338.0,
+        "elevation": "kIstanbulElevation",
+        "width_profile": "kIstanbulWidth",
+        "bank_profile": "kIstanbulBank",
+        "runtime_runoff_profile": "kIstanbulRunoff",
+        "turns": 14,
+        "clockwise": False,
+        "palette": "anatolian",
+        "runtime_mirror_y": True,
+        "cpp_layout_id": "TrackLayoutId::Istanbul",
+        "start_phase": 0.0,
+        "vegetation_setback_m": 29.0,
+        "vegetation_canopy_clearance_m": 22.0,
+        "embankment_reach_m": 8.0,
+        "max_embankment_longitudinal_span_m": 6.0,
+        "cpp_simulation_units_per_asset_unit": 17.0,
+        "coordinate_unit": "meter",
+    },
 }
 
 PALETTES = {
@@ -288,6 +312,7 @@ PALETTES = {
     "corniche": {"sand": (0.58, 0.50, 0.36, 1), "grass": (0.11, 0.30, 0.22, 1), "roof": (0.12, 0.36, 0.48, 1)},
     "tropical": {"sand": (0.69, 0.51, 0.27, 1), "grass": (0.08, 0.37, 0.16, 1), "roof": (0.28, 0.20, 0.10, 1)},
     "texas": {"sand": (0.66, 0.46, 0.24, 1), "grass": (0.19, 0.34, 0.15, 1), "roof": (0.66, 0.12, 0.045, 1)},
+    "anatolian": {"sand": (0.65, 0.49, 0.28, 1), "grass": (0.23, 0.35, 0.16, 1), "roof": (0.54, 0.11, 0.045, 1)},
 }
 
 ASPHALT_COLOR = (0.35, 0.365, 0.38, 1)
@@ -1668,6 +1693,7 @@ def make_world(slug, spec):
     seed_index = {
         "spa": 1, "suzuka": 2, "silverstone": 3, "monza": 4,
         "interlagos": 5, "shanghai": 6, "bahrain": 7, "jeddah": 8, "sepang": 9, "cota": 10,
+        "istanbul": 11,
     }[slug]
     rng = random.Random(7901 + seed_index * 101)
     palette = PALETTES[spec["palette"]]
