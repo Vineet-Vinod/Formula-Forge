@@ -1,4 +1,4 @@
-"""Render the eleven Formula liveries as loading artwork."""
+"""Render five Formula liveries as loading artwork."""
 
 from __future__ import annotations
 
@@ -13,17 +13,11 @@ from mathutils import Vector
 
 
 CAR_LAYOUT = (
-    ("formula_mercedes", (-6.25, 4.60, 0.00), 18.0, 0.78),
-    ("formula_ferrari", (-3.75, 4.00, 0.00), 12.0, 0.78),
-    ("formula_mclaren", (-1.25, 3.60, 0.00), 5.0, 0.78),
-    ("formula_red_bull", (1.25, 3.60, 0.00), -5.0, 0.78),
-    ("formula_racing_bulls", (3.75, 4.00, 0.00), -12.0, 0.78),
-    ("formula_alpine", (6.25, 4.60, 0.00), -18.0, 0.78),
-    ("formula_audi", (-5.00, 1.60, 0.02), 15.0, 0.78),
-    ("formula_haas", (-2.50, 1.10, 0.02), 8.0, 0.78),
-    ("formula_williams", (0.00, 0.90, 0.02), 0.0, 0.78),
-    ("formula_aston_martin", (2.50, 1.10, 0.02), -8.0, 0.78),
-    ("formula_cadillac", (5.00, 1.60, 0.02), -15.0, 0.78),
+    ("formula_mercedes", (-5.25, 4.10, 0.00), 18.0, 1.0),
+    ("formula_ferrari", (-2.65, 2.25, 0.00), 9.0, 1.0),
+    ("formula_mclaren", (0.00, 0.45, 0.00), 0.0, 1.0),
+    ("formula_red_bull", (2.65, 2.25, 0.00), -9.0, 1.0),
+    ("formula_racing_bulls", (5.25, 4.10, 0.00), -18.0, 1.0),
 )
 
 
@@ -141,7 +135,7 @@ def build_scene(project_root: Path, output_dir: Path) -> None:
         "asset": "formula_forge_loading",
         "type": "ui_artwork",
         "resolution": [1280, 720],
-        "composition": "eleven Formula liveries in a red-lit two-row grid",
+        "composition": "five Formula liveries in a red-lit semicircle",
         "lighting": "dark studio with red arena and rim lights",
         "vehicles": [slug for slug, _, _, _ in CAR_LAYOUT],
         "source": blend_path.name,

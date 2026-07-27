@@ -6,20 +6,14 @@
     1280,
     720
   ],
-  "composition": "eleven Formula liveries in a red-lit two-row grid",
+  "composition": "five Formula liveries in a red-lit semicircle",
   "lighting": "dark studio with red arena and rim lights",
   "vehicles": [
     "formula_mercedes",
     "formula_ferrari",
     "formula_mclaren",
     "formula_red_bull",
-    "formula_racing_bulls",
-    "formula_alpine",
-    "formula_audi",
-    "formula_haas",
-    "formula_williams",
-    "formula_aston_martin",
-    "formula_cadillac"
+    "formula_racing_bulls"
   ],
   "source": "formula_forge_loading.blend",
   "render": "formula_forge_loading.png"
