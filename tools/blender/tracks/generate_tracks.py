@@ -23,6 +23,10 @@ REPO = Path(__file__).resolve().parents[3]
 DEFAULT_OUTPUT = REPO / "assets" / "tracks"
 SAMPLES = 2048
 STARTING_GRID_SLOT_COUNT = 11
+GRANDSTAND_LENGTH_METERS = 30.0
+GRANDSTAND_DEPTH_METERS = 8.0
+GRANDSTAND_CANOPY_OVERHANG_METERS = 1.0
+GRANDSTAND_FOUNDATION_DEPTH_METERS = 0.10
 RUNOFF_TRANSITION_METERS = 4.0
 TERRAIN_REACH_METERS = 36.0
 MOUNTAIN_REACH_METERS = 240.0
@@ -318,9 +322,14 @@ TRACKS = {
         "start_phase": 0.0,
         "vegetation_setback_m": 29.0,
         "vegetation_canopy_clearance_m": 22.0,
-        "embankment_reach_m": 8.0,
+        # The spectator structures sit 16 m beyond the asphalt edge; carry
+        # the detailed shoulder beneath their complete 9 m canopy footprint.
+        "embankment_reach_m": 22.0,
         "max_embankment_longitudinal_span_m": 6.0,
         "surface_underlay_skip_ranges_m": ((600.0, 760.0),),
+        # Keep spectator structures on the non-runoff side of Turns 1-3,
+        # the following straight, and the late-lap asphalt escape road.
+        "grandstand_sides": (1, -1, -1, 1, 1),
         "cpp_simulation_units_per_asset_unit": 17.0,
         "coordinate_unit": "meter",
     },
@@ -1602,8 +1611,18 @@ def combined_formula_infrastructure(placements, materials, parent, detail_scale)
         tangent, normal = placement["tangent"], placement["normal"]
         kind = placement["kind"]
         if kind == "grandstand":
-            length = 30.0 * detail_scale
-            depth = 8.0 * detail_scale
+            length = GRANDSTAND_LENGTH_METERS * detail_scale
+            depth = GRANDSTAND_DEPTH_METERS * detail_scale
+            # The terrain layers intentionally sit slightly below authored
+            # shoulder grade. A shallow concrete footing closes that gap so a
+            # stand can never read as hovering above the verge.
+            old = len(stand_faces)
+            foundation_depth = GRANDSTAND_FOUNDATION_DEPTH_METERS * detail_scale
+            add_oriented_box_geometry(
+                stand_verts, stand_faces,
+                (x, y, z - foundation_depth * 0.5),
+                (length, depth, foundation_depth), tangent, normal)
+            stand_indices.extend([0] * (len(stand_faces) - old))
             for tier in range(4):
                 old = len(stand_faces)
                 tier_depth = depth / 4.0
@@ -1630,7 +1649,8 @@ def combined_formula_infrastructure(placements, materials, parent, detail_scale)
             old = len(stand_faces)
             add_oriented_box_geometry(stand_verts, stand_faces,
                                       (x, y, z + 5.0 * detail_scale),
-                                      (length + 2.0 * detail_scale, depth + detail_scale,
+                                      (length + 2.0 * detail_scale,
+                                       depth + GRANDSTAND_CANOPY_OVERHANG_METERS * detail_scale,
                                        0.35 * detail_scale), tangent, normal)
             stand_indices.extend([1] * (len(stand_faces) - old))
         elif kind == "marshal":
@@ -1671,6 +1691,8 @@ def combined_formula_infrastructure(placements, materials, parent, detail_scale)
     }
     for obj in objects.values():
         obj["grounding_contract"] = "shoulder_grade"
+    objects["grandstands"]["foundation_depth_m"] = (
+        GRANDSTAND_FOUNDATION_DEPTH_METERS * detail_scale)
     return objects
 
 
@@ -1970,10 +1992,17 @@ def make_world(slug, spec):
         "pit": (0.965,),
     }
     for kind, phases in infrastructure_schedule.items():
+        configured_sides = spec.get(f"{kind}_sides")
+        if configured_sides is not None and len(configured_sides) != len(phases):
+            raise ValueError(
+                f"{slug}: {kind}_sides must contain one side for each scheduled placement")
         for ordinal, phase in enumerate(phases):
             i = int(phase * SAMPLES) % SAMPLES
             p, tangent, normal = track_frame(center, i)
-            side = -1 if (ordinal + (0 if kind == "pit" else 1)) % 2 else 1
+            side = (configured_sides[ordinal] if configured_sides is not None else
+                    (-1 if (ordinal + (0 if kind == "pit" else 1)) % 2 else 1))
+            if side not in (-1, 1):
+                raise ValueError(f"{slug}: {kind}_sides values must be -1 or 1")
             extra = {"grandstand": 16.0, "marshal": 10.0, "pit": 13.0}[kind]
             lateral = half_widths[i] + extra * detail_scale
             base_z = shoulder_ground_z(p[2], half_widths[i], side * lateral, detail_scale,

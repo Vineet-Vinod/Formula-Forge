@@ -174,8 +174,8 @@
   "runtime_geometry": {
     "centerline_samples": 2048,
     "mesh_objects": 22,
-    "vertices": 332817,
-    "triangles": 302688,
+    "vertices": 390201,
+    "triangles": 413636,
     "materials": 30
   },
   "measured_bounds_blender": {
@@ -399,7 +399,7 @@
       "height_min_m": -1.3613321609288611,
       "height_max_m": 13.540532243244781
     },
-    "embankment_reach_asset_units": 8.0,
+    "embankment_reach_asset_units": 22.0,
     "max_embankment_longitudinal_span_asset_units": 6.0,
     "vegetation_setback_asset_units": 29.0,
     "vegetation_canopy_clearance_asset_units": 22.0,
@@ -715,16 +715,16 @@
       {
         "kind": "grandstand",
         "station": 163,
-        "side": -1,
+        "side": 1,
         "lateral": 25.659424,
-        "base_z": 2.264586
+        "base_z": 1.781588
       },
       {
         "kind": "grandstand",
         "station": 491,
-        "side": 1,
+        "side": -1,
         "lateral": 25.031392,
-        "base_z": 11.891949
+        "base_z": 11.542791
       },
       {
         "kind": "grandstand",
@@ -743,9 +743,9 @@
       {
         "kind": "grandstand",
         "station": 1679,
-        "side": -1,
+        "side": 1,
         "lateral": 25.226664,
-        "base_z": 7.954921
+        "base_z": 7.349983
       },
       {
         "kind": "marshal",

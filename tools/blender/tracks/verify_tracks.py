@@ -17,6 +17,9 @@ from mathutils.bvhtree import BVHTree
 
 from generate_tracks import (ASPHALT_MAX_LUMINANCE, ASPHALT_MIN_LUMINANCE,
                              EMBANKMENT_UNDERLAY_GAP_METERS,
+                             GRANDSTAND_CANOPY_OVERHANG_METERS,
+                             GRANDSTAND_DEPTH_METERS,
+                             GRANDSTAND_FOUNDATION_DEPTH_METERS,
                              GROUND_RADIAL_STEP_METERS,
                              MOUNTAIN_REACH_METERS,
                              OFFROAD_VISUAL_CLEARANCE_METERS,
@@ -589,6 +592,66 @@ def verify(root: Path, slug: str):
         "marshal": ("marshal_posts",),
         "pit": ("pit_buildings",),
     }
+    grandstand_instances = [
+        instance for instance in grounding["instances"]
+        if instance["kind"] == "grandstand"
+    ]
+    configured_grandstand_sides = spec.get("grandstand_sides")
+    if configured_grandstand_sides is not None:
+        grandstand_mesh = bpy.data.objects["formula_grandstands"]
+        if (grandstand_mesh.get("foundation_depth_m") !=
+                GRANDSTAND_FOUNDATION_DEPTH_METERS):
+            raise ValueError(f"{slug}: grandstand footing contract is stale")
+        actual_sides = tuple(instance["side"] for instance in grandstand_instances)
+        if actual_sides != tuple(configured_grandstand_sides):
+            raise ValueError(
+                f"{slug}: grandstand sides differ from the authored safe placements")
+        canopy_half_depth = (
+            GRANDSTAND_DEPTH_METERS + GRANDSTAND_CANOPY_OVERHANG_METERS) * 0.5
+        for instance in grandstand_instances:
+            index = instance["station"]
+            distance = target_length * index / SAMPLES
+            side = instance["side"]
+            half_width = expected_widths[index] * 0.5
+            runoff_zone = active_zone(
+                course_design["runoff_zones"], distance, side, target_length)
+            if runoff_zone is not None:
+                raise ValueError(
+                    f"{slug}: grandstand occupies profiled runoff at station {index}")
+            barrier_zone = active_zone(
+                course_design["barrier_zones"], distance, side, target_length)
+            barrier_offset = (
+                float(barrier_zone.get("offset_m", 6.0)) if barrier_zone else 6.0)
+            inner_footprint_offset = (
+                instance["lateral"] - half_width - canopy_half_depth)
+            if inner_footprint_offset < barrier_offset + 1.0:
+                raise ValueError(
+                    f"{slug}: grandstand canopy is inside the safety barrier "
+                    f"at station {index}")
+            point = expected[index]
+            _, tangent = loop_pose(expected, index/SAMPLES)
+            normal = (-tangent[1], tangent[0])
+            stand_x = point[0] + normal[0] * side * instance["lateral"]
+            stand_y = point[1] + normal[1] * side * instance["lateral"]
+            support_z = None
+            for object_name in (
+                    "track_embankment", "track_runoff", "gravel_runoff_zones",
+                    "grass_runoff_zones", "asphalt_runoff_zones", "terrain_infield"):
+                support = bpy.data.objects.get(object_name)
+                if support is None:
+                    continue
+                hit, location, _, _ = support.ray_cast(
+                    Vector((stand_x, stand_y, instance["base_z"] + 1.0)),
+                    Vector((0.0, 0.0, -1.0)), distance=5.0)
+                if hit:
+                    support_z = location.z if support_z is None else max(
+                        support_z, location.z)
+            footing_bottom = (
+                instance["base_z"] - GRANDSTAND_FOUNDATION_DEPTH_METERS)
+            if support_z is None or support_z < footing_bottom - tolerance:
+                raise ValueError(
+                    f"{slug}: grandstand footing floats above terrain "
+                    f"at station {index}")
     max_prop_ground_error = 0.0
     for instance in grounding["instances"]:
         index = instance["station"]
