@@ -327,36 +327,36 @@ struct AiCircuitProfile {
     float maximumProgressStep;
 };
 
-// Each circuit gets its own curvature response and measured flying-lap
-// baseline. The baseline drives player adaptation; the audit envelope keeps
-// each circuit honest about pace, braking stability, and its projection/road
-// geometry without forcing every layout through one arbitrary threshold.
+// Each circuit gets its demonstrated minimum-time flying-lap baseline. The
+// baseline drives player adaptation; the audit envelope keeps each circuit
+// honest about pace, braking stability, and its projection/road geometry
+// without forcing every layout through one arbitrary threshold.
 constexpr AiCircuitProfile aiCircuitProfile(TrackLayoutId layout) {
     switch (layout) {
         case TrackLayoutId::Spa:
-            return {"spa", 105.0f, 105.0f, 112.0f, 110.0f, 116.0f, 1500, 4.5f, 3.5f};
+            return {"spa", 108.417f, 105.0f, 112.0f, 110.0f, 116.0f, 1500, 4.5f, 3.5f};
         case TrackLayoutId::Suzuka:
-            return {"suzuka", 91.5f, 105.0f, 112.0f, 110.0f, 117.0f, 1500, 5.5f, 2.5f};
+            return {"suzuka", 98.025f, 105.0f, 112.0f, 110.0f, 117.0f, 1500, 5.5f, 2.5f};
         case TrackLayoutId::Silverstone:
-            return {"silverstone", 85.5f, 95.0f, 102.0f, 99.0f, 106.0f, 1500, 4.5f, 2.5f};
+            return {"silverstone", 91.292f, 95.0f, 102.0f, 99.0f, 106.0f, 1500, 4.5f, 2.5f};
         case TrackLayoutId::Monza:
-            return {"monza", 78.0f, 74.0f, 78.0f, 79.0f, 83.0f, 1500, 4.5f, 2.5f};
+            return {"monza", 73.517f, 74.0f, 78.0f, 79.0f, 83.0f, 1500, 4.5f, 2.5f};
         case TrackLayoutId::Interlagos:
-            return {"interlagos", 68.5f, 73.0f, 79.0f, 78.0f, 84.0f, 1500, 4.5f, 2.5f};
+            return {"interlagos", 73.075f, 73.0f, 79.0f, 78.0f, 84.0f, 1500, 4.5f, 2.5f};
         case TrackLayoutId::Shanghai:
-            return {"shanghai", 91.0f, 102.5f, 107.5f, 106.5f, 112.5f, 1500, 4.5f, 2.7f};
+            return {"shanghai", 99.400f, 102.5f, 107.5f, 106.5f, 112.5f, 1500, 4.5f, 2.7f};
         case TrackLayoutId::Bahrain:
-            return {"bahrain", 90.0f, 93.0f, 99.0f, 98.0f, 103.0f, 1800, 4.5f, 2.5f};
+            return {"bahrain", 92.758f, 93.0f, 99.0f, 98.0f, 103.0f, 1800, 4.5f, 2.5f};
         case TrackLayoutId::Sepang:
-            return {"sepang", 91.0f, 98.0f, 103.0f, 102.0f, 108.0f, 1800, 4.5f, 2.5f};
+            return {"sepang", 97.125f, 98.0f, 103.0f, 102.0f, 108.0f, 1800, 4.5f, 2.5f};
         case TrackLayoutId::Cota:
-            return {"cota", 93.0f, 105.0f, 111.0f, 109.0f, 116.0f, 1800, 4.5f, 2.5f};
+            return {"cota", 103.900f, 105.0f, 111.0f, 109.0f, 116.0f, 1800, 4.5f, 2.5f};
         case TrackLayoutId::Istanbul:
-            return {"istanbul", 83.0f, 93.0f, 98.0f, 97.0f, 102.0f, 1800, 4.5f, 2.5f};
+            return {"istanbul", 92.483f, 93.0f, 98.0f, 97.0f, 102.0f, 1800, 4.5f, 2.5f};
         case TrackLayoutId::Hockenheim:
-            return {"hockenheim", 72.0f, 78.0f, 83.0f, 82.0f, 87.0f, 1800, 4.5f, 2.5f};
+            return {"hockenheim", 80.750f, 78.0f, 83.0f, 82.0f, 87.0f, 1800, 4.5f, 2.5f};
         case TrackLayoutId::Buddh:
-            return {"buddh", 85.0f, 88.0f, 93.0f, 92.0f, 97.0f, 1800, 4.5f, 2.5f};
+            return {"buddh", 87.700f, 88.0f, 93.0f, 92.0f, 97.0f, 1800, 4.5f, 2.5f};
     }
     return {"unknown", 90.0f, 60.0f, 220.0f, 60.0f, 230.0f, 1500, 4.5f, 2.5f};
 }
@@ -4039,11 +4039,13 @@ public:
                                   result.roadViolationFrames < 4500 && result.contacts == 0;
         const bool usesFlatCorners =
             result.physicallyFlatCorners > 0 &&
-            result.flatCornersTakenFlat > 0;
+            result.flatCornersTakenFlat ==
+                result.physicallyFlatCorners;
         const bool formulaRacecraft = result.averageSpeed > 500.0f && result.brakeFrames > 200 &&
                                       result.poweredExitFrames > 1000 && result.driftFrames == 0 &&
                                       result.brakeDriftFrames < profile.maximumBrakeDriftFrames;
-        const bool ok = targetPace && physicalPath && formulaRacecraft;
+        const bool ok = targetPace && physicalPath && usesFlatCorners &&
+                        formulaRacecraft;
         std::cout << "ai-pace-audit track=" << profile.name
                   << " launch_lap_s=" << result.launchLapSeconds
                   << " planned_lap_s=" << aiLapTheoreticalSeconds_
@@ -4090,6 +4092,35 @@ public:
             const float minimum = sectorFrames[i] > 0 ? sectorMinSpeed[i] : 0.0f;
             std::cout << " " << (i + 1) * 10 << ":" << average << "/" << minimum << "/"
                       << averageTarget << "/" << sectorMaxRoadViolation[i] << "/" << sectorContactFrames[i];
+        }
+        std::cout << "\n";
+        std::cout << "ai-flat-corners";
+        for (size_t cornerIndex = 0; cornerIndex < corners.size(); ++cornerIndex) {
+            const FormulaCornerTarget& corner = corners[cornerIndex];
+            if (!corner.fullThrottle) {
+                continue;
+            }
+            const float cornerProgress =
+                corner.lapFraction * track_.totalLength();
+            const float auditHalfWindow =
+                0.0035f * track_.totalLength();
+            const float minimumPlannedRatio = std::min({
+                plannedAiTheoreticalSpeed(cornerProgress -
+                                          auditHalfWindow),
+                plannedAiTheoreticalSpeed(cornerProgress),
+                plannedAiTheoreticalSpeed(cornerProgress +
+                                          auditHalfWindow)}) /
+                std::max(1.0f, kart.tuning.maxForwardSpeed);
+            const float physicalRatio =
+                physicalCornerSpeed(kart, cornerProgress) /
+                std::max(1.0f, kart.tuning.maxForwardSpeed);
+            std::cout << " " << corner.name
+                      << "={physical:" << physicalRatio
+                      << ",planned_window:" << minimumPlannedRatio
+                      << ",throttle:"
+                      << flatCornerMinimumThrottle[cornerIndex]
+                      << ",brake:"
+                      << flatCornerMaximumBrake[cornerIndex] << "}";
         }
         std::cout << "\n";
         return ok;
@@ -5540,10 +5571,45 @@ private:
         if (!isMetricCircuit(track_.layout())) {
             return false;
         }
-        return plannedAiTheoreticalSpeed(kart.progress) >=
-                   kart.tuning.maxForwardSpeed * 0.995f &&
-               plannedAiTheoreticalSpeed(kart.progress + 18.0f) >=
-                   kart.tuning.maxForwardSpeed * 0.995f;
+        const float maximumSpeed = kart.tuning.maxForwardSpeed;
+        if (plannedAiTheoreticalSpeed(kart.progress) >=
+                maximumSpeed * 0.995f &&
+            plannedAiTheoreticalSpeed(kart.progress + 18.0f) >=
+                maximumSpeed * 0.995f) {
+            return true;
+        }
+
+        // A point sample at a flat corner oscillates just below the numerical
+        // 99.5% cutoff as the line crosses sample boundaries. Commit through a
+        // small authored window only when the minimum-time plan is at least
+        // 99% of terminal speed across the whole window. This catches genuine
+        // flat bends without carrying the override into the next braking zone.
+        // Slightly exceed the audit/catalogue sampling window so interpolation
+        // at either boundary cannot inject a one-frame lift.
+        const float windowHalfLength = track_.totalLength() * 0.0038f;
+        for (const FormulaCornerTarget& corner :
+             formulaCornerTargets(track_.layout())) {
+            if (!corner.fullThrottle) {
+                continue;
+            }
+            const float cornerProgress =
+                corner.lapFraction * track_.totalLength();
+            if (std::abs(signedDistanceToLoop(
+                    kart.progress, cornerProgress,
+                    track_.totalLength())) > windowHalfLength) {
+                continue;
+            }
+            const float minimumWindowSpeed = std::min({
+                plannedAiTheoreticalSpeed(cornerProgress -
+                                          windowHalfLength),
+                plannedAiTheoreticalSpeed(cornerProgress),
+                plannedAiTheoreticalSpeed(cornerProgress +
+                                          windowHalfLength)});
+            if (minimumWindowSpeed >= maximumSpeed * 0.99f) {
+                return true;
+            }
+        }
+        return false;
     }
 
     float aiTargetSpeed(const Kart3D& kart) const {
@@ -5566,18 +5632,18 @@ private:
             return 1.0f;
         }
 
-        // A completed player lap teaches the field the player's sustainable
-        // pace. Gap correction is deliberately smaller and keeps the pack in
-        // contention without handing an opponent an obvious speed boost.
+        // A completed player lap may make the field faster, but never slower
+        // than its demonstrated solo benchmark. Passing an opponent must not
+        // trigger rubber-band coasting that lets the player immediately escape.
         const float learnedPace = hasBestLap_
                                       ? std::clamp(aiCircuitProfile(track_.layout()).baselineLapSeconds /
                                                        std::max(1.0f, bestLapTime_),
-                                                   0.965f, 1.045f)
+                                                   1.0f, 1.06f)
                                       : 1.0f;
         const float gapMeters = raceScore(kart) - raceScore(karts_[0]);
         const float desiredLead = 18.0f + static_cast<float>(index - 1) * 9.0f;
         const float gapCorrection = std::clamp((desiredLead - gapMeters) / 900.0f, -0.022f, 0.032f);
-        return std::clamp(learnedPace + gapCorrection, 0.95f, 1.06f);
+        return std::clamp(learnedPace + gapCorrection, 1.0f, 1.08f);
     }
 
     void updateAi(Kart3D& kart, float dt, int index, bool raceTraffic = true) {
@@ -5792,17 +5858,28 @@ private:
         const float baseTrafficWidth = track_.layout() == TrackLayoutId::Spa
                                            ? 0.45f
                                            : (narrowTechnicalTrack ? 0.58f : 0.70f);
-        // Ten opponents generate far more simultaneous separation requests
-        // than the original field. Preserve a half-road-width envelope so a
-        // late-field car is not crowded onto the runoff at corner entry.
+        // Traffic deviations are relative to the optimized line. Clamping the
+        // absolute lane to half the road discarded wide entries and exits on
+        // the fastest time-trial trajectories.
         const float trafficWidth = activeKartCount() > 6
                                        ? std::min(baseTrafficWidth, 0.50f)
                                        : baseTrafficWidth;
-        const float half = raceTraffic
-                               ? std::min(hardBoundaryLaneLimit(kart, future) - 5.0f,
-                                          std::max(0.0f, roadCenterLimit(kart, future) * trafficWidth))
-                               : hardBoundaryLaneLimit(kart, future) - 5.0f;
-        laneTarget = std::clamp(laneTarget, -half, half);
+        const float hardHalf = std::min(
+            hardBoundaryLaneLimit(kart, future) - 5.0f,
+            roadCenterLimit(kart, future) * 0.98f);
+        if (raceTraffic) {
+            const float deviationHalf =
+                std::max(0.0f, roadCenterLimit(kart, future) *
+                                   trafficWidth);
+            const float referenceLane =
+                racingLaneForProgress(kart, kart.progress);
+            laneTarget = std::clamp(
+                laneTarget,
+                std::max(-hardHalf, referenceLane - deviationHalf),
+                std::min(hardHalf, referenceLane + deviationHalf));
+        } else {
+            laneTarget = std::clamp(laneTarget, -hardHalf, hardHalf);
+        }
         const float currentLineLimit = roadCenterLimit(kart, center) - 1.0f;
         const float laneExcess = std::max(0.0f, std::abs(kart.lane) - currentLineLimit);
         const float recoveryUnits = isMetricCircuit(track_.layout()) ? kTrackSimulationUnitsPerMeter : 1.0f;
@@ -5851,25 +5928,6 @@ private:
         kart.aiAdaptivePace += (desiredAdaptivePace - kart.aiAdaptivePace) *
                                std::clamp(dt * 0.42f, 0.0f, 1.0f);
         float targetSpeed = aiTargetSpeed(kart) * kart.aiAdaptivePace * (1.0f - recovery * 0.24f);
-        bool nearbyTraffic = false;
-        if (raceTraffic) {
-            for (int i = 0; i < activeKartCount(); ++i) {
-                if (i == index) {
-                    continue;
-                }
-                nearbyTraffic = nearbyTraffic ||
-                                std::abs(signedDistanceToLoop(kart.progress,
-                                                              karts_[static_cast<size_t>(i)].progress,
-                                                              track_.totalLength())) < 110.0f;
-            }
-        }
-        const bool sharingSpaLine = track_.layout() == TrackLayoutId::Spa && nearbyTraffic;
-        if (raceTraffic && sharingSpaLine) {
-            // Spa's narrow high-speed sections leave less radius when a car
-            // is sharing the road. Reserve a small amount of the same tire
-            // budget for holding an alternate line beside traffic.
-            targetSpeed *= 0.92f;
-        }
         if (raceTraffic && kart.aiRacecraftMode == AiRacecraftMode::Attacking) {
             // An attacker commits to a later lift/brake point; the shared
             // powertrain and tire limits still cap what the car can produce.
@@ -5884,10 +5942,24 @@ private:
         // decelerate through the shared vehicle integrator.
         const float edgeUsage = std::abs(kart.lane) /
                                 std::max(1.0f, roadCenterLimit(kart, center));
+        const float lineError = std::abs(
+            kart.lane - racingLaneForProgress(kart, kart.progress));
+        const float lineErrorRatio =
+            lineError /
+            std::max(1.0f, roadCenterLimit(kart, center));
         const float headingError = std::abs(wrapAngle(angleOf(center.tangent) - kart.heading));
-        const float edgeInstability = smoothstep(std::clamp((edgeUsage - 0.76f) / 0.20f,
-                                                            0.0f, 1.0f));
-        const float headingInstability = smoothstep(std::clamp((headingError - 0.14f) / 0.18f, 0.0f, 1.0f));
+        const float edgeInstability = raceTraffic
+            ? smoothstep(std::clamp((edgeUsage - 0.90f) / 0.09f,
+                                    0.0f, 1.0f)) *
+                  smoothstep(std::clamp(
+                      (lineErrorRatio - 0.10f) / 0.20f, 0.0f, 1.0f))
+            : smoothstep(std::clamp((edgeUsage - 0.76f) / 0.20f,
+                                    0.0f, 1.0f));
+        const float headingInstability = raceTraffic
+            ? smoothstep(std::clamp((headingError - 0.20f) / 0.16f,
+                                    0.0f, 1.0f))
+            : smoothstep(std::clamp((headingError - 0.14f) / 0.18f,
+                                    0.0f, 1.0f));
         const float controlInstability = std::max(edgeInstability, headingInstability);
         if (!committedFlatCorner) {
             targetSpeed = std::min(targetSpeed,
