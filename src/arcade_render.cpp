@@ -623,7 +623,7 @@ struct ArcadeRender::Impl {
     Mesh shadow{};
     std::array<std::optional<formula_forge::assets::GlbAsset>, 11> authoredCars{};
     std::array<std::optional<formula_forge::assets::GlbAsset>, 1> authoredDrivers{};
-    std::array<std::optional<formula_forge::assets::GlbAsset>, 5> authoredTracks{};
+    std::array<std::optional<formula_forge::assets::GlbAsset>, 6> authoredTracks{};
 
     int sunDirectionLoc = -1;
     int sunColorLoc = -1;
@@ -672,7 +672,7 @@ struct ArcadeRender::Impl {
         };
         // These scales and raw glTF bounds mirror each asset's checked-in
         // runtime_alignment and measured_bounds_gltf_y_up metadata.
-        static constexpr std::array<TrackAssetSpec, 5> kTrackSpecs = {{
+        static constexpr std::array<TrackAssetSpec, 6> kTrackSpecs = {{
             {"assets/tracks/spa/spa.glb", 1.445f,
              {{3150.0f, 108.0f, 2350.0f}, {3230.0f, 115.0f, 2440.0f}}},
             {"assets/tracks/suzuka/suzuka.glb", 1.445f,
@@ -683,6 +683,8 @@ struct ArcadeRender::Impl {
              {{3400.0f, 19.0f, 2240.0f}, {3500.0f, 26.0f, 2335.0f}}},
             {"assets/tracks/interlagos/interlagos.glb", 1.445f,
              {{1790.0f, 49.0f, 2160.0f}, {1880.0f, 56.0f, 2260.0f}}},
+            {"assets/tracks/shanghai/shanghai.glb", 1.445f,
+             {{2350.0f, 14.0f, 2200.0f}, {2440.0f, 23.0f, 2290.0f}}},
         }};
         formula_forge::assets::GlbLoadOptions carOptions;
         carOptions.dimensions = formula_forge::assets::DimensionLimits{

@@ -8,6 +8,8 @@
 
 namespace {
 
+#include "track_data/shanghai_centerline.inc"
+
 // Starts after the Bus Stop and follows Spa's 19 turns in race order. These
 // survey-space points retain La Source, Eau Rouge/Raidillon, the Kemmel run,
 // technical middle sector, and Blanchimont return.
@@ -410,7 +412,53 @@ constexpr TrackTurnExpectation kInterlagosTurns[] = {
     {"Juncao", 0.778f, TrackTurnDirection::Left},
 };
 
-constexpr std::array<TrackCatalogEntry, 5> kCatalog = {{
+constexpr TrackElevationPoint kShanghaiElevation[] = {
+    {0.0f, 1.2f},    {260.0f, 4.4f},  {560.0f, 7.4f},  {900.0f, 5.1f},
+    {1230.0f, 3.0f}, {1540.0f, 5.2f}, {2020.0f, 2.8f}, {2460.0f, 4.6f},
+    {3000.0f, 2.1f}, {3560.0f, 4.0f}, {4110.0f, 0.8f}, {4700.0f, 0.0f},
+    {5160.0f, 0.9f}, {5451.0f, 1.2f},
+};
+
+constexpr TrackWidthPoint kShanghaiWidth[] = {
+    {0.0f, 14.0f},    {280.0f, 16.0f},  {780.0f, 13.0f},  {1280.0f, 14.0f},
+    {1950.0f, 13.0f}, {2700.0f, 14.0f}, {3380.0f, 13.0f}, {4050.0f, 14.0f},
+    {4660.0f, 13.0f}, {5040.0f, 16.0f}, {5451.0f, 14.0f},
+};
+
+constexpr TrackBankPoint kShanghaiBank[] = {
+    {0.0f, 0.0f},     {180.0f, 0.0f},   {310.0f, 2.4f},   {610.0f, 2.0f},
+    {760.0f, 0.0f},   {860.0f, -2.0f},  {1040.0f, 0.0f},  {1320.0f, 2.0f},
+    {1510.0f, 0.0f},  {1740.0f, -1.8f}, {1940.0f, 1.8f},  {2200.0f, 0.0f},
+    {2380.0f, -1.8f}, {2700.0f, -1.6f}, {3070.0f, -1.8f}, {3340.0f, 0.0f},
+    {3530.0f, 2.2f},  {3980.0f, 2.4f},  {4430.0f, 0.0f},  {4920.0f, 2.2f},
+    {5180.0f, 0.0f},  {5330.0f, -2.0f}, {5451.0f, 0.0f},
+};
+
+constexpr TrackRunoffZone kShanghaiRunoff[] = {
+    {150.0f, 850.0f, 1, TrackRunoffSurface::Asphalt, 18.0f},
+    {820.0f, 1120.0f, -1, TrackRunoffSurface::Asphalt, 16.0f},
+    {1240.0f, 1510.0f, 1, TrackRunoffSurface::Gravel, 18.0f},
+    {1690.0f, 2070.0f, -1, TrackRunoffSurface::Asphalt, 15.0f},
+    {2290.0f, 2720.0f, 1, TrackRunoffSurface::Gravel, 18.0f},
+    {2940.0f, 3370.0f, -1, TrackRunoffSurface::Asphalt, 16.0f},
+    {3430.0f, 4200.0f, 1, TrackRunoffSurface::Asphalt, 15.0f},
+    {4740.0f, 5160.0f, 1, TrackRunoffSurface::Asphalt, 26.0f},
+    {5220.0f, 5451.0f, -1, TrackRunoffSurface::Asphalt, 18.0f},
+};
+
+constexpr TrackTurnExpectation kShanghaiTurns[] = {
+    {"Turn 1 tightening entry", 0.028f, TrackTurnDirection::Right},
+    {"Turn 2 tightening exit", 0.075f, TrackTurnDirection::Right},
+    {"Turns 3-4 switchback", 0.168f, TrackTurnDirection::Left},
+    {"Turn 6 hairpin", 0.205f, TrackTurnDirection::Right},
+    {"Turn 7", 0.345f, TrackTurnDirection::Left},
+    {"Turn 8", 0.370f, TrackTurnDirection::Right},
+    {"Turns 12-13 opening snail", 0.663f, TrackTurnDirection::Right},
+    {"Turn 14 hairpin", 0.899f, TrackTurnDirection::Right},
+    {"Turn 16", 0.947f, TrackTurnDirection::Left},
+};
+
+constexpr std::array<TrackCatalogEntry, 6> kCatalog = {{
     {TrackLayoutId::Spa,
      "Spa-Francorchamps",
      "Circuit de Spa-Francorchamps",
@@ -506,6 +554,25 @@ constexpr std::array<TrackCatalogEntry, 5> kCatalog = {{
      kInterlagosBank,
      kInterlagosRunoff,
      {}},
+    {TrackLayoutId::Shanghai,
+     "Shanghai",
+     "Shanghai International Circuit",
+     "China",
+     "Two signature snail complexes, a 1.175 km back straight and a tight Turn 14 braking zone.",
+     "shanghai-wetland",
+     5451.0f,
+     16,
+     0.0f,
+     7.4f,
+     true,
+     1.0f,
+     true,
+     kShanghaiCenterline,
+     kShanghaiElevation,
+     kShanghaiWidth,
+     kShanghaiBank,
+     kShanghaiRunoff,
+     {}},
 }};
 
 float wrapDistance(float distance, float totalLength) noexcept {
@@ -598,6 +665,8 @@ std::span<const TrackTurnExpectation> trackTurnExpectations(TrackLayoutId id) no
             return kMonzaTurns;
         case TrackLayoutId::Interlagos:
             return kInterlagosTurns;
+        case TrackLayoutId::Shanghai:
+            return kShanghaiTurns;
     }
     return {};
 }
@@ -643,6 +712,9 @@ TrackShapeAuditResult auditTrackCatalogShape(const TrackCatalogEntry& track) noe
             break;
         case TrackLayoutId::Interlagos:
             expectedAspect = 0.635f;
+            break;
+        case TrackLayoutId::Shanghai:
+            expectedAspect = 1.14f;
             break;
     }
     result.aspectMatches = std::abs(result.aspectRatio - expectedAspect) <= expectedAspect * 0.12f;

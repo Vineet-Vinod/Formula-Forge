@@ -155,6 +155,30 @@ TRACKS = {
         "cpp_simulation_units_per_asset_unit": 17.0,
         "coordinate_unit": "meter",
     },
+    "shanghai": {
+        "display_name": "Shanghai",
+        "venue": "Shanghai International Circuit",
+        "country": "China",
+        "source_file": "src/track_catalog.cpp",
+        "centerline": "kShanghaiCenterline",
+        "target_length": 5451.0,
+        "elevation": "kShanghaiElevation",
+        "width_profile": "kShanghaiWidth",
+        "bank_profile": "kShanghaiBank",
+        "runtime_runoff_profile": "kShanghaiRunoff",
+        "turns": 16,
+        "clockwise": True,
+        "palette": "wetland",
+        "runtime_mirror_y": True,
+        "cpp_layout_id": "TrackLayoutId::Shanghai",
+        "start_phase": 0.0,
+        "vegetation_setback_m": 29.0,
+        "vegetation_canopy_clearance_m": 22.0,
+        "embankment_reach_m": 8.0,
+        "max_embankment_longitudinal_span_m": 6.0,
+        "cpp_simulation_units_per_asset_unit": 17.0,
+        "coordinate_unit": "meter",
+    },
 }
 
 PALETTES = {
@@ -163,6 +187,7 @@ PALETTES = {
     "airfield": {"sand": (0.59, 0.44, 0.25, 1), "grass": (0.18, 0.31, 0.20, 1), "roof": (0.18, 0.29, 0.36, 1)},
     "parkland": {"sand": (0.68, 0.48, 0.23, 1), "grass": (0.13, 0.34, 0.15, 1), "roof": (0.66, 0.18, 0.055, 1)},
     "hillside": {"sand": (0.64, 0.42, 0.16, 1), "grass": (0.08, 0.31, 0.15, 1), "roof": (0.82, 0.38, 0.045, 1)},
+    "wetland": {"sand": (0.50, 0.45, 0.28, 1), "grass": (0.16, 0.34, 0.16, 1), "roof": (0.74, 0.08, 0.035, 1)},
 }
 
 ASPHALT_COLOR = (0.35, 0.365, 0.38, 1)
@@ -244,8 +269,18 @@ def planar_ring(name, outer, inner, material, parent):
     return mesh_object(name, vertices, faces, [material], parent=parent)
 
 
+def cpp_symbol_text(path: Path, symbol: str):
+    """Resolve catalog symbols, including checked-in generated centerline includes."""
+    candidates = [path, *sorted((REPO / "src" / "track_data").glob("*.inc"))]
+    for candidate in candidates:
+        text = candidate.read_text(encoding="utf-8")
+        if re.search(rf"\b{re.escape(symbol)}\b[^;=]*=", text):
+            return text
+    raise ValueError(f"No C++ symbol {symbol} found from {path}")
+
+
 def cpp_pairs(path: Path, symbol: str):
-    text = path.read_text(encoding="utf-8")
+    text = cpp_symbol_text(path, symbol)
     start = text.index(symbol)
     equal = text.index("=", start)
     end = text.index("};", equal)
@@ -258,7 +293,7 @@ def cpp_pairs(path: Path, symbol: str):
 
 
 def cpp_runoff_zones(path: Path, symbol: str):
-    text = path.read_text(encoding="utf-8")
+    text = cpp_symbol_text(path, symbol)
     start = text.index(symbol)
     equal = text.index("=", start)
     end = text.index("};", equal)
@@ -1530,7 +1565,10 @@ def combined_park_trees(locations, materials, parent):
 
 def make_world(slug, spec):
     reset_scene()
-    seed_index = {"spa": 1, "suzuka": 2, "silverstone": 3, "monza": 4, "interlagos": 5}[slug]
+    seed_index = {
+        "spa": 1, "suzuka": 2, "silverstone": 3, "monza": 4,
+        "interlagos": 5, "shanghai": 6,
+    }[slug]
     rng = random.Random(7901 + seed_index * 101)
     palette = PALETTES[spec["palette"]]
     course_design = load_course_design(slug)

@@ -10,6 +10,14 @@ uv run python tools/blender/tracks/generate_tracks.py --track all
 uv run python tools/blender/tracks/verify_tracks.py --track all
 ```
 
+Additional geospatial centerlines are checked in under `src/track_data/`.
+Their OSM way/relation provenance can be refreshed explicitly, one circuit at
+a time, without making normal builds network-dependent:
+
+```sh
+uv run python tools/blender/tracks/import_osm_centerline.py --track shanghai
+```
+
 Each output directory contains the editable `.blend`, runtime `.glb`, rendered
 preview PNG, and JSON integration metadata. Worlds use readable medium-gray
 tarmac, continuous track-limit lines, bank-following curbs, profiled grass,

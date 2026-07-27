@@ -15,6 +15,7 @@ enum class TrackLayoutId {
     Silverstone,
     Monza,
     Interlagos,
+    Shanghai,
 };
 
 struct TrackElevationPoint {
