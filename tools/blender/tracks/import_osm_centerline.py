@@ -59,6 +59,7 @@ TRACKS = {
         "clockwise": True,
         "start_node": 1578189278,
         "source": "https://www.openstreetmap.org/relation/284496",
+        "smoothing_iterations": 2,
     },
     "cota": {
         "symbol": "kCotaCenterline",

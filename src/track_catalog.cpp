@@ -11,6 +11,7 @@ namespace {
 #include "track_data/shanghai_centerline.inc"
 #include "track_data/bahrain_centerline.inc"
 #include "track_data/jeddah_centerline.inc"
+#include "track_data/sepang_centerline.inc"
 
 // Starts after the Bus Stop and follows Spa's 19 turns in race order. These
 // survey-space points retain La Source, Eau Rouge/Raidillon, the Kemmel run,
@@ -546,7 +547,52 @@ constexpr TrackTurnExpectation kJeddahTurns[] = {
     {"Turn 27 approach", 0.847f, TrackTurnDirection::Right},
 };
 
-constexpr std::array<TrackCatalogEntry, 8> kCatalog = {{
+constexpr TrackElevationPoint kSepangElevation[] = {
+    {0.0f, 10.0f},   {420.0f, 14.8f}, {860.0f, 20.4f}, {1320.0f, 22.0f},
+    {1780.0f, 18.2f}, {2260.0f, 12.5f}, {2760.0f, 6.8f}, {3260.0f, 1.9f},
+    {3720.0f, 0.0f}, {4210.0f, 4.2f}, {4700.0f, 8.5f}, {5180.0f, 11.8f},
+    {5543.0f, 10.0f},
+};
+
+constexpr TrackWidthPoint kSepangWidth[] = {
+    {0.0f, 22.0f},   {240.0f, 20.0f},  {620.0f, 16.0f},  {1080.0f, 18.0f},
+    {1540.0f, 16.0f}, {2020.0f, 18.0f}, {2520.0f, 16.0f}, {3020.0f, 18.0f},
+    {3500.0f, 16.0f}, {3980.0f, 18.0f}, {4480.0f, 16.0f}, {4960.0f, 18.0f},
+    {5360.0f, 20.0f}, {5543.0f, 22.0f},
+};
+
+constexpr TrackBankPoint kSepangBank[] = {
+    {0.0f, 0.0f},    {260.0f, 0.0f},    {480.0f, 2.4f},   {760.0f, -1.8f},
+    {1080.0f, 2.2f}, {1390.0f, -1.7f}, {1710.0f, 2.1f},  {2050.0f, -1.8f},
+    {2400.0f, 2.2f}, {2750.0f, -1.7f}, {3110.0f, 2.0f},  {3490.0f, -1.6f},
+    {3860.0f, 2.2f}, {4250.0f, -1.8f}, {4630.0f, 2.1f},  {5000.0f, -1.7f},
+    {5320.0f, 2.2f}, {5543.0f, 0.0f},
+};
+
+constexpr TrackRunoffZone kSepangRunoff[] = {
+    {140.0f, 720.0f, -1, TrackRunoffSurface::Asphalt, 26.0f},
+    {690.0f, 1320.0f, 1, TrackRunoffSurface::Gravel, 24.0f},
+    {1400.0f, 2030.0f, -1, TrackRunoffSurface::Asphalt, 22.0f},
+    {2120.0f, 2760.0f, 1, TrackRunoffSurface::Gravel, 26.0f},
+    {2860.0f, 3500.0f, -1, TrackRunoffSurface::Asphalt, 24.0f},
+    {3590.0f, 4250.0f, 1, TrackRunoffSurface::Gravel, 26.0f},
+    {4340.0f, 4970.0f, -1, TrackRunoffSurface::Asphalt, 24.0f},
+    {5050.0f, 5543.0f, 1, TrackRunoffSurface::Asphalt, 28.0f},
+};
+
+constexpr TrackTurnExpectation kSepangTurns[] = {
+    {"Turn 1", 0.120f, TrackTurnDirection::Right},
+    {"Turn 2", 0.145f, TrackTurnDirection::Left},
+    {"Turn 4", 0.289f, TrackTurnDirection::Right},
+    {"Turns 5-6", 0.465f, TrackTurnDirection::Right},
+    {"Turn 9", 0.572f, TrackTurnDirection::Left},
+    {"Turn 11", 0.635f, TrackTurnDirection::Right},
+    {"Turn 12", 0.698f, TrackTurnDirection::Left},
+    {"Turn 14", 0.761f, TrackTurnDirection::Right},
+    {"Turn 15", 0.931f, TrackTurnDirection::Left},
+};
+
+constexpr std::array<TrackCatalogEntry, 9> kCatalog = {{
     {TrackLayoutId::Spa,
      "Spa-Francorchamps",
      "Circuit de Spa-Francorchamps",
@@ -699,6 +745,25 @@ constexpr std::array<TrackCatalogEntry, 8> kCatalog = {{
      kJeddahBank,
      kJeddahRunoff,
      {}},
+    {TrackLayoutId::Sepang,
+     "Sepang",
+     "Sepang International Circuit",
+     "Malaysia",
+     "A broad tropical circuit mixing two long straights with linked medium-speed bends and opposing hairpins.",
+     "sepang-tropical",
+     5543.0f,
+     15,
+     0.0f,
+     22.0f,
+     true,
+     1.0f,
+     true,
+     kSepangCenterline,
+     kSepangElevation,
+     kSepangWidth,
+     kSepangBank,
+     kSepangRunoff,
+     {}},
 }};
 
 float wrapDistance(float distance, float totalLength) noexcept {
@@ -797,6 +862,8 @@ std::span<const TrackTurnExpectation> trackTurnExpectations(TrackLayoutId id) no
             return kBahrainTurns;
         case TrackLayoutId::Jeddah:
             return kJeddahTurns;
+        case TrackLayoutId::Sepang:
+            return kSepangTurns;
     }
     return {};
 }
@@ -851,6 +918,9 @@ TrackShapeAuditResult auditTrackCatalogShape(const TrackCatalogEntry& track) noe
             break;
         case TrackLayoutId::Jeddah:
             expectedAspect = 0.213f;
+            break;
+        case TrackLayoutId::Sepang:
+            expectedAspect = 1.226f;
             break;
     }
     result.aspectMatches = std::abs(result.aspectRatio - expectedAspect) <= expectedAspect * 0.12f;
