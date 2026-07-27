@@ -15,8 +15,12 @@ ASSETS = {
     "vehicles": {
         "joint_count": 9,
         "triangle_limit": 30_000,
-        "slugs": ("formula_marc", "formula_fiery", "formula_macl",
-                  "formula_rb", "formula_dash"),
+        "slugs": (
+            "formula_mercedes", "formula_ferrari", "formula_mclaren",
+            "formula_red_bull", "formula_racing_bulls", "formula_alpine",
+            "formula_audi", "formula_haas", "formula_williams",
+            "formula_aston_martin", "formula_cadillac",
+        ),
     },
     "drivers": {
         "joint_count": 7,
@@ -108,8 +112,17 @@ def validate_manifest(path: Path, kind: str, slug: str, triangle_limit: int) -> 
                 f"vehicle is not formula class: {path}")
         require(manifest.get("model_name") == "Formula",
                 f"vehicle does not use shared Formula model name: {path}")
-        require(manifest.get("livery_name") in {"Marc", "Fiery", "MacL", "RB", "Dash"},
+        require(manifest.get("livery_name") in {
+                    "Mercedes", "Ferrari", "Mclaren", "Red Bull",
+                    "Racing Bulls", "Alpine", "Audi", "Haas", "Williams",
+                    "Aston Martin", "Cadillac",
+                },
                 f"unexpected Formula livery name: {path}")
+        palette = manifest.get("palette_hex")
+        require(isinstance(palette, list) and len(palette) == 2
+                and all(isinstance(value, str) and len(value) == 7
+                        and value.startswith("#") for value in palette),
+                f"vehicle must declare exactly two livery colours: {path}")
         width, length, height = dimensions
         require(1.90 <= width <= 2.15 and 4.70 <= length <= 5.20
                 and 0.90 <= height <= 1.20,
@@ -204,13 +217,17 @@ def validate_loading_artwork(root: Path) -> str:
     require(read_png_dimensions(png_path) == (1280, 720),
             f"loading screen must be 1280x720: {png_path}")
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    expected_cars = ["formula_fiery", "formula_marc", "formula_macl",
-                     "formula_rb", "formula_dash"]
+    expected_cars = [
+        "formula_mercedes", "formula_ferrari", "formula_mclaren",
+        "formula_red_bull", "formula_racing_bulls", "formula_alpine",
+        "formula_audi", "formula_haas", "formula_williams",
+        "formula_aston_martin", "formula_cadillac",
+    ]
     require(manifest.get("type") == "ui_artwork"
             and manifest.get("vehicles") == expected_cars
             and "driver" not in manifest,
             f"loading-screen composition mismatch: {manifest_path}")
-    return "ui      formula_forge_loading cars=5 driver=0 preview=1280x720"
+    return "ui      formula_forge_loading cars=11 driver=0 preview=1280x720"
 
 
 def validate_garage_artwork(root: Path) -> str:

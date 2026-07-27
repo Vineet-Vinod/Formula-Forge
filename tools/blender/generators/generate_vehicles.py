@@ -1,4 +1,4 @@
-"""Generate one Formula model in five original livery variants."""
+"""Generate one Formula model in eleven logo-free two-colour variants."""
 
 from __future__ import annotations
 
@@ -15,92 +15,56 @@ from asset_helpers import (ASSET_PROP, add_wheel, asset_objects, bar,
                            torus)
 
 
-# Dimensions are Blender X width, Y length and Z height in metres. All five
-# entries share exactly one mesh recipe and mechanical contract; only material
-# roles and original geometric paint graphics vary.
-VEHICLES = {
-    "formula_marc": {
-        "display_name": "Marc", "model_name": "Formula",
-        "livery_name": "Marc", "pattern": "marc",
+# Dimensions are Blender X width, Y length and Z height in metres. Every entry
+# shares exactly one mesh recipe and mechanical contract. The two supplied
+# colours are the only non-neutral livery materials.
+TWO_TONE_ROLES = {
+    "nose": "paint", "monocoque": "paint",
+    "sidepod": "paint", "engine": "paint",
+    "airbox": "secondary", "spear": "secondary",
+    "stripe": "secondary", "fin": "secondary",
+    "rail": "paint", "headrest": "secondary",
+    "front_upper": "secondary", "endplate": "paint",
+    "rear_flap": "secondary",
+}
+
+
+def hex_colour(value: str) -> tuple[float, float, float, float]:
+    value = value.removeprefix("#")
+    return tuple(int(value[index:index + 2], 16) / 255.0
+                 for index in (0, 2, 4)) + (1.0,)
+
+
+def two_tone_spec(display_name: str, primary: str, secondary: str) -> dict:
+    return {
+        "display_name": display_name,
+        "model_name": "Formula",
+        "livery_name": display_name,
+        "pattern": "two_tone",
         "family": "Formula livery",
         "dimensions_target_m": [2.03, 4.92, 1.13],
-        "paint": (0.008, 0.012, 0.018, 1),
-        "secondary": (0.54, 0.60, 0.62, 1),
-        "accent": (0.00, 0.76, 0.66, 1),
-        "detail": (0.90, 0.94, 0.92, 1),
+        "palette_hex": [primary.upper(), secondary.upper()],
+        "paint": hex_colour(primary),
+        "secondary": hex_colour(secondary),
+        "accent": hex_colour(secondary),
+        "detail": hex_colour(secondary),
         "aero": "agile",
-        "roles": {"nose": "secondary", "monocoque": "secondary",
-                  "sidepod": "paint", "engine": "paint",
-                  "airbox": "paint", "spear": "accent",
-                  "stripe": "accent", "fin": "secondary",
-                  "rail": "paint", "headrest": "accent",
-                  "front_upper": "secondary", "endplate": "paint",
-                  "rear_flap": "accent"},
-    },
-    "formula_fiery": {
-        "display_name": "Fiery", "model_name": "Formula",
-        "livery_name": "Fiery", "pattern": "fiery",
-        "family": "Formula livery", "dimensions_target_m": [2.03, 4.92, 1.13],
-        "paint": (0.74, 0.010, 0.018, 1),
-        "secondary": (0.94, 0.90, 0.82, 1),
-        "accent": (1.00, 0.60, 0.015, 1),
-        "detail": (0.11, 0.012, 0.018, 1), "aero": "agile",
-        "roles": {"nose": "paint", "monocoque": "paint",
-                  "sidepod": "paint", "engine": "secondary",
-                  "airbox": "secondary", "spear": "secondary",
-                  "stripe": "accent", "fin": "secondary",
-                  "rail": "paint", "headrest": "secondary",
-                  "front_upper": "secondary", "endplate": "paint",
-                  "rear_flap": "secondary"},
-    },
-    "formula_macl": {
-        "display_name": "MacL", "model_name": "Formula",
-        "livery_name": "MacL", "pattern": "macl",
-        "family": "Formula livery", "dimensions_target_m": [2.03, 4.92, 1.13],
-        "paint": (1.00, 0.25, 0.010, 1),
-        "secondary": (0.008, 0.012, 0.020, 1),
-        "accent": (0.025, 0.30, 0.95, 1),
-        "detail": (0.92, 0.94, 0.96, 1), "aero": "agile",
-        "roles": {"nose": "paint", "monocoque": "paint",
-                  "sidepod": "secondary", "engine": "secondary",
-                  "airbox": "paint", "spear": "accent",
-                  "stripe": "accent", "fin": "paint",
-                  "rail": "secondary", "headrest": "paint",
-                  "front_upper": "paint", "endplate": "paint",
-                  "rear_flap": "paint"},
-    },
-    "formula_rb": {
-        "display_name": "RB", "model_name": "Formula",
-        "livery_name": "RB", "pattern": "rb",
-        "family": "Formula livery", "dimensions_target_m": [2.03, 4.92, 1.13],
-        "paint": (0.010, 0.035, 0.16, 1),
-        "secondary": (0.015, 0.16, 0.58, 1),
-        "accent": (0.90, 0.008, 0.018, 1),
-        "detail": (1.00, 0.60, 0.010, 1), "aero": "agile",
-        "roles": {"nose": "paint", "monocoque": "paint",
-                  "sidepod": "paint", "engine": "paint",
-                  "airbox": "detail", "spear": "accent",
-                  "stripe": "accent", "fin": "accent",
-                  "rail": "paint", "headrest": "detail",
-                  "front_upper": "secondary", "endplate": "paint",
-                  "rear_flap": "accent"},
-    },
-    "formula_dash": {
-        "display_name": "Dash", "model_name": "Formula",
-        "livery_name": "Dash", "pattern": "dash",
-        "family": "Formula livery", "dimensions_target_m": [2.03, 4.92, 1.13],
-        "paint": (0.92, 0.93, 0.91, 1),
-        "secondary": (0.015, 0.10, 0.54, 1),
-        "accent": (0.92, 0.008, 0.020, 1),
-        "detail": (0.008, 0.025, 0.11, 1), "aero": "agile",
-        "roles": {"nose": "paint", "monocoque": "paint",
-                  "sidepod": "secondary", "engine": "paint",
-                  "airbox": "secondary", "spear": "accent",
-                  "stripe": "accent", "fin": "accent",
-                  "rail": "paint", "headrest": "secondary",
-                  "front_upper": "paint", "endplate": "secondary",
-                  "rear_flap": "paint"},
-    },
+        "roles": TWO_TONE_ROLES,
+    }
+
+
+VEHICLES = {
+    "formula_mercedes": two_tone_spec("Mercedes", "#0B0D0E", "#27F4D2"),
+    "formula_ferrari": two_tone_spec("Ferrari", "#E8002D", "#F4F4F2"),
+    "formula_mclaren": two_tone_spec("Mclaren", "#FF8000", "#111217"),
+    "formula_red_bull": two_tone_spec("Red Bull", "#3671C6", "#F4F4F2"),
+    "formula_racing_bulls": two_tone_spec("Racing Bulls", "#F4F4F2", "#6692FF"),
+    "formula_alpine": two_tone_spec("Alpine", "#00A1E8", "#FF87BC"),
+    "formula_audi": two_tone_spec("Audi", "#C7CBCC", "#FF2D00"),
+    "formula_haas": two_tone_spec("Haas", "#DEE1E2", "#E51B2A"),
+    "formula_williams": two_tone_spec("Williams", "#1868DB", "#F4F4F2"),
+    "formula_aston_martin": two_tone_spec("Aston Martin", "#229971", "#CEDC00"),
+    "formula_cadillac": two_tone_spec("Cadillac", "#232428", "#AAAAAD"),
 }
 
 REQUIRED = ["car_root", "body", "wheel_FL", "wheel_FR", "wheel_RL",
@@ -435,59 +399,17 @@ def add_modern_agile_body(body, mats, spec):
 
 
 def add_livery_graphics(body, mats, spec):
-    """Add original, logo-free paint sweeps unique to each Formula livery."""
-    pattern = spec["pattern"]
+    """Add the shared logo-free two-tone paint sweep."""
+    del spec
     for side in (-1, 1):
-        if pattern == "marc":
-            # Silver body fade, black flank and a fine aqua horizon line.
-            bar(f"marc_silver_sweep_{side:+}",
-                (side * 0.67, -0.18, 0.535),
-                (side * 0.43, 0.98, 0.445), 0.050,
-                mats["secondary"], body)
-            bar(f"marc_aqua_pin_{side:+}",
-                (side * 0.66, -0.28, 0.585),
-                (side * 0.40, 1.24, 0.485), 0.014,
-                mats["accent"], body)
-        elif pattern == "fiery":
-            # Dark rising sill beneath the red body and pale engine cover.
-            bar(f"fiery_dark_sweep_{side:+}",
-                (side * 0.68, -0.30, 0.46),
-                (side * 0.39, 1.18, 0.39), 0.048,
-                mats["detail"], body)
-            bar(f"fiery_gold_pin_{side:+}",
-                (side * 0.64, -0.22, 0.555),
-                (side * 0.45, 0.88, 0.47), 0.014,
-                mats["accent"], body)
-        elif pattern == "macl":
-            # Papaya blade cuts upward through the dark sidepod field.
-            bar(f"macl_papaya_blade_{side:+}",
-                (side * 0.66, -0.24, 0.55),
-                (side * 0.42, 0.86, 0.43), 0.054,
-                mats["paint"], body)
-            bar(f"macl_blue_tick_{side:+}",
-                (side * 0.61, -0.34, 0.59),
-                (side * 0.51, 0.18, 0.53), 0.015,
-                mats["accent"], body)
-        elif pattern == "rb":
-            # Red speedline with a smaller warm highlight, no bull graphic.
-            bar(f"rb_red_sweep_{side:+}",
-                (side * 0.67, -0.24, 0.55),
-                (side * 0.40, 1.16, 0.43), 0.047,
-                mats["accent"], body)
-            bar(f"rb_gold_pin_{side:+}",
-                (side * 0.63, -0.20, 0.59),
-                (side * 0.49, 0.54, 0.52), 0.013,
-                mats["detail"], body)
-        else:
-            # White rising wave over the cobalt flank, edged in red.
-            bar(f"dash_white_wave_{side:+}",
-                (side * 0.67, -0.24, 0.50),
-                (side * 0.41, 1.02, 0.44), 0.056,
-                mats["paint"], body)
-            bar(f"dash_red_edge_{side:+}",
-                (side * 0.65, -0.22, 0.565),
-                (side * 0.45, 0.82, 0.49), 0.014,
-                mats["accent"], body)
+        bar(f"two_tone_sweep_{side:+}",
+            (side * 0.67, -0.24, 0.50),
+            (side * 0.41, 1.02, 0.44), 0.056,
+            mats["secondary"], body)
+        bar(f"two_tone_edge_{side:+}",
+            (side * 0.65, -0.22, 0.565),
+            (side * 0.45, 0.82, 0.49), 0.014,
+            mats["secondary"], body)
 
 
 def add_modern_agile_wings(body, mats, spec):
@@ -906,6 +828,7 @@ def main():
             "display_name": spec["display_name"],
             "model_name": spec["model_name"],
             "livery_name": spec["livery_name"],
+            "palette_hex": spec["palette_hex"],
             "livery_policy": "original geometry; no logos or sponsorship marks",
             "family": spec["family"],
             "vehicle_class": "formula",

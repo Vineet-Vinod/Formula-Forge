@@ -1110,15 +1110,21 @@ ArcadeVehicleConfig tuningForSpec(const KartSpec3D& spec) {
     return tuning;
 }
 
-std::array<KartSpec3D, 5> makeKartSpecs() {
+std::array<KartSpec3D, 11> makeKartSpecs() {
     // All entries share one mechanical and collision specification. The
     // selection changes the authored appearance and livery only.
     return {{
-        {"MARC", {16, 20, 25, 255}, {0, 194, 169, 255}, {138, 153, 158, 255}, 198.0f, 258.0f, 214.0f, 1.05f, 0.98f, 34.4f, 83.6f, 18.4f, 0},
-        {"FIERY", {189, 3, 5, 255}, {255, 153, 4, 255}, {239, 230, 209, 255}, 198.0f, 258.0f, 214.0f, 1.05f, 0.98f, 34.4f, 83.6f, 18.4f, 1},
-        {"MACL", {255, 64, 3, 255}, {6, 77, 242, 255}, {14, 18, 25, 255}, 198.0f, 258.0f, 214.0f, 1.05f, 0.98f, 34.4f, 83.6f, 18.4f, 2},
-        {"RB", {3, 9, 41, 255}, {230, 2, 5, 255}, {255, 153, 3, 255}, 198.0f, 258.0f, 214.0f, 1.05f, 0.98f, 34.4f, 83.6f, 18.4f, 3},
-        {"DASH", {235, 237, 232, 255}, {4, 26, 138, 255}, {235, 2, 5, 255}, 198.0f, 258.0f, 214.0f, 1.05f, 0.98f, 34.4f, 83.6f, 18.4f, 4},
+        {"Mercedes", {11, 13, 14, 255}, {39, 244, 210, 255}, {39, 244, 210, 255}, 198.0f, 258.0f, 214.0f, 1.05f, 0.98f, 34.4f, 83.6f, 18.4f, 0},
+        {"Ferrari", {232, 0, 45, 255}, {244, 244, 242, 255}, {244, 244, 242, 255}, 198.0f, 258.0f, 214.0f, 1.05f, 0.98f, 34.4f, 83.6f, 18.4f, 1},
+        {"Mclaren", {255, 128, 0, 255}, {17, 18, 23, 255}, {17, 18, 23, 255}, 198.0f, 258.0f, 214.0f, 1.05f, 0.98f, 34.4f, 83.6f, 18.4f, 2},
+        {"Red Bull", {54, 113, 198, 255}, {244, 244, 242, 255}, {244, 244, 242, 255}, 198.0f, 258.0f, 214.0f, 1.05f, 0.98f, 34.4f, 83.6f, 18.4f, 3},
+        {"Racing Bulls", {244, 244, 242, 255}, {102, 146, 255, 255}, {102, 146, 255, 255}, 198.0f, 258.0f, 214.0f, 1.05f, 0.98f, 34.4f, 83.6f, 18.4f, 4},
+        {"Alpine", {0, 161, 232, 255}, {255, 135, 188, 255}, {255, 135, 188, 255}, 198.0f, 258.0f, 214.0f, 1.05f, 0.98f, 34.4f, 83.6f, 18.4f, 5},
+        {"Audi", {199, 203, 204, 255}, {255, 45, 0, 255}, {255, 45, 0, 255}, 198.0f, 258.0f, 214.0f, 1.05f, 0.98f, 34.4f, 83.6f, 18.4f, 6},
+        {"Haas", {222, 225, 226, 255}, {229, 27, 42, 255}, {229, 27, 42, 255}, 198.0f, 258.0f, 214.0f, 1.05f, 0.98f, 34.4f, 83.6f, 18.4f, 7},
+        {"Williams", {24, 104, 219, 255}, {244, 244, 242, 255}, {244, 244, 242, 255}, 198.0f, 258.0f, 214.0f, 1.05f, 0.98f, 34.4f, 83.6f, 18.4f, 8},
+        {"Aston Martin", {34, 153, 113, 255}, {206, 220, 0, 255}, {206, 220, 0, 255}, 198.0f, 258.0f, 214.0f, 1.05f, 0.98f, 34.4f, 83.6f, 18.4f, 9},
+        {"Cadillac", {35, 36, 40, 255}, {170, 170, 173, 255}, {170, 170, 173, 255}, 198.0f, 258.0f, 214.0f, 1.05f, 0.98f, 34.4f, 83.6f, 18.4f, 10},
     }};
 }
 
@@ -6851,6 +6857,7 @@ private:
         if (renderer_.ready()) {
             const auto style = static_cast<arcade_render::FormulaBodyStyle>(kart.spec.bodyStyle % 5);
             arcade_render::FormulaVisualSpec spec = arcade_render::MakeFormulaVisualSpec(style, kart.spec.body, kart.spec.accent);
+            spec.liveryVariant = static_cast<std::uint8_t>(kart.spec.bodyStyle);
             spec.glass = kart.spec.glass;
             spec.width = kart.spec.width * kRenderScale * 0.88f;
             spec.length = kart.spec.length * kRenderScale * 1.02f;
@@ -7348,7 +7355,7 @@ private:
     std::vector<float> aiLapSpeedPlan_;
     std::vector<float> aiLapLanePlan_;
     TrackLayoutId aiLapPlanLayout_ = TrackLayoutId::Spa;
-    std::array<KartSpec3D, 5> specs_;
+    std::array<KartSpec3D, 11> specs_;
     std::array<std::string, 6> racers_;
     std::vector<Kart3D> karts_;
     std::vector<Particle3D> particles_;
@@ -7721,7 +7728,7 @@ int runFormulaForge(int argc, char** argv) {
     if (assetAudit) {
         const arcade_render::AuthoredAssetAuditResult result = game.auditAuthoredAssets();
         cleanupRuntime();
-        std::cout << "asset-audit cars=" << result.loadedCars << "/5"
+        std::cout << "asset-audit cars=" << result.loadedCars << "/11"
                   << " drivers=" << result.loadedDrivers << "/1"
                   << " tracks=" << result.loadedTracks << "/5"
                   << " dimension_checks=" << result.dimensionChecks

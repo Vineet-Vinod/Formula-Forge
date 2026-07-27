@@ -60,6 +60,7 @@ struct DriverVisualSpec {
 
 struct FormulaVisualSpec {
     FormulaBodyStyle style = FormulaBodyStyle::Standard;
+    std::uint8_t liveryVariant = 0;
     Color body{225, 58, 52, 255};
     Color accent{255, 202, 61, 255};
     Color trim{38, 45, 49, 255};

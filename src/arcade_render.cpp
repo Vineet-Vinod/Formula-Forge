@@ -621,7 +621,7 @@ struct ArcadeRender::Impl {
     Mesh roof{};
     Mesh boatHull{};
     Mesh shadow{};
-    std::array<std::optional<formula_forge::assets::GlbAsset>, 5> authoredCars{};
+    std::array<std::optional<formula_forge::assets::GlbAsset>, 11> authoredCars{};
     std::array<std::optional<formula_forge::assets::GlbAsset>, 1> authoredDrivers{};
     std::array<std::optional<formula_forge::assets::GlbAsset>, 5> authoredTracks{};
 
@@ -649,12 +649,18 @@ struct ArcadeRender::Impl {
     }
 
     void loadAuthoredAssets() {
-        static constexpr std::array<const char*, 5> kCarPaths = {
-            "assets/vehicles/formula_marc/formula_marc.glb",
-            "assets/vehicles/formula_fiery/formula_fiery.glb",
-            "assets/vehicles/formula_macl/formula_macl.glb",
-            "assets/vehicles/formula_rb/formula_rb.glb",
-            "assets/vehicles/formula_dash/formula_dash.glb",
+        static constexpr std::array<const char*, 11> kCarPaths = {
+            "assets/vehicles/formula_mercedes/formula_mercedes.glb",
+            "assets/vehicles/formula_ferrari/formula_ferrari.glb",
+            "assets/vehicles/formula_mclaren/formula_mclaren.glb",
+            "assets/vehicles/formula_red_bull/formula_red_bull.glb",
+            "assets/vehicles/formula_racing_bulls/formula_racing_bulls.glb",
+            "assets/vehicles/formula_alpine/formula_alpine.glb",
+            "assets/vehicles/formula_audi/formula_audi.glb",
+            "assets/vehicles/formula_haas/formula_haas.glb",
+            "assets/vehicles/formula_williams/formula_williams.glb",
+            "assets/vehicles/formula_aston_martin/formula_aston_martin.glb",
+            "assets/vehicles/formula_cadillac/formula_cadillac.glb",
         };
         static constexpr std::array<const char*, 1> kDriverPaths = {
             "assets/drivers/standard_driver/standard_driver.glb",
@@ -779,7 +785,7 @@ struct ArcadeRender::Impl {
     }
 
     bool drawAuthoredFormulaCar(const FormulaVisualSpec& spec, const FormulaRenderState& state, Matrix root) {
-        const size_t carIndex = std::min(static_cast<size_t>(spec.style), authoredCars.size() - 1);
+        const size_t carIndex = std::min(static_cast<size_t>(spec.liveryVariant), authoredCars.size() - 1);
         auto& car = authoredCars[carIndex];
         auto& driver = authoredDrivers[spec.driver.variant % authoredDrivers.size()];
         if (!car || !driver) {

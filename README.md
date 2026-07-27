@@ -60,6 +60,9 @@ Formula Forge is an original, open-source, Linux-native 3D formula racing game
 written in C++ with SDL3 and raylib. It supports full-grid races against AI
 and solo Time Trial sessions across five real-world-inspired circuits.
 
+Formula Forge is an unofficial fan-made project and is not affiliated with or
+endorsed by any racing series, team, or vehicle manufacturer.
+
 The project combines an arcade-accessible driving model with formula-specific
 behavior: tire grip, aerodynamic downforce and drag, load transfer, trail
 braking, engine braking, surface changes, speed-sensitive steering, and an
@@ -83,7 +86,7 @@ work?
 
 - Spa, Suzuka, Silverstone, Monza, and Interlagos-inspired circuits with
   authored elevation, track limits, runoff, and barriers
-- Five logo-free car liveries sharing one Blender-authored formula car and
+- Eleven logo-free two-colour car liveries sharing one Blender-authored formula car and
   driver specification
 - Six-car races and solo infinite-lap Time Trial sessions
 - Selectable 2, 5, 10, or infinite-lap race distances

@@ -1,4 +1,4 @@
-"""Render the five Formula liveries and Standard Driver as loading artwork."""
+"""Render the eleven Formula liveries as loading artwork."""
 
 from __future__ import annotations
 
@@ -13,11 +13,17 @@ from mathutils import Vector
 
 
 CAR_LAYOUT = (
-    ("formula_fiery", (-5.25, 4.10, 0.00), 18.0),
-    ("formula_marc", (-2.65, 2.25, 0.00), 9.0),
-    ("formula_macl", (0.00, 0.45, 0.00), 0.0),
-    ("formula_rb", (2.65, 2.25, 0.00), -9.0),
-    ("formula_dash", (5.25, 4.10, 0.00), -18.0),
+    ("formula_mercedes", (-6.25, 4.60, 0.00), 18.0, 0.78),
+    ("formula_ferrari", (-3.75, 4.00, 0.00), 12.0, 0.78),
+    ("formula_mclaren", (-1.25, 3.60, 0.00), 5.0, 0.78),
+    ("formula_red_bull", (1.25, 3.60, 0.00), -5.0, 0.78),
+    ("formula_racing_bulls", (3.75, 4.00, 0.00), -12.0, 0.78),
+    ("formula_alpine", (6.25, 4.60, 0.00), -18.0, 0.78),
+    ("formula_audi", (-5.00, 1.60, 0.02), 15.0, 0.78),
+    ("formula_haas", (-2.50, 1.10, 0.02), 8.0, 0.78),
+    ("formula_williams", (0.00, 0.90, 0.02), 0.0, 0.78),
+    ("formula_aston_martin", (2.50, 1.10, 0.02), -8.0, 0.78),
+    ("formula_cadillac", (5.00, 1.60, 0.02), -15.0, 0.78),
 )
 
 
@@ -79,9 +85,9 @@ def build_scene(project_root: Path, output_dir: Path) -> None:
         cube(f"LOADING_red_bar_{index}", (x, 6.92, height * 0.5 + 0.25),
              (0.075, 0.075, height), red_emission, bevel=0.025)
 
-    for slug, location, yaw in CAR_LAYOUT:
+    for slug, location, yaw, scale in CAR_LAYOUT:
         import_glb(project_root / "assets" / "vehicles" / slug / f"{slug}.glb",
-                   f"LOADING_{slug}", location, yaw)
+                   f"LOADING_{slug}", location, yaw, scale)
 
     # Cool front fill preserves every livery; saturated red rim lights deliver
     # the requested dark red-lit loading-screen mood.
@@ -135,9 +141,9 @@ def build_scene(project_root: Path, output_dir: Path) -> None:
         "asset": "formula_forge_loading",
         "type": "ui_artwork",
         "resolution": [1280, 720],
-        "composition": "five Formula liveries in a red-lit semicircle",
+        "composition": "eleven Formula liveries in a red-lit two-row grid",
         "lighting": "dark studio with red arena and rim lights",
-        "vehicles": [slug for slug, _, _ in CAR_LAYOUT],
+        "vehicles": [slug for slug, _, _, _ in CAR_LAYOUT],
         "source": blend_path.name,
         "render": png_path.name,
     }
