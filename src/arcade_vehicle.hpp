@@ -197,6 +197,9 @@ struct ArcadeVehicleControl {
     float steer = 0.0f;
     float throttle = 0.0f;
     float brake = 0.0f;
+    // Extends the forward transmission/speed ceiling without changing the
+    // chassis' normalized handling, tire, or aero calculations.
+    float forwardSpeedLimitExtra = 0.0f;
     bool drift = false;
     // Optional explicit rising edge. Keep drift=true on the same frame.
     bool driftPressed = false;

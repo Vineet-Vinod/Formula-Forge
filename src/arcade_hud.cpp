@@ -399,8 +399,45 @@ void drawTelemetryPanel(const RaceHudViewModel& viewModel, const Metrics& m) {
     const std::string speed = std::to_string(std::max(0, viewModel.speedKph));
     drawCenteredText(speed, {center.x, center.y + 42.0f * m.scale}, 27.0f * m.scale, kPaper);
     drawCenteredText("KM/H", {center.x, center.y + 66.0f * m.scale}, 9.0f * m.scale, kPaperMuted);
-    drawCenteredText("RPM", {center.x, center.y + 84.0f * m.scale}, 8.0f * m.scale,
+    drawCenteredText("RPM", {center.x, center.y + 78.0f * m.scale}, 8.0f * m.scale,
                      viewModel.shiftRecommended ? kCoral : Fade(kPaperMuted, 0.72f));
+
+    const Rectangle drsBounds{
+        center.x - 39.0f * m.scale,
+        center.y + 87.0f * m.scale,
+        78.0f * m.scale,
+        22.0f * m.scale};
+    const Color drsBackground =
+        viewModel.drsActive
+            ? Color{10, 70, 38, 255}
+            : Color{37, 41, 45, 255};
+    DrawRectangleRounded(drsBounds, 0.24f, 6,
+                         Fade(drsBackground, 0.96f));
+    DrawRectangleRoundedLinesEx(
+        drsBounds, 0.24f, 6, 1.0f * m.scale,
+        viewModel.drsActive
+            ? Color{58, 183, 103, 255}
+            : Fade(kPaperMuted, 0.32f));
+    const float availableThrob =
+        viewModel.drsAvailable && !viewModel.drsActive
+            ? 1.0f +
+                  0.09f *
+                      (0.5f +
+                       0.5f *
+                           std::sin(
+                               viewModel.presentationTimeSeconds *
+                               8.0f))
+            : 1.0f;
+    const Color drsText =
+        viewModel.drsActive
+            ? Color{176, 255, 196, 255}
+            : (viewModel.drsAvailable
+                   ? Color{114, 226, 145, 255}
+                   : Fade(kPaperMuted, 0.58f));
+    drawCenteredText(
+        "DRS",
+        {center.x, center.y + 98.0f * m.scale},
+        11.0f * m.scale * availableThrob, drsText);
 }
 
 void drawRouteMap(const RaceHudViewModel& viewModel, const Metrics& m) {

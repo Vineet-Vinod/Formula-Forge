@@ -132,6 +132,7 @@ TRACKS = {
         "runtime_mirror_y": True,
         "cpp_layout_id": "TrackLayoutId::Monza",
         "start_phase": 0.0,
+        "starting_grid_gap_m": 12.0,
         "cpp_simulation_units_per_asset_unit": 17.0,
         "coordinate_unit": "meter",
     },
@@ -1365,15 +1366,16 @@ def make_surface_runoff_zones(samples, half_widths, bank_angles, zones, material
 
 def make_starting_grid_slots(samples, half_widths, bank_angles, start_phase, target_length,
                              material, parent, surface_offset,
-                             slot_count=STARTING_GRID_SLOT_COUNT):
+                             slot_count=STARTING_GRID_SLOT_COUNT, slot_gap_m=3.0):
     """Author the full staggered starting grid immediately before the line."""
     vertices, faces = [], []
     count = len(samples)
-    # Mirrors initializeRace(): 83.6 simulation-unit car length, 17 units/m,
-    # a 1 m first-row clearance and 3 m between consecutive rows.
+    # Mirrors resetRace(): 83.6 simulation-unit car length, 17 units/m,
+    # a 1 m first-row clearance and the track's authored inter-slot gap.
     car_length = 83.6 / 17.0
     first_center_inset = car_length * 0.5 + 1.0
-    slot_length, slot_width, line_width, spacing = car_length + 0.68, 2.25, 0.16, car_length + 3.0
+    slot_length, slot_width, line_width = car_length + 0.68, 2.25, 0.16
+    spacing = car_length + slot_gap_m
 
     def track_values(progress):
         point, tangent, normal, index, blend = interpolated_track_frame(
@@ -1422,6 +1424,7 @@ def make_starting_grid_slots(samples, half_widths, bank_angles, start_phase, tar
     obj["staggered"] = True
     obj["before_start_finish"] = True
     obj["runtime_distance_alignment"] = "exact_progress"
+    obj["slot_gap_m"] = slot_gap_m
     return obj
 
 
@@ -2088,7 +2091,8 @@ def make_world(slug, spec):
     line["bank_conforming"] = True
     line["bank_angle_degrees"] = start_bank_angle
     make_starting_grid_slots(center, half_widths, bank_angles, start_phase, target_length,
-                             materials["white"], circuit, surface_offset)
+                             materials["white"], circuit, surface_offset,
+                             slot_gap_m=spec.get("starting_grid_gap_m", 3.0))
 
     planar = length_closed([(p[0],p[1]) for p in center])
     surface = length_closed(center)
@@ -2115,6 +2119,7 @@ def make_world(slug, spec):
         "tecpro_samples": sum(kind == "tecpro" for side in (-1, 1)
                               for kind in barrier_types[side]),
         "start_phase": start_phase,
+        "starting_grid_gap_m": spec.get("starting_grid_gap_m", 3.0),
         "start_position_blender": [round(v, 6) for v in p],
         "start_forward_blender": [round(v, 8) for v in start_forward],
         "surface_offset": surface_offset,
@@ -2326,6 +2331,7 @@ def export_track(slug, spec, output_root):
             "tecpro_barrier_samples": info["tecpro_samples"],
             "profiled_runoff_objects": info["profiled_runoff_objects"],
             "starting_grid_slots": STARTING_GRID_SLOT_COUNT,
+            "starting_grid_gap_m": info["starting_grid_gap_m"],
             "continuous_zero_level_terrain": True,
             "opaque_materials_only": True,
         },

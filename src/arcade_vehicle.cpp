@@ -133,6 +133,8 @@ ArcadeVehicleTelemetry stepSingle(ArcadeVehicleState& state,
     control.steer = std::clamp(control.steer, -1.0f, 1.0f);
     control.throttle = std::clamp(control.throttle, 0.0f, 1.0f);
     control.brake = std::clamp(control.brake, 0.0f, 1.0f);
+    control.forwardSpeedLimitExtra =
+        std::max(0.0f, control.forwardSpeedLimitExtra);
 
     ArcadeSurface surface = rawSurface;
     surface.grip = std::max(0.0f, surface.grip);
@@ -177,9 +179,12 @@ ArcadeVehicleTelemetry stepSingle(ArcadeVehicleState& state,
     float lateralSpeed = dot(state.vel, left);
     const float absForwardSpeed = std::abs(forwardSpeed);
     const float normalizedSpeed = std::clamp(safeRatio(absForwardSpeed, config.maxForwardSpeed), 0.0f, 1.5f);
+    const float effectiveForwardSpeedLimit =
+        config.maxForwardSpeed +
+        control.forwardSpeedLimitExtra;
     state.gear = std::clamp(state.gear, 1, static_cast<int>(config.gearRedlineSpeedRatios.size()));
     const auto rpmForGear = [&](int gear) {
-        const float redlineSpeed = config.maxForwardSpeed *
+        const float redlineSpeed = effectiveForwardSpeedLimit *
                                    config.gearRedlineSpeedRatios[static_cast<size_t>(gear - 1)];
         return std::max(config.idleRpmNormalized, safeRatio(absForwardSpeed, redlineSpeed));
     };
@@ -453,7 +458,9 @@ ArcadeVehicleTelemetry stepSingle(ArcadeVehicleState& state,
     longitudinalAcceleration -= signedUnit(forwardSpeed) * aerodynamicDrag;
 
     const float boostSpeedScale = boostActive ? 1.0f + config.boostSpeedExtraBase + config.boostSpeedExtraPower * state.boostPower : 1.0f;
-    const float forwardLimit = config.maxForwardSpeed * surface.maxSpeed * boostSpeedScale;
+    const float forwardLimit =
+        effectiveForwardSpeedLimit * surface.maxSpeed *
+        boostSpeedScale;
     if (forwardSpeed > forwardLimit) {
         longitudinalAcceleration -= (forwardSpeed - forwardLimit) * config.overspeedResponse;
     }

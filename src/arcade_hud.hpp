@@ -40,6 +40,8 @@ struct RaceHudViewModel {
     float boostCharge = 0.0f;
     float presentationTimeSeconds = 0.0f;
     bool boostActive = false;
+    bool drsAvailable = false;
+    bool drsActive = false;
     bool shiftRecommended = false;
     bool wrongWay = false;
     bool finished = false;

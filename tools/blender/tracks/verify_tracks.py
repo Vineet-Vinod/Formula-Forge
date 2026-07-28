@@ -408,6 +408,10 @@ def verify(root: Path, slug: str):
             presentation["starting_grid_slots"] != STARTING_GRID_SLOT_COUNT or
             not grid_slots.get("before_start_finish")):
         raise ValueError(f"{slug}: starting grid slot contract is stale")
+    grid_gap_m = spec.get("starting_grid_gap_m", 3.0)
+    if (abs(grid_slots.get("slot_gap_m", -1.0) - grid_gap_m) > 0.001 or
+            abs(presentation.get("starting_grid_gap_m", -1.0) - grid_gap_m) > 0.001):
+        raise ValueError(f"{slug}: starting grid gap contract is stale")
     start_index = int(spec["start_phase"] * SAMPLES) % SAMPLES
     expected_start_bank = expected_banks[start_index]
     start_line_base_z = surface_offset + 0.10
@@ -422,7 +426,7 @@ def verify(root: Path, slug: str):
                          f"(error {max_start_line_bank_error:.6f})")
     car_length = 83.6 / 17.0
     first_center_inset = car_length * 0.5 + 1.0
-    row_spacing = car_length + 3.0
+    row_spacing = car_length + grid_gap_m
     start_progress = spec["start_phase"] * target_length
     exact_grid_alignment = grid_slots.get("runtime_distance_alignment") == "exact_progress"
     max_grid_alignment_error = 0.0
