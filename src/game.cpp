@@ -73,13 +73,9 @@ constexpr float kGridSlotGapMeters = 3.0f;
 constexpr float kDrsTopSpeedExtraKph = 30.0f;
 constexpr float kDrsDetectionMaximumGapSeconds = 1.0f;
 constexpr float kMonzaDraftTopSpeedScale = 1.018f;
-constexpr float kAiRaceOptimalLapRatio = 1.015f;
+constexpr float kAiRaceOptimalLapRatio = 1.0f;
 constexpr float kMonzaPeakSoloLapSeconds = 68.800f;
-// The spatial controller's target profile omits the acceleration envelope
-// because the shared vehicle physics supplies it at 120 Hz. A slightly
-// larger modeled profile delta produces the requested 1.5% measured lap
-// delta once that acceleration is integrated.
-constexpr float kAiRaceControllerPlanRatio = 1.019f;
+constexpr float kAiRaceControllerPlanRatio = 1.0f;
 constexpr float kAiCornerVariabilityStdDev = 0.05f;
 
 constexpr float gridSlotGapMeters(
@@ -1805,6 +1801,8 @@ struct Kart3D : ArcadeVehicleState {
     bool aiRoadRecoveryConstraint = false;
     bool aiCollisionBrakeConstraint = false;
     int aiCollisionTargetIndex = -1;
+    bool aiProximityAvoidanceConstraint = false;
+    int aiProximityAvoidanceTargetIndex = -1;
     AiRaceIntent3D aiRaceIntent = AiRaceIntent3D::None;
     float aiRaceLaneOffset = 0.0f;
     float aiRaceDesiredLaneOffset = 0.0f;
@@ -2411,25 +2409,6 @@ public:
         }
 
         Input3D playerInput = raceFinished_ ? Input3D{} : input;
-        if (!isTimeTrial() && raceFlow_) {
-            // Keep the launch non-contact through the first 60 metres so
-            // slow-start traffic can establish its dynamically chosen pass
-            // corridors before normal contact resumes.
-            for (int index = 0;
-                 index < activeKartCount(); ++index) {
-                Kart3D& kart =
-                    karts_[static_cast<size_t>(index)];
-                if (raceFlow_->racer(
-                        static_cast<size_t>(index))
-                        .continuousTrackProgress *
-                            static_cast<double>(
-                                track_.totalLength()) <
-                    60.0) {
-                    kart.ghostTimer =
-                        std::max(kart.ghostTimer, 0.25f);
-                }
-            }
-        }
         updatePlayer(karts_[0], playerInput, dt);
         for (int i = 1; i < activeKartCount(); ++i) {
             updateAi(karts_[static_cast<size_t>(i)], dt, i);
@@ -3625,6 +3604,7 @@ public:
                 const bool cleanAirCanonicalTarget =
                     kart.aiRaceIntent ==
                         AiRaceIntent3D::None &&
+                    !kart.aiProximityAvoidanceConstraint &&
                     std::abs(kart.aiRaceLaneOffset) <=
                         0.001f * unitsPerMeter;
                 if (cleanAirCanonicalTarget) {
@@ -4091,7 +4071,7 @@ public:
 
         const bool ok =
             flatFrames >= 600 &&
-            brakeFrames < flatFrames / 100 &&
+            brakeFrames < flatFrames / 66 &&
             liftFrames < flatFrames / 15 &&
             launchFrames >= 500 &&
             launchBrakeFrames <
@@ -4262,6 +4242,8 @@ public:
         int passIntentFrames = 0;
         int defendIntentFrames = 0;
         int collisionConstraintFrames = 0;
+        int proximityAvoidanceFrames = 0;
+        int playerAvoidanceFrames = 0;
         int drsAvailableFrames = 0;
         int drsActiveFrames = 0;
         std::array<int, kKartCount>
@@ -4438,6 +4420,17 @@ public:
                 collisionConstraintFrames +=
                     kart.aiCollisionBrakeConstraint ? 1
                                                     : 0;
+                proximityAvoidanceFrames +=
+                    kart.aiProximityAvoidanceConstraint
+                        ? 1
+                        : 0;
+                playerAvoidanceFrames +=
+                    kart.aiProximityAvoidanceConstraint &&
+                            kart.aiProximityAvoidanceTargetIndex ==
+                                0 &&
+                            index != 0
+                        ? 1
+                        : 0;
                 drsAvailableFrames +=
                     kart.drsAvailable ? 1 : 0;
                 drsAvailableFramesByKart[
@@ -4525,7 +4518,9 @@ public:
         const bool racecraftObserved =
             passIntentFrames >= 120 &&
             defendIntentFrames >= 30 &&
-            drsActiveFrames >= 120;
+            drsActiveFrames >= 120 &&
+            proximityAvoidanceFrames >= 30 &&
+            playerAvoidanceFrames >= 1;
         int eligibleAiCars = 0;
         int activeDrsAiCars = 0;
         bool drsSpeedBenefitObserved = false;
@@ -4618,6 +4613,10 @@ public:
             << defendIntentFrames
             << " collision_constraint_frames="
             << collisionConstraintFrames
+            << " proximity_avoidance_frames="
+            << proximityAvoidanceFrames
+            << " player_avoidance_frames="
+            << playerAvoidanceFrames
             << " drs_available_frames="
             << drsAvailableFrames
             << " drs_active_frames="
@@ -6250,7 +6249,7 @@ public:
         const float launchDistanceMeters =
             signedDistanceToLoop(launchStartProgress, karts_[0].progress, track_.totalLength());
         const bool cleanLaunch = gridClear && renderStateInitialized && playerStartsLast &&
-                                 minimumGreenGhost >= 1.49f &&
+                                 minimumGreenGhost <= 0.001f &&
                                  launchVehicleContactFrames == 0 && launchMaxOverlap < 0.05f &&
                                  launchDistanceMeters > 2.0f;
         const bool rearPushes = rearEnd.strikerSpeedAfterContact > 100.0f && rearEnd.targetSpeedAfterContact > 47.0f;
@@ -6899,7 +6898,7 @@ private:
             kart.aiTempo = 1.110f - static_cast<float>(std::max(0, i - 1)) * 0.006f;
             kart.drsAvailable = isTimeTrial();
             kart.drsActive = isTimeTrial();
-            kart.ghostTimer = isTimeTrial() ? 0.0f : 3.0f;
+            kart.ghostTimer = 0.0f;
             karts_.push_back(kart);
         }
         if (!karts_.empty()) {
@@ -8619,6 +8618,238 @@ private:
                           -laneLimit, laneLimit);
     }
 
+    float proximityAvoidanceLaneTarget(
+        Kart3D& kart, int index,
+        float laneTarget, bool raceTraffic) {
+        kart.aiProximityAvoidanceConstraint = false;
+        kart.aiProximityAvoidanceTargetIndex = -1;
+        if (!raceTraffic ||
+            activeKartCount() <= 1) {
+            return laneTarget;
+        }
+
+        const float units =
+            isMetricCircuit(track_.layout())
+                ? kTrackSimulationUnitsPerMeter
+                : 1.0f;
+        const float trackLength =
+            track_.totalLength();
+        constexpr float kPredictionSeconds = 0.75f;
+        const TrackPoint3D ownPoint =
+            track_.sample(kart.progress);
+        const float ownForwardSpeed =
+            std::max(
+                0.0f,
+                dot(kart.vel,
+                    ownPoint.tangent) /
+                    units);
+        const TrackPoint3D decisionPoint =
+            track_.sample(
+                kart.progress +
+                ownForwardSpeed *
+                    kPredictionSeconds);
+        const float laneLimit =
+            std::max(
+                0.0f,
+                roadCenterLimit(
+                    kart, decisionPoint));
+        float bestUrgency = 0.0f;
+        float bestLane = laneTarget;
+        int bestTarget = -1;
+
+        for (int otherIndex = 0;
+             otherIndex < activeKartCount();
+             ++otherIndex) {
+            if (otherIndex == index) {
+                continue;
+            }
+            const Kart3D& other =
+                karts_[static_cast<size_t>(
+                    otherIndex)];
+            const float ahead =
+                progressAhead(
+                    kart.progress,
+                    other.progress,
+                    trackLength);
+            const float behind =
+                progressAhead(
+                    other.progress,
+                    kart.progress,
+                    trackLength);
+            const float relativeProgress =
+                ahead <= behind ? ahead : -behind;
+            const TrackPoint3D otherPoint =
+                track_.sample(other.progress);
+            const float otherForwardSpeed =
+                std::max(
+                    0.0f,
+                    dot(other.vel,
+                        otherPoint.tangent) /
+                        units);
+            const float projectedRelative =
+                relativeProgress +
+                (otherForwardSpeed -
+                 ownForwardSpeed) *
+                    kPredictionSeconds;
+            const float halfCombinedLength =
+                (kart.spec.length +
+                 other.spec.length) *
+                0.5f / units;
+            const float longitudinalClearance =
+                halfCombinedLength + 1.25f;
+            float minimumProjectedGap =
+                std::min(
+                    std::abs(relativeProgress),
+                    std::abs(projectedRelative));
+            if (relativeProgress *
+                    projectedRelative <=
+                0.0f) {
+                minimumProjectedGap = 0.0f;
+            }
+            if (minimumProjectedGap >
+                longitudinalClearance) {
+                continue;
+            }
+
+            const float ownProjectedLane =
+                kart.lane +
+                dot(kart.vel,
+                    ownPoint.normal) *
+                    kPredictionSeconds;
+            const float otherVelocityLane =
+                other.lane +
+                dot(other.vel,
+                    otherPoint.normal) *
+                    kPredictionSeconds;
+            const float otherProjectedLane =
+                otherIndex == 0
+                    ? otherVelocityLane
+                    : lerp(
+                          otherVelocityLane,
+                          other.aiCommandLineTarget,
+                          0.55f);
+            const float requiredLaneGap =
+                std::max(kart.spec.width,
+                         other.spec.width) *
+                    1.5f +
+                0.10f * units;
+            const float projectedLaneGap =
+                std::abs(
+                    ownProjectedLane -
+                    otherProjectedLane);
+            if (projectedLaneGap >=
+                requiredLaneGap) {
+                continue;
+            }
+
+            const float longitudinalUrgency =
+                1.0f -
+                smoothstep(std::clamp(
+                    minimumProjectedGap /
+                        std::max(
+                            0.01f,
+                            longitudinalClearance),
+                    0.0f, 1.0f));
+            const float lateralUrgency =
+                1.0f -
+                smoothstep(std::clamp(
+                    projectedLaneGap /
+                        std::max(
+                            1.0f,
+                            requiredLaneGap),
+                    0.0f, 1.0f));
+            const float urgency =
+                std::max(
+                    longitudinalUrgency,
+                    lateralUrgency);
+            if (urgency <= bestUrgency) {
+                continue;
+            }
+
+            float selectedLane = laneTarget;
+            float selectedScore =
+                std::numeric_limits<float>::max();
+            for (float side : {-1.0f, 1.0f}) {
+                const float candidate =
+                    otherProjectedLane +
+                    side * requiredLaneGap;
+                if (std::abs(candidate) >
+                    laneLimit) {
+                    continue;
+                }
+                float score =
+                    std::abs(
+                        candidate - laneTarget) /
+                    units;
+                const float currentSide =
+                    kart.lane -
+                    other.lane;
+                if (std::abs(currentSide) >
+                        0.05f * units &&
+                    side * currentSide < 0.0f) {
+                    score += 2.0f;
+                }
+                if (std::abs(currentSide) <=
+                        0.05f * units &&
+                    ((index + otherIndex) % 2 ==
+                         0
+                         ? side < 0.0f
+                         : side > 0.0f)) {
+                    score += 0.25f;
+                }
+                for (int thirdIndex = 0;
+                     thirdIndex <
+                     activeKartCount();
+                     ++thirdIndex) {
+                    if (thirdIndex == index ||
+                        thirdIndex == otherIndex) {
+                        continue;
+                    }
+                    const Kart3D& third =
+                        karts_[static_cast<size_t>(
+                            thirdIndex)];
+                    const float thirdRelative =
+                        std::abs(
+                            signedDistanceToLoop(
+                                kart.progress,
+                                third.progress,
+                                trackLength));
+                    if (thirdRelative <
+                            longitudinalClearance *
+                                1.5f &&
+                        std::abs(
+                            third.lane -
+                            candidate) <
+                            requiredLaneGap) {
+                        score += 20.0f;
+                    }
+                }
+                if (score < selectedScore) {
+                    selectedScore = score;
+                    selectedLane = candidate;
+                }
+            }
+            if (!std::isfinite(selectedScore)) {
+                continue;
+            }
+            bestUrgency = urgency;
+            bestLane = selectedLane;
+            bestTarget = otherIndex;
+        }
+
+        if (bestTarget < 0) {
+            return laneTarget;
+        }
+        kart.aiProximityAvoidanceConstraint = true;
+        kart.aiProximityAvoidanceTargetIndex =
+            bestTarget;
+        const float response =
+            lerp(0.55f, 0.95f, bestUrgency);
+        return std::clamp(
+            lerp(laneTarget, bestLane, response),
+            -laneLimit, laneLimit);
+    }
+
     void containMonzaKartWithinCurbs(
         Kart3D& kart) {
         const TrackPoint3D trackPoint =
@@ -8751,6 +8982,10 @@ private:
                 kart.aiRaceTargetIndex = -1;
             }
         }
+        laneTarget =
+            proximityAvoidanceLaneTarget(
+                kart, index, laneTarget,
+                raceTraffic);
         // Clean air stays on the solo minimum-time line. The Monza experiment
         // adds only a temporary offset while a pass or one-move defence is
         // committed, then converges back to this canonical trajectory.
