@@ -74,15 +74,8 @@ constexpr float kDrsTopSpeedExtraKph = 30.0f;
 constexpr float kDrsDetectionMaximumGapSeconds = 1.0f;
 constexpr float kMonzaDraftTopSpeedScale = 1.018f;
 constexpr float kAiRaceOptimalLapRatio = 1.0f;
-constexpr float kMonzaPeakSoloLapSeconds = 68.800f;
 constexpr float kAiRaceControllerPlanRatio = 1.0f;
 constexpr float kAiCornerVariabilityStdDev = 0.05f;
-// Traffic costs the field several seconds even when the solo plan is
-// optimal. This AI-only Monza race calibration keeps a leading live-race car
-// near the demonstrated 69-second pace; it does not alter the player, time
-// trial, DRS entitlement, or any other circuit.
-constexpr float kMonzaAiRacePerformanceScale = 1.004f;
-constexpr float kMonzaAiRaceTopSpeedBonusKph = 24.0f;
 
 constexpr float gridSlotGapMeters(
     TrackLayoutId layout) {
@@ -1811,7 +1804,6 @@ struct Kart3D : ArcadeVehicleState {
     int aiProximityAvoidanceTargetIndex = -1;
     float aiTrafficTimeToCollision = std::numeric_limits<float>::max();
     float aiTrafficRequiredDeceleration = 0.0f;
-    float aiRaceSpeedLimitExtra = 0.0f;
     AiRaceIntent3D aiRaceIntent = AiRaceIntent3D::None;
     float aiRaceLaneOffset = 0.0f;
     float aiRaceDesiredLaneOffset = 0.0f;
@@ -4584,10 +4576,16 @@ public:
             initialPlayerRank == kKartCount &&
             elapsedSeconds <=
                 90.0f * static_cast<float>(auditLaps);
+        // The live field is compared with the generated no-DRS race plan:
+        // the leader is never DRS-eligible, while DRS use is verified
+        // independently below. The solo pace audit verifies the generated
+        // DRS trajectory without traffic.
+        const float generatedRaceReferenceSeconds =
+            aiRacePlanSeconds_;
         const bool liveRacePaceObserved =
             fastestAiLapIndex >= 0 &&
             fastestAiFlyingLap <=
-                kMonzaPeakSoloLapSeconds *
+                generatedRaceReferenceSeconds *
                     1.015f;
         const bool playerContactControlled =
             playerContactBeginnings <= auditLaps &&
@@ -4674,8 +4672,8 @@ public:
                     : -1.0f)
             << " live_race_pace="
             << liveRacePaceObserved
-            << " ai_race_top_speed_bonus_kph="
-            << kMonzaAiRaceTopSpeedBonusKph
+            << " generated_race_reference_s="
+            << generatedRaceReferenceSeconds
             << " contacts=" << contactBeginnings
             << " player_contacts="
             << playerContactBeginnings
@@ -5499,10 +5497,7 @@ public:
                 variance /
                 static_cast<float>(kKartCount));
         const float demonstratedOptimal =
-            layout == TrackLayoutId::Monza
-                ? kMonzaPeakSoloLapSeconds
-                : aiCircuitProfile(layout)
-                      .baselineLapSeconds;
+            aiLapModelSeconds_;
         const float target =
             demonstratedOptimal *
             kAiRaceOptimalLapRatio;
@@ -7247,7 +7242,6 @@ private:
     void updatePlayer(Kart3D& kart, const Input3D& input, float dt) {
         const Input3D canonical =
             canonicalPlayerInput(input);
-        kart.aiRaceSpeedLimitExtra = 0.0f;
         if (isTimeTrial()) {
             kart.drsAvailable = true;
             kart.drsActive = canonical.brake <= 0.01f;
@@ -8061,8 +8055,7 @@ private:
             drsBaseline ? drsModelPlan.seconds
                         : modelPlan.seconds;
         aiLapTheoreticalSeconds_ =
-            drsBaseline ? drsModelPlan.seconds
-                        : profile.benchmarkLapSeconds;
+            aiLapModelSeconds_;
         aiLapSelectedSmoothingSpan_ =
             profile.smoothingSpan;
         aiLapSelectedRoadFraction_ =
@@ -9272,17 +9265,8 @@ private:
                                                        std::clamp(dt * 4.5f * recovery, 0.0f, 1.0f));
         }
 
-        const bool aiRacePerformancePush =
-            monzaRacecraft && index > 0;
-        kart.aiRaceSpeedLimitExtra =
-            aiRacePerformancePush
-                ? kMonzaAiRaceTopSpeedBonusKph /
-                      speedKphPerSimulationUnit(
-                          track_.layout())
-                : 0.0f;
         const float activeTopSpeed =
-            effectiveTopSpeed(kart) +
-            kart.aiRaceSpeedLimitExtra;
+            effectiveTopSpeed(kart);
         const bool acceptingPassTow =
             raceTraffic &&
             !kart.drsActive &&
@@ -9293,8 +9277,7 @@ private:
                 ? std::max(
                       activeTopSpeed,
                       kart.tuning.maxForwardSpeed *
-                              kMonzaDraftTopSpeedScale +
-                          kart.aiRaceSpeedLimitExtra)
+                              kMonzaDraftTopSpeedScale)
                 : (kart.drsActive
                        ? activeTopSpeed +
                              5.0f /
@@ -9306,18 +9289,7 @@ private:
                 kart,
                 raceTraffic || useRacePace,
                 index) *
-            (aiRacePerformancePush
-                 ? kMonzaAiRacePerformanceScale
-                 : 1.0f) *
             (1.0f - recovery * 0.24f);
-        if (aiRacePerformancePush &&
-            targetSpeed >=
-                kart.tuning.maxForwardSpeed *
-                    0.99f) {
-            targetSpeed =
-                std::max(targetSpeed,
-                         controllerTopSpeed);
-        }
         if (acceptingPassTow &&
             targetSpeed >=
                 kart.tuning.maxForwardSpeed *
@@ -10405,8 +10377,7 @@ private:
         control.throttle = input.throttle;
         control.brake = input.brake;
         control.forwardSpeedLimitExtra =
-            (kart.drsActive ? drsTopSpeedExtra() : 0.0f) +
-            kart.aiRaceSpeedLimitExtra;
+            kart.drsActive ? drsTopSpeedExtra() : 0.0f;
         control.drift = input.drift;
         control.shiftUpPressed = input.shiftUp;
         control.shiftDownPressed = input.shiftDown;
