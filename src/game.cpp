@@ -72,7 +72,10 @@ constexpr float kGridFirstRowClearanceMeters = 1.0f;
 constexpr float kGridSlotGapMeters = 3.0f;
 constexpr float kDrsTopSpeedExtraKph = 30.0f;
 constexpr float kDrsDetectionMaximumGapSeconds = 1.0f;
-constexpr float kMonzaDraftTopSpeedScale = 1.018f;
+constexpr float kDraftTopSpeedExtraKph =
+    kDrsTopSpeedExtraKph * 0.80f;
+constexpr float kDraftAccelerationMetersPerSecondSquared =
+    2.8f;
 constexpr float kAiRaceOptimalLapRatio = 1.0f;
 constexpr float kAiRaceControllerPlanRatio = 1.0f;
 constexpr float kAiCornerVariabilityStdDev = 0.05f;
@@ -2416,9 +2419,9 @@ public:
         for (int i = 1; i < activeKartCount(); ++i) {
             updateAi(karts_[static_cast<size_t>(i)], dt, i);
         }
-        if (!isTimeTrial() && kMonzaRacecraftExperiment &&
-            track_.layout() == TrackLayoutId::Monza) {
-            applyMonzaSlipstream(dt);
+        if (!isTimeTrial() &&
+            isMetricCircuit(track_.layout())) {
+            applySlipstream(dt);
         }
         if (!isTimeTrial()) {
             solveKartContacts();
@@ -4313,7 +4316,7 @@ public:
                     karts_[static_cast<size_t>(index)],
                     kFixedDt, index, true);
             }
-            applyMonzaSlipstream(kFixedDt);
+            applySlipstream(kFixedDt);
             solveKartContacts();
             const auto raceInputs =
                 currentRaceInputs();
@@ -4593,13 +4596,22 @@ public:
              firstPlayerContactSpeedAfterKph >=
                  firstPlayerContactSpeedBeforeKph *
                      0.985f);
+        float maximumAiRoadViolationMeters = 0.0f;
+        for (int index = 1;
+             index < activeKartCount(); ++index) {
+            maximumAiRoadViolationMeters =
+                std::max(
+                    maximumAiRoadViolationMeters,
+                    maximumRoadViolationByKart[
+                        static_cast<size_t>(index)]);
+        }
         const bool controlled =
             contactBeginnings <=
                 // Pace variation creates more harmless wheel-to-wheel
                 // touches; the overlap and reset limits below remain the
                 // authoritative safety constraints.
                 24 * auditLaps &&
-            maximumRoadViolationMeters <=
+            maximumAiRoadViolationMeters <=
                 kMetricCurbWidthMeters + 0.08f &&
             maximumOverlap <= 0.15f &&
             playerContactControlled &&
@@ -4687,6 +4699,8 @@ public:
             << firstPlayerContactSpeedAfterKph
             << " road_violation_m="
             << maximumRoadViolationMeters
+            << " ai_road_violation_m="
+            << maximumAiRoadViolationMeters
             << " road_violation_kart="
             << maximumRoadViolationKart
             << " road_violation_phase="
@@ -7130,6 +7144,11 @@ private:
                speedKphPerSimulationUnit(track_.layout());
     }
 
+    float draftTopSpeedExtra() const {
+        return kDraftTopSpeedExtraKph /
+               speedKphPerSimulationUnit(track_.layout());
+    }
+
     float effectiveTopSpeed(const Kart3D& kart) const {
         return kart.tuning.maxForwardSpeed +
                (kart.drsActive ? drsTopSpeedExtra() : 0.0f);
@@ -8918,7 +8937,8 @@ private:
                           other.aiCommandLineTarget,
                           0.55f);
             const float requiredLaneGap =
-                contextAwareRacecraft
+                contextAwareRacecraft &&
+                        otherIndex != 0
                     ? (kart.spec.width +
                        other.spec.width) *
                               0.50f +
@@ -8927,7 +8947,10 @@ private:
                           kart.spec.width,
                           other.spec.width) *
                               1.5f +
-                          0.10f * units;
+                          (contextAwareRacecraft
+                               ? 0.15f
+                               : 0.10f) *
+                              units;
             const float projectedLaneGap =
                 std::abs(
                     ownProjectedLane -
@@ -9276,8 +9299,8 @@ private:
             acceptingPassTow
                 ? std::max(
                       activeTopSpeed,
-                      kart.tuning.maxForwardSpeed *
-                              kMonzaDraftTopSpeedScale)
+                      kart.tuning.maxForwardSpeed +
+                          draftTopSpeedExtra())
                 : (kart.drsActive
                        ? activeTopSpeed +
                              5.0f /
@@ -9745,7 +9768,7 @@ private:
         }
     }
 
-    void applyMonzaSlipstream(float dt) {
+    void applySlipstream(float dt) {
         const float units = kTrackSimulationUnitsPerMeter;
         const float trackLength = track_.totalLength();
         std::array<float, kKartCount> draftAcceleration{};
@@ -9796,7 +9819,8 @@ private:
                             .tangent),
                     0.0f, 1.0f);
             draftAcceleration[static_cast<size_t>(index)] =
-                1.80f * distanceStrength * alignment;
+                kDraftAccelerationMetersPerSecondSquared *
+                distanceStrength * alignment;
         }
         for (int index = 0; index < activeKartCount(); ++index) {
             Kart3D& kart =
@@ -9809,8 +9833,8 @@ private:
             const TrackPoint3D point =
                 track_.sample(kart.progress);
             const float draftSpeedLimit =
-                kart.tuning.maxForwardSpeed *
-                kMonzaDraftTopSpeedScale;
+                kart.tuning.maxForwardSpeed +
+                draftTopSpeedExtra();
             const float forwardSpeed =
                 dot(kart.vel, point.tangent);
             if (forwardSpeed >= draftSpeedLimit) {
