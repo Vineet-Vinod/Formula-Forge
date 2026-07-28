@@ -9177,7 +9177,7 @@ private:
         constexpr float kGridLaneHoldMeters =
             -120.0f;
         constexpr float kGridLaneReleaseMeters =
-            60.0f;
+            260.0f;
         const bool leavingGrid =
             startLineDistanceMeters >= -200.0f &&
             startLineDistanceMeters <
@@ -9536,16 +9536,30 @@ private:
                                         .brakeDeceleration /
                                     recoveryUnits *
                                     0.28f);
+                    const bool protectingPlayer =
+                        i == 0;
                     const float desiredGap =
-                        1.6f +
+                        (protectingPlayer ? 1.6f
+                                          : 0.85f) +
                         std::max(0.0f,
-                                 closingSpeed * 0.55f) +
-                        (approachingTurnIn ? 1.2f
+                                 closingSpeed *
+                                     (protectingPlayer
+                                          ? 0.55f
+                                          : 0.35f)) +
+                        (approachingTurnIn
+                             ? (protectingPlayer
+                                    ? 1.2f
+                                    : 0.65f)
                                            : 0.0f);
                     const float reactionDistance =
                         std::max(0.0f, closingSpeed) *
-                        (approachingTurnIn ? 0.55f
-                                           : 0.38f);
+                        (approachingTurnIn
+                             ? (protectingPlayer
+                                    ? 0.55f
+                                    : 0.35f)
+                             : (protectingPlayer
+                                    ? 0.38f
+                                    : 0.24f));
                     const float usableGap =
                         std::max(
                             0.0f,
@@ -9565,7 +9579,9 @@ private:
                         expectedLeadSpeed +
                         std::clamp(
                             (bumperGap - desiredGap) *
-                                0.82f,
+                                (protectingPlayer
+                                     ? 0.82f
+                                     : 1.05f),
                             -18.0f, 24.0f);
                     const float candidateFollowingSpeed =
                         std::max(
@@ -9707,10 +9723,15 @@ private:
                 kart.aiTrafficRequiredDeceleration /
                 std::max(1.0f,
                          availableDeceleration);
+            const bool protectingPlayer =
+                kart.aiCollisionTargetIndex == 0;
             const bool imminentContact =
-                kart.aiTrafficTimeToCollision < 0.62f;
+                kart.aiTrafficTimeToCollision <
+                (protectingPlayer ? 0.62f : 0.45f);
             if (imminentContact ||
-                requiredBrakeFraction > 0.78f) {
+                requiredBrakeFraction >
+                    (protectingPlayer ? 0.78f
+                                      : 0.90f)) {
                 // This is the final safety layer after predictive following.
                 // Its strength follows the actual closing energy instead of
                 // applying a fixed late brake to every occupied corridor.
@@ -10578,6 +10599,8 @@ private:
                             std::abs(
                                 dot(n, averageForward)) >
                                 0.48f;
+                        const bool aiOnlyContact =
+                            a > 0 && b > 0;
                         Vec2 impulseNormal = n;
                         if (sameDirection &&
                             !longitudinalContact &&
@@ -10610,9 +10633,11 @@ private:
                             const float impulseScale =
                                 sameDirection
                                     ? (longitudinalContact
-                                           ? (lowSpeedContact
-                                                  ? 0.10f
-                                                  : 0.22f)
+                                           ? (aiOnlyContact
+                                                  ? 0.04f
+                                                  : (lowSpeedContact
+                                                         ? 0.10f
+                                                         : 0.22f))
                                            : 0.52f)
                                     : 1.10f;
                             const float impulse = -impulseScale * closingSpeed / invSum;
