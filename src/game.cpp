@@ -1944,6 +1944,8 @@ struct MonzaOptimizationReplay {
 struct CollisionAuditResult3D {
     const char* name = "";
     float maxOverlap = 0.0f;
+    float strikerSpeedBeforeContact = 0.0f;
+    float targetSpeedBeforeContact = 0.0f;
     float strikerSpeedAfterContact = 0.0f;
     float targetSpeedAfterContact = 0.0f;
     float maxContactImpulse = 0.0f;
@@ -4242,6 +4244,13 @@ public:
         int previousPlayerRank = initialPlayerRank;
         int playerPasses = 0;
         int contactBeginnings = 0;
+        int playerContactBeginnings = 0;
+        float firstPlayerContactPhase = -1.0f;
+        float firstPlayerContactSpeedBeforeKph = 0.0f;
+        float firstPlayerContactSpeedAfterKph = 0.0f;
+        float previousPlayerSpeedKph =
+            length(karts_[0].vel) *
+            speedKphPerSimulationUnit(track_.layout());
         int passIntentFrames = 0;
         int defendIntentFrames = 0;
         int collisionConstraintFrames = 0;
@@ -4325,6 +4334,21 @@ public:
                         0.001f &&
                     kart.contactTimer > 0.05f) {
                     ++contactBeginnings;
+                    playerContactBeginnings +=
+                        index == 0 ? 1 : 0;
+                    if (index == 0 &&
+                        firstPlayerContactPhase <
+                            0.0f) {
+                        firstPlayerContactPhase =
+                            kart.progress /
+                            track_.totalLength();
+                        firstPlayerContactSpeedBeforeKph =
+                            previousPlayerSpeedKph;
+                        firstPlayerContactSpeedAfterKph =
+                            length(kart.vel) *
+                            speedKphPerSimulationUnit(
+                                track_.layout());
+                    }
                 }
                 previousContact[
                     static_cast<size_t>(index)] =
@@ -4446,6 +4470,10 @@ public:
                             static_cast<size_t>(index)],
                         speedKph);
             }
+            previousPlayerSpeedKph =
+                length(karts_[0].vel) *
+                speedKphPerSimulationUnit(
+                    track_.layout());
 
             const int playerRank = rankOf(0);
             if (playerRank < previousPlayerRank) {
@@ -4494,6 +4522,12 @@ public:
             initialPlayerRank == kKartCount &&
             elapsedSeconds <=
                 90.0f * static_cast<float>(auditLaps);
+        const bool playerContactControlled =
+            playerContactBeginnings <= auditLaps &&
+            (firstPlayerContactPhase < 0.0f ||
+             firstPlayerContactSpeedAfterKph >=
+                 firstPlayerContactSpeedBeforeKph *
+                     0.985f);
         const bool controlled =
             contactBeginnings <=
                 // Pace variation creates more harmless wheel-to-wheel
@@ -4503,6 +4537,7 @@ public:
             maximumRoadViolationMeters <=
                 kMetricCurbWidthMeters + 0.08f &&
             maximumOverlap <= 0.15f &&
+            playerContactControlled &&
             recoveryResets == 0;
         const bool racecraftObserved =
             passIntentFrames >= 120 &&
@@ -4564,6 +4599,16 @@ public:
             << recoveryResets
             << " winner=" << winnerIndex
             << " contacts=" << contactBeginnings
+            << " player_contacts="
+            << playerContactBeginnings
+            << " player_contact_controlled="
+            << playerContactControlled
+            << " first_player_contact_phase="
+            << firstPlayerContactPhase
+            << " first_player_contact_kph="
+            << firstPlayerContactSpeedBeforeKph
+            << "->"
+            << firstPlayerContactSpeedAfterKph
             << " road_violation_m="
             << maximumRoadViolationMeters
             << " road_violation_kart="
@@ -5937,6 +5982,11 @@ public:
                             headOn.vehicleTelemetry && headOn.maxContactImpulse > 0.0f;
         const bool sideOk = sideSwipe.contactFrames > 0 && sideSwipe.maxOverlap < 1.25f && sideSwipe.overlapFrames == 0 &&
                             sideSwipe.vehicleTelemetry && sideSwipe.maxContactImpulse > 0.0f;
+        const bool sideMomentumPreserved =
+            sideSwipe.strikerSpeedAfterContact >=
+                sideSwipe.strikerSpeedBeforeContact * 0.985f &&
+            sideSwipe.targetSpeedAfterContact >=
+                sideSwipe.targetSpeedBeforeContact * 0.985f;
         Kart3D light;
         Kart3D heavy;
         light.spec = specs_[1];
@@ -6242,7 +6292,8 @@ public:
                                  launchVehicleContactFrames == 0 && launchMaxOverlap < 0.05f &&
                                  launchDistanceMeters > 2.0f;
         const bool rearPushes = rearEnd.strikerSpeedAfterContact > 100.0f && rearEnd.targetSpeedAfterContact > 47.0f;
-        const bool ok = rearOk && headOk && sideOk && massComparable && roleSymmetric && jumpClears && wallGlances &&
+        const bool ok = rearOk && headOk && sideOk && sideMomentumPreserved &&
+                        massComparable && roleSymmetric && jumpClears && wallGlances &&
                         noAutomaticRecovery && rearPushes && envelopeOrdered && widthTransitions && footprintExact &&
                         curbsDriveable && runoffDriveable && visibleBarrierOnset && directBarrierStops &&
                         lowSpeedTiresGrounded && runoffKindsMatch && looseSurfacePenalty &&
@@ -6252,6 +6303,10 @@ public:
             std::cout << r.name << "_max_overlap=" << r.maxOverlap << " " << r.name << "_overlap_frames=" << r.overlapFrames << " "
                       << r.name << "_contact_frames=" << r.contactFrames << " "
                       << r.name << "_impulse=" << r.maxContactImpulse << " "
+                      << r.name << "_striker_speed_before=" << r.strikerSpeedBeforeContact << " "
+                      << r.name << "_target_speed_before=" << r.targetSpeedBeforeContact << " "
+                      << r.name << "_striker_speed=" << r.strikerSpeedAfterContact << " "
+                      << r.name << "_target_speed=" << r.targetSpeedAfterContact << " "
                       << r.name << "_vehicle_telemetry=" << r.vehicleTelemetry << " ";
         };
         std::cout << "collision-audit ";
@@ -6259,6 +6314,7 @@ public:
         print(headOn);
         print(sideSwipe);
         std::cout << "rear_ok=" << rearOk << " head_ok=" << headOk << " side_ok=" << sideOk
+                  << " side_momentum_preserved=" << sideMomentumPreserved
                   << " mass_comparable=" << massComparable << " mass_ratio=" << massRatio
                   << " role_symmetric=" << roleSymmetric << " jump_clears=" << jumpClears
                   << " rear_striker_speed=" << rearEnd.strikerSpeedAfterContact
@@ -8567,7 +8623,21 @@ private:
             const float closingSpeed =
                 length(challenger.vel) / units -
                 speedMetersPerSecond;
-            if (closingSpeed > 1.1f) {
+            const float combinedHalfLengthMeters =
+                (kart.spec.length +
+                 challenger.spec.length) *
+                0.50f / units;
+            const float usableDefenceGap =
+                nearestBehind -
+                combinedHalfLengthMeters;
+            const float arrivalSeconds =
+                closingSpeed > 0.05f
+                    ? usableDefenceGap /
+                          closingSpeed
+                    : std::numeric_limits<float>::max();
+            if (closingSpeed > 1.1f &&
+                usableDefenceGap > 8.0f &&
+                arrivalSeconds > 1.50f) {
                 const float challengerSide =
                     challenger.lane >= baseLane ? 1.0f : -1.0f;
                 kart.aiRaceIntent =
@@ -8656,6 +8726,7 @@ private:
         float bestUrgency = 0.0f;
         float bestLane = laneTarget;
         int bestTarget = -1;
+        bool bestAlreadyAlongside = false;
 
         for (int otherIndex = 0;
              otherIndex < activeKartCount();
@@ -8714,6 +8785,24 @@ private:
                 std::abs(relativeProgress) <=
                 longitudinalClearance;
             if (contextAwareRacecraft &&
+                otherIndex == 0 &&
+                alreadyAlongside &&
+                kart.aiRaceIntent ==
+                    AiRaceIntent3D::Defend &&
+                kart.aiRaceTargetIndex == 0) {
+                // Once the attacking player has arrived, the defensive move
+                // is over. Hold the established side instead of squeezing
+                // across the player's occupied corridor.
+                kart.aiRaceIntent =
+                    AiRaceIntent3D::None;
+                kart.aiRaceDesiredLaneOffset = 0.0f;
+                kart.aiRaceTargetIndex = -1;
+                kart.aiRaceCooldownTimer =
+                    std::max(
+                        kart.aiRaceCooldownTimer,
+                        0.80f);
+            }
+            if (contextAwareRacecraft &&
                 approachingTurnIn &&
                 relativeProgress >
                     longitudinalClearance &&
@@ -8723,14 +8812,20 @@ private:
 
             const float ownProjectedLane =
                 kart.lane +
-                dot(kart.vel,
-                    ownPoint.normal) *
-                    predictionSeconds;
+                std::clamp(
+                    dot(kart.vel,
+                        ownPoint.normal) *
+                        predictionSeconds,
+                    -3.0f * units,
+                    3.0f * units);
             const float otherVelocityLane =
                 other.lane +
-                dot(other.vel,
-                    otherPoint.normal) *
-                    predictionSeconds;
+                std::clamp(
+                    dot(other.vel,
+                        otherPoint.normal) *
+                        predictionSeconds,
+                    -3.0f * units,
+                    3.0f * units);
             const float otherProjectedLane =
                 otherIndex == 0
                     ? otherVelocityLane
@@ -8814,7 +8909,8 @@ private:
                     score += 0.25f;
                 }
                 if (contextAwareRacecraft &&
-                    approachingTurnIn &&
+                    (approachingTurnIn ||
+                     alreadyAlongside) &&
                     std::abs(currentSide) >
                         0.05f * units &&
                     side * currentSide < 0.0f) {
@@ -8858,6 +8954,8 @@ private:
             bestUrgency = urgency;
             bestLane = selectedLane;
             bestTarget = otherIndex;
+            bestAlreadyAlongside =
+                alreadyAlongside;
         }
 
         if (bestTarget < 0) {
@@ -8867,7 +8965,13 @@ private:
         kart.aiProximityAvoidanceTargetIndex =
             bestTarget;
         const float response =
-            lerp(0.55f, 0.95f, bestUrgency);
+            bestAlreadyAlongside
+                ? std::max(
+                      0.90f,
+                      lerp(0.55f, 0.95f,
+                           bestUrgency))
+                : lerp(0.55f, 0.95f,
+                       bestUrgency);
         return std::clamp(
             lerp(laneTarget, bestLane, response),
             -laneLimit, laneLimit);
@@ -9962,8 +10066,27 @@ private:
             place(0, base.pos - forward * 88.0f, heading, forward * 98.0f);
             place(1, base.pos + forward * 88.0f, wrapAngle(heading + kPi), forward * -96.0f);
         } else {
-            place(0, base.pos - forward * 44.0f - right * 34.0f, heading, forward * 92.0f + right * 18.0f);
-            place(1, base.pos + forward * 8.0f + right * 22.0f, heading, forward * 80.0f - right * 12.0f);
+            const float speedPerKph =
+                kTrackSimulationUnitsPerMeter /
+                3.6f;
+            place(
+                0,
+                base.pos - forward * 44.0f -
+                    right * 34.0f,
+                heading,
+                forward * (300.0f * speedPerKph) +
+                    right *
+                        (2.5f *
+                         kTrackSimulationUnitsPerMeter));
+            place(
+                1,
+                base.pos + forward * 8.0f +
+                    right * 22.0f,
+                heading,
+                forward * (292.0f * speedPerKph) -
+                    right *
+                        (1.5f *
+                         kTrackSimulationUnitsPerMeter));
         }
 
         constexpr int kFrames = static_cast<int>(3.2f / kFixedDt);
@@ -9976,8 +10099,16 @@ private:
                 kart.vel *= std::exp(-kFixedDt * 0.08f);
                 updateProgress(kart);
             }
+            const float strikerSpeedBefore =
+                dot(karts_[0].vel, forward);
+            const float targetSpeedBefore =
+                dot(karts_[1].vel, forward);
             solveKartContacts();
             if (!sampledFirstContact && (karts_[0].contactTimer > 0.05f || karts_[1].contactTimer > 0.05f)) {
+                result.strikerSpeedBeforeContact =
+                    strikerSpeedBefore;
+                result.targetSpeedBeforeContact =
+                    targetSpeedBefore;
                 result.strikerSpeedAfterContact = dot(karts_[0].vel, forward);
                 result.targetSpeedAfterContact = dot(karts_[1].vel, forward);
                 sampledFirstContact = true;
@@ -10283,41 +10414,96 @@ private:
 
                     if (iter == 0) {
                         const Vec2 relativeVelocity = kb.vel - ka.vel;
-                        const float closingSpeed = dot(relativeVelocity, n);
                         float resolvedImpulse = 0.0f;
+                        const Vec2 forwardA = fromAngle(ka.heading);
+                        const Vec2 forwardB = fromAngle(kb.heading);
+                        const Vec2 averageForward =
+                            normalize(forwardA + forwardB);
+                        const bool sameDirection =
+                            dot(forwardA, forwardB) > 0.55f;
+                        const bool averageForwardValid =
+                            lengthSq(averageForward) > 0.01f;
+                        const bool longitudinalContact =
+                            averageForwardValid &&
+                            std::abs(
+                                dot(n, averageForward)) >
+                                0.48f;
+                        Vec2 impulseNormal = n;
+                        if (sameDirection &&
+                            !longitudinalContact &&
+                            averageForwardValid) {
+                            // A wheel-to-wheel brush should cancel lateral
+                            // convergence without stealing the shared forward
+                            // momentum of two cars travelling together.
+                            const Vec2 lateralNormal =
+                                n -
+                                averageForward *
+                                    dot(n, averageForward);
+                            if (lengthSq(lateralNormal) >
+                                0.0001f) {
+                                impulseNormal =
+                                    normalize(lateralNormal);
+                                if (dot(impulseNormal, n) <
+                                    0.0f) {
+                                    impulseNormal *= -1.0f;
+                                }
+                            }
+                        }
+                        const float closingSpeed =
+                            dot(relativeVelocity,
+                                impulseNormal);
                         if (closingSpeed < 0.0f) {
-                            const Vec2 forwardA = fromAngle(ka.heading);
-                            const Vec2 forwardB = fromAngle(kb.heading);
-                            const Vec2 averageForward = normalize(forwardA + forwardB);
-                            const bool sameDirection = dot(forwardA, forwardB) > 0.55f;
-                            const bool longitudinalContact = lengthSq(averageForward) > 0.01f && std::abs(dot(n, averageForward)) > 0.48f;
                             const float launchSpeed = 14.0f * (isMetricCircuit(track_.layout())
                                                                   ? kTrackSimulationUnitsPerMeter
                                                                   : 1.0f);
                             const bool lowSpeedContact = std::max(length(ka.vel), length(kb.vel)) < launchSpeed;
-                            const float impulseScale = sameDirection && longitudinalContact
-                                                           ? (lowSpeedContact ? 0.10f : 0.22f)
-                                                           : 1.10f;
+                            const float impulseScale =
+                                sameDirection
+                                    ? (longitudinalContact
+                                           ? (lowSpeedContact
+                                                  ? 0.10f
+                                                  : 0.22f)
+                                           : 0.52f)
+                                    : 1.10f;
                             const float impulse = -impulseScale * closingSpeed / invSum;
                             resolvedImpulse = impulse;
-                            ka.vel -= n * (impulse * invA);
-                            kb.vel += n * (impulse * invB);
+                            ka.vel -= impulseNormal * (impulse * invA);
+                            kb.vel += impulseNormal * (impulse * invB);
 
-                            const Vec2 tangent{-n.y, n.x};
-                            const float tangentSpeed = dot(kb.vel - ka.vel, tangent);
-                            const float tangentImpulse = std::clamp(-tangentSpeed * 0.05f / invSum, -impulse * 0.18f, impulse * 0.18f);
-                            ka.vel -= tangent * (tangentImpulse * invA);
-                            kb.vel += tangent * (tangentImpulse * invB);
+                            if (!sameDirection ||
+                                longitudinalContact) {
+                                const Vec2 tangent{
+                                    -impulseNormal.y,
+                                    impulseNormal.x};
+                                const float tangentSpeed =
+                                    dot(kb.vel - ka.vel,
+                                        tangent);
+                                const float tangentImpulse =
+                                    std::clamp(
+                                        -tangentSpeed * 0.05f /
+                                            invSum,
+                                        -impulse * 0.18f,
+                                        impulse * 0.18f);
+                                ka.vel -= tangent *
+                                          (tangentImpulse *
+                                           invA);
+                                kb.vel += tangent *
+                                          (tangentImpulse *
+                                           invB);
+                            }
                         }
 
-                        const float damping = std::max(length(ka.vel), length(kb.vel)) <
-                                                      14.0f * (isMetricCircuit(track_.layout())
-                                                                   ? kTrackSimulationUnitsPerMeter
-                                                                   : 1.0f)
-                                                  ? 0.9995f
-                                                  : 0.996f;
-                        ka.vel *= damping;
-                        kb.vel *= damping;
+                        // Collision impulses already dissipate relative
+                        // motion. Never damp the common forward velocity on
+                        // every persistent-contact frame; that made a gentle
+                        // one-second brush erase roughly 38% of both cars'
+                        // speed. A small one-shot loss remains for genuinely
+                        // opposing impacts only.
+                        if (!sameDirection &&
+                            resolvedImpulse > 0.0f) {
+                            ka.vel *= 0.996f;
+                            kb.vel *= 0.996f;
+                        }
                         ka.contactImpulse = std::max(ka.contactImpulse, resolvedImpulse);
                         kb.contactImpulse = std::max(kb.contactImpulse, resolvedImpulse);
                     }
