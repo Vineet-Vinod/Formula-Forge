@@ -1803,6 +1803,8 @@ struct Kart3D : ArcadeVehicleState {
     int aiCollisionTargetIndex = -1;
     bool aiProximityAvoidanceConstraint = false;
     int aiProximityAvoidanceTargetIndex = -1;
+    float aiTrafficTimeToCollision = std::numeric_limits<float>::max();
+    float aiTrafficRequiredDeceleration = 0.0f;
     AiRaceIntent3D aiRaceIntent = AiRaceIntent3D::None;
     float aiRaceLaneOffset = 0.0f;
     float aiRaceDesiredLaneOffset = 0.0f;
@@ -4002,7 +4004,8 @@ public:
                             ? 1
                             : 0;
                     launchCollisionBrakeFrames +=
-                        kart.aiCollisionBrakeConstraint
+                        kart.aiCollisionBrakeConstraint &&
+                                kart.aiCommandBrake > 0.005f
                             ? 1
                             : 0;
                     if (startLineDistanceMeters <
@@ -4286,20 +4289,6 @@ public:
             kFixedDt);
         for (int frame = 0;
              frame < maximumFrames; ++frame) {
-            for (int index = 0;
-                 index < activeKartCount(); ++index) {
-                Kart3D& kart =
-                    karts_[static_cast<size_t>(index)];
-                if (raceFlow_->racer(
-                        static_cast<size_t>(index))
-                        .continuousTrackProgress *
-                            static_cast<double>(
-                                track_.totalLength()) <
-                    60.0) {
-                    kart.ghostTimer =
-                        std::max(kart.ghostTimer, 0.25f);
-                }
-            }
             for (int index = 0;
                  index < activeKartCount(); ++index) {
                 updateAi(
@@ -8620,7 +8609,8 @@ private:
 
     float proximityAvoidanceLaneTarget(
         Kart3D& kart, int index,
-        float laneTarget, bool raceTraffic) {
+        float laneTarget, bool raceTraffic,
+        bool approachingTurnIn) {
         kart.aiProximityAvoidanceConstraint = false;
         kart.aiProximityAvoidanceTargetIndex = -1;
         if (!raceTraffic ||
@@ -8634,7 +8624,17 @@ private:
                 : 1.0f;
         const float trackLength =
             track_.totalLength();
-        constexpr float kPredictionSeconds = 0.75f;
+        const bool contextAwareRacecraft =
+            kMonzaRacecraftExperiment &&
+            track_.layout() == TrackLayoutId::Monza;
+        // On a straight, look far enough ahead to establish a pass before
+        // reaching the car in front.  Once committed to a corner, preserve
+        // the current side and let the longitudinal controller queue behind
+        // traffic rather than darting across the braking zone.
+        const float predictionSeconds =
+            contextAwareRacecraft
+                ? (approachingTurnIn ? 0.55f : 1.20f)
+                : 0.75f;
         const TrackPoint3D ownPoint =
             track_.sample(kart.progress);
         const float ownForwardSpeed =
@@ -8647,7 +8647,7 @@ private:
             track_.sample(
                 kart.progress +
                 ownForwardSpeed *
-                    kPredictionSeconds);
+                    predictionSeconds);
         const float laneLimit =
             std::max(
                 0.0f,
@@ -8690,7 +8690,7 @@ private:
                 relativeProgress +
                 (otherForwardSpeed -
                  ownForwardSpeed) *
-                    kPredictionSeconds;
+                    predictionSeconds;
             const float halfCombinedLength =
                 (kart.spec.length +
                  other.spec.length) *
@@ -8710,17 +8710,27 @@ private:
                 longitudinalClearance) {
                 continue;
             }
+            const bool alreadyAlongside =
+                std::abs(relativeProgress) <=
+                longitudinalClearance;
+            if (contextAwareRacecraft &&
+                approachingTurnIn &&
+                relativeProgress >
+                    longitudinalClearance &&
+                !alreadyAlongside) {
+                continue;
+            }
 
             const float ownProjectedLane =
                 kart.lane +
                 dot(kart.vel,
                     ownPoint.normal) *
-                    kPredictionSeconds;
+                    predictionSeconds;
             const float otherVelocityLane =
                 other.lane +
                 dot(other.vel,
                     otherPoint.normal) *
-                    kPredictionSeconds;
+                    predictionSeconds;
             const float otherProjectedLane =
                 otherIndex == 0
                     ? otherVelocityLane
@@ -8729,10 +8739,16 @@ private:
                           other.aiCommandLineTarget,
                           0.55f);
             const float requiredLaneGap =
-                std::max(kart.spec.width,
-                         other.spec.width) *
-                    1.5f +
-                0.10f * units;
+                contextAwareRacecraft
+                    ? (kart.spec.width +
+                       other.spec.width) *
+                              0.50f +
+                          0.18f * units
+                    : std::max(
+                          kart.spec.width,
+                          other.spec.width) *
+                              1.5f +
+                          0.10f * units;
             const float projectedLaneGap =
                 std::abs(
                     ownProjectedLane -
@@ -8796,6 +8812,13 @@ private:
                          ? side < 0.0f
                          : side > 0.0f)) {
                     score += 0.25f;
+                }
+                if (contextAwareRacecraft &&
+                    approachingTurnIn &&
+                    std::abs(currentSide) >
+                        0.05f * units &&
+                    side * currentSide < 0.0f) {
+                    score += 50.0f;
                 }
                 for (int thirdIndex = 0;
                      thirdIndex <
@@ -8985,7 +9008,8 @@ private:
         laneTarget =
             proximityAvoidanceLaneTarget(
                 kart, index, laneTarget,
-                raceTraffic);
+                raceTraffic,
+                approachingTurnIn);
         // Clean air stays on the solo minimum-time line. The Monza experiment
         // adds only a temporary offset while a pass or one-move defence is
         // committed, then converges back to this canonical trajectory.
@@ -9155,7 +9179,68 @@ private:
 
         bool collisionSpeedConstraint = false;
         kart.aiCollisionTargetIndex = -1;
-        if (raceTraffic && !committedFlatCorner) {
+        kart.aiTrafficTimeToCollision =
+            std::numeric_limits<float>::max();
+        kart.aiTrafficRequiredDeceleration = 0.0f;
+        if (raceTraffic && !monzaRacecraft &&
+            !committedFlatCorner) {
+            float followingSpeed =
+                std::numeric_limits<float>::max();
+            for (int i = 0; i < activeKartCount(); ++i) {
+                if (i == index) {
+                    continue;
+                }
+                const Kart3D& other =
+                    karts_[static_cast<size_t>(i)];
+                if (kart.ghostTimer > 0.0f ||
+                    other.ghostTimer > 0.0f) {
+                    continue;
+                }
+                const float ahead = progressAhead(
+                    kart.progress, other.progress,
+                    track_.totalLength());
+                const float lateralGap =
+                    std::min({
+                        std::abs(other.lane -
+                                 kart.lane),
+                        std::abs(other.lane -
+                                 laneTarget),
+                        std::abs(
+                            other.aiCommandLineTarget -
+                            laneTarget)});
+                const float laneOverlap =
+                    (kart.spec.width +
+                     other.spec.width) *
+                        0.75f +
+                    0.40f * recoveryUnits;
+                if (ahead > 0.25f &&
+                    ahead < 92.0f &&
+                    lateralGap < laneOverlap) {
+                    const float desiredGap =
+                        approachingTurnIn ? 19.0f
+                                          : 15.0f;
+                    const float gapSpeedMetersPerSecond =
+                        std::clamp(
+                            (ahead - desiredGap) *
+                                0.92f,
+                            -24.0f, 24.0f);
+                    const float candidateFollowingSpeed =
+                        length(other.vel) +
+                        gapSpeedMetersPerSecond *
+                            recoveryUnits;
+                    if (candidateFollowingSpeed <
+                        followingSpeed) {
+                        followingSpeed =
+                            candidateFollowingSpeed;
+                        kart.aiCollisionTargetIndex = i;
+                    }
+                }
+            }
+            collisionSpeedConstraint =
+                followingSpeed < targetSpeed - 1.0f;
+            targetSpeed =
+                std::min(targetSpeed, followingSpeed);
+        } else if (raceTraffic && monzaRacecraft) {
             float followingSpeed = std::numeric_limits<float>::max();
             for (int i = 0; i < activeKartCount(); ++i) {
                 if (i == index) {
@@ -9166,83 +9251,133 @@ private:
                     other.ghostTimer > 0.0f) {
                     continue;
                 }
-                if (monzaRacecraft &&
-                    kart.aiRaceIntent ==
-                        AiRaceIntent3D::Pass &&
-                    kart.aiRaceTargetIndex == i) {
-                    const float targetCorridor =
-                        i == 0
-                            ? other.lane
-                            : other.aiCommandLineTarget;
-                    const float requiredPassGap =
-                        (kart.spec.width +
-                         other.spec.width) *
-                            0.50f +
-                        0.08f * recoveryUnits;
-                    if (std::abs(
-                            laneTarget -
-                            targetCorridor) >=
-                        requiredPassGap) {
-                        continue;
-                    }
-                }
-                const float ahead = progressAhead(kart.progress, other.progress, track_.totalLength());
-                const float otherTargetLane =
-                    i == 0 ? other.lane
-                           : other.aiCommandLineTarget;
-                const float lateralGap =
-                    monzaRacecraft
-                        ? std::min(
-                              std::abs(other.lane - laneTarget),
-                              std::abs(otherTargetLane -
-                                       laneTarget))
-                        : std::min({
-                              std::abs(other.lane - kart.lane),
-                              std::abs(other.lane - laneTarget),
-                              std::abs(other.aiCommandLineTarget -
-                                       laneTarget)});
-                const float laneOverlap =
-                    monzaRacecraft
-                        ? (kart.spec.width + other.spec.width) *
-                                  0.50f +
-                              0.08f * recoveryUnits
-                        : (kart.spec.width + other.spec.width) *
-                                  0.75f +
-                              0.40f * recoveryUnits;
+                const float ahead = progressAhead(
+                    kart.progress, other.progress,
+                    track_.totalLength());
+                const float ownSpeedMetersPerSecond =
+                    speed / recoveryUnits;
+                const float otherSpeedMetersPerSecond =
+                    length(other.vel) / recoveryUnits;
                 const float maximumFollowingRange =
-                    monzaRacecraft ? 72.0f : 92.0f;
+                    std::max(
+                        55.0f,
+                        ownSpeedMetersPerSecond *
+                            (approachingTurnIn ? 1.45f
+                                             : 1.20f));
+                const TrackPoint3D otherPoint =
+                    track_.sample(other.progress);
+                const float otherProjectedLane =
+                    i == 0
+                        ? other.lane +
+                              dot(other.vel,
+                                  otherPoint.normal) *
+                                  0.45f
+                        : lerp(other.lane,
+                               other.aiCommandLineTarget,
+                               0.60f);
+                const float ownProjectedLane =
+                    lerp(kart.lane, laneTarget, 0.68f);
+                const float currentLateralGap =
+                    std::abs(kart.lane - other.lane);
+                const float projectedLateralGap =
+                    std::abs(ownProjectedLane -
+                             otherProjectedLane);
+                const float laneOverlap =
+                    (kart.spec.width +
+                     other.spec.width) *
+                        0.50f +
+                    0.18f * recoveryUnits;
+                const float halfCombinedLengthMeters =
+                    (kart.spec.length +
+                     other.spec.length) *
+                    0.50f / recoveryUnits;
+                const float bumperGap =
+                    ahead - halfCombinedLengthMeters;
+                const float closingSpeed =
+                    ownSpeedMetersPerSecond -
+                    otherSpeedMetersPerSecond;
+                const float timeToCollision =
+                    closingSpeed > 0.05f
+                        ? bumperGap / closingSpeed
+                        : std::numeric_limits<float>::max();
+                const bool passEstablished =
+                    projectedLateralGap >= laneOverlap &&
+                    (currentLateralGap >=
+                         laneOverlap * 0.82f ||
+                     timeToCollision > 0.85f);
                 if (ahead > 0.25f &&
                     ahead < maximumFollowingRange &&
-                    lateralGap < laneOverlap) {
-                    const float closingSpeed =
-                        (speed - length(other.vel)) /
-                        recoveryUnits;
+                    !passEstablished) {
+                    float expectedLeadSpeed =
+                        otherSpeedMetersPerSecond;
+                    // React to braking that is physically happening, not the
+                    // leader's speed target at its current station.  Copying
+                    // that target backward through the pack makes every car
+                    // brake for a corner earlier than the car ahead.
+                    expectedLeadSpeed =
+                        std::max(
+                            0.0f,
+                            expectedLeadSpeed -
+                                other.brakeLoad *
+                                    other.tuning
+                                        .brakeDeceleration /
+                                    recoveryUnits *
+                                    0.28f);
                     const float desiredGap =
-                        monzaRacecraft
-                            ? 9.5f +
-                                  std::max(0.0f,
-                                           closingSpeed * 0.45f) +
-                                  (approachingTurnIn ? 2.0f
-                                                     : 0.0f)
-                            : (approachingTurnIn ? 19.0f
-                                                 : 15.0f);
-                    const float aheadMeters =
-                        ahead;
-                    const float gapSpeedMetersPerSecond =
+                        1.6f +
+                        std::max(0.0f,
+                                 closingSpeed * 0.55f) +
+                        (approachingTurnIn ? 1.2f
+                                           : 0.0f);
+                    const float reactionDistance =
+                        std::max(0.0f, closingSpeed) *
+                        (approachingTurnIn ? 0.55f
+                                           : 0.38f);
+                    const float usableGap =
+                        std::max(
+                            0.0f,
+                            bumperGap - desiredGap -
+                                reactionDistance);
+                    const float planningDeceleration =
+                        kart.tuning.brakeDeceleration /
+                        recoveryUnits * 0.68f;
+                    const float safeSpeed =
+                        std::sqrt(
+                            expectedLeadSpeed *
+                                    expectedLeadSpeed +
+                            2.0f *
+                                planningDeceleration *
+                                usableGap);
+                    const float gapControlSpeed =
+                        expectedLeadSpeed +
                         std::clamp(
-                            (aheadMeters - desiredGap) *
-                                (monzaRacecraft ? 1.18f
-                                                : 0.92f),
-                                   -24.0f, 24.0f);
+                            (bumperGap - desiredGap) *
+                                0.82f,
+                            -18.0f, 24.0f);
                     const float candidateFollowingSpeed =
-                        length(other.vel) +
-                        gapSpeedMetersPerSecond *
-                            kTrackSimulationUnitsPerMeter;
+                        std::max(
+                            0.0f,
+                            std::min(safeSpeed,
+                                     gapControlSpeed)) *
+                        recoveryUnits;
                     if (candidateFollowingSpeed <
                         followingSpeed) {
                         followingSpeed =
                             candidateFollowingSpeed;
                         kart.aiCollisionTargetIndex = i;
+                        kart.aiTrafficTimeToCollision =
+                            timeToCollision;
+                        if (bumperGap > 0.10f) {
+                            kart.aiTrafficRequiredDeceleration =
+                                std::max(
+                                    0.0f,
+                                    (ownSpeedMetersPerSecond *
+                                             ownSpeedMetersPerSecond -
+                                     expectedLeadSpeed *
+                                         expectedLeadSpeed) /
+                                        (2.0f *
+                                         bumperGap));
+                        }
                     }
                 }
             }
@@ -9264,10 +9399,14 @@ private:
                 track_.layout());
         const bool targetEnvelopeRequiresBraking =
             speedError > targetOverspeedTolerance;
+        const bool terminalSpeedTarget =
+            targetSpeed >= controllerTopSpeed * 0.985f;
         const bool mayBrakeForTarget =
             !committedFlatCorner ||
             collisionSpeedConstraint ||
-            targetEnvelopeRequiresBraking;
+            (targetEnvelopeRequiresBraking &&
+             (!monzaRacecraft ||
+              !terminalSpeedTarget));
         if (speedError > targetOverspeedTolerance &&
             mayBrakeForTarget) {
             ai.throttle = 0.0f;
@@ -9288,87 +9427,87 @@ private:
             }
             ai.brake = 0.0f;
         }
-        if (raceTraffic &&
-            (!committedFlatCorner || monzaRacecraft)) {
+        if (raceTraffic && !monzaRacecraft &&
+            !committedFlatCorner) {
             for (int i = 0; i < activeKartCount(); ++i) {
                 if (i == index) {
                     continue;
                 }
-                const Kart3D& other = karts_[static_cast<size_t>(i)];
+                const Kart3D& other =
+                    karts_[static_cast<size_t>(i)];
                 if (kart.ghostTimer > 0.0f ||
                     other.ghostTimer > 0.0f) {
                     continue;
                 }
-                const float ahead = progressAhead(kart.progress, other.progress, track_.totalLength());
-                if (monzaRacecraft &&
-                    kart.aiRaceIntent ==
-                        AiRaceIntent3D::Pass &&
-                    kart.aiRaceTargetIndex == i) {
-                    const float targetCorridor =
-                        i == 0
-                            ? other.lane
-                            : other.aiCommandLineTarget;
-                    const float passCorridorGap =
-                        std::abs(
-                            laneTarget -
-                            targetCorridor);
-                    const float requiredPassGap =
-                        (kart.spec.width +
-                         other.spec.width) *
-                            0.50f +
-                        0.08f * recoveryUnits;
-                    if (passCorridorGap >=
-                        requiredPassGap) {
-                        continue;
-                    }
-                }
+                const float ahead = progressAhead(
+                    kart.progress, other.progress,
+                    track_.totalLength());
                 const float lateralGap = std::min(
                     std::abs(kart.lane - other.lane),
-                    std::abs(kart.aiCommandLineTarget -
-                             other.aiCommandLineTarget));
-                const bool tightSuzukaCorridor = track_.layout() == TrackLayoutId::Suzuka;
+                    std::abs(
+                        kart.aiCommandLineTarget -
+                        other.aiCommandLineTarget));
+                const bool tightSuzukaCorridor =
+                    track_.layout() ==
+                    TrackLayoutId::Suzuka;
                 const float collisionWidth =
-                    monzaRacecraft
-                        ? (kart.spec.width + other.spec.width) *
-                                  0.50f +
-                              0.08f * recoveryUnits
-                        : (kart.spec.width + other.spec.width) *
-                                  (tightSuzukaCorridor ? 0.70f
-                                                       : 0.58f) +
-                              (tightSuzukaCorridor ? 0.40f
-                                                   : 0.30f) *
-                                  recoveryUnits;
+                    (kart.spec.width +
+                     other.spec.width) *
+                        (tightSuzukaCorridor ? 0.70f
+                                             : 0.58f) +
+                    (tightSuzukaCorridor ? 0.40f
+                                         : 0.30f) *
+                        recoveryUnits;
                 const float closingSpeedMetersPerSecond =
-                    (speed - length(other.vel)) / recoveryUnits;
-                const float baseEmergencyGap = tightSuzukaCorridor ? 9.0f : 7.5f;
-                const float closingHorizon = tightSuzukaCorridor ? 1.00f : 0.90f;
-                const float monzaEmergencyBase =
-                    monzaRacecraft ? 8.0f
-                                   : baseEmergencyGap;
-                const float monzaClosingHorizon =
-                    monzaRacecraft ? 0.80f
-                                   : closingHorizon;
-                const float emergencyGap = std::max(
-                    monzaEmergencyBase,
-                    monzaEmergencyBase +
-                        closingSpeedMetersPerSecond *
-                            monzaClosingHorizon);
+                    (speed - length(other.vel)) /
+                    recoveryUnits;
+                const float baseEmergencyGap =
+                    tightSuzukaCorridor ? 9.0f
+                                        : 7.5f;
+                const float closingHorizon =
+                    tightSuzukaCorridor ? 1.00f
+                                        : 0.90f;
+                const float emergencyGap =
+                    std::max(
+                        baseEmergencyGap,
+                        baseEmergencyGap +
+                            closingSpeedMetersPerSecond *
+                                closingHorizon);
                 if (ahead > 0.10f &&
-                    ahead <
-                        emergencyGap &&
+                    ahead < emergencyGap &&
                     lateralGap < collisionWidth) {
-                    // Hold station behind an occupied corridor until the
-                    // lateral pass is genuinely established.
                     collisionSpeedConstraint = true;
                     kart.aiCollisionTargetIndex = i;
                     ai.throttle = 0.0f;
                     ai.brake = std::max(
                         ai.brake,
-                        monzaRacecraft
-                            ? 0.78f
-                            : (tightSuzukaCorridor ? 1.0f
-                                                   : 0.92f));
+                        tightSuzukaCorridor ? 1.0f
+                                           : 0.92f);
                 }
+            }
+        } else if (raceTraffic && monzaRacecraft &&
+                   collisionSpeedConstraint) {
+            const float availableDeceleration =
+                kart.tuning.brakeDeceleration /
+                recoveryUnits;
+            const float requiredBrakeFraction =
+                kart.aiTrafficRequiredDeceleration /
+                std::max(1.0f,
+                         availableDeceleration);
+            const bool imminentContact =
+                kart.aiTrafficTimeToCollision < 0.62f;
+            if (imminentContact ||
+                requiredBrakeFraction > 0.78f) {
+                // This is the final safety layer after predictive following.
+                // Its strength follows the actual closing energy instead of
+                // applying a fixed late brake to every occupied corridor.
+                ai.throttle = 0.0f;
+                ai.brake = std::max(
+                    ai.brake,
+                    std::clamp(
+                        requiredBrakeFraction * 1.08f,
+                        imminentContact ? 0.42f : 0.18f,
+                        1.0f));
             }
         }
         bool roadRecoveryConstraint = false;
