@@ -77,6 +77,12 @@ constexpr float kAiRaceOptimalLapRatio = 1.0f;
 constexpr float kMonzaPeakSoloLapSeconds = 68.800f;
 constexpr float kAiRaceControllerPlanRatio = 1.0f;
 constexpr float kAiCornerVariabilityStdDev = 0.05f;
+// Traffic costs the field several seconds even when the solo plan is
+// optimal. This AI-only Monza race calibration keeps a leading live-race car
+// near the demonstrated 69-second pace; it does not alter the player, time
+// trial, DRS entitlement, or any other circuit.
+constexpr float kMonzaAiRacePerformanceScale = 1.004f;
+constexpr float kMonzaAiRaceTopSpeedBonusKph = 24.0f;
 
 constexpr float gridSlotGapMeters(
     TrackLayoutId layout) {
@@ -1805,6 +1811,7 @@ struct Kart3D : ArcadeVehicleState {
     int aiProximityAvoidanceTargetIndex = -1;
     float aiTrafficTimeToCollision = std::numeric_limits<float>::max();
     float aiTrafficRequiredDeceleration = 0.0f;
+    float aiRaceSpeedLimitExtra = 0.0f;
     AiRaceIntent3D aiRaceIntent = AiRaceIntent3D::None;
     float aiRaceLaneOffset = 0.0f;
     float aiRaceDesiredLaneOffset = 0.0f;
@@ -4261,6 +4268,10 @@ public:
         std::array<int, kKartCount>
             passIntentFramesByKart{};
         std::array<int, kKartCount>
+            collisionConstraintFramesByKart{};
+        std::array<int, kKartCount>
+            trafficBrakeFramesByKart{};
+        std::array<int, kKartCount>
             drsActiveFramesByKart{};
         std::array<int, kKartCount>
             drsAvailableFramesByKart{};
@@ -4270,6 +4281,12 @@ public:
             maximumClosedSpeedKphByKart{};
         std::array<float, kKartCount>
             maximumRaceOffsetByKart{};
+        std::array<double, kKartCount>
+            lastLapCrossingTimeByKart{};
+        std::array<float, kKartCount>
+            bestFlyingLapByKart{};
+        bestFlyingLapByKart.fill(
+            std::numeric_limits<float>::max());
         std::array<float, kKartCount>
             maximumRoadViolationByKart{};
         float maximumRoadViolationMeters = 0.0f;
@@ -4310,6 +4327,30 @@ public:
                 currentRaceInputs();
             raceFlow_->update(kFixedDt, raceInputs);
             updateDrsDetectionLine();
+            for (const ArcadeRaceEvent& event :
+                 raceFlow_->events()) {
+                if (event.type !=
+                    ArcadeRaceEventType::LapCompleted) {
+                    continue;
+                }
+                const size_t racerIndex =
+                    event.racerIndex;
+                const double lapSeconds =
+                    event.raceTimeSeconds -
+                    lastLapCrossingTimeByKart[
+                        racerIndex];
+                if (event.completedLaps >= 2) {
+                    bestFlyingLapByKart[racerIndex] =
+                        std::min(
+                            bestFlyingLapByKart[
+                                racerIndex],
+                            static_cast<float>(
+                                lapSeconds));
+                }
+                lastLapCrossingTimeByKart[
+                    racerIndex] =
+                    event.raceTimeSeconds;
+            }
             for (int index = 0;
                  index < activeKartCount(); ++index) {
                 karts_[static_cast<size_t>(index)].lap =
@@ -4433,6 +4474,16 @@ public:
                 collisionConstraintFrames +=
                     kart.aiCollisionBrakeConstraint ? 1
                                                     : 0;
+                collisionConstraintFramesByKart[
+                    static_cast<size_t>(index)] +=
+                    kart.aiCollisionBrakeConstraint ? 1
+                                                    : 0;
+                trafficBrakeFramesByKart[
+                    static_cast<size_t>(index)] +=
+                    kart.aiCollisionBrakeConstraint &&
+                            kart.aiCommandBrake > 0.005f
+                        ? 1
+                        : 0;
                 proximityAvoidanceFrames +=
                     kart.aiProximityAvoidanceConstraint
                         ? 1
@@ -4509,6 +4560,9 @@ public:
             }
         }
         int winnerIndex = 0;
+        int fastestAiLapIndex = -1;
+        float fastestAiFlyingLap =
+            std::numeric_limits<float>::max();
         for (int index = 1; index < kKartCount;
              ++index) {
             if (raceScore(
@@ -4517,11 +4571,24 @@ public:
                     winnerIndex)])) {
                 winnerIndex = index;
             }
+            if (bestFlyingLapByKart[
+                    static_cast<size_t>(index)] <
+                fastestAiFlyingLap) {
+                fastestAiFlyingLap =
+                    bestFlyingLapByKart[
+                        static_cast<size_t>(index)];
+                fastestAiLapIndex = index;
+            }
         }
         const bool competitive =
             initialPlayerRank == kKartCount &&
             elapsedSeconds <=
                 90.0f * static_cast<float>(auditLaps);
+        const bool liveRacePaceObserved =
+            fastestAiLapIndex >= 0 &&
+            fastestAiFlyingLap <=
+                kMonzaPeakSoloLapSeconds *
+                    1.015f;
         const bool playerContactControlled =
             playerContactBeginnings <= auditLaps &&
             (firstPlayerContactPhase < 0.0f ||
@@ -4582,7 +4649,8 @@ public:
         const bool ok = finished && competitive &&
                         controlled && racecraftObserved &&
                         launchProfilesObserved &&
-                        aiDrsObserved;
+                        aiDrsObserved &&
+                        liveRacePaceObserved;
         std::cout
             << "monza-competition-audit"
             << " laps=" << auditLaps
@@ -4598,6 +4666,16 @@ public:
             << " recovery_resets="
             << recoveryResets
             << " winner=" << winnerIndex
+            << " fastest_ai_lap_index="
+            << fastestAiLapIndex
+            << " fastest_ai_lap_s="
+            << (fastestAiLapIndex >= 0
+                    ? fastestAiFlyingLap
+                    : -1.0f)
+            << " live_race_pace="
+            << liveRacePaceObserved
+            << " ai_race_top_speed_bonus_kph="
+            << kMonzaAiRaceTopSpeedBonusKph
             << " contacts=" << contactBeginnings
             << " player_contacts="
             << playerContactBeginnings
@@ -4701,6 +4779,18 @@ public:
                 << (index == 0 ? "" : ",")
                 << index << ":"
                 << drsActiveFramesByKart[
+                       static_cast<size_t>(index)];
+        }
+        std::cout << " traffic_by_kart=";
+        for (int index = 0;
+             index < kKartCount; ++index) {
+            std::cout
+                << (index == 0 ? "" : ",")
+                << index << ":"
+                << collisionConstraintFramesByKart[
+                       static_cast<size_t>(index)]
+                << "/"
+                << trafficBrakeFramesByKart[
                        static_cast<size_t>(index)];
         }
         std::cout << " drs_available_by_kart=";
@@ -7157,6 +7247,7 @@ private:
     void updatePlayer(Kart3D& kart, const Input3D& input, float dt) {
         const Input3D canonical =
             canonicalPlayerInput(input);
+        kart.aiRaceSpeedLimitExtra = 0.0f;
         if (isTimeTrial()) {
             kart.drsAvailable = true;
             kart.drsActive = canonical.brake <= 0.01f;
@@ -9181,8 +9272,17 @@ private:
                                                        std::clamp(dt * 4.5f * recovery, 0.0f, 1.0f));
         }
 
+        const bool aiRacePerformancePush =
+            monzaRacecraft && index > 0;
+        kart.aiRaceSpeedLimitExtra =
+            aiRacePerformancePush
+                ? kMonzaAiRaceTopSpeedBonusKph /
+                      speedKphPerSimulationUnit(
+                          track_.layout())
+                : 0.0f;
         const float activeTopSpeed =
-            effectiveTopSpeed(kart);
+            effectiveTopSpeed(kart) +
+            kart.aiRaceSpeedLimitExtra;
         const bool acceptingPassTow =
             raceTraffic &&
             !kart.drsActive &&
@@ -9190,8 +9290,11 @@ private:
                 AiRaceIntent3D::Pass;
         const float controllerTopSpeed =
             acceptingPassTow
-                ? kart.tuning.maxForwardSpeed *
-                      kMonzaDraftTopSpeedScale
+                ? std::max(
+                      activeTopSpeed,
+                      kart.tuning.maxForwardSpeed *
+                              kMonzaDraftTopSpeedScale +
+                          kart.aiRaceSpeedLimitExtra)
                 : (kart.drsActive
                        ? activeTopSpeed +
                              5.0f /
@@ -9203,7 +9306,18 @@ private:
                 kart,
                 raceTraffic || useRacePace,
                 index) *
+            (aiRacePerformancePush
+                 ? kMonzaAiRacePerformanceScale
+                 : 1.0f) *
             (1.0f - recovery * 0.24f);
+        if (aiRacePerformancePush &&
+            targetSpeed >=
+                kart.tuning.maxForwardSpeed *
+                    0.99f) {
+            targetSpeed =
+                std::max(targetSpeed,
+                         controllerTopSpeed);
+        }
         if (acceptingPassTow &&
             targetSpeed >=
                 kart.tuning.maxForwardSpeed *
@@ -10291,7 +10405,8 @@ private:
         control.throttle = input.throttle;
         control.brake = input.brake;
         control.forwardSpeedLimitExtra =
-            kart.drsActive ? drsTopSpeedExtra() : 0.0f;
+            (kart.drsActive ? drsTopSpeedExtra() : 0.0f) +
+            kart.aiRaceSpeedLimitExtra;
         control.drift = input.drift;
         control.shiftUpPressed = input.shiftUp;
         control.shiftDownPressed = input.shiftDown;
@@ -10407,8 +10522,48 @@ private:
                     const float invSum = invA + invB;
                     const float correctionDepth = std::max(0.0f, contact.penetration - 0.08f);
                     const Vec2 correction = n * (correctionDepth * 0.98f / invSum);
-                    ka.pos -= correction * invA;
-                    kb.pos += correction * invB;
+                    const auto contactCorrectedPosition =
+                        [&](const Kart3D& kart,
+                            int kartIndex,
+                            Vec2 proposed) {
+                            if (!kMonzaRacecraftExperiment ||
+                                track_.layout() !=
+                                    TrackLayoutId::Monza ||
+                                kartIndex == 0) {
+                                return proposed;
+                            }
+                            const TrackPoint3D point =
+                                track_.sample(
+                                    kart.progress);
+                            const float laneLimit =
+                                roadCenterLimit(
+                                    kart, point) +
+                                kMetricCurbWidthMeters *
+                                    kTrackSimulationUnitsPerMeter;
+                            const float proposedLane =
+                                dot(proposed - point.pos,
+                                    point.normal);
+                            if (std::abs(proposedLane) <=
+                                laneLimit) {
+                                return proposed;
+                            }
+                            const float side =
+                                proposedLane < 0.0f
+                                    ? -1.0f
+                                    : 1.0f;
+                            return proposed -
+                                   point.normal *
+                                       (side *
+                                        (std::abs(
+                                             proposedLane) -
+                                         laneLimit));
+                        };
+                    ka.pos = contactCorrectedPosition(
+                        ka, a,
+                        ka.pos - correction * invA);
+                    kb.pos = contactCorrectedPosition(
+                        kb, b,
+                        kb.pos + correction * invB);
                     moved[static_cast<size_t>(a)] = true;
                     moved[static_cast<size_t>(b)] = true;
 
