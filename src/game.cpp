@@ -2314,7 +2314,13 @@ class Game3D {
 public:
     enum class Mode { Loading, Garage, Race, Pause, Results };
 
-    explicit Game3D(bool enableAudio = true) : specs_(makeKartSpecs()), racers_(makeRacers()) {
+    explicit Game3D(bool enableAudio = true)
+        : specs_(makeKartSpecs()),
+          racers_(makeRacers()),
+          raceRandom_(
+              enableAudio
+                  ? std::random_device{}()
+                  : 0x4f524745u) {
         renderer_.initialize();
         if (enableAudio) {
             audio_.initialize();
@@ -2575,6 +2581,7 @@ public:
     void startRace() {
         activateSelectedMap();
         resetRace();
+        assignAiLaunchProfiles();
         mode_ = Mode::Race;
         pauseAction_ = formula_forge::ui::PauseAction::Resume;
         resultsAction_ = formula_forge::ui::ResultsAction::Replay;
@@ -4261,6 +4268,12 @@ public:
             passIntentFramesByKart{};
         std::array<int, kKartCount>
             drsActiveFramesByKart{};
+        std::array<int, kKartCount>
+            drsAvailableFramesByKart{};
+        std::array<float, kKartCount>
+            maximumDrsSpeedKphByKart{};
+        std::array<float, kKartCount>
+            maximumClosedSpeedKphByKart{};
         std::array<float, kKartCount>
             maximumRaceOffsetByKart{};
         std::array<float, kKartCount>
@@ -4427,11 +4440,29 @@ public:
                                                     : 0;
                 drsAvailableFrames +=
                     kart.drsAvailable ? 1 : 0;
+                drsAvailableFramesByKart[
+                    static_cast<size_t>(index)] +=
+                    kart.drsAvailable ? 1 : 0;
                 drsActiveFrames +=
                     kart.drsActive ? 1 : 0;
                 drsActiveFramesByKart[
                     static_cast<size_t>(index)] +=
                     kart.drsActive ? 1 : 0;
+                const float speedKph =
+                    length(kart.vel) *
+                    speedKphPerSimulationUnit(
+                        track_.layout());
+                std::array<float, kKartCount>&
+                    speedPeaks =
+                        kart.drsActive
+                            ? maximumDrsSpeedKphByKart
+                            : maximumClosedSpeedKphByKart;
+                speedPeaks[
+                    static_cast<size_t>(index)] =
+                    std::max(
+                        speedPeaks[
+                            static_cast<size_t>(index)],
+                        speedKph);
             }
 
             const int playerRank = rankOf(0);
@@ -4453,8 +4484,19 @@ public:
         const uint32_t playerFinishPosition =
             raceFlow_->racer(0).finishOrder;
         int recoveryResets = 0;
+        int slowLaunches = 0;
+        int normalLaunches = 0;
         for (const Kart3D& kart : karts_) {
             recoveryResets += kart.aiRecoveryResetCount;
+        }
+        for (int index = 1;
+             index < activeKartCount(); ++index) {
+            if (karts_[static_cast<size_t>(index)]
+                    .aiLaunchDuration > 0.0f) {
+                ++slowLaunches;
+            } else {
+                ++normalLaunches;
+            }
         }
         int winnerIndex = 0;
         for (int index = 1; index < kKartCount;
@@ -4475,7 +4517,7 @@ public:
                 // Pace variation creates more harmless wheel-to-wheel
                 // touches; the overlap and reset limits below remain the
                 // authoritative safety constraints.
-                18 * auditLaps &&
+                24 * auditLaps &&
             maximumRoadViolationMeters <=
                 kMetricCurbWidthMeters + 0.08f &&
             maximumOverlap <= 0.15f &&
@@ -4484,8 +4526,44 @@ public:
             passIntentFrames >= 120 &&
             defendIntentFrames >= 30 &&
             drsActiveFrames >= 120;
+        int eligibleAiCars = 0;
+        int activeDrsAiCars = 0;
+        bool drsSpeedBenefitObserved = false;
+        for (int index = 1;
+             index < activeKartCount(); ++index) {
+            if (drsAvailableFramesByKart[
+                    static_cast<size_t>(index)] >=
+                120) {
+                ++eligibleAiCars;
+                activeDrsAiCars +=
+                    drsActiveFramesByKart[
+                        static_cast<size_t>(index)] >=
+                            60
+                        ? 1
+                        : 0;
+            }
+            const float baseTopSpeedKph =
+                karts_[static_cast<size_t>(index)]
+                    .tuning.maxForwardSpeed *
+                speedKphPerSimulationUnit(
+                    track_.layout());
+            drsSpeedBenefitObserved =
+                drsSpeedBenefitObserved ||
+                maximumDrsSpeedKphByKart[
+                    static_cast<size_t>(index)] >=
+                    baseTopSpeedKph + 20.0f;
+        }
+        const bool aiDrsObserved =
+            eligibleAiCars > 0 &&
+            activeDrsAiCars == eligibleAiCars &&
+            drsSpeedBenefitObserved;
+        const bool launchProfilesObserved =
+            slowLaunches > 0 &&
+            normalLaunches > 0;
         const bool ok = finished && competitive &&
-                        controlled && racecraftObserved;
+                        controlled && racecraftObserved &&
+                        launchProfilesObserved &&
+                        aiDrsObserved;
         std::cout
             << "monza-competition-audit"
             << " laps=" << auditLaps
@@ -4544,6 +4622,16 @@ public:
             << drsAvailableFrames
             << " drs_active_frames="
             << drsActiveFrames
+            << " slow_launches="
+            << slowLaunches
+            << " normal_launches="
+            << normalLaunches
+            << " eligible_ai_drs="
+            << eligibleAiCars
+            << " active_ai_drs="
+            << activeDrsAiCars
+            << " drs_speed_benefit="
+            << drsSpeedBenefitObserved
             << " competitive=" << competitive
             << " controlled=" << controlled
             << " racecraft=" << racecraftObserved
@@ -4580,6 +4668,39 @@ public:
                 << (index == 0 ? "" : ",")
                 << index << ":"
                 << drsActiveFramesByKart[
+                       static_cast<size_t>(index)];
+        }
+        std::cout << " drs_available_by_kart=";
+        for (int index = 0;
+             index < kKartCount; ++index) {
+            std::cout
+                << (index == 0 ? "" : ",")
+                << index << ":"
+                << drsAvailableFramesByKart[
+                       static_cast<size_t>(index)];
+        }
+        std::cout << " launch_by_kart=";
+        for (int index = 0;
+             index < kKartCount; ++index) {
+            const Kart3D& kart =
+                karts_[static_cast<size_t>(index)];
+            std::cout
+                << (index == 0 ? "" : ",")
+                << index << ":"
+                << kart.aiLaunchThrottleScale
+                << "/"
+                << kart.aiLaunchDuration;
+        }
+        std::cout << " speed_closed_drs_by_kart=";
+        for (int index = 0;
+             index < kKartCount; ++index) {
+            std::cout
+                << (index == 0 ? "" : ",")
+                << index << ":"
+                << maximumClosedSpeedKphByKart[
+                       static_cast<size_t>(index)]
+                << "/"
+                << maximumDrsSpeedKphByKart[
                        static_cast<size_t>(index)];
         }
         std::cout << " resets=";
@@ -6776,22 +6897,6 @@ private:
             kart.lane = lane;
             kart.aiGridLane = lane;
             kart.aiTempo = 1.110f - static_cast<float>(std::max(0, i - 1)) * 0.006f;
-            // Stable launch personalities keep replays deterministic while
-            // making a live grid less uniform. The last-starting player/AI
-            // receives a normal launch; the field mixes normal, slow, and
-            // very-slow getaways.
-            static constexpr std::array<float, kKartCount>
-                kLaunchThrottleScales = {
-                    1.00f, 1.00f, 0.76f, 1.00f, 0.48f, 0.76f,
-                    1.00f, 0.48f, 0.76f, 1.00f, 0.48f};
-            static constexpr std::array<float, kKartCount>
-                kLaunchDurations = {
-                    0.00f, 0.00f, 1.35f, 0.00f, 2.10f, 1.35f,
-                    0.00f, 2.10f, 1.35f, 0.00f, 2.10f};
-            kart.aiLaunchThrottleScale =
-                kLaunchThrottleScales[static_cast<size_t>(i)];
-            kart.aiLaunchDuration =
-                kLaunchDurations[static_cast<size_t>(i)];
             kart.drsAvailable = isTimeTrial();
             kart.drsActive = isTimeTrial();
             kart.ghostTimer = isTimeTrial() ? 0.0f : 3.0f;
@@ -6835,6 +6940,37 @@ private:
         camera_.fovy = 60.0f;
         camera_.projection = CAMERA_PERSPECTIVE;
         previousCamera_ = camera_;
+    }
+
+    void assignAiLaunchProfiles() {
+        if (isTimeTrial()) {
+            return;
+        }
+        std::bernoulli_distribution slowStart(
+            0.40);
+        std::normal_distribution<float>
+            slowThrottle(0.72f, 0.07f);
+        std::normal_distribution<float>
+            slowDuration(1.35f, 0.25f);
+        for (int index = 1;
+             index < activeKartCount(); ++index) {
+            Kart3D& kart =
+                karts_[static_cast<size_t>(index)];
+            kart.aiLaunchElapsed = 0.0f;
+            if (!slowStart(raceRandom_)) {
+                kart.aiLaunchThrottleScale = 1.0f;
+                kart.aiLaunchDuration = 0.0f;
+                continue;
+            }
+            kart.aiLaunchThrottleScale =
+                std::clamp(
+                    slowThrottle(raceRandom_),
+                    0.55f, 0.88f);
+            kart.aiLaunchDuration =
+                std::clamp(
+                    slowDuration(raceRandom_),
+                    0.80f, 2.10f);
+        }
     }
 
     void updateProgress(Kart3D& kart) {
@@ -11010,6 +11146,7 @@ private:
         aiOptimizationLaneOffsetsMeters_{};
     std::array<KartSpec3D, 11> specs_;
     std::array<std::string, kKartCount> racers_;
+    std::mt19937 raceRandom_;
     std::vector<Kart3D> karts_;
     std::vector<Particle3D> particles_;
     std::unique_ptr<ArcadeRaceFlow> raceFlow_;
