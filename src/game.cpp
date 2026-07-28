@@ -4189,6 +4189,224 @@ public:
         return ok;
     }
 
+    bool runLeadPursuitAudit() {
+        selectMapForCapture(3);
+        startRace();
+
+        const float trackLength =
+            track_.totalLength();
+        const float units =
+            kTrackSimulationUnitsPerMeter;
+        const float playerProgress =
+            wrapDistance(
+                track_.startProgress() + 1000.0f,
+                trackLength);
+        const auto placeKart =
+            [&](int index, float progress,
+                float lane, float speed) {
+                Kart3D& kart =
+                    karts_[static_cast<size_t>(
+                        index)];
+                const TrackPoint3D point =
+                    track_.sample(progress);
+                const float boundedLane =
+                    std::clamp(
+                        lane,
+                        -roadCenterLimit(kart, point),
+                        roadCenterLimit(kart, point));
+                kart.pos =
+                    point.pos +
+                    point.normal * boundedLane;
+                kart.heading =
+                    angleOf(point.tangent);
+                kart.vel =
+                    point.tangent * speed;
+                kart.nearest =
+                    track_.nearestIndex(kart.pos);
+                kart.progress = progress;
+                kart.previousProgress = progress;
+                kart.lane = boundedLane;
+                kart.elevation =
+                    bankedElevation(
+                        point, boundedLane);
+                kart.previousRenderPos = kart.pos;
+                kart.previousRenderElevation =
+                    kart.elevation;
+                kart.previousRenderHeading =
+                    kart.heading;
+                kart.previousRenderProgress =
+                    kart.progress;
+                kart.ghostTimer = 0.0f;
+                kart.contactTimer = 0.0f;
+                kart.vehicleContact = false;
+                kart.aiLaunchElapsed =
+                    kart.aiLaunchDuration;
+            };
+
+        const float initialSpeed =
+            plannedAiSpeed(
+                playerProgress, false);
+        placeKart(0, playerProgress, 0.0f,
+                  initialSpeed);
+        constexpr float kInitialGapMeters =
+            48.0f;
+        placeKart(
+            1,
+            wrapDistance(
+                playerProgress -
+                    kInitialGapMeters,
+                trackLength),
+            0.0f, initialSpeed);
+        for (int index = 2;
+             index < activeKartCount(); ++index) {
+            placeKart(
+                index,
+                wrapDistance(
+                    playerProgress - 260.0f -
+                        static_cast<float>(
+                            index) *
+                            70.0f,
+                    trackLength),
+                0.0f, initialSpeed * 0.75f);
+            karts_[static_cast<size_t>(index)]
+                .ghostTimer = 60.0f;
+        }
+
+        {
+            const auto inputs =
+                currentRaceInputs();
+            for (int index = 0;
+                 index < activeKartCount(); ++index) {
+                raceFlow_->rebaseRacerSample(
+                    static_cast<size_t>(index),
+                    inputs[static_cast<size_t>(
+                        index)]);
+            }
+            raceFlow_->beginRace();
+        }
+        Kart3D& player = karts_[0];
+        Kart3D& pursuer = karts_[1];
+        player.lap = 1;
+        pursuer.lap = 1;
+        player.drsAvailable = false;
+        player.drsActive = false;
+        pursuer.drsAvailable = true;
+        pursuer.drsActive = true;
+
+        float minimumGapMeters =
+            kInitialGapMeters;
+        float finalGapMeters =
+            kInitialGapMeters;
+        int pursuitFrames = 0;
+        int drsActiveFrames = 0;
+        int passIntentFrames = 0;
+        int contactBeginnings = 0;
+        float previousPlayerContact =
+            player.contactTimer;
+        float maximumRoadViolationMeters = 0.0f;
+        constexpr int kAuditFrames =
+            static_cast<int>(
+                24.0f / kFixedDt);
+        for (int frame = 0;
+             frame < kAuditFrames; ++frame) {
+            updateAi(player, kFixedDt, 0, true);
+            updateAi(pursuer, kFixedDt, 1, true);
+            applySlipstream(kFixedDt);
+            solveKartContacts();
+
+            const auto inputs =
+                currentRaceInputs();
+            raceFlow_->update(
+                kFixedDt, inputs);
+
+            pursuitFrames +=
+                isLeadPursuer(1) ? 1 : 0;
+            drsActiveFrames +=
+                pursuer.drsActive ? 1 : 0;
+            passIntentFrames +=
+                pursuer.aiRaceIntent ==
+                        AiRaceIntent3D::Pass
+                    ? 1
+                    : 0;
+            if (previousPlayerContact <=
+                    0.001f &&
+                player.contactTimer > 0.05f) {
+                ++contactBeginnings;
+            }
+            previousPlayerContact =
+                player.contactTimer;
+            finalGapMeters =
+                signedDistanceToLoop(
+                    pursuer.progress,
+                    player.progress,
+                    trackLength);
+            minimumGapMeters =
+                std::min(
+                    minimumGapMeters,
+                    finalGapMeters);
+            for (int index : {0, 1}) {
+                const Kart3D& kart =
+                    karts_[static_cast<size_t>(
+                        index)];
+                maximumRoadViolationMeters =
+                    std::max(
+                        maximumRoadViolationMeters,
+                        roadEdgeViolation(
+                            kart,
+                            track_.sample(
+                                kart.progress)) /
+                            units);
+            }
+        }
+
+        const float closingMeters =
+            kInitialGapMeters - finalGapMeters;
+        const bool closedLeader =
+            closingMeters >= 10.0f ||
+            minimumGapMeters <= 8.0f;
+        const bool pursuitUsed =
+            pursuitFrames >=
+                kAuditFrames / 3 &&
+            drsActiveFrames >=
+                kAuditFrames / 2 &&
+            passIntentFrames >= 30;
+        const bool controlled =
+            contactBeginnings == 0 &&
+            maximumRoadViolationMeters <=
+                kMetricCurbWidthMeters + 0.08f;
+        const bool ok =
+            closedLeader && pursuitUsed &&
+            controlled;
+        std::cout
+            << "lead-pursuit-audit"
+            << " initial_gap_m="
+            << kInitialGapMeters
+            << " final_gap_m="
+            << finalGapMeters
+            << " min_gap_m="
+            << minimumGapMeters
+            << " closing_m="
+            << closingMeters
+            << " pursuit_frames="
+            << pursuitFrames
+            << " drs_active_frames="
+            << drsActiveFrames
+            << " pass_intent_frames="
+            << passIntentFrames
+            << " player_contacts="
+            << contactBeginnings
+            << " road_violation_m="
+            << maximumRoadViolationMeters
+            << " closed_leader="
+            << closedLeader
+            << " pursuit_used="
+            << pursuitUsed
+            << " controlled="
+            << controlled
+            << " ok=" << ok << "\n";
+        return ok;
+    }
+
     bool runMonzaCompetitionAudit(int auditLaps = 2) {
         const auto lapOption = std::find(
             kLapOptions.begin(), kLapOptions.end(),
@@ -8138,6 +8356,58 @@ private:
                               isTimeTrial());
     }
 
+    int leadPursuerIndex() const {
+        if (!raceFlow_ ||
+            activeKartCount() < 2 ||
+            karts_.empty() ||
+            karts_[0].lap < 1) {
+            return -1;
+        }
+        int leaderIndex = -1;
+        int pursuerIndex = -1;
+        float leaderScore =
+            -std::numeric_limits<float>::max();
+        float pursuerScore =
+            -std::numeric_limits<float>::max();
+        for (int index = 0;
+             index < activeKartCount(); ++index) {
+            const double continuousProgress =
+                raceFlow_->racer(
+                    static_cast<size_t>(index))
+                    .continuousTrackProgress;
+            if (continuousProgress < 0.0) {
+                continue;
+            }
+            const float score =
+                static_cast<float>(
+                    continuousProgress) *
+                track_.totalLength();
+            if (score > leaderScore) {
+                pursuerScore = leaderScore;
+                pursuerIndex = leaderIndex;
+                leaderScore = score;
+                leaderIndex = index;
+            } else if (score > pursuerScore) {
+                pursuerScore = score;
+                pursuerIndex = index;
+            }
+        }
+        // Pursuit mode exists to keep a human race leader under pressure.
+        // AI-versus-AI order changes retain the normal racecraft planner so
+        // the field does not repeatedly swap its designated attacker.
+        return leaderIndex == 0 &&
+                       pursuerIndex > 0 &&
+                       leaderScore >
+                           pursuerScore + 0.25f
+                   ? pursuerIndex
+                   : -1;
+    }
+
+    bool isLeadPursuer(int kartIndex) const {
+        return kartIndex > 0 &&
+               kartIndex == leadPursuerIndex();
+    }
+
     float deterministicAiCornerNormal(
         int kartIndex, int lap, int cornerIndex,
         int channel) const {
@@ -8202,6 +8472,14 @@ private:
         float target =
             sampleAiSpeedPlan(
                 racePlan, kart.progress);
+        // The first AI chasing a human race leader represents the field's
+        // immediate attacking pace. Keep that car on the generated race plan
+        // instead of applying optional corner-to-corner pace variation; DRS
+        // still follows the normal detection rule and the vehicle receives
+        // no extra power, grip, or speed.
+        if (isLeadPursuer(kartIndex)) {
+            return target;
+        }
         const int count =
             static_cast<int>(racePlan.size());
         if (count <= 0 ||
@@ -8500,7 +8778,7 @@ private:
         return targetSpeed;
     }
 
-    float monzaRaceLaneTarget(
+    float plannerRaceLaneTarget(
         Kart3D& kart, int index, float dt, float baseLane,
         bool approachingTurnIn) {
         kart.aiRaceCommitTimer =
@@ -8512,6 +8790,8 @@ private:
         const float trackLength = track_.totalLength();
         const float speedMetersPerSecond =
             length(kart.vel) / units;
+        const bool leadPursuer =
+            isLeadPursuer(index);
         const float currentCurvature =
             std::max({std::abs(smoothedSignedCurvature(
                           kart.progress)),
@@ -8623,14 +8903,17 @@ private:
         if (kart.aiRaceIntent == AiRaceIntent3D::None &&
             kart.aiRaceCooldownTimer <= 0.0f && passingZone &&
             nearestAheadIndex >= 0 &&
-            nearestAhead < 54.0f) {
+            nearestAhead <
+                (leadPursuer ? 92.0f : 54.0f)) {
             const Kart3D& target =
                 karts_[static_cast<size_t>(nearestAheadIndex)];
             const float closingSpeed =
                 speedMetersPerSecond -
                 length(target.vel) / units;
-            if (nearestAhead < 28.0f ||
-                closingSpeed > 0.35f) {
+            if (nearestAhead <
+                    (leadPursuer ? 54.0f : 28.0f) ||
+                closingSpeed >
+                    (leadPursuer ? 0.10f : 0.35f)) {
                 const TrackPoint3D decisionPoint =
                     track_.sample(
                         kart.progress + 42.0f);
@@ -8709,7 +8992,8 @@ private:
                         nearestAheadIndex;
                     kart.aiRaceDesiredLaneOffset =
                         bestOffset;
-                    kart.aiRaceCommitTimer = 1.35f;
+                    kart.aiRaceCommitTimer =
+                        leadPursuer ? 1.80f : 1.35f;
                 }
             }
         }
@@ -8719,6 +9003,7 @@ private:
             nearestBehindIndex >= 0 &&
             nearestBehind < 20.0f &&
             kart.aiRaceDefendedLap != kart.lap &&
+            !leadPursuer &&
             index % 3 != 0) {
             const Kart3D& challenger =
                 karts_[static_cast<size_t>(
@@ -8766,7 +9051,10 @@ private:
         const float response =
             1.0f - std::exp(
                        -dt *
-                           (passingZone ? 3.8f
+                           (passingZone
+                                ? (leadPursuer
+                                       ? 4.8f
+                                       : 3.8f)
                                         : 6.0f));
         kart.aiRaceLaneOffset = lerp(
             kart.aiRaceLaneOffset,
@@ -8798,8 +9086,10 @@ private:
         const float trackLength =
             track_.totalLength();
         const bool contextAwareRacecraft =
-            kMonzaRacecraftExperiment &&
-            track_.layout() == TrackLayoutId::Monza;
+            (kMonzaRacecraftExperiment &&
+             track_.layout() ==
+                 TrackLayoutId::Monza) ||
+            isLeadPursuer(index);
         // On a straight, look far enough ahead to establish a pass before
         // reaching the car in front.  Once committed to a corner, preserve
         // the current side and let the longitudinal controller queue behind
@@ -9084,7 +9374,7 @@ private:
             -laneLimit, laneLimit);
     }
 
-    void containMonzaKartWithinCurbs(
+    void containRaceKartWithinCurbs(
         Kart3D& kart) {
         const TrackPoint3D trackPoint =
             track_.sample(kart.progress);
@@ -9182,14 +9472,18 @@ private:
             startLineDistanceMeters >= -200.0f &&
             startLineDistanceMeters <
                 kGridLaneReleaseMeters;
-        const bool monzaRacecraft =
-            kMonzaRacecraftExperiment && raceTraffic &&
-            track_.layout() == TrackLayoutId::Monza;
-        if (monzaRacecraft &&
+        const bool contextRacecraft =
+            raceTraffic &&
+            isMetricCircuit(track_.layout()) &&
+            ((kMonzaRacecraftExperiment &&
+              track_.layout() ==
+                  TrackLayoutId::Monza) ||
+             isLeadPursuer(index));
+        if (contextRacecraft &&
             (!leavingGrid ||
              startLineDistanceMeters >=
                  kGridLaneHoldMeters)) {
-            laneTarget = monzaRaceLaneTarget(
+            laneTarget = plannerRaceLaneTarget(
                 kart, index, dt, laneTarget,
                 approachingTurnIn);
         }
@@ -9233,9 +9527,9 @@ private:
         const float currentLineLimit = roadCenterLimit(kart, center) - 1.0f;
         const float laneExcess = std::max(0.0f, std::abs(kart.lane) - currentLineLimit);
         const float recoveryUnits = isMetricCircuit(track_.layout()) ? kTrackSimulationUnitsPerMeter : 1.0f;
-        if ((!monzaRacecraft &&
+        if ((!contextRacecraft &&
              speed < 5.0f * recoveryUnits) ||
-            (monzaRacecraft &&
+            (contextRacecraft &&
              laneExcess >
                  0.10f * recoveryUnits &&
              speed < 5.0f * recoveryUnits) ||
@@ -9395,7 +9689,7 @@ private:
         kart.aiTrafficTimeToCollision =
             std::numeric_limits<float>::max();
         kart.aiTrafficRequiredDeceleration = 0.0f;
-        if (raceTraffic && !monzaRacecraft &&
+        if (raceTraffic && !contextRacecraft &&
             !committedFlatCorner) {
             float followingSpeed =
                 std::numeric_limits<float>::max();
@@ -9453,7 +9747,7 @@ private:
                 followingSpeed < targetSpeed - 1.0f;
             targetSpeed =
                 std::min(targetSpeed, followingSpeed);
-        } else if (raceTraffic && monzaRacecraft) {
+        } else if (raceTraffic && contextRacecraft) {
             float followingSpeed = std::numeric_limits<float>::max();
             for (int i = 0; i < activeKartCount(); ++i) {
                 if (i == index) {
@@ -9634,7 +9928,7 @@ private:
             !committedFlatCorner ||
             collisionSpeedConstraint ||
             (targetEnvelopeRequiresBraking &&
-             (!monzaRacecraft ||
+             (!contextRacecraft ||
               !terminalSpeedTarget));
         if (speedError > targetOverspeedTolerance &&
             mayBrakeForTarget) {
@@ -9656,7 +9950,7 @@ private:
             }
             ai.brake = 0.0f;
         }
-        if (raceTraffic && !monzaRacecraft &&
+        if (raceTraffic && !contextRacecraft &&
             !committedFlatCorner) {
             for (int i = 0; i < activeKartCount(); ++i) {
                 if (i == index) {
@@ -9714,7 +10008,7 @@ private:
                                            : 0.92f);
                 }
             }
-        } else if (raceTraffic && monzaRacecraft &&
+        } else if (raceTraffic && contextRacecraft &&
                    collisionSpeedConstraint) {
             const float availableDeceleration =
                 kart.tuning.brakeDeceleration /
@@ -9784,8 +10078,8 @@ private:
         kart.aiRoadRecoveryConstraint =
             roadRecoveryConstraint;
         integrateKart(kart, ai, dt);
-        if (monzaRacecraft) {
-            containMonzaKartWithinCurbs(kart);
+        if (contextRacecraft) {
+            containRaceKartWithinCurbs(kart);
         }
     }
 
@@ -12184,6 +12478,9 @@ int runFormulaForge(int argc, char** argv) {
                "--monza-competition-audit") ||
         monzaCompetitionAuditFiveLaps ||
         monzaCompetitionAuditTenLaps;
+    const bool leadPursuitAudit =
+        hasArg(argc, argv,
+               "--lead-pursuit-audit");
     const bool raceLineAuditAll = hasArg(argc, argv, "--race-line-audit-all");
     const bool racecraftAudit = hasArg(argc, argv, "--racecraft-audit") || racecraftAuditSpa ||
                                 racecraftAuditSuzuka || racecraftAuditSilverstone || racecraftAuditMonza ||
@@ -12204,6 +12501,7 @@ int runFormulaForge(int argc, char** argv) {
     const bool windowed = agentPlay || hasArg(argc, argv, "--windowed") || hasArg(argc, argv, "--smoke-render") || assetAudit ||
                           hasArg(argc, argv, "--diagnose-controller") || hasArg(argc, argv, "--handling-audit") ||
                           hasArg(argc, argv, "--race-audit") || racecraftAudit || monzaCompetitionAudit ||
+                          leadPursuitAudit ||
                           aiPaceAudit || aiRacePaceAudit ||
                           aiPhysicsParityAudit ||
                           monzaMinimumTimeAudit ||
@@ -12245,6 +12543,7 @@ int runFormulaForge(int argc, char** argv) {
     const bool perfAudit = hasArg(argc, argv, "--perf-audit") || spaPerfAudit;
     const bool backgroundAudit = assetAudit || handlingAudit || raceAudit || racecraftAudit ||
                                  monzaCompetitionAudit ||
+                                 leadPursuitAudit ||
                                  aiPaceAudit || aiRacePaceAudit ||
                                  aiPhysicsParityAudit || timeTrialAudit || gridAudit ||
                                  collisionAudit || spaControlAudit || terrainAudit || diagnoseController ||
@@ -12282,6 +12581,7 @@ int runFormulaForge(int argc, char** argv) {
     ControllerReader controller(sdlInputReady);
     const bool automatedRun = agentPlay || assetAudit || smokeRender || capturePlaytest || captureDrivenLap || captureTimeTrial || captureSectionTour || captureMapGallery || handlingAudit || raceAudit || racecraftAudit ||
                               monzaCompetitionAudit ||
+                              leadPursuitAudit ||
                               aiPaceAudit || aiRacePaceAudit ||
                               aiPhysicsParityAudit || timeTrialAudit || gridAudit || collisionAudit || spaControlAudit || terrainAudit || perfAudit || diagnoseController;
     Game3D game(!automatedRun);
@@ -12344,6 +12644,12 @@ int runFormulaForge(int argc, char** argv) {
                                                  : 2);
         const bool ok =
             game.runMonzaCompetitionAudit(auditLaps);
+        cleanupRuntime();
+        return ok ? 0 : 1;
+    }
+    if (leadPursuitAudit) {
+        const bool ok =
+            game.runLeadPursuitAudit();
         cleanupRuntime();
         return ok ? 0 : 1;
     }
