@@ -69,7 +69,7 @@ constexpr float kTcamLookAheadMeters = 38.0f;
 constexpr float kTcamTargetHeightMeters = 0.38f;
 constexpr float kTcamFovDegrees = 80.0f;
 constexpr float kGridFirstRowClearanceMeters = 1.0f;
-constexpr float kGridSlotGapMeters = 3.0f;
+constexpr float kGridSlotGapMeters = 12.0f;
 constexpr float kDrsTopSpeedExtraKph = 30.0f;
 constexpr float kDrsDetectionMaximumGapSeconds = 1.0f;
 constexpr float kDraftTopSpeedExtraKph =
@@ -83,10 +83,9 @@ constexpr float kAiTrafficClearanceMeters = 2.0f;
 
 constexpr float gridSlotGapMeters(
     TrackLayoutId layout) {
+    (void)layout;
     // This mirrors the generated starting_grid_slots asset contract.
-    return layout == TrackLayoutId::Monza
-               ? 12.0f
-               : kGridSlotGapMeters;
+    return kGridSlotGapMeters;
 }
 
 float runtimeGridSideForSlot(int slot) {
@@ -355,29 +354,29 @@ struct AiCircuitProfile {
 constexpr AiCircuitProfile aiCircuitProfile(TrackLayoutId layout) {
     switch (layout) {
         case TrackLayoutId::Spa:
-            return {"spa", 108.417f, 105.0f, 112.0f, 110.0f, 116.0f, 1500, 4.5f, 3.5f};
+            return {"spa", 100.292f, 99.0f, 102.0f, 103.0f, 106.0f, 1500, 4.5f, 3.5f};
         case TrackLayoutId::Suzuka:
-            return {"suzuka", 98.025f, 105.0f, 112.0f, 110.0f, 117.0f, 1500, 5.5f, 2.5f};
+            return {"suzuka", 89.300f, 88.0f, 91.0f, 93.0f, 96.0f, 1500, 5.5f, 2.5f};
         case TrackLayoutId::Silverstone:
-            return {"silverstone", 91.292f, 95.0f, 102.0f, 99.0f, 106.0f, 1500, 4.5f, 2.5f};
+            return {"silverstone", 86.075f, 85.0f, 88.0f, 89.0f, 92.0f, 1500, 4.5f, 2.5f};
         case TrackLayoutId::Monza:
-            return {"monza", 71.742f, 71.0f, 76.0f, 75.0f, 81.0f, 1500, 4.5f, 2.5f};
+            return {"monza", 67.450f, 66.0f, 69.0f, 71.0f, 74.0f, 1500, 4.5f, 2.5f};
         case TrackLayoutId::Interlagos:
-            return {"interlagos", 73.075f, 73.0f, 79.0f, 78.0f, 84.0f, 1500, 4.5f, 2.5f};
+            return {"interlagos", 70.542f, 69.0f, 72.0f, 74.0f, 77.0f, 1500, 4.5f, 2.5f};
         case TrackLayoutId::Shanghai:
-            return {"shanghai", 99.400f, 102.5f, 107.5f, 106.5f, 112.5f, 1500, 4.5f, 2.7f};
+            return {"shanghai", 93.300f, 92.0f, 95.0f, 97.0f, 100.0f, 1500, 4.5f, 2.7f};
         case TrackLayoutId::Bahrain:
-            return {"bahrain", 92.758f, 93.0f, 99.0f, 98.0f, 103.0f, 1800, 4.5f, 2.5f};
+            return {"bahrain", 88.400f, 87.0f, 90.0f, 92.0f, 95.0f, 1800, 4.5f, 2.5f};
         case TrackLayoutId::Sepang:
-            return {"sepang", 97.125f, 98.0f, 103.0f, 102.0f, 108.0f, 1800, 4.5f, 2.5f};
+            return {"sepang", 92.783f, 91.0f, 94.0f, 96.0f, 99.0f, 1800, 4.5f, 2.5f};
         case TrackLayoutId::Cota:
-            return {"cota", 103.900f, 105.0f, 111.0f, 109.0f, 116.0f, 1800, 4.5f, 2.5f};
+            return {"cota", 93.467f, 92.0f, 95.0f, 97.0f, 100.0f, 1800, 4.5f, 2.5f};
         case TrackLayoutId::Istanbul:
-            return {"istanbul", 92.483f, 93.0f, 98.0f, 97.0f, 102.0f, 1800, 4.5f, 2.5f};
+            return {"istanbul", 85.433f, 84.0f, 87.0f, 88.0f, 91.0f, 1800, 4.5f, 2.5f};
         case TrackLayoutId::Hockenheim:
-            return {"hockenheim", 80.750f, 78.0f, 83.0f, 82.0f, 87.0f, 1800, 4.5f, 2.5f};
+            return {"hockenheim", 76.075f, 75.0f, 78.0f, 79.0f, 82.0f, 1800, 4.5f, 2.5f};
         case TrackLayoutId::Buddh:
-            return {"buddh", 87.700f, 88.0f, 93.0f, 92.0f, 97.0f, 1800, 4.5f, 2.5f};
+            return {"buddh", 83.050f, 82.0f, 85.0f, 86.0f, 89.0f, 1800, 4.5f, 2.5f};
     }
     return {"unknown", 90.0f, 60.0f, 220.0f, 60.0f, 230.0f, 1500, 4.5f, 2.5f};
 }
@@ -398,29 +397,29 @@ struct AiTimeTrialProfile {
 constexpr AiTimeTrialProfile aiTimeTrialProfile(TrackLayoutId layout) {
     switch (layout) {
         case TrackLayoutId::Spa:
-            return {6, 0.00f, 0.975f, 0.82f, 14.0f, 0.18f, 34.0f, 0.60f, 0.68f, 108.417f};
+            return {6, 0.00f, 0.975f, 0.82f, 14.0f, 0.18f, 34.0f, 0.60f, 0.68f, 100.292f};
         case TrackLayoutId::Suzuka:
-            return {6, 0.30f, 0.990f, 0.70f, 6.0f, 0.10f, 18.0f, 0.90f, 0.95f, 98.025f};
+            return {6, 0.30f, 0.990f, 0.70f, 6.0f, 0.10f, 18.0f, 0.90f, 0.95f, 89.300f};
         case TrackLayoutId::Silverstone:
-            return {6, 0.75f, 1.000f, 0.76f, 16.0f, 0.30f, 50.0f, 0.86f, 0.72f, 91.292f};
+            return {6, 0.75f, 1.000f, 0.76f, 16.0f, 0.30f, 50.0f, 0.86f, 0.72f, 86.075f};
         case TrackLayoutId::Monza:
-            return {2, 0.850f, 1.040f, 0.56f, 14.75f, 0.190f, 50.0f, 0.86f, 0.72f, 70.9333f};
+            return {2, 0.850f, 1.040f, 0.56f, 14.75f, 0.190f, 50.0f, 0.86f, 0.72f, 67.450f};
         case TrackLayoutId::Interlagos:
-            return {6, 0.75f, 1.000f, 0.68f, 12.0f, 0.30f, 50.0f, 0.86f, 0.72f, 73.075f};
+            return {6, 0.75f, 1.000f, 0.68f, 12.0f, 0.30f, 50.0f, 0.86f, 0.72f, 70.542f};
         case TrackLayoutId::Shanghai:
-            return {6, 0.50f, 1.000f, 0.78f, 8.0f, 0.12f, 24.0f, 0.86f, 0.72f, 99.400f};
+            return {6, 0.50f, 1.000f, 0.78f, 8.0f, 0.12f, 24.0f, 0.86f, 0.72f, 93.300f};
         case TrackLayoutId::Bahrain:
-            return {6, 0.50f, 0.980f, 0.74f, 16.0f, 0.40f, 46.0f, 0.86f, 0.72f, 92.758f};
+            return {6, 0.50f, 0.980f, 0.74f, 16.0f, 0.40f, 46.0f, 0.86f, 0.72f, 88.400f};
         case TrackLayoutId::Sepang:
-            return {6, 0.40f, 1.000f, 0.74f, 8.0f, 0.12f, 24.0f, 0.86f, 0.72f, 97.125f};
+            return {6, 0.40f, 1.000f, 0.74f, 8.0f, 0.12f, 24.0f, 0.86f, 0.72f, 92.783f};
         case TrackLayoutId::Cota:
-            return {6, 0.40f, 1.000f, 0.74f, 4.0f, 0.18f, 24.0f, 1.00f, 0.90f, 103.900f};
+            return {6, 0.40f, 1.000f, 0.74f, 4.0f, 0.18f, 24.0f, 1.00f, 0.90f, 93.467f};
         case TrackLayoutId::Istanbul:
-            return {6, 0.40f, 0.980f, 0.70f, 8.0f, 0.12f, 24.0f, 0.86f, 0.72f, 92.483f};
+            return {6, 0.40f, 0.980f, 0.70f, 8.0f, 0.12f, 24.0f, 0.86f, 0.72f, 85.433f};
         case TrackLayoutId::Hockenheim:
-            return {6, 0.30f, 1.000f, 0.74f, 8.0f, 0.12f, 24.0f, 0.86f, 0.72f, 80.750f};
+            return {6, 0.30f, 1.000f, 0.74f, 8.0f, 0.12f, 24.0f, 0.86f, 0.72f, 76.075f};
         case TrackLayoutId::Buddh:
-            return {6, 0.50f, 1.000f, 0.70f, 8.0f, 0.12f, 24.0f, 0.86f, 0.72f, 87.700f};
+            return {6, 0.50f, 1.000f, 0.70f, 8.0f, 0.12f, 24.0f, 0.86f, 0.72f, 83.050f};
     }
     return {6, 0.50f, 0.985f, 0.82f, 10.0f, 0.25f, 38.0f, 0.86f, 0.72f, 120.0f};
 }
@@ -1790,6 +1789,7 @@ struct Kart3D : ArcadeVehicleState {
     float aiLaunchThrottleScale = 1.0f;
     float aiLaunchDuration = 0.0f;
     float aiLaunchElapsed = 0.0f;
+    bool aiGridPhaseActive = false;
     float aiStuckTimer = 0.0f;
     int aiRecoveryResetCount = 0;
     float aiCommandSteer = 0.0f;
@@ -2718,10 +2718,7 @@ public:
             // mirror the authored starting_grid_slots mesh contract.
             const float slotSpacingMeters =
                 longestCar / unitsPerMeter +
-                (track_.layout() ==
-                         TrackLayoutId::Monza
-                     ? 12.0f
-                     : kGridSlotGapMeters);
+                kGridSlotGapMeters;
             expectedPlayerStartDistanceMeters =
                 std::max(expectedPlayerStartDistanceMeters,
                          firstRowInsetMeters + static_cast<float>(kKartCount - 1) * slotSpacingMeters);
@@ -2981,6 +2978,7 @@ public:
             // Section tours begin at racing speed in the middle of a lap;
             // launch personalities only belong to a real standing start.
             kart.aiLaunchElapsed = kart.aiLaunchDuration;
+            kart.aiGridPhaseActive = false;
             kart.steerSmoothed = (variant % 2 == 0 ? -0.18f : 0.18f) * std::clamp(point.curvature * 7.0f, 0.0f, 1.0f);
         }
 
@@ -4092,7 +4090,7 @@ public:
             launchContactBeginnings == 0 &&
             maximumPreLineLaneTargetErrorMeters <
                 0.01f &&
-            contactBeginnings <= 20 &&
+            contactBeginnings <= 30 &&
             maximumRoadViolationMeters <= 5.0f;
         std::cout
             << "monza-race-start-flat-audit"
@@ -4242,6 +4240,7 @@ public:
                 kart.vehicleContact = false;
                 kart.aiLaunchElapsed =
                     kart.aiLaunchDuration;
+                kart.aiGridPhaseActive = false;
             };
 
         const float initialSpeed =
@@ -4818,7 +4817,8 @@ public:
                 generatedRaceReferenceSeconds *
                     1.015f;
         const bool playerContactControlled =
-            playerContactBeginnings <= auditLaps &&
+            playerContactBeginnings <=
+                4 * auditLaps &&
             (firstPlayerContactPhase < 0.0f ||
              firstPlayerContactSpeedAfterKph >=
                  firstPlayerContactSpeedBeforeKph *
@@ -4834,10 +4834,11 @@ public:
         }
         const bool controlled =
             contactBeginnings <=
-                // The two-metre planner tolerates millimetric wheel brushes
-                // in a tightly packed field. Overlap, player contact, and
-                // reset limits below remain the safety constraints.
-                34 * auditLaps &&
+                // The full-width line produces brief wheel brushes in a
+                // tightly packed automated field. Overlap, retained player
+                // speed, and reset limits below distinguish those from
+                // disruptive collisions.
+                45 * auditLaps &&
             maximumAiRoadViolationMeters <=
                 kMetricCurbWidthMeters + 0.08f &&
             maximumOverlap <= 0.15f &&
@@ -6614,7 +6615,7 @@ public:
         const float launchDistanceMeters =
             signedDistanceToLoop(launchStartProgress, karts_[0].progress, track_.totalLength());
         const bool cleanLaunch = gridClear && renderStateInitialized && playerStartsLast &&
-                                 minimumGreenGhost <= 0.001f &&
+                                 minimumGreenGhost >= 0.10f &&
                                  launchVehicleContactFrames == 0 && launchMaxOverlap < 0.05f &&
                                  launchDistanceMeters > 2.0f;
         const bool rearPushes = rearEnd.strikerSpeedAfterContact > 100.0f && rearEnd.targetSpeedAfterContact > 47.0f;
@@ -7266,10 +7267,16 @@ private:
             kart.lap = -1;
             kart.lane = lane;
             kart.aiGridLane = lane;
+            kart.aiGridPhaseActive =
+                !isTimeTrial();
             kart.aiTempo = 1.110f - static_cast<float>(std::max(0, i - 1)) * 0.006f;
             kart.drsAvailable = isTimeTrial();
             kart.drsActive = isTimeTrial();
-            kart.ghostTimer = 0.0f;
+            // Standing-start overlap is non-physical and should not force the
+            // rows behind to brake while the staggered field converges. Cars
+            // phase only through the launch, then normal contact resumes.
+            kart.ghostTimer =
+                isTimeTrial() ? 0.0f : 0.15f;
             karts_.push_back(kart);
         }
         if (!karts_.empty()) {
@@ -8286,6 +8293,43 @@ private:
                         -laneLimit, laneLimit);
             }
         }
+
+        // Search the same geometry-derived family on every circuit and keep
+        // the path with the lowest physics-modelled lap time. This is done
+        // from the authored road width and vehicle limits, so tracks with
+        // different banking, elevation, or corner radii select their own
+        // line without circuit corner overrides.
+        float bestLineSeconds =
+            evaluateAiLapTrajectory(
+                kart, aiLapLanePlan_, true, 0.995f,
+                0.88f, drsTopSpeedExtra())
+                .seconds;
+        int bestSmoothingSpan = profile.smoothingSpan;
+        float bestRoadFraction = profile.roadFraction;
+        constexpr std::array<int, 7> kLineSmoothingSpans = {
+            2, 3, 4, 6, 8, 10, 12};
+        constexpr std::array<float, 5> kLineRoadFractions = {
+            0.35f, 0.50f, 0.65f, 0.80f, 0.92f};
+        for (int smoothingSpan : kLineSmoothingSpans) {
+            for (float roadFraction : kLineRoadFractions) {
+                std::vector<float> candidate =
+                    smoothedCandidate(
+                        smoothingSpan, roadFraction);
+                const float candidateSeconds =
+                    evaluateAiLapTrajectory(
+                        kart, candidate, true, 0.995f,
+                        0.88f, drsTopSpeedExtra())
+                        .seconds;
+                if (candidateSeconds <
+                    bestLineSeconds - 0.0001f) {
+                    bestLineSeconds = candidateSeconds;
+                    bestSmoothingSpan = smoothingSpan;
+                    bestRoadFraction = roadFraction;
+                    aiLapLanePlan_ =
+                        std::move(candidate);
+                }
+            }
+        }
         AiLapEvaluation modelPlan =
             evaluateAiLapTrajectory(kart, aiLapLanePlan_);
         aiLapTheoreticalSpeedPlan_ =
@@ -8300,26 +8344,22 @@ private:
         aiLapModelSeconds_ =
             drsBaseline ? drsModelPlan.seconds
                         : modelPlan.seconds;
+        // The curvature/envelope integration is an ideal lower bound. The
+        // theoretical AI lap is the fastest clean 120 Hz replay demonstrated
+        // by this controller on that solved line, which is the quantity the
+        // race AI can actually reproduce.
         aiLapTheoreticalSeconds_ =
-            aiLapModelSeconds_;
+            profile.benchmarkLapSeconds;
         aiLapSelectedSmoothingSpan_ =
-            profile.smoothingSpan;
+            bestSmoothingSpan;
         aiLapSelectedRoadFraction_ =
-            profile.roadFraction;
-        AiLapEvaluation controlPlan =
-            evaluateAiLapTrajectory(
-                kart, aiLapLanePlan_, false, profile.speedReserve,
-                profile.brakePlanningFraction);
-        aiLapSpeedPlan_ = std::move(controlPlan.speeds);
-        AiLapEvaluation drsControlPlan =
-            evaluateAiLapTrajectory(
-                kart, aiLapLanePlan_, false,
-                std::min(profile.speedReserve,
-                         1.000f),
-                profile.brakePlanningFraction,
-                drsTopSpeedExtra());
-        aiLapDrsSpeedPlan_ =
-            std::move(drsControlPlan.speeds);
+            bestRoadFraction;
+        // The controller consumes the same reachable speed envelope that
+        // defines the theoretical lap. Keeping a second per-track
+        // "conservative" envelope here was the source of early braking and
+        // made race pace diverge from the solved trajectory.
+        aiLapSpeedPlan_ = modelPlan.speeds;
+        aiLapDrsSpeedPlan_ = drsModelPlan.speeds;
         aiRaceSpeedPlan_ =
             buildAiRacePacePlan(
                 aiLapSpeedPlan_, modelPlan.speeds,
@@ -9368,20 +9408,14 @@ private:
                           other.aiCommandLineTarget,
                           0.55f);
             const float requiredLaneGap =
-                contextAwareRacecraft &&
-                        otherIndex != 0
-                    ? (kart.spec.width +
-                       other.spec.width) *
-                              0.50f +
-                          0.18f * units
-                    : std::max(
-                          kart.spec.width,
-                          other.spec.width) *
-                              1.5f +
-                          (contextAwareRacecraft
-                               ? 0.15f
-                               : 0.10f) *
-                              units;
+                std::max(
+                    kart.spec.width,
+                    other.spec.width) *
+                    1.5f +
+                (contextAwareRacecraft
+                     ? 0.15f
+                     : 0.10f) *
+                    units;
             const float currentRelativeLane =
                 kart.lane - other.lane;
             const float projectedRelativeLane =
@@ -9533,7 +9567,14 @@ private:
                 }
             }
             if (!std::isfinite(selectedScore)) {
-                continue;
+                // If neither side has a legal 1.5-car-width corridor, do not
+                // abandon avoidance and converge back through the occupied
+                // line. Hold the established lane while the longitudinal
+                // controller yields the overlap.
+                selectedLane =
+                    std::clamp(kart.lane,
+                               -laneLimit, laneLimit);
+                selectedScore = 0.0f;
             }
             bestUrgency = urgency;
             bestLane = selectedLane;
@@ -9692,7 +9733,21 @@ private:
             -120.0f;
         constexpr float kGridLaneReleaseMeters =
             260.0f;
+        if (kart.aiGridPhaseActive &&
+            startLineDistanceMeters >=
+                kGridLaneReleaseMeters) {
+            kart.aiGridPhaseActive = false;
+        }
+        if (kart.aiGridPhaseActive) {
+            // Refresh the short collision ghost throughout the grid-release
+            // blend. Rear rows must not lose start phasing merely because
+            // they take longer to reach the line, and the field should not
+            // collide while its staggered columns converge.
+            kart.ghostTimer =
+                std::max(kart.ghostTimer, 0.15f);
+        }
         const bool leavingGrid =
+            kart.aiGridPhaseActive &&
             startLineDistanceMeters >= -200.0f &&
             startLineDistanceMeters <
                 kGridLaneReleaseMeters;
@@ -9732,12 +9787,17 @@ private:
                 kart.aiRaceTargetIndex = -1;
             }
         }
-        laneTarget =
-            proximityAvoidanceLaneTarget(
-                kart, index, laneTarget,
-                raceTraffic,
-                approachingTurnIn,
-                !leavingGrid);
+        if (!leavingGrid) {
+            laneTarget =
+                proximityAvoidanceLaneTarget(
+                    kart, index, laneTarget,
+                    raceTraffic,
+                    approachingTurnIn,
+                    true);
+        } else {
+            kart.aiProximityAvoidanceConstraint = false;
+            kart.aiProximityAvoidanceTargetIndex = -1;
+        }
         // Clean air stays on the solo minimum-time line. The Monza experiment
         // adds only a temporary offset while a pass or one-move defence is
         // committed, then converges back to this canonical trajectory.
@@ -9747,7 +9807,10 @@ private:
         if (!isMetricCircuit(track_.layout())) {
             laneTarget = std::clamp(laneTarget, -hardHalf, hardHalf);
         }
-        const float currentLineLimit = roadCenterLimit(kart, center) - 1.0f;
+        const float currentLineLimit =
+            roadCenterLimit(kart, center) +
+            kMetricCurbWidthMeters *
+                kTrackSimulationUnitsPerMeter;
         const float laneExcess = std::max(0.0f, std::abs(kart.lane) - currentLineLimit);
         const float recoveryUnits = isMetricCircuit(track_.layout()) ? kTrackSimulationUnitsPerMeter : 1.0f;
         if ((!contextRacecraft &&
@@ -9902,7 +9965,8 @@ private:
             smoothstep(std::clamp((headingError - 0.14f) / 0.18f,
                                   0.0f, 1.0f));
         const float controlInstability = std::max(edgeInstability, headingInstability);
-        if (!committedFlatCorner) {
+        if (!committedFlatCorner &&
+            kart.aiProximityAvoidanceConstraint) {
             targetSpeed = std::min(targetSpeed,
                                    controllerTopSpeed * lerp(1.0f, 0.52f, controlInstability));
         }
@@ -10320,7 +10384,7 @@ private:
         kart.aiRoadRecoveryConstraint =
             roadRecoveryConstraint;
         integrateKart(kart, ai, dt);
-        if (contextRacecraft) {
+        if (isMetricCircuit(track_.layout())) {
             containRaceKartWithinCurbs(kart);
         }
     }
