@@ -9199,27 +9199,33 @@ private:
                     dot(other.vel,
                         otherPoint.tangent) /
                         units);
-            const float projectedRelative =
-                relativeProgress +
-                (otherForwardSpeed -
-                 ownForwardSpeed) *
-                    predictionSeconds;
+            const float relativeForwardSpeed =
+                otherForwardSpeed -
+                ownForwardSpeed;
+            const float closestLongitudinalTime =
+                std::abs(relativeForwardSpeed) >
+                        0.01f
+                    ? std::clamp(
+                          -relativeProgress /
+                              relativeForwardSpeed,
+                          0.0f,
+                          predictionSeconds)
+                    : 0.0f;
             const float halfCombinedLength =
                 (kart.spec.length +
                  other.spec.length) *
                 0.5f / units;
             const float longitudinalClearance =
                 halfCombinedLength +
-                kAiTrafficClearanceMeters;
-            float minimumProjectedGap =
-                std::min(
-                    std::abs(relativeProgress),
-                    std::abs(projectedRelative));
-            if (relativeProgress *
-                    projectedRelative <=
-                0.0f) {
-                minimumProjectedGap = 0.0f;
-            }
+                kAiTrafficClearanceMeters +
+                (otherIndex == 0
+                     ? 0.75f
+                     : 0.0f);
+            const float minimumProjectedGap =
+                std::abs(
+                    relativeProgress +
+                    relativeForwardSpeed *
+                        closestLongitudinalTime);
             if (minimumProjectedGap >
                 longitudinalClearance) {
                 continue;
@@ -9253,20 +9259,50 @@ private:
                 continue;
             }
 
-            const float ownProjectedLane =
+            const float lanePredictionTime =
+                std::max(
+                    closestLongitudinalTime,
+                    alreadyAlongside
+                        ? std::min(
+                              predictionSeconds,
+                              0.65f)
+                        : 0.0f);
+            const float ownVelocityLane =
                 kart.lane +
                 std::clamp(
                     dot(kart.vel,
                         ownPoint.normal) *
-                        predictionSeconds,
+                        lanePredictionTime,
                     -3.0f * units,
                     3.0f * units);
+            const float commandResponse =
+                1.0f -
+                std::exp(
+                    -2.8f *
+                    lanePredictionTime);
+            const float futurePlanShift =
+                plannedAiLane(
+                    kart.progress +
+                    ownForwardSpeed *
+                        lanePredictionTime) -
+                plannedAiLane(kart.progress);
+            const float ownCommandLane =
+                lerp(
+                    kart.lane,
+                    laneTarget +
+                        futurePlanShift,
+                    commandResponse);
+            const float ownProjectedLane =
+                lerp(
+                    ownVelocityLane,
+                    ownCommandLane,
+                    0.68f);
             const float otherVelocityLane =
                 other.lane +
                 std::clamp(
                     dot(other.vel,
                         otherPoint.normal) *
-                        predictionSeconds,
+                        lanePredictionTime,
                     -3.0f * units,
                     3.0f * units);
             const float otherProjectedLane =
@@ -9291,10 +9327,23 @@ private:
                                ? 0.15f
                                : 0.10f) *
                               units;
-            const float projectedLaneGap =
-                std::abs(
-                    ownProjectedLane -
-                    otherProjectedLane);
+            const float currentRelativeLane =
+                kart.lane - other.lane;
+            const float projectedRelativeLane =
+                ownProjectedLane -
+                otherProjectedLane;
+            float projectedLaneGap =
+                std::min(
+                    std::abs(currentRelativeLane),
+                    std::abs(projectedRelativeLane));
+            if (currentRelativeLane *
+                    projectedRelativeLane <=
+                0.0f) {
+                // Reserve the entire lateral corridor. A target on the far
+                // side of another car is not safe if reaching it requires
+                // crossing through that car.
+                projectedLaneGap = 0.0f;
+            }
             if (projectedLaneGap >=
                 requiredLaneGap) {
                 continue;
@@ -9354,6 +9403,16 @@ private:
                          ? side < 0.0f
                          : side > 0.0f)) {
                     score += 0.25f;
+                }
+                if (contextAwareRacecraft &&
+                    otherIndex == 0 &&
+                    std::abs(currentSide) >
+                        0.05f * units &&
+                    side * currentSide < 0.0f) {
+                    // Never choose an avoidance target that crosses the
+                    // player's occupied lane. Preserve the AI's established
+                    // side until there is genuine longitudinal clearance.
+                    score += 100.0f;
                 }
                 if (contextAwareRacecraft &&
                     (approachingTurnIn ||
@@ -9838,10 +9897,18 @@ private:
                     std::abs(ownProjectedLane -
                              otherProjectedLane);
                 const float laneOverlap =
-                    (kart.spec.width +
-                     other.spec.width) *
-                        0.50f +
-                    0.18f * recoveryUnits;
+                    i == 0
+                        ? std::max(
+                              kart.spec.width,
+                              other.spec.width) *
+                                  1.5f +
+                              0.15f *
+                                  recoveryUnits
+                        : (kart.spec.width +
+                           other.spec.width) *
+                                  0.50f +
+                              0.18f *
+                                  recoveryUnits;
                 const float halfCombinedLengthMeters =
                     (kart.spec.length +
                      other.spec.length) *
@@ -9857,11 +9924,30 @@ private:
                            kAiTrafficClearanceMeters) /
                               closingSpeed
                         : std::numeric_limits<float>::max();
+                const float currentRelativeLane =
+                    kart.lane - other.lane;
+                const float projectedRelativeLane =
+                    ownProjectedLane -
+                    otherProjectedLane;
+                const bool crossesOccupiedLane =
+                    currentRelativeLane *
+                        projectedRelativeLane <=
+                    0.0f;
                 const bool passEstablished =
-                    projectedLateralGap >= laneOverlap &&
-                    (currentLateralGap >=
-                         laneOverlap * 0.82f ||
-                     timeToClearance > 0.85f);
+                    i == 0 &&
+                            isLeadPursuer(index)
+                        ? projectedLateralGap >=
+                              laneOverlap &&
+                              (currentLateralGap >=
+                                   laneOverlap *
+                                       0.82f ||
+                               timeToClearance >
+                                   0.85f)
+                        : !crossesOccupiedLane &&
+                              currentLateralGap >=
+                                  laneOverlap &&
+                              projectedLateralGap >=
+                                  laneOverlap;
                 if (ahead > 0.25f &&
                     ahead < maximumFollowingRange &&
                     !passEstablished) {
@@ -9880,11 +9966,22 @@ private:
                                         .brakeDeceleration /
                                     recoveryUnits *
                                     0.18f);
+                    const bool conservativePlayerFollower =
+                        i == 0 &&
+                        !isLeadPursuer(index);
+                    const float protectedTrafficGap =
+                        kAiTrafficClearanceMeters +
+                        (conservativePlayerFollower
+                             ? std::max(
+                                   0.0f,
+                                   closingSpeed) *
+                                   0.55f
+                             : 0.0f);
                     const float usableGap =
                         std::max(
                             0.0f,
                             bumperGap -
-                                kAiTrafficClearanceMeters);
+                                protectedTrafficGap);
                     const float planningDeceleration =
                         kart.tuning.brakeDeceleration /
                         recoveryUnits *
@@ -9899,7 +9996,17 @@ private:
                     const float candidateFollowingSpeed =
                         std::max(
                             0.0f,
-                            safeSpeed) *
+                            conservativePlayerFollower
+                                ? std::min(
+                                      safeSpeed,
+                                      expectedLeadSpeed +
+                                          std::clamp(
+                                              (bumperGap -
+                                               protectedTrafficGap) *
+                                                  0.90f,
+                                              -8.0f,
+                                              18.0f))
+                                : safeSpeed) *
                         recoveryUnits;
                     if (candidateFollowingSpeed <
                         followingSpeed) {
@@ -9909,7 +10016,7 @@ private:
                         kart.aiTrafficTimeToCollision =
                             timeToClearance;
                         if (bumperGap >
-                            kAiTrafficClearanceMeters) {
+                            protectedTrafficGap) {
                             kart.aiTrafficRequiredDeceleration =
                                 std::max(
                                     0.0f,
@@ -9919,7 +10026,7 @@ private:
                                          expectedLeadSpeed) /
                                         (2.0f *
                                          (bumperGap -
-                                          kAiTrafficClearanceMeters)));
+                                          protectedTrafficGap)));
                         }
                     }
                 }
@@ -10428,7 +10535,16 @@ private:
                 14.0f, profile.lookaheadMaximumMeters);
             const float laneOffset = laneTarget - plannedAiLane(kart.progress);
             const float controlProgress = kart.progress + lookaheadMeters;
-            const Vec2 targetPosition = plannedAiPosition(controlProgress, laneOffset);
+            const TrackPoint3D controlPoint =
+                track_.sample(controlProgress);
+            const Vec2 targetPosition =
+                kart.aiProximityAvoidanceConstraint
+                    ? controlPoint.pos +
+                          controlPoint.normal *
+                              laneTarget
+                    : plannedAiPosition(
+                          controlProgress,
+                          laneOffset);
             const Vec2 targetDirection = normalize(targetPosition - kart.pos);
             const float targetAngle = wrapAngle(angleOf(targetDirection) - kart.heading);
             const float requestedSteerAngle = std::atan2(
