@@ -8782,7 +8782,8 @@ private:
 
     float plannerRaceLaneTarget(
         Kart3D& kart, int index, float dt, float baseLane,
-        bool approachingTurnIn) {
+        bool approachingTurnIn,
+        bool oneMoveRuleActive) {
         kart.aiRaceCommitTimer =
             std::max(0.0f, kart.aiRaceCommitTimer - dt);
         kart.aiRaceCooldownTimer =
@@ -8835,6 +8836,51 @@ private:
             kart.aiRaceCooldownTimer =
                 std::max(kart.aiRaceCooldownTimer, 0.55f);
         };
+        const auto racingLineReturnClear = [&]() {
+            const float corridorMinimum =
+                std::min(kart.lane, baseLane);
+            const float corridorMaximum =
+                std::max(kart.lane, baseLane);
+            for (int otherIndex = 0;
+                 otherIndex < activeKartCount();
+                 ++otherIndex) {
+                if (otherIndex == index) {
+                    continue;
+                }
+                const Kart3D& other =
+                    karts_[static_cast<size_t>(
+                        otherIndex)];
+                const float relativeProgress =
+                    std::abs(
+                        signedDistanceToLoop(
+                            kart.progress,
+                            other.progress,
+                            trackLength));
+                const float longitudinalClearance =
+                    (kart.spec.length +
+                     other.spec.length) *
+                            0.50f / units +
+                    kAiTrafficClearanceMeters;
+                if (relativeProgress >
+                    longitudinalClearance) {
+                    continue;
+                }
+                const float lateralClearance =
+                    (kart.spec.width +
+                     other.spec.width) *
+                            0.50f +
+                    0.18f * units;
+                if (other.lane >=
+                        corridorMinimum -
+                            lateralClearance &&
+                    other.lane <=
+                        corridorMaximum +
+                            lateralClearance) {
+                    return false;
+                }
+            }
+            return true;
+        };
 
         if (kart.aiRaceIntent == AiRaceIntent3D::Pass) {
             bool targetStillRelevant = false;
@@ -8864,17 +8910,42 @@ private:
                     targetStillRelevant = false;
                 }
             }
-            if (!targetStillRelevant &&
-                kart.aiRaceCommitTimer <= 0.0f) {
-                releaseIntent();
-            } else if (!passingZone &&
-                       kart.aiRaceCommitTimer <= 0.0f) {
-                releaseIntent();
+            if (!oneMoveRuleActive) {
+                if ((!targetStillRelevant ||
+                     !passingZone) &&
+                    kart.aiRaceCommitTimer <=
+                        0.0f) {
+                    releaseIntent();
+                }
+            } else {
+                const bool brakingReturn =
+                    (!passingZone ||
+                     approachingTurnIn) &&
+                    kart.aiRaceCommitTimer <= 0.0f &&
+                    racingLineReturnClear();
+                if (brakingReturn) {
+                    releaseIntent();
+                } else if (!targetStillRelevant) {
+                    // A completed or abandoned pass still consumes the car's
+                    // single move on this straight. Hold the chosen side
+                    // until the braking phase instead of weaving back.
+                    kart.aiRaceTargetIndex = -1;
+                }
             }
         } else if (kart.aiRaceIntent ==
-                       AiRaceIntent3D::Defend &&
-                   kart.aiRaceCommitTimer <= 0.0f) {
-            releaseIntent();
+                       AiRaceIntent3D::Defend) {
+            const bool releaseDefence =
+                !oneMoveRuleActive
+                    ? kart.aiRaceCommitTimer <=
+                          0.0f
+                    : (!passingZone ||
+                       approachingTurnIn) &&
+                          kart.aiRaceCommitTimer <=
+                              0.0f &&
+                          racingLineReturnClear();
+            if (releaseDefence) {
+                releaseIntent();
+            }
         }
 
         int nearestAheadIndex = -1;
@@ -9118,7 +9189,8 @@ private:
     float proximityAvoidanceLaneTarget(
         Kart3D& kart, int index,
         float laneTarget, bool raceTraffic,
-        bool approachingTurnIn) {
+        bool approachingTurnIn,
+        bool oneMoveRuleActive) {
         kart.aiProximityAvoidanceConstraint = false;
         kart.aiProximityAvoidanceTargetIndex = -1;
         if (!raceTraffic ||
@@ -9169,6 +9241,7 @@ private:
         float bestLane = laneTarget;
         int bestTarget = -1;
         bool bestAlreadyAlongside = false;
+        float bestRelativeProgress = 0.0f;
 
         for (int otherIndex = 0;
              otherIndex < activeKartCount();
@@ -9233,24 +9306,6 @@ private:
             const bool alreadyAlongside =
                 std::abs(relativeProgress) <=
                 longitudinalClearance;
-            if (contextAwareRacecraft &&
-                otherIndex == 0 &&
-                alreadyAlongside &&
-                kart.aiRaceIntent ==
-                    AiRaceIntent3D::Defend &&
-                kart.aiRaceTargetIndex == 0) {
-                // Once the attacking player has arrived, the defensive move
-                // is over. Hold the established side instead of squeezing
-                // across the player's occupied corridor.
-                kart.aiRaceIntent =
-                    AiRaceIntent3D::None;
-                kart.aiRaceDesiredLaneOffset = 0.0f;
-                kart.aiRaceTargetIndex = -1;
-                kart.aiRaceCooldownTimer =
-                    std::max(
-                        kart.aiRaceCooldownTimer,
-                        0.80f);
-            }
             if (contextAwareRacecraft &&
                 approachingTurnIn &&
                 relativeProgress >
@@ -9376,12 +9431,35 @@ private:
             float selectedLane = laneTarget;
             float selectedScore =
                 std::numeric_limits<float>::max();
+            const float committedMoveSide =
+                kart.aiRaceIntent !=
+                            AiRaceIntent3D::None &&
+                        std::abs(
+                            kart.aiRaceDesiredLaneOffset) >
+                            0.10f * units
+                    ? (kart.aiRaceDesiredLaneOffset <
+                               0.0f
+                           ? -1.0f
+                           : 1.0f)
+                    : 0.0f;
+            const float plannedLane =
+                plannedAiLane(kart.progress);
             for (float side : {-1.0f, 1.0f}) {
                 const float candidate =
                     otherProjectedLane +
                     side * requiredLaneGap;
                 if (std::abs(candidate) >
                     laneLimit) {
+                    continue;
+                }
+                if (oneMoveRuleActive &&
+                    committedMoveSide != 0.0f &&
+                    (candidate - plannedLane) *
+                            committedMoveSide <
+                        -0.10f * units) {
+                    // Once a pass or defence has selected a side, collision
+                    // avoidance may add clearance on that side or brake. It
+                    // may not turn the safety response into a second move.
                     continue;
                 }
                 float score =
@@ -9462,10 +9540,45 @@ private:
             bestTarget = otherIndex;
             bestAlreadyAlongside =
                 alreadyAlongside;
+            bestRelativeProgress =
+                relativeProgress;
         }
 
         if (bestTarget < 0) {
             return laneTarget;
+        }
+        if (contextAwareRacecraft &&
+            oneMoveRuleActive &&
+            !approachingTurnIn &&
+            kart.aiRaceIntent ==
+                AiRaceIntent3D::None) {
+            const float plannedLane =
+                plannedAiLane(kart.progress);
+            const float move =
+                bestLane - plannedLane;
+            if (std::abs(move) >
+                0.10f * units) {
+                // A safety response on a straight is also the car's one
+                // permitted move. Promote it into the normal intent state so
+                // later player feints cannot make the AI choose a new side.
+                kart.aiRaceIntent =
+                    bestRelativeProgress > 0.25f
+                        ? AiRaceIntent3D::Pass
+                        : AiRaceIntent3D::Defend;
+                kart.aiRaceDesiredLaneOffset =
+                    move;
+                kart.aiRaceTargetIndex =
+                    bestTarget;
+                kart.aiRaceCommitTimer =
+                    std::max(
+                        kart.aiRaceCommitTimer,
+                        0.85f);
+                if (kart.aiRaceIntent ==
+                    AiRaceIntent3D::Defend) {
+                    kart.aiRaceDefendedLap =
+                        kart.lap;
+                }
+            }
         }
         kart.aiProximityAvoidanceConstraint = true;
         kart.aiProximityAvoidanceTargetIndex =
@@ -9593,7 +9706,8 @@ private:
                  kGridLaneHoldMeters)) {
             laneTarget = plannerRaceLaneTarget(
                 kart, index, dt, laneTarget,
-                approachingTurnIn);
+                approachingTurnIn,
+                !leavingGrid);
         }
         if (leavingGrid) {
             // Hold the authored grid column through the line, then blend
@@ -9622,7 +9736,8 @@ private:
             proximityAvoidanceLaneTarget(
                 kart, index, laneTarget,
                 raceTraffic,
-                approachingTurnIn);
+                approachingTurnIn,
+                !leavingGrid);
         // Clean air stays on the solo minimum-time line. The Monza experiment
         // adds only a temporary offset while a pass or one-move defence is
         // committed, then converges back to this canonical trajectory.
@@ -11068,7 +11183,9 @@ private:
                                                   : (lowSpeedContact
                                                          ? 0.10f
                                                          : 0.22f))
-                                           : 0.52f)
+                                           : (aiOnlyContact
+                                                  ? 0.52f
+                                                  : 0.42f))
                                     : 1.10f;
                             const float impulse = -impulseScale * closingSpeed / invSum;
                             resolvedImpulse = impulse;
