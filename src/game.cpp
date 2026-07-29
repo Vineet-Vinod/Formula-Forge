@@ -34,9 +34,9 @@
 namespace {
 
 constexpr float kFixedDt = 1.0f / 120.0f;
-// Uncommitted Monza experiment: preserve the validated solo controller in
-// clean air, then layer racecraft around it only when other cars are present.
-constexpr bool kMonzaRacecraftExperiment = true;
+// Race AI always starts from the validated solo trajectory. Racecraft may
+// alter it only to resolve a projected two-car conflict.
+constexpr bool kPhysicsRacecraftPlanner = true;
 constexpr float kRenderScale = 0.085f;
 constexpr float kSpaRenderForwardRange = 850.0f;
 constexpr float kSpaRenderRearRange = 170.0f;
@@ -78,7 +78,8 @@ constexpr float kDraftAccelerationMetersPerSecondSquared =
     2.8f;
 constexpr float kAiRaceOptimalLapRatio = 1.0f;
 constexpr float kAiRaceControllerPlanRatio = 1.0f;
-constexpr float kAiCornerVariabilityStdDev = 0.05f;
+constexpr float kAiCornerVariabilityStdDev = 0.01f;
+constexpr float kAiTrafficClearanceMeters = 2.0f;
 
 constexpr float gridSlotGapMeters(
     TrackLayoutId layout) {
@@ -4772,17 +4773,25 @@ public:
                 ++normalLaunches;
             }
         }
-        int winnerIndex = 0;
+        int winnerIndex = -1;
+        uint32_t winningFinishOrder =
+            std::numeric_limits<uint32_t>::max();
         int fastestAiLapIndex = -1;
         float fastestAiFlyingLap =
             std::numeric_limits<float>::max();
-        for (int index = 1; index < kKartCount;
+        for (int index = 0; index < kKartCount;
              ++index) {
-            if (raceScore(
-                    karts_[static_cast<size_t>(index)]) >
-                raceScore(karts_[static_cast<size_t>(
-                    winnerIndex)])) {
+            const uint32_t finishOrder =
+                raceFlow_->racer(
+                    static_cast<size_t>(index))
+                    .finishOrder;
+            if (finishOrder > 0 &&
+                finishOrder < winningFinishOrder) {
+                winningFinishOrder = finishOrder;
                 winnerIndex = index;
+            }
+            if (index == 0) {
+                continue;
             }
             if (bestFlyingLapByKart[
                     static_cast<size_t>(index)] <
@@ -4825,10 +4834,10 @@ public:
         }
         const bool controlled =
             contactBeginnings <=
-                // Pace variation creates more harmless wheel-to-wheel
-                // touches; the overlap and reset limits below remain the
-                // authoritative safety constraints.
-                24 * auditLaps &&
+                // The two-metre planner tolerates millimetric wheel brushes
+                // in a tightly packed field. Overlap, player contact, and
+                // reset limits below remain the safety constraints.
+                34 * auditLaps &&
             maximumAiRoadViolationMeters <=
                 kMetricCurbWidthMeters + 0.08f &&
             maximumOverlap <= 0.15f &&
@@ -8461,25 +8470,18 @@ private:
 
     float plannedAiRaceSpeed(
         const Kart3D& kart, int kartIndex) const {
+        // A race begins with the same DRS-appropriate trajectory used by the
+        // solo controller. Traffic is layered on later and must not create a
+        // second, intrinsically slower pace model.
         const std::vector<float>& racePlan =
-            kart.drsActive
-                ? aiRaceDrsSpeedPlan_
-                : aiRaceSpeedPlan_;
-        const std::vector<float>& optimalPlan =
             kart.drsActive
                 ? aiLapDrsSpeedPlan_
                 : aiLapSpeedPlan_;
+        const std::vector<float>& optimalPlan =
+            racePlan;
         float target =
             sampleAiSpeedPlan(
                 racePlan, kart.progress);
-        // The first AI chasing a human race leader represents the field's
-        // immediate attacking pace. Keep that car on the generated race plan
-        // instead of applying optional corner-to-corner pace variation; DRS
-        // still follows the normal detection rule and the vehicle receives
-        // no extra power, grip, or speed.
-        if (isLeadPursuer(kartIndex)) {
-            return target;
-        }
         const int count =
             static_cast<int>(racePlan.size());
         if (count <= 0 ||
@@ -8910,10 +8912,23 @@ private:
             const float closingSpeed =
                 speedMetersPerSecond -
                 length(target.vel) / units;
-            if (nearestAhead <
-                    (leadPursuer ? 54.0f : 28.0f) ||
-                closingSpeed >
-                    (leadPursuer ? 0.10f : 0.35f)) {
+            const float halfCombinedLengthMeters =
+                (kart.spec.length +
+                 target.spec.length) *
+                0.50f / units;
+            const float clearanceGap =
+                nearestAhead -
+                halfCombinedLengthMeters -
+                kAiTrafficClearanceMeters;
+            const float timeToClearance =
+                closingSpeed > 0.05f
+                    ? clearanceGap / closingSpeed
+                    : std::numeric_limits<float>::max();
+            const float corridorPlanningHorizon =
+                leadPursuer ? 1.0f : 4.0f;
+            if (clearanceGap <= 0.0f ||
+                timeToClearance <
+                    corridorPlanningHorizon) {
                 const TrackPoint3D decisionPoint =
                     track_.sample(
                         kart.progress + 42.0f);
@@ -8969,10 +8984,41 @@ private:
                             karts_[static_cast<size_t>(
                                 otherIndex)];
                         const float relative =
-                            std::abs(signedDistanceToLoop(
-                                kart.progress, other.progress,
-                                trackLength));
-                        if (relative < 24.0f &&
+                            signedDistanceToLoop(
+                                kart.progress,
+                                other.progress,
+                                trackLength);
+                        const TrackPoint3D otherPoint =
+                            track_.sample(
+                                other.progress);
+                        const float otherSpeed =
+                            std::max(
+                                0.0f,
+                                dot(other.vel,
+                                    otherPoint.tangent) /
+                                    units);
+                        const float projectedRelative =
+                            relative +
+                            (otherSpeed -
+                             speedMetersPerSecond) *
+                                corridorPlanningHorizon;
+                        float minimumRelative =
+                            std::min(
+                                std::abs(relative),
+                                std::abs(
+                                    projectedRelative));
+                        if (relative *
+                                projectedRelative <=
+                            0.0f) {
+                            minimumRelative = 0.0f;
+                        }
+                        const float thirdClearance =
+                            (kart.spec.length +
+                             other.spec.length) *
+                                0.50f / units +
+                            kAiTrafficClearanceMeters;
+                        if (minimumRelative <
+                                thirdClearance &&
                             std::abs(other.lane -
                                      candidateLane) <
                                 passSeparation) {
@@ -9053,8 +9099,8 @@ private:
                        -dt *
                            (passingZone
                                 ? (leadPursuer
-                                       ? 4.8f
-                                       : 3.8f)
+                                       ? 7.0f
+                                       : 6.0f)
                                         : 6.0f));
         kart.aiRaceLaneOffset = lerp(
             kart.aiRaceLaneOffset,
@@ -9063,6 +9109,7 @@ private:
             std::abs(kart.aiRaceLaneOffset) <
                 0.01f * units) {
             kart.aiRaceLaneOffset = 0.0f;
+            return baseLane;
         }
         return std::clamp(baseLane + kart.aiRaceLaneOffset,
                           -laneLimit, laneLimit);
@@ -9086,18 +9133,20 @@ private:
         const float trackLength =
             track_.totalLength();
         const bool contextAwareRacecraft =
-            (kMonzaRacecraftExperiment &&
-             track_.layout() ==
-                 TrackLayoutId::Monza) ||
-            isLeadPursuer(index);
+            kPhysicsRacecraftPlanner &&
+            isMetricCircuit(track_.layout());
         // On a straight, look far enough ahead to establish a pass before
         // reaching the car in front.  Once committed to a corner, preserve
         // the current side and let the longitudinal controller queue behind
         // traffic rather than darting across the braking zone.
         const float predictionSeconds =
-            contextAwareRacecraft
-                ? (approachingTurnIn ? 0.55f : 1.20f)
-                : 0.75f;
+            isLeadPursuer(index)
+                ? (approachingTurnIn ? 0.40f : 0.75f)
+                : (contextAwareRacecraft
+                       ? (approachingTurnIn
+                              ? 1.25f
+                              : 2.50f)
+                       : 0.75f);
         const TrackPoint3D ownPoint =
             track_.sample(kart.progress);
         const float ownForwardSpeed =
@@ -9160,7 +9209,8 @@ private:
                  other.spec.length) *
                 0.5f / units;
             const float longitudinalClearance =
-                halfCombinedLength + 1.25f;
+                halfCombinedLength +
+                kAiTrafficClearanceMeters;
             float minimumProjectedGap =
                 std::min(
                     std::abs(relativeProgress),
@@ -9362,13 +9412,15 @@ private:
         kart.aiProximityAvoidanceTargetIndex =
             bestTarget;
         const float response =
-            bestAlreadyAlongside
-                ? std::max(
-                      0.90f,
-                      lerp(0.55f, 0.95f,
-                           bestUrgency))
-                : lerp(0.55f, 0.95f,
-                       bestUrgency);
+            bestTarget == 0
+                ? 1.0f
+                : (bestAlreadyAlongside
+                       ? std::max(
+                             0.90f,
+                             lerp(0.55f, 0.95f,
+                                  bestUrgency))
+                       : lerp(0.55f, 0.95f,
+                              bestUrgency));
         return std::clamp(
             lerp(laneTarget, bestLane, response),
             -laneLimit, laneLimit);
@@ -9475,10 +9527,7 @@ private:
         const bool contextRacecraft =
             raceTraffic &&
             isMetricCircuit(track_.layout()) &&
-            ((kMonzaRacecraftExperiment &&
-              track_.layout() ==
-                  TrackLayoutId::Monza) ||
-             isLeadPursuer(index));
+            kPhysicsRacecraftPlanner;
         if (contextRacecraft &&
             (!leavingGrid ||
              startLineDistanceMeters >=
@@ -9769,8 +9818,7 @@ private:
                     std::max(
                         55.0f,
                         ownSpeedMetersPerSecond *
-                            (approachingTurnIn ? 1.45f
-                                             : 1.20f));
+                            0.80f);
                 const TrackPoint3D otherPoint =
                     track_.sample(other.progress);
                 const float otherProjectedLane =
@@ -9803,15 +9851,17 @@ private:
                 const float closingSpeed =
                     ownSpeedMetersPerSecond -
                     otherSpeedMetersPerSecond;
-                const float timeToCollision =
+                const float timeToClearance =
                     closingSpeed > 0.05f
-                        ? bumperGap / closingSpeed
+                        ? (bumperGap -
+                           kAiTrafficClearanceMeters) /
+                              closingSpeed
                         : std::numeric_limits<float>::max();
                 const bool passEstablished =
                     projectedLateralGap >= laneOverlap &&
                     (currentLateralGap >=
                          laneOverlap * 0.82f ||
-                     timeToCollision > 0.85f);
+                     timeToClearance > 0.85f);
                 if (ahead > 0.25f &&
                     ahead < maximumFollowingRange &&
                     !passEstablished) {
@@ -9829,39 +9879,16 @@ private:
                                     other.tuning
                                         .brakeDeceleration /
                                     recoveryUnits *
-                                    0.28f);
-                    const bool protectingPlayer =
-                        i == 0;
-                    const float desiredGap =
-                        (protectingPlayer ? 1.6f
-                                          : 0.85f) +
-                        std::max(0.0f,
-                                 closingSpeed *
-                                     (protectingPlayer
-                                          ? 0.55f
-                                          : 0.35f)) +
-                        (approachingTurnIn
-                             ? (protectingPlayer
-                                    ? 1.2f
-                                    : 0.65f)
-                                           : 0.0f);
-                    const float reactionDistance =
-                        std::max(0.0f, closingSpeed) *
-                        (approachingTurnIn
-                             ? (protectingPlayer
-                                    ? 0.55f
-                                    : 0.35f)
-                             : (protectingPlayer
-                                    ? 0.38f
-                                    : 0.24f));
+                                    0.18f);
                     const float usableGap =
                         std::max(
                             0.0f,
-                            bumperGap - desiredGap -
-                                reactionDistance);
+                            bumperGap -
+                                kAiTrafficClearanceMeters);
                     const float planningDeceleration =
                         kart.tuning.brakeDeceleration /
-                        recoveryUnits * 0.68f;
+                        recoveryUnits *
+                        (i == 0 ? 0.72f : 0.82f);
                     const float safeSpeed =
                         std::sqrt(
                             expectedLeadSpeed *
@@ -9869,19 +9896,10 @@ private:
                             2.0f *
                                 planningDeceleration *
                                 usableGap);
-                    const float gapControlSpeed =
-                        expectedLeadSpeed +
-                        std::clamp(
-                            (bumperGap - desiredGap) *
-                                (protectingPlayer
-                                     ? 0.82f
-                                     : 1.05f),
-                            -18.0f, 24.0f);
                     const float candidateFollowingSpeed =
                         std::max(
                             0.0f,
-                            std::min(safeSpeed,
-                                     gapControlSpeed)) *
+                            safeSpeed) *
                         recoveryUnits;
                     if (candidateFollowingSpeed <
                         followingSpeed) {
@@ -9889,8 +9907,9 @@ private:
                             candidateFollowingSpeed;
                         kart.aiCollisionTargetIndex = i;
                         kart.aiTrafficTimeToCollision =
-                            timeToCollision;
-                        if (bumperGap > 0.10f) {
+                            timeToClearance;
+                        if (bumperGap >
+                            kAiTrafficClearanceMeters) {
                             kart.aiTrafficRequiredDeceleration =
                                 std::max(
                                     0.0f,
@@ -9899,7 +9918,8 @@ private:
                                      expectedLeadSpeed *
                                          expectedLeadSpeed) /
                                         (2.0f *
-                                         bumperGap));
+                                         (bumperGap -
+                                          kAiTrafficClearanceMeters)));
                         }
                     }
                 }
@@ -10836,9 +10856,9 @@ private:
                         [&](const Kart3D& kart,
                             int kartIndex,
                             Vec2 proposed) {
-                            if (!kMonzaRacecraftExperiment ||
-                                track_.layout() !=
-                                    TrackLayoutId::Monza ||
+                            if (!kPhysicsRacecraftPlanner ||
+                                !isMetricCircuit(
+                                    track_.layout()) ||
                                 kartIndex == 0) {
                                 return proposed;
                             }
