@@ -23,6 +23,7 @@ REPO = Path(__file__).resolve().parents[3]
 DEFAULT_OUTPUT = REPO / "assets" / "tracks"
 SAMPLES = 2048
 STARTING_GRID_SLOT_COUNT = 11
+STARTING_GRID_GAP_METERS = 12.0
 GRANDSTAND_LENGTH_METERS = 30.0
 GRANDSTAND_DEPTH_METERS = 8.0
 GRANDSTAND_CANOPY_OVERHANG_METERS = 1.0
@@ -1366,7 +1367,8 @@ def make_surface_runoff_zones(samples, half_widths, bank_angles, zones, material
 
 def make_starting_grid_slots(samples, half_widths, bank_angles, start_phase, target_length,
                              material, parent, surface_offset,
-                             slot_count=STARTING_GRID_SLOT_COUNT, slot_gap_m=3.0):
+                             slot_count=STARTING_GRID_SLOT_COUNT,
+                             slot_gap_m=STARTING_GRID_GAP_METERS):
     """Author the full staggered starting grid immediately before the line."""
     vertices, faces = [], []
     count = len(samples)
@@ -2092,7 +2094,8 @@ def make_world(slug, spec):
     line["bank_angle_degrees"] = start_bank_angle
     make_starting_grid_slots(center, half_widths, bank_angles, start_phase, target_length,
                              materials["white"], circuit, surface_offset,
-                             slot_gap_m=spec.get("starting_grid_gap_m", 3.0))
+                             slot_gap_m=spec.get("starting_grid_gap_m",
+                                                 STARTING_GRID_GAP_METERS))
 
     planar = length_closed([(p[0],p[1]) for p in center])
     surface = length_closed(center)
@@ -2119,7 +2122,8 @@ def make_world(slug, spec):
         "tecpro_samples": sum(kind == "tecpro" for side in (-1, 1)
                               for kind in barrier_types[side]),
         "start_phase": start_phase,
-        "starting_grid_gap_m": spec.get("starting_grid_gap_m", 3.0),
+        "starting_grid_gap_m": spec.get("starting_grid_gap_m",
+                                         STARTING_GRID_GAP_METERS),
         "start_position_blender": [round(v, 6) for v in p],
         "start_forward_blender": [round(v, 8) for v in start_forward],
         "surface_offset": surface_offset,

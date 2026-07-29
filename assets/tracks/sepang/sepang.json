@@ -174,8 +174,8 @@
   "runtime_geometry": {
     "centerline_samples": 2048,
     "mesh_objects": 22,
-    "vertices": 312966,
-    "triangles": 286774,
+    "vertices": 313006,
+    "triangles": 286834,
     "materials": 30
   },
   "measured_bounds_blender": {
@@ -369,6 +369,7 @@
       "asphalt_runoff_zones"
     ],
     "starting_grid_slots": 11,
+    "starting_grid_gap_m": 12.0,
     "continuous_zero_level_terrain": true,
     "opaque_materials_only": true
   },

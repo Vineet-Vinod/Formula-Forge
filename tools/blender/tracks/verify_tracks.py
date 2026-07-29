@@ -24,6 +24,7 @@ from generate_tracks import (ASPHALT_MAX_LUMINANCE, ASPHALT_MIN_LUMINANCE,
                              MOUNTAIN_REACH_METERS,
                              OFFROAD_VISUAL_CLEARANCE_METERS,
                              RUNOFF_TRANSITION_METERS, SAMPLES,
+                             STARTING_GRID_GAP_METERS,
                              STARTING_GRID_SLOT_COUNT,
                              TERRAIN_GRID_STEP_METERS,
                              TERRAIN_REACH_METERS,
@@ -408,7 +409,7 @@ def verify(root: Path, slug: str):
             presentation["starting_grid_slots"] != STARTING_GRID_SLOT_COUNT or
             not grid_slots.get("before_start_finish")):
         raise ValueError(f"{slug}: starting grid slot contract is stale")
-    grid_gap_m = spec.get("starting_grid_gap_m", 3.0)
+    grid_gap_m = spec.get("starting_grid_gap_m", STARTING_GRID_GAP_METERS)
     if (abs(grid_slots.get("slot_gap_m", -1.0) - grid_gap_m) > 0.001 or
             abs(presentation.get("starting_grid_gap_m", -1.0) - grid_gap_m) > 0.001):
         raise ValueError(f"{slug}: starting grid gap contract is stale")
@@ -450,7 +451,11 @@ def verify(root: Path, slug: str):
         actual = (sum(vertex.co.x for vertex in authored)/len(authored),
                   sum(vertex.co.y for vertex in authored)/len(authored))
         max_grid_alignment_error = max(max_grid_alignment_error, math.dist(actual,wanted))
-    grid_alignment_tolerance = 0.05 if exact_grid_alignment else 0.002
+    # Long 12 m grid spacing can place the rear boxes on curved start
+    # approaches. Their four bank-following strokes are sampled at both ends,
+    # so the mesh centroid differs slightly from the exact progress midpoint
+    # even though the box still encloses the runtime spawn.
+    grid_alignment_tolerance = 0.20 if exact_grid_alignment else 0.002
     if max_grid_alignment_error > grid_alignment_tolerance:
         raise ValueError(f"{slug}: starting grid slots miss runtime spawn centers by "
                          f"{max_grid_alignment_error:.6f}")
