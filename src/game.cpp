@@ -6590,18 +6590,22 @@ public:
         while (raceFlow_ && raceFlow_->phase() == ArcadeRacePhase::Countdown) {
             update(kFixedDt, Input3D{}, true);
         }
-        float minimumGreenGhost = std::numeric_limits<float>::max();
+        float maximumGreenGhost = 0.0f;
         for (const Kart3D& kart : karts_) {
-            minimumGreenGhost = std::min(minimumGreenGhost, kart.ghostTimer);
+            maximumGreenGhost = std::max(maximumGreenGhost, kart.ghostTimer);
         }
         const float launchStartProgress = karts_[0].progress;
         int launchVehicleContactFrames = 0;
         float launchMaxOverlap = 0.0f;
+        float maximumLaunchGhost = 0.0f;
         Input3D launchInput;
         launchInput.throttle = 1.0f;
         for (int frame = 0; frame < static_cast<int>(3.0f / kFixedDt); ++frame) {
             update(kFixedDt, launchInput, true);
             launchVehicleContactFrames += karts_[0].vehicleContact ? 1 : 0;
+            for (const Kart3D& kart : karts_) {
+                maximumLaunchGhost = std::max(maximumLaunchGhost, kart.ghostTimer);
+            }
             for (int a = 0; a < kKartCount; ++a) {
                 for (int b = a + 1; b < kKartCount; ++b) {
                     const KartContact3D contact = kartContact(karts_[static_cast<size_t>(a)],
@@ -6615,7 +6619,7 @@ public:
         const float launchDistanceMeters =
             signedDistanceToLoop(launchStartProgress, karts_[0].progress, track_.totalLength());
         const bool cleanLaunch = gridClear && renderStateInitialized && playerStartsLast &&
-                                 minimumGreenGhost >= 0.10f &&
+                                 maximumGreenGhost <= 0.001f && maximumLaunchGhost <= 0.001f &&
                                  launchVehicleContactFrames == 0 && launchMaxOverlap < 0.05f &&
                                  launchDistanceMeters > 2.0f;
         const bool rearPushes = rearEnd.strikerSpeedAfterContact > 100.0f && rearEnd.targetSpeedAfterContact > 47.0f;
@@ -6669,7 +6673,8 @@ public:
                   << " grid_clear=" << gridClear << " initial_grid_overlap=" << initialGridOverlap
                   << " grid_render_initialized=" << renderStateInitialized
                   << " player_starts_last=" << playerStartsLast
-                  << " green_ghost_s=" << minimumGreenGhost
+                  << " green_max_ghost_s=" << maximumGreenGhost
+                  << " launch_max_ghost_s=" << maximumLaunchGhost
                   << " launch_vehicle_contact_frames=" << launchVehicleContactFrames
                   << " launch_max_overlap=" << launchMaxOverlap
                   << " launch_distance_m=" << launchDistanceMeters
@@ -7272,11 +7277,10 @@ private:
             kart.aiTempo = 1.110f - static_cast<float>(std::max(0, i - 1)) * 0.006f;
             kart.drsAvailable = isTimeTrial();
             kart.drsActive = isTimeTrial();
-            // Standing-start overlap is non-physical and should not force the
-            // rows behind to brake while the staggered field converges. Cars
-            // phase only through the launch, then normal contact resumes.
-            kart.ghostTimer =
-                isTimeTrial() ? 0.0f : 0.15f;
+            // The authored grid has enough longitudinal clearance for every
+            // car to be solid from lights-out. Grid lane holding and the live
+            // traffic planner handle the release without launch phasing.
+            kart.ghostTimer = 0.0f;
             karts_.push_back(kart);
         }
         if (!karts_.empty()) {
@@ -9737,14 +9741,6 @@ private:
             startLineDistanceMeters >=
                 kGridLaneReleaseMeters) {
             kart.aiGridPhaseActive = false;
-        }
-        if (kart.aiGridPhaseActive) {
-            // Refresh the short collision ghost throughout the grid-release
-            // blend. Rear rows must not lose start phasing merely because
-            // they take longer to reach the line, and the field should not
-            // collide while its staggered columns converge.
-            kart.ghostTimer =
-                std::max(kart.ghostTimer, 0.15f);
         }
         const bool leavingGrid =
             kart.aiGridPhaseActive &&
