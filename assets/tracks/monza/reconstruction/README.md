@@ -51,6 +51,7 @@ line or a lap-time prediction.
 - `qa/lap_sheets/`: consecutive-frame contact sheets for the lap review.
 - `qa/final_validation.json`: measurements from the saved Blender scene.
 - `qa/runoff_partition.json`: areas retained after clipping runoff overlaps.
+- `qa/service_crossings.json`: park-path crossings clipped outside the racing road.
 - `survey.json`: geographic source data, projection and confidence metadata.
 - `geometry_qa.json`: section lengths, headings, radii, widths and elevations.
 

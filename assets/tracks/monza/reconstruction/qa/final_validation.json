@@ -73,6 +73,12 @@
         "total_runoff_area_m2": 66369.59640409079
       }
     },
+    "park paths clear of racing surface": {
+      "passed": true,
+      "details": {
+        "overlap_m2": 0.0
+      }
+    },
     "realistic road widths": {
       "passed": true,
       "details": {

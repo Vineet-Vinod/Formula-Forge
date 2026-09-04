@@ -691,6 +691,62 @@ def refit_runoff_surfaces():
     )
 
 
+def refit_service_crossings():
+    """Keep mapped park paths from being drawn across the active asphalt."""
+    from shapely import Polygon, constrained_delaunay_triangles, unary_union
+
+    protected = Polygon(
+        [point(i, width(i * STEP) / 2 + 0.4)[:2] for i in range(N)],
+        [[point(i, -width(i * STEP) / 2 - 0.4)[:2] for i in range(N)]],
+    ).buffer(0)
+    report = []
+    for ob in collection("Service_roads").objects:
+        if ob.type != "MESH" or not ob.name.startswith("Service "):
+            continue
+        footprint = unary_union(
+            [
+                Polygon([ob.data.vertices[i].co[:2] for i in face.vertices]).buffer(0)
+                for face in ob.data.polygons
+            ]
+        )
+        overlap = footprint.intersection(protected)
+        if overlap.area < 0.01:
+            continue
+        stations = []
+        for part in getattr(overlap, "geoms", [overlap]):
+            if part.area > 0:
+                c = part.centroid
+                stations.append(TREE.find((c.x, c.y, 0))[1] * STEP)
+        allowed = footprint.difference(protected)
+        verts, faces = [], []
+        for triangle in constrained_delaunay_triangles(allowed).geoms:
+            pts = list(triangle.exterior.coords)[:3]
+            if not triangle.exterior.is_ccw:
+                pts.reverse()
+            j = len(verts)
+            verts.extend((x, y, terrain(x, y) + 0.03) for x, y in pts)
+            faces.append((j, j + 1, j + 2))
+        mats = list(ob.data.materials)
+        data = bpy.data.meshes.new(ob.name + " road clearance")
+        data.from_pydata(verts, [], faces)
+        for mat in mats:
+            data.materials.append(mat)
+        ob.data = data
+        data.update()
+        ob["road_clearance"] = "Mapped path clipped outside GP pavement"
+        report.append(
+            {
+                "name": ob.name,
+                "removed_area_m2": overlap.area,
+                "crossing_stations_m": stations,
+            }
+        )
+    if report:
+        (OUT / "qa/service_crossings.json").write_text(
+            json.dumps(report, indent=2) + "\n"
+        )
+
+
 def finalize():
     import sys
 
@@ -783,6 +839,7 @@ def finalize():
                 p.z = terrain(p.x, p.y) + 0.028
         ob.data.update()
     refit_runoff_surfaces()
+    refit_service_crossings()
     driver_stations = [L - 280, 570, 1010, 1775, 2165, 2500, 3190, 3570, 4140, 4790]
     for index, s in enumerate(driver_stations):
         ob = bpy.data.objects["DRIVER | " + SURVEY["sections"][index]["name"]]
@@ -928,6 +985,7 @@ def main():
         elif args.phase == "refit":
             refit_surface_details()
             refit_runoff_surfaces()
+            refit_service_crossings()
             save()
         elif args.phase == "review":
             sc = bpy.context.scene

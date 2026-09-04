@@ -203,6 +203,21 @@ def main():
             "total_runoff_area_m2": runoff_union.area,
         },
     )
+    service_overlap = 0.0
+    for ob in B.collection("Service_roads").objects:
+        if ob.type == "MESH" and ob.name.startswith("Service "):
+            shape = unary_union(
+                [
+                    Polygon([ob.data.vertices[i].co[:2] for i in f.vertices]).buffer(0)
+                    for f in ob.data.polygons
+                ]
+            )
+            service_overlap += pavement.intersection(shape).area
+    check(
+        "park paths clear of racing surface",
+        service_overlap < 0.01,
+        {"overlap_m2": service_overlap},
+    )
     widths = []
     for i in range(B.N):
         widths.append((road.vertices[i * 9].co - road.vertices[i * 9 + 8].co).length)
