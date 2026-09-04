@@ -107,3 +107,13 @@ the full upstream `COPYING` file is included verbatim at the path above.
 
 raylib is distributed under the zlib/libpng license; the full upstream
 `LICENSE` file is included verbatim at the path above.
+
+## Monza reconstruction geographic data
+
+The data snapshot and derived survey under `assets/tracks/monza/reconstruction/`
+contain OpenStreetMap data, copyright OpenStreetMap contributors, licensed under
+the [Open Database License 1.0](https://opendatacommons.org/licenses/odbl/1-0/).
+See [OpenStreetMap attribution](https://www.openstreetmap.org/copyright) and the
+[reconstruction source manifest](assets/tracks/monza/reconstruction/references/SOURCES.md)
+for the snapshot, provenance and produced-work attribution. The Blender
+reconstruction retains the attribution both alongside the asset and in a text block.

@@ -25,6 +25,10 @@ not a laser survey or an FIA homologation drawing.
 - [Regione Lombardia, Monza park reforestation](https://www.regione.lombardia.it/agricoltura/boschi-e-foreste/rimboschimento-aree-del-parco-di-monza).
   Woodland restoration context after the 2023 storm. Individual current trees are
   not surveyed; planting in this scene uses mapped woods and preserved clearings.
+- [South-venue aerial used in FormulaPassion's park report](https://www.formulapassion.it/mondo/lautodromo-di-monza-piantera-nel-parco-3000-nuovi-alberi).
+  Viewed to distinguish the open southern park fields from the narrow tree belts
+  beside the back straight. The two modeled shelterbelt rows are explicitly
+  image-inferred. This older photograph does not establish current tree positions.
 - [OpenStreetMap, circuit relation 284565](https://www.openstreetmap.org/relation/284565).
   Geographic observations for the car-racing route, pit lane, service roads,
   buildings, grandstands, gravel traps, woodland and disused oval.
@@ -42,6 +46,11 @@ See [OSM copyright and attribution](https://www.openstreetmap.org/copyright).
 `survey.json` is the derived geographic database, distributed under ODbL 1.0.
 The Blender scene is a produced work; preserve the OSM attribution when sharing it.
 Generator code follows the repository license. No external image textures are bundled.
+
+Runoff clipping uses Shapely 2.1.2 and its
+[constrained polygon triangulation](https://shapely.readthedocs.io/en/stable/reference/shapely.constrained_delaunay_triangles.html).
+Mapped traps take precedence over inferred infill, and both exclude the racing
+surface and kerb aprons. This prevents coplanar overlap and preserves openings.
 
 ## Measured versus inferred
 

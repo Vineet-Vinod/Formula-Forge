@@ -1,5 +1,15 @@
 # Track asset authoring
 
+## Monza geographic reconstruction
+
+The separate [Monza reconstruction](../../../assets/tracks/monza/reconstruction/README.md)
+uses geographic observations and the official 5,793 m specification. Its editable
+Blender scene, section renders, lap inspection and numerical audits live under
+`assets/tracks/monza/reconstruction/`. It preserves the existing gameplay layout
+and is not overwritten by `generate_tracks.py`.
+
+## Runtime assets
+
 The generator reads every authoritative centerline, elevation, and width
 contract from `src/track_catalog.cpp`, then authors a Blender world in meters
 for each playable layout. Generated artifacts live under `assets/tracks/<slug>/`.
