@@ -1,0 +1,16 @@
+{
+  "glb_valid": true,
+  "index_limit": 65535,
+  "triangles": 1295635,
+  "meshes": 2188,
+  "bytes": 100077116,
+  "tree_instances": 14958,
+  "grid_slots": 11,
+  "source_hash_matches": true,
+  "native_route": {
+    "samples": 1536,
+    "max_planar_error_m": 0.11422769949918728,
+    "max_vertical_error_m": 0.0010973186145020186,
+    "max_width_error_m": 0.000877347656249583
+  }
+}

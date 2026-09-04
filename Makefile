@@ -3,7 +3,7 @@ GAME_BUILD_DIR := $(BUILD_DIR)/game
 TARGET := $(GAME_BUILD_DIR)/formula_forge
 SDL_LIB := $(BUILD_DIR)/deps/install/lib/libSDL3.a
 RAYLIB_LIB := $(BUILD_DIR)/deps/raylib-install/lib/libraylib.a
-GAME_SOURCES := $(wildcard src/*.cpp src/*.hpp) CMakeLists.txt
+GAME_SOURCES := $(wildcard src/*.cpp src/*.hpp src/track_data/*.inc) CMakeLists.txt
 UV_PYTHON := uv run --no-sync python
 
 .PHONY: all run test assets assets-validate clean

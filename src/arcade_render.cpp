@@ -8,6 +8,7 @@
 #include <optional>
 #include <string>
 #include <utility>
+#include <unordered_map>
 #include <vector>
 
 #if defined(__GNUC__)
@@ -20,6 +21,7 @@
 #endif
 
 #include "glb_asset.hpp"
+#include <rlgl.h>
 
 namespace arcade_render {
 namespace {
@@ -73,11 +75,13 @@ uniform float fogStart;
 uniform float fogEnd;
 uniform float materialGloss;
 uniform float exposure;
+uniform float alphaCutoff;
 
 void main()
 {
     vec4 texel = texture2D(texture0, fragTexCoord);
     vec4 base = texel*colDiffuse*fragColor;
+    if (base.a < alphaCutoff) discard;
     vec3 normal = normalize(fragNormal);
     vec3 sun = normalize(sunDirection);
     vec3 viewDirection = normalize(viewPos - fragPosition);
@@ -625,6 +629,8 @@ struct ArcadeRender::Impl {
     std::array<std::optional<formula_forge::assets::GlbAsset>, 1> authoredDrivers{};
     std::array<std::optional<formula_forge::assets::GlbAsset>, 12> authoredTracks{};
 
+    std::vector<BoundingBox> monzaMeshBounds;
+
     int sunDirectionLoc = -1;
     int sunColorLoc = -1;
     int skyAmbientLoc = -1;
@@ -635,6 +641,7 @@ struct ArcadeRender::Impl {
     int viewPositionLoc = -1;
     int glossLoc = -1;
     int exposureLoc = -1;
+    int alphaCutoffLoc = -1;
 
     void setUniform(int location, const void* value, int type) {
         if (location >= 0) {
@@ -679,8 +686,8 @@ struct ArcadeRender::Impl {
              {{3100.0f, 45.0f, 2110.0f}, {3180.0f, 53.0f, 2200.0f}}},
             {"assets/tracks/silverstone/silverstone.glb", 1.445f,
              {{2780.0f, 17.0f, 2320.0f}, {2870.0f, 23.0f, 2420.0f}}},
-            {"assets/tracks/monza/monza.glb", 1.445f,
-             {{3400.0f, 19.0f, 2240.0f}, {3500.0f, 26.0f, 2335.0f}}},
+            {"assets/tracks/monza/reconstruction/runtime/monza.glb", 1.445f,
+             {{2400.0f, 20.0f, 3400.0f}, {2600.0f, 80.0f, 3600.0f}}},
             {"assets/tracks/interlagos/interlagos.glb", 1.445f,
              {{1790.0f, 49.0f, 2160.0f}, {1880.0f, 56.0f, 2260.0f}}},
             {"assets/tracks/shanghai/shanghai.glb", 1.445f,
@@ -726,6 +733,25 @@ struct ArcadeRender::Impl {
             options.loadAnimations = false;
             std::string error;
             authoredTracks[i] = formula_forge::assets::GlbAsset::load(spec.path, options, &error);
+            if (i == 3 && authoredTracks[i]) {
+                monzaMeshBounds.clear();
+                const Model& model = authoredTracks[i]->model();
+                std::unordered_map<unsigned, Texture2D> textures;
+                for (int materialIndex = 0; materialIndex < model.materialCount; ++materialIndex) {
+                    Texture2D& texture = model.materials[materialIndex].maps[MATERIAL_MAP_DIFFUSE].texture;
+                    if (texture.id == 0) continue;
+                    auto [it, inserted] = textures.emplace(texture.id, texture);
+                    if (inserted) {
+                        GenTextureMipmaps(&it->second);
+                        SetTextureFilter(it->second, TEXTURE_FILTER_TRILINEAR);
+                        SetTextureFilter(it->second, TEXTURE_FILTER_ANISOTROPIC_4X);
+                    }
+                    texture = it->second;
+                }
+                for (int mesh = 0; mesh < model.meshCount; ++mesh) {
+                    monzaMeshBounds.push_back(GetMeshBoundingBox(model.meshes[mesh]));
+                }
+            }
             if (!authoredTracks[i] && FileExists(spec.path)) {
                 TraceLog(LOG_ERROR, "Authored track rejected: %s", error.c_str());
             }
@@ -794,7 +820,38 @@ struct ArcadeRender::Impl {
         }
         const auto& track = *authoredTracks[trackIndex];
         const float scale = track.metersToWorld();
-        drawAuthoredModel(track, MatrixScale(scale, scale, scale), 0.08f);
+        if (trackIndex == 3) {
+            const float cutoff = 0.35f;
+            setUniform(alphaCutoffLoc, &cutoff, SHADER_UNIFORM_FLOAT);
+            const Model& model = track.model();
+            const Matrix vp = MatrixMultiply(rlGetMatrixModelview(), rlGetMatrixProjection());
+            const float gloss = 0.08f;
+            setUniform(glossLoc, &gloss, SHADER_UNIFORM_FLOAT);
+            for (int i = 0; i < model.meshCount; ++i) {
+                const BoundingBox& box = monzaMeshBounds[static_cast<size_t>(i)];
+                unsigned outside = 63;
+                for (int corner = 0; corner < 8; ++corner) {
+                    const float x = ((corner & 1) ? box.max.x : box.min.x) * scale;
+                    const float y = ((corner & 2) ? box.max.y : box.min.y) * scale;
+                    const float z = ((corner & 4) ? box.max.z : box.min.z) * scale;
+                    const float cx = vp.m0*x + vp.m4*y + vp.m8*z + vp.m12;
+                    const float cy = vp.m1*x + vp.m5*y + vp.m9*z + vp.m13;
+                    const float cz = vp.m2*x + vp.m6*y + vp.m10*z + vp.m14;
+                    const float cw = vp.m3*x + vp.m7*y + vp.m11*z + vp.m15;
+                    outside &= (cx < -cw ? 1u : 0u) | (cx > cw ? 2u : 0u) |
+                               (cy < -cw ? 4u : 0u) | (cy > cw ? 8u : 0u) |
+                               (cz < -cw ? 16u : 0u) | (cz > cw ? 32u : 0u);
+                }
+                if (outside != 0) continue;
+                Material mat = model.materials[model.meshMaterial[i]];
+                mat.shader = shader;
+                DrawMesh(model.meshes[i], mat, MatrixScale(scale, scale, scale));
+            }
+            const float opaque = 0.0f;
+            setUniform(alphaCutoffLoc, &opaque, SHADER_UNIFORM_FLOAT);
+        } else {
+            drawAuthoredModel(track, MatrixScale(scale, scale, scale), 0.08f);
+        }
         return true;
     }
 
@@ -1439,6 +1496,7 @@ bool ArcadeRender::initialize() {
     impl_->fogStartLoc = GetShaderLocation(impl_->shader, "fogStart");
     impl_->fogEndLoc = GetShaderLocation(impl_->shader, "fogEnd");
     impl_->viewPositionLoc = GetShaderLocation(impl_->shader, "viewPos");
+    impl_->alphaCutoffLoc = GetShaderLocation(impl_->shader, "alphaCutoff");
     impl_->glossLoc = GetShaderLocation(impl_->shader, "materialGloss");
     impl_->exposureLoc = GetShaderLocation(impl_->shader, "exposure");
 

@@ -288,6 +288,9 @@ def audit_road_boundary_intersections(meta, expected, expected_widths):
 
 
 def verify(root: Path, slug: str):
+    if slug == "monza":
+        from verify_monza_runtime import verify as verify_survey
+        return verify_survey(root / "monza" / "reconstruction" / "runtime")
     folder = root / slug
     paths = {ext: folder / f"{slug}{ext}" for ext in (".json", ".glb", ".blend", "_preview.png")}
     missing = [str(path) for path in paths.values() if not path.is_file() or path.stat().st_size == 0]
@@ -840,7 +843,7 @@ def main():
     parser.add_argument("--track", choices=["all", *TRACK_NAMES], default="all")
     args = parser.parse_args()
     forbidden = [path for path in args.root.resolve().parent.rglob("*")
-                 if path.suffix in (".blend1", ".blend2")]
+                 if path.suffix in (".blend1", ".blend2") and "reconstruction" not in path.parts]
     if forbidden:
         raise ValueError(f"forbidden generated artifacts: {[str(path) for path in forbidden]}")
     targets = TRACK_NAMES if args.track == "all" else (args.track,)

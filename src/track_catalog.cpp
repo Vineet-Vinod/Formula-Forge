@@ -234,67 +234,17 @@ constexpr TrackRunoffZone kSilverstoneRunoff[] = {
     {5450.0f, 5780.0f, 1, TrackRunoffSurface::Gravel, 20.0f},
 };
 
-constexpr TrackControlPoint kMonzaCenterline[] = {
-    {54.576f, -241.388f}, {18.926f, -241.927f}, {-16.724f, -242.397f},
-    {-52.375f, -242.832f}, {-88.026f, -243.263f}, {-118.985f, -235.531f},
-    {-144.059f, -231.461f}, {-178.048f, -242.149f}, {-213.345f, -246.611f},
-    {-248.997f, -246.551f}, {-284.560f, -244.278f}, {-318.060f, -232.819f},
-    {-347.495f, -212.782f}, {-370.869f, -186.048f}, {-386.469f, -154.074f},
-    {-396.503f, -119.878f}, {-404.124f, -85.051f}, {-410.460f, -49.967f},
-    {-416.598f, -14.845f}, {-422.690f, 20.284f}, {-432.101f, 53.588f},
-    {-454.158f, 77.481f}, {-468.287f, 110.210f}, {-484.024f, 142.200f},
-    {-498.968f, 174.536f}, {-500.000f, 209.204f}, {-471.114f, 228.073f},
-    {-436.142f, 235.008f}, {-401.141f, 241.796f}, {-366.042f, 246.611f},
-    {-342.737f, 220.196f}, {-322.395f, 190.914f}, {-301.970f, 161.692f},
-    {-281.071f, 132.807f}, {-259.043f, 104.780f}, {-234.758f, 78.686f},
-    {-208.996f, 54.043f}, {-182.567f, 30.113f}, {-156.178f, 6.138f},
-    {-130.026f, -18.094f}, {-103.846f, -42.298f}, {-77.501f, -66.321f},
-    {-50.839f, -89.991f}, {-17.679f, -94.023f}, {16.457f, -100.130f},
-    {46.332f, -117.308f}, {81.953f, -118.213f}, {117.606f, -118.038f},
-    {153.260f, -117.903f}, {188.913f, -117.811f}, {224.567f, -117.762f},
-    {260.220f, -117.756f}, {295.874f, -117.794f}, {331.527f, -117.874f},
-    {367.181f, -117.996f}, {402.834f, -118.156f}, {438.487f, -118.353f},
-    {474.072f, -119.614f}, {500.000f, -141.327f}, {499.333f, -176.274f},
-    {476.384f, -203.134f}, {445.430f, -220.384f}, {410.663f, -228.024f},
-    {375.217f, -231.853f}, {339.711f, -235.054f}, {304.103f, -236.825f},
-    {268.460f, -237.673f}, {232.809f, -238.043f}, {197.157f, -238.356f},
-    {161.510f, -239.043f}, {125.869f, -239.978f}, {90.224f, -240.750f},
-};
-
-constexpr TrackElevationPoint kMonzaElevation[] = {
-    {0.0f, 10.8f},   {930.0f, 10.1f},  {1540.0f, 8.4f}, {2350.0f, 12.8f},
-    {3100.0f, 7.0f}, {3570.0f, 0.0f},  {4340.0f, 2.2f}, {5050.0f, 6.8f},
-    {5793.0f, 10.8f},
-};
-
-constexpr TrackWidthPoint kMonzaWidth[] = {
-    {0.0f, 12.0f},    {1020.0f, 11.0f}, {1610.0f, 12.0f}, {2460.0f, 10.0f},
-    {3290.0f, 10.5f}, {4230.0f, 11.0f}, {4950.0f, 10.0f}, {5430.0f, 12.0f},
-    {5793.0f, 12.0f},
-};
-
-// The current road course uses restrained crossfall; this does not reproduce
-// the disused 1955 high-speed oval's extreme banking. Signs follow the real
-// right-left chicanes and the long clockwise Biassono/Alboreto curves.
-constexpr TrackBankPoint kMonzaBank[] = {
-    {0.0f, 0.0f},     {220.0f, 0.0f},   {324.0f, 2.2f},   {405.0f, 0.0f},
-    {481.0f, -2.1f},  {610.0f, 0.0f},   {760.0f, 0.0f},   {886.0f, 2.5f},
-    {1120.0f, 0.0f},  {1500.0f, 0.0f},  {1610.0f, -2.2f}, {1650.0f, 0.0f},
-    {1692.0f, 2.1f},  {1810.0f, 0.0f},  {2010.0f, 2.3f},  {2190.0f, 0.0f},
-    {2390.0f, 0.0f},  {2491.0f, 2.4f},  {2700.0f, 0.0f},  {3260.0f, 0.0f},
-    {3377.0f, -2.2f}, {3460.0f, 0.0f},  {3540.0f, 2.1f},  {3580.0f, 0.0f},
-    {3621.0f, -2.2f}, {3770.0f, 0.0f},  {4430.0f, 0.0f},  {4669.0f, 2.8f},
-    {5050.0f, 1.4f},  {5260.0f, 0.0f},  {5793.0f, 0.0f},
-};
+// Shared with the geographic Blender reconstruction, in metres.
+#include "track_data/monza_survey.inc"
 
 constexpr TrackRunoffZone kMonzaRunoff[] = {
-    {220.0f, 530.0f, 0, TrackRunoffSurface::Asphalt, 24.0f},
-    {720.0f, 1060.0f, 1, TrackRunoffSurface::Grass, 18.0f},
-    {1460.0f, 1750.0f, 0, TrackRunoffSurface::Gravel, 22.0f},
-    {1900.0f, 2160.0f, 1, TrackRunoffSurface::Gravel, 20.0f},
-    {2370.0f, 2660.0f, 1, TrackRunoffSurface::Gravel, 20.0f},
-    {3210.0f, 3740.0f, 0, TrackRunoffSurface::Gravel, 22.0f},
-    {4480.0f, 5080.0f, 1, TrackRunoffSurface::Gravel, 24.0f},
+    {530.0f, 730.0f, 0, TrackRunoffSurface::Asphalt, 24.0f},
+    {850.0f, 1530.0f, 1, TrackRunoffSurface::Gravel, 18.0f},
+    {1780.0f, 1940.0f, 0, TrackRunoffSurface::Gravel, 22.0f},
+    {2180.0f, 2390.0f, 1, TrackRunoffSurface::Gravel, 29.0f},
+    {2500.0f, 2680.0f, 1, TrackRunoffSurface::Gravel, 28.0f},
+    {3610.0f, 3880.0f, 0, TrackRunoffSurface::Gravel, 22.0f},
+    {4770.0f, 5180.0f, 1, TrackRunoffSurface::Gravel, 35.0f},
 };
 
 constexpr TrackControlPoint kInterlagosCenterline[] = {
@@ -395,16 +345,17 @@ constexpr TrackTurnExpectation kSilverstoneTurns[] = {
 };
 
 constexpr TrackTurnExpectation kMonzaTurns[] = {
-    {"Rettifilo entry", 0.056f, TrackTurnDirection::Right},
-    {"Rettifilo exit", 0.083f, TrackTurnDirection::Left},
-    {"Curva Grande", 0.153f, TrackTurnDirection::Right},
-    {"Roggia entry", 0.278f, TrackTurnDirection::Left},
-    {"Roggia exit", 0.292f, TrackTurnDirection::Right},
-    {"Lesmo 1", 0.347f, TrackTurnDirection::Right},
-    {"Ascari entry", 0.583f, TrackTurnDirection::Left},
-    {"Ascari middle", 0.611f, TrackTurnDirection::Right},
-    {"Ascari exit", 0.625f, TrackTurnDirection::Left},
-    {"Parabolica", 0.806f, TrackTurnDirection::Right},
+    {"Rettifilo entry", 0.10707f, TrackTurnDirection::Right},
+    {"Rettifilo exit", 0.11367f, TrackTurnDirection::Left},
+    {"Curva Grande", 0.17038f, TrackTurnDirection::Right},
+    {"Roggia entry", 0.31810f, TrackTurnDirection::Left},
+    {"Roggia exit", 0.32548f, TrackTurnDirection::Right},
+    {"Lesmo 1", 0.38956f, TrackTurnDirection::Right},
+    {"Lesmo 2", 0.44524f, TrackTurnDirection::Right},
+    {"Ascari entry", 0.62985f, TrackTurnDirection::Left},
+    {"Ascari middle", 0.65096f, TrackTurnDirection::Right},
+    {"Ascari exit", 0.66209f, TrackTurnDirection::Left},
+    {"Parabolica", 0.83959f, TrackTurnDirection::Right},
 };
 
 constexpr TrackTurnExpectation kInterlagosTurns[] = {
@@ -818,7 +769,7 @@ constexpr std::array<TrackCatalogEntry, 12> kCatalog = {{
      5793.0f,
      11,
      0.0f,
-     12.8f,
+     4.8421f,
      true,
      1.0f,
      true,
@@ -1127,7 +1078,7 @@ TrackShapeAuditResult auditTrackCatalogShape(const TrackCatalogEntry& track) noe
             expectedAspect = 1.38f;
             break;
         case TrackLayoutId::Monza:
-            expectedAspect = 2.05f;
+            expectedAspect = 0.581629f;
             break;
         case TrackLayoutId::Interlagos:
             expectedAspect = 0.635f;
@@ -1202,8 +1153,10 @@ TrackShapeAuditResult auditTrackCatalogShape(const TrackCatalogEntry& track) noe
         return TrackControlPoint{a.x + (b.x - a.x) * t, a.y + (b.y - a.y) * t};
     };
 
-    constexpr float kTurnWindow = 0.018f;
     for (const TrackTurnExpectation& expected : trackTurnExpectations(track.id)) {
+        // The surveyed chicanes reverse inside 40 m; Biassono needs a wider chord.
+        const float kTurnWindow = track.id == TrackLayoutId::Monza
+            ? (expected.landmark == "Curva Grande" ? 0.012f : 0.003f) : 0.018f;
         const TrackControlPoint before = pointAtFraction(expected.lapFraction - kTurnWindow);
         const TrackControlPoint center = pointAtFraction(expected.lapFraction);
         const TrackControlPoint after = pointAtFraction(expected.lapFraction + kTurnWindow);

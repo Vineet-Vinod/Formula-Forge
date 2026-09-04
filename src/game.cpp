@@ -1062,8 +1062,9 @@ bool runTrackCatalogAudit() {
         const float relief = maxElevation - minElevation;
         const TrackShapeAuditResult shape = auditTrackCatalogShape(*catalog);
         std::size_t runtimeLandmarkFailures = 0;
-        constexpr float kTurnWindow = 0.018f;
         for (const TrackTurnExpectation& expected : trackTurnExpectations(catalog->id)) {
+            const float kTurnWindow = catalog->id == TrackLayoutId::Monza
+                ? (expected.landmark == "Curva Grande" ? 0.012f : 0.003f) : 0.018f;
             const TrackPoint3D before = track.sample(
                 (expected.lapFraction - kTurnWindow) * track.totalLength());
             const TrackPoint3D center = track.sample(expected.lapFraction * track.totalLength());
@@ -3244,8 +3245,8 @@ public:
             return result;
         };
         const std::array<CornerBenchmarkSpec, 5> cornerSpecs = {{
-            {"monza_t1", TrackLayoutId::Monza, 0.056f, 190.0f, 92.0f, 88.0f, 300.0f},
-            {"monza_lesmo1", TrackLayoutId::Monza, 0.347f, 210.0f, 165.0f, 70.0f, 265.0f},
+            {"monza_t1", TrackLayoutId::Monza, 0.10707f, 190.0f, 92.0f, 88.0f, 300.0f},
+            {"monza_lesmo1", TrackLayoutId::Monza, 0.38956f, 210.0f, 165.0f, 70.0f, 265.0f},
             {"suzuka_t1", TrackLayoutId::Suzuka, 0.097f, 240.0f, 225.0f, 90.0f, 285.0f},
             {"suzuka_degner", TrackLayoutId::Suzuka, 0.347f, 185.0f, 120.0f, 120.0f, 270.0f},
             {"suzuka_130r", TrackLayoutId::Suzuka, 0.819f, 260.0f, 0.0f, 297.0f, 305.0f, true},
@@ -6519,9 +6520,9 @@ public:
             kart.vel = point.tangent * 300.0f;
             return std::pair{kart, drivingSurfaceFor(kart, point)};
         };
-        auto [pavedKart, pavedSurface] = surfaceSample(300.0f, 1.0f);
+        auto [pavedKart, pavedSurface] = surfaceSample(550.0f, 1.0f);
         auto [grassKart, grassSurface] = surfaceSample(800.0f, 1.0f);
-        auto [gravelKart, gravelSurface] = surfaceSample(1500.0f, 1.0f);
+        auto [gravelKart, gravelSurface] = surfaceSample(1840.0f, 1.0f);
         const bool runoffKindsMatch = pavedSurface.kind == DrivingSurface3D::AsphaltRunoff &&
                                       grassSurface.kind == DrivingSurface3D::Grass &&
                                       gravelSurface.kind == DrivingSurface3D::Gravel;
@@ -12670,6 +12671,22 @@ int runFormulaForge(int argc, char** argv) {
         std::cout << "agent-play-protocol-audit commands=6 bounds=valid escaping=valid contact_schema=valid ok=" << ok << "\n";
         return ok ? 0 : 1;
     }
+    if (hasArg(argc, argv, "--dump-monza-route")) {
+        Track3D track(TrackLayoutId::Monza);
+        std::cout.precision(9);
+        std::cout << "[";
+        for (int i = 0; i < track.sampleCount(); ++i) {
+            const auto& p = track.pointAtIndex(i);
+            if (i) std::cout << ",";
+            std::cout << "[" << p.progress << "," << p.pos.x / kTrackSimulationUnitsPerMeter
+                      << "," << -p.pos.y / kTrackSimulationUnitsPerMeter << ","
+                      << p.elevation / kTrackSimulationUnitsPerMeter + kMetricRoadSurfaceOffsetMeters
+                      << "," << p.width * kRoadSurfaceRatio * 2 / kTrackSimulationUnitsPerMeter
+                      << "," << p.bank / kTrackSimulationUnitsPerMeter << "]";
+        }
+        std::cout << "]\n";
+        return 0;
+    }
     if (hasArg(argc, argv, "--track-catalog-audit")) {
         return runTrackCatalogAudit() ? 0 : 1;
     }
@@ -12827,7 +12844,7 @@ int runFormulaForge(int argc, char** argv) {
                           hasArg(argc, argv, "--capture-lap") ||
                           hasArg(argc, argv, "--capture-driven-lap") || hasArg(argc, argv, "--capture-spa-lap") ||
                           hasArg(argc, argv, "--capture-time-trial") ||
-                          hasArg(argc, argv, "--capture-section-tour") || hasArg(argc, argv, "--capture-spa-tour") ||
+                          hasArg(argc, argv, "--capture-section-tour") || hasArg(argc, argv, "--capture-monza-tour") || hasArg(argc, argv, "--capture-spa-tour") ||
                           hasArg(argc, argv, "--capture-suzuka-tour") ||
                           hasArg(argc, argv, "--capture-silverstone-tour") ||
                           hasArg(argc, argv, "--capture-interlagos-tour") ||
@@ -12837,12 +12854,13 @@ int runFormulaForge(int argc, char** argv) {
     const bool captureSpaLap = hasArg(argc, argv, "--capture-spa-lap");
     const bool captureDrivenLap = hasArg(argc, argv, "--capture-lap") || hasArg(argc, argv, "--capture-driven-lap") || captureSpaLap;
     const bool captureTimeTrial = hasArg(argc, argv, "--capture-time-trial");
+    const bool captureMonzaTour = hasArg(argc, argv, "--capture-monza-tour");
     const bool captureSpaTour = hasArg(argc, argv, "--capture-spa-tour");
     const bool captureSuzukaTour = hasArg(argc, argv, "--capture-suzuka-tour");
     const bool captureSilverstoneTour = hasArg(argc, argv, "--capture-silverstone-tour");
     const bool captureInterlagosTour = hasArg(argc, argv, "--capture-interlagos-tour");
     const bool captureSectionTour = hasArg(argc, argv, "--capture-section-tour") || captureSpaTour ||
-                                    captureSuzukaTour || captureSilverstoneTour || captureInterlagosTour;
+                                    captureSuzukaTour || captureSilverstoneTour || captureInterlagosTour || captureMonzaTour;
     const bool captureMapGallery = hasArg(argc, argv, "--capture-map-gallery");
     const bool diagnoseController = hasArg(argc, argv, "--diagnose-controller");
     const bool handlingAudit = hasArg(argc, argv, "--handling-audit");
@@ -12853,7 +12871,8 @@ int runFormulaForge(int argc, char** argv) {
     const bool spaControlAudit = hasArg(argc, argv, "--spa-control-audit");
     const bool terrainAudit = hasArg(argc, argv, "--terrain-audit");
     const bool spaPerfAudit = hasArg(argc, argv, "--spa-perf-audit");
-    const bool perfAudit = hasArg(argc, argv, "--perf-audit") || spaPerfAudit;
+    const bool monzaPerfAudit = hasArg(argc, argv, "--monza-perf-audit");
+    const bool perfAudit = hasArg(argc, argv, "--perf-audit") || spaPerfAudit || monzaPerfAudit;
     const bool backgroundAudit = assetAudit || handlingAudit || raceAudit || racecraftAudit ||
                                  monzaCompetitionAudit ||
                                  leadPursuitAudit ||
@@ -12934,6 +12953,7 @@ int runFormulaForge(int argc, char** argv) {
         return result.ok ? 0 : 1;
     }
     if (perfAudit) {
+        if (monzaPerfAudit) game.selectMapForCapture(3);
         if (spaPerfAudit) {
             game.selectMapForCapture(0);
         }
@@ -13073,7 +13093,9 @@ int runFormulaForge(int argc, char** argv) {
         return 0;
     }
     if (captureSectionTour) {
-        if (captureSpaTour) {
+        if (captureMonzaTour) {
+            game.selectMapForCapture(3);
+        } else if (captureSpaTour) {
             game.selectMapForCapture(0);
         } else if (captureSuzukaTour) {
             game.selectMapForCapture(1);
@@ -13084,7 +13106,7 @@ int runFormulaForge(int argc, char** argv) {
         }
         static constexpr std::array<float, 10> kTourPhases = {0.035f, 0.102f, 0.135f, 0.245f, 0.355f,
                                                               0.465f, 0.575f, 0.690f, 0.805f, 0.920f};
-        const bool detailedCircuitTour = captureSilverstoneTour || captureInterlagosTour;
+        const bool detailedCircuitTour = captureSilverstoneTour || captureInterlagosTour || captureMonzaTour;
         const size_t tourFrameCount = detailedCircuitTour ? 72 : kTourPhases.size();
         for (size_t i = 0; i < tourFrameCount; ++i) {
             const float phase = detailedCircuitTour

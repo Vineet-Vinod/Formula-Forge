@@ -2192,6 +2192,11 @@ def transform_bounds_blender_to_gltf(bounds):
 
 
 def export_track(slug, spec, output_root):
+    if slug == "monza":
+        import export_monza_runtime
+        export_monza_runtime.OUT = output_root / "monza" / "reconstruction" / "runtime"
+        export_monza_runtime.export()
+        return
     info = make_world(slug, spec)
     output = output_root / slug
     output.mkdir(parents=True, exist_ok=True)
