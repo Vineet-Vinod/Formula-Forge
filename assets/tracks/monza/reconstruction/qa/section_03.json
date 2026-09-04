@@ -1,0 +1,18 @@
+{
+  "name": "Roggia",
+  "start_m": 1669.9963085943973,
+  "end_m": 2088.492126899011,
+  "safety_review": [
+    {
+      "side": -1,
+      "minimum_edge_offset_m": 10.499938926896967,
+      "armco_modules": 116
+    },
+    {
+      "side": 1,
+      "minimum_edge_offset_m": 10.486343383789062,
+      "armco_modules": 102
+    }
+  ],
+  "tree_instances": 1163
+}

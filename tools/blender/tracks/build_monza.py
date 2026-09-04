@@ -562,6 +562,13 @@ def load():
 
 def render(section=None, foundation_only=False):
     sc = bpy.context.scene
+    # A preceding lap preview must not reduce the saved section review quality.
+    sc.render.resolution_x = 960
+    sc.render.resolution_y = 540
+    sc.cycles.samples = 12
+    sc.cycles.max_bounces = 4
+    sc.cycles.diffuse_bounces = 2
+    sc.cycles.glossy_bounces = 2
     folder = OUT / ("qa/foundation" if foundation_only else "qa/sections")
     folder.mkdir(parents=True, exist_ok=True)
     names = (

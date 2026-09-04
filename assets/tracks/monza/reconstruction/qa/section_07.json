@@ -1,0 +1,18 @@
+{
+  "name": "Ascari",
+  "start_m": 3480.7454633208085,
+  "end_m": 3936.243024150351,
+  "safety_review": [
+    {
+      "side": -1,
+      "minimum_edge_offset_m": 10.49998712169289,
+      "armco_modules": 124
+    },
+    {
+      "side": 1,
+      "minimum_edge_offset_m": 10.49998712169289,
+      "armco_modules": 119
+    }
+  ],
+  "tree_instances": 616
+}
