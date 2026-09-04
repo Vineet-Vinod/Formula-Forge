@@ -69,7 +69,7 @@ def polygon(name,ps,material,group,lift=.05):
     if (points[0]-points[-1]).length<.01:points.pop()
     tris=tessellate_polygon([points]);verts=[];faces=[]
     for tri in tris:
-        i=len(verts);verts.extend(tri);faces.append((i,i+1,i+2))
+        i=len(verts);verts.extend(points[v] if isinstance(v,int) else v for v in tri);faces.append((i,i+1,i+2))
     return B.mesh(name,verts,faces,material,group)
 
 
@@ -115,6 +115,7 @@ def instances(name,prototype,placements,group):
 
 
 def library():
+    grass_library()
     if bpy.data.objects.get('LIB_Armco_4m'):return
     b=Batch()
     # Corrugated W-beam, three courses. Local X follows the circuit tangent.
@@ -156,17 +157,27 @@ def library():
                 if near:b.rod(end,tip,.019,0,5,.005)
                 clusters.append((tip,Vector((1.15+rng.random()*.65,1.15+rng.random()*.65,1.2+rng.random()*.9))))
         for j,(c,rad) in enumerate(clusters):
-            # Inner twig foliage supports fine leaf silhouettes, avoiding smooth ball crowns.
-            b.ellipsoid(c,rad*.72,1+j%5,lon=9,lat=5,phase=j)
-            for leaf in range(95 if near else 18):
+            # Individual overlapping leaves form the crown; no opaque spherical canopy.
+            for leaf in range(180 if near else 70):
                 zz=rng.uniform(-1,1);ang=rng.random()*TAU;rr=math.sqrt(1-zz*zz)
                 normal=Vector((rr*math.cos(ang),rr*math.sin(ang),zz))
                 p=c+Vector((normal.x*rad.x,normal.y*rad.y,normal.z*rad.z))*rng.uniform(.68,1.15)
                 u=normal.cross(Vector((.13,.83,.35))).normalized();v=normal.cross(u)
-                size=rng.uniform(.065,.15) if near else rng.uniform(.20,.36)
-                b.face([p-u*size,p-v*size*.5+normal*.02,p+u*size,p+v*size*.5],1+(j+leaf)%5)
+                size=rng.uniform(.11,.21) if near else rng.uniform(.23,.38)
+                b.face([p-u*size,p-v*size*.55+normal*.025,p+u*size*.72-v*size*.22,
+                        p+u*size,p+u*size*.72+v*size*.22,p+v*size*.55],1+(j+leaf)%5)
         ob=b.object(f'LIB_Tree_{kind:02d}',[B.MATS['Bark']]+[B.MATS[f'Leaf_{j}'] for j in range(5)],'Asset_library',True);ob.hide_render=True
         ob['height_m']=height;ob['detail']='foreground leaf geometry' if near else 'distant reduced foliage'
+
+
+def grass_library():
+    if bpy.data.objects.get('LIB_Grass_tuft'):return
+    b=Batch();rng=random.Random(73)
+    for j in range(34):
+        x,y=rng.uniform(-.32,.32),rng.uniform(-.32,.32);h=rng.uniform(.12,.38);a=rng.random()*TAU
+        dx,dy=math.cos(a)*.012,math.sin(a)*.012
+        b.face([(x-dx,y-dy,0),(x+dx,y+dy,0),(x+.07,y-.04,h*.65),(x+.12,y-.08,h)],j%3)
+    ob=b.object('LIB_Grass_tuft',[B.MATS['Grass'],B.MATS['Leaf_3'],B.MATS['Soil']],'Asset_library');ob.hide_render=True
 
 
 def surface(section):
@@ -218,21 +229,59 @@ def surface(section):
             p,t,n=B.station_point(s,side*(B.width(s)/2+.2),-.014);ang=math.atan2(t.y,t.x)
             for k in range(7):b.cube(p+Vector((t.x,t.y,0))*(k*.065-.2),(.018,.28,.025),ang)
     b.object(section['name']+' drain gratings',[B.MATS['Fence']],'Track')
+    # Small edge repairs, kept sparse on the recently resurfaced track.
+    for s,side in [(425,1),(1515,-1),(2780,1),(4230,-1),(4680,1),(5620,-1)]:
+        if start<=s<end:
+            ids=list(range(int(s/B.STEP),int((s+3.75)/B.STEP)+1));off=side*(B.width(s)/2-.6)
+            B.strip(f'Edge repair at {s}m',ids,off-.23,off+.23,B.MATS['Rubber'],lift=.004)
+    if start<625<end:
+        # Mapped motorcycle bypass also explains the Rettifilo escape-road alignment.
+        bypass=next(f for f in B.SURVEY['features'] if f['osm_way']==38168756)
+        B.ribbon('Rettifilo escape road',bypass['points'],6,B.MATS['Asphalt'],'Runoff',.11)
+        bollards=[]
+        for s,offset in [(639,8.6),(647,10.3),(660,11.8)]:
+            p,t,n=B.station_point(s,offset);p.z=B.terrain(p.x,p.y)+.12;bollards.append((p,(1,1,1),0))
+        instances('Rettifilo escape bollards',bpy.data.objects['LIB_Bollard'],bollards,'Safety_barriers')
+        # Low rounded deterrent elements on the first chicane islands; inferred dimensions.
+        batch=Batch()
+        for s,side in [(627,-1),(666,1)]:
+            p,t,n=B.station_point(s,side*(B.width(s)/2+1.9),.035)
+            for j in range(12):
+                q=p+Vector((t.x,t.y,0))*(j*.22-1.2)
+                batch.ellipsoid(q,(.19,.19,.045),0,lon=10,lat=4)
+        ob=batch.object('Rettifilo low raised anti-cut kerbs',[B.MATS['Yellow']],'Track',True)
+        ob['confidence']='Inferred low-profile deterrent geometry; exact 2026 installation unverified'
 
 
 def safety(section):
     name=section['name'];a,b=section['start_m'],section['end_m'];report=[]
     for side in [-1,1]:
-        rails=[];fences=[];min_offset=1000
-        for s in range(math.ceil(a/4)*4,int(b),4):
-            off=barrier_offset(s,side);min_offset=min(min_offset,off-B.width(s)/2)
-            # Pit merge and split remain open, with a separate pit wall alongside the garages.
-            if side==-1 and (s<145 or s>5400):continue
+        rails=[];fences=[];min_offset=1000;paths=[];path=[]
+        for s in [a]+[float(s) for s in range(math.ceil(a/2)*2,int(b),2)]+[b]:
+            off=barrier_offset(s,side);i=int(s/B.STEP)%B.N
             p,t,n=B.station_point(s,side*off);p.z=B.terrain(p.x,p.y)+.05
-            angle=math.atan2(t.y,t.x)
-            rails.append((p,(1,1,1),angle))
-            q=p+Vector((n.x,n.y,0))*side*.55
-            fences.append((q,(1,1,1),angle+(math.pi if side<0 else 0)))
+            _,near,d=B.TREE.find((p.x,p.y,0))
+            # Leave chicane islands open. Do not fold an offset through a small inside radius.
+            omit=(side==-1 and (s<145 or s>5400)) or (B.CURVATURE[i]*side>1/(off+2)) or d<B.width(near*B.STEP)/2+3.0
+            if omit:
+                if len(path)>1:paths.append(path)
+                path=[];continue
+            min_offset=min(min_offset,d-B.width(near*B.STEP)/2);path.append(p)
+        if len(path)>1:paths.append(path)
+        for path in paths:
+            # Resample the barrier itself, so each instanced beam meets its neighbour.
+            distances=[0]
+            for p,q in zip(path,path[1:]):distances.append(distances[-1]+(q-p).length)
+            count=max(1,math.ceil(distances[-1]/4));pts=[];j=0
+            for k in range(count+1):
+                s=k*distances[-1]/count
+                while j<len(path)-2 and distances[j+1]<s:j+=1
+                t=(s-distances[j])/max(1e-9,distances[j+1]-distances[j]);pts.append(path[j].lerp(path[j+1],t))
+            for p,q in zip(pts,pts[1:]):
+                v=q-p;length=v.length;mid=(p+q)/2;angle=math.atan2(v.y,v.x)
+                rails.append((mid,((length+.025)/4,1,1),angle))
+                normal=Vector((-math.sin(angle),math.cos(angle),0));fp=mid+normal*side*.55
+                fences.append((fp,((length+.025)/4,1,1),angle+(math.pi if side<0 else 0)))
         instances(name+f' Armco {side}',bpy.data.objects['LIB_Armco_4m'],rails,'Safety_barriers')
         instances(name+f' catch fence {side}',bpy.data.objects['LIB_Fence_4m'],fences,'Fencing')
         report.append({'side':side,'minimum_edge_offset_m':min_offset,'armco_modules':len(rails)})
@@ -352,6 +401,7 @@ def building(f):
 def features(section):
     for f in B.SURVEY['features']:
         t=f['tags'];c=centroid(f['points']);_,idx,dist=B.TREE.find((*c,0));s=idx*B.STEP
+        if s>5480 and t.get('building'):s=0
         if not section['start_m']<=s<section['end_m']:continue
         if t.get('building') and dist<235:building(f)
         if t.get('natural')=='sand' and f['closed']:polygon(f'Mapped gravel {f["osm_way"]}',f['points'],B.MATS['Gravel'],'Runoff',.055)
@@ -380,7 +430,7 @@ def forest(section):
         ps=f['points'];masks.append((min(p[0] for p in ps),max(p[0] for p in ps),min(p[1] for p in ps),max(p[1] for p in ps),f))
     groups=[[] for _ in range(12)];undergrowth=Batch();total=0
     # Low-discrepancy candidates give irregular spacing; ecological masks decide occupancy.
-    for i in range(1,56000):
+    for i in range(1,112000):
         x=-300+1850*((i*.7548776662466927)%1);y=-950+2620*((i*.5698402909980532)%1)
         _,idx,d=B.TREE.find((x,y,0));s=idx*B.STEP
         if not section['start_m']<=s<section['end_m'] or d>420:continue
@@ -407,6 +457,17 @@ def forest(section):
     for kind,placements in enumerate(groups):instances(section['name']+f' woodland {kind:02d}',bpy.data.objects[f'LIB_Tree_{kind:02d}'],placements,'Forest')
     undergrowth.object(section['name']+' woodland understory',[B.MATS[f'Leaf_{j}'] for j in range(5)],'Forest',True)
     section['tree_instances']=total
+    tufts=[]
+    for i in range(math.ceil(section['start_m']/1.7),math.ceil(section['end_m']/1.7)):
+        s=i*1.7
+        for side in [-1,1]:
+            frac=(i*.6180339+side*.34)%1
+            if frac<.27 or any(a-15<s<b+15 and sg==side for a,b,sg in KERBS):continue
+            off=B.width(s)/2+1+frac*4
+            if any(a<s<b and sg==side for a,b,sg,_,_ in RUNOFF):continue
+            p,t,n=B.station_point(s,side*off);p.z=B.terrain(p.x,p.y)+.01
+            scale=.7+frac*.7;tufts.append((p,(scale,scale,scale),i*2.3999%TAU))
+    instances(section['name']+' irregular verge tufts',bpy.data.objects['LIB_Grass_tuft'],tufts,'Forest')
 
 
 def landmarks(section):
@@ -464,3 +525,76 @@ def build(module,index):
     (B.OUT/'qa').mkdir(exist_ok=True)
     (B.OUT/f'qa/section_{index:02d}.json').write_text(json.dumps(section,indent=2)+'\n')
     B.save();B.render(index)
+
+
+def historic_oval(module):
+    global B
+    B=module
+    if bpy.data.objects.get('Historic oval survey curves'):return
+    from survey_monza import smooth
+    for f in B.SURVEY['features']:
+        name=f['tags'].get('name','')
+        if f['tags'].get('highway')!='raceway' or not ('Sopraelevata' in name or 'anello alta' in name):continue
+        ps=smooth(f['points'],False,2.0);vs=[];faces=[];ribs=Batch()
+        banked='Sopraelevata' in name or f['osm_way']==34404729
+        for i,p in enumerate(ps):
+            prev=ps[max(0,i-1)];nex=ps[min(len(ps)-1,i+1)];t=Vector((nex[0]-prev[0],nex[1]-prev[1])).normalized();n=Vector((-t.y,t.x))
+            if 'Nord' in name or f['osm_way']==34404729:
+                strength=max(0,min(1,(p[1]-300)/240))
+            elif 'Sud' in name:strength=max(0,min(1,(-p[1]-560)/230))
+            else:strength=0
+            _,idx,d=B.TREE.find((p[0],p[1],0))
+            underpass=math.exp(-((idx*B.STEP-3300)/36)**2)*max(0,1-d/70)
+            mid=B.terrain(*p)+.10+4.3*strength+underpass*2.8
+            for j in range(7):
+                off=-6+j*2;xy=Vector(p)+n*off
+                vs.append((xy.x,xy.y,mid+off*math.tan(math.radians(27))*strength*(1-underpass*.85)))
+            if i and i%5==0 and strength>.4:
+                outer=Vector(p)+n*5.7;low=B.terrain(outer.x,outer.y);high=mid+5.7*math.tan(math.radians(27))*strength
+                # Historic concrete support ribs, grounded on the same park terrain.
+                if d>22:ribs.cube((outer.x,outer.y,(low+high)/2),(.42,1.7,high-low),math.atan2(t.y,t.x))
+        for i in range(len(ps)-1):
+            for j in range(6):a=i*7+j;faces.append((a,a+7,a+8,a+1))
+        ob=B.mesh(f'Historic oval {f["osm_way"]}',vs,faces,B.MATS['Concrete'],'Historic_oval')
+        ob['bank_angle_status']='inferred 27 degree visible cross-section, not a measured bank profile'
+        ribs.object(f'Banking ribs {f["osm_way"]}',[B.MATS['Concrete']],'Historic_oval')
+        B.curve(f'OVAL | {f["osm_way"]}',[(p[0],p[1],B.terrain(*p)) for p in ps],'Survey_curves')
+    ob=bpy.data.objects.new('Historic oval survey curves',None);B.collection('Historic_oval').objects.link(ob)
+
+
+def finishing_details(module):
+    global B
+    B=module
+    if bpy.data.objects.get('Impact tyre stacks'):return
+    tyre=Batch()
+    for layer in range(4):
+        j=len(tyre.v)
+        for a in range(20):
+            t=a*TAU/20
+            for b in range(10):
+                p=b*TAU/10;r=.245+.105*math.cos(p)
+                tyre.v.append((r*math.cos(t),r*math.sin(t),layer*.24+.12+.115*math.sin(p)))
+        for a in range(20):
+            for b in range(10):
+                tyre.f.append((j+a*10+b,j+((a+1)%20)*10+b,j+((a+1)%20)*10+(b+1)%10,j+a*10+(b+1)%10));tyre.m.append(0)
+    ob=tyre.object('LIB_Tyre_stack',[B.MATS['Rubber']],'Asset_library',True);ob.hide_render=True
+    placements=[]
+    for middle,side in [(1850,-1),(2250,1),(2570,1),(3650,-1),(4900,1)]:
+        for j in range(45):
+            s=middle+(j-22)*.68;p,t,n=B.station_point(s,side*(barrier_offset(s,side)-1.0));p.z=B.terrain(p.x,p.y)+.01
+            placements.append((p,(1,1,1),0))
+    instances('Impact tyre stacks',ob,placements,'Safety_barriers')
+    pole=Batch();pole.rod((0,0,0),(0,0,8),.08,sides=8,tip=.043);pole.rod((0,0,8),(0,1,8.2),.043)
+    pole.cube((0,1,8.2),(.45,.65,.15),mat=1)
+    ob=pole.object('LIB_Paddock_light',[B.MATS['Armco'],B.MATS['Glass']],'Asset_library');ob.hide_render=True
+    placements=[]
+    for s in [5490,5580,5660,5740,90,170,280]:
+        p,t,n=B.station_point(s,52);p.z=B.terrain(p.x,p.y);placements.append((p,(1,1,1),math.atan2(t.y,t.x)))
+    instances('Paddock and main stand light poles',ob,placements,'Signage')
+    # Pit-lane working apron behind the fast lane, clipped to the mapped pit complex.
+    pit=next(f for f in B.SURVEY['features'] if f['osm_way']==38168747)
+    apron=[]
+    for p in pit['points']:
+        _,i,d=B.TREE.find((p[0],p[1],0))
+        if i*B.STEP>5480 or i*B.STEP<70:apron.append(p)
+    if len(apron)>2:B.ribbon('Pit working apron',apron,15.0,B.MATS['Asphalt'],'Service_roads',.021)

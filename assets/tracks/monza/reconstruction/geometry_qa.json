@@ -1,7 +1,7 @@
 {
   "plan_length_m": 5792.999999999954,
-  "spatial_centerline_length_m": 5793.0095910996215,
-  "length_error_m": 0.009591099621502508,
+  "spatial_centerline_length_m": 5793.009591099589,
+  "length_error_m": 0.009591099588760699,
   "sections": [
     {
       "name": "Start_finish",
@@ -12,8 +12,8 @@
       "minimum_radius_m": 710.5574044457492,
       "width_min_m": 11.670134593321455,
       "width_max_m": 12.0,
-      "elevation_min_m": 0.225,
-      "elevation_max_m": 1.2932712680344398,
+      "elevation_min_m": 0.07500000000000001,
+      "elevation_max_m": 1.14327126803444,
       "vertical_and_camber_status": "inferred, not surveyed"
     },
     {
@@ -25,8 +25,8 @@
       "minimum_radius_m": 10.640019533772602,
       "width_min_m": 11.0,
       "width_max_m": 11.665054448763632,
-      "elevation_min_m": 1.294946039206228,
-      "elevation_max_m": 1.7645258280680918,
+      "elevation_min_m": 1.144946039206228,
+      "elevation_max_m": 1.6145258280680919,
       "vertical_and_camber_status": "inferred, not surveyed"
     },
     {
@@ -38,8 +38,8 @@
       "minimum_radius_m": 124.7434433299594,
       "width_min_m": 11.0,
       "width_max_m": 11.0,
-      "elevation_min_m": 1.7660392982015023,
-      "elevation_max_m": 2.9256644831398386,
+      "elevation_min_m": 1.6160392982015024,
+      "elevation_max_m": 2.7756644831398387,
       "vertical_and_camber_status": "inferred, not surveyed"
     },
     {
@@ -51,8 +51,8 @@
       "minimum_radius_m": 12.852491316117153,
       "width_min_m": 10.638443285349855,
       "width_max_m": 11.0,
-      "elevation_min_m": 2.92580429153378,
-      "elevation_max_m": 3.1975894338659128,
+      "elevation_min_m": 2.77580429153378,
+      "elevation_max_m": 3.047589433865913,
       "vertical_and_camber_status": "inferred, not surveyed"
     },
     {
@@ -64,8 +64,8 @@
       "minimum_radius_m": 58.16570873150766,
       "width_min_m": 10.147115984222388,
       "width_max_m": 10.636023323615161,
-      "elevation_min_m": 2.8458124333427812,
-      "elevation_max_m": 3.2964060835024958,
+      "elevation_min_m": 2.6958124333427813,
+      "elevation_max_m": 3.146406083502496,
       "vertical_and_camber_status": "inferred, not surveyed"
     },
     {
@@ -77,8 +77,8 @@
       "minimum_radius_m": 26.43619572772243,
       "width_min_m": 10.000000374875,
       "width_max_m": 10.14594034145937,
-      "elevation_min_m": 2.404006435123486,
-      "elevation_max_m": 2.8439834752817896,
+      "elevation_min_m": 2.254006435123486,
+      "elevation_max_m": 2.6939834752817897,
       "vertical_and_camber_status": "inferred, not surveyed"
     },
     {
@@ -90,8 +90,8 @@
       "minimum_radius_m": 309.11109406328814,
       "width_min_m": 10.026116633375,
       "width_max_m": 10.893455105909128,
-      "elevation_min_m": 1.4790293702570045,
-      "elevation_max_m": 2.403190211532327,
+      "elevation_min_m": 1.3290293702570046,
+      "elevation_max_m": 2.2531902115323272,
       "vertical_and_camber_status": "inferred, not surveyed"
     },
     {
@@ -103,8 +103,8 @@
       "minimum_radius_m": 20.194138151113865,
       "width_min_m": 10.894325052075395,
       "width_max_m": 11.0,
-      "elevation_min_m": 0.5947029224348513,
-      "elevation_max_m": 1.4779629978620108,
+      "elevation_min_m": 0.4447029224348513,
+      "elevation_max_m": 1.3279629978620109,
       "vertical_and_camber_status": "inferred, not surveyed"
     },
     {
@@ -116,8 +116,8 @@
       "minimum_radius_m": 4709.972611892609,
       "width_min_m": 11.0,
       "width_max_m": 11.0,
-      "elevation_min_m": -1.0178540738144888,
-      "elevation_max_m": 0.5929010167828892,
+      "elevation_min_m": -1.1678540738144887,
+      "elevation_max_m": 0.4429010167828892,
       "vertical_and_camber_status": "inferred, not surveyed"
     },
     {
@@ -129,8 +129,8 @@
       "minimum_radius_m": 51.242337917792476,
       "width_min_m": 11.0,
       "width_max_m": 12.0,
-      "elevation_min_m": -1.5456107605846794,
-      "elevation_max_m": 0.22335919130661727,
+      "elevation_min_m": -1.6956107605846793,
+      "elevation_max_m": 0.07335919130661728,
       "vertical_and_camber_status": "inferred, not surveyed"
     }
   ],

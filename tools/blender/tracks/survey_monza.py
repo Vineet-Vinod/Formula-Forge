@@ -103,7 +103,7 @@ def main():
         coords = [[v*factor for v in project(n)] for n in refs]
         # Include the venue and park, exclude the surrounding city streets.
         cx, cy = [sum(p[j] for p in coords)/len(coords) for j in range(2)]
-        if not (-300 < cx < 1550 and -1000 < cy < 1650):
+        if not (-300 < cx < 1550 and -1200 < cy < 1650):
             continue
         features.append({"osm_way":wid, "tags":tags, "points":coords, "closed": refs[0]==refs[-1]})
     # Woods around Monza are mostly multipolygons. Preserve inner clearings.

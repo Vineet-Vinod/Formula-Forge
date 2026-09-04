@@ -60,14 +60,19 @@ def width(s):
 
 def road_z(i,offset=0):
     x,y=XY[i%N]
-    crossfall=max(-0.012,min(0.012,CURVATURE[i%N]*1.2))
-    return terrain(x,y)+0.19+0.035*(1-min(1,(offset/(width(i%N*STEP)/2))**2))-crossfall*offset
+    crossfall=max(-0.004,min(0.004,CURVATURE[i%N]*.4))
+    return terrain(x,y)+0.04+0.035*(1-min(1,(offset/(width(i%N*STEP)/2))**2))-crossfall*offset
 
 
 def point(i,offset=0,lift=0):
     i%=N
     p=Vector(XY[i])+NORMALS[i]*offset
-    return (p.x,p.y,road_z(i,offset)+lift)
+    z=road_z(i,offset);edge=width(i*STEP)/2
+    if abs(offset)>edge+.35:
+        t=min(1,(abs(offset)-edge-.35)/2.0);t=t*t*(3-2*t)
+        edge_z=road_z(i,math.copysign(edge+.35,offset))
+        z=edge_z*(1-t)+(terrain(p.x,p.y)+.07)*t
+    return (p.x,p.y,z+lift)
 
 
 def station_point(s,offset=0,lift=0):
@@ -222,11 +227,11 @@ def foundation():
         t=f['tags']
         if f['osm_way']==38168747 or t.get('highway')=='service':
             curve('PIT_LANE' if f['osm_way']==38168747 else f'SERVICE | OSM {f["osm_way"]}',
-                  [(x,y,terrain(x,y)+.14) for x,y in f['points']],'Survey_curves')
+                  [(x,y,terrain(x,y)+.04) for x,y in f['points']],'Survey_curves')
     road=strip('ASPHALT | continuous crowned surface',inds,lambda i:-width(i*STEP)/2,lambda i:width(i*STEP)/2,
                MATS['Asphalt'],steps=8,closed=True)
     for p in road.data.polygons:p.use_smooth=True
-    road['cross_section']='35 mm crown, inferred camber <= 1.2 percent; 0.75 m longitudinal sampling'
+    road['cross_section']='35 mm crown, inferred camber <= 0.4 percent; 0.75 m longitudinal sampling'
     for sign,side in [(1,'L'),(-1,'R')]:
         strip(f'{side} continuous 150 mm edge line',inds,lambda i:sign*(width(i*STEP)/2-.22),
               lambda i:sign*(width(i*STEP)/2-.07),MATS['White_paint'],lift=.007,closed=True)
@@ -244,18 +249,19 @@ def foundation():
             a=j*nx+i;fs.append((a,a+1,a+nx+1,a+nx))
     mesh('Park ground',vs,fs,MATS['Grass'],'Distant_environment')
     pit=next(f for f in SURVEY['features'] if f['osm_way']==38168747)
-    ribbon('Pit lane | mapped entry and exit',pit['points'],8.0,MATS['Asphalt'],'Track',.18)
+    ribbon('Pit lane | mapped entry and exit',pit['points'],8.0,MATS['Asphalt'],'Track',.04)
     for side in [-1,1]:
         # Edges derive from the same pit spline, keeping the entry/exit editable.
         ps=[]
         for i,p in enumerate(pit['points']):
             a=pit['points'][max(0,i-1)];b=pit['points'][min(len(pit['points'])-1,i+1)]
             v=Vector((b[0]-a[0],b[1]-a[1])).normalized();ps.append((p[0]-v.y*side*3.7,p[1]+v.x*side*3.7))
-        ribbon(f'Pit edge {side}',ps,.12,MATS['White_paint'],'Track',.191)
-    for section in SURVEY['sections']:
-        s=section['start_m']+25;p,t,n=station_point(s,0,1.2);target=station_point(s+38)[0]
+        ribbon(f'Pit edge {side}',ps,.12,MATS['White_paint'],'Track',.051)
+    driver_stations=[L-280,570,1010,1775,2165,2500,3190,3570,4140,4790]
+    for index,section in enumerate(SURVEY['sections']):
+        s=driver_stations[index];p,t,n=station_point(s,0,1.2);target=station_point(s+28)[0]
         camera('DRIVER | '+section['name'],p,target+Vector((0,0,1.2)),28)
-        mid=(section['start_m']+section['end_m'])/2;cp,ct,cn=station_point(mid)
+        mid=L-140 if index==0 else (section['start_m']+section['end_m'])/2;cp,ct,cn=station_point(mid)
         camera('ELEVATED | '+section['name'],cp+Vector((cn.x*180-ct.x*160,cn.y*180-ct.y*160,180)),cp,38)
     overview=camera('OVERVIEW | whole circuit',(1900,-1900,2550),(480,380,0),43)
     bpy.context.scene.camera=overview
@@ -294,9 +300,84 @@ def render(section=None,foundation_only=False):
         bpy.ops.render.render(write_still=True)
 
 
+def finalize():
+    import sys
+    import monza_environment as env
+    sc=bpy.context.scene
+    assert json.loads(sc.get('completed_sections','[]'))==list(range(10))
+    env.B=sys.modules[__name__]
+    for ob in list(collection('Safety_barriers').objects)+list(collection('Fencing').objects):
+        if ' Armco ' in ob.name or ' catch fence ' in ob.name:bpy.data.objects.remove(ob,do_unlink=True)
+    for section in SURVEY['sections']:env.safety(dict(section))
+    env.historic_oval(sys.modules[__name__])
+    env.finishing_details(sys.modules[__name__])
+    # Re-evaluate the foundation after cross-section refinements discovered during QA.
+    road=bpy.data.objects['ASPHALT | continuous crowned surface']
+    for i in range(N):
+        for j in range(9):road.data.vertices[i*9+j].co=point(i,-width(i*STEP)/2+j*width(i*STEP)/8)
+    road.data.update()
+    for name,off in [('CENTERLINE | 5793 m | clockwise',0),('LEFT_EDGE | variable 10-12 m',1),('RIGHT_EDGE | variable 10-12 m',-1)]:
+        for i,v in enumerate(bpy.data.objects[name].data.splines[0].points):v.co=(*point(i,off*width(i*STEP)/2),1)
+    # Ground visible runoffs and service surfaces; no extension of road camber into gravel.
+    for ob in collection('Runoff').objects:
+        if ob.type!='MESH':continue
+        for v in ob.data.vertices:
+            p=v.co;_,i,d=TREE.find((p.x,p.y,0))
+            if d>width(i*STEP)/2+2.4:p.z=terrain(p.x,p.y)+.028
+        ob.data.update()
+    driver_stations=[L-280,570,1010,1775,2165,2500,3190,3570,4140,4790]
+    for index,s in enumerate(driver_stations):
+        ob=bpy.data.objects['DRIVER | '+SURVEY['sections'][index]['name']]
+        ob.location=station_point(s,0,1.2)[0]
+        target=station_point(s+28,0,1.2)[0];ob.rotation_euler=(target-ob.location).to_track_quat('-Z','Y').to_euler()
+    # Every frame follows a point on the lap. No straight interpolation through corners.
+    old=bpy.data.objects.get('LAP | 1.2 m | animated survey inspection')
+    if old:bpy.data.objects.remove(old,do_unlink=True)
+    cam=camera('LAP | 1.2 m | animated survey inspection',station_point(0,0,1.2)[0],station_point(20,0,1.2)[0],24)
+    sc.render.fps=24;sc.frame_start=1;sc.frame_end=1932
+    for frame in range(1,1933):
+        s=(frame-1)*L/1931;p,t,n=station_point(s,0,1.2);target=p+Vector((t.x,t.y,0))*18
+        target.z=station_point(s+18,0,1.2)[0].z
+        cam.location=p;cam.rotation_euler=(target-p).to_track_quat('-Z','Y').to_euler()
+        cam.keyframe_insert(data_path='location',frame=frame);cam.keyframe_insert(data_path='rotation_euler',frame=frame)
+    sc.timeline_markers.clear()
+    for sec in SURVEY['sections']:sc.timeline_markers.new(sec['name'].replace('_',' '),frame=1+round(sec['start_m']/L*1931))
+    sc.frame_set(1)
+    overview=bpy.data.objects['OVERVIEW | whole circuit'];overview.location=(1800,-1850,2450)
+    overview.rotation_euler=(Vector((530,270,0))-overview.location).to_track_quat('-Z','Y').to_euler();overview.data.lens=46
+    # Large ground underlay keeps the horizon continuous beyond the surveyed park patch.
+    BOUNDS=15000
+    if not bpy.data.objects.get('Distant ground horizon'):
+        mesh('Distant ground horizon',[(-BOUNDS,-BOUNDS,-5),(BOUNDS,-BOUNDS,-5),(BOUNDS,BOUNDS,-5),(-BOUNDS,BOUNDS,-5)],[(0,1,2,3)],MATS['Grass'],'Distant_environment')
+    readme=bpy.data.texts.get('READ ME | survey and limitations') or bpy.data.texts.new('READ ME | survey and limitations')
+    readme.clear();readme.write((OUT/'references/SOURCES.md').read_text())
+    sc['spatial_centerline_length_m']=sum((Vector(point(i+1))-Vector(point(i))).length for i in range(N))
+    sc['driver_camera_height_m']=1.2
+    sc['final_qa']='See qa/final_validation.json and QA.md alongside this scene.'
+    sc.camera=overview
+    for screen in bpy.data.screens:
+        for area in screen.areas:
+            if area.type=='VIEW_3D':
+                area.spaces.active.clip_end=7000;area.spaces.active.region_3d.view_distance=2300
+                area.spaces.active.region_3d.view_location=(500,300,0)
+    save()
+    sc.cycles.samples=32;sc.render.resolution_x=1600;sc.render.resolution_y=1000
+    sc.render.filepath=str(OUT/'monza_overview.png');bpy.ops.render.render(write_still=True)
+
+
+def lap(first=1,last=1932):
+    sc=bpy.context.scene;sc.camera=bpy.data.objects['LAP | 1.2 m | animated survey inspection']
+    sc.render.resolution_x=480;sc.render.resolution_y=270;sc.cycles.samples=2;sc.render.use_persistent_data=True
+    folder=OUT/'qa/lap';folder.mkdir(parents=True,exist_ok=True)
+    for i in range(first,last+1):
+        sc.frame_set(i);sc.render.filepath=str(folder/f'{i-1:04d}.png')
+        bpy.ops.render.render(write_still=True)
+
+
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--phase',choices=['foundation','environment','render','finalize','lap'],default='foundation')
     parser.add_argument('--section',type=int);parser.add_argument('--foundation-only',action='store_true')
+    parser.add_argument('--frame-start',type=int,default=1);parser.add_argument('--frame-end',type=int,default=1932)
     args=parser.parse_args()
     if args.phase=='foundation':foundation();render(foundation_only=True)
     else:
@@ -307,7 +388,7 @@ def main():
             from monza_environment import build
             build(sys.modules[__name__],args.section)
         elif args.phase=='finalize':finalize()
-        elif args.phase=='lap':lap()
+        elif args.phase=='lap':lap(args.frame_start,args.frame_end)
 
 
 if __name__=='__main__':main()
