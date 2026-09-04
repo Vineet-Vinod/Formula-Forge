@@ -86,6 +86,8 @@ work?
 
 - Spa, Suzuka, Silverstone, Monza, and Interlagos-inspired circuits with
   authored elevation, track limits, runoff, and barriers
+- Monza's playable environment and route use the 5,793 m geographic
+  [Blender reconstruction](assets/tracks/monza/reconstruction/runtime/README.md)
 - Eleven logo-free two-colour car liveries sharing one Blender-authored formula car and
   driver specification
 - Six-car races and solo infinite-lap Time Trial sessions
@@ -116,7 +118,9 @@ Formula Forge is designed for gamepads and steering wheels.
 
 The repository includes deterministic audits for handling, race rules,
 collisions, track geometry, assets, rendering performance, and AI pace on every
-circuit. The Monza AI audit is calibrated around a 75-second player lap.
+circuit. Monza's historical AI pace and automated handling benchmarks still
+need calibration for the reconstructed layout. The integration notes record
+the current failures without changing their acceptance limits.
 
 ```sh
 make test

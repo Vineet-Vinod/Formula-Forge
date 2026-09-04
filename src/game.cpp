@@ -212,13 +212,13 @@ constexpr std::array<FormulaCornerTarget, 12> kSilverstoneFormulaTargets = {{
 }};
 
 constexpr std::array<FormulaCornerTarget, 7> kMonzaFormulaTargets = {{
-    {"Rettifilo", 0.056f, 73.0f, 2, false},
-    {"Curva Grande", 0.153f, 294.0f, 8, true},
-    {"Roggia", 0.278f, 113.0f, 3, false},
-    {"Lesmo 1", 0.347f, 207.0f, 5, false},
-    {"Lesmo 2", 0.430f, 190.0f, 5, false},
-    {"Ascari", 0.611f, 194.0f, 5, false},
-    {"Parabolica", 0.806f, 215.0f, 5, false},
+    {"Rettifilo", 0.10707f, 73.0f, 2, false},
+    {"Curva Grande", 0.17038f, 294.0f, 8, true},
+    {"Roggia", 0.31810f, 113.0f, 3, false},
+    {"Lesmo 1", 0.38956f, 207.0f, 5, false},
+    {"Lesmo 2", 0.44524f, 190.0f, 5, false},
+    {"Ascari", 0.65096f, 194.0f, 5, false},
+    {"Parabolica", 0.83959f, 215.0f, 5, false},
 }};
 
 constexpr std::array<FormulaCornerTarget, 9> kInterlagosFormulaTargets = {{
@@ -12841,6 +12841,7 @@ int runFormulaForge(int argc, char** argv) {
                           hasArg(argc, argv, "--spa-control-audit") ||
                           hasArg(argc, argv, "--terrain-audit") ||
                           hasArg(argc, argv, "--perf-audit") || hasArg(argc, argv, "--spa-perf-audit") ||
+                          hasArg(argc, argv, "--monza-perf-audit") ||
                           hasArg(argc, argv, "--capture-lap") ||
                           hasArg(argc, argv, "--capture-driven-lap") || hasArg(argc, argv, "--capture-spa-lap") ||
                           hasArg(argc, argv, "--capture-time-trial") ||
@@ -13120,11 +13121,12 @@ int runFormulaForge(int argc, char** argv) {
             }
             const std::filesystem::path path =
                 std::filesystem::path("../playtest_frames") /
-                TextFormat(captureSpaTour ? "formula_forge_spa_tour_%02d.png"
+                TextFormat(captureMonzaTour ? "formula_forge_monza_tour_%02d.png"
+                            : (captureSpaTour ? "formula_forge_spa_tour_%02d.png"
                                          : (captureSuzukaTour ? "formula_forge_suzuka_tour_%02d.png"
                                             : (captureSilverstoneTour ? "formula_forge_silverstone_tour_%03d.png"
                                                : (captureInterlagosTour ? "formula_forge_interlagos_tour_%03d.png"
-                                                                        : "formula_forge_section_tour_%02d.png"))),
+                                                                        : "formula_forge_section_tour_%02d.png")))),
                            static_cast<int>(i));
             game.render(60.0f, true, path.string().c_str());
         }

@@ -2,15 +2,17 @@
 
 ## Monza geographic reconstruction
 
-The separate [Monza reconstruction](../../../assets/tracks/monza/reconstruction/README.md)
+The [Monza reconstruction](../../../assets/tracks/monza/reconstruction/README.md)
 uses geographic observations and the official 5,793 m specification. Its editable
 Blender scene, section renders, lap inspection and numerical audits live under
-`assets/tracks/monza/reconstruction/`. It preserves the existing gameplay layout
-and is not overwritten by `generate_tracks.py`.
+`assets/tracks/monza/reconstruction/`. Its runtime export replaces the previous
+Monza layout. `generate_tracks.py --track monza` exports the saved reconstruction
+and generates `src/track_data/monza_survey.inc`; it does not rebuild the source
+Blender scene. See the [Monza runtime notes](../../../assets/tracks/monza/reconstruction/runtime/README.md).
 
 ## Runtime assets
 
-The generator reads every authoritative centerline, elevation, and width
+For circuits other than Monza, the generator reads the centerline, elevation, and width
 contract from `src/track_catalog.cpp`, then authors a Blender world in meters
 for each playable layout. Generated artifacts live under `assets/tracks/<slug>/`.
 
@@ -44,10 +46,12 @@ from the road edge and reject overlong terrain cells at abrupt outer-corner
 normal changes. This prevents a nearby bend's lawn ribbon from hanging across
 the T-cam view while leaving the road and its four-metre shoulder untouched.
 
-`verify_tracks.py` treats those presentation details as runtime contracts. It
+For those generated circuits, `verify_tracks.py` treats presentation details as runtime contracts. It
 checks opaque material parity between BLEND and GLB, asphalt luminance,
 continuous barrier/fence/track-limit topology, local shoulder grounding for
 every scenery placement, and the exact catalog alignment used by physics.
+Monza delegates to `verify_monza_runtime.py`, which checks the exported scene,
+source hash, index bounds and native route alignment.
 
 ## Runtime alignment contract
 

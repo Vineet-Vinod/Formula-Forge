@@ -1,0 +1,9 @@
+{
+  "command": "SDL_VIDEODRIVER=offscreen build/game/formula_forge --capture-monza-tour",
+  "positions": 72,
+  "station_formula": "(index + 0.5) / 72 * 5793 metres",
+  "settling_frames_per_position": 45,
+  "camera": "Existing game T-cam",
+  "continuous_driven_lap": false,
+  "source_blend_unchanged": true
+}

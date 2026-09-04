@@ -630,6 +630,7 @@ struct ArcadeRender::Impl {
     std::array<std::optional<formula_forge::assets::GlbAsset>, 12> authoredTracks{};
 
     std::vector<BoundingBox> monzaMeshBounds;
+    std::vector<std::pair<float, int>> monzaVisibleMeshes;
 
     int sunDirectionLoc = -1;
     int sunColorLoc = -1;
@@ -827,6 +828,7 @@ struct ArcadeRender::Impl {
             const Matrix vp = MatrixMultiply(rlGetMatrixModelview(), rlGetMatrixProjection());
             const float gloss = 0.08f;
             setUniform(glossLoc, &gloss, SHADER_UNIFORM_FLOAT);
+            monzaVisibleMeshes.clear();
             for (int i = 0; i < model.meshCount; ++i) {
                 const BoundingBox& box = monzaMeshBounds[static_cast<size_t>(i)];
                 unsigned outside = 63;
@@ -843,6 +845,14 @@ struct ArcadeRender::Impl {
                                (cz < -cw ? 16u : 0u) | (cz > cw ? 32u : 0u);
                 }
                 if (outside != 0) continue;
+                const Vector3 center = Vector3Scale(Vector3Add(box.min, box.max), scale * 0.5f);
+                const float depth = vp.m3*center.x + vp.m7*center.y + vp.m11*center.z + vp.m15;
+                monzaVisibleMeshes.emplace_back(depth, i);
+            }
+            // Draw nearby opaque and cutout geometry first so depth testing
+            // rejects the woodland hidden behind it.
+            std::sort(monzaVisibleMeshes.begin(), monzaVisibleMeshes.end());
+            for (const auto& [depth, i] : monzaVisibleMeshes) {
                 Material mat = model.materials[model.meshMaterial[i]];
                 mat.shader = shader;
                 DrawMesh(model.meshes[i], mat, MatrixScale(scale, scale, scale));

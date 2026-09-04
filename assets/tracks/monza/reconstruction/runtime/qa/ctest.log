@@ -1,0 +1,100 @@
+Internal ctest changing into directory: /home/darksca/Vineet/Code/C_C++/Formula Forge/build/game
+Test project /home/darksca/Vineet/Code/C_C++/Formula Forge/build/game
+      Start  1: agent_play_protocol_audit
+ 1/37 Test  #1: agent_play_protocol_audit ...........   Passed    0.00 sec
+      Start  2: controller_input_audit
+ 2/37 Test  #2: controller_input_audit ..............   Passed    0.00 sec
+      Start  3: race_grid_alignment_audit
+ 3/37 Test  #3: race_grid_alignment_audit ...........   Passed    2.23 sec
+      Start  4: arcade_audio_audit
+ 4/37 Test  #4: arcade_audio_audit ..................   Passed    0.00 sec
+      Start  5: arcade_vehicle_audit
+ 5/37 Test  #5: arcade_vehicle_audit ................   Passed    0.00 sec
+      Start  6: arcade_race_flow_audit
+ 6/37 Test  #6: arcade_race_flow_audit ..............   Passed    0.00 sec
+      Start  7: track_gradient_audit
+ 7/37 Test  #7: track_gradient_audit ................   Passed    0.45 sec
+      Start  8: ai_monza_pace_audit
+ 8/37 Test  #8: ai_monza_pace_audit .................***Failed    0.59 sec
+ai-pace-audit track=monza launch_lap_s=83.8417 planned_lap_s=67.45 model_lap_s=75.8041 race_plan_s=78.4219 race_drs_plan_s=75.8041 race_drs_ratio=1 pace_corners=7 benchmark_ratio=1.16321 line_span=2 line_fraction=0.92 flying_lap_s=78.4583 distance=11586 final_phase=7.48696e-05 avg_speed=1212.06 max_speed=1661.87 max_road_violation=19.4892 max_road_violation_phase=0.111671 max_road_violation_speed=332.843 max_road_violation_curvature=0.617031 max_road_violation_lane=-86.7554 max_road_violation_planned_lane=-40.2273 max_road_violation_heading_error=0.197747 max_road_violation_steer=-0.115292 max_road_violation_target_speed=617.329 road_violation_frames=2263 drift_frames=0 brake_drift_frames=10 brake_frames=1995 powered_exit_frames=16201 contacts=0 contact_frames=0 landings=0 max_progress_step=2.16772 progress_jumps=0 max_track_curvature=2.05048 flat_corners=1/1 median_track_curvature=0.00756907 p90_track_curvature=0.583416 target_pace=0 physical_path=1 uses_flat_corners=1 physics_validated_flat=1 formula_racecraft=1 ascari_flat=0 ascari_drs_plan=1 ascari_throttle_min=0 ascari_brake_max=0.984435 ok=0
+ai-pace-splits 10:6.16667 20:18.3333 30:24.3417 40:34.9667 50:43.425 60:49.5167 70:58.3333 80:64.5667 90:72.375 100:78.4583
+ai-pace-sectors 10:1597.23/923.009/1596.33/0/0 20:806.975/321.016/855.211/19.4892/0 30:1637/1488.25/1646.22/0/0 40:921.198/579.126/974.657/18.2947/0 50:1163.78/892.038/1173.26/14.6507/0 60:1614.85/1425.3/1629.15/0/0 70:1114.29/741.588/1146.28/16.5371/0 80:1579.81/1328.07/1616.05/0/0 90:1262.85/1008.71/1257.13/4.41692/0 100:1618.94/1437.37/1627.52/0/0
+ai-pace-turns Rettifilo entry={physical_kph:104.188,path_kph:109.651,target_kph:104.149,actual_kph:68.2489,throttle:0,brake:1,line_error_m:8.48005,planned_lane_m:3.9127} Rettifilo exit={physical_kph:102.869,path_kph:101.473,target_kph:90.6117,actual_kph:67.9799,throttle:0,brake:0.456591,line_error_m:9.01619,planned_lane_m:-3.9127} Curva Grande={physical_kph:317.981,path_kph:345.584,target_kph:263.988,actual_kph:261.652,throttle:1,brake:0,line_error_m:0.0582103,planned_lane_m:1.452} Roggia entry={physical_kph:121.404,path_kph:138.238,target_kph:133.264,actual_kph:123.397,throttle:0,brake:1,line_error_m:6.93567,planned_lane_m:-3.9127} Roggia exit={physical_kph:129.731,path_kph:156.816,target_kph:153.547,actual_kph:122.638,throttle:1,brake:0,line_error_m:7.87982,planned_lane_m:3.9127} Lesmo 1={physical_kph:212.317,path_kph:202.21,target_kph:201.534,actual_kph:204.867,throttle:0,brake:0.473193,line_error_m:4.66415,planned_lane_m:3.65422} Lesmo 2={physical_kph:194.558,path_kph:207.771,target_kph:194.798,actual_kph:198.434,throttle:0,brake:0.503224,line_error_m:6.97155,planned_lane_m:3.45422} Ascari entry={physical_kph:135.573,path_kph:160.312,target_kph:153.518,actual_kph:157.042,throttle:0,brake:0.984435,line_error_m:5.32271,planned_lane_m:-3.9127} Ascari middle={physical_kph:198.731,path_kph:258.254,target_kph:215.696,actual_kph:213.565,throttle:1,brake:0,line_error_m:7.05505,planned_lane_m:3.9118} Ascari exit={physical_kph:198.731,path_kph:294.64,target_kph:243.58,actual_kph:235.39,throttle:0,brake:0.552048,line_error_m:5.95331,planned_lane_m:-3.9127} Parabolica={physical_kph:220.721,path_kph:210.326,target_kph:210.326,actual_kph:213.611,throttle:0,brake:0.628284,line_error_m:4.4511,planned_lane_m:3.91269}
+ai-ascari-trace 0.5525={speed:351.874,target:353,throttle:1,brake:0,flat_frames:35/35,line_error_m:0.00482672} 0.5575={speed:351.908,target:353,throttle:1,brake:0,flat_frames:36/36,line_error_m:0.00309473} 0.5625={speed:351.916,target:353,throttle:1,brake:0,flat_frames:35/35,line_error_m:0.00192071} 0.5675={speed:351.918,target:353,throttle:1,brake:0,flat_frames:36/36,line_error_m:0.00175246} 0.5725={speed:351.918,target:353,throttle:1,brake:0,flat_frames:35/35,line_error_m:0.00107034} 0.5775={speed:351.918,target:353,throttle:1,brake:0,flat_frames:36/36,line_error_m:0.0011295} 0.5825={speed:351.918,target:353,throttle:1,brake:0,flat_frames:36/36,line_error_m:0.000794406} 0.5875={speed:351.918,target:353,throttle:1,brake:0,flat_frames:35/35,line_error_m:0.00116469} 0.5925={speed:351.918,target:353,throttle:1,brake:0,flat_frames:36/36,line_error_m:0.00143202} 0.5975={speed:351.918,target:353,throttle:1,brake:0,flat_frames:35/35,line_error_m:0.000843236} 0.6025={speed:351.918,target:353,throttle:1,brake:0,flat_frames:36/36,line_error_m:0.000644861} 0.6075={speed:351.918,target:353,throttle:1,brake:0,flat_frames:35/35,line_error_m:0.00100813} 0.6125={speed:315.193,target:309.903,throttle:0,brake:0.791454,flat_frames:38/38,line_error_m:0.00656257} 0.6175={speed:263.894,target:256.813,throttle:0,brake:0.834354,flat_frames:30/43,line_error_m:0.0149272} 0.6225={speed:195.996,target:188.198,throttle:0,brake:0.889948,flat_frames:0/55,line_error_m:0.0469569} 0.6275={speed:157.042,target:153.518,throttle:0,brake:0.984435,flat_frames:40/70,line_error_m:0.716597} 0.6325={speed:162.19,target:158.766,throttle:0,brake:0.444361,flat_frames:74/74,line_error_m:6.64901} 0.6375={speed:173.054,target:176.991,throttle:1,brake:0,flat_frames:69/69,line_error_m:6.38612} 0.6425={speed:188.2,target:194.287,throttle:1,brake:0,flat_frames:61/61,line_error_m:1.77586} 0.6475={speed:205.527,target:208.932,throttle:1,brake:0,flat_frames:59/59,line_error_m:4.44749} 0.6525={speed:221.518,target:222.568,throttle:1,brake:0,flat_frames:56/56,line_error_m:7.18325} 0.6575={speed:231.479,target:234.882,throttle:1,brake:0,flat_frames:55/55,line_error_m:7.29392}
+ai-flat-corners Curva Grande={physical:0.999939,planned_window:1.08674,throttle:1,brake:0}
+
+      Start  9: ai_monza_race_pace_audit
+ 9/37 Test  #9: ai_monza_race_pace_audit ............***Failed    1.62 sec
+ai-race-pace-audit track=monza optimal_s=75.8041 target_s=75.8041 mean_s=78.5432 ratio=1.03613 stddev_s=0.0593328 min_s=78.4583 max_s=78.65 corners=7 laps=78.4583,78.525,78.5833,78.5583,78.4833,78.6167,78.575,78.5583,78.4667,78.65,78.5 ok=0
+
+      Start 10: ai_spa_pace_audit
+10/37 Test #10: ai_spa_pace_audit ...................   Passed    0.62 sec
+      Start 11: ai_suzuka_pace_audit
+11/37 Test #11: ai_suzuka_pace_audit ................   Passed    0.58 sec
+      Start 12: ai_silverstone_pace_audit
+12/37 Test #12: ai_silverstone_pace_audit ...........   Passed    0.58 sec
+      Start 13: ai_interlagos_pace_audit
+13/37 Test #13: ai_interlagos_pace_audit ............   Passed    0.64 sec
+      Start 14: ai_shanghai_pace_audit
+14/37 Test #14: ai_shanghai_pace_audit ..............   Passed    0.62 sec
+      Start 15: ai_bahrain_pace_audit
+15/37 Test #15: ai_bahrain_pace_audit ...............   Passed    0.60 sec
+      Start 16: ai_sepang_pace_audit
+16/37 Test #16: ai_sepang_pace_audit ................   Passed    0.60 sec
+      Start 17: ai_cota_pace_audit
+17/37 Test #17: ai_cota_pace_audit ..................   Passed    0.57 sec
+      Start 18: ai_istanbul_pace_audit
+18/37 Test #18: ai_istanbul_pace_audit ..............   Passed    0.56 sec
+      Start 19: ai_hockenheim_pace_audit
+19/37 Test #19: ai_hockenheim_pace_audit ............   Passed    0.61 sec
+      Start 20: ai_buddh_pace_audit
+20/37 Test #20: ai_buddh_pace_audit .................   Passed    0.62 sec
+      Start 21: ai_physics_parity_audit
+21/37 Test #21: ai_physics_parity_audit .............   Passed    0.51 sec
+      Start 22: handling_dynamics_audit
+22/37 Test #22: handling_dynamics_audit .............***Failed    0.51 sec
+handling-audit no_brake_score=1326.52 lap=0 avg=314.022 max=1522.52 contacts=7 offroad_frames=7065 max_offroad=103.526 max_offroad_phase=0.111662 max_drift_charge=0 max_slip=1.30034 brake_drift_frames=0 brake_frames=0 powered_exit_frames=0 min_ground_clearance=0 progress_jumps=0 max_airtime=0 landings=0 drift_frames=0 boost_frames=0 brake_score=1628.18 lap=0 avg=379.734 max=1113.69 contacts=2 offroad_frames=2896 max_offroad=103.697 max_offroad_phase=0.110558 max_drift_charge=0 max_slip=0.792906 brake_drift_frames=10 brake_frames=2974 powered_exit_frames=2434 min_ground_clearance=0 progress_jumps=0 max_airtime=0 landings=0 drift_frames=0 boost_frames=0 attack_score=1631.32 lap=0 avg=380.388 max=1113.69 contacts=2 offroad_frames=2951 max_offroad=103.357 max_offroad_phase=0.110435 max_drift_charge=0 max_slip=0.802328 brake_drift_frames=10 brake_frames=2670 powered_exit_frames=2479 min_ground_clearance=0 progress_jumps=0 max_airtime=0 landings=0 drift_frames=0 boost_frames=0 controlled_road=0 no_brake_consequences=1 ground_clear=1 stable=1 moving=1 measured_lap_s=266.333 formula_cornering=0 terminal_kph=322.439 zero_to_100_s=2.91667 zero_to_200_s=5.925 mechanical_grip_g=1.869 high_speed_grip_g=4.95285 yaw_effective_high_speed_grip_g=4.80426 named_braking_corners=10/11 lowest_named_corner_kph=61.0143 formula_performance=1 formula_grip=1 progressive_braking=1 coast_3s_kph=259.573,170.747,79.4671 aero_1s_loss_kph=10.771,4.84464,1.2259 natural_coast=1 brake_300_to_100_m=75.6062 brake_s=1.48333 brake_200_to_80_m=43.5381 brake_s=1.21667 brake_100_to_0_m=23.4062 brake_s=1.78333 monza_t1_flat={entry:322.462,min:0.725115,exit:54.0991,offroad_m:6.00195,contacts:1,min_gear:1} monza_t1_braked={entry:149.867,min:4.17526e-09,exit:4.17526e-09,offroad_m:5.39389,contacts:1,min_gear:1} monza_lesmo1_flat={entry:318.897,min:52.1614,exit:133.09,offroad_m:5.94093,contacts:1,min_gear:2} monza_lesmo1_braked={entry:69.6949,min:40.3884,exit:122.652,offroad_m:0,contacts:0,min_gear:1} suzuka_t1_flat={entry:117.668,min:103.135,exit:107.27,offroad_m:6.03676,contacts:2,min_gear:3} suzuka_t1_braked={entry:89.7429,min:70.2454,exit:137.439,offroad_m:0,contacts:0,min_gear:3} suzuka_degner_flat={entry:319.74,min:59.9133,exit:108.993,offroad_m:5.98903,contacts:2,min_gear:2} suzuka_degner_braked={entry:120.25,min:96.048,exit:152.471,offroad_m:0,contacts:0,min_gear:3} suzuka_130r_flat={entry:322.506,min:322.482,exit:322.489,offroad_m:0,contacts:0,min_gear:8} suzuka_130r_braked={entry:322.506,min:307.412,exit:320.508,offroad_m:0.0459999,contacts:0,min_gear:8} named_corner_proof=0 peak_130r_curvature_per_m=0.0031246 smooth_130r_geometry=1 formula_gear_checks=111 formula_gear_map=1 formula_grip_checks=1665 formula_grip_map=1 formula_dynamics_checks=111 formula_dynamics_map=1 min_yaw_rate_margin=0.0178148 max_corner_grip_scale=2.69333 fixed_tcam=1 spec_field=1 input_contract=1
+
+      Start 23: collision_dynamics_audit
+23/37 Test #23: collision_dynamics_audit ............   Passed    0.70 sec
+      Start 24: ai_spa_racecraft_audit
+24/37 Test #24: ai_spa_racecraft_audit ..............   Passed    0.81 sec
+      Start 25: ai_suzuka_racecraft_audit
+25/37 Test #25: ai_suzuka_racecraft_audit ...........   Passed    0.90 sec
+      Start 26: ai_silverstone_racecraft_audit
+26/37 Test #26: ai_silverstone_racecraft_audit ......   Passed    0.82 sec
+      Start 27: ai_monza_racecraft_audit
+27/37 Test #27: ai_monza_racecraft_audit ............   Passed    0.86 sec
+      Start 28: ai_monza_race_flat_commitment
+28/37 Test #28: ai_monza_race_flat_commitment .......***Failed    0.96 sec
+monza-race-start-flat-audit flat_frames=2995 brake_frames=0 collision_brake_frames=0 lift_frames=367 collision_lift_frames=0 launch_frames=6240 launch_brake_frames=0 launch_lift_frames=961 launch_collision_brake_frames=0 approach_pass_frames=7370 launch_contacts=0 preline_lane_error_m=0 first_launch_brake_distance_m=0 first_launch_brake_ghost_s=0 first_launch_brake_lane_m=0 first_launch_brake_target_lane_m=0 first_launch_brake_speed_kph=0 min_throttle=0.63577 max_brake=0 contacts=18 road_violation_m=0.862756 approach_brakes=1:519.375/222/0/0/319.211/312.375/0.0132371/0.0103817/5608.55/10/0/-1/-1/0,2:110.094/342/290/0/179.409/175.163/-0.872721/-0.7707/1.65295/3/0/3/-1/0,3:514.86/253/0/0/322.747/319.58/3.38393/3.41363/8.16467/1/1/-1/-1/1.10866,4:100.015/405/346/0/185.532/185.815/-0.352878/-0.488935/10.0792/2/0/2/-1/0,5:85.3094/273/204/0/203.286/201.989/1.04072/0.717462/14.7051/4/2/4/6/-1.25,6:70.4798/382/366/0/208.253/206.661/-1.391/-1.15935/16.6785/5/0/5/-1/0,7:374.227/473/435/0/332.546/328.781/0.000262563/6.86492e-05/30.8839/8/0/8/-1/0,8:391.199/448/405/0/317.192/306.92/1.27096/0.606721/8.94327/6/0/6/-1/0,9:364.247/445/428/0/332.086/328.947/-0.717209/-1.28701/10.7447/7/1/7/7/-1.28703,10:69.6235/351/323/0/243.942/219.555/-1.99775/-1.87107/5.20628/9/1/9/9/-1.41628 ok=0
+
+      Start 29: ai_monza_competition_audit
+29/37 Test #29: ai_monza_competition_audit ..........   Passed    3.24 sec
+      Start 30: ai_lead_pursuit_audit
+30/37 Test #30: ai_lead_pursuit_audit ...............   Passed    0.62 sec
+      Start 31: ai_all_track_race_line_commitment
+31/37 Test #31: ai_all_track_race_line_commitment ...   Passed    5.43 sec
+      Start 32: ai_interlagos_racecraft_audit
+32/37 Test #32: ai_interlagos_racecraft_audit .......   Passed    0.87 sec
+      Start 33: spa_control_audit
+33/37 Test #33: spa_control_audit ...................   Passed    0.43 sec
+      Start 34: spa_geometry_audit
+34/37 Test #34: spa_geometry_audit ..................   Passed    0.02 sec
+      Start 35: track_catalog_audit
+35/37 Test #35: track_catalog_audit .................   Passed    0.01 sec
+      Start 36: time_trial_session_audit
+36/37 Test #36: time_trial_session_audit ............   Passed    0.58 sec
+      Start 37: authored_asset_audit
+37/37 Test #37: authored_asset_audit ................   Passed    1.02 sec
+
+89% tests passed, 4 tests failed out of 37
+
+Total Test time (real) =  29.82 sec
+
+The following tests FAILED:
+	  8 - ai_monza_pace_audit (Failed)
+	  9 - ai_monza_race_pace_audit (Failed)
+	 22 - handling_dynamics_audit (Failed)
+	 28 - ai_monza_race_flat_commitment (Failed)
+Errors while running CTest

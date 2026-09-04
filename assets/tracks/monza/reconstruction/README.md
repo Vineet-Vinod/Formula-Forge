@@ -61,8 +61,8 @@ Run from the repository root. Normal builds use the checked-in OSM snapshot and
 do not fetch changing map data. Synchronize the environment once before running
 independent render jobs.
 
-The pinned authoring dependencies are Blender's `bpy` and Shapely. Pillow is
-needed only for contact sheets, and FFmpeg only for encoding the inspection video.
+The pinned authoring dependencies include Blender's `bpy`, Shapely and Pillow.
+FFmpeg is needed only for encoding the inspection video.
 
 ```sh
 uv sync
@@ -91,10 +91,15 @@ ranges can be rendered independently with `--frame-start` and `--frame-end`.
 
 ## Game integration
 
-The reconstruction is a standalone authoring asset. The existing `monza.blend`,
-`monza.glb`, runtime track catalog, physics, handling and gear behavior remain
-unchanged. The existing game layout uses a different coordinate contract.
-Replacing its visible road with this scene requires a separate alignment decision.
+The playable Monza now uses [runtime/monza.glb](runtime/monza.glb), exported from
+this scene. The game's centerline, elevation, width, camber and corner locations
+use the same survey. Run `make run` and select Monza in the circuit menu.
+
+The export retains the editable source scene and uses baked foliage cards,
+simplified repeated details and spatial mesh batches for the game. See the
+[runtime integration notes](runtime/README.md) for regeneration, alignment
+measurements, in-game previews and outstanding AI/handling benchmark failures.
+The older `assets/tracks/monza/monza.glb` is no longer the loaded Monza asset.
 
 Geographic data: copyright OpenStreetMap contributors, ODbL 1.0. Keep this
 attribution with the scene. No external image textures or sponsor artwork are
