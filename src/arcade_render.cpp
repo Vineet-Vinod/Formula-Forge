@@ -82,6 +82,9 @@ void main()
     vec4 texel = texture2D(texture0, fragTexCoord);
     vec4 base = texel*colDiffuse*fragColor;
     if (base.a < alphaCutoff) discard;
+    // A surviving MASK fragment is opaque and writes depth. Leaving fractional
+    // alpha here makes the near-to-far cutout pass depend on draw order.
+    if (alphaCutoff > 0.0) base.a = 1.0;
     vec3 normal = normalize(fragNormal);
     vec3 sun = normalize(sunDirection);
     vec3 viewDirection = normalize(viewPos - fragPosition);

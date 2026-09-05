@@ -12893,7 +12893,15 @@ int runFormulaForge(int argc, char** argv) {
         configFlags |= FLAG_VSYNC_HINT;
     }
     SetConfigFlags(configFlags);
+    // SDL otherwise selects a 16-bit depth buffer on some drivers. Metre-scale
+    // paint and scenery need 24 bits with the existing camera clip planes.
+    const bool videoPrepared = SDL_InitSubSystem(SDL_INIT_VIDEO);
+    if (videoPrepared) SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
     InitWindow(1280, 720, "Formula Forge");
+    if (videoPrepared) SDL_QuitSubSystem(SDL_INIT_VIDEO); // raylib owns its video reference
+    int depthBits = 0;
+    SDL_GL_GetAttribute(SDL_GL_DEPTH_SIZE, &depthBits);
+    std::clog << "Renderer depth buffer: " << depthBits << " bits\n";
     SetExitKey(KEY_NULL);
     ChangeDirectory(launchDir.string().c_str());
     formula_forge::ui::InitializeUiFont("assets/fonts/NotoSansDisplay-Bold.ttf", 72);
