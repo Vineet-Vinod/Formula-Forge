@@ -425,7 +425,8 @@ def surface(section):
                         B.point(q, side * (B.width(q % B.N * B.STEP) / 2 + offset), z)
                     )
             for c in range(3):
-                fs.append((j + c, j + 4 + c, j + 5 + c, j + 1 + c))
+                face = (j + c, j + 4 + c, j + 5 + c, j + 1 + c)
+                fs.append(face if side > 0 else tuple(reversed(face)))
                 mi.append(int((a + k * B.STEP) / 1.5) % 2)
         B.mesh(
             f"{section['name']} kerb {a:.0f}",

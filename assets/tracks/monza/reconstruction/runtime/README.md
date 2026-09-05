@@ -16,7 +16,7 @@ AI steering logic and lap-time acceptance limits have not been retuned.
 The environment includes the pit complex, grandstands, bridges, historic oval,
 service roads, barriers, fencing and all 14,958 placed trees from the Blender
 scene. Eleven painted grid boxes match the game's existing spawn spacing.
-The source `monza_reconstruction.blend` is preserved byte for byte.
+The original integration preserved the source scene. Subsequent [rendering repairs](../../../../../docs/forensics/monza-rendering-fixes.md) update visual geometry in that scene while preserving the road and driving route.
 
 The runtime conversion uses three baked intersecting cards per tree, textured
 fence wire and reduced seat, tyre and grass detail. These are deliberate game
@@ -28,8 +28,8 @@ batches from near to far. Mipmaps and anisotropic filtering reduce shimmer.
 
 | Export measurement | Value |
 | --- | ---: |
-| GLB size | 100,077,116 bytes |
-| Triangles | 1,295,635 |
+| GLB size | 100,442,508 bytes |
+| Triangles | 1,299,424 |
 | Spatial/material meshes | 2,188 |
 | Native alignment samples | 1,536 |
 | Maximum centerline plan error | 0.11423 m |

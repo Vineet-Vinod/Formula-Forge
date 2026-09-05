@@ -290,6 +290,13 @@ def strip(name, inds, left, right, mat, group="Track", lift=0, steps=1, closed=F
             a = j * (steps + 1) + k
             b = ((j + 1) % len(inds)) * (steps + 1) + k
             fs.append((a, b, b + 1, a + 1))
+    # Mirroring lateral offsets reverses winding as well as placement.
+    for index, face in enumerate(fs):
+        normal = (Vector(vs[face[1]]) - Vector(vs[face[0]])).cross(
+            Vector(vs[face[2]]) - Vector(vs[face[0]])
+        )
+        if normal.z < 0:
+            fs[index] = tuple(reversed(face))
     ob = mesh(name, vs, fs, mat, group)
     return ob
 
@@ -925,6 +932,9 @@ def finalize():
                 area.spaces.active.clip_end = 7000
                 area.spaces.active.region_3d.view_distance = 2300
                 area.spaces.active.region_3d.view_location = (500, 300, 0)
+    from repair_monza_rendering import repair
+
+    repair()
     save()
     sc.cycles.samples = 32
     sc.render.resolution_x = 1600
