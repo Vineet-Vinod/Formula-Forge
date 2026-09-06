@@ -14,6 +14,7 @@ The main things to focus on are related to game design.
 
 - Commit regularly
 - Use the Blender Python API using `uv` to make the 3D graphics
+- For circuit sources, authoring, validation and game integration, follow [map.md](map.md).
 
 ## Track distance boards
 
