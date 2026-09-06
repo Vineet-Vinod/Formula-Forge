@@ -151,6 +151,12 @@ def apply():
         data.materials.append(B.MATS['Grass'])
         data.update()
         ob.data = data
+        bm=bmesh.new();bm.from_mesh(data)
+        bmesh.ops.delete(bm,geom=[f for f in bm.faces if f.calc_area()<1e-5],context='FACES')
+        bm.normal_update()
+        for face in bm.faces:
+            if face.normal.z<0: face.normal_flip()
+        bm.to_mesh(data);bm.free();data.update()
         ob['runoff_partition'] = digest()
     prop_report = []
     # Keep existing prop groups, but move misplaced marshal huts behind the actual rail.

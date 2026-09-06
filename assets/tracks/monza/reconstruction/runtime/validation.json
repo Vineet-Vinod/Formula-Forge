@@ -1,9 +1,9 @@
 {
   "glb_valid": true,
   "index_limit": 65535,
-  "triangles": 1140973,
+  "triangles": 1137889,
   "meshes": 2190,
-  "bytes": 91466968,
+  "bytes": 91196844,
   "tree_instances": 14958,
   "grid_slots": 11,
   "source_hash_matches": true,

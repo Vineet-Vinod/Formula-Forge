@@ -1,0 +1,106 @@
+{
+  "layout_sha256": "fe1f2c5d57018a9674a23dfc6247eaad0a1c75653474b670e5d1a7f41b6813c7",
+  "renderer": "Game raylib/SDL, offscreen 24-bit depth; not Blender",
+  "playtest": [
+    {
+      "name": "approach",
+      "progress": 0.0964,
+      "lane": -0.3319,
+      "position": [
+        51.1266,
+        -556.0323
+      ],
+      "barrier_contact": false,
+      "clearance": 8.447,
+      "speed": 70.5318,
+      "frame_path": "build/agent_play_frames/monza_verified_approach.png"
+    },
+    {
+      "name": "entry",
+      "progress": 0.1053,
+      "lane": -1.2579,
+      "position": [
+        54.7776,
+        -607.7104
+      ],
+      "barrier_contact": false,
+      "clearance": 8.4847,
+      "speed": 100.0564,
+      "frame_path": "build/agent_play_frames/monza_verified_entry.png"
+    },
+    {
+      "name": "escape",
+      "progress": 0.1261,
+      "lane": -29.5098,
+      "position": [
+        59.7719,
+        -678.4009
+      ],
+      "barrier_contact": false,
+      "clearance": 11.0549,
+      "speed": 142.6929,
+      "frame_path": "build/agent_play_frames/monza_verified_escape.png"
+    },
+    {
+      "name": "rejoin",
+      "progress": 0.1388,
+      "lane": -7.0154,
+      "position": [
+        65.3577,
+        -757.4635
+      ],
+      "barrier_contact": false,
+      "clearance": 12.4699,
+      "speed": 142.5817,
+      "frame_path": "build/agent_play_frames/monza_verified_rejoin.png"
+    },
+    {
+      "name": "barrier_contact",
+      "state": {
+        "speed_kph": 87.8353,
+        "speed_normalized": 0.2762,
+        "position_m": [
+          56.2349,
+          -809.1841
+        ],
+        "heading_rad": -2.0319,
+        "yaw_rate": -0.3505,
+        "slip_angle_rad": 0.4907,
+        "steer": -0.4,
+        "engine_load": 0.184,
+        "brake_load": 0.0,
+        "gear": 3,
+        "engine_rpm": 7586.6509,
+        "rpm_normalized": 0.6322,
+        "shift_remaining_s": 0.0,
+        "shift_rejected": false,
+        "engine_brake_g": 0.0,
+        "aero_drag_g": 0.0275,
+        "rolling_g": 0.1632,
+        "tire_longitudinal_usage": 0.0137,
+        "lane_m": -14.4186,
+        "road_edge_clearance_m": -10.1657,
+        "barrier_clearance_m": 0.0026,
+        "on_road": false,
+        "barrier_contact": false,
+        "vehicle_contact": false,
+        "contact_impulse": 615.2888,
+        "contact_cause": "barrier",
+        "grounded": true,
+        "elevation_m": 1.807
+      },
+      "frame_path": "build/agent_play_frames/monza_verified_barrier_contact.png"
+    }
+  ],
+  "checks": {
+    "ctest_passed": 7,
+    "ctest_failed": 0,
+    "scene_reapplication_identical": true,
+    "road_vertices_unchanged": true,
+    "escape_route_probes": 300,
+    "barrier_segments_tested": 3158,
+    "open_probes_beyond_old_clamp": 203,
+    "rejoin_progress_recovers": true
+  },
+  "limits": "Aerial approximation; existing estimated elevation retained. Full manual lap still recommended."
+}

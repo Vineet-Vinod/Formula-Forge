@@ -1,7 +1,7 @@
 {
-  "triangles": 1140973,
+  "triangles": 1137889,
   "meshes": 2190,
-  "bytes": 91466968,
+  "bytes": 91196844,
   "bounds_gltf": [
     [
       -650.0,
@@ -9371,7 +9371,7 @@
     "LIB_Paddock_light": 7,
     "LIB_Fence_4m": 3050
   },
-  "source_sha256": "484c225795769f72e9b8872f07de171629d3013d812fb7a51d036990121cd63e",
+  "source_sha256": "e7a8edf1eeec4f134fe6ddaa878e56578747dd8714aabf9e0cdfdfef00074e21",
   "source": "../monza_reconstruction.blend",
   "runtime_lods": "Three orthogonal cutout views baked from each authored tree; wire cutouts retain 170 mm pitch; 120 m spatial batches",
   "authoring_scene_unchanged": true

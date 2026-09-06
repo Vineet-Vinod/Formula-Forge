@@ -30,6 +30,8 @@
 #include "track_types.hpp"
 #include "track_catalog.hpp"
 #include "track_clearance_audit.hpp"
+#include "authored_track_collision.hpp"
+#include "track_data/monza_boundaries.inc"
 
 namespace {
 
@@ -2849,7 +2851,10 @@ public:
         const float speedKphScale = speedKphPerSimulationUnit(track_.layout());
         const float speedKph = std::max(0.0f, player.telemetry.forwardSpeed) * speedKphScale;
         const float roadClearance = (roadCenterLimit(player, point) - std::abs(player.lane)) / unitsPerMeter;
-        const float barrierClearance = (hardBoundaryLaneLimit(player, point) - std::abs(player.lane)) / unitsPerMeter;
+        const float barrierClearance = (track_.layout() == TrackLayoutId::Monza
+            ? authoredBarrierClearance(kMonzaBarriers,player.pos,fromAngle(player.heading),
+                contactHalfLength(player),contactHalfWidth(player),player.elevation,0.8f*unitsPerMeter)
+            : hardBoundaryLaneLimit(player, point) - std::abs(player.lane)) / unitsPerMeter;
         const float lapProgress = raceLapProgress(player) / std::max(track_.totalLength(), 1.0f);
         const ArcadeRacePhase phase = raceFlow_ ? raceFlow_->phase() : ArcadeRacePhase::Grid;
         const ArcadeRacerRaceState* raceState = raceFlow_ ? &raceFlow_->racer(0) : nullptr;
@@ -6299,6 +6304,75 @@ public:
         return ok;
     }
 
+    bool runMonzaBoundaryAudit() {
+        selectMapForCapture(3);
+        Kart3D kart = karts_[0];
+        int failures = 0, beyondOldLimit = 0, probes = 0;
+        const auto checkRoute = [&](std::initializer_list<Vec2> points) {
+            for (auto a=points.begin(), b=a+1; b!=points.end(); ++a,++b) {
+                const Vec2 from{a->x*17,-a->y*17}, to{b->x*17,-b->y*17};
+                const Vec2 direction=normalize(to-from);
+                for (int step=1; step<=30; ++step) {
+                    Vec2 previous=lerp(from,to,float(step-1)/30);
+                    kart.pos=lerp(from,to,float(step)/30);
+                    const Vec2 expected=kart.pos;
+                    kart.heading=angleOf(direction);
+                    kart.nearest=track_.nearestIndex(kart.pos);
+                    kart.progress=track_.pointAtIndex(kart.nearest).progress;
+                    const auto road=track_.sample(kart.progress);
+                    kart.lane=dot(kart.pos-road.pos,road.normal);
+                    kart.elevation=road.elevation;
+                    kart.vel=direction*170;
+                    kart.barrierContact=false;
+                    beyondOldLimit += std::abs(kart.lane)>hardBoundaryLaneLimit(kart,road);
+                    constrainToTrack(kart,&previous);
+                    failures += length(kart.pos-expected)>.01f || kart.barrierContact;
+                    ++probes;
+                }
+            }
+        };
+        checkRoute({{58,565},{61,610},{64,655},{67,700},{72,750}});
+        checkRoute({{776.629f,1242.429f},{822.673f,1243.029f},{869.718f,1246.426f},
+            {882.731f,1270.007f},{890.739f,1284.395f},{914.762f,1298.383f},{930.777f,1308.575f}});
+        kart.pos={58*17,-565*17};
+        kart.nearest=track_.nearestIndex(kart.pos);
+        kart.progress=track_.pointAtIndex(kart.nearest).progress;
+        for (int i=0; i<=200; ++i) {
+            const float y=565+float(i);
+            kart.pos={(58+(y-565)*.07065f)*17,-y*17};
+            updateProgress(kart);
+        }
+        const bool rejoinTracked=kart.progress>760 && std::abs(kart.lane)<15*17;
+        failures += !rejoinTracked;
+        for (const auto& wall:kMonzaBarriers) {
+            const Vec2 t=normalize(wall.b-wall.a), n{-t.y,t.x};
+            const Vec2 mid=(wall.a+wall.b)*.5f;
+            Vec2 previous=mid-n*170;
+            kart.pos=mid+n*170;
+            kart.heading=angleOf(n);
+            kart.vel=n*170;
+            kart.elevation=wall.bottom;
+            kart.barrierContact=false;
+            constrainToTrack(kart,&previous);
+            failures += !kart.barrierContact || dot(kart.pos-mid,n)>0;
+            ++probes;
+        }
+        const bool ok=failures==0 && beyondOldLimit>0;
+        std::cout << "monza-boundary-audit probes=" << probes << " failures=" << failures
+                  << " open_beyond_old_limit=" << beyondOldLimit << " rejoin_tracked=" << rejoinTracked << " ok=" << ok << "\n";
+        return ok;
+    }
+
+    void startMonzaRunoffTest() {
+        selectMapForCapture(3);
+        selectTimeTrialForCapture();
+        setupSectionTour(540.0f/5793.0f,0);
+        auto& player=karts_[0];
+        player.vel={};
+        player.telemetry={};
+        player.boostTimer=0;
+    }
+
     bool runCollisionAudit() {
         track_.rebuild(TrackLayoutId::Monza);
         const CollisionAuditResult3D rearEnd = simulateCollisionScenario("rear_end", 0);
@@ -6506,23 +6580,24 @@ public:
         const bool lowSpeedTiresGrounded = slowKart.grounded && maxSlowPhysicsClearance < 0.001f &&
                                            maxSlowRenderContactError < 0.001f;
 
-        const auto surfaceSample = [&](float progress, float side) {
-            const TrackPoint3D point = track_.sample(progress);
+        // Probe explicit reference locations: Rettifilo escape asphalt, grass outside
+        // Curva Grande, and the Roggia gravel island. Station offsets no longer name surfaces.
+        const auto surfaceSample = [&](Vec2 sourceMeters) {
             Kart3D kart;
             kart.spec = specs_[0];
             kart.tuning = selectedTrackTuning(kart.spec);
-            kart.progress = progress;
-            kart.lane = side * (roadSurfaceHalfWidth(point) +
-                                kMetricCurbWidthMeters * kTrackSimulationUnitsPerMeter +
-                                contactHalfWidth(kart) + 0.50f * kTrackSimulationUnitsPerMeter);
-            kart.pos = point.pos + point.normal * kart.lane;
+            kart.pos = {sourceMeters.x*17,-sourceMeters.y*17};
+            kart.nearest = track_.nearestIndex(kart.pos);
+            kart.progress = track_.pointAtIndex(kart.nearest).progress;
+            const TrackPoint3D point = track_.sample(kart.progress);
+            kart.lane = dot(kart.pos-point.pos,point.normal);
             kart.heading = angleOf(point.tangent);
             kart.vel = point.tangent * 300.0f;
             return std::pair{kart, drivingSurfaceFor(kart, point)};
         };
-        auto [pavedKart, pavedSurface] = surfaceSample(550.0f, 1.0f);
-        auto [grassKart, grassSurface] = surfaceSample(800.0f, 1.0f);
-        auto [gravelKart, gravelSurface] = surfaceSample(1840.0f, 1.0f);
+        auto [pavedKart, pavedSurface] = surfaceSample({61,655});
+        auto [grassKart, grassSurface] = surfaceSample({48,790});
+        auto [gravelKart, gravelSurface] = surfaceSample({838,1269});
         const bool runoffKindsMatch = pavedSurface.kind == DrivingSurface3D::AsphaltRunoff &&
                                       grassSurface.kind == DrivingSurface3D::Grass &&
                                       gravelSurface.kind == DrivingSurface3D::Gravel;
@@ -7359,7 +7434,18 @@ private:
         const float oldRaceProgress = progressAhead(track_.startProgress(), kart.progress, track_.totalLength());
         kart.previousProgress = kart.progress;
         if (isMetricCircuit(track_.layout())) {
-            const TrackProjection3D projection = track_.projectNear(kart.pos, kart.nearest, 6);
+            TrackProjection3D projection = track_.projectNear(kart.pos, kart.nearest, 6);
+            if (track_.layout() == TrackLayoutId::Monza) {
+                const auto local = track_.sample(projection.progress);
+                const float distance = length(kart.pos-local.pos);
+                if (distance > roadSurfaceHalfWidth(local) + kTrackSimulationUnitsPerMeter) {
+                    // Open chicane escapes bypass more than the normal six-segment search.
+                    // Limit reacquisition to the surrounding 300 m, not another part of the lap.
+                    const auto nearby = track_.projectNear(kart.pos,kart.nearest,80);
+                    if (length(kart.pos-track_.sample(nearby.progress).pos) +
+                        2.0f*kTrackSimulationUnitsPerMeter < distance) projection = nearby;
+                }
+            }
             kart.progress = projection.progress;
             kart.nearest = projection.nearest;
             kart.lane = projection.lane;
@@ -10951,6 +11037,17 @@ private:
             response.kind = DrivingSurface3D::Curb;
         }
 
+        if (track_.layout() == TrackLayoutId::Monza && looseCoverage > 0.001f) {
+            // Surface identity comes from the exported runoff mesh, not a station-width guess.
+            response.kind = DrivingSurface3D::Grass;
+            for (const auto& triangle : kMonzaRunoffTriangles) {
+                if (insideAuthoredSurface(kart.pos, triangle)) {
+                    response.kind = triangle.asphalt ? DrivingSurface3D::AsphaltRunoff : DrivingSurface3D::Gravel;
+                    break;
+                }
+            }
+        }
+
         ArcadeSurface& surface = response.physics;
         const float calibratedGrip = formulaCornerGripScale(kart, center);
         surface.grip = lerp(calibratedGrip, 1.0f, tireCoverage);
@@ -11037,11 +11134,47 @@ private:
 
         emitFx(kart, center, offroad, dt);
         updateProgress(kart);
-        constrainToTrack(kart);
+        constrainToTrack(kart, &kart.previousRenderPos);
         updateProgress(kart);
     }
 
-    void constrainToTrack(Kart3D& kart) {
+    void constrainToAuthoredMonza(Kart3D& kart, Vec2 start) {
+        Vec2 end = kart.pos;
+        bool contacted = false;
+        for (int iteration = 0; iteration < 4; ++iteration) {
+            const auto hit = firstAuthoredBarrierHit(kMonzaBarriers, start, end,
+                fromAngle(kart.heading), contactHalfLength(kart), contactHalfWidth(kart),
+                kart.elevation, 0.8f * kTrackSimulationUnitsPerMeter);
+            if (!hit.hit) break;
+            contacted = true;
+            const Vec2 contact = lerp(start, end, hit.time) + hit.normal *
+                (hit.penetration + 0.02f * kTrackSimulationUnitsPerMeter);
+            Vec2 remaining = (end-start) * (1.0f-hit.time);
+            remaining -= hit.normal * std::min(0.0f, dot(remaining,hit.normal));
+            start = contact;
+            end = contact + remaining;
+            const float normalVelocity = dot(kart.vel,hit.normal);
+            if (normalVelocity < 0.0f) {
+                const float incidence = std::clamp(-normalVelocity / std::max(1.0f,length(kart.vel)),0.0f,1.0f);
+                const Vec2 tangent{-hit.normal.y,hit.normal.x};
+                kart.vel = tangent * (dot(kart.vel,tangent) * lerp(0.96f,0.18f,incidence*incidence)) -
+                    hit.normal * (normalVelocity * lerp(0.06f,0.015f,incidence));
+                kart.yawRate *= lerp(0.92f,0.84f,incidence);
+                if (!kart.barrierContact) kart.contactTimer = std::max(kart.contactTimer,0.18f);
+                kart.contactImpulse = std::max(kart.contactImpulse,-normalVelocity*kartMass(kart));
+                kart.contactCause = ContactCause3D::Barrier;
+                kart.vehicleContact = false;
+            }
+        }
+        kart.pos = end;
+        kart.barrierContact = contacted;
+    }
+
+    void constrainToTrack(Kart3D& kart, const Vec2* previousPosition = nullptr) {
+        if (track_.layout() == TrackLayoutId::Monza) {
+            constrainToAuthoredMonza(kart, previousPosition ? *previousPosition : kart.pos);
+            return;
+        }
         const TrackPoint3D center = isMetricCircuit(track_.layout())
                                         ? track_.sample(kart.progress)
                                         : track_.pointAtIndex(kart.nearest);
@@ -12828,7 +12961,9 @@ int runFormulaForge(int argc, char** argv) {
     } else if (racecraftAuditInterlagos) {
         racecraftAuditMap = 4;
     }
-    const bool windowed = agentPlay || hasArg(argc, argv, "--windowed") || hasArg(argc, argv, "--smoke-render") || assetAudit ||
+    const bool monzaBoundaryAudit = hasArg(argc, argv, "--monza-boundary-audit");
+    const bool monzaRunoffTest = hasArg(argc, argv, "--monza-runoff-test");
+    const bool windowed = monzaBoundaryAudit || monzaRunoffTest || agentPlay || hasArg(argc, argv, "--windowed") || hasArg(argc, argv, "--smoke-render") || assetAudit ||
                           hasArg(argc, argv, "--diagnose-controller") || hasArg(argc, argv, "--handling-audit") ||
                           hasArg(argc, argv, "--race-audit") || racecraftAudit || monzaCompetitionAudit ||
                           leadPursuitAudit ||
@@ -12879,7 +13014,7 @@ int runFormulaForge(int argc, char** argv) {
                                  leadPursuitAudit ||
                                  aiPaceAudit || aiRacePaceAudit ||
                                  aiPhysicsParityAudit || timeTrialAudit || gridAudit ||
-                                 collisionAudit || spaControlAudit || terrainAudit || diagnoseController ||
+                                 collisionAudit || monzaBoundaryAudit || spaControlAudit || terrainAudit || diagnoseController ||
                                  monzaMinimumTimeAudit;
     const std::filesystem::path launchDir = std::filesystem::current_path();
     const std::filesystem::path captureDir = launchDir / "build" / "playtest_frames";
@@ -12924,7 +13059,7 @@ int runFormulaForge(int argc, char** argv) {
                               monzaCompetitionAudit ||
                               leadPursuitAudit ||
                               aiPaceAudit || aiRacePaceAudit ||
-                              aiPhysicsParityAudit || timeTrialAudit || gridAudit || collisionAudit || spaControlAudit || terrainAudit || perfAudit || diagnoseController;
+                              aiPhysicsParityAudit || timeTrialAudit || gridAudit || collisionAudit || monzaBoundaryAudit || spaControlAudit || terrainAudit || perfAudit || diagnoseController;
     Game3D game(!automatedRun);
     bool runtimeCleaned = false;
     const auto cleanupRuntime = [&]() {
@@ -12943,6 +13078,7 @@ int runFormulaForge(int argc, char** argv) {
     if (capturePlaytest || captureDrivenLap || captureTimeTrial || captureSectionTour || captureMapGallery || perfAudit) {
         std::filesystem::create_directories(captureDir);
     }
+    if (monzaRunoffTest) game.startMonzaRunoffTest();
     if (agentPlay) {
         const int result = runAgentPlaySession(game, launchDir / "build" / "agent_play_frames");
         cleanupRuntime();
@@ -13075,6 +13211,11 @@ int runFormulaForge(int argc, char** argv) {
                   << " distance=" << distance << " results=" << resultsShown
                   << " home=" << homeWorks << "\n";
         return framesDriven < kMaxTimeTrialCaptureFrames && resultsShown && homeWorks ? 0 : 1;
+    }
+    if (monzaBoundaryAudit) {
+        const bool ok = game.runMonzaBoundaryAudit();
+        cleanupRuntime();
+        return ok ? 0 : 1;
     }
     if (collisionAudit) {
         const bool ok = game.runCollisionAudit();
