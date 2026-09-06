@@ -2454,7 +2454,7 @@ public:
         updateAudio(dt, playerInput, !raceFinished_);
     }
 
-    void render(float fps, bool hasController, const char* capturePath = nullptr, float interpolation = 1.0f) {
+    void render(float fps, bool hasController, const char* capturePath = nullptr, float interpolation = 1.0f, bool fixedCaptureCamera = false) {
         BeginDrawing();
         if (mode_ == Mode::Loading) {
             ClearBackground(Color{3, 3, 7, 255});
@@ -2497,7 +2497,7 @@ public:
         }
         renderAlpha_ = std::clamp(interpolation, 0.0f, 1.0f);
         const Camera simulationCamera = camera_;
-        if (mode_ == Mode::Race || mode_ == Mode::Pause || mode_ == Mode::Results) {
+        if (!fixedCaptureCamera && (mode_ == Mode::Race || mode_ == Mode::Pause || mode_ == Mode::Results)) {
             camera_ = raceTcam(renderAlpha_);
         }
         const bool garageBackdrop = mode_ == Mode::Garage && IsTextureValid(garageBackgroundTexture_);
@@ -6361,6 +6361,19 @@ public:
         std::cout << "monza-boundary-audit probes=" << probes << " failures=" << failures
                   << " open_beyond_old_limit=" << beyondOldLimit << " rejoin_tracked=" << rejoinTracked << " ok=" << ok << "\n";
         return ok;
+    }
+
+    void setupMonzaMapReview(float station, bool lookRight) {
+        selectTimeTrialForCapture();
+        setupSectionTour(station/5793.0f,0);
+        karts_[0].vel={};
+        karts_[0].telemetry={};
+        const auto road=track_.sample(station);
+        camera_.position=toWorld(road.pos-road.tangent*(5*17),road.elevation+2.2f*17);
+        camera_.target=toWorld(road.pos+road.tangent*(22*17)+road.normal*(lookRight?16*17:0),
+                              road.elevation+1.3f*17);
+        camera_.up={0,1,0};
+        camera_.fovy=65;
     }
 
     void startMonzaRunoffTest() {
@@ -12980,7 +12993,7 @@ int runFormulaForge(int argc, char** argv) {
                           hasArg(argc, argv, "--capture-lap") ||
                           hasArg(argc, argv, "--capture-driven-lap") || hasArg(argc, argv, "--capture-spa-lap") ||
                           hasArg(argc, argv, "--capture-time-trial") ||
-                          hasArg(argc, argv, "--capture-section-tour") || hasArg(argc, argv, "--capture-monza-tour") || hasArg(argc, argv, "--capture-spa-tour") ||
+                          hasArg(argc, argv, "--capture-monza-map-review") || hasArg(argc, argv, "--capture-section-tour") || hasArg(argc, argv, "--capture-monza-tour") || hasArg(argc, argv, "--capture-spa-tour") ||
                           hasArg(argc, argv, "--capture-suzuka-tour") ||
                           hasArg(argc, argv, "--capture-silverstone-tour") ||
                           hasArg(argc, argv, "--capture-interlagos-tour") ||
@@ -12990,7 +13003,8 @@ int runFormulaForge(int argc, char** argv) {
     const bool captureSpaLap = hasArg(argc, argv, "--capture-spa-lap");
     const bool captureDrivenLap = hasArg(argc, argv, "--capture-lap") || hasArg(argc, argv, "--capture-driven-lap") || captureSpaLap;
     const bool captureTimeTrial = hasArg(argc, argv, "--capture-time-trial");
-    const bool captureMonzaTour = hasArg(argc, argv, "--capture-monza-tour");
+    const bool captureMonzaReview = hasArg(argc, argv, "--capture-monza-map-review");
+    const bool captureMonzaTour = hasArg(argc, argv, "--capture-monza-tour") || captureMonzaReview;
     const bool captureSpaTour = hasArg(argc, argv, "--capture-spa-tour");
     const bool captureSuzukaTour = hasArg(argc, argv, "--capture-suzuka-tour");
     const bool captureSilverstoneTour = hasArg(argc, argv, "--capture-silverstone-tour");
@@ -13253,6 +13267,20 @@ int runFormulaForge(int argc, char** argv) {
             game.selectMapForCapture(2);
         } else if (captureInterlagosTour) {
             game.selectMapForCapture(4);
+        }
+        if (captureMonzaReview) {
+            const std::array<float,16> stations{180,250,290,330,390,460,520,5300,5400,120,375,1580,2070,2415,3395,4585};
+            for (size_t i=0;i<stations.size();++i) {
+                game.setupMonzaMapReview(stations[i],i<9);
+                const auto path=std::filesystem::path("../playtest_frames")/TextFormat("monza_map_review_%02d.png",int(i));
+                game.render(60.0f,true,path.string().c_str());
+                if (i<7) {
+                    const auto sidePath=std::filesystem::path("../playtest_frames")/TextFormat("monza_map_review_right_%02d.png",int(i));
+                    game.render(60.0f,true,sidePath.string().c_str(),1.0f,true);
+                }
+            }
+            cleanupRuntime();
+            return 0;
         }
         static constexpr std::array<float, 10> kTourPhases = {0.035f, 0.102f, 0.135f, 0.245f, 0.355f,
                                                               0.465f, 0.575f, 0.690f, 0.805f, 0.920f};

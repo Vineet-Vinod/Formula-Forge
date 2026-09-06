@@ -1,7 +1,7 @@
 {
-  "source_sha256": "fe1f2c5d57018a9674a23dfc6247eaad0a1c75653474b670e5d1a7f41b6813c7",
+  "source_sha256": "413f524e79ae07cb2cef929783b6ad10f001f5f0e32ed13573b4d65281865bb5",
   "paths": 10,
-  "contact_segments": 3158,
+  "contact_segments": 3242,
   "surfaces": 12,
   "road_barrier_overlap_m2": 0,
   "elevation": "Existing estimated terrain, not an FIA measured elevation survey"

@@ -1,0 +1,7 @@
+{
+  "marker_count": 20,
+  "policy": "approach-length-v1",
+  "marker_stations_and_facing_valid": true,
+  "historic_straight_max_clearance_m": 0.03500002931518631,
+  "pit_approach_kerbs_removed": true
+}

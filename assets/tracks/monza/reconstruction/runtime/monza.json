@@ -1,7 +1,7 @@
 {
-  "triangles": 1137889,
-  "meshes": 2190,
-  "bytes": 91196844,
+  "triangles": 1133170,
+  "meshes": 2186,
+  "bytes": 90602976,
   "bounds_gltf": [
     [
       -650.0,
@@ -9352,7 +9352,7 @@
         0.06675004959106445
       ]
     ],
-    "boundary_source_sha256": "fe1f2c5d57018a9674a23dfc6247eaad0a1c75653474b670e5d1a7f41b6813c7"
+    "boundary_source_sha256": "413f524e79ae07cb2cef929783b6ad10f001f5f0e32ed13573b4d65281865bb5"
   },
   "instances": {
     "LIB_Grass_tuft": 3044,
@@ -9369,9 +9369,9 @@
     "LIB_Tree_10": 1776,
     "LIB_Tree_11": 1785,
     "LIB_Paddock_light": 7,
-    "LIB_Fence_4m": 3050
+    "LIB_Fence_4m": 3025
   },
-  "source_sha256": "e7a8edf1eeec4f134fe6ddaa878e56578747dd8714aabf9e0cdfdfef00074e21",
+  "source_sha256": "3b953d42bd0102e3099ac810379f6e49aedd0300fc97d48f65f872dacfeee70f",
   "source": "../monza_reconstruction.blend",
   "runtime_lods": "Three orthogonal cutout views baked from each authored tree; wire cutouts retain 170 mm pitch; 120 m spatial batches",
   "authoring_scene_unchanged": true

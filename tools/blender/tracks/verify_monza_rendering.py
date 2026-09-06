@@ -43,7 +43,10 @@ def main():
     data = {name: triangles(bpy.data.objects[name]) for name in sources}
     pairs = overlaps([{"name": n, "exported": True} for n in sources], data)
     paint = [p for p in pairs if p["a"] in sources[2:] and p["b"] in sources[:2]]
-    assert len(paint) >= 5
+    # Pit entry/exit overlays are intentionally gone; each retained paint object
+    # must still lie above its underlying asphalt.
+    for name in sources[2:]:
+        assert any(p["a"] == name for p in paint), name
     for p in paint:
         assert p["min_a_minus_b_m"] > 0.005, (p["a"], p["b"], p["min_a_minus_b_m"])
     apron = triangles(bpy.data.objects["Rettifilo green apron 609"])

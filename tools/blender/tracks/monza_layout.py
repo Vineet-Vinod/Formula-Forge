@@ -27,6 +27,9 @@ def digest():
 def apply():
     E.B = B
     layout = json.loads(PATH.read_text())
+    import monza_map_details
+    monza_map_details.B = B
+    monza_map_details.repair_geometry()
     for ob in bpy.data.objects:
         if 'layout_prop_origin' in ob:
             ob.location = ob['layout_prop_origin']
@@ -201,6 +204,7 @@ def apply():
         ob.data=data;ob['instance_count']=len(keep)
         prop_report.append(dict(name=ob.name,removed_instances=len(original.vertices)-len(keep)))
     (qa/'layout_props.json').write_text(json.dumps(prop_report,indent=2)+'\n')
+    monza_map_details.build_markers(layout)
     bpy.context.scene['monza_layout_sha256'] = digest()
     bpy.context.scene['monza_contact_segments_m'] = json.dumps(segments)
     export_contact()

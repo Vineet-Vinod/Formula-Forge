@@ -14,3 +14,9 @@ The main things to focus on are related to game design.
 
 - Commit regularly
 - Use the Blender Python API using `uv` to make the 3D graphics
+
+## Track distance boards
+
+For new or revised maps, follow [the braking-marker policy](docs/track_braking_markers.md).
+Use centreline distance to corner entry, choose the sequence from the usable approach
+length, group linked corners, and verify visibility in the game renderer.
