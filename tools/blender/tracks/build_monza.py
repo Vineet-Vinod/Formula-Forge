@@ -854,6 +854,9 @@ def finalize():
         ob.data.update()
     refit_runoff_surfaces()
     refit_service_crossings()
+    import monza_layout
+    monza_layout.B = sys.modules[__name__]
+    monza_layout.apply()
     driver_stations = [L - 280, 570, 1010, 1775, 2165, 2500, 3190, 3570, 4140, 4790]
     for index, s in enumerate(driver_stations):
         ob = bpy.data.objects["DRIVER | " + SURVEY["sections"][index]["name"]]

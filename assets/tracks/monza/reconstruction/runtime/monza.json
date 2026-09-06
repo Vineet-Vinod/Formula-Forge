@@ -1,7 +1,7 @@
 {
-  "triangles": 1299424,
-  "meshes": 2188,
-  "bytes": 100442508,
+  "triangles": 1140973,
+  "meshes": 2190,
+  "bytes": 91466968,
   "bounds_gltf": [
     [
       -650.0,
@@ -9351,12 +9351,11 @@
         -3.7506279945373535,
         0.06675004959106445
       ]
-    ]
+    ],
+    "boundary_source_sha256": "fe1f2c5d57018a9674a23dfc6247eaad0a1c75653474b670e5d1a7f41b6813c7"
   },
   "instances": {
-    "LIB_Armco_4m": 2867,
-    "LIB_Fence_4m": 2867,
-    "LIB_Grass_tuft": 3262,
+    "LIB_Grass_tuft": 3044,
     "LIB_Tree_00": 711,
     "LIB_Tree_01": 714,
     "LIB_Tree_02": 687,
@@ -9369,11 +9368,10 @@
     "LIB_Tree_09": 1790,
     "LIB_Tree_10": 1776,
     "LIB_Tree_11": 1785,
-    "LIB_Tyre_stack": 225,
     "LIB_Paddock_light": 7,
-    "LIB_Bollard": 3
+    "LIB_Fence_4m": 3050
   },
-  "source_sha256": "7e1bfe74c61cb8106d47e6edf9ac732075133451c7177d7ac4e6a46d1a5b95f2",
+  "source_sha256": "484c225795769f72e9b8872f07de171629d3013d812fb7a51d036990121cd63e",
   "source": "../monza_reconstruction.blend",
   "runtime_lods": "Three orthogonal cutout views baked from each authored tree; wire cutouts retain 170 mm pitch; 120 m spatial batches",
   "authoring_scene_unchanged": true

@@ -459,6 +459,9 @@ def export():
     OUT.mkdir(parents=True, exist_ok=True)
     B.load()
     alignment = route()
+    import monza_layout
+    monza_layout.export_contact()
+    alignment["boundary_source_sha256"] = monza_layout.digest()
     cards = foliage_atlas()
     # Reload restores visibility, lighting and evaluated geometry after baking cards.
     B.load()

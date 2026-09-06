@@ -1,5 +1,7 @@
 # Monza geographic data exploration
 
+The user subsequently clarified an aerial-scale accuracy target and authorized implementation. See [the implemented layout recipe and limits](monza-layout-update.md); the stricter acquisition proposal below is historical.
+
 Explored 5 September 2026. This pass changes no scene, export, collision geometry or gameplay code.
 
 The requirement is accuracy throughout the area bounded by the actual safety barriers, with best-effort reconstruction outside. This investigation compares public services, dated imagery, engineering sources and commercial acquisition routes. It is a broad source assessment, not an exhaustive test of every geographic API or a completed survey.

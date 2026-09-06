@@ -2,124 +2,76 @@
   "protected_road_area_m2": 73062.15037504071,
   "surfaces": [
     {
-      "name": "Rettifilo escape road",
-      "original_area_m2": 327.0196115334984,
-      "retained_area_m2": 160.68458634480808,
-      "triangles": 23
+      "name": "REFERENCE Rettifilo escape road",
+      "original_area_m2": 3885.231650038855,
+      "retained_area_m2": 2682.424191149327,
+      "triangles": 244
     },
     {
-      "name": "Mapped gravel 231025694",
-      "original_area_m2": 5851.090439811349,
-      "retained_area_m2": 5829.679509789163,
-      "triangles": 203
+      "name": "REFERENCE Roggia escape road",
+      "original_area_m2": 2160.630033299327,
+      "retained_area_m2": 2125.560143972749,
+      "triangles": 29
     },
     {
-      "name": "Mapped gravel 231025696",
-      "original_area_m2": 4243.5740987583995,
-      "retained_area_m2": 4164.637837835468,
-      "triangles": 146
+      "name": "REFERENCE Alboreto outer asphalt",
+      "original_area_m2": 5440.781325275486,
+      "retained_area_m2": 4559.945393814185,
+      "triangles": 172
     },
     {
-      "name": "Mapped gravel 231025697",
-      "original_area_m2": 755.4611352980137,
-      "retained_area_m2": 627.4903503920893,
-      "triangles": 134
+      "name": "REFERENCE Alboreto outer gravel",
+      "original_area_m2": 5580.630686989389,
+      "retained_area_m2": 5580.630686989389,
+      "triangles": 21
     },
     {
-      "name": "Mapped gravel 231026021",
-      "original_area_m2": 11412.004490004154,
-      "retained_area_m2": 11116.409576195167,
-      "triangles": 609
+      "name": "REFERENCE Ascari east gravel",
+      "original_area_m2": 1095.9898283430375,
+      "retained_area_m2": 660.9525912873104,
+      "triangles": 259
     },
     {
-      "name": "Mapped gravel 231026022",
-      "original_area_m2": 1150.202998797642,
-      "retained_area_m2": 970.5941295516177,
-      "triangles": 128
+      "name": "REFERENCE Ascari west gravel",
+      "original_area_m2": 6173.481849011965,
+      "retained_area_m2": 4866.656767004527,
+      "triangles": 237
     },
     {
-      "name": "Mapped gravel 231026023",
-      "original_area_m2": 1310.9808731649537,
-      "retained_area_m2": 1279.8202294720309,
-      "triangles": 70
+      "name": "REFERENCE Curva Grande outer gravel",
+      "original_area_m2": 19749.4329527379,
+      "retained_area_m2": 11063.639723089467,
+      "triangles": 1452
     },
     {
-      "name": "Mapped gravel 231026026",
-      "original_area_m2": 3451.9577511525713,
-      "retained_area_m2": 3449.163447000921,
-      "triangles": 40
+      "name": "REFERENCE Lesmo one gravel",
+      "original_area_m2": 8015.803327567875,
+      "retained_area_m2": 4265.828476316692,
+      "triangles": 755
     },
     {
-      "name": "Mapped gravel 231026028",
-      "original_area_m2": 1281.761791706318,
-      "retained_area_m2": 1246.0195508674765,
-      "triangles": 106
+      "name": "REFERENCE Lesmo two gravel",
+      "original_area_m2": 5694.79546449706,
+      "retained_area_m2": 2901.315105375337,
+      "triangles": 485
     },
     {
-      "name": "Mapped gravel 231026218",
-      "original_area_m2": 6008.890851666409,
-      "retained_area_m2": 6008.890851666409,
-      "triangles": 25
+      "name": "REFERENCE Rettifilo east gravel",
+      "original_area_m2": 941.8009586127009,
+      "retained_area_m2": 616.2208150465606,
+      "triangles": 97
     },
     {
-      "name": "Mapped gravel 231260688",
-      "original_area_m2": 1508.2082644547336,
-      "retained_area_m2": 1446.514497892696,
-      "triangles": 110
+      "name": "REFERENCE Rettifilo west gravel",
+      "original_area_m2": 1177.578455938492,
+      "retained_area_m2": 1171.5394221649863,
+      "triangles": 11
     },
     {
-      "name": "Alboreto Asphalt runoff",
-      "original_area_m2": 5114.552967574098,
-      "retained_area_m2": 4807.753888850512,
-      "triangles": 644
-    },
-    {
-      "name": "Alboreto Gravel runoff",
-      "original_area_m2": 14112.555105276318,
-      "retained_area_m2": 9604.541739100769,
-      "triangles": 1053
-    },
-    {
-      "name": "Ascari Gravel runoff",
-      "original_area_m2": 6504.7748315739445,
-      "retained_area_m2": 3810.611819365995,
-      "triangles": 547
-    },
-    {
-      "name": "Ascari Gravel runoff.001",
-      "original_area_m2": 4156.755468881552,
-      "retained_area_m2": 3046.462721673491,
-      "triangles": 587
-    },
-    {
-      "name": "Lesmo_1 Gravel runoff",
-      "original_area_m2": 5931.558135889471,
-      "retained_area_m2": 1524.522156081971,
-      "triangles": 233
-    },
-    {
-      "name": "Lesmo_2 Gravel runoff",
-      "original_area_m2": 4478.121308203787,
-      "retained_area_m2": 1018.8005365566924,
-      "triangles": 245
-    },
-    {
-      "name": "Rettifilo Asphalt runoff",
-      "original_area_m2": 3236.1097399301657,
-      "retained_area_m2": 2435.0413928517273,
-      "triangles": 352
-    },
-    {
-      "name": "Roggia Gravel runoff",
-      "original_area_m2": 3760.5909265756045,
-      "retained_area_m2": 3730.253685218769,
-      "triangles": 365
-    },
-    {
-      "name": "Serraglio Gravel runoff",
-      "original_area_m2": 239.32494627684355,
-      "retained_area_m2": 91.70459363866492,
-      "triangles": 12
+      "name": "REFERENCE Roggia inside gravel",
+      "original_area_m2": 1592.925143647939,
+      "retained_area_m2": 1245.422465535943,
+      "triangles": 16
     }
   ]
 }
