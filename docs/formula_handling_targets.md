@@ -2,7 +2,7 @@
 
 This document explains where handling targets live, how the game uses them,
 and how to validate an authorized handling change. Follow [AGENTS.md](../AGENTS.md)
-for scope; map maintenance follows [map.md](../map.md).
+for scope; map maintenance follows [the circuit-map skill](../.agents/map/SKILL.md).
 
 ## Targets and tuning
 

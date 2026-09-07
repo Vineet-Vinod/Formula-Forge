@@ -2,8 +2,9 @@
 
 ## Monza map
 
-The [Monza workflow](../../../map.md) uses geographic observations and the
-official 5,793 m specification. Like the other tracks, `assets/tracks/monza/`
+For general authoring guidance, see the [circuit-map skill](../../../.agents/map/SKILL.md).
+Monza uses geographic observations and the official 5,793 m specification.
+Like the other tracks, `assets/tracks/monza/`
 contains only `monza.blend`, `monza.glb`, `monza.json` and `monza_preview.png`.
 Required survey, layout and OSM inputs live in `sources/monza/` beside the tools.
 Generated reports and review media go to `build/monza/qa/`; texture baking
