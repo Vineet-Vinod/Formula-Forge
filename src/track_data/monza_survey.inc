@@ -1,4 +1,4 @@
-// Generated from reconstruction/survey.json by export_monza_runtime.py.
+// Generated from assets/tracks/monza/survey.json by export_monza_runtime.py.
 constexpr TrackControlPoint kMonzaCenterline[] = {
     {0.000000f, 0.000000f},
     {0.322105f, 2.982670f},

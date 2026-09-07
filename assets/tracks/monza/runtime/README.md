@@ -3,6 +3,13 @@
 Run `make run` from the repository root and select Monza. The game loads this
 directory's `monza.glb` and the route generated from the same reconstruction.
 
+This is the main Monza asset at `assets/tracks/monza/runtime/monza.glb`.
+Its editable source is [../monza.blend](../monza.blend). There is no separate
+procedural Monza asset. The export measurements and benchmark failures below
+describe the original integration; use [monza.json](monza.json),
+[validation.json](validation.json) and the [latest map-detail checks](../qa/map_detail_game_validation.json)
+for the corresponding recorded revisions.
+
 ![Monza pit straight in Formula Forge](qa/pit_straight.jpg)
 
 ## What is integrated
@@ -16,7 +23,7 @@ AI steering logic and lap-time acceptance limits have not been retuned.
 The environment includes the pit complex, grandstands, bridges, historic oval,
 service roads, barriers, fencing and all 14,958 placed trees from the Blender
 scene. Eleven painted grid boxes match the game's existing spawn spacing.
-The original integration preserved the source scene. Subsequent [rendering repairs](../../../../../docs/forensics/monza-rendering-fixes.md) update visual geometry in that scene while preserving the road and driving route.
+The original integration preserved the source scene. Subsequent [rendering repairs](../../../../docs/forensics/monza-rendering-fixes.md) update visual geometry in that scene while preserving the road and driving route.
 
 The runtime conversion uses three baked intersecting cards per tree, textured
 fence wire and reduced seat, tyre and grass detail. These are deliberate game

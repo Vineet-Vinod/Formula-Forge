@@ -1,6 +1,10 @@
-# Monza circuit reconstruction
+# Monza map
 
-Open **monza_reconstruction.blend** in Blender 5.0 or later. Coordinates are
+This surveyed scene is the sole Monza map. `monza.blend` is the editable source;
+`runtime/monza.glb` is its game export. The former procedural Monza assets have
+been removed. Source data, scripts and runtime loading use this directory.
+
+Open **monza.blend** in Blender 5.0 or later. Coordinates are
 metres, with X east, Y north and Z up. The origin is the mapped control line at
 9.2811729 E, 45.6189632 N. The horizontal lap measures 5,793.000 m and the modeled
 spatial centerline measures 5,793.010 m.
@@ -83,7 +87,7 @@ uv run --no-sync python tools/blender/tracks/build_monza.py --phase review
 uv run --no-sync python tools/blender/tracks/build_monza.py --phase lap
 uv run --no-sync --with pillow python tools/blender/tracks/monza_review_media.py
 uv run --no-sync --with pillow python tools/blender/tracks/monza_review_media.py --lap
-ffmpeg -y -framerate 24 -i assets/tracks/monza/reconstruction/qa/lap/%04d.png -c:v libx264 -crf 19 -pix_fmt yuv420p assets/tracks/monza/reconstruction/qa/monza_lap.mp4
+ffmpeg -y -framerate 24 -i assets/tracks/monza/qa/lap/%04d.png -c:v libx264 -crf 19 -pix_fmt yuv420p assets/tracks/monza/qa/monza_lap.mp4
 ```
 
 The raw lap PNGs are regeneration intermediates and are ignored by Git. Frame
@@ -99,7 +103,7 @@ The export retains the editable source scene and uses baked foliage cards,
 simplified repeated details and spatial mesh batches for the game. See the
 [runtime integration notes](runtime/README.md) for regeneration, alignment
 measurements, in-game previews and outstanding AI/handling benchmark failures.
-The older `assets/tracks/monza/monza.glb` is no longer the loaded Monza asset.
+The game loads `assets/tracks/monza/runtime/monza.glb`.
 
 Geographic data: copyright OpenStreetMap contributors, ODbL 1.0. Keep this
 attribution with the scene. No external image textures or sponsor artwork are

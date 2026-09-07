@@ -4,13 +4,13 @@ Implemented 5 September 2026. The accepted accuracy target is correct barrier pl
 
 ## What changed
 
-`assets/tracks/monza/reconstruction/layout.json` records explicit barrier polylines, runoff polygons, source references, consultation-sheet bounds and confidence. The primary spatial reference is the regional AGEA 2024 aerial imagery. FIA competition notes corroborate the Rettifilo and Roggia escape-route connectivity. The existing OSM centreline, kerb station placements and surroundings remain the base map.
+`assets/tracks/monza/layout.json` records explicit barrier polylines, runoff polygons, source references, consultation-sheet bounds and confidence. The primary spatial reference is the regional AGEA 2024 aerial imagery. FIA competition notes corroborate the Rettifilo and Roggia escape-route connectivity. The existing OSM centreline, kerb station placements and surroundings remain the base map.
 
 Ten barrier paths replace the old centreline-offset fence generator in the final scene. The first protection line surrounds the runoff, rather than following the bends of the racing line through an escape area. The pit separator now joins the adjacent inner barriers to close pit access, as requested on 6 September. This intentional departure from the aerial reference is recorded in the layout provenance. Reference polygons replace the inferred gravel/asphalt strips at the chicanes, Lesmos, Curva Grande and Alboreto. The approach/exit links between reference sheets are explicit points too; the builder does not close gaps automatically.
 
 The game reads contact segments generated from the same applied Blender barrier coordinates and thicknesses. Swept rectangle contact preserves finite wall ends, checks vertical overlap and catches a car crossing a thin wall in one frame. Monza no longer uses the generic six-metre road-edge clamp for physical contact. Off-track Monza projection also searches the surrounding 300 m of track so a car using a chicane escape can reacquire the exit. The usual local projection remains in use on the racing surface. Other tracks keep their existing boundaries. Existing impact-response coefficients and vehicle tuning are retained. AI planning still uses its existing road-relative limits; it does not plan overtakes through the escape roads.
 
-Runoff surface classification uses triangles exported from the actual runoff mesh. The grass sheets are cut away from these surfaces with a 2 mm numerical margin, and grass tuft instances are removed there. Two inferred marshal huts that occupied the revised runoff are moved behind the nearest outer barrier. The old offset-based impact tyre stacks are removed. Object names, original bounds and prop movements are recorded under `reconstruction/qa/layout_*.json`.
+Runoff surface classification uses triangles exported from the actual runoff mesh. The grass sheets are cut away from these surfaces with a 2 mm numerical margin, and grass tuft instances are removed there. Two inferred marshal huts that occupied the revised runoff are moved behind the nearest outer barrier. The old offset-based impact tyre stacks are removed. Object names, original bounds and prop movements are recorded under `assets/tracks/monza/qa/layout_*.json`.
 
 ## Limits of this version
 
@@ -56,13 +56,13 @@ The optional `fetch_monza_layout_references.py` script reconstructs the consulta
 - [AGEA regional orthophoto WMS](https://www.cartografia.servizirl.it/arcgis5/services/BaseMap/Ortofoto2024/ImageServer/WMSServer)
 - [FIA Italian GP competition notes V2](https://www.fia.com/system/files/decision-document/2026_italian_grand_prix_-_race_directors_competition_notes_v2.pdf)
 - [FIA circuit map and pit-lane pack](https://www.fia.com/system/files/decision-document/2026_italian_grand_prix_-_competition_notes_-_circuit_map_pit_lane_drawing_emergency_exits_map_and_red_zone.pdf)
-- Existing OSM snapshot: `assets/tracks/monza/reconstruction/references/monza.osm`; source hash and coordinate conversion are retained in `survey.json`.
+- Existing OSM snapshot: `assets/tracks/monza/references/monza.osm`; source hash and coordinate conversion are retained in `survey.json`.
 
 ## Verification recorded for this build
 
 Seven targeted CTest audits passed: authored wall sweeps, Monza boundaries/rejoin, collision dynamics and surface penalties, vehicle dynamics, starting grids, track catalogue and runtime asset loading. The Blender geometry checks passed, including repeat application, upward sheets and zero grass/runoff overlap. The runtime route comparison found a maximum planar difference of 0.115 m from the preserved authoring road.
 
-An actual game session drove straight through Rettifilo at 143 km/h without barrier contact, reacquired progress beyond the chicane, then deliberately hit the visible outside rail. The final contact frame and telemetry agree. Results and relative screenshot paths are recorded in `reconstruction/qa/layout_game_validation.json`; screenshots remain under `build/agent_play_frames/`. Both chicane escape paths are also checked by the collision audits. A complete manual lap remains useful for judging approximation errors.
+An actual game session drove straight through Rettifilo at 143 km/h without barrier contact, reacquired progress beyond the chicane, then deliberately hit the visible outside rail. The final contact frame and telemetry agree. Results and relative screenshot paths are recorded in `assets/tracks/monza/qa/layout_game_validation.json`; screenshots remain under `build/agent_play_frames/`. Both chicane escape paths are also checked by the collision audits. A complete manual lap remains useful for judging approximation errors.
 
 ## Map detail follow-up, 6 September 2026
 

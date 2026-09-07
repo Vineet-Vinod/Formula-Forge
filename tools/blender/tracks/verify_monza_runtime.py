@@ -10,7 +10,7 @@ from pathlib import Path
 import build_monza as B
 import numpy as np
 
-ROOT = B.OUT.parents[3]
+ROOT = B.ROOT
 
 
 def verify(folder=None):

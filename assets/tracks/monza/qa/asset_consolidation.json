@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-06",
+  "change": "Promote the surveyed reconstruction to the sole Monza map; remove the obsolete procedural assets.",
+  "scene": "assets/tracks/monza/monza.blend",
+  "runtime": "assets/tracks/monza/runtime/monza.glb",
+  "scene_sha256": "3b953d42bd0102e3099ac810379f6e49aedd0300fc97d48f65f872dacfeee70f",
+  "runtime_sha256": "b35958b802e195d08906b184c5f326d481d30592c1bd57612099ee706d387836",
+  "scene_layout_survey_bytes_preserved": true,
+  "regenerated_glb_bytes_preserved": true,
+  "generator_command": "uv run --no-sync python tools/blender/tracks/generate_tracks.py --track monza",
+  "validator_command": "uv run --no-sync python tools/blender/tracks/verify_tracks.py --track monza",
+  "map_detail_checks_passed": true,
+  "passed_ctest_audits": [
+    "race_grid_alignment_audit",
+    "monza_boundary_audit",
+    "track_catalog_audit",
+    "authored_asset_audit"
+  ],
+  "game_capture_command": "build/game/formula_forge --capture-monza-map-review",
+  "inspected_game_frame": "build/playtest_frames/monza_map_review_10.png",
+  "historical_evidence": "Earlier forensic reports retain original paths and hashes where they describe the state before migration."
+}

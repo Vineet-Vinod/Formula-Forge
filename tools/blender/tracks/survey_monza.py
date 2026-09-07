@@ -17,7 +17,7 @@ from pathlib import Path
 from import_osm_centerline import stitch_segments
 
 ROOT = Path(__file__).resolve().parents[3]
-OUT = ROOT / "assets/tracks/monza/reconstruction"
+OUT = ROOT / "assets/tracks/monza"
 TARGET = 5793.0
 RELATION = 284565
 START_NODE = 1828499259

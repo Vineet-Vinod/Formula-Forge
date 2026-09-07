@@ -18,7 +18,7 @@ from mathutils import Vector
 from PIL import Image
 
 OUT = B.OUT / "runtime"
-ROOT = B.OUT.parents[3]
+ROOT = B.ROOT
 TILE = 120.0
 
 
@@ -53,7 +53,7 @@ def route():
             ],
         ),
     ]
-    text = "// Generated from reconstruction/survey.json by export_monza_runtime.py.\n"
+    text = "// Generated from assets/tracks/monza/survey.json by export_monza_runtime.py.\n"
     for typ, name, rows in arrays:
         text += f"constexpr {typ} {name}[] = {{\n"
         text += "".join(f"    {{{float(a):.6f}f, {float(b):.6f}f}},\n" for a, b in rows)
@@ -563,7 +563,7 @@ def export():
         alignment=alignment,
         instances=dict(count),
         source_sha256=hashlib.sha256(B.BLEND.read_bytes()).hexdigest(),
-        source="../monza_reconstruction.blend",
+        source="../monza.blend",
         runtime_lods="Three orthogonal cutout views baked from each authored tree; wire cutouts retain 170 mm pitch; 120 m spatial batches",
         authoring_scene_unchanged=True,
     )

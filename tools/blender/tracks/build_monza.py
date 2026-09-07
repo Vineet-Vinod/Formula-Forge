@@ -18,8 +18,8 @@ from mathutils import Vector
 from mathutils.kdtree import KDTree
 
 ROOT = Path(__file__).resolve().parents[3]
-OUT = ROOT / "assets/tracks/monza/reconstruction"
-BLEND = OUT / "monza_reconstruction.blend"
+OUT = ROOT / "assets/tracks/monza"
+BLEND = OUT / "monza.blend"
 SURVEY = json.loads((OUT / "survey.json").read_text())
 XY = SURVEY["centerline_xy"]
 N = len(XY)

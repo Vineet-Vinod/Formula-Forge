@@ -9,7 +9,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[3]
-OUT = ROOT / "assets/tracks/monza/reconstruction"
+OUT = ROOT / "assets/tracks/monza"
 FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 
 

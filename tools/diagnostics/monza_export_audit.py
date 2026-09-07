@@ -49,7 +49,7 @@ def key(t):
 
 def main():
     doc, binary, read = read_glb(
-        ROOT / "assets/tracks/monza/reconstruction/runtime/monza.glb"
+        ROOT / "assets/tracks/monza/runtime/monza.glb"
     )
     scene = json.loads((OUT / "scene_audit.json").read_text())
     records = {r["name"]: r for r in scene["objects"]}
@@ -158,10 +158,10 @@ def main():
         ],
         "extensions": doc.get("extensionsUsed", []),
         "source_hash_matches": scene["hashes_before"][
-            "assets/tracks/monza/reconstruction/monza_reconstruction.blend"
+            "assets/tracks/monza/monza.blend"
         ]
         == json.loads(
-            (ROOT / "assets/tracks/monza/reconstruction/runtime/monza.json").read_text()
+            (ROOT / "assets/tracks/monza/runtime/monza.json").read_text()
         )["source_sha256"],
     }
     (OUT / "export_audit.json").write_text(json.dumps(report, indent=2) + "\n")

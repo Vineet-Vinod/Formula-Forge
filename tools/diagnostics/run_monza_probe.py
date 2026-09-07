@@ -17,7 +17,7 @@ def main():
     ap.add_argument(
         "--asset",
         type=Path,
-        default=ROOT / "assets/tracks/monza/reconstruction/runtime/monza.glb",
+        default=ROOT / "assets/tracks/monza/runtime/monza.glb",
     )
     ap.add_argument("--prefix", default="")
     ap.add_argument("--unlit", action="store_true")
