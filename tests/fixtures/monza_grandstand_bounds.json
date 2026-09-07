@@ -1,0 +1,37 @@
+{
+  "description": "Original XY bounds retained by the Monza stand-foundation regression. Update only for an intentional footprint change.",
+  "baseline_date": "2026-09-04",
+  "coordinate_frame": "Blender local metres, X east / Y north",
+  "bounds_xy": {
+    "Tribuna Alta Velocit\u00e0 concrete terraces": [
+      [
+        52.21036148071289,
+        342.6091003417969
+      ],
+      [
+        73.03292083740234,
+        434.4632568359375
+      ]
+    ],
+    "Tribuna Prima Variante Esterna concrete terraces": [
+      [
+        12.397754669189453,
+        628.80615234375
+      ],
+      [
+        50.33240509033203,
+        776.1828002929688
+      ]
+    ],
+    "tribune concrete terraces": [
+      [
+        25.873395919799805,
+        53.85404968261719
+      ],
+      [
+        44.16401672363281,
+        126.30570983886719
+      ]
+    ]
+  }
+}

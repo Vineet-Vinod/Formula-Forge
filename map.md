@@ -23,10 +23,8 @@ FIA documents plus confirmatory aerial imagery are the normal starting point for
 
 For Monza, use these recorded references:
 
-- [Implemented layout and source links](docs/forensics/monza-layout-update.md), including FIA competition notes and the regional AGEA 2024 orthophotos.
-- [Layout source manifest](tools/blender/tracks/sources/monza/layout.json), including reference-region bounds, barrier provenance and pit-closure exceptions.
+- [Layout source manifest](tools/blender/tracks/sources/monza/layout.json), including FIA competition notes, AGEA 2024 aerial requests, reference-region bounds, barrier provenance and pit-closure exceptions.
 - [Survey sources](tools/blender/tracks/sources/monza/SOURCES.md) and the checked-in [OSM snapshot](tools/blender/tracks/sources/monza/monza.osm).
-- [Earlier geodata investigation](docs/forensics/monza-geodata-exploration.md) for alternatives when coverage is missing. Its engineering-survey acquisition proposal is historical; it is not a prerequisite for this aerial-scale workflow.
 
 For every source, retain its URL or dataset identifier, document revision or capture date, retrieval date, geographic bounds, coordinate system, attribution, and which features it supports. Hash downloaded inputs. Distinguish observed, inferred and deliberately modified features. Keep uncertain sections identifiable by name and coordinates.
 
@@ -139,6 +137,8 @@ uv run --no-sync python tools/blender/tracks/verify_monza_map_details.py
 ```
 
 These check layout/scene hashes, escape clearance, grass/runoff overlap, runoff and sheet normals, paint clearance, apron self-overlap, repair repeatability, the grounded historic approach, removed pit kerbs, and marker stations/facing. They do not implement every general audit in the table. Add targeted diagnostics for new failure modes.
+
+The stand-footprint regression uses [three retained bounding boxes](tests/fixtures/monza_grandstand_bounds.json). This fixture is independent of generated forensic reports. Update it only when a reviewed change intentionally moves or reshapes those stands.
 
 `verify_monza_layout.py --reapply` rebuilds in memory and compares geometry; it does not save that scene. It does write QA reports and regenerate the contact include. Run mutating or regenerating steps sequentially. A second application should not drift geometry or accumulate objects.
 

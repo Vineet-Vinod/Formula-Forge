@@ -81,7 +81,7 @@ def main():
         "export_audit": exported,
         "limitations": scene["limitations"],
     }
-    target = ROOT / "docs/forensics/monza-evidence.json"
+    target = OUT / "monza-evidence.json"
     target.write_text(json.dumps(report, indent=2) + "\n")
     (OUT / "draw_order_metrics.json").write_text(json.dumps(metrics, indent=2) + "\n")
     print("Protected asset hashes unchanged. Wrote", target)

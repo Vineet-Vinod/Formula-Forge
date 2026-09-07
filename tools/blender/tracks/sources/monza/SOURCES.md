@@ -41,6 +41,13 @@ not a laser survey or an FIA homologation drawing.
 
 ## Geographic data and licensing
 
+The subsequent layout revision records its sources in [layout.json](layout.json).
+AGEA 2024 regional orthophotos supply the approximate barrier and runoff plan;
+the FIA 2026 competition notes corroborate chicane escape connectivity. The
+[FIA circuit and pit-lane pack](https://www.fia.com/system/files/decision-document/2026_italian_grand_prix_-_competition_notes_-_circuit_map_pit_lane_drawing_emergency_exits_map_and_red_zone.pdf)
+was also consulted. These sources do not provide a measured elevation model.
+The closed pit entry and exit are a recorded game-specific exception.
+
 `monza.osm` is an unmodified OpenStreetMap API response for bounding box
 `9.268,45.607,9.300,45.636`. It was retrieved from
 `https://api.openstreetmap.org/api/0.6/map?bbox=9.268,45.607,9.300,45.636`.

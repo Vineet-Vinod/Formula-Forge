@@ -15,7 +15,8 @@ from monza_scene_audit import overlaps
 
 def main():
     B.load()
-    originals = json.loads((B.ROOT / "docs/forensics/monza-evidence.json").read_text())
+    baseline = json.loads((B.ROOT / "tests/fixtures/monza_grandstand_bounds.json").read_text())["bounds_xy"]
+    assert baseline.keys() <= set(bpy.data.objects.keys()), "Missing baseline grandstand"
     names = []
     for ob in bpy.data.objects:
         if ob.type == "MESH" and (
@@ -62,9 +63,7 @@ def main():
     for ob in bpy.data.objects:
         if "concrete terraces" not in ob.name:
             continue
-        old = next(
-            (o for o in originals["affected_objects"] if o["name"] == ob.name), None
-        )
+        old = baseline.get(ob.name)
         v = np.array([v.co[:] for v in ob.data.vertices])
         bottom = v[:, 2].min()
         feet = v[abs(v[:, 2] - bottom) < 1e-5]
@@ -72,8 +71,8 @@ def main():
         assert max(gaps) < -0.09, ob.name
         assert not any(p.normal.z < -0.9 for p in ob.data.polygons), ob.name
         if old is not None:
-            assert np.allclose(v[:, :2].min(0), old["bounds"][0][:2])
-            assert np.allclose(v[:, :2].max(0), old["bounds"][1][:2])
+            assert np.allclose(v[:, :2].min(0), old[0]), ob.name
+            assert np.allclose(v[:, :2].max(0), old[1]), ob.name
         terraces.append({"name": ob.name, "max_foundation_clearance_m": max(gaps)})
     # A second pass must neither accumulate offsets nor rebuild the scene.
     unchanged = repair()
