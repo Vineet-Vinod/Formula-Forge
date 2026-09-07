@@ -1,108 +1,70 @@
 # Formula handling targets
 
-These dry-qualifying targets calibrate the physical grip envelope and gearbox.
-They do not script vehicle speed or steer the player. Public Formula 1 timing
-telemetry is sampled at low frequency, so speeds should be read as roughly
-`+/- 5-10 km/h` and gears as `+/- 1`; flat-throttle classifications are the
-stronger contract.
+This document explains where handling targets live, how the game uses them,
+and how to validate an authorized handling change. Follow [AGENTS.md](../AGENTS.md)
+for scope; map maintenance follows [map.md](../map.md).
 
-## Grip model
+## Targets and tuning
 
-The Formula baseline is 1.87 g of mechanical lateral grip. At maximum
-speed, its downforce raises the yaw-effective envelope to 4.80 g. The imported
-track outlines are deliberately compact and some fast bends are consequently
-tighter than their real counterparts, so the simulation applies a smooth,
-corner-local calibration around the mapped Formula targets. The largest
-current correction is 2.28x. It is based on the reference car so vehicle grip
-differences remain intact, ramps in only as the car approaches the target
-speed, and fades across the curb rather than carrying into the runoff. Slow
-corners still require braking to reach the target gear and speed.
+The `k*FormulaTargets` arrays and `formulaCornerTargets()` in
+[game.cpp](../src/game.cpp) define each circuit's corner targets. Each entry has
+an identifying name, lap fraction, speed in km/h, gear and full-throttle flag.
+Use those tables for current values. Keep numerical targets in the code so
+this document does not become a second, conflicting copy.
 
-## Suzuka
+These targets guide corner-grip calibration and handling audits. A target
+speed is a calibration input, not a guaranteed speed through a corner.
+The full-throttle flag identifies the target's intended driving condition;
+it does not apply player input.
 
-Reference: [Max Verstappen's 2024 pole lap](https://www.formula1.com/en/video/onboard-max-verstappens-2024-pirelli-pole-position-award-lap-at-the-japanese-grand-prix.1795576994761470754), plus the [Mercedes 2024 circuit guide](https://www.mercedesamgf1.com/races/japanese-grand-prix-2024).
+| Implementation | Responsibility |
+| --- | --- |
+| `tuningForSpec()` and `selectedTrackTuning()` in [game.cpp](../src/game.cpp) | Vehicle configuration, track-unit conversion, grip, downforce and transmission settings |
+| `formulaCornerGripScale()` in [game.cpp](../src/game.cpp) | Local grip calibration using track curvature, target speed and live car speed |
+| `drivingSurfaceFor()` in [game.cpp](../src/game.cpp) | Transition from calibrated road grip to kerb and runoff response |
+| [arcade_vehicle.cpp](../src/arcade_vehicle.cpp) and [arcade_vehicle.hpp](../src/arcade_vehicle.hpp) | Vehicle integration, combined grip, steering response and transmission behaviour |
 
-| Corner | Target | Gear | Throttle note |
-|---|---:|---:|---|
-| Turn 1 / Turn 2 | 261 -> 172 km/h | 7 -> 5 | Brake after initial turn-in |
-| Esses | 240 -> 189 km/h | 6 -> 5 | Flowing partial-throttle sequence |
-| Dunlop | 245 km/h | 6 | High speed |
-| Degner 1 | 267 km/h | 7 | Full throttle |
-| Degner 2 | 139 km/h | 4 | Brake |
-| Hairpin | 74 km/h | 3 | Heavy brake |
-| Spoon | 232 -> 168 km/h | 6 -> 5 | Late apex |
-| 130R | 297 km/h minimum | 8 | Full throttle; approach near 320 km/h |
-| Casio Triangle | 89 km/h | 3 | Heavy brake |
+The corner calibration blends in around each target's lap fraction and as
+speed approaches the target. Its measured maximum depends on the circuit
+geometry and tuning. Read current grip measurements and calibration maxima
+from the audit output instead of maintaining snapshots here.
 
-## Spa-Francorchamps
+## Reference material
 
-Reference: [2022 qualifying report](https://www.formula1.com/en/latest/article/verstappen-fastest-in-qualifying-but-sainz-set-to-start-on-pole-after.18uRqCjdY4iTx2s1CtiQ1m.18uRqCjdY4iTx2s1CtiQ1m) and [F1 technical analysis](https://www.formula1.com/en/latest/article/tech-tuesday-how-red-bull-engineered-the-rb18-to-dominate-at-spa.3QCa91D0rv2PNbjXx802Wz).
+The original target selection recorded these sources for five circuits:
 
-| Corner | Target | Gear | Throttle note |
-|---|---:|---:|---|
-| La Source | 77 km/h | 2 | Heavy brake |
-| Eau Rouge / Raidillon | 302 km/h | 8 | Full throttle |
-| Les Combes | 156 km/h | 4 | Brake |
-| Bruxelles | 125 km/h | 4 | Trail brake |
-| No Name | 208 km/h | 5 | Fast exit |
-| Pouhon | 284 km/h | 7 | Full throttle on reference lap |
-| Fagnes | 178-185 km/h | 5 | Brake |
-| Campus | 160 km/h | 4 | Brake |
-| Stavelot | 243 km/h | 6 | Accelerating |
-| Blanchimont | 307 km/h | 8 | Full throttle |
-| Bus Stop | 72 km/h | 2 | Heavy brake |
+- Suzuka: [2024 Verstappen pole lap](https://www.formula1.com/en/video/onboard-max-verstappens-2024-pirelli-pole-position-award-lap-at-the-japanese-grand-prix.1795576994761470754) and [Mercedes 2024 circuit guide](https://www.mercedesamgf1.com/races/japanese-grand-prix-2024).
+- Spa: [F1's 2022 technical analysis](https://www.formula1.com/en/latest/article/tech-tuesday-how-red-bull-engineered-the-rb18-to-dominate-at-spa.3QCa91D0rv2PNbjXx802Wz).
+- Silverstone: [2023 Verstappen pole lap](https://www.formula1.com/en/latest/article/watch-ride-onboard-with-verstappen-at-silverstone-as-he-takes-his-fifth.1IHzD4zxRuZz1pKe6ndM0X).
+- Monza: [2024 Norris pole lap](https://www.formula1.com/en/video/onboard-lando-norris-2024-pirelli-pole-position-award-lap-at-the-italian-grand-prix.1808919989852209304/).
+- Interlagos: [2023 qualifying results](https://www.formula1.com/en/results/2023/races/1224/brazil/qualifying).
 
-## Silverstone
+These are historical context links. A results page alone does not establish
+corner speed or gear, and this list does not document every current circuit's
+targets. When revising a target, record the lap/session, corner location and
+supporting observation or telemetry. State any uncertainty in the measurement.
 
-Reference: [Max Verstappen's 2023 pole lap](https://www.formula1.com/en/latest/article/watch-ride-onboard-with-verstappen-at-silverstone-as-he-takes-his-fifth.1IHzD4zxRuZz1pKe6ndM0X).
+## Validation
 
-| Corner | Target | Gear | Throttle note |
-|---|---:|---:|---|
-| Abbey / Farm | 295 / 293 km/h | 8 | Full throttle |
-| Village | 113 km/h | 3 | Brake |
-| The Loop | 94 km/h | 3 | Slow rotation |
-| Brooklands | 156 km/h | 4 | Brake |
-| Luffield | 114 km/h | 4 | Long exit |
-| Woodcote | 259 km/h | 6 | Full throttle |
-| Copse | 290 km/h | 8 | Full throttle |
-| Maggotts / Becketts | 301 -> 226 km/h | 8 -> 6 | Fast direction changes |
-| Stowe | 230 km/h | 6 | Brake |
-| Vale | 99 km/h | 3 | Heavy brake |
-| Club | 171 km/h | 4 | Accelerating |
+`runHandlingAudit()` in [game.cpp](../src/game.cpp) exercises acceleration,
+braking, coasting, corner control and named-corner driving scenarios. Its
+per-circuit loops check target gears through the automatic transmission,
+lateral response at target speeds, and grip calibration around target stations.
+The audit output reports its check counts, measurements and failures.
 
-## Monza
+Run from the repository root:
 
-Reference: [Lando Norris's 2024 pole lap](https://www.formula1.com/en/video/onboard-lando-norris-2024-pirelli-pole-position-award-lap-at-the-italian-grand-prix.1808919989852209304/).
+```sh
+make
+SDL_VIDEODRIVER=offscreen ctest --test-dir build/game -R '^handling_dynamics_audit$' --output-on-failure
+```
 
-| Corner | Target | Gear | Throttle note |
-|---|---:|---:|---|
-| Rettifilo | 73 km/h | 2 | Heavy brake |
-| Curva Grande | 294 km/h | 8 | Full throttle |
-| Roggia | 113 km/h | 3 | Heavy brake |
-| Lesmo 1 | 207 km/h | 5 | Brake |
-| Lesmo 2 | 190 km/h | 5 | Brake |
-| Ascari | 194 -> 235 km/h | 5 -> 6 | Accelerating through exit |
-| Parabolica / Alboreto | 215 km/h | 5 | Long accelerating exit |
+For the full diagnostic output, run
+`SDL_VIDEODRIVER=offscreen build/game/formula_forge --handling-audit`.
+Keep captured logs under `build/` and identify the tested revision. This
+document describes the checks; their result must come from the tested build.
 
-## Interlagos
-
-Reference: [official 2023 qualifying results](https://www.formula1.com/en/results/2023/races/1224/brazil/qualifying).
-
-| Corner | Target | Gear | Throttle note |
-|---|---:|---:|---|
-| Senna S | 109-111 km/h | 3 | Heavy brake |
-| Curva do Sol | 228 km/h | 6 | Accelerating |
-| Descida do Lago | 167 km/h | 4 | Brake |
-| Ferradura | 226-231 km/h | 6 | High speed |
-| Pinheirinho | 108 km/h | 3 | Brake |
-| Bico de Pato | 88 km/h | 3 | Slowest corner |
-| Mergulho | 206 km/h | 5 | Fast downhill |
-| Juncao | 119 km/h | 3 | Critical uphill exit |
-| Final sweep | 153 -> 312 km/h | 3 -> 8 | Full throttle |
-
-The checked-in handling audit verifies 48 target/gear mappings through the
-actual automatic transmission—accelerating into flat sections and braking into
-the others. It also runs 48 target-speed lateral-dynamics checks and samples
-720 points through their entry-apex-exit calibration windows. Suzuka 130R has a
-full path-following vehicle test as well: eighth gear, no contact, and at least
-285 km/h.
+After a route revision, check that target lap fractions still identify the
+intended corners before interpreting a handling failure. Correct misplaced
+target stations or map geometry within the authorized scope. Changes to grip,
+speed, gear shifts or audit thresholds require handling-specific authorization.
