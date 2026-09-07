@@ -345,8 +345,8 @@ def main():
     args.output.mkdir(parents=True, exist_ok=True)
     protected = [
         B.BLEND,
-        B.OUT / "runtime/monza.glb",
-        B.OUT / "runtime/monza.json",
+        B.OUT / "monza.glb",
+        B.OUT / "monza.json",
         ROOT / "src/track_data/monza_survey.inc",
     ]
     before = {str(p.relative_to(ROOT)): digest(p) for p in protected}

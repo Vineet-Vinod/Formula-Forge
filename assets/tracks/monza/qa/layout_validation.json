@@ -1,8 +1,0 @@
-{
-  "layout_sha256": "413f524e79ae07cb2cef929783b6ad10f001f5f0e32ed13573b4d65281865bb5",
-  "barrier_paths": 10,
-  "escape_routes_clear": true,
-  "grass_runoff_overlap_m2": 0,
-  "runoff_normals_up": true,
-  "reapply_geometry_identical": true
-}

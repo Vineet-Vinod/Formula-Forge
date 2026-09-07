@@ -108,7 +108,7 @@ def repair_geometry():
         bmesh.ops.delete(bm,geom=[v for v in bm.verts if not v.link_faces],context='VERTS')
         bm.to_mesh(ob.data);bm.free();ob.data.update()
         report.append(dict(name=name,removed_branch_faces=count))
-    (B.OUT/'qa/map_detail_repairs.json').write_text(json.dumps(report,indent=2)+'\n')
+    (B.QA/'map_detail_repairs.json').write_text(json.dumps(report,indent=2)+'\n')
 
 
 def build_markers(layout):
@@ -147,5 +147,5 @@ def build_markers(layout):
         panel['corner_entry_m']=board['entry_m'];panel['marker_policy']='approach-length-v1'
         report.append({**board,'center':list(center),'barrier_offset_m':offset-.8,
                        'front_normal':[-t.x,-t.y,0],'text_face_clearance_m':.014})
-    (B.OUT/'qa/braking_markers.json').write_text(json.dumps(report,indent=2)+'\n')
+    (B.QA/'braking_markers.json').write_text(json.dumps(report,indent=2)+'\n')
     print('BRAKING MARKERS',len(report),flush=True)

@@ -1,4 +1,4 @@
-// Generated from assets/tracks/monza/survey.json by export_monza_runtime.py.
+// Generated from tools/blender/tracks/sources/monza/survey.json by export_monza_runtime.py.
 constexpr TrackControlPoint kMonzaCenterline[] = {
     {0.000000f, 0.000000f},
     {0.322105f, 2.982670f},

@@ -87,7 +87,7 @@ work?
 - Spa, Suzuka, Silverstone, Monza, and Interlagos-inspired circuits with
   authored elevation, track limits, runoff, and barriers
 - Monza's playable environment and route use the 5,793 m geographic
-  [Blender reconstruction](assets/tracks/monza/runtime/README.md)
+  [Blender reconstruction](map.md)
 - Eleven logo-free two-colour car liveries sharing one Blender-authored formula car and
   driver specification
 - Six-car races and solo infinite-lap Time Trial sessions

@@ -290,7 +290,7 @@ def audit_road_boundary_intersections(meta, expected, expected_widths):
 def verify(root: Path, slug: str):
     if slug == "monza":
         from verify_monza_runtime import verify as verify_survey
-        return verify_survey(root / "monza" / "runtime")
+        return verify_survey(root / "monza")
     folder = root / slug
     paths = {ext: folder / f"{slug}{ext}" for ext in (".json", ".glb", ".blend", "_preview.png")}
     missing = [str(path) for path in paths.values() if not path.is_file() or path.stat().st_size == 0]

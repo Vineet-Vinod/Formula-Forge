@@ -1278,8 +1278,8 @@ def build(module, index):
     forest(section)
     done.append(index)
     sc["completed_sections"] = json.dumps(done)
-    (B.OUT / "qa").mkdir(exist_ok=True)
-    (B.OUT / f"qa/section_{index:02d}.json").write_text(
+    (B.QA).mkdir(exist_ok=True)
+    (B.QA / f"section_{index:02d}.json").write_text(
         json.dumps(section, indent=2) + "\n"
     )
     B.save()

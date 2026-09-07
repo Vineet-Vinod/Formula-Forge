@@ -17,7 +17,8 @@ import numpy as np
 from mathutils import Vector
 from PIL import Image
 
-OUT = B.OUT / "runtime"
+OUT = B.OUT
+CACHE = B.CACHE
 ROOT = B.ROOT
 TILE = 120.0
 
@@ -53,7 +54,7 @@ def route():
             ],
         ),
     ]
-    text = "// Generated from assets/tracks/monza/survey.json by export_monza_runtime.py.\n"
+    text = "// Generated from tools/blender/tracks/sources/monza/survey.json by export_monza_runtime.py.\n"
     for typ, name, rows in arrays:
         text += f"constexpr {typ} {name}[] = {{\n"
         text += "".join(f"    {{{float(a):.6f}f, {float(b):.6f}f}},\n" for a, b in rows)
@@ -77,11 +78,11 @@ def route():
 
 
 def foliage_atlas():
-    cache = OUT / "foliage_cards.json"
+    cache = CACHE / "foliage_cards.json"
     signature = hashlib.sha256(b"foliage-bake-v1" + B.BLEND.read_bytes()).hexdigest()
     if cache.exists():
         saved = json.loads(cache.read_text())
-        if saved.get("signature") == signature:
+        if saved.get("signature") == signature and (CACHE / "foliage.png").is_file():
             return saved["cards"]
     sc = bpy.context.scene
     for ob in bpy.data.objects:
@@ -123,7 +124,7 @@ def foliage_atlas():
             cam.rotation_euler = (
                 (Vector(center) - eye).to_track_quat("-Z", "Y").to_euler()
             )
-            sc.render.filepath = str(OUT / "foliage_bake.png")
+            sc.render.filepath = str(CACHE / "foliage_bake.png")
             bpy.ops.render.render(write_still=True)
             im = Image.open(sc.render.filepath).convert("RGBA")
             box = im.getchannel("A").getbbox()
@@ -150,8 +151,8 @@ def foliage_atlas():
             ]
             cards[ob.name].append({"vertices": corners, "uv": uv})
         ob.hide_render = True
-    atlas.save(OUT / "foliage.png")
-    (OUT / "foliage_bake.png").unlink()
+    atlas.save(CACHE / "foliage.png")
+    (CACHE / "foliage_bake.png").unlink()
     cache.write_text(
         json.dumps({"signature": signature, "cards": cards}, indent=2) + "\n"
     )
@@ -471,17 +472,17 @@ def export():
     noise = rng.uniform(0.70, 1, (256, 256))
     noise = np.repeat(noise[:, :, None], 4, 2)
     noise[:, :, 3] = 1
-    Image.fromarray((noise * 255).astype("uint8")).save(OUT / "surface_detail.png")
+    Image.fromarray((noise * 255).astype("uint8")).save(CACHE / "surface_detail.png")
     yy, xx = np.mgrid[:128, :128]
     a = (np.minimum((xx + yy) % 128, 128 - (xx + yy) % 128) < 3) | (
         np.minimum((xx - yy) % 128, 128 - (xx - yy) % 128) < 3
     )
     rgba = np.ones((128, 128, 4), dtype=np.uint8) * 255
     rgba[:, :, 3] = a * 255
-    Image.fromarray(rgba).save(OUT / "wire.png")
-    w.foliage_texture = w.texture(OUT / "foliage.png")
-    w.detail_texture = w.texture(OUT / "surface_detail.png")
-    w.wire_texture = w.texture(OUT / "wire.png")
+    Image.fromarray(rgba).save(CACHE / "wire.png")
+    w.foliage_texture = w.texture(CACHE / "foliage.png")
+    w.detail_texture = w.texture(CACHE / "surface_detail.png")
+    w.wire_texture = w.texture(CACHE / "wire.png")
     prototypes = {}
     count = defaultdict(int)
     for ob in list(bpy.data.objects):
@@ -563,7 +564,7 @@ def export():
         alignment=alignment,
         instances=dict(count),
         source_sha256=hashlib.sha256(B.BLEND.read_bytes()).hexdigest(),
-        source="../monza.blend",
+        source="monza.blend",
         runtime_lods="Three orthogonal cutout views baked from each authored tree; wire cutouts retain 170 mm pitch; 120 m spatial batches",
         authoring_scene_unchanged=True,
     )

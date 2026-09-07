@@ -10,7 +10,7 @@ from urllib.parse import urlencode
 from urllib.request import urlopen
 
 ROOT=Path(__file__).resolve().parents[3]
-SOURCE=ROOT/'assets/tracks/monza'
+from monza_paths import SOURCE
 
 
 def fetch():

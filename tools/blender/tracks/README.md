@@ -2,13 +2,17 @@
 
 ## Monza map
 
-The [Monza reconstruction](../../../assets/tracks/monza/README.md)
-uses geographic observations and the official 5,793 m specification. Its editable
-Blender scene, section renders, lap inspection and numerical audits live under
-`assets/tracks/monza/`. This is the sole Monza asset; the older procedural
-version has been removed. `generate_tracks.py --track monza` exports the saved scene
-and generates `src/track_data/monza_survey.inc`; it does not rebuild the source
-Blender scene. See the [Monza runtime notes](../../../assets/tracks/monza/runtime/README.md).
+The [Monza workflow](../../../map.md) uses geographic observations and the
+official 5,793 m specification. Like the other tracks, `assets/tracks/monza/`
+contains only `monza.blend`, `monza.glb`, `monza.json` and `monza_preview.png`.
+Required survey, layout and OSM inputs live in `sources/monza/` beside the tools.
+Generated reports and review media go to `build/monza/qa/`; texture baking
+intermediates go to `build/monza/cache/`. The GLB embeds its runtime textures.
+
+`generate_tracks.py --track monza` exports the saved scene and generates
+`src/track_data/monza_survey.inc` and `src/track_data/monza_boundaries.inc`.
+It does not rebuild the source Blender scene. Both generation and validation
+work without checked-in QA files; a missing foliage cache is rebuilt on export.
 
 ## Runtime assets
 

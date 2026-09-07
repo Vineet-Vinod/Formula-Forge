@@ -17,7 +17,7 @@ from shapely import LineString, Polygon, constrained_delaunay_triangles, unary_u
 import build_monza as B
 import monza_environment as E
 
-PATH = B.OUT / 'layout.json'
+PATH = B.SOURCE / 'layout.json'
 
 
 def digest():
@@ -55,7 +55,7 @@ def apply():
                             [max(p[k] for p in corners) for k in range(3)]])
         report.append(item)
         print('REPLACE', json.dumps(item), flush=True)
-    qa = B.OUT / 'qa'; qa.mkdir(exist_ok=True)
+    qa = B.QA; qa.mkdir(exist_ok=True)
     (qa / 'layout_replaced_objects.json').write_text(json.dumps(report, indent=2)+'\n')
     for ob in suspects:
         bpy.data.objects.remove(ob, do_unlink=True)

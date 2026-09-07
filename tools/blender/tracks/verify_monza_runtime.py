@@ -14,7 +14,7 @@ ROOT = B.ROOT
 
 
 def verify(folder=None):
-    folder = Path(folder or B.OUT / "runtime")
+    folder = Path(folder or B.OUT)
     raw = (folder / "monza.glb").read_bytes()
     magic, version, size = struct.unpack_from("<III", raw)
     assert (magic, version, size) == (0x46546C67, 2, len(raw))
@@ -90,7 +90,7 @@ def verify(folder=None):
         checks["native_route"] = (
             "Build the game to run the native alignment comparison."
         )
-    (folder / "validation.json").write_text(json.dumps(checks, indent=2) + "\n")
+    (B.QA / "runtime_validation.json").write_text(json.dumps(checks, indent=2) + "\n")
     print(json.dumps(checks, indent=2))
     return checks
 

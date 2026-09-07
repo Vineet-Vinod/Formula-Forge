@@ -9,7 +9,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[3]
-OUT = ROOT / "assets/tracks/monza"
+from monza_paths import SOURCE, QA
 FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 
 
@@ -51,9 +51,9 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--lap", action="store_true")
     args = parser.parse_args()
-    survey = json.loads((OUT / "survey.json").read_text())
+    survey = json.loads((SOURCE / "survey.json").read_text())
     if args.lap:
-        paths = sorted((OUT / "qa/lap").glob("*.png"))
+        paths = sorted((QA / "lap").glob("*.png"))
         groups = {}
         for path in paths:
             groups.setdefault(int(path.stem) // 96, []).append(path)
@@ -64,7 +64,7 @@ def main():
             ]
             sheet(
                 part,
-                OUT / f"qa/lap_sheets/lap_{group + 1:02d}.jpg",
+                QA / f"lap_sheets/lap_{group + 1:02d}.jpg",
                 8,
                 (160, 90),
                 f"Monza / consecutive lap frames {int(part[0].stem) + 1}-{int(part[-1].stem) + 1}",
@@ -74,10 +74,10 @@ def main():
     else:
         names = [s["name"] for s in survey["sections"]]
         for view in ["DRIVER", "ELEVATED"]:
-            paths = [OUT / f"qa/sections/{view}_{n}.png" for n in names]
+            paths = [QA / f"sections/{view}_{n}.png" for n in names]
             sheet(
                 paths,
-                OUT / f"qa/{view.lower()}_contact_sheet.jpg",
+                QA / f"{view.lower()}_contact_sheet.jpg",
                 2,
                 (640, 360),
                 "Monza / "

@@ -15,7 +15,7 @@ def verify():
     assert marker_distances(1000)==(200,150,100,50)
     assert marker_distances(1000,False)==()
     B.load()
-    layout=json.loads((B.OUT/'layout.json').read_text())
+    layout=json.loads((B.SOURCE/'layout.json').read_text())
     plan=plan_markers(layout['braking_zones'],B.L)
     assert len(plan)==20
     assert next(p for p in plan if p['turn']==1 and p['distance_m']==200)['station_m']==409
@@ -40,7 +40,7 @@ def verify():
         assert center.z-B.terrain(center.x,center.y)>2,name
     result=dict(marker_count=20,policy='approach-length-v1',marker_stations_and_facing_valid=True,
                 historic_straight_max_clearance_m=max_hover,pit_approach_kerbs_removed=True)
-    (B.OUT/'qa/map_detail_validation.json').write_text(json.dumps(result,indent=2)+'\n')
+    (B.QA/'map_detail_validation.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result,indent=2))
 
 

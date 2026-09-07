@@ -690,7 +690,7 @@ struct ArcadeRender::Impl {
              {{3100.0f, 45.0f, 2110.0f}, {3180.0f, 53.0f, 2200.0f}}},
             {"assets/tracks/silverstone/silverstone.glb", 1.445f,
              {{2780.0f, 17.0f, 2320.0f}, {2870.0f, 23.0f, 2420.0f}}},
-            {"assets/tracks/monza/runtime/monza.glb", 1.445f,
+            {"assets/tracks/monza/monza.glb", 1.445f,
              {{2400.0f, 20.0f, 3400.0f}, {2600.0f, 80.0f, 3600.0f}}},
             {"assets/tracks/interlagos/interlagos.glb", 1.445f,
              {{1790.0f, 49.0f, 2160.0f}, {1880.0f, 56.0f, 2260.0f}}},

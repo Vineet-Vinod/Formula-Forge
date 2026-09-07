@@ -57,7 +57,7 @@ def verify(reapply=False):
     report=dict(layout_sha256=layout.digest(),barrier_paths=len(source['barriers']),
                 escape_routes_clear=True,grass_runoff_overlap_m2=0,runoff_normals_up=True,
                 reapply_geometry_identical=reapply)
-    (B.OUT/'qa/layout_validation.json').write_text(json.dumps(report,indent=2)+'\n')
+    (B.QA/'layout_validation.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report,indent=2))
 
 

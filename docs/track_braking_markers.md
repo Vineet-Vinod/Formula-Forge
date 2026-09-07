@@ -31,4 +31,4 @@ Place boards on the outside of the upcoming turn unless track references or sigh
 
 No separate sequences at T2, Curva Grande/T3, T5, T9 or T10. This grouping is consistent with Brembo's description of six braking events per lap at Monza; the exact marker thresholds above are our own policy. [Brembo's 2025 circuit comparison](https://www.brembo.com/en/motorsport/formula1/infernal-circuits).
 
-The corner-entry stations follow the current map's corner/kerb starts and remain aerial-scale approximations. The exported boards have their station, corner entry, direction and panel clearance recorded in `assets/tracks/monza/qa/braking_markers.json`.
+The corner-entry stations follow the current map's corner/kerb starts and remain aerial-scale approximations. The exported boards have their station, corner entry, direction and panel clearance recorded in `build/monza/qa/braking_markers.json`.

@@ -17,7 +17,7 @@ from pathlib import Path
 from import_osm_centerline import stitch_segments
 
 ROOT = Path(__file__).resolve().parents[3]
-OUT = ROOT / "assets/tracks/monza"
+from monza_paths import SOURCE as OUT
 TARGET = 5793.0
 RELATION = 284565
 START_NODE = 1828499259
@@ -75,7 +75,7 @@ def resample(points, count):
 
 
 def main():
-    path = OUT / "references/monza.osm"
+    path = OUT / "monza.osm"
     root = ET.parse(path).getroot()
     nodes = {
         int(n.get("id")): [float(n.get("lon")), float(n.get("lat"))]

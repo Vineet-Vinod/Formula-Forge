@@ -17,10 +17,9 @@ import bpy
 from mathutils import Vector
 from mathutils.kdtree import KDTree
 
-ROOT = Path(__file__).resolve().parents[3]
-OUT = ROOT / "assets/tracks/monza"
+from monza_paths import ROOT, ASSET as OUT, SOURCE, QA, CACHE
 BLEND = OUT / "monza.blend"
-SURVEY = json.loads((OUT / "survey.json").read_text())
+SURVEY = json.loads((SOURCE / "survey.json").read_text())
 XY = SURVEY["centerline_xy"]
 N = len(XY)
 L = 5793.0
@@ -556,7 +555,7 @@ def foundation():
         "source_confidence": SURVEY["confidence"],
     }
     assert abs(length - L) < 1, report
-    (OUT / "geometry_qa.json").write_text(json.dumps(report, indent=2) + "\n")
+    (QA / "geometry_qa.json").write_text(json.dumps(report, indent=2) + "\n")
     bpy.context.scene["foundation_passed"] = True
     save()
 
@@ -576,7 +575,7 @@ def render(section=None, foundation_only=False):
     sc.cycles.max_bounces = 4
     sc.cycles.diffuse_bounces = 2
     sc.cycles.glossy_bounces = 2
-    folder = OUT / ("qa/foundation" if foundation_only else "qa/sections")
+    folder = QA / ("foundation" if foundation_only else "sections")
     folder.mkdir(parents=True, exist_ok=True)
     names = (
         ["OVERVIEW | whole circuit"]
@@ -699,7 +698,7 @@ def refit_runoff_surfaces():
                 "triangles": len(faces),
             }
         )
-    (OUT / "qa/runoff_partition.json").write_text(
+    (QA / "runoff_partition.json").write_text(
         json.dumps({"protected_road_area_m2": road_area, "surfaces": report}, indent=2)
         + "\n"
     )
@@ -756,7 +755,7 @@ def refit_service_crossings():
             }
         )
     if report:
-        (OUT / "qa/service_crossings.json").write_text(
+        (QA / "service_crossings.json").write_text(
             json.dumps(report, indent=2) + "\n"
         )
 
@@ -922,12 +921,12 @@ def finalize():
         "READ ME | survey and limitations"
     ) or bpy.data.texts.new("READ ME | survey and limitations")
     readme.clear()
-    readme.write((OUT / "references/SOURCES.md").read_text())
+    readme.write((SOURCE / "SOURCES.md").read_text())
     sc["spatial_centerline_length_m"] = sum(
         (Vector(point(i + 1)) - Vector(point(i))).length for i in range(N)
     )
     sc["driver_camera_height_m"] = 1.2
-    sc["final_qa"] = "See qa/final_validation.json and QA.md alongside this scene."
+    sc["final_qa"] = "See build/monza/qa/final_validation.json; validate the game separately."
     sc.camera = overview
     for screen in bpy.data.screens:
         for area in screen.areas:
@@ -942,7 +941,7 @@ def finalize():
     sc.cycles.samples = 32
     sc.render.resolution_x = 1600
     sc.render.resolution_y = 1000
-    sc.render.filepath = str(OUT / "monza_overview.png")
+    sc.render.filepath = str(OUT / "monza_preview.png")
     bpy.ops.render.render(write_still=True)
 
 
@@ -957,7 +956,7 @@ def lap(first=1, last=1932):
     sc.cycles.diffuse_bounces = 1
     sc.cycles.glossy_bounces = 1
     sc.render.threads = 4
-    folder = OUT / "qa/lap"
+    folder = QA / "lap"
     folder.mkdir(parents=True, exist_ok=True)
     for i in range(first, last + 1):
         sc.frame_set(i)
@@ -1016,7 +1015,7 @@ def main():
             sc.render.resolution_x = 1920
             sc.render.resolution_y = 1080
             sc.cycles.samples = 64
-            sc.render.filepath = str(OUT / "monza_driver.png")
+            sc.render.filepath = str(QA / "monza_driver.png")
             bpy.ops.render.render(write_still=True)
 
 

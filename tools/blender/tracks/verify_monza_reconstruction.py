@@ -304,17 +304,17 @@ def main():
         {"frames": sc.frame_end},
     )
     check(
-        "ten section checkpoints",
-        all((B.OUT / f"qa/section_{i:02d}.json").exists() for i in range(10)),
-        "Section metadata and render checkpoints",
+        "ten completed scene sections",
+        sorted(json.loads(sc.get("completed_sections", "[]"))) == list(range(10)),
+        "Saved scene build history; generated QA files are not required inputs",
     )
     report = {
         "passed": not errors,
         "checks": checks,
         "limitations": B.SURVEY["confidence"],
-        "visual_review": "See QA.md. Numerical checks do not certify photogrammetric accuracy or exact event infrastructure.",
+        "visual_review": "Review game captures separately. Numerical checks do not certify photogrammetric accuracy or exact event infrastructure.",
     }
-    (B.OUT / "qa/final_validation.json").write_text(json.dumps(report, indent=2) + "\n")
+    (B.QA / "final_validation.json").write_text(json.dumps(report, indent=2) + "\n")
     print(json.dumps(report, indent=2))
     if errors:
         raise SystemExit("Validation failed: " + ", ".join(errors))

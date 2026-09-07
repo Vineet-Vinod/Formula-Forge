@@ -1,5 +1,11 @@
 # Monza reconstruction references
 
+This directory contains the inputs required by the authoring tools. `survey.json`
+supplies the circuit geometry and mapped features; `layout.json` supplies the
+reviewed barriers, runoff and braking zones. `monza.osm` is the offline input to
+`survey_monza.py`. Keep this manifest for provenance and attribution. Reference
+images, screenshots and generated QA reports belong under `build/`.
+
 References consulted on 4 September 2026. This is an environment reconstruction,
 not a laser survey or an FIA homologation drawing.
 

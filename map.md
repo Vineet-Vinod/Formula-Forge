@@ -24,8 +24,8 @@ FIA documents plus confirmatory aerial imagery are the normal starting point for
 For Monza, use these recorded references:
 
 - [Implemented layout and source links](docs/forensics/monza-layout-update.md), including FIA competition notes and the regional AGEA 2024 orthophotos.
-- [Layout source manifest](assets/tracks/monza/layout.json), including reference-region bounds, barrier provenance and pit-closure exceptions.
-- [Survey sources](assets/tracks/monza/references/SOURCES.md) and the checked-in [OSM snapshot](assets/tracks/monza/references/monza.osm).
+- [Layout source manifest](tools/blender/tracks/sources/monza/layout.json), including reference-region bounds, barrier provenance and pit-closure exceptions.
+- [Survey sources](tools/blender/tracks/sources/monza/SOURCES.md) and the checked-in [OSM snapshot](tools/blender/tracks/sources/monza/monza.osm).
 - [Earlier geodata investigation](docs/forensics/monza-geodata-exploration.md) for alternatives when coverage is missing. Its engineering-survey acquisition proposal is historical; it is not a prerequisite for this aerial-scale workflow.
 
 For every source, retain its URL or dataset identifier, document revision or capture date, retrieval date, geographic bounds, coordinate system, attribution, and which features it supports. Hash downloaded inputs. Distinguish observed, inferred and deliberately modified features. Keep uncertain sections identifiable by name and coordinates.
@@ -43,7 +43,7 @@ uv run --no-sync python tools/blender/tracks/fetch_monza_layout_references.py
 
 Use one local coordinate frame in metres for all imported sources, scene geometry and exported contact geometry. Record the geographic origin, projection and any scale correction. Apply the same transformation to road, barriers, runoff and surroundings. Do not independently stretch the road to match a lap length while leaving everything else behind.
 
-Monza uses Blender X east, Y north and Z up. Its [survey](assets/tracks/monza/survey.json) records the origin and uniform plan correction. Along-track stations are metres from the control line, wrapping at the lap length. Driver-left/right must be checked after every axis reflection.
+Monza uses Blender X east, Y north and Z up. Its [survey](tools/blender/tracks/sources/monza/survey.json) records the origin and uniform plan correction. Along-track stations are metres from the control line, wrapping at the lap length. Driver-left/right must be checked after every axis reflection.
 
 Author these separately:
 
@@ -54,11 +54,15 @@ Author these separately:
 - Escape/rejoin test paths that a car must be able to traverse.
 - Buildings, stands, service roads, woodland and historic structures outside the racing area.
 
-The first protection line goes around the available runoff. It must not follow a centreline offset through a chicane escape. A runoff polygon edge does not automatically imply a wall. Use [Monza's layout file](assets/tracks/monza/layout.json) as the example data structure.
+The first protection line goes around the available runoff. It must not follow a centreline offset through a chicane escape. A runoff polygon edge does not automatically imply a wall. Use [Monza's layout file](tools/blender/tracks/sources/monza/layout.json) as the example data structure.
 
 ## 3. Build the Blender scene
 
-Use the Blender Python API through `uv`, with the dependencies pinned by `uv.lock`. Store authoring scripts under `tools/blender/tracks/` and editable assets under `assets/tracks/<slug>/`. Keep survey inputs, layout data, the `.blend`, runtime metadata and QA reports distinct.
+Use the Blender Python API through `uv`, with the dependencies pinned by `uv.lock`. Store authoring scripts under `tools/blender/tracks/`. Each asset directory follows the same format: `<slug>.blend`, `<slug>.glb`, `<slug>.json` and `<slug>_preview.png`. The GLB embeds its runtime textures.
+
+Keep required reconstruction inputs beside the tools under `tools/blender/tracks/sources/<slug>/`. Monza needs `survey.json` for its geometry, `layout.json` for barriers/runoff/markers, and `monza.osm` to regenerate the survey. `SOURCES.md` records their provenance and attribution. These are build inputs, not shipped map assets.
+
+Write disposable diagnostics, renders, videos and validation reports to `build/<slug>/qa/`, and baking intermediates to `build/<slug>/cache/`. Do not commit generated QA folders or reference-image collections. A clean checkout must be able to export and validate the saved map without them.
 
 Build the racing surface and reference curves first. Check lap closure, turn direction, dimensions and coordinate alignment before adding scenery. Work through named sections, with separate collections for track, runoff, barriers, fencing, signage, stands, buildings and vegetation. Give objects descriptive names that can be matched to a screenshot and a diagnostic report.
 
@@ -105,7 +109,7 @@ uv run --no-sync python tools/blender/tracks/build_monza.py --phase finalize
 uv run --no-sync python tools/blender/tracks/verify_monza_reconstruction.py
 ```
 
-Finalization applies the layout and rendering repairs before saving. Blender driver and elevated renders help inspect placement; they do not certify the game renderer. Optional full-scene review commands are documented in the [authoring README](assets/tracks/monza/README.md).
+Finalization applies the layout and rendering repairs before saving. Blender driver and elevated renders help inspect placement; they do not certify the game renderer. Optional `build_monza.py --phase review` and `--phase lap` commands write inspection media under `build/monza/qa/`. Use `monza_review_media.py` to assemble contact sheets.
 
 ## 4. Diagnose and validate before export
 
@@ -142,7 +146,7 @@ These check layout/scene hashes, escape clearance, grass/runoff overlap, runoff 
 
 Export the saved scene and derive road data, visible barriers and collision from the same coordinate contract. Material conversion must target the actual game shader. Bake or simplify unsupported effects deliberately, preserve opaque/cutout behaviour, and validate thin geometry after triangulation.
 
-Monza's exporter uses spatial mesh batches and foliage cards, converts to glTF, and enforces the runtime's 16-bit mesh-index limit. It records the source scene hash and refuses a layout whose hash differs from the applied scene.
+Monza's exporter uses spatial mesh batches and foliage cards, converts to glTF, and enforces the runtime's 16-bit mesh-index limit. It records the source scene hash and refuses a layout whose hash differs from the applied scene. If its disposable foliage cache is missing, export first bakes it from the Blender scene. The resulting GLB embeds those images and needs no adjacent texture files.
 
 ```sh
 uv run --no-sync python tools/blender/tracks/export_monza_runtime.py
@@ -155,7 +159,7 @@ uv run --no-sync python tools/blender/tracks/verify_monza_runtime.py
 | Integration point | Current Monza example |
 | --- | --- |
 | Editable scene | `assets/tracks/monza/monza.blend` |
-| Runtime asset and metadata | `assets/tracks/monza/runtime/monza.glb` and `monza.json` |
+| Runtime asset and metadata | `assets/tracks/monza/monza.glb` and `monza.json` |
 | Route, width, elevation and bank samples | `src/track_data/monza_survey.inc`, generated from survey/builder data |
 | Wall contact segments and runoff triangles | `src/track_data/monza_boundaries.inc`, generated from applied Blender geometry |
 | Circuit ID and route catalogue | [track_types.hpp](src/track_types.hpp) and [track_catalog.cpp](src/track_catalog.cpp) |
@@ -201,6 +205,6 @@ A valid Blender render, a valid GLB, staged game captures and a driven lap estab
 
 ## 7. Save the handoff
 
-Keep source observations, changed object names and coordinates, layout/scene/export hashes, QA results, test commands and screenshot paths with the revision. Monza's [map-detail validation record](assets/tracks/monza/qa/map_detail_game_validation.json) is an example. Historical reports belong to their recorded hashes; do not present their measurements as results for a new build.
+Record source observations in the retained source manifest and summarize checks in the commit or handoff. Keep detailed object diagnostics, QA results and captures under `build/`, with layout/scene/export hashes identifying the tested revision. These files are disposable and are not part of the checked-in asset format. Historical measurements must not be presented as results for a new build.
 
-Before handing the map over, confirm that the saved `.blend`, runtime GLB, generated route/contact includes and executable belong to the same revision. Commit the generator/data changes, saved scene, required runtime assets and QA metadata together. State what changed, what was actually verified, any unresolved approximation or defect, and how to launch the build for testing.
+Before handing the map over, confirm that the saved `.blend`, runtime GLB, generated route/contact includes and executable belong to the same revision. Commit the generator/source-data changes, the four track assets and generated game includes together. State what changed, what was actually verified, any unresolved approximation or defect, and how to launch the build for testing.
