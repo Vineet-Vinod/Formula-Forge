@@ -1,163 +1,186 @@
 # Formula Forge
 
-![Three Formula Forge cars racing](docs/images/formula_forge.png)
+A single-player formula racing game built entirely in Unreal Engine. Drive a Ferrari
+at Silverstone, Monza or Interlagos in Time Trial. Choose Unlimited, 1, 3, 5 or 10
+timed laps. Unlimited is the default; the out-lap is excluded. Invalid timed laps
+count toward the session limit but cannot set a best time.
 
-## Prerequisites + Quick setup
+Selection, loading, driving, pause and results run inside one game process.
+Keyboard and controller input are supported. No Blender, raylib, Python setup,
+Git LFS, paid asset downloads or separate menu application is needed to play.
 
-Formula Forge currently targets Linux. To build it, you need:
+## Requirements
 
-- A C++20 compiler such as `g++`
-- CMake 3.20 or newer
-- GNU Make
-- X11 or Xwayland with EGL/OpenGL ES runtime libraries
-- A gamepad or steering wheel for gameplay
+**Install Unreal Engine 5.8.3 or a newer 5.8 patch, plus the C++ toolchain for your OS.**
+Unreal Engine is required to build from this repository and is not included in Git.
+Older engine versions cannot reliably read these assets. Other major/minor versions
+are not supported by the build scripts. The tested engine version is 5.8.3.
 
-SDL3 and raylib source archives are pinned under `third_party/` and build
-automatically, so neither library needs to be installed system-wide.
+| Platform | Install before building |
+| --- | --- |
+| Windows x64 | [Unreal through the Epic Games Launcher](https://dev.epicgames.com/documentation/en-us/unreal-engine/install-unreal-engine), Git, and [Visual Studio's C++ game-development toolchain](https://dev.epicgames.com/documentation/en-us/unreal-engine/setting-up-visual-studio-development-environment-for-cplusplus-projects-in-unreal-engine). UE 5.8 supports VS 2022 17.14+ or VS 2026 18.0+. Include MSVC and Windows SDK 10.0.22621.0 or newer. |
+| macOS, Apple Silicon | Unreal through the Epic Games Launcher, Git, full Xcode and its command-line tools. [Epic's UE 5.8 requirements](https://dev.epicgames.com/documentation/en-us/unreal-engine/macos-development-requirements-for-unreal-engine) specify macOS 14.5+, Xcode 26.0 minimum and 26.1.1 recommended. Xcode 26.4 is incompatible. |
+| Linux x86_64 | [Epic's Linux installed engine](https://www.unrealengine.com/en-US/linux), its bundled native toolchain, a Vulkan-capable GPU/driver, Git, GNU Make, a C++20 compiler, Bubblewrap and a functioning systemd user session. See [Epic's Linux requirements](https://dev.epicgames.com/documentation/en-us/unreal-engine/linux-development-requirements-for-unreal-engine). |
+
+Use a machine that meets Epic's engine requirements; 32 GB RAM is recommended for
+development. Allow at least 35 GB free for project build output, in addition to the
+engine installation. A first build can take tens of minutes while compiling code,
+shaders and mesh data; subsequent builds reuse generated caches. The scripts
+limit C++ compilation to one action at a time.
+
+Linux packaging and gameplay have been tested. Windows and macOS have native build
+scripts and platform configuration, but have not yet been built or play-tested on
+those operating systems. They should be treated as unverified until those checks
+are completed.
+
+## Clone
 
 ```sh
-git clone https://github.com/Vineet-Vinod/Formula-Forge.git
+git clone --depth 1 https://github.com/Vineet-Vinod/Formula-Forge.git
 cd Formula-Forge
-make
+```
+
+The shallow clone downloads the current game without the earlier project's history.
+All required game assets are ordinary Git files. The measured shallow-clone Git
+transfer is about 580 MiB; the checkout is approximately 0.85 GiB before building.
+Keep the checkout in a writable location, outside the
+engine installation. On Windows, a short path such as `C:\Games\Formula-Forge`
+also avoids toolchain path-length limits.
+
+## Windows: build and play
+
+Open PowerShell in the cloned repository. Set `UE_ROOT` to the directory that
+contains `Engine`, not to the `Engine` directory itself:
+
+```powershell
+$env:UE_ROOT = "C:\Program Files\Epic Games\UE_5.8"
+powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\unreal.ps1 package
+powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\unreal.ps1 run
+```
+
+The execution-policy option applies only to that PowerShell process. Later launches
+only need the `run` command. To play in a window, add `-GameArgs "-windowed"`.
+The package is written to `build/unreal/package/Windows/`.
+
+## macOS: build and play
+
+After installing full Xcode, select it and complete its first-launch setup:
+
+```sh
+sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+sudo xcodebuild -runFirstLaunch
+```
+
+From the cloned repository:
+
+```sh
+export UE_ROOT="/Users/Shared/Epic Games/UE_5.8"
+make package
 make run
 ```
 
-The executable is written to `build/game/formula_forge`. Run it from the
-repository root so it can find `assets/`. The game starts fullscreen; use the
-following command for a windowed session:
+Adjust `UE_ROOT` if Epic installed the engine elsewhere. For example, some
+installations use `/Users/Shared/UnrealEngine/UE_5.8`. The package is written to
+`build/unreal/package/Mac/`. Later launches only need `make run`.
+
+## Linux: build and play
+
+For Ubuntu/Debian, install the project command-line dependencies:
 
 ```sh
-make run ARGS="--windowed"
+sudo apt install git build-essential bubblewrap
 ```
 
-Python 3.11, [`uv`](https://docs.astral.sh/uv/), and the pinned `bpy` package
-are only required when regenerating or validating Blender assets.
-
-## How Codex and GPT-5.6 were used
-
-GPT-5.6 Sol High was an active engineering partner throughout Formula Forge.
-It helped implement and iterate on the physics, AI, race rules, renderer, 
-interface, controller support, procedural audio, Blender assets, tests,
-and development tools.
-
-The most useful workflow paired subjective playtesting with programmatic
-feedback. After playing a build, feedback such as “the car feels slow” or “the
-AI enters this corner badly” could be turned into a measurable engineering
-problem. Deterministic audits then checked acceleration, braking, grip,
-shifting, collisions, lap validity, track limits, and circuit-specific AI pace
-before another change was accepted.
-
-A persistent JSONL [agent-play protocol](docs/agent_play_protocol.md) lets a
-model navigate menus, drive deterministic simulation frames, inspect telemetry,
-and request screenshots. Codex also uses Blender through Python to generate and
-validate cars, drivers, tracks, garage scenes, and runtime assets. These tools
-gave the agent a closed feedback loop: build, observe, measure, change, and
-verify.
-
-## What is this
-
-Formula Forge is an original, open-source, Linux-native 3D formula racing game
-written in C++ with SDL3 and raylib. It supports full-grid races against AI
-and solo Time Trial sessions across five real-world-inspired circuits.
-
-Formula Forge is an unofficial fan-made project and is not affiliated with or
-endorsed by any racing series, team, or vehicle manufacturer.
-
-The project combines an arcade-accessible driving model with formula-specific
-behavior: tire grip, aerodynamic downforce and drag, load transfer, trail
-braking, engine braking, surface changes, speed-sensitive steering, and an
-eight-speed manual sequential gearbox. A complete in-game flow covers loading,
-session and car selection, circuit and race-distance selection, racing, pause,
-results, replay, and returning home.
-
-## Inspiration
-
-Formula Forge began with two interests: the approachable racing of Beach Buggy
-Racing and the speed and racecraft of F1. Beach Buggy Racing is not
-available natively on Linux, so the project became an experiment in
-building an original Linux racing game instead. With OpenAI Build Week, it
-became a broader challenge: how far could an AI coding agent help take
-a 3D game when it was given ways to build, observe, measure, and verify its own
-work?
-
-## Features
-
-### Racing
-
-- Spa, Suzuka, Silverstone, Monza, and Interlagos-inspired circuits with
-  authored elevation, track limits, runoff, and barriers
-- Monza's playable environment and route use a 5,793 m geographic Blender
-  reconstruction. See the [map-authoring workflow](.agents/map/SKILL.md).
-- Eleven logo-free two-colour car liveries sharing one Blender-authored formula car and
-  driver specification
-- Six-car races and solo infinite-lap Time Trial sessions
-- Selectable 2, 5, 10, or infinite-lap race distances
-- Ordered checkpoints, shortcut-resistant laps, wrong-way detection, finish
-  order, lap timing, and checkpoint recovery
-- Formula-aware AI that reads upcoming curvature, brakes before turn-in,
-  commits to corner exits, attempts passes, maintains safe following gaps, and
-  adapts modestly to the player's pace
-- A fixed broadcast T-cam, responsive HUD, garage and loading scenes,
-  procedural vehicle audio, particles, dust, brake lights, and body motion
-
-### Controls
-
-Formula Forge is designed for gamepads and steering wheels.
-
-- Left stick, D-pad, or wheel rim: steer and navigate menus
-- RT or accelerator pedal: accelerate
-- LT, B/Circle, or brake pedal: brake; hold at low speed to reverse
-- RB/right paddle and LB/left paddle: shift up and down
-- A/Cross: confirm
-- B/Circle: go back
-- Start: pause
-- Back/Select: resume or reset to the last checkpoint
-- Start + Back/Select: quit
-
-### Reproducible testing
-
-The repository includes deterministic audits for handling, race rules,
-collisions, track geometry, assets, rendering performance, and AI pace on every
-circuit. Monza's historical AI pace and automated handling benchmarks still
-need calibration for the reconstructed layout. The integration notes record
-the current failures without changing their acceptance limits.
+Extract Epic's Linux installed engine, then set its location and build:
 
 ```sh
-make test
+export UE_ROOT="$HOME/Unreal/UE_5.8"
+make package
+make run
 ```
 
-For a focused diagnostic, pass the executable's options through `make run`:
+Adjust the path to your installation. The engine's native SDK must be installed;
+use Epic's setup instructions if UnrealBuildTool reports a missing Linux SDK.
+Run from a normal desktop login with a working `systemd --user` session and
+Bubblewrap user namespaces available. The guarded Linux scripts do not support
+containers or systems without those facilities.
 
-```sh
-make run ARGS="--race-audit"
-make run ARGS="--handling-audit"
-make run ARGS="--track-catalog-audit"
-make run ARGS="--ai-pace-audit-spa"
-```
+The package is written to `build/unreal/package/Linux/`. Later launches only need
+`make run`. On Linux and macOS, `make run ARGS="-windowed"` starts a windowed game.
+`UE_ROOT` can be set in your shell profile so it persists across terminals.
 
-### Blender asset pipeline
+## Updates and troubleshooting
 
-Cars, the driver, circuits, garage, and loading artwork are produced through a
-reproducible Blender Python pipeline. Editable `.blend` files, runtime `.glb`
-exports, previews, and metadata live under `assets/`.
+After `git pull`, run the package command again before playing. Packaged games
+contain cooked assets; changing source files alone does not update the executable.
+Close the game and editor before rebuilding.
 
-```sh
-uv sync --frozen
-make assets-validate
-```
+- **Engine not found / wrong version:** check `UE_ROOT/Engine/Build/Build.version`.
+  The scripts require the 5.8 series, patch 3 or later.
+- **Missing compiler or SDK:** install the C++ toolchain listed above. Installing
+  the engine alone is not enough to compile a C++ project.
+- **Game executable not found:** finish `package` successfully before `run`.
+- **Build failure:** inspect `build/unreal/logs/` and the terminal output. On Windows,
+  packaging output is also saved in `build/unreal/logs/package.log`.
+- **Linux memory guard stops:** close memory-heavy applications and retry. These
+  developer scripts cap the job at 4 GB with no swap and stop at 10 GB measured
+  machine use. This guard and the read-only engine sandbox are Linux-specific;
+  Windows/macOS scripts limit build concurrency but do not enforce a RAM ceiling.
 
-The validators check dimensions, materials, animations, mesh budgets, circuit
-geometry, landmark order, and clearances. See the
-[asset pipeline guide](tools/README.md) and
-[track guide](tools/blender/tracks/README.md) before changing generated assets.
+The native `.uproject` can also be opened in Unreal Editor after building the editor
+module with `make build` or `tools/unreal.ps1 build`. Use **Play > Standalone Game**
+to inspect the game. The packaged `run` commands are the normal play path.
 
-## Future work
+## Controls
 
-- Add more circuits and expand the variety of track environments
-- Improve artwork, lighting, effects, and sound
-- Deepen AI racecraft and on-track interactions
-- Add more cars, customization, and session options
-- Explore Windows and macOS support
+On the landing page, A/D or Left/Right selects the circuit; W/S or Up/Down
+changes the lap limit. Enter or Space starts the displayed session. On a
+controller, use the D-pad or left stick and press A to drive. Mouse selection
+is also supported. Escape or controller B quits from the landing page.
 
-I am not accepting PR contributions at the moment. However, please open issues
-for any bugs!
+In pause/results menus, arrows or WASD navigate and Enter/Space or controller A
+activates the highlighted action. Escape or P pauses driving; Escape resumes from pause. The pause menu supports
+resume, restart, circuit selection and quit. Finite sessions show a results screen
+with drive-again, change-circuit and quit actions.
+
+Driving retains the original controls and tuning: W/A/S/D, Space for braking,
+Q/E for shifts, M for automatic/manual shifting, C for camera and R for reset.
+Gamepad triggers accelerate/brake, the left stick steers, shoulders shift,
+X toggles automatic shifting, Back changes camera, Y resets and Start pauses.
+Best valid laps are saved separately for each circuit.
+
+## Development checks
+
+`make script-check` checks the platform scripts with fake engine executables,
+including argument quoting, engine-version checks and failure propagation. On
+Linux, set `PWSH` to a PowerShell executable to include the Windows command tests.
+These checks do not replace building and playing on Windows or macOS.
+
+On Linux, `make check` runs native surface, simulation, circuit and camera audits.
+After packaging, `make session-check` runs Unreal's lap-limit automation and
+`make flow-check` exercises keyboard/controller input, all three maps, pause/resume,
+a timed Interlagos lap, results, restart and return to selection.
+
+`make run ARGS="-windowed -RenderOffscreen -FFMenuReview"` captures the garage menu
+and exits. Review captures and gameplay test results go under
+`build/unreal/home/Saved/FlowAudit/`. Best laps and game settings are stored under
+`build/unreal/home/`. Build output and local saves are ignored by Git.
+
+## Repository contents and licences
+
+`Source/`, `Config/` and `Content/` are the game's source. Native Unreal assets are
+versioned directly; no asset generator needs to run before building. The optional
+`tools/prepare_project.py` uses Unreal Editor's own Python integration to rebuild
+the garage scene, not the circuits.
+
+Silverstone's drive-surface data is split into `drive_surface.bin.0` through `.2`
+under `Content/Generated/Data/`. The game joins the consecutive 48 MiB pieces, with
+a shorter final piece, before parsing them. This preserves the original data while
+keeping every new Git blob below 50 MiB. Do not omit or rename these files.
+
+Compiled executables, cooked packages, engine files, caches and downloaded
+references are not committed. The three accepted circuits retain their geometry,
+materials, camera and vehicle handling. Code is covered by [LICENSE](LICENSE);
+asset credits and their separate licences are retained under
+[Attribution](Attribution/README.md). Unreal Engine is installed and licensed
+separately through Epic.

@@ -1,0 +1,153 @@
+{
+  "license": "CC0 1.0 for concrete and tinted balcony concrete; original project work for other surfaces",
+  "concrete": {
+    "source_page": "https://polyhaven.com/a/concrete_wall_009",
+    "author": "Charlotte Baglioni",
+    "tile_m": 1.8,
+    "maps": [
+      {
+        "map": "color",
+        "source": "sources/spa/materials/concrete_wall_009_color.jpg",
+        "source_sha256": "59811fad71658323462287b072eef22ebb857c13bba63eeff34842a4d4dba8fe",
+        "file": "concrete_wall_color.png",
+        "sha256": "12e07b74d75c6f55020f429839c87e556694eb6967302286358c3b779f64d23a"
+      },
+      {
+        "map": "normal",
+        "source": "sources/spa/materials/concrete_wall_009_normal_gl.jpg",
+        "source_sha256": "0caa2f8681b5c81de775d32deb6ad0644e9f943015faf42e1e7cccfbd6c5c04f",
+        "file": "concrete_wall_normal.png",
+        "sha256": "a698e42398c3614caf16687b678aaf8b118743b12c8ad321f1ad5752022bc004"
+      },
+      {
+        "map": "roughness",
+        "source": "sources/spa/materials/concrete_wall_009_roughness.jpg",
+        "source_sha256": "109424f91c6c385b7c2b5791e2d9f8c9d082d9d5665dae42c35df96410ea05d1",
+        "file": "concrete_wall_roughness.png",
+        "sha256": "210e4fe1e3888ddf104aa911ab71abb67e7cf310f685a4e92f6703be665cdfe8"
+      }
+    ]
+  },
+  "corrugated_cladding": {
+    "method": "Deterministic horizontal 0.125 m ribs with subtle original color, normal and roughness variation",
+    "tile_m": 2.0,
+    "files": [
+      {
+        "file": "corrugated_cladding_color.png",
+        "sha256": "7cc39964c326c396fd53a8af060b928504f9bb315feb1e4f2f4f14ec03cba641"
+      },
+      {
+        "file": "corrugated_cladding_normal.png",
+        "sha256": "d706e8b6b515df350b0e69ddb3da906ff2ad1dfb076a4840c947a4669315171d"
+      },
+      {
+        "file": "corrugated_cladding_roughness.png",
+        "sha256": "b5b6efcd2500ea5f01e09bd6d1bb4ec871116cf6e9e716e6f48748a0658a8060"
+      }
+    ]
+  },
+  "authored_surfaces": {
+    "evidence": "Geograph 8161533, TCExplorer, 21 September 2025; surface classes observed, pitch and albedo estimated. No photographic pixels reused.",
+    "reference_page": "https://commons.wikimedia.org/wiki/File:National_circuit_pitlane_at_Silverstone_-_geograph.org.uk_-_8161533.jpg",
+    "painted_blockwork_tile_m": 1.8,
+    "painted_blockwork_joint_pitch_m": [
+      0.45,
+      0.225
+    ],
+    "metal_tile_m": 2.0,
+    "cladding_pitch_m": 0.125,
+    "shutter_pitch_m": 0.08,
+    "files": {
+      "painted_blockwork": [
+        {
+          "file": "painted_blockwork_color.png",
+          "sha256": "80de42309270ce9af2002d1984640e5d2aaf7b0d420d2662ffaf93a5917c3d97"
+        },
+        {
+          "file": "painted_blockwork_normal.png",
+          "sha256": "dfa4af89f70669dd4c7376d97116112fdd29c9e18422e35f7aa2c7d127436e20"
+        },
+        {
+          "file": "painted_blockwork_roughness.png",
+          "sha256": "194356338063ef99a8fc4866eb89d58dc26000bb52d8c18b5ad8ae8038bf1b43"
+        }
+      ],
+      "dark_horizontal_cladding": [
+        {
+          "file": "dark_horizontal_cladding_color.png",
+          "sha256": "bbc0b811b84a05ccb46971c4ee5e531bbd941e1088dfbbec859126376b28abb2"
+        },
+        {
+          "file": "dark_horizontal_cladding_normal.png",
+          "sha256": "ad9bcee456fed0f8ffaa50821dcd894cc2469f4108351b07f93fef2cd9c44c92"
+        },
+        {
+          "file": "dark_horizontal_cladding_roughness.png",
+          "sha256": "9b458b43b051137b353c3851a637b6a6314b233fada35d84eccc0aa112662223"
+        }
+      ],
+      "dark_vertical_cladding": [
+        {
+          "file": "dark_vertical_cladding_color.png",
+          "sha256": "01730f0587bb6e4659f28f2d8ab93002b6491ff46a2278ff9c2d9e0dde275e0b"
+        },
+        {
+          "file": "dark_vertical_cladding_normal.png",
+          "sha256": "bf2680b3c277631fa82f57f51a0af4ea3b14dbaccbff0de1535a01f51b93304f"
+        },
+        {
+          "file": "dark_vertical_cladding_roughness.png",
+          "sha256": "9b458b43b051137b353c3851a637b6a6314b233fada35d84eccc0aa112662223"
+        }
+      ],
+      "vertical_cladding": [
+        {
+          "file": "vertical_cladding_color.png",
+          "sha256": "67445fe2734b21059a5aa414ce72b08621f15b84389af669bf0a6dc8919ac87d"
+        },
+        {
+          "file": "vertical_cladding_normal.png",
+          "sha256": "bf2680b3c277631fa82f57f51a0af4ea3b14dbaccbff0de1535a01f51b93304f"
+        },
+        {
+          "file": "vertical_cladding_roughness.png",
+          "sha256": "873262ab3ac241d78c2ec1905057f0effd303a24710cdc4062603f2256d89b91"
+        }
+      ],
+      "garage_shutter": [
+        {
+          "file": "garage_shutter_color.png",
+          "sha256": "486dfd4c422eaf72b7ed1c7f25362332c5ed0535713cb409dbff986ed04ba19a"
+        },
+        {
+          "file": "garage_shutter_normal.png",
+          "sha256": "65c2cd6986c90d6d2bbd6d99694ba95cc1d0fb94947828df9a53da99749bfe0e"
+        },
+        {
+          "file": "garage_shutter_roughness.png",
+          "sha256": "ccebe83111f87aa089dc2e798633defd512a1f2d075dc70b11ab70914e5e0f16"
+        }
+      ]
+    }
+  },
+  "balcony_concrete": {
+    "source": "CC0 concrete_wall_009 color normalized and tinted to a photo-estimated pale finish; existing normal and roughness retained",
+    "reference_page": "https://oversteer48.com/wp-content/uploads/2023/02/Brookland-suite.jpg",
+    "tile_m": 1.8,
+    "file": "balcony_concrete_color.png",
+    "sha256": "f3468d5f9be069863e3e56419577fa4add56dee0174699fddaee8fe80aafc36b"
+  },
+  "national_glazing_probe": {
+    "license": "Original project render of licensed scene assets; no reference-only pixels",
+    "file": "national_midpoint_probe.png",
+    "sha256": "2a5b7e715f7d77998f365bb920033951714fdc740075c43bd3c3f32018cf1fbb",
+    "metadata": "national_midpoint_probe.json",
+    "metadata_sha256": "0678c5e65c10e818c2a32af34cb32c8335a88ae7482bb5c91b26d0a9d38cb450",
+    "source_blend_sha256": "2d877855547c3073fb9cae5c140768e7c45db63074738efe238393bdb43120f1",
+    "source_sky_sha256": "c43b79a01aeeea9afcbef250171a5bd0d14e14cf17e3fb8d0f442149ed144670",
+    "projection": "equirectangular_full_sphere",
+    "encoding": "RGB = round(255 * (radiance / (1 + radiance)) ** (1 / 2.2)); alpha = transparent-film scene coverage",
+    "runtime_material": "circuit_national_pit_probe_glass",
+    "refresh": "Run render_silverstone_national_probe.py --blend COMBINED_BLEND --output tools/blender/tracks/sources/silverstone/architecture_materials/national_midpoint_probe.png under the required flock, then rerun this preparer before final export"
+  }
+}

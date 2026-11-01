@@ -1,19 +1,19 @@
 # Formula Forge
 
-This project is an open-source, single-player formula racing game.
+This repository is the canonical Unreal-only game. Keep project files and build
+artifacts in this folder. Do not create worktrees unless requested. Preserve the
+separately installed Unreal Engine folder.
 
-We are chasing realism to real life tracks and formula cars and will not compromise in that regard.
+Support Silverstone, Monza and Interlagos, with Ferrari and Time Trial fixed.
+Unlimited laps is the default. Menus, loading and driving run in one Unreal process.
+Preserve accepted circuit assets, physics, handling, speed, shifting and camera
+unless the user explicitly requests changes.
 
-We will use
-- C++ for the game logic
-- Blender's Python API to create the 3D assets (tracks, drivers, cars etc)
-- Accessible and licensed real sources to achieve realism and accuracy
+On Linux, use the guarded Make targets for building, packaging, testing and playing. Stay
+below 11 GB total used memory and run one heavy job at a time. Keep native Unreal
+assets versioned. Do not add Blender, raylib or an external menu process.
 
-The following aspects of the game are not to be altered without an explicit request:
-- Drivability
-- Car handling
-- Speed
-- Gear shifts
-- Core gameplay behavior
-
-The main areas to focus on are related to game design.
+Keep implementation simple. Declare C++ types and functions in headers and put
+implementations in .cpp files. Use focused checks for input, session flow, physics
+and asset regressions. Commit with type: concise description. Do not push or merge
+without an explicit request.

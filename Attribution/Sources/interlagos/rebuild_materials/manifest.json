@@ -1,0 +1,127 @@
+{
+  "sources": [
+    {
+      "path": "tools/blender/tracks/sources/interlagos/rebuild_materials/aramco.png",
+      "sha256": "a57a35234c8a91c068144b5c03eba916f2bf875da5b69988a8c66c318f459cde"
+    },
+    {
+      "path": "tools/blender/tracks/sources/interlagos/rebuild_materials/asphalt.png",
+      "sha256": "f71fd97cb0889a147dce91d76f0674dcb6ee98f3b1fc822d7d27c44ea5a47cc6"
+    },
+    {
+      "path": "tools/blender/tracks/sources/interlagos/rebuild_materials/dhl.png",
+      "sha256": "49f7be74262e9a5d9648037f8ab376892cde7b719be11a3b9ccc580fc4957f99"
+    },
+    {
+      "path": "tools/blender/tracks/sources/interlagos/rebuild_materials/green.png",
+      "sha256": "a431172f3a4c091145601ad3230f716d39cb0dc4624f0d57afa1a8e8922778d6"
+    },
+    {
+      "path": "tools/blender/tracks/sources/interlagos/rebuild_materials/msc.png",
+      "sha256": "93b6dbbdb87c995aa831f6be2653ca6079116f5805a9e07b6621fd5c9e86f518"
+    },
+    {
+      "path": "tools/blender/tracks/sources/interlagos/rebuild_materials/pirelli.png",
+      "sha256": "817ca9cf0fdb3ef23af6988c987120bb3c6859c7f3b3ecbdb8b4ced85da93972"
+    },
+    {
+      "path": "tools/blender/tracks/sources/interlagos/rebuild_materials/qatar.png",
+      "sha256": "288e1da012dbcd3824673ffdf46eefe6a4e5edee238248dba70486621040250a"
+    },
+    {
+      "path": "tools/blender/tracks/sources/interlagos/rebuild_materials/santander.png",
+      "sha256": "b17a68e3bc1d9df6a156935557118f9c1d3c781f4055cf77eff171012a9f9ed0"
+    },
+    {
+      "path": "tools/blender/tracks/sources/interlagos/rebuild_materials/turquoise.png",
+      "sha256": "7a89070f37bd2c87bc1ab17cfa570efd31213590fe2d15ba968acfbd0a8fd313"
+    },
+    {
+      "path": "tools/blender/tracks/sources/interlagos/rebuild_materials/yellow.png",
+      "sha256": "34a18d2290d66cb327075b141fc8a70826e2aa7a8f2aa8ffe31ee70ef938e378"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/architecture_materials/concrete_wall_color.png",
+      "sha256": "12e07b74d75c6f55020f429839c87e556694eb6967302286358c3b779f64d23a"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/architecture_materials/concrete_wall_normal.png",
+      "sha256": "a698e42398c3614caf16687b678aaf8b118743b12c8ad321f1ad5752022bc004"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/architecture_materials/concrete_wall_roughness.png",
+      "sha256": "210e4fe1e3888ddf104aa911ab71abb67e7cf310f685a4e92f6703be665cdfe8"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/architecture_materials/corrugated_cladding_color.png",
+      "sha256": "7cc39964c326c396fd53a8af060b928504f9bb315feb1e4f2f4f14ec03cba641"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/architecture_materials/corrugated_cladding_normal.png",
+      "sha256": "d706e8b6b515df350b0e69ddb3da906ff2ad1dfb076a4840c947a4669315171d"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/architecture_materials/corrugated_cladding_roughness.png",
+      "sha256": "b5b6efcd2500ea5f01e09bd6d1bb4ec871116cf6e9e716e6f48748a0658a8060"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/crowd/spectators_original_v1.png",
+      "sha256": "77fb11d73985dc1ea7c4b94860472d433f7762d7a9b319640141a19891ece46c"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/rebuild_materials/asphalt_track_normal_18.png",
+      "sha256": "8b5e21eb1d6a5dd2fb99604e023f9413cf8bd01b7928524378fce043917b76ec"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/rebuild_materials/asphalt_track_normal_35.png",
+      "sha256": "31b5d881aabd4a1fa50780d3c769c892085076b8396612737e9424202b1cbb25"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/rebuild_materials/asphalt_track_roughness.png",
+      "sha256": "b5d27782157078be8070fc511ff11c723352fb5a392e1d7463f3d970c7aabcdf"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/rebuild_materials/lawn_grass005_normal_35.png",
+      "sha256": "6e18edd49eb24e41e45e68fb45affc8f3e6cd35ad117bb2c0afb252d17b4031f"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/rebuild_materials/lawn_grass005_roughness.png",
+      "sha256": "31ebdabc2ed67a485d79ef31bee940925df0cf16ace63b2b6d132af2159ab592"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/rebuild_materials/lawn_grass005_silverstone_color.png",
+      "sha256": "9dd96307709c5955aa42118ec902cb6e8532405b7ab154377faeb2759f80eb0b"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/rebuild_materials/worn_paint_white_color.png",
+      "sha256": "82f9169c324c35e6adb850b906aac405c4f8eccdb1be9c1f6ae977ec91e29374"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/rebuild_materials/worn_paint_white_roughness.png",
+      "sha256": "d2f00fd097b2fb087e0def1f00b250ce61c3b3f3c6d12c189022272359413b8a"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/vegetation/derived_canopy_manifest.json",
+      "sha256": "af79fc41037df29b787e4f5ef8165729f2a57f0276fa92c731706a7f9dc509d7"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/vegetation/tree_small_02_canopy_000.png",
+      "sha256": "f5b40bfb5254acae7153ef81d6c9ef8f53c7b774f10031cb6a391dc3ca77305f"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/vegetation/tree_small_02_canopy_090.png",
+      "sha256": "a69bcbfabfa5e4aad926251cd2c0eacb83c24032f7dc4f1e7121995427510cbb"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/vegetation/tree_small_02_canopy_180.png",
+      "sha256": "f3ec0f1f532bf665431548bf75cc85e0b9d73c64e72b2c29fbcf8d22186730dd"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/vegetation/tree_small_02_canopy_270.png",
+      "sha256": "6e7f038a5794473a27aa1e8a1779fcdfa61f1202faeee4b05778bcb995c171bf"
+    }
+  ],
+  "surface_license": "CC0 surface inputs and original project cladding; see Silverstone rebuild_materials and architecture_materials manifests",
+  "artwork": "Project-authored spectator atlas and typeset event panels. No reference video pixels or commercial game assets redistributed.",
+  "reference": "build/references/interlagos/reference.mp4; visual comparison only"
+}

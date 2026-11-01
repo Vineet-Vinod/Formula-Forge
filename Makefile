@@ -1,43 +1,44 @@
-BUILD_DIR := build
-GAME_BUILD_DIR := $(BUILD_DIR)/game
-TARGET := $(GAME_BUILD_DIR)/formula_forge
-SDL_LIB := $(BUILD_DIR)/deps/install/lib/libSDL3.a
-RAYLIB_LIB := $(BUILD_DIR)/deps/raylib-install/lib/libraylib.a
-GAME_SOURCES := $(wildcard src/*.cpp src/*.hpp src/track_data/*.inc) CMakeLists.txt
-UV_PYTHON := uv run --no-sync python
+.DEFAULT_GOAL := build
+.PHONY: build package run check session-check flow-check assets script-check
+build:
+	bash tools/unreal.sh build
+assets: build
+	bash tools/unreal.sh python tools/prepare_project.py
+package:
+	bash tools/unreal.sh package
+run:
+	bash tools/unreal.sh run $(ARGS)
+check:
+	bash tools/unreal.sh check
+script-check:
+	bash Tests/platform_scripts.sh
+session-check:
+	bash tools/unreal.sh session-check
+flow-check:
+	bash tools/unreal.sh run -windowed -RenderOffscreen -ForceRes -ResX=1600 -ResY=900 -FFFlowAudit -FFDrive '-ExecCmds=t.MaxFPS 30'
 
-.PHONY: all run test assets assets-validate clean
+CPPFLAGS := -ISource/FormulaForge -ISource/FormulaForge/Native
+CXXFLAGS := -std=c++20 -O2 -Wall -Wextra -Wpedantic
+SIMULATION := FFSimulation FFMonzaGeometry FFInterlagosGeometry FFTrackLimits FFPitLane FFDriveSurface
+NATIVE := arcade_vehicle track_catalog silverstone_chapel_barriers
+OBJECTS := $(addprefix build/tests/,$(addsuffix .o,$(SIMULATION) $(NATIVE)))
+-include $(OBJECTS:.o=.d)
+build/tests/%.o: Source/FormulaForge/%.cpp
+	mkdir -p build/tests build/tmp
+	TMPDIR="$(CURDIR)/build/tmp" $(CXX) $(CPPFLAGS) $(CXXFLAGS) -MMD -MP -c $< -o $@
+build/tests/%.o: Source/FormulaForge/Native/%.cpp
+	mkdir -p build/tests build/tmp
+	TMPDIR="$(CURDIR)/build/tmp" $(CXX) $(CPPFLAGS) $(CXXFLAGS) -MMD -MP -c $< -o $@
+build/tests/circuit-audit: Tests/circuit_audit.cpp $(OBJECTS)
+	TMPDIR="$(CURDIR)/build/tmp" $(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
+build/tests/camera-audit: Tests/camera_audit.cpp Source/FormulaForge/FFCameraMotion.cpp
+	mkdir -p build/tests build/tmp
+	TMPDIR="$(CURDIR)/build/tmp" $(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
+.PHONY: native-check
+native-check: build/tests/circuit-audit build/tests/camera-audit build/tests/surface-audit
+	build/tests/circuit-audit
+	build/tests/camera-audit
+	build/tests/surface-audit
 
-all: $(TARGET)
-
-run: $(TARGET)
-	$(TARGET) $(ARGS)
-
-test: $(TARGET)
-	ctest --test-dir $(GAME_BUILD_DIR) --output-on-failure
-
-assets:
-	uv sync --frozen
-	$(UV_PYTHON) tools/blender/generators/generate_vehicles.py --asset all
-	$(UV_PYTHON) tools/blender/generators/generate_drivers.py --asset all
-	$(UV_PYTHON) tools/blender/generators/generate_loading_screen.py
-	$(UV_PYTHON) tools/blender/generators/generate_formula_garage.py
-	$(UV_PYTHON) tools/blender/tracks/generate_tracks.py --track all
-
-assets-validate:
-	uv sync --frozen
-	$(UV_PYTHON) tools/blender/generators/verify_assets.py
-	$(UV_PYTHON) tools/blender/tracks/verify_tracks.py --track all
-
-$(SDL_LIB): scripts/bootstrap_deps.sh third_party/_cache/SDL3-3.4.10.tar.gz third_party/_cache/libXext-1.3.6.tar.xz
-	scripts/bootstrap_deps.sh
-
-$(RAYLIB_LIB): scripts/bootstrap_raylib.sh third_party/_cache/raylib-6.0.tar.gz $(SDL_LIB)
-	scripts/bootstrap_raylib.sh
-
-$(TARGET): $(GAME_SOURCES) $(SDL_LIB) $(RAYLIB_LIB)
-	cmake -S . -B $(GAME_BUILD_DIR) -DCMAKE_BUILD_TYPE=Release
-	cmake --build $(GAME_BUILD_DIR) --parallel
-
-clean:
-	cmake -E remove_directory "$(BUILD_DIR)"
+build/tests/surface-audit: Tests/surface_audit.cpp $(OBJECTS)
+	TMPDIR="$(CURDIR)/build/tmp" $(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@

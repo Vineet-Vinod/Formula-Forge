@@ -1,0 +1,280 @@
+{
+  "aerial": {
+    "url": "https://commons.wikimedia.org/wiki/File:Silverstone_Circuit,_July_2,_2018_SkySat.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/da/Silverstone_Circuit%2C_July_2%2C_2018_SkySat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "author": "Planet Labs, Inc.",
+    "capture_date": "2018-07-02",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "file": "references/silverstone_skysat.jpg",
+    "sha256": "a9c8009e7c718bebe04f20572efcfb5aad1f4ef598d129a81fbb6ba95417a534"
+  },
+  "operator_documents": [
+    {
+      "name": "silverstone_fia",
+      "url": "https://www.fia.com/system/files/decision-document/2025_silverstone_event_-_circuit_map_-_silverstone_2025_0.pdf",
+      "usage": "Configuration, turn numbering and dimensions reviewed as factual reference; original PDF retained only in disposable research cache"
+    }
+  ],
+  "elevation_sources": "Environment Agency 2022 composite bare-earth lidar DTM, 1 m",
+  "terrain_source": {
+    "product": "Environment Agency 2022 composite bare-earth lidar DTM, 1 m",
+    "file": "terrain_dem.npz",
+    "source_metadata": {
+      "epsg": 27700,
+      "endpoint": "https://environment.data.gov.uk/geoservices/datasets/13787b9a-26a4-4775-8523-806d13af58fc/wcs",
+      "coverage": "13787b9a-26a4-4775-8523-806d13af58fc__Lidar_Composite_Elevation_DTM_1m",
+      "source": "Environment Agency 2022 composite bare-earth lidar DTM, 1 m",
+      "license": "Open Government Licence v3.0",
+      "attribution": "\u00a9 Environment Agency copyright and/or database right 2022. All rights reserved.",
+      "epoch": "Composite inputs 2000-06-06 through 2022-04-02; local survey epoch unresolved",
+      "datum": "Ordnance Datum Newlyn; OSGB36 / British National Grid, OSTN15"
+    },
+    "references": [
+      {
+        "url": "https://environment.data.gov.uk/geoservices/datasets/13787b9a-26a4-4775-8523-806d13af58fc/wcs?service=WCS&version=2.0.1&request=GetCoverage&coverageId=13787b9a-26a4-4775-8523-806d13af58fc__Lidar_Composite_Elevation_DTM_1m&format=image%2Ftiff&subset=E%28466323%2C468658%29&subset=N%28240372%2C243401%29",
+        "response_sha256": "1726fd91e4b2d7a3df65f1f516e64ae21a36f16060456e662cd7ac15425637ac",
+        "file": "elevation/regional_lidar.tif",
+        "sha256": "c7f99781f39b3755548bdff30a95d9312f4b36023aa48efaadd45c677c30ce93"
+      }
+    ],
+    "native_resolution_m": 1,
+    "output_grid_m": 8,
+    "cropped_samples_sha256": "ba585ee7abb9fc696f0e8808b88a4009db3aecc2303e506c8cb34a42b5af3dbe",
+    "warning": "Resampled bare-earth lidar; source age and road registration limit accuracy"
+  },
+  "accuracy": {
+    "road_plan": "OSM observations, four-metre controls; aerial comparison. No centimetre-level survey claim.",
+    "widths": "Aerial/operator dimensional estimates; full per-corner survey unavailable",
+    "runoff_and_walls": "Mapped and aerial-digitized explicit paths; metre-scale image registration and date differences remain",
+    "elevation": "Environment Agency 2022 composite bare-earth lidar DTM, 1 m. Measured terrain sampled on geographically registered road; 6.5 m Gaussian profile filter; source age and plan alignment limit accuracy",
+    "banking": "Filtered 8 m cross-sections from regional lidar; 14 m longitudinal Gaussian filter; not a kerb-scale engineering survey",
+    "surroundings": "Mapped footprints and attributed vegetation; unmeasured architectural heights and details approximated",
+    "pit_closures": "Fictional physical gates requested by the user"
+  },
+  "elevation_metadata": {
+    "epsg": 27700,
+    "endpoint": "https://environment.data.gov.uk/geoservices/datasets/13787b9a-26a4-4775-8523-806d13af58fc/wcs",
+    "coverage": "13787b9a-26a4-4775-8523-806d13af58fc__Lidar_Composite_Elevation_DTM_1m",
+    "source": "Environment Agency 2022 composite bare-earth lidar DTM, 1 m",
+    "license": "Open Government Licence v3.0",
+    "attribution": "\u00a9 Environment Agency copyright and/or database right 2022. All rights reserved.",
+    "epoch": "Composite inputs 2000-06-06 through 2022-04-02; local survey epoch unresolved",
+    "datum": "Ordnance Datum Newlyn; OSGB36 / British National Grid, OSTN15"
+  },
+  "published_elevation_crosscheck": {
+    "publisher": "Formula 1",
+    "url": "https://www.formula1.com/en/latest/article/highs-and-lows-which-f1-track-has-the-most-elevation-changes-.7I9JEcBw3R2AqXbnJ6hyvc.7I9JEcBw3R2AqXbnJ6hyvc",
+    "publication_date": "2016-10-21",
+    "reported_relief_m": 11.3,
+    "usage": "Independent comparison of highest-to-lowest road elevation; no source figure or photograph redistributed"
+  },
+  "architecture_reference": {
+    "reference_urls": [
+      "https://populous.com/showcases/silverstone-circuit",
+      "https://www.newsteelconstruction.com/wp/wp-content/uploads/digi/2010pdf/1010NSCOct2010.pdf"
+    ],
+    "reference_usage": "Architect actual completed end photograph and steel contractor construction photographs/description, October2010 pages22-24. Four blocks, 41 garages, two occupied storeys with three at Club; 16.5 m fin inclined40 degrees, 30 m tip. Intermediate roof stations and facade dimensions inferred from photographs, not a construction survey. Photos not redistributed.",
+    "features": [
+      {
+        "osm_way": 227332429,
+        "model": "wing",
+        "height_m": 30,
+        "evidence": "Populous and steel contractor; asymmetric roof and Club-end fin. Published dimensions where given, intermediate roof profile inferred."
+      },
+      {
+        "osm_way": 227342448,
+        "kind": "grandstand",
+        "tags": {
+          "covered": "no",
+          "leisure": "bleachers"
+        },
+        "evidence": "Named Club B, Vale and Stowe A seating stands in mapped venue; correct initial generic building classification."
+      },
+      {
+        "osm_way": 227342453,
+        "kind": "grandstand",
+        "tags": {
+          "covered": "no",
+          "leisure": "bleachers"
+        },
+        "evidence": "Named Club B, Vale and Stowe A seating stands in mapped venue; correct initial generic building classification."
+      },
+      {
+        "osm_way": 227342460,
+        "kind": "grandstand",
+        "tags": {
+          "covered": "no",
+          "leisure": "bleachers"
+        },
+        "evidence": "Named Club B, Vale and Stowe A seating stands in mapped venue; correct initial generic building classification."
+      }
+    ]
+  },
+  "architecture": {
+    "reference_urls": [
+      "https://populous.com/showcases/silverstone-circuit",
+      "https://www.newsteelconstruction.com/wp/wp-content/uploads/digi/2010pdf/1010NSCOct2010.pdf"
+    ],
+    "reference_usage": "Architect actual completed end photograph and steel contractor construction photographs/description, October2010 pages22-24. Four blocks, 41 garages, two occupied storeys with three at Club; 16.5 m fin inclined40 degrees, 30 m tip. Intermediate roof stations and facade dimensions inferred from photographs, not a construction survey. Photos not redistributed.",
+    "features": [
+      {
+        "osm_way": 227332429,
+        "model": "wing",
+        "height_m": 30,
+        "evidence": "Populous and steel contractor; asymmetric roof and Club-end fin. Published dimensions where given, intermediate roof profile inferred. Mapped footprint lies beyond the racing road; broad runoff exclusion must not discard it.",
+        "verified_roadside_footprint": true
+      },
+      {
+        "osm_way": 227342448,
+        "kind": "grandstand",
+        "tags": {
+          "covered": "no",
+          "leisure": "bleachers"
+        },
+        "evidence": "Named Club B, Vale and Stowe A seating stands in mapped venue; correct initial generic building classification. Mapped footprint lies beyond the racing road; broad runoff exclusion must not discard it.",
+        "verified_roadside_footprint": true
+      },
+      {
+        "osm_way": 227342453,
+        "kind": "grandstand",
+        "tags": {
+          "covered": "no",
+          "leisure": "bleachers"
+        },
+        "evidence": "Named Club B, Vale and Stowe A seating stands in mapped venue; correct initial generic building classification. Mapped footprint lies beyond the racing road; broad runoff exclusion must not discard it.",
+        "verified_roadside_footprint": true
+      },
+      {
+        "osm_way": 227342460,
+        "kind": "grandstand",
+        "tags": {
+          "covered": "no",
+          "leisure": "bleachers"
+        },
+        "evidence": "Named Club B, Vale and Stowe A seating stands in mapped venue; correct initial generic building classification. Mapped footprint lies beyond the racing road; broad runoff exclusion must not discard it.",
+        "verified_roadside_footprint": true
+      },
+      {
+        "osm_way": 227342458,
+        "verified_roadside_footprint": true,
+        "evidence": "Mapped Abbey grandstand28.3m from racing centreline; roof parts belong to its seating structure."
+      },
+      {
+        "osm_way": 1418514059,
+        "part_of": 227332429,
+        "evidence": "Mapped building part belongs to the detailed parent structure; avoid duplicate solid extrusions."
+      },
+      {
+        "osm_way": 1418514060,
+        "part_of": 227332429,
+        "evidence": "Mapped building part belongs to the detailed parent structure; avoid duplicate solid extrusions."
+      },
+      {
+        "osm_way": 1418514082,
+        "part_of": 227332429,
+        "evidence": "Mapped building part belongs to the detailed parent structure; avoid duplicate solid extrusions."
+      },
+      {
+        "osm_way": 1418514084,
+        "part_of": 227332429,
+        "evidence": "Mapped building part belongs to the detailed parent structure; avoid duplicate solid extrusions."
+      },
+      {
+        "osm_way": 1418514087,
+        "part_of": 227332429,
+        "evidence": "Mapped building part belongs to the detailed parent structure; avoid duplicate solid extrusions."
+      },
+      {
+        "osm_way": 1418514088,
+        "part_of": 227332429,
+        "evidence": "Mapped building part belongs to the detailed parent structure; avoid duplicate solid extrusions."
+      },
+      {
+        "osm_way": 1418514089,
+        "part_of": 227332429,
+        "evidence": "Mapped building part belongs to the detailed parent structure; avoid duplicate solid extrusions."
+      },
+      {
+        "osm_way": 1418514090,
+        "part_of": 227332429,
+        "evidence": "Mapped building part belongs to the detailed parent structure; avoid duplicate solid extrusions."
+      },
+      {
+        "osm_way": 1418514091,
+        "part_of": 227332429,
+        "evidence": "Mapped building part belongs to the detailed parent structure; avoid duplicate solid extrusions."
+      },
+      {
+        "osm_way": 1418514092,
+        "part_of": 227332429,
+        "evidence": "Mapped building part belongs to the detailed parent structure; avoid duplicate solid extrusions."
+      },
+      {
+        "osm_way": 1418514094,
+        "part_of": 227332429,
+        "evidence": "Mapped building part belongs to the detailed parent structure; avoid duplicate solid extrusions."
+      },
+      {
+        "osm_way": 1418514095,
+        "part_of": 227332429,
+        "evidence": "Mapped building part belongs to the detailed parent structure; avoid duplicate solid extrusions."
+      },
+      {
+        "osm_way": 1418514096,
+        "part_of": 227332429,
+        "evidence": "Mapped building part belongs to the detailed parent structure; avoid duplicate solid extrusions."
+      },
+      {
+        "osm_way": 1418514097,
+        "part_of": 227332429,
+        "evidence": "Mapped building part belongs to the detailed parent structure; avoid duplicate solid extrusions."
+      },
+      {
+        "osm_way": 1418514098,
+        "part_of": 227332429,
+        "evidence": "Mapped building part belongs to the detailed parent structure; avoid duplicate solid extrusions."
+      },
+      {
+        "osm_way": 1418514100,
+        "part_of": 227332429,
+        "evidence": "Mapped building part belongs to the detailed parent structure; avoid duplicate solid extrusions."
+      },
+      {
+        "osm_way": 1418514101,
+        "part_of": 227332429,
+        "evidence": "Mapped building part belongs to the detailed parent structure; avoid duplicate solid extrusions."
+      },
+      {
+        "osm_way": 1418514102,
+        "part_of": 227332429,
+        "evidence": "Mapped building part belongs to the detailed parent structure; avoid duplicate solid extrusions."
+      },
+      {
+        "osm_way": 1418514103,
+        "part_of": 227332429,
+        "evidence": "Mapped building part belongs to the detailed parent structure; avoid duplicate solid extrusions."
+      },
+      {
+        "osm_way": 1418514104,
+        "part_of": 227332429,
+        "evidence": "Mapped building part belongs to the detailed parent structure; avoid duplicate solid extrusions."
+      },
+      {
+        "osm_way": 1418985808,
+        "part_of": 227332429,
+        "evidence": "Mapped building part belongs to the detailed parent structure; avoid duplicate solid extrusions."
+      },
+      {
+        "osm_way": 1418985809,
+        "part_of": 227342458,
+        "evidence": "Mapped building part belongs to the detailed parent structure; avoid duplicate solid extrusions."
+      },
+      {
+        "osm_way": 1455592129,
+        "part_of": 227342458,
+        "evidence": "Mapped building part belongs to the detailed parent structure; avoid duplicate solid extrusions."
+      }
+    ]
+  }
+}

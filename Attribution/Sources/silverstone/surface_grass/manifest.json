@@ -1,0 +1,32 @@
+{
+  "license": "CC0 1.0 for ambientCG Grass005 inputs; original project procedural fields",
+  "source_page": "https://ambientcg.com/view?id=Grass005",
+  "inputs": {
+    "grass_trial/grass005_2025_dry_trial_color.png": "b70c2e1dd9b39b5c110d9ff4ed16f514a38057b360cc997f8ba26390c583e06c",
+    "grass_trial/grass005_2025_dry_trial_roughness.png": "d22f6942c2b344f6b51aa9bcd3acbcdc1853586fe3f8f44e0f39952b835fb5ef",
+    "rebuild_materials/lawn_grass005_normal_35.png": "6e18edd49eb24e41e45e68fb45affc8f3e6cd35ad117bb2c0afb252d17b4031f"
+  },
+  "outputs": {
+    "grass_clumps_color.png": "abb27a36c33e4aed96a38e6d37ae53ba16ba9ebe62c9c3d55da2d84d9ad5fda8",
+    "grass_clumps_roughness.png": "b9bf4ec599e96ed39ed8f8b8df06d06b54516724434d38182bc863c3416f0328",
+    "grass_clumps_normal.png": "52040735203695a3ff32ef0bb0f984891afe25d25349dd5495a2599edda61ff0"
+  },
+  "tile_metres": 32.0,
+  "resolution": 2048,
+  "recipe": "Repeat accepted 2 m Grass005 detail 16 times; periodic 4 m dry patches and 0.25-0.5 m clumps. Preserve mean linear RGB. Add bounded roughness and 8 mm clump height normal detail. No mowing stripes.",
+  "reference_evidence": "Official 2025 onboard early frame05 at Loop, middle frame06 at Becketts and frame10 at Hangar show mixed olive/tan cut grass. References remain review-only. Patch sizes, layout and normal height are visual estimates, not measured turf or calibrated reflectance.",
+  "base_mean_linear_rgb": [
+    0.07121831329586925,
+    0.07707041040062812,
+    0.010566468834113496
+  ],
+  "output_mean_linear_rgb": [
+    0.07121830372792637,
+    0.07707040036463564,
+    0.010566466368309047
+  ],
+  "roughness_range": [
+    0.8282748460769653,
+    0.9669448137283325
+  ]
+}

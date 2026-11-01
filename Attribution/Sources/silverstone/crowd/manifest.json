@@ -1,0 +1,14 @@
+{
+  "assets": [
+    {
+      "path": "spectators_original_v1.png",
+      "sha256": "77fb11d73985dc1ea7c4b94860472d433f7762d7a9b319640141a19891ece46c",
+      "origin": "Original project artwork generated with OpenAI imagegen on 2026-09-27, then edited with the same tool to remove the background and preserve alpha.",
+      "use": "Transparent atlas for estimated race-day stand and Stowe bank spectators. The six figures occupy a 3 by 2 grid with standing poses above seated poses.",
+      "reference_pixels": false,
+      "status": "original crowd artwork; 24-person runtime trial reviewed before full-scene rollout",
+      "generation_prompt": "Use case: photorealistic-natural\nAsset type: original transparent sprite atlas for a 3D racing game crowd, viewed from trackside at medium distance\nPrimary request: create SIX separate realistic adult British Grand Prix spectators as full-body cutouts in a precise 3-column by 2-row grid. Top row: three standing spectators with clearly visible separate arms and legs; one neutral stance, one clapping, one with one arm lifted. Bottom row: three seated spectators, visible head, shoulders, torso, arms and legs; one neutral, one leaning forward, one clapping. Give each cell generous empty transparent padding, and keep every figure entirely inside its own cell without overlap.\nScene/backdrop: genuinely transparent alpha background everywhere outside each figure, no ground plane and no shadow.\nStyle/medium: natural daylight game-asset photography, realistic cloth folds and human proportions, clean crisp edges at sprite scale.\nClothing: varied muted navy, charcoal, off-white, olive, ochre, burgundy casual jackets/shirts; mixed adult genders and varied natural skin tones and hair. No team kit, logos, brand marks, text, flags, helmets or props.\nComposition/framing: all figures face mostly toward the camera at similar scale; align standing feet along top-row cell bottoms and seated figures along bottom-row cell bottoms; no cropped limbs. Keep grid cell boundaries visually empty for UV slicing.\nConstraints: exactly six distinct figures, no extra people, no repeated clones, no background, no watermark, no outlines, no typography.",
+      "transparency_edit_prompt": "Use case: background-extraction\nAsset type: original transparent spectator sprite atlas for a 3D racing game\nPrimary request: remove the entire dark gradient background and all floor/contact shadows from the six-figure 3-column by 2-row atlas. Make every pixel outside the actual people genuinely transparent alpha. Preserve all six people exactly: same faces, bodies, clothing, poses, positions, proportions and cell layout. Keep fine hair and clothing edges clean with no black matte fringe.\nConstraints: exactly six isolated figures in the same grid cells, no new details, no text, no replacement background, no shadow, no edge halo. Export as RGBA PNG with real alpha transparency."
+    }
+  ]
+}

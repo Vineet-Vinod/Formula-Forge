@@ -1,0 +1,8 @@
+{
+  "source": "tools/blender/tracks/sources/spa/sky/manifest.json",
+  "license": "CC0 1.0",
+  "source_sha256": "4a8fabedbe3d4b93ac58599542077b810eafd59478bf544e9a1e6af52b553c43",
+  "derived_sha256": "c43b79a01aeeea9afcbef250171a5bd0d14e14cf17e3fb8d0f442149ed144670",
+  "recipe": "RGB, Pillow Color 0.72, Brightness 0.96; same panorama orientation and sun centroid",
+  "use": "Illustrative neutral daylight for Silverstone. Not evidence of venue weather or a particular race day."
+}

@@ -1,0 +1,165 @@
+{
+  "license": "CC0 for surface scans; project artwork for spectators and event typesetting",
+  "surface_provenance": [
+    "tools/blender/tracks/sources/silverstone/rebuild_materials/manifest.json",
+    "tools/blender/tracks/sources/silverstone/architecture_materials/manifest.json",
+    "tools/blender/tracks/sources/spa/materials/manifest.json"
+  ],
+  "crowd_provenance": "tools/blender/tracks/sources/silverstone/crowd/manifest.json",
+  "asphalt_recipe": "Silverstone CC0 neutral asphalt derivative multiplied by 0.72; estimated fresh Monza asphalt albedo, not colorimetry.",
+  "event_words": "Original DejaVu Sans Bold typesetting of labels observed in the user reference. No extracted logos, textures or video pixels.",
+  "files": [
+    {
+      "path": "tools/blender/tracks/sources/monza/rebuild_materials/Asphalt_orm.png",
+      "sha256": "99fef5e296f010ea103a33fc66672a4512bc6ece13077ccd12195105c246b09f"
+    },
+    {
+      "path": "tools/blender/tracks/sources/monza/rebuild_materials/Concrete_orm.png",
+      "sha256": "1379abba4e5bfaf247acc73709da2faa05f821851991d82a0ef112c3aa45bd90"
+    },
+    {
+      "path": "tools/blender/tracks/sources/monza/rebuild_materials/Grass_orm.png",
+      "sha256": "931f2409064f2318b5074228eb8dba2898dc81a1050f927a499e791d5ab192d0"
+    },
+    {
+      "path": "tools/blender/tracks/sources/monza/rebuild_materials/Gravel_orm.png",
+      "sha256": "9ec2ee2763002f85ea42feae6bc4da9d12f49963614c3bccd38d9027276a14e9"
+    },
+    {
+      "path": "tools/blender/tracks/sources/monza/rebuild_materials/Green_paint_orm.png",
+      "sha256": "c97da1d1823fca097d1c1243dd984a325c3c01761bf28c901c5b2be46deadd42"
+    },
+    {
+      "path": "tools/blender/tracks/sources/monza/rebuild_materials/Red_paint_orm.png",
+      "sha256": "c97da1d1823fca097d1c1243dd984a325c3c01761bf28c901c5b2be46deadd42"
+    },
+    {
+      "path": "tools/blender/tracks/sources/monza/rebuild_materials/White_paint_orm.png",
+      "sha256": "c97da1d1823fca097d1c1243dd984a325c3c01761bf28c901c5b2be46deadd42"
+    },
+    {
+      "path": "tools/blender/tracks/sources/monza/rebuild_materials/aramco.png",
+      "sha256": "47a9c24b0dc676f9908d770d86386be82bf4f4c95088d1010bc9ea2a04251d8d"
+    },
+    {
+      "path": "tools/blender/tracks/sources/monza/rebuild_materials/asphalt_monza_color.png",
+      "sha256": "a1dec1a5db714784ce7aa810bed650f1495bef43d5ae3d58afb03304af68f976"
+    },
+    {
+      "path": "tools/blender/tracks/sources/monza/rebuild_materials/globant.png",
+      "sha256": "736d9151ae44bf083a901d659910390f856bc613491c82fe8e316690f4c1be7a"
+    },
+    {
+      "path": "tools/blender/tracks/sources/monza/rebuild_materials/msc.png",
+      "sha256": "3135d579fcbcafa80718c93c8ae26beb6db556f63323cce6df50db87d7701f5d"
+    },
+    {
+      "path": "tools/blender/tracks/sources/monza/rebuild_materials/pirelli.png",
+      "sha256": "50629fa0399643c2d27bbb4a89b76c4b06539b8499a945e5bcf9021076c1fd71"
+    },
+    {
+      "path": "tools/blender/tracks/sources/monza/rebuild_materials/qatar.png",
+      "sha256": "9d155847a70c9e41990c104786ec4e7ccc08fbcdd90cf7ccfeb3a18939ec6246"
+    },
+    {
+      "path": "tools/blender/tracks/sources/monza/rebuild_materials/red_paint.png",
+      "sha256": "a0e3b923ba946c6008b1bbdd0b16e584d5b75f0ca9c9f2d541ece2756606ea3a"
+    },
+    {
+      "path": "tools/blender/tracks/sources/monza/rebuild_materials/tag.png",
+      "sha256": "bffebec104e9c9c56c76ff9e869ad5a59017caa6f674f06ccccb3a6b11284eea"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/architecture_materials/concrete_wall_color.png",
+      "sha256": "12e07b74d75c6f55020f429839c87e556694eb6967302286358c3b779f64d23a"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/architecture_materials/concrete_wall_normal.png",
+      "sha256": "a698e42398c3614caf16687b678aaf8b118743b12c8ad321f1ad5752022bc004"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/architecture_materials/concrete_wall_roughness.png",
+      "sha256": "210e4fe1e3888ddf104aa911ab71abb67e7cf310f685a4e92f6703be665cdfe8"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/crowd/spectators_original_v1.png",
+      "sha256": "77fb11d73985dc1ea7c4b94860472d433f7762d7a9b319640141a19891ece46c"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/event_screen_village_original.png",
+      "sha256": "ef4cf3f26537fad4aea66b64263f2c2856116562dd9a49b1e40fabb8719af4de"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/rebuild_materials/asphalt_track_normal_18.png",
+      "sha256": "8b5e21eb1d6a5dd2fb99604e023f9413cf8bd01b7928524378fce043917b76ec"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/rebuild_materials/asphalt_track_normal_35.png",
+      "sha256": "31b5d881aabd4a1fa50780d3c769c892085076b8396612737e9424202b1cbb25"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/rebuild_materials/asphalt_track_roughness.png",
+      "sha256": "b5d27782157078be8070fc511ff11c723352fb5a392e1d7463f3d970c7aabcdf"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/rebuild_materials/lawn_grass005_normal_35.png",
+      "sha256": "6e18edd49eb24e41e45e68fb45affc8f3e6cd35ad117bb2c0afb252d17b4031f"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/rebuild_materials/lawn_grass005_roughness.png",
+      "sha256": "31ebdabc2ed67a485d79ef31bee940925df0cf16ace63b2b6d132af2159ab592"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/rebuild_materials/lawn_grass005_silverstone_color.png",
+      "sha256": "9dd96307709c5955aa42118ec902cb6e8532405b7ab154377faeb2759f80eb0b"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/rebuild_materials/sandy_gravel_color.png",
+      "sha256": "770800692900f6ff0b186c2e6e830491da47f8088dffa17c58c0e96064b3b880"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/rebuild_materials/sandy_gravel_normal_48.png",
+      "sha256": "cd1fffb42a6bf2863a442c3b1513d8acdc20a841ec0a7b5fe483ae4592e3ad62"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/rebuild_materials/sandy_gravel_roughness.png",
+      "sha256": "f3c87e3b31cf8ce1cf9ae76274812f3de776c0bdd7cf939c32a683ca59d20627"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/rebuild_materials/worn_paint_green_color.png",
+      "sha256": "076209ccadfabe3814abf858ad458ada319c8815c53821d09bc61a0c8ba689da"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/rebuild_materials/worn_paint_green_roughness.png",
+      "sha256": "d2f00fd097b2fb087e0def1f00b250ce61c3b3f3c6d12c189022272359413b8a"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/rebuild_materials/worn_paint_white_color.png",
+      "sha256": "82f9169c324c35e6adb850b906aac405c4f8eccdb1be9c1f6ae977ec91e29374"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/rebuild_materials/worn_paint_white_roughness.png",
+      "sha256": "d2f00fd097b2fb087e0def1f00b250ce61c3b3f3c6d12c189022272359413b8a"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/vegetation/derived_canopy_manifest.json",
+      "sha256": "af79fc41037df29b787e4f5ef8165729f2a57f0276fa92c731706a7f9dc509d7"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/vegetation/tree_small_02_canopy_000.png",
+      "sha256": "f5b40bfb5254acae7153ef81d6c9ef8f53c7b774f10031cb6a391dc3ca77305f"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/vegetation/tree_small_02_canopy_090.png",
+      "sha256": "a69bcbfabfa5e4aad926251cd2c0eacb83c24032f7dc4f1e7121995427510cbb"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/vegetation/tree_small_02_canopy_180.png",
+      "sha256": "f3ec0f1f532bf665431548bf75cc85e0b9d73c64e72b2c29fbcf8d22186730dd"
+    },
+    {
+      "path": "tools/blender/tracks/sources/silverstone/vegetation/tree_small_02_canopy_270.png",
+      "sha256": "6e7f038a5794473a27aa1e8a1779fcdfa61f1202faeee4b05778bcb995c171bf"
+    }
+  ]
+}

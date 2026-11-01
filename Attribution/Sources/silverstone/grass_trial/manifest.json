@@ -1,0 +1,124 @@
+{
+  "source": "ambientCG Grass005, CC0 1.0",
+  "source_page": "https://ambientcg.com/view?id=Grass005",
+  "source_archive_sha256": "2f9a3bea61f8d7740311b73aa166dd592247296ffda949ee469ae68dc1dec59b",
+  "source_color": {
+    "file": "rebuild_materials/lawn_grass005_color.png",
+    "sha256": "4460b603d9e65b588ddb3be8ef2621a0f860b7fddb74dcfac0f48aecc45a5f07"
+  },
+  "source_roughness": {
+    "file": "rebuild_materials/lawn_grass005_roughness.png",
+    "sha256": "31ebdabc2ed67a485d79ef31bee940925df0cf16ace63b2b6d132af2159ab592"
+  },
+  "derived_color": {
+    "file": "grass005_2025_dry_trial_color.png",
+    "sha256": "b70c2e1dd9b39b5c110d9ff4ed16f514a38057b360cc997f8ba26390c583e06c",
+    "recipe": "Source RGB sRGB multipliers 0.75, 0.60, 0.72; texture detail retained."
+  },
+  "derived_roughness": {
+    "file": "grass005_2025_dry_trial_roughness.png",
+    "sha256": "d22f6942c2b344f6b51aa9bcd3acbcdc1853586fe3f8f44e0f39952b835fb5ef",
+    "recipe": "Linear roughness = 0.72 + 0.24 * source roughness; variation retained."
+  },
+  "status": "A/B trial, not a measured reflectance calibration",
+  "intent": "Grass-only, road-normalized daylight test; road, sky, blue paint, trees, geometry and exposure stay fixed.",
+  "reference_rois": [
+    {
+      "source": "official F1 2025 early frame05, Loop",
+      "grass_road_luma": 1.096,
+      "grass_red_green": 1.01,
+      "current_game_luma": 1.449,
+      "current_game_red_green": 0.904,
+      "source_grass_box": [
+        600,
+        115,
+        625,
+        145
+      ],
+      "source_road_box": [
+        40,
+        120,
+        95,
+        155
+      ],
+      "game_view": "checkpoint_c125/loop_950.png",
+      "game_grass_box": [
+        1130,
+        323,
+        1210,
+        352
+      ],
+      "game_road_box": [
+        80,
+        440,
+        160,
+        470
+      ]
+    },
+    {
+      "source": "official F1 2025 middle frame10, Hangar",
+      "grass_road_luma": 0.969,
+      "grass_red_green": 0.971,
+      "current_game_luma": 1.302,
+      "current_game_red_green": 0.707,
+      "source_grass_box": [
+        55,
+        78,
+        105,
+        95
+      ],
+      "source_road_box": [
+        165,
+        82,
+        250,
+        105
+      ],
+      "game_view": "checkpoint_15e58_event_words/hangar_4500.png",
+      "game_grass_box": [
+        120,
+        322,
+        220,
+        345
+      ],
+      "game_road_box": [
+        70,
+        390,
+        180,
+        430
+      ]
+    },
+    {
+      "source": "official F1 2025 middle frame06, Becketts",
+      "grass_road_luma": 1.006,
+      "grass_red_green": 1.029,
+      "current_game_luma": 1.44,
+      "current_game_red_green": 0.842,
+      "source_grass_box": [
+        540,
+        75,
+        620,
+        105
+      ],
+      "source_road_box": [
+        280,
+        55,
+        370,
+        90
+      ],
+      "game_view": "checkpoint_79e7/full_tour/formula_forge_silverstone_tour_045.png",
+      "game_grass_box": [
+        960,
+        365,
+        1150,
+        420
+      ],
+      "game_road_box": [
+        240,
+        415,
+        360,
+        480
+      ]
+    }
+  ],
+  "limits": "Small, compressed onboard ROIs and different lenses/exposure; compare multiple fixed game views before adoption."
+}

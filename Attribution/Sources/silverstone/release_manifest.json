@@ -1,0 +1,552 @@
+{
+  "schema_version": 1,
+  "scope": "Silverstone runtime release only; repository source and research files are separate",
+  "shipping_files": [
+    {
+      "path": "assets/tracks/silverstone/silverstone.glb",
+      "sha256": "0461dff9d63f50b2eec108feb66b43b73556759b1be7016e565f5cadadbf64ca",
+      "role": "runtime track geometry with embedded textures",
+      "rights": "Project-authored photo-derived visual asset under CC BY-SA 4.0, with Planet Labs, Inc. credit for the 2018 SkySat reference; mapped OSM-derived plan data retains ODbL attribution and embedded Poly Haven maps retain CC0 1.0."
+    },
+    {
+      "path": "assets/tracks/silverstone/silverstone.json",
+      "sha256": "8a4227a710770d55d00fdc3d008cd3940eb5d87aed8a37f4c5396034c1dd333b",
+      "role": "runtime track metadata and project annotations",
+      "rights": "Project-authored photo-derived layout annotations under CC BY-SA 4.0, with Planet Labs, Inc. credit for the 2018 SkySat reference; OSM-derived geographic data retains ODbL attribution."
+    },
+    {
+      "path": "assets/environments/silverstone/daylight.png",
+      "role": "runtime daylight panorama",
+      "rights": "CC0 1.0 derivative of Poly Haven Kloofendal 38d Partly Cloudy (Pure Sky)",
+      "sha256": "c43b79a01aeeea9afcbef250171a5bd0d14e14cf17e3fb8d0f442149ed144670"
+    }
+  ],
+  "embedded_images": [
+    {
+      "name": "asphalt_track_normal_18",
+      "mime_type": "image/png",
+      "sha256": "8b5e21eb1d6a5dd2fb99604e023f9413cf8bd01b7928524378fce043917b76ec",
+      "origin": "licensed_cc0_derivative"
+    },
+    {
+      "name": "worn_paint_blue_color",
+      "mime_type": "image/png",
+      "sha256": "4efd14a48c0d0e9bed7e76cae3095a3c19a0fe87beaebb5a06dee0211d327929",
+      "origin": "licensed_cc0_derivative"
+    },
+    {
+      "name": "worn_paint_blue_roughness",
+      "mime_type": "image/png",
+      "sha256": "f660437aca1c0e9c895fe61fa877ddad52b4661178a793fce5d4092b4f0a00f7",
+      "origin": "licensed_cc0_derivative"
+    },
+    {
+      "name": "worn_paint_black_color",
+      "mime_type": "image/png",
+      "sha256": "a08faf40669c19001ab2b675e1bc62ebd2bc2dcd3767195b069b8ef20ebbc66e",
+      "origin": "licensed_cc0_derivative"
+    },
+    {
+      "name": "worn_paint_black_roughness",
+      "mime_type": "image/png",
+      "sha256": "4ca9620d4a7b80c0a09260945ed808bbbae57709257c1cc4aabb90f952088aac",
+      "origin": "licensed_cc0_derivative"
+    },
+    {
+      "name": "worn_paint_white_color",
+      "mime_type": "image/png",
+      "sha256": "82f9169c324c35e6adb850b906aac405c4f8eccdb1be9c1f6ae977ec91e29374",
+      "origin": "licensed_cc0_derivative"
+    },
+    {
+      "name": "worn_paint_white_roughness",
+      "mime_type": "image/png",
+      "sha256": "4ca9620d4a7b80c0a09260945ed808bbbae57709257c1cc4aabb90f952088aac",
+      "origin": "licensed_cc0_derivative"
+    },
+    {
+      "name": "worn_paint_green_color",
+      "mime_type": "image/png",
+      "sha256": "076209ccadfabe3814abf858ad458ada319c8815c53821d09bc61a0c8ba689da",
+      "origin": "licensed_cc0_derivative"
+    },
+    {
+      "name": "worn_paint_green_roughness",
+      "mime_type": "image/png",
+      "sha256": "4ca9620d4a7b80c0a09260945ed808bbbae57709257c1cc4aabb90f952088aac",
+      "origin": "licensed_cc0_derivative"
+    },
+    {
+      "name": "worn_paint_turquoise_color",
+      "mime_type": "image/png",
+      "sha256": "8dc881295996baaaa17f4eb03fdcfeca38b79e0465ff1c2ac3ac8925139bdbf8",
+      "origin": "licensed_cc0_derivative"
+    },
+    {
+      "name": "worn_paint_turquoise_roughness",
+      "mime_type": "image/png",
+      "sha256": "af83c3434435e298d26938e0515fdd5b7edbce89cfcd99021f4d8ec8c9faab19",
+      "origin": "licensed_cc0_derivative"
+    },
+    {
+      "name": "asphalt_track_normal_50",
+      "mime_type": "image/png",
+      "sha256": "8548c3c508ff77070b19271b7059dd9aab892b63d9360cd4fe29270c774220fa",
+      "origin": "licensed_cc0_derivative"
+    },
+    {
+      "name": "asphalt_track_silverstone_color",
+      "mime_type": "image/png",
+      "sha256": "d30f1cfcf4513b5eccf465c67a0df250f7490c0cbbd129bfc966054cf06cf94e",
+      "origin": "licensed_cc0_derivative"
+    },
+    {
+      "name": "asphalt_track_roughness",
+      "mime_type": "image/png",
+      "sha256": "49e1cf8efbd9debff222ec016d06e98f2a253ac4d59fecf0e3de08915c9a2a8e",
+      "origin": "licensed_cc0_derivative"
+    },
+    {
+      "name": "asphalt_track_normal_35",
+      "mime_type": "image/png",
+      "sha256": "31b5d881aabd4a1fa50780d3c769c892085076b8396612737e9424202b1cbb25",
+      "origin": "licensed_cc0_derivative"
+    },
+    {
+      "name": "grass_clumps_normal",
+      "mime_type": "image/png",
+      "origin": "licensed_cc0_derivative",
+      "sha256": "52040735203695a3ff32ef0bb0f984891afe25d25349dd5495a2599edda61ff0"
+    },
+    {
+      "name": "grass_clumps_color",
+      "mime_type": "image/png",
+      "origin": "licensed_cc0_derivative",
+      "sha256": "abb27a36c33e4aed96a38e6d37ae53ba16ba9ebe62c9c3d55da2d84d9ad5fda8"
+    },
+    {
+      "name": "grass_clumps_roughness",
+      "mime_type": "image/png",
+      "origin": "licensed_cc0_derivative",
+      "sha256": "c7cf22a33a44c9d2197bcd26cd710e06c6154138e6fbf174540686f9d50bc14d"
+    },
+    {
+      "name": "paddock_hardstanding_color",
+      "mime_type": "image/png",
+      "sha256": "503fc945c6612e21d8b2f14adcc38237708bd3e82f6e4f74a73a7d27b4574392",
+      "origin": "licensed_cc0_derivative"
+    },
+    {
+      "name": "sandy_gravel_normal_48",
+      "mime_type": "image/png",
+      "sha256": "cd1fffb42a6bf2863a442c3b1513d8acdc20a841ec0a7b5fe483ae4592e3ad62",
+      "origin": "licensed_cc0_derivative"
+    },
+    {
+      "name": "sandy_gravel_luffield_color",
+      "mime_type": "image/png",
+      "sha256": "524256b2a2ff5bb17527866fc4277b75d02f87bfc9fd589167ed71ec88b6c515",
+      "origin": "licensed_cc0_derivative"
+    },
+    {
+      "name": "sandy_gravel_roughness",
+      "mime_type": "image/png",
+      "sha256": "370cfcc9349b84f812722eb62d0dcd08f7e92daea845229046a3f3a17b5c31bb",
+      "origin": "licensed_cc0_derivative"
+    },
+    {
+      "name": "concrete_wall_normal",
+      "mime_type": "image/png",
+      "origin": "licensed_cc0_derivative",
+      "sha256": "a698e42398c3614caf16687b678aaf8b118743b12c8ad321f1ad5752022bc004"
+    },
+    {
+      "name": "balcony_concrete_color",
+      "mime_type": "image/png",
+      "origin": "licensed_cc0_derivative",
+      "sha256": "f3468d5f9be069863e3e56419577fa4add56dee0174699fddaee8fe80aafc36b"
+    },
+    {
+      "name": "concrete_wall_roughness",
+      "mime_type": "image/png",
+      "origin": "licensed_cc0_derivative",
+      "sha256": "bc3800154fc945987399ccadb4bb6e19dc8cea0872d69d4b11955448f2496945"
+    },
+    {
+      "name": "event_screen_village_original",
+      "mime_type": "image/png",
+      "sha256": "ef4cf3f26537fad4aea66b64263f2c2856116562dd9a49b1e40fabb8719af4de",
+      "origin": "project_scene_capture"
+    },
+    {
+      "name": "event_screen_luffield_original",
+      "mime_type": "image/png",
+      "sha256": "3f51a52b23eb3009ab8d1dc37015629d562c006e986585b3d4007bc52a93b3d4",
+      "origin": "project_scene_capture"
+    },
+    {
+      "name": "tree_small_02_canopy_000",
+      "mime_type": "image/png",
+      "origin": "licensed_cc0_derivative",
+      "sha256": "f5b40bfb5254acae7153ef81d6c9ef8f53c7b774f10031cb6a391dc3ca77305f"
+    },
+    {
+      "name": "tree_small_02_canopy_090",
+      "mime_type": "image/png",
+      "origin": "licensed_cc0_derivative",
+      "sha256": "a69bcbfabfa5e4aad926251cd2c0eacb83c24032f7dc4f1e7121995427510cbb"
+    },
+    {
+      "name": "tree_small_02_canopy_180",
+      "mime_type": "image/png",
+      "origin": "licensed_cc0_derivative",
+      "sha256": "f3ec0f1f532bf665431548bf75cc85e0b9d73c64e72b2c29fbcf8d22186730dd"
+    },
+    {
+      "name": "tree_small_02_canopy_270",
+      "mime_type": "image/png",
+      "origin": "licensed_cc0_derivative",
+      "sha256": "6e7f038a5794473a27aa1e8a1779fcdfa61f1202faeee4b05778bcb995c171bf"
+    },
+    {
+      "name": "tree_small_02_leaf_card_color_0",
+      "mime_type": "image/png",
+      "sha256": "1bd31ee48b2bd4b3728e49e635cc2d237cbad4be3f1fbc92137b4f7704389f43",
+      "origin": "licensed_cc0_leaf_derivative"
+    },
+    {
+      "name": "tree_small_02_leaf_card_color_1",
+      "mime_type": "image/png",
+      "sha256": "3d652dce0fb07ad992fde6ce7b2c6f287cac43be3cdfbf17b9e21ae65075c7e8",
+      "origin": "licensed_cc0_leaf_derivative"
+    },
+    {
+      "name": "tree_small_02_leaf_card_color_2",
+      "mime_type": "image/png",
+      "sha256": "90c58a66362023a32369de27873e4a8cf9d72e443caad535d4968e1c1ddfe2f3",
+      "origin": "licensed_cc0_leaf_derivative"
+    },
+    {
+      "name": "corrugated_cladding_normal",
+      "mime_type": "image/png",
+      "origin": "project_original_artwork",
+      "sha256": "d706e8b6b515df350b0e69ddb3da906ff2ad1dfb076a4840c947a4669315171d"
+    },
+    {
+      "name": "corrugated_cladding_color",
+      "mime_type": "image/png",
+      "origin": "project_original_artwork",
+      "sha256": "7cc39964c326c396fd53a8af060b928504f9bb315feb1e4f2f4f14ec03cba641"
+    },
+    {
+      "name": "corrugated_cladding_roughness",
+      "mime_type": "image/png",
+      "origin": "project_original_artwork",
+      "sha256": "5e13a629fec6db35fdb48cabc61ae33508b1d4ea20af5447e3701b04b73719be"
+    },
+    {
+      "name": "dark_horizontal_cladding_normal",
+      "mime_type": "image/png",
+      "origin": "project_original_artwork",
+      "sha256": "ad9bcee456fed0f8ffaa50821dcd894cc2469f4108351b07f93fef2cd9c44c92"
+    },
+    {
+      "name": "dark_horizontal_cladding_color",
+      "mime_type": "image/png",
+      "origin": "project_original_artwork",
+      "sha256": "bbc0b811b84a05ccb46971c4ee5e531bbd941e1088dfbbec859126376b28abb2"
+    },
+    {
+      "name": "dark_horizontal_cladding_roughness",
+      "mime_type": "image/png",
+      "origin": "project_original_artwork",
+      "sha256": "2ceba27b30b73d4d0415bad1b04f9d2ac9f45834af79eba5a09ab716d7986452"
+    },
+    {
+      "name": "garage_shutter_normal",
+      "mime_type": "image/png",
+      "origin": "project_original_artwork",
+      "sha256": "65c2cd6986c90d6d2bbd6d99694ba95cc1d0fb94947828df9a53da99749bfe0e"
+    },
+    {
+      "name": "garage_shutter_color",
+      "mime_type": "image/png",
+      "origin": "project_original_artwork",
+      "sha256": "486dfd4c422eaf72b7ed1c7f25362332c5ed0535713cb409dbff986ed04ba19a"
+    },
+    {
+      "name": "garage_shutter_roughness",
+      "mime_type": "image/png",
+      "origin": "project_original_artwork",
+      "sha256": "3816a14b70608b05c293dfe04e3f04ff0730a43995393babb7ac392960cb8f40"
+    },
+    {
+      "name": "national_midpoint_probe",
+      "mime_type": "image/png",
+      "origin": "project_render_of_licensed_scene",
+      "sha256": "2a5b7e715f7d77998f365bb920033951714fdc740075c43bd3c3f32018cf1fbb"
+    },
+    {
+      "name": "painted_blockwork_normal",
+      "mime_type": "image/png",
+      "origin": "project_original_artwork",
+      "sha256": "dfa4af89f70669dd4c7376d97116112fdd29c9e18422e35f7aa2c7d127436e20"
+    },
+    {
+      "name": "painted_blockwork_color",
+      "mime_type": "image/png",
+      "origin": "project_original_artwork",
+      "sha256": "80de42309270ce9af2002d1984640e5d2aaf7b0d420d2662ffaf93a5917c3d97"
+    },
+    {
+      "name": "painted_blockwork_roughness",
+      "mime_type": "image/png",
+      "origin": "project_original_artwork",
+      "sha256": "faad8ce4323914b91c4f8bafad83b75192862998c404807d8418440c2e905642"
+    },
+    {
+      "name": "dark_vertical_cladding_normal",
+      "mime_type": "image/png",
+      "origin": "project_original_artwork",
+      "sha256": "bf2680b3c277631fa82f57f51a0af4ea3b14dbaccbff0de1535a01f51b93304f"
+    },
+    {
+      "name": "dark_vertical_cladding_color",
+      "mime_type": "image/png",
+      "origin": "project_original_artwork",
+      "sha256": "01730f0587bb6e4659f28f2d8ab93002b6491ff46a2278ff9c2d9e0dde275e0b"
+    },
+    {
+      "name": "dark_vertical_cladding_roughness",
+      "mime_type": "image/png",
+      "origin": "project_original_artwork",
+      "sha256": "2ceba27b30b73d4d0415bad1b04f9d2ac9f45834af79eba5a09ab716d7986452"
+    },
+    {
+      "name": "vertical_cladding_normal",
+      "mime_type": "image/png",
+      "origin": "project_original_artwork",
+      "sha256": "bf2680b3c277631fa82f57f51a0af4ea3b14dbaccbff0de1535a01f51b93304f"
+    },
+    {
+      "name": "vertical_cladding_color",
+      "mime_type": "image/png",
+      "origin": "project_original_artwork",
+      "sha256": "67445fe2734b21059a5aa414ce72b08621f15b84389af669bf0a6dc8919ac87d"
+    },
+    {
+      "name": "vertical_cladding_roughness",
+      "mime_type": "image/png",
+      "origin": "project_original_artwork",
+      "sha256": "c96193d1b023bbe01c8036714983672339444462b5bb1d2e437cf117402891d0"
+    },
+    {
+      "name": "concrete_wall_color",
+      "mime_type": "image/png",
+      "origin": "licensed_cc0_derivative",
+      "sha256": "12e07b74d75c6f55020f429839c87e556694eb6967302286358c3b779f64d23a"
+    },
+    {
+      "name": "panel_words_2025",
+      "mime_type": "image/png",
+      "sha256": "632322a51254b9a322fe07901292c5d517bf9aba86ac3766ddb92b1317fd77c4",
+      "origin": "project_typeset_bitstream_vera"
+    },
+    {
+      "name": "spectators_original_v1",
+      "mime_type": "image/png",
+      "sha256": "77fb11d73985dc1ea7c4b94860472d433f7762d7a9b319640141a19891ece46c",
+      "origin": "project_original_imagegen"
+    },
+    {
+      "name": "wing_probe_atlas",
+      "mime_type": "image/png",
+      "sha256": "7d6a3817163b02e86564fcbc919ae5e8217632d0c8f18e03410bda755c520d88",
+      "origin": "project_scene_derived_atlas"
+    }
+  ],
+  "provenance": {
+    "osm": "tools/blender/tracks/sources/silverstone/sources.yaml",
+    "environment_agency_lidar": "tools/blender/tracks/sources/silverstone/sources.yaml",
+    "poly_haven_materials": "tools/blender/tracks/sources/spa/materials/manifest.json",
+    "poly_haven_sky": "tools/blender/tracks/sources/spa/sky/manifest.json",
+    "silverstone_sky_derivative": "tools/blender/tracks/sources/silverstone/sky/manifest.json",
+    "project_foliage": "tools/blender/tracks/sources/shared/monza_foliage/README.md",
+    "references": "tools/blender/tracks/sources/silverstone/reference_index.json",
+    "notices": "THIRD_PARTY_LICENSES.md",
+    "silverstone_material_derivatives": "tools/blender/tracks/sources/silverstone/rebuild_materials/manifest.json",
+    "silverstone_dry_grass_derivatives": "tools/blender/tracks/sources/silverstone/grass_trial/manifest.json",
+    "wing_reflection_atlas": "tools/blender/tracks/sources/silverstone/wing_reflection/wing_probe_atlas.json",
+    "event_screen_sources": "docs/silverstone_event_screen_sources.json",
+    "event_graphics": "tools/blender/tracks/sources/silverstone/event_graphics/manifest.json",
+    "original_crowd": "tools/blender/tracks/sources/silverstone/crowd/manifest.json",
+    "structured_grass_derivatives": "tools/blender/tracks/sources/silverstone/surface_grass/manifest.json",
+    "cc0_distant_canopy": "tools/blender/tracks/sources/silverstone/vegetation/derived_canopy_manifest.json",
+    "architecture_materials": "tools/blender/tracks/sources/silverstone/architecture_materials/manifest.json",
+    "national_glazing_probe": "tools/blender/tracks/sources/silverstone/architecture_materials/national_midpoint_probe.json"
+  },
+  "reference_only_files_excluded_from_runtime": [
+    "tools/blender/tracks/sources/silverstone/references/silverstone_skysat.jpg",
+    "tools/blender/tracks/sources/silverstone/references/silverstone_skysat.json",
+    "tools/blender/tracks/sources/silverstone/reference_index.json"
+  ],
+  "source_or_review_files_excluded_from_runtime": [
+    "assets/tracks/silverstone/silverstone.blend",
+    "assets/tracks/silverstone/silverstone_preview.png"
+  ],
+  "notes": [
+    "The 2018 SkySat JPG is retained only in the research workspace under CC BY-SA 4.0; staged runtime and source releases exclude that physical image.",
+    "FIA maps, F1 broadcasts, commercial game screenshots, operator photographs and Google assets are reference-only. Their artwork is not redistributed.",
+    "The runtime GLB contains no external image URI. Every embedded image payload must match this allowlist.",
+    "Two embedded event-screen stills are original no-HUD Formula Forge game renders. Their source PNG hashes and camera positions are in docs/silverstone_event_screen_sources.json.",
+    "The project-created event-word atlas uses DejaVu Sans Bold for plain text, with the Bitstream Vera font notice recorded in the event graphics manifest and THIRD_PARTY_LICENSES.md."
+  ],
+  "source_release": {
+    "scope": "Declared Silverstone content for a separate open-source source package, including MIT project code, CC BY-SA authored visuals, ODbL geographic data, OGL elevation, CC0 material inputs, and text-only research annotations. No source archive has been assembled.",
+    "project_visuals_cc_by_sa_4_0": [
+      "assets/tracks/silverstone/silverstone.blend",
+      "assets/tracks/silverstone/silverstone_preview.png",
+      "docs/visual-review/silverstone-before-100.png",
+      "docs/visual-review/silverstone-before-4000.png",
+      "docs/visual-review/silverstone-after-100.png",
+      "docs/visual-review/silverstone-after-4000.png",
+      "docs/visual-review/silverstone-after-5550.png",
+      "docs/visual-review/silverstone-wing-exterior.png",
+      "tools/blender/tracks/sources/silverstone/layout.json",
+      "tools/blender/tracks/sources/silverstone/photo_traces.json",
+      "tools/blender/tracks/sources/silverstone/photo_registration.json",
+      "tools/blender/tracks/sources/silverstone/architecture.json",
+      "tools/blender/tracks/sources/silverstone/track_edges.geojson",
+      "tools/blender/tracks/sources/silverstone/wing_reflection/wing_probe_atlas.png",
+      "tools/blender/tracks/sources/silverstone/wing_reflection/wing_probe_bay_8.png",
+      "tools/blender/tracks/sources/silverstone/wing_reflection/wing_probe_bay_24.png",
+      "tools/blender/tracks/sources/silverstone/wing_reflection/wing_probe_bay_40.png",
+      "tools/blender/tracks/sources/silverstone/wing_reflection/wing_probe_bay_56.png",
+      "tools/blender/tracks/sources/silverstone/wing_reflection/wing_probe_bay_74.5.png",
+      "tools/blender/tracks/sources/silverstone/event_screen_village_original.png",
+      "tools/blender/tracks/sources/silverstone/event_screen_luffield_original.png",
+      "tools/blender/tracks/sources/silverstone/architecture_materials/national_midpoint_probe.png"
+    ],
+    "osm_odbl_1_0_data_and_annotations": [
+      "tools/blender/tracks/sources/silverstone/circuit.osm.gz",
+      "tools/blender/tracks/sources/silverstone/osm_source.json",
+      "tools/blender/tracks/sources/silverstone/centerline.geojson",
+      "tools/blender/tracks/sources/silverstone/buildings.geojson",
+      "tools/blender/tracks/sources/silverstone/barriers.geojson",
+      "tools/blender/tracks/sources/silverstone/survey.json",
+      "tools/blender/tracks/sources/silverstone/reconstruction.json"
+    ],
+    "environment_agency_ogl_data": [
+      "tools/blender/tracks/sources/silverstone/elevation/silverstone_2019_200m_corridor.laz",
+      "tools/blender/tracks/sources/silverstone/elevation/regional_lidar.tif",
+      "tools/blender/tracks/sources/silverstone/terrain.tif",
+      "tools/blender/tracks/sources/silverstone/terrain_dem.npz",
+      "tools/blender/tracks/sources/silverstone/lidar_tile_index.json",
+      "tools/blender/tracks/sources/silverstone/terrain_source.json"
+    ],
+    "cc0_material_and_sky_reproduction": [
+      "tools/blender/tracks/sources/silverstone/materials/manifest.json",
+      "tools/blender/tracks/sources/silverstone/sky/manifest.json",
+      "tools/blender/tracks/sources/spa/materials/manifest.json",
+      "tools/blender/tracks/sources/spa/sky/manifest.json",
+      "tools/blender/tracks/sources/silverstone/rebuild_materials/manifest.json",
+      "tools/blender/tracks/sources/silverstone/vegetation/derived_canopy_manifest.json",
+      "tools/blender/tracks/sources/silverstone/surface_grass/manifest.json",
+      "tools/blender/tracks/sources/silverstone/architecture_materials/manifest.json"
+    ],
+    "source_and_reference_annotations": [
+      "tools/blender/tracks/sources/silverstone/sources.yaml",
+      "tools/blender/tracks/sources/silverstone/provenance.json",
+      "tools/blender/tracks/sources/silverstone/reference_index.json",
+      "tools/blender/tracks/sources/silverstone/wing_reflection/wing_probe_atlas.json",
+      "tools/blender/tracks/sources/silverstone/wing_reflection/wing_probe_bay_8.json",
+      "tools/blender/tracks/sources/silverstone/wing_reflection/wing_probe_bay_24.json",
+      "tools/blender/tracks/sources/silverstone/wing_reflection/wing_probe_bay_40.json",
+      "tools/blender/tracks/sources/silverstone/wing_reflection/wing_probe_bay_56.json",
+      "tools/blender/tracks/sources/silverstone/wing_reflection/wing_probe_bay_74.5.json",
+      "tools/blender/tracks/sources/silverstone/fidelity_review.json",
+      "THIRD_PARTY_LICENSES.md",
+      "docs/silverstone_release_manifest.json",
+      "docs/silverstone_visual_review.md",
+      "LICENSE",
+      "docs/silverstone_event_screen_sources.json",
+      "tools/blender/tracks/sources/silverstone/event_graphics/manifest.json",
+      "tools/blender/tracks/sources/silverstone/grass_trial/manifest.json",
+      "tools/blender/tracks/sources/silverstone/grass_trial/grass005_2025_dry_trial_color.png",
+      "tools/blender/tracks/sources/silverstone/grass_trial/grass005_2025_dry_trial_roughness.png",
+      "tools/blender/tracks/sources/silverstone/crowd/manifest.json"
+    ],
+    "reference_only_physical_files_excluded": [
+      "tools/blender/tracks/sources/silverstone/references/silverstone_skysat.jpg"
+    ],
+    "external_reference_art_excluded": "No broadcast frame, commercial game screenshot or model, Google asset, FIA artwork, operator photograph, or linked reference image is a staged runtime or source-release asset.",
+    "terrain_symlink_note": "terrain.tif points to elevation/regional_lidar.tif; keep its target when staging the source package.",
+    "mixed_geographic_annotations": {
+      "rights": "Project annotations derived from both OSM geometry (ODbL attribution) and Environment Agency elevation (OGL attribution).",
+      "files": [
+        "tools/blender/tracks/sources/silverstone/lidar_clip_aoi.geojson",
+        "tools/blender/tracks/sources/silverstone/elevation_observations.json"
+      ]
+    },
+    "cc0_material_image_roots": [
+      "tools/blender/tracks/sources/silverstone/materials/*.png",
+      "tools/blender/tracks/sources/spa/materials/*.png",
+      "tools/blender/tracks/sources/spa/materials/*.jpg",
+      "tools/blender/tracks/sources/silverstone/rebuild_materials/*.png",
+      "tools/blender/tracks/sources/silverstone/surface_grass/*.png",
+      "tools/blender/tracks/sources/silverstone/vegetation/*.png",
+      "tools/blender/tracks/sources/silverstone/architecture_materials/concrete_wall_*.png",
+      "tools/blender/tracks/sources/silverstone/architecture_materials/balcony_concrete_color.png"
+    ],
+    "project_code_mit": [
+      "tools/blender/tracks/prepare_silverstone_materials.py",
+      "tools/blender/tracks/prepare_silverstone_sky.py",
+      "tools/blender/tracks/silverstone_materials.py",
+      "tools/blender/tracks/silverstone_trackside.py",
+      "tools/blender/tracks/render_silverstone_review.py",
+      "tools/blender/tracks/render_silverstone_wing_probe.py",
+      "tools/blender/tracks/pack_silverstone_wing_probes.py",
+      "tools/blender/tracks/silverstone_rebuild_stand_ao.py",
+      "tools/blender/tracks/generate_tracks.py",
+      "tools/diagnostics/check_silverstone_release.py",
+      "tools/blender/tracks/silverstone_rebuild_annotations.py",
+      "tools/blender/tracks/silverstone_rebuild_annotations_dataclasses.py",
+      "tools/blender/tracks/silverstone_rebuild_architecture_ao.py",
+      "tools/blender/tracks/silverstone_rebuild_crowd_sprite.py",
+      "tools/blender/tracks/silverstone_rebuild_crowd_sprite_dataclasses.py",
+      "tools/blender/tracks/silverstone_rebuild_event_graphics.py",
+      "tools/blender/tracks/silverstone_rebuild_event_graphics_dataclasses.py",
+      "tools/blender/tracks/silverstone_rebuild_event_hardware.py",
+      "tools/blender/tracks/silverstone_rebuild_ground.py",
+      "tools/blender/tracks/silverstone_rebuild_ground_dataclasses.py",
+      "tools/blender/tracks/silverstone_rebuild_scene.py",
+      "tools/blender/tracks/silverstone_rebuild_sources.py",
+      "tools/blender/tracks/silverstone_rebuild_sources_dataclasses.py",
+      "tools/blender/tracks/silverstone_rebuild_surroundings.py",
+      "tools/blender/tracks/silverstone_rebuild_trackside.py",
+      "tools/blender/tracks/silverstone_rebuild_turf.py",
+      "tools/blender/tracks/silverstone_rebuild_vegetation.py",
+      "tools/blender/tracks/silverstone_rebuild_wing.py",
+      "tools/blender/tracks/export_silverstone_rebuild.py",
+      "tools/blender/tracks/verify_silverstone_rebuild.py",
+      "tools/blender/tracks/prepare_silverstone_rebuild_surface_grass.py",
+      "tools/blender/tracks/prepare_silverstone_rebuild_canopy.py",
+      "tools/blender/tracks/verify_silverstone_rebuild_canopy.py",
+      "tools/blender/tracks/prepare_silverstone_rebuild_architecture_materials.py",
+      "tools/blender/tracks/render_silverstone_national_probe.py",
+      "tools/blender/tracks/silverstone_rebuild_facade_ao.py"
+    ],
+    "project_original_event_assets": [
+      "tools/blender/tracks/sources/silverstone/event_graphics/panel_words_2025.png",
+      "tools/blender/tracks/sources/silverstone/crowd/spectators_original_v1.png"
+    ],
+    "project_original_architecture_surfaces": [
+      "tools/blender/tracks/sources/silverstone/architecture_materials/painted_blockwork_*.png",
+      "tools/blender/tracks/sources/silverstone/architecture_materials/corrugated_cladding_*.png",
+      "tools/blender/tracks/sources/silverstone/architecture_materials/dark_horizontal_cladding_*.png",
+      "tools/blender/tracks/sources/silverstone/architecture_materials/dark_vertical_cladding_*.png",
+      "tools/blender/tracks/sources/silverstone/architecture_materials/vertical_cladding_*.png",
+      "tools/blender/tracks/sources/silverstone/architecture_materials/garage_shutter_*.png"
+    ]
+  }
+}

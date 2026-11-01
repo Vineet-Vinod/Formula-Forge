@@ -1,0 +1,8134 @@
+{
+  "materials": [
+    {
+      "name": "Green_paint",
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 1.0,
+      "metallic": 0,
+      "vertex_color": true,
+      "textures": {
+        "color": "textures/Green_paint_color.png",
+        "normal": "textures/Green_paint_normal.png",
+        "roughness": "textures/Green_paint_roughness.png"
+      },
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Fence",
+      "color": [
+        0.20999999344348907,
+        0.23000000417232513,
+        0.2199999988079071,
+        1.0
+      ],
+      "roughness": 0.5,
+      "metallic": 0.800000011920929,
+      "vertex_color": false,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Grass",
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 1.0,
+      "metallic": 0,
+      "vertex_color": true,
+      "textures": {
+        "color": "textures/Grass_color.png",
+        "normal": "textures/Grass_normal.png",
+        "roughness": "textures/Grass_roughness.png"
+      },
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Leaf_3",
+      "color": [
+        0.14000000059604645,
+        0.1899999976158142,
+        0.03200000151991844,
+        1.0
+      ],
+      "roughness": 0.5,
+      "metallic": 0.0,
+      "vertex_color": false,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Soil",
+      "color": [
+        0.09000000357627869,
+        0.06499999761581421,
+        0.026000000536441803,
+        1.0
+      ],
+      "roughness": 0.5,
+      "metallic": 0.0,
+      "vertex_color": false,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "White_paint",
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 1.0,
+      "metallic": 0,
+      "vertex_color": true,
+      "textures": {
+        "color": "textures/White_paint_color.png",
+        "normal": "textures/White_paint_normal.png",
+        "roughness": "textures/White_paint_roughness.png"
+      },
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Red_paint",
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 1.0,
+      "metallic": 0,
+      "vertex_color": true,
+      "textures": {
+        "color": "textures/Red_paint_color.png",
+        "normal": "textures/Red_paint_normal.png",
+        "roughness": "textures/Red_paint_roughness.png"
+      },
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Runtime_foliage",
+      "color": [
+        0.78,
+        0.83,
+        0.72,
+        1.0
+      ],
+      "roughness": 0.85,
+      "metallic": 0,
+      "vertex_color": false,
+      "textures": {
+        "color": "textures/Runtime_foliage_color.png"
+      },
+      "alpha_mode": "MASKED",
+      "opacity": 1.0
+    },
+    {
+      "name": "Leaf_0",
+      "color": [
+        0.06199999898672104,
+        0.12999999523162842,
+        0.02199999988079071,
+        1.0
+      ],
+      "roughness": 0.5,
+      "metallic": 0.0,
+      "vertex_color": false,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Leaf_1",
+      "color": [
+        0.0949999988079071,
+        0.18000000715255737,
+        0.02500000037252903,
+        1.0
+      ],
+      "roughness": 0.5,
+      "metallic": 0.0,
+      "vertex_color": false,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Leaf_2",
+      "color": [
+        0.0430000014603138,
+        0.0989999994635582,
+        0.017999999225139618,
+        1.0
+      ],
+      "roughness": 0.5,
+      "metallic": 0.0,
+      "vertex_color": false,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Leaf_4",
+      "color": [
+        0.10999999940395355,
+        0.14499999582767487,
+        0.020999999716877937,
+        1.0
+      ],
+      "roughness": 0.5,
+      "metallic": 0.0,
+      "vertex_color": false,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Asphalt",
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 1.0,
+      "metallic": 0,
+      "vertex_color": true,
+      "textures": {
+        "color": "textures/Asphalt_color.png",
+        "normal": "textures/Asphalt_normal.png",
+        "roughness": "textures/Asphalt_roughness.png"
+      },
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Concrete",
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 1.0,
+      "metallic": 0,
+      "vertex_color": true,
+      "textures": {
+        "color": "textures/Concrete_color.png",
+        "normal": "textures/Concrete_normal.png",
+        "roughness": "textures/Concrete_roughness.png"
+      },
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Historic_concrete",
+      "color": [
+        0.20000000298023224,
+        0.19499999284744263,
+        0.17000000178813934,
+        1.0
+      ],
+      "roughness": 0.5,
+      "metallic": 0.0,
+      "vertex_color": false,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Rubber",
+      "color": [
+        0.02199999988079071,
+        0.026000000536441803,
+        0.02800000086426735,
+        1.0
+      ],
+      "roughness": 0.5,
+      "metallic": 0.0,
+      "vertex_color": false,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Armco",
+      "color": [
+        0.4300000071525574,
+        0.4699999988079071,
+        0.47999998927116394,
+        1.0
+      ],
+      "roughness": 0.5,
+      "metallic": 0.8199999928474426,
+      "vertex_color": false,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Glass",
+      "color": [
+        0.052000001072883606,
+        0.09799999743700027,
+        0.11999999731779099,
+        1.0
+      ],
+      "roughness": 0.5,
+      "metallic": 0.550000011920929,
+      "vertex_color": false,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Roof",
+      "color": [
+        0.49000000953674316,
+        0.5099999904632568,
+        0.47999998927116394,
+        1.0
+      ],
+      "roughness": 0.5,
+      "metallic": 0.3799999952316284,
+      "vertex_color": false,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Blue_seat",
+      "color": [
+        0.017999999225139618,
+        0.07500000298023224,
+        0.2199999988079071,
+        1.0
+      ],
+      "roughness": 0.5,
+      "metallic": 0.0,
+      "vertex_color": true,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "circuit_original_spectators",
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 1.0,
+      "metallic": 0,
+      "vertex_color": true,
+      "textures": {
+        "color": "textures/circuit_original_spectators_color.png"
+      },
+      "alpha_mode": "MASKED",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_main_straight_spectators",
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 1.0,
+      "metallic": 0,
+      "vertex_color": true,
+      "textures": {
+        "color": "textures/Monza_main_straight_spectators_color.png"
+      },
+      "alpha_mode": "MASKED",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_hospitality_blue_glazing",
+      "color": [
+        0.017999999225139618,
+        0.028999999165534973,
+        0.032999999821186066,
+        1.0
+      ],
+      "roughness": 0.12999999523162842,
+      "metallic": 0.03999999910593033,
+      "vertex_color": true,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_silver_structural_steel",
+      "color": [
+        0.3700000047683716,
+        0.4099999964237213,
+        0.4300000071525574,
+        1.0
+      ],
+      "roughness": 0.47999998927116394,
+      "metallic": 0.550000011920929,
+      "vertex_color": true,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_hospitality_silver_cladding",
+      "color": [
+        0.3199999928474426,
+        0.3400000035762787,
+        0.33000001311302185,
+        1.0
+      ],
+      "roughness": 0.5799999833106995,
+      "metallic": 0.15000000596046448,
+      "vertex_color": true,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_hospitality_shaded_interior",
+      "color": [
+        0.02500000037252903,
+        0.03200000151991844,
+        0.035999998450279236,
+        1.0
+      ],
+      "roughness": 0.8999999761581421,
+      "metallic": 0.0,
+      "vertex_color": true,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_fascia_yellow",
+      "color": [
+        0.7799999713897705,
+        0.5600000023841858,
+        0.02500000037252903,
+        1.0
+      ],
+      "roughness": 0.8299999833106995,
+      "metallic": 0.0,
+      "vertex_color": false,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_fascia_black",
+      "color": [
+        0.012000000104308128,
+        0.014000000432133675,
+        0.012000000104308128,
+        1.0
+      ],
+      "roughness": 0.8299999833106995,
+      "metallic": 0.0,
+      "vertex_color": false,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_event_MSC_CRUISES",
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 1.0,
+      "metallic": 0,
+      "vertex_color": false,
+      "textures": {
+        "color": "textures/Monza_event_MSC_CRUISES_color.png"
+      },
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_event_PIRELLI",
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 1.0,
+      "metallic": 0,
+      "vertex_color": false,
+      "textures": {
+        "color": "textures/Monza_event_PIRELLI_color.png"
+      },
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_event_Globant__",
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 1.0,
+      "metallic": 0,
+      "vertex_color": false,
+      "textures": {
+        "color": "textures/Monza_event_Globant___color.png"
+      },
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_event_QATAR_AIRWAYS",
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 1.0,
+      "metallic": 0,
+      "vertex_color": false,
+      "textures": {
+        "color": "textures/Monza_event_QATAR_AIRWAYS_color.png"
+      },
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_event_aramco",
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 1.0,
+      "metallic": 0,
+      "vertex_color": false,
+      "textures": {
+        "color": "textures/Monza_event_aramco_color.png"
+      },
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_event_TAG_HEUER",
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 1.0,
+      "metallic": 0,
+      "vertex_color": false,
+      "textures": {
+        "color": "textures/Monza_event_TAG_HEUER_color.png"
+      },
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_main_straight_event_PIRELLI",
+      "color": [
+        0.62,
+        0.62,
+        0.62,
+        1.0
+      ],
+      "roughness": 1.0,
+      "metallic": 0,
+      "vertex_color": true,
+      "textures": {
+        "color": "textures/Monza_main_straight_event_PIRELLI_color.png"
+      },
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_recessed_garage",
+      "color": [
+        0.024000000208616257,
+        0.02800000086426735,
+        0.027000000700354576,
+        1.0
+      ],
+      "roughness": 0.8600000143051147,
+      "metallic": 0.0,
+      "vertex_color": true,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_pit_concrete_floor",
+      "color": [
+        0.3100000023841858,
+        0.3400000035762787,
+        0.3499999940395355,
+        1.0
+      ],
+      "roughness": 0.8799999952316284,
+      "metallic": 0.0,
+      "vertex_color": true,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_inclined_pit_glazing",
+      "color": [
+        0.07500000298023224,
+        0.10000000149011612,
+        0.10499999672174454,
+        1.0
+      ],
+      "roughness": 0.1599999964237213,
+      "metallic": 0.05000000074505806,
+      "vertex_color": true,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_flag_green",
+      "color": [
+        0.019999999552965164,
+        0.2800000011920929,
+        0.10000000149011612,
+        1.0
+      ],
+      "roughness": 0.800000011920929,
+      "metallic": 0.0,
+      "vertex_color": false,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_white_structural_paint",
+      "color": [
+        0.6499999761581421,
+        0.6499999761581421,
+        0.6100000143051147,
+        1.0
+      ],
+      "roughness": 0.6200000047683716,
+      "metallic": 0.0,
+      "vertex_color": true,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_flag_red",
+      "color": [
+        0.5699999928474426,
+        0.02500000037252903,
+        0.02500000037252903,
+        1.0
+      ],
+      "roughness": 0.800000011920929,
+      "metallic": 0.0,
+      "vertex_color": false,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_original_event_screen",
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 1.0,
+      "metallic": 0,
+      "vertex_color": false,
+      "textures": {
+        "color": "textures/Monza_original_event_screen_color.png"
+      },
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_pit_advertising_red",
+      "color": [
+        0.47999998927116394,
+        0.012000000104308128,
+        0.00800000037997961,
+        1.0
+      ],
+      "roughness": 0.8999999761581421,
+      "metallic": 0.0,
+      "vertex_color": false,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_pit_advertising_yellow",
+      "color": [
+        0.7200000286102295,
+        0.4699999988079071,
+        0.03500000014901161,
+        1.0
+      ],
+      "roughness": 0.8999999761581421,
+      "metallic": 0.0,
+      "vertex_color": true,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_pit_equipment_steel",
+      "color": [
+        0.33000001311302185,
+        0.3499999940395355,
+        0.3400000035762787,
+        1.0
+      ],
+      "roughness": 0.47999998927116394,
+      "metallic": 0.44999998807907104,
+      "vertex_color": false,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_pit_monitor_housings",
+      "color": [
+        0.017999999225139618,
+        0.023000000044703484,
+        0.02500000037252903,
+        1.0
+      ],
+      "roughness": 0.5299999713897705,
+      "metallic": 0.0,
+      "vertex_color": false,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_timing_screen",
+      "color": [
+        0.017999999225139618,
+        0.04800000041723251,
+        0.03500000014901161,
+        1.0
+      ],
+      "roughness": 0.27000001072883606,
+      "metallic": 0.0,
+      "vertex_color": false,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_fascia_red",
+      "color": [
+        0.47999998927116394,
+        0.017999999225139618,
+        0.012000000104308128,
+        1.0
+      ],
+      "roughness": 0.8299999833106995,
+      "metallic": 0.0,
+      "vertex_color": false,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "silverstone_cc0_distant_canopy_000",
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 1.0,
+      "metallic": 0,
+      "vertex_color": false,
+      "textures": {
+        "color": "textures/silverstone_cc0_distant_canopy_000_color.png"
+      },
+      "alpha_mode": "MASKED",
+      "opacity": 1.0
+    },
+    {
+      "name": "silverstone_cc0_distant_canopy_090",
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 1.0,
+      "metallic": 0,
+      "vertex_color": false,
+      "textures": {
+        "color": "textures/silverstone_cc0_distant_canopy_090_color.png"
+      },
+      "alpha_mode": "MASKED",
+      "opacity": 1.0
+    },
+    {
+      "name": "silverstone_cc0_distant_canopy_180",
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 1.0,
+      "metallic": 0,
+      "vertex_color": false,
+      "textures": {
+        "color": "textures/silverstone_cc0_distant_canopy_180_color.png"
+      },
+      "alpha_mode": "MASKED",
+      "opacity": 1.0
+    },
+    {
+      "name": "silverstone_cc0_distant_canopy_270",
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 1.0,
+      "metallic": 0,
+      "vertex_color": false,
+      "textures": {
+        "color": "textures/silverstone_cc0_distant_canopy_270_color.png"
+      },
+      "alpha_mode": "MASKED",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_main_straight_galvanized_posts",
+      "color": [
+        0.25,
+        0.2800000011920929,
+        0.27000001072883606,
+        1.0
+      ],
+      "roughness": 0.5299999713897705,
+      "metallic": 0.44999998807907104,
+      "vertex_color": false,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_main_straight_wire",
+      "color": [
+        0.45,
+        0.48,
+        0.46,
+        1.0
+      ],
+      "roughness": 0.85,
+      "metallic": 0,
+      "vertex_color": false,
+      "textures": {
+        "color": "textures/Monza_main_straight_wire_color.png"
+      },
+      "alpha_mode": "MASKED",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_yellow_grid_stop",
+      "color": [
+        0.6800000071525574,
+        0.4699999988079071,
+        0.017999999225139618,
+        1.0
+      ],
+      "roughness": 0.8899999856948853,
+      "metallic": 0.0,
+      "vertex_color": false,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Gravel",
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 1.0,
+      "metallic": 0,
+      "vertex_color": true,
+      "textures": {
+        "color": "textures/Gravel_color.png",
+        "normal": "textures/Gravel_normal.png",
+        "roughness": "textures/Gravel_roughness.png"
+      },
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Runtime_wire",
+      "color": [
+        0.45,
+        0.48,
+        0.46,
+        1.0
+      ],
+      "roughness": 0.85,
+      "metallic": 0,
+      "vertex_color": false,
+      "textures": {
+        "color": "textures/Runtime_wire_color.png"
+      },
+      "alpha_mode": "MASKED",
+      "opacity": 1.0
+    },
+    {
+      "name": "Yellow",
+      "color": [
+        0.7300000190734863,
+        0.49000000953674316,
+        0.023000000044703484,
+        1.0
+      ],
+      "roughness": 0.5,
+      "metallic": 0.0,
+      "vertex_color": false,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_Centrale_warm_white_render",
+      "color": [
+        0.6700000166893005,
+        0.6499999761581421,
+        0.5899999737739563,
+        1.0
+      ],
+      "roughness": 0.8299999833106995,
+      "metallic": 0.0,
+      "vertex_color": true,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_Centrale_shaded_clubhouse_glass",
+      "color": [
+        0.03500000014901161,
+        0.06700000166893005,
+        0.07500000298023224,
+        1.0
+      ],
+      "roughness": 0.1899999976158142,
+      "metallic": 0.18000000715255737,
+      "vertex_color": true,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_aluminium_bleachers",
+      "color": [
+        0.30000001192092896,
+        0.3199999928474426,
+        0.33000001311302185,
+        1.0
+      ],
+      "roughness": 0.550000011920929,
+      "metallic": 0.550000011920929,
+      "vertex_color": true,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_pale_stand_roof",
+      "color": [
+        0.5799999833106995,
+        0.6100000143051147,
+        0.6100000143051147,
+        1.0
+      ],
+      "roughness": 0.7400000095367432,
+      "metallic": 0.10000000149011612,
+      "vertex_color": true,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_dark_stand_steel",
+      "color": [
+        0.09000000357627869,
+        0.10499999672174454,
+        0.10999999940395355,
+        1.0
+      ],
+      "roughness": 0.7200000286102295,
+      "metallic": 0.3499999940395355,
+      "vertex_color": true,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_yellow_steps",
+      "color": [
+        0.7200000286102295,
+        0.5099999904632568,
+        0.02500000037252903,
+        1.0
+      ],
+      "roughness": 0.800000011920929,
+      "metallic": 0.0,
+      "vertex_color": true,
+      "textures": {},
+      "alpha_mode": "OPAQUE",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_roadside_canopy_000",
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 1.0,
+      "metallic": 0,
+      "vertex_color": true,
+      "textures": {
+        "color": "textures/Monza_roadside_canopy_000_color.png"
+      },
+      "alpha_mode": "MASKED",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_roadside_canopy_090",
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 1.0,
+      "metallic": 0,
+      "vertex_color": true,
+      "textures": {
+        "color": "textures/Monza_roadside_canopy_090_color.png"
+      },
+      "alpha_mode": "MASKED",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_roadside_canopy_180",
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 1.0,
+      "metallic": 0,
+      "vertex_color": true,
+      "textures": {
+        "color": "textures/Monza_roadside_canopy_180_color.png"
+      },
+      "alpha_mode": "MASKED",
+      "opacity": 1.0
+    },
+    {
+      "name": "Monza_roadside_canopy_270",
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 1.0,
+      "metallic": 0,
+      "vertex_color": true,
+      "textures": {
+        "color": "textures/Monza_roadside_canopy_270_color.png"
+      },
+      "alpha_mode": "MASKED",
+      "opacity": 1.0
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Building_Crowd_099_096",
+      "category": "Track",
+      "filename": "Track/Building_Crowd_099_096.fbx",
+      "triangles": 1650,
+      "minimum": [
+        59967.76123046875,
+        -20.76924443244934,
+        -329.76489067077637
+      ],
+      "maximum": [
+        67078.61328125,
+        1903.3979415893555,
+        -2.2541947662830353
+      ],
+      "lod_filename": "Track/Building_Crowd_099_096_far.fbx",
+      "lod_minimum": [
+        59967.76123046875,
+        -20.76924443244934,
+        -329.76489067077637
+      ],
+      "lod_maximum": [
+        67078.61328125,
+        1903.3979415893555,
+        -2.2541947662830353
+      ]
+    },
+    {
+      "name": "Building_Crowd_099_097",
+      "category": "Track",
+      "filename": "Track/Building_Crowd_099_097.fbx",
+      "triangles": 9800,
+      "minimum": [
+        39974.49645996094,
+        599.2151737213135,
+        -289.95940685272217
+      ],
+      "maximum": [
+        60028.89404296875,
+        8954.31137084961,
+        541.366720199585
+      ],
+      "lod_filename": "Track/Building_Crowd_099_097_far.fbx",
+      "lod_minimum": [
+        39974.49645996094,
+        599.2151737213135,
+        -289.95940685272217
+      ],
+      "lod_maximum": [
+        60028.89404296875,
+        8954.31137084961,
+        541.366720199585
+      ]
+    },
+    {
+      "name": "Building_Crowd_099_098",
+      "category": "Track",
+      "filename": "Track/Building_Crowd_099_098.fbx",
+      "triangles": 11984,
+      "minimum": [
+        19969.256591796875,
+        -8.093491196632385,
+        -181.67588710784912
+      ],
+      "maximum": [
+        40022.10998535156,
+        7754.368591308594,
+        1020.8388328552246
+      ],
+      "lod_filename": "Track/Building_Crowd_099_098_far.fbx",
+      "lod_minimum": [
+        19969.256591796875,
+        -8.093491196632385,
+        -181.67588710784912
+      ],
+      "lod_maximum": [
+        40022.10998535156,
+        7754.368591308594,
+        1020.8388328552246
+      ]
+    },
+    {
+      "name": "Building_Crowd_099_099",
+      "category": "Track",
+      "filename": "Track/Building_Crowd_099_099.fbx",
+      "triangles": 28176,
+      "minimum": [
+        -30.225127935409546,
+        2773.422622680664,
+        -90.70709347724915
+      ],
+      "maximum": [
+        20033.23974609375,
+        6213.5101318359375,
+        1395.7794189453125
+      ],
+      "lod_filename": "Track/Building_Crowd_099_099_far.fbx",
+      "lod_minimum": [
+        -30.225127935409546,
+        2773.422622680664,
+        -90.70709347724915
+      ],
+      "lod_maximum": [
+        20033.23974609375,
+        6213.5101318359375,
+        1395.7794189453125
+      ]
+    },
+    {
+      "name": "Building_Crowd_099_100",
+      "category": "Track",
+      "filename": "Track/Building_Crowd_099_100.fbx",
+      "triangles": 16782,
+      "minimum": [
+        -20032.203674316406,
+        3.6313846707344055,
+        35.245221853256226
+      ],
+      "maximum": [
+        26.07632577419281,
+        4624.871063232422,
+        1382.6224327087402
+      ],
+      "lod_filename": "Track/Building_Crowd_099_100_far.fbx",
+      "lod_minimum": [
+        -20032.203674316406,
+        3.6313846707344055,
+        35.245221853256226
+      ],
+      "lod_maximum": [
+        26.07632577419281,
+        4624.871063232422,
+        1382.6224327087402
+      ]
+    },
+    {
+      "name": "Building_Crowd_099_101",
+      "category": "Track",
+      "filename": "Track/Building_Crowd_099_101.fbx",
+      "triangles": 1200,
+      "minimum": [
+        -24090.870666503906,
+        -2.5684479624032974,
+        150.47606229782104
+      ],
+      "maximum": [
+        -19978.04718017578,
+        898.6696243286133,
+        654.4273853302002
+      ],
+      "lod_filename": "Track/Building_Crowd_099_101_far.fbx",
+      "lod_minimum": [
+        -24090.870666503906,
+        -2.5684479624032974,
+        150.47606229782104
+      ],
+      "lod_maximum": [
+        -19978.04718017578,
+        898.6696243286133,
+        654.4273853302002
+      ]
+    },
+    {
+      "name": "Building_Crowd_100_096",
+      "category": "Track",
+      "filename": "Track/Building_Crowd_100_096.fbx",
+      "triangles": 190,
+      "minimum": [
+        65504.205322265625,
+        -558.869457244873,
+        -329.2511224746704
+      ],
+      "maximum": [
+        66693.9453125,
+        18.091577291488647,
+        -40.42232930660248
+      ],
+      "lod_filename": "Track/Building_Crowd_100_096_far.fbx",
+      "lod_minimum": [
+        65504.205322265625,
+        -558.869457244873,
+        -329.2511224746704
+      ],
+      "lod_maximum": [
+        66693.9453125,
+        18.091577291488647,
+        -40.42232930660248
+      ]
+    },
+    {
+      "name": "Building_Crowd_100_098",
+      "category": "Track",
+      "filename": "Track/Building_Crowd_100_098.fbx",
+      "triangles": 300,
+      "minimum": [
+        20015.90118408203,
+        -619.3769454956055,
+        579.4517040252686
+      ],
+      "maximum": [
+        25637.265014648438,
+        -0.9918302297592163,
+        772.1871852874756
+      ],
+      "lod_filename": "Track/Building_Crowd_100_098_far.fbx",
+      "lod_minimum": [
+        20015.90118408203,
+        -619.3769454956055,
+        579.4517040252686
+      ],
+      "lod_maximum": [
+        25637.265014648438,
+        -0.9918302297592163,
+        772.1871852874756
+      ]
+    },
+    {
+      "name": "Building_Crowd_100_099",
+      "category": "Track",
+      "filename": "Track/Building_Crowd_100_099.fbx",
+      "triangles": 5940,
+      "minimum": [
+        -26.744407415390015,
+        -3236.0523223876953,
+        326.9153833389282
+      ],
+      "maximum": [
+        20014.0380859375,
+        -598.3803749084473,
+        1610.5758666992188
+      ],
+      "lod_filename": "Track/Building_Crowd_100_099_far.fbx",
+      "lod_minimum": [
+        -26.744407415390015,
+        -3236.0523223876953,
+        326.9153833389282
+      ],
+      "lod_maximum": [
+        20014.0380859375,
+        -598.3803749084473,
+        1610.5758666992188
+      ]
+    },
+    {
+      "name": "Building_Crowd_100_100",
+      "category": "Track",
+      "filename": "Track/Building_Crowd_100_100.fbx",
+      "triangles": 5530,
+      "minimum": [
+        -20027.035522460938,
+        -4356.013488769531,
+        57.02475905418396
+      ],
+      "maximum": [
+        31.978875398635864,
+        0.1928316429257393,
+        1607.364845275879
+      ],
+      "lod_filename": "Track/Building_Crowd_100_100_far.fbx",
+      "lod_minimum": [
+        -20027.035522460938,
+        -4356.013488769531,
+        57.02475905418396
+      ],
+      "lod_maximum": [
+        31.978875398635864,
+        0.1928316429257393,
+        1607.364845275879
+      ]
+    },
+    {
+      "name": "Building_Crowd_100_101",
+      "category": "Track",
+      "filename": "Track/Building_Crowd_100_101.fbx",
+      "triangles": 3764,
+      "minimum": [
+        -40031.341552734375,
+        -6901.161956787109,
+        111.34966611862183
+      ],
+      "maximum": [
+        -19969.146728515625,
+        1.8641233444213867,
+        773.2645988464355
+      ],
+      "lod_filename": "Track/Building_Crowd_100_101_far.fbx",
+      "lod_minimum": [
+        -40031.341552734375,
+        -6901.161956787109,
+        111.34966611862183
+      ],
+      "lod_maximum": [
+        -19969.146728515625,
+        1.8641233444213867,
+        773.2645988464355
+      ]
+    },
+    {
+      "name": "Building_Crowd_100_102",
+      "category": "Track",
+      "filename": "Track/Building_Crowd_100_102.fbx",
+      "triangles": 7640,
+      "minimum": [
+        -57852.398681640625,
+        -11810.442352294922,
+        204.00941371917725
+      ],
+      "maximum": [
+        -39962.701416015625,
+        -801.2351036071777,
+        973.6921310424805
+      ],
+      "lod_filename": "Track/Building_Crowd_100_102_far.fbx",
+      "lod_minimum": [
+        -57852.398681640625,
+        -11810.442352294922,
+        204.00941371917725
+      ],
+      "lod_maximum": [
+        -39962.701416015625,
+        -801.2351036071777,
+        973.6921310424805
+      ]
+    },
+    {
+      "name": "Building_Crowd_100_103",
+      "category": "Track",
+      "filename": "Track/Building_Crowd_100_103.fbx",
+      "triangles": 14296,
+      "minimum": [
+        -77353.66821289062,
+        -13305.386352539062,
+        388.2723569869995
+      ],
+      "maximum": [
+        -63046.966552734375,
+        -1284.086799621582,
+        1768.3937072753906
+      ],
+      "lod_filename": "Track/Building_Crowd_100_103_far.fbx",
+      "lod_minimum": [
+        -77353.66821289062,
+        -13305.386352539062,
+        388.2723569869995
+      ],
+      "lod_maximum": [
+        -63046.966552734375,
+        -1284.086799621582,
+        1768.3937072753906
+      ]
+    },
+    {
+      "name": "Building_Crowd_101_095",
+      "category": "Track",
+      "filename": "Track/Building_Crowd_101_095.fbx",
+      "triangles": 692,
+      "minimum": [
+        79963.9404296875,
+        -21415.695190429688,
+        -336.53557300567627
+      ],
+      "maximum": [
+        81263.28735351562,
+        -20001.89666748047,
+        375.2643823623657
+      ],
+      "lod_filename": "Track/Building_Crowd_101_095_far.fbx",
+      "lod_minimum": [
+        79963.9404296875,
+        -21415.695190429688,
+        -336.53557300567627
+      ],
+      "lod_maximum": [
+        81263.28735351562,
+        -20001.89666748047,
+        375.2643823623657
+      ]
+    },
+    {
+      "name": "Building_Crowd_101_096",
+      "category": "Track",
+      "filename": "Track/Building_Crowd_101_096.fbx",
+      "triangles": 8360,
+      "minimum": [
+        60597.3876953125,
+        -23825.314331054688,
+        -366.48385524749756
+      ],
+      "maximum": [
+        80024.2919921875,
+        -20123.890686035156,
+        374.4234323501587
+      ],
+      "lod_filename": "Track/Building_Crowd_101_096_far.fbx",
+      "lod_minimum": [
+        60597.3876953125,
+        -23825.314331054688,
+        -366.48385524749756
+      ],
+      "lod_maximum": [
+        80024.2919921875,
+        -20123.890686035156,
+        374.4234323501587
+      ]
+    },
+    {
+      "name": "Building_Crowd_101_097",
+      "category": "Track",
+      "filename": "Track/Building_Crowd_101_097.fbx",
+      "triangles": 5728,
+      "minimum": [
+        47389.95361328125,
+        -25073.01025390625,
+        -283.308744430542
+      ],
+      "maximum": [
+        59936.81640625,
+        -22723.519897460938,
+        411.74349784851074
+      ],
+      "lod_filename": "Track/Building_Crowd_101_097_far.fbx",
+      "lod_minimum": [
+        47389.95361328125,
+        -25073.01025390625,
+        -283.308744430542
+      ],
+      "lod_maximum": [
+        59936.81640625,
+        -22723.519897460938,
+        411.74349784851074
+      ]
+    },
+    {
+      "name": "Building_Crowd_101_100",
+      "category": "Track",
+      "filename": "Track/Building_Crowd_101_100.fbx",
+      "triangles": 3224,
+      "minimum": [
+        -11620.4345703125,
+        -25410.055541992188,
+        42.70941615104675
+      ],
+      "maximum": [
+        -520.2501773834229,
+        -23766.555786132812,
+        611.4778518676758
+      ],
+      "lod_filename": "Track/Building_Crowd_101_100_far.fbx",
+      "lod_minimum": [
+        -11620.4345703125,
+        -25410.055541992188,
+        42.70941615104675
+      ],
+      "lod_maximum": [
+        -520.2501773834229,
+        -23766.555786132812,
+        611.4778518676758
+      ]
+    },
+    {
+      "name": "Building_Crowd_101_101",
+      "category": "Track",
+      "filename": "Track/Building_Crowd_101_101.fbx",
+      "triangles": 3612,
+      "minimum": [
+        -35511.12976074219,
+        -29361.831665039062,
+        172.13789224624634
+      ],
+      "maximum": [
+        -21054.84619140625,
+        -26239.813232421875,
+        759.9069595336914
+      ],
+      "lod_filename": "Track/Building_Crowd_101_101_far.fbx",
+      "lod_minimum": [
+        -35511.12976074219,
+        -29361.831665039062,
+        172.13789224624634
+      ],
+      "lod_maximum": [
+        -21054.84619140625,
+        -26239.813232421875,
+        759.9069595336914
+      ]
+    },
+    {
+      "name": "Building_Crowd_101_102",
+      "category": "Track",
+      "filename": "Track/Building_Crowd_101_102.fbx",
+      "triangles": 988,
+      "minimum": [
+        -44884.698486328125,
+        -37070.38879394531,
+        242.8067445755005
+      ],
+      "maximum": [
+        -42375.34484863281,
+        -34338.25988769531,
+        726.2372016906738
+      ],
+      "lod_filename": "Track/Building_Crowd_101_102_far.fbx",
+      "lod_minimum": [
+        -44884.698486328125,
+        -37070.38879394531,
+        242.8067445755005
+      ],
+      "lod_maximum": [
+        -42375.34484863281,
+        -34338.25988769531,
+        726.2372016906738
+      ]
+    },
+    {
+      "name": "Building_Crowd_101_106",
+      "category": "Track",
+      "filename": "Track/Building_Crowd_101_106.fbx",
+      "triangles": 800,
+      "minimum": [
+        -139536.63330078125,
+        -39099.1455078125,
+        881.8680763244629
+      ],
+      "maximum": [
+        -136180.31005859375,
+        -38491.08581542969,
+        1262.1294021606445
+      ],
+      "lod_filename": "Track/Building_Crowd_101_106_far.fbx",
+      "lod_minimum": [
+        -139536.63330078125,
+        -39099.1455078125,
+        881.8680763244629
+      ],
+      "lod_maximum": [
+        -136180.31005859375,
+        -38491.08581542969,
+        1262.1294021606445
+      ]
+    },
+    {
+      "name": "Building_Crowd_104_106",
+      "category": "Track",
+      "filename": "Track/Building_Crowd_104_106.fbx",
+      "triangles": 1628,
+      "minimum": [
+        -128558.99658203125,
+        -93039.208984375,
+        695.1198577880859
+      ],
+      "maximum": [
+        -123943.6767578125,
+        -88754.52880859375,
+        1181.112003326416
+      ],
+      "lod_filename": "Track/Building_Crowd_104_106_far.fbx",
+      "lod_minimum": [
+        -128558.99658203125,
+        -93039.208984375,
+        695.1198577880859
+      ],
+      "lod_maximum": [
+        -123943.6767578125,
+        -88754.52880859375,
+        1181.112003326416
+      ]
+    },
+    {
+      "name": "Tile_098_095",
+      "category": "Track",
+      "filename": "Track/Tile_098_095.fbx",
+      "triangles": 522,
+      "minimum": [
+        79445.5810546875,
+        20077.48260498047,
+        -462.4321937561035
+      ],
+      "maximum": [
+        95711.92626953125,
+        30544.522094726562,
+        2210.5358123779297
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_098_096",
+      "category": "Track",
+      "filename": "Track/Tile_098_096.fbx",
+      "triangles": 916,
+      "minimum": [
+        58807.452392578125,
+        19134.906005859375,
+        -438.8585567474365
+      ],
+      "maximum": [
+        80462.80517578125,
+        30903.671264648438,
+        2456.5595626831055
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_098_097",
+      "category": "Track",
+      "filename": "Track/Tile_098_097.fbx",
+      "triangles": 1350,
+      "minimum": [
+        39269.64111328125,
+        19126.79901123047,
+        -356.7854404449463
+      ],
+      "maximum": [
+        61215.0390625,
+        30818.511962890625,
+        2463.705635070801
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_098_098",
+      "category": "Track",
+      "filename": "Track/Tile_098_098.fbx",
+      "triangles": 907,
+      "minimum": [
+        19194.607543945312,
+        18006.356811523438,
+        -232.35108852386475
+      ],
+      "maximum": [
+        40654.45861816406,
+        30736.34033203125,
+        2629.277229309082
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_098_099",
+      "category": "Track",
+      "filename": "Track/Tile_098_099.fbx",
+      "triangles": 1551,
+      "minimum": [
+        -767.4542903900146,
+        19335.665893554688,
+        -56.00895285606384
+      ],
+      "maximum": [
+        20821.12274169922,
+        30948.797607421875,
+        2972.167205810547
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_098_100",
+      "category": "Track",
+      "filename": "Track/Tile_098_100.fbx",
+      "triangles": 1612,
+      "minimum": [
+        -20836.36932373047,
+        19020.065307617188,
+        337.189245223999
+      ],
+      "maximum": [
+        925.3962516784668,
+        30942.532348632812,
+        3549.800491333008
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_098_101",
+      "category": "Track",
+      "filename": "Track/Tile_098_101.fbx",
+      "triangles": 826,
+      "minimum": [
+        -40580.029296875,
+        19017.616271972656,
+        636.5696907043457
+      ],
+      "maximum": [
+        -18977.000427246094,
+        30869.570922851562,
+        3709.341812133789
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_098_102",
+      "category": "Track",
+      "filename": "Track/Tile_098_102.fbx",
+      "triangles": 145,
+      "minimum": [
+        -43194.77233886719,
+        19616.184997558594,
+        667.6761150360107
+      ],
+      "maximum": [
+        -39197.98583984375,
+        26441.500854492188,
+        3483.1912994384766
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_098_103",
+      "category": "Track",
+      "filename": "Track/Tile_098_103.fbx",
+      "triangles": 12,
+      "minimum": [
+        -80304.76684570312,
+        19731.301879882812,
+        1456.6020011901855
+      ],
+      "maximum": [
+        -78349.62768554688,
+        22766.758728027344,
+        3234.075927734375
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_098_105",
+      "category": "Track",
+      "filename": "Track/Tile_098_105.fbx",
+      "triangles": 537,
+      "minimum": [
+        -120753.4912109375,
+        19164.682006835938,
+        1094.3890571594238
+      ],
+      "maximum": [
+        -100992.17529296875,
+        25633.016967773438,
+        4067.5819396972656
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_098_106",
+      "category": "Track",
+      "filename": "Track/Tile_098_106.fbx",
+      "triangles": 143,
+      "minimum": [
+        -132763.1591796875,
+        19517.398071289062,
+        1342.3884391784668
+      ],
+      "maximum": [
+        -119168.8720703125,
+        24746.385192871094,
+        4091.770553588867
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_099_095",
+      "category": "Track",
+      "filename": "Track/Tile_099_095.fbx",
+      "triangles": 816,
+      "minimum": [
+        78977.18505859375,
+        -891.6839599609375,
+        -550.879955291748
+      ],
+      "maximum": [
+        87629.13208007812,
+        19553.533935546875,
+        2316.4661407470703
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_099_096",
+      "category": "Track",
+      "filename": "Track/Tile_099_096.fbx",
+      "triangles": 11072,
+      "minimum": [
+        58402.105712890625,
+        -723.8099098205566,
+        -552.5588512420654
+      ],
+      "maximum": [
+        80803.27758789062,
+        20798.35205078125,
+        2331.8382263183594
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_099_097",
+      "category": "Track",
+      "filename": "Track/Tile_099_097.fbx",
+      "triangles": 24033,
+      "minimum": [
+        31198.260498046875,
+        -1210.922622680664,
+        -386.1459255218506
+      ],
+      "maximum": [
+        61617.29736328125,
+        20673.092651367188,
+        2697.7134704589844
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_099_098",
+      "category": "Track",
+      "filename": "Track/Tile_099_098.fbx",
+      "triangles": 63583,
+      "minimum": [
+        19484.8388671875,
+        -799.0214347839355,
+        -349.778151512146
+      ],
+      "maximum": [
+        45251.54113769531,
+        21495.330810546875,
+        2587.4191284179688
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_099_099",
+      "category": "Track",
+      "filename": "Track/Tile_099_099.fbx",
+      "triangles": 109912,
+      "minimum": [
+        -3977.0553588867188,
+        -54.003334045410156,
+        -157.6464295387268
+      ],
+      "maximum": [
+        26531.442260742188,
+        20815.087890625,
+        2786.7950439453125
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_099_100",
+      "category": "Track",
+      "filename": "Track/Tile_099_100.fbx",
+      "triangles": 69067,
+      "minimum": [
+        -20950.645446777344,
+        -1229.409408569336,
+        -79.82739210128784
+      ],
+      "maximum": [
+        3088.8429641723633,
+        20962.698364257812,
+        3245.127487182617
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_099_101",
+      "category": "Track",
+      "filename": "Track/Tile_099_101.fbx",
+      "triangles": 5247,
+      "minimum": [
+        -40840.44494628906,
+        -692.9221153259277,
+        21.36727124452591
+      ],
+      "maximum": [
+        -19281.216430664062,
+        20917.13104248047,
+        3492.1070098876953
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_099_102",
+      "category": "Track",
+      "filename": "Track/Tile_099_102.fbx",
+      "triangles": 3601,
+      "minimum": [
+        -64503.863525390625,
+        -1710.0021362304688,
+        86.60963177680969
+      ],
+      "maximum": [
+        -39084.64050292969,
+        20582.92999267578,
+        3217.7921295166016
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_099_103",
+      "category": "Track",
+      "filename": "Track/Tile_099_103.fbx",
+      "triangles": 1316,
+      "minimum": [
+        -80884.17358398438,
+        -355.82499504089355,
+        225.96783638000488
+      ],
+      "maximum": [
+        -55582.84912109375,
+        19242.05322265625,
+        3829.8934936523438
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_099_104",
+      "category": "Track",
+      "filename": "Track/Tile_099_104.fbx",
+      "triangles": 2014,
+      "minimum": [
+        -101016.63208007812,
+        -3269.6029663085938,
+        403.13329696655273
+      ],
+      "maximum": [
+        -78683.02001953125,
+        20046.092224121094,
+        3820.115280151367
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_099_105",
+      "category": "Track",
+      "filename": "Track/Tile_099_105.fbx",
+      "triangles": 1712,
+      "minimum": [
+        -120619.1650390625,
+        -1063.3012771606445,
+        514.0468120574951
+      ],
+      "maximum": [
+        -99005.810546875,
+        20710.218811035156,
+        3891.724395751953
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_099_106",
+      "category": "Track",
+      "filename": "Track/Tile_099_106.fbx",
+      "triangles": 399,
+      "minimum": [
+        -135499.62158203125,
+        -821.2197303771973,
+        916.8033599853516
+      ],
+      "maximum": [
+        -122465.91796875,
+        20396.112060546875,
+        3868.3914184570312
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_100_094",
+      "category": "Track",
+      "filename": "Track/Tile_100_094.fbx",
+      "triangles": 40,
+      "minimum": [
+        99890.29541015625,
+        -19996.81854248047,
+        -634.7628116607666
+      ],
+      "maximum": [
+        100443.115234375,
+        -17931.314086914062,
+        229.59320545196533
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_100_095",
+      "category": "Track",
+      "filename": "Track/Tile_100_095.fbx",
+      "triangles": 8444,
+      "minimum": [
+        79907.26318359375,
+        -20908.06121826172,
+        -644.5615291595459
+      ],
+      "maximum": [
+        100111.5966796875,
+        673.875904083252,
+        2449.1512298583984
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_100_096",
+      "category": "Track",
+      "filename": "Track/Tile_100_096.fbx",
+      "triangles": 14310,
+      "minimum": [
+        58954.67529296875,
+        -20028.16162109375,
+        -465.52886962890625
+      ],
+      "maximum": [
+        80109.84497070312,
+        947.0244407653809,
+        2513.196563720703
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_100_097",
+      "category": "Track",
+      "filename": "Track/Tile_100_097.fbx",
+      "triangles": 12679,
+      "minimum": [
+        39467.889404296875,
+        -20527.769470214844,
+        -379.336953163147
+      ],
+      "maximum": [
+        62496.6064453125,
+        621.7119216918945,
+        2701.673698425293
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_100_098",
+      "category": "Track",
+      "filename": "Track/Tile_100_098.fbx",
+      "triangles": 19947,
+      "minimum": [
+        7214.478302001953,
+        -20696.412658691406,
+        -247.73297309875488
+      ],
+      "maximum": [
+        40387.945556640625,
+        561.6830348968506,
+        1846.0060119628906
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_100_099",
+      "category": "Track",
+      "filename": "Track/Tile_100_099.fbx",
+      "triangles": 66658,
+      "minimum": [
+        -3156.941795349121,
+        -21318.807983398438,
+        -146.93927764892578
+      ],
+      "maximum": [
+        30400.839233398438,
+        561.6830348968506,
+        1854.2654037475586
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_100_100",
+      "category": "Track",
+      "filename": "Track/Tile_100_100.fbx",
+      "triangles": 35212,
+      "minimum": [
+        -20895.52764892578,
+        -21707.073974609375,
+        -93.34957003593445
+      ],
+      "maximum": [
+        5937.475967407227,
+        957.6395988464355,
+        2863.250732421875
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_100_101",
+      "category": "Track",
+      "filename": "Track/Tile_100_101.fbx",
+      "triangles": 26419,
+      "minimum": [
+        -40799.13635253906,
+        -21140.577697753906,
+        -204.72302436828613
+      ],
+      "maximum": [
+        -19184.1796875,
+        587.4518394470215,
+        2880.1509857177734
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_100_102",
+      "category": "Track",
+      "filename": "Track/Tile_100_102.fbx",
+      "triangles": 34807,
+      "minimum": [
+        -60782.11669921875,
+        -20839.222717285156,
+        152.02350616455078
+      ],
+      "maximum": [
+        -39246.94519042969,
+        3174.1031646728516,
+        3148.7903594970703
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_100_103",
+      "category": "Track",
+      "filename": "Track/Tile_100_103.fbx",
+      "triangles": 38956,
+      "minimum": [
+        -80736.38916015625,
+        -22477.55584716797,
+        267.11273193359375
+      ],
+      "maximum": [
+        -59349.273681640625,
+        576.203727722168,
+        3389.916229248047
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_100_104",
+      "category": "Track",
+      "filename": "Track/Tile_100_104.fbx",
+      "triangles": 15573,
+      "minimum": [
+        -101067.81005859375,
+        -32833.88671875,
+        370.4358100891113
+      ],
+      "maximum": [
+        -78689.83154296875,
+        1924.8489379882812,
+        3436.7332458496094
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_100_105",
+      "category": "Track",
+      "filename": "Track/Tile_100_105.fbx",
+      "triangles": 15541,
+      "minimum": [
+        -120888.037109375,
+        -20852.224731445312,
+        460.3771209716797
+      ],
+      "maximum": [
+        -98979.89501953125,
+        920.6135749816895,
+        3420.093536376953
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_100_106",
+      "category": "Track",
+      "filename": "Track/Tile_100_106.fbx",
+      "triangles": 2368,
+      "minimum": [
+        -142395.03173828125,
+        -25759.323120117188,
+        675.602912902832
+      ],
+      "maximum": [
+        -119102.83203125,
+        617.0759201049805,
+        3315.888214111328
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_100_107",
+      "category": "Track",
+      "filename": "Track/Tile_100_107.fbx",
+      "triangles": 21,
+      "minimum": [
+        -142398.47412109375,
+        -25759.378051757812,
+        1281.065273284912
+      ],
+      "maximum": [
+        -142253.22265625,
+        -16768.885803222656,
+        1330.9009552001953
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_101_094",
+      "category": "Track",
+      "filename": "Track/Tile_101_094.fbx",
+      "triangles": 529,
+      "minimum": [
+        99866.76635742188,
+        -32983.15734863281,
+        -1358.076286315918
+      ],
+      "maximum": [
+        100794.7509765625,
+        -20003.079223632812,
+        127.27382183074951
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_101_095",
+      "category": "Track",
+      "filename": "Track/Tile_101_095.fbx",
+      "triangles": 4608,
+      "minimum": [
+        79181.103515625,
+        -40830.52062988281,
+        -1214.2536163330078
+      ],
+      "maximum": [
+        100129.5166015625,
+        -19126.36260986328,
+        2148.578643798828
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_101_096",
+      "category": "Track",
+      "filename": "Track/Tile_101_096.fbx",
+      "triangles": 18830,
+      "minimum": [
+        33738.15612792969,
+        -40643.71643066406,
+        -445.50604820251465
+      ],
+      "maximum": [
+        81355.16967773438,
+        -19982.769775390625,
+        2289.3062591552734
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_101_097",
+      "category": "Track",
+      "filename": "Track/Tile_101_097.fbx",
+      "triangles": 19623,
+      "minimum": [
+        33738.15612792969,
+        -28168.585205078125,
+        -416.32375717163086
+      ],
+      "maximum": [
+        81355.16967773438,
+        -19250.279235839844,
+        2493.4486389160156
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_101_098",
+      "category": "Track",
+      "filename": "Track/Tile_101_098.fbx",
+      "triangles": 12268,
+      "minimum": [
+        15820.03173828125,
+        -58760.36376953125,
+        -274.1191625595093
+      ],
+      "maximum": [
+        49053.62854003906,
+        -19499.96795654297,
+        2503.8070678710938
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_101_099",
+      "category": "Track",
+      "filename": "Track/Tile_101_099.fbx",
+      "triangles": 12478,
+      "minimum": [
+        -360.06202697753906,
+        -36459.11865234375,
+        -134.7112774848938
+      ],
+      "maximum": [
+        20528.95050048828,
+        -20664.141845703125,
+        2643.624687194824
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_101_100",
+      "category": "Track",
+      "filename": "Track/Tile_101_100.fbx",
+      "triangles": 17782,
+      "minimum": [
+        -20618.099975585938,
+        -32983.53576660156,
+        -37.44833767414093
+      ],
+      "maximum": [
+        1389.4773483276367,
+        -19082.183837890625,
+        3005.7111740112305
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_101_101",
+      "category": "Track",
+      "filename": "Track/Tile_101_101.fbx",
+      "triangles": 17311,
+      "minimum": [
+        -41181.79016113281,
+        -40000.16784667969,
+        -10.965925455093384
+      ],
+      "maximum": [
+        -19154.971313476562,
+        -17819.529724121094,
+        2880.6777954101562
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_101_102",
+      "category": "Track",
+      "filename": "Track/Tile_101_102.fbx",
+      "triangles": 8036,
+      "minimum": [
+        -60763.067626953125,
+        -40820.88623046875,
+        170.52098512649536
+      ],
+      "maximum": [
+        -38822.607421875,
+        -19205.992126464844,
+        3234.5077514648438
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_101_103",
+      "category": "Track",
+      "filename": "Track/Tile_101_103.fbx",
+      "triangles": 3595,
+      "minimum": [
+        -81130.34057617188,
+        -40396.29211425781,
+        -200.38390159606934
+      ],
+      "maximum": [
+        -58661.505126953125,
+        -18688.27362060547,
+        3021.0615158081055
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_101_104",
+      "category": "Track",
+      "filename": "Track/Tile_101_104.fbx",
+      "triangles": 3047,
+      "minimum": [
+        -102790.53955078125,
+        -41966.314697265625,
+        111.3856554031372
+      ],
+      "maximum": [
+        -78962.5732421875,
+        -9819.961547851562,
+        3373.0106353759766
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_101_105",
+      "category": "Track",
+      "filename": "Track/Tile_101_105.fbx",
+      "triangles": 12655,
+      "minimum": [
+        -120601.40380859375,
+        -40970.05310058594,
+        544.6412563323975
+      ],
+      "maximum": [
+        -98783.86840820312,
+        -18981.939697265625,
+        3724.6944427490234
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_101_106",
+      "category": "Track",
+      "filename": "Track/Tile_101_106.fbx",
+      "triangles": 6744,
+      "minimum": [
+        -142253.22265625,
+        -40214.715576171875,
+        624.8382091522217
+      ],
+      "maximum": [
+        -119562.75634765625,
+        -16513.729858398438,
+        3668.8636779785156
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_101_107",
+      "category": "Track",
+      "filename": "Track/Tile_101_107.fbx",
+      "triangles": 843,
+      "minimum": [
+        -160898.3642578125,
+        -38119.34814453125,
+        963.2992744445801
+      ],
+      "maximum": [
+        -139686.85302734375,
+        -16772.384643554688,
+        2897.8357315063477
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_101_108",
+      "category": "Track",
+      "filename": "Track/Tile_101_108.fbx",
+      "triangles": 62,
+      "minimum": [
+        -162883.26416015625,
+        -28728.103637695312,
+        966.2254333496094
+      ],
+      "maximum": [
+        -159200.50048828125,
+        -24099.343872070312,
+        3079.4971466064453
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_102_095",
+      "category": "Track",
+      "filename": "Track/Tile_102_095.fbx",
+      "triangles": 2947,
+      "minimum": [
+        78983.251953125,
+        -60651.898193359375,
+        -959.4862937927246
+      ],
+      "maximum": [
+        97431.58569335938,
+        -39115.89660644531,
+        2235.2285385131836
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_102_096",
+      "category": "Track",
+      "filename": "Track/Tile_102_096.fbx",
+      "triangles": 1917,
+      "minimum": [
+        59839.727783203125,
+        -60772.076416015625,
+        -756.74729347229
+      ],
+      "maximum": [
+        81062.31689453125,
+        -39495.12634277344,
+        2136.965560913086
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_102_097",
+      "category": "Track",
+      "filename": "Track/Tile_102_097.fbx",
+      "triangles": 690,
+      "minimum": [
+        47143.670654296875,
+        -60124.420166015625,
+        -451.43656730651855
+      ],
+      "maximum": [
+        60123.96240234375,
+        -53048.541259765625,
+        2139.6928787231445
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_102_098",
+      "category": "Track",
+      "filename": "Track/Tile_102_098.fbx",
+      "triangles": 2,
+      "minimum": [
+        6624.437713623047,
+        -61410.784912109375,
+        -164.75640535354614
+      ],
+      "maximum": [
+        32950.09460449219,
+        -30025.93994140625,
+        -78.77367734909058
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_102_099",
+      "category": "Track",
+      "filename": "Track/Tile_102_099.fbx",
+      "triangles": 2,
+      "minimum": [
+        3876.284408569336,
+        -61576.806640625,
+        -78.77367734909058
+      ],
+      "maximum": [
+        6624.437713623047,
+        -36437.36572265625,
+        -60.60064435005188
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_102_101",
+      "category": "Track",
+      "filename": "Track/Tile_102_101.fbx",
+      "triangles": 132,
+      "minimum": [
+        -44427.642822265625,
+        -57569.598388671875,
+        138.26675415039062
+      ],
+      "maximum": [
+        -22993.568420410156,
+        -37502.65197753906,
+        420.7280158996582
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_102_102",
+      "category": "Track",
+      "filename": "Track/Tile_102_102.fbx",
+      "triangles": 23449,
+      "minimum": [
+        -62413.65966796875,
+        -60139.447021484375,
+        -28.933072090148926
+      ],
+      "maximum": [
+        -37679.034423828125,
+        -38042.33093261719,
+        3133.170700073242
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_102_103",
+      "category": "Track",
+      "filename": "Track/Tile_102_103.fbx",
+      "triangles": 8202,
+      "minimum": [
+        -82468.5791015625,
+        -60625.518798828125,
+        -70.12203931808472
+      ],
+      "maximum": [
+        -58863.330078125,
+        -39409.74426269531,
+        3179.7351837158203
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_102_104",
+      "category": "Track",
+      "filename": "Track/Tile_102_104.fbx",
+      "triangles": 2011,
+      "minimum": [
+        -101030.47485351562,
+        -75313.671875,
+        259.7597122192383
+      ],
+      "maximum": [
+        -77482.97729492188,
+        -39023.779296875,
+        3185.47306060791
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_102_105",
+      "category": "Track",
+      "filename": "Track/Tile_102_105.fbx",
+      "triangles": 7947,
+      "minimum": [
+        -120751.96533203125,
+        -60822.25341796875,
+        594.5949077606201
+      ],
+      "maximum": [
+        -96931.51245117188,
+        -39042.755126953125,
+        3655.6201934814453
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_102_106",
+      "category": "Track",
+      "filename": "Track/Tile_102_106.fbx",
+      "triangles": 13026,
+      "minimum": [
+        -141895.654296875,
+        -60436.956787109375,
+        703.4284591674805
+      ],
+      "maximum": [
+        -119095.068359375,
+        -39118.65539550781,
+        3451.9134521484375
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_102_107",
+      "category": "Track",
+      "filename": "Track/Tile_102_107.fbx",
+      "triangles": 577,
+      "minimum": [
+        -160976.4404296875,
+        -54967.877197265625,
+        866.8660163879395
+      ],
+      "maximum": [
+        -138363.39111328125,
+        -45163.70544433594,
+        3584.241485595703
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_102_108",
+      "category": "Track",
+      "filename": "Track/Tile_102_108.fbx",
+      "triangles": 171,
+      "minimum": [
+        -164628.60107421875,
+        -51106.35070800781,
+        1009.0092658996582
+      ],
+      "maximum": [
+        -159172.16796875,
+        -43803.216552734375,
+        3658.959197998047
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_103_095",
+      "category": "Track",
+      "filename": "Track/Tile_103_095.fbx",
+      "triangles": 16,
+      "minimum": [
+        79664.32495117188,
+        -61381.640625,
+        -909.0115547180176
+      ],
+      "maximum": [
+        84155.55419921875,
+        -59193.5546875,
+        1358.5742950439453
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_103_096",
+      "category": "Track",
+      "filename": "Track/Tile_103_096.fbx",
+      "triangles": 257,
+      "minimum": [
+        59371.856689453125,
+        -63785.858154296875,
+        -806.6872596740723
+      ],
+      "maximum": [
+        80040.49682617188,
+        -59239.34326171875,
+        2022.9192733764648
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_103_097",
+      "category": "Track",
+      "filename": "Track/Tile_103_097.fbx",
+      "triangles": 927,
+      "minimum": [
+        39346.453857421875,
+        -66055.45043945312,
+        -549.5526313781738
+      ],
+      "maximum": [
+        60867.864990234375,
+        -59876.519775390625,
+        2277.7454376220703
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_103_098",
+      "category": "Track",
+      "filename": "Track/Tile_103_098.fbx",
+      "triangles": 1351,
+      "minimum": [
+        19873.062133789062,
+        -67394.59228515625,
+        -348.55945110321045
+      ],
+      "maximum": [
+        40523.22998046875,
+        -60792.71240234375,
+        2078.3897399902344
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_103_099",
+      "category": "Track",
+      "filename": "Track/Tile_103_099.fbx",
+      "triangles": 1327,
+      "minimum": [
+        -130.37939071655273,
+        -69845.458984375,
+        -282.4897766113281
+      ],
+      "maximum": [
+        32950.09460449219,
+        -58886.6455078125,
+        2312.577247619629
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_103_100",
+      "category": "Track",
+      "filename": "Track/Tile_103_100.fbx",
+      "triangles": 1599,
+      "minimum": [
+        -20531.417846679688,
+        -77182.51342773438,
+        -50.348615646362305
+      ],
+      "maximum": [
+        115.95925092697144,
+        -65635.05249023438,
+        2751.62296295166
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_103_101",
+      "category": "Track",
+      "filename": "Track/Tile_103_101.fbx",
+      "triangles": 2218,
+      "minimum": [
+        -41041.24450683594,
+        -80765.55786132812,
+        -7.5506895780563354
+      ],
+      "maximum": [
+        -19257.97882080078,
+        -57551.26953125,
+        2767.0108795166016
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_103_102",
+      "category": "Track",
+      "filename": "Track/Tile_103_102.fbx",
+      "triangles": 2345,
+      "minimum": [
+        -73497.13745117188,
+        -80715.966796875,
+        -36.371856927871704
+      ],
+      "maximum": [
+        -39946.07238769531,
+        -59514.6484375,
+        3324.9324798583984
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_103_103",
+      "category": "Track",
+      "filename": "Track/Tile_103_103.fbx",
+      "triangles": 19671,
+      "minimum": [
+        -80633.14208984375,
+        -80903.13110351562,
+        -59.70853567123413
+      ],
+      "maximum": [
+        -40919.34814453125,
+        -59187.51220703125,
+        3324.9324798583984
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_103_104",
+      "category": "Track",
+      "filename": "Track/Tile_103_104.fbx",
+      "triangles": 5207,
+      "minimum": [
+        -117248.5595703125,
+        -80786.54174804688,
+        245.32897472381592
+      ],
+      "maximum": [
+        -78377.02026367188,
+        -41947.93701171875,
+        3503.496551513672
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_103_105",
+      "category": "Track",
+      "filename": "Track/Tile_103_105.fbx",
+      "triangles": 5293,
+      "minimum": [
+        -121343.10302734375,
+        -81057.861328125,
+        440.2700424194336
+      ],
+      "maximum": [
+        -82439.0625,
+        -58834.674072265625,
+        3687.777328491211
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_103_106",
+      "category": "Track",
+      "filename": "Track/Tile_103_106.fbx",
+      "triangles": 16362,
+      "minimum": [
+        -132652.74658203125,
+        -81840.53344726562,
+        501.0929584503174
+      ],
+      "maximum": [
+        -119439.1357421875,
+        -59568.44482421875,
+        3358.04443359375
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_103_107",
+      "category": "Track",
+      "filename": "Track/Tile_103_107.fbx",
+      "triangles": 1814,
+      "minimum": [
+        -149086.21826171875,
+        -80613.54370117188,
+        906.8984031677246
+      ],
+      "maximum": [
+        -141834.4970703125,
+        -60481.75048828125,
+        3336.8030548095703
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_104_101",
+      "category": "Track",
+      "filename": "Track/Tile_104_101.fbx",
+      "triangles": 420,
+      "minimum": [
+        -41093.56689453125,
+        -97122.51586914062,
+        -39.507558941841125
+      ],
+      "maximum": [
+        -23335.897827148438,
+        -79291.943359375,
+        2510.8469009399414
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_104_102",
+      "category": "Track",
+      "filename": "Track/Tile_104_102.fbx",
+      "triangles": 1855,
+      "minimum": [
+        -61171.600341796875,
+        -100845.57495117188,
+        -20.416954159736633
+      ],
+      "maximum": [
+        -39222.8759765625,
+        -79124.49340820312,
+        2760.8949661254883
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_104_103",
+      "category": "Track",
+      "filename": "Track/Tile_104_103.fbx",
+      "triangles": 3521,
+      "minimum": [
+        -80973.98071289062,
+        -100679.21142578125,
+        89.51342105865479
+      ],
+      "maximum": [
+        -58763.336181640625,
+        -79234.08813476562,
+        3095.8984375
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_104_104",
+      "category": "Track",
+      "filename": "Track/Tile_104_104.fbx",
+      "triangles": 17795,
+      "minimum": [
+        -100696.17919921875,
+        -106523.13232421875,
+        279.41699028015137
+      ],
+      "maximum": [
+        -79837.2314453125,
+        -78940.44189453125,
+        3426.8272399902344
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_104_105",
+      "category": "Track",
+      "filename": "Track/Tile_104_105.fbx",
+      "triangles": 3549,
+      "minimum": [
+        -121106.77490234375,
+        -104705.37109375,
+        397.12533950805664
+      ],
+      "maximum": [
+        -99147.57690429688,
+        -79310.38818359375,
+        3511.370849609375
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_104_106",
+      "category": "Track",
+      "filename": "Track/Tile_104_106.fbx",
+      "triangles": 19218,
+      "minimum": [
+        -140988.525390625,
+        -101162.5244140625,
+        464.68892097473145
+      ],
+      "maximum": [
+        -119070.12939453125,
+        -77701.318359375,
+        3691.7781829833984
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_104_107",
+      "category": "Track",
+      "filename": "Track/Tile_104_107.fbx",
+      "triangles": 3205,
+      "minimum": [
+        -160628.82080078125,
+        -101367.76733398438,
+        688.9078140258789
+      ],
+      "maximum": [
+        -138288.07373046875,
+        -79395.45288085938,
+        3589.453887939453
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_104_108",
+      "category": "Track",
+      "filename": "Track/Tile_104_108.fbx",
+      "triangles": 526,
+      "minimum": [
+        -167737.744140625,
+        -99917.24853515625,
+        453.7681579589844
+      ],
+      "maximum": [
+        -159266.6748046875,
+        -81109.43603515625,
+        3494.506072998047
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_105_102",
+      "category": "Track",
+      "filename": "Track/Tile_105_102.fbx",
+      "triangles": 945,
+      "minimum": [
+        -60540.447998046875,
+        -117362.31689453125,
+        -22.73266464471817
+      ],
+      "maximum": [
+        -41228.93371582031,
+        -99256.77490234375,
+        2711.679458618164
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_105_103",
+      "category": "Track",
+      "filename": "Track/Tile_105_103.fbx",
+      "triangles": 1285,
+      "minimum": [
+        -80178.02734375,
+        -119316.78466796875,
+        3.124326281249523
+      ],
+      "maximum": [
+        -59204.840087890625,
+        -99299.59716796875,
+        2815.214157104492
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_105_104",
+      "category": "Track",
+      "filename": "Track/Tile_105_104.fbx",
+      "triangles": 12737,
+      "minimum": [
+        -100561.04125976562,
+        -122863.43994140625,
+        234.06805992126465
+      ],
+      "maximum": [
+        -83267.82836914062,
+        -93597.25952148438,
+        3309.3677520751953
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_105_105",
+      "category": "Track",
+      "filename": "Track/Tile_105_105.fbx",
+      "triangles": 12318,
+      "minimum": [
+        -121106.77490234375,
+        -120060.36376953125,
+        362.6373291015625
+      ],
+      "maximum": [
+        -98755.36499023438,
+        -96757.75756835938,
+        3406.230926513672
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_105_106",
+      "category": "Track",
+      "filename": "Track/Tile_105_106.fbx",
+      "triangles": 21670,
+      "minimum": [
+        -140068.07861328125,
+        -120169.54345703125,
+        451.10063552856445
+      ],
+      "maximum": [
+        -118961.99951171875,
+        -98967.7490234375,
+        3487.4122619628906
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_105_107",
+      "category": "Track",
+      "filename": "Track/Tile_105_107.fbx",
+      "triangles": 2437,
+      "minimum": [
+        -153937.6953125,
+        -120715.4296875,
+        533.2158088684082
+      ],
+      "maximum": [
+        -139016.943359375,
+        -98782.62939453125,
+        3508.580780029297
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_105_108",
+      "category": "Track",
+      "filename": "Track/Tile_105_108.fbx",
+      "triangles": 168,
+      "minimum": [
+        -166893.83544921875,
+        -114222.93701171875,
+        388.0462408065796
+      ],
+      "maximum": [
+        -161457.72705078125,
+        -99882.25708007812,
+        2863.3377075195312
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_106_102",
+      "category": "Track",
+      "filename": "Track/Tile_106_102.fbx",
+      "triangles": 33,
+      "minimum": [
+        -60846.881103515625,
+        -127638.75732421875,
+        -196.74181938171387
+      ],
+      "maximum": [
+        -56933.685302734375,
+        -120090.869140625,
+        2263.7367248535156
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_106_103",
+      "category": "Track",
+      "filename": "Track/Tile_106_103.fbx",
+      "triangles": 970,
+      "minimum": [
+        -80413.39721679688,
+        -140338.97705078125,
+        -756.8492889404297
+      ],
+      "maximum": [
+        -59265.838623046875,
+        -120292.4072265625,
+        2760.8535766601562
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_106_104",
+      "category": "Track",
+      "filename": "Track/Tile_106_104.fbx",
+      "triangles": 2708,
+      "minimum": [
+        -100866.65649414062,
+        -140795.12939453125,
+        -753.3312797546387
+      ],
+      "maximum": [
+        -79436.279296875,
+        -115454.78515625,
+        3271.7124938964844
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_106_105",
+      "category": "Track",
+      "filename": "Track/Tile_106_105.fbx",
+      "triangles": 9577,
+      "minimum": [
+        -120361.38916015625,
+        -140720.88623046875,
+        -661.699390411377
+      ],
+      "maximum": [
+        -99398.81591796875,
+        -119949.169921875,
+        2993.1838989257812
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_106_106",
+      "category": "Track",
+      "filename": "Track/Tile_106_106.fbx",
+      "triangles": 5636,
+      "minimum": [
+        -140854.57763671875,
+        -140833.3984375,
+        -569.19264793396
+      ],
+      "maximum": [
+        -119724.853515625,
+        -119849.69482421875,
+        3390.585708618164
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_106_107",
+      "category": "Track",
+      "filename": "Track/Tile_106_107.fbx",
+      "triangles": 1877,
+      "minimum": [
+        -161176.26953125,
+        -140771.64306640625,
+        -391.1792993545532
+      ],
+      "maximum": [
+        -139131.7626953125,
+        -119178.3447265625,
+        3485.779571533203
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_106_108",
+      "category": "Track",
+      "filename": "Track/Tile_106_108.fbx",
+      "triangles": 106,
+      "minimum": [
+        -166911.4990234375,
+        -138730.89599609375,
+        -357.48345851898193
+      ],
+      "maximum": [
+        -158782.763671875,
+        -131995.00732421875,
+        2200.1264572143555
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_107_103",
+      "category": "Track",
+      "filename": "Track/Tile_107_103.fbx",
+      "triangles": 267,
+      "minimum": [
+        -80365.0634765625,
+        -148638.3544921875,
+        -768.049955368042
+      ],
+      "maximum": [
+        -71172.5830078125,
+        -139535.8642578125,
+        2190.5258178710938
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_107_104",
+      "category": "Track",
+      "filename": "Track/Tile_107_104.fbx",
+      "triangles": 211,
+      "minimum": [
+        -96828.3203125,
+        -146159.9609375,
+        -717.9361820220947
+      ],
+      "maximum": [
+        -79605.71899414062,
+        -139326.8310546875,
+        2010.3706359863281
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_107_105",
+      "category": "Track",
+      "filename": "Track/Tile_107_105.fbx",
+      "triangles": 121,
+      "minimum": [
+        -120914.35546875,
+        -143297.18017578125,
+        -634.0487480163574
+      ],
+      "maximum": [
+        -102797.8759765625,
+        -139526.96533203125,
+        1893.7868118286133
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_107_106",
+      "category": "Track",
+      "filename": "Track/Tile_107_106.fbx",
+      "triangles": 326,
+      "minimum": [
+        -140644.39697265625,
+        -145377.5146484375,
+        -573.713493347168
+      ],
+      "maximum": [
+        -119670.37353515625,
+        -139111.77978515625,
+        2316.4960861206055
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_107_107",
+      "category": "Track",
+      "filename": "Track/Tile_107_107.fbx",
+      "triangles": 771,
+      "minimum": [
+        -160661.4990234375,
+        -151728.173828125,
+        -582.1206569671631
+      ],
+      "maximum": [
+        -139394.580078125,
+        -139478.13720703125,
+        2249.8693466186523
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_107_108",
+      "category": "Track",
+      "filename": "Track/Tile_107_108.fbx",
+      "triangles": 111,
+      "minimum": [
+        -167517.8466796875,
+        -146221.2158203125,
+        -334.84342098236084
+      ],
+      "maximum": [
+        -159154.58984375,
+        -141094.7265625,
+        2182.242202758789
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_096_093",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_096_093.fbx",
+      "triangles": 236,
+      "minimum": [
+        119000.0,
+        59866.668701171875,
+        70.5132246017456
+      ],
+      "maximum": [
+        130000.0,
+        65000.0,
+        208.35142135620117
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_096_094",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_096_094.fbx",
+      "triangles": 466,
+      "minimum": [
+        100300.0,
+        59500.0,
+        175.77649354934692
+      ],
+      "maximum": [
+        120100.0,
+        65000.0,
+        431.52942657470703
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_096_095",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_096_095.fbx",
+      "triangles": 475,
+      "minimum": [
+        79400.0,
+        59500.0,
+        266.97754859924316
+      ],
+      "maximum": [
+        100300.0,
+        65000.0,
+        445.86591720581055
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_096_096",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_096_096.fbx",
+      "triangles": 468,
+      "minimum": [
+        59600.0,
+        59500.0,
+        389.9500608444214
+      ],
+      "maximum": [
+        80133.33129882812,
+        65000.0,
+        532.9773902893066
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_096_097",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_096_097.fbx",
+      "triangles": 477,
+      "minimum": [
+        39800.0,
+        59500.0,
+        411.98010444641113
+      ],
+      "maximum": [
+        60333.331298828125,
+        65000.0,
+        604.7762870788574
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_096_098",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_096_098.fbx",
+      "triangles": 478,
+      "minimum": [
+        20000.0,
+        59866.668701171875,
+        515.9714698791504
+      ],
+      "maximum": [
+        40166.66564941406,
+        65000.0,
+        684.253454208374
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_096_099",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_096_099.fbx",
+      "triangles": 478,
+      "minimum": [
+        -166.66666269302368,
+        59866.668701171875,
+        597.5701332092285
+      ],
+      "maximum": [
+        20000.0,
+        65000.0,
+        763.7306213378906
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_096_100",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_096_100.fbx",
+      "triangles": 477,
+      "minimum": [
+        -20700.0,
+        59866.668701171875,
+        675.6022453308105
+      ],
+      "maximum": [
+        200.0,
+        65000.0,
+        1077.5028228759766
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_096_101",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_096_101.fbx",
+      "triangles": 468,
+      "minimum": [
+        -40500.0,
+        59866.668701171875,
+        1015.0243759155273
+      ],
+      "maximum": [
+        -19600.0,
+        65000.0,
+        1331.986427307129
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_096_102",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_096_102.fbx",
+      "triangles": 475,
+      "minimum": [
+        -60300.0,
+        59500.0,
+        1267.4734115600586
+      ],
+      "maximum": [
+        -39400.0,
+        65000.0,
+        1440.61918258667
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_096_103",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_096_103.fbx",
+      "triangles": 468,
+      "minimum": [
+        -80100.0,
+        59500.0,
+        1357.9041481018066
+      ],
+      "maximum": [
+        -60300.0,
+        65000.0,
+        1575.699234008789
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_096_104",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_096_104.fbx",
+      "triangles": 468,
+      "minimum": [
+        -99900.0,
+        59500.0,
+        1542.397117614746
+      ],
+      "maximum": [
+        -80100.0,
+        65000.0,
+        1806.7157745361328
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_096_105",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_096_105.fbx",
+      "triangles": 470,
+      "minimum": [
+        -120800.0,
+        59500.0,
+        1757.80029296875
+      ],
+      "maximum": [
+        -99900.0,
+        65000.0,
+        1909.8846435546875
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_096_106",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_096_106.fbx",
+      "triangles": 473,
+      "minimum": [
+        -140600.0,
+        59866.668701171875,
+        1871.1862564086914
+      ],
+      "maximum": [
+        -119700.0,
+        65000.0,
+        2047.7863311767578
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_096_107",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_096_107.fbx",
+      "triangles": 468,
+      "minimum": [
+        -160400.0,
+        59866.668701171875,
+        1992.581558227539
+      ],
+      "maximum": [
+        -139500.0,
+        65000.0,
+        2147.012138366699
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_096_108",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_096_108.fbx",
+      "triangles": 477,
+      "minimum": [
+        -180200.0,
+        59866.668701171875,
+        2020.480728149414
+      ],
+      "maximum": [
+        -159300.0,
+        65000.0,
+        2370.2035903930664
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_096_109",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_096_109.fbx",
+      "triangles": 478,
+      "minimum": [
+        -200000.0,
+        59866.668701171875,
+        2297.484016418457
+      ],
+      "maximum": [
+        -179833.33740234375,
+        65000.0,
+        2439.000129699707
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_096_110",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_096_110.fbx",
+      "triangles": 468,
+      "minimum": [
+        -219800.0,
+        59500.0,
+        2439.000129699707
+      ],
+      "maximum": [
+        -200000.0,
+        65000.0,
+        2439.000129699707
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_097_093",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_097_093.fbx",
+      "triangles": 914,
+      "minimum": [
+        119000.0,
+        39700.0,
+        -332.2150707244873
+      ],
+      "maximum": [
+        130000.0,
+        60600.0,
+        246.09177112579346
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_097_094",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_097_094.fbx",
+      "triangles": 1805,
+      "minimum": [
+        99200.0,
+        39700.0,
+        -12.534122169017792
+      ],
+      "maximum": [
+        120100.0,
+        60600.0,
+        381.6358804702759
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_097_095",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_097_095.fbx",
+      "triangles": 1831,
+      "minimum": [
+        79400.0,
+        39700.0,
+        28.79224121570587
+      ],
+      "maximum": [
+        100300.0,
+        60600.0,
+        394.62339878082275
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_097_096",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_097_096.fbx",
+      "triangles": 1809,
+      "minimum": [
+        59600.0,
+        39700.0,
+        18.283165991306305
+      ],
+      "maximum": [
+        80133.33129882812,
+        60600.0,
+        449.3093490600586
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_097_097",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_097_097.fbx",
+      "triangles": 1851,
+      "minimum": [
+        39800.0,
+        39700.0,
+        18.283165991306305
+      ],
+      "maximum": [
+        60333.331298828125,
+        60600.0,
+        521.8557834625244
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_097_098",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_097_098.fbx",
+      "triangles": 1840,
+      "minimum": [
+        20000.0,
+        39700.0,
+        136.670184135437
+      ],
+      "maximum": [
+        40166.66564941406,
+        60600.0,
+        605.6183338165283
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_097_099",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_097_099.fbx",
+      "triangles": 1835,
+      "minimum": [
+        -166.66666269302368,
+        39700.0,
+        257.0284605026245
+      ],
+      "maximum": [
+        20000.0,
+        60600.0,
+        683.6504459381104
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_097_100",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_097_100.fbx",
+      "triangles": 1856,
+      "minimum": [
+        -20700.0,
+        39700.0,
+        452.72812843322754
+      ],
+      "maximum": [
+        200.0,
+        60600.0,
+        1043.2500839233398
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_097_101",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_097_101.fbx",
+      "triangles": 1809,
+      "minimum": [
+        -40500.0,
+        39700.0,
+        873.6364364624023
+      ],
+      "maximum": [
+        -19600.0,
+        60600.0,
+        1336.9190216064453
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_097_102",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_097_102.fbx",
+      "triangles": 1831,
+      "minimum": [
+        -60300.0,
+        39700.0,
+        1166.2664413452148
+      ],
+      "maximum": [
+        -39400.0,
+        60600.0,
+        1378.5433769226074
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_097_103",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_097_103.fbx",
+      "triangles": 1809,
+      "minimum": [
+        -80100.0,
+        39700.0,
+        1299.9310493469238
+      ],
+      "maximum": [
+        -59200.0,
+        60600.0,
+        1546.0341453552246
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_097_104",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_097_104.fbx",
+      "triangles": 1820,
+      "minimum": [
+        -101000.0,
+        39700.0,
+        1479.3018341064453
+      ],
+      "maximum": [
+        -79000.0,
+        60600.0,
+        1771.7344284057617
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_097_105",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_097_105.fbx",
+      "triangles": 1813,
+      "minimum": [
+        -120800.0,
+        39700.0,
+        1609.65576171875
+      ],
+      "maximum": [
+        -99900.0,
+        60600.0,
+        1885.711669921875
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_097_106",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_097_106.fbx",
+      "triangles": 1827,
+      "minimum": [
+        -140600.0,
+        39700.0,
+        1692.6639556884766
+      ],
+      "maximum": [
+        -119700.0,
+        60600.0,
+        1997.4143981933594
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_097_107",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_097_107.fbx",
+      "triangles": 1809,
+      "minimum": [
+        -160400.0,
+        39700.0,
+        1838.5101318359375
+      ],
+      "maximum": [
+        -139500.0,
+        60600.0,
+        2144.2651748657227
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_097_108",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_097_108.fbx",
+      "triangles": 1846,
+      "minimum": [
+        -180200.0,
+        39700.0,
+        2012.1410369873047
+      ],
+      "maximum": [
+        -159300.0,
+        60600.0,
+        2415.700149536133
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_097_109",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_097_109.fbx",
+      "triangles": 1845,
+      "minimum": [
+        -200000.0,
+        39700.0,
+        1934.333610534668
+      ],
+      "maximum": [
+        -179833.33740234375,
+        60600.0,
+        2439.000129699707
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_097_110",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_097_110.fbx",
+      "triangles": 1809,
+      "minimum": [
+        -219800.0,
+        39700.0,
+        2321.500015258789
+      ],
+      "maximum": [
+        -200000.0,
+        60600.0,
+        2439.000129699707
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_098_093",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_098_093.fbx",
+      "triangles": 900,
+      "minimum": [
+        119000.0,
+        19900.0,
+        -796.4931964874268
+      ],
+      "maximum": [
+        130000.0,
+        39700.0,
+        118.65968704223633
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_098_094",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_098_094.fbx",
+      "triangles": 1782,
+      "minimum": [
+        99200.0,
+        19900.0,
+        -786.7045402526855
+      ],
+      "maximum": [
+        120100.0,
+        39700.0,
+        147.86311388015747
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_098_095",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_098_095.fbx",
+      "triangles": 1807,
+      "minimum": [
+        74635.76049804688,
+        18994.5068359375,
+        -605.1814079284668
+      ],
+      "maximum": [
+        100634.89379882812,
+        39700.0,
+        50.357598066329956
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_098_096",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_098_096.fbx",
+      "triangles": 1784,
+      "minimum": [
+        59600.0,
+        19900.0,
+        -474.08008575439453
+      ],
+      "maximum": [
+        80133.33129882812,
+        39700.0,
+        36.32503151893616
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_098_097",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_098_097.fbx",
+      "triangles": 1843,
+      "minimum": [
+        37329.63562011719,
+        19900.0,
+        -357.21161365509033
+      ],
+      "maximum": [
+        60333.331298828125,
+        39700.0,
+        136.670184135437
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_098_098",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_098_098.fbx",
+      "triangles": 1828,
+      "minimum": [
+        20000.0,
+        18493.394470214844,
+        -235.7347011566162
+      ],
+      "maximum": [
+        41410.61706542969,
+        39700.0,
+        257.0284605026245
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_098_099",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_098_099.fbx",
+      "triangles": 1807,
+      "minimum": [
+        -166.66666269302368,
+        19895.516967773438,
+        -88.50194215774536
+      ],
+      "maximum": [
+        20345.938110351562,
+        39700.0,
+        452.72812843322754
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_098_100",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_098_100.fbx",
+      "triangles": 1831,
+      "minimum": [
+        -20700.0,
+        19900.0,
+        315.25654792785645
+      ],
+      "maximum": [
+        200.0,
+        39700.0,
+        1020.1252937316895
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_098_101",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_098_101.fbx",
+      "triangles": 1782,
+      "minimum": [
+        -40500.0,
+        19900.0,
+        650.5018711090088
+      ],
+      "maximum": [
+        -19600.0,
+        39700.0,
+        1175.5231857299805
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_098_102",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_098_102.fbx",
+      "triangles": 1800,
+      "minimum": [
+        -60300.0,
+        19900.0,
+        650.5018711090088
+      ],
+      "maximum": [
+        -39400.0,
+        39700.0,
+        1418.276309967041
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_098_103",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_098_103.fbx",
+      "triangles": 1782,
+      "minimum": [
+        -80100.0,
+        19900.0,
+        1327.6663780212402
+      ],
+      "maximum": [
+        -59200.0,
+        39700.0,
+        1542.7251815795898
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_098_104",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_098_104.fbx",
+      "triangles": 1806,
+      "minimum": [
+        -101000.0,
+        19900.0,
+        1444.4656372070312
+      ],
+      "maximum": [
+        -79000.0,
+        39700.0,
+        1702.2956848144531
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_098_105",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_098_105.fbx",
+      "triangles": 1782,
+      "minimum": [
+        -120800.0,
+        19900.0,
+        1094.105339050293
+      ],
+      "maximum": [
+        -99900.0,
+        39700.0,
+        1762.3517990112305
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_098_106",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_098_106.fbx",
+      "triangles": 1800,
+      "minimum": [
+        -140600.0,
+        19900.0,
+        1299.06005859375
+      ],
+      "maximum": [
+        -119700.0,
+        39700.0,
+        1914.2309188842773
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_098_107",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_098_107.fbx",
+      "triangles": 1782,
+      "minimum": [
+        -160400.0,
+        19900.0,
+        1071.1453437805176
+      ],
+      "maximum": [
+        -139500.0,
+        39700.0,
+        2216.546058654785
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_098_108",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_098_108.fbx",
+      "triangles": 1818,
+      "minimum": [
+        -180200.0,
+        19900.0,
+        1255.493450164795
+      ],
+      "maximum": [
+        -159300.0,
+        39700.0,
+        2478.8219451904297
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_098_109",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_098_109.fbx",
+      "triangles": 1818,
+      "minimum": [
+        -200000.0,
+        19900.0,
+        1560.0215911865234
+      ],
+      "maximum": [
+        -179833.33740234375,
+        39700.0,
+        2398.374557495117
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_098_110",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_098_110.fbx",
+      "triangles": 1782,
+      "minimum": [
+        -219800.0,
+        19900.0,
+        2300.5001068115234
+      ],
+      "maximum": [
+        -200000.0,
+        39700.0,
+        2363.5000228881836
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_099_093",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_099_093.fbx",
+      "triangles": 900,
+      "minimum": [
+        119000.0,
+        100.0,
+        -816.5319442749023
+      ],
+      "maximum": [
+        130000.0,
+        19900.0,
+        -734.1292381286621
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_099_094",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_099_094.fbx",
+      "triangles": 1782,
+      "minimum": [
+        99200.0,
+        100.0,
+        -807.6092720031738
+      ],
+      "maximum": [
+        120100.0,
+        19900.0,
+        -488.8375759124756
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_099_095",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_099_095.fbx",
+      "triangles": 2194,
+      "minimum": [
+        74635.76049804688,
+        100.0,
+        -621.7723369598389
+      ],
+      "maximum": [
+        100300.0,
+        21111.233520507812,
+        -390.0162696838379
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_099_096",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_099_096.fbx",
+      "triangles": 15083,
+      "minimum": [
+        54295.013427734375,
+        -742.8227424621582,
+        -545.3133583068848
+      ],
+      "maximum": [
+        81347.0458984375,
+        19900.0,
+        -81.63325190544128
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_099_097",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_099_097.fbx",
+      "triangles": 22749,
+      "minimum": [
+        29694.281005859375,
+        -31.926879286766052,
+        -421.05255126953125
+      ],
+      "maximum": [
+        67276.94091796875,
+        19900.0,
+        448.48294258117676
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_099_098",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_099_098.fbx",
+      "triangles": 31674,
+      "minimum": [
+        12972.3876953125,
+        -534.4797134399414,
+        -361.41154766082764
+      ],
+      "maximum": [
+        50817.132568359375,
+        21415.64178466797,
+        1295.7682609558105
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_099_099",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_099_099.fbx",
+      "triangles": 43405,
+      "minimum": [
+        -7155.878448486328,
+        -989.1678810119629,
+        -218.4020757675171
+      ],
+      "maximum": [
+        26938.690185546875,
+        20310.765075683594,
+        1268.2977676391602
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_099_100",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_099_100.fbx",
+      "triangles": 9175,
+      "minimum": [
+        -24418.650817871094,
+        -1235.085391998291,
+        -133.64720344543457
+      ],
+      "maximum": [
+        6077.383804321289,
+        19900.0,
+        1581.376075744629
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_099_101",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_099_101.fbx",
+      "triangles": 4376,
+      "minimum": [
+        -40931.109619140625,
+        -252.5524616241455,
+        19.2172110080719
+      ],
+      "maximum": [
+        -15994.024658203125,
+        19900.0,
+        929.5791625976562
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_099_102",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_099_102.fbx",
+      "triangles": 3509,
+      "minimum": [
+        -60300.0,
+        100.0,
+        93.56324076652527
+      ],
+      "maximum": [
+        -38545.599365234375,
+        19900.0,
+        1403.950309753418
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_099_103",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_099_103.fbx",
+      "triangles": 2819,
+      "minimum": [
+        -80856.43920898438,
+        100.0,
+        234.19954776763916
+      ],
+      "maximum": [
+        -59200.0,
+        20536.83319091797,
+        1582.6074600219727
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_099_104",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_099_104.fbx",
+      "triangles": 2794,
+      "minimum": [
+        -101000.0,
+        100.0,
+        390.2078628540039
+      ],
+      "maximum": [
+        -78269.50073242188,
+        19900.0,
+        1974.9570846557617
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_099_105",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_099_105.fbx",
+      "triangles": 1953,
+      "minimum": [
+        -120800.0,
+        82.61873722076416,
+        461.99488639831543
+      ],
+      "maximum": [
+        -99900.0,
+        19900.0,
+        1444.4656372070312
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_099_106",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_099_106.fbx",
+      "triangles": 2069,
+      "minimum": [
+        -140600.0,
+        -129.85283136367798,
+        688.552713394165
+      ],
+      "maximum": [
+        -119700.0,
+        19900.0,
+        1704.7096252441406
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_099_107",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_099_107.fbx",
+      "triangles": 1782,
+      "minimum": [
+        -160400.0,
+        100.0,
+        800.7303237915039
+      ],
+      "maximum": [
+        -139500.0,
+        19900.0,
+        1932.8805923461914
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_099_108",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_099_108.fbx",
+      "triangles": 1818,
+      "minimum": [
+        -180200.0,
+        100.0,
+        861.2100601196289
+      ],
+      "maximum": [
+        -159300.0,
+        19900.0,
+        2397.9801177978516
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_099_109",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_099_109.fbx",
+      "triangles": 1818,
+      "minimum": [
+        -200000.0,
+        100.0,
+        1106.261920928955
+      ],
+      "maximum": [
+        -179833.33740234375,
+        19900.0,
+        2394.7208404541016
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_099_110",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_099_110.fbx",
+      "triangles": 1782,
+      "minimum": [
+        -219800.0,
+        100.0,
+        1191.4999961853027
+      ],
+      "maximum": [
+        -200000.0,
+        19900.0,
+        2328.249931335449
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_100_093",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_100_093.fbx",
+      "triangles": 900,
+      "minimum": [
+        119000.0,
+        -19700.0,
+        -767.4148082733154
+      ],
+      "maximum": [
+        130000.0,
+        100.0,
+        -643.0587291717529
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_100_094",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_100_094.fbx",
+      "triangles": 1782,
+      "minimum": [
+        99200.0,
+        -19700.0,
+        -892.3465728759766
+      ],
+      "maximum": [
+        120100.0,
+        100.0,
+        -488.8375759124756
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_100_095",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_100_095.fbx",
+      "triangles": 5015,
+      "minimum": [
+        78285.78491210938,
+        -20066.66717529297,
+        -708.2736492156982
+      ],
+      "maximum": [
+        100300.0,
+        100.0,
+        108.71357917785645
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_100_096",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_100_096.fbx",
+      "triangles": 26993,
+      "minimum": [
+        59600.0,
+        -20088.56964111328,
+        -464.06545639038086
+      ],
+      "maximum": [
+        82484.94873046875,
+        744.2278385162354,
+        -86.04111075401306
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_100_097",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_100_097.fbx",
+      "triangles": 5765,
+      "minimum": [
+        37035.833740234375,
+        -20066.66717529297,
+        -376.40559673309326
+      ],
+      "maximum": [
+        61050.006103515625,
+        301.52714252471924,
+        -159.97518301010132
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_100_098",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_100_098.fbx",
+      "triangles": 18995,
+      "minimum": [
+        7507.286834716797,
+        -23076.54266357422,
+        -523.1471061706543
+      ],
+      "maximum": [
+        42048.90441894531,
+        1399.683952331543,
+        539.4246578216553
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_100_099",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_100_099.fbx",
+      "triangles": 36065,
+      "minimum": [
+        -3898.955535888672,
+        -23909.75799560547,
+        -211.0887050628662
+      ],
+      "maximum": [
+        30372.280883789062,
+        927.4491310119629,
+        445.6362247467041
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_100_100",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_100_100.fbx",
+      "triangles": 20116,
+      "minimum": [
+        -20700.0,
+        -24080.74188232422,
+        -225.67789554595947
+      ],
+      "maximum": [
+        2603.201675415039,
+        963.4052276611328,
+        704.3658256530762
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_100_101",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_100_101.fbx",
+      "triangles": 17831,
+      "minimum": [
+        -45207.71484375,
+        -20066.66717529297,
+        -200.27542114257812
+      ],
+      "maximum": [
+        -15979.953002929688,
+        435.89091300964355,
+        727.3382663726807
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_100_102",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_100_102.fbx",
+      "triangles": 20469,
+      "minimum": [
+        -60053.790283203125,
+        -20066.66717529297,
+        122.60793447494507
+      ],
+      "maximum": [
+        -34260.91003417969,
+        100.0,
+        894.2553520202637
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_100_103",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_100_103.fbx",
+      "triangles": 31726,
+      "minimum": [
+        -80100.0,
+        -20066.66717529297,
+        203.29937934875488
+      ],
+      "maximum": [
+        -59933.331298828125,
+        100.0,
+        1676.0919570922852
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_100_104",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_100_104.fbx",
+      "triangles": 16193,
+      "minimum": [
+        -100288.6474609375,
+        -20066.66717529297,
+        387.29851245880127
+      ],
+      "maximum": [
+        -79000.0,
+        100.0,
+        555.0778865814209
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_100_105",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_100_105.fbx",
+      "triangles": 16637,
+      "minimum": [
+        -120978.3447265625,
+        -20669.82879638672,
+        300.7305860519409
+      ],
+      "maximum": [
+        -99707.92236328125,
+        250.87523460388184,
+        1206.4993858337402
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_100_106",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_100_106.fbx",
+      "triangles": 4750,
+      "minimum": [
+        -142357.470703125,
+        -20066.66717529297,
+        656.0536861419678
+      ],
+      "maximum": [
+        -119295.00732421875,
+        235.03496646881104,
+        1321.0289001464844
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_100_107",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_100_107.fbx",
+      "triangles": 1805,
+      "minimum": [
+        -160400.0,
+        -19700.0,
+        739.9065494537354
+      ],
+      "maximum": [
+        -138282.51953125,
+        100.0,
+        1316.05806350708
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_100_108",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_100_108.fbx",
+      "triangles": 1818,
+      "minimum": [
+        -180200.0,
+        -19700.0,
+        861.0835075378418
+      ],
+      "maximum": [
+        -159300.0,
+        100.0,
+        1163.9378547668457
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_100_109",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_100_109.fbx",
+      "triangles": 1818,
+      "minimum": [
+        -200000.0,
+        -19700.0,
+        1028.2432556152344
+      ],
+      "maximum": [
+        -179833.33740234375,
+        100.0,
+        1629.7569274902344
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_100_110",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_100_110.fbx",
+      "triangles": 1782,
+      "minimum": [
+        -219800.0,
+        -19700.0,
+        1103.5000801086426
+      ],
+      "maximum": [
+        -200000.0,
+        100.0,
+        1285.5000495910645
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_101_093",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_101_093.fbx",
+      "triangles": 914,
+      "minimum": [
+        119000.0,
+        -40600.0,
+        -896.5426445007324
+      ],
+      "maximum": [
+        130000.0,
+        -19700.0,
+        -642.8003311157227
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_101_094",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_101_094.fbx",
+      "triangles": 1811,
+      "minimum": [
+        99200.0,
+        -40600.0,
+        -1324.4060516357422
+      ],
+      "maximum": [
+        120100.0,
+        -19700.0,
+        -534.5272541046143
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_101_095",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_101_095.fbx",
+      "triangles": 2636,
+      "minimum": [
+        79400.0,
+        -40600.0,
+        -1311.6235733032227
+      ],
+      "maximum": [
+        100300.0,
+        -19700.0,
+        261.9060277938843
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_101_096",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_101_096.fbx",
+      "triangles": 11905,
+      "minimum": [
+        32232.60498046875,
+        -40600.0,
+        -1324.4060516357422
+      ],
+      "maximum": [
+        100250.390625,
+        -19872.666931152344,
+        294.3301200866699
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_101_097",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_101_097.fbx",
+      "triangles": 16986,
+      "minimum": [
+        32232.60498046875,
+        -40600.0,
+        -1228.3737182617188
+      ],
+      "maximum": [
+        100250.390625,
+        -20066.66717529297,
+        329.839563369751
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_101_098",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_101_098.fbx",
+      "triangles": 16892,
+      "minimum": [
+        3467.734909057617,
+        -40600.0,
+        -254.1985273361206
+      ],
+      "maximum": [
+        40166.66564941406,
+        -17161.40594482422,
+        98.64441752433777
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_101_099",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_101_099.fbx",
+      "triangles": 16394,
+      "minimum": [
+        -1628.5911560058594,
+        -40600.0,
+        -163.40820789337158
+      ],
+      "maximum": [
+        30258.53271484375,
+        -13552.212524414062,
+        481.73766136169434
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_101_100",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_101_100.fbx",
+      "triangles": 21531,
+      "minimum": [
+        -24671.80633544922,
+        -40600.0,
+        -65.60992002487183
+      ],
+      "maximum": [
+        2598.1298446655273,
+        -15327.888488769531,
+        868.4768676757812
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_101_101",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_101_101.fbx",
+      "triangles": 22624,
+      "minimum": [
+        -40888.00048828125,
+        -40233.33435058594,
+        -10.35357192158699
+      ],
+      "maximum": [
+        -19947.16339111328,
+        -19700.0,
+        622.7595806121826
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_101_102",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_101_102.fbx",
+      "triangles": 9228,
+      "minimum": [
+        -60300.0,
+        -40600.0,
+        177.009379863739
+      ],
+      "maximum": [
+        -39019.44885253906,
+        -19673.025512695312,
+        605.1794052124023
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_101_103",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_101_103.fbx",
+      "triangles": 1897,
+      "minimum": [
+        -80100.0,
+        -40600.0,
+        -235.35192012786865
+      ],
+      "maximum": [
+        -59200.0,
+        -19700.0,
+        476.6519069671631
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_101_104",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_101_104.fbx",
+      "triangles": 1897,
+      "minimum": [
+        -101000.0,
+        -40600.0,
+        -44.03325617313385
+      ],
+      "maximum": [
+        -79000.0,
+        -19700.0,
+        1158.3795547485352
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_101_105",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_101_105.fbx",
+      "triangles": 11839,
+      "minimum": [
+        -121076.0009765625,
+        -40600.0,
+        547.8633403778076
+      ],
+      "maximum": [
+        -99900.0,
+        -19350.144958496094,
+        1348.714256286621
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_101_106",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_101_106.fbx",
+      "triangles": 10768,
+      "minimum": [
+        -142965.02685546875,
+        -50455.767822265625,
+        620.8025932312012
+      ],
+      "maximum": [
+        -118962.82958984375,
+        -17620.18585205078,
+        1376.2605667114258
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_101_107",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_101_107.fbx",
+      "triangles": 2327,
+      "minimum": [
+        -160400.0,
+        -40600.0,
+        766.970157623291
+      ],
+      "maximum": [
+        -138278.9794921875,
+        -17821.2158203125,
+        1398.0988502502441
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_101_108",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_101_108.fbx",
+      "triangles": 1846,
+      "minimum": [
+        -180200.0,
+        -40600.0,
+        920.3378677368164
+      ],
+      "maximum": [
+        -159300.0,
+        -19700.0,
+        1131.2149047851562
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_101_109",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_101_109.fbx",
+      "triangles": 1845,
+      "minimum": [
+        -200000.0,
+        -40600.0,
+        950.9895324707031
+      ],
+      "maximum": [
+        -179833.33740234375,
+        -19700.0,
+        1405.8692932128906
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_101_110",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_101_110.fbx",
+      "triangles": 1809,
+      "minimum": [
+        -219800.0,
+        -40600.0,
+        1138.5000228881836
+      ],
+      "maximum": [
+        -200000.0,
+        -19700.0,
+        1194.5000648498535
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_102_093",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_102_093.fbx",
+      "triangles": 900,
+      "minimum": [
+        119000.0,
+        -60400.0,
+        -1435.2274894714355
+      ],
+      "maximum": [
+        130000.0,
+        -39866.66564941406,
+        -625.792407989502
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_102_094",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_102_094.fbx",
+      "triangles": 1778,
+      "minimum": [
+        99200.0,
+        -60400.0,
+        -949.1872787475586
+      ],
+      "maximum": [
+        120100.0,
+        -39500.0,
+        -536.2744331359863
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_102_095",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_102_095.fbx",
+      "triangles": 1804,
+      "minimum": [
+        79400.0,
+        -60400.0,
+        -1006.0680389404297
+      ],
+      "maximum": [
+        100300.0,
+        -39500.0,
+        -405.4860591888428
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_102_096",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_102_096.fbx",
+      "triangles": 1782,
+      "minimum": [
+        59600.0,
+        -60400.0,
+        -765.1610374450684
+      ],
+      "maximum": [
+        80133.33129882812,
+        -39500.0,
+        -315.4317855834961
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_102_097",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_102_097.fbx",
+      "triangles": 1823,
+      "minimum": [
+        39800.0,
+        -60400.0,
+        -470.9412097930908
+      ],
+      "maximum": [
+        60333.331298828125,
+        -39500.0,
+        -112.76464462280273
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_102_098",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_102_098.fbx",
+      "triangles": 1815,
+      "minimum": [
+        20000.0,
+        -61955.48095703125,
+        -263.32054138183594
+      ],
+      "maximum": [
+        40166.66564941406,
+        -29855.099487304688,
+        -82.54786133766174
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_102_099",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_102_099.fbx",
+      "triangles": 1808,
+      "minimum": [
+        -166.66666269302368,
+        -60400.0,
+        -147.41910696029663
+      ],
+      "maximum": [
+        20000.0,
+        -39500.0,
+        49.91181790828705
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_102_100",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_102_100.fbx",
+      "triangles": 1952,
+      "minimum": [
+        -20700.0,
+        -60400.0,
+        -65.13965129852295
+      ],
+      "maximum": [
+        200.0,
+        -39500.0,
+        144.39306259155273
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_102_101",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_102_101.fbx",
+      "triangles": 4056,
+      "minimum": [
+        -40500.0,
+        -60400.0,
+        92.83495545387268
+      ],
+      "maximum": [
+        -19600.0,
+        -39866.66564941406,
+        400.7059097290039
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_102_102",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_102_102.fbx",
+      "triangles": 19177,
+      "minimum": [
+        -60300.0,
+        -60400.0,
+        -37.94560134410858
+      ],
+      "maximum": [
+        -39400.0,
+        -39500.0,
+        464.78095054626465
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_102_103",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_102_103.fbx",
+      "triangles": 5218,
+      "minimum": [
+        -80100.0,
+        -60400.0,
+        -59.17194485664368
+      ],
+      "maximum": [
+        -59920.6787109375,
+        -39500.0,
+        476.8038749694824
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_102_104",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_102_104.fbx",
+      "triangles": 1792,
+      "minimum": [
+        -101000.0,
+        -60400.0,
+        368.8741445541382
+      ],
+      "maximum": [
+        -79000.0,
+        -39500.0,
+        655.0334453582764
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_102_105",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_102_105.fbx",
+      "triangles": 3742,
+      "minimum": [
+        -120066.66259765625,
+        -60400.0,
+        601.6221523284912
+      ],
+      "maximum": [
+        -99900.0,
+        -39500.0,
+        749.461030960083
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_102_106",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_102_106.fbx",
+      "triangles": 17246,
+      "minimum": [
+        -141875.57373046875,
+        -66745.947265625,
+        679.2280197143555
+      ],
+      "maximum": [
+        -120066.66259765625,
+        -26734.841918945312,
+        1373.5610008239746
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_102_107",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_102_107.fbx",
+      "triangles": 1815,
+      "minimum": [
+        -160400.0,
+        -60400.0,
+        749.6832370758057
+      ],
+      "maximum": [
+        -138383.740234375,
+        -39866.66564941406,
+        1373.5610008239746
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_102_108",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_102_108.fbx",
+      "triangles": 1818,
+      "minimum": [
+        -180200.0,
+        -60400.0,
+        978.8326263427734
+      ],
+      "maximum": [
+        -159300.0,
+        -39866.66564941406,
+        1187.4155044555664
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_102_109",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_102_109.fbx",
+      "triangles": 1818,
+      "minimum": [
+        -200000.0,
+        -60400.0,
+        856.5090179443359
+      ],
+      "maximum": [
+        -179833.33740234375,
+        -39866.66564941406,
+        1208.1892013549805
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_102_110",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_102_110.fbx",
+      "triangles": 1782,
+      "minimum": [
+        -219800.0,
+        -60400.0,
+        722.7299690246582
+      ],
+      "maximum": [
+        -200000.0,
+        -39500.0,
+        1206.5000534057617
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_103_093",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_103_093.fbx",
+      "triangles": 927,
+      "minimum": [
+        119000.0,
+        -80200.0,
+        -1765.318489074707
+      ],
+      "maximum": [
+        130000.0,
+        -59666.668701171875,
+        -923.3847618103027
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_103_094",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_103_094.fbx",
+      "triangles": 1826,
+      "minimum": [
+        100300.0,
+        -80200.0,
+        -1691.0213470458984
+      ],
+      "maximum": [
+        120100.0,
+        -59300.0,
+        -575.5195140838623
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_103_095",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_103_095.fbx",
+      "triangles": 1855,
+      "minimum": [
+        79400.0,
+        -80200.0,
+        -1494.1896438598633
+      ],
+      "maximum": [
+        100300.0,
+        -59300.0,
+        -549.6915817260742
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_103_096",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_103_096.fbx",
+      "triangles": 1827,
+      "minimum": [
+        59600.0,
+        -80200.0,
+        -1203.4194946289062
+      ],
+      "maximum": [
+        80133.33129882812,
+        -59300.0,
+        -379.22677993774414
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_103_097",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_103_097.fbx",
+      "triangles": 1869,
+      "minimum": [
+        39800.0,
+        -80200.0,
+        -1076.0122299194336
+      ],
+      "maximum": [
+        60333.331298828125,
+        -59300.0,
+        -256.9890260696411
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_103_098",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_103_098.fbx",
+      "triangles": 1873,
+      "minimum": [
+        20000.0,
+        -80200.0,
+        -605.0957679748535
+      ],
+      "maximum": [
+        40166.66564941406,
+        -59666.668701171875,
+        -147.41910696029663
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_103_099",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_103_099.fbx",
+      "triangles": 1873,
+      "minimum": [
+        -166.66666269302368,
+        -80200.0,
+        -339.24593925476074
+      ],
+      "maximum": [
+        20000.0,
+        -59666.668701171875,
+        -17.962396144866943
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_103_100",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_103_100.fbx",
+      "triangles": 1873,
+      "minimum": [
+        -20700.0,
+        -80200.0,
+        -210.35337448120117
+      ],
+      "maximum": [
+        200.0,
+        -59666.668701171875,
+        122.54979610443115
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_103_101",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_103_101.fbx",
+      "triangles": 1836,
+      "minimum": [
+        -40500.0,
+        -80200.0,
+        -8.15865620970726
+      ],
+      "maximum": [
+        -19600.0,
+        -59666.668701171875,
+        257.55176544189453
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_103_102",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_103_102.fbx",
+      "triangles": 2975,
+      "minimum": [
+        -60300.0,
+        -80200.0,
+        -44.50113773345947
+      ],
+      "maximum": [
+        -39400.0,
+        -59666.668701171875,
+        425.7282257080078
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_103_103",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_103_103.fbx",
+      "triangles": 19598,
+      "minimum": [
+        -80100.0,
+        -80200.0,
+        -63.95252346992493
+      ],
+      "maximum": [
+        -59933.331298828125,
+        -59300.0,
+        637.3533248901367
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_103_104",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_103_104.fbx",
+      "triangles": 3351,
+      "minimum": [
+        -99900.0,
+        -80200.0,
+        261.28270626068115
+      ],
+      "maximum": [
+        -79945.947265625,
+        -59300.0,
+        883.671760559082
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_103_105",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_103_105.fbx",
+      "triangles": 3519,
+      "minimum": [
+        -120066.66259765625,
+        -80200.0,
+        606.4070224761963
+      ],
+      "maximum": [
+        -99900.0,
+        -59300.0,
+        754.8336982727051
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_103_106",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_103_106.fbx",
+      "triangles": 20037,
+      "minimum": [
+        -140600.0,
+        -80200.0,
+        334.08944606781006
+      ],
+      "maximum": [
+        -120066.66259765625,
+        -52313.360595703125,
+        1023.5459327697754
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_103_107",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_103_107.fbx",
+      "triangles": 2451,
+      "minimum": [
+        -160400.0,
+        -80200.0,
+        848.8917350769043
+      ],
+      "maximum": [
+        -139500.0,
+        -59666.668701171875,
+        1457.2991371154785
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_103_108",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_103_108.fbx",
+      "triangles": 1873,
+      "minimum": [
+        -180200.0,
+        -80200.0,
+        964.1664505004883
+      ],
+      "maximum": [
+        -159300.0,
+        -59666.668701171875,
+        1195.83740234375
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_103_109",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_103_109.fbx",
+      "triangles": 1873,
+      "minimum": [
+        -200000.0,
+        -80200.0,
+        722.7299690246582
+      ],
+      "maximum": [
+        -179833.33740234375,
+        -59666.668701171875,
+        1209.0079307556152
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_103_110",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_103_110.fbx",
+      "triangles": 1823,
+      "minimum": [
+        -219800.0,
+        -80200.0,
+        722.7299690246582
+      ],
+      "maximum": [
+        -200000.0,
+        -59300.0,
+        1206.5000534057617
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_104_093",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_104_093.fbx",
+      "triangles": 909,
+      "minimum": [
+        119000.0,
+        -100000.0,
+        -1699.7320175170898
+      ],
+      "maximum": [
+        130000.0,
+        -79833.33129882812,
+        -1467.4863815307617
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_104_094",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_104_094.fbx",
+      "triangles": 1792,
+      "minimum": [
+        100300.0,
+        -100000.0,
+        -1637.7473831176758
+      ],
+      "maximum": [
+        120100.0,
+        -79833.33129882812,
+        -1433.0296516418457
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_104_095",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_104_095.fbx",
+      "triangles": 1836,
+      "minimum": [
+        79400.0,
+        -100000.0,
+        -1491.8551445007324
+      ],
+      "maximum": [
+        100300.0,
+        -79833.33129882812,
+        -1171.6654777526855
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_104_096",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_104_096.fbx",
+      "triangles": 1809,
+      "minimum": [
+        59600.0,
+        -100000.0,
+        -1255.1547050476074
+      ],
+      "maximum": [
+        80133.33129882812,
+        -79833.33129882812,
+        -958.1500053405762
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_104_097",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_104_097.fbx",
+      "triangles": 1840,
+      "minimum": [
+        39800.0,
+        -100000.0,
+        -1084.2472076416016
+      ],
+      "maximum": [
+        60333.331298828125,
+        -79833.33129882812,
+        -560.9625339508057
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_104_098",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_104_098.fbx",
+      "triangles": 1837,
+      "minimum": [
+        20000.0,
+        -100000.0,
+        -896.2339401245117
+      ],
+      "maximum": [
+        40166.66564941406,
+        -79833.33129882812,
+        -309.0137243270874
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_104_099",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_104_099.fbx",
+      "triangles": 1837,
+      "minimum": [
+        -166.66666269302368,
+        -100000.0,
+        -748.7348556518555
+      ],
+      "maximum": [
+        20000.0,
+        -79833.33129882812,
+        -197.00976610183716
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_104_100",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_104_100.fbx",
+      "triangles": 1836,
+      "minimum": [
+        -20700.0,
+        -100000.0,
+        -267.53196716308594
+      ],
+      "maximum": [
+        200.0,
+        -79833.33129882812,
+        -6.397204101085663
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_104_101",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_104_101.fbx",
+      "triangles": 1800,
+      "minimum": [
+        -40500.0,
+        -100000.0,
+        -160.1107954978943
+      ],
+      "maximum": [
+        -19600.0,
+        -79833.33129882812,
+        64.75487351417542
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_104_102",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_104_102.fbx",
+      "triangles": 1831,
+      "minimum": [
+        -60300.0,
+        -100000.0,
+        -27.5319904088974
+      ],
+      "maximum": [
+        -39400.0,
+        -79833.33129882812,
+        257.61847496032715
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_104_103",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_104_103.fbx",
+      "triangles": 4115,
+      "minimum": [
+        -80100.0,
+        -100000.0,
+        87.61633038520813
+      ],
+      "maximum": [
+        -60300.0,
+        -79833.33129882812,
+        583.9343070983887
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_104_104",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_104_104.fbx",
+      "triangles": 18010,
+      "minimum": [
+        -99900.0,
+        -100042.27905273438,
+        237.04016208648682
+      ],
+      "maximum": [
+        -79901.15966796875,
+        -79833.33129882812,
+        611.9518280029297
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_104_105",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_104_105.fbx",
+      "triangles": 2902,
+      "minimum": [
+        -120800.0,
+        -100000.0,
+        395.44570446014404
+      ],
+      "maximum": [
+        -99900.0,
+        -79833.33129882812,
+        762.207555770874
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_104_106",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_104_106.fbx",
+      "triangles": 21171,
+      "minimum": [
+        -140233.33740234375,
+        -100272.27783203125,
+        348.88577461242676
+      ],
+      "maximum": [
+        -119700.0,
+        -79833.33129882812,
+        1146.321201324463
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_104_107",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_104_107.fbx",
+      "triangles": 2868,
+      "minimum": [
+        -160400.0,
+        -101344.43969726562,
+        624.2673397064209
+      ],
+      "maximum": [
+        -138312.646484375,
+        -79833.33129882812,
+        1248.697566986084
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_104_108",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_104_108.fbx",
+      "triangles": 1836,
+      "minimum": [
+        -180200.0,
+        -100000.0,
+        387.87193298339844
+      ],
+      "maximum": [
+        -159300.0,
+        -79833.33129882812,
+        1088.4783744812012
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_104_109",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_104_109.fbx",
+      "triangles": 1837,
+      "minimum": [
+        -200000.0,
+        -100000.0,
+        360.8011245727539
+      ],
+      "maximum": [
+        -179833.33740234375,
+        -79833.33129882812,
+        1103.3349990844727
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_104_110",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_104_110.fbx",
+      "triangles": 1813,
+      "minimum": [
+        -219800.0,
+        -100000.0,
+        475.2500057220459
+      ],
+      "maximum": [
+        -200000.0,
+        -79833.33129882812,
+        739.0057563781738
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_105_093",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_105_093.fbx",
+      "triangles": 913,
+      "minimum": [
+        119000.0,
+        -120166.66259765625,
+        -1625.712013244629
+      ],
+      "maximum": [
+        130000.0,
+        -100000.0,
+        -1420.3828811645508
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_105_094",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_105_094.fbx",
+      "triangles": 1809,
+      "minimum": [
+        99200.0,
+        -120166.66259765625,
+        -1491.8407440185547
+      ],
+      "maximum": [
+        120100.0,
+        -100000.0,
+        -1287.5329971313477
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_105_095",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_105_095.fbx",
+      "triangles": 1837,
+      "minimum": [
+        79400.0,
+        -120166.66259765625,
+        -1545.2998161315918
+      ],
+      "maximum": [
+        100300.0,
+        -100000.0,
+        -1160.0887298583984
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_105_096",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_105_096.fbx",
+      "triangles": 1818,
+      "minimum": [
+        59600.0,
+        -120166.66259765625,
+        -1292.8417205810547
+      ],
+      "maximum": [
+        80133.33129882812,
+        -100000.0,
+        -958.1500053405762
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_105_097",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_105_097.fbx",
+      "triangles": 1871,
+      "minimum": [
+        39800.0,
+        -120166.66259765625,
+        -1209.821605682373
+      ],
+      "maximum": [
+        60333.331298828125,
+        -100000.0,
+        -894.2972183227539
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_105_098",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_105_098.fbx",
+      "triangles": 1839,
+      "minimum": [
+        20000.0,
+        -120166.66259765625,
+        -1146.5424537658691
+      ],
+      "maximum": [
+        40166.66564941406,
+        -100000.0,
+        -748.7348556518555
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_105_099",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_105_099.fbx",
+      "triangles": 1839,
+      "minimum": [
+        -166.66666269302368,
+        -120166.66259765625,
+        -1071.492576599121
+      ],
+      "maximum": [
+        20000.0,
+        -100000.0,
+        -267.53196716308594
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_105_100",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_105_100.fbx",
+      "triangles": 1871,
+      "minimum": [
+        -20700.0,
+        -120166.66259765625,
+        -984.6200942993164
+      ],
+      "maximum": [
+        200.0,
+        -100000.0,
+        -142.34775304794312
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_105_101",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_105_101.fbx",
+      "triangles": 1818,
+      "minimum": [
+        -40500.0,
+        -120166.66259765625,
+        -534.7068309783936
+      ],
+      "maximum": [
+        -19600.0,
+        -100000.0,
+        -24.3703231215477
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_105_102",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_105_102.fbx",
+      "triangles": 1837,
+      "minimum": [
+        -60300.0,
+        -120166.66259765625,
+        -240.37377834320068
+      ],
+      "maximum": [
+        -39400.0,
+        -100000.0,
+        137.9220962524414
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_105_103",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_105_103.fbx",
+      "triangles": 1843,
+      "minimum": [
+        -80100.0,
+        -120166.66259765625,
+        10.978315025568008
+      ],
+      "maximum": [
+        -59200.0,
+        -100000.0,
+        266.6792869567871
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_105_104",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_105_104.fbx",
+      "triangles": 13871,
+      "minimum": [
+        -100610.3759765625,
+        -120166.66259765625,
+        186.03392839431763
+      ],
+      "maximum": [
+        -79000.0,
+        -99959.1552734375,
+        632.263708114624
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_105_105",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_105_105.fbx",
+      "triangles": 10486,
+      "minimum": [
+        -120800.0,
+        -120510.85205078125,
+        381.0316324234009
+      ],
+      "maximum": [
+        -99489.54467773438,
+        -100000.0,
+        506.85815811157227
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_105_106",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_105_106.fbx",
+      "triangles": 22026,
+      "minimum": [
+        -140233.33740234375,
+        -120383.59375,
+        452.2073745727539
+      ],
+      "maximum": [
+        -119700.0,
+        -99972.5341796875,
+        1130.238151550293
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_105_107",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_105_107.fbx",
+      "triangles": 4606,
+      "minimum": [
+        -160400.0,
+        -120166.66259765625,
+        221.4409351348877
+      ],
+      "maximum": [
+        -139042.7490234375,
+        -98798.05297851562,
+        1208.1411361694336
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_105_108",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_105_108.fbx",
+      "triangles": 1854,
+      "minimum": [
+        -180200.0,
+        -120166.66259765625,
+        292.81883239746094
+      ],
+      "maximum": [
+        -159300.0,
+        -100000.0,
+        675.7270336151123
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_105_109",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_105_109.fbx",
+      "triangles": 1838,
+      "minimum": [
+        -200000.0,
+        -120166.66259765625,
+        -304.50000762939453
+      ],
+      "maximum": [
+        -179833.33740234375,
+        -100000.0,
+        600.8934497833252
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_105_110",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_105_110.fbx",
+      "triangles": 1815,
+      "minimum": [
+        -219800.0,
+        -120166.66259765625,
+        -304.50000762939453
+      ],
+      "maximum": [
+        -200000.0,
+        -100000.0,
+        722.7299690246582
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_106_093",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_106_093.fbx",
+      "triangles": 923,
+      "minimum": [
+        119000.0,
+        -140700.0,
+        -1663.0926132202148
+      ],
+      "maximum": [
+        130000.0,
+        -119800.0,
+        -1383.7846755981445
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_106_094",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_106_094.fbx",
+      "triangles": 1826,
+      "minimum": [
+        99200.0,
+        -140700.0,
+        -1666.1710739135742
+      ],
+      "maximum": [
+        120100.0,
+        -119800.0,
+        -1292.3276901245117
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_106_095",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_106_095.fbx",
+      "triangles": 1837,
+      "minimum": [
+        79400.0,
+        -140700.0,
+        -1375.4673957824707
+      ],
+      "maximum": [
+        100300.0,
+        -119800.0,
+        -1206.6034317016602
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_106_096",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_106_096.fbx",
+      "triangles": 1818,
+      "minimum": [
+        59600.0,
+        -140700.0,
+        -1292.061996459961
+      ],
+      "maximum": [
+        80133.33129882812,
+        -119800.0,
+        -1146.6474533081055
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_106_097",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_106_097.fbx",
+      "triangles": 1873,
+      "minimum": [
+        39800.0,
+        -140700.0,
+        -1411.2038612365723
+      ],
+      "maximum": [
+        60333.331298828125,
+        -119800.0,
+        -958.7774276733398
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_106_098",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_106_098.fbx",
+      "triangles": 1836,
+      "minimum": [
+        20000.0,
+        -140700.0,
+        -1286.488437652588
+      ],
+      "maximum": [
+        40166.66564941406,
+        -119800.0,
+        -688.1032943725586
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_106_099",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_106_099.fbx",
+      "triangles": 1836,
+      "minimum": [
+        -166.66666269302368,
+        -140700.0,
+        -954.8809051513672
+      ],
+      "maximum": [
+        20000.0,
+        -119800.0,
+        -671.8447208404541
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_106_100",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_106_100.fbx",
+      "triangles": 1873,
+      "minimum": [
+        -20333.33282470703,
+        -140700.0,
+        -1081.4188957214355
+      ],
+      "maximum": [
+        200.0,
+        -119800.0,
+        -446.9822883605957
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_106_101",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_106_101.fbx",
+      "triangles": 1818,
+      "minimum": [
+        -40133.33435058594,
+        -140700.0,
+        -1074.3005752563477
+      ],
+      "maximum": [
+        -19600.0,
+        -119800.0,
+        -237.0610237121582
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_106_102",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_106_102.fbx",
+      "triangles": 1837,
+      "minimum": [
+        -60300.0,
+        -140700.0,
+        -910.3336334228516
+      ],
+      "maximum": [
+        -39400.0,
+        -119800.0,
+        111.28504276275635
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_106_103",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_106_103.fbx",
+      "triangles": 1818,
+      "minimum": [
+        -80100.0,
+        -140700.0,
+        -777.3557662963867
+      ],
+      "maximum": [
+        -59200.0,
+        -119800.0,
+        217.36736297607422
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_106_104",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_106_104.fbx",
+      "triangles": 2689,
+      "minimum": [
+        -101000.0,
+        -140700.0,
+        -749.5989322662354
+      ],
+      "maximum": [
+        -79000.0,
+        -119800.0,
+        712.5003337860107
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_106_105",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_106_105.fbx",
+      "triangles": 15754,
+      "minimum": [
+        -120800.0,
+        -140700.0,
+        -655.0428867340088
+      ],
+      "maximum": [
+        -99900.0,
+        -119562.9638671875,
+        795.5478668212891
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_106_106",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_106_106.fbx",
+      "triangles": 11349,
+      "minimum": [
+        -140600.0,
+        -140700.0,
+        -582.0672988891602
+      ],
+      "maximum": [
+        -119700.0,
+        -119654.84619140625,
+        999.744701385498
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_106_107",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_106_107.fbx",
+      "triangles": 3235,
+      "minimum": [
+        -161646.728515625,
+        -140700.0,
+        -429.6988010406494
+      ],
+      "maximum": [
+        -139500.0,
+        -119800.0,
+        1085.4571342468262
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_106_108",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_106_108.fbx",
+      "triangles": 1875,
+      "minimum": [
+        -180200.0,
+        -140700.0,
+        -349.2466926574707
+      ],
+      "maximum": [
+        -158116.796875,
+        -119800.0,
+        453.6303997039795
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_106_109",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_106_109.fbx",
+      "triangles": 1854,
+      "minimum": [
+        -200000.0,
+        -140700.0,
+        -322.50001430511475
+      ],
+      "maximum": [
+        -179833.33740234375,
+        -119800.0,
+        453.7304878234863
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_106_110",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_106_110.fbx",
+      "triangles": 1821,
+      "minimum": [
+        -219800.0,
+        -140700.0,
+        -304.50000762939453
+      ],
+      "maximum": [
+        -200000.0,
+        -119800.0,
+        -179.49999570846558
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_107_093",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_107_093.fbx",
+      "triangles": 900,
+      "minimum": [
+        119000.0,
+        -160500.0,
+        -1445.6634521484375
+      ],
+      "maximum": [
+        130000.0,
+        -139600.0,
+        -1310.8149528503418
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_107_094",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_107_094.fbx",
+      "triangles": 1782,
+      "minimum": [
+        99200.0,
+        -160500.0,
+        -1418.9756393432617
+      ],
+      "maximum": [
+        120100.0,
+        -139600.0,
+        -1210.6042861938477
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_107_095",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_107_095.fbx",
+      "triangles": 1800,
+      "minimum": [
+        79400.0,
+        -160500.0,
+        -1344.2688941955566
+      ],
+      "maximum": [
+        100300.0,
+        -139600.0,
+        -1051.8736839294434
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_107_096",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_107_096.fbx",
+      "triangles": 1782,
+      "minimum": [
+        59600.0,
+        -160500.0,
+        -1262.5
+      ],
+      "maximum": [
+        80133.33129882812,
+        -139600.0,
+        -856.7464828491211
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_107_097",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_107_097.fbx",
+      "triangles": 1836,
+      "minimum": [
+        39800.0,
+        -160500.0,
+        -1206.8512916564941
+      ],
+      "maximum": [
+        60333.331298828125,
+        -139600.0,
+        -649.7395515441895
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_107_098",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_107_098.fbx",
+      "triangles": 1800,
+      "minimum": [
+        20000.0,
+        -160500.0,
+        -1015.9627914428711
+      ],
+      "maximum": [
+        40166.66564941406,
+        -139600.0,
+        -457.99999237060547
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_107_099",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_107_099.fbx",
+      "triangles": 1800,
+      "minimum": [
+        -166.66666269302368,
+        -160500.0,
+        -962.4057769775391
+      ],
+      "maximum": [
+        20000.0,
+        -139600.0,
+        -224.04499053955078
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_107_100",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_107_100.fbx",
+      "triangles": 1836,
+      "minimum": [
+        -20333.33282470703,
+        -160500.0,
+        -917.963981628418
+      ],
+      "maximum": [
+        200.0,
+        -139600.0,
+        -61.49999499320984
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_107_101",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_107_101.fbx",
+      "triangles": 1782,
+      "minimum": [
+        -40133.33435058594,
+        -160500.0,
+        -662.5736713409424
+      ],
+      "maximum": [
+        -19600.0,
+        -139600.0,
+        -35.082074999809265
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_107_102",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_107_102.fbx",
+      "triangles": 1800,
+      "minimum": [
+        -60300.0,
+        -160500.0,
+        -621.3409423828125
+      ],
+      "maximum": [
+        -39400.0,
+        -139600.0,
+        4.068461060523987
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_107_103",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_107_103.fbx",
+      "triangles": 1782,
+      "minimum": [
+        -80100.0,
+        -160500.0,
+        -772.5147247314453
+      ],
+      "maximum": [
+        -59200.0,
+        -139600.0,
+        34.425392746925354
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_107_104",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_107_104.fbx",
+      "triangles": 1800,
+      "minimum": [
+        -101000.0,
+        -160500.0,
+        -757.1984767913818
+      ],
+      "maximum": [
+        -79000.0,
+        -139600.0,
+        29.899999499320984
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_107_105",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_107_105.fbx",
+      "triangles": 1782,
+      "minimum": [
+        -120800.0,
+        -160500.0,
+        -652.3305892944336
+      ],
+      "maximum": [
+        -99900.0,
+        -139600.0,
+        -154.49999570846558
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_107_106",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_107_106.fbx",
+      "triangles": 1800,
+      "minimum": [
+        -140600.0,
+        -160500.0,
+        -628.000020980835
+      ],
+      "maximum": [
+        -119700.0,
+        -139600.0,
+        -125.10908842086792
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_107_107",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_107_107.fbx",
+      "triangles": 1782,
+      "minimum": [
+        -160400.0,
+        -160500.0,
+        -595.8300113677979
+      ],
+      "maximum": [
+        -139500.0,
+        -139600.0,
+        -191.46560430526733
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_107_108",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_107_108.fbx",
+      "triangles": 1827,
+      "minimum": [
+        -180200.0,
+        -160500.0,
+        -595.8300113677979
+      ],
+      "maximum": [
+        -159300.0,
+        -139600.0,
+        -85.6462299823761
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_107_109",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_107_109.fbx",
+      "triangles": 1809,
+      "minimum": [
+        -200000.0,
+        -160500.0,
+        -278.50000858306885
+      ],
+      "maximum": [
+        -179833.33740234375,
+        -139600.0,
+        -133.13442468643188
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_107_110",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_107_110.fbx",
+      "triangles": 1782,
+      "minimum": [
+        -219800.0,
+        -160500.0,
+        -179.49999570846558
+      ],
+      "maximum": [
+        -200000.0,
+        -139600.0,
+        -176.49999856948853
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_108_093",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_108_093.fbx",
+      "triangles": 864,
+      "minimum": [
+        119000.0,
+        -179200.0,
+        -1420.2499389648438
+      ],
+      "maximum": [
+        130000.0,
+        -159400.0,
+        -1391.6566848754883
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_108_094",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_108_094.fbx",
+      "triangles": 1710,
+      "minimum": [
+        99200.0,
+        -179200.0,
+        -1397.9700088500977
+      ],
+      "maximum": [
+        120100.0,
+        -159400.0,
+        -1300.4999160766602
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_108_095",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_108_095.fbx",
+      "triangles": 1727,
+      "minimum": [
+        79400.0,
+        -179200.0,
+        -1327.4999618530273
+      ],
+      "maximum": [
+        100300.0,
+        -159400.0,
+        -1217.0000076293945
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_108_096",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_108_096.fbx",
+      "triangles": 1710,
+      "minimum": [
+        59600.0,
+        -179200.0,
+        -1262.5
+      ],
+      "maximum": [
+        80133.33129882812,
+        -159400.0,
+        -1076.4999389648438
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_108_097",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_108_097.fbx",
+      "triangles": 1762,
+      "minimum": [
+        39800.0,
+        -179200.0,
+        -1076.4999389648438
+      ],
+      "maximum": [
+        60333.331298828125,
+        -159400.0,
+        -771.5000152587891
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_108_098",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_108_098.fbx",
+      "triangles": 1727,
+      "minimum": [
+        20000.0,
+        -179200.0,
+        -1004.5000076293945
+      ],
+      "maximum": [
+        40166.66564941406,
+        -159400.0,
+        -385.50000190734863
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_108_099",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_108_099.fbx",
+      "triangles": 1727,
+      "minimum": [
+        -166.66666269302368,
+        -179200.0,
+        -478.11999320983887
+      ],
+      "maximum": [
+        20000.0,
+        -159400.0,
+        -223.13001155853271
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_108_100",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_108_100.fbx",
+      "triangles": 1762,
+      "minimum": [
+        -20333.33282470703,
+        -179200.0,
+        -399.4744539260864
+      ],
+      "maximum": [
+        200.0,
+        -159400.0,
+        -61.49999499320984
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_108_101",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_108_101.fbx",
+      "triangles": 1710,
+      "minimum": [
+        -40133.33435058594,
+        -179200.0,
+        -61.49999499320984
+      ],
+      "maximum": [
+        -19600.0,
+        -159400.0,
+        -61.49999499320984
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_108_102",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_108_102.fbx",
+      "triangles": 1727,
+      "minimum": [
+        -60300.0,
+        -179200.0,
+        -609.0000152587891
+      ],
+      "maximum": [
+        -39400.0,
+        -159400.0,
+        23.499998450279236
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_108_103",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_108_103.fbx",
+      "triangles": 1710,
+      "minimum": [
+        -80100.0,
+        -179200.0,
+        -49.50000047683716
+      ],
+      "maximum": [
+        -59200.0,
+        -159400.0,
+        29.899999499320984
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_108_104",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_108_104.fbx",
+      "triangles": 1728,
+      "minimum": [
+        -101000.0,
+        -179200.0,
+        -530.5000305175781
+      ],
+      "maximum": [
+        -79000.0,
+        -159400.0,
+        29.899999499320984
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_108_105",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_108_105.fbx",
+      "triangles": 1710,
+      "minimum": [
+        -120800.0,
+        -179200.0,
+        -535.5000019073486
+      ],
+      "maximum": [
+        -99900.0,
+        -159400.0,
+        -154.49999570846558
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_108_106",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_108_106.fbx",
+      "triangles": 1727,
+      "minimum": [
+        -140600.0,
+        -179200.0,
+        -595.8300113677979
+      ],
+      "maximum": [
+        -119700.0,
+        -159400.0,
+        -272.50001430511475
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_108_107",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_108_107.fbx",
+      "triangles": 1710,
+      "minimum": [
+        -160400.0,
+        -179200.0,
+        -595.8300113677979
+      ],
+      "maximum": [
+        -139500.0,
+        -159400.0,
+        -272.50001430511475
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_108_108",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_108_108.fbx",
+      "triangles": 1753,
+      "minimum": [
+        -180200.0,
+        -179200.0,
+        -595.8300113677979
+      ],
+      "maximum": [
+        -159300.0,
+        -159400.0,
+        -278.50000858306885
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_108_109",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_108_109.fbx",
+      "triangles": 1736,
+      "minimum": [
+        -200000.0,
+        -179200.0,
+        -278.50000858306885
+      ],
+      "maximum": [
+        -179833.33740234375,
+        -159400.0,
+        -176.49999856948853
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    },
+    {
+      "name": "Tile_Surface_108_110",
+      "category": "Track",
+      "filename": "Track/Tile_Surface_108_110.fbx",
+      "triangles": 1710,
+      "minimum": [
+        -219800.0,
+        -179200.0,
+        -177.99999713897705
+      ],
+      "maximum": [
+        -200000.0,
+        -159400.0,
+        -176.49999856948853
+      ],
+      "lod_filename": null,
+      "lod_minimum": null,
+      "lod_maximum": null
+    }
+  ],
+  "wheel_mounts": [],
+  "sources": {
+    "assets/tracks/monza/monza.glb": "c68acb2d501dae703ffd7e1be9c7cc59d6d62005d9652758f3360ff2f32e0ef4",
+    "assets/tracks/monza/monza.blend": "d61052f3e2406645300353ac372a54e2e8dbf2b7fc2a01b0f22a5d850904083f",
+    "tools/unreal/export_circuit.py": "34c72707759ac7e6f6ca34ecb13e3204e655f002c20125192e7f6bcc5ba4e18c",
+    "tools/unreal/circuit_surfaces.py": "6b3e7cf1751d3e8827fd538f4611cfd814333ff58dc64c78301f4f5ddc42015f",
+    "tools/unreal/export_assets.py": "8e4400cb16a0b6085919d4947d1a82763d157e42624185e2d6c6ef79dcd51c31",
+    "tools/unreal/crowd_proxy.py": "42b0d870f0862026b90f6a6e690d4e2c267dfdeebf58e7088a6ee5dc2f07ed62"
+  },
+  "recipe_sha256": "",
+  "circuit": "monza"
+}

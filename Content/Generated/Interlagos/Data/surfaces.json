@@ -1,0 +1,16 @@
+{
+  "circuit": "interlagos",
+  "contact_triangles": 1225995,
+  "limit_triangles": 3072,
+  "source_objects": [
+    "asphalt_runoff_zones",
+    "Interlagos continuous pit apron",
+    "Interlagos Ferradura retaining wall",
+    "interlagos_survey_ground",
+    "mapped_service_paving",
+    "track_curbs",
+    "track_embankment",
+    "track_surface"
+  ],
+  "coordinates": "Blender metres; boundary Y reflected for simulation"
+}

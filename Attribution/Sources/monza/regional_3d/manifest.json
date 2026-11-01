@@ -1,0 +1,59 @@
+{
+  "source": "Regione Lombardia, Database Geo-Topografico (DBGT)",
+  "retrieved_utc": "2026-10-25T08:08:34.619564+00:00",
+  "license": "CC BY 4.0",
+  "license_evidence": "https://geodati.gov.it/geoportale/visualizzazione-metadati/scheda-metadati?metadataid=r_lombar:0092b7ba-c697-433b-b5f2-9f9d9b8694e3",
+  "usage": "build",
+  "coordinate_system": "WGS84 longitude/latitude with source Z metres",
+  "warning": "Acquisition dates vary per feature. Retain DATA_INI and extrusion type; the dataset does not establish current temporary event structures.",
+  "files": [
+    {
+      "file": "building_volumes.json",
+      "sha256": "9ed9fff4167d2e3ab1e87efe3779cdc8b2e5cdd0eeb7f4338ac480b3266d33d9",
+      "features": 5639,
+      "requests": [
+        "https://www.cartografia.servizirl.it/arcgis5/rest/services/BaseMap/DBGT_Tema0201_Edificato/MapServer/0/query?where=1%3D1&geometry=9.268%2C45.607%2C9.300%2C45.636&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&outSR=4326&returnZ=true&returnM=false&orderByFields=OBJECTID&f=json&resultOffset=0",
+        "https://www.cartografia.servizirl.it/arcgis5/rest/services/BaseMap/DBGT_Tema0201_Edificato/MapServer/0/query?where=1%3D1&geometry=9.268%2C45.607%2C9.300%2C45.636&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&outSR=4326&returnZ=true&returnM=false&orderByFields=OBJECTID&f=json&resultOffset=2000",
+        "https://www.cartografia.servizirl.it/arcgis5/rest/services/BaseMap/DBGT_Tema0201_Edificato/MapServer/0/query?where=1%3D1&geometry=9.268%2C45.607%2C9.300%2C45.636&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&outSR=4326&returnZ=true&returnM=false&orderByFields=OBJECTID&f=json&resultOffset=4000"
+      ]
+    },
+    {
+      "file": "roof_elements.json",
+      "sha256": "8af0e86412c09d4b78c052779975670e8b971c8abe7636ac1dae67ca352894aa",
+      "features": 436,
+      "requests": [
+        "https://www.cartografia.servizirl.it/arcgis5/rest/services/BaseMap/DBGT_Tema0201_Edificato/MapServer/12/query?where=1%3D1&geometry=9.268%2C45.607%2C9.300%2C45.636&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&outSR=4326&returnZ=true&returnM=false&orderByFields=OBJECTID&f=json&resultOffset=0"
+      ]
+    },
+    {
+      "file": "sports_structures.json",
+      "sha256": "e0b547a28ef22fad5b7c4573b501d17e3cc441ac31ef5ed5cb19f0cc10d940c0",
+      "features": 83,
+      "requests": [
+        "https://www.cartografia.servizirl.it/arcgis5/rest/services/BaseMap/DBGT_Strato02_Immobili_Antropizzazioni_No_Edificato/MapServer/39/query?where=1%3D1&geometry=9.268%2C45.607%2C9.300%2C45.636&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&outSR=4326&returnZ=true&returnM=false&orderByFields=OBJECTID&f=json&resultOffset=0"
+      ]
+    },
+    {
+      "file": "spot_heights.json",
+      "sha256": "4584e8a7dade02049aec4ab7934dbd1033cc9b8abb70d867e5159322a64f1ff9",
+      "features": 13030,
+      "requests": [
+        "https://www.cartografia.servizirl.it/arcgis5/rest/services/BaseMap/DBGT_Strato05_Orografia/MapServer/32/query?where=1%3D1&geometry=9.268%2C45.607%2C9.300%2C45.636&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&outSR=4326&returnZ=true&returnM=false&orderByFields=OBJECTID&f=json&resultOffset=0",
+        "https://www.cartografia.servizirl.it/arcgis5/rest/services/BaseMap/DBGT_Strato05_Orografia/MapServer/32/query?where=1%3D1&geometry=9.268%2C45.607%2C9.300%2C45.636&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&outSR=4326&returnZ=true&returnM=false&orderByFields=OBJECTID&f=json&resultOffset=2000",
+        "https://www.cartografia.servizirl.it/arcgis5/rest/services/BaseMap/DBGT_Strato05_Orografia/MapServer/32/query?where=1%3D1&geometry=9.268%2C45.607%2C9.300%2C45.636&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&outSR=4326&returnZ=true&returnM=false&orderByFields=OBJECTID&f=json&resultOffset=4000",
+        "https://www.cartografia.servizirl.it/arcgis5/rest/services/BaseMap/DBGT_Strato05_Orografia/MapServer/32/query?where=1%3D1&geometry=9.268%2C45.607%2C9.300%2C45.636&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&outSR=4326&returnZ=true&returnM=false&orderByFields=OBJECTID&f=json&resultOffset=6000",
+        "https://www.cartografia.servizirl.it/arcgis5/rest/services/BaseMap/DBGT_Strato05_Orografia/MapServer/32/query?where=1%3D1&geometry=9.268%2C45.607%2C9.300%2C45.636&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&outSR=4326&returnZ=true&returnM=false&orderByFields=OBJECTID&f=json&resultOffset=8000",
+        "https://www.cartografia.servizirl.it/arcgis5/rest/services/BaseMap/DBGT_Strato05_Orografia/MapServer/32/query?where=1%3D1&geometry=9.268%2C45.607%2C9.300%2C45.636&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&outSR=4326&returnZ=true&returnM=false&orderByFields=OBJECTID&f=json&resultOffset=10000",
+        "https://www.cartografia.servizirl.it/arcgis5/rest/services/BaseMap/DBGT_Strato05_Orografia/MapServer/32/query?where=1%3D1&geometry=9.268%2C45.607%2C9.300%2C45.636&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&outSR=4326&returnZ=true&returnM=false&orderByFields=OBJECTID&f=json&resultOffset=12000"
+      ]
+    },
+    {
+      "file": "breaklines.json",
+      "sha256": "5cd745581690a46da033e8425780abd629f20410dbc2cbf4ee5d5210170b1e31",
+      "features": 223,
+      "requests": [
+        "https://www.cartografia.servizirl.it/arcgis5/rest/services/BaseMap/DBGT_Strato05_Orografia/MapServer/33/query?where=1%3D1&geometry=9.268%2C45.607%2C9.300%2C45.636&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&outSR=4326&returnZ=true&returnM=false&orderByFields=OBJECTID&f=json&resultOffset=0"
+      ]
+    }
+  ]
+}

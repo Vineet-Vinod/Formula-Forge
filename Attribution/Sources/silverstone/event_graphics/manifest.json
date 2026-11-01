@@ -1,0 +1,15 @@
+{
+  "asset": "panel_words_2025.png",
+  "sha256": "632322a51254b9a322fe07901292c5d517bf9aba86ac3766ddb92b1317fd77c4",
+  "origin": "Project-created plain word labels typeset from scratch; no reference pixels or trademark logo artwork.",
+  "font": "DejaVu Sans Bold",
+  "font_sha256": "5c1247acef7f2b8522a31742c76d6adcb5569bacc0be7ceaa4dc39dd252ce895",
+  "font_source": "https://dejavu-fonts.github.io/",
+  "font_license": "Bitstream Vera license; installed notice /usr/share/doc/fonts-dejavu-core/copyright",
+  "source_appearance": [
+    "Official F1 2025 pole onboard early frame03: repeated white Lenovo words on red Village panels.",
+    "Official F1 2025 pole onboard middle frame10: repeated dark red DHL words on yellow Hangar panels."
+  ],
+  "physical_repeat_m": 6.0,
+  "typography_scale_and_spacing": "Estimated visual reconstruction; panel positions follow mapped OSM barriers."
+}

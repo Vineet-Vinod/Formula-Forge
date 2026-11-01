@@ -1,0 +1,13 @@
+{
+  "source_manifest": "../../spa/materials/manifest.json",
+  "license": "CC0 1.0",
+  "recipe": "retone source luminance to declared RGB and contrast; scale tangent normal XY then renormalize",
+  "outputs": {
+    "silverstone_grass_color.png": "0b6e2472e87d937a2e0e4ee60ab7d0065ebe8cedd6b340a97f187c4f0783049a",
+    "silverstone_grass_normal.png": "b17b26455d3b8faca0e9644b3e88b15b48921b2c33f161926b9688687eb98f9c",
+    "silverstone_road_color.png": "a45e5b5f62fe7c39e6d6aff5b3bccadf736f7c849e58583c8154ce9695f9d61d",
+    "silverstone_road_normal.png": "9602b5d693c3adfc6ee9ccd8fcd7ceecd12ceba082fca9300cef8f140a6a2ee5",
+    "silverstone_runoff_color.png": "a4e63509a1e702a3575ade6b81ba9b779ee5c2a764d871443e748660e1b78e9c"
+  },
+  "limit": "Generic aggregate and grass photographs. They do not encode Silverstone's exact pavement repairs or turf species."
+}

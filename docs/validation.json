@@ -1,0 +1,110 @@
+{
+  "verified_utc": "2026-11-01T09:15:19.862079+00:00",
+  "import_source_commit": "620ae21cdcbc78f6dab4bca5b958b8e1a1de6d69",
+  "asset_and_code_comparison": {
+    "identical_files_or_reassembled_data": 1901,
+    "storage_loader_changes": [
+      "Source/FormulaForge/FFGame.cpp",
+      "Tests/surface_audit.cpp"
+    ],
+    "shared_inodes": [],
+    "rendered_assets_changed": false
+  },
+  "silverstone_storage": {
+    "original_sha256": "43bc96e9eaea827ce6d0e53050f6a5055e89f15b5b19954221d68afe081efdea",
+    "reassembled_sha256": "43bc96e9eaea827ce6d0e53050f6a5055e89f15b5b19954221d68afe081efdea",
+    "parts": [
+      {
+        "name": "drive_surface.bin.0",
+        "bytes": 50331648,
+        "sha256": "e424fd32190770ff0ffaacea98cbd3c6f037a4e67d2fd27937e567d7613cb290"
+      },
+      {
+        "name": "drive_surface.bin.1",
+        "bytes": 50331648,
+        "sha256": "75d4db8179ae36f7fce36533815f9eab46b2256de446acac3d0f99edf554f55c"
+      },
+      {
+        "name": "drive_surface.bin.2",
+        "bytes": 21468912,
+        "sha256": "bbe0457a4ea8addb6fd21676e56337cd796ca4acb8a421b05b795de49e626ce7"
+      }
+    ]
+  },
+  "package": "pass; built with the previous workspace and sibling project inaccessible",
+  "native_checks": [
+    "monza: contact/limits around full lap, retained elevation, launch and timing PASS; max road offset 0.0680005m; barriers 3548",
+    "interlagos: contact/limits around full lap, retained elevation, launch and timing PASS; max road offset 0.082571m; barriers 3275",
+    "Camera presentation: frame-rate-independent critical damping, kerb impulse, pause and reset: PASS",
+    "Rendered surface: narrow kerbs, sloped/rotated footprints, invalid files, authored triangle heights: PASS",
+    "Native simulation: road ground, swept barriers, lap gates, reverse, launch: PASS"
+  ],
+  "session_automation": "FormulaForge.Session.LapLimits passed",
+  "live_flow": {
+    "passed": true,
+    "process_id": 2,
+    "circuits": 3,
+    "real_finite_lap": true,
+    "restart": true,
+    "seconds": 290.252
+  },
+  "single_game_process": true,
+  "peak_machine_used_gb": 7.971,
+  "test_scope": "Offscreen 1600x900 rendering capped at 30 fps. Keyboard and controller events injected through Unreal Slate. Physical controller buttons and uncapped performance were not separately tested during migration.",
+  "artifact_cleanup": {
+    "verified_utc": "2026-11-01T09:19:40.616954+00:00",
+    "removed": [
+      "Previous workspace archive and downloaded references",
+      "UnrealFF sibling project",
+      "Empty Formula Forge worktree directory",
+      "Migration scratch files",
+      "Caches and terminal output for obsolete editor worktrees"
+    ],
+    "allocated_bytes_removed": 60503752704,
+    "preserved": [
+      "Current Unreal-only game and build output",
+      "Unreal Engine installation",
+      "Demo recordings at the user's request",
+      "Git and editor conversation history"
+    ],
+    "registered_worktrees": 1,
+    "race_shell_alias": "Launches the current game using make run",
+    "post_cleanup_check": "Packaged game launched, rendered its native garage menu, captured a screenshot and exited successfully"
+  },
+  "desktop_build_preparation": {
+    "verified_utc": "2026-11-01T10:26:44.708513+00:00",
+    "tested_engine": "5.8.3",
+    "tested_native_platform": "Linux x86_64",
+    "native_builds_not_verified": [
+      "Windows x64",
+      "macOS Apple Silicon"
+    ],
+    "command_contracts": [
+      "macOS command contracts: paths with spaces, package/run routing, failure propagation and lock: PASS",
+      "Windows command contracts under PowerShell: paths with spaces, package/run routing, failure propagation and lock release: PASS",
+      "Engine version checks: supported patches and incompatible versions: PASS"
+    ],
+    "fresh_clone": {
+      "method": "git clone --no-local --depth 1; no project caches, compiled binaries or user settings copied",
+      "assets_identical": 1827,
+      "package": "pass",
+      "package_seconds": 1803.5,
+      "session_automation": "FormulaForge.Session.LapLimits passed",
+      "live_flow": {
+        "passed": true,
+        "process_id": 2,
+        "circuits": 3,
+        "real_finite_lap": true,
+        "restart": true,
+        "seconds": 289.804
+      },
+      "visual_review": "Garage menu and driving views from all three circuits inspected",
+      "shallow_git_pack_bytes": 608352578,
+      "peak_machine_used_gb": 8.026
+    },
+    "published_history_base": "fda61b8697ad081afde0175ac0f7509b6bc51628",
+    "git_lfs_required": false,
+    "gameplay_and_asset_changes": false,
+    "test_scope": "Windows/macOS wrappers exercised with fake engine commands, including paths with spaces and error propagation; this does not validate native toolchains or rendering on those platforms. Linux flow uses Slate input injection and offscreen rendering at 1600x900, capped to 30 fps."
+  }
+}

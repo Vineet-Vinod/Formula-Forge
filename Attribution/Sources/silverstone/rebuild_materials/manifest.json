@@ -1,0 +1,250 @@
+{
+  "source_manifest": "tools/blender/tracks/sources/spa/materials/manifest.json",
+  "license": "CC0 1.0, Poly Haven; artist credits and source URLs in source manifest",
+  "recipe": "Lossless RGB PNG transcode of retained asphalt maps; new grass and sandy gravel maps are retained raw 1K PNGs. Physical tile widths are listed with each source.",
+  "reason": "The vendored raylib build has JPEG decoding disabled for embedded glTF images.",
+  "assets": [
+    {
+      "source": "sources/spa/materials/asphalt_track_color.jpg",
+      "source_sha256": "05c4e79cd99160075969d37bfc6ef72be262153a410bb45510b2c23f7303894c",
+      "file": "asphalt_track_color.png",
+      "sha256": "e4a8e7581fd76634cddd095747ca30794f35583fd264376babe28f79764f3f39"
+    },
+    {
+      "source": "sources/spa/materials/asphalt_track_normal_gl.jpg",
+      "source_sha256": "18caf02427a7cd9cd577ceae5aa9daa7bb3ffba60598e2df8aaf75d1925a8a94",
+      "file": "asphalt_track_normal_gl.png",
+      "sha256": "72032ddb2c4da7e27e8fd5d1bcd9fe6f2f4332e3f3c715463cd838ff26395f53"
+    },
+    {
+      "source": "sources/spa/materials/asphalt_track_roughness.jpg",
+      "source_sha256": "0646d0cfbe6bf9ea4a8a9e43aec826e7ec32a10b8aff61bf5a4ec02b1bc3c363",
+      "file": "asphalt_track_roughness.png",
+      "sha256": "b5d27782157078be8070fc511ff11c723352fb5a392e1d7463f3d970c7aabcdf"
+    },
+    {
+      "source": "sources/spa/materials/leafy_grass_color.jpg",
+      "source_sha256": "cfa40bc9d9417d1852db8753a8d5917f110c40101179f63543c382e39bc05e4a",
+      "file": "leafy_grass_color.png",
+      "sha256": "41ce08aea0d5ccdd649db546a38ed2aa99e07a8dc8cc7360d17f4e445fd310ec"
+    },
+    {
+      "source": "sources/spa/materials/leafy_grass_normal_gl.jpg",
+      "source_sha256": "832328216adc0a7e1f70a31d5ee48c9ab7f2152d83816122736cf42ac4b2ebd6",
+      "file": "leafy_grass_normal_gl.png",
+      "sha256": "92408aa47a86f2b27b83d592472868185bcabd8ad13df0636cdae301f10cca67"
+    },
+    {
+      "source": "sources/spa/materials/leafy_grass_roughness.jpg",
+      "source_sha256": "0c2a1d91aacb8e54a496051b59854e51e456fe858abeade778e308359ef16463",
+      "file": "leafy_grass_roughness.png",
+      "sha256": "1e7c8076ea84e9fe92c70a1fbcb136edfbf8a9d76dd43e8f072065da73799f49"
+    }
+  ],
+  "new_sources": [
+    {
+      "asset": "grass_ground",
+      "source_page": "https://polyhaven.com/a/grass_ground",
+      "author": "Charlotte Baglioni",
+      "license": "CC0 1.0",
+      "tile_m": 2.5,
+      "files": [
+        {
+          "file": "grass_ground_color.png",
+          "sha256": "fbab95206455b849677a07372ea2050956afbb559d9da6db946e3e6c02aae6a1",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/grass_ground/grass_ground_diff_1k.png"
+        },
+        {
+          "file": "grass_ground_normal.png",
+          "sha256": "27b4902c4cf5d70c35045f1855ff2bd2eda015037fb5c36187fa69de0077d689",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/grass_ground/grass_ground_nor_gl_1k.png"
+        },
+        {
+          "file": "grass_ground_roughness.png",
+          "sha256": "3f9d83af217765364d96fbffcbf384e57c0e9f7b88c9150d4c8657b2c5ef2f13",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/grass_ground/grass_ground_rough_1k.png"
+        }
+      ]
+    },
+    {
+      "asset": "sandy_gravel",
+      "source_page": "https://polyhaven.com/a/sandy_gravel",
+      "author": "Charlotte Baglioni",
+      "license": "CC0 1.0",
+      "tile_m": 2.1,
+      "files": [
+        {
+          "file": "sandy_gravel_color.png",
+          "sha256": "770800692900f6ff0b186c2e6e830491da47f8088dffa17c58c0e96064b3b880",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/sandy_gravel/sandy_gravel_diff_1k.png"
+        },
+        {
+          "file": "sandy_gravel_normal.png",
+          "sha256": "e04b405aa68912acba2fca7e97a8ce9ae0fbfa594176a3fd6e89859775039bfb",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/sandy_gravel/sandy_gravel_nor_gl_1k.png"
+        },
+        {
+          "file": "sandy_gravel_roughness.png",
+          "sha256": "f3c87e3b31cf8ce1cf9ae76274812f3de776c0bdd7cf939c32a683ca59d20627",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/sandy_gravel/sandy_gravel_rough_1k.png"
+        }
+      ]
+    },
+    {
+      "asset": "Grass005",
+      "source_page": "https://ambientcg.com/view?id=Grass005",
+      "archive_url": "https://ambientcg.com/get?file=Grass005_1K-PNG.zip",
+      "archive_sha256": "2f9a3bea61f8d7740311b73aa166dd592247296ffda949ee469ae68dc1dec59b",
+      "author": "ambientCG",
+      "license": "CC0 1.0",
+      "tile_m": 2.0,
+      "tile_note": "Artist-scaled to approximately two metres from the photographed blade size",
+      "files": [
+        {
+          "file": "lawn_grass005_color.png",
+          "sha256": "4460b603d9e65b588ddb3be8ef2621a0f860b7fddb74dcfac0f48aecc45a5f07"
+        },
+        {
+          "file": "lawn_grass005_normal.png",
+          "sha256": "2881c4d8532b63a9f232514bb424d6152bb1bb67d9b7760eeda2bba9b6c43621"
+        },
+        {
+          "file": "lawn_grass005_roughness.png",
+          "sha256": "31ebdabc2ed67a485d79ef31bee940925df0cf16ace63b2b6d132af2159ab592"
+        }
+      ]
+    }
+  ],
+  "derived": [
+    {
+      "file": "asphalt_track_normal_50.png",
+      "source": "asphalt_track_normal_gl.png",
+      "normal_strength": 0.5,
+      "sha256": "8548c3c508ff77070b19271b7059dd9aab892b63d9360cd4fe29270c774220fa"
+    },
+    {
+      "file": "asphalt_track_normal_35.png",
+      "source": "asphalt_track_normal_gl.png",
+      "normal_strength": 0.35,
+      "sha256": "31b5d881aabd4a1fa50780d3c769c892085076b8396612737e9424202b1cbb25"
+    },
+    {
+      "file": "asphalt_track_normal_18.png",
+      "source": "asphalt_track_normal_gl.png",
+      "normal_strength": 0.18,
+      "sha256": "8b5e21eb1d6a5dd2fb99604e023f9413cf8bd01b7928524378fce043917b76ec"
+    },
+    {
+      "file": "grass_ground_normal_35.png",
+      "source": "grass_ground_normal.png",
+      "normal_strength": 0.35,
+      "sha256": "952eb3b8473919166e6c8eb938c3fac4b248da6152a80c21b2da49f8520930cf"
+    },
+    {
+      "file": "lawn_grass005_normal_35.png",
+      "source": "lawn_grass005_normal.png",
+      "normal_strength": 0.35,
+      "sha256": "6e18edd49eb24e41e45e68fb45affc8f3e6cd35ad117bb2c0afb252d17b4031f"
+    },
+    {
+      "file": "sandy_gravel_normal_48.png",
+      "source": "sandy_gravel_normal.png",
+      "normal_strength": 0.48,
+      "sha256": "cd1fffb42a6bf2863a442c3b1513d8acdc20a841ec0a7b5fe483ae4592e3ad62"
+    },
+    {
+      "file": "worn_paint_white_color.png",
+      "source": "authored weathered paint over CC0 asphalt reference",
+      "tile_m": 2.0,
+      "sha256": "82f9169c324c35e6adb850b906aac405c4f8eccdb1be9c1f6ae977ec91e29374"
+    },
+    {
+      "file": "worn_paint_white_roughness.png",
+      "source": "authored weathered paint over CC0 asphalt reference",
+      "tile_m": 2.0,
+      "sha256": "d2f00fd097b2fb087e0def1f00b250ce61c3b3f3c6d12c189022272359413b8a"
+    },
+    {
+      "file": "worn_paint_black_color.png",
+      "source": "authored weathered paint over CC0 asphalt reference",
+      "tile_m": 2.0,
+      "sha256": "a08faf40669c19001ab2b675e1bc62ebd2bc2dcd3767195b069b8ef20ebbc66e"
+    },
+    {
+      "file": "worn_paint_black_roughness.png",
+      "source": "authored weathered paint over CC0 asphalt reference",
+      "tile_m": 2.0,
+      "sha256": "d2f00fd097b2fb087e0def1f00b250ce61c3b3f3c6d12c189022272359413b8a"
+    },
+    {
+      "file": "worn_paint_blue_color.png",
+      "source": "authored weathered paint over CC0 asphalt reference",
+      "tile_m": 2.0,
+      "sha256": "4efd14a48c0d0e9bed7e76cae3095a3c19a0fe87beaebb5a06dee0211d327929"
+    },
+    {
+      "file": "worn_paint_blue_roughness.png",
+      "source": "authored weathered paint over CC0 asphalt reference",
+      "tile_m": 2.0,
+      "sha256": "e694b38c16332d3d32b973d9fc19583aced1e8eea8d651cfae415872b2930ce8"
+    },
+    {
+      "file": "worn_paint_green_color.png",
+      "source": "authored weathered paint over CC0 asphalt reference",
+      "tile_m": 2.0,
+      "sha256": "076209ccadfabe3814abf858ad458ada319c8815c53821d09bc61a0c8ba689da"
+    },
+    {
+      "file": "worn_paint_green_roughness.png",
+      "source": "authored weathered paint over CC0 asphalt reference",
+      "tile_m": 2.0,
+      "sha256": "d2f00fd097b2fb087e0def1f00b250ce61c3b3f3c6d12c189022272359413b8a"
+    },
+    {
+      "file": "worn_paint_turquoise_color.png",
+      "source": "authored weathered paint over CC0 asphalt reference",
+      "tile_m": 2.0,
+      "sha256": "8dc881295996baaaa17f4eb03fdcfeca38b79e0465ff1c2ac3ac8925139bdbf8"
+    },
+    {
+      "file": "worn_paint_turquoise_roughness.png",
+      "source": "authored weathered paint over CC0 asphalt reference",
+      "tile_m": 2.0,
+      "sha256": "6f5afcc27ca7ae2eb7e3d64b3fdbd4f5d158acfc14096859f558df10ca6361cb"
+    },
+    {
+      "file": "asphalt_track_silverstone_color.png",
+      "source": "asphalt_track_color.png",
+      "recipe": "sRGB multipliers 2.20, 2.46, 2.65 for a neutral median near 72; source grain retained",
+      "sha256": "d30f1cfcf4513b5eccf465c67a0df250f7490c0cbbd129bfc966054cf06cf94e"
+    },
+    {
+      "file": "paddock_hardstanding_color.png",
+      "source": "asphalt_track_silverstone_color.png",
+      "recipe": "Lighter neutral CC0 asphalt for mapped parking and paddock hardstanding; substrate type uncertain",
+      "tile_m": 2.2,
+      "sha256": "503fc945c6612e21d8b2f14adcc38237708bd3e82f6e4f74a73a7d27b4574392"
+    },
+    {
+      "file": "lawn_grass005_silverstone_color.png",
+      "source": "lawn_grass005_color.png",
+      "recipe": "sRGB multiplier 0.82, about 0.65 linear midtone reflectance, for Silverstone ACES daylight trial",
+      "tile_m": 2.0,
+      "sha256": "9dd96307709c5955aa42118ec902cb6e8532405b7ab154377faeb2759f80eb0b"
+    },
+    {
+      "file": "grass_ground_luffield_color.png",
+      "source": "grass_ground_color.png",
+      "recipe": "RGB multipliers 1.10, 1.20, 0.82 against 2022 Luffield ground photo olive turf",
+      "tile_m": 2.5,
+      "sha256": "05fcda9a815352b1a5557e22e21cefeada0c7237c37f93b9771c960f49b9a497"
+    },
+    {
+      "file": "sandy_gravel_luffield_color.png",
+      "source": "sandy_gravel_color.png",
+      "recipe": "RGB multipliers 0.98, 0.91, 0.81 against 2018 registered Luffield aerial apron",
+      "tile_m": 2.1,
+      "sha256": "524256b2a2ff5bb17527866fc4277b75d02f87bfc9fd589167ed71ec88b6c515"
+    }
+  ]
+}
