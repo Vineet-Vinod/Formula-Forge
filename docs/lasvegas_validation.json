@@ -1,0 +1,307 @@
+{
+  "date": "2026-11-05",
+  "circuit": "Las Vegas Strip Circuit",
+  "layout_m": 6201,
+  "reviewer": {
+    "model": "gpt-6-luna",
+    "reasoning_effort": "high",
+    "visual_blockers_open": 0,
+    "coverage": "12 stationary cockpit stations, final Sphere/kerb rechecks, 17 actual live-lap sector frames plus live recording journal, and targeted shadow rechecks",
+    "result": "No blocking geometry, protection, driving-path or visual findings remain in reviewed evidence."
+  },
+  "native_dynamic_lap": {
+    "valid": true,
+    "lap_seconds": 162.084,
+    "maximum_speed_kph": 209.731,
+    "maximum_lane_m": 6.42906,
+    "barrier_contact": false,
+    "off_track": false,
+    "airborne": false
+  },
+  "stationary_capture_stations_m": [
+    0,
+    650,
+    1200,
+    1795,
+    2100,
+    2800,
+    3350,
+    3750,
+    4200,
+    4800,
+    5500,
+    6100
+  ],
+  "checks": {
+    "native": "passed",
+    "python_regressions": 4,
+    "mypy": "passed for standalone geometry/art modules",
+    "ruff": "passed for new Python helpers/tests",
+    "saved_native_asset_verification": "152 reopened assets match triangle counts and source hashes",
+    "package": "passed",
+    "session_lap_limits": "passed",
+    "las_vegas_live_flow": {
+      "passed": true,
+      "process_id": 2,
+      "circuits": 1,
+      "real_finite_lap": true,
+      "restart": true,
+      "seconds": 212.416,
+      "last_lap_valid": true,
+      "last_lap_seconds": 162.08401111473404
+    },
+    "accepted_tracks_live_flow": {
+      "passed": true,
+      "process_id": 2,
+      "circuits": 3,
+      "real_finite_lap": true,
+      "restart": true,
+      "seconds": 290.996
+    }
+  },
+  "limits": [
+    "Road width is estimated at 12\u201316 m, not a white-line survey.",
+    "2022 bare-earth terrain predates the racing deck; 24 m filtering reconstructs short ground breaks.",
+    "City facades, temporary event furniture and venue display are original approximations.",
+    "Physical controller hardware has not been tested."
+  ],
+  "live_packaged_lap": {
+    "recording": "20261105-102645-01A1AB3F",
+    "frame_count": 4876,
+    "source": "Full live packaged Unreal simulation, Las Vegas-only audit control at 0.60 pace; keyboard accel/steer/brake and pause/resume also exercised",
+    "maximum_speed_kph": 209.73116239659927,
+    "maximum_visual_penetration_m": 0,
+    "contact_frames": 0,
+    "offtrack_frames": 0,
+    "airborne_frames": 0,
+    "lap_seconds": 162.08401111473404,
+    "valid": true,
+    "camera_fov_degrees": 90,
+    "minimum_camera_height_above_actor_cm": 125.2716,
+    "maximum_camera_height_above_actor_cm": 127.6413,
+    "recording_note": "Capped 30 fps with JPEG/readback overhead; this recording is not the uncapped performance measurement."
+  },
+  "assets": {
+    "tiles": 152,
+    "triangles": 1032794,
+    "road_sha256": "9fc1d2e113f6d470d03998e1a14b53c27d13cae9ed9160ac75f02fbb222eae76",
+    "terrain_sha256": "7a70696a02c2723a013849f566aa1a84ef5f2b2f42a0e6155499be69f968b0e7",
+    "manifest_sha256": "cd7acee9a6783ffb7b2d05f00fe1336935055971e44472f401e5b2c2b6e3eb07"
+  },
+  "closed_findings": [
+    {
+      "id": "LV01",
+      "problem": "Generic narrow-corridor ribbon, missing major buildings and venue identity",
+      "resolution": "Native streamed scenery, wider OSM footprint extract, venue landmarks, pit frontage, crowds and protection."
+    },
+    {
+      "id": "LV02",
+      "problem": "Rendered road and wheel contact were not tied to one source; terrain reader began four bytes early",
+      "resolution": "Render the exact contact triangles, parse the 36-byte header, verify saved meshes in a fresh editor and compare all road vertices."
+    },
+    {
+      "id": "LV03",
+      "problem": "Short pre-construction terrain breaks and wrong start location",
+      "resolution": "Recorded 24m profile filter; start/finish moved to pit straight at station 1815m."
+    },
+    {
+      "id": "LV04",
+      "problem": "Mirrored/buried signage, stretched fence UVs, flat crowd atlas and oversized grid marks",
+      "resolution": "Face/UV/offset corrections, seated atlas cells, discrete grid and kerb markings."
+    },
+    {
+      "id": "LV05",
+      "problem": "Featureless Sphere shell",
+      "resolution": "Original dense jellyfish LED artwork and coherent spherical UVs; Luna High closed the finding."
+    },
+    {
+      "id": "LV06",
+      "problem": "Opaque fictional boards cast broad shadows across bends",
+      "resolution": "Open lighting trusses replace non-start boards; ground/paint shadow sections corrected; Luna High closed the 650m finding."
+    }
+  ],
+  "observations": [
+    {
+      "station_m": 5900,
+      "finding": "Prominent city shadow remains",
+      "status": "Not a demonstrated blocker after source/caster review",
+      "evidence": "Unchanged sun rays intersect the registered 83m OSM tower way 115766962 above the road around stations 5950-6000. Building identity/source fidelity has not been independently established."
+    }
+  ],
+  "rebuild": [
+    "python3 tools/build_circuits.py --only lasvegas",
+    "make lasvegas-assets",
+    "make package",
+    "make check",
+    "make session-check",
+    "make lasvegas-flow-check",
+    "make flow-check",
+    "python3 -m pip install -r tools/requirements-lasvegas.txt",
+    "make lasvegas-check"
+  ],
+  "evidence_root": "build/reviews/lasvegas/",
+  "source_manifest": "Attribution/Sources/lasvegas/scenery_sources.json",
+  "art_generation_record": "Attribution/Sources/lasvegas/art/sphere-display-v1.json",
+  "memory": {
+    "machine_used_definition": "/proc/meminfo MemTotal minus MemAvailable",
+    "recorded_peak_bytes": 9393766400,
+    "required_ceiling_bytes": 11000000000,
+    "guard_stop_threshold_bytes": 10000000000,
+    "guard_logs_reviewed": 69,
+    "one_heavy_job_at_a_time": true
+  },
+  "performance": {
+    "hardware": "Intel Core i7-1255U / Iris Xe, Linux Vulkan SM5, Unreal 5.8.3 Development",
+    "conditions": "1600x900, 100% render scale, shared default AA/quality/cockpit; VSync and t.MaxFPS disabled; no frame recording",
+    "input": "Existing FFDrive diagnostic control, starting at 1795m on Las Vegas and 0m on accepted tracks; 60s runs, 1400-frame CSV boot capture",
+    "sampling": "CSV frames 500 through 1399, after initial loading; these selected route windows do not establish universal full-lap or physical-controller performance",
+    "runs": [
+      {
+        "circuit": "lasvegas",
+        "capture": "perf-lasvegas.csv",
+        "samples": 900,
+        "FrameTime": {
+          "median_ms": 16.9743,
+          "p95_ms": 20.9188,
+          "p99_ms": 26.5842,
+          "maximum_ms": 36.0433
+        },
+        "GameThreadTime": {
+          "median_ms": 2.3955,
+          "p95_ms": 2.997,
+          "p99_ms": 4.415,
+          "maximum_ms": 7.878
+        },
+        "RenderThreadTime": {
+          "median_ms": 4.882,
+          "p95_ms": 6.07,
+          "p99_ms": 9.203,
+          "maximum_ms": 13.891
+        },
+        "GPUTime": {
+          "median_ms": 15.4715,
+          "p95_ms": 19.502,
+          "p99_ms": 22.626,
+          "maximum_ms": 29.523
+        }
+      },
+      {
+        "circuit": "lasvegas",
+        "capture": "perf-final-lasvegas.csv",
+        "samples": 900,
+        "FrameTime": {
+          "median_ms": 21.4562,
+          "p95_ms": 26.1137,
+          "p99_ms": 29.9623,
+          "maximum_ms": 34.647
+        },
+        "GameThreadTime": {
+          "median_ms": 2.5975,
+          "p95_ms": 3.091,
+          "p99_ms": 3.419,
+          "maximum_ms": 3.823
+        },
+        "RenderThreadTime": {
+          "median_ms": 5.2685,
+          "p95_ms": 6.259,
+          "p99_ms": 6.777,
+          "maximum_ms": 9.367
+        },
+        "GPUTime": {
+          "median_ms": 18.787,
+          "p95_ms": 24.052,
+          "p99_ms": 27.348,
+          "maximum_ms": 30.399
+        }
+      },
+      {
+        "circuit": "lasvegas",
+        "capture": "perf-shadows.csv",
+        "samples": 900,
+        "FrameTime": {
+          "median_ms": 16.2468,
+          "p95_ms": 19.5851,
+          "p99_ms": 20.4709,
+          "maximum_ms": 22.212
+        },
+        "GameThreadTime": {
+          "median_ms": 2.253,
+          "p95_ms": 2.635,
+          "p99_ms": 2.892,
+          "maximum_ms": 3.134
+        },
+        "RenderThreadTime": {
+          "median_ms": 4.415,
+          "p95_ms": 5.152,
+          "p99_ms": 5.458,
+          "maximum_ms": 8.326
+        },
+        "GPUTime": {
+          "median_ms": 14.692,
+          "p95_ms": 18.303,
+          "p99_ms": 19.902,
+          "maximum_ms": 20.659
+        }
+      },
+      {
+        "circuit": "interlagos",
+        "capture": "perf-interlagos.csv",
+        "samples": 900,
+        "FrameTime": {
+          "median_ms": 25.0771,
+          "p95_ms": 31.2202,
+          "p99_ms": 36.1091,
+          "maximum_ms": 42.1299
+        },
+        "GameThreadTime": {
+          "median_ms": 2.4155,
+          "p95_ms": 3.687,
+          "p99_ms": 4.144,
+          "maximum_ms": 6.821
+        },
+        "RenderThreadTime": {
+          "median_ms": 4.0125,
+          "p95_ms": 5.139,
+          "p99_ms": 6.2,
+          "maximum_ms": 11.944
+        },
+        "GPUTime": {
+          "median_ms": 20.799,
+          "p95_ms": 27.087,
+          "p99_ms": 30.046,
+          "maximum_ms": 31.301
+        }
+      },
+      {
+        "circuit": "monza",
+        "capture": "perf-final-monza.csv",
+        "samples": 900,
+        "FrameTime": {
+          "median_ms": 20.3783,
+          "p95_ms": 24.0136,
+          "p99_ms": 25.1867,
+          "maximum_ms": 25.8889
+        },
+        "GameThreadTime": {
+          "median_ms": 3.1245,
+          "p95_ms": 3.787,
+          "p99_ms": 4.26,
+          "maximum_ms": 7.333
+        },
+        "RenderThreadTime": {
+          "median_ms": 4.776,
+          "p95_ms": 5.778,
+          "p99_ms": 6.334,
+          "maximum_ms": 9.097
+        },
+        "GPUTime": {
+          "median_ms": 18.144,
+          "p95_ms": 21.403,
+          "p99_ms": 23.817,
+          "maximum_ms": 24.941
+        }
+      }
+    ]
+  },
+  "asset_revision_note": "Full live lap/session recording precedes only the final cosmetic shadow-section/truss correction. Same-view 650m and 5900m captures recheck that correction; contact surfaces and gameplay code are identical."
+}

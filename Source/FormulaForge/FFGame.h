@@ -77,6 +77,7 @@ private:
     bool Capturing = false;
     bool QuitAfterCapture = false;
     bool CaptureDrive = false;
+    bool LasVegasDrivingAudit = false;
     bool RacingDrive = false;
     FFRacingLine RacingLine;
     FFRacingStint RacingStint;

@@ -19,7 +19,7 @@ flow-check:
 
 CPPFLAGS := -ISource/FormulaForge -ISource/FormulaForge/Native
 CXXFLAGS := -std=c++20 -O2 -Wall -Wextra -Wpedantic
-SIMULATION := FFSimulation FFMonzaGeometry FFInterlagosGeometry FFTrackLimits FFPitLane FFDriveSurface
+SIMULATION := FFSimulation FFMonzaGeometry FFInterlagosGeometry FFTrackLimits FFPitLane FFDriveSurface FFRacingLine FFLasVegasAudit
 NATIVE := arcade_vehicle track_catalog silverstone_chapel_barriers generated_circuit
 OBJECTS := $(addprefix build/tests/,$(addsuffix .o,$(SIMULATION) $(NATIVE)))
 -include $(OBJECTS:.o=.d)
@@ -35,11 +35,13 @@ build/tests/camera-audit: Tests/camera_audit.cpp Source/FormulaForge/FFCameraMot
 	mkdir -p build/tests build/tmp
 	TMPDIR="$(CURDIR)/build/tmp" $(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
 .PHONY: native-check circuits
-native-check: build/tests/export-surfaces build/tests/circuit-audit build/tests/camera-audit build/tests/surface-audit
+native-check: build/tests/export-surfaces build/tests/export-lasvegas build/tests/lasvegas-lap-audit build/tests/circuit-audit build/tests/camera-audit build/tests/surface-audit
 	build/tests/export-surfaces
+	build/tests/export-lasvegas
 	build/tests/circuit-audit
 	build/tests/camera-audit
 	build/tests/surface-audit
+	build/tests/lasvegas-lap-audit
 circuits:
 	python3 tools/build_circuits.py
 	$(MAKE) build/tests/export-surfaces
@@ -49,3 +51,26 @@ build/tests/surface-audit: Tests/surface_audit.cpp $(OBJECTS)
 	TMPDIR="$(CURDIR)/build/tmp" $(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
 build/tests/export-surfaces: Tests/export_surfaces.cpp $(OBJECTS)
 	TMPDIR="$(CURDIR)/build/tmp" $(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
+
+build/tests/export-lasvegas: tools/export_lasvegas.cpp $(OBJECTS)
+	TMPDIR="$(CURDIR)/build/tmp" $(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
+
+.PHONY: lasvegas-assets
+.NOTPARALLEL: lasvegas-assets
+lasvegas-assets: check build
+	bash tools/unreal.sh python tools/build_lasvegas.py
+	bash tools/unreal.sh python tools/verify_lasvegas.py
+
+LASVEGAS_PYTHON ?= python3
+.PHONY: lasvegas-check
+lasvegas-check:
+	$(LASVEGAS_PYTHON) -m pytest -q Tests/test_lasvegas_assets.py
+	$(LASVEGAS_PYTHON) -m mypy tools/lasvegas_dataclasses.py tools/lasvegas_art.py tools/lasvegas_geometry.py --ignore-missing-imports --follow-imports=silent
+	$(LASVEGAS_PYTHON) -m ruff check tools/lasvegas*.py tools/build_lasvegas.py tools/verify_lasvegas.py Tests/test_lasvegas_assets.py
+
+build/tests/lasvegas-lap-audit: Tests/lasvegas_lap_audit.cpp $(OBJECTS)
+	TMPDIR="$(CURDIR)/build/tmp" $(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
+
+.PHONY: lasvegas-flow-check
+lasvegas-flow-check:
+	bash tools/unreal.sh run -windowed -RenderOffscreen -ForceRes -ResX=1600 -ResY=900 -FFCircuit=lasvegas -FFFlowAudit -FFFlowCircuit=lasvegas -FFDrive -FFRecord -FFRecordSeconds=420 '-ExecCmds=t.MaxFPS 30'

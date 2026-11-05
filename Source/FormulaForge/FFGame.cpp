@@ -4,6 +4,7 @@
 #include "FFLapRecorder.h"
 #include "FFBodySupport.hpp"
 #include "FFRacingStint.hpp"
+#include "FFLasVegasAudit.hpp"
 
 #include <sstream>
 
@@ -87,6 +88,12 @@ void AFormulaTrialPawn::BeginPlay() {
     const bool silverstone = entry->id == TrackLayoutId::Silverstone;
     const FString dataRoot = FString(TEXT("Generated/")) + UTF8_TO_TCHAR(entry->contentDir.data());
     Simulation = FFSimulation(entry->id);
+    FString flowCircuit;
+    if (entry->id == TrackLayoutId::LasVegas && FParse::Param(FCommandLine::Get(), TEXT("FFFlowAudit")) &&
+        FParse::Value(FCommandLine::Get(), TEXT("FFFlowCircuit="), flowCircuit) && flowCircuit == TEXT("lasvegas")) {
+        LasVegasDrivingAudit = PrepareLasVegasAuditLine(Simulation, RacingLine);
+        check(LasVegasDrivingAudit);
+    }
     BestLapPath = FPaths::ProjectSavedDir() / (silverstone ? FString(TEXT("best-lap.txt")) : TEXT("best-lap-") + circuit + TEXT(".txt"));
     if (!silverstone && (FParse::Param(FCommandLine::Get(), TEXT("FFNationalPit")) ||
         FCString::Strstr(FCommandLine::Get(), TEXT("FFPitDistance=")) != nullptr ||
@@ -519,7 +526,10 @@ void AFormulaTrialPawn::Tick(float deltaSeconds) {
         int32 steps = 0;
         const double previousBest = Simulation.trial.bestSeconds;
         while (Accumulator >= fixedStep && steps < 120) {
-            if (RacingDrive) {
+            if (LasVegasDrivingAudit && CaptureDrive) {
+                control = RacingLine.Control(Simulation.vehicle, Simulation.tuning,
+                    Simulation.Project(Simulation.vehicle.pos).station, 17.0f, .60f);
+            } else if (RacingDrive) {
                 control = RacingLine.Control(Simulation.vehicle, Simulation.tuning,
                     Simulation.Project(Simulation.vehicle.pos).station, 17.0f);
             }

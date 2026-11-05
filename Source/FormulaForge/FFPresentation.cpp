@@ -49,13 +49,14 @@ void AFFPresentation::BeginPlay() {
     UpdateRenderResolution();
     const FString circuit = GetGameInstance<UFFSession>()->Circuit();
     if (const TrackCatalogEntry* generated = findTrackCatalogEntry(std::string_view(TCHAR_TO_UTF8(*circuit)));
-        generated != nullptr && generated->generated) {
+        generated != nullptr && generated->generated && circuit != TEXT("lasvegas")) {
         ProceduralSections = BuildGeneratedRibbon(*this, *generated, Ribbon);
         return;
     }
     FString visualRoot = TEXT("Generated");
     if (circuit == TEXT("monza")) visualRoot += TEXT("/Monza");
     else if (circuit == TEXT("interlagos")) visualRoot += TEXT("/Interlagos");
+    else if (circuit == TEXT("lasvegas")) visualRoot += TEXT("/LasVegas");
     SilverstoneTiles = visualRoot == TEXT("Generated");
     FString contents;
     if (!FFileHelper::LoadFileToString(contents, *(FPaths::ProjectContentDir() / visualRoot / TEXT("Data/render_tiles.csv")))) {

@@ -1,0 +1,27 @@
+{
+  "skyline": {
+    "file": "skyline.osm.json.gz",
+    "sha256": "f15c94997d605158bd3a9339e62098ffcdaec08aac67b449c059c37913922587",
+    "provider": "OpenStreetMap contributors",
+    "licence": "ODbL 1.0",
+    "licence_url": "https://www.openstreetmap.org/copyright",
+    "retrieved": "2026-11-05",
+    "query": "[out:json][timeout:120];(way[\"building\"](36.105,-115.182,36.128,-115.153);way[\"building:part\"](36.105,-115.182,36.128,-115.153););out geom;"
+  },
+  "reference_only": [
+    {
+      "url": "https://www.f1lasvegasgp.com/tickets/grandstands/main-grandstand/",
+      "use": "Open temporary stands and pit complex observations. No image pixels shipped."
+    },
+    {
+      "url": "https://www.crash.net/f1/news/1040868/1/how-sphere-will-be-used-f1-las-vegas-gp-and-three-colours-banned",
+      "use": "Sphere silhouette and blue luminous display reference. Display artwork is original code-generated jellyfish and LED lattice."
+    }
+  ],
+  "display_art": {
+    "file": "art/sphere-display-v1.png",
+    "generation_record": "art/sphere-display-v1.json",
+    "source": "Original artwork generated with the built-in image_gen tool without reference images",
+    "purpose": "Dense luminous jellyfish display with an LED pixel lattice; original content avoids copying broadcast or commercial photo pixels"
+  }
+}

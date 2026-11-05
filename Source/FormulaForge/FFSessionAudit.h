@@ -22,6 +22,8 @@ private:
     double Started = 0;
     double StageStarted = 0;
     bool MenuOnly = false;
+    bool LasVegasOnly = false;
+    bool LasVegasFinite = false;
     int32 Stage = 0;
     int32 Circuit = 0;
     float PausedStation = 0;

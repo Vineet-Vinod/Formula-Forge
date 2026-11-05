@@ -1,0 +1,1222 @@
+{
+  "recipe": "make lasvegas-assets",
+  "scope": "/Game/Generated/LasVegas",
+  "source_manifest": "scenery_sources.json",
+  "road_sha256": "9fc1d2e113f6d470d03998e1a14b53c27d13cae9ed9160ac75f02fbb222eae76",
+  "terrain_sha256": "7a70696a02c2723a013849f566aa1a84ef5f2b2f42a0e6155499be69f968b0e7",
+  "tiles": 152,
+  "triangles": 1032794,
+  "landmarks": [
+    {
+      "name": "Bellagio Self Parking Garage",
+      "osm_id": 25718288,
+      "x": -262.02467293656935,
+      "y": -385.6697944247779,
+      "height_m": 10.0
+    },
+    {
+      "name": "Bellagio Las Vegas",
+      "osm_id": 25723909,
+      "x": -311.9075531786339,
+      "y": -174.76681614454554,
+      "height_m": 120.0
+    },
+    {
+      "name": "Bellagio Spa Tower",
+      "osm_id": 25723910,
+      "x": -390.64244280010064,
+      "y": -417.9805838255507,
+      "height_m": 100.0
+    },
+    {
+      "name": "Park MGM",
+      "osm_id": 27831695,
+      "x": -286.87021207081466,
+      "y": -1111.3590601036879,
+      "height_m": 110.0
+    },
+    {
+      "name": "Le Boulevard At Paris",
+      "osm_id": 27831697,
+      "x": 225.82164816694853,
+      "y": -247.7599485145412,
+      "height_m": 112.0
+    },
+    {
+      "name": "The Cosmopolitan Chelsea Tower",
+      "osm_id": 27897905,
+      "x": -304.6617552758781,
+      "y": -534.5292509246484,
+      "height_m": 184.0
+    },
+    {
+      "name": "MGM Grand Garden Arena",
+      "osm_id": 27897908,
+      "x": 386.4002401763729,
+      "y": -1129.754354305456,
+      "height_m": 20.4
+    },
+    {
+      "name": "Hilton Vacation Club Polo Towers Las Vegas",
+      "osm_id": 27897911,
+      "x": 192.13489261266136,
+      "y": -907.4536602782914,
+      "height_m": 61.199999999999996
+    },
+    {
+      "name": "MGM Grand Conference Center",
+      "osm_id": 27897924,
+      "x": 714.5562086156499,
+      "y": -1134.0140864510304,
+      "height_m": 10.2
+    },
+    {
+      "name": "Palazzo Tower",
+      "osm_id": 30424125,
+      "x": 461.3834077729139,
+      "y": 1030.2652125494437,
+      "height_m": 196.0
+    },
+    {
+      "name": "Venetian Tower",
+      "osm_id": 30618090,
+      "x": 366.2000069647381,
+      "y": 756.6688045427677,
+      "height_m": 145.0
+    },
+    {
+      "name": "Mirage Self Parking",
+      "osm_id": 33957718,
+      "x": -61.36517797228515,
+      "y": 928.8059645817584,
+      "height_m": 10.2
+    },
+    {
+      "name": "Mardi Gras Hotel & Casino",
+      "osm_id": 33962963,
+      "x": 1698.5028091196325,
+      "y": 1197.8085101291465,
+      "height_m": 10.2
+    },
+    {
+      "name": "Paris Las Vegas",
+      "osm_id": 33974140,
+      "x": 170.86556415264303,
+      "y": -274.19913736152887,
+      "height_m": 17.0
+    },
+    {
+      "name": "Paris Self Parking",
+      "osm_id": 33974142,
+      "x": 401.13714254761334,
+      "y": -240.58642086204833,
+      "height_m": 30.599999999999998
+    },
+    {
+      "name": "Treasure Island Self Parking",
+      "osm_id": 33992535,
+      "x": 72.10076989097897,
+      "y": 945.9543274308074,
+      "height_m": 12.0
+    },
+    {
+      "name": "The Campanile",
+      "osm_id": 43875964,
+      "x": 147.90843027118783,
+      "y": 759.4591493204977,
+      "height_m": 96.0
+    },
+    {
+      "name": "Twist by Pierre Gagnaire",
+      "osm_id": 52134170,
+      "x": -105.71378222246844,
+      "y": -937.2490787330742,
+      "height_m": 10.2
+    },
+    {
+      "name": "The Shops at Crystals",
+      "osm_id": 52134608,
+      "x": -132.1063224191854,
+      "y": -753.0485462691015,
+      "height_m": 30.0
+    },
+    {
+      "name": "Veer Towers East",
+      "osm_id": 52134834,
+      "x": -126.21343112535627,
+      "y": -806.2986051673809,
+      "height_m": 132.0
+    },
+    {
+      "name": "Veer Towers West",
+      "osm_id": 52134835,
+      "x": -180.6233228290293,
+      "y": -809.2986655357705,
+      "height_m": 132.0
+    },
+    {
+      "name": "Aria Resort & Casino",
+      "osm_id": 52175576,
+      "x": -348.0106874563313,
+      "y": -803.3739873639479,
+      "height_m": 20.0
+    },
+    {
+      "name": "Aria and Vdara Self Parking",
+      "osm_id": 52175579,
+      "x": -561.8475540537088,
+      "y": -596.9472269161304,
+      "height_m": 30.599999999999998
+    },
+    {
+      "name": "Aria and Mandarin Self Parking",
+      "osm_id": 52186615,
+      "x": -148.81058214658972,
+      "y": -963.4548930121539,
+      "height_m": 10.2
+    },
+    {
+      "name": "Waldorf Astoria Las Vegas",
+      "osm_id": 52194829,
+      "x": -111.26584993569469,
+      "y": -948.0662509215192,
+      "height_m": 10.2
+    },
+    {
+      "name": "Vanderpump",
+      "osm_id": 61239326,
+      "x": 80.46425519266477,
+      "y": 34.2064560157037,
+      "height_m": 10.2
+    },
+    {
+      "name": "The Signature at MGM Grand Tower I",
+      "osm_id": 95223224,
+      "x": 560.1864639705663,
+      "y": -963.9082446424403,
+      "height_m": 145.0
+    },
+    {
+      "name": "Elite Medical Center",
+      "osm_id": 95223226,
+      "x": 639.6803131797471,
+      "y": -657.7283684617556,
+      "height_m": 10.2
+    },
+    {
+      "name": "The Carriage House",
+      "osm_id": 95223229,
+      "x": 441.38541807356114,
+      "y": -808.5298468048574,
+      "height_m": 27.2
+    },
+    {
+      "name": "The Signature at MGM Grand Tower III",
+      "osm_id": 95223231,
+      "x": 573.5359382198891,
+      "y": -804.4629388719674,
+      "height_m": 145.0
+    },
+    {
+      "name": "The Signature at MGM Grand Tower II",
+      "osm_id": 95223232,
+      "x": 574.5270917907192,
+      "y": -874.7428479734891,
+      "height_m": 145.0
+    },
+    {
+      "name": "Walgreens",
+      "osm_id": 95224290,
+      "x": 59.66730112183518,
+      "y": -1068.4033774530412,
+      "height_m": 3.4
+    },
+    {
+      "name": "Ellis Island Casino",
+      "osm_id": 100519310,
+      "x": 850.263345319249,
+      "y": -182.91629469180413,
+      "height_m": 10.2
+    },
+    {
+      "name": "Venezia Tower",
+      "osm_id": 111322067,
+      "x": 311.174634073185,
+      "y": 663.908725799557,
+      "height_m": 99.0
+    },
+    {
+      "name": "Awakening Theater",
+      "osm_id": 111322079,
+      "x": 724.327750053813,
+      "y": 1422.7951563626548,
+      "height_m": 10.2
+    },
+    {
+      "name": "Wynn Employee Parking",
+      "osm_id": 111339081,
+      "x": 861.0972670456354,
+      "y": 676.9842312400732,
+      "height_m": 25.0
+    },
+    {
+      "name": "Venetian Expo",
+      "osm_id": 111367819,
+      "x": 600.0041533949509,
+      "y": 839.1314665329681,
+      "height_m": 10.2
+    },
+    {
+      "name": "Treasure Island Self Parking",
+      "osm_id": 111367820,
+      "x": -302.708684122917,
+      "y": 1082.5935092243906,
+      "height_m": 10.2
+    },
+    {
+      "name": "\"O\" Theatre",
+      "osm_id": 111367834,
+      "x": -401.90863474806935,
+      "y": -95.74956731353005,
+      "height_m": 17.0
+    },
+    {
+      "name": "Employee Parking Lot",
+      "osm_id": 111367849,
+      "x": 499.98259708309877,
+      "y": 564.4167623989007,
+      "height_m": 10.2
+    },
+    {
+      "name": "Harrah's Self Parking",
+      "osm_id": 111367853,
+      "x": 340.0886540106277,
+      "y": 540.6325367383656,
+      "height_m": 23.8
+    },
+    {
+      "name": "Encore Theater",
+      "osm_id": 111413433,
+      "x": 762.5803907925534,
+      "y": 1349.5765655842063,
+      "height_m": 10.2
+    },
+    {
+      "name": "Arc de Triomphe",
+      "osm_id": 114697074,
+      "x": 126.02636759912409,
+      "y": -344.2198368986508,
+      "height_m": 23.8
+    },
+    {
+      "name": "Bellagio Conservatory & Botanical Gardens",
+      "osm_id": 114718351,
+      "x": -320.9851472722673,
+      "y": -298.2977383306451,
+      "height_m": 17.0
+    },
+    {
+      "name": "Caesars Employment Center",
+      "osm_id": 114724063,
+      "x": 549.6810983998264,
+      "y": -106.97997601426476,
+      "height_m": 17.0
+    },
+    {
+      "name": "Park MGM",
+      "osm_id": 115080290,
+      "x": -188.39779849512738,
+      "y": -1137.5762058182454,
+      "height_m": 10.2
+    },
+    {
+      "name": "Park MGM Tram Station",
+      "osm_id": 115080292,
+      "x": -290.8291182130879,
+      "y": -952.6834430527399,
+      "height_m": 10.2
+    },
+    {
+      "name": "PH Live",
+      "osm_id": 115670770,
+      "x": 249.96750519650624,
+      "y": -533.1352722531497,
+      "height_m": 20.0
+    },
+    {
+      "name": "Miracle Mile Shops and Planet Hollywood Self Parking",
+      "osm_id": 115670777,
+      "x": 424.82328720491586,
+      "y": -526.2098407015717,
+      "height_m": 30.0
+    },
+    {
+      "name": "Caesars Palace Hotel and Casino",
+      "osm_id": 115672893,
+      "x": -239.19309820547062,
+      "y": 211.67763826180138,
+      "height_m": 10.2
+    },
+    {
+      "name": "Flamingo Self Parking",
+      "osm_id": 115768211,
+      "x": 318.1282295405079,
+      "y": 78.50977525599247,
+      "height_m": 30.599999999999998
+    },
+    {
+      "name": "Hilton Grand Vacations at the Flamingo",
+      "osm_id": 115768623,
+      "x": 362.9779806346334,
+      "y": 216.41704648845763,
+      "height_m": 54.4
+    },
+    {
+      "name": "The LINQ Hotel + Experience",
+      "osm_id": 115771295,
+      "x": 159.3451953978546,
+      "y": 410.6580296893573,
+      "height_m": 17.0
+    },
+    {
+      "name": "The LINQ Self Parking",
+      "osm_id": 115771879,
+      "x": 320.09416631392827,
+      "y": 417.2775165727562,
+      "height_m": 20.4
+    },
+    {
+      "name": "The LINQ Hotel & Casino - A Caesars Rewards Destination",
+      "osm_id": 115773426,
+      "x": 197.79210533666432,
+      "y": 410.93435338672106,
+      "height_m": 68.0
+    },
+    {
+      "name": "Flamingo Las Vegas",
+      "osm_id": 116761428,
+      "x": 76.41895371675773,
+      "y": 201.47835119549424,
+      "height_m": 10.2
+    },
+    {
+      "name": "Horseshoe Las Vegas Hotel & Casino - A Caesars Rewards Destination",
+      "osm_id": 116867081,
+      "x": 393.1392094665592,
+      "y": -136.4928892598298,
+      "height_m": 88.39999999999999
+    },
+    {
+      "name": "Octavius Tower",
+      "osm_id": 126267789,
+      "x": -358.52985118618597,
+      "y": 73.65087512620018,
+      "height_m": 107.0
+    },
+    {
+      "name": "Encore Self Parking",
+      "osm_id": 128266659,
+      "x": 881.7099447026384,
+      "y": 1540.1593614199364,
+      "height_m": 10.2
+    },
+    {
+      "name": "Harrah's Las Vegas",
+      "osm_id": 128622185,
+      "x": 181.89209387097387,
+      "y": 517.1681702322029,
+      "height_m": 10.2
+    },
+    {
+      "name": "Virgin Hotel self parking",
+      "osm_id": 133757427,
+      "x": 1547.6522372102809,
+      "y": -681.6339995538843,
+      "height_m": 27.2
+    },
+    {
+      "name": "Virgin Hotels Las Vegas, Curio Collection by Hilton",
+      "osm_id": 133757429,
+      "x": 1676.483039792717,
+      "y": -594.6886526685098,
+      "height_m": 10.2
+    },
+    {
+      "name": "Paradise Parking",
+      "osm_id": 133757908,
+      "x": 1684.0144457539418,
+      "y": -405.8772465398933,
+      "height_m": 27.2
+    },
+    {
+      "name": "Virgin Hotels Conference Center",
+      "osm_id": 133758151,
+      "x": 1627.7747578371586,
+      "y": -441.7356931781851,
+      "height_m": 10.2
+    },
+    {
+      "name": "Park MGM Self Parking",
+      "osm_id": 133879585,
+      "x": -498.11029937848525,
+      "y": -1129.6293054757682,
+      "height_m": 30.0
+    },
+    {
+      "name": "MGM Grand Self Parking",
+      "osm_id": 133879824,
+      "x": 398.36765964670457,
+      "y": -960.4382388628699,
+      "height_m": 17.0
+    },
+    {
+      "name": "CVS Pharmacy",
+      "osm_id": 133885466,
+      "x": -53.597168122736875,
+      "y": -1003.4856037784995,
+      "height_m": 10.2
+    },
+    {
+      "name": "The Cosmopolitan of Las Vegas",
+      "osm_id": 134795273,
+      "x": -96.37098365293014,
+      "y": -492.26296301357746,
+      "height_m": 184.0
+    },
+    {
+      "name": "Planet Hollywood Resort and Casino",
+      "osm_id": 134921373,
+      "x": 165.0015368386547,
+      "y": -517.8967821652525,
+      "height_m": 122.0
+    },
+    {
+      "name": "Palace Tower",
+      "osm_id": 134944648,
+      "x": -352.439189273744,
+      "y": 226.66030558905058,
+      "height_m": 133.0
+    },
+    {
+      "name": "Julius Tower",
+      "osm_id": 134949098,
+      "x": -235.3898636743875,
+      "y": 163.85557925062108,
+      "height_m": 52.0
+    },
+    {
+      "name": "Julius Tower Extension",
+      "osm_id": 134949101,
+      "x": -243.77449453978008,
+      "y": 230.43749481125633,
+      "height_m": 45.0
+    },
+    {
+      "name": "Forum Tower",
+      "osm_id": 134949102,
+      "x": -232.21215710816296,
+      "y": 287.28768338844054,
+      "height_m": 71.0
+    },
+    {
+      "name": "Nobu Hotel at Caesars Palace",
+      "osm_id": 134949402,
+      "x": -197.6686456658222,
+      "y": 224.4661154567808,
+      "height_m": 40.0
+    },
+    {
+      "name": "Caesars Palace Self Parking",
+      "osm_id": 134949710,
+      "x": -488.56667250675054,
+      "y": 338.6915268740472,
+      "height_m": 23.8
+    },
+    {
+      "name": "Caesars Palace Self Parking",
+      "osm_id": 134949713,
+      "x": -350.923151517067,
+      "y": 335.91333765494613,
+      "height_m": 23.8
+    },
+    {
+      "name": "Caesars Palace Convention Center",
+      "osm_id": 134949715,
+      "x": -512.5808512348783,
+      "y": 213.73029934751438,
+      "height_m": 10.2
+    },
+    {
+      "name": "The Westin Las Vegas Hotel",
+      "osm_id": 135020970,
+      "x": 665.966326755904,
+      "y": 52.82883219438515,
+      "height_m": 10.2
+    },
+    {
+      "name": "Encore",
+      "osm_id": 135291730,
+      "x": 728.935477181685,
+      "y": 1563.892073612903,
+      "height_m": 10.2
+    },
+    {
+      "name": "Platinum Hotel and Spa",
+      "osm_id": 135298867,
+      "x": 896.7741617879841,
+      "y": -80.87599194408791,
+      "height_m": 10.2
+    },
+    {
+      "name": "Caesars Palace Self Parking",
+      "osm_id": 135459231,
+      "x": -566.0451677763023,
+      "y": 477.9695492485951,
+      "height_m": 23.8
+    },
+    {
+      "name": "Wynn Resorts Employment Center",
+      "osm_id": 156624461,
+      "x": 1509.8125034973834,
+      "y": 783.901233275768,
+      "height_m": 10.2
+    },
+    {
+      "name": "Wells Fargo Tower",
+      "osm_id": 156624462,
+      "x": 1479.7355914825146,
+      "y": 478.4591231359297,
+      "height_m": 61.199999999999996
+    },
+    {
+      "name": "Candlewood Suites Las Vegas",
+      "osm_id": 159968980,
+      "x": 1740.7803319686805,
+      "y": 121.17689365225253,
+      "height_m": 10.2
+    },
+    {
+      "name": "The Meridian",
+      "osm_id": 176411325,
+      "x": 1010.9853473167326,
+      "y": 74.25097718206709,
+      "height_m": 10.2
+    },
+    {
+      "name": "Fashion Show Mall",
+      "osm_id": 180584255,
+      "x": 192.51036845516973,
+      "y": 1401.0015639821297,
+      "height_m": 10.2
+    },
+    {
+      "name": "The Palazzo",
+      "osm_id": 180584269,
+      "x": 372.82336471300295,
+      "y": 1058.4014039950532,
+      "height_m": 10.2
+    },
+    {
+      "name": "Fashion Show Mall Self Parking",
+      "osm_id": 180584270,
+      "x": -126.06302461515142,
+      "y": 1357.246227140439,
+      "height_m": 10.2
+    },
+    {
+      "name": "Sirens' Cove Shop",
+      "osm_id": 180771079,
+      "x": 213.40117585341932,
+      "y": 1129.323893501474,
+      "height_m": 10.2
+    },
+    {
+      "name": "Best Western Plus Casino Royale-Center Strip",
+      "osm_id": 181282568,
+      "x": 114.80836165949421,
+      "y": 646.3563203147329,
+      "height_m": 10.2
+    },
+    {
+      "name": "Park Towers",
+      "osm_id": 182464617,
+      "x": 1224.985482807844,
+      "y": 190.00702477014028,
+      "height_m": 10.2
+    },
+    {
+      "name": "Terrace Point Caf\u00ea",
+      "osm_id": 182527015,
+      "x": 760.7541000353912,
+      "y": 1283.0974440756984,
+      "height_m": 10.2
+    },
+    {
+      "name": "Residence Inn Las Vegas Hughes Center",
+      "osm_id": 205497576,
+      "x": 1539.0211270328816,
+      "y": 123.36235021523062,
+      "height_m": 37.4
+    },
+    {
+      "name": "McDonald's",
+      "osm_id": 205499657,
+      "x": 1667.0443261729213,
+      "y": 818.9760405813997,
+      "height_m": 10.2
+    },
+    {
+      "name": "Cabana Bar & Casino",
+      "osm_id": 205501267,
+      "x": 726.7866345894739,
+      "y": 1159.2561371562474,
+      "height_m": 10.2
+    },
+    {
+      "name": "Wynn Las Vegas",
+      "osm_id": 205501268,
+      "x": 668.4826496360291,
+      "y": 1323.8990641515993,
+      "height_m": 187.0
+    },
+    {
+      "name": "Dee Frisco's",
+      "osm_id": 205741855,
+      "x": 1565.0270219253275,
+      "y": 373.2623134129748,
+      "height_m": 10.2
+    },
+    {
+      "name": "Ellis Island Hotel",
+      "osm_id": 238675785,
+      "x": 863.4225929585232,
+      "y": -269.7311822777502,
+      "height_m": 10.2
+    },
+    {
+      "name": "Spearmint Rhino Gentlemen's Club Las Vegas",
+      "osm_id": 276437559,
+      "x": -458.04813042594475,
+      "y": 1562.8331724735642,
+      "height_m": 10.2
+    },
+    {
+      "name": "Silver Sevens Hotel & Casino",
+      "osm_id": 308291918,
+      "x": 1823.851290544913,
+      "y": -115.5309340845583,
+      "height_m": 10.2
+    },
+    {
+      "name": "Starbucks",
+      "osm_id": 308291919,
+      "x": 1385.2723214642665,
+      "y": 9.00049783353113,
+      "height_m": 3.4
+    },
+    {
+      "name": "Nuleaf",
+      "osm_id": 331347657,
+      "x": 1717.616831487362,
+      "y": 756.9101380962669,
+      "height_m": 10.2
+    },
+    {
+      "name": "Siegel Suites Twain 3",
+      "osm_id": 331347680,
+      "x": 1752.871818102657,
+      "y": 789.1681047260926,
+      "height_m": 10.2
+    },
+    {
+      "name": "Spanish Steps",
+      "osm_id": 364846540,
+      "x": -52.663300837350576,
+      "y": 65.33453247904049,
+      "height_m": 10.2
+    },
+    {
+      "name": "Absinthe",
+      "osm_id": 364846541,
+      "x": -90.28872398079268,
+      "y": 69.98245853673743,
+      "height_m": 10.2
+    },
+    {
+      "name": "Mojito Hut at Caesars Palace",
+      "osm_id": 364846543,
+      "x": -56.9869267797974,
+      "y": 49.09207892960962,
+      "height_m": 2.1
+    },
+    {
+      "name": "Paris Balloon",
+      "osm_id": 364846544,
+      "x": 40.93230784045753,
+      "y": -364.6173520917185,
+      "height_m": 46.0
+    },
+    {
+      "name": "SAP Vehicles Network Demo - Parking TechEd LV",
+      "osm_id": 374192383,
+      "x": 652.5815999356247,
+      "y": 764.6048094185385,
+      "height_m": 10.2
+    },
+    {
+      "name": "Las Vegas Souvenirs",
+      "osm_id": 374871700,
+      "x": 843.8627626156069,
+      "y": -99.27141037757535,
+      "height_m": 10.2
+    },
+    {
+      "name": "Chick-fil-A",
+      "osm_id": 381396713,
+      "x": 1696.799159447815,
+      "y": -138.16596320535703,
+      "height_m": 10.2
+    },
+    {
+      "name": "Bahama Breeze",
+      "osm_id": 390003954,
+      "x": 1640.063942478291,
+      "y": 41.09821670377979,
+      "height_m": 10.2
+    },
+    {
+      "name": "7-Eleven",
+      "osm_id": 390004000,
+      "x": 1663.7054513107587,
+      "y": 780.1275374812985,
+      "height_m": 10.2
+    },
+    {
+      "name": "Morton's The Steakhouse",
+      "osm_id": 390004030,
+      "x": 1781.9264647107527,
+      "y": 16.664601663801562,
+      "height_m": 10.2
+    },
+    {
+      "name": "U.S. Bank",
+      "osm_id": 390004032,
+      "x": 1119.0635742506233,
+      "y": 13.281428733044109,
+      "height_m": 10.2
+    },
+    {
+      "name": "Harrah's & The LINQ",
+      "osm_id": 395437078,
+      "x": 401.16960686857686,
+      "y": 453.34266785790885,
+      "height_m": 10.2
+    },
+    {
+      "name": "Caesar's Palace/Flamingo",
+      "osm_id": 395437079,
+      "x": 395.7127228441474,
+      "y": 135.12196862758512,
+      "height_m": 10.2
+    },
+    {
+      "name": "Tuscany Suites & Casino",
+      "osm_id": 397861154,
+      "x": 1130.3967920757484,
+      "y": -169.31431665358065,
+      "height_m": 10.2
+    },
+    {
+      "name": "Tuscany Suites Fitness Center & Spa",
+      "osm_id": 397861155,
+      "x": 1071.396383938867,
+      "y": -255.4963027798492,
+      "height_m": 10.2
+    },
+    {
+      "name": "Chayo",
+      "osm_id": 402543937,
+      "x": 123.55835391167686,
+      "y": 325.91017230743336,
+      "height_m": 10.2
+    },
+    {
+      "name": "Treasure Island Self Parking",
+      "osm_id": 403004627,
+      "x": -70.5166283970994,
+      "y": 1124.3982664130651,
+      "height_m": 10.2
+    },
+    {
+      "name": "Ellis Island Parking",
+      "osm_id": 442766028,
+      "x": 901.148935627721,
+      "y": -178.4860462267201,
+      "height_m": 10.2
+    },
+    {
+      "name": "7-Eleven",
+      "osm_id": 442766030,
+      "x": 852.9365404243014,
+      "y": -126.13745672735479,
+      "height_m": 10.2
+    },
+    {
+      "name": "City Athletic Club",
+      "osm_id": 443854439,
+      "x": -308.2398792090538,
+      "y": 1411.493521018547,
+      "height_m": 10.2
+    },
+    {
+      "name": "REEF Dispensary",
+      "osm_id": 464700855,
+      "x": -346.3466031842498,
+      "y": 1540.9672267371486,
+      "height_m": 10.2
+    },
+    {
+      "name": "The Cosmopolitan Boulevard Tower",
+      "osm_id": 472669744,
+      "x": -142.86127324425334,
+      "y": -554.7176314695927,
+      "height_m": 184.0
+    },
+    {
+      "name": "Homewood Suites by Hilton Las Vegas City Center",
+      "osm_id": 494974482,
+      "x": -807.4333296365794,
+      "y": -956.3733324883867,
+      "height_m": 13.3
+    },
+    {
+      "name": "Hilton Garden Inn",
+      "osm_id": 494974483,
+      "x": -793.8097399683825,
+      "y": -1059.4213871757756,
+      "height_m": 13.3
+    },
+    {
+      "name": "Panorama Tower I parking garage",
+      "osm_id": 495545498,
+      "x": -850.0177405662137,
+      "y": -789.4607772892798,
+      "height_m": 25.8
+    },
+    {
+      "name": "The Martin",
+      "osm_id": 495695274,
+      "x": -838.9285835162927,
+      "y": -691.4926422366989,
+      "height_m": 157.0
+    },
+    {
+      "name": "South Tech",
+      "osm_id": 495721229,
+      "x": -792.3651357736226,
+      "y": -379.36990507380915,
+      "height_m": 10.2
+    },
+    {
+      "name": "Alexis Park Resort Hotel",
+      "osm_id": 504849652,
+      "x": 1499.9558750577146,
+      "y": -815.357869171949,
+      "height_m": 6.8
+    },
+    {
+      "name": "Pantheon Conference Center",
+      "osm_id": 504860442,
+      "x": 1476.6472159720147,
+      "y": -853.9549920605833,
+      "height_m": 10.2
+    },
+    {
+      "name": "Liquor World",
+      "osm_id": 504926569,
+      "x": 1795.9468742474687,
+      "y": -838.2329798310577,
+      "height_m": 10.2
+    },
+    {
+      "name": "Club Platinum",
+      "osm_id": 510516347,
+      "x": 1275.5204666690963,
+      "y": -68.65482542353595,
+      "height_m": 10.2
+    },
+    {
+      "name": "Fortune Hotel & Suites",
+      "osm_id": 510516348,
+      "x": 1323.3856548045492,
+      "y": -110.40139749884688,
+      "height_m": 10.2
+    },
+    {
+      "name": "Firefly*",
+      "osm_id": 511850831,
+      "x": 1432.2804668666179,
+      "y": 36.21482833129113,
+      "height_m": 3.4
+    },
+    {
+      "name": "Fogo de Ch\u00e3o",
+      "osm_id": 511850832,
+      "x": 1491.117941928873,
+      "y": 35.95227370042791,
+      "height_m": 3.4
+    },
+    {
+      "name": "Battista's Hole in the Wall",
+      "osm_id": 543423253,
+      "x": 415.76542758844556,
+      "y": 83.15436965015915,
+      "height_m": 10.2
+    },
+    {
+      "name": "The Cromwell Self Parking",
+      "osm_id": 543423255,
+      "x": 315.73777823484716,
+      "y": 32.12337560694976,
+      "height_m": 6.8
+    },
+    {
+      "name": "Starbucks",
+      "osm_id": 543638212,
+      "x": 185.8225583721683,
+      "y": 996.2193255406631,
+      "height_m": 10.2
+    },
+    {
+      "name": "Fairfield Inn",
+      "osm_id": 565876914,
+      "x": 1690.086827984016,
+      "y": 557.6128710120679,
+      "height_m": 13.6
+    },
+    {
+      "name": "Caesars Forum",
+      "osm_id": 762169780,
+      "x": 606.8515619783896,
+      "y": 454.89381336835885,
+      "height_m": 10.2
+    },
+    {
+      "name": "Ole Red",
+      "osm_id": 839503453,
+      "x": 44.39753699928121,
+      "y": -40.988651820994825,
+      "height_m": 9.0
+    },
+    {
+      "name": "Lawry's The Prime Rib",
+      "osm_id": 896655229,
+      "x": 1197.3663257654687,
+      "y": 51.20262528910025,
+      "height_m": 10.2
+    },
+    {
+      "name": "Giordano's Pizzeria",
+      "osm_id": 983892276,
+      "x": 139.74778139475129,
+      "y": -39.58699338300992,
+      "height_m": 10.2
+    },
+    {
+      "name": "Caesars Entertainment Studios",
+      "osm_id": 1001560971,
+      "x": 713.7364379053212,
+      "y": -194.74202357547404,
+      "height_m": 10.2
+    },
+    {
+      "name": "Speedee Mart",
+      "osm_id": 1017290168,
+      "x": 1649.065884342536,
+      "y": 972.5285931780082,
+      "height_m": 10.2
+    },
+    {
+      "name": "Augustus Tower",
+      "osm_id": 1176928048,
+      "x": -214.81648438172928,
+      "y": 63.63717656494079,
+      "height_m": 111.0
+    },
+    {
+      "name": "Holiday Royale Apartment Suites",
+      "osm_id": 1243659006,
+      "x": 1800.9044363707198,
+      "y": -920.363562515501,
+      "height_m": 10.2
+    },
+    {
+      "name": "Horseshoe/Paris Las Vegas",
+      "osm_id": 1243659189,
+      "x": 494.6749683515946,
+      "y": -274.30086790725375,
+      "height_m": 10.2
+    },
+    {
+      "name": "Harmon Corner",
+      "osm_id": 1255028419,
+      "x": 76.16052476366325,
+      "y": -657.6748387872765,
+      "height_m": 10.2
+    },
+    {
+      "name": "Green Fairy Garden",
+      "osm_id": 1340330690,
+      "x": -78.55791415397766,
+      "y": 94.88773923655464,
+      "height_m": 2.1
+    },
+    {
+      "name": "No Pants",
+      "osm_id": 1340330691,
+      "x": -99.5587037146855,
+      "y": 102.61297805049813,
+      "height_m": 2.1
+    },
+    {
+      "name": "Diamond",
+      "osm_id": 1371341172,
+      "x": -333.5485805995239,
+      "y": 1362.1381373589286,
+      "height_m": 10.2
+    },
+    {
+      "name": "Port of Subs",
+      "osm_id": 1415265192,
+      "x": 757.7780723467297,
+      "y": 28.597038882131613,
+      "height_m": 10.2
+    },
+    {
+      "name": "Teriyaki Madness",
+      "osm_id": 1420760692,
+      "x": 1781.5777610604737,
+      "y": -799.8394162830971,
+      "height_m": 10.2
+    },
+    {
+      "name": "Tropical Caf\u00e9",
+      "osm_id": 1420760693,
+      "x": 1783.4230468992284,
+      "y": -817.1001967669434,
+      "height_m": 10.2
+    },
+    {
+      "name": "Panera Bread",
+      "osm_id": 1421198546,
+      "x": 1555.1228013497075,
+      "y": 26.256773191234856,
+      "height_m": 3.4
+    },
+    {
+      "name": "Jamba",
+      "osm_id": 1421198547,
+      "x": 1573.3455602231238,
+      "y": 28.55072450095487,
+      "height_m": 3.4
+    },
+    {
+      "name": "Pieology Pizzeria",
+      "osm_id": 1421198549,
+      "x": 1581.2789424040438,
+      "y": 28.370098413443188,
+      "height_m": 3.4
+    },
+    {
+      "name": "Arte Museum Las Vegas",
+      "osm_id": 1421481100,
+      "x": -83.79808156572734,
+      "y": -672.8854266703507,
+      "height_m": 10.2
+    },
+    {
+      "name": "Stage Door Casino",
+      "osm_id": 1423439012,
+      "x": 413.6334393622593,
+      "y": 29.083472213488374,
+      "height_m": 10.2
+    },
+    {
+      "name": "Lo-Lo's Chicken & Waffles",
+      "osm_id": 1423439018,
+      "x": 1285.5924647979507,
+      "y": 28.506262694772833,
+      "height_m": 10.2
+    },
+    {
+      "name": "Fatburger",
+      "osm_id": 1424222047,
+      "x": 98.39601825987017,
+      "y": -1033.7290800761257,
+      "height_m": 10.2
+    },
+    {
+      "name": "Alexxas",
+      "osm_id": 1424222077,
+      "x": 41.04219973240601,
+      "y": -282.9831470979278,
+      "height_m": 10.2
+    },
+    {
+      "name": "Hexx",
+      "osm_id": 1424222078,
+      "x": 41.21505497525447,
+      "y": -289.3956510859477,
+      "height_m": 10.2
+    },
+    {
+      "name": "Beer Park",
+      "osm_id": 1424222079,
+      "x": 41.23750370834466,
+      "y": -303.8457380758249,
+      "height_m": 10.2
+    },
+    {
+      "name": "Carvana",
+      "osm_id": 1459325603,
+      "x": -755.6356415572399,
+      "y": 848.3736310173094,
+      "height_m": 3.4
+    },
+    {
+      "name": "Chipotle",
+      "osm_id": 1561277593,
+      "x": 1590.6761546485525,
+      "y": 19.876824650444494,
+      "height_m": 3.4
+    },
+    {
+      "name": "Papaya King",
+      "osm_id": 1563209631,
+      "x": 1782.1715300439298,
+      "y": -781.8768466093146,
+      "height_m": 10.2
+    },
+    {
+      "name": "Sphere",
+      "x": 1002.8536679948453,
+      "y": 674.8753269356993,
+      "height_m": 112,
+      "width_m": 157
+    },
+    {
+      "name": "Paris Eiffel Tower",
+      "x": 74.37407823500841,
+      "y": -241.0378792008316,
+      "height_m": 165
+    },
+    {
+      "name": "High Roller",
+      "x": 363.5137570576228,
+      "y": 320.292423103833,
+      "height_m": 167
+    }
+  ],
+  "artwork": "Original geometry and procedural trackside textures; built-in image_gen produced original Sphere display artwork (art/sphere-display-v1.json). Existing licensed asphalt, concrete and original spectator atlas reused.",
+  "estimates": "OSM building tags give volume controls; missing heights use 3.4 m per level, default 3 levels. Facades, pit decks, temporary stands, palms and lighting furniture are original approximations, not a photogrammetric survey."
+}

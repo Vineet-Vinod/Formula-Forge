@@ -181,7 +181,7 @@ void buildGeneratedSupport(const TrackCatalogEntry& track, const std::vector<Cir
             }
             const CircuitSample& sample = samples[nearest];
             float height = sample.elevation;
-            const float metres = std::sqrt(best);
+            const float metres = std::sqrt(best) / (track.id == TrackLayoutId::LasVegas ? Units : 1.0f);
             const float stationGap = std::abs(sample.station - samples[second].station);
             if (track.deckSeparation && stationGap > 200.0f && stationGap < track.targetLengthMeters - 200.0f &&
                 std::sqrt(secondBest) < 18.0f) {

@@ -19,6 +19,14 @@
 FFSessionAudit::FFSessionAudit(UFFSession& session) : Session(session) {
     Started = StageStarted = FPlatformTime::Seconds();
     MenuOnly = FParse::Param(FCommandLine::Get(), TEXT("FFMenuReview"));
+    FString circuit;
+    if (FParse::Value(FCommandLine::Get(), TEXT("FFFlowCircuit="), circuit) && circuit == TEXT("lasvegas")) {
+        LasVegasOnly = true;
+        const auto tracks = trackCatalog();
+        for (int32 index = 0; index < static_cast<int32>(tracks.size()); ++index) {
+            if (tracks[index].id == TrackLayoutId::LasVegas) Circuit = index;
+        }
+    }
     Handle = FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateRaw(this, &FFSessionAudit::Tick), .1f);
 }
 
@@ -41,7 +49,7 @@ void FFSessionAudit::Key(FKey key, EInputEvent event) {
 void FFSessionAudit::Tap(FKey key) { Key(key, IE_Pressed); Key(key, IE_Released); }
 
 void FFSessionAudit::Capture(const TCHAR* name) {
-    const FString folder = FPaths::ProjectSavedDir() / TEXT("FlowAudit");
+    const FString folder = FPaths::ProjectSavedDir() / (LasVegasOnly ? TEXT("FlowAuditLasVegas") : TEXT("FlowAudit"));
     IFileManager::Get().MakeDirectory(*folder, true);
     FScreenshotRequest::RequestScreenshot(folder / FString::Printf(TEXT("%d-%s.png"), Circuit, name), true, false);
 }
@@ -78,8 +86,8 @@ bool FFSessionAudit::Tick(float deltaSeconds) {
     case 0:
         if (Session.Screen == EFFScreen::Setup && age > 2) {
             if (Session.LapLimit() != 0) return Fail(TEXT("Default must be unlimited"));
-            if (Circuit == 0) InitialScreenPercentage = IConsoleManager::Get().FindConsoleVariable(TEXT("r.ScreenPercentage"))->GetFloat();
-            if (Circuit == 0) {
+            if (Circuit == 0 || LasVegasOnly) InitialScreenPercentage = IConsoleManager::Get().FindConsoleVariable(TEXT("r.ScreenPercentage"))->GetFloat();
+            if (Circuit == 0 || LasVegasOnly) {
                 Tap(EKeys::D);
                 Tap(EKeys::A);
                 Tap(EKeys::S);
@@ -91,7 +99,7 @@ bool FFSessionAudit::Tick(float deltaSeconds) {
     case 1:
         if (age > 1) {
             if (Session.CircuitIndex != Circuit) return Fail(TEXT("Keyboard circuit selection failed"));
-            if (Circuit == 2) {
+            if (Circuit == 2 || LasVegasFinite) {
                 Tap(EKeys::Gamepad_DPad_Down);
             }
             Capture(TEXT("setup"));
@@ -107,7 +115,7 @@ bool FFSessionAudit::Tick(float deltaSeconds) {
     case 3:
         if (Session.Screen == EFFScreen::Driving && pawn && pawn->SceneReady) {
             if (pawn->Simulation.circuit != trackCatalog()[Circuit].id || pawn->LoadedVisualTiles() == 0) return Fail(TEXT("Wrong or empty driving world"));
-            if (Circuit == 0) {
+            if (Circuit == 0 || LasVegasOnly) {
                 pawn->CaptureDrive = false;
                 Key(EKeys::W, IE_Pressed);
                 Advance(30);
@@ -176,9 +184,9 @@ bool FFSessionAudit::Tick(float deltaSeconds) {
     case 8:
         if (age > 2) {
             if (Session.Screen != EFFScreen::Driving) return Fail(TEXT("Resume failed"));
-            if (Circuit == 2) Advance(12);
+            if (Circuit == 2 || LasVegasFinite) Advance(12);
             else {
-                if (Circuit == 0) Session.GetFirstLocalPlayerController()->ConsoleCommand(TEXT("r.ScreenPercentage 75"), false);
+                if (Circuit == 0 || LasVegasOnly) Session.GetFirstLocalPlayerController()->ConsoleCommand(TEXT("r.ScreenPercentage 75"), false);
                 Tap(EKeys::Escape);
                 Advance(9);
             }
@@ -194,8 +202,9 @@ bool FFSessionAudit::Tick(float deltaSeconds) {
         break;
     case 10:
         if (Session.Screen == EFFScreen::Setup && age > 1) {
-            if (Circuit == 0 && !FMath::IsNearlyEqual(IConsoleManager::Get().FindConsoleVariable(TEXT("r.ScreenPercentage"))->GetFloat(), InitialScreenPercentage)) return Fail(TEXT("Render scale leaked into the next session"));
-            ++Circuit;
+            if ((Circuit == 0 || LasVegasOnly) && !FMath::IsNearlyEqual(IConsoleManager::Get().FindConsoleVariable(TEXT("r.ScreenPercentage"))->GetFloat(), InitialScreenPercentage)) return Fail(TEXT("Render scale leaked into the next session"));
+            if (LasVegasOnly) LasVegasFinite = true;
+            else ++Circuit;
             Advance(0);
         }
         break;
@@ -227,8 +236,8 @@ bool FFSessionAudit::Tick(float deltaSeconds) {
         break;
     case 17:
         if (age > 2) {
-            const FString result = FString::Printf(TEXT("{\"passed\":true,\"process_id\":%u,\"circuits\":3,\"real_finite_lap\":true,\"restart\":true,\"seconds\":%.3f}\n"), FPlatformProcess::GetCurrentProcessId(), now - Started);
-            FFileHelper::SaveStringToFile(result, *(FPaths::ProjectSavedDir() / TEXT("FlowAudit/result.json")));
+            const FString result = FString::Printf(TEXT("{\"passed\":true,\"process_id\":%u,\"circuits\":%d,\"real_finite_lap\":true,\"restart\":true,\"seconds\":%.3f}\n"), FPlatformProcess::GetCurrentProcessId(), LasVegasOnly ? 1 : 3, now - Started);
+            FFileHelper::SaveStringToFile(result, *(FPaths::ProjectSavedDir() / (LasVegasOnly ? TEXT("FlowAuditLasVegas/result.json") : TEXT("FlowAudit/result.json"))));
             UE_LOG(LogTemp, Display, TEXT("FF_FLOW_AUDIT PASS"));
             Tap(EKeys::Escape);
             Advance(18);

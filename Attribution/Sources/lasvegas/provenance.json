@@ -23,17 +23,20 @@
     "scale_rule": "Applied only when the mapped plan was within 1.5% of a published length. Larger gaps keep the mapped length."
   },
   "elevation": {
-    "provider": "Open-Meteo Elevation API",
-    "dataset": "Copernicus DEM GLO-90",
-    "dataset_note": "Surface model, about 90 m, includes roofs and canopy. Not a bare-earth racing survey.",
-    "licence": "Copernicus DEM, see https://registry.opendata.aws/copernicus-dem/",
-    "retrieved": "2026-11-04",
-    "sample_spacing_m": 31.8,
-    "smoothing": "Two circular binomial passes on the coarse samples, then linear interpolation onto the 4 m centreline. Isolated samples more than 6 m above their neighbours were treated as overpasses or roofs.",
+    "provider": "USGS 3D Elevation Program",
+    "dataset": "NV_ClarkCounty_B22 1 m bare-earth DEM",
+    "dataset_note": "Lidar bare earth, 1 m, sampled on the centreline and on a 4 m terrain grid. WGS84 was projected to NAD83 UTM zone 11; that datum shift is about a metre.",
+    "licence": "Public domain",
+    "source_url": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1m/Projects/NV_ClarkCounty_B22/TIFF/USGS_1M_11_x66y400_NV_ClarkCounty_B22.tif",
+    "retrieved": "2026-11-05",
+    "publication": "2023-10-30",
+    "sample_spacing_m": 4.0,
+    "smoothing": "74 circular binomial passes on the 4 m samples (24 m standard deviation). Filters short pre-construction ground breaks in the future paddock; broad surveyed grade is retained. This is an estimated racing profile, not a measured post-construction deck.",
     "relative_datum": "Heights stored after subtracting the lap minimum.",
-    "removed_minimum_m": 629.0,
-    "relief_m": 24.46,
-    "uncertainty_m": 8,
+    "removed_minimum_m": 628.674,
+    "relief_m": 15.983,
+    "uncertainty_m": 1,
+    "file": "elevation/bare_earth.bin",
     "deck": null
   },
   "width": {
@@ -53,5 +56,13 @@
     "licence": "ODbL 1.0"
   },
   "protection": "Both sides are walled at the shoulder offset. Pit entry is closed. That closure is a game boundary, not a claim about the real pit lane.",
-  "not_claimed": "No lidar, no orthophoto registration, no cockpit capture in this build. Centimetre storage is not centimetre accuracy."
+  "not_claimed": "No orthophoto or post-construction engineering registration. Widths are estimates, and the 2022 bare-earth survey predates the racing deck. Cockpit and runtime review are recorded in docs/lasvegas_validation.json. Centimetre storage is not centimetre accuracy.",
+  "native_scenery": {
+    "recipe": "make lasvegas-assets",
+    "manifest": "scenery.json",
+    "source_manifest": "scenery_sources.json",
+    "runtime_assets": "Content/Generated/LasVegas",
+    "start_finish_station_m": 1815,
+    "note": "Native scenery replaces the initial generic road ribbon only for Las Vegas. The initial footprint count below describes the old narrow corridor, not the current native city."
+  }
 }

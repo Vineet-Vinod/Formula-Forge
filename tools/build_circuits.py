@@ -14,6 +14,7 @@ import gzip
 import hashlib
 import json
 import math
+import struct
 import sys
 import time
 import urllib.error
@@ -585,6 +586,49 @@ def circular_smooth(values, passes):
     return current
 
 
+def load_bare_earth(source: Path):
+    path = source / "elevation" / "bare_earth.bin"
+    if not path.exists():
+        return None
+    data = path.read_bytes()
+    if data[:8] != b"FFDEM1\0\0":
+        return None
+    origin_x, origin_y, step, cols, rows = struct.unpack_from("<ddfII", data, 8)
+    count = cols * rows
+    if len(data) != 36 + count * 4:
+        raise ValueError("Invalid bare-earth grid size")
+    heights = struct.unpack_from(f"<{count}f", data, 36)
+    return {"origin_x": origin_x, "origin_y": origin_y, "step": step, "cols": cols, "rows": rows, "heights": heights}
+
+
+def sample_bare(grid, x: float, y: float):
+    col = (x - grid["origin_x"]) / grid["step"]
+    row = (y - grid["origin_y"]) / grid["step"]
+    if col < 0 or row < 0 or col >= grid["cols"] - 1 or row >= grid["rows"] - 1:
+        return None
+    c0, r0 = int(math.floor(col)), int(math.floor(row))
+    tx, ty = col - c0, row - r0
+    cols = grid["cols"]
+    heights = grid["heights"]
+
+    def at(c, r):
+        return heights[r * cols + c]
+
+    return (at(c0, r0) * (1 - tx) * (1 - ty) + at(c0 + 1, r0) * tx * (1 - ty)
+            + at(c0, r0 + 1) * (1 - tx) * ty + at(c0 + 1, r0 + 1) * tx * ty)
+
+
+def write_terrain(folder: str, grid, datum: float) -> None:
+    import array
+    path = CONTENT / folder / "Data"
+    path.mkdir(parents=True, exist_ok=True)
+    values = array.array("f", (value - datum for value in grid["heights"]))
+    blob = bytearray(b"FFTRN1\0\0")
+    blob += struct.pack("<ddfII", grid["origin_x"], grid["origin_y"], grid["step"], grid["cols"], grid["rows"])
+    blob += values.tobytes()
+    (path / "terrain.bin").write_bytes(blob)
+
+
 def elevations(samples):
     step = max(1, len(samples) // 180)
     picked = list(range(0, len(samples), step))
@@ -838,15 +882,27 @@ out geom;
     count = len(local)
     spacing = target / count
     stations = [index * spacing for index in range(count)]
+    bare = load_bare_earth(source)
     elevation_cache = source / "elevation_samples.json"
-    if elevation_cache.exists() and not refresh:
+    if bare is not None:
+        sampled = []
+        for x, y in local:
+            value = sample_bare(bare, x, y)
+            if value is None:
+                raise RuntimeError(f"{spec['slug']}: bare-earth grid does not cover the centreline")
+            sampled.append(value)
+        relative = circular_smooth(sampled, 74 if spec["slug"] == "lasvegas" else 2)
+        picked = list(range(count))
+        log(f"{spec['slug']}: bare-earth DEM {min(sampled):.1f}..{max(sampled):.1f} m")
+    elif elevation_cache.exists() and not refresh:
         saved = json.loads(elevation_cache.read_text())
         picked, raw, smoothed = saved["index"], saved["raw"], saved["smoothed"]
+        relative = interpolate(picked, smoothed, count)
     else:
         log(f"{spec['slug']}: sampling Copernicus GLO-90")
         picked, raw, smoothed = elevations(samples)
         elevation_cache.write_text(json.dumps({"index": picked, "raw": raw, "smoothed": smoothed}))
-    relative = interpolate(picked, smoothed, count)
+        relative = interpolate(picked, smoothed, count)
     deck_note = None
     if spec.get("deck"):
         relative, deck_note = suzuka_deck(local, relative, stations)
@@ -859,6 +915,8 @@ out geom;
     datum = min(relative)
     relative = [value - datum for value in relative]
     relief = max(relative) - min(relative)
+    if bare is not None:
+        write_terrain(spec["folder"], bare, datum)
 
     # Width follows the local heading change. Straights use the wider figure.
     width = []
@@ -1068,7 +1126,23 @@ out geom;
             "uniform_scale": round(scale, 6),
             "scale_rule": "Applied only when the mapped plan was within 1.5% of a published length. Larger gaps keep the mapped length.",
         },
-        "elevation": {
+        "elevation": ({
+            "provider": "USGS 3D Elevation Program",
+            "dataset": "NV_ClarkCounty_B22 1 m bare-earth DEM",
+            "dataset_note": "Lidar bare earth, 1 m, sampled on the centreline and on a 4 m terrain grid. WGS84 was projected to NAD83 UTM zone 11; that datum shift is about a metre.",
+            "licence": "Public domain",
+            "source_url": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1m/Projects/NV_ClarkCounty_B22/TIFF/USGS_1M_11_x66y400_NV_ClarkCounty_B22.tif",
+            "retrieved": "2026-11-05",
+            "publication": "2023-10-30",
+            "sample_spacing_m": 4.0,
+            "smoothing": "74 circular binomial passes on the 4 m samples (24 m standard deviation). Filters short pre-construction ground breaks in the future paddock; broad surveyed grade is retained. This is an estimated racing profile, not a measured post-construction deck.",
+            "relative_datum": "Heights stored after subtracting the lap minimum.",
+            "removed_minimum_m": round(datum, 3),
+            "relief_m": round(relief, 3),
+            "uncertainty_m": 1,
+            "file": "elevation/bare_earth.bin",
+            "deck": deck_note,
+        } if bare is not None else {
             "provider": "Open-Meteo Elevation API",
             "dataset": "Copernicus DEM GLO-90",
             "dataset_note": "Surface model, about 90 m, includes roofs and canopy. Not a bare-earth racing survey.",
@@ -1081,7 +1155,7 @@ out geom;
             "relief_m": round(relief, 3),
             "uncertainty_m": 8 if spec["street"] else 5,
             "deck": deck_note,
-        },
+        }),
         "width": {
             "base_m": spec["base"],
             "straight_m": spec["straight"],
@@ -1099,8 +1173,17 @@ out geom;
             "licence": "ODbL 1.0",
         },
         "protection": "Both sides are walled at the shoulder offset. Pit entry is closed. That closure is a game boundary, not a claim about the real pit lane.",
-        "not_claimed": "No lidar, no orthophoto registration, no cockpit capture in this build. Centimetre storage is not centimetre accuracy.",
+        "not_claimed": "No orthophoto registration and no cockpit capture in this build. Centimetre storage is not centimetre accuracy."
+        if bare is not None else
+        "No lidar, no orthophoto registration, no cockpit capture in this build. Centimetre storage is not centimetre accuracy.",
     }
+    if spec["slug"] == "lasvegas" and (source / "scenery.json").exists():
+        provenance["native_scenery"] = {
+            "recipe": "make lasvegas-assets", "manifest": "scenery.json", "source_manifest": "scenery_sources.json",
+            "runtime_assets": "Content/Generated/LasVegas", "start_finish_station_m": 1815,
+            "note": "Native scenery replaces the initial generic road ribbon only for Las Vegas. The initial footprint count describes the old narrow corridor, not the current native city.",
+        }
+        provenance["not_claimed"] = "No orthophoto or post-construction engineering registration. Widths are estimates, and the 2022 bare-earth survey predates the racing deck. Cockpit and runtime review are recorded in docs/lasvegas_validation.json. Centimetre storage is not centimetre accuracy."
     (source / "provenance.json").write_text(json.dumps(provenance, indent=2) + "\n")
     write_plan(spec, local, turns)
     log(f"{spec['slug']}: {chosen['name']} {target:.1f} m (mapped {measured:.1f}, published {published}, scale {scale:.4f}) relief {relief:.1f} m turns {len(turns)} buildings {len(footprints)}")
@@ -1156,7 +1239,7 @@ def emit_indexes(records):
      "{spec["environment"]}",
      {record["target_m"]:.3f}f,
      {spec["turns"]},
-     0.0f,
+     {format(1815.0 / record["target_m"], ".9f") if spec["slug"] == "lasvegas" else "0.0"}f,
      {record["relief_m"]:.3f}f,
      {"true" if record["clockwise"] else "false"},
      1.0f,
@@ -1169,7 +1252,7 @@ def emit_indexes(records):
      {grade},
      "{spec["slug"]}",
      "{spec["folder"]}/Data",
-     "/Game/Generated/Interlagos/Review",
+     "/Game/Generated/{"LasVegas" if spec["slug"] == "lasvegas" else "Interlagos"}/Review",
      {record["aspect"]:.5f}f,
      {record["crossings"]},
      true,
@@ -1190,7 +1273,7 @@ def emit_indexes(records):
         "",
         "Suzuka is the only figure-eight. Its pit straight is raised to a 6.2 m deck when the 90 m surface model cannot see the bridge. The lower road is left on the sampled height.",
         "",
-        "Walls are continuous, including pit entry. That closure is for the game. Widths are typical asphalt figures, not a white-line survey. There is no lidar and no cockpit capture in this pass. GLO-90 is a surface model: street circuits can still carry roof and tree height, and the stated vertical uncertainty is 8 m there and 5 m on permanent circuits.",
+        "Walls are continuous, including pit entry. That closure is for the game. Widths are typical asphalt figures, not a white-line survey. The initial generated circuits use GLO-90, a surface model with stated vertical uncertainty of 8 m on streets and 5 m on permanent circuits. Las Vegas has since been rebuilt with USGS 3DEP bare-earth terrain, a filtered road profile, native scenery and cockpit review. Its original footprint count in the table is superseded by Attribution/Sources/lasvegas/scenery.json; see docs/lasvegas_validation.json for evidence and limits.",
         "",
         "| Circuit | Mapped m | Published m | Scale | Relief m | Turns found | Buildings |",
         "| --- | ---: | ---: | ---: | ---: | ---: | ---: |",

@@ -1,0 +1,9 @@
+{
+  "tool": "Built-in image_gen",
+  "generated": "2026-11-05",
+  "prompt": "Use case: stylized-concept. Asset type: original emissive media texture for a large spherical LED venue in a realistic Unreal racing game. Create a flat rectangular 2:1 texture artwork, not a picture of a venue and not a sphere render. Deep luminous navy blue underwater backdrop filled EDGE TO EDGE with many large beautiful realistic translucent glowing cyan-blue jellyfish, intricate organic ribbed bells, curling delicate tentacles, overlapping different scales and rotations. Dense detailed display content throughout ALL quadrants and across the bottom edge as well as the middle/top; avoid broad empty areas. Bright readable jellyfish bells and flowing tentacles must be recognizable even when only a cropped small patch of this texture is visible on a curved screen. Include a subtle fine regular RGB LED dot/pixel lattice across the whole artwork, as if this is an enormous outdoor LED display. Rich bright cyan highlights and medium luminous blue background, with contrast that stays readable in daylight. Original artwork, no text, no logos, no watermark, no architecture, no photograph of a screen, no borders, no ground, no skyline. Ideally seamless at left/right edges for wrapping around a sphere. Landscape 2:1 composition.",
+  "file": "sphere-display-v1.png",
+  "sha256": "9eadbe1489c609ff88b7dbbeb8713f529c62ca7cc991f943433fcfa12b7152e1",
+  "reference_images_used": [],
+  "use": "Original Sphere display artwork. No photograph or broadcast pixels used."
+}
