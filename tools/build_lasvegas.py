@@ -91,7 +91,7 @@ def texture_material(name: str) -> unreal.Material:
         exponent.r = 4
         connect(exponent, '', power, 'Exp')
         tint = EDIT.create_material_expression(material, unreal.MaterialExpressionConstant3Vector)
-        tint.constant = unreal.LinearColor(.045, .042, .036)
+        tint.constant = unreal.LinearColor(.09, .084, .072)
         emission = EDIT.create_material_expression(material, unreal.MaterialExpressionMultiply)
         connect(power, '', emission, 'A')
         connect(tint, '', emission, 'B')

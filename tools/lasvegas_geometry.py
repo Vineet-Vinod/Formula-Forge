@@ -204,6 +204,7 @@ class Scenery:
             self.triangle('Tile_Road', 'Road', a, b, c,
                           tuple((p[0] / 4, p[1] / 4) for p in (a, b, c)))
         barriers = list(csv.DictReader((SCRATCH / 'barriers.csv').open()))
+        wall_coordinates: dict[tuple[float, float], tuple[float, bool]] = {}
         for barrier in barriers:
             ax, ay, bx, by, bottom, top, radius = (float(value) for value in barrier.values())
             a, b = (ax, ay, bottom), (bx, by, bottom)
@@ -214,11 +215,14 @@ class Scenery:
             panel = 'WallPink' if 3400 < heading < 4200 else ('WallBlue' if 2200 < heading < 3400 else 'WallDark')
             inward = mul(norm((sample.x - (ax + bx) / 2, sample.y - (ay + by) / 2, 0)), radius + .012)
             panel_a, panel_b = add(a, inward), add(b, inward)
-            reverse = (ax - sample.x) * sample.ty - (ay - sample.y) * sample.tx > 0
+            start_key, end_key = (round(ax, 3), round(ay, 3)), (round(bx, 3), round(by, 3))
+            default_reverse = (ax - sample.x) * sample.ty - (ay - sample.y) * sample.tx > 0
+            distance, reverse = wall_coordinates.get(start_key, (0.0, default_reverse))
+            span = math.dist(a, b)
+            wall_coordinates[end_key] = distance + span, reverse
             if reverse:
                 panel_a, panel_b = panel_b, panel_a
-            span = math.dist(a, b)
-            phase = (-sample.station - span / 2) / 8 if reverse else (sample.station - span / 2) / 8
+            phase = -(distance + span) / 8 if reverse else distance / 8
             self.banner(add(panel_a, (0, 0, .02)), add(panel_b, (0, 0, .02)), .88, panel, 'Tile_Protection', phase, span / 8)
             self.banner(add(a, (0, 0, top - bottom)), add(b, (0, 0, top - bottom)), 2.55, 'Fence', 'Tile_Protection')
             if int(sample.station / 8) != int((sample.station - LENGTH / len(self.road)) / 8):
@@ -539,6 +543,8 @@ class Scenery:
                     self.beam('Building_Bridge', 'IlluminatedCream', add(edge_a, (0, 0, -.3)), add(edge_b, (0, 0, -.3)), .10)
                 if length > 14 and self.nearest((a[0] + b[0]) / 2, (a[1] + b[1]) / 2)[1] < sample.half_width:
                     edge_a, edge_b = add(start, mul(side, 2.12)), add(end, mul(side, 2.12))
+                    if sum(a * b for a, b in zip(sub(edge_b, edge_a), (sample.ty, -sample.tx, 0))) < 0:
+                        edge_a, edge_b = edge_b, edge_a
                     self.banner(add(edge_a, (0, 0, -1.4)), add(edge_b, (0, 0, -1.4)), 1.1, 'RaceSign', 'Building_Bridge')
             for x, y in (points[0], points[-1]):
                 road, distance = self.nearest(x, y)

@@ -1,7 +1,7 @@
 {
   "date": "2026-11-05",
   "circuit": "Las Vegas Strip Circuit",
-  "state": "Native asset milestone; final cockpit review, packaged lap and uncapped performance checks in progress.",
+  "state": "Complete: native assets, packaged cockpit and live-lap review accepted.",
   "reference": "Attribution/Sources/lasvegas/night-reference.json",
   "scope": "Las Vegas only; original camera and vehicle handling retained.",
   "geometry": {
@@ -34,11 +34,167 @@
     "python_regressions": 5,
     "mypy": "passed",
     "ruff": "passed",
-    "editor_build": "passed"
+    "editor_build": "passed",
+    "saved_native_asset_verification": "152 reopened meshes match source triangle counts and hashes",
+    "package": "passed, no material shader compile failures",
+    "session_lap_limits": "passed",
+    "live_packaged_flow": {
+      "passed": true,
+      "process_id": 2,
+      "circuits": 1,
+      "real_finite_lap": true,
+      "restart": true,
+      "seconds": 212.537
+    }
   },
   "reviewer": {
     "model": "gpt-6-luna",
     "reasoning_effort": "high",
-    "status": "Reviewing successive night captures; no final approval claimed yet."
-  }
+    "status": "Approved after bridge-sign and barrier-UV fixes, and recorded approach/pass-under/exit checks.",
+    "visual_blockers_open": 0,
+    "coverage": "Nine night cockpit stations, four final signage/bridge rechecks, and 16 station-matched actual driving views spanning curves, kerbs, paved runoff and bridges.",
+    "accepted_polish_items": [
+      "Night haze and light-pool softness differ from the reference.",
+      "Distant city architecture still repeats; the target is the established stylized game presentation."
+    ]
+  },
+  "live_packaged_lap": {
+    "recording": "20261105-140657-01A1AC08",
+    "control": "Full live simulation with the existing Las Vegas-only audit controller at 0.60 pace. Keyboard acceleration/steer/brake and pause/resume also exercised.",
+    "frames": 5145,
+    "max_visual_penetration_m": 0,
+    "offtrack_frames": 0,
+    "barrier_contact_frames": 0,
+    "airborne_frames": 0,
+    "max_speed_kph": 209.7245188993566,
+    "last_lap_seconds": 162.08401111473404,
+    "last_lap_valid": true,
+    "camera_fov_degrees": [
+      90
+    ],
+    "recording_note": "30 fps capped recording with readback/JPEG overhead; not the uncapped performance measurement."
+  },
+  "stationary_capture_stations_m": [
+    1795,
+    5150,
+    5500,
+    3750,
+    650,
+    1982,
+    3270,
+    4800,
+    6120
+  ],
+  "performance": {
+    "resolution": [
+      1600,
+      900
+    ],
+    "screen_percentage": 100,
+    "camera_fov_degrees": 90,
+    "forward_shading": true,
+    "anti_aliasing": "Existing TAA preset",
+    "vsync": false,
+    "frame_cap": 0,
+    "capture_frames": 1400,
+    "measurement_window": "CSV frames 500 through 1399; all 900 sampled frames per circuit have active live simulation. Representative long-straight driving segments, not a full-lap uncapped profile.",
+    "cpu": "Intel Core i7-1255U",
+    "gpu": "Intel Iris Xe",
+    "platform": "Linux Vulkan SM5, Unreal 5.8.3",
+    "command": "make run ARGS=\"-windowed -RenderOffscreen -ForceRes -ResX=1600 -ResY=900 -FFCircuit=<circuit> -FFStation=<start_station_m> -FFDrive -csvCaptureFrames=1400 -csvGpuStats -csvCategories=Basic,FormulaForge -FFCapture=<capture_path> -FFCaptureDelay=60 -FFQuitAfterCapture -ExecCmds=\"t.MaxFPS 0,r.VSync 0,open /Game/Generated/<content_dir>/Review?game=/Script/FormulaForge.FormulaTrialGameMode\"\"",
+    "results": [
+      {
+        "circuit": "lasvegas",
+        "start_station_m": 5500,
+        "samples": 900,
+        "active_simulation_frames": 900,
+        "FrameTime": {
+          "median_ms": 22.0967,
+          "p95_ms": 24.3049,
+          "p99_ms": 27.3092
+        },
+        "GameThreadTime": {
+          "median_ms": 2.497,
+          "p95_ms": 3.005,
+          "p99_ms": 3.599
+        },
+        "RenderThreadTime": {
+          "median_ms": 4.508,
+          "p95_ms": 5.392,
+          "p99_ms": 6.444
+        },
+        "GPUTime": {
+          "median_ms": 17.317500000000003,
+          "p95_ms": 22.334,
+          "p99_ms": 23.758
+        }
+      },
+      {
+        "circuit": "monza",
+        "start_station_m": 5000,
+        "samples": 900,
+        "active_simulation_frames": 900,
+        "FrameTime": {
+          "median_ms": 30.5064,
+          "p95_ms": 36.8951,
+          "p99_ms": 40.6779
+        },
+        "GameThreadTime": {
+          "median_ms": 2.713,
+          "p95_ms": 3.678,
+          "p99_ms": 4.246
+        },
+        "RenderThreadTime": {
+          "median_ms": 4.408,
+          "p95_ms": 5.643,
+          "p99_ms": 6.678
+        },
+        "GPUTime": {
+          "median_ms": 24.4315,
+          "p95_ms": 30.213,
+          "p99_ms": 32.874
+        }
+      },
+      {
+        "circuit": "interlagos",
+        "start_station_m": 3500,
+        "samples": 900,
+        "active_simulation_frames": 900,
+        "FrameTime": {
+          "median_ms": 26.1736,
+          "p95_ms": 29.0624,
+          "p99_ms": 31.6082
+        },
+        "GameThreadTime": {
+          "median_ms": 2.794,
+          "p95_ms": 3.424,
+          "p99_ms": 3.765
+        },
+        "RenderThreadTime": {
+          "median_ms": 4.8055,
+          "p95_ms": 5.687,
+          "p99_ms": 6.408
+        },
+        "GPUTime": {
+          "median_ms": 20.384999999999998,
+          "p95_ms": 26.318,
+          "p99_ms": 28.335
+        }
+      }
+    ]
+  },
+  "memory": {
+    "monitored_jobs": 87,
+    "peak_total_used_bytes": 7766913024,
+    "all_jobs_guarded": true,
+    "heavy_jobs_concurrent": 1
+  },
+  "limits": [
+    "Reference and estimated widths/runoff are visual controls, not a white-line or engineering survey.",
+    "The retained USGS bare-earth survey predates the racing deck; the existing reconstructed elevation profile is retained.",
+    "Casino interiors, temporary event furniture, bridge heights and lighting are original approximations.",
+    "Physical controller hardware has not been tested."
+  ],
+  "evidence_directory": "build/reviews/lasvegas/night",
+  "preserved": "Accepted circuit assets, vehicle tuning, speed/shifting and camera. Pre-existing unrelated working-tree edits excluded from both commits."
 }
