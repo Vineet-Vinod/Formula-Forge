@@ -1,4 +1,5 @@
 #include "track_catalog.hpp"
+#include "core_math.hpp"
 
 #include <algorithm>
 #include <array>
@@ -11,6 +12,7 @@ namespace {
 #include "track_data/silverstone_survey.inc"
 #include "track_data/monza_survey.inc"
 #include "track_data/interlagos_survey.inc"
+#include "track_data/generated_surveys.inc"
 
 constexpr TrackControlPoint kSilverstoneCenterline[] = {
     {69.383f, -231.257f}, {36.068f, -193.943f}, {2.221f, -157.113f},
@@ -188,7 +190,7 @@ constexpr TrackTurnExpectation kInterlagosTurns[] = {
     {"Juncao", 0.778f, TrackTurnDirection::Left},
 };
 
-constexpr std::array<TrackCatalogEntry, 3> kCatalog = {{
+constexpr std::array<TrackCatalogEntry, 22> kCatalog = {{
     {TrackLayoutId::Silverstone,
      "Silverstone",
      "Silverstone Circuit",
@@ -207,7 +209,11 @@ constexpr std::array<TrackCatalogEntry, 3> kCatalog = {{
      kSilverstoneSurveyWidth,
      kSilverstoneSurveyBank,
      kSilverstoneRunoff,
-     {}},    {TrackLayoutId::Monza,
+     {},
+     "silverstone",
+     "Data",
+     "/Game/Generated/SilverstonePresentation",
+     1.38f},    {TrackLayoutId::Monza,
      "Monza",
      "Autodromo Nazionale Monza",
      "Italy",
@@ -225,7 +231,11 @@ constexpr std::array<TrackCatalogEntry, 3> kCatalog = {{
      kMonzaWidth,
      kMonzaBank,
      kMonzaRunoff,
-     {}},    {TrackLayoutId::Interlagos,
+     {},
+     "monza",
+     "Monza/Data",
+     "/Game/Generated/Monza/Review",
+     0.581629f},    {TrackLayoutId::Interlagos,
      "Interlagos",
      "Autodromo Jose Carlos Pace",
      "Brazil",
@@ -243,7 +253,12 @@ constexpr std::array<TrackCatalogEntry, 3> kCatalog = {{
      kInterlagosSurveyWidth,
      kInterlagosSurveyBank,
      kInterlagosRunoff,
-     {}},
+     {},
+     "interlagos",
+     "Interlagos/Data",
+     "/Game/Generated/Interlagos/Review",
+     0.635f},
+#include "track_data/generated_catalog.inc"
 }};
 
 float wrapDistance(float distance, float totalLength) noexcept {
@@ -286,6 +301,12 @@ const TrackCatalogEntry* findTrackCatalogEntry(TrackLayoutId id) noexcept {
     return found == kCatalog.end() ? nullptr : &*found;
 }
 
+const TrackCatalogEntry* findTrackCatalogEntry(std::string_view slug) noexcept {
+    const auto found = std::find_if(kCatalog.begin(), kCatalog.end(),
+                                    [slug](const TrackCatalogEntry& entry) { return entry.slug == slug; });
+    return found == kCatalog.end() ? nullptr : &*found;
+}
+
 float sampleTrackElevationMeters(const TrackCatalogEntry& track, float distanceMeters) noexcept {
     return sampleStations(track.elevationProfile, distanceMeters, track.targetLengthMeters,
                           [](const TrackElevationPoint& point) { return point.elevationMeters; });
@@ -301,6 +322,12 @@ float sampleTrackBankDegrees(const TrackCatalogEntry& track, float distanceMeter
                           [](const TrackBankPoint& point) { return point.angleDegrees; });
 }
 
+float sampleTrackShoulderMeters(const TrackCatalogEntry& track, float distanceMeters, bool left) noexcept {
+    if (track.shoulders.empty()) return track.shoulderMeters;
+    return sampleStations(track.shoulders, distanceMeters, track.targetLengthMeters,
+                          [left](const TrackShoulderPoint& point) { return left ? point.leftMeters : point.rightMeters; });
+}
+
 std::span<const TrackTurnExpectation> trackTurnExpectations(TrackLayoutId id) noexcept {
     switch (id) {
         case TrackLayoutId::Silverstone:
@@ -309,8 +336,10 @@ std::span<const TrackTurnExpectation> trackTurnExpectations(TrackLayoutId id) no
             return kMonzaTurns;
         case TrackLayoutId::Interlagos:
             return kInterlagosTurns;
+#include "track_data/generated_turn_cases.inc"
+        default:
+            return {};
     }
-    return {};
 }
 
 TrackShapeAuditResult auditTrackCatalogShape(const TrackCatalogEntry& track) noexcept {
@@ -336,22 +365,41 @@ TrackShapeAuditResult auditTrackCatalogShape(const TrackCatalogEntry& track) noe
     }
     result.aspectRatio = (maxX - minX) / std::max(0.001f, maxY - minY);
 
-    float expectedAspect = 1.0f;
-    int expectedIntersections = 0;
-    switch (track.id) {
-        case TrackLayoutId::Silverstone:
-            expectedAspect = 1.38f;
-            break;
-        case TrackLayoutId::Monza:
-            expectedAspect = 0.581629f;
-            break;
-        case TrackLayoutId::Interlagos:
-            expectedAspect = 0.635f;
-            break;
+    float expectedAspect = track.referenceAspect;
+    int expectedIntersections = track.referenceCrossings;
+    if (expectedAspect <= 0.0f) {
+        expectedIntersections = 0;
+        switch (track.id) {
+            case TrackLayoutId::Silverstone:
+                expectedAspect = 1.38f;
+                break;
+            case TrackLayoutId::Monza:
+                expectedAspect = 0.581629f;
+                break;
+            case TrackLayoutId::Interlagos:
+                expectedAspect = 0.635f;
+                break;
+            default:
+                break;
+        }
     }
-    result.aspectMatches = std::abs(result.aspectRatio - expectedAspect) <= expectedAspect * 0.12f;
-    const float visibleOrientation = result.signedArea * (track.mirrorCenterlineY ? 1.0f : -1.0f);
-    result.directionMatches = track.clockwise ? visibleOrientation < 0.0f : visibleOrientation > 0.0f;
+    result.aspectMatches = expectedAspect > 0.0f && std::abs(result.aspectRatio - expectedAspect) <= expectedAspect * 0.12f;
+    if (track.headingDirection) {
+        float turn = 0.0f;
+        for (std::size_t i = 0; i < track.centerline.size(); ++i) {
+            const TrackControlPoint& previous = track.centerline[(i + track.centerline.size() - 1) % track.centerline.size()];
+            const TrackControlPoint& current = track.centerline[i];
+            const TrackControlPoint& next = track.centerline[(i + 1) % track.centerline.size()];
+            const float first = std::atan2(current.y - previous.y, current.x - previous.x);
+            const float second = std::atan2(next.y - current.y, next.x - current.x);
+            turn += wrapAngle(second - first);
+        }
+        const float visible = turn * (track.mirrorCenterlineY ? 1.0f : -1.0f);
+        result.directionMatches = track.clockwise ? visible < 0.0f : visible > 0.0f;
+    } else {
+        const float visibleOrientation = result.signedArea * (track.mirrorCenterlineY ? 1.0f : -1.0f);
+        result.directionMatches = track.clockwise ? visibleOrientation < 0.0f : visibleOrientation > 0.0f;
+    }
 
     const auto cross = [](float ax, float ay, float bx, float by) { return ax * by - ay * bx; };
     const std::size_t count = track.centerline.size();

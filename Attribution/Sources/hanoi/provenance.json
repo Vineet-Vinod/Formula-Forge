@@ -1,0 +1,13 @@
+{
+  "circuit": "Hanoi Street Circuit",
+  "layout": "2020 Grand Prix proposal, 5.607 km, 23 turns",
+  "retrieved": "2026-11-04",
+  "status": "not built",
+  "reason": "OpenStreetMap relation 11782124 is not a closed lap. Excluding the pit lane, the mapped pieces form two groups of about 2.6 km and 2.3 km. Their nearest approach is 63 m, but the other ends are about a kilometre apart. The roads in the My Dinh box do not supply the missing section. Joining them with a shortest path adds roughly 1.2 km and would not be the published circuit.",
+  "osm": {
+    "provider": "OpenStreetMap contributors",
+    "licence": "ODbL 1.0",
+    "relation": 11782124,
+    "file": "circuit.osm.json.gz"
+  }
+}

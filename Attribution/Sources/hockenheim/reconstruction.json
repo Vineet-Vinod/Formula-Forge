@@ -1,0 +1,27 @@
+{
+  "slug": "hockenheim",
+  "layout": "Hockenheimring Grand Prix Circuit",
+  "source": "relation-cycle/284588",
+  "measured_m": 4567.174,
+  "published_m": 4574,
+  "published_candidates_m": [
+    4574
+  ],
+  "length_error": 0.00149,
+  "uniform_scale": 1.001495,
+  "target_m": 4574.0,
+  "clockwise": true,
+  "heading_direction_test": false,
+  "crossings": 0,
+  "aspect": 1.59543,
+  "relief_m": 9.177,
+  "elevation_datum_removed_m": 99.136,
+  "samples": 1142,
+  "turns_detected": 13,
+  "turns_published": 17,
+  "buildings": 41,
+  "barrier_vertices": 890,
+  "deck": null,
+  "banks": [],
+  "osm_sha256": "56275637aa0c47babac31f22267df4e74d7f5933f897d165d09e4da2bc749458"
+}

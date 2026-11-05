@@ -1,0 +1,28 @@
+{
+  "slug": "lasvegas",
+  "layout": "Las Vegas Strip Circuit",
+  "source": "relation-cycle/16696508",
+  "measured_m": 6210.203,
+  "published_m": 6201,
+  "published_candidates_m": [
+    6201,
+    6120
+  ],
+  "length_error": 0.00148,
+  "uniform_scale": 0.998518,
+  "target_m": 6201.0,
+  "clockwise": false,
+  "heading_direction_test": false,
+  "crossings": 0,
+  "aspect": 0.59807,
+  "relief_m": 24.46,
+  "elevation_datum_removed_m": 629.0,
+  "samples": 1553,
+  "turns_detected": 14,
+  "turns_published": 17,
+  "buildings": 65,
+  "barrier_vertices": 170,
+  "deck": null,
+  "banks": [],
+  "osm_sha256": "12b048c79d5198824c174f1190f0f6fcbb5d9791ca2a8127fff08a9e92ffcb36"
+}

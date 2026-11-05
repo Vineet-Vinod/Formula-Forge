@@ -12,7 +12,8 @@ fonts that are no longer packaged have been omitted.
 - Copyright: © OpenStreetMap contributors.
 - License: Open Data Commons Open Database License 1.0 (ODbL).
 - Use: meter-projected centerline control points for the additional real-world
-  circuits under `src/track_data/`.
+  circuits. Current files are under `Attribution/Sources/<slug>/` and
+  `Source/FormulaForge/Native/track_data/`. See `docs/circuits.md`.
 - Local modification: selected raceway ways are stitched in mapped one-way
   order, centered, uniformly resampled to remove node-density artifacts, and normalized at
   runtime to the authoritative FIA lap length.

@@ -1,0 +1,28 @@
+{
+  "slug": "singapore",
+  "layout": "Marina Bay Street Circuit",
+  "source": "relation-cycle/421263",
+  "measured_m": 4956.775,
+  "published_m": 4940,
+  "published_candidates_m": [
+    4940,
+    5065
+  ],
+  "length_error": 0.0034,
+  "uniform_scale": 0.996616,
+  "target_m": 4940.0,
+  "clockwise": false,
+  "heading_direction_test": false,
+  "crossings": 0,
+  "aspect": 1.57252,
+  "relief_m": 20.046,
+  "elevation_datum_removed_m": 2.7,
+  "samples": 1239,
+  "turns_detected": 17,
+  "turns_published": 19,
+  "buildings": 32,
+  "barrier_vertices": 43,
+  "deck": null,
+  "banks": [],
+  "osm_sha256": "f0ad1bd81537cdee74eeb610667f7a81dca9a4e914e1e52596a720bd300593de"
+}

@@ -2,7 +2,7 @@
   "FileVersion": 3,
   "EngineAssociation": "5.8",
   "Category": "Games",
-  "Description": "Unreal-only Formula Forge: Ferrari time trials at Silverstone, Monza and Interlagos",
+  "Description": "Unreal-only Formula Forge: Ferrari time trials",
   "DisableEnginePluginsByDefault": true,
   "Modules": [
     {
@@ -22,6 +22,10 @@
       "TargetAllowList": [
         "Editor"
       ]
+    },
+    {
+      "Name": "ProceduralMeshComponent",
+      "Enabled": true
     },
     {
       "Name": "EditorScriptingUtilities",

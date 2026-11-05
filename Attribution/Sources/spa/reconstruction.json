@@ -1,0 +1,27 @@
+{
+  "slug": "spa",
+  "layout": "Spa-Francorchamps Circuit",
+  "source": "relation/284560",
+  "measured_m": 6998.732,
+  "published_m": 7004,
+  "published_candidates_m": [
+    7004
+  ],
+  "length_error": 0.00075,
+  "uniform_scale": 1.000753,
+  "target_m": 7004.0,
+  "clockwise": true,
+  "heading_direction_test": false,
+  "crossings": 0,
+  "aspect": 0.61634,
+  "relief_m": 99.798,
+  "elevation_datum_removed_m": 365.439,
+  "samples": 1750,
+  "turns_detected": 21,
+  "turns_published": 19,
+  "buildings": 35,
+  "barrier_vertices": 1151,
+  "deck": null,
+  "banks": [],
+  "osm_sha256": "8d6274f04e7f8183dcebcdf4a116ccbe7fd3b6a740bf8f27be3cc9c3a2281499"
+}

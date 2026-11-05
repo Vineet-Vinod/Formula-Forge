@@ -3,6 +3,7 @@
 #include "CoreMinimal.h"
 #include "Engine/StreamableManager.h"
 #include "GameFramework/Actor.h"
+#include "ProceduralMeshComponent.h"
 #include "FFPresentation.generated.h"
 
 class UStaticMeshComponent;
@@ -37,6 +38,8 @@ private:
     double LastCollectionSeconds = 0.0;
     bool FullDetail = false;
     bool SilverstoneTiles = false;
+    int32 ProceduralSections = 0;
+    UPROPERTY() TArray<TObjectPtr<UProceduralMeshComponent>> Ribbon;
     FIntPoint RenderBudget = FIntPoint(1600, 900);
     FIntPoint LastViewportSize = FIntPoint::ZeroValue;
     float PresetScreenPercentage = 100.0f;

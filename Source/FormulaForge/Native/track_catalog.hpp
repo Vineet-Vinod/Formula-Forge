@@ -20,6 +20,13 @@ struct TrackGradeSeparation {
     float minimumVerticalClearanceMeters = 0.0f;
 };
 
+// Distance from the outside of the kerb to the wall. Left is the driver's left.
+struct TrackShoulderPoint {
+    float distanceMeters = 0.0f;
+    float leftMeters = 8.0f;
+    float rightMeters = 8.0f;
+};
+
 struct TrackCatalogEntry {
     TrackLayoutId id{};
     std::string_view displayName;
@@ -40,14 +47,26 @@ struct TrackCatalogEntry {
     std::span<const TrackBankPoint> bankProfile;
     std::span<const TrackRunoffZone> runoffProfile;
     std::span<const TrackGradeSeparation> gradeSeparations;
+    std::string_view slug;
+    std::string_view contentDir;
+    std::string_view mapPath;
+    float referenceAspect = 0.0f;
+    int referenceCrossings = 0;
+    bool generated = false;
+    bool headingDirection = false;
+    bool deckSeparation = false;
+    float shoulderMeters = 8.0f;
+    std::span<const TrackShoulderPoint> shoulders{};
 };
 
 std::span<const TrackCatalogEntry> trackCatalog() noexcept;
 const TrackCatalogEntry* findTrackCatalogEntry(TrackLayoutId id) noexcept;
 
+const TrackCatalogEntry* findTrackCatalogEntry(std::string_view slug) noexcept;
 float sampleTrackElevationMeters(const TrackCatalogEntry& track, float distanceMeters) noexcept;
 float sampleTrackWidthMeters(const TrackCatalogEntry& track, float distanceMeters) noexcept;
 float sampleTrackBankDegrees(const TrackCatalogEntry& track, float distanceMeters) noexcept;
+float sampleTrackShoulderMeters(const TrackCatalogEntry& track, float distanceMeters, bool left) noexcept;
 
 enum class TrackTurnDirection : int {
     Right = -1,

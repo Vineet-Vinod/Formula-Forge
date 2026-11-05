@@ -1,0 +1,27 @@
+{
+  "slug": "turkey",
+  "layout": "Istanbul Park",
+  "source": "way/179048507",
+  "measured_m": 5347.926,
+  "published_m": 5338,
+  "published_candidates_m": [
+    5338
+  ],
+  "length_error": 0.00186,
+  "uniform_scale": 0.998144,
+  "target_m": 5338.0,
+  "clockwise": false,
+  "heading_direction_test": false,
+  "crossings": 0,
+  "aspect": 1.14695,
+  "relief_m": 35.312,
+  "elevation_datum_removed_m": 109.0,
+  "samples": 1337,
+  "turns_detected": 15,
+  "turns_published": 14,
+  "buildings": 8,
+  "barrier_vertices": 22,
+  "deck": null,
+  "banks": [],
+  "osm_sha256": "98dc10ad186f92f0997cec890b6bd7d17978dd61eaff54e94c4a6f5dac829ba4"
+}

@@ -7,6 +7,7 @@
 #include "FFDriveSurface.hpp"
 #include "FFTrackLimits.hpp"
 #include "FFPitLane.hpp"
+#include "generated_circuit.hpp"
 #include <vector>
 
 struct FFTrackProjection {
@@ -81,8 +82,11 @@ private:
     std::vector<AuthoredBarrierSegment> barriers;
     std::span<const AuthoredSurfaceTriangle> runoff;
     const AuthoredGroundGrid* ground = nullptr;
+    GeneratedSupport generatedSupport;
     FFTrackLimits pitTrackLimits;
     mutable bool projectionCached = false;
     mutable Vec2 projectionPosition;
     mutable FFTrackProjection projectionResult;
+    mutable float continuityStation = 0.0f;
+    mutable bool continuityValid = false;
 };

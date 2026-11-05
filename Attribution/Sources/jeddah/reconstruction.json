@@ -1,0 +1,27 @@
+{
+  "slug": "jeddah",
+  "layout": "joined raceway",
+  "source": "cycle",
+  "measured_m": 6192.579,
+  "published_m": 6174,
+  "published_candidates_m": [
+    6174
+  ],
+  "length_error": 0.00301,
+  "uniform_scale": 0.997,
+  "target_m": 6174.0,
+  "clockwise": false,
+  "heading_direction_test": false,
+  "crossings": 0,
+  "aspect": 0.21364,
+  "relief_m": 3.937,
+  "elevation_datum_removed_m": 0.063,
+  "samples": 1548,
+  "turns_detected": 24,
+  "turns_published": 27,
+  "buildings": 7,
+  "barrier_vertices": 0,
+  "deck": null,
+  "banks": [],
+  "osm_sha256": "5ddffb70edee68fdf0d697feee56f5ef3ad94a9e1cd43e4743f88465f1e49502"
+}

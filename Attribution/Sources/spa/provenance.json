@@ -1,0 +1,57 @@
+{
+  "circuit": "Circuit de Spa-Francorchamps",
+  "layout": "Spa-Francorchamps Circuit",
+  "layout_year_intent": "Current Grand Prix layout where the circuit is live; last Formula 1 layout where it is not. The mapped OpenStreetMap loop was selected by published length.",
+  "retrieved": "2026-11-04",
+  "origin": {
+    "latitude": 50.43692871812283,
+    "longitude": 5.968058873500654,
+    "meaning": "Local source origin at the point on the loop nearest the venue coordinate, after rotation to the start."
+  },
+  "projection": "Local tangent plane, x east metres, y north metres. Vertical values are relative to the lowest smoothed sample on the lap.",
+  "route": {
+    "provider": "OpenStreetMap contributors",
+    "licence": "ODbL 1.0",
+    "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "query_radius_m": 3500,
+    "file": "circuit.osm.json.gz",
+    "sha256": "8d6274f04e7f8183dcebcdf4a116ccbe7fd3b6a740bf8f27be3cc9c3a2281499",
+    "chosen": "relation/284560",
+    "measured_plan_m": 6998.732,
+    "published_m": 7004,
+    "uniform_scale": 1.000753,
+    "scale_rule": "Applied only when the mapped plan was within 1.5% of a published length. Larger gaps keep the mapped length."
+  },
+  "elevation": {
+    "provider": "Open-Meteo Elevation API",
+    "dataset": "Copernicus DEM GLO-90",
+    "dataset_note": "Surface model, about 90 m, includes roofs and canopy. Not a bare-earth racing survey.",
+    "licence": "Copernicus DEM, see https://registry.opendata.aws/copernicus-dem/",
+    "retrieved": "2026-11-04",
+    "sample_spacing_m": 35.7,
+    "smoothing": "Two circular binomial passes on the coarse samples, then linear interpolation onto the 4 m centreline. Isolated samples more than 6 m above their neighbours were treated as overpasses or roofs.",
+    "relative_datum": "Heights stored after subtracting the lap minimum.",
+    "removed_minimum_m": 365.439,
+    "relief_m": 99.798,
+    "uncertainty_m": 5,
+    "deck": null
+  },
+  "width": {
+    "base_m": 12.0,
+    "straight_m": 15.0,
+    "method": "Authored from typical Grade 1 asphalt width, wider on low-curvature sections. Not a traced white-line survey."
+  },
+  "shoulders": {
+    "default_m": 10.0,
+    "method": "Nearest OSM barrier vertex on each side, median-smoothed, clamped to 1.2-24 m outside the kerb. Missing sides keep the venue default.",
+    "barrier_file": "barriers.osm.json.gz"
+  },
+  "banking": "Neutral. No published camber was anchored to a detected corner.",
+  "buildings": {
+    "count": 35,
+    "method": "OSM footprints within 14-85 m of the centreline, extruded to a tagged height or a default. Roof shape is flat.",
+    "licence": "ODbL 1.0"
+  },
+  "protection": "Both sides are walled at the shoulder offset. Pit entry is closed. That closure is a game boundary, not a claim about the real pit lane.",
+  "not_claimed": "No lidar, no orthophoto registration, no cockpit capture in this build. Centimetre storage is not centimetre accuracy."
+}

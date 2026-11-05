@@ -9,7 +9,7 @@ public class FormulaForge : ModuleRules
         bUseUnity = false;
         CppStandard = CppStandardVersion.Cpp20;
         PublicDependencyModuleNames.AddRange(new[] { "Core", "CoreUObject", "Engine", "InputCore" });
-        PrivateDependencyModuleNames.AddRange(new[] { "RenderCore", "RHI", "Json", "ImageCore", "SlateCore", "Slate", "MoviePlayer" });
+        PrivateDependencyModuleNames.AddRange(new[] { "RenderCore", "RHI", "Json", "ImageCore", "SlateCore", "Slate", "MoviePlayer", "ProceduralMeshComponent" });
         PublicIncludePaths.Add(Path.GetFullPath(Path.Combine(ModuleDirectory, "Native")));
     }
 }

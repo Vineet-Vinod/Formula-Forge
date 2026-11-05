@@ -82,11 +82,11 @@ void AFormulaTrialPawn::BeginPlay() {
     session->Screen = EFFScreen::Loading;
     const FString circuit = session->Circuit();
     Automatic = session->Automatic;
-    const bool silverstone = circuit.IsEmpty() || circuit == TEXT("silverstone");
-    const FString dataRoot = silverstone ? TEXT("Generated/Data") :
-        TEXT("Generated/") + (circuit == TEXT("monza") ? FString(TEXT("Monza")) : FString(TEXT("Interlagos"))) + TEXT("/Data");
-    Simulation = FFSimulation(circuit == TEXT("monza") ? TrackLayoutId::Monza :
-        circuit == TEXT("interlagos") ? TrackLayoutId::Interlagos : TrackLayoutId::Silverstone);
+    const TrackCatalogEntry* entry = findTrackCatalogEntry(std::string_view(TCHAR_TO_UTF8(*circuit)));
+    if (entry == nullptr) entry = findTrackCatalogEntry(TrackLayoutId::Silverstone);
+    const bool silverstone = entry->id == TrackLayoutId::Silverstone;
+    const FString dataRoot = FString(TEXT("Generated/")) + UTF8_TO_TCHAR(entry->contentDir.data());
+    Simulation = FFSimulation(entry->id);
     BestLapPath = FPaths::ProjectSavedDir() / (silverstone ? FString(TEXT("best-lap.txt")) : TEXT("best-lap-") + circuit + TEXT(".txt"));
     if (!silverstone && (FParse::Param(FCommandLine::Get(), TEXT("FFNationalPit")) ||
         FCString::Strstr(FCommandLine::Get(), TEXT("FFPitDistance=")) != nullptr ||

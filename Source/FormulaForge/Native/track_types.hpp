@@ -9,7 +9,31 @@ struct TrackControlPoint {
     float y = 0.0f;
 };
 
-enum class TrackLayoutId { Silverstone = 2, Monza = 3, Interlagos = 4 };
+enum class TrackLayoutId {
+    Silverstone = 2,
+    Monza = 3,
+    Interlagos = 4,
+    Bahrain = 5,
+    Jeddah = 6,
+    Australia = 7,
+    Japan = 8,
+    China = 9,
+    Canada = 10,
+    Monaco = 11,
+    Austria = 12,
+    Spa = 13,
+    Zandvoort = 14,
+    Baku = 15,
+    Malaysia = 16,
+    Singapore = 17,
+    Cota = 18,
+    LasVegas = 19,
+    Turkey = 20,
+    Portimao = 21,
+    Buddh = 22,
+    Hanoi = 23,
+    Hockenheim = 24,
+};
 
 struct TrackElevationPoint {
     float distanceMeters = 0.0f;

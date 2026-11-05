@@ -405,5 +405,6 @@ void AFormulaTrialHUD::DrawHUD() {
 
 void AFormulaTrialHUD::NotifyHitBoxClick(FName boxName) {
     const FString action = boxName.ToString();
-    if (action.StartsWith(TEXT("Action_"))) GetGameInstance<UFFSession>()->Activate(FCString::Atoi(*action.Mid(7)));
+    if (action.StartsWith(TEXT("Circuit_"))) GetGameInstance<UFFSession>()->SelectCircuit(FCString::Atoi(*action.Mid(8)));
+    else if (action.StartsWith(TEXT("Action_"))) GetGameInstance<UFFSession>()->Activate(FCString::Atoi(*action.Mid(7)));
 }

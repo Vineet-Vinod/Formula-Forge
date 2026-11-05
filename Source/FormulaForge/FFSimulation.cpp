@@ -160,11 +160,17 @@ FFSimulation::FFSimulation(TrackLayoutId layout) : circuit(layout),
         barriers.assign(FFInterlagosGeometry.barriers.begin(), FFInterlagosGeometry.barriers.end());
         runoff = FFInterlagosGeometry.runoff;
         ground = &FFInterlagosGeometry.ground;
-    } else {
+    } else if (!track->generated) {
         barriers.assign(std::begin(kSilverstoneRebuildBarriers), std::end(kSilverstoneRebuildBarriers));
         barriers.insert(barriers.end(), kSilverstoneChapelBarriers.begin(), kSilverstoneChapelBarriers.end());
         runoff = kSilverstoneSurveyRunoff;
         ground = &kSilverstoneGround;
+    } else {
+        const std::vector<CircuitSample> samples = sampleCircuit(*track);
+        buildGeneratedSupport(*track, samples, generatedSupport);
+        barriers = generatedSupport.barriers;
+        runoff = generatedSupport.runoff;
+        ground = &generatedSupport.ground;
     }
     tuning = SilverstoneTuning();
     plan = authoredCircuitPlan(track->centerline, track->centerlineScale, lapLength, Units, track->mirrorCenterlineY, 1536);
@@ -207,14 +213,32 @@ FFTrackProjection FFSimulation::Project(Vec2 position) const {
     }
     float bestDistance = std::numeric_limits<float>::max();
     float station = 0.0f;
+    float continuousDistance = std::numeric_limits<float>::max();
+    float continuousStation = 0.0f;
     for (std::size_t index = 0; index < plan.size(); ++index) {
         const Vec2 segment = plan[(index + 1) % plan.size()] - plan[index];
         const float blend = std::clamp(dot(position - plan[index], segment) / std::max(0.001f, lengthSq(segment)), 0.0f, 1.0f);
         const float distance = lengthSq(position - (plan[index] + segment * blend));
+        const float candidate = (index + blend) * lapLength / plan.size();
         if (distance < bestDistance) {
             bestDistance = distance;
-            station = (index + blend) * lapLength / plan.size();
+            station = candidate;
         }
+        if (track->deckSeparation && continuityValid) {
+            float gap = std::abs(candidate - continuityStation);
+            gap = std::min(gap, lapLength - gap);
+            if (gap < 40.0f && distance < continuousDistance) {
+                continuousDistance = distance;
+                continuousStation = candidate;
+            }
+        }
+    }
+    if (track->deckSeparation && continuityValid && continuousDistance <= bestDistance + (6.0f * 17.0f) * (6.0f * 17.0f)) {
+        station = continuousStation;
+    }
+    if (track->deckSeparation) {
+        continuityStation = station;
+        continuityValid = true;
     }
     FFTrackProjection projection = Sample(station);
     projection.lane = dot(position - projection.position, Vec2{-projection.tangent.y, projection.tangent.x});
@@ -229,8 +253,15 @@ float FFSimulation::Ground(Vec2 position, bool protectMainRoad) const {
     const float road = projection.elevation + projection.bankSlope * projection.lane;
     const float blend = smoothstep(std::clamp((std::abs(projection.lane) / Units - projection.halfWidth) / 4.0f, 0.0f, 1.0f));
     float nativeGround = road;
-    if (ground != nullptr) {
-        nativeGround = lerp(road, authoredGridElevationMeters(*ground, position) * Units, blend);
+    const AuthoredGroundGrid* grid = ground;
+    AuthoredGroundGrid generatedGrid;
+    if (track->generated) {
+        generatedGrid = generatedSupport.ground;
+        generatedGrid.heights = generatedSupport.heights;
+        grid = &generatedGrid;
+    }
+    if (grid != nullptr && grid->columns > 1 && !grid->heights.empty()) {
+        nativeGround = lerp(road, authoredGridElevationMeters(*grid, position) * Units, blend);
     } else {
         const float transition = (projection.halfWidth + 4.0f) * Units;
         if (std::abs(projection.lane) > transition) {
@@ -257,11 +288,13 @@ float FFSimulation::Ground(Vec2 position, bool protectMainRoad) const {
 }
 
 float FFSimulation::VisualGround(Vec2 position) const {
+    if (track->deckSeparation) return Ground(position);
     const auto height = driveSurface.Height(position.x / Units, -position.y / Units);
     return height ? *height * Units : Ground(position);
 }
 
 void FFSimulation::Reset(float station) {
+    continuityValid = false;
     if (station < 0.0f) station = wrapDistance(trial.startStation - 20.0f, lapLength);
     const FFTrackProjection projection = Sample(station);
     vehicle = ArcadeVehicleState{};
@@ -275,7 +308,7 @@ void FFSimulation::Reset(float station) {
 
 float FFSimulation::GripScale(const FFTrackProjection& projection) const {
     const float curvature = projection.curvature / (16.0f * lapLength / plan.size());
-    if (curvature <= 0.00001f) return 1.0f;
+    if (curvature <= 0.00001f || track->generated) return 1.0f;
     float scale = 1.0f;
     const float phase = projection.station / lapLength;
     const std::span<const CornerTarget> targets = circuit == TrackLayoutId::Monza
@@ -320,7 +353,8 @@ ArcadeSurface FFSimulation::Surface(const FFTrackProjection& projection) const {
     bool asphalt = false;
     bool gravel = false;
     if (loose > 0.001f) {
-        for (const AuthoredSurfaceTriangle& triangle : runoff) {
+        const std::span<const AuthoredSurfaceTriangle> looseSurface = track->generated ? std::span<const AuthoredSurfaceTriangle>(generatedSupport.runoff) : runoff;
+        for (const AuthoredSurfaceTriangle& triangle : looseSurface) {
             if (insideAuthoredSurface(vehicle.pos, triangle)) {
                 asphalt = triangle.asphalt;
                 gravel = !asphalt;

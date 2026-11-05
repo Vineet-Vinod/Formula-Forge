@@ -1,0 +1,31 @@
+{
+  "slug": "japan",
+  "layout": "Suzuka International Racing Course",
+  "source": "relation/284570",
+  "measured_m": 5809.557,
+  "published_m": 5807,
+  "published_candidates_m": [
+    5807
+  ],
+  "length_error": 0.00044,
+  "uniform_scale": 0.99956,
+  "target_m": 5807.0,
+  "clockwise": true,
+  "heading_direction_test": false,
+  "crossings": 1,
+  "aspect": 1.87161,
+  "relief_m": 50.861,
+  "elevation_datum_removed_m": 15.51,
+  "samples": 1452,
+  "turns_detected": 19,
+  "turns_published": 18,
+  "buildings": 64,
+  "barrier_vertices": 788,
+  "deck": {
+    "bridge_station_m": 2263.6101928374655,
+    "underpass_station_m": 4643.2004132231405,
+    "modeled_clearance_m": 6.2
+  },
+  "banks": [],
+  "osm_sha256": "cc3617f784368d2a6fc784ae3d9996b8c08afba8675e131c55dc40774b191566"
+}

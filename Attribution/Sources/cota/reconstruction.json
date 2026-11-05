@@ -1,0 +1,28 @@
+{
+  "slug": "cota",
+  "layout": "Circuit of the Americas",
+  "source": "relation/6537729",
+  "measured_m": 5504.318,
+  "published_m": 5513,
+  "published_candidates_m": [
+    5513,
+    5470
+  ],
+  "length_error": 0.00157,
+  "uniform_scale": 1.001577,
+  "target_m": 5513.0,
+  "clockwise": false,
+  "heading_direction_test": false,
+  "crossings": 0,
+  "aspect": 1.74957,
+  "relief_m": 21.933,
+  "elevation_datum_removed_m": 151.816,
+  "samples": 1376,
+  "turns_detected": 18,
+  "turns_published": 20,
+  "buildings": 22,
+  "barrier_vertices": 485,
+  "deck": null,
+  "banks": [],
+  "osm_sha256": "856d21074ce5f37a05201c31e1774d9f8ad467891a39438856b45e7b96b498ca"
+}

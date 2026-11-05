@@ -20,7 +20,7 @@ flow-check:
 CPPFLAGS := -ISource/FormulaForge -ISource/FormulaForge/Native
 CXXFLAGS := -std=c++20 -O2 -Wall -Wextra -Wpedantic
 SIMULATION := FFSimulation FFMonzaGeometry FFInterlagosGeometry FFTrackLimits FFPitLane FFDriveSurface
-NATIVE := arcade_vehicle track_catalog silverstone_chapel_barriers
+NATIVE := arcade_vehicle track_catalog silverstone_chapel_barriers generated_circuit
 OBJECTS := $(addprefix build/tests/,$(addsuffix .o,$(SIMULATION) $(NATIVE)))
 -include $(OBJECTS:.o=.d)
 build/tests/%.o: Source/FormulaForge/%.cpp
@@ -34,11 +34,18 @@ build/tests/circuit-audit: Tests/circuit_audit.cpp $(OBJECTS)
 build/tests/camera-audit: Tests/camera_audit.cpp Source/FormulaForge/FFCameraMotion.cpp
 	mkdir -p build/tests build/tmp
 	TMPDIR="$(CURDIR)/build/tmp" $(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
-.PHONY: native-check
-native-check: build/tests/circuit-audit build/tests/camera-audit build/tests/surface-audit
+.PHONY: native-check circuits
+native-check: build/tests/export-surfaces build/tests/circuit-audit build/tests/camera-audit build/tests/surface-audit
+	build/tests/export-surfaces
 	build/tests/circuit-audit
 	build/tests/camera-audit
 	build/tests/surface-audit
+circuits:
+	python3 tools/build_circuits.py
+	$(MAKE) build/tests/export-surfaces
+	build/tests/export-surfaces
 
 build/tests/surface-audit: Tests/surface_audit.cpp $(OBJECTS)
+	TMPDIR="$(CURDIR)/build/tmp" $(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
+build/tests/export-surfaces: Tests/export_surfaces.cpp $(OBJECTS)
 	TMPDIR="$(CURDIR)/build/tmp" $(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@

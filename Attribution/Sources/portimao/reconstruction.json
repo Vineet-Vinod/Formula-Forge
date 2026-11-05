@@ -1,0 +1,27 @@
+{
+  "slug": "portimao",
+  "layout": "joined raceway",
+  "source": "cycle",
+  "measured_m": 4661.428,
+  "published_m": 4653,
+  "published_candidates_m": [
+    4653
+  ],
+  "length_error": 0.00181,
+  "uniform_scale": 0.998192,
+  "target_m": 4653.0,
+  "clockwise": true,
+  "heading_direction_test": false,
+  "crossings": 0,
+  "aspect": 0.60587,
+  "relief_m": 27.943,
+  "elevation_datum_removed_m": 96.0,
+  "samples": 1165,
+  "turns_detected": 16,
+  "turns_published": 15,
+  "buildings": 11,
+  "barrier_vertices": 354,
+  "deck": null,
+  "banks": [],
+  "osm_sha256": "8e1e248dfd2ab3276bf30f478f30dbde1c70ea026f4f2b6d302e5acd495f9baf"
+}

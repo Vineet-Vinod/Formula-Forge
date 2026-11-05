@@ -1,0 +1,28 @@
+{
+  "slug": "buddh",
+  "layout": "Buddh International Circuit",
+  "source": "relation/2532569",
+  "measured_m": 5137.107,
+  "published_m": 5141,
+  "published_candidates_m": [
+    5125,
+    5141
+  ],
+  "length_error": 0.00076,
+  "uniform_scale": 1.000758,
+  "target_m": 5141.0,
+  "clockwise": true,
+  "heading_direction_test": false,
+  "crossings": 0,
+  "aspect": 0.51477,
+  "relief_m": 13.231,
+  "elevation_datum_removed_m": 191.443,
+  "samples": 1284,
+  "turns_detected": 16,
+  "turns_published": 16,
+  "buildings": 1,
+  "barrier_vertices": 27,
+  "deck": null,
+  "banks": [],
+  "osm_sha256": "401546c3547acbe0da1e365722d01470f4203cefd5a95c3bc2561835bf06bb58"
+}

@@ -1,0 +1,27 @@
+{
+  "slug": "china",
+  "layout": "Shanghai International Circuit",
+  "source": "relation/2094941",
+  "measured_m": 5460.772,
+  "published_m": 5451,
+  "published_candidates_m": [
+    5451
+  ],
+  "length_error": 0.00179,
+  "uniform_scale": 0.99821,
+  "target_m": 5451.0,
+  "clockwise": true,
+  "heading_direction_test": false,
+  "crossings": 0,
+  "aspect": 1.14009,
+  "relief_m": 8.688,
+  "elevation_datum_removed_m": 2.0,
+  "samples": 1365,
+  "turns_detected": 12,
+  "turns_published": 16,
+  "buildings": 26,
+  "barrier_vertices": 59,
+  "deck": null,
+  "banks": [],
+  "osm_sha256": "397eca41ec5c3ca573c454db754f1ad2cca4515c54dea8123004067fa7715e79"
+}

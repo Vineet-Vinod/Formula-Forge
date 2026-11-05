@@ -1,0 +1,27 @@
+{
+  "slug": "bahrain",
+  "layout": "Grand Prix Circuit",
+  "source": "name:Grand Prix Circuit",
+  "measured_m": 5422.525,
+  "published_m": 5412,
+  "published_candidates_m": [
+    5412
+  ],
+  "length_error": 0.00194,
+  "uniform_scale": 0.998059,
+  "target_m": 5412.0,
+  "clockwise": true,
+  "heading_direction_test": false,
+  "crossings": 0,
+  "aspect": 0.67174,
+  "relief_m": 19.736,
+  "elevation_datum_removed_m": 6.254,
+  "samples": 1356,
+  "turns_detected": 13,
+  "turns_published": 15,
+  "buildings": 45,
+  "barrier_vertices": 546,
+  "deck": null,
+  "banks": [],
+  "osm_sha256": "3075d9b831e64cd6b15cfe336e5c9588e3be51236a040a9f992770a90420a722"
+}

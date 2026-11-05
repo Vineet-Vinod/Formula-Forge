@@ -1,0 +1,27 @@
+{
+  "slug": "malaysia",
+  "layout": "Sepang International Circuit",
+  "source": "relation/284496",
+  "measured_m": 5547.698,
+  "published_m": 5543,
+  "published_candidates_m": [
+    5543
+  ],
+  "length_error": 0.00085,
+  "uniform_scale": 0.999153,
+  "target_m": 5543.0,
+  "clockwise": true,
+  "heading_direction_test": false,
+  "crossings": 0,
+  "aspect": 1.21798,
+  "relief_m": 21.0,
+  "elevation_datum_removed_m": 23.0,
+  "samples": 1387,
+  "turns_detected": 16,
+  "turns_published": 15,
+  "buildings": 23,
+  "barrier_vertices": 168,
+  "deck": null,
+  "banks": [],
+  "osm_sha256": "4750bef8185206e6265874c342a757326de98a0781ccba45a8c2380b93af0c38"
+}

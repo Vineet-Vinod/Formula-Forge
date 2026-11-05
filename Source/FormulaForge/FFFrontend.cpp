@@ -95,16 +95,23 @@ void DrawFormulaFrontend(AHUD& hud, UCanvas& canvas, UFFSession& session) {
         painter.Rect(panelX, 190, 600, 4, Accent);
         painter.Text(TEXT("CIRCUIT"), panelX + 28, 214, 15, Muted);
         const auto tracks = trackCatalog();
-        for (int32 index = 0; index < 3; ++index) {
-            const float x = panelX + 24 + index * 186;
-            Button(hud, painter, session, index, UTF8_TO_TCHAR(tracks[index].displayName.data()), x, 253, 180, 50,
-                session.CircuitIndex == index);
+        const int32 count = static_cast<int32>(tracks.size());
+        const int32 window = 8;
+        const int32 first = FMath::Clamp(session.CircuitIndex - 3, 0, FMath::Max(0, count - window));
+        for (int32 row = 0; row < window && first + row < count; ++row) {
+            const int32 index = first + row;
+            const float y = 246 + row * 28;
+            const bool selected = index == session.CircuitIndex;
+            painter.Rect(panelX + 24, y, 250, 26, selected ? Accent : Card);
+            painter.Text(UTF8_TO_TCHAR(tracks[index].displayName.data()), panelX + 36, y + 4, 16, White, 0, 220);
+            hud.AddHitBox(painter.Pixel({panelX + 24, y}), painter.Pixel({250, 26}),
+                FName(*FString::Printf(TEXT("Circuit_%d"), index)), true);
         }
-        const auto& track = tracks[session.CircuitIndex];
-        painter.Text(UTF8_TO_TCHAR(track.country.data()), panelX + 30, 333, 17, Muted);
-        painter.Text(session.CircuitTitle().ToUpper(), panelX + 30, 365, 43, White);
-        Outline(painter, track, {panelX + 130, 436}, {340, 204}, White);
-        painter.Text(FString::Printf(TEXT("%.3f KM   /   %d CORNERS"), track.targetLengthMeters / 1000, track.turnCount), panelX + 300, 672, 18, Muted, .5f);
+        const auto& track = tracks[static_cast<std::size_t>(session.CircuitIndex)];
+        painter.Text(UTF8_TO_TCHAR(track.country.data()), panelX + 292, 250, 16, Muted);
+        painter.Text(session.CircuitTitle().ToUpper(), panelX + 292, 274, 28, White, 0, 280);
+        Outline(painter, track, {panelX + 300, 360}, {250, 180}, White);
+        painter.Text(FString::Printf(TEXT("%.3f KM   /   %d CORNERS"), track.targetLengthMeters / 1000, track.turnCount), panelX + 300, 560, 16, Muted);
         painter.Rect(panelX + 28, 715, 544, 1, Rule);
         painter.Text(TEXT("TIMED LAPS"), panelX + 28, 736, 16, Muted);
         Button(hud, painter, session, 3, TEXT("-"), panelX + 218, 727, 48, 48);

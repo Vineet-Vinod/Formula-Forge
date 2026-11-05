@@ -1,0 +1,28 @@
+{
+  "slug": "baku",
+  "layout": "Baku City Circuit",
+  "source": "relation/11266687",
+  "measured_m": 5971.006,
+  "published_m": 6003,
+  "published_candidates_m": [
+    6003,
+    6006
+  ],
+  "length_error": 0.00533,
+  "uniform_scale": 1.005358,
+  "target_m": 6003.0,
+  "clockwise": false,
+  "heading_direction_test": false,
+  "crossings": 0,
+  "aspect": 1.36019,
+  "relief_m": 36.916,
+  "elevation_datum_removed_m": -24.747,
+  "samples": 1493,
+  "turns_detected": 17,
+  "turns_published": 20,
+  "buildings": 214,
+  "barrier_vertices": 70,
+  "deck": null,
+  "banks": [],
+  "osm_sha256": "f7e01e7106e0601e23c11b9d982250153dd915487c499dbe07c903800b574180"
+}

@@ -1,5 +1,6 @@
 #include "FFSession.h"
 #include "FFGame.h"
+#include "track_catalog.hpp"
 #include "Camera/CameraActor.h"
 #include "EngineUtils.h"
 #include "Framework/Application/SlateApplication.h"
@@ -17,9 +18,11 @@
 
 namespace {
 constexpr int32 LapLimits[] = {0, 1, 3, 5, 10};
-const TCHAR* Circuits[] = {TEXT("silverstone"), TEXT("monza"), TEXT("interlagos")};
-const TCHAR* Titles[] = {TEXT("Silverstone"), TEXT("Monza"), TEXT("Interlagos")};
-const TCHAR* Maps[] = {TEXT("/Game/Generated/SilverstonePresentation"), TEXT("/Game/Generated/Monza/Review"), TEXT("/Game/Generated/Interlagos/Review")};
+
+const TrackCatalogEntry& Selected(int32 index) {
+    const auto tracks = trackCatalog();
+    return tracks[static_cast<std::size_t>(FMath::Clamp(index, 0, static_cast<int32>(tracks.size()) - 1))];
+}
 }
 
 void UFFSession::Init() {
@@ -30,7 +33,10 @@ void UFFSession::Init() {
 #endif
     FString circuit;
     if (FParse::Value(FCommandLine::Get(), TEXT("FFCircuit="), circuit)) {
-        for (int32 index = 0; index < 3; ++index) if (circuit.Equals(Circuits[index], ESearchCase::IgnoreCase)) CircuitIndex = index;
+        const auto tracks = trackCatalog();
+        for (int32 index = 0; index < static_cast<int32>(tracks.size()); ++index) {
+            if (circuit.Equals(UTF8_TO_TCHAR(tracks[index].slug.data()), ESearchCase::IgnoreCase)) CircuitIndex = index;
+        }
     }
 }
 
@@ -41,10 +47,15 @@ void UFFSession::Shutdown() {
 }
 
 FString UFFSession::Circuit() const {
-    return Circuits[CircuitIndex];
+    return UTF8_TO_TCHAR(Selected(CircuitIndex).slug.data());
 }
 FString UFFSession::CircuitTitle() const {
-    return Titles[CircuitIndex];
+    return UTF8_TO_TCHAR(Selected(CircuitIndex).displayName.data());
+}
+void UFFSession::SelectCircuit(int32 index) {
+    const int32 count = static_cast<int32>(trackCatalog().size());
+    if (count <= 0) return;
+    CircuitIndex = (index % count + count) % count;
 }
 int32 UFFSession::LapLimit() const {
     return LapLimits[LapIndex];
@@ -80,7 +91,7 @@ void UFFSession::StartTrial() {
     ResetLaps();
     Screen = EFFScreen::Loading;
     UE_LOG(LogTemp, Display, TEXT("FF_FLOW loading circuit=%s laps=%d"), *Circuit(), LapLimit());
-    Travel(Maps[CircuitIndex], TEXT("/Script/FormulaForge.FormulaTrialGameMode"));
+    Travel(UTF8_TO_TCHAR(Selected(CircuitIndex).mapPath.data()), TEXT("/Script/FormulaForge.FormulaTrialGameMode"));
 }
 
 void UFFSession::ReturnToMenu() {
@@ -139,8 +150,7 @@ void UFFSession::Activate(int32 action) {
     if (action < 0 || action >= ActionCount()) return;
     Focus = action;
     if (Screen == EFFScreen::Setup) {
-        if (action < 3) CircuitIndex = action;
-        else if (action == 3) LapIndex = (LapIndex + 4) % 5;
+        if (action == 3) LapIndex = (LapIndex + 4) % 5;
         else if (action == 4) LapIndex = (LapIndex + 1) % 5;
         else if (action == 5) StartTrial();
         else FPlatformMisc::RequestExit(false);
@@ -191,13 +201,13 @@ void AFormulaFlowController::MoveFocus(int32 direction) {
 
 void AFormulaFlowController::Left() {
     auto* session = GetGameInstance<UFFSession>();
-    if (session->Screen == EFFScreen::Setup) session->Activate((session->CircuitIndex + 2) % 3);
+    if (session->Screen == EFFScreen::Setup) session->SelectCircuit(session->CircuitIndex - 1);
     else MoveFocus(-1);
 }
 
 void AFormulaFlowController::Right() {
     auto* session = GetGameInstance<UFFSession>();
-    if (session->Screen == EFFScreen::Setup) session->Activate((session->CircuitIndex + 1) % 3);
+    if (session->Screen == EFFScreen::Setup) session->SelectCircuit(session->CircuitIndex + 1);
     else MoveFocus(1);
 }
 

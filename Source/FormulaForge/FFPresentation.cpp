@@ -1,5 +1,7 @@
 #include "FFPresentation.h"
 #include "FFSession.h"
+#include "FFCircuitRibbon.h"
+#include "track_catalog.hpp"
 
 #include "Components/DirectionalLightComponent.h"
 #include "Components/SceneComponent.h"
@@ -46,6 +48,11 @@ void AFFPresentation::BeginPlay() {
     PresetScreenPercentage = IConsoleManager::Get().FindConsoleVariable(TEXT("r.ScreenPercentage"))->GetFloat();
     UpdateRenderResolution();
     const FString circuit = GetGameInstance<UFFSession>()->Circuit();
+    if (const TrackCatalogEntry* generated = findTrackCatalogEntry(std::string_view(TCHAR_TO_UTF8(*circuit)));
+        generated != nullptr && generated->generated) {
+        ProceduralSections = BuildGeneratedRibbon(*this, *generated, Ribbon);
+        return;
+    }
     FString visualRoot = TEXT("Generated");
     if (circuit == TEXT("monza")) visualRoot += TEXT("/Monza");
     else if (circuit == TEXT("interlagos")) visualRoot += TEXT("/Interlagos");
@@ -239,6 +246,7 @@ void AFFPresentation::ApplyTileDetail(int32 index, double distanceSquared) {
 }
 
 bool AFFPresentation::UpdateTiles(FVector position, bool immediate) {
+    if (ProceduralSections > 0) return true;
     CSV_SCOPED_TIMING_STAT(FormulaForge, TileStreaming);
     LastPosition = position;
     TArray<int32> candidates;
@@ -314,12 +322,14 @@ void AFFPresentation::Tick(float deltaSeconds) {
 }
 
 int32 AFFPresentation::LoadedTiles() const {
+    if (ProceduralSections > 0) return ProceduralSections;
     int32 loaded = 0;
     for (const auto& component : Components) if (component != nullptr) ++loaded;
     return loaded;
 }
 
 bool AFFPresentation::IsStreaming() const {
+    if (ProceduralSections > 0) return false;
     return Tiles.ContainsByPredicate([](const FFVisualTile& tile) {
         return tile.request && !tile.request->HasLoadCompleted();
     });

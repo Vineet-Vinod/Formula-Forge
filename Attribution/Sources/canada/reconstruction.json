@@ -1,0 +1,27 @@
+{
+  "slug": "canada",
+  "layout": "Circuit Gilles Villeneuve",
+  "source": "relation/284595",
+  "measured_m": 4364.148,
+  "published_m": 4361,
+  "published_candidates_m": [
+    4361
+  ],
+  "length_error": 0.00072,
+  "uniform_scale": 0.999279,
+  "target_m": 4361.0,
+  "clockwise": true,
+  "heading_direction_test": false,
+  "crossings": 0,
+  "aspect": 0.32448,
+  "relief_m": 12.699,
+  "elevation_datum_removed_m": 4.036,
+  "samples": 1091,
+  "turns_detected": 15,
+  "turns_published": 14,
+  "buildings": 13,
+  "barrier_vertices": 103,
+  "deck": null,
+  "banks": [],
+  "osm_sha256": "e3551df3e43a4f2151029ef4c4d9190faaffb85c0858575af2f338f27f2df7d3"
+}

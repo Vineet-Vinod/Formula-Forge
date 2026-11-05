@@ -1,0 +1,28 @@
+{
+  "slug": "austria",
+  "layout": "Red Bull Ring",
+  "source": "relation-cycle/5309181",
+  "measured_m": 4303.032,
+  "published_m": 4318,
+  "published_candidates_m": [
+    4318,
+    4326
+  ],
+  "length_error": 0.00347,
+  "uniform_scale": 1.003478,
+  "target_m": 4318.0,
+  "clockwise": true,
+  "heading_direction_test": false,
+  "crossings": 0,
+  "aspect": 1.58256,
+  "relief_m": 67.677,
+  "elevation_datum_removed_m": 678.314,
+  "samples": 1076,
+  "turns_detected": 11,
+  "turns_published": 10,
+  "buildings": 10,
+  "barrier_vertices": 199,
+  "deck": null,
+  "banks": [],
+  "osm_sha256": "f593fb7ae4dd8c8d6fd337ca7cd1cfbc824b30e67c25c0d6ab4ac2ce2080d749"
+}

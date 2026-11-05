@@ -1,0 +1,27 @@
+{
+  "slug": "australia",
+  "layout": "Albert Park Circuit",
+  "source": "relation-cycle/280443",
+  "measured_m": 5307.598,
+  "published_m": 5278,
+  "published_candidates_m": [
+    5278
+  ],
+  "length_error": 0.00561,
+  "uniform_scale": 0.994423,
+  "target_m": 5278.0,
+  "clockwise": true,
+  "heading_direction_test": false,
+  "crossings": 0,
+  "aspect": 0.81707,
+  "relief_m": 6.873,
+  "elevation_datum_removed_m": 2.0,
+  "samples": 1327,
+  "turns_detected": 20,
+  "turns_published": 16,
+  "buildings": 21,
+  "barrier_vertices": 282,
+  "deck": null,
+  "banks": [],
+  "osm_sha256": "efc376fc30efc76664981287d43141bc4cd2dd92e700d4bc056ec0ffcc0ebb3b"
+}

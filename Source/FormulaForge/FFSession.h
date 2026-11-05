@@ -22,6 +22,7 @@ public:
     virtual void Shutdown() override;
     FString Circuit() const;
     FString CircuitTitle() const;
+    void SelectCircuit(int32 Index);
     FString LapLabel() const;
     int32 LapLimit() const;
     void Activate(int32 Action);

@@ -103,7 +103,101 @@ bool Check(TrackLayoutId layout, const std::string& slug, float length) {
 }
 }
 
+bool CheckGenerated(const TrackCatalogEntry& track) {
+    const TrackShapeAuditResult shape = auditTrackCatalogShape(track);
+    if (!shape.ok()) {
+        std::cerr << track.slug << " shape failed aspect " << shape.aspectRatio
+                  << " crossings " << shape.selfIntersections
+                  << " landmarks " << shape.landmarkFailures << "/" << shape.landmarkChecks << '\n';
+        return false;
+    }
+    FFSimulation simulation(track.id);
+    const std::string root = "Content/Generated/" + std::string(track.contentDir) + "/";
+    if (!simulation.driveSurface.Load(Read(root + "drive_surface.bin")) ||
+        !simulation.trackLimits.Load(Read(root + "track_limits.bin"))) {
+        std::cerr << track.slug << " contact files missing\n";
+        return false;
+    }
+    const float length = track.targetLengthMeters;
+    if (std::abs(simulation.lapLength - length) > 0.05f || simulation.Barriers().size() < length / 4.0f) {
+        std::cerr << track.slug << " length or barrier count\n";
+        return false;
+    }
+    const float seam = std::abs(sampleTrackElevationMeters(track, 0.0f) - sampleTrackElevationMeters(track, length));
+    if (seam > 0.05f) {
+        std::cerr << track.slug << " elevation does not close: " << seam << " m\n";
+        return false;
+    }
+    for (float station = 0; station < length; station += 8.0f) {
+        simulation.Reset(station);
+        const auto road = simulation.Sample(station);
+        const auto height = simulation.driveSurface.Height(road.position.x / 17.0f, -road.position.y / 17.0f);
+        if (!height || !simulation.OnTrack()) {
+            std::cerr << track.slug << " missing contact at " << station << '\n';
+            return false;
+        }
+        const float error = std::abs(*height - simulation.Ground(road.position) / 17.0f);
+        const bool deckOverlap = track.deckSeparation && error > 4.0f && error < 8.0f;
+        if (error > 0.20f && !deckOverlap) {
+            std::cerr << track.slug << " surface disagreement at " << station << ": " << error << " m\n";
+            return false;
+        }
+        const Vec2 normal{-road.tangent.y, road.tangent.x};
+        for (const float lane : {-2.5f, 0.0f, 2.5f}) {
+            const Vec2 position = road.position + normal * (lane * 17.0f);
+            if (firstAuthoredBarrierHit(simulation.Barriers(), position, position, road.tangent,
+                    0.6f * 17.0f, 0.45f * 17.0f, simulation.Ground(position), 0.8f * 17.0f).hit) {
+                std::cerr << track.slug << " road blocked at " << station << " lane " << lane << '\n';
+                return false;
+            }
+        }
+        if (std::fmod(station, 40.0f) < 8.0f) {
+            for (const bool left : {true, false}) {
+                bool besideAnotherRoad = false;
+                for (float other = 0.0f; other < length; other += 20.0f) {
+                    const float gap = std::min(std::abs(other - station), length - std::abs(other - station));
+                    if (gap < 40.0f) continue;
+                    const auto neighbour = simulation.Sample(other);
+                    const Vec2 delta = neighbour.position - road.position;
+                    const float side = dot(delta, normal);
+                    if (::length(delta) < 22.0f * 17.0f && ((left && side > 0.0f) || (!left && side < 0.0f))) {
+                        besideAnotherRoad = true;
+                        break;
+                    }
+                }
+                if (besideAnotherRoad) continue;
+                const float sign = left ? 1.0f : -1.0f;
+                const float beside = road.halfWidth + 1.4f;
+                const float outer = road.halfWidth + sampleTrackShoulderMeters(track, station, left) + 6.0f;
+                const Vec2 start = road.position + normal * (sign * beside * 17.0f);
+                const Vec2 end = road.position + normal * (sign * outer * 17.0f);
+                const float wallLane = sign * (road.halfWidth + 0.85f + sampleTrackShoulderMeters(track, station, left));
+                const float bottom = road.elevation + road.bankSlope * wallLane * 17.0f;
+                if (!firstAuthoredBarrierHit(simulation.Barriers(), start, end, road.tangent,
+                        83.6f * 0.5f, 34.4f * 0.5f, bottom, 0.8f * 17.0f).hit) {
+                    std::cerr << track.slug << " missing " << (left ? "left" : "right") << " wall at " << station << '\n';
+                    return false;
+                }
+            }
+        }
+    }
+    simulation.Reset();
+    ArcadeVehicleControl control;
+    control.throttle = 0.5f;
+    for (int step = 0; step < 120; ++step) simulation.Step(control, 1.0f / 120.0f);
+    if (!simulation.vehicle.grounded || simulation.vehicle.forwardSpeed <= 0.0f || simulation.barrierContact) {
+        std::cerr << track.slug << " did not launch cleanly\n";
+        return false;
+    }
+    std::cout << track.slug << ": " << length << " m, barriers " << simulation.Barriers().size()
+              << ", relief " << track.nominalElevationReliefMeters << " m PASS\n";
+    return true;
+}
+
 int main() {
-    return Check(TrackLayoutId::Monza, "monza", 5793.0f) &&
-        Check(TrackLayoutId::Interlagos, "interlagos", 4309.0f) ? 0 : 1;
+    if (!Check(TrackLayoutId::Monza, "monza", 5793.0f) || !Check(TrackLayoutId::Interlagos, "interlagos", 4309.0f)) return 1;
+    for (const TrackCatalogEntry& track : trackCatalog()) {
+        if (track.generated && !CheckGenerated(track)) return 1;
+    }
+    return 0;
 }

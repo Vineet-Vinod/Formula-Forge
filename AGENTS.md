@@ -4,7 +4,7 @@ This repository is the canonical Unreal-only game. Keep project files and build
 artifacts in this folder. Do not create worktrees unless requested. Preserve the
 separately installed Unreal Engine folder.
 
-Support Silverstone, Monza and Interlagos, with Ferrari and Time Trial fixed.
+Support Silverstone, Monza, Interlagos and the circuits listed in docs/circuits.md, with Ferrari and Time Trial fixed.
 Unlimited laps is the default. Menus, loading and driving run in one Unreal process.
 Preserve accepted circuit assets, physics, handling, speed, shifting and camera
 unless the user explicitly requests changes.

@@ -1,7 +1,7 @@
 # Formula Forge
 
 A single-player formula racing game built entirely in Unreal Engine. Drive a Ferrari
-at Silverstone, Monza or Interlagos in Time Trial. Choose Unlimited, 1, 3, 5 or 10
+at Silverstone, Monza, Interlagos and nineteen added circuits in Time Trial. Choose Unlimited, 1, 3, 5 or 10
 timed laps. Unlimited is the default; the out-lap is excluded. Invalid timed laps
 count toward the session limit but cannot set a best time.
 
@@ -165,6 +165,12 @@ a timed Interlagos lap, results, restart and return to selection.
 and exits. Review captures and gameplay test results go under
 `build/unreal/home/Saved/FlowAudit/`. Best laps and game settings are stored under
 `build/unreal/home/`. Build output and local saves are ignored by Git.
+
+The menu lists nineteen more circuits. Their roads, walls and buildings are built in
+the driving session from OpenStreetMap and a Copernicus elevation profile. See
+[docs/circuits.md](docs/circuits.md). `make circuits` rebuilds that source data and
+the contact files. `make flow-check` still walks only Silverstone, Monza and
+Interlagos.
 
 ## Repository contents and licences
 
