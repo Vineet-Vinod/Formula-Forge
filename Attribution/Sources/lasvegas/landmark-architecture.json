@@ -1,0 +1,208 @@
+{
+  "registration": "OSM feature IDs and footprints in skyline.osm.json.gz, plus Encore tower 27910891 in encore.osm.json.gz. Retained tower height tags control volumes. Flamingo and casino podium heights are visual estimates. Crowns, bays, cornices and names are original simplified reconstructions.",
+  "reference_only": [
+    "https://www.venetianlasvegas.com/resort.html",
+    "https://www.wynnlasvegas.com/",
+    "https://bellagio.mgmresorts.com/",
+    "https://www.caesars.com/paris-las-vegas",
+    "User supplied Vegas.mp4, dry night laps. No reference pixels copied."
+  ],
+  "profiles": {
+    "30424125": {
+      "name": "Palazzo",
+      "style": "classical",
+      "height_m": 196,
+      "facade": "PalazzoFacade",
+      "crown_m": 11
+    },
+    "30618090": {
+      "name": "Venetian",
+      "style": "classical",
+      "height_m": 145,
+      "facade": "VenetianFacade",
+      "crown_m": 10
+    },
+    "180584269": {
+      "name": "Palazzo",
+      "style": "arcade",
+      "height_m": 22,
+      "facade": "PalazzoFacade",
+      "crown_m": 3
+    },
+    "25723909": {
+      "name": "Bellagio",
+      "style": "classical",
+      "height_m": 120,
+      "facade": "BellagioFacade",
+      "crown_m": 8
+    },
+    "25723910": {
+      "name": "Bellagio",
+      "style": "classical",
+      "height_m": 100,
+      "facade": "BellagioFacade",
+      "crown_m": 8
+    },
+    "27831697": {
+      "name": "Paris",
+      "style": "mansard",
+      "height_m": 112,
+      "facade": "ParisFacade",
+      "crown_m": 9
+    },
+    "33974140": {
+      "name": "Paris",
+      "style": "arcade",
+      "height_m": 19,
+      "facade": "ParisFacade",
+      "crown_m": 4
+    },
+    "205501268": {
+      "name": "Wynn",
+      "style": "glass",
+      "height_m": 187,
+      "facade": "WynnFacade",
+      "crown_m": 4
+    },
+    "135291730": {
+      "name": "Encore",
+      "style": "glass",
+      "height_m": 16,
+      "facade": "WynnFacade",
+      "crown_m": 2
+    },
+    "27897905": {
+      "name": "Cosmopolitan",
+      "style": "balconies",
+      "height_m": 184,
+      "facade": "CosmoFacade",
+      "crown_m": 3
+    },
+    "134795273": {
+      "name": "Cosmopolitan",
+      "style": "balconies",
+      "height_m": 184,
+      "facade": "CosmoFacade",
+      "crown_m": 3
+    },
+    "472669744": {
+      "name": "Cosmopolitan",
+      "style": "balconies",
+      "height_m": 184,
+      "facade": "CosmoFacade",
+      "crown_m": 3
+    },
+    "134921373": {
+      "name": "Planet",
+      "style": "stepped",
+      "height_m": 122,
+      "facade": "PlanetFacade",
+      "crown_m": 8
+    },
+    "116761428": {
+      "name": "Flamingo",
+      "style": "stepped",
+      "height_m": 94,
+      "facade": "FlamingoFacade",
+      "crown_m": 5
+    },
+    "33959894": {
+      "name": "TreasureIsland",
+      "style": "arcade",
+      "height_m": 14,
+      "facade": "TIFacade",
+      "crown_m": 3
+    },
+    "115672893": {
+      "name": "Caesars",
+      "style": "arcade",
+      "height_m": 23,
+      "facade": "CaesarsFacade",
+      "crown_m": 5
+    },
+    "34068416": {
+      "name": "Caesars",
+      "style": "arcade",
+      "height_m": 14,
+      "facade": "CaesarsFacade",
+      "crown_m": 4
+    },
+    "27910891": {
+      "name": "Encore",
+      "style": "glass",
+      "height_m": 192,
+      "facade": "WynnFacade",
+      "crown_m": 4
+    },
+    "27727145": {
+      "name": "TreasureIsland",
+      "style": "classical",
+      "height_m": 112,
+      "facade": "TIFacade",
+      "crown_m": 7
+    },
+    "126267789": {
+      "name": "Caesars",
+      "style": "classical",
+      "height_m": 107,
+      "facade": "CaesarsFacade",
+      "crown_m": 6
+    },
+    "134944648": {
+      "name": "Caesars",
+      "style": "classical",
+      "height_m": 133,
+      "facade": "CaesarsFacade",
+      "crown_m": 6
+    },
+    "134949102": {
+      "name": "Caesars",
+      "style": "classical",
+      "height_m": 71,
+      "facade": "CaesarsFacade",
+      "crown_m": 6
+    },
+    "1176928048": {
+      "name": "Caesars",
+      "style": "classical",
+      "height_m": 111,
+      "facade": "CaesarsFacade",
+      "crown_m": 6
+    },
+    "111322067": {
+      "name": "Venetian",
+      "style": "classical",
+      "height_m": 99,
+      "facade": "VenetianFacade",
+      "crown_m": 6
+    },
+    "115773426": {
+      "name": "Linq",
+      "style": "stepped",
+      "height_m": 68,
+      "facade": "BlueFacade",
+      "crown_m": 3
+    },
+    "116867081": {
+      "name": "Horseshoe",
+      "style": "stepped",
+      "height_m": 88.4,
+      "facade": "BlueFacade",
+      "crown_m": 4
+    },
+    "133757428": {
+      "name": "Elara",
+      "style": "glass",
+      "height_m": 182,
+      "facade": "CosmoFacade",
+      "crown_m": 3
+    },
+    "114703388": {
+      "name": "Bellagio",
+      "style": "dome",
+      "height_m": 155,
+      "facade": "BellagioFacade",
+      "crown_m": 25
+    }
+  }
+}

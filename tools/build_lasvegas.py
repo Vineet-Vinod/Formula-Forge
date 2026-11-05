@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 
 import unreal
 from lasvegas_art import lightfield
@@ -55,7 +56,13 @@ def texture_material(name: str) -> unreal.Material:
     if 'Facade' in name or name == 'Garage':
         mask = EDIT.create_material_expression(material, unreal.MaterialExpressionMultiply)
         connect(sample, 'RGB', mask, 'A')
-        connect(sample, 'A', mask, 'B')
+        ambient = EDIT.create_material_expression(material, unreal.MaterialExpressionConstant)
+        ambient.r = (.035 if name in ('CreamFacade', 'BlueFacade', 'BronzeFacade') else
+                     .025 if name in ('WynnFacade', 'CosmoFacade', 'PlanetFacade') else .09)
+        illumination = EDIT.create_material_expression(material, unreal.MaterialExpressionAdd)
+        connect(sample, 'A', illumination, 'A')
+        connect(ambient, '', illumination, 'B')
+        connect(illumination, '', mask, 'B')
         EDIT.connect_material_property(mask, '', unreal.MaterialProperty.MP_EMISSIVE_COLOR)
     elif name not in ('Sphere', 'Fence', 'Rubber', 'LightHalo'):
         glow = EDIT.create_material_expression(material, unreal.MaterialExpressionMultiply)
@@ -254,10 +261,15 @@ def night_copy(name: str, source: unreal.MaterialInterface, bounds: tuple[float,
 
 
 def main() -> None:
-    manifest = generate()
+    command_line = unreal.SystemLibrary.get_command_line()
+    batch_match = re.search(r'-FFLasVegasTileBatch=(\d+)', command_line)
+    batch = int(batch_match[1]) if batch_match else None
+    if batch is not None and not 0 <= batch < 4:
+        raise ValueError('Las Vegas tile batch must be 0, 1, 2 or 3')
+    manifest = generate() if batch in (None, 0) else json.loads((SCRATCH / 'manifest.json').read_text())
     bounds = lightfield(SCRATCH / 'art')
     field = lighting_texture()
-    if '-FFLasVegasReuseMaterials' in unreal.SystemLibrary.get_command_line():
+    if '-FFLasVegasReuseMaterials' in command_line or (batch is not None and batch > 0):
         materials = {}
         for tile in manifest['tiles']:
             for name in tile['materials']:
@@ -269,7 +281,10 @@ def main() -> None:
         materials = {name: texture_material(name) for name in
                      ['WallDark', 'WallBlue', 'WallPink', 'WallGold', 'RaceSign', 'VegasSign', '50', '100', '150', 'CreamFacade',
                       'BlueFacade', 'BronzeFacade', 'Garage', 'Fence', 'Rubber', 'LightHalo', 'Sphere', 'Bellagio', 'Venetian',
-                      'Palazzo', 'Wynn', 'Paris', 'Cosmopolitan', 'Planet']}
+                      'Palazzo', 'Wynn', 'Paris', 'Cosmopolitan', 'Planet', 'Linq', 'Horseshoe', 'Elara', 'Encore', 'TreasureIsland', 'Caesars', 'Flamingo',
+                      'EastHarmon', 'WestHarmon', 'SphereZone', 'Sands', 'Strip', 'PalazzoFacade', 'VenetianFacade',
+                      'BellagioFacade', 'ParisFacade', 'CaesarsFacade', 'TIFacade', 'WynnFacade', 'CosmoFacade',
+                      'PlanetFacade', 'FlamingoFacade']}
         for name, color, roughness in [
             ('Glass', (.055, .085, .105), .25), ('White', (.72, .73, .70), .82), ('Red', (.62, .025, .018), .8), ('Black', (.012, .015, .018), .8),
             ('Steel', (.24, .28, .30), .48), ('Cream', (.54, .49, .39), .8), ('Roof', (.12, .14, .15), .8),
@@ -277,10 +292,11 @@ def main() -> None:
             ('Trunk', (.16, .105, .055), .9), ('Leaves', (.045, .105, .025), .9),
             ('Brick', (.34, .16, .08), .85), ('Copper', (.055, .22, .17), .7),
             ('Canopy', (.65, .66, .62), .8), ('IlluminatedCream', (.55, .41, .23), .7),
+            ('PinkNeon', (1.1, .10, .46), .5), ('Orange', (.8, .17, .025), .85),
             ('WheelLight', (1.8, .6, 3.0), .5),
             ('Lamp', (12, 12, 11), .4),
         ]:
-            materials[name] = solid(name, color, roughness, emissive=name in ('Lamp', 'IlluminatedCream', 'TowerSteel', 'Canopy', 'WheelLight'), two_sided=name == 'Leaves')
+            materials[name] = solid(name, color, roughness, emissive=name in ('Lamp', 'IlluminatedCream', 'TowerSteel', 'Canopy', 'WheelLight', 'PinkNeon'), two_sided=name == 'Leaves')
         night_sky()
         for name, path in {
             'Road': '/Game/Generated/Materials/rebuild_road_asphalt',
@@ -296,13 +312,20 @@ def main() -> None:
             if name not in ('Sphere', 'Lamp', 'WheelLight', 'LightHalo') and isinstance(material, unreal.Material) and not material.get_name().startswith('Night_'):
                 shade(material, bounds, field)
     lines = []
-    for record in manifest['tiles']:
+    for index, record in enumerate(manifest['tiles']):
         name = record['name']
+        if batch is not None and index % 4 != batch:
+            lines.append(name + ',' + ','.join(f'{bound:.3f}' for bound in record['bounds']))
+            continue
         path = ASSETS + '/Track/' + name
         mesh = unreal.load_asset(path) if LIBRARY.does_asset_exist(path) else None
-        if mesh is None or LIBRARY.get_metadata_tag(mesh, 'LasVegasSourceSHA256') != record['sha256']:
-            mesh = unreal.FFLasVegasMeshLibrary.build_tile(str(SCRATCH / record['file']), path,
-                                                         [materials[key] for key in record['materials']])
+        changed = (mesh is None or LIBRARY.get_metadata_tag(mesh, 'LasVegasSourceSHA256') != record['sha256']
+                   or any(mesh.get_material(slot) != materials[key] for slot, key in enumerate(record['materials'])))
+        if not changed:
+            lines.append(name + ',' + ','.join(f'{bound:.3f}' for bound in record['bounds']))
+            continue
+        mesh = unreal.FFLasVegasMeshLibrary.build_tile(str(SCRATCH / record['file']), path,
+                                                     [materials[key] for key in record['materials']])
         if mesh is None:
             raise RuntimeError(f'Failed to build {name}')
         for index, key in enumerate(record['materials']):
@@ -332,11 +355,11 @@ def main() -> None:
         'terrain_sha256': hashlib.sha256((DATA / 'terrain.bin').read_bytes()).hexdigest(),
         'tiles': len(manifest['tiles']), 'triangles': sum(tile['triangles'] for tile in manifest['tiles']),
         'landmarks': manifest['landmarks'],
-        'artwork': 'Original geometry and typeset signs; original built-in image_gen facade and Sphere artwork with retained prompts. See facade-art.json and art/sphere-display-v1.json. Existing licensed asphalt, concrete and original spectator atlas reused through Las Vegas-only material copies.',
+        'artwork': 'Original geometry and typeset signs; original procedural hotel facades and built-in image_gen Sphere artwork with retained prompts. See landmark-architecture.json and art/sphere-display-v1.json; facade-art.json records the superseded generic artwork. Existing licensed asphalt, concrete and original spectator atlas reused through Las Vegas-only material copies.',
         'night_lighting': {'fixture_count': len((DATA / 'night_lights.csv').read_text().splitlines()),
                            'field_resolution': 2048, 'height_fade_m': 20,
                            'method': 'Static diffuse falloff field in Las Vegas surface materials, with directional shading, specular and vehicle shadows. Venue lighting is an approximation; not a path-traced or surveyed light installation.'},
-        'estimates': 'OSM building tags give volume controls; missing heights use 3.4 m per level, default 3 levels. Facades, pit decks, temporary stands, palms and lighting furniture are original approximations, not a photogrammetric survey.',
+        'estimates': 'Landmark-specific architecture, height overrides and references are retained in landmark-architecture.json. Other OSM buildings use tagged heights or 3.4 m per level, default 3 levels. Roofs, entrances, pit decks, temporary stands, palms and lighting furniture are original approximations, not a photogrammetric survey.',
     }
     (ROOT / 'Attribution/Sources/lasvegas/scenery.json').write_text(json.dumps(record, indent=2) + '\n')
     unreal.log(f'LASVEGAS_BUILT tiles={record["tiles"]} triangles={record["triangles"]}')

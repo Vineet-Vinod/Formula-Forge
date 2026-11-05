@@ -107,3 +107,36 @@ def test_curves_and_driver_facing_braking_boards() -> None:
             if material in triangles:
                 triangles[material] += 1
     assert triangles == {'50': 24, '100': 24, '150': 24}
+
+
+def test_sands_fast_bends_and_post_strip_chicane() -> None:
+    import csv
+
+    road = [{key: float(value) for key, value in row.items()}
+            for row in csv.DictReader((ROOT / 'build/lasvegas/road.csv').open())]
+
+    def heading_change(begin: float, end: float) -> float:
+        a = min(road, key=lambda row: abs(row['station'] - begin))
+        b = min(road, key=lambda row: abs(row['station'] - end))
+        return math.atan2(a['tx'] * b['ty'] - a['ty'] * b['tx'], a['tx'] * b['tx'] + a['ty'] * b['ty'])
+
+    # FIA 2025 map: T14 left, T15 right, T16 left before the eastbound Harmon straight.
+    assert heading_change(660, 704) > 1.2
+    assert heading_change(704, 750) < -.6
+    assert heading_change(750, 820) > .6
+    # Sands has no slow lateral jog before its broad T10/T11 sweep.
+    for station in range(4190, 4350, 10):
+        assert abs(heading_change(station - 12, station + 12)) < .15
+    survey = (ROOT / 'Source/FormulaForge/Native/track_data/lasvegas_survey.inc').read_text()
+    turns = survey.split('kLasVegasTurns[] = {')[1].split('};')[0]
+    assert turns.count('TrackTurnDirection::') == 17
+    for number in range(1, 18):
+        assert turns.count(f'"Turn {number}"') == 1
+
+
+def test_encore_tower_is_separate_from_low_casino_podium() -> None:
+    scene = json.loads((SOURCES / 'scenery.json').read_text())
+    buildings = {landmark['osm_id']: landmark for landmark in scene['landmarks'] if 'osm_id' in landmark}
+    assert buildings[27910891]['name'] == 'Encore Las Vegas'
+    assert 180 < buildings[27910891]['height_m'] < 200
+    assert buildings[135291730]['height_m'] < 25

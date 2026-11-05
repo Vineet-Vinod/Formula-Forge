@@ -38,3 +38,12 @@ class TerrainGrid:
     columns: int
     rows: int
     heights: tuple[float, ...]
+
+
+@dataclass(frozen=True)
+class LandmarkProfile:
+    name: str
+    style: str
+    height_m: float
+    facade: str
+    crown_m: float

@@ -1,7 +1,7 @@
 {
   "date": "2026-11-05",
   "circuit": "Las Vegas Strip Circuit",
-  "state": "Complete: native assets, packaged cockpit and live-lap review accepted.",
+  "state": "Historical night-race validation before the Sands/Harmon correction and landmark architecture pass.",
   "reference": "Attribution/Sources/lasvegas/night-reference.json",
   "scope": "Las Vegas only; original camera and vehicle handling retained.",
   "geometry": {
@@ -196,5 +196,6 @@
     "Physical controller hardware has not been tested."
   ],
   "evidence_directory": "build/reviews/lasvegas/night",
-  "preserved": "Accepted circuit assets, vehicle tuning, speed/shifting and camera. Pre-existing unrelated working-tree edits excluded from both commits."
+  "preserved": "Accepted circuit assets, vehicle tuning, speed/shifting and camera. Pre-existing unrelated working-tree edits excluded from both commits.",
+  "superseded_by": "lasvegas_layout_validation.json"
 }

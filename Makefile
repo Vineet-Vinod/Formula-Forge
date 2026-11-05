@@ -59,7 +59,9 @@ build/tests/export-lasvegas: tools/export_lasvegas.cpp $(OBJECTS)
 .NOTPARALLEL: lasvegas-assets
 lasvegas-assets: check build
 	$(LASVEGAS_PYTHON) tools/lasvegas_art.py
-	bash tools/unreal.sh python tools/build_lasvegas.py
+	for batch in 0 1 2 3; do \
+		bash tools/unreal.sh python tools/build_lasvegas.py -FFLasVegasTileBatch=$$batch || exit $$?; \
+	done
 	bash tools/unreal.sh python tools/verify_lasvegas.py
 
 LASVEGAS_PYTHON ?= python3

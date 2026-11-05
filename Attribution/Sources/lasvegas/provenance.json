@@ -17,10 +17,12 @@
     "file": "circuit.osm.json.gz",
     "sha256": "12b048c79d5198824c174f1190f0f6fcbb5d9791ca2a8127fff08a9e92ffcb36",
     "chosen": "relation-cycle/16696508",
-    "measured_plan_m": 6210.203,
+    "measured_plan_m": 6226.203,
     "published_m": 6201,
-    "uniform_scale": 0.998518,
-    "scale_rule": "Applied only when the mapped plan was within 1.5% of a published length. Larger gaps keep the mapped length."
+    "uniform_scale": 0.995952,
+    "scale_rule": "Applied only when the mapped plan was within 1.5% of a published length. Larger gaps keep the mapped length.",
+    "authored_alignment": "layout-corrections.json",
+    "measured_plan_includes_authored_corrections": true
   },
   "elevation": {
     "provider": "USGS 3D Elevation Program",
@@ -33,8 +35,8 @@
     "sample_spacing_m": 4.0,
     "smoothing": "74 circular binomial passes on the 4 m samples (24 m standard deviation). Filters short pre-construction ground breaks in the future paddock; broad surveyed grade is retained. This is an estimated racing profile, not a measured post-construction deck.",
     "relative_datum": "Heights stored after subtracting the lap minimum.",
-    "removed_minimum_m": 628.674,
-    "relief_m": 15.983,
+    "removed_minimum_m": 628.723,
+    "relief_m": 16.005,
     "uncertainty_m": 1,
     "file": "elevation/bare_earth.bin",
     "deck": null
@@ -63,6 +65,7 @@
     "source_manifest": "scenery_sources.json",
     "runtime_assets": "Content/Generated/LasVegas",
     "start_finish_station_m": 1815,
-    "note": "Native scenery replaces the initial generic road ribbon only for Las Vegas. The initial footprint count below describes the old narrow corridor, not the current native city."
+    "note": "Native scenery replaces the initial generic road ribbon only for Las Vegas. The initial footprint count describes the old narrow corridor, not the current native city.",
+    "validation_reference": "docs/lasvegas_layout_validation.json"
   }
 }

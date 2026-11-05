@@ -836,6 +836,30 @@ def footprint_area(ring):
     return abs(signed_area(ring))
 
 
+def lasvegas_alignment(samples):
+    recipe = json.loads((SOURCES / "lasvegas/layout-corrections.json").read_text())
+    origin = samples[0]
+    local = [project(lat, lon, origin) for lat, lon in samples]
+    stations = [0.0]
+    for a, b in zip(local, local[1:]):
+        stations.append(stations[-1] + math.dist(a, b))
+    for correction in reversed(recipe["corrections"]):
+        begin, end = correction["replace_original_station_m"]
+        first = min(range(len(stations)), key=lambda i: abs(stations[i] - begin))
+        last = min(range(len(stations)), key=lambda i: abs(stations[i] - end))
+        replacement = []
+        for controls in correction["beziers"]:
+            steps = max(8, math.ceil(sum(math.dist(a, b) for a, b in zip(controls, controls[1:]))))
+            for step in range(steps):
+                t = step / steps
+                weights = [(1-t)**3, 3*t*(1-t)**2, 3*t*t*(1-t), t**3]
+                replacement.append(tuple(sum(p[axis] * w for p, w in zip(controls, weights)) for axis in (0, 1)))
+        replacement.append(tuple(correction["beziers"][-1][-1]))
+        local[first:last + 1] = replacement
+    return [(origin[0] + math.degrees(y / EARTH),
+             origin[1] + math.degrees(x / (EARTH * math.cos(math.radians(origin[0]))))) for x, y in local]
+
+
 def build(spec, refresh=False):
     source = SOURCES / spec["slug"]
     source.mkdir(parents=True, exist_ok=True)
@@ -864,6 +888,8 @@ out geom;
         raise RuntimeError(f"no layout within 8% of {spec['lengths']}. candidates: {preview or 'none'}")
     chosen = ranked[0]
     samples, clockwise = orient(rotate_to_start(chosen["samples"], spec), spec)
+    if spec["slug"] == "lasvegas":
+        samples = lasvegas_alignment(samples)
     samples, measured = resample(samples, 4.0)
     local = [project(lat, lon, samples[0]) for lat, lon in samples]
     area = signed_area(local)
@@ -937,6 +963,15 @@ out geom;
     turns = []
     for (index, turn), name in zip(detected, names):
         turns.append({"name": name, "fraction": stations[index] / target, "direction": 1 if turn > 0 else -1, "station": stations[index]})
+    if spec["slug"] == "lasvegas":
+        recipe = json.loads((source / "layout-corrections.json").read_text())
+        turns = []
+        for anchor in recipe["turns"]:
+            point = tuple(value * scale for value in anchor["near_source_xy_m"])
+            index = min(range(count), key=lambda i: math.dist(local[i], point))
+            turns.append({"name": f"Turn {anchor['number']}", "fraction": stations[index] / target,
+                          "direction": anchor["direction"], "station": stations[index]})
+        turns.sort(key=lambda turn: turn["station"])
     bank = [(0.0, 0.0)]
     bank_notes = []
     for bank_spec in spec.get("banks", []):
@@ -1097,7 +1132,7 @@ out geom;
         "relief_m": round(relief, 3),
         "elevation_datum_removed_m": round(datum, 3),
         "samples": count,
-        "turns_detected": len(turns),
+        "turns_detected": len(detected),
         "turns_published": spec["turns"],
         "buildings": len(footprints),
         "barrier_vertices": len(barriers),
@@ -1105,6 +1140,8 @@ out geom;
         "banks": bank_notes,
         "osm_sha256": osm_hash,
     }
+    if spec["slug"] == "lasvegas":
+        record["turns_registered"] = len(turns)
     (source / "reconstruction.json").write_text(json.dumps(record, indent=2) + "\n")
     provenance = {
         "circuit": spec["venue"],
@@ -1181,9 +1218,13 @@ out geom;
         provenance["native_scenery"] = {
             "recipe": "make lasvegas-assets", "manifest": "scenery.json", "source_manifest": "scenery_sources.json",
             "runtime_assets": "Content/Generated/LasVegas", "start_finish_station_m": 1815,
+            "validation_reference": "docs/lasvegas_layout_validation.json",
             "note": "Native scenery replaces the initial generic road ribbon only for Las Vegas. The initial footprint count describes the old narrow corridor, not the current native city.",
         }
         provenance["not_claimed"] = "No orthophoto or post-construction engineering registration. Widths are estimates, and the 2022 bare-earth survey predates the racing deck. Cockpit and runtime review are recorded in docs/lasvegas_validation.json. Centimetre storage is not centimetre accuracy."
+    if spec["slug"] == "lasvegas":
+        provenance["route"]["authored_alignment"] = "layout-corrections.json"
+        provenance["route"]["measured_plan_includes_authored_corrections"] = True
     (source / "provenance.json").write_text(json.dumps(provenance, indent=2) + "\n")
     write_plan(spec, local, turns)
     log(f"{spec['slug']}: {chosen['name']} {target:.1f} m (mapped {measured:.1f}, published {published}, scale {scale:.4f}) relief {relief:.1f} m turns {len(turns)} buildings {len(footprints)}")
@@ -1273,7 +1314,7 @@ def emit_indexes(records):
         "",
         "Suzuka is the only figure-eight. Its pit straight is raised to a 6.2 m deck when the 90 m surface model cannot see the bridge. The lower road is left on the sampled height.",
         "",
-        "Walls are continuous, including pit entry. That closure is for the game. Widths are typical asphalt figures, not a white-line survey. The initial generated circuits use GLO-90, a surface model with stated vertical uncertainty of 8 m on streets and 5 m on permanent circuits. Las Vegas has since been rebuilt with USGS 3DEP bare-earth terrain, a filtered road profile, native scenery and cockpit review. Its original footprint count in the table is superseded by Attribution/Sources/lasvegas/scenery.json; see docs/lasvegas_validation.json for evidence and limits.",
+        "Walls are continuous, including pit entry. That closure is for the game. Widths are typical asphalt figures, not a white-line survey. The initial generated circuits use GLO-90, a surface model with stated vertical uncertainty of 8 m on streets and 5 m on permanent circuits. Las Vegas has since been rebuilt with USGS 3DEP bare-earth terrain, a filtered road profile, native scenery and cockpit review. Its original footprint count in the table is superseded by [scenery.json](../Attribution/Sources/lasvegas/scenery.json); see [Las Vegas validation](lasvegas_validation.json) for evidence and limits.",
         "",
         "| Circuit | Mapped m | Published m | Scale | Relief m | Turns found | Buildings |",
         "| --- | ---: | ---: | ---: | ---: | ---: | ---: |",

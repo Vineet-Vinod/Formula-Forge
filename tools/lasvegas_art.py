@@ -34,13 +34,50 @@ def sign(path: Path, text: str, background: tuple[int, int, int], foreground: tu
     image.resize((width, height), Image.Resampling.LANCZOS).save(path)
 
 
+def hotel_facades(directory: Path) -> None:
+    from PIL import Image, ImageDraw
+
+    for name, wall, glass, style in [
+        ('CreamFacade', (150, 145, 130), (28, 38, 45), 'plain'),
+        ('BlueFacade', (48, 59, 68), (24, 45, 63), 'glass'),
+        ('BronzeFacade', (84, 65, 46), (43, 39, 33), 'glass'),
+        ('PalazzoFacade', (177, 159, 124), (32, 43, 48), 'classical'),
+        ('VenetianFacade', (186, 165, 126), (30, 41, 44), 'classical'),
+        ('BellagioFacade', (184, 171, 144), (29, 41, 47), 'classical'),
+        ('ParisFacade', (160, 155, 145), (30, 42, 52), 'french'),
+        ('CaesarsFacade', (188, 182, 166), (33, 42, 48), 'classical'),
+        ('TIFacade', (170, 144, 113), (32, 45, 50), 'classical'),
+        ('WynnFacade', (77, 55, 36), (66, 49, 32), 'glass'),
+        ('CosmoFacade', (42, 48, 56), (24, 51, 71), 'glass'),
+        ('PlanetFacade', (71, 79, 87), (28, 47, 65), 'glass'),
+        ('FlamingoFacade', (162, 143, 132), (36, 43, 52), 'modern'),
+    ]:
+        image = Image.new('RGBA', (1024, 1024), (*wall, 0))
+        draw = ImageDraw.Draw(image)
+        for floor in range(8):
+            for room in range(8):
+                x, y = room * 128, floor * 128
+                seed = (floor * 53 + room * 71 + floor * room * 17) % 97
+                lit = seed < (12 if style in ('glass', 'plain') else 27)
+                color = (120 + seed, 104 + seed, 77 + seed) if lit else glass
+                alpha = 82 if lit else 0
+                inset = 2 if style == 'glass' else 26
+                top, bottom = (8, 119) if style == 'glass' else (19, 110)
+                draw.rectangle((x + inset, y + top, x + 127 - inset, y + bottom), fill=(*color, alpha))
+                draw.line((x + 64, y + top, x + 64, y + bottom), fill=(*wall, 0), width=3)
+                draw.line((x + inset, y + 58, x + 127 - inset, y + 58), fill=(*wall, 0), width=2)
+                if style in ('classical', 'french'):
+                    draw.rectangle((x + 19, y + 111, x + 109, y + 117), fill=(max(0, wall[0] - 38), max(0, wall[1] - 38), max(0, wall[2] - 38), 0))
+                    draw.line((x + 19, y + 16, x + 109, y + 16), fill=(min(255, wall[0] + 20), min(255, wall[1] + 20), min(255, wall[2] + 20), 0), width=4)
+                if lit and seed % 3 == 0:
+                    draw.rectangle((x + 77, y + top, x + 127 - inset, y + bottom), fill=(*glass, 0))
+        image.save(directory / (name + '.png'))
+
+
 def textures(directory: Path) -> None:
     directory.mkdir(parents=True, exist_ok=True)
+    hotel_facades(directory)
     for name, text, bg, fg in [
-        ('WallDark', 'LAS VEGAS', (20, 27, 39), (228, 230, 225)),
-        ('WallBlue', 'FORMULA FORGE', (15, 37, 82), (235, 238, 246)),
-        ('WallPink', 'LAS VEGAS', (154, 15, 105), (249, 233, 246)),
-        ('WallGold', 'STRIP CIRCUIT', (223, 177, 44), (24, 24, 23)),
         ('RaceSign', 'FORMULA FORGE', (28, 54, 61), (235, 237, 225)),
         ('VegasSign', 'LAS VEGAS STRIP CIRCUIT', (15, 24, 35), (232, 206, 143)),
         ('50', '50', (237, 236, 227), (22, 24, 28)),
@@ -52,58 +89,48 @@ def textures(directory: Path) -> None:
         ('Wynn', 'WYNN LAS VEGAS', (68, 44, 28), (241, 218, 159)),
         ('Paris', 'PARIS', (28, 40, 54), (244, 221, 168)),
         ('Cosmopolitan', 'COSMOPOLITAN', (24, 33, 45), (231, 224, 222)),
+        ('Linq', 'THE LINQ', (40, 44, 53), (224, 224, 224)),
+        ('Horseshoe', 'HORSESHOE LAS VEGAS', (36, 48, 68), (230, 221, 193)),
+        ('Elara', 'ELARA', (24, 35, 46), (228, 225, 211)),
+        ('Encore', 'ENCORE', (54, 37, 24), (237, 219, 164)),
+        ('TreasureIsland', 'TREASURE ISLAND', (66, 47, 33), (241, 221, 175)),
+        ('Caesars', 'CAESARS PALACE', (48, 43, 37), (238, 225, 198)),
+        ('Flamingo', 'FLAMINGO', (75, 15, 44), (246, 144, 191)),
+        ('EastHarmon', 'EAST HARMON', (22, 43, 52), (232, 226, 197)),
+        ('WestHarmon', 'WEST HARMON', (22, 43, 52), (232, 226, 197)),
+        ('SphereZone', 'SPHERE ZONE', (97, 18, 68), (240, 215, 234)),
+        ('Sands', 'SANDS AVENUE', (22, 43, 52), (232, 226, 197)),
+        ('Strip', 'LAS VEGAS BOULEVARD', (22, 43, 52), (232, 226, 197)),
         ('Planet', 'PLANET HOLLYWOOD', (34, 43, 59), (232, 219, 189)),
     ]:
         sign(directory / f'{name}.png', text, bg, fg, 256 if text.isdigit() else 1024, 256 if text.isdigit() else 128)
-    for name, wall, glass in [('CreamFacade', (189, 174, 145), (49, 66, 74)),
-                               ('BlueFacade', (54, 60, 66), (35, 75, 96)),
-                               ('BronzeFacade', (149, 122, 75), (82, 60, 38)),
-                               ('Garage', (115, 121, 126), (26, 30, 36))]:
-        if name != 'Garage':
-            from PIL import Image
+    from PIL import Image, ImageDraw, ImageFont
 
-            source_name = {'CreamFacade': 'cream', 'BlueFacade': 'blue', 'BronzeFacade': 'bronze'}[name]
-            source = FONT.parent / (source_name + '-facade-v1.png')
-            image = Image.open(source).convert('RGB').resize((1024, 1024), Image.Resampling.LANCZOS)
-            facade = bytearray()
-            rgb_pixels = image.tobytes()
-            for y in range(1024):
-                for x in range(1024):
-                    offset = (y * 1024 + x) * 3
-                    red, green, blue = rgb_pixels[offset:offset + 3]
-                    in_window = 44 < x % 256 < 218 and 42 < y % 256 < 230
-                    warmth = max(0.0, min(1.0, (red - blue * 1.18 - 12) / 80))
-                    alpha = round(warmth * 190) if in_window else 0
-                    facade.extend((red, green, blue, alpha))
-            png(directory / f'{name}.png', 1024, 1024, facade)
-            continue
-        pixels = bytearray()
-        for y in range(512):
-            for x in range(512):
-                column, floor = x // 128, y // 128
-                wx, wy = x % 128, y % 128
-                frame = wx < 8 or wy < 8 or wy > 112
-                if name == 'CreamFacade':
-                    frame = frame or wx < 28 or wx > 100 or wy < 20
-                lit = (column * 19 + floor * 11 + column * floor * 5) % 11 < 4
-                alpha = 0
-                if name == 'Garage':
-                    color = wall if wy % 32 < 3 or wx < 5 else (125, 143, 157)
-                    alpha = 150 if wy % 128 < 10 else 0
-                elif frame:
-                    color = wall
-                elif lit:
-                    warm = {'CreamFacade': (164, 142, 99), 'BronzeFacade': (136, 111, 68),
-                            'BlueFacade': (100, 132, 158)}[name]
-                    shade = (.65 + .22 * math.sin(wy * .018)) * (.75 + .25 * math.sin(wx * .13 + floor))
-                    if wx % 19 < 3 or wy % 23 < 2:
-                        shade *= .55
-                    color = round(warm[0] * shade), round(warm[1] * shade), round(warm[2] * shade)
-                    alpha = 110 if column % 2 else 155
-                else:
-                    color = glass
-                pixels.extend((*color, alpha))
-        png(directory / f'{name}.png', 512, 512, pixels)
+    for name, background, accent, title in [
+        ('WallDark', (17, 28, 38), (51, 184, 177), 'LAS VEGAS'),
+        ('WallBlue', (14, 38, 83), (125, 187, 221), 'FORMULA FORGE'),
+        ('WallPink', (135, 15, 84), (242, 169, 217), 'NEVADA NIGHT RACE'),
+        ('WallGold', (190, 151, 57), (44, 35, 26), 'STRIP CIRCUIT'),
+    ]:
+        image = Image.new('RGBA', (1024, 128), (*background, 255))
+        draw = ImageDraw.Draw(image)
+        for index in range(3):
+            x = 30 + index * 24
+            draw.polygon([(x, 98), (x + 42, 30), (x + 56, 30), (x + 14, 98)], fill=(*accent, 255))
+        font = ImageFont.truetype(str(FONT), 47 if name != 'WallPink' else 38)
+        draw.text((160, 57), title, font=font, fill=(237, 235, 220, 255), anchor='lm')
+        draw.line((160, 91, 795, 91), fill=(*accent, 255), width=3)
+        draw.text((160, 111), 'LAS VEGAS  //  NIGHT GRAND PRIX', font=ImageFont.truetype(str(FONT), 15),
+                  fill=(*accent, 255), anchor='lm')
+        draw.line((900, 20, 900, 108), fill=(*accent, 255), width=3)
+        image.save(directory / (name + '.png'))
+    pixels = bytearray()
+    for y in range(512):
+        for x in range(512):
+            wx, wy = x % 128, y % 128
+            color = (115, 121, 126) if wy % 32 < 3 or wx < 5 else (125, 143, 157)
+            pixels.extend((*color, 150 if wy < 10 else 0))
+    png(directory / 'Garage.png', 512, 512, pixels)
     pixels = bytearray()
     for y in range(128):
         for x in range(128):
@@ -132,13 +159,12 @@ def textures(directory: Path) -> None:
 
 def lightfield(directory: Path) -> tuple[float, float, float, float]:
     import csv
+    import json
     from array import array
 
     root = Path(__file__).resolve().parents[1]
     lights = [tuple(float(v) for v in row) for row in csv.reader((root / 'Content/Generated/LasVegas/Data/night_lights.csv').open())]
-    minimum_x, minimum_y = min(p[0] for p in lights) - 9000, min(p[1] for p in lights) - 9000
-    width = max(p[0] for p in lights) + 9000 - minimum_x
-    height = max(p[1] for p in lights) + 9000 - minimum_y
+    minimum_x, minimum_y, width, height = json.loads((root / 'Attribution/Sources/lasvegas/night-field.json').read_text())['world_bounds_cm']
     size = 2048
     radiance = array('f', [0.0]) * (size * size)
     elevation = array('f', [0.0]) * (size * size)

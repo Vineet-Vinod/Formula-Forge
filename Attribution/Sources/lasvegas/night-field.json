@@ -1,0 +1,9 @@
+{
+  "world_bounds_cm": [
+    -130018.575,
+    -125294.226,
+    214840.96899999998,
+    136578.353
+  ],
+  "purpose": "Stable registered world mapping for the Las Vegas material copies. Fixture positions can change without moving the texture coordinate frame."
+}

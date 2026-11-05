@@ -20,5 +20,6 @@
       "sha256": "2049bc7772bc0c3bac1155254f244ffc40b05a48e11d6fe0dc20f1cd1d795c72"
     }
   ],
-  "processing": "Authoring resamples to 1024 square and derives an emissive alpha mask from warm interior pixels within window bays. Original output retained."
+  "processing": "Authoring resamples to 1024 square and derives an emissive alpha mask from warm interior pixels within window bays. Original output retained.",
+  "status": "Superseded for the current Las Vegas scene by original procedural facade textures in tools/lasvegas_art.py and landmark-specific geometry in landmark-architecture.json. Original source artwork retained for history."
 }

@@ -48,8 +48,8 @@ float circuitShoulderMeters(const TrackCatalogEntry& track, float station, bool 
             return width * t * t * (3.0f - 2.0f * t);
         };
         // Reference dry lap: T1 has an open paved apron; the city sections are wall tight.
-        return 2.2f + (left ? apron(1982.0f, 110.0f, 10.0f) + apron(654.0f, 65.0f, 3.0f)
-                           : apron(3278.0f, 65.0f, 3.5f));
+        return 2.2f + (left ? apron(1999.0f, 110.0f, 10.0f) + apron(688.0f, 65.0f, 3.0f)
+                           : apron(3289.0f, 65.0f, 3.5f));
     }
     return std::clamp(sampleTrackShoulderMeters(track, station, left), 1.2f, 24.0f);
 }

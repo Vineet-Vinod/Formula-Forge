@@ -1,0 +1,109 @@
+{
+  "reference": "2025 FIA event notes circuit map V2, issued 2025-11-19",
+  "controls": "layout-corrections.json",
+  "registration_note": "Anchors express observed turn order on the OSM street frame, not an independently surveyed set of apex positions. Residual is sampling distance to authored control, not absolute geospatial accuracy.",
+  "turns": [
+    {
+      "turn": 1,
+      "station_m": 2000.3877,
+      "direction": "left",
+      "source_anchor_residual_m": 0.404
+    },
+    {
+      "turn": 2,
+      "station_m": 2122.51025,
+      "direction": "left",
+      "source_anchor_residual_m": 0.191
+    },
+    {
+      "turn": 3,
+      "station_m": 2225.45654,
+      "direction": "right",
+      "source_anchor_residual_m": 0.155
+    },
+    {
+      "turn": 4,
+      "station_m": 2394.00586,
+      "direction": "right",
+      "source_anchor_residual_m": 0.416
+    },
+    {
+      "turn": 5,
+      "station_m": 3291.25317,
+      "direction": "right",
+      "source_anchor_residual_m": 0.222
+    },
+    {
+      "turn": 6,
+      "station_m": 3541.55396,
+      "direction": "left",
+      "source_anchor_residual_m": 0.495
+    },
+    {
+      "turn": 7,
+      "station_m": 3746.4375,
+      "direction": "left",
+      "source_anchor_residual_m": 0.265
+    },
+    {
+      "turn": 8,
+      "station_m": 3822.13354,
+      "direction": "right",
+      "source_anchor_residual_m": 0.262
+    },
+    {
+      "turn": 9,
+      "station_m": 3951.32104,
+      "direction": "left",
+      "source_anchor_residual_m": 0.469
+    },
+    {
+      "turn": 10,
+      "station_m": 4494.31201,
+      "direction": "right",
+      "source_anchor_residual_m": 0.183
+    },
+    {
+      "turn": 11,
+      "station_m": 4714.33447,
+      "direction": "left",
+      "source_anchor_residual_m": 0.399
+    },
+    {
+      "turn": 12,
+      "station_m": 4928.30127,
+      "direction": "left",
+      "source_anchor_residual_m": 0.243
+    },
+    {
+      "turn": 13,
+      "station_m": 5434.9585,
+      "direction": "left",
+      "source_anchor_residual_m": 0.002
+    },
+    {
+      "turn": 14,
+      "station_m": 688.327148,
+      "direction": "left",
+      "source_anchor_residual_m": 1.187
+    },
+    {
+      "turn": 15,
+      "station_m": 729.70752,
+      "direction": "right",
+      "source_anchor_residual_m": 0.904
+    },
+    {
+      "turn": 16,
+      "station_m": 790.26416,
+      "direction": "left",
+      "source_anchor_residual_m": 1.741
+    },
+    {
+      "turn": 17,
+      "station_m": 1608.78809,
+      "direction": "left",
+      "source_anchor_residual_m": 0.465
+    }
+  ]
+}

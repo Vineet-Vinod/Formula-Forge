@@ -447,7 +447,9 @@ TrackShapeAuditResult auditTrackCatalogShape(const TrackCatalogEntry& track) noe
 
     for (const TrackTurnExpectation& expected : trackTurnExpectations(track.id)) {
         // The surveyed chicanes reverse inside 40 m; Biassono needs a wider chord.
-        const float kTurnWindow = track.id == TrackLayoutId::Monza
+        const bool vegasChicane = track.id == TrackLayoutId::LasVegas &&
+            (expected.landmark == "Turn 14" || expected.landmark == "Turn 15" || expected.landmark == "Turn 16");
+        const float kTurnWindow = vegasChicane ? 0.003f : track.id == TrackLayoutId::Monza
             ? (expected.landmark == "Curva Grande" ? 0.012f : 0.003f) : 0.018f;
         const TrackControlPoint before = pointAtFraction(expected.lapFraction - kTurnWindow);
         const TrackControlPoint center = pointAtFraction(expected.lapFraction);

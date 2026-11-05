@@ -1,0 +1,187 @@
+{
+  "date": "2026-11-05",
+  "circuit": "Las Vegas Strip Circuit",
+  "scope": "Las Vegas only, current track branch, no worktrees. Existing user changes remain outside this commit.",
+  "state": "Complete after Luna High review of packaged cockpit captures, live lap and final sign check.",
+  "reference": {
+    "map": "2025 FIA Event Notes Circuit Map V2, issued 2025-11-19",
+    "url": "https://www.fia.com/system/files/decision-document/2025_las_vegas_grand_prix_-_event_notes_-_circuit_map_v2_pit_lane_drawing_emergency_map_exits_quarantine_zone_and_red_zones.pdf",
+    "video": "Attribution/Sources/lasvegas/night-reference.json",
+    "layout_recipe": "Attribution/Sources/lasvegas/layout-corrections.json",
+    "turn_registration": "Attribution/Sources/lasvegas/turn-registration.json",
+    "architecture": "Attribution/Sources/lasvegas/landmark-architecture.json",
+    "uncertainty": "OSM street and building registration with original estimated racing transitions, crowns and facade details. FIA map establishes topology, not metric survey accuracy. No reference image pixels shipped."
+  },
+  "layout": {
+    "lap_length_m": 6201.0,
+    "official_turn_anchors": 17,
+    "automatic_detector_count": 13,
+    "road_samples": 6144,
+    "correction": "Remove the extra Sands lateral jog while retaining broad T10/T11 bends. Author rounded T14 left, T15 right and T16 left after the Strip, joining the existing Harmon Avenue axis.",
+    "road_contact_sha256": "d0719092f7a83f6a9625819ca1147bb73ae384758f2451e3c01a568aa7ceefc7",
+    "braking_boards": 18,
+    "protection": "Rendered barriers use the exported collision segments; revised apron and braking-board stations follow the corrected corners."
+  },
+  "scenery": {
+    "tiles": 151,
+    "triangles": 2167947,
+    "architectural_profile_instances": 25,
+    "changes": [
+      "Individual hotel facades, crowns, arcades, balconies and names; separate Encore tower and low podium.",
+      "Bellagio dome, additional Caesars towers, Venetian wings, LINQ, Horseshoe and Elara profiles.",
+      "Facade-only night illumination and lower-contrast generic windows.",
+      "Sector-specific original race panels, hotel entrance signs, planters, marshal booths and wayfinding.",
+      "Covered pedestrian bridge bracing and sign faces set ahead of their supports."
+    ],
+    "source_manifest_sha256": "7bbb231b423821a9608654e4d0564254b84f94594f8943e90c3f42415c2a5bf9",
+    "render_manifest_sha256": "9bde6902ef7ed504f147d3fe0ddce8c07cc4ec7ab7e03e48cb5d952fa5246cae",
+    "terrain_sha256": "302f6ade089a7bbcdf9b6ee15c88f703def3de98acb06f6a091e3a927a605a8f"
+  },
+  "checks": {
+    "native": "make check passed for all generated circuits and the accepted circuit/camera/contact regressions; Las Vegas valid dynamic lap 166.143 s.",
+    "python": "7 focused regressions passed, mypy passed, ruff passed.",
+    "editor_build": "passed",
+    "saved_assets": "151 meshes reopened in a fresh editor; triangle counts, source hashes and material bindings passed.",
+    "packaged_build": "passed, no material shader errors",
+    "lasvegas_flow": {
+      "passed": true,
+      "process_id": 2,
+      "circuits": 1,
+      "real_finite_lap": true,
+      "restart": true,
+      "seconds": 217.933
+    }
+  },
+  "live_lap": {
+    "recording": "build/unreal/recordings/20261105-203847-01A1AD6F",
+    "frames": 4585,
+    "last_lap_seconds": 166.14267766990028,
+    "valid": true,
+    "barrier_contact_frames": 0,
+    "offtrack_frames": 0,
+    "airborne_frames": 0,
+    "max_visual_penetration_m": 0,
+    "max_speed_kph": 209.7341997931985,
+    "camera_fov_degrees": [
+      90
+    ],
+    "method": "Existing Las Vegas audit controller drives the real native simulation at 0.60 pace. Finite lap, keyboard input, pause/resume, restart, results and menu return run in one Unreal process.",
+    "subsequent_change": "Only sign faces moved ahead of their supports after this lap; road/contact/vehicle/camera data unchanged. Final still and driving sign captures checked separately."
+  },
+  "reviewer": {
+    "model": "gpt-6-luna",
+    "reasoning_effort": "high",
+    "status": "approved",
+    "coverage": "13 packaged cockpit stations, 17 moving frames including both Harmon reversals, final sign/board rechecks.",
+    "closed": [
+      "Missing Harmon chicane and extra Sands jog",
+      "Dark hotel bodies and excessive generic window contrast",
+      "Blank bridge fascia and repetitive race decor",
+      "Support posts obstructing sign lettering"
+    ],
+    "remaining_polish": [
+      "Some distant skyline filler remains modular.",
+      "Palazzo lettering is small from the distant Sands viewpoint."
+    ]
+  },
+  "performance": {
+    "resolution": [
+      1600,
+      900
+    ],
+    "screen_percentage": 100,
+    "forward_shading": true,
+    "anti_aliasing": "Existing TAA preset",
+    "vsync": false,
+    "frame_cap": 0,
+    "platform": "Linux Vulkan SM5, Intel Iris Xe, Unreal 5.8.3",
+    "window": "CSV frames 500\u20131399 of 1400; all 900 sampled frames have active live simulation. Serial representative long-straight runs, not a full-lap uncapped profile.",
+    "note": "Final Vegas measurement rerun after the cosmetic sign-face offsets. Accepted circuits use unchanged assets and equal settings.",
+    "results": [
+      {
+        "circuit": "lasvegas",
+        "start_station_m": 5500,
+        "samples": 900,
+        "active_simulation_frames": 900,
+        "FrameTime": {
+          "median_ms": 33.89035,
+          "p95_ms": 40.9198,
+          "p99_ms": 45.8954
+        },
+        "GameThreadTime": {
+          "median_ms": 3.4485,
+          "p95_ms": 4.662,
+          "p99_ms": 5.612
+        },
+        "RenderThreadTime": {
+          "median_ms": 5.49,
+          "p95_ms": 7.739,
+          "p99_ms": 8.953
+        },
+        "GPUTime": {
+          "median_ms": 25.3925,
+          "p95_ms": 33.375,
+          "p99_ms": 37.548
+        }
+      },
+      {
+        "circuit": "monza",
+        "start_station_m": 5000,
+        "samples": 900,
+        "active_simulation_frames": 900,
+        "FrameTime": {
+          "median_ms": 41.425399999999996,
+          "p95_ms": 48.4888,
+          "p99_ms": 55.8581
+        },
+        "GameThreadTime": {
+          "median_ms": 3.6505,
+          "p95_ms": 5.397,
+          "p99_ms": 6.465
+        },
+        "RenderThreadTime": {
+          "median_ms": 5.637499999999999,
+          "p95_ms": 7.489,
+          "p99_ms": 9.172
+        },
+        "GPUTime": {
+          "median_ms": 30.241999999999997,
+          "p95_ms": 36.34,
+          "p99_ms": 39.845
+        }
+      },
+      {
+        "circuit": "interlagos",
+        "start_station_m": 3500,
+        "samples": 900,
+        "active_simulation_frames": 900,
+        "FrameTime": {
+          "median_ms": 36.29395,
+          "p95_ms": 45.0974,
+          "p99_ms": 50.2744
+        },
+        "GameThreadTime": {
+          "median_ms": 3.5845000000000002,
+          "p95_ms": 5.257,
+          "p99_ms": 6.002
+        },
+        "RenderThreadTime": {
+          "median_ms": 5.253,
+          "p95_ms": 7.813,
+          "p99_ms": 9.229
+        },
+        "GPUTime": {
+          "median_ms": 26.6795,
+          "p95_ms": 33.881,
+          "p99_ms": 37.727
+        }
+      }
+    ]
+  },
+  "memory": {
+    "max_observed_machine_used_bytes": 7808065536,
+    "max_job_limit_bytes": 4000000000,
+    "method": "Guarded serial editor, package and runtime jobs. Four mesh-import batches for the full scenery build. Observations include successful final authoring/validation jobs since 20:25 UTC."
+  },
+  "evidence_directory": "build/reviews/lasvegas/landmarks"
+}

@@ -33,5 +33,24 @@
     "retrieved": "2026-11-05",
     "query": "[out:json][timeout:30];way[\"highway\"][\"bridge\"](36.105,-115.182,36.128,-115.153);out geom;",
     "estimates": "Footway axes registered to the existing source frame. Deck height, width, rails and canopies are original visual approximations."
+  },
+  "layout_reference": {
+    "reference_only": true,
+    "url": "https://www.fia.com/system/files/decision-document/2025_las_vegas_grand_prix_-_event_notes_-_circuit_map_v2_pit_lane_drawing_emergency_map_exits_quarantine_zone_and_red_zones.pdf",
+    "revision": "V2 issued 2025-11-19",
+    "use": "Official 17-corner order, fast Sands bends and post-Strip Harmon chicane. No map artwork shipped. Street registration comes from retained OSM extract.",
+    "recipe": "layout-corrections.json"
+  },
+  "landmark_architecture": "landmark-architecture.json",
+  "encore_tower": {
+    "file": "encore.osm.json.gz",
+    "feature_id": 27910891,
+    "sha256": "2704804230f101ad8b72a5d45e50f98ac4f9831237112791438b821f521bdf7c",
+    "provider": "OpenStreetMap contributors",
+    "licence": "ODbL 1.0",
+    "licence_url": "https://www.openstreetmap.org/copyright",
+    "retrieved": "2026-11-05",
+    "query": "[out:json][timeout:45];(way[\"building\"](36.127,-115.169,36.132,-115.160);way[\"building:part\"](36.127,-115.169,36.132,-115.160););out geom;",
+    "use": "Only the Encore tower is added to the scenery. The original skyline box missed this tower while including the much larger low podium."
   }
 }

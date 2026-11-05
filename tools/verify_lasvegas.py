@@ -13,4 +13,9 @@ for tile in manifest['tiles']:
     if (mesh is None or mesh.get_num_triangles(0) != tile['triangles']
             or unreal.EditorAssetLibrary.get_metadata_tag(mesh, 'LasVegasSourceSHA256') != tile['sha256']):
         raise RuntimeError(f'Saved mesh differs from generated geometry: {tile["name"]}')
+    for index, name in enumerate(tile['materials']):
+        expected = 'Night_' + name if name in ('Road', 'Runoff', 'Concrete', 'Crowd') else name
+        material = mesh.get_material(index)
+        if material is None or material.get_path_name() != f'/Game/Generated/LasVegas/Materials/{expected}.{expected}':
+            raise RuntimeError(f'Saved material differs from generated geometry: {tile["name"]} slot {index}')
 unreal.log_warning(f'LASVEGAS_SAVED_ASSETS_PASS {len(manifest["tiles"])} tiles')

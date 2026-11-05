@@ -22,7 +22,7 @@ Walls are continuous, including pit entry. That closure is for the game. Widths 
 | Malaysia | 5547.7 | 5543 | 0.9992 | 21.0 | 16 | 23 |
 | Singapore | 4956.8 | 4940 | 0.9966 | 20.0 | 17 | 32 |
 | COTA | 5504.3 | 5513 | 1.0016 | 21.9 | 18 | 22 |
-| Las Vegas | 6210.2 | 6201 | 0.9985 | 16.0 | 14 | 65 |
+| Las Vegas | 6226.2 | 6201 | 0.9960 | 16.0 | 13 | 65 |
 | Turkey | 5347.9 | 5338 | 0.9981 | 35.3 | 15 | 8 |
 | Portimao | 4661.4 | 4653 | 0.9982 | 27.9 | 16 | 11 |
 | Buddh | 5137.1 | 5141 | 1.0008 | 13.2 | 16 | 1 |
