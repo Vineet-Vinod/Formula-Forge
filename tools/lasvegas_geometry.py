@@ -4,6 +4,7 @@ from __future__ import annotations
 import csv
 import gzip
 import hashlib
+import itertools
 import json
 import math
 import struct
@@ -47,8 +48,11 @@ class Scenery:
     def __init__(self) -> None:
         self.road = [RoadStation(**{key: float(value) for key, value in row.items()})
                      for row in csv.DictReader((SCRATCH / 'road.csv').open())]
-        if len(self.road) != 1536:
+        if len(self.road) != 6144:
             raise ValueError('Run make check to export the canonical Las Vegas samples')
+        self.detail_stride = len(self.road) // 1536
+        self.lights: list[Point] = []
+        self.boards: list[dict[str, float | int]] = []
         self.tiles: dict[str, MeshTile] = {}
         self.landmarks: list[dict[str, str | float | int]] = []
         self.cells: dict[tuple[int, int], list[int]] = {}
@@ -92,7 +96,9 @@ class Scenery:
             if candidate < distance:
                 distance = candidate
                 best = RoadStation(a.station + t * LENGTH / len(self.road), px, py, a.z + t * (b.z - a.z),
-                                   a.tx, a.ty, a.half_width + t * (b.half_width - a.half_width), a.bank)
+                                   a.tx, a.ty, a.half_width + t * (b.half_width - a.half_width), a.bank,
+                                   a.left_shoulder + t * (b.left_shoulder - a.left_shoulder),
+                                   a.right_shoulder + t * (b.right_shoulder - a.right_shoulder))
         return best, distance
 
     def ground(self, x: float, y: float) -> float:
@@ -105,7 +111,9 @@ class Scenery:
         z = (grid.heights[index] * (1 - tx) * (1 - ty) + grid.heights[index + 1] * tx * (1 - ty)
              + grid.heights[index + grid.columns] * (1 - tx) * ty + grid.heights[index + grid.columns + 1] * tx * ty)
         sample, distance = self.nearest(x, y)
-        blend = max(0.0, min(1.0, (distance - sample.half_width - 1) / 14))
+        lane = (x - sample.x) * sample.ty - (y - sample.y) * sample.tx
+        shoulder = sample.left_shoulder if lane > 0 else sample.right_shoulder
+        blend = max(0.0, min(1.0, (distance - sample.half_width - shoulder - 1) / 14))
         blend = blend * blend * (3 - 2 * blend)
         return sample.z * (1 - blend) + z * blend - .055
 
@@ -116,7 +124,8 @@ class Scenery:
         return self.tiles.setdefault(name, MeshTile())
 
     def triangle(self, kind: str, material: str, a: Point, b: Point, c: Point,
-                 uv: tuple[tuple[float, float], ...] = ((0, 0), (1, 0), (1, 1))) -> None:
+                 uv: tuple[tuple[float, float], ...] = ((0, 0), (1, 0), (1, 1)),
+                 normals: tuple[Point, ...] | None = None) -> None:
         normal = cross(sub(b, a), sub(c, a))
         if sum(value * value for value in normal) < 1e-12:
             return
@@ -125,8 +134,8 @@ class Scenery:
         if material not in tile.materials:
             tile.materials.append(material)
         tile.triangles.extend(struct.pack('<I', tile.materials.index(material)))
-        n = -normal[1], -normal[0], normal[2]
-        for point, texcoord in zip((a, b, c), uv):
+        for point, texcoord, vertex_normal in zip((a, b, c), uv, normals or (normal, normal, normal)):
+            n = -vertex_normal[1], -vertex_normal[0], vertex_normal[2]
             p = world(point)
             tile.triangles.extend(struct.pack('<8f', *p, *n, *texcoord))
             for axis in range(3):
@@ -153,14 +162,19 @@ class Scenery:
         self.beam(kind, material, sub(center, mul(direction, length / 2)),
                   add(center, mul(direction, length / 2)), width, height)
 
-    def banner(self, a: Point, b: Point, height: float, material: str, kind: str = 'Tile_Detail') -> None:
-        u = math.dist(a, b) / .5 if material == 'Fence' else 1
+    def banner(self, a: Point, b: Point, height: float, material: str, kind: str = 'Tile_Detail',
+               u0: float = 0, repeat: float = 1) -> None:
+        u = math.dist(a, b) / .5 if material == 'Fence' else repeat
         v = height / .5 if material == 'Fence' else 1
+        if 'Facade' in material:
+            u, v = math.dist(a, b) / 16, height / 14.4
         top_a, top_b = add(a, (0, 0, height)), add(b, (0, 0, height))
-        self.triangle(kind, material, top_a, top_b, b, ((0, 0), (u, 0), (u, v)))
-        self.triangle(kind, material, top_a, b, a, ((0, 0), (u, v), (0, v)))
-        self.triangle(kind, material, top_b, top_a, a, ((u, 0), (0, 0), (0, v)))
-        self.triangle(kind, material, top_b, a, b, ((u, 0), (0, v), (u, v)))
+        self.triangle(kind, material, top_a, top_b, b, ((u0, 0), (u0 + u, 0), (u0 + u, v)))
+        self.triangle(kind, material, top_a, b, a, ((u0, 0), (u0 + u, v), (u0, v)))
+        if material == 'Fence':
+            return
+        self.triangle(kind, material, top_b, top_a, a, ((u0 + u, 0), (u0, 0), (u0, v)))
+        self.triangle(kind, material, top_b, a, b, ((u0 + u, 0), (u0, v), (u0 + u, v)))
 
     def spectators(self, a: Point, b: Point, row: int, kind: str) -> None:
         span = sub(b, a)
@@ -197,15 +211,21 @@ class Scenery:
                       add(b, (0, 0, (top - bottom) / 2)), radius * 2, top - bottom)
             sample, _ = self.nearest((ax + bx) / 2, (ay + by) / 2)
             heading = sample.station
-            panel = 'WallGold' if 3400 < heading < 4200 else 'WallDark'
+            panel = 'WallPink' if 3400 < heading < 4200 else ('WallBlue' if 2200 < heading < 3400 else 'WallDark')
             inward = mul(norm((sample.x - (ax + bx) / 2, sample.y - (ay + by) / 2, 0)), radius + .012)
             panel_a, panel_b = add(a, inward), add(b, inward)
-            if (ax - sample.x) * sample.ty - (ay - sample.y) * sample.tx > 0:
+            reverse = (ax - sample.x) * sample.ty - (ay - sample.y) * sample.tx > 0
+            if reverse:
                 panel_a, panel_b = panel_b, panel_a
-            self.banner(add(panel_a, (0, 0, .02)), add(panel_b, (0, 0, .02)), .88, panel, 'Tile_Protection')
+            span = math.dist(a, b)
+            phase = (-sample.station - span / 2) / 8 if reverse else (sample.station - span / 2) / 8
+            self.banner(add(panel_a, (0, 0, .02)), add(panel_b, (0, 0, .02)), .88, panel, 'Tile_Protection', phase, span / 8)
             self.banner(add(a, (0, 0, top - bottom)), add(b, (0, 0, top - bottom)), 2.55, 'Fence', 'Tile_Protection')
-            if int(sample.station / 4) % 2 == 0:
-                self.beam('Tile_Protection', 'Steel', add(a, (0, 0, top - bottom)), add(a, (0, 0, 3.75)), .065)
+            if int(sample.station / 8) != int((sample.station - LENGTH / len(self.road)) / 8):
+                self.beam('Tile_Protection', 'Steel', add(a, (0, 0, top - bottom)), add(a, (0, 0, 3.5)), .065)
+                self.beam('Tile_Protection', 'Steel', add(a, (0, 0, 3.5)), add(add(a, (0, 0, 4.05)), mul(inward, 2.8)), .065)
+            upper_a, upper_b = add(add(a, (0, 0, 4.05)), mul(inward, 2.8)), add(add(b, (0, 0, 4.05)), mul(inward, 2.8))
+            self.quad('Tile_Protection', 'Fence', add(a, (0, 0, 3.5)), add(b, (0, 0, 3.5)), upper_b, upper_a, math.dist(a, b) / .5, 1.4)
             self.beam('Tile_Protection', 'Steel', add(a, (0, 0, 3.5)), add(b, (0, 0, 3.5)), .028)
         for index, sample in enumerate(self.road):
             nxt = self.road[(index + 1) % len(self.road)]
@@ -218,14 +238,29 @@ class Scenery:
                     a, b, c, d = d, c, b, a
                 self.quad('Tile_Road', 'White', a, b, c, d)
                 # Asphalt shoulder reaches the physical wall; no unmodelled slit outside the white line.
-                outer = sample.point(sign * (sample.half_width + 5), -.012)
-                outer_next = nxt.point(sign * (nxt.half_width + 5), -.012)
+                outer = sample.point(sign * (sample.half_width + .85 + (sample.left_shoulder if sign > 0 else sample.right_shoulder)), -.012)
+                outer_next = nxt.point(sign * (nxt.half_width + .85 + (nxt.left_shoulder if sign > 0 else nxt.right_shoulder)), -.012)
                 a, b, c, d = sample.point(lane), nxt.point(lane_next), outer_next, outer
                 if sign > 0:
                     a, b, c, d = d, c, b, a
                 self.quad('Tile_Road', 'Runoff', a, b, c, d, 1, 1)
-            before = self.road[(index - 4) % len(self.road)]
-            after = self.road[(index + 4) % len(self.road)]
+            if 1945 < sample.station < 2030:
+                lane = sample.half_width + sample.left_shoulder + .4
+                next_lane = nxt.half_width + nxt.left_shoulder + .4
+                self.quad('Tile_Road', 'Red', sample.point(lane, .015), sample.point(lane + .5, .015),
+                          nxt.point(next_lane + .5, .015), nxt.point(next_lane, .015))
+            for apex, outside in ((654, 1), (1982, 1), (3278, -1), (3734, 1), (3940, 1), (4925, 1)):
+                if not apex - 135 < sample.station < apex + 25:
+                    continue
+                def rubber_lane(station: RoadStation, apex: float = apex, outside: int = outside) -> float:
+                    t = max(0.0, min(1.0, (station.station - apex + 80) / 105))
+                    return outside * station.half_width * (.45 - .8 * t * t * (3 - 2 * t))
+                for wheel in (-.8, .8):
+                    lane_a, lane_b = rubber_lane(sample) + wheel, rubber_lane(nxt) + wheel
+                    self.quad('Tile_Road', 'Rubber', sample.point(lane_a - .16, .019), sample.point(lane_a + .16, .019),
+                              nxt.point(lane_b + .16, .019), nxt.point(lane_b - .16, .019), 1, (nxt.station - sample.station) / 2)
+            before = self.road[(index - 4 * self.detail_stride) % len(self.road)]
+            after = self.road[(index + 4 * self.detail_stride) % len(self.road)]
             bend = before.tx * after.ty - before.ty * after.tx
             if abs(bend) > .13:
                 sign = -1 if bend > 0 else 1
@@ -245,7 +280,7 @@ class Scenery:
                     end_inner = add(d, mul(sub(c, d), t1))
                     start_inner = add(d, mul(sub(c, d), t0))
                     self.quad('Tile_Road', paint, start_outer, end_outer, end_inner, start_inner)
-            if 1580 < sample.station < 1950 and index % 4 == 0:
+            if 1580 < sample.station < 1950 and index % (4 * self.detail_stride) == 0:
                 for side in (-1, 1):
                     lane_a, lane_b = side * 2.5, side * 4.5
                     self.quad('Tile_Road', 'White', sample.point(lane_a, .016), sample.point(lane_b, .016),
@@ -253,7 +288,7 @@ class Scenery:
                               add(sample.point(lane_a, .016), (sample.tx * .12, sample.ty * .12, 0)))
                     self.quad('Tile_Road', 'White', sample.point(lane_b, .016), nxt.point(lane_b, .016),
                               nxt.point(lane_b - side * .10, .016), sample.point(lane_b - side * .10, .016))
-            if index % 12 == 0:
+            if index % (12 * self.detail_stride) == 0:
                 for side in (-1, 1):
                     self.floodlight(sample, side)
         start = min(self.road, key=lambda sample: abs(sample.station - 1815))
@@ -269,21 +304,36 @@ class Scenery:
         self.gantry(1830, 'VegasSign')
         for station in (670, 2050, 3350, 4150, 4990, 6080):
             self.gantry(station, 'RaceSign')
-        for station in (650, 2050, 3370, 4180, 5000, 6080):
+        for apex, outside in ((654, 1), (1982, 1), (3278, -1), (3734, 1), (3940, 1), (4925, 1)):
             for distance in (150, 100, 50):
-                sample = min(self.road, key=lambda sample: abs(sample.station - (station - distance)))
-                a = sample.point(-(sample.half_width + 4.9), 1.5)
-                b = sample.point(-(sample.half_width + 4.1), 1.5)
-                self.quad('Tile_Detail', str(distance), add(a, (0, 0, 1.1)), add(b, (0, 0, 1.1)), b, a)
+                station = apex - distance
+                sample = min(self.road, key=lambda sample: abs(sample.station - station))
+                shoulder = sample.left_shoulder if outside > 0 else sample.right_shoulder
+                lane = outside * (sample.half_width + shoulder - .1)
+                a, b = sample.point(lane - .65, 1.25), sample.point(lane + .65, 1.25)
+                self.banner(a, b, 1.25, str(distance))
+                self.beam('Tile_Detail', 'Steel', sample.point(outside * (sample.half_width + shoulder + .85), 1.9),
+                          sample.point(lane, 1.9), .05)
+                self.boards.append({'apex': apex, 'distance': distance, 'station': sample.station, 'side': outside})
 
     def floodlight(self, sample: RoadStation, sign: int) -> None:
-        base = sample.point(sign * (sample.half_width + 5.7))
-        high = add(base, (0, 0, 10.5))
-        arm = sample.point(sign * (sample.half_width + 2.5), 10.1)
-        self.beam('Tile_Detail', 'Steel', base, high, .12)
-        self.beam('Tile_Detail', 'Steel', high, arm, .09)
-        self.box('Tile_Detail', 'Black', arm, 1.1, .45, .16, math.atan2(sample.ty, sample.tx))
-        self.box('Tile_Detail', 'Lamp', add(arm, (0, 0, -.09)), .95, .4, .02, math.atan2(sample.ty, sample.tx))
+        shoulder = sample.left_shoulder if sign > 0 else sample.right_shoulder
+        base = sample.point(sign * (sample.half_width + shoulder + 1.4))
+        high = add(base, (0, 0, 11.5))
+        arm = sample.point(sign * (sample.half_width + .8), 11.2)
+        heading = math.atan2(sample.ty, sample.tx)
+        self.beam('Tile_Detail', 'Steel', base, high, .14)
+        self.beam('Tile_Detail', 'Steel', high, arm, .11)
+        for offset in (-.8, .8):
+            center = add(arm, (sample.tx * offset, sample.ty * offset, 0))
+            self.box('Tile_Detail', 'Black', center, 1.2, .65, .16, heading)
+            self.box('Tile_Detail', 'Lamp', add(center, (0, 0, -.10)), 1.06, .52, .035, heading)
+        for axis in ((1., 0., 0.), (0., 1., 0.)):
+            center = add(arm, (0, 0, -.1))
+            a, b = sub(center, mul(axis, 1.4)), add(center, mul(axis, 1.4))
+            self.quad('Tile_Detail', 'LightHalo', add(a, (0, 0, -1.4)), add(b, (0, 0, -1.4)),
+                      add(b, (0, 0, 1.4)), add(a, (0, 0, 1.4)))
+        self.lights.append(arm)
 
     def gantry(self, station: float, material: str) -> None:
         sample = min(self.road, key=lambda sample: abs(sample.station - station))
@@ -323,7 +373,7 @@ class Scenery:
                 x = grid.x + x_index * step
                 points = [(x, y), (x + step, y), (x + step, y + step), (x, y + step)]
                 samples = [self.nearest(px, py) for px, py in points]
-                if any(distance < sample.half_width + 4 for sample, distance in samples):
+                if any(distance < sample.half_width + max(sample.left_shoulder, sample.right_shoulder) + 1 for sample, distance in samples):
                     continue
                 corners = [(px, py, self.ground(px, py)) for px, py in points]
                 self.quad('Tile_Ground', 'CityGround', corners[0], corners[1], corners[2], corners[3], step / 5, step / 5)
@@ -331,11 +381,15 @@ class Scenery:
         for index, sample in enumerate(self.road):
             nxt = self.road[(index + 1) % len(self.road)]
             for sign in (-1, 1):
-                for inner, outer in [(4.8, 12), (12, 24)]:
-                    a, b = sample.point(sign * (sample.half_width + inner)), nxt.point(sign * (nxt.half_width + inner))
-                    c, d = nxt.point(sign * (nxt.half_width + outer)), sample.point(sign * (sample.half_width + outer))
+                shoulder = sample.left_shoulder if sign > 0 else sample.right_shoulder
+                shoulder_next = nxt.left_shoulder if sign > 0 else nxt.right_shoulder
+                for inner, outer in [(.7, 8), (8, 24)]:
+                    a = sample.point(sign * (sample.half_width + shoulder + inner))
+                    b = nxt.point(sign * (nxt.half_width + shoulder_next + inner))
+                    c = nxt.point(sign * (nxt.half_width + shoulder_next + outer))
+                    d = sample.point(sign * (sample.half_width + shoulder + outer))
                     strip = [a, b, c, d]
-                    if any(self.nearest(p[0], p[1])[1] < self.nearest(p[0], p[1])[0].half_width + 3 for p in strip):
+                    if any(self.nearest(p[0], p[1])[1] < self.nearest(p[0], p[1])[0].half_width + .6 for p in strip):
                         continue
                     corners = [(p[0], p[1], self.ground(p[0], p[1]) - .03) for p in strip]
                     if sign > 0:
@@ -348,14 +402,23 @@ class Scenery:
         area = sum(a[0] * b[1] - b[0] * a[1] for a, b in zip(ring, ring[1:] + ring[:1]))
         if area < 0:
             ring.reverse()
+        face_normals = [norm((b[1] - a[1], a[0] - b[0], 0)) for a, b in zip(ring, ring[1:] + ring[:1])]
+        def corner_normal(index: int, face: Point) -> Point:
+            previous, nxt = face_normals[index - 1], face_normals[index % len(ring)]
+            return norm(add(previous, nxt)) if sum(a * b for a, b in zip(previous, nxt)) > .9 else face
+        facade_u = 0.0
         for index, a in enumerate(ring):
             b = ring[(index + 1) % len(ring)]
             width = math.dist(a, b)
             low_a, low_b = (*a, z), (*b, z)
             top_a, top_b = (*a, z + height), (*b, z + height)
-            self.quad('Building_City', material, low_a, low_b, top_b, top_a, width / 4.0, height / 3.6)
-            self.beam('Building_City', 'Cream', top_a, top_b, .4, .7)
-            if height > 30:
+            na, nb = corner_normal(index, face_normals[index]), corner_normal(index + 1, face_normals[index])
+            u, v = width / 16, -height / 14.4
+            self.triangle('Building_City', material, low_a, low_b, top_b, ((facade_u, 0), (facade_u + u, 0), (facade_u + u, v)), (na, nb, nb))
+            self.triangle('Building_City', material, low_a, top_b, top_a, ((facade_u, 0), (facade_u + u, v), (facade_u, v)), (na, nb, na))
+            facade_u += u
+            self.beam('Building_City', 'IlluminatedCream' if material == 'BronzeFacade' else 'Cream', top_a, top_b, .4, .7)
+            if height > 30 and material == 'CreamFacade':
                 for floor in range(4, int(height), 14):
                     self.beam('Building_City', 'Cream', (*a, z + floor), (*b, z + floor), .16, .3)
         for keyword, label in [('Bellagio Las Vegas', 'Bellagio'), ('Venetian Tower', 'Venetian'),
@@ -369,10 +432,11 @@ class Scenery:
             a, b = ring[edge], ring[(edge + 1) % len(ring)]
             dx, dy = b[0] - a[0], b[1] - a[1]
             span = math.hypot(dx, dy)
-            if span < 4:
+            if span < .1:
                 continue
             center_x, center_y = (a[0] + b[0]) / 2, (a[1] + b[1]) / 2
-            half = min(span * .43, 22)
+            half = min(max(p[0] for p in ring) - min(p[0] for p in ring),
+                       max(p[1] for p in ring) - min(p[1] for p in ring), 44) * .43
             center_x += dy / span * .15
             center_y -= dx / span * .15
             left = center_x - dx / span * half, center_y - dy / span * half, z + height - 7
@@ -414,8 +478,6 @@ class Scenery:
                 continue
             if math.dist(ring[0], ring[-1]) < 1:
                 ring.pop()
-            if len(ring) > 120:
-                ring = ring[::2]
             if any(self.nearest(*point)[1] < self.nearest(*point)[0].half_width + 7 for point in ring):
                 continue
             if any(self.nearest((a[0] + b[0]) / 2, (a[1] + b[1]) / 2)[1] < 18 for a, b in zip(ring, ring[1:] + ring[:1])):
@@ -424,19 +486,92 @@ class Scenery:
             material = 'BronzeFacade' if any(word in name for word in ('Wynn', 'Trump', 'Venetian', 'Palazzo')) else 'CreamFacade'
             if any(word in name for word in ('Cosmopolitan', 'Horseshoe', 'Planet Hollywood', 'Hilton')):
                 material = 'BlueFacade'
-            self.building(ring, height, material, name, element['id'])
+            if element['id'] == 43875964:
+                self.campanile(ring, element['id'])
+            else:
+                self.building(ring, height, material, name, element['id'])
         self.sphere()
         self.eiffel()
         self.wheel()
         self.pits()
-        for a, b, sign in [(1500, 1970, 1), (3350, 3500, 1), (3700, 3960, 1), (5500, 5750, -1)]:
+        self.bridges()
+        for a, b, sign in [(1500, 1900, 1), (3350, 3500, 1), (3700, 3960, 1), (5500, 5750, -1)]:
             self.grandstand(a, b, sign)
-        for index, sample in enumerate(self.road):
+        for index, sample in enumerate(self.road[::self.detail_stride]):
             if index % 10 or not (sample.station < 700 or sample.station > 4650):
                 continue
             for sign in (-1, 1):
                 position = sample.point(sign * (sample.half_width + 11 + (index % 3) * 2))
                 self.palm((position[0], position[1], self.ground(position[0], position[1])), 8 + index % 5)
+
+    def bridges(self) -> None:
+        payload = json.loads(gzip.decompress((SOURCE / 'pedestrian_bridges.osm.json.gz').read_bytes()))
+        for element in payload['elements']:
+            tags = element.get('tags', {})
+            if tags.get('highway') != 'footway':
+                continue
+            points = [self.projected(p['lat'], p['lon']) for p in element['geometry']]
+            probes: list[tuple[RoadStation, float]] = []
+            for a, b in itertools.pairwise(points):
+                count = max(1, math.ceil(math.dist(a, b) / 3))
+                probes.extend(self.nearest(a[0] + (b[0] - a[0]) * step / count,
+                                           a[1] + (b[1] - a[1]) * step / count) for step in range(count + 1))
+            sample, distance = min(probes, key=lambda probe: probe[1])
+            if distance > sample.half_width or max(p[1] for p in probes) < sample.half_width + 4:
+                continue
+            z = sample.z + 6.5
+            for a, b in itertools.pairwise(points):
+                length = math.dist(a, b)
+                if length < .1:
+                    continue
+                tangent = ((b[0] - a[0]) / length, (b[1] - a[1]) / length, 0.0)
+                side = (-tangent[1], tangent[0], 0.0)
+                start, end = (*a, z), (*b, z)
+                self.beam('Building_Bridge', 'Cream', start, end, 4.2, .45)
+                self.beam('Building_Bridge', 'Canopy', add(start, (0, 0, 2.9)), add(end, (0, 0, 2.9)), 4.6, .18)
+                for sign in (-1, 1):
+                    edge_a, edge_b = add(start, mul(side, sign * 2)), add(end, mul(side, sign * 2))
+                    self.banner(edge_a, edge_b, 1.1, 'Glass', 'Building_Bridge')
+                    self.beam('Building_Bridge', 'Steel', add(edge_a, (0, 0, 1.1)), add(edge_b, (0, 0, 1.1)), .08)
+                    for support in range(max(1, math.ceil(length / 3)) + 1):
+                        point = add(edge_a, mul(sub(edge_b, edge_a), support / max(1, math.ceil(length / 3))))
+                        self.beam('Building_Bridge', 'Steel', point, add(point, (0, 0, 2.9)), .08)
+                    self.beam('Building_Bridge', 'IlluminatedCream', add(edge_a, (0, 0, -.3)), add(edge_b, (0, 0, -.3)), .10)
+                if length > 14 and self.nearest((a[0] + b[0]) / 2, (a[1] + b[1]) / 2)[1] < sample.half_width:
+                    edge_a, edge_b = add(start, mul(side, 2.12)), add(end, mul(side, 2.12))
+                    self.banner(add(edge_a, (0, 0, -1.4)), add(edge_b, (0, 0, -1.4)), 1.1, 'RaceSign', 'Building_Bridge')
+            for x, y in (points[0], points[-1]):
+                road, distance = self.nearest(x, y)
+                if distance > road.half_width + max(road.left_shoulder, road.right_shoulder) + 3:
+                    self.beam('Building_Bridge', 'Cream', (x, y, self.ground(x, y)), (x, y, z), .8)
+            self.landmarks.append({'name': tags.get('name', 'Strip pedestrian bridge'), 'osm_id': element['id'],
+                                   'station_m': sample.station, 'height_m': 6.5})
+
+    def campanile(self, ring: list[tuple[float, float]], osm_id: int) -> None:
+        x, y = sum(p[0] for p in ring) / len(ring), sum(p[1] for p in ring) / len(ring)
+        z = self.ground(x, y)
+        self.box('Building_Campanile', 'Cream', (x, y, z + 2), 17, 17, 4)
+        self.box('Building_Campanile', 'Brick', (x, y, z + 36), 13, 13, 68)
+        for side in (-1, 1):
+            for offset in (-4.8, 4.8):
+                self.beam('Building_Campanile', 'Cream', (x + side * 6.6, y + offset, z + 5),
+                          (x + side * 6.6, y + offset, z + 70), .38)
+                self.beam('Building_Campanile', 'Cream', (x + offset, y + side * 6.6, z + 5),
+                          (x + offset, y + side * 6.6, z + 70), .38)
+        for height, width, depth in ((70, 15.5, 1.5), (73, 15, 1), (85, 16, 1.5), (88, 14, 2)):
+            self.box('Building_Campanile', 'Cream', (x, y, z + height), width, width, depth)
+        self.box('Building_Campanile', 'Black', (x, y, z + 79), 12, 12, 10)
+        for side in (-1, 1):
+            for offset in (-6, -2, 2, 6):
+                self.beam('Building_Campanile', 'IlluminatedCream', (x + side * 6.6, y + offset, z + 73),
+                          (x + side * 6.6, y + offset, z + 85), .65)
+                self.beam('Building_Campanile', 'IlluminatedCream', (x + offset, y + side * 6.6, z + 73),
+                          (x + offset, y + side * 6.6, z + 85), .65)
+        corners = [(x - 7, y - 7, z + 89), (x + 7, y - 7, z + 89),
+                   (x + 7, y + 7, z + 89), (x - 7, y + 7, z + 89)]
+        for index in range(4):
+            self.triangle('Building_Campanile', 'Copper', corners[index], corners[(index + 1) % 4], (x, y, z + 96))
+        self.landmarks.append({'name': 'Venetian Campanile', 'osm_id': osm_id, 'x': x, 'y': y, 'height_m': 96})
 
     def sphere(self) -> None:
         x, y = self.projected(36.12076, -115.16182)
@@ -494,29 +629,32 @@ class Scenery:
             for dy in (-1.8, 1.8):
                 a = x + radius * math.cos(angle), y + dy, center[2] + radius * math.sin(angle)
                 b = x + radius * math.cos(nxt), y + dy, center[2] + radius * math.sin(nxt)
-                self.beam('Building_HighRoller', 'White', a, b, .35)
-            if index % 4 == 0:
+                self.beam('Building_HighRoller', 'WheelLight', a, b, .35)
+            if index % (4 * self.detail_stride) == 0:
                 a = x + radius * math.cos(angle), y, center[2] + radius * math.sin(angle)
                 self.beam('Building_HighRoller', 'Steel', center, a, .045)
                 self.box('Building_HighRoller', 'BlueFacade', a, 4.8, 4.8, 3.4)
         self.landmarks.append({'name': 'High Roller', 'x': x, 'y': y, 'height_m': 167})
 
     def pits(self) -> None:
-        for index, sample in enumerate(self.road):
+        road = self.road[::self.detail_stride]
+        for index, sample in enumerate(road):
             if not 1530 < sample.station < 1940:
                 continue
-            nxt = self.road[(index + 1) % len(self.road)]
+            nxt = road[(index + 1) % len(road)]
             near = sample.half_width + 8
             near_next = nxt.half_width + 8
             # Pit lane, garages, three hospitality decks and cantilever roof.
             self.quad('Tile_Paddock', 'Runoff', sample.point(-near), nxt.point(-near_next), nxt.point(-near_next - 13), sample.point(-near - 13), 1, 3)
             for height in (0, 5.2, 10.5, 15.6):
                 self.beam('Building_Paddock', 'Cream', sample.point(-near - 24, height), nxt.point(-near_next - 24, height), 17, .5)
+                self.beam('Building_Paddock', 'IlluminatedCream', sample.point(-near - 15.4, height + .3),
+                          nxt.point(-near_next - 15.4, height + .3), .14, .08)
             self.banner(sample.point(-near - 22, .3), nxt.point(-near_next - 22, .3), 4.6, 'Garage', 'Building_Paddock')
             for height in (5.5, 10.8):
-                self.banner(sample.point(-near - 28, height), nxt.point(-near_next - 28, height), 3.5, 'BlueFacade', 'Building_Paddock')
+                self.banner(sample.point(-near - 28, height), nxt.point(-near_next - 28, height), 3.5, 'BlueFacade', 'Building_Paddock', sample.station / 16)
                 self.banner(sample.point(-near - 15.4, height), nxt.point(-near_next - 15.4, height), 1.0, 'RaceSign', 'Building_Paddock')
-            self.beam('Building_Paddock', 'Roof', sample.point(-near - 24, 18.8), nxt.point(-near_next - 24, 18.8), 22, .7)
+            self.beam('Building_Paddock', 'Canopy', sample.point(-near - 24, 18.8), nxt.point(-near_next - 24, 18.8), 22, .7)
             if index % 2 == 0:
                 self.beam('Building_Paddock', 'Steel', sample.point(-near - 16, 4.8), sample.point(-near - 16, 18.8), .2)
                 self.beam('Building_Paddock', 'Steel', sample.point(-near - 13, 18.1), sample.point(-near - 34, 18.1), .18)
@@ -526,11 +664,12 @@ class Scenery:
                 self.spectators(sample.point(-near - 16, 6.1), nxt.point(-near_next - 16, 6.1), index, 'Building_Crowd_Paddock')
 
     def grandstand(self, start: float, end: float, sign: int) -> None:
-        for index in range(0, len(self.road), 2):
-            sample = self.road[index]
+        road = self.road[::self.detail_stride]
+        for index in range(0, len(road), 2):
+            sample = road[index]
             if not start < sample.station < end:
                 continue
-            nxt = self.road[(index + 2) % len(self.road)]
+            nxt = road[(index + 2) % len(road)]
             base = sample.half_width + 7.5
             next_base = nxt.half_width + 7.5
             for row in range(18):
@@ -544,6 +683,25 @@ class Scenery:
                 self.beam('Building_Stands', 'Steel', foot, rear, .18)
                 self.beam('Building_Stands', 'Steel', sample.point(sign * base, .8), rear, .16)
                 self.beam('Building_Stands', 'Steel', foot, nxt.point(sign * (next_base + 19), 9.8), .10)
+            if start == 1500:
+                front = sample.point(sign * (base - 1.5), 12.4)
+                rear = sample.point(sign * (base + 20), 14.2)
+                front_next = nxt.point(sign * (next_base - 1.5), 12.4)
+                rear_next = nxt.point(sign * (next_base + 20), 14.2)
+                self.quad('Building_Stands', 'Canopy', front, front_next, rear_next, rear)
+                self.quad('Building_Stands', 'Canopy', rear, rear_next, front_next, front)
+                self.beam('Building_Stands', 'IlluminatedCream', front, front_next, .12)
+                for depth in (4, 8, 12, 16):
+                    height = 12.4 + depth / 21.5 * 1.8 - .08
+                    self.beam('Building_Stands', 'Steel', sample.point(sign * (base - 1.5 + depth), height),
+                              nxt.point(sign * (next_base - 1.5 + depth), height), .065)
+                self.beam('Building_Stands', 'Steel', rear, front, .15)
+                self.beam('Building_Stands', 'Steel', add(rear, (0, 0, -.8)), front, .10)
+                if index % 6 == 0:
+                    self.beam('Building_Stands', 'Steel', foot, rear, .24)
+                    self.beam('Building_Stands', 'Steel', rear, front, .18)
+                    self.beam('Building_Stands', 'Steel', add(rear, (0, 0, -1.2)), front, .12)
+                    self.box('Building_Stands', 'Lamp', add(front, (0, 0, -.18)), .7, .6, .05)
             self.beam('Building_Stands', 'Steel', sample.point(sign * (base + 19), 10.5),
                       nxt.point(sign * (next_base + 19), 10.5), .07)
 
@@ -557,8 +715,8 @@ class Scenery:
                 def trunk(z: float, radius: float, angle: float) -> Point:
                     return base[0] + .4 * z / height + radius * math.cos(angle), base[1] + .2 * z / height + radius * math.sin(angle), base[2] + z
                 self.quad('Building_Palms', 'Trunk', trunk(z0, r0, a0), trunk(z0, r0, a1), trunk(z1, r1, a1), trunk(z1, r1, a0))
-        for frond in range(13):
-            angle = frond * math.tau / 13 + base[0] % 1
+        for frond in range(19):
+            angle = frond * math.tau / 19 + base[0] % 1
             direction = math.cos(angle), math.sin(angle), 0.0
             side = -math.sin(angle), math.cos(angle), 0.0
             length = 3.4 + (frond % 3) * .4
@@ -567,11 +725,19 @@ class Scenery:
                 t = segment / 16
                 point = add(top, add(mul(direction, length * t), (0, 0, 2 * math.sin(t * math.pi) - t * 1.7)))
                 self.beam('Building_Palms', 'Leaves', previous, point, .035)
-                width = .75 * math.sin(t * math.pi) + .05
+                width = .8 * math.sin(t * math.pi) + .04
                 for sign in (-1, 1):
-                    blade = add(point, add(mul(side, sign * width), mul(direction, -.30)))
-                    blade = add(blade, (0, 0, -.18))
-                    self.triangle('Building_Palms', 'Leaves', previous, blade, point)
+                    last = point
+                    leaf_side = norm(cross(add(mul(side, sign), mul(direction, .25)), (0, 0, 1)))
+                    for blade_step in range(1, 4):
+                        fraction = blade_step / 3
+                        blade = add(point, add(mul(side, sign * width * fraction), mul(direction, .3 * fraction)))
+                        blade = add(blade, (0, 0, -.28 * fraction * fraction))
+                        half_width = .022 * (1 - fraction) + .003
+                        self.quad('Building_Palms', 'Leaves', sub(last, mul(leaf_side, half_width)),
+                                  sub(blade, mul(leaf_side, half_width)), add(blade, mul(leaf_side, half_width)),
+                                  add(last, mul(leaf_side, half_width)))
+                        last = blade
                 previous = point
 
     def save(self) -> dict[str, object]:
@@ -582,6 +748,8 @@ class Scenery:
             path.write_bytes(b'FFLVM1\0\0' + struct.pack('<I', len(tile.triangles) // 100) + tile.triangles)
             records.append({'name': name, 'file': path.name, 'materials': tile.materials, 'bounds': tile.minimum + tile.maximum,
                             'triangles': len(tile.triangles) // 100, 'sha256': hashlib.sha256(path.read_bytes()).hexdigest()})
+        (DATA / 'night_lights.csv').write_text('\n'.join(','.join(f'{v:.3f}' for v in world(p)) for p in self.lights) + '\n')
+        (SCRATCH / 'braking_boards.json').write_text(json.dumps(self.boards, indent=2) + '\n')
         manifest: dict[str, object] = {'tiles': records, 'landmarks': self.landmarks}
         (SCRATCH / 'manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
         return manifest

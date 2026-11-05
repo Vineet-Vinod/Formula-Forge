@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-05",
+  "circuit": "Las Vegas Strip Circuit",
+  "state": "Native asset milestone; final cockpit review, packaged lap and uncapped performance checks in progress.",
+  "reference": "Attribution/Sources/lasvegas/night-reference.json",
+  "scope": "Las Vegas only; original camera and vehicle handling retained.",
+  "geometry": {
+    "road_stations": 6144,
+    "nominal_segment_m": 1.00927734375,
+    "braking_boards": 18,
+    "board_distances_m": [
+      150,
+      100,
+      50
+    ],
+    "barrier_rendering": "Exact exported collision segments",
+    "shoulders": "2.2 m typical, smoothly widened paved outside aprons at the authored braking corners; reference widths are visual estimates."
+  },
+  "lighting": {
+    "fixture_count": 256,
+    "field_resolution": 2048,
+    "height_fade_m": 20,
+    "method": "Static diffuse falloff field in Las Vegas surface materials, with directional shading, specular and vehicle shadows. Venue lighting is an approximation; not a path-traced or surveyed light installation."
+  },
+  "artwork": "Attribution/Sources/lasvegas/facade-art.json",
+  "assets": {
+    "tiles": 152,
+    "triangles": 1916911,
+    "road_sha256": "bed245c0da695b328a615f62f4c37348434b3b3e45c014cd1015c2c22e9c2ec1",
+    "manifest_sha256": "99efb05941361ca7fbafd1612082ad92fc754b85766d8a30991d8c25aea2de70"
+  },
+  "checks": {
+    "native": "passed; valid 162.084 s dynamic lap, maximum speed 209.731 kph, no barrier contact/off-track/airborne steps",
+    "python_regressions": 5,
+    "mypy": "passed",
+    "ruff": "passed",
+    "editor_build": "passed"
+  },
+  "reviewer": {
+    "model": "gpt-6-luna",
+    "reasoning_effort": "high",
+    "status": "Reviewing successive night captures; no final approval claimed yet."
+  }
+}

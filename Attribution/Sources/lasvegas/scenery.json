@@ -2,10 +2,10 @@
   "recipe": "make lasvegas-assets",
   "scope": "/Game/Generated/LasVegas",
   "source_manifest": "scenery_sources.json",
-  "road_sha256": "9fc1d2e113f6d470d03998e1a14b53c27d13cae9ed9160ac75f02fbb222eae76",
+  "road_sha256": "bed245c0da695b328a615f62f4c37348434b3b3e45c014cd1015c2c22e9c2ec1",
   "terrain_sha256": "7a70696a02c2723a013849f566aa1a84ef5f2b2f42a0e6155499be69f968b0e7",
   "tiles": 152,
-  "triangles": 1032794,
+  "triangles": 1916911,
   "landmarks": [
     {
       "name": "Bellagio Self Parking Garage",
@@ -120,11 +120,11 @@
       "height_m": 12.0
     },
     {
-      "name": "The Campanile",
+      "name": "Venetian Campanile",
       "osm_id": 43875964,
       "x": 147.90843027118783,
       "y": 759.4591493204977,
-      "height_m": 96.0
+      "height_m": 96
     },
     {
       "name": "Twist by Pierre Gagnaire",
@@ -353,8 +353,8 @@
     {
       "name": "Caesars Palace Hotel and Casino",
       "osm_id": 115672893,
-      "x": -239.19309820547062,
-      "y": 211.67763826180138,
+      "x": -239.00418462755997,
+      "y": 210.4614782964702,
       "height_m": 10.2
     },
     {
@@ -605,8 +605,8 @@
     {
       "name": "Fashion Show Mall",
       "osm_id": 180584255,
-      "x": 192.51036845516973,
-      "y": 1401.0015639821297,
+      "x": 193.039368687085,
+      "y": 1400.836015798909,
       "height_m": 10.2
     },
     {
@@ -1215,8 +1215,62 @@
       "x": 363.5137570576228,
       "y": 320.292423103833,
       "height_m": 167
+    },
+    {
+      "name": "Strip pedestrian bridge",
+      "osm_id": 25724071,
+      "station_m": 48.72788743634272,
+      "height_m": 6.5
+    },
+    {
+      "name": "Las Vegas Boulevard Overpass",
+      "osm_id": 25724074,
+      "station_m": 6125.5130004760995,
+      "height_m": 6.5
+    },
+    {
+      "name": "Strip pedestrian bridge",
+      "osm_id": 133878942,
+      "station_m": 605.5417467781346,
+      "height_m": 6.5
+    },
+    {
+      "name": "Strip pedestrian bridge",
+      "osm_id": 146617830,
+      "station_m": 5239.679473013466,
+      "height_m": 6.5
+    },
+    {
+      "name": "Strip pedestrian bridge",
+      "osm_id": 155133670,
+      "station_m": 4837.830283452294,
+      "height_m": 6.5
+    },
+    {
+      "name": "CityCenter Pedestrian Bridge",
+      "osm_id": 297110936,
+      "station_m": 767.1678925757789,
+      "height_m": 6.5
+    },
+    {
+      "name": "Strip pedestrian bridge",
+      "osm_id": 1436531125,
+      "station_m": 4246.431367847436,
+      "height_m": 6.5
+    },
+    {
+      "name": "Las Vegas Boulevard Overpass",
+      "osm_id": 1436726272,
+      "station_m": 6120.2792332447525,
+      "height_m": 6.5
     }
   ],
-  "artwork": "Original geometry and procedural trackside textures; built-in image_gen produced original Sphere display artwork (art/sphere-display-v1.json). Existing licensed asphalt, concrete and original spectator atlas reused.",
+  "artwork": "Original geometry and typeset signs; original built-in image_gen facade and Sphere artwork with retained prompts. See facade-art.json and art/sphere-display-v1.json. Existing licensed asphalt, concrete and original spectator atlas reused through Las Vegas-only material copies.",
+  "night_lighting": {
+    "fixture_count": 256,
+    "field_resolution": 2048,
+    "height_fade_m": 20,
+    "method": "Static diffuse falloff field in Las Vegas surface materials, with directional shading, specular and vehicle shadows. Venue lighting is an approximation; not a path-traced or surveyed light installation."
+  },
   "estimates": "OSM building tags give volume controls; missing heights use 3.4 m per level, default 3 levels. Facades, pit decks, temporary stands, palms and lighting furniture are original approximations, not a photogrammetric survey."
 }

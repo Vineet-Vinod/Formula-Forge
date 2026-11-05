@@ -6,27 +6,7 @@ import struct
 import zlib
 from pathlib import Path
 
-GLYPHS = {
-    'A': '01110100011000111111100011000110001', 'B': '11110100011000111110100011000111110',
-    'C': '01111100001000010000100001000001111', 'D': '11110100011000110001100011000111110',
-    'E': '11111100001000011110100001000011111', 'F': '11111100001000011110100001000010000',
-    'G': '01111100001000010111100011000101111', 'H': '10001100011000111111100011000110001',
-    'I': '11111001000010000100001000010011111', 'J': '00111000100001000010100101001001100',
-    'K': '10001100101010011000101001001010001', 'L': '10000100001000010000100001000011111',
-    'M': '10001110111010110101100011000110001', 'N': '10001110011010110011100011000110001',
-    'O': '01110100011000110001100011000101110', 'P': '11110100011000111110100001000010000',
-    'Q': '01110100011000110001101011001001101', 'R': '11110100011000111110101001001010001',
-    'S': '01111100001000001110000010000111110', 'T': '11111001000010000100001000010000100',
-    'U': '10001100011000110001100011000101110', 'V': '10001100011000110001100010101000100',
-    'W': '10001100011000110101101011101110001', 'X': '10001100010101000100010101000110001',
-    'Y': '10001100010101000100001000010000100', 'Z': '11111000010001000100010001000011111',
-    '0': '01110100011001110101110011000101110', '1': '00100011000010000100001000010001110',
-    '2': '01110100010000100010001000100011111', '3': '11110000010000101110000010000111110',
-    '4': '00010001100101010010111110001000010', '5': '11111100001000011110000010000111110',
-    '6': '01110100001000011110100011000101110', '7': '11111000010001000100010000100001000',
-    '8': '01110100011000101110100011000101110', '9': '01110100011000101111000010000101110',
-    ' ': '0' * 35,
-}
+FONT = Path(__file__).resolve().parents[1] / 'Attribution/Sources/lasvegas/art/DejaVuSans.ttf'
 
 
 def png(path: Path, width: int, height: int, pixels: bytes | bytearray) -> None:
@@ -39,26 +19,27 @@ def png(path: Path, width: int, height: int, pixels: bytes | bytearray) -> None:
 
 def sign(path: Path, text: str, background: tuple[int, int, int], foreground: tuple[int, int, int],
          width: int = 1024, height: int = 128) -> None:
-    pixels = bytearray((*background, 255)) * (width * height)
-    scale = min((width - 48) // (len(text) * 6), (height - 24) // 7)
-    x0, y0 = (width - len(text) * 6 * scale) // 2, (height - 7 * scale) // 2
-    for character, letter in enumerate(text):
-        for index, bit in enumerate(GLYPHS[letter]):
-            if bit != '1':
-                continue
-            for dy in range(scale):
-                for dx in range(scale):
-                    x = x0 + (character * 6 + index % 5) * scale + dx
-                    y = y0 + (index // 5) * scale + dy
-                    offset = (y * width + x) * 4
-                    pixels[offset:offset + 4] = bytes((*foreground, 255))
-    png(path, width, height, pixels)
+    from PIL import Image, ImageDraw, ImageFont
+
+    image = Image.new('RGBA', (width * 2, height * 2), (*background, 255))
+    draw = ImageDraw.Draw(image)
+    size = height
+    while size > 12:
+        font = ImageFont.truetype(str(FONT), size)
+        bounds = draw.textbbox((0, 0), text, font=font)
+        if bounds[2] - bounds[0] < width * 1.78 and bounds[3] - bounds[1] < height * 1.4:
+            break
+        size -= 2
+    draw.text((width, height), text, font=font, fill=(*foreground, 255), anchor='mm')
+    image.resize((width, height), Image.Resampling.LANCZOS).save(path)
 
 
 def textures(directory: Path) -> None:
     directory.mkdir(parents=True, exist_ok=True)
     for name, text, bg, fg in [
         ('WallDark', 'LAS VEGAS', (20, 27, 39), (228, 230, 225)),
+        ('WallBlue', 'FORMULA FORGE', (15, 37, 82), (235, 238, 246)),
+        ('WallPink', 'LAS VEGAS', (154, 15, 105), (249, 233, 246)),
         ('WallGold', 'STRIP CIRCUIT', (223, 177, 44), (24, 24, 23)),
         ('RaceSign', 'FORMULA FORGE', (28, 54, 61), (235, 237, 225)),
         ('VegasSign', 'LAS VEGAS STRIP CIRCUIT', (15, 24, 35), (232, 206, 143)),
@@ -73,21 +54,56 @@ def textures(directory: Path) -> None:
         ('Cosmopolitan', 'COSMOPOLITAN', (24, 33, 45), (231, 224, 222)),
         ('Planet', 'PLANET HOLLYWOOD', (34, 43, 59), (232, 219, 189)),
     ]:
-        sign(directory / f'{name}.png', text, bg, fg)
+        sign(directory / f'{name}.png', text, bg, fg, 256 if text.isdigit() else 1024, 256 if text.isdigit() else 128)
     for name, wall, glass in [('CreamFacade', (189, 174, 145), (49, 66, 74)),
                                ('BlueFacade', (54, 60, 66), (35, 75, 96)),
                                ('BronzeFacade', (149, 122, 75), (82, 60, 38)),
                                ('Garage', (115, 121, 126), (26, 30, 36))]:
+        if name != 'Garage':
+            from PIL import Image
+
+            source_name = {'CreamFacade': 'cream', 'BlueFacade': 'blue', 'BronzeFacade': 'bronze'}[name]
+            source = FONT.parent / (source_name + '-facade-v1.png')
+            image = Image.open(source).convert('RGB').resize((1024, 1024), Image.Resampling.LANCZOS)
+            facade = bytearray()
+            rgb_pixels = image.tobytes()
+            for y in range(1024):
+                for x in range(1024):
+                    offset = (y * 1024 + x) * 3
+                    red, green, blue = rgb_pixels[offset:offset + 3]
+                    in_window = 44 < x % 256 < 218 and 42 < y % 256 < 230
+                    warmth = max(0.0, min(1.0, (red - blue * 1.18 - 12) / 80))
+                    alpha = round(warmth * 190) if in_window else 0
+                    facade.extend((red, green, blue, alpha))
+            png(directory / f'{name}.png', 1024, 1024, facade)
+            continue
         pixels = bytearray()
-        for y in range(128):
-            for x in range(128):
+        for y in range(512):
+            for x in range(512):
+                column, floor = x // 128, y // 128
+                wx, wy = x % 128, y % 128
+                frame = wx < 8 or wy < 8 or wy > 112
+                if name == 'CreamFacade':
+                    frame = frame or wx < 28 or wx > 100 or wy < 20
+                lit = (column * 19 + floor * 11 + column * floor * 5) % 11 < 4
+                alpha = 0
                 if name == 'Garage':
-                    color = wall if y % 8 < 2 or x < 5 else glass
+                    color = wall if wy % 32 < 3 or wx < 5 else (125, 143, 157)
+                    alpha = 150 if wy % 128 < 10 else 0
+                elif frame:
+                    color = wall
+                elif lit:
+                    warm = {'CreamFacade': (164, 142, 99), 'BronzeFacade': (136, 111, 68),
+                            'BlueFacade': (100, 132, 158)}[name]
+                    shade = (.65 + .22 * math.sin(wy * .018)) * (.75 + .25 * math.sin(wx * .13 + floor))
+                    if wx % 19 < 3 or wy % 23 < 2:
+                        shade *= .55
+                    color = round(warm[0] * shade), round(warm[1] * shade), round(warm[2] * shade)
+                    alpha = 110 if column % 2 else 155
                 else:
-                    reflection = int(10 * math.sin(y * .02) + 5 * math.cos(x * .031))
-                    color = wall if x < 7 or x > 120 or y < 8 or y > 108 else (max(0, glass[0] + reflection), max(0, glass[1] + reflection), max(0, glass[2] + reflection))
-                pixels.extend((*color, 255))
-        png(directory / f'{name}.png', 128, 128, pixels)
+                    color = glass
+                pixels.extend((*color, alpha))
+        png(directory / f'{name}.png', 512, 512, pixels)
     pixels = bytearray()
     for y in range(128):
         for x in range(128):
@@ -95,5 +111,58 @@ def textures(directory: Path) -> None:
             pixels.extend((156, 165, 169, 255 if line < 2 else 0))
     png(directory / 'Fence.png', 128, 128, pixels)
 
+    halo = bytearray()
+    for y in range(128):
+        for x in range(128):
+            radius = ((x - 63.5) / 63.5) ** 2 + ((y - 63.5) / 63.5) ** 2
+            halo.extend((255, 250, 235, round(255 * math.exp(-radius * 8))))
+    png(directory / 'LightHalo.png', 128, 128, halo)
+
+    pixels = bytearray()
+    for y in range(256):
+        for x in range(64):
+            edge = max(0.0, 1 - abs(x - 31.5) / 31.5)
+            noise = ((x * 73 + y * 37 + x * y * 19) % 101) / 100
+            pixels.extend((30, 30, 30, 255 if noise < edge * .38 else 0))
+    png(directory / 'Rubber.png', 64, 256, pixels)
+
     source = Path(__file__).resolve().parents[1] / 'Attribution/Sources/lasvegas/art/sphere-display-v1.png'
     (directory / 'Sphere.png').write_bytes(source.read_bytes())
+
+
+def lightfield(directory: Path) -> tuple[float, float, float, float]:
+    import csv
+    from array import array
+
+    root = Path(__file__).resolve().parents[1]
+    lights = [tuple(float(v) for v in row) for row in csv.reader((root / 'Content/Generated/LasVegas/Data/night_lights.csv').open())]
+    minimum_x, minimum_y = min(p[0] for p in lights) - 9000, min(p[1] for p in lights) - 9000
+    width = max(p[0] for p in lights) + 9000 - minimum_x
+    height = max(p[1] for p in lights) + 9000 - minimum_y
+    size = 2048
+    radiance = array('f', [0.0]) * (size * size)
+    elevation = array('f', [0.0]) * (size * size)
+    for x, y, z in lights:
+        col0 = max(0, int((x - 7000 - minimum_x) / width * size))
+        col1 = min(size, int((x + 7000 - minimum_x) / width * size) + 1)
+        row0 = max(0, int((y - 7000 - minimum_y) / height * size))
+        row1 = min(size, int((y + 7000 - minimum_y) / height * size) + 1)
+        for row in range(row0, row1):
+            dy = minimum_y + (row + .5) * height / size - y
+            for col in range(col0, col1):
+                dx = minimum_x + (col + .5) * width / size - x
+                weight = (1200 ** 2 / (1200 ** 2 + dx * dx + dy * dy)) ** 1.5
+                index = row * size + col
+                radiance[index] += weight
+                elevation[index] += weight * (z - 1120)
+    pixels = bytearray()
+    for index, value in enumerate(radiance):
+        ground = elevation[index] / value if value > .0001 else 0
+        brightness = min(1.0, value * .65) ** 1.4
+        pixels.extend((round(brightness * 255), round(max(0, min(1, (ground + 3200) / 6400)) * 255), 0, 255))
+    png(directory / 'FloodlightField.png', size, size, pixels)
+    return minimum_x, minimum_y, width, height
+
+
+if __name__ == '__main__':
+    textures(Path(__file__).resolve().parents[1] / 'build/lasvegas/art')

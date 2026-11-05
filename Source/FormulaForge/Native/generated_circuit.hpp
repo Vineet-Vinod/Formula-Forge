@@ -25,6 +25,7 @@ struct GeneratedSupport {
     AuthoredGroundGrid ground;
 };
 
-std::vector<CircuitSample> sampleCircuit(const TrackCatalogEntry& track, int sampleCount = 1536);
+float circuitShoulderMeters(const TrackCatalogEntry& track, float station, bool left);
+std::vector<CircuitSample> sampleCircuit(const TrackCatalogEntry& track, int sampleCount = 0);
 void buildGeneratedSupport(const TrackCatalogEntry& track, const std::vector<CircuitSample>& samples, GeneratedSupport& support);
 bool writeGeneratedContact(const TrackCatalogEntry& track, const std::vector<CircuitSample>& samples, const std::string& directory);

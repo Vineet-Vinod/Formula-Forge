@@ -1,0 +1,24 @@
+{
+  "reference": "User-supplied Vegas.mp4, private visual review only; no frame pixels, logos or game meshes copied into runtime assets.",
+  "sha256": "30e2046d226c3b8496cf3d57dbfe7a809578564eac1ea75a24b750e93ae6b2de",
+  "dry_night_frames_seconds": [
+    90,
+    94,
+    106,
+    110,
+    114,
+    118,
+    122,
+    126,
+    130,
+    960
+  ],
+  "observations": [
+    "Black sky; neutral floodlit asphalt; visible luminous lamp heads and illuminated casino windows.",
+    "Covered main grandstand opposite the pit building; keep established track-side orientation.",
+    "Rounded kerbs and paved shoulders. Broad paved outside apron at T1; narrow fenced corridors through Koval/Sphere/Sands.",
+    "Venetian campanile has a brick shaft, open illuminated belfry and pyramidal copper roof."
+  ],
+  "authored_estimates": "Reference is visual, not a metric survey. Shoulder widths and braking anchor distances are authored estimates registered to the native road stations. 150/100/50 boards are standard distance labels; none is legible enough in the sampled footage to claim an exact measured placement.",
+  "original_art": "Trackside signs typeset using retained DejaVu Sans, see art/DejaVu-LICENSE.txt. Window light patterns, architectural meshes and signs are original; Sphere artwork provenance retained separately."
+}

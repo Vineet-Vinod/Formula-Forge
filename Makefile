@@ -58,6 +58,7 @@ build/tests/export-lasvegas: tools/export_lasvegas.cpp $(OBJECTS)
 .PHONY: lasvegas-assets
 .NOTPARALLEL: lasvegas-assets
 lasvegas-assets: check build
+	$(LASVEGAS_PYTHON) tools/lasvegas_art.py
 	bash tools/unreal.sh python tools/build_lasvegas.py
 	bash tools/unreal.sh python tools/verify_lasvegas.py
 

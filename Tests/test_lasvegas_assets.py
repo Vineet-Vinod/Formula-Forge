@@ -35,7 +35,7 @@ def test_rendered_road_matches_contact_triangles() -> None:
     for triangle in struct.iter_unpack('<9f', (DATA / 'drive_surface.bin').read_bytes()[12:]):
         for offset in (0, 3, 6):
             x, y, z = triangle[offset:offset + 3]
-            contact.append((-y * 100, -x * 100, z * 100))
+            contact.append(struct.unpack('<3f', struct.pack('<3f', -y * 100, -x * 100, z * 100)))
     for tile in manifest['tiles']:
         if 'Road' not in tile['materials']:
             continue
@@ -50,7 +50,7 @@ def test_rendered_road_matches_contact_triangles() -> None:
                 assert nz > .95
                 assert all(math.isfinite(value) for value in (x, y, z, nx, ny, nz, u, v))
                 rendered.append((x, y, z))
-    assert len(contact) == len(rendered) == 9216
+    assert len(contact) == len(rendered) == 36864
     for a, b in zip(sorted(contact), sorted(rendered), strict=True):
         assert math.dist(a, b) < .025
 
@@ -84,3 +84,26 @@ def test_street_profile_has_no_preconstruction_drop() -> None:
     grades = [(heights[(index + 1) % len(heights)] - height) / spacing for index, height in enumerate(heights)]
     assert max(abs(grade) for grade in grades) < .04
     assert max(abs(grades[(index + 1) % len(grades)] - grade) for index, grade in enumerate(grades)) < .004
+
+
+def test_curves_and_driver_facing_braking_boards() -> None:
+    import csv
+
+    road = list(csv.DictReader((ROOT / 'build/lasvegas/road.csv').open()))
+    assert len(road) == 6144
+    for a, b in zip(road, road[1:] + road[:1], strict=True):
+        assert math.hypot(float(b['x']) - float(a['x']), float(b['y']) - float(a['y'])) < 1.02
+    boards = json.loads((ROOT / 'build/lasvegas/braking_boards.json').read_text())
+    assert len(boards) == 18
+    assert len({(board['apex'], board['distance']) for board in boards}) == 18
+    for board in boards:
+        assert abs(board['apex'] - board['station'] - board['distance']) < .51
+    triangles = {name: 0 for name in ('50', '100', '150')}
+    manifest = json.loads((ROOT / 'build/lasvegas/manifest.json').read_text())
+    for tile in manifest['tiles']:
+        payload = (ROOT / 'build/lasvegas' / tile['file']).read_bytes()
+        for offset in range(12, len(payload), 100):
+            material = tile['materials'][struct.unpack_from('<I', payload, offset)[0]]
+            if material in triangles:
+                triangles[material] += 1
+    assert triangles == {'50': 24, '100': 24, '150': 24}

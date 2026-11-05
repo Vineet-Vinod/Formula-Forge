@@ -14,9 +14,6 @@ constexpr float Kerb = 0.85f;
 
 Vec2 leftNormal(Vec2 tangent) { return {-tangent.y, tangent.x}; }
 
-float shoulderMetres(const TrackCatalogEntry& track, float station, bool left) {
-    return std::clamp(sampleTrackShoulderMeters(track, station, left), 1.2f, 24.0f);
-}
 
 bool streetVenue(const TrackCatalogEntry& track) {
     const std::string_view tag = track.environmentTag;
@@ -44,7 +41,22 @@ bool writeBytes(const std::string& path, const char* magic, std::size_t magicSiz
 }
 }
 
+float circuitShoulderMeters(const TrackCatalogEntry& track, float station, bool left) {
+    if (track.id == TrackLayoutId::LasVegas) {
+        const auto apron = [station](float center, float extent, float width) {
+            const float t = std::clamp(1.0f - std::abs(station - center) / extent, 0.0f, 1.0f);
+            return width * t * t * (3.0f - 2.0f * t);
+        };
+        // Reference dry lap: T1 has an open paved apron; the city sections are wall tight.
+        return 2.2f + (left ? apron(1982.0f, 110.0f, 10.0f) + apron(654.0f, 65.0f, 3.0f)
+                           : apron(3278.0f, 65.0f, 3.5f));
+    }
+    return std::clamp(sampleTrackShoulderMeters(track, station, left), 1.2f, 24.0f);
+}
+
 std::vector<CircuitSample> sampleCircuit(const TrackCatalogEntry& track, int sampleCount) {
+    if (sampleCount == 0) sampleCount = track.id == TrackLayoutId::LasVegas ? 6144 : 1536;
+    const int tangentSpan = std::max(1, sampleCount / 512);
     const auto plan = authoredCircuitPlan(track.centerline, track.centerlineScale, track.targetLengthMeters, Units,
         track.mirrorCenterlineY, sampleCount);
     const int count = static_cast<int>(plan.size());
@@ -53,7 +65,7 @@ std::vector<CircuitSample> sampleCircuit(const TrackCatalogEntry& track, int sam
         const float station = track.targetLengthMeters * static_cast<float>(index) / static_cast<float>(count);
         samples[index] = CircuitSample{
             plan[index],
-            normalize(plan[(index + 3) % count] - plan[(index + count - 3) % count]),
+            normalize(plan[(index + tangentSpan) % count] - plan[(index + count - tangentSpan) % count]),
             station,
             sampleTrackElevationMeters(track, station),
             sampleTrackWidthMeters(track, station) * 0.5f,
@@ -74,13 +86,13 @@ void buildGeneratedSupport(const TrackCatalogEntry& track, const std::vector<Cir
         const CircuitSample& second = samples[next];
         for (const bool left : {true, false}) {
             const float sign = left ? 1.0f : -1.0f;
-            const float laneA = sign * (first.halfWidth + Kerb + shoulderMetres(track, first.station, left));
-            const float laneB = sign * (second.halfWidth + Kerb + shoulderMetres(track, second.station, left));
+            const float laneA = sign * (first.halfWidth + Kerb + circuitShoulderMeters(track, first.station, left));
+            const float laneB = sign * (second.halfWidth + Kerb + circuitShoulderMeters(track, second.station, left));
             const auto separate = [&](Vec2 point, const CircuitSample& own) {
                 const float minimum = (own.halfWidth + 1.0f) * Units;
                 for (int step = 0; step < 10; ++step) {
                     bool crowded = false;
-                    for (int other = 0; other < count; other += 1) {
+                    for (int other = 0; other < count; other += std::max(1, count / 1536)) {
                         float gap = std::abs(own.station - samples[other].station);
                         gap = std::min(gap, track.targetLengthMeters - gap);
                         if (gap < 50.0f || length(samples[other].sim - own.sim) < 8.0f * Units) continue;
@@ -111,7 +123,7 @@ void buildGeneratedSupport(const TrackCatalogEntry& track, const std::vector<Cir
             }
             for (int step = 0; step <= 4 && !crosses; ++step) {
                 const Vec2 point = a + (b - a) * (static_cast<float>(step) / 4.0f);
-                for (int other = 0; other < count; other += 1) {
+                for (int other = 0; other < count; other += std::max(1, count / 1536)) {
                     float gap = std::abs(first.station - samples[other].station);
                     gap = std::min(gap, track.targetLengthMeters - gap);
                     if (gap < 25.0f || length(samples[other].sim - first.sim) < 8.0f * Units) continue;

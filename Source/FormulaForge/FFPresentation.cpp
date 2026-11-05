@@ -1,6 +1,7 @@
 #include "FFPresentation.h"
 #include "FFSession.h"
 #include "FFCircuitRibbon.h"
+#include "FFLasVegasNight.h"
 #include "track_catalog.hpp"
 
 #include "Components/DirectionalLightComponent.h"
@@ -40,7 +41,11 @@ AFFPresentation::AFFPresentation() {
 void AFFPresentation::BeginPlay() {
     Super::BeginPlay();
     FullDetail = FParse::Param(FCommandLine::Get(), TEXT("FFFullDetail"));
-    ConfigureDaylight();
+    if (GetGameInstance<UFFSession>()->Circuit() == TEXT("lasvegas")) {
+        GetWorld()->SpawnActor<AFFLasVegasNight>(GetActorLocation(), FRotator::ZeroRotator);
+    } else {
+        ConfigureDaylight();
+    }
     FParse::Value(FCommandLine::Get(), TEXT("ResX="), RenderBudget.X);
     FParse::Value(FCommandLine::Get(), TEXT("ResY="), RenderBudget.Y);
     RenderBudget.X = FMath::Clamp(RenderBudget.X, 320, 3840);
@@ -58,6 +63,7 @@ void AFFPresentation::BeginPlay() {
     else if (circuit == TEXT("interlagos")) visualRoot += TEXT("/Interlagos");
     else if (circuit == TEXT("lasvegas")) visualRoot += TEXT("/LasVegas");
     SilverstoneTiles = visualRoot == TEXT("Generated");
+    LasVegasTiles = circuit == TEXT("lasvegas");
     FString contents;
     if (!FFileHelper::LoadFileToString(contents, *(FPaths::ProjectContentDir() / visualRoot / TEXT("Data/render_tiles.csv")))) {
         UE_LOG(LogTemp, Fatal, TEXT("Missing packaged render tile manifest in %s."), *visualRoot);
@@ -224,7 +230,7 @@ void AFFPresentation::AttachTile(int32 index) {
     component->SetMobility(EComponentMobility::Static);
     component->SetCollisionEnabled(ECollisionEnabled::NoCollision);
     component->SetStaticMesh(mesh);
-    if (Tiles[index].crowd) component->SetCastShadow(false);
+    if (Tiles[index].crowd || (LasVegasTiles && Tiles[index].building)) component->SetCastShadow(false);
     component->SetWorldLocation(FVector::ZeroVector);
     Components[index] = component;
     ApplyTileDetail(index, Tiles[index].bounds.ComputeSquaredDistanceToPoint(LastPosition));

@@ -15,6 +15,8 @@ class RoadStation:
     ty: float
     half_width: float
     bank: float
+    left_shoulder: float = 2.2
+    right_shoulder: float = 2.2
 
     def point(self, lane: float, lift: float = 0.0) -> Point:
         return self.x + self.ty * lane, self.y - self.tx * lane, self.z + self.bank * lane + lift

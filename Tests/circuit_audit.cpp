@@ -168,10 +168,10 @@ bool CheckGenerated(const TrackCatalogEntry& track) {
                 if (besideAnotherRoad) continue;
                 const float sign = left ? 1.0f : -1.0f;
                 const float beside = road.halfWidth + 1.4f;
-                const float outer = road.halfWidth + sampleTrackShoulderMeters(track, station, left) + 6.0f;
+                const float outer = road.halfWidth + circuitShoulderMeters(track, station, left) + 6.0f;
                 const Vec2 start = road.position + normal * (sign * beside * 17.0f);
                 const Vec2 end = road.position + normal * (sign * outer * 17.0f);
-                const float wallLane = sign * (road.halfWidth + 0.85f + sampleTrackShoulderMeters(track, station, left));
+                const float wallLane = sign * (road.halfWidth + 0.85f + circuitShoulderMeters(track, station, left));
                 const float bottom = road.elevation + road.bankSlope * wallLane * 17.0f;
                 if (!firstAuthoredBarrierHit(simulation.Barriers(), start, end, road.tangent,
                         83.6f * 0.5f, 34.4f * 0.5f, bottom, 0.8f * 17.0f).hit) {

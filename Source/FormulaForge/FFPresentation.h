@@ -38,6 +38,7 @@ private:
     double LastCollectionSeconds = 0.0;
     bool FullDetail = false;
     bool SilverstoneTiles = false;
+    bool LasVegasTiles = false;
     int32 ProceduralSections = 0;
     UPROPERTY() TArray<TObjectPtr<UProceduralMeshComponent>> Ribbon;
     FIntPoint RenderBudget = FIntPoint(1600, 900);

@@ -23,5 +23,15 @@
     "generation_record": "art/sphere-display-v1.json",
     "source": "Original artwork generated with the built-in image_gen tool without reference images",
     "purpose": "Dense luminous jellyfish display with an LED pixel lattice; original content avoids copying broadcast or commercial photo pixels"
+  },
+  "pedestrian_bridges": {
+    "file": "pedestrian_bridges.osm.json.gz",
+    "sha256": "6aaeb62c0db8fe8a4f8fad406080a4f5ba79ca5820bcac16af2713dbe6b20134",
+    "provider": "OpenStreetMap contributors",
+    "licence": "ODbL 1.0",
+    "licence_url": "https://www.openstreetmap.org/copyright",
+    "retrieved": "2026-11-05",
+    "query": "[out:json][timeout:30];way[\"highway\"][\"bridge\"](36.105,-115.182,36.128,-115.153);out geom;",
+    "estimates": "Footway axes registered to the existing source frame. Deck height, width, rails and canopies are original visual approximations."
   }
 }

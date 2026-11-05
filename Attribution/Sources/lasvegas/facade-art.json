@@ -1,0 +1,24 @@
+{
+  "generator": "Built-in image_gen, original assets without reference images",
+  "prompts": [
+    {
+      "name": "cream",
+      "file": "art/cream-facade-v1.png",
+      "prompt": "A seamless square PBR game albedo texture, straight orthographic close-up of a sophisticated Las Vegas inspired pale limestone hotel facade. Exactly 4 columns and 4 rows of guest-room windows in a regular grid. Each cell is 256 by 256 in a 1024-square texture; window centered in each cell, width 144 and height 180. Real architectural depth: beveled recessed stone surrounds, slender bronze mullions, glass reflections and layered sheer curtains inside rooms. Warm beige ivory stone, understated cornice bands, deep gray reflective glass. A minority of rooms glow softly warm amber, others dark. Balanced diffuse neutral lighting on stone, restrained contrast, highly detailed convincing materials. Edge-to-edge tileable wall only. No building silhouette, no roof, no ground, no sky, no perspective, no text, no logos, no vignette, no border. Original architecture texture for a stylized realistic Unreal racing game.",
+      "sha256": "904d5331667f4e8aa18f0f16bfba53401b793d2cbc7549e1e64a16fa917d570c"
+    },
+    {
+      "name": "bronze",
+      "file": "art/bronze-facade-v1.png",
+      "prompt": "A seamless square PBR game albedo texture, straight orthographic close-up of a sophisticated bronze glazed Las Vegas inspired curved casino tower facade, shown as a FLAT texture sheet. Exactly 4 columns and 4 rows of rectangular glass window bays in a regular grid; each cell 256 by 256 in a 1024 square texture. A modern curtain wall with slim bronze vertical mullions and narrow bronze horizontal spandrels, glazing covers most of each cell. Fine reflective glass detail, subtle interior blinds and recessed rooms behind glass. Smoked bronze, deep neutral gray, warm copper; a few amber illuminated room interiors, mostly dark reflective glazing. Architectural material depth, restrained realistic luxury, no checkerboard color blocks. Tileable edge to edge. No whole building, no sky, no ground, no roof, no perspective, no text, no logos, no border, no dramatic external lighting. Original albedo texture for a stylized realistic Unreal racing game.",
+      "sha256": "f9342d1c70da4980c3087831c42405610ece2e4784e5e1b1745baf771801a402"
+    },
+    {
+      "name": "blue",
+      "file": "art/blue-facade-v1.png",
+      "prompt": "A seamless square PBR game albedo texture, orthographic straight front close-up of a modern blue-gray glass casino hotel curtain wall. Exactly 4 window-bay columns and 4 floors in a regular grid in a 1024 square texture. Each 256-square cell has slender dark brushed-steel mullions, broad recessed glazing, a subtle interior floor edge, realistic glass reflections and blinds, some softly lit cream hotel-room interiors, most reflective dark blue-gray glass. Architecturally convincing material depth and fine surface variation, restrained polished luxury. No bold checkerboard blocks. Edges tile seamlessly. A flat diffuse color texture sheet only; no perspective, no building silhouette, no sky, no ground, no roof, no text, no logos, no border. Original texture for a stylized realistic Unreal racing game.",
+      "sha256": "2049bc7772bc0c3bac1155254f244ffc40b05a48e11d6fe0dc20f1cd1d795c72"
+    }
+  ],
+  "processing": "Authoring resamples to 1024 square and derives an emissive alpha mask from warm interior pixels within window bays. Original output retained."
+}
