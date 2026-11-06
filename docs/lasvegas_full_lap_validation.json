@@ -1,0 +1,155 @@
+{
+  "date": "2026-11-06",
+  "circuit": "Las Vegas Strip Circuit",
+  "scope": "Whole-lap Las Vegas scenery and night lighting; track branch, no worktree. Road alignment, widths, contact, handling and camera preserved.",
+  "state": "Pending final packaged full-lap review",
+  "reference": {
+    "file": "User-supplied Vegas.mp4",
+    "local_location": "Saved/Refs/Vegas.mp4 (reference only, ignored)",
+    "sequences_s": [
+      [
+        104,
+        124
+      ],
+      [
+        928,
+        962
+      ]
+    ],
+    "registration": "Corners, landmarks and map stations; playback includes time changes/cuts, so elapsed video time is not used as lap distance.",
+    "limits": "Mapped footprints with original architectural reconstruction. Vegetation, venue dimensions and luminance are visual estimates. No reference-video pixels or game meshes ship."
+  },
+  "root_causes": [
+    "Planting was restricted to stations below700m or above4650m; the opening sequence, Koval, Sphere and Sands had none.",
+    "Fixed18m building-midpoint culling removed the entire Wynn retail/Plaza footprint despite adequate actual road clearance.",
+    "Ordinary low-rise buildings used repeated hotel window grids and lacked street-level glazing, balconies, canopies and venue structures.",
+    "48m fixture spacing and dark material attenuation produced dull surfaces; the first24m fixture trial clipped the light field and made the road uniformly pale."
+  ],
+  "changes": {
+    "environment_recipe": "Attribution/Sources/lasvegas/route-environment.json",
+    "architecture_recipe": "Attribution/Sources/lasvegas/landmark-architecture.json",
+    "coverage": "All6201m in nine contiguous sectors, not a selection of landmark views.",
+    "buildings": "Retained Wynn Plaza footprint, stone shop frontage and curved digital monument; Venetian Expo, Ellis Island motel/casino, Harrahs, Casino Royale, Platinum, Westin, Grand Chateau, Signature, Polo Towers and small Strip retail profiles. Attached wordmarks on the buildings.",
+    "hospitality": "Left-side glazed balcony gallery2210\u20132830m and seating2850\u20133230m; opening grandstand2070\u20132210m; roofed paddock stand and garages1660\u20131980m.",
+    "vegetation": "Solid trunks/branches and spatial leaf clusters using the existing original Interlagos atlas. Fuller25-frond procedural palms; building, venue and paved-area exclusions.",
+    "lighting": "24m fixture spacing;8.5m field falloff radius,0.07 diffuse bounce,3.8 neutral flood intensity,0.24 skylight fill. Private Vegas material copies refresh on rebuild.",
+    "displays": "Original warm red/orange/gold Sphere LED ribbons, orange/black Wynn Plaza display and magenta Harmon Corner facade display."
+  },
+  "route_review": [
+    {
+      "sector": "opening",
+      "stations_m": [
+        2000,
+        2450
+      ],
+      "reference_s": [
+        104.75,
+        108
+      ],
+      "features": "Trees, right-side seating, left hospitality gallery, white/yellow event walls"
+    },
+    {
+      "sector": "koval",
+      "stations_m": [
+        2450,
+        3300
+      ],
+      "reference_s": [
+        930,
+        935.5
+      ],
+      "features": "Covered gallery then seating on left, dense trees opposite, distinct motel/casino frontage"
+    },
+    {
+      "sector": "sphere",
+      "stations_m": [
+        3300,
+        4000
+      ],
+      "reference_s": [
+        109,
+        113.25
+      ],
+      "features": "Event seating, palms, warm screen, black/blue barriers, blue apron, bridge"
+    },
+    {
+      "sector": "sands",
+      "stations_m": [
+        4000,
+        4900
+      ],
+      "reference_s": [
+        113.25,
+        115
+      ],
+      "features": "Expo facade, tree canopy, restored Wynn Plaza frontage and curved display"
+    },
+    {
+      "sector": "strip",
+      "stations_m": [
+        4900,
+        6201
+      ],
+      "reference_s": [
+        115,
+        117
+      ],
+      "features": "Palms, layered casino podiums/arcades, hotel rooflines, attached property lettering, pedestrian crossings"
+    },
+    {
+      "sector": "strip-south",
+      "stations_m": [
+        0,
+        550
+      ],
+      "reference_s": [
+        116,
+        117.25
+      ],
+      "features": "South Strip frontage, neon, retail display and planting"
+    },
+    {
+      "sector": "harmon-chicane",
+      "stations_m": [
+        550,
+        850
+      ],
+      "reference_s": [
+        117.25,
+        119
+      ],
+      "features": "Harmon display, retail glazing, Crystals roof, planted corners"
+    },
+    {
+      "sector": "harmon",
+      "stations_m": [
+        850,
+        1650
+      ],
+      "reference_s": [
+        119,
+        122.5
+      ],
+      "features": "Retail/tower frontages, trees, urban paving, event panels"
+    },
+    {
+      "sector": "paddock",
+      "stations_m": [
+        1650,
+        2000
+      ],
+      "reference_s": [
+        122.5,
+        124
+      ],
+      "features": "Covered seating, illuminated balcony garages and pit frontage through the T1 approach"
+    }
+  ],
+  "geometry_regressions": "docs/lasvegas_curves_validation.json retains the road, curb, runoff and barrier measurements. This pass does not change those geometry/contact inputs.",
+  "verification": {},
+  "reviewer": {
+    "model": "gpt-6-luna",
+    "reasoning_effort": "high",
+    "status": "Pending final all-route packaged review"
+  }
+}

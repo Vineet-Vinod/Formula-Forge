@@ -70,6 +70,27 @@ class CurbRun:
 
 
 @dataclass(frozen=True)
+class RouteSector:
+    name: str
+    start_m: float
+    end_m: float
+    tree_spacing_m: float
+    palm_every: int
+    wall_panels: list[str]
+
+
+@dataclass(frozen=True)
+class StreetDisplay:
+    source_xy_m: tuple[float, float]
+    width_m: float
+    depth_m: float
+    height_m: float
+    base_height_m: float
+    orientation_deg: float
+    reference: str
+
+
+@dataclass(frozen=True)
 class EscapeRegion:
     name: str
     turn: int

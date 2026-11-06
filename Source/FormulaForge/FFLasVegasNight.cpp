@@ -35,8 +35,8 @@ void AFFLasVegasNight::BeginPlay() {
     ambient->SourceType = SLS_SpecifiedCubemap;
     ambient->SetCubemap(LoadObject<UTextureCube>(nullptr, TEXT("/Game/Generated/Environment/Daylight.Daylight")));
     ambient->SetRealTimeCapture(false);
-    ambient->SetIntensity(.10f);
-    ambient->SetLightColor(FLinearColor(.52f, .62f, .86f));
+    ambient->SetIntensity(.24f);
+    ambient->SetLightColor(FLinearColor(.76f, .81f, .90f));
     ambient->SetLowerHemisphereColor(FLinearColor(.015f, .018f, .025f));
     AStaticMeshActor* dome = world->SpawnActor<AStaticMeshActor>();
     UStaticMeshComponent* sphere = dome->GetStaticMeshComponent();
@@ -54,7 +54,7 @@ void AFFLasVegasNight::BeginPlay() {
     ADirectionalLight* flood = world->SpawnActor<ADirectionalLight>(FVector::ZeroVector, FRotator(-78, 126, 0));
     UDirectionalLightComponent* floodlight = CastChecked<UDirectionalLightComponent>(flood->GetLightComponent());
     floodlight->SetMobility(EComponentMobility::Movable);
-    floodlight->SetIntensity(2.4f);
+    floodlight->SetIntensity(2.0f);
     floodlight->SetLightColor(FLinearColor(1.f, .98f, .93f));
     floodlight->SetDynamicShadowDistanceMovableLight(30000);
     floodlight->SetDynamicShadowCascades(2);

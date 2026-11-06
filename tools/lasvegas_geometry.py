@@ -10,6 +10,7 @@ import math
 import struct
 from pathlib import Path
 
+from lasvegas_art import HOTEL_NAMES
 from lasvegas_dataclasses import (
     CurbRun,
     EscapeRegion,
@@ -19,6 +20,8 @@ from lasvegas_dataclasses import (
     Point,
     RoadStation,
     RoofShard,
+    RouteSector,
+    StreetDisplay,
     TerrainGrid,
     TowerRoof,
 )
@@ -65,6 +68,10 @@ class Scenery:
         trackside = json.loads((SOURCE/'trackside-layout.json').read_text())
         self.curb_extensions = [CurbRun(**run) for run in trackside['curb_extensions']]
         self.curb_profile = [(float(lane),float(z)) for lane,z in trackside['curb_profile_m']]
+        environment = json.loads((SOURCE/'route-environment.json').read_text())
+        self.sectors = [RouteSector(**value) for value in environment['sectors']]
+        self.wynn_display_profile = StreetDisplay(**environment['wynn_display'])
+        self.vegetation: list[dict[str,str|float|int]] = []
         self.city_rings: list[list[tuple[float,float]]] = []
         self.lights: list[Point] = []
         self.boards: list[dict[str, float | int]] = []
@@ -334,8 +341,31 @@ class Scenery:
             average = norm(add(previous_normal,wall_normals[i]))
             projection = sum(a*b for a,b in zip(average,wall_normals[i]))
             miters[key] = mul(average,min(4.,1/max(.001,projection)))
-        wall_coordinates: dict[tuple[float, float], float] = {}
-        for barrier,(za,zb) in zip(barriers,struct.iter_unpack('<2f',profile[12:]),strict=True):
+        samples = [self.nearest((float(w['ax'])+float(w['bx']))/2,(float(w['ay'])+float(w['by']))/2)[0] for w in barriers]
+        panels = [self.wall_material(sample,float(w['ax']),float(w['ay'])) for w,sample in zip(barriers,samples,strict=True)]
+        lengths = [math.hypot(float(w['bx'])-float(w['ax']),float(w['by'])-float(w['ay'])) for w in barriers]
+        starts = {(round(float(w['ax']),3),round(float(w['ay']),3)):i for i,w in enumerate(barriers)}
+        following = [starts[(round(float(w['bx']),3),round(float(w['by']),3))] for w in barriers]
+        run_starts = [i for i,w in enumerate(barriers) if panels[i] != panels[ends[(round(float(w['ax']),3),round(float(w['ay']),3))]]]
+        coordinates = [(0.,0.) for _ in barriers]
+        visited: set[int] = set()
+        for run_start in itertools.chain(run_starts,range(len(barriers))):
+            if run_start in visited:
+                continue
+            run = []
+            index = run_start
+            while index not in visited and panels[index] == panels[run_start]:
+                visited.add(index)
+                run.append(index)
+                index = following[index]
+            length = sum(lengths[index] for index in run)
+            scale = max(1,round(length/8))/length
+            phase = 0.
+            for index in run:
+                repeat = lengths[index]*scale
+                coordinates[index] = phase,repeat
+                phase += repeat
+        for index,(barrier,(za,zb)) in enumerate(zip(barriers,struct.iter_unpack('<2f',profile[12:]),strict=True)):
             ax, ay, bx, by, _bottom, _top, radius = (float(value) for value in barrier.values())
             a, b = (ax, ay, za), (bx, by, zb)
             start_key,end_key = (round(ax,3),round(ay,3)),(round(bx,3),round(by,3))
@@ -351,20 +381,12 @@ class Scenery:
                 for i in range(4):
                     j = (i+1)%4
                     self.quad('Tile_Protection','Concrete',corners[i],corners[j],upper[j],upper[i])
-            sample, _ = self.nearest((ax + bx) / 2, (ay + by) / 2)
-            heading = sample.station
-            panel = 'WallGold' if 660 < heading < 1450 else 'WallPink' if 3400 < heading < 4200 else ('WallBlue' if 2200 < heading < 3400 else 'WallDark')
-            if 3500 < heading < 3840:
-                lane = ((ax+bx)/2-sample.x)*sample.ty-((ay+by)/2-sample.y)*sample.tx
-                panel = 'WallBlue' if heading > 3700 or lane < 0 else 'WallDark'
+            sample,panel = samples[index],panels[index]
             inward_a,inward_b = mul(miter_a,radius+.012),mul(miter_b,radius+.012)
             panel_a, panel_b = add(a,inward_a),add(b,inward_b)
-            distance = wall_coordinates.get(start_key,0.0)
-            span = math.dist(a,b)
-            wall_coordinates[end_key] = distance+span
-            phase = distance/8
+            phase,repeat = coordinates[index]
             if not end_barrier:
-                self.banner(add(panel_a, (0, 0, .02)), add(panel_b, (0, 0, .02)), .88, panel, 'Tile_Protection', phase, span / 8)
+                self.banner(add(panel_a, (0, 0, .02)), add(panel_b, (0, 0, .02)), .88, panel, 'Tile_Protection', phase, repeat)
             self.banner(add(a, (0, 0, wall_height)), add(b, (0, 0, wall_height)), 2.55, 'Fence', 'Tile_Protection')
             if int(sample.station / 8) != int((sample.station - LENGTH / len(self.road)) / 8):
                 self.beam('Tile_Protection', 'Steel', add(a, (0, 0, wall_height)), add(a, (0, 0, 3.5)), .065)
@@ -408,7 +430,7 @@ class Scenery:
                               add(sample.point(lane_a, .016), (sample.tx * .12, sample.ty * .12, 0)))
                     self.quad('Tile_Road', 'White', sample.point(lane_b, .016), nxt.point(lane_b, .016),
                               nxt.point(lane_b - side * .10, .016), sample.point(lane_b - side * .10, .016))
-            if index % (12 * self.detail_stride) == 0:
+            if index % (6 * self.detail_stride) == 0:
                 for side in (-1, 1):
                     self.floodlight(sample, side)
         self.tyre_barriers()
@@ -549,16 +571,18 @@ class Scenery:
 
     def building(self, ring: list[tuple[float, float]], height: float, material: str, name: str, osm_id: int) -> None:
         profile = self.profiles.get(osm_id)
-        if profile is not None:
-            height, material = profile.height_m - profile.crown_m, profile.facade
-            name = name or profile.name
-            if profile.style == 'arcade':
-                material = 'PodiumStone'
-        if profile is not None and profile.name in ('Wynn','Encore','Bellagio') and height > 60:
+        if profile is None:
+            style = 'office' if height < 25 else 'modern'
+            profile = LandmarkProfile('',style,height,'RetailFacade' if height < 25 else material,1.)
+        height, material = profile.height_m - profile.crown_m, profile.facade
+        name = name or profile.name
+        if profile.style == 'arcade':
+            material = 'PodiumStone'
+        if profile.name in ('Wynn','Encore','Bellagio') and height > 60:
             ring = self.curved_footprint(ring)
         center = sum(p[0] for p in ring) / len(ring), sum(p[1] for p in ring) / len(ring)
         roof = None
-        if profile is not None and profile.name in ('Wynn','Encore') and height > 60:
+        if profile.name in ('Wynn','Encore') and height > 60:
             xx = sum((x-center[0])**2 for x,y in ring)
             yy = sum((y-center[1])**2 for x,y in ring)
             xy = sum((x-center[0])*(y-center[1]) for x,y in ring)
@@ -575,7 +599,7 @@ class Scenery:
         def corner_normal(index: int, face: Point) -> Point:
             previous, nxt = face_normals[index - 1], face_normals[index % len(ring)]
             return norm(add(previous, nxt)) if sum(a * b for a, b in zip(previous, nxt)) > .9 else face
-        facade_u = 0.0
+        facade_u = (osm_id%17)/17
         for index, a in enumerate(ring):
             b = ring[(index + 1) % len(ring)]
             width = math.dist(a, b)
@@ -589,32 +613,7 @@ class Scenery:
             self.triangle('Building_City', material, low_a, top_b, top_a, ((facade_u, 0), (facade_u + u, -height_b/28.8), (facade_u, -height_a/28.8)), (na, nb, na))
             facade_u += u
             self.beam('Building_City', 'IlluminatedCream' if material == 'BronzeFacade' else 'Cream', top_a, top_b, .4, .7)
-            if profile is None and height > 30 and material == 'CreamFacade':
-                for floor in range(4, int(height), 14):
-                    self.beam('Building_City', 'Cream', (*a, z + floor), (*b, z + floor), .16, .3)
-        if profile is not None:
-            self.hotel_architecture(ring, z, height, profile, roof)
-        for keyword, label in [('Bellagio Las Vegas', 'Bellagio'), ('Venetian Tower', 'Venetian'),
-                               ('Palazzo Tower', 'Palazzo'), ('Wynn Las Vegas', 'Wynn'),
-                               ('Le Boulevard At Paris', 'Paris'), ('Cosmopolitan', 'Cosmopolitan'),
-                               ('Planet Hollywood Resort', 'Planet')]:
-            if profile is not None or keyword not in name or height < 60:
-                continue
-            edge = min(range(len(ring)), key=lambda i: self.nearest((ring[i][0] + ring[(i + 1) % len(ring)][0]) / 2,
-                                                                   (ring[i][1] + ring[(i + 1) % len(ring)][1]) / 2)[1])
-            a, b = ring[edge], ring[(edge + 1) % len(ring)]
-            dx, dy = b[0] - a[0], b[1] - a[1]
-            span = math.hypot(dx, dy)
-            if span < .1:
-                continue
-            center_x, center_y = (a[0] + b[0]) / 2, (a[1] + b[1]) / 2
-            half = min(max(p[0] for p in ring) - min(p[0] for p in ring),
-                       max(p[1] for p in ring) - min(p[1] for p in ring), 44) * .43
-            center_x += dy / span * .15
-            center_y -= dx / span * .15
-            left = center_x - dx / span * half, center_y - dy / span * half, z + height - 7
-            right = center_x + dx / span * half, center_y + dy / span * half, z + height - 7
-            self.banner(left, right, 3.0, label, 'Building_City')
+        self.hotel_architecture(ring, z, height, profile, roof)
         # Concave roofs use ear clipping instead of a fan through the exterior.
         indices = list(range(len(ring)))
         while len(indices) >= 3:
@@ -645,6 +644,9 @@ class Scenery:
         kind = 'Building_Hotel'
         cx, cy = sum(p[0] for p in ring) / len(ring), sum(p[1] for p in ring) / len(ring)
         edges = list(zip(ring, ring[1:] + ring[:1]))
+        if profile.style in ('retail','motel','office','exhibition','display','wynn_plaza'):
+            self.urban_architecture(ring,z,height,profile)
+            return
         if profile.style == 'parking':
             for a,b in edges:
                 span = math.dist(a,b)
@@ -788,6 +790,8 @@ class Scenery:
                     left,right=sub(center,mul(direction,1.2)),add(center,mul(direction,1.2))
                     ridge=add(center,(0,0,2.4))
                     self.triangle(kind,'Roof',add(left,(0,0,1.3)),add(right,(0,0,1.3)),ridge)
+        if not profile.name:
+            return
         # Wordmarks sit on the actual tower facade, without roadside hotel boards.
         sign_edges = [edge for edge in edges if math.dist(*edge) > 14] or edges
         a, b = min(sign_edges, key=lambda edge: self.nearest((edge[0][0] + edge[1][0]) / 2,
@@ -884,9 +888,9 @@ class Scenery:
                 ring.pop()
             if any(self.in_region(*point,region) for point in ring for region in self.escapes):
                 continue
-            if any(self.nearest(*point)[1] < self.nearest(*point)[0].half_width + 7 for point in ring):
+            if any(self.nearest(*point)[1] < self.nearest(*point)[0].half_width + 1.4 for point in ring):
                 continue
-            if any(self.nearest((a[0] + b[0]) / 2, (a[1] + b[1]) / 2)[1] < 18 for a, b in zip(ring, ring[1:] + ring[:1])):
+            if any(self.nearest((a[0]+b[0])/2,(a[1]+b[1])/2)[1] < self.nearest((a[0]+b[0])/2,(a[1]+b[1])/2)[0].half_width+1.4 for a,b in zip(ring,ring[1:]+ring[:1])):
                 continue
             self.city_rings.append(ring)
             height = float(tags.get('height', str(float(tags.get('building:levels', '3')) * 3.4)).split()[0])
@@ -905,22 +909,184 @@ class Scenery:
         self.eiffel()
         self.wheel()
         self.pits()
+        self.opening_hospitality()
         self.bridges()
         self.race_decor()
-        for a, b, sign in [(1500, 1900, 1), (3350, 3500, 1), (3700, 3960, 1), (5500, 5750, -1)]:
+        self.grandstand(1660,1980,1,True)
+        for a, b, sign in [(2070,2210,1),(2850,3230,-1),(3350,3500,1),(3700,3960,1),(5500,5750,-1)]:
             self.grandstand(a, b, sign)
-        for index, sample in enumerate(self.road[::self.detail_stride]):
-            spacing = 6 if sample.station < 600 or sample.station > 5000 else 10
-            if index % spacing or not (sample.station < 700 or sample.station > 4650):
+        self.wynn_display()
+        self.streetscape()
+
+    def wall_material(self, sample: RoadStation, ax: float, ay: float) -> str:
+        sector = self.sector(sample.station)
+        side = int(sample.tx*(ay-sample.y)-sample.ty*(ax-sample.x)>0)
+        panel = sector.wall_panels[(int(sample.station/96)+side)%len(sector.wall_panels)]
+        if sector.name == 'paddock':
+            panel = 'WallWhite' if int(sample.station/8)%2 else 'WallBlack'
+        if 3500 < sample.station < 3840:
+            lane = (ax-sample.x)*sample.ty-(ay-sample.y)*sample.tx
+            panel = 'WallBlue' if sample.station > 3700 or lane < 0 else 'WallDark'
+        return panel
+
+    def sector(self, station: float) -> RouteSector:
+        return next(sector for sector in self.sectors if sector.start_m <= station < sector.end_m)
+
+    def broadleaf(self, base: Point, height: float, seed: int) -> None:
+        fork = add(base,(0,0,height*.52))
+        self.beam('Building_Trees','Trunk',base,fork,.25)
+        for cluster in range(5):
+            azimuth = cluster*math.tau/5+seed*.13
+            center = add(base,(math.cos(azimuth)*height*.16,math.sin(azimuth)*height*.16,
+                               height*(.68+.04*(cluster%3))))
+            self.beam('Building_Trees','Trunk',fork,center,.10)
+            column,row = (2,5)[(seed+cluster)%2],(seed+cluster)%3
+            u0,u1 = (column+.012)/6,(column+.988)/6
+            v0,v1 = (row+.012)/6,(row+.988)/6
+            for plane in range(3):
+                angle = plane*math.pi/3+azimuth
+                axis = (math.cos(angle),math.sin(angle),0.)
+                bottom = add(center,(0,0,-height*.23))
+                a,b = sub(bottom,mul(axis,height*.25)),add(bottom,mul(axis,height*.25))
+                ta,tb = add(a,(0,0,height*.5)),add(b,(0,0,height*.5))
+                self.triangle('Building_Trees','TreeCanopy',ta,tb,b,((u0,v0),(u1,v0),(u1,v1)))
+                self.triangle('Building_Trees','TreeCanopy',ta,b,a,((u0,v0),(u1,v1),(u0,v1)))
+
+    def streetscape(self) -> None:
+        for sector in self.sectors:
+            if sector.tree_spacing_m == 0:
                 continue
-            for sign in (-1, 1):
-                position = sample.point(sign * (sample.half_width + 11 + (index % 3) * 2))
-                if any(self.in_region(position[0], position[1], region) for region in self.escapes):
+            station = sector.start_m+sector.tree_spacing_m/2
+            number = 0
+            while station < sector.end_m:
+                sample = min(self.road,key=lambda p:abs(p.station-station))
+                for side in (-1,1):
+                    seed = int(station*3)+side
+                    for setback in (4.8,7.5,11.):
+                        lane = side*(self.outer_lane(sample,side)+setback)
+                        x,y,_ = sample.point(lane)
+                        if any(self.in_polygon(x+dx,y+dy,ring) for ring in self.city_rings
+                               for dx,dy in ((0.,0.),(-1.2,0.),(1.2,0.),(0.,-1.2),(0.,1.2))):
+                            continue
+                        if any(self.in_region(x,y,region) for region in self.escapes):
+                            continue
+                        z = max(self.ground(x,y),sample.z+.08)
+                        palm = sector.palm_every > 0 and (number+side)%sector.palm_every == 0
+                        height = 9.+seed%4 if palm else 8.+seed%5
+                        if palm:
+                            self.palm((x,y,z),height)
+                        else:
+                            self.broadleaf((x,y,z),height,seed)
+                        self.vegetation.append({'sector':sector.name,'station_m':sample.station,'x':x,'y':y,'z':z,
+                                                'kind':'palm' if palm else 'broadleaf','height_m':height,'side':side})
+                        break
+                station += sector.tree_spacing_m
+                number += 1
+        road = self.road[::self.detail_stride]
+        for i,sample in enumerate(road):
+            if self.sector(sample.station).name in ('paddock','opening','sphere'):
+                continue
+            nxt = road[(i+1)%len(road)]
+            for side in (-1,1):
+                outer,next_outer = self.outer_lane(sample,side),self.outer_lane(nxt,side)
+                if outer > sample.half_width+2 or next_outer > nxt.half_width+2:
                     continue
-                if any(self.in_polygon(position[0],position[1],ring) for ring in self.city_rings):
-                    continue
-                base = (position[0],position[1],self.ground(position[0],position[1]))
-                self.palm(base,8+index%5)
+                points = [sample.point(side*(outer+.2),.08),nxt.point(side*(next_outer+.2),.08),
+                          nxt.point(side*(next_outer+9),.08),sample.point(side*(outer+9),.08)]
+                if side > 0:
+                    points.reverse()
+                self.quad('Tile_Pavement','Pavement',points[0],points[1],points[2],points[3],1,2)
+
+    def urban_architecture(self, ring: list[tuple[float,float]], z: float, height: float,
+                           profile: LandmarkProfile) -> None:
+        edges = list(zip(ring,ring[1:]+ring[:1]))
+        kind = 'Building_Frontage'
+        for a,b in edges:
+            span = math.dist(a,b)
+            if span < .5:
+                continue
+            direction = norm((b[0]-a[0],b[1]-a[1],0))
+            outward = (direction[1],-direction[0],0.)
+            def point(t: float,level: float,a: tuple[float,float] = a,b: tuple[float,float] = b,
+                      outward: Point = outward) -> Point:
+                return add((a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,z+level),mul(outward,.13))
+            if profile.style == 'motel':
+                for floor in range(0,int(height-1),3):
+                    self.beam(kind,'Cream',point(0,floor),point(1,floor),1.7,.22)
+                    if floor > 0:
+                        self.beam(kind,'Steel',point(0,floor+1.05),point(1,floor+1.05),.08)
+                for bay in range(max(1,round(span/4))):
+                    t = (bay+.5)/max(1,round(span/4))
+                    self.banner(sub(point(t,.3),mul(direction,.6)),add(point(t,.3),mul(direction,.6)),2.2,'WarmGlass',kind)
+            elif profile.style in ('office','exhibition'):
+                for floor in range(3,int(height-2),4):
+                    self.banner(point(0,floor),point(1,floor),1.8,'Glass',kind)
+                    self.beam(kind,'Cream',point(0,floor-.25),point(1,floor-.25),.22,.3)
+                self.beam(kind,'IlluminatedCream',point(0,height-.4),point(1,height-.4),.12)
+            else:
+                bays = max(1,round(span/6))
+                for bay in range(bays):
+                    middle = point((bay+.5)/bays,1)
+                    half = min(2.6,span/bays*.43)
+                    self.banner(sub(middle,mul(direction,half)),add(middle,mul(direction,half)),
+                                min(6.,height-2),'WarmGlass' if bay%3 else 'Glass',kind)
+                for bay in range(bays+1):
+                    self.beam(kind,'PodiumStone',point(bay/bays,0),point(bay/bays,height),.45)
+                levels = (4.,height-1.1,height) if profile.style == 'wynn_plaza' else (height-.8,)
+                accent = 'RedNeon' if profile.name in ('EllisIsland','OleRed','HellsKitchen') else 'PinkNeon' if profile.name in ('Harrahs','Flamingo') else 'IlluminatedCream'
+                for level in levels:
+                    self.beam(kind,accent,point(0,level),point(1,level),.5,.4)
+        if profile.style in ('office','motel','exhibition'):
+            cx,cy = sum(p[0] for p in ring)/len(ring),sum(p[1] for p in ring)/len(ring)
+            self.box(kind,'Steel',(cx,cy,z+height+.7),5,3,1.4)
+        a,b = min(edges,key=lambda e:self.nearest((e[0][0]+e[1][0])/2,(e[0][1]+e[1][1])/2)[1])
+        span = math.dist(a,b)
+        if span < .5:
+            return
+        direction = norm((b[0]-a[0],b[1]-a[1],0))
+        outward = (direction[1],-direction[0],0.)
+        middle = add(((a[0]+b[0])/2,(a[1]+b[1])/2,z+height-3),mul(outward,.3))
+        if profile.style == 'exhibition':
+            bays = max(1,round(span/13))
+            for bay in range(bays):
+                foot = add((a[0],a[1],z+2.2),add(mul(direction,span*(bay+.5)/bays),mul(outward,.35)))
+                self.banner(sub(foot,mul(direction,1.2)),add(foot,mul(direction,1.2)),3.6,
+                            ('WallWhite','WallPurple','WallBlack')[bay%3],kind)
+                self.beam(kind,'Cream',add(foot,(0,0,4)),add(foot,add(mul(outward,1.4),(0,0,4))),.12)
+                self.box(kind,'Lamp',add(foot,add(mul(outward,1.3),(0,0,3.9))),.45,.25,.08)
+        if profile.style == 'display':
+            self.banner(add((a[0],a[1],z+3),mul(outward,.24)),add((b[0],b[1],z+3),mul(outward,.24)),height-3,'HarmonDisplay',kind)
+        if profile.name in HOTEL_NAMES:
+            half = min(span*.42,15.)
+            self.banner(sub(middle,mul(direction,half)),add(middle,mul(direction,half)),2.3,profile.name,kind)
+
+    def wynn_display(self) -> None:
+        display = self.wynn_display_profile
+        x,y = (value*self.scale for value in display.source_xy_m)
+        z = self.ground(x,y)
+        angle = math.radians(display.orientation_deg)
+        axis = (math.cos(angle),math.sin(angle),0.)
+        normal = (axis[1],-axis[0],0.)
+        def point(phi: float,level: float,offset: float = 0.) -> Point:
+            return add((x,y,z+level),add(mul(axis,math.cos(phi)*(display.width_m/2+offset)),
+                                        mul(normal,math.sin(phi)*(display.depth_m/2+offset))))
+        for i in range(64):
+            p0,p1 = i*math.tau/64,(i+1)*math.tau/64
+            a,b = point(p0,0),point(p1,0)
+            self.quad('Building_WynnDisplay','PodiumStone',b,a,point(p0,display.base_height_m+2),point(p1,display.base_height_m+2))
+            low = display.base_height_m+3
+            self.triangle('Building_WynnDisplay','WynnDisplay',point(p0,display.height_m),point(p1,display.height_m),point(p1,low),
+                          ((i/32,0),((i+1)/32,0),((i+1)/32,1)))
+            self.triangle('Building_WynnDisplay','WynnDisplay',point(p0,display.height_m),point(p1,low),point(p0,low),
+                          ((i/32,0),((i+1)/32,1),(i/32,1)))
+            for level in (display.base_height_m,display.base_height_m+2,display.height_m):
+                self.beam('Building_WynnDisplay','IlluminatedCream',point(p0,level),point(p1,level),.25,.35)
+        for i in range(24):
+            p0 = math.pi/6+i*math.pi*2/3/24
+            p1 = math.pi/6+(i+1)*math.pi*2/3/24
+            self.banner(point(p0,display.base_height_m-.3,.18),point(p1,display.base_height_m-.3,.18),2.,'WynnPlaza','Building_WynnDisplay',1-i/24,-1/24)
+        self.city_rings.append([point(i*math.tau/64,0)[:2] for i in range(64)])
+        self.landmarks.append({'name':'Wynn Plaza curved digital monument','x':x,'y':y,'height_m':display.height_m})
 
     def bridges(self) -> None:
         payload = json.loads(gzip.decompress((SOURCE / 'pedestrian_bridges.osm.json.gz').read_bytes()))
@@ -1087,11 +1253,13 @@ class Scenery:
     def pits(self) -> None:
         road = self.road[::self.detail_stride]
         for index, sample in enumerate(road):
-            if not 1530 < sample.station < 1940:
+            if not 1660 < sample.station < 1980:
                 continue
             nxt = road[(index + 1) % len(road)]
             near = sample.half_width + 8
             near_next = nxt.half_width + 8
+            self.city_rings.append([sample.point(-near-13)[:2],nxt.point(-near_next-13)[:2],
+                                    nxt.point(-near_next-35)[:2],sample.point(-near-35)[:2]])
             # Pit lane, garages, three hospitality decks and cantilever roof.
             self.quad('Tile_Paddock', 'Runoff', sample.point(-near), nxt.point(-near_next), nxt.point(-near_next - 13), sample.point(-near - 13), 1, 3)
             for height in (0, 5.2, 10.5, 15.6):
@@ -1111,7 +1279,39 @@ class Scenery:
             if index % 5 == 0:
                 self.spectators(sample.point(-near - 16, 6.1), nxt.point(-near_next - 16, 6.1), index, 'Building_Crowd_Paddock')
 
-    def grandstand(self, start: float, end: float, sign: int) -> None:
+    def opening_hospitality(self) -> None:
+        road = self.road[::self.detail_stride]
+        for index,sample in enumerate(road):
+            if not 2210 < sample.station < 2830:
+                continue
+            nxt = road[(index+1)%len(road)]
+            near = self.outer_lane(sample,-1)+6
+            next_near = self.outer_lane(nxt,-1)+6
+            self.city_rings.append([sample.point(-near)[:2],nxt.point(-next_near)[:2],
+                                    nxt.point(-next_near-16)[:2],sample.point(-near-16)[:2]])
+            for level in (0.,3.6,7.2,10.8):
+                self.beam('Building_OpeningGallery','Cream',sample.point(-near-8,level),
+                          nxt.point(-next_near-8,level),16,.35)
+                self.banner(sample.point(-near-4,level+.4),nxt.point(-next_near-4,level+.4),
+                            2.7,'Glass','Building_OpeningGallery')
+                if level > 0:
+                    for rail in (.5,1.1):
+                        self.beam('Building_OpeningGallery','Steel',sample.point(-near,level+rail),
+                                  nxt.point(-next_near,level+rail),.055)
+                    self.beam('Building_OpeningGallery','IlluminatedCream',sample.point(-near,level+.1),
+                              nxt.point(-next_near,level+.1),.07)
+                if index%2 == 0:
+                    self.beam('Building_OpeningGallery','Cream',sample.point(-near,level),
+                              sample.point(-near,level+3.6),.22)
+                    if level > 0:
+                        self.spectators(sample.point(-near-1,level+.25),nxt.point(-next_near-1,level+.25),
+                                        index,'Building_Crowd_Gallery')
+            self.beam('Building_OpeningGallery','Canopy',sample.point(-near-7,14.4),
+                      nxt.point(-next_near-7,14.4),19,.45)
+        self.landmarks.append({'name':'Opening sequence hospitality gallery','start_station_m':2210,
+                               'end_station_m':2830,'height_m':14.4,'side':-1})
+
+    def grandstand(self, start: float, end: float, sign: int, roofed: bool = False) -> None:
         road = self.road[::self.detail_stride]
         for index in range(0, len(road), 2):
             sample = road[index]
@@ -1120,6 +1320,8 @@ class Scenery:
             nxt = road[(index + 2) % len(road)]
             base = self.outer_lane(sample,sign) + 4.5
             next_base = self.outer_lane(nxt,sign) + 4.5
+            self.city_rings.append([sample.point(sign*base)[:2],nxt.point(sign*next_base)[:2],
+                                    nxt.point(sign*(next_base+21))[:2],sample.point(sign*(base+21))[:2]])
             for row in range(18):
                 lane, lane_next = sign * (base + row * 1.1), sign * (next_base + row * 1.1)
                 a, b = sample.point(lane, 1.4 + row * .45), nxt.point(lane_next, 1.4 + row * .45)
@@ -1131,7 +1333,7 @@ class Scenery:
                 self.beam('Building_Stands', 'Steel', foot, rear, .18)
                 self.beam('Building_Stands', 'Steel', sample.point(sign * base, .8), rear, .16)
                 self.beam('Building_Stands', 'Steel', foot, nxt.point(sign * (next_base + 19), 9.8), .10)
-            if start == 1500:
+            if roofed:
                 front = sample.point(sign * (base - 1.5), 12.4)
                 rear = sample.point(sign * (base + 20), 14.2)
                 front_next = nxt.point(sign * (next_base - 1.5), 12.4)
@@ -1163,25 +1365,30 @@ class Scenery:
                 def trunk(z: float, radius: float, angle: float) -> Point:
                     return base[0] + .4 * z / height + radius * math.cos(angle), base[1] + .2 * z / height + radius * math.sin(angle), base[2] + z
                 self.quad('Building_Palms', 'Trunk', trunk(z0, r0, a0), trunk(z0, r0, a1), trunk(z1, r1, a1), trunk(z1, r1, a0))
-        for frond in range(19):
-            angle = frond * math.tau / 19 + base[0] % 1
+        for frond in range(25):
+            angle = frond * math.tau / 25 + base[0] % 1
             direction = math.cos(angle), math.sin(angle), 0.0
             side = -math.sin(angle), math.cos(angle), 0.0
-            length = 3.4 + (frond % 3) * .4
+            length = 3.8 + (frond % 4) * .35
             previous = top
-            for segment in range(1, 17):
-                t = segment / 16
+            previous_width = .02
+            for segment in range(1, 13):
+                t = segment / 12
                 point = add(top, add(mul(direction, length * t), (0, 0, 2 * math.sin(t * math.pi) - t * 1.7)))
                 self.beam('Building_Palms', 'Leaves', previous, point, .035)
                 width = .8 * math.sin(t * math.pi) + .04
+                self.quad('Building_Palms','Leaves',sub(previous,mul(side,previous_width)),
+                          sub(point,mul(side,width*.45)),add(point,mul(side,width*.45)),
+                          add(previous,mul(side,previous_width)))
+                previous_width = width*.45
                 for sign in (-1, 1):
                     last = point
                     leaf_side = norm(cross(add(mul(side, sign), mul(direction, .25)), (0, 0, 1)))
-                    for blade_step in range(1, 4):
-                        fraction = blade_step / 3
+                    for blade_step in range(1, 3):
+                        fraction = blade_step / 2
                         blade = add(point, add(mul(side, sign * width * fraction), mul(direction, .3 * fraction)))
                         blade = add(blade, (0, 0, -.28 * fraction * fraction))
-                        half_width = .022 * (1 - fraction) + .003
+                        half_width = .10 * (1 - fraction) + .016
                         self.quad('Building_Palms', 'Leaves', sub(last, mul(leaf_side, half_width)),
                                   sub(blade, mul(leaf_side, half_width)), add(blade, mul(leaf_side, half_width)),
                                   add(last, mul(leaf_side, half_width)))
@@ -1211,7 +1418,7 @@ class Scenery:
                         'registration_note': 'Anchors express observed turn order on the OSM street frame, not an independently surveyed set of apex positions. Residual is sampling distance to authored control, not absolute geospatial accuracy.',
                         'turns': registered}
         (SOURCE / 'turn-registration.json').write_text(json.dumps(registration, indent=2) + '\n')
-        manifest: dict[str, object] = {'tiles': records, 'landmarks': self.landmarks}
+        manifest: dict[str, object] = {'tiles': records, 'landmarks': self.landmarks,'vegetation':self.vegetation}
         (SCRATCH / 'manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
         return manifest
 

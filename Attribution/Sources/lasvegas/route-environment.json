@@ -1,0 +1,132 @@
+{
+  "reference": "User Vegas.mp4, whole night lap: 104-124 s and 928-962 s. Stations are registered reconstructions, not surveyed landscaping locations.",
+  "sectors": [
+    {
+      "name": "strip-south",
+      "start_m": 0,
+      "end_m": 550,
+      "tree_spacing_m": 14,
+      "palm_every": 3,
+      "wall_panels": [
+        "WallTeal",
+        "WallNavy",
+        "WallWhite"
+      ]
+    },
+    {
+      "name": "harmon-chicane",
+      "start_m": 550,
+      "end_m": 850,
+      "tree_spacing_m": 18,
+      "palm_every": 3,
+      "wall_panels": [
+        "WallNavy",
+        "WallWhite"
+      ]
+    },
+    {
+      "name": "harmon",
+      "start_m": 850,
+      "end_m": 1650,
+      "tree_spacing_m": 18,
+      "palm_every": 3,
+      "wall_panels": [
+        "WallPurple",
+        "WallWhite",
+        "WallNavy"
+      ]
+    },
+    {
+      "name": "paddock",
+      "start_m": 1650,
+      "end_m": 2000,
+      "tree_spacing_m": 0,
+      "palm_every": 0,
+      "wall_panels": [
+        "WallWhite",
+        "WallWhite",
+        "WallBlack"
+      ]
+    },
+    {
+      "name": "opening",
+      "start_m": 2000,
+      "end_m": 2450,
+      "tree_spacing_m": 13,
+      "palm_every": 5,
+      "wall_panels": [
+        "WallWhite",
+        "WallYellow",
+        "WallPurple"
+      ]
+    },
+    {
+      "name": "koval",
+      "start_m": 2450,
+      "end_m": 3300,
+      "tree_spacing_m": 14,
+      "palm_every": 4,
+      "wall_panels": [
+        "WallWhite",
+        "WallYellow",
+        "WallBlack"
+      ]
+    },
+    {
+      "name": "sphere",
+      "start_m": 3300,
+      "end_m": 4000,
+      "tree_spacing_m": 22,
+      "palm_every": 4,
+      "wall_panels": [
+        "WallBlack",
+        "WallBlue",
+        "WallPink"
+      ]
+    },
+    {
+      "name": "sands",
+      "start_m": 4000,
+      "end_m": 4900,
+      "tree_spacing_m": 16,
+      "palm_every": 3,
+      "wall_panels": [
+        "WallWhite",
+        "WallPurple",
+        "WallNavy"
+      ]
+    },
+    {
+      "name": "strip",
+      "start_m": 4900,
+      "end_m": 6201,
+      "tree_spacing_m": 14,
+      "palm_every": 2,
+      "wall_panels": [
+        "WallNavy",
+        "WallTeal",
+        "WallBlack",
+        "WallPurple"
+      ]
+    }
+  ],
+  "tree_texture": "Existing original Interlagos runtime_leaf_silhouette atlas, canopy cells used on spatial crown clusters and solid branches; accepted assets unchanged. Palms have full pinnate crowns with 25 fronds.",
+  "wynn_display": {
+    "source_xy_m": [
+      407,
+      1227
+    ],
+    "width_m": 24,
+    "depth_m": 8,
+    "height_m": 35,
+    "base_height_m": 5,
+    "orientation_deg": 76,
+    "reference": "Wynn Plaza curved digital monument visible at 114.25-115.0s immediately before the Strip turn. Location/dimensions are visual estimates registered beside the retained Wynn retail footprint."
+  },
+  "clearances": "Trees and paving sit outside the physical paved boundary; planting excludes mapped buildings and procedural grandstands/paddock.",
+  "opening_hospitality": "Original multi-level glass, balcony and cantilever-roof gallery on the left around T3/T4 and early Koval, visible at 106.5-108.75s and 930-933s; estimated station2210-2830m,14.4m high. Open seating continues left at2850-3230m. Extents are visual reconstruction estimates, not surveyed venue positions.",
+  "lighting": "24m fixture spacing,8.5m diffuse-pool radius,2.2 field contrast exponent,1.2 surface irradiance gain,2.0 neutral directional fill and0.24 skylight. The registered field illuminates private road/runoff/concrete materials while retaining their DefaultLit shading, texture, specular and shadows. No unbounded per-fixture dynamic lights.",
+  "display_art": "Original procedural red/orange/gold Sphere race ribbons and high-contrast orange/black Wynn Plaza ribbons. Both follow the reference color balance without copying video pixels. The earlier blue image_gen Sphere variant is retained as unused source artwork.",
+  "vegetation": "Rounded spatial broadleaf crowns;25-frond palms with full curved laminae and serrated leaflets. Trunks exclude mapped buildings, temporary venues and escape paving.",
+  "wall_panels": "Each contiguous sponsor-material run fits an integer number of full8m wordmark repeats, so material changes cannot slice through a word."
+}

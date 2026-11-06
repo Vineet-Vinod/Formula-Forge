@@ -109,10 +109,10 @@
     },
     "116761428": {
       "name": "Flamingo",
-      "style": "stepped",
-      "height_m": 94,
-      "facade": "FlamingoFacade",
-      "crown_m": 5
+      "style": "retail",
+      "height_m": 14,
+      "facade": "PodiumStone",
+      "crown_m": 1
     },
     "33959894": {
       "name": "TreasureIsland",
@@ -239,6 +239,216 @@
       "height_m": 25,
       "facade": "Cream",
       "crown_m": 1
+    },
+    "111322055": {
+      "name": "WynnPlaza",
+      "style": "wynn_plaza",
+      "height_m": 16,
+      "facade": "PodiumStone",
+      "crown_m": 2
+    },
+    "111367819": {
+      "name": "VenetianExpo",
+      "style": "exhibition",
+      "height_m": 18,
+      "facade": "PodiumStone",
+      "crown_m": 1
+    },
+    "100519310": {
+      "name": "EllisIsland",
+      "style": "retail",
+      "height_m": 9,
+      "facade": "BrickFacade",
+      "crown_m": 1
+    },
+    "238675785": {
+      "name": "EllisIsland",
+      "style": "motel",
+      "height_m": 10.2,
+      "facade": "CreamFacade",
+      "crown_m": 1
+    },
+    "135298867": {
+      "name": "Platinum",
+      "style": "modern",
+      "height_m": 52,
+      "facade": "CityGlassFacade",
+      "crown_m": 3
+    },
+    "135020970": {
+      "name": "Westin",
+      "style": "modern",
+      "height_m": 75,
+      "facade": "CityGlassFacade",
+      "crown_m": 3
+    },
+    "276427203": {
+      "name": "GrandChateau",
+      "style": "mansard",
+      "height_m": 128,
+      "facade": "PalazzoFacade",
+      "crown_m": 9
+    },
+    "95223231": {
+      "name": "Signature",
+      "style": "modern",
+      "height_m": 145,
+      "facade": "SignatureFacade",
+      "crown_m": 4
+    },
+    "95223232": {
+      "name": "Signature",
+      "style": "modern",
+      "height_m": 145,
+      "facade": "SignatureFacade",
+      "crown_m": 4
+    },
+    "27897911": {
+      "name": "PoloTowers",
+      "style": "modern",
+      "height_m": 61.2,
+      "facade": "VenetianFacade",
+      "crown_m": 3
+    },
+    "128622185": {
+      "name": "Harrahs",
+      "style": "arcade",
+      "height_m": 17,
+      "facade": "HarrahsFacade",
+      "crown_m": 2
+    },
+    "181282568": {
+      "name": "CasinoRoyale",
+      "style": "retail",
+      "height_m": 12,
+      "facade": "RoyaleFacade",
+      "crown_m": 2
+    },
+    "1255028419": {
+      "name": "HarmonCorner",
+      "style": "display",
+      "height_m": 14,
+      "facade": "CityGlassFacade",
+      "crown_m": 1
+    },
+    "839503453": {
+      "name": "OleRed",
+      "style": "retail",
+      "height_m": 9,
+      "facade": "BrickFacade",
+      "crown_m": 1
+    },
+    "1424222077": {
+      "name": "Alexxas",
+      "style": "retail",
+      "height_m": 10,
+      "facade": "RetailFacade",
+      "crown_m": 1
+    },
+    "1424222078": {
+      "name": "Hexx",
+      "style": "retail",
+      "height_m": 10,
+      "facade": "RetailFacade",
+      "crown_m": 1
+    },
+    "1424222079": {
+      "name": "BeerPark",
+      "style": "retail",
+      "height_m": 9,
+      "facade": "BrickFacade",
+      "crown_m": 1
+    },
+    "543638212": {
+      "name": "Starbucks",
+      "style": "retail",
+      "height_m": 8,
+      "facade": "RetailFacade",
+      "crown_m": 0.6
+    },
+    "442766028": {
+      "name": "Parking",
+      "style": "parking",
+      "height_m": 9,
+      "facade": "Cream",
+      "crown_m": 0.5
+    },
+    "133879824": {
+      "name": "Parking",
+      "style": "parking",
+      "height_m": 14,
+      "facade": "Cream",
+      "crown_m": 0.5
+    },
+    "33992535": {
+      "name": "Parking",
+      "style": "parking",
+      "height_m": 12,
+      "facade": "Cream",
+      "crown_m": 0.5
+    },
+    "128266659": {
+      "name": "Parking",
+      "style": "parking",
+      "height_m": 14,
+      "facade": "Cream",
+      "crown_m": 0.5
+    },
+    "116761035": {
+      "name": "Flamingo",
+      "style": "modern",
+      "height_m": 23.8,
+      "facade": "FlamingoFacade",
+      "crown_m": 1.2
+    },
+    "116761280": {
+      "name": "Flamingo",
+      "style": "modern",
+      "height_m": 30.6,
+      "facade": "FlamingoFacade",
+      "crown_m": 1.2
+    },
+    "111367828": {
+      "name": "Harrahs",
+      "style": "stepped",
+      "height_m": 109,
+      "facade": "HarrahsFacade",
+      "crown_m": 3
+    },
+    "128632721": {
+      "name": "Harrahs",
+      "style": "stepped",
+      "height_m": 72,
+      "facade": "HarrahsFacade",
+      "crown_m": 3
+    },
+    "115771295": {
+      "name": "Linq",
+      "style": "retail",
+      "height_m": 17,
+      "facade": "PodiumStone",
+      "crown_m": 1
+    },
+    "95223229": {
+      "name": "CarriageHouse",
+      "style": "balconies",
+      "height_m": 27.2,
+      "facade": "CreamFacade",
+      "crown_m": 1
+    },
+    "34000287": {
+      "name": "HellsKitchen",
+      "style": "retail",
+      "height_m": 6.8,
+      "facade": "BrickFacade",
+      "crown_m": 0.5
+    },
+    "364846540": {
+      "name": "SpanishSteps",
+      "style": "arcade",
+      "height_m": 6.8,
+      "facade": "CaesarsFacade",
+      "crown_m": 0.5
     }
   },
   "reconstruction_details": {
@@ -250,7 +460,9 @@
     "limits": "Original simplified architecture fitted to mapped footprints and tagged heights; roof details and facade observations are reconstructed, not scanned. Generic smaller city buildings remain simplified.",
     "Veer": "Mapped east/west tower footprints and retained 132 m OSM height, oppositely inclined 5 degrees with reconstructed north/south orientation. Staggered yellow fritted and clear glazing, close horizontal louvers and tall glazed lobbies replace the generic cream room-window extrusions. Primary MGM release establishes the incline; facade engineer photographs establish the glazing/louvers/lobbies. No sign board is added.",
     "Crystals_Arte": "The tagged Crystals 30 m height is the roof peak, not a uniform hotel-height wall. A 12 m retail body with large warm shop glazing supports an original simplified set of interlocking metal/glazed roof shards, registered within the mapped mall footprint. Roof control XY is source metres before uniform scaling and Z is height above the building ground. Shard positions and slopes are visual estimates from the architects' exterior references, not measured roof planes. The adjacent Arte Museum frontage uses low modern retail glazing rather than room windows.",
-    "Wynn_parking": "The mapped employee parking building keeps its tagged 25 m height, open horizontal parking decks, concrete floor bands and piers instead of a hotel-room window texture. Deck spacing is an original reconstruction."
+    "Wynn_parking": "The mapped employee parking building keeps its tagged 25 m height, open horizontal parking decks, concrete floor bands and piers instead of a hotel-room window texture. Deck spacing is an original reconstruction.",
+    "whole_route": "Wynn Plaza retail footprint 111322055 restored after removing the unrelated fixed 18 m centreline exclusion. Road-width-based clearance preserves this mapped frontage. Wynn digital monument is separately reconstructed from the supplied onboard. Koval lodging, casino and retail properties; Venetian Expo; Grand Chateau/Signature/Polo Towers; and ordinary Strip retail receive distinct architectural treatments. Retained tagged heights control Grand Chateau/Signature; other podium heights and crowns are visual estimates.",
+    "compound_volumes": "Flamingo116761428 is a resort outline with no tagged height, reconstructed as a14m casino podium rather than the former unsupported94m whole-site extrusion. Independent1167610357floors(23.8m) and1167612809floors(30.6m) remain visible. Neighboring83m towers are not reattributed to Flamingo. Harrahs and LINQ retain separate tagged tower/podium footprints; Horseshoe retains its mapped80m component and5-floor podium part. Heights/facade details without tags remain bounded visual estimates."
   },
   "leaning_towers": {
     "52134834": {

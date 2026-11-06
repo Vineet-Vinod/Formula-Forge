@@ -1,6 +1,8 @@
 """Check the contact/visual coordinate contract and the two terrain-header regressions."""
 from __future__ import annotations
 
+import hashlib
+import itertools
 import json
 import math
 import struct
@@ -257,3 +259,50 @@ def test_saved_fence_panels_share_their_uprights_and_overhang_edges() -> None:
                     seams[(ends[0],ends[1])] += 1
     assert seams
     assert all(count == 2 for count in seams.values())
+
+
+
+def test_full_route_frontages_and_vegetation_are_present() -> None:
+    scene = json.loads((SOURCES/'scenery.json').read_text())
+    buildings = {p['osm_id'] for p in scene['landmarks'] if 'osm_id' in p}
+    assert {111322055,111367819,100519310,238675785,276427203,95223231,128622185,181282568} <= buildings
+    assert any(p['name'] == 'Wynn Plaza curved digital monument' for p in scene['landmarks'])
+    assert any(p['name'] == 'Opening sequence hospitality gallery' for p in scene['landmarks'])
+    assert scene['route_environment_sha256'] == hashlib.sha256((SOURCES/'route-environment.json').read_bytes()).hexdigest()
+    sectors = json.loads((SOURCES/'route-environment.json').read_text())['sectors']
+    assert sectors[0]['start_m'] == 0 and sectors[-1]['end_m'] == 6201
+    assert all(a['end_m'] == b['start_m'] for a,b in itertools.pairwise(sectors))
+    for sector in sectors:
+        if sector['tree_spacing_m'] == 0:
+            continue
+        trees = [tree for tree in scene['vegetation'] if tree['sector'] == sector['name']]
+        assert len(trees) >= 6, sector['name']
+        assert any(tree['kind'] == 'broadleaf' for tree in trees), sector['name']
+    assert scene['night_lighting']['fixture_count'] >= 500
+
+
+def test_koval_floodlight_field_retains_local_contrast() -> None:
+    import csv
+    import statistics
+
+    from PIL import Image
+
+    x0,y0,width,height = json.loads((SOURCES/'night-field.json').read_text())['world_bounds_cm']
+    field = Image.open(ROOT/'build/lasvegas/art/FloodlightField.png').convert('RGB')
+    values = []
+    for sample in csv.DictReader((ROOT/'build/lasvegas/road.csv').open()):
+        if not 2500 < float(sample['station']) < 3100:
+            continue
+        x,y = -float(sample['y'])*100,-float(sample['x'])*100
+        col,row = int((x-x0)/width*field.width),int((y-y0)/height*field.height)
+        values.append(field.getpixel((col,row))[0])
+    assert max(values)-min(values) > 40
+    assert statistics.median(values) < 180
+
+
+def test_flamingo_resort_outline_does_not_hide_mapped_frontage() -> None:
+    scene = json.loads((SOURCES/'scenery.json').read_text())
+    volumes = {part['osm_id']:part['height_m'] for part in scene['landmarks'] if 'osm_id' in part}
+    assert volumes[116761428] < 20
+    assert 22 < volumes[116761035] < 25
+    assert 29 < volumes[116761280] < 32

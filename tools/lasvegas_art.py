@@ -6,7 +6,28 @@ import struct
 import zlib
 from pathlib import Path
 
-HOTEL_NAMES = frozenset(('Bellagio','Venetian','Palazzo','Wynn','Paris','Cosmopolitan','Linq','Horseshoe','Elara','Encore','TreasureIsland','Caesars','Flamingo','Planet'))
+HOTEL_LABELS = {
+    'Bellagio':'BELLAGIO','Venetian':'THE VENETIAN','Palazzo':'PALAZZO','Wynn':'WYNN',
+    'Paris':'PARIS','Cosmopolitan':'COSMOPOLITAN','Linq':'THE LINQ','Horseshoe':'HORSESHOE',
+    'Elara':'ELARA','Encore':'ENCORE','TreasureIsland':'TREASURE ISLAND','Caesars':'CAESARS PALACE',
+    'Flamingo':'FLAMINGO','Planet':'PLANET HOLLYWOOD','WynnPlaza':'WYNN PLAZA',
+    'VenetianExpo':'THE VENETIAN EXPO','EllisIsland':'ELLIS ISLAND','Platinum':'PLATINUM',
+    'Westin':'WESTIN','GrandChateau':'MARRIOTT GRAND CHATEAU','Signature':'THE SIGNATURE',
+    'PoloTowers':'POLO TOWERS','Harrahs':"HARRAH'S",'CasinoRoyale':'CASINO ROYALE',
+    'HarmonCorner':'HARMON CORNER','OleRed':'OLE RED','Alexxas':'ALEXXAS','Hexx':'HEXX',
+    'BeerPark':'BEER PARK','Starbucks':'STARBUCKS',
+    'CarriageHouse':'THE CARRIAGE HOUSE','HellsKitchen':"HELL'S KITCHEN",'SpanishSteps':'SPANISH STEPS',
+}
+HOTEL_NAMES = frozenset(HOTEL_LABELS)
+WALL_PANELS = {
+    'WallWhite':((224,224,217),(18,21,23),'FORMULA FORGE'),
+    'WallYellow':((226,195,16),(184,23,22),'PIRELLI'),
+    'WallTeal':((24,151,184),(242,244,236),'AMERICAN EXPRESS'),
+    'WallNavy':((16,25,69),(239,233,215),'MSC'),
+    'WallPurple':((85,16,57),(245,237,226),'QATAR AIRWAYS'),
+    'WallBlack':((17,22,24),(240,239,231),'LAS VEGAS GP'),
+}
+
 
 FONT = Path(__file__).resolve().parents[1] / 'Attribution/Sources/lasvegas/art/DejaVuSans.ttf'
 
@@ -53,6 +74,13 @@ def hotel_facades(directory: Path) -> None:
         ('CosmoFacade', (42, 48, 56), (24, 51, 71), 'glass'),
         ('PlanetFacade', (71, 79, 87), (28, 47, 65), 'glass'),
         ('FlamingoFacade', (162, 143, 132), (36, 43, 52), 'modern'),
+        ('RetailFacade',(166,148,117),(45,69,73),'glass'),
+        ('BrickFacade',(120,71,48),(35,45,43),'plain'),
+        ('CityGlassFacade',(92,106,115),(29,65,79),'glass'),
+        ('SignatureFacade',(150,151,127),(45,95,94),'glass'),
+        ('ExpoFacade',(168,171,161),(47,70,75),'plain'),
+        ('HarrahsFacade',(177,150,132),(45,43,59),'classical'),
+        ('RoyaleFacade',(153,141,123),(38,48,54),'classical'),
     ]:
         image = Image.new('RGBA', (1024, 1024), (*wall, 0))
         draw = ImageDraw.Draw(image)
@@ -139,6 +167,8 @@ def textures(directory: Path) -> None:
         ('Planet', 'PLANET HOLLYWOOD', (34, 43, 59), (232, 219, 189)),
     ]:
         sign(directory / f'{name}.png', text, bg, fg, 256 if text.isdigit() else 1024, 256 if text.isdigit() else 128, transparent=name in HOTEL_NAMES)
+    for name,label in HOTEL_LABELS.items():
+        sign(directory/f'{name}.png',label,(45,42,35),(246,223,172),transparent=True)
     from PIL import Image, ImageDraw, ImageFont
 
     for name, background, accent, title in [
@@ -159,6 +189,17 @@ def textures(directory: Path) -> None:
                   fill=(*accent, 255), anchor='lm')
         draw.line((900, 20, 900, 108), fill=(*accent, 255), width=3)
         image.save(directory / (name + '.png'))
+    for name,(background,ink,title) in WALL_PANELS.items():
+        sign(directory/f'{name}.png',title,background,ink)
+    for name,palette in [('WynnDisplay',((255,104,18),(4,4,7))),('HarmonDisplay',((238,52,165),(26,11,46)))]:
+        pixels = bytearray()
+        for y in range(1024):
+            for x in range(512):
+                wave = .5+.5*math.sin(x/512*5+y/1024*11+2*math.sin(y/240))
+                ribbon = max(0.,min(1.,(wave-.38)*5)) if name == 'WynnDisplay' else wave**.4
+                light = .74 if x%3 == 0 or y%3 == 0 else 1.
+                pixels.extend((*[round((a*ribbon+b*(1-ribbon))*light) for a,b in zip(*palette)],255))
+        png(directory/(name+'.png'),512,1024,pixels)
     pixels = bytearray()
     for y in range(512):
         for x in range(512):
@@ -188,8 +229,19 @@ def textures(directory: Path) -> None:
             pixels.extend((30, 30, 30, 255 if noise < edge * .38 else 0))
     png(directory / 'Rubber.png', 64, 256, pixels)
 
-    source = Path(__file__).resolve().parents[1] / 'Attribution/Sources/lasvegas/art/sphere-display-v1.png'
-    (directory / 'Sphere.png').write_bytes(source.read_bytes())
+    pixels = bytearray()
+    for y in range(1024):
+        latitude = y/1024*math.pi
+        for x in range(2048):
+            longitude = x/2048*math.tau
+            wave = .5+.5*math.sin(4*longitude+7*math.cos(latitude)+math.sin(2*latitude))
+            ribbon = wave**.55
+            gold = max(0.,1-y/460)**.7
+            warm = (255,130+round(gold*84),35+round(gold*50))
+            dark = (34,9,19)
+            lattice = .76 if x%4 == 0 or y%4 == 0 else 1.
+            pixels.extend((*[round((a*ribbon+b*(1-ribbon))*lattice) for a,b in zip(warm,dark)],255))
+    png(directory/'Sphere.png',2048,1024,pixels)
 
 
 def lightfield(directory: Path) -> tuple[float, float, float, float]:
@@ -212,14 +264,14 @@ def lightfield(directory: Path) -> tuple[float, float, float, float]:
             dy = minimum_y + (row + .5) * height / size - y
             for col in range(col0, col1):
                 dx = minimum_x + (col + .5) * width / size - x
-                weight = (1200 ** 2 / (1200 ** 2 + dx * dx + dy * dy)) ** 1.5
+                weight = (850 ** 2 / (850 ** 2 + dx * dx + dy * dy)) ** 1.5
                 index = row * size + col
                 radiance[index] += weight
                 elevation[index] += weight * (z - 1120)
     pixels = bytearray()
     for index, value in enumerate(radiance):
         ground = elevation[index] / value if value > .0001 else 0
-        brightness = min(1.0, value * .65) ** 1.4
+        brightness = min(1.0, value * .65) ** 2.2
         pixels.extend((round(brightness * 255), round(max(0, min(1, (ground + 3200) / 6400)) * 255), 0, 255))
     png(directory / 'FloodlightField.png', size, size, pixels)
     return minimum_x, minimum_y, width, height

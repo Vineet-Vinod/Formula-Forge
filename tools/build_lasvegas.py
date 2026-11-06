@@ -6,13 +6,14 @@ import json
 import re
 
 import unreal
-from lasvegas_art import HOTEL_NAMES, lightfield
+from lasvegas_art import HOTEL_NAMES, WALL_PANELS, lightfield
 from lasvegas_geometry import DATA, ROOT, SCRATCH, generate
 
 ASSETS = '/Game/Generated/LasVegas'
 LIBRARY = unreal.EditorAssetLibrary
 EDIT = unreal.MaterialEditingLibrary
 TOOLS = unreal.AssetToolsHelpers.get_asset_tools()
+NIGHT_COPIES: dict[str, unreal.MaterialInterface] = {}
 
 
 def connect(source: unreal.MaterialExpression, output: str, target: unreal.MaterialExpression, input_name: str) -> None:
@@ -50,22 +51,22 @@ def texture_material(name: str) -> unreal.Material:
     roughness = EDIT.create_material_expression(material, unreal.MaterialExpressionConstant)
     roughness.r = .55 if 'Facade' in name else .82
     EDIT.connect_material_property(roughness, '', unreal.MaterialProperty.MP_ROUGHNESS)
-    if name in ('Sphere', 'LightHalo'):
+    if name in ('Sphere', 'LightHalo', 'WynnDisplay', 'HarmonDisplay'):
         material.set_editor_property('shading_model', unreal.MaterialShadingModel.MSM_UNLIT)
         EDIT.connect_material_property(sample, 'RGB', unreal.MaterialProperty.MP_EMISSIVE_COLOR)
     if 'Facade' in name or name == 'Garage':
         mask = EDIT.create_material_expression(material, unreal.MaterialExpressionMultiply)
         connect(sample, 'RGB', mask, 'A')
         ambient = EDIT.create_material_expression(material, unreal.MaterialExpressionConstant)
-        ambient.r = (.035 if name in ('CreamFacade', 'BlueFacade', 'BronzeFacade') else
-                     .08 if name in ('WynnFacade', 'VeerFacade') else
-                     .025 if name in ('CosmoFacade', 'PlanetFacade') else .09)
+        ambient.r = (.08 if name in ('CreamFacade', 'BlueFacade', 'BronzeFacade') else
+                     .10 if name in ('WynnFacade','VeerFacade') else
+                     .06 if name in ('CosmoFacade','PlanetFacade') else .12)
         illumination = EDIT.create_material_expression(material, unreal.MaterialExpressionAdd)
         connect(sample, 'A', illumination, 'A')
         connect(ambient, '', illumination, 'B')
         connect(illumination, '', mask, 'B')
         EDIT.connect_material_property(mask, '', unreal.MaterialProperty.MP_EMISSIVE_COLOR)
-    elif name not in ('Sphere', 'Fence', 'Rubber', 'LightHalo'):
+    elif name not in ('Sphere', 'Fence', 'Rubber', 'LightHalo','WynnDisplay','HarmonDisplay'):
         glow = EDIT.create_material_expression(material, unreal.MaterialExpressionMultiply)
         strength = EDIT.create_material_expression(material, unreal.MaterialExpressionConstant)
         strength.r = .22 if not name.startswith('Wall') else .025
@@ -123,9 +124,9 @@ def solid(name: str, color: tuple[float, float, float], roughness: float = .8,
     rgb.constant = unreal.LinearColor(*color)
     EDIT.connect_material_property(rgb, '', unreal.MaterialProperty.MP_BASE_COLOR)
     if emissive:
-        if name in ('Canopy', 'Steel'):
+        if name in ('Canopy', 'Steel','Leaves','Glass'):
             glow = EDIT.create_material_expression(material, unreal.MaterialExpressionConstant3Vector)
-            strength = .18 if name == 'Canopy' else .08
+            strength = {'Canopy':.18,'Steel':.08,'Leaves':.30,'Glass':.4}[name]
             glow.constant = unreal.LinearColor(*(channel * strength for channel in color))
             EDIT.connect_material_property(glow, '', unreal.MaterialProperty.MP_EMISSIVE_COLOR)
         else:
@@ -228,7 +229,7 @@ def field_nodes(material: unreal.Material, bounds: tuple[float, float, float, fl
     connect(sample, 'R', output, 'A')
     connect(clamp, '', output, 'B')
     floor = EDIT.create_material_expression(material, unreal.MaterialExpressionConstant)
-    floor.r = .06
+    floor.r = .35 if 'Facade' in material.get_name() else .12
     total = EDIT.create_material_expression(material, unreal.MaterialExpressionAdd)
     connect(output, '', total, 'A')
     connect(floor, '', total, 'B')
@@ -244,24 +245,35 @@ def shade(material: unreal.Material, bounds: tuple[float, float, float, float], 
     connect(source, output, multiply, 'A')
     connect(field_nodes(material, bounds, texture), '', multiply, 'B')
     EDIT.connect_material_property(multiply, '', unreal.MaterialProperty.MP_BASE_COLOR)
+    if any(word in material.get_name() for word in ('PresentationSurface','Pavement','TreeCanopy')):
+        strength = EDIT.create_material_expression(material,unreal.MaterialExpressionConstant)
+        strength.r = 1.2 if 'PresentationSurface' in material.get_name() else .07
+        bounce = EDIT.create_material_expression(material,unreal.MaterialExpressionMultiply)
+        connect(multiply,'',bounce,'A')
+        connect(strength,'',bounce,'B')
+        EDIT.connect_material_property(bounce,'',unreal.MaterialProperty.MP_EMISSIVE_COLOR)
     EDIT.recompile_material(material)
     LIBRARY.save_loaded_asset(material)
 
 
 def night_copy(name: str, source: unreal.MaterialInterface, bounds: tuple[float, float, float, float],
                texture: unreal.Texture) -> unreal.MaterialInterface:
-    path = ASSETS + '/Materials/Night_' + name
-    result = unreal.load_asset(path)
-    if result is None:
-        result = TOOLS.duplicate_asset('Night_' + name, ASSETS + '/Materials', source)
-        if isinstance(result, unreal.MaterialInstanceConstant):
-            parent = night_copy(source.parent.get_name(), source.parent, bounds, texture)
-            EDIT.set_material_instance_parent(result, parent)
-        elif isinstance(result, unreal.Material):
-            shade(result, bounds, texture)
-        else:
-            raise RuntimeError(f'Cannot copy material {source.get_path_name()}')
-        LIBRARY.save_loaded_asset(result)
+    path = ASSETS + '/Materials/Lit_' + name
+    if path in NIGHT_COPIES:
+        return NIGHT_COPIES[path]
+    # All referencing Vegas mesh slots are rebuilt below; accepted source assets stay read-only.
+    if LIBRARY.does_asset_exist(path) and not LIBRARY.delete_asset(path):
+        raise RuntimeError(f'Cannot refresh private material {path}')
+    result = TOOLS.duplicate_asset('Lit_' + name, ASSETS + '/Materials', source)
+    if isinstance(result, unreal.MaterialInstanceConstant):
+        parent = night_copy(source.parent.get_name(), source.parent, bounds, texture)
+        EDIT.set_material_instance_parent(result, parent)
+    elif isinstance(result, unreal.Material):
+        shade(result, bounds, texture)
+    else:
+        raise TypeError(f'Cannot copy material {source.get_path_name()}')
+    LIBRARY.save_loaded_asset(result)
+    NIGHT_COPIES[path] = result
     return result
 
 
@@ -278,22 +290,24 @@ def main() -> None:
         materials = {}
         for tile in manifest['tiles']:
             for name in tile['materials']:
-                asset = 'Night_' + name if name in ('Road', 'Runoff', 'Concrete', 'Crowd') else name
+                asset = 'Lit_' + name if name in ('Road', 'Runoff', 'Concrete', 'Crowd') else name
                 materials[name] = unreal.load_asset(ASSETS + '/Materials/' + asset)
                 if materials[name] is None:
                     raise RuntimeError(f'Missing material {asset}; run make lasvegas-assets first')
     else:
-        materials = {name: texture_material(name) for name in
+        materials = {name: texture_material(name) for name in dict.fromkeys(
                      ['WallDark', 'WallBlue', 'WallPink', 'WallGold', 'RaceSign', 'VegasSign', '50', '100', '150', 'CreamFacade',
                       'BlueFacade', 'BronzeFacade', 'Garage', 'Fence', 'Rubber', 'LightHalo', 'Sphere', 'Bellagio', 'Venetian',
                       'Palazzo', 'Wynn', 'Paris', 'Cosmopolitan', 'Planet', 'Linq', 'Horseshoe', 'Elara', 'Encore', 'TreasureIsland', 'Caesars', 'Flamingo',
                       'EastHarmon', 'WestHarmon', 'SphereZone', 'Sands', 'Strip', 'PalazzoFacade', 'VenetianFacade',
                       'BellagioFacade', 'ParisFacade', 'CaesarsFacade', 'TIFacade', 'WynnFacade', 'CosmoFacade',
-                      'PlanetFacade', 'FlamingoFacade', 'VeerFacade']}
+                      'PlanetFacade', 'FlamingoFacade', 'VeerFacade','RetailFacade','BrickFacade','CityGlassFacade',
+                      'SignatureFacade','ExpoFacade','HarrahsFacade','RoyaleFacade','WynnDisplay','HarmonDisplay',
+                      *WALL_PANELS,*sorted(HOTEL_NAMES)])}
         for name, color, roughness in [
-            ('Glass', (.055, .085, .105), .25), ('White', (.72, .73, .70), .82), ('Red', (.62, .025, .018), .8), ('Black', (.012, .015, .018), .8),
+            ('Glass', (.09, .10, .105), .25), ('White', (.72, .73, .70), .82), ('Red', (.62, .025, .018), .8), ('Black', (.012, .015, .018), .8),
             ('Steel', (.24, .28, .30), .48), ('Cream', (.54, .49, .39), .8), ('Roof', (.12, .14, .15), .8),
-            ('CityGround', (.17, .16, .135), .95), ('TowerSteel', (.27, .23, .15), .57),
+            ('Pavement',(.32,.31,.28),.85), ('CityGround', (.17, .16, .135), .95), ('TowerSteel', (.27, .23, .15), .57),
             ('Trunk', (.16, .105, .055), .9), ('Leaves', (.045, .105, .025), .9),
             ('Brick', (.34, .16, .08), .85), ('Copper', (.055, .22, .17), .7),
             ('Canopy', (.65, .66, .62), .8), ('IlluminatedCream', (.55, .41, .23), .7),
@@ -301,11 +315,21 @@ def main() -> None:
             ('PodiumStone', (.47, .39, .28), .85), ('WarmGlass', (.15, .12, .075), .3),
             ('BronzeTrim', (.38, .30, .18), .45), ('BalloonBlue', (.015, .055, .25), .55),
             ('BlueRunoff', (.02, .15, .70), .9),
-            ('PinkNeon', (1.1, .10, .46), .5), ('Orange', (.8, .17, .025), .85),
+            ('RedNeon',(1.,.035,.025),.5), ('PinkNeon', (1.1, .10, .46), .5), ('Orange', (.8, .17, .025), .85),
             ('WheelLight', (1.8, .6, 3.0), .5),
             ('Lamp', (12, 12, 11), .4),
         ]:
-            materials[name] = solid(name, color, roughness, emissive=name in ('Lamp', 'IlluminatedCream', 'TowerSteel', 'Canopy', 'Steel', 'WheelLight', 'PinkNeon', 'BronzeTrim', 'WarmGlass'), two_sided=name == 'Leaves')
+            materials[name] = solid(name, color, roughness, emissive=name in ('Lamp', 'IlluminatedCream', 'TowerSteel', 'Canopy', 'Steel', 'WheelLight', 'PinkNeon', 'BronzeTrim', 'WarmGlass','RedNeon','Leaves','Glass'), two_sided=name == 'Leaves')
+        foliage = TOOLS.create_asset('TreeCanopy',ASSETS+'/Materials',unreal.Material,unreal.MaterialFactoryNew()) if not LIBRARY.does_asset_exist(ASSETS+'/Materials/TreeCanopy') else unreal.load_asset(ASSETS+'/Materials/TreeCanopy')
+        EDIT.delete_all_material_expressions(foliage)
+        foliage.set_editor_property('blend_mode',unreal.BlendMode.BLEND_MASKED)
+        foliage.set_editor_property('two_sided',True)
+        leaf = EDIT.create_material_expression(foliage,unreal.MaterialExpressionTextureSample)
+        leaf.texture = unreal.load_asset('/Game/Generated/Interlagos/Textures/runtime_leaf_silhouette_color')
+        EDIT.connect_material_property(leaf,'RGB',unreal.MaterialProperty.MP_BASE_COLOR)
+        EDIT.connect_material_property(leaf,'A',unreal.MaterialProperty.MP_OPACITY_MASK)
+        EDIT.recompile_material(foliage)
+        materials['TreeCanopy'] = foliage
         night_sky()
         for name, path in {
             'Road': '/Game/Generated/Materials/rebuild_road_asphalt',
@@ -318,7 +342,7 @@ def main() -> None:
                 raise RuntimeError(f'Missing material {path}')
             materials[name] = night_copy(name, source, bounds, field)
         for name, material in materials.items():
-            if name not in ('Sphere', 'Lamp', 'WheelLight', 'LightHalo') and isinstance(material, unreal.Material) and not material.get_name().startswith('Night_'):
+            if name not in ('Sphere', 'Lamp', 'WheelLight', 'LightHalo','WynnDisplay','HarmonDisplay') and isinstance(material, unreal.Material) and not material.get_name().startswith('Lit_'):
                 shade(material, bounds, field)
     lines = []
     for index, record in enumerate(manifest['tiles']):
@@ -360,14 +384,17 @@ def main() -> None:
     levels.save_current_level()
     record = {
         'recipe': 'make lasvegas-assets', 'scope': ASSETS, 'source_manifest': 'scenery_sources.json',
+        'route_environment': 'route-environment.json',
+        'route_environment_sha256': hashlib.sha256((ROOT/'Attribution/Sources/lasvegas/route-environment.json').read_bytes()).hexdigest(),
+        'vegetation':manifest['vegetation'],
         'road_sha256': hashlib.sha256((DATA / 'drive_surface.bin').read_bytes()).hexdigest(),
         'terrain_sha256': hashlib.sha256((DATA / 'terrain.bin').read_bytes()).hexdigest(),
         'tiles': len(manifest['tiles']), 'triangles': sum(tile['triangles'] for tile in manifest['tiles']),
         'landmarks': manifest['landmarks'],
-        'artwork': 'Original geometry and typeset signs; original procedural hotel facades and built-in image_gen Sphere artwork with retained prompts. See landmark-architecture.json and art/sphere-display-v1.json; facade-art.json records the superseded generic artwork. Existing licensed asphalt, concrete and original spectator atlas reused through Las Vegas-only material copies.',
+        'artwork': 'Original geometry, typeset signs, procedural facades, LED ribbons and warm Sphere race artwork; the earlier image_gen blue variant remains unused source artwork. See landmark-architecture.json and route-environment.json. Existing licensed asphalt, concrete, original spectator and Interlagos tree atlases reused through Las Vegas-only materials; accepted assets are unchanged.',
         'night_lighting': {'fixture_count': len((DATA / 'night_lights.csv').read_text().splitlines()),
                            'field_resolution': 2048, 'height_fade_m': 20,
-                           'method': 'Static diffuse falloff field in Las Vegas surface materials, with directional shading, specular and vehicle shadows. Venue lighting is an approximation; not a path-traced or surveyed light installation.'},
+                           'method': '24 m fixture spacing; registered diffuse irradiance pools in private road/runoff/concrete materials, foliage fill, neutral directional shading, facade fill, specular and vehicle shadows. Venue lighting is an approximation, not a surveyed light installation.'},
         'estimates': 'Landmark-specific architecture, height overrides and references are retained in landmark-architecture.json. Other OSM buildings use tagged heights or 3.4 m per level, default 3 levels. Roofs, entrances, pit decks, temporary stands, palms and lighting furniture are original approximations, not a photogrammetric survey.',
     }
     (ROOT / 'Attribution/Sources/lasvegas/scenery.json').write_text(json.dumps(record, indent=2) + '\n')
