@@ -1,5 +1,5 @@
 {
-  "input_sha256": "2d385374ac7c537f7587e333dafa13275305ce984bb2a9f18293af43239abe89",
+  "input_sha256": "9d17281f1cd2d4fcaae45c0dd252a9721f307321160758565953af8b4d5a4810",
   "recipe": "tools/lasvegas_boundaries.py",
   "paving_triangles": 29992,
   "collision_segments": 15552,

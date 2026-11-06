@@ -2,10 +2,10 @@
   "recipe": "make lasvegas-assets",
   "scope": "/Game/Generated/LasVegas",
   "source_manifest": "scenery_sources.json",
-  "road_sha256": "f82010bdcd7cb7d6053f37a884dc55ba9cabc68e6a51156c3035152295c2c8b3",
+  "road_sha256": "b6a28f3573617fe0d7599881d3e2574cd9e58ad2055a7cc059614d46719f3acb",
   "terrain_sha256": "911af7e46b5d850ef6cf22075d5e28b5beb8eef74fbd6d27582b5559e5ee1e0c",
   "tiles": 153,
-  "triangles": 2543680,
+  "triangles": 2993350,
   "landmarks": [
     {
       "name": "Bellagio Self Parking Garage",
@@ -357,7 +357,7 @@
       "osm_id": 111339081,
       "x": 865.4341524658005,
       "y": 680.3938379761624,
-      "height_m": 25.0
+      "height_m": 24
     },
     {
       "name": "Venetian Expo",

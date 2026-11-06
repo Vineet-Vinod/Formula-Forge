@@ -11,6 +11,7 @@ import struct
 from pathlib import Path
 
 from lasvegas_dataclasses import (
+    CurbRun,
     EscapeRegion,
     LandmarkProfile,
     LeaningTower,
@@ -61,6 +62,10 @@ class Scenery:
         if len(self.road) != 12288:
             raise ValueError('Run make check to export the canonical Las Vegas samples')
         self.detail_stride = len(self.road) // 1536
+        trackside = json.loads((SOURCE/'trackside-layout.json').read_text())
+        self.curb_extensions = [CurbRun(**run) for run in trackside['curb_extensions']]
+        self.curb_profile = [(float(lane),float(z)) for lane,z in trackside['curb_profile_m']]
+        self.city_rings: list[list[tuple[float,float]]] = []
         self.lights: list[Point] = []
         self.boards: list[dict[str, float | int]] = []
         self.tiles: dict[str, MeshTile] = {}
@@ -93,8 +98,12 @@ class Scenery:
 
     @staticmethod
     def in_region(x: float, y: float, region: EscapeRegion) -> bool:
+        return Scenery.in_polygon(x,y,region.ring)
+
+    @staticmethod
+    def in_polygon(x: float,y: float,ring: list[tuple[float,float]]) -> bool:
         inside = False
-        for a,b in zip(region.ring,region.ring[1:]+region.ring[:1]):
+        for a,b in zip(ring,ring[1:]+ring[:1]):
             if (a[1] > y) != (b[1] > y) and x < a[0]+(y-a[1])*(b[0]-a[0])/(b[1]-a[1]):
                 inside = not inside
         return inside
@@ -279,6 +288,25 @@ class Scenery:
                         inner1=(x+.17*math.cos(p1),y+.17*math.sin(p1),upper1[2])
                         self.quad('Tile_Tyres','TyreSidewall',upper0,upper1,inner1,inner0)
 
+    def curb(self, sample: RoadStation, nxt: RoadStation, side: int) -> None:
+        span = (nxt.station-sample.station)%LENGTH
+        boundary = math.floor(sample.station)+1
+        cuts = [sample.station]
+        if boundary < sample.station+span:
+            cuts.append(float(boundary))
+        cuts.append(sample.station+span)
+        for begin,end in itertools.pairwise(cuts):
+            t0,t1 = (begin-sample.station)/span,(end-sample.station)/span
+            paint = 'Red' if int((begin+end)/2)%2 else 'White'
+            for (inner,low),(outer,high) in itertools.pairwise(self.curb_profile):
+                ai,bi = sample.point(side*(sample.half_width+inner),low),nxt.point(side*(nxt.half_width+inner),low)
+                ao,bo = sample.point(side*(sample.half_width+outer),high),nxt.point(side*(nxt.half_width+outer),high)
+                a,b = add(ai,mul(sub(bi,ai),t0)),add(ai,mul(sub(bi,ai),t1))
+                c,d = add(ao,mul(sub(bo,ao),t1)),add(ao,mul(sub(bo,ao),t0))
+                if cross(sub(b,a),sub(c,a))[2] < 0:
+                    a,b,c,d = d,c,b,a
+                self.quad('Tile_Road',paint,a,b,c,d)
+
     def track(self) -> None:
         raw = (DATA / 'drive_surface.bin').read_bytes()
         if raw[:8] != b'FFSURF1\0':
@@ -294,31 +322,54 @@ class Scenery:
             self.triangle('Tile_Road', material, a, b, c,
                           tuple((p[0] / 4, p[1] / 4) for p in (a, b, c)))
         barriers = list(csv.DictReader((SCRATCH / 'barriers.csv').open()))
+        profile = (SOURCE / 'barrier_heights.bin').read_bytes()
+        if profile[:8] != b'FFWALL1\0' or len(profile) != 12 + len(barriers)*8 or struct.unpack_from('<I',profile,8)[0] != len(barriers):
+            raise ValueError('Barrier endpoint heights do not match the exported walls')
+        wall_normals = [norm((float(w['by'])-float(w['ay']),float(w['ax'])-float(w['bx']),0)) for w in barriers]
+        ends = {(round(float(w['bx']),3),round(float(w['by']),3)):i for i,w in enumerate(barriers)}
+        miters: dict[tuple[float,float],Point] = {}
+        for i,w in enumerate(barriers):
+            key = (round(float(w['ax']),3),round(float(w['ay']),3))
+            previous_normal = wall_normals[ends[key]]
+            average = norm(add(previous_normal,wall_normals[i]))
+            projection = sum(a*b for a,b in zip(average,wall_normals[i]))
+            miters[key] = mul(average,min(4.,1/max(.001,projection)))
         wall_coordinates: dict[tuple[float, float], float] = {}
-        for barrier in barriers:
-            ax, ay, bx, by, bottom, top, radius = (float(value) for value in barrier.values())
-            a, b = (ax, ay, bottom), (bx, by, bottom)
+        for barrier,(za,zb) in zip(barriers,struct.iter_unpack('<2f',profile[12:]),strict=True):
+            ax, ay, bx, by, _bottom, _top, radius = (float(value) for value in barrier.values())
+            a, b = (ax, ay, za), (bx, by, zb)
+            start_key,end_key = (round(ax,3),round(ay,3)),(round(bx,3),round(by,3))
+            miter_a,miter_b = miters[start_key],miters[end_key]
+            wall_height = .95
             end_barrier = self.escape_end((ax+bx)/2,(ay+by)/2)
             if not end_barrier:
-                self.beam('Tile_Protection', 'Concrete', add(a, (0, 0, (top - bottom) / 2)),
-                      add(b, (0, 0, (top - bottom) / 2)), radius * 2, top - bottom)
+                side_a,side_b = mul(miter_a,radius),mul(miter_b,radius)
+                corners = [sub(a,side_a),add(a,side_a),add(b,side_b),sub(b,side_b)]
+                upper = [add(point,(0,0,wall_height)) for point in corners]
+                self.quad('Tile_Protection','Concrete',corners[3],corners[2],corners[1],corners[0])
+                self.quad('Tile_Protection','Concrete',upper[0],upper[1],upper[2],upper[3])
+                for i in range(4):
+                    j = (i+1)%4
+                    self.quad('Tile_Protection','Concrete',corners[i],corners[j],upper[j],upper[i])
             sample, _ = self.nearest((ax + bx) / 2, (ay + by) / 2)
             heading = sample.station
             panel = 'WallGold' if 660 < heading < 1450 else 'WallPink' if 3400 < heading < 4200 else ('WallBlue' if 2200 < heading < 3400 else 'WallDark')
-            inward = mul(norm((by-ay,ax-bx,0)),radius+.012)
-            panel_a, panel_b = add(a, inward), add(b, inward)
-            start_key, end_key = (round(ax, 3), round(ay, 3)), (round(bx, 3), round(by, 3))
+            if 3500 < heading < 3840:
+                lane = ((ax+bx)/2-sample.x)*sample.ty-((ay+by)/2-sample.y)*sample.tx
+                panel = 'WallBlue' if heading > 3700 or lane < 0 else 'WallDark'
+            inward_a,inward_b = mul(miter_a,radius+.012),mul(miter_b,radius+.012)
+            panel_a, panel_b = add(a,inward_a),add(b,inward_b)
             distance = wall_coordinates.get(start_key,0.0)
             span = math.dist(a,b)
             wall_coordinates[end_key] = distance+span
             phase = distance/8
             if not end_barrier:
                 self.banner(add(panel_a, (0, 0, .02)), add(panel_b, (0, 0, .02)), .88, panel, 'Tile_Protection', phase, span / 8)
-            self.banner(add(a, (0, 0, top - bottom)), add(b, (0, 0, top - bottom)), 2.55, 'Fence', 'Tile_Protection')
+            self.banner(add(a, (0, 0, wall_height)), add(b, (0, 0, wall_height)), 2.55, 'Fence', 'Tile_Protection')
             if int(sample.station / 8) != int((sample.station - LENGTH / len(self.road)) / 8):
-                self.beam('Tile_Protection', 'Steel', add(a, (0, 0, top - bottom)), add(a, (0, 0, 3.5)), .065)
-                self.beam('Tile_Protection', 'Steel', add(a, (0, 0, 3.5)), add(add(a, (0, 0, 4.05)), mul(inward, 2.8)), .065)
-            upper_a, upper_b = add(add(a, (0, 0, 4.05)), mul(inward, 2.8)), add(add(b, (0, 0, 4.05)), mul(inward, 2.8))
+                self.beam('Tile_Protection', 'Steel', add(a, (0, 0, wall_height)), add(a, (0, 0, 3.5)), .065)
+                self.beam('Tile_Protection', 'Steel', add(a, (0, 0, 3.5)), add(add(a, (0, 0, 4.05)), mul(inward_a, 2.8)), .065)
+            upper_a, upper_b = add(add(a, (0, 0, 4.05)), mul(inward_a, 2.8)), add(add(b, (0, 0, 4.05)), mul(inward_b, 2.8))
             self.quad('Tile_Protection', 'Fence', add(a, (0, 0, 3.5)), add(b, (0, 0, 3.5)), upper_b, upper_a, math.dist(a, b) / .5, 1.4)
             self.beam('Tile_Protection', 'Steel', add(a, (0, 0, 3.5)), add(b, (0, 0, 3.5)), .028)
         for index, sample in enumerate(self.road):
@@ -345,24 +396,10 @@ class Scenery:
             before = self.road[(index - 4 * self.detail_stride) % len(self.road)]
             after = self.road[(index + 4 * self.detail_stride) % len(self.road)]
             bend = before.tx * after.ty - before.ty * after.tx
-            if abs(bend) > .13:
-                sign = -1 if bend > 0 else 1
-                a = sample.point(sign * (sample.half_width + .02), .025)
-                b = nxt.point(sign * (nxt.half_width + .02), .025)
-                c = nxt.point(sign * (nxt.half_width + .78), .025)
-                d = sample.point(sign * (sample.half_width + .78), .025)
-                if sign > 0:
-                    a, b, c, d = d, c, b, a
-                span = (nxt.station - sample.station) % LENGTH
-                stripes = max(1, round(span))
-                for stripe in range(stripes):
-                    t0, t1 = stripe / stripes, (stripe + 1) / stripes
-                    paint = 'Red' if int(sample.station + span * (t0 + t1) / 2) % 2 else 'White'
-                    start_outer = add(a, mul(sub(b, a), t0))
-                    end_outer = add(a, mul(sub(b, a), t1))
-                    end_inner = add(d, mul(sub(c, d), t1))
-                    start_inner = add(d, mul(sub(c, d), t0))
-                    self.quad('Tile_Road', paint, start_outer, end_outer, end_inner, start_inner)
+            curb_sides = {-1 if bend > 0 else 1} if abs(bend) > .13 else set()
+            curb_sides.update(run.side for run in self.curb_extensions if run.start_m <= sample.station < run.end_m)
+            for curb_side in sorted(curb_sides):
+                self.curb(sample,nxt,curb_side)
             if 1580 < sample.station < 1950 and index % (4 * self.detail_stride) == 0:
                 for side in (-1, 1):
                     lane_a, lane_b = side * 2.5, side * 4.5
@@ -608,6 +645,23 @@ class Scenery:
         kind = 'Building_Hotel'
         cx, cy = sum(p[0] for p in ring) / len(ring), sum(p[1] for p in ring) / len(ring)
         edges = list(zip(ring, ring[1:] + ring[:1]))
+        if profile.style == 'parking':
+            for a,b in edges:
+                span = math.dist(a,b)
+                if span < .1:
+                    continue
+                direction = norm((b[0]-a[0],b[1]-a[1],0))
+                parking_normal = (direction[1],-direction[0],0.)
+                for parking_level in range(1,int(height-2),3):
+                    start = add((*a,z+parking_level),mul(parking_normal,.04))
+                    finish = add((*b,z+parking_level),mul(parking_normal,.04))
+                    self.banner(start,finish,2.2,'Black',kind)
+                    self.beam(kind,'Cream',add(start,(0,0,-.15)),add(finish,(0,0,-.15)),.3,.3)
+                bays = max(1,round(span/7))
+                for bay in range(bays+1):
+                    base = add((*a,z),add(mul(direction,span*bay/bays),mul(parking_normal,.15)))
+                    self.beam(kind,'Cream',base,add(base,(0,0,height)),.5)
+            return
         if profile.style in ('retail','crystalline'):
             for a,b in edges:
                 span = math.dist(a,b)
@@ -812,15 +866,6 @@ class Scenery:
             self.box('Tile_Marshal', 'Orange', add(base, (sample.tx * 2.8, sample.ty * 2.8, .6)), .8, .8, 1.2, heading)
             self.beam('Tile_Marshal', 'Steel', add(base, (0, 0, 2.4)), add(base, (0, 0, 4)), .08)
             self.box('Tile_Marshal', 'Black', add(base, (0, 0, 3.6)), .7, .15, .7, heading)
-        for station, label in ((1830, 'EastHarmon'), (3410, 'SphereZone'), (4080, 'Sands'), (5520, 'Strip'), (1200, 'WestHarmon')):
-            sample = min(self.road, key=lambda p: abs(p.station - station))
-            for side in (-1, 1):
-                lane = side * (self.outer_lane(sample,side) + .4)
-                base = sample.point(lane, 4.6)
-                direction = (sample.ty, -sample.tx, 0.)
-                panel = add(base, (-sample.tx * .15, -sample.ty * .15, 0.))
-                self.banner(sub(panel, mul(direction, 2.5)), add(panel, mul(direction, 2.5)), 1.1, label)
-                self.beam('Tile_Detail', 'Steel', sample.point(lane), add(base, (0, 0, 1.1)), .09)
 
     def city(self) -> None:
         payload = json.loads(gzip.decompress((SOURCE / 'skyline.osm.json.gz').read_bytes()))
@@ -843,6 +888,7 @@ class Scenery:
                 continue
             if any(self.nearest((a[0] + b[0]) / 2, (a[1] + b[1]) / 2)[1] < 18 for a, b in zip(ring, ring[1:] + ring[:1])):
                 continue
+            self.city_rings.append(ring)
             height = float(tags.get('height', str(float(tags.get('building:levels', '3')) * 3.4)).split()[0])
             material = 'BronzeFacade' if any(word in name for word in ('Wynn', 'Trump')) else 'CreamFacade'
             if any(word in name for word in ('Cosmopolitan', 'Horseshoe', 'Planet Hollywood', 'Hilton')):
@@ -864,13 +910,17 @@ class Scenery:
         for a, b, sign in [(1500, 1900, 1), (3350, 3500, 1), (3700, 3960, 1), (5500, 5750, -1)]:
             self.grandstand(a, b, sign)
         for index, sample in enumerate(self.road[::self.detail_stride]):
-            if index % 10 or not (sample.station < 700 or sample.station > 4650):
+            spacing = 6 if sample.station < 600 or sample.station > 5000 else 10
+            if index % spacing or not (sample.station < 700 or sample.station > 4650):
                 continue
             for sign in (-1, 1):
                 position = sample.point(sign * (sample.half_width + 11 + (index % 3) * 2))
                 if any(self.in_region(position[0], position[1], region) for region in self.escapes):
                     continue
-                self.palm((position[0], position[1], self.ground(position[0], position[1])), 8 + index % 5)
+                if any(self.in_polygon(position[0],position[1],ring) for ring in self.city_rings):
+                    continue
+                base = (position[0],position[1],self.ground(position[0],position[1]))
+                self.palm(base,8+index%5)
 
     def bridges(self) -> None:
         payload = json.loads(gzip.decompress((SOURCE / 'pedestrian_bridges.osm.json.gz').read_bytes()))

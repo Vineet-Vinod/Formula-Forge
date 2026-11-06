@@ -215,3 +215,45 @@ def test_escape_roads_are_open_paved_and_outside_white_line_limits() -> None:
     assert deck.is_valid
     assert abs(deck.area-record['paved_area_m2']) < 1
     assert barriers.hausdorff_distance(deck.boundary) < .01
+
+
+def test_barriers_follow_continuous_pavement_heights() -> None:
+    import csv
+
+    walls = [{key: float(value) for key,value in row.items()}
+             for row in csv.DictReader((ROOT/'build/lasvegas/barriers.csv').open())]
+    payload = (SOURCES/'barrier_heights.bin').read_bytes()
+    assert payload[:8] == b'FFWALL1\0'
+    assert struct.unpack_from('<I',payload,8)[0] == len(walls)
+    heights = list(struct.iter_unpack('<2f',payload[12:]))
+    assert len(heights) == len(walls)
+    starts = {(round(w['ax'],3),round(w['ay'],3)):i for i,w in enumerate(walls)}
+    for i,(wall,(za,zb)) in enumerate(zip(walls,heights,strict=True)):
+        nxt = starts[(round(wall['bx'],3),round(wall['by'],3))]
+        assert abs(zb-heights[nxt][0]) < .002, (i,nxt,zb,heights[nxt][0])
+        assert abs(wall['bottom']-min(za,zb)) < .001
+        assert wall['top'] >= max(za,zb)+.949
+        # A one-metre section must not jump between street and escape-deck heights.
+        assert abs(wall['bottom']-walls[nxt]['bottom']) < .15, i
+
+
+def test_saved_fence_panels_share_their_uprights_and_overhang_edges() -> None:
+    from collections import Counter
+
+    manifest = json.loads((ROOT/'build/lasvegas/manifest.json').read_text())
+    seams: Counter[tuple[tuple[float,...],tuple[float,...]]] = Counter()
+    for tile in manifest['tiles']:
+        if 'Fence' not in tile['materials']:
+            continue
+        material = tile['materials'].index('Fence')
+        payload = (ROOT/'build/lasvegas'/tile['file']).read_bytes()
+        for offset in range(12,len(payload),100):
+            if struct.unpack_from('<I',payload,offset)[0] != material:
+                continue
+            points = [struct.unpack_from('<3f',payload,offset+4+corner*32) for corner in range(3)]
+            for a,b in zip(points,points[1:]+points[:1]):
+                if abs(a[2]-b[2]) > 30:
+                    ends = sorted(tuple(round(v,1) for v in p) for p in (a,b))
+                    seams[(ends[0],ends[1])] += 1
+    assert seams
+    assert all(count == 2 for count in seams.values())

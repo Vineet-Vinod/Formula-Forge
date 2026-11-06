@@ -73,3 +73,21 @@ same Python environment for both commands. Packaged cockpit views and a full
 live lap are required for visual acceptance; native checks alone do not establish
 that result. Current evidence is in
 [the curve revision validation](lasvegas_curves_validation.json).
+
+The barrier follow-up bakes both endpoint heights into
+`Attribution/Sources/lasvegas/barrier_heights.bin`. Boundary interpolation uses a
+small positional tolerance when selecting the escape deck. This prevents an
+edge point from alternating between the street height and the higher escape
+plane. Visible walls and fences follow those endpoint heights, with shared
+mitered corners joining the concrete, sign faces and fence overhangs. Native
+collision encloses the full sloped wall rather than its lower endpoint alone.
+
+[Trackside placement](../Attribution/Sources/lasvegas/trackside-layout.json)
+records the video-based curb extensions and shallow beveled curb profile.
+Red/white transitions split at exact metre boundaries. The Sphere approach uses
+blue left-side and black right-side protection before the blue apron. The Strip
+has closer palm spacing, with placements excluded from mapped building
+footprints. The mapped Wynn employee parking building uses open decks and
+concrete piers. Oversized freestanding road-name/Sphere labels were removed;
+track-spanning race gantries remain. These changes preserve the road alignment
+and widths accepted in the smoothness review.

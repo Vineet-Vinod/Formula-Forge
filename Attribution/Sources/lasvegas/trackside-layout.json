@@ -1,0 +1,36 @@
+{
+  "reference": "User Vegas.mp4: frames 936/942/948/954 for Sphere curb and wall continuity, 116/120/121 for Strip planting, 117/118 for the outside curb on the Harmon braking approach. No reference pixels copied.",
+  "uncertainty": "Station extents and planting intervals are original visual estimates registered to the retained road. Road alignment and widths are preserved.",
+  "curb_extensions": [
+    {
+      "start_m": 3510,
+      "end_m": 3770,
+      "side": -1
+    },
+    {
+      "start_m": 550,
+      "end_m": 685,
+      "side": 1
+    }
+  ],
+  "side_convention": "-1 driver left, +1 driver right in the source east/north frame.",
+  "curb_profile_m": [
+    [
+      0.02,
+      0.012
+    ],
+    [
+      0.12,
+      0.025
+    ],
+    [
+      0.68,
+      0.025
+    ],
+    [
+      0.78,
+      0.012
+    ]
+  ],
+  "stripe_length_m": 1
+}

@@ -232,6 +232,13 @@
       "height_m": 10.2,
       "facade": "Glass",
       "crown_m": 0.5
+    },
+    "111339081": {
+      "name": "Wynn Employee Parking",
+      "style": "parking",
+      "height_m": 25,
+      "facade": "Cream",
+      "crown_m": 1
     }
   },
   "reconstruction_details": {
@@ -242,7 +249,8 @@
     "names": "Attached facade wordmarks and the actual Paris balloon only. The earlier roadside hotel name boards were removed.",
     "limits": "Original simplified architecture fitted to mapped footprints and tagged heights; roof details and facade observations are reconstructed, not scanned. Generic smaller city buildings remain simplified.",
     "Veer": "Mapped east/west tower footprints and retained 132 m OSM height, oppositely inclined 5 degrees with reconstructed north/south orientation. Staggered yellow fritted and clear glazing, close horizontal louvers and tall glazed lobbies replace the generic cream room-window extrusions. Primary MGM release establishes the incline; facade engineer photographs establish the glazing/louvers/lobbies. No sign board is added.",
-    "Crystals_Arte": "The tagged Crystals 30 m height is the roof peak, not a uniform hotel-height wall. A 12 m retail body with large warm shop glazing supports an original simplified set of interlocking metal/glazed roof shards, registered within the mapped mall footprint. Roof control XY is source metres before uniform scaling and Z is height above the building ground. Shard positions and slopes are visual estimates from the architects' exterior references, not measured roof planes. The adjacent Arte Museum frontage uses low modern retail glazing rather than room windows."
+    "Crystals_Arte": "The tagged Crystals 30 m height is the roof peak, not a uniform hotel-height wall. A 12 m retail body with large warm shop glazing supports an original simplified set of interlocking metal/glazed roof shards, registered within the mapped mall footprint. Roof control XY is source metres before uniform scaling and Z is height above the building ground. Shard positions and slopes are visual estimates from the architects' exterior references, not measured roof planes. The adjacent Arte Museum frontage uses low modern retail glazing rather than room windows.",
+    "Wynn_parking": "The mapped employee parking building keeps its tagged 25 m height, open horizontal parking decks, concrete floor bands and piers instead of a hotel-room window texture. Deck spacing is an original reconstruction."
   },
   "leaning_towers": {
     "52134834": {

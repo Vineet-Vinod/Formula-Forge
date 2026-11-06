@@ -2,7 +2,7 @@
   "date": "2026-11-06",
   "circuit": "Las Vegas Strip Circuit",
   "scope": "Las Vegas only, current track branch, no worktrees. Existing user changes remain outside the commit.",
-  "state": "Complete after Luna High review of the final packaged cockpit views, moving corner sequences and landmark source geometry.",
+  "state": "Complete after Luna High review of the barrier/curb/trackside follow-up, full live lap and final packaged views.",
   "references": {
     "map": "2025 FIA Event Notes Circuit Map V2, issued 2025-11-19",
     "map_url": "https://www.fia.com/system/files/decision-document/2025_las_vegas_grand_prix_-_event_notes_-_circuit_map_v2_pit_lane_drawing_emergency_map_exits_quarantine_zone_and_red_zones.pdf",
@@ -52,15 +52,17 @@
       "collision_segments": 15552,
       "extra_paving_triangles": 29992,
       "paved_area_m2": 101627.70546750515,
-      "boundary_input_sha256": "2d385374ac7c537f7587e333dafa13275305ce984bb2a9f18293af43239abe89"
+      "boundary_input_sha256": "9d17281f1cd2d4fcaae45c0dd252a9721f307321160758565953af8b4d5a4810",
+      "endpoint_heights": "Attribution/Sources/lasvegas/barrier_heights.bin",
+      "joins": "Shared mitered wall, panel and fence corners; visible endpoint-height lofts and native vertical envelopes."
     },
-    "drive_surface_sha256": "f82010bdcd7cb7d6053f37a884dc55ba9cabc68e6a51156c3035152295c2c8b3",
+    "drive_surface_sha256": "b6a28f3573617fe0d7599881d3e2574cd9e58ad2055a7cc059614d46719f3acb",
     "track_limits_sha256": "d8a7ff84708d3c7a1ba69e4bfefb5c30f6c01a229ac536a4825d9f6a59bfd8e0",
     "terrain_mesh_sha256": "1cdb9eecd71f685dde0977f1f7e5efc371845fe092cb06e5c7b4348d90223292"
   },
   "scenery": {
     "tiles": 153,
-    "triangles": 2543680,
+    "triangles": 2993350,
     "braking_boards": 18,
     "changes": [
       "Removed roadside hotel name boards; names attach to actual facades or the Paris balloon.",
@@ -71,31 +73,34 @@
       "Marshal posts, markers, lamps, stands and palms account for the real paved areas.",
       "Right-side barrier panel lettering corrected to face the road without mirrored UVs.",
       "Veer Towers East and West rebuilt with opposing 5 degree leans, staggered yellow/clear glazing, horizontal louvers and tall glazed lobbies.",
-      "Crystals roof peak separated from the low glazed shopfront body, with reconstructed faceted metal/glass roof shards. Adjacent Arte Museum frontage uses modern retail glazing."
+      "Crystals roof peak separated from the low glazed shopfront body, with reconstructed faceted metal/glass roof shards. Adjacent Arte Museum frontage uses modern retail glazing.",
+      "Reference-based curb extensions on the Sphere approach and outside Harmon braking approach, shallow beveled curb faces and metre-aligned red/white stripes.",
+      "Blue/black wall treatment on the Sphere approach, mapped Wynn open-deck parking facade, closer Strip palms excluded from building footprints.",
+      "Removed oversized freestanding street/Sphere label boards. Track-spanning race gantries remain."
     ],
     "limits": "Simplified original architecture in the existing game style. Smaller city filler remains simplified; this is not a complete photogrammetric city.",
-    "source_manifest_sha256": "2353d336916383db578e901d81173dd262e87f65b1569e3ab55a4710c666ff2f",
-    "render_manifest_sha256": "0917a08727d8bd62a6463e0d11fa7f0116a5024ba62e5b080273067e60193ce4"
+    "source_manifest_sha256": "f1e96cdc24edacb71d0297c75cf2244af575cddb7dd06f4a1720936fc6b62734",
+    "render_manifest_sha256": "d9162adee014c8e396c36e964e30e1c6099ffc99db402a93ef7add3b66b4fea5"
   },
   "checks": {
     "native": "make check passed all generated circuits, accepted circuit/contact/camera checks and a valid Vegas dynamic lap (160.256 s).",
-    "python": "9 focused geometry checks passed; mypy passed for four authoring modules; ruff passed.",
-    "saved_assets": "153 native meshes reopened in a fresh editor after the final roof-winding correction; triangle counts, source hashes and material bindings matched.",
-    "packaged_build": "passed, including the final material pass; no material shader compile errors",
+    "python": "11 focused tests passed, including barrier height continuity and shared rendered fence edges; mypy passed for four modules; ruff passed.",
+    "saved_assets": "153 native meshes reopened in a fresh editor after the final changes; triangle counts, source hashes and material bindings matched.",
+    "packaged_build": "passed after the final palm-placement change; no material shader compile errors",
     "lasvegas_flow": {
       "passed": true,
       "process_id": 2,
       "circuits": 1,
       "real_finite_lap": true,
       "restart": true,
-      "seconds": 211.116
+      "seconds": 212.161
     }
   },
   "reviewer": {
     "model": "gpt-6-luna",
     "reasoning_effort": "high",
     "status": "approved",
-    "coverage": "Packaged T5, Harmon, Sphere and Sands cockpit views; full-lap moving T5/T14/Sphere sequences; final 500/665 m stills and the final moving Harmon retail approach; source geometry and primary architectural references.",
+    "coverage": "Full-lap moving T5/Sphere/Harmon/Strip views, final packaged 3309/3660/3740/665 corner captures, final Strip palms at 5600 and a supplementary static T5 escape view. Source geometry and supplied video reviewed.",
     "closed": [
       "Angular road and painted-edge direction changes",
       "Generic continuous runoff blobs and the unsupported inside Sphere blue wedge",
@@ -118,7 +123,7 @@
     "frame_cap": 0,
     "platform": "Linux Vulkan SM5, Intel Iris Xe, Unreal 5.8.3",
     "window": "CSV frames 500-1399 of 1400, all 900 sampled frames with active live simulation. Serial representative long-straight runs; not a full-lap uncapped profile.",
-    "note": "Fresh matched accepted-track measurements. Vegas rerun after the final architecture materials. Accepted circuit assets and settings unchanged.",
+    "note": "Vegas rerun after the final barrier/curb/planting changes. Accepted Monza/Interlagos runs retain equal settings and unchanged assets; they were measured earlier in this session.",
     "results": [
       {
         "circuit": "lasvegas",
@@ -126,24 +131,24 @@
         "samples": 900,
         "active_simulation_frames": 900,
         "FrameTime": {
-          "median_ms": 25.29375,
-          "p95_ms": 29.2194,
-          "p99_ms": 33.3087
+          "median_ms": 28.33615,
+          "p95_ms": 32.4314,
+          "p99_ms": 35.0525
         },
         "GameThreadTime": {
-          "median_ms": 2.7634999999999996,
-          "p95_ms": 3.27,
-          "p99_ms": 3.723
+          "median_ms": 2.824,
+          "p95_ms": 3.239,
+          "p99_ms": 3.708
         },
         "RenderThreadTime": {
-          "median_ms": 4.6375,
-          "p95_ms": 5.47,
-          "p99_ms": 5.898
+          "median_ms": 4.671,
+          "p95_ms": 5.445,
+          "p99_ms": 6.003
         },
         "GPUTime": {
-          "median_ms": 21.5685,
-          "p95_ms": 25.693,
-          "p99_ms": 28.488
+          "median_ms": 23.019,
+          "p95_ms": 28.432,
+          "p99_ms": 30.651
         }
       },
       {
@@ -202,22 +207,61 @@
   },
   "preserved": "Accepted circuit assets, vehicle handling, speed, shifting and camera are unchanged. Vegas-only ground lookup now follows the escape-road contact mesh.",
   "live_lap": {
-    "recording": "build/unreal/recordings/20261106-082803-01A1AFF8",
-    "frames": 5060,
+    "recording": "build/unreal/recordings/20261106-094211-01A1B03C",
+    "frames": 4995,
     "last_lap_seconds": 160.2564901981158,
     "valid": true,
     "barrier_contact_frames": 0,
     "offtrack_frames": 0,
     "airborne_frames": 0,
     "maximum_visual_penetration_m": 0,
-    "maximum_speed_kph": 209.76025677849265,
+    "maximum_speed_kph": 209.75593979779413,
     "camera_fov_degrees": [
       90
     ],
     "method": "Existing Vegas audit controller drives the real native simulation at 0.60 pace. Finite lap, keyboard input, pause/resume, restart, results and menu return run in one Unreal process.",
-    "subsequent_change": "Only Veer, Crystals and the Arte Museum render models/materials changed after this lap. Road, contact, barriers, vehicle and camera are identical. A separate final moving Harmon approach checks these buildings."
+    "subsequent_change": "Only foliage geometry/placement changed after this lap. Barrier/contact/curb data, road geometry, vehicle and camera are identical. Final Strip still and uncapped performance run cover the final foliage."
   },
-  "final_landmark_motion": {
+  "memory": {
+    "window": "Final serial guarded barrier/curb validation jobs from 2026-11-06 09:00 UTC onward",
+    "peak_sampled_machine_used_bytes": 8846733312,
+    "job_memory_cap_bytes": 4000000000,
+    "machine_stop_threshold_bytes": 10000000000,
+    "parallel_heavy_jobs": 1
+  },
+  "barrier_followup": {
+    "date": "2026-11-06",
+    "root_causes": [
+      "Floating-point boundary classification alternated between street and escape-road heights.",
+      "Flat per-segment wall prisms inherited those height jumps.",
+      "Fence overhang and sign faces used independently offset segment ends, leaving gaps at sharp junctions."
+    ],
+    "before": {
+      "adjacent_wall_height_jumps_over_0_1_m": 124,
+      "maximum_adjacent_bottom_height_jump_m": 0.7293
+    },
+    "after": {
+      "adjacent_wall_height_jumps_over_0_1_m": 0,
+      "maximum_adjacent_bottom_height_jump_m": 0.08404,
+      "method": "Tolerance-aware deck selection, baked endpoint heights, sloped wall/fence lofts and shared mitered junctions. Native wall bottom/top encloses both endpoint heights."
+    },
+    "checks": "11 focused tests passed, including barrier endpoint continuity/native vertical coverage and shared fence edges in the serialized render mesh. Native checks and full live session flow passed.",
+    "reference": "Attribution/Sources/lasvegas/trackside-layout.json and night-reference.json",
+    "preserved": "Road centreline, widths, handling, speed, shifting and camera.",
+    "reviewer": {
+      "model": "gpt-6-luna",
+      "reasoning_effort": "high",
+      "status": "approved",
+      "finding": "No visible barrier/fence height steps, detached panels or corner gaps in the reviewed moving/cockpit views. Curb placement and final Strip palms cleared."
+    },
+    "supplemental_escape_view": {
+      "recording": "build/unreal/recordings/20261106-095032-01A1B044",
+      "image": "build/reviews/lasvegas/barriers/escape-view.jpg",
+      "method": "Explicitly presentation-only fixed replay pose inside the escape road. Visual evidence only; physics and session evidence come from the separate live full lap."
+    },
+    "planting_note": "An intermediate simple canopy-tree model was removed before the final package; the final scene uses the existing detailed palm geometry."
+  },
+  "prior_landmark_motion": {
     "recording": "build/unreal/recordings/20261106-085309-01A1B00F",
     "duration_s": 18,
     "frames": 539,
@@ -230,12 +274,5 @@
       "build/reviews/lasvegas/curves/final-665.png",
       "build/reviews/lasvegas/curves/final-motion-retail.jpg"
     ]
-  },
-  "memory": {
-    "window": "Final serial guarded jobs from 2026-11-06 08:00 UTC onward",
-    "peak_sampled_machine_used_bytes": 7385227264,
-    "job_memory_cap_bytes": 4000000000,
-    "machine_stop_threshold_bytes": 10000000000,
-    "parallel_heavy_jobs": 1
   }
 }

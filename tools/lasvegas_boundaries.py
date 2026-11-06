@@ -27,6 +27,7 @@ def main() -> None:
         record_path.exists()
         and INCLUDE.exists()
         and (SOURCE / "terrain_mesh.bin").exists()
+        and (SOURCE / "barrier_heights.bin").exists()
         and json.loads(record_path.read_text()).get("input_sha256") == digest
     ):
         return
@@ -112,7 +113,8 @@ def main() -> None:
 
     def floor(x: float, y: float) -> float:
         for region, polygon in zip(regions, region_polygons, strict=True):
-            if polygon.covers(QueryPoint(x, y)):
+            # Interpolated edge points can fall a few ulps outside their polygon.
+            if polygon.distance(QueryPoint(x, y)) <= 0.00001:
                 sample, distance = scenery.nearest(x, y)
                 # Keep the mouth flush with the road and transition to the entry deck.
                 t = max(0.0, min(1.0, (distance - sample.half_width) / 10))
@@ -132,6 +134,7 @@ def main() -> None:
         return z
 
     walls = []
+    wall_heights = bytearray()
     for ring in [paved.exterior, *paved.interiors]:
         points = list(ring.coords)
         for a, b in itertools.pairwise(points):
@@ -142,7 +145,9 @@ def main() -> None:
                     a[0] + (b[0] - a[0]) * (i + 1) / count,
                     a[1] + (b[1] - a[1]) * (i + 1) / count,
                 )
-                z = min(floor(*p), floor(*q))
+                za, zb = floor(*p), floor(*q)
+                z = min(za, zb)
+                wall_heights.extend(struct.pack("<2f", za, zb))
                 walls.append(
                     (
                         p[0] * 17,
@@ -150,7 +155,7 @@ def main() -> None:
                         q[0] * 17,
                         -q[1] * 17,
                         z * 17,
-                        (z + 0.95) * 17,
+                        (max(za, zb) + 0.95) * 17,
                         0.15 * 17,
                     )
                 )
@@ -182,6 +187,9 @@ def main() -> None:
     payload = "\n".join(lines) + "\n"
     if not INCLUDE.exists() or INCLUDE.read_text() != payload:
         INCLUDE.write_text(payload)
+    (SOURCE / "barrier_heights.bin").write_bytes(
+        b"FFWALL1\0" + struct.pack("<I", len(walls)) + wall_heights
+    )
     (SCRATCH / "escape_regions.json").write_text(json.dumps(regions, indent=2) + "\n")
     ground = bytearray()
     grid = scenery.terrain

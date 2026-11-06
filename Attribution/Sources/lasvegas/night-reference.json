@@ -20,5 +20,27 @@
     "Venetian campanile has a brick shaft, open illuminated belfry and pyramidal copper roof."
   ],
   "authored_estimates": "Reference is visual, not a metric survey. Shoulder widths and braking anchor distances are authored estimates registered to the native road stations. 150/100/50 boards are standard distance labels; none is legible enough in the sampled footage to claim an exact measured placement.",
-  "original_art": "Trackside signs typeset using retained DejaVu Sans, see art/DejaVu-LICENSE.txt. Window light patterns, architectural meshes and signs are original; Sphere artwork provenance retained separately."
+  "original_art": "Trackside signs typeset using retained DejaVu Sans, see art/DejaVu-LICENSE.txt. Window light patterns, architectural meshes and signs are original; Sphere artwork provenance retained separately.",
+  "trackside_followup": {
+    "review_date": "2026-11-06",
+    "frames_seconds": [
+      116,
+      117,
+      118,
+      120,
+      121,
+      936,
+      942,
+      948,
+      954
+    ],
+    "observations": [
+      "Continuous lower protection and fence above it, including around corner junctions.",
+      "Red/white curb continuing beside the left Sphere approach; blue wall on the left and black wall on the right before the broad outside blue apron.",
+      "An outside/right braking-approach curb before the Harmon left turn.",
+      "Palm rows and developed retail/parking frontages behind the street barriers."
+    ],
+    "recipe": "trackside-layout.json and tools/lasvegas_geometry.py",
+    "limits": "The footage changes views and sessions. Video timestamps are not treated as lap time or metric survey positions. Curb extents, planting intervals and parking-deck details are reconstructed estimates."
+  }
 }

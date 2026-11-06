@@ -63,6 +63,13 @@ class RoofShard:
 
 
 @dataclass(frozen=True)
+class CurbRun:
+    start_m: float
+    end_m: float
+    side: int
+
+
+@dataclass(frozen=True)
 class EscapeRegion:
     name: str
     turn: int
