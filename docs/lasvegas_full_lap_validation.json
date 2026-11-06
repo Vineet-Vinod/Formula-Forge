@@ -2,7 +2,7 @@
   "date": "2026-11-06",
   "circuit": "Las Vegas Strip Circuit",
   "scope": "Whole-lap Las Vegas scenery and night lighting; track branch, no worktree. Road alignment, widths, contact, handling and camera preserved.",
-  "state": "Pending final packaged full-lap review",
+  "state": "Pending final tower/retail packaged full-lap review",
   "reference": {
     "file": "User-supplied Vegas.mp4",
     "local_location": "Saved/Refs/Vegas.mp4 (reference only, ignored)",
@@ -17,23 +17,37 @@
       ]
     ],
     "registration": "Corners, landmarks and map stations; playback includes time changes/cuts, so elapsed video time is not used as lap distance.",
-    "limits": "Mapped footprints with original architectural reconstruction. Vegetation, venue dimensions and luminance are visual estimates. No reference-video pixels or game meshes ship."
+    "limits": "Mapped footprints with original architectural reconstruction. Vegetation, venue dimensions and luminance are visual estimates. No reference-video pixels or game meshes ship.",
+    "architecture_sources": "Attribution/Sources/lasvegas/landmark-architecture.json records operator/architect links for the original geometric reconstruction."
   },
   "root_causes": [
     "Planting was restricted to stations below700m or above4650m; the opening sequence, Koval, Sphere and Sands had none.",
     "Fixed18m building-midpoint culling removed the entire Wynn retail/Plaza footprint despite adequate actual road clearance.",
     "Ordinary low-rise buildings used repeated hotel window grids and lacked street-level glazing, balconies, canopies and venue structures.",
-    "48m fixture spacing and dark material attenuation produced dull surfaces; the first24m fixture trial clipped the light field and made the road uniformly pale."
+    "48m fixture spacing and dark material attenuation produced dull surfaces; the first24m fixture trial clipped the light field and made the road uniformly pale.",
+    "Flamingo and Cosmopolitan compound outlines were extruded to tower height, filling whole properties with unsupported tall walls.",
+    "An eighteen-row Strip grandstand extended through the mapped Harrahs facade and concealed its street entrance.",
+    "Sponsor UV runs continued across material boundaries and cut through words.",
+    "The hospitality gallery used opaque window bands, hiding interior depth.",
+    "Retail podium windows stretched from ground to full building height, producing enormous blank panes instead of separate shop floors.",
+    "Grand Chateau reused Palazzo room windows; Signature used a generic green window grid and flat crown.",
+    "The Harmon Corner LED covered the three-storey retail facade instead of being mounted above it."
   ],
   "changes": {
     "environment_recipe": "Attribution/Sources/lasvegas/route-environment.json",
     "architecture_recipe": "Attribution/Sources/lasvegas/landmark-architecture.json",
     "coverage": "All6201m in nine contiguous sectors, not a selection of landmark views.",
-    "buildings": "Retained Wynn Plaza footprint, stone shop frontage and curved digital monument; Venetian Expo, Ellis Island motel/casino, Harrahs, Casino Royale, Platinum, Westin, Grand Chateau, Signature, Polo Towers and small Strip retail profiles. Attached wordmarks on the buildings.",
-    "hospitality": "Left-side glazed balcony gallery2210\u20132830m and seating2850\u20133230m; opening grandstand2070\u20132210m; roofed paddock stand and garages1660\u20131980m.",
+    "buildings": "Retained Wynn Plaza footprint and curved digital monument; mapped Venetian Doge frontage with paired pointed colonnades and diamond stonework; Forum Shops arched entrance, colossal columns and dome; Paris mansard shopfronts. Individual low-rise Koval, Sands and Strip profiles, including Ellis Island, Venetian Expo, Harrahs, LINQ, Casino Royale, Platinum, Westin, Grand Chateau, Signature and Polo Towers. Attached lettering belongs to the buildings.",
+    "hospitality": "Left-side recessed translucent glazing, room partitions, warm ceilings, balcony rails and trussed cantilever roof2210\u20132830m; seating2850\u20133230m; opening grandstand2070\u20132210m; roofed paddock stand and garages1660\u20131980m. Strip stand5500\u20135750m reduced to9rows/about11.1m depth to fit the forecourt.",
     "vegetation": "Solid trunks/branches and spatial leaf clusters using the existing original Interlagos atlas. Fuller25-frond procedural palms; building, venue and paved-area exclusions.",
-    "lighting": "24m fixture spacing;8.5m field falloff radius,0.07 diffuse bounce,3.8 neutral flood intensity,0.24 skylight fill. Private Vegas material copies refresh on rebuild.",
-    "displays": "Original warm red/orange/gold Sphere LED ribbons, orange/black Wynn Plaza display and magenta Harmon Corner facade display."
+    "lighting": "512 fixture heads at24m spacing; registered8.5m diffuse-pool radius,3.4 field contrast exponent,1.8 private surface irradiance gain; DefaultLit road/runoff/concrete retain texture, specular and shadows. Asphalt roughness0.65/specular0.5, neutral directional2.0 and skylight0.24. Other private facade/foliage/crowd materials receive bounded fill. Original night sky retained; private material graphs refresh on rebuild.",
+    "displays": "Original warm red/orange/gold Sphere LED ribbons, orange/black Wynn Plaza display and magenta Harmon Corner facade display.",
+    "compound_volumes": "Flamingo whole-site podium14m, independent mapped7/9-floor parts23.8/30.6m. Cosmopolitan compound38m podium with separate mapped184m Chelsea/Boulevard towers retained. Neighboring83m buildings are not reattributed to Flamingo.",
+    "sponsor_panels": "Connected same-material wall runs fit complete repeats near8m; words remain whole at material transitions.",
+    "retail": "Separate4.5m floors, projecting slabs, recessed warm/cool/fashion shop interiors, mullions and lit ground shops replace full-height flat window bays. Interior decoration is original and estimated.",
+    "secondary_towers": "Grand Chateau: mapped three-wing footprint, pink stone, narrow paired windows, projecting ribs and raised crowns. Signature: bronze glazing, pale piers, end balconies, arched roofs and upper light strips.119+9m and137+8m body/crown heights preserve the respective128/145m mapped maxima.",
+    "harmon_corner": "Original93.2688\u00d718.288m upper LED follows the smoothed mapped public front boundary at1.2m exterior setback, above a14m retail body and two shop balcony levels. Builder rejects screen endpoints/midpoints inside the footprint. Display size from media operator; mounting/setback/lower details estimated. Widescreen artwork is original typography and geometric ribbons.",
+    "paddock_roof": "Dark underside, paired truss chords, diagonals and warm strips replace a broad white canopy."
   },
   "route_review": [
     {
@@ -94,7 +108,7 @@
         115,
         117
       ],
-      "features": "Palms, layered casino podiums/arcades, hotel rooflines, attached property lettering, pedestrian crossings"
+      "features": "Venetian paired colonnades and stonework, Forum Shops domed portal, Harrahs/LINQ/Casino Royale entrance canopies, palms, layered casino podiums, attached property lettering and pedestrian crossings"
     },
     {
       "sector": "strip-south",
@@ -106,7 +120,7 @@
         116,
         117.25
       ],
-      "features": "South Strip frontage, neon, retail display and planting"
+      "features": "Paris mansard shopfront roofs, separate Cosmopolitan podium/towers and vertical media panels, neon and planting"
     },
     {
       "sector": "harmon-chicane",
@@ -146,10 +160,30 @@
     }
   ],
   "geometry_regressions": "docs/lasvegas_curves_validation.json retains the road, curb, runoff and barrier measurements. This pass does not change those geometry/contact inputs.",
-  "verification": {},
+  "verification": {
+    "focused_checks": {
+      "pytest": 14,
+      "mypy": "Passed for four typed source modules",
+      "ruff": "Passed"
+    },
+    "saved_assets": "154 native meshes reopened in a fresh editor; triangles, geometry hashes and material bindings match. Road/runoff/concrete retain DefaultLit shading and irradiance input.",
+    "packaged_build": "Previous architecture pass passed; updated tower/retail pass in progress.",
+    "unchanged_contact_inputs": {
+      "drive_surface.bin": "b6a28f3573617fe0d7599881d3e2574cd9e58ad2055a7cc059614d46719f3acb",
+      "track_limits.bin": "d8a7ff84708d3c7a1ba69e4bfefb5c30f6c01a229ac536a4825d9f6a59bfd8e0",
+      "terrain.bin": "911af7e46b5d850ef6cf22075d5e28b5beb8eef74fbd6d27582b5559e5ee1e0c"
+    }
+  },
   "reviewer": {
     "model": "gpt-6-luna",
     "reasoning_effort": "high",
     "status": "Pending final all-route packaged review"
+  },
+  "scene": {
+    "native_meshes": 154,
+    "triangles": 4114699,
+    "trees": 650,
+    "fixture_heads": 512,
+    "route_recipe_sha256": "862801424c12b5d96f965a7246a96bef61cf2e287aeeb8abd8b84bbcb30b56f5"
   }
 }

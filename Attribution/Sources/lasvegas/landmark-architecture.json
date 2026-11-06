@@ -60,10 +60,10 @@
     },
     "33974140": {
       "name": "Paris",
-      "style": "arcade",
+      "style": "mansard",
       "height_m": 19,
       "facade": "ParisFacade",
-      "crown_m": 4
+      "crown_m": 5
     },
     "205501268": {
       "name": "Wynn",
@@ -88,10 +88,10 @@
     },
     "134795273": {
       "name": "Cosmopolitan",
-      "style": "balconies",
-      "height_m": 184,
-      "facade": "CosmoFacade",
-      "crown_m": 3
+      "style": "retail",
+      "height_m": 38,
+      "facade": "Glass",
+      "crown_m": 1
     },
     "472669744": {
       "name": "Cosmopolitan",
@@ -130,10 +130,10 @@
     },
     "34068416": {
       "name": "Caesars",
-      "style": "arcade",
-      "height_m": 14,
-      "facade": "CaesarsFacade",
-      "crown_m": 4
+      "style": "forum",
+      "height_m": 25,
+      "facade": "Terracotta",
+      "crown_m": 0
     },
     "27910891": {
       "name": "Encore",
@@ -286,7 +286,7 @@
       "name": "GrandChateau",
       "style": "mansard",
       "height_m": 128,
-      "facade": "PalazzoFacade",
+      "facade": "GrandChateauFacade",
       "crown_m": 9
     },
     "95223231": {
@@ -294,14 +294,14 @@
       "style": "modern",
       "height_m": 145,
       "facade": "SignatureFacade",
-      "crown_m": 4
+      "crown_m": 8
     },
     "95223232": {
       "name": "Signature",
       "style": "modern",
       "height_m": 145,
       "facade": "SignatureFacade",
-      "crown_m": 4
+      "crown_m": 8
     },
     "27897911": {
       "name": "PoloTowers",
@@ -329,7 +329,7 @@
       "style": "display",
       "height_m": 14,
       "facade": "CityGlassFacade",
-      "crown_m": 1
+      "crown_m": 0
     },
     "839503453": {
       "name": "OleRed",
@@ -433,7 +433,7 @@
       "name": "CarriageHouse",
       "style": "balconies",
       "height_m": 27.2,
-      "facade": "CreamFacade",
+      "facade": "CityGlassFacade",
       "crown_m": 1
     },
     "34000287": {
@@ -449,6 +449,13 @@
       "height_m": 6.8,
       "facade": "CaesarsFacade",
       "crown_m": 0.5
+    },
+    "33996627": {
+      "name": "Venetian",
+      "style": "venetian_palace",
+      "height_m": 25,
+      "facade": "DogeFacade",
+      "crown_m": 0
     }
   },
   "reconstruction_details": {
@@ -462,7 +469,12 @@
     "Crystals_Arte": "The tagged Crystals 30 m height is the roof peak, not a uniform hotel-height wall. A 12 m retail body with large warm shop glazing supports an original simplified set of interlocking metal/glazed roof shards, registered within the mapped mall footprint. Roof control XY is source metres before uniform scaling and Z is height above the building ground. Shard positions and slopes are visual estimates from the architects' exterior references, not measured roof planes. The adjacent Arte Museum frontage uses low modern retail glazing rather than room windows.",
     "Wynn_parking": "The mapped employee parking building keeps its tagged 25 m height, open horizontal parking decks, concrete floor bands and piers instead of a hotel-room window texture. Deck spacing is an original reconstruction.",
     "whole_route": "Wynn Plaza retail footprint 111322055 restored after removing the unrelated fixed 18 m centreline exclusion. Road-width-based clearance preserves this mapped frontage. Wynn digital monument is separately reconstructed from the supplied onboard. Koval lodging, casino and retail properties; Venetian Expo; Grand Chateau/Signature/Polo Towers; and ordinary Strip retail receive distinct architectural treatments. Retained tagged heights control Grand Chateau/Signature; other podium heights and crowns are visual estimates.",
-    "compound_volumes": "Flamingo116761428 is a resort outline with no tagged height, reconstructed as a14m casino podium rather than the former unsupported94m whole-site extrusion. Independent1167610357floors(23.8m) and1167612809floors(30.6m) remain visible. Neighboring83m towers are not reattributed to Flamingo. Harrahs and LINQ retain separate tagged tower/podium footprints; Horseshoe retains its mapped80m component and5-floor podium part. Heights/facade details without tags remain bounded visual estimates."
+    "compound_volumes": "Flamingo116761428 is a resort outline with no tagged height, reconstructed as a14m casino podium rather than the former unsupported94m whole-site extrusion. Independent1167610357floors(23.8m) and1167612809floors(30.6m) remain visible. Neighboring83m towers are not reattributed to Flamingo. Harrahs and LINQ retain separate tagged tower/podium footprints; Horseshoe retains its mapped80m component and5-floor podium part. Heights/facade details without tags remain bounded visual estimates.",
+    "cosmopolitan_site": "134795273 is the compound outline whose184m tag describes the resort maximum. Chelsea27897905 and Boulevard472669744 are separate mapped184m towers. The compound is a38m glazed casino/retail podium estimated from the video, with media columns on its street face; the former whole-site184m extrusion incorrectly filled the gap between the towers.",
+    "street_architecture": "Venetian33996627 uses paired pointed colonnades and diamond stonework; Paris33974140 gets a mansard shopfront roof. Forum Shops34068416 has an arched glazed entrance, colossal columns and36.6m domed roof. Dome overall height follows KGA project description (120ft); other dimensions and placement within the mapped footprint are estimates from the onboard and operator/architect views.",
+    "Harmon_Corner": "Three-storey14m retail body with recessed shop bays and two balcony decks. Original upper93.2688m x18.288m LED face begins15m above ground and follows the smoothed mapped front boundary at1.2m exterior setback. Screen dimensions follow Branded Cities; mounting height, curved registration and lower store geometry estimated from its exterior image. Original geometric/typographic night artwork; no ad pixels copied.",
+    "Grand_Chateau": "Retained mapped three-wing footprint;119m wall and9m raised crown sum to128m tagged maximum. Pink stone piers, paired narrow windows and projecting central ribs/crown follow operator exterior photo, replacing Palazzo room-grid material. Bay/rib dimensions remain estimates.",
+    "Signature": "Two retained mapped Signature towers use137m walls plus8m arched crowns, preserving145m tagged maximum. Bronze glazing, pale vertical piers, projecting end balconies and long upper light strips follow MGM/Marriott operator exterior photo, replacing the generic green hotel grid. No operator pixels copied."
   },
   "leaning_towers": {
     "52134834": {
@@ -636,6 +648,28 @@
           21
         ]
       ]
+    }
+  ],
+  "street_architecture_sources": [
+    {
+      "url": "https://www.venetianlasvegas.com/resort/attractions/art-and-architecture.html",
+      "use": "Reference only, Venetian colonnade/retail character; no pixels copied."
+    },
+    {
+      "url": "https://kga.design/forum-shops-at-caesars-palace-phase-iii.html",
+      "use": "Architect-of-record description and exterior reference;120ft dome, three retail levels, Roman-inspired facade. Original geometric reconstruction; images not shipped."
+    },
+    {
+      "url": "https://www.marriott.com/en-us/hotels/lasvg-marriotts-grand-chateau/photos/",
+      "use": "Reference only; pink stone ribs, narrow windows, central raised crown."
+    },
+    {
+      "url": "https://www.marriott.com/en-us/hotels/lassg-the-signature-at-mgm-grand/photos/",
+      "use": "Reference only; bronze glazing, pale piers, end balconies, arched crowns."
+    },
+    {
+      "url": "https://brandedcities.com/wp-assets/photosheets/lv/lv_harmon_ps.pdf",
+      "use": "Media operator primary source:60ft x306ft upper curved LED and three-storey shop/balcony exterior. Dimensions converted at0.3048m/ft; other details estimated."
     }
   ]
 }

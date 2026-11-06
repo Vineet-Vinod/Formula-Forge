@@ -17,6 +17,7 @@ HOTEL_LABELS = {
     'HarmonCorner':'HARMON CORNER','OleRed':'OLE RED','Alexxas':'ALEXXAS','Hexx':'HEXX',
     'BeerPark':'BEER PARK','Starbucks':'STARBUCKS',
     'CarriageHouse':'THE CARRIAGE HOUSE','HellsKitchen':"HELL'S KITCHEN",'SpanishSteps':'SPANISH STEPS',
+    'ForumShops':'THE FORUM SHOPS',
 }
 HOTEL_NAMES = frozenset(HOTEL_LABELS)
 WALL_PANELS = {
@@ -136,10 +137,69 @@ def curtain_walls(directory: Path) -> None:
     image.save(directory/'VeerFacade.png')
 
 
+def residential_facades(directory: Path) -> None:
+    from PIL import Image, ImageDraw
+
+    for name,stone,glass in [('GrandChateauFacade',(183,151,143),(34,39,46)),
+                             ('SignatureFacade',(202,187,157),(98,70,43))]:
+        image = Image.new('RGBA',(1024,1024),(*stone,0))
+        draw = ImageDraw.Draw(image)
+        for floor in range(8):
+            for bay in range(8):
+                x,y = bay*128,floor*128
+                seed = (bay*41+floor*23+floor*bay*7)%97
+                lit = seed < 17
+                color = (177,139,89) if lit else glass
+                if name == 'GrandChateauFacade':
+                    for offset in (25,70):
+                        draw.rectangle((x+offset,y+13,x+offset+28,y+112),fill=(*color,55 if lit else 0))
+                        draw.line((x+offset,y+70,x+offset+28,y+70),fill=(*stone,0),width=4)
+                    draw.line((x,y+122,x+127,y+122),fill=(154,124,116,0),width=3)
+                else:
+                    reflection = .8+.2*math.cos(bay*.8)
+                    color = color if lit else (round(glass[0]*reflection),round(glass[1]*reflection),round(glass[2]*reflection))
+                    draw.rectangle((x+5,y+5,x+123,y+117),fill=(*color,45 if lit else 0))
+                    for offset in (35,66,97):
+                        draw.line((x+offset,y+5,x+offset,y+117),fill=(151,136,111,0),width=2)
+                    draw.line((x,y+124,x+127,y+124),fill=(208,195,165,0),width=5)
+        image.save(directory/(name+'.png'))
+
+
 def textures(directory: Path) -> None:
     directory.mkdir(parents=True, exist_ok=True)
     hotel_facades(directory)
     curtain_walls(directory)
+    residential_facades(directory)
+    from PIL import Image, ImageDraw
+    for name,palette in [('ShopWarm',((207,166,102),(65,42,30))),
+                         ('ShopCool',((153,192,205),(27,45,60))),
+                         ('ShopFashion',((212,189,181),(58,30,51)))]:
+        room = Image.new('RGBA',(512,512),(*palette[1],0))
+        draw = ImageDraw.Draw(room)
+        draw.polygon([(0,0),(512,0),(432,100),(80,100)],fill=(*palette[0],150))
+        draw.rectangle((80,100,432,396),fill=(*tuple(round(c*.42) for c in palette[0]),70))
+        draw.polygon([(0,512),(512,512),(432,396),(80,396)],fill=(*palette[1],0))
+        for shelf in (205,302,397):
+            draw.rectangle((90,shelf,422,shelf+7),fill=(*palette[0],220))
+        for bay in range(4):
+            x = 116+bay*78
+            draw.rectangle((x,154,x+32,203),fill=(*palette[0],180))
+            draw.rectangle((x+16,253,x+44,300),fill=(*palette[0],120))
+        for x in (64,448):
+            draw.line((x,0,x,80),fill=(24,24,26,0),width=3)
+            draw.ellipse((x-22,61,x+22,84),fill=(238,213,160,255))
+        for x in (0,252,506):
+            draw.rectangle((x,0,x+6,512),fill=(31,36,40,0))
+        draw.rectangle((244,305,248,365),fill=(196,183,155,90))
+        room.save(directory/(name+'.png'))
+    stone = bytearray()
+    for y in range(1024):
+        for x in range(1024):
+            diamond = ((x+y)//32+(x-y)//32)%2
+            grain = ((x*31+y*17+x*y)%13)-6
+            color = (185,159,144) if diamond else (211,193,173)
+            stone.extend((*[max(0,min(255,c+grain)) for c in color],0))
+    png(directory/'DogeFacade.png',1024,1024,stone)
     for name, text, bg, fg in [
         ('RaceSign', 'FORMULA FORGE', (28, 54, 61), (235, 237, 225)),
         ('VegasSign', 'LAS VEGAS STRIP CIRCUIT', (15, 24, 35), (232, 206, 143)),
@@ -191,7 +251,8 @@ def textures(directory: Path) -> None:
         image.save(directory / (name + '.png'))
     for name,(background,ink,title) in WALL_PANELS.items():
         sign(directory/f'{name}.png',title,background,ink)
-    for name,palette in [('WynnDisplay',((255,104,18),(4,4,7))),('HarmonDisplay',((238,52,165),(26,11,46)))]:
+    for name,palette in [('WynnDisplay',((255,104,18),(4,4,7))),('HarmonDisplay',((238,52,165),(26,11,46))),
+                         ('StripDisplay',((252,183,220),(58,9,61)))]:
         pixels = bytearray()
         for y in range(1024):
             for x in range(512):
@@ -200,6 +261,19 @@ def textures(directory: Path) -> None:
                 light = .74 if x%3 == 0 or y%3 == 0 else 1.
                 pixels.extend((*[round((a*ribbon+b*(1-ribbon))*light) for a,b in zip(*palette)],255))
         png(directory/(name+'.png'),512,1024,pixels)
+    from PIL import Image, ImageDraw, ImageFont
+    display = Image.new('RGBA',(2048,400),(12,9,23,255))
+    draw = ImageDraw.Draw(display)
+    for panel in range(3):
+        left = panel*690
+        for stripe in range(8):
+            x = left+stripe*42
+            draw.polygon([(x,0),(x+22,0),(x+230,400),(x+208,400)],fill=(111+panel*35,22,103+panel*27,255))
+        draw.line((left+25,44,left+590,44),fill=(238,144,218,255),width=3)
+        draw.text((left+54,150),('LAS VEGAS','RACE WEEK','AFTER DARK')[panel],
+                  font=ImageFont.truetype(str(FONT),57),fill=(241,225,235,255))
+        draw.line((left+55,255,left+600,255),fill=(82,119,177,255),width=12)
+    display.save(directory/'HarmonDisplay.png')
     pixels = bytearray()
     for y in range(512):
         for x in range(512):
@@ -211,7 +285,7 @@ def textures(directory: Path) -> None:
     for y in range(128):
         for x in range(128):
             line = min((x + y) % 64, (x - y) % 64, 64 - (x + y) % 64, 64 - (x - y) % 64)
-            pixels.extend((156, 165, 169, 255 if line < 2 else 0))
+            pixels.extend((108,118,125,255 if line < 1 else 0))
     png(directory / 'Fence.png', 128, 128, pixels)
 
     halo = bytearray()
@@ -271,7 +345,7 @@ def lightfield(directory: Path) -> tuple[float, float, float, float]:
     pixels = bytearray()
     for index, value in enumerate(radiance):
         ground = elevation[index] / value if value > .0001 else 0
-        brightness = min(1.0, value * .65) ** 2.2
+        brightness = min(1.0, value * .65) ** 3.4
         pixels.extend((round(brightness * 255), round(max(0, min(1, (ground + 3200) / 6400)) * 255), 0, 255))
     png(directory / 'FloodlightField.png', size, size, pixels)
     return minimum_x, minimum_y, width, height

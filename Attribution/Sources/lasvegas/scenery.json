@@ -3,7 +3,7 @@
   "scope": "/Game/Generated/LasVegas",
   "source_manifest": "scenery_sources.json",
   "route_environment": "route-environment.json",
-  "route_environment_sha256": "e6618308c4e09bcd87524a822174ee69f2af6ff65120de4631d3982eae6b53c8",
+  "route_environment_sha256": "862801424c12b5d96f965a7246a96bef61cf2e287aeeb8abd8b84bbcb30b56f5",
   "vegetation": [
     {
       "sector": "strip-south",
@@ -6509,14 +6509,14 @@
   "road_sha256": "b6a28f3573617fe0d7599881d3e2574cd9e58ad2055a7cc059614d46719f3acb",
   "terrain_sha256": "911af7e46b5d850ef6cf22075d5e28b5beb8eef74fbd6d27582b5559e5ee1e0c",
   "tiles": 154,
-  "triangles": 3978728,
+  "triangles": 4114699,
   "landmarks": [
     {
       "name": "Bellagio Self Parking Garage",
       "osm_id": 25718288,
       "x": -263.3443507793303,
       "y": -387.6122064755993,
-      "height_m": 9.0
+      "height_m": 10.0
     },
     {
       "name": "Bellagio architectural profile",
@@ -6696,7 +6696,7 @@
     {
       "name": "Paris architectural profile",
       "height_m": 19,
-      "style": "arcade",
+      "style": "mansard",
       "x": 171.72612242212205,
       "y": -275.5801314565689
     },
@@ -6705,14 +6705,14 @@
       "osm_id": 33974140,
       "x": 171.72612242212202,
       "y": -275.58013145656884,
-      "height_m": 15
+      "height_m": 14
     },
     {
       "name": "Paris Self Parking",
       "osm_id": 33974142,
       "x": 403.1574553410452,
       "y": -241.79812571916185,
-      "height_m": 29.599999999999998
+      "height_m": 30.599999999999998
     },
     {
       "name": "Treasure Island Self Parking",
@@ -6720,6 +6720,17 @@
       "x": 72.46390282577006,
       "y": 950.7185923841176,
       "height_m": 11.5
+    },
+    {
+      "name": "Venetian paired pointed colonnades",
+      "height_m": 26.3
+    },
+    {
+      "name": "Venetian",
+      "osm_id": 33996627,
+      "x": 155.47605258827954,
+      "y": 732.9648658608548,
+      "height_m": 25
     },
     {
       "name": "Gordon Ramsay's Hell\u2019s Kitchen",
@@ -6730,17 +6741,21 @@
     },
     {
       "name": "Caesars architectural profile",
-      "height_m": 14,
+      "height_m": 27,
       "style": "arcade",
       "x": -127.84063696593613,
       "y": 478.7205257621314
+    },
+    {
+      "name": "Forum Shops domed Strip entrance",
+      "height_m": 36.6
     },
     {
       "name": "The Forum Shops at Caesars",
       "osm_id": 34068416,
       "x": -127.84063696593613,
       "y": 478.7205257621315,
-      "height_m": 10
+      "height_m": 25
     },
     {
       "name": "Venetian Campanile",
@@ -6791,14 +6806,14 @@
       "osm_id": 52175579,
       "x": -564.6772790554975,
       "y": -599.9537301580962,
-      "height_m": 29.599999999999998
+      "height_m": 30.599999999999998
     },
     {
       "name": "Aria and Mandarin Self Parking",
       "osm_id": 52186615,
       "x": -149.56006129229885,
       "y": -968.3072989346892,
-      "height_m": 9.2
+      "height_m": 10.2
     },
     {
       "name": "Waldorf Astoria Las Vegas",
@@ -6843,32 +6858,26 @@
       "height_m": 26.2
     },
     {
-      "name": "Signature architectural profile",
-      "height_m": 145,
-      "style": "modern",
-      "x": 576.424531348213,
-      "y": -808.5145875348728
+      "name": "Signature reconstructed piers and crown",
+      "height_m": 145
     },
     {
       "name": "The Signature at MGM Grand Tower III",
       "osm_id": 95223231,
       "x": 576.424531348213,
       "y": -808.5145875348728,
-      "height_m": 141
+      "height_m": 137
     },
     {
-      "name": "Signature architectural profile",
-      "height_m": 145,
-      "style": "modern",
-      "x": 577.4206768283605,
-      "y": -879.1484588712985
+      "name": "Signature reconstructed piers and crown",
+      "height_m": 145
     },
     {
       "name": "The Signature at MGM Grand Tower II",
       "osm_id": 95223232,
       "x": 577.4206768283605,
       "y": -879.1484588712985,
-      "height_m": 141
+      "height_m": 137
     },
     {
       "name": "Walgreens",
@@ -6931,7 +6940,7 @@
       "osm_id": 111367820,
       "x": -304.23326552500896,
       "y": 1088.0459525032193,
-      "height_m": 9.2
+      "height_m": 10.2
     },
     {
       "name": "Harrahs architectural profile",
@@ -6959,14 +6968,14 @@
       "osm_id": 111367849,
       "x": 502.5007414537869,
       "y": 567.2594271261302,
-      "height_m": 9.2
+      "height_m": 10.2
     },
     {
       "name": "Harrah's Self Parking",
       "osm_id": 111367853,
       "x": 341.80149828686444,
       "y": 543.355413068344,
-      "height_m": 22.8
+      "height_m": 23.8
     },
     {
       "name": "Encore Theater",
@@ -7036,7 +7045,7 @@
       "osm_id": 115670777,
       "x": 426.9628944141534,
       "y": -528.8600776416048,
-      "height_m": 29.0
+      "height_m": 30.0
     },
     {
       "name": "Caesars architectural profile",
@@ -7057,7 +7066,7 @@
       "osm_id": 115768211,
       "x": 319.7304709286043,
       "y": 78.90518691583472,
-      "height_m": 29.599999999999998
+      "height_m": 30.599999999999998
     },
     {
       "name": "Hilton Grand Vacations at the Flamingo",
@@ -7065,6 +7074,13 @@
       "x": 364.80610618130515,
       "y": 217.50702316067625,
       "height_m": 53.4
+    },
+    {
+      "name": "Linq integrated street frontage",
+      "osm_id": 115771295,
+      "x": 29.625070479001312,
+      "y": 371.3726745820006,
+      "height_m": 16
     },
     {
       "name": "The LINQ Hotel + Experience",
@@ -7078,7 +7094,7 @@
       "osm_id": 115771879,
       "x": 321.70630907188826,
       "y": 419.3791197795531,
-      "height_m": 19.4
+      "height_m": 20.4
     },
     {
       "name": "Linq architectural profile",
@@ -7121,6 +7137,13 @@
       "x": 64.769578649842,
       "y": 199.67611099870976,
       "height_m": 29.400000000000002
+    },
+    {
+      "name": "Flamingo integrated street frontage",
+      "osm_id": 116761428,
+      "x": 28.05025718408406,
+      "y": 269.83551002218184,
+      "height_m": 13
     },
     {
       "name": "Flamingo Las Vegas",
@@ -7172,6 +7195,13 @@
       "y": 519.7728691240583
     },
     {
+      "name": "Harrahs integrated street frontage",
+      "osm_id": 128622185,
+      "x": 55.205633721765444,
+      "y": 554.936094040266,
+      "height_m": 15
+    },
+    {
       "name": "Harrah's Las Vegas",
       "osm_id": 128622185,
       "x": 182.80818686086207,
@@ -7197,7 +7227,7 @@
       "osm_id": 133757427,
       "x": 1555.4469320489625,
       "y": -685.0670246808791,
-      "height_m": 26.2
+      "height_m": 27.2
     },
     {
       "name": "Elara architectural profile",
@@ -7225,7 +7255,7 @@
       "osm_id": 133757908,
       "x": 1692.4959239523287,
       "y": -407.92143269662665,
-      "height_m": 26.2
+      "height_m": 27.2
     },
     {
       "name": "Virgin Hotels Conference Center",
@@ -7239,7 +7269,7 @@
       "osm_id": 133879585,
       "x": -500.6190139891124,
       "y": -1135.318642850996,
-      "height_m": 29.0
+      "height_m": 30.0
     },
     {
       "name": "MGM Grand Self Parking",
@@ -7256,18 +7286,18 @@
       "height_m": 9.2
     },
     {
-      "name": "Cosmopolitan architectural profile",
-      "height_m": 184,
-      "style": "balconies",
-      "x": -96.85635264656928,
-      "y": -494.74222772487474
+      "name": "Cosmopolitan integrated street frontage",
+      "osm_id": 134795273,
+      "x": -72.3226566944341,
+      "y": -506.8193459494969,
+      "height_m": 37
     },
     {
       "name": "The Cosmopolitan of Las Vegas",
       "osm_id": 134795273,
       "x": -96.85635264656928,
       "y": -494.7422277248748,
-      "height_m": 181
+      "height_m": 37
     },
     {
       "name": "Planet architectural profile",
@@ -7337,14 +7367,14 @@
       "osm_id": 134949710,
       "x": -491.0273209838299,
       "y": 340.39733456970174,
-      "height_m": 22.8
+      "height_m": 23.8
     },
     {
       "name": "Caesars Palace Self Parking",
       "osm_id": 134949713,
       "x": -352.69056335038323,
       "y": 337.6051531005032,
-      "height_m": 22.8
+      "height_m": 23.8
     },
     {
       "name": "Caesars Palace Convention Center",
@@ -7400,7 +7430,7 @@
       "osm_id": 135459231,
       "x": -568.8960339086573,
       "y": 480.3768256954605,
-      "height_m": 22.8
+      "height_m": 23.8
     },
     {
       "name": "Wynn Resorts Employment Center",
@@ -7456,7 +7486,7 @@
       "osm_id": 180584270,
       "x": -126.6979365053623,
       "y": 1364.0819489564597,
-      "height_m": 9.2
+      "height_m": 10.2
     },
     {
       "name": "Sirens' Cove Shop",
@@ -7464,6 +7494,13 @@
       "x": 214.4759632016362,
       "y": 1135.011692680276,
       "height_m": 9.2
+    },
+    {
+      "name": "CasinoRoyale integrated street frontage",
+      "osm_id": 181282568,
+      "x": 89.91921160714813,
+      "y": 674.1967388039791,
+      "height_m": 10
     },
     {
       "name": "Best Western Plus Casino Royale-Center Strip",
@@ -7536,11 +7573,8 @@
       "height_m": 9.2
     },
     {
-      "name": "GrandChateau architectural profile",
-      "height_m": 128,
-      "style": "mansard",
-      "x": 330.17737834162557,
-      "y": -818.5894288868411
+      "name": "GrandChateau reconstructed piers and crown",
+      "height_m": 128
     },
     {
       "name": "Marriott's Grand Chateau",
@@ -7624,7 +7658,7 @@
       "osm_id": 374192383,
       "x": 655.8683036966747,
       "y": 768.4557140457617,
-      "height_m": 9.2
+      "height_m": 10.2
     },
     {
       "name": "Las Vegas Souvenirs",
@@ -7708,7 +7742,7 @@
       "osm_id": 403004627,
       "x": -70.87178286022277,
       "y": 1130.0612578481635,
-      "height_m": 9.2
+      "height_m": 10.2
     },
     {
       "name": "Ellis Island Parking",
@@ -7771,7 +7805,7 @@
       "osm_id": 495545498,
       "x": -854.2988243496883,
       "y": -793.4368681048563,
-      "height_m": 24.8
+      "height_m": 25.8
     },
     {
       "name": "The Martin",
@@ -7848,7 +7882,7 @@
       "osm_id": 543423255,
       "x": 317.32798020090394,
       "y": 32.28516383302816,
-      "height_m": 5.8
+      "height_m": 6.8
     },
     {
       "name": "Starbucks",
@@ -7935,11 +7969,18 @@
       "height_m": 9.2
     },
     {
+      "name": "Harmon Corner upper curved LED and retail balconies",
+      "screen_width_m": 93.2688,
+      "screen_height_m": 18.288,
+      "base_height_m": 15,
+      "height_m": 33.288
+    },
+    {
       "name": "Harmon Corner",
       "osm_id": 1255028419,
       "x": 76.54410450788065,
       "y": -660.9871944626484,
-      "height_m": 13
+      "height_m": 14
     },
     {
       "name": "Green Fairy Garden",

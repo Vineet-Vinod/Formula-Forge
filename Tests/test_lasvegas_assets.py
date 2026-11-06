@@ -268,6 +268,16 @@ def test_full_route_frontages_and_vegetation_are_present() -> None:
     assert {111322055,111367819,100519310,238675785,276427203,95223231,128622185,181282568} <= buildings
     assert any(p['name'] == 'Wynn Plaza curved digital monument' for p in scene['landmarks'])
     assert any(p['name'] == 'Opening sequence hospitality gallery' for p in scene['landmarks'])
+    names = {p['name'] for p in scene['landmarks']}
+    assert {name+' integrated street frontage' for name in ('Flamingo','Linq','Harrahs','CasinoRoyale','Cosmopolitan')} <= names
+    display = next(p for p in scene['landmarks'] if p['name'] == 'Harmon Corner upper curved LED and retail balconies')
+    assert math.isclose(display['screen_width_m'],306*.3048)
+    assert math.isclose(display['screen_height_m'],60*.3048)
+    assert display['base_height_m'] >= 14
+    profiles = json.loads((SOURCES/'landmark-architecture.json').read_text())['profiles']
+    volumes = {part['osm_id']:part['height_m'] for part in scene['landmarks'] if 'osm_id' in part}
+    assert volumes[276427203]+profiles['276427203']['crown_m'] == 128
+    assert volumes[95223231]+profiles['95223231']['crown_m'] == 145
     assert scene['route_environment_sha256'] == hashlib.sha256((SOURCES/'route-environment.json').read_bytes()).hexdigest()
     sectors = json.loads((SOURCES/'route-environment.json').read_text())['sectors']
     assert sectors[0]['start_m'] == 0 and sectors[-1]['end_m'] == 6201
@@ -300,9 +310,11 @@ def test_koval_floodlight_field_retains_local_contrast() -> None:
     assert statistics.median(values) < 180
 
 
-def test_flamingo_resort_outline_does_not_hide_mapped_frontage() -> None:
+def test_resort_outlines_do_not_hide_mapped_component_volumes() -> None:
     scene = json.loads((SOURCES/'scenery.json').read_text())
     volumes = {part['osm_id']:part['height_m'] for part in scene['landmarks'] if 'osm_id' in part}
     assert volumes[116761428] < 20
     assert 22 < volumes[116761035] < 25
     assert 29 < volumes[116761280] < 32
+    assert volumes[134795273] < 45
+    assert volumes[27897905] > 150 and volumes[472669744] > 150

@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import re
 
 import unreal
@@ -51,7 +52,7 @@ def texture_material(name: str) -> unreal.Material:
     roughness = EDIT.create_material_expression(material, unreal.MaterialExpressionConstant)
     roughness.r = .55 if 'Facade' in name else .82
     EDIT.connect_material_property(roughness, '', unreal.MaterialProperty.MP_ROUGHNESS)
-    if name in ('Sphere', 'LightHalo', 'WynnDisplay', 'HarmonDisplay'):
+    if name in ('Sphere', 'LightHalo', 'WynnDisplay', 'HarmonDisplay','StripDisplay'):
         material.set_editor_property('shading_model', unreal.MaterialShadingModel.MSM_UNLIT)
         EDIT.connect_material_property(sample, 'RGB', unreal.MaterialProperty.MP_EMISSIVE_COLOR)
     if 'Facade' in name or name == 'Garage':
@@ -59,17 +60,17 @@ def texture_material(name: str) -> unreal.Material:
         connect(sample, 'RGB', mask, 'A')
         ambient = EDIT.create_material_expression(material, unreal.MaterialExpressionConstant)
         ambient.r = (.08 if name in ('CreamFacade', 'BlueFacade', 'BronzeFacade') else
-                     .10 if name in ('WynnFacade','VeerFacade') else
+                     .22 if name == 'WynnFacade' else .10 if name == 'VeerFacade' else
                      .06 if name in ('CosmoFacade','PlanetFacade') else .12)
         illumination = EDIT.create_material_expression(material, unreal.MaterialExpressionAdd)
         connect(sample, 'A', illumination, 'A')
         connect(ambient, '', illumination, 'B')
         connect(illumination, '', mask, 'B')
         EDIT.connect_material_property(mask, '', unreal.MaterialProperty.MP_EMISSIVE_COLOR)
-    elif name not in ('Sphere', 'Fence', 'Rubber', 'LightHalo','WynnDisplay','HarmonDisplay'):
+    elif name not in ('Sphere', 'Fence', 'Rubber', 'LightHalo','WynnDisplay','HarmonDisplay','StripDisplay'):
         glow = EDIT.create_material_expression(material, unreal.MaterialExpressionMultiply)
         strength = EDIT.create_material_expression(material, unreal.MaterialExpressionConstant)
-        strength.r = .22 if not name.startswith('Wall') else .025
+        strength.r = .85 if name.startswith('Shop') else .22 if not name.startswith('Wall') else .025
         connect(strength, '', glow, 'B')
         connect(sample, 'RGB', glow, 'A')
         EDIT.connect_material_property(glow, '', unreal.MaterialProperty.MP_EMISSIVE_COLOR)
@@ -229,7 +230,7 @@ def field_nodes(material: unreal.Material, bounds: tuple[float, float, float, fl
     connect(sample, 'R', output, 'A')
     connect(clamp, '', output, 'B')
     floor = EDIT.create_material_expression(material, unreal.MaterialExpressionConstant)
-    floor.r = .35 if 'Facade' in material.get_name() else .12
+    floor.r = .35 if 'Facade' in material.get_name() else .05 if 'PresentationSurface' in material.get_name() else .12
     total = EDIT.create_material_expression(material, unreal.MaterialExpressionAdd)
     connect(output, '', total, 'A')
     connect(floor, '', total, 'B')
@@ -245,9 +246,10 @@ def shade(material: unreal.Material, bounds: tuple[float, float, float, float], 
     connect(source, output, multiply, 'A')
     connect(field_nodes(material, bounds, texture), '', multiply, 'B')
     EDIT.connect_material_property(multiply, '', unreal.MaterialProperty.MP_BASE_COLOR)
-    if any(word in material.get_name() for word in ('PresentationSurface','Pavement','TreeCanopy')):
+    if any(word in material.get_name() for word in ('PresentationSurface','SurfaceMasked','Pavement','TreeCanopy')):
         strength = EDIT.create_material_expression(material,unreal.MaterialExpressionConstant)
-        strength.r = 1.2 if 'PresentationSurface' in material.get_name() else .07
+        strength.r = (1.8 if 'PresentationSurface' in material.get_name() else
+                      .3 if 'SurfaceMasked' in material.get_name() else .07)
         bounce = EDIT.create_material_expression(material,unreal.MaterialExpressionMultiply)
         connect(multiply,'',bounce,'A')
         connect(strength,'',bounce,'B')
@@ -301,13 +303,14 @@ def main() -> None:
                       'Palazzo', 'Wynn', 'Paris', 'Cosmopolitan', 'Planet', 'Linq', 'Horseshoe', 'Elara', 'Encore', 'TreasureIsland', 'Caesars', 'Flamingo',
                       'EastHarmon', 'WestHarmon', 'SphereZone', 'Sands', 'Strip', 'PalazzoFacade', 'VenetianFacade',
                       'BellagioFacade', 'ParisFacade', 'CaesarsFacade', 'TIFacade', 'WynnFacade', 'CosmoFacade',
-                      'PlanetFacade', 'FlamingoFacade', 'VeerFacade','RetailFacade','BrickFacade','CityGlassFacade',
-                      'SignatureFacade','ExpoFacade','HarrahsFacade','RoyaleFacade','WynnDisplay','HarmonDisplay',
+                      'PlanetFacade', 'FlamingoFacade', 'VeerFacade','DogeFacade','RetailFacade','BrickFacade','CityGlassFacade',
+                      'SignatureFacade','GrandChateauFacade','ExpoFacade','HarrahsFacade','RoyaleFacade','ShopWarm','ShopCool','ShopFashion','WynnDisplay','HarmonDisplay','StripDisplay',
                       *WALL_PANELS,*sorted(HOTEL_NAMES)])}
         for name, color, roughness in [
             ('Glass', (.09, .10, .105), .25), ('White', (.72, .73, .70), .82), ('Red', (.62, .025, .018), .8), ('Black', (.012, .015, .018), .8),
             ('Steel', (.24, .28, .30), .48), ('Cream', (.54, .49, .39), .8), ('Roof', (.12, .14, .15), .8),
             ('Pavement',(.32,.31,.28),.85), ('CityGround', (.17, .16, .135), .95), ('TowerSteel', (.27, .23, .15), .57),
+            ('Terracotta',(.42,.27,.16),.85), ('ChateauStone',(.57,.40,.36),.8), ('ArcadeRecess',(.015,.022,.026),.75),
             ('Trunk', (.16, .105, .055), .9), ('Leaves', (.045, .105, .025), .9),
             ('Brick', (.34, .16, .08), .85), ('Copper', (.055, .22, .17), .7),
             ('Canopy', (.65, .66, .62), .8), ('IlluminatedCream', (.55, .41, .23), .7),
@@ -315,11 +318,11 @@ def main() -> None:
             ('PodiumStone', (.47, .39, .28), .85), ('WarmGlass', (.15, .12, .075), .3),
             ('BronzeTrim', (.38, .30, .18), .45), ('BalloonBlue', (.015, .055, .25), .55),
             ('BlueRunoff', (.02, .15, .70), .9),
-            ('RedNeon',(1.,.035,.025),.5), ('PinkNeon', (1.1, .10, .46), .5), ('Orange', (.8, .17, .025), .85),
+            ('RedNeon',(1.,.035,.025),.5), ('BlueNeon',(.04,.28,1.2),.5), ('PinkNeon', (1.1, .10, .46), .5), ('Orange', (.8, .17, .025), .85),
             ('WheelLight', (1.8, .6, 3.0), .5),
             ('Lamp', (12, 12, 11), .4),
         ]:
-            materials[name] = solid(name, color, roughness, emissive=name in ('Lamp', 'IlluminatedCream', 'TowerSteel', 'Canopy', 'Steel', 'WheelLight', 'PinkNeon', 'BronzeTrim', 'WarmGlass','RedNeon','Leaves','Glass'), two_sided=name == 'Leaves')
+            materials[name] = solid(name, color, roughness, emissive=name in ('Lamp', 'IlluminatedCream', 'TowerSteel', 'Canopy', 'Steel', 'WheelLight', 'PinkNeon', 'BronzeTrim', 'WarmGlass','RedNeon','BlueNeon','Leaves','Glass'), two_sided=name == 'Leaves')
         foliage = TOOLS.create_asset('TreeCanopy',ASSETS+'/Materials',unreal.Material,unreal.MaterialFactoryNew()) if not LIBRARY.does_asset_exist(ASSETS+'/Materials/TreeCanopy') else unreal.load_asset(ASSETS+'/Materials/TreeCanopy')
         EDIT.delete_all_material_expressions(foliage)
         foliage.set_editor_property('blend_mode',unreal.BlendMode.BLEND_MASKED)
@@ -330,6 +333,15 @@ def main() -> None:
         EDIT.connect_material_property(leaf,'A',unreal.MaterialProperty.MP_OPACITY_MASK)
         EDIT.recompile_material(foliage)
         materials['TreeCanopy'] = foliage
+        glazing = solid('HospitalityGlass',(.04,.055,.06),.1,emissive=True)
+        glazing.set_editor_property('shading_model',unreal.MaterialShadingModel.MSM_UNLIT)
+        glazing.set_editor_property('blend_mode',unreal.BlendMode.BLEND_TRANSLUCENT)
+        opacity = EDIT.create_material_expression(glazing,unreal.MaterialExpressionConstant)
+        opacity.r = .18
+        EDIT.connect_material_property(opacity,'',unreal.MaterialProperty.MP_OPACITY)
+        EDIT.recompile_material(glazing)
+        LIBRARY.save_loaded_asset(glazing)
+        materials['HospitalityGlass'] = glazing
         night_sky()
         for name, path in {
             'Road': '/Game/Generated/Materials/rebuild_road_asphalt',
@@ -341,8 +353,13 @@ def main() -> None:
             if source is None:
                 raise RuntimeError(f'Missing material {path}')
             materials[name] = night_copy(name, source, bounds, field)
+        EDIT.set_material_instance_scalar_parameter_value(materials['Road'],'Roughness',.65)
+        if not math.isclose(EDIT.get_material_instance_scalar_parameter_value(materials['Road'],'Roughness'),.65,abs_tol=1e-6):
+            raise RuntimeError('Cannot set private Vegas asphalt roughness')
+        EDIT.set_material_instance_scalar_parameter_value(materials['Road'],'Specular',.5)
+        LIBRARY.save_loaded_asset(materials['Road'])
         for name, material in materials.items():
-            if name not in ('Sphere', 'Lamp', 'WheelLight', 'LightHalo','WynnDisplay','HarmonDisplay') and isinstance(material, unreal.Material) and not material.get_name().startswith('Lit_'):
+            if name not in ('Sphere', 'Lamp', 'WheelLight', 'LightHalo','WynnDisplay','HarmonDisplay','StripDisplay','HospitalityGlass') and isinstance(material, unreal.Material) and not material.get_name().startswith('Lit_'):
                 shade(material, bounds, field)
     lines = []
     for index, record in enumerate(manifest['tiles']):
@@ -357,8 +374,9 @@ def main() -> None:
         if not changed:
             lines.append(name + ',' + ','.join(f'{bound:.3f}' for bound in record['bounds']))
             continue
-        mesh = unreal.FFLasVegasMeshLibrary.build_tile(str(SCRATCH / record['file']), path,
-                                                     [materials[key] for key in record['materials']])
+        if mesh is None or LIBRARY.get_metadata_tag(mesh,'LasVegasSourceSHA256') != record['sha256']:
+            mesh = unreal.FFLasVegasMeshLibrary.build_tile(str(SCRATCH / record['file']), path,
+                                                         [materials[key] for key in record['materials']])
         if mesh is None:
             raise RuntimeError(f'Failed to build {name}')
         for index, key in enumerate(record['materials']):
