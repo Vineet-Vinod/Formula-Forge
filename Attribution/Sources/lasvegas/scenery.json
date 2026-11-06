@@ -6509,7 +6509,7 @@
   "road_sha256": "b6a28f3573617fe0d7599881d3e2574cd9e58ad2055a7cc059614d46719f3acb",
   "terrain_sha256": "911af7e46b5d850ef6cf22075d5e28b5beb8eef74fbd6d27582b5559e5ee1e0c",
   "tiles": 154,
-  "triangles": 4114699,
+  "triangles": 4114697,
   "landmarks": [
     {
       "name": "Bellagio Self Parking Garage",

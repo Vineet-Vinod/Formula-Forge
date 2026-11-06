@@ -115,6 +115,24 @@ class Scenery:
                 inside = not inside
         return inside
 
+    @staticmethod
+    def polygons_overlap(a: list[tuple[float,float]], b: list[tuple[float,float]]) -> bool:
+        if (any(Scenery.in_polygon(x,y,b) for x,y in a)
+                or any(Scenery.in_polygon(x,y,a) for x,y in b)):
+            return True
+        for p,q in zip(a,a[1:]+a[:1]):
+            dx,dy = q[0]-p[0],q[1]-p[1]
+            for r,s in zip(b,b[1:]+b[:1]):
+                ex,ey = s[0]-r[0],s[1]-r[1]
+                denominator = dx*ey-dy*ex
+                if abs(denominator)<1e-10:
+                    continue
+                rx,ry = r[0]-p[0],r[1]-p[1]
+                t,u = (rx*ey-ry*ex)/denominator,(rx*dy-ry*dx)/denominator
+                if 0 <= t <= 1 and 0 <= u <= 1:
+                    return True
+        return False
+
     def blue_paint(self, x: float, y: float) -> bool:
         return any(region.paint == 'BlueRunoff' and self.in_region(x,y,region) for region in self.escapes)
 
@@ -1010,6 +1028,8 @@ class Scenery:
                     continue
                 points = [sample.point(side*(outer+.2),.08),nxt.point(side*(next_outer+.2),.08),
                           nxt.point(side*(next_outer+9),.08),sample.point(side*(outer+9),.08)]
+                if any(self.polygons_overlap([p[:2] for p in points],region.ring) for region in self.escapes):
+                    continue
                 if side > 0:
                     points.reverse()
                 self.quad('Tile_Pavement','Pavement',points[0],points[1],points[2],points[3],1,2)

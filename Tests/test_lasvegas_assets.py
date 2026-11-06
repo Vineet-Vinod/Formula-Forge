@@ -219,6 +219,25 @@ def test_escape_roads_are_open_paved_and_outside_white_line_limits() -> None:
     assert barriers.hausdorff_distance(deck.boundary) < .01
 
 
+def test_sidewalk_panels_do_not_overhang_escape_roads() -> None:
+    import numpy as np
+    from shapely.geometry import Polygon
+    from shapely.ops import unary_union
+
+    scratch = ROOT/'build/lasvegas'
+    escapes = unary_union([Polygon(region['ring']) for region in
+                           json.loads((SOURCES/'boundaries.json').read_text())['regions']])
+    dtype = np.dtype([('material','<u4'),('vertices','<f4',(3,8))])
+    for tile in json.loads((scratch/'manifest.json').read_text())['tiles']:
+        if 'Pavement' not in tile['materials']:
+            continue
+        rows = np.frombuffer((scratch/tile['file']).read_bytes(),dtype=dtype,offset=12)
+        triangles = rows['vertices'][rows['material']==tile['materials'].index('Pavement')]
+        for triangle in triangles:
+            footprint = Polygon([(-float(p[1])/100,-float(p[0])/100) for p in triangle])
+            assert footprint.intersection(escapes).area < .0001, tile['name']
+
+
 def test_barriers_follow_continuous_pavement_heights() -> None:
     import csv
 

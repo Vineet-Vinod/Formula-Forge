@@ -7,6 +7,8 @@ render, successful import or passing unit test does not establish that quality.
 
 The code paths and capture example were checked on 2026-11-03. Recheck the
 loaders and commands when the implementation changes.
+Whole-lap quality guidance was updated after the accepted Las Vegas review on
+2026-11-06.
 
 This guide records the lessons from Silverstone, Monza and Interlagos. It also
 maps those lessons to the current Unreal-only repository. It is not a claim that
@@ -164,6 +166,27 @@ camera type, visible road edges, structures, barrier side and observation. Inclu
 starts, approaches, apexes, exits, crests, compressions and pit merges. Match by
 landmarks and station rather than elapsed video time, since speeds differ.
 Retain the full frame alongside any annotated crop.
+
+### Is a reference video necessary?
+
+A video is not a prerequisite, but a continuous onboard is the most useful
+appearance reference for a whole-lap reconstruction. It reveals the order,
+duration and scale of scenery, the vegetation between landmarks, braking boards,
+kerbs, runoff mouths and night-lighting changes. A few famous-building photos
+cannot supply that coverage. Las Vegas reached its accepted quality after the
+supplied onboard was indexed around the entire lap, rather than used only for
+the Strip and Sphere.
+
+Use the requested layout, event year, time of day and weather where possible.
+Register frames by corners and landmarks: cuts, accelerated playback and different
+speeds make video time an unreliable distance measure. Keep footage reference-only;
+author original geometry and artwork instead of shipping video pixels or game meshes.
+
+Without video, assemble overlapping driving-direction stills for every sector,
+including approaches, apexes and exits. Combine them with the circuit plan,
+mapped footprints, operator/architect exterior views and elevation observations.
+Record gaps and uncertain temporary structures explicitly. Video does not replace
+metric geometry, height data or checking the finished game in motion.
 
 Google Maps/Earth oblique and street views can help inspect scale, silhouettes,
 roof lines, road furniture and terrain relationships when available. For this
@@ -350,6 +373,64 @@ needs plan, width, road profile, cross-sections, both barrier sides, runoff,
 vegetation, scenery and driving captures. Give the less photogenic sections the
 same geometry and protection review as the straight.
 
+### Whole-lap quality workflow proven on Las Vegas
+
+Use [Las Vegas's final validation](lasvegas_full_lap_validation.json) as an example
+of the evidence and iteration required. Its recipes are
+[route-environment.json](../Attribution/Sources/lasvegas/route-environment.json)
+and [landmark-architecture.json](../Attribution/Sources/lasvegas/landmark-architecture.json).
+Reuse the method; placements, heights and light values belong to that circuit.
+
+1. Index the reference around the entire route before decorating. For each named
+   sector record the visible structures, planting, stands, wall treatment, kerbs,
+   escape roads and lights. Include ordinary connecting streets. Check the
+   generator for station filters or clearance rules that silently omit a sector
+   or delete a valid building. Vegas's missing trees and Wynn Plaza were such bugs.
+2. Establish the correct building volumes before facade work. A resort's maximum
+   height must not extrude its whole casino compound to tower height. Retain the
+   mapped podiums and separate tower parts. Check whether the recipe's height
+   already includes its crown; do not subtract or add the crown twice.
+3. Model the architecture that identifies each visible property: wings, curvature,
+   roof profile, colonnades, projecting piers, balconies and entrance depth.
+   Check operator or architect views when the onboard cannot resolve them.
+   Hotel names on generic blocks do not meet this standard. Grand Chateau and
+   Signature needed their own facade/crown designs, just as Venetian and Forum
+   Shops needed their street-level architecture.
+4. Give podiums separate floors and recessed shopfronts. Stretching a single
+   window through a tall podium creates a blank wall. Keep ordinary glazing and
+   interior lights subordinate to actual LED displays; alternating bright shop
+   colours looked like invented advertisements. Place real displays at the
+   correct level and around the footprint, with explicit exterior-clearance checks.
+5. Fit temporary venues to the available space. Check complete stand depth,
+   supports, roof, trees and balconies against mapped buildings and escape roads.
+   Vegas's oversized Strip stand hid and intersected Harrah's entrance. Examine
+   the full footprint of sidewalks and decorative panels too: a corner can
+   overhang a runoff even when the panel centre and road-adjacent edge are clear.
+6. Use the accepted assets and rendering style as the baseline. Copy materials
+   into the new circuit's namespace before tuning them. For night scenes, compare
+   road visibility, local lamp pools, facade fill, lit interiors, vegetation and
+   displays together. Verify a test light actually affects the packaged renderer
+   before replicating it hundreds of times. Vegas uses a registered irradiance
+   field in private DefaultLit surface materials, preserving texture, specular
+   and shadows; this is a venue-specific implementation, not a universal preset.
+7. Review production cockpit captures across the whole lap. Vegas used sixteen
+   settled detail views and a complete live lap sampled every 50 m, including
+   all approaches and exits. Use enough samples for the circuit's complexity;
+   those counts are examples, not a substitute for coverage. Add oblique views
+   and a low driving view inside each escape road to reveal hanging panels,
+   floating edges and protection defects hidden from the racing line.
+8. Correct specific findings, regenerate the dependent native assets, and
+   recapture the same view. Reviewers need reference frames, accepted-track
+   captures and a station index. Distinguish a proven wrong property from regular
+   windows that the real building also has. Check the final moving sequence
+   after the last material change. Commit the recipes, native assets, provenance
+   and validation together; preserve unrelated user edits.
+
+Use a focused regression for a demonstrated generator defect. For the Vegas
+sidewalk overhang, intersect exported pavement triangles with every escape
+footprint; a test of panel centres would repeat the original mistake. Keep this
+separate from the visual check that the exposed edge no longer floats.
+
 ### Barriers, runoff and pit routes
 
 Generate the visible protection and custom collision segments from one surveyed
@@ -474,11 +555,11 @@ unknown non-Monza circuit as Interlagos or every other circuit as Silverstone.
 | `README.md`, attribution records | Supported-track list, new source records and relevant instructions |
 
 Prefer one small shared track description over adding more scattered three-way
-ternaries. Keep such a refactor focused on what the new track needs. The current
-frontend uses three fixed buttons with lap/start/quit actions following them;
-adding a fourth button without updating action IDs and layout breaks input.
-The flow audit also has circuit-specific stages and a three-circuit sequence.
-Update it deliberately; an old test passing is not evidence for a new map.
+ternaries. Keep such a refactor focused on what the new track needs. The frontend
+now derives its circuit list from the catalogue, but action IDs, selection state
+and audit coverage still need checking when the catalogue changes. Flow audits
+have also contained circuit-specific stages. Inspect the current sequence
+deliberately; an old test passing is not evidence for a new map.
 
 `FFSimulation::GripScale` also contains track-specific corner targets. Do not
 accidentally apply Silverstone's targets to a new layout or retune them to hide
@@ -588,8 +669,8 @@ caveat. Uncertainty is a reason to seek another view, not invent certainty.
 
 ## 10. Use an independent critic and close the findings
 
-The user previously selected **Luna with low reasoning effort** as the visual and
-playing critic. When subagent review is authorized for the task, use that reviewer
+The user selected **Luna with high reasoning effort** for the accepted Las Vegas
+visual review. When subagent review is authorized for the task, use that reviewer
 if available; otherwise identify the substitute. This document does not require
 spawning agents merely to read it. Give agents separate responsibilities and keep
 one owner for shared edits and the heavy-job lock.

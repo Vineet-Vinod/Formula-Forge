@@ -163,7 +163,7 @@
   "geometry_regressions": "docs/lasvegas_curves_validation.json retains the road, curb, runoff and barrier measurements. This pass does not change those geometry/contact inputs.",
   "verification": {
     "focused_checks": {
-      "pytest": 14,
+      "pytest": 15,
       "mypy": "Passed for four typed source modules",
       "ruff": "Passed"
     },
@@ -246,7 +246,7 @@
   },
   "scene": {
     "native_meshes": 154,
-    "triangles": 4114699,
+    "triangles": 4114697,
     "trees": 650,
     "fixture_heads": 512,
     "route_recipe_sha256": "862801424c12b5d96f965a7246a96bef61cf2e287aeeb8abd8b84bbcb30b56f5"
@@ -399,5 +399,28 @@
       }
     ],
     "comparison_limits": "Final Vegas repeat28.33ms median/32.75ms p95; first final sample32.33/41.27ms without a model change between them. Timing variation is retained, not discarded. Paired Monza31.41/37.53ms; its run logged a handled Unreal MTAccessDetector ensure at frame800 but exited0 and retained900 active samples. Earlier fresh Monza control31.12/36.50ms. Accepted assets unchanged; aggregate comparisons do not establish worst-case full-lap parity."
+  },
+  "runoff_sidewalk_follow_up": {
+    "date": "2026-11-06",
+    "location": "Turn12 escape road before the Strip, around station4929m",
+    "cause": "Sidewalk generation checked road-adjacent offsets but not the complete panel footprint. One quad projected across the escape road, above its pavement. Its triangle centre lay outside the escape, so a centre-only check would miss it.",
+    "fix": "Reject sidewalk quads whose footprints overlap any authored escape polygon, including crossing edges and containment.",
+    "changed_tiles": [
+      {
+        "name": "Tile_Street_01_05",
+        "before_triangles": 19416,
+        "after_triangles": 19414
+      }
+    ],
+    "regression": "Independent intersection of exported Pavement triangles with the union of escape footprints. Failed before the fix on a triangle overlapping5.5684m\u00b2; passes after regeneration.",
+    "checks": "Native audits and valid160.256s lap passed;15 focused tests,mypy,Ruff,fresh saved-asset verification and packaged build passed. Contact/track-limit/terrain hashes unchanged. The earlier complete live-lap evidence remains applicable to the unchanged driving surfaces.",
+    "visual_evidence": "build/reviews/lasvegas/runoff-tile/before.png and after.png use identical oblique camera settings; cockpit.png is inside the escape at4929.31m,lane17.18m, with0penetration/no barrier contact. Local evidence is ignored.",
+    "reviewer": {
+      "model": "gpt-6-luna",
+      "reasoning_effort": "high",
+      "status": "closed",
+      "finding": "Matching oblique view shows the flap removed; low cockpit view shows clear pavement and continuous protection."
+    },
+    "documentation": "docs/map.md now describes whole-lap quality, optional reference-video coverage, per-property modeling, lighting calibration and explicit runoff inspection."
   }
 }
