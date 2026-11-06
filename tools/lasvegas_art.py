@@ -171,9 +171,9 @@ def textures(directory: Path) -> None:
     curtain_walls(directory)
     residential_facades(directory)
     from PIL import Image, ImageDraw
-    for name,palette in [('ShopWarm',((207,166,102),(65,42,30))),
-                         ('ShopCool',((153,192,205),(27,45,60))),
-                         ('ShopFashion',((212,189,181),(58,30,51)))]:
+    for name,palette in [('ShopWarm',((113,102,80),(26,30,28))),
+                         ('ShopCool',((95,114,120),(21,31,34))),
+                         ('ShopFashion',((119,108,99),(31,28,30)))]:
         room = Image.new('RGBA',(512,512),(*palette[1],0))
         draw = ImageDraw.Draw(room)
         draw.polygon([(0,0),(512,0),(432,100),(80,100)],fill=(*palette[0],150))

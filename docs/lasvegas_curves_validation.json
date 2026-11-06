@@ -274,5 +274,6 @@
       "build/reviews/lasvegas/curves/final-665.png",
       "build/reviews/lasvegas/curves/final-motion-retail.jpg"
     ]
-  }
+  },
+  "full_lap_follow_up": "docs/lasvegas_full_lap_validation.json records the subsequent whole-route scenery, architecture and night-lighting pass. This file retains the earlier road, runoff, curb and barrier evidence."
 }

@@ -70,7 +70,7 @@ def texture_material(name: str) -> unreal.Material:
     elif name not in ('Sphere', 'Fence', 'Rubber', 'LightHalo','WynnDisplay','HarmonDisplay','StripDisplay'):
         glow = EDIT.create_material_expression(material, unreal.MaterialExpressionMultiply)
         strength = EDIT.create_material_expression(material, unreal.MaterialExpressionConstant)
-        strength.r = .85 if name.startswith('Shop') else .22 if not name.startswith('Wall') else .025
+        strength.r = .35 if name.startswith('Shop') else .22 if not name.startswith('Wall') else .025
         connect(strength, '', glow, 'B')
         connect(sample, 'RGB', glow, 'A')
         EDIT.connect_material_property(glow, '', unreal.MaterialProperty.MP_EMISSIVE_COLOR)

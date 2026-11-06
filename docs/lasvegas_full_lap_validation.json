@@ -2,7 +2,7 @@
   "date": "2026-11-06",
   "circuit": "Las Vegas Strip Circuit",
   "scope": "Whole-lap Las Vegas scenery and night lighting; track branch, no worktree. Road alignment, widths, contact, handling and camera preserved.",
-  "state": "Pending final tower/retail packaged full-lap review",
+  "state": "Approved after final packaged whole-route cockpit review",
   "reference": {
     "file": "User-supplied Vegas.mp4",
     "local_location": "Saved/Refs/Vegas.mp4 (reference only, ignored)",
@@ -18,7 +18,8 @@
     ],
     "registration": "Corners, landmarks and map stations; playback includes time changes/cuts, so elapsed video time is not used as lap distance.",
     "limits": "Mapped footprints with original architectural reconstruction. Vegetation, venue dimensions and luminance are visual estimates. No reference-video pixels or game meshes ship.",
-    "architecture_sources": "Attribution/Sources/lasvegas/landmark-architecture.json records operator/architect links for the original geometric reconstruction."
+    "architecture_sources": "Attribution/Sources/lasvegas/landmark-architecture.json records operator/architect links for the original geometric reconstruction.",
+    "sha256": "30e2046d226c3b8496cf3d57dbfe7a809578564eac1ea75a24b750e93ae6b2de"
   },
   "root_causes": [
     "Planting was restricted to stations below700m or above4650m; the opening sequence, Koval, Sphere and Sands had none.",
@@ -44,7 +45,7 @@
     "displays": "Original warm red/orange/gold Sphere LED ribbons, orange/black Wynn Plaza display and magenta Harmon Corner facade display.",
     "compound_volumes": "Flamingo whole-site podium14m, independent mapped7/9-floor parts23.8/30.6m. Cosmopolitan compound38m podium with separate mapped184m Chelsea/Boulevard towers retained. Neighboring83m buildings are not reattributed to Flamingo.",
     "sponsor_panels": "Connected same-material wall runs fit complete repeats near8m; words remain whole at material transitions.",
-    "retail": "Separate4.5m floors, projecting slabs, recessed warm/cool/fashion shop interiors, mullions and lit ground shops replace full-height flat window bays. Interior decoration is original and estimated.",
+    "retail": "Separate4.5m floors, projecting slabs, recessed warm/cool/fashion shop interiors, mullions and lit ground shops replace full-height flat window bays. Interior decoration is original and estimated. Final shop palettes are subdued neutral warm/cool glazing and stone, with0.35 emitted-light gain; actual LED displays remain distinct.",
     "secondary_towers": "Grand Chateau: mapped three-wing footprint, pink stone, narrow paired windows, projecting ribs and raised crowns. Signature: bronze glazing, pale piers, end balconies, arched roofs and upper light strips.119+9m and137+8m body/crown heights preserve the respective128/145m mapped maxima.",
     "harmon_corner": "Original93.2688\u00d718.288m upper LED follows the smoothed mapped public front boundary at1.2m exterior setback, above a14m retail body and two shop balcony levels. Builder rejects screen endpoints/midpoints inside the footprint. Display size from media operator; mounting/setback/lower details estimated. Widescreen artwork is original typography and geometric ribbons.",
     "paddock_roof": "Dark underside, paired truss chords, diagonals and warm strips replace a broad white canopy."
@@ -166,18 +167,82 @@
       "mypy": "Passed for four typed source modules",
       "ruff": "Passed"
     },
-    "saved_assets": "154 native meshes reopened in a fresh editor; triangles, geometry hashes and material bindings match. Road/runoff/concrete retain DefaultLit shading and irradiance input.",
-    "packaged_build": "Previous architecture pass passed; updated tower/retail pass in progress.",
+    "saved_assets": "154 native meshes reopened in a fresh editor after the final shop material refresh; triangles, source hashes and material bindings match. Private road/runoff/concrete remain DefaultLit with registered irradiance input.",
+    "packaged_build": "Passed after final tower/retail changes and subdued shop materials.",
     "unchanged_contact_inputs": {
       "drive_surface.bin": "b6a28f3573617fe0d7599881d3e2574cd9e58ad2055a7cc059614d46719f3acb",
       "track_limits.bin": "d8a7ff84708d3c7a1ba69e4bfefb5c30f6c01a229ac536a4825d9f6a59bfd8e0",
       "terrain.bin": "911af7e46b5d850ef6cf22075d5e28b5beb8eef74fbd6d27582b5559e5ee1e0c"
-    }
+    },
+    "live_driving": {
+      "recording": "20261106-141150-01A1B133",
+      "frames": 4611,
+      "all_drawn_frames_saved": true,
+      "active_driving_frames": 4303,
+      "valid_lap": true,
+      "lap_s": 160.2564901981158,
+      "barrier_contacts": 0,
+      "off_track_frames": 0,
+      "airborne_frames": 0,
+      "maximum_visual_penetration_m": 0,
+      "camera_fov_deg": [
+        90
+      ],
+      "presentation_only_replay": false
+    },
+    "session_flow": {
+      "passed": true,
+      "process_id": 2,
+      "circuits": 1,
+      "real_finite_lap": true,
+      "restart": true,
+      "seconds": 212.921
+    },
+    "cockpit_review": {
+      "stationary_stations_m": [
+        2100,
+        2350,
+        2800,
+        3250,
+        3650,
+        4200,
+        4750,
+        4850,
+        5150,
+        5600,
+        6100,
+        250,
+        700,
+        1150,
+        1800,
+        1950
+      ],
+      "stationary_settle_s": 8,
+      "moving_samples": 125,
+      "moving_station_spacing_m": 50,
+      "maximum_station_registration_error_m": 3.388427734375,
+      "review_artifacts": "build/reviews/lasvegas/full-lap/delivery-*.png and delivery-lap-0..7.jpg; ignored local evidence",
+      "primary_agent_review": "All eight final moving pages and sixteen stationary views inspected, including opening sequence, Koval, Sphere, Sands/Wynn, full Strip, Harmon and paddock."
+    },
+    "native": "make check passed all generated circuits and accepted contact/camera/session checks during the final geometry asset build. Material calibration changes no contact inputs.",
+    "render_manifest_sha256": "d38b0db8eba54853722040c3dd67c69126a59239723b132fe0ebbfd79c5b58b1"
   },
   "reviewer": {
     "model": "gpt-6-luna",
     "reasoning_effort": "high",
-    "status": "Pending final all-route packaged review"
+    "status": "approved",
+    "coverage": "All eight final moving-lap sheets, 125 samples at50m intervals across0\u20136200m; sixteen settled final cockpit views; supplied night footage and accepted Interlagos style. Source review checked corrected tower maxima and Harmon exterior screen placement.",
+    "closed": [
+      "Missing opening/Koval/Sands vegetation and hospitality",
+      "Missing Wynn Plaza retail footprint and digital monument",
+      "Whole-site tower-height extrusions at Flamingo and Cosmopolitan",
+      "Generic Venetian/Forum/Paris street architecture",
+      "Grand Chateau and Signature using unrelated window grids/crowns",
+      "Harmon LED covering shop floors and crossing the building footprint",
+      "Flat night-road visibility and oversized bright shop-panel colors",
+      "Strip stand intersecting the Harrahs frontage"
+    ],
+    "non_blocking_limits": "Background buildings and palms remain simplified; generic background is darker/more regular than the video. Road pools are more even and lamp heads starker. Some pit canopy surfaces remain broad and pale. Reviewer considered these polish within the accepted stylized game baseline, with no remaining release-blocking visual defect."
   },
   "scene": {
     "native_meshes": 154,
@@ -185,5 +250,154 @@
     "trees": 650,
     "fixture_heads": 512,
     "route_recipe_sha256": "862801424c12b5d96f965a7246a96bef61cf2e287aeeb8abd8b84bbcb30b56f5"
+  },
+  "performance": {
+    "platform": "Linux Vulkan SM5, Intel Iris Xe, Unreal5.8.3",
+    "resolution": [
+      1600,
+      900
+    ],
+    "screen_percentage": 100,
+    "anti_aliasing": "Existing TAA preset",
+    "vsync": false,
+    "frame_cap": 0,
+    "method": "Serial live driving from representative straight stations. CSV1400frames; warmup500, analyze900, require active live simulation in all900. These are representative runs, not a full-lap uncapped profile.",
+    "final_paired_runs": [
+      {
+        "circuit": "lasvegas",
+        "start_station_m": 5500,
+        "samples": 900,
+        "active_simulation_frames": 900,
+        "FrameTime": {
+          "median_ms": 28.33005,
+          "p95_ms": 32.7453,
+          "p99_ms": 35.2069
+        },
+        "GameThreadTime": {
+          "median_ms": 2.793,
+          "p95_ms": 3.322,
+          "p99_ms": 3.908
+        },
+        "RenderThreadTime": {
+          "median_ms": 5.003,
+          "p95_ms": 5.886,
+          "p99_ms": 6.467
+        },
+        "GPUTime": {
+          "median_ms": 23.54,
+          "p95_ms": 27.882,
+          "p99_ms": 30.357
+        }
+      },
+      {
+        "circuit": "monza",
+        "start_station_m": 5000,
+        "samples": 900,
+        "active_simulation_frames": 900,
+        "FrameTime": {
+          "median_ms": 31.4119,
+          "p95_ms": 37.529,
+          "p99_ms": 42.6767
+        },
+        "GameThreadTime": {
+          "median_ms": 2.8215000000000003,
+          "p95_ms": 3.918,
+          "p99_ms": 4.429
+        },
+        "RenderThreadTime": {
+          "median_ms": 4.612500000000001,
+          "p95_ms": 5.742,
+          "p99_ms": 6.621
+        },
+        "GPUTime": {
+          "median_ms": 25.3405,
+          "p95_ms": 31.386,
+          "p99_ms": 33.339
+        }
+      }
+    ],
+    "initial_final_vegas_run": [
+      {
+        "circuit": "lasvegas",
+        "start_station_m": 5500,
+        "samples": 900,
+        "active_simulation_frames": 900,
+        "FrameTime": {
+          "median_ms": 32.32705,
+          "p95_ms": 41.2663,
+          "p99_ms": 50.3219
+        },
+        "GameThreadTime": {
+          "median_ms": 2.75,
+          "p95_ms": 3.375,
+          "p99_ms": 3.805
+        },
+        "RenderThreadTime": {
+          "median_ms": 5.14,
+          "p95_ms": 6.007,
+          "p99_ms": 6.623
+        },
+        "GPUTime": {
+          "median_ms": 25.474,
+          "p95_ms": 32.67,
+          "p99_ms": 36.54
+        }
+      }
+    ],
+    "other_accepted_tracks_same_settings": [
+      {
+        "circuit": "interlagos",
+        "start_station_m": 3500,
+        "samples": 900,
+        "active_simulation_frames": 900,
+        "FrameTime": {
+          "median_ms": 27.317149999999998,
+          "p95_ms": 31.3139,
+          "p99_ms": 33.4709
+        },
+        "GameThreadTime": {
+          "median_ms": 3.124,
+          "p95_ms": 3.835,
+          "p99_ms": 4.176
+        },
+        "RenderThreadTime": {
+          "median_ms": 5.388,
+          "p95_ms": 6.431,
+          "p99_ms": 7.413
+        },
+        "GPUTime": {
+          "median_ms": 21.3945,
+          "p95_ms": 27.167,
+          "p99_ms": 28.444
+        }
+      },
+      {
+        "circuit": "silverstone",
+        "start_station_m": 3500,
+        "samples": 900,
+        "active_simulation_frames": 900,
+        "FrameTime": {
+          "median_ms": 28.43855,
+          "p95_ms": 36.8684,
+          "p99_ms": 44.5601
+        },
+        "GameThreadTime": {
+          "median_ms": 2.803,
+          "p95_ms": 3.9,
+          "p99_ms": 4.83
+        },
+        "RenderThreadTime": {
+          "median_ms": 4.628500000000001,
+          "p95_ms": 5.976,
+          "p99_ms": 10.686
+        },
+        "GPUTime": {
+          "median_ms": 22.598,
+          "p95_ms": 30.341,
+          "p99_ms": 34.617
+        }
+      }
+    ],
+    "comparison_limits": "Final Vegas repeat28.33ms median/32.75ms p95; first final sample32.33/41.27ms without a model change between them. Timing variation is retained, not discarded. Paired Monza31.41/37.53ms; its run logged a handled Unreal MTAccessDetector ensure at frame800 but exited0 and retained900 active samples. Earlier fresh Monza control31.12/36.50ms. Accepted assets unchanged; aggregate comparisons do not establish worst-case full-lap parity."
   }
 }
