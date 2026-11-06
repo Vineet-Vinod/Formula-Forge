@@ -856,8 +856,24 @@ def lasvegas_alignment(samples):
                 replacement.append(tuple(sum(p[axis] * w for p, w in zip(controls, weights)) for axis in (0, 1)))
         replacement.append(tuple(correction["beziers"][-1][-1]))
         local[first:last + 1] = replacement
-    return [(origin[0] + math.degrees(y / EARTH),
-             origin[1] + math.degrees(x / (EARTH * math.cos(math.radians(origin[0]))))) for x, y in local]
+    def geographic(points):
+        return [(origin[0] + math.degrees(y / EARTH),
+                 origin[1] + math.degrees(x / (EARTH * math.cos(math.radians(origin[0]))))) for x, y in points]
+    regular, _ = resample(geographic(local), 4.0)
+    local = [project(lat, lon, origin) for lat, lon in regular]
+    smooth = [circular_smooth([p[axis] for p in local], 24) for axis in (0, 1)]
+    tight = [circular_smooth([p[axis] for p in local], 2) for axis in (0, 1)]
+    # The short, already authored Harmon reversals need a smaller spatial filter.
+    filtered = []
+    for i, (x, y) in enumerate(local):
+        distance = math.hypot(x - 35, y + 710)
+        t = max(0.0, min(1.0, (distance - 135) / 75))
+        blend = t*t*t*(10 + t*(-15 + 6*t))
+        filtered.append(tuple(tight[axis][i] * (1-blend) + smooth[axis][i] * blend for axis in (0, 1)))
+    # Filtering the closed loop can move the initial sample by millimetres.
+    offset = filtered[0]
+    filtered = [(x-offset[0], y-offset[1]) for x, y in filtered]
+    return geographic(filtered)
 
 
 def build(spec, refresh=False):
@@ -954,6 +970,30 @@ out geom;
         turn = abs(wrap(heading(center, after) - heading(before, center)))
         blend = min(1.0, turn / 0.55)
         width.append((stations[index], spec["straight"] + (spec["base"] - spec["straight"]) * blend))
+    if spec["slug"] == "lasvegas":
+        recipe = json.loads((source / "layout-corrections.json").read_text())
+        anchor_stations = {}
+        for anchor in recipe["turns"]:
+            point = tuple(value * scale for value in anchor["near_source_xy_m"])
+            index = min(range(count), key=lambda i: math.dist(local[i], point))
+            anchor_stations[anchor["number"]] = stations[index]
+        controls = [(0., 14.5), (anchor_stations[14]-100, 14.5),
+                    (anchor_stations[14], 12.5), (anchor_stations[16], 12.5),
+                    (anchor_stations[16]+90, 13.5), (anchor_stations[17], 15.),
+                    (1815., 15.), (anchor_stations[1], 13.), (anchor_stations[4], 13.),
+                    (anchor_stations[5]-100, 13.), (anchor_stations[5], 12.),
+                    (anchor_stations[6], 13.), (anchor_stations[7], 12.),
+                    (anchor_stations[9], 12.), (anchor_stations[10], 13.5),
+                    (anchor_stations[11], 13.5), (anchor_stations[12], 12.5),
+                    (anchor_stations[12]+90, 14.5), (target, 14.5)]
+        controls.sort()
+        width = []
+        for station in stations:
+            i = max(0, min(len(controls)-2, next((j-1 for j, c in enumerate(controls) if c[0] > station), len(controls)-2)))
+            a, b = controls[i], controls[i+1]
+            t = max(0., min(1., (station-a[0]) / max(.001, b[0]-a[0])))
+            blend = t*t*t*(10 + t*(-15 + 6*t))
+            width.append((station, a[1] + (b[1]-a[1])*blend))
     width.append((target, width[0][1]))
 
     detected = apexes(local)
@@ -1049,6 +1089,9 @@ out geom;
         right.append(b)
     left = smooth_series(left, 6)
     right = smooth_series(right, 6)
+    if spec["slug"] == "lasvegas":
+        left = right = [.10] * count
+        runoff = [{"start": 0., "end": target, "side": 0, "surface": "Asphalt", "width": 0.}]
     shoulders = [(stations[index], left[index], right[index]) for index in range(0, count, 2)]
     shoulders.append((target, shoulders[0][1], shoulders[0][2]))
 
@@ -1218,13 +1261,18 @@ out geom;
         provenance["native_scenery"] = {
             "recipe": "make lasvegas-assets", "manifest": "scenery.json", "source_manifest": "scenery_sources.json",
             "runtime_assets": "Content/Generated/LasVegas", "start_finish_station_m": 1815,
-            "validation_reference": "docs/lasvegas_layout_validation.json",
+            "validation_reference": "docs/lasvegas_curves_validation.json",
             "note": "Native scenery replaces the initial generic road ribbon only for Las Vegas. The initial footprint count describes the old narrow corridor, not the current native city.",
         }
         provenance["not_claimed"] = "No orthophoto or post-construction engineering registration. Widths are estimates, and the 2022 bare-earth survey predates the racing deck. Cockpit and runtime review are recorded in docs/lasvegas_validation.json. Centimetre storage is not centimetre accuracy."
     if spec["slug"] == "lasvegas":
         provenance["route"]["authored_alignment"] = "layout-corrections.json"
         provenance["route"]["measured_plan_includes_authored_corrections"] = True
+        provenance["route"]["horizontal_filter"] = "4 m source sampling; 24 binomial passes away from Harmon, 2 in its authored short reversals, joined with a quintic transition. Dense native samples use local geometric normals."
+        provenance["width"] = {"method": "Explicit 12-15 m venue and corner controls, joined with quintic transitions; estimated from the reference, not inferred from instantaneous curvature."}
+        provenance["shoulders"] = {"default_m": .10, "method": "Narrow 0.10 m shoulder outside the 0.85 m kerb allowance. Local escapes and the blue Sphere apron are authored separately in escape-areas.json and united with the deck in boundaries.json."}
+        provenance["protection"] = "One closed paved-deck union supplies native walls and visible protection, including open escape-road mouths and tire-protected ends. Pit entry remains a closed game boundary. Escape dimensions are bounded visual estimates, not surveyed barrier positions."
+        provenance["buildings"]["method"] = "Initial narrow OSM corridor count only. The native scene uses the larger mapped skyline with individual tower, roof and podium reconstructions in landmark-architecture.json and scenery.json."
     (source / "provenance.json").write_text(json.dumps(provenance, indent=2) + "\n")
     write_plan(spec, local, turns)
     log(f"{spec['slug']}: {chosen['name']} {target:.1f} m (mapped {measured:.1f}, published {published}, scale {scale:.4f}) relief {relief:.1f} m turns {len(turns)} buildings {len(footprints)}")

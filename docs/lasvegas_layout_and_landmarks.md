@@ -17,9 +17,22 @@ triangles, barriers and scenery are generated. Its final lap length remains
 The road controls are estimates registered to the existing street data. Source
 origin, units, smoothing, normalization and the elevation datum are recorded in
 [provenance](../Attribution/Sources/lasvegas/provenance.json). The short chicane
-requires an 18.6 m audit window to distinguish its reversing turns; the previous
+requires a short audit window to distinguish its reversing turns; the previous
 111.6 m window combined them into one left turn. A regression checks those
-reversals and limits heading changes along the Sands approach.
+reversals and limits heading changes along the Sands approach. The later curve
+revision filters the angular street controls before interpolation, uses 12,288
+native samples and local geometric normals, and gives widths independent quintic
+transitions. The regression checks consecutive centre and painted-edge chords;
+adding samples alone had preserved the original corner kinks.
+
+[Escape areas](../Attribution/Sources/lasvegas/escape-areas.json) extend the
+incoming streets at T1, T5, T12 and T14. A localized blue apron follows the outside
+of the Sphere chicane. These are bounded reconstructions from the onboard and
+operator descriptions, not measured barrier footprints. Their union with the
+narrow road deck supplies the visible pavement, native contact and closed outer
+protection. Entrances stay open; far ends use tire stacks. The terrain is clipped
+to that same union so it cannot cover the escape-road floor. White-line timing
+limits exclude the extra paving.
 
 [Landmark profiles](../Attribution/Sources/lasvegas/landmark-architecture.json)
 retain the OSM feature IDs, individual facade choices, roof styles and height
@@ -28,26 +41,35 @@ Planet Hollywood, Flamingo, Treasure Island, Caesars, LINQ, Horseshoe and Elara
 have separate profiles.
 Classical towers have projecting bays and cornices, Paris has a mansard roof,
 Cosmopolitan has balcony slabs and glass rails, and Wynn/Encore retain their
-curved mapped footprints with bronze glazing and narrow horizontal bands.
+curved mapped footprints with bronze curtain glazing, dipped roof lines and
+horizontal illuminated bands. Curved facade lettering follows the building skin.
 Bellagio also has a rounded central dome. Entrance arcades and road-facing
-names add detail at cockpit height. These are
+names add detail at cockpit height. The Paris balloon has a rounded body and gold
+ribs; the casino podiums have shop glazing and arcades. The Veer pair has
+opposing 5 degree inclines, staggered yellow/clear glazing and horizontal louvers.
+Crystals has a low glazed retail body under reconstructed folded metal roof
+shards; its 30 m peak is not used as a uniform wall height. The adjacent museum
+frontage also uses large retail glazing. The broad Horseshoe
+footprint stays a low podium rather than becoming a solid tower. These are
 original simplified models in the game's existing style, not scanned buildings.
 The reference clip and hotel photographs supply observations; their pixels are
 not shipped as artwork.
 
-Hotel entrance signs, planters, marshal booths and sector signs sit outside the
-physical track barriers. Gantry supports account for each side's paved shoulder.
-Braking boards and widened apron stations follow the revised corner positions.
+The roadside hotel name boards have been removed. Marshal booths, palms,
+gantries and braking boards sit outside the physical paved areas. Braking boards
+follow the revised corner positions.
 Facade-only illumination keeps stone walls readable below the window and crown
 brightness. New original race-week panels vary by sector, and covered pedestrian
 bridges have visible frame bracing. The car, camera and driving controls are retained.
 A fixed light-field coordinate frame keeps the Las Vegas material copies aligned
 when fixture locations change.
 
-`make lasvegas-assets LASVEGAS_PYTHON=<python-with-Pillow>` rebuilds the native
+Install `tools/requirements-lasvegas.txt` in the authoring Python environment.
+`make lasvegas-assets LASVEGAS_PYTHON=<authoring-python>` rebuilds the native
 assets. The importer runs four serial mesh batches to stay within the guarded
 memory budget, then reopens every saved mesh in a fresh editor process.
 `make lasvegas-check` checks the generated geometry, types and lint. Use the
 same Python environment for both commands. Packaged cockpit views and a full
 live lap are required for visual acceptance; native checks alone do not establish
-that result.
+that result. Current evidence is in
+[the curve revision validation](lasvegas_curves_validation.json).

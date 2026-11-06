@@ -4,7 +4,7 @@ Nineteen layouts were built from OpenStreetMap raceway geometry and Copernicus G
 
 Suzuka is the only figure-eight. Its pit straight is raised to a 6.2 m deck when the 90 m surface model cannot see the bridge. The lower road is left on the sampled height.
 
-Walls are continuous, including pit entry. That closure is for the game. Widths are typical asphalt figures, not a white-line survey. The initial generated circuits use GLO-90, a surface model with stated vertical uncertainty of 8 m on streets and 5 m on permanent circuits. Las Vegas has since been rebuilt with USGS 3DEP bare-earth terrain, a filtered road profile, native scenery and cockpit review. Its original footprint count in the table is superseded by [scenery.json](../Attribution/Sources/lasvegas/scenery.json); see [Las Vegas validation](lasvegas_validation.json) for evidence and limits.
+Walls are continuous, including pit entry. That closure is for the game. Widths are typical asphalt figures, not a white-line survey. The initial generated circuits use GLO-90, a surface model with stated vertical uncertainty of 8 m on streets and 5 m on permanent circuits. Las Vegas has since been rebuilt with USGS 3DEP bare-earth terrain, a filtered road profile, native scenery and cockpit review. Its original footprint count in the table is superseded by [scenery.json](../Attribution/Sources/lasvegas/scenery.json); see [Las Vegas curve and scenery validation](lasvegas_curves_validation.json) for current evidence and limits.
 
 | Circuit | Mapped m | Published m | Scale | Relief m | Turns found | Buildings |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -22,7 +22,7 @@ Walls are continuous, including pit entry. That closure is for the game. Widths 
 | Malaysia | 5547.7 | 5543 | 0.9992 | 21.0 | 16 | 23 |
 | Singapore | 4956.8 | 4940 | 0.9966 | 20.0 | 17 | 32 |
 | COTA | 5504.3 | 5513 | 1.0016 | 21.9 | 18 | 22 |
-| Las Vegas | 6226.2 | 6201 | 0.9960 | 16.0 | 13 | 65 |
+| Las Vegas | 6179.1 | 6201 | 1.0035 | 16.2 | 13 | 65 |
 | Turkey | 5347.9 | 5338 | 0.9981 | 35.3 | 15 | 8 |
 | Portimao | 4661.4 | 4653 | 0.9982 | 27.9 | 16 | 11 |
 | Buddh | 5137.1 | 5141 | 1.0008 | 13.2 | 16 | 1 |

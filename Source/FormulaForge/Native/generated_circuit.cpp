@@ -3,6 +3,7 @@
 #include "authored_circuit_sampling.hpp"
 
 #include <algorithm>
+#include <array>
 #include <cmath>
 #include <cstdint>
 #include <fstream>
@@ -11,6 +12,7 @@
 namespace {
 constexpr float Units = 17.0f;
 constexpr float Kerb = 0.85f;
+#include "track_data/lasvegas_boundaries.inc"
 
 Vec2 leftNormal(Vec2 tangent) { return {-tangent.y, tangent.x}; }
 
@@ -43,20 +45,14 @@ bool writeBytes(const std::string& path, const char* magic, std::size_t magicSiz
 
 float circuitShoulderMeters(const TrackCatalogEntry& track, float station, bool left) {
     if (track.id == TrackLayoutId::LasVegas) {
-        const auto apron = [station](float center, float extent, float width) {
-            const float t = std::clamp(1.0f - std::abs(station - center) / extent, 0.0f, 1.0f);
-            return width * t * t * (3.0f - 2.0f * t);
-        };
-        // Reference dry lap: T1 has an open paved apron; the city sections are wall tight.
-        return 2.2f + (left ? apron(1999.0f, 110.0f, 10.0f) + apron(688.0f, 65.0f, 3.0f)
-                           : apron(3289.0f, 65.0f, 3.5f));
+        return 0.10f;
     }
     return std::clamp(sampleTrackShoulderMeters(track, station, left), 1.2f, 24.0f);
 }
 
 std::vector<CircuitSample> sampleCircuit(const TrackCatalogEntry& track, int sampleCount) {
-    if (sampleCount == 0) sampleCount = track.id == TrackLayoutId::LasVegas ? 6144 : 1536;
-    const int tangentSpan = std::max(1, sampleCount / 512);
+    if (sampleCount == 0) sampleCount = track.id == TrackLayoutId::LasVegas ? 12288 : 1536;
+    const int tangentSpan = track.id == TrackLayoutId::LasVegas ? 1 : std::max(1, sampleCount / 512);
     const auto plan = authoredCircuitPlan(track.centerline, track.centerlineScale, track.targetLengthMeters, Units,
         track.mirrorCenterlineY, sampleCount);
     const int count = static_cast<int>(plan.size());
@@ -80,76 +76,87 @@ void buildGeneratedSupport(const TrackCatalogEntry& track, const std::vector<Cir
     support.runoff.clear();
     const int count = static_cast<int>(samples.size());
     const bool paved = streetVenue(track);
-    for (int index = 0; index < count; ++index) {
-        const int next = (index + 1) % count;
-        const CircuitSample& first = samples[index];
-        const CircuitSample& second = samples[next];
-        for (const bool left : {true, false}) {
-            const float sign = left ? 1.0f : -1.0f;
-            const float laneA = sign * (first.halfWidth + Kerb + circuitShoulderMeters(track, first.station, left));
-            const float laneB = sign * (second.halfWidth + Kerb + circuitShoulderMeters(track, second.station, left));
-            const auto separate = [&](Vec2 point, const CircuitSample& own) {
-                const float minimum = (own.halfWidth + 1.0f) * Units;
-                for (int step = 0; step < 10; ++step) {
-                    bool crowded = false;
+    if (track.id != TrackLayoutId::LasVegas || kLasVegasWalls.empty()) {
+        for (int index = 0; index < count; ++index) {
+            const int next = (index + 1) % count;
+            const CircuitSample& first = samples[index];
+            const CircuitSample& second = samples[next];
+            for (const bool left : {true, false}) {
+                const float sign = left ? 1.0f : -1.0f;
+                const float laneA = sign * (first.halfWidth + Kerb + circuitShoulderMeters(track, first.station, left));
+                const float laneB = sign * (second.halfWidth + Kerb + circuitShoulderMeters(track, second.station, left));
+                const auto separate = [&](Vec2 point, const CircuitSample& own) {
+                    const float minimum = (own.halfWidth + 1.0f) * Units;
+                    for (int step = 0; step < 10; ++step) {
+                        bool crowded = false;
+                        for (int other = 0; other < count; other += std::max(1, count / 1536)) {
+                            float gap = std::abs(own.station - samples[other].station);
+                            gap = std::min(gap, track.targetLengthMeters - gap);
+                            if (gap < 50.0f || length(samples[other].sim - own.sim) < 8.0f * Units) continue;
+                            if (length(point - samples[other].sim) < (samples[other].halfWidth + 1.0f) * Units) {
+                                crowded = true;
+                                break;
+                            }
+                        }
+                        const Vec2 toward = own.sim - point;
+                        const float distance = length(toward);
+                        if (!crowded || distance <= minimum + 0.05f * Units) break;
+                        point += toward / distance * Units;
+                    }
+                    const Vec2 delta = point - own.sim;
+                    const float distance = length(delta);
+                    if (distance < minimum) return own.sim + delta / std::max(0.001f, distance) * minimum;
+                    return point;
+                };
+                Vec2 a = separate(offsetPoint(first, laneA), first);
+                Vec2 b = separate(offsetPoint(second, laneB), second);
+                const float bottomA = (first.elevation + first.bankSlope * laneA) * Units;
+                const float bottomB = (second.elevation + second.bankSlope * laneB) * Units;
+                const float clearance = std::min(first.halfWidth, second.halfWidth) * Units;
+                bool crosses = false;
+                for (int step = 0; step <= 4; ++step) {
+                    const Vec2 point = first.sim + (second.sim - first.sim) * (static_cast<float>(step) / 4.0f);
+                    if (distanceToSegment(point, a, b) < clearance) crosses = true;
+                }
+                for (int step = 0; step <= 4 && !crosses; ++step) {
+                    const Vec2 point = a + (b - a) * (static_cast<float>(step) / 4.0f);
                     for (int other = 0; other < count; other += std::max(1, count / 1536)) {
-                        float gap = std::abs(own.station - samples[other].station);
+                        float gap = std::abs(first.station - samples[other].station);
                         gap = std::min(gap, track.targetLengthMeters - gap);
-                        if (gap < 50.0f || length(samples[other].sim - own.sim) < 8.0f * Units) continue;
-                        if (length(point - samples[other].sim) < (samples[other].halfWidth + 1.0f) * Units) {
-                            crowded = true;
+                        if (gap < 25.0f || length(samples[other].sim - first.sim) < 8.0f * Units) continue;
+                        if (std::abs(first.elevation - samples[other].elevation) > 3.0f) continue;
+                        if (length(point - samples[other].sim) < samples[other].halfWidth * Units) {
+                            crosses = true;
                             break;
                         }
                     }
-                    const Vec2 toward = own.sim - point;
-                    const float distance = length(toward);
-                    if (!crowded || distance <= minimum + 0.05f * Units) break;
-                    point += toward / distance * Units;
                 }
-                const Vec2 delta = point - own.sim;
-                const float distance = length(delta);
-                if (distance < minimum) return own.sim + delta / std::max(0.001f, distance) * minimum;
-                return point;
-            };
-            Vec2 a = separate(offsetPoint(first, laneA), first);
-            Vec2 b = separate(offsetPoint(second, laneB), second);
-            const float bottomA = (first.elevation + first.bankSlope * laneA) * Units;
-            const float bottomB = (second.elevation + second.bankSlope * laneB) * Units;
-            const float clearance = std::min(first.halfWidth, second.halfWidth) * Units;
-            bool crosses = false;
-            for (int step = 0; step <= 4; ++step) {
-                const Vec2 point = first.sim + (second.sim - first.sim) * (static_cast<float>(step) / 4.0f);
-                if (distanceToSegment(point, a, b) < clearance) crosses = true;
-            }
-            for (int step = 0; step <= 4 && !crosses; ++step) {
-                const Vec2 point = a + (b - a) * (static_cast<float>(step) / 4.0f);
-                for (int other = 0; other < count; other += std::max(1, count / 1536)) {
-                    float gap = std::abs(first.station - samples[other].station);
-                    gap = std::min(gap, track.targetLengthMeters - gap);
-                    if (gap < 25.0f || length(samples[other].sim - first.sim) < 8.0f * Units) continue;
-                    if (std::abs(first.elevation - samples[other].elevation) > 3.0f) continue;
-                    if (length(point - samples[other].sim) < samples[other].halfWidth * Units) {
-                        crosses = true;
-                        break;
-                    }
+                if (crosses) {
+                    // The straight wall would cut a lane. Leave this join open rather than block the road.
+                } else {
+                    const float bottom = std::min(bottomA, bottomB);
+                    support.barriers.push_back({a, b, bottom, bottom + 0.95f * Units, 0.15f * Units});
                 }
+                const Vec2 roadA = offsetPoint(first, sign * (first.halfWidth + Kerb));
+                const Vec2 roadB = offsetPoint(second, sign * (second.halfWidth + Kerb));
+                bool asphalt = paved;
+                for (const TrackRunoffZone& zone : track.runoffProfile) {
+                    if (zone.widthMeters <= 0.0f || first.station < zone.startMeters || first.station > zone.endMeters) continue;
+                    if (zone.side != 0 && (zone.side > 0) != left) continue;
+                    asphalt = zone.surface == TrackRunoffSurface::Asphalt;
+                }
+                support.runoff.push_back({roadA, a, b, asphalt});
+                support.runoff.push_back({roadA, b, roadB, asphalt});
             }
-            if (crosses) {
-                // The straight wall would cut a lane. Leave this join open rather than block the road.
-            } else {
-                const float bottom = std::min(bottomA, bottomB);
-                support.barriers.push_back({a, b, bottom, bottom + 0.95f * Units, 0.15f * Units});
-            }
-            const Vec2 roadA = offsetPoint(first, sign * (first.halfWidth + Kerb));
-            const Vec2 roadB = offsetPoint(second, sign * (second.halfWidth + Kerb));
-            bool asphalt = paved;
-            for (const TrackRunoffZone& zone : track.runoffProfile) {
-                if (zone.widthMeters <= 0.0f || first.station < zone.startMeters || first.station > zone.endMeters) continue;
-                if (zone.side != 0 && (zone.side > 0) != left) continue;
-                asphalt = zone.surface == TrackRunoffSurface::Asphalt;
-            }
-            support.runoff.push_back({roadA, a, b, asphalt});
-            support.runoff.push_back({roadA, b, roadB, asphalt});
+        }
+
+    }
+    if (track.id == TrackLayoutId::LasVegas && !kLasVegasWalls.empty()) {
+        support.barriers.assign(kLasVegasWalls.begin(), kLasVegasWalls.end());
+        for (const auto& triangle : kLasVegasPaving) {
+            support.runoff.push_back({{triangle[0] * Units, -triangle[1] * Units},
+                                      {triangle[3] * Units, -triangle[4] * Units},
+                                      {triangle[6] * Units, -triangle[7] * Units}, true});
         }
     }
 
@@ -256,7 +263,9 @@ bool writeGeneratedContact(const TrackCatalogEntry& track, const std::vector<Cir
         pushLimit(la, ra, rb);
         pushLimit(la, rb, lb);
     }
-    (void)track;
+    if (track.id == TrackLayoutId::LasVegas) {
+        for (const auto& triangle : kLasVegasPaving) drive.insert(drive.end(), triangle.begin(), triangle.end());
+    }
     const bool surface = writeBytes(directory + "/drive_surface.bin", "FFSURF1", 8,
         static_cast<std::uint32_t>(drive.size() / 9), drive.data(), drive.size());
     const bool bounds = writeBytes(directory + "/track_limits.bin", "FFTL", 4,

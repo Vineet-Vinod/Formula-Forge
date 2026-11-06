@@ -249,6 +249,10 @@ FFTrackProjection FFSimulation::Project(Vec2 position) const {
 }
 
 float FFSimulation::Ground(Vec2 position, bool protectMainRoad) const {
+    if (circuit == TrackLayoutId::LasVegas) {
+        const auto surfaceHeight = driveSurface.Height(position.x / Units, -position.y / Units);
+        if (surfaceHeight) return *surfaceHeight * Units;
+    }
     const FFTrackProjection projection = Project(position);
     const float road = projection.elevation + projection.bankSlope * projection.lane;
     const float blend = smoothstep(std::clamp((std::abs(projection.lane) / Units - projection.halfWidth) / 4.0f, 0.0f, 1.0f));

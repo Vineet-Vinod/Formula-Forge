@@ -11,11 +11,15 @@ import struct
 from pathlib import Path
 
 from lasvegas_dataclasses import (
+    EscapeRegion,
     LandmarkProfile,
+    LeaningTower,
     MeshTile,
     Point,
     RoadStation,
+    RoofShard,
     TerrainGrid,
+    TowerRoof,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -54,7 +58,7 @@ class Scenery:
     def __init__(self) -> None:
         self.road = [RoadStation(**{key: float(value) for key, value in row.items()})
                      for row in csv.DictReader((SCRATCH / 'road.csv').open())]
-        if len(self.road) != 6144:
+        if len(self.road) != 12288:
             raise ValueError('Run make check to export the canonical Las Vegas samples')
         self.detail_stride = len(self.road) // 1536
         self.lights: list[Point] = []
@@ -72,9 +76,50 @@ class Scenery:
         provenance = json.loads((SOURCE / 'provenance.json').read_text())
         self.latitude = provenance['origin']['latitude']
         self.longitude = provenance['origin']['longitude']
-        profiles = json.loads((SOURCE / 'landmark-architecture.json').read_text())['profiles']
-        self.profiles = {int(key): LandmarkProfile(**value) for key, value in profiles.items()}
+        architecture = json.loads((SOURCE / 'landmark-architecture.json').read_text())
+        self.profiles = {int(key): LandmarkProfile(**value) for key, value in architecture['profiles'].items()}
+        self.leaning_towers = {int(key): LeaningTower(**value) for key, value in architecture['leaning_towers'].items()}
+        self.crystal_roofs = [RoofShard(**value) for value in architecture['crystal_roofs']]
         self.scale = provenance['route']['uniform_scale']
+        boundary_record = SOURCE / 'boundaries.json'
+        regions = json.loads(boundary_record.read_text())['regions'] if boundary_record.exists() else []
+        self.escapes = [EscapeRegion(**region) for region in regions]
+        recipe = json.loads((SOURCE / 'layout-corrections.json').read_text())
+        self.turns = {}
+        for turn in recipe['turns']:
+            x,y = (value * self.scale for value in turn['near_source_xy_m'])
+            self.turns[turn['number']] = min(self.road, key=lambda p: (p.x-x)**2+(p.y-y)**2).station
+
+
+    @staticmethod
+    def in_region(x: float, y: float, region: EscapeRegion) -> bool:
+        inside = False
+        for a,b in zip(region.ring,region.ring[1:]+region.ring[:1]):
+            if (a[1] > y) != (b[1] > y) and x < a[0]+(y-a[1])*(b[0]-a[0])/(b[1]-a[1]):
+                inside = not inside
+        return inside
+
+    def blue_paint(self, x: float, y: float) -> bool:
+        return any(region.paint == 'BlueRunoff' and self.in_region(x,y,region) for region in self.escapes)
+
+    def outer_lane(self, sample: RoadStation, side: int) -> float:
+        lane = sample.half_width + .95
+        dx,dy = sample.ty*side,-sample.tx*side
+        for region in self.escapes:
+            hits = []
+            for a,b in zip(region.ring,region.ring[1:]+region.ring[:1]):
+                ex,ey = b[0]-a[0],b[1]-a[1]
+                divisor = dx*ey-dy*ex
+                if abs(divisor) < .00001:
+                    continue
+                ax,ay = a[0]-sample.x,a[1]-sample.y
+                t = (ax*ey-ay*ex)/divisor
+                u = (ax*dy-ay*dx)/divisor
+                if 0 <= u <= 1:
+                    hits.append(t)
+            if hits and min(hits) <= lane+.01 and max(hits) >= 0:
+                lane = max(lane,max(hits))
+        return lane
 
     def projected(self, lat: float, lon: float) -> tuple[float, float]:
         x = math.radians(lon - self.longitude) * 6378137 * math.cos(math.radians(self.latitude)) * self.scale
@@ -200,38 +245,75 @@ class Scenery:
             self.triangle(kind, 'Crowd', top_right, top_left, left, ((u1, .5), (u0, .5), (u0, 1)))
             self.triangle(kind, 'Crowd', top_right, left, right, ((u1, .5), (u0, 1), (u1, 1)))
 
+    def escape_end(self, x: float, y: float) -> bool:
+        for region in self.escapes:
+            if region.paint != 'Runoff':
+                continue
+            a,b=region.ring[2],region.ring[3]
+            dx,dy=b[0]-a[0],b[1]-a[1]
+            t=max(0.,min(1.,((x-a[0])*dx+(y-a[1])*dy)/(dx*dx+dy*dy)))
+            if math.hypot(x-a[0]-t*dx,y-a[1]-t*dy) < .3:
+                return True
+        return False
+
+    def tyre_barriers(self) -> None:
+        for region in self.escapes:
+            if region.paint != 'Runoff':
+                continue
+            a,b=region.ring[2],region.ring[3]
+            count=max(1,math.ceil(math.dist(a,b)/.63))
+            for stack in range(count):
+                t=(stack+.5)/count
+                x=a[0]+(b[0]-a[0])*t+region.direction[0]*.17
+                y=a[1]+(b[1]-a[1])*t+region.direction[1]*.17
+                z=region.origin[2]
+                for level in range(3):
+                    for segment in range(16):
+                        p0,p1=segment*math.tau/16,(segment+1)*math.tau/16
+                        lower0=(x+.32*math.cos(p0),y+.32*math.sin(p0),z+level*.29)
+                        lower1=(x+.32*math.cos(p1),y+.32*math.sin(p1),z+level*.29)
+                        upper0=add(lower0,(0,0,.27))
+                        upper1=add(lower1,(0,0,.27))
+                        self.quad('Tile_Tyres','TyreRubber',lower0,lower1,upper1,upper0)
+                        inner0=(x+.17*math.cos(p0),y+.17*math.sin(p0),upper0[2])
+                        inner1=(x+.17*math.cos(p1),y+.17*math.sin(p1),upper1[2])
+                        self.quad('Tile_Tyres','TyreSidewall',upper0,upper1,inner1,inner0)
+
     def track(self) -> None:
         raw = (DATA / 'drive_surface.bin').read_bytes()
         if raw[:8] != b'FFSURF1\0':
             raise ValueError('Invalid driving surface')
         triangles = list(struct.iter_unpack('<9f', raw[12:]))
-        for values in triangles:
+        for triangle_index, values in enumerate(triangles):
             a, b, c = values[:3], values[3:6], values[6:9]
             if cross(sub(b, a), sub(c, a))[2] < 0:
                 b, c = c, b
-            self.triangle('Tile_Road', 'Road', a, b, c,
+            material = 'Road' if triangle_index < len(self.road)*2 else 'Runoff'
+            if material != 'Road' and self.blue_paint((a[0]+b[0]+c[0])/3,(a[1]+b[1]+c[1])/3):
+                material = 'BlueRunoff'
+            self.triangle('Tile_Road', material, a, b, c,
                           tuple((p[0] / 4, p[1] / 4) for p in (a, b, c)))
         barriers = list(csv.DictReader((SCRATCH / 'barriers.csv').open()))
-        wall_coordinates: dict[tuple[float, float], tuple[float, bool]] = {}
+        wall_coordinates: dict[tuple[float, float], float] = {}
         for barrier in barriers:
             ax, ay, bx, by, bottom, top, radius = (float(value) for value in barrier.values())
             a, b = (ax, ay, bottom), (bx, by, bottom)
-            self.beam('Tile_Protection', 'Concrete', add(a, (0, 0, (top - bottom) / 2)),
+            end_barrier = self.escape_end((ax+bx)/2,(ay+by)/2)
+            if not end_barrier:
+                self.beam('Tile_Protection', 'Concrete', add(a, (0, 0, (top - bottom) / 2)),
                       add(b, (0, 0, (top - bottom) / 2)), radius * 2, top - bottom)
             sample, _ = self.nearest((ax + bx) / 2, (ay + by) / 2)
             heading = sample.station
             panel = 'WallGold' if 660 < heading < 1450 else 'WallPink' if 3400 < heading < 4200 else ('WallBlue' if 2200 < heading < 3400 else 'WallDark')
-            inward = mul(norm((sample.x - (ax + bx) / 2, sample.y - (ay + by) / 2, 0)), radius + .012)
+            inward = mul(norm((by-ay,ax-bx,0)),radius+.012)
             panel_a, panel_b = add(a, inward), add(b, inward)
             start_key, end_key = (round(ax, 3), round(ay, 3)), (round(bx, 3), round(by, 3))
-            default_reverse = (ax - sample.x) * sample.ty - (ay - sample.y) * sample.tx > 0
-            distance, reverse = wall_coordinates.get(start_key, (0.0, default_reverse))
-            span = math.dist(a, b)
-            wall_coordinates[end_key] = distance + span, reverse
-            if reverse:
-                panel_a, panel_b = panel_b, panel_a
-            phase = -(distance + span) / 8 if reverse else distance / 8
-            self.banner(add(panel_a, (0, 0, .02)), add(panel_b, (0, 0, .02)), .88, panel, 'Tile_Protection', phase, span / 8)
+            distance = wall_coordinates.get(start_key,0.0)
+            span = math.dist(a,b)
+            wall_coordinates[end_key] = distance+span
+            phase = distance/8
+            if not end_barrier:
+                self.banner(add(panel_a, (0, 0, .02)), add(panel_b, (0, 0, .02)), .88, panel, 'Tile_Protection', phase, span / 8)
             self.banner(add(a, (0, 0, top - bottom)), add(b, (0, 0, top - bottom)), 2.55, 'Fence', 'Tile_Protection')
             if int(sample.station / 8) != int((sample.station - LENGTH / len(self.road)) / 8):
                 self.beam('Tile_Protection', 'Steel', add(a, (0, 0, top - bottom)), add(a, (0, 0, 3.5)), .065)
@@ -249,19 +331,8 @@ class Scenery:
                 if sign < 0:
                     a, b, c, d = d, c, b, a
                 self.quad('Tile_Road', 'White', a, b, c, d)
-                # Asphalt shoulder reaches the physical wall; no unmodelled slit outside the white line.
-                outer = sample.point(sign * (sample.half_width + .85 + (sample.left_shoulder if sign > 0 else sample.right_shoulder)), -.012)
-                outer_next = nxt.point(sign * (nxt.half_width + .85 + (nxt.left_shoulder if sign > 0 else nxt.right_shoulder)), -.012)
-                a, b, c, d = sample.point(lane), nxt.point(lane_next), outer_next, outer
-                if sign > 0:
-                    a, b, c, d = d, c, b, a
-                self.quad('Tile_Road', 'Runoff', a, b, c, d, 1, 1)
-            if 1962 < sample.station < 2047:
-                lane = sample.half_width + sample.left_shoulder + .4
-                next_lane = nxt.half_width + nxt.left_shoulder + .4
-                self.quad('Tile_Road', 'Red', sample.point(lane, .015), sample.point(lane + .5, .015),
-                          nxt.point(next_lane + .5, .015), nxt.point(next_lane, .015))
-            for apex, outside in ((688, 1), (1999, 1), (3289, -1), (3748, 1), (3954, 1), (4926, 1)):
+            for number, outside in ((14, 1), (1, 1), (5, -1), (7, 1), (9, 1), (12, 1)):
+                apex = self.turns[number]
                 if not apex - 135 < sample.station < apex + 25:
                     continue
                 def rubber_lane(station: RoadStation, apex: float = apex, outside: int = outside) -> float:
@@ -303,6 +374,7 @@ class Scenery:
             if index % (12 * self.detail_stride) == 0:
                 for side in (-1, 1):
                     self.floodlight(sample, side)
+        self.tyre_barriers()
         start = min(self.road, key=lambda sample: abs(sample.station - 1815))
         for side in range(20):
             lane_a = -start.half_width + side * start.half_width / 10
@@ -314,26 +386,25 @@ class Scenery:
                 self.quad('Tile_Road', material, p, q, add(q, (start.tx * .35, start.ty * .35, 0)),
                           add(p, (start.tx * .35, start.ty * .35, 0)))
         self.gantry(1830, 'VegasSign')
-        for station in (670, 2050, 3350, 4150, 4990, 6080):
-            self.gantry(station, 'RaceSign')
-        for apex, outside in ((688, 1), (1999, 1), (3289, -1), (3748, 1), (3954, 1), (4926, 1)):
+        for gantry_station in (670, 2050, 3350, 4150, 4990, 6080):
+            self.gantry(gantry_station, 'RaceSign')
+        for number, outside in ((14, 1), (1, 1), (5, -1), (7, 1), (9, 1), (12, 1)):
+            apex = self.turns[number]
             for distance in (150, 100, 50):
                 station = apex - distance
                 sample = min(self.road, key=lambda sample: abs(sample.station - station))
-                shoulder = sample.left_shoulder if outside > 0 else sample.right_shoulder
-                lane = outside * (sample.half_width + shoulder - .1)
+                lane = outside * (self.outer_lane(sample,outside) - .9)
                 a, b = sample.point(lane - .65, 1.25), sample.point(lane + .65, 1.25)
                 offset = (-sample.tx * .12, -sample.ty * .12, 0.)
                 self.banner(add(a, offset), add(b, offset), 1.25, str(distance))
-                self.beam('Tile_Detail', 'Steel', sample.point(outside * (sample.half_width + shoulder + .85), 1.9),
+                self.beam('Tile_Detail', 'Steel', sample.point(outside * (self.outer_lane(sample,outside) + .2), 1.9),
                           sample.point(lane, 1.9), .05)
                 self.boards.append({'apex': apex, 'distance': distance, 'station': sample.station, 'side': outside})
 
     def floodlight(self, sample: RoadStation, sign: int) -> None:
-        shoulder = sample.left_shoulder if sign > 0 else sample.right_shoulder
-        base = sample.point(sign * (sample.half_width + shoulder + 1.4))
+        base = sample.point(sign * (self.outer_lane(sample,sign) + .6))
         high = add(base, (0, 0, 11.5))
-        arm = sample.point(sign * (sample.half_width + .8), 11.2)
+        arm = sample.point(sign * (self.outer_lane(sample,sign) - 1.2), 11.2)
         heading = math.atan2(sample.ty, sample.tx)
         self.beam('Tile_Detail', 'Steel', base, high, .14)
         self.beam('Tile_Detail', 'Steel', high, arm, .11)
@@ -350,8 +421,8 @@ class Scenery:
 
     def gantry(self, station: float, material: str) -> None:
         sample = min(self.road, key=lambda sample: abs(sample.station - station))
-        left = sample.point(sample.half_width + sample.left_shoulder + 1.6)
-        right = sample.point(-(sample.half_width + sample.right_shoulder + 1.6))
+        left = sample.point(self.outer_lane(sample,1) + .6)
+        right = sample.point(-(self.outer_lane(sample,-1) + .6))
         for point in (left, right):
             self.beam('Tile_Detail', 'Steel', point, add(point, (0, 0, 7)), .3)
         if station != 1830:
@@ -380,43 +451,85 @@ class Scenery:
                          math.atan2(sample.ty, sample.tx))
 
     def terrain_mesh(self) -> None:
-        grid = self.terrain
-        step = 12.0
-        for y_index in range(int((grid.rows - 1) * grid.step / step)):
-            y = grid.y + y_index * step
-            for x_index in range(int((grid.columns - 1) * grid.step / step)):
-                x = grid.x + x_index * step
-                points = [(x, y), (x + step, y), (x + step, y + step), (x, y + step)]
-                samples = [self.nearest(px, py) for px, py in points]
-                if any(distance < sample.half_width + max(sample.left_shoulder, sample.right_shoulder) + 1 for sample, distance in samples):
-                    continue
-                corners = [(px, py, self.ground(px, py)) for px, py in points]
-                self.quad('Tile_Ground', 'CityGround', corners[0], corners[1], corners[2], corners[3], step / 5, step / 5)
-        # A finer strip joins the road shoulder to the city sheet, without crossing the road itself.
-        for index, sample in enumerate(self.road):
-            nxt = self.road[(index + 1) % len(self.road)]
-            for sign in (-1, 1):
-                shoulder = sample.left_shoulder if sign > 0 else sample.right_shoulder
-                shoulder_next = nxt.left_shoulder if sign > 0 else nxt.right_shoulder
-                for inner, outer in [(.7, 8), (8, 24)]:
-                    a = sample.point(sign * (sample.half_width + shoulder + inner))
-                    b = nxt.point(sign * (nxt.half_width + shoulder_next + inner))
-                    c = nxt.point(sign * (nxt.half_width + shoulder_next + outer))
-                    d = sample.point(sign * (sample.half_width + shoulder + outer))
-                    strip = [a, b, c, d]
-                    if any(self.nearest(p[0], p[1])[1] < self.nearest(p[0], p[1])[0].half_width + .6 for p in strip):
-                        continue
-                    corners = [(p[0], p[1], self.ground(p[0], p[1]) - .03) for p in strip]
-                    if sign > 0:
-                        corners.reverse()
-                    self.quad('Tile_Ground', 'CityGround', corners[0], corners[1], corners[2], corners[3], 1, 2)
+        payload = (SOURCE / 'terrain_mesh.bin').read_bytes()
+        for values in struct.iter_unpack('<9f', payload):
+            a, b, c = values[:3], values[3:6], values[6:9]
+            if cross(sub(b,a),sub(c,a))[2] < 0:
+                b,c = c,b
+            self.triangle('Tile_Ground', 'CityGround', a,b,c,
+                          tuple((p[0]/5,p[1]/5) for p in (a,b,c)))
+
+    @staticmethod
+    def curved_footprint(ring: list[tuple[float,float]]) -> list[tuple[float,float]]:
+        result = []
+        count = len(ring)
+        for i,a in enumerate(ring):
+            previous,b,after = ring[i-1],ring[(i+1)%count],ring[(i+2)%count]
+            span = math.dist(a,b)
+            if span < .05:
+                continue
+            edge = norm((b[0]-a[0],b[1]-a[1],0))
+            incoming = norm((a[0]-previous[0],a[1]-previous[1],0))
+            outgoing = norm((after[0]-b[0],after[1]-b[1],0))
+            m0 = mul(norm(add(incoming,edge)),span) if sum(x*y for x,y in zip(incoming,edge)) > .92 else mul(edge,span)
+            m1 = mul(norm(add(edge,outgoing)),span) if sum(x*y for x,y in zip(edge,outgoing)) > .92 else mul(edge,span)
+            steps = max(1,math.ceil(span/2))
+            for j in range(steps):
+                t=j/steps
+                value = tuple((2*t**3-3*t*t+1)*a[k] + (t**3-2*t*t+t)*m0[k]
+                              + (-2*t**3+3*t*t)*b[k] + (t**3-t*t)*m1[k] for k in (0,1))
+                result.append((value[0],value[1]))
+        return result
+
+    def leaning_tower(self, ring: list[tuple[float, float]], tower: LeaningTower, osm_id: int) -> None:
+        z = min(self.ground(*p) for p in ring)
+        slope = math.tan(math.radians(tower.north_lean_deg))
+        if sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(ring,ring[1:]+ring[:1])) < 0:
+            ring.reverse()
+        for a,b in zip(ring,ring[1:]+ring[:1]):
+            span = math.dist(a,b)
+            if span < .1:
+                continue
+            def point(t: float, level: float, a: tuple[float,float] = a,
+                      b: tuple[float,float] = b) -> Point:
+                return a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t+slope*level,z+level
+            self.quad('Building_Veer','VeerFacade',point(0,24),point(1,24),
+                      point(1,tower.height_m),point(0,tower.height_m),span/16,(tower.height_m-24)/28.8)
+            self.quad('Building_Veer','Glass',point(0,0),point(1,0),point(1,24),point(0,24),span/8,3)
+            for level in range(25,int(tower.height_m),2):
+                self.beam('Building_Veer','Steel',point(0,level),point(1,level),.45,.09)
+            bays = max(1,round(span/3))
+            for bay in range(bays+1):
+                self.beam('Building_Veer','Steel',point(bay/bays,0),point(bay/bays,tower.height_m),.06)
+            self.beam('Building_Veer','Steel',point(0,tower.height_m),point(1,tower.height_m),.6,.6)
+        top = [(x,y+slope*tower.height_m,z+tower.height_m) for x,y in ring]
+        center = tuple(sum(p[axis] for p in top)/len(top) for axis in range(3))
+        for top_a,top_b in zip(top,top[1:]+top[:1]):
+            self.triangle('Building_Veer','Roof',(center[0],center[1],center[2]),top_a,top_b)
+        self.landmarks.append({'name':tower.name,'osm_id':osm_id,'height_m':tower.height_m,
+                               'north_lean_deg':tower.north_lean_deg,
+                               'x':sum(p[0] for p in ring)/len(ring),'y':sum(p[1] for p in ring)/len(ring)})
 
     def building(self, ring: list[tuple[float, float]], height: float, material: str, name: str, osm_id: int) -> None:
         profile = self.profiles.get(osm_id)
         if profile is not None:
             height, material = profile.height_m - profile.crown_m, profile.facade
             name = name or profile.name
+            if profile.style == 'arcade':
+                material = 'PodiumStone'
+        if profile is not None and profile.name in ('Wynn','Encore','Bellagio') and height > 60:
+            ring = self.curved_footprint(ring)
         center = sum(p[0] for p in ring) / len(ring), sum(p[1] for p in ring) / len(ring)
+        roof = None
+        if profile is not None and profile.name in ('Wynn','Encore') and height > 60:
+            xx = sum((x-center[0])**2 for x,y in ring)
+            yy = sum((y-center[1])**2 for x,y in ring)
+            xy = sum((x-center[0])*(y-center[1]) for x,y in ring)
+            angle = .5*math.atan2(2*xy,xx-yy)
+            ax,ay = math.cos(angle),math.sin(angle)
+            values = [x*ax+y*ay for x,y in ring]
+            roof = TowerRoof(ax,ay,(max(values)+min(values))/2,(max(values)-min(values))/2,
+                             12. if profile.name == 'Wynn' else 8.)
         z = min(self.ground(*p) for p in ring)
         area = sum(a[0] * b[1] - b[0] * a[1] for a, b in zip(ring, ring[1:] + ring[:1]))
         if area < 0:
@@ -430,18 +543,20 @@ class Scenery:
             b = ring[(index + 1) % len(ring)]
             width = math.dist(a, b)
             low_a, low_b = (*a, z), (*b, z)
-            top_a, top_b = (*a, z + height), (*b, z + height)
+            height_a = height + (roof.offset(*a) if roof else 0.)
+            height_b = height + (roof.offset(*b) if roof else 0.)
+            top_a, top_b = (*a, z + height_a), (*b, z + height_b)
             na, nb = corner_normal(index, face_normals[index]), corner_normal(index + 1, face_normals[index])
-            u, v = width / 32, -height / 28.8
-            self.triangle('Building_City', material, low_a, low_b, top_b, ((facade_u, 0), (facade_u + u, 0), (facade_u + u, v)), (na, nb, nb))
-            self.triangle('Building_City', material, low_a, top_b, top_a, ((facade_u, 0), (facade_u + u, v), (facade_u, v)), (na, nb, na))
+            u = width / 32
+            self.triangle('Building_City', material, low_a, low_b, top_b, ((facade_u, 0), (facade_u + u, 0), (facade_u + u, -height_b/28.8)), (na, nb, nb))
+            self.triangle('Building_City', material, low_a, top_b, top_a, ((facade_u, 0), (facade_u + u, -height_b/28.8), (facade_u, -height_a/28.8)), (na, nb, na))
             facade_u += u
             self.beam('Building_City', 'IlluminatedCream' if material == 'BronzeFacade' else 'Cream', top_a, top_b, .4, .7)
             if profile is None and height > 30 and material == 'CreamFacade':
                 for floor in range(4, int(height), 14):
                     self.beam('Building_City', 'Cream', (*a, z + floor), (*b, z + floor), .16, .3)
         if profile is not None:
-            self.hotel_architecture(ring, z, height, profile)
+            self.hotel_architecture(ring, z, height, profile, roof)
         for keyword, label in [('Bellagio Las Vegas', 'Bellagio'), ('Venetian Tower', 'Venetian'),
                                ('Palazzo Tower', 'Palazzo'), ('Wynn Las Vegas', 'Wynn'),
                                ('Le Boulevard At Paris', 'Paris'), ('Cosmopolitan', 'Cosmopolitan'),
@@ -477,7 +592,9 @@ class Scenery:
                                for u, v in ((a, b), (b, c), (c, a)))
                 if any(inside(ring[index]) for index in indices if index not in (ia, ib, ic)):
                     continue
-                self.triangle('Building_City', 'Roof', (*a, z + height), (*b, z + height), (*c, z + height))
+                self.triangle('Building_City', 'Roof', (*a, z + height + (roof.offset(*a) if roof else 0.)),
+                              (*b, z + height + (roof.offset(*b) if roof else 0.)),
+                              (*c, z + height + (roof.offset(*c) if roof else 0.)))
                 indices.remove(ib)
                 found = True
                 break
@@ -487,10 +604,39 @@ class Scenery:
             self.landmarks.append({'name': name, 'osm_id': osm_id, 'x': center[0], 'y': center[1], 'height_m': height})
 
     def hotel_architecture(self, ring: list[tuple[float, float]], z: float, height: float,
-                           profile: LandmarkProfile) -> None:
+                           profile: LandmarkProfile, roof: TowerRoof | None) -> None:
         kind = 'Building_Hotel'
         cx, cy = sum(p[0] for p in ring) / len(ring), sum(p[1] for p in ring) / len(ring)
         edges = list(zip(ring, ring[1:] + ring[:1]))
+        if profile.style in ('retail','crystalline'):
+            for a,b in edges:
+                span = math.dist(a,b)
+                if span < .1:
+                    continue
+                direction = norm((b[0]-a[0],b[1]-a[1],0))
+                retail_normal = (direction[1],-direction[0],0.)
+                bays = max(1,round(span/5))
+                for bay in range(bays):
+                    shop_center = add((a[0],a[1],z+1.2),add(mul(direction,span*(bay+.5)/bays),mul(retail_normal,.12)))
+                    half = span/bays*.45
+                    self.banner(sub(shop_center,mul(direction,half)),add(shop_center,mul(direction,half)),
+                                height-2.2,'WarmGlass' if bay%3 != 0 else 'Glass',kind)
+                    foot = add((a[0],a[1],z),mul(direction,span*bay/bays))
+                    self.beam(kind,'Steel',foot,add(foot,(0,0,height)),.12)
+                self.beam(kind,'Steel',(*a,z+height*.52),(*b,z+height*.52),.14)
+            if profile.style == 'crystalline':
+                for shard in self.crystal_roofs:
+                    s0,s1,s2,s3 = [(x*self.scale,y*self.scale,z+height) for x,y in shard.corners]
+                    s4,s5 = [(x*self.scale,y*self.scale,z+level) for x,y,level in shard.ridge]
+                    for shard_face,material in [((s0,s1,s4),'WarmGlass'),((s1,s2,s4),'Steel'),((s2,s5,s4),'Steel'),
+                                                ((s2,s3,s5),'Steel'),((s3,s0,s5),'Glass'),((s0,s4,s5),'Steel')]:
+                        roof_a,roof_b,roof_c = shard_face
+                        if cross(sub(roof_b,roof_a),sub(roof_c,roof_a))[2] < 0:
+                            roof_b,roof_c = roof_c,roof_b
+                        self.triangle(kind,material,roof_a,roof_b,roof_c)
+                    for roof_start,roof_end in ((s0,s4),(s1,s4),(s2,s4),(s2,s5),(s3,s5),(s0,s5),(s4,s5)):
+                        self.beam(kind,'Cream',roof_start,roof_end,.12)
+            return
         classical = profile.style in ('classical', 'arcade', 'mansard', 'dome')
         trim = 'Cream' if classical else ('PinkNeon' if profile.name == 'Flamingo' else 'Steel')
         # Separate floors, recessed glazing and structural bays break up the silhouette.
@@ -503,7 +649,31 @@ class Scenery:
                       a: tuple[float, float] = a, b: tuple[float, float] = b,
                       normal: tuple[float, float] = normal) -> Point:
                 return (a[0] + (b[0] - a[0]) * t + normal[0] * offset,
-                        a[1] + (b[1] - a[1]) * t + normal[1] * offset, z + level)
+                        a[1] + (b[1] - a[1]) * t + normal[1] * offset,
+                        z + min(level,height + roof.offset(a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t)) if roof else z + level)
+            if profile.style == 'arcade' and self.nearest((a[0]+b[0])/2,(a[1]+b[1])/2)[1] < 190:
+                bays = max(1,round(span/5.5))
+                for bay in range(bays):
+                    t = (bay+.5)/bays
+                    middle = point(t,1.0,.10)
+                    width = min(3.7,span/bays*.72)
+                    direction = norm((b[0]-a[0],b[1]-a[1],0))
+                    self.banner(sub(middle,mul(direction,width/2)),add(middle,mul(direction,width/2)),5.7,
+                                'WarmGlass' if bay%4 == 0 else 'Glass',kind)
+                    foot = point(bay/bays,0,.4)
+                    self.beam(kind,'Cream',foot,add(foot,(0,0,height-1)),.6,.6)
+                    if height > 17:
+                        arch_base = point(t,11.2,.12)
+                        radius = width/2
+                        self.banner(sub(arch_base,mul(direction,radius)),add(arch_base,mul(direction,radius)),3.2,'Glass',kind)
+                        center = add(arch_base,(0,0,3.2))
+                        previous = sub(center,mul(direction,radius))
+                        for segment in range(1,13):
+                            angle = math.pi*(1-segment/12)
+                            end = add(center,add(mul(direction,math.cos(angle)*radius),(0,0,math.sin(angle)*radius)))
+                            self.triangle(kind,'Glass',center,previous,end)
+                            self.beam(kind,'Cream',previous,end,.16)
+                            previous = end
             if classical:
                 for level in (3.5, 7.5, height - 4, height):
                     self.beam(kind, 'IlluminatedCream', point(0, level), point(1, level), .7, .45)
@@ -515,6 +685,10 @@ class Scenery:
                         self.box(kind, 'Cream', point(t, height - 4), 1.1, 1.1, 1)
                 for level in range(11, int(height - 4), 11):
                     self.beam(kind, 'Cream', point(0, level), point(1, level), .20, .28)
+            elif roof is not None:
+                for level in range(12,int(height-15),12):
+                    self.beam(kind,'BronzeTrim',point(0,level),point(1,level),.13,.24)
+                self.beam(kind,'BronzeTrim',point(0,height),point(1,height),.22,.45)
             elif profile.style == 'balconies':
                 for level in range(4, int(height), 4):
                     self.beam(kind, 'Steel', point(0, level, .9), point(1, level, .9), 1.6, .25)
@@ -539,19 +713,38 @@ class Scenery:
             for a, b in edges:
                 pa, pb = (cx + (a[0] - cx) * scale_a, cy + (a[1] - cy) * scale_a, za), (cx + (b[0] - cx) * scale_a, cy + (b[1] - cy) * scale_a, za)
                 qa, qb = (cx + (a[0] - cx) * scale_b, cy + (a[1] - cy) * scale_b, zb), (cx + (b[0] - cx) * scale_b, cy + (b[1] - cy) * scale_b, zb)
+                if roof is not None:
+                    pa,pb = add(pa,(0,0,roof.offset(*a))),add(pb,(0,0,roof.offset(*b)))
+                    qa,qb = add(qa,(0,0,roof.offset(*a))),add(qb,(0,0,roof.offset(*b)))
                 self.quad(kind, 'Copper' if profile.style == 'dome' else 'Roof' if profile.style == 'mansard' else trim, pa, pb, qb, qa)
                 self.beam(kind, 'IlluminatedCream' if classical else trim, qa, qb, .18, .25)
-        # Road-facing fascia and lower entrance signs remain visible from the cockpit.
+        if profile.style == 'mansard':
+            for a,b in edges:
+                length = math.dist(a,b)
+                if length < 12:
+                    continue
+                direction=norm((b[0]-a[0],b[1]-a[1],0))
+                outward=(direction[1],-direction[0],0.)
+                for index in range(max(1,round(length/7))):
+                    t=(index+.5)/max(1,round(length/7))
+                    center=(a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,z+height+2)
+                    self.box(kind,'Cream',center,1.8,1.4,2.8,math.atan2(direction[1],direction[0]))
+                    face=add(center,add(mul(outward,.75),(0,0,-.8)))
+                    self.banner(sub(face,mul(direction,.58)),add(face,mul(direction,.58)),1.7,'Glass',kind)
+                    left,right=sub(center,mul(direction,1.2)),add(center,mul(direction,1.2))
+                    ridge=add(center,(0,0,2.4))
+                    self.triangle(kind,'Roof',add(left,(0,0,1.3)),add(right,(0,0,1.3)),ridge)
+        # Wordmarks sit on the actual tower facade, without roadside hotel boards.
         sign_edges = [edge for edge in edges if math.dist(*edge) > 14] or edges
         a, b = min(sign_edges, key=lambda edge: self.nearest((edge[0][0] + edge[1][0]) / 2,
                                                       (edge[0][1] + edge[1][1]) / 2)[1])
         span = math.dist(a, b)
-        if span < 2:
+        if span < .1:
             return
         direction = ((b[0] - a[0]) / span, (b[1] - a[1]) / span, 0.)
         outward = direction[1], -direction[0], 0.
         center = add(((a[0] + b[0]) / 2, (a[1] + b[1]) / 2, z), mul(outward, .85))
-        if classical:
+        if profile.style == 'arcade':
             frontage = min(span, 90.)
             bays = max(1, round(frontage / 5.5))
             bay_width = frontage / bays
@@ -572,34 +765,44 @@ class Scenery:
                                               (0, 0, 4.1 + math.sin(angle) * bay_width / 2)))
                     self.beam(kind, 'IlluminatedCream', previous, arch_point, .28, .45)
                     previous = arch_point
-        for level, width in ((height - 5, min(span * .7, 42)), (7, min(span * .75, 24))):
-            middle = add(center, (0, 0, level))
-            self.banner(sub(middle, mul(direction, width / 2)), add(middle, mul(direction, width / 2)),
-                        min(3.8, width / 6), profile.name, kind)
+        for level, width in ((height - 12 if roof else height - 5, 32. if roof else min(span * .7, 42)),):
+            middle = add(center, (0, 0, level + (roof.offset(center[0],center[1]) if roof else 0.)))
+            if len(ring) > 80:
+                arc = [0.0]
+                for edge_a,edge_b in edges:
+                    arc.append(arc[-1]+math.dist(edge_a,edge_b))
+                candidates = list(range(len(edges)))
+                if roof is not None:
+                    candidates = [i for i,(edge_a,edge_b) in enumerate(edges)
+                                  if abs((edge_b[0]-edge_a[0])*roof.axis_x+(edge_b[1]-edge_a[1])*roof.axis_y)
+                                  > math.dist(edge_a,edge_b)*.65]
+                edge_index = min(candidates,key=lambda i:self.nearest((edges[i][0][0]+edges[i][1][0])/2,
+                                                                      (edges[i][0][1]+edges[i][1][1])/2)[1])
+                middle_arc = (arc[edge_index]+arc[edge_index+1])/2
+                width = 32. if roof else 20.
+                begin,arc_end = middle_arc-width/2,middle_arc+width/2
+                level_z = z+level+(roof.offset(*ring[edge_index]) if roof else 0.)
+                for shift in (-arc[-1],0.,arc[-1]):
+                    for i,(edge_a,edge_b) in enumerate(edges):
+                        lo,hi=max(begin,arc[i]+shift),min(arc_end,arc[i+1]+shift)
+                        if hi <= lo:
+                            continue
+                        span_edge=arc[i+1]-arc[i]
+                        surface_normal=norm((edge_b[1]-edge_a[1],edge_a[0]-edge_b[0],0))
+                        t0,t1=(lo-arc[i]-shift)/span_edge,(hi-arc[i]-shift)/span_edge
+                        start=add((edge_a[0]+(edge_b[0]-edge_a[0])*t0,edge_a[1]+(edge_b[1]-edge_a[1])*t0,level_z),mul(surface_normal,.18))
+                        finish=add((edge_a[0]+(edge_b[0]-edge_a[0])*t1,edge_a[1]+(edge_b[1]-edge_a[1])*t1,level_z),mul(surface_normal,.18))
+                        self.banner(start,finish,3.8,profile.name,kind,(lo-begin)/width,(hi-lo)/width)
+            else:
+                self.banner(sub(middle, mul(direction, width / 2)), add(middle, mul(direction, width / 2)),
+                            min(3.8, width / 6), profile.name, kind)
         self.landmarks.append({'name': profile.name + ' architectural profile', 'height_m': profile.height_m,
                                'style': profile.style, 'x': cx, 'y': cy})
 
     def race_decor(self) -> None:
-        for station, label, side in ((4700, 'Palazzo', -1), (5100, 'Venetian', -1),
-                                     (5050, 'TreasureIsland', 1), (4520, 'Wynn', 1),
-                                     (5660, 'Caesars', 1), (5970, 'Bellagio', 1),
-                                     (6030, 'Paris', -1), (900, 'Planet', -1),
-                                     (720, 'Cosmopolitan', -1), (5400, 'Flamingo', -1)):
-            sample = min(self.road, key=lambda p: abs(p.station - station))
-            shoulder = sample.left_shoulder if side > 0 else sample.right_shoulder
-            point = sample.point(side * (sample.half_width + shoulder + 6), .2)
-            heading = math.atan2(sample.ty, sample.tx)
-            self.box('Tile_Entrance', 'Cream', add(point, (0, 0, 4)), .8, 1.4, 8, heading)
-            direction = (sample.ty, -sample.tx, 0.)
-            middle = add(point, (-sample.tx * .9, -sample.ty * .9, 5.7))
-            self.banner(sub(middle, mul(direction, 4.8)), add(middle, mul(direction, 4.8)), 2.2, label)
-            for offset in (-3, 3):
-                base = add(point, (sample.tx * offset, sample.ty * offset, .2))
-                self.box('Tile_Entrance', 'Cream', base, 2, 2, .65, heading)
-                self.box('Tile_Entrance', 'Leaves', add(base, (0, 0, .5)), 1.7, 1.7, .6, heading)
         for station in (615, 1960, 3235, 3710, 3910, 4870):
             sample = min(self.road, key=lambda p: abs(p.station - station))
-            lane = sample.half_width + sample.left_shoulder + 3.5
+            lane = self.outer_lane(sample,1) + 2.5
             base = sample.point(lane)
             heading = math.atan2(sample.ty, sample.tx)
             self.box('Tile_Marshal', 'White', add(base, (0, 0, 1.2)), 3.2, 2, 2.4, heading)
@@ -612,8 +815,7 @@ class Scenery:
         for station, label in ((1830, 'EastHarmon'), (3410, 'SphereZone'), (4080, 'Sands'), (5520, 'Strip'), (1200, 'WestHarmon')):
             sample = min(self.road, key=lambda p: abs(p.station - station))
             for side in (-1, 1):
-                shoulder = sample.left_shoulder if side > 0 else sample.right_shoulder
-                lane = side * (sample.half_width + shoulder + 1)
+                lane = side * (self.outer_lane(sample,side) + .4)
                 base = sample.point(lane, 4.6)
                 direction = (sample.ty, -sample.tx, 0.)
                 panel = add(base, (-sample.tx * .15, -sample.ty * .15, 0.))
@@ -635,6 +837,8 @@ class Scenery:
                 continue
             if math.dist(ring[0], ring[-1]) < 1:
                 ring.pop()
+            if any(self.in_region(*point,region) for point in ring for region in self.escapes):
+                continue
             if any(self.nearest(*point)[1] < self.nearest(*point)[0].half_width + 7 for point in ring):
                 continue
             if any(self.nearest((a[0] + b[0]) / 2, (a[1] + b[1]) / 2)[1] < 18 for a, b in zip(ring, ring[1:] + ring[:1])):
@@ -643,7 +847,11 @@ class Scenery:
             material = 'BronzeFacade' if any(word in name for word in ('Wynn', 'Trump')) else 'CreamFacade'
             if any(word in name for word in ('Cosmopolitan', 'Horseshoe', 'Planet Hollywood', 'Hilton')):
                 material = 'BlueFacade'
-            if element['id'] == 43875964:
+            if element['id'] in self.leaning_towers:
+                self.leaning_tower(ring,self.leaning_towers[element['id']],element['id'])
+            elif element['id'] == 364846544:
+                self.paris_balloon(ring,element['id'])
+            elif element['id'] == 43875964:
                 self.campanile(ring, element['id'])
             else:
                 self.building(ring, height, material, name, element['id'])
@@ -660,6 +868,8 @@ class Scenery:
                 continue
             for sign in (-1, 1):
                 position = sample.point(sign * (sample.half_width + 11 + (index % 3) * 2))
+                if any(self.in_region(position[0], position[1], region) for region in self.escapes):
+                    continue
                 self.palm((position[0], position[1], self.ground(position[0], position[1])), 8 + index % 5)
 
     def bridges(self) -> None:
@@ -709,6 +919,31 @@ class Scenery:
                     self.beam('Building_Bridge', 'Cream', (x, y, self.ground(x, y)), (x, y, z), .8)
             self.landmarks.append({'name': tags.get('name', 'Strip pedestrian bridge'), 'osm_id': element['id'],
                                    'station_m': sample.station, 'height_m': 6.5})
+
+    def paris_balloon(self, ring: list[tuple[float,float]], osm_id: int) -> None:
+        x,y = sum(p[0] for p in ring)/len(ring),sum(p[1] for p in ring)/len(ring)
+        z = self.ground(x,y)
+        for angle in range(0,360,90):
+            t=math.radians(angle)
+            self.beam('Building_Paris','IlluminatedCream',(x+6*math.cos(t),y+6*math.sin(t),z),
+                      (x+5*math.cos(t),y+5*math.sin(t),z+15),.35)
+        for row in range(24):
+            a0,a1=-math.pi/2+math.pi*row/24,-math.pi/2+math.pi*(row+1)/24
+            for col in range(64):
+                p0,p1=col*math.tau/64,(col+1)*math.tau/64
+                def point(a: float,phi: float) -> Point:
+                    return x+10*math.cos(a)*math.cos(phi),y+10*math.cos(a)*math.sin(phi),z+28+16*math.sin(a)
+                self.quad('Building_Paris','BalloonBlue',point(a0,p0),point(a0,p1),point(a1,p1),point(a1,p0))
+                if col%8 == 0:
+                    self.beam('Building_Paris','BronzeTrim',point(a0,p0),point(a1,p0),.10)
+                if row in (4,11,18):
+                    self.beam('Building_Paris','IlluminatedCream',point(a0,p0),point(a0,p1),.14)
+        road,_=self.nearest(x,y)
+        facing = norm((road.x-x,road.y-y,0))
+        center=add((x,y,z+27),mul(facing,10.1))
+        side=(facing[1],-facing[0],0.)
+        self.banner(sub(center,mul(side,7)),add(center,mul(side,7)),3.8,'Paris','Building_Paris')
+        self.landmarks.append({'name':'Paris balloon','osm_id':osm_id,'height_m':44.,'x':x,'y':y})
 
     def campanile(self, ring: list[tuple[float, float]], osm_id: int) -> None:
         x, y = sum(p[0] for p in ring) / len(ring), sum(p[1] for p in ring) / len(ring)
@@ -833,8 +1068,8 @@ class Scenery:
             if not start < sample.station < end:
                 continue
             nxt = road[(index + 2) % len(road)]
-            base = sample.half_width + 7.5
-            next_base = nxt.half_width + 7.5
+            base = self.outer_lane(sample,sign) + 4.5
+            next_base = self.outer_lane(nxt,sign) + 4.5
             for row in range(18):
                 lane, lane_next = sign * (base + row * 1.1), sign * (next_base + row * 1.1)
                 a, b = sample.point(lane, 1.4 + row * .45), nxt.point(lane_next, 1.4 + row * .45)

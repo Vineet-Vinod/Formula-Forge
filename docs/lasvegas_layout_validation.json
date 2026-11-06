@@ -2,7 +2,7 @@
   "date": "2026-11-05",
   "circuit": "Las Vegas Strip Circuit",
   "scope": "Las Vegas only, current track branch, no worktrees. Existing user changes remain outside this commit.",
-  "state": "Complete after Luna High review of packaged cockpit captures, live lap and final sign check.",
+  "state": "Historical validation of commit 8fe0fad, superseded by docs/lasvegas_curves_validation.json after the road-edge, escape-road and building revision.",
   "reference": {
     "map": "2025 FIA Event Notes Circuit Map V2, issued 2025-11-19",
     "url": "https://www.fia.com/system/files/decision-document/2025_las_vegas_grand_prix_-_event_notes_-_circuit_map_v2_pit_lane_drawing_emergency_map_exits_quarantine_zone_and_red_zones.pdf",

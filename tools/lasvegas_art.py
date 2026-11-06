@@ -6,6 +6,8 @@ import struct
 import zlib
 from pathlib import Path
 
+HOTEL_NAMES = frozenset(('Bellagio','Venetian','Palazzo','Wynn','Paris','Cosmopolitan','Linq','Horseshoe','Elara','Encore','TreasureIsland','Caesars','Flamingo','Planet'))
+
 FONT = Path(__file__).resolve().parents[1] / 'Attribution/Sources/lasvegas/art/DejaVuSans.ttf'
 
 
@@ -18,10 +20,10 @@ def png(path: Path, width: int, height: int, pixels: bytes | bytearray) -> None:
 
 
 def sign(path: Path, text: str, background: tuple[int, int, int], foreground: tuple[int, int, int],
-         width: int = 1024, height: int = 128) -> None:
+         width: int = 1024, height: int = 128, transparent: bool = False) -> None:
     from PIL import Image, ImageDraw, ImageFont
 
-    image = Image.new('RGBA', (width * 2, height * 2), (*background, 255))
+    image = Image.new('RGBA', (width * 2, height * 2), (*background, 0 if transparent else 255))
     draw = ImageDraw.Draw(image)
     size = height
     while size > 12:
@@ -74,9 +76,42 @@ def hotel_facades(directory: Path) -> None:
         image.save(directory / (name + '.png'))
 
 
+def curtain_walls(directory: Path) -> None:
+    from PIL import Image, ImageDraw
+
+    for name, glass in [('WynnFacade',(136,82,43)),('CosmoFacade',(30,65,91)),('PlanetFacade',(46,68,89))]:
+        pixels = bytearray()
+        for y in range(1024):
+            for x in range(1024):
+                panel, floor = x//64,y//128
+                reflection = .74 + .18*math.sin(x/1024*math.tau) + .06*math.sin(x*.049)
+                dark = x%64 < 2 or y%128 < 5
+                brightness = reflection*(.43 if dark else 1)
+                lit = (panel*37+floor*19+panel*floor*3)%53 < 5 and 12 < y%128 < 105
+                color = (122,104,74) if lit else tuple(round(v*brightness) for v in glass)
+                pixels.extend((*color,45 if lit else 0))
+        Image.frombytes('RGBA',(1024,1024),bytes(pixels)).save(directory/(name+'.png'))
+    image = Image.new('RGBA',(1024,1024))
+    draw = ImageDraw.Draw(image)
+    for floor in range(8):
+        for panel in range(8):
+            seed = (floor*31+panel*17+floor*panel*7)%97
+            color = (112,110,86) if seed < 49 else (91,105,112)
+            lit = seed > 83
+            if lit:
+                color = (123,115,95)
+            x,y = panel*128,floor*128
+            draw.rectangle((x,y,x+127,y+127),fill=(*color,5 if lit else 0))
+            draw.line((x,y,x,y+127),fill=(39,47,48,0),width=3)
+            draw.line((x,y,x+127,y),fill=(131,133,122,0),width=6)
+            draw.line((x,y+64,x+127,y+64),fill=(131,133,122,0),width=6)
+    image.save(directory/'VeerFacade.png')
+
+
 def textures(directory: Path) -> None:
     directory.mkdir(parents=True, exist_ok=True)
     hotel_facades(directory)
+    curtain_walls(directory)
     for name, text, bg, fg in [
         ('RaceSign', 'FORMULA FORGE', (28, 54, 61), (235, 237, 225)),
         ('VegasSign', 'LAS VEGAS STRIP CIRCUIT', (15, 24, 35), (232, 206, 143)),
@@ -103,7 +138,7 @@ def textures(directory: Path) -> None:
         ('Strip', 'LAS VEGAS BOULEVARD', (22, 43, 52), (232, 226, 197)),
         ('Planet', 'PLANET HOLLYWOOD', (34, 43, 59), (232, 219, 189)),
     ]:
-        sign(directory / f'{name}.png', text, bg, fg, 256 if text.isdigit() else 1024, 256 if text.isdigit() else 128)
+        sign(directory / f'{name}.png', text, bg, fg, 256 if text.isdigit() else 1024, 256 if text.isdigit() else 128, transparent=name in HOTEL_NAMES)
     from PIL import Image, ImageDraw, ImageFont
 
     for name, background, accent, title in [

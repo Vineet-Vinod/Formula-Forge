@@ -1,0 +1,64 @@
+{
+  "reference": "2025 FIA layout and user-supplied dry-night onboard. Footprints are original visual estimates registered to the retained OSM streets, not surveyed barrier positions.",
+  "shoulder_m": 0.1,
+  "escape_roads": [
+    {
+      "turn": 1,
+      "approach_m": 65,
+      "beyond_apex_m": 65,
+      "width_m": 16
+    },
+    {
+      "turn": 5,
+      "approach_m": 65,
+      "beyond_apex_m": 55,
+      "width_m": 13
+    },
+    {
+      "turn": 12,
+      "approach_m": 65,
+      "beyond_apex_m": 50,
+      "width_m": 14
+    },
+    {
+      "turn": 14,
+      "approach_m": 65,
+      "beyond_apex_m": 50,
+      "width_m": 14
+    }
+  ],
+  "painted_aprons": [
+    {
+      "name": "Sphere chicane blue paved apron",
+      "turn": 7,
+      "source_xy_m": [
+        [
+          1164,
+          640
+        ],
+        [
+          1175,
+          640
+        ],
+        [
+          1175,
+          706
+        ],
+        [
+          1125,
+          725
+        ],
+        [
+          1120,
+          706
+        ],
+        [
+          1140,
+          685
+        ]
+      ],
+      "paint": "BlueRunoff",
+      "extent_note": "The onboard confirms blue asphalt on the outside of the chicane; its far edge is cropped. This deliberately bounded reconstruction follows that local corner rather than claiming a measured perimeter."
+    }
+  ]
+}

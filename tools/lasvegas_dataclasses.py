@@ -47,3 +47,40 @@ class LandmarkProfile:
     height_m: float
     facade: str
     crown_m: float
+
+
+@dataclass(frozen=True)
+class LeaningTower:
+    name: str
+    height_m: float
+    north_lean_deg: float
+
+
+@dataclass(frozen=True)
+class RoofShard:
+    corners: list[tuple[float, float]]
+    ridge: list[Point]
+
+
+@dataclass(frozen=True)
+class EscapeRegion:
+    name: str
+    turn: int
+    paint: str
+    ring: list[tuple[float, float]]
+    origin: Point
+    direction: tuple[float, float]
+    grade: float
+
+
+@dataclass(frozen=True)
+class TowerRoof:
+    axis_x: float
+    axis_y: float
+    middle: float
+    half_span: float
+    sag: float
+
+    def offset(self, x: float, y: float) -> float:
+        t = max(-1.0, min(1.0, (x*self.axis_x + y*self.axis_y-self.middle)/self.half_span))
+        return -self.sag * (1-t*t)

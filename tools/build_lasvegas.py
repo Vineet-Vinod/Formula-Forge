@@ -6,7 +6,7 @@ import json
 import re
 
 import unreal
-from lasvegas_art import lightfield
+from lasvegas_art import HOTEL_NAMES, lightfield
 from lasvegas_geometry import DATA, ROOT, SCRATCH, generate
 
 ASSETS = '/Game/Generated/LasVegas'
@@ -58,7 +58,8 @@ def texture_material(name: str) -> unreal.Material:
         connect(sample, 'RGB', mask, 'A')
         ambient = EDIT.create_material_expression(material, unreal.MaterialExpressionConstant)
         ambient.r = (.035 if name in ('CreamFacade', 'BlueFacade', 'BronzeFacade') else
-                     .025 if name in ('WynnFacade', 'CosmoFacade', 'PlanetFacade') else .09)
+                     .08 if name in ('WynnFacade', 'VeerFacade') else
+                     .025 if name in ('CosmoFacade', 'PlanetFacade') else .09)
         illumination = EDIT.create_material_expression(material, unreal.MaterialExpressionAdd)
         connect(sample, 'A', illumination, 'A')
         connect(ambient, '', illumination, 'B')
@@ -71,6 +72,9 @@ def texture_material(name: str) -> unreal.Material:
         connect(strength, '', glow, 'B')
         connect(sample, 'RGB', glow, 'A')
         EDIT.connect_material_property(glow, '', unreal.MaterialProperty.MP_EMISSIVE_COLOR)
+    if name in HOTEL_NAMES:
+        material.set_editor_property('blend_mode', unreal.BlendMode.BLEND_MASKED)
+        EDIT.connect_material_property(sample, 'A', unreal.MaterialProperty.MP_OPACITY_MASK)
     if name in ('Fence', 'Rubber'):
         material.set_editor_property('blend_mode', unreal.BlendMode.BLEND_MASKED)
         material.set_editor_property('two_sided', name == 'Fence')
@@ -119,9 +123,10 @@ def solid(name: str, color: tuple[float, float, float], roughness: float = .8,
     rgb.constant = unreal.LinearColor(*color)
     EDIT.connect_material_property(rgb, '', unreal.MaterialProperty.MP_BASE_COLOR)
     if emissive:
-        if name == 'Canopy':
+        if name in ('Canopy', 'Steel'):
             glow = EDIT.create_material_expression(material, unreal.MaterialExpressionConstant3Vector)
-            glow.constant = unreal.LinearColor(*(channel * .18 for channel in color))
+            strength = .18 if name == 'Canopy' else .08
+            glow.constant = unreal.LinearColor(*(channel * strength for channel in color))
             EDIT.connect_material_property(glow, '', unreal.MaterialProperty.MP_EMISSIVE_COLOR)
         else:
             EDIT.connect_material_property(rgb, '', unreal.MaterialProperty.MP_EMISSIVE_COLOR)
@@ -284,7 +289,7 @@ def main() -> None:
                       'Palazzo', 'Wynn', 'Paris', 'Cosmopolitan', 'Planet', 'Linq', 'Horseshoe', 'Elara', 'Encore', 'TreasureIsland', 'Caesars', 'Flamingo',
                       'EastHarmon', 'WestHarmon', 'SphereZone', 'Sands', 'Strip', 'PalazzoFacade', 'VenetianFacade',
                       'BellagioFacade', 'ParisFacade', 'CaesarsFacade', 'TIFacade', 'WynnFacade', 'CosmoFacade',
-                      'PlanetFacade', 'FlamingoFacade']}
+                      'PlanetFacade', 'FlamingoFacade', 'VeerFacade']}
         for name, color, roughness in [
             ('Glass', (.055, .085, .105), .25), ('White', (.72, .73, .70), .82), ('Red', (.62, .025, .018), .8), ('Black', (.012, .015, .018), .8),
             ('Steel', (.24, .28, .30), .48), ('Cream', (.54, .49, .39), .8), ('Roof', (.12, .14, .15), .8),
@@ -292,11 +297,15 @@ def main() -> None:
             ('Trunk', (.16, .105, .055), .9), ('Leaves', (.045, .105, .025), .9),
             ('Brick', (.34, .16, .08), .85), ('Copper', (.055, .22, .17), .7),
             ('Canopy', (.65, .66, .62), .8), ('IlluminatedCream', (.55, .41, .23), .7),
+            ('TyreRubber', (.008, .009, .011), .95), ('TyreSidewall', (.025, .027, .03), .9),
+            ('PodiumStone', (.47, .39, .28), .85), ('WarmGlass', (.15, .12, .075), .3),
+            ('BronzeTrim', (.38, .30, .18), .45), ('BalloonBlue', (.015, .055, .25), .55),
+            ('BlueRunoff', (.02, .15, .70), .9),
             ('PinkNeon', (1.1, .10, .46), .5), ('Orange', (.8, .17, .025), .85),
             ('WheelLight', (1.8, .6, 3.0), .5),
             ('Lamp', (12, 12, 11), .4),
         ]:
-            materials[name] = solid(name, color, roughness, emissive=name in ('Lamp', 'IlluminatedCream', 'TowerSteel', 'Canopy', 'WheelLight', 'PinkNeon'), two_sided=name == 'Leaves')
+            materials[name] = solid(name, color, roughness, emissive=name in ('Lamp', 'IlluminatedCream', 'TowerSteel', 'Canopy', 'Steel', 'WheelLight', 'PinkNeon', 'BronzeTrim', 'WarmGlass'), two_sided=name == 'Leaves')
         night_sky()
         for name, path in {
             'Road': '/Game/Generated/Materials/rebuild_road_asphalt',
@@ -332,7 +341,7 @@ def main() -> None:
             mesh.set_material(index, materials[key])
         if name.startswith('Tile_Street'):
             ground_slots = [unreal.Name('Material_' + str(index)) for index, material in enumerate(record['materials'])
-                            if material in ('Road', 'Runoff', 'CityGround', 'White', 'Red', 'Rubber', 'Black', 'Steel', 'Lamp', 'LightHalo')]
+                            if material in ('Road', 'Runoff', 'BlueRunoff', 'CityGround', 'White', 'Red', 'Rubber', 'Black', 'Steel', 'Lamp', 'LightHalo')]
             unreal.FFMeshBuildLibrary.suppress_ground_shadow_sections(mesh, ground_slots)
         LIBRARY.set_metadata_tag(mesh, 'LasVegasSourceSHA256', record['sha256'])
         LIBRARY.save_loaded_asset(mesh)

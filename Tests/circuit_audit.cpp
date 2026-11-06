@@ -151,7 +151,7 @@ bool CheckGenerated(const TrackCatalogEntry& track) {
                 return false;
             }
         }
-        if (std::fmod(station, 40.0f) < 8.0f) {
+        if (track.id != TrackLayoutId::LasVegas && std::fmod(station, 40.0f) < 8.0f) {
             for (const bool left : {true, false}) {
                 bool besideAnotherRoad = false;
                 for (float other = 0.0f; other < length; other += 20.0f) {

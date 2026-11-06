@@ -37,22 +37,24 @@ def test_rendered_road_matches_contact_triangles() -> None:
             x, y, z = triangle[offset:offset + 3]
             contact.append(struct.unpack('<3f', struct.pack('<3f', -y * 100, -x * 100, z * 100)))
     for tile in manifest['tiles']:
-        if 'Road' not in tile['materials']:
+        paving_materials = {index for index,name in enumerate(tile['materials']) if name in ('Road','Runoff','BlueRunoff')}
+        if not paving_materials:
             continue
-        material = tile['materials'].index('Road')
         payload = (ROOT / 'build/lasvegas' / tile['file']).read_bytes()
         assert payload[:8] == b'FFLVM1\0\0'
         for offset in range(12, len(payload), 100):
-            if struct.unpack_from('<I', payload, offset)[0] != material:
+            if struct.unpack_from('<I', payload, offset)[0] not in paving_materials:
                 continue
             for corner in range(3):
                 x, y, z, nx, ny, nz, u, v = struct.unpack_from('<8f', payload, offset + 4 + corner * 32)
                 assert nz > .95
                 assert all(math.isfinite(value) for value in (x, y, z, nx, ny, nz, u, v))
                 rendered.append((x, y, z))
-    assert len(contact) == len(rendered) == 36864
-    for a, b in zip(sorted(contact), sorted(rendered), strict=True):
-        assert math.dist(a, b) < .025
+    from collections import Counter
+
+    assert len(contact) > 73728
+    # The decorative, fenced-off pit apron is additional visible paving.
+    assert not (Counter(contact) - Counter(rendered))
 
 
 def test_manifest_assets_and_collision_walls() -> None:
@@ -72,7 +74,18 @@ def test_manifest_assets_and_collision_walls() -> None:
         concrete_triangles += sum(struct.unpack_from('<I', payload, offset)[0] == material for offset in range(12, len(payload), 100))
     walls = len((ROOT / 'build/lasvegas/barriers.csv').read_text().splitlines()) - 1
     assert walls > 2800
-    assert concrete_triangles == walls * 12
+    # End walls use tire stacks; every remaining visible segment is the collision segment.
+    import csv
+    import sys
+
+    sys.path.insert(0,str(ROOT / 'tools'))
+    from lasvegas_geometry import Scenery
+
+    scenery = Scenery()
+    visible_walls = sum(not scenery.escape_end((float(row['ax'])+float(row['bx']))/2,
+                                             (float(row['ay'])+float(row['by']))/2)
+                        for row in csv.DictReader((ROOT/'build/lasvegas/barriers.csv').open()))
+    assert concrete_triangles == visible_walls * 12
 
 
 def test_street_profile_has_no_preconstruction_drop() -> None:
@@ -90,9 +103,9 @@ def test_curves_and_driver_facing_braking_boards() -> None:
     import csv
 
     road = list(csv.DictReader((ROOT / 'build/lasvegas/road.csv').open()))
-    assert len(road) == 6144
+    assert len(road) == 12288
     for a, b in zip(road, road[1:] + road[:1], strict=True):
-        assert math.hypot(float(b['x']) - float(a['x']), float(b['y']) - float(a['y'])) < 1.02
+        assert math.hypot(float(b['x']) - float(a['x']), float(b['y']) - float(a['y'])) < .51
     boards = json.loads((ROOT / 'build/lasvegas/braking_boards.json').read_text())
     assert len(boards) == 18
     assert len({(board['apex'], board['distance']) for board in boards}) == 18
@@ -140,3 +153,65 @@ def test_encore_tower_is_separate_from_low_casino_podium() -> None:
     assert buildings[27910891]['name'] == 'Encore Las Vegas'
     assert 180 < buildings[27910891]['height_m'] < 200
     assert buildings[135291730]['height_m'] < 25
+
+
+def test_true_road_edges_have_no_source_polygon_kinks() -> None:
+    import csv
+
+    road = [{key:float(value) for key,value in row.items()}
+            for row in csv.DictReader((ROOT/'build/lasvegas/road.csv').open())]
+    for side in (0,-1,1):
+        points=[(p['x']+side*p['ty']*p['half_width'],p['y']-side*p['tx']*p['half_width']) for p in road]
+        maximum=0.0
+        for i,b in enumerate(points):
+            a,c=points[i-1],points[(i+1)%len(points)]
+            first=(b[0]-a[0],b[1]-a[1])
+            second=(c[0]-b[0],c[1]-b[1])
+            angle=abs(math.atan2(first[0]*second[1]-first[1]*second[0],
+                                 first[0]*second[0]+first[1]*second[1]))
+            maximum=max(maximum,angle)
+        assert maximum < math.radians(5), (side,math.degrees(maximum))
+
+
+def test_escape_roads_are_open_paved_and_outside_white_line_limits() -> None:
+    import csv
+
+    import numpy as np
+    from shapely.geometry import LineString, MultiLineString, Polygon
+    from shapely.ops import unary_union
+
+    contact = np.frombuffer((DATA/'drive_surface.bin').read_bytes(),dtype='<f4',offset=12).reshape(-1,3,3)
+    limits = np.frombuffer((DATA/'track_limits.bin').read_bytes(),dtype='<f4',offset=8).reshape(-1,3,2)
+    record=json.loads((SOURCES/'boundaries.json').read_text())
+    barriers=MultiLineString([[(float(p['ax']),float(p['ay'])),(float(p['bx']),float(p['by']))]
+                             for p in csv.DictReader((ROOT/'build/lasvegas/barriers.csv').open())])
+
+    def covered(triangles: np.ndarray, point: tuple[float,float]) -> bool:
+        values=[]
+        for i in range(3):
+            a,b=triangles[:,i,:2],triangles[:,(i+1)%3,:2]
+            values.append((b[:,0]-a[:,0])*(point[1]-a[:,1])-(b[:,1]-a[:,1])*(point[0]-a[:,0]))
+        return bool(np.any(np.logical_or(np.logical_and.reduce([v>=-.00001 for v in values]),
+                                        np.logical_and.reduce([v<=.00001 for v in values]))))
+
+    for region in record['regions']:
+        if region['paint'] != 'Runoff':
+            continue
+        ring=region['ring']
+        start=((ring[0][0]+ring[1][0])/2,(ring[0][1]+ring[1][1])/2)
+        end=((ring[2][0]+ring[3][0])/2,(ring[2][1]+ring[3][1])/2)
+        def point(t: float, start: tuple[float,float] = start, end: tuple[float,float] = end) -> tuple[float,float]:
+            return start[0]+(end[0]-start[0])*t,start[1]+(end[1]-start[1])*t
+        assert not barriers.intersects(LineString([point(.12),point(.95)])), region['name']
+        assert barriers.intersects(LineString([point(.95),point(1.1)])), region['name']
+        p=point(.8)
+        assert covered(contact,p), region['name']
+        assert not covered(limits,(p[0],-p[1])), region['name']
+    # A paved island and every outer wall form closed protection loops.
+    road=[{k:float(v) for k,v in row.items()} for row in csv.DictReader((ROOT/'build/lasvegas/road.csv').open())]
+    outer=[(p['x']+p['ty']*(p['half_width']+.95),p['y']-p['tx']*(p['half_width']+.95)) for p in road]
+    inner=[(p['x']-p['ty']*(p['half_width']+.95),p['y']+p['tx']*(p['half_width']+.95)) for p in road]
+    deck=unary_union([Polygon(outer,[inner]),*[Polygon(r['ring']) for r in record['regions']]])
+    assert deck.is_valid
+    assert abs(deck.area-record['paved_area_m2']) < 1
+    assert barriers.hausdorff_distance(deck.boundary) < .01

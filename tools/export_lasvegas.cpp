@@ -28,5 +28,5 @@ int main() {
             << -wall.b.y / 17.0f << ',' << wall.bottom / 17.0f << ',' << wall.top / 17.0f << ','
             << wall.halfThickness / 17.0f << '\n';
     }
-    return road && walls && samples.size() == 6144 && !support.barriers.empty() ? 0 : 1;
+    return road && walls && samples.size() == 12288 && !support.barriers.empty() ? 0 : 1;
 }

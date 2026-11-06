@@ -1,11 +1,19 @@
 {
-  "registration": "OSM feature IDs and footprints in skyline.osm.json.gz, plus Encore tower 27910891 in encore.osm.json.gz. Retained tower height tags control volumes. Flamingo and casino podium heights are visual estimates. Crowns, bays, cornices and names are original simplified reconstructions.",
+  "registration": "OSM feature IDs and footprints in skyline.osm.json.gz, plus Encore tower 27910891 in encore.osm.json.gz. Retained tower height tags control volumes. Flamingo and casino podium heights are visual estimates. Crowns, bays, cornices and names are original simplified reconstructions. Horseshoe compound 116867081 is a low casino podium, not a solid 88 m tower over the whole property; the mapped 80 m tower part 27897922 supplies the separate southern tower.",
   "reference_only": [
     "https://www.venetianlasvegas.com/resort.html",
     "https://www.wynnlasvegas.com/",
     "https://bellagio.mgmresorts.com/",
     "https://www.caesars.com/paris-las-vegas",
-    "User supplied Vegas.mp4, dry night laps. No reference pixels copied."
+    "User supplied Vegas.mp4, dry night laps. No reference pixels copied.",
+    "https://www.wynnresorts.com/esg/reports",
+    "https://cdn.wynnresorts.com/image/upload/f_auto/q_auto/v1741612582/wynn-resorts/Corp%20Site/esg-reports-1440x414",
+    "https://www.venetianlasvegas.com/towers/the-palazzo.html",
+    "https://newsroom.caesars.com/Property-Fact-Sheets/Paris-Las-Vegas/",
+    "https://investors.mgmresorts.com/2010-7-20-Veer-Towers-Unveiled-at-CityCenter",
+    "https://www.wernersobek.com/projects/veer-towers-las-vegas/",
+    "https://libeskind.com/work/crystals-at-citycenter/",
+    "https://www.adamson-associates.com/project/crystals-l-mgm-citycenter/"
   ],
   "profiles": {
     "30424125": {
@@ -185,8 +193,8 @@
     },
     "116867081": {
       "name": "Horseshoe",
-      "style": "stepped",
-      "height_m": 88.4,
+      "style": "arcade",
+      "height_m": 14,
       "facade": "BlueFacade",
       "crown_m": 4
     },
@@ -203,6 +211,211 @@
       "height_m": 155,
       "facade": "BellagioFacade",
       "crown_m": 25
+    },
+    "27897922": {
+      "name": "Paris",
+      "style": "mansard",
+      "height_m": 80,
+      "facade": "ParisFacade",
+      "crown_m": 5
+    },
+    "52134608": {
+      "name": "Crystals",
+      "style": "crystalline",
+      "height_m": 30,
+      "facade": "Glass",
+      "crown_m": 18
+    },
+    "1421481100": {
+      "name": "Arte Museum",
+      "style": "retail",
+      "height_m": 10.2,
+      "facade": "Glass",
+      "crown_m": 0.5
     }
-  }
+  },
+  "reconstruction_details": {
+    "Wynn_Encore": "Mapped curved sheet footprints, smooth facade normals, dipped roof lines (12/8 m estimated sag), bronze curtain glazing and horizontal illuminated bands. Wordmarks follow the curved skin. Separate low Encore podium.",
+    "Palazzo_Venetian_Bellagio": "Mapped tower wings with projecting stone bays, layered crowns and cornices. Low podiums use large shop glazing and upper arched openings rather than room-window grids. Bellagio retains the mapped curved wings and central dome.",
+    "Paris": "Mansard roofs with dormers, mapped balloon landmark rebuilt with a rounded blue body, gold ribs and legs; separate mapped 80 m southern tower part.",
+    "Horseshoe": "The large mapped casino compound is a 14 m podium, not an 88 m solid extrusion across the property.",
+    "names": "Attached facade wordmarks and the actual Paris balloon only. The earlier roadside hotel name boards were removed.",
+    "limits": "Original simplified architecture fitted to mapped footprints and tagged heights; roof details and facade observations are reconstructed, not scanned. Generic smaller city buildings remain simplified.",
+    "Veer": "Mapped east/west tower footprints and retained 132 m OSM height, oppositely inclined 5 degrees with reconstructed north/south orientation. Staggered yellow fritted and clear glazing, close horizontal louvers and tall glazed lobbies replace the generic cream room-window extrusions. Primary MGM release establishes the incline; facade engineer photographs establish the glazing/louvers/lobbies. No sign board is added.",
+    "Crystals_Arte": "The tagged Crystals 30 m height is the roof peak, not a uniform hotel-height wall. A 12 m retail body with large warm shop glazing supports an original simplified set of interlocking metal/glazed roof shards, registered within the mapped mall footprint. Roof control XY is source metres before uniform scaling and Z is height above the building ground. Shard positions and slopes are visual estimates from the architects' exterior references, not measured roof planes. The adjacent Arte Museum frontage uses low modern retail glazing rather than room windows."
+  },
+  "leaning_towers": {
+    "52134834": {
+      "name": "Veer Towers East",
+      "height_m": 132,
+      "north_lean_deg": 5
+    },
+    "52134835": {
+      "name": "Veer Towers West",
+      "height_m": 132,
+      "north_lean_deg": -5
+    }
+  },
+  "crystal_roofs": [
+    {
+      "corners": [
+        [
+          -92,
+          -716
+        ],
+        [
+          -50,
+          -712
+        ],
+        [
+          -42,
+          -738
+        ],
+        [
+          -112,
+          -744
+        ]
+      ],
+      "ridge": [
+        [
+          -76,
+          -724,
+          30
+        ],
+        [
+          -108,
+          -738,
+          25
+        ]
+      ]
+    },
+    {
+      "corners": [
+        [
+          -99,
+          -746
+        ],
+        [
+          -47,
+          -744
+        ],
+        [
+          -43,
+          -781
+        ],
+        [
+          -103,
+          -787
+        ]
+      ],
+      "ridge": [
+        [
+          -60,
+          -760,
+          27
+        ],
+        [
+          -95,
+          -778,
+          24
+        ]
+      ]
+    },
+    {
+      "corners": [
+        [
+          -92,
+          -792
+        ],
+        [
+          -41,
+          -800
+        ],
+        [
+          -44,
+          -845
+        ],
+        [
+          -80,
+          -841
+        ]
+      ],
+      "ridge": [
+        [
+          -60,
+          -812,
+          29
+        ],
+        [
+          -82,
+          -837,
+          22
+        ]
+      ]
+    },
+    {
+      "corners": [
+        [
+          -195,
+          -730
+        ],
+        [
+          -138,
+          -722
+        ],
+        [
+          -124,
+          -760
+        ],
+        [
+          -196,
+          -775
+        ]
+      ],
+      "ridge": [
+        [
+          -166,
+          -729,
+          27
+        ],
+        [
+          -171,
+          -763,
+          23
+        ]
+      ]
+    },
+    {
+      "corners": [
+        [
+          -125,
+          -718
+        ],
+        [
+          -99,
+          -716
+        ],
+        [
+          -97,
+          -745
+        ],
+        [
+          -132,
+          -757
+        ]
+      ],
+      "ridge": [
+        [
+          -114,
+          -726,
+          25
+        ],
+        [
+          -127,
+          -748,
+          21
+        ]
+      ]
+    }
+  ]
 }

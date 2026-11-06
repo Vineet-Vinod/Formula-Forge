@@ -1,0 +1,241 @@
+{
+  "date": "2026-11-06",
+  "circuit": "Las Vegas Strip Circuit",
+  "scope": "Las Vegas only, current track branch, no worktrees. Existing user changes remain outside the commit.",
+  "state": "Complete after Luna High review of the final packaged cockpit views, moving corner sequences and landmark source geometry.",
+  "references": {
+    "map": "2025 FIA Event Notes Circuit Map V2, issued 2025-11-19",
+    "map_url": "https://www.fia.com/system/files/decision-document/2025_las_vegas_grand_prix_-_event_notes_-_circuit_map_v2_pit_lane_drawing_emergency_map_exits_quarantine_zone_and_red_zones.pdf",
+    "onboard": "User-supplied Vegas.mp4; dry night footage. Local review frames are ignored build output.",
+    "architecture": "Attribution/Sources/lasvegas/landmark-architecture.json",
+    "escape_recipe": "Attribution/Sources/lasvegas/escape-areas.json",
+    "limits": "The map establishes turn order, not runoff dimensions. Escape widths/lengths, roof sag and facade details are original visual reconstructions registered to mapped streets and building footprints; no engineering survey or scanned architecture is claimed. No reference-image pixels are shipped."
+  },
+  "geometry": {
+    "lap_length_m": 6201,
+    "official_turn_anchors": 17,
+    "road_samples": 12288,
+    "source_sample_spacing_m": 4,
+    "native_sample_spacing_m": 0.504638671875,
+    "root_cause": "Dense sampling preserved angular street controls, while heading-based widths and averaged normals introduced edge direction changes. Generic shoulders did not represent straight escape roads.",
+    "correction": "Filter source XY before interpolation; use local geometric normals and independently controlled quintic widths. Harmon short reversals use a smaller filter.",
+    "before_maximum_centre_chord_angle_deg_approximately": 40.2,
+    "before_chord_spacing_m_approximately": 1.009,
+    "after": {
+      "centre": {
+        "maximum_consecutive_chord_angle_deg": 3.1650744812538862,
+        "seam_angle_deg": 0.0388885637038464
+      },
+      "driver_left": {
+        "maximum_consecutive_chord_angle_deg": 3.5149141816263705,
+        "seam_angle_deg": 0.038807067431885535
+      },
+      "driver_right": {
+        "maximum_consecutive_chord_angle_deg": 3.2674961651848204,
+        "seam_angle_deg": 0.0389716229926392
+      }
+    },
+    "width_range_m": [
+      12,
+      15
+    ],
+    "protection": {
+      "method": "A single paved union supplies visible floor, native driving contact and closed collision boundaries. Extra paving remains outside white-line timing limits. Terrain is clipped to that same union.",
+      "escape_turns": [
+        1,
+        5,
+        12,
+        14
+      ],
+      "sphere_apron": "Localized blue asphalt outside/right of the chicane; unsupported inside entry wedge removed. Extent is deliberately bounded because its far edge is cropped in the reference.",
+      "ends": "Open escape mouths and closed tire-protected far ends.",
+      "collision_segments": 15552,
+      "extra_paving_triangles": 29992,
+      "paved_area_m2": 101627.70546750515,
+      "boundary_input_sha256": "2d385374ac7c537f7587e333dafa13275305ce984bb2a9f18293af43239abe89"
+    },
+    "drive_surface_sha256": "f82010bdcd7cb7d6053f37a884dc55ba9cabc68e6a51156c3035152295c2c8b3",
+    "track_limits_sha256": "d8a7ff84708d3c7a1ba69e4bfefb5c30f6c01a229ac536a4825d9f6a59bfd8e0",
+    "terrain_mesh_sha256": "1cdb9eecd71f685dde0977f1f7e5efc371845fe092cb06e5c7b4348d90223292"
+  },
+  "scenery": {
+    "tiles": 153,
+    "triangles": 2543680,
+    "braking_boards": 18,
+    "changes": [
+      "Removed roadside hotel name boards; names attach to actual facades or the Paris balloon.",
+      "Wynn and Encore use curved bronze curtain glazing, dipped roof lines, horizontal illuminated bands and lettering conformed to the facade.",
+      "Palazzo, Venetian and Bellagio retain mapped wings, stone bays and crowns; low podiums use shop glazing and arcades.",
+      "Paris has roof dormers and a rounded blue balloon with gold ribs and legs.",
+      "Horseshoe casino footprint corrected to a low podium; the separate mapped southern tower is retained.",
+      "Marshal posts, markers, lamps, stands and palms account for the real paved areas.",
+      "Right-side barrier panel lettering corrected to face the road without mirrored UVs.",
+      "Veer Towers East and West rebuilt with opposing 5 degree leans, staggered yellow/clear glazing, horizontal louvers and tall glazed lobbies.",
+      "Crystals roof peak separated from the low glazed shopfront body, with reconstructed faceted metal/glass roof shards. Adjacent Arte Museum frontage uses modern retail glazing."
+    ],
+    "limits": "Simplified original architecture in the existing game style. Smaller city filler remains simplified; this is not a complete photogrammetric city.",
+    "source_manifest_sha256": "2353d336916383db578e901d81173dd262e87f65b1569e3ab55a4710c666ff2f",
+    "render_manifest_sha256": "0917a08727d8bd62a6463e0d11fa7f0116a5024ba62e5b080273067e60193ce4"
+  },
+  "checks": {
+    "native": "make check passed all generated circuits, accepted circuit/contact/camera checks and a valid Vegas dynamic lap (160.256 s).",
+    "python": "9 focused geometry checks passed; mypy passed for four authoring modules; ruff passed.",
+    "saved_assets": "153 native meshes reopened in a fresh editor after the final roof-winding correction; triangle counts, source hashes and material bindings matched.",
+    "packaged_build": "passed, including the final material pass; no material shader compile errors",
+    "lasvegas_flow": {
+      "passed": true,
+      "process_id": 2,
+      "circuits": 1,
+      "real_finite_lap": true,
+      "restart": true,
+      "seconds": 211.116
+    }
+  },
+  "reviewer": {
+    "model": "gpt-6-luna",
+    "reasoning_effort": "high",
+    "status": "approved",
+    "coverage": "Packaged T5, Harmon, Sphere and Sands cockpit views; full-lap moving T5/T14/Sphere sequences; final 500/665 m stills and the final moving Harmon retail approach; source geometry and primary architectural references.",
+    "closed": [
+      "Angular road and painted-edge direction changes",
+      "Generic continuous runoff blobs and the unsupported inside Sphere blue wedge",
+      "Roadside hotel name boards",
+      "Generic Wynn/Encore glazing and flat roof lines",
+      "Generic Veer tower extrusions and excessive checker contrast",
+      "Uniform Crystals wall extrusion using the roof peak height"
+    ],
+    "limits": "Landmarks are stylized original reconstructions, not photo replicas. Smaller city buildings, detailed roof complexity and runoff extents remain simplified or estimated."
+  },
+  "performance": {
+    "resolution": [
+      1600,
+      900
+    ],
+    "screen_percentage": 100,
+    "forward_shading": true,
+    "anti_aliasing": "Existing TAA preset",
+    "vsync": false,
+    "frame_cap": 0,
+    "platform": "Linux Vulkan SM5, Intel Iris Xe, Unreal 5.8.3",
+    "window": "CSV frames 500-1399 of 1400, all 900 sampled frames with active live simulation. Serial representative long-straight runs; not a full-lap uncapped profile.",
+    "note": "Fresh matched accepted-track measurements. Vegas rerun after the final architecture materials. Accepted circuit assets and settings unchanged.",
+    "results": [
+      {
+        "circuit": "lasvegas",
+        "start_station_m": 5500,
+        "samples": 900,
+        "active_simulation_frames": 900,
+        "FrameTime": {
+          "median_ms": 25.29375,
+          "p95_ms": 29.2194,
+          "p99_ms": 33.3087
+        },
+        "GameThreadTime": {
+          "median_ms": 2.7634999999999996,
+          "p95_ms": 3.27,
+          "p99_ms": 3.723
+        },
+        "RenderThreadTime": {
+          "median_ms": 4.6375,
+          "p95_ms": 5.47,
+          "p99_ms": 5.898
+        },
+        "GPUTime": {
+          "median_ms": 21.5685,
+          "p95_ms": 25.693,
+          "p99_ms": 28.488
+        }
+      },
+      {
+        "circuit": "monza",
+        "start_station_m": 5000,
+        "samples": 900,
+        "active_simulation_frames": 900,
+        "FrameTime": {
+          "median_ms": 27.6826,
+          "p95_ms": 37.4038,
+          "p99_ms": 43.2572
+        },
+        "GameThreadTime": {
+          "median_ms": 2.691,
+          "p95_ms": 3.76,
+          "p99_ms": 4.383
+        },
+        "RenderThreadTime": {
+          "median_ms": 4.162,
+          "p95_ms": 5.507,
+          "p99_ms": 6.962
+        },
+        "GPUTime": {
+          "median_ms": 24.1325,
+          "p95_ms": 30.405,
+          "p99_ms": 34.402
+        }
+      },
+      {
+        "circuit": "interlagos",
+        "start_station_m": 3500,
+        "samples": 900,
+        "active_simulation_frames": 900,
+        "FrameTime": {
+          "median_ms": 21.8375,
+          "p95_ms": 27.3234,
+          "p99_ms": 32.0285
+        },
+        "GameThreadTime": {
+          "median_ms": 2.623,
+          "p95_ms": 3.258,
+          "p99_ms": 3.715
+        },
+        "RenderThreadTime": {
+          "median_ms": 4.4704999999999995,
+          "p95_ms": 5.357,
+          "p99_ms": 6.014
+        },
+        "GPUTime": {
+          "median_ms": 19.2665,
+          "p95_ms": 23.622,
+          "p99_ms": 27.859
+        }
+      }
+    ]
+  },
+  "preserved": "Accepted circuit assets, vehicle handling, speed, shifting and camera are unchanged. Vegas-only ground lookup now follows the escape-road contact mesh.",
+  "live_lap": {
+    "recording": "build/unreal/recordings/20261106-082803-01A1AFF8",
+    "frames": 5060,
+    "last_lap_seconds": 160.2564901981158,
+    "valid": true,
+    "barrier_contact_frames": 0,
+    "offtrack_frames": 0,
+    "airborne_frames": 0,
+    "maximum_visual_penetration_m": 0,
+    "maximum_speed_kph": 209.76025677849265,
+    "camera_fov_degrees": [
+      90
+    ],
+    "method": "Existing Vegas audit controller drives the real native simulation at 0.60 pace. Finite lap, keyboard input, pause/resume, restart, results and menu return run in one Unreal process.",
+    "subsequent_change": "Only Veer, Crystals and the Arte Museum render models/materials changed after this lap. Road, contact, barriers, vehicle and camera are identical. A separate final moving Harmon approach checks these buildings."
+  },
+  "final_landmark_motion": {
+    "recording": "build/unreal/recordings/20261106-085309-01A1B00F",
+    "duration_s": 18,
+    "frames": 539,
+    "barrier_contact_frames": 0,
+    "offtrack_frames": 0,
+    "airborne_frames": 0,
+    "maximum_visual_penetration_m": 0,
+    "captures": [
+      "build/reviews/lasvegas/curves/final-500.png",
+      "build/reviews/lasvegas/curves/final-665.png",
+      "build/reviews/lasvegas/curves/final-motion-retail.jpg"
+    ]
+  },
+  "memory": {
+    "window": "Final serial guarded jobs from 2026-11-06 08:00 UTC onward",
+    "peak_sampled_machine_used_bytes": 7385227264,
+    "job_memory_cap_bytes": 4000000000,
+    "machine_stop_threshold_bytes": 10000000000,
+    "parallel_heavy_jobs": 1
+  }
+}
