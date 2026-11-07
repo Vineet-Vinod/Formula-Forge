@@ -348,7 +348,7 @@ class Scene:
         return [sample for sample in self.samples if sample["station"] >= start or sample["station"] <= end]
 
     def frontage(self) -> None:
-        # Pit building on the driver's left, roofed grandstand on the right.
+        # Grandstand on the driver's left, pit building on the right.
         # Source left is the positive normal. Both run on the straight grade,
         # not on the per-sample ribbon that followed the culvert.
         self._pit_straight()
@@ -428,22 +428,24 @@ class Scene:
         return stations
 
     def _pit_straight(self) -> None:
-        # Wall, pit lane, then a straight garage block with bays deep enough to read.
+        # Wall, pit lane, then a straight garage block. Positive lanes are the
+        # driver's left in the cockpit, and the reference puts the pits on the right.
         start, end = -40.0, 360.0
-        wall, face = 9.6, 18.2
+        side = -1.0
+        wall, face = side * 9.6, side * 18.2
         for begin, finish in zip(self._run(start, end, 16), self._run(start, end, 16)[1:]):
             span = finish - begin
             self._horizontal(
                 "Road",
-                self._place(begin, wall + 0.35, 0.02), self._place(finish, wall + 0.35, 0.02),
-                self._place(finish, face - 0.4, 0.02), self._place(begin, face - 0.4, 0.02),
+                self._place(begin, wall + side * 0.35, 0.02), self._place(finish, wall + side * 0.35, 0.02),
+                self._place(finish, face - side * 0.4, 0.02), self._place(begin, face - side * 0.4, 0.02),
                 span / 4, 2.0, True,
             )
-            self._facade("Concrete", self._place(begin, wall, 0.0), self._place(finish, wall, 0.0), 1.05, 1.0, span / 3, 0.4)
+            self._facade("Concrete", self._place(begin, wall, 0.0), self._place(finish, wall, 0.0), 1.05, side, span / 3, 0.4)
             self._horizontal(
                 "Concrete",
-                self._place(begin, wall - 0.15, 1.05), self._place(finish, wall - 0.15, 1.05),
-                self._place(finish, wall + 0.28, 1.05), self._place(begin, wall + 0.28, 1.05),
+                self._place(begin, wall - side * 0.15, 1.05), self._place(finish, wall - side * 0.15, 1.05),
+                self._place(finish, wall + side * 0.28, 1.05), self._place(begin, wall + side * 0.28, 1.05),
                 span / 3, 0.15, True,
             )
         bay = 8.0
@@ -451,56 +453,56 @@ class Scene:
         while cursor < end - 1:
             nxt = min(end, cursor + bay)
             pier = min(nxt, cursor + 1.15)
-            self._facade("Concrete", self._place(cursor, face, 0.0), self._place(pier, face, 0.0), 6.2, 1.0, 0.4, 2.2)
+            self._facade("Concrete", self._place(cursor, face, 0.0), self._place(pier, face, 0.0), 6.2, side, 0.4, 2.2)
             for edge in (cursor, pier):
                 outer = self._place(edge, face, 0.0)
-                inner = self._place(edge, face + 2.8, 0.0)
+                inner = self._place(edge, face + side * 2.8, 0.0)
                 self.quad("Concrete", outer, inner, add(inner, (0, 0, 6.2)), add(outer, (0, 0, 6.2)), 0.8, 2.2)
                 self.quad("Concrete", inner, outer, add(outer, (0, 0, 6.2)), add(inner, (0, 0, 6.2)), 0.8, 2.2)
             if pier < nxt - 0.4:
-                self._facade("Garage", self._place(pier, face + 2.6, 0.25), self._place(nxt, face + 2.6, 0.25), 3.7, 1.0, 1.6, 1.2)
-                self._facade("Pit", self._place(pier, face, 4.05), self._place(nxt, face, 4.05), 2.15, 1.0, 1.4, 0.7)
+                self._facade("Garage", self._place(pier, face + side * 2.6, 0.25), self._place(nxt, face + side * 2.6, 0.25), 3.7, side, 1.6, 1.2)
+                self._facade("Pit", self._place(pier, face, 4.05), self._place(nxt, face, 4.05), 2.15, side, 1.4, 0.7)
             cursor = nxt
-        self._facade("Concrete", self._place(start, face + 11.0, 0.0), self._place(end, face + 11.0, 0.0), 6.2, -1.0, (end - start) / 8, 2.0)
+        self._facade("Concrete", self._place(start, face + side * 11.0, 0.0), self._place(end, face + side * 11.0, 0.0), 6.2, -side, (end - start) / 8, 2.0)
         for begin, finish in zip(self._run(start, end, 8), self._run(start, end, 8)[1:]):
-            front_a, front_b = self._place(begin, face - 6.5, 6.35), self._place(finish, face - 6.5, 6.35)
-            back_b, back_a = self._place(finish, face + 11.0, 6.7), self._place(begin, face + 11.0, 6.7)
+            front_a, front_b = self._place(begin, face - side * 6.5, 6.35), self._place(finish, face - side * 6.5, 6.35)
+            back_b, back_a = self._place(finish, face + side * 11.0, 6.7), self._place(begin, face + side * 11.0, 6.7)
             self._horizontal("Roof", front_a, front_b, back_b, back_a, (finish - begin) / 6, 3.0, True)
             self._horizontal("Steel", front_a, back_a, back_b, front_b, (finish - begin) / 6, 3.0, False)
             self._beam("Steel", front_a, front_b, 0.22, 0.45)
-            self._beam("Steel", self._place(begin, face - 6.5, 6.2), self._place(begin, face + 4.0, 5.5), 0.14, 0.1)
-            self._beam("Steel", self._place(begin, face + 4.0, 5.5), back_a, 0.14, 0.1)
-            self._beam("Steel", self._place(begin, face - 1.0, 0.0), self._place(begin, face - 1.0, 6.35), 0.28, 0.28)
+            self._beam("Steel", self._place(begin, face - side * 6.5, 6.2), self._place(begin, face + side * 4.0, 5.5), 0.14, 0.1)
+            self._beam("Steel", self._place(begin, face + side * 4.0, 5.5), back_a, 0.14, 0.1)
+            self._beam("Steel", self._place(begin, face - side * 1.0, 0.0), self._place(begin, face - side * 1.0, 6.35), 0.28, 0.28)
 
     def _main_grandstand(self) -> None:
-        # Straight rake, a crowd on the seats, and a trussed roof. The frame is the
-        # pit-straight grade, so the roof edge is one line.
+        # Straight rake on the driver's left. Positive lanes are that side.
         start, end = -40.0, 360.0
-        face = -12.2
+        side = 1.0
+        face = side * 12.2
         rows = 16
         roof = 12.4
-        back = face - rows * 0.75 - 1.4
+        back = face + side * (rows * 0.75 + 1.4)
         for begin, finish in zip(self._run(start, end, 8), self._run(start, end, 8)[1:]):
             span = finish - begin
-            self._facade("Concrete", self._place(begin, face, 0.0), self._place(finish, face, 0.0), 1.15, -1.0, span / 3, 0.4)
+            self._facade("Concrete", self._place(begin, face, 0.0), self._place(finish, face, 0.0), 1.15, side, span / 3, 0.4)
             for rail in (0.38, 0.72):
-                self._beam("Armco", self._place(begin, -9.05, rail), self._place(finish, -9.05, rail), 0.18, 0.07)
-            self._beam("Armco", self._place(begin, -9.05, 0.15), self._place(begin, -9.05, 0.85), 0.1, 0.1)
+                self._beam("Armco", self._place(begin, side * 9.05, rail), self._place(finish, side * 9.05, rail), 0.18, 0.07)
+            self._beam("Armco", self._place(begin, side * 9.05, 0.15), self._place(begin, side * 9.05, 0.85), 0.1, 0.1)
             for row in range(rows):
-                lane = face - 0.4 - row * 0.75
+                lane = face + side * (0.4 + row * 0.75)
                 rise = 1.15 + row * 0.42
                 self._beam("SeatA", self._place(begin, lane, rise), self._place(finish, lane, rise), 0.72, 0.08)
                 self._people(self._place(begin, lane, rise + 0.08), self._place(finish, lane, rise + 0.08), row)
-            front_a, front_b = self._place(begin, face + 2.8, roof), self._place(finish, face + 2.8, roof)
+            front_a, front_b = self._place(begin, face - side * 2.8, roof), self._place(finish, face - side * 2.8, roof)
             back_b = self._place(finish, back, roof + 1.3)
             back_a = self._place(begin, back, roof + 1.3)
             self._horizontal("Roof", front_a, front_b, back_b, back_a, span / 4, 3.2, True)
             self._horizontal("Steel", front_a, back_a, back_b, front_b, span / 4, 3.2, False)
             self._beam("Steel", front_a, front_b, 0.28, 0.4)
-            self._beam("Steel", self._place(begin, face + 2.4, 0.0), front_a, 0.22, 0.22)
+            self._beam("Steel", self._place(begin, face - side * 2.4, 0.0), front_a, 0.22, 0.22)
             self._beam("Steel", front_a, back_a, 0.12, 0.1)
             for depth in (4.0, 8.0, 12.0, 16.0):
-                lane = face + 2.8 - depth
+                lane = face - side * 2.8 + side * depth
                 height = roof + depth / 18.0 * 1.3 - 0.35
                 self._beam("Steel", self._place(begin, lane, height), self._place(finish, lane, height), 0.1, 0.08)
 
