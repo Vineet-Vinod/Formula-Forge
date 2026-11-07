@@ -60,6 +60,10 @@ UProceduralMeshComponent* Commit(AActor& owner, RibbonMesh& mesh, UMaterialInter
     UProceduralMeshComponent* component = NewObject<UProceduralMeshComponent>(&owner);
     component->SetupAttachment(owner.GetRootComponent());
     component->SetMobility(EComponentMobility::Movable);
+    // Vertices are world centimetres. The presentation actor is spawned at the
+    // car, so store them relative to that actor or the circuit renders in the sky.
+    const FVector origin = owner.GetActorLocation();
+    for (FVector& vertex : mesh.Vertices) vertex -= origin;
     component->SetCollisionEnabled(ECollisionEnabled::NoCollision);
     component->SetCastShadow(shadow);
     component->CreateMeshSection(0, mesh.Vertices, mesh.Triangles, mesh.Normals, mesh.UVs, mesh.Colors, mesh.Tangents, false);
@@ -323,27 +327,6 @@ int32 BuildGeneratedRibbon(AActor& owner, const TrackCatalogEntry& track, TArray
                 }
             }
         }
-        if (track.slug == "japan") {
-            for (int index = 0; index < count; index += 6) {
-                const CircuitSample& sample = samples[index];
-                if (sample.station < 480.0f || sample.station > 5450.0f) continue;
-                float x = 0, y = 0;
-                sourceOf(sample, x, y);
-                if (sample.elevation - terrain.Sample(x, y) > 2.0f) continue;
-                const Vec2 left{-sample.tangent.y, sample.tangent.x};
-                for (const bool positive : {true, false}) {
-                    if (Gravel(track, sample.station, positive)) continue;
-                    const float sign = positive ? 1.0f : -1.0f;
-                    const float lane = sign * (sample.halfWidth + 0.85f + circuitShoulderMeters(track, sample.station, positive) + 8.0f);
-                    const Vec2 sim = sample.sim + left * (lane * 17.0f);
-                    const float treeX = sim.x / 17.0f;
-                    const float treeY = -sim.y / 17.0f;
-                    const float height = 8.0f + FMath::Fmod(sample.station * 0.37f, 7.0f);
-                    const float radius = 2.1f + FMath::Fmod(sample.station * 0.17f, 1.5f);
-                    Cone(trees, SourceWorld(treeX, treeY, terrain.Sample(treeX, treeY)), radius, height);
-                }
-            }
-        }
     }
 
     TArray<uint8> bytes;
@@ -389,8 +372,9 @@ int32 BuildGeneratedRibbon(AActor& owner, const TrackCatalogEntry& track, TArray
                     nearestEdge = FMath::Min(nearestEdge, lengthSq(samples[index].sim - corner));
                 }
             }
-            if (nearestEdge < FMath::Square(20.0f * 17.0f)) continue;
-            if (FMath::Sqrt(best) < 45.0f * 17.0f) height = FMath::Min(height, 6.0f);
+            const float clearanceMetres = track.slug == "japan" ? samples[nearest].halfWidth + 4.0f : 20.0f;
+            if (nearestEdge < FMath::Square(clearanceMetres * 17.0f)) continue;
+            if (track.slug != "japan" && FMath::Sqrt(best) < 45.0f * 17.0f) height = FMath::Min(height, 6.0f);
             const float baseZ = terrain.valid ? terrain.Sample(static_cast<float>(centroid.X), static_cast<float>(centroid.Y)) : samples[nearest].elevation;
             for (int32 edge = 0; edge < ring.Num(); ++edge) {
                 const FVector2D a = ring[edge];
@@ -400,6 +384,15 @@ int32 BuildGeneratedRibbon(AActor& owner, const TrackCatalogEntry& track, TArray
                 const FVector topA = bottomA + FVector(0, 0, height * 100.0f);
                 const FVector topB = bottomB + FVector(0, 0, height * 100.0f);
                 buildings.Quad(bottomA, bottomB, topB, topA, FVector::Dist(bottomA, bottomB) / 100.0f, height);
+                if (track.slug == "japan" && height > 10.0f) {
+                    for (int tier = 0; tier < 4; ++tier) {
+                        const float z0 = baseZ + height * (0.22f + tier * 0.16f);
+                        const FVector seatA = bottomA + FVector(0, 0, (z0 - baseZ) * 100.0f);
+                        const FVector seatB = bottomB + FVector(0, 0, (z0 - baseZ) * 100.0f);
+                        cabins.Quad(seatA, seatB, seatB + FVector(0, 0, 140.0f), seatA + FVector(0, 0, 140.0f),
+                            FVector::Dist(bottomA, bottomB) / 100.0f, 1.4f);
+                    }
+                }
             }
             const FVector roof(-100.0f * centroid.Y, -100.0f * centroid.X, (baseZ + height) * 100.0f);
             for (int32 edge = 1; edge < ring.Num() - 1; ++edge) {
