@@ -67,7 +67,8 @@ class Tile:
         self.minimum = [1e12, 1e12, 1e12]
         self.maximum = [-1e12, -1e12, -1e12]
 
-    def triangle(self, material: str, corners: tuple[Point, Point, Point], uvs: tuple[tuple[float, float], ...]) -> None:
+    def triangle(self, material: str, corners: tuple[Point, Point, Point], uvs: tuple[tuple[float, float], ...],
+                 normals: tuple[Point, Point, Point] | None = None) -> None:
         edge_a, edge_b = sub(corners[1], corners[0]), sub(corners[2], corners[0])
         normal = cross(edge_a, edge_b)
         if sum(value * value for value in normal) < 1e-8:
@@ -79,13 +80,17 @@ class Tile:
             corners = (corners[0], corners[2], corners[1])
             uvs = (uvs[0], uvs[2], uvs[1])
             normal = mul(normal, -1)
+            if normals is not None:
+                normals = (normals[0], normals[2], normals[1])
+        if normals is None:
+            normals = (normal, normal, normal)
         if material not in self.materials:
             self.materials.append(material)
         slot = self.materials.index(material)
         self.blob += struct.pack("<I", slot)
-        for point, uv in zip(corners, uvs):
+        for point, uv, corner_normal in zip(corners, uvs, normals):
             placed = world(point)
-            spun = (-normal[1], -normal[0], normal[2])
+            spun = (-corner_normal[1], -corner_normal[0], corner_normal[2])
             self.blob += struct.pack("<8f", *placed, *spun, uv[0], uv[1])
             for axis in range(3):
                 self.minimum[axis] = min(self.minimum[axis], placed[axis])
@@ -182,13 +187,30 @@ class Scene:
         name = f"Tile_{math.floor(point[0] / 280):02d}_{math.floor(point[1] / 280):02d}".replace("-", "m")
         return self.tiles.setdefault(name, Tile())
 
-    def triangle(self, material: str, corners: tuple[Point, Point, Point], uvs: tuple[tuple[float, float], ...]) -> None:
+    def triangle(self, material: str, corners: tuple[Point, Point, Point], uvs: tuple[tuple[float, float], ...],
+                 normals: tuple[Point, Point, Point] | None = None) -> None:
         centre = mul(add(add(corners[0], corners[1]), corners[2]), 1 / 3)
-        self.tile_for(centre).triangle(material, corners, uvs)
+        self.tile_for(centre).triangle(material, corners, uvs, normals)
 
     def quad(self, material: str, a: Point, b: Point, c: Point, d: Point, u: float, v: float) -> None:
         self.triangle(material, (a, b, c), ((0, 0), (u, 0), (u, v)))
         self.triangle(material, (a, c, d), ((0, 0), (u, v), (0, v)))
+
+    def shaded_quad(self, material: str, a: Point, b: Point, c: Point, d: Point, u: float, v: float,
+                    na: Point, nb: Point, nc: Point, nd: Point) -> None:
+        self.triangle(material, (a, b, c), ((0, 0), (u, 0), (u, v)), (na, nb, nc))
+        self.triangle(material, (a, c, d), ((0, 0), (u, v), (0, v)), (na, nc, nd))
+
+    def _grade_normal(self, sample: dict, nxt: dict) -> Point:
+        run = nxt["station"] - sample["station"]
+        if run <= 0:
+            run += self.length
+        forward = (sample["tx"], sample["ty"], (nxt["z"] - sample["z"]) / max(run, 0.5))
+        lateral = (sample["nx"], sample["ny"], 0.0)
+        direction = norm(cross(forward, lateral))
+        if direction[2] < 0:
+            direction = mul(direction, -1)
+        return direction
 
     def point(self, sample: dict, lane: float, lift: float = 0.0) -> Point:
         return (sample["x"] + sample["nx"] * lane, sample["y"] + sample["ny"] * lane, sample["z"] + lift)
@@ -304,6 +326,7 @@ class Scene:
                 if index + step >= count:
                     step = count - index
             second = samples[(index + step) % count]
+            third = samples[(index + step + step) % count]
             span = second["station"] - first["station"]
             if span <= 0:
                 span += self.length
@@ -312,13 +335,16 @@ class Scene:
             corner = abs(first["turn"]) > 0.18
             left_lane = half + (0.85 if corner else 0.12)
             right_lane = -(half + (0.85 if corner else 0.12))
+            near = self._grade_normal(first, second)
+            far = self._grade_normal(second, third)
             road = [self.point(first, half), self.point(second, second["half"]),
                     self.point(second, -second["half"]), self.point(first, -half)]
-            self.quad("Road", *road, span / 4, half * 2 / 4)
-            self.quad("Line", self.point(first, half - 0.12), self.point(second, second["half"] - 0.12),
-                      self.point(second, second["half"]), self.point(first, half), span / 8, 0.05)
-            self.quad("Line", self.point(first, -half), self.point(second, -second["half"]),
-                      self.point(second, -(second["half"] - 0.12)), self.point(first, -(half - 0.12)), span / 8, 0.05)
+            self.shaded_quad("Road", *road, span / 4, half * 2 / 4, near, far, far, near)
+            self.shaded_quad("Line", self.point(first, half - 0.12), self.point(second, second["half"] - 0.12),
+                             self.point(second, second["half"]), self.point(first, half), span / 8, 0.05, near, far, far, near)
+            self.shaded_quad("Line", self.point(first, -half), self.point(second, -second["half"]),
+                             self.point(second, -(second["half"] - 0.12)), self.point(first, -(half - 0.12)), span / 8, 0.05,
+                             near, far, far, near)
             if corner:
                 material = "KerbRed" if int(first["station"] / 4) % 2 == 0 else "KerbWhite"
                 for sign in (1, -1):
@@ -335,8 +361,9 @@ class Scene:
                 inner = sign * (half + (0.9 if corner else 0.12))
                 outer = sign * (half + 0.9 + shoulder)
                 surface = "Gravel" if self.gravel_at(first["station"], left) else "Grass"
-                self.quad(surface, self.point(first, outer, -0.04), self.point(second, sign * (second["half"] + 0.9 + (second["left"] if left else second["right"])), -0.04),
-                          self.point(second, sign * (second["half"] + (0.9 if corner else 0.12))), self.point(first, inner), span / 4, shoulder / 4)
+                self.shaded_quad(surface, self.point(first, outer, -0.04), self.point(second, sign * (second["half"] + 0.9 + (second["left"] if left else second["right"])), -0.04),
+                                 self.point(second, sign * (second["half"] + (0.9 if corner else 0.12))), self.point(first, inner),
+                                 span / 4, shoulder / 4, near, far, far, near)
                 wall_lane = sign * (half + 0.9 + shoulder)
                 base = self.point(first, wall_lane)
                 base_next = self.point(second, sign * (second["half"] + 0.9 + (second["left"] if left else second["right"])))
@@ -366,12 +393,13 @@ class Scene:
 
     def terrain(self) -> None:
         grid = self.grid
-        step = grid["step"] * 2
+        step = grid["step"]
         columns = int((grid["columns"] * grid["step"]) / step)
         rows = int((grid["rows"] * grid["step"]) / step)
         for row in range(rows - 1):
             for column in range(columns - 1):
                 corners = []
+                normals = []
                 blocked = False
                 for dx, dy in ((0, 0), (1, 0), (1, 1), (0, 1)):
                     x = grid["x"] + (column + dx) * step
@@ -390,9 +418,12 @@ class Scene:
                     blend = max(0.0, min(1.0, (distance - limit) / 18))
                     blend = blend * blend * (3 - 2 * blend)
                     corners.append((x, y, sample["z"] * (1 - blend) + height * blend))
+                    slope_x = (self.terrain_at(x + step, y) - self.terrain_at(x - step, y)) / (2 * step)
+                    slope_y = (self.terrain_at(x, y + step) - self.terrain_at(x, y - step)) / (2 * step)
+                    normals.append(norm((-slope_x, -slope_y, 1.0)))
                 if blocked:
                     continue
-                self.quad("Grass", corners[0], corners[1], corners[2], corners[3], step / 8, step / 8)
+                self.shaded_quad("Grass", corners[0], corners[1], corners[2], corners[3], step / 8, step / 8, *normals)
 
     def between(self, start: float, end: float) -> list[dict]:
         if start <= end:
@@ -554,25 +585,21 @@ class Scene:
         start, end = -40.0, 360.0
         side = 1.0
         face = side * 12.2
-        rows = 9
-        roof = 11.2
-        back = face + side * (rows * 0.9 + 2.0)
+        rows = 12
+        roof = 1.2 + rows * 0.72 + 1.8
+        back = face + side * (rows * 0.85 + 1.2)
         for begin, finish in zip(self._run(start, end, 8), self._run(start, end, 8)[1:]):
             span = finish - begin
-            self._facade("Concrete", self._place(begin, face, 0.0), self._place(finish, face, 0.0), 1.15, side, span / 3, 0.4)
+            self._facade("Concrete", self._place(begin, face, 0.0), self._place(finish, face, 0.0), 1.0, side, span / 3, 0.4)
             for rail in (0.38, 0.72):
                 self._beam("Armco", self._place(begin, side * 9.05, rail), self._place(finish, side * 9.05, rail), 0.18, 0.07)
             self._beam("Armco", self._place(begin, side * 9.05, 0.15), self._place(begin, side * 9.05, 0.85), 0.1, 0.1)
-            self._facade("Concrete", self._place(begin, back, 0.0), self._place(finish, back, 0.0), roof + 1.2, -side, span / 4, 3.0)
-            ramp_a = self._place(begin, face + side * 0.3, 1.15)
-            ramp_b = self._place(finish, face + side * 0.3, 1.15)
-            ramp_c = self._place(finish, back - side * 0.4, 1.15 + rows * 0.55)
-            ramp_d = self._place(begin, back - side * 0.4, 1.15 + rows * 0.55)
-            self._horizontal("SeatA", ramp_a, ramp_b, ramp_c, ramp_d, span / 4, 3.0, True)
             for row in range(rows):
-                lane = face + side * (0.5 + row * 0.9)
-                rise = 1.2 + row * 0.55
-                self._people(self._place(begin, lane, rise), self._place(finish, lane, rise), row)
+                lane = face + side * (0.2 + row * 0.85)
+                rise = 1.0 + row * 0.72
+                self._facade("SeatA", self._place(begin, lane, rise), self._place(finish, lane, rise), 0.66, side, span / 2, 0.4)
+                self._people(self._place(begin, lane - side * 0.05, rise + 0.05), self._place(finish, lane - side * 0.05, rise + 0.05), row)
+            self._facade("Concrete", self._place(begin, back, 0.0), self._place(finish, back, 0.0), 2.4, -side, span / 4, 1.0)
             front_a, front_b = self._place(begin, face - side * 2.8, roof), self._place(finish, face - side * 2.8, roof)
             back_b = self._place(finish, back, roof + 1.3)
             back_a = self._place(begin, back, roof + 1.3)
@@ -643,11 +670,13 @@ class Scene:
             cursor += span
 
     def _grandstand_run(self, sign: float, start: float, end: float, rows: int, setback: float) -> None:
+        # The face toward the road is a stack of seat rows under a roof.
+        # A tall rear wall is what made these read as sheds.
         run = self.between(start, end)
         if len(run) < 3:
             return
-        rows = min(rows, 9)
-        bay = 12.0
+        rows = max(8, min(rows, 14))
+        bay = 14.0
         index = 0
         while index < len(run) - 1:
             first = run[index]
@@ -655,33 +684,28 @@ class Scene:
                 index += 1
             second = run[index]
             span = max(4.0, abs(second["station"] - first["station"]))
-            back = setback + rows * 0.9 + 2.0
-            roof = 1.3 + rows * 0.55 + 2.6
+            back = setback + rows * 0.85 + 1.2
+            roof = 1.4 + rows * 0.72 + 1.6
             self._facade("Concrete", self._offset(first, sign, setback, 0.0), self._offset(second, sign, setback, 0.0),
-                         1.2, sign, span / 3, 0.45)
-            self._facade("Concrete", self._offset(first, sign, back, 0.0), self._offset(second, sign, back, 0.0),
-                         roof, -sign, span / 4, 2.4)
-            self._horizontal(
-                "SeatA",
-                self._offset(first, sign, setback + 0.3, 1.2), self._offset(second, sign, setback + 0.3, 1.2),
-                self._offset(second, sign, back - 0.4, 1.2 + rows * 0.55),
-                self._offset(first, sign, back - 0.4, 1.2 + rows * 0.55),
-                span / 4, 2.5, True,
-            )
+                         1.0, sign, span / 3, 0.4)
             for row in range(rows):
-                lane = setback + 0.6 + row * 0.9
-                rise = 1.25 + row * 0.55
-                self._people(self._offset(first, sign, lane, rise), self._offset(second, sign, lane, rise), row)
-            front = setback - 2.6
+                lane = setback + 0.15 + row * 0.85
+                rise = 1.0 + row * 0.72
+                self._facade("SeatA", self._offset(first, sign, lane, rise), self._offset(second, sign, lane, rise),
+                             0.66, sign, span / 2, 0.4)
+                self._people(self._offset(first, sign, lane - 0.05, rise + 0.05),
+                             self._offset(second, sign, lane - 0.05, rise + 0.05), row)
+            self._facade("Concrete", self._offset(first, sign, back, 0.0), self._offset(second, sign, back, 0.0),
+                         2.4, -sign, span / 4, 1.0)
+            front = setback - 3.4
             roof_a = self._offset(first, sign, front, roof)
             roof_b = self._offset(second, sign, front, roof)
-            roof_c = self._offset(second, sign, back, roof + 1.1)
-            roof_d = self._offset(first, sign, back, roof + 1.1)
+            roof_c = self._offset(second, sign, back + 0.6, roof + 1.4)
+            roof_d = self._offset(first, sign, back + 0.6, roof + 1.4)
             self._horizontal("Roof", roof_a, roof_b, roof_c, roof_d, span / 5, 3.0, True)
             self._horizontal("Steel", roof_a, roof_d, roof_c, roof_b, span / 5, 3.0, False)
-            self._beam("Steel", roof_a, roof_b, 0.28, 0.35)
-            self._beam("Steel", self._offset(first, sign, setback, 0.0), roof_a, 0.22, 0.22)
-            self._beam("Steel", roof_a, roof_d, 0.12, 0.1)
+            self._beam("Steel", roof_a, roof_b, 0.45, 0.55)
+            self._beam("Steel", self._offset(first, sign, setback - 0.2, 0.0), roof_a, 0.35, 0.35)
 
     def stands(self) -> None:
         for height, ring in self.buildings:
