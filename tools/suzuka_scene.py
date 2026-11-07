@@ -260,6 +260,12 @@ class Scene:
                 self.quad("Armco", base, base_next, top_next, top, span / 3, 0.4)
                 cap = (first["nx"] * sign * 0.18, first["ny"] * sign * 0.18, 0)
                 self.quad("Armco", top, top_next, add(top_next, cap), add(top, cap), span / 3, 0.08)
+            if first["z"] - self.terrain_at(first["x"], first["y"]) > 3.5:
+                for sign in (1.0, -1.0):
+                    lane = sign * (half + 1.4)
+                    lane_next = sign * (second["half"] + 1.4)
+                    self.quad("Concrete", self.point(first, lane, 0.15), self.point(second, lane_next, 0.15),
+                              self.point(second, lane_next, 1.25), self.point(first, lane, 1.25), span / 4, 0.5)
             if first["z"] - self.terrain_at(first["x"], first["y"]) > 4.0 and index % 6 == 0:
                 centre = (first["x"], first["y"], self.terrain_at(first["x"], first["y"]))
                 top = (first["x"], first["y"], first["z"] - 0.6)
@@ -295,12 +301,78 @@ class Scene:
                     continue
                 self.quad("Grass", corners[0], corners[1], corners[2], corners[3], step / 8, step / 8)
 
+    def between(self, start: float, end: float) -> list[dict]:
+        if start <= end:
+            return [sample for sample in self.samples if start <= sample["station"] <= end]
+        return [sample for sample in self.samples if sample["station"] >= start or sample["station"] <= end]
+
+    def frontage(self) -> None:
+        # Cockpit reference: pit building on the driver's left, roofed grandstand on the right.
+        # Source left is the positive normal. The packaged view is checked after this placement.
+        self._pit(sign=1.0, start=20.0, end=460.0)
+        self._grandstand_run(sign=-1.0, start=0.0, end=520.0, rows=16, setback=9.0)
+        self._grandstand_run(sign=1.0, start=5000.0, end=5550.0, rows=10, setback=11.0)
+        self._grandstand_run(sign=-1.0, start=2500.0, end=2750.0, rows=8, setback=12.0)
+
+    def _offset(self, sample: dict, sign: float, lane: float, lift: float) -> Point:
+        return self.point(sample, sign * (sample["half"] + lane), lift)
+
+    def _pit(self, sign: float, start: float, end: float) -> None:
+        run = self.between(start, end)
+        for first, second in zip(run, run[1:]):
+            span = max(1.0, second["station"] - first["station"])
+            wall = 5.5
+            a = self._offset(first, sign, wall, 0.0)
+            b = self._offset(second, sign, wall, 0.0)
+            self.quad("Pit", a, b, add(b, (0, 0, 1.35)), add(a, (0, 0, 1.35)), span / 4, 0.4)
+            building = 11.0
+            outer = self._offset(first, sign, building + 8.0, 0.0)
+            outer_next = self._offset(second, sign, building + 8.0, 0.0)
+            inner = self._offset(first, sign, building, 0.0)
+            inner_next = self._offset(second, sign, building, 0.0)
+            self.quad("Pit", inner, inner_next, add(inner_next, (0, 0, 7.5)), add(inner, (0, 0, 7.5)), span / 6, 2.0)
+            self.quad("Roof", inner, inner_next, outer_next, outer, span / 8, 2.0)
+            for mouth in (2.2, 4.6):
+                low = self._offset(first, sign, building - 0.15, mouth)
+                low_next = self._offset(second, sign, building - 0.15, mouth)
+                self.quad("Garage", low, low_next, add(low_next, (0, 0, 1.7)), add(low, (0, 0, 1.7)), span / 5, 0.6)
+
+    def _grandstand_run(self, sign: float, start: float, end: float, rows: int, setback: float) -> None:
+        run = self.between(start, end)
+        for index, (first, second) in enumerate(zip(run, run[1:])):
+            span = max(1.0, abs(second["station"] - first["station"]))
+            if span > 20:
+                span = 4.0
+            for row in range(rows):
+                near = setback + row * 0.9
+                far = near + 0.9
+                rise = 1.4 + row * 0.78
+                material = "SeatA" if row % 2 == 0 else "SeatB"
+                a = self._offset(first, sign, near, rise)
+                b = self._offset(second, sign, near, rise)
+                c = self._offset(second, sign, far, rise + 0.55)
+                d = self._offset(first, sign, far, rise + 0.55)
+                self.quad(material, a, b, c, d, span / 2.5, 0.45)
+                self.quad(material, a, b, add(b, (0, 0, 0.62)), add(a, (0, 0, 0.62)), span / 2.5, 0.3)
+            roof_near = setback - 3.2
+            roof_far = setback + rows * 0.9 + 1.5
+            roof = 1.6 + rows * 0.78 + 2.4
+            self.quad("Roof", self._offset(first, sign, roof_near, roof), self._offset(second, sign, roof_near, roof),
+                      self._offset(second, sign, roof_far, roof), self._offset(first, sign, roof_far, roof), span / 6, 3)
+            if index % 4 == 0:
+                post = self._offset(first, sign, setback, 0.0)
+                top = self._offset(first, sign, roof_near, roof)
+                self.quad("Steel", post, add(post, (first["tx"] * 0.35, first["ty"] * 0.35, 0)),
+                          add(top, (first["tx"] * 0.35, first["ty"] * 0.35, 0)), top, 0.4, roof / 4)
+
     def stands(self) -> None:
         for height, ring in self.buildings:
             if len(ring) < 3:
                 continue
             centroid = (sum(point[0] for point in ring) / len(ring), sum(point[1] for point in ring) / len(ring))
             sample, _distance = self.nearest(*centroid)
+            if sample["station"] < 560 or sample["station"] > 5480:
+                continue
             base = self.terrain_at(*centroid)
             if height >= 26:
                 self._tower(ring, base, height)
@@ -392,23 +464,28 @@ class Scene:
         facing = norm((sample["x"] - x, sample["y"] - y, 0))
         axis = norm(cross(facing, (0, 0, 1)))
         centre = (x, y, base + hub)
-        segments = 28
+        segments = 36
         for index in range(segments):
             a0 = math.tau * index / segments
             a1 = math.tau * (index + 1) / segments
 
-            def rim(angle: float, scale: float) -> Point:
-                return add(centre, add(mul(facing, math.cos(angle) * radius * scale), (0, 0, math.sin(angle) * radius * scale)))
+            def rim(angle: float, scale: float, lateral: float) -> Point:
+                return add(centre, add(add(mul(facing, math.cos(angle) * radius * scale),
+                                           (0, 0, math.sin(angle) * radius * scale)), mul(axis, lateral)))
 
-            self.quad("White", rim(a0, 1), rim(a1, 1), rim(a1, 0.9), rim(a0, 0.9), 2, 0.4)
-            if index % 4 == 0:
-                outer = rim(a0, 0.92)
-                side = mul(axis, 0.18)
-                self.quad("White", add(centre, mul(side, -1)), add(outer, mul(side, -1)), add(outer, side), add(centre, side), radius / 4, 0.2)
-                cabin = rim(a0, 1.05)
-                up = (0, 0, 1.3)
-                wide = mul(axis, 0.9)
-                self.quad("Red", sub(cabin, wide), add(cabin, wide), add(add(cabin, wide), up), add(sub(cabin, wide), up), 1, 0.8)
+            self.quad("White", rim(a0, 1.0, -0.55), rim(a1, 1.0, -0.55), rim(a1, 1.0, 0.55), rim(a0, 1.0, 0.55), 2, 0.5)
+            self.quad("White", rim(a0, 0.90, -0.45), rim(a1, 0.90, -0.45), rim(a1, 1.0, -0.45), rim(a0, 1.0, -0.45), 2, 0.4)
+            self.quad("White", rim(a0, 0.90, 0.45), rim(a1, 0.90, 0.45), rim(a1, 1.0, 0.45), rim(a0, 1.0, 0.45), 2, 0.4)
+            if index % 3 == 0:
+                outer = rim(a0, 0.92, 0.0)
+                side = mul(axis, 0.22)
+                self.quad("White", add(centre, mul(side, -1)), add(outer, mul(side, -1)), add(outer, side), add(centre, side), radius / 5, 0.25)
+                cabin = rim(a0, 1.04, 0.0)
+                up = (0, 0, 2.1)
+                wide = mul(axis, 1.15)
+                deep = mul(facing, 1.1 * math.cos(a0))
+                self.quad("Red", sub(sub(cabin, wide), deep), add(sub(cabin, deep), wide),
+                          add(add(sub(cabin, deep), wide), up), add(sub(sub(cabin, wide), deep), up), 1.2, 1.0)
         for sign in (1, -1):
             foot = add((x, y, base), mul(axis, sign * radius * 0.62))
             self.quad("Steel", foot, add(foot, mul(facing, 0.4)), add(centre, mul(facing, 0.4)), centre, radius / 6, 0.4)
@@ -437,6 +514,7 @@ def main() -> None:
     scene = Scene()
     scene.road()
     scene.terrain()
+    scene.frontage()
     scene.stands()
     scene.trees()
     scene.wheel()
