@@ -799,6 +799,32 @@ def fill_notches(elevation, stations, depth=2.5, reach=12):
         elevation[:] = updated
 
 
+def grade_pit_straight(elevation, stations, length):
+    # The start sits on one grade. A culvert in the 5 m mesh, just after the
+    # line, was inside the seam guard and below the notch threshold, so the
+    # racing surface dropped about two metres and came back up.
+    def signed(station):
+        return station - length if station > length * 0.5 else station
+
+    def nearest(target):
+        return min(range(len(stations)), key=lambda index: abs(signed(stations[index]) - target))
+
+    left, right = nearest(16), nearest(300)
+    span = signed(stations[right]) - signed(stations[left])
+    if span <= 0:
+        return
+    grade = (elevation[right] - elevation[left]) / span
+    origin = elevation[left] - grade * signed(stations[left])
+    for index, station in enumerate(stations):
+        place = signed(station)
+        if place < -40 or place > 330:
+            continue
+        chord = origin + grade * place
+        limit = 0.15 if place >= 0 else 0.4
+        if elevation[index] < chord - limit:
+            elevation[index] = chord
+
+
 def flatten_spikes(elevation, limit=0.35):
     # One-sample holes make the road quads overlap and the contact surface
     # disagree with the centreline. A steady grade is left alone.
@@ -1142,6 +1168,7 @@ out geom;
     if spec["slug"] == "japan":
         fill_notches(relative, stations)
         flatten_spikes(relative)
+        grade_pit_straight(relative, stations, target)
     seam = min(40.0, target * 0.02)
     for index, station in enumerate(stations):
         remaining = target - station

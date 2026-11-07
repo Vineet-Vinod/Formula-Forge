@@ -73,8 +73,9 @@ class Tile:
         if sum(value * value for value in normal) < 1e-8:
             return
         normal = norm(normal)
-        # Upward surfaces were wound downward, so the cockpit looked at a black underside.
-        if normal[2] < -0.35:
+        # Ground quads were wound downward. Roofs and walls keep the winding they were given,
+        # so a soffit can face the cockpit instead of being flipped into the sky.
+        if material in {"Road", "Grass", "Line", "Gravel", "KerbRed", "KerbWhite"} and normal[2] < -0.35:
             corners = (corners[0], corners[2], corners[1])
             uvs = (uvs[0], uvs[2], uvs[1])
             normal = mul(normal, -1)
@@ -137,6 +138,7 @@ class Scene:
         self.wheel_spec = self._wheel()
         self.tiles: dict[str, Tile] = {}
         self.gravel = self._gravel(text)
+        self._straighten()
 
     def _buildings(self) -> list[tuple[float, list[tuple[float, float]]]]:
         data = BUILDINGS.read_bytes()
@@ -212,6 +214,38 @@ class Scene:
         best = min(self.samples, key=lambda sample: (sample["x"] - x) ** 2 + (sample["y"] - y) ** 2)
         return best, math.hypot(best["x"] - x, best["y"] - y)
 
+    def _straighten(self) -> None:
+        # Same repair as grade_pit_straight in the circuit builder. The mesh
+        # follows the survey, and the survey follows this grade.
+        def signed(station: float) -> float:
+            return station - self.length if station > self.length * 0.5 else station
+
+        def nearest(target: float) -> dict:
+            return min(self.samples, key=lambda sample: abs(signed(sample["station"]) - target))
+
+        left, right = nearest(16), nearest(300)
+        span = signed(right["station"]) - signed(left["station"])
+        grade = (right["z"] - left["z"]) / span
+        origin = left["z"] - grade * signed(left["station"])
+        self.grade_origin = origin
+        self.grade_slope = grade
+        start, finish = nearest(0), nearest(300)
+        tangent = norm((finish["x"] - start["x"], finish["y"] - start["y"], 0))
+        self.straight_tx, self.straight_ty = tangent[0], tangent[1]
+        self.straight_nx, self.straight_ny = -tangent[1], tangent[0]
+        for sample in self.samples:
+            place = signed(sample["station"])
+            if -40 <= place <= 330:
+                chord = origin + grade * place
+                limit = 0.15 if place >= 0 else 0.4
+                if sample["z"] < chord - limit:
+                    sample["z"] = chord
+                sample["tx"], sample["ty"] = self.straight_tx, self.straight_ty
+                sample["nx"], sample["ny"] = self.straight_nx, self.straight_ny
+
+    def _on_frontage(self, station: float) -> bool:
+        return station <= 420 or station >= self.length - 90
+
     def gravel_at(self, station: float, left: bool) -> bool:
         side = 1 if left else -1
         return any(start <= station <= end and zone_side == side for start, end, zone_side in self.gravel)
@@ -257,6 +291,8 @@ class Scene:
                 base_next = self.point(second, sign * (second["half"] + 0.9 + (second["left"] if left else second["right"])))
                 top = add(base, (0, 0, 0.95))
                 top_next = add(base_next, (0, 0, 0.95))
+                if self._on_frontage(first["station"]):
+                    continue
                 self.quad("Armco", base, base_next, top_next, top, span / 3, 0.4)
                 cap = (first["nx"] * sign * 0.18, first["ny"] * sign * 0.18, 0)
                 self.quad("Armco", top, top_next, add(top_next, cap), add(top, cap), span / 3, 0.08)
@@ -294,6 +330,11 @@ class Scene:
                         blocked = True
                         break
                     height = self.terrain_at(x, y)
+                    if self._on_frontage(sample["station"]) and distance < 48:
+                        # The same culvert that notched the road opens beside the pits.
+                        height = max(height, sample["z"] - 0.2)
+                        if distance < 30:
+                            height = min(height, sample["z"] + 0.4)
                     blend = max(0.0, min(1.0, (distance - limit) / 18))
                     blend = blend * blend * (3 - 2 * blend)
                     corners.append((x, y, sample["z"] * (1 - blend) + height * blend))
@@ -307,12 +348,130 @@ class Scene:
         return [sample for sample in self.samples if sample["station"] >= start or sample["station"] <= end]
 
     def frontage(self) -> None:
-        # Cockpit reference: pit building on the driver's left, roofed grandstand on the right.
-        # Source left is the positive normal. The packaged view is checked after this placement.
-        self._pit(sign=1.0, start=20.0, end=460.0)
-        self._grandstand_run(sign=-1.0, start=0.0, end=520.0, rows=16, setback=9.0)
+        # Pit building on the driver's left, roofed grandstand on the right.
+        # Source left is the positive normal. Both run on the straight grade,
+        # not on the per-sample ribbon that followed the culvert.
+        self._pit_straight()
+        self._main_grandstand()
         self._grandstand_run(sign=1.0, start=5000.0, end=5550.0, rows=10, setback=11.0)
         self._grandstand_run(sign=-1.0, start=2500.0, end=2750.0, rows=8, setback=12.0)
+
+    def _at(self, station: float) -> dict:
+        samples = self.samples
+        index = max(0, min(len(samples) - 1, int(station / self.length * len(samples))))
+        while index < len(samples) - 1 and samples[index + 1]["station"] <= station:
+            index += 1
+        while index > 0 and samples[index]["station"] > station:
+            index -= 1
+        first = samples[index]
+        if index + 1 >= len(samples):
+            return first
+        second = samples[index + 1]
+        span = second["station"] - first["station"]
+        blend = 0.0 if span <= 0 else max(0.0, min(1.0, (station - first["station"]) / span))
+        return {
+            "x": first["x"] + (second["x"] - first["x"]) * blend,
+            "y": first["y"] + (second["y"] - first["y"]) * blend,
+            "z": first["z"] + (second["z"] - first["z"]) * blend,
+        }
+
+    def _place(self, signed_station: float, lane: float, lift: float) -> Point:
+        station = signed_station if signed_station >= 0 else signed_station + self.length
+        sample = self._at(station)
+        return (
+            sample["x"] + self.straight_nx * lane,
+            sample["y"] + self.straight_ny * lane,
+            sample["z"] + lift,
+        )
+
+    def _horizontal(self, material: str, a: Point, b: Point, c: Point, d: Point, u: float, v: float, up: bool) -> None:
+        normal = cross(sub(b, a), sub(c, a))
+        if (normal[2] >= 0) != up:
+            b, d = d, b
+        self.quad(material, a, b, c, d, u, v)
+
+    def _run(self, start: float, end: float, step: float) -> list[float]:
+        stations = []
+        cursor = start
+        while cursor < end - 0.05:
+            stations.append(cursor)
+            cursor += step
+        stations.append(end)
+        return stations
+
+    def _pit_straight(self) -> None:
+        # Wall, pit lane, then a straight garage block with bays deep enough to read.
+        start, end = -40.0, 360.0
+        wall, face = 9.6, 18.2
+        for begin, finish in zip(self._run(start, end, 16), self._run(start, end, 16)[1:]):
+            span = finish - begin
+            self._horizontal(
+                "Road",
+                self._place(begin, wall + 0.35, 0.02), self._place(finish, wall + 0.35, 0.02),
+                self._place(finish, face - 0.4, 0.02), self._place(begin, face - 0.4, 0.02),
+                span / 4, 2.0, True,
+            )
+            self._facade("Concrete", self._place(begin, wall, 0.0), self._place(finish, wall, 0.0), 1.05, 1.0, span / 3, 0.4)
+            self._horizontal(
+                "Concrete",
+                self._place(begin, wall - 0.15, 1.05), self._place(finish, wall - 0.15, 1.05),
+                self._place(finish, wall + 0.28, 1.05), self._place(begin, wall + 0.28, 1.05),
+                span / 3, 0.15, True,
+            )
+        bay = 8.0
+        cursor = start
+        while cursor < end - 1:
+            nxt = min(end, cursor + bay)
+            pier = min(nxt, cursor + 1.15)
+            self._facade("Concrete", self._place(cursor, face, 0.0), self._place(pier, face, 0.0), 6.2, 1.0, 0.4, 2.2)
+            for edge in (cursor, pier):
+                outer = self._place(edge, face, 0.0)
+                inner = self._place(edge, face + 2.8, 0.0)
+                self.quad("Concrete", outer, inner, add(inner, (0, 0, 6.2)), add(outer, (0, 0, 6.2)), 0.8, 2.2)
+                self.quad("Concrete", inner, outer, add(outer, (0, 0, 6.2)), add(inner, (0, 0, 6.2)), 0.8, 2.2)
+            if pier < nxt - 0.4:
+                self._facade("Garage", self._place(pier, face + 2.6, 0.25), self._place(nxt, face + 2.6, 0.25), 3.7, 1.0, 1.6, 1.2)
+                self._facade("Pit", self._place(pier, face, 4.05), self._place(nxt, face, 4.05), 2.15, 1.0, 1.4, 0.7)
+            cursor = nxt
+        self._facade("Concrete", self._place(start, face + 11.0, 0.0), self._place(end, face + 11.0, 0.0), 6.2, -1.0, (end - start) / 8, 2.0)
+        for begin, finish in zip(self._run(start, end, 20), self._run(start, end, 20)[1:]):
+            front_a, front_b = self._place(begin, face - 6.5, 6.35), self._place(finish, face - 6.5, 6.35)
+            back_b, back_a = self._place(finish, face + 11.0, 6.7), self._place(begin, face + 11.0, 6.7)
+            self._horizontal("Roof", front_a, front_b, back_b, back_a, (finish - begin) / 6, 3.0, True)
+            self._horizontal("Steel", front_a, back_a, back_b, front_b, (finish - begin) / 6, 3.0, False)
+            self._facade("Roof", self._place(begin, face - 6.5, 5.85), self._place(finish, face - 6.5, 5.85), 0.5, 1.0, (finish - begin) / 4, 0.2)
+
+    def _main_grandstand(self) -> None:
+        # One straight rake and one roof edge. Seat rows share the straight frame
+        # so the face does not wander with each centreline sample.
+        start, end = -40.0, 360.0
+        face = -12.4
+        rows = 12
+        for begin, finish in zip(self._run(start, end, 20), self._run(start, end, 20)[1:]):
+            span = finish - begin
+            self._facade("Concrete", self._place(begin, face, 0.0), self._place(finish, face, 0.0), 1.2, -1.0, span / 3, 0.45)
+            self._facade("Armco", self._place(begin, -9.0, 0.0), self._place(finish, -9.0, 0.0), 0.9, -1.0, span / 3, 0.35)
+            self._facade("Concrete", self._place(begin, face, 0.0), self._place(begin + 1.5, face, 0.0), 1.2 + rows * 0.48, -1.0, 0.4, 2.4)
+            for row in range(rows):
+                lane = face - row * 0.82
+                rise = 1.2 + row * 0.48
+                self._facade("SeatA", self._place(begin + 1.5, lane, rise), self._place(finish, lane, rise), 0.42, -1.0, span / 2, 0.25)
+                self._horizontal(
+                    "Concrete",
+                    self._place(begin + 1.5, lane, rise + 0.42), self._place(finish, lane, rise + 0.42),
+                    self._place(finish, lane - 0.82, rise + 0.42), self._place(begin + 1.5, lane - 0.82, rise + 0.42),
+                    span / 3, 0.25, True,
+                )
+            roof = 1.35 + rows * 0.48 + 1.6
+            front_a, front_b = self._place(begin, face + 3.2, roof), self._place(finish, face + 3.2, roof)
+            back_b, back_a = self._place(finish, face - rows * 0.82 - 1.6, roof + 1.15), self._place(begin, face - rows * 0.82 - 1.6, roof + 1.15)
+            self._horizontal("Roof", front_a, front_b, back_b, back_a, span / 5, 3.5, True)
+            self._horizontal("Steel", front_a, back_a, back_b, front_b, span / 5, 3.5, False)
+            self._facade("Roof", self._place(begin, face + 3.2, roof - 0.45), self._place(finish, face + 3.2, roof - 0.45), 0.45, -1.0, span / 4, 0.2)
+            foot = self._place(begin, face + 2.6, 0.0)
+            head = self._place(begin, face + 3.2, roof)
+            side = (self.straight_tx * 0.22, self.straight_ty * 0.22, 0.0)
+            self.quad("Steel", foot, add(foot, side), add(head, side), head, 0.25, roof / 3)
 
     def _offset(self, sample: dict, sign: float, lane: float, lift: float) -> Point:
         return self.point(sample, sign * (sample["half"] + lane), lift)
