@@ -820,7 +820,10 @@ def grade_pit_straight(elevation, stations, length):
         if place < -40 or place > 330:
             continue
         chord = origin + grade * place
-        limit = 0.15 if place >= 0 else 0.4
+        if 0 <= place <= 320:
+            elevation[index] = chord
+            continue
+        limit = 0.4
         if elevation[index] < chord - limit:
             elevation[index] = chord
 

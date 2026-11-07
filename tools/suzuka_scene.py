@@ -233,15 +233,33 @@ class Scene:
         tangent = norm((finish["x"] - start["x"], finish["y"] - start["y"], 0))
         self.straight_tx, self.straight_ty = tangent[0], tangent[1]
         self.straight_nx, self.straight_ny = -tangent[1], tangent[0]
+        self.line_x, self.line_y = start["x"], start["y"]
         for sample in self.samples:
             place = signed(sample["station"])
-            if -40 <= place <= 330:
-                chord = origin + grade * place
-                limit = 0.15 if place >= 0 else 0.4
-                if sample["z"] < chord - limit:
-                    sample["z"] = chord
-                sample["tx"], sample["ty"] = self.straight_tx, self.straight_ty
-                sample["nx"], sample["ny"] = self.straight_nx, self.straight_ny
+            weight = self._straight_weight(place)
+            if weight <= 0:
+                continue
+            chord_z = origin + grade * place
+            line_x = self.line_x + self.straight_tx * place
+            line_y = self.line_y + self.straight_ty * place
+            sample["x"] += (line_x - sample["x"]) * weight
+            sample["y"] += (line_y - sample["y"]) * weight
+            sample["z"] += (chord_z - sample["z"]) * weight
+            sample["tx"], sample["ty"] = self.straight_tx, self.straight_ty
+            sample["nx"], sample["ny"] = self.straight_nx, self.straight_ny
+            if weight > 0.99:
+                sample["half"] = 7.5
+                sample["left"] = sample["right"] = 6.0
+
+    def _straight_weight(self, place: float) -> float:
+        # Full correction on the pit straight, blended out before Turn 1 and the chicane.
+        if place < -70 or place > 360:
+            return 0.0
+        if place < -30:
+            return (place + 70) / 40
+        if place > 320:
+            return (360 - place) / 40
+        return 1.0
 
     def _on_frontage(self, station: float) -> bool:
         return station <= 420 or station >= self.length - 90
@@ -252,11 +270,25 @@ class Scene:
 
     def road(self) -> None:
         samples = self.samples
-        for index, first in enumerate(samples):
-            second = samples[(index + 1) % len(samples)]
-            span = max(0.5, second["station"] - first["station"])
-            if span > 30:
-                span = self.length / len(samples)
+        count = len(samples)
+        index = 0
+        while index < count:
+            first = samples[index]
+            step = 1
+            def signed_station(sample: dict) -> float:
+                return sample["station"] if sample["station"] < self.length * 0.5 else sample["station"] - self.length
+
+            if self._straight_weight(signed_station(first)) > 0.99:
+                step = 8
+                while step > 1 and index + step < count and self._straight_weight(signed_station(samples[index + step])) < 0.99:
+                    step -= 1
+                if index + step >= count:
+                    step = count - index
+            second = samples[(index + step) % count]
+            span = second["station"] - first["station"]
+            if span <= 0:
+                span += self.length
+            span = max(0.5, span)
             half = first["half"]
             corner = abs(first["turn"]) > 0.18
             left_lane = half + (0.85 if corner else 0.12)
@@ -311,6 +343,7 @@ class Scene:
                     a = add(centre, mul(direction, 0.7))
                     b = add(centre, mul(side, 0.7))
                     self.quad("Concrete", a, b, add(b, sub(top, centre)), add(a, sub(top, centre)), 1, first["z"])
+            index += step
 
     def terrain(self) -> None:
         grid = self.grid
