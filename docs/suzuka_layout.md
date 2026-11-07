@@ -28,10 +28,10 @@ the ground, from the published note that the ride looks down from about 50 m,
 not from a measured diameter.
 
 `Saved/Refs/japan.mp4` is a commercial game replay of the Japanese Grand Prix.
-It was used to check the order of the scenery: grandstands along the pit
-straight, red and white kerbs, grass, gravel, trees and the wheel. Its pictures
-and meshes are not in the game. Rebuild with `python3 tools/build_circuits.py --only japan`
-and then `make native-check` so the contact surface matches the new profile.
+It was used to check the order of the scenery. Its pictures and meshes are not
+in the game. The cockpit scene is native tiles in `Content/Generated/Japan/Track`,
+built with the Interlagos and Monza materials. Regenerate with
+`python3 tools/suzuka_scene.py`, then `bash tools/unreal.sh python tools/build_suzuka.py`.
 
 Widths, stand heights and the wheel size are estimates. There is no orthophoto
 registration and no packaged cockpit lap in this revision.

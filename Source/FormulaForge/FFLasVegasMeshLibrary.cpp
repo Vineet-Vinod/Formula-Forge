@@ -14,7 +14,8 @@ UStaticMesh* UFFLasVegasMeshLibrary::BuildTile(const FString& sourceFile, const 
         const TArray<UMaterialInterface*>& materials) {
 #if WITH_EDITOR
     TArray<uint8> bytes;
-    if (!assetPath.StartsWith(TEXT("/Game/Generated/LasVegas/Track/")) || materials.IsEmpty() ||
+    if (!(assetPath.StartsWith(TEXT("/Game/Generated/LasVegas/Track/")) ||
+          assetPath.StartsWith(TEXT("/Game/Generated/Japan/Track/"))) || materials.IsEmpty() ||
         !FFileHelper::LoadFileToArray(bytes, *sourceFile) || bytes.Num() < 12 ||
         FMemory::Memcmp(bytes.GetData(), "FFLVM1\0", 8) != 0) return nullptr;
     uint32 triangles = 0;
