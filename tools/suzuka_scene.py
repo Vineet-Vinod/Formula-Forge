@@ -250,6 +250,25 @@ class Scene:
             if weight > 0.99:
                 sample["half"] = 7.5
                 sample["left"] = sample["right"] = 6.0
+        self._smooth_heading()
+
+    def _smooth_heading(self) -> None:
+        # Short average so the asphalt edges do not kink on every sample.
+        # The pit straight keeps the fitted line. Corners keep their shape.
+        count = len(self.samples)
+        tangents = [(sample["tx"], sample["ty"]) for sample in self.samples]
+        for index, sample in enumerate(self.samples):
+            place = sample["station"] if sample["station"] < self.length * 0.5 else sample["station"] - self.length
+            if self._straight_weight(place) > 0.99:
+                continue
+            tx = ty = 0.0
+            for offset, weight in ((-1, 1.0), (0, 2.0), (1, 1.0)):
+                other = tangents[(index + offset) % count]
+                tx += other[0] * weight
+                ty += other[1] * weight
+            tangent = norm((tx, ty, 0.0))
+            sample["tx"], sample["ty"] = tangent[0], tangent[1]
+            sample["nx"], sample["ny"] = -tangent[1], tangent[0]
 
     def _straight_weight(self, place: float) -> float:
         # Full correction on the pit straight, blended out before Turn 1 and the chicane.
@@ -274,7 +293,7 @@ class Scene:
         index = 0
         while index < count:
             first = samples[index]
-            step = 1
+            step = 2
             def signed_station(sample: dict) -> float:
                 return sample["station"] if sample["station"] < self.length * 0.5 else sample["station"] - self.length
 
@@ -535,9 +554,9 @@ class Scene:
         start, end = -40.0, 360.0
         side = 1.0
         face = side * 12.2
-        rows = 16
-        roof = 12.4
-        back = face + side * (rows * 0.75 + 1.4)
+        rows = 9
+        roof = 11.2
+        back = face + side * (rows * 0.9 + 2.0)
         for begin, finish in zip(self._run(start, end, 8), self._run(start, end, 8)[1:]):
             span = finish - begin
             self._facade("Concrete", self._place(begin, face, 0.0), self._place(finish, face, 0.0), 1.15, side, span / 3, 0.4)
@@ -545,12 +564,15 @@ class Scene:
                 self._beam("Armco", self._place(begin, side * 9.05, rail), self._place(finish, side * 9.05, rail), 0.18, 0.07)
             self._beam("Armco", self._place(begin, side * 9.05, 0.15), self._place(begin, side * 9.05, 0.85), 0.1, 0.1)
             self._facade("Concrete", self._place(begin, back, 0.0), self._place(finish, back, 0.0), roof + 1.2, -side, span / 4, 3.0)
+            ramp_a = self._place(begin, face + side * 0.3, 1.15)
+            ramp_b = self._place(finish, face + side * 0.3, 1.15)
+            ramp_c = self._place(finish, back - side * 0.4, 1.15 + rows * 0.55)
+            ramp_d = self._place(begin, back - side * 0.4, 1.15 + rows * 0.55)
+            self._horizontal("SeatA", ramp_a, ramp_b, ramp_c, ramp_d, span / 4, 3.0, True)
             for row in range(rows):
-                lane = face + side * (0.4 + row * 0.75)
-                rise = 1.15 + row * 0.42
-                self._beam("SeatA", self._place(begin, lane, rise), self._place(finish, lane, rise), 1.05, 0.1)
-                self._people(self._place(begin, lane, rise + 0.1), self._place(finish, lane, rise + 0.1), row)
-                self._people(self._place(begin, lane + side * 0.38, rise + 0.1), self._place(finish, lane + side * 0.38, rise + 0.1), row + 1)
+                lane = face + side * (0.5 + row * 0.9)
+                rise = 1.2 + row * 0.55
+                self._people(self._place(begin, lane, rise), self._place(finish, lane, rise), row)
             front_a, front_b = self._place(begin, face - side * 2.8, roof), self._place(finish, face - side * 2.8, roof)
             back_b = self._place(finish, back, roof + 1.3)
             back_a = self._place(begin, back, roof + 1.3)
@@ -624,42 +646,42 @@ class Scene:
         run = self.between(start, end)
         if len(run) < 3:
             return
-        bay = 6.0
+        rows = min(rows, 9)
+        bay = 12.0
         index = 0
         while index < len(run) - 1:
             first = run[index]
             while index < len(run) - 1 and run[index]["station"] - first["station"] < bay:
                 index += 1
             second = run[index]
-            span = max(2.0, min(bay * 1.4, abs(second["station"] - first["station"])))
-            # Knee wall, then a grid of seat fronts so the stand is not one set of stripes.
+            span = max(4.0, abs(second["station"] - first["station"]))
+            back = setback + rows * 0.9 + 2.0
+            roof = 1.3 + rows * 0.55 + 2.6
             self._facade("Concrete", self._offset(first, sign, setback, 0.0), self._offset(second, sign, setback, 0.0),
-                         1.15, sign, span / 3, 0.5)
+                         1.2, sign, span / 3, 0.45)
+            self._facade("Concrete", self._offset(first, sign, back, 0.0), self._offset(second, sign, back, 0.0),
+                         roof, -sign, span / 4, 2.4)
+            self._horizontal(
+                "SeatA",
+                self._offset(first, sign, setback + 0.3, 1.2), self._offset(second, sign, setback + 0.3, 1.2),
+                self._offset(second, sign, back - 0.4, 1.2 + rows * 0.55),
+                self._offset(first, sign, back - 0.4, 1.2 + rows * 0.55),
+                span / 4, 2.5, True,
+            )
             for row in range(rows):
-                rise = 1.15 + row * 0.7
-                lane = setback + 0.35 + row * 0.72
-                material = ("SeatA", "SeatB", "Crowd")[(row + int(first["station"])) % 3]
-                a = self._offset(first, sign, lane, rise)
-                b = self._offset(second, sign, lane, rise)
-                self._facade(material, a, b, 0.62, sign, span / 1.5, 0.35)
-                tread_a = self._offset(first, sign, lane, rise + 0.62)
-                tread_b = self._offset(second, sign, lane, rise + 0.62)
-                tread_c = self._offset(second, sign, lane + 0.7, rise + 0.62)
-                tread_d = self._offset(first, sign, lane + 0.7, rise + 0.62)
-                self.quad("Concrete", tread_a, tread_b, tread_c, tread_d, span / 3, 0.3)
-            roof = 1.3 + rows * 0.7 + 1.8
-            front = setback - 4.5
-            back = setback + rows * 0.72 + 2.0
+                lane = setback + 0.6 + row * 0.9
+                rise = 1.25 + row * 0.55
+                self._people(self._offset(first, sign, lane, rise), self._offset(second, sign, lane, rise), row)
+            front = setback - 2.6
             roof_a = self._offset(first, sign, front, roof)
             roof_b = self._offset(second, sign, front, roof)
-            roof_c = self._offset(second, sign, back, roof + 1.4)
-            roof_d = self._offset(first, sign, back, roof + 1.4)
-            self.quad("Roof", roof_a, roof_b, roof_c, roof_d, span / 5, 4)
-            self.quad("Steel", roof_a, roof_b, add(roof_b, (0, 0, -0.25)), add(roof_a, (0, 0, -0.25)), span / 5, 0.15)
-            post = self._offset(first, sign, setback - 0.4, 0.0)
-            post_top = self._offset(first, sign, front, roof)
-            self.quad("Steel", post, add(post, (first["tx"] * 0.28, first["ty"] * 0.28, 0)),
-                      add(post_top, (first["tx"] * 0.28, first["ty"] * 0.28, 0)), post_top, 0.3, roof / 3)
+            roof_c = self._offset(second, sign, back, roof + 1.1)
+            roof_d = self._offset(first, sign, back, roof + 1.1)
+            self._horizontal("Roof", roof_a, roof_b, roof_c, roof_d, span / 5, 3.0, True)
+            self._horizontal("Steel", roof_a, roof_d, roof_c, roof_b, span / 5, 3.0, False)
+            self._beam("Steel", roof_a, roof_b, 0.28, 0.35)
+            self._beam("Steel", self._offset(first, sign, setback, 0.0), roof_a, 0.22, 0.22)
+            self._beam("Steel", roof_a, roof_d, 0.12, 0.1)
 
     def stands(self) -> None:
         for height, ring in self.buildings:
@@ -690,7 +712,6 @@ class Scene:
 
     def _grandstand(self, ring, centroid, sample, base: float, height: float) -> None:
         self._box(ring, base, min(4.0, height * 0.25), "Concrete")
-        tiers = max(4, int((height - 4) / 1.7))
         for index, (ax, ay) in enumerate(ring):
             bx, by = ring[(index + 1) % len(ring)]
             edge = ((ax + bx) * 0.5 - centroid[0], (ay + by) * 0.5 - centroid[1])
@@ -701,15 +722,14 @@ class Scene:
                 continue
             inward = norm((-edge[0], -edge[1], 0))
             length = math.hypot(bx - ax, by - ay)
-            for tier in range(tiers):
-                depth = tier * 1.15
-                rise = 4 + tier * 1.55
-                a = add((ax, ay, base + rise), mul(inward, depth))
-                b = add((bx, by, base + rise), mul(inward, depth))
-                c = add((bx, by, base + rise + 1.35), mul(inward, depth + 1.15))
-                d = add((ax, ay, base + rise + 1.35), mul(inward, depth + 1.15))
-                self.quad("Seats", a, b, c, d, length / 3, 0.6)
-                self.quad("Crowd", a, b, add(b, (0, 0, 0.7)), add(a, (0, 0, 0.7)), length / 4, 0.3)
+            depth = max(4.0, height * 0.55)
+            a = (ax, ay, base + 4)
+            b = (bx, by, base + 4)
+            c = add((bx, by, base + height), mul(inward, depth))
+            d = add((ax, ay, base + height), mul(inward, depth))
+            self._horizontal("SeatA", a, b, c, d, length / 4, 2.0, True)
+            self._people(add(a, (0, 0, 0.15)), add(b, (0, 0, 0.15)), 0)
+            self._people(add(d, (0, 0, 0.2)), add(c, (0, 0, 0.2)), 1)
             roof_z = base + height + 1.2
             overhang = mul(norm((edge[0], edge[1], 0)), 2.4)
             self.quad("Roof", add((ax, ay, roof_z), overhang), add((bx, by, roof_z), overhang),
