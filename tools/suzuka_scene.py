@@ -317,53 +317,96 @@ class Scene:
     def _offset(self, sample: dict, sign: float, lane: float, lift: float) -> Point:
         return self.point(sample, sign * (sample["half"] + lane), lift)
 
+    def _facade(self, material: str, a: Point, b: Point, height: float, sign: float, u: float, v: float) -> None:
+        up = (0.0, 0.0, height)
+        # The along-track order points away from the road on the negative side. Flip that side.
+        if sign > 0:
+            self.quad(material, a, b, add(b, up), add(a, up), u, v)
+        else:
+            self.quad(material, b, a, add(a, up), add(b, up), u, v)
+
+    def _blend(self, run: list[dict], index: int) -> dict:
+        count = len(run)
+        sample = run[min(index, count - 1)]
+        nxt = run[min(index + 1, count - 1)]
+        return sample, nxt
+
     def _pit(self, sign: float, start: float, end: float) -> None:
         run = self.between(start, end)
-        for first, second in zip(run, run[1:]):
-            span = max(1.0, second["station"] - first["station"])
-            wall = 5.5
-            a = self._offset(first, sign, wall, 0.0)
-            b = self._offset(second, sign, wall, 0.0)
-            self.quad("Pit", a, b, add(b, (0, 0, 1.35)), add(a, (0, 0, 1.35)), span / 4, 0.4)
-            building = 11.0
-            outer = self._offset(first, sign, building + 8.0, 0.0)
-            outer_next = self._offset(second, sign, building + 8.0, 0.0)
-            inner = self._offset(first, sign, building, 0.0)
-            inner_next = self._offset(second, sign, building, 0.0)
-            self.quad("Pit", inner, inner_next, add(inner_next, (0, 0, 7.5)), add(inner, (0, 0, 7.5)), span / 6, 2.0)
-            self.quad("Roof", inner, inner_next, outer_next, outer, span / 8, 2.0)
-            for mouth in (2.2, 4.6):
-                low = self._offset(first, sign, building - 0.15, mouth)
-                low_next = self._offset(second, sign, building - 0.15, mouth)
-                self.quad("Garage", low, low_next, add(low_next, (0, 0, 1.7)), add(low, (0, 0, 1.7)), span / 5, 0.6)
+        bay = 8.0
+        cursor = 0.0
+        index = 0
+        while index < len(run) - 1:
+            first = run[index]
+            while index < len(run) - 1 and run[index]["station"] - first["station"] < bay:
+                index += 1
+            second = run[index]
+            span = max(bay * 0.5, second["station"] - first["station"])
+            face = 6.2
+            pier = 0.55
+            # Two concrete piers and a recessed garage between them.
+            for end_sample, shift in ((first, 0.15), (second, -0.15)):
+                outer = self._offset(end_sample, sign, face, 0.0)
+                inner = self._offset(end_sample, sign, face + 0.8, 0.0)
+                along = (end_sample["tx"] * shift, end_sample["ty"] * shift, 0.0)
+                a = add(outer, along)
+                b = add(inner, along)
+                self._facade("Concrete", a, b, 6.4, sign, 0.5, 2.2)
+            opening_a = self._offset(first, sign, face - 0.05, 0.35)
+            opening_b = self._offset(second, sign, face - 0.05, 0.35)
+            self._facade("Garage", opening_a, opening_b, 3.1, sign, span / 3, 1.2)
+            header_a = self._offset(first, sign, face, 3.5)
+            header_b = self._offset(second, sign, face, 3.5)
+            self._facade("Pit", header_a, header_b, 2.8, sign, span / 4, 1.0)
+            sill_a = self._offset(first, sign, face, 0.0)
+            sill_b = self._offset(second, sign, face, 0.0)
+            self._facade("Pit", sill_a, sill_b, 0.4, sign, span / 4, 0.2)
+            back_a = self._offset(first, sign, face + 9.0, 0.0)
+            back_b = self._offset(second, sign, face + 9.0, 0.0)
+            self.quad("Roof", self._offset(first, sign, face - 1.2, 6.5), self._offset(second, sign, face - 1.2, 6.5),
+                      add(back_b, (0, 0, 6.5)), add(back_a, (0, 0, 6.5)), span / 6, 2.4)
+            cursor += span
 
     def _grandstand_run(self, sign: float, start: float, end: float, rows: int, setback: float) -> None:
         run = self.between(start, end)
-        for index, (first, second) in enumerate(zip(run, run[1:])):
-            span = max(1.0, abs(second["station"] - first["station"]))
-            if span > 20:
-                span = 4.0
+        if len(run) < 3:
+            return
+        bay = 6.0
+        index = 0
+        while index < len(run) - 1:
+            first = run[index]
+            while index < len(run) - 1 and run[index]["station"] - first["station"] < bay:
+                index += 1
+            second = run[index]
+            span = max(2.0, min(bay * 1.4, abs(second["station"] - first["station"])))
+            # Knee wall, then a grid of seat fronts so the stand is not one set of stripes.
+            self._facade("Concrete", self._offset(first, sign, setback, 0.0), self._offset(second, sign, setback, 0.0),
+                         1.15, sign, span / 3, 0.5)
             for row in range(rows):
-                near = setback + row * 0.9
-                far = near + 0.9
-                rise = 1.4 + row * 0.78
-                material = "SeatA" if row % 2 == 0 else "SeatB"
-                a = self._offset(first, sign, near, rise)
-                b = self._offset(second, sign, near, rise)
-                c = self._offset(second, sign, far, rise + 0.55)
-                d = self._offset(first, sign, far, rise + 0.55)
-                self.quad(material, a, b, c, d, span / 2.5, 0.45)
-                self.quad(material, a, b, add(b, (0, 0, 0.62)), add(a, (0, 0, 0.62)), span / 2.5, 0.3)
-            roof_near = setback - 3.2
-            roof_far = setback + rows * 0.9 + 1.5
-            roof = 1.6 + rows * 0.78 + 2.4
-            self.quad("Roof", self._offset(first, sign, roof_near, roof), self._offset(second, sign, roof_near, roof),
-                      self._offset(second, sign, roof_far, roof), self._offset(first, sign, roof_far, roof), span / 6, 3)
-            if index % 4 == 0:
-                post = self._offset(first, sign, setback, 0.0)
-                top = self._offset(first, sign, roof_near, roof)
-                self.quad("Steel", post, add(post, (first["tx"] * 0.35, first["ty"] * 0.35, 0)),
-                          add(top, (first["tx"] * 0.35, first["ty"] * 0.35, 0)), top, 0.4, roof / 4)
+                rise = 1.15 + row * 0.7
+                lane = setback + 0.35 + row * 0.72
+                material = ("SeatA", "SeatB", "Crowd")[(row + int(first["station"])) % 3]
+                a = self._offset(first, sign, lane, rise)
+                b = self._offset(second, sign, lane, rise)
+                self._facade(material, a, b, 0.62, sign, span / 1.5, 0.35)
+                tread_a = self._offset(first, sign, lane, rise + 0.62)
+                tread_b = self._offset(second, sign, lane, rise + 0.62)
+                tread_c = self._offset(second, sign, lane + 0.7, rise + 0.62)
+                tread_d = self._offset(first, sign, lane + 0.7, rise + 0.62)
+                self.quad("Concrete", tread_a, tread_b, tread_c, tread_d, span / 3, 0.3)
+            roof = 1.3 + rows * 0.7 + 1.8
+            front = setback - 4.5
+            back = setback + rows * 0.72 + 2.0
+            roof_a = self._offset(first, sign, front, roof)
+            roof_b = self._offset(second, sign, front, roof)
+            roof_c = self._offset(second, sign, back, roof + 1.4)
+            roof_d = self._offset(first, sign, back, roof + 1.4)
+            self.quad("Roof", roof_a, roof_b, roof_c, roof_d, span / 5, 4)
+            self.quad("Steel", roof_a, roof_b, add(roof_b, (0, 0, -0.25)), add(roof_a, (0, 0, -0.25)), span / 5, 0.15)
+            post = self._offset(first, sign, setback - 0.4, 0.0)
+            post_top = self._offset(first, sign, front, roof)
+            self.quad("Steel", post, add(post, (first["tx"] * 0.28, first["ty"] * 0.28, 0)),
+                      add(post_top, (first["tx"] * 0.28, first["ty"] * 0.28, 0)), post_top, 0.3, roof / 3)
 
     def stands(self) -> None:
         for height, ring in self.buildings:
@@ -447,12 +490,13 @@ class Scene:
                 self.quad("Trunk", (x - 0.2, y, z), (x + 0.2, y, z), (x + 0.2, y, z + 1.6), (x - 0.2, y, z + 1.6), 0.2, 0.8)
                 across = norm((sample["tx"], sample["ty"], 0))
                 side = (sample["nx"], sample["ny"], 0)
-                crown = (x, y, z + 1.6 + height * 0.35)
-                for axis in (across, side):
-                    a = add(crown, (-axis[0] * width, -axis[1] * width, -height * 0.28))
-                    b = add(crown, (axis[0] * width, axis[1] * width, -height * 0.28))
-                    c = add(crown, (axis[0] * width * 0.72, axis[1] * width * 0.72, height * 0.32))
-                    d = add(crown, (-axis[0] * width * 0.72, -axis[1] * width * 0.72, height * 0.32))
+                crown = (x, y, z + 2.4)
+                diagonal = norm((across[0] + side[0], across[1] + side[1], 0))
+                for axis, scale in ((across, 1.0), (side, 0.85), (diagonal, 0.7)):
+                    a = add(crown, (-axis[0] * width * scale, -axis[1] * width * scale, -height * 0.42))
+                    b = add(crown, (axis[0] * width * scale, axis[1] * width * scale, -height * 0.42))
+                    c = add(crown, (axis[0] * width * scale * 0.55, axis[1] * width * scale * 0.55, height * 0.48))
+                    d = add(crown, (-axis[0] * width * scale * 0.55, -axis[1] * width * scale * 0.55, height * 0.48))
                     self.quad("Leaf", a, b, c, d, 1, 1)
 
     def wheel(self) -> None:
