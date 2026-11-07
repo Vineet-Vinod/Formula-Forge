@@ -68,8 +68,9 @@ def main() -> None:
         "White": solid("SuzukaWheel", (0.78, 0.78, 0.75), 0.4),
         "Red": solid("SuzukaGondola", (0.55, 0.03, 0.025), 0.55),
         "Glass": solid("SuzukaGlass", (0.05, 0.08, 0.10), 0.15, two_sided=True),
-        "Crowd": solid("SuzukaCrowd", (0.25, 0.12, 0.10), 0.8),
     }
+    # The same original spectator atlas Las Vegas uses on its grandstands.
+    loaded["Crowd"] = duplicate("SuzukaCrowd", "/Game/Generated/Monza/Materials/circuit_original_spectators")
     loaded["Leaf"] = duplicate("SuzukaFoliage", "/Game/Generated/Interlagos/Materials/runtime_leaf_silhouette")
     loaded["Seats"] = loaded["SeatA"]
     LIBRARY.make_directory(ASSETS + "/Track")

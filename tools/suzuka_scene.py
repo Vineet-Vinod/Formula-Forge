@@ -390,6 +390,34 @@ class Scene:
             b, d = d, b
         self.quad(material, a, b, c, d, u, v)
 
+    def _beam(self, material: str, a: Point, b: Point, width: float, depth: float | None = None) -> None:
+        tangent = norm(sub(b, a))
+        side = mul(norm(cross(tangent, (0.0, 0.0, 1.0) if abs(tangent[2]) < 0.95 else (0.0, 1.0, 0.0))), width / 2)
+        up = mul(norm(cross(side, tangent)), (depth if depth is not None else width) / 2)
+        corners = [
+            add(a, add(side, up)), add(a, sub(up, side)), sub(a, add(side, up)), add(a, sub(side, up)),
+            add(b, add(side, up)), add(b, sub(up, side)), sub(b, add(side, up)), add(b, sub(side, up)),
+        ]
+        for indices in ((0, 1, 2, 3), (7, 6, 5, 4), (0, 4, 5, 1), (1, 5, 6, 2), (2, 6, 7, 3), (3, 7, 4, 0)):
+            self.quad(material, corners[indices[0]], corners[indices[1]], corners[indices[2]], corners[indices[3]], 1, 1)
+
+    def _people(self, a: Point, b: Point, row: int) -> None:
+        span = sub(b, a)
+        distance = math.sqrt(sum(value * value for value in span))
+        count = max(1, round(distance / 0.58))
+        direction = norm(span)
+        for person in range(count):
+            center = add(a, mul(span, (person + 0.5) / count))
+            left = sub(center, mul(direction, 0.26))
+            right = add(center, mul(direction, 0.26))
+            top_left, top_right = add(left, (0.0, 0.0, 0.95)), add(right, (0.0, 0.0, 0.95))
+            column = (person + row * 2) % 3
+            u0, u1 = column / 3, (column + 1) / 3
+            self.triangle("Crowd", (top_left, top_right, right), ((u0, 0.5), (u1, 0.5), (u1, 1.0)))
+            self.triangle("Crowd", (top_left, right, left), ((u0, 0.5), (u1, 1.0), (u0, 1.0)))
+            self.triangle("Crowd", (top_right, top_left, left), ((u1, 0.5), (u0, 0.5), (u0, 1.0)))
+            self.triangle("Crowd", (top_right, left, right), ((u1, 0.5), (u0, 1.0), (u1, 1.0)))
+
     def _run(self, start: float, end: float, step: float) -> list[float]:
         stations = []
         cursor = start
@@ -434,44 +462,47 @@ class Scene:
                 self._facade("Pit", self._place(pier, face, 4.05), self._place(nxt, face, 4.05), 2.15, 1.0, 1.4, 0.7)
             cursor = nxt
         self._facade("Concrete", self._place(start, face + 11.0, 0.0), self._place(end, face + 11.0, 0.0), 6.2, -1.0, (end - start) / 8, 2.0)
-        for begin, finish in zip(self._run(start, end, 20), self._run(start, end, 20)[1:]):
+        for begin, finish in zip(self._run(start, end, 8), self._run(start, end, 8)[1:]):
             front_a, front_b = self._place(begin, face - 6.5, 6.35), self._place(finish, face - 6.5, 6.35)
             back_b, back_a = self._place(finish, face + 11.0, 6.7), self._place(begin, face + 11.0, 6.7)
             self._horizontal("Roof", front_a, front_b, back_b, back_a, (finish - begin) / 6, 3.0, True)
             self._horizontal("Steel", front_a, back_a, back_b, front_b, (finish - begin) / 6, 3.0, False)
-            self._facade("Roof", self._place(begin, face - 6.5, 5.85), self._place(finish, face - 6.5, 5.85), 0.5, 1.0, (finish - begin) / 4, 0.2)
+            self._beam("Steel", front_a, front_b, 0.22, 0.45)
+            self._beam("Steel", self._place(begin, face - 6.5, 6.2), self._place(begin, face + 4.0, 5.5), 0.14, 0.1)
+            self._beam("Steel", self._place(begin, face + 4.0, 5.5), back_a, 0.14, 0.1)
+            self._beam("Steel", self._place(begin, face - 1.0, 0.0), self._place(begin, face - 1.0, 6.35), 0.28, 0.28)
 
     def _main_grandstand(self) -> None:
-        # One straight rake and one roof edge. Seat rows share the straight frame
-        # so the face does not wander with each centreline sample.
+        # Straight rake, a crowd on the seats, and a trussed roof. The frame is the
+        # pit-straight grade, so the roof edge is one line.
         start, end = -40.0, 360.0
-        face = -12.4
-        rows = 12
-        for begin, finish in zip(self._run(start, end, 20), self._run(start, end, 20)[1:]):
+        face = -12.2
+        rows = 16
+        roof = 12.4
+        back = face - rows * 0.75 - 1.4
+        for begin, finish in zip(self._run(start, end, 8), self._run(start, end, 8)[1:]):
             span = finish - begin
-            self._facade("Concrete", self._place(begin, face, 0.0), self._place(finish, face, 0.0), 1.2, -1.0, span / 3, 0.45)
-            self._facade("Armco", self._place(begin, -9.0, 0.0), self._place(finish, -9.0, 0.0), 0.9, -1.0, span / 3, 0.35)
-            self._facade("Concrete", self._place(begin, face, 0.0), self._place(begin + 1.5, face, 0.0), 1.2 + rows * 0.48, -1.0, 0.4, 2.4)
+            self._facade("Concrete", self._place(begin, face, 0.0), self._place(finish, face, 0.0), 1.15, -1.0, span / 3, 0.4)
+            for rail in (0.38, 0.72):
+                self._beam("Armco", self._place(begin, -9.05, rail), self._place(finish, -9.05, rail), 0.18, 0.07)
+            self._beam("Armco", self._place(begin, -9.05, 0.15), self._place(begin, -9.05, 0.85), 0.1, 0.1)
             for row in range(rows):
-                lane = face - row * 0.82
-                rise = 1.2 + row * 0.48
-                self._facade("SeatA", self._place(begin + 1.5, lane, rise), self._place(finish, lane, rise), 0.42, -1.0, span / 2, 0.25)
-                self._horizontal(
-                    "Concrete",
-                    self._place(begin + 1.5, lane, rise + 0.42), self._place(finish, lane, rise + 0.42),
-                    self._place(finish, lane - 0.82, rise + 0.42), self._place(begin + 1.5, lane - 0.82, rise + 0.42),
-                    span / 3, 0.25, True,
-                )
-            roof = 1.35 + rows * 0.48 + 1.6
-            front_a, front_b = self._place(begin, face + 3.2, roof), self._place(finish, face + 3.2, roof)
-            back_b, back_a = self._place(finish, face - rows * 0.82 - 1.6, roof + 1.15), self._place(begin, face - rows * 0.82 - 1.6, roof + 1.15)
-            self._horizontal("Roof", front_a, front_b, back_b, back_a, span / 5, 3.5, True)
-            self._horizontal("Steel", front_a, back_a, back_b, front_b, span / 5, 3.5, False)
-            self._facade("Roof", self._place(begin, face + 3.2, roof - 0.45), self._place(finish, face + 3.2, roof - 0.45), 0.45, -1.0, span / 4, 0.2)
-            foot = self._place(begin, face + 2.6, 0.0)
-            head = self._place(begin, face + 3.2, roof)
-            side = (self.straight_tx * 0.22, self.straight_ty * 0.22, 0.0)
-            self.quad("Steel", foot, add(foot, side), add(head, side), head, 0.25, roof / 3)
+                lane = face - 0.4 - row * 0.75
+                rise = 1.15 + row * 0.42
+                self._beam("SeatA", self._place(begin, lane, rise), self._place(finish, lane, rise), 0.72, 0.08)
+                self._people(self._place(begin, lane, rise + 0.08), self._place(finish, lane, rise + 0.08), row)
+            front_a, front_b = self._place(begin, face + 2.8, roof), self._place(finish, face + 2.8, roof)
+            back_b = self._place(finish, back, roof + 1.3)
+            back_a = self._place(begin, back, roof + 1.3)
+            self._horizontal("Roof", front_a, front_b, back_b, back_a, span / 4, 3.2, True)
+            self._horizontal("Steel", front_a, back_a, back_b, front_b, span / 4, 3.2, False)
+            self._beam("Steel", front_a, front_b, 0.28, 0.4)
+            self._beam("Steel", self._place(begin, face + 2.4, 0.0), front_a, 0.22, 0.22)
+            self._beam("Steel", front_a, back_a, 0.12, 0.1)
+            for depth in (4.0, 8.0, 12.0, 16.0):
+                lane = face + 2.8 - depth
+                height = roof + depth / 18.0 * 1.3 - 0.35
+                self._beam("Steel", self._place(begin, lane, height), self._place(finish, lane, height), 0.1, 0.08)
 
     def _offset(self, sample: dict, sign: float, lane: float, lift: float) -> Point:
         return self.point(sample, sign * (sample["half"] + lane), lift)
