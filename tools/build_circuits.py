@@ -54,10 +54,10 @@ CIRCUITS = [
          description="Albert Park's Grand Prix loop around the lake in Melbourne."),
     dict(slug="japan", enum="Japan", folder="Japan", title="Japan",
          venue="Suzuka International Racing Course", country="Japan",
-         lat=34.8431, lon=136.5408, radius=2200, lengths=[5807], turns=18,
-         clockwise=True, street=False, shoulder=6.0, base=12.0, straight=14.0,
+         lat=34.8431, lon=136.5408, start=(34.8433, 136.5409), radius=2200, lengths=[5807], turns=18,
+         clockwise=True, street=False, shoulder=6.0, base=12.0, straight=15.0,
          names=["Suzuka", "Grand Prix"], crossings=1, deck=True, environment="figure-eight",
-         description="Suzuka's figure-eight Grand Prix course. The pit straight is the bridge."),
+         description="Suzuka's figure-eight Grand Prix course. The back straight crosses above the Degner curves."),
     dict(slug="china", enum="China", folder="China", title="China",
          venue="Shanghai International Circuit", country="China",
          lat=31.3389, lon=121.2198, radius=2200, lengths=[5451], turns=16,
@@ -561,7 +561,7 @@ def rank(candidates, spec):
 
 
 def rotate_to_start(samples, spec):
-    origin = (spec["lat"], spec["lon"])
+    origin = spec.get("start") or (spec["lat"], spec["lon"])
     start = min(range(len(samples)), key=lambda index: haversine(samples[index], origin))
     return samples[start:] + samples[:start]
 
@@ -599,6 +599,29 @@ def load_bare_earth(source: Path):
         raise ValueError("Invalid bare-earth grid size")
     heights = struct.unpack_from(f"<{count}f", data, 36)
     return {"origin_x": origin_x, "origin_y": origin_y, "step": step, "cols": cols, "rows": rows, "heights": heights}
+
+
+def load_gsi(source: Path, geographic_origin, scale: float):
+    path = source / "elevation" / "gsi_ground.bin"
+    if not path.exists():
+        return None
+    data = path.read_bytes()
+    if data[:8] != b"FFGSI1\0\0":
+        return None
+    origin_lat, origin_lon, min_x, min_y, step, cols, rows = struct.unpack_from("<ddfffII", data, 8)
+    count = cols * rows
+    if len(data) != 44 + count * 4:
+        raise ValueError("Invalid GSI ground grid size")
+    shift_x, shift_y = project(origin_lat, origin_lon, geographic_origin)
+    heights = struct.unpack_from(f"<{count}f", data, 44)
+    return {
+        "origin_x": (shift_x + min_x) * scale,
+        "origin_y": (shift_y + min_y) * scale,
+        "step": step * scale,
+        "cols": cols,
+        "rows": rows,
+        "heights": heights,
+    }
 
 
 def sample_bare(grid, x: float, y: float):
@@ -664,9 +687,7 @@ def interpolate(stations, values, count):
     return output
 
 
-def suzuka_deck(samples_xy, elevation, stations):
-    # The pit straight is the bridge. Where the line crosses itself, keep the
-    # underpass on the DEM and raise the straight if the model cannot see the deck.
+def crossing_pair(samples_xy):
     count = len(samples_xy)
     pair = None
     best = 1e9
@@ -691,22 +712,108 @@ def suzuka_deck(samples_xy, elevation, stations):
                 if gap < best:
                     best = gap
                     pair = (i, j)
+    return pair
+
+
+def suzuka_deck(samples_xy, elevation, stations):
+    # The back straight is the bridge over the Degner curves. A ground model
+    # falls into that underpass, so the notch on the straighter branch is
+    # filled back up to the embankment. The lower road is left untouched.
+    pair = crossing_pair(samples_xy)
     if not pair:
         return elevation, None
     first, second = pair
-    # Station nearest the start line is the pit straight / bridge.
-    bridge, under = (first, second) if stations[first] < stations[second] else (second, first)
-    difference = elevation[bridge] - elevation[under]
-    if difference < 4.0:
-        deficit = 6.2 - difference
-        count = len(elevation)
-        length = stations[-1] + (stations[1] - stations[0] if len(stations) > 1 else 1)
+
+    def straightness(index):
+        total = 0.0
+        count = len(samples_xy)
+        for offset in range(-40, 40):
+            before = samples_xy[(index + offset - 8) % count]
+            center = samples_xy[(index + offset) % count]
+            after = samples_xy[(index + offset + 8) % count]
+            one = (center[0] - before[0], center[1] - before[1])
+            two = (after[0] - center[0], after[1] - center[1])
+            total += abs(math.atan2(one[0] * two[1] - one[1] * two[0], one[0] * two[0] + one[1] * two[1]))
+        return total
+
+    bridge, under = (first, second) if straightness(first) < straightness(second) else (second, first)
+    length = stations[-1] + (stations[1] - stations[0] if len(stations) > 1 else 1)
+
+    def apart(a, b):
+        delta = abs(a - b)
+        return min(delta, length - delta)
+
+    wings = [elevation[index] for index, station in enumerate(stations)
+             if 40 < apart(station, stations[bridge]) < 100]
+    if not wings:
+        return elevation, None
+    wings.sort()
+    wing = wings[len(wings) // 2]
+    notch = [index for index, station in enumerate(stations)
+             if apart(station, stations[bridge]) < 80 and elevation[index] < wing - 2.5]
+    if notch:
+        left = max(0, min(notch) - 1)
+        right = min(len(elevation) - 1, max(notch) + 1)
+        span = max(1, right - left)
+        for index in range(left, right + 1):
+            blend = (index - left) / span
+            elevation[index] = elevation[left] + (elevation[right] - elevation[left]) * blend
+        bridge = min(range(left, right + 1), key=lambda index: apart(stations[index], stations[bridge]))
+    clearance = elevation[bridge] - elevation[under]
+    if clearance < 5.6 or clearance > 7.4:
+        target = 6.2
+        deficit = target - clearance
         for index, station in enumerate(stations):
-            delta = min(abs(station - stations[bridge]), length - abs(station - stations[bridge]))
-            if delta < 90:
-                blend = 0.5 * (1 + math.cos(math.pi * delta / 90))
+            delta = apart(station, stations[bridge])
+            if delta < 50:
+                blend = 0.5 * (1 + math.cos(math.pi * delta / 50))
                 elevation[index] += deficit * blend
-    return elevation, {"bridge_station_m": stations[bridge], "underpass_station_m": stations[under], "modeled_clearance_m": 6.2}
+        clearance = elevation[bridge] - elevation[under]
+    return elevation, {
+        "bridge_station_m": stations[bridge],
+        "underpass_station_m": stations[under],
+        "modeled_clearance_m": round(clearance, 3),
+        "bridge_branch": "back straight",
+        "underpass_branch": "Degner",
+    }
+
+
+def fill_notches(elevation, stations, depth=2.5, reach=12):
+    # A narrow drop below the surrounding road is a culvert or underpass in the
+    # ground model, not the racing surface. Raise only those samples.
+    count = len(elevation)
+    length = stations[-1] + (stations[1] - stations[0] if len(stations) > 1 else 1.0)
+    for _ in range(3):
+        updated = elevation[:]
+        for index in range(count):
+            if min(stations[index], length - stations[index]) < 80:
+                continue
+            left = (index - reach) % count
+            right = (index + reach) % count
+            if stations[right] <= stations[left]:
+                continue
+            blend = (stations[index] - stations[left]) / (stations[right] - stations[left])
+            chord = elevation[left] + (elevation[right] - elevation[left]) * blend
+            if elevation[index] < chord - depth:
+                updated[index] = chord
+        elevation[:] = updated
+
+
+def flatten_spikes(elevation, limit=0.35):
+    # One-sample holes make the road quads overlap and the contact surface
+    # disagree with the centreline. A steady grade is left alone.
+    count = len(elevation)
+    for _ in range(8):
+        updated = elevation[:]
+        changed = False
+        for index in range(count):
+            chord = (elevation[index - 1] + elevation[(index + 1) % count]) * 0.5
+            if elevation[index] < chord - limit:
+                updated[index] = chord
+                changed = True
+        elevation[:] = updated
+        if not changed:
+            break
 
 
 def nearest_shoulder(origin_xy, tangent, barriers, default, half_width):
@@ -741,6 +848,78 @@ def smooth_series(values, window):
         bucket.sort()
         output.append(bucket[len(bucket) // 2])
     return output
+
+
+def suzuka_turns(local, stations, target):
+    count = len(local)
+    window = max(3, int(0.012 * count))
+    scores = []
+    for index in range(count):
+        before = local[(index - window) % count]
+        center = local[index]
+        after = local[(index + window) % count]
+        first = (center[0] - before[0], center[1] - before[1])
+        second = (after[0] - center[0], after[1] - center[1])
+        turn = math.atan2(first[0] * second[1] - first[1] * second[0], first[0] * second[0] + first[1] * second[1])
+        scores.append(turn)
+    peaks = []
+    minimum = max(8, count // 100)
+    for index, turn in enumerate(scores):
+        if abs(turn) < 0.18:
+            continue
+        if abs(turn) <= abs(scores[(index - 1) % count]) or abs(turn) <= abs(scores[(index + 1) % count]):
+            continue
+        if peaks and min(abs(index - peaks[-1][0]), count - abs(index - peaks[-1][0])) < minimum:
+            if abs(turn) > abs(peaks[-1][1]):
+                peaks[-1] = (index, turn)
+            continue
+        peaks.append((index, turn))
+    kept = []
+    for index, turn in peaks:
+        if kept:
+            previous = kept[-1]
+            gap = min(abs(index - previous[0]), count - abs(index - previous[0])) * (target / count)
+            if turn * previous[1] > 0 and abs(turn) < 0.45 and gap < 400:
+                if abs(turn) > abs(previous[1]):
+                    kept[-1] = (index, turn)
+                continue
+        kept.append((index, turn))
+    names = ["Turn 1", "Turn 2", "Turn 3", "Turn 4", "Turn 5", "Turn 6",
+             "Dunlop", "Degner 1", "Degner 2", "110R", "Hairpin", "200R",
+             "Spoon", "Spoon Curve", "130R", "Casio", "Casio Triangle", "Final"]
+    if len(kept) != len(names):
+        found = ", ".join(f"{stations[index]:.0f}:{'L' if turn > 0 else 'R'}" for index, turn in kept)
+        raise RuntimeError(f"Suzuka corner match found {len(kept)} peaks ({found})")
+    turns = []
+    for (index, turn), name in zip(kept, names):
+        turns.append({
+            "name": name,
+            "fraction": stations[index] / target,
+            "direction": 1 if turn > 0 else -1,
+            "station": stations[index],
+        })
+    return turns
+
+
+def quintic_width(stations, controls):
+    controls = sorted(controls)
+    width = []
+    for station in stations:
+        index = max(0, min(len(controls) - 2, next((item - 1 for item, control in enumerate(controls) if control[0] > station), len(controls) - 2)))
+        start, end = controls[index], controls[index + 1]
+        blend = max(0.0, min(1.0, (station - start[0]) / max(0.001, end[0] - start[0])))
+        blend = blend * blend * blend * (10 + blend * (-15 + 6 * blend))
+        width.append((station, start[1] + (end[1] - start[1]) * blend))
+    return width
+
+
+def japan_building_height(name):
+    named = {
+        "V2": 24.0, "VIP": 22.0, "V1": 16.0, "Q2": 14.0, "B2": 14.0, "A1": 12.0,
+        "Q1": 10.0, "B1": 10.0, "C": 10.0, "G": 9.0, "S": 10.0,
+        "ピットビル": 12.0, "西コントロールタワー": 30.0, "センターハウス": 16.0,
+    }
+    return named.get(name or "")
 
 
 def apexes(points):
@@ -806,6 +985,16 @@ def write_survey(spec, xy, elevation, width, bank, runoff, turns, shoulders):
         "",
     ])
     (TRACK_DATA / f"{slug}_survey.inc").write_text(text)
+
+
+def write_landmarks(folder, wheels):
+    blob = bytearray(b"FFLMK1\0\0")
+    blob += struct.pack("<I", len(wheels))
+    for x, y, radius, hub in wheels:
+        blob += struct.pack("<Iffff", 1, x, y, radius, hub)
+    path = CONTENT / folder / "Data"
+    path.mkdir(parents=True, exist_ok=True)
+    (path / "landmarks.bin").write_bytes(blob)
 
 
 def write_buildings(folder, footprints):
@@ -924,7 +1113,9 @@ out geom;
     count = len(local)
     spacing = target / count
     stations = [index * spacing for index in range(count)]
-    bare = load_bare_earth(source)
+    bare = load_gsi(source, samples[0], scale) if spec["slug"] == "japan" else None
+    if bare is None:
+        bare = load_bare_earth(source)
     elevation_cache = source / "elevation_samples.json"
     if bare is not None:
         sampled = []
@@ -935,7 +1126,7 @@ out geom;
             sampled.append(value)
         relative = circular_smooth(sampled, 74 if spec["slug"] == "lasvegas" else 2)
         picked = list(range(count))
-        log(f"{spec['slug']}: bare-earth DEM {min(sampled):.1f}..{max(sampled):.1f} m")
+        log(f"{spec['slug']}: ground DEM {min(sampled):.1f}..{max(sampled):.1f} m")
     elif elevation_cache.exists() and not refresh:
         saved = json.loads(elevation_cache.read_text())
         picked, raw, smoothed = saved["index"], saved["raw"], saved["smoothed"]
@@ -948,6 +1139,9 @@ out geom;
     deck_note = None
     if spec.get("deck"):
         relative, deck_note = suzuka_deck(local, relative, stations)
+    if spec["slug"] == "japan":
+        fill_notches(relative, stations)
+        flatten_spikes(relative)
     seam = min(40.0, target * 0.02)
     for index, station in enumerate(stations):
         remaining = target - station
@@ -1003,6 +1197,17 @@ out geom;
     turns = []
     for (index, turn), name in zip(detected, names):
         turns.append({"name": name, "fraction": stations[index] / target, "direction": 1 if turn > 0 else -1, "station": stations[index]})
+    if spec["slug"] == "japan":
+        turns = suzuka_turns(local, stations, target)
+        by_name = {turn["name"]: turn["station"] for turn in turns}
+        width = quintic_width(stations, [
+            (0.0, 15.0), (by_name["Turn 1"] - 80, 15.0), (by_name["Turn 1"], 13.0),
+            (by_name["Turn 6"], 12.0), (by_name["Dunlop"], 13.5), (by_name["Degner 1"], 12.0),
+            (by_name["Hairpin"], 12.0), (by_name["200R"], 14.0), (by_name["Spoon"], 13.0),
+            (by_name["Spoon Curve"] + 80, 15.0), (by_name["130R"] - 40, 15.0), (by_name["130R"], 14.0),
+            (by_name["Casio"], 12.0), (by_name["Final"] + 80, 14.5), (target, 15.0),
+        ])
+        width.append((target, width[0][1]))
     if spec["slug"] == "lasvegas":
         recipe = json.loads((source / "layout-corrections.json").read_text())
         turns = []
@@ -1036,17 +1241,31 @@ out geom;
     bank.sort()
 
     runoff = []
-    for turn in turns:
-        if abs(turn["direction"]) != 1:
-            continue
-        # Slow corners get the loose surface on the outside.
-        outside = 1 if turn["direction"] < 0 else -1
-        start = max(0.0, turn["station"] - 70)
-        end = min(target, turn["station"] + 45)
-        if end - start < 20:
-            continue
-        surface = "Asphalt" if spec["street"] else "Gravel"
-        runoff.append({"start": start, "end": end, "side": outside, "surface": surface, "width": spec["shoulder"]})
+    if spec["slug"] == "japan":
+        # Driver's left is +1. Gravel sits on the outside of the slow corners.
+        for turn in turns:
+            if turn["name"] not in {"Turn 2", "Degner 1", "Degner 2", "Hairpin", "Spoon", "Spoon Curve", "Casio", "Casio Triangle"}:
+                continue
+            side = 1 if turn["direction"] > 0 else -1
+            runoff.append({
+                "start": max(0.0, turn["station"] - 55),
+                "end": min(target, turn["station"] + 40),
+                "side": side,
+                "surface": "Gravel",
+                "width": 14.0 if turn["name"] == "Hairpin" else 11.0,
+            })
+    else:
+        for turn in turns:
+            if abs(turn["direction"]) != 1:
+                continue
+            # Slow corners get the loose surface on the outside.
+            outside = 1 if turn["direction"] < 0 else -1
+            start = max(0.0, turn["station"] - 70)
+            end = min(target, turn["station"] + 45)
+            if end - start < 20:
+                continue
+            surface = "Asphalt" if spec["street"] else "Gravel"
+            runoff.append({"start": start, "end": end, "side": outside, "surface": surface, "width": spec["shoulder"]})
 
     barriers = []
     if barrier_cache.exists() and not refresh:
@@ -1089,6 +1308,19 @@ out geom;
         right.append(b)
     left = smooth_series(left, 6)
     right = smooth_series(right, 6)
+    if spec["slug"] == "japan":
+        for turn in turns:
+            if turn["name"] not in {"Turn 2", "Degner 1", "Degner 2", "Hairpin", "Spoon", "Spoon Curve", "Casio", "Casio Triangle", "130R"}:
+                continue
+            extra = 16.0 if turn["name"] == "Hairpin" else (12.0 if turn["name"] != "130R" else 9.0)
+            for index, station in enumerate(stations):
+                gap = min(abs(station - turn["station"]), target - abs(station - turn["station"]))
+                if gap > 50:
+                    continue
+                if turn["direction"] > 0:
+                    left[index] = max(left[index], extra)
+                else:
+                    right[index] = max(right[index], extra)
     if spec["slug"] == "lasvegas":
         left = right = [.10] * count
         runoff = [{"start": 0., "end": target, "side": 0, "surface": "Asphalt", "width": 0.}]
@@ -1130,9 +1362,11 @@ out geom;
             continue
         centroid = (sum(point[0] for point in ring) / len(ring), sum(point[1] for point in ring) / len(ring))
         distance = min(math.hypot(centroid[0] - x, centroid[1] - y) for x, y in local[::3])
-        if distance < 14 or distance > 85:
-            continue
         tags = element.get("tags", {})
+        named_height = japan_building_height(tags.get("name")) if spec["slug"] == "japan" else None
+        near_limit, far_limit = (8, 130) if named_height else (14, 85)
+        if distance < near_limit or distance > far_limit:
+            continue
         height = None
         if "height" in tags:
             digits = "".join(ch if ch.isdigit() or ch == "." else " " for ch in tags["height"]).split()
@@ -1143,6 +1377,8 @@ out geom;
                 height = float(tags["building:levels"]) * 3.2
             except ValueError:
                 height = None
+        if named_height:
+            height = named_height
         if height is None:
             kind = tags.get("building", "")
             height = 14.0 if kind in ("grandstand", "stadium", "hangar") else (11.0 if spec["street"] else 7.0)
@@ -1151,6 +1387,9 @@ out geom;
     footprints.sort(key=lambda item: item[0])
     footprints = [(height, ring) for _, height, ring in footprints[:900]]
     write_buildings(spec["folder"], footprints)
+    if spec["slug"] == "japan":
+        wheel_x, wheel_y = project(34.845979, 136.538821, origin)
+        write_landmarks(spec["folder"], [(wheel_x * scale_xy, wheel_y * scale_xy, 24.0, 27.0)])
     write_survey(spec, local, list(zip(stations, relative)) + [(target, relative[0])], width, bank, runoff, turns, shoulders)
 
     aspect_x = [point[0] for point in local]
@@ -1175,7 +1414,7 @@ out geom;
         "relief_m": round(relief, 3),
         "elevation_datum_removed_m": round(datum, 3),
         "samples": count,
-        "turns_detected": len(detected),
+        "turns_detected": len(turns) if spec["slug"] == "japan" else len(detected),
         "turns_published": spec["turns"],
         "buildings": len(footprints),
         "barrier_vertices": len(barriers),
@@ -1183,7 +1422,7 @@ out geom;
         "banks": bank_notes,
         "osm_sha256": osm_hash,
     }
-    if spec["slug"] == "lasvegas":
+    if spec["slug"] in {"lasvegas", "japan"}:
         record["turns_registered"] = len(turns)
     (source / "reconstruction.json").write_text(json.dumps(record, indent=2) + "\n")
     provenance = {
@@ -1207,6 +1446,22 @@ out geom;
             "scale_rule": "Applied only when the mapped plan was within 1.5% of a published length. Larger gaps keep the mapped length.",
         },
         "elevation": ({
+            "provider": "Geospatial Information Authority of Japan",
+            "dataset": "5 m mesh DEM tiles, dem5a at zoom 15",
+            "dataset_note": "Ground elevations sampled on the centreline and retained on an 8 m terrain grid. The back-straight notch, where the mesh sees the Degner underpass, is filled to the embankment. This is a processed racing profile, not a GSI product and not a construction survey.",
+            "licence": "https://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html",
+            "service": "https://cyberjapandata.gsi.go.jp/xyz/dem5a/{z}/{x}/{y}.txt",
+            "retrieved": "2026-11-07",
+            "sample_spacing_m": 4.0,
+            "smoothing": "Two circular binomial passes on the 4 m centreline samples. The bridge notch is replaced by the embankment chord. Other drops of more than 2.5 m inside a 48 m window, at the Dunlop crest and before the final chicane, are raised to that chord because they are culverts in the ground model.",
+            "relative_datum": "Heights stored after subtracting the lap minimum.",
+            "removed_minimum_m": round(datum, 3),
+            "relief_m": round(relief, 3),
+            "uncertainty_m": 2,
+            "file": "elevation/gsi_ground.bin",
+            "deck": deck_note,
+            "published_relief_crosscheck_m": 40.4,
+        } if spec["slug"] == "japan" else {
             "provider": "USGS 3D Elevation Program",
             "dataset": "NV_ClarkCounty_B22 1 m bare-earth DEM",
             "dataset_note": "Lidar bare earth, 1 m, sampled on the centreline and on a 4 m terrain grid. WGS84 was projected to NAD83 UTM zone 11; that datum shift is about a metre.",
@@ -1273,6 +1528,16 @@ out geom;
         provenance["shoulders"] = {"default_m": .10, "method": "Narrow 0.10 m shoulder outside the 0.85 m kerb allowance. Local escapes and the blue Sphere apron are authored separately in escape-areas.json and united with the deck in boundaries.json."}
         provenance["protection"] = "One closed paved-deck union supplies native walls and visible protection, including open escape-road mouths and tire-protected ends. Pit entry remains a closed game boundary. Escape dimensions are bounded visual estimates, not surveyed barrier positions."
         provenance["buildings"]["method"] = "Initial narrow OSM corridor count only. The native scene uses the larger mapped skyline with individual tower, roof and podium reconstructions in landmark-architecture.json and scenery.json."
+    if spec["slug"] == "japan":
+        provenance["origin"]["meaning"] = "Nearest centreline sample to the published start/finish at 34.8433 N, 136.5409 E."
+        provenance["width"] = {"method": "15 m on the two straights and 12-14 m through the corners, joined with quintic transitions. Estimates from the circuit's character, not a white-line survey."}
+        provenance["shoulders"]["method"] = "OSM barriers, with the outside of Degner, the hairpin, Spoon, 130R and the final chicane widened to a runoff. Pit entry stays closed for the game."
+        provenance["buildings"]["method"] = "OSM footprints. Named grandstands, the pit building and the west control tower use estimated heights. The Circuit Wheel is a separate 48 m wheel placed at 34.845979 N, 136.538821 E; its 51 m top is an estimate of the published viewing height, not a measured diameter."
+        provenance["reference_video"] = {
+            "file": "Saved/Refs/japan.mp4",
+            "use": "Appearance only. The clip is a commercial racing-game Japanese Grand Prix replay, not an onboard survey. Its pixels and meshes are not shipped.",
+        }
+        provenance["not_claimed"] = "No orthophoto registration and no packaged cockpit capture in this build. Widths, grandstand heights and the wheel diameter are estimates. The GSI mesh is ground, not a racing-deck survey. Centimetre storage is not centimetre accuracy."
     (source / "provenance.json").write_text(json.dumps(provenance, indent=2) + "\n")
     write_plan(spec, local, turns)
     log(f"{spec['slug']}: {chosen['name']} {target:.1f} m (mapped {measured:.1f}, published {published}, scale {scale:.4f}) relief {relief:.1f} m turns {len(turns)} buildings {len(footprints)}")
@@ -1360,7 +1625,7 @@ def emit_indexes(records):
         "",
         "Nineteen layouts were built from OpenStreetMap raceway geometry and Copernicus GLO-90 elevations sampled on 2026-11-04. The driving length is the mapped plan, scaled to a published length only when the two already agreed within 1.5%. Shoulders use nearby OSM barriers where a vertex exists and a venue default where one does not.",
         "",
-        "Suzuka is the only figure-eight. Its pit straight is raised to a 6.2 m deck when the 90 m surface model cannot see the bridge. The lower road is left on the sampled height.",
+        "Suzuka is the only figure-eight. The back straight is the bridge over the Degner curves. Where the ground model falls into that underpass, the deck is filled to keep about 6.2 m of clearance and the lower road stays on the sampled ground. Its road profile is the Geospatial Information Authority of Japan 5 m mesh, not the earlier GLO-90 surface.",
         "",
         "Walls are continuous, including pit entry. That closure is for the game. Widths are typical asphalt figures, not a white-line survey. The initial generated circuits use GLO-90, a surface model with stated vertical uncertainty of 8 m on streets and 5 m on permanent circuits. Las Vegas has since been rebuilt with USGS 3DEP bare-earth terrain, a filtered road profile, native scenery and cockpit review. Its original footprint count in the table is superseded by [scenery.json](../Attribution/Sources/lasvegas/scenery.json); see [Las Vegas validation](lasvegas_validation.json) for evidence and limits.",
         "",

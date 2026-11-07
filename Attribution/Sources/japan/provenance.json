@@ -4,9 +4,9 @@
   "layout_year_intent": "Current Grand Prix layout where the circuit is live; last Formula 1 layout where it is not. The mapped OpenStreetMap loop was selected by published length.",
   "retrieved": "2026-11-04",
   "origin": {
-    "latitude": 34.84302021359763,
-    "longitude": 136.54061561506683,
-    "meaning": "Local source origin at the point on the loop nearest the venue coordinate, after rotation to the start."
+    "latitude": 34.84307563670837,
+    "longitude": 136.54055994398823,
+    "meaning": "Nearest centreline sample to the published start/finish at 34.8433 N, 136.5409 E."
   },
   "projection": "Local tangent plane, x east metres, y north metres. Vertical values are relative to the lowest smoothed sample on the lap.",
   "route": {
@@ -23,39 +23,46 @@
     "scale_rule": "Applied only when the mapped plan was within 1.5% of a published length. Larger gaps keep the mapped length."
   },
   "elevation": {
-    "provider": "Open-Meteo Elevation API",
-    "dataset": "Copernicus DEM GLO-90",
-    "dataset_note": "Surface model, about 90 m, includes roofs and canopy. Not a bare-earth racing survey.",
-    "licence": "Copernicus DEM, see https://registry.opendata.aws/copernicus-dem/",
-    "retrieved": "2026-11-04",
-    "sample_spacing_m": 31.7,
-    "smoothing": "Two circular binomial passes on the coarse samples, then linear interpolation onto the 4 m centreline. Isolated samples more than 6 m above their neighbours were treated as overpasses or roofs.",
+    "provider": "Geospatial Information Authority of Japan",
+    "dataset": "5 m mesh DEM tiles, dem5a at zoom 15",
+    "dataset_note": "Ground elevations sampled on the centreline and retained on an 8 m terrain grid. The back-straight notch, where the mesh sees the Degner underpass, is filled to the embankment. This is a processed racing profile, not a GSI product and not a construction survey.",
+    "licence": "https://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html",
+    "service": "https://cyberjapandata.gsi.go.jp/xyz/dem5a/{z}/{x}/{y}.txt",
+    "retrieved": "2026-11-07",
+    "sample_spacing_m": 4.0,
+    "smoothing": "Two circular binomial passes on the 4 m centreline samples. The bridge notch is replaced by the embankment chord. Other drops of more than 2.5 m inside a 48 m window, at the Dunlop crest and before the final chicane, are raised to that chord because they are culverts in the ground model.",
     "relative_datum": "Heights stored after subtracting the lap minimum.",
-    "removed_minimum_m": 15.51,
-    "relief_m": 50.861,
-    "uncertainty_m": 5,
+    "removed_minimum_m": 17.303,
+    "relief_m": 40.585,
+    "uncertainty_m": 2,
+    "file": "elevation/gsi_ground.bin",
     "deck": {
-      "bridge_station_m": 2263.6101928374655,
-      "underpass_station_m": 4643.2004132231405,
-      "modeled_clearance_m": 6.2
-    }
+      "bridge_station_m": 4651.199035812672,
+      "underpass_station_m": 2271.6088154269974,
+      "modeled_clearance_m": 6.2,
+      "bridge_branch": "back straight",
+      "underpass_branch": "Degner"
+    },
+    "published_relief_crosscheck_m": 40.4
   },
   "width": {
-    "base_m": 12.0,
-    "straight_m": 14.0,
-    "method": "Authored from typical Grade 1 asphalt width, wider on low-curvature sections. Not a traced white-line survey."
+    "method": "15 m on the two straights and 12-14 m through the corners, joined with quintic transitions. Estimates from the circuit's character, not a white-line survey."
   },
   "shoulders": {
     "default_m": 6.0,
-    "method": "Nearest OSM barrier vertex on each side, median-smoothed, clamped to 1.2-24 m outside the kerb. Missing sides keep the venue default.",
+    "method": "OSM barriers, with the outside of Degner, the hairpin, Spoon, 130R and the final chicane widened to a runoff. Pit entry stays closed for the game.",
     "barrier_file": "barriers.osm.json.gz"
   },
   "banking": "Neutral. No published camber was anchored to a detected corner.",
   "buildings": {
     "count": 64,
-    "method": "OSM footprints within 14-85 m of the centreline, extruded to a tagged height or a default. Roof shape is flat.",
+    "method": "OSM footprints. Named grandstands, the pit building and the west control tower use estimated heights. The Circuit Wheel is a separate 48 m wheel placed at 34.845979 N, 136.538821 E; its 51 m top is an estimate of the published viewing height, not a measured diameter.",
     "licence": "ODbL 1.0"
   },
   "protection": "Both sides are walled at the shoulder offset. Pit entry is closed. That closure is a game boundary, not a claim about the real pit lane.",
-  "not_claimed": "No lidar, no orthophoto registration, no cockpit capture in this build. Centimetre storage is not centimetre accuracy."
+  "not_claimed": "No orthophoto registration and no packaged cockpit capture in this build. Widths, grandstand heights and the wheel diameter are estimates. The GSI mesh is ground, not a racing-deck survey. Centimetre storage is not centimetre accuracy.",
+  "reference_video": {
+    "file": "Saved/Refs/japan.mp4",
+    "use": "Appearance only. The clip is a commercial racing-game Japanese Grand Prix replay, not an onboard survey. Its pixels and meshes are not shipped."
+  }
 }

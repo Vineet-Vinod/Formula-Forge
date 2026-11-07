@@ -1,0 +1,16 @@
+{
+  "file": "Saved/Refs/japan.mp4",
+  "duration_s": 1200.7,
+  "kind": "Commercial racing-game replay of the Japanese Grand Prix. Appearance reference only. Pixels and meshes are not shipped.",
+  "sampled_every_s": 20,
+  "frames_reviewed": [
+    {"t": 0, "view": "Game menu, not the circuit."},
+    {"t": 140, "view": "Aerial of the pit straight, main grandstand and the wheel side of the venue."},
+    {"t": 220, "view": "Track map. Figure-eight, back straight across the middle, wheel beside the pit straight."},
+    {"t": 300, "view": "Cockpit on the pit straight. Stands on both sides, grass verge, barriers, light downhill."},
+    {"t": 340, "view": "Pit straight again. Pit wall one side, large grandstand the other."},
+    {"t": 420, "view": "Uphill S curves. Red and white kerb, grass, trees, a stand in the distance."},
+    {"t": 460, "view": "Long straight with power lines and a grandstand."},
+    {"t": 880, "view": "Wheel ahead, white rim and red cabins, stands and a red-white kerb."}
+  ]
+}

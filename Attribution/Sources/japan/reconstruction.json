@@ -14,18 +14,21 @@
   "heading_direction_test": false,
   "crossings": 1,
   "aspect": 1.87161,
-  "relief_m": 50.861,
-  "elevation_datum_removed_m": 15.51,
+  "relief_m": 40.585,
+  "elevation_datum_removed_m": 17.303,
   "samples": 1452,
-  "turns_detected": 19,
+  "turns_detected": 18,
   "turns_published": 18,
   "buildings": 64,
   "barrier_vertices": 788,
   "deck": {
-    "bridge_station_m": 2263.6101928374655,
-    "underpass_station_m": 4643.2004132231405,
-    "modeled_clearance_m": 6.2
+    "bridge_station_m": 4651.199035812672,
+    "underpass_station_m": 2271.6088154269974,
+    "modeled_clearance_m": 6.2,
+    "bridge_branch": "back straight",
+    "underpass_branch": "Degner"
   },
   "banks": [],
-  "osm_sha256": "cc3617f784368d2a6fc784ae3d9996b8c08afba8675e131c55dc40774b191566"
+  "osm_sha256": "cc3617f784368d2a6fc784ae3d9996b8c08afba8675e131c55dc40774b191566",
+  "turns_registered": 18
 }

@@ -1,0 +1,15 @@
+{
+  "provider": "Geospatial Information Authority of Japan",
+  "dataset": "5 m mesh DEM tiles (dem5a, dem5b fallback) at zoom 15",
+  "service": "https://cyberjapandata.gsi.go.jp/xyz/dem5a/{z}/{x}/{y}.txt",
+  "licence": "https://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html",
+  "retrieved": "2026-11-07",
+  "origin_lat": 34.84307563670837,
+  "origin_lon": 136.54055994398823,
+  "origin_x_m": -1862.8691336828276,
+  "origin_y_m": -618.7340431362607,
+  "step_m": 8.0,
+  "cols": 287,
+  "rows": 173,
+  "note": "Processed into a local east/north grid for the racing surface. Not a GSI product. Tile pixels are reference elevations, not a construction survey."
+}

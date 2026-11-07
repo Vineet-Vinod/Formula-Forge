@@ -2,16 +2,16 @@
 
 Nineteen layouts were built from OpenStreetMap raceway geometry and Copernicus GLO-90 elevations sampled on 2026-11-04. The driving length is the mapped plan, scaled to a published length only when the two already agreed within 1.5%. Shoulders use nearby OSM barriers where a vertex exists and a venue default where one does not.
 
-Suzuka is the only figure-eight. Its pit straight is raised to a 6.2 m deck when the 90 m surface model cannot see the bridge. The lower road is left on the sampled height.
+Suzuka is the only figure-eight. The back straight is the bridge over the Degner curves. Where the ground model falls into that underpass, the deck is filled to keep about 6.2 m of clearance and the lower road stays on the sampled ground. Its road profile is the Geospatial Information Authority of Japan 5 m mesh, not the earlier GLO-90 surface.
 
-Walls are continuous, including pit entry. That closure is for the game. Widths are typical asphalt figures, not a white-line survey. The initial generated circuits use GLO-90, a surface model with stated vertical uncertainty of 8 m on streets and 5 m on permanent circuits. Las Vegas has since been rebuilt with USGS 3DEP bare-earth terrain, a filtered road profile, native scenery and cockpit review. Its original footprint count in the table is superseded by [scenery.json](../Attribution/Sources/lasvegas/scenery.json); see [Las Vegas curve and scenery validation](lasvegas_curves_validation.json) for current evidence and limits.
+Walls are continuous, including pit entry. That closure is for the game. Widths are typical asphalt figures, not a white-line survey. The initial generated circuits use GLO-90, a surface model with stated vertical uncertainty of 8 m on streets and 5 m on permanent circuits. Las Vegas has since been rebuilt with USGS 3DEP bare-earth terrain, a filtered road profile, native scenery and cockpit review. Its original footprint count in the table is superseded by [scenery.json](../Attribution/Sources/lasvegas/scenery.json); see [Las Vegas validation](lasvegas_validation.json) for evidence and limits.
 
 | Circuit | Mapped m | Published m | Scale | Relief m | Turns found | Buildings |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | Bahrain | 5422.5 | 5412 | 0.9981 | 19.7 | 13 | 45 |
 | Jeddah | 6192.6 | 6174 | 0.9970 | 3.9 | 24 | 7 |
 | Australia | 5307.6 | 5278 | 0.9944 | 6.9 | 20 | 21 |
-| Japan | 5809.6 | 5807 | 0.9996 | 50.9 | 19 | 64 |
+| Japan | 5809.6 | 5807 | 0.9996 | 40.6 | 18 | 64 |
 | China | 5460.8 | 5451 | 0.9982 | 8.7 | 12 | 26 |
 | Canada | 4364.1 | 4361 | 0.9993 | 12.7 | 15 | 13 |
 | Monaco | 3317.2 | 3337 | 1.0060 | 57.1 | 20 | 92 |

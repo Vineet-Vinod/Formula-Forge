@@ -118,10 +118,13 @@ by local smoothing. The maximum height adjustment is 0.647 m. The stated
 1 m uncertainty includes that conflict; the smaller 0.36 m pixel-tracing
 uncertainty alone would not cover it. See the per-circuit numeric reference.
 
-Suzuka uses the [operator's course guide](https://www.suzukacircuit.jp/eng/course_s/pdf/suzuka_courseguide.pdf)
-longitudinal vector profile. Its local grades and the separation of the
-crossing branches are preserved; the retained GSI samples remain source
-history rather than the current road profile.
+Suzuka's current road profile is the Geospatial Information Authority of Japan
+5 m mesh, sampled on 2026-11-07. The lap relief is 40.6 m, in line with the
+published 40.4 m figure, and the steepest climb is 7.6% on the approach to
+Dunlop. The back straight is the bridge: the mesh falls into the Degner
+underpass there, and that notch is filled to leave 6.2 m of clearance. The
+[operator course guide](https://www.suzukacircuit.jp/eng/course_s/pdf/suzuka_courseguide.pdf)
+remains a published cross-check, not the sampled surface.
 
 Modified-data attribution: produced using Copernicus WorldDEM-30 © DLR e.V.
 2010-2014 and © Airbus Defence and Space GmbH 2014-2018 provided under
