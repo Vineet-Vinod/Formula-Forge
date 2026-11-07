@@ -349,14 +349,13 @@ class Scene:
                 material = "KerbRed" if int(first["station"] / 4) % 2 == 0 else "KerbWhite"
                 for sign in (1, -1):
                     inner = sign * half
-                    outer = sign * (half + 0.9)
-                    a = self.point(first, inner, 0.02)
-                    b = self.point(second, sign * second["half"], 0.02)
-                    c = self.point(second, sign * (second["half"] + 0.9), 0.10)
-                    d = self.point(first, outer, 0.10)
-                    self.quad(material, a, b, c, d, span / 2, 0.4)
-                    self.quad(material, self.point(first, outer, 0.0), self.point(second, sign * (second["half"] + 0.9), 0.0),
-                              c, d, span / 2, 0.1)
+                    outer = sign * (half + 1.35)
+                    a = self.point(first, inner, 0.04)
+                    b = self.point(second, sign * second["half"], 0.04)
+                    c = self.point(second, outer, 0.20)
+                    d = self.point(first, outer, 0.20)
+                    self.quad(material, a, b, c, d, span / 2, 0.5)
+                    self.quad(material, self.point(first, outer, 0.0), self.point(second, outer, 0.0), c, d, span / 2, 0.2)
             for sign, shoulder, left in ((1, first["left"], True), (-1, first["right"], False)):
                 inner = sign * (half + (0.9 if corner else 0.12))
                 outer = sign * (half + 0.9 + shoulder)
@@ -364,16 +363,6 @@ class Scene:
                 self.shaded_quad(surface, self.point(first, outer, -0.04), self.point(second, sign * (second["half"] + 0.9 + (second["left"] if left else second["right"])), -0.04),
                                  self.point(second, sign * (second["half"] + (0.9 if corner else 0.12))), self.point(first, inner),
                                  span / 4, shoulder / 4, near, far, far, near)
-                wall_lane = sign * (half + 0.9 + shoulder)
-                base = self.point(first, wall_lane)
-                base_next = self.point(second, sign * (second["half"] + 0.9 + (second["left"] if left else second["right"])))
-                top = add(base, (0, 0, 0.95))
-                top_next = add(base_next, (0, 0, 0.95))
-                if self._on_frontage(first["station"]):
-                    continue
-                self.quad("Armco", base, base_next, top_next, top, span / 3, 0.4)
-                cap = (first["nx"] * sign * 0.18, first["ny"] * sign * 0.18, 0)
-                self.quad("Armco", top, top_next, add(top_next, cap), add(top, cap), span / 3, 0.08)
             if first["z"] - self.terrain_at(first["x"], first["y"]) > 3.5:
                 for sign in (1.0, -1.0):
                     lane = sign * (half + 1.4)
@@ -436,8 +425,32 @@ class Scene:
         # not on the per-sample ribbon that followed the culvert.
         self._pit_straight()
         self._main_grandstand()
-        self._grandstand_run(sign=1.0, start=5000.0, end=5550.0, rows=10, setback=11.0)
-        self._grandstand_run(sign=-1.0, start=2500.0, end=2750.0, rows=8, setback=12.0)
+        self._grandstand_run(sign=1.0, start=5000.0, end=5550.0, rows=12, setback=4.0)
+        self._grandstand_run(sign=-1.0, start=2480.0, end=2820.0, rows=14, setback=4.5)
+        self._grandstand_run(sign=-1.0, start=1320.0, end=1680.0, rows=10, setback=5.0)
+        self._grandstand_run(sign=-1.0, start=3420.0, end=3850.0, rows=10, setback=5.0)
+
+    def barriers(self) -> None:
+        # Two rails and a post, just outside the white line, the whole lap.
+        # The pit wall replaces the rail on the pit side of the straight.
+        samples = self.samples
+        count = len(samples)
+        index = 0
+        while index < count:
+            first = samples[index]
+            second = samples[(index + 2) % count]
+            place = first["station"] if first["station"] < self.length * 0.5 else first["station"] - self.length
+            for sign in (1.0, -1.0):
+                if sign < 0 and -40 <= place <= 360:
+                    continue
+                lane = sign * (first["half"] + 0.85)
+                lane_next = sign * (second["half"] + 0.85)
+                start = self.point(first, lane)
+                end = self.point(second, lane_next)
+                for height in (0.45, 0.82):
+                    self._beam("Armco", add(start, (0, 0, height)), add(end, (0, 0, height)), 0.18, 0.07)
+                self._beam("Steel", add(start, (0, 0, 0.08)), add(start, (0, 0, 0.95)), 0.1, 0.1)
+            index += 2
 
     def _at(self, station: float) -> dict:
         samples = self.samples
@@ -854,6 +867,7 @@ class Scene:
 def main() -> None:
     scene = Scene()
     scene.road()
+    scene.barriers()
     scene.terrain()
     scene.frontage()
     scene.stands()
