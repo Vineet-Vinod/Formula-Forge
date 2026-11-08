@@ -66,7 +66,32 @@
     {
       "time_s": 737.04,
       "reviewed": true,
-      "notes": "Kumho and banked Arie Luyendyk: Final sweeping banked corner feeds main straight; tall outside SAFER protection, grandstand mass and pits visible beyond. T14 official banking18degrees; zero-bank source cannot be retained."
+      "notes": "Obstructed low-speed view close to an outside wall/catch fence, with the car displaced from a normal racing pose. Specific corner is unregistered. This frame does not independently verify ArieLuyendyk18-degree banking; use the newly reviewed872.00s frame plus official banking provenance.",
+      "camera_registration": "Ambiguous close-wall context; superseded as a direct final-corner banking reference."
+    },
+    {
+      "time_s": 865,
+      "reviewed": true,
+      "reviewed_image": "build/reviews/zandvoort/reference/final-865.00.jpg",
+      "reviewed_image_sha256": "f3e0f42fe29052677a6a9579efd361f912da77a7a34d7c812893d5d1b908502b",
+      "notes": "Middle dune corner approach: high scrubby dune and billboard on right, hillside stands left, yellow advertising, grass strips and100m boards. HUD39.556s and minimap place the car in the middle loop.",
+      "camera_registration": "Likely T10/left-hairpin sector; precise apex identification and native station are uncertain. Do not use this as a surveyed camera match."
+    },
+    {
+      "time_s": 872,
+      "reviewed": true,
+      "reviewed_image": "build/reviews/zandvoort/reference/final-872.00.jpg",
+      "reviewed_image_sha256": "0856f2184e75e89da64033d477be7485c26364319875d231c641bac64edef90e",
+      "notes": "ArieLuyendyk final banked right: strongly sloped road/horizon, orange-white inside kerb and grassy dune on right, tall outside catch fence left. HUD1:07.481 and minimap confirm final curve.",
+      "camera_registration": "Direct final-corner evidence for native3786.67m anchor; exact position within bend approximate and cockpit roll is not a surveyed banking measurement."
+    },
+    {
+      "time_s": 875,
+      "reviewed": true,
+      "reviewed_image": "build/reviews/zandvoort/reference/final-875.00.jpg",
+      "reviewed_image_sha256": "2c0eaacd11b8a51bc72d8e031e7c98096198c7dbe24465992921a568be92068a",
+      "notes": "Main straight after final banking: long left stand canopy and catch fence, right pit compound, grassy edge, flags and paved straight. HUD1:10.482.",
+      "camera_registration": "Same main-straight context; the872\u2192875s sequence is consistent, but exact native station is not surveyed."
     }
   ],
   "registration": {
@@ -185,5 +210,14 @@
     "Exact filming lap/year is not established unless visible title/HUD identifies it.",
     "Overview observations establish visual vocabulary; every individual asset position requires footprint/map registration.",
     "No high-resolution raster or orthophoto added by this reference review."
-  ]
+  ],
+  "montage_cut_review": {
+    "reviewed_times_s": [
+      865,
+      872,
+      875
+    ],
+    "observation": "HUD jumps39.556s\u21921:07.481s between865 and872video seconds, then advances to1:10.482s at875. The first interval contains an edit; no native station interpolation is valid across it.",
+    "remaining_index_policy": "Old broad sector labels are contextual unless separately registered; no unverified corner relabels are made here."
+  }
 }

@@ -98,7 +98,8 @@
         1026.96,
         1327.53,
         650,
-        654
+        654,
+        662
       ],
       "observed": "Broad tightening entry and progressively opening right, grass inner island, extensive coloured paved escape outside; low grandstands/steel structures. Align kerbs individually through curved sequence.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
@@ -180,8 +181,7 @@
       "name": "T4–5 acceleration toward T6",
       "reviewed_video_seconds": [
         325.62,
-        658,
-        662
+        658
       ],
       "observed": "Long grassy left verge, broad outside gravel, long stand facilities and sponsor bridge receding. Open horizon and distant trees; green painted shoulder only at exit.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
@@ -244,5 +244,10 @@
     ],
     "evidence": "Paired repeated oval roofs are visible after the T14 hairpin. The retained H/K rings have 207/181 vertices and rounded compound outlines; B1 has a rectangular five-vertex outline.",
     "dimensions": "Mapped plan bounds; canopy radii, column heights and red seat palette are reference estimates."
+  },
+  "targeted_registration_review": {
+    "method": "Direct appearance/topology checks of retained frames and bounded individual Baku reference seeks; source geometry and all native data unchanged.",
+    "notes": "Frame662s directly shows the long-right T13inner violet apron and Anting terrace, not T4–5. H/K lotus canopies at674–678s remain registered to T14, not opening Bterraces. Exact station/frame pairing is visual, approximately±60m, and edited gameplay is not a linear station clock.",
+    "next_gate": "Actual packaged full-lap review and targeted captures in build/reviews/east-final-targets.json; these metadata corrections are not visual approval."
   }
 }

@@ -22,7 +22,8 @@
         200,
         205,
         357.68,
-        526
+        526,
+        100
       ],
       "observed": "Left main grandstand and first-turn stand; right long white pit/hospitality and Sakhir Tower. Red-white kerbs, broad coloured paved T1 escape, sand beyond. Keep braking 150/100/50 boards before T1 and protection behind runoff.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
@@ -50,7 +51,6 @@
       "name": "T5–8 linked infield bends",
       "reviewed_video_seconds": [
         105.2,
-        100,
         105,
         110,
         778.49
@@ -1144,5 +1144,10 @@
       "VmHWM_kib": 64884
     },
     "runtime_status": "Packaged pilot rejected; source geometry correction ready for new root capture. No final visual approval claimed."
+  },
+  "targeted_registration_review": {
+    "method": "Direct appearance/topology checks of retained frames and bounded individual Baku reference seeks; source geometry and all native data unchanged.",
+    "notes": "Frame100s shows the Sakhir Tower/opening-corner approach; mapped tower187123438 is native332.79m ondriverRIGHT at91.79m from centerline. It must not be assigned to infield sector1450–2100m. Other sparse overview associations remain approximate until full-lap continuity review; relative station/camera registration is not surveyed.",
+    "next_gate": "Actual packaged full-lap review and targeted captures in build/reviews/east-final-targets.json; these metadata corrections are not visual approval."
   }
 }

@@ -31,7 +31,10 @@
     {
       "time_s": 667.68,
       "reviewed": true,
-      "notes": "Eau Rouge and Raidillon: Iconic compression and steep uphill left-right-left. White/dark-timber gabled historic chalet at foot; large modern angular Raidillon covered stand, wooded slopes and gravel outside."
+      "notes": "La Source approach: tight right hairpin ahead, white half-timber gabled frontage on left, compact stands and mature mixed trees. HUD shows5.233s and minimap confirms the first hairpin. The previous EauRouge/Raidillon label was wrong; this frame does not establish a chalet at EauRouge.",
+      "reviewed_image": "build/reviews/spa/reference/final-667.68.jpg",
+      "reviewed_image_sha256": "d20e89c2c3052f68f5587cb873889821dae6e6388e2085d219c5fb74b0204b7e",
+      "camera_registration": "Direct same-corner reference for native LaSource1176.67m; exact video camera station not surveyed."
     },
     {
       "time_s": 403.81,
@@ -67,6 +70,30 @@
       "time_s": 733.65,
       "reviewed": true,
       "notes": "Blanchimont return: Fast rising forest corridor, red/yellow edge kerbs, narrow grass verges and metal Armco/catch fencing; broad spectator hillside at return toward Bus Stop."
+    },
+    {
+      "time_s": 671,
+      "reviewed": true,
+      "reviewed_image": "build/reviews/spa/reference/final-671.00.jpg",
+      "reviewed_image_sha256": "6a45c33fb80522b1cfd64561482adee37369d6fac1df253f92b1a160973af72f",
+      "notes": "La Source exit and old-pit descent: foreground red/yellow kerb and gravel left, endurance pit/service structures right, distant valley and covered stand toward EauRouge. HUD8.550s.",
+      "camera_registration": "Same downhill avenue context; does not show EauRouge compression or Raidillon crest up close."
+    },
+    {
+      "time_s": 674,
+      "reviewed": true,
+      "reviewed_image": "build/reviews/spa/reference/final-674.00.jpg",
+      "reviewed_image_sha256": "d7dc607e411c5eea932c1cdb68d052bb79bb088e28aadbb50b2dfd980c73a3fd",
+      "notes": "Old-pit descent toward EauRouge: large angular covered stand on excavated grassy left bank, service/pit roofs right and dense forest beyond. HUD11.549s.",
+      "camera_registration": "Upstream approach context for native1680m review camera, approximate100\u2013200m station uncertainty; no precise crest/kerb reconstruction from this frame."
+    },
+    {
+      "time_s": 676,
+      "reviewed": true,
+      "reviewed_image": "build/reviews/spa/reference/final-676.00.jpg",
+      "reviewed_image_sha256": "145a50dfc794e26f73d63b390ab46a0fefc1dbdb6181bbae675249da92edc141",
+      "notes": "Kemmel straight: crowd bank and mature mixed trees left, trees and advertised wall right, grass verge and Armco/catch fence. HUD25.583s.",
+      "camera_registration": "Confirmed Kemmel straight; exact position along native2113\u20133165m is unregistered."
     }
   ],
   "registration": {
@@ -253,5 +280,15 @@
     "Overview observations establish visual vocabulary; every individual asset position requires footprint/map registration.",
     "No high-resolution raster or orthophoto added by this reference review."
   ],
-  "racing_elevation_correction": "elevation-corrections.json"
+  "racing_elevation_correction": "elevation-corrections.json",
+  "montage_cut_review": {
+    "reviewed_times_s": [
+      667.68,
+      671,
+      674,
+      676
+    ],
+    "observation": "HUD advances5.233\u21928.550\u219211.549s, then jumps to25.583s between674 and676video seconds. This is an edit. Do not derive native station or continuous lap timing by interpolating across it.",
+    "remaining_index_policy": "Other old sector-wide labels remain contextual hypotheses unless independently registered; this correction does not verify unreviewed camera poses."
+  }
 }

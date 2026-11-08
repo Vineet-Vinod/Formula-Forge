@@ -23,21 +23,25 @@
       "name": "La Source and old pit descent",
       "reference_times_s": [
         271.87,
-        205.9
+        205.9,
+        667.68,
+        671,
+        674
       ],
       "observed_environment": "Hairpin opens to dramatic valley descent. Modern grandstand and old endurance pit structures; close red/yellow kerbs, paved outside escape. Do not flatten the descent.",
-      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video.",
+      "reference_registration": "667.68s directly confirms LaSource approach;671s exit and674s downhill old-pit avenue. Exact source camera stations are approximate; other listed times are older sector context."
     },
     {
       "start_m": 1770,
       "end_m": 2250,
       "name": "Eau Rouge and Raidillon",
       "reference_times_s": [
-        205.9,
-        667.68
+        671,
+        674
       ],
-      "observed_environment": "Iconic compression and steep uphill left-right-left. White/dark-timber gabled historic chalet at foot; large modern angular Raidillon covered stand, wooded slopes and gravel outside.",
-      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+      "observed_environment": "From the upstream LaSource exit/old-pit descent, the valley, large covered stand on the left bank toward EauRouge and forested ridge are visible. These approach views do not establish the exact compression, Raidillon crest, or a gabled chalet at EauRouge.",
+      "placement_confidence": "Approach context only. Prior205.90/667.68s claims of direct EauRouge evidence were incorrect; both show LaSource. Use retained map/profile for station geometry and independently verify close landmark identity/footprint."
     },
     {
       "start_m": 2250,
@@ -45,10 +49,12 @@
       "name": "Kemmel, Les Combes and Malmedy",
       "reference_times_s": [
         403.81,
-        469.77
+        469.77,
+        676
       ],
       "observed_environment": "Long uphill forest-lined straight with narrow grass and Armco. Open spectator slopes and brown gravel/soil outside braking/chicane area; dense mixed conifers beyond.",
-      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video.",
+      "reference_registration": "676s directly confirms Kemmel vegetation/protection vocabulary; exact station within the straight is not surveyed."
     },
     {
       "start_m": 3650,
@@ -64,7 +70,7 @@
     {
       "start_m": 5100,
       "end_m": 6200,
-      "name": "Fagnes, Campus and Paul Frère",
+      "name": "Fagnes, Campus and Paul Fr\u00e8re",
       "reference_times_s": [
         535.74,
         865.58
@@ -87,7 +93,7 @@
   "terrain": {
     "retained_source": "Copernicus DEM GLO-90",
     "retained_relief_m": 99.798,
-    "shortcomings": "GLO-90 relief99.798m is insufficient for Eau Rouge/Raidillon compression, drainage, banks and bridges. SPW 0.5m 2021–22 MNT is authoritative bare-earth candidate; identify height payload rather than reading coloured map export. Bridges removed from MNT require deck masks. Historical README fine survey is not retained.",
+    "shortcomings": "GLO-90 relief99.798m is insufficient for Eau Rouge/Raidillon compression, drainage, banks and bridges. SPW 0.5m 2021\u201322 MNT is authoritative bare-earth candidate; identify height payload rather than reading coloured map export. Bridges removed from MNT require deck masks. Historical README fine survey is not retained.",
     "candidate_primary_sources": [
       "https://geoportail.wallonie.be/catalogue/a004e570-99d6-4fe5-b83d-49b774409278.html",
       "https://geoservices.wallonie.be/arcgis/rest/services/RELIEF/WALLONIE_MNT_2021_2022/MapServer"
@@ -473,5 +479,11 @@
     "status": "Source change awaiting new rendered review",
     "geometry": "Mapped pit front now has recessed garage bays below retained upper floors; no repeated ground-floor office windows on road-facing facade. Bay widths/depths are original reference reconstruction, not an as-built survey.",
     "paving_profile": "pit-lane.json"
+  },
+  "reference_registration_corrections": {
+    "index": "reference-index.json",
+    "confirmed_wrong_label": "667.68s is LaSource, not EauRouge.205.90s is already indexed as LaSource and must not simultaneously be used as a direct EauRouge pose.",
+    "montage_cut": "674\u2192676video seconds jumps HUD11.549\u219225.583s; no timing-to-station interpolation across this cut.",
+    "geometry_status": "Metadata evidence correction only; scene geometry and outstanding packaged acceptance are unchanged."
   }
 }

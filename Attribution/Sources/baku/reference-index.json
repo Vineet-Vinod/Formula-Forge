@@ -60,7 +60,22 @@
       230,
       235,
       240,
-      245
+      245,
+      234,
+      236,
+      238,
+      250,
+      252,
+      254,
+      256,
+      258,
+      260,
+      290,
+      296,
+      300,
+      390,
+      450,
+      850
     ],
     "method": "Viewed every frame of overview and detail contact sheets. Sparse review of edited gameplay; rear cameras, menus and cuts are excluded as metric geometry evidence.",
     "whole_lap_sector_inventory": true,
@@ -83,7 +98,9 @@
         175,
         180,
         185,
-        189.16
+        189.16,
+        190,
+        195
       ],
       "observed": "Grandstand/pit temporary structures and monumental city facades, broad asphalt channel and tall fencing; trees behind wall, narrow red-white apex kerbs. Escape lanes continue straight at90degree turns.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
@@ -96,11 +113,9 @@
       ],
       "name": "T2 long city straight",
       "reviewed_video_seconds": [
-        130.96,
-        190,
-        195,
         200,
-        205
+        205,
+        210
       ],
       "observed": "Landmark tower cluster to right of northern boulevard. Varied pale stone and modern balcony facades, continuous broadleaf trees. Long straight braking boards and uninterrupted wall/fence corridor; do not substitute repeated identical hotels.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
@@ -113,8 +128,6 @@
       ],
       "name": "T3–4 boulevard corners",
       "reviewed_video_seconds": [
-        247.37,
-        210,
         215,
         220
       ],
@@ -131,10 +144,7 @@
       "reviewed_video_seconds": [
         305.57,
         225,
-        230,
-        235,
-        240,
-        245
+        230
       ],
       "observed": "Trees and tightly spaced stone street facades, balconies/windows and varied roofline. Houses sit directly behind fence, public junction markings visible. Slow turns have small red-white kerbs and asphalt escape, not gravel.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
@@ -147,10 +157,13 @@
       ],
       "name": "Castle T8–12 climb",
       "reviewed_video_seconds": [
-        363.77,
-        421.98
+        234,
+        235,
+        236,
+        238,
+        240
       ],
-      "observed": "Narrow uphill masonry-lined sequence and small rounded apexes; rough warm fortification left, close classical facade right. Protect narrow race corridor, no standalone floating barrier blocks; walls follow actual bent street.",
+      "observed": "Direct234s forward view shows T8approach and left entry with redLenovo barriers.236s shows the narrow castle ramp with rough stone curtain wall/roundturret LEFT and pale façades/catchfence RIGHT.238s is a REAR camera, useful for battlements/turret architecture but not forward corner direction. Preserve the7.6m narrow section and near-zero shoulders.240s is already the upper-city departure.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
     },
     {
@@ -162,7 +175,11 @@
       "name": "Upper city T13–15 and downhill",
       "reviewed_video_seconds": [
         480.18,
-        596.59
+        596.59,
+        245,
+        247.37,
+        250,
+        252
       ],
       "observed": "Palace/classical facades with projecting bays, low park-side stone retaining walls and tall leafy trees. Crest then descending sightline; T15 has a straight-ahead paved escape. Philharmonic/Palace of Happiness give identity beyond castle.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
@@ -176,7 +193,9 @@
       "name": "T16 and Old City waterfront edge",
       "reviewed_video_seconds": [
         713,
-        654.79
+        654.79,
+        254,
+        256
       ],
       "observed": "Four Seasons and pale monumental facades, leafy park and stone buildings. Road broadens after slow left; Maiden Tower visible behind inner city. Curving approach toward waterfront should remain continuous.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
@@ -194,7 +213,8 @@
         829.4,
         125,
         130,
-        135
+        135,
+        130.96
       ],
       "observed": "Open long boulevard lined by mature broadleaf trees, temporary waterfront stands and varied hotel/glazed skyline. House of Government dominant near SF, low pit structures; straight speed signs and distance boards. Do not place castle facades along entire seafront.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
@@ -221,5 +241,54 @@
     "The road profile uses registered 26.8 m F1 topography controls, placing the high point near T13. The former GLO-90 profile could sample Old City roofs.",
     "The promoter confirms a 7.6 m castle section. Native width and near-zero shoulder controls are retained in width-shoulder-corrections.json; normal street widths remain wider.",
     "Individual castle facade and kerb dimensions remain visual estimates within the registered narrow corridor."
-  ]
+  ],
+  "castle_reference_registration": {
+    "direct_video_identity": true,
+    "video_seconds": [
+      234,
+      236,
+      238
+    ],
+    "native_station_estimates_m": [
+      2570,
+      2690,
+      2800
+    ],
+    "station_uncertainty_m": 60,
+    "cameras": [
+      "forward approach",
+      "forward narrow ramp",
+      "rear architecture context"
+    ],
+    "mapped_section": "Castle frontage and corrected narrow corridor around native2580–2800m",
+    "source_limitation": "Appearance and topology identify the castle directly. Native camera positions are inferred from corner/footprint registration, not measured or surveyed.",
+    "inspection": "Individual640px frames, decoder/filter threads1,1GB virtual cap, observed peak RSS<88MiB each. Reference pixels remain ignored under build/reviews/baku/reference and are not shipped."
+  },
+  "targeted_registration_review": {
+    "method": "Direct appearance/topology checks of retained frames and bounded individual Baku reference seeks; source geometry and all native data unchanged.",
+    "notes": "New bounded individual-frame review closes the castle gap at234/236/238s. Earlier235–245s labels as T5–7 were wrong:235/236arecastle,238rearcastle,240uppercitydeparture,245/247uppercityfastsection.250–256s continue into the late-city/downhill approach before a hard cut toLAP2by258s.363.77/421.98s are ordinary city views and cannot directly validate the castle. Exact station estimates are±60m; no survey or uninterrupted playback-time registration is claimed.",
+    "next_gate": "Actual packaged full-lap review and targeted captures in build/reviews/east-final-targets.json; these metadata corrections are not visual approval."
+  },
+  "msc_wall_band_registration": {
+    "direct_reference_seconds": [
+      225,
+      230,
+      234,
+      238,
+      240,
+      245
+    ],
+    "camera_note": "238/240 s are rear views; 245 s is forward. Reverse screen left/right when reading the rear camera.",
+    "native_anchor": "T8–10 castle topology and retained curtain-wall/building footprints, followed by T11/T12 departure and T13 upper-city return.",
+    "driver_right_native_range_m": [
+      2820,
+      3290
+    ],
+    "driver_left_native_range_m": [
+      2860,
+      3290
+    ],
+    "endpoint_uncertainty_m": 60,
+    "reason": "Pre-castle 225 s AzerbaijanGP and 230 s Louis Vuitton appearance disproves the former pre-castle MSC placement. Post-castle 238/240/245 s supports the relocated ranges. This is inferred frame registration, not a surveyed advertising plan."
+  }
 }

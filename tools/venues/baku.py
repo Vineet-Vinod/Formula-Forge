@@ -35,8 +35,8 @@ def circuit_edges(scene: CircuitScene) -> None:
         (0, 210, 1, 'PanelPurple'),
         (690, 1340, -1, 'PanelYellow'),
         (690, 1340, 1, 'PanelYellow'),
-        (2110, 2380, -1, 'PanelNavy'),
-        (2110, 2380, 1, 'PanelNavy'),
+        (2860, 3290, -1, 'PanelNavy'),
+        (2820, 3290, 1, 'PanelNavy'),
     ):
         scene.branding(start, end, side, material)
 

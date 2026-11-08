@@ -67,11 +67,16 @@
       "end_m": 4259,
       "name": "Kumho and banked Arie Luyendyk",
       "reference_times_s": [
+        872,
+        875
+      ],
+      "observed_environment": "Final sweeping banked corner feeds main straight; tall outside SAFER protection, grandstand mass and pits visible beyond. T14 official banking18degrees; zero-bank source cannot be retained.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video.",
+      "superseded_ambiguous_reference_times_s": [
         299.62,
         737.04
       ],
-      "observed_environment": "Final sweeping banked corner feeds main straight; tall outside SAFER protection, grandstand mass and pits visible beyond. T14 official banking18degrees; zero-bank source cannot be retained.",
-      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+      "reference_registration": "872s directly shows final ArieLuyendyk bank;875s shows its main-straight exit. Prior737.04s obstructed wall view is not an independently established final-corner pose. Exact video camera stations remain approximate; official source, not cockpit roll, establishes18degrees."
     }
   ],
   "terrain": {
@@ -431,5 +436,12 @@
     "status": "Source change awaiting new rendered review",
     "geometry": "Mapped pit front now has recessed garage bays below retained upper floors; no repeated ground-floor office windows on road-facing facade. Bay widths/depths are original reference reconstruction, not an as-built survey.",
     "paving_profile": "pit-lane.json"
+  },
+  "reference_registration_corrections": {
+    "index": "reference-index.json",
+    "verified_final_banking_time_s": 872,
+    "verified_straight_exit_time_s": 875,
+    "montage_cut": "865\u2192872video seconds jumps HUD39.556s\u21921:07.481s. Do not interpolate across the edit.",
+    "geometry_status": "Metadata evidence correction only; road banking/scene geometry and pending packaged acceptance unchanged."
   }
 }
