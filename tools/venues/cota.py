@@ -8,7 +8,8 @@ from circuit_dataclasses import Point, RoadStation
 from circuit_mesh import add
 from circuit_scene import CircuitScene
 from shapely.geometry import Polygon
-from shapely.ops import triangulate
+from shapely.geometry.base import BaseGeometry
+from shapely.ops import triangulate, unary_union
 
 from venues.east_architecture import footprint_stand
 from venues.west_architecture import (
@@ -133,26 +134,28 @@ def circuit_edges(scene: CircuitScene) -> None:
                             'source': 'Supplied reference158.70s and161–164s; IMSA2024aerial establishes rounded peninsula boundary, later clip establishes red paved cap.',
                             'registration': 'Inside kerb-following head of peninsula; upstream chord and exact extent reconstructed, not surveyed. Star remains at4153m/left13m.'})
 
+    star_shapes = [apron_star(scene, 3890, -1, 13, 5.5),
+                   apron_star(scene, 4153, -1, 13, 5.5)]
+    for station in [4300, 4420, 4540, 4660]:
+        star_shapes.append(apron_star(scene, station, -1, 12, 4.5))
+    paint_exclusion = unary_union([island, *star_shapes])
+
     for start, end, side, width in [(420, 640, 1, 25), (960, 1490, 1, 18),
                                      (1510, 1930, 1, 18), (2350, 2570, 1, 24),
                                      (3540, 3780, 1, 26), (3800, 4170, -1, 24),
                                      (4200, 4750, -1, 24), (4830, 5050, 1, 25),
                                      (5120, 5330, 1, 23)]:
-        paint_band(scene, start, end, side, 1.2, 3.4, 'RunoffGreen', island)
+        paint_band(scene, start, end, side, 1.2, 3.4, 'RunoffGreen', paint_exclusion)
         if start in (3540, 3800, 4200):
-            paint_band(scene, start, end, side, 3.4, 4.4, 'RunoffRed', island)
-            paint_band(scene, start, end, side, width - 4.4, width - .2, 'RunoffRed', island)
+            paint_band(scene, start, end, side, 3.4, 4.4, 'RunoffRed', paint_exclusion)
+            paint_band(scene, start, end, side, width - 4.4, width - .2, 'RunoffRed', paint_exclusion)
         else:
-            paint_band(scene, start, end, side, 3.4, width - .2, 'RunoffRed', island)
+            paint_band(scene, start, end, side, 3.4, width - .2, 'RunoffRed', paint_exclusion)
     for start, end, side, width in [(3540, 3780, 1, 26), (3800, 3990, -1, 24),
                                      (4200, 4750, -1, 24)]:
-        paint_band(scene, start, end, side, 4.4, 5.4, 'White', island)
-        paint_band(scene, start, end, side, 5.4, width - 5.4, 'RunoffBlue', island)
-        paint_band(scene, start, end, side, width - 5.4, width - 4.4, 'White', island)
-    apron_star(scene, 3890, -1, 13, 5.5)
-    apron_star(scene, 4153, -1, 13, 5.5)
-    for station in [4300, 4420, 4540, 4660]:
-        apron_star(scene, station, -1, 12, 4.5)
+        paint_band(scene, start, end, side, 4.4, 5.4, 'White', paint_exclusion)
+        paint_band(scene, start, end, side, 5.4, width - 5.4, 'RunoffBlue', paint_exclusion)
+        paint_band(scene, start, end, side, width - 5.4, width - 4.4, 'White', paint_exclusion)
 
 
 def t15_island(scene: CircuitScene) -> Polygon:
@@ -180,8 +183,8 @@ def apron_cells(scene: CircuitScene, start: float, end: float, side: int,
 
 
 def paint_band(scene: CircuitScene, start: float, end: float, side: int,
-                inner: float, outer: float, material: str, island: Polygon) -> None:
+                inner: float, outer: float, material: str, exclusion: BaseGeometry) -> None:
     for cell, sample in apron_cells(scene, start, end, side, inner, outer):
-        scene.paint_surface(cell.difference(scene.surface_mask(sample)).difference(island), material)
+        scene.paint_surface(cell.difference(scene.surface_mask(sample)).difference(exclusion), material)
     scene.surface_ranges.append({'type': 'apron paint', 'start_m': start, 'end_m': end,
                                  'side': side, 'inner_m': inner, 'outer_m': outer, 'material': material})

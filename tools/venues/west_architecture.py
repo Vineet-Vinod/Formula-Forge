@@ -10,6 +10,7 @@ from circuit_mesh import add, mul, sub
 from pydantic import TypeAdapter
 from shapely.geometry import Point as ShapePoint
 from shapely.geometry import Polygon, box
+from shapely.geometry.base import BaseGeometry
 from shapely.ops import triangulate
 
 if TYPE_CHECKING:
@@ -37,7 +38,7 @@ def apron_band(scene: CircuitScene, start: float, end: float, side: int,
 
 
 def apron_star(scene: CircuitScene, station: float, side: int,
-               offset: float, radius: float, material: str = 'White') -> None:
+               offset: float, radius: float, material: str = 'White') -> BaseGeometry:
     from shapely.ops import unary_union
 
     sample = scene.at(station)
@@ -49,11 +50,12 @@ def apron_star(scene: CircuitScene, station: float, side: int,
         along, lateral = math.cos(angle) * r, math.sin(angle) * r
         points.append((center[0] + sample.tx * along + sample.ty * lateral,
                        center[1] + sample.ty * along - sample.tx * lateral))
-    shape = Polygon(points).intersection(unary_union(scene.extra_corridors))
-    scene.paint_surface(shape.difference(scene.surface_mask(sample)), material)
+    shape = Polygon(points).intersection(unary_union(scene.extra_corridors)).difference(scene.surface_mask(sample))
+    scene.paint_surface(shape, material)
     scene.surface_ranges.append({'type': 'apron star', 'station_m': station,
                                  'side': side, 'offset_m': offset, 'radius_m': radius,
                                  'material': material})
+    return shape
 
 
 def suzuka_service_hut(scene: CircuitScene, building: Building,
