@@ -282,6 +282,7 @@ def curved_footprint_stand(
                 base_a = scene.ground(*front_a[:2]) + 0.25
                 base_b = scene.ground(*front_b[:2]) + 0.25
                 top_a, top_b = base_a, base_b
+                previous_a, previous_b = base_a - 0.46, base_b - 0.46
                 roof_shapes: list[Polygon] = []
                 for row in range(rows):
                     a = add(front_a, mul(normal_a, row * 0.9))
@@ -296,28 +297,36 @@ def curved_footprint_stand(
                         continue
                     top_a = max(
                         base_a + row * 0.46,
+                        previous_a + 0.46,
                         scene.ground(*a[:2]) + 0.18,
                         scene.ground(*d[:2]) + 0.18,
                     )
                     top_b = max(
                         base_b + row * 0.46,
+                        previous_b + 0.46,
                         scene.ground(*b[:2]) + 0.18,
                         scene.ground(*c[:2]) + 0.18,
                     )
-                    bay_length = segment_length / bays
-
-                    gradient_x = (top_b - top_a) * direction[0] / bay_length
-                    gradient_y = (top_b - top_a) * direction[1] / bay_length
+                    previous_a, previous_b = top_a, top_b
+                    row_a = mul(add(a, d), 0.5)
+                    row_b = mul(add(b, c), 0.5)
+                    row_dx, row_dy = row_b[0] - row_a[0], row_b[1] - row_a[1]
+                    row_length_squared = row_dx * row_dx + row_dy * row_dy
 
                     def height(
                         x: float,
                         y: float,
-                        origin: Point = front_a,
+                        origin: Point = row_a,
                         z: float = top_a,
-                        dx: float = gradient_x,
-                        dy: float = gradient_y,
+                        dz: float = top_b - top_a,
+                        dx: float = row_dx,
+                        dy: float = row_dy,
+                        length_squared: float = row_length_squared,
                     ) -> float:
-                        return z + (x - origin[0]) * dx + (y - origin[1]) * dy
+                        along = ((x - origin[0]) * dx + (y - origin[1]) * dy) / max(
+                            length_squared, 1e-8
+                        )
+                        return z + dz * max(0.0, min(1.0, along))
 
                     for triangle in triangulate(clipped):
                         if clipped.covers(triangle):
@@ -474,6 +483,27 @@ def footprint_stand(
     def ground(point: Point) -> Point:
         return point[0], point[1], scene.ground(point[0], point[1]) - 0.12
 
+    def row_levels(start_a: Point, start_b: Point) -> list[tuple[float, float]]:
+        height_a = scene.ground(*start_a[:2]) + 0.8 - 0.46
+        height_b = scene.ground(*start_b[:2]) + 0.8 - 0.46
+        levels = []
+        for row in range(rows):
+            a = add(start_a, mul(side, row * 0.9))
+            b = add(start_b, mul(side, row * 0.9))
+            rear_a, rear_b = add(a, mul(side, 0.9)), add(b, mul(side, 0.9))
+            height_a = max(
+                height_a + 0.46,
+                scene.ground(*a[:2]) + 0.18,
+                scene.ground(*rear_a[:2]) + 0.18,
+            )
+            height_b = max(
+                height_b + 0.46,
+                scene.ground(*b[:2]) + 0.18,
+                scene.ground(*rear_b[:2]) + 0.18,
+            )
+            levels.append((height_a, height_b))
+        return levels
+
     for step in range(steps):
         along_a = -length / 2 + length * step / steps
         along_b = -length / 2 + length * (step + 1) / steps
@@ -481,23 +511,36 @@ def footprint_stand(
             add(front, mul(axis, along_a)),
             add(front, mul(axis, along_b)),
         )
-        front_a = front_a[0], front_a[1], scene.ground(*front_a[:2]) + 0.8
-        front_b = front_b[0], front_b[1], scene.ground(*front_b[:2]) + 0.8
-        for row in range(rows):
-            a = add(front_a, add(mul(side, row * 0.9), (0, 0, row * 0.46)))
-            b = add(front_b, add(mul(side, row * 0.9), (0, 0, row * 0.46)))
+        levels = row_levels(front_a, front_b)
+        first_a = front_a[0], front_a[1], levels[0][0]
+        first_b = front_b[0], front_b[1], levels[0][1]
+        previous_rear_a, previous_rear_b = first_a, first_b
+        for row, (height_a, height_b) in enumerate(levels):
+            a = add(front_a, mul(side, row * 0.9))
+            b = add(front_b, mul(side, row * 0.9))
+            a, b = (a[0], a[1], height_a), (b[0], b[1], height_b)
             rear_a, rear_b = add(a, mul(side, 0.9)), add(b, mul(side, 0.9))
             upward_quad(scene, "Building_StandTread", "Concrete", a, b, rear_b, rear_a)
-            if row < rows - 1:
+            double_quad(
+                scene,
+                "Building_StandSoffit",
+                "Concrete",
+                add(a, (0, 0, -0.28)),
+                add(b, (0, 0, -0.28)),
+                add(rear_b, (0, 0, -0.28)),
+                add(rear_a, (0, 0, -0.28)),
+            )
+            if row > 0:
                 double_quad(
                     scene,
                     "Building_StandRiser",
                     "Concrete",
-                    rear_a,
-                    rear_b,
-                    add(rear_b, (0, 0, 0.46)),
-                    add(rear_a, (0, 0, 0.46)),
+                    previous_rear_a,
+                    previous_rear_b,
+                    b,
+                    a,
                 )
+            previous_rear_a, previous_rear_b = rear_a, rear_b
             scene.beam(
                 "Building_StandSeats",
                 seat_material,
@@ -529,33 +572,18 @@ def footprint_stand(
                     rear_b,
                     b,
                 )
-        rear_a = add(front_a, add(mul(side, rows * 0.9), (0, 0, (rows - 1) * 0.46)))
-        rear_b = add(front_b, add(mul(side, rows * 0.9), (0, 0, (rows - 1) * 0.46)))
         double_quad(
             scene,
             "Building_StandFoundation",
             "Concrete",
-            ground(front_a),
-            ground(front_b),
-            front_b,
-            front_a,
-        )
-        soffit_front_a, soffit_front_b = (
-            add(front_a, (0, 0, -0.28)),
-            add(front_b, (0, 0, -0.28)),
+            ground(first_a),
+            ground(first_b),
+            first_b,
+            first_a,
         )
         soffit_rear_a, soffit_rear_b = (
             add(rear_a, (0, 0, -0.28)),
             add(rear_b, (0, 0, -0.28)),
-        )
-        double_quad(
-            scene,
-            "Building_StandSoffit",
-            "Concrete",
-            soffit_front_a,
-            soffit_front_b,
-            soffit_rear_b,
-            soffit_rear_a,
         )
         scene.beam(
             "Building_StandFramework", "Steel", ground(rear_a), soffit_rear_a, 0.3
@@ -568,9 +596,6 @@ def footprint_stand(
         )
         scene.beam(
             "Building_StandFramework", "Steel", ground(rear_b), soffit_rear_a, 0.18
-        )
-        scene.beam(
-            "Building_StandFramework", "Steel", soffit_front_a, soffit_rear_a, 0.22
         )
         scene.beam(
             "Building_StandFramework", "Steel", soffit_rear_a, soffit_rear_b, 0.25
@@ -588,13 +613,15 @@ def footprint_stand(
     count = max(1, round(length / (23 if roof != "lotus" else 27)))
     for bay in range(count):
         along = -length / 2 + length * (bay + 0.5) / count
-        roof_front = add(front, mul(axis, along))
-        roof_z = scene.ground(*roof_front[:2]) + rows * 0.46 + 4
+        half = length / count / 2
+        roof_levels = row_levels(
+            add(front, mul(axis, along - half)), add(front, mul(axis, along + half))
+        )
+        roof_z = max(roof_levels[-1]) + 4
         c = add(
             (center[0], center[1], roof_z),
             mul(axis, -length / 2 + length * (bay + 0.5) / count),
         )
-        half = length / count / 2
         depth = max(width, rows * 0.9 + 4) / 2
         if roof == "lotus":
             oval_canopy(scene, c, axis, side, half + 1.8, depth + 2)

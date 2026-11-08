@@ -1,0 +1,72 @@
+[
+  {
+    "start_m": 430,
+    "end_m": 540,
+    "side": -1,
+    "width_m": 24,
+    "material": "Gravel"
+  },
+  {
+    "start_m": 540,
+    "end_m": 685,
+    "side": -1,
+    "width_m": 8,
+    "material": "RunoffGreen"
+  },
+  {
+    "start_m": 1930,
+    "end_m": 2100,
+    "side": -1,
+    "width_m": 22,
+    "material": "Gravel"
+  },
+  {
+    "start_m": 2080,
+    "end_m": 2370,
+    "side": -1,
+    "width_m": 22,
+    "material": "Gravel"
+  },
+  {
+    "start_m": 2550,
+    "end_m": 2740,
+    "side": 1,
+    "width_m": 16,
+    "material": "Grass"
+  },
+  {
+    "start_m": 3380,
+    "end_m": 3615,
+    "side": 1,
+    "width_m": 24,
+    "material": "Runoff"
+  },
+  {
+    "start_m": 3600,
+    "end_m": 3810,
+    "side": 1,
+    "width_m": 24,
+    "material": "Runoff"
+  },
+  {
+    "start_m": 4700,
+    "end_m": 4950,
+    "side": 1,
+    "width_m": 18,
+    "material": "RunoffGreen"
+  },
+  {
+    "start_m": 5000,
+    "end_m": 5160,
+    "side": -1,
+    "width_m": 22,
+    "material": "Runoff"
+  },
+  {
+    "start_m": 5100,
+    "end_m": 5260,
+    "side": 1,
+    "width_m": 22,
+    "material": "Runoff"
+  }
+]

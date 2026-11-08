@@ -638,5 +638,47 @@
         ]
       }
     ]
+  },
+  "apron_paint_review": {
+    "reference": "Saved/Refs/jeddah.mp4",
+    "reviewed": "Overview and detailed frames across the lap; specific added motifs are tied to the listed frame timestamps. Paint registration is estimated from official corners and landmarks, not proportional playback time.",
+    "geometry": "Original vector shapes, road-branch height with sample=scene.at(station), clipped away from the road. No reference pixels shipped.",
+    "patches": [],
+    "native_changes": "No corridor extent or physical surface-class changes.",
+    "unpainted_policy": "Reference shows mostly bare asphalt escape lanes and narrow green wall-side strips, already present. No decorative hatching is invented."
+  },
+  "night_lighting": {
+    "recipe": "tools/venues/night_lighting.py",
+    "observed": {
+      "name": "Jeddah floodlight recipe",
+      "structure": "Slim curved-neck paired-head road poles, staggered about 32 m apart; three larger set-back stadium banks beside the early esses.",
+      "reference": "Saved/Refs/jeddah.mp4:251,255,259,263,275,287,291,315,323 seconds",
+      "confidence": "High for mixed pole families; moderate for primary road-pole distribution; low for estimated 16/29 m heights and exact tower stations."
+    },
+    "estimated_dimensions": true,
+    "surveyed_fixture_positions": false,
+    "reference_pixels_shipped": false,
+    "render_power": "Dimensionless estimates for diffuse-field calibration, not measured watts or lumens. Every optical center retains its own base-ground elevation.",
+    "source_geometry_check": {
+      "slug": "jeddah",
+      "light_groups": 389,
+      "geometry_triangles": 38888,
+      "emissive_head_panels": 826,
+      "fixture_height_m": [
+        15.999999999999998,
+        29.000000000000004
+      ],
+      "low_poles_in_pit_apron": 0,
+      "test_shoulders_m": 0.1,
+      "VmHWM_kib": 71616
+    },
+    "pit_lane_clearance": "Roof-mounted pit-side banks/supports remain above the authored roof, with field ground_z tied to native road/garage ground. Other fixed masts are set beyond garage rear depth, not placed in the pit lane when native shoulder is narrowed to0.10m."
+  },
+  "pit_lane": {
+    "source": "pit-lane.json",
+    "visual_only_outside_pit_wall": true,
+    "registration": "Authored Corniche garage frontage scene.pit_building(5830,210,+1) lies 13 m beyond road edge. Reference235/239/243/303s places the multi-level garage balconies on driver right and main stand left. Interval crosses native zero; width is the actual authored garage-front offset, not a surveyed pit-lane measurement.",
+    "garage_front_outer_offset_m": 13.0,
+    "source_world_frame": "Native east/north station frame; +1 driver right, -1 driver left. No route-origin rotation."
   }
 }

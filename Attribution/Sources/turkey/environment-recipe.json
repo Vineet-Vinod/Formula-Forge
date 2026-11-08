@@ -775,5 +775,49 @@
         ]
       }
     ]
+  },
+  "apron_paint_review": {
+    "reference": "Saved/Refs/turkey.mp4",
+    "reviewed": "Overview and detailed frames across the lap; specific added motifs are tied to the listed frame timestamps. Paint registration is estimated from official corners and landmarks, not proportional playback time.",
+    "geometry": "Original vector shapes, road-branch height with sample=scene.at(station), clipped away from the road. No reference pixels shipped.",
+    "patches": [
+      {
+        "kind": "band",
+        "start_m": 2310,
+        "end_m": 2860,
+        "side": -1,
+        "inner_m": 2.35,
+        "outer_m": 2.55,
+        "material": "White",
+        "reviewed_video_seconds": [
+          281,
+          285
+        ],
+        "observed": "Long T8 inside green shoulder has a thin white boundary; broad gravel remains outside the corner."
+      },
+      {
+        "kind": "band",
+        "start_m": 3440,
+        "end_m": 3540,
+        "side": 1,
+        "inner_m": 2.35,
+        "outer_m": 2.55,
+        "material": "White",
+        "reviewed_video_seconds": [
+          293,
+          297
+        ],
+        "observed": "T10 green exit shoulder is edged in white."
+      }
+    ],
+    "native_changes": "No corridor extent or physical surface-class changes.",
+    "unpainted_policy": "Gravel, grass and unpainted asphalt remain beyond the observed paint bands."
+  },
+  "pit_lane": {
+    "source": "pit-lane.json",
+    "visual_only_outside_pit_wall": true,
+    "registration": "Authored Istanbul garage frontage scene.pit_building(5130,230,-1) lies exactly 13 m beyond road edge, underneath its three stacked hospitality roofs. Reference325/329/333/337s shows garages left and mainstand right. Retained compound295742112 is excluded from duplicate extrusion. Native interval crosses zero; dimensions remain reference estimates.",
+    "garage_front_outer_offset_m": 13.0,
+    "source_world_frame": "Native east/north station frame; +1 driver right, -1 driver left. No route-origin rotation."
   }
 }

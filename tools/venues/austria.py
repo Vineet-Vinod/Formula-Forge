@@ -18,7 +18,7 @@ def build_venue(scene: CircuitScene) -> None:
     scene.braking_boards(2047, -1)  # Schlossgold / T4
     scene.braking_boards(2584, 1, distances=(100, 50))  # Rauch / T6
     steel_bull(scene)
-    mapped_building(scene, 118364939, 12, facade='Concrete', floors=3, roof='canopy')
+    mapped_building(scene, 118364939, 12, facade='Concrete', floors=3, roof='canopy', garage_front=True)
     scene.stand(3990, 4310, -1, rows=20, setback=5, roofed=True, seat_material='SeatRed')
     scene.stand(70, 250, -1, rows=19, setback=9, roofed=True, seat_material='SeatRed')
     scene.stand(330, 580, -1, rows=19, setback=12, roofed=True, seat_material='SeatRed')

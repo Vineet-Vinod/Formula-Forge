@@ -1,0 +1,9 @@
+{
+  "start_m": 5355,
+  "end_m": 245,
+  "side": -1,
+  "outer_offset_m": 20.5,
+  "shoulder_m": 0.1,
+  "transition_m": 25.0,
+  "source_note": "Mapped Pit Garages376713391 has363.7m road-facing edge5375\u2192225.5m across native0, offset19.3\u201320.1m.20.5m pavingback reaches actual front. Supplied reference167\u2013170s window shows garage row LEFT; wrong main-stand range is corrected separately."
+}

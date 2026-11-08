@@ -1,0 +1,197 @@
+{
+  "recipe": "make circuit-assets CIRCUIT=portimao",
+  "tiles": 115,
+  "triangles": 681188,
+  "road_sha256": "2bd9a62e4ed6d9a485d74656961ede220d4905601530ba73a0c49aac815434b7",
+  "terrain_sha256": "a8e223c0d18b17beb5449bc93e3ff488943ecd100a5238a83cf8866257be6fd2",
+  "landmarks": [
+    {
+      "name": "Reference event panels",
+      "start_m": 560,
+      "end_m": 930,
+      "side": 1,
+      "material": "PanelWhite"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 560,
+      "end_m": 930,
+      "side": -1,
+      "material": "PanelWhite"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 2230,
+      "end_m": 2400,
+      "side": 1,
+      "material": "PanelWhite"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 2900,
+      "end_m": 3020,
+      "side": -1,
+      "material": "PanelWhite"
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 1254,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 1602,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 2332,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 2952,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 3327,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "osm_id": 38167081,
+      "name": "Boxes",
+      "height_m": 12,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 38166697,
+      "name": "Bancada Principal",
+      "height_m": 17,
+      "removed_road_area_m2": -0.0,
+      "structure": "open roof/stand",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 470,
+      "end_m": 1060,
+      "side": -1,
+      "rows": 23
+    },
+    {
+      "osm_id": 157736297,
+      "name": "Torre Vip",
+      "height_m": 18,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 1430,
+      "end_m": 1540,
+      "side": -1,
+      "rows": 12
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 2240,
+      "end_m": 2380,
+      "side": -1,
+      "rows": 12
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 3480,
+      "end_m": 3570,
+      "side": -1,
+      "rows": 12
+    }
+  ],
+  "vegetation": [
+    {
+      "start_m": 1450,
+      "end_m": 2120,
+      "side": 1,
+      "setback_m": 40,
+      "rows": 1,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 1650,
+      "end_m": 2120,
+      "side": -1,
+      "setback_m": 40,
+      "rows": 1,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 2430,
+      "end_m": 2880,
+      "side": 1,
+      "setback_m": 40,
+      "rows": 1,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 2480,
+      "end_m": 2860,
+      "side": -1,
+      "setback_m": 40,
+      "rows": 1,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 3080,
+      "end_m": 3450,
+      "side": 1,
+      "setback_m": 40,
+      "rows": 1,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 3220,
+      "end_m": 3420,
+      "side": -1,
+      "setback_m": 40,
+      "rows": 1,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 3650,
+      "end_m": 4100,
+      "side": 1,
+      "setback_m": 40,
+      "rows": 1,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 3700,
+      "end_m": 4120,
+      "side": -1,
+      "setback_m": 40,
+      "rows": 1,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    }
+  ],
+  "review_status": "Awaiting packaged whole-route review; asset import is not visual approval."
+}

@@ -991,5 +991,74 @@
         ]
       }
     ]
+  },
+  "apron_paint_review": {
+    "reference": "Saved/Refs/bahrain.mp4",
+    "reviewed": "Overview and detailed frames across the lap; specific added motifs are tied to the listed frame timestamps. Paint registration is estimated from official corners and landmarks, not proportional playback time.",
+    "geometry": "Original vector shapes, road-branch height with sample=scene.at(station), clipped away from the road. No reference pixels shipped.",
+    "patches": [
+      {
+        "kind": "fan",
+        "start_m": 4630,
+        "end_m": 4760,
+        "side": -1,
+        "inner_m": 5.0,
+        "outer_m": 15.8,
+        "material": "Cream",
+        "reviewed_video_seconds": [
+          110
+        ],
+        "observed": "T14 outside: pale sand-coloured curved field inside the broad blue paved escape. Shape boundaries are estimated from the reference."
+      },
+      {
+        "kind": "band",
+        "start_m": 3825,
+        "end_m": 3940,
+        "side": -1,
+        "inner_m": 0.2,
+        "outer_m": 3.2,
+        "material": "RunoffBlue",
+        "reviewed_video_seconds": [
+          105
+        ],
+        "observed": "T12/13 outer paved edge has layered blue rather than a single green strip."
+      }
+    ],
+    "native_changes": "No corridor extent or physical surface-class changes.",
+    "unpainted_policy": "Gravel, grass and unpainted asphalt remain beyond the observed paint bands."
+  },
+  "night_lighting": {
+    "recipe": "tools/venues/night_lighting.py",
+    "observed": {
+      "name": "Bahrain floodlight recipe",
+      "structure": "30–32 m straight multi-head masts in open sectors; 24 m canted pit-front banks. Individual positions, heights and 50–55 m spacing are visual estimates.",
+      "reference": "Saved/Refs/bahrain.mp4:100,120,130,170,195,200 seconds",
+      "confidence": "High for bank versus streetlamp distinction; moderate for sector distribution; low for metric dimensions. Relative field powers are rendering parameters, not photometry."
+    },
+    "estimated_dimensions": true,
+    "surveyed_fixture_positions": false,
+    "reference_pixels_shipped": false,
+    "render_power": "Dimensionless estimates for diffuse-field calibration, not measured watts or lumens. Every optical center retains its own base-ground elevation.",
+    "source_geometry_check": {
+      "slug": "bahrain",
+      "light_groups": 157,
+      "geometry_triangles": 41792,
+      "emissive_head_panels": 2248,
+      "fixture_height_m": [
+        13.0,
+        32.0
+      ],
+      "low_poles_in_pit_apron": 0,
+      "test_shoulders_m": 0.1,
+      "VmHWM_kib": 61392
+    },
+    "pit_lane_clearance": "Roof-mounted pit-side banks/supports remain above the authored roof, with field ground_z tied to native road/garage ground. Other fixed masts are set beyond garage rear depth, not placed in the pit lane when native shoulder is narrowed to0.10m."
+  },
+  "pit_lane": {
+    "source": "pit-lane.json",
+    "visual_only_outside_pit_wall": true,
+    "registration": "Authored Sakhir garage frontage scene.pit_building(5180,220,+1) lies exactly 13 m beyond the road edge; canted sail roofs and garage/pit-wall side are visible in reference120/130/170/185s. This is registration to the authored garage geometry, not a measured real-world pit-lane width. The native interval crosses station zero.",
+    "garage_front_outer_offset_m": 13.0,
+    "source_world_frame": "Native east/north station frame; +1 driver right, -1 driver left. No route-origin rotation."
   }
 }

@@ -1,0 +1,9 @@
+{
+  "start_m": 4110,
+  "end_m": 100,
+  "side": 1,
+  "outer_offset_m": 19.0,
+  "shoulder_m": 0.1,
+  "transition_m": 25.0,
+  "source_note": "Mapped Box footprint118364939 road-facing edges project4112\u20134318/0\u201393m, road-edge offsets12.1\u201318.7m.19m pavingback covers stepped facade frontage. Actual reference220.27/574.06/715.57s pitstraight; endpoints rounded to10m, not entry/exit survey."
+}

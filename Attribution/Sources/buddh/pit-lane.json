@@ -1,0 +1,9 @@
+{
+  "start_m": 470,
+  "end_m": 870,
+  "side": 1,
+  "outer_offset_m": 23.5,
+  "shoulder_m": 0.1,
+  "transition_m": 25.0,
+  "source_note": "Custom mapped pit compound188019421: use its articulated road-facing ring edges9–15, not the 401.64×118.80m compound OBB. Frontage endpoints register to native470.0 and868.1m; intermediate offsets vary10.18–23.25m outside the road edge. A fixed23.5m paving back extent covers that entire front and can extend under the building at narrower ends. Reference113/117/121/125/201/205s confirms garages right and mainstand left. These are retained-footprint registrations, not a surveyed pit-lane width."
+}

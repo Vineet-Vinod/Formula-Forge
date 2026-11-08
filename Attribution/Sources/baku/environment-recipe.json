@@ -6070,5 +6070,20 @@
         ]
       }
     ]
+  },
+  "apron_paint_review": {
+    "reference": "Saved/Refs/baku.mp4",
+    "reviewed": "Overview and detailed frames across the lap; specific added motifs are tied to the listed frame timestamps. Paint registration is estimated from official corners and landmarks, not proportional playback time.",
+    "geometry": "Original vector shapes, road-branch height with sample=scene.at(station), clipped away from the road. No reference pixels shipped.",
+    "patches": [],
+    "native_changes": "No corridor extent or physical surface-class changes.",
+    "unpainted_policy": "Reference escape streets are predominantly bare asphalt; no broad coloured paint fields are invented."
+  },
+  "pit_lane": {
+    "source": "pit-lane.json",
+    "visual_only_outside_pit_wall": true,
+    "registration": "Authored temporary Baku garage frontage scene.pit_building(5720,5990,-1) lies exactly 13 m outside the road edge. Reference130/155/170/175/185s places the low temporary garages left of the grid and the boulevard stand right. The profile follows the authored building span; no pit access or changed race route is implied.",
+    "garage_front_outer_offset_m": 13.0,
+    "source_world_frame": "Native east/north station frame; +1 driver right, -1 driver left. No route-origin rotation."
   }
 }

@@ -442,5 +442,10 @@
       }
     ]
   },
-  "ground_appearance_review": "Wet green pasture and dark conifer forest."
+  "ground_appearance_review": "Wet green pasture and dark conifer forest.",
+  "pit_frontage_correction": {
+    "status": "Source change awaiting new rendered review",
+    "geometry": "Mapped pit front now has recessed garage bays below retained upper floors; no repeated ground-floor office windows on road-facing facade. Bay widths/depths are original reference reconstruction, not an as-built survey.",
+    "paving_profile": "pit-lane.json"
+  }
 }

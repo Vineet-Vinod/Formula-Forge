@@ -5,6 +5,7 @@ from circuit_mesh import add
 from circuit_scene import CircuitScene
 
 from venues.east_architecture import cylinder, footprint_stand, trees
+from venues.west_architecture import apron_band
 
 
 def circuit_edges(scene: CircuitScene) -> None:
@@ -16,6 +17,8 @@ def circuit_edges(scene: CircuitScene) -> None:
 
     for start, end, side in ((165, 285, 1), (390, 465, -1), (1070, 1270, 1), (2990, 3110, -1), (3930, 4140, 1), (4180, 4300, -1), (4865, 4960, 1)):
         scene.runoff(start, end, side, 2.6, 'RunoffGreen')
+
+    scene.runoff(1180, 1270, 1, 8.0, 'RunoffViolet')
 
     for apex, side, distances in (
         (3950, -1, (150, 100, 50)),
@@ -32,6 +35,10 @@ def circuit_edges(scene: CircuitScene) -> None:
     ):
         scene.branding(start, end, side, material)
 
+
+    apron_band(scene, 1180, 1270, 1, 0.15, 7.95, 'RunoffViolet')
+    apron_band(scene, 1185, 1260, 1, 7.55, 7.75, 'White')
+    apron_band(scene, 4170, 4310, 1, 0.15, 2.4, 'RunoffGreen')
 
 def build_venue(scene: CircuitScene) -> None:
     circuit_edges(scene)

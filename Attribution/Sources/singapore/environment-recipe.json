@@ -9631,5 +9631,84 @@
         ]
       }
     ]
+  },
+  "apron_paint_review": {
+    "reference": "Saved/Refs/singapore.mp4",
+    "reviewed": "Overview and detailed frames across the lap; specific added motifs are tied to the listed frame timestamps. Paint registration is estimated from official corners and landmarks, not proportional playback time.",
+    "geometry": "Original vector shapes, road-branch height with sample=scene.at(station), clipped away from the road. No reference pixels shipped.",
+    "patches": [
+      {
+        "kind": "band",
+        "start_m": 4710,
+        "end_m": 4940,
+        "side": -1,
+        "inner_m": 1.2,
+        "outer_m": 5.8,
+        "material": "Yellow",
+        "reviewed_video_seconds": [
+          530,
+          534,
+          538,
+          586,
+          590,
+          594
+        ],
+        "observed": "Pit straight garage-side apron carries a broad yellow band between the white lane line and pit wall."
+      },
+      {
+        "kind": "band",
+        "start_m": 0,
+        "end_m": 170,
+        "side": -1,
+        "inner_m": 1.2,
+        "outer_m": 5.8,
+        "material": "Yellow",
+        "reviewed_video_seconds": [
+          530,
+          534,
+          538,
+          586,
+          590,
+          594
+        ],
+        "observed": "Same yellow pit-wall band across the native timing-station seam."
+      }
+    ],
+    "native_changes": "No corridor extent or physical surface-class changes.",
+    "unpainted_policy": "Gravel, grass and unpainted asphalt remain beyond the observed paint bands."
+  },
+  "night_lighting": {
+    "recipe": "tools/venues/night_lighting.py",
+    "observed": {
+      "name": "Singapore floodlight recipe",
+      "structure": "Small race fittings at roughly 7 m intervals along continuous paired cables, supported about every 42 m; separate civic lamps, including taller curved streetlamps along Esplanade Drive. Lower race-light line at Anderson Bridge with gradual cable-height transitions.",
+      "reference": "Saved/Refs/singapore.mp4:534,598,614,618,642,650 seconds",
+      "confidence": "High for continuous cable strings and separate streetlamps; moderate for bridge distinction; low for metric height/spacing estimates. Cable support registrations are authoring estimates."
+    },
+    "estimated_dimensions": true,
+    "surveyed_fixture_positions": false,
+    "reference_pixels_shipped": false,
+    "render_power": "Dimensionless estimates for diffuse-field calibration, not measured watts or lumens. Every optical center retains its own base-ground elevation.",
+    "source_geometry_check": {
+      "slug": "singapore",
+      "light_groups": 1433,
+      "geometry_triangles": 78070,
+      "emissive_head_panels": 1433,
+      "fixture_height_m": [
+        9.0,
+        17.0
+      ],
+      "low_poles_in_pit_apron": 0,
+      "test_shoulders_m": 0.1,
+      "VmHWM_kib": 73388
+    },
+    "pit_lane_clearance": "Roof-mounted pit-side banks/supports remain above the authored roof, with field ground_z tied to native road/garage ground. Other fixed masts are set beyond garage rear depth, not placed in the pit lane when native shoulder is narrowed to0.10m."
+  },
+  "pit_lane": {
+    "source": "pit-lane.json",
+    "visual_only_outside_pit_wall": true,
+    "registration": "Authored Marina Bay garage frontage scene.pit_building(4710,170,-1) lies exactly 13 m beyond road edge. The retained compound49890775 is excluded from duplicate extrusion. Reference530/534/538/566/594/598/602s confirms garages left, red mainstand right and yellow apron along the pit wall. Interval crosses native zero.",
+    "garage_front_outer_offset_m": 13.0,
+    "source_world_frame": "Native east/north station frame; +1 driver right, -1 driver left. No route-origin rotation."
   }
 }

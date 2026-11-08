@@ -737,5 +737,84 @@
         ]
       }
     ]
+  },
+  "apron_paint_review": {
+    "reference": "Saved/Refs/india.mp4",
+    "reviewed": "Overview and detailed frames across the lap; specific added motifs are tied to the listed frame timestamps. Paint registration is estimated from official corners and landmarks, not proportional playback time.",
+    "geometry": "Original vector shapes, road-branch height with sample=scene.at(station), clipped away from the road. No reference pixels shipped.",
+    "patches": [
+      {
+        "kind": "band",
+        "start_m": 1335,
+        "end_m": 1500,
+        "side": -1,
+        "inner_m": 15.0,
+        "outer_m": 15.7,
+        "material": "RunoffBlue",
+        "reviewed_video_seconds": [
+          133
+        ],
+        "observed": "T3 outer grey paved escape has a blue far-edge strip beneath the crowd terrace."
+      },
+      {
+        "kind": "hatch",
+        "start_m": 3210,
+        "end_m": 3410,
+        "side": 1,
+        "inner_m": 2.8,
+        "outer_m": 14.7,
+        "material": "Yellow",
+        "reviewed_video_seconds": [
+          165
+        ],
+        "observed": "T5/T6 right-side paved escape has diagonal yellow areas against a red field, rather than gravel."
+      },
+      {
+        "kind": "band",
+        "start_m": 3950,
+        "end_m": 4320,
+        "side": -1,
+        "inner_m": 0.15,
+        "outer_m": 2.6,
+        "material": "RunoffGreen",
+        "reviewed_video_seconds": [
+          177,
+          181,
+          185
+        ],
+        "observed": "Long right bowl has a green near-kerb strip before its red outer paved escape."
+      },
+      {
+        "kind": "band",
+        "start_m": 3950,
+        "end_m": 4320,
+        "side": -1,
+        "inner_m": 2.6,
+        "outer_m": 2.8,
+        "material": "White",
+        "reviewed_video_seconds": [
+          177,
+          181,
+          185
+        ],
+        "observed": "White separator outlines the bowl green strip and red outer field."
+      }
+    ],
+    "native_changes": "T5/T6 native3190–3430m driverRIGHT width15m changes gravel to paved asphalt. All other apron bounds and surface classes unchanged.",
+    "unpainted_policy": "Gravel, grass and unpainted asphalt remain beyond the observed paint bands."
+  },
+  "pit_lane": {
+    "source": "pit-lane.json",
+    "visual_only_outside_pit_wall": true,
+    "registration": "Custom mapped pit compound188019421: use its articulated road-facing ring edges9–15, not the 401.64×118.80m compound OBB. Frontage endpoints register to native470.0 and868.1m; intermediate offsets vary10.18–23.25m outside the road edge. A fixed23.5m paving back extent covers that entire front and can extend under the building at narrower ends. Reference113/117/121/125/201/205s confirms garages right and mainstand left. These are retained-footprint registrations, not a surveyed pit-lane width.",
+    "garage_front_outer_offset_m": 23.5,
+    "source_world_frame": "Native east/north station frame; +1 driver right, -1 driver left. No route-origin rotation.",
+    "garage_architecture": {
+      "name": "Buddh registered garage portals",
+      "osm_id": 188019421,
+      "start_m": 470,
+      "end_m": 870,
+      "registration": "Road-facing retained ring edges9–15; dark full-width ground-floor portals, white structural piers and overhead roller boxes replace office-window appearance. Garage threshold elevations follow the adjacent road/pit apron; heights and bay spacing estimated from reference113–125s."
+    }
   }
 }

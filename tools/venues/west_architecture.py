@@ -30,7 +30,7 @@ def apron_band(scene: CircuitScene, start: float, end: float, side: int,
                   a.point(side * (a.half_width + outer))]
         shape = Polygon([(p[0], p[1]) for p in points])
         if shape.is_valid:
-            scene.polygon_surface(shape.difference(scene.road_mask), material, lift=.023)
+            scene.polygon_surface(shape.difference(scene.road_mask), material, lift=.005, sample=a)
     scene.surface_ranges.append({'type': 'apron paint', 'start_m': start,
                                  'end_m': end, 'side': side, 'inner_m': inner,
                                  'outer_m': outer, 'material': material})
@@ -50,7 +50,7 @@ def apron_star(scene: CircuitScene, station: float, side: int,
         points.append((center[0] + sample.tx * along + sample.ty * lateral,
                        center[1] + sample.ty * along - sample.tx * lateral))
     shape = Polygon(points).intersection(unary_union(scene.extra_corridors))
-    scene.polygon_surface(shape.difference(scene.road_mask), material, lift=.027)
+    scene.polygon_surface(shape.difference(scene.road_mask), material, lift=.006, sample=sample)
     scene.surface_ranges.append({'type': 'apron star', 'station_m': station,
                                  'side': side, 'offset_m': offset, 'radius_m': radius,
                                  'material': material})
@@ -132,7 +132,7 @@ def suzuka_service_hut(scene: CircuitScene, building: Building,
 def mapped_building(scene: CircuitScene, osm_id: int, height: float, *, facade: str = 'Cream',
                     floors: int = 3, roof: str = 'flat', balconies: bool = False,
                     enclosed: bool = True, base_z: float | None = None,
-                    elevated: bool = False) -> None:
+                    elevated: bool = False, garage_front: bool = False) -> None:
     building = scene.footprint(osm_id)
     scene.modeled_buildings.add(osm_id)
     footprint = Polygon(building.ring)
@@ -149,6 +149,7 @@ def mapped_building(scene: CircuitScene, osm_id: int, height: float, *, facade: 
     scene.landmarks.append({'osm_id': osm_id, 'name': building.name or str(osm_id),
                             'height_m': height, 'removed_road_area_m2': round(removed_area, 3),
                             'structure': 'enclosed' if enclosed else 'open roof/stand',
+                            'ground_floor': 'Recessed road-facing garage bays' if garage_front else 'Facade windows',
                             'road_clearance_exception': 'Authored elevated tunnel/bridge deck' if elevated else 'none',
                             'dimensions_status': 'Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height.'})
     center = footprint.centroid
@@ -156,25 +157,62 @@ def mapped_building(scene: CircuitScene, osm_id: int, height: float, *, facade: 
     components = [clipped] if isinstance(clipped, Polygon) else list(getattr(clipped, 'geoms', []))
     for component in components:
         if isinstance(component, Polygon) and component.area > .5:
-            _building_part(scene, component, height, facade, floors, roof, balconies, enclosed, base)
+            _building_part(scene, component, height, facade, floors, roof, balconies, enclosed, base, garage_front)
 
 
 def _building_part(scene: CircuitScene, footprint: Polygon, height: float, facade: str,
-                   floors: int, roof: str, balconies: bool, enclosed: bool, base_z: float) -> None:
+                   floors: int, roof: str, balconies: bool, enclosed: bool, base_z: float,
+                   garage_front: bool) -> None:
     ring = list(footprint.exterior.coords)[:-1]
     center = (sum(p[0] for p in ring) / len(ring), sum(p[1] for p in ring) / len(ring))
     base = base_z
     winding = 1 if Polygon(ring).exterior.is_ccw else -1
     kind = 'Building_Architecture'
+    front_distance = min(scene.nearest((a[0] + b[0]) / 2, (a[1] + b[1]) / 2)[1]
+                         for a, b in zip(ring, ring[1:] + ring[:1])) if garage_front else 0
     for a, b in zip(ring, ring[1:] + ring[:1]):
         pa, pb = (a[0], a[1], base), (b[0], b[1], base)
         if not enclosed:
             continue
-        scene.banner(pa, pb, height, facade, kind)
         direction = sub(pb, pa)
         span = math.dist(pa, pb)
+        sample, distance = scene.nearest((a[0] + b[0]) / 2, (a[1] + b[1]) / 2)
+        alignment = abs((direction[0] * sample.tx + direction[1] * sample.ty) / max(.001, span))
+        garage = garage_front and alignment > .75 and distance < front_distance + 5
+        floor_height = min(4.5, height / floors)
+        if garage:
+            scene.banner(add(pa, (0, 0, floor_height)), add(pb, (0, 0, floor_height)),
+                         height - floor_height, facade, kind)
+            normal = (direction[1] / max(span, .001) * winding,
+                      -direction[0] / max(span, .001) * winding, 0.)
+            count = max(1, round(span / 6.5))
+            for bay in range(count):
+                left = add(pa, mul(direction, (bay + .07) / count))
+                right = add(pa, mul(direction, (bay + .93) / count))
+                back_left, back_right = add(left, mul(normal, -1.2)), add(right, mul(normal, -1.2))
+                scene.banner(back_left, back_right, floor_height - .25, 'Black', kind)
+                scene.quad(kind, 'Concrete', left, right, back_right, back_left, up=True)
+                scene.quad(kind, 'Concrete', add(left, (0, 0, floor_height)), add(right, (0, 0, floor_height)),
+                           add(back_right, (0, 0, floor_height)), add(back_left, (0, 0, floor_height)), up=False)
+                scene.beam(kind, facade, left, add(left, (0, 0, floor_height)), .38)
+                scene.beam(kind, facade, right, add(right, (0, 0, floor_height)), .38)
+            scene.beam(kind, 'White', add(pa, (0, 0, floor_height)), add(pb, (0, 0, floor_height)), .28, .4)
+            for floor in range(1, floors):
+                z = height * floor / floors
+                window_a = add(pa, add(mul(normal, .035), (0, 0, z + .55)))
+                window_b = add(pb, add(mul(normal, .035), (0, 0, z + .55)))
+                scene.banner(window_a, window_b, height / floors - .95, 'Glass', kind)
+                scene.beam(kind, 'White', add(pa, (0, 0, z)), add(pb, (0, 0, z)), .32)
+                for bay in range(count + 1):
+                    p = add(pa, add(mul(direction, bay / count), mul(normal, .08)))
+                    scene.beam(kind, facade, add(p, (0, 0, z + .2)),
+                               add(p, (0, 0, z + height / floors - .1)), .16)
+        else:
+            scene.banner(pa, pb, height, facade, kind)
         bays = max(1, round(span / 4.0))
         for floor in range(floors):
+            if garage:
+                continue
             bottom = height * floor / floors + .8
             top = min(height - .35, height * (floor + 1) / floors - .3)
             if top <= bottom:
@@ -239,7 +277,9 @@ def trees(scene: CircuitScene, start: float, end: float, side: int, *, setback: 
             lane = side * (sample.half_width + shoulder + setback + row * 11 + rng.uniform(-2, 2))
             p = sample.point(lane)
             nearest, distance = scene.nearest(p[0], p[1])
-            safe = nearest.half_width + max(nearest.left_shoulder, nearest.right_shoulder) + 6
+            local_lane = (p[0] - nearest.x) * nearest.ty - (p[1] - nearest.y) * nearest.tx
+            local_shoulder = nearest.left_shoulder if local_lane > 0 else nearest.right_shoulder
+            safe = nearest.half_width + local_shoulder + 4
             if distance < safe or any(shape.covers(ShapePoint(p[0], p[1])) for shape in water_shapes):
                 continue
             base = (p[0], p[1], scene.ground(p[0], p[1]))

@@ -1,0 +1,9 @@
+{
+  "start_m": 4710,
+  "end_m": 170,
+  "side": -1,
+  "outer_offset_m": 13.0,
+  "shoulder_m": 0.1,
+  "transition_m": 25.0,
+  "source_note": "Authored Marina Bay garage frontage scene.pit_building(4710,170,-1) lies exactly 13 m beyond road edge. The retained compound49890775 is excluded from duplicate extrusion. Reference530/534/538/566/594/598/602s confirms garages left, red mainstand right and yellow apron along the pit wall. Interval crosses native zero."
+}

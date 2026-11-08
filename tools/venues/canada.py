@@ -22,7 +22,7 @@ def build_venue(scene: CircuitScene) -> None:
     scene.braking_boards(2758, -1)  # T10 hairpin
     scene.braking_boards(4001, 1)  # T13/T14 final chicane
     water(scene)
-    mapped_building(scene, 42229671, 14, facade='Concrete', floors=3, roof='canopy')
+    mapped_building(scene, 42229671, 14, facade='Concrete', floors=3, roof='canopy', garage_front=True)
     mapped_building(scene, 26698931, 28, facade='White', floors=7, balconies=True)
     mapped_building(scene, 439917766, 22, facade='Glass', floors=5, roof='canopy')
     scene.stand(4200, 4350, 1, rows=22, setback=7, roofed=True, seat_material='Concrete')

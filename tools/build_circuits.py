@@ -1400,6 +1400,13 @@ out geom;
                     left[index] = max(left[index], extra)
                 else:
                     right[index] = max(right[index], extra)
+    runoff_corrections = source / "runoff-corrections.json"
+    if runoff_corrections.exists():
+        runoff = [
+            {"start": zone["start_m"], "end": zone["end_m"], "side": zone["side"],
+             "surface": zone["material"] if zone["material"] in ("Gravel", "Grass") else "Asphalt", "width": zone["width_m"]}
+            for zone in json.loads(runoff_corrections.read_text())
+        ]
     if spec["slug"] == "japan" and (source / "shoulder-corrections.json").exists():
         corrections = json.loads((source / "shoulder-corrections.json").read_text())
         pit = corrections["pit_straight"]
@@ -1424,6 +1431,12 @@ out geom;
             right[index] += (.05-right[index])*weight
     shoulders = [(stations[index], left[index], right[index]) for index in range(0, count, 2)]
     shoulders.append((target, shoulders[0][1], shoulders[0][2]))
+    if (source / "pit-lane.json").exists():
+        from circuit_dataclasses import PitLane
+        from circuit_profiles import pit_shoulders
+        from pydantic import TypeAdapter
+
+        shoulders = pit_shoulders(shoulders, target, TypeAdapter(PitLane).validate_json((source / "pit-lane.json").read_bytes()))
     if spec["slug"] == "japan" and (source / "shoulder-corrections.json").exists():
         bridge = json.loads((source / "shoulder-corrections.json").read_text()).get("back_straight_bridge")
         if bridge:

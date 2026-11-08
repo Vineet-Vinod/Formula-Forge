@@ -7,6 +7,8 @@ from circuit_mesh import add
 from circuit_scene import CircuitScene
 
 from venues.east_architecture import cylinder, footprint_stand, frame, mapped, trees
+from venues.east_paint import apron_fan
+from venues.west_architecture import apron_band
 
 
 def circuit_edges(scene: CircuitScene) -> None:
@@ -34,6 +36,9 @@ def circuit_edges(scene: CircuitScene) -> None:
     ):
         scene.branding(start, end, side, material)
 
+
+    apron_fan(scene, 4630, 4760, -1, 5.0, 15.8, 'Cream')
+    apron_band(scene, 3825, 3940, -1, 0.2, 3.2, 'RunoffBlue')
 
 def build_venue(scene: CircuitScene) -> None:
     circuit_edges(scene)

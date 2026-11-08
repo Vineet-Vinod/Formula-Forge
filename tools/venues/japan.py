@@ -4,18 +4,26 @@ from __future__ import annotations
 
 import math
 
+from circuit_dataclasses import RunoffRange
 from circuit_mesh import add, mul
 from circuit_scene import CircuitScene
+from pydantic import TypeAdapter
 from shapely.geometry import Polygon
 
 from venues.east_architecture import facade, footprint_stand, frame
-from venues.west_architecture import mapped_building, suzuka_service_hut, trees
+from venues.west_architecture import (
+    apron_band,
+    mapped_building,
+    suzuka_service_hut,
+    trees,
+)
 
 
 def build_venue(scene: CircuitScene) -> None:
     for start, end, side in (
         (395, 520, 1),
         (520, 650, 1),
+        (560, 685, -1),
         (800, 885, -1),
         (925, 1010, 1),
         (1060, 1165, -1),
@@ -23,26 +31,31 @@ def build_venue(scene: CircuitScene) -> None:
         (1400, 1595, -1),
         (1970, 2080, 1),
         (2140, 2235, 1),
+        (2220, 2370, -1),
         (2585, 2705, -1),
         (3475, 3600, -1),
         (3620, 3770, -1),
+        (3720, 3810, 1),
         (4620, 4780, -1),
+        (4820, 4920, 1),
         (5060, 5140, 1),
         (5145, 5220, -1),
         (5240, 5340, 1),
     ):
         scene.kerb(start, end, side)
-    for start, end, side, width in (
-        (430, 685, -1, 24),
-        (1930, 2100, -1, 22),
-        (2080, 2270, -1, 22),
-        (2550, 2740, 1, 26),
-        (3380, 3615, 1, 24),
-        (3600, 3810, 1, 24),
-        (5000, 5160, -1, 22),
-        (5100, 5260, 1, 22),
+    runoffs = TypeAdapter(list[RunoffRange]).validate_json(
+        (scene.sources / "runoff-corrections.json").read_bytes()
+    )
+    for zone in runoffs:
+        scene.runoff(zone.start_m, zone.end_m, zone.side, zone.width_m, zone.material)
+    for start, end, side, inner, outer, material in (
+        (2080, 2370, -1, 1.2, 4.5, "RunoffGreen"),
+        (3380, 3810, 1, 1.2, 18, "RunoffGreen"),
+        (3500, 3630, 1, 18, 23.8, "RunoffPurple"),
+        (5000, 5160, -1, 1.2, 7, "RunoffGreen"),
+        (5100, 5260, 1, 1.2, 10, "RunoffGreen"),
     ):
-        scene.runoff(start, end, side, width, "Gravel")
+        apron_band(scene, start, end, side, inner, outer, material)
     for osm_id, rows, roof in (
         (184120096, 15, ""),
         (184143131, 16, ""),
@@ -251,13 +264,15 @@ def bridge(scene: CircuitScene) -> None:
         b.point(-b.half_width - 1.35, -0.6),
         2,
         2,
+        up=False,
     )
     scene.landmarks.append(
         {
             "name": "Back straight over Degner underpass",
             "start_m": 4637,
             "end_m": 4667,
-            "clearance_m": 6.2,
+            "road_deck_separation_m": 6.2,
+            "minimum_structural_clearance_m": 5.0,
         }
     )
 

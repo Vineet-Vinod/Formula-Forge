@@ -1,0 +1,213 @@
+{
+  "recipe": "make circuit-assets CIRCUIT=bahrain",
+  "tiles": 122,
+  "triangles": 951815,
+  "road_sha256": "117ba548200545452b1cd44feb5c0a00b1c6227443198cda76e25abaa221956d",
+  "terrain_sha256": "16636be15acc8811a2cfb23a00fcea77aa2da4a0366b4cbf15e1956531103270",
+  "landmarks": [
+    {
+      "name": "Paved pit lane and working apron",
+      "start_m": 5180.0,
+      "end_m": 220.0,
+      "side": 1,
+      "outer_offset_m": 13.0,
+      "source_note": "Authored Sakhir garage frontage scene.pit_building(5180,220,+1) lies exactly 13 m beyond the road edge; canted sail roofs and garage/pit-wall side are visible in reference120/130/170/185s. This is registration to the authored garage geometry, not a measured real-world pit-lane width. The native interval crosses station zero.",
+      "access": "Visual service area outside the closed driving boundary."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 487,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 1293,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 2027,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 2490,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 3233,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 4693,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 5180,
+      "end_m": 5412,
+      "side": -1,
+      "material": "PanelGulfAir"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 0,
+      "end_m": 220,
+      "side": -1,
+      "material": "PanelGulfAir"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 5180,
+      "end_m": 5412,
+      "side": 1,
+      "material": "PanelGulfAir"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 0,
+      "end_m": 220,
+      "side": 1,
+      "material": "PanelGulfAir"
+    },
+    {
+      "name": "Main Grandstand",
+      "osm_id": 187123419,
+      "roof": "sail",
+      "rows": 24,
+      "seat_material": "SeatRed",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+    },
+    {
+      "name": "First Turn Grandstand",
+      "osm_id": 271535967,
+      "roof": "sail",
+      "rows": 15,
+      "seat_material": "SeatRed",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+    },
+    {
+      "name": "University Grandstand 2",
+      "osm_id": 271535959,
+      "roof": "sail",
+      "rows": 15,
+      "seat_material": "SeatRed",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+    },
+    {
+      "name": "University Grandstand 3",
+      "osm_id": 271535961,
+      "roof": "sail",
+      "rows": 15,
+      "seat_material": "SeatRed",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+    },
+    {
+      "name": "University Grandstand 1",
+      "osm_id": 271535984,
+      "roof": "sail",
+      "rows": 15,
+      "seat_material": "SeatRed",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+    },
+    {
+      "name": "Victory Grandstand 1",
+      "osm_id": 271535964,
+      "roof": "sail",
+      "rows": 15,
+      "seat_material": "SeatRed",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+    },
+    {
+      "name": "Victory Grandstand 2",
+      "osm_id": 271535981,
+      "roof": "sail",
+      "rows": 15,
+      "seat_material": "SeatRed",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+    },
+    {
+      "name": "Batelco",
+      "osm_id": 187123414,
+      "roof": "cantilever",
+      "rows": 18,
+      "seat_material": "SeatRed",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+    },
+    {
+      "name": "Authored pit building",
+      "start_m": 5180,
+      "end_m": 220,
+      "side": 1,
+      "height_m": 11
+    },
+    {
+      "name": "Sakhir Tower",
+      "osm_id": 187123438,
+      "height_m": 44.8,
+      "dimensions": "Footprint registered; vertical floor dimensions estimated from reference."
+    },
+    {
+      "name": "Bahrain floodlight recipe",
+      "structure": "30\u201332 m straight multi-head masts in open sectors; 24 m canted banks above the pit roofs and 13 m underside fittings beneath the mainstand roof. Individual positions, heights and 50\u201355 m spacing are visual estimates.",
+      "reference": "Saved/Refs/bahrain.mp4:100,120,130,170,195,200 seconds",
+      "confidence": "High for bank versus streetlamp distinction; moderate for sector distribution; low for metric dimensions. Relative field powers are rendering parameters, not photometry."
+    }
+  ],
+  "vegetation": [
+    {
+      "type": "palms",
+      "start_m": 5050,
+      "end_m": 5412,
+      "side": -1,
+      "count": 6,
+      "setback_m": 37,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "palms",
+      "start_m": 0,
+      "end_m": 350,
+      "side": -1,
+      "count": 5,
+      "setback_m": 50,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "palms",
+      "start_m": 600,
+      "end_m": 1100,
+      "side": -1,
+      "count": 9,
+      "setback_m": 65,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "palms",
+      "start_m": 2950,
+      "end_m": 3150,
+      "side": 1,
+      "count": 3,
+      "setback_m": 50,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "palms",
+      "start_m": 4300,
+      "end_m": 4700,
+      "side": -1,
+      "count": 7,
+      "setback_m": 55,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    }
+  ],
+  "review_status": "Awaiting packaged whole-route review; asset import is not visual approval."
+}

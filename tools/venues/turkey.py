@@ -4,6 +4,7 @@ from __future__ import annotations
 from circuit_scene import CircuitScene
 
 from venues.east_architecture import layered_pit_roofs, trees
+from venues.west_architecture import apron_band
 
 
 def circuit_edges(scene: CircuitScene) -> None:
@@ -34,6 +35,9 @@ def circuit_edges(scene: CircuitScene) -> None:
     ):
         scene.branding(start, end, side, material)
 
+
+    apron_band(scene, 2310, 2860, -1, 2.35, 2.55, 'White')
+    apron_band(scene, 3440, 3540, 1, 2.35, 2.55, 'White')
 
 def build_venue(scene: CircuitScene) -> None:
     circuit_edges(scene)

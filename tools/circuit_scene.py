@@ -16,6 +16,7 @@ from circuit_dataclasses import (
     Building,
     Catalogue,
     OsmData,
+    PitLane,
     Provenance,
     RoadStation,
     TerrainGrid,
@@ -285,20 +286,16 @@ class CircuitScene(MeshScene):
         for triangle in constrained_delaunay_triangles(shape).geoms:
             points: list[Point] = []
             for x, y in list(triangle.exterior.coords)[:3]:
-                lane = (
-                    (x - sample.x) * sample.ty - (y - sample.y) * sample.tx
-                    if sample
-                    else 0.0
-                )
-                z = self.ground(x, y) + (0.015 if sample else 0.0)
-                if (
-                    sample
-                    and self.catalogue.deck_separation
-                    and 4620 < sample.station < 4685
-                ):
-                    along = (x - sample.x) * sample.tx + (y - sample.y) * sample.ty
-                    branch = self.at(sample.station + along)
+                if sample:
+                    branch, _ = self.nearest(x, y)
+                    gap = abs(branch.station - sample.station)
+                    if min(gap, self.length - gap) > 20:
+                        along = (x - sample.x) * sample.tx + (y - sample.y) * sample.ty
+                        branch = self.at(sample.station + along)
+                    lane = (x - branch.x) * branch.ty - (y - branch.y) * branch.tx
                     z = branch.z + branch.bank * lane
+                else:
+                    z = self.ground(x, y)
                 points.append((x, y, z + lift))
             if cross(sub(points[1], points[0]), sub(points[2], points[0]))[2] < 0:
                 points.reverse()
@@ -380,11 +377,12 @@ class CircuitScene(MeshScene):
                 b.point(b.half_width + 0.15, 0.006),
                 a.point(a.half_width + 0.15, 0.006),
             ]
+            # The accepted asphalt shader expects U along the road and V across it, in 2 m units.
             uv = (
-                (-a.half_width / 6, a.station / 6),
-                (-b.half_width / 6, (a.station + ds) / 6),
-                (b.half_width / 6, (a.station + ds) / 6),
-                (a.half_width / 6, a.station / 6),
+                (a.station / 2, -a.half_width / 2),
+                ((a.station + ds) / 2, -b.half_width / 2),
+                ((a.station + ds) / 2, b.half_width / 2),
+                (a.station / 2, a.half_width / 2),
             )
             self.triangle("Tile_Road", "Road", p[0], p[1], p[2], uv[:3], (na, nb, nb))
             self.triangle(
@@ -529,6 +527,16 @@ class CircuitScene(MeshScene):
         width: float,
         material: str = "Runoff",
     ) -> None:
+        self.surface_ranges.append(
+            {
+                "type": "runoff",
+                "start_m": start,
+                "end_m": end,
+                "side": side,
+                "requested_width_m": width,
+                "material": material,
+            }
+        )
         span = (end - start) % self.length
         count = max(1, math.ceil(span / 2))
         for i in range(count):
@@ -549,16 +557,6 @@ class CircuitScene(MeshScene):
                 self.polygon_surface(
                     shape.difference(self.road_mask), material, 0.001, a
                 )
-        self.surface_ranges.append(
-            {
-                "type": "runoff",
-                "start_m": start,
-                "end_m": end,
-                "side": side,
-                "requested_width_m": width,
-                "material": material,
-            }
-        )
 
     def barriers(self, street: bool = False) -> None:
         post_distance = 4.0
@@ -889,6 +887,42 @@ class CircuitScene(MeshScene):
             }
         )
 
+    def pit_lane(self, profile: PitLane) -> None:
+        span = (profile.end_m - profile.start_m) % self.length
+        steps = max(1, math.ceil(span / 2))
+        inner = self.kerb_margin(profile.start_m) + profile.shoulder_m + 0.16
+        for step in range(steps):
+            a = self.at(profile.start_m + span * step / steps)
+            b = self.at(profile.start_m + span * (step + 1) / steps)
+            points = (
+                a.point(profile.side * (a.half_width + inner)),
+                b.point(profile.side * (b.half_width + inner)),
+                b.point(profile.side * (b.half_width + profile.outer_offset_m)),
+                a.point(profile.side * (a.half_width + profile.outer_offset_m)),
+            )
+            shape = Polygon([point[:2] for point in points])
+            if not shape.is_valid:
+                continue
+            shape = shape.difference(self.road_mask)
+            self.terrain_cutouts.append(shape)
+            self.polygon_surface(shape, "Runoff", 0.001, a)
+            for offset in (inner + 3.5, profile.outer_offset_m - 0.4):
+                line = Polygon([
+                    p.point(profile.side * (p.half_width + lane))[:2]
+                    for p, lane in ((a, offset), (b, offset), (b, offset + 0.12), (a, offset + 0.12))
+                ])
+                if line.is_valid:
+                    self.polygon_surface(line.intersection(shape), "White", 0.005, a)
+        self.landmarks.append({
+            "name": "Paved pit lane and working apron",
+            "start_m": profile.start_m,
+            "end_m": profile.end_m,
+            "side": profile.side,
+            "outer_offset_m": profile.outer_offset_m,
+            "source_note": profile.source_note,
+            "access": "Visual service area outside the closed driving boundary.",
+        })
+
     def pit_building(
         self,
         start: float,
@@ -907,6 +941,14 @@ class CircuitScene(MeshScene):
                 self.at(start + span * (step + 1) / steps),
             )
             lane_a, lane_b = side * (a.half_width + 13), side * (b.half_width + 13)
+            footprint = Polygon([
+                a.point(lane_a)[:2],
+                b.point(lane_b)[:2],
+                b.point(lane_b + side * depth)[:2],
+                a.point(lane_a + side * depth)[:2],
+            ])
+            if footprint.is_valid:
+                self.terrain_cutouts.append(footprint.difference(self.road_mask))
             for level in range(levels + 1):
                 z = height * level / levels
                 self.beam(

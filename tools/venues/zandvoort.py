@@ -20,7 +20,7 @@ def build_venue(scene: CircuitScene) -> None:
     scene.braking_boards(873, 1, distances=(100, 50))  # Hugenholtz
     scene.braking_boards(2538, 1)  # T10
     scene.braking_boards(3186, -1)  # Hans Ernst first apex
-    mapped_building(scene, 52473177, 13, facade='Concrete', floors=3, roof='canopy')
+    mapped_building(scene, 52473177, 13, facade='Concrete', floors=3, roof='canopy', garage_front=True)
     scene.stand(3990, 4240, -1, rows=21, setback=6, roofed=True, seat_material='SeatBlue')
     scene.stand(0, 250, -1, rows=21, setback=6, roofed=True, seat_material='SeatBlue')
     scene.stand(300, 480, -1, rows=21, setback=22, seat_material='SeatBlue')

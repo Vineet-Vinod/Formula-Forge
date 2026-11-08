@@ -1,0 +1,9 @@
+{
+  "start_m": 5180,
+  "end_m": 220,
+  "side": 1,
+  "outer_offset_m": 13.0,
+  "shoulder_m": 0.1,
+  "transition_m": 25.0,
+  "source_note": "Authored Sakhir garage frontage scene.pit_building(5180,220,+1) lies exactly 13 m beyond the road edge; canted sail roofs and garage/pit-wall side are visible in reference120/130/170/185s. This is registration to the authored garage geometry, not a measured real-world pit-lane width. The native interval crosses station zero."
+}

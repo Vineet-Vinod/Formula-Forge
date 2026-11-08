@@ -1,0 +1,9 @@
+{
+  "start_m": 5130,
+  "end_m": 230,
+  "side": -1,
+  "outer_offset_m": 13.0,
+  "shoulder_m": 0.1,
+  "transition_m": 25.0,
+  "source_note": "Authored Istanbul garage frontage scene.pit_building(5130,230,-1) lies exactly 13 m beyond road edge, underneath its three stacked hospitality roofs. Reference325/329/333/337s shows garages left and mainstand right. Retained compound295742112 is excluded from duplicate extrusion. Native interval crosses zero; dimensions remain reference estimates."
+}

@@ -29,6 +29,13 @@ operations. Keep total machine memory below 11 GB, including authoring processes
 the guarded runner imposes a lower stop threshold. Keep video extraction sparse
 and serial, and record peak memory for scene generation.
 
+Register the garage frontage in `pit-lane.json`: native start/end, driving side,
+paving depth and pit-wall offset. Apply an edited registration with
+`tools/circuit_profiles.py <slug>`, then export fresh samples and regenerate the
+closed envelope as below. The source builder also consumes this registration.
+Pit paving is a visual service area beyond the closed driving boundary; it must
+not enlarge that boundary. Include garage bays, foundations and roof structure.
+
 The 8,192-station samples for the new venues supply the visual road, contact
 surface and simulation path. The accepted circuits retain their sampling.
 Native station zero is an arbitrary retained source origin at several venues;
@@ -46,6 +53,12 @@ architecture so surrounding ground can join their extents. Keep water in
 `water_shapes`, visual-only ground exclusions in `terrain_cutouts`, and physical
 road/escape additions in `extra_corridors`. A water polygon must never become a
 physical track boundary.
+
+Check coastline topology against known dry streets and known sea points before
+cutting terrain. A missing connector outside a query box can turn an entire city
+into a water polygon. Model ordinary mapped frontage as well as landmarks; a few
+hotel models do not fill an urban circuit. Use semantic tags and actual stand
+footprints rather than classifying buildings by height or guessing stand spans.
 
 After changing road widths, banking, escape shapes or protection, regenerate the
 physical envelope as a deliberate source change:
@@ -78,6 +91,11 @@ refer to opaque corrugated panels or an atlas layout the mesh does not use.
 Grandstands need oriented treads, closed risers, supports, end closures and roof
 soffits; disconnected horizontal cards are not finished stands.
 
+The private road material reuses Interlagos asphalt. Its UV contract is
+longitudinal U and lateral V, both in two-metre units. Escape surfaces and their
+paint follow the local road branch; scenery DSM heights must not lift them into
+the surrounding banks. At a crossover, keep the two road branches separate.
+
 For full-lap review, build `build/tests/audit-circuit-lap` and run it with a circuit
 slug. It writes a private review racing line and real fixed-step telemetry in
 `build/circuits/<slug>`. The saved speed multiplier changes the review controller,
@@ -92,6 +110,12 @@ airborne frames and rendered penetration. Require Luna High review of the final
 packaged scene. Retain failed findings, fixes and final hashes; rerun acceptance
 when the reviewed geometry or materials change. Keep native assets versioned and
 commit completed checkpoints without pushing or merging.
+
+Replay cuts and camera poses matter. Verify reference corner identities using
+the minimap, landmarks and lap timer; do not interpolate station through a cut.
+Capture approaches and exits too: paint directly beside a stationary car at an
+apex can be outside its field of view. Confirm missing geometry through moving
+frames or projected mesh positions before relocating a correctly placed feature.
 
 The packaged executable opens the menu by default. For an unattended driving
 capture, explicitly open the existing review level with the trial game mode:

@@ -3,13 +3,13 @@
 from __future__ import annotations
 
 import json
-import math
 
 import numpy as np
-from circuit_mesh import add, world
+from circuit_mesh import world
 from circuit_scene import CircuitScene
 from lasvegas_art import sign
 from PIL import Image
+from venues.night_lighting import build_lighting
 
 NIGHT = {"bahrain", "jeddah", "singapore"}
 
@@ -53,27 +53,8 @@ def artwork(scene: CircuitScene) -> None:
         sign(directory / (name + ".png"), label, background, foreground, 1024, 128)
     if scene.slug not in NIGHT:
         return
-    lights = []
-    for index in range(math.ceil(scene.length / 24)):
-        sample = scene.at(index * 24)
-        for side in (-1, 1):
-            shoulder = sample.left_shoulder if side > 0 else sample.right_shoulder
-            p = sample.point(side * (sample.half_width + shoulder + 2))
-            base = (p[0], p[1], scene.ground(p[0], p[1]))
-            top = add(base, (0, 0, 14))
-            inward = add(top, (-sample.ty * side * 3, sample.tx * side * 3, 0))
-            scene.beam("Building_Lighting", "Steel", base, top, 0.16)
-            scene.beam("Building_Lighting", "Steel", top, inward, 0.12)
-            scene.box(
-                "Building_Lighting",
-                "Lamp",
-                inward,
-                1.8,
-                0.65,
-                0.15,
-                math.atan2(sample.ty, sample.tx),
-            )
-            lights.append(world(inward))
+    fixtures = build_lighting(scene)
+    lights = [world(fixture.position) for fixture in fixtures]
     minimum_x = min(p[0] for p in lights) - 10000
     minimum_y = min(p[1] for p in lights) - 10000
     width = max(p[0] for p in lights) - minimum_x + 10000
@@ -81,16 +62,18 @@ def artwork(scene: CircuitScene) -> None:
     size = 2048
     radiance = np.zeros((size, size), dtype=np.float32)
     elevation = np.zeros((size, size), dtype=np.float32)
-    for x, y, z in lights:
-        c0 = max(0, int((x - 7000 - minimum_x) / width * size))
-        c1 = min(size, int((x + 7000 - minimum_x) / width * size) + 1)
-        r0 = max(0, int((y - 7000 - minimum_y) / height * size))
-        r1 = min(size, int((y + 7000 - minimum_y) / height * size) + 1)
+    for fixture, (x, y, _z) in zip(fixtures, lights, strict=True):
+        radius = fixture.pool_radius_m * 100
+        reach = max(7000.0, radius * 6)
+        c0 = max(0, int((x - reach - minimum_x) / width * size))
+        c1 = min(size, int((x + reach - minimum_x) / width * size) + 1)
+        r0 = max(0, int((y - reach - minimum_y) / height * size))
+        r1 = min(size, int((y + reach - minimum_y) / height * size) + 1)
         dx = minimum_x + (np.arange(c0, c1) + 0.5) * width / size - x
         dy = minimum_y + (np.arange(r0, r1) + 0.5) * height / size - y
-        weight = (850**2 / (850**2 + dx[None, :] ** 2 + dy[:, None] ** 2)) ** 1.5
+        weight = fixture.power * (radius**2 / (radius**2 + dx[None, :] ** 2 + dy[:, None] ** 2)) ** 1.5
         radiance[r0:r1, c0:c1] += weight
-        elevation[r0:r1, c0:c1] += weight * (z - 1400)
+        elevation[r0:r1, c0:c1] += weight * fixture.ground_z * 100
     pixels = np.zeros((size, size, 4), dtype=np.uint8)
     pixels[:, :, 0] = np.rint(np.minimum(1, radiance * 0.72) ** 3.4 * 255).astype(
         np.uint8
@@ -108,7 +91,7 @@ def artwork(scene: CircuitScene) -> None:
             {
                 "bounds": [minimum_x, minimum_y, width, height],
                 "fixture_count": len(lights),
-                "method": "Original estimated14mfixtures24mspacing; registered diffuse field, same shading approach as accepted Vegas, independently authored local coordinates.",
+                "method": "Reference-registered venue-specific masts, head banks and cable fixtures. True local ground heights and reconstructed pool radii/powers drive an original diffuse field; same material approach as accepted Vegas.",
             },
             indent=2,
         )

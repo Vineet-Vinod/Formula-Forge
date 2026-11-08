@@ -17,7 +17,7 @@ def build_venue(scene: CircuitScene) -> None:
     scene.braking_boards(3862, -1)  # Bruxelles
     scene.braking_boards(5295, -1, distances=(100, 50))  # Fagnes
     scene.braking_boards(476, -1)  # Bus Stop first apex
-    mapped_building(scene, 77352246, 16, facade='Concrete', floors=4, roof='canopy')
+    mapped_building(scene, 77352246, 16, facade='Concrete', floors=4, roof='canopy', garage_front=True)
     mapped_building(scene, 77352249, 8, facade='White', floors=2, roof='pitched')
     mapped_building(scene, 176136366, 9, facade='Cream', floors=2, roof='pitched')
     scene.stand(730, 1050, -1, rows=20, setback=10, roofed=True, seat_material='SeatRed')

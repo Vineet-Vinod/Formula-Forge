@@ -445,5 +445,45 @@
       }
     ]
   },
-  "ground_appearance_review": "Green urban park lawns and mature trees."
+  "ground_appearance_review": "Green urban park lawns and mature trees.",
+  "pilot_avenue_correction": {
+    "status": "Source correction awaiting fresh rendered review",
+    "sources": [
+      {
+        "url": "https://media.ticketmaster.com/en-au/img/static/pdf/GP23_GrandstandInformation.pdf",
+        "epoch": 2023,
+        "pages": [
+          6,
+          11
+        ],
+        "sha256": "70fadaa22cdaa506e892266cbd02c5e3c4bbcde0753cb23aa6b9d9f56b13432a"
+      },
+      {
+        "url": "https://travel.grandprix.com.au/blog/grandstand-guide",
+        "published": "2025-11-25",
+        "use": "Operator confirms Hill atT3 and Ricciardo infieldT3/T4 for2026"
+      }
+    ],
+    "stands": [
+      {
+        "name": "Hill",
+        "start_m": 1050,
+        "end_m": 1130,
+        "side": -1,
+        "rows": 12,
+        "setback_m": 24
+      },
+      {
+        "name": "Ricciardo",
+        "start_m": 1070,
+        "end_m": 1140,
+        "side": 1,
+        "rows": 12,
+        "setback_m": 26
+      }
+    ],
+    "stand_uncertainty": "Only official corner/infield/outfield relations established. Exact stand endpoints, rows and setback are original estimates; no fabricated mapped footprint. Previously oversized curved930–1080outside band removed.",
+    "trees": "Mature avenue extended to985mright/980mleft,17mcanopy,3rows,11mspacing,6msetback beyond protection. Individual tree positions reconstructed.",
+    "clearance_fix": "Shared west tree helper now checks candidate-side shoulder, not opposite-side maximum which incorrectly culled inner-side avenue trees near wide runoff."
+  }
 }

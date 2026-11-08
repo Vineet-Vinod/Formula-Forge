@@ -7,6 +7,7 @@ import json
 import math
 import struct
 import sys
+from dataclasses import replace
 from pathlib import Path
 
 import pytest
@@ -115,6 +116,29 @@ def test_runoff_does_not_cover_another_road_arm(scene: CircuitScene) -> None:
     assert gravel.intersection(scene.road_mask.buffer(-0.001)).area < 0.0001
 
 
+def test_escape_surface_follows_road_instead_of_climbing_the_bank(
+    scene: CircuitScene,
+) -> None:
+    scene.grid = replace(scene.grid, heights=tuple(30.0 for _ in scene.grid.heights))
+    scene.road_surfaces()
+    scene.runoff(5, 35, 1, 24, "Gravel")
+    heights = []
+    for tile in scene.tiles.values():
+        for offset in range(0, len(tile.triangles), 100):
+            slot = struct.unpack_from("<I", tile.triangles, offset)[0]
+            if tile.materials[slot] == "Gravel":
+                heights.extend(
+                    struct.unpack_from("<8f", tile.triangles, offset + 4 + vertex * 32)[
+                        2
+                    ]
+                    / 100
+                    for vertex in range(3)
+                )
+    assert heights
+    assert min(heights) == pytest.approx(3.001, abs=0.0001)
+    assert max(heights) == pytest.approx(3.001, abs=0.0001)
+
+
 def test_positive_lane_is_right_of_source_tangent(scene: CircuitScene) -> None:
     sample = scene.at(0)
     x, y, _ = sample.point(3.0)
@@ -123,7 +147,9 @@ def test_positive_lane_is_right_of_source_tangent(scene: CircuitScene) -> None:
     )
 
 
-def test_barrier_lettering_reads_left_to_right_from_the_road(scene: CircuitScene) -> None:
+def test_barrier_lettering_reads_left_to_right_from_the_road(
+    scene: CircuitScene,
+) -> None:
     with (scene.scratch / "barriers.csv").open("w") as handle:
         writer = csv.writer(handle)
         writer.writerow(("ax", "ay", "bx", "by", "bottom", "top", "radius"))
@@ -278,3 +304,34 @@ def test_mapped_stand_front_follows_sloping_ground(
                     front_heights.append(z - scene.ground(x, y))
     assert front_heights
     assert max(front_heights) < 0.81
+
+
+def test_mapped_stand_treads_clear_a_steep_rear_bank(
+    scene: CircuitScene, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    from circuit_dataclasses import Building, Point
+    from venues.east_architecture import footprint_stand
+
+    ring = [(50.0, -30.0), (70.0, -30.0), (70.0, 30.0), (50.0, 30.0)]
+    scene.buildings = [Building(1, "Bank terrace", "grandstand", 7.0, ring, {})]
+    monkeypatch.setattr(scene, "ground", lambda x, y: 3.0 + (x - 50) * 0.9)
+    original = scene.triangle
+    treads: list[Point] = []
+
+    def triangle(
+        kind: str,
+        material: str,
+        a: Point,
+        b: Point,
+        c: Point,
+        uv: tuple[tuple[float, float], ...] = ((0, 0), (1, 0), (1, 1)),
+        normals: tuple[Point, ...] | None = None,
+    ) -> None:
+        if kind == "Building_StandTread":
+            treads.extend((a, b, c))
+        original(kind, material, a, b, c, uv, normals)
+
+    monkeypatch.setattr(scene, "triangle", triangle)
+    footprint_stand(scene, 1, rows=10)
+    assert treads
+    assert min(z - scene.ground(x, y) for x, y, z in treads) >= 0.1799

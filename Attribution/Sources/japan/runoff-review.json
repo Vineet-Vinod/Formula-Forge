@@ -1,0 +1,65 @@
+{
+  "reference": "Saved/Refs/japan.mp4",
+  "review": "Luna High + root, 2026-11-08",
+  "registration": "Retained native station route. Replay contains cuts; timestamps are visual anchors, not a continuous station clock.",
+  "observations": [
+    {
+      "video_s": 1000,
+      "section": "T2 ~600m",
+      "surface": "Driver-left red/white kerb, broad green paved apron then grass; not gravel.",
+      "confidence": "high"
+    },
+    {
+      "video_s": [
+        860,
+        866,
+        868
+      ],
+      "section": "Degner/crossover ~2200\u20132370m",
+      "surface": "Driver-left red/white kerb, green strip, tan/gravel beyond; blue bridge/event panels.",
+      "confidence": "high palette, estimated extent"
+    },
+    {
+      "video_s": [
+        874,
+        876,
+        878
+      ],
+      "section": "Hairpin ~2652m",
+      "surface": "Left apex red/white kerb; grass/spectator bank outside right. No broad gravel trap visible.",
+      "confidence": "moderate, off-camera extent unknown"
+    },
+    {
+      "video_s": [
+        850,
+        852,
+        854,
+        856,
+        858
+      ],
+      "section": "Spoon ~3547\u20133750m",
+      "surface": "Wide green and purple/blue painted pavement on outside right.",
+      "confidence": "high pavement/paint, estimated boundaries"
+    },
+    {
+      "video_s": 882,
+      "section": "130R exit ~4800m",
+      "surface": "Broad green painted apron outside right.",
+      "confidence": "high palette, estimated extent"
+    },
+    {
+      "video_s": [
+        884,
+        886,
+        888,
+        890,
+        892
+      ],
+      "section": "Casio ~5111\u20135340m",
+      "surface": "Paved escape with green painted bands through chicane.",
+      "confidence": "high palette, estimated boundaries"
+    }
+  ],
+  "dimensions": "Runoff widths, transitions and temporary marking shapes are bounded reconstruction estimates; not engineering measurements. Physical protection uses the same outer widths.",
+  "geometry": "Escape mesh follows local road branch height; terrain outside the escape blends back to GSI. The bridge is handled independently from the lower road."
+}

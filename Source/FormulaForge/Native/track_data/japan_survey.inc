@@ -4368,14 +4368,16 @@ constexpr TrackBankPoint kJapanBank[] = {
     {5807.000f, 0.000f}
 };
 constexpr TrackRunoffZone kJapanRunoff[] = {
-    {520.90f, 615.90f, -1, TrackRunoffSurface::Gravel, 11.00f},
-    {1972.65f, 2067.65f, -1, TrackRunoffSurface::Gravel, 11.00f},
-    {2124.62f, 2219.62f, -1, TrackRunoffSurface::Gravel, 11.00f},
-    {2596.54f, 2691.54f, 1, TrackRunoffSurface::Gravel, 14.00f},
-    {3492.39f, 3587.39f, 1, TrackRunoffSurface::Gravel, 11.00f},
-    {3648.36f, 3743.36f, 1, TrackRunoffSurface::Gravel, 11.00f},
-    {5056.12f, 5151.12f, -1, TrackRunoffSurface::Gravel, 11.00f},
-    {5128.11f, 5223.11f, 1, TrackRunoffSurface::Gravel, 11.00f}
+    {430.000f, 540.000f, -1, TrackRunoffSurface::Gravel, 24.000f},
+    {540.000f, 685.000f, -1, TrackRunoffSurface::Asphalt, 8.000f},
+    {1930.000f, 2100.000f, -1, TrackRunoffSurface::Gravel, 22.000f},
+    {2080.000f, 2370.000f, -1, TrackRunoffSurface::Gravel, 22.000f},
+    {2550.000f, 2740.000f, 1, TrackRunoffSurface::Grass, 16.000f},
+    {3380.000f, 3615.000f, 1, TrackRunoffSurface::Asphalt, 24.000f},
+    {3600.000f, 3810.000f, 1, TrackRunoffSurface::Asphalt, 24.000f},
+    {4700.000f, 4950.000f, 1, TrackRunoffSurface::Asphalt, 18.000f},
+    {5000.000f, 5160.000f, -1, TrackRunoffSurface::Asphalt, 22.000f},
+    {5100.000f, 5260.000f, 1, TrackRunoffSurface::Asphalt, 22.000f}
 };
 constexpr TrackTurnExpectation kJapanTurns[] = {
     {"Turn 1", 0.07300f, TrackTurnDirection::Right},

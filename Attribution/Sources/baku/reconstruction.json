@@ -15,8 +15,8 @@
   "heading_direction_test": false,
   "crossings": 0,
   "aspect": 1.36019,
-  "relief_m": 36.916,
-  "elevation_datum_removed_m": -24.747,
+  "relief_m": 26.8,
+  "elevation_datum_removed_m": null,
   "samples": 1493,
   "turns_detected": 17,
   "turns_published": 20,
@@ -24,5 +24,8 @@
   "barrier_vertices": 70,
   "deck": null,
   "banks": [],
-  "osm_sha256": "f7e01e7106e0601e23c11b9d982250153dd915487c499dbe07c903800b574180"
+  "osm_sha256": "f7e01e7106e0601e23c11b9d982250153dd915487c499dbe07c903800b574180",
+  "elevation_method": "Published circuit topography profile, reconstructed",
+  "elevation_corrections": "elevation-corrections.json",
+  "elevation_uncertainty_m": 1.0
 }

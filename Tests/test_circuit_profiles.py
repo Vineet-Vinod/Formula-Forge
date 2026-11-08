@@ -7,12 +7,17 @@ import itertools
 import math
 import re
 import struct
+import sys
 from pathlib import Path
 
 import pytest
 from pydantic import BaseModel, Field
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "tools"))
+from circuit_dataclasses import PitLane
+from circuit_profiles import pit_shoulders
+
 SOURCES = ROOT / "Attribution/Sources"
 NATIVE = ROOT / "Source/FormulaForge/Native/track_data"
 ELEVATION_FILES = tuple(sorted(SOURCES.glob("*/elevation-corrections.json")))
@@ -20,6 +25,19 @@ EVIDENCE_FILES = tuple(
     sorted((*SOURCES.glob("*/reference-index.json"), *SOURCES.glob("*/environment-recipe.json")))
 )
 NUMBER = r"[-+]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][-+]?\d+)?"
+
+
+def test_pit_wall_profile_wraps_smoothly_without_repeated_application_drift() -> None:
+    rows = [(float(station), 6.0, 7.0) for station in range(0, 201, 5)]
+    profile = PitLane(180, 20, 1, 13, "Registered test pit", transition_m=10)
+    result = pit_shoulders(rows, 200, profile)
+    assert pit_shoulders(result, 200, profile) == result
+    samples = {station: (left, right) for station, left, right in result}
+    assert samples[0] == pytest.approx((0.1, 7))
+    assert samples[200] == samples[0]
+    assert samples[175] == pytest.approx((3.05, 7))
+    assert samples[25] == pytest.approx((3.05, 7))
+    assert samples[50] == pytest.approx((6, 7))
 Controls = list[tuple[float, float]]
 
 

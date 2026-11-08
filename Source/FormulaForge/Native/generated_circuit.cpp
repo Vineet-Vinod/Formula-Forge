@@ -47,9 +47,9 @@ float circuitShoulderMeters(const TrackCatalogEntry& track, float station, bool 
     if (track.id == TrackLayoutId::LasVegas) {
         return 0.10f;
     }
-    const float minimum = track.id == TrackLayoutId::Japan || (track.id == TrackLayoutId::Baku && station > 2480.0f && station < 2920.0f) ? 0.05f : 1.2f;
+    const float minimum = track.generated ? 0.05f : 1.2f;
     float width = std::clamp(sampleTrackShoulderMeters(track, station, left), minimum, 24.0f);
-    if (!track.authoredBarriers.empty()) {
+    if (!track.authoredBarriers.empty() || track.id == TrackLayoutId::Japan) {
         for (const auto& zone : track.runoffProfile) {
             const bool inside = zone.startMeters <= zone.endMeters ?
                 station >= zone.startMeters && station <= zone.endMeters :

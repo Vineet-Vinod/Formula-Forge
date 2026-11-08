@@ -1690,5 +1690,63 @@
         ]
       }
     ]
+  },
+  "apron_paint_review": {
+    "reference": "Saved/Refs/malaysia.mp4",
+    "reviewed": "Overview and detailed frames across the lap; specific added motifs are tied to the listed frame timestamps. Paint registration is estimated from official corners and landmarks, not proportional playback time.",
+    "geometry": "Original vector shapes, road-branch height with sample=scene.at(station), clipped away from the road. No reference pixels shipped.",
+    "patches": [
+      {
+        "kind": "band",
+        "start_m": 1420,
+        "end_m": 1550,
+        "side": 1,
+        "inner_m": 2.35,
+        "outer_m": 2.55,
+        "material": "White",
+        "reviewed_video_seconds": [
+          162
+        ],
+        "observed": "Thin white boundary along the green T4 kerb-edge shoulder."
+      },
+      {
+        "kind": "band",
+        "start_m": 2390,
+        "end_m": 2630,
+        "side": 1,
+        "inner_m": 2.35,
+        "outer_m": 2.55,
+        "material": "White",
+        "reviewed_video_seconds": [
+          174,
+          178
+        ],
+        "observed": "T7/8 green edge strip has a narrow white outer limit; gravel remains beyond."
+      },
+      {
+        "kind": "band",
+        "start_m": 3910,
+        "end_m": 4190,
+        "side": 1,
+        "inner_m": 2.35,
+        "outer_m": 2.55,
+        "material": "White",
+        "reviewed_video_seconds": [
+          194,
+          198,
+          202
+        ],
+        "observed": "Late infield green shoulder is outlined in white, with gravel and grass retained beyond."
+      }
+    ],
+    "native_changes": "No corridor extent or physical surface-class changes.",
+    "unpainted_policy": "Gravel, grass and unpainted asphalt remain beyond the observed paint bands."
+  },
+  "pit_lane": {
+    "source": "pit-lane.json",
+    "visual_only_outside_pit_wall": true,
+    "registration": "Authored Sepang garage frontage scene.pit_building(5290,320,+1) lies exactly 13 m beyond road edge. Retained pit compound144362327 is excluded from duplicate extrusion; its multi-storey bays and stacked roof silhouette are modeled on the right, opposite the double-sided grandstand. Reference118/122/126/130/134/138s supports this registration. Native interval crosses zero.",
+    "garage_front_outer_offset_m": 13.0,
+    "source_world_frame": "Native east/north station frame; +1 driver right, -1 driver left. No route-origin rotation."
   }
 }

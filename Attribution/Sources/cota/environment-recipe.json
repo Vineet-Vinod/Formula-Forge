@@ -861,5 +861,31 @@
     "previous_named_way_midpoint_m": 4090.68,
     "reason": "OSM Turn15 way midpoint lies on the preceding gentle left. Actual tight left has79degrees of heading change across4160±10m and40degrees across4180±10m; route shape matches official full-layout stadium geometry and reference minimap. Native plan unchanged.",
     "approximate_apex_uncertainty_m": 10
+  },
+  "pit_frontage_correction": {
+    "status": "Source change awaiting new rendered review",
+    "geometry": "Mapped pit front now has recessed garage bays below retained upper floors; no repeated ground-floor office windows on road-facing facade. Bay widths/depths are original reference reconstruction, not an as-built survey.",
+    "paving_profile": "pit-lane.json"
+  },
+  "pilot_architecture_corrections": {
+    "status": "Previous pilot is not accepted; source changes require new renders.",
+    "main_stand": {
+      "stand_osm_id": 460658889,
+      "roof_osm_id": 376713393,
+      "method": "Use actual stand footprint across native0, locally grounded curved terrace; rear canopy follows separate mapped outline with downward soffit. Removes wrong generic5100–5450 stand.",
+      "dimensions": "25rows and roof14–16.5m above road are original estimates from supplied footage, not surveyed heights."
+    },
+    "turn15_stand": {
+      "osm_id": 460658892,
+      "method": "Mapped Turn15 Grandstands footprint replaces guessed3990–4160left band."
+    },
+    "paint_camera": {
+      "star_world_station_m": 4153,
+      "recommended_camera_station_m": [
+        4050,
+        4120
+      ],
+      "reason": "Star center at same-station capture is90degleft; geometry is not moved to chase viewport."
+    }
   }
 }

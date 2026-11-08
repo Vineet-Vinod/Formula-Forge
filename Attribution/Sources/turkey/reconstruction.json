@@ -14,8 +14,8 @@
   "heading_direction_test": false,
   "crossings": 0,
   "aspect": 1.14695,
-  "relief_m": 35.312,
-  "elevation_datum_removed_m": 109.0,
+  "relief_m": 40.3352,
+  "elevation_datum_removed_m": 108.42707300186157,
   "samples": 1337,
   "turns_detected": 15,
   "turns_published": 14,
@@ -23,5 +23,8 @@
   "barrier_vertices": 22,
   "deck": null,
   "banks": [],
-  "osm_sha256": "98dc10ad186f92f0997cec890b6bd7d17978dd61eaff54e94c4a6f5dac829ba4"
+  "osm_sha256": "98dc10ad186f92f0997cec890b6bd7d17978dd61eaff54e94c4a6f5dac829ba4",
+  "elevation_method": "Copernicus DEM GLO-30",
+  "elevation_corrections": "elevation-corrections.json",
+  "elevation_uncertainty_m": 3.0
 }

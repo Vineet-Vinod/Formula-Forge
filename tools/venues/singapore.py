@@ -91,6 +91,8 @@ def sands(scene: CircuitScene) -> None:
         scene.beam('Building_SandsSkypark', 'White', rim(a, .5), rim(b, .5), .35)
     scene.landmarks.append({'name': 'Marina Bay Sands', 'latitude': 1.28375, 'longitude': 103.86055, 'height_m': 200, 'skypark_length_m': 340, 'skypark_width_m': 38, 'source': 'Arup project description; geographic position and tower plan are visual estimates.'})
 
+from venues.west_architecture import apron_band
+
 
 def circuit_edges(scene: CircuitScene) -> None:
     # Native-station intervals are reference estimates, independent of auto turn labels.
@@ -120,6 +122,9 @@ def circuit_edges(scene: CircuitScene) -> None:
     ):
         scene.branding(start, end, side, material)
 
+
+    apron_band(scene, 4710, 4940, -1, 1.2, 5.8, 'Yellow')
+    apron_band(scene, 0, 170, -1, 1.2, 5.8, 'Yellow')
 
 def build_venue(scene: CircuitScene) -> None:
     circuit_edges(scene)

@@ -3,10 +3,10 @@ from __future__ import annotations
 
 import math
 
-from circuit_dataclasses import Point
+from circuit_dataclasses import Building, Point
 from circuit_mesh import add, mul
 from circuit_scene import CircuitScene
-from shapely.geometry import LineString, box
+from shapely.geometry import LineString, Polygon, box
 from shapely.geometry import Point as ShapePoint
 from shapely.ops import polygonize, triangulate, unary_union
 
@@ -32,7 +32,7 @@ def build_venue(scene: CircuitScene) -> None:
                                    (94399922, 48, 14), (94399524, 81, 26),
                                    (161775596, 11, 3), (94399684, 54, 16),
                                    (94399872, 75, 22), (176722821, 11, 3)]:
-        mapped_building(scene, osm_id, height, floors=floors, balconies=True)
+        frontage(scene, scene.footprint(osm_id), height, floors)
     mapped_building(scene, 2093796, 24, floors=7, balconies=True,
                     base_z=scene.at(1750).z + 5.8, elevated=True)
     mapped_building(scene, 8280869, 24, floors=6, roof='pitched', balconies=True, base_z=scene.at(946).z)
@@ -40,9 +40,10 @@ def build_venue(scene: CircuitScene) -> None:
     casino(scene)
     tunnel(scene)
     scene.pit_building(3070, 3330, side=1, depth=12, height=10, levels=3)
-    scene.stand(0, 180, -1, rows=15, setback=6, seat_material='Concrete')
-    scene.stand(2350, 2490, 1, rows=18, setback=8, seat_material='Concrete')
-    scene.stand(2570, 2680, 1, rows=18, setback=8, seat_material='Concrete')
+    harbour_stand(scene, 0, 180, -1, 15, 6)
+    harbour_stand(scene, 2350, 2490, 1, 18, 8)
+    harbour_stand(scene, 2570, 2680, 1, 18, 8)
+    ordinary_city(scene)
     for start, end, side, setback in [(280, 550, 1, 10), (700, 870, 1, 8),
                                       (1050, 1170, -1, 8), (1280, 1440, -1, 10)]:
         trees(scene, start, end, side, setback=setback, rows=1, spacing=16, height=9)
@@ -50,6 +51,117 @@ def build_venue(scene: CircuitScene) -> None:
     trees(scene, 1250, 1410, 1, setback=16, rows=1, spacing=17, height=10, palms=True)
     for station in [200, 920, 1370, 2200, 2440, 2950, 3260]:
         mast(scene, station, -1, 12)
+
+
+def ordinary_city(scene: CircuitScene) -> None:
+    modeled = [Polygon(scene.footprint(osm_id).ring) for osm_id in scene.modeled_buildings]
+    for building in scene.buildings:
+        if building.osm_id in scene.modeled_buildings:
+            continue
+        if building.use in {'roof', 'bridge', 'grandstand'}:
+            continue
+        polygon = Polygon(building.ring)
+        if polygon.area < 8:
+            continue
+        # Detailed roof parts already belong to an enclosed mapped parent, not more offices.
+        if 'building:part' in building.tags or any(
+                parent.covers(polygon.representative_point()) for parent in modeled):
+            continue
+        frontage(scene, building)
+
+
+def frontage(scene: CircuitScene, building: Building,
+             height: float | None = None, floors: int | None = None) -> None:
+    original = Polygon(building.ring)
+    clipped = original.difference(scene.road_mask.buffer(1.2))
+    components = [clipped] if isinstance(clipped, Polygon) else list(getattr(clipped, 'geoms', []))
+    h = building.height if height is None else height
+    levels = floors if floors is not None else max(1, round(h / 3.4))
+    tagged = 'height' in building.tags or 'building:levels' in building.tags
+    apartment = building.use in {'apartments', 'residential', 'hotel'} or levels >= 4
+    facade = 'White' if building.tags.get('building:colour', '').lower() in {'white', '#ffffff'} else 'Cream'
+    scene.modeled_buildings.add(building.osm_id)
+    scene.landmarks.append({'osm_id': building.osm_id, 'name': building.name or 'Mapped Monaco frontage',
+                            'height_m': h, 'levels': levels,
+                            'height_status': 'Retained height/levels' if tagged else 'Unmeasured conservative retained default; not a verified storey survey',
+                            'structure': 'Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet',
+                            'removed_road_area_m2': round(original.area - clipped.area, 3)})
+    for footprint in components:
+        if not isinstance(footprint, Polygon) or footprint.area < 4:
+            continue
+        scene.terrain_cutouts.append(footprint)
+        ring = list(footprint.exterior.coords)[:-1]
+        if not footprint.exterior.is_ccw:
+            ring.reverse()
+        closest = min(ring, key=lambda p: scene.nearest(*p)[1])
+        base = min(scene.ground(*closest), min(scene.ground(*p) for p in ring))
+        winding = 1
+        kind = 'Building_MonacoFrontage'
+        for a, b in zip(ring, ring[1:] + ring[:1]):
+            span = math.dist(a, b)
+            if span < .25:
+                continue
+            tx, ty = (b[0] - a[0]) / span, (b[1] - a[1]) / span
+            nx, ny = ty * winding, -tx * winding
+            pa, pb = (a[0], a[1], base), (b[0], b[1], base)
+            bottom_a, bottom_b = min(base, scene.ground(*a) - .12), min(base, scene.ground(*b) - .12)
+            scene.quad(kind, facade, (a[0], a[1], bottom_a), (b[0], b[1], bottom_b),
+                       (b[0], b[1], base + h), (a[0], a[1], base + h))
+            middle = ((a[0] + b[0]) / 2, (a[1] + b[1]) / 2)
+            road, _ = scene.nearest(*middle)
+            facing = (road.x - middle[0]) * nx + (road.y - middle[1]) * ny > 0
+            bays = max(1, round(span / (3.1 if apartment else 3.8)))
+            for floor in range(levels):
+                z = base + h * floor / levels
+                floor_height = h / levels
+                top = min(base + h - .3, z + floor_height - .5)
+                low = z + (.35 if floor == 0 else .8)
+                if top <= low or span < 1.5:
+                    continue
+                for bay in range(bays):
+                    mid = (bay + .5) * span / bays
+                    width = min(1.3 if apartment else 1.65, span / bays * .58)
+                    x, y = a[0] + tx * mid + nx * .025, a[1] + ty * mid + ny * .025
+                    p, q = (x - tx * width / 2, y - ty * width / 2, low), (x + tx * width / 2, y + ty * width / 2, low)
+                    scene.banner(p, q, top - low, 'Glass', kind)
+                    scene.banner(add(p, (0, 0, -.10)), add(q, (0, 0, -.10)), .12, 'White', kind)
+                    if floor == 0 and bay == bays // 2:
+                        scene.banner(p, add(p, (tx * .06, ty * .06, 0)), top - low, 'Steel', kind)
+                if apartment and facing and floor > 0:
+                    slab_a, slab_b = add(pa, (nx * .85, ny * .85, z - base)), add(pb, (nx * .85, ny * .85, z - base))
+                    scene.quad(kind, 'White', add(pa, (0, 0, z - base)), add(pb, (0, 0, z - base)), slab_b, slab_a, up=True)
+                    scene.quad(kind, 'Concrete', add(slab_a, (0, 0, -.15)), add(slab_b, (0, 0, -.15)),
+                               add(pb, (0, 0, z - base - .15)), add(pa, (0, 0, z - base - .15)), up=False)
+                    scene.banner(add(slab_a, (0, 0, .15)), add(slab_b, (0, 0, .15)), .75, 'Glass', kind)
+                    scene.beam(kind, 'Steel', add(slab_a, (0, 0, .95)), add(slab_b, (0, 0, .95)), .055)
+                    for bay in range(bays + 1):
+                        p = add(slab_a, (tx * span * bay / bays, ty * span * bay / bays, .05))
+                        scene.banner(p, add(p, (tx * .035, ty * .035, 0)), .9, 'Steel', kind)
+            scene.beam(kind, 'White', add(pa, (0, 0, h)), add(pb, (0, 0, h)), .25, .4)
+        for triangle in triangulate(footprint):
+            if footprint.covers(triangle):
+                a, b, c = list(triangle.exterior.coords)[:3]
+                scene.triangle(kind, 'Roof', (a[0], a[1], base + h),
+                               (b[0], b[1], base + h), (c[0], c[1], base + h))
+
+
+def harbour_stand(scene: CircuitScene, start: float, end: float,
+                   side: int, rows: int, setback: float) -> None:
+    scene.stand(start, end, side, rows=rows, setback=setback, seat_material='Concrete')
+    steps = max(1, math.ceil((end - start) / 5))
+    for i in range(steps):
+        a, b = scene.at(start + (end - start) * i / steps), scene.at(start + (end - start) * (i + 1) / steps)
+        front, rear = [], []
+        for p in (a, b):
+            shoulder = p.left_shoulder if side > 0 else p.right_shoulder
+            lane = side * (p.half_width + .95 + shoulder + setback)
+            front.append(p.point(lane, .52))
+            rear.append(p.point(lane + side * rows * .88, .52 + rows * .45))
+        scene.quad('Building_StandSoffit', 'Concrete', front[0], front[1], rear[1], rear[0], up=False)
+        scene.quad('Building_StandFoundation', 'Concrete',
+                   (front[0][0], front[0][1], scene.ground(*front[0][:2]) - .15),
+                   (front[1][0], front[1][1], scene.ground(*front[1][:2]) - .15),
+                   front[1], front[0])
 
 
 def tunnel(scene: CircuitScene) -> None:
@@ -60,13 +172,24 @@ def tunnel(scene: CircuitScene) -> None:
         a, b = scene.at(1520 + 490 * segment / count), scene.at(1520 + 490 * (segment + 1) / count)
         for side in [-1, 1]:
             pa, pb = a.point(side * (a.half_width + .85)), b.point(side * (b.half_width + .85))
-            scene.quad('Building_Tunnel', 'Concrete', pa, pb, add(pb, (0, 0, 5.4)), add(pa, (0, 0, 5.4)), 6, 8)
-            for z in [.9, 1.8, 2.7, 3.6, 4.5]:
-                scene.beam('Building_Tunnel', 'White', add(pa, (0, 0, z)), add(pb, (0, 0, z)), .035)
-            scene.beam('Building_Tunnel', 'White', pa, add(pa, (0, 0, 5.4)), .035)
+            wall_height = 1.15 if side < 0 else 5.4
+            scene.quad('Building_Tunnel', 'Cream', pa, pb, add(pb, (0, 0, wall_height)), add(pa, (0, 0, wall_height)), 6, 8)
+            for row in range(1, math.ceil(wall_height / .3)):
+                z = row * .3
+                scene.beam('Building_Tunnel', 'White', add(pa, (0, 0, z)), add(pb, (0, 0, z)), .012)
+            for column in range(8):
+                t = column / 8
+                p = add(pa, mul((pb[0] - pa[0], pb[1] - pa[1], pb[2] - pa[2]), t))
+                scene.beam('Building_Tunnel', 'White', p, add(p, (0, 0, wall_height)), .012)
+            if side < 0:
+                scene.beam('Building_Tunnel', 'Concrete', add(pa, (0, 0, wall_height)), add(pa, (0, 0, 5.4)), .25)
+                scene.beam('Building_Tunnel', 'Concrete', add(pa, (0, 0, 5.15)), add(pb, (0, 0, 5.15)), .3, .5)
         la, ra = a.point(-a.half_width - .85, 5.4), a.point(a.half_width + .85, 5.4)
         lb, rb = b.point(-b.half_width - .85, 5.4), b.point(b.half_width + .85, 5.4)
-        scene.quad('Building_Tunnel', 'Cream', ra, rb, lb, la)
+        scene.quad('Building_Tunnel', 'Cream', ra, rb, lb, la, up=False)
+        scene.quad('Building_Tunnel', 'Concrete', add(la, (0, 0, .25)),
+                   add(lb, (0, 0, .25)), add(rb, (0, 0, .25)),
+                   add(ra, (0, 0, .25)), up=True)
         scene.beam('Building_Tunnel', 'Concrete', la, ra, .07)
         if segment % 2 == 0:
             for side in [-1, 1]:
@@ -142,11 +265,12 @@ def harbour(scene: CircuitScene) -> None:
                 if not line.is_empty:
                     lines.append(line)
     cells = list(polygonize(unary_union(lines)))
-    witnesses = [ShapePoint(*scene.geo(lat, lon)) for lat, lon in
-                 [(43.7358, 7.4251), (43.7358, 7.4312), (43.7385, 7.4318)]]
+    witnesses = [ShapePoint(*scene.geo(43.733, 7.4355))]
     sea = [cell for cell in cells if any(cell.covers(point) for point in witnesses)]
-    if not sea:
-        raise ValueError('Monaco coastline did not close around the retained harbour witnesses')
+    dry = [ShapePoint(*scene.geo(lat, lon)) for lat, lon in
+           [(43.7393, 7.4283), (43.7346, 7.4225)]]
+    if not sea or any(cell.covers(point) for cell in sea for point in dry):
+        raise ValueError('Monaco coastline must separate the sea from Casino Square and the paddocks')
     sea_z = -2.5
     for shape in sea:
         scene.water_shapes.append(shape)

@@ -96,9 +96,8 @@ void AFormulaTrialPawn::BeginPlay() {
     }
     BestLapPath = FPaths::ProjectSavedDir() / (silverstone ? FString(TEXT("best-lap.txt")) : TEXT("best-lap-") + circuit + TEXT(".txt"));
     if (!silverstone && (FParse::Param(FCommandLine::Get(), TEXT("FFNationalPit")) ||
-        FCString::Strstr(FCommandLine::Get(), TEXT("FFPitDistance=")) != nullptr ||
-        FCString::Strstr(FCommandLine::Get(), TEXT("FFRacingLine=")) != nullptr)) {
-        UE_LOG(LogTemp, Error, TEXT("The National pit route and recorded racing line require Silverstone."));
+        FCString::Strstr(FCommandLine::Get(), TEXT("FFPitDistance=")) != nullptr)) {
+        UE_LOG(LogTemp, Error, TEXT("The National pit route and pit-distance diagnostic require Silverstone."));
         FPlatformMisc::RequestExitWithStatus(false, 1);
         return;
     }

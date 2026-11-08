@@ -21,7 +21,7 @@ def build_venue(scene: CircuitScene) -> None:
     scene.braking_boards(2103, -1)  # Spitzkehre
     scene.braking_boards(2828, 1)  # Mercedes Arena entry
     scene.braking_boards(3801, 1)  # Sachs
-    mapped_building(scene, 202491057, 13, facade='Concrete', floors=3, roof='canopy')
+    mapped_building(scene, 202491057, 13, facade='Concrete', floors=3, roof='canopy', garage_front=True)
     mapped_building(scene, 256789030, 8, facade='White', floors=2, roof='pitched')
     mapped_building(scene, 232009816, 25, facade='Concrete', floors=7, balconies=True)
     scene.stand(0, 180, -1, rows=28, setback=18, roofed=True, seat_material='SeatRed')

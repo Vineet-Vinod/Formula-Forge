@@ -16,6 +16,7 @@ from venues.east_architecture import (
     mapped,
     trees,
 )
+from venues.west_architecture import apron_band
 
 
 def circuit_edges(scene: CircuitScene) -> None:
@@ -82,6 +83,10 @@ def circuit_edges(scene: CircuitScene) -> None:
     ):
         scene.branding(start, end, side, material)
 
+
+    apron_band(scene, 1420, 1550, 1, 2.35, 2.55, 'White')
+    apron_band(scene, 2390, 2630, 1, 2.35, 2.55, 'White')
+    apron_band(scene, 3910, 4190, 1, 2.35, 2.55, 'White')
 
 def build_venue(scene: CircuitScene) -> None:
     circuit_edges(scene)

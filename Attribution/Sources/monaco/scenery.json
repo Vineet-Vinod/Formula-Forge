@@ -1,0 +1,295 @@
+{
+  "recipe": "make circuit-assets CIRCUIT=monaco",
+  "tiles": 93,
+  "triangles": 517768,
+  "road_sha256": "415db676f90d4adce092ba579154838db97dd7597637bd7193c9de30ba15ee44",
+  "terrain_sha256": "40d00025821f43db3273205cd72f0cb95f5f390bfd7276ddbd1765ff08e82644",
+  "landmarks": [
+    {
+      "name": "Reference event panels",
+      "start_m": 30,
+      "end_m": 200,
+      "side": 1,
+      "material": "PanelWhite"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 30,
+      "end_m": 200,
+      "side": -1,
+      "material": "PanelWhite"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 250,
+      "end_m": 340,
+      "side": -1,
+      "material": "PanelYellow"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 2170,
+      "end_m": 2440,
+      "side": -1,
+      "material": "PanelPurple"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 2170,
+      "end_m": 2400,
+      "side": 1,
+      "material": "PanelPurple"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 1260,
+      "end_m": 1370,
+      "side": 1,
+      "material": "PanelGreen"
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 262,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 1183,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 2130,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 2431,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Port Hercule / Mediterranean shore",
+      "source": "Retained bounded OSMcoastline; sea cells selected by registered water witnesses",
+      "water_height_m": -2.5,
+      "yachts": 75,
+      "dimensions_status": "Coastline mapped. Water2.5mbelowrelativeRascasse road and dynamic17\u201327myachtfleet are original reference reconstructions; individualboatpositions are not surveyed assets."
+    },
+    {
+      "osm_id": 161880705,
+      "name": "Ermanno Palace",
+      "height_m": 61,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 94399585,
+      "name": "Le Panorama",
+      "height_m": 54,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 94399672,
+      "name": "Villa Hyacinthe",
+      "height_m": 14,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 94400205,
+      "name": "Le Bristol",
+      "height_m": 20,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 94399922,
+      "name": "Le Shangri-La",
+      "height_m": 48,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 94399524,
+      "name": "Le Mirabeau",
+      "height_m": 81,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 161775596,
+      "name": "Villa Les Aigles",
+      "height_m": 11,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 94399684,
+      "name": "Les Caravelles",
+      "height_m": 54,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 94399872,
+      "name": "Sun Tower",
+      "height_m": 75,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 176722821,
+      "name": "Monte Carlo Star",
+      "height_m": 11,
+      "removed_road_area_m2": 1884.523,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 2093796,
+      "name": "2093796",
+      "height_m": 24,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "Authored elevated tunnel/bridge deck",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 8280869,
+      "name": "8280869",
+      "height_m": 24,
+      "removed_road_area_m2": 4.601,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 161769674,
+      "name": "161769674",
+      "height_m": 19,
+      "removed_road_area_m2": 6.252,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "name": "Casino de Monte Carlo",
+      "osm_id": 161769674,
+      "dimensions_status": "Mapped footprint contains casino POI4416197079. Height19m and roof ornament reconstructed from official SBM architecture; no invented rectangular footprint."
+    },
+    {
+      "name": "Fairmont tunnel",
+      "start_m": 1520,
+      "end_m": 2010,
+      "dimensions_status": "Path follows native road. Walls0.85moutside white line, ceiling5.4mabove road; original reconstruction from414/450/558sframes."
+    },
+    {
+      "name": "Authored pit building",
+      "start_m": 3070,
+      "end_m": 3330,
+      "side": 1,
+      "height_m": 10
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 0,
+      "end_m": 180,
+      "side": -1,
+      "rows": 15
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 2350,
+      "end_m": 2490,
+      "side": 1,
+      "rows": 18
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 2570,
+      "end_m": 2680,
+      "side": 1,
+      "rows": 18
+    }
+  ],
+  "vegetation": [
+    {
+      "start_m": 280,
+      "end_m": 550,
+      "side": 1,
+      "setback_m": 10,
+      "rows": 1,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 700,
+      "end_m": 870,
+      "side": 1,
+      "setback_m": 8,
+      "rows": 1,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 1050,
+      "end_m": 1170,
+      "side": -1,
+      "setback_m": 8,
+      "rows": 1,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 1280,
+      "end_m": 1440,
+      "side": -1,
+      "setback_m": 10,
+      "rows": 1,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 860,
+      "end_m": 1030,
+      "side": 1,
+      "setback_m": 20,
+      "rows": 1,
+      "species_form": "palm",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 1250,
+      "end_m": 1410,
+      "side": 1,
+      "setback_m": 16,
+      "rows": 1,
+      "species_form": "palm",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    }
+  ],
+  "review_status": "Awaiting packaged whole-route review; asset import is not visual approval."
+}

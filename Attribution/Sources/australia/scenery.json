@@ -1,0 +1,231 @@
+{
+  "recipe": "make circuit-assets CIRCUIT=australia",
+  "tiles": 196,
+  "triangles": 733865,
+  "road_sha256": "dd48dd7f8cc9ae28e77e0b4784731f7f6c333818a82028707eb69c3738b4d26b",
+  "terrain_sha256": "b383bd6d65e5ee5b6b951832f450083067f2d6ddb504c6816697b6121f9a4758",
+  "landmarks": [
+    {
+      "name": "Reference event panels",
+      "start_m": 4930,
+      "end_m": 5270,
+      "side": 1,
+      "material": "PanelPurple"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 4930,
+      "end_m": 5270,
+      "side": -1,
+      "material": "PanelPurple"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 650,
+      "end_m": 1030,
+      "side": 1,
+      "material": "PanelYellow"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 650,
+      "end_m": 1030,
+      "side": -1,
+      "material": "PanelYellow"
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 286,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 1018,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 3234,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 4065,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 4578,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Authored pit building",
+      "start_m": 4940,
+      "end_m": 5230,
+      "side": 1,
+      "height_m": 13
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 4900,
+      "end_m": 5270,
+      "side": -1,
+      "rows": 20
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 80,
+      "end_m": 230,
+      "side": -1,
+      "rows": 18
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 930,
+      "end_m": 1080,
+      "side": -1,
+      "rows": 16
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 3900,
+      "end_m": 4020,
+      "side": -1,
+      "rows": 13
+    },
+    {
+      "osm_id": 26811587,
+      "name": "Powerhouse Function Centre",
+      "height_m": 7,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 154529390,
+      "name": "Beaurepaire Pavilion",
+      "height_m": 7,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 45384591,
+      "name": "YVE Apartments",
+      "height_m": 70,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 306782098,
+      "name": "Pullman Melbourne Albert Park",
+      "height_m": 16,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 1081955937,
+      "name": "Kingstoun",
+      "height_m": 77.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    }
+  ],
+  "vegetation": [
+    {
+      "start_m": 240,
+      "end_m": 850,
+      "side": 1,
+      "setback_m": 10,
+      "rows": 2,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 300,
+      "end_m": 930,
+      "side": -1,
+      "setback_m": 14,
+      "rows": 2,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 1120,
+      "end_m": 1700,
+      "side": 1,
+      "setback_m": 18,
+      "rows": 2,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 1160,
+      "end_m": 1720,
+      "side": -1,
+      "setback_m": 17,
+      "rows": 2,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 1800,
+      "end_m": 2860,
+      "side": -1,
+      "setback_m": 18,
+      "rows": 2,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 2940,
+      "end_m": 3860,
+      "side": -1,
+      "setback_m": 14,
+      "rows": 2,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 3880,
+      "end_m": 4800,
+      "side": 1,
+      "setback_m": 18,
+      "rows": 2,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 4100,
+      "end_m": 4760,
+      "side": -1,
+      "setback_m": 22,
+      "rows": 2,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 1900,
+      "end_m": 2810,
+      "side": 1,
+      "setback_m": 24,
+      "rows": 1,
+      "species_form": "palm",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    }
+  ],
+  "review_status": "Awaiting packaged whole-route review; asset import is not visual approval."
+}

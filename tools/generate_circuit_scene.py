@@ -6,7 +6,9 @@ import importlib
 import sys
 
 from circuit_art import artwork
+from circuit_dataclasses import PitLane
 from circuit_scene import CircuitScene
+from pydantic import TypeAdapter
 
 
 def generate(slug: str) -> None:
@@ -20,6 +22,9 @@ def generate(slug: str) -> None:
         else "Grass"
     )
     scene.road_surfaces(base)
+    pit_profile = scene.sources / "pit-lane.json"
+    if pit_profile.exists():
+        scene.pit_lane(TypeAdapter(PitLane).validate_json(pit_profile.read_bytes()))
     print(f"{slug}: registered architecture and landscape", flush=True)
     importlib.import_module("venues." + slug).build_venue(scene)
     print(f"{slug}: terrain", flush=True)

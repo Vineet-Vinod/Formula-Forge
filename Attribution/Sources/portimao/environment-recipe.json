@@ -491,5 +491,16 @@
       }
     ]
   },
-  "ground_appearance_review": "Sparse yellow/olive turf and dry beige exposed banks; shared Grass still needs dry-ground selection."
+  "ground_appearance_review": "Sparse yellow/olive turf and dry beige exposed banks; shared Grass still needs dry-ground selection.",
+  "pit_frontage_correction": {
+    "status": "Source change awaiting new rendered review",
+    "geometry": "Mapped pit front now has recessed garage bays below retained upper floors; no repeated ground-floor office windows on road-facing facade. Bay widths/depths are original reference reconstruction, not an as-built survey.",
+    "paving_profile": "pit-lane.json"
+  },
+  "tower_pilot_correction": {
+    "osm_id": 157736297,
+    "status": "Source correction awaiting fresh rendered review",
+    "method": "Retain24-point circular outline and5taggedlevels. Recess glazed shaft to84% outline, projecting terraces95%, broad crown102%, double-sided slab/soffits and slim supports.18mheight and relative overhang dimensions are original estimates from173.63/615.30s, not measured.",
+    "camera_note": "2500m view crops tower at left/top; use2450m or2400m to inspect complete crown silhouette. No footprint relocation."
+  }
 }

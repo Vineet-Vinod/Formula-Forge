@@ -2423,5 +2423,61 @@
     ],
     "evidence": "Paired repeated oval roofs are visible after the T14 hairpin. The retained H/K rings have 207/181 vertices and rounded compound outlines; B1 has a rectangular five-vertex outline.",
     "dimensions": "Mapped plan bounds; canopy radii, column heights and red seat palette are reference estimates."
+  },
+  "apron_paint_review": {
+    "reference": "Saved/Refs/china.mp4",
+    "reviewed": "Overview and detailed frames across the lap; specific added motifs are tied to the listed frame timestamps. Paint registration is estimated from official corners and landmarks, not proportional playback time.",
+    "geometry": "Original vector shapes, road-branch height with sample=scene.at(station), clipped away from the road. No reference pixels shipped.",
+    "patches": [
+      {
+        "kind": "band",
+        "start_m": 1180,
+        "end_m": 1270,
+        "side": 1,
+        "inner_m": 0.15,
+        "outer_m": 7.95,
+        "material": "RunoffViolet",
+        "reviewed_video_seconds": [
+          662
+        ],
+        "observed": "T13 inner apron is violet with white event artwork. This original plain violet field preserves the observed palette; the commercial game artwork is not copied."
+      },
+      {
+        "kind": "band",
+        "start_m": 1185,
+        "end_m": 1260,
+        "side": 1,
+        "inner_m": 7.55,
+        "outer_m": 7.75,
+        "material": "White",
+        "reviewed_video_seconds": [
+          662
+        ],
+        "observed": "Thin white outer boundary of the violet T13 field."
+      },
+      {
+        "kind": "band",
+        "start_m": 4170,
+        "end_m": 4310,
+        "side": 1,
+        "inner_m": 0.15,
+        "outer_m": 2.4,
+        "material": "RunoffGreen",
+        "reviewed_video_seconds": [
+          638,
+          686
+        ],
+        "observed": "T3 recovery has a green painted kerb-edge strip adjoining the asphalt escape."
+      }
+    ],
+    "native_changes": "T13 native1180–1270m driverRIGHT apron widened from2.6m to8.0m, paved asphalt; requires shared closed-envelope re-export/check.",
+    "unpainted_policy": "Gravel, grass and unpainted asphalt remain beyond the observed paint bands."
+  },
+  "pit_lane": {
+    "source": "pit-lane.json",
+    "visual_only_outside_pit_wall": true,
+    "registration": "Authored Shanghai garage frontage scene.pit_building(3230,3740,+1), including yellow fascia and roof slabs, lies exactly 13 m beyond road edge. Reference610–626/682/706/710s confirms pits right and Section A stand left. Native timing line3450m is inside this frontage; route origin near officialT7 remains unchanged.",
+    "garage_front_outer_offset_m": 13.0,
+    "source_world_frame": "Native east/north station frame; +1 driver right, -1 driver left. No route-origin rotation."
   }
 }

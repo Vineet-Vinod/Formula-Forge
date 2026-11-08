@@ -97,7 +97,7 @@ def field_nodes(
         0.35
         if "Facade" in material.get_name()
         else 0.05
-        if "PresentationSurface" in material.get_name()
+        if any(word in material.get_name() for word in ("PresentationSurface", "Asphalt"))
         else 0.12
     )
     total = EDIT.create_material_expression(material, unreal.MaterialExpressionAdd)
@@ -127,14 +127,14 @@ def shade(
     EDIT.connect_material_property(multiply, "", unreal.MaterialProperty.MP_BASE_COLOR)
     if any(
         word in material.get_name()
-        for word in ("PresentationSurface", "SurfaceMasked", "Pavement", "TreeCanopy")
+        for word in ("PresentationSurface", "Asphalt", "SurfaceMasked", "Pavement", "TreeCanopy")
     ):
         strength = EDIT.create_material_expression(
             material, unreal.MaterialExpressionConstant
         )
         strength.r = (
             1.8
-            if "PresentationSurface" in material.get_name()
+            if any(word in material.get_name() for word in ("PresentationSurface", "Asphalt"))
             else 0.3
             if "SurfaceMasked" in material.get_name()
             else 0.07

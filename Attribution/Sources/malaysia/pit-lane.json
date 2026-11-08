@@ -1,0 +1,9 @@
+{
+  "start_m": 5290,
+  "end_m": 320,
+  "side": 1,
+  "outer_offset_m": 13.0,
+  "shoulder_m": 0.1,
+  "transition_m": 25.0,
+  "source_note": "Authored Sepang garage frontage scene.pit_building(5290,320,+1) lies exactly 13 m beyond road edge. Retained pit compound144362327 is excluded from duplicate extrusion; its multi-storey bays and stacked roof silhouette are modeled on the right, opposite the double-sided grandstand. Reference118/122/126/130/134/138s supports this registration. Native interval crosses zero."
+}

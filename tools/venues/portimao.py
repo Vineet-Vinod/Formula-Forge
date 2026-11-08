@@ -1,7 +1,10 @@
 """Portimão: faceted grandstand blades and a circular glazed control tower on dry hills."""
 from __future__ import annotations
 
+from circuit_dataclasses import Point
+from circuit_mesh import add
 from circuit_scene import CircuitScene
+from shapely.geometry import Polygon
 
 from venues.west_architecture import apron_band, mapped_building, mast, trees
 
@@ -17,10 +20,10 @@ def build_venue(scene: CircuitScene) -> None:
     scene.braking_boards(2332, 1)  # Curva da Torre VIP
     scene.braking_boards(2952, -1)  # Curva Samsung
     scene.braking_boards(3327, 1, distances=(100, 50))  # Curva Craig Jones
-    mapped_building(scene, 38167081, 12, facade='White', floors=3, roof='canopy')
+    mapped_building(scene, 38167081, 12, facade='White', floors=3, roof='canopy', garage_front=True)
     mapped_building(scene, 38166697, 17, facade='Concrete', floors=1, roof='blades', enclosed=False)
     scene.stand(470, 1060, -1, rows=23, setback=7, seat_material='SeatRed')
-    mapped_building(scene, 157736297, 18, facade='White', floors=5, balconies=True)
+    torre_vip(scene)
     scene.stand(1430, 1540, -1, rows=12, setback=24, seat_material='SeatRed')
     scene.stand(2240, 2380, -1, rows=12, setback=27, seat_material='SeatRed')
     scene.stand(3480, 3570, -1, rows=12, setback=27, seat_material='SeatRed')
@@ -30,6 +33,44 @@ def build_venue(scene: CircuitScene) -> None:
         trees(scene, start, end, side, setback=40, spacing=38, height=5.5, rows=1)
     for station in [400, 1120, 1570, 2320, 2940, 3590, 4260]:
         mast(scene, station, -1, 18)
+
+
+def torre_vip(scene: CircuitScene) -> None:
+    building = scene.footprint(157736297)
+    polygon = Polygon(building.ring)
+    center = polygon.centroid
+    base = scene.nearest(center.x, center.y)[0].z
+    ring = list(building.ring)
+    if not polygon.exterior.is_ccw:
+        ring.reverse()
+
+    def point(p: tuple[float, float], scale: float, z: float) -> Point:
+        return center.x + (p[0] - center.x) * scale, center.y + (p[1] - center.y) * scale, base + z
+
+    kind = 'Building_TorreVIP'
+    for a, b in zip(ring, ring[1:] + ring[:1]):
+        for level in range(5):
+            z = level * 3.6
+            pa, pb = point(a, .84, z), point(b, .84, z)
+            scene.banner(add(pa, (0, 0, .25)), add(pb, (0, 0, .25)), 3.1, 'Glass', kind)
+            scene.beam(kind, 'White', pa, add(pa, (0, 0, 3.6)), .18)
+            if level:
+                ia, ib, oa, ob = point(a, .84, z), point(b, .84, z), point(a, .95, z), point(b, .95, z)
+                scene.quad(kind, 'White', ia, ib, ob, oa, up=True)
+                scene.quad(kind, 'Concrete', add(oa, (0, 0, -.24)), add(ob, (0, 0, -.24)),
+                           add(ib, (0, 0, -.24)), add(ia, (0, 0, -.24)), up=False)
+                scene.banner(add(oa, (0, 0, -.24)), add(ob, (0, 0, -.24)), .28, 'White', kind)
+                scene.banner(add(oa, (0, 0, .15)), add(ob, (0, 0, .15)), .8, 'Glass', kind)
+                scene.beam(kind, 'Steel', add(oa, (0, 0, .98)), add(ob, (0, 0, .98)), .055)
+        ra, rb = point(a, 1.02, 18), point(b, 1.02, 18)
+        scene.triangle(kind, 'White', (center.x, center.y, base + 18), ra, rb)
+        scene.triangle(kind, 'Concrete', add(rb, (0, 0, -.3)), add(ra, (0, 0, -.3)), (center.x, center.y, base + 17.7))
+        scene.banner(add(ra, (0, 0, -.3)), add(rb, (0, 0, -.3)), .35, 'White', kind)
+        scene.beam(kind, 'White', point(a, .95, 14.4), point(a, .95, 17.7), .14)
+    scene.modeled_buildings.add(building.osm_id)
+    scene.landmarks.append({'name': 'Torre VIP layered circular terraces', 'osm_id': building.osm_id,
+                            'height_m': 18, 'levels': 5,
+                            'dimensions_status': 'Mapped24-point circular outline and5OSMlevels. Glazed shaft inset to84%, terraces95%, crown102% of outline reconstruct observed projecting profile in173.63/615.30s;18mheight and exact overhang depths are unmeasured.'})
 
 
 def circuit_edges(scene: CircuitScene) -> None:

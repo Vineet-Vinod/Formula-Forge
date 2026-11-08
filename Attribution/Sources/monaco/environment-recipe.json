@@ -256,7 +256,7 @@
     "licence": "ODbL1.0",
     "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
     "file": "environment.osm.json.gz",
-    "sha256": "f112643175c41c3b40ca7c82e1819abd9490b61211e9d9ec485ac0e5467a2495",
+    "sha256": "24e10c151ba611463f6ef6c03835d89a19f41372f55371e7b1e94bdc6cf37d66",
     "purpose": "Tightly bounded essential landmark query; inline member geometry preserved.",
     "additional_queries": [
       {
@@ -446,5 +446,25 @@
     "physical_runoff_extents_changed": false,
     "paint": []
   },
-  "ground_appearance_review": "Urban paving and harbor water; small planted beds only."
+  "ground_appearance_review": "Urban paving and harbor water; small planted beds only.",
+  "pilot_geometry_corrections": {
+    "status": "Source corrections awaiting fresh rendered review; previous pilot rejected.",
+    "coastline_query": {
+      "query": "[out:json][timeout:45];way[\"natural\"=\"coastline\"](43.726,7.414,43.746,7.439);out geom;",
+      "endpoint": "https://overpass-api.de/api/interpreter",
+      "retrieved": "2026-11-08",
+      "purpose": "Repair southern coastline connector excluded by previous43.730latitude bound. Complete coastline must cross all sides of venue clip before sea polygonisation.",
+      "response_sha256": "f0793afbdfd57b22f9fed3fa349dcad7397f8b50b51f96e3aedf13acb2078a10"
+    },
+    "environment_sha256": "24e10c151ba611463f6ef6c03835d89a19f41372f55371e7b1e94bdc6cf37d66",
+    "sea_selection": "Use only connected open-sea witness43.733,7.4355; reject sea polygons containing dry Casino/Pit anchors. Previous mixed witnesses selected both land and sea once coastclosed.",
+    "ordinary_city": "445retained footprints versus13previouslymodeled; omitted ordinary street/hillside frontage must be authored.",
+    "tunnel_ceiling": "Explicit downward underface required; prior ceilingnormalpositiveZ was backculled from cockpit.",
+    "modeled_buildings": 404,
+    "retained_buildings": 445,
+    "excluded_structures": "Roof/bridge/compound parts do not become duplicate enclosed office cubes.",
+    "stand_support": "Adds downward soffits and grounded front foundations, with corrected land restored beneath stands.",
+    "tunnel": "Explicit downward opaque roof and top face; left sea-facing open bays, inland tiled wall, fine0.3x0.5m grout pattern and original light strips.",
+    "city_foundation_limit": "Frontage foundations use local ground at nearest footprint edge/minimum footprint terrain; GLO30 remains a DSM, so exact urban street/terrace elevations and all untagged heights remain unverified."
+  }
 }

@@ -1,10 +1,15 @@
 """COTA: rolling spectator hills, stadium stands and the red steel observation veil."""
 from __future__ import annotations
 
+import math
+
 from circuit_dataclasses import Point
 from circuit_mesh import add
 from circuit_scene import CircuitScene
+from shapely.geometry import Polygon
+from shapely.ops import triangulate
 
+from venues.east_architecture import footprint_stand
 from venues.west_architecture import (
     apron_band,
     apron_star,
@@ -26,13 +31,13 @@ def build_venue(scene: CircuitScene) -> None:
     scene.braking_boards(3650, 1)  # T12 back-straight stop
     scene.braking_boards(4162, 1, distances=(100, 50))  # T15 stadium
     scene.braking_boards(5221, 1)  # T20 pit return
-    mapped_building(scene, 376713391, 14, facade='White', floors=3, roof='canopy')
-    scene.stand(5100, 5450, 1, rows=25, setback=12, roofed=True, seat_material='Concrete')
+    mapped_building(scene, 376713391, 14, facade='White', floors=3, roof='canopy', garage_front=True)
+    main_grandstand(scene)
     scene.stand(330, 540, -1, rows=21, setback=30, seat_material='Concrete')
     scene.stand(1050, 1280, -1, rows=15, setback=28, seat_material='Concrete')
     scene.stand(1850, 1990, -1, rows=15, setback=34, seat_material='Concrete')
     scene.stand(3510, 3700, -1, rows=23, setback=28, seat_material='Concrete')
-    scene.stand(3990, 4160, -1, rows=22, setback=25, seat_material='Concrete')
+    footprint_stand(scene, 460658892, rows=22, seat_material='Concrete')
     scene.stand(4840, 4950, -1, rows=17, setback=27, seat_material='Concrete')
     mapped_building(scene, 847781223, 18, facade='Concrete', floors=1, roof='canopy', enclosed=False)
     observation_tower(scene)
@@ -42,6 +47,36 @@ def build_venue(scene: CircuitScene) -> None:
         trees(scene, start, end, side, setback=38, spacing=26, rows=2, height=8)
     for station in [220, 490, 1100, 1740, 2390, 3590, 4040, 4510, 4920, 5290]:
         mast(scene, station, -1, 24)
+
+
+def main_grandstand(scene: CircuitScene) -> None:
+    footprint_stand(scene, 460658889, rows=25, seat_material='Concrete')
+    roof = scene.footprint(376713393)
+    polygon = Polygon(roof.ring).difference(scene.road_mask.buffer(1.2))
+    center = Polygon(roof.ring).centroid
+    road = scene.nearest(center.x, center.y)[0]
+    distances = [scene.nearest(*p)[1] for p in roof.ring]
+    low, high = min(distances), max(distances)
+
+    def point(x: float, y: float, lift: float = 0) -> Point:
+        distance = scene.nearest(x, y)[1]
+        return x, y, road.z + 14 + 2.5 * (distance - low) / max(1, high - low) + lift
+
+    for triangle in triangulate(polygon):
+        if polygon.covers(triangle):
+            a, b, c = list(triangle.exterior.coords)[:3]
+            scene.triangle('Building_CotaMainRoof', 'Roof', point(*a), point(*b), point(*c))
+            scene.triangle('Building_CotaMainRoof', 'Concrete', point(c[0], c[1], -.22), point(b[0], b[1], -.22), point(a[0], a[1], -.22))
+    for a, b in zip(roof.ring, roof.ring[1:] + roof.ring[:1]):
+        count = max(1, round(math.dist(a, b) / 12))
+        scene.beam('Building_CotaMainRoof', 'Steel', point(*a), point(*b), .24)
+        for i in range(count):
+            x, y = a[0] + (b[0] - a[0]) * i / count, a[1] + (b[1] - a[1]) * i / count
+            scene.beam('Building_CotaMainRoof', 'Steel', (x, y, scene.ground(x, y)), point(x, y), .3)
+    scene.modeled_buildings.add(376713393)
+    scene.landmarks.append({'name': 'Mapped main grandstand and rear canopy',
+                            'osm_id': 460658889, 'roof_osm_id': 376713393,
+                            'dimensions_status': 'Both actual OSM footprints retained. Roof14–16.5m above adjacent road and25rows reconstructed from reference; no generic5100–5450m stand remains.'})
 
 
 def observation_tower(scene: CircuitScene) -> None:

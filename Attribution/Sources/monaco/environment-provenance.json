@@ -6,7 +6,7 @@
   "licence": "ODbL1.0",
   "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
   "file": "environment.osm.json.gz",
-  "sha256": "f112643175c41c3b40ca7c82e1819abd9490b61211e9d9ec485ac0e5467a2495",
+  "sha256": "24e10c151ba611463f6ef6c03835d89a19f41372f55371e7b1e94bdc6cf37d66",
   "purpose": "Tightly bounded essential landmark query; inline member geometry preserved.",
   "additional_queries": [
     {
@@ -14,6 +14,13 @@
       "endpoint": "https://overpass-api.de/api/interpreter",
       "retrieved": "2026-11-08",
       "purpose": "Boundedcoastline/harbourboundary needed for sea-land polygonisation; no broadMediterraneanrelationquery."
+    },
+    {
+      "query": "[out:json][timeout:45];way[\"natural\"=\"coastline\"](43.726,7.414,43.746,7.439);out geom;",
+      "endpoint": "https://overpass-api.de/api/interpreter",
+      "retrieved": "2026-11-08",
+      "purpose": "Repair southern coastline connector excluded by previous43.730latitude bound. Complete coastline must cross all sides of venue clip before sea polygonisation.",
+      "response_sha256": "f0793afbdfd57b22f9fed3fa349dcad7397f8b50b51f96e3aedf13acb2078a10"
     }
   ]
 }

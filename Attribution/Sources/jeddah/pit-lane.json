@@ -1,0 +1,9 @@
+{
+  "start_m": 5830,
+  "end_m": 210,
+  "side": 1,
+  "outer_offset_m": 13.0,
+  "shoulder_m": 0.1,
+  "transition_m": 25.0,
+  "source_note": "Authored Corniche garage frontage scene.pit_building(5830,210,+1) lies 13 m beyond road edge. Reference235/239/243/303s places the multi-level garage balconies on driver right and main stand left. Interval crosses native zero; width is the actual authored garage-front offset, not a surveyed pit-lane measurement."
+}

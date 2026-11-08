@@ -1,0 +1,9 @@
+{
+  "start_m": 5720,
+  "end_m": 5990,
+  "side": -1,
+  "outer_offset_m": 13.0,
+  "shoulder_m": 0.1,
+  "transition_m": 25.0,
+  "source_note": "Authored temporary Baku garage frontage scene.pit_building(5720,5990,-1) lies exactly 13 m outside the road edge. Reference130/155/170/175/185s places the low temporary garages left of the grid and the boulevard stand right. The profile follows the authored building span; no pit access or changed race route is implied."
+}

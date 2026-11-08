@@ -33,13 +33,15 @@ PALETTE = {
     "Green": (0.055, 0.25, 0.10),
     "Yellow": (0.85, 0.64, 0.025),
     "Lamp": (12.0, 11.5, 10.5),
-    "RunoffGreen": (0.02, 0.23, 0.17),
+    "RunoffGreen": (0.02, 0.19, 0.065),
     "RunoffBlue": (0.025, 0.20, 0.58),
-    "RunoffRed": (0.52, 0.045, 0.025),
+    "RunoffRed": (0.46, 0.018, 0.012),
     "RunoffOrange": (0.90, 0.23, 0.018),
+    "RunoffPurple": (0.20, 0.035, 0.19),
+    "RunoffViolet": (0.26, 0.07, 0.42),
 }
 SOURCES = {
-    "Road": "/Game/Generated/Materials/rebuild_road_asphalt",
+    "Road": "/Game/Generated/Interlagos/Materials/asphalt",
     "Runoff": "/Game/Generated/Materials/rebuild_runoff_asphalt",
     "Grass": "/Game/Generated/Interlagos/Materials/infield_grass",
     "Gravel": "/Game/Generated/Materials/rebuild_sandy_gravel",
