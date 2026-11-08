@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=hockenheim",
-  "tiles": 149,
-  "triangles": 1056982,
+  "tiles": 152,
+  "triangles": 1104877,
   "road_sha256": "e1931211f2fb2738b84d89f7e2e3e5334c054d15676352e641abede48b98ddf9",
   "terrain_sha256": "0502f6e0d0b22746062be629bfbffa4c61dddf83f64da971fcfad228ef43919d",
   "landmarks": [
@@ -80,14 +80,9 @@
       "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
     },
     {
+      "name": "Hockenheim Boxengeb\u00e4ude",
       "osm_id": 202491057,
-      "name": "Boxengeb\u00e4ude",
-      "height_m": 13,
-      "removed_road_area_m2": -0.0,
-      "structure": "enclosed",
-      "ground_floor": "Recessed road-facing garage bays",
-      "road_clearance_exception": "none",
-      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+      "dimensions_status": "Actual LGL-attributed OSM footprint and tagged white gabled roof retained. Original6.4m-class recessed garage bays, one narrow upper glazing band, white piers/floor slab and2.5m overhang follow supplied48.33s direct reference.8.8m eave/10.6m ridge and facade dimensions estimated, not surveyed; replaces generic13m three-storey glass wall."
     },
     {
       "osm_id": 256789030,
@@ -211,6 +206,14 @@
       "rows": 3,
       "species_form": "broadleaf",
       "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 780,
+      "end_m": 1020,
+      "species_form": "Mapped woodland canopy",
+      "trees": 472,
+      "osm_relation": 2165864,
+      "placement_status": "Actual SchwetzingerHardt forest boundary including inner clearings; trunks outside native corridors/water/buildings.14m spacing and13.2\u201316.8m heights are original reference reconstruction; no extra forest in cleared infield."
     }
   ],
   "review_status": "Awaiting packaged whole-route review; asset import is not visual approval."

@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=australia",
   "tiles": 195,
-  "triangles": 748787,
+  "triangles": 752153,
   "road_sha256": "dd48dd7f8cc9ae28e77e0b4784731f7f6c333818a82028707eb69c3738b4d26b",
   "terrain_sha256": "b383bd6d65e5ee5b6b951832f450083067f2d6ddb504c6816697b6121f9a4758",
   "landmarks": [
@@ -168,7 +168,7 @@
   "vegetation": [
     {
       "start_m": 240,
-      "end_m": 985,
+      "end_m": 1045,
       "side": 1,
       "setback_m": 6,
       "rows": 3,
@@ -177,7 +177,7 @@
     },
     {
       "start_m": 300,
-      "end_m": 980,
+      "end_m": 1045,
       "side": -1,
       "setback_m": 6,
       "rows": 3,

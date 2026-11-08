@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=austria",
   "tiles": 149,
-  "triangles": 852704,
+  "triangles": 893972,
   "road_sha256": "d6f39b8390deb936be2c083cc6a44c7ea30d053d3afa116e7f8e281898d193d0",
   "terrain_sha256": "6408e26119b1d40ee27a2177945afc07c4f942b1c7a06ed3919193ec6d5cfc4b",
   "landmarks": [
@@ -139,7 +139,7 @@
       "side": 1,
       "setback_m": 35,
       "rows": 4,
-      "species_form": "conifer",
+      "species_form": "mixed conifer/broadleaf",
       "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
     },
     {
@@ -148,7 +148,7 @@
       "side": -1,
       "setback_m": 35,
       "rows": 4,
-      "species_form": "conifer",
+      "species_form": "mixed conifer/broadleaf",
       "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
     },
     {
@@ -157,7 +157,7 @@
       "side": -1,
       "setback_m": 55,
       "rows": 4,
-      "species_form": "conifer",
+      "species_form": "mixed conifer/broadleaf",
       "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
     },
     {
@@ -166,7 +166,7 @@
       "side": -1,
       "setback_m": 40,
       "rows": 4,
-      "species_form": "conifer",
+      "species_form": "mixed conifer/broadleaf",
       "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
     },
     {
@@ -175,7 +175,7 @@
       "side": -1,
       "setback_m": 40,
       "rows": 4,
-      "species_form": "conifer",
+      "species_form": "mixed conifer/broadleaf",
       "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
     },
     {
@@ -184,7 +184,7 @@
       "side": 1,
       "setback_m": 65,
       "rows": 4,
-      "species_form": "conifer",
+      "species_form": "mixed conifer/broadleaf",
       "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
     },
     {
@@ -193,7 +193,7 @@
       "side": -1,
       "setback_m": 55,
       "rows": 4,
-      "species_form": "conifer",
+      "species_form": "mixed conifer/broadleaf",
       "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
     }
   ],

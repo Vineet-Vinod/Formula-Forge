@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=monaco",
-  "tiles": 110,
-  "triangles": 1211525,
+  "tiles": 111,
+  "triangles": 1520462,
   "road_sha256": "415db676f90d4adce092ba579154838db97dd7597637bd7193c9de30ba15ee44",
   "terrain_sha256": "40d00025821f43db3273205cd72f0cb95f5f390bfd7276ddbd1765ff08e82644",
   "landmarks": [
@@ -188,24 +188,16 @@
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
     {
+      "name": "Hotel de Paris",
       "osm_id": 8280869,
-      "name": "8280869",
       "height_m": 24,
-      "removed_road_area_m2": 4.601,
-      "structure": "enclosed",
-      "ground_floor": "Facade windows",
-      "road_clearance_exception": "none",
-      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+      "dimensions_status": "Actual mapped footprint; original arched openings, relief pilasters/cornices, individual iron balconies and mansard envelope reconstructed from supplied330s and CasinoSquare footage. Storey heights/bay dimensions estimated; no generic office facade."
     },
     {
+      "name": "Casino heritage frontage",
       "osm_id": 161769674,
-      "name": "161769674",
       "height_m": 19,
-      "removed_road_area_m2": 6.252,
-      "structure": "enclosed",
-      "ground_floor": "Facade windows",
-      "road_clearance_exception": "none",
-      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+      "dimensions_status": "Actual mapped footprint; original arched openings, relief pilasters/cornices, individual iron balconies and mansard envelope reconstructed from supplied330s and CasinoSquare footage. Storey heights/bay dimensions estimated; no generic office facade."
     },
     {
       "name": "Casino de Monte Carlo",
@@ -3764,6 +3756,13 @@
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
       "removed_road_area_m2": 0.0
+    },
+    {
+      "name": "Mapped Casino-district gardens and heritage trees",
+      "garden_area_m2": 27960.621,
+      "mapped_trees": 97,
+      "trees_excluded_for_clearance_or_query_bounds": 13,
+      "dimensions_status": "Retained OSM garden/grass footprints, pedestrian paths and individual tree positions. Road/corridor/water/buildings excluded; exact native terrain-grid cell subdivision replaces underlying Concrete. Tagged tree height/species retained; missing heights estimated11m, untagged broadleaf form. No terrain-height changes."
     }
   ],
   "vegetation": [
@@ -3777,39 +3776,12 @@
       "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
     },
     {
-      "start_m": 700,
-      "end_m": 870,
-      "side": 1,
-      "setback_m": 8,
-      "rows": 1,
-      "species_form": "broadleaf",
-      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
-    },
-    {
-      "start_m": 1050,
-      "end_m": 1170,
-      "side": -1,
-      "setback_m": 8,
-      "rows": 1,
-      "species_form": "broadleaf",
-      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
-    },
-    {
       "start_m": 1280,
       "end_m": 1440,
       "side": -1,
       "setback_m": 10,
       "rows": 1,
       "species_form": "broadleaf",
-      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
-    },
-    {
-      "start_m": 860,
-      "end_m": 1030,
-      "side": 1,
-      "setback_m": 20,
-      "rows": 1,
-      "species_form": "palm",
       "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
     },
     {

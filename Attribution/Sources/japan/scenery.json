@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=japan",
   "tiles": 102,
-  "triangles": 1626417,
+  "triangles": 1620309,
   "road_sha256": "bb40f25c218cf57ba4757dcf9d5b823632494805044e3e5925e3b1a15453ddde",
   "terrain_sha256": "d7690ee68e2d8a389b89973937be81cd217b5d621db02bd12eeebaecc5540b25",
   "landmarks": [
@@ -91,14 +91,6 @@
     },
     {
       "name": "G",
-      "osm_id": 184102012,
-      "roof": "",
-      "rows": 12,
-      "seat_material": "SeatBlue",
-      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
-    },
-    {
-      "name": "G",
       "osm_id": 184102361,
       "roof": "",
       "rows": 10,
@@ -176,6 +168,16 @@
       "rows": 23,
       "seat_material": "SeatBlue",
       "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+    },
+    {
+      "name": "G-2 permanent grass-bank seating",
+      "osm_id": 184102012,
+      "station_m": 2362.2589015145554,
+      "rows": 12,
+      "front_ground_mean_m": 28.68226337791055,
+      "rear_ground_mean_m": 37.99555128569974,
+      "longitudinal_grade": -0.019275583943828552,
+      "registration": "Official Suzuka G seating map and permanent G panorama: grass between thin pale concrete benches. Exact mapped footprint retained; linear soil grade estimated from retained footprint-edge ground, blended to existing soil within 1.2 m of perimeter. No elevated stadium decks, blue risers or end retaining walls."
     },
     {
       "name": "Suzuka pit building",
