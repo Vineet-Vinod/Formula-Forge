@@ -314,6 +314,14 @@
         "side": 1,
         "requested_width_m": 23,
         "material": "Runoff"
+      },
+      {
+        "start_m": 4120,
+        "end_m": 4206,
+        "side": -1,
+        "requested_width_m": 24,
+        "material": "RunoffRed",
+        "shape_recipe": "t15-island.json"
       }
     ]
   },
@@ -481,7 +489,7 @@
     "observations": "Reference T15 red field with white star, green exit strips and red edging. Primary 2024 IMSA aerial p11 confirms blue fields, white stripes and stars around T12–T18. Original geometry uses approximate widths and star spacing, not a georectified paint survey.",
     "registration_status": "Named reference sector matched to retained road shape; widths, ends and star sizes/spacing are original estimates, not exact surveyed paint coordinates.",
     "height_policy": "Ground-following polygon geometry, clipped outside road_mask. No fixed-z tiles and no enlargement of physical runoff corridors.",
-    "physical_runoff_extents_changed": false,
+    "physical_runoff_extents_changed": true,
     "paint": [
       {
         "type": "band",
@@ -887,5 +895,6 @@
       ],
       "reason": "Star center at same-station capture is90degleft; geometry is not moved to chase viewport."
     }
-  }
+  },
+  "t15_island_correction": "t15-island.json"
 }

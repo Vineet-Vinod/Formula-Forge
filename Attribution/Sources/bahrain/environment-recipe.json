@@ -1057,8 +1057,92 @@
   "pit_lane": {
     "source": "pit-lane.json",
     "visual_only_outside_pit_wall": true,
-    "registration": "Authored Sakhir garage frontage scene.pit_building(5180,220,+1) lies exactly 13 m beyond the road edge; canted sail roofs and garage/pit-wall side are visible in reference120/130/170/185s. This is registration to the authored garage geometry, not a measured real-world pit-lane width. The native interval crosses station zero.",
+    "registration": "Custom sakhir_pits(scene) keeps the authored garage front13m outside the road edge, same5180→220m interval and driverRIGHT side. Folded-roof/garage details follow reference120/130/185s.",
     "garage_front_outer_offset_m": 13.0,
     "source_world_frame": "Native east/north station frame; +1 driver right, -1 driver left. No route-origin rotation."
+  },
+  "pilot_geometry_correction": {
+    "reference_video_seconds": [
+      100,
+      115,
+      120,
+      130,
+      185
+    ],
+    "mainstand": "Retained mainstand187123419 is a four-vertex near-rectangle, OBB ratio1.00002, not a curved ring. Bahrain sail stands now explicitly use footprint-clipped tensile panels:15 mainstand bays with White tops, Cream soffits, exposed rims/ribs and rear supports. No generic dark flat roof is substituted.",
+    "pits": "Custom Sakhir frontage preserves garage front13m and profile5180→220m.57 recessed garage bays/roller headers, white piers/balcony fascia, narrower upper glazing ribbon and19 folded/scalloped white roof bays with first4entryspire details. Dimensions are reference estimates.",
+    "tower": "Mapped tower187123438 remains native332.79m driverRIGHT91.79m fromcenterline. It is visible in the opening-corner approach at100s; absence from the station0forwardFOV is not evidence of wrong registration.",
+    "geometry_check": {
+      "triangle_kinds": {
+        "Building_StandTread": 2429,
+        "Building_StandRiser": 19316,
+        "Building_StandSeats": 14400,
+        "Building_Crowd_Stand": 52800,
+        "Building_TensileRoof": 849,
+        "Building_TensileSoffit": 849,
+        "Building_TensileRim": 1392,
+        "Building_TensileRibs": 1392,
+        "Building_TensileColumns": 360,
+        "Building_TensileBraces": 360,
+        "Building_SakhirGarageRecess": 228,
+        "Building_SakhirGaragePiers": 1368,
+        "Building_SakhirGarageReveals": 228,
+        "Building_SakhirGarageHeaders": 684,
+        "Building_SakhirRollerBoxes": 2052,
+        "Building_SakhirBalcony": 684,
+        "Building_SakhirUpperWall": 228,
+        "Building_SakhirHospitalityRibbon": 228,
+        "Building_SakhirUpperFascia": 684,
+        "Building_SakhirPitFloors": 342,
+        "Building_SakhirPitRear": 228,
+        "Building_SakhirFoldedRoof": 152,
+        "Building_SakhirFoldedSoffit": 152,
+        "Building_SakhirRoofEdge": 456,
+        "Building_SakhirRoofFrames": 1824,
+        "Building_SakhirPitEntrySpire": 48,
+        "Building_SakhirPitEntryStay": 192
+      },
+      "roof_outside_footprint_m": 1.3431837104942141e-14,
+      "roof_down_faces": 0,
+      "soffit_up_faces": 0,
+      "pit_low_road_intrusions": 0,
+      "landmarks": [
+        {
+          "name": "Main Grandstand",
+          "osm_id": 187123419,
+          "roof": "sail",
+          "rows": 24,
+          "seat_material": "SeatRed",
+          "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
+          "boundary_chains": 1,
+          "bays": 50,
+          "max_foundation_height_m": 11.159866670135925,
+          "tensile_roof_bays": 15
+        },
+        {
+          "name": "Sakhir garage frontage and folded pit canopy",
+          "start_m": 5180.0,
+          "end_m": 220.0,
+          "side": 1,
+          "garage_front_offset_m": 13,
+          "garage_bays": 57,
+          "folded_roof_bays": 19,
+          "registration": "Original authored 4.3 m garage recesses, roller headers, white piers, projecting balcony and narrow upper hospitality glazing. Repeated white folded roof/scalloped front edge and four pit-entry spires estimated from reference120/130/185s. No reference pixels or measured architectural survey claimed."
+        }
+      ],
+      "tower_registration": {
+        "osm_id": 187123438,
+        "native_station_m": 332.78614273733393,
+        "side": "right",
+        "centerline_distance_m": 91.78810962948063,
+        "source_xy_m": [
+          104.81052517381204,
+          328.7008165703647,
+          0.0
+        ]
+      },
+      "VmHWM_kib": 64884
+    },
+    "runtime_status": "Packaged pilot rejected; source geometry correction ready for new root capture. No final visual approval claimed."
   }
 }

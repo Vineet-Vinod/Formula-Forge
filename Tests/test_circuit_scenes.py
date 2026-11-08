@@ -139,6 +139,34 @@ def test_escape_surface_follows_road_instead_of_climbing_the_bank(
     assert max(heights) == pytest.approx(3.001, abs=0.0001)
 
 
+def test_grass_cannot_cover_registered_escape_paving(scene: CircuitScene) -> None:
+    scene.road_surfaces()
+    scene.runoff(5, 35, 1, 24, "Runoff")
+    scene.terrain()
+    grass = unary_union(surfaces(scene, {"Grass"}))
+    paving = unary_union(surfaces(scene, {"Runoff"}))
+    assert grass.intersection(paving.buffer(-0.00001)).area < 0.0001
+
+
+def test_paint_sits_on_the_actual_sloped_apron(
+    scene: CircuitScene, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(scene, "ground", lambda x, y: 3 + x * .1 + y * .2)
+    scene.polygon_surface(box(0, 0, 4, 4), "Runoff", paved=True)
+    scene.paint_surface(box(-1, 1, 3, 5), "White")
+    painted = unary_union(surfaces(scene, {"White"}))
+    assert painted.area == pytest.approx(9)
+    for tile in scene.tiles.values():
+        for offset in range(0, len(tile.triangles), 100):
+            slot = struct.unpack_from("<I", tile.triangles, offset)[0]
+            if tile.materials[slot] != "White":
+                continue
+            for vertex in range(3):
+                wx, wy, wz = struct.unpack_from("<8f", tile.triangles, offset + 4 + vertex * 32)[:3]
+                x, y, z = -wy / 100, -wx / 100, wz / 100
+                assert z == pytest.approx(3 + x * .1 + y * .2 + .005, abs=.00001)
+
+
 def test_positive_lane_is_right_of_source_tangent(scene: CircuitScene) -> None:
     sample = scene.at(0)
     x, y, _ = sample.point(3.0)
@@ -335,3 +363,39 @@ def test_mapped_stand_treads_clear_a_steep_rear_bank(
     footprint_stand(scene, 1, rows=10)
     assert treads
     assert min(z - scene.ground(x, y) for x, y, z in treads) >= 0.1799
+
+
+def test_bahrain_sail_roofs_have_white_tops_and_cream_undersides(
+    scene: CircuitScene, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    from circuit_dataclasses import Building, Point
+    from circuit_mesh import cross, sub
+    from venues.east_architecture import footprint_stand
+
+    scene.slug = "bahrain"
+    ring = [(50.0, -30.0), (66.0, -30.0), (66.0, 30.0), (50.0, 30.0)]
+    scene.buildings = [Building(1, "Tensile stand", "grandstand", 7.0, ring, {})]
+    original = scene.triangle
+    roof_faces: list[tuple[str, str, float]] = []
+
+    def triangle(
+        kind: str,
+        material: str,
+        a: Point,
+        b: Point,
+        c: Point,
+        uv: tuple[tuple[float, float], ...] = ((0, 0), (1, 0), (1, 1)),
+        normals: tuple[Point, ...] | None = None,
+    ) -> None:
+        if kind in ("Building_TensileRoof", "Building_TensileSoffit"):
+            roof_faces.append((kind, material, cross(sub(b, a), sub(c, a))[2]))
+        original(kind, material, a, b, c, uv, normals)
+
+    monkeypatch.setattr(scene, "triangle", triangle)
+    footprint_stand(scene, 1, rows=10, roof="sail")
+    assert roof_faces
+    for kind, material, normal_z in roof_faces:
+        if kind == "Building_TensileRoof":
+            assert material == "White" and normal_z > 0
+        else:
+            assert material == "Cream" and normal_z < 0

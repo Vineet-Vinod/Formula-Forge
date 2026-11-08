@@ -54,7 +54,11 @@ def artwork(scene: CircuitScene) -> None:
     if scene.slug not in NIGHT:
         return
     fixtures = build_lighting(scene)
-    lights = [world(fixture.position) for fixture in fixtures]
+    samples = [scene.nearest(f.position[0], f.position[1])[0] for f in fixtures]
+    lights = []
+    for fixture, sample in zip(fixtures, samples, strict=True):
+        lane = (fixture.position[0] - sample.x) * sample.ty - (fixture.position[1] - sample.y) * sample.tx
+        lights.append(world(sample.point(min(1.5, sample.half_width * .2) * (1 if lane > 0 else -1))))
     minimum_x = min(p[0] for p in lights) - 10000
     minimum_y = min(p[1] for p in lights) - 10000
     width = max(p[0] for p in lights) - minimum_x + 10000
@@ -62,20 +66,23 @@ def artwork(scene: CircuitScene) -> None:
     size = 2048
     radiance = np.zeros((size, size), dtype=np.float32)
     elevation = np.zeros((size, size), dtype=np.float32)
-    for fixture, (x, y, _z) in zip(fixtures, lights, strict=True):
-        radius = fixture.pool_radius_m * 100
-        reach = max(7000.0, radius * 6)
+    for fixture, sample, (x, y, _z) in zip(fixtures, samples, lights, strict=True):
+        along_radius = max(5.0, fixture.pool_radius_m * .55) * 100
+        across_radius = max(4.0, fixture.pool_radius_m * .35) * 100
+        reach = max(along_radius, across_radius) * 5
         c0 = max(0, int((x - reach - minimum_x) / width * size))
         c1 = min(size, int((x + reach - minimum_x) / width * size) + 1)
         r0 = max(0, int((y - reach - minimum_y) / height * size))
         r1 = min(size, int((y + reach - minimum_y) / height * size) + 1)
         dx = minimum_x + (np.arange(c0, c1) + 0.5) * width / size - x
         dy = minimum_y + (np.arange(r0, r1) + 0.5) * height / size - y
-        weight = fixture.power * (radius**2 / (radius**2 + dx[None, :] ** 2 + dy[:, None] ** 2)) ** 1.5
+        along = -dx[None, :] * sample.ty - dy[:, None] * sample.tx
+        across = dx[None, :] * sample.tx - dy[:, None] * sample.ty
+        weight = fixture.power / (1 + (along / along_radius) ** 2 + (across / across_radius) ** 2) ** 1.5
         radiance[r0:r1, c0:c1] += weight
-        elevation[r0:r1, c0:c1] += weight * fixture.ground_z * 100
+        elevation[r0:r1, c0:c1] += weight * sample.z * 100
     pixels = np.zeros((size, size, 4), dtype=np.uint8)
-    pixels[:, :, 0] = np.rint(np.minimum(1, radiance * 0.72) ** 3.4 * 255).astype(
+    pixels[:, :, 0] = np.rint(np.minimum(.65, radiance * 0.18) ** 2 * 255).astype(
         np.uint8
     )
     ground = np.divide(
@@ -91,7 +98,7 @@ def artwork(scene: CircuitScene) -> None:
             {
                 "bounds": [minimum_x, minimum_y, width, height],
                 "fixture_count": len(lights),
-                "method": "Reference-registered venue-specific masts, head banks and cable fixtures. True local ground heights and reconstructed pool radii/powers drive an original diffuse field; same material approach as accepted Vegas.",
+                "method": "Reference-registered masts, head banks and cable fixtures aim elliptical pools onto the local road. Road-height registration, calibrated cone width and bounded accumulated radiance preserve night falloff; original diffuse field and private materials.",
             },
             indent=2,
         )

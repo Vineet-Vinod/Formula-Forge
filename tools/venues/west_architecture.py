@@ -30,7 +30,7 @@ def apron_band(scene: CircuitScene, start: float, end: float, side: int,
                   a.point(side * (a.half_width + outer))]
         shape = Polygon([(p[0], p[1]) for p in points])
         if shape.is_valid:
-            scene.polygon_surface(shape.difference(scene.road_mask), material, lift=.005, sample=a)
+            scene.paint_surface(shape.difference(scene.surface_mask(a)), material)
     scene.surface_ranges.append({'type': 'apron paint', 'start_m': start,
                                  'end_m': end, 'side': side, 'inner_m': inner,
                                  'outer_m': outer, 'material': material})
@@ -50,7 +50,7 @@ def apron_star(scene: CircuitScene, station: float, side: int,
         points.append((center[0] + sample.tx * along + sample.ty * lateral,
                        center[1] + sample.ty * along - sample.tx * lateral))
     shape = Polygon(points).intersection(unary_union(scene.extra_corridors))
-    scene.polygon_surface(shape.difference(scene.road_mask), material, lift=.006, sample=sample)
+    scene.paint_surface(shape.difference(scene.surface_mask(sample)), material)
     scene.surface_ranges.append({'type': 'apron star', 'station_m': station,
                                  'side': side, 'offset_m': offset, 'radius_m': radius,
                                  'material': material})

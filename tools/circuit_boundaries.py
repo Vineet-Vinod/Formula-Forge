@@ -22,9 +22,20 @@ def generate(slug: str) -> None:
         raise ValueError("Grade-separated circuits require independent deck boundaries")
     scene.road_surfaces()
     importlib.import_module("venues." + slug).build_venue(scene)
-    shape = unary_union([scene.corridor_mask, *scene.extra_corridors]).simplify(
-        0.02, preserve_topology=True
-    )
+    shape = unary_union([scene.corridor_mask, *scene.extra_corridors])
+    elevated = {
+        landmark["osm_id"] for landmark in scene.landmarks
+        if landmark.get("road_clearance_exception", "none") != "none" and "osm_id" in landmark
+    }
+    occupied = []
+    for building in scene.buildings:
+        if (building.osm_id not in scene.modeled_buildings or building.osm_id in elevated
+                or building.use in ("roof", "bridge") or building.tags.get("location") == "overhead"):
+            continue
+        footprint = Polygon(building.ring).buffer(0.5).difference(scene.road_mask.buffer(0.6))
+        if footprint.intersects(shape):
+            occupied.append(footprint)
+    shape = shape.difference(unary_union(occupied)).simplify(0.02, preserve_topology=True)
     polygons = [shape] if isinstance(shape, Polygon) else list(shape.geoms)
     prefix = scene.catalogue.content_dir.split("/")[0]
     if prefix == "COTA":
@@ -88,6 +99,8 @@ def generate(slug: str) -> None:
         "source": "Registered native road and reference-authored escape ranges",
         "method": "Exact planar polygon union, preserving interior islands; simplification tolerance2cm, wallsegments atmost2m. One closed boundary supplies physical and visible protection.",
         "wall_count": len(walls),
+        "occupied_footprints": len(occupied),
+        "structure_clearance_m": 0.5,
         "runoff_ranges": ranges,
         "road_unchanged": True,
         "limitations": "Escape depths and station endpoints are reference estimates, not surveyed race-event barrier positions. Pit access remains a closed game boundary.",

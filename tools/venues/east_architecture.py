@@ -11,7 +11,7 @@ from circuit_scene import CircuitScene
 from shapely.geometry import LineString, MultiLineString, Polygon
 from shapely.geometry import Point as GeoPoint
 from shapely.geometry.base import BaseGeometry
-from shapely.ops import triangulate
+from shapely.ops import triangulate, unary_union
 
 
 def frame(building: Building) -> tuple[Point, Point, Point, float, float]:
@@ -189,6 +189,75 @@ def double_quad(
     scene.quad(kind, material, d, c, b, a)
 
 
+def tensile_roof(scene: CircuitScene, shape: BaseGeometry, height: float) -> int:
+    polygons = [shape] if isinstance(shape, Polygon) else list(shape.geoms)
+    panels = 0
+    for polygon in polygons:
+        if not isinstance(polygon, Polygon) or polygon.area < 10:
+            continue
+        center = polygon.centroid
+        if not polygon.covers(center):
+            center = polygon.representative_point()
+        peak = center.x, center.y, height + 4.2
+        ring = list(polygon.exterior.coords)
+        for a, b in pairwise(ring):
+            face = Polygon([a, b, (peak[0], peak[1])])
+            if not face.is_valid or face.area < 1e-8:
+                continue
+            clipped = face.intersection(polygon)
+            ax, ay = b[0] - a[0], b[1] - a[1]
+            length = math.hypot(ax, ay)
+            denominator = ax * (peak[1] - a[1]) - ay * (peak[0] - a[0])
+            for triangle in triangulate(clipped):
+                if not clipped.covers(triangle):
+                    continue
+                points = []
+                for x, y in list(triangle.exterior.coords)[:3]:
+                    fraction = (ax * (y - a[1]) - ay * (x - a[0])) / denominator
+                    points.append((x, y, height + 4.2 * fraction))
+                pa, pb, pc = points
+                scene.triangle("Building_TensileRoof", "White", pa, pb, pc)
+                scene.triangle(
+                    "Building_TensileSoffit",
+                    "Cream",
+                    add(pc, (0, 0, -0.12)),
+                    add(pb, (0, 0, -0.12)),
+                    add(pa, (0, 0, -0.12)),
+                )
+            if length > 2:
+                edge_a, edge_b = (a[0], a[1], height), (b[0], b[1], height)
+                scene.beam("Building_TensileRim", "White", edge_a, edge_b, 0.14)
+                middle = (a[0] + b[0]) / 2, (a[1] + b[1]) / 2, height - 0.2
+                scene.beam(
+                    "Building_TensileRibs",
+                    "Steel",
+                    middle,
+                    add(peak, (0, 0, -0.2)),
+                    0.12,
+                )
+        vertices = ring[:-1]
+        support_a = max(vertices, key=lambda point: scene.nearest(*point)[1])
+        rear = [
+            point
+            for point in vertices
+            if scene.nearest(*point)[1] > scene.nearest(*support_a)[1] - 3
+        ]
+        support_b = max(rear, key=lambda point: math.dist(point, support_a))
+        for point in (support_a, support_b):
+            base = point[0], point[1], scene.ground(*point)
+            top = point[0], point[1], height
+            scene.beam("Building_TensileColumns", "White", base, top, 0.32)
+            scene.beam(
+                "Building_TensileBraces",
+                "Steel",
+                add(top, (0, 0, -2)),
+                add(peak, (0, 0, -0.3)),
+                0.14,
+            )
+        panels += 1
+    return panels
+
+
 def curved_footprint_stand(
     scene: CircuitScene,
     building: Building,
@@ -235,8 +304,13 @@ def curved_footprint_stand(
     if chain:
         chains.append(chain)
     bay_count = 0
+    sail_count = 0
     max_wall = 0.0
     for boundary in chains:
+        sail_shapes: dict[int, list[Polygon]] = {}
+        sail_heights: dict[int, float] = {}
+        boundary_length = LineString(boundary).length
+        sail_span = boundary_length / max(1, round(boundary_length / 23))
         directions: list[Point] = []
         inward_normals: list[Point] = []
         for pa, pb in pairwise(boundary):
@@ -405,7 +479,15 @@ def curved_footprint_stand(
                             row,
                             "Building_Crowd_Stand",
                         )
-                if roof and roof != "lotus":
+                if roof == "sail":
+                    sail = int(
+                        (chain_distance + segment_length * (bay + 0.5) / bays) / sail_span
+                    )
+                    sail_shapes.setdefault(sail, []).extend(roof_shapes)
+                    sail_heights[sail] = max(
+                        sail_heights.get(sail, -math.inf), top_a + 4, top_b + 4
+                    )
+                if roof and roof not in ("lotus", "sail"):
                     roof_height = max(top_a, top_b) + 4
                     for shape in roof_shapes:
                         roof_polygon(
@@ -440,6 +522,8 @@ def curved_footprint_stand(
                             available,
                         )
             chain_distance += segment_length
+        for sail, pieces in sail_shapes.items():
+            sail_count += tensile_roof(scene, unary_union(pieces), sail_heights[sail])
     scene.modeled_buildings.add(building.osm_id)
     scene.landmarks.append(
         {
@@ -452,6 +536,7 @@ def curved_footprint_stand(
             "boundary_chains": len(chains),
             "bays": bay_count,
             "max_foundation_height_m": max_wall,
+            "tensile_roof_bays": sail_count,
         }
     )
 
@@ -467,7 +552,9 @@ def footprint_stand(
     if building is None:
         return
     center, axis, side, length, width = frame(building)
-    if length * width / Polygon(building.ring).area > 1.25:
+    if length * width / Polygon(building.ring).area > 1.25 or (
+        scene.slug == "bahrain" and roof == "sail"
+    ):
         curved_footprint_stand(scene, building, rows, roof, seat_material)
         return
     sample, _ = scene.nearest(center[0], center[1])

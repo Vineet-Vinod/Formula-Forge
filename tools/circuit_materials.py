@@ -128,13 +128,17 @@ def shade(
     if any(
         word in material.get_name()
         for word in ("PresentationSurface", "Asphalt", "SurfaceMasked", "Pavement", "TreeCanopy")
-    ):
+    ) or material.get_name() in ("White", "Cream"):
         strength = EDIT.create_material_expression(
             material, unreal.MaterialExpressionConstant
         )
         strength.r = (
-            1.8
-            if any(word in material.get_name() for word in ("PresentationSurface", "Asphalt"))
+            0.25
+            if "Asphalt" in material.get_name()
+            else 0.35
+            if "PresentationSurface" in material.get_name()
+            else 0.5
+            if material.get_name() in ("White", "Cream")
             else 0.3
             if "SurfaceMasked" in material.get_name()
             else 0.07

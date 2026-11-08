@@ -2,8 +2,9 @@
 from __future__ import annotations
 
 import math
+from collections.abc import Iterator
 
-from circuit_dataclasses import Point
+from circuit_dataclasses import Point, RoadStation
 from circuit_mesh import add
 from circuit_scene import CircuitScene
 from shapely.geometry import Polygon
@@ -11,7 +12,6 @@ from shapely.ops import triangulate
 
 from venues.east_architecture import footprint_stand
 from venues.west_architecture import (
-    apron_band,
     apron_star,
     mapped_building,
     mast,
@@ -110,26 +110,78 @@ def observation_tower(scene: CircuitScene) -> None:
 def circuit_edges(scene: CircuitScene) -> None:
     for start, end, side in [(460, 570, -1), (725, 820, 1), (1000, 1075, -1), (1090, 1165, 1), (1180, 1255, -1), (1370, 1460, 1), (1550, 1630, -1), (1725, 1805, 1), (1810, 1890, -1), (2010, 2100, -1), (2400, 2520, -1), (3590, 3720, -1), (3830, 3930, 1), (3940, 4010, 1), (4040, 4140, -1), (4135, 4205, -1), (4360, 4490, 1), (4570, 4700, 1), (4880, 5000, -1), (5170, 5280, -1)]:
         scene.kerb(start, end, side, material='Red', alternate_material='White')
+    island = t15_island(scene)
     for start, end, side, width, material in [(420, 640, 1, 25, 'Runoff'), (960, 1490, 1, 18, 'Runoff'), (1510, 1930, 1, 18, 'Runoff'), (2350, 2570, 1, 24, 'Runoff'), (3540, 3780, 1, 26, 'Runoff'), (3800, 4170, -1, 24, 'Runoff'), (4200, 4750, -1, 24, 'Runoff'), (4830, 5050, 1, 25, 'Runoff'), (5120, 5330, 1, 23, 'Runoff')]:
-        scene.runoff(start, end, side, width, material)
+        if start not in (3800, 4200):
+            scene.runoff(start, end, side, width, material)
+            continue
+        scene.surface_ranges.append({'type': 'runoff', 'start_m': start, 'end_m': end,
+                                     'side': side, 'requested_width_m': width, 'material': material})
+        for cell, sample in apron_cells(scene, start, end, side, .15, width):
+            remaining = cell.difference(scene.surface_mask(sample)).difference(island)
+            pieces = [remaining] if isinstance(remaining, Polygon) else list(getattr(remaining, 'geoms', []))
+            for piece in pieces:
+                if isinstance(piece, Polygon) and piece.area > 1e-8:
+                    scene.extra_corridors.append(piece)
+                    scene.polygon_surface(piece, material, .001, sample, paved=True)
+    scene.extra_corridors.append(island)
+    scene.surface_ranges.append({'type': 'runoff', 'start_m': 4120, 'end_m': 4206,
+                                 'side': -1, 'requested_width_m': 24, 'material': 'RunoffRed'})
+    scene.polygon_surface(island, 'RunoffRed', .001, scene.at(4153), paved=True)
+    scene.landmarks.append({'name': 'T15 red paved inner cap', 'start_m': 4120, 'end_m': 4206,
+                            'area_m2': round(island.area, 3), 'side': -1,
+                            'source': 'Supplied reference158.70s and161–164s; IMSA2024aerial establishes rounded peninsula boundary, later clip establishes red paved cap.',
+                            'registration': 'Inside kerb-following head of peninsula; upstream chord and exact extent reconstructed, not surveyed. Star remains at4153m/left13m.'})
 
     for start, end, side, width in [(420, 640, 1, 25), (960, 1490, 1, 18),
                                      (1510, 1930, 1, 18), (2350, 2570, 1, 24),
                                      (3540, 3780, 1, 26), (3800, 4170, -1, 24),
                                      (4200, 4750, -1, 24), (4830, 5050, 1, 25),
                                      (5120, 5330, 1, 23)]:
-        apron_band(scene, start, end, side, 1.2, 3.4, 'RunoffGreen')
+        paint_band(scene, start, end, side, 1.2, 3.4, 'RunoffGreen', island)
         if start in (3540, 3800, 4200):
-            apron_band(scene, start, end, side, 3.4, 4.4, 'RunoffRed')
-            apron_band(scene, start, end, side, width - 4.4, width - .2, 'RunoffRed')
+            paint_band(scene, start, end, side, 3.4, 4.4, 'RunoffRed', island)
+            paint_band(scene, start, end, side, width - 4.4, width - .2, 'RunoffRed', island)
         else:
-            apron_band(scene, start, end, side, 3.4, width - .2, 'RunoffRed')
+            paint_band(scene, start, end, side, 3.4, width - .2, 'RunoffRed', island)
     for start, end, side, width in [(3540, 3780, 1, 26), (3800, 3990, -1, 24),
                                      (4200, 4750, -1, 24)]:
-        apron_band(scene, start, end, side, 4.4, 5.4, 'White')
-        apron_band(scene, start, end, side, 5.4, width - 5.4, 'RunoffBlue')
-        apron_band(scene, start, end, side, width - 5.4, width - 4.4, 'White')
+        paint_band(scene, start, end, side, 4.4, 5.4, 'White', island)
+        paint_band(scene, start, end, side, 5.4, width - 5.4, 'RunoffBlue', island)
+        paint_band(scene, start, end, side, width - 5.4, width - 4.4, 'White', island)
     apron_star(scene, 3890, -1, 13, 5.5)
     apron_star(scene, 4153, -1, 13, 5.5)
     for station in [4300, 4420, 4540, 4660]:
         apron_star(scene, station, -1, 12, 4.5)
+
+
+def t15_island(scene: CircuitScene) -> Polygon:
+    outline = []
+    for station in range(4120, 4207, 2):
+        sample = scene.at(station)
+        point = sample.point(-sample.half_width - 1.24)
+        outline.append(point[:2])
+    island = Polygon(outline).difference(scene.surface_mask(scene.at(4153)))
+    if not isinstance(island, Polygon) or not island.is_valid or island.is_empty:
+        raise ValueError('COTA T15 inner cap must remain one valid kerb-bounded polygon')
+    return island
+
+
+def apron_cells(scene: CircuitScene, start: float, end: float, side: int,
+                 inner: float, outer: float) -> Iterator[tuple[Polygon, RoadStation]]:
+    count = max(1, math.ceil((end - start) / 2))
+    for i in range(count):
+        a, b = scene.at(start + (end - start) * i / count), scene.at(start + (end - start) * (i + 1) / count)
+        points = [a.point(side * (a.half_width + inner)), b.point(side * (b.half_width + inner)),
+                  b.point(side * (b.half_width + outer)), a.point(side * (a.half_width + outer))]
+        polygon = Polygon([p[:2] for p in points])
+        if polygon.is_valid:
+            yield polygon, a
+
+
+def paint_band(scene: CircuitScene, start: float, end: float, side: int,
+                inner: float, outer: float, material: str, island: Polygon) -> None:
+    for cell, sample in apron_cells(scene, start, end, side, inner, outer):
+        scene.paint_surface(cell.difference(scene.surface_mask(sample)).difference(island), material)
+    scene.surface_ranges.append({'type': 'apron paint', 'start_m': start, 'end_m': end,
+                                 'side': side, 'inner_m': inner, 'outer_m': outer, 'material': material})

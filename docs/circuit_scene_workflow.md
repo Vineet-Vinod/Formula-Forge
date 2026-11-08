@@ -77,6 +77,10 @@ containment, contact coverage and clear car footprints. The older constant-offse
 wall check does not describe a union around an acute corner. Suzuka's crossing
 requires separate branch handling; the planar boundary tool rejects it.
 
+The envelope also excludes occupied building footprints with a small foundation
+clearance. Check the visible wall against the actual garage and stand fronts;
+a barrier hidden behind a foundation still passes a centreline-only test.
+
 Retained `elevation-corrections.json`, `banking-corrections.json`, width recipes,
 layout reviews and pit-shoulder corrections are rebuild inputs. They must survive
 source generation. Published elevation diagrams describe road profiles; coarse
@@ -96,6 +100,18 @@ longitudinal U and lateral V, both in two-metre units. Escape surfaces and their
 paint follow the local road branch; scenery DSM heights must not lift them into
 the surrounding banks. At a crossover, keep the two road branches separate.
 
+Register paved triangles before painting them. Use `paint_surface` to project
+paint onto those exact triangle planes with a 5 mm offset; a road-height estimate
+can leave paint floating or buried. Verge geometry is emitted after all paving
+and excludes its footprint. Inspect complete motifs, including their extremities,
+against both the pavement and grass meshes. Tight infield islands need their own
+reference-shaped polygons when parallel road offsets fold across the corner.
+
+Night scenes need visible falloff between road-directed light pools, illuminated
+roof undersides and readable garage detail. A saturated light field or excessive
+emissive asphalt makes the road uniformly pale. Judge this in the cooked game;
+an editor game preview with unresolved materials is not valid lighting evidence.
+
 For full-lap review, build `build/tests/audit-circuit-lap` and run it with a circuit
 slug. It writes a private review racing line and real fixed-step telemetry in
 `build/circuits/<slug>`. The saved speed multiplier changes the review controller,
@@ -110,6 +126,11 @@ airborne frames and rendered penetration. Require Luna High review of the final
 packaged scene. Retain failed findings, fixes and final hashes; rerun acceptance
 when the reviewed geometry or materials change. Keep native assets versioned and
 commit completed checkpoints without pushing or merging.
+
+Recorded surface-penetration telemetry checks the drive-surface mesh. It does not
+prove that scenery walls, stand treads or roof slabs clear the cockpit. Inspect
+those structures throughout the moving lap, and measure their actual generated
+triangles against the road when an obstruction appears.
 
 Replay cuts and camera poses matter. Verify reference corner identities using
 the minimap, landmarks and lap timer; do not interpolate station through a cut.

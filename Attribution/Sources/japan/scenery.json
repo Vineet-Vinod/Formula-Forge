@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=japan",
   "tiles": 102,
-  "triangles": 1599522,
+  "triangles": 1626417,
   "road_sha256": "bb40f25c218cf57ba4757dcf9d5b823632494805044e3e5925e3b1a15453ddde",
   "terrain_sha256": "d7690ee68e2d8a389b89973937be81cd217b5d621db02bd12eeebaecc5540b25",
   "landmarks": [
@@ -14,7 +14,8 @@
       "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
       "boundary_chains": 1,
       "bays": 17,
-      "max_foundation_height_m": 4.690701701687663
+      "max_foundation_height_m": 4.690701701687674,
+      "tensile_roof_bays": 0
     },
     {
       "name": "B1",
@@ -25,7 +26,8 @@
       "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
       "boundary_chains": 1,
       "bays": 20,
-      "max_foundation_height_m": 5.1102006046317445
+      "max_foundation_height_m": 5.110200604631743,
+      "tensile_roof_bays": 0
     },
     {
       "name": "B2",
@@ -36,7 +38,8 @@
       "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
       "boundary_chains": 2,
       "bays": 34,
-      "max_foundation_height_m": 7.761830327279506
+      "max_foundation_height_m": 7.761830327279508,
+      "tensile_roof_bays": 0
     },
     {
       "name": "C",
@@ -47,7 +50,8 @@
       "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
       "boundary_chains": 2,
       "bays": 54,
-      "max_foundation_height_m": 11.224443173529291
+      "max_foundation_height_m": 11.224443173529309,
+      "tensile_roof_bays": 0
     },
     {
       "name": "D\uff11\uff5eD4",
@@ -58,7 +62,8 @@
       "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
       "boundary_chains": 2,
       "bays": 49,
-      "max_foundation_height_m": 3.3880762499964376
+      "max_foundation_height_m": 3.3678338469809113,
+      "tensile_roof_bays": 0
     },
     {
       "name": "D5",
@@ -69,7 +74,8 @@
       "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
       "boundary_chains": 2,
       "bays": 10,
-      "max_foundation_height_m": 1.8222768078365377
+      "max_foundation_height_m": 2.097434070690735,
+      "tensile_roof_bays": 0
     },
     {
       "name": "E",
@@ -80,7 +86,8 @@
       "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
       "boundary_chains": 1,
       "bays": 35,
-      "max_foundation_height_m": 11.914831004457895
+      "max_foundation_height_m": 4.016574408888538,
+      "tensile_roof_bays": 0
     },
     {
       "name": "G",
@@ -139,7 +146,8 @@
       "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
       "boundary_chains": 1,
       "bays": 12,
-      "max_foundation_height_m": 2.0242166022009016
+      "max_foundation_height_m": 2.3601500500425345,
+      "tensile_roof_bays": 0
     },
     {
       "name": "S",
@@ -158,7 +166,8 @@
       "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
       "boundary_chains": 5,
       "bays": 45,
-      "max_foundation_height_m": 2.820281068962931
+      "max_foundation_height_m": 2.8240777807190263,
+      "tensile_roof_bays": 0
     },
     {
       "name": "V2",
@@ -210,6 +219,7 @@
       "height_m": 7.5,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -219,6 +229,7 @@
       "height_m": 7.5,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -228,6 +239,7 @@
       "height_m": 7.5,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -237,6 +249,7 @@
       "height_m": 7.5,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -246,6 +259,7 @@
       "height_m": 7.5,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -255,6 +269,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -264,6 +279,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -273,6 +289,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -282,6 +299,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -291,6 +309,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -300,6 +319,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -309,6 +329,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -318,6 +339,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -327,6 +349,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -336,6 +359,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -345,6 +369,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -354,6 +379,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -363,6 +389,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -372,6 +399,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -381,6 +409,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -390,6 +419,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -399,6 +429,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -408,6 +439,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -417,6 +449,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -426,6 +459,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -435,6 +469,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -444,6 +479,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -453,6 +489,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -462,6 +499,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -471,6 +509,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -480,6 +519,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -489,6 +529,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -498,6 +539,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -507,6 +549,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -516,6 +559,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -525,6 +569,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -534,6 +579,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -543,6 +589,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -552,6 +599,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -561,6 +609,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -570,6 +619,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -579,6 +629,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -588,6 +639,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -597,6 +649,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -606,6 +659,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -615,6 +669,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -624,6 +679,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -633,6 +689,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -642,6 +699,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -651,6 +709,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -660,6 +719,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -669,6 +729,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -678,6 +739,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -687,6 +749,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -696,6 +759,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -705,6 +769,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -714,6 +779,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -723,6 +789,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -732,6 +799,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -741,6 +809,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -750,6 +819,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -759,6 +829,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -768,6 +839,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -777,6 +849,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -786,6 +859,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -795,6 +869,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -804,6 +879,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 3.124,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -813,6 +889,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -822,6 +899,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -831,6 +909,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -840,6 +919,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -849,6 +929,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 6.408,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -858,6 +939,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -867,6 +949,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -876,6 +959,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -885,6 +969,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -894,6 +979,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -903,6 +989,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -912,6 +999,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -921,6 +1009,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -930,6 +1019,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -939,6 +1029,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -948,6 +1039,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -957,6 +1049,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -966,6 +1059,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -975,6 +1069,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -984,6 +1079,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -993,6 +1089,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1002,6 +1099,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1011,6 +1109,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1020,6 +1119,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1029,6 +1129,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1038,6 +1139,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1047,6 +1149,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1056,6 +1159,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1065,6 +1169,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1074,6 +1179,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1083,6 +1189,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1092,6 +1199,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1101,6 +1209,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1110,6 +1219,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1119,6 +1229,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1128,6 +1239,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1137,6 +1249,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1146,6 +1259,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1155,6 +1269,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1164,6 +1279,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1173,6 +1289,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1182,6 +1299,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1191,6 +1309,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1200,6 +1319,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1209,6 +1329,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1218,6 +1339,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1227,6 +1349,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1236,6 +1359,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1245,6 +1369,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1254,6 +1379,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1263,6 +1389,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1272,6 +1399,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1281,6 +1409,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1290,6 +1419,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1299,6 +1429,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1308,6 +1439,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1317,6 +1449,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1326,6 +1459,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1335,6 +1469,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1344,6 +1479,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1353,6 +1489,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1362,6 +1499,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1371,6 +1509,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1380,6 +1519,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1389,6 +1529,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1398,6 +1539,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1407,6 +1549,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1416,6 +1559,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1425,6 +1569,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1434,6 +1579,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1443,6 +1589,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1452,6 +1599,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1461,6 +1609,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1470,6 +1619,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1479,6 +1629,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1488,6 +1639,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1497,6 +1649,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "open roof/stand",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1506,6 +1659,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "open roof/stand",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1515,6 +1669,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "open roof/stand",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1524,6 +1679,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1533,6 +1689,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1542,6 +1699,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1551,6 +1709,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "open roof/stand",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1560,6 +1719,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1569,6 +1729,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1578,6 +1739,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "open roof/stand",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1587,6 +1749,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1596,6 +1759,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "open roof/stand",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1605,6 +1769,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1614,6 +1779,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1623,6 +1789,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1632,6 +1799,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1641,6 +1809,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1650,6 +1819,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1659,6 +1829,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1668,6 +1839,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "open roof/stand",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1677,6 +1849,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1686,6 +1859,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "open roof/stand",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1695,6 +1869,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "open roof/stand",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1704,6 +1879,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "open roof/stand",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1713,6 +1889,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "open roof/stand",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1722,6 +1899,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1731,6 +1909,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1740,6 +1919,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1749,6 +1929,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1758,6 +1939,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "open roof/stand",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1767,6 +1949,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1776,6 +1959,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1785,6 +1969,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1794,6 +1979,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "open roof/stand",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1803,6 +1989,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1812,6 +1999,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1821,6 +2009,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1830,6 +2019,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1839,6 +2029,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "open roof/stand",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1848,6 +2039,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1857,6 +2049,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "open roof/stand",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1866,6 +2059,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "open roof/stand",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1875,6 +2069,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1884,6 +2079,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1893,6 +2089,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1902,6 +2099,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "open roof/stand",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1911,6 +2109,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "open roof/stand",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1920,6 +2119,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "open roof/stand",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1929,6 +2129,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1938,6 +2139,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1947,6 +2149,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1956,6 +2159,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1965,6 +2169,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1974,6 +2179,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1983,6 +2189,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -1992,6 +2199,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 566.961,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -2001,6 +2209,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -2010,6 +2219,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "open roof/stand",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -2019,6 +2229,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -2028,6 +2239,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -2037,6 +2249,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -2046,6 +2259,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -2055,6 +2269,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -2064,6 +2279,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -2073,6 +2289,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -2082,6 +2299,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -2091,6 +2309,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -2100,6 +2319,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -2109,6 +2329,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -2118,6 +2339,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -2127,6 +2349,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -2136,6 +2359,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -2145,6 +2369,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -2154,6 +2379,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -2163,6 +2389,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -2172,6 +2399,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -2181,6 +2409,7 @@
       "height_m": 6.8,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -2223,16 +2452,31 @@
     },
     {
       "name": "Reference event panels",
+      "start_m": 4628,
+      "end_m": 4676,
+      "side": -1,
+      "material": "PanelAmericanExpress"
+    },
+    {
+      "name": "Reference event panels",
       "start_m": 5480,
       "end_m": 180,
       "side": 1,
       "material": "PanelGreen"
     },
     {
+      "name": "Reference event panels",
+      "start_m": 4628,
+      "end_m": 4676,
+      "side": 1,
+      "material": "PanelAmericanExpress"
+    },
+    {
       "name": "Back straight over Degner underpass",
       "start_m": 4637,
       "end_m": 4667,
-      "clearance_m": 6.2
+      "road_deck_separation_m": 6.2,
+      "minimum_structural_clearance_m": 5.0
     },
     {
       "name": "Circuit Wheel",

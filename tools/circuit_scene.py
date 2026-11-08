@@ -98,6 +98,10 @@ class CircuitScene(MeshScene):
         self.extra_corridors: list[Polygon] = []
         self.water_shapes: list[Polygon] = []
         self.terrain_cutouts: list[Polygon] = []
+        self.verge_patches: list[tuple[BaseGeometry, str, RoadStation | None]] = []
+        self.surface_shapes: list[Polygon] = []
+        self.surface_points: list[tuple[Point, Point, Point]] = []
+        self.surface_index: STRtree | None = None
         self.panels: list[BarrierPanel] = []
 
     def geo(self, latitude: float, longitude: float) -> tuple[float, float]:
@@ -282,6 +286,7 @@ class CircuitScene(MeshScene):
         material: str,
         lift: float = 0.0,
         sample: RoadStation | None = None,
+        paved: bool = False,
     ) -> None:
         for triangle in constrained_delaunay_triangles(shape).geoms:
             points: list[Point] = []
@@ -299,6 +304,10 @@ class CircuitScene(MeshScene):
                 points.append((x, y, z + lift))
             if cross(sub(points[1], points[0]), sub(points[2], points[0]))[2] < 0:
                 points.reverse()
+            if paved:
+                self.surface_shapes.append(Polygon([point[:2] for point in points]))
+                self.surface_points.append((points[0], points[1], points[2]))
+                self.surface_index = None
             self.triangle(
                 "Tile_Ground",
                 material,
@@ -307,6 +316,35 @@ class CircuitScene(MeshScene):
                 points[2],
                 tuple((p[0] / 8, p[1] / 8) for p in points),
             )
+
+    def paint_surface(self, shape: BaseGeometry, material: str, lift: float = 0.005) -> None:
+        if not self.surface_shapes or shape.is_empty:
+            return
+        if self.surface_index is None:
+            self.surface_index = STRtree(self.surface_shapes)
+        for index in self.surface_index.query(shape, predicate="intersects"):
+            piece = shape.intersection(self.surface_shapes[index])
+            a, b, c = self.surface_points[index]
+            denominator = (b[1] - c[1]) * (a[0] - c[0]) + (c[0] - b[0]) * (a[1] - c[1])
+            if abs(denominator) < 1e-9 or piece.area < 1e-9:
+                continue
+            for triangle in constrained_delaunay_triangles(piece).geoms:
+                points = []
+                for x, y in list(triangle.exterior.coords)[:3]:
+                    u = ((b[1] - c[1]) * (x - c[0]) + (c[0] - b[0]) * (y - c[1])) / denominator
+                    v = ((c[1] - a[1]) * (x - c[0]) + (a[0] - c[0]) * (y - c[1])) / denominator
+                    points.append((x, y, u * a[2] + v * b[2] + (1 - u - v) * c[2] + lift))
+                if cross(sub(points[1], points[0]), sub(points[2], points[0]))[2] < 0:
+                    points.reverse()
+                self.triangle("Tile_Paint", material, points[0], points[1], points[2], tuple((p[0] / 8, p[1] / 8) for p in points))
+
+    def surface_mask(self, sample: RoadStation) -> BaseGeometry:
+        if self.catalogue.deck_separation:
+            if 4637 < sample.station < 4667:
+                return self.deck_road_mask
+            if 2150 < sample.station < 2380:
+                return self.ground_road_mask
+        return self.road_mask
 
     def kerb_margin(self, station: float) -> float:
         if self.slug != "baku" or station < 2480 or station > 2920:
@@ -446,14 +484,18 @@ class CircuitScene(MeshScene):
                             material = "Concrete"
                         elif 2150 < a.station < 2380:
                             mask = self.ground_road_mask
-                    self.polygon_surface(polygon.difference(mask), material, -0.015, a)
+                    self.verge_patches.append((polygon.difference(mask), material, a))
         seams = self.corridor_mask.difference(
             unary_union([self.road_mask, *verge_shapes])
         )
         if not seams.is_empty:
-            self.polygon_surface(seams, base_material)
+            self.verge_patches.append((seams, base_material, None))
 
     def terrain(self, material: str = "Grass") -> None:
+        exclusions = unary_union([*self.extra_corridors, *self.terrain_cutouts, *self.water_shapes])
+        for shape, verge_material, sample in self.verge_patches:
+            upper_deck = sample and self.catalogue.deck_separation and 4637 < sample.station < 4667
+            self.polygon_surface(shape if upper_deck else shape.difference(exclusions), verge_material, -0.015, sample)
         self.corridor_mask = unary_union([self.corridor_mask, *self.extra_corridors])
         ground_corridor = (
             self.ground_corridor_mask
@@ -555,7 +597,7 @@ class CircuitScene(MeshScene):
             if shape.is_valid:
                 self.extra_corridors.append(shape)
                 self.polygon_surface(
-                    shape.difference(self.road_mask), material, 0.001, a
+                    shape.difference(self.surface_mask(a)), material, 0.001, a, paved=True
                 )
 
     def barriers(self, street: bool = False) -> None:
@@ -905,14 +947,14 @@ class CircuitScene(MeshScene):
                 continue
             shape = shape.difference(self.road_mask)
             self.terrain_cutouts.append(shape)
-            self.polygon_surface(shape, "Runoff", 0.001, a)
+            self.polygon_surface(shape, "Runoff", 0.001, a, paved=True)
             for offset in (inner + 3.5, profile.outer_offset_m - 0.4):
                 line = Polygon([
                     p.point(profile.side * (p.half_width + lane))[:2]
                     for p, lane in ((a, offset), (b, offset), (b, offset + 0.12), (a, offset + 0.12))
                 ])
                 if line.is_valid:
-                    self.polygon_surface(line.intersection(shape), "White", 0.005, a)
+                    self.paint_surface(line.intersection(shape), "White")
         self.landmarks.append({
             "name": "Paved pit lane and working apron",
             "start_m": profile.start_m,

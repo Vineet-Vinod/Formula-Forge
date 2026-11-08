@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "circuit": "cota",
+  "status": "Bounded source correction; native envelope export and fresh generated-mesh proof/render still required.",
+  "source_reference": {
+    "video": "Saved/Refs/cota.mp4",
+    "time_s": 158.7,
+    "reviewed_image": "build/reviews/cota/reference/overview-02.jpg",
+    "additional_reviewed_window_s": [
+      161,
+      164
+    ],
+    "additional_reviewed_image": "build/reviews/cota/reference/paint-detail-01.jpg",
+    "map": "2024 IMSA COTA briefing page11 aerial; peninsula/kerb geometry only, later video red-cap color takes precedence"
+  },
+  "geometry": {
+    "start_m": 4120,
+    "end_m": 4206,
+    "side": -1,
+    "outer_kerb_offset_from_road_edge_m": 1.24,
+    "sampling_m": 2,
+    "closure": "Straight chord between upstream and downstream head-of-peninsula controls; long upstream grass peninsula retained",
+    "area_m2": 655.0950060950574,
+    "source_xy_vertices_m": [
+      [
+        368.9629585726819,
+        414.6542422842646
+      ],
+      [
+        367.10338670909994,
+        414.9871066354489
+      ],
+      [
+        365.2585326533172,
+        415.28524424235286
+      ],
+      [
+        363.3635759034411,
+        415.56028187697257
+      ],
+      [
+        361.4354304088016,
+        415.8239408181417
+      ],
+      [
+        359.5244195190449,
+        416.0677512405921
+      ],
+      [
+        357.6266550115323,
+        416.2880805860327
+      ],
+      [
+        355.6859397197708,
+        416.49270838144946
+      ],
+      [
+        353.71883026416003,
+        416.6927637124256
+      ],
+      [
+        351.76269425315587,
+        416.8834343694845
+      ],
+      [
+        349.78944829692466,
+        417.0678979768725
+      ],
+      [
+        347.87494568856283,
+        417.23727974700455
+      ],
+      [
+        345.9983221244424,
+        417.3739582738622
+      ],
+      [
+        344.1122242515812,
+        417.482773304179
+      ],
+      [
+        342.07580175804105,
+        417.5863203433551
+      ],
+      [
+        340.5242407525751,
+        417.6475948628399
+      ],
+      [
+        339.3464721486012,
+        417.5664528333184
+      ],
+      [
+        338.1061583202591,
+        417.35479314338284
+      ],
+      [
+        336.82169883501126,
+        416.9985317110893
+      ],
+      [
+        335.83061740468816,
+        416.6213760401142
+      ],
+      [
+        335.2229626265227,
+        416.2612916633211
+      ],
+      [
+        334.60732902251857,
+        415.73501515208085
+      ],
+      [
+        334.01670453877216,
+        415.04189475511043
+      ],
+      [
+        333.5042584360309,
+        414.2356312120492
+      ],
+      [
+        333.2044480307649,
+        413.5385329741027
+      ],
+      [
+        332.9607181966375,
+        412.54802501995846
+      ],
+      [
+        332.8150018156604,
+        411.4027336853995
+      ],
+      [
+        332.7995035422916,
+        410.18126276173297
+      ],
+      [
+        332.9121959743892,
+        409.0383405800542
+      ],
+      [
+        333.19572991102393,
+        407.68475678216896
+      ],
+      [
+        333.5931338498363,
+        406.30311327908885
+      ],
+      [
+        334.14206779213987,
+        404.810168108368
+      ],
+      [
+        334.7727478607455,
+        403.32845959118407
+      ],
+      [
+        335.5224649789583,
+        401.78787636378206
+      ],
+      [
+        336.31988285575886,
+        400.29664147753
+      ],
+      [
+        337.2919574615434,
+        398.6043446048802
+      ],
+      [
+        338.295585885824,
+        396.83014238359806
+      ],
+      [
+        339.2770152552497,
+        395.0945156612147
+      ],
+      [
+        340.25978741866027,
+        393.35984128365277
+      ],
+      [
+        341.24625034373065,
+        391.6212484978841
+      ],
+      [
+        342.2334537643854,
+        389.8807237897329
+      ],
+      [
+        343.2201005005571,
+        388.14101851116266
+      ],
+      [
+        344.20746815929317,
+        386.39961701681574
+      ],
+      [
+        345.19127684471283,
+        384.6648199726601
+      ]
+    ],
+    "exact_extent_status": "Kerb follows retained native geometry; chord position and exact painted extent are visual reconstruction estimates, not surveyed paint controls."
+  },
+  "star": {
+    "station_m": 4153,
+    "side": -1,
+    "offset_from_road_edge_m": 13,
+    "radius_m": 5.5,
+    "center_source_xy_m": [
+      340.69339487856143,
+      405.88424264987486
+    ],
+    "original_area_m2": 33.96076241432846,
+    "full_area_in_new_cap_fraction": 1.0,
+    "moved": false
+  },
+  "surfaces": "Dedicated RunoffRed base registered as actual paved triangles. Existing stadium strip foundations and all band paints subtract cap. White projects to those red paved triangles +0.005m; deferred verges/terrain exclude cap. No fixed-z paint plane or coplanar red overlay.",
+  "physical_change": {
+    "requires_boundary_regeneration": true,
+    "new_runoff_range": {
+      "start_m": 4120,
+      "end_m": 4206,
+      "side": -1,
+      "width_m": 24,
+      "material": "RunoffRed"
+    },
+    "effect": "Fills missing paved head of inner island and removes old interior boundary through it; road centreline, width, kerbs and handling unchanged."
+  }
+}

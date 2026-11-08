@@ -31,11 +31,10 @@ def apron_hatching(
         ]
         shape = Polygon([point[:2] for point in points])
         if shape.is_valid:
-            scene.polygon_surface(
+            scene.paint_surface(
                 shape.intersection(apron).difference(scene.road_mask),
                 material,
                 lift=0.007,
-                sample=a,
             )
     scene.surface_ranges.append(
         {
@@ -77,11 +76,10 @@ def apron_fan(
         ]
         shape = Polygon([point[:2] for point in points])
         if shape.is_valid:
-            scene.polygon_surface(
+            scene.paint_surface(
                 shape.intersection(apron).difference(scene.road_mask),
                 material,
                 lift=0.007,
-                sample=a,
             )
     scene.surface_ranges.append(
         {

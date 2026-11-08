@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=bahrain",
   "tiles": 122,
-  "triangles": 951815,
+  "triangles": 981411,
   "road_sha256": "117ba548200545452b1cd44feb5c0a00b1c6227443198cda76e25abaa221956d",
   "terrain_sha256": "16636be15acc8811a2cfb23a00fcea77aa2da4a0366b4cbf15e1956531103270",
   "landmarks": [
@@ -11,7 +11,7 @@
       "end_m": 220.0,
       "side": 1,
       "outer_offset_m": 13.0,
-      "source_note": "Authored Sakhir garage frontage scene.pit_building(5180,220,+1) lies exactly 13 m beyond the road edge; canted sail roofs and garage/pit-wall side are visible in reference120/130/170/185s. This is registration to the authored garage geometry, not a measured real-world pit-lane width. The native interval crosses station zero.",
+      "source_note": "Custom Sakhir garage frontage sakhir_pits(scene), native5180\u2192220m driverRIGHT, lies exactly13m beyond the road edge. It replaces the earlier common pit_building skin with recessed garages, balcony fascia and folded/scalloped roof bays; actual source bounds and paving registration remain unchanged. Reference120/130/170/185s confirms the garage/pit-wall side. Width is registration to the authored geometry, not a measured real-world pit-lane width.",
       "access": "Visual service area outside the closed driving boundary."
     },
     {
@@ -84,7 +84,11 @@
       "roof": "sail",
       "rows": 24,
       "seat_material": "SeatRed",
-      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+      "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
+      "boundary_chains": 1,
+      "bays": 50,
+      "max_foundation_height_m": 11.159866670135925,
+      "tensile_roof_bays": 15
     },
     {
       "name": "First Turn Grandstand",
@@ -92,7 +96,11 @@
       "roof": "sail",
       "rows": 15,
       "seat_material": "SeatRed",
-      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+      "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
+      "boundary_chains": 1,
+      "bays": 30,
+      "max_foundation_height_m": 8.738351967169281,
+      "tensile_roof_bays": 9
     },
     {
       "name": "University Grandstand 2",
@@ -100,7 +108,11 @@
       "roof": "sail",
       "rows": 15,
       "seat_material": "SeatRed",
-      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+      "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
+      "boundary_chains": 1,
+      "bays": 10,
+      "max_foundation_height_m": 6.6178566414685305,
+      "tensile_roof_bays": 3
     },
     {
       "name": "University Grandstand 3",
@@ -108,7 +120,11 @@
       "roof": "sail",
       "rows": 15,
       "seat_material": "SeatRed",
-      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+      "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
+      "boundary_chains": 1,
+      "bays": 10,
+      "max_foundation_height_m": 6.418664554456843,
+      "tensile_roof_bays": 3
     },
     {
       "name": "University Grandstand 1",
@@ -116,7 +132,11 @@
       "roof": "sail",
       "rows": 15,
       "seat_material": "SeatRed",
-      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+      "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
+      "boundary_chains": 1,
+      "bays": 13,
+      "max_foundation_height_m": 6.579542824206856,
+      "tensile_roof_bays": 4
     },
     {
       "name": "Victory Grandstand 1",
@@ -124,7 +144,11 @@
       "roof": "sail",
       "rows": 15,
       "seat_material": "SeatRed",
-      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+      "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
+      "boundary_chains": 1,
+      "bays": 10,
+      "max_foundation_height_m": 6.335624690648622,
+      "tensile_roof_bays": 3
     },
     {
       "name": "Victory Grandstand 2",
@@ -132,7 +156,11 @@
       "roof": "sail",
       "rows": 15,
       "seat_material": "SeatRed",
-      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+      "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
+      "boundary_chains": 1,
+      "bays": 10,
+      "max_foundation_height_m": 6.79369018769591,
+      "tensile_roof_bays": 3
     },
     {
       "name": "Batelco",
@@ -143,11 +171,14 @@
       "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
     },
     {
-      "name": "Authored pit building",
-      "start_m": 5180,
-      "end_m": 220,
+      "name": "Sakhir garage frontage and folded pit canopy",
+      "start_m": 5180.0,
+      "end_m": 220.0,
       "side": 1,
-      "height_m": 11
+      "garage_front_offset_m": 13,
+      "garage_bays": 57,
+      "folded_roof_bays": 19,
+      "registration": "Original authored 4.3 m garage recesses, roller headers, white piers, projecting balcony and narrow upper hospitality glazing. Repeated white folded roof/scalloped front edge and four pit-entry spires estimated from reference120/130/185s. No reference pixels or measured architectural survey claimed."
     },
     {
       "name": "Sakhir Tower",
