@@ -31,6 +31,7 @@ from shapely.ops import polygonize, unary_union
 from shapely.strtree import STRtree
 
 ROOT = Path(__file__).resolve().parents[1]
+MAX_TILE_TRIANGLES = 400_000
 
 
 class CircuitScene(MeshScene):
@@ -1055,26 +1056,37 @@ class CircuitScene(MeshScene):
             }
         )
 
-    def save(self) -> None:
+    def save(self) -> int:
         records = []
         for name, tile in sorted(self.tiles.items()):
-            payload = (
-                b"FFLVM1\0\0"
-                + struct.pack("<I", len(tile.triangles) // 100)
-                + tile.triangles
-            )
-            path = self.scratch / (name + ".mesh")
-            path.write_bytes(payload)
-            records.append(
-                {
-                    "name": name,
-                    "file": path.name,
-                    "materials": tile.materials,
-                    "bounds": tile.minimum + tile.maximum,
-                    "triangles": len(tile.triangles) // 100,
-                    "sha256": hashlib.sha256(payload).hexdigest(),
-                }
-            )
+            triangle_count = len(tile.triangles) // 100
+            for part, first in enumerate(range(0, triangle_count, MAX_TILE_TRIANGLES)):
+                chunk = tile.triangles[first * 100 : (first + MAX_TILE_TRIANGLES) * 100]
+                split = triangle_count > MAX_TILE_TRIANGLES
+                asset_name = f"{name}_Part_{part:02d}" if split else name
+                minimum, maximum = tile.minimum, tile.maximum
+                if split:
+                    minimum, maximum = [math.inf] * 3, [-math.inf] * 3
+                    for offset in range(4, len(chunk), 100):
+                        for vertex in range(3):
+                            point = struct.unpack_from("<3f", chunk, offset + vertex * 32)
+                            for axis in range(3):
+                                minimum[axis] = min(minimum[axis], point[axis])
+                                maximum[axis] = max(maximum[axis], point[axis])
+                count = len(chunk) // 100
+                payload = b"FFLVM1\0\0" + struct.pack("<I", count) + chunk
+                path = self.scratch / (asset_name + ".mesh")
+                path.write_bytes(payload)
+                records.append(
+                    {
+                        "name": asset_name,
+                        "file": path.name,
+                        "materials": tile.materials,
+                        "bounds": minimum + maximum,
+                        "triangles": count,
+                        "sha256": hashlib.sha256(payload).hexdigest(),
+                    }
+                )
         (self.scratch / "manifest.json").write_text(
             json.dumps(
                 {
@@ -1089,3 +1101,4 @@ class CircuitScene(MeshScene):
             )
             + "\n"
         )
+        return len(records)

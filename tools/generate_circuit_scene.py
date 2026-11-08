@@ -35,9 +35,9 @@ def generate(slug: str) -> None:
     )
     scene.markings()
     artwork(scene)
-    scene.save()
+    tile_count = scene.save()
     print(
-        f"{slug}: {len(scene.tiles)} tiles, {sum(len(t.triangles) // 100 for t in scene.tiles.values())} triangles",
+        f"{slug}: {tile_count} tiles, {sum(len(t.triangles) // 100 for t in scene.tiles.values())} triangles",
         flush=True,
     )
 

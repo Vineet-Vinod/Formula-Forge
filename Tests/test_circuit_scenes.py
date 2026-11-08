@@ -455,3 +455,40 @@ def test_smooth_terrain_shares_hillside_normals_without_moving_vertices(
         assert len(normals[shared]) >= 2
         assert all(normal == normals[shared][0] for normal in normals[shared])
     assert any(a[3:6] != b[3:6] for a, b in zip(faceted, smoothed))
+
+
+def test_dense_tiles_split_without_losing_vertex_or_material_data(
+    scene: CircuitScene, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(circuit_scene, "MAX_TILE_TRIANGLES", 2)
+    for index in range(5):
+        scene.triangle(
+            "Building_Dense",
+            "White" if index % 2 else "Concrete",
+            (index, 0, 0),
+            (index + 0.5, 0, 1),
+            (index, 0.5, 0),
+            ((0.2, 0.3), (0.6, 0.7), (0.8, 0.9)),
+            ((0, 0, 1), (0.6, 0, 0.8), (0, 0.6, 0.8)),
+        )
+    tile = next(iter(scene.tiles.values()))
+    original = bytes(tile.triangles)
+    original_bounds = tile.minimum + tile.maximum
+    scene.save()
+    records = json.loads((scene.scratch / "manifest.json").read_text())["tiles"]
+    assert [record["triangles"] for record in records] == [2, 2, 1]
+    bodies = []
+    for record in records:
+        payload = (scene.scratch / record["file"]).read_bytes()
+        assert payload[:8] == b"FFLVM1\0\0"
+        assert struct.unpack_from("<I", payload, 8)[0] == record["triangles"]
+        assert record["materials"] == tile.materials
+        body = payload[12:]
+        bodies.append(body)
+        for offset in range(4, len(body), 100):
+            for vertex in range(3):
+                point = struct.unpack_from("<3f", body, offset + vertex * 32)
+                for axis in range(3):
+                    assert record["bounds"][axis] <= point[axis] <= record["bounds"][axis + 3]
+    assert b"".join(bodies) == original
+    assert tile.minimum + tile.maximum == original_bounds

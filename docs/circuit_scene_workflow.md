@@ -29,6 +29,12 @@ operations. Keep total machine memory below 11 GB, including authoring processes
 the guarded runner imposes a lower stop threshold. Keep video extraction sparse
 and serial, and record peak memory for scene generation.
 
+The exporter partitions dense tiles into independent native assets of at most
+400,000 triangles. Each part retains the original vertex, normal, UV and material
+data and has its own bounds and manifest entry. Keep every part in the import
+and runtime manifests; partition the source geometry before Unreal builds its
+assets. This preserves detailed architecture within the import memory budget.
+
 Register the garage frontage in `pit-lane.json`: native start/end, driving side,
 paving depth and pit-wall offset. Apply an edited registration with
 `tools/circuit_profiles.py <slug>`, then export fresh samples and regenerate the
