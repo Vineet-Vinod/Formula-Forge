@@ -206,7 +206,7 @@
     }
   ],
   "uncertainties": [
-    "Retained GLO-90 profile has 19.736 m relief; operator gives 18 m. These are different accuracy levels, not permission to stretch individual crests arbitrarily.",
-    "Default generic shoulders miss large blue/green/red painted asphalt escape areas and their sand outside."
+    "The road profile uses registered 16.9 m F1 topography controls; retained GLO-90 remains independent scenery/source evidence. Controls are approximate, not a surveyed racing deck.",
+    "Blue and green paved escapes are explicitly registered; sand beyond them remains terrain. Exact event paint extents are estimated from sparse reference frames."
   ]
 }

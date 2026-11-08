@@ -1,0 +1,304 @@
+{
+  "schema_version": 1,
+  "circuit": "australia",
+  "layout_year": 2022,
+  "layout": "Post2022AlbertPark14cornerGrandPrixroute",
+  "published_length_m": 5278,
+  "turns": [
+    {
+      "number": 1,
+      "name": "Turn 1",
+      "station_m": 286,
+      "direction": "Right",
+      "source_xy_m": [
+        -199.0009,
+        205.3274
+      ],
+      "registered_map_pixel": [
+        372.2111830612188,
+        980.8700465005289
+      ]
+    },
+    {
+      "number": 2,
+      "name": "Turn 2",
+      "station_m": 405,
+      "direction": "Left",
+      "source_xy_m": [
+        -179.9816,
+        320.3853
+      ],
+      "registered_map_pixel": [
+        380.70477631145764,
+        915.5477042895884
+      ]
+    },
+    {
+      "number": 3,
+      "name": "Turn 3",
+      "station_m": 1018,
+      "direction": "Right",
+      "source_xy_m": [
+        -534.4086,
+        808.726
+      ],
+      "registered_map_pixel": [
+        174.65873593554795,
+        646.5857058603852
+      ]
+    },
+    {
+      "number": 4,
+      "name": "Turn 4",
+      "station_m": 1161,
+      "direction": "Left",
+      "source_xy_m": [
+        -401.2527,
+        850.6536
+      ],
+      "registered_map_pixel": [
+        247.97902965063707,
+        620.3784559705616
+      ]
+    },
+    {
+      "number": 5,
+      "name": "Turn 5",
+      "station_m": 1376,
+      "direction": "Right",
+      "source_xy_m": [
+        -398.7294,
+        1063.5661
+      ],
+      "registered_map_pixel": [
+        245.5194923033706,
+        500.12279104592835
+      ]
+    },
+    {
+      "number": 6,
+      "name": "Turn 6",
+      "station_m": 1810,
+      "direction": "Right",
+      "source_xy_m": [
+        -27.2222,
+        1277.85
+      ],
+      "registered_map_pixel": [
+        448.318708041755,
+        372.0668827392558
+      ]
+    },
+    {
+      "number": 7,
+      "name": "Turn 7",
+      "station_m": 1900,
+      "direction": "Left",
+      "source_xy_m": [
+        41.5723,
+        1220.8158
+      ],
+      "registered_map_pixel": [
+        487.62733004680183,
+        402.9577040640979
+      ]
+    },
+    {
+      "number": 8,
+      "name": "Turn 8",
+      "station_m": 2200,
+      "direction": "Right",
+      "source_xy_m": [
+        276.0662,
+        1073.659
+      ],
+      "registered_map_pixel": [
+        620.7578699235517,
+        481.57542070879845
+      ]
+    },
+    {
+      "number": 9,
+      "name": "Turn 9",
+      "station_m": 3234,
+      "direction": "Left",
+      "source_xy_m": [
+        446.6671,
+        150.2321
+      ],
+      "registered_map_pixel": [
+        732.427326849894,
+        999.6817129916667
+      ]
+    },
+    {
+      "number": 10,
+      "name": "Turn 10",
+      "station_m": 3361,
+      "direction": "Right",
+      "source_xy_m": [
+        572.5102,
+        159.2762
+      ],
+      "registered_map_pixel": [
+        802.2758378537083,
+        992.179303809565
+      ]
+    },
+    {
+      "number": 11,
+      "name": "Turn 11",
+      "station_m": 4065,
+      "direction": "Right",
+      "source_xy_m": [
+        905.8586,
+        -428.4747
+      ],
+      "registered_map_pixel": [
+        998.3986635534276,
+        1317.6683692705278
+      ]
+    },
+    {
+      "number": 12,
+      "name": "Turn 12",
+      "station_m": 4315,
+      "direction": "Right",
+      "source_xy_m": [
+        663.7489,
+        -487.5241
+      ],
+      "registered_map_pixel": [
+        864.7727681603419,
+        1355.6169964393418
+      ]
+    },
+    {
+      "number": 13,
+      "name": "Turn 13",
+      "station_m": 4578,
+      "direction": "Left",
+      "source_xy_m": [
+        509.1146,
+        -285.4931
+      ],
+      "registered_map_pixel": [
+        775.0762851112369,
+        1244.4973845677625
+      ]
+    },
+    {
+      "number": 14,
+      "name": "Turn 14",
+      "station_m": 4729,
+      "direction": "Right",
+      "source_xy_m": [
+        394.6354,
+        -376.0898
+      ],
+      "registered_map_pixel": [
+        713.0298631206023,
+        1297.8269424507885
+      ]
+    }
+  ],
+  "native_plan_status": "Retained nativeplan already follows post2022removedClarkchicanebypass. No geometry change justified from map review; only turnexpectations/metadata corrected.",
+  "removed_chicane_review": {
+    "station_range_m": [
+      2400,
+      3100
+    ],
+    "finding": "Continuous fast lakeside sweep exists, with no left-rightClarkchicane. Do not delete the real currentT9/T10chicane at3234/3361m. Extra curvaturedetectorpeaks in lakesidesweep are not numberedturns.",
+    "video_reference": "Saved/Refs/australia.mp4 overview344.35/456.46/568.58sec; sparseeditedclip, not continuouslap."
+  },
+  "primary_map": {
+    "url": "https://www.fia.com/system/files/decision-document/2026_melbourne_event_-_circuit_map_-_melbourne_2026_0.pdf",
+    "publisher": "FIA",
+    "issue": "2026-03-05version3",
+    "retrieved": "2026-11-08",
+    "sha256": "fa3bdda25dd3f0a6359796065a21ddca6b76968c326274625216e17bd9cf2304",
+    "retention": "PDF/image researchonlyignored; numericregistration dataretained."
+  },
+  "registration": {
+    "method": "Least-squares affine sourceeast/north\u2192FIAmapimage using13distinct corners. Manual markerreading; checkmapdrawingdistortions, not georeferenced orthophoto.",
+    "map_dimensions_px": [
+      1132,
+      1600
+    ],
+    "affine_x": [
+      0.5563484954669866,
+      -0.01814534846887017,
+      486.65077159600213
+    ],
+    "affine_y": [
+      -0.01904139678368577,
+      -0.5645869442523519,
+      1093.0059607405988
+    ],
+    "control_residuals_px": [
+      [
+        286,
+        7.099112969935076
+      ],
+      [
+        405,
+        16.611625023557256
+      ],
+      [
+        1018,
+        0.677873525501589
+      ],
+      [
+        1161,
+        6.4531542384495735
+      ],
+      [
+        1376,
+        0.4959488758735711
+      ],
+      [
+        1810,
+        6.798213257625126
+      ],
+      [
+        1900,
+        4.188990840213225
+      ],
+      [
+        3234,
+        1.7351561379256095
+      ],
+      [
+        3361,
+        2.778866711645213
+      ],
+      [
+        4065,
+        2.828565055596239
+      ],
+      [
+        4315,
+        0.44533811472994644
+      ],
+      [
+        4578,
+        1.9869751839158096
+      ],
+      [
+        4729,
+        7.576976911306633
+      ]
+    ],
+    "uncertainty_station_m": 35,
+    "typical_residual_m": 12,
+    "worst_corner": "T2~16.6px(~30m) disagreement; do not deform retained road from an illustrative map alone.",
+    "estimated_control_line_native_m": 5200,
+    "control_line_uncertainty_m": 35,
+    "control_line_method": "FIAmap transversecontrol-line markernear(520,1123) compared with transformednativeplan. Native0mapsnear(487,1093), ~80mbeyond timingline."
+  },
+  "limitations": [
+    "Plan survey precision, white-line widths and2022apexwidening remain unverified against orthophoto/as-built geometry.",
+    "Elevation comes separately from2016publishedprofile; legacychicanesectorheight is geographicapproximation, not restoration of oldlayout.",
+    "Currentroute smoothness and full-lap cinematic fidelity still need Unreal cockpit/motion review."
+  ]
+}

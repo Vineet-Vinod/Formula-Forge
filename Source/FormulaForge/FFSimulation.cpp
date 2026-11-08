@@ -173,12 +173,15 @@ FFSimulation::FFSimulation(TrackLayoutId layout) : circuit(layout),
         ground = &generatedSupport.ground;
     }
     tuning = SilverstoneTuning();
-    plan = authoredCircuitPlan(track->centerline, track->centerlineScale, lapLength, Units, track->mirrorCenterlineY, 1536);
+    const bool denseGenerated = track->generated && layout != TrackLayoutId::LasVegas && track->surfaceSamples >= 8192;
+    const int planSamples = denseGenerated ? track->surfaceSamples : 1536;
+    const int tangentSpan = denseGenerated ? 1 : 3;
+    plan = authoredCircuitPlan(track->centerline, track->centerlineScale, lapLength, Units, track->mirrorCenterlineY, planSamples);
     tangents.resize(plan.size());
     curvatures.resize(plan.size());
     const int count = static_cast<int>(plan.size());
     for (int index = 0; index < count; ++index) {
-        tangents[index] = normalize(plan[(index + 3) % count] - plan[(index + count - 3) % count]);
+        tangents[index] = normalize(plan[(index + tangentSpan) % count] - plan[(index + count - tangentSpan) % count]);
     }
     for (int index = 0; index < count; ++index) {
         curvatures[index] = std::abs(wrapAngle(angleOf(tangents[(index + 8) % count]) -

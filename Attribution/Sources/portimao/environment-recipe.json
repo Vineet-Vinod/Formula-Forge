@@ -1,0 +1,495 @@
+{
+  "schema_version": 1,
+  "circuit": "portimao",
+  "reference_index": "reference-index.json",
+  "appearance": "Sunny daytime with dry blue sky and dry ochre grass.",
+  "layout": "Legacy 2021 Portuguese Grand Prix 4.653km/15-corner layout in a newer-game mod; not a claim of a real2026event. Native station0 is final Galp corner, not start/finish.",
+  "sector_registration": "All stations in retained native origin. Approximate full-route zones; individual decor must stay beyond verified protection and runoff.",
+  "sectors": [
+    {
+      "start_m": 0,
+      "end_m": 1200,
+      "name": "Galp exit, pits and long straight",
+      "reference_times_s": [
+        670.51,
+        725.72
+      ],
+      "observed_environment": "Long white/gray garage bar and faceted blade-like main-grandstand roof; broad green margins and steep descending/cresting straight. The round TorreVIP is mapped across the infield, not a second invented pit tower.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 1200,
+      "end_m": 1850,
+      "name": "Opening corners and Lagos",
+      "reference_times_s": [
+        228.84,
+        339.26
+      ],
+      "observed_environment": "Broad descending turns with pale gravel escape and green aprons; low covered stand and dry grassy banks. Roofs visible across lower terrain, not dense forest.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 1850,
+      "end_m": 2600,
+      "name": "Torre VIP uphill hairpin",
+      "reference_times_s": [
+        394.46,
+        449.67,
+        173.63,
+        615.3
+      ],
+      "observed_environment": "Strong elevation break into slow corner, concentric grass banks, sparse olive-like trees and small seating sections. Red/white kerbs, local raised orange apex element. Distinct rounded/stacked-disc glazed TorreVIP building at mapped footprint157736297 on left of adjacent parallel road; do not duplicate it beside the pit straight.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 2600,
+      "end_m": 3200,
+      "name": "Samsung middle corners",
+      "reference_times_s": [
+        284.05,
+        504.88
+      ],
+      "observed_environment": "Rolling road over blind crests, pale gravel on outside, wide green paved margins where visible and patchy dry grass. Keep low scrub and long hillside sightlines.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 3200,
+      "end_m": 3950,
+      "name": "Craig Jones and Portimão",
+      "reference_times_s": [
+        449.67,
+        560.09
+      ],
+      "observed_environment": "Blind uphill and descending linked turns among open grassy hills, scattered broadleaf/olive-like trees and limited temporary stands. Raised orange/white-red apex elements are local, not continuous.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 3950,
+      "end_m": 4653,
+      "name": "Sagres to Galp return",
+      "reference_times_s": [
+        228.84,
+        615.3
+      ],
+      "observed_environment": "Long sweeping final curve follows rolling terrain toward pit complex. Red/white kerbs, green apron, pale gravel and dry cut banks; main-roof blades and circular VIP tower reappear.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    }
+  ],
+  "terrain": {
+    "retained_source": "Copernicus DEM GLO-90",
+    "retained_relief_m": 27.943,
+    "shortcomings": "GLO-90 cannot resolve blind crests/valleys. DGT2026mainland LiDAR release advertises0.5m/2mDTM with90percent coverage at release; verify exact Algarve tiles/epoch/licence before use. Native0 wraps final corner so S/F-relative station recipes will misplace all structures.",
+    "candidate_primary_sources": [
+      "https://www.dgterritorio.gov.pt/atividades/cartografia/cartografia-topografica/modelos-digitais",
+      "https://www.dgterritorio.gov.pt/descarregamento-de-dados-lidar-de-portugal-continental"
+    ],
+    "data_status": "Candidate metadata reviewed; no candidate raster downloaded or claimed as incorporated."
+  },
+  "authoring_constraints": [
+    "Use mapped building footprints and match rooflines, structural supports, facade depth and stepped volumes; names alone do not establish likeness.",
+    "Place grass/gravel/asphalt runoff per registered corner, with protection at outside edge; do not fill escape areas with independent tiles/blocks.",
+    "Road, kerbs, shoulder and protection share smooth station sampling; kerbs only in explicit ranges.",
+    "Maintain venue-specific vegetation around complete route, preserving long sightlines/open water where present.",
+    "Reference pixels remain ignored; generate geometry and materials only."
+  ],
+  "quality_gates": [
+    "Matching cockpit frame at each sector and every braking/turn sequence.",
+    "Oblique view of runoff shapes, architectural footprints and terrain.",
+    "Full lap motion review for edge smoothness, floating objects, protection gaps and missing surroundings.",
+    "Luna high reviewer must evaluate rendered evidence, not this recipe."
+  ],
+  "authored_surface_ranges": {
+    "station_units": "metres from retained native origin",
+    "side_contract": "+1 source driver right; -1 source driver left",
+    "placement_status": "Explicit reconstruction around registered apex controls. Approximate endpoints/widths inferred from reference and map; runtime clamps runoff to native protection corridor. Not a traced survey.",
+    "kerbs": [
+      {
+        "start_m": 4560,
+        "end_m": 4650,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 0,
+        "end_m": 170,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 1210,
+        "end_m": 1295,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 1300,
+        "end_m": 1360,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 1380,
+        "end_m": 1480,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 1560,
+        "end_m": 1650,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 1700,
+        "end_m": 1800,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 2260,
+        "end_m": 2400,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 2750,
+        "end_m": 2870,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 2890,
+        "end_m": 3000,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 3280,
+        "end_m": 3370,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 3500,
+        "end_m": 3680,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 3810,
+        "end_m": 3920,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 4020,
+        "end_m": 4130,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 4230,
+        "end_m": 4380,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      }
+    ],
+    "runoff": [
+      {
+        "start_m": 1170,
+        "end_m": 1520,
+        "side": -1,
+        "requested_width_m": 23,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 1510,
+        "end_m": 1690,
+        "side": -1,
+        "requested_width_m": 20,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 2220,
+        "end_m": 2450,
+        "side": 1,
+        "requested_width_m": 22,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 2700,
+        "end_m": 3040,
+        "side": -1,
+        "requested_width_m": 24,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 3450,
+        "end_m": 3730,
+        "side": -1,
+        "requested_width_m": 24,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 3770,
+        "end_m": 4170,
+        "side": 1,
+        "requested_width_m": 23,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 4180,
+        "end_m": 4430,
+        "side": -1,
+        "requested_width_m": 25,
+        "material": "Gravel"
+      }
+    ]
+  },
+  "braking_markers": {
+    "side_contract": "+1 is driver right in retained east/north source coordinates; -1 is driver left.",
+    "station_frame": "Native circuit origin, not necessarily start/finish; scene.at handles lap wrapping.",
+    "placement_status": "Corner approaches are registered to retained plan/OSM/FIA controls and reviewed reference sectors. Board offsets, mounting side and exact event positions are reconstructed estimates, not a traced signage survey.",
+    "selection": "Major braking approaches only; short linked corners use 100/50 m sets. No boards added to flat-out sweeps solely because the curvature detector counted a bend.",
+    "approaches": [
+      {
+        "corner": "Opening right-hander",
+        "apex_station_m": 1254,
+        "side": -1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "Curva Lagos",
+        "apex_station_m": 1602,
+        "side": -1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "Curva da Torre VIP",
+        "apex_station_m": 2332,
+        "side": 1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "Curva Samsung",
+        "apex_station_m": 2952,
+        "side": -1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "Curva Craig Jones",
+        "apex_station_m": 3327,
+        "side": 1,
+        "distances_before_apex_m": [
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      }
+    ]
+  },
+  "barrier_branding": {
+    "side_contract": "+1 driver right / -1 driver left in retained source coordinates.",
+    "source_policy": "Only the selected reviewed palette/identities are reproduced with original typesetting. Unsupported or varying identities use neutral PanelWhite; no reference pixels are shipped.",
+    "placement_status": "Ranges are approximate native-station registrations to the named reference sectors. Individual panel ends, event mounting positions and exact lengths are reconstructed; clip time is not treated as proportional lap distance.",
+    "coverage_policy": "Selected pit-straight and corner-protection runs only. Bare woodland Armco, open slopes and intervening protection remain exposed.",
+    "ranges": [
+      {
+        "start_m": 560,
+        "end_m": 930,
+        "side": 1,
+        "material": "PanelWhite",
+        "reviewed_times_s": [
+          670.51,
+          725.72
+        ],
+        "observation": "Legacy Portugal layout in the mod uses mostly white/black game-event panels beside the pits; retain neutral original artwork."
+      },
+      {
+        "start_m": 560,
+        "end_m": 930,
+        "side": -1,
+        "material": "PanelWhite",
+        "reviewed_times_s": [
+          670.51,
+          725.72
+        ],
+        "observation": "Short white panel run opposite the pit bar below the faceted main stand."
+      },
+      {
+        "start_m": 2230,
+        "end_m": 2400,
+        "side": 1,
+        "material": "PanelWhite",
+        "reviewed_times_s": [
+          173.63,
+          615.3
+        ],
+        "observation": "White/black event panels near the mapped Torre VIP parallel-road/hairpin sector."
+      },
+      {
+        "start_m": 2900,
+        "end_m": 3020,
+        "side": -1,
+        "material": "PanelWhite",
+        "reviewed_times_s": [
+          449.67,
+          504.88
+        ],
+        "observation": "White/black event boards on the outside protection of the reviewed slow infield corners; surrounding slopes remain open."
+      }
+    ]
+  },
+  "runoff_paint_review": {
+    "reviewed_overview_frames": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "reviewed_times_s": [
+      284.05,
+      339.26,
+      394.46,
+      449.67,
+      504.88,
+      560.09,
+      615.3,
+      670.51,
+      725.72
+    ],
+    "observations": "Green painted asphalt ribbons separate red/white kerbs from broad gravel traps. Red extension beside green in the observed Torre VIP / Craig Jones sector.",
+    "registration_status": "Named reference sector matched to retained road shape; widths, ends and star sizes/spacing are original estimates, not exact surveyed paint coordinates.",
+    "height_policy": "Ground-following polygon geometry, clipped outside road_mask. No fixed-z tiles and no enlargement of physical runoff corridors.",
+    "physical_runoff_extents_changed": false,
+    "paint": [
+      {
+        "type": "band",
+        "start_m": 1170,
+        "end_m": 1520,
+        "side": -1,
+        "inner_m": 1.2,
+        "outer_m": 3.8,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 1510,
+        "end_m": 1690,
+        "side": -1,
+        "inner_m": 1.2,
+        "outer_m": 3.8,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 2220,
+        "end_m": 2450,
+        "side": 1,
+        "inner_m": 1.2,
+        "outer_m": 3.8,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 2700,
+        "end_m": 3040,
+        "side": -1,
+        "inner_m": 1.2,
+        "outer_m": 3.8,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 3450,
+        "end_m": 3730,
+        "side": -1,
+        "inner_m": 1.2,
+        "outer_m": 3.8,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 3770,
+        "end_m": 4170,
+        "side": 1,
+        "inner_m": 1.2,
+        "outer_m": 3.8,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 4180,
+        "end_m": 4430,
+        "side": -1,
+        "inner_m": 1.2,
+        "outer_m": 3.8,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 2220,
+        "end_m": 2450,
+        "side": 1,
+        "inner_m": 3.8,
+        "outer_m": 5.2,
+        "material": "RunoffRed"
+      },
+      {
+        "type": "band",
+        "start_m": 3450,
+        "end_m": 3730,
+        "side": -1,
+        "inner_m": 3.8,
+        "outer_m": 5.2,
+        "material": "RunoffRed"
+      }
+    ]
+  },
+  "ground_appearance_review": "Sparse yellow/olive turf and dry beige exposed banks; shared Grass still needs dry-ground selection."
+}

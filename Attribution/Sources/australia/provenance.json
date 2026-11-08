@@ -1,6 +1,6 @@
 {
   "circuit": "Albert Park Circuit",
-  "layout": "Albert Park Circuit",
+  "layout": "AlbertParkpost2022fourteen-cornerGrandPrixlayout",
   "layout_year_intent": "Current Grand Prix layout where the circuit is live; last Formula 1 layout where it is not. The mapped OpenStreetMap loop was selected by published length.",
   "retrieved": "2026-11-04",
   "origin": {
@@ -23,18 +23,33 @@
     "scale_rule": "Applied only when the mapped plan was within 1.5% of a published length. Larger gaps keep the mapped length."
   },
   "elevation": {
-    "provider": "Open-Meteo Elevation API",
-    "dataset": "Copernicus DEM GLO-90",
-    "dataset_note": "Surface model, about 90 m, includes roofs and canopy. Not a bare-earth racing survey.",
-    "licence": "Copernicus DEM, see https://registry.opendata.aws/copernicus-dem/",
-    "retrieved": "2026-11-04",
-    "sample_spacing_m": 27.6,
-    "smoothing": "Two circular binomial passes on the coarse samples, then linear interpolation onto the 4 m centreline. Isolated samples more than 6 m above their neighbours were treated as overpasses or roofs.",
-    "relative_datum": "Heights stored after subtracting the lap minimum.",
-    "removed_minimum_m": 2.0,
-    "relief_m": 6.873,
-    "uncertainty_m": 8,
-    "deck": null
+    "provider": "Formula1 official published longitudinal road-profile chart; original numericaldigitisation",
+    "dataset": "2016circuitTopographyprofile",
+    "recipe": "elevation-corrections.json",
+    "relative_datum": "Chart minimumsubtracted, absolutechartaltitude notclaimed localMSL.",
+    "relief_m": 2.6,
+    "uncertainty_m": 0.35,
+    "source_url": "https://www.formula1.com/en/latest/article/highs-and-lows-which-f1-track-has-the-most-elevation-changes-.7I9JEcBw3R2AqXbnJ6hyvc.7I9JEcBw3R2AqXbnJ6hyvc",
+    "previous_source": {
+      "provider": "Open-Meteo Elevation API",
+      "dataset": "Copernicus DEM GLO-90",
+      "dataset_note": "Surface model, about 90 m, includes roofs and canopy. Not a bare-earth racing survey.",
+      "licence": "Copernicus DEM, see https://registry.opendata.aws/copernicus-dem/",
+      "retrieved": "2026-11-04",
+      "sample_spacing_m": 27.6,
+      "smoothing": "Two circular binomial passes on the coarse samples, then linear interpolation onto the 4 m centreline. Isolated samples more than 6 m above their neighbours were treated as overpasses or roofs.",
+      "relative_datum": "Heights stored after subtracting the lap minimum.",
+      "removed_minimum_m": 2.0,
+      "relief_m": 6.873,
+      "uncertainty_m": 8,
+      "deck": null
+    },
+    "limitations": [
+      "Publisheddiagram is not an engineering/as-built survey. Smallresurfacingbumps, bankcrosssections and underpassdeckdetails need separatecontrols.",
+      "Graph/profile registration is approximate and depends on sourceplanlandmarks; do not claim geodetic precision from pixelreading.",
+      "Existingnativewidths/plan/vehicleparameters preserved. Landscapeterrain remains separatelysourced."
+    ],
+    "layout_note": "2016sixteen-corner diagram compared with currentfourteen-corner route. Removedchicane sector controls denote geographiclocations, not instructions to restore oldcorners. Local heights in changed2022sector remain approximate."
   },
   "width": {
     "base_m": 12.0,
@@ -53,5 +68,7 @@
     "licence": "ODbL 1.0"
   },
   "protection": "Both sides are walled at the shoulder offset. Pit entry is closed. That closure is a game boundary, not a claim about the real pit lane.",
-  "not_claimed": "No lidar, no orthophoto registration, no cockpit capture in this build. Centimetre storage is not centimetre accuracy."
+  "not_claimed": "No lidar, no orthophoto registration, no cockpit capture in this build. Centimetre storage is not centimetre accuracy.",
+  "layout_review": "layout-review.json",
+  "turn_registration": "Explicit14cornercontrols in layout-review.json; currentcenterline already bypassesremovedClarkchicane. Twentycurvaturepeaks are not20numberedcorners."
 }

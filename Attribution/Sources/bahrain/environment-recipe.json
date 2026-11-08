@@ -1,0 +1,995 @@
+{
+  "schema_version": 1,
+  "circuit": "bahrain",
+  "appearance": "Dry night race; qualifying and introductions also include twilight.",
+  "terrain_character": "Beige desert, modest rising and falling infield, almost no continuous tree walls.",
+  "distinctive_geometry": [
+    "Sakhir Tower: layered circular cream floor plates, dark wraparound glazing, red night bands, small central upper crown.",
+    "Main Grandstand: long rising spectator tiers under repeated white pointed tensile sails; steel edge masts, open underside.",
+    "Pit hospitality: repeating smaller sail roofs above two-storey garages."
+  ],
+  "sectors": [
+    {
+      "id": "bahrain-01",
+      "native_station_m": [
+        0,
+        650
+      ],
+      "name": "Pit straight and T1–3",
+      "reviewed_video_seconds": [
+        189.36,
+        195,
+        200,
+        205,
+        357.68,
+        526
+      ],
+      "observed": "Left main grandstand and first-turn stand; right long white pit/hospitality and Sakhir Tower. Red-white kerbs, broad coloured paved T1 escape, sand beyond. Keep braking 150/100/50 boards before T1 and protection behind runoff.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "bahrain-02",
+      "native_station_m": [
+        650,
+        1450
+      ],
+      "name": "T3 climb, first back straight and T4",
+      "reviewed_video_seconds": [
+        441.84,
+        862.65
+      ],
+      "observed": "University stands outside opening sequence, sandy banks, fenced dry infield. Broad outer asphalt at T4, narrow inner red-white kerb, green and blue painted shoulders. Floodlight heads remain visible above the horizon.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "bahrain-03",
+      "native_station_m": [
+        1450,
+        2100
+      ],
+      "name": "T5–8 linked infield bends",
+      "reviewed_video_seconds": [
+        105.2,
+        100,
+        105,
+        110,
+        778.49
+      ],
+      "observed": "Low fast left/right sequence descends through open sand; short grass/painted strips immediately outside red-white kerbs, larger coloured asphalt where a car continues straight. Avoid uniform gravel strips around every bend.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "bahrain-04",
+      "native_station_m": [
+        2100,
+        2650
+      ],
+      "name": "T9–10 downhill left braking",
+      "reviewed_video_seconds": [
+        115,
+        694.33
+      ],
+      "observed": "Slow left apex below approach; large tan/sandy outside with coloured asphalt bordering road. Low barriers set back behind escape area, bright vertical light poles; few distant palms.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "bahrain-05",
+      "native_station_m": [
+        2650,
+        3450
+      ],
+      "name": "Inner straight and T11",
+      "reviewed_video_seconds": [
+        610.17,
+        946.81
+      ],
+      "observed": "Batelco spectator structure is right of inner straight near station2790. Straight Armco/mesh protection, beige dry expanse, asphalt escape at left-hand entry. Keep stand geometry above wall visible.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "bahrain-06",
+      "native_station_m": [
+        3450,
+        4050
+      ],
+      "name": "T12–13 fast right rise",
+      "reviewed_video_seconds": [
+        862.65,
+        1030.97
+      ],
+      "observed": "Open rising sandy ground, red-white inside kerb and coloured paved outside transition. Track floodlighting, low guardrail/tyre backing rather than roadside buildings on both sides.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "bahrain-07",
+      "native_station_m": [
+        4050,
+        4900
+      ],
+      "name": "Back straight and final right T14–15",
+      "reviewed_video_seconds": [
+        1115.13,
+        155,
+        160,
+        165
+      ],
+      "observed": "Long open straight toward white pointed canopy cluster; Victory stands outside final bend. Red-white apex, wide dark/blue-green escape with sand behind; lamps on both sides. Preserve long braking sightline.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "bahrain-08",
+      "native_station_m": [
+        4900,
+        5412
+      ],
+      "name": "Final exit and pit approach",
+      "reviewed_video_seconds": [
+        120,
+        125,
+        130,
+        170,
+        185,
+        190
+      ],
+      "observed": "Mainstand left, pit hospitality right, slim green verge adjoining road; repeated white roofs and lit fences dominate return. Continuous ground contact at pit wall; no misplaced blocks in driving lane.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    }
+  ],
+  "mapped_landmarks": [
+    {
+      "osm_id": 187123414,
+      "name": "Batelco",
+      "source_xy_m": [
+        137.93,
+        27.25
+      ],
+      "nearest_station_m": 2785.8,
+      "distance_from_centerline_m": 59.2,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "grandstand",
+      "footprint_xy_m": [
+        [
+          152.53,
+          124.36
+        ],
+        [
+          124.68,
+          124.9
+        ],
+        [
+          117.18,
+          -118.23
+        ],
+        [
+          142.73,
+          -119.17
+        ],
+        [
+          152.53,
+          124.36
+        ]
+      ]
+    },
+    {
+      "osm_id": 187123419,
+      "name": "Main Grandstand",
+      "source_xy_m": [
+        -31.3,
+        -13.73
+      ],
+      "nearest_station_m": 5396.0,
+      "distance_from_centerline_m": 30.8,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "grandstand",
+      "footprint_xy_m": [
+        [
+          -14.57,
+          125.22
+        ],
+        [
+          -43.91,
+          126.26
+        ],
+        [
+          -56.41,
+          -222.16
+        ],
+        [
+          -27.07,
+          -223.21
+        ],
+        [
+          -14.57,
+          125.22
+        ]
+      ]
+    },
+    {
+      "osm_id": 187123438,
+      "name": "Sakhir Tower",
+      "source_xy_m": [
+        104.48,
+        327.95
+      ],
+      "nearest_station_m": 331.3,
+      "distance_from_centerline_m": 91.5,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          86.68,
+          323.14
+        ],
+        [
+          88.38,
+          319.25
+        ],
+        [
+          90.89,
+          315.83
+        ],
+        [
+          94.11,
+          313.05
+        ],
+        [
+          97.85,
+          311.06
+        ],
+        [
+          101.96,
+          309.96
+        ],
+        [
+          106.2,
+          309.8
+        ],
+        [
+          110.37,
+          310.57
+        ],
+        [
+          113.03,
+          311.73
+        ],
+        [
+          114.26,
+          312.26
+        ],
+        [
+          117.68,
+          314.79
+        ],
+        [
+          120.45,
+          318.0
+        ],
+        [
+          122.44,
+          321.74
+        ],
+        [
+          123.55,
+          325.84
+        ],
+        [
+          123.72,
+          330.08
+        ],
+        [
+          122.94,
+          334.25
+        ],
+        [
+          121.24,
+          338.15
+        ],
+        [
+          118.73,
+          341.57
+        ],
+        [
+          115.51,
+          344.34
+        ],
+        [
+          111.77,
+          346.34
+        ],
+        [
+          107.67,
+          347.44
+        ],
+        [
+          103.42,
+          347.61
+        ],
+        [
+          99.25,
+          346.83
+        ],
+        [
+          95.36,
+          345.13
+        ],
+        [
+          91.94,
+          342.62
+        ],
+        [
+          89.17,
+          339.41
+        ],
+        [
+          87.18,
+          335.65
+        ],
+        [
+          86.07,
+          331.56
+        ],
+        [
+          85.9,
+          327.32
+        ],
+        [
+          86.68,
+          323.14
+        ]
+      ]
+    },
+    {
+      "osm_id": 271535959,
+      "name": "University Grandstand 2",
+      "source_xy_m": [
+        231.12,
+        516.06
+      ],
+      "nearest_station_m": 718.4,
+      "distance_from_centerline_m": 60.3,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "grandstand",
+      "footprint_xy_m": [
+        [
+          204.5,
+          526.9
+        ],
+        [
+          203.43,
+          509.77
+        ],
+        [
+          270.91,
+          499.46
+        ],
+        [
+          272.25,
+          517.27
+        ],
+        [
+          204.5,
+          526.9
+        ]
+      ]
+    },
+    {
+      "osm_id": 271535961,
+      "name": "University Grandstand 3",
+      "source_xy_m": [
+        325.74,
+        510.19
+      ],
+      "nearest_station_m": 806.2,
+      "distance_from_centerline_m": 71.1,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "grandstand",
+      "footprint_xy_m": [
+        [
+          353.76,
+          512.95
+        ],
+        [
+          285.51,
+          523.43
+        ],
+        [
+          284.03,
+          505.76
+        ],
+        [
+          351.64,
+          495.85
+        ],
+        [
+          353.76,
+          512.95
+        ]
+      ]
+    },
+    {
+      "osm_id": 271535964,
+      "name": "Victory Grandstand 1",
+      "source_xy_m": [
+        214.78,
+        -666.54
+      ],
+      "nearest_station_m": 4490.0,
+      "distance_from_centerline_m": 48.4,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "grandstand",
+      "footprint_xy_m": [
+        [
+          234.87,
+          -647.39
+        ],
+        [
+          176.32,
+          -680.58
+        ],
+        [
+          184.65,
+          -695.27
+        ],
+        [
+          243.2,
+          -662.08
+        ],
+        [
+          234.87,
+          -647.39
+        ]
+      ]
+    },
+    {
+      "osm_id": 271535967,
+      "name": "First Turn Grandstand",
+      "source_xy_m": [
+        -23.11,
+        371.69
+      ],
+      "nearest_station_m": 371.2,
+      "distance_from_centerline_m": 37.8,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "grandstand",
+      "footprint_xy_m": [
+        [
+          -33.41,
+          290.28
+        ],
+        [
+          -25.31,
+          494.46
+        ],
+        [
+          -7.92,
+          493.82
+        ],
+        [
+          -15.52,
+          289.61
+        ],
+        [
+          -33.41,
+          290.28
+        ]
+      ]
+    },
+    {
+      "osm_id": 271535981,
+      "name": "Victory Grandstand 2",
+      "source_xy_m": [
+        61.02,
+        -748.71
+      ],
+      "nearest_station_m": 4661.7,
+      "distance_from_centerline_m": 44.9,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "grandstand",
+      "footprint_xy_m": [
+        [
+          33.31,
+          -756.19
+        ],
+        [
+          41.54,
+          -771.12
+        ],
+        [
+          102.57,
+          -737.51
+        ],
+        [
+          94.35,
+          -722.57
+        ],
+        [
+          33.31,
+          -756.19
+        ]
+      ]
+    },
+    {
+      "osm_id": 271535984,
+      "name": "University Grandstand 1",
+      "source_xy_m": [
+        162.14,
+        517.88
+      ],
+      "nearest_station_m": 674.5,
+      "distance_from_centerline_m": 71.3,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "grandstand",
+      "footprint_xy_m": [
+        [
+          189.24,
+          520.88
+        ],
+        [
+          122.3,
+          531.06
+        ],
+        [
+          121.23,
+          513.38
+        ],
+        [
+          188.71,
+          503.22
+        ],
+        [
+          189.24,
+          520.88
+        ]
+      ]
+    }
+  ],
+  "dimensions_policy": "OSM XY footprints are registered geographic evidence. Tagged height and levels are retained verbatim; missing/zero heights are unknown. Roof/detail sizes and sparse-vegetation spacing in native authoring are visual estimates pending cockpit comparison.",
+  "source_registration": {
+    "method": "Nearest native centerline sample after retained local tangent projection and uniform scale.",
+    "station_error_bound_m": 8,
+    "landmark_extent_note": "Centroid station can fall on adjacent arm of circuit; use actual ring and terrain, not centroid station alone. Overlapping compound roof footprints must never become solid road obstructions."
+  },
+  "elevation_review": {
+    "retained_dataset": "Copernicus DEM GLO-90",
+    "retained_relief_m": 19.736,
+    "status": "The native racing-deck profile now follows registered published topography controls. Raw DEM remains for source comparison and scenery terrain.",
+    "findings": [
+      "Retained GLO-90 profile has 19.736 m relief; operator gives 18 m. These are different accuracy levels, not permission to stretch individual crests arbitrarily.",
+      "Default generic shoulders miss large blue/green/red painted asphalt escape areas and their sand outside."
+    ],
+    "replacement_profile": {
+      "schema_version": 1,
+      "provider": "Formula 1 published 2016 topography diagram",
+      "article_url": "https://www.formula1.com/en/latest/article/highs-and-lows-which-f1-track-has-the-most-elevation-changes-.7I9JEcBw3R2AqXbnJ6hyvc",
+      "image_url": "https://media.formula1.com/image/upload/c_lfill,w_1800/q_auto/v1740000001/content/dam/fom-website/manual/Misc/Topography/bahrain.webp",
+      "image_sha256": "304e51308e758fda565f845cab8c7a58d0c83e10d2b0384fb091d752dcba51ae",
+      "reference_image_shipped": false,
+      "relief_m": 16.9,
+      "vertical_datum": "Relative to the published profile minimum; absolute diagram altitude is not used.",
+      "native_station_controls_m": [
+        [
+          0,
+          0
+        ],
+        [
+          220,
+          0
+        ],
+        [
+          487,
+          3
+        ],
+        [
+          599,
+          1.5
+        ],
+        [
+          702,
+          4.5
+        ],
+        [
+          1293,
+          16.9
+        ],
+        [
+          1533,
+          13.4
+        ],
+        [
+          1656,
+          12.5
+        ],
+        [
+          1780,
+          9.5
+        ],
+        [
+          2027,
+          0.6
+        ],
+        [
+          2370,
+          4.5
+        ],
+        [
+          2490,
+          1.8
+        ],
+        [
+          3233,
+          2.7
+        ],
+        [
+          3592,
+          14.5
+        ],
+        [
+          3887,
+          14.2
+        ],
+        [
+          4693,
+          4.5
+        ],
+        [
+          4770,
+          2.7
+        ],
+        [
+          5150,
+          0
+        ],
+        [
+          5412,
+          0
+        ]
+      ],
+      "interpolation": "Piecewise monotone cubic Hermite. Interior Fritsch-Carlson harmonic slopes; flat SF seam. No uniform rescaling of the previous DEM.",
+      "vertical_uncertainty_m": 1.0,
+      "station_uncertainty_m": 50.0,
+      "method": "Read relative heights from the published numerical extremum labels and drawn trace, then register individual official corners to retained native centerline geometry using FIA maps. Intermediate heights are graphical estimates, not measurements.",
+      "registration_notes": "The old GLO-90 maximum was near T13. The operator and F1 diagram identify T4 as the summit. F1 gives 16.9 m relief, while the operator rounds the venue relief to18m. Relative heights only; the chart absolute sea-level datum is not used.",
+      "supersedes": "Coarse GLO-90 road profile remains retained as source evidence, not as the racing deck. No new lidar or survey is claimed.",
+      "controls_file": "elevation-corrections.json"
+    }
+  },
+  "primary_sources": [
+    {
+      "title": "Bahrain International Circuit operator track hire",
+      "url": "https://www.bahraingp.com/corporate-sales/track-hire/",
+      "supports": "15 turns; stated 18 m relief, 1090 m pit straight; floodlit operation."
+    },
+    {
+      "title": "Operator event overview",
+      "url": "https://www.bahraingp.com/blog/events/event-overview-2026/",
+      "supports": "Grandstand names and event viewing areas."
+    }
+  ],
+  "acceptance": {
+    "required": [
+      "Cockpit contact sheet covering all sectors, including each landmark approach and both road edges.",
+      "No floating tiles, barriers crossing drivable lane, closed escape mouths, or faceted long curves.",
+      "Compare curb colour/extent, runoff surface/depth, fencing, tree placement and skyline per sector against timestamps.",
+      "Review night illumination for asphalt visibility and dark sky, or daylight landscape contrast as appropriate."
+    ],
+    "status": "Reference inventory and scene recipe authored; native runtime acceptance is separate."
+  },
+  "authored_edges": {
+    "side_convention": "Numeric+1 is driver right, -1 is driver left. Shader runoff widths clamp to exported collision shoulders.",
+    "registration": "Intervals visually estimated against mapped native curves and supplied video; not a surveyed curb or safety-installation trace.",
+    "kerbs": [
+      {
+        "start_m": 425,
+        "end_m": 515,
+        "side": 1
+      },
+      {
+        "start_m": 565,
+        "end_m": 625,
+        "side": -1
+      },
+      {
+        "start_m": 665,
+        "end_m": 735,
+        "side": 1
+      },
+      {
+        "start_m": 1235,
+        "end_m": 1330,
+        "side": 1
+      },
+      {
+        "start_m": 1485,
+        "end_m": 1570,
+        "side": -1
+      },
+      {
+        "start_m": 1615,
+        "end_m": 1685,
+        "side": 1
+      },
+      {
+        "start_m": 1735,
+        "end_m": 1810,
+        "side": -1
+      },
+      {
+        "start_m": 1970,
+        "end_m": 2060,
+        "side": 1
+      },
+      {
+        "start_m": 2410,
+        "end_m": 2555,
+        "side": -1
+      },
+      {
+        "start_m": 3165,
+        "end_m": 3290,
+        "side": -1
+      },
+      {
+        "start_m": 3510,
+        "end_m": 3640,
+        "side": 1
+      },
+      {
+        "start_m": 3830,
+        "end_m": 3920,
+        "side": 1
+      },
+      {
+        "start_m": 4630,
+        "end_m": 4760,
+        "side": 1
+      }
+    ],
+    "runoffs": [
+      {
+        "start_m": 420,
+        "end_m": 550,
+        "side": -1,
+        "requested_width_m": 15,
+        "material": "RunoffBlue"
+      },
+      {
+        "start_m": 1210,
+        "end_m": 1360,
+        "side": -1,
+        "requested_width_m": 14,
+        "material": "RunoffGreen"
+      },
+      {
+        "start_m": 1460,
+        "end_m": 1810,
+        "side": 1,
+        "requested_width_m": 8,
+        "material": "RunoffBlue"
+      },
+      {
+        "start_m": 1940,
+        "end_m": 2100,
+        "side": -1,
+        "requested_width_m": 15,
+        "material": "RunoffBlue"
+      },
+      {
+        "start_m": 2370,
+        "end_m": 2580,
+        "side": 1,
+        "requested_width_m": 16,
+        "material": "RunoffBlue"
+      },
+      {
+        "start_m": 3130,
+        "end_m": 3320,
+        "side": 1,
+        "requested_width_m": 14,
+        "material": "RunoffGreen"
+      },
+      {
+        "start_m": 3820,
+        "end_m": 3950,
+        "side": -1,
+        "requested_width_m": 10,
+        "material": "RunoffBlue"
+      },
+      {
+        "start_m": 4590,
+        "end_m": 4810,
+        "side": -1,
+        "requested_width_m": 16,
+        "material": "RunoffBlue"
+      }
+    ],
+    "physical_escape_review": "Large terminal escape mouths still need explicit footprint geometry and matching collision-barrier changes. Surface ribbons must not extend through existing collision walls."
+  },
+  "native_scene_module": "tools/venues/bahrain.py",
+  "native_scene_status": "Authored geometry and type checks complete. Native cockpit review and collision acceptance are pending.",
+  "scenery_grounding": "Mapped buildings use the lowest footprint terrain level. Stand fronts have retaining bases and rear supports extend to sampled terrain. Trees avoid all road arms and mapped building footprints.",
+  "additional_authoritative_data": {
+    "title": "Survey and Land Registration Bureau DTM service",
+    "url": "https://www.slrb.gov.bh/en/digital-terrain-model",
+    "status": "Government DTM service exists. Area coverage, resolution and licence must be checked before acquiring data. No data purchased or requested.",
+    "limitation": "Service requires a data licence and payment; availability is not an open redistribution licence."
+  },
+  "source_conflicts": "Retained city footprints can cross the modeled road corridor. Native facade authoring clips ground walls outside the road mask plus 1.2 m and records the removed area; these are disclosed registration conflicts, not validated building surveys.",
+  "braking_markers": {
+    "side_convention": "Numeric+1 is driver right, -1 is driver left. Board sequences are on the outside of the main braking approach.",
+    "placement_policy": "Heavy braking approaches selected from mapped official corner sequence and indexed reference sectors. Stations and exact event mounting locations remain estimates. Standard150/100/50boards are shortened to100/50on selected compact street-corner approaches.",
+    "native_station_uncertainty_m": 40,
+    "approaches": [
+      {
+        "official_corner": "T1",
+        "apex_station_m": 487,
+        "side": -1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          195,
+          200,
+          205,
+          357.68
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T4",
+        "apex_station_m": 1293,
+        "side": -1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          441.84,
+          862.65
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T8",
+        "apex_station_m": 2027,
+        "side": -1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          105.2,
+          110,
+          778.49
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T10",
+        "apex_station_m": 2490,
+        "side": 1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          115,
+          694.33
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T11",
+        "apex_station_m": 3233,
+        "side": 1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          610.17,
+          946.81
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T14 final complex",
+        "apex_station_m": 4693,
+        "side": -1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          155,
+          160,
+          165,
+          1115.13
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      }
+    ]
+  },
+  "barrier_branding": {
+    "coordinate_frame": "Native source station metres; numerical +1 is driver right and -1 is driver left.",
+    "artwork": "Original typeset event panels with observed identity and palette; no video pixels or extracted game textures are shipped.",
+    "registration": "Wall identities are visible in the listed sparse reference frames. Native intervals are estimated from corner and landmark registration, with approximately 75 m endpoint uncertainty; edited playback is not treated as a linear station clock.",
+    "unbranded_sections": "Retain bare Armco and concrete outside these explicit bands. Unsupported legible identities are left without a substitute sponsor. A sponsor bridge alone is not evidence for a matching roadside band.",
+    "ranges": [
+      {
+        "start_m": 5180,
+        "end_m": 5412,
+        "side": -1,
+        "material": "PanelGulfAir",
+        "location": "Main straight grandstand wall",
+        "observed_identity": "GULF AIR",
+        "reviewed_video_seconds": [
+          120,
+          130,
+          170
+        ]
+      },
+      {
+        "start_m": 0,
+        "end_m": 220,
+        "side": -1,
+        "material": "PanelGulfAir",
+        "location": "Main straight grandstand wall",
+        "observed_identity": "GULF AIR",
+        "reviewed_video_seconds": [
+          185,
+          190
+        ]
+      },
+      {
+        "start_m": 5180,
+        "end_m": 5412,
+        "side": 1,
+        "material": "PanelGulfAir",
+        "location": "Main straight pit wall",
+        "observed_identity": "GULF AIR",
+        "reviewed_video_seconds": [
+          120,
+          130,
+          170
+        ]
+      },
+      {
+        "start_m": 0,
+        "end_m": 220,
+        "side": 1,
+        "material": "PanelGulfAir",
+        "location": "Main straight pit wall",
+        "observed_identity": "GULF AIR",
+        "reviewed_video_seconds": [
+          185,
+          190
+        ]
+      }
+    ]
+  }
+}

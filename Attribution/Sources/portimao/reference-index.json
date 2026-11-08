@@ -163,7 +163,16 @@
         ],
         "method": "Mapped curved footprint gives correct parallel-road registration; initial sparse-frame pit-tower interpretation rejected."
       }
-    ]
+    ],
+    "start_anchor_review": {
+      "station_m": 480,
+      "status": "Approximate timingcontrolmarker registration from primaryFIAmap; not an as-built coordinate",
+      "uncertainty_m": 45,
+      "evidence": "Control-line transverse marker near(505,954) lies~23percentalongmainstraightfromGalpexit~250toT1~1254, giving~480m. Earlier800pitmidpoint estimate rejected after primarymapreview.",
+      "source_url": "https://www.fia.com/sites/default/files/doc_1_-_2021_portuguese_grand_prix_-_circuit_map_1.pdf",
+      "map_sha256": "f9cd060266c222c9e6f00fa0d824dce6e8fb26e99a88bb7426842870787e5a9e",
+      "start_grid_note": "Car/starticonisillustrative; do not infer an independently precise gridfrontstation from iconlength."
+    }
   },
   "primary_sources": [
     {

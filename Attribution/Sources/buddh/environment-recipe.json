@@ -1,0 +1,741 @@
+{
+  "schema_version": 1,
+  "circuit": "buddh",
+  "appearance": "Dry clear daylight, slightly hazy horizon.",
+  "terrain_character": "Low drygrassbanks, short palms andpatchyplanting, tanlargegravelrunoff; explicitclimbtowardT3andbowlsection.",
+  "distinctive_geometry": [
+    "The main pit building has a white garage base, long dark glazing, several deeply projecting angled roof slabs and slender upper columns. Keep the pit wall separate.",
+    "The main grandstand has long crowd terraces under a thin angular cantilevered roof, with open steel bracing beneath.",
+    "Outside the long bowl are separate crowd terraces and angular roof sections, behind broad tan escape areas.",
+    "The main pit footprint188019421 is centered near native669m, facing grandstand169886092 near697m. Two end groups have deep projecting roof slabs above a lower garage base.",
+    "A tall white timing pylon with a dark position display is observed near the infield braking approach around native3080m; its position is estimated."
+  ],
+  "sectors": [
+    {
+      "id": "buddh-01",
+      "native_station_m": [
+        0,
+        400
+      ],
+      "name": "Final T15 exit and T16",
+      "reviewed_video_seconds": [
+        197,
+        201,
+        205
+      ],
+      "observed": "The final slow left T16 lies near native304m. Red-white kerbs and green paint lead onto the long pit straight. The stepped pit roof volumes and main grandstand appear ahead; low grass and paved/gravel escape remain outside.",
+      "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
+    },
+    {
+      "id": "buddh-02",
+      "native_station_m": [
+        400,
+        1000
+      ],
+      "name": "Pit straight and start/finish",
+      "reviewed_video_seconds": [
+        113,
+        114,
+        115,
+        116,
+        117,
+        121,
+        205,
+        26.99
+      ],
+      "observed": "The main grandstand is on the left, mapped OSM169886092 near697m. The pit and control roof complex is on the right, OSM188019421 near669m. Deep layered roof slabs, white garages, a separate pit wall and green verge define the straight. The finish line is seen near116s; approximate native station470m.",
+      "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
+    },
+    {
+      "id": "buddh-03",
+      "native_station_m": [
+        1000,
+        1450
+      ],
+      "name": "T1, T2 and uphill T3",
+      "reviewed_video_seconds": [
+        125,
+        129,
+        133,
+        221.31
+      ],
+      "observed": "T1 is the right near1041m, T2 the left near1165m, and T3 the uphill right hairpin near1429m. The road dips into T2 and climbs strongly toward the blind crest. Braking boards, green/blue paint and an open crowd terrace frame the hairpin.",
+      "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
+    },
+    {
+      "id": "buddh-04",
+      "native_station_m": [
+        1450,
+        2750
+      ],
+      "name": "Back straight and T4",
+      "reviewed_video_seconds": [
+        137,
+        141,
+        145,
+        149,
+        153,
+        48.58,
+        242.91
+      ],
+      "observed": "The long fast straight descends through grass and palms. Guardrail, mesh and distance boards define the approach to T4. The slow right apex has a broad green paved escape and tan runoff beyond. Stands and pit buildings stay distant.",
+      "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
+    },
+    {
+      "id": "buddh-05",
+      "native_station_m": [
+        2750,
+        3500
+      ],
+      "name": "T5–7 infield",
+      "reviewed_video_seconds": [
+        157,
+        161,
+        165,
+        169,
+        134.95
+      ],
+      "observed": "The wide left-left-right sequence crosses a low rise. Red-white kerbs border green, yellow and red paved escape areas. A white timing pylon with a dark position panel appears beside the braking approach. Low grass banks and distant stands leave an open horizon.",
+      "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
+    },
+    {
+      "id": "buddh-06",
+      "native_station_m": [
+        3500,
+        3950
+      ],
+      "name": "T8–9 bowl approach",
+      "reviewed_video_seconds": [
+        173,
+        70.17,
+        156.54
+      ],
+      "observed": "Linked corners lead toward the bowl. Red-white kerbs and green paint border the asphalt; tan runoff widens outside. Separate pale grandstand roof sections appear ahead, with dry grass and scattered palms.",
+      "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
+    },
+    {
+      "id": "buddh-07",
+      "native_station_m": [
+        3950,
+        4500
+      ],
+      "name": "T10–12 continuous right bowl",
+      "reviewed_video_seconds": [
+        177,
+        181,
+        185,
+        91.76,
+        178.13
+      ],
+      "observed": "The multi-apex right is continuous. Inside grass and red-white kerbs follow the arc, with green/red paint leading to broad tan gravel outside. Large crowd terraces and separated angular roof sections sit beyond the escape area.",
+      "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
+    },
+    {
+      "id": "buddh-08",
+      "native_station_m": [
+        4500,
+        4800
+      ],
+      "name": "T13–14 fast changes",
+      "reviewed_video_seconds": [
+        189,
+        193,
+        199.72
+      ],
+      "observed": "Sweeping direction changes cross broad grass and painted edges. The main facilities gradually return to view, with gravel outside and fences behind the escape areas.",
+      "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
+    },
+    {
+      "id": "buddh-09",
+      "native_station_m": [
+        4800,
+        5141
+      ],
+      "name": "T15 approach and exit",
+      "reviewed_video_seconds": [
+        193,
+        197,
+        201,
+        286.09
+      ],
+      "observed": "The late right bends lead into the short link toward T16 across the station seam. Kerbs, grass, green paint and paved/gravel escape border the sequence. The long pit straight begins after the final left at native304m, rather than inside this interval.",
+      "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
+    }
+  ],
+  "mapped_landmarks": [
+    {
+      "osm_id": 169886092,
+      "name": "",
+      "source_xy_m": [
+        102.48,
+        229.8
+      ],
+      "nearest_station_m": 696.7,
+      "distance_from_centerline_m": 49.9,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          23.79,
+          388.98
+        ],
+        [
+          71.51,
+          406.11
+        ],
+        [
+          220.53,
+          -8.97
+        ],
+        [
+          172.81,
+          -26.09
+        ],
+        [
+          23.79,
+          388.98
+        ]
+      ]
+    },
+    {
+      "osm_id": 188019421,
+      "name": "",
+      "source_xy_m": [
+        209.66,
+        238.73
+      ],
+      "nearest_station_m": 668.7,
+      "distance_from_centerline_m": 54.0,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          197.62,
+          274.09
+        ],
+        [
+          275.02,
+          302.63
+        ],
+        [
+          293.86,
+          251.53
+        ],
+        [
+          238.38,
+          231.06
+        ],
+        [
+          225.17,
+          266.87
+        ],
+        [
+          203.26,
+          258.78
+        ],
+        [
+          206.66,
+          249.63
+        ],
+        [
+          246.62,
+          130.48
+        ],
+        [
+          270.27,
+          45.89
+        ],
+        [
+          243.4,
+          38.38
+        ],
+        [
+          219.54,
+          122.1
+        ],
+        [
+          180.11,
+          241.18
+        ],
+        [
+          183.72,
+          242.37
+        ],
+        [
+          174.92,
+          265.7
+        ],
+        [
+          172.92,
+          264.85
+        ],
+        [
+          110.29,
+          413.7
+        ],
+        [
+          134.58,
+          423.91
+        ],
+        [
+          197.62,
+          274.09
+        ]
+      ]
+    },
+    {
+      "osm_id": 188028655,
+      "name": "",
+      "source_xy_m": [
+        174.59,
+        474.32
+      ],
+      "nearest_station_m": 900.9,
+      "distance_from_centerline_m": 102.3,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          142.12,
+          443.6
+        ],
+        [
+          126.83,
+          481.4
+        ],
+        [
+          223.3,
+          520.4
+        ],
+        [
+          238.57,
+          482.6
+        ],
+        [
+          142.12,
+          443.6
+        ]
+      ]
+    },
+    {
+      "osm_id": 496650379,
+      "name": "",
+      "source_xy_m": [
+        505.3,
+        438.37
+      ],
+      "nearest_station_m": 1905.9,
+      "distance_from_centerline_m": 125.3,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          479.19,
+          474.6
+        ],
+        [
+          504.48,
+          481.43
+        ],
+        [
+          517.89,
+          431.76
+        ],
+        [
+          520.58,
+          432.48
+        ],
+        [
+          531.87,
+          390.65
+        ],
+        [
+          503.91,
+          383.1
+        ],
+        [
+          479.19,
+          474.6
+        ]
+      ]
+    }
+  ],
+  "dimensions_policy": "OSM XY footprints are registered geographic evidence. Tagged height and levels are retained verbatim; missing/zero heights are unknown. Roof/detail sizes and sparse-vegetation spacing in native authoring are visual estimates pending cockpit comparison.",
+  "source_registration": {
+    "method": "Nearest native centerline sample after retained local tangent projection and uniform scale.",
+    "station_error_bound_m": 8,
+    "landmark_extent_note": "Centroid station can fall on adjacent arm of circuit; use actual ring and terrain, not centroid station alone. Overlapping compound roof footprints must never become solid road obstructions."
+  },
+  "elevation_review": {
+    "retained_dataset": "Copernicus DEM GLO-90",
+    "retained_relief_m": 13.231,
+    "status": "The native deck now uses the retained higher-resolution GLO-30 centerline profile. Published range conflicts remain disclosed; no range was forced.",
+    "findings": [
+      "RetainedGLO90relief13.231m is not verified deckelevation. UphillT3 clearlyvisiblebut no primarymetricelevationseriesverified;donotamplifytocirculating40mclaims.",
+      "Architect5137m,FIA20135125m,currentmapping5141m differ;retainlayoutphasewithoutarbitrarilyrescalingtoonepublicnumber.",
+      "The pit straight is registered by mapped footprints near station669m; officialT1/T2/T3are1041/1165/1429m. Higher-resolution GLO-30 places the crest near1445m and gives a11.738m T2–T3climb."
+    ],
+    "research_file": "elevation-research.json",
+    "replacement_profile": {
+      "schema_version": 1,
+      "provider": "Copernicus DEM GLO-30, retained bounded scenery raster",
+      "source_file": "elevation/scenery_dem.tif",
+      "sha256": "f5d1ce4a29dc7c17e81929a2e2f6db5549e0fbfbec6eb5a9f775b238b5b64266",
+      "relief_m": 12.053,
+      "vertical_datum": "Relative to the minimum sampled GLO-30 centerline value.",
+      "removed_minimum_m": 192.67316436767578,
+      "interpolation": "Exact native XY centerline inverted to retained WGS84 origin/scale, bilinear raster sampling. Two circular[1,2,1]/4 passes at4m sample spacing. No vertical scale factor.",
+      "uncertainty_m": 3.0,
+      "limitations": "30m digital surface model, not lidar or bare-earth road survey. Canopy and roof influences remain possible. Geographic source pixels are retained with provenance; no reference video pixels redistributed.",
+      "structural_findings": "Correct route registration putsT1near1041m,T2near1165m,T3near1429m. The GLO-30 climb fromT2toT3is11.738m, compared with7.832m from the coarse deck. The mapped pit straight is400–1000m, not4870m.",
+      "research_file": "elevation-research.json"
+    }
+  },
+  "primary_sources": [
+    {
+      "title": "FIA2013officialmap",
+      "url": "https://www.fia.com/sites/default/files/external_archive/node3786/16-india-circuit-print.pdf",
+      "supports": "Official16-turnGProute,5125mlap, broadrunoffandgravelareas."
+    },
+    {
+      "title": "Tilkearchitectportfolio2024",
+      "url": "https://tilke.de/wp-content/uploads/2024/12/2024-Portfolio.pdf",
+      "supports": "Built2009–2011;5137m,16turns; identifiespit/racecontrol,hospitality,grandstands,mediaandmedicalarchitecture."
+    },
+    {
+      "title": "ABB Contact India3/2011, electrical supplier account of Buddh project",
+      "url": "https://library.e.abb.com/public/bade2cb5c7c3d0e94825797e0062298a/Contact_3_11_India.pdf",
+      "supports": "Supplier quotes14m highest elevation and18–20m track width. This is a venue-specification summary, not a station-resolved civil survey."
+    }
+  ],
+  "acceptance": {
+    "required": [
+      "Cockpit contact sheet covering all sectors, including each landmark approach and both road edges.",
+      "No floating tiles, barriers crossing drivable lane, closed escape mouths, or faceted long curves.",
+      "Compare curb colour/extent, runoff surface/depth, fencing, tree placement and skyline per sector against timestamps.",
+      "Review night illumination for asphalt visibility and dark sky, or daylight landscape contrast as appropriate."
+    ],
+    "status": "Reference inventory and scene recipe authored; native runtime acceptance is separate."
+  },
+  "authored_edges": {
+    "side_convention": "Numeric+1 is driver right, -1 is driver left. Shader runoff widths clamp to exported collision shoulders.",
+    "registration": "Intervals visually estimated against mapped native curves and supplied video; not a surveyed curb or safety-installation trace.",
+    "kerbs": [
+      {
+        "start_m": 260,
+        "end_m": 345,
+        "side": -1
+      },
+      {
+        "start_m": 1000,
+        "end_m": 1080,
+        "side": 1
+      },
+      {
+        "start_m": 1125,
+        "end_m": 1200,
+        "side": -1
+      },
+      {
+        "start_m": 1370,
+        "end_m": 1475,
+        "side": 1
+      },
+      {
+        "start_m": 2650,
+        "end_m": 2780,
+        "side": 1
+      },
+      {
+        "start_m": 3230,
+        "end_m": 3320,
+        "side": -1
+      },
+      {
+        "start_m": 3335,
+        "end_m": 3410,
+        "side": -1
+      },
+      {
+        "start_m": 3450,
+        "end_m": 3530,
+        "side": 1
+      },
+      {
+        "start_m": 3570,
+        "end_m": 3650,
+        "side": 1
+      },
+      {
+        "start_m": 3675,
+        "end_m": 3750,
+        "side": -1
+      },
+      {
+        "start_m": 3950,
+        "end_m": 4130,
+        "side": 1
+      },
+      {
+        "start_m": 4170,
+        "end_m": 4320,
+        "side": 1
+      },
+      {
+        "start_m": 4360,
+        "end_m": 4450,
+        "side": -1
+      },
+      {
+        "start_m": 4595,
+        "end_m": 4680,
+        "side": -1
+      },
+      {
+        "start_m": 4710,
+        "end_m": 4790,
+        "side": 1
+      },
+      {
+        "start_m": 5005,
+        "end_m": 5100,
+        "side": 1
+      }
+    ],
+    "runoffs": [
+      {
+        "start_m": 230,
+        "end_m": 370,
+        "side": 1,
+        "requested_width_m": 13,
+        "material": "RunoffGreen"
+      },
+      {
+        "start_m": 1330,
+        "end_m": 1505,
+        "side": -1,
+        "requested_width_m": 18,
+        "material": "RunoffGreen"
+      },
+      {
+        "start_m": 2600,
+        "end_m": 2820,
+        "side": -1,
+        "requested_width_m": 18,
+        "material": "RunoffGreen"
+      },
+      {
+        "start_m": 3190,
+        "end_m": 3430,
+        "side": 1,
+        "requested_width_m": 15,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 3500,
+        "end_m": 3770,
+        "side": -1,
+        "requested_width_m": 12,
+        "material": "RunoffGreen"
+      },
+      {
+        "start_m": 3900,
+        "end_m": 4340,
+        "side": -1,
+        "requested_width_m": 18,
+        "material": "RunoffGreen"
+      },
+      {
+        "start_m": 4550,
+        "end_m": 4700,
+        "side": 1,
+        "requested_width_m": 13,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 4970,
+        "end_m": 5130,
+        "side": -1,
+        "requested_width_m": 17,
+        "material": "RunoffGreen"
+      }
+    ],
+    "physical_escape_review": "Large terminal escape mouths still need explicit footprint geometry and matching collision-barrier changes. Surface ribbons must not extend through existing collision walls.",
+    "outer_kerb_paint": "Selected reference-observed kerbs have a 2.6 m green strip from the road edge, leaving green beyond the raised red-white blocks. These strips are independent of the larger outer escape surfaces."
+  },
+  "native_scene_module": "tools/venues/buddh.py",
+  "native_scene_status": "Authored geometry and type checks complete. Native cockpit review and collision acceptance are pending.",
+  "scenery_grounding": "Mapped buildings use the lowest footprint terrain level. Stand fronts have retaining bases and rear supports extend to sampled terrain. Trees avoid all road arms and mapped building footprints.",
+  "additional_authoritative_data": {
+    "title": "NRSC Bhuvan CartoDEM standards",
+    "url": "https://bhuvan-app1.nrsc.gov.in/2dresources/documents/4_Bhuvan_Data_Content_And_Map_Standards.pdf",
+    "status": "Official 30 m CartoDEM is a DSM from Cartosat stereo, with quoted 8 m height accuracy and 15 m positional accuracy. Download requires an account.",
+    "limitation": "This is an independent coarse cross-check, not a bare-earth circuit survey or enough to resolve small racing crests."
+  },
+  "source_conflicts": "Retained city footprints can cross the modeled road corridor. Native facade authoring clips ground walls outside the road mask plus 1.2 m and records the removed area; these are disclosed registration conflicts, not validated building surveys.",
+  "uncertainties": [
+    "Native source origin is in the final sector beforeT16. SF is estimated near470±100m, T1near1041m, T2near1165m, T3near1429m. Geographic pit and grandstand footprints establish this route phase.",
+    "Road elevation now comes directly from bilinear GLO-30 centerline samples. It remains a30m surface model with3m stated uncertainty, not a surveyed racing deck."
+  ],
+  "braking_markers": {
+    "side_convention": "Numeric+1 is driver right, -1 is driver left. Board sequences are on the outside of the main braking approach.",
+    "placement_policy": "Heavy braking approaches selected from mapped official corner sequence and indexed reference sectors. Stations and exact event mounting locations remain estimates. Standard150/100/50boards are shortened to100/50on selected compact street-corner approaches.",
+    "native_station_uncertainty_m": 40,
+    "approaches": [
+      {
+        "official_corner": "T1",
+        "apex_station_m": 1041,
+        "side": -1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          121,
+          125
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T3 uphill hairpin",
+        "apex_station_m": 1429,
+        "side": -1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          129,
+          133,
+          221.31
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T4 back-straight hairpin",
+        "apex_station_m": 2719,
+        "side": -1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          145,
+          149,
+          153,
+          242.91
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T5 infield entry",
+        "apex_station_m": 3279,
+        "side": 1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          157,
+          161,
+          165
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T16 final left",
+        "apex_station_m": 304,
+        "side": 1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          197,
+          201,
+          205
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      }
+    ]
+  },
+  "barrier_branding": {
+    "coordinate_frame": "Native source station metres; numerical +1 is driver right and -1 is driver left.",
+    "artwork": "Original typeset event panels with observed identity and palette; no video pixels or extracted game textures are shipped.",
+    "registration": "Wall identities are visible in the listed sparse reference frames. Native intervals are estimated from corner and landmark registration, with approximately 75 m endpoint uncertainty; edited playback is not treated as a linear station clock.",
+    "unbranded_sections": "Retain bare Armco and concrete outside these explicit bands. Unsupported legible identities are left without a substitute sponsor. A sponsor bridge alone is not evidence for a matching roadside band.",
+    "ranges": [
+      {
+        "start_m": 400,
+        "end_m": 1000,
+        "side": -1,
+        "material": "PanelAirtel",
+        "location": "Main straight grandstand wall",
+        "observed_identity": "airtel",
+        "reviewed_video_seconds": [
+          113,
+          114,
+          115,
+          116,
+          117,
+          121
+        ]
+      },
+      {
+        "start_m": 400,
+        "end_m": 1000,
+        "side": 1,
+        "material": "PanelAirtel",
+        "location": "Main straight pit wall",
+        "observed_identity": "airtel",
+        "reviewed_video_seconds": [
+          113,
+          114,
+          115,
+          116,
+          117,
+          121
+        ]
+      },
+      {
+        "start_m": 3110,
+        "end_m": 3310,
+        "side": -1,
+        "material": "PanelAirtel",
+        "location": "Infield timing pylon approach",
+        "observed_identity": "airtel",
+        "reviewed_video_seconds": [
+          157,
+          161,
+          169
+        ]
+      },
+      {
+        "start_m": 3950,
+        "end_m": 4320,
+        "side": -1,
+        "material": "PanelAirtel",
+        "location": "Long right bowl outside spectator wall",
+        "observed_identity": "airtel",
+        "reviewed_video_seconds": [
+          177,
+          181,
+          185
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,865 @@
+{
+  "schema_version": 1,
+  "circuit": "cota",
+  "reference_index": "reference-index.json",
+  "appearance": "Bright daytime with scattered clouds; some qualifying shots warmer/overcast.",
+  "layout": "Circuit of the Americas 5.513km/20-corner Grand Prix layout.",
+  "sector_registration": "All stations in retained native origin. Approximate full-route zones; individual decor must stay beyond verified protection and runoff.",
+  "sectors": [
+    {
+      "start_m": 0,
+      "end_m": 850,
+      "name": "Main straight, uphill T1 and T2",
+      "reference_times_s": [
+        535.45,
+        836.85
+      ],
+      "observed_environment": "Long main-stand/pit complex, steep uphill blind T1 crest, spectator hill and low broadleaf trees. Wide asphalt/painted runoff and US flag geometry; opening hill must be real mesh relief.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 850,
+      "end_m": 2200,
+      "name": "T3–T10 esses",
+      "reference_times_s": [
+        309.4,
+        987.55
+      ],
+      "observed_environment": "Rolling linked esses through grassy banks and sparse broadleaf woodland. Spectators on crests, open horizon, red/white kerbs and red/white/blue geometric runoff only on actual outside aprons.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 2200,
+      "end_m": 2850,
+      "name": "T11 hairpin",
+      "reference_times_s": [
+        384.75
+      ],
+      "observed_environment": "Broad slow hairpin with large red/white apex treatment, outside paved escape, broad grass and low tree line; no close urban wall.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 2850,
+      "end_m": 3800,
+      "name": "Back straight to T12",
+      "reference_times_s": [
+        460.1,
+        610.8
+      ],
+      "observed_environment": "Long cresting straight, wide grass verges, square timing/advertising structures and large braking-zone apron. Stand mass beyond T12; sparse low service buildings.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 3800,
+      "end_m": 4250,
+      "name": "T13–T15 stadium",
+      "reference_times_s": [
+        158.7,
+        686.15
+      ],
+      "observed_environment": "Low bowl grandstands and broad coloured paved aprons. Red tubular observation-tower spine/curved cantilever crown rises beyond T16–18 and amphitheatre, not arbitrary roadside position.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 4250,
+      "end_m": 4850,
+      "name": "T16–T18 triple right",
+      "reference_times_s": [
+        761.5
+      ],
+      "observed_environment": "Distinctive broad red/white/blue runoff, low trees and temporary bleachers, steel advertising bridges. Tower and amphitheatre compound dominate infield skyline.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 4850,
+      "end_m": 5513,
+      "name": "T19, T20 and pit return",
+      "reference_times_s": [
+        83.35,
+        912.2
+      ],
+      "observed_environment": "Wide final painted aprons, grass islands, multi-tier main-straight roof and long white pit bar; catch fences and viewing decks, distant observation wheel.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    }
+  ],
+  "terrain": {
+    "retained_source": "Copernicus DEM GLO-90",
+    "retained_relief_m": 21.933,
+    "shortcomings": "GLO-90 relief21.933m does not validate T1crest or rolling esses. USGS3DEP TexasCentral LiDAR candidate noted historically but fine payload absent; do not fabricate survey. Tower official height251ft=76.5048m. Marketing133ft incline is not a geodetic road-height control.",
+    "candidate_primary_sources": [
+      "https://www.usgs.gov/3d-elevation-program"
+    ],
+    "data_status": "Candidate metadata reviewed; no candidate raster downloaded or claimed as incorporated.",
+    "racing_deck_correction": "Separate independentlydigitized primary Formula1roadprofile now replaces contaminated/coarseGLO90 racingprofile. Landscapegrid remains separatelysourced. T1relativeclimb30.9m is independently stated in official article. Preserve rollingesses and backstraight crests by everycorner registration; no use of marketing133ft as surveyed roadheight."
+  },
+  "authoring_constraints": [
+    "Use mapped building footprints and match rooflines, structural supports, facade depth and stepped volumes; names alone do not establish likeness.",
+    "Place grass/gravel/asphalt runoff per registered corner, with protection at outside edge; do not fill escape areas with independent tiles/blocks.",
+    "Road, kerbs, shoulder and protection share smooth station sampling; kerbs only in explicit ranges.",
+    "Maintain venue-specific vegetation around complete route, preserving long sightlines/open water where present.",
+    "Reference pixels remain ignored; generate geometry and materials only."
+  ],
+  "quality_gates": [
+    "Matching cockpit frame at each sector and every braking/turn sequence.",
+    "Oblique view of runoff shapes, architectural footprints and terrain.",
+    "Full lap motion review for edge smoothness, floating objects, protection gaps and missing surroundings.",
+    "Luna high reviewer must evaluate rendered evidence, not this recipe."
+  ],
+  "authored_surface_ranges": {
+    "station_units": "metres from retained native origin",
+    "side_contract": "+1 source driver right; -1 source driver left",
+    "placement_status": "Explicit reconstruction around registered apex controls. Approximate endpoints/widths inferred from reference and map; runtime clamps runoff to native protection corridor. Not a traced survey.",
+    "kerbs": [
+      {
+        "start_m": 460,
+        "end_m": 570,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 725,
+        "end_m": 820,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 1000,
+        "end_m": 1075,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 1090,
+        "end_m": 1165,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 1180,
+        "end_m": 1255,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 1370,
+        "end_m": 1460,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 1550,
+        "end_m": 1630,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 1725,
+        "end_m": 1805,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 1810,
+        "end_m": 1890,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 2010,
+        "end_m": 2100,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 2400,
+        "end_m": 2520,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 3590,
+        "end_m": 3720,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 3830,
+        "end_m": 3930,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 3940,
+        "end_m": 4010,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 4040,
+        "end_m": 4140,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 4135,
+        "end_m": 4205,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 4360,
+        "end_m": 4490,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 4570,
+        "end_m": 4700,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 4880,
+        "end_m": 5000,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 5170,
+        "end_m": 5280,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      }
+    ],
+    "runoff": [
+      {
+        "start_m": 420,
+        "end_m": 640,
+        "side": 1,
+        "requested_width_m": 25,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 960,
+        "end_m": 1490,
+        "side": 1,
+        "requested_width_m": 18,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 1510,
+        "end_m": 1930,
+        "side": 1,
+        "requested_width_m": 18,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 2350,
+        "end_m": 2570,
+        "side": 1,
+        "requested_width_m": 24,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 3540,
+        "end_m": 3780,
+        "side": 1,
+        "requested_width_m": 26,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 3800,
+        "end_m": 4170,
+        "side": -1,
+        "requested_width_m": 24,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 4200,
+        "end_m": 4750,
+        "side": -1,
+        "requested_width_m": 24,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 4830,
+        "end_m": 5050,
+        "side": 1,
+        "requested_width_m": 25,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 5120,
+        "end_m": 5330,
+        "side": 1,
+        "requested_width_m": 23,
+        "material": "Runoff"
+      }
+    ]
+  },
+  "additional_environment_source": {
+    "provider": "OpenStreetMap contributors",
+    "endpoint": "https://overpass-api.de/api/interpreter",
+    "query": "[out:json][timeout:60];(nwr[\"man_made\"=\"tower\"](30.130,-97.645,30.141,-97.631);nwr[\"name\"~\"[Tt]ower|[Oo]bservation\"](30.130,-97.645,30.141,-97.631););out geom;",
+    "retrieved": "2026-11-08",
+    "licence": "ODbL1.0",
+    "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "file": "environment.osm.json.gz",
+    "sha256": "4d0daf6bd86c1501580ed6482af1ae04397e543ab6ea331ce15da43d102bb9ec",
+    "purpose": "Tightly bounded essential landmark query; inline member geometry preserved."
+  },
+  "elevation_recipe": "elevation-corrections.json",
+  "braking_markers": {
+    "side_contract": "+1 is driver right in retained east/north source coordinates; -1 is driver left.",
+    "station_frame": "Native circuit origin, not necessarily start/finish; scene.at handles lap wrapping.",
+    "placement_status": "Corner approaches are registered to retained plan/OSM/FIA controls and reviewed reference sectors. Board offsets, mounting side and exact event positions are reconstructed estimates, not a traced signage survey.",
+    "selection": "Major braking approaches only; short linked corners use 100/50 m sets. No boards added to flat-out sweeps solely because the curvature detector counted a bend.",
+    "approaches": [
+      {
+        "corner": "T1 uphill hairpin",
+        "apex_station_m": 517,
+        "side": 1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "T11 hairpin",
+        "apex_station_m": 2456,
+        "side": 1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "T12 back-straight stop",
+        "apex_station_m": 3650,
+        "side": 1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "T15 stadium",
+        "apex_station_m": 4162,
+        "side": 1,
+        "distances_before_apex_m": [
+          100,
+          50
+        ],
+        "source_registration": "Tight geometric apex matched to supplied reference minimap and primary IMSA aerial; named OSM way midpoint4090.68 is not the apex.",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "T20 pit return",
+        "apex_station_m": 5221,
+        "side": 1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      }
+    ]
+  },
+  "barrier_branding": {
+    "side_contract": "+1 driver right / -1 driver left in retained source coordinates.",
+    "source_policy": "Only the selected reviewed palette/identities are reproduced with original typesetting. Unsupported or varying identities use neutral PanelWhite; no reference pixels are shipped.",
+    "placement_status": "Ranges are approximate native-station registrations to the named reference sectors. Individual panel ends, event mounting positions and exact lengths are reconstructed; clip time is not treated as proportional lap distance.",
+    "coverage_policy": "Selected pit-straight and corner-protection runs only. Bare woodland Armco, open slopes and intervening protection remain exposed.",
+    "ranges": [
+      {
+        "start_m": 900,
+        "end_m": 1100,
+        "side": 1,
+        "material": "PanelGreen",
+        "reviewed_times_s": [
+          309.4
+        ],
+        "observation": "Green ARAMCO panels on the rolling early-esses road beside spectator grass banks."
+      },
+      {
+        "start_m": 900,
+        "end_m": 1100,
+        "side": -1,
+        "material": "PanelGreen",
+        "reviewed_times_s": [
+          309.4
+        ],
+        "observation": "Green panels also appear on the opposite side; keep the band short because exact ends are not surveyed."
+      },
+      {
+        "start_m": 2380,
+        "end_m": 2510,
+        "side": 1,
+        "material": "PanelNavy",
+        "reviewed_times_s": [
+          384.75
+        ],
+        "observation": "Navy MSC panels along the outside of the T11 hairpin."
+      },
+      {
+        "start_m": 3340,
+        "end_m": 3630,
+        "side": 1,
+        "material": "PanelDHL",
+        "reviewed_times_s": [
+          610.8
+        ],
+        "observation": "Yellow DHL panels on the spectator-side end of the back straight approaching T12."
+      },
+      {
+        "start_m": 4020,
+        "end_m": 4160,
+        "side": 1,
+        "material": "PanelLenovo",
+        "reviewed_times_s": [
+          158.7,
+          686.15
+        ],
+        "observation": "Red LENOVO advertising on the stadium-corner protection with the observation tower beyond."
+      }
+    ]
+  },
+  "runoff_paint_review": {
+    "reviewed_overview_frames": [
+      1,
+      2,
+      5,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "reviewed_times_s": [
+      83.35,
+      158.7,
+      384.75,
+      610.8,
+      686.15,
+      761.5,
+      836.85,
+      912.2,
+      987.55
+    ],
+    "observations": "Reference T15 red field with white star, green exit strips and red edging. Primary 2024 IMSA aerial p11 confirms blue fields, white stripes and stars around T12–T18. Original geometry uses approximate widths and star spacing, not a georectified paint survey.",
+    "registration_status": "Named reference sector matched to retained road shape; widths, ends and star sizes/spacing are original estimates, not exact surveyed paint coordinates.",
+    "height_policy": "Ground-following polygon geometry, clipped outside road_mask. No fixed-z tiles and no enlargement of physical runoff corridors.",
+    "physical_runoff_extents_changed": false,
+    "paint": [
+      {
+        "type": "band",
+        "start_m": 420,
+        "end_m": 640,
+        "side": 1,
+        "inner_m": 1.2,
+        "outer_m": 3.4,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 420,
+        "end_m": 640,
+        "side": 1,
+        "inner_m": 3.4,
+        "outer_m": 24.8,
+        "material": "RunoffRed"
+      },
+      {
+        "type": "band",
+        "start_m": 960,
+        "end_m": 1490,
+        "side": 1,
+        "inner_m": 1.2,
+        "outer_m": 3.4,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 960,
+        "end_m": 1490,
+        "side": 1,
+        "inner_m": 3.4,
+        "outer_m": 17.8,
+        "material": "RunoffRed"
+      },
+      {
+        "type": "band",
+        "start_m": 1510,
+        "end_m": 1930,
+        "side": 1,
+        "inner_m": 1.2,
+        "outer_m": 3.4,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 1510,
+        "end_m": 1930,
+        "side": 1,
+        "inner_m": 3.4,
+        "outer_m": 17.8,
+        "material": "RunoffRed"
+      },
+      {
+        "type": "band",
+        "start_m": 2350,
+        "end_m": 2570,
+        "side": 1,
+        "inner_m": 1.2,
+        "outer_m": 3.4,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 2350,
+        "end_m": 2570,
+        "side": 1,
+        "inner_m": 3.4,
+        "outer_m": 23.8,
+        "material": "RunoffRed"
+      },
+      {
+        "type": "band",
+        "start_m": 3540,
+        "end_m": 3780,
+        "side": 1,
+        "inner_m": 1.2,
+        "outer_m": 3.4,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 3540,
+        "end_m": 3780,
+        "side": 1,
+        "inner_m": 3.4,
+        "outer_m": 4.4,
+        "material": "RunoffRed"
+      },
+      {
+        "type": "band",
+        "start_m": 3540,
+        "end_m": 3780,
+        "side": 1,
+        "inner_m": 21.6,
+        "outer_m": 25.8,
+        "material": "RunoffRed"
+      },
+      {
+        "type": "band",
+        "start_m": 3800,
+        "end_m": 4170,
+        "side": -1,
+        "inner_m": 1.2,
+        "outer_m": 3.4,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 3800,
+        "end_m": 4170,
+        "side": -1,
+        "inner_m": 3.4,
+        "outer_m": 4.4,
+        "material": "RunoffRed"
+      },
+      {
+        "type": "band",
+        "start_m": 3800,
+        "end_m": 4170,
+        "side": -1,
+        "inner_m": 19.6,
+        "outer_m": 23.8,
+        "material": "RunoffRed"
+      },
+      {
+        "type": "band",
+        "start_m": 4200,
+        "end_m": 4750,
+        "side": -1,
+        "inner_m": 1.2,
+        "outer_m": 3.4,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 4200,
+        "end_m": 4750,
+        "side": -1,
+        "inner_m": 3.4,
+        "outer_m": 4.4,
+        "material": "RunoffRed"
+      },
+      {
+        "type": "band",
+        "start_m": 4200,
+        "end_m": 4750,
+        "side": -1,
+        "inner_m": 19.6,
+        "outer_m": 23.8,
+        "material": "RunoffRed"
+      },
+      {
+        "type": "band",
+        "start_m": 4830,
+        "end_m": 5050,
+        "side": 1,
+        "inner_m": 1.2,
+        "outer_m": 3.4,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 4830,
+        "end_m": 5050,
+        "side": 1,
+        "inner_m": 3.4,
+        "outer_m": 24.8,
+        "material": "RunoffRed"
+      },
+      {
+        "type": "band",
+        "start_m": 5120,
+        "end_m": 5330,
+        "side": 1,
+        "inner_m": 1.2,
+        "outer_m": 3.4,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 5120,
+        "end_m": 5330,
+        "side": 1,
+        "inner_m": 3.4,
+        "outer_m": 22.8,
+        "material": "RunoffRed"
+      },
+      {
+        "type": "band",
+        "start_m": 3540,
+        "end_m": 3780,
+        "side": 1,
+        "inner_m": 4.4,
+        "outer_m": 5.4,
+        "material": "White"
+      },
+      {
+        "type": "band",
+        "start_m": 3540,
+        "end_m": 3780,
+        "side": 1,
+        "inner_m": 5.4,
+        "outer_m": 20.6,
+        "material": "RunoffBlue"
+      },
+      {
+        "type": "band",
+        "start_m": 3540,
+        "end_m": 3780,
+        "side": 1,
+        "inner_m": 20.6,
+        "outer_m": 21.6,
+        "material": "White"
+      },
+      {
+        "type": "band",
+        "start_m": 3800,
+        "end_m": 3990,
+        "side": -1,
+        "inner_m": 4.4,
+        "outer_m": 5.4,
+        "material": "White"
+      },
+      {
+        "type": "band",
+        "start_m": 3800,
+        "end_m": 3990,
+        "side": -1,
+        "inner_m": 5.4,
+        "outer_m": 18.6,
+        "material": "RunoffBlue"
+      },
+      {
+        "type": "band",
+        "start_m": 3800,
+        "end_m": 3990,
+        "side": -1,
+        "inner_m": 18.6,
+        "outer_m": 19.6,
+        "material": "White"
+      },
+      {
+        "type": "band",
+        "start_m": 4200,
+        "end_m": 4750,
+        "side": -1,
+        "inner_m": 4.4,
+        "outer_m": 5.4,
+        "material": "White"
+      },
+      {
+        "type": "band",
+        "start_m": 4200,
+        "end_m": 4750,
+        "side": -1,
+        "inner_m": 5.4,
+        "outer_m": 18.6,
+        "material": "RunoffBlue"
+      },
+      {
+        "type": "band",
+        "start_m": 4200,
+        "end_m": 4750,
+        "side": -1,
+        "inner_m": 18.6,
+        "outer_m": 19.6,
+        "material": "White"
+      },
+      {
+        "type": "star",
+        "station_m": 3890,
+        "side": -1,
+        "offset_m": 13,
+        "radius_m": 5.5,
+        "material": "White"
+      },
+      {
+        "type": "star",
+        "station_m": 4153,
+        "side": -1,
+        "offset_m": 13,
+        "radius_m": 5.5,
+        "material": "White"
+      },
+      {
+        "type": "star",
+        "station_m": 4300,
+        "side": -1,
+        "offset_m": 12,
+        "radius_m": 4.5,
+        "material": "White"
+      },
+      {
+        "type": "star",
+        "station_m": 4420,
+        "side": -1,
+        "offset_m": 12,
+        "radius_m": 4.5,
+        "material": "White"
+      },
+      {
+        "type": "star",
+        "station_m": 4540,
+        "side": -1,
+        "offset_m": 12,
+        "radius_m": 4.5,
+        "material": "White"
+      },
+      {
+        "type": "star",
+        "station_m": 4660,
+        "side": -1,
+        "offset_m": 12,
+        "radius_m": 4.5,
+        "material": "White"
+      }
+    ],
+    "primary_aerial": {
+      "url": "https://imsa.results.alkamelcloud.com/Results_NoticeBoard/24_2024/15_LST-MC%20Circuit%20of%20the%20Americas/09_Briefing%20Photos/LST%20DRIVER%20BRIEFING.pdf",
+      "page": 11,
+      "input_sha256": "fe742d57c49aa2cede283059864df2413e847d9b9b5959f54ca9e8bdd632c8e8",
+      "retained_pixels": "Ignored build/reviews/cota/reference only; no reference pixels shipped.",
+      "epoch": "2024 aerial; T15 color follows later supplied reference red field instead."
+    },
+    "additional_viewed_frame_windows_s": [
+      {
+        "frame": "paint-detail-01.jpg",
+        "window_s": [
+          161,
+          164
+        ]
+      },
+      {
+        "frame": "paint-detail-02.jpg",
+        "window_s": [
+          164,
+          167
+        ]
+      },
+      {
+        "frame": "paint-detail-03.jpg",
+        "window_s": [
+          167,
+          170
+        ]
+      },
+      {
+        "frame": "paint-detail-04.jpg",
+        "window_s": [
+          170,
+          173
+        ]
+      },
+      {
+        "frame": "paint-detail-05.jpg",
+        "window_s": [
+          173,
+          176
+        ]
+      },
+      {
+        "frame": "paint-detail-06.jpg",
+        "window_s": [
+          176,
+          179
+        ]
+      }
+    ]
+  },
+  "ground_appearance_review": "Mixed olive summer turf and dry tan/brown patches; shared Grass material still needs venue-specific dry-ground selection.",
+  "corner_registration_correction": {
+    "corner": "T15",
+    "apex_station_m": 4162,
+    "previous_named_way_midpoint_m": 4090.68,
+    "reason": "OSM Turn15 way midpoint lies on the preceding gentle left. Actual tight left has79degrees of heading change across4160±10m and40degrees across4180±10m; route shape matches official full-layout stadium geometry and reference minimap. Native plan unchanged.",
+    "approximate_apex_uncertainty_m": 10
+  }
+}

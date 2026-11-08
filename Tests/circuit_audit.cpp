@@ -4,6 +4,7 @@
 #include <fstream>
 #include <iostream>
 #include <iterator>
+#include <map>
 #include <string>
 
 namespace {
@@ -119,6 +120,19 @@ bool CheckGenerated(const TrackCatalogEntry& track) {
         return false;
     }
     const float length = track.targetLengthMeters;
+    if (!track.authoredBarriers.empty()) {
+        std::map<std::pair<float,float>,int> endpoints;
+        for (const auto& wall : track.authoredBarriers) {
+            ++endpoints[{wall.ax,wall.ay}];
+            ++endpoints[{wall.bx,wall.by}];
+        }
+        for (const auto& [point,count] : endpoints) {
+            if (count%2 != 0) {
+                std::cerr << track.slug << " open protection at " << point.first << ',' << point.second << '\n';
+                return false;
+            }
+        }
+    }
     if (std::abs(simulation.lapLength - length) > 0.05f || simulation.Barriers().size() < length / 4.0f) {
         std::cerr << track.slug << " length or barrier count\n";
         return false;
@@ -145,13 +159,25 @@ bool CheckGenerated(const TrackCatalogEntry& track) {
         const Vec2 normal{-road.tangent.y, road.tangent.x};
         for (const float lane : {-2.5f, 0.0f, 2.5f}) {
             const Vec2 position = road.position + normal * (lane * 17.0f);
+            if (!track.authoredBarriers.empty()) {
+                const float x = position.x / 17.0f, y = -position.y / 17.0f;
+                bool inside = false;
+                for (const auto& wall : track.authoredBarriers) {
+                    if ((wall.ay > y) != (wall.by > y) &&
+                        x < wall.ax + (y-wall.ay)*(wall.bx-wall.ax)/(wall.by-wall.ay)) inside = !inside;
+                }
+                if (!inside) {
+                    std::cerr << track.slug << " road leaves closed protection at " << station << " lane " << lane << '\n';
+                    return false;
+                }
+            }
             if (firstAuthoredBarrierHit(simulation.Barriers(), position, position, road.tangent,
                     0.6f * 17.0f, 0.45f * 17.0f, simulation.Ground(position), 0.8f * 17.0f).hit) {
                 std::cerr << track.slug << " road blocked at " << station << " lane " << lane << '\n';
                 return false;
             }
         }
-        if (track.id != TrackLayoutId::LasVegas && std::fmod(station, 40.0f) < 8.0f) {
+        if (track.id != TrackLayoutId::LasVegas && track.authoredBarriers.empty() && std::fmod(station, 40.0f) < 8.0f) {
             for (const bool left : {true, false}) {
                 bool besideAnotherRoad = false;
                 for (float other = 0.0f; other < length; other += 20.0f) {

@@ -1,0 +1,19 @@
+{
+  "native_positive_side": "Driver right in source east/north; native shoulder column named left follows the reflected simulation normal.",
+  "pit_straight": {
+    "start_m": 5480,
+    "end_m": 170,
+    "approach_m": 5450,
+    "release_m": 210,
+    "shoulder_m": 0.1
+  },
+  "method": "Reference pit wall at about0.95m outside road edge; cubic transitions. Estimated, not surveyed. Pit access remains physically closed.",
+  "back_straight_bridge": {
+    "approach_m": 4620,
+    "start_m": 4637,
+    "end_m": 4667,
+    "release_m": 4684,
+    "shoulder_m": 0.4,
+    "method": "Narrow concrete bridge deck and parapet, with cubic approach transitions. Width reconstructed from reference; not surveyed."
+  }
+}

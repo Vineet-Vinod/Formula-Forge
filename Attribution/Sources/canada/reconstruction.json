@@ -14,7 +14,7 @@
   "heading_direction_test": false,
   "crossings": 0,
   "aspect": 0.32448,
-  "relief_m": 12.699,
+  "relief_m": 5.2,
   "elevation_datum_removed_m": 4.036,
   "samples": 1091,
   "turns_detected": 15,
@@ -23,5 +23,6 @@
   "barrier_vertices": 103,
   "deck": null,
   "banks": [],
-  "osm_sha256": "e3551df3e43a4f2151029ef4c4d9190faaffb85c0858575af2f338f27f2df7d3"
+  "osm_sha256": "e3551df3e43a4f2151029ef4c4d9190faaffb85c0858575af2f338f27f2df7d3",
+  "elevation_recipe": "elevation-corrections.json"
 }

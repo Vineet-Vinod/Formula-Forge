@@ -1,0 +1,492 @@
+{
+  "schema_version": 1,
+  "circuit": "canada",
+  "reference_index": "reference-index.json",
+  "appearance": "Day; wet qualifying/race followed by later dry overcast shots.",
+  "layout": "Gilles-Villeneuve Grand Prix circuit, 14 corners; island road course.",
+  "sector_registration": "All stations in retained native origin. Approximate full-route zones; individual decor must stay beyond verified protection and runoff.",
+  "sectors": [
+    {
+      "start_m": 0,
+      "end_m": 750,
+      "name": "Pits and Senna S",
+      "reference_times_s": [
+        190.12,
+        281.18
+      ],
+      "observed_environment": "Long gray glazed paddock/garage bar opposite covered stands. Senna S backed by open metal bleachers and flags. Close walls, short grass, red/white kerbs.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 750,
+      "end_m": 1550,
+      "name": "T3/T4 to T6/T7",
+      "reference_times_s": [
+        554.36,
+        827.53
+      ],
+      "observed_environment": "Tight tree-lined chicane corridor; concrete panels and tall catch fencing close to asphalt. Mature deciduous canopy, service access gaps and occasional bridge structures.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 1550,
+      "end_m": 2400,
+      "name": "Island middle straight and T8/T9",
+      "reference_times_s": [
+        918.59,
+        1009.65
+      ],
+      "observed_environment": "Flat island woodland, catch fence, short verges, overhead bridge/catwalk. Long forest views; do not line this stretch with city towers.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 2400,
+      "end_m": 3000,
+      "name": "Hairpin stadium",
+      "reference_times_s": [
+        99.06,
+        645.41,
+        736.47
+      ],
+      "observed_environment": "Tight hairpin with grass on inside and large open unroofed metal grandstands surrounding the outside. Gray stair aisles and flagpoles; small flat-roof race-service tower.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 3000,
+      "end_m": 3930,
+      "name": "Casino straight",
+      "reference_times_s": [
+        827.53,
+        918.59,
+        1282.83
+      ],
+      "observed_environment": "Long fenced tree avenue and steel bridge crossing; Montreal casino asymmetric white structural silhouette appears beyond park, not an arbitrary tower wall. Narrow grass shoulders with wall protection.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 3930,
+      "end_m": 4361,
+      "name": "Final chicane and pit return",
+      "reference_times_s": [
+        1100.71,
+        1191.77
+      ],
+      "observed_environment": "Close final chicane wall, red/white apex kerb, green/blue wall panels and forest behind. Kerb and exit walls must follow the linked left-right geometry.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    }
+  ],
+  "terrain": {
+    "retained_source": "Copernicus DEM GLO-90",
+    "retained_relief_m": 12.699,
+    "shortcomings": "Retained GLO-90 relief 12.699m likely contains canopy/roof contamination on a largely flat island. Verify NRCan HRDEM/Quebec LiDAR coverage and use water-surface constraints; no authoritative high-resolution raster is retained.",
+    "candidate_primary_sources": [
+      "https://natural-resources.canada.ca/maps-tools-and-publications/elevation"
+    ],
+    "data_status": "Candidate portal only; exact coverage, resolution, licence and epoch still require verification. No candidate raster downloaded or incorporated.",
+    "racing_deck_correction": "Separate independentlydigitized primary Formula1roadprofile now replaces contaminated/coarseGLO90 racingprofile. Landscapegrid remains separatelysourced. Roadplan substantiallyunchanged; 2019paddock rebuild does not establish new longitudinalroadheight. Namedcorner registration mostly shape/officialmap, not survey."
+  },
+  "authoring_constraints": [
+    "Use mapped building footprints and match rooflines, structural supports, facade depth and stepped volumes; names alone do not establish likeness.",
+    "Place grass/gravel/asphalt runoff per registered corner, with protection at outside edge; do not fill escape areas with independent tiles/blocks.",
+    "Road, kerbs, shoulder and protection share smooth station sampling; kerbs only in explicit ranges.",
+    "Maintain venue-specific vegetation around complete route, preserving long sightlines/open water where present.",
+    "Reference pixels remain ignored; generate geometry and materials only."
+  ],
+  "quality_gates": [
+    "Matching cockpit frame at each sector and every braking/turn sequence.",
+    "Oblique view of runoff shapes, architectural footprints and terrain.",
+    "Full lap motion review for edge smoothness, floating objects, protection gaps and missing surroundings.",
+    "Luna high reviewer must evaluate rendered evidence, not this recipe."
+  ],
+  "authored_surface_ranges": {
+    "station_units": "metres from retained native origin",
+    "side_contract": "+1 source driver right; -1 source driver left",
+    "placement_status": "Explicit reconstruction around registered apex controls. Approximate endpoints/widths inferred from reference and map; runtime clamps runoff to native protection corridor. Not a traced survey.",
+    "kerbs": [
+      {
+        "start_m": 275,
+        "end_m": 339,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 357,
+        "end_m": 449,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 750,
+        "end_m": 818,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 822,
+        "end_m": 886,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 1270,
+        "end_m": 1350,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 1355,
+        "end_m": 1420,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 2035,
+        "end_m": 2108,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 2110,
+        "end_m": 2180,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 2700,
+        "end_m": 2830,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 3960,
+        "end_m": 4035,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 4040,
+        "end_m": 4115,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      }
+    ],
+    "runoff": [
+      {
+        "start_m": 265,
+        "end_m": 455,
+        "side": 1,
+        "requested_width_m": 9,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 740,
+        "end_m": 875,
+        "side": -1,
+        "requested_width_m": 7,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 1260,
+        "end_m": 1435,
+        "side": 1,
+        "requested_width_m": 8,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 2020,
+        "end_m": 2190,
+        "side": -1,
+        "requested_width_m": 8,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 2680,
+        "end_m": 2860,
+        "side": -1,
+        "requested_width_m": 17,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 3940,
+        "end_m": 4140,
+        "side": -1,
+        "requested_width_m": 8,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 2720,
+        "end_m": 2805,
+        "side": 1,
+        "requested_width_m": 6.0,
+        "material": "RunoffBlue"
+      }
+    ]
+  },
+  "additional_environment_source": {
+    "provider": "OpenStreetMap contributors",
+    "endpoint": "https://overpass-api.de/api/interpreter",
+    "query": "[out:json][timeout:60];(nwr[\"amenity\"=\"casino\"](45.497,-73.530,45.511,-73.515);relation[\"building\"](45.502,-73.527,45.509,-73.520);way[\"building:part\"](45.502,-73.527,45.509,-73.520););out geom;",
+    "retrieved": "2026-11-08",
+    "licence": "ODbL1.0",
+    "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "file": "environment.osm.json.gz",
+    "sha256": "79e518d15eb30b44edb98a0cb505932f08b92189c95010a9fafa466b0d9d939b",
+    "purpose": "Tightly bounded essential landmark query; inline member geometry preserved.",
+    "additional_queries": [
+      {
+        "endpoint": "https://overpass-api.de/api/interpreter",
+        "query": "[out:json][timeout:60];(way[\"natural\"=\"water\"](45.492,-73.532,45.516,-73.514);relation[\"natural\"=\"water\"](45.492,-73.532,45.516,-73.514););out geom;",
+        "retrieved": "2026-11-08",
+        "purpose": "Bounded AlbertParklake/IleNotreDamewaterfrontgeometry; no video pixels."
+      }
+    ]
+  },
+  "elevation_recipe": "elevation-corrections.json",
+  "braking_markers": {
+    "side_contract": "+1 is driver right in retained east/north source coordinates; -1 is driver left.",
+    "station_frame": "Native circuit origin, not necessarily start/finish; scene.at handles lap wrapping.",
+    "placement_status": "Corner approaches are registered to retained plan/OSM/FIA controls and reviewed reference sectors. Board offsets, mounting side and exact event positions are reconstructed estimates, not a traced signage survey.",
+    "selection": "Major braking approaches only; short linked corners use 100/50 m sets. No boards added to flat-out sweeps solely because the curvature detector counted a bend.",
+    "approaches": [
+      {
+        "corner": "T1 / Senna S",
+        "apex_station_m": 312,
+        "side": 1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "T3/T4 chicane",
+        "apex_station_m": 783,
+        "side": -1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "T6/T7 chicane",
+        "apex_station_m": 1315,
+        "side": 1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "T8/T9 chicane",
+        "apex_station_m": 2071,
+        "side": -1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "T10 hairpin",
+        "apex_station_m": 2758,
+        "side": -1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "T13/T14 final chicane",
+        "apex_station_m": 4001,
+        "side": 1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      }
+    ]
+  },
+  "barrier_branding": {
+    "side_contract": "+1 driver right / -1 driver left in retained source coordinates.",
+    "source_policy": "Only the selected reviewed palette/identities are reproduced with original typesetting. Unsupported or varying identities use neutral PanelWhite; no reference pixels are shipped.",
+    "placement_status": "Ranges are approximate native-station registrations to the named reference sectors. Individual panel ends, event mounting positions and exact lengths are reconstructed; clip time is not treated as proportional lap distance.",
+    "coverage_policy": "Selected pit-straight and corner-protection runs only. Bare woodland Armco, open slopes and intervening protection remain exposed.",
+    "ranges": [
+      {
+        "start_m": 4200,
+        "end_m": 4355,
+        "side": 1,
+        "material": "PanelLenovo",
+        "reviewed_times_s": [
+          190.12,
+          372.24,
+          463.3
+        ],
+        "observation": "Red LENOVO race panels on the main pit-straight wall."
+      },
+      {
+        "start_m": 4200,
+        "end_m": 4355,
+        "side": -1,
+        "material": "PanelLenovo",
+        "reviewed_times_s": [
+          190.12,
+          372.24,
+          463.3
+        ],
+        "observation": "Red LENOVO panels on the opposite pit-straight grandstand wall."
+      },
+      {
+        "start_m": 0,
+        "end_m": 170,
+        "side": 1,
+        "material": "PanelLenovo",
+        "reviewed_times_s": [
+          372.24,
+          463.3
+        ],
+        "observation": "Main-straight red LENOVO panels continue across the retained station origin."
+      },
+      {
+        "start_m": 0,
+        "end_m": 170,
+        "side": -1,
+        "material": "PanelLenovo",
+        "reviewed_times_s": [
+          372.24,
+          463.3
+        ],
+        "observation": "Opposite main-straight wall also carries red LENOVO panels."
+      },
+      {
+        "start_m": 2650,
+        "end_m": 2880,
+        "side": -1,
+        "material": "PanelLenovo",
+        "reviewed_times_s": [
+          645.41,
+          736.47
+        ],
+        "observation": "Race footage shows red LENOVO panels below the open hairpin grandstands; earlier qualifying uses different navy advertising."
+      },
+      {
+        "start_m": 3380,
+        "end_m": 3820,
+        "side": 1,
+        "material": "PanelGreen",
+        "reviewed_times_s": [
+          918.59,
+          1191.77
+        ],
+        "observation": "Green ARAMCO panels along the full-speed fenced woodland straight."
+      },
+      {
+        "start_m": 3380,
+        "end_m": 3820,
+        "side": -1,
+        "material": "PanelGreen",
+        "reviewed_times_s": [
+          918.59,
+          1191.77
+        ],
+        "observation": "The reviewed woodland straight has ARAMCO panels on both sides; coverage is restricted to a middle/late straight section."
+      }
+    ]
+  },
+  "runoff_paint_review": {
+    "reviewed_overview_frames": [
+      1,
+      3,
+      6,
+      8,
+      14
+    ],
+    "reviewed_times_s": [
+      99.06,
+      281.18,
+      554.36,
+      736.47,
+      1282.83
+    ],
+    "observations": "Overview01 and detailed frame in98–100s window show the dark-blue paved inside T10 hairpin island beyond the right red/white kerb. Both the long outside-left escape and other city-road escapes remain ordinary asphalt.",
+    "registration_status": "Named reference sector matched to retained road shape; widths, ends and star sizes/spacing are original estimates, not exact surveyed paint coordinates.",
+    "height_policy": "scene.runoff uses ground-following polygons clipped outside road_mask; no fixed-z tile. New inside-right physical corridor registered separately from outside-left escape.",
+    "physical_runoff_extents_changed": true,
+    "paint": [
+      {
+        "type": "paved inner island",
+        "start_m": 2720,
+        "end_m": 2805,
+        "side": 1,
+        "outer_offset_from_road_edge_m": 6.0,
+        "material": "RunoffBlue",
+        "registration": "T10 actual right-hairpin curvature at2720–2800m; reference overview99.06s and detail98–100s driver view and matching hairpin minimap. Ends and6m depth are original bounded reconstruction estimates, not a surveyed footprint."
+      }
+    ],
+    "additional_viewed_frame_windows_s": [
+      {
+        "frame": "paint-detail-01.jpg",
+        "window_s": [
+          94,
+          96
+        ]
+      },
+      {
+        "frame": "paint-detail-02.jpg",
+        "window_s": [
+          96,
+          98
+        ]
+      },
+      {
+        "frame": "paint-detail-03.jpg",
+        "window_s": [
+          98,
+          100
+        ]
+      },
+      {
+        "frame": "paint-detail-04.jpg",
+        "window_s": [
+          100,
+          102
+        ]
+      },
+      {
+        "frame": "paint-detail-05.jpg",
+        "window_s": [
+          102,
+          104
+        ]
+      }
+    ]
+  },
+  "ground_appearance_review": "Deep green island woodland and maintained park lawns."
+}

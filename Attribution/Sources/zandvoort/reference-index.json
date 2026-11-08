@@ -163,7 +163,13 @@
         "station_max_m": 700.49,
         "maximum_projection_distance_m": 1.88
       }
-    ]
+    ],
+    "start_anchor_review": {
+      "station_m": 0,
+      "status": "Retain current catalogphase pending exactline survey",
+      "uncertainty_m": 100,
+      "evidence": "Nativeorigin already on mainstraight/pitsector; no reliable evidence justifies a moreprecise correction in this review."
+    }
   },
   "primary_sources": [
     {

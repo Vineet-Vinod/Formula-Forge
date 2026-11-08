@@ -1,0 +1,642 @@
+{
+  "schema_version": 1,
+  "circuit": "jeddah",
+  "appearance": "Dry night race, with blue-hour race start.",
+  "terrain_character": "Flat coastal city, pale paved and sandy verges, sparse formal palms and sea-side open space.",
+  "distinctive_geometry": [
+    "Pit building: exposed white horizontal frame, recessed dark glazing, stacked balcony decks and cantilevered roof.",
+    "Diamond Tower: very slender twisting faceted glazed tower behind northern half, OSM432m tag, not a square apartment extrusion.",
+    "Jeddah EDITION: low horizontal coastal hospitality mass with balconies and planted terraces."
+  ],
+  "sectors": [
+    {
+      "id": "jeddah-01",
+      "native_station_m": [
+        0,
+        650
+      ],
+      "name": "Pit straight, T1–3",
+      "reviewed_video_seconds": [
+        235,
+        239,
+        243,
+        247,
+        251,
+        255,
+        253.16
+      ],
+      "observed": "Long white layered pit building on right, opposite roof stand; close sponsor walls and tall catchfence. Large green/blue painted escape at first left/right. Palms and low white utility buildings beyond wall.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "jeddah-02",
+      "native_station_m": [
+        650,
+        1450
+      ],
+      "name": "Southern fast esses",
+      "reviewed_video_seconds": [
+        259,
+        263,
+        267,
+        331.06
+      ],
+      "observed": "Narrow asphalt channel between concrete and continuous mesh; red-white narrow apex kerbs, occasional green-painted outer lane. Blue evening sky over white apartment and event blocks, not continuous generic forest.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "jeddah-03",
+      "native_station_m": [
+        1450,
+        2250
+      ],
+      "name": "Fast coastal sequence toward northern hairpin",
+      "reviewed_video_seconds": [
+        408.95,
+        486.85
+      ],
+      "observed": "Alternating sweeping corners behind close fencing, long pale modern residential facades with balconies, linear floodlight rows. Diamond Tower visible beyond corridor, larger than foreground generic blocks.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "jeddah-04",
+      "native_station_m": [
+        2250,
+        2850
+      ],
+      "name": "Northern T13 banked hairpin",
+      "reviewed_video_seconds": [
+        564.74,
+        798.43
+      ],
+      "observed": "Broad round hairpin with green painted outside apron and red-white inside kerb. Pale coastal buildings and hospitality above fence; low palms on planted islands. Preserve curved protection and clear paved escape geometry.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "jeddah-05",
+      "native_station_m": [
+        2850,
+        3500
+      ],
+      "name": "Return technical sweepers",
+      "reviewed_video_seconds": [
+        642.64,
+        720.54
+      ],
+      "observed": "Fast close-wall bends, palm clumps and flat white/cream buildings behind mesh. Paint stays alongside kerb instead of blanket gravel; visible repeated lamp poles with paired arms.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "jeddah-06",
+      "native_station_m": [
+        3500,
+        4200
+      ],
+      "name": "T17–21 direction changes",
+      "reviewed_video_seconds": [
+        876.33,
+        946.22
+      ],
+      "observed": "Interlinked narrow wall corridors; large blue-green paved escape only where justified, red-white kerbs at individual apexes. Low service compounds and palms; night lighting must show asphalt and wall base.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "jeddah-07",
+      "native_station_m": [
+        4200,
+        5350
+      ],
+      "name": "Long southern acceleration and T22–26",
+      "reviewed_video_seconds": [
+        271,
+        275,
+        279,
+        283,
+        287,
+        295
+      ],
+      "observed": "Long flowing fenced run, articulated pit/hospitality visible across road loop. Sponsor bridges and uninterrupted light rows; small green verge beside wall; no grass parkland replacing paved shoulders.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "jeddah-08",
+      "native_station_m": [
+        5350,
+        6174
+      ],
+      "name": "T27 hairpin and return pit straight",
+      "reviewed_video_seconds": [
+        291,
+        299,
+        303,
+        307,
+        311,
+        315,
+        319,
+        323,
+        327,
+        331,
+        335
+      ],
+      "observed": "Wide slow left turnaround, coloured paved runoff and terminal impact barriers, mainstand and high white-framed pit decks dominate. Preserve hotel/site access behind fence, continuous curved outer protection.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    }
+  ],
+  "mapped_landmarks": [
+    {
+      "osm_id": 1244131504,
+      "name": "Diamond Tower",
+      "source_xy_m": [
+        -112.91,
+        1642.29
+      ],
+      "nearest_station_m": 1878.5,
+      "distance_from_centerline_m": 52.1,
+      "side": "right",
+      "height_tag": "432",
+      "levels_tag": "93",
+      "building": "residential",
+      "footprint_xy_m": [
+        [
+          -113.99,
+          1621.9
+        ],
+        [
+          -120.77,
+          1623.98
+        ],
+        [
+          -124.85,
+          1625.92
+        ],
+        [
+          -128.41,
+          1628.71
+        ],
+        [
+          -131.26,
+          1632.2
+        ],
+        [
+          -133.29,
+          1636.24
+        ],
+        [
+          -134.37,
+          1640.63
+        ],
+        [
+          -134.46,
+          1645.14
+        ],
+        [
+          -133.72,
+          1649.08
+        ],
+        [
+          -132.22,
+          1652.8
+        ],
+        [
+          -130.03,
+          1656.17
+        ],
+        [
+          -127.22,
+          1659.02
+        ],
+        [
+          -123.91,
+          1661.28
+        ],
+        [
+          -120.21,
+          1662.86
+        ],
+        [
+          -114.96,
+          1663.83
+        ],
+        [
+          -83.84,
+          1664.09
+        ],
+        [
+          -83.96,
+          1650.54
+        ],
+        [
+          -94.21,
+          1650.41
+        ],
+        [
+          -98.5,
+          1645.14
+        ],
+        [
+          -98.35,
+          1640.31
+        ],
+        [
+          -83.0,
+          1640.44
+        ],
+        [
+          -83.14,
+          1631.45
+        ],
+        [
+          -90.33,
+          1631.45
+        ],
+        [
+          -89.78,
+          1621.77
+        ],
+        [
+          -113.99,
+          1621.9
+        ]
+      ]
+    },
+    {
+      "osm_id": 1258744123,
+      "name": "The Jeddah EDITION",
+      "source_xy_m": [
+        -358.01,
+        2047.37
+      ],
+      "nearest_station_m": 2333.2,
+      "distance_from_centerline_m": 93.3,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -357.42,
+          2090.5
+        ],
+        [
+          -390.45,
+          1994.56
+        ],
+        [
+          -359.52,
+          1982.33
+        ],
+        [
+          -325.25,
+          2078.96
+        ],
+        [
+          -357.42,
+          2090.5
+        ]
+      ]
+    }
+  ],
+  "dimensions_policy": "OSM XY footprints are registered geographic evidence. Tagged height and levels are retained verbatim; missing/zero heights are unknown. Roof/detail sizes and sparse-vegetation spacing in native authoring are visual estimates pending cockpit comparison.",
+  "source_registration": {
+    "method": "Nearest native centerline sample after retained local tangent projection and uniform scale.",
+    "station_error_bound_m": 8,
+    "landmark_extent_note": "Centroid station can fall on adjacent arm of circuit; use actual ring and terrain, not centroid station alone. Overlapping compound roof footprints must never become solid road obstructions."
+  },
+  "elevation_review": {
+    "retained_dataset": "Copernicus DEM GLO-90",
+    "retained_relief_m": 3.937,
+    "status": "Coarse surface model; unresolved racing-deck details explicitly retained.",
+    "findings": [
+      "GLO-90 is not racing-deck height on the close coastal roads. Preserve flat visual horizon rather than propagating roofs into road.",
+      "Barrier-vertex median widths cannot reproduce chicane escape lanes; author terminal protection behind paved escape, never directly across turn exit."
+    ]
+  },
+  "primary_sources": [
+    {
+      "title": "Circuit operator",
+      "url": "https://www.jeddahcircuit.com/en/explore-the-circuit",
+      "supports": "6.174 km, 27 turns, waterfront course, more than 2000 lights."
+    },
+    {
+      "title": "Saudi Arabian GP promoter",
+      "url": "https://saudiarabiangp.com/en/circuit",
+      "supports": "Official route and venue identity."
+    }
+  ],
+  "acceptance": {
+    "required": [
+      "Cockpit contact sheet covering all sectors, including each landmark approach and both road edges.",
+      "No floating tiles, barriers crossing drivable lane, closed escape mouths, or faceted long curves.",
+      "Compare curb colour/extent, runoff surface/depth, fencing, tree placement and skyline per sector against timestamps.",
+      "Review night illumination for asphalt visibility and dark sky, or daylight landscape contrast as appropriate."
+    ],
+    "status": "Reference inventory and scene recipe authored; native runtime acceptance is separate."
+  },
+  "authored_edges": {
+    "side_convention": "Numeric+1 is driver right, -1 is driver left. Shader runoff widths clamp to exported collision shoulders.",
+    "registration": "Intervals visually estimated against mapped native curves and supplied video; not a surveyed curb or safety-installation trace.",
+    "kerbs": [
+      {
+        "start_m": 260,
+        "end_m": 335,
+        "side": -1
+      },
+      {
+        "start_m": 380,
+        "end_m": 450,
+        "side": 1
+      },
+      {
+        "start_m": 515,
+        "end_m": 565,
+        "side": -1
+      },
+      {
+        "start_m": 815,
+        "end_m": 875,
+        "side": -1
+      },
+      {
+        "start_m": 940,
+        "end_m": 1000,
+        "side": 1
+      },
+      {
+        "start_m": 1135,
+        "end_m": 1200,
+        "side": -1
+      },
+      {
+        "start_m": 1305,
+        "end_m": 1365,
+        "side": 1
+      },
+      {
+        "start_m": 1420,
+        "end_m": 1475,
+        "side": 1
+      },
+      {
+        "start_m": 1545,
+        "end_m": 1605,
+        "side": -1
+      },
+      {
+        "start_m": 1730,
+        "end_m": 1800,
+        "side": -1
+      },
+      {
+        "start_m": 2180,
+        "end_m": 2350,
+        "side": -1
+      },
+      {
+        "start_m": 2575,
+        "end_m": 2650,
+        "side": 1
+      },
+      {
+        "start_m": 2660,
+        "end_m": 2720,
+        "side": 1
+      },
+      {
+        "start_m": 2790,
+        "end_m": 2855,
+        "side": -1
+      },
+      {
+        "start_m": 2895,
+        "end_m": 2965,
+        "side": 1
+      },
+      {
+        "start_m": 3020,
+        "end_m": 3090,
+        "side": -1
+      },
+      {
+        "start_m": 3390,
+        "end_m": 3460,
+        "side": 1
+      },
+      {
+        "start_m": 3590,
+        "end_m": 3670,
+        "side": -1
+      },
+      {
+        "start_m": 3790,
+        "end_m": 3860,
+        "side": 1
+      },
+      {
+        "start_m": 3935,
+        "end_m": 4000,
+        "side": 1
+      },
+      {
+        "start_m": 4100,
+        "end_m": 4170,
+        "side": -1
+      },
+      {
+        "start_m": 4310,
+        "end_m": 4385,
+        "side": 1
+      },
+      {
+        "start_m": 4590,
+        "end_m": 4700,
+        "side": -1
+      },
+      {
+        "start_m": 5330,
+        "end_m": 5490,
+        "side": -1
+      }
+    ],
+    "runoffs": [
+      {
+        "start_m": 245,
+        "end_m": 365,
+        "side": 1,
+        "requested_width_m": 10,
+        "material": "RunoffGreen"
+      },
+      {
+        "start_m": 2150,
+        "end_m": 2370,
+        "side": 1,
+        "requested_width_m": 14,
+        "material": "RunoffGreen"
+      },
+      {
+        "start_m": 2770,
+        "end_m": 2890,
+        "side": 1,
+        "requested_width_m": 8,
+        "material": "RunoffGreen"
+      },
+      {
+        "start_m": 3340,
+        "end_m": 3490,
+        "side": -1,
+        "requested_width_m": 8,
+        "material": "RunoffGreen"
+      },
+      {
+        "start_m": 4250,
+        "end_m": 4420,
+        "side": -1,
+        "requested_width_m": 9,
+        "material": "RunoffGreen"
+      },
+      {
+        "start_m": 5290,
+        "end_m": 5520,
+        "side": 1,
+        "requested_width_m": 14,
+        "material": "RunoffGreen"
+      }
+    ],
+    "physical_escape_review": "Large terminal escape mouths still need explicit footprint geometry and matching collision-barrier changes. Surface ribbons must not extend through existing collision walls."
+  },
+  "native_scene_module": "tools/venues/jeddah.py",
+  "native_scene_status": "Authored geometry and type checks complete. Native cockpit review and collision acceptance are pending.",
+  "scenery_grounding": "Mapped buildings use the lowest footprint terrain level. Stand fronts have retaining bases and rear supports extend to sampled terrain. Trees avoid all road arms and mapped building footprints.",
+  "source_conflicts": "Retained city footprints can cross the modeled road corridor. Native facade authoring clips ground walls outside the road mask plus 1.2 m and records the removed area; these are disclosed registration conflicts, not validated building surveys.",
+  "braking_markers": {
+    "side_convention": "Numeric+1 is driver right, -1 is driver left. Board sequences are on the outside of the main braking approach.",
+    "placement_policy": "Heavy braking approaches selected from mapped official corner sequence and indexed reference sectors. Stations and exact event mounting locations remain estimates. Standard150/100/50boards are shortened to100/50on selected compact street-corner approaches.",
+    "native_station_uncertainty_m": 40,
+    "approaches": [
+      {
+        "official_corner": "T1",
+        "apex_station_m": 299,
+        "side": 1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          247,
+          251,
+          253.16
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T13 northern hairpin",
+        "apex_station_m": 2277,
+        "side": 1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          564.74,
+          798.43
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T27 final hairpin",
+        "apex_station_m": 5412,
+        "side": 1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          291,
+          307,
+          311
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      }
+    ]
+  },
+  "barrier_branding": {
+    "coordinate_frame": "Native source station metres; numerical +1 is driver right and -1 is driver left.",
+    "artwork": "Original typeset event panels with observed identity and palette; no video pixels or extracted game textures are shipped.",
+    "registration": "Wall identities are visible in the listed sparse reference frames. Native intervals are estimated from corner and landmark registration, with approximately 75 m endpoint uncertainty; edited playback is not treated as a linear station clock.",
+    "unbranded_sections": "Retain bare Armco and concrete outside these explicit bands. Unsupported legible identities are left without a substitute sponsor. A sponsor bridge alone is not evidence for a matching roadside band.",
+    "ranges": [
+      {
+        "start_m": 5830,
+        "end_m": 6174,
+        "side": 1,
+        "material": "PanelGreen",
+        "location": "Pit straight garage-side wall",
+        "observed_identity": "aramco",
+        "reviewed_video_seconds": [
+          235,
+          239,
+          243,
+          303
+        ]
+      },
+      {
+        "start_m": 0,
+        "end_m": 200,
+        "side": 1,
+        "material": "PanelGreen",
+        "location": "Pit straight garage-side wall",
+        "observed_identity": "aramco",
+        "reviewed_video_seconds": [
+          235,
+          239,
+          243,
+          303
+        ]
+      },
+      {
+        "start_m": 250,
+        "end_m": 650,
+        "side": 1,
+        "material": "PanelYellow",
+        "location": "T1 escape and opening sequence",
+        "observed_identity": "PIRELLI",
+        "reviewed_video_seconds": [
+          251,
+          255,
+          259,
+          307,
+          311
+        ]
+      },
+      {
+        "start_m": 370,
+        "end_m": 650,
+        "side": -1,
+        "material": "PanelYellow",
+        "location": "Opening sequence opposite barrier",
+        "observed_identity": "PIRELLI",
+        "reviewed_video_seconds": [
+          255,
+          259,
+          263,
+          311,
+          315
+        ]
+      },
+      {
+        "start_m": 2150,
+        "end_m": 2380,
+        "side": 1,
+        "material": "PanelGreen",
+        "location": "T13 northern hairpin outer wall",
+        "observed_identity": "aramco",
+        "reviewed_video_seconds": [
+          287,
+          291
+        ]
+      }
+    ]
+  }
+}

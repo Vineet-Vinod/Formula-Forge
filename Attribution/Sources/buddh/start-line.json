@@ -1,0 +1,6 @@
+{
+  "native_station_m": 470,
+  "uncertainty_m": 100,
+  "method": "FIA 2013 circuit map topology, mapped pit straight and reference speed trace; approximate timingline position.",
+  "semantics": "Time-trial timing/start anchor; route origin and world placement unchanged."
+}

@@ -69,17 +69,33 @@
     "station_origin": "Retained native Centerline first point; not assumed start/finish.",
     "route_length_m": 5278,
     "method": "Named OSM raceway ways projected to nearest retained centerline sample; other corners matched by route shape and official circuit map. Sector boundaries approximate, not surveyed kerb endpoints. Video time is never treated as station.",
-    "named_way_controls": []
+    "named_way_controls": [],
+    "start_anchor_review": {
+      "station_m": 5200,
+      "status": "Approximate timingcontrolmarkerregistration from primaryFIAmap",
+      "uncertainty_m": 35,
+      "evidence": "Affine13corneralignment, markernear(520,1123); native0already~80mpastline. Mapisillustrative, not geodeticplan."
+    },
+    "layout_review": "layout-review.json"
   },
   "primary_sources": [
     {
       "url": "https://www.grandprix.com.au/uploads/images/F126_009_Visitor-Map_A3_V9-Digi-3.pdf",
       "use": "Official layout/venue architecture; source year can differ from video."
+    },
+    {
+      "url": "https://www.formula1.com/en/latest/article/highs-and-lows-which-f1-track-has-the-most-elevation-changes-.7I9JEcBw3R2AqXbnJ6hyvc.7I9JEcBw3R2AqXbnJ6hyvc",
+      "use": "Official2016longitudinalprofile independentlydigitized into circuit elevationcontrols; chartapproximation, not as-built survey."
+    },
+    {
+      "url": "https://www.fia.com/system/files/decision-document/2026_melbourne_event_-_circuit_map_-_melbourne_2026_0.pdf",
+      "use": "Current2026FIA14cornerlayout; confirmsremovedClarkchicane andtransversecontrolline."
     }
   ],
   "uncertainties": [
     "Exact filming lap/year is not established unless visible title/HUD identifies it.",
     "Overview observations establish visual vocabulary; every individual asset position requires footprint/map registration.",
     "No high-resolution raster or orthophoto added by this reference review."
-  ]
+  ],
+  "racing_elevation_correction": "elevation-corrections.json"
 }

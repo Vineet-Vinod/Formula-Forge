@@ -1,0 +1,449 @@
+{
+  "schema_version": 1,
+  "circuit": "australia",
+  "reference_index": "reference-index.json",
+  "appearance": "Day; dry race with partly cloudy sky; earlier overcast qualifying.",
+  "layout": "Contemporary 14-corner Albert Park Grand Prix loop; do not restore the removed T9/T10 chicane.",
+  "sector_registration": "All stations in retained native origin. Approximate full-route zones; individual decor must stay beyond verified protection and runoff.",
+  "sectors": [
+    {
+      "start_m": 0,
+      "end_m": 950,
+      "name": "Pit straight, T1/T2 and avenue",
+      "reference_times_s": [
+        176.17,
+        288.29
+      ],
+      "observed_environment": "Long covered temporary stand opposite the tiered pit/hospitality bar. Narrow grass verges, close concrete walls and high catch fence; mature avenue broadleaf trees beyond. Yellow wall panels; green/yellow kerbs.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 950,
+      "end_m": 1750,
+      "name": "T3–T5 park corners",
+      "reference_times_s": [
+        400.4,
+        512.52
+      ],
+      "observed_environment": "Parkland slow corners with low pavilion/service roofs, temporary spectator banks and trees. Green painted apex margins and yellow/green segmented kerbs; no continuous gravel belt.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 1750,
+      "end_m": 2900,
+      "name": "Lakeside sweeps",
+      "reference_times_s": [
+        344.35,
+        456.46
+      ],
+      "observed_environment": "Lake on the inside of the park loop, palms mixed with mature broadleaf trees, open grass. Distant St Kilda Road apartment silhouettes behind park; blue track walls, painted green edge strips.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 2900,
+      "end_m": 3900,
+      "name": "Fast new T9/T10 sequence",
+      "reference_times_s": [
+        568.58,
+        624.63
+      ],
+      "observed_environment": "Long fast road framed by catch fencing and park vegetation, temporary white bridges and low race structures. Preserve new flowing sequence, narrow verge and openings toward the lake.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 3900,
+      "end_m": 4850,
+      "name": "T11–T14 final corners",
+      "reference_times_s": [
+        680.69,
+        736.75
+      ],
+      "observed_environment": "Dense mature tree corridor, blue/yellow wall runs, temporary white hospitality canopies behind fence. Short corner-specific painted exits rather than broad generic runoff.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 4850,
+      "end_m": 5278,
+      "name": "Return to pits",
+      "reference_times_s": [
+        176.17,
+        792.81
+      ],
+      "observed_environment": "Grandstand and white curved hospitality roofs return; main-straight flags, open pit roof volumes and continuous close safety walls.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    }
+  ],
+  "terrain": {
+    "retained_source": "Copernicus DEM GLO-90",
+    "retained_relief_m": 6.873,
+    "shortcomings": "GLO-90 relief 6.873m is too coarse for lake margins/road cambers. Vicmap open 10m DEM and Melbourne contours are candidates; 1m product is not generally open. Park/lake polygon must be registered before terrain rendering.",
+    "candidate_primary_sources": [
+      "https://www.land.vic.gov.au/maps-and-spatial/spatial-data/vicmap-catalogue/vicmap-elevation"
+    ],
+    "data_status": "Candidate metadata reviewed; no candidate raster downloaded or claimed as incorporated.",
+    "racing_deck_correction": "Separate independentlydigitized primary Formula1roadprofile now replaces contaminated/coarseGLO90 racingprofile. Landscapegrid remains separatelysourced. 2016sixteen-corner diagram compared with currentfourteen-corner route. Removedchicane sector controls denote geographiclocations, not instructions to restore oldcorners. Local heights in changed2022sector remain approximate."
+  },
+  "authoring_constraints": [
+    "Use mapped building footprints and match rooflines, structural supports, facade depth and stepped volumes; names alone do not establish likeness.",
+    "Place grass/gravel/asphalt runoff per registered corner, with protection at outside edge; do not fill escape areas with independent tiles/blocks.",
+    "Road, kerbs, shoulder and protection share smooth station sampling; kerbs only in explicit ranges.",
+    "Maintain venue-specific vegetation around complete route, preserving long sightlines/open water where present.",
+    "Reference pixels remain ignored; generate geometry and materials only."
+  ],
+  "quality_gates": [
+    "Matching cockpit frame at each sector and every braking/turn sequence.",
+    "Oblique view of runoff shapes, architectural footprints and terrain.",
+    "Full lap motion review for edge smoothness, floating objects, protection gaps and missing surroundings.",
+    "Luna high reviewer must evaluate rendered evidence, not this recipe."
+  ],
+  "authored_surface_ranges": {
+    "station_units": "metres from retained native origin",
+    "side_contract": "+1 source driver right; -1 source driver left",
+    "placement_status": "Explicit reconstruction around registered apex controls. Approximate endpoints/widths inferred from reference and map; runtime clamps runoff to native protection corridor. Not a traced survey.",
+    "kerbs": [
+      {
+        "start_m": 255,
+        "end_m": 320,
+        "side": 1,
+        "color": "SeatYellow",
+        "alternate": "Green"
+      },
+      {
+        "start_m": 360,
+        "end_m": 440,
+        "side": -1,
+        "color": "SeatYellow",
+        "alternate": "Green"
+      },
+      {
+        "start_m": 986,
+        "end_m": 1060,
+        "side": 1,
+        "color": "SeatYellow",
+        "alternate": "Green"
+      },
+      {
+        "start_m": 1125,
+        "end_m": 1190,
+        "side": -1,
+        "color": "SeatYellow",
+        "alternate": "Green"
+      },
+      {
+        "start_m": 1340,
+        "end_m": 1415,
+        "side": 1,
+        "color": "SeatYellow",
+        "alternate": "Green"
+      },
+      {
+        "start_m": 1770,
+        "end_m": 1855,
+        "side": 1,
+        "color": "SeatYellow",
+        "alternate": "Green"
+      },
+      {
+        "start_m": 1900,
+        "end_m": 1990,
+        "side": -1,
+        "color": "SeatYellow",
+        "alternate": "Green",
+        "outer_height_m": -0.02
+      },
+      {
+        "start_m": 2100,
+        "end_m": 2250,
+        "side": 1,
+        "color": "SeatYellow",
+        "alternate": "Green"
+      },
+      {
+        "start_m": 3180,
+        "end_m": 3290,
+        "side": -1,
+        "color": "SeatYellow",
+        "alternate": "Green"
+      },
+      {
+        "start_m": 3320,
+        "end_m": 3405,
+        "side": 1,
+        "color": "SeatYellow",
+        "alternate": "Green"
+      },
+      {
+        "start_m": 4015,
+        "end_m": 4110,
+        "side": 1,
+        "color": "SeatYellow",
+        "alternate": "Green"
+      },
+      {
+        "start_m": 4275,
+        "end_m": 4360,
+        "side": 1,
+        "color": "SeatYellow",
+        "alternate": "Green"
+      },
+      {
+        "start_m": 4535,
+        "end_m": 4615,
+        "side": -1,
+        "color": "SeatYellow",
+        "alternate": "Green"
+      },
+      {
+        "start_m": 4690,
+        "end_m": 4780,
+        "side": 1,
+        "color": "SeatYellow",
+        "alternate": "Green"
+      }
+    ],
+    "runoff": [
+      {
+        "start_m": 245,
+        "end_m": 355,
+        "side": -1,
+        "requested_width_m": 9,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 965,
+        "end_m": 1110,
+        "side": -1,
+        "requested_width_m": 12,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 1740,
+        "end_m": 1895,
+        "side": -1,
+        "requested_width_m": 12,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 3970,
+        "end_m": 4160,
+        "side": -1,
+        "requested_width_m": 16,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 4650,
+        "end_m": 4830,
+        "side": -1,
+        "requested_width_m": 11,
+        "material": "Runoff"
+      }
+    ]
+  },
+  "elevation_recipe": "elevation-corrections.json",
+  "additional_environment_source": {
+    "provider": "OpenStreetMap contributors via official Nominatim",
+    "query_url": "https://nominatim.openstreetmap.org/search?q=Albert+Park+Lake+Melbourne&format=jsonv2&polygon_geojson=1&limit=1",
+    "retrieved": "2026-11-08",
+    "file": "water-rings.lonlat.json",
+    "licence": "ODbL1.0",
+    "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "sha256": "63113ec38aea53d46c2ce990c9a5818f5fe6b51571d1e4125f657ade4133a354",
+    "method": "All returned lake exterior/interior rings retained as longitude/latitude coordinate arrays. Original OSM relation identity preserved; no synthetic OSM ways or source member IDs invented.",
+    "osm_type": "relation",
+    "osm_id": 346429
+  },
+  "layout_review": "layout-review.json",
+  "primary_width_changes": {
+    "status": "Primarydeltas known; absolute roadwidth/asymmetriccenterline registration remainsunmeasured. Do not apply deltas symmetrically to arbitrarybasewidth.",
+    "T1_right_widening_m": 2.5,
+    "T3_widening_m": 4,
+    "T6_apex_shift_m": 8,
+    "T7_kerb_extension_m": 20,
+    "T7_2025_kerb": "Negativekerb atT6exit/T7apex; visualouteredge-.02m reconstruction from categoricalFIAinstruction, not measuredsection.",
+    "sources": [
+      "https://www.fia.com/sites/default/files/doc_5_-_2022_australian_grand_prix_-_race_directors_event_notes.pdf",
+      "https://www.fia.com/sites/default/files/gp22_166_media_kit_v2.pdf",
+      "https://www.fia.com/system/files/decision-document/2025_australian_grand_prix_-_race_directors_event_notes_v2.pdf"
+    ]
+  },
+  "braking_markers": {
+    "side_contract": "+1 is driver right in retained east/north source coordinates; -1 is driver left.",
+    "station_frame": "Native circuit origin, not necessarily start/finish; scene.at handles lap wrapping.",
+    "placement_status": "Corner approaches are registered to retained plan/OSM/FIA controls and reviewed reference sectors. Board offsets, mounting side and exact event positions are reconstructed estimates, not a traced signage survey.",
+    "selection": "Major braking approaches only; short linked corners use 100/50 m sets. No boards added to flat-out sweeps solely because the curvature detector counted a bend.",
+    "approaches": [
+      {
+        "corner": "T1 / Jones",
+        "apex_station_m": 286,
+        "side": -1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "T3 / Whiteford",
+        "apex_station_m": 1018,
+        "side": -1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "T9 high-speed chicane approach",
+        "apex_station_m": 3234,
+        "side": 1,
+        "distances_before_apex_m": [
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "T11",
+        "apex_station_m": 4065,
+        "side": -1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "T13",
+        "apex_station_m": 4578,
+        "side": 1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      }
+    ]
+  },
+  "barrier_branding": {
+    "side_contract": "+1 driver right / -1 driver left in retained source coordinates.",
+    "source_policy": "Only the selected reviewed palette/identities are reproduced with original typesetting. Unsupported or varying identities use neutral PanelWhite; no reference pixels are shipped.",
+    "placement_status": "Ranges are approximate native-station registrations to the named reference sectors. Individual panel ends, event mounting positions and exact lengths are reconstructed; clip time is not treated as proportional lap distance.",
+    "coverage_policy": "Selected pit-straight and corner-protection runs only. Bare woodland Armco, open slopes and intervening protection remain exposed.",
+    "ranges": [
+      {
+        "start_m": 4930,
+        "end_m": 5270,
+        "side": 1,
+        "material": "PanelPurple",
+        "reviewed_times_s": [
+          176.17,
+          792.81
+        ],
+        "observation": "Purple QATAR race-wall bands beside the pit and hospitality structures."
+      },
+      {
+        "start_m": 4930,
+        "end_m": 5270,
+        "side": -1,
+        "material": "PanelPurple",
+        "reviewed_times_s": [
+          176.17
+        ],
+        "observation": "Purple QATAR bands along the opposite main-straight grandstand wall."
+      },
+      {
+        "start_m": 650,
+        "end_m": 1030,
+        "side": 1,
+        "material": "PanelYellow",
+        "reviewed_times_s": [
+          120.12,
+          288.29
+        ],
+        "observation": "Yellow PIRELLI panels on the fenced tree-lined straight before the opening park braking zone."
+      },
+      {
+        "start_m": 650,
+        "end_m": 1030,
+        "side": -1,
+        "material": "PanelYellow",
+        "reviewed_times_s": [
+          120.12,
+          288.29
+        ],
+        "observation": "The same reviewed straight has yellow PIRELLI panels on both sides."
+      }
+    ]
+  },
+  "runoff_paint_review": {
+    "reviewed_overview_frames": [
+      7,
+      9
+    ],
+    "reviewed_times_s": [
+      400.4,
+      512.52
+    ],
+    "observations": "Green painted edge strips outside the yellow/green kerbs; city-road escapes otherwise plain asphalt.",
+    "registration_status": "Named reference sector matched to retained road shape; widths, ends and star sizes/spacing are original estimates, not exact surveyed paint coordinates.",
+    "height_policy": "Ground-following polygon geometry, clipped outside road_mask. No fixed-z tiles and no enlargement of physical runoff corridors.",
+    "physical_runoff_extents_changed": false,
+    "paint": [
+      {
+        "type": "band",
+        "start_m": 245,
+        "end_m": 355,
+        "side": -1,
+        "inner_m": 1.2,
+        "outer_m": 3.2,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 965,
+        "end_m": 1110,
+        "side": -1,
+        "inner_m": 1.2,
+        "outer_m": 3.2,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 1740,
+        "end_m": 1895,
+        "side": -1,
+        "inner_m": 1.2,
+        "outer_m": 3.2,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 3970,
+        "end_m": 4160,
+        "side": -1,
+        "inner_m": 1.2,
+        "outer_m": 3.2,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 4650,
+        "end_m": 4830,
+        "side": -1,
+        "inner_m": 1.2,
+        "outer_m": 3.2,
+        "material": "RunoffGreen"
+      }
+    ]
+  },
+  "ground_appearance_review": "Green urban park lawns and mature trees."
+}

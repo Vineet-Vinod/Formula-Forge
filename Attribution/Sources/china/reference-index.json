@@ -128,10 +128,9 @@
       "name": "T14–16 hairpin and final left",
       "reviewed_video_seconds": [
         674,
-        686,
-        1327.53
+        678
       ],
-      "observed": "Tight hairpin with paved escape and red-white kerb, H/K stands nearby. Short acceleration then final left with broad grass/gravel escape; pit/large roof silhouette appears ahead.",
+      "observed": "Tight right hairpin with paved escape and red-white kerb, followed by paired H/K terraces under pale oval lotus-disc roofs on slender central stalks. The repeated roofs flank the short exit straight; final left has broad grass/gravel escape and the pit roof silhouette ahead.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
     },
     {
@@ -161,18 +160,15 @@
         3800,
         4400
       ],
-      "name": "T1–4 opening spiral and lotus roofs",
+      "name": "T1–4 opening spiral and B terraces",
       "reviewed_video_seconds": [
-        225.43,
-        425.81,
-        1026.96,
-        1227.34,
         630,
         634,
         638,
-        678
+        686,
+        690
       ],
-      "observed": "Long tightening right drops into left recovery; red-white curb/green outer shoulder, huge light gravel escape, red crowd terraces under repeated oval discs. Rounded lotus roof shape and single stalks essential.",
+      "observed": "Long tightening right drops into left recovery; red-white kerb, green outer shoulder and broad light gravel escape. B1/B2/B3 are low open red spectator terraces beyond the fence. The lotus roofs belong to H/K at the T14 hairpin, not this opening sequence.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
     },
     {
@@ -217,11 +213,36 @@
       "title": "Shanghai government event map",
       "url": "https://spanish.shanghai.gov.cn/cmsres/9f/9f6687e849054d578d6c53fc92d09ec5/a3d5e3aabf2c5fc513d8c5f9c7de6b90.pdf",
       "supports": "Venue facilities and grandstand layout."
+    },
+    {
+      "title": "FIA 2024 Chinese Grand Prix media kit",
+      "url": "https://www.fia.com/sites/default/files/media_kit_-_chinese_gp.pdf",
+      "supports": "Venue description places the subsidiary grandstand at the end of the 1175 m straight and describes its lotus-leaf roofs. Video 674–678 s and retained H/K footprints register these to T14."
     }
   ],
   "uncertainties": [
-    "Native station0 is around officialT7, not SF; all recipes use retained native station frame. SF~3450m is approximate, register exact line before spawn change.",
-    "OSM SectionA footprint centroid is6.5m from road: it represents overhead/compound architecture. Never extrude the whole ring from ground and block road.",
-    "GLO-90relief8.688m is coarse and includes structures; no high-resolution bare-earth profile verified."
-  ]
+    "Native station zero is around official T7. All intervals retain that frame; the timing line is approximately native 3450 m.",
+    "The Section A compound centroid is only 6.5 m from the road because its architecture spans overhead. The mapped compound is excluded from ground extrusion.",
+    "The corrected road profile uses registered 7.4 m F1 topography controls; retained GLO-90 heights are source evidence, not racing-deck ground truth."
+  ],
+  "lotus_canopy_registration": {
+    "osm_ids": [
+      1372223261,
+      1372223262
+    ],
+    "stands": [
+      "H",
+      "K"
+    ],
+    "nearest_native_stations_m": [
+      2527.8,
+      2831.3
+    ],
+    "reviewed_video_seconds": [
+      674,
+      678
+    ],
+    "evidence": "Paired repeated oval roofs are visible after the T14 hairpin. The retained H/K rings have 207/181 vertices and rounded compound outlines; B1 has a rectangular five-vertex outline.",
+    "dimensions": "Mapped plan bounds; canopy radii, column heights and red seat palette are reference estimates."
+  }
 }

@@ -211,7 +211,7 @@
     }
   ],
   "uncertainties": [
-    "Original 12 m corner width conflicts with operator minimum16m; broad track is essential to look and driving line.",
-    "GLO-90profile21mrelief is not a survey; no authoritative elevation series verified. Preserve visible hills and banked sightlines without flattening."
+    "The width source now spans the operator-supported 16–22 m range; individual interval transitions remain estimates from road shape and reference footage.",
+    "The corrected 22 m road relief uses registered F1 topography controls with its crest near T11. It is not a surveyed racing-deck profile."
   ]
 }

@@ -1,0 +1,1694 @@
+{
+  "schema_version": 1,
+  "circuit": "malaysia",
+  "appearance": "Dry bright daylight; tropical haze and blue sky.",
+  "terrain_character": "Tropical rolling plantation terrain, oil palms, broad grass infields, sandy/light gravel escape areas.",
+  "distinctive_geometry": [
+    "Main Grandstand: double-frontage central island between two straights, repeated scalloped/palm-leaf tensile roof shells on branching steel masts; blue/red seats.",
+    "Pit building: white multi-storey linear block with33garage bays, dark glazing and projecting layered slabs; elevated hospitality levels.",
+    "K1/F stands: open spectator terraces and roof silhouettes outside first complex and opposite fast section."
+  ],
+  "sectors": [
+    {
+      "id": "malaysia-01",
+      "native_station_m": [
+        0,
+        700
+      ],
+      "name": "Pit straight, T1–2",
+      "reviewed_video_seconds": [
+        128.04,
+        106,
+        110,
+        114,
+        118,
+        122,
+        126,
+        130,
+        134,
+        138,
+        142
+      ],
+      "observed": "Central scalloped-roof mainstand left, layered white pit building right. Broad slow opening right then left, wide grass and large tan gravel/paved outer escape, red-white kerbs and thin green edge.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "malaysia-02",
+      "native_station_m": [
+        700,
+        1500
+      ],
+      "name": "T3 curve and T4 braking",
+      "reviewed_video_seconds": [
+        146,
+        150,
+        154,
+        158,
+        162
+      ],
+      "observed": "Wide flowing right acceleration past oil palms, banks and spectators; large straight-ahead paved/gravel escape at tight rightT4. Red-white inside strip, light grass outside. Braking boards150/100/50 visible on approach.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "malaysia-03",
+      "native_station_m": [
+        1500,
+        2250
+      ],
+      "name": "T5–6 fast direction change",
+      "reviewed_video_seconds": [
+        166,
+        170,
+        241.85,
+        298.75
+      ],
+      "observed": "Broad grass infield, gentle slope, red-white kerbs and green outer strip. Plantation palm rows/irregular broadleaf patches behind barriers; open sky above low hills.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "malaysia-04",
+      "native_station_m": [
+        2250,
+        2900
+      ],
+      "name": "T7–8 double right and short straight",
+      "reviewed_video_seconds": [
+        174,
+        178,
+        355.66
+      ],
+      "observed": "F stand near native2418 left, curving crowd terraces and tall lighting masts. Very wide asphalt and grass runoffs, gravel beyond outer exit; do not line full outside with close city walls.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "malaysia-05",
+      "native_station_m": [
+        2900,
+        3550
+      ],
+      "name": "T9 hairpin and climb",
+      "reviewed_video_seconds": [
+        182,
+        186,
+        469.47
+      ],
+      "observed": "Slow left corner with distinct broad gravel escape and grassy central island, canopy stand visible in background. Oil palms and low wooded rises; barrier behindescape. Narrow red-white apex strip.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "malaysia-06",
+      "native_station_m": [
+        3550,
+        4250
+      ],
+      "name": "T10–11 technical hill section",
+      "reviewed_video_seconds": [
+        190,
+        194,
+        526.37
+      ],
+      "observed": "Rolling grass verges and off-camber sightlines into linked corners, broad tan gravel outside with green painted edge. Palm plantations and occasional light poles on hill above Armco.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "malaysia-07",
+      "native_station_m": [
+        4250,
+        5000
+      ],
+      "name": "T12–14 return to back straight",
+      "reviewed_video_seconds": [
+        198,
+        202,
+        810.89
+      ],
+      "observed": "Fast direction changes across broad grass, light gravel escape, isolated stand roof and dense palm band. South paddock building right near4520; keep secondary structures low and distant.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "malaysia-08",
+      "native_station_m": [
+        5000,
+        5543
+      ],
+      "name": "Back straight and final T15 hairpin",
+      "reviewed_video_seconds": [
+        206,
+        210,
+        583.27,
+        867.8
+      ],
+      "observed": "Central mainstand presents opposite face and repeated curved shells, very broad final lefthairpin around grass island. Long straight approaches and return to pit, red-white kerbs with green exit apron and gravel beyond.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    }
+  ],
+  "mapped_landmarks": [
+    {
+      "osm_id": 107364038,
+      "name": "F Grandstand",
+      "source_xy_m": [
+        608.86,
+        71.04
+      ],
+      "nearest_station_m": 2417.8,
+      "distance_from_centerline_m": 40.2,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "2",
+      "building": "grandstand",
+      "footprint_xy_m": [
+        [
+          551.77,
+          127.73
+        ],
+        [
+          578.78,
+          146.73
+        ],
+        [
+          579.52,
+          145.66
+        ],
+        [
+          669.73,
+          17.42
+        ],
+        [
+          651.99,
+          4.94
+        ],
+        [
+          644.53,
+          -0.31
+        ],
+        [
+          642.74,
+          -1.57
+        ],
+        [
+          551.77,
+          127.73
+        ]
+      ]
+    },
+    {
+      "osm_id": 107364040,
+      "name": "Welcome Center",
+      "source_xy_m": [
+        -631.28,
+        -122.98
+      ],
+      "nearest_station_m": 535.5,
+      "distance_from_centerline_m": 135.7,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -610.19,
+          -127.37
+        ],
+        [
+          -660.65,
+          -133.88
+        ],
+        [
+          -662.91,
+          -116.4
+        ],
+        [
+          -612.45,
+          -109.89
+        ],
+        [
+          -610.19,
+          -127.37
+        ]
+      ]
+    },
+    {
+      "osm_id": 107364100,
+      "name": "K1 Grandstand",
+      "source_xy_m": [
+        -602.57,
+        24.32
+      ],
+      "nearest_station_m": 575.5,
+      "distance_from_centerline_m": 65.3,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "2",
+      "building": "grandstand",
+      "footprint_xy_m": [
+        [
+          -611.95,
+          -63.35
+        ],
+        [
+          -642.17,
+          -65.47
+        ],
+        [
+          -643.87,
+          -41.19
+        ],
+        [
+          -645.75,
+          -16.55
+        ],
+        [
+          -640.44,
+          15.33
+        ],
+        [
+          -626.75,
+          44.15
+        ],
+        [
+          -605.04,
+          67.04
+        ],
+        [
+          -592.76,
+          79.78
+        ],
+        [
+          -582.96,
+          94.64
+        ],
+        [
+          -578.37,
+          114.47
+        ],
+        [
+          -546.99,
+          109.51
+        ],
+        [
+          -555.72,
+          79.9
+        ],
+        [
+          -567.75,
+          60.78
+        ],
+        [
+          -574.58,
+          53.21
+        ],
+        [
+          -584.86,
+          41.79
+        ],
+        [
+          -600.44,
+          26.2
+        ],
+        [
+          -610.71,
+          5.04
+        ],
+        [
+          -614.59,
+          -16.53
+        ],
+        [
+          -613.65,
+          -39.08
+        ],
+        [
+          -611.95,
+          -63.35
+        ]
+      ]
+    },
+    {
+      "osm_id": 144247993,
+      "name": "Main Grandstand",
+      "source_xy_m": [
+        124.62,
+        -42.3
+      ],
+      "nearest_station_m": 5423.1,
+      "distance_from_centerline_m": 51.8,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "grandstand",
+      "footprint_xy_m": [
+        [
+          375.17,
+          -30.4
+        ],
+        [
+          369.54,
+          -35.87
+        ],
+        [
+          358.01,
+          -40.74
+        ],
+        [
+          -207.49,
+          -145.67
+        ],
+        [
+          -208.31,
+          -141.26
+        ],
+        [
+          -209.32,
+          -135.78
+        ],
+        [
+          -211.99,
+          -121.4
+        ],
+        [
+          -191.5,
+          -117.6
+        ],
+        [
+          -193.08,
+          -109.15
+        ],
+        [
+          -173.46,
+          -105.54
+        ],
+        [
+          -171.9,
+          -113.95
+        ],
+        [
+          -142.14,
+          -108.43
+        ],
+        [
+          -143.7,
+          -100.08
+        ],
+        [
+          -124.57,
+          -96.57
+        ],
+        [
+          -123.02,
+          -104.87
+        ],
+        [
+          -94.06,
+          -99.49
+        ],
+        [
+          -95.58,
+          -91.25
+        ],
+        [
+          -76.04,
+          -87.66
+        ],
+        [
+          -74.52,
+          -95.86
+        ],
+        [
+          -45.19,
+          -90.41
+        ],
+        [
+          -46.7,
+          -82.27
+        ],
+        [
+          -27.62,
+          -78.77
+        ],
+        [
+          -26.12,
+          -86.88
+        ],
+        [
+          2.55,
+          -81.55
+        ],
+        [
+          1.06,
+          -73.51
+        ],
+        [
+          21.76,
+          -69.72
+        ],
+        [
+          23.23,
+          -77.71
+        ],
+        [
+          51.51,
+          -72.45
+        ],
+        [
+          50.04,
+          -64.52
+        ],
+        [
+          70.28,
+          -60.81
+        ],
+        [
+          71.75,
+          -68.69
+        ],
+        [
+          101.37,
+          -63.2
+        ],
+        [
+          99.91,
+          -55.37
+        ],
+        [
+          119.61,
+          -51.75
+        ],
+        [
+          121.09,
+          -59.65
+        ],
+        [
+          353.36,
+          -16.27
+        ],
+        [
+          352.08,
+          -9.41
+        ],
+        [
+          116.23,
+          -27.18
+        ],
+        [
+          116.82,
+          -35.08
+        ],
+        [
+          111.44,
+          -35.49
+        ],
+        [
+          96.86,
+          -36.63
+        ],
+        [
+          96.26,
+          -28.68
+        ],
+        [
+          66.22,
+          -30.94
+        ],
+        [
+          66.83,
+          -38.95
+        ],
+        [
+          46.3,
+          -40.53
+        ],
+        [
+          45.69,
+          -32.49
+        ],
+        [
+          17.01,
+          -34.65
+        ],
+        [
+          17.62,
+          -42.75
+        ],
+        [
+          -3.35,
+          -44.38
+        ],
+        [
+          -3.96,
+          -36.23
+        ],
+        [
+          -33.04,
+          -38.42
+        ],
+        [
+          -32.41,
+          -46.63
+        ],
+        [
+          -51.76,
+          -48.13
+        ],
+        [
+          -52.38,
+          -39.87
+        ],
+        [
+          -82.13,
+          -42.11
+        ],
+        [
+          -81.51,
+          -50.43
+        ],
+        [
+          -101.32,
+          -51.96
+        ],
+        [
+          -101.95,
+          -43.6
+        ],
+        [
+          -131.33,
+          -45.81
+        ],
+        [
+          -130.69,
+          -54.24
+        ],
+        [
+          -150.09,
+          -55.75
+        ],
+        [
+          -150.72,
+          -47.27
+        ],
+        [
+          -180.89,
+          -49.55
+        ],
+        [
+          -180.25,
+          -58.08
+        ],
+        [
+          -200.15,
+          -59.62
+        ],
+        [
+          -200.59,
+          -53.65
+        ],
+        [
+          -200.79,
+          -51.04
+        ],
+        [
+          -217.01,
+          -52.26
+        ],
+        [
+          -221.57,
+          -52.61
+        ],
+        [
+          -222.69,
+          -37.68
+        ],
+        [
+          -223.07,
+          -32.76
+        ],
+        [
+          -223.42,
+          -27.98
+        ],
+        [
+          350.1,
+          15.29
+        ],
+        [
+          362.6,
+          13.69
+        ],
+        [
+          370.06,
+          8.52
+        ],
+        [
+          372.4,
+          12.02
+        ],
+        [
+          375.17,
+          15.19
+        ],
+        [
+          378.34,
+          17.97
+        ],
+        [
+          381.85,
+          20.32
+        ],
+        [
+          385.63,
+          22.2
+        ],
+        [
+          389.63,
+          23.56
+        ],
+        [
+          393.76,
+          24.38
+        ],
+        [
+          397.97,
+          24.67
+        ],
+        [
+          402.18,
+          24.4
+        ],
+        [
+          406.33,
+          23.58
+        ],
+        [
+          410.33,
+          22.22
+        ],
+        [
+          414.11,
+          20.37
+        ],
+        [
+          417.64,
+          18.02
+        ],
+        [
+          420.81,
+          15.24
+        ],
+        [
+          423.6,
+          12.07
+        ],
+        [
+          425.96,
+          8.55
+        ],
+        [
+          427.82,
+          4.76
+        ],
+        [
+          429.18,
+          0.77
+        ],
+        [
+          430.01,
+          -3.38
+        ],
+        [
+          430.29,
+          -7.6
+        ],
+        [
+          430.01,
+          -11.82
+        ],
+        [
+          429.18,
+          -15.97
+        ],
+        [
+          427.82,
+          -19.96
+        ],
+        [
+          425.96,
+          -23.76
+        ],
+        [
+          423.6,
+          -27.27
+        ],
+        [
+          420.81,
+          -30.44
+        ],
+        [
+          417.64,
+          -33.22
+        ],
+        [
+          414.11,
+          -35.57
+        ],
+        [
+          410.33,
+          -37.43
+        ],
+        [
+          406.33,
+          -38.78
+        ],
+        [
+          402.18,
+          -39.61
+        ],
+        [
+          397.97,
+          -39.87
+        ],
+        [
+          393.76,
+          -39.6
+        ],
+        [
+          389.63,
+          -38.76
+        ],
+        [
+          385.63,
+          -37.4
+        ],
+        [
+          381.85,
+          -35.53
+        ],
+        [
+          378.34,
+          -33.18
+        ],
+        [
+          375.17,
+          -30.4
+        ]
+      ]
+    },
+    {
+      "osm_id": 144359492,
+      "name": "Medical Center",
+      "source_xy_m": [
+        165.1,
+        43.71
+      ],
+      "nearest_station_m": 5375.2,
+      "distance_from_centerline_m": 31.2,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          150.6,
+          34.2
+        ],
+        [
+          149.8,
+          44.51
+        ],
+        [
+          148.92,
+          56.06
+        ],
+        [
+          184.24,
+          58.79
+        ],
+        [
+          185.61,
+          41.26
+        ],
+        [
+          185.94,
+          36.93
+        ],
+        [
+          150.6,
+          34.2
+        ]
+      ]
+    },
+    {
+      "osm_id": 144362327,
+      "name": "Paddock / Pit Building",
+      "source_xy_m": [
+        -79.92,
+        21.55
+      ],
+      "nearest_station_m": 79.9,
+      "distance_from_centerline_m": 27.9,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "3",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -221.99,
+          7.93
+        ],
+        [
+          -223.92,
+          8.24
+        ],
+        [
+          -225.72,
+          9.04
+        ],
+        [
+          -227.24,
+          10.29
+        ],
+        [
+          -228.4,
+          11.88
+        ],
+        [
+          -229.1,
+          13.71
+        ],
+        [
+          -229.31,
+          15.66
+        ],
+        [
+          -229.0,
+          17.61
+        ],
+        [
+          -228.2,
+          19.4
+        ],
+        [
+          -226.96,
+          20.93
+        ],
+        [
+          -225.48,
+          22.01
+        ],
+        [
+          -223.58,
+          22.87
+        ],
+        [
+          -221.66,
+          23.02
+        ],
+        [
+          -211.95,
+          23.78
+        ],
+        [
+          -212.39,
+          29.47
+        ],
+        [
+          114.03,
+          54.89
+        ],
+        [
+          115.07,
+          41.64
+        ],
+        [
+          116.1,
+          28.33
+        ],
+        [
+          105.07,
+          27.48
+        ],
+        [
+          102.43,
+          24.16
+        ],
+        [
+          100.38,
+          21.91
+        ],
+        [
+          97.3,
+          21.07
+        ],
+        [
+          95.1,
+          21.4
+        ],
+        [
+          91.62,
+          23.07
+        ],
+        [
+          88.98,
+          25.88
+        ],
+        [
+          84.2,
+          25.5
+        ],
+        [
+          83.69,
+          32.06
+        ],
+        [
+          68.13,
+          30.84
+        ],
+        [
+          68.64,
+          24.29
+        ],
+        [
+          -221.52,
+          1.7
+        ],
+        [
+          -221.99,
+          7.93
+        ]
+      ]
+    },
+    {
+      "osm_id": 1105232836,
+      "name": "South Padock",
+      "source_xy_m": [
+        -52.69,
+        -169.02
+      ],
+      "nearest_station_m": 4519.9,
+      "distance_from_centerline_m": 40.8,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "2",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -152.88,
+          -198.03
+        ],
+        [
+          4.58,
+          -169.12
+        ],
+        [
+          5.18,
+          -172.38
+        ],
+        [
+          19.23,
+          -169.8
+        ],
+        [
+          15.35,
+          -148.63
+        ],
+        [
+          12.15,
+          -146.39
+        ],
+        [
+          3.36,
+          -148.01
+        ],
+        [
+          1.29,
+          -151.21
+        ],
+        [
+          1.86,
+          -154.34
+        ],
+        [
+          -142.96,
+          -180.92
+        ],
+        [
+          -143.3,
+          -179.03
+        ],
+        [
+          -155.94,
+          -181.34
+        ],
+        [
+          -152.88,
+          -198.03
+        ]
+      ]
+    },
+    {
+      "osm_id": 1106576349,
+      "name": "Control Post 1",
+      "source_xy_m": [
+        -97.02,
+        517.48
+      ],
+      "nearest_station_m": 1410.7,
+      "distance_from_centerline_m": 56.3,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -98.94,
+          520.28
+        ],
+        [
+          -94.14,
+          520.28
+        ],
+        [
+          -94.14,
+          513.27
+        ],
+        [
+          -98.94,
+          513.27
+        ],
+        [
+          -98.94,
+          520.28
+        ]
+      ]
+    },
+    {
+      "osm_id": 1106756634,
+      "name": "Welcome Center",
+      "source_xy_m": [
+        -625.6,
+        -167.01
+      ],
+      "nearest_station_m": 527.5,
+      "distance_from_centerline_m": 164.7,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -604.48,
+          -171.71
+        ],
+        [
+          -654.94,
+          -178.2
+        ],
+        [
+          -657.29,
+          -159.97
+        ],
+        [
+          -606.83,
+          -153.47
+        ],
+        [
+          -604.48,
+          -171.71
+        ]
+      ]
+    }
+  ],
+  "dimensions_policy": "OSM XY footprints are registered geographic evidence. Tagged height and levels are retained verbatim; missing/zero heights are unknown. Roof/detail sizes and sparse-vegetation spacing in native authoring are visual estimates pending cockpit comparison.",
+  "source_registration": {
+    "method": "Nearest native centerline sample after retained local tangent projection and uniform scale.",
+    "station_error_bound_m": 8,
+    "landmark_extent_note": "Centroid station can fall on adjacent arm of circuit; use actual ring and terrain, not centroid station alone. Overlapping compound roof footprints must never become solid road obstructions."
+  },
+  "elevation_review": {
+    "retained_dataset": "Copernicus DEM GLO-90",
+    "retained_relief_m": 21.0,
+    "status": "The native racing-deck profile now follows registered published topography controls. Raw DEM remains for source comparison and scenery terrain.",
+    "findings": [
+      "Original 12 m corner width conflicts with operator minimum16m; broad track is essential to look and driving line.",
+      "GLO-90profile21mrelief is not a survey; no authoritative elevation series verified. Preserve visible hills and banked sightlines without flattening."
+    ],
+    "replacement_profile": {
+      "schema_version": 1,
+      "provider": "Formula 1 published 2016 topography diagram",
+      "article_url": "https://www.formula1.com/en/latest/article/highs-and-lows-which-f1-track-has-the-most-elevation-changes-.7I9JEcBw3R2AqXbnJ6hyvc",
+      "image_url": "https://media.formula1.com/image/upload/c_lfill,w_1800/q_auto/v1740000001/content/dam/fom-website/manual/Misc/Topography/malaysia.webp",
+      "image_sha256": "96af2a274c59b27ec910002d364d155d3a13ea16d1a819682f0c71e844ffb018",
+      "reference_image_shipped": false,
+      "relief_m": 22,
+      "vertical_datum": "Relative to the published profile minimum; absolute diagram altitude is not used.",
+      "native_station_controls_m": [
+        [
+          0,
+          13.3
+        ],
+        [
+          300,
+          13.3
+        ],
+        [
+          567,
+          15.5
+        ],
+        [
+          699,
+          12.9
+        ],
+        [
+          991,
+          0
+        ],
+        [
+          1495,
+          14.8
+        ],
+        [
+          1640,
+          18
+        ],
+        [
+          1886,
+          14.8
+        ],
+        [
+          2102,
+          16.3
+        ],
+        [
+          2482,
+          16.7
+        ],
+        [
+          2590,
+          15.9
+        ],
+        [
+          3077,
+          12.1
+        ],
+        [
+          3213,
+          17.8
+        ],
+        [
+          3433,
+          22
+        ],
+        [
+          3769,
+          14
+        ],
+        [
+          3968,
+          9.9
+        ],
+        [
+          4128,
+          14
+        ],
+        [
+          4400,
+          13.3
+        ],
+        [
+          4800,
+          13.3
+        ],
+        [
+          5068,
+          15.9
+        ],
+        [
+          5230,
+          13.3
+        ],
+        [
+          5543,
+          13.3
+        ]
+      ],
+      "interpolation": "Piecewise monotone cubic Hermite. Interior Fritsch-Carlson harmonic slopes; flat SF seam. No uniform rescaling of the previous DEM.",
+      "vertical_uncertainty_m": 1.0,
+      "station_uncertainty_m": 50.0,
+      "method": "Read relative heights from the published numerical extremum labels and drawn trace, then register individual official corners to retained native centerline geometry using FIA maps. Intermediate heights are graphical estimates, not measurements.",
+      "registration_notes": "The old GLO-90 high point was on the back straight near4480m. The F1 diagram instead places the high point at officialT11near3433m,22maboveT3near991m. AutoTurn4is a second detection within broadT3, not officialT4.",
+      "supersedes": "Coarse GLO-90 road profile remains retained as source evidence, not as the racing deck. No new lidar or survey is claimed.",
+      "controls_file": "elevation-corrections.json"
+    }
+  },
+  "primary_sources": [
+    {
+      "title": "Sepang circuit operator architecture",
+      "url": "https://www.sepangcircuit.com/architecture",
+      "supports": "5.543 km;16–22m track width;1.3km double-frontage main grandstand;33garages8x24m, layered pit hospitality."
+    }
+  ],
+  "acceptance": {
+    "required": [
+      "Cockpit contact sheet covering all sectors, including each landmark approach and both road edges.",
+      "No floating tiles, barriers crossing drivable lane, closed escape mouths, or faceted long curves.",
+      "Compare curb colour/extent, runoff surface/depth, fencing, tree placement and skyline per sector against timestamps.",
+      "Review night illumination for asphalt visibility and dark sky, or daylight landscape contrast as appropriate."
+    ],
+    "status": "Reference inventory and scene recipe authored; native runtime acceptance is separate."
+  },
+  "width_profile": {
+    "base_m": 16.0,
+    "straight_m": 18.0,
+    "minimum_m": 16.0,
+    "maximum_m": 22.0,
+    "method": "Operator-published width limits, with station-varying widths visually estimated from supplied onboard. Smooth cubic transitions; not a traced white-line survey.",
+    "source": "https://www.sepangcircuit.com/architecture",
+    "controls_m": [
+      [
+        0,
+        18
+      ],
+      [
+        350,
+        18
+      ],
+      [
+        450,
+        20
+      ],
+      [
+        550,
+        22
+      ],
+      [
+        650,
+        20
+      ],
+      [
+        720,
+        18
+      ],
+      [
+        850,
+        16
+      ],
+      [
+        1000,
+        18
+      ],
+      [
+        1200,
+        16
+      ],
+      [
+        1600,
+        16
+      ],
+      [
+        1900,
+        16
+      ],
+      [
+        2200,
+        16
+      ],
+      [
+        2450,
+        16
+      ],
+      [
+        2700,
+        17
+      ],
+      [
+        2900,
+        18
+      ],
+      [
+        3000,
+        20
+      ],
+      [
+        3080,
+        22
+      ],
+      [
+        3200,
+        18
+      ],
+      [
+        3500,
+        16
+      ],
+      [
+        3800,
+        16
+      ],
+      [
+        4100,
+        16
+      ],
+      [
+        4300,
+        17
+      ],
+      [
+        4700,
+        18
+      ],
+      [
+        4930,
+        20
+      ],
+      [
+        5050,
+        22
+      ],
+      [
+        5180,
+        20
+      ],
+      [
+        5300,
+        18
+      ],
+      [
+        5543,
+        18
+      ]
+    ],
+    "uncertainty": "Published venue range constrains width. Exact local widths and transition stations remain reference-based authoring estimates."
+  },
+  "authored_edges": {
+    "side_convention": "Numeric+1 is driver right, -1 is driver left. Shader runoff widths clamp to exported collision shoulders.",
+    "registration": "Intervals visually estimated against mapped native curves and supplied video; not a surveyed curb or safety-installation trace.",
+    "kerbs": [
+      {
+        "start_m": 500,
+        "end_m": 610,
+        "side": 1
+      },
+      {
+        "start_m": 655,
+        "end_m": 730,
+        "side": -1
+      },
+      {
+        "start_m": 770,
+        "end_m": 850,
+        "side": 1
+      },
+      {
+        "start_m": 940,
+        "end_m": 1020,
+        "side": 1
+      },
+      {
+        "start_m": 1420,
+        "end_m": 1550,
+        "side": 1
+      },
+      {
+        "start_m": 1810,
+        "end_m": 1940,
+        "side": -1
+      },
+      {
+        "start_m": 2045,
+        "end_m": 2170,
+        "side": 1
+      },
+      {
+        "start_m": 2390,
+        "end_m": 2490,
+        "side": 1
+      },
+      {
+        "start_m": 2520,
+        "end_m": 2630,
+        "side": 1
+      },
+      {
+        "start_m": 3020,
+        "end_m": 3120,
+        "side": -1
+      },
+      {
+        "start_m": 3155,
+        "end_m": 3260,
+        "side": 1
+      },
+      {
+        "start_m": 3380,
+        "end_m": 3480,
+        "side": 1
+      },
+      {
+        "start_m": 3710,
+        "end_m": 3820,
+        "side": -1
+      },
+      {
+        "start_m": 3910,
+        "end_m": 4020,
+        "side": 1
+      },
+      {
+        "start_m": 4070,
+        "end_m": 4190,
+        "side": 1
+      },
+      {
+        "start_m": 4980,
+        "end_m": 5130,
+        "side": -1
+      }
+    ],
+    "runoffs": [
+      {
+        "start_m": 475,
+        "end_m": 630,
+        "side": -1,
+        "requested_width_m": 18,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 620,
+        "end_m": 755,
+        "side": 1,
+        "requested_width_m": 13,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 1390,
+        "end_m": 1570,
+        "side": -1,
+        "requested_width_m": 15,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 1780,
+        "end_m": 1960,
+        "side": 1,
+        "requested_width_m": 14,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 2350,
+        "end_m": 2660,
+        "side": -1,
+        "requested_width_m": 18,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 2970,
+        "end_m": 3150,
+        "side": 1,
+        "requested_width_m": 18,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 3330,
+        "end_m": 3520,
+        "side": -1,
+        "requested_width_m": 13,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 3860,
+        "end_m": 4220,
+        "side": -1,
+        "requested_width_m": 17,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 4940,
+        "end_m": 5170,
+        "side": 1,
+        "requested_width_m": 18,
+        "material": "Gravel"
+      }
+    ],
+    "physical_escape_review": "Large terminal escape mouths still need explicit footprint geometry and matching collision-barrier changes. Surface ribbons must not extend through existing collision walls.",
+    "outer_kerb_paint": "Selected reference-observed kerbs have a 2.6 m green strip from the road edge, leaving green beyond the raised red-white blocks. These strips are independent of the larger outer escape surfaces."
+  },
+  "native_scene_module": "tools/venues/malaysia.py",
+  "native_scene_status": "Authored geometry and type checks complete. Native cockpit review and collision acceptance are pending.",
+  "scenery_grounding": "Mapped buildings use the lowest footprint terrain level. Stand fronts have retaining bases and rear supports extend to sampled terrain. Trees avoid all road arms and mapped building footprints.",
+  "additional_authoritative_data": {
+    "title": "JUPEM terrain and geospatial products",
+    "url": "https://www.jupem.gov.my/en/orang-awam/carian",
+    "status": "Official catalogue lists peninsular DTM and river-basin lidar DTM/DSM. Sepang circuit coverage and redistribution rights are not verified.",
+    "limitation": "Catalogue entry alone does not establish lidar coverage at the circuit."
+  },
+  "source_conflicts": "Retained city footprints can cross the modeled road corridor. Native facade authoring clips ground walls outside the road mask plus 1.2 m and records the removed area; these are disclosed registration conflicts, not validated building surveys.",
+  "braking_markers": {
+    "side_convention": "Numeric+1 is driver right, -1 is driver left. Board sequences are on the outside of the main braking approach.",
+    "placement_policy": "Heavy braking approaches selected from mapped official corner sequence and indexed reference sectors. Stations and exact event mounting locations remain estimates. Standard150/100/50boards are shortened to100/50on selected compact street-corner approaches.",
+    "native_station_uncertainty_m": 40,
+    "approaches": [
+      {
+        "official_corner": "T1",
+        "apex_station_m": 567,
+        "side": -1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          106,
+          138,
+          142
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T4",
+        "apex_station_m": 1495,
+        "side": -1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          154,
+          158,
+          162
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T9 hairpin",
+        "apex_station_m": 3077,
+        "side": 1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          182,
+          186,
+          469.47
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T15 final hairpin",
+        "apex_station_m": 5068,
+        "side": 1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          206,
+          210,
+          867.8
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      }
+    ]
+  },
+  "barrier_branding": {
+    "coordinate_frame": "Native source station metres; numerical +1 is driver right and -1 is driver left.",
+    "artwork": "Original typeset event panels with observed identity and palette; no video pixels or extracted game textures are shipped.",
+    "registration": "Wall identities are visible in the listed sparse reference frames. Native intervals are estimated from corner and landmark registration, with approximately 75 m endpoint uncertainty; edited playback is not treated as a linear station clock.",
+    "unbranded_sections": "Retain bare Armco and concrete outside these explicit bands. Unsupported legible identities are left without a substitute sponsor. A sponsor bridge alone is not evidence for a matching roadside band.",
+    "ranges": [
+      {
+        "start_m": 5290,
+        "end_m": 5543,
+        "side": -1,
+        "material": "PanelPetronas",
+        "location": "Main straight central grandstand wall",
+        "observed_identity": "PETRONAS",
+        "reviewed_video_seconds": [
+          118,
+          122,
+          126,
+          130,
+          134
+        ]
+      },
+      {
+        "start_m": 0,
+        "end_m": 320,
+        "side": -1,
+        "material": "PanelPetronas",
+        "location": "Main straight central grandstand wall",
+        "observed_identity": "PETRONAS",
+        "reviewed_video_seconds": [
+          118,
+          122,
+          126,
+          130,
+          134
+        ]
+      },
+      {
+        "start_m": 5290,
+        "end_m": 5543,
+        "side": 1,
+        "material": "PanelPetronas",
+        "location": "Main straight pit wall",
+        "observed_identity": "PETRONAS",
+        "reviewed_video_seconds": [
+          118,
+          122,
+          126,
+          130,
+          134
+        ]
+      },
+      {
+        "start_m": 0,
+        "end_m": 320,
+        "side": 1,
+        "material": "PanelPetronas",
+        "location": "Main straight pit wall",
+        "observed_identity": "PETRONAS",
+        "reviewed_video_seconds": [
+          118,
+          122,
+          126,
+          130,
+          134
+        ]
+      },
+      {
+        "start_m": 500,
+        "end_m": 650,
+        "side": -1,
+        "material": "PanelPetronas",
+        "location": "T1 outside below umbrella terraces",
+        "observed_identity": "PETRONAS",
+        "reviewed_video_seconds": [
+          142,
+          146
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,430 @@
+{
+  "schema_version": 1,
+  "circuit": "zandvoort",
+  "reference_index": "reference-index.json",
+  "appearance": "Cloudy daytime, changing patches of wet/dry road.",
+  "layout": "Modern 4.259km Dutch GP layout with banked Hugenholtz T3 and Arie Luyendyk T14.",
+  "sector_registration": "All stations in retained native origin. Approximate full-route zones; individual decor must stay beyond verified protection and runoff.",
+  "sectors": [
+    {
+      "start_m": 0,
+      "end_m": 650,
+      "name": "Main straight and Tarzan",
+      "reference_times_s": [
+        80.9,
+        591.23,
+        955.76
+      ],
+      "observed_environment": "Long angled/cantilever main-stand roof opposite banded glass/gray pit building; white concrete walls and flags. Tarzan broad outer gravel and banked road with red/white kerbs.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 650,
+      "end_m": 1150,
+      "name": "Gerlach, Hugenholtz and Hunserug",
+      "reference_times_s": [
+        153.81,
+        518.33
+      ],
+      "observed_environment": "Deeply banked hairpin in sandy dunes; outside gravel, grass/sand retaining slopes and low advertised protection. Grandstands cluster around this opening complex.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 1150,
+      "end_m": 1950,
+      "name": "Slotemaker and Scheivlak",
+      "reference_times_s": [
+        226.71,
+        372.52
+      ],
+      "observed_environment": "Sunken road between wavy dune crests, patchy dry grass, sand exposures and scattered shrubs. Preserve blind rises and falls; no continuous tall forest wall.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 1950,
+      "end_m": 2850,
+      "name": "Masters and middle dune corners",
+      "reference_times_s": [
+        664.14,
+        809.95
+      ],
+      "observed_environment": "Medium-speed bends hug high dune banks; blue/yellow wall panels, red/white kerbs, outside gravel pockets and scrub. Open stands/temporary tents on hilltops.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 2850,
+      "end_m": 3500,
+      "name": "Hans Ernst chicane",
+      "reference_times_s": [
+        518.33,
+        882.85
+      ],
+      "observed_environment": "Short linked slower corners, local gravel and green/painted paved margins, grandstands and fence close to the exit. Preserve linked apex geometry without decorative islands across escape.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 3500,
+      "end_m": 4259,
+      "name": "Kumho and banked Arie Luyendyk",
+      "reference_times_s": [
+        299.62,
+        737.04
+      ],
+      "observed_environment": "Final sweeping banked corner feeds main straight; tall outside SAFER protection, grandstand mass and pits visible beyond. T14 official banking18degrees; zero-bank source cannot be retained.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    }
+  ],
+  "terrain": {
+    "retained_source": "Copernicus DEM GLO-90",
+    "retained_relief_m": 7.812,
+    "shortcomings": "GLO-90 relief7.812m under-resolves dunes and former wrongly anchored/signed banking corrected by explicit profile; T3nonlinear bowl remains approximated by scalar plane. AHN0.5m bare-earth data via PDOK is candidate; confirm survey epoch includes2020banked reconstruction. Operator presentation contains inconsistent T3percent/degree text; do not use it as numerical T3camber. T14corners page explicitly18degrees.",
+    "candidate_primary_sources": [
+      "https://www.ahn.nl/open-data",
+      "https://www.ahn.nl/kwaliteitsbeschrijving"
+    ],
+    "data_status": "Candidate metadata reviewed; no candidate raster downloaded or claimed as incorporated."
+  },
+  "authoring_constraints": [
+    "Use mapped building footprints and match rooflines, structural supports, facade depth and stepped volumes; names alone do not establish likeness.",
+    "Place grass/gravel/asphalt runoff per registered corner, with protection at outside edge; do not fill escape areas with independent tiles/blocks.",
+    "Road, kerbs, shoulder and protection share smooth station sampling; kerbs only in explicit ranges.",
+    "Maintain venue-specific vegetation around complete route, preserving long sightlines/open water where present.",
+    "Reference pixels remain ignored; generate geometry and materials only."
+  ],
+  "quality_gates": [
+    "Matching cockpit frame at each sector and every braking/turn sequence.",
+    "Oblique view of runoff shapes, architectural footprints and terrain.",
+    "Full lap motion review for edge smoothness, floating objects, protection gaps and missing surroundings.",
+    "Luna high reviewer must evaluate rendered evidence, not this recipe."
+  ],
+  "authored_surface_ranges": {
+    "station_units": "metres from retained native origin",
+    "side_contract": "+1 source driver right; -1 source driver left",
+    "placement_status": "Explicit reconstruction around registered apex controls. Approximate endpoints/widths inferred from reference and map; runtime clamps runoff to native protection corridor. Not a traced survey.",
+    "kerbs": [
+      {
+        "start_m": 340,
+        "end_m": 480,
+        "side": 1,
+        "color": "RunoffOrange",
+        "alternate": "White"
+      },
+      {
+        "start_m": 680,
+        "end_m": 770,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 805,
+        "end_m": 950,
+        "side": -1,
+        "color": "RunoffOrange",
+        "alternate": "White"
+      },
+      {
+        "start_m": 1670,
+        "end_m": 1795,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 2030,
+        "end_m": 2130,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 2230,
+        "end_m": 2340,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 2490,
+        "end_m": 2590,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 3130,
+        "end_m": 3210,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 3220,
+        "end_m": 3290,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 3500,
+        "end_m": 3610,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 3720,
+        "end_m": 3940,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      }
+    ],
+    "runoff": [
+      {
+        "start_m": 290,
+        "end_m": 510,
+        "side": -1,
+        "requested_width_m": 24,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 780,
+        "end_m": 995,
+        "side": 1,
+        "requested_width_m": 20,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 1630,
+        "end_m": 1840,
+        "side": -1,
+        "requested_width_m": 24,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 1990,
+        "end_m": 2170,
+        "side": -1,
+        "requested_width_m": 22,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 2190,
+        "end_m": 2380,
+        "side": -1,
+        "requested_width_m": 20,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 2450,
+        "end_m": 2630,
+        "side": 1,
+        "requested_width_m": 20,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 3080,
+        "end_m": 3320,
+        "side": -1,
+        "requested_width_m": 18,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 3460,
+        "end_m": 3650,
+        "side": -1,
+        "requested_width_m": 20,
+        "material": "Gravel"
+      }
+    ]
+  },
+  "banking_recipe": "banking-corrections.json",
+  "braking_markers": {
+    "side_contract": "+1 is driver right in retained east/north source coordinates; -1 is driver left.",
+    "station_frame": "Native circuit origin, not necessarily start/finish; scene.at handles lap wrapping.",
+    "placement_status": "Corner approaches are registered to retained plan/OSM/FIA controls and reviewed reference sectors. Board offsets, mounting side and exact event positions are reconstructed estimates, not a traced signage survey.",
+    "selection": "Major braking approaches only; short linked corners use 100/50 m sets. No boards added to flat-out sweeps solely because the curvature detector counted a bend.",
+    "approaches": [
+      {
+        "corner": "Tarzan",
+        "apex_station_m": 400,
+        "side": -1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "Hugenholtz",
+        "apex_station_m": 873,
+        "side": 1,
+        "distances_before_apex_m": [
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "T10",
+        "apex_station_m": 2538,
+        "side": 1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "Hans Ernst first apex",
+        "apex_station_m": 3186,
+        "side": -1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      }
+    ]
+  },
+  "barrier_branding": {
+    "side_contract": "+1 driver right / -1 driver left in retained source coordinates.",
+    "source_policy": "Only the selected reviewed palette/identities are reproduced with original typesetting. Unsupported or varying identities use neutral PanelWhite; no reference pixels are shipped.",
+    "placement_status": "Ranges are approximate native-station registrations to the named reference sectors. Individual panel ends, event mounting positions and exact lengths are reconstructed; clip time is not treated as proportional lap distance.",
+    "coverage_policy": "Selected pit-straight and corner-protection runs only. Bare woodland Armco, open slopes and intervening protection remain exposed.",
+    "ranges": [
+      {
+        "start_m": 4050,
+        "end_m": 4250,
+        "side": 1,
+        "material": "PanelWhite",
+        "reviewed_times_s": [
+          80.9,
+          955.76
+        ],
+        "observation": "White/black game-event panels on the pit-straight wall."
+      },
+      {
+        "start_m": 4050,
+        "end_m": 4250,
+        "side": -1,
+        "material": "PanelWhite",
+        "reviewed_times_s": [
+          80.9,
+          955.76
+        ],
+        "observation": "White/black panels below the main grandstand."
+      },
+      {
+        "start_m": 0,
+        "end_m": 280,
+        "side": 1,
+        "material": "PanelWhite",
+        "reviewed_times_s": [
+          80.9,
+          955.76
+        ],
+        "observation": "The same white pit-straight treatment continues across the retained origin."
+      },
+      {
+        "start_m": 0,
+        "end_m": 280,
+        "side": -1,
+        "material": "PanelWhite",
+        "reviewed_times_s": [
+          80.9,
+          955.76
+        ],
+        "observation": "Opposite main-straight wall retains the observed white event-panel treatment."
+      },
+      {
+        "start_m": 330,
+        "end_m": 530,
+        "side": -1,
+        "material": "PanelDHL",
+        "reviewed_times_s": [
+          153.81
+        ],
+        "observation": "Yellow DHL panels along the outside dune/gravel protection at the opening banked corner."
+      },
+      {
+        "start_m": 790,
+        "end_m": 970,
+        "side": 1,
+        "material": "PanelDHL",
+        "reviewed_times_s": [
+          372.52,
+          809.95
+        ],
+        "observation": "Yellow DHL panels on the outside dune protection of the opening banked/hairpin complex."
+      },
+      {
+        "start_m": 2950,
+        "end_m": 3160,
+        "side": 1,
+        "material": "PanelYellow",
+        "reviewed_times_s": [
+          518.33
+        ],
+        "observation": "Yellow PIRELLI panels on the grandstand-lined approach to the slower late-lap complex."
+      },
+      {
+        "start_m": 2950,
+        "end_m": 3160,
+        "side": -1,
+        "material": "PanelYellow",
+        "reviewed_times_s": [
+          518.33
+        ],
+        "observation": "The same reviewed approach shows PIRELLI panels on both sides."
+      }
+    ]
+  },
+  "runoff_paint_review": {
+    "reviewed_overview_frames": [
+      5,
+      7,
+      9,
+      12
+    ],
+    "reviewed_times_s": [
+      372.52,
+      518.33,
+      664.14,
+      882.85
+    ],
+    "observations": "Orange/white Tarzan and Hugenholtz kerbs visible in overview09/12. Narrow green exit ribbons at Tarzan and Hans Ernst; broad dune-side traps remain gravel.",
+    "registration_status": "Named reference sector matched to retained road shape; widths, ends and star sizes/spacing are original estimates, not exact surveyed paint coordinates.",
+    "height_policy": "Ground-following polygon geometry, clipped outside road_mask. No fixed-z tiles and no enlargement of physical runoff corridors.",
+    "physical_runoff_extents_changed": false,
+    "paint": [
+      {
+        "type": "band",
+        "start_m": 290,
+        "end_m": 510,
+        "side": -1,
+        "inner_m": 1.2,
+        "outer_m": 3.1,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 3080,
+        "end_m": 3320,
+        "side": -1,
+        "inner_m": 1.2,
+        "outer_m": 3.1,
+        "material": "RunoffGreen"
+      }
+    ]
+  },
+  "ground_appearance_review": "Muted grey-green scrub and pale sandy dune banks; avoid uniformly saturated park-green terrain."
+}

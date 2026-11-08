@@ -639,6 +639,10 @@ float AFormulaTrialPawn::ComponentPenetration(const FTransform& transform, const
         const FVector point = transform.TransformPosition(corners[index]);
         footprint[index] = {static_cast<float>(-point.Y / 100.0), static_cast<float>(-point.X / 100.0), static_cast<float>(point.Z / 100.0)};
     }
+    if (Simulation.circuit == TrackLayoutId::Japan) {
+        const float branchCeiling = Simulation.Ground(Simulation.vehicle.pos) / 17.0f + 2.0f;
+        return Simulation.driveSurface.Penetration(footprint, branchCeiling);
+    }
     return Simulation.driveSurface.Penetration(footprint);
 }
 

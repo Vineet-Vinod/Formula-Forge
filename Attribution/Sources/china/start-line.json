@@ -1,0 +1,6 @@
+{
+  "native_station_m": 3450,
+  "uncertainty_m": 75,
+  "method": "FIA map and mapped pit straight; approximate control-line placement.",
+  "semantics": "Time-trial timing/start anchor; route origin and world placement unchanged."
+}

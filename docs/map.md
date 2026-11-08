@@ -807,3 +807,7 @@ a visibly unfinished track "done" or wait for the user to rediscover the defects
 > repeatable authoring steps and measured validation. Keep failures visible and
 > close them with evidence. Follow the task's commit instructions; do not merge or
 > push without an explicit request.
+
+For the additional video-backed venues, use the
+[circuit scene workflow](circuit_scene_workflow.md) for the native sampling,
+source corrections, physical envelope, private materials and review commands.

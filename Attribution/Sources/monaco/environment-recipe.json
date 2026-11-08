@@ -1,0 +1,450 @@
+{
+  "schema_version": 1,
+  "circuit": "monaco",
+  "reference_index": "reference-index.json",
+  "appearance": "Bright daytime with intermittent clouds.",
+  "layout": "Monaco Grand Prix 3.337km/19-corner street circuit; tunnel below the Fairmont complex.",
+  "sector_registration": "All stations in retained native origin. Approximate full-route zones; individual decor must stay beyond verified protection and runoff.",
+  "sectors": [
+    {
+      "start_m": 0,
+      "end_m": 650,
+      "name": "Pit straight and Sainte-Dévote",
+      "reference_times_s": [
+        97.9,
+        727.19,
+        906.98
+      ],
+      "observed_environment": "Stands and stone/pink apartment tiers frame the uphill opening. Pit/service bars, marina edge, Armco and high mesh fence. Sainte-Dévote needs its opening/runoff access, not a solid urban wall.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 650,
+      "end_m": 1100,
+      "name": "Beau Rivage, Massenet and Casino",
+      "reference_times_s": [
+        817.08
+      ],
+      "observed_environment": "Steep uphill street with continuous inhabited facades, stepped retaining walls, trees and upper hillside apartments. Casino/Hotel de Paris geometry needs targeted review; overview has no reliable close view.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 1100,
+      "end_m": 1510,
+      "name": "Mirabeau, Fairmont and Portier",
+      "reference_times_s": [
+        637.29,
+        1176.68
+      ],
+      "observed_environment": "Tight descending sequence between pale hotel/apartment walls and planted terraces; palms and close red/white kerbs. Fairmont compound is a broad terraced hotel, not a freestanding tower. Bridge/overhang near hairpin seen, exact assignment needs registration.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 1510,
+      "end_m": 2040,
+      "name": "Tunnel",
+      "reference_times_s": [
+        367.59
+      ],
+      "observed_environment": "Road is below the Fairmont podium and sea-facing gallery. Preserve drivable deck elevation independently from roof heights. Overview does not directly show interior lighting, so tunnel cross-section/portal details need targeted frames.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 2040,
+      "end_m": 2400,
+      "name": "Nouvelle chicane and harbour edge",
+      "reference_times_s": [
+        457.49,
+        547.39
+      ],
+      "observed_environment": "Harbour yachts, masts and large moored vessel silhouettes, steep apartment-covered slopes behind. Exposed pale rock cliff/retaining wall on inland side; red/white chicane islands and close Armco.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 2400,
+      "end_m": 2880,
+      "name": "Tabac and swimming pool",
+      "reference_times_s": [
+        996.88,
+        1086.78
+      ],
+      "observed_environment": "Marina water and yachts opposite close white multi-level balcony facades and apartment terraces. Low harbour structures and grandstands; linked short kerbs with narrow escape corridors.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 2880,
+      "end_m": 3337,
+      "name": "Rascasse, Antony Noghès and pits",
+      "reference_times_s": [
+        97.9,
+        1266.58
+      ],
+      "observed_environment": "Constricted final turns between harbour hospitality and pit structures; roof/canopy layering, guardrail returns and pedestrian gaps. Final corner feeds directly into confined pit straight.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    }
+  ],
+  "terrain": {
+    "retained_source": "Copernicus DEM GLO-90",
+    "retained_relief_m": 57.138,
+    "shortcomings": "GLO-90 relief 57.138m cannot separate cliff terrain, stacked streets, podiums and tunnel roof. Confirm actual Monaco coverage/licensing before using French IGN data. Road-deck anchors, sea plane and retaining walls are necessary. Casino/Hotel de Paris and tunnel close views reviewed at330/414/450/534/558seconds; exact ornamental dimensions remain reconstructed.",
+    "candidate_primary_sources": [
+      "https://geoservices.ign.fr/lidarhd"
+    ],
+    "data_status": "Candidate portal only; exact coverage, resolution, licence and epoch still require verification. No candidate raster downloaded or incorporated.",
+    "racing_deck_correction": "Separate published Formula1roadprofile now replaces contaminated nativeDSMroad. Landscapegridremains separatelysourced; everybuildingtunnelapproach must conform to correcteddeck."
+  },
+  "authoring_constraints": [
+    "Use mapped building footprints and match rooflines, structural supports, facade depth and stepped volumes; names alone do not establish likeness.",
+    "Place grass/gravel/asphalt runoff per registered corner, with protection at outside edge; do not fill escape areas with independent tiles/blocks.",
+    "Road, kerbs, shoulder and protection share smooth station sampling; kerbs only in explicit ranges.",
+    "Maintain venue-specific vegetation around complete route, preserving long sightlines/open water where present.",
+    "Reference pixels remain ignored; generate geometry and materials only."
+  ],
+  "quality_gates": [
+    "Matching cockpit frame at each sector and every braking/turn sequence.",
+    "Oblique view of runoff shapes, architectural footprints and terrain.",
+    "Full lap motion review for edge smoothness, floating objects, protection gaps and missing surroundings.",
+    "Luna high reviewer must evaluate rendered evidence, not this recipe."
+  ],
+  "authored_surface_ranges": {
+    "station_units": "metres from retained native origin",
+    "side_contract": "+1 source driver right; -1 source driver left",
+    "placement_status": "Explicit reconstruction around registered apex controls. Approximate endpoints/widths inferred from reference and map; runtime clamps runoff to native protection corridor. Not a traced survey.",
+    "kerbs": [
+      {
+        "start_m": 230,
+        "end_m": 295,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 775,
+        "end_m": 846,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 910,
+        "end_m": 978,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 1155,
+        "end_m": 1220,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 1260,
+        "end_m": 1340,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 1373,
+        "end_m": 1420,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 1450,
+        "end_m": 1510,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 2110,
+        "end_m": 2160,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 2180,
+        "end_m": 2230,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 2405,
+        "end_m": 2460,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 2555,
+        "end_m": 2600,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 2605,
+        "end_m": 2650,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 2700,
+        "end_m": 2750,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 2760,
+        "end_m": 2810,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 2835,
+        "end_m": 2915,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 2940,
+        "end_m": 3000,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 3045,
+        "end_m": 3095,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      }
+    ],
+    "runoff": [
+      {
+        "start_m": 210,
+        "end_m": 275,
+        "side": -1,
+        "requested_width_m": 6,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 2100,
+        "end_m": 2240,
+        "side": -1,
+        "requested_width_m": 5,
+        "material": "Runoff"
+      }
+    ]
+  },
+  "additional_environment_source": {
+    "provider": "OpenStreetMap contributors",
+    "endpoint": "https://overpass-api.de/api/interpreter",
+    "query": "[out:json][timeout:60];(way[\"building\"](43.7375,7.4258,43.7414,7.4310);relation[\"building\"](43.7375,7.4258,43.7414,7.4310);way[\"building:part\"](43.7375,7.4258,43.7414,7.4310);relation[\"building:part\"](43.7375,7.4258,43.7414,7.4310);nwr[\"amenity\"=\"casino\"](43.7375,7.4258,43.7414,7.4310);node[\"tourism\"=\"hotel\"](43.7375,7.4258,43.7414,7.4310););out geom;",
+    "retrieved": "2026-11-08",
+    "licence": "ODbL1.0",
+    "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "file": "environment.osm.json.gz",
+    "sha256": "f112643175c41c3b40ca7c82e1819abd9490b61211e9d9ec485ac0e5467a2495",
+    "purpose": "Tightly bounded essential landmark query; inline member geometry preserved.",
+    "additional_queries": [
+      {
+        "query": "[out:json][timeout:30];(way[\"natural\"=\"coastline\"](43.730,7.419,43.742,7.434);nwr[\"natural\"=\"water\"](43.732,7.421,43.740,7.432););out geom;",
+        "endpoint": "https://overpass-api.de/api/interpreter",
+        "retrieved": "2026-11-08",
+        "purpose": "Boundedcoastline/harbourboundary needed for sea-land polygonisation; no broadMediterraneanrelationquery."
+      }
+    ]
+  },
+  "elevation_recipe": "elevation-corrections.json",
+  "harbour_reconstruction": {
+    "method": "BoundedretainedOSMcoastlines plusvenueclipboundarypolygonised; watercells selected byexplicitknownharbour/open-seawitnesses. Watercells excluded from grass terrain meshing using dedicated water_shapes.",
+    "witness_lonlat": [
+      [
+        7.4251,
+        43.7358
+      ],
+      [
+        7.4312,
+        43.7358
+      ],
+      [
+        7.4318,
+        43.7385
+      ]
+    ],
+    "surface_elevation_relative_m": -2.5,
+    "water_level_status": "Originalreferenceheight estimate beneathcorrectedRascassedeck; notlocalMSLsurvey.",
+    "fleet": "Original17–27myachtforms, mooringgridinsidePortHerculewater; fleet/positions reconstruct observedvisualdensity, notspecificvesselidentities.",
+    "source_reference_times_s": [
+      367.59,
+      457.49,
+      547.39
+    ]
+  },
+  "braking_markers": {
+    "side_contract": "+1 is driver right in retained east/north source coordinates; -1 is driver left.",
+    "station_frame": "Native circuit origin, not necessarily start/finish; scene.at handles lap wrapping.",
+    "placement_status": "Corner approaches are registered to retained plan/OSM/FIA controls and reviewed reference sectors. Board offsets, mounting side and exact event positions are reconstructed estimates, not a traced signage survey.",
+    "selection": "Major braking approaches only; short linked corners use 100/50 m sets. No boards added to flat-out sweeps solely because the curvature detector counted a bend.",
+    "approaches": [
+      {
+        "corner": "Sainte-Devote",
+        "apex_station_m": 262,
+        "side": -1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "Mirabeau Haute",
+        "apex_station_m": 1183,
+        "side": -1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "Nouvelle chicane / tunnel exit",
+        "apex_station_m": 2130,
+        "side": 1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "Tabac",
+        "apex_station_m": 2431,
+        "side": 1,
+        "distances_before_apex_m": [
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      }
+    ]
+  },
+  "barrier_branding": {
+    "side_contract": "+1 driver right / -1 driver left in retained source coordinates.",
+    "source_policy": "Only the selected reviewed palette/identities are reproduced with original typesetting. Unsupported or varying identities use neutral PanelWhite; no reference pixels are shipped.",
+    "placement_status": "Ranges are approximate native-station registrations to the named reference sectors. Individual panel ends, event mounting positions and exact lengths are reconstructed; clip time is not treated as proportional lap distance.",
+    "coverage_policy": "Selected pit-straight and corner-protection runs only. Bare woodland Armco, open slopes and intervening protection remain exposed.",
+    "ranges": [
+      {
+        "start_m": 30,
+        "end_m": 200,
+        "side": 1,
+        "material": "PanelWhite",
+        "reviewed_times_s": [
+          97.9,
+          906.98
+        ],
+        "observation": "White UBS-branded pit-straight panels in the reference; neutral white original artwork replaces the unsupported identity."
+      },
+      {
+        "start_m": 30,
+        "end_m": 200,
+        "side": -1,
+        "material": "PanelWhite",
+        "reviewed_times_s": [
+          97.9,
+          906.98
+        ],
+        "observation": "Opposite Sainte-Devote approach wall also shows white UBS panels."
+      },
+      {
+        "start_m": 250,
+        "end_m": 340,
+        "side": -1,
+        "material": "PanelYellow",
+        "reviewed_times_s": [
+          97.9,
+          906.98
+        ],
+        "observation": "Yellow PIRELLI escape-side panels are visible ahead at Sainte-Devote."
+      },
+      {
+        "start_m": 2170,
+        "end_m": 2440,
+        "side": -1,
+        "material": "PanelPurple",
+        "reviewed_times_s": [
+          457.49,
+          547.39,
+          996.88
+        ],
+        "observation": "Purple QATAR bands follow the harbour-side wall after Nouvelle chicane, with yachts behind."
+      },
+      {
+        "start_m": 2170,
+        "end_m": 2400,
+        "side": 1,
+        "material": "PanelPurple",
+        "reviewed_times_s": [
+          996.88
+        ],
+        "observation": "QATAR panels also appear against the inland rock/retaining-wall side of the harbour road."
+      },
+      {
+        "start_m": 1260,
+        "end_m": 1370,
+        "side": 1,
+        "material": "PanelGreen",
+        "reviewed_times_s": [
+          1176.68
+        ],
+        "observation": "Green ARAMCO panels outside the tight hotel/apartment corner in the descending Mirabeau/Fairmont sequence."
+      }
+    ]
+  },
+  "runoff_paint_review": {
+    "reviewed_overview_frames": [
+      1,
+      4,
+      7,
+      8,
+      9,
+      11,
+      13
+    ],
+    "reviewed_times_s": [
+      97.9,
+      367.59,
+      637.29,
+      727.19,
+      817.08,
+      996.88,
+      1176.68
+    ],
+    "observations": "Reviewed footage shows constrained urban asphalt escapes and ordinary street paving; no large colored run-off patterns are inferred.",
+    "registration_status": "Named reference sector matched to retained road shape; widths, ends and star sizes/spacing are original estimates, not exact surveyed paint coordinates.",
+    "height_policy": "Ground-following polygon geometry, clipped outside road_mask. No fixed-z tiles and no enlargement of physical runoff corridors.",
+    "physical_runoff_extents_changed": false,
+    "paint": []
+  },
+  "ground_appearance_review": "Urban paving and harbor water; small planted beds only."
+}

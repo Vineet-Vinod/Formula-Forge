@@ -47,12 +47,24 @@ float circuitShoulderMeters(const TrackCatalogEntry& track, float station, bool 
     if (track.id == TrackLayoutId::LasVegas) {
         return 0.10f;
     }
-    return std::clamp(sampleTrackShoulderMeters(track, station, left), 1.2f, 24.0f);
+    const float minimum = track.id == TrackLayoutId::Japan || (track.id == TrackLayoutId::Baku && station > 2480.0f && station < 2920.0f) ? 0.05f : 1.2f;
+    float width = std::clamp(sampleTrackShoulderMeters(track, station, left), minimum, 24.0f);
+    if (!track.authoredBarriers.empty()) {
+        for (const auto& zone : track.runoffProfile) {
+            const bool inside = zone.startMeters <= zone.endMeters ?
+                station >= zone.startMeters && station <= zone.endMeters :
+                station >= zone.startMeters || station <= zone.endMeters;
+            if (inside && (zone.side == 0 || (zone.side > 0) == left)) {
+                width = std::max(width, zone.widthMeters - 0.95f);
+            }
+        }
+    }
+    return width;
 }
 
 std::vector<CircuitSample> sampleCircuit(const TrackCatalogEntry& track, int sampleCount) {
-    if (sampleCount == 0) sampleCount = track.id == TrackLayoutId::LasVegas ? 12288 : 1536;
-    const int tangentSpan = track.id == TrackLayoutId::LasVegas ? 1 : std::max(1, sampleCount / 512);
+    if (sampleCount == 0) sampleCount = track.id == TrackLayoutId::LasVegas ? 12288 : track.surfaceSamples;
+    const int tangentSpan = sampleCount >= 8192 ? 1 : std::max(1, sampleCount / 512);
     const auto plan = authoredCircuitPlan(track.centerline, track.centerlineScale, track.targetLengthMeters, Units,
         track.mirrorCenterlineY, sampleCount);
     const int count = static_cast<int>(plan.size());
@@ -108,13 +120,17 @@ void buildGeneratedSupport(const TrackCatalogEntry& track, const std::vector<Cir
                     if (distance < minimum) return own.sim + delta / std::max(0.001f, distance) * minimum;
                     return point;
                 };
-                Vec2 a = separate(offsetPoint(first, laneA), first);
-                Vec2 b = separate(offsetPoint(second, laneB), second);
+                Vec2 a = offsetPoint(first, laneA);
+                Vec2 b = offsetPoint(second, laneB);
+                if (track.authoredBarriers.empty()) {
+                    a = separate(a, first);
+                    b = separate(b, second);
+                }
                 const float bottomA = (first.elevation + first.bankSlope * laneA) * Units;
                 const float bottomB = (second.elevation + second.bankSlope * laneB) * Units;
                 const float clearance = std::min(first.halfWidth, second.halfWidth) * Units;
-                bool crosses = false;
-                for (int step = 0; step <= 4; ++step) {
+                bool crosses = !track.authoredBarriers.empty();
+                for (int step = 0; step <= 4 && !crosses; ++step) {
                     const Vec2 point = first.sim + (second.sim - first.sim) * (static_cast<float>(step) / 4.0f);
                     if (distanceToSegment(point, a, b) < clearance) crosses = true;
                 }
@@ -157,6 +173,14 @@ void buildGeneratedSupport(const TrackCatalogEntry& track, const std::vector<Cir
             support.runoff.push_back({{triangle[0] * Units, -triangle[1] * Units},
                                       {triangle[3] * Units, -triangle[4] * Units},
                                       {triangle[6] * Units, -triangle[7] * Units}, true});
+        }
+    }
+    if (!track.authoredBarriers.empty()) {
+        support.barriers.clear();
+        for (const auto& wall : track.authoredBarriers) {
+            support.barriers.push_back({{wall.ax * Units, -wall.ay * Units},
+                {wall.bx * Units, -wall.by * Units}, wall.bottom * Units,
+                wall.top * Units, wall.halfThickness * Units});
         }
     }
 

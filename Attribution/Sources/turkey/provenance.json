@@ -23,23 +23,141 @@
     "scale_rule": "Applied only when the mapped plan was within 1.5% of a published length. Larger gaps keep the mapped length."
   },
   "elevation": {
-    "provider": "Open-Meteo Elevation API",
-    "dataset": "Copernicus DEM GLO-90",
-    "dataset_note": "Surface model, about 90 m, includes roofs and canopy. Not a bare-earth racing survey.",
-    "licence": "Copernicus DEM, see https://registry.opendata.aws/copernicus-dem/",
-    "retrieved": "2026-11-04",
-    "sample_spacing_m": 27.8,
-    "smoothing": "Two circular binomial passes on the coarse samples, then linear interpolation onto the 4 m centreline. Isolated samples more than 6 m above their neighbours were treated as overpasses or roofs.",
-    "relative_datum": "Heights stored after subtracting the lap minimum.",
-    "removed_minimum_m": 109.0,
-    "relief_m": 35.312,
-    "uncertainty_m": 5,
+    "provider": "Copernicus DEM GLO-30",
+    "dataset": "Copernicus DEM GLO-30",
+    "dataset_note": "30m digital surface model, not lidar or bare-earth road survey. Canopy and roof influences remain possible. Geographic source pixels are retained with provenance; no reference video pixels redistributed.",
+    "licence": "Copernicus DEM, see retained scenery-terrain.json",
+    "controls": "elevation-corrections.json",
+    "source": "scenery-terrain.json",
+    "removed_minimum_m": 108.42707300186157,
+    "relative_datum": "Relative to the minimum sampled GLO-30 centerline value.",
+    "relief_m": 40.3352,
+    "uncertainty_m": 3.0,
+    "smoothing": "Exact native XY centerline inverted to retained WGS84 origin/scale, bilinear raster sampling. Two circular[1,2,1]/4 passes at4m sample spacing. No vertical scale factor.",
     "deck": null
   },
   "width": {
-    "base_m": 12.0,
-    "straight_m": 15.0,
-    "method": "Authored from typical Grade 1 asphalt width, wider on low-curvature sections. Not a traced white-line survey."
+    "base_m": 14.5,
+    "straight_m": 17.0,
+    "minimum_m": 14.5,
+    "maximum_m": 21.0,
+    "method": "Operator-published width limits, with station-varying widths visually estimated from supplied onboard. Smooth cubic transitions; not a traced white-line survey.",
+    "source": "https://www.ito.org.tr/documents/Duyurular/2022_dokumanlar/vweekend_sunum.pdf",
+    "controls_m": [
+      [
+        0,
+        17
+      ],
+      [
+        220,
+        17
+      ],
+      [
+        300,
+        18
+      ],
+      [
+        365,
+        16
+      ],
+      [
+        500,
+        15
+      ],
+      [
+        700,
+        14.5
+      ],
+      [
+        1000,
+        16
+      ],
+      [
+        1120,
+        16
+      ],
+      [
+        1250,
+        14.5
+      ],
+      [
+        1450,
+        15
+      ],
+      [
+        1750,
+        15
+      ],
+      [
+        1990,
+        16
+      ],
+      [
+        2200,
+        14.5
+      ],
+      [
+        2550,
+        14.5
+      ],
+      [
+        2850,
+        14.5
+      ],
+      [
+        3200,
+        16
+      ],
+      [
+        3350,
+        17
+      ],
+      [
+        3450,
+        16
+      ],
+      [
+        3700,
+        15
+      ],
+      [
+        4000,
+        15
+      ],
+      [
+        4350,
+        17
+      ],
+      [
+        4600,
+        19
+      ],
+      [
+        4690,
+        21
+      ],
+      [
+        4780,
+        17
+      ],
+      [
+        4850,
+        16
+      ],
+      [
+        4950,
+        16
+      ],
+      [
+        5100,
+        17
+      ],
+      [
+        5338,
+        17
+      ]
+    ],
+    "uncertainty": "Published venue range constrains width. Exact local widths and transition stations remain reference-based authoring estimates."
   },
   "shoulders": {
     "default_m": 10.0,
@@ -53,5 +171,19 @@
     "licence": "ODbL 1.0"
   },
   "protection": "Both sides are walled at the shoulder offset. Pit entry is closed. That closure is a game boundary, not a claim about the real pit lane.",
-  "not_claimed": "No lidar, no orthophoto registration, no cockpit capture in this build. Centimetre storage is not centimetre accuracy."
+  "not_claimed": "No lidar, no orthophoto registration, no cockpit capture in this build. Centimetre storage is not centimetre accuracy.",
+  "retained_dem_elevation": {
+    "provider": "Open-Meteo Elevation API",
+    "dataset": "Copernicus DEM GLO-90",
+    "dataset_note": "Surface model, about 90 m, includes roofs and canopy. Not a bare-earth racing survey.",
+    "licence": "Copernicus DEM, see https://registry.opendata.aws/copernicus-dem/",
+    "retrieved": "2026-11-04",
+    "sample_spacing_m": 27.8,
+    "smoothing": "Two circular binomial passes on the coarse samples, then linear interpolation onto the 4 m centreline. Isolated samples more than 6 m above their neighbours were treated as overpasses or roofs.",
+    "relative_datum": "Heights stored after subtracting the lap minimum.",
+    "removed_minimum_m": 109.0,
+    "relief_m": 35.312,
+    "uncertainty_m": 5,
+    "deck": null
+  }
 }

@@ -14,14 +14,15 @@
   "heading_direction_test": false,
   "crossings": 0,
   "aspect": 0.75627,
-  "relief_m": 57.138,
+  "relief_m": 42.0,
   "elevation_datum_removed_m": 1.165,
   "samples": 829,
   "turns_detected": 20,
   "turns_published": 19,
   "buildings": 92,
   "barrier_vertices": 148,
-  "deck": null,
+  "deck": "Road deck from digitized published Formula1profile; Fairmontroofexcluded.",
   "banks": [],
-  "osm_sha256": "bc92e18d6e41318661d46e3e859104ae70608c1f504e40a95e448c3d965e6b3d"
+  "osm_sha256": "bc92e18d6e41318661d46e3e859104ae70608c1f504e40a95e448c3d965e6b3d",
+  "elevation_recipe": "elevation-corrections.json"
 }

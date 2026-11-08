@@ -23,18 +23,22 @@
     "scale_rule": "Applied only when the mapped plan was within 1.5% of a published length. Larger gaps keep the mapped length."
   },
   "elevation": {
-    "provider": "Open-Meteo Elevation API",
-    "dataset": "Copernicus DEM GLO-90",
-    "dataset_note": "Surface model, about 90 m, includes roofs and canopy. Not a bare-earth racing survey.",
-    "licence": "Copernicus DEM, see https://registry.opendata.aws/copernicus-dem/",
-    "retrieved": "2026-11-04",
-    "sample_spacing_m": 16.0,
-    "smoothing": "Two circular binomial passes on the coarse samples, then linear interpolation onto the 4 m centreline. Isolated samples more than 6 m above their neighbours were treated as overpasses or roofs.",
-    "relative_datum": "Heights stored after subtracting the lap minimum.",
-    "removed_minimum_m": 1.165,
-    "relief_m": 57.138,
-    "uncertainty_m": 8,
-    "deck": null
+    "provider": "Formula1 official published longitudinal road-profile chart; original numeric digitisation",
+    "dataset": "Monaco2016Topographydiagram",
+    "licence": "Published factual elevations digitized independently; chart imagery not redistributed.",
+    "retrieved": "2026-11-08",
+    "recipe": "elevation-corrections.json",
+    "relative_datum": "Published circuit minimum47.5m subtracted; local absolute sea-level datum is not asserted.",
+    "relief_m": 42.0,
+    "uncertainty_m": 1.5,
+    "deck": "Published road profile passes beneath Fairmont; no roof-derived road height.",
+    "source_url": "https://www.formula1.com/en/latest/article/highs-and-lows-which-f1-track-has-the-most-elevation-changes-.7I9JEcBw3R2AqXbnJ6hyvc.7I9JEcBw3R2AqXbnJ6hyvc",
+    "previous_source": "CopernicusGLO90DSM,57.138mrelief, rejected for racing deck due hotelroof contamination.",
+    "limitations": [
+      "Published2016diagram is not an engineering survey; later resurfacing/local bumps are not represented.",
+      "Manual pixel digitisation and approximate longitudinal registration limit local vertical/station accuracy.",
+      "Camber/roadwidth not inferred from elevation chart. Buildings/terrain retain separate ground sources; tunnel road deck must stay below hotel."
+    ]
   },
   "width": {
     "base_m": 10.5,

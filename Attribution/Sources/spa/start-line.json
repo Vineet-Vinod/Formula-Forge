@@ -1,0 +1,6 @@
+{
+  "native_station_m": 790,
+  "uncertainty_m": 40,
+  "method": "FIA 2025 circuit map timing control line; distinguished from front grid car marker.",
+  "semantics": "Time-trial timing/start anchor; route origin and world placement unchanged."
+}

@@ -1,0 +1,6 @@
+{
+  "native_station_m": 480,
+  "uncertainty_m": 45,
+  "method": "FIA 2021 circuit map control line; approximate projection into retained road origin.",
+  "semantics": "Time-trial timing/start anchor; route origin and world placement unchanged."
+}

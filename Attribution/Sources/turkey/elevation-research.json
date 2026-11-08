@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "used_to_replace_native_profile": false,
+  "source_title": "Ethem Ers\u00f6z, Development of a racing strategy for a solar car, METU mechanical engineering thesis,2006",
+  "source_url": "https://open.metu.edu.tr/bitstream/handle/11511/16582/index.pdf",
+  "repository_url": "https://open.metu.edu.tr/handle/11511/16582",
+  "pdf_sha256": "f80fe81a5ad8d28adf5ece30c54d98b06b6c99adea0f34db6383e1fb3724d5d1",
+  "source_pages": {
+    "figure1_1_pdf_page": 22,
+    "gradient_code_pdf_page": 104
+  },
+  "source_chainage_m": [
+    0,
+    250,
+    540,
+    1040,
+    1400,
+    1530,
+    1930,
+    2380,
+    2570,
+    2760,
+    3180,
+    3410,
+    3690,
+    4010,
+    4470,
+    4780,
+    5070,
+    5377
+  ],
+  "source_gradient_fractions": [
+    0,
+    -0.06475,
+    0.06944,
+    -0.07495,
+    -0.01205,
+    -0.04326,
+    0.07481,
+    -0.0215,
+    0.01622,
+    -0.08145,
+    -0.01453,
+    0.0703,
+    -0.01843,
+    0.0673,
+    -0.02423,
+    0.0119,
+    0
+  ],
+  "integrated_relative_height_m": [
+    0.0,
+    0.0,
+    -18.7775,
+    15.942499999999999,
+    -11.0395,
+    -12.606,
+    -29.909999999999997,
+    3.7545000000000073,
+    -0.3304999999999927,
+    2.751300000000007,
+    -31.45769999999999,
+    -34.79959999999999,
+    -15.11559999999999,
+    -21.01319999999999,
+    9.944800000000008,
+    2.4335000000000075,
+    5.884500000000008,
+    5.884500000000008
+  ],
+  "unadjusted_loop_closure_error_m": 5.884500000000008,
+  "unadjusted_relief_m": 50.74209999999999,
+  "issues": [
+    "The thesis corrects the original diagram1040m/1140m typo and explicitly expects a closed loop. However the printed AppendixA numeric vector still integrates to a5.8845m closure error.",
+    "The diagram/course model is5377m, while the retained native and current operator course is5338m. Corner registration has not been fully verified.",
+    "An operator presentation says about60m relief, a RedBull Racing team guide says46m, and a former venue manager said43m. These are conflicting source claims, not licence to scale a noisy DEM."
+  ],
+  "other_primary_sources": [
+    {
+      "title": "Current TOSFED circuit specifications",
+      "url": "https://tosfedistanbulpark.com/en/the-circuit/",
+      "supports": "14.5\u201321.5m width, maximum gradient8.145%, T8about640m, currentcourse5338m."
+    },
+    {
+      "title": "RedBull Racing circuit scout2021",
+      "url": "https://www.redbullracing.com/int-en/circuit-scout-istanbul-park",
+      "supports": "Team describes46m elevation range; no full metric profile."
+    },
+    {
+      "title": "Intercity operator presentation2022",
+      "url": "https://www.ito.org.tr/documents/Duyurular/2022_dokumanlar/vweekend_sunum.pdf",
+      "supports": "Operator says about60m relief, disagreeing with other sources."
+    }
+  ],
+  "decision": "The research vector is retained for resolving its closure error. The native deck instead now uses direct GLO-30 centerline sampling, with its summit nearT3as in the engineering diagram and3m DSM uncertainty. No vertical range was forced."
+}

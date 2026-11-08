@@ -24,8 +24,9 @@
   "barrier_vertices": 788,
   "deck": null,
   "banks": [
-    "Hugenholtz (detected apex 3) 18 deg at 721 m, outside raised",
-    "Arie Luyendyk (detected apex 16) 18 deg at 3795 m, outside raised"
+    "Hugenholtz T3positive11.814028deg effectiveplane at825\u2013925m; transition780\u2013980m. Actual nonlinear4.5\u219219deg cross-section not represented by native scalarbank.",
+    "ArieLuyendyk T14negative18deg at3700\u20133910m; transition3600\u20134000m. Source right turn outside-left raised."
   ],
-  "osm_sha256": "819398ebd3ac8cb27bbf3af01f94d7fb69c497dbc12301d09270340b64f37030"
+  "osm_sha256": "819398ebd3ac8cb27bbf3af01f94d7fb69c497dbc12301d09270340b64f37030",
+  "banking_recipe": "banking-corrections.json"
 }

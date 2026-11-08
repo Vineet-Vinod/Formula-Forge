@@ -1,0 +1,409 @@
+{
+  "schema_version": 1,
+  "circuit": "hockenheim",
+  "reference_index": "reference-index.json",
+  "appearance": "Dry hazy/overcast daytime.",
+  "layout": "Legacy F1 2019 Hockenheim Grand Prix layout as represented in F1 2020 footage; use blue/white kerbs shown.",
+  "sector_registration": "All stations in retained native origin. Approximate full-route zones; individual decor must stay beyond verified protection and runoff.",
+  "sectors": [
+    {
+      "start_m": 0,
+      "end_m": 650,
+      "name": "Main straight and Nordkurve",
+      "reference_times_s": [
+        48.33,
+        88.65,
+        128.98
+      ],
+      "observed_environment": "Motodrom main stand has red seats and repeated swooping/cantilever roof bays; pits opposite have deep overhang and narrow upper glass band. Blue/white edge kerbs and blue outer apron.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 650,
+      "end_m": 1300,
+      "name": "Einlauf and short approach",
+      "reference_times_s": [
+        249.96,
+        491.92
+      ],
+      "observed_environment": "Short grass verges, close catch fence and low service buildings. Wide corner-specific escape apron, forest horizon; no city skyline.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 1300,
+      "end_m": 2350,
+      "name": "Parabolika and Spitzkehre",
+      "reference_times_s": [
+        370.94,
+        532.25
+      ],
+      "observed_environment": "Long broad left-curving straight through flat grass with tall forest in distance. Blue/white kerbs; hairpin has large paved/gravel braking escape and limited structures.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 2350,
+      "end_m": 3250,
+      "name": "Mercedes Arena",
+      "reference_times_s": [
+        290.29,
+        330.61
+      ],
+      "observed_environment": "Open arena approach with grassy interior, low white race facilities, Mercedes circular/cylinder control-building form and tall water-tower-like support structure. Temporary/open stands frame the tight turn group.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 3250,
+      "end_m": 3900,
+      "name": "Mobil1 and Sachs stadium entry",
+      "reference_times_s": [
+        411.27,
+        572.57
+      ],
+      "observed_environment": "Motodrom enclosing curved grandstand bowl, white/gray control structures and banked Sachs bend. Blue outside apron, gravel trap and blue/white kerbs; not a flat fenced road.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 3900,
+      "end_m": 4574,
+      "name": "Südkurve and pit return",
+      "reference_times_s": [
+        128.98,
+        451.59
+      ],
+      "observed_environment": "Continuous curved outer grandstands, roof piers/canopies and broad stadium grass/gravel. Final linked corners lead into pit straight, with blue painted outer edges and close white walls.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    }
+  ],
+  "terrain": {
+    "retained_source": "Copernicus DEM GLO-90",
+    "retained_relief_m": 9.177,
+    "shortcomings": "GLO-90 relief9.177m may include roofs/trees and misses Sachs banking. LGL open DGM0.25/1mALS2016–2021andLoDbuildings are candidates; old README fine survey not retained. Modern operator names/maps establish footprint geography, video establishes2019appearance; do not silently mix later kerb design.",
+    "candidate_primary_sources": [
+      "https://www.lgl-bw.de/Produkte/3D-Produkte/Digitale-Gelaendemodelle/index.html",
+      "https://www.lglbw.de/Produkte/Open-Data/"
+    ],
+    "data_status": "Candidate metadata reviewed; no candidate raster downloaded or claimed as incorporated.",
+    "racing_deck_correction": "Separate independentlydigitized primary Formula1roadprofile now replaces contaminated/coarseGLO90 racingprofile. Landscapegrid remains separatelysourced. Samepost2002GPplan as2019reference. Chart labels17turns; curvature detector only13peaks is not a basis for shiftingcornernames. LocalSachscamber remains separate from longitudinalprofile."
+  },
+  "authoring_constraints": [
+    "Use mapped building footprints and match rooflines, structural supports, facade depth and stepped volumes; names alone do not establish likeness.",
+    "Place grass/gravel/asphalt runoff per registered corner, with protection at outside edge; do not fill escape areas with independent tiles/blocks.",
+    "Road, kerbs, shoulder and protection share smooth station sampling; kerbs only in explicit ranges.",
+    "Maintain venue-specific vegetation around complete route, preserving long sightlines/open water where present.",
+    "Reference pixels remain ignored; generate geometry and materials only."
+  ],
+  "quality_gates": [
+    "Matching cockpit frame at each sector and every braking/turn sequence.",
+    "Oblique view of runoff shapes, architectural footprints and terrain.",
+    "Full lap motion review for edge smoothness, floating objects, protection gaps and missing surroundings.",
+    "Luna high reviewer must evaluate rendered evidence, not this recipe."
+  ],
+  "authored_surface_ranges": {
+    "station_units": "metres from retained native origin",
+    "side_contract": "+1 source driver right; -1 source driver left",
+    "placement_status": "Explicit reconstruction around registered apex controls. Approximate endpoints/widths inferred from reference and map; runtime clamps runoff to native protection corridor. Not a traced survey.",
+    "kerbs": [
+      {
+        "start_m": 230,
+        "end_m": 330,
+        "side": 1,
+        "color": "SeatBlue",
+        "alternate": "White"
+      },
+      {
+        "start_m": 800,
+        "end_m": 890,
+        "side": 1,
+        "color": "SeatBlue",
+        "alternate": "White"
+      },
+      {
+        "start_m": 920,
+        "end_m": 1030,
+        "side": -1,
+        "color": "SeatBlue",
+        "alternate": "White"
+      },
+      {
+        "start_m": 2040,
+        "end_m": 2180,
+        "side": 1,
+        "color": "SeatBlue",
+        "alternate": "White"
+      },
+      {
+        "start_m": 2760,
+        "end_m": 2870,
+        "side": 1,
+        "color": "SeatBlue",
+        "alternate": "White"
+      },
+      {
+        "start_m": 2920,
+        "end_m": 3040,
+        "side": -1,
+        "color": "SeatBlue",
+        "alternate": "White"
+      },
+      {
+        "start_m": 3400,
+        "end_m": 3520,
+        "side": 1,
+        "color": "SeatBlue",
+        "alternate": "White"
+      },
+      {
+        "start_m": 3730,
+        "end_m": 3870,
+        "side": -1,
+        "color": "SeatBlue",
+        "alternate": "White"
+      },
+      {
+        "start_m": 4050,
+        "end_m": 4160,
+        "side": 1,
+        "color": "SeatBlue",
+        "alternate": "White"
+      },
+      {
+        "start_m": 4220,
+        "end_m": 4350,
+        "side": 1,
+        "color": "SeatBlue",
+        "alternate": "White"
+      }
+    ],
+    "runoff": [
+      {
+        "start_m": 190,
+        "end_m": 370,
+        "side": -1,
+        "requested_width_m": 22,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 760,
+        "end_m": 1080,
+        "side": -1,
+        "requested_width_m": 23,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 1980,
+        "end_m": 2240,
+        "side": -1,
+        "requested_width_m": 25,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 2710,
+        "end_m": 3090,
+        "side": -1,
+        "requested_width_m": 22,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 3360,
+        "end_m": 3580,
+        "side": -1,
+        "requested_width_m": 24,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 3670,
+        "end_m": 3930,
+        "side": 1,
+        "requested_width_m": 24,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 4000,
+        "end_m": 4390,
+        "side": -1,
+        "requested_width_m": 20,
+        "material": "Runoff"
+      }
+    ]
+  },
+  "additional_environment_source": {
+    "provider": "OpenStreetMap contributors",
+    "endpoint": "https://overpass-api.de/api/interpreter",
+    "query": "[out:json][timeout:60];(nwr[\"man_made\"=\"water_tower\"](49.322,8.560,49.338,8.586);nwr[\"man_made\"=\"tower\"](49.322,8.560,49.338,8.586););out geom;",
+    "retrieved": "2026-11-08",
+    "licence": "ODbL1.0",
+    "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "file": "environment.osm.json.gz",
+    "sha256": "d8bdfb9e55299f950f8aa3144ee0de151fee6af529e40cc684dd5760474eb7b5",
+    "purpose": "Tightly bounded essential landmark query; inline member geometry preserved."
+  },
+  "elevation_recipe": "elevation-corrections.json",
+  "braking_markers": {
+    "side_contract": "+1 is driver right in retained east/north source coordinates; -1 is driver left.",
+    "station_frame": "Native circuit origin, not necessarily start/finish; scene.at handles lap wrapping.",
+    "placement_status": "Corner approaches are registered to retained plan/OSM/FIA controls and reviewed reference sectors. Board offsets, mounting side and exact event positions are reconstructed estimates, not a traced signage survey.",
+    "selection": "Major braking approaches only; short linked corners use 100/50 m sets. No boards added to flat-out sweeps solely because the curvature detector counted a bend.",
+    "approaches": [
+      {
+        "corner": "Nordkurve",
+        "apex_station_m": 268,
+        "side": -1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "Einlauf / T2",
+        "apex_station_m": 849,
+        "side": -1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "Spitzkehre",
+        "apex_station_m": 2103,
+        "side": -1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "Mercedes Arena entry",
+        "apex_station_m": 2828,
+        "side": 1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "Sachs",
+        "apex_station_m": 3801,
+        "side": 1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      }
+    ]
+  },
+  "barrier_branding": {
+    "side_contract": "+1 driver right / -1 driver left in retained source coordinates.",
+    "source_policy": "Only the selected reviewed palette/identities are reproduced with original typesetting. Unsupported or varying identities use neutral PanelWhite; no reference pixels are shipped.",
+    "placement_status": "Ranges are approximate native-station registrations to the named reference sectors. Individual panel ends, event mounting positions and exact lengths are reconstructed; clip time is not treated as proportional lap distance.",
+    "coverage_policy": "Selected pit-straight and corner-protection runs only. Bare woodland Armco, open slopes and intervening protection remain exposed.",
+    "ranges": [
+      {
+        "start_m": 4400,
+        "end_m": 4560,
+        "side": -1,
+        "material": "PanelWhite",
+        "reviewed_times_s": [
+          88.65,
+          128.98
+        ],
+        "observation": "Legacy white Mobil1 panels below the Motodrom main stand; neutral white artwork preserves the era without substituting a modern title sponsor."
+      },
+      {
+        "start_m": 0,
+        "end_m": 230,
+        "side": 1,
+        "material": "PanelWhite",
+        "reviewed_times_s": [
+          48.33,
+          128.98
+        ],
+        "observation": "White legacy pit-wall advertising, with exposed pit-garage architecture above."
+      },
+      {
+        "start_m": 0,
+        "end_m": 230,
+        "side": -1,
+        "material": "PanelWhite",
+        "reviewed_times_s": [
+          88.65,
+          128.98
+        ],
+        "observation": "Opposite main-straight stand wall has white Mobil1 advertising."
+      },
+      {
+        "start_m": 2760,
+        "end_m": 3040,
+        "side": 1,
+        "material": "PanelWhite",
+        "reviewed_times_s": [
+          290.29,
+          330.61
+        ],
+        "observation": "White Bridgestone/event panels around the Mercedes arena protection; unsupported identity replaced neutrally."
+      },
+      {
+        "start_m": 3720,
+        "end_m": 3900,
+        "side": 1,
+        "material": "PanelWhite",
+        "reviewed_times_s": [
+          411.27,
+          572.57
+        ],
+        "observation": "White Mobil1 advertising along the outside stadium/Sachs protection. The Parabolika forest barriers remain unwrapped."
+      }
+    ]
+  },
+  "runoff_paint_review": {
+    "reviewed_overview_frames": [
+      2,
+      5,
+      6
+    ],
+    "reviewed_times_s": [
+      88.65,
+      209.63,
+      249.96
+    ],
+    "observations": "Blue paved escape paint is visible in overview02; blue Nordkurve/Spitzkehre apron reconstruction. Stadium gravel remains gravel.",
+    "registration_status": "Named reference sector matched to retained road shape; widths, ends and star sizes/spacing are original estimates, not exact surveyed paint coordinates.",
+    "height_policy": "Ground-following polygon geometry, clipped outside road_mask. No fixed-z tiles and no enlargement of physical runoff corridors.",
+    "physical_runoff_extents_changed": false,
+    "paint": [
+      {
+        "type": "band",
+        "start_m": 190,
+        "end_m": 370,
+        "side": -1,
+        "inner_m": 1.2,
+        "outer_m": 21.8,
+        "material": "RunoffBlue"
+      },
+      {
+        "type": "band",
+        "start_m": 1980,
+        "end_m": 2240,
+        "side": -1,
+        "inner_m": 1.2,
+        "outer_m": 24.8,
+        "material": "RunoffBlue"
+      }
+    ]
+  },
+  "ground_appearance_review": "Temperate green lawns and woodland."
+}

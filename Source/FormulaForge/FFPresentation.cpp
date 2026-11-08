@@ -41,7 +41,9 @@ AFFPresentation::AFFPresentation() {
 void AFFPresentation::BeginPlay() {
     Super::BeginPlay();
     FullDetail = FParse::Param(FCommandLine::Get(), TEXT("FFFullDetail"));
-    if (GetGameInstance<UFFSession>()->Circuit() == TEXT("lasvegas")) {
+    const FString circuit = GetGameInstance<UFFSession>()->Circuit();
+    if (circuit == TEXT("lasvegas") || circuit == TEXT("bahrain") ||
+        circuit == TEXT("jeddah") || circuit == TEXT("singapore")) {
         GetWorld()->SpawnActor<AFFLasVegasNight>(GetActorLocation(), FRotator::ZeroRotator);
     } else {
         ConfigureDaylight();
@@ -52,17 +54,21 @@ void AFFPresentation::BeginPlay() {
     RenderBudget.Y = FMath::Clamp(RenderBudget.Y, 200, 2160);
     PresetScreenPercentage = IConsoleManager::Get().FindConsoleVariable(TEXT("r.ScreenPercentage"))->GetFloat();
     UpdateRenderResolution();
-    const FString circuit = GetGameInstance<UFFSession>()->Circuit();
-    if (const TrackCatalogEntry* generated = findTrackCatalogEntry(std::string_view(TCHAR_TO_UTF8(*circuit)));
-        generated != nullptr && generated->generated && circuit != TEXT("lasvegas") && circuit != TEXT("japan")) {
-        ProceduralSections = BuildGeneratedRibbon(*this, *generated, Ribbon);
-        return;
-    }
     FString visualRoot = TEXT("Generated");
     if (circuit == TEXT("monza")) visualRoot += TEXT("/Monza");
     else if (circuit == TEXT("interlagos")) visualRoot += TEXT("/Interlagos");
     else if (circuit == TEXT("lasvegas")) visualRoot += TEXT("/LasVegas");
     else if (circuit == TEXT("japan")) visualRoot += TEXT("/Japan");
+    else if (const TrackCatalogEntry* generated = findTrackCatalogEntry(std::string_view(TCHAR_TO_UTF8(*circuit)));
+        generated != nullptr && generated->generated) {
+        FString directory = UTF8_TO_TCHAR(generated->contentDir.data());
+        directory.RemoveFromEnd(TEXT("/Data"));
+        visualRoot += TEXT("/") + directory;
+        if (!FPaths::FileExists(FPaths::ProjectContentDir() / visualRoot / TEXT("Data/render_tiles.csv"))) {
+            ProceduralSections = BuildGeneratedRibbon(*this, *generated, Ribbon);
+            return;
+        }
+    }
     SilverstoneTiles = visualRoot == TEXT("Generated");
     LasVegasTiles = circuit == TEXT("lasvegas");
     FString contents;

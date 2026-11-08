@@ -2,6 +2,7 @@
 
 #include <array>
 #include <cstdint>
+#include <limits>
 #include <optional>
 #include <span>
 #include <unordered_map>
@@ -21,7 +22,8 @@ class FFDriveSurface {
 public:
     bool Load(std::span<const std::uint8_t> bytes);
     std::optional<float> Height(double positionX, double positionY) const;
-    float Penetration(const std::array<FFSurfacePoint, 4>& footprint) const;
+    float Penetration(const std::array<FFSurfacePoint, 4>& footprint,
+        float maximumSurfaceHeight = std::numeric_limits<float>::infinity()) const;
     const std::vector<FFSurfaceTriangle>& Triangles() const;
 private:
     static std::uint64_t CellKey(int column, int row);

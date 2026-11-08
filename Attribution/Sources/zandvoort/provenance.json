@@ -46,10 +46,29 @@
     "method": "Nearest OSM barrier vertex on each side, median-smoothed, clamped to 1.2-24 m outside the kerb. Missing sides keep the venue default.",
     "barrier_file": "barriers.osm.json.gz"
   },
-  "banking": [
-    "Hugenholtz (detected apex 3) 18 deg at 721 m, outside raised",
-    "Arie Luyendyk (detected apex 16) 18 deg at 3795 m, outside raised"
-  ],
+  "banking": {
+    "recipe": "banking-corrections.json",
+    "method": "Registered explicit signed station profile: Hugenholtz effective11.814028deg scalar approximation of actual4.5\u201319deg progressivebowl; T14negative18deg. Four-metre quintic transition samples.",
+    "limitations": [
+      "Native TrackBankPoint stores one lateral slope per station: cannot represent progressive T3bowl or variable lateral tyre-contact normals. Both runtime collision and rendered road share this same plane, avoiding visual/contact disagreement.",
+      "Transition stations/shape and width are authored approximations, not lidar/as-built measurements.",
+      "Only banking profile changes; centerline, longitudinal elevation, widths and vehicle handling parameters are preserved."
+    ],
+    "primary_sources": [
+      {
+        "url": "https://studiodromo.it/portfolio/zandvoort/",
+        "claim": "Project designer: T3progressive4.5deginside\u219219degoutside; T14approximately18deg."
+      },
+      {
+        "url": "https://www.fia.com/sites/default/files/2021_dutch_grand_prix_-_preview.pdf",
+        "claim": "FIA2021racepreview: T3nineteen degrees and T14eighteen degrees."
+      },
+      {
+        "url": "https://www.circuitzandvoort.nl/en/corners/",
+        "claim": "Operator: T3progressivebowl and widened corner; T14eighteen degrees includingSAFER. Operator T3max18deg differs slightly from designer/FIA19deg; prefer designer for detailedcross-section."
+      }
+    ]
+  },
   "buildings": {
     "count": 6,
     "method": "OSM footprints within 14-85 m of the centreline, extruded to a tagged height or a default. Roof shape is flat.",

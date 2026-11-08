@@ -218,8 +218,8 @@
     }
   ],
   "uncertainties": [
-    "GLO-90surface can sample facade roofs in narrow Old City; check climbing castle and descending T15 against onboard before treating the profile as racing elevation.",
-    "Generic12–14mwidth must not be imposed at the castle; wall corridor is substantially narrower there. Do not turn all urban shoulders into grass.",
-    "The original native castle width is too broad. The promoter confirms a 7.6 m narrow section around native stations 2580–2800. Width and collision shoulder changes must be coordinated with the native exporter."
+    "The road profile uses registered 26.8 m F1 topography controls, placing the high point near T13. The former GLO-90 profile could sample Old City roofs.",
+    "The promoter confirms a 7.6 m castle section. Native width and near-zero shoulder controls are retained in width-shoulder-corrections.json; normal street widths remain wider.",
+    "Individual castle facade and kerb dimensions remain visual estimates within the registered narrow corridor."
   ]
 }

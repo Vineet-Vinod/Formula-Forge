@@ -58,6 +58,26 @@ build/tests/export-surfaces: Tests/export_surfaces.cpp $(OBJECTS)
 build/tests/export-lasvegas: tools/export_lasvegas.cpp $(OBJECTS)
 	TMPDIR="$(CURDIR)/build/tmp" $(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
 
+build/tests/export-circuit-scene: tools/export_circuit_scene.cpp $(OBJECTS)
+	TMPDIR="$(CURDIR)/build/tmp" $(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
+build/tests/audit-circuit-lap: tools/audit_circuit_lap.cpp $(OBJECTS)
+	TMPDIR="$(CURDIR)/build/tmp" $(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
+
+CIRCUIT_PYTHON ?= python3
+CIRCUIT ?= japan
+.PHONY: circuit-assets circuit-check
+.NOTPARALLEL: circuit-assets
+circuit-assets: check build build/tests/export-circuit-scene
+	build/tests/export-circuit-scene $(CIRCUIT)
+	$(CIRCUIT_PYTHON) tools/generate_circuit_scene.py $(CIRCUIT)
+	for batch in 0 1 2 3; do \
+		bash tools/unreal.sh python tools/build_circuit_scene.py -FFCircuitAssets=$(CIRCUIT) -FFTileBatch=$$batch -FFTileBatches=4 || exit $$?; \
+	done
+circuit-check:
+	$(CIRCUIT_PYTHON) -m pytest -q Tests/test_circuit_scenes.py Tests/test_circuit_profiles.py
+	$(CIRCUIT_PYTHON) -m mypy tools/circuit*.py tools/generate_circuit_scene.py tools/venues --ignore-missing-imports --follow-imports=silent
+	$(CIRCUIT_PYTHON) -m ruff check tools/circuit*.py tools/generate_circuit_scene.py tools/build_circuit_scene.py tools/venues Tests/test_circuit_scenes.py Tests/test_circuit_profiles.py
+
 .PHONY: lasvegas-assets
 .NOTPARALLEL: lasvegas-assets
 lasvegas-assets: check build

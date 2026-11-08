@@ -10,6 +10,7 @@ sampler. Cached downloads live under Attribution/Sources/<slug>/.
 from __future__ import annotations
 
 import argparse
+import bisect
 import gzip
 import hashlib
 import json
@@ -48,7 +49,7 @@ CIRCUITS = [
          description="The Jeddah Corniche street loop along the Red Sea, anti-clockwise."),
     dict(slug="australia", enum="Australia", folder="Australia", title="Australia",
          venue="Albert Park Circuit", country="Australia",
-         lat=-37.8497, lon=144.9680, radius=2200, lengths=[5278], turns=16,
+         lat=-37.8497, lon=144.9680, radius=2200, lengths=[5278], turns=14,
          clockwise=True, street=True, shoulder=5.0, base=12.0, straight=14.0,
          names=["Albert Park", "Australian"], crossings=0, environment="park-street",
          description="Albert Park's Grand Prix loop around the lake in Melbourne."),
@@ -93,7 +94,7 @@ CIRCUITS = [
          lat=52.3888, lon=4.5409, radius=1600, lengths=[4259, 4307], turns=14,
          clockwise=True, street=False, shoulder=7.0, base=12.0, straight=14.0,
          names=["Zandvoort", "Grand Prix"], crossings=0, environment="dunes",
-         banks=[("Hugenholtz", 18.0, 3), ("Arie Luyendyk", 18.0, 16)],
+         banks=[], bank_profile="banking-corrections.json",
          corner_names=["Tarzan", "Gerlach", "Hugenholtz", "Hunserug", "Slotemaker",
                        "Scheivlak", "Masters", "Hugenholtz entrance", "Van Dorp",
                        "Hans Ernst", "Kumho", "Arie Luyendyk entry", "Arie Luyendyk",
@@ -1094,6 +1095,27 @@ def lasvegas_alignment(samples):
     return geographic(filtered)
 
 
+def sample_profile(controls: list[list[float]], station: float, smoothed: bool = False) -> float:
+    index = max(0, min(len(controls)-2, bisect.bisect_right([p[0] for p in controls], station)-1))
+    a,b = controls[index],controls[index+1]
+    t = max(0.,min(1.,(station-a[0])/max(.000001,b[0]-a[0])))
+    if smoothed:
+        t = t*t*(3-2*t)
+    return a[1]+(b[1]-a[1])*t
+
+
+def section_weight(station: float, start: float, plateau_start: float, plateau_end: float, end: float) -> float:
+    if station<start or station>end:
+        return 0.
+    if station<plateau_start:
+        t = (station-start)/(plateau_start-start)
+    elif station>plateau_end:
+        t = (end-station)/(end-plateau_end)
+    else:
+        return 1.
+    return t*t*(3-2*t)
+
+
 def build(spec, refresh=False):
     source = SOURCES / spec["slug"]
     source.mkdir(parents=True, exist_ok=True)
@@ -1180,6 +1202,11 @@ out geom;
             relative[index] = relative[index] * blend + relative[0] * (1.0 - blend)
     datum = min(relative)
     relative = [value - datum for value in relative]
+    elevation_correction = source / "elevation-corrections.json"
+    if elevation_correction.exists():
+        controls = json.loads(elevation_correction.read_text())["controls"]
+        relative = [sample_profile(controls, station) for station in stations]
+        datum = 0.0
     relief = max(relative) - min(relative)
     if bare is not None:
         write_terrain(spec["folder"], bare, datum)
@@ -1247,6 +1274,24 @@ out geom;
             turns.append({"name": f"Turn {anchor['number']}", "fraction": stations[index] / target,
                           "direction": anchor["direction"], "station": stations[index]})
         turns.sort(key=lambda turn: turn["station"])
+    layout_review = source / "layout-review.json"
+    if layout_review.exists():
+        reviewed = json.loads(layout_review.read_text())
+        turns = [{"name":turn["name"], "station":turn["station_m"],
+                  "fraction":turn["station_m"]/target,
+                  "direction":1 if turn["direction"] == "Left" else -1}
+                 for turn in reviewed["turns"]]
+
+    recipe_path = source / "environment-recipe.json"
+    recipe = json.loads(recipe_path.read_text()) if recipe_path.exists() else {}
+    if "controls_m" in recipe.get("width_profile", {}):
+        controls = recipe["width_profile"]["controls_m"]
+        width = [(station, sample_profile(controls, station, True)) for station in stations]
+        width.append((target, width[0][1]))
+    if spec["slug"] == "baku":
+        width = [(station, value + (7.6-value)*section_weight(station,2480.,2580.,2800.,2920.))
+                 for station,value in width]
+
     bank = [(0.0, 0.0)]
     bank_notes = []
     for bank_spec in spec.get("banks", []):
@@ -1269,6 +1314,10 @@ out geom;
         bank_notes.append(f"{label} {angle:.0f} deg at {station:.0f} m, outside raised")
     bank.append((target, 0.0))
     bank.sort()
+    if spec.get("bank_profile"):
+        authored_banking = json.loads((source / spec["bank_profile"]).read_text())
+        bank = [tuple(control) for control in authored_banking["controls"]]
+        bank_notes = [authored_banking["method"]] if "method" in authored_banking else ["Explicit source-registered banking controls; see " + spec["bank_profile"]]
 
     runoff = []
     if spec["slug"] == "japan":
@@ -1351,11 +1400,38 @@ out geom;
                     left[index] = max(left[index], extra)
                 else:
                     right[index] = max(right[index], extra)
+    if spec["slug"] == "japan" and (source / "shoulder-corrections.json").exists():
+        corrections = json.loads((source / "shoulder-corrections.json").read_text())
+        pit = corrections["pit_straight"]
+        for index,station in enumerate(stations):
+            weight = 1.0 if station >= pit["start_m"] or station <= pit["end_m"] else ((station-pit["approach_m"])/(pit["start_m"]-pit["approach_m"]) if station >= pit["approach_m"] else (pit["release_m"]-station)/(pit["release_m"]-pit["end_m"]) if station < pit["release_m"] else 0.0)
+            weight = max(0.,min(1.,weight))
+            weight = weight*weight*(3-2*weight)
+            left[index] += (pit["shoulder_m"]-left[index])*weight
+        bridge = corrections.get("back_straight_bridge")
+        if bridge:
+            for index, station in enumerate(stations):
+                weight = section_weight(station, bridge["approach_m"], bridge["start_m"], bridge["end_m"], bridge["release_m"])
+                left[index] += (bridge["shoulder_m"] - left[index]) * weight
+                right[index] += (bridge["shoulder_m"] - right[index]) * weight
     if spec["slug"] == "lasvegas":
         left = right = [.10] * count
         runoff = [{"start": 0., "end": target, "side": 0, "surface": "Asphalt", "width": 0.}]
+    if spec["slug"] == "baku":
+        for index,station in enumerate(stations):
+            weight = section_weight(station,2480.,2570.,2820.,2920.)
+            left[index] += (.05-left[index])*weight
+            right[index] += (.05-right[index])*weight
     shoulders = [(stations[index], left[index], right[index]) for index in range(0, count, 2)]
     shoulders.append((target, shoulders[0][1], shoulders[0][2]))
+    if spec["slug"] == "japan" and (source / "shoulder-corrections.json").exists():
+        bridge = json.loads((source / "shoulder-corrections.json").read_text()).get("back_straight_bridge")
+        if bridge:
+            for name in ("start_m", "end_m"):
+                station = bridge[name]
+                shoulders = [p for p in shoulders if abs(p[0] - station) > .001]
+                shoulders.append((station, bridge["shoulder_m"], bridge["shoulder_m"]))
+            shoulders.sort()
 
     # Buildings inside a narrow corridor, not the whole city.
     building_cache = source / "buildings.osm.json.gz"
@@ -1568,6 +1644,13 @@ out geom;
             "use": "Appearance only. The clip is a commercial racing-game Japanese Grand Prix replay, not an onboard survey. Its pixels and meshes are not shipped.",
         }
         provenance["not_claimed"] = "No orthophoto registration and no packaged cockpit capture in this build. Widths, grandstand heights and the wheel diameter are estimates. The GSI mesh is ground, not a racing-deck survey. Centimetre storage is not centimetre accuracy."
+    if elevation_correction.exists() and (source / "provenance.json").exists():
+        retained_provenance = json.loads((source / "provenance.json").read_text())
+        provenance["elevation"] = retained_provenance["elevation"]
+        provenance["elevation"]["relief_m"] = relief
+        provenance["elevation"]["controls"] = "elevation-corrections.json"
+    if "width_profile" in recipe:
+        provenance["width"] = recipe["width_profile"]
     (source / "provenance.json").write_text(json.dumps(provenance, indent=2) + "\n")
     write_plan(spec, local, turns)
     log(f"{spec['slug']}: {chosen['name']} {target:.1f} m (mapped {measured:.1f}, published {published}, scale {scale:.4f}) relief {relief:.1f} m turns {len(turns)} buildings {len(footprints)}")
@@ -1611,6 +1694,14 @@ def emit_indexes(records):
         record = records[spec["slug"]]
         prefix = spec["enum"]
         includes.append(f'#include "track_data/{spec["slug"]}_survey.inc"')
+        boundary_path = TRACK_DATA / (spec["slug"] + "_boundaries.inc")
+        scene_geometry = boundary_path.exists()
+        if scene_geometry:
+            includes.append(f'#include "track_data/{spec["slug"]}_boundaries.inc"')
+        runoff_array = f'k{prefix}SceneRunoff' if scene_geometry else f'k{prefix}Runoff'
+        walls_array = f',\n     k{prefix}SceneWalls' if scene_geometry else ''
+        anchor_path = SOURCES / spec["slug"] / "start-line.json"
+        anchor = json.loads(anchor_path.read_text())["native_station_m"] if anchor_path.exists() else 1815.0 if spec["slug"] == "lasvegas" else 0.0
         grade = "{}"
         heading = "true" if record["heading_direction_test"] else "false"
         deck = "true" if spec.get("deck") else "false"
@@ -1623,7 +1714,7 @@ def emit_indexes(records):
      "{spec["environment"]}",
      {record["target_m"]:.3f}f,
      {spec["turns"]},
-     {format(1815.0 / record["target_m"], ".9f") if spec["slug"] == "lasvegas" else "0.0"}f,
+     {anchor / record["target_m"]:.9f}f,
      {record["relief_m"]:.3f}f,
      {"true" if record["clockwise"] else "false"},
      1.0f,
@@ -1632,7 +1723,7 @@ def emit_indexes(records):
      k{prefix}Elevation,
      k{prefix}Width,
      k{prefix}Bank,
-     k{prefix}Runoff,
+     {runoff_array},
      {grade},
      "{spec["slug"]}",
      "{spec["folder"]}/Data",
@@ -1643,7 +1734,8 @@ def emit_indexes(records):
      {heading},
      {deck},
      {spec["shoulder"]:.2f}f,
-     k{prefix}Shoulder}},''')
+     k{prefix}Shoulder,
+     {8192 if spec['slug'] != 'lasvegas' else 1536}{walls_array}}},''')
         cases.append(f"        case TrackLayoutId::{prefix}: return k{prefix}Turns;")
         ini.append(f'+DirectoriesToAlwaysStageAsUFS=(Path="Generated/{spec["folder"]}/Data")')
     (TRACK_DATA / "generated_surveys.inc").write_text("\n".join(includes) + "\n")

@@ -1,0 +1,6 @@
+{
+  "native_station_m": 50,
+  "uncertainty_m": 10,
+  "method": "Official F1 2016 profile corner registration; timingline estimate.",
+  "semantics": "Time-trial timing/start anchor; route origin and world placement unchanged."
+}

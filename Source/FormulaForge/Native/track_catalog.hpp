@@ -27,6 +27,16 @@ struct TrackShoulderPoint {
     float rightMeters = 8.0f;
 };
 
+struct TrackBarrier {
+    float ax;
+    float ay;
+    float bx;
+    float by;
+    float bottom;
+    float top;
+    float halfThickness;
+};
+
 struct TrackCatalogEntry {
     TrackLayoutId id{};
     std::string_view displayName;
@@ -57,6 +67,8 @@ struct TrackCatalogEntry {
     bool deckSeparation = false;
     float shoulderMeters = 8.0f;
     std::span<const TrackShoulderPoint> shoulders{};
+    int surfaceSamples = 1536;
+    std::span<const TrackBarrier> authoredBarriers{};
 };
 
 std::span<const TrackCatalogEntry> trackCatalog() noexcept;

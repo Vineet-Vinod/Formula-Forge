@@ -83,17 +83,28 @@
         "station_max_m": 4017.24,
         "maximum_projection_distance_m": 2.08
       }
-    ]
+    ],
+    "start_anchor_review": {
+      "station_m": 0,
+      "status": "Retain current catalogphase pending exactline survey",
+      "uncertainty_m": 100,
+      "evidence": "Nativeorigin already on mainstraight/pitsector; no reliable evidence justifies a moreprecise correction in this review."
+    }
   },
   "primary_sources": [
     {
       "url": "https://gpcanada.ca/",
       "use": "Official layout/venue architecture; source year can differ from video."
+    },
+    {
+      "url": "https://www.formula1.com/en/latest/article/highs-and-lows-which-f1-track-has-the-most-elevation-changes-.7I9JEcBw3R2AqXbnJ6hyvc.7I9JEcBw3R2AqXbnJ6hyvc",
+      "use": "Official2016longitudinalprofile independentlydigitized into circuit elevationcontrols; chartapproximation, not as-built survey."
     }
   ],
   "uncertainties": [
     "Exact filming lap/year is not established unless visible title/HUD identifies it.",
     "Overview observations establish visual vocabulary; every individual asset position requires footprint/map registration.",
     "No high-resolution raster or orthophoto added by this reference review."
-  ]
+  ],
+  "racing_elevation_correction": "elevation-corrections.json"
 }

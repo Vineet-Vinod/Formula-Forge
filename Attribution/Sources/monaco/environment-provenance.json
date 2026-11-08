@@ -6,6 +6,14 @@
   "licence": "ODbL1.0",
   "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
   "file": "environment.osm.json.gz",
-  "sha256": "202d6992c97fad3c1a347772157d52d25d19fd380303d4595c6c4f9ef96d8888",
-  "purpose": "Tightly bounded essential landmark query; inline member geometry preserved."
+  "sha256": "f112643175c41c3b40ca7c82e1819abd9490b61211e9d9ec485ac0e5467a2495",
+  "purpose": "Tightly bounded essential landmark query; inline member geometry preserved.",
+  "additional_queries": [
+    {
+      "query": "[out:json][timeout:30];(way[\"natural\"=\"coastline\"](43.730,7.419,43.742,7.434);nwr[\"natural\"=\"water\"](43.732,7.421,43.740,7.432););out geom;",
+      "endpoint": "https://overpass-api.de/api/interpreter",
+      "retrieved": "2026-11-08",
+      "purpose": "Boundedcoastline/harbourboundary needed for sea-land polygonisation; no broadMediterraneanrelationquery."
+    }
+  ]
 }

@@ -114,7 +114,7 @@ std::optional<float> FFDriveSurface::Height(double positionX, double positionY) 
     return height;
 }
 
-float FFDriveSurface::Penetration(const std::array<FFSurfacePoint, 4>& footprint) const {
+float FFDriveSurface::Penetration(const std::array<FFSurfacePoint, 4>& footprint, float maximumSurfaceHeight) const {
     float minimumX = footprint[0].positionX, maximumX = minimumX;
     float minimumY = footprint[0].positionY, maximumY = minimumY;
     for (const auto& point : footprint) {
@@ -128,7 +128,12 @@ float FFDriveSurface::Penetration(const std::array<FFSurfacePoint, 4>& footprint
         for (int column = static_cast<int>(std::floor(minimumX / CellSize)); column <= static_cast<int>(std::floor(maximumX / CellSize)); ++column) {
             const auto cell = cells.find(CellKey(column, row));
             if (cell == cells.end()) continue;
-            for (const auto index : cell->second) penetration = std::max(penetration, TrianglePenetration(triangles[index], footprint));
+            for (const auto index : cell->second) {
+                const auto& triangle = triangles[index];
+                if (std::min({triangle.points[0].positionZ, triangle.points[1].positionZ,
+                        triangle.points[2].positionZ}) > maximumSurfaceHeight) continue;
+                penetration = std::max(penetration, TrianglePenetration(triangle, footprint));
+            }
         }
     }
     return penetration;

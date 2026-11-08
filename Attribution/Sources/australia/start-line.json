@@ -1,0 +1,6 @@
+{
+  "method": "Approximate primary FIA map CONTROL-line registration",
+  "semantics": "Time-trial timing/start anchor; route origin and world placement unchanged.",
+  "native_station_m": 5200,
+  "uncertainty_m": 35
+}

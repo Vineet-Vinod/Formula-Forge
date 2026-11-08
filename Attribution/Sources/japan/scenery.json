@@ -1,0 +1,2366 @@
+{
+  "recipe": "make circuit-assets CIRCUIT=japan",
+  "tiles": 102,
+  "triangles": 1599522,
+  "road_sha256": "bb40f25c218cf57ba4757dcf9d5b823632494805044e3e5925e3b1a15453ddde",
+  "terrain_sha256": "d7690ee68e2d8a389b89973937be81cd217b5d621db02bd12eeebaecc5540b25",
+  "landmarks": [
+    {
+      "name": "A1",
+      "osm_id": 184120096,
+      "roof": "",
+      "rows": 15,
+      "seat_material": "SeatBlue",
+      "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
+      "boundary_chains": 1,
+      "bays": 17,
+      "max_foundation_height_m": 4.690701701687663
+    },
+    {
+      "name": "B1",
+      "osm_id": 184143131,
+      "roof": "",
+      "rows": 16,
+      "seat_material": "SeatBlue",
+      "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
+      "boundary_chains": 1,
+      "bays": 20,
+      "max_foundation_height_m": 5.1102006046317445
+    },
+    {
+      "name": "B2",
+      "osm_id": 184143132,
+      "roof": "",
+      "rows": 24,
+      "seat_material": "SeatBlue",
+      "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
+      "boundary_chains": 2,
+      "bays": 34,
+      "max_foundation_height_m": 7.761830327279506
+    },
+    {
+      "name": "C",
+      "osm_id": 184143133,
+      "roof": "",
+      "rows": 21,
+      "seat_material": "SeatBlue",
+      "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
+      "boundary_chains": 2,
+      "bays": 54,
+      "max_foundation_height_m": 11.224443173529291
+    },
+    {
+      "name": "D\uff11\uff5eD4",
+      "osm_id": 469368057,
+      "roof": "",
+      "rows": 16,
+      "seat_material": "SeatBlue",
+      "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
+      "boundary_chains": 2,
+      "bays": 49,
+      "max_foundation_height_m": 3.3880762499964376
+    },
+    {
+      "name": "D5",
+      "osm_id": 469395390,
+      "roof": "",
+      "rows": 14,
+      "seat_material": "SeatBlue",
+      "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
+      "boundary_chains": 2,
+      "bays": 10,
+      "max_foundation_height_m": 1.8222768078365377
+    },
+    {
+      "name": "E",
+      "osm_id": 467982372,
+      "roof": "",
+      "rows": 15,
+      "seat_material": "SeatBlue",
+      "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
+      "boundary_chains": 1,
+      "bays": 35,
+      "max_foundation_height_m": 11.914831004457895
+    },
+    {
+      "name": "G",
+      "osm_id": 184102012,
+      "roof": "",
+      "rows": 12,
+      "seat_material": "SeatBlue",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+    },
+    {
+      "name": "G",
+      "osm_id": 184102361,
+      "roof": "",
+      "rows": 10,
+      "seat_material": "SeatBlue",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+    },
+    {
+      "name": "Mapped spectator terrace",
+      "osm_id": 183999779,
+      "roof": "",
+      "rows": 12,
+      "seat_material": "SeatBlue",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+    },
+    {
+      "name": "Q2",
+      "osm_id": 183393101,
+      "roof": "",
+      "rows": 14,
+      "seat_material": "SeatBlue",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+    },
+    {
+      "name": "Q2",
+      "osm_id": 183393102,
+      "roof": "",
+      "rows": 14,
+      "seat_material": "SeatBlue",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+    },
+    {
+      "name": "Q2",
+      "osm_id": 183393103,
+      "roof": "",
+      "rows": 14,
+      "seat_material": "SeatBlue",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+    },
+    {
+      "name": "Q1",
+      "osm_id": 183393132,
+      "roof": "",
+      "rows": 12,
+      "seat_material": "SeatBlue",
+      "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
+      "boundary_chains": 1,
+      "bays": 12,
+      "max_foundation_height_m": 2.0242166022009016
+    },
+    {
+      "name": "S",
+      "osm_id": 183394069,
+      "roof": "",
+      "rows": 16,
+      "seat_material": "SeatBlue",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+    },
+    {
+      "name": "V1",
+      "osm_id": 184107052,
+      "roof": "",
+      "rows": 14,
+      "seat_material": "SeatBlue",
+      "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
+      "boundary_chains": 5,
+      "bays": 45,
+      "max_foundation_height_m": 2.820281068962931
+    },
+    {
+      "name": "V2",
+      "osm_id": 183394522,
+      "roof": "cantilever",
+      "rows": 23,
+      "seat_material": "SeatBlue",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+    },
+    {
+      "name": "Suzuka pit building",
+      "osm_id": 184422099,
+      "height_m": 11.5,
+      "model": "Mapped footprint, separated garage level, glazed hospitality, concrete fascia and shallow mono-pitch roof; vertical dimensions estimated from reference."
+    },
+    {
+      "name": "VIP",
+      "osm_id": 183394524,
+      "height_m": 14,
+      "facade": "modern"
+    },
+    {
+      "name": "\u897f\u30b3\u30f3\u30c8\u30ed\u30fc\u30eb\u30bf\u30ef\u30fc",
+      "osm_id": 184415318,
+      "height_m": 15,
+      "facade": "modern"
+    },
+    {
+      "osm_id": 184120102,
+      "name": "A1 service hut, use unknown",
+      "eaves_m": 3.0,
+      "roof_m": 3.4,
+      "storeys": 1,
+      "source": "https://www.suzukacircuit.jp/course_s/a1/",
+      "dimensions_status": "OSM footprint; original conservative reconstruction. Exact height, use, roof pitch and openings unmeasured. Operator A1 aerial shows corrugated service roofs behind open bleachers. Foundation follows local GSI bank rather than racing-road elevation."
+    },
+    {
+      "osm_id": 184120098,
+      "name": "A1 service hut, use unknown",
+      "eaves_m": 2.8,
+      "roof_m": 3.2,
+      "storeys": 1,
+      "source": "https://www.suzukacircuit.jp/course_s/a1/",
+      "dimensions_status": "OSM footprint; original conservative reconstruction. Exact height, use, roof pitch and openings unmeasured. Operator A1 aerial shows corrugated service roofs behind open bleachers. Foundation follows local GSI bank rather than racing-road elevation."
+    },
+    {
+      "osm_id": 184423963,
+      "name": "\u30c1\u30fc\u30e0\u30aa\u30d5\u30a3\u30b9",
+      "height_m": 7.5,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184429429,
+      "name": "\u533b\u52d9\u5ba4",
+      "height_m": 7.5,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184430907,
+      "name": "\u30bb\u30f3\u30bf\u30fc\u30cf\u30a6\u30b9",
+      "height_m": 7.5,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184430909,
+      "name": "\u30c1\u30fc\u30e0\u30aa\u30d5\u30a3\u30b9",
+      "height_m": 7.5,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184430911,
+      "name": "\u30c1\u30fc\u30e0\u30aa\u30d5\u30a3\u30b9",
+      "height_m": 7.5,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 183393099,
+      "name": "183393099",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 183393706,
+      "name": "183393706",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 183394064,
+      "name": "183394064",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 183953732,
+      "name": "183953732",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 183953734,
+      "name": "183953734",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 183953736,
+      "name": "183953736",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 183999756,
+      "name": "183999756",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 183999757,
+      "name": "183999757",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184004005,
+      "name": "184004005",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184004006,
+      "name": "184004006",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184004007,
+      "name": "184004007",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184004008,
+      "name": "184004008",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184004009,
+      "name": "184004009",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184004010,
+      "name": "184004010",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184101980,
+      "name": "184101980",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184101981,
+      "name": "184101981",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184101982,
+      "name": "184101982",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184101983,
+      "name": "184101983",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184101984,
+      "name": "184101984",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184101985,
+      "name": "184101985",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184101986,
+      "name": "184101986",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184101987,
+      "name": "184101987",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184101988,
+      "name": "184101988",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184101989,
+      "name": "184101989",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184103155,
+      "name": "184103155",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184103156,
+      "name": "184103156",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184103158,
+      "name": "184103158",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184103159,
+      "name": "184103159",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184103160,
+      "name": "184103160",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184103161,
+      "name": "184103161",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184103629,
+      "name": "184103629",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184107054,
+      "name": "184107054",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184120097,
+      "name": "184120097",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184120099,
+      "name": "184120099",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184120100,
+      "name": "184120100",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184120101,
+      "name": "184120101",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184143136,
+      "name": "184143136",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184143137,
+      "name": "184143137",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184146166,
+      "name": "184146166",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184252580,
+      "name": "184252580",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184252581,
+      "name": "184252581",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184252582,
+      "name": "184252582",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184252583,
+      "name": "184252583",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184253112,
+      "name": "184253112",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184253113,
+      "name": "184253113",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184253114,
+      "name": "184253114",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184253115,
+      "name": "184253115",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184253116,
+      "name": "184253116",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184253117,
+      "name": "184253117",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184410552,
+      "name": "184410552",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184410553,
+      "name": "184410553",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184410555,
+      "name": "184410555",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184410556,
+      "name": "184410556",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184410557,
+      "name": "184410557",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184415311,
+      "name": "184415311",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184415312,
+      "name": "184415312",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184415313,
+      "name": "184415313",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184415314,
+      "name": "184415314",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184415315,
+      "name": "184415315",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184415316,
+      "name": "184415316",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184415317,
+      "name": "184415317",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184419746,
+      "name": "184419746",
+      "height_m": 6.8,
+      "removed_road_area_m2": 3.124,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184419747,
+      "name": "184419747",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184419748,
+      "name": "184419748",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184419749,
+      "name": "184419749",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184419750,
+      "name": "184419750",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184419751,
+      "name": "184419751",
+      "height_m": 6.8,
+      "removed_road_area_m2": 6.408,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184423960,
+      "name": "184423960",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184423961,
+      "name": "(\u682a)\u65e5\u672c\u30c0\u30f3\u30ed\u30c3\u30d7 \u9234\u9e7f\u4e8b\u52d9\u6240",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184423962,
+      "name": "184423962",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184429425,
+      "name": "184429425",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184429426,
+      "name": "184429426",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184429427,
+      "name": "184429427",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184429428,
+      "name": "184429428",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184430908,
+      "name": "184430908",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184430910,
+      "name": "184430910",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184432634,
+      "name": "184432634",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184529051,
+      "name": "184529051",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184529054,
+      "name": "184529054",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 184529055,
+      "name": "184529055",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308666546,
+      "name": "308666546",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308666547,
+      "name": "\u30d0\u30c3\u30c8\u306e\u30d1\u30ef\u30fc\u30af\u30ea\u30b9\u30bf\u30eb\u30cf\u30f3\u30c8",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308666548,
+      "name": "RACING ZONE",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308666551,
+      "name": "\u3076\u3093\u3076\u3093\u306e\u30d1\u30f3\u30b1\u30fc\u30ad\u3084\u3055\u3093",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308666554,
+      "name": "308666554",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308666555,
+      "name": "308666555",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308666556,
+      "name": "308666556",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308666559,
+      "name": "\u30d7\u30fc\u30c8\u306e\u30e2\u30d3\u30d1\u30fc\u30af",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308666560,
+      "name": "308666560",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308666561,
+      "name": "308666561",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308666562,
+      "name": "308666562",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308666563,
+      "name": "308666563",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308666565,
+      "name": "CIRCUIT PLAZA",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308666566,
+      "name": "308666566",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308666568,
+      "name": "308666568",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308666570,
+      "name": "308666570",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308666571,
+      "name": "\u30d7\u30fc\u30c8\u306e\u306e\u308a\u3082\u306e\u7814\u7a76\u6240",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308666573,
+      "name": "308666573",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308666575,
+      "name": "308666575",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308666576,
+      "name": "308666576",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308666577,
+      "name": "CIRCUIT PLAZA",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308666578,
+      "name": "308666578",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308666580,
+      "name": "308666580",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308691932,
+      "name": "308691932",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308691933,
+      "name": "\u30ed\u30c3\u30ad\u30fc\u30b3\u30fc\u30b9\u30bf\u30fc",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308691934,
+      "name": "308691934",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308691935,
+      "name": "Putti Town Store",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308691936,
+      "name": "308691936",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308691937,
+      "name": "\u30d5\u30e9\u30a4\u30f3\u30b0\u30b7\u30c3\u30d7",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308691938,
+      "name": "\u30d7\u30c3\u30c1\u30d1\u30ef\u30fc\u30b7\u30e7\u30d9\u30eb",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308691939,
+      "name": "308691939",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308691941,
+      "name": "308691941",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308691942,
+      "name": "\u30a2\u30c9\u30d9\u30f3\u6fc3\u539a\u30bd\u30d5\u30c8/\u30a2\u30c9\u30d9\u30f3\u30c1\u30e3\u30fc\u30af\u30ec\u30fc\u30d7",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308691944,
+      "name": "GARAGE R",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308691945,
+      "name": "308691945",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308691946,
+      "name": "\u30a2\u30c9\u30d9\u30f3\u30dc\u30fc\u30c8 \u30d5\u30ed\u30f3\u30c6\u30a3\u30a2",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308691948,
+      "name": "308691948",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308691949,
+      "name": "\u3050\u308b\u3081\u3077\u3089\u3056",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308691950,
+      "name": "308691950",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 308691951,
+      "name": "308691951",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 443498254,
+      "name": "443498254",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 443498255,
+      "name": "\u30db\u30f3\u30c0\u30ed\u30b8\u30b9\u30c6\u30a3\u30af\u30b9\u6d77\u5916\u30bb\u30f3\u30bf\u30fc\uff21\u68df",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 443498256,
+      "name": "443498256",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 443498259,
+      "name": "\uff08\u682a\uff09\u30b5\u30cb\u30c3\u30af\u30b9 \u9234\u9e7f\u5de5\u5834",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 443498260,
+      "name": "\u65e5\u672c\u68b1\u5305\u904b\u8f38\u5009\u5eab",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 443498265,
+      "name": "\u30b3\u30fc\u30d7\u307f\u3048\u9234\u9e7f\u30bb\u30f3\u30bf\u30fc",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 443498266,
+      "name": "443498266",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 443498267,
+      "name": "\u682a\u5f0f\u4f1a\u793e \u4e09\u91cd\u30d1\u30fc\u30c4",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 443498268,
+      "name": "443498268",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 443498269,
+      "name": "\u30de\u30eb\u30c8\u30fc\u9234\u9e7f\u4e8b\u696d\u6240",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 448315793,
+      "name": "448315793",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 448315794,
+      "name": "448315794",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 465595141,
+      "name": "\u9234\u9e7f\u30b5\u30fc\u30ad\u30c3\u30c8\u30db\u30c6\u30eb",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 465595142,
+      "name": "\u30a4\u30fc\u30b9\u30c8\u9928",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 465595154,
+      "name": "\u30c1\u30e3\u30da\u30eb\u3000\u30a2\u30f3\u30ed\u30fc\u30ba",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 465655906,
+      "name": "\u30d7\u30c3\u30c1\u30b0\u30e9\u30f3\u30d7\u30ea",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 465655909,
+      "name": "465655909",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 465655931,
+      "name": "\u30eb\u30f3\u30eb\u30f3\u30d0\u30eb\u30fc\u30f3",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 465846728,
+      "name": "\u30ad\u30c3\u30ba\u30d0\u30a4\u30af \u30b3\u30fc\u30b9",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "open roof/stand",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 465846729,
+      "name": "\u30d4\u30d4\u30e9\u306e\u30e2\u30c8\u30d5\u30a3\u30fc\u30eb\u30c9",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "open roof/stand",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466005760,
+      "name": "\u30e1\u30a4\u30f3\u30b2\u30fc\u30c8",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "open roof/stand",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466005784,
+      "name": "\u30d7\u30c3\u30c1\u30bf\u30a6\u30f3\u30ad\u30c3\u30c1\u30f3",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466005785,
+      "name": "\u30db\u30c6\u30eb\u30b2\u30fc\u30c8",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466005788,
+      "name": "\u30d7\u30c3\u30c1\u30d1\u30ec\u30fc\u30c9",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466005793,
+      "name": "\u30d7\u30c3\u30c1\u30d1\u30c8\u30ed\u30fc\u30eb",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "open roof/stand",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466005794,
+      "name": "466005794",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466005795,
+      "name": "466005795",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466012472,
+      "name": "\u30d4\u30f3\u30ad\u30fc\u30d0\u30a4\u30af \u30b3\u30fc\u30b9",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "open roof/stand",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466012477,
+      "name": "\u3067\u3093\u3067\u3093\u3080\u3057",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466012478,
+      "name": "466012478",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "open roof/stand",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466012479,
+      "name": "466012479",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466012480,
+      "name": "466012480",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466026840,
+      "name": "\u30c1\u30e9\u30e9\u306e\u30d5\u30e9\u30ef\u30fc\u30ef\u30b4\u30f3",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466058460,
+      "name": "466058460",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466058485,
+      "name": "466058485",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466058488,
+      "name": "466058488",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466308623,
+      "name": "466308623",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466308634,
+      "name": "466308634",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "open roof/stand",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466312156,
+      "name": "\u30a2\u30c9\u30d9\u30f3\u30c1\u30e3\u30a4\u30ca\uff0f\u30a2\u30c9\u30d9\u30f3\u30c1\u30e3\u30a4\u30ca\uff0f\u30a2\u30c9\u30d9\u30f3\u30ab\u30ea\u30fc",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466312159,
+      "name": "466312159",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "open roof/stand",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466312160,
+      "name": "466312160",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "open roof/stand",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466312161,
+      "name": "466312161",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "open roof/stand",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466312162,
+      "name": "466312162",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "open roof/stand",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466312168,
+      "name": "466312168",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466355446,
+      "name": "466355446",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466355447,
+      "name": "\u30a2\u30af\u30a2\u30a2\u30c9\u30d9\u30f3\u30c1\u30e3\u30fc(\u30d7\u30fc\u30eb)\u4e8b\u52d9\u6240",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466355448,
+      "name": "466355448",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466435887,
+      "name": "\u30d1\u30e9\u30fb\u30bb\u30a4\u30e9\u30fc",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "open roof/stand",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466435888,
+      "name": "GATE SHOP",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466560666,
+      "name": "\u5357\u30b2\u30fc\u30c8",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466560667,
+      "name": "466560667",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466560669,
+      "name": "466560669",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "open roof/stand",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466596479,
+      "name": "466596479",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466596481,
+      "name": "\u30a2\u30c9\u30d9\u30f3\u30c1\u30e3\u30fc\u30c9\u30e9\u30a4\u30d6",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466684634,
+      "name": "466684634",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466813342,
+      "name": "\u30ec\u30fc\u30b7\u30f3\u30b0\u30b7\u30a2\u30bf\u30fc",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466813346,
+      "name": "466813346",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "open roof/stand",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466813347,
+      "name": "466813347",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466813348,
+      "name": "466813348",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "open roof/stand",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466889596,
+      "name": "466889596",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "open roof/stand",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466889598,
+      "name": "466889598",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466891877,
+      "name": "466891877",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466925741,
+      "name": "\u9234\u9e7f\u30b5\u30fc\u30ad\u30c3\u30c8\u4ea4\u901a\u6559\u80b2\u30bb\u30f3\u30bf\u30fc",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466981862,
+      "name": "466981862",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "open roof/stand",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466981877,
+      "name": "\u30c1\u30af\u30bf\u30af\u30c8\u30ec\u30a4\u30f3",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "open roof/stand",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466981878,
+      "name": "\u30eb\u30f3\u30eb\u30f3\u30dd\u30c3\u30d7",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "open roof/stand",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 466981879,
+      "name": "\u30eb\u30f3\u30eb\u30f3\u30d0\u30eb\u30fc\u30f3",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 467069657,
+      "name": "467069657",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 467386925,
+      "name": "467386925",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 467591741,
+      "name": "467591741",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 468750070,
+      "name": "468750070",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 468750071,
+      "name": "468750071",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 469261666,
+      "name": "469261666",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 469591633,
+      "name": "469591633",
+      "height_m": 6.8,
+      "removed_road_area_m2": 566.961,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 469650857,
+      "name": "469650857",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 902160271,
+      "name": "902160271",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "open roof/stand",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 917970229,
+      "name": "\u9234\u9e7f\u4e0a\u6c34\u9053 \u9053\u4f2f\u914d\u6c34\u6c60",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 922778129,
+      "name": "922778129",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 1111907619,
+      "name": "1111907619",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 1111907620,
+      "name": "1111907620",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 1111907621,
+      "name": "1111907621",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 1339015274,
+      "name": "\u30c1\u30b1\u30c3\u30c8\u58f2\u5834",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 1344669263,
+      "name": "1344669263",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 1344669264,
+      "name": "1344669264",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 1344669284,
+      "name": "\u30ed\u30c3\u30b8 \u30d5\u30ea\u30fc",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 1344669285,
+      "name": "1344669285",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 1344669286,
+      "name": "1344669286",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 1344669287,
+      "name": "1344669287",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 1359579705,
+      "name": "1359579705",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 1371344301,
+      "name": "1371344301",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 1371344308,
+      "name": "1371344308",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 1371344309,
+      "name": "1371344309",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 1371344310,
+      "name": "1371344310",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 1371344311,
+      "name": "1371344311",
+      "height_m": 6.8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 1371344312,
+      "name": "1371344312",
+      "height_m": 6.8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 424,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 2028,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 2652,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 3547,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 5111,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 5480,
+      "end_m": 180,
+      "side": -1,
+      "material": "PanelGreen"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 5480,
+      "end_m": 180,
+      "side": 1,
+      "material": "PanelGreen"
+    },
+    {
+      "name": "Back straight over Degner underpass",
+      "start_m": 4637,
+      "end_m": 4667,
+      "clearance_m": 6.2
+    },
+    {
+      "name": "Circuit Wheel",
+      "latitude": 34.845979,
+      "longitude": 136.538821,
+      "diameter_m": 48.0,
+      "height_m": 51.0,
+      "dimensions_status": "Mapped position; original reconstructed wheel, support and cabins. Diameter inferred from operator viewing height, not engineering survey."
+    }
+  ],
+  "vegetation": [
+    {
+      "start_m": 600,
+      "end_m": 780,
+      "side": 1,
+      "setback_m": 20,
+      "rows": 4,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 780,
+      "end_m": 1200,
+      "side": 1,
+      "setback_m": 30,
+      "rows": 4,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 1080,
+      "end_m": 1400,
+      "side": 1,
+      "setback_m": 65,
+      "rows": 5,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 1440,
+      "end_m": 1850,
+      "side": 1,
+      "setback_m": 25,
+      "rows": 5,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 1650,
+      "end_m": 1940,
+      "side": -1,
+      "setback_m": 30,
+      "rows": 5,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 2240,
+      "end_m": 2530,
+      "side": -1,
+      "setback_m": 20,
+      "rows": 5,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 2370,
+      "end_m": 2520,
+      "side": 1,
+      "setback_m": 34,
+      "rows": 4,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 2750,
+      "end_m": 3390,
+      "side": -1,
+      "setback_m": 23,
+      "rows": 5,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 2820,
+      "end_m": 3370,
+      "side": 1,
+      "setback_m": 28,
+      "rows": 5,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 3830,
+      "end_m": 4520,
+      "side": -1,
+      "setback_m": 30,
+      "rows": 6,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 3850,
+      "end_m": 4470,
+      "side": 1,
+      "setback_m": 33,
+      "rows": 5,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 4740,
+      "end_m": 5000,
+      "side": 1,
+      "setback_m": 35,
+      "rows": 5,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 5300,
+      "end_m": 5540,
+      "side": -1,
+      "setback_m": 105,
+      "rows": 4,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    }
+  ],
+  "review_status": "Awaiting packaged whole-route review; asset import is not visual approval."
+}

@@ -1,0 +1,73 @@
+{
+  "source": "Registered native road and reference-authored escape ranges",
+  "method": "Exact planar polygon union, preserving interior islands; simplification tolerance2cm, wallsegments atmost2m. One closed boundary supplies physical and visible protection.",
+  "wall_count": 6283,
+  "runoff_ranges": [
+    {
+      "type": "runoff",
+      "start_m": 420,
+      "end_m": 550,
+      "side": -1,
+      "requested_width_m": 15,
+      "material": "RunoffBlue"
+    },
+    {
+      "type": "runoff",
+      "start_m": 1210,
+      "end_m": 1360,
+      "side": -1,
+      "requested_width_m": 14,
+      "material": "RunoffGreen"
+    },
+    {
+      "type": "runoff",
+      "start_m": 1460,
+      "end_m": 1810,
+      "side": 1,
+      "requested_width_m": 8,
+      "material": "RunoffBlue"
+    },
+    {
+      "type": "runoff",
+      "start_m": 1940,
+      "end_m": 2100,
+      "side": -1,
+      "requested_width_m": 15,
+      "material": "RunoffBlue"
+    },
+    {
+      "type": "runoff",
+      "start_m": 2370,
+      "end_m": 2580,
+      "side": 1,
+      "requested_width_m": 16,
+      "material": "RunoffBlue"
+    },
+    {
+      "type": "runoff",
+      "start_m": 3130,
+      "end_m": 3320,
+      "side": 1,
+      "requested_width_m": 14,
+      "material": "RunoffGreen"
+    },
+    {
+      "type": "runoff",
+      "start_m": 3820,
+      "end_m": 3950,
+      "side": -1,
+      "requested_width_m": 10,
+      "material": "RunoffBlue"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4590,
+      "end_m": 4810,
+      "side": -1,
+      "requested_width_m": 16,
+      "material": "RunoffBlue"
+    }
+  ],
+  "road_unchanged": true,
+  "limitations": "Escape depths and station endpoints are reference estimates, not surveyed race-event barrier positions. Pit access remains a closed game boundary."
+}

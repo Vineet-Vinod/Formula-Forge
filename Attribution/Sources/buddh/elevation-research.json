@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "used_to_replace_native_profile": false,
+  "primary_source": {
+    "title": "ABB Contact India3/2011, electrical supplier account of Buddh project",
+    "url": "https://library.e.abb.com/public/bade2cb5c7c3d0e94825797e0062298a/Contact_3_11_India.pdf",
+    "supports": "Supplier quotes14m highest elevation and18\u201320m track width. This is a venue-specification summary, not a station-resolved civil survey."
+  },
+  "retained_profile": {
+    "dataset": "Archived GLO-90 prior deck",
+    "relief_m": 13.2305,
+    "highest_native_station_m": 1481.441,
+    "approximate_t1_station_m": 1041,
+    "approximate_t2_station_m": 1165,
+    "approximate_t3_station_m": 1429,
+    "t1_relative_height_m": 4.5567,
+    "t2_relative_height_m": 4.469,
+    "t3_relative_height_m": 12.3008,
+    "t2_to_t3_climb_m": 7.8318
+  },
+  "observations": [
+    "The supplied2013onboard shows the climb fromT2towardT3at129\u2013133s and221s.",
+    "Exact bilinear sampling of the retained GLO-30 DSM gives a11.738m rise fromT2toT3 and a12.053m whole-lap range, with its summit near native1445m.",
+    "The electrical supplier lists14m highest elevation without a full profile or datum. The direct GLO-30 profile improves the previous coarse climb without forcing a14m range."
+  ],
+  "decision": "The native profile now uses direct GLO-30 centerline sampling with bounded3m DSM uncertainty. No road heights were fabricated from the14m summary."
+}

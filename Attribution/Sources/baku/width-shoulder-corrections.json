@@ -1,0 +1,45 @@
+{
+  "section": "Castle T8\u201310",
+  "native_station_frame": true,
+  "source": "https://www.bakucitycircuit.com/news/seven-reasons-why-Formula-1-fans-love-Baku",
+  "published_narrow_width_m": 7.6,
+  "width_controls_m": [
+    [
+      2480,
+      "Retained wide-street width"
+    ],
+    [
+      2580,
+      7.6
+    ],
+    [
+      2800,
+      7.6
+    ],
+    [
+      2920,
+      "Retained wide-street width"
+    ]
+  ],
+  "shoulder_controls_m": [
+    [
+      2480,
+      "Retained street shoulder"
+    ],
+    [
+      2570,
+      0.05
+    ],
+    [
+      2820,
+      0.05
+    ],
+    [
+      2920,
+      "Retained street shoulder"
+    ]
+  ],
+  "transition": "Smooth cubic blend; unaffected stations preserve original width and shoulder samples.",
+  "uncertainty": "Promoter confirms 7.6 m narrowest width and no runoff. Extent of constant minimum and transition stations are visual authoring estimates. The generic barrier offset still includes a 0.95 m kerb allowance outside the asphalt edge.",
+  "collision_requirement": "Allow shoulder values below generic1.2m clamp here. No gravel or painted escape in the castle corridor; preserve straight escape atT7beforethissection."
+}

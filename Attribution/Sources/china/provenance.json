@@ -23,17 +23,16 @@
     "scale_rule": "Applied only when the mapped plan was within 1.5% of a published length. Larger gaps keep the mapped length."
   },
   "elevation": {
-    "provider": "Open-Meteo Elevation API",
-    "dataset": "Copernicus DEM GLO-90",
-    "dataset_note": "Surface model, about 90 m, includes roofs and canopy. Not a bare-earth racing survey.",
-    "licence": "Copernicus DEM, see https://registry.opendata.aws/copernicus-dem/",
-    "retrieved": "2026-11-04",
-    "sample_spacing_m": 27.8,
-    "smoothing": "Two circular binomial passes on the coarse samples, then linear interpolation onto the 4 m centreline. Isolated samples more than 6 m above their neighbours were treated as overpasses or roofs.",
-    "relative_datum": "Heights stored after subtracting the lap minimum.",
-    "removed_minimum_m": 2.0,
-    "relief_m": 8.688,
-    "uncertainty_m": 5,
+    "provider": "Formula 1 published 2016 topography diagram",
+    "dataset": "Published circuit topography profile, reconstructed",
+    "dataset_note": "Read relative heights from the published numerical extremum labels and drawn trace, then register individual official corners to retained native centerline geometry using FIA maps. Intermediate heights are graphical estimates, not measurements.",
+    "licence": "Factual derived heights with source attribution; no source image redistributed.",
+    "source": "https://www.formula1.com/en/latest/article/highs-and-lows-which-f1-track-has-the-most-elevation-changes-.7I9JEcBw3R2AqXbnJ6hyvc",
+    "controls": "elevation-corrections.json",
+    "relative_datum": "Relative to the published profile minimum; absolute diagram altitude is not used.",
+    "relief_m": 7.4,
+    "uncertainty_m": 1.0,
+    "smoothing": "Piecewise monotone cubic Hermite. Interior Fritsch-Carlson harmonic slopes; flat SF seam. No uniform rescaling of the previous DEM.",
     "deck": null
   },
   "width": {
@@ -53,5 +52,19 @@
     "licence": "ODbL 1.0"
   },
   "protection": "Both sides are walled at the shoulder offset. Pit entry is closed. That closure is a game boundary, not a claim about the real pit lane.",
-  "not_claimed": "No lidar, no orthophoto registration, no cockpit capture in this build. Centimetre storage is not centimetre accuracy."
+  "not_claimed": "No lidar, no orthophoto registration, no cockpit capture in this build. Centimetre storage is not centimetre accuracy.",
+  "retained_dem_elevation": {
+    "provider": "Open-Meteo Elevation API",
+    "dataset": "Copernicus DEM GLO-90",
+    "dataset_note": "Surface model, about 90 m, includes roofs and canopy. Not a bare-earth racing survey.",
+    "licence": "Copernicus DEM, see https://registry.opendata.aws/copernicus-dem/",
+    "retrieved": "2026-11-04",
+    "sample_spacing_m": 27.8,
+    "smoothing": "Two circular binomial passes on the coarse samples, then linear interpolation onto the 4 m centreline. Isolated samples more than 6 m above their neighbours were treated as overpasses or roofs.",
+    "relative_datum": "Heights stored after subtracting the lap minimum.",
+    "removed_minimum_m": 2.0,
+    "relief_m": 8.688,
+    "uncertainty_m": 5,
+    "deck": null
+  }
 }

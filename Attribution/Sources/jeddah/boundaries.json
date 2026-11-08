@@ -1,0 +1,57 @@
+{
+  "source": "Registered native road and reference-authored escape ranges",
+  "method": "Exact planar polygon union, preserving interior islands; simplification tolerance2cm, wallsegments atmost2m. One closed boundary supplies physical and visible protection.",
+  "wall_count": 7261,
+  "runoff_ranges": [
+    {
+      "type": "runoff",
+      "start_m": 245,
+      "end_m": 365,
+      "side": 1,
+      "requested_width_m": 10,
+      "material": "RunoffGreen"
+    },
+    {
+      "type": "runoff",
+      "start_m": 2150,
+      "end_m": 2370,
+      "side": 1,
+      "requested_width_m": 14,
+      "material": "RunoffGreen"
+    },
+    {
+      "type": "runoff",
+      "start_m": 2770,
+      "end_m": 2890,
+      "side": 1,
+      "requested_width_m": 8,
+      "material": "RunoffGreen"
+    },
+    {
+      "type": "runoff",
+      "start_m": 3340,
+      "end_m": 3490,
+      "side": -1,
+      "requested_width_m": 8,
+      "material": "RunoffGreen"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4250,
+      "end_m": 4420,
+      "side": -1,
+      "requested_width_m": 9,
+      "material": "RunoffGreen"
+    },
+    {
+      "type": "runoff",
+      "start_m": 5290,
+      "end_m": 5520,
+      "side": 1,
+      "requested_width_m": 14,
+      "material": "RunoffGreen"
+    }
+  ],
+  "road_unchanged": true,
+  "limitations": "Escape depths and station endpoints are reference estimates, not surveyed race-event barrier positions. Pit access remains a closed game boundary."
+}

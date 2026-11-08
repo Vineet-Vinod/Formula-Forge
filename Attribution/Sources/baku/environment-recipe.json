@@ -1,0 +1,6074 @@
+{
+  "schema_version": 1,
+  "circuit": "baku",
+  "appearance": "Dry daylight, clear blue sky.",
+  "terrain_character": "Dense varied stone city streets, walled rising Old City, leafy boulevard and waterfront return.",
+  "distinctive_geometry": [
+    "Old City: warm irregular stone curtain wall, crenellations, round/square turrets, narrow road climbing alongside it.",
+    "Four Seasons: deep cream classical facade with repetitive arched lower bays, cornices and dark mansard roof.",
+    "House of Government: broad pale monumental repeated arches, recessed window bays and square corner masses.",
+    "Maiden Tower: circular heavy stone cylindrical tower with projecting buttress, behind Old City/waterfront approach.",
+    "Hilton/Park Inn/Landmark buildings: differentiated glazed/slab towers and balcony rhythms; broad boulevard tree crowns frame views."
+  ],
+  "sectors": [
+    {
+      "id": "baku-01",
+      "native_station_m": [
+        0,
+        700
+      ],
+      "name": "Pit straight and T1–2",
+      "reviewed_video_seconds": [
+        72.75,
+        155,
+        165,
+        170,
+        175,
+        180,
+        185,
+        189.16
+      ],
+      "observed": "Grandstand/pit temporary structures and monumental city facades, broad asphalt channel and tall fencing; trees behind wall, narrow red-white apex kerbs. Escape lanes continue straight at90degree turns.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "baku-02",
+      "native_station_m": [
+        700,
+        1500
+      ],
+      "name": "T2 long city straight",
+      "reviewed_video_seconds": [
+        130.96,
+        190,
+        195,
+        200,
+        205
+      ],
+      "observed": "Landmark tower cluster to right of northern boulevard. Varied pale stone and modern balcony facades, continuous broadleaf trees. Long straight braking boards and uninterrupted wall/fence corridor; do not substitute repeated identical hotels.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "baku-03",
+      "native_station_m": [
+        1500,
+        2050
+      ],
+      "name": "T3–4 boulevard corners",
+      "reviewed_video_seconds": [
+        247.37,
+        210,
+        215,
+        220
+      ],
+      "observed": "Orthogonal street corners among cream/grey ornamental buildings with cornices, arcade ground floors, park trees and white tents. Museum Centre/Maritime Academy left by native registration. Paved terminal escape needs buffer protection.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "baku-04",
+      "native_station_m": [
+        2050,
+        2600
+      ],
+      "name": "T5–7 entry to Old City",
+      "reviewed_video_seconds": [
+        305.57,
+        225,
+        230,
+        235,
+        240,
+        245
+      ],
+      "observed": "Trees and tightly spaced stone street facades, balconies/windows and varied roofline. Houses sit directly behind fence, public junction markings visible. Slow turns have small red-white kerbs and asphalt escape, not gravel.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "baku-05",
+      "native_station_m": [
+        2600,
+        3100
+      ],
+      "name": "Castle T8–12 climb",
+      "reviewed_video_seconds": [
+        363.77,
+        421.98
+      ],
+      "observed": "Narrow uphill masonry-lined sequence and small rounded apexes; rough warm fortification left, close classical facade right. Protect narrow race corridor, no standalone floating barrier blocks; walls follow actual bent street.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "baku-06",
+      "native_station_m": [
+        3100,
+        3750
+      ],
+      "name": "Upper city T13–15 and downhill",
+      "reviewed_video_seconds": [
+        480.18,
+        596.59
+      ],
+      "observed": "Palace/classical facades with projecting bays, low park-side stone retaining walls and tall leafy trees. Crest then descending sightline; T15 has a straight-ahead paved escape. Philharmonic/Palace of Happiness give identity beyond castle.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "baku-07",
+      "native_station_m": [
+        3750,
+        4550
+      ],
+      "name": "T16 and Old City waterfront edge",
+      "reviewed_video_seconds": [
+        713,
+        654.79
+      ],
+      "observed": "Four Seasons and pale monumental facades, leafy park and stone buildings. Road broadens after slow left; Maiden Tower visible behind inner city. Curving approach toward waterfront should remain continuous.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "baku-08",
+      "native_station_m": [
+        4550,
+        6003
+      ],
+      "name": "T17–20 waterfront and long SF return",
+      "reviewed_video_seconds": [
+        538.38,
+        771.2,
+        829.4,
+        125,
+        130,
+        135
+      ],
+      "observed": "Open long boulevard lined by mature broadleaf trees, temporary waterfront stands and varied hotel/glazed skyline. House of Government dominant near SF, low pit structures; straight speed signs and distance boards. Do not place castle facades along entire seafront.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    }
+  ],
+  "mapped_landmarks": [
+    {
+      "osm_id": 25359715,
+      "name": "The Museum Centre",
+      "source_xy_m": [
+        -915.82,
+        -328.21
+      ],
+      "nearest_station_m": 1889.8,
+      "distance_from_centerline_m": 36.5,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "4",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -945.15,
+          -325.68
+        ],
+        [
+          -921.44,
+          -363.29
+        ],
+        [
+          -871.82,
+          -332.01
+        ],
+        [
+          -895.53,
+          -294.4
+        ],
+        [
+          -945.15,
+          -325.68
+        ]
+      ]
+    },
+    {
+      "osm_id": 133160748,
+      "name": "Heydar Aliyev foundation",
+      "source_xy_m": [
+        -1661.89,
+        -1142.12
+      ],
+      "nearest_station_m": 3904.2,
+      "distance_from_centerline_m": 40.3,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "8",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1633.62,
+          -1134.25
+        ],
+        [
+          -1653.02,
+          -1172.02
+        ],
+        [
+          -1668.77,
+          -1163.93
+        ],
+        [
+          -1685.7,
+          -1155.22
+        ],
+        [
+          -1673.12,
+          -1130.72
+        ],
+        [
+          -1676.86,
+          -1129.1
+        ],
+        [
+          -1670.4,
+          -1117.44
+        ],
+        [
+          -1633.62,
+          -1134.25
+        ]
+      ]
+    },
+    {
+      "osm_id": 133160749,
+      "name": "Socar Transportation Department",
+      "source_xy_m": [
+        -1597.59,
+        -1181.85
+      ],
+      "nearest_station_m": 3968.5,
+      "distance_from_centerline_m": 49.2,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "6",
+      "building": "commercial",
+      "footprint_xy_m": [
+        [
+          -1634.96,
+          -1177.83
+        ],
+        [
+          -1629.81,
+          -1168.4
+        ],
+        [
+          -1622.79,
+          -1155.42
+        ],
+        [
+          -1618.16,
+          -1146.71
+        ],
+        [
+          -1603.64,
+          -1139.28
+        ],
+        [
+          -1544.82,
+          -1172.1
+        ],
+        [
+          -1570.6,
+          -1214.65
+        ],
+        [
+          -1582.46,
+          -1207.57
+        ],
+        [
+          -1578.62,
+          -1201.18
+        ],
+        [
+          -1587.63,
+          -1195.61
+        ],
+        [
+          -1591.73,
+          -1202.09
+        ],
+        [
+          -1593.48,
+          -1201.06
+        ],
+        [
+          -1614.07,
+          -1188.75
+        ],
+        [
+          -1604.68,
+          -1173.39
+        ],
+        [
+          -1582.35,
+          -1186.83
+        ],
+        [
+          -1586.13,
+          -1192.89
+        ],
+        [
+          -1576.93,
+          -1198.18
+        ],
+        [
+          -1565.22,
+          -1178.5
+        ],
+        [
+          -1604.01,
+          -1155.22
+        ],
+        [
+          -1622.27,
+          -1185.34
+        ],
+        [
+          -1634.96,
+          -1177.83
+        ]
+      ]
+    },
+    {
+      "osm_id": 133641456,
+      "name": "Azərbaycan Həmkarlar İttifaqları Konfederasiyası",
+      "source_xy_m": [
+        -1417.34,
+        -367.27
+      ],
+      "nearest_station_m": 2758.2,
+      "distance_from_centerline_m": 56.7,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "3",
+      "building": "apartments",
+      "footprint_xy_m": [
+        [
+          -1450.07,
+          -362.75
+        ],
+        [
+          -1396.05,
+          -344.37
+        ],
+        [
+          -1392.69,
+          -343.23
+        ],
+        [
+          -1383.11,
+          -371.5
+        ],
+        [
+          -1399.27,
+          -376.97
+        ],
+        [
+          -1404.38,
+          -361.88
+        ],
+        [
+          -1431.15,
+          -370.95
+        ],
+        [
+          -1425.77,
+          -386.84
+        ],
+        [
+          -1440.79,
+          -391.45
+        ],
+        [
+          -1450.07,
+          -362.75
+        ]
+      ]
+    },
+    {
+      "osm_id": 133641457,
+      "name": "Konstitusiya Məhkəməsi",
+      "source_xy_m": [
+        -1408.9,
+        -404.64
+      ],
+      "nearest_station_m": 2665.8,
+      "distance_from_centerline_m": 23.6,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "4",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1440.79,
+          -391.45
+        ],
+        [
+          -1425.77,
+          -386.84
+        ],
+        [
+          -1408.89,
+          -380.9
+        ],
+        [
+          -1405.05,
+          -390.94
+        ],
+        [
+          -1400.28,
+          -403.03
+        ],
+        [
+          -1390.32,
+          -407.54
+        ],
+        [
+          -1391.98,
+          -410.61
+        ],
+        [
+          -1388.56,
+          -411.97
+        ],
+        [
+          -1390.06,
+          -414.87
+        ],
+        [
+          -1396.22,
+          -426.51
+        ],
+        [
+          -1405.79,
+          -421.4
+        ],
+        [
+          -1431.23,
+          -422.82
+        ],
+        [
+          -1440.79,
+          -391.45
+        ]
+      ]
+    },
+    {
+      "osm_id": 152110144,
+      "name": "Azərbaycan Dövlət İqtisad Universiteti",
+      "source_xy_m": [
+        -1788.03,
+        -570.36
+      ],
+      "nearest_station_m": 3160.3,
+      "distance_from_centerline_m": 57.8,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "university",
+      "footprint_xy_m": [
+        [
+          -1722.21,
+          -562.64
+        ],
+        [
+          -1751.03,
+          -580.73
+        ],
+        [
+          -1757.89,
+          -570.44
+        ],
+        [
+          -1749.2,
+          -564.49
+        ],
+        [
+          -1755.9,
+          -554.35
+        ],
+        [
+          -1747.37,
+          -549.4
+        ],
+        [
+          -1763.45,
+          -524.39
+        ],
+        [
+          -1788.77,
+          -538.64
+        ],
+        [
+          -1784.65,
+          -544.59
+        ],
+        [
+          -1789.91,
+          -550.54
+        ],
+        [
+          -1775.5,
+          -566.32
+        ],
+        [
+          -1784.65,
+          -576.61
+        ],
+        [
+          -1801.34,
+          -562.43
+        ],
+        [
+          -1804.77,
+          -565.4
+        ],
+        [
+          -1810.26,
+          -560.6
+        ],
+        [
+          -1813.07,
+          -565.78
+        ],
+        [
+          -1805.91,
+          -569.98
+        ],
+        [
+          -1812.32,
+          -585.53
+        ],
+        [
+          -1819.48,
+          -582.71
+        ],
+        [
+          -1821.01,
+          -585.99
+        ],
+        [
+          -1807.75,
+          -591.94
+        ],
+        [
+          -1808.27,
+          -594.14
+        ],
+        [
+          -1805.3,
+          -594.37
+        ],
+        [
+          -1802.26,
+          -585.08
+        ],
+        [
+          -1787.69,
+          -588.65
+        ],
+        [
+          -1788.31,
+          -591.02
+        ],
+        [
+          -1785.56,
+          -591.7
+        ],
+        [
+          -1788.89,
+          -606.47
+        ],
+        [
+          -1790.44,
+          -613.35
+        ],
+        [
+          -1811.63,
+          -605.2
+        ],
+        [
+          -1840.97,
+          -596.66
+        ],
+        [
+          -1821.24,
+          -546.88
+        ],
+        [
+          -1802.49,
+          -529.27
+        ],
+        [
+          -1759.5,
+          -503.65
+        ],
+        [
+          -1722.21,
+          -562.64
+        ]
+      ]
+    },
+    {
+      "osm_id": 152184311,
+      "name": "Azərbaycan Dövlət Kukla Teatrı",
+      "source_xy_m": [
+        -1195.28,
+        -641.71
+      ],
+      "nearest_station_m": 4631.9,
+      "distance_from_centerline_m": 44.2,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1220.25,
+          -630.59
+        ],
+        [
+          -1197.14,
+          -613.63
+        ],
+        [
+          -1191.3,
+          -621.59
+        ],
+        [
+          -1183.92,
+          -631.64
+        ],
+        [
+          -1189.28,
+          -635.58
+        ],
+        [
+          -1182.13,
+          -645.32
+        ],
+        [
+          -1183.78,
+          -646.54
+        ],
+        [
+          -1185.86,
+          -648.05
+        ],
+        [
+          -1183.35,
+          -651.47
+        ],
+        [
+          -1192.02,
+          -657.84
+        ],
+        [
+          -1193.57,
+          -655.73
+        ],
+        [
+          -1196.84,
+          -658.13
+        ],
+        [
+          -1203.74,
+          -648.71
+        ],
+        [
+          -1205.82,
+          -650.25
+        ],
+        [
+          -1220.25,
+          -630.59
+        ]
+      ]
+    },
+    {
+      "osm_id": 152190583,
+      "name": "Four Seasons",
+      "source_xy_m": [
+        -1548.56,
+        -1027.09
+      ],
+      "nearest_station_m": 4089.1,
+      "distance_from_centerline_m": 36.1,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "9",
+      "building": "hotel",
+      "footprint_xy_m": [
+        [
+          -1592.32,
+          -1057.13
+        ],
+        [
+          -1555.99,
+          -1074.31
+        ],
+        [
+          -1552.8,
+          -1073.76
+        ],
+        [
+          -1550.1,
+          -1072.51
+        ],
+        [
+          -1548.45,
+          -1070.34
+        ],
+        [
+          -1525.05,
+          -1021.01
+        ],
+        [
+          -1524.46,
+          -1018.42
+        ],
+        [
+          -1524.77,
+          -1015.13
+        ],
+        [
+          -1526.61,
+          -1012.66
+        ],
+        [
+          -1555.77,
+          -998.89
+        ],
+        [
+          -1552.94,
+          -992.89
+        ],
+        [
+          -1519.05,
+          -1008.9
+        ],
+        [
+          -1510.32,
+          -990.44
+        ],
+        [
+          -1551.59,
+          -970.93
+        ],
+        [
+          -1560.86,
+          -990.54
+        ],
+        [
+          -1582.14,
+          -1035.59
+        ],
+        [
+          -1592.32,
+          -1057.13
+        ]
+      ]
+    },
+    {
+      "osm_id": 152190848,
+      "name": "Azerbaijan State Philharmonic",
+      "source_xy_m": [
+        -1866.62,
+        -939.27
+      ],
+      "nearest_station_m": 3590.5,
+      "distance_from_centerline_m": 22.6,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "2",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1866.8,
+          -912.31
+        ],
+        [
+          -1868.67,
+          -914.85
+        ],
+        [
+          -1871.04,
+          -914.26
+        ],
+        [
+          -1873.45,
+          -914.7
+        ],
+        [
+          -1875.44,
+          -916.11
+        ],
+        [
+          -1876.67,
+          -918.23
+        ],
+        [
+          -1876.9,
+          -920.67
+        ],
+        [
+          -1876.1,
+          -922.98
+        ],
+        [
+          -1874.4,
+          -924.74
+        ],
+        [
+          -1872.12,
+          -925.63
+        ],
+        [
+          -1869.68,
+          -925.49
+        ],
+        [
+          -1867.52,
+          -924.34
+        ],
+        [
+          -1855.08,
+          -931.11
+        ],
+        [
+          -1859.76,
+          -939.56
+        ],
+        [
+          -1863.87,
+          -939.7
+        ],
+        [
+          -1866.99,
+          -940.59
+        ],
+        [
+          -1870.83,
+          -942.9
+        ],
+        [
+          -1873.15,
+          -945.3
+        ],
+        [
+          -1874.92,
+          -948.27
+        ],
+        [
+          -1876.11,
+          -952.44
+        ],
+        [
+          -1876.03,
+          -956.89
+        ],
+        [
+          -1874.65,
+          -961.09
+        ],
+        [
+          -1872.72,
+          -964.0
+        ],
+        [
+          -1871.05,
+          -965.69
+        ],
+        [
+          -1867.47,
+          -968.35
+        ],
+        [
+          -1873.49,
+          -979.99
+        ],
+        [
+          -1823.54,
+          -1003.94
+        ],
+        [
+          -1796.76,
+          -952.39
+        ],
+        [
+          -1866.8,
+          -912.31
+        ]
+      ]
+    },
+    {
+      "osm_id": 152192127,
+      "name": "Səfərbərlik və Hərbi Xidmətə Çağırış üzrə Dövlət Xidməti / Hərbi Komissarlıq",
+      "source_xy_m": [
+        -803.52,
+        -297.12
+      ],
+      "nearest_station_m": 5146.6,
+      "distance_from_centerline_m": 42.5,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -826.9,
+          -295.42
+        ],
+        [
+          -815.93,
+          -322.52
+        ],
+        [
+          -773.35,
+          -305.29
+        ],
+        [
+          -779.02,
+          -291.27
+        ],
+        [
+          -791.23,
+          -296.2
+        ],
+        [
+          -795.31,
+          -286.11
+        ],
+        [
+          -802.83,
+          -289.15
+        ],
+        [
+          -800.16,
+          -295.75
+        ],
+        [
+          -811.64,
+          -300.4
+        ],
+        [
+          -815.52,
+          -290.82
+        ],
+        [
+          -826.9,
+          -295.42
+        ]
+      ]
+    },
+    {
+      "osm_id": 152192175,
+      "name": "Azerbaijan State Maritime Academy",
+      "source_xy_m": [
+        -815.35,
+        -258.44
+      ],
+      "nearest_station_m": 1765.1,
+      "distance_from_centerline_m": 25.8,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -838.82,
+          -251.82
+        ],
+        [
+          -826.69,
+          -287.27
+        ],
+        [
+          -778.44,
+          -268.28
+        ],
+        [
+          -793.98,
+          -233.04
+        ],
+        [
+          -838.82,
+          -251.82
+        ]
+      ]
+    },
+    {
+      "osm_id": 152192304,
+      "name": "Baku Business Center",
+      "source_xy_m": [
+        -721.39,
+        -413.23
+      ],
+      "nearest_station_m": 5178.7,
+      "distance_from_centerline_m": 96.5,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "4",
+      "building": "office",
+      "footprint_xy_m": [
+        [
+          -741.27,
+          -391.29
+        ],
+        [
+          -741.91,
+          -398.18
+        ],
+        [
+          -741.28,
+          -407.14
+        ],
+        [
+          -739.45,
+          -415.86
+        ],
+        [
+          -735.07,
+          -431.32
+        ],
+        [
+          -727.52,
+          -445.24
+        ],
+        [
+          -718.61,
+          -458.98
+        ],
+        [
+          -707.39,
+          -473.6
+        ],
+        [
+          -684.61,
+          -463.82
+        ],
+        [
+          -687.72,
+          -443.64
+        ],
+        [
+          -692.35,
+          -427.3
+        ],
+        [
+          -698.31,
+          -412.76
+        ],
+        [
+          -704.96,
+          -399.19
+        ],
+        [
+          -713.36,
+          -389.25
+        ],
+        [
+          -720.41,
+          -383.81
+        ],
+        [
+          -725.75,
+          -381.03
+        ],
+        [
+          -730.67,
+          -380.88
+        ],
+        [
+          -735.85,
+          -382.79
+        ],
+        [
+          -740.02,
+          -387.27
+        ],
+        [
+          -741.27,
+          -391.29
+        ]
+      ]
+    },
+    {
+      "osm_id": 152192493,
+      "name": "Park Boulevard",
+      "source_xy_m": [
+        -270.92,
+        -206.39
+      ],
+      "nearest_station_m": 5673.3,
+      "distance_from_centerline_m": 83.6,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "6",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -369.64,
+          -214.41
+        ],
+        [
+          -361.5,
+          -232.38
+        ],
+        [
+          -351.35,
+          -238.21
+        ],
+        [
+          -344.18,
+          -255.14
+        ],
+        [
+          -340.91,
+          -262.19
+        ],
+        [
+          -335.05,
+          -264.83
+        ],
+        [
+          -319.8,
+          -258.31
+        ],
+        [
+          -224.53,
+          -217.42
+        ],
+        [
+          -215.88,
+          -216.2
+        ],
+        [
+          -210.38,
+          -213.04
+        ],
+        [
+          -205.32,
+          -208.48
+        ],
+        [
+          -202.34,
+          -203.04
+        ],
+        [
+          -200.43,
+          -195.2
+        ],
+        [
+          -202.51,
+          -185.91
+        ],
+        [
+          -206.18,
+          -178.25
+        ],
+        [
+          -218.29,
+          -170.59
+        ],
+        [
+          -218.31,
+          -165.76
+        ],
+        [
+          -219.11,
+          -159.35
+        ],
+        [
+          -223.01,
+          -153.13
+        ],
+        [
+          -228.94,
+          -150.62
+        ],
+        [
+          -298.52,
+          -180.47
+        ],
+        [
+          -365.3,
+          -209.61
+        ],
+        [
+          -369.64,
+          -214.41
+        ]
+      ]
+    },
+    {
+      "osm_id": 152192676,
+      "name": "Park Inn Radisson",
+      "source_xy_m": [
+        -374.57,
+        -132.09
+      ],
+      "nearest_station_m": 5604.9,
+      "distance_from_centerline_m": 25.4,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "9",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -398.52,
+          -130.42
+        ],
+        [
+          -391.12,
+          -147.31
+        ],
+        [
+          -385.95,
+          -145.05
+        ],
+        [
+          -382.45,
+          -140.16
+        ],
+        [
+          -375.43,
+          -140.45
+        ],
+        [
+          -328.57,
+          -119.92
+        ],
+        [
+          -335.97,
+          -103.02
+        ],
+        [
+          -398.52,
+          -130.42
+        ]
+      ]
+    },
+    {
+      "osm_id": 152192792,
+      "name": "Hilton",
+      "source_xy_m": [
+        -308.34,
+        -67.72
+      ],
+      "nearest_station_m": 5693.4,
+      "distance_from_centerline_m": 58.6,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "25",
+      "building": "hotel",
+      "footprint_xy_m": [
+        [
+          -302.44,
+          -49.53
+        ],
+        [
+          -314.67,
+          -17.26
+        ],
+        [
+          -332.42,
+          -23.99
+        ],
+        [
+          -323.12,
+          -49.7
+        ],
+        [
+          -319.34,
+          -59.02
+        ],
+        [
+          -312.81,
+          -75.11
+        ],
+        [
+          -309.85,
+          -82.42
+        ],
+        [
+          -308.98,
+          -86.25
+        ],
+        [
+          -305.01,
+          -95.92
+        ],
+        [
+          -314.28,
+          -99.73
+        ],
+        [
+          -310.4,
+          -109.18
+        ],
+        [
+          -286.11,
+          -100.21
+        ],
+        [
+          -296.86,
+          -71.87
+        ],
+        [
+          -299.63,
+          -67.05
+        ],
+        [
+          -301.28,
+          -60.36
+        ],
+        [
+          -302.22,
+          -54.16
+        ],
+        [
+          -302.44,
+          -49.53
+        ]
+      ]
+    },
+    {
+      "osm_id": 152302601,
+      "name": "Prezident Aparatı",
+      "source_xy_m": [
+        -1972.05,
+        -993.5
+      ],
+      "nearest_station_m": 3622.7,
+      "distance_from_centerline_m": 86.0,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "9",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1960.09,
+          -958.97
+        ],
+        [
+          -1961.98,
+          -963.7
+        ],
+        [
+          -1969.76,
+          -987.99
+        ],
+        [
+          -1973.95,
+          -986.66
+        ],
+        [
+          -1975.19,
+          -990.51
+        ],
+        [
+          -1978.19,
+          -989.54
+        ],
+        [
+          -1980.05,
+          -994.98
+        ],
+        [
+          -1978.42,
+          -995.54
+        ],
+        [
+          -1979.91,
+          -999.88
+        ],
+        [
+          -1978.29,
+          -1000.44
+        ],
+        [
+          -1979.75,
+          -1004.69
+        ],
+        [
+          -1976.04,
+          -1005.96
+        ],
+        [
+          -1988.85,
+          -1043.32
+        ],
+        [
+          -1970.62,
+          -1049.59
+        ],
+        [
+          -1941.69,
+          -965.28
+        ],
+        [
+          -1960.09,
+          -958.97
+        ]
+      ]
+    },
+    {
+      "osm_id": 152809510,
+      "name": "House of Government",
+      "source_xy_m": [
+        -52.44,
+        126.21
+      ],
+      "nearest_station_m": 0.0,
+      "distance_from_centerline_m": 136.7,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "10",
+      "building": "government",
+      "footprint_xy_m": [
+        [
+          -108.85,
+          134.4
+        ],
+        [
+          -91.23,
+          142.15
+        ],
+        [
+          -89.6,
+          138.45
+        ],
+        [
+          -56.11,
+          153.19
+        ],
+        [
+          -29.62,
+          164.85
+        ],
+        [
+          -31.11,
+          168.23
+        ],
+        [
+          -13.29,
+          176.07
+        ],
+        [
+          -5.7,
+          158.82
+        ],
+        [
+          -8.48,
+          157.6
+        ],
+        [
+          3.07,
+          131.37
+        ],
+        [
+          5.72,
+          132.54
+        ],
+        [
+          13.82,
+          114.13
+        ],
+        [
+          -6.82,
+          105.05
+        ],
+        [
+          -14.76,
+          123.13
+        ],
+        [
+          -11.13,
+          124.73
+        ],
+        [
+          -22.81,
+          151.26
+        ],
+        [
+          -84.41,
+          124.15
+        ],
+        [
+          -73.15,
+          98.56
+        ],
+        [
+          -70.71,
+          99.63
+        ],
+        [
+          -62.76,
+          81.56
+        ],
+        [
+          -82.26,
+          72.98
+        ],
+        [
+          -90.44,
+          91.58
+        ],
+        [
+          -86.95,
+          93.11
+        ],
+        [
+          -89.86,
+          99.72
+        ],
+        [
+          -98.23,
+          118.73
+        ],
+        [
+          -101.36,
+          117.35
+        ],
+        [
+          -108.85,
+          134.4
+        ]
+      ]
+    },
+    {
+      "osm_id": 153876684,
+      "name": "Institute of Manuscripts of Azerbaijan",
+      "source_xy_m": [
+        -1707.91,
+        -507.5
+      ],
+      "nearest_station_m": 3051.8,
+      "distance_from_centerline_m": 46.0,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "4",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1705.94,
+          -539.0
+        ],
+        [
+          -1716.11,
+          -545.27
+        ],
+        [
+          -1742.72,
+          -502.13
+        ],
+        [
+          -1725.84,
+          -491.72
+        ],
+        [
+          -1728.13,
+          -488.03
+        ],
+        [
+          -1714.86,
+          -479.83
+        ],
+        [
+          -1712.75,
+          -483.25
+        ],
+        [
+          -1695.31,
+          -472.49
+        ],
+        [
+          -1674.61,
+          -506.05
+        ],
+        [
+          -1687.03,
+          -513.72
+        ],
+        [
+          -1692.04,
+          -505.61
+        ],
+        [
+          -1689.35,
+          -503.94
+        ],
+        [
+          -1698.69,
+          -488.81
+        ],
+        [
+          -1703.83,
+          -491.98
+        ],
+        [
+          -1700.49,
+          -497.39
+        ],
+        [
+          -1704.79,
+          -500.04
+        ],
+        [
+          -1703.31,
+          -502.45
+        ],
+        [
+          -1712.3,
+          -508.0
+        ],
+        [
+          -1715.24,
+          -503.25
+        ],
+        [
+          -1724.06,
+          -508.7
+        ],
+        [
+          -1718.77,
+          -517.28
+        ],
+        [
+          -1715.8,
+          -515.46
+        ],
+        [
+          -1710.9,
+          -523.38
+        ],
+        [
+          -1703.93,
+          -519.08
+        ],
+        [
+          -1700.22,
+          -525.09
+        ],
+        [
+          -1710.58,
+          -531.48
+        ],
+        [
+          -1705.94,
+          -539.0
+        ]
+      ]
+    },
+    {
+      "osm_id": 153876698,
+      "name": "Baku City Executive Power",
+      "source_xy_m": [
+        -1826.52,
+        -657.0
+      ],
+      "nearest_station_m": 3289.0,
+      "distance_from_centerline_m": 48.2,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "6",
+      "building": "government",
+      "footprint_xy_m": [
+        [
+          -1808.68,
+          -699.57
+        ],
+        [
+          -1860.84,
+          -685.24
+        ],
+        [
+          -1853.72,
+          -659.33
+        ],
+        [
+          -1857.74,
+          -658.23
+        ],
+        [
+          -1851.55,
+          -635.69
+        ],
+        [
+          -1847.44,
+          -636.81
+        ],
+        [
+          -1839.8,
+          -609.05
+        ],
+        [
+          -1782.12,
+          -624.93
+        ],
+        [
+          -1787.39,
+          -644.09
+        ],
+        [
+          -1808.58,
+          -638.26
+        ],
+        [
+          -1806.55,
+          -630.9
+        ],
+        [
+          -1825.1,
+          -625.79
+        ],
+        [
+          -1830.26,
+          -644.54
+        ],
+        [
+          -1825.88,
+          -645.74
+        ],
+        [
+          -1827.51,
+          -651.66
+        ],
+        [
+          -1823.6,
+          -652.73
+        ],
+        [
+          -1827.73,
+          -667.77
+        ],
+        [
+          -1833.73,
+          -666.13
+        ],
+        [
+          -1835.03,
+          -670.86
+        ],
+        [
+          -1831.78,
+          -671.76
+        ],
+        [
+          -1833.19,
+          -676.85
+        ],
+        [
+          -1827.42,
+          -678.44
+        ],
+        [
+          -1825.76,
+          -672.4
+        ],
+        [
+          -1802.94,
+          -678.66
+        ],
+        [
+          -1808.68,
+          -699.57
+        ]
+      ]
+    },
+    {
+      "osm_id": 153876703,
+      "name": "ISR Plaza",
+      "source_xy_m": [
+        -1362.32,
+        -24.28
+      ],
+      "nearest_station_m": 2778.3,
+      "distance_from_centerline_m": 363.1,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "14",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1381.2,
+          -18.56
+        ],
+        [
+          -1374.58,
+          -43.6
+        ],
+        [
+          -1334.0,
+          -32.85
+        ],
+        [
+          -1340.62,
+          -7.83
+        ],
+        [
+          -1381.2,
+          -18.56
+        ]
+      ]
+    },
+    {
+      "osm_id": 153876708,
+      "name": "Mərkəzi Univermaq, MUM, Nizami küç.",
+      "source_xy_m": [
+        -1602.79,
+        -170.84
+      ],
+      "nearest_station_m": 2830.6,
+      "distance_from_centerline_m": 219.5,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "3",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1630.37,
+          -166.55
+        ],
+        [
+          -1619.95,
+          -197.17
+        ],
+        [
+          -1561.42,
+          -177.27
+        ],
+        [
+          -1571.83,
+          -146.65
+        ],
+        [
+          -1630.37,
+          -166.55
+        ]
+      ]
+    },
+    {
+      "osm_id": 153876715,
+      "name": "Azerbaijan National Academy of Sciences Presidium",
+      "source_xy_m": [
+        -1649.54,
+        -487.59
+      ],
+      "nearest_station_m": 2983.4,
+      "distance_from_centerline_m": 54.4,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "4",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1658.42,
+          -509.96
+        ],
+        [
+          -1679.31,
+          -474.3
+        ],
+        [
+          -1685.98,
+          -459.95
+        ],
+        [
+          -1647.54,
+          -441.78
+        ],
+        [
+          -1624.71,
+          -493.76
+        ],
+        [
+          -1632.3,
+          -496.45
+        ],
+        [
+          -1636.91,
+          -486.28
+        ],
+        [
+          -1641.04,
+          -488.48
+        ],
+        [
+          -1642.72,
+          -485.08
+        ],
+        [
+          -1649.12,
+          -487.85
+        ],
+        [
+          -1648.51,
+          -489.19
+        ],
+        [
+          -1651.97,
+          -491.07
+        ],
+        [
+          -1650.79,
+          -493.13
+        ],
+        [
+          -1647.38,
+          -491.47
+        ],
+        [
+          -1645.2,
+          -492.5
+        ],
+        [
+          -1641.87,
+          -497.81
+        ],
+        [
+          -1658.42,
+          -509.96
+        ]
+      ]
+    },
+    {
+      "osm_id": 153885408,
+      "name": "Respawn Pub & Bar",
+      "source_xy_m": [
+        -1186.67,
+        -251.94
+      ],
+      "nearest_station_m": 1950.1,
+      "distance_from_centerline_m": 223.5,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1182.14,
+          -233.85
+        ],
+        [
+          -1166.31,
+          -253.87
+        ],
+        [
+          -1183.95,
+          -268.48
+        ],
+        [
+          -1188.11,
+          -263.87
+        ],
+        [
+          -1182.69,
+          -259.57
+        ],
+        [
+          -1188.16,
+          -252.55
+        ],
+        [
+          -1195.7,
+          -258.44
+        ],
+        [
+          -1202.53,
+          -250.86
+        ],
+        [
+          -1195.0,
+          -244.03
+        ],
+        [
+          -1182.14,
+          -233.85
+        ]
+      ]
+    },
+    {
+      "osm_id": 169688229,
+      "name": "La Casa Hotel Baku",
+      "source_xy_m": [
+        -1244.2,
+        -286.29
+      ],
+      "nearest_station_m": 2605.5,
+      "distance_from_centerline_m": 191.5,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "2",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1221.72,
+          -285.83
+        ],
+        [
+          -1240.62,
+          -260.65
+        ],
+        [
+          -1262.52,
+          -277.33
+        ],
+        [
+          -1257.14,
+          -284.45
+        ],
+        [
+          -1247.23,
+          -276.95
+        ],
+        [
+          -1241.93,
+          -283.95
+        ],
+        [
+          -1250.94,
+          -290.76
+        ],
+        [
+          -1249.56,
+          -292.59
+        ],
+        [
+          -1252.34,
+          -294.69
+        ],
+        [
+          -1245.46,
+          -303.78
+        ],
+        [
+          -1239.23,
+          -298.73
+        ],
+        [
+          -1221.72,
+          -285.83
+        ]
+      ]
+    },
+    {
+      "osm_id": 169688713,
+      "name": "AzerEnerji JSC",
+      "source_xy_m": [
+        -1172.95,
+        -371.73
+      ],
+      "nearest_station_m": 2155.1,
+      "distance_from_centerline_m": 145.4,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "commercial",
+      "footprint_xy_m": [
+        [
+          -1193.34,
+          -363.47
+        ],
+        [
+          -1168.9,
+          -344.35
+        ],
+        [
+          -1148.1,
+          -370.94
+        ],
+        [
+          -1148.58,
+          -371.32
+        ],
+        [
+          -1168.23,
+          -386.7
+        ],
+        [
+          -1172.41,
+          -389.95
+        ],
+        [
+          -1177.88,
+          -382.97
+        ],
+        [
+          -1164.87,
+          -372.8
+        ],
+        [
+          -1170.18,
+          -366.01
+        ],
+        [
+          -1183.32,
+          -376.29
+        ],
+        [
+          -1186.28,
+          -372.51
+        ],
+        [
+          -1193.34,
+          -363.47
+        ]
+      ]
+    },
+    {
+      "osm_id": 174868552,
+      "name": "Beer Hall",
+      "source_xy_m": [
+        -1066.95,
+        -119.75
+      ],
+      "nearest_station_m": 1901.8,
+      "distance_from_centerline_m": 220.6,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "3",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1081.48,
+          -113.89
+        ],
+        [
+          -1068.05,
+          -109.5
+        ],
+        [
+          -1066.39,
+          -114.61
+        ],
+        [
+          -1055.46,
+          -111.03
+        ],
+        [
+          -1053.33,
+          -117.54
+        ],
+        [
+          -1064.19,
+          -121.09
+        ],
+        [
+          -1059.35,
+          -135.89
+        ],
+        [
+          -1072.84,
+          -140.31
+        ],
+        [
+          -1081.48,
+          -113.89
+        ]
+      ]
+    },
+    {
+      "osm_id": 174900796,
+      "name": "National Dramatic Theater",
+      "source_xy_m": [
+        -1908.37,
+        281.38
+      ],
+      "nearest_station_m": 2903.0,
+      "distance_from_centerline_m": 752.2,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "4",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1870.88,
+          311.54
+        ],
+        [
+          -1858.91,
+          274.87
+        ],
+        [
+          -1921.34,
+          254.49
+        ],
+        [
+          -1923.64,
+          261.5
+        ],
+        [
+          -1928.87,
+          259.79
+        ],
+        [
+          -1936.42,
+          282.89
+        ],
+        [
+          -1931.14,
+          284.61
+        ],
+        [
+          -1933.28,
+          291.17
+        ],
+        [
+          -1870.88,
+          311.54
+        ]
+      ]
+    },
+    {
+      "osm_id": 175841296,
+      "name": "Xəqani Ticarət Mərkəzi",
+      "source_xy_m": [
+        -1175.75,
+        -64.08
+      ],
+      "nearest_station_m": 1921.9,
+      "distance_from_centerline_m": 329.9,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "4",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1202.67,
+          -55.67
+        ],
+        [
+          -1182.95,
+          -84.55
+        ],
+        [
+          -1178.29,
+          -85.69
+        ],
+        [
+          -1159.56,
+          -79.4
+        ],
+        [
+          -1137.92,
+          -71.87
+        ],
+        [
+          -1149.56,
+          -41.75
+        ],
+        [
+          -1183.23,
+          -53.01
+        ],
+        [
+          -1184.89,
+          -49.14
+        ],
+        [
+          -1202.67,
+          -55.67
+        ]
+      ]
+    },
+    {
+      "osm_id": 177366430,
+      "name": "Azerbaijan Airlines CJSC",
+      "source_xy_m": [
+        -367.94,
+        369.04
+      ],
+      "nearest_station_m": 892.6,
+      "distance_from_centerline_m": 128.1,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "4",
+      "building": "apartments",
+      "footprint_xy_m": [
+        [
+          -384.34,
+          392.2
+        ],
+        [
+          -371.19,
+          398.32
+        ],
+        [
+          -351.64,
+          351.36
+        ],
+        [
+          -351.8,
+          347.55
+        ],
+        [
+          -362.66,
+          342.83
+        ],
+        [
+          -369.63,
+          358.81
+        ],
+        [
+          -384.34,
+          392.2
+        ]
+      ]
+    },
+    {
+      "osm_id": 178623077,
+      "name": "Sapphire Hotel",
+      "source_xy_m": [
+        -1091.01,
+        298.42
+      ],
+      "nearest_station_m": 1391.2,
+      "distance_from_centerline_m": 413.0,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "20",
+      "building": "hotel",
+      "footprint_xy_m": [
+        [
+          -1126.14,
+          292.63
+        ],
+        [
+          -1119.11,
+          270.8
+        ],
+        [
+          -1098.32,
+          277.6
+        ],
+        [
+          -1099.14,
+          280.31
+        ],
+        [
+          -1071.48,
+          288.68
+        ],
+        [
+          -1070.77,
+          286.34
+        ],
+        [
+          -1049.88,
+          292.67
+        ],
+        [
+          -1056.29,
+          313.83
+        ],
+        [
+          -1057.65,
+          313.42
+        ],
+        [
+          -1059.07,
+          318.09
+        ],
+        [
+          -1070.41,
+          314.66
+        ],
+        [
+          -1069.71,
+          312.35
+        ],
+        [
+          -1077.35,
+          310.05
+        ],
+        [
+          -1076.83,
+          308.34
+        ],
+        [
+          -1103.66,
+          300.22
+        ],
+        [
+          -1103.99,
+          301.32
+        ],
+        [
+          -1111.66,
+          299.0
+        ],
+        [
+          -1112.73,
+          302.53
+        ],
+        [
+          -1126.27,
+          298.43
+        ],
+        [
+          -1124.61,
+          292.96
+        ],
+        [
+          -1126.14,
+          292.63
+        ]
+      ]
+    },
+    {
+      "osm_id": 179114320,
+      "name": "Boutique Hotel Avenue / Butik Otel Avenyu",
+      "source_xy_m": [
+        -882.41,
+        -238.1
+      ],
+      "nearest_station_m": 1813.4,
+      "distance_from_centerline_m": 23.3,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "4",
+      "building": "residential",
+      "footprint_xy_m": [
+        [
+          -860.71,
+          -231.86
+        ],
+        [
+          -862.15,
+          -236.77
+        ],
+        [
+          -894.09,
+          -257.51
+        ],
+        [
+          -900.75,
+          -247.24
+        ],
+        [
+          -905.07,
+          -240.55
+        ],
+        [
+          -896.39,
+          -234.93
+        ],
+        [
+          -892.19,
+          -241.41
+        ],
+        [
+          -876.58,
+          -231.32
+        ],
+        [
+          -875.47,
+          -227.54
+        ],
+        [
+          -860.71,
+          -231.86
+        ]
+      ]
+    },
+    {
+      "osm_id": 179120750,
+      "name": "State Theater for Young Spectators",
+      "source_xy_m": [
+        -690.26,
+        153.17
+      ],
+      "nearest_station_m": 1274.6,
+      "distance_from_centerline_m": 65.0,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -716.5,
+          149.54
+        ],
+        [
+          -706.78,
+          127.87
+        ],
+        [
+          -680.38,
+          139.72
+        ],
+        [
+          -664.6,
+          146.81
+        ],
+        [
+          -666.84,
+          151.8
+        ],
+        [
+          -670.16,
+          159.2
+        ],
+        [
+          -674.09,
+          167.95
+        ],
+        [
+          -685.58,
+          162.8
+        ],
+        [
+          -688.19,
+          168.63
+        ],
+        [
+          -707.93,
+          159.77
+        ],
+        [
+          -705.55,
+          154.46
+        ],
+        [
+          -716.5,
+          149.54
+        ]
+      ]
+    },
+    {
+      "osm_id": 196291853,
+      "name": "Qərb Universiteti",
+      "source_xy_m": [
+        -1945.31,
+        -850.72
+      ],
+      "nearest_station_m": 3498.1,
+      "distance_from_centerline_m": 50.8,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1977.92,
+          -840.07
+        ],
+        [
+          -1975.59,
+          -866.16
+        ],
+        [
+          -1969.99,
+          -865.65
+        ],
+        [
+          -1966.13,
+          -865.31
+        ],
+        [
+          -1967.07,
+          -854.78
+        ],
+        [
+          -1957.66,
+          -853.95
+        ],
+        [
+          -1957.34,
+          -857.65
+        ],
+        [
+          -1945.51,
+          -856.6
+        ],
+        [
+          -1946.49,
+          -845.7
+        ],
+        [
+          -1937.47,
+          -844.89
+        ],
+        [
+          -1937.12,
+          -848.89
+        ],
+        [
+          -1927.13,
+          -847.99
+        ],
+        [
+          -1925.98,
+          -860.83
+        ],
+        [
+          -1906.5,
+          -859.08
+        ],
+        [
+          -1907.2,
+          -851.24
+        ],
+        [
+          -1907.67,
+          -845.97
+        ],
+        [
+          -1908.76,
+          -833.88
+        ],
+        [
+          -1941.98,
+          -836.86
+        ],
+        [
+          -1964.76,
+          -838.89
+        ],
+        [
+          -1977.92,
+          -840.07
+        ]
+      ]
+    },
+    {
+      "osm_id": 196291860,
+      "name": "Venesiya Plaza",
+      "source_xy_m": [
+        -1916.79,
+        -952.54
+      ],
+      "nearest_station_m": 3602.6,
+      "distance_from_centerline_m": 27.6,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "commercial",
+      "footprint_xy_m": [
+        [
+          -1936.86,
+          -953.83
+        ],
+        [
+          -1910.54,
+          -969.42
+        ],
+        [
+          -1905.96,
+          -970.1
+        ],
+        [
+          -1901.39,
+          -968.64
+        ],
+        [
+          -1899.54,
+          -962.93
+        ],
+        [
+          -1900.21,
+          -933.31
+        ],
+        [
+          -1914.37,
+          -931.83
+        ],
+        [
+          -1926.5,
+          -931.3
+        ],
+        [
+          -1935.7,
+          -950.22
+        ],
+        [
+          -1936.86,
+          -953.83
+        ]
+      ]
+    },
+    {
+      "osm_id": 200195772,
+      "name": "Landmark-III",
+      "source_xy_m": [
+        -194.09,
+        368.3
+      ],
+      "nearest_station_m": 735.8,
+      "distance_from_centerline_m": 61.2,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "12",
+      "building": "office",
+      "footprint_xy_m": [
+        [
+          -213.49,
+          377.87
+        ],
+        [
+          -209.98,
+          369.13
+        ],
+        [
+          -202.47,
+          350.43
+        ],
+        [
+          -199.64,
+          351.57
+        ],
+        [
+          -176.1,
+          361.01
+        ],
+        [
+          -162.8,
+          366.52
+        ],
+        [
+          -174.73,
+          392.01
+        ],
+        [
+          -213.49,
+          377.87
+        ]
+      ]
+    },
+    {
+      "osm_id": 200195774,
+      "name": "Rotunda",
+      "source_xy_m": [
+        -235.29,
+        350.0
+      ],
+      "nearest_station_m": 780.0,
+      "distance_from_centerline_m": 59.8,
+      "side": "right",
+      "height_tag": "8",
+      "levels_tag": null,
+      "building": "office",
+      "footprint_xy_m": [
+        [
+          -240.94,
+          364.54
+        ],
+        [
+          -247.09,
+          360.36
+        ],
+        [
+          -250.83,
+          353.94
+        ],
+        [
+          -251.41,
+          346.53
+        ],
+        [
+          -248.71,
+          339.59
+        ],
+        [
+          -243.28,
+          334.52
+        ],
+        [
+          -236.18,
+          332.31
+        ],
+        [
+          -228.82,
+          333.39
+        ],
+        [
+          -222.67,
+          337.57
+        ],
+        [
+          -218.93,
+          343.99
+        ],
+        [
+          -218.35,
+          351.4
+        ],
+        [
+          -221.05,
+          358.33
+        ],
+        [
+          -226.49,
+          363.41
+        ],
+        [
+          -233.58,
+          365.62
+        ],
+        [
+          -240.94,
+          364.54
+        ]
+      ]
+    },
+    {
+      "osm_id": 200195779,
+      "name": "Old Mill",
+      "source_xy_m": [
+        -239.09,
+        309.09
+      ],
+      "nearest_station_m": 800.1,
+      "distance_from_centerline_m": 23.4,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "office",
+      "footprint_xy_m": [
+        [
+          -265.79,
+          307.27
+        ],
+        [
+          -206.72,
+          330.99
+        ],
+        [
+          -199.03,
+          311.82
+        ],
+        [
+          -258.1,
+          288.1
+        ],
+        [
+          -265.79,
+          307.27
+        ]
+      ]
+    },
+    {
+      "osm_id": 200195781,
+      "name": "Landmark-1",
+      "source_xy_m": [
+        -266.46,
+        334.46
+      ],
+      "nearest_station_m": 816.2,
+      "distance_from_centerline_m": 57.2,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "office",
+      "footprint_xy_m": [
+        [
+          -279.92,
+          346.11
+        ],
+        [
+          -265.19,
+          309.39
+        ],
+        [
+          -246.27,
+          316.99
+        ],
+        [
+          -261.0,
+          353.69
+        ],
+        [
+          -279.92,
+          346.11
+        ]
+      ]
+    },
+    {
+      "osm_id": 211461712,
+      "name": "City Center / Monolit",
+      "source_xy_m": [
+        -1639.03,
+        -372.9
+      ],
+      "nearest_station_m": 2927.1,
+      "distance_from_centerline_m": 45.0,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "4",
+      "building": "retail",
+      "footprint_xy_m": [
+        [
+          -1678.37,
+          -367.85
+        ],
+        [
+          -1664.35,
+          -362.49
+        ],
+        [
+          -1626.72,
+          -348.53
+        ],
+        [
+          -1605.35,
+          -340.61
+        ],
+        [
+          -1596.27,
+          -365.32
+        ],
+        [
+          -1588.83,
+          -386.16
+        ],
+        [
+          -1661.32,
+          -422.3
+        ],
+        [
+          -1665.83,
+          -409.33
+        ],
+        [
+          -1605.12,
+          -380.16
+        ],
+        [
+          -1608.48,
+          -369.91
+        ],
+        [
+          -1612.38,
+          -358.0
+        ],
+        [
+          -1622.01,
+          -361.52
+        ],
+        [
+          -1659.61,
+          -375.26
+        ],
+        [
+          -1673.82,
+          -381.11
+        ],
+        [
+          -1677.69,
+          -370.0
+        ],
+        [
+          -1678.37,
+          -367.85
+        ]
+      ]
+    },
+    {
+      "osm_id": 217364414,
+      "name": "134 saylı Məktəb",
+      "source_xy_m": [
+        -1937.87,
+        -660.29
+      ],
+      "nearest_station_m": 3325.2,
+      "distance_from_centerline_m": 57.5,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1954.37,
+          -705.16
+        ],
+        [
+          -1909.14,
+          -718.19
+        ],
+        [
+          -1881.75,
+          -623.06
+        ],
+        [
+          -1950.9,
+          -603.15
+        ],
+        [
+          -1955.42,
+          -618.85
+        ],
+        [
+          -1945.12,
+          -621.82
+        ],
+        [
+          -1959.4,
+          -671.41
+        ],
+        [
+          -1953.77,
+          -673.03
+        ],
+        [
+          -1939.55,
+          -623.69
+        ],
+        [
+          -1909.79,
+          -632.26
+        ],
+        [
+          -1928.46,
+          -697.1
+        ],
+        [
+          -1950.24,
+          -690.82
+        ],
+        [
+          -1954.37,
+          -705.16
+        ]
+      ]
+    },
+    {
+      "osm_id": 220432121,
+      "name": "7 saylı Məktəb",
+      "source_xy_m": [
+        -602.7,
+        -6.71
+      ],
+      "nearest_station_m": 1262.5,
+      "distance_from_centerline_m": 116.8,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "4",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -626.96,
+          -9.62
+        ],
+        [
+          -578.64,
+          13.4
+        ],
+        [
+          -572.77,
+          0.78
+        ],
+        [
+          -579.38,
+          -2.25
+        ],
+        [
+          -612.93,
+          -17.93
+        ],
+        [
+          -621.26,
+          -21.73
+        ],
+        [
+          -626.96,
+          -9.62
+        ]
+      ]
+    },
+    {
+      "osm_id": 222091547,
+      "name": "BEGOC Business Center",
+      "source_xy_m": [
+        -320.12,
+        47.19
+      ],
+      "nearest_station_m": 5725.6,
+      "distance_from_centerline_m": 169.0,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "6",
+      "building": "office",
+      "footprint_xy_m": [
+        [
+          -351.18,
+          26.97
+        ],
+        [
+          -324.34,
+          39.4
+        ],
+        [
+          -343.55,
+          80.87
+        ],
+        [
+          -322.3,
+          90.71
+        ],
+        [
+          -302.68,
+          48.37
+        ],
+        [
+          -275.92,
+          60.75
+        ],
+        [
+          -267.55,
+          42.68
+        ],
+        [
+          -342.4,
+          8.01
+        ],
+        [
+          -351.18,
+          26.97
+        ]
+      ]
+    },
+    {
+      "osm_id": 253081011,
+      "name": "189-190 saylı məktəb",
+      "source_xy_m": [
+        -1824.7,
+        -331.85
+      ],
+      "nearest_station_m": 3059.8,
+      "distance_from_centerline_m": 164.8,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1782.47,
+          -354.96
+        ],
+        [
+          -1765.84,
+          -349.62
+        ],
+        [
+          -1781.64,
+          -300.42
+        ],
+        [
+          -1796.73,
+          -305.26
+        ],
+        [
+          -1802.44,
+          -287.47
+        ],
+        [
+          -1821.76,
+          -293.67
+        ],
+        [
+          -1819.42,
+          -300.98
+        ],
+        [
+          -1839.23,
+          -307.35
+        ],
+        [
+          -1841.41,
+          -300.59
+        ],
+        [
+          -1850.45,
+          -303.58
+        ],
+        [
+          -1846.53,
+          -315.28
+        ],
+        [
+          -1850.51,
+          -316.02
+        ],
+        [
+          -1847.84,
+          -331.19
+        ],
+        [
+          -1845.77,
+          -330.95
+        ],
+        [
+          -1844.87,
+          -336.07
+        ],
+        [
+          -1864.57,
+          -340.06
+        ],
+        [
+          -1861.48,
+          -356.54
+        ],
+        [
+          -1858.56,
+          -373.1
+        ],
+        [
+          -1842.06,
+          -370.09
+        ],
+        [
+          -1841.14,
+          -375.76
+        ],
+        [
+          -1827.73,
+          -373.29
+        ],
+        [
+          -1831.28,
+          -353.6
+        ],
+        [
+          -1854.55,
+          -357.84
+        ],
+        [
+          -1855.04,
+          -355.43
+        ],
+        [
+          -1855.91,
+          -351.16
+        ],
+        [
+          -1832.3,
+          -346.63
+        ],
+        [
+          -1837.46,
+          -318.38
+        ],
+        [
+          -1814.58,
+          -310.93
+        ],
+        [
+          -1813.92,
+          -313.0
+        ],
+        [
+          -1798.61,
+          -308.09
+        ],
+        [
+          -1793.89,
+          -322.81
+        ],
+        [
+          -1790.0,
+          -321.56
+        ],
+        [
+          -1784.55,
+          -338.55
+        ],
+        [
+          -1787.44,
+          -339.48
+        ],
+        [
+          -1782.47,
+          -354.96
+        ]
+      ]
+    },
+    {
+      "osm_id": 279935608,
+      "name": "Dənizkənarı Bulvar İdarəsi",
+      "source_xy_m": [
+        -1448.3,
+        -1019.99
+      ],
+      "nearest_station_m": 4141.4,
+      "distance_from_centerline_m": 49.3,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "2",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1444.6,
+          -1021.48
+        ],
+        [
+          -1435.63,
+          -1007.58
+        ],
+        [
+          -1424.92,
+          -1014.5
+        ],
+        [
+          -1441.25,
+          -1039.82
+        ],
+        [
+          -1467.04,
+          -1023.17
+        ],
+        [
+          -1463.1,
+          -1017.05
+        ],
+        [
+          -1458.47,
+          -1020.04
+        ],
+        [
+          -1455.05,
+          -1014.74
+        ],
+        [
+          -1444.6,
+          -1021.48
+        ]
+      ]
+    },
+    {
+      "osm_id": 286017123,
+      "name": "Landmark II",
+      "source_xy_m": [
+        -200.26,
+        338.55
+      ],
+      "nearest_station_m": 751.9,
+      "distance_from_centerline_m": 36.0,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "3",
+      "building": "office",
+      "footprint_xy_m": [
+        [
+          -185.8,
+          317.12
+        ],
+        [
+          -192.52,
+          333.84
+        ],
+        [
+          -199.64,
+          351.57
+        ],
+        [
+          -202.47,
+          350.43
+        ],
+        [
+          -209.98,
+          369.13
+        ],
+        [
+          -220.36,
+          364.96
+        ],
+        [
+          -206.72,
+          330.99
+        ],
+        [
+          -199.03,
+          311.82
+        ],
+        [
+          -185.8,
+          317.12
+        ]
+      ]
+    },
+    {
+      "osm_id": 286018678,
+      "name": "Bakı Şəhər Prokurorluğu",
+      "source_xy_m": [
+        -526.46,
+        17.64
+      ],
+      "nearest_station_m": 1182.1,
+      "distance_from_centerline_m": 126.5,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "5",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -517.51,
+          27.43
+        ],
+        [
+          -520.35,
+          33.79
+        ],
+        [
+          -548.05,
+          21.42
+        ],
+        [
+          -541.61,
+          7.02
+        ],
+        [
+          -530.78,
+          11.86
+        ],
+        [
+          -527.81,
+          5.22
+        ],
+        [
+          -521.92,
+          7.85
+        ],
+        [
+          -525.0,
+          14.72
+        ],
+        [
+          -514.02,
+          19.64
+        ],
+        [
+          -517.51,
+          27.43
+        ]
+      ]
+    },
+    {
+      "osm_id": 286018680,
+      "name": "Səbail Rayon İcra Hakimiyyəti",
+      "source_xy_m": [
+        -551.72,
+        1.74
+      ],
+      "nearest_station_m": 1210.2,
+      "distance_from_centerline_m": 130.4,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "5",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -548.05,
+          21.42
+        ],
+        [
+          -571.38,
+          10.47
+        ],
+        [
+          -560.37,
+          -15.16
+        ],
+        [
+          -554.36,
+          -13.1
+        ],
+        [
+          -561.04,
+          1.84
+        ],
+        [
+          -553.06,
+          5.41
+        ],
+        [
+          -544.73,
+          -13.23
+        ],
+        [
+          -534.58,
+          -8.69
+        ],
+        [
+          -541.61,
+          7.02
+        ],
+        [
+          -548.05,
+          21.42
+        ]
+      ]
+    },
+    {
+      "osm_id": 286018689,
+      "name": "Dolçasaray",
+      "source_xy_m": [
+        103.97,
+        477.25
+      ],
+      "nearest_station_m": 518.7,
+      "distance_from_centerline_m": 119.9,
+      "side": "right",
+      "height_tag": "22",
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          84.47,
+          482.05
+        ],
+        [
+          93.58,
+          456.11
+        ],
+        [
+          133.24,
+          470.03
+        ],
+        [
+          124.11,
+          495.98
+        ],
+        [
+          84.47,
+          482.05
+        ]
+      ]
+    },
+    {
+      "osm_id": 287815351,
+      "name": "NVC Ltd.",
+      "source_xy_m": [
+        -1128.94,
+        254.38
+      ],
+      "nearest_station_m": 1391.2,
+      "distance_from_centerline_m": 419.5,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1150.5,
+          252.8
+        ],
+        [
+          -1100.18,
+          268.33
+        ],
+        [
+          -1096.6,
+          256.74
+        ],
+        [
+          -1146.92,
+          241.21
+        ],
+        [
+          -1150.5,
+          252.8
+        ]
+      ]
+    },
+    {
+      "osm_id": 299418016,
+      "name": "Maiden Tower",
+      "source_xy_m": [
+        -1363.28,
+        -731.86
+      ],
+      "nearest_station_m": 4463.0,
+      "distance_from_centerline_m": 74.4,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "9",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1372.42,
+          -728.81
+        ],
+        [
+          -1372.83,
+          -732.28
+        ],
+        [
+          -1371.78,
+          -735.62
+        ],
+        [
+          -1369.47,
+          -738.24
+        ],
+        [
+          -1366.29,
+          -739.69
+        ],
+        [
+          -1362.8,
+          -739.72
+        ],
+        [
+          -1359.6,
+          -738.34
+        ],
+        [
+          -1356.94,
+          -734.77
+        ],
+        [
+          -1346.68,
+          -738.4
+        ],
+        [
+          -1346.07,
+          -735.45
+        ],
+        [
+          -1356.46,
+          -728.98
+        ],
+        [
+          -1358.17,
+          -725.94
+        ],
+        [
+          -1360.97,
+          -723.87
+        ],
+        [
+          -1364.38,
+          -723.09
+        ],
+        [
+          -1367.8,
+          -723.79
+        ],
+        [
+          -1370.65,
+          -725.81
+        ],
+        [
+          -1372.42,
+          -728.81
+        ]
+      ]
+    },
+    {
+      "osm_id": 299418022,
+      "name": "Two‑Storeyed Caravanserai / Gasim bey Caravanserai",
+      "source_xy_m": [
+        -1409.23,
+        -788.53
+      ],
+      "nearest_station_m": 4350.5,
+      "distance_from_centerline_m": 81.5,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "2",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1423.8,
+          -785.36
+        ],
+        [
+          -1404.18,
+          -770.74
+        ],
+        [
+          -1387.37,
+          -793.29
+        ],
+        [
+          -1406.99,
+          -807.91
+        ],
+        [
+          -1423.8,
+          -785.36
+        ]
+      ]
+    },
+    {
+      "osm_id": 299418023,
+      "name": "Seyid Murtuza Məscidi",
+      "source_xy_m": [
+        -1526.14,
+        -889.41
+      ],
+      "nearest_station_m": 4193.7,
+      "distance_from_centerline_m": 86.7,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "2",
+      "building": "mosque",
+      "footprint_xy_m": [
+        [
+          -1530.36,
+          -883.07
+        ],
+        [
+          -1531.61,
+          -897.92
+        ],
+        [
+          -1519.81,
+          -898.91
+        ],
+        [
+          -1518.56,
+          -884.06
+        ],
+        [
+          -1530.36,
+          -883.07
+        ]
+      ]
+    },
+    {
+      "osm_id": 299418024,
+      "name": "Cümə Məscidi",
+      "source_xy_m": [
+        -1499.68,
+        -812.84
+      ],
+      "nearest_station_m": 4262.0,
+      "distance_from_centerline_m": 124.9,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "2",
+      "building": "mosque",
+      "footprint_xy_m": [
+        [
+          -1505.49,
+          -802.35
+        ],
+        [
+          -1510.84,
+          -823.54
+        ],
+        [
+          -1490.97,
+          -828.56
+        ],
+        [
+          -1485.61,
+          -807.38
+        ],
+        [
+          -1505.49,
+          -802.35
+        ]
+      ]
+    },
+    {
+      "osm_id": 299450010,
+      "name": "Multani Karvansaray",
+      "source_xy_m": [
+        -1353.23,
+        -645.57
+      ],
+      "nearest_station_m": 2416.5,
+      "distance_from_centerline_m": 66.1,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "2",
+      "building": "historic",
+      "footprint_xy_m": [
+        [
+          -1347.3,
+          -622.48
+        ],
+        [
+          -1361.87,
+          -625.08
+        ],
+        [
+          -1362.06,
+          -650.2
+        ],
+        [
+          -1362.22,
+          -670.54
+        ],
+        [
+          -1348.34,
+          -670.71
+        ],
+        [
+          -1348.17,
+          -664.81
+        ],
+        [
+          -1354.58,
+          -664.81
+        ],
+        [
+          -1354.06,
+          -632.89
+        ],
+        [
+          -1346.43,
+          -631.67
+        ],
+        [
+          -1347.3,
+          -622.48
+        ]
+      ]
+    },
+    {
+      "osm_id": 299450764,
+      "name": "Tomb of Shirvanshahs' Family",
+      "source_xy_m": [
+        -1737.81,
+        -724.76
+      ],
+      "nearest_station_m": 3329.2,
+      "distance_from_centerline_m": 152.7,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "2",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1745.38,
+          -721.91
+        ],
+        [
+          -1743.36,
+          -731.99
+        ],
+        [
+          -1729.9,
+          -729.29
+        ],
+        [
+          -1730.92,
+          -724.25
+        ],
+        [
+          -1731.93,
+          -719.21
+        ],
+        [
+          -1745.38,
+          -721.91
+        ]
+      ]
+    },
+    {
+      "osm_id": 299450765,
+      "name": "The Shah Mosque",
+      "source_xy_m": [
+        -1724.17,
+        -739.98
+      ],
+      "nearest_station_m": 3337.2,
+      "distance_from_centerline_m": 170.2,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "2",
+      "building": "mosque",
+      "footprint_xy_m": [
+        [
+          -1728.43,
+          -733.37
+        ],
+        [
+          -1728.42,
+          -747.29
+        ],
+        [
+          -1725.77,
+          -747.21
+        ],
+        [
+          -1724.03,
+          -745.97
+        ],
+        [
+          -1717.86,
+          -745.91
+        ],
+        [
+          -1717.48,
+          -733.34
+        ],
+        [
+          -1722.95,
+          -733.36
+        ],
+        [
+          -1728.43,
+          -733.37
+        ]
+      ]
+    },
+    {
+      "osm_id": 299469586,
+      "name": "Beşmərtəbə",
+      "source_xy_m": [
+        -1744.04,
+        386.5
+      ],
+      "nearest_station_m": 2798.5,
+      "distance_from_centerline_m": 792.7,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "5",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1706.5,
+          394.17
+        ],
+        [
+          -1702.31,
+          382.02
+        ],
+        [
+          -1730.27,
+          372.27
+        ],
+        [
+          -1757.71,
+          361.7
+        ],
+        [
+          -1763.28,
+          364.29
+        ],
+        [
+          -1769.66,
+          389.47
+        ],
+        [
+          -1774.64,
+          409.12
+        ],
+        [
+          -1762.88,
+          413.5
+        ],
+        [
+          -1757.57,
+          393.68
+        ],
+        [
+          -1753.12,
+          377.04
+        ],
+        [
+          -1706.5,
+          394.17
+        ]
+      ]
+    },
+    {
+      "osm_id": 318180621,
+      "name": "Mirvari Kafe",
+      "source_xy_m": [
+        -930.1,
+        -561.28
+      ],
+      "nearest_station_m": 4889.2,
+      "distance_from_centerline_m": 143.0,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "2",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -939.02,
+          -567.65
+        ],
+        [
+          -937.51,
+          -562.65
+        ],
+        [
+          -940.84,
+          -558.9
+        ],
+        [
+          -936.46,
+          -556.67
+        ],
+        [
+          -936.02,
+          -551.75
+        ],
+        [
+          -931.41,
+          -552.73
+        ],
+        [
+          -927.66,
+          -549.28
+        ],
+        [
+          -925.36,
+          -553.65
+        ],
+        [
+          -920.13,
+          -554.04
+        ],
+        [
+          -921.42,
+          -559.04
+        ],
+        [
+          -918.3,
+          -562.98
+        ],
+        [
+          -922.8,
+          -565.4
+        ],
+        [
+          -923.1,
+          -570.13
+        ],
+        [
+          -927.59,
+          -568.83
+        ],
+        [
+          -931.39,
+          -572.42
+        ],
+        [
+          -933.71,
+          -567.97
+        ],
+        [
+          -939.02,
+          -567.65
+        ]
+      ]
+    },
+    {
+      "osm_id": 360220302,
+      "name": "Sedef National Cuisine",
+      "source_xy_m": [
+        -1484.29,
+        -1234.37
+      ],
+      "nearest_station_m": 3988.6,
+      "distance_from_centerline_m": 132.0,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "2",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1489.38,
+          -1223.3
+        ],
+        [
+          -1493.21,
+          -1248.71
+        ],
+        [
+          -1478.82,
+          -1250.77
+        ],
+        [
+          -1470.64,
+          -1225.8
+        ],
+        [
+          -1489.38,
+          -1223.3
+        ]
+      ]
+    },
+    {
+      "osm_id": 360221018,
+      "name": "Carousel",
+      "source_xy_m": [
+        -1056.62,
+        -551.44
+      ],
+      "nearest_station_m": 4796.8,
+      "distance_from_centerline_m": 57.7,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "2",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1064.24,
+          -548.24
+        ],
+        [
+          -1061.4,
+          -544.57
+        ],
+        [
+          -1057.1,
+          -542.82
+        ],
+        [
+          -1052.5,
+          -543.45
+        ],
+        [
+          -1048.84,
+          -546.28
+        ],
+        [
+          -1047.08,
+          -550.58
+        ],
+        [
+          -1047.71,
+          -555.17
+        ],
+        [
+          -1050.55,
+          -558.83
+        ],
+        [
+          -1054.85,
+          -560.59
+        ],
+        [
+          -1059.6,
+          -559.96
+        ],
+        [
+          -1063.11,
+          -557.12
+        ],
+        [
+          -1064.87,
+          -552.84
+        ],
+        [
+          -1064.24,
+          -548.24
+        ]
+      ]
+    },
+    {
+      "osm_id": 383798214,
+      "name": "Courtyard Mariott",
+      "source_xy_m": [
+        -1561.72,
+        451.98
+      ],
+      "nearest_station_m": 2786.4,
+      "distance_from_centerline_m": 820.8,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "9",
+      "building": "hotel",
+      "footprint_xy_m": [
+        [
+          -1641.84,
+          430.22
+        ],
+        [
+          -1635.03,
+          409.4
+        ],
+        [
+          -1580.69,
+          427.7
+        ],
+        [
+          -1578.82,
+          422.81
+        ],
+        [
+          -1538.13,
+          438.38
+        ],
+        [
+          -1539.76,
+          442.66
+        ],
+        [
+          -1478.15,
+          466.23
+        ],
+        [
+          -1496.71,
+          514.74
+        ],
+        [
+          -1516.0,
+          507.36
+        ],
+        [
+          -1507.08,
+          478.39
+        ],
+        [
+          -1550.25,
+          463.41
+        ],
+        [
+          -1551.86,
+          458.17
+        ],
+        [
+          -1552.58,
+          456.79
+        ],
+        [
+          -1554.63,
+          453.89
+        ],
+        [
+          -1556.33,
+          452.15
+        ],
+        [
+          -1559.67,
+          449.72
+        ],
+        [
+          -1563.08,
+          448.17
+        ],
+        [
+          -1567.68,
+          447.23
+        ],
+        [
+          -1572.11,
+          447.38
+        ],
+        [
+          -1575.77,
+          448.32
+        ],
+        [
+          -1579.08,
+          449.89
+        ],
+        [
+          -1582.39,
+          452.38
+        ],
+        [
+          -1641.84,
+          430.22
+        ]
+      ]
+    },
+    {
+      "osm_id": 384666251,
+      "name": "Sat plaza",
+      "source_xy_m": [
+        -1701.51,
+        134.69
+      ],
+      "nearest_station_m": 2822.6,
+      "distance_from_centerline_m": 540.5,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "2",
+      "building": "retail",
+      "footprint_xy_m": [
+        [
+          -1716.79,
+          135.66
+        ],
+        [
+          -1682.16,
+          145.03
+        ],
+        [
+          -1678.79,
+          133.34
+        ],
+        [
+          -1713.03,
+          123.76
+        ],
+        [
+          -1716.79,
+          135.66
+        ]
+      ]
+    },
+    {
+      "osm_id": 384669516,
+      "name": "Bar POİNT Music bar",
+      "source_xy_m": [
+        -1508.64,
+        129.93
+      ],
+      "nearest_station_m": 2786.4,
+      "distance_from_centerline_m": 496.0,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "1",
+      "building": "restaurant",
+      "footprint_xy_m": [
+        [
+          -1481.35,
+          147.88
+        ],
+        [
+          -1540.05,
+          129.64
+        ],
+        [
+          -1534.54,
+          111.91
+        ],
+        [
+          -1522.06,
+          115.78
+        ],
+        [
+          -1523.68,
+          121.04
+        ],
+        [
+          -1477.47,
+          135.4
+        ],
+        [
+          -1481.35,
+          147.88
+        ]
+      ]
+    },
+    {
+      "osm_id": 384682388,
+      "name": "Maliyyə bazarlarına nəzarət palatası",
+      "source_xy_m": [
+        -894.18,
+        209.1
+      ],
+      "nearest_station_m": 1383.1,
+      "distance_from_centerline_m": 208.7,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "commercial",
+      "footprint_xy_m": [
+        [
+          -911.69,
+          187.22
+        ],
+        [
+          -910.41,
+          183.31
+        ],
+        [
+          -906.66,
+          184.54
+        ],
+        [
+          -851.87,
+          202.55
+        ],
+        [
+          -867.75,
+          250.86
+        ],
+        [
+          -885.32,
+          245.1
+        ],
+        [
+          -881.57,
+          233.82
+        ],
+        [
+          -877.77,
+          235.07
+        ],
+        [
+          -870.45,
+          212.81
+        ],
+        [
+          -905.4,
+          201.32
+        ],
+        [
+          -907.17,
+          206.68
+        ],
+        [
+          -917.03,
+          203.45
+        ],
+        [
+          -913.74,
+          193.43
+        ],
+        [
+          -911.69,
+          187.22
+        ]
+      ]
+    },
+    {
+      "osm_id": 387070885,
+      "name": "Palace of Happiness",
+      "source_xy_m": [
+        -1835.18,
+        -456.83
+      ],
+      "nearest_station_m": 3132.2,
+      "distance_from_centerline_m": 63.2,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "3",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1840.09,
+          -447.46
+        ],
+        [
+          -1847.27,
+          -448.79
+        ],
+        [
+          -1843.23,
+          -478.78
+        ],
+        [
+          -1825.17,
+          -475.5
+        ],
+        [
+          -1826.92,
+          -460.46
+        ],
+        [
+          -1828.75,
+          -450.96
+        ],
+        [
+          -1829.91,
+          -445.27
+        ],
+        [
+          -1840.09,
+          -447.46
+        ]
+      ]
+    },
+    {
+      "osm_id": 387071128,
+      "name": "Stay High Restobar",
+      "source_xy_m": [
+        -1566.02,
+        -288.56
+      ],
+      "nearest_station_m": 2834.6,
+      "distance_from_centerline_m": 96.3,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "1",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1575.36,
+          -281.78
+        ],
+        [
+          -1568.23,
+          -303.95
+        ],
+        [
+          -1552.02,
+          -298.72
+        ],
+        [
+          -1559.15,
+          -276.56
+        ],
+        [
+          -1575.36,
+          -281.78
+        ]
+      ]
+    },
+    {
+      "osm_id": 430079930,
+      "name": "New High Building",
+      "source_xy_m": [
+        -1615.7,
+        261.96
+      ],
+      "nearest_station_m": 2794.4,
+      "distance_from_centerline_m": 639.9,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "12",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1628.39,
+          273.5
+        ],
+        [
+          -1606.82,
+          279.74
+        ],
+        [
+          -1596.66,
+          244.65
+        ],
+        [
+          -1618.24,
+          238.41
+        ],
+        [
+          -1628.39,
+          273.5
+        ]
+      ]
+    },
+    {
+      "osm_id": 451796958,
+      "name": "Carousel",
+      "source_xy_m": [
+        -586.56,
+        -317.05
+      ],
+      "nearest_station_m": 5339.6,
+      "distance_from_centerline_m": 61.1,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -594.19,
+          -313.85
+        ],
+        [
+          -591.35,
+          -310.18
+        ],
+        [
+          -587.05,
+          -308.43
+        ],
+        [
+          -582.46,
+          -309.06
+        ],
+        [
+          -578.79,
+          -311.89
+        ],
+        [
+          -577.04,
+          -316.19
+        ],
+        [
+          -577.67,
+          -320.79
+        ],
+        [
+          -580.51,
+          -324.45
+        ],
+        [
+          -584.8,
+          -326.21
+        ],
+        [
+          -589.4,
+          -325.58
+        ],
+        [
+          -593.07,
+          -322.74
+        ],
+        [
+          -594.82,
+          -318.45
+        ],
+        [
+          -594.19,
+          -313.85
+        ]
+      ]
+    },
+    {
+      "osm_id": 465973262,
+      "name": "Cool Bears Game Studio",
+      "source_xy_m": [
+        -645.32,
+        -193.88
+      ],
+      "nearest_station_m": 1620.4,
+      "distance_from_centerline_m": 57.7,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "apartments",
+      "footprint_xy_m": [
+        [
+          -652.7,
+          -219.7
+        ],
+        [
+          -639.58,
+          -213.71
+        ],
+        [
+          -651.16,
+          -188.3
+        ],
+        [
+          -621.91,
+          -174.96
+        ],
+        [
+          -628.4,
+          -160.74
+        ],
+        [
+          -670.77,
+          -180.05
+        ],
+        [
+          -652.7,
+          -219.7
+        ]
+      ]
+    },
+    {
+      "osm_id": 467246402,
+      "name": "E&N Home",
+      "source_xy_m": [
+        -1153.3,
+        -508.81
+      ],
+      "nearest_station_m": 2223.5,
+      "distance_from_centerline_m": 25.5,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "house",
+      "footprint_xy_m": [
+        [
+          -1145.72,
+          -496.65
+        ],
+        [
+          -1142.49,
+          -500.92
+        ],
+        [
+          -1140.87,
+          -505.01
+        ],
+        [
+          -1141.34,
+          -509.61
+        ],
+        [
+          -1171.42,
+          -532.41
+        ],
+        [
+          -1179.27,
+          -522.07
+        ],
+        [
+          -1159.54,
+          -507.12
+        ],
+        [
+          -1145.72,
+          -496.65
+        ]
+      ]
+    },
+    {
+      "osm_id": 469204315,
+      "name": "InterContinental",
+      "source_xy_m": [
+        -662.51,
+        -122.99
+      ],
+      "nearest_station_m": 1588.2,
+      "distance_from_centerline_m": 43.7,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -693.35,
+          -126.73
+        ],
+        [
+          -658.47,
+          -110.2
+        ],
+        [
+          -657.35,
+          -112.55
+        ],
+        [
+          -646.0,
+          -107.18
+        ],
+        [
+          -643.34,
+          -106.04
+        ],
+        [
+          -629.1,
+          -135.24
+        ],
+        [
+          -679.11,
+          -159.27
+        ],
+        [
+          -693.35,
+          -126.73
+        ]
+      ]
+    },
+    {
+      "osm_id": 624702751,
+      "name": "Chay Baghi 145",
+      "source_xy_m": [
+        -1439.2,
+        -697.44
+      ],
+      "nearest_station_m": 4487.2,
+      "distance_from_centerline_m": 155.8,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1445.84,
+          -694.31
+        ],
+        [
+          -1436.72,
+          -691.06
+        ],
+        [
+          -1430.3,
+          -697.08
+        ],
+        [
+          -1433.51,
+          -702.43
+        ],
+        [
+          -1443.01,
+          -705.44
+        ],
+        [
+          -1445.84,
+          -694.31
+        ]
+      ]
+    },
+    {
+      "osm_id": 694786373,
+      "name": "Underground Bath of Baku",
+      "source_xy_m": [
+        -1403.34,
+        -450.17
+      ],
+      "nearest_station_m": 2649.7,
+      "distance_from_centerline_m": 19.3,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "2",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1428.84,
+          -442.14
+        ],
+        [
+          -1425.62,
+          -455.17
+        ],
+        [
+          -1410.64,
+          -453.86
+        ],
+        [
+          -1405.54,
+          -461.13
+        ],
+        [
+          -1382.27,
+          -458.33
+        ],
+        [
+          -1382.72,
+          -452.55
+        ],
+        [
+          -1386.49,
+          -452.2
+        ],
+        [
+          -1387.48,
+          -451.12
+        ],
+        [
+          -1394.98,
+          -442.91
+        ],
+        [
+          -1403.36,
+          -440.34
+        ],
+        [
+          -1428.84,
+          -442.14
+        ]
+      ]
+    },
+    {
+      "osm_id": 809349515,
+      "name": "Baku Khans' Palace",
+      "source_xy_m": [
+        -1403.79,
+        -517.57
+      ],
+      "nearest_station_m": 2549.2,
+      "distance_from_centerline_m": 72.7,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "2",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1416.75,
+          -506.99
+        ],
+        [
+          -1411.01,
+          -531.63
+        ],
+        [
+          -1410.16,
+          -535.3
+        ],
+        [
+          -1399.12,
+          -532.72
+        ],
+        [
+          -1403.2,
+          -515.2
+        ],
+        [
+          -1385.38,
+          -511.42
+        ],
+        [
+          -1387.97,
+          -500.29
+        ],
+        [
+          -1416.75,
+          -506.99
+        ]
+      ]
+    },
+    {
+      "osm_id": 809349516,
+      "name": "Baku Khans' Palace",
+      "source_xy_m": [
+        -1412.26,
+        -473.7
+      ],
+      "nearest_station_m": 2645.7,
+      "distance_from_centerline_m": 44.1,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "2",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1425.62,
+          -464.15
+        ],
+        [
+          -1420.69,
+          -490.05
+        ],
+        [
+          -1395.66,
+          -485.28
+        ],
+        [
+          -1397.75,
+          -474.32
+        ],
+        [
+          -1408.8,
+          -476.42
+        ],
+        [
+          -1411.64,
+          -461.49
+        ],
+        [
+          -1425.62,
+          -464.15
+        ]
+      ]
+    },
+    {
+      "osm_id": 809349518,
+      "name": "Qədim Hamam",
+      "source_xy_m": [
+        -1619.99,
+        -1000.16
+      ],
+      "nearest_station_m": 3876.0,
+      "distance_from_centerline_m": 105.1,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "1",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1632.68,
+          -1006.72
+        ],
+        [
+          -1614.61,
+          -1018.38
+        ],
+        [
+          -1605.24,
+          -999.29
+        ],
+        [
+          -1615.18,
+          -988.09
+        ],
+        [
+          -1617.7,
+          -991.86
+        ],
+        [
+          -1621.81,
+          -990.02
+        ],
+        [
+          -1632.68,
+          -1006.72
+        ]
+      ]
+    },
+    {
+      "osm_id": 822375068,
+      "name": "Baku City Circuit",
+      "source_xy_m": [
+        -20.34,
+        25.99
+      ],
+      "nearest_station_m": 5995.0,
+      "distance_from_centerline_m": 31.9,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "1",
+      "building": "carport",
+      "footprint_xy_m": [
+        [
+          -126.52,
+          -4.77
+        ],
+        [
+          -117.5,
+          -25.38
+        ],
+        [
+          -115.99,
+          -28.82
+        ],
+        [
+          84.55,
+          59.11
+        ],
+        [
+          135.09,
+          81.27
+        ],
+        [
+          124.54,
+          105.32
+        ],
+        [
+          -126.52,
+          -4.77
+        ]
+      ]
+    },
+    {
+      "osm_id": 971028629,
+      "name": "Love in Ferma",
+      "source_xy_m": [
+        -1450.77,
+        -1088.31
+      ],
+      "nearest_station_m": 4081.1,
+      "distance_from_centerline_m": 79.1,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1452.33,
+          -1087.67
+        ],
+        [
+          -1459.98,
+          -1088.05
+        ],
+        [
+          -1443.62,
+          -1090.79
+        ],
+        [
+          -1445.6,
+          -1087.35
+        ],
+        [
+          -1452.33,
+          -1087.67
+        ]
+      ]
+    },
+    {
+      "osm_id": 1272980704,
+      "name": "Bubbles",
+      "source_xy_m": [
+        -1235.77,
+        -541.79
+      ],
+      "nearest_station_m": 2311.9,
+      "distance_from_centerline_m": 48.3,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1237.59,
+          -540.6
+        ],
+        [
+          -1234.43,
+          -544.64
+        ],
+        [
+          -1233.04,
+          -543.56
+        ],
+        [
+          -1236.2,
+          -539.52
+        ],
+        [
+          -1237.59,
+          -540.6
+        ]
+      ]
+    },
+    {
+      "osm_id": 1272980705,
+      "name": "Expresscut",
+      "source_xy_m": [
+        -1227.97,
+        -552.3
+      ],
+      "nearest_station_m": 2311.9,
+      "distance_from_centerline_m": 35.2,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1229.78,
+          -551.03
+        ],
+        [
+          -1226.72,
+          -555.28
+        ],
+        [
+          -1225.24,
+          -554.2
+        ],
+        [
+          -1228.3,
+          -549.97
+        ],
+        [
+          -1229.78,
+          -551.03
+        ]
+      ]
+    },
+    {
+      "osm_id": 1311487140,
+      "name": "Residential Building of the Shirvanshahs",
+      "source_xy_m": [
+        -1684.68,
+        -728.41
+      ],
+      "nearest_station_m": 3317.1,
+      "distance_from_centerline_m": 204.6,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "4",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1693.81,
+          -738.35
+        ],
+        [
+          -1693.89,
+          -745.72
+        ],
+        [
+          -1681.57,
+          -745.85
+        ],
+        [
+          -1681.53,
+          -741.64
+        ],
+        [
+          -1676.22,
+          -741.69
+        ],
+        [
+          -1676.17,
+          -736.04
+        ],
+        [
+          -1670.96,
+          -736.1
+        ],
+        [
+          -1670.89,
+          -729.5
+        ],
+        [
+          -1666.58,
+          -729.54
+        ],
+        [
+          -1666.5,
+          -721.17
+        ],
+        [
+          -1669.85,
+          -721.13
+        ],
+        [
+          -1669.73,
+          -708.61
+        ],
+        [
+          -1687.72,
+          -708.44
+        ],
+        [
+          -1690.96,
+          -708.41
+        ],
+        [
+          -1693.73,
+          -708.39
+        ],
+        [
+          -1693.77,
+          -712.63
+        ],
+        [
+          -1693.89,
+          -725.98
+        ],
+        [
+          -1693.94,
+          -730.44
+        ],
+        [
+          -1706.34,
+          -730.31
+        ],
+        [
+          -1706.42,
+          -738.22
+        ],
+        [
+          -1693.81,
+          -738.35
+        ]
+      ]
+    },
+    {
+      "osm_id": 1311487144,
+      "name": "Divankhana",
+      "source_xy_m": [
+        -1698.75,
+        -699.96
+      ],
+      "nearest_station_m": 3293.0,
+      "distance_from_centerline_m": 183.0,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1693.04,
+          -697.68
+        ],
+        [
+          -1696.65,
+          -694.14
+        ],
+        [
+          -1701.41,
+          -694.1
+        ],
+        [
+          -1704.94,
+          -697.62
+        ],
+        [
+          -1704.94,
+          -703.93
+        ],
+        [
+          -1704.94,
+          -706.04
+        ],
+        [
+          -1696.75,
+          -706.04
+        ],
+        [
+          -1693.07,
+          -702.44
+        ],
+        [
+          -1693.04,
+          -697.68
+        ]
+      ]
+    },
+    {
+      "osm_id": 1311487146,
+      "name": "Tomb of Seyid Yahya Bakuvi",
+      "source_xy_m": [
+        -1678.52,
+        -761.78
+      ],
+      "nearest_station_m": 3345.3,
+      "distance_from_centerline_m": 220.2,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1678.44,
+          -759.66
+        ],
+        [
+          -1676.94,
+          -760.26
+        ],
+        [
+          -1676.13,
+          -762.14
+        ],
+        [
+          -1676.75,
+          -763.61
+        ],
+        [
+          -1678.63,
+          -764.42
+        ],
+        [
+          -1680.08,
+          -763.84
+        ],
+        [
+          -1680.89,
+          -761.96
+        ],
+        [
+          -1680.33,
+          -760.47
+        ],
+        [
+          -1678.44,
+          -759.66
+        ]
+      ]
+    },
+    {
+      "osm_id": 1325630834,
+      "name": "Khidir Mosque",
+      "source_xy_m": [
+        -1620.28,
+        -870.2
+      ],
+      "nearest_station_m": 4185.6,
+      "distance_from_centerline_m": 173.2,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "mosque",
+      "footprint_xy_m": [
+        [
+          -1625.85,
+          -866.88
+        ],
+        [
+          -1622.36,
+          -874.81
+        ],
+        [
+          -1619.92,
+          -873.86
+        ],
+        [
+          -1619.44,
+          -875.01
+        ],
+        [
+          -1614.28,
+          -871.77
+        ],
+        [
+          -1616.1,
+          -868.63
+        ],
+        [
+          -1618.06,
+          -869.61
+        ],
+        [
+          -1620.7,
+          -864.34
+        ],
+        [
+          -1625.85,
+          -866.88
+        ]
+      ]
+    },
+    {
+      "osm_id": 1377688879,
+      "name": "Old City INN",
+      "source_xy_m": [
+        -1627.4,
+        -568.2
+      ],
+      "nearest_station_m": 2999.5,
+      "distance_from_centerline_m": 136.6,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "5",
+      "building": "hotel",
+      "footprint_xy_m": [
+        [
+          -1624.38,
+          -572.71
+        ],
+        [
+          -1634.39,
+          -569.75
+        ],
+        [
+          -1631.93,
+          -561.44
+        ],
+        [
+          -1621.92,
+          -564.41
+        ],
+        [
+          -1624.38,
+          -572.71
+        ]
+      ]
+    },
+    {
+      "osm_id": 1377852174,
+      "name": "Underground Bathhouse",
+      "source_xy_m": [
+        -1771.47,
+        -757.09
+      ],
+      "nearest_station_m": 3409.6,
+      "distance_from_centerline_m": 129.3,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "1",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1773.84,
+          -752.8
+        ],
+        [
+          -1767.62,
+          -752.99
+        ],
+        [
+          -1767.93,
+          -763.53
+        ],
+        [
+          -1774.14,
+          -763.35
+        ],
+        [
+          -1773.84,
+          -752.8
+        ]
+      ]
+    },
+    {
+      "osm_id": 1411050897,
+      "name": "Small Caravanserai / Khan Caravanserai",
+      "source_xy_m": [
+        -1488.25,
+        -852.38
+      ],
+      "nearest_station_m": 4245.9,
+      "distance_from_centerline_m": 88.0,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "1",
+      "building": "historic",
+      "footprint_xy_m": [
+        [
+          -1504.47,
+          -853.13
+        ],
+        [
+          -1488.04,
+          -869.3
+        ],
+        [
+          -1464.07,
+          -852.94
+        ],
+        [
+          -1480.23,
+          -833.39
+        ],
+        [
+          -1504.47,
+          -853.13
+        ]
+      ]
+    }
+  ],
+  "dimensions_policy": "OSM XY footprints are registered geographic evidence. Tagged height and levels are retained verbatim; missing/zero heights are unknown. Roof/detail sizes and sparse-vegetation spacing in native authoring are visual estimates pending cockpit comparison.",
+  "source_registration": {
+    "method": "Nearest native centerline sample after retained local tangent projection and uniform scale.",
+    "station_error_bound_m": 8,
+    "landmark_extent_note": "Centroid station can fall on adjacent arm of circuit; use actual ring and terrain, not centroid station alone. Overlapping compound roof footprints must never become solid road obstructions."
+  },
+  "elevation_review": {
+    "retained_dataset": "Copernicus DEM GLO-90",
+    "retained_relief_m": 36.916,
+    "status": "The native racing-deck profile now follows registered published topography controls. Raw DEM remains for source comparison and scenery terrain.",
+    "findings": [
+      "GLO-90surface can sample facade roofs in narrow Old City; check climbing castle and descending T15 against onboard before treating the profile as racing elevation.",
+      "Generic12–14mwidth must not be imposed at the castle; wall corridor is substantially narrower there. Do not turn all urban shoulders into grass."
+    ],
+    "replacement_profile": {
+      "schema_version": 1,
+      "provider": "Formula 1 published 2016 topography diagram",
+      "article_url": "https://www.formula1.com/en/latest/article/highs-and-lows-which-f1-track-has-the-most-elevation-changes-.7I9JEcBw3R2AqXbnJ6hyvc",
+      "image_url": "https://media.formula1.com/image/upload/c_lfill,w_1800/q_auto/v1740000001/content/dam/fom-website/manual/Misc/Topography/europe.webp",
+      "image_sha256": "1933fff5f4ee497d2094bda0fdfe6451d73ae255ed133995edf455bbfb463335",
+      "reference_image_shipped": false,
+      "relief_m": 26.8,
+      "vertical_datum": "Relative to the published profile minimum; absolute diagram altitude is not used.",
+      "native_station_controls_m": [
+        [
+          0,
+          0
+        ],
+        [
+          185,
+          0.3
+        ],
+        [
+          523,
+          2
+        ],
+        [
+          1395,
+          2.7
+        ],
+        [
+          1616,
+          1.7
+        ],
+        [
+          1918,
+          1.3
+        ],
+        [
+          2026,
+          1.3
+        ],
+        [
+          2404,
+          2
+        ],
+        [
+          2601,
+          3
+        ],
+        [
+          2706,
+          5.4
+        ],
+        [
+          2794,
+          8
+        ],
+        [
+          2850,
+          12
+        ],
+        [
+          2910,
+          9.6
+        ],
+        [
+          3180,
+          26.8
+        ],
+        [
+          3389,
+          25.8
+        ],
+        [
+          3631,
+          21.8
+        ],
+        [
+          3985,
+          2
+        ],
+        [
+          4186,
+          1
+        ],
+        [
+          4419,
+          1.3
+        ],
+        [
+          4572,
+          1.7
+        ],
+        [
+          4900,
+          1.3
+        ],
+        [
+          6003,
+          0
+        ]
+      ],
+      "interpolation": "Piecewise monotone cubic Hermite. Interior Fritsch-Carlson harmonic slopes; flat SF seam. No uniform rescaling of the previous DEM.",
+      "vertical_uncertainty_m": 1.0,
+      "station_uncertainty_m": 50.0,
+      "method": "Read relative heights from the published numerical extremum labels and drawn trace, then register individual official corners to retained native centerline geometry using FIA maps. Intermediate heights are graphical estimates, not measurements.",
+      "registration_notes": "The old36.916m profile becomes the26.8m castle hill. OfficialT11/T12 bends are not individual auto Turn controls, so their stations2850/2910are approximate registrations from the FIA map. The high pointT13 remains near native3180; the waterfront stays almost level.",
+      "supersedes": "Coarse GLO-90 road profile remains retained as source evidence, not as the racing deck. No new lidar or survey is claimed.",
+      "controls_file": "elevation-corrections.json"
+    }
+  },
+  "primary_sources": [
+    {
+      "title": "Baku City Circuit promoter",
+      "url": "https://www.bakucitycircuit.com/",
+      "supports": "Official circuit, venue and event imagery; current homepage event date is not assumed to match video."
+    },
+    {
+      "title": "FIA circuit/event hub",
+      "url": "https://www.fia.com/events/fia-formula-one-world-championship",
+      "supports": "Route/event authority; retained OSM provides geographic footprints."
+    },
+    {
+      "title": "Baku promoter castle section description",
+      "url": "https://www.bakucitycircuit.com/news/seven-reasons-why-Formula-1-fans-love-Baku",
+      "supports": "The T8–10 castle section narrows to 7.6 m and has no runoff."
+    }
+  ],
+  "acceptance": {
+    "required": [
+      "Cockpit contact sheet covering all sectors, including each landmark approach and both road edges.",
+      "No floating tiles, barriers crossing drivable lane, closed escape mouths, or faceted long curves.",
+      "Compare curb colour/extent, runoff surface/depth, fencing, tree placement and skyline per sector against timestamps.",
+      "Review night illumination for asphalt visibility and dark sky, or daylight landscape contrast as appropriate."
+    ],
+    "status": "Reference inventory and scene recipe authored; native runtime acceptance is separate."
+  },
+  "authored_edges": {
+    "side_convention": "Numeric+1 is driver right, -1 is driver left. Shader runoff widths clamp to exported collision shoulders.",
+    "registration": "Intervals visually estimated against mapped native curves and supplied video; not a surveyed curb or safety-installation trace.",
+    "kerbs": [
+      {
+        "start_m": 155,
+        "end_m": 210,
+        "side": -1
+      },
+      {
+        "start_m": 495,
+        "end_m": 550,
+        "side": -1
+      },
+      {
+        "start_m": 1360,
+        "end_m": 1420,
+        "side": -1
+      },
+      {
+        "start_m": 1585,
+        "end_m": 1645,
+        "side": 1
+      },
+      {
+        "start_m": 1888,
+        "end_m": 1945,
+        "side": -1
+      },
+      {
+        "start_m": 2000,
+        "end_m": 2050,
+        "side": 1
+      },
+      {
+        "start_m": 2370,
+        "end_m": 2435,
+        "side": 1
+      },
+      {
+        "start_m": 2570,
+        "end_m": 2625,
+        "side": -1
+      },
+      {
+        "start_m": 2680,
+        "end_m": 2725,
+        "side": 1
+      },
+      {
+        "start_m": 2770,
+        "end_m": 2820,
+        "side": -1
+      },
+      {
+        "start_m": 3150,
+        "end_m": 3205,
+        "side": -1
+      },
+      {
+        "start_m": 3360,
+        "end_m": 3415,
+        "side": -1
+      },
+      {
+        "start_m": 3595,
+        "end_m": 3660,
+        "side": -1
+      },
+      {
+        "start_m": 3950,
+        "end_m": 4010,
+        "side": -1
+      },
+      {
+        "start_m": 4155,
+        "end_m": 4210,
+        "side": 1
+      },
+      {
+        "start_m": 4385,
+        "end_m": 4450,
+        "side": -1
+      },
+      {
+        "start_m": 4535,
+        "end_m": 4610,
+        "side": 1
+      }
+    ],
+    "runoffs": [
+      {
+        "start_m": 130,
+        "end_m": 230,
+        "side": 1,
+        "requested_width_m": 8,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 470,
+        "end_m": 565,
+        "side": 1,
+        "requested_width_m": 8,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 1320,
+        "end_m": 1435,
+        "side": 1,
+        "requested_width_m": 10,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 2350,
+        "end_m": 2455,
+        "side": -1,
+        "requested_width_m": 7,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 3550,
+        "end_m": 3680,
+        "side": 1,
+        "requested_width_m": 8,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 3910,
+        "end_m": 4040,
+        "side": 1,
+        "requested_width_m": 8,
+        "material": "Runoff"
+      }
+    ],
+    "physical_escape_review": "Large terminal escape mouths still need explicit footprint geometry and matching collision-barrier changes. Surface ribbons must not extend through existing collision walls."
+  },
+  "native_scene_module": "tools/venues/baku.py",
+  "native_scene_status": "Authored geometry and type checks complete. Native cockpit review and collision acceptance are pending.",
+  "scenery_grounding": "Mapped buildings use the lowest footprint terrain level. Stand fronts have retaining bases and rear supports extend to sampled terrain. Trees avoid all road arms and mapped building footprints.",
+  "source_conflicts": "Retained city footprints can cross the modeled road corridor. Native facade authoring clips ground walls outside the road mask plus 1.2 m and records the removed area; these are disclosed registration conflicts, not validated building surveys.",
+  "uncertainties": [
+    "The castle width now reaches 7.6 m with0.05m shoulders; transition extents remain visual estimates and the exporter must accept shoulders below1.2m."
+  ],
+  "width_shoulder_corrections": {
+    "section": "Castle T8–10",
+    "native_station_frame": true,
+    "source": "https://www.bakucitycircuit.com/news/seven-reasons-why-Formula-1-fans-love-Baku",
+    "published_narrow_width_m": 7.6,
+    "width_controls_m": [
+      [
+        2480,
+        "Retained wide-street width"
+      ],
+      [
+        2580,
+        7.6
+      ],
+      [
+        2800,
+        7.6
+      ],
+      [
+        2920,
+        "Retained wide-street width"
+      ]
+    ],
+    "shoulder_controls_m": [
+      [
+        2480,
+        "Retained street shoulder"
+      ],
+      [
+        2570,
+        0.05
+      ],
+      [
+        2820,
+        0.05
+      ],
+      [
+        2920,
+        "Retained street shoulder"
+      ]
+    ],
+    "transition": "Smooth cubic blend; unaffected stations preserve original width and shoulder samples.",
+    "uncertainty": "Promoter confirms 7.6 m narrowest width and no runoff. Extent of constant minimum and transition stations are visual authoring estimates. The generic barrier offset still includes a 0.95 m kerb allowance outside the asphalt edge.",
+    "collision_requirement": "Allow shoulder values below generic1.2m clamp here. No gravel or painted escape in the castle corridor; preserve straight escape atT7beforethissection."
+  },
+  "braking_markers": {
+    "side_convention": "Numeric+1 is driver right, -1 is driver left. Board sequences are on the outside of the main braking approach.",
+    "placement_policy": "Heavy braking approaches selected from mapped official corner sequence and indexed reference sectors. Stations and exact event mounting locations remain estimates. Standard150/100/50boards are shortened to100/50on selected compact street-corner approaches.",
+    "native_station_uncertainty_m": 40,
+    "approaches": [
+      {
+        "official_corner": "T1",
+        "apex_station_m": 185,
+        "side": 1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          180,
+          185,
+          189.16
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T2",
+        "apex_station_m": 523,
+        "side": 1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          190,
+          195
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T3",
+        "apex_station_m": 1395,
+        "side": 1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          205,
+          210
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T4",
+        "apex_station_m": 1616,
+        "side": -1,
+        "distances_m": [
+          100,
+          50
+        ],
+        "reference_seconds": [
+          215,
+          220
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T7",
+        "apex_station_m": 2404,
+        "side": -1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          235,
+          240,
+          245
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T8 castle entry",
+        "apex_station_m": 2601,
+        "side": 1,
+        "distances_m": [
+          100,
+          50
+        ],
+        "reference_seconds": [
+          363.77,
+          421.98
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T15 downhill left",
+        "apex_station_m": 3631,
+        "side": 1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          480.18,
+          596.59
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T16 waterfront entry",
+        "apex_station_m": 3985,
+        "side": 1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          713,
+          654.79
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      }
+    ]
+  },
+  "barrier_branding": {
+    "coordinate_frame": "Native source station metres; numerical +1 is driver right and -1 is driver left.",
+    "artwork": "Original typeset event panels with observed identity and palette; no video pixels or extracted game textures are shipped.",
+    "registration": "Wall identities are visible in the listed sparse reference frames. Native intervals are estimated from corner and landmark registration, with approximately 75 m endpoint uncertainty; edited playback is not treated as a linear station clock.",
+    "unbranded_sections": "Retain bare Armco and concrete outside these explicit bands. Unsupported legible identities are left without a substitute sponsor. A sponsor bridge alone is not evidence for a matching roadside band.",
+    "ranges": [
+      {
+        "start_m": 5580,
+        "end_m": 6003,
+        "side": -1,
+        "material": "PanelPurple",
+        "location": "Main straight pit-side wall",
+        "observed_identity": "QATAR AIRWAYS",
+        "reviewed_video_seconds": [
+          125,
+          130,
+          155,
+          175,
+          185
+        ]
+      },
+      {
+        "start_m": 0,
+        "end_m": 210,
+        "side": -1,
+        "material": "PanelPurple",
+        "location": "Main straight through T1 entry",
+        "observed_identity": "QATAR AIRWAYS",
+        "reviewed_video_seconds": [
+          185,
+          190
+        ]
+      },
+      {
+        "start_m": 5580,
+        "end_m": 6003,
+        "side": 1,
+        "material": "PanelPurple",
+        "location": "Main straight boulevard wall",
+        "observed_identity": "QATAR AIRWAYS",
+        "reviewed_video_seconds": [
+          125,
+          135,
+          155,
+          180
+        ]
+      },
+      {
+        "start_m": 0,
+        "end_m": 210,
+        "side": 1,
+        "material": "PanelPurple",
+        "location": "Main straight through T1 outer wall",
+        "observed_identity": "QATAR AIRWAYS",
+        "reviewed_video_seconds": [
+          185,
+          190
+        ]
+      },
+      {
+        "start_m": 690,
+        "end_m": 1340,
+        "side": -1,
+        "material": "PanelYellow",
+        "location": "T2 exit and long T3 approach",
+        "observed_identity": "PIRELLI",
+        "reviewed_video_seconds": [
+          200,
+          205,
+          210
+        ]
+      },
+      {
+        "start_m": 690,
+        "end_m": 1340,
+        "side": 1,
+        "material": "PanelYellow",
+        "location": "T2 exit and long T3 approach",
+        "observed_identity": "PIRELLI",
+        "reviewed_video_seconds": [
+          200,
+          205,
+          210
+        ]
+      },
+      {
+        "start_m": 2110,
+        "end_m": 2380,
+        "side": -1,
+        "material": "PanelNavy",
+        "location": "T6 exit toward T7",
+        "observed_identity": "MSC",
+        "reviewed_video_seconds": [
+          240,
+          245
+        ]
+      },
+      {
+        "start_m": 2110,
+        "end_m": 2380,
+        "side": 1,
+        "material": "PanelNavy",
+        "location": "T6 exit toward T7",
+        "observed_identity": "MSC",
+        "reviewed_video_seconds": [
+          240,
+          245
+        ]
+      }
+    ]
+  }
+}

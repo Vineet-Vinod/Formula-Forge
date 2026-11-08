@@ -1,0 +1,446 @@
+{
+  "schema_version": 1,
+  "circuit": "austria",
+  "reference_index": "reference-index.json",
+  "appearance": "Predominantly wet/overcast with low cloud over wooded hills.",
+  "layout": "Red Bull Ring F1 10-corner layout; exclude MotoGP-only chicane at approximately823m.",
+  "sector_registration": "All stations in retained native origin. Approximate full-route zones; individual decor must stay beyond verified protection and runoff.",
+  "sectors": [
+    {
+      "start_m": 0,
+      "end_m": 650,
+      "name": "Main straight and Niki Lauda T1",
+      "reference_times_s": [
+        220.27,
+        291.03,
+        574.06
+      ],
+      "observed_environment": "Long red-seated covered main stand opposite tiered glazed pits. Outside T1 hillside grandstand; broad red/white kerbs and corner-specific painted/asphalt escape beyond steep grass banks.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 650,
+      "end_m": 1450,
+      "name": "Uphill to Remus T3",
+      "reference_times_s": [
+        78.76,
+        361.79
+      ],
+      "observed_environment": "Steep uphill road with conifer woodland and grass embankments, outside open bleachers at hairpin. Wide red-painted/red-white escape apron at braking zone; no F1 chicane midway up.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 1450,
+      "end_m": 2250,
+      "name": "Downhill Schlossgold T4",
+      "reference_times_s": [
+        432.54,
+        644.82
+      ],
+      "observed_environment": "Strong downhill grade and open valley views; forests beyond. Infield Red Bull bull-and-ring sculpture visible offset from track; wide corner-specific runoff and barriers on elevated banks.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 2250,
+      "end_m": 3150,
+      "name": "Rauch and Würth middle corners",
+      "reference_times_s": [
+        503.3,
+        786.33
+      ],
+      "observed_environment": "Sweeping downhill curves bordered by grass, red/white kerbs, gravel/asphalt outside and open hillside spectator seating. Conifer ridges frame the entire view.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 3150,
+      "end_m": 3950,
+      "name": "Rindt and Red Bull Mobile",
+      "reference_times_s": [
+        857.09,
+        927.84
+      ],
+      "observed_environment": "Fast descending right-hand finish sequence; pit and main-stand roofs across valley. Green outer strips, red/white kerbs and a limited orange/black raised kerb element near pit entry.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 3950,
+      "end_m": 4318,
+      "name": "Pit entry and finish",
+      "reference_times_s": [
+        220.27,
+        715.57
+      ],
+      "observed_environment": "Close pit complex, long glazed hospitality upper floor and deep steel stand roof; low service pavilions and timing structures rather than city blocks.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    }
+  ],
+  "terrain": {
+    "retained_source": "Copernicus DEM GLO-90",
+    "retained_relief_m": 67.677,
+    "shortcomings": "Retained coarse relief67.677m roughly agrees with operator65m but does not verify local crests/camber or roadside banks. BEV/geoland Styria bare-earth data is a candidate, coverage/access still to verify. Avoid tuning road heights to noisy DSM roofs.",
+    "candidate_primary_sources": [
+      "https://www.bev.gv.at/"
+    ],
+    "data_status": "Candidate portal only; exact coverage, resolution, licence and epoch still require verification. No candidate raster downloaded or incorporated.",
+    "racing_deck_correction": "Separate independentlydigitized primary Formula1roadprofile now replaces contaminated/coarseGLO90 racingprofile. Landscapegrid remains separatelysourced. 2016numbering has9corners beforeF1counted uphillkink asT2. Operatorcurrentlyquotes65mrelief vs2016chart63.5m; retain publishedchart values rather than rescaling to a different datum/survey."
+  },
+  "authoring_constraints": [
+    "Use mapped building footprints and match rooflines, structural supports, facade depth and stepped volumes; names alone do not establish likeness.",
+    "Place grass/gravel/asphalt runoff per registered corner, with protection at outside edge; do not fill escape areas with independent tiles/blocks.",
+    "Road, kerbs, shoulder and protection share smooth station sampling; kerbs only in explicit ranges.",
+    "Maintain venue-specific vegetation around complete route, preserving long sightlines/open water where present.",
+    "Reference pixels remain ignored; generate geometry and materials only."
+  ],
+  "quality_gates": [
+    "Matching cockpit frame at each sector and every braking/turn sequence.",
+    "Oblique view of runoff shapes, architectural footprints and terrain.",
+    "Full lap motion review for edge smoothness, floating objects, protection gaps and missing surroundings.",
+    "Luna high reviewer must evaluate rendered evidence, not this recipe."
+  ],
+  "authored_surface_ranges": {
+    "station_units": "metres from retained native origin",
+    "side_contract": "+1 source driver right; -1 source driver left",
+    "placement_status": "Explicit reconstruction around registered apex controls. Approximate endpoints/widths inferred from reference and map; runtime clamps runoff to native protection corridor. Not a traced survey.",
+    "kerbs": [
+      {
+        "start_m": 245,
+        "end_m": 340,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 1180,
+        "end_m": 1300,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 1995,
+        "end_m": 2115,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 2510,
+        "end_m": 2625,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 2810,
+        "end_m": 2925,
+        "side": -1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 3575,
+        "end_m": 3675,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      },
+      {
+        "start_m": 3795,
+        "end_m": 3900,
+        "side": 1,
+        "color": "Red",
+        "alternate": "White"
+      }
+    ],
+    "runoff": [
+      {
+        "start_m": 220,
+        "end_m": 380,
+        "side": -1,
+        "requested_width_m": 20,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 1140,
+        "end_m": 1360,
+        "side": -1,
+        "requested_width_m": 22,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 1940,
+        "end_m": 2160,
+        "side": -1,
+        "requested_width_m": 24,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 2460,
+        "end_m": 2690,
+        "side": 1,
+        "requested_width_m": 20,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 2770,
+        "end_m": 2990,
+        "side": 1,
+        "requested_width_m": 20,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 3520,
+        "end_m": 3730,
+        "side": -1,
+        "requested_width_m": 18,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 3750,
+        "end_m": 3940,
+        "side": -1,
+        "requested_width_m": 17,
+        "material": "Runoff"
+      }
+    ]
+  },
+  "additional_environment_source": {
+    "provider": "OpenStreetMap contributors",
+    "endpoint": "https://overpass-api.de/api/interpreter",
+    "query": "[out:json][timeout:60];(nwr[\"tourism\"=\"artwork\"](47.218,14.752,47.230,14.775);nwr[\"man_made\"=\"tower\"](47.218,14.752,47.230,14.775););out geom;",
+    "retrieved": "2026-11-08",
+    "licence": "ODbL1.0",
+    "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "file": "environment.osm.json.gz",
+    "sha256": "646b8458c82535b31e5109d0f5bc0f24e9c9d67de2b795ad9a8e7c112bff83c2",
+    "purpose": "Tightly bounded essential landmark query; inline member geometry preserved."
+  },
+  "elevation_recipe": "elevation-corrections.json",
+  "braking_markers": {
+    "side_contract": "+1 is driver right in retained east/north source coordinates; -1 is driver left.",
+    "station_frame": "Native circuit origin, not necessarily start/finish; scene.at handles lap wrapping.",
+    "placement_status": "Corner approaches are registered to retained plan/OSM/FIA controls and reviewed reference sectors. Board offsets, mounting side and exact event positions are reconstructed estimates, not a traced signage survey.",
+    "selection": "Major braking approaches only; short linked corners use 100/50 m sets. No boards added to flat-out sweeps solely because the curvature detector counted a bend.",
+    "approaches": [
+      {
+        "corner": "Niki Lauda / T1",
+        "apex_station_m": 285,
+        "side": -1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "Remus / T3",
+        "apex_station_m": 1228,
+        "side": -1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "Schlossgold / T4",
+        "apex_station_m": 2047,
+        "side": -1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "Rauch / T6",
+        "apex_station_m": 2584,
+        "side": 1,
+        "distances_before_apex_m": [
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      }
+    ]
+  },
+  "barrier_branding": {
+    "side_contract": "+1 driver right / -1 driver left in retained source coordinates.",
+    "source_policy": "Only the selected reviewed palette/identities are reproduced with original typesetting. Unsupported or varying identities use neutral PanelWhite; no reference pixels are shipped.",
+    "placement_status": "Ranges are approximate native-station registrations to the named reference sectors. Individual panel ends, event mounting positions and exact lengths are reconstructed; clip time is not treated as proportional lap distance.",
+    "coverage_policy": "Selected pit-straight and corner-protection runs only. Bare woodland Armco, open slopes and intervening protection remain exposed.",
+    "ranges": [
+      {
+        "start_m": 4040,
+        "end_m": 4310,
+        "side": 1,
+        "material": "PanelLenovo",
+        "reviewed_times_s": [
+          220.27,
+          574.06
+        ],
+        "observation": "Red LENOVO panels along the pit-straight side below the glazed pit structure."
+      },
+      {
+        "start_m": 4040,
+        "end_m": 4310,
+        "side": -1,
+        "material": "PanelLenovo",
+        "reviewed_times_s": [
+          220.27,
+          574.06
+        ],
+        "observation": "Red LENOVO panels below the long roofed main grandstand."
+      },
+      {
+        "start_m": 0,
+        "end_m": 260,
+        "side": 1,
+        "material": "PanelLenovo",
+        "reviewed_times_s": [
+          291.03
+        ],
+        "observation": "Red LENOVO panels continue from the main straight toward Niki Lauda T1."
+      },
+      {
+        "start_m": 0,
+        "end_m": 260,
+        "side": -1,
+        "material": "PanelLenovo",
+        "reviewed_times_s": [
+          291.03
+        ],
+        "observation": "The opposite T1 approach wall also has red LENOVO panels."
+      },
+      {
+        "start_m": 1930,
+        "end_m": 2110,
+        "side": -1,
+        "material": "PanelWhite",
+        "reviewed_times_s": [
+          503.3,
+          644.82
+        ],
+        "observation": "Advertising is visible along the outside slow-corner escape, but the reviewed identities vary; use neutral white rather than mislabeling a navy/red sponsor."
+      }
+    ]
+  },
+  "runoff_paint_review": {
+    "reviewed_overview_frames": [
+      7,
+      9,
+      12,
+      13
+    ],
+    "reviewed_times_s": [
+      503.3,
+      644.82,
+      857.09,
+      927.84
+    ],
+    "observations": "Broad red T1/T3/final-corner asphalt aprons with narrow green edge bands; preserve the gravel traps beyond the other green edge strips.",
+    "registration_status": "Named reference sector matched to retained road shape; widths, ends and star sizes/spacing are original estimates, not exact surveyed paint coordinates.",
+    "height_policy": "Ground-following polygon geometry, clipped outside road_mask. No fixed-z tiles and no enlargement of physical runoff corridors.",
+    "physical_runoff_extents_changed": false,
+    "paint": [
+      {
+        "type": "band",
+        "start_m": 220,
+        "end_m": 380,
+        "side": -1,
+        "inner_m": 1.2,
+        "outer_m": 2.8,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 220,
+        "end_m": 380,
+        "side": -1,
+        "inner_m": 2.8,
+        "outer_m": 19.8,
+        "material": "RunoffRed"
+      },
+      {
+        "type": "band",
+        "start_m": 1140,
+        "end_m": 1360,
+        "side": -1,
+        "inner_m": 1.2,
+        "outer_m": 2.8,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 1140,
+        "end_m": 1360,
+        "side": -1,
+        "inner_m": 2.8,
+        "outer_m": 21.8,
+        "material": "RunoffRed"
+      },
+      {
+        "type": "band",
+        "start_m": 3750,
+        "end_m": 3940,
+        "side": -1,
+        "inner_m": 1.2,
+        "outer_m": 2.8,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 3750,
+        "end_m": 3940,
+        "side": -1,
+        "inner_m": 2.8,
+        "outer_m": 16.8,
+        "material": "RunoffRed"
+      },
+      {
+        "type": "band",
+        "start_m": 1940,
+        "end_m": 2160,
+        "side": -1,
+        "inner_m": 1.2,
+        "outer_m": 2.8,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 2460,
+        "end_m": 2690,
+        "side": 1,
+        "inner_m": 1.2,
+        "outer_m": 2.8,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 2770,
+        "end_m": 2990,
+        "side": 1,
+        "inner_m": 1.2,
+        "outer_m": 2.8,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 3520,
+        "end_m": 3730,
+        "side": -1,
+        "inner_m": 1.2,
+        "outer_m": 2.8,
+        "material": "RunoffGreen"
+      }
+    ]
+  },
+  "ground_appearance_review": "Wet green pasture and dark conifer forest."
+}

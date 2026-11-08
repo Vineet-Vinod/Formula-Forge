@@ -218,8 +218,8 @@
     }
   ],
   "uncertainties": [
-    "RetainedGLO90relief35.3m conflicts with operator about60m; stationlocationsofcrests need onboard/map registration rather than uniform height scaling.",
-    "Original 12 m corner width conflicts with published14.5mminimum. Width14.5–21mtext versus14–21.5mdiagram disagreement is retained.",
-    "Retained raw GLO-90 samples span 109 to 146 m, a 37 m range. Smoothing reduces this to 35.31 m. That 1.69 m loss cannot explain the difference from the operator presentation, which describes about 60 m. No replacement racing-deck profile has been verified."
+    "Direct bilinear GLO-30 samples replace the former GLO-90 driving profile. The bounded 40.34 m relief puts the main crest near T3; this remains a 30 m surface model rather than surveyed road levels.",
+    "The operator reports about 60 m relief, which conflicts with the retained DEMs. No arbitrary height multiplier is applied; the source conflict is retained in elevation-research.json.",
+    "The native width range now follows published 14.5–21 m controls. A newer operator diagram reports 21.5 m maximum; exact local width transitions remain estimates."
   ]
 }

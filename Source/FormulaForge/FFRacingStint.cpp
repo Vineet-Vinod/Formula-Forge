@@ -16,7 +16,7 @@ double FFRacingEvaluation::Score() const {
 }
 
 bool FFRacingLineMatchesTrack(const FFRacingLine& line, const FFSimulation& simulation) {
-    if (std::abs(line.LapLength() - LapLength) > 0.01f || line.Nodes().empty()) return false;
+    if (std::abs(line.LapLength() - simulation.lapLength) > 0.01f || line.Nodes().empty()) return false;
     for (std::size_t index = 0; index < line.Nodes().size(); ++index) {
         const auto& node = line.Nodes()[index];
         const auto sample = simulation.Sample(index * line.LapLength() / line.Nodes().size());

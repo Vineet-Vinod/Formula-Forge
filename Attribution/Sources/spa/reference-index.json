@@ -227,17 +227,31 @@
         "station_max_m": 3225.84,
         "maximum_projection_distance_m": 1.85
       }
-    ]
+    ],
+    "start_anchor_review": {
+      "station_m": 790,
+      "status": "Approximate timingcontrolmarker registration from primaryFIAmap; not an as-built coordinate",
+      "uncertainty_m": 40,
+      "evidence": "Control-line transverse marker atmap(487,504), interpolated onBusStopexit660\u2192LaSource1177straight, gives~790m. Symbol/mapreading and line endpoints approximate; this replaces initial rough740/850estimates.",
+      "source_url": "https://www.fia.com/system/files/decision-document/2025_spa_francorchamps_event_-_circuit_map_-_spa_2025.pdf",
+      "map_sha256": "ece07a4dc89daedde9171d3af2116dda6fe002f137f6aaf04af324112caf427e",
+      "start_grid_note": "Car/starticonisillustrative; do not infer an independently precise gridfrontstation from iconlength."
+    }
   },
   "primary_sources": [
     {
       "url": "https://www.fia.com/system/files/decision-document/2025_spa_francorchamps_event_-_circuit_map_-_spa_2025.pdf",
       "use": "Official layout/venue architecture; source year can differ from video."
+    },
+    {
+      "url": "https://www.formula1.com/en/latest/article/highs-and-lows-which-f1-track-has-the-most-elevation-changes-.7I9JEcBw3R2AqXbnJ6hyvc.7I9JEcBw3R2AqXbnJ6hyvc",
+      "use": "Official2016longitudinalprofile independentlydigitized into circuit elevationcontrols; chartapproximation, not as-built survey."
     }
   ],
   "uncertainties": [
     "Exact filming lap/year is not established unless visible title/HUD identifies it.",
     "Overview observations establish visual vocabulary; every individual asset position requires footprint/map registration.",
     "No high-resolution raster or orthophoto added by this reference review."
-  ]
+  ],
+  "racing_elevation_correction": "elevation-corrections.json"
 }

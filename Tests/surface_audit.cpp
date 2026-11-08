@@ -31,7 +31,20 @@ bool SurfaceAudit() {
     const auto bytes = SurfaceBytes(triangles);
     if (!surface.Load(bytes)) return false;
     const auto near = [](float actual, float expected) { return std::abs(actual - expected) < 0.0001f; };
+    FFDriveSurface crossing;
+    auto decks = triangles;
+    for (int index = 0; index < 2; ++index) {
+        auto upper = triangles[index];
+        for (auto& point : upper.points) point.positionZ += 6.2f;
+        decks.push_back(upper);
+    }
+    if (!crossing.Load(SurfaceBytes(decks))) return false;
     std::array<FFSurfacePoint, 4> footprint{{{-1.0f, -1.0f, 0.0f}, {1.0f, -1.0f, 0.0f}, {1.0f, 1.0f, 0.0f}, {-1.0f, 1.0f, 0.0f}}};
+    if (!near(crossing.Penetration(footprint), 6.2f) ||
+        !near(crossing.Penetration(footprint, 2.0f), 0.083f)) return false;
+    for (auto& point : footprint) point.positionZ = 6.2f;
+    if (!near(crossing.Penetration(footprint, 8.2f), 0.0f)) return false;
+    for (auto& point : footprint) point.positionZ = 0.0f;
     if (!near(surface.Height(-0.01f, -0.01f).value_or(-1.0f), 0.083f) || surface.Height(10.0f, 10.0f)) return false;
     for (const auto& corner : footprint) if (!near(surface.Height(corner.positionX, corner.positionY).value_or(-1.0f), 0.0f)) return false;
     if (!near(surface.Penetration(footprint), 0.083f)) return false;

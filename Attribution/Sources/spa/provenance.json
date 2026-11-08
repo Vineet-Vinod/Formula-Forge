@@ -23,18 +23,33 @@
     "scale_rule": "Applied only when the mapped plan was within 1.5% of a published length. Larger gaps keep the mapped length."
   },
   "elevation": {
-    "provider": "Open-Meteo Elevation API",
-    "dataset": "Copernicus DEM GLO-90",
-    "dataset_note": "Surface model, about 90 m, includes roofs and canopy. Not a bare-earth racing survey.",
-    "licence": "Copernicus DEM, see https://registry.opendata.aws/copernicus-dem/",
-    "retrieved": "2026-11-04",
-    "sample_spacing_m": 35.7,
-    "smoothing": "Two circular binomial passes on the coarse samples, then linear interpolation onto the 4 m centreline. Isolated samples more than 6 m above their neighbours were treated as overpasses or roofs.",
-    "relative_datum": "Heights stored after subtracting the lap minimum.",
-    "removed_minimum_m": 365.439,
-    "relief_m": 99.798,
-    "uncertainty_m": 5,
-    "deck": null
+    "provider": "Formula1 official published longitudinal road-profile chart; original numericaldigitisation",
+    "dataset": "2016circuitTopographyprofile",
+    "recipe": "elevation-corrections.json",
+    "relative_datum": "Chart minimumsubtracted, absolutechartaltitude notclaimed localMSL.",
+    "relief_m": 102.2,
+    "uncertainty_m": 2.0,
+    "source_url": "https://www.formula1.com/en/latest/article/highs-and-lows-which-f1-track-has-the-most-elevation-changes-.7I9JEcBw3R2AqXbnJ6hyvc.7I9JEcBw3R2AqXbnJ6hyvc",
+    "previous_source": {
+      "provider": "Open-Meteo Elevation API",
+      "dataset": "Copernicus DEM GLO-90",
+      "dataset_note": "Surface model, about 90 m, includes roofs and canopy. Not a bare-earth racing survey.",
+      "licence": "Copernicus DEM, see https://registry.opendata.aws/copernicus-dem/",
+      "retrieved": "2026-11-04",
+      "sample_spacing_m": 35.7,
+      "smoothing": "Two circular binomial passes on the coarse samples, then linear interpolation onto the 4 m centreline. Isolated samples more than 6 m above their neighbours were treated as overpasses or roofs.",
+      "relative_datum": "Heights stored after subtracting the lap minimum.",
+      "removed_minimum_m": 365.439,
+      "relief_m": 99.798,
+      "uncertainty_m": 5,
+      "deck": null
+    },
+    "limitations": [
+      "Publisheddiagram is not an engineering/as-built survey. Smallresurfacingbumps, bankcrosssections and underpassdeckdetails need separatecontrols.",
+      "Graph/profile registration is approximate and depends on sourceplanlandmarks; do not claim geodetic precision from pixelreading.",
+      "Existingnativewidths/plan/vehicleparameters preserved. Landscapeterrain remains separatelysourced."
+    ],
+    "layout_note": "Post2022runoff/grandstands differ from2016diagram, but same7.004kmracingline. EauRouge/Raidillon grade registered to namedways; constructionverticaltransitions not surveyed."
   },
   "width": {
     "base_m": 12.0,

@@ -227,8 +227,8 @@
     }
   ],
   "uncertainties": [
-    "Retained GLO-90 surface heights are not road levels amid buildings/trees; no city rooftop spikes in road.",
-    "OSMheight0is unknown placeholder on several landmarks, not evidence to omit skyline.",
-    "Flyer retail footprint height0does not represent wheel; Esplanade compound and35mroofparts require domes, not a single rectangular extrusion."
+    "The corrected 5.3 m road relief uses registered F1 topography controls, with the bridge high point between T13 and T14. Former GLO-90 rooftop spikes are excluded from the driving profile.",
+    "Zero OSM height values mean unknown; they do not justify removing the skyline. Landmark heights are retained separately.",
+    "The Flyer retail footprint does not describe the wheel; the Esplanade compound requires curved roof shells and individual sunshades."
   ]
 }

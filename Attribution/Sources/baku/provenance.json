@@ -23,6 +23,127 @@
     "scale_rule": "Applied only when the mapped plan was within 1.5% of a published length. Larger gaps keep the mapped length."
   },
   "elevation": {
+    "provider": "Formula 1 published 2016 topography diagram",
+    "dataset": "Published circuit topography profile, reconstructed",
+    "dataset_note": "Read relative heights from the published numerical extremum labels and drawn trace, then register individual official corners to retained native centerline geometry using FIA maps. Intermediate heights are graphical estimates, not measurements.",
+    "licence": "Factual derived heights with source attribution; no source image redistributed.",
+    "source": "https://www.formula1.com/en/latest/article/highs-and-lows-which-f1-track-has-the-most-elevation-changes-.7I9JEcBw3R2AqXbnJ6hyvc",
+    "controls": "elevation-corrections.json",
+    "relative_datum": "Relative to the published profile minimum; absolute diagram altitude is not used.",
+    "relief_m": 26.8,
+    "uncertainty_m": 1.0,
+    "smoothing": "Piecewise monotone cubic Hermite. Interior Fritsch-Carlson harmonic slopes; flat SF seam. No uniform rescaling of the previous DEM.",
+    "deck": null
+  },
+  "width": {
+    "base_m": 12.0,
+    "straight_m": 14.0,
+    "method": "Authored from typical Grade 1 asphalt width, wider on low-curvature sections. Not a traced white-line survey.",
+    "local_corrections": {
+      "section": "Castle T8\u201310",
+      "native_station_frame": true,
+      "source": "https://www.bakucitycircuit.com/news/seven-reasons-why-Formula-1-fans-love-Baku",
+      "published_narrow_width_m": 7.6,
+      "width_controls_m": [
+        [
+          2480,
+          "Retained wide-street width"
+        ],
+        [
+          2580,
+          7.6
+        ],
+        [
+          2800,
+          7.6
+        ],
+        [
+          2920,
+          "Retained wide-street width"
+        ]
+      ],
+      "shoulder_controls_m": [
+        [
+          2480,
+          "Retained street shoulder"
+        ],
+        [
+          2570,
+          0.05
+        ],
+        [
+          2820,
+          0.05
+        ],
+        [
+          2920,
+          "Retained street shoulder"
+        ]
+      ],
+      "transition": "Smooth cubic blend; unaffected stations preserve original width and shoulder samples.",
+      "uncertainty": "Promoter confirms 7.6 m narrowest width and no runoff. Extent of constant minimum and transition stations are visual authoring estimates. The generic barrier offset still includes a 0.95 m kerb allowance outside the asphalt edge.",
+      "collision_requirement": "Allow shoulder values below generic1.2m clamp here. No gravel or painted escape in the castle corridor; preserve straight escape atT7beforethissection."
+    }
+  },
+  "shoulders": {
+    "default_m": 4.0,
+    "method": "Nearest OSM barrier vertex on each side, median-smoothed, clamped to 1.2-24 m outside the kerb. Missing sides keep the venue default.",
+    "barrier_file": "barriers.osm.json.gz",
+    "local_corrections": {
+      "section": "Castle T8\u201310",
+      "native_station_frame": true,
+      "source": "https://www.bakucitycircuit.com/news/seven-reasons-why-Formula-1-fans-love-Baku",
+      "published_narrow_width_m": 7.6,
+      "width_controls_m": [
+        [
+          2480,
+          "Retained wide-street width"
+        ],
+        [
+          2580,
+          7.6
+        ],
+        [
+          2800,
+          7.6
+        ],
+        [
+          2920,
+          "Retained wide-street width"
+        ]
+      ],
+      "shoulder_controls_m": [
+        [
+          2480,
+          "Retained street shoulder"
+        ],
+        [
+          2570,
+          0.05
+        ],
+        [
+          2820,
+          0.05
+        ],
+        [
+          2920,
+          "Retained street shoulder"
+        ]
+      ],
+      "transition": "Smooth cubic blend; unaffected stations preserve original width and shoulder samples.",
+      "uncertainty": "Promoter confirms 7.6 m narrowest width and no runoff. Extent of constant minimum and transition stations are visual authoring estimates. The generic barrier offset still includes a 0.95 m kerb allowance outside the asphalt edge.",
+      "collision_requirement": "Allow shoulder values below generic1.2m clamp here. No gravel or painted escape in the castle corridor; preserve straight escape atT7beforethissection."
+    }
+  },
+  "banking": "Neutral. No published camber was anchored to a detected corner.",
+  "buildings": {
+    "count": 214,
+    "method": "OSM footprints within 14-85 m of the centreline, extruded to a tagged height or a default. Roof shape is flat.",
+    "licence": "ODbL 1.0"
+  },
+  "protection": "Both sides are walled at the shoulder offset. Pit entry is closed. That closure is a game boundary, not a claim about the real pit lane.",
+  "not_claimed": "No lidar, no orthophoto registration, no cockpit capture in this build. Centimetre storage is not centimetre accuracy.",
+  "retained_dem_elevation": {
     "provider": "Open-Meteo Elevation API",
     "dataset": "Copernicus DEM GLO-90",
     "dataset_note": "Surface model, about 90 m, includes roofs and canopy. Not a bare-earth racing survey.",
@@ -35,23 +156,5 @@
     "relief_m": 36.916,
     "uncertainty_m": 8,
     "deck": null
-  },
-  "width": {
-    "base_m": 12.0,
-    "straight_m": 14.0,
-    "method": "Authored from typical Grade 1 asphalt width, wider on low-curvature sections. Not a traced white-line survey."
-  },
-  "shoulders": {
-    "default_m": 4.0,
-    "method": "Nearest OSM barrier vertex on each side, median-smoothed, clamped to 1.2-24 m outside the kerb. Missing sides keep the venue default.",
-    "barrier_file": "barriers.osm.json.gz"
-  },
-  "banking": "Neutral. No published camber was anchored to a detected corner.",
-  "buildings": {
-    "count": 214,
-    "method": "OSM footprints within 14-85 m of the centreline, extruded to a tagged height or a default. Roof shape is flat.",
-    "licence": "ODbL 1.0"
-  },
-  "protection": "Both sides are walled at the shoulder offset. Pit entry is closed. That closure is a game boundary, not a claim about the real pit lane.",
-  "not_claimed": "No lidar, no orthophoto registration, no cockpit capture in this build. Centimetre storage is not centimetre accuracy."
+  }
 }

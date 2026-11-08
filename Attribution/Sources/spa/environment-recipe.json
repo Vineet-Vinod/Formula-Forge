@@ -1,0 +1,472 @@
+{
+  "schema_version": 1,
+  "circuit": "spa",
+  "reference_index": "reference-index.json",
+  "appearance": "Dry bright race; earlier qualifying/pit shots cloudy or wet.",
+  "layout": "Spa-Francorchamps 7.004km F1 loop; station zero is before Bus Stop, not start/finish.",
+  "sector_registration": "All stations in retained native origin. Approximate full-route zones; individual decor must stay beyond verified protection and runoff.",
+  "sectors": [
+    {
+      "start_m": 0,
+      "end_m": 1000,
+      "name": "Bus Stop and Grand Prix pits",
+      "reference_times_s": [
+        337.84,
+        139.94
+      ],
+      "observed_environment": "Broad slow chicane, red/yellow kerbs and local paved escape. Grand Prix garage/hospitality bar on right of race direction, covered stands opposite, white event roofs and green banks.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 1000,
+      "end_m": 1770,
+      "name": "La Source and old pit descent",
+      "reference_times_s": [
+        271.87,
+        205.9
+      ],
+      "observed_environment": "Hairpin opens to dramatic valley descent. Modern grandstand and old endurance pit structures; close red/yellow kerbs, paved outside escape. Do not flatten the descent.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 1770,
+      "end_m": 2250,
+      "name": "Eau Rouge and Raidillon",
+      "reference_times_s": [
+        205.9,
+        667.68
+      ],
+      "observed_environment": "Iconic compression and steep uphill left-right-left. White/dark-timber gabled historic chalet at foot; large modern angular Raidillon covered stand, wooded slopes and gravel outside.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 2250,
+      "end_m": 3650,
+      "name": "Kemmel, Les Combes and Malmedy",
+      "reference_times_s": [
+        403.81,
+        469.77
+      ],
+      "observed_environment": "Long uphill forest-lined straight with narrow grass and Armco. Open spectator slopes and brown gravel/soil outside braking/chicane area; dense mixed conifers beyond.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 3650,
+      "end_m": 5100,
+      "name": "Bruxelles, Speakers Corner and Pouhon",
+      "reference_times_s": [
+        535.74,
+        601.71
+      ],
+      "observed_environment": "Descending wooded corners with broad red/yellow kerbs, outside grass/gravel and constrained advertised walls. Tree-covered banks enclose lower valley, not a flat plain.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 5100,
+      "end_m": 6200,
+      "name": "Fagnes, Campus and Paul Frère",
+      "reference_times_s": [
+        535.74,
+        865.58
+      ],
+      "observed_environment": "Forest sequence with corner-specific gravel traps, green/red painted margins and small white track facilities. Protection follows runoff edge, never continuous blocks across paved escape.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    },
+    {
+      "start_m": 6200,
+      "end_m": 7004,
+      "name": "Blanchimont return",
+      "reference_times_s": [
+        799.61,
+        733.65
+      ],
+      "observed_environment": "Fast rising forest corridor, red/yellow edge kerbs, narrow grass verges and metal Armco/catch fencing; broad spectator hillside at return toward Bus Stop.",
+      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+    }
+  ],
+  "terrain": {
+    "retained_source": "Copernicus DEM GLO-90",
+    "retained_relief_m": 99.798,
+    "shortcomings": "GLO-90 relief99.798m is insufficient for Eau Rouge/Raidillon compression, drainage, banks and bridges. SPW 0.5m 2021–22 MNT is authoritative bare-earth candidate; identify height payload rather than reading coloured map export. Bridges removed from MNT require deck masks. Historical README fine survey is not retained.",
+    "candidate_primary_sources": [
+      "https://geoportail.wallonie.be/catalogue/a004e570-99d6-4fe5-b83d-49b774409278.html",
+      "https://geoservices.wallonie.be/arcgis/rest/services/RELIEF/WALLONIE_MNT_2021_2022/MapServer"
+    ],
+    "data_status": "Candidate metadata reviewed; no candidate raster downloaded or claimed as incorporated.",
+    "racing_deck_correction": "Separate independentlydigitized primary Formula1roadprofile now replaces contaminated/coarseGLO90 racingprofile. Landscapegrid remains separatelysourced. Post2022runoff/grandstands differ from2016diagram, but same7.004kmracingline. EauRouge/Raidillon grade registered to namedways; constructionverticaltransitions not surveyed."
+  },
+  "authoring_constraints": [
+    "Use mapped building footprints and match rooflines, structural supports, facade depth and stepped volumes; names alone do not establish likeness.",
+    "Place grass/gravel/asphalt runoff per registered corner, with protection at outside edge; do not fill escape areas with independent tiles/blocks.",
+    "Road, kerbs, shoulder and protection share smooth station sampling; kerbs only in explicit ranges.",
+    "Maintain venue-specific vegetation around complete route, preserving long sightlines/open water where present.",
+    "Reference pixels remain ignored; generate geometry and materials only."
+  ],
+  "quality_gates": [
+    "Matching cockpit frame at each sector and every braking/turn sequence.",
+    "Oblique view of runoff shapes, architectural footprints and terrain.",
+    "Full lap motion review for edge smoothness, floating objects, protection gaps and missing surroundings.",
+    "Luna high reviewer must evaluate rendered evidence, not this recipe."
+  ],
+  "authored_surface_ranges": {
+    "station_units": "metres from retained native origin",
+    "side_contract": "+1 source driver right; -1 source driver left",
+    "placement_status": "Explicit reconstruction around registered apex controls. Approximate endpoints/widths inferred from reference and map; runtime clamps runoff to native protection corridor. Not a traced survey.",
+    "kerbs": [
+      {
+        "start_m": 480,
+        "end_m": 540,
+        "side": 1,
+        "color": "Red",
+        "alternate": "Yellow"
+      },
+      {
+        "start_m": 550,
+        "end_m": 620,
+        "side": -1,
+        "color": "Red",
+        "alternate": "Yellow"
+      },
+      {
+        "start_m": 1115,
+        "end_m": 1240,
+        "side": 1,
+        "color": "Red",
+        "alternate": "Yellow"
+      },
+      {
+        "start_m": 1800,
+        "end_m": 1870,
+        "side": -1,
+        "color": "Red",
+        "alternate": "Yellow"
+      },
+      {
+        "start_m": 1880,
+        "end_m": 1960,
+        "side": 1,
+        "color": "Red",
+        "alternate": "Yellow"
+      },
+      {
+        "start_m": 1980,
+        "end_m": 2055,
+        "side": -1,
+        "color": "Red",
+        "alternate": "Yellow"
+      },
+      {
+        "start_m": 3160,
+        "end_m": 3220,
+        "side": 1,
+        "color": "Red",
+        "alternate": "Yellow"
+      },
+      {
+        "start_m": 3235,
+        "end_m": 3320,
+        "side": -1,
+        "color": "Red",
+        "alternate": "Yellow"
+      },
+      {
+        "start_m": 3400,
+        "end_m": 3500,
+        "side": 1,
+        "color": "Red",
+        "alternate": "Yellow"
+      },
+      {
+        "start_m": 3800,
+        "end_m": 3935,
+        "side": 1,
+        "color": "Red",
+        "alternate": "Yellow"
+      },
+      {
+        "start_m": 4060,
+        "end_m": 4155,
+        "side": -1,
+        "color": "Red",
+        "alternate": "Yellow"
+      },
+      {
+        "start_m": 4670,
+        "end_m": 4820,
+        "side": -1,
+        "color": "Red",
+        "alternate": "Yellow"
+      },
+      {
+        "start_m": 5300,
+        "end_m": 5375,
+        "side": 1,
+        "color": "Red",
+        "alternate": "Yellow"
+      },
+      {
+        "start_m": 5410,
+        "end_m": 5485,
+        "side": -1,
+        "color": "Red",
+        "alternate": "Yellow"
+      },
+      {
+        "start_m": 5700,
+        "end_m": 5780,
+        "side": 1,
+        "color": "Red",
+        "alternate": "Yellow"
+      },
+      {
+        "start_m": 5900,
+        "end_m": 6030,
+        "side": 1,
+        "color": "Red",
+        "alternate": "Yellow"
+      },
+      {
+        "start_m": 6720,
+        "end_m": 6860,
+        "side": -1,
+        "color": "Red",
+        "alternate": "Yellow"
+      }
+    ],
+    "runoff": [
+      {
+        "start_m": 440,
+        "end_m": 655,
+        "side": -1,
+        "requested_width_m": 17,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 1070,
+        "end_m": 1290,
+        "side": -1,
+        "requested_width_m": 22,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 1800,
+        "end_m": 2100,
+        "side": 1,
+        "requested_width_m": 24,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 3100,
+        "end_m": 3530,
+        "side": -1,
+        "requested_width_m": 24,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 3750,
+        "end_m": 3990,
+        "side": -1,
+        "requested_width_m": 23,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 4620,
+        "end_m": 4890,
+        "side": 1,
+        "requested_width_m": 24,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 5250,
+        "end_m": 5530,
+        "side": -1,
+        "requested_width_m": 22,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 6670,
+        "end_m": 6900,
+        "side": 1,
+        "requested_width_m": 21,
+        "material": "Gravel"
+      }
+    ]
+  },
+  "elevation_recipe": "elevation-corrections.json",
+  "braking_markers": {
+    "side_contract": "+1 is driver right in retained east/north source coordinates; -1 is driver left.",
+    "station_frame": "Native circuit origin, not necessarily start/finish; scene.at handles lap wrapping.",
+    "placement_status": "Corner approaches are registered to retained plan/OSM/FIA controls and reviewed reference sectors. Board offsets, mounting side and exact event positions are reconstructed estimates, not a traced signage survey.",
+    "selection": "Major braking approaches only; short linked corners use 100/50 m sets. No boards added to flat-out sweeps solely because the curvature detector counted a bend.",
+    "approaches": [
+      {
+        "corner": "La Source",
+        "apex_station_m": 1177,
+        "side": -1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "Les Combes",
+        "apex_station_m": 3198,
+        "side": -1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "Bruxelles",
+        "apex_station_m": 3862,
+        "side": -1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "Fagnes",
+        "apex_station_m": 5295,
+        "side": -1,
+        "distances_before_apex_m": [
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      },
+      {
+        "corner": "Bus Stop first apex",
+        "apex_station_m": 476,
+        "side": -1,
+        "distances_before_apex_m": [
+          150,
+          100,
+          50
+        ],
+        "source_registration": "reference-index.json and retained circuit.osm.json.gz / layout-review.json where present",
+        "reference_context": "See the matching named sector in this environment recipe; footage establishes trackside protection and style, not a precise mount coordinate."
+      }
+    ]
+  },
+  "barrier_branding": {
+    "side_contract": "+1 driver right / -1 driver left in retained source coordinates.",
+    "source_policy": "Only the selected reviewed palette/identities are reproduced with original typesetting. Unsupported or varying identities use neutral PanelWhite; no reference pixels are shipped.",
+    "placement_status": "Ranges are approximate native-station registrations to the named reference sectors. Individual panel ends, event mounting positions and exact lengths are reconstructed; clip time is not treated as proportional lap distance.",
+    "coverage_policy": "Selected pit-straight and corner-protection runs only. Bare woodland Armco, open slopes and intervening protection remain exposed.",
+    "ranges": [
+      {
+        "start_m": 740,
+        "end_m": 1060,
+        "side": 1,
+        "material": "PanelWhite",
+        "reviewed_times_s": [
+          337.84
+        ],
+        "observation": "White/black game-event panels line the Grand Prix pit straight. The purple QATAR pit-lane frame is not evidence for a purple race-wall band."
+      },
+      {
+        "start_m": 740,
+        "end_m": 1060,
+        "side": -1,
+        "material": "PanelWhite",
+        "reviewed_times_s": [
+          337.84
+        ],
+        "observation": "The opposite Grand Prix straight wall also has white event panels."
+      },
+      {
+        "start_m": 1560,
+        "end_m": 1840,
+        "side": 1,
+        "material": "PanelWhite",
+        "reviewed_times_s": [
+          205.9,
+          667.68
+        ],
+        "observation": "Short white event-panel runs beside the old/endurance pit buildings approaching Eau Rouge."
+      },
+      {
+        "start_m": 2860,
+        "end_m": 3220,
+        "side": -1,
+        "material": "PanelYellow",
+        "reviewed_times_s": [
+          403.81
+        ],
+        "observation": "Yellow PIRELLI panels on the braking-zone end of the forest-lined Kemmel/Les Combes approach; retain exposed Armco earlier on the straight."
+      }
+    ],
+    "unplaced_observation": "Yellow PIRELLI panels appear in the lower-forest corner frames at535.74/601.71s, but their exact corner registration is not secure enough for an additional range; those woodland barriers remain bare."
+  },
+  "runoff_paint_review": {
+    "reviewed_overview_frames": [
+      4,
+      8,
+      9,
+      12,
+      13
+    ],
+    "reviewed_times_s": [
+      271.87,
+      535.74,
+      601.71,
+      799.61,
+      865.58
+    ],
+    "observations": "Short green and red paved strips around La Source / old-pit descent and Eau Rouge approach. Keep the broad reconfigured gravel traps distinct.",
+    "registration_status": "Named reference sector matched to retained road shape; widths, ends and star sizes/spacing are original estimates, not exact surveyed paint coordinates.",
+    "height_policy": "Ground-following polygon geometry, clipped outside road_mask. No fixed-z tiles and no enlargement of physical runoff corridors.",
+    "physical_runoff_extents_changed": false,
+    "paint": [
+      {
+        "type": "band",
+        "start_m": 440,
+        "end_m": 655,
+        "side": -1,
+        "inner_m": 1.2,
+        "outer_m": 2.8,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 440,
+        "end_m": 655,
+        "side": -1,
+        "inner_m": 2.8,
+        "outer_m": 6.0,
+        "material": "RunoffRed"
+      },
+      {
+        "type": "band",
+        "start_m": 1070,
+        "end_m": 1290,
+        "side": -1,
+        "inner_m": 1.2,
+        "outer_m": 2.8,
+        "material": "RunoffGreen"
+      },
+      {
+        "type": "band",
+        "start_m": 1070,
+        "end_m": 1290,
+        "side": -1,
+        "inner_m": 2.8,
+        "outer_m": 6.0,
+        "material": "RunoffRed"
+      }
+    ]
+  },
+  "ground_appearance_review": "Deep green woodland and temperate grass."
+}

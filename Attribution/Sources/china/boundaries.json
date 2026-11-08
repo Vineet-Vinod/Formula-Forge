@@ -1,0 +1,129 @@
+{
+  "source": "Registered native road and reference-authored escape ranges",
+  "method": "Exact planar polygon union, preserving interior islands; simplification tolerance2cm, wallsegments atmost2m. One closed boundary supplies physical and visible protection.",
+  "wall_count": 6328,
+  "runoff_ranges": [
+    {
+      "type": "runoff",
+      "start_m": 130,
+      "end_m": 300,
+      "side": -1,
+      "requested_width_m": 12,
+      "material": "Gravel"
+    },
+    {
+      "type": "runoff",
+      "start_m": 920,
+      "end_m": 1050,
+      "side": 1,
+      "requested_width_m": 14,
+      "material": "RunoffGreen"
+    },
+    {
+      "type": "runoff",
+      "start_m": 1060,
+      "end_m": 1320,
+      "side": -1,
+      "requested_width_m": 15,
+      "material": "Gravel"
+    },
+    {
+      "type": "runoff",
+      "start_m": 2580,
+      "end_m": 2780,
+      "side": -1,
+      "requested_width_m": 16,
+      "material": "RunoffGreen"
+    },
+    {
+      "type": "runoff",
+      "start_m": 2960,
+      "end_m": 3150,
+      "side": 1,
+      "requested_width_m": 14,
+      "material": "Gravel"
+    },
+    {
+      "type": "runoff",
+      "start_m": 3850,
+      "end_m": 4190,
+      "side": -1,
+      "requested_width_m": 18,
+      "material": "Gravel"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4160,
+      "end_m": 4330,
+      "side": 1,
+      "requested_width_m": 13,
+      "material": "RunoffGreen"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4840,
+      "end_m": 5000,
+      "side": -1,
+      "requested_width_m": 15,
+      "material": "Gravel"
+    },
+    {
+      "type": "runoff",
+      "start_m": 165,
+      "end_m": 285,
+      "side": 1,
+      "requested_width_m": 2.6,
+      "material": "RunoffGreen"
+    },
+    {
+      "type": "runoff",
+      "start_m": 390,
+      "end_m": 465,
+      "side": -1,
+      "requested_width_m": 2.6,
+      "material": "RunoffGreen"
+    },
+    {
+      "type": "runoff",
+      "start_m": 1070,
+      "end_m": 1270,
+      "side": 1,
+      "requested_width_m": 2.6,
+      "material": "RunoffGreen"
+    },
+    {
+      "type": "runoff",
+      "start_m": 2990,
+      "end_m": 3110,
+      "side": -1,
+      "requested_width_m": 2.6,
+      "material": "RunoffGreen"
+    },
+    {
+      "type": "runoff",
+      "start_m": 3930,
+      "end_m": 4140,
+      "side": 1,
+      "requested_width_m": 2.6,
+      "material": "RunoffGreen"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4180,
+      "end_m": 4300,
+      "side": -1,
+      "requested_width_m": 2.6,
+      "material": "RunoffGreen"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4865,
+      "end_m": 4960,
+      "side": 1,
+      "requested_width_m": 2.6,
+      "material": "RunoffGreen"
+    }
+  ],
+  "road_unchanged": true,
+  "limitations": "Escape depths and station endpoints are reference estimates, not surveyed race-event barrier positions. Pit access remains a closed game boundary."
+}

@@ -157,7 +157,13 @@
       }
     ],
     "start_finish_native_station_m": 50.0,
-    "start_finish_method": "Approximate publishedprofilechartregistration against SainteD\u00e9vote,Casino,Portier,AntonyNogh\u00e8s; see elevation-corrections.json."
+    "start_finish_method": "Approximate publishedprofilechartregistration against SainteD\u00e9vote,Casino,Portier,AntonyNogh\u00e8s; see elevation-corrections.json.",
+    "start_anchor_review": {
+      "station_m": 50,
+      "status": "Registered reconstruction",
+      "uncertainty_m": 10,
+      "evidence": "Official Formula1profilechart registered against SainteD\u00e9vote,Casino,Portier,AntonyNogh\u00e8s; see elevation-corrections.json."
+    }
   },
   "primary_sources": [
     {
@@ -167,6 +173,10 @@
     {
       "url": "https://asset.montecarlosbm.com/pdf/GP2025/SBM_BROCHURE_GP_2025_UK.pdf",
       "use": "Official layout/venue architecture; source year can differ from video."
+    },
+    {
+      "url": "https://www.formula1.com/en/latest/article/highs-and-lows-which-f1-track-has-the-most-elevation-changes-.7I9JEcBw3R2AqXbnJ6hyvc.7I9JEcBw3R2AqXbnJ6hyvc",
+      "use": "Official2016longitudinalprofile independentlydigitized into circuit elevationcontrols; chartapproximation, not as-built survey."
     }
   ],
   "uncertainties": [
@@ -221,5 +231,6 @@
     582,
     594,
     606
-  ]
+  ],
+  "racing_elevation_correction": "elevation-corrections.json"
 }

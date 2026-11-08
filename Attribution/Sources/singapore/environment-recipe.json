@@ -1,0 +1,9635 @@
+{
+  "schema_version": 1,
+  "circuit": "singapore",
+  "appearance": "Dry night race; early qualifying clips show daylight/twilight and must not set main-race lighting.",
+  "terrain_character": "Flat urban marina, close fenced asphalt streets, dense mature broadleaf shade and differentiated civic/modern skyline.",
+  "distinctive_geometry": [
+    "Singapore Flyer: large spoked observation wheel on sloping A-frame legs with capsules and low retail base near pit end.",
+    "Esplanade: two low rounded durian shells, triangulated lattice ribs and many small pointed sunshades.",
+    "National Gallery: separate Old City Hall colonnade and Old Supreme Court dome, pale civic stone with regular arches.",
+    "Fullerton: heavy paleclassical riverfront hotel, rows of tall bays, cornice/parapet and recessed upper courtyard.",
+    "Marina Bay Sands: three slender paired/curved glazed towers supporting long curved boat-like skypark; distant landmark stays visible beyond narrow OSMcorridor."
+  ],
+  "sectors": [
+    {
+      "id": "singapore-01",
+      "native_station_m": [
+        0,
+        750
+      ],
+      "name": "Pit straight and T1–3",
+      "reviewed_video_seconds": [
+        536.06,
+        530,
+        534,
+        538,
+        542,
+        566,
+        586,
+        590,
+        594,
+        598,
+        602,
+        608
+      ],
+      "observed": "Long white pit buildings face a covered red crowd stand, with bright paired floodlights and yellow pit-edge paint. The first complex has close mesh fences, individual red-white kerbs and paved escape lanes. The mapped pit footprint is on the driver left near native station 4896.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "singapore-02",
+      "native_station_m": [
+        750,
+        1500
+      ],
+      "name": "Republic Boulevard T4–5",
+      "reviewed_video_seconds": [
+        610,
+        614,
+        618,
+        622,
+        626,
+        630,
+        638.17
+      ],
+      "observed": "The Republic Boulevard walls and mesh sit close to the asphalt. Palms, broadleaf crowns and pale modern facades appear behind them. Long rows of floodlights continue overhead. Urban road markings and paved verges should remain visible.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "singapore-03",
+      "native_station_m": [
+        1500,
+        2200
+      ],
+      "name": "Raffles Boulevard T6–7",
+      "reviewed_video_seconds": [
+        842.38,
+        740.27
+      ],
+      "observed": "Glass office and hotel facades have repeated window mullions. Large yellow hatched junctions, city lamps and close barriers define Raffles Boulevard. Millenia, Suntec and Marina Square use their mapped positions, with trees breaking up the building walls.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "singapore-04",
+      "native_station_m": [
+        2200,
+        2700
+      ],
+      "name": "Stamford and Padang T8–9",
+      "reviewed_video_seconds": [
+        1148.7,
+        1250.81
+      ],
+      "observed": "The Old City Hall colonnade and former Supreme Court give the Padang section its pale civic architecture. A broad lawn and mature tree canopy sit behind close fencing. Low cricket and recreation clubs face them. Kerbs and yellow junction marks remain distinct.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "singapore-05",
+      "native_station_m": [
+        2700,
+        3100
+      ],
+      "name": "Anderson Bridge and Fullerton hairpin",
+      "reviewed_video_seconds": [
+        944.49,
+        1352.92
+      ],
+      "observed": "Anderson Bridge has narrow masonry edges and balustrades. Fullerton and the Waterboat House frame the riverfront turns, with heavy cornices, tall bays and trees. Escape areas remain paved beside these river walls.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "singapore-06",
+      "native_station_m": [
+        3100,
+        3850
+      ],
+      "name": "Esplanade Drive and Connaught",
+      "reviewed_video_seconds": [
+        433.95,
+        1455.02
+      ],
+      "observed": "Esplanade Drive and Connaught are broad paved streets beside grandstands and dense trees. The two spiked Esplanade shells sit beyond the route, with tall office towers and distant marina buildings above the floodlights. Asphalt and wall bases must stay readable at night.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "singapore-07",
+      "native_station_m": [
+        3850,
+        4500
+      ],
+      "name": "New waterfront straight and NS Square bypass",
+      "reviewed_video_seconds": [
+        1046.6,
+        1250.81
+      ],
+      "observed": "The current 19-turn layout has a straight past the NS Square construction area. White worksite walls, open skyline and the Singapore Flyer define it. Preserve this acceleration section and the paved areas behind mesh fencing.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "singapore-08",
+      "native_station_m": [
+        4500,
+        4940
+      ],
+      "name": "Final corners and pit complex",
+      "reviewed_video_seconds": [
+        530,
+        534,
+        538,
+        536.06
+      ],
+      "observed": "The Flyer wheel, low retail base, pit entry and terraces frame the final corners. Bright lights, compact red-white kerbs and yellow paved edges lead back to the white pit roof and main stand. Protection should follow the final curves continuously.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    }
+  ],
+  "mapped_landmarks": [
+    {
+      "osm_id": 39487263,
+      "name": "Raffles City Shopping Centre",
+      "source_xy_m": [
+        -1190.99,
+        268.64
+      ],
+      "nearest_station_m": 2113.2,
+      "distance_from_centerline_m": 137.5,
+      "side": "right",
+      "height_tag": "30",
+      "levels_tag": "4",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1114.26,
+          304.66
+        ],
+        [
+          -1109.75,
+          294.42
+        ],
+        [
+          -1112.68,
+          277.31
+        ],
+        [
+          -1120.2,
+          264.16
+        ],
+        [
+          -1132.48,
+          262.86
+        ],
+        [
+          -1164.26,
+          214.86
+        ],
+        [
+          -1177.01,
+          195.58
+        ],
+        [
+          -1175.17,
+          192.41
+        ],
+        [
+          -1184.58,
+          182.95
+        ],
+        [
+          -1194.64,
+          178.76
+        ],
+        [
+          -1208.37,
+          178.93
+        ],
+        [
+          -1223.55,
+          188.28
+        ],
+        [
+          -1229.29,
+          200.04
+        ],
+        [
+          -1232.28,
+          202.15
+        ],
+        [
+          -1238.72,
+          206.69
+        ],
+        [
+          -1297.43,
+          248.01
+        ],
+        [
+          -1305.11,
+          257.58
+        ],
+        [
+          -1306.7,
+          266.72
+        ],
+        [
+          -1305.86,
+          274.65
+        ],
+        [
+          -1238.28,
+          368.81
+        ],
+        [
+          -1228.98,
+          373.82
+        ],
+        [
+          -1214.22,
+          373.62
+        ],
+        [
+          -1203.43,
+          367.72
+        ],
+        [
+          -1174.59,
+          346.72
+        ],
+        [
+          -1147.56,
+          325.72
+        ],
+        [
+          -1131.73,
+          313.69
+        ],
+        [
+          -1129.34,
+          312.02
+        ],
+        [
+          -1123.95,
+          312.88
+        ],
+        [
+          -1114.26,
+          304.66
+        ]
+      ]
+    },
+    {
+      "osm_id": 44414529,
+      "name": "Carlton Hotel Singapore",
+      "source_xy_m": [
+        -1273.84,
+        505.0
+      ],
+      "nearest_station_m": 2117.1,
+      "distance_from_centerline_m": 384.3,
+      "side": "right",
+      "height_tag": "0",
+      "levels_tag": null,
+      "building": "hotel",
+      "footprint_xy_m": [
+        [
+          -1336.2,
+          510.98
+        ],
+        [
+          -1272.25,
+          580.52
+        ],
+        [
+          -1269.86,
+          582.24
+        ],
+        [
+          -1266.91,
+          582.93
+        ],
+        [
+          -1264.17,
+          582.71
+        ],
+        [
+          -1261.42,
+          581.94
+        ],
+        [
+          -1259.19,
+          580.43
+        ],
+        [
+          -1257.87,
+          578.89
+        ],
+        [
+          -1256.57,
+          576.67
+        ],
+        [
+          -1255.71,
+          573.94
+        ],
+        [
+          -1255.89,
+          571.57
+        ],
+        [
+          -1256.42,
+          568.66
+        ],
+        [
+          -1260.72,
+          560.73
+        ],
+        [
+          -1276.82,
+          536.54
+        ],
+        [
+          -1276.32,
+          531.99
+        ],
+        [
+          -1273.39,
+          529.35
+        ],
+        [
+          -1249.62,
+          511.47
+        ],
+        [
+          -1248.61,
+          513.03
+        ],
+        [
+          -1226.98,
+          495.38
+        ],
+        [
+          -1214.17,
+          485.34
+        ],
+        [
+          -1216.52,
+          482.34
+        ],
+        [
+          -1208.62,
+          476.07
+        ],
+        [
+          -1226.3,
+          453.81
+        ],
+        [
+          -1228.65,
+          455.89
+        ],
+        [
+          -1229.0,
+          451.96
+        ],
+        [
+          -1230.65,
+          448.38
+        ],
+        [
+          -1233.42,
+          445.57
+        ],
+        [
+          -1236.97,
+          443.87
+        ],
+        [
+          -1240.9,
+          443.46
+        ],
+        [
+          -1244.73,
+          444.42
+        ],
+        [
+          -1248.0,
+          446.6
+        ],
+        [
+          -1250.35,
+          449.76
+        ],
+        [
+          -1251.49,
+          453.53
+        ],
+        [
+          -1255.4,
+          448.68
+        ],
+        [
+          -1277.77,
+          465.73
+        ],
+        [
+          -1272.98,
+          472.02
+        ],
+        [
+          -1276.85,
+          474.97
+        ],
+        [
+          -1284.83,
+          464.68
+        ],
+        [
+          -1314.12,
+          484.07
+        ],
+        [
+          -1320.77,
+          488.86
+        ],
+        [
+          -1330.36,
+          495.63
+        ],
+        [
+          -1327.61,
+          499.11
+        ],
+        [
+          -1329.82,
+          498.39
+        ],
+        [
+          -1332.15,
+          498.39
+        ],
+        [
+          -1334.37,
+          499.1
+        ],
+        [
+          -1336.25,
+          500.47
+        ],
+        [
+          -1337.62,
+          502.36
+        ],
+        [
+          -1338.33,
+          504.58
+        ],
+        [
+          -1338.32,
+          506.9
+        ],
+        [
+          -1337.58,
+          509.12
+        ],
+        [
+          -1336.2,
+          510.98
+        ]
+      ]
+    },
+    {
+      "osm_id": 46594816,
+      "name": "Mandarin Oriental Hotel",
+      "source_xy_m": [
+        -654.72,
+        -82.31
+      ],
+      "nearest_station_m": 1339.7,
+      "distance_from_centerline_m": 105.6,
+      "side": "left",
+      "height_tag": "0",
+      "levels_tag": null,
+      "building": "hotel",
+      "footprint_xy_m": [
+        [
+          -646.45,
+          -133.16
+        ],
+        [
+          -707.08,
+          -97.37
+        ],
+        [
+          -701.79,
+          -88.4
+        ],
+        [
+          -699.82,
+          -85.07
+        ],
+        [
+          -669.39,
+          -32.95
+        ],
+        [
+          -627.65,
+          -58.18
+        ],
+        [
+          -623.08,
+          -60.9
+        ],
+        [
+          -616.73,
+          -64.62
+        ],
+        [
+          -608.76,
+          -69.33
+        ],
+        [
+          -646.45,
+          -133.16
+        ]
+      ]
+    },
+    {
+      "osm_id": 46594819,
+      "name": "Singapore Recreation Club",
+      "source_xy_m": [
+        -1162.0,
+        81.78
+      ],
+      "nearest_station_m": 2061.3,
+      "distance_from_centerline_m": 32.7,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": "3",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1206.53,
+          91.96
+        ],
+        [
+          -1199.12,
+          88.23
+        ],
+        [
+          -1193.35,
+          99.68
+        ],
+        [
+          -1179.56,
+          92.75
+        ],
+        [
+          -1178.29,
+          95.29
+        ],
+        [
+          -1171.59,
+          91.93
+        ],
+        [
+          -1169.08,
+          96.9
+        ],
+        [
+          -1158.88,
+          91.76
+        ],
+        [
+          -1155.55,
+          98.76
+        ],
+        [
+          -1148.13,
+          95.08
+        ],
+        [
+          -1151.32,
+          87.97
+        ],
+        [
+          -1141.28,
+          82.91
+        ],
+        [
+          -1144.09,
+          77.29
+        ],
+        [
+          -1138.03,
+          74.24
+        ],
+        [
+          -1139.16,
+          71.99
+        ],
+        [
+          -1124.94,
+          64.84
+        ],
+        [
+          -1131.85,
+          51.09
+        ],
+        [
+          -1125.43,
+          47.86
+        ],
+        [
+          -1128.5,
+          41.76
+        ],
+        [
+          -1210.92,
+          83.21
+        ],
+        [
+          -1206.53,
+          91.96
+        ]
+      ]
+    },
+    {
+      "osm_id": 46594820,
+      "name": "Singapore Cricket Club",
+      "source_xy_m": [
+        -1348.53,
+        -272.73
+      ],
+      "nearest_station_m": 2639.5,
+      "distance_from_centerline_m": 29.3,
+      "side": "left",
+      "height_tag": "15",
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1373.46,
+          -239.96
+        ],
+        [
+          -1350.89,
+          -251.57
+        ],
+        [
+          -1348.77,
+          -262.0
+        ],
+        [
+          -1336.91,
+          -269.16
+        ],
+        [
+          -1328.73,
+          -265.83
+        ],
+        [
+          -1306.7,
+          -278.44
+        ],
+        [
+          -1309.3,
+          -282.59
+        ],
+        [
+          -1307.09,
+          -283.81
+        ],
+        [
+          -1311.58,
+          -291.55
+        ],
+        [
+          -1313.24,
+          -289.75
+        ],
+        [
+          -1315.46,
+          -293.58
+        ],
+        [
+          -1331.41,
+          -284.8
+        ],
+        [
+          -1328.85,
+          -280.9
+        ],
+        [
+          -1335.03,
+          -282.8
+        ],
+        [
+          -1340.31,
+          -292.63
+        ],
+        [
+          -1345.87,
+          -288.62
+        ],
+        [
+          -1347.53,
+          -290.3
+        ],
+        [
+          -1352.12,
+          -287.84
+        ],
+        [
+          -1354.99,
+          -293.66
+        ],
+        [
+          -1360.51,
+          -290.7
+        ],
+        [
+          -1357.7,
+          -284.87
+        ],
+        [
+          -1361.58,
+          -282.78
+        ],
+        [
+          -1359.98,
+          -280.31
+        ],
+        [
+          -1367.08,
+          -276.72
+        ],
+        [
+          -1361.17,
+          -267.5
+        ],
+        [
+          -1362.98,
+          -260.26
+        ],
+        [
+          -1365.32,
+          -264.54
+        ],
+        [
+          -1380.84,
+          -256.07
+        ],
+        [
+          -1379.29,
+          -251.91
+        ],
+        [
+          -1381.94,
+          -250.22
+        ],
+        [
+          -1376.48,
+          -241.71
+        ],
+        [
+          -1374.89,
+          -242.68
+        ],
+        [
+          -1373.46,
+          -239.96
+        ]
+      ]
+    },
+    {
+      "osm_id": 46594821,
+      "name": "One Raffles Link",
+      "source_xy_m": [
+        -928.79,
+        83.1
+      ],
+      "nearest_station_m": 1798.2,
+      "distance_from_centerline_m": 62.9,
+      "side": "left",
+      "height_tag": "40",
+      "levels_tag": "7",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -910.5,
+          151.07
+        ],
+        [
+          -896.82,
+          143.06
+        ],
+        [
+          -893.69,
+          148.53
+        ],
+        [
+          -887.76,
+          146.76
+        ],
+        [
+          -890.1,
+          139.12
+        ],
+        [
+          -880.71,
+          133.62
+        ],
+        [
+          -892.63,
+          117.36
+        ],
+        [
+          -901.38,
+          102.74
+        ],
+        [
+          -908.07,
+          81.34
+        ],
+        [
+          -908.91,
+          78.64
+        ],
+        [
+          -910.05,
+          74.94
+        ],
+        [
+          -936.07,
+          -9.33
+        ],
+        [
+          -968.61,
+          17.4
+        ],
+        [
+          -965.21,
+          23.35
+        ],
+        [
+          -974.84,
+          29.34
+        ],
+        [
+          -974.4,
+          30.14
+        ],
+        [
+          -975.99,
+          30.96
+        ],
+        [
+          -974.26,
+          34.04
+        ],
+        [
+          -975.17,
+          34.55
+        ],
+        [
+          -976.61,
+          35.35
+        ],
+        [
+          -921.03,
+          134.2
+        ],
+        [
+          -910.5,
+          151.07
+        ]
+      ]
+    },
+    {
+      "osm_id": 46594825,
+      "name": "Supreme Court of Singapore",
+      "source_xy_m": [
+        -1491.49,
+        -89.31
+      ],
+      "nearest_station_m": 2460.0,
+      "distance_from_centerline_m": 141.6,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "5",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1509.09,
+          -43.03
+        ],
+        [
+          -1501.38,
+          -47.58
+        ],
+        [
+          -1451.77,
+          -75.29
+        ],
+        [
+          -1442.82,
+          -80.54
+        ],
+        [
+          -1458.54,
+          -108.73
+        ],
+        [
+          -1498.85,
+          -181.96
+        ],
+        [
+          -1560.4,
+          -134.33
+        ],
+        [
+          -1509.09,
+          -43.03
+        ]
+      ]
+    },
+    {
+      "osm_id": 46594829,
+      "name": "SMRT Headquarters",
+      "source_xy_m": [
+        -1392.88,
+        329.89
+      ],
+      "nearest_station_m": 2137.1,
+      "distance_from_centerline_m": 280.5,
+      "side": "right",
+      "height_tag": "24",
+      "levels_tag": "3",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1356.28,
+          280.63
+        ],
+        [
+          -1353.97,
+          283.9
+        ],
+        [
+          -1350.15,
+          286.16
+        ],
+        [
+          -1346.21,
+          286.21
+        ],
+        [
+          -1342.02,
+          284.77
+        ],
+        [
+          -1332.79,
+          299.35
+        ],
+        [
+          -1343.72,
+          306.35
+        ],
+        [
+          -1341.72,
+          309.46
+        ],
+        [
+          -1345.29,
+          311.54
+        ],
+        [
+          -1348.85,
+          305.89
+        ],
+        [
+          -1356.29,
+          308.87
+        ],
+        [
+          -1350.35,
+          317.5
+        ],
+        [
+          -1356.9,
+          321.78
+        ],
+        [
+          -1362.84,
+          313.62
+        ],
+        [
+          -1383.37,
+          324.93
+        ],
+        [
+          -1377.12,
+          334.15
+        ],
+        [
+          -1384.26,
+          338.91
+        ],
+        [
+          -1396.31,
+          318.51
+        ],
+        [
+          -1411.93,
+          327.02
+        ],
+        [
+          -1448.82,
+          347.54
+        ],
+        [
+          -1449.12,
+          351.71
+        ],
+        [
+          -1444.65,
+          352.6
+        ],
+        [
+          -1445.25,
+          358.85
+        ],
+        [
+          -1449.71,
+          358.55
+        ],
+        [
+          -1449.71,
+          363.6
+        ],
+        [
+          -1441.98,
+          370.45
+        ],
+        [
+          -1403.0,
+          349.03
+        ],
+        [
+          -1396.76,
+          360.63
+        ],
+        [
+          -1428.19,
+          377.82
+        ],
+        [
+          -1422.65,
+          387.17
+        ],
+        [
+          -1435.95,
+          395.3
+        ],
+        [
+          -1473.73,
+          357.01
+        ],
+        [
+          -1471.9,
+          345.71
+        ],
+        [
+          -1356.28,
+          280.63
+        ]
+      ]
+    },
+    {
+      "osm_id": 46594830,
+      "name": "Capitol Building",
+      "source_xy_m": [
+        -1402.19,
+        240.83
+      ],
+      "nearest_station_m": 2157.0,
+      "distance_from_centerline_m": 226.2,
+      "side": "right",
+      "height_tag": "34",
+      "levels_tag": "3",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1444.18,
+          291.59
+        ],
+        [
+          -1382.45,
+          246.97
+        ],
+        [
+          -1383.16,
+          245.32
+        ],
+        [
+          -1384.93,
+          241.17
+        ],
+        [
+          -1384.42,
+          234.39
+        ],
+        [
+          -1380.7,
+          228.07
+        ],
+        [
+          -1376.96,
+          224.99
+        ],
+        [
+          -1395.61,
+          190.66
+        ],
+        [
+          -1408.06,
+          198.75
+        ],
+        [
+          -1394.24,
+          223.05
+        ],
+        [
+          -1397.26,
+          238.36
+        ],
+        [
+          -1452.34,
+          275.89
+        ],
+        [
+          -1444.18,
+          291.59
+        ]
+      ]
+    },
+    {
+      "osm_id": 46594831,
+      "name": "Capitol Singapore",
+      "source_xy_m": [
+        -1448.69,
+        182.4
+      ],
+      "nearest_station_m": 2200.9,
+      "distance_from_centerline_m": 236.6,
+      "side": "right",
+      "height_tag": "55",
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1476.51,
+          223.22
+        ],
+        [
+          -1429.52,
+          194.69
+        ],
+        [
+          -1434.15,
+          189.1
+        ],
+        [
+          -1437.23,
+          181.26
+        ],
+        [
+          -1436.31,
+          174.81
+        ],
+        [
+          -1429.22,
+          166.59
+        ],
+        [
+          -1421.75,
+          162.23
+        ],
+        [
+          -1438.74,
+          132.65
+        ],
+        [
+          -1506.99,
+          176.27
+        ],
+        [
+          -1476.51,
+          223.22
+        ]
+      ]
+    },
+    {
+      "osm_id": 46594832,
+      "name": "Peninsula Plaza",
+      "source_xy_m": [
+        -1480.4,
+        112.49
+      ],
+      "nearest_station_m": 2280.6,
+      "distance_from_centerline_m": 230.1,
+      "side": "right",
+      "height_tag": "0",
+      "levels_tag": null,
+      "building": "retail",
+      "footprint_xy_m": [
+        [
+          -1494.77,
+          148.14
+        ],
+        [
+          -1464.66,
+          130.55
+        ],
+        [
+          -1462.62,
+          133.88
+        ],
+        [
+          -1455.68,
+          129.63
+        ],
+        [
+          -1456.64,
+          128.07
+        ],
+        [
+          -1457.73,
+          126.29
+        ],
+        [
+          -1444.44,
+          118.35
+        ],
+        [
+          -1480.2,
+          55.59
+        ],
+        [
+          -1508.5,
+          71.78
+        ],
+        [
+          -1513.27,
+          74.51
+        ],
+        [
+          -1531.58,
+          84.98
+        ],
+        [
+          -1494.77,
+          148.14
+        ]
+      ]
+    },
+    {
+      "osm_id": 46595137,
+      "name": "Suntec City",
+      "source_xy_m": [
+        -717.63,
+        379.8
+      ],
+      "nearest_station_m": 1610.8,
+      "distance_from_centerline_m": 267.0,
+      "side": "right",
+      "height_tag": "20",
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -652.95,
+          472.97
+        ],
+        [
+          -680.03,
+          487.65
+        ],
+        [
+          -727.65,
+          405.91
+        ],
+        [
+          -728.73,
+          404.05
+        ],
+        [
+          -732.67,
+          396.67
+        ],
+        [
+          -730.36,
+          389.58
+        ],
+        [
+          -732.17,
+          381.41
+        ],
+        [
+          -729.19,
+          377.29
+        ],
+        [
+          -727.08,
+          374.16
+        ],
+        [
+          -726.1,
+          370.22
+        ],
+        [
+          -726.06,
+          366.44
+        ],
+        [
+          -726.89,
+          361.5
+        ],
+        [
+          -729.28,
+          357.27
+        ],
+        [
+          -732.7,
+          352.18
+        ],
+        [
+          -736.34,
+          349.43
+        ],
+        [
+          -739.48,
+          347.43
+        ],
+        [
+          -744.79,
+          345.9
+        ],
+        [
+          -749.2,
+          345.29
+        ],
+        [
+          -759.83,
+          325.51
+        ],
+        [
+          -756.06,
+          323.34
+        ],
+        [
+          -743.79,
+          316.32
+        ],
+        [
+          -726.06,
+          306.17
+        ],
+        [
+          -717.24,
+          324.14
+        ],
+        [
+          -735.8,
+          334.75
+        ],
+        [
+          -706.53,
+          386.0
+        ],
+        [
+          -699.0,
+          381.7
+        ],
+        [
+          -695.53,
+          387.71
+        ],
+        [
+          -667.89,
+          435.58
+        ],
+        [
+          -672.23,
+          437.97
+        ],
+        [
+          -662.05,
+          456.45
+        ],
+        [
+          -652.95,
+          472.97
+        ]
+      ]
+    },
+    {
+      "osm_id": 46595138,
+      "name": "Conrad Centennial",
+      "source_xy_m": [
+        -602.18,
+        222.5
+      ],
+      "nearest_station_m": 1431.4,
+      "distance_from_centerline_m": 188.9,
+      "side": "right",
+      "height_tag": "24",
+      "levels_tag": null,
+      "building": "hotel",
+      "footprint_xy_m": [
+        [
+          -657.29,
+          200.37
+        ],
+        [
+          -656.25,
+          211.52
+        ],
+        [
+          -650.21,
+          211.11
+        ],
+        [
+          -639.93,
+          237.56
+        ],
+        [
+          -622.75,
+          255.1
+        ],
+        [
+          -616.14,
+          254.47
+        ],
+        [
+          -593.2,
+          252.04
+        ],
+        [
+          -579.71,
+          250.6
+        ],
+        [
+          -576.27,
+          247.81
+        ],
+        [
+          -572.09,
+          234.11
+        ],
+        [
+          -565.74,
+          216.02
+        ],
+        [
+          -561.5,
+          212.82
+        ],
+        [
+          -562.43,
+          205.57
+        ],
+        [
+          -559.91,
+          199.24
+        ],
+        [
+          -560.05,
+          195.68
+        ],
+        [
+          -606.36,
+          198.16
+        ],
+        [
+          -657.29,
+          200.37
+        ]
+      ]
+    },
+    {
+      "osm_id": 46595145,
+      "name": "Suntec Tower 5",
+      "source_xy_m": [
+        -697.87,
+        355.56
+      ],
+      "nearest_station_m": 1582.9,
+      "distance_from_centerline_m": 256.1,
+      "side": "right",
+      "height_tag": "0",
+      "levels_tag": null,
+      "building": "office",
+      "footprint_xy_m": [
+        [
+          -706.53,
+          386.0
+        ],
+        [
+          -735.8,
+          334.75
+        ],
+        [
+          -717.24,
+          324.14
+        ],
+        [
+          -684.88,
+          305.66
+        ],
+        [
+          -655.61,
+          356.93
+        ],
+        [
+          -677.31,
+          369.32
+        ],
+        [
+          -699.0,
+          381.7
+        ],
+        [
+          -706.53,
+          386.0
+        ]
+      ]
+    },
+    {
+      "osm_id": 46595146,
+      "name": "Suntec Tower 1",
+      "source_xy_m": [
+        -646.65,
+        444.62
+      ],
+      "nearest_station_m": 1582.9,
+      "distance_from_centerline_m": 358.9,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "office",
+      "footprint_xy_m": [
+        [
+          -672.23,
+          437.97
+        ],
+        [
+          -662.05,
+          456.45
+        ],
+        [
+          -652.95,
+          472.97
+        ],
+        [
+          -633.26,
+          462.13
+        ],
+        [
+          -628.42,
+          459.46
+        ],
+        [
+          -614.15,
+          451.6
+        ],
+        [
+          -624.32,
+          433.14
+        ],
+        [
+          -633.43,
+          416.6
+        ],
+        [
+          -652.22,
+          426.95
+        ],
+        [
+          -667.89,
+          435.58
+        ],
+        [
+          -672.23,
+          437.97
+        ]
+      ]
+    },
+    {
+      "osm_id": 46595147,
+      "name": "Suntec Tower 2",
+      "source_xy_m": [
+        -580.26,
+        469.02
+      ],
+      "nearest_station_m": 518.3,
+      "distance_from_centerline_m": 393.9,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "office",
+      "footprint_xy_m": [
+        [
+          -553.38,
+          474.59
+        ],
+        [
+          -563.42,
+          456.29
+        ],
+        [
+          -572.82,
+          439.16
+        ],
+        [
+          -591.29,
+          449.3
+        ],
+        [
+          -611.89,
+          460.6
+        ],
+        [
+          -608.64,
+          466.53
+        ],
+        [
+          -602.17,
+          478.31
+        ],
+        [
+          -592.46,
+          496.03
+        ],
+        [
+          -574.01,
+          485.91
+        ],
+        [
+          -559.37,
+          477.88
+        ],
+        [
+          -553.38,
+          474.59
+        ]
+      ]
+    },
+    {
+      "osm_id": 46595148,
+      "name": "Suntec Tower 3",
+      "source_xy_m": [
+        -515.01,
+        427.13
+      ],
+      "nearest_station_m": 522.3,
+      "distance_from_centerline_m": 319.6,
+      "side": "right",
+      "height_tag": "0",
+      "levels_tag": "45",
+      "building": "office",
+      "footprint_xy_m": [
+        [
+          -523.68,
+          454.71
+        ],
+        [
+          -518.45,
+          451.7
+        ],
+        [
+          -500.47,
+          441.39
+        ],
+        [
+          -484.46,
+          432.2
+        ],
+        [
+          -494.59,
+          414.57
+        ],
+        [
+          -502.19,
+          401.33
+        ],
+        [
+          -506.84,
+          393.22
+        ],
+        [
+          -528.65,
+          405.73
+        ],
+        [
+          -546.06,
+          415.73
+        ],
+        [
+          -536.04,
+          433.19
+        ],
+        [
+          -523.68,
+          454.71
+        ]
+      ]
+    },
+    {
+      "osm_id": 46595390,
+      "name": "Asian Civilisations Museum",
+      "source_xy_m": [
+        -1425.51,
+        -440.38
+      ],
+      "nearest_station_m": 2763.1,
+      "distance_from_centerline_m": 125.6,
+      "side": "right",
+      "height_tag": "15",
+      "levels_tag": "3",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1452.62,
+          -377.33
+        ],
+        [
+          -1438.85,
+          -387.01
+        ],
+        [
+          -1454.3,
+          -408.96
+        ],
+        [
+          -1435.75,
+          -421.88
+        ],
+        [
+          -1435.68,
+          -421.78
+        ],
+        [
+          -1424.64,
+          -406.11
+        ],
+        [
+          -1412.75,
+          -414.48
+        ],
+        [
+          -1408.47,
+          -408.39
+        ],
+        [
+          -1403.49,
+          -411.9
+        ],
+        [
+          -1415.61,
+          -429.13
+        ],
+        [
+          -1394.95,
+          -443.67
+        ],
+        [
+          -1390.51,
+          -437.37
+        ],
+        [
+          -1375.95,
+          -447.61
+        ],
+        [
+          -1380.61,
+          -454.23
+        ],
+        [
+          -1367.08,
+          -463.76
+        ],
+        [
+          -1369.89,
+          -467.77
+        ],
+        [
+          -1363.81,
+          -472.04
+        ],
+        [
+          -1374.3,
+          -486.93
+        ],
+        [
+          -1380.37,
+          -482.66
+        ],
+        [
+          -1383.36,
+          -486.88
+        ],
+        [
+          -1396.5,
+          -477.63
+        ],
+        [
+          -1412.64,
+          -500.56
+        ],
+        [
+          -1413.53,
+          -501.83
+        ],
+        [
+          -1428.48,
+          -491.31
+        ],
+        [
+          -1422.21,
+          -482.48
+        ],
+        [
+          -1442.3,
+          -468.42
+        ],
+        [
+          -1427.58,
+          -447.4
+        ],
+        [
+          -1407.49,
+          -461.45
+        ],
+        [
+          -1404.44,
+          -457.16
+        ],
+        [
+          -1429.96,
+          -439.2
+        ],
+        [
+          -1440.8,
+          -454.59
+        ],
+        [
+          -1452.81,
+          -446.12
+        ],
+        [
+          -1445.76,
+          -436.1
+        ],
+        [
+          -1458.22,
+          -427.33
+        ],
+        [
+          -1471.04,
+          -445.52
+        ],
+        [
+          -1478.97,
+          -439.94
+        ],
+        [
+          -1469.66,
+          -426.72
+        ],
+        [
+          -1480.84,
+          -418.85
+        ],
+        [
+          -1473.66,
+          -408.67
+        ],
+        [
+          -1481.14,
+          -403.41
+        ],
+        [
+          -1475.07,
+          -394.79
+        ],
+        [
+          -1468.28,
+          -399.57
+        ],
+        [
+          -1452.62,
+          -377.33
+        ]
+      ]
+    },
+    {
+      "osm_id": 46595394,
+      "name": "One Fullerton",
+      "source_xy_m": [
+        -1141.22,
+        -626.84
+      ],
+      "nearest_station_m": 2962.4,
+      "distance_from_centerline_m": 95.5,
+      "side": "right",
+      "height_tag": "12",
+      "levels_tag": "2",
+      "building": "commercial",
+      "footprint_xy_m": [
+        [
+          -1127.92,
+          -549.18
+        ],
+        [
+          -1121.02,
+          -541.49
+        ],
+        [
+          -1111.02,
+          -541.5
+        ],
+        [
+          -1101.71,
+          -549.02
+        ],
+        [
+          -1100.66,
+          -559.54
+        ],
+        [
+          -1116.55,
+          -603.31
+        ],
+        [
+          -1123.46,
+          -622.36
+        ],
+        [
+          -1131.22,
+          -643.7
+        ],
+        [
+          -1131.36,
+          -644.09
+        ],
+        [
+          -1141.9,
+          -673.11
+        ],
+        [
+          -1152.73,
+          -702.96
+        ],
+        [
+          -1159.15,
+          -705.45
+        ],
+        [
+          -1165.68,
+          -705.78
+        ],
+        [
+          -1172.24,
+          -703.08
+        ],
+        [
+          -1177.1,
+          -698.14
+        ],
+        [
+          -1177.59,
+          -690.04
+        ],
+        [
+          -1169.65,
+          -667.53
+        ],
+        [
+          -1161.47,
+          -644.32
+        ],
+        [
+          -1148.85,
+          -608.53
+        ],
+        [
+          -1144.71,
+          -596.82
+        ],
+        [
+          -1142.82,
+          -591.44
+        ],
+        [
+          -1127.92,
+          -549.18
+        ]
+      ]
+    },
+    {
+      "osm_id": 46595395,
+      "name": "The Fullerton Hotel",
+      "source_xy_m": [
+        -1236.93,
+        -579.67
+      ],
+      "nearest_station_m": 2954.4,
+      "distance_from_centerline_m": 75.7,
+      "side": "right",
+      "height_tag": "25",
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1278.96,
+          -575.34
+        ],
+        [
+          -1279.06,
+          -568.07
+        ],
+        [
+          -1279.16,
+          -560.8
+        ],
+        [
+          -1274.96,
+          -554.19
+        ],
+        [
+          -1259.59,
+          -528.06
+        ],
+        [
+          -1254.05,
+          -518.66
+        ],
+        [
+          -1248.42,
+          -512.3
+        ],
+        [
+          -1230.12,
+          -512.89
+        ],
+        [
+          -1221.66,
+          -517.86
+        ],
+        [
+          -1221.53,
+          -522.61
+        ],
+        [
+          -1219.03,
+          -523.15
+        ],
+        [
+          -1218.24,
+          -545.93
+        ],
+        [
+          -1212.77,
+          -545.89
+        ],
+        [
+          -1212.86,
+          -551.53
+        ],
+        [
+          -1204.64,
+          -551.64
+        ],
+        [
+          -1201.31,
+          -559.22
+        ],
+        [
+          -1200.22,
+          -568.43
+        ],
+        [
+          -1200.71,
+          -579.94
+        ],
+        [
+          -1204.61,
+          -590.79
+        ],
+        [
+          -1213.27,
+          -590.74
+        ],
+        [
+          -1213.44,
+          -596.14
+        ],
+        [
+          -1219.48,
+          -596.13
+        ],
+        [
+          -1221.57,
+          -626.57
+        ],
+        [
+          -1224.13,
+          -626.73
+        ],
+        [
+          -1224.56,
+          -631.84
+        ],
+        [
+          -1228.25,
+          -631.94
+        ],
+        [
+          -1227.38,
+          -636.83
+        ],
+        [
+          -1237.29,
+          -638.84
+        ],
+        [
+          -1247.15,
+          -640.85
+        ],
+        [
+          -1248.05,
+          -635.88
+        ],
+        [
+          -1252.07,
+          -636.77
+        ],
+        [
+          -1258.06,
+          -623.59
+        ],
+        [
+          -1260.7,
+          -624.81
+        ],
+        [
+          -1278.55,
+          -585.08
+        ],
+        [
+          -1274.74,
+          -582.86
+        ],
+        [
+          -1278.96,
+          -575.34
+        ]
+      ]
+    },
+    {
+      "osm_id": 46595597,
+      "name": "Old City Hall",
+      "source_xy_m": [
+        -1384.7,
+        -94.75
+      ],
+      "nearest_station_m": 2412.2,
+      "distance_from_centerline_m": 45.7,
+      "side": "right",
+      "height_tag": "25",
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1387.57,
+          -15.88
+        ],
+        [
+          -1346.26,
+          -39.26
+        ],
+        [
+          -1332.76,
+          -46.91
+        ],
+        [
+          -1341.23,
+          -61.88
+        ],
+        [
+          -1342.93,
+          -60.93
+        ],
+        [
+          -1383.37,
+          -132.38
+        ],
+        [
+          -1381.76,
+          -133.29
+        ],
+        [
+          -1392.3,
+          -151.89
+        ],
+        [
+          -1396.9,
+          -160.02
+        ],
+        [
+          -1415.76,
+          -149.35
+        ],
+        [
+          -1441.1,
+          -135.01
+        ],
+        [
+          -1451.65,
+          -129.04
+        ],
+        [
+          -1387.57,
+          -15.88
+        ]
+      ]
+    },
+    {
+      "osm_id": 48035153,
+      "name": "Millenia Tower",
+      "source_xy_m": [
+        -433.35,
+        137.04
+      ],
+      "nearest_station_m": 1164.2,
+      "distance_from_centerline_m": 139.3,
+      "side": "right",
+      "height_tag": "223",
+      "levels_tag": "41",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -409.41,
+          144.06
+        ],
+        [
+          -446.34,
+          163.54
+        ],
+        [
+          -455.52,
+          146.13
+        ],
+        [
+          -465.51,
+          127.24
+        ],
+        [
+          -428.57,
+          107.75
+        ],
+        [
+          -418.67,
+          126.52
+        ],
+        [
+          -409.41,
+          144.06
+        ]
+      ]
+    },
+    {
+      "osm_id": 49890775,
+      "name": "F1 Pit Building",
+      "source_xy_m": [
+        -30.05,
+        -46.42
+      ],
+      "nearest_station_m": 4896.1,
+      "distance_from_centerline_m": 35.2,
+      "side": "left",
+      "height_tag": "15",
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -69.78,
+          152.59
+        ],
+        [
+          -40.28,
+          -42.52
+        ],
+        [
+          -38.41,
+          -105.67
+        ],
+        [
+          -30.24,
+          -104.69
+        ],
+        [
+          -21.89,
+          -173.45
+        ],
+        [
+          1.69,
+          -170.59
+        ],
+        [
+          -1.93,
+          -140.82
+        ],
+        [
+          -5.96,
+          -141.31
+        ],
+        [
+          -11.87,
+          -92.71
+        ],
+        [
+          -42.08,
+          155.95
+        ],
+        [
+          -69.78,
+          152.59
+        ]
+      ]
+    },
+    {
+      "osm_id": 51761904,
+      "name": "Singapore Flyer",
+      "source_xy_m": [
+        -115.64,
+        -222.25
+      ],
+      "nearest_station_m": 4533.3,
+      "distance_from_centerline_m": 79.6,
+      "side": "left",
+      "height_tag": "0",
+      "levels_tag": null,
+      "building": "retail",
+      "footprint_xy_m": [
+        [
+          -147.55,
+          -193.52
+        ],
+        [
+          -142.86,
+          -185.88
+        ],
+        [
+          -134.69,
+          -177.49
+        ],
+        [
+          -126.23,
+          -172.63
+        ],
+        [
+          -116.39,
+          -169.38
+        ],
+        [
+          -109.86,
+          -168.71
+        ],
+        [
+          -102.39,
+          -169.96
+        ],
+        [
+          -95.06,
+          -173.28
+        ],
+        [
+          -88.72,
+          -178.42
+        ],
+        [
+          -84.39,
+          -185.1
+        ],
+        [
+          -80.17,
+          -189.93
+        ],
+        [
+          -64.46,
+          -201.85
+        ],
+        [
+          -60.8,
+          -206.81
+        ],
+        [
+          -57.03,
+          -214.26
+        ],
+        [
+          -55.69,
+          -221.97
+        ],
+        [
+          -55.62,
+          -230.37
+        ],
+        [
+          -56.61,
+          -237.92
+        ],
+        [
+          -59.62,
+          -247.19
+        ],
+        [
+          -64.85,
+          -255.35
+        ],
+        [
+          -71.2,
+          -260.68
+        ],
+        [
+          -77.24,
+          -264.69
+        ],
+        [
+          -88.06,
+          -268.01
+        ],
+        [
+          -102.54,
+          -270.41
+        ],
+        [
+          -120.57,
+          -272.15
+        ],
+        [
+          -139.58,
+          -272.09
+        ],
+        [
+          -154.65,
+          -271.05
+        ],
+        [
+          -164.68,
+          -268.86
+        ],
+        [
+          -171.83,
+          -263.95
+        ],
+        [
+          -176.43,
+          -258.15
+        ],
+        [
+          -177.92,
+          -252.35
+        ],
+        [
+          -176.88,
+          -245.66
+        ],
+        [
+          -174.28,
+          -235.43
+        ],
+        [
+          -168.29,
+          -225.75
+        ],
+        [
+          -159.34,
+          -215.27
+        ],
+        [
+          -154.52,
+          -207.63
+        ],
+        [
+          -150.04,
+          -197.56
+        ],
+        [
+          -147.55,
+          -193.52
+        ]
+      ]
+    },
+    {
+      "osm_id": 97582570,
+      "name": "Esplanade Theatres on the Bay",
+      "source_xy_m": [
+        -933.93,
+        -208.39
+      ],
+      "nearest_station_m": 3712.0,
+      "distance_from_centerline_m": 92.0,
+      "side": "right",
+      "height_tag": "13",
+      "levels_tag": "4",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -875.56,
+          -242.19
+        ],
+        [
+          -873.28,
+          -242.42
+        ],
+        [
+          -872.23,
+          -222.04
+        ],
+        [
+          -870.53,
+          -189.48
+        ],
+        [
+          -870.3,
+          -185.3
+        ],
+        [
+          -869.94,
+          -178.99
+        ],
+        [
+          -867.18,
+          -178.68
+        ],
+        [
+          -868.0,
+          -170.87
+        ],
+        [
+          -871.21,
+          -160.26
+        ],
+        [
+          -875.51,
+          -153.56
+        ],
+        [
+          -880.22,
+          -148.59
+        ],
+        [
+          -882.93,
+          -146.44
+        ],
+        [
+          -889.4,
+          -141.35
+        ],
+        [
+          -898.99,
+          -137.26
+        ],
+        [
+          -900.8,
+          -140.73
+        ],
+        [
+          -904.74,
+          -139.24
+        ],
+        [
+          -910.41,
+          -137.1
+        ],
+        [
+          -916.54,
+          -137.16
+        ],
+        [
+          -921.44,
+          -122.1
+        ],
+        [
+          -935.17,
+          -126.63
+        ],
+        [
+          -926.69,
+          -160.27
+        ],
+        [
+          -926.82,
+          -166.61
+        ],
+        [
+          -928.81,
+          -171.27
+        ],
+        [
+          -931.62,
+          -174.25
+        ],
+        [
+          -940.66,
+          -180.46
+        ],
+        [
+          -950.13,
+          -184.55
+        ],
+        [
+          -961.28,
+          -186.82
+        ],
+        [
+          -970.03,
+          -185.68
+        ],
+        [
+          -976.26,
+          -181.72
+        ],
+        [
+          -979.07,
+          -176.64
+        ],
+        [
+          -998.1,
+          -132.31
+        ],
+        [
+          -1005.78,
+          -139.45
+        ],
+        [
+          -1013.57,
+          -147.78
+        ],
+        [
+          -1020.98,
+          -159.31
+        ],
+        [
+          -1025.44,
+          -168.04
+        ],
+        [
+          -1026.98,
+          -171.94
+        ],
+        [
+          -1030.83,
+          -184.67
+        ],
+        [
+          -1031.77,
+          -200.88
+        ],
+        [
+          -984.02,
+          -189.36
+        ],
+        [
+          -976.39,
+          -189.21
+        ],
+        [
+          -971.03,
+          -192.04
+        ],
+        [
+          -965.38,
+          -199.52
+        ],
+        [
+          -961.28,
+          -207.57
+        ],
+        [
+          -957.32,
+          -220.42
+        ],
+        [
+          -957.19,
+          -227.49
+        ],
+        [
+          -959.87,
+          -235.39
+        ],
+        [
+          -964.24,
+          -240.33
+        ],
+        [
+          -991.14,
+          -250.64
+        ],
+        [
+          -989.54,
+          -252.86
+        ],
+        [
+          -993.81,
+          -255.99
+        ],
+        [
+          -988.19,
+          -261.68
+        ],
+        [
+          -984.84,
+          -258.31
+        ],
+        [
+          -980.89,
+          -261.16
+        ],
+        [
+          -978.43,
+          -262.42
+        ],
+        [
+          -975.28,
+          -263.69
+        ],
+        [
+          -971.85,
+          -264.79
+        ],
+        [
+          -968.43,
+          -265.21
+        ],
+        [
+          -964.2,
+          -265.09
+        ],
+        [
+          -960.95,
+          -264.68
+        ],
+        [
+          -957.94,
+          -264.05
+        ],
+        [
+          -954.82,
+          -262.82
+        ],
+        [
+          -952.14,
+          -261.6
+        ],
+        [
+          -950.28,
+          -260.48
+        ],
+        [
+          -948.43,
+          -259.15
+        ],
+        [
+          -944.67,
+          -255.3
+        ],
+        [
+          -942.77,
+          -253.07
+        ],
+        [
+          -941.09,
+          -250.73
+        ],
+        [
+          -939.74,
+          -247.69
+        ],
+        [
+          -938.56,
+          -244.16
+        ],
+        [
+          -937.64,
+          -240.76
+        ],
+        [
+          -937.17,
+          -236.67
+        ],
+        [
+          -926.13,
+          -237.36
+        ],
+        [
+          -917.98,
+          -227.94
+        ],
+        [
+          -919.99,
+          -226.73
+        ],
+        [
+          -921.15,
+          -225.6
+        ],
+        [
+          -921.88,
+          -224.47
+        ],
+        [
+          -922.57,
+          -222.82
+        ],
+        [
+          -923.21,
+          -221.23
+        ],
+        [
+          -923.55,
+          -219.47
+        ],
+        [
+          -923.41,
+          -217.25
+        ],
+        [
+          -923.08,
+          -215.2
+        ],
+        [
+          -922.24,
+          -213.09
+        ],
+        [
+          -921.45,
+          -211.49
+        ],
+        [
+          -920.44,
+          -210.25
+        ],
+        [
+          -919.43,
+          -209.22
+        ],
+        [
+          -918.19,
+          -208.42
+        ],
+        [
+          -916.8,
+          -207.58
+        ],
+        [
+          -915.11,
+          -206.91
+        ],
+        [
+          -913.08,
+          -206.41
+        ],
+        [
+          -911.29,
+          -206.32
+        ],
+        [
+          -909.45,
+          -206.63
+        ],
+        [
+          -907.69,
+          -207.03
+        ],
+        [
+          -906.27,
+          -207.58
+        ],
+        [
+          -904.73,
+          -208.53
+        ],
+        [
+          -903.32,
+          -209.87
+        ],
+        [
+          -902.24,
+          -211.16
+        ],
+        [
+          -901.52,
+          -212.12
+        ],
+        [
+          -900.92,
+          -213.2
+        ],
+        [
+          -900.36,
+          -214.87
+        ],
+        [
+          -900.01,
+          -217.29
+        ],
+        [
+          -899.96,
+          -218.76
+        ],
+        [
+          -900.14,
+          -220.21
+        ],
+        [
+          -900.71,
+          -222.51
+        ],
+        [
+          -901.74,
+          -224.23
+        ],
+        [
+          -903.29,
+          -226.49
+        ],
+        [
+          -905.08,
+          -227.96
+        ],
+        [
+          -906.54,
+          -228.75
+        ],
+        [
+          -899.27,
+          -240.28
+        ],
+        [
+          -875.56,
+          -242.19
+        ]
+      ]
+    },
+    {
+      "osm_id": 97666816,
+      "name": "SMRT Headquarters",
+      "source_xy_m": [
+        -1353.76,
+        343.04
+      ],
+      "nearest_station_m": 2133.1,
+      "distance_from_centerline_m": 266.8,
+      "side": "right",
+      "height_tag": "24",
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1376.98,
+          344.02
+        ],
+        [
+          -1368.78,
+          339.0
+        ],
+        [
+          -1360.04,
+          353.28
+        ],
+        [
+          -1354.6,
+          349.94
+        ],
+        [
+          -1360.5,
+          340.28
+        ],
+        [
+          -1352.81,
+          335.58
+        ],
+        [
+          -1347.28,
+          344.62
+        ],
+        [
+          -1342.47,
+          341.68
+        ],
+        [
+          -1350.86,
+          327.98
+        ],
+        [
+          -1342.35,
+          322.78
+        ],
+        [
+          -1339.24,
+          327.87
+        ],
+        [
+          -1322.52,
+          355.17
+        ],
+        [
+          -1357.17,
+          376.39
+        ],
+        [
+          -1376.98,
+          344.02
+        ]
+      ]
+    },
+    {
+      "osm_id": 97666817,
+      "name": "Caldwell House",
+      "source_xy_m": [
+        -1358.98,
+        453.18
+      ],
+      "nearest_station_m": 2121.1,
+      "distance_from_centerline_m": 364.5,
+      "side": "right",
+      "height_tag": "24",
+      "levels_tag": "2",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1375.53,
+          447.43
+        ],
+        [
+          -1372.71,
+          445.29
+        ],
+        [
+          -1356.98,
+          433.33
+        ],
+        [
+          -1336.12,
+          460.78
+        ],
+        [
+          -1343.76,
+          466.58
+        ],
+        [
+          -1350.16,
+          458.16
+        ],
+        [
+          -1361.06,
+          466.45
+        ],
+        [
+          -1375.53,
+          447.43
+        ]
+      ]
+    },
+    {
+      "osm_id": 97666818,
+      "name": "CHIJMES Hall",
+      "source_xy_m": [
+        -1366.83,
+        413.8
+      ],
+      "nearest_station_m": 2129.1,
+      "distance_from_centerline_m": 333.7,
+      "side": "right",
+      "height_tag": "36",
+      "levels_tag": "2",
+      "building": "church",
+      "footprint_xy_m": [
+        [
+          -1392.2,
+          421.24
+        ],
+        [
+          -1390.54,
+          420.11
+        ],
+        [
+          -1367.55,
+          404.41
+        ],
+        [
+          -1366.7,
+          404.32
+        ],
+        [
+          -1365.79,
+          404.9
+        ],
+        [
+          -1365.23,
+          405.66
+        ],
+        [
+          -1365.16,
+          406.58
+        ],
+        [
+          -1362.45,
+          404.5
+        ],
+        [
+          -1361.2,
+          404.7
+        ],
+        [
+          -1357.58,
+          402.23
+        ],
+        [
+          -1355.72,
+          402.22
+        ],
+        [
+          -1353.74,
+          402.65
+        ],
+        [
+          -1352.06,
+          403.9
+        ],
+        [
+          -1351.25,
+          404.94
+        ],
+        [
+          -1350.85,
+          406.2
+        ],
+        [
+          -1350.74,
+          407.43
+        ],
+        [
+          -1350.98,
+          408.82
+        ],
+        [
+          -1351.48,
+          410.28
+        ],
+        [
+          -1356.89,
+          414.18
+        ],
+        [
+          -1357.59,
+          413.91
+        ],
+        [
+          -1359.52,
+          414.99
+        ],
+        [
+          -1358.6,
+          415.43
+        ],
+        [
+          -1357.66,
+          416.45
+        ],
+        [
+          -1357.41,
+          418.27
+        ],
+        [
+          -1380.63,
+          434.33
+        ],
+        [
+          -1382.47,
+          435.6
+        ],
+        [
+          -1384.72,
+          432.42
+        ],
+        [
+          -1388.57,
+          435.02
+        ],
+        [
+          -1394.16,
+          426.86
+        ],
+        [
+          -1390.16,
+          424.11
+        ],
+        [
+          -1392.2,
+          421.24
+        ]
+      ]
+    },
+    {
+      "osm_id": 102938119,
+      "name": "Suntec Tower 4",
+      "source_xy_m": [
+        -494.91,
+        363.56
+      ],
+      "nearest_station_m": 526.3,
+      "distance_from_centerline_m": 289.1,
+      "side": "right",
+      "height_tag": "0",
+      "levels_tag": "45",
+      "building": "office",
+      "footprint_xy_m": [
+        [
+          -503.97,
+          388.31
+        ],
+        [
+          -500.21,
+          386.11
+        ],
+        [
+          -482.08,
+          375.51
+        ],
+        [
+          -474.76,
+          371.23
+        ],
+        [
+          -465.02,
+          365.53
+        ],
+        [
+          -477.13,
+          344.81
+        ],
+        [
+          -487.84,
+          326.49
+        ],
+        [
+          -505.61,
+          336.88
+        ],
+        [
+          -526.8,
+          349.27
+        ],
+        [
+          -516.63,
+          366.66
+        ],
+        [
+          -503.97,
+          388.31
+        ]
+      ]
+    },
+    {
+      "osm_id": 103110145,
+      "name": "The Capitol Kempinski Hotel",
+      "source_xy_m": [
+        -1488.44,
+        293.16
+      ],
+      "nearest_station_m": 2161.0,
+      "distance_from_centerline_m": 326.8,
+      "side": "right",
+      "height_tag": "34",
+      "levels_tag": "3",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1501.68,
+          322.59
+        ],
+        [
+          -1518.75,
+          294.3
+        ],
+        [
+          -1493.3,
+          278.94
+        ],
+        [
+          -1494.52,
+          276.92
+        ],
+        [
+          -1469.77,
+          261.99
+        ],
+        [
+          -1468.76,
+          263.67
+        ],
+        [
+          -1450.48,
+          294.04
+        ],
+        [
+          -1497.02,
+          323.38
+        ],
+        [
+          -1501.68,
+          322.59
+        ]
+      ]
+    },
+    {
+      "osm_id": 103110146,
+      "name": "Pullman Singapore HIll Street",
+      "source_xy_m": [
+        -1506.85,
+        252.38
+      ],
+      "nearest_station_m": 2169.0,
+      "distance_from_centerline_m": 321.2,
+      "side": "right",
+      "height_tag": "72",
+      "levels_tag": null,
+      "building": "hotel",
+      "footprint_xy_m": [
+        [
+          -1528.96,
+          292.21
+        ],
+        [
+          -1555.09,
+          242.0
+        ],
+        [
+          -1496.69,
+          212.09
+        ],
+        [
+          -1487.06,
+          229.31
+        ],
+        [
+          -1482.3,
+          237.64
+        ],
+        [
+          -1468.87,
+          261.17
+        ],
+        [
+          -1528.96,
+          292.21
+        ]
+      ]
+    },
+    {
+      "osm_id": 103110147,
+      "name": "Capitol Theatre",
+      "source_xy_m": [
+        -1439.66,
+        228.68
+      ],
+      "nearest_station_m": 2161.0,
+      "distance_from_centerline_m": 250.9,
+      "side": "right",
+      "height_tag": "34",
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1421.06,
+          221.65
+        ],
+        [
+          -1422.34,
+          230.78
+        ],
+        [
+          -1466.04,
+          255.89
+        ],
+        [
+          -1478.05,
+          235.01
+        ],
+        [
+          -1429.43,
+          207.08
+        ],
+        [
+          -1421.06,
+          221.65
+        ]
+      ]
+    },
+    {
+      "osm_id": 106193386,
+      "name": "Maybank",
+      "source_xy_m": [
+        -1296.68,
+        -618.22
+      ],
+      "nearest_station_m": 2954.4,
+      "distance_from_centerline_m": 146.6,
+      "side": "right",
+      "height_tag": "0",
+      "levels_tag": null,
+      "building": "office",
+      "footprint_xy_m": [
+        [
+          -1318.67,
+          -596.56
+        ],
+        [
+          -1308.45,
+          -591.64
+        ],
+        [
+          -1299.36,
+          -586.94
+        ],
+        [
+          -1292.88,
+          -599.63
+        ],
+        [
+          -1288.95,
+          -608.02
+        ],
+        [
+          -1281.79,
+          -622.13
+        ],
+        [
+          -1281.35,
+          -624.37
+        ],
+        [
+          -1281.7,
+          -626.46
+        ],
+        [
+          -1290.62,
+          -637.61
+        ],
+        [
+          -1293.15,
+          -639.03
+        ],
+        [
+          -1295.24,
+          -639.1
+        ],
+        [
+          -1297.76,
+          -638.3
+        ],
+        [
+          -1299.21,
+          -636.6
+        ],
+        [
+          -1302.42,
+          -630.29
+        ],
+        [
+          -1318.67,
+          -596.56
+        ]
+      ]
+    },
+    {
+      "osm_id": 106193390,
+      "name": "BOC",
+      "source_xy_m": [
+        -1327.04,
+        -634.01
+      ],
+      "nearest_station_m": 2950.4,
+      "distance_from_centerline_m": 180.5,
+      "side": "right",
+      "height_tag": "0",
+      "levels_tag": null,
+      "building": "office",
+      "footprint_xy_m": [
+        [
+          -1305.85,
+          -641.37
+        ],
+        [
+          -1307.7,
+          -650.73
+        ],
+        [
+          -1322.18,
+          -657.88
+        ],
+        [
+          -1323.18,
+          -655.85
+        ],
+        [
+          -1333.82,
+          -661.1
+        ],
+        [
+          -1344.7,
+          -638.57
+        ],
+        [
+          -1347.34,
+          -633.11
+        ],
+        [
+          -1353.48,
+          -620.39
+        ],
+        [
+          -1342.6,
+          -615.13
+        ],
+        [
+          -1337.29,
+          -612.57
+        ],
+        [
+          -1323.11,
+          -605.72
+        ],
+        [
+          -1316.96,
+          -618.44
+        ],
+        [
+          -1314.44,
+          -623.96
+        ],
+        [
+          -1305.85,
+          -641.37
+        ]
+      ]
+    },
+    {
+      "osm_id": 136853818,
+      "name": "Lee Kong Chian School of Business",
+      "source_xy_m": [
+        -1521.66,
+        432.54
+      ],
+      "nearest_station_m": 2149.0,
+      "distance_from_centerline_m": 443.2,
+      "side": "right",
+      "height_tag": "30",
+      "levels_tag": "5",
+      "building": "university",
+      "footprint_xy_m": [
+        [
+          -1537.44,
+          469.79
+        ],
+        [
+          -1578.48,
+          409.63
+        ],
+        [
+          -1558.45,
+          395.87
+        ],
+        [
+          -1540.18,
+          394.26
+        ],
+        [
+          -1527.69,
+          379.38
+        ],
+        [
+          -1520.55,
+          372.83
+        ],
+        [
+          -1455.96,
+          442.4
+        ],
+        [
+          -1482.65,
+          465.04
+        ],
+        [
+          -1502.12,
+          440.98
+        ],
+        [
+          -1505.4,
+          439.56
+        ],
+        [
+          -1509.05,
+          439.84
+        ],
+        [
+          -1524.33,
+          450.59
+        ],
+        [
+          -1520.96,
+          456.7
+        ],
+        [
+          -1524.21,
+          461.51
+        ],
+        [
+          -1537.44,
+          469.79
+        ]
+      ]
+    },
+    {
+      "osm_id": 155980025,
+      "name": "Saint Andrew's Cathedral",
+      "source_xy_m": [
+        -1329.42,
+        106.66
+      ],
+      "nearest_station_m": 2208.8,
+      "distance_from_centerline_m": 95.6,
+      "side": "right",
+      "height_tag": "0",
+      "levels_tag": null,
+      "building": "church",
+      "footprint_xy_m": [
+        [
+          -1353.44,
+          126.61
+        ],
+        [
+          -1343.43,
+          121.16
+        ],
+        [
+          -1340.97,
+          126.03
+        ],
+        [
+          -1340.03,
+          125.52
+        ],
+        [
+          -1339.32,
+          126.83
+        ],
+        [
+          -1338.22,
+          126.22
+        ],
+        [
+          -1338.93,
+          124.91
+        ],
+        [
+          -1337.58,
+          124.1
+        ],
+        [
+          -1333.81,
+          122.17
+        ],
+        [
+          -1331.86,
+          121.04
+        ],
+        [
+          -1330.15,
+          124.16
+        ],
+        [
+          -1331.43,
+          124.86
+        ],
+        [
+          -1330.26,
+          127.0
+        ],
+        [
+          -1328.99,
+          126.3
+        ],
+        [
+          -1327.32,
+          129.33
+        ],
+        [
+          -1328.6,
+          130.03
+        ],
+        [
+          -1327.74,
+          131.58
+        ],
+        [
+          -1326.47,
+          130.9
+        ],
+        [
+          -1325.77,
+          132.19
+        ],
+        [
+          -1324.77,
+          131.63
+        ],
+        [
+          -1325.47,
+          130.36
+        ],
+        [
+          -1322.73,
+          128.84
+        ],
+        [
+          -1321.32,
+          131.41
+        ],
+        [
+          -1321.78,
+          132.79
+        ],
+        [
+          -1320.69,
+          133.12
+        ],
+        [
+          -1320.28,
+          131.71
+        ],
+        [
+          -1317.82,
+          132.4
+        ],
+        [
+          -1317.13,
+          134.39
+        ],
+        [
+          -1316.08,
+          134.02
+        ],
+        [
+          -1316.72,
+          132.17
+        ],
+        [
+          -1314.39,
+          130.89
+        ],
+        [
+          -1312.73,
+          132.08
+        ],
+        [
+          -1312.14,
+          131.26
+        ],
+        [
+          -1313.83,
+          130.08
+        ],
+        [
+          -1313.14,
+          127.65
+        ],
+        [
+          -1311.23,
+          127.63
+        ],
+        [
+          -1311.24,
+          126.5
+        ],
+        [
+          -1313.07,
+          126.51
+        ],
+        [
+          -1314.31,
+          124.23
+        ],
+        [
+          -1311.31,
+          122.59
+        ],
+        [
+          -1310.6,
+          123.88
+        ],
+        [
+          -1309.23,
+          123.14
+        ],
+        [
+          -1309.93,
+          121.85
+        ],
+        [
+          -1308.86,
+          121.26
+        ],
+        [
+          -1309.77,
+          119.61
+        ],
+        [
+          -1310.84,
+          120.2
+        ],
+        [
+          -1312.52,
+          117.12
+        ],
+        [
+          -1311.44,
+          116.53
+        ],
+        [
+          -1312.54,
+          114.52
+        ],
+        [
+          -1313.63,
+          115.11
+        ],
+        [
+          -1315.33,
+          112.0
+        ],
+        [
+          -1308.42,
+          108.21
+        ],
+        [
+          -1307.7,
+          109.52
+        ],
+        [
+          -1306.92,
+          109.09
+        ],
+        [
+          -1307.64,
+          107.78
+        ],
+        [
+          -1306.26,
+          107.03
+        ],
+        [
+          -1308.9,
+          102.36
+        ],
+        [
+          -1299.81,
+          97.4
+        ],
+        [
+          -1299.88,
+          97.75
+        ],
+        [
+          -1299.81,
+          98.11
+        ],
+        [
+          -1299.57,
+          98.37
+        ],
+        [
+          -1299.23,
+          98.48
+        ],
+        [
+          -1298.88,
+          98.4
+        ],
+        [
+          -1298.62,
+          98.15
+        ],
+        [
+          -1298.52,
+          97.82
+        ],
+        [
+          -1298.61,
+          97.46
+        ],
+        [
+          -1298.85,
+          97.21
+        ],
+        [
+          -1299.21,
+          97.08
+        ],
+        [
+          -1303.53,
+          89.12
+        ],
+        [
+          -1303.43,
+          88.78
+        ],
+        [
+          -1303.52,
+          88.43
+        ],
+        [
+          -1303.78,
+          88.18
+        ],
+        [
+          -1304.12,
+          88.09
+        ],
+        [
+          -1304.46,
+          88.18
+        ],
+        [
+          -1304.71,
+          88.43
+        ],
+        [
+          -1304.8,
+          88.79
+        ],
+        [
+          -1304.7,
+          89.13
+        ],
+        [
+          -1304.43,
+          89.37
+        ],
+        [
+          -1304.13,
+          89.44
+        ],
+        [
+          -1313.3,
+          94.45
+        ],
+        [
+          -1315.37,
+          90.39
+        ],
+        [
+          -1315.98,
+          90.72
+        ],
+        [
+          -1316.7,
+          89.41
+        ],
+        [
+          -1317.75,
+          89.99
+        ],
+        [
+          -1317.03,
+          91.3
+        ],
+        [
+          -1323.71,
+          94.96
+        ],
+        [
+          -1325.42,
+          91.85
+        ],
+        [
+          -1323.97,
+          91.06
+        ],
+        [
+          -1324.41,
+          90.27
+        ],
+        [
+          -1325.84,
+          91.06
+        ],
+        [
+          -1327.58,
+          87.89
+        ],
+        [
+          -1326.15,
+          87.1
+        ],
+        [
+          -1326.56,
+          86.34
+        ],
+        [
+          -1328.0,
+          87.12
+        ],
+        [
+          -1329.76,
+          83.91
+        ],
+        [
+          -1328.32,
+          83.12
+        ],
+        [
+          -1328.69,
+          82.45
+        ],
+        [
+          -1330.13,
+          83.24
+        ],
+        [
+          -1331.77,
+          80.23
+        ],
+        [
+          -1330.34,
+          79.45
+        ],
+        [
+          -1330.75,
+          78.69
+        ],
+        [
+          -1332.18,
+          79.48
+        ],
+        [
+          -1334.94,
+          74.44
+        ],
+        [
+          -1337.33,
+          75.75
+        ],
+        [
+          -1341.95,
+          67.31
+        ],
+        [
+          -1341.69,
+          65.28
+        ],
+        [
+          -1343.82,
+          64.99
+        ],
+        [
+          -1344.08,
+          67.02
+        ],
+        [
+          -1348.1,
+          69.22
+        ],
+        [
+          -1352.88,
+          71.84
+        ],
+        [
+          -1355.9,
+          71.56
+        ],
+        [
+          -1356.09,
+          73.54
+        ],
+        [
+          -1353.19,
+          73.84
+        ],
+        [
+          -1348.73,
+          81.99
+        ],
+        [
+          -1352.2,
+          83.9
+        ],
+        [
+          -1349.54,
+          88.74
+        ],
+        [
+          -1350.98,
+          89.53
+        ],
+        [
+          -1350.56,
+          90.3
+        ],
+        [
+          -1349.13,
+          89.51
+        ],
+        [
+          -1347.41,
+          92.63
+        ],
+        [
+          -1348.85,
+          93.41
+        ],
+        [
+          -1348.45,
+          94.15
+        ],
+        [
+          -1347.01,
+          93.36
+        ],
+        [
+          -1345.27,
+          96.54
+        ],
+        [
+          -1346.71,
+          97.33
+        ],
+        [
+          -1346.28,
+          98.12
+        ],
+        [
+          -1344.85,
+          97.33
+        ],
+        [
+          -1343.12,
+          100.48
+        ],
+        [
+          -1344.55,
+          101.27
+        ],
+        [
+          -1344.07,
+          102.15
+        ],
+        [
+          -1342.64,
+          101.36
+        ],
+        [
+          -1340.97,
+          104.41
+        ],
+        [
+          -1347.85,
+          108.17
+        ],
+        [
+          -1348.57,
+          106.87
+        ],
+        [
+          -1349.74,
+          107.5
+        ],
+        [
+          -1349.02,
+          108.81
+        ],
+        [
+          -1350.07,
+          109.39
+        ],
+        [
+          -1348.01,
+          113.34
+        ],
+        [
+          -1357.74,
+          118.64
+        ],
+        [
+          -1357.6,
+          118.31
+        ],
+        [
+          -1357.69,
+          117.97
+        ],
+        [
+          -1357.94,
+          117.72
+        ],
+        [
+          -1358.27,
+          117.63
+        ],
+        [
+          -1358.61,
+          117.71
+        ],
+        [
+          -1358.86,
+          117.94
+        ],
+        [
+          -1358.96,
+          118.28
+        ],
+        [
+          -1358.88,
+          118.62
+        ],
+        [
+          -1358.65,
+          118.88
+        ],
+        [
+          -1358.34,
+          118.96
+        ],
+        [
+          -1354.0,
+          126.92
+        ],
+        [
+          -1354.1,
+          127.3
+        ],
+        [
+          -1354.03,
+          127.64
+        ],
+        [
+          -1353.79,
+          127.91
+        ],
+        [
+          -1353.45,
+          128.02
+        ],
+        [
+          -1353.1,
+          127.94
+        ],
+        [
+          -1352.84,
+          127.7
+        ],
+        [
+          -1352.75,
+          127.35
+        ],
+        [
+          -1352.82,
+          127.01
+        ],
+        [
+          -1353.08,
+          126.75
+        ],
+        [
+          -1353.44,
+          126.61
+        ]
+      ]
+    },
+    {
+      "osm_id": 155988210,
+      "name": "Centennial Tower",
+      "source_xy_m": [
+        -438.67,
+        224.89
+      ],
+      "nearest_station_m": 1176.2,
+      "distance_from_centerline_m": 226.6,
+      "side": "right",
+      "height_tag": "158",
+      "levels_tag": "37",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -404.94,
+          215.81
+        ],
+        [
+          -406.62,
+          215.2
+        ],
+        [
+          -407.12,
+          216.01
+        ],
+        [
+          -408.7,
+          214.39
+        ],
+        [
+          -407.66,
+          211.18
+        ],
+        [
+          -409.74,
+          209.33
+        ],
+        [
+          -411.0,
+          207.62
+        ],
+        [
+          -412.02,
+          205.74
+        ],
+        [
+          -412.77,
+          203.51
+        ],
+        [
+          -412.99,
+          201.28
+        ],
+        [
+          -416.74,
+          200.7
+        ],
+        [
+          -416.78,
+          198.83
+        ],
+        [
+          -415.1,
+          198.77
+        ],
+        [
+          -415.22,
+          197.27
+        ],
+        [
+          -417.14,
+          196.9
+        ],
+        [
+          -420.53,
+          196.51
+        ],
+        [
+          -425.45,
+          196.34
+        ],
+        [
+          -430.77,
+          196.75
+        ],
+        [
+          -436.42,
+          198.16
+        ],
+        [
+          -441.1,
+          199.8
+        ],
+        [
+          -446.02,
+          202.17
+        ],
+        [
+          -445.36,
+          203.53
+        ],
+        [
+          -445.74,
+          205.38
+        ],
+        [
+          -446.61,
+          206.64
+        ],
+        [
+          -448.09,
+          207.91
+        ],
+        [
+          -449.73,
+          208.35
+        ],
+        [
+          -451.3,
+          208.43
+        ],
+        [
+          -452.93,
+          208.05
+        ],
+        [
+          -453.97,
+          206.56
+        ],
+        [
+          -457.4,
+          208.79
+        ],
+        [
+          -460.81,
+          211.25
+        ],
+        [
+          -463.81,
+          213.81
+        ],
+        [
+          -466.09,
+          216.56
+        ],
+        [
+          -468.05,
+          219.25
+        ],
+        [
+          -470.76,
+          223.71
+        ],
+        [
+          -472.54,
+          227.31
+        ],
+        [
+          -474.15,
+          231.56
+        ],
+        [
+          -472.79,
+          231.93
+        ],
+        [
+          -472.44,
+          231.42
+        ],
+        [
+          -470.57,
+          232.53
+        ],
+        [
+          -471.62,
+          235.06
+        ],
+        [
+          -470.26,
+          236.16
+        ],
+        [
+          -469.02,
+          237.51
+        ],
+        [
+          -468.02,
+          238.92
+        ],
+        [
+          -467.14,
+          240.7
+        ],
+        [
+          -466.39,
+          242.27
+        ],
+        [
+          -466.02,
+          245.1
+        ],
+        [
+          -462.7,
+          245.77
+        ],
+        [
+          -462.68,
+          247.85
+        ],
+        [
+          -463.64,
+          247.69
+        ],
+        [
+          -463.91,
+          248.91
+        ],
+        [
+          -461.87,
+          249.21
+        ],
+        [
+          -458.14,
+          249.66
+        ],
+        [
+          -455.76,
+          249.73
+        ],
+        [
+          -453.11,
+          249.82
+        ],
+        [
+          -449.42,
+          249.63
+        ],
+        [
+          -445.72,
+          249.18
+        ],
+        [
+          -441.4,
+          248.31
+        ],
+        [
+          -439.31,
+          247.69
+        ],
+        [
+          -437.09,
+          246.87
+        ],
+        [
+          -433.9,
+          245.1
+        ],
+        [
+          -432.55,
+          244.05
+        ],
+        [
+          -433.15,
+          242.93
+        ],
+        [
+          -433.37,
+          241.74
+        ],
+        [
+          -433.07,
+          240.56
+        ],
+        [
+          -432.05,
+          239.29
+        ],
+        [
+          -430.99,
+          238.55
+        ],
+        [
+          -429.82,
+          238.03
+        ],
+        [
+          -428.04,
+          237.81
+        ],
+        [
+          -426.48,
+          237.88
+        ],
+        [
+          -425.57,
+          238.55
+        ],
+        [
+          -424.77,
+          239.89
+        ],
+        [
+          -422.14,
+          238.33
+        ],
+        [
+          -419.83,
+          236.76
+        ],
+        [
+          -416.03,
+          233.6
+        ],
+        [
+          -413.39,
+          230.61
+        ],
+        [
+          -411.39,
+          228.0
+        ],
+        [
+          -409.51,
+          225.17
+        ],
+        [
+          -407.29,
+          221.25
+        ],
+        [
+          -406.29,
+          219.01
+        ],
+        [
+          -405.14,
+          216.44
+        ],
+        [
+          -404.94,
+          215.81
+        ]
+      ]
+    },
+    {
+      "osm_id": 164177180,
+      "name": "Wework Beach Centre",
+      "source_xy_m": [
+        -966.81,
+        489.28
+      ],
+      "nearest_station_m": 1702.5,
+      "distance_from_centerline_m": 296.9,
+      "side": "right",
+      "height_tag": "36",
+      "levels_tag": "6",
+      "building": "commercial",
+      "footprint_xy_m": [
+        [
+          -962.67,
+          521.39
+        ],
+        [
+          -996.0,
+          475.33
+        ],
+        [
+          -978.69,
+          461.91
+        ],
+        [
+          -972.71,
+          462.51
+        ],
+        [
+          -970.1,
+          462.77
+        ],
+        [
+          -944.53,
+          499.21
+        ],
+        [
+          -947.15,
+          509.73
+        ],
+        [
+          -962.67,
+          521.39
+        ]
+      ]
+    },
+    {
+      "osm_id": 164881347,
+      "name": "DBS Foundation Outdoor Theatre",
+      "source_xy_m": [
+        -913.61,
+        -282.74
+      ],
+      "nearest_station_m": 3751.8,
+      "distance_from_centerline_m": 137.9,
+      "side": "right",
+      "height_tag": "16",
+      "levels_tag": null,
+      "building": "roof",
+      "footprint_xy_m": [
+        [
+          -926.01,
+          -294.61
+        ],
+        [
+          -928.05,
+          -292.02
+        ],
+        [
+          -929.57,
+          -289.54
+        ],
+        [
+          -929.47,
+          -287.63
+        ],
+        [
+          -928.84,
+          -285.88
+        ],
+        [
+          -926.74,
+          -284.21
+        ],
+        [
+          -924.59,
+          -282.7
+        ],
+        [
+          -925.99,
+          -280.22
+        ],
+        [
+          -930.29,
+          -275.55
+        ],
+        [
+          -938.32,
+          -270.5
+        ],
+        [
+          -930.85,
+          -265.29
+        ],
+        [
+          -924.19,
+          -263.36
+        ],
+        [
+          -917.35,
+          -262.47
+        ],
+        [
+          -911.25,
+          -262.47
+        ],
+        [
+          -904.71,
+          -263.36
+        ],
+        [
+          -898.61,
+          -265.14
+        ],
+        [
+          -892.22,
+          -268.71
+        ],
+        [
+          -888.94,
+          -272.57
+        ],
+        [
+          -894.75,
+          -275.7
+        ],
+        [
+          -897.86,
+          -278.68
+        ],
+        [
+          -901.43,
+          -282.25
+        ],
+        [
+          -902.92,
+          -284.18
+        ],
+        [
+          -900.39,
+          -285.52
+        ],
+        [
+          -896.69,
+          -289.68
+        ],
+        [
+          -897.17,
+          -292.41
+        ],
+        [
+          -899.23,
+          -294.41
+        ],
+        [
+          -901.67,
+          -296.42
+        ],
+        [
+          -905.91,
+          -298.27
+        ],
+        [
+          -910.6,
+          -298.9
+        ],
+        [
+          -915.52,
+          -298.7
+        ],
+        [
+          -919.71,
+          -297.97
+        ],
+        [
+          -923.43,
+          -296.6
+        ],
+        [
+          -926.01,
+          -294.61
+        ]
+      ]
+    },
+    {
+      "osm_id": 170960936,
+      "name": "Old Supreme Court",
+      "source_xy_m": [
+        -1428.2,
+        -185.25
+      ],
+      "nearest_station_m": 2515.9,
+      "distance_from_centerline_m": 39.7,
+      "side": "right",
+      "height_tag": "25",
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1418.21,
+          -153.44
+        ],
+        [
+          -1415.76,
+          -149.35
+        ],
+        [
+          -1396.9,
+          -160.02
+        ],
+        [
+          -1404.23,
+          -173.2
+        ],
+        [
+          -1408.85,
+          -181.08
+        ],
+        [
+          -1406.46,
+          -182.43
+        ],
+        [
+          -1407.53,
+          -184.32
+        ],
+        [
+          -1405.91,
+          -185.23
+        ],
+        [
+          -1406.49,
+          -186.26
+        ],
+        [
+          -1418.92,
+          -208.44
+        ],
+        [
+          -1419.4,
+          -209.27
+        ],
+        [
+          -1420.78,
+          -208.49
+        ],
+        [
+          -1421.87,
+          -210.41
+        ],
+        [
+          -1424.46,
+          -208.96
+        ],
+        [
+          -1428.54,
+          -216.59
+        ],
+        [
+          -1436.87,
+          -231.13
+        ],
+        [
+          -1455.82,
+          -220.51
+        ],
+        [
+          -1456.66,
+          -221.91
+        ],
+        [
+          -1479.64,
+          -203.1
+        ],
+        [
+          -1489.34,
+          -195.18
+        ],
+        [
+          -1451.65,
+          -129.04
+        ],
+        [
+          -1441.1,
+          -135.01
+        ],
+        [
+          -1443.24,
+          -139.13
+        ],
+        [
+          -1418.21,
+          -153.44
+        ]
+      ]
+    },
+    {
+      "osm_id": 172474137,
+      "name": "Singapore Flyer Car Park",
+      "source_xy_m": [
+        -216.84,
+        -155.62
+      ],
+      "nearest_station_m": 4270.2,
+      "distance_from_centerline_m": 131.6,
+      "side": "left",
+      "height_tag": "10",
+      "levels_tag": null,
+      "building": "parking",
+      "footprint_xy_m": [
+        [
+          -157.75,
+          -59.62
+        ],
+        [
+          -193.43,
+          -157.47
+        ],
+        [
+          -199.1,
+          -173.03
+        ],
+        [
+          -202.23,
+          -181.58
+        ],
+        [
+          -212.33,
+          -177.9
+        ],
+        [
+          -213.83,
+          -181.99
+        ],
+        [
+          -216.1,
+          -185.35
+        ],
+        [
+          -219.3,
+          -187.8
+        ],
+        [
+          -223.32,
+          -189.16
+        ],
+        [
+          -227.57,
+          -189.09
+        ],
+        [
+          -231.55,
+          -187.63
+        ],
+        [
+          -234.83,
+          -184.91
+        ],
+        [
+          -237.0,
+          -181.26
+        ],
+        [
+          -237.83,
+          -177.1
+        ],
+        [
+          -237.24,
+          -172.89
+        ],
+        [
+          -236.38,
+          -171.23
+        ],
+        [
+          -235.28,
+          -169.12
+        ],
+        [
+          -232.17,
+          -166.22
+        ],
+        [
+          -229.62,
+          -165.1
+        ],
+        [
+          -238.34,
+          -161.92
+        ],
+        [
+          -232.87,
+          -146.31
+        ],
+        [
+          -202.28,
+          -63.01
+        ],
+        [
+          -195.97,
+          -45.69
+        ],
+        [
+          -157.75,
+          -59.62
+        ]
+      ]
+    },
+    {
+      "osm_id": 172916311,
+      "name": "Six Battery Road",
+      "source_xy_m": [
+        -1378.99,
+        -667.03
+      ],
+      "nearest_station_m": 2950.4,
+      "distance_from_centerline_m": 242.0,
+      "side": "right",
+      "height_tag": "12",
+      "levels_tag": "4",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1334.72,
+          -663.27
+        ],
+        [
+          -1355.09,
+          -617.61
+        ],
+        [
+          -1412.43,
+          -644.42
+        ],
+        [
+          -1416.08,
+          -695.13
+        ],
+        [
+          -1410.84,
+          -697.7
+        ],
+        [
+          -1389.07,
+          -687.84
+        ],
+        [
+          -1334.72,
+          -663.27
+        ]
+      ]
+    },
+    {
+      "osm_id": 172931401,
+      "name": "The Fullerton Waterboat House",
+      "source_xy_m": [
+        -1185.36,
+        -482.38
+      ],
+      "nearest_station_m": 2910.6,
+      "distance_from_centerline_m": 23.3,
+      "side": "left",
+      "height_tag": "11",
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1187.19,
+          -492.87
+        ],
+        [
+          -1193.19,
+          -492.81
+        ],
+        [
+          -1194.0,
+          -488.14
+        ],
+        [
+          -1196.2,
+          -482.13
+        ],
+        [
+          -1199.07,
+          -478.26
+        ],
+        [
+          -1202.48,
+          -474.92
+        ],
+        [
+          -1195.53,
+          -466.38
+        ],
+        [
+          -1187.59,
+          -465.98
+        ],
+        [
+          -1187.54,
+          -469.85
+        ],
+        [
+          -1184.99,
+          -469.92
+        ],
+        [
+          -1184.92,
+          -466.91
+        ],
+        [
+          -1180.32,
+          -469.25
+        ],
+        [
+          -1176.78,
+          -472.86
+        ],
+        [
+          -1174.25,
+          -476.8
+        ],
+        [
+          -1173.57,
+          -480.87
+        ],
+        [
+          -1173.37,
+          -486.94
+        ],
+        [
+          -1174.92,
+          -491.14
+        ],
+        [
+          -1177.71,
+          -491.14
+        ],
+        [
+          -1179.59,
+          -493.68
+        ],
+        [
+          -1182.13,
+          -496.35
+        ],
+        [
+          -1183.92,
+          -497.08
+        ],
+        [
+          -1186.93,
+          -497.48
+        ],
+        [
+          -1187.19,
+          -492.87
+        ]
+      ]
+    },
+    {
+      "osm_id": 175146816,
+      "name": "Roman Catholic Archdiocese of Singapore",
+      "source_xy_m": [
+        -1453.72,
+        461.56
+      ],
+      "nearest_station_m": 2137.1,
+      "distance_from_centerline_m": 421.3,
+      "side": "right",
+      "height_tag": "15",
+      "levels_tag": "2",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1460.54,
+          480.63
+        ],
+        [
+          -1444.28,
+          467.56
+        ],
+        [
+          -1448.66,
+          462.12
+        ],
+        [
+          -1445.67,
+          459.71
+        ],
+        [
+          -1442.75,
+          457.36
+        ],
+        [
+          -1448.64,
+          450.04
+        ],
+        [
+          -1451.56,
+          452.39
+        ],
+        [
+          -1454.46,
+          454.72
+        ],
+        [
+          -1458.75,
+          449.41
+        ],
+        [
+          -1475.08,
+          462.54
+        ],
+        [
+          -1460.54,
+          480.63
+        ]
+      ]
+    },
+    {
+      "osm_id": 183320721,
+      "name": "Former Dormitories",
+      "source_xy_m": [
+        -1306.69,
+        401.55
+      ],
+      "nearest_station_m": 2121.1,
+      "distance_from_centerline_m": 295.5,
+      "side": "right",
+      "height_tag": "24",
+      "levels_tag": "2",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1328.91,
+          360.79
+        ],
+        [
+          -1316.19,
+          351.77
+        ],
+        [
+          -1304.03,
+          368.91
+        ],
+        [
+          -1301.89,
+          367.39
+        ],
+        [
+          -1295.9,
+          375.82
+        ],
+        [
+          -1297.85,
+          377.21
+        ],
+        [
+          -1291.74,
+          385.82
+        ],
+        [
+          -1291.09,
+          385.36
+        ],
+        [
+          -1289.35,
+          387.81
+        ],
+        [
+          -1287.35,
+          386.39
+        ],
+        [
+          -1281.67,
+          394.39
+        ],
+        [
+          -1283.62,
+          395.78
+        ],
+        [
+          -1271.57,
+          412.75
+        ],
+        [
+          -1284.63,
+          422.03
+        ],
+        [
+          -1286.72,
+          419.08
+        ],
+        [
+          -1294.51,
+          424.61
+        ],
+        [
+          -1293.18,
+          426.48
+        ],
+        [
+          -1332.33,
+          454.26
+        ],
+        [
+          -1341.54,
+          441.25
+        ],
+        [
+          -1330.53,
+          433.44
+        ],
+        [
+          -1332.63,
+          430.48
+        ],
+        [
+          -1327.37,
+          426.76
+        ],
+        [
+          -1328.5,
+          425.18
+        ],
+        [
+          -1321.87,
+          420.47
+        ],
+        [
+          -1320.88,
+          421.87
+        ],
+        [
+          -1315.58,
+          418.11
+        ],
+        [
+          -1313.65,
+          420.83
+        ],
+        [
+          -1302.79,
+          413.12
+        ],
+        [
+          -1301.99,
+          414.25
+        ],
+        [
+          -1294.39,
+          408.86
+        ],
+        [
+          -1296.98,
+          405.22
+        ],
+        [
+          -1298.57,
+          406.35
+        ],
+        [
+          -1304.39,
+          398.15
+        ],
+        [
+          -1302.71,
+          396.96
+        ],
+        [
+          -1312.03,
+          383.84
+        ],
+        [
+          -1314.24,
+          385.4
+        ],
+        [
+          -1320.28,
+          376.88
+        ],
+        [
+          -1318.43,
+          375.56
+        ],
+        [
+          -1328.91,
+          360.79
+        ]
+      ]
+    },
+    {
+      "osm_id": 230082125,
+      "name": "Singapore Flyer",
+      "source_xy_m": [
+        -136.19,
+        -230.13
+      ],
+      "nearest_station_m": 4509.4,
+      "distance_from_centerline_m": 70.9,
+      "side": "left",
+      "height_tag": "0",
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -184.33,
+          -263.93
+        ],
+        [
+          -68.9,
+          -173.17
+        ],
+        [
+          -63.98,
+          -179.42
+        ],
+        [
+          -179.41,
+          -270.18
+        ],
+        [
+          -184.33,
+          -263.93
+        ]
+      ]
+    },
+    {
+      "osm_id": 243427705,
+      "name": "The Arts House",
+      "source_xy_m": [
+        -1459.43,
+        -301.65
+      ],
+      "nearest_station_m": 2575.7,
+      "distance_from_centerline_m": 60.6,
+      "side": "right",
+      "height_tag": "15",
+      "levels_tag": "2",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1445.4,
+          -270.36
+        ],
+        [
+          -1435.59,
+          -277.86
+        ],
+        [
+          -1439.87,
+          -283.45
+        ],
+        [
+          -1435.71,
+          -286.63
+        ],
+        [
+          -1442.79,
+          -295.89
+        ],
+        [
+          -1435.64,
+          -301.34
+        ],
+        [
+          -1440.05,
+          -307.12
+        ],
+        [
+          -1438.15,
+          -308.58
+        ],
+        [
+          -1451.78,
+          -326.44
+        ],
+        [
+          -1456.78,
+          -322.62
+        ],
+        [
+          -1466.71,
+          -335.62
+        ],
+        [
+          -1471.94,
+          -331.62
+        ],
+        [
+          -1477.31,
+          -338.65
+        ],
+        [
+          -1487.31,
+          -331.02
+        ],
+        [
+          -1482.24,
+          -324.39
+        ],
+        [
+          -1484.51,
+          -322.64
+        ],
+        [
+          -1475.17,
+          -310.42
+        ],
+        [
+          -1480.45,
+          -306.39
+        ],
+        [
+          -1476.0,
+          -300.58
+        ],
+        [
+          -1478.69,
+          -298.52
+        ],
+        [
+          -1470.04,
+          -287.2
+        ],
+        [
+          -1467.18,
+          -289.37
+        ],
+        [
+          -1462.33,
+          -283.03
+        ],
+        [
+          -1458.82,
+          -285.7
+        ],
+        [
+          -1449.91,
+          -274.02
+        ],
+        [
+          -1448.83,
+          -274.84
+        ],
+        [
+          -1445.4,
+          -270.36
+        ]
+      ]
+    },
+    {
+      "osm_id": 243427888,
+      "name": "Old Civil District Court",
+      "source_xy_m": [
+        -1479.98,
+        -372.6
+      ],
+      "nearest_station_m": 2591.6,
+      "distance_from_centerline_m": 129.0,
+      "side": "right",
+      "height_tag": "15",
+      "levels_tag": "2",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1463.12,
+          -356.33
+        ],
+        [
+          -1474.12,
+          -371.49
+        ],
+        [
+          -1469.66,
+          -375.36
+        ],
+        [
+          -1474.42,
+          -381.31
+        ],
+        [
+          -1478.88,
+          -377.75
+        ],
+        [
+          -1488.4,
+          -390.24
+        ],
+        [
+          -1492.26,
+          -386.37
+        ],
+        [
+          -1496.73,
+          -391.73
+        ],
+        [
+          -1502.08,
+          -386.67
+        ],
+        [
+          -1497.82,
+          -381.21
+        ],
+        [
+          -1476.5,
+          -353.94
+        ],
+        [
+          -1473.21,
+          -356.17
+        ],
+        [
+          -1469.36,
+          -351.57
+        ],
+        [
+          -1463.12,
+          -356.33
+        ]
+      ]
+    },
+    {
+      "osm_id": 256153714,
+      "name": "The Cenotaph",
+      "source_xy_m": [
+        -1156.36,
+        -127.89
+      ],
+      "nearest_station_m": 3357.1,
+      "distance_from_centerline_m": 84.5,
+      "side": "left",
+      "height_tag": "1",
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1155.29,
+          -139.14
+        ],
+        [
+          -1144.98,
+          -117.08
+        ],
+        [
+          -1157.96,
+          -111.01
+        ],
+        [
+          -1168.27,
+          -133.08
+        ],
+        [
+          -1155.29,
+          -139.14
+        ]
+      ]
+    },
+    {
+      "osm_id": 256163011,
+      "name": "Esplanade Concert Hall",
+      "source_xy_m": [
+        -1008.69,
+        -233.31
+      ],
+      "nearest_station_m": 3309.3,
+      "distance_from_centerline_m": 90.4,
+      "side": "right",
+      "height_tag": "35",
+      "levels_tag": "4",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -991.14,
+          -250.64
+        ],
+        [
+          -1003.25,
+          -256.23
+        ],
+        [
+          -1012.27,
+          -260.27
+        ],
+        [
+          -1015.28,
+          -261.4
+        ],
+        [
+          -1018.61,
+          -262.2
+        ],
+        [
+          -1023.13,
+          -262.81
+        ],
+        [
+          -1027.42,
+          -262.75
+        ],
+        [
+          -1030.83,
+          -262.16
+        ],
+        [
+          -1033.67,
+          -261.35
+        ],
+        [
+          -1037.88,
+          -259.73
+        ],
+        [
+          -1045.59,
+          -252.18
+        ],
+        [
+          -1049.82,
+          -245.7
+        ],
+        [
+          -1052.79,
+          -233.81
+        ],
+        [
+          -1052.28,
+          -223.24
+        ],
+        [
+          -1048.97,
+          -214.83
+        ],
+        [
+          -1042.62,
+          -206.36
+        ],
+        [
+          -1038.11,
+          -204.12
+        ],
+        [
+          -1031.77,
+          -200.88
+        ],
+        [
+          -984.02,
+          -189.36
+        ],
+        [
+          -976.39,
+          -189.21
+        ],
+        [
+          -971.03,
+          -192.04
+        ],
+        [
+          -965.38,
+          -199.52
+        ],
+        [
+          -961.28,
+          -207.57
+        ],
+        [
+          -957.32,
+          -220.42
+        ],
+        [
+          -957.19,
+          -227.49
+        ],
+        [
+          -959.87,
+          -235.39
+        ],
+        [
+          -964.24,
+          -240.33
+        ],
+        [
+          -991.14,
+          -250.64
+        ]
+      ]
+    },
+    {
+      "osm_id": 256163012,
+      "name": "Esplanade Theatre",
+      "source_xy_m": [
+        -967.19,
+        -132.48
+      ],
+      "nearest_station_m": 3636.2,
+      "distance_from_centerline_m": 56.2,
+      "side": "right",
+      "height_tag": "35",
+      "levels_tag": "4",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -998.1,
+          -132.31
+        ],
+        [
+          -1001.68,
+          -124.14
+        ],
+        [
+          -1004.52,
+          -117.92
+        ],
+        [
+          -1004.64,
+          -108.27
+        ],
+        [
+          -1001.08,
+          -99.58
+        ],
+        [
+          -996.91,
+          -92.45
+        ],
+        [
+          -990.18,
+          -84.99
+        ],
+        [
+          -982.18,
+          -81.56
+        ],
+        [
+          -971.65,
+          -79.68
+        ],
+        [
+          -962.35,
+          -81.39
+        ],
+        [
+          -953.11,
+          -86.55
+        ],
+        [
+          -946.48,
+          -92.87
+        ],
+        [
+          -942.13,
+          -103.01
+        ],
+        [
+          -935.17,
+          -126.63
+        ],
+        [
+          -926.69,
+          -160.27
+        ],
+        [
+          -926.82,
+          -166.61
+        ],
+        [
+          -928.81,
+          -171.27
+        ],
+        [
+          -931.62,
+          -174.25
+        ],
+        [
+          -940.66,
+          -180.46
+        ],
+        [
+          -950.13,
+          -184.55
+        ],
+        [
+          -961.28,
+          -186.82
+        ],
+        [
+          -970.03,
+          -185.68
+        ],
+        [
+          -976.26,
+          -181.72
+        ],
+        [
+          -979.07,
+          -176.64
+        ],
+        [
+          -998.1,
+          -132.31
+        ]
+      ]
+    },
+    {
+      "osm_id": 257192963,
+      "name": "Cathedral Café",
+      "source_xy_m": [
+        -1342.61,
+        150.46
+      ],
+      "nearest_station_m": 2176.9,
+      "distance_from_centerline_m": 128.2,
+      "side": "right",
+      "height_tag": "4",
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -1337.58,
+          124.1
+        ],
+        [
+          -1328.16,
+          142.42
+        ],
+        [
+          -1337.07,
+          147.0
+        ],
+        [
+          -1337.99,
+          145.21
+        ],
+        [
+          -1342.27,
+          147.42
+        ],
+        [
+          -1341.08,
+          149.74
+        ],
+        [
+          -1356.72,
+          157.78
+        ],
+        [
+          -1370.3,
+          132.53
+        ],
+        [
+          -1383.39,
+          140.2
+        ],
+        [
+          -1364.2,
+          175.82
+        ],
+        [
+          -1351.41,
+          168.39
+        ],
+        [
+          -1353.93,
+          163.21
+        ],
+        [
+          -1352.77,
+          162.61
+        ],
+        [
+          -1348.3,
+          171.3
+        ],
+        [
+          -1336.71,
+          165.32
+        ],
+        [
+          -1337.53,
+          163.72
+        ],
+        [
+          -1336.05,
+          162.96
+        ],
+        [
+          -1338.13,
+          158.95
+        ],
+        [
+          -1335.4,
+          157.54
+        ],
+        [
+          -1337.25,
+          153.94
+        ],
+        [
+          -1320.14,
+          145.14
+        ],
+        [
+          -1322.99,
+          139.59
+        ],
+        [
+          -1324.45,
+          140.34
+        ],
+        [
+          -1333.81,
+          122.17
+        ],
+        [
+          -1337.58,
+          124.1
+        ]
+      ]
+    },
+    {
+      "osm_id": 303311927,
+      "name": "Marina Square",
+      "source_xy_m": [
+        -751.44,
+        35.67
+      ],
+      "nearest_station_m": 1467.2,
+      "distance_from_centerline_m": 47.5,
+      "side": "left",
+      "height_tag": "0",
+      "levels_tag": null,
+      "building": "retail",
+      "footprint_xy_m": [
+        [
+          -656.76,
+          51.78
+        ],
+        [
+          -663.87,
+          40.04
+        ],
+        [
+          -671.4,
+          27.63
+        ],
+        [
+          -683.2,
+          8.06
+        ],
+        [
+          -615.17,
+          -29.61
+        ],
+        [
+          -628.85,
+          -52.05
+        ],
+        [
+          -628.36,
+          -54.47
+        ],
+        [
+          -627.65,
+          -58.18
+        ],
+        [
+          -616.73,
+          -64.62
+        ],
+        [
+          -608.76,
+          -69.33
+        ],
+        [
+          -562.89,
+          -95.4
+        ],
+        [
+          -562.61,
+          -167.02
+        ],
+        [
+          -571.74,
+          -170.19
+        ],
+        [
+          -627.14,
+          -138.86
+        ],
+        [
+          -629.81,
+          -142.87
+        ],
+        [
+          -707.08,
+          -97.37
+        ],
+        [
+          -701.79,
+          -88.4
+        ],
+        [
+          -699.82,
+          -85.07
+        ],
+        [
+          -716.58,
+          -75.17
+        ],
+        [
+          -720.71,
+          -82.16
+        ],
+        [
+          -734.51,
+          -105.06
+        ],
+        [
+          -749.08,
+          -130.21
+        ],
+        [
+          -762.98,
+          -122.0
+        ],
+        [
+          -780.21,
+          -111.83
+        ],
+        [
+          -813.83,
+          -91.98
+        ],
+        [
+          -838.3,
+          -77.27
+        ],
+        [
+          -848.63,
+          -89.32
+        ],
+        [
+          -863.79,
+          -77.75
+        ],
+        [
+          -921.64,
+          -29.73
+        ],
+        [
+          -923.93,
+          -27.21
+        ],
+        [
+          -924.97,
+          -22.86
+        ],
+        [
+          -925.79,
+          -18.66
+        ],
+        [
+          -923.56,
+          -11.2
+        ],
+        [
+          -917.25,
+          9.95
+        ],
+        [
+          -899.36,
+          69.91
+        ],
+        [
+          -894.37,
+          67.53
+        ],
+        [
+          -893.55,
+          70.54
+        ],
+        [
+          -892.53,
+          73.17
+        ],
+        [
+          -887.78,
+          91.94
+        ],
+        [
+          -884.06,
+          100.22
+        ],
+        [
+          -878.68,
+          106.97
+        ],
+        [
+          -866.27,
+          116.07
+        ],
+        [
+          -852.27,
+          120.98
+        ],
+        [
+          -842.91,
+          120.87
+        ],
+        [
+          -833.42,
+          119.53
+        ],
+        [
+          -842.13,
+          103.65
+        ],
+        [
+          -857.77,
+          103.83
+        ],
+        [
+          -865.63,
+          99.66
+        ],
+        [
+          -870.72,
+          94.16
+        ],
+        [
+          -871.02,
+          93.88
+        ],
+        [
+          -843.41,
+          79.87
+        ],
+        [
+          -833.15,
+          96.59
+        ],
+        [
+          -824.03,
+          112.41
+        ],
+        [
+          -803.03,
+          100.3
+        ],
+        [
+          -812.15,
+          84.48
+        ],
+        [
+          -822.52,
+          90.45
+        ],
+        [
+          -824.25,
+          87.59
+        ],
+        [
+          -828.76,
+          80.07
+        ],
+        [
+          -811.28,
+          70.27
+        ],
+        [
+          -819.41,
+          56.27
+        ],
+        [
+          -750.91,
+          14.59
+        ],
+        [
+          -737.63,
+          6.75
+        ],
+        [
+          -723.47,
+          32.02
+        ],
+        [
+          -697.34,
+          75.93
+        ],
+        [
+          -703.07,
+          81.14
+        ],
+        [
+          -708.13,
+          85.9
+        ],
+        [
+          -712.3,
+          92.15
+        ],
+        [
+          -714.53,
+          98.84
+        ],
+        [
+          -715.12,
+          107.17
+        ],
+        [
+          -714.15,
+          116.32
+        ],
+        [
+          -711.4,
+          123.61
+        ],
+        [
+          -707.84,
+          129.95
+        ],
+        [
+          -705.38,
+          133.65
+        ],
+        [
+          -700.92,
+          137.44
+        ],
+        [
+          -695.19,
+          140.49
+        ],
+        [
+          -688.64,
+          142.35
+        ],
+        [
+          -682.77,
+          143.02
+        ],
+        [
+          -676.89,
+          142.97
+        ],
+        [
+          -670.35,
+          141.91
+        ],
+        [
+          -664.25,
+          139.3
+        ],
+        [
+          -660.87,
+          137.45
+        ],
+        [
+          -642.6,
+          127.05
+        ],
+        [
+          -636.37,
+          123.5
+        ],
+        [
+          -634.42,
+          122.39
+        ],
+        [
+          -635.59,
+          120.4
+        ],
+        [
+          -655.8,
+          85.05
+        ],
+        [
+          -650.17,
+          81.82
+        ],
+        [
+          -641.43,
+          76.73
+        ],
+        [
+          -656.76,
+          51.78
+        ]
+      ]
+    },
+    {
+      "osm_id": 325895782,
+      "name": "Esplanade Annexe",
+      "source_xy_m": [
+        -859.34,
+        -237.29
+      ],
+      "nearest_station_m": 3763.8,
+      "distance_from_centerline_m": 72.5,
+      "side": "right",
+      "height_tag": "10",
+      "levels_tag": "4",
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -875.56,
+          -242.19
+        ],
+        [
+          -873.28,
+          -242.42
+        ],
+        [
+          -872.23,
+          -222.04
+        ],
+        [
+          -870.53,
+          -189.48
+        ],
+        [
+          -862.7,
+          -190.22
+        ],
+        [
+          -865.75,
+          -243.86
+        ],
+        [
+          -863.05,
+          -247.6
+        ],
+        [
+          -859.19,
+          -248.17
+        ],
+        [
+          -858.75,
+          -248.22
+        ],
+        [
+          -855.67,
+          -245.9
+        ],
+        [
+          -851.71,
+          -195.79
+        ],
+        [
+          -827.48,
+          -197.44
+        ],
+        [
+          -830.45,
+          -246.39
+        ],
+        [
+          -845.43,
+          -245.11
+        ],
+        [
+          -846.89,
+          -247.91
+        ],
+        [
+          -848.94,
+          -251.85
+        ],
+        [
+          -855.1,
+          -256.75
+        ],
+        [
+          -859.71,
+          -257.7
+        ],
+        [
+          -862.01,
+          -258.16
+        ],
+        [
+          -870.36,
+          -254.47
+        ],
+        [
+          -875.05,
+          -246.48
+        ],
+        [
+          -875.56,
+          -242.19
+        ]
+      ]
+    },
+    {
+      "osm_id": 380512068,
+      "name": "NCO Club",
+      "source_xy_m": [
+        -1016.43,
+        296.04
+      ],
+      "nearest_station_m": 1706.5,
+      "distance_from_centerline_m": 131.7,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "2",
+      "building": "commercial",
+      "footprint_xy_m": [
+        [
+          -1012.23,
+          324.66
+        ],
+        [
+          -1041.86,
+          277.81
+        ],
+        [
+          -1023.98,
+          267.51
+        ],
+        [
+          -1021.71,
+          271.37
+        ],
+        [
+          -1008.17,
+          292.6
+        ],
+        [
+          -994.83,
+          313.67
+        ],
+        [
+          -1012.23,
+          324.66
+        ]
+      ]
+    },
+    {
+      "osm_id": 380512070,
+      "name": "South Beach Quarter",
+      "source_xy_m": [
+        -892.22,
+        489.74
+      ],
+      "nearest_station_m": 1702.5,
+      "distance_from_centerline_m": 298.0,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -890.03,
+          507.29
+        ],
+        [
+          -917.08,
+          460.15
+        ],
+        [
+          -904.37,
+          452.85
+        ],
+        [
+          -880.06,
+          495.28
+        ],
+        [
+          -877.33,
+          499.93
+        ],
+        [
+          -886.64,
+          505.4
+        ],
+        [
+          -890.03,
+          507.29
+        ]
+      ]
+    },
+    {
+      "osm_id": 380512072,
+      "name": "Old SSVF HQ",
+      "source_xy_m": [
+        -922.11,
+        417.74
+      ],
+      "nearest_station_m": 1702.5,
+      "distance_from_centerline_m": 223.5,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "hotel",
+      "footprint_xy_m": [
+        [
+          -932.9,
+          434.26
+        ],
+        [
+          -943.27,
+          416.92
+        ],
+        [
+          -928.11,
+          407.74
+        ],
+        [
+          -905.9,
+          394.69
+        ],
+        [
+          -895.64,
+          412.14
+        ],
+        [
+          -916.05,
+          424.13
+        ],
+        [
+          -932.9,
+          434.26
+        ]
+      ]
+    },
+    {
+      "osm_id": 380512074,
+      "name": "Old Command Block",
+      "source_xy_m": [
+        -968.83,
+        361.09
+      ],
+      "nearest_station_m": 1702.5,
+      "distance_from_centerline_m": 170.7,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "2",
+      "building": "commercial",
+      "footprint_xy_m": [
+        [
+          -956.72,
+          394.62
+        ],
+        [
+          -990.92,
+          336.51
+        ],
+        [
+          -985.87,
+          333.54
+        ],
+        [
+          -985.05,
+          334.94
+        ],
+        [
+          -978.35,
+          330.99
+        ],
+        [
+          -952.04,
+          375.76
+        ],
+        [
+          -944.97,
+          387.7
+        ],
+        [
+          -956.72,
+          394.62
+        ]
+      ]
+    },
+    {
+      "osm_id": 380512075,
+      "name": "South Beach Avenue",
+      "source_xy_m": [
+        -908.65,
+        385.67
+      ],
+      "nearest_station_m": 1702.5,
+      "distance_from_centerline_m": 192.7,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": "3",
+      "building": "roof",
+      "footprint_xy_m": [
+        [
+          -870.93,
+          488.45
+        ],
+        [
+          -882.73,
+          468.46
+        ],
+        [
+          -885.61,
+          463.6
+        ],
+        [
+          -897.67,
+          443.14
+        ],
+        [
+          -922.42,
+          456.35
+        ],
+        [
+          -925.39,
+          451.28
+        ],
+        [
+          -912.77,
+          443.87
+        ],
+        [
+          -916.04,
+          438.29
+        ],
+        [
+          -913.05,
+          436.53
+        ],
+        [
+          -916.83,
+          430.09
+        ],
+        [
+          -913.65,
+          428.23
+        ],
+        [
+          -916.05,
+          424.13
+        ],
+        [
+          -895.64,
+          412.14
+        ],
+        [
+          -905.9,
+          394.69
+        ],
+        [
+          -928.11,
+          407.74
+        ],
+        [
+          -932.36,
+          400.5
+        ],
+        [
+          -942.09,
+          406.23
+        ],
+        [
+          -945.24,
+          400.86
+        ],
+        [
+          -949.8,
+          403.54
+        ],
+        [
+          -953.32,
+          397.56
+        ],
+        [
+          -927.98,
+          382.68
+        ],
+        [
+          -931.07,
+          377.42
+        ],
+        [
+          -935.03,
+          379.75
+        ],
+        [
+          -937.72,
+          375.15
+        ],
+        [
+          -942.79,
+          378.14
+        ],
+        [
+          -946.21,
+          372.34
+        ],
+        [
+          -952.04,
+          375.76
+        ],
+        [
+          -978.35,
+          330.99
+        ],
+        [
+          -978.81,
+          330.21
+        ],
+        [
+          -984.0,
+          333.26
+        ],
+        [
+          -987.24,
+          327.76
+        ],
+        [
+          -984.94,
+          326.42
+        ],
+        [
+          -987.77,
+          321.59
+        ],
+        [
+          -984.32,
+          319.57
+        ],
+        [
+          -1011.54,
+          273.25
+        ],
+        [
+          -1015.0,
+          275.28
+        ],
+        [
+          -1018.44,
+          269.45
+        ],
+        [
+          -1021.71,
+          271.37
+        ],
+        [
+          -1023.98,
+          267.51
+        ],
+        [
+          -966.84,
+          233.92
+        ],
+        [
+          -964.61,
+          237.72
+        ],
+        [
+          -956.44,
+          232.91
+        ],
+        [
+          -953.75,
+          237.47
+        ],
+        [
+          -945.91,
+          232.87
+        ],
+        [
+          -942.59,
+          238.51
+        ],
+        [
+          -941.93,
+          238.11
+        ],
+        [
+          -874.96,
+          352.07
+        ],
+        [
+          -879.61,
+          354.8
+        ],
+        [
+          -876.69,
+          359.75
+        ],
+        [
+          -880.0,
+          361.7
+        ],
+        [
+          -876.87,
+          367.04
+        ],
+        [
+          -881.19,
+          369.58
+        ],
+        [
+          -865.85,
+          395.69
+        ],
+        [
+          -864.67,
+          394.99
+        ],
+        [
+          -861.66,
+          400.12
+        ],
+        [
+          -860.44,
+          399.39
+        ],
+        [
+          -857.2,
+          404.92
+        ],
+        [
+          -852.46,
+          402.13
+        ],
+        [
+          -849.46,
+          407.25
+        ],
+        [
+          -845.45,
+          404.9
+        ],
+        [
+          -842.63,
+          409.72
+        ],
+        [
+          -839.04,
+          407.62
+        ],
+        [
+          -836.64,
+          411.71
+        ],
+        [
+          -832.0,
+          408.98
+        ],
+        [
+          -812.27,
+          442.56
+        ],
+        [
+          -814.9,
+          444.1
+        ],
+        [
+          -811.63,
+          449.67
+        ],
+        [
+          -814.93,
+          451.63
+        ],
+        [
+          -813.38,
+          454.27
+        ],
+        [
+          -811.1,
+          458.15
+        ],
+        [
+          -834.61,
+          471.96
+        ],
+        [
+          -830.85,
+          478.36
+        ],
+        [
+          -884.13,
+          509.67
+        ],
+        [
+          -886.64,
+          505.4
+        ],
+        [
+          -877.33,
+          499.93
+        ],
+        [
+          -880.06,
+          495.28
+        ],
+        [
+          -870.93,
+          488.45
+        ]
+      ]
+    },
+    {
+      "osm_id": 393090489,
+      "name": "Suntec Singapore Convention & Exhibition Centre",
+      "source_xy_m": [
+        -774.64,
+        241.92
+      ],
+      "nearest_station_m": 1590.8,
+      "distance_from_centerline_m": 119.3,
+      "side": "right",
+      "height_tag": "0",
+      "levels_tag": null,
+      "building": "retail",
+      "footprint_xy_m": [
+        [
+          -769.57,
+          331.09
+        ],
+        [
+          -766.47,
+          329.31
+        ],
+        [
+          -762.49,
+          327.03
+        ],
+        [
+          -759.83,
+          325.51
+        ],
+        [
+          -756.06,
+          323.34
+        ],
+        [
+          -743.79,
+          316.32
+        ],
+        [
+          -726.06,
+          306.17
+        ],
+        [
+          -722.36,
+          304.05
+        ],
+        [
+          -717.1,
+          301.03
+        ],
+        [
+          -692.06,
+          286.7
+        ],
+        [
+          -678.95,
+          279.19
+        ],
+        [
+          -687.42,
+          264.98
+        ],
+        [
+          -675.37,
+          258.42
+        ],
+        [
+          -682.42,
+          244.98
+        ],
+        [
+          -695.11,
+          223.81
+        ],
+        [
+          -697.27,
+          220.18
+        ],
+        [
+          -712.75,
+          193.15
+        ],
+        [
+          -727.45,
+          167.49
+        ],
+        [
+          -732.53,
+          158.63
+        ],
+        [
+          -738.99,
+          147.32
+        ],
+        [
+          -742.6,
+          141.04
+        ],
+        [
+          -749.81,
+          128.44
+        ],
+        [
+          -763.36,
+          136.18
+        ],
+        [
+          -769.91,
+          124.73
+        ],
+        [
+          -783.04,
+          132.24
+        ],
+        [
+          -796.71,
+          139.84
+        ],
+        [
+          -809.47,
+          147.39
+        ],
+        [
+          -820.73,
+          153.84
+        ],
+        [
+          -835.13,
+          162.09
+        ],
+        [
+          -844.82,
+          167.66
+        ],
+        [
+          -862.01,
+          177.48
+        ],
+        [
+          -873.59,
+          184.11
+        ],
+        [
+          -874.45,
+          184.6
+        ],
+        [
+          -866.61,
+          198.29
+        ],
+        [
+          -878.02,
+          204.82
+        ],
+        [
+          -870.49,
+          217.96
+        ],
+        [
+          -855.2,
+          244.66
+        ],
+        [
+          -840.66,
+          270.04
+        ],
+        [
+          -825.68,
+          296.21
+        ],
+        [
+          -810.94,
+          321.95
+        ],
+        [
+          -803.83,
+          334.34
+        ],
+        [
+          -793.92,
+          328.67
+        ],
+        [
+          -789.93,
+          326.38
+        ],
+        [
+          -782.87,
+          338.71
+        ],
+        [
+          -777.89,
+          335.86
+        ],
+        [
+          -772.81,
+          332.94
+        ],
+        [
+          -769.57,
+          331.09
+        ]
+      ]
+    },
+    {
+      "osm_id": 393210508,
+      "name": "Suntec City",
+      "source_xy_m": [
+        -452.71,
+        371.17
+      ],
+      "nearest_station_m": 526.3,
+      "distance_from_centerline_m": 247.8,
+      "side": "right",
+      "height_tag": "20",
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -516.32,
+          455.22
+        ],
+        [
+          -496.53,
+          489.72
+        ],
+        [
+          -466.68,
+          472.44
+        ],
+        [
+          -474.15,
+          460.39
+        ],
+        [
+          -407.39,
+          421.81
+        ],
+        [
+          -391.6,
+          367.17
+        ],
+        [
+          -412.8,
+          360.89
+        ],
+        [
+          -407.23,
+          357.36
+        ],
+        [
+          -400.86,
+          350.92
+        ],
+        [
+          -399.08,
+          346.87
+        ],
+        [
+          -397.62,
+          343.68
+        ],
+        [
+          -395.92,
+          336.17
+        ],
+        [
+          -396.78,
+          326.77
+        ],
+        [
+          -399.88,
+          317.86
+        ],
+        [
+          -406.04,
+          310.36
+        ],
+        [
+          -414.39,
+          305.39
+        ],
+        [
+          -423.97,
+          303.44
+        ],
+        [
+          -433.73,
+          304.25
+        ],
+        [
+          -441.78,
+          307.6
+        ],
+        [
+          -448.9,
+          313.82
+        ],
+        [
+          -453.62,
+          320.96
+        ],
+        [
+          -455.67,
+          329.88
+        ],
+        [
+          -455.96,
+          337.82
+        ],
+        [
+          -453.92,
+          345.98
+        ],
+        [
+          -454.79,
+          346.59
+        ],
+        [
+          -461.7,
+          336.01
+        ],
+        [
+          -473.46,
+          344.34
+        ],
+        [
+          -458.12,
+          370.68
+        ],
+        [
+          -464.46,
+          369.41
+        ],
+        [
+          -473.2,
+          373.94
+        ],
+        [
+          -474.76,
+          371.23
+        ],
+        [
+          -482.08,
+          375.51
+        ],
+        [
+          -500.21,
+          386.11
+        ],
+        [
+          -498.29,
+          389.64
+        ],
+        [
+          -502.19,
+          401.33
+        ],
+        [
+          -494.59,
+          414.57
+        ],
+        [
+          -484.46,
+          432.2
+        ],
+        [
+          -500.47,
+          441.39
+        ],
+        [
+          -518.45,
+          451.7
+        ],
+        [
+          -516.32,
+          455.22
+        ]
+      ]
+    },
+    {
+      "osm_id": 393210509,
+      "name": "Suntec City",
+      "source_xy_m": [
+        -525.12,
+        484.96
+      ],
+      "nearest_station_m": 514.3,
+      "distance_from_centerline_m": 347.6,
+      "side": "right",
+      "height_tag": "20",
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -496.53,
+          489.72
+        ],
+        [
+          -509.2,
+          496.99
+        ],
+        [
+          -513.95,
+          499.72
+        ],
+        [
+          -520.89,
+          503.7
+        ],
+        [
+          -526.43,
+          506.88
+        ],
+        [
+          -538.89,
+          514.02
+        ],
+        [
+          -558.67,
+          479.51
+        ],
+        [
+          -545.45,
+          471.93
+        ],
+        [
+          -542.75,
+          470.38
+        ],
+        [
+          -532.8,
+          464.67
+        ],
+        [
+          -528.12,
+          461.99
+        ],
+        [
+          -516.32,
+          455.22
+        ],
+        [
+          -496.53,
+          489.72
+        ]
+      ]
+    },
+    {
+      "osm_id": 427064883,
+      "name": "South Beach Residences",
+      "source_xy_m": [
+        -919.08,
+        315.65
+      ],
+      "nearest_station_m": 1702.5,
+      "distance_from_centerline_m": 121.9,
+      "side": "right",
+      "height_tag": "0",
+      "levels_tag": null,
+      "building": "residential",
+      "footprint_xy_m": [
+        [
+          -906.96,
+          359.62
+        ],
+        [
+          -886.06,
+          347.93
+        ],
+        [
+          -901.16,
+          320.95
+        ],
+        [
+          -903.8,
+          316.22
+        ],
+        [
+          -914.97,
+          296.26
+        ],
+        [
+          -943.26,
+          245.69
+        ],
+        [
+          -964.16,
+          257.38
+        ],
+        [
+          -935.86,
+          307.96
+        ],
+        [
+          -924.69,
+          327.91
+        ],
+        [
+          -922.05,
+          332.63
+        ],
+        [
+          -906.96,
+          359.62
+        ]
+      ]
+    },
+    {
+      "osm_id": 427064886,
+      "name": "South Beach Tower",
+      "source_xy_m": [
+        -869.23,
+        460.44
+      ],
+      "nearest_station_m": 1702.5,
+      "distance_from_centerline_m": 273.3,
+      "side": "right",
+      "height_tag": "0",
+      "levels_tag": null,
+      "building": "office",
+      "footprint_xy_m": [
+        [
+          -846.59,
+          474.09
+        ],
+        [
+          -858.39,
+          454.1
+        ],
+        [
+          -861.26,
+          449.23
+        ],
+        [
+          -873.33,
+          428.77
+        ],
+        [
+          -897.67,
+          443.14
+        ],
+        [
+          -885.61,
+          463.6
+        ],
+        [
+          -882.73,
+          468.46
+        ],
+        [
+          -870.93,
+          488.45
+        ],
+        [
+          -846.59,
+          474.09
+        ]
+      ]
+    },
+    {
+      "osm_id": 432515092,
+      "name": "Funan",
+      "source_xy_m": [
+        -1578.94,
+        0.92
+      ],
+      "nearest_station_m": 2424.1,
+      "distance_from_centerline_m": 261.9,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "commercial",
+      "footprint_xy_m": [
+        [
+          -1509.53,
+          46.43
+        ],
+        [
+          -1522.39,
+          24.49
+        ],
+        [
+          -1533.81,
+          4.99
+        ],
+        [
+          -1536.21,
+          6.39
+        ],
+        [
+          -1540.14,
+          8.68
+        ],
+        [
+          -1549.73,
+          14.29
+        ],
+        [
+          -1575.56,
+          29.38
+        ],
+        [
+          -1579.12,
+          29.38
+        ],
+        [
+          -1580.24,
+          27.41
+        ],
+        [
+          -1597.87,
+          37.48
+        ],
+        [
+          -1631.93,
+          56.94
+        ],
+        [
+          -1641.86,
+          39.55
+        ],
+        [
+          -1654.39,
+          17.59
+        ],
+        [
+          -1656.27,
+          14.29
+        ],
+        [
+          -1658.98,
+          9.56
+        ],
+        [
+          -1663.44,
+          1.68
+        ],
+        [
+          -1664.91,
+          -0.84
+        ],
+        [
+          -1630.75,
+          -20.35
+        ],
+        [
+          -1616.97,
+          -28.19
+        ],
+        [
+          -1610.1,
+          -32.13
+        ],
+        [
+          -1602.51,
+          -31.83
+        ],
+        [
+          -1583.14,
+          -43.28
+        ],
+        [
+          -1573.73,
+          -48.83
+        ],
+        [
+          -1552.75,
+          -61.22
+        ],
+        [
+          -1545.57,
+          -48.46
+        ],
+        [
+          -1556.56,
+          -33.43
+        ],
+        [
+          -1553.32,
+          -27.77
+        ],
+        [
+          -1551.91,
+          -25.29
+        ],
+        [
+          -1534.84,
+          -29.03
+        ],
+        [
+          -1510.3,
+          11.92
+        ],
+        [
+          -1497.77,
+          33.14
+        ],
+        [
+          -1509.53,
+          46.43
+        ]
+      ]
+    },
+    {
+      "osm_id": 474991675,
+      "name": "Front Hall",
+      "source_xy_m": [
+        -1536.93,
+        -255.4
+      ],
+      "nearest_station_m": 2571.7,
+      "distance_from_centerline_m": 119.0,
+      "side": "right",
+      "height_tag": "15",
+      "levels_tag": null,
+      "building": "government",
+      "footprint_xy_m": [
+        [
+          -1509.42,
+          -207.01
+        ],
+        [
+          -1533.26,
+          -241.79
+        ],
+        [
+          -1537.95,
+          -238.57
+        ],
+        [
+          -1535.34,
+          -234.75
+        ],
+        [
+          -1543.93,
+          -228.87
+        ],
+        [
+          -1558.41,
+          -250.05
+        ],
+        [
+          -1555.3,
+          -252.18
+        ],
+        [
+          -1557.17,
+          -254.93
+        ],
+        [
+          -1552.69,
+          -257.99
+        ],
+        [
+          -1572.56,
+          -288.07
+        ],
+        [
+          -1570.36,
+          -289.7
+        ],
+        [
+          -1578.58,
+          -301.04
+        ],
+        [
+          -1563.29,
+          -312.44
+        ],
+        [
+          -1543.73,
+          -285.44
+        ],
+        [
+          -1540.41,
+          -280.65
+        ],
+        [
+          -1536.13,
+          -283.6
+        ],
+        [
+          -1526.33,
+          -267.83
+        ],
+        [
+          -1520.2,
+          -268.1
+        ],
+        [
+          -1503.87,
+          -244.43
+        ],
+        [
+          -1510.01,
+          -239.95
+        ],
+        [
+          -1496.99,
+          -222.05
+        ],
+        [
+          -1493.93,
+          -217.62
+        ],
+        [
+          -1509.42,
+          -207.01
+        ]
+      ]
+    },
+    {
+      "osm_id": 474991676,
+      "name": "Hallpike Public Hall",
+      "source_xy_m": [
+        -1496.48,
+        -236.12
+      ],
+      "nearest_station_m": 2567.7,
+      "distance_from_centerline_m": 80.1,
+      "side": "right",
+      "height_tag": "1",
+      "levels_tag": null,
+      "building": "public",
+      "footprint_xy_m": [
+        [
+          -1496.99,
+          -222.05
+        ],
+        [
+          -1491.54,
+          -226.02
+        ],
+        [
+          -1478.9,
+          -235.23
+        ],
+        [
+          -1491.75,
+          -253.24
+        ],
+        [
+          -1501.75,
+          -245.97
+        ],
+        [
+          -1503.87,
+          -244.43
+        ],
+        [
+          -1510.01,
+          -239.95
+        ],
+        [
+          -1496.99,
+          -222.05
+        ]
+      ]
+    },
+    {
+      "osm_id": 474991677,
+      "name": "Chamber",
+      "source_xy_m": [
+        -1516.62,
+        -323.01
+      ],
+      "nearest_station_m": 2575.7,
+      "distance_from_centerline_m": 119.0,
+      "side": "right",
+      "height_tag": "15",
+      "levels_tag": null,
+      "building": "government",
+      "footprint_xy_m": [
+        [
+          -1543.73,
+          -285.44
+        ],
+        [
+          -1499.72,
+          -315.8
+        ],
+        [
+          -1502.26,
+          -320.11
+        ],
+        [
+          -1497.56,
+          -323.51
+        ],
+        [
+          -1500.68,
+          -327.84
+        ],
+        [
+          -1497.53,
+          -330.11
+        ],
+        [
+          -1505.45,
+          -341.06
+        ],
+        [
+          -1508.5,
+          -338.85
+        ],
+        [
+          -1510.65,
+          -341.83
+        ],
+        [
+          -1519.45,
+          -335.48
+        ],
+        [
+          -1523.55,
+          -341.16
+        ],
+        [
+          -1563.29,
+          -312.44
+        ],
+        [
+          -1543.73,
+          -285.44
+        ]
+      ]
+    },
+    {
+      "osm_id": 474991678,
+      "name": "Parliament Secretariat's Office",
+      "source_xy_m": [
+        -1481.51,
+        -257.89
+      ],
+      "nearest_station_m": 2571.7,
+      "distance_from_centerline_m": 63.6,
+      "side": "right",
+      "height_tag": "15",
+      "levels_tag": null,
+      "building": "government",
+      "footprint_xy_m": [
+        [
+          -1454.05,
+          -244.78
+        ],
+        [
+          -1475.03,
+          -229.81
+        ],
+        [
+          -1478.9,
+          -235.23
+        ],
+        [
+          -1491.75,
+          -253.24
+        ],
+        [
+          -1518.88,
+          -291.21
+        ],
+        [
+          -1497.91,
+          -306.19
+        ],
+        [
+          -1454.05,
+          -244.78
+        ]
+      ]
+    },
+    {
+      "osm_id": 492114727,
+      "name": "Suntec City",
+      "source_xy_m": [
+        -605.59,
+        500.38
+      ],
+      "nearest_station_m": 1574.9,
+      "distance_from_centerline_m": 427.7,
+      "side": "right",
+      "height_tag": "20",
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -652.95,
+          472.97
+        ],
+        [
+          -633.26,
+          462.13
+        ],
+        [
+          -628.42,
+          459.46
+        ],
+        [
+          -622.03,
+          461.74
+        ],
+        [
+          -608.64,
+          466.53
+        ],
+        [
+          -602.17,
+          478.31
+        ],
+        [
+          -592.46,
+          496.03
+        ],
+        [
+          -574.01,
+          485.91
+        ],
+        [
+          -559.37,
+          477.88
+        ],
+        [
+          -558.67,
+          479.51
+        ],
+        [
+          -538.89,
+          514.02
+        ],
+        [
+          -568.04,
+          530.91
+        ],
+        [
+          -575.02,
+          518.52
+        ],
+        [
+          -589.48,
+          527.66
+        ],
+        [
+          -596.3,
+          552.93
+        ],
+        [
+          -586.86,
+          570.98
+        ],
+        [
+          -640.11,
+          556.18
+        ],
+        [
+          -652.23,
+          535.37
+        ],
+        [
+          -680.03,
+          487.65
+        ],
+        [
+          -652.95,
+          472.97
+        ]
+      ]
+    },
+    {
+      "osm_id": 612174812,
+      "name": "Grand Park City Hall",
+      "source_xy_m": [
+        -1553.76,
+        147.08
+      ],
+      "nearest_station_m": 2288.6,
+      "distance_from_centerline_m": 310.9,
+      "side": "right",
+      "height_tag": "0",
+      "levels_tag": null,
+      "building": "hotel",
+      "footprint_xy_m": [
+        [
+          -1605.26,
+          122.29
+        ],
+        [
+          -1583.84,
+          161.83
+        ],
+        [
+          -1580.76,
+          167.48
+        ],
+        [
+          -1578.27,
+          172.08
+        ],
+        [
+          -1570.75,
+          185.96
+        ],
+        [
+          -1553.82,
+          176.79
+        ],
+        [
+          -1552.15,
+          179.88
+        ],
+        [
+          -1499.34,
+          151.26
+        ],
+        [
+          -1508.55,
+          134.29
+        ],
+        [
+          -1511.24,
+          129.32
+        ],
+        [
+          -1514.1,
+          124.02
+        ],
+        [
+          -1535.54,
+          84.49
+        ],
+        [
+          -1605.26,
+          122.29
+        ]
+      ]
+    },
+    {
+      "osm_id": 679034072,
+      "name": "Da Paolo Gastronomia",
+      "source_xy_m": [
+        -503.28,
+        -602.26
+      ],
+      "nearest_station_m": 4337.9,
+      "distance_from_centerline_m": 374.5,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -506.47,
+          -607.31
+        ],
+        [
+          -509.63,
+          -600.67
+        ],
+        [
+          -498.03,
+          -594.86
+        ],
+        [
+          -495.8,
+          -601.17
+        ],
+        [
+          -506.47,
+          -607.31
+        ]
+      ]
+    },
+    {
+      "osm_id": 692103122,
+      "name": "Singtel Waterfront Theatre",
+      "source_xy_m": [
+        -799.83,
+        -249.89
+      ],
+      "nearest_station_m": 3803.7,
+      "distance_from_centerline_m": 69.2,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          -816.2,
+          -236.29
+        ],
+        [
+          -817.07,
+          -248.71
+        ],
+        [
+          -817.13,
+          -249.51
+        ],
+        [
+          -817.22,
+          -250.74
+        ],
+        [
+          -818.28,
+          -265.77
+        ],
+        [
+          -749.3,
+          -270.64
+        ],
+        [
+          -747.22,
+          -241.17
+        ],
+        [
+          -816.2,
+          -236.29
+        ]
+      ]
+    },
+    {
+      "osm_id": 723676572,
+      "name": "Masjid Al-Burhani",
+      "source_xy_m": [
+        -1540.6,
+        223.98
+      ],
+      "nearest_station_m": 2208.8,
+      "distance_from_centerline_m": 337.2,
+      "side": "right",
+      "height_tag": "13",
+      "levels_tag": null,
+      "building": "mosque",
+      "footprint_xy_m": [
+        [
+          -1556.24,
+          236.67
+        ],
+        [
+          -1558.65,
+          232.03
+        ],
+        [
+          -1560.68,
+          228.09
+        ],
+        [
+          -1508.11,
+          200.92
+        ],
+        [
+          -1503.68,
+          209.5
+        ],
+        [
+          -1556.24,
+          236.67
+        ]
+      ]
+    },
+    {
+      "osm_id": 742205653,
+      "name": "Parkroyal Collection Marina Bay",
+      "source_xy_m": [
+        -818.58,
+        6.0
+      ],
+      "nearest_station_m": 1511.1,
+      "distance_from_centerline_m": 106.3,
+      "side": "left",
+      "height_tag": "0",
+      "levels_tag": null,
+      "building": "hotel",
+      "footprint_xy_m": [
+        [
+          -819.41,
+          56.27
+        ],
+        [
+          -750.91,
+          14.59
+        ],
+        [
+          -758.13,
+          2.35
+        ],
+        [
+          -763.73,
+          -7.13
+        ],
+        [
+          -785.46,
+          -43.93
+        ],
+        [
+          -809.0,
+          -30.52
+        ],
+        [
+          -826.46,
+          -43.27
+        ],
+        [
+          -844.46,
+          -32.23
+        ],
+        [
+          -845.65,
+          -12.35
+        ],
+        [
+          -843.85,
+          -0.94
+        ],
+        [
+          -897.78,
+          30.12
+        ],
+        [
+          -877.33,
+          88.72
+        ],
+        [
+          -819.41,
+          56.27
+        ]
+      ]
+    },
+    {
+      "osm_id": 747734200,
+      "name": "Millenia Walk",
+      "source_xy_m": [
+        -531.58,
+        139.99
+      ],
+      "nearest_station_m": 1259.9,
+      "distance_from_centerline_m": 136.3,
+      "side": "right",
+      "height_tag": "46.5",
+      "levels_tag": "3",
+      "building": "yes;retail",
+      "footprint_xy_m": [
+        [
+          -587.56,
+          179.63
+        ],
+        [
+          -587.48,
+          180.78
+        ],
+        [
+          -593.89,
+          181.11
+        ],
+        [
+          -596.03,
+          181.23
+        ],
+        [
+          -596.07,
+          180.4
+        ],
+        [
+          -599.42,
+          180.08
+        ],
+        [
+          -604.2,
+          179.59
+        ],
+        [
+          -604.17,
+          181.53
+        ],
+        [
+          -612.83,
+          181.86
+        ],
+        [
+          -613.83,
+          179.59
+        ],
+        [
+          -631.99,
+          183.72
+        ],
+        [
+          -632.02,
+          182.93
+        ],
+        [
+          -642.69,
+          183.38
+        ],
+        [
+          -644.93,
+          183.46
+        ],
+        [
+          -644.98,
+          182.19
+        ],
+        [
+          -655.24,
+          182.68
+        ],
+        [
+          -655.16,
+          184.12
+        ],
+        [
+          -660.7,
+          184.37
+        ],
+        [
+          -673.79,
+          184.94
+        ],
+        [
+          -674.87,
+          181.3
+        ],
+        [
+          -678.26,
+          170.59
+        ],
+        [
+          -661.51,
+          169.98
+        ],
+        [
+          -661.65,
+          167.46
+        ],
+        [
+          -643.34,
+          166.61
+        ],
+        [
+          -623.06,
+          165.67
+        ],
+        [
+          -602.51,
+          164.65
+        ],
+        [
+          -602.67,
+          160.9
+        ],
+        [
+          -562.68,
+          159.11
+        ],
+        [
+          -531.99,
+          157.65
+        ],
+        [
+          -532.79,
+          140.41
+        ],
+        [
+          -535.59,
+          80.23
+        ],
+        [
+          -535.81,
+          75.5
+        ],
+        [
+          -535.85,
+          74.79
+        ],
+        [
+          -535.91,
+          73.19
+        ],
+        [
+          -536.08,
+          69.53
+        ],
+        [
+          -536.36,
+          63.72
+        ],
+        [
+          -536.48,
+          61.12
+        ],
+        [
+          -536.72,
+          55.94
+        ],
+        [
+          -537.01,
+          49.67
+        ],
+        [
+          -537.3,
+          43.51
+        ],
+        [
+          -537.63,
+          36.35
+        ],
+        [
+          -534.66,
+          36.22
+        ],
+        [
+          -505.73,
+          34.97
+        ],
+        [
+          -505.06,
+          29.96
+        ],
+        [
+          -504.67,
+          27.05
+        ],
+        [
+          -503.47,
+          18.21
+        ],
+        [
+          -487.83,
+          17.56
+        ],
+        [
+          -488.31,
+          21.04
+        ],
+        [
+          -489.09,
+          26.58
+        ],
+        [
+          -490.1,
+          34.29
+        ],
+        [
+          -487.93,
+          34.2
+        ],
+        [
+          -484.34,
+          34.05
+        ],
+        [
+          -480.58,
+          33.88
+        ],
+        [
+          -466.35,
+          33.26
+        ],
+        [
+          -464.83,
+          33.21
+        ],
+        [
+          -463.05,
+          33.13
+        ],
+        [
+          -459.24,
+          32.96
+        ],
+        [
+          -459.67,
+          22.36
+        ],
+        [
+          -448.54,
+          21.81
+        ],
+        [
+          -442.44,
+          24.47
+        ],
+        [
+          -434.24,
+          28.04
+        ],
+        [
+          -429.17,
+          30.21
+        ],
+        [
+          -429.01,
+          33.71
+        ],
+        [
+          -425.92,
+          35.09
+        ],
+        [
+          -416.12,
+          39.43
+        ],
+        [
+          -414.6,
+          73.83
+        ],
+        [
+          -443.05,
+          75.23
+        ],
+        [
+          -447.88,
+          75.46
+        ],
+        [
+          -462.53,
+          83.62
+        ],
+        [
+          -477.12,
+          91.74
+        ],
+        [
+          -479.35,
+          92.98
+        ],
+        [
+          -480.75,
+          93.76
+        ],
+        [
+          -481.46,
+          94.15
+        ],
+        [
+          -482.58,
+          94.78
+        ],
+        [
+          -488.49,
+          98.07
+        ],
+        [
+          -486.78,
+          137.68
+        ],
+        [
+          -486.66,
+          140.47
+        ],
+        [
+          -486.31,
+          140.45
+        ],
+        [
+          -485.51,
+          159.8
+        ],
+        [
+          -499.14,
+          167.47
+        ],
+        [
+          -499.09,
+          169.77
+        ],
+        [
+          -499.0,
+          171.8
+        ],
+        [
+          -498.58,
+          180.67
+        ],
+        [
+          -498.11,
+          190.46
+        ],
+        [
+          -497.59,
+          201.44
+        ],
+        [
+          -497.38,
+          208.47
+        ],
+        [
+          -497.33,
+          209.78
+        ],
+        [
+          -492.44,
+          218.54
+        ],
+        [
+          -489.96,
+          218.45
+        ],
+        [
+          -487.08,
+          218.34
+        ],
+        [
+          -485.59,
+          221.01
+        ],
+        [
+          -485.18,
+          220.98
+        ],
+        [
+          -482.69,
+          225.74
+        ],
+        [
+          -481.42,
+          252.77
+        ],
+        [
+          -483.92,
+          252.89
+        ],
+        [
+          -486.26,
+          253.02
+        ],
+        [
+          -491.16,
+          253.25
+        ],
+        [
+          -498.3,
+          253.59
+        ],
+        [
+          -502.11,
+          253.77
+        ],
+        [
+          -511.41,
+          254.23
+        ],
+        [
+          -514.06,
+          254.35
+        ],
+        [
+          -525.24,
+          254.89
+        ],
+        [
+          -527.16,
+          254.98
+        ],
+        [
+          -549.25,
+          256.06
+        ],
+        [
+          -556.51,
+          256.4
+        ],
+        [
+          -557.76,
+          256.47
+        ],
+        [
+          -561.58,
+          256.64
+        ],
+        [
+          -547.25,
+          203.91
+        ],
+        [
+          -528.78,
+          202.91
+        ],
+        [
+          -530.29,
+          171.26
+        ],
+        [
+          -545.87,
+          172.07
+        ],
+        [
+          -546.27,
+          173.3
+        ],
+        [
+          -558.18,
+          171.85
+        ],
+        [
+          -558.29,
+          172.71
+        ],
+        [
+          -566.66,
+          173.08
+        ],
+        [
+          -566.44,
+          179.66
+        ],
+        [
+          -575.36,
+          180.11
+        ],
+        [
+          -575.4,
+          179.03
+        ],
+        [
+          -587.56,
+          179.63
+        ]
+      ]
+    },
+    {
+      "osm_id": 1492514975,
+      "name": "NS Square",
+      "source_xy_m": [
+        -544.78,
+        -294.58
+      ],
+      "nearest_station_m": 4054.9,
+      "distance_from_centerline_m": 99.2,
+      "side": "right",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "construction",
+      "footprint_xy_m": [
+        [
+          -709.26,
+          -227.0
+        ],
+        [
+          -727.25,
+          -243.06
+        ],
+        [
+          -704.27,
+          -260.93
+        ],
+        [
+          -700.8,
+          -261.68
+        ],
+        [
+          -699.21,
+          -287.9
+        ],
+        [
+          -698.24,
+          -293.49
+        ],
+        [
+          -694.99,
+          -295.63
+        ],
+        [
+          -601.93,
+          -293.85
+        ],
+        [
+          -507.42,
+          -333.26
+        ],
+        [
+          -495.33,
+          -383.89
+        ],
+        [
+          -489.45,
+          -405.25
+        ],
+        [
+          -488.29,
+          -405.04
+        ],
+        [
+          -486.32,
+          -412.0
+        ],
+        [
+          -456.4,
+          -410.01
+        ],
+        [
+          -456.52,
+          -409.13
+        ],
+        [
+          -455.19,
+          -408.72
+        ],
+        [
+          -455.07,
+          -409.63
+        ],
+        [
+          -453.54,
+          -409.43
+        ],
+        [
+          -455.15,
+          -404.04
+        ],
+        [
+          -454.28,
+          -403.8
+        ],
+        [
+          -456.72,
+          -396.0
+        ],
+        [
+          -455.9,
+          -396.04
+        ],
+        [
+          -470.53,
+          -346.17
+        ],
+        [
+          -450.49,
+          -314.11
+        ],
+        [
+          -466.26,
+          -304.08
+        ],
+        [
+          -477.27,
+          -321.89
+        ],
+        [
+          -482.35,
+          -302.33
+        ],
+        [
+          -470.53,
+          -281.65
+        ],
+        [
+          -455.77,
+          -270.67
+        ],
+        [
+          -455.14,
+          -270.2
+        ],
+        [
+          -460.19,
+          -263.87
+        ],
+        [
+          -455.04,
+          -253.89
+        ],
+        [
+          -457.86,
+          -249.12
+        ],
+        [
+          -448.98,
+          -234.47
+        ],
+        [
+          -478.54,
+          -213.72
+        ],
+        [
+          -541.67,
+          -209.93
+        ],
+        [
+          -544.91,
+          -206.29
+        ],
+        [
+          -570.8,
+          -203.75
+        ],
+        [
+          -574.71,
+          -199.04
+        ],
+        [
+          -587.94,
+          -198.29
+        ],
+        [
+          -593.8,
+          -203.42
+        ],
+        [
+          -599.98,
+          -203.61
+        ],
+        [
+          -603.12,
+          -206.53
+        ],
+        [
+          -714.02,
+          -200.18
+        ],
+        [
+          -714.35,
+          -204.57
+        ],
+        [
+          -719.69,
+          -206.77
+        ],
+        [
+          -709.26,
+          -227.0
+        ]
+      ]
+    }
+  ],
+  "dimensions_policy": "OSM XY footprints are registered geographic evidence. Tagged height and levels are retained verbatim; missing/zero heights are unknown. Roof/detail sizes and sparse-vegetation spacing in native authoring are visual estimates pending cockpit comparison.",
+  "source_registration": {
+    "method": "Nearest native centerline sample after retained local tangent projection and uniform scale.",
+    "station_error_bound_m": 8,
+    "landmark_extent_note": "Centroid station can fall on adjacent arm of circuit; use actual ring and terrain, not centroid station alone. Overlapping compound roof footprints must never become solid road obstructions."
+  },
+  "elevation_review": {
+    "retained_dataset": "Copernicus DEM GLO-90",
+    "retained_relief_m": 20.046,
+    "status": "The native racing-deck profile now follows registered published topography controls. Raw DEM remains for source comparison and scenery terrain.",
+    "findings": [
+      "Retained GLO-90 surface heights are not road levels amid buildings/trees; no city rooftop spikes in road.",
+      "OSMheight0is unknown placeholder on several landmarks, not evidence to omit skyline.",
+      "Flyer retail footprint height0does not represent wheel; Esplanade compound and35mroofparts require domes, not a single rectangular extrusion."
+    ],
+    "replacement_profile": {
+      "schema_version": 1,
+      "provider": "Formula 1 published 2016 topography diagram",
+      "article_url": "https://www.formula1.com/en/latest/article/highs-and-lows-which-f1-track-has-the-most-elevation-changes-.7I9JEcBw3R2AqXbnJ6hyvc",
+      "image_url": "https://media.formula1.com/image/upload/c_lfill,w_1800/q_auto/v1740000001/content/dam/fom-website/manual/Misc/Topography/singapore.webp",
+      "image_sha256": "71b52a94472f84ca0684435d3ec70f7a8609f1d9b714d0d80ba4043142bbe3d0",
+      "reference_image_shipped": false,
+      "relief_m": 5.3,
+      "vertical_datum": "Relative to the published profile minimum; absolute diagram altitude is not used.",
+      "native_station_controls_m": [
+        [
+          0,
+          1.4
+        ],
+        [
+          323,
+          1.4
+        ],
+        [
+          400,
+          1.2
+        ],
+        [
+          486,
+          1.2
+        ],
+        [
+          690,
+          0
+        ],
+        [
+          877,
+          1.4
+        ],
+        [
+          1328,
+          1.6
+        ],
+        [
+          1702,
+          1.9
+        ],
+        [
+          1922,
+          2.1
+        ],
+        [
+          2113,
+          2.9
+        ],
+        [
+          2572,
+          2.8
+        ],
+        [
+          2687,
+          2.3
+        ],
+        [
+          2795,
+          2.9
+        ],
+        [
+          2966,
+          4.8
+        ],
+        [
+          3170,
+          5.3
+        ],
+        [
+          3513,
+          2.1
+        ],
+        [
+          3768,
+          1.8
+        ],
+        [
+          4246,
+          1.4
+        ],
+        [
+          4346,
+          1.3
+        ],
+        [
+          4621,
+          1.4
+        ],
+        [
+          4717,
+          1.4
+        ],
+        [
+          4940,
+          1.4
+        ]
+      ],
+      "interpolation": "Piecewise monotone cubic Hermite. Interior Fritsch-Carlson harmonic slopes; flat SF seam. No uniform rescaling of the previous DEM.",
+      "vertical_uncertainty_m": 1.0,
+      "station_uncertainty_m": 50.0,
+      "method": "Read relative heights from the published numerical extremum labels and drawn trace, then register individual official corners to retained native centerline geometry using FIA maps. Intermediate heights are graphical estimates, not measurements.",
+      "registration_notes": "The old20.046mCityHallpeak near2408m is inconsistent with the F1diagram5.3mrange. The real profile has a modest bridge hump betweenT13andT14. Old2016T1–15are retained; currentT16–19correspond to oldT20–23. The new bypass between oldT15/T20is interpolated nearly flat, not copied from removed corners.",
+      "supersedes": "Coarse GLO-90 road profile remains retained as source evidence, not as the racing deck. No new lidar or survey is claimed.",
+      "controls_file": "elevation-corrections.json"
+    }
+  },
+  "primary_sources": [
+    {
+      "title": "FIA Singapore GP2025map",
+      "url": "https://www.fia.com/system/files/decision-document/2025_singapore_grand_prix_-_event_notes_-_circuit_map_pit_lane_emergency_exits_map_and_quarantine_zone.pdf",
+      "supports": "Current19-turn route and official pit/exit layout."
+    },
+    {
+      "title": "Singapore GP2024promoter map",
+      "url": "https://s3.eu-central-1.amazonaws.com/gpt-v2-img/img/events/en_7065_2024_CircuitParkMap.pdf",
+      "supports": "Operator-produced grandstand and landmark map; hosted distributor copy, date explicit."
+    },
+    {
+      "title": "Singapore Flyer operator dimensions",
+      "url": "https://www.singaporeflyer.com/en/fun-facts",
+      "supports": "150 m wheel diameter, 165 m total height, 28 capsules, each 4 by 7 m."
+    },
+    {
+      "title": "Arup Marina Bay Sands engineering project",
+      "url": "https://www.arup.com/projects/marina-bay-sands-integrated-resort/",
+      "supports": "Three towers and the 340 by 38 m SkyPark, 200 m above ground."
+    },
+    {
+      "title": "Esplanade architecture",
+      "url": "https://www.esplanade.com/about-us/our-story/architecture",
+      "supports": "Two glazed shell roofs with projecting aluminium sunshades."
+    }
+  ],
+  "acceptance": {
+    "required": [
+      "Cockpit contact sheet covering all sectors, including each landmark approach and both road edges.",
+      "No floating tiles, barriers crossing drivable lane, closed escape mouths, or faceted long curves.",
+      "Compare curb colour/extent, runoff surface/depth, fencing, tree placement and skyline per sector against timestamps.",
+      "Review night illumination for asphalt visibility and dark sky, or daylight landscape contrast as appropriate."
+    ],
+    "status": "Reference inventory and scene recipe authored; native runtime acceptance is separate."
+  },
+  "authored_edges": {
+    "side_convention": "Numeric+1 is driver right, -1 is driver left. Shader runoff widths clamp to exported collision shoulders.",
+    "registration": "Intervals visually estimated against mapped native curves and supplied video; not a surveyed curb or safety-installation trace.",
+    "kerbs": [
+      {
+        "start_m": 290,
+        "end_m": 345,
+        "side": -1
+      },
+      {
+        "start_m": 375,
+        "end_m": 425,
+        "side": 1
+      },
+      {
+        "start_m": 450,
+        "end_m": 510,
+        "side": -1
+      },
+      {
+        "start_m": 845,
+        "end_m": 905,
+        "side": 1
+      },
+      {
+        "start_m": 1290,
+        "end_m": 1360,
+        "side": 1
+      },
+      {
+        "start_m": 1675,
+        "end_m": 1730,
+        "side": -1
+      },
+      {
+        "start_m": 1890,
+        "end_m": 1950,
+        "side": 1
+      },
+      {
+        "start_m": 2080,
+        "end_m": 2140,
+        "side": -1
+      },
+      {
+        "start_m": 2535,
+        "end_m": 2600,
+        "side": -1
+      },
+      {
+        "start_m": 2655,
+        "end_m": 2715,
+        "side": 1
+      },
+      {
+        "start_m": 2760,
+        "end_m": 2820,
+        "side": -1
+      },
+      {
+        "start_m": 2920,
+        "end_m": 3010,
+        "side": -1
+      },
+      {
+        "start_m": 3475,
+        "end_m": 3540,
+        "side": 1
+      },
+      {
+        "start_m": 3730,
+        "end_m": 3795,
+        "side": -1
+      },
+      {
+        "start_m": 4205,
+        "end_m": 4280,
+        "side": 1
+      },
+      {
+        "start_m": 4315,
+        "end_m": 4375,
+        "side": -1
+      },
+      {
+        "start_m": 4570,
+        "end_m": 4650,
+        "side": -1
+      },
+      {
+        "start_m": 4670,
+        "end_m": 4755,
+        "side": -1
+      }
+    ],
+    "runoffs": [
+      {
+        "start_m": 265,
+        "end_m": 355,
+        "side": 1,
+        "requested_width_m": 8,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 440,
+        "end_m": 525,
+        "side": 1,
+        "requested_width_m": 8,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 1645,
+        "end_m": 1750,
+        "side": 1,
+        "requested_width_m": 8,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 2050,
+        "end_m": 2160,
+        "side": 1,
+        "requested_width_m": 6,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 2900,
+        "end_m": 3040,
+        "side": 1,
+        "requested_width_m": 6,
+        "material": "Runoff"
+      },
+      {
+        "start_m": 4540,
+        "end_m": 4680,
+        "side": 1,
+        "requested_width_m": 7,
+        "material": "Runoff"
+      }
+    ],
+    "physical_escape_review": "Large terminal escape mouths still need explicit footprint geometry and matching collision-barrier changes. Surface ribbons must not extend through existing collision walls."
+  },
+  "native_scene_module": "tools/venues/singapore.py",
+  "native_scene_status": "Authored geometry and type checks complete. Native cockpit review and collision acceptance are pending.",
+  "scenery_grounding": "Mapped buildings use the lowest footprint terrain level. Stand fronts have retaining bases and rear supports extend to sampled terrain. Trees avoid all road arms and mapped building footprints.",
+  "additional_authoritative_data": {
+    "title": "SLA OneMap",
+    "url": "https://geospatial.sla.gov.sg/geospatial-for-you/onemap/",
+    "status": "Authoritative building/location map for checking urban registration. No open racing-deck height series verified.",
+    "limitation": "A map platform is not evidence that a suitable downloadable DTM is available."
+  },
+  "source_conflicts": "Retained city footprints can cross the modeled road corridor. Native facade authoring clips ground walls outside the road mask plus 1.2 m and records the removed area; these are disclosed registration conflicts, not validated building surveys.",
+  "braking_markers": {
+    "side_convention": "Numeric+1 is driver right, -1 is driver left. Board sequences are on the outside of the main braking approach.",
+    "placement_policy": "Heavy braking approaches selected from mapped official corner sequence and indexed reference sectors. Stations and exact event mounting locations remain estimates. Standard150/100/50boards are shortened to100/50on selected compact street-corner approaches.",
+    "native_station_uncertainty_m": 40,
+    "approaches": [
+      {
+        "official_corner": "T1",
+        "apex_station_m": 323,
+        "side": 1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          608,
+          610,
+          660,
+          663
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T3",
+        "apex_station_m": 486,
+        "side": 1,
+        "distances_m": [
+          100,
+          50
+        ],
+        "reference_seconds": [
+          614,
+          618,
+          702
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T5",
+        "apex_station_m": 877,
+        "side": -1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          630,
+          711
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T7 Raffles Boulevard braking",
+        "apex_station_m": 1702,
+        "side": 1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          842.38,
+          740.27
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T10 Padang exit",
+        "apex_station_m": 2572,
+        "side": 1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          636,
+          639,
+          675,
+          678
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T13 Fullerton hairpin",
+        "apex_station_m": 2966,
+        "side": 1,
+        "distances_m": [
+          100,
+          50
+        ],
+        "reference_seconds": [
+          642,
+          645,
+          646,
+          681,
+          684
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T14 Esplanade Drive braking",
+        "apex_station_m": 3513,
+        "side": -1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          648,
+          651,
+          687,
+          690
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T16 new waterfront straight end",
+        "apex_station_m": 4246,
+        "side": -1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          1046.6,
+          1250.81
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      }
+    ]
+  },
+  "barrier_branding": {
+    "coordinate_frame": "Native source station metres; numerical +1 is driver right and -1 is driver left.",
+    "artwork": "Original typeset event panels with observed identity and palette; no video pixels or extracted game textures are shipped.",
+    "registration": "Wall identities are visible in the listed sparse reference frames. Native intervals are estimated from corner and landmark registration, with approximately 75 m endpoint uncertainty; edited playback is not treated as a linear station clock.",
+    "unbranded_sections": "Retain bare Armco and concrete outside these explicit bands. Unsupported legible identities are left without a substitute sponsor. A sponsor bridge alone is not evidence for a matching roadside band.",
+    "ranges": [
+      {
+        "start_m": 4710,
+        "end_m": 4940,
+        "side": -1,
+        "material": "PanelSingapore",
+        "location": "Pit straight garage-side wall",
+        "observed_identity": "SINGAPORE AIRLINES",
+        "reviewed_video_seconds": [
+          530,
+          534,
+          538,
+          590,
+          594,
+          654,
+          693
+        ]
+      },
+      {
+        "start_m": 0,
+        "end_m": 170,
+        "side": -1,
+        "material": "PanelSingapore",
+        "location": "Pit straight garage-side wall",
+        "observed_identity": "SINGAPORE AIRLINES",
+        "reviewed_video_seconds": [
+          530,
+          534,
+          538,
+          590,
+          594,
+          654,
+          693
+        ]
+      },
+      {
+        "start_m": 4710,
+        "end_m": 4940,
+        "side": 1,
+        "material": "PanelSingapore",
+        "location": "Pit straight grandstand wall",
+        "observed_identity": "SINGAPORE AIRLINES",
+        "reviewed_video_seconds": [
+          530,
+          534,
+          538,
+          594,
+          598,
+          657,
+          696
+        ]
+      },
+      {
+        "start_m": 0,
+        "end_m": 170,
+        "side": 1,
+        "material": "PanelSingapore",
+        "location": "Pit straight grandstand wall",
+        "observed_identity": "SINGAPORE AIRLINES",
+        "reviewed_video_seconds": [
+          530,
+          534,
+          538,
+          594,
+          598,
+          657,
+          696
+        ]
+      },
+      {
+        "start_m": 780,
+        "end_m": 920,
+        "side": -1,
+        "material": "PanelYellow",
+        "location": "T5 Raffles approach and outside",
+        "observed_identity": "PIRELLI",
+        "reviewed_video_seconds": [
+          630,
+          711
+        ]
+      }
+    ]
+  }
+}

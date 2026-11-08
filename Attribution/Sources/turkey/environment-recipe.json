@@ -1,0 +1,779 @@
+{
+  "schema_version": 1,
+  "circuit": "turkey",
+  "appearance": "Dry bright daylight, rolling grassy horizon.",
+  "terrain_character": "Strong rolling grass hills, scrub/broadleaf patches, distant mixed tree belt; wide gravel escape zones and open sky.",
+  "distinctive_geometry": [
+    "The main grandstand has long red and blue crowd terraces beneath a thin dark cantilevered roof and exposed steel ribs.",
+    "The pit and hospitality buildings have angular stacked white or grey slabs, recessed glazing and projecting control-room volumes.",
+    "The long multi-apex T8 follows an open grass hillside. Its broad outer gravel and connected red-white apexes matter as much as the buildings."
+  ],
+  "sectors": [
+    {
+      "id": "turkey-01",
+      "native_station_m": [
+        0,
+        700
+      ],
+      "name": "Pitstraight, downhillT1 and uphillT2",
+      "reviewed_video_seconds": [
+        221.38,
+        329,
+        333,
+        337,
+        341
+      ],
+      "observed": "Long grandstand opposite the pit complex. The broad left T1 entry descends sharply, with gravel outside and a red-white inside kerb. The road climbs toward T2. Grass banks and distant protection should preserve these changing sightlines.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "turkey-02",
+      "native_station_m": [
+        700,
+        1450
+      ],
+      "name": "T3–5 hillside changes",
+      "reviewed_video_seconds": [
+        345,
+        349,
+        353,
+        357,
+        273.47
+      ],
+      "observed": "Green and brown grass slopes, low broadleaf tree groups, and broad grass or gravel escape areas. Kerbs have green painted outer strips. The linked corners rise and fall with the hills, with Armco and mesh behind the escape areas.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "turkey-03",
+      "native_station_m": [
+        1450,
+        2050
+      ],
+      "name": "T6–7 descent",
+      "reviewed_video_seconds": [
+        117.2,
+        361,
+        365
+      ],
+      "observed": "A fast descent leads to a right corner. The grass bank sets a high horizon, with a distant stand above the barrier. Broad red-white kerbs, green paint and light gravel frame the braking zone.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "turkey-04",
+      "native_station_m": [
+        2050,
+        2850
+      ],
+      "name": "T8 multi-apexleft",
+      "reviewed_video_seconds": [
+        169.29,
+        265,
+        269,
+        273,
+        277,
+        281,
+        285,
+        533.92
+      ],
+      "observed": "The long multi-apex left follows an open hillside. A red-white inside kerb connects the apexes; wide gravel and a grass bank sit outside. Keep the outside protection curved and behind the escape area.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "turkey-05",
+      "native_station_m": [
+        2850,
+        3550
+      ],
+      "name": "T9–10 shortcomplex",
+      "reviewed_video_seconds": [
+        289,
+        293,
+        297,
+        377.65
+      ],
+      "observed": "Downhill braking followed by a left-right change. There are broad green painted aprons, dry grass banks, small marshal posts and distant stands. The reference shows a tall arched crossing nearby; its exact position needs separate registration.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "turkey-06",
+      "native_station_m": [
+        3550,
+        4550
+      ],
+      "name": "T11 fastkink and longstraight",
+      "reviewed_video_seconds": [
+        301,
+        305,
+        309,
+        313,
+        586.01,
+        690.19
+      ],
+      "observed": "An undulating straight and fast kink have broad grass verges and Armco set back from the road. The hill partly hides the horizon. Paddock buildings and a large roof stand appear on the approach, with distance boards before T12.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "turkey-07",
+      "native_station_m": [
+        4550,
+        5050
+      ],
+      "name": "T12–14 finalslowcomplex",
+      "reviewed_video_seconds": [
+        317,
+        321,
+        325,
+        742.28,
+        794.37
+      ],
+      "observed": "Tight left-right-left corners sit beside the pit and main stand. Paved and gravel escape areas surround the red-white kerbs and green paint. The control and hospitality buildings have angular stacked roofs and recessed glazing.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "turkey-08",
+      "native_station_m": [
+        5050,
+        5338
+      ],
+      "name": "Finalexit toSF",
+      "reviewed_video_seconds": [
+        429.74,
+        329,
+        333
+      ],
+      "observed": "The wide final exit joins the pit straight. A roofed crowd stand faces white garage fronts and projecting slabs. Grid marks and a fenced pit wall define the straight; grass embankments remain visible behind the facilities.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    }
+  ],
+  "mapped_landmarks": [
+    {
+      "osm_id": 295742112,
+      "name": "İstanbul Park",
+      "source_xy_m": [
+        62.81,
+        86.78
+      ],
+      "nearest_station_m": 79.9,
+      "distance_from_centerline_m": 72.4,
+      "side": "left",
+      "height_tag": null,
+      "levels_tag": null,
+      "building": "yes",
+      "footprint_xy_m": [
+        [
+          174.84,
+          159.83
+        ],
+        [
+          179.27,
+          138.2
+        ],
+        [
+          196.4,
+          141.7
+        ],
+        [
+          204.8,
+          100.64
+        ],
+        [
+          203.24,
+          100.33
+        ],
+        [
+          201.33,
+          99.94
+        ],
+        [
+          202.3,
+          95.15
+        ],
+        [
+          -99.85,
+          33.9
+        ],
+        [
+          -101.4,
+          40.28
+        ],
+        [
+          -109.08,
+          79.45
+        ],
+        [
+          -91.66,
+          82.99
+        ],
+        [
+          -96.43,
+          106.52
+        ],
+        [
+          -147.92,
+          96.1
+        ],
+        [
+          -145.8,
+          85.6
+        ],
+        [
+          -150.12,
+          84.72
+        ],
+        [
+          -140.25,
+          35.79
+        ],
+        [
+          -136.29,
+          36.59
+        ],
+        [
+          -128.87,
+          -0.3
+        ],
+        [
+          -97.7,
+          5.96
+        ],
+        [
+          -98.16,
+          8.22
+        ],
+        [
+          -96.47,
+          9.21
+        ],
+        [
+          209.47,
+          70.13
+        ],
+        [
+          209.79,
+          68.53
+        ],
+        [
+          240.16,
+          74.73
+        ],
+        [
+          233.56,
+          107.05
+        ],
+        [
+          232.28,
+          113.3
+        ],
+        [
+          238.12,
+          114.49
+        ],
+        [
+          233.68,
+          136.21
+        ],
+        [
+          229.96,
+          135.44
+        ],
+        [
+          222.94,
+          169.68
+        ],
+        [
+          174.84,
+          159.83
+        ]
+      ]
+    }
+  ],
+  "dimensions_policy": "OSM XY footprints are registered geographic evidence. Tagged height and levels are retained verbatim; missing/zero heights are unknown. Roof/detail sizes and sparse-vegetation spacing in native authoring are visual estimates pending cockpit comparison.",
+  "source_registration": {
+    "method": "Nearest native centerline sample after retained local tangent projection and uniform scale.",
+    "station_error_bound_m": 8,
+    "landmark_extent_note": "Centroid station can fall on adjacent arm of circuit; use actual ring and terrain, not centroid station alone. Overlapping compound roof footprints must never become solid road obstructions."
+  },
+  "elevation_review": {
+    "retained_dataset": "Copernicus DEM GLO-90",
+    "retained_relief_m": 35.312,
+    "status": "The native deck now uses the retained higher-resolution GLO-30 centerline profile. Published range conflicts remain disclosed; no range was forced.",
+    "findings": [
+      "RetainedGLO90relief35.3m conflicts with operator about60m; stationlocationsofcrests need onboard/map registration rather than uniform height scaling.",
+      "Original 12 m corner width conflicts with published14.5mminimum. Width14.5–21mtext versus14–21.5mdiagram disagreement is retained."
+    ],
+    "research_file": "elevation-research.json",
+    "replacement_profile": {
+      "schema_version": 1,
+      "provider": "Copernicus DEM GLO-30, retained bounded scenery raster",
+      "source_file": "elevation/scenery_dem.tif",
+      "sha256": "d7d096b3851d8aeb3401bffd6d414a8b11a6fce21e4a482e573e8f0c7a12855a",
+      "relief_m": 40.3352,
+      "vertical_datum": "Relative to the minimum sampled GLO-30 centerline value.",
+      "removed_minimum_m": 108.42707300186157,
+      "interpolation": "Exact native XY centerline inverted to retained WGS84 origin/scale, bilinear raster sampling. Two circular[1,2,1]/4 passes at4m sample spacing. No vertical scale factor.",
+      "uncertainty_m": 3.0,
+      "limitations": "30m digital surface model, not lidar or bare-earth road survey. Canopy and roof influences remain possible. Geographic source pixels are retained with provenance; no reference video pixels redistributed.",
+      "structural_findings": "The higher-resolution crest is atT3near1090m, matching the engineering course diagram, instead of the old1285mcrest.",
+      "research_file": "elevation-research.json"
+    }
+  },
+  "primary_sources": [
+    {
+      "title": "Intercity operator presentation hosted Istanbul Chamber of Commerce",
+      "url": "https://www.ito.org.tr/documents/Duyurular/2022_dokumanlar/vweekend_sunum.pdf",
+      "supports": "5.338km;14corners;about60mrelief;8.145percent maxgradient. Width text14.5–21m, diagram14–21.5m."
+    },
+    {
+      "title": "Current TOSFED operator",
+      "url": "https://tosfedistanbulpark.com/",
+      "supports": "Venue identity,5.338km,14corners and official venue photos."
+    }
+  ],
+  "acceptance": {
+    "required": [
+      "Cockpit contact sheet covering all sectors, including each landmark approach and both road edges.",
+      "No floating tiles, barriers crossing drivable lane, closed escape mouths, or faceted long curves.",
+      "Compare curb colour/extent, runoff surface/depth, fencing, tree placement and skyline per sector against timestamps.",
+      "Review night illumination for asphalt visibility and dark sky, or daylight landscape contrast as appropriate."
+    ],
+    "status": "Reference inventory and scene recipe authored; native runtime acceptance is separate."
+  },
+  "width_profile": {
+    "base_m": 14.5,
+    "straight_m": 17.0,
+    "minimum_m": 14.5,
+    "maximum_m": 21.0,
+    "method": "Operator-published width limits, with station-varying widths visually estimated from supplied onboard. Smooth cubic transitions; not a traced white-line survey.",
+    "source": "https://www.ito.org.tr/documents/Duyurular/2022_dokumanlar/vweekend_sunum.pdf",
+    "controls_m": [
+      [
+        0,
+        17
+      ],
+      [
+        220,
+        17
+      ],
+      [
+        300,
+        18
+      ],
+      [
+        365,
+        16
+      ],
+      [
+        500,
+        15
+      ],
+      [
+        700,
+        14.5
+      ],
+      [
+        1000,
+        16
+      ],
+      [
+        1120,
+        16
+      ],
+      [
+        1250,
+        14.5
+      ],
+      [
+        1450,
+        15
+      ],
+      [
+        1750,
+        15
+      ],
+      [
+        1990,
+        16
+      ],
+      [
+        2200,
+        14.5
+      ],
+      [
+        2550,
+        14.5
+      ],
+      [
+        2850,
+        14.5
+      ],
+      [
+        3200,
+        16
+      ],
+      [
+        3350,
+        17
+      ],
+      [
+        3450,
+        16
+      ],
+      [
+        3700,
+        15
+      ],
+      [
+        4000,
+        15
+      ],
+      [
+        4350,
+        17
+      ],
+      [
+        4600,
+        19
+      ],
+      [
+        4690,
+        21
+      ],
+      [
+        4780,
+        17
+      ],
+      [
+        4850,
+        16
+      ],
+      [
+        4950,
+        16
+      ],
+      [
+        5100,
+        17
+      ],
+      [
+        5338,
+        17
+      ]
+    ],
+    "uncertainty": "Published venue range constrains width. Exact local widths and transition stations remain reference-based authoring estimates."
+  },
+  "authored_edges": {
+    "side_convention": "Numeric+1 is driver right, -1 is driver left. Shader runoff widths clamp to exported collision shoulders.",
+    "registration": "Intervals visually estimated against mapped native curves and supplied video; not a surveyed curb or safety-installation trace.",
+    "kerbs": [
+      {
+        "start_m": 315,
+        "end_m": 405,
+        "side": -1
+      },
+      {
+        "start_m": 500,
+        "end_m": 580,
+        "side": 1
+      },
+      {
+        "start_m": 1040,
+        "end_m": 1130,
+        "side": -1
+      },
+      {
+        "start_m": 1200,
+        "end_m": 1290,
+        "side": 1
+      },
+      {
+        "start_m": 1350,
+        "end_m": 1445,
+        "side": -1
+      },
+      {
+        "start_m": 1950,
+        "end_m": 2050,
+        "side": 1
+      },
+      {
+        "start_m": 2310,
+        "end_m": 2450,
+        "side": -1
+      },
+      {
+        "start_m": 2520,
+        "end_m": 2650,
+        "side": -1
+      },
+      {
+        "start_m": 2720,
+        "end_m": 2860,
+        "side": -1
+      },
+      {
+        "start_m": 3330,
+        "end_m": 3420,
+        "side": -1
+      },
+      {
+        "start_m": 3440,
+        "end_m": 3540,
+        "side": 1
+      },
+      {
+        "start_m": 3940,
+        "end_m": 4080,
+        "side": 1
+      },
+      {
+        "start_m": 4720,
+        "end_m": 4820,
+        "side": -1
+      },
+      {
+        "start_m": 4840,
+        "end_m": 4920,
+        "side": 1
+      },
+      {
+        "start_m": 4940,
+        "end_m": 5045,
+        "side": -1
+      }
+    ],
+    "runoffs": [
+      {
+        "start_m": 275,
+        "end_m": 440,
+        "side": 1,
+        "requested_width_m": 18,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 1000,
+        "end_m": 1160,
+        "side": 1,
+        "requested_width_m": 15,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 1910,
+        "end_m": 2080,
+        "side": -1,
+        "requested_width_m": 14,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 2260,
+        "end_m": 2910,
+        "side": 1,
+        "requested_width_m": 18,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 3280,
+        "end_m": 3440,
+        "side": 1,
+        "requested_width_m": 14,
+        "material": "RunoffGreen"
+      },
+      {
+        "start_m": 3910,
+        "end_m": 4110,
+        "side": -1,
+        "requested_width_m": 13,
+        "material": "RunoffGreen"
+      },
+      {
+        "start_m": 4660,
+        "end_m": 4840,
+        "side": 1,
+        "requested_width_m": 18,
+        "material": "Gravel"
+      },
+      {
+        "start_m": 4910,
+        "end_m": 5070,
+        "side": 1,
+        "requested_width_m": 13,
+        "material": "RunoffGreen"
+      }
+    ],
+    "physical_escape_review": "Large terminal escape mouths still need explicit footprint geometry and matching collision-barrier changes. Surface ribbons must not extend through existing collision walls.",
+    "outer_kerb_paint": "Selected reference-observed kerbs have a 2.6 m green strip from the road edge, leaving green beyond the raised red-white blocks. These strips are independent of the larger outer escape surfaces."
+  },
+  "native_scene_module": "tools/venues/turkey.py",
+  "native_scene_status": "Authored geometry and type checks complete. Native cockpit review and collision acceptance are pending.",
+  "uncertainties": [
+    "Retained raw GLO-90 samples span 109 to 146 m, a 37 m range. Smoothing reduces this to 35.31 m. That 1.69 m loss cannot explain the difference from the operator presentation, which describes about 60 m. No replacement racing-deck profile has been verified."
+  ],
+  "scenery_grounding": "Mapped buildings use the lowest footprint terrain level. Stand fronts have retaining bases and rear supports extend to sampled terrain. Trees avoid all road arms and mapped building footprints.",
+  "additional_authoritative_data": {
+    "title": "HGM elevation product catalogue",
+    "url": "https://www.harita.gov.tr/urunler/yukseklik-verileri-grid/1",
+    "status": "Government catalogue lists 12 m terrain/surface products for public agencies, 30 m terrain and 5 m surface products. No data acquired.",
+    "limitation": "A 5 m surface model includes buildings and canopy; commercial product/licence terms and circuit coverage need verification."
+  },
+  "source_conflicts": "Retained city footprints can cross the modeled road corridor. Native facade authoring clips ground walls outside the road mask plus 1.2 m and records the removed area; these are disclosed registration conflicts, not validated building surveys.",
+  "braking_markers": {
+    "side_convention": "Numeric+1 is driver right, -1 is driver left. Board sequences are on the outside of the main braking approach.",
+    "placement_policy": "Heavy braking approaches selected from mapped official corner sequence and indexed reference sectors. Stations and exact event mounting locations remain estimates. Standard150/100/50boards are shortened to100/50on selected compact street-corner approaches.",
+    "native_station_uncertainty_m": 40,
+    "approaches": [
+      {
+        "official_corner": "T1 downhill left",
+        "apex_station_m": 363,
+        "side": 1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          221.38,
+          329,
+          333,
+          341
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T7 downhill right",
+        "apex_station_m": 2004,
+        "side": -1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          117.2,
+          361,
+          365
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T9 downhill left",
+        "apex_station_m": 3385,
+        "side": 1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          289,
+          293,
+          297
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      },
+      {
+        "official_corner": "T12 back-straight braking",
+        "apex_station_m": 4775,
+        "side": 1,
+        "distances_m": [
+          150,
+          100,
+          50
+        ],
+        "reference_seconds": [
+          313,
+          317,
+          321
+        ],
+        "reference_support": "Approach/corner identity and street or circuit context; individual boards may be obscured or omitted by edited video cuts."
+      }
+    ]
+  },
+  "barrier_branding": {
+    "coordinate_frame": "Native source station metres; numerical +1 is driver right and -1 is driver left.",
+    "artwork": "Original typeset event panels with observed identity and palette; no video pixels or extracted game textures are shipped.",
+    "registration": "Wall identities are visible in the listed sparse reference frames. Native intervals are estimated from corner and landmark registration, with approximately 75 m endpoint uncertainty; edited playback is not treated as a linear station clock.",
+    "unbranded_sections": "Retain bare Armco and concrete outside these explicit bands. Unsupported legible identities are left without a substitute sponsor. A sponsor bridge alone is not evidence for a matching roadside band.",
+    "ranges": [
+      {
+        "start_m": 5130,
+        "end_m": 5338,
+        "side": -1,
+        "material": "PanelPurple",
+        "location": "Pit straight garage-side wall",
+        "observed_identity": "QATAR AIRWAYS",
+        "reviewed_video_seconds": [
+          325,
+          329,
+          333,
+          337
+        ]
+      },
+      {
+        "start_m": 0,
+        "end_m": 230,
+        "side": -1,
+        "material": "PanelPurple",
+        "location": "Pit straight garage-side wall",
+        "observed_identity": "QATAR AIRWAYS",
+        "reviewed_video_seconds": [
+          325,
+          329,
+          333,
+          337
+        ]
+      },
+      {
+        "start_m": 5130,
+        "end_m": 5338,
+        "side": 1,
+        "material": "PanelPurple",
+        "location": "Pit straight grandstand wall",
+        "observed_identity": "QATAR AIRWAYS",
+        "reviewed_video_seconds": [
+          325,
+          329,
+          333,
+          337
+        ]
+      },
+      {
+        "start_m": 0,
+        "end_m": 230,
+        "side": 1,
+        "material": "PanelPurple",
+        "location": "Pit straight grandstand wall",
+        "observed_identity": "QATAR AIRWAYS",
+        "reviewed_video_seconds": [
+          325,
+          329,
+          333,
+          337
+        ]
+      },
+      {
+        "start_m": 4730,
+        "end_m": 5060,
+        "side": 1,
+        "material": "PanelPurple",
+        "location": "T12 braking escape and final complex",
+        "observed_identity": "QATAR AIRWAYS",
+        "reviewed_video_seconds": [
+          317,
+          321,
+          325
+        ]
+      },
+      {
+        "start_m": 3550,
+        "end_m": 3770,
+        "side": 1,
+        "material": "PanelGreen",
+        "location": "T10 exit wall and bridge approach",
+        "observed_identity": "aramco",
+        "reviewed_video_seconds": [
+          297,
+          301
+        ]
+      }
+    ]
+  }
+}

@@ -14,14 +14,17 @@
   "heading_direction_test": false,
   "crossings": 0,
   "aspect": 0.81707,
-  "relief_m": 6.873,
+  "relief_m": 2.6,
   "elevation_datum_removed_m": 2.0,
   "samples": 1327,
   "turns_detected": 20,
-  "turns_published": 16,
+  "turns_published": 14,
   "buildings": 21,
   "barrier_vertices": 282,
   "deck": null,
   "banks": [],
-  "osm_sha256": "efc376fc30efc76664981287d43141bc4cd2dd92e700d4bc056ec0ffcc0ebb3b"
+  "osm_sha256": "efc376fc30efc76664981287d43141bc4cd2dd92e700d4bc056ec0ffcc0ebb3b",
+  "elevation_recipe": "elevation-corrections.json",
+  "turns_registered": 14,
+  "layout_review": "layout-review.json"
 }
