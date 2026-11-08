@@ -265,9 +265,10 @@ def _building_part(scene: CircuitScene, footprint: Polygon, height: float, facad
 def trees(scene: CircuitScene, start: float, end: float, side: int, *, setback: float = 12,
           spacing: float = 13, rows: int = 2, height: float = 11, conifers: bool = False,
           palms: bool = False) -> None:
+    conifer_fraction = 0.72 if scene.slug == 'austria' else 0.62
     scene.vegetation.append({'start_m': start, 'end_m': end, 'side': side,
                              'setback_m': setback, 'rows': rows,
-                             'species_form': 'conifer' if conifers else 'palm' if palms else 'broadleaf',
+                             'species_form': 'mixed conifer/broadleaf' if conifers else 'palm' if palms else 'broadleaf',
                              'placement_status': 'Reference-observed sector bands; individual positions reconstructed outside protection.'})
     rng = random.Random(round(start * 13 + side * 47))
     water_shapes = water_shapes_at(scene) + scene.water_shapes + scene.extra_corridors
@@ -286,8 +287,9 @@ def trees(scene: CircuitScene, start: float, end: float, side: int, *, setback: 
                 continue
             base = (p[0], p[1], scene.ground(p[0], p[1]))
             h = height * rng.uniform(.8, 1.25)
-            if conifers:
-                conifer(scene, base, h)
+            seed = round(station * 37 + row * 193 + side * 17)
+            if conifers and random.Random(seed).random() < conifer_fraction:
+                conifer(scene, base, h, seed)
             elif palms:
                 scene.palm(base, h)
             else:
@@ -295,17 +297,45 @@ def trees(scene: CircuitScene, start: float, end: float, side: int, *, setback: 
         station += spacing + rng.uniform(-2, 2)
 
 
-def conifer(scene: CircuitScene, base: Point, height: float) -> None:
-    scene.beam('Building_Trees', 'Trunk', base, add(base, (0, 0, height * .8)), .22)
-    for layer in range(4):
-        bottom = height * (.16 + layer * .17)
-        radius = height * (.28 - layer * .052)
-        tip = add(base, (0, 0, min(height, bottom + height * .47)))
-        for face in range(9):
-            a, b = math.tau * face / 9, math.tau * (face + 1) / 9
-            scene.triangle('Building_Trees', 'Leaves',
-                           add(base, (math.cos(a) * radius, math.sin(a) * radius, bottom)),
-                           add(base, (math.cos(b) * radius, math.sin(b) * radius, bottom)), tip)
+def conifer(scene: CircuitScene, base: Point, height: float, seed: int) -> None:
+    rng = random.Random(seed)
+    lean = rng.uniform(-0.035, 0.035), rng.uniform(-0.035, 0.035), 0.0
+    trunk = add(base, add(mul(lean, height * 0.88), (0, 0, height * 0.88)))
+    scene.beam("Building_Trees", "Trunk", base, trunk, height * 0.012)
+    layers = rng.randrange(6, 9)
+    turn = rng.uniform(0, math.tau)
+    for layer in range(layers):
+        fraction = (layer + 0.5) / layers
+        level = 0.24 + fraction * 0.65 + rng.uniform(-0.025, 0.025)
+        azimuth = turn + layer * 2.39996 + rng.uniform(-0.4, 0.4)
+        radius = height * (0.22 - fraction * 0.18) * rng.uniform(0.8, 1.15)
+        center = add(base, (
+            lean[0] * height * level + math.cos(azimuth) * radius * 0.24,
+            lean[1] * height * level + math.sin(azimuth) * radius * 0.24,
+            height * level,
+        ))
+        if layer % 3 == 0:
+            root = add(base, (
+                lean[0] * height * level,
+                lean[1] * height * level,
+                height * (level - 0.08),
+            ))
+            scene.beam("Building_Trees", "Trunk", root, center, height * 0.004)
+        column, row = (2, 5)[rng.randrange(2)], rng.randrange(3)
+        u0, u1 = (column + 0.012) / 6, (column + 0.988) / 6
+        v0, v1 = (row + 0.012) / 6, (row + 0.988) / 6
+        depth = height * (0.27 - fraction * 0.09) * rng.uniform(0.85, 1.1)
+        for plane in range(3):
+            angle = azimuth + plane * math.pi / 3 + rng.uniform(-0.15, 0.15)
+            axis = math.cos(angle), math.sin(angle), 0.0
+            bottom = add(center, (0, 0, -depth * 0.48))
+            left, right = sub(bottom, mul(axis, radius)), add(bottom, mul(axis, radius))
+            top_left = add(left, (lean[0] * depth, lean[1] * depth, depth))
+            top_right = add(right, (lean[0] * depth, lean[1] * depth, depth))
+            scene.triangle("Building_Trees", "TreeCanopy", top_left, top_right, right,
+                           ((u0, v0), (u1, v0), (u1, v1)))
+            scene.triangle("Building_Trees", "TreeCanopy", top_left, right, left,
+                           ((u0, v0), (u1, v1), (u0, v1)))
 
 
 def water_shapes_at(scene: CircuitScene) -> list[Polygon]:

@@ -138,6 +138,12 @@ Capture approaches and exits too: paint directly beside a stationary car at an
 apex can be outside its field of view. Confirm missing geometry through moving
 frames or projected mesh positions before relocating a correctly placed feature.
 
+Pin each review finding to the exact capture path, image hash, station sidecar
+and asset revision. Reopen that image before changing geometry: a stale capture
+or swapped filename can turn a valid bridge into a reported obstruction elsewhere.
+Measure projected visibility when needed. A grounded eleven-metre marking can
+be only a few pixels tall in a distant, low cockpit view.
+
 The packaged executable opens the menu by default. For an unattended driving
 capture, explicitly open the existing review level with the trial game mode:
 

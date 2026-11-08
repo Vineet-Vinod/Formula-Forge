@@ -11,6 +11,7 @@ from pydantic import TypeAdapter
 from shapely.geometry import Polygon
 
 from venues.east_architecture import facade, footprint_stand, frame
+from venues.japan_architecture import earthbank_seating
 from venues.west_architecture import (
     apron_band,
     mapped_building,
@@ -64,7 +65,6 @@ def build_venue(scene: CircuitScene) -> None:
         (469368057, 16, ""),
         (469395390, 14, ""),
         (467982372, 15, ""),
-        (184102012, 12, ""),
         (184102361, 13, ""),
         (183999779, 12, ""),
         (183393101, 16, ""),
@@ -76,6 +76,7 @@ def build_venue(scene: CircuitScene) -> None:
         (183394522, 23, "cantilever"),
     ):
         footprint_stand(scene, osm_id, rows, roof)
+    earthbank_seating(scene, 184102012, 12)
     pit_paving(scene)
     pit_front(scene)
     facade(scene, 183394524, 14, "modern", "White")

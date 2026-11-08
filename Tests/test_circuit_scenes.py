@@ -122,7 +122,7 @@ def test_escape_surface_follows_road_instead_of_climbing_the_bank(
     scene.grid = replace(scene.grid, heights=tuple(30.0 for _ in scene.grid.heights))
     scene.road_surfaces()
     scene.runoff(5, 35, 1, 24, "Gravel")
-    heights = []
+    heights: list[float] = []
     for tile in scene.tiles.values():
         for offset in range(0, len(tile.triangles), 100):
             slot = struct.unpack_from("<I", tile.triangles, offset)[0]
@@ -251,19 +251,32 @@ def test_multipolygon_buildings_keep_semantic_type(
     assert Polygon(building.ring).area > 12000
 
 
-def test_leaf_geometry_samples_individual_atlas_cells(scene: CircuitScene) -> None:
-    scene.broadleaf((0.0, 0.0, 0.0), 10.0, 4)
+@pytest.mark.parametrize("tree_form", ["broadleaf", "conifer"])
+def test_leaf_geometry_samples_individual_atlas_cells(
+    scene: CircuitScene, tree_form: str
+) -> None:
+    from venues.west_architecture import conifer
+
+    if tree_form == "conifer":
+        conifer(scene, (0.0, 0.0, 0.0), 10.0, 4)
+    else:
+        scene.broadleaf((0.0, 0.0, 0.0), 10.0, 4)
+    leaves = 0
     for tile in scene.tiles.values():
         for offset in range(0, len(tile.triangles), 100):
             slot = struct.unpack_from("<I", tile.triangles, offset)[0]
             if tile.materials[slot] != "TreeCanopy":
                 continue
+            leaves += 1
             uv = [
                 struct.unpack_from("<8f", tile.triangles, offset + 4 + i * 32)[6:]
                 for i in range(3)
             ]
             assert max(p[0] for p in uv) - min(p[0] for p in uv) < 1 / 6
             assert max(p[1] for p in uv) - min(p[1] for p in uv) < 1 / 6
+            assert {int(p[0] * 6) for p in uv} <= {2, 5}
+            assert {int(p[1] * 6) for p in uv} <= {0, 1, 2}
+    assert leaves > 0
 
 
 def test_stand_roof_faces_up_on_either_side(scene: CircuitScene) -> None:
@@ -365,7 +378,7 @@ def test_mapped_stand_treads_clear_a_steep_rear_bank(
     assert min(z - scene.ground(x, y) for x, y, z in treads) >= 0.1799
 
 
-def test_bahrain_sail_roofs_have_white_tops_and_cream_undersides(
+def test_bahrain_sail_fabric_has_opposite_top_and_underside_normals(
     scene: CircuitScene, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     from circuit_dataclasses import Building, Point
@@ -396,6 +409,49 @@ def test_bahrain_sail_roofs_have_white_tops_and_cream_undersides(
     assert roof_faces
     for kind, material, normal_z in roof_faces:
         if kind == "Building_TensileRoof":
-            assert material == "White" and normal_z > 0
+            assert material == "CanopyFabric" and normal_z > 0
         else:
-            assert material == "Cream" and normal_z < 0
+            assert material == "CanopyFabric" and normal_z < 0
+
+
+def test_smooth_terrain_shares_hillside_normals_without_moving_vertices(
+    scene: CircuitScene, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    def hillside(x: float, y: float) -> float:
+        return 0.2 * x * x + 0.3 * y * y + 0.1 * x * y
+
+    def exported_vertices() -> list[tuple[float, ...]]:
+        return [
+            struct.unpack_from("<8f", tile.triangles, offset + 4 + corner * 32)
+            for tile in scene.tiles.values()
+            for offset in range(0, len(tile.triangles), 100)
+            for corner in range(3)
+        ]
+
+    monkeypatch.setattr(scene, "ground", hillside)
+    scene.grid = replace(
+        scene.grid, x=0.0, y=0.0, step=1.0, columns=3, rows=2, heights=(0.0,) * 6
+    )
+    scene.corridor_mask = Polygon()
+    patches = (box(0, 0, 1, 1), box(1, 0, 2, 1))
+    for patch in patches:
+        scene.polygon_surface(patch.difference(Polygon()), "Grass")
+    faceted = exported_vertices()
+    scene.tiles.clear()
+    scene.terrain()
+    smoothed = exported_vertices()
+    assert [vertex[:3] for vertex in smoothed] == [vertex[:3] for vertex in faceted]
+    normals: dict[tuple[float, float], list[tuple[float, ...]]] = {}
+    for vertex in smoothed:
+        x, y = -vertex[1] / 100, -vertex[0] / 100
+        nx, ny, nz = -vertex[4], -vertex[3], vertex[5]
+        normals.setdefault((x, y), []).append((nx, ny, nz))
+        # A smooth normal must be perpendicular to both analytic hill tangents.
+        assert nx + nz * (0.4 * x + 0.1 * y) == pytest.approx(0, abs=1e-6)
+        assert ny + nz * (0.6 * y + 0.1 * x) == pytest.approx(0, abs=1e-6)
+        assert nx * nx + ny * ny + nz * nz == pytest.approx(1, abs=1e-6)
+        assert nz > 0
+    for shared in ((1.0, 0.0), (1.0, 1.0)):
+        assert len(normals[shared]) >= 2
+        assert all(normal == normals[shared][0] for normal in normals[shared])
+    assert any(a[3:6] != b[3:6] for a, b in zip(faceted, smoothed))

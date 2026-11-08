@@ -20,7 +20,7 @@
     {
       "start_m": 850,
       "end_m": 2200,
-      "name": "T3–T10 esses",
+      "name": "T3\u2013T10 esses",
       "reference_times_s": [
         309.4,
         987.55
@@ -52,18 +52,18 @@
     {
       "start_m": 3800,
       "end_m": 4250,
-      "name": "T13–T15 stadium",
+      "name": "T13\u2013T15 stadium",
       "reference_times_s": [
         158.7,
         686.15
       ],
-      "observed_environment": "Low bowl grandstands and broad coloured paved aprons. Red tubular observation-tower spine/curved cantilever crown rises beyond T16–18 and amphitheatre, not arbitrary roadside position.",
+      "observed_environment": "Low bowl grandstands and broad coloured paved aprons. Red tubular observation-tower spine/curved cantilever crown rises beyond T16\u201318 and amphitheatre, not arbitrary roadside position.",
       "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
     },
     {
       "start_m": 4250,
       "end_m": 4850,
-      "name": "T16–T18 triple right",
+      "name": "T16\u2013T18 triple right",
       "reference_times_s": [
         761.5
       ],
@@ -486,7 +486,7 @@
       912.2,
       987.55
     ],
-    "observations": "Reference T15 red field with white star, green exit strips and red edging. Primary 2024 IMSA aerial p11 confirms blue fields, white stripes and stars around T12–T18. Original geometry uses approximate widths and star spacing, not a georectified paint survey.",
+    "observations": "Reference T15 red field with white star, green exit strips and red edging. Primary 2024 IMSA aerial p11 confirms blue fields, white stripes and stars around T12\u2013T18. Original geometry uses approximate widths and star spacing, not a georectified paint survey.",
     "registration_status": "Named reference sector matched to retained road shape; widths, ends and star sizes/spacing are original estimates, not exact surveyed paint coordinates.",
     "height_policy": "Ground-following polygon geometry, clipped outside road_mask. No fixed-z tiles and no enlargement of physical runoff corridors.",
     "physical_runoff_extents_changed": true,
@@ -867,12 +867,12 @@
     "corner": "T15",
     "apex_station_m": 4162,
     "previous_named_way_midpoint_m": 4090.68,
-    "reason": "OSM Turn15 way midpoint lies on the preceding gentle left. Actual tight left has79degrees of heading change across4160±10m and40degrees across4180±10m; route shape matches official full-layout stadium geometry and reference minimap. Native plan unchanged.",
+    "reason": "OSM Turn15 way midpoint lies on the preceding gentle left. Actual tight left has79degrees of heading change across4160\u00b110m and40degrees across4180\u00b110m; route shape matches official full-layout stadium geometry and reference minimap. Native plan unchanged.",
     "approximate_apex_uncertainty_m": 10
   },
   "pit_frontage_correction": {
     "status": "Source change awaiting new rendered review",
-    "geometry": "Mapped pit front now has recessed garage bays below retained upper floors; no repeated ground-floor office windows on road-facing facade. Bay widths/depths are original reference reconstruction, not an as-built survey.",
+    "geometry": "COTA-specific garage/hospitality architecture on actual376713391 footprint: recessed6.5m-class bays, white upper slabs, narrower glazing,2.2m balconies and two-sided4.8m roof overhang with diagonal frames. Measurements reconstructed from supplied main-straight reference, not as-built dimensions.",
     "paving_profile": "pit-lane.json"
   },
   "pilot_architecture_corrections": {
@@ -880,12 +880,12 @@
     "main_stand": {
       "stand_osm_id": 460658889,
       "roof_osm_id": 376713393,
-      "method": "Use actual stand footprint across native0, locally grounded curved terrace; rear canopy follows separate mapped outline with downward soffit. Removes wrong generic5100–5450 stand.",
-      "dimensions": "25rows and roof14–16.5m above road are original estimates from supplied footage, not surveyed heights."
+      "method": "Actual seating/support footprints retained. Separate rear support footprint376713393 now carries a16m front cantilever over upper seating, with modeled underside, repeated open steel trusses and rear posts. Uncovered longitudinal end remains uncovered.",
+      "dimensions": "Roof16\u201318m above adjacent road and16m projection reconstructed from actual paint-detail-03 view, not surveyed. Requested25rows are limited by actual stand footprint depth by existing terrace helper."
     },
     "turn15_stand": {
       "osm_id": 460658892,
-      "method": "Mapped Turn15 Grandstands footprint replaces guessed3990–4160left band."
+      "method": "Mapped Turn15 Grandstands footprint replaces guessed3990\u20134160left band."
     },
     "paint_camera": {
       "star_world_station_m": 4153,
@@ -893,7 +893,8 @@
         4050,
         4120
       ],
-      "reason": "Star center at same-station capture is90degleft; geometry is not moved to chase viewport."
+      "reason": "Star center at same-station capture is90degleft; geometry is not moved to chase viewport.",
+      "readability": "At4050, preserved camera predicts star only2.57pixels high (x269\u2013393,y407.8\u2013410.4at1600\u00d7900). The exact capture contains a thin white horizon mark; absence cannot be inferred.4120shows about16pixels of height with partial leftFOV crop. Use moving3980\u20134180review; no paint position/radius change."
     }
   },
   "t15_island_correction": "t15-island.json"

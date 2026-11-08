@@ -6,7 +6,7 @@
   "licence": "ODbL1.0",
   "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
   "file": "environment.osm.json.gz",
-  "sha256": "24e10c151ba611463f6ef6c03835d89a19f41372f55371e7b1e94bdc6cf37d66",
+  "sha256": "2adc7694093edbc5a96574c95f91714c04f810082f05b24c972bf5b017b8d972",
   "purpose": "Tightly bounded essential landmark query; inline member geometry preserved.",
   "additional_queries": [
     {
@@ -21,6 +21,14 @@
       "retrieved": "2026-11-08",
       "purpose": "Repair southern coastline connector excluded by previous43.730latitude bound. Complete coastline must cross all sides of venue clip before sea polygonisation.",
       "response_sha256": "f0793afbdfd57b22f9fed3fa349dcad7397f8b50b51f96e3aedf13acb2078a10"
+    },
+    {
+      "query_url": "https://api.openstreetmap.org/api/0.6/map?bbox=7.425,43.738,7.432,43.742",
+      "endpoint": "https://api.openstreetmap.org/api/0.6/map",
+      "retrieved": "2026-11-08",
+      "purpose": "Retained Casino-district parks, grass beds, pedestrian paths and individual trees; only filtered nonbuilding semantic elements merged.",
+      "response_sha256": "264f3bff94278d476b74cf8a73d47da0be2993862b95efbfdf599367e8e96d7a",
+      "provenance_file": "gardens-provenance.json"
     }
   ]
 }

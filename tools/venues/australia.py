@@ -29,7 +29,7 @@ def build_venue(scene: CircuitScene) -> None:
     mapped_building(scene, 45384591, 70, floors=21, balconies=True)
     mapped_building(scene, 306782098, 16, floors=4, roof='canopy')
     mapped_building(scene, 1081955937, 77.8, floors=23, balconies=True)
-    for start, end, side, setback in [(240, 985, 1, 6), (300, 980, -1, 6),
+    for start, end, side, setback in [(240, 1045, 1, 6), (300, 1045, -1, 6),
                                       (1120, 1700, 1, 18), (1160, 1720, -1, 17),
                                       (1800, 2860, -1, 18), (2940, 3860, -1, 14),
                                       (3880, 4800, 1, 18), (4100, 4760, -1, 22)]:

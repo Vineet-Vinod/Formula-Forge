@@ -32,7 +32,7 @@ def build_venue(scene: CircuitScene) -> None:
     scene.braking_boards(3650, 1)  # T12 back-straight stop
     scene.braking_boards(4162, 1, distances=(100, 50))  # T15 stadium
     scene.braking_boards(5221, 1)  # T20 pit return
-    mapped_building(scene, 376713391, 14, facade='White', floors=3, roof='canopy', garage_front=True)
+    pit_garages(scene)
     main_grandstand(scene)
     scene.stand(330, 540, -1, rows=21, setback=30, seat_material='Concrete')
     scene.stand(1050, 1280, -1, rows=15, setback=28, seat_material='Concrete')
@@ -50,34 +50,116 @@ def build_venue(scene: CircuitScene) -> None:
         mast(scene, station, -1, 24)
 
 
+def pit_garages(scene: CircuitScene) -> None:
+    building = scene.footprint(376713391)
+    footprint = Polygon(building.ring).difference(scene.road_mask.buffer(1.2))
+    if not isinstance(footprint, Polygon):
+        raise TypeError('COTA garage footprint must remain connected')
+    scene.modeled_buildings.add(building.osm_id)
+    scene.terrain_cutouts.append(footprint)
+    ring = list(footprint.exterior.coords)[:-1]
+    if not footprint.exterior.is_ccw:
+        ring.reverse()
+    base = scene.at(0).z
+    kind = 'Building_CotaPits'
+    front_distance = min(scene.nearest((a[0] + b[0]) / 2, (a[1] + b[1]) / 2)[1]
+                         for a, b in zip(ring, ring[1:] + ring[:1]))
+    for a, b in zip(ring, ring[1:] + ring[:1]):
+        span = math.dist(a, b)
+        if span < .1:
+            continue
+        tx, ty = (b[0] - a[0]) / span, (b[1] - a[1]) / span
+        nx, ny = ty, -tx
+        road, distance = scene.nearest((a[0] + b[0]) / 2, (a[1] + b[1]) / 2)
+        front = distance < front_distance + 4 and abs(tx * road.tx + ty * road.ty) > .75
+        def point(along: float, outward: float, z: float, *,
+                  origin: tuple[float, float] = a, axis: tuple[float, float] = (tx, ty),
+                  normal: tuple[float, float] = (nx, ny)) -> Point:
+            return (origin[0] + axis[0] * along + normal[0] * outward,
+                    origin[1] + axis[1] * along + normal[1] * outward, base + z)
+        if not front:
+            scene.banner(point(0, 0, 0), point(span, 0, 0), 13.8, 'White', kind)
+            continue
+        bays = max(1, round(span / 6.5))
+        for bay in range(bays):
+            left, right = span * bay / bays, span * (bay + 1) / bays
+            scene.banner(point(left + .3, -1.4, .05), point(right - .3, -1.4, .05), 4.1, 'Black', kind)
+            for u in (left, right):
+                scene.beam(kind, 'White', point(u, 0, 0), point(u, 0, 13.8), .38)
+            scene.quad(kind, 'Concrete', point(left, 0, .02), point(right, 0, .02),
+                       point(right, -1.4, .02), point(left, -1.4, .02), up=True)
+            for z in (4.5, 9):
+                scene.banner(point(left, 0, z), point(right, 0, z), 4.4, 'White', kind)
+                scene.banner(point(left + .35, .045, z + 1.2), point(right - .35, .045, z + 1.2), 1.65, 'Glass', kind)
+                scene.quad(kind, 'White', point(left, 0, z), point(right, 0, z),
+                           point(right, 2.2, z), point(left, 2.2, z), up=True)
+                scene.quad(kind, 'Concrete', point(left, 2.2, z - .25), point(right, 2.2, z - .25),
+                           point(right, 0, z - .25), point(left, 0, z - .25), up=False)
+                scene.banner(point(left, 2.2, z), point(right, 2.2, z), .32, 'White', kind)
+                for lift in (.65, 1.0):
+                    scene.beam(kind, 'Steel', point(left, 2.2, z + lift), point(right, 2.2, z + lift), .045)
+            front_a, front_b = point(left, 4.8, 14.3), point(right, 4.8, 14.3)
+            rear_a, rear_b = point(left, -4, 15.7), point(right, -4, 15.7)
+            scene.quad(kind, 'White', front_a, front_b, rear_b, rear_a, up=True)
+            scene.quad(kind, 'Concrete', add(front_a, (0, 0, -.18)), add(front_b, (0, 0, -.18)),
+                       add(rear_b, (0, 0, -.18)), add(rear_a, (0, 0, -.18)), up=False)
+            scene.beam(kind, 'Steel', point(left, 0, 12.8), front_a, .14)
+            scene.beam(kind, 'Steel', point(left, 0, 12.8), rear_a, .14)
+            scene.beam(kind, 'White', front_a, front_b, .2)
+    for triangle in triangulate(footprint):
+        if footprint.covers(triangle):
+            a, b, c = list(triangle.exterior.coords)[:3]
+            scene.triangle(kind, 'Roof', (a[0], a[1], base + 13.8),
+                           (b[0], b[1], base + 13.8), (c[0], c[1], base + 13.8))
+    scene.landmarks.append({'name': 'COTA pit garages and hospitality', 'osm_id': building.osm_id,
+                            'dimensions_status': 'Actual retained footprint; garage6.5m bays, white upper balconies/narrow glass and4.8m projecting roof reconstructed from supplied paint-detail-03 reference. Heights and projections estimated, not surveyed.'})
+
+
 def main_grandstand(scene: CircuitScene) -> None:
     footprint_stand(scene, 460658889, rows=25, seat_material='Concrete')
     roof = scene.footprint(376713393)
-    polygon = Polygon(roof.ring).difference(scene.road_mask.buffer(1.2))
-    center = Polygon(roof.ring).centroid
-    road = scene.nearest(center.x, center.y)[0]
     distances = [scene.nearest(*p)[1] for p in roof.ring]
     low, high = min(distances), max(distances)
-
+    outline = []
+    for x, y in roof.ring:
+        road, distance = scene.nearest(x, y)
+        projection = 16 * max(0, min(1, (high - distance) / max(1, high - low)))
+        outline.append((x + (road.x - x) * projection / distance,
+                        y + (road.y - y) * projection / distance))
+    polygon = Polygon(outline).difference(scene.road_mask.buffer(1.2))
     def point(x: float, y: float, lift: float = 0) -> Point:
-        distance = scene.nearest(x, y)[1]
-        return x, y, road.z + 14 + 2.5 * (distance - low) / max(1, high - low) + lift
-
+        road, distance = scene.nearest(x, y)
+        height = 16 + 2 * max(0, min(1, (distance - (low - 16)) / max(1, high - low + 16)))
+        return x, y, road.z + height + lift
     for triangle in triangulate(polygon):
         if polygon.covers(triangle):
             a, b, c = list(triangle.exterior.coords)[:3]
-            scene.triangle('Building_CotaMainRoof', 'Roof', point(*a), point(*b), point(*c))
+            scene.triangle('Building_CotaMainRoof', 'White', point(*a), point(*b), point(*c))
             scene.triangle('Building_CotaMainRoof', 'Concrete', point(c[0], c[1], -.22), point(b[0], b[1], -.22), point(a[0], a[1], -.22))
-    for a, b in zip(roof.ring, roof.ring[1:] + roof.ring[:1]):
-        count = max(1, round(math.dist(a, b) / 12))
+    for a, b in zip(outline, outline[1:] + outline[:1]):
+        count = max(1, round(math.dist(a, b) / 10))
         scene.beam('Building_CotaMainRoof', 'Steel', point(*a), point(*b), .24)
         for i in range(count):
             x, y = a[0] + (b[0] - a[0]) * i / count, a[1] + (b[1] - a[1]) * i / count
-            scene.beam('Building_CotaMainRoof', 'Steel', (x, y, scene.ground(x, y)), point(x, y), .3)
+            road, distance = scene.nearest(x, y)
+            if distance < high - 2:
+                continue
+            base = x, y, scene.ground(x, y)
+            scene.beam('Building_CotaMainRoof', 'White', base, point(x, y), .45)
+            front = x + (road.x - x) * 29 / distance, y + (road.y - y) * 29 / distance
+            upper, lower = point(*front), add(point(*front), (0, 0, -1.1))
+            rear_upper, rear_lower = point(x, y), add(point(x, y), (0, 0, -1.1))
+            scene.beam('Building_CotaMainRoof', 'Steel', rear_upper, upper, .16)
+            scene.beam('Building_CotaMainRoof', 'Steel', rear_lower, lower, .16)
+            for cell in range(8):
+                t0, t1 = cell / 8, (cell + 1) / 8
+                pa = add(rear_lower, ((lower[0] - rear_lower[0]) * t0, (lower[1] - rear_lower[1]) * t0, (lower[2] - rear_lower[2]) * t0))
+                pb = add(rear_upper, ((upper[0] - rear_upper[0]) * t1, (upper[1] - rear_upper[1]) * t1, (upper[2] - rear_upper[2]) * t1))
+                scene.beam('Building_CotaMainRoof', 'Steel', pa, pb, .1)
     scene.modeled_buildings.add(376713393)
-    scene.landmarks.append({'name': 'Mapped main grandstand and rear canopy',
+    scene.landmarks.append({'name': 'Mapped main grandstand with cantilever canopy',
                             'osm_id': 460658889, 'roof_osm_id': 376713393,
-                            'dimensions_status': 'Both actual OSM footprints retained. Roof14–16.5m above adjacent road and25rows reconstructed from reference; no generic5100–5450m stand remains.'})
+                            'dimensions_status': 'Actual seating/support footprints retained; rear support outline projects16m toward seating without extending the uncovered longitudinal end. Roof16–18m above road, open trusses and underside reconstructed from supplied paint-detail-03, not surveyed dimensions.'})
 
 
 def observation_tower(scene: CircuitScene) -> None:

@@ -103,6 +103,7 @@ class CircuitScene(MeshScene):
         self.surface_points: list[tuple[Point, Point, Point]] = []
         self.surface_index: STRtree | None = None
         self.panels: list[BarrierPanel] = []
+        self._ground_normals: dict[tuple[float, float], Point] = {}
 
     def geo(self, latitude: float, longitude: float) -> tuple[float, float]:
         origin = self.provenance.origin
@@ -280,6 +281,24 @@ class CircuitScene(MeshScene):
             x, y
         ) * blend
 
+    def _ground_normal(self, x: float, y: float) -> Point:
+        key = x, y
+        cached = self._ground_normals.get(key)
+        if cached is not None:
+            return cached
+        step = self.grid.step / 4
+        normal = norm(
+            (
+                self.ground(x - step, y) - self.ground(x + step, y),
+                self.ground(x, y - step) - self.ground(x, y + step),
+                2 * step,
+            )
+        )
+        if len(self._ground_normals) >= 8192:
+            self._ground_normals.clear()
+        self._ground_normals[key] = normal
+        return normal
+
     def polygon_surface(
         self,
         shape: BaseGeometry,
@@ -287,6 +306,7 @@ class CircuitScene(MeshScene):
         lift: float = 0.0,
         sample: RoadStation | None = None,
         paved: bool = False,
+        smooth_ground: bool = False,
     ) -> None:
         for triangle in constrained_delaunay_triangles(shape).geoms:
             points: list[Point] = []
@@ -315,6 +335,9 @@ class CircuitScene(MeshScene):
                 points[1],
                 points[2],
                 tuple((p[0] / 8, p[1] / 8) for p in points),
+                tuple(self._ground_normal(p[0], p[1]) for p in points)
+                if smooth_ground and sample is None
+                else None,
             )
 
     def paint_surface(self, shape: BaseGeometry, material: str, lift: float = 0.005) -> None:
@@ -495,7 +518,13 @@ class CircuitScene(MeshScene):
         exclusions = unary_union([*self.extra_corridors, *self.terrain_cutouts, *self.water_shapes])
         for shape, verge_material, sample in self.verge_patches:
             upper_deck = sample and self.catalogue.deck_separation and 4637 < sample.station < 4667
-            self.polygon_surface(shape if upper_deck else shape.difference(exclusions), verge_material, -0.015, sample)
+            self.polygon_surface(
+                shape if upper_deck else shape.difference(exclusions),
+                verge_material,
+                -0.015,
+                sample,
+                smooth_ground=True,
+            )
         self.corridor_mask = unary_union([self.corridor_mask, *self.extra_corridors])
         ground_corridor = (
             self.ground_corridor_mask
@@ -518,7 +547,7 @@ class CircuitScene(MeshScene):
                     terrain_voids
                 )
                 if not shape.is_empty:
-                    self.polygon_surface(shape, material)
+                    self.polygon_surface(shape, material, smooth_ground=True)
 
     def kerb(
         self,

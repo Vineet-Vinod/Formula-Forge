@@ -1,0 +1,24 @@
+{
+  "provider": "OpenStreetMap contributors",
+  "endpoint": "https://api.openstreetmap.org/api/0.6/map",
+  "query_url": "https://api.openstreetmap.org/api/0.6/map?bbox=7.425,43.738,7.432,43.742",
+  "bbox_lon_lat": [
+    7.425,
+    43.738,
+    7.432,
+    43.742
+  ],
+  "retrieved": "2026-11-08",
+  "licence": "ODbL1.0",
+  "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "raw_file": "gardens.map.osm.gz",
+  "raw_sha256": "264f3bff94278d476b74cf8a73d47da0be2993862b95efbfdf599367e8e96d7a",
+  "raw_gzip_sha256": "2ac4eac579fb70ff3005054547b891f1df7afb259b52224e0fc0fe4be1394d9c",
+  "filtered_file": "gardens.osm.json.gz",
+  "filtered_sha256": "73680edec1b244a43f94b264a1b85f21be0030d2229ca2a14e05cf5d66db70c1",
+  "retained_elements": 464,
+  "selection": "Only parks/gardens/wood/grass, individual trees and pedestrian paths, with original tags and node-resolved way geometry. No raw-map buildings/road changes imported. Model clipped to requested rectangle.",
+  "failed_endpoints": "Three tightly bounded Overpass endpoints timed out; original OSM API small0.25km\u00b2 bbox succeeded.",
+  "official_context_url": "https://www.montecarlosbm-corporate.com/wp-content/uploads/ra-ri-documents/montecarlosbm_2023_03_31_fr.html",
+  "official_context": "SBM identifies mature Ficus in Boulingrins/Casino terraces and exotic/ancient olive trees in Petite Afrique. This supports mixed mature planting, not exact individual dimensions."
+}

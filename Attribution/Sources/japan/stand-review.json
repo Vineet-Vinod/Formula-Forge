@@ -1,0 +1,74 @@
+{
+  "review": "Luna High packaged critical2272 finding + primary official Suzuka G seating check, 2026-11-08",
+  "native_station_convention": "Retained native centreline metres; +lane driver right. No track, profile, camera, building footprint or collision changes.",
+  "sources": [
+    {
+      "url": "https://www.suzukacircuit.jp/eng/f1/ticket/seat_g.html",
+      "observation": "Operator distinguishes G-1 permanent130R seating and G-2 permanent overpass seating; permanent G-2 must be retained."
+    },
+    {
+      "url": "https://www.suzukacircuit.jp/eng/f1/ticket/images/seat/g/img_seat_g.jpg",
+      "observation": "Mapped seating aerial: narrow parallel permanent seating strips around130R/overpass, no enclosing elevated stadium mass."
+    },
+    {
+      "url": "https://www.suzukacircuit.jp/eng/f1/ticket/images/seat/g/img_g_map.jpg",
+      "observation": "Operator G-2 registration beside overpass(T10), G-1 beside130R(T15)."
+    },
+    {
+      "url": "https://www.suzukacircuit.jp/eng/f1/ticket/images/seat/g/360_g-2.jpg",
+      "observation": "Operator-linked permanent G panorama shows grass between thin pale concrete bench edges, no blue solid elevated tiers. Panorama identity is site-provided; its visible130R context is supplementary seating-construction evidence, not an exact matched2272 cockpit frame."
+    },
+    {
+      "path": "build/reviews/japan/runoff-reference/t-033.jpg",
+      "video_s": 866,
+      "observation": "Matched supplied-video crossover approach: open grassy spectator bank, no tall blue stadium face."
+    },
+    {
+      "path": "build/reviews/japan/runoff-reference/t-034.jpg",
+      "video_s": 868,
+      "observation": "Matched crossover/deck visual anchor; timestamps are scene identity anchors, not elapsed-time station interpolation."
+    }
+  ],
+  "g2": {
+    "osm_id": 184102012,
+    "nearest_native_station_m": 2362.2589015145554,
+    "camera2272_relative_forward_m": 90.2568,
+    "camera2272_relative_right_m": 29.7553,
+    "footprint_length_m": 110.1322431799423,
+    "footprint_width_m": 11.204017766141176,
+    "defect": "General stand helper independently raised each bay and row above a blended hillside, producing irregular longitudinal waves plus continuous thick blue seating edges and elevated concrete soffits. This misrepresented a permanent grass-bank bench terrace.",
+    "change": "Retain exact footprint and nearest-road orientation; use smooth longitudinal graded earthbank with thin concrete bench strips and perimeter join to existing soil. Remove only this footprint from general grandstand helper. No blue risers, soffit, high concrete foundation or end retaining wall.",
+    "estimated_geometry": "Twelve rows retained as bounded source estimate; soil plane inferred from nine front/rear footprint-edge ground samples, not a measured architectural survey. A1.2m perimeter blend joins existing source soil. The broad hillside/profile remains unchanged.",
+    "source_geometry_proof": {
+      "triangle_counts": {
+        "Building_JapanEarthbank": 889,
+        "Building_JapanBankBench": 22,
+        "Building_JapanBankBenchEdge": 92,
+        "Building_Crowd_JapanBank": 7028
+      },
+      "vertices_outside_mapped_footprint": 0,
+      "minimum_main_road_edge_clearance_m": 15.341599299516332,
+      "min_z_m": 27.036427677245193,
+      "max_z_m": 39.41564905837582,
+      "maximum_boundary_soil_seam_error_m": 8.664073798680949e-12,
+      "landmarks": [
+        {
+          "name": "G-2 permanent grass-bank seating",
+          "osm_id": 184102012,
+          "station_m": 2362.2589015145554,
+          "rows": 12,
+          "front_ground_mean_m": 28.68226337791055,
+          "rear_ground_mean_m": 37.99555128569974,
+          "longitudinal_grade": -0.019275583943828552,
+          "registration": "Official Suzuka G seating map and permanent G panorama: grass between thin pale concrete benches. Exact mapped footprint retained; linear soil grade estimated from retained footprint-edge ground, blended to existing soil within 1.2 m of perimeter. No elevated stadium decks, blue risers or end retaining walls."
+        }
+      ],
+      "memory": "VmHWM:\t   60956 kB"
+    },
+    "acceptance": "Source checks only; fresh packaged2272 approach/exit still required."
+  },
+  "camera2700": {
+    "fresh_capture_sha256": "3849288113a7b47e5d527e6c3249e608f0829877dde6704a13ebe5c300f52ade",
+    "finding": "Fresh capture has open sky; previous roof finding withdrawn. Stand183999779 near native2734.7 retained. Source front ground39.43\u201342.83m/rear46.61\u201347.26m explains V-shaped bank-facing outline; no independent primary evidence yet demonstrates footprint or seating-type error, so no speculative edit."
+  }
+}

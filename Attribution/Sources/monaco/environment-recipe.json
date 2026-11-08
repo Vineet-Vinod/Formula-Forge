@@ -9,13 +9,13 @@
     {
       "start_m": 0,
       "end_m": 650,
-      "name": "Pit straight and Sainte-Dévote",
+      "name": "Pit straight and Sainte-D\u00e9vote",
       "reference_times_s": [
         97.9,
         727.19,
         906.98
       ],
-      "observed_environment": "Stands and stone/pink apartment tiers frame the uphill opening. Pit/service bars, marina edge, Armco and high mesh fence. Sainte-Dévote needs its opening/runoff access, not a solid urban wall.",
+      "observed_environment": "Stands and stone/pink apartment tiers frame the uphill opening. Pit/service bars, marina edge, Armco and high mesh fence. Sainte-D\u00e9vote needs its opening/runoff access, not a solid urban wall.",
       "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
     },
     {
@@ -74,7 +74,7 @@
     {
       "start_m": 2880,
       "end_m": 3337,
-      "name": "Rascasse, Antony Noghès and pits",
+      "name": "Rascasse, Antony Nogh\u00e8s and pits",
       "reference_times_s": [
         97.9,
         1266.58
@@ -256,7 +256,7 @@
     "licence": "ODbL1.0",
     "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
     "file": "environment.osm.json.gz",
-    "sha256": "24e10c151ba611463f6ef6c03835d89a19f41372f55371e7b1e94bdc6cf37d66",
+    "sha256": "2adc7694093edbc5a96574c95f91714c04f810082f05b24c972bf5b017b8d972",
     "purpose": "Tightly bounded essential landmark query; inline member geometry preserved.",
     "additional_queries": [
       {
@@ -264,6 +264,21 @@
         "endpoint": "https://overpass-api.de/api/interpreter",
         "retrieved": "2026-11-08",
         "purpose": "Boundedcoastline/harbourboundary needed for sea-land polygonisation; no broadMediterraneanrelationquery."
+      },
+      {
+        "query": "[out:json][timeout:45];way[\"natural\"=\"coastline\"](43.726,7.414,43.746,7.439);out geom;",
+        "endpoint": "https://overpass-api.de/api/interpreter",
+        "retrieved": "2026-11-08",
+        "purpose": "Repair southern coastline connector excluded by previous43.730latitude bound. Complete coastline must cross all sides of venue clip before sea polygonisation.",
+        "response_sha256": "f0793afbdfd57b22f9fed3fa349dcad7397f8b50b51f96e3aedf13acb2078a10"
+      },
+      {
+        "query_url": "https://api.openstreetmap.org/api/0.6/map?bbox=7.425,43.738,7.432,43.742",
+        "endpoint": "https://api.openstreetmap.org/api/0.6/map",
+        "retrieved": "2026-11-08",
+        "purpose": "Retained Casino-district parks, grass beds, pedestrian paths and individual trees; only filtered nonbuilding semantic elements merged.",
+        "response_sha256": "264f3bff94278d476b74cf8a73d47da0be2993862b95efbfdf599367e8e96d7a",
+        "provenance_file": "gardens-provenance.json"
       }
     ]
   },
@@ -286,7 +301,7 @@
     ],
     "surface_elevation_relative_m": -2.5,
     "water_level_status": "Originalreferenceheight estimate beneathcorrectedRascassedeck; notlocalMSLsurvey.",
-    "fleet": "Original17–27myachtforms, mooringgridinsidePortHerculewater; fleet/positions reconstruct observedvisualdensity, notspecificvesselidentities.",
+    "fleet": "Original17\u201327myachtforms, mooringgridinsidePortHerculewater; fleet/positions reconstruct observedvisualdensity, notspecificvesselidentities.",
     "source_reference_times_s": [
       367.59,
       457.49,
@@ -466,5 +481,19 @@
     "stand_support": "Adds downward soffits and grounded front foundations, with corrected land restored beneath stands.",
     "tunnel": "Explicit downward opaque roof and top face; left sea-facing open bays, inland tiled wall, fine0.3x0.5m grout pattern and original light strips.",
     "city_foundation_limit": "Frontage foundations use local ground at nearest footprint edge/minimum footprint terrain; GLO30 remains a DSM, so exact urban street/terrace elevations and all untagged heights remain unverified."
+  },
+  "casino_gardens_source": {
+    "provenance": "gardens-provenance.json",
+    "raw_response": "gardens.map.osm.gz",
+    "filtered_semantics": "gardens.osm.json.gz",
+    "model": "Actual mapped park/garden/grass footprints clipped against mapped pedestrian paths, all building footprints, water and physical road/runoff corridors. Grass replaces underlying Concrete on the same retained terrain-grid cells; heights unchanged. Actual individual-tree positions, tagged species/height where available, default11m broadleaf otherwise. Species/untagged height uncertainty retained; no repeated generic garden strip.",
+    "primary_context": "https://www.montecarlosbm-corporate.com/wp-content/uploads/ra-ri-documents/montecarlosbm_2023_03_31_fr.html"
+  },
+  "critical_view_corrections": {
+    "status": "Source corrections awaiting packaged review",
+    "tunnel": "Cream wall now has both opaque sides; former right wall backface rendered only grout lines. Right is enclosed and tiled, sea-left low parapet/open bays remain. Dark thin grout replaces bright white lattice.",
+    "palaces": "HotelParis8280869/Casino161769674 retain exact footprints but now have arched openings, modeled pilasters/cornices, individual iron balconies and mansard roofs;6/3storeys and24/19m heights remain original estimates. Shared generic office helper no longer supplies these facades.",
+    "camera_registration": "At946m all Hotel vertices are behind camera (\u2212118.79 to\u22126.08m forward); Casino has no vertex inside90degreeHFOV. Judge ornate landmarks from860/880m.946 remains a valid ordinary-city/garden context view.",
+    "ground": "Actual planted garden patches replace gray terrain only within retained garden/grass boundaries; no arbitrary mountainside recoloring or road-height changes."
   }
 }

@@ -216,10 +216,16 @@ def tensile_roof(scene: CircuitScene, shape: BaseGeometry, height: float) -> int
                     fraction = (ax * (y - a[1]) - ay * (x - a[0])) / denominator
                     points.append((x, y, height + 4.2 * fraction))
                 pa, pb, pc = points
-                scene.triangle("Building_TensileRoof", "White", pa, pb, pc)
+                scene.triangle(
+                    "Building_TensileRoof",
+                    "CanopyFabric" if scene.slug == "bahrain" else "White",
+                    pa,
+                    pb,
+                    pc,
+                )
                 scene.triangle(
                     "Building_TensileSoffit",
-                    "Cream",
+                    "CanopyFabric" if scene.slug == "bahrain" else "Cream",
                     add(pc, (0, 0, -0.12)),
                     add(pb, (0, 0, -0.12)),
                     add(pa, (0, 0, -0.12)),
@@ -481,7 +487,8 @@ def curved_footprint_stand(
                         )
                 if roof == "sail":
                     sail = int(
-                        (chain_distance + segment_length * (bay + 0.5) / bays) / sail_span
+                        (chain_distance + segment_length * (bay + 0.5) / bays)
+                        / sail_span
                     )
                     sail_shapes.setdefault(sail, []).extend(roof_shapes)
                     sail_heights[sail] = max(

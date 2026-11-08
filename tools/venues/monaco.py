@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import math
+from itertools import pairwise
 
 from circuit_dataclasses import Building, Point
 from circuit_mesh import add, mul
@@ -35,7 +36,7 @@ def build_venue(scene: CircuitScene) -> None:
         frontage(scene, scene.footprint(osm_id), height, floors)
     mapped_building(scene, 2093796, 24, floors=7, balconies=True,
                     base_z=scene.at(1750).z + 5.8, elevated=True)
-    mapped_building(scene, 8280869, 24, floors=6, roof='pitched', balconies=True, base_z=scene.at(946).z)
+    heritage_frontage(scene, scene.footprint(8280869), 24, 6, scene.at(876).z)
     hotel_crowns(scene)
     casino(scene)
     tunnel(scene)
@@ -44,13 +45,75 @@ def build_venue(scene: CircuitScene) -> None:
     harbour_stand(scene, 2350, 2490, 1, 18, 8)
     harbour_stand(scene, 2570, 2680, 1, 18, 8)
     ordinary_city(scene)
-    for start, end, side, setback in [(280, 550, 1, 10), (700, 870, 1, 8),
-                                      (1050, 1170, -1, 8), (1280, 1440, -1, 10)]:
+    casino_gardens(scene)
+    for start, end, side, setback in [(280, 550, 1, 10), (1280, 1440, -1, 10)]:
         trees(scene, start, end, side, setback=setback, rows=1, spacing=16, height=9)
-    trees(scene, 860, 1030, 1, setback=20, rows=1, spacing=20, height=10, palms=True)
     trees(scene, 1250, 1410, 1, setback=16, rows=1, spacing=17, height=10, palms=True)
     for station in [200, 920, 1370, 2200, 2440, 2950, 3260]:
         mast(scene, station, -1, 12)
+
+
+def casino_gardens(scene: CircuitScene) -> None:
+    bounds = box(*scene.geo(43.738, 7.425), *scene.geo(43.742, 7.432))
+    planted: list[Polygon] = []
+    for tags in [{'leisure': 'park'}, {'leisure': 'garden'}, {'natural': 'wood'}, {'landuse': 'grass'}]:
+        planted.extend(Polygon(ring) for ring in scene.area_polygons(tags))
+    buildings = unary_union([Polygon(building.ring) for building in scene.buildings])
+    protection = unary_union([scene.corridor_mask, *scene.extra_corridors])
+    blocked = unary_union([buildings, protection, *scene.water_shapes])
+    paths = []
+    trees_by_id = {}
+    for dataset in scene.osm:
+        for element in dataset.elements:
+            if element.type == 'node' and element.tags.get('natural') == 'tree':
+                trees_by_id[element.id] = element
+            if element.tags.get('highway') not in {'footway', 'pedestrian', 'path', 'steps'} or len(element.geometry) < 2:
+                continue
+            line = LineString([scene.geo(p.lat, p.lon) for p in element.geometry])
+            try:
+                width = float(element.tags.get('width', '2').removesuffix(' m'))
+            except ValueError:
+                width = 2
+            paths.append(line.buffer(max(.5, min(8, width)) / 2))
+    grass = unary_union(planted).intersection(bounds).difference(unary_union([blocked, *paths]))
+    if grass.is_empty:
+        raise ValueError('Retained Monaco garden footprints must provide actual planted surfaces')
+    components = [grass] if isinstance(grass, Polygon) else list(getattr(grass, 'geoms', []))
+    for component in components:
+        if isinstance(component, Polygon) and component.area > .1:
+            scene.terrain_cutouts.append(component)
+    grid = scene.grid
+    xmin, ymin, xmax, ymax = grass.bounds
+    for row in range(max(0, int((ymin - grid.y) // grid.step)), min(grid.rows - 1, math.ceil((ymax - grid.y) / grid.step))):
+        for column in range(max(0, int((xmin - grid.x) // grid.step)), min(grid.columns - 1, math.ceil((xmax - grid.x) / grid.step))):
+            x, y = grid.x + column * grid.step, grid.y + row * grid.step
+            part = grass.intersection(box(x, y, x + grid.step, y + grid.step))
+            if not part.is_empty:
+                scene.polygon_surface(part, 'Grass', smooth_ground=True)
+    count, skipped = 0, 0
+    tree_blocked = unary_union([buildings.buffer(1.2), protection.buffer(2), *scene.water_shapes])
+    for osm_id, element in trees_by_id.items():
+        x, y = scene.geo(element.lat, element.lon)
+        point = ShapePoint(x, y)
+        if not bounds.covers(point) or tree_blocked.covers(point):
+            skipped += 1
+            continue
+        try:
+            height = float(element.tags.get('height', '11').removesuffix(' m'))
+        except ValueError:
+            height = 11
+        height = max(3, min(24, height))
+        base = (x, y, scene.ground(x, y))
+        species = (element.tags.get('genus', '') + element.tags.get('species', '')).lower()
+        if any(name in species for name in ('phoenix', 'washingtonia', 'trachycarpus', 'palm')):
+            scene.palm(base, height)
+        else:
+            scene.broadleaf(base, height, osm_id % 997)
+        count += 1
+    scene.landmarks.append({'name': 'Mapped Casino-district gardens and heritage trees',
+                            'garden_area_m2': round(grass.area, 3), 'mapped_trees': count,
+                            'trees_excluded_for_clearance_or_query_bounds': skipped,
+                            'dimensions_status': 'Retained OSM garden/grass footprints, pedestrian paths and individual tree positions. Road/corridor/water/buildings excluded; exact native terrain-grid cell subdivision replaces underlying Concrete. Tagged tree height/species retained; missing heights estimated11m, untagged broadleaf form. No terrain-height changes.'})
 
 
 def ordinary_city(scene: CircuitScene) -> None:
@@ -173,14 +236,14 @@ def tunnel(scene: CircuitScene) -> None:
         for side in [-1, 1]:
             pa, pb = a.point(side * (a.half_width + .85)), b.point(side * (b.half_width + .85))
             wall_height = 1.15 if side < 0 else 5.4
-            scene.quad('Building_Tunnel', 'Cream', pa, pb, add(pb, (0, 0, wall_height)), add(pa, (0, 0, wall_height)), 6, 8)
+            scene.banner(pa, pb, wall_height, 'Cream', 'Building_Tunnel', repeat=6)
             for row in range(1, math.ceil(wall_height / .3)):
                 z = row * .3
-                scene.beam('Building_Tunnel', 'White', add(pa, (0, 0, z)), add(pb, (0, 0, z)), .012)
+                scene.beam('Building_Tunnel', 'Steel', add(pa, (0, 0, z)), add(pb, (0, 0, z)), .009)
             for column in range(8):
                 t = column / 8
                 p = add(pa, mul((pb[0] - pa[0], pb[1] - pa[1], pb[2] - pa[2]), t))
-                scene.beam('Building_Tunnel', 'White', p, add(p, (0, 0, wall_height)), .012)
+                scene.beam('Building_Tunnel', 'Steel', p, add(p, (0, 0, wall_height)), .009)
             if side < 0:
                 scene.beam('Building_Tunnel', 'Concrete', add(pa, (0, 0, wall_height)), add(pa, (0, 0, 5.4)), .25)
                 scene.beam('Building_Tunnel', 'Concrete', add(pa, (0, 0, 5.15)), add(pb, (0, 0, 5.15)), .3, .5)
@@ -196,6 +259,94 @@ def tunnel(scene: CircuitScene) -> None:
                 p = a.point(side * (a.half_width - .4), 5.15)
                 q = b.point(side * (b.half_width - .4), 5.15)
                 scene.beam('Building_Tunnel', 'Lamp', p, q, .18, .10)
+
+
+def heritage_frontage(scene: CircuitScene, building: Building,
+                      height: float, floors: int, base: float) -> None:
+    footprint = Polygon(building.ring).difference(scene.road_mask.buffer(1.2))
+    if not isinstance(footprint, Polygon):
+        raise TypeError('Monaco palace frontage needs a connected mapped footprint')
+    ring = list(footprint.exterior.coords)[:-1]
+    if not footprint.exterior.is_ccw:
+        ring.reverse()
+    center = footprint.centroid
+    scene.modeled_buildings.add(building.osm_id)
+    scene.terrain_cutouts.append(footprint)
+    kind = 'Building_MonacoPalace'
+    for a, b in zip(ring, ring[1:] + ring[:1]):
+        span = math.dist(a, b)
+        if span < .35:
+            continue
+        axis = (b[0] - a[0]) / span, (b[1] - a[1]) / span
+        normal = axis[1], -axis[0]
+        def point(u: float, outward: float, z: float, *,
+                  origin: tuple[float, float] = a,
+                  direction: tuple[float, float] = axis,
+                  face_normal: tuple[float, float] = normal) -> Point:
+            return (origin[0] + direction[0] * u + face_normal[0] * outward,
+                    origin[1] + direction[1] * u + face_normal[1] * outward, base + z)
+        scene.banner(point(0, 0, 0), point(span, 0, 0), height, 'Cream', kind)
+        bays = max(1, round(span / 3.8))
+        bay_width = span / bays
+        floor_height = height / floors
+        for floor in range(floors):
+            bottom = floor * floor_height
+            scene.beam(kind, 'White', point(0, .12, bottom), point(span, .12, bottom), .65, .24)
+            for bay in range(bays):
+                u = (bay + .5) * bay_width
+                width = min(1.9 if floor else 2.6, bay_width * .63)
+                low, spring = bottom + .65, bottom + floor_height - width * .5 - .5
+                if spring <= low:
+                    continue
+                pa, pb = point(u - width / 2, .045, low), point(u + width / 2, .045, low)
+                scene.banner(pa, pb, spring - low, 'Glass' if floor else 'Black', kind)
+                arc = [point(u + math.cos(math.pi * i / 12) * width / 2, .045,
+                             spring + math.sin(math.pi * i / 12) * width / 2) for i in range(13)]
+                anchor = point(u, .045, spring)
+                for left, right in pairwise(arc):
+                    scene.triangle(kind, 'Glass' if floor else 'Black', anchor, left, right)
+                    scene.triangle(kind, 'Glass' if floor else 'Black', anchor, right, left)
+                    scene.beam(kind, 'White', add(left, (normal[0] * .09, normal[1] * .09, 0)),
+                               add(right, (normal[0] * .09, normal[1] * .09, 0)), .11)
+                for edge in (-width / 2, width / 2):
+                    scene.beam(kind, 'White', point(u + edge, .13, low), point(u + edge, .13, spring), .13)
+                pier = bay * bay_width
+                scene.beam(kind, 'White', point(pier, .18, bottom + .3), point(pier, .18, bottom + floor_height - .3), .3)
+                if floor:
+                    left, right = point(u - width * .7, 1, low - .15), point(u + width * .7, 1, low - .15)
+                    back_left, back_right = point(u - width * .7, 0, low - .15), point(u + width * .7, 0, low - .15)
+                    scene.quad(kind, 'White', back_left, back_right, right, left, up=True)
+                    scene.quad(kind, 'Cream', add(left, (0, 0, -.18)), add(right, (0, 0, -.18)),
+                               add(back_right, (0, 0, -.18)), add(back_left, (0, 0, -.18)), up=False)
+                    for z in (.2, .55, .9):
+                        scene.beam(kind, 'Black', add(left, (0, 0, z)), add(right, (0, 0, z)), .035)
+                    for rail in range(7):
+                        p = add(left, ((right[0] - left[0]) * rail / 6, (right[1] - left[1]) * rail / 6, .12))
+                        scene.beam(kind, 'Black', p, add(p, (0, 0, .8)), .025)
+        for lift, depth in [(height - .6, .55), (height, .95), (height + .35, .65)]:
+            scene.beam(kind, 'White', point(0, .15, lift), point(span, .15, lift), depth, .25)
+        roof_points = []
+        for x, y in (a, b):
+            distance = math.hypot(center.x - x, center.y - y)
+            roof_points.append((x + (center.x - x) * 2.5 / max(2.5, distance),
+                                y + (center.y - y) * 2.5 / max(2.5, distance), base + height + 3))
+        scene.quad(kind, 'Roof', point(0, 0, height), point(span, 0, height), roof_points[1], roof_points[0], up=True)
+    inner_ring = []
+    for x, y in ring:
+        distance = math.hypot(center.x - x, center.y - y)
+        inner_ring.append((x + (center.x - x) * 2.5 / max(2.5, distance),
+                           y + (center.y - y) * 2.5 / max(2.5, distance)))
+    roof = Polygon(inner_ring)
+    if not roof.is_valid:
+        raise ValueError('Monaco palace mansard outline must be valid')
+    for triangle in triangulate(roof):
+        if roof.covers(triangle):
+            a, b, c = list(triangle.exterior.coords)[:3]
+            scene.triangle(kind, 'Roof', (a[0], a[1], base + height + 3),
+                           (b[0], b[1], base + height + 3), (c[0], c[1], base + height + 3))
+    scene.landmarks.append({'name': 'Hotel de Paris' if building.osm_id == 8280869 else 'Casino heritage frontage',
+                            'osm_id': building.osm_id, 'height_m': height,
+                            'dimensions_status': 'Actual mapped footprint; original arched openings, relief pilasters/cornices, individual iron balconies and mansard envelope reconstructed from supplied330s and CasinoSquare footage. Storey heights/bay dimensions estimated; no generic office facade.'})
 
 
 def hotel_crowns(scene: CircuitScene) -> None:
@@ -214,7 +365,7 @@ def hotel_crowns(scene: CircuitScene) -> None:
 
 
 def casino(scene: CircuitScene) -> None:
-    mapped_building(scene, 161769674, 19, facade='Cream', floors=3, roof='pitched', base_z=scene.at(946).z)
+    heritage_frontage(scene, scene.footprint(161769674), 19, 3, scene.at(876).z)
     building = scene.footprint(161769674)
     ring = building.ring
     center = (sum(p[0] for p in ring) / len(ring), sum(p[1] for p in ring) / len(ring))

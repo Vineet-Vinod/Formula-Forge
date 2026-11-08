@@ -96,7 +96,7 @@ def field_nodes(
     floor.r = (
         0.35
         if "Facade" in material.get_name()
-        else 0.05
+        else 0.15
         if any(word in material.get_name() for word in ("PresentationSurface", "Asphalt"))
         else 0.12
     )
@@ -125,22 +125,26 @@ def shade(
     connect(source, output, multiply, "A")
     connect(field_nodes(material, bounds, texture), "", multiply, "B")
     EDIT.connect_material_property(multiply, "", unreal.MaterialProperty.MP_BASE_COLOR)
+    name = material.get_name()
+    painted = name in ("White", "Cream", "Red", "Black", "Steel", "Green", "Yellow") or name.startswith("Runoff")
+    lettering = name.startswith("Panel") or name in ("VenueSign", "EventPanel")
+    marker = name in ("50", "100", "150", "200")
     if any(
         word in material.get_name()
         for word in ("PresentationSurface", "Asphalt", "SurfaceMasked", "Pavement", "TreeCanopy")
-    ) or material.get_name() in ("White", "Cream"):
+    ) or painted or lettering or marker or name == "CanopyFabric":
         strength = EDIT.create_material_expression(
             material, unreal.MaterialExpressionConstant
         )
         strength.r = (
-            0.25
+            8.0
             if "Asphalt" in material.get_name()
-            else 0.35
-            if "PresentationSurface" in material.get_name()
-            else 0.5
-            if material.get_name() in ("White", "Cream")
-            else 0.3
-            if "SurfaceMasked" in material.get_name()
+            else 6.0
+            if name == "CanopyFabric"
+            else 1.8
+            if "PresentationSurface" in name or painted or marker
+            else 0.6
+            if "SurfaceMasked" in name or lettering
             else 0.07
         )
         bounce = EDIT.create_material_expression(

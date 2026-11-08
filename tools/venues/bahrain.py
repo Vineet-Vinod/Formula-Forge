@@ -144,10 +144,12 @@ def sakhir_pits(scene: CircuitScene) -> None:
                     grid[column + 1][row + 1],
                     grid[column][row + 1],
                 )
-                scene.quad("Building_SakhirFoldedRoof", "White", pa, pb, pc, pd, up=True)
+                scene.quad(
+                    "Building_SakhirFoldedRoof", "CanopyFabric", pa, pb, pc, pd, up=True
+                )
                 scene.quad(
                     "Building_SakhirFoldedSoffit",
-                    "Cream",
+                    "CanopyFabric",
                     add(pa, (0, 0, -0.14)),
                     add(pb, (0, 0, -0.14)),
                     add(pc, (0, 0, -0.14)),
