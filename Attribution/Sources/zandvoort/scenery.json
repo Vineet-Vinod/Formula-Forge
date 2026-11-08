@@ -1,0 +1,223 @@
+{
+  "recipe": "make circuit-assets CIRCUIT=zandvoort",
+  "tiles": 128,
+  "triangles": 809549,
+  "road_sha256": "f9ff420aa8714464c4b35ce122b628ceba983e79454108c35d44c0a3787fa0be",
+  "terrain_sha256": "84c222c25f07d507a044bb39c21fd9945055d380f9b409b957b8eb66057a9f7a",
+  "landmarks": [
+    {
+      "name": "Paved pit lane and working apron",
+      "start_m": 0.0,
+      "end_m": 215.0,
+      "side": 1,
+      "outer_offset_m": 15.6,
+      "source_note": "Mapped Pitgebouw52473177 true155.6m garagefront35.2\u2192190.8m liesRIGHT, edge offsets11.3\u201315.3m. Rear compound also projects500\u2013815m and is not part of racing pit frontage.15.6m pavingback reaches front. Supplied80.90/299.62s pitstraight; rounded extensions reconstructed.",
+      "access": "Visual service area outside the closed driving boundary."
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 4050,
+      "end_m": 4250,
+      "side": 1,
+      "material": "PanelWhite"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 4050,
+      "end_m": 4250,
+      "side": -1,
+      "material": "PanelWhite"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 0,
+      "end_m": 280,
+      "side": 1,
+      "material": "PanelWhite"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 0,
+      "end_m": 280,
+      "side": -1,
+      "material": "PanelWhite"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 330,
+      "end_m": 530,
+      "side": -1,
+      "material": "PanelDHL"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 790,
+      "end_m": 970,
+      "side": 1,
+      "material": "PanelDHL"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 2950,
+      "end_m": 3160,
+      "side": 1,
+      "material": "PanelYellow"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 2950,
+      "end_m": 3160,
+      "side": -1,
+      "material": "PanelYellow"
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 400,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 873,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 2538,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 3186,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "osm_id": 52473177,
+      "name": "Pitgebouw",
+      "height_m": 13,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "ground_floor": "Recessed road-facing garage bays",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 3990,
+      "end_m": 4240,
+      "side": -1,
+      "rows": 21
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 0,
+      "end_m": 250,
+      "side": -1,
+      "rows": 21
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 300,
+      "end_m": 480,
+      "side": -1,
+      "rows": 21
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 680,
+      "end_m": 820,
+      "side": -1,
+      "rows": 18
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 930,
+      "end_m": 1050,
+      "side": -1,
+      "rows": 15
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 3000,
+      "end_m": 3140,
+      "side": -1,
+      "rows": 16
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 3500,
+      "end_m": 3690,
+      "side": -1,
+      "rows": 20
+    }
+  ],
+  "vegetation": [
+    {
+      "start_m": 1100,
+      "end_m": 1510,
+      "side": 1,
+      "setback_m": 24,
+      "rows": 1,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 1120,
+      "end_m": 1460,
+      "side": -1,
+      "setback_m": 24,
+      "rows": 1,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 1790,
+      "end_m": 2050,
+      "side": 1,
+      "setback_m": 24,
+      "rows": 1,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 1800,
+      "end_m": 2040,
+      "side": -1,
+      "setback_m": 24,
+      "rows": 1,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 2160,
+      "end_m": 2770,
+      "side": 1,
+      "setback_m": 24,
+      "rows": 1,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 2150,
+      "end_m": 2780,
+      "side": -1,
+      "setback_m": 24,
+      "rows": 1,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 3270,
+      "end_m": 3460,
+      "side": 1,
+      "setback_m": 24,
+      "rows": 1,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    }
+  ],
+  "review_status": "Awaiting packaged whole-route review; asset import is not visual approval."
+}

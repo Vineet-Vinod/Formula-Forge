@@ -1,0 +1,201 @@
+{
+  "recipe": "make circuit-assets CIRCUIT=austria",
+  "tiles": 149,
+  "triangles": 852704,
+  "road_sha256": "d6f39b8390deb936be2c083cc6a44c7ea30d053d3afa116e7f8e281898d193d0",
+  "terrain_sha256": "6408e26119b1d40ee27a2177945afc07c4f942b1c7a06ed3919193ec6d5cfc4b",
+  "landmarks": [
+    {
+      "name": "Paved pit lane and working apron",
+      "start_m": 4110.0,
+      "end_m": 100.0,
+      "side": 1,
+      "outer_offset_m": 19.0,
+      "source_note": "Mapped Box footprint118364939 road-facing edges project4112\u20134318/0\u201393m, road-edge offsets12.1\u201318.7m.19m pavingback covers stepped facade frontage. Actual reference220.27/574.06/715.57s pitstraight; endpoints rounded to10m, not entry/exit survey.",
+      "access": "Visual service area outside the closed driving boundary."
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 4040,
+      "end_m": 4310,
+      "side": 1,
+      "material": "PanelLenovo"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 4040,
+      "end_m": 4310,
+      "side": -1,
+      "material": "PanelLenovo"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 0,
+      "end_m": 260,
+      "side": 1,
+      "material": "PanelLenovo"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 0,
+      "end_m": 260,
+      "side": -1,
+      "material": "PanelLenovo"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 1930,
+      "end_m": 2110,
+      "side": -1,
+      "material": "PanelWhite"
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 285,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 1228,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 2047,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 2584,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Der Bulle vom Spielberg",
+      "osm_id": 5443064309,
+      "height_m": 17.2,
+      "dimensions_status": "OSM position, official17.2moverallheight; bull anatomy, ring span and orientation reconstructed from reference432.54s and sculptor photographs."
+    },
+    {
+      "osm_id": 118364939,
+      "name": "Box",
+      "height_m": 12,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "ground_floor": "Recessed road-facing garage bays",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 3990,
+      "end_m": 4310,
+      "side": -1,
+      "rows": 20
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 70,
+      "end_m": 250,
+      "side": -1,
+      "rows": 19
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 330,
+      "end_m": 580,
+      "side": -1,
+      "rows": 19
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 1110,
+      "end_m": 1300,
+      "side": -1,
+      "rows": 20
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 1900,
+      "end_m": 2110,
+      "side": -1,
+      "rows": 19
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 2670,
+      "end_m": 2890,
+      "side": 1,
+      "rows": 14
+    }
+  ],
+  "vegetation": [
+    {
+      "start_m": 470,
+      "end_m": 1120,
+      "side": 1,
+      "setback_m": 35,
+      "rows": 4,
+      "species_form": "conifer",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 470,
+      "end_m": 1110,
+      "side": -1,
+      "setback_m": 35,
+      "rows": 4,
+      "species_form": "conifer",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 1320,
+      "end_m": 1880,
+      "side": -1,
+      "setback_m": 55,
+      "rows": 4,
+      "species_form": "conifer",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 2140,
+      "end_m": 2630,
+      "side": -1,
+      "setback_m": 40,
+      "rows": 4,
+      "species_form": "conifer",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 2700,
+      "end_m": 3340,
+      "side": -1,
+      "setback_m": 40,
+      "rows": 4,
+      "species_form": "conifer",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 2850,
+      "end_m": 3350,
+      "side": 1,
+      "setback_m": 65,
+      "rows": 4,
+      "species_form": "conifer",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 3390,
+      "end_m": 3810,
+      "side": -1,
+      "setback_m": 55,
+      "rows": 4,
+      "species_form": "conifer",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    }
+  ],
+  "review_status": "Awaiting packaged whole-route review; asset import is not visual approval."
+}

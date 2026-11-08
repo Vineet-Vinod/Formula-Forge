@@ -1,0 +1,217 @@
+{
+  "recipe": "make circuit-assets CIRCUIT=hockenheim",
+  "tiles": 149,
+  "triangles": 1056982,
+  "road_sha256": "e1931211f2fb2738b84d89f7e2e3e5334c054d15676352e641abede48b98ddf9",
+  "terrain_sha256": "0502f6e0d0b22746062be629bfbffa4c61dddf83f64da971fcfad228ef43919d",
+  "landmarks": [
+    {
+      "name": "Paved pit lane and working apron",
+      "start_m": 0.0,
+      "end_m": 235.0,
+      "side": 1,
+      "outer_offset_m": 22.4,
+      "source_note": "Mapped Boxengebaeude202491057 front21\u2192217.4m, road-edge offsets18.7\u201322.2m.22.4m covers variable facade setback. Supplied48.33s mainstraight confirms pit-side paved area RIGHT. End extensions rounded reconstruction.",
+      "access": "Visual service area outside the closed driving boundary."
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 4400,
+      "end_m": 4560,
+      "side": -1,
+      "material": "PanelWhite"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 0,
+      "end_m": 230,
+      "side": 1,
+      "material": "PanelWhite"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 0,
+      "end_m": 230,
+      "side": -1,
+      "material": "PanelWhite"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 2760,
+      "end_m": 3040,
+      "side": 1,
+      "material": "PanelWhite"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 3720,
+      "end_m": 3900,
+      "side": 1,
+      "material": "PanelWhite"
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 268,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 849,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 2103,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 2828,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 3801,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "osm_id": 202491057,
+      "name": "Boxengeb\u00e4ude",
+      "height_m": 13,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "ground_floor": "Recessed road-facing garage bays",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 256789030,
+      "name": "SACHS-Haus",
+      "height_m": 8,
+      "removed_road_area_m2": -0.0,
+      "structure": "enclosed",
+      "ground_floor": "Facade windows",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 232009816,
+      "name": "Baden-W\u00fcrttemberg-Center",
+      "height_m": 25,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "ground_floor": "Facade windows",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 0,
+      "end_m": 180,
+      "side": -1,
+      "rows": 28
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 4430,
+      "end_m": 4574,
+      "side": -1,
+      "rows": 28
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 230,
+      "end_m": 430,
+      "side": -1,
+      "rows": 24
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 3280,
+      "end_m": 3530,
+      "side": -1,
+      "rows": 24
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 3660,
+      "end_m": 3920,
+      "side": -1,
+      "rows": 27
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 3970,
+      "end_m": 4390,
+      "side": -1,
+      "rows": 29
+    },
+    {
+      "name": "Mercedes arena cylindrical pavilion",
+      "station_m": 2930,
+      "dimensions_status": "Approximate67mright offset; original circular pavilion reconstruction from290/330svideo, not a surveyed footprint."
+    }
+  ],
+  "vegetation": [
+    {
+      "start_m": 500,
+      "end_m": 780,
+      "side": -1,
+      "setback_m": 42,
+      "rows": 3,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 1020,
+      "end_m": 1880,
+      "side": -1,
+      "setback_m": 42,
+      "rows": 3,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 1060,
+      "end_m": 1830,
+      "side": 1,
+      "setback_m": 42,
+      "rows": 3,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 2220,
+      "end_m": 2650,
+      "side": -1,
+      "setback_m": 42,
+      "rows": 3,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 2320,
+      "end_m": 2640,
+      "side": 1,
+      "setback_m": 42,
+      "rows": 3,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 3060,
+      "end_m": 3290,
+      "side": 1,
+      "setback_m": 42,
+      "rows": 3,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    }
+  ],
+  "review_status": "Awaiting packaged whole-route review; asset import is not visual approval."
+}

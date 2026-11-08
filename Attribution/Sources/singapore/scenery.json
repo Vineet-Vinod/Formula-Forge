@@ -1,0 +1,749 @@
+{
+  "recipe": "make circuit-assets CIRCUIT=singapore",
+  "tiles": 147,
+  "triangles": 1157004,
+  "road_sha256": "5643c49144b08d65b4f75e024408fa6d72e7f7ebdba3df91802d37c8f68b966d",
+  "terrain_sha256": "5761c535c9e7f1b2bb86f061fe2d83e272015f79e95487bd4bfd6cf66fea984f",
+  "landmarks": [
+    {
+      "name": "Paved pit lane and working apron",
+      "start_m": 4710.0,
+      "end_m": 170.0,
+      "side": -1,
+      "outer_offset_m": 13.0,
+      "source_note": "Authored Marina Bay garage frontage scene.pit_building(4710,170,-1) lies exactly 13 m beyond road edge. The retained compound49890775 is excluded from duplicate extrusion. Reference530/534/538/566/594/598/602s confirms garages left, red mainstand right and yellow apron along the pit wall. Interval crosses native zero.",
+      "access": "Visual service area outside the closed driving boundary."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 323,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 486,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 877,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 1702,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 2572,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 2966,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 3513,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 4246,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 4710,
+      "end_m": 4940,
+      "side": -1,
+      "material": "PanelSingapore"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 0,
+      "end_m": 170,
+      "side": -1,
+      "material": "PanelSingapore"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 4710,
+      "end_m": 4940,
+      "side": 1,
+      "material": "PanelSingapore"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 0,
+      "end_m": 170,
+      "side": 1,
+      "material": "PanelSingapore"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 780,
+      "end_m": 920,
+      "side": -1,
+      "material": "PanelYellow"
+    },
+    {
+      "name": "Esplanade Concert Hall",
+      "osm_id": 256163011,
+      "height_m": 35,
+      "roof": "Ellipsoidal glass shell with individual projecting triangular sunshades"
+    },
+    {
+      "name": "Esplanade Theatre",
+      "osm_id": 256163012,
+      "height_m": 35,
+      "roof": "Ellipsoidal glass shell with individual projecting triangular sunshades"
+    },
+    {
+      "name": "Singapore Flyer",
+      "osm_id": 51761904,
+      "height_m": 12,
+      "facade": "modern"
+    },
+    {
+      "name": "Singapore Flyer",
+      "osm_id": 230082125,
+      "diameter_m": 150,
+      "height_m": 165,
+      "capsules": 28,
+      "source": "Singapore Flyer operator fun facts; wheel orientation estimated from mapped base."
+    },
+    {
+      "name": "Marina Bay Sands",
+      "latitude": 1.28375,
+      "longitude": 103.86055,
+      "height_m": 200,
+      "skypark_length_m": 340,
+      "skypark_width_m": 38,
+      "source": "Arup project description; geographic position and tower plan are visual estimates."
+    },
+    {
+      "name": "Raffles City Shopping Centre",
+      "osm_id": 39487263,
+      "height_m": 30.0,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 46594815,
+      "height_m": 16.0,
+      "facade": "modern"
+    },
+    {
+      "name": "Mandarin Oriental Hotel",
+      "osm_id": 46594816,
+      "height_m": 80,
+      "facade": "modern"
+    },
+    {
+      "name": "Singapore Recreation Club",
+      "osm_id": 46594819,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "Singapore Cricket Club",
+      "osm_id": 46594820,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "One Raffles Link",
+      "osm_id": 46594821,
+      "height_m": 40.0,
+      "facade": "modern"
+    },
+    {
+      "name": "Supreme Court of Singapore",
+      "osm_id": 46594825,
+      "height_m": 17.0,
+      "facade": "modern"
+    },
+    {
+      "name": "Suntec Tower 5",
+      "osm_id": 46595145,
+      "height_m": 115,
+      "facade": "modern"
+    },
+    {
+      "name": "Suntec Tower 1",
+      "osm_id": 46595146,
+      "height_m": 181,
+      "facade": "modern"
+    },
+    {
+      "name": "Suntec Tower 2",
+      "osm_id": 46595147,
+      "height_m": 181,
+      "facade": "modern"
+    },
+    {
+      "name": "Suntec Tower 3",
+      "osm_id": 46595148,
+      "height_m": 181,
+      "facade": "modern"
+    },
+    {
+      "name": "Asian Civilisations Museum",
+      "osm_id": 46595390,
+      "height_m": 15.0,
+      "facade": "classical"
+    },
+    {
+      "name": "One Fullerton",
+      "osm_id": 46595394,
+      "height_m": 12.0,
+      "facade": "modern"
+    },
+    {
+      "name": "The Fullerton Hotel",
+      "osm_id": 46595395,
+      "height_m": 25,
+      "facade": "classical"
+    },
+    {
+      "name": "Old City Hall",
+      "osm_id": 46595597,
+      "height_m": 25,
+      "facade": "classical"
+    },
+    {
+      "name": "Millenia Tower",
+      "osm_id": 48035153,
+      "height_m": 223,
+      "facade": "modern"
+    },
+    {
+      "name": "Suntec Tower 4",
+      "osm_id": 102938119,
+      "height_m": 181,
+      "facade": "modern"
+    },
+    {
+      "name": "Maybank",
+      "osm_id": 106193386,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Saint Andrew's Cathedral",
+      "osm_id": 155980025,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 155987124,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Centennial Tower",
+      "osm_id": 155988210,
+      "height_m": 158,
+      "facade": "modern"
+    },
+    {
+      "name": "DBS Foundation Outdoor Theatre",
+      "osm_id": 164881347,
+      "height_m": 16.0,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 166311281,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 166311282,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 166311389,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 166311391,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Old Supreme Court",
+      "osm_id": 170960936,
+      "height_m": 25,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 172368145,
+      "height_m": 30.0,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 172373820,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 172373823,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Singapore Flyer Car Park",
+      "osm_id": 172474137,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "The Fullerton Waterboat House",
+      "osm_id": 172931401,
+      "height_m": 11.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 173132989,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 173132990,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 173223954,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 191650145,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "The Arts House",
+      "osm_id": 243427705,
+      "height_m": 15.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Old Civil District Court",
+      "osm_id": 243427888,
+      "height_m": 15.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 255713963,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 255713969,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "The Cenotaph",
+      "osm_id": 256153714,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 256275064,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 256275069,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 257192962,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Cathedral Caf\u00e9",
+      "osm_id": 257192963,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Marina Square",
+      "osm_id": 303311927,
+      "footprint_clip_m2": 781.88,
+      "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
+    },
+    {
+      "name": "Marina Square",
+      "osm_id": 303311927,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Esplanade Annexe",
+      "osm_id": 325895782,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "NCO Club",
+      "osm_id": 380512068,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Suntec Singapore Convention & Exhibition Centre",
+      "osm_id": 393090489,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped footprint clearance",
+      "osm_id": 393090492,
+      "footprint_clip_m2": 372.69,
+      "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 393090492,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 393118060,
+      "height_m": 16.0,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 393118061,
+      "height_m": 16.0,
+      "facade": "modern"
+    },
+    {
+      "name": "South Beach Residences",
+      "osm_id": 427064883,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 452647613,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 452647616,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Front Hall",
+      "osm_id": 474991675,
+      "height_m": 15.0,
+      "facade": "modern"
+    },
+    {
+      "name": "Hallpike Public Hall",
+      "osm_id": 474991676,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Chamber",
+      "osm_id": 474991677,
+      "height_m": 15.0,
+      "facade": "modern"
+    },
+    {
+      "name": "Parliament Secretariat's Office",
+      "osm_id": 474991678,
+      "height_m": 15.0,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 618575237,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 618575239,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 618575240,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 618575241,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 618575242,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 620812487,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 660609806,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 686335804,
+      "height_m": 15.0,
+      "facade": "modern"
+    },
+    {
+      "name": "Singtel Waterfront Theatre",
+      "osm_id": 692103122,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Parkroyal Collection Marina Bay",
+      "osm_id": 742205653,
+      "height_m": 65,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 743618324,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Millenia Walk",
+      "osm_id": 747734200,
+      "height_m": 46.5,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 878096841,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1186148618,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1223168029,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "NS Square",
+      "osm_id": 1492514975,
+      "footprint_clip_m2": 54.48,
+      "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
+    },
+    {
+      "name": "NS Square",
+      "osm_id": 1492514975,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Authored pit building",
+      "start_m": 4710,
+      "end_m": 170,
+      "side": -1,
+      "height_m": 15
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 4720,
+      "end_m": 120,
+      "side": 1,
+      "rows": 23
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 2200,
+      "end_m": 2530,
+      "side": -1,
+      "rows": 14
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 3210,
+      "end_m": 3450,
+      "side": -1,
+      "rows": 14
+    },
+    {
+      "name": "Singapore floodlight recipe",
+      "structure": "Small race fittings at roughly 7 m intervals along continuous paired cables, supported about every 42 m; pit-side cable posts attach above the garage roof. Separate civic lamps include taller curved streetlamps along Esplanade Drive. Lower race-light line at Anderson Bridge has gradual cable-height transitions.",
+      "reference": "Saved/Refs/singapore.mp4:534,598,614,618,642,650 seconds",
+      "confidence": "High for continuous cable strings and separate streetlamps; moderate for bridge distinction; low for metric height/spacing estimates. Cable support registrations are authoring estimates."
+    }
+  ],
+  "vegetation": [
+    {
+      "type": "broadleaf",
+      "start_m": 500,
+      "end_m": 1120,
+      "side": -1,
+      "count": 35,
+      "setback_m": 5,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 650,
+      "end_m": 1150,
+      "side": 1,
+      "count": 23,
+      "setback_m": 7,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 1380,
+      "end_m": 1950,
+      "side": 1,
+      "count": 18,
+      "setback_m": 5,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 1950,
+      "end_m": 2600,
+      "side": -1,
+      "count": 37,
+      "setback_m": 6,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 2250,
+      "end_m": 2750,
+      "side": 1,
+      "count": 30,
+      "setback_m": 4,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 2750,
+      "end_m": 3120,
+      "side": 1,
+      "count": 21,
+      "setback_m": 6,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 3150,
+      "end_m": 3750,
+      "side": -1,
+      "count": 36,
+      "setback_m": 6,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 3150,
+      "end_m": 3750,
+      "side": 1,
+      "count": 19,
+      "setback_m": 8,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 3900,
+      "end_m": 4450,
+      "side": -1,
+      "count": 23,
+      "setback_m": 12,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "palms",
+      "start_m": 450,
+      "end_m": 800,
+      "side": 1,
+      "count": 8,
+      "setback_m": 8,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "palms",
+      "start_m": 1200,
+      "end_m": 1600,
+      "side": -1,
+      "count": 7,
+      "setback_m": 8,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "palms",
+      "start_m": 4000,
+      "end_m": 4350,
+      "side": 1,
+      "count": 5,
+      "setback_m": 8,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    }
+  ],
+  "review_status": "Awaiting packaged whole-route review; asset import is not visual approval."
+}

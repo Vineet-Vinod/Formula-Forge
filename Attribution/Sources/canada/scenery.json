@@ -1,10 +1,19 @@
 {
   "recipe": "make circuit-assets CIRCUIT=canada",
   "tiles": 159,
-  "triangles": 638054,
+  "triangles": 639790,
   "road_sha256": "e1ca993f00bebddbaa6f7efbefca8dcf28480f22104b58c5d49af886cc923e94",
   "terrain_sha256": "1bfe05750beafbd59aee48c03aabdca186a18a544ce80d40b2b42a3e364418db",
   "landmarks": [
+    {
+      "name": "Paved pit lane and working apron",
+      "start_m": 4095.0,
+      "end_m": 95.0,
+      "side": -1,
+      "outer_offset_m": 16.2,
+      "source_note": "Mapped Paddocks42229671 long327m garagefront projects4114\u219280m across native0, offset15.1\u201315.9m fromroadedge.16.2m pavingback reaches frontage. Supplied372.24/463.30s show garages LEFT and grandstand RIGHT. Short end extensions reconstructed.",
+      "access": "Visual service area outside the closed driving boundary."
+    },
     {
       "name": "Reference event panels",
       "start_m": 4200,
@@ -96,6 +105,7 @@
       "height_m": 14,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Recessed road-facing garage bays",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -105,6 +115,7 @@
       "height_m": 28,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -114,6 +125,7 @@
       "height_m": 22,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },

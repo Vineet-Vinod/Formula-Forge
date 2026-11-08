@@ -1,0 +1,243 @@
+{
+  "recipe": "make circuit-assets CIRCUIT=buddh",
+  "tiles": 162,
+  "triangles": 1369195,
+  "road_sha256": "7ee160614f5d132771b6400128d983695ffb8effa85915e9249ef0d1c2933a3c",
+  "terrain_sha256": "7f3364a0809bc72cbf31bee31cafefc4335370ede8bba7d34c81b3e39f6f91a5",
+  "landmarks": [
+    {
+      "name": "Paved pit lane and working apron",
+      "start_m": 470.0,
+      "end_m": 870.0,
+      "side": 1,
+      "outer_offset_m": 23.5,
+      "source_note": "Custom mapped pit compound188019421: use its articulated road-facing ring edges9\u201315, not the 401.64\u00d7118.80m compound OBB. Frontage endpoints register to native470.0 and868.1m; intermediate offsets vary10.18\u201323.25m outside the road edge. A fixed23.5m paving back extent covers that entire front and can extend under the building at narrower ends. Reference113/117/121/125/201/205s confirms garages right and mainstand left. These are retained-footprint registrations, not a surveyed pit-lane width.",
+      "access": "Visual service area outside the closed driving boundary."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 1041,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 1429,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 2719,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 3279,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 304,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 400,
+      "end_m": 1000,
+      "side": -1,
+      "material": "PanelAirtel"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 400,
+      "end_m": 1000,
+      "side": 1,
+      "material": "PanelAirtel"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 3110,
+      "end_m": 3310,
+      "side": -1,
+      "material": "PanelAirtel"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 3950,
+      "end_m": 4320,
+      "side": -1,
+      "material": "PanelAirtel"
+    },
+    {
+      "name": "Mapped spectator terrace",
+      "osm_id": 169886092,
+      "roof": "cantilever",
+      "rows": 30,
+      "seat_material": "SeatBlue",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 188019421,
+      "height_m": 11,
+      "facade": "modern"
+    },
+    {
+      "name": "Buddh registered garage portals",
+      "osm_id": 188019421,
+      "start_m": 470,
+      "end_m": 870,
+      "registration": "Road-facing retained ring edges9\u201315; dark full-width ground-floor portals, white structural piers and overhead roller boxes replace office-window appearance. Garage threshold elevations follow the adjacent road/pit apron; heights and bay spacing estimated from reference113\u2013125s."
+    },
+    {
+      "name": "Buddh mapped pit and projecting control roofs",
+      "osm_id": 188019421,
+      "start_m": 470,
+      "end_m": 870,
+      "dimensions": "Registered articulated garage frontage and two angular layered roof groups estimated from 2013 footage."
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 188028655,
+      "height_m": 8,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 496650379,
+      "height_m": 8,
+      "facade": "modern"
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 1260,
+      "end_m": 1400,
+      "side": -1,
+      "rows": 24
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 2640,
+      "end_m": 2800,
+      "side": -1,
+      "rows": 20
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 3950,
+      "end_m": 4390,
+      "side": -1,
+      "rows": 24
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 4550,
+      "end_m": 4700,
+      "side": -1,
+      "rows": 19
+    },
+    {
+      "name": "Buddh timing pylon",
+      "station_m": 3080,
+      "height_m": 26,
+      "dimensions": "White timing pylon and dark position panel observed near the infield braking approach; placement estimated."
+    }
+  ],
+  "vegetation": [
+    {
+      "type": "palms",
+      "start_m": 700,
+      "end_m": 1250,
+      "side": 1,
+      "count": 9,
+      "setback_m": 35,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "palms",
+      "start_m": 1500,
+      "end_m": 2450,
+      "side": -1,
+      "count": 22,
+      "setback_m": 28,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "palms",
+      "start_m": 1550,
+      "end_m": 2450,
+      "side": 1,
+      "count": 19,
+      "setback_m": 40,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "palms",
+      "start_m": 2800,
+      "end_m": 3250,
+      "side": -1,
+      "count": 9,
+      "setback_m": 55,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "palms",
+      "start_m": 3450,
+      "end_m": 3800,
+      "side": 1,
+      "count": 4,
+      "setback_m": 60,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "palms",
+      "start_m": 4400,
+      "end_m": 4660,
+      "side": 1,
+      "count": 3,
+      "setback_m": 45,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 1000,
+      "end_m": 1300,
+      "side": -1,
+      "count": 7,
+      "setback_m": 90,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 2000,
+      "end_m": 2600,
+      "side": 1,
+      "count": 14,
+      "setback_m": 95,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 3100,
+      "end_m": 3600,
+      "side": -1,
+      "count": 12,
+      "setback_m": 95,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 3700,
+      "end_m": 3900,
+      "side": 1,
+      "count": 4,
+      "setback_m": 100,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    }
+  ],
+  "review_status": "Awaiting packaged whole-route review; asset import is not visual approval."
+}

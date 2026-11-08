@@ -134,8 +134,7 @@
       ],
       "name": "Stamford and Padang T8–9",
       "reviewed_video_seconds": [
-        1148.7,
-        1250.81
+        1148.7
       ],
       "observed": "The Old City Hall colonnade and former Supreme Court give the Padang section its pale civic architecture. A broad lawn and mature tree canopy sit behind close fencing. Low cricket and recreation clubs face them. Kerbs and yellow junction marks remain distinct.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
@@ -179,7 +178,7 @@
         1046.6,
         1250.81
       ],
-      "observed": "The current 19-turn layout has a straight past the NS Square construction area. White worksite walls, open skyline and the Singapore Flyer define it. Preserve this acceleration section and the paved areas behind mesh fencing.",
+      "observed": "Modern NS Square bypass/waterfront straight, continuous urban fencing and overhead race-light strings.1250.81s directly shows the Singapore Flyer rim/capsule ring ahead above the road; its white capsule points contrast with a dark rim/sky. Preserve the current19-turn layout without the removed old grandstand tunnel sequence.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
     },
     {
@@ -230,5 +229,21 @@
     "The corrected 5.3 m road relief uses registered F1 topography controls, with the bridge high point between T13 and T14. Former GLO-90 rooftop spikes are excluded from the driving profile.",
     "Zero OSM height values mean unknown; they do not justify removing the skyline. Landmark heights are retained separately.",
     "The Flyer retail footprint does not describe the wheel; the Esplanade compound requires curved roof shells and individual sunshades."
-  ]
+  ],
+  "flyer_reference_registration": {
+    "osm_id": 230082125,
+    "direct_video_seconds": [
+      1250.81
+    ],
+    "direct_frame": "build/reviews/singapore/reference/overview-12.jpg",
+    "observed": "The circular rim and distinct white capsule points are directly visible ahead above the waterfront straight. The rim is dark against the night sky; do not substitute a uniformly glowing neon circle.",
+    "native_frame_station_estimate_m": 4100,
+    "camera_station_uncertainty_m": 100,
+    "mapped_nearest_station_m": 4522.7,
+    "mapped_driver_side": "left",
+    "mapped_centerline_distance_m": 80.0,
+    "geographic_check": "At native4100m the mapped wheel is373m forward and2m right of the source tangent, matching its near-central forward skyline view. By4480m it is only37m forward and82m left, mostly outside the horizontal/vertical cockpit FOV. Capture earlier on the straight.",
+    "camera_warning": "This is a native scene/map/FOV registration estimate, not a surveyed camera reconstruction. Footprint/operator dimensions remain separate evidence.",
+    "runtime_gate": "Direct reference now available; packaged skyline/rim/capsule comparison still required."
+  }
 }

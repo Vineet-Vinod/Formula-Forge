@@ -1,10 +1,19 @@
 {
   "recipe": "make circuit-assets CIRCUIT=portimao",
   "tiles": 115,
-  "triangles": 681188,
+  "triangles": 700225,
   "road_sha256": "2bd9a62e4ed6d9a485d74656961ede220d4905601530ba73a0c49aac815434b7",
   "terrain_sha256": "a8e223c0d18b17beb5449bc93e3ff488943ecd100a5238a83cf8866257be6fd2",
   "landmarks": [
+    {
+      "name": "Paved pit lane and working apron",
+      "start_m": 535.0,
+      "end_m": 950.0,
+      "side": 1,
+      "outer_offset_m": 20.0,
+      "source_note": "Mapped Boxes38167081 front558.7\u2192922.7m, offsets19.1\u201319.4m;20m pavingback reaches front. Mainstand38166697 is LEFT, garages RIGHT. Supplied725.72s maincomplex approach establishes paving/roof relation; extensions are visual estimates.",
+      "access": "Visual service area outside the closed driving boundary."
+    },
     {
       "name": "Reference event panels",
       "start_m": 560,
@@ -69,6 +78,7 @@
       "height_m": 12,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Recessed road-facing garage bays",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -78,6 +88,7 @@
       "height_m": 17,
       "removed_road_area_m2": -0.0,
       "structure": "open roof/stand",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -89,13 +100,11 @@
       "rows": 23
     },
     {
+      "name": "Torre VIP layered circular terraces",
       "osm_id": 157736297,
-      "name": "Torre Vip",
       "height_m": 18,
-      "removed_road_area_m2": -0.0,
-      "structure": "enclosed",
-      "road_clearance_exception": "none",
-      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+      "levels": 5,
+      "dimensions_status": "Mapped24-point circular outline and5OSMlevels. Glazed shaft inset to84%, terraces95%, crown102% of outline reconstruct observed projecting profile in173.63/615.30s;18mheight and exact overhang depths are unmeasured."
     },
     {
       "name": "Authored grandstand",

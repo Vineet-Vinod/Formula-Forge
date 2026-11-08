@@ -1,10 +1,19 @@
 {
   "recipe": "make circuit-assets CIRCUIT=australia",
-  "tiles": 196,
-  "triangles": 733865,
+  "tiles": 195,
+  "triangles": 748787,
   "road_sha256": "dd48dd7f8cc9ae28e77e0b4784731f7f6c333818a82028707eb69c3738b4d26b",
   "terrain_sha256": "b383bd6d65e5ee5b6b951832f450083067f2d6ddb504c6816697b6121f9a4758",
   "landmarks": [
+    {
+      "name": "Paved pit lane and working apron",
+      "start_m": 4920.0,
+      "end_m": 5250.0,
+      "side": 1,
+      "outer_offset_m": 13.0,
+      "source_note": "Common authored pit garage front is roadhalf+13m, matching original pit/apron reconstruction4940\u20135230m and reviewed main-straight176.17s/792.81s. Added20m visual apron extension before/after row; endpoints are reconstruction, not surveyed access.",
+      "access": "Visual service area outside the closed driving boundary."
+    },
     {
       "name": "Reference event panels",
       "start_m": 4930,
@@ -86,10 +95,17 @@
     },
     {
       "name": "Authored grandstand",
-      "start_m": 930,
-      "end_m": 1080,
+      "start_m": 1050,
+      "end_m": 1130,
       "side": -1,
-      "rows": 16
+      "rows": 12
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 1070,
+      "end_m": 1140,
+      "side": 1,
+      "rows": 12
     },
     {
       "name": "Authored grandstand",
@@ -104,6 +120,7 @@
       "height_m": 7,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -113,6 +130,7 @@
       "height_m": 7,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -122,6 +140,7 @@
       "height_m": 70,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -131,6 +150,7 @@
       "height_m": 16,
       "removed_road_area_m2": -0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
@@ -140,6 +160,7 @@
       "height_m": 77.8,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     }
@@ -147,19 +168,19 @@
   "vegetation": [
     {
       "start_m": 240,
-      "end_m": 850,
+      "end_m": 985,
       "side": 1,
-      "setback_m": 10,
-      "rows": 2,
+      "setback_m": 6,
+      "rows": 3,
       "species_form": "broadleaf",
       "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
     },
     {
       "start_m": 300,
-      "end_m": 930,
+      "end_m": 980,
       "side": -1,
-      "setback_m": 14,
-      "rows": 2,
+      "setback_m": 6,
+      "rows": 3,
       "species_form": "broadleaf",
       "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
     },

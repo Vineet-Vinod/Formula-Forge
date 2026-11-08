@@ -1,0 +1,246 @@
+{
+  "recipe": "make circuit-assets CIRCUIT=malaysia",
+  "tiles": 129,
+  "triangles": 1833315,
+  "road_sha256": "c3002a0fe74e0bf19ad980dc9b17c5fcb8d323fba06b92bc2048ff96df87e664",
+  "terrain_sha256": "40c5568107dbe7613d3cdf8f29d2af8c10cb0093a10b698f6986c6c53dbcbebb",
+  "landmarks": [
+    {
+      "name": "Paved pit lane and working apron",
+      "start_m": 5290.0,
+      "end_m": 320.0,
+      "side": 1,
+      "outer_offset_m": 13.0,
+      "source_note": "Authored Sepang garage frontage scene.pit_building(5290,320,+1) lies exactly 13 m beyond road edge. Retained pit compound144362327 is excluded from duplicate extrusion; its multi-storey bays and stacked roof silhouette are modeled on the right, opposite the double-sided grandstand. Reference118/122/126/130/134/138s supports this registration. Native interval crosses zero.",
+      "access": "Visual service area outside the closed driving boundary."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 567,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 1495,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 3077,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 5068,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 5290,
+      "end_m": 5543,
+      "side": -1,
+      "material": "PanelPetronas"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 0,
+      "end_m": 320,
+      "side": -1,
+      "material": "PanelPetronas"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 5290,
+      "end_m": 5543,
+      "side": 1,
+      "material": "PanelPetronas"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 0,
+      "end_m": 320,
+      "side": 1,
+      "material": "PanelPetronas"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 500,
+      "end_m": 650,
+      "side": -1,
+      "material": "PanelPetronas"
+    },
+    {
+      "name": "Sepang double-frontage main grandstand",
+      "osm_id": 144247993,
+      "roof": "Repeated curved palm-leaf shells with branching masts",
+      "roof_bays": 26,
+      "dimensions": "Footprint registered; roof section and steel details estimated from reference."
+    },
+    {
+      "name": "F Grandstand",
+      "osm_id": 107364038,
+      "roof": "cantilever",
+      "rows": 22,
+      "seat_material": "SeatBlue",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+    },
+    {
+      "name": "K1 Grandstand",
+      "osm_id": 107364100,
+      "roof": "cantilever",
+      "rows": 22,
+      "seat_material": "SeatBlue",
+      "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
+      "boundary_chains": 1,
+      "bays": 39,
+      "max_foundation_height_m": 10.196704139709755,
+      "tensile_roof_bays": 0
+    },
+    {
+      "name": "Authored pit building",
+      "start_m": 5290,
+      "end_m": 320,
+      "side": 1,
+      "height_m": 14.5
+    },
+    {
+      "name": "South Padock",
+      "osm_id": 1105232836,
+      "height_m": 8,
+      "facade": "modern"
+    },
+    {
+      "name": "Welcome Center",
+      "osm_id": 107364040,
+      "height_m": 8,
+      "facade": "modern"
+    },
+    {
+      "name": "Welcome Center",
+      "osm_id": 1106756634,
+      "height_m": 8,
+      "facade": "modern"
+    },
+    {
+      "name": "Medical Center",
+      "osm_id": 144359492,
+      "height_m": 8,
+      "facade": "modern"
+    }
+  ],
+  "vegetation": [
+    {
+      "type": "palms",
+      "start_m": 650,
+      "end_m": 1450,
+      "side": -1,
+      "count": 25,
+      "setback_m": 30,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "palms",
+      "start_m": 650,
+      "end_m": 1450,
+      "side": 1,
+      "count": 25,
+      "setback_m": 55,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "palms",
+      "start_m": 1500,
+      "end_m": 2250,
+      "side": -1,
+      "count": 26,
+      "setback_m": 28,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "palms",
+      "start_m": 2000,
+      "end_m": 2850,
+      "side": 1,
+      "count": 23,
+      "setback_m": 43,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "palms",
+      "start_m": 2850,
+      "end_m": 3550,
+      "side": -1,
+      "count": 19,
+      "setback_m": 38,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "palms",
+      "start_m": 3550,
+      "end_m": 4250,
+      "side": 1,
+      "count": 23,
+      "setback_m": 40,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "palms",
+      "start_m": 4050,
+      "end_m": 4800,
+      "side": -1,
+      "count": 26,
+      "setback_m": 34,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "palms",
+      "start_m": 4800,
+      "end_m": 5100,
+      "side": -1,
+      "count": 1,
+      "setback_m": 35,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 850,
+      "end_m": 1450,
+      "side": -1,
+      "count": 23,
+      "setback_m": 70,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 1800,
+      "end_m": 2450,
+      "side": 1,
+      "count": 20,
+      "setback_m": 100,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 3100,
+      "end_m": 3600,
+      "side": -1,
+      "count": 10,
+      "setback_m": 85,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 3800,
+      "end_m": 4600,
+      "side": 1,
+      "count": 28,
+      "setback_m": 80,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    }
+  ],
+  "review_status": "Awaiting packaged whole-route review; asset import is not visual approval."
+}

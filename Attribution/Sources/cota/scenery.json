@@ -1,10 +1,28 @@
 {
   "recipe": "make circuit-assets CIRCUIT=cota",
   "tiles": 164,
-  "triangles": 948835,
+  "triangles": 931387,
   "road_sha256": "0e6c2f6c97ec505c75a93a66712ed75b53baec84d8c8d66d34f5378438d5a298",
   "terrain_sha256": "4bdab515c5a634890eb2d0fb24349f7ba8d3d535db63820503a913fecc4992ce",
   "landmarks": [
+    {
+      "name": "Paved pit lane and working apron",
+      "start_m": 5355.0,
+      "end_m": 245.0,
+      "side": -1,
+      "outer_offset_m": 20.5,
+      "source_note": "Mapped Pit Garages376713391 has363.7m road-facing edge5375\u2192225.5m across native0, offset19.3\u201320.1m.20.5m pavingback reaches actual front. Supplied reference167\u2013170s window shows garage row LEFT; wrong main-stand range is corrected separately.",
+      "access": "Visual service area outside the closed driving boundary."
+    },
+    {
+      "name": "T15 red paved inner cap",
+      "start_m": 4120,
+      "end_m": 4206,
+      "area_m2": 655.095,
+      "side": -1,
+      "source": "Supplied reference158.70s and161\u2013164s; IMSA2024aerial establishes rounded peninsula boundary, later clip establishes red paved cap.",
+      "registration": "Inside kerb-following head of peninsula; upstream chord and exact extent reconstructed, not surveyed. Star remains at4153m/left13m."
+    },
     {
       "name": "Reference event panels",
       "start_m": 900,
@@ -76,15 +94,23 @@
       "height_m": 14,
       "removed_road_area_m2": 0.0,
       "structure": "enclosed",
+      "ground_floor": "Recessed road-facing garage bays",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
     {
-      "name": "Authored grandstand",
-      "start_m": 5100,
-      "end_m": 5450,
-      "side": 1,
-      "rows": 25
+      "name": "Mapped spectator terrace",
+      "osm_id": 460658889,
+      "roof": "",
+      "rows": 16,
+      "seat_material": "Concrete",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+    },
+    {
+      "name": "Mapped main grandstand and rear canopy",
+      "osm_id": 460658889,
+      "roof_osm_id": 376713393,
+      "dimensions_status": "Both actual OSM footprints retained. Roof14\u201316.5m above adjacent road and25rows reconstructed from reference; no generic5100\u20135450m stand remains."
     },
     {
       "name": "Authored grandstand",
@@ -115,11 +141,12 @@
       "rows": 23
     },
     {
-      "name": "Authored grandstand",
-      "start_m": 3990,
-      "end_m": 4160,
-      "side": -1,
-      "rows": 22
+      "name": "Turn 15 Grandstands",
+      "osm_id": 460658892,
+      "roof": "",
+      "rows": 22,
+      "seat_material": "Concrete",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
     },
     {
       "name": "Authored grandstand",
@@ -134,6 +161,7 @@
       "height_m": 18,
       "removed_road_area_m2": -0.0,
       "structure": "open roof/stand",
+      "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },

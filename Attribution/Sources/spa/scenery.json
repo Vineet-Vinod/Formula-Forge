@@ -1,0 +1,290 @@
+{
+  "recipe": "make circuit-assets CIRCUIT=spa",
+  "tiles": 221,
+  "triangles": 955152,
+  "road_sha256": "63049d8f4a8f62d434d24ff1aaf023d7eeedac92011635b563abaa67793300af",
+  "terrain_sha256": "69649c840bd3358de249a5cd39d910704ea1d99541ba4da53555f3e2f753d2bb",
+  "landmarks": [
+    {
+      "name": "Paved pit lane and working apron",
+      "start_m": 735.0,
+      "end_m": 1065.0,
+      "side": 1,
+      "outer_offset_m": 19.5,
+      "source_note": "Mapped F1pit77352246 road-facing stepped edge753.9\u21921051m; front offsets14.8\u201318.7m.19.5m reaches front while avoiding unrelated rear wing extendingtoward1327m. Supplied139.94/337.84s mainpit views. Native SF790m preserved; endpoints estimated.",
+      "access": "Visual service area outside the closed driving boundary."
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 740,
+      "end_m": 1060,
+      "side": 1,
+      "material": "PanelWhite"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 740,
+      "end_m": 1060,
+      "side": -1,
+      "material": "PanelWhite"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 1560,
+      "end_m": 1840,
+      "side": 1,
+      "material": "PanelWhite"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 2860,
+      "end_m": 3220,
+      "side": -1,
+      "material": "PanelYellow"
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 1177,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 3198,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 3862,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 5295,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 476,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "osm_id": 77352246,
+      "name": "Stand F1",
+      "height_m": 16,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "ground_floor": "Recessed road-facing garage bays",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 77352249,
+      "name": "Stand Endurance",
+      "height_m": 8,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "ground_floor": "Facade windows",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "osm_id": 176136366,
+      "name": "Salons de l'Eau Rouge",
+      "height_m": 9,
+      "removed_road_area_m2": 0.0,
+      "structure": "enclosed",
+      "ground_floor": "Facade windows",
+      "road_clearance_exception": "none",
+      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 730,
+      "end_m": 1050,
+      "side": -1,
+      "rows": 20
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 1970,
+      "end_m": 2110,
+      "side": -1,
+      "rows": 26
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 3080,
+      "end_m": 3280,
+      "side": -1,
+      "rows": 14
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 6510,
+      "end_m": 6700,
+      "side": 1,
+      "rows": 14
+    }
+  ],
+  "vegetation": [
+    {
+      "start_m": 1280,
+      "end_m": 1720,
+      "side": -1,
+      "setback_m": 40,
+      "rows": 4,
+      "species_form": "conifer",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 2160,
+      "end_m": 3030,
+      "side": 1,
+      "setback_m": 25,
+      "rows": 4,
+      "species_form": "conifer",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 2160,
+      "end_m": 3010,
+      "side": -1,
+      "setback_m": 35,
+      "rows": 4,
+      "species_form": "conifer",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 3380,
+      "end_m": 3760,
+      "side": 1,
+      "setback_m": 32,
+      "rows": 4,
+      "species_form": "conifer",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 3400,
+      "end_m": 3750,
+      "side": -1,
+      "setback_m": 38,
+      "rows": 4,
+      "species_form": "conifer",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 3920,
+      "end_m": 4560,
+      "side": 1,
+      "setback_m": 30,
+      "rows": 4,
+      "species_form": "conifer",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 3940,
+      "end_m": 4560,
+      "side": -1,
+      "setback_m": 35,
+      "rows": 4,
+      "species_form": "conifer",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 4820,
+      "end_m": 5200,
+      "side": 1,
+      "setback_m": 42,
+      "rows": 4,
+      "species_form": "conifer",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 4820,
+      "end_m": 5220,
+      "side": -1,
+      "setback_m": 34,
+      "rows": 4,
+      "species_form": "conifer",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 5500,
+      "end_m": 5860,
+      "side": 1,
+      "setback_m": 35,
+      "rows": 4,
+      "species_form": "conifer",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 5520,
+      "end_m": 5850,
+      "side": -1,
+      "setback_m": 32,
+      "rows": 4,
+      "species_form": "conifer",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 6110,
+      "end_m": 6910,
+      "side": 1,
+      "setback_m": 32,
+      "rows": 4,
+      "species_form": "conifer",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 6140,
+      "end_m": 6900,
+      "side": -1,
+      "setback_m": 32,
+      "rows": 4,
+      "species_form": "conifer",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 1390,
+      "end_m": 1690,
+      "side": -1,
+      "setback_m": 22,
+      "rows": 1,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 3520,
+      "end_m": 3690,
+      "side": -1,
+      "setback_m": 22,
+      "rows": 1,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 4150,
+      "end_m": 4490,
+      "side": -1,
+      "setback_m": 22,
+      "rows": 1,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 5530,
+      "end_m": 5770,
+      "side": -1,
+      "setback_m": 22,
+      "rows": 1,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    }
+  ],
+  "review_status": "Awaiting packaged whole-route review; asset import is not visual approval."
+}

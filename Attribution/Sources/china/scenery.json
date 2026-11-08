@@ -1,0 +1,193 @@
+{
+  "recipe": "make circuit-assets CIRCUIT=china",
+  "tiles": 159,
+  "triangles": 975554,
+  "road_sha256": "9436af24512bfb4cfc21dec59da29cf3c2a4e1c6ab906480648b3d9a8f21cca5",
+  "terrain_sha256": "f420e4ec2b420347926b871771743e3b5cc9c5fc5de4bede76abc4574b218e40",
+  "landmarks": [
+    {
+      "name": "Paved pit lane and working apron",
+      "start_m": 3230.0,
+      "end_m": 3740.0,
+      "side": 1,
+      "outer_offset_m": 13.0,
+      "source_note": "Authored Shanghai garage frontage scene.pit_building(3230,3740,+1), including yellow fascia and roof slabs, lies exactly 13 m beyond road edge. Reference610\u2013626/682/706/710s confirms pits right and Section A stand left. Native timing line3450m is inside this frontage; route origin near officialT7 remains unchanged.",
+      "access": "Visual service area outside the closed driving boundary."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 3950,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 4920,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 1006,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 2680,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 2530,
+      "end_m": 2730,
+      "side": -1,
+      "material": "PanelYellow"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 2760,
+      "end_m": 2940,
+      "side": -1,
+      "material": "PanelGreen"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 2760,
+      "end_m": 2940,
+      "side": 1,
+      "material": "PanelGreen"
+    },
+    {
+      "name": "B1\u770b\u53f0",
+      "osm_id": 156341844,
+      "roof": "",
+      "rows": 22,
+      "seat_material": "SeatRed",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+    },
+    {
+      "name": "B2\u770b\u53f0",
+      "osm_id": 156341848,
+      "roof": "",
+      "rows": 22,
+      "seat_material": "SeatRed",
+      "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
+      "boundary_chains": 1,
+      "bays": 20,
+      "max_foundation_height_m": 11.793563112297951,
+      "tensile_roof_bays": 0
+    },
+    {
+      "name": "B3\u770b\u53f0",
+      "osm_id": 156341851,
+      "roof": "",
+      "rows": 22,
+      "seat_material": "SeatRed",
+      "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
+      "boundary_chains": 1,
+      "bays": 28,
+      "max_foundation_height_m": 13.787507541138032,
+      "tensile_roof_bays": 0
+    },
+    {
+      "name": "H\u770b\u53f0",
+      "osm_id": 1372223261,
+      "roof": "lotus",
+      "rows": 19,
+      "seat_material": "SeatRed",
+      "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
+      "boundary_chains": 7,
+      "bays": 94,
+      "max_foundation_height_m": 8.580000000000002,
+      "tensile_roof_bays": 0
+    },
+    {
+      "name": "K\u770b\u53f0",
+      "osm_id": 1372223262,
+      "roof": "lotus",
+      "rows": 19,
+      "seat_material": "SeatRed",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 3240,
+      "end_m": 3690,
+      "side": -1,
+      "rows": 34
+    },
+    {
+      "name": "Authored pit building",
+      "start_m": 3230,
+      "end_m": 3740,
+      "side": 1,
+      "height_m": 16
+    },
+    {
+      "name": "Shanghai Section A roof bridges",
+      "start_m": 3230,
+      "end_m": 3740,
+      "clearance_m": 23.3,
+      "dimensions": "Reference-estimated roof volumes; mapped compound excluded from solid extrusion."
+    }
+  ],
+  "vegetation": [
+    {
+      "type": "broadleaf",
+      "start_m": 0,
+      "end_m": 550,
+      "side": -1,
+      "count": 16,
+      "setback_m": 65,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 600,
+      "end_m": 1400,
+      "side": 1,
+      "count": 13,
+      "setback_m": 90,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 1450,
+      "end_m": 2550,
+      "side": 1,
+      "count": 13,
+      "setback_m": 75,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 1700,
+      "end_m": 2500,
+      "side": -1,
+      "count": 24,
+      "setback_m": 110,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 4400,
+      "end_m": 5000,
+      "side": -1,
+      "count": 17,
+      "setback_m": 80,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 5000,
+      "end_m": 5440,
+      "side": 1,
+      "count": 9,
+      "setback_m": 95,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    }
+  ],
+  "review_status": "Awaiting packaged whole-route review; asset import is not visual approval."
+}

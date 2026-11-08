@@ -1,0 +1,192 @@
+{
+  "recipe": "make circuit-assets CIRCUIT=turkey",
+  "tiles": 171,
+  "triangles": 809804,
+  "road_sha256": "897221623ca8b3e768861f3d22163e0ed840270684acf08ab237bdf9d45f71ea",
+  "terrain_sha256": "b7e5a64af96289dae33ca2e053de555f12493f1fa118f842cab1b3989123efc5",
+  "landmarks": [
+    {
+      "name": "Paved pit lane and working apron",
+      "start_m": 5130.0,
+      "end_m": 230.0,
+      "side": -1,
+      "outer_offset_m": 13.0,
+      "source_note": "Authored Istanbul garage frontage scene.pit_building(5130,230,-1) lies exactly 13 m beyond road edge, underneath its three stacked hospitality roofs. Reference325/329/333/337s shows garages left and mainstand right. Retained compound295742112 is excluded from duplicate extrusion. Native interval crosses zero; dimensions remain reference estimates.",
+      "access": "Visual service area outside the closed driving boundary."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 363,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 2004,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 3385,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 4775,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 5130,
+      "end_m": 5338,
+      "side": -1,
+      "material": "PanelPurple"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 0,
+      "end_m": 230,
+      "side": -1,
+      "material": "PanelPurple"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 5130,
+      "end_m": 5338,
+      "side": 1,
+      "material": "PanelPurple"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 0,
+      "end_m": 230,
+      "side": 1,
+      "material": "PanelPurple"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 4730,
+      "end_m": 5060,
+      "side": 1,
+      "material": "PanelPurple"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 3550,
+      "end_m": 3770,
+      "side": 1,
+      "material": "PanelGreen"
+    },
+    {
+      "name": "Authored pit building",
+      "start_m": 5130,
+      "end_m": 230,
+      "side": -1,
+      "height_m": 16
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 5180,
+      "end_m": 270,
+      "side": 1,
+      "rows": 29
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 4600,
+      "end_m": 4820,
+      "side": 1,
+      "rows": 21
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 1100,
+      "end_m": 1250,
+      "side": 1,
+      "rows": 16
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 2860,
+      "end_m": 3010,
+      "side": 1,
+      "rows": 16
+    },
+    {
+      "name": "Istanbul Park pit and control terraces",
+      "start_m": 5130,
+      "end_m": 230,
+      "roof": "Three stacked cantilevered slabs with raised angular glazed hospitality volumes",
+      "dimensions": "Visual estimate registered to native pit straight; OSM compound excluded from duplicate extrusion."
+    }
+  ],
+  "vegetation": [
+    {
+      "type": "broadleaf",
+      "start_m": 500,
+      "end_m": 1200,
+      "side": -1,
+      "count": 19,
+      "setback_m": 75,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 850,
+      "end_m": 1500,
+      "side": 1,
+      "count": 16,
+      "setback_m": 90,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 1500,
+      "end_m": 2000,
+      "side": -1,
+      "count": 12,
+      "setback_m": 90,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 2100,
+      "end_m": 2800,
+      "side": 1,
+      "count": 15,
+      "setback_m": 105,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 2900,
+      "end_m": 3400,
+      "side": -1,
+      "count": 14,
+      "setback_m": 80,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 3550,
+      "end_m": 4200,
+      "side": 1,
+      "count": 17,
+      "setback_m": 90,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 4200,
+      "end_m": 4550,
+      "side": -1,
+      "count": 9,
+      "setback_m": 80,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    }
+  ],
+  "review_status": "Awaiting packaged whole-route review; asset import is not visual approval."
+}

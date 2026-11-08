@@ -1,0 +1,215 @@
+{
+  "recipe": "make circuit-assets CIRCUIT=jeddah",
+  "tiles": 180,
+  "triangles": 1118053,
+  "road_sha256": "488969c35ce5188455fe77bfe4f676a0e3d4743d4ff9000922f2bbaaab34186f",
+  "terrain_sha256": "a305b9d139a8c289c9fde6dbf9a646c874c3861a36917d818aeb4dbfb8431149",
+  "landmarks": [
+    {
+      "name": "Paved pit lane and working apron",
+      "start_m": 5830.0,
+      "end_m": 210.0,
+      "side": 1,
+      "outer_offset_m": 13.0,
+      "source_note": "Authored Corniche garage frontage scene.pit_building(5830,210,+1) lies 13 m beyond road edge. Reference235/239/243/303s places the multi-level garage balconies on driver right and main stand left. Interval crosses native zero; width is the actual authored garage-front offset, not a surveyed pit-lane measurement.",
+      "access": "Visual service area outside the closed driving boundary."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 299,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 2277,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 5412,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 5830,
+      "end_m": 6174,
+      "side": 1,
+      "material": "PanelGreen"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 0,
+      "end_m": 200,
+      "side": 1,
+      "material": "PanelGreen"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 250,
+      "end_m": 650,
+      "side": 1,
+      "material": "PanelYellow"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 370,
+      "end_m": 650,
+      "side": -1,
+      "material": "PanelYellow"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 2150,
+      "end_m": 2380,
+      "side": 1,
+      "material": "PanelGreen"
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 5810,
+      "end_m": 6140,
+      "side": -1,
+      "rows": 22
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 180,
+      "end_m": 360,
+      "side": -1,
+      "rows": 15
+    },
+    {
+      "name": "Authored pit building",
+      "start_m": 5830,
+      "end_m": 210,
+      "side": 1,
+      "height_m": 17
+    },
+    {
+      "name": "Diamond Tower construction state",
+      "osm_id": 1244131504,
+      "planned_height_m": 432.0,
+      "rendered_construction_envelope_m": 300.0,
+      "visual_height_uncertainty_m": 80.0,
+      "base_z_m": 3.2402936476608333,
+      "adjacent_road_station_m": 1878.8171012753864,
+      "state": "Exposed concrete core, open floorplates and columns, partial upper formwork and tower crane; no completed glazing.",
+      "reference": "Jeddah165s wider silhouette and323s cropped close construction view.",
+      "registration": "Mapped footprint retained.300m is a coarse scene estimate from the wider view, not a measured built height.432m/93levels in stale OSM describe the planned tower and are not asserted as its observed completed state. Footprint corner ground2.41\u20133.24m agrees with adjacent road3.24m; use road/site datum rather than adding height to a DSM roof."
+    },
+    {
+      "name": "The Jeddah EDITION",
+      "osm_id": 1258744123,
+      "height_m": 25,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1154622775,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1154622776,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped footprint clearance",
+      "osm_id": 1257884698,
+      "footprint_clip_m2": 381.85,
+      "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1257884698,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped footprint clearance",
+      "osm_id": 1257884705,
+      "footprint_clip_m2": 759.96,
+      "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1257884705,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1258945369,
+      "height_m": 10,
+      "facade": "modern"
+    },
+    {
+      "name": "Jeddah floodlight recipe",
+      "structure": "Slim curved-neck paired-head road poles, staggered about 32 m apart; three larger set-back stadium banks beside the early esses, and 25 m roof-mounted banks over the pit frontage.",
+      "reference": "Saved/Refs/jeddah.mp4:251,255,259,263,275,287,291,315,323 seconds",
+      "confidence": "High for mixed pole families; moderate for primary road-pole distribution; low for estimated 16/29 m heights and exact tower stations."
+    }
+  ],
+  "vegetation": [
+    {
+      "type": "palms",
+      "start_m": 400,
+      "end_m": 1200,
+      "side": -1,
+      "count": 14,
+      "setback_m": 11,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "palms",
+      "start_m": 1350,
+      "end_m": 2200,
+      "side": 1,
+      "count": 16,
+      "setback_m": 14,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "palms",
+      "start_m": 2250,
+      "end_m": 2800,
+      "side": -1,
+      "count": 11,
+      "setback_m": 13,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "palms",
+      "start_m": 3000,
+      "end_m": 3850,
+      "side": 1,
+      "count": 17,
+      "setback_m": 15,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "palms",
+      "start_m": 3950,
+      "end_m": 4650,
+      "side": -1,
+      "count": 10,
+      "setback_m": 18,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "palms",
+      "start_m": 4800,
+      "end_m": 5400,
+      "side": 1,
+      "count": 12,
+      "setback_m": 12,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    }
+  ],
+  "review_status": "Awaiting packaged whole-route review; asset import is not visual approval."
+}

@@ -1,0 +1,2020 @@
+{
+  "recipe": "make circuit-assets CIRCUIT=baku",
+  "tiles": 221,
+  "triangles": 3205963,
+  "road_sha256": "72c25aeed75ec4db3b06f34baf8249eb8934b256630bb9def874aea84584678c",
+  "terrain_sha256": "9706a6beea5c92b41e20bb4b5b06e9bdbe3d650f81d9bce928cbf8b99538adfd",
+  "landmarks": [
+    {
+      "name": "Paved pit lane and working apron",
+      "start_m": 5720.0,
+      "end_m": 5990.0,
+      "side": -1,
+      "outer_offset_m": 13.0,
+      "source_note": "Authored temporary Baku garage frontage scene.pit_building(5720,5990,-1) lies exactly 13 m outside the road edge. Reference130/155/170/175/185s places the low temporary garages left of the grid and the boulevard stand right. The profile follows the authored building span; no pit access or changed race route is implied.",
+      "access": "Visual service area outside the closed driving boundary."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 185,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 523,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 1395,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 1616,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 2404,
+      "side": -1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 2601,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 3631,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Braking distance boards",
+      "apex_m": 3985,
+      "side": 1,
+      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 5580,
+      "end_m": 6003,
+      "side": -1,
+      "material": "PanelPurple"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 0,
+      "end_m": 210,
+      "side": -1,
+      "material": "PanelPurple"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 5580,
+      "end_m": 6003,
+      "side": 1,
+      "material": "PanelPurple"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 0,
+      "end_m": 210,
+      "side": 1,
+      "material": "PanelPurple"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 690,
+      "end_m": 1340,
+      "side": -1,
+      "material": "PanelYellow"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 690,
+      "end_m": 1340,
+      "side": 1,
+      "material": "PanelYellow"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 2860,
+      "end_m": 3290,
+      "side": -1,
+      "material": "PanelNavy"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 2820,
+      "end_m": 3290,
+      "side": 1,
+      "material": "PanelNavy"
+    },
+    {
+      "name": "Muzey M\u0259rk\u0259zi",
+      "osm_id": 25359715,
+      "height_m": 13.6,
+      "facade": "classical"
+    },
+    {
+      "name": "Heydar Aliyev foundation",
+      "osm_id": 133160748,
+      "height_m": 27.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Socar N\u0259qliyyat idar\u0259si",
+      "osm_id": 133160749,
+      "height_m": 20.4,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 133160753,
+      "height_m": 17.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 133160754,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 133160755,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 133160756,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped footprint clearance",
+      "osm_id": 133641453,
+      "footprint_clip_m2": 8.68,
+      "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 133641453,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Az\u0259rbaycan H\u0259mkarlar \u0130ttifaqlar\u0131 Konfederasiyas\u0131",
+      "osm_id": 133641456,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Konstitusiya M\u0259hk\u0259m\u0259si",
+      "osm_id": 133641457,
+      "height_m": 13.6,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 133847239,
+      "height_m": 13.6,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped footprint clearance",
+      "osm_id": 133847240,
+      "footprint_clip_m2": 30.9,
+      "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 133847240,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 133849579,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 133849582,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "Az\u0259rbaycan D\u00f6vl\u0259t \u0130qtisad Universiteti",
+      "osm_id": 152110144,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 152110152,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 152110154,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "Az\u0259rbaycan D\u00f6vl\u0259t Kukla Teatr\u0131",
+      "osm_id": 152184311,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Az\u0259rbaycan D\u00f6vl\u0259t Filarmoniyas\u0131",
+      "osm_id": 152190848,
+      "footprint_clip_m2": 3.78,
+      "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
+    },
+    {
+      "name": "Az\u0259rbaycan D\u00f6vl\u0259t Filarmoniyas\u0131",
+      "osm_id": 152190848,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 152191287,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 152191301,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 152191309,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 152191374,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 152191393,
+      "height_m": 13.6,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 152191870,
+      "height_m": 13.6,
+      "facade": "classical"
+    },
+    {
+      "name": "S\u0259f\u0259rb\u0259rlik v\u0259 H\u0259rbi Xidm\u0259t\u0259 \u00c7a\u011f\u0131r\u0131\u015f \u00fczr\u0259 D\u00f6vl\u0259t Xidm\u0259ti / H\u0259rbi Komissarl\u0131q",
+      "osm_id": 152192127,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 152192129,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "D\u00f6vl\u0259t D\u0259niz Akademiyas\u0131 / ADDA",
+      "osm_id": 152192175,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 152192176,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Bak\u0131 Biznes M\u0259rk\u0259zi",
+      "osm_id": 152192304,
+      "height_m": 13.6,
+      "facade": "modern"
+    },
+    {
+      "name": "Park Bulvar",
+      "osm_id": 152192493,
+      "height_m": 20.4,
+      "facade": "modern"
+    },
+    {
+      "name": "Park Inn Radisson",
+      "osm_id": 152192676,
+      "height_m": 30.599999999999998,
+      "facade": "modern"
+    },
+    {
+      "name": "Hilton",
+      "osm_id": 152192792,
+      "height_m": 85.0,
+      "facade": "modern"
+    },
+    {
+      "name": "Prezident Aparat\u0131",
+      "osm_id": 152302601,
+      "height_m": 30.599999999999998,
+      "facade": "classical"
+    },
+    {
+      "name": "H\u00f6kum\u0259t Evi",
+      "osm_id": 152809510,
+      "height_m": 34.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 153520484,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "M\u0259h\u0259mm\u0259d F\u00fczuli ad\u0131na \u018flyazmalar \u0130nstitutu",
+      "osm_id": 153876684,
+      "height_m": 13.6,
+      "facade": "classical"
+    },
+    {
+      "name": "Bak\u0131 \u015e\u0259h\u0259ri \u0130cra Hakimiyy\u0259ti",
+      "osm_id": 153876698,
+      "height_m": 20.4,
+      "facade": "classical"
+    },
+    {
+      "name": "M\u0259rk\u0259zi Univermaq, MUM, Nizami k\u00fc\u00e7.",
+      "osm_id": 153876708,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Az\u0259rbaycan Milli Elml\u0259r Akademiyas\u0131 R\u0259yas\u0259t Hey\u0259ti",
+      "osm_id": 153876715,
+      "height_m": 13.6,
+      "facade": "classical"
+    },
+    {
+      "name": "Respawn Pub & Bar",
+      "osm_id": 153885408,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 154090241,
+      "height_m": 27.2,
+      "facade": "classical"
+    },
+    {
+      "name": "La Casa Hotel Baku",
+      "osm_id": 169688229,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "AzerEnerji JSC",
+      "osm_id": 169688713,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 172754960,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 172754961,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 172754962,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 172754963,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 172754964,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 172754965,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 172754966,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 172754967,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 172754968,
+      "height_m": 20.4,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 172754969,
+      "height_m": 13.6,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 172754970,
+      "height_m": 20.4,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 172754971,
+      "height_m": 20.4,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 172754972,
+      "height_m": 13.6,
+      "facade": "classical"
+    },
+    {
+      "name": "Sapfir S\u00fcfr\u0259",
+      "osm_id": 174868552,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 175835405,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 175998194,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 175998195,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 176305747,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 176305751,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 176305755,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 176305757,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 176305758,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 176305759,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Azerbaijan Airlines CJSC",
+      "osm_id": 177366430,
+      "height_m": 13.6,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 177428532,
+      "height_m": 13.6,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 179114290,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 179114292,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 179114295,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 179114297,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 179114309,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 179114311,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 179114316,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Boutique Hotel Avenue / Butik Otel Avenyu",
+      "osm_id": 179114320,
+      "height_m": 13.6,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 179120742,
+      "height_m": 13.6,
+      "facade": "classical"
+    },
+    {
+      "name": "G\u0259nc Tama\u015fa\u00e7\u0131lar Teatr\u0131",
+      "osm_id": 179120750,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 191041230,
+      "height_m": 17.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 191041235,
+      "height_m": 17.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 191041238,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 196291852,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "Q\u0259rb Universiteti",
+      "osm_id": 196291853,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 196291854,
+      "height_m": 27.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 196291859,
+      "height_m": 27.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Venesiya Plaza",
+      "osm_id": 196291860,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "Landmark-III",
+      "osm_id": 200195772,
+      "height_m": 40.8,
+      "facade": "modern"
+    },
+    {
+      "name": "Rotunda",
+      "osm_id": 200195774,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "K\u00f6hn\u0259 d\u0259yirman",
+      "osm_id": 200195779,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Landmark-1",
+      "osm_id": 200195781,
+      "height_m": 19,
+      "facade": "modern"
+    },
+    {
+      "name": "City Center / Monolit",
+      "osm_id": 211461712,
+      "height_m": 13.6,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 217364413,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "134 sayl\u0131 M\u0259kt\u0259b",
+      "osm_id": 217364414,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped footprint clearance",
+      "osm_id": 217366428,
+      "footprint_clip_m2": 4.01,
+      "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 217366428,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 217366429,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "7 sayl\u0131 M\u0259kt\u0259b",
+      "osm_id": 220432121,
+      "height_m": 13.6,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 222090621,
+      "height_m": 13.6,
+      "facade": "classical"
+    },
+    {
+      "name": "BEGOC Business Center",
+      "osm_id": 222091547,
+      "height_m": 20.4,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 224638508,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 224638509,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 224648430,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 249199840,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 249199845,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped footprint clearance",
+      "osm_id": 249200550,
+      "footprint_clip_m2": 3.05,
+      "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 249200550,
+      "height_m": 13.6,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 249200551,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "189 n\u00f6mr\u0259li m\u0259kt\u0259b",
+      "osm_id": 253081011,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 279588040,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 279588041,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 279589354,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "D\u0259nizk\u0259nar\u0131 Bulvar \u0130dar\u0259si",
+      "osm_id": 279935608,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 280326291,
+      "height_m": 13.6,
+      "facade": "classical"
+    },
+    {
+      "name": "Landmark II",
+      "osm_id": 286017123,
+      "height_m": 10.2,
+      "facade": "modern"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 286017124,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Bak\u0131 \u015e\u0259h\u0259r Prokurorlu\u011fu",
+      "osm_id": 286018678,
+      "height_m": 17.0,
+      "facade": "classical"
+    },
+    {
+      "name": "S\u0259bail Rayon \u0130cra Hakimiyy\u0259ti",
+      "osm_id": 286018680,
+      "height_m": 17.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 286018683,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 286018688,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Dol\u00e7asaray",
+      "osm_id": 286018689,
+      "height_m": 22.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 286018691,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 286018693,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 286018695,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 286018697,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 286018698,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 286020256,
+      "height_m": 17.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 286020271,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Two\u2011Storeyed Caravanserai / Gasim bey Caravanserai",
+      "osm_id": 299418022,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Seyid Murtuza M\u0259scidi",
+      "osm_id": 299418023,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "C\u00fcm\u0259 M\u0259scidi",
+      "osm_id": 299418024,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 299424043,
+      "height_m": 13.6,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 299424044,
+      "height_m": 17.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 299424045,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 299424046,
+      "height_m": 13.6,
+      "facade": "classical"
+    },
+    {
+      "name": "Multani Karvansaray",
+      "osm_id": 299450010,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "\u015eirvan\u015fahlar ail\u0259 t\u00fcrb\u0259si",
+      "osm_id": 299450764,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "\u015eah m\u0259scidi",
+      "osm_id": 299450765,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 299636544,
+      "height_m": 13.6,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 307928466,
+      "height_m": 27.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 307928467,
+      "height_m": 27.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 307928468,
+      "height_m": 17.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 307928469,
+      "height_m": 13.6,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 307928470,
+      "height_m": 27.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 307928471,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 307928472,
+      "height_m": 40.8,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 307928473,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 307928474,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 307928475,
+      "height_m": 40.8,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 307928476,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Mirvari Kafe",
+      "osm_id": 318180621,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped footprint clearance",
+      "osm_id": 327765450,
+      "footprint_clip_m2": 8.05,
+      "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 327765450,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "S\u0259d\u0259f Milli M\u0259tb\u0259x - Bulvar",
+      "osm_id": 360220302,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Carousel",
+      "osm_id": 360221018,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 360221790,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 384285796,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Maliyy\u0259 bazarlar\u0131na n\u0259zar\u0259t palatas\u0131",
+      "osm_id": 384682388,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 385595163,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 387070882,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 387070884,
+      "height_m": 27.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Bak\u0131 S\u0259ad\u0259t Saray\u0131",
+      "osm_id": 387070885,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Stay High Restobar",
+      "osm_id": 387071128,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 446813414,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 446813419,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 447360329,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Carousel",
+      "osm_id": 451796958,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 464944957,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 465003801,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 465003802,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 465003803,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 465003804,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 465003805,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 465003806,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 465973259,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 465973260,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 465973261,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Cool Bears Game Studio",
+      "osm_id": 465973262,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 465973263,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 465973264,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "E&N Home",
+      "osm_id": 467246402,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 467246403,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 467246404,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 467246405,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 467246407,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 467246408,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 467246409,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 467246410,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "InterContinental",
+      "osm_id": 469204315,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 488696632,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 488696633,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 488696634,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 488696635,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 488696637,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 488696638,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 488696639,
+      "height_m": 20.4,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 488696641,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 488696642,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 488696643,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 505549662,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 505550453,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 505556322,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Chay Baghi 145",
+      "osm_id": 624702751,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 626038359,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 693681402,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Underground Bath of Baku",
+      "osm_id": 694786373,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 715443018,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 715443019,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 715443020,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 715443022,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Baku Khans' Palace",
+      "osm_id": 809349515,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Bak\u0131 Xanlar\u0131n Evi",
+      "osm_id": 809349516,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Q\u0259dim Hamam",
+      "osm_id": 809349518,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 809349519,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 809349520,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Baku City Circuit",
+      "osm_id": 822375068,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 822375069,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Love in Ferma",
+      "osm_id": 971028629,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1009710730,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1009710731,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1009710732,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1047089411,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1068848089,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1068850868,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1069051475,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Bubbles",
+      "osm_id": 1272980704,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Expresscut",
+      "osm_id": 1272980705,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1277818821,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1277818822,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "\u015eirvan\u015fahlar\u0131n ya\u015fay\u0131\u015f binas\u0131",
+      "osm_id": 1311487140,
+      "height_m": 13.6,
+      "facade": "classical"
+    },
+    {
+      "name": "Divanxana",
+      "osm_id": 1311487144,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "Seyid Y\u0259hya Bakuvinin t\u00fcrb\u0259si",
+      "osm_id": 1311487146,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "Xidir Mescidi",
+      "osm_id": 1325630834,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1325630859,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1325630860,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1325630861,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1325630862,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1325630865,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1325630866,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1325630867,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1326224084,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1335110601,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "Old City INN",
+      "osm_id": 1377688879,
+      "height_m": 17.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1378423611,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1378423614,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Small Caravanserai / Khan Caravanserai",
+      "osm_id": 1411050897,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1413346239,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1413346271,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1413368983,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1413368987,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1413599162,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1413599163,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1413599164,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1413599165,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1413599166,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1413599167,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1413599168,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1413599169,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1413599170,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1414182639,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1414182643,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1414182653,
+      "height_m": 22,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1414741409,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1414741410,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1414741411,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1414741412,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1414972270,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1415213873,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1415213874,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1415213875,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1415261663,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1415261664,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1415261665,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1415261666,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1415261667,
+      "height_m": 15,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1415279780,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1415514931,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1415514932,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1415514933,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1415514934,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1415514935,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1415514936,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1415514941,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1415514946,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1416581096,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1425684009,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1445714287,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1450216135,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1450216143,
+      "height_m": 19,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1502989777,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped footprint clearance",
+      "osm_id": 1502989778,
+      "footprint_clip_m2": 5.86,
+      "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1502989778,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1502989779,
+      "height_m": 10.2,
+      "facade": "classical"
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1527793777,
+      "height_m": 10.0,
+      "facade": "classical"
+    },
+    {
+      "name": "Four Seasons",
+      "osm_id": 152190583,
+      "height_m": 36,
+      "facade": "mansard"
+    },
+    {
+      "name": "Maiden Tower",
+      "osm_id": 299418016,
+      "height_m": 29,
+      "dimensions": "Footprint registered, upper dimensions visually estimated."
+    },
+    {
+      "name": "Old City curtain wall",
+      "start_m": 2540,
+      "end_m": 2860,
+      "dimensions": "Reference-estimated wall and turret heights, native curve registration."
+    },
+    {
+      "name": "Authored grandstand",
+      "start_m": 5710,
+      "end_m": 6000,
+      "side": 1,
+      "rows": 18
+    },
+    {
+      "name": "Authored pit building",
+      "start_m": 5720,
+      "end_m": 5990,
+      "side": -1,
+      "height_m": 6.5
+    }
+  ],
+  "vegetation": [
+    {
+      "type": "broadleaf",
+      "start_m": 0,
+      "end_m": 430,
+      "side": -1,
+      "count": 18,
+      "setback_m": 7,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 550,
+      "end_m": 1250,
+      "side": 1,
+      "count": 5,
+      "setback_m": 9,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 550,
+      "end_m": 1250,
+      "side": -1,
+      "count": 10,
+      "setback_m": 7,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 1400,
+      "end_m": 2050,
+      "side": 1,
+      "count": 7,
+      "setback_m": 8,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 2050,
+      "end_m": 2500,
+      "side": -1,
+      "count": 10,
+      "setback_m": 9,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 3100,
+      "end_m": 3650,
+      "side": -1,
+      "count": 16,
+      "setback_m": 7,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 3800,
+      "end_m": 4450,
+      "side": -1,
+      "count": 25,
+      "setback_m": 8,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 4550,
+      "end_m": 5650,
+      "side": -1,
+      "count": 27,
+      "setback_m": 10,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 4700,
+      "end_m": 5650,
+      "side": 1,
+      "count": 43,
+      "setback_m": 9,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    }
+  ],
+  "review_status": "Awaiting packaged whole-route review; asset import is not visual approval."
+}
