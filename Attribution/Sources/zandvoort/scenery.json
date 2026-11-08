@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=zandvoort",
   "tiles": 128,
-  "triangles": 880235,
+  "triangles": 878145,
   "road_sha256": "f9ff420aa8714464c4b35ce122b628ceba983e79454108c35d44c0a3787fa0be",
   "terrain_sha256": "84c222c25f07d507a044bb39c21fd9945055d380f9b409b957b8eb66057a9f7a",
   "landmarks": [
@@ -13,6 +13,15 @@
       "outer_offset_m": 15.6,
       "source_note": "Mapped Pitgebouw52473177 true155.6m garagefront35.2\u2192190.8m liesRIGHT, edge offsets11.3\u201315.3m. Rear compound also projects500\u2013815m and is not part of racing pit frontage.15.6m pavingback reaches front. Supplied80.90/299.62s pitstraight; rounded extensions reconstructed.",
       "access": "Visual service area outside the closed driving boundary."
+    },
+    {
+      "name": "T10 bounded outside gravel band",
+      "start_m": 2500.0,
+      "end_m": 2610.0,
+      "side": 1,
+      "grass_lip_m": 1,
+      "maximum_gravel_band_width_m": 3,
+      "dimensions_status": "Continuous866.5/868s apex sequence and operatorT10 photographs establish grass lip, gravel and close wall. Original1m grass/3m gravel/15m end tapers estimated, not surveyed. Separate typed3.55m native right-shoulder correction plus.95margin brings wall to4.5m outside road; road and bank unchanged."
     },
     {
       "name": "Reference event panels",
@@ -210,7 +219,7 @@
       "end_m": 2770,
       "side": 1,
       "species_form": "Low windswept scrub with small exposed stone patches",
-      "shrubs": 156,
+      "shrubs": 155,
       "rock_patches": 54,
       "placement_status": "Reference865/866.5/868s middle dune and872s final bank vegetation character; individual footprints reconstructed beyond protection/buildings/water. Low crowns start at sampled ground; small rock facets follow sampled terrain rather than fixed-Z tiles."
     },
