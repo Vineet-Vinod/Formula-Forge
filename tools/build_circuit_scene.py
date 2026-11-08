@@ -132,8 +132,12 @@ class Importer:
             material = TOOLS.duplicate_asset(name, self.assets + "/Materials", source)
             if self.night:
                 if isinstance(material, unreal.MaterialInstanceConstant):
+                    parent_name = source.parent.get_name()
+                    parent_hash = hashlib.sha256(
+                        source.parent.get_path_name().encode()
+                    ).hexdigest()[:8]
                     parent = self.copy(
-                        "Parent_" + source.parent.get_name(), source.parent
+                        "Parent_" + parent_name + "_" + parent_hash, source.parent
                     )
                     EDIT.set_material_instance_parent(material, parent)
                 elif (

@@ -6,6 +6,15 @@
   "licence": "ODbL1.0",
   "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
   "file": "environment.osm.json.gz",
-  "sha256": "d8bdfb9e55299f950f8aa3144ee0de151fee6af529e40cc684dd5760474eb7b5",
-  "purpose": "Tightly bounded essential landmark query; inline member geometry preserved."
+  "sha256": "317d4465744b3ea794d7fc3b18504ba255589da23612c094ad68e270be59dbe7",
+  "purpose": "Tightly bounded essential landmark query; inline member geometry preserved.",
+  "additional_queries": [
+    {
+      "query_url": "https://api.openstreetmap.org/api/0.6/relation/2165864/full",
+      "retrieved": "2026-11-08",
+      "purpose": "Small Einlauf map bbox discovered one forest relation. Fetch its complete109member geometry to preserve inner clearings/holes; do not approximate incomplete clipped rings. Only the forest relation with original member roles/geometry is merged; no downloaded building/road changes. Model candidates are restricted to native780\u20131020m and220m sector margin. Individual tree positions/heights are original reconstruction, not mapped individuals.",
+      "response_sha256": "0af6552c9157b8a4e8b7e09aadd5dbae61f738e1d6e398c4b7d105d83d45bdd2",
+      "provenance": "einlauf-forest-provenance.json"
+    }
+  ]
 }

@@ -126,7 +126,9 @@ def shade(
     connect(field_nodes(material, bounds, texture), "", multiply, "B")
     EDIT.connect_material_property(multiply, "", unreal.MaterialProperty.MP_BASE_COLOR)
     name = material.get_name()
-    painted = name in ("White", "Cream", "Red", "Black", "Steel", "Green", "Yellow") or name.startswith("Runoff")
+    painted = name in (
+        "White", "Cream", "Red", "Black", "Steel", "Green", "Yellow"
+    ) or name.startswith("Runoff")
     lettering = name.startswith("Panel") or name in ("VenueSign", "EventPanel")
     marker = name in ("50", "100", "150", "200")
     if any(
@@ -139,7 +141,7 @@ def shade(
         strength.r = (
             8.0
             if "Asphalt" in material.get_name()
-            else 6.0
+            else 3.0
             if name == "CanopyFabric"
             else 1.8
             if "PresentationSurface" in name or painted or marker

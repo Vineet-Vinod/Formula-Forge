@@ -92,6 +92,22 @@
       "reviewed_image_sha256": "2c0eaacd11b8a51bc72d8e031e7c98096198c7dbe24465992921a568be92068a",
       "notes": "Main straight after final banking: long left stand canopy and catch fence, right pit compound, grassy edge, flags and paved straight. HUD1:10.482.",
       "camera_registration": "Same main-straight context; the872\u2192875s sequence is consistent, but exact native station is not surveyed."
+    },
+    {
+      "time_s": 866.5,
+      "reviewed": true,
+      "reviewed_image": "build/reviews/zandvoort/reference/final-866.50.jpg",
+      "reviewed_image_sha256": "802520754e8a6e39d5c878525419c0613c29c8d6e19f1ab9d2ee589c5c76937d",
+      "notes": "T10 left-bend approach/turn-in: close steep grass/scrub dune behind the outside-right yellow wall, narrow grass strip before wall and no20m pale foreground apron. HUD41.053s; continuous after865s.",
+      "camera_registration": "Confirmed same left bend by minimap and continuous short sequence; native2538m apex anchor approximate, not exact game-camera synchronization."
+    },
+    {
+      "time_s": 868,
+      "reviewed": true,
+      "reviewed_image": "build/reviews/zandvoort/reference/final-868.00.jpg",
+      "reviewed_image_sha256": "84155b3d7c0260daaeeeae5d1080b707ec8975ac8f211076f49bdda59af7574f",
+      "notes": "T10 left apex: inside-left kerb and grass, constrained outside-right pale escape strip before yellow wall and low scrub/stone bank. HUD42.533s; continuous after866.50s. Exact native camera station and runoff width unmeasured.",
+      "camera_registration": "Confirmed same left bend by minimap and continuous short sequence; native2538m apex anchor approximate, not exact game-camera synchronization."
     }
   ],
   "registration": {
@@ -217,7 +233,7 @@
       872,
       875
     ],
-    "observation": "HUD jumps39.556s\u21921:07.481s between865 and872video seconds, then advances to1:10.482s at875. The first interval contains an edit; no native station interpolation is valid across it.",
+    "observation": "865\u2192866.50\u2192868video seconds progresses HUD39.556\u219241.053\u219242.533s continuously through the middle left bend. By872s HUD jumps to1:07.481s on final banking, then1:10.482s at875. The868\u2192872interval contains an edit; no station interpolation across it.",
     "remaining_index_policy": "Old broad sector labels are contextual unless separately registered; no unverified corner relabels are made here."
   }
 }

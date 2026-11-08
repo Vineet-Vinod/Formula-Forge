@@ -1,0 +1,17 @@
+{
+  "provider": "OpenStreetMap contributors",
+  "query_url": "https://api.openstreetmap.org/api/0.6/relation/2165864/full",
+  "discovery_url": "https://api.openstreetmap.org/api/0.6/map?bbox=8.5655,49.3305,8.5743,49.3350",
+  "retrieved": "2026-11-08",
+  "licence": "ODbL1.0",
+  "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "raw_file": "einlauf-forest.map.osm.gz",
+  "raw_response_sha256": "0af6552c9157b8a4e8b7e09aadd5dbae61f738e1d6e398c4b7d105d83d45bdd2",
+  "raw_gzip_sha256": "dc79125b69b8e1555b2e223ef2bcf1fac3b9ba84a4cb080081715db3de9c4d33",
+  "filtered_file": "einlauf-forest.osm.json.gz",
+  "filtered_sha256": "b2f753d87546183857931e52aecb7e2fd94e6b02b60160be3d83be7149a1522b",
+  "environment_sha256": "317d4465744b3ea794d7fc3b18504ba255589da23612c094ad68e270be59dbe7",
+  "osm_relation": 2165864,
+  "name": "Schwetzinger Hardt / Hockenheimer Hardt",
+  "scope": "Small Einlauf map bbox discovered one forest relation. Fetch its complete109member geometry to preserve inner clearings/holes; do not approximate incomplete clipped rings. Only the forest relation with original member roles/geometry is merged; no downloaded building/road changes. Model candidates are restricted to native780\u20131020m and220m sector margin. Individual tree positions/heights are original reconstruction, not mapped individuals."
+}

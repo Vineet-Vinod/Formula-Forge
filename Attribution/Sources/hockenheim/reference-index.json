@@ -231,6 +231,10 @@
     {
       "url": "https://www.formula1.com/en/latest/article/highs-and-lows-which-f1-track-has-the-most-elevation-changes-.7I9JEcBw3R2AqXbnJ6hyvc.7I9JEcBw3R2AqXbnJ6hyvc",
       "use": "Official2016longitudinalprofile independentlydigitized into circuit elevationcontrols; chartapproximation, not as-built survey."
+    },
+    {
+      "url": "https://api.openstreetmap.org/api/0.6/relation/2165864/full",
+      "use": "Actual Einlauf-area woodland boundary with all outer/inner member geometry; original response and attribution/hash retained in einlauf-forest-provenance.json. Tree coordinates/heights are reconstructed inside actual forest, not individually surveyed."
     }
   ],
   "uncertainties": [

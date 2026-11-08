@@ -222,10 +222,10 @@
         "material": "Gravel"
       },
       {
-        "start_m": 2450,
-        "end_m": 2630,
+        "start_m": 2500,
+        "end_m": 2610,
         "side": 1,
-        "requested_width_m": 20,
+        "requested_width_m": 8,
         "material": "Gravel"
       },
       {
@@ -443,5 +443,57 @@
     "verified_straight_exit_time_s": 875,
     "montage_cut": "865\u2192872video seconds jumps HUD39.556s\u21921:07.481s. Do not interpolate across the edit.",
     "geometry_status": "Metadata evidence correction only; road banking/scene geometry and pending packaged acceptance unchanged."
+  },
+  "whole_lap_review_corrections": {
+    "status": "Source reconstruction awaiting regenerated physical envelopes/native export and fresh whole-lap visuals",
+    "t10": {
+      "side": 1,
+      "old_runoff": {
+        "start_m": 2450,
+        "end_m": 2630,
+        "width_m": 20
+      },
+      "new_runoff": {
+        "start_m": 2500,
+        "end_m": 2610,
+        "width_m": 8
+      },
+      "registration": "Same left bend confirmed by865\u2192866.50\u2192868.00s frames and minimap; HUD39.556\u219241.053\u219242.533s is continuous here. Approaching bend has close green/scrub slope behind outside-right yellow wall. At apex a limited pale outside strip remains.",
+      "uncertainty": "8m pocket width and2500\u20132610m endpoints are original image reconstruction around nativeT10apex2538m, approximately\u00b120m endpoint/\u00b13m width uncertainty. This is not a traced or surveyed runoff. Retains outside RIGHT; inside left kerb/grass unchanged.",
+      "physical_action": "Root must regenerate Zandvoort closed boundaries/native export before final scene generation. Agent did not edit native geometry, road widths, banking or handling.",
+      "branding": {
+        "ranges": [
+          {
+            "start_m": 2380,
+            "end_m": 2610,
+            "side": 1,
+            "material": "PanelDHL"
+          },
+          {
+            "start_m": 2380,
+            "end_m": 2480,
+            "side": -1,
+            "material": "PanelDHL"
+          }
+        ],
+        "source_times_s": [
+          865,
+          866.5,
+          868
+        ],
+        "registration": "Direct observed yellowDHL outside-right wall along left-bend approach/apex; short left-entry wall visible before inside opens into grass. Native endpoints estimated from same2538m apex anchor; no physical envelope change."
+      }
+    },
+    "dune_surface": {
+      "native_final_bank_range_m": [
+        3650,
+        3960
+      ],
+      "side": 1,
+      "method": "Low ground-starting scrub crowns and small terrain-following exposed-stone facets replace isolated trunk-heavy tiny-tree silhouettes. Same low scrub form updates existing middle-dune vegetation bands. Actual dune elevation and18degree banking unchanged.",
+      "source": "872s directly shows final bank low irregular vegetation/stone patches.865/866.5/868s show middle-dune bank texture. Exact shrub/stone positions and counts are original reconstruction beyond existing protection/buildings/water.",
+      "dimensions": "1.7\u20133.1m source crown clusters buried at their leaf base to produce roughly0.85\u20131.55m above-ground scrub,11m station spacing with3lateral rows. Small2.2\u00d71.4m stone patches rise0.26m and follow local terrain at all outer vertices; no fixed-Z tiles."
+    },
+    "material_limit": "Broad beige gravel polish remains pending matched material review; no global Gravel/Grass/material/helper changes made."
   }
 }

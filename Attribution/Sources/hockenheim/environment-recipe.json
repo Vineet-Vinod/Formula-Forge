@@ -65,7 +65,7 @@
     {
       "start_m": 3900,
       "end_m": 4574,
-      "name": "Südkurve and pit return",
+      "name": "S\u00fcdkurve and pit return",
       "reference_times_s": [
         128.98,
         451.59
@@ -77,7 +77,7 @@
   "terrain": {
     "retained_source": "Copernicus DEM GLO-90",
     "retained_relief_m": 9.177,
-    "shortcomings": "GLO-90 relief9.177m may include roofs/trees and misses Sachs banking. LGL open DGM0.25/1mALS2016–2021andLoDbuildings are candidates; old README fine survey not retained. Modern operator names/maps establish footprint geography, video establishes2019appearance; do not silently mix later kerb design.",
+    "shortcomings": "GLO-90 relief9.177m may include roofs/trees and misses Sachs banking. LGL open DGM0.25/1mALS2016\u20132021andLoDbuildings are candidates; old README fine survey not retained. Modern operator names/maps establish footprint geography, video establishes2019appearance; do not silently mix later kerb design.",
     "candidate_primary_sources": [
       "https://www.lgl-bw.de/Produkte/3D-Produkte/Digitale-Gelaendemodelle/index.html",
       "https://www.lglbw.de/Produkte/Open-Data/"
@@ -234,8 +234,17 @@
     "licence": "ODbL1.0",
     "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
     "file": "environment.osm.json.gz",
-    "sha256": "d8bdfb9e55299f950f8aa3144ee0de151fee6af529e40cc684dd5760474eb7b5",
-    "purpose": "Tightly bounded essential landmark query; inline member geometry preserved."
+    "sha256": "317d4465744b3ea794d7fc3b18504ba255589da23612c094ad68e270be59dbe7",
+    "purpose": "Tightly bounded essential landmark query; inline member geometry preserved.",
+    "additional_queries": [
+      {
+        "query_url": "https://api.openstreetmap.org/api/0.6/relation/2165864/full",
+        "retrieved": "2026-11-08",
+        "purpose": "Small Einlauf map bbox discovered one forest relation. Fetch its complete109member geometry to preserve inner clearings/holes; do not approximate incomplete clipped rings. Only the forest relation with original member roles/geometry is merged; no downloaded building/road changes. Model candidates are restricted to native780\u20131020m and220m sector margin. Individual tree positions/heights are original reconstruction, not mapped individuals.",
+        "response_sha256": "0af6552c9157b8a4e8b7e09aadd5dbae61f738e1d6e398c4b7d105d83d45bdd2",
+        "provenance": "einlauf-forest-provenance.json"
+      }
+    ]
   },
   "elevation_recipe": "elevation-corrections.json",
   "braking_markers": {
@@ -410,5 +419,36 @@
     "status": "Source change awaiting new rendered review",
     "geometry": "Mapped pit front now has recessed garage bays below retained upper floors; no repeated ground-floor office windows on road-facing facade. Bay widths/depths are original reference reconstruction, not an as-built survey.",
     "paving_profile": "pit-lane.json"
+  },
+  "whole_lap_review_corrections": {
+    "status": "Source corrections awaiting fresh packaged moving review",
+    "review_packet": "build/reviews/hockenheim/final-live",
+    "pit": {
+      "osm_id": 202491057,
+      "reference_time_s": 48.33,
+      "geometry": "Retained mapped LGL footprint and white along-axis gabled roof tags. Explicit recessed garage portals, white structural piers/slabs, one narrower upper glazing band, deep two-sided roof overhang and angled supports replace the generic13m three-storey glass wall.",
+      "estimated_dimensions": "8.8m eave/10.6m ridge,6.4m garage bays,2.5m overhang,1.75m glazing band. Original image reconstruction, not surveyed measurements."
+    },
+    "einlauf_woods": {
+      "provenance": "einlauf-forest-provenance.json",
+      "osm_relation": 2165864,
+      "native_range_m": [
+        780,
+        1020
+      ],
+      "geometry": "Actual SchwetzingerHardt/HockenheimerHardt forest polygon, including inner clearings/holes, clipped to local Einlauf context. Individual trees reconstructed only inside forest and outside roads, runoff, water and mapped buildings; no blanket planting in cleared infield.",
+      "estimated_dimensions": "14m nominal spacing;13.2\u201316.8m canopy height. Positions/heights reconstructed, not individually mapped."
+    },
+    "blue_apron_assessment": {
+      "source_material": "RunoffBlue",
+      "source_linear_rgb": [
+        0.025,
+        0.2,
+        0.58
+      ],
+      "decision": "No color change in this correction. Exact live fields render noticeably cyan, but supplied legacy reference is wet/foggy while runtime is dry. Match exposure/weather or obtain a dry comparable frame before selecting a per-circuit shade. Shared material remains untouched because Canada uses it appropriately.",
+      "acceptance": "Hue concern remains unresolved pending matched rendered comparison; no claim of exact RGB fidelity."
+    },
+    "scope": "No native corridor/elevation/road/handling or common material/helper changes."
   }
 }
