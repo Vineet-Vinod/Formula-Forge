@@ -83,7 +83,8 @@
         247,
         251,
         255,
-        253.16
+        253.16,
+        307
       ],
       "observed": "Long white layered pit building on right, opposite roof stand; close sponsor walls and tall catchfence. Large green/blue painted escape at first left/right. Palms and low white utility buildings beyond wall.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
@@ -99,7 +100,8 @@
         259,
         263,
         267,
-        331.06
+        311,
+        315
       ],
       "observed": "Narrow asphalt channel between concrete and continuous mesh; red-white narrow apex kerbs, occasional green-painted outer lane. Blue evening sky over white apartment and event blocks, not continuous generic forest.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
@@ -113,9 +115,12 @@
       "name": "Fast coastal sequence toward northern hairpin",
       "reviewed_video_seconds": [
         408.95,
-        486.85
+        486.85,
+        319,
+        323,
+        327
       ],
-      "observed": "Alternating sweeping corners behind close fencing, long pale modern residential facades with balconies, linear floodlight rows. Diamond Tower visible beyond corridor, larger than foreground generic blocks.",
+      "observed": "Fast coastal sequence behind close fencing and residential balconies. The Diamond Tower site is visible ahead/right as an exposed concrete construction core with crane in323s; no finished glazed skyscraper facade should be inferred from the planned OSM height.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
     },
     {
@@ -126,8 +131,7 @@
       ],
       "name": "Northern T13 banked hairpin",
       "reviewed_video_seconds": [
-        564.74,
-        798.43
+        331.06
       ],
       "observed": "Broad round hairpin with green painted outside apron and red-white inside kerb. Pale coastal buildings and hospitality above fence; low palms on planted islands. Preserve curved protection and clear paved escape geometry.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
@@ -141,7 +145,8 @@
       "name": "Return technical sweepers",
       "reviewed_video_seconds": [
         642.64,
-        720.54
+        720.54,
+        335
       ],
       "observed": "Fast close-wall bends, palm clumps and flat white/cream buildings behind mesh. Paint stays alongside kerb instead of blanket gravel; visible repeated lamp poles with paired arms.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
@@ -188,15 +193,7 @@
       "reviewed_video_seconds": [
         291,
         299,
-        303,
-        307,
-        311,
-        315,
-        319,
-        323,
-        327,
-        331,
-        335
+        303
       ],
       "observed": "Wide slow left turnaround, coloured paved runoff and terminal impact barriers, mainstand and high white-framed pit decks dominate. Preserve hotel/site access behind fence, continuous curved outer protection.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
@@ -217,5 +214,36 @@
   "uncertainties": [
     "GLO-90 is not racing-deck height on the close coastal roads. Preserve flat visual horizon rather than propagating roofs into road.",
     "Barrier-vertex median widths cannot reproduce chicane escape lanes; author terminal protection behind paved escape, never directly across turn exit."
-  ]
+  ],
+  "targeted_registration_review": {
+    "method": "Direct appearance/topology checks of retained frames and bounded individual Baku reference seeks; source geometry and all native data unchanged.",
+    "notes": "Targeted frame review corrects331.06s to northern T13banked hairpin (~40s relative lap timer), not the southern esses.291s is late T27(~1:21), followed by pit return;307–327s begins a later-lap opening/esses sequence. Exact native station association remains a visual estimate, approximately±60m. Sponsor colours alone do not establish corner identity; older overview links elsewhere remain contextual until full-lap continuity review.",
+    "next_gate": "Actual packaged full-lap review and targeted captures in build/reviews/east-final-targets.json; these metadata corrections are not visual approval."
+  },
+  "diamond_tower_reference": {
+    "osm_id": 1244131504,
+    "direct_video_seconds": [
+      165,
+      323
+    ],
+    "context_video_seconds": [
+      270,
+      271,
+      322
+    ],
+    "native_nearest_station_m": 1878.8,
+    "driver_side": "right",
+    "distance_from_centerline_m": 56.3,
+    "observed": "Distant skeletal silhouette and close exposed concrete/core with crane. The close top is cropped; the wider image constrains the broad mass, not a precise measured height.",
+    "planned_osm_height_m": 432,
+    "planned_osm_levels": 93,
+    "osm_check_date": "2021-04-21",
+    "rendered_construction_envelope_m": 300,
+    "visual_height_uncertainty_m": 80,
+    "base_z_m": 3.2402936476608333,
+    "base_evidence": "Adjacent native road3.24m; source-footprint corners2.41–3.24m, center3.13m. Site-level road datum chosen, avoiding any addition of height on a DSM roof.",
+    "state_correction": "Fully glazed planned-height placeholder replaced by open concrete floorplates/columns, exposed core, top formwork and tower crane. Existing footprint and world registration retained.",
+    "survey_claim": false,
+    "runtime_gate": "Requires actual packaged capture and Luna High comparison; source check is not appearance approval."
+  }
 }

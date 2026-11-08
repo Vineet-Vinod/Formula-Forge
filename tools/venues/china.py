@@ -36,7 +36,6 @@ def circuit_edges(scene: CircuitScene) -> None:
         scene.branding(start, end, side, material)
 
 
-    apron_band(scene, 1180, 1270, 1, 0.15, 7.95, 'RunoffViolet')
     apron_band(scene, 1185, 1260, 1, 7.55, 7.75, 'White')
     apron_band(scene, 4170, 4310, 1, 0.15, 2.4, 'RunoffGreen')
 
