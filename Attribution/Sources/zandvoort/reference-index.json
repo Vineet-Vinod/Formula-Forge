@@ -220,6 +220,10 @@
     {
       "url": "https://www.circuitzandvoort.nl/en/presentation/",
       "use": "Official layout/venue architecture; source year can differ from video."
+    },
+    {
+      "url": "https://www.circuitzandvoort.nl/en/corners/",
+      "use": "Operator Turn10section identifies 2020exit double kerb and supplies credited ChrisSchotanus photographs showing real narrow outside gravel, grass lip and wall/scrub bank. No photo pixels ship."
     }
   ],
   "uncertainties": [
@@ -235,5 +239,25 @@
     ],
     "observation": "865\u2192866.50\u2192868video seconds progresses HUD39.556\u219241.053\u219242.533s continuously through the middle left bend. By872s HUD jumps to1:07.481s on final banking, then1:10.482s at875. The868\u2192872interval contains an edit; no station interpolation across it.",
     "remaining_index_policy": "Old broad sector labels are contextual unless separately registered; no unverified corner relabels are made here."
-  }
+  },
+  "operator_photo_review": [
+    {
+      "page": "https://www.circuitzandvoort.nl/en/corners/",
+      "url": "https://circuit-zandvoort.b-cdn.net/production/Bochten-CMcom-Circuit-Zandvoort-Chris-Schotanus-2_0004_Cmcombocht.jpg?width=1200&quality=75",
+      "retrieved": "2026-11-08",
+      "reviewed_image": "build/reviews/zandvoort/reference/official-t10-1.jpg",
+      "sha256": "a7f107887475784066b95865734d311b0c2ada1f55ff5d9463f14eb0a41c1b2b",
+      "credit": "Chris Schotanus / Essay Produkties; operator page",
+      "observation": "T10 has genuine outside gravel, with grass lip and close wall backed by dune scrub. Telephoto perspective does not establish precise metres; photos are supplementary geometry evidence, not exported textures."
+    },
+    {
+      "page": "https://www.circuitzandvoort.nl/en/corners/",
+      "url": "https://circuit-zandvoort.b-cdn.net/production/Bochten-CMcom-Circuit-Zandvoort-Chris-Schotanus-1_0005_CMcom-bocht.jpg?width=1200&quality=75",
+      "retrieved": "2026-11-08",
+      "reviewed_image": "build/reviews/zandvoort/reference/official-t10-2.jpg",
+      "sha256": "bc4aeffbd7b9a3b87213bea206a2dbb859945bd453a91291711d79911b87f6d6",
+      "credit": "Chris Schotanus / Essay Produkties; operator page",
+      "observation": "T10 has genuine outside gravel, with grass lip and close wall backed by dune scrub. Telephoto perspective does not establish precise metres; photos are supplementary geometry evidence, not exported textures."
+    }
+  ]
 }

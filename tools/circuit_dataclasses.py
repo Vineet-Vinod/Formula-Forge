@@ -29,6 +29,21 @@ class PitLane:
 
 
 @dataclass(frozen=True)
+class ShoulderCorrection:
+    start_m: float
+    end_m: float
+    side: Literal[-1, 1]
+    shoulder_m: float
+    source_note: str
+    transition_m: float = 25.0
+
+
+@dataclass(frozen=True)
+class ShoulderCorrections:
+    sections: list[ShoulderCorrection] = field(default_factory=list)
+
+
+@dataclass(frozen=True)
 class BarrierPanel:
     start: float
     end: float

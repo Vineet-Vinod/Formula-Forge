@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import bisect
 import itertools
+import json
 import math
 import re
 import struct
@@ -16,7 +17,7 @@ from pydantic import BaseModel, Field
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 from circuit_dataclasses import PitLane
-from circuit_profiles import pit_shoulders
+from circuit_profiles import pit_shoulders, section_shoulders
 
 SOURCES = ROOT / "Attribution/Sources"
 NATIVE = ROOT / "Source/FormulaForge/Native/track_data"
@@ -38,6 +39,34 @@ def test_pit_wall_profile_wraps_smoothly_without_repeated_application_drift() ->
     assert samples[175] == pytest.approx((3.05, 7))
     assert samples[25] == pytest.approx((3.05, 7))
     assert samples[50] == pytest.approx((6, 7))
+
+
+def test_local_bank_shoulder_preserves_opposite_side_and_upper_bridge(tmp_path: Path) -> None:
+    rows = [
+        (float(station), 0.4 if 4637 <= station <= 4667 else 6.0, 7.0)
+        for station in range(0, 5001, 5)
+    ]
+    (tmp_path / "shoulder-corrections.json").write_text(json.dumps({
+        "back_straight_bridge": {"start_m": 4637, "end_m": 4667, "shoulder_m": 0.4},
+        "sections": [{
+            "start_m": 2300, "end_m": 2417, "side": 1,
+            "shoulder_m": 1.25, "transition_m": 25,
+            "source_note": "Registered G2 bank",
+        }],
+    }))
+    result = section_shoulders(rows, 5000, tmp_path)
+    assert section_shoulders(result, 5000, tmp_path) == result
+    samples = {station: (left, right) for station, left, right in result}
+    assert samples[2300] == pytest.approx((1.25, 7.0))
+    assert samples[2417] == pytest.approx((1.25, 7.0))
+    assert samples[2275] == pytest.approx((6.0, 7.0))
+    assert samples[2442] == pytest.approx((6.0, 7.0))
+    for station, left, right in rows:
+        assert samples[station][1] == right
+        if station < 2275 or station > 2442:
+            assert samples[station][0] == left
+
+
 Controls = list[tuple[float, float]]
 
 

@@ -1,0 +1,13 @@
+{
+  "sections": [
+    {
+      "start_m": 2420.0,
+      "end_m": 2620.0,
+      "side": 1,
+      "shoulder_m": 3.55,
+      "transition_m": 35.0,
+      "source_note": "T10 outside driver RIGHT afterT9exit. Supplied866.50s/868.00s continuous turn-in/apex and operator CircuitZandvoort corners10 photographs establish a narrow grass lip/gravel band with close wall and green-scrub bank. Current exported2540m +RIGHTshoulder15.631m places wall16.581m beyond road despite8m visual gravel. Plateau3.55m plus shared.95m protection margin gives4.5m roadedge-to-wall, estimated\u00b11.5m; cubic approach2385\u20132420/release2620\u20132655. Narrow rendered pocket2500\u20132610 preserves1m grass then up to3m gravel,15m tapers. NativeCSVcolumnleft is reflected+RIGHT. Centreline/elevation/bank/roadwidth unchanged."
+    }
+  ],
+  "method": "Reference/operator-photo-based local protection-distance reconstruction; positive source side is driverRIGHT. Measurements estimated, not a survey. Root applies shared typed shoulder-only override and regenerates closed boundaries/native export."
+}

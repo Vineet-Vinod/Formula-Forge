@@ -11,11 +11,11 @@
       "end_m": 850,
       "name": "Main straight, uphill T1 and T2",
       "reference_times_s": [
-        535.45,
-        836.85
+        921.5,
+        923
       ],
       "observed_environment": "Long main-stand/pit complex, steep uphill blind T1 crest, spectator hill and low broadleaf trees. Wide asphalt/painted runoff and US flag geometry; opening hill must be real mesh relief.",
-      "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
+      "placement_confidence": "Direct supplied cockpit921.5/923s identifies open uphill T1 and outside/right spectator stand; operator seating map registers mapped460658890. Exact heights/tiers remain reconstructed."
     },
     {
       "start_m": 850,
@@ -895,6 +895,22 @@
       ],
       "reason": "Star center at same-station capture is90degleft; geometry is not moved to chase viewport.",
       "readability": "At4050, preserved camera predicts star only2.57pixels high (x269\u2013393,y407.8\u2013410.4at1600\u00d7900). The exact capture contains a thin white horizon mark; absence cannot be inferred.4120shows about16pixels of height with partial leftFOV crop. Use moving3980\u20134180review; no paint position/radius change."
+    },
+    "turn1_stand": {
+      "osm_id": 460658890,
+      "method": "Mapped outside(+RIGHT)76.38\u00d726.28m roofless T1stand replaces generic inside330\u2013540m band that folded across racingroad;21rows requested, terrain-aware foundation.",
+      "evidence": "t1-stand-review.json",
+      "source_proof": "Old694.316m\u00b2 structural XY road overlap; corrected mappedstand0m\u00b2. Fresh package required."
+    },
+    "turn12_stand": {
+      "osm_id": 460683347,
+      "method": "Retained130.42\u00d723.78m outside(+RIGHT)T12 braking-zone grandstand, native3567.70/right44.68m, replaces inside3510\u20133700m generic stand that folded across road.23rows requested, roofless.",
+      "excluded_wrong_id": "460658891 is near4168m/T15 and is not T12.",
+      "evidence": "t1-t12-stand-review.json",
+      "source_reference_times_s": [
+        538,
+        540.5
+      ]
     }
   },
   "t15_island_correction": "t15-island.json"

@@ -225,7 +225,7 @@
         "start_m": 2500,
         "end_m": 2610,
         "side": 1,
-        "requested_width_m": 8,
+        "requested_width_m": 4,
         "material": "Gravel"
       },
       {
@@ -456,11 +456,15 @@
       "new_runoff": {
         "start_m": 2500,
         "end_m": 2610,
-        "width_m": 8
+        "side": 1,
+        "outer_width_m": 4,
+        "inner_grass_lip_m": 1,
+        "maximum_pale_gravel_width_m": 3,
+        "visual_taper_m": 15
       },
-      "registration": "Same left bend confirmed by865\u2192866.50\u2192868.00s frames and minimap; HUD39.556\u219241.053\u219242.533s is continuous here. Approaching bend has close green/scrub slope behind outside-right yellow wall. At apex a limited pale outside strip remains.",
-      "uncertainty": "8m pocket width and2500\u20132610m endpoints are original image reconstruction around nativeT10apex2538m, approximately\u00b120m endpoint/\u00b13m width uncertainty. This is not a traced or surveyed runoff. Retains outside RIGHT; inside left kerb/grass unchanged.",
-      "physical_action": "Root must regenerate Zandvoort closed boundaries/native export before final scene generation. Agent did not edit native geometry, road widths, banking or handling.",
+      "registration": "Compare corrected2540m apex with continuous866.50/868.00s turn-in/apex, not865s earlier entry. Operator T10 photographs independently establish real outside gravel with grass lip and adjacent wall/bank. Retain OUTSIDE RIGHT and inside-left kerb/grass.",
+      "uncertainty": "1m grass lip,3m gravel band,4.5m roadedge-to-wall are original photo/reference reconstruction with approximately\u00b11\u20131.5m uncertainty, not surveyed dimensions. Tapers/endpoints estimated within roughly20m.",
+      "physical_action": "Root applies typed shoulder override, refreshes native CSV, regenerates closed protection/native export, then regenerates scene. Agent changes source only; shared CLI modifies only shoulder profile, never centreline/elevation/bank/roadwidth.",
       "branding": {
         "ranges": [
           {
@@ -482,7 +486,21 @@
           868
         ],
         "registration": "Direct observed yellowDHL outside-right wall along left-bend approach/apex; short left-entry wall visible before inside opens into grass. Native endpoints estimated from same2538m apex anchor; no physical envelope change."
-      }
+      },
+      "superseded_new_runoff": {
+        "start_m": 2500,
+        "end_m": 2610,
+        "width_m": 8
+      },
+      "native_shoulder_profile": "shoulder-corrections.json",
+      "native_width_diagnosis": {
+        "2540_half_road_width_m": 6.0,
+        "2540_old_positive_shoulder_m": 15.631,
+        "2540_old_roadedge_to_wall_m": 16.581,
+        "replacement_positive_shoulder_m": 3.55,
+        "replacement_roadedge_to_wall_m": 4.5
+      },
+      "native_material_limit": "Scalar native runoff-zone API retains total4m pocket width but cannot separately label the inner1m visual grass lip; wall/collision geometry follows the typed shoulder profile. Do not claim surveyed material segmentation."
     },
     "dune_surface": {
       "native_final_bank_range_m": [

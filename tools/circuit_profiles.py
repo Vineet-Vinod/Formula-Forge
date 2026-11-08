@@ -8,14 +8,16 @@ import re
 import sys
 from pathlib import Path
 
-from circuit_dataclasses import PitLane
+from circuit_dataclasses import PitLane, ShoulderCorrection, ShoulderCorrections
 from pydantic import TypeAdapter
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
 def pit_shoulders(
-    rows: list[tuple[float, float, float]], length: float, profile: PitLane
+    rows: list[tuple[float, float, float]],
+    length: float,
+    profile: PitLane | ShoulderCorrection,
 ) -> list[tuple[float, float, float]]:
     positions = [row[0] for row in rows]
 
@@ -49,9 +51,19 @@ def pit_shoulders(
     return result
 
 
+def section_shoulders(
+    rows: list[tuple[float, float, float]], length: float, source: Path
+) -> list[tuple[float, float, float]]:
+    path = source / "shoulder-corrections.json"
+    if path.exists():
+        corrections = TypeAdapter(ShoulderCorrections).validate_json(path.read_bytes())
+        for profile in corrections.sections:
+            rows = pit_shoulders(rows, length, profile)
+    return rows
+
+
 def apply(slug: str) -> None:
     source = ROOT / "Attribution/Sources" / slug
-    profile = TypeAdapter(PitLane).validate_json((source / "pit-lane.json").read_bytes())
     length = float(json.loads((source / "reconstruction.json").read_text())["target_m"])
     path = ROOT / "Source/FormulaForge/Native/track_data" / (slug + "_survey.inc")
     text = path.read_text()
@@ -61,13 +73,18 @@ def apply(slug: str) -> None:
     rows = [tuple(float(value) for value in row) for row in
             re.findall(r"\{([\d.]+)f, ([\d.]+)f, ([\d.]+)f\}", match[2])]
     original = [(row[0], row[1], row[2]) for row in rows]
-    result = pit_shoulders(original, length, profile)
+    result = original
+    pit_path = source / "pit-lane.json"
+    if pit_path.exists():
+        profile = TypeAdapter(PitLane).validate_json(pit_path.read_bytes())
+        result = pit_shoulders(result, length, profile)
+    result = section_shoulders(result, length, source)
     body = "\n" + ",\n".join(
         f"    {{{station:.3f}f, {left:.3f}f, {right:.3f}f}}"
         for station, left, right in result
     )
     path.write_text(text[:match.start(2)] + body + text[match.end(2):])
-    print(f"{slug}: registered pit wall {profile.start_m:g}–{profile.end_m:g} m, side {profile.side:+d}")
+    print(f"{slug}: applied registered pit and local shoulder corrections")
 
 
 if __name__ == "__main__":

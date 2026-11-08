@@ -34,10 +34,10 @@ def build_venue(scene: CircuitScene) -> None:
     scene.braking_boards(5221, 1)  # T20 pit return
     pit_garages(scene)
     main_grandstand(scene)
-    scene.stand(330, 540, -1, rows=21, setback=30, seat_material='Concrete')
+    footprint_stand(scene, 460658890, rows=21, seat_material='Concrete')
     scene.stand(1050, 1280, -1, rows=15, setback=28, seat_material='Concrete')
     scene.stand(1850, 1990, -1, rows=15, setback=34, seat_material='Concrete')
-    scene.stand(3510, 3700, -1, rows=23, setback=28, seat_material='Concrete')
+    footprint_stand(scene, 460683347, rows=23, seat_material='Concrete')
     footprint_stand(scene, 460658892, rows=22, seat_material='Concrete')
     scene.stand(4840, 4950, -1, rows=17, setback=27, seat_material='Concrete')
     mapped_building(scene, 847781223, 18, facade='Concrete', floors=1, roof='canopy', enclosed=False)

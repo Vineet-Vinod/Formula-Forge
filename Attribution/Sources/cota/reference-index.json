@@ -5,18 +5,18 @@
   "reference_sha256": "652fe69ef8bccd57e3f0cf9b1b40c482d66d8cd56014c9429345e07120f8b7a7",
   "layout_observed": "Circuit of the Americas 5.513km/20-corner Grand Prix layout.",
   "lighting_weather_observed": "Bright daytime with scattered clouds; some qualifying shots warmer/overcast.",
-  "review_scope": "16 sparse overview frames viewed by author. Clip is an edited career/race montage, includes menus/cuts and changing conditions; not a continuous lap. Unviewed timestamps are not evidence.",
+  "review_scope": "16 sparse overview frames viewed by author. Clip is an edited career/race montage, includes menus/cuts and changing conditions; not a continuous lap. Unviewed timestamps are not evidence. Additional individually extracted640px T1 cockpit views921.5/923s reviewed2026-11-08;535.45/836.85 prior sector association corrected. No reference pixels shipped.",
   "frame_index_file": "build/reviews/cota/reference/overview-index.json",
   "reviewed_visual_evidence": [
     {
       "time_s": 535.45,
       "reviewed": true,
-      "notes": "Main straight, uphill T1 and T2: Long main-stand/pit complex, steep uphill blind T1 crest, spectator hill and low broadleaf trees. Wide asphalt/painted runoff and US flag geometry; opening hill must be real mesh relief."
+      "notes": "Back straight to T12, not main straight/T1. Direct538s continuation has lap timer55.131 and T12/back-straight minimap position; old T1 association corrected."
     },
     {
       "time_s": 836.85,
       "reviewed": true,
-      "notes": "Main straight, uphill T1 and T2: Long main-stand/pit complex, steep uphill blind T1 crest, spectator hill and low broadleaf trees. Wide asphalt/painted runoff and US flag geometry; opening hill must be real mesh relief."
+      "notes": "External broadcast corner shot with hillside spectators; old broad T1 label is not an exact cockpit registration. Do not use as matched uphill T1 evidence."
     },
     {
       "time_s": 309.4,
@@ -67,6 +67,16 @@
       "time_s": 912.2,
       "reviewed": true,
       "notes": "T19, T20 and pit return: Wide final painted aprons, grass islands, multi-tier main-straight roof and long white pit bar; catch fences and viewing decks, distant observation wheel."
+    },
+    {
+      "time_s": 921.5,
+      "reviewed": true,
+      "notes": "Direct uphill T1 braking approach, lap timer6.166, open sky, outside/right upper hillside spectator stand. Minimap at opening hairpin; matches native~350\u2013480m pose context, no exact survey claim."
+    },
+    {
+      "time_s": 923,
+      "reviewed": true,
+      "notes": "Direct T1 crest/braking, lap timer7.645, open sky and outside/right stand. Confirms giant over-road generic stand was wrong; mapped460658890 location agrees operator map."
     }
   ],
   "registration": {

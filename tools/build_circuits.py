@@ -1446,6 +1446,10 @@ out geom;
                 shoulders.append((station, bridge["shoulder_m"], bridge["shoulder_m"]))
             shoulders.sort()
 
+    from circuit_profiles import section_shoulders
+
+    shoulders = section_shoulders(shoulders, target, source)
+
     # Buildings inside a narrow corridor, not the whole city.
     building_cache = source / "buildings.osm.json.gz"
     if building_cache.exists() and not refresh:

@@ -81,11 +81,37 @@ def dune_scrub(scene: CircuitScene, start: float, end: float, side: int) -> None
                              'placement_status': 'Reference865/866.5/868s middle dune and872s final bank vegetation character; individual footprints reconstructed beyond protection/buildings/water. Low crowns start at sampled ground; small rock facets follow sampled terrain rather than fixed-Z tiles.'})
 
 
+def t10_gravel_pocket(scene: CircuitScene) -> None:
+    start, end = 2500.0, 2610.0
+    scene.surface_ranges.append({'type': 'runoff', 'start_m': start, 'end_m': end,
+                                 'side': 1, 'requested_width_m': 4, 'material': 'Gravel'})
+    def outer(station: float) -> float:
+        t = max(0, min(1, (station - start) / 15, (end - station) / 15))
+        return 1 + 3 * t * t * (3 - 2 * t)
+    for i in range(55):
+        a, b = scene.at(start + i * 2), scene.at(start + (i + 1) * 2)
+        pa, pb = a.point(a.half_width + 1), b.point(b.half_width + 1)
+        qa, qb = a.point(a.half_width + outer(a.station)), b.point(b.half_width + outer(b.station))
+        shape = Polygon([pa[:2], pb[:2], qb[:2], qa[:2]])
+        if not shape.is_valid or shape.area < 1e-8:
+            continue
+        remaining = shape.difference(scene.road_mask)
+        components = [remaining] if isinstance(remaining, Polygon) else list(getattr(remaining, 'geoms', []))
+        for component in components:
+            if isinstance(component, Polygon) and component.area > 1e-8:
+                scene.extra_corridors.append(component)
+                scene.polygon_surface(component, 'Gravel', .001, a)
+    scene.landmarks.append({'name': 'T10 bounded outside gravel band', 'start_m': start, 'end_m': end,
+                            'side': 1, 'grass_lip_m': 1, 'maximum_gravel_band_width_m': 3,
+                            'dimensions_status': 'Continuous866.5/868s apex sequence and operatorT10 photographs establish grass lip, gravel and close wall. Original1m grass/3m gravel/15m end tapers estimated, not surveyed. Separate typed3.55m native right-shoulder correction plus.95margin brings wall to4.5m outside road; road and bank unchanged.'})
+
+
 def circuit_edges(scene: CircuitScene) -> None:
     for start, end, side in [(340, 480, 1), (680, 770, 1), (805, 950, -1), (1670, 1795, 1), (2030, 2130, 1), (2230, 2340, 1), (2490, 2590, -1), (3130, 3210, 1), (3220, 3290, -1), (3500, 3610, 1), (3720, 3940, 1)]:
         scene.kerb(start, end, side, material='RunoffOrange' if start in (340, 805) else 'Red', alternate_material='White')
-    for start, end, side, width, material in [(290, 510, -1, 24, 'Gravel'), (780, 995, 1, 20, 'Gravel'), (1630, 1840, -1, 24, 'Gravel'), (1990, 2170, -1, 22, 'Gravel'), (2190, 2380, -1, 20, 'Gravel'), (2500, 2610, 1, 8, 'Gravel'), (3080, 3320, -1, 18, 'Gravel'), (3460, 3650, -1, 20, 'Gravel')]:
+    for start, end, side, width, material in [(290, 510, -1, 24, 'Gravel'), (780, 995, 1, 20, 'Gravel'), (1630, 1840, -1, 24, 'Gravel'), (1990, 2170, -1, 22, 'Gravel'), (2190, 2380, -1, 20, 'Gravel'), (3080, 3320, -1, 18, 'Gravel'), (3460, 3650, -1, 20, 'Gravel')]:
         scene.runoff(start, end, side, width, material)
+    t10_gravel_pocket(scene)
 
     for start, end, side in [(290, 510, -1), (3080, 3320, -1)]:
         apron_band(scene, start, end, side, 1.2, 3.1, 'RunoffGreen')

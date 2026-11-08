@@ -15,5 +15,15 @@
     "release_m": 4684,
     "shoulder_m": 0.4,
     "method": "Narrow concrete bridge deck and parapet, with cubic approach transitions. Width reconstructed from reference; not surveyed."
-  }
+  },
+  "sections": [
+    {
+      "start_m": 2300,
+      "end_m": 2417,
+      "side": 1,
+      "shoulder_m": 1.25,
+      "transition_m": 25,
+      "source_note": "G-2 post-crossover driver-RIGHT grass bank; video870.5s under-deck exit and872s straight show protection near road with grass bank rising to upper spectators. Operator G2 map and mapped184102012 footprint register seating front to native2307\u20132417. Conservative1\u20131.5m shoulder estimated, not measured; plateau1.25m, cubic approach2275\u20132300/release2417\u20132442. Native CSV column left is reflected +RIGHT. Lower-road section only; upper bridge4637\u20134667 untouched."
+    }
+  ]
 }

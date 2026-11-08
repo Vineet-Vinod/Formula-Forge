@@ -21,12 +21,12 @@
     {
       "path": "build/reviews/japan/runoff-reference/t-033.jpg",
       "video_s": 866,
-      "observation": "Matched supplied-video crossover approach: open grassy spectator bank, no tall blue stadium face."
+      "observation": "Degner2 right-hand entry BEFORE crossover, different heading and occlusion from native2272 under-deck pose; does not prove absence of the postbridge G2 stand."
     },
     {
       "path": "build/reviews/japan/runoff-reference/t-034.jpg",
       "video_s": 868,
-      "observation": "Matched crossover/deck visual anchor; timestamps are scene identity anchors, not elapsed-time station interpolation."
+      "observation": "Straight BEFORE crossover deck, G2 postbridge area largely occluded; unsuitable for a direct absence comparison with native2272."
     }
   ],
   "g2": {
@@ -65,10 +65,235 @@
       ],
       "memory": "VmHWM:\t   60956 kB"
     },
-    "acceptance": "Source checks only; fresh packaged2272 approach/exit still required."
+    "acceptance": "Pending root native application/export, scenery regeneration and fresh packaged2272/2305/2360 review. Source-only ground prediction restores upper spectator-bank profile; this is not a visual approval.",
+    "next_pipeline": [
+      "PYTHONPATH=tools build/tmp/lasvegas-python/bin/python tools/circuit_profiles.py japan (root only; rewrites shoulder block only)",
+      "Root guarded native make check and build/tests/export-circuit-scene japan",
+      "PYTHONPATH=tools build/tmp/lasvegas-python/bin/python tools/generate_circuit_scene.py japan (root sole heavy job)",
+      "Root serial Unreal import/cook and2272/2305/2360 matched-pose captures"
+    ],
+    "boundary_contract": "Japan uses its legacy deck-aware protection geometry driven by the shoulder profile. Do not run tools/circuit_boundaries.py japan: planar closed-envelope union rejects deck_separation and cannot represent the crossover. Native shoulder application, guarded checks, native export and scene regeneration suffice."
   },
   "camera2700": {
     "fresh_capture_sha256": "3849288113a7b47e5d527e6c3249e608f0829877dde6704a13ebe5c300f52ade",
     "finding": "Fresh capture has open sky; previous roof finding withdrawn. Stand183999779 near native2734.7 retained. Source front ground39.43\u201342.83m/rear46.61\u201347.26m explains V-shaped bank-facing outline; no independent primary evidence yet demonstrates footprint or seating-type error, so no speculative edit."
+  },
+  "corrected_critical_pose_reconciliation": {
+    "scope": "Strict pose reconciliation; no further source geometry edits performed.",
+    "runtime": {
+      "path": "build/reviews/japan/corrected-critical/2272.png",
+      "sha256": "0df0f1ffc8a6720964fdc6cb1a00d22227a0741502d28794428c75d45a982f2b",
+      "pose": "Under crossover, facing along straight after Degner2 with deck directly overhead. G2 to driver right after bridge."
+    },
+    "reference_views": [
+      {
+        "path": "build/reviews/japan/runoff-reference/t-033.jpg",
+        "video_s": 866,
+        "pose": "Degner2 right-hand approach, BEFORE bridge. Different heading and occlusion; cannot assess postbridge G2 mass from this frame."
+      },
+      {
+        "path": "build/reviews/japan/runoff-reference/t-034.jpg",
+        "video_s": 868,
+        "pose": "Straight BEFORE crossover deck. Right postbridge G2 largely occluded by deck/embankment; cannot establish absence."
+      },
+      {
+        "path": "build/reviews/japan/corrected-critical/reference-870.jpg",
+        "video_s": 870,
+        "pose": "Entering/under deck, late-lap timer39.765; right spectator bank partly occluded."
+      },
+      {
+        "path": "build/reviews/japan/corrected-critical/reference-870p5.jpg",
+        "video_s": 870.5,
+        "pose": "Under deck at exit, lap timer40.265; right spectators visible on upper grass bank above a broad grass slope. Most relevant comparison to native2272, approximate along-track offset\u00b115m, not exact registered survey."
+      },
+      {
+        "path": "build/reviews/japan/corrected-critical/reference-872.jpg",
+        "video_s": 872,
+        "pose": "After crossover, lap timer41.765, facing hairpin approach. Right upper bank spectator strip is real and visible."
+      }
+    ],
+    "stand_identity": {
+      "osm_id": 184102012,
+      "operator": "https://www.suzukacircuit.jp/eng/f1/ticket/seat_g.html",
+      "map": "https://www.suzukacircuit.jp/eng/f1/ticket/images/seat/g/img_g_map.jpg",
+      "nearest_native_m": 2362.2589015145554,
+      "length_m": 110.1322431799423,
+      "width_m": 11.204017766141176,
+      "orientation": "Long mapped footprint approximately parallel to lower postbridge straight, benches face lower road. G2 should be retained."
+    },
+    "confirmed_remaining_source_issue": {
+      "kind": "Terrace cross-slope exaggerated by road/terrain blend",
+      "front_samples": [
+        {
+          "native_station_m": 2416.931394988981,
+          "source_xy": [
+            -914.9065275749541,
+            244.13354523496906
+          ],
+          "distance_from_road_centre_m": 21.112714833263837,
+          "half_width_m": 6.0,
+          "right_shoulder_m": 6.0,
+          "road_z_m": 27.927956125248592,
+          "raw_ground_z_m": 33.98926331842529,
+          "blended_ground_z_m": 30.12323781095678
+        },
+        {
+          "native_station_m": 2361.9488822468743,
+          "source_xy": [
+            -901.3026481377627,
+            190.77427039713183
+          ],
+          "distance_from_road_centre_m": 24.158430982034474,
+          "half_width_m": 6.0,
+          "right_shoulder_m": 10.49001902412622,
+          "road_z_m": 26.504857719087738,
+          "raw_ground_z_m": 34.120433061779444,
+          "blended_ground_z_m": 28.494528934009093
+        },
+        {
+          "native_station_m": 2306.967322106872,
+          "source_xy": [
+            -887.6987687005713,
+            137.4149955592946
+          ],
+          "distance_from_road_centre_m": 27.204076087086904,
+          "half_width_m": 6.0,
+          "right_shoulder_m": 13.669798598225135,
+          "road_z_m": 26.124965463199786,
+          "raw_ground_z_m": 33.48726785109407,
+          "blended_ground_z_m": 27.98220498091316
+        }
+      ],
+      "description": "Raw GSI footprint front~34m/rear~38m, while blended front27\u201330m. Current helper used blended footprint heights, producing9.3m seating rise over11.2m. Reference shows upper spectator strip above grass; simply raising front to raw GSI needs coherent slope to protection edge to avoid creating raised perimeter wall. Root must reconcile right-side corridor width before terrain/stand edits."
+    },
+    "suggested_runtime_stations": [
+      {
+        "station_m": 2250,
+        "source_xy": [
+          -903.3921876206302,
+          76.26818926974327
+        ],
+        "heading_degrees_east_ccw": 101.13154050407626,
+        "G2_centre_forward_m": 112.2583202490018,
+        "G2_centre_right_m": 29.750445557679527
+      },
+      {
+        "station_m": 2272,
+        "source_xy": [
+          -907.6398779433442,
+          97.85425084713279
+        ],
+        "heading_degrees_east_ccw": 101.13440009843876,
+        "G2_centre_forward_m": 90.25681421818852,
+        "G2_centre_right_m": 29.75527588554002
+      },
+      {
+        "station_m": 2305,
+        "source_xy": [
+          -914.0113030864475,
+          130.23320820664725
+        ],
+        "heading_degrees_east_ccw": 101.13482818357802,
+        "G2_centre_forward_m": 57.25671408386962,
+        "G2_centre_right_m": 29.754462926777652
+      },
+      {
+        "station_m": 2360,
+        "source_xy": [
+          -924.6303723531944,
+          184.1986153407956
+        ],
+        "heading_degrees_east_ccw": 101.13348142628455,
+        "G2_centre_forward_m": 2.2571425697549836,
+        "G2_centre_right_m": 29.751865524896314
+      }
+    ],
+    "decision": "Preserve mapped G2 and scene seating footprint. Apply only +RIGHT shoulder1.25m at2300\u20132417 with25m cubic transitions2275\u20132300/2417\u20132442; then export native road CSV and regenerate scenery. Current helper consumes newly coherent ground automatically, without a floating vertical lift or altered seat footprint. Fresh packaged2272/2305/2360 comparison required.",
+    "scoped_correction_recipe": {
+      "scope": "Prediction only; no native/CSV/binary writes",
+      "section": {
+        "plateau_m": [
+          2300,
+          2417
+        ],
+        "shoulder_m": 1.25,
+        "side": 1,
+        "tapers_m": [
+          [
+            2275,
+            2300
+          ],
+          [
+            2417,
+            2442
+          ]
+        ]
+      },
+      "seating_front_ground_before_mean_m": 28.68226337791055,
+      "seating_front_ground_after_mean_m": 33.19630844314348,
+      "seating_front_raw_GSI_mean_m": 34.04865380352709,
+      "seating_rear_ground_after_mean_m": 38.60099552511062,
+      "samples": [
+        {
+          "station_m": 2416.931394988981,
+          "before_z_m": 30.12323781095678,
+          "after_z_m": 32.24054563243506,
+          "raw_z_m": 33.98926331842529
+        },
+        {
+          "station_m": 2403.183972497053,
+          "before_z_m": 29.040745702423227,
+          "after_z_m": 32.420758211543905,
+          "raw_z_m": 33.96152423977512
+        },
+        {
+          "station_m": 2389.4384517732706,
+          "before_z_m": 30.052599295956796,
+          "after_z_m": 32.81640888841496,
+          "raw_z_m": 34.163541310866414
+        },
+        {
+          "station_m": 2375.692187076917,
+          "before_z_m": 30.660514484870344,
+          "after_z_m": 33.052545331052684,
+          "raw_z_m": 34.13319404757
+        },
+        {
+          "station_m": 2361.9488822468743,
+          "before_z_m": 28.494528934009093,
+          "after_z_m": 33.31156864325941,
+          "raw_z_m": 34.120433061779444
+        },
+        {
+          "station_m": 2348.2007559214053,
+          "before_z_m": 27.394024149363833,
+          "after_z_m": 33.629999409694726,
+          "raw_z_m": 34.19760356469507
+        },
+        {
+          "station_m": 2334.4586475363512,
+          "before_z_m": 27.12433569126566,
+          "after_z_m": 33.85705369356802,
+          "raw_z_m": 34.206272822836766
+        },
+        {
+          "station_m": 2320.7104041770895,
+          "before_z_m": 27.268179351436064,
+          "after_z_m": 34.00368609200399,
+          "raw_z_m": 34.17878401470164
+        },
+        {
+          "station_m": 2306.967322106872,
+          "before_z_m": 27.98220498091316,
+          "after_z_m": 33.43421008631859,
+          "raw_z_m": 33.48726785109407
+        }
+      ],
+      "opposite_shoulder_max_change_m": 0.0,
+      "road_xyz_bank_unchanged": true,
+      "upper_deck_shoulder_max_change_m": 0.0,
+      "shoulder_application_idempotent": true,
+      "memory": "VmHWM:\t   66352 kB"
+    }
   }
 }

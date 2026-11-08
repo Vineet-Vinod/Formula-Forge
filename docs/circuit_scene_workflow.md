@@ -42,6 +42,12 @@ closed envelope as below. The source builder also consumes this registration.
 Pit paving is a visual service area beyond the closed driving boundary; it must
 not enlarge that boundary. Include garage bays, foundations and roof structure.
 
+Use typed `sections` in `shoulder-corrections.json` for locally registered
+protection distances, with explicit side and cubic transition spans. Check the
+exported columns against the intended physical side. An overly wide shoulder
+also flattens terrain: it can depress a spectator bank or remove the land between
+stacked streets even when the road profile itself is correct.
+
 The 8,192-station samples for the new venues supply the visual road, contact
 surface and simulation path. The accepted circuits retain their sampling.
 Native station zero is an arbitrary retained source origin at several venues;
@@ -82,6 +88,12 @@ wall across a tight corner. Native checks require closed wall endpoints, road
 containment, contact coverage and clear car footprints. The older constant-offset
 wall check does not describe a union around an acute corner. Suzuka's crossing
 requires separate branch handling; the planar boundary tool rejects it.
+
+Resolved native shoulders can include the previous runoff-zone width. After
+narrowing a runoff, export again after the new zones compile, regenerate the
+envelope from those refreshed samples, and verify the final physical wall
+distance. Suzuka uses its existing deck-aware protection instead of this planar
+union; apply its shoulder recipe and rebuild/export directly.
 
 The envelope also excludes occupied building footprints with a small foundation
 clearance. Check the visible wall against the actual garage and stand fronts;
