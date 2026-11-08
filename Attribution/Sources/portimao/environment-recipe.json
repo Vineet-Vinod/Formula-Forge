@@ -33,12 +33,12 @@
       "end_m": 2600,
       "name": "Torre VIP uphill hairpin",
       "reference_times_s": [
-        394.46,
-        449.67,
+        168.5,
+        170,
         173.63,
         615.3
       ],
-      "observed_environment": "Strong elevation break into slow corner, concentric grass banks, sparse olive-like trees and small seating sections. Red/white kerbs, local raised orange apex element. Distinct rounded/stacked-disc glazed TorreVIP building at mapped footprint157736297 on left of adjacent parallel road; do not duplicate it beside the pit straight.",
+      "observed_environment": "Strong elevation break into T5left hairpin, open dry grassy inside bank and sparse trees, thin sponsor gantry overhead. No invented infield grandstand. TorreVIP is mapped left of adjacent T5exit/T6approach at157736297; keep its actual footprint.",
       "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
     },
     {
@@ -55,7 +55,7 @@
     {
       "start_m": 3200,
       "end_m": 3950,
-      "name": "Craig Jones and Portimão",
+      "name": "Craig Jones and Portim\u00e3o",
       "reference_times_s": [
         449.67,
         560.09
@@ -502,5 +502,11 @@
     "status": "Source correction awaiting fresh rendered review",
     "method": "Retain24-point circular outline and5taggedlevels. Recess glazed shaft to84% outline, projecting terraces95%, broad crown102%, double-sided slab/soffits and slim supports.18mheight and relative overhang dimensions are original estimates from173.63/615.30s, not measured.",
     "camera_note": "2500m view crops tower at left/top; use2450m or2400m to inspect complete crown silhouette. No footprint relocation."
+  },
+  "t5_seating_correction": {
+    "status": "Source frozen; fresh package required.",
+    "removed": "Invented inside(-LEFT)2240\u20132380m generic12row stand/setback27m.",
+    "replacement": "None. Existing grass, protection, sponsor gantry, other stands and road/profile preserved.",
+    "evidence": "t5-stand-review.json"
   }
 }

@@ -1,7 +1,10 @@
 """Albert Park: temporary race architecture inside a mature lakeside city park."""
 from __future__ import annotations
 
+from circuit_dataclasses import SurfaceProjection
 from circuit_scene import CircuitScene
+from shapely.geometry import LineString, Polygon
+from shapely.ops import unary_union
 
 from venues.west_architecture import apron_band, mapped_building, mast, trees, water
 
@@ -51,3 +54,49 @@ def circuit_edges(scene: CircuitScene) -> None:
     for start, end, side in [(245, 355, -1), (965, 1110, -1),
                               (1740, 1895, -1), (3970, 4160, -1), (4650, 4830, -1)]:
         apron_band(scene, start, end, side, 1.2, 3.2, 'RunoffGreen')
+    t3_apex_lip(scene)
+    t3_infield_paint(scene)
+
+
+def t3_apex_lip(scene: CircuitScene) -> None:
+    samples = [scene.at(station) for station in range(1016, 1039)]
+    sector = LineString([(p.x, p.y) for p in samples]).buffer(
+        -15, single_sided=True, cap_style='flat', join_style='round'
+    )
+    kerb = unary_union([shape for shape in scene.terrain_cutouts if shape.intersects(sector)])
+    lip = kerb.difference(scene.road_mask.buffer(.62)).intersection(sector)
+    scene.polygon_surface(lip, 'Red', .08, scene.at(1027))
+    scene.landmarks.append({
+        'name': 'T3 raised red inner apex lip', 'start_m': 1016, 'end_m': 1038,
+        'side': 1, 'area_m2': lip.area,
+        'registration': 'Direct 335 s T3 apex, lap 16.017 s, shows red inner lip behind the yellow/green kerb. Outer 0.47 m of the exact corrected kerb footprint, short station span and 8 cm top height are bounded estimates. Raised above the existing kerb; no coplanar duplicate paving or native collision change.',
+    })
+
+
+def t3_infield_paint(scene: CircuitScene) -> None:
+    samples = [scene.at(station) for station in range(996, 1065)]
+    sector = LineString([(p.x, p.y) for p in samples]).buffer(
+        -25, single_sided=True, cap_style='flat', join_style='round'
+    )
+    island = scene.road_mask.buffer(12).difference(scene.road_mask.buffer(1.2)).intersection(sector)
+    island = island.intersection(scene.corridor_mask.buffer(-0.25))
+    pieces = [island] if isinstance(island, Polygon) else list(island.geoms)
+    for piece in pieces:
+        if isinstance(piece, Polygon):
+            scene.terrain_cutouts.append(piece)
+    scene.polygon_surface(island, 'RunoffBlack', .001, paved=True, smooth_ground=True)
+    road = scene.at(1038)
+    anchor = road.point(road.half_width + 3.2)
+    projection = SurfaceProjection(anchor, (road.tx, road.ty, 0.0), 18, 4.5)
+    rectangle = Polygon([
+        (anchor[0] + road.tx * u - road.ty * v,
+         anchor[1] + road.ty * u + road.tx * v)
+        for u, v in ((-9, -2.25), (9, -2.25), (9, 2.25), (-9, 2.25))
+    ])
+    scene.paint_surface(rectangle.intersection(island), 'GroundPirelli', projection=projection)
+    scene.landmarks.append({
+        'name': 'T3 black Pirelli paved infield', 'start_m': 996, 'end_m': 1064,
+        'side': 1, 'area_m2': island.area,
+        'registration': 'Direct supplied 332–334 s T3 approach/apex, lap 13.032–15.016 s, shows black paving with yellow Pirelli lettering inside the right kerb. Exact footprint depth and lettering dimensions are bounded estimates; native road union constrains the edge.',
+        'physical_contract': 'Visual-only paving; no runoff range or extra corridor. Native racing XYZ, banking, shoulders, drive surface and collision unchanged.',
+    })

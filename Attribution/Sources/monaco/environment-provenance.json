@@ -6,7 +6,7 @@
   "licence": "ODbL1.0",
   "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
   "file": "environment.osm.json.gz",
-  "sha256": "2adc7694093edbc5a96574c95f91714c04f810082f05b24c972bf5b017b8d972",
+  "sha256": "e358ea6d7b12a079f2ec63021e1e4fea327c8f4c9656ba6e280bb996638ca865",
   "purpose": "Tightly bounded essential landmark query; inline member geometry preserved.",
   "additional_queries": [
     {
@@ -29,6 +29,13 @@
       "purpose": "Retained Casino-district parks, grass beds, pedestrian paths and individual trees; only filtered nonbuilding semantic elements merged.",
       "response_sha256": "264f3bff94278d476b74cf8a73d47da0be2993862b95efbfdf599367e8e96d7a",
       "provenance_file": "gardens-provenance.json"
+    },
+    {
+      "query_url": "https://api.openstreetmap.org/api/0.6/map?bbox=7.4198,43.7335,7.4266,43.7381",
+      "retrieved": "2026-11-08",
+      "response_sha256": "7eba6f0fb70f9485de18463a2ce69ca000f00d5851b19714b8031ef91e40bf00",
+      "purpose": "Small harbour-side district bbox. Retains above-ground building/part footprints, actual parks/gardens/grass, individual trees, pedestrian paths and retaining walls. Existing source geometry is preserved by element ID. Raw road geometry is not imported. Underground structures are not authored as above-ground houses.",
+      "provenance": "coastal-district-provenance.json"
     }
   ]
 }

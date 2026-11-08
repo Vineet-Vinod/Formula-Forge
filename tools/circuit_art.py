@@ -51,6 +51,10 @@ def artwork(scene: CircuitScene) -> None:
         ('PanelAmericanExpress','AMERICAN EXPRESS',(26,130,184),(246,246,239)),
     ):
         sign(directory / (name + ".png"), label, background, foreground, 1024, 128)
+    if scene.slug == "australia":
+        sign(directory / "GroundPirelli.png", "PIRELLI", (10, 10, 10), (239, 210, 18), 1024, 256)
+    elif scene.slug == "zandvoort":
+        sign(directory / "GroundMSC.png", "MSC CRUISES", (16, 27, 60), (241, 239, 226), 1024, 128)
     if scene.slug not in NIGHT:
         return
     fixtures = build_lighting(scene)

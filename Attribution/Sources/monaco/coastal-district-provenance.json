@@ -1,0 +1,18 @@
+{
+  "provider": "OpenStreetMap contributors",
+  "query_url": "https://api.openstreetmap.org/api/0.6/map?bbox=7.4198,43.7335,7.4266,43.7381",
+  "retrieved": "2026-11-08",
+  "licence": "ODbL1.0",
+  "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "raw_file": "coastal-district.map.osm.gz",
+  "raw_response_sha256": "7eba6f0fb70f9485de18463a2ce69ca000f00d5851b19714b8031ef91e40bf00",
+  "raw_gzip_sha256": "955b74d07485535c627c56538d6656e351dd69dbb7025720b7b1703be6f46024",
+  "filtered_file": "coastal-district.osm.json.gz",
+  "filtered_sha256": "a7726b6a8c69d8ffb1790a8b1e037bb2d91f2ca9a80425eee841e3618235560d",
+  "selected_elements": 326,
+  "new_elements_merged": 244,
+  "scope": "Small harbour-side district bbox. Retains above-ground building/part footprints, actual parks/gardens/grass, individual trees, pedestrian paths and retaining walls. Existing source geometry is preserved by element ID. Raw road geometry is not imported. Underground structures are not authored as above-ground houses.",
+  "model_limit": "OSM heights are retained where tagged; untagged facade heights remain original conservative reconstruction. Retaining wall heights use real ground and adjacent unchanged road planes, not a guessed landscape elevation.",
+  "new_building_elements_merged": 24,
+  "preservation": "Existing IDs across buildings, circuit and environment datasets are preserved exactly; only genuinely new semantic elements are merged."
+}

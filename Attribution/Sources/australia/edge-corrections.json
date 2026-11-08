@@ -1,0 +1,8 @@
+[
+  {
+    "start_m": 980,
+    "end_m": 1070,
+    "side": 1,
+    "source_note": "T3 inside RIGHT: native local curvature radius falls below half-width, so direct normal-offset white stripes, kerbs and overlapping grass verges fold. Use the union road footprint for local edge bands and a single clipped grass skin. Preserve racing XYZ, widths, banking, physics and outside runoff. Source registration and triangle proof: t3-edge-review.json."
+  }
+]

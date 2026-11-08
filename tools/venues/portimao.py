@@ -25,7 +25,6 @@ def build_venue(scene: CircuitScene) -> None:
     scene.stand(470, 1060, -1, rows=23, setback=7, seat_material='SeatRed')
     torre_vip(scene)
     scene.stand(1430, 1540, -1, rows=12, setback=24, seat_material='SeatRed')
-    scene.stand(2240, 2380, -1, rows=12, setback=27, seat_material='SeatRed')
     scene.stand(3480, 3570, -1, rows=12, setback=27, seat_material='SeatRed')
     for start, end, side in [(1450, 2120, 1), (1650, 2120, -1), (2430, 2880, 1),
                               (2480, 2860, -1), (3080, 3450, 1), (3220, 3420, -1),

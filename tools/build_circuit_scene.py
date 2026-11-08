@@ -36,6 +36,8 @@ PALETTE = {
     "Lamp": (36.0, 34.5, 31.5),
     "RunoffGreen": (0.02, 0.19, 0.065),
     "RunoffBlue": (0.025, 0.20, 0.58),
+    "RunoffNavy": (0.005182, 0.010960, 0.045186),
+    "RunoffBlack": (0.003035, 0.003035, 0.003035),
     "RunoffRed": (0.46, 0.018, 0.012),
     "RunoffOrange": (0.90, 0.23, 0.018),
     "RunoffPurple": (0.20, 0.035, 0.19),
@@ -237,6 +239,10 @@ class Importer:
             EDIT.connect_material_property(
                 sample, "RGB", unreal.MaterialProperty.MP_BASE_COLOR
             )
+            if name in ("GroundPirelli", "GroundMSC"):
+                roughness = EDIT.create_material_expression(material, unreal.MaterialExpressionConstant)
+                roughness.r = 0.7
+                EDIT.connect_material_property(roughness, "", unreal.MaterialProperty.MP_ROUGHNESS)
             if self.night:
                 shade(material, self.bounds, self.field)
         else:

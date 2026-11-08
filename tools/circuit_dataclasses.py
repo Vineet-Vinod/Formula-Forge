@@ -10,6 +10,16 @@ Point = tuple[float, float, float]
 
 
 @dataclass(frozen=True)
+class RetainedTerrainSource:
+    grid_file: Path
+    grid_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")]
+    provider: str = "Retained ground data"
+    dataset: str = "Retained TerrainGrid"
+    relative_datum_m: FiniteFloat = 0
+    road_join_distance_m: Annotated[FiniteFloat, Field(gt=0, le=20)] = 20
+
+
+@dataclass(frozen=True)
 class CircuitLight:
     position: Point
     ground_z: float
@@ -41,6 +51,22 @@ class ShoulderCorrection:
 @dataclass(frozen=True)
 class ShoulderCorrections:
     sections: list[ShoulderCorrection] = field(default_factory=list)
+
+
+@dataclass(frozen=True)
+class EdgeCorrection:
+    start_m: float
+    end_m: float
+    side: Literal[-1, 1]
+    source_note: str
+
+
+@dataclass(frozen=True)
+class SurfaceProjection:
+    origin: Point
+    axis: Point
+    length_m: float
+    depth_m: float
 
 
 @dataclass(frozen=True)

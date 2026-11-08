@@ -45,4 +45,4 @@ def circuit_edges(scene: CircuitScene) -> None:
         scene.kerb(start, end, side, material='Red', alternate_material='White')
     for start, end, side, width, material in [(265, 455, 1, 9, 'Runoff'), (740, 875, -1, 7, 'Runoff'), (1260, 1435, 1, 8, 'Runoff'), (2020, 2190, -1, 8, 'Runoff'), (2680, 2860, -1, 17, 'Runoff'), (3940, 4140, -1, 8, 'Runoff')]:
         scene.runoff(start, end, side, width, material)
-    scene.runoff(2720, 2805, 1, 6.0, 'RunoffBlue')
+    scene.runoff(2720, 2805, 1, 6.0, 'RunoffNavy')

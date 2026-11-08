@@ -440,14 +440,54 @@
       "estimated_dimensions": "14m nominal spacing;13.2\u201316.8m canopy height. Positions/heights reconstructed, not individually mapped."
     },
     "blue_apron_assessment": {
-      "source_material": "RunoffBlue",
-      "source_linear_rgb": [
-        0.025,
-        0.2,
-        0.58
+      "source_material": "RunoffNavy",
+      "scope": [
+        {
+          "start_m": 190,
+          "end_m": 370,
+          "side": -1,
+          "surface": "Existing painted apron"
+        },
+        {
+          "start_m": 1980,
+          "end_m": 2240,
+          "side": -1,
+          "surface": "Existing painted apron"
+        },
+        {
+          "start_m": 230,
+          "end_m": 330,
+          "side": 1,
+          "surface": "Adjacent blue kerb bands only; white preserved"
+        },
+        {
+          "start_m": 2040,
+          "end_m": 2180,
+          "side": 1,
+          "surface": "Adjacent blue kerb bands only; white preserved"
+        }
       ],
-      "decision": "No color change in this correction. Exact live fields render noticeably cyan, but supplied legacy reference is wet/foggy while runtime is dry. Match exposure/weather or obtain a dry comparable frame before selecting a per-circuit shade. Shared material remains untouched because Canada uses it appropriately.",
-      "acceptance": "Hue concern remains unresolved pending matched rendered comparison; no claim of exact RGB fidelity."
+      "decision": "Exact current corrected-live Nordkurve view remains luminous cyan against the deep blue in the supplied same-region overview02. Use the additive dark-blue material only in these two reference-supported painted regions and adjacent kerbs. Geometry, paint limits and global palettes are unchanged. Other Hockenheim blue surfaces retain their previous material.",
+      "uncertainty": "Wet/hazy reference and dry runtime prevent asserting an exact measured RGB match. This is a local hue-family correction; fresh daylight rendering must verify the result.",
+      "evidence": [
+        {
+          "path": "build/reviews/hockenheim/corrected-live/targeted/01-245.0-00000288.jpg",
+          "sha256": "8bebc8a7e8921718fff9ff3d057e257d28f82375a239cd0360b971112aaff582"
+        },
+        {
+          "path": "build/reviews/hockenheim/corrected-live/targeted/03-1990.0-00001567.jpg",
+          "sha256": "13ac848788619f231ec5dbbbc8874e9695a29f40b5aa3d0fa1be2b9f0ec80664"
+        },
+        {
+          "path": "build/reviews/hockenheim/reference/overview-02.jpg",
+          "sha256": "6303b49c8225b02517ecbd68b2e5774aae3e1f87f1df158d47041b88a9e360f7"
+        },
+        {
+          "path": "build/reviews/hockenheim/reference/overview-13.jpg",
+          "sha256": "313140d43d4c4b2c1dd344873bc890c08ed4942c15c6235394a65d461a701fb7"
+        }
+      ],
+      "source_module_sha256": "0b1c8d1b92373b875c986983bfb44e541d64d0c07d672af133450d1d6dc825fd"
     },
     "scope": "No native corridor/elevation/road/handling or common material/helper changes."
   }

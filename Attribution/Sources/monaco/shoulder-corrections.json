@@ -1,0 +1,22 @@
+{
+  "sections": [
+    {
+      "start_m": 1200.0,
+      "end_m": 1450.0,
+      "side": 1,
+      "shoulder_m": 0.2,
+      "transition_m": 15.0,
+      "source_note": "Mirabeau Haute departure through the Fairmont hairpin to Mirabeau Bas, on the driver right. Views at 342 and 534 seconds show close urban walls. The former 8\u201317 m verges overlapped between stacked streets and exposed upper-road undersides at 1335\u20131388 m. A 0.20 m shoulder plus the shared 0.95 m protection margin gives about 1.15 m from road edge to wall, estimated within 0.5 m. Cubic transitions span 1185\u20131200 and 1450\u20131465 m. Earlier Mirabeau escape remains. Positive source side is driver right, exported as native CSV left; negative is driver left, CSV right."
+    },
+    {
+      "start_m": 1200.0,
+      "end_m": 1450.0,
+      "side": -1,
+      "shoulder_m": 0.2,
+      "transition_m": 15.0,
+      "source_note": "Mirabeau Haute departure through the Fairmont hairpin to Mirabeau Bas, on the driver left. Views at 342 and 534 seconds show close urban walls. The former 8\u201317 m verges overlapped between stacked streets and exposed upper-road undersides at 1335\u20131388 m. A 0.20 m shoulder plus the shared 0.95 m protection margin gives about 1.15 m from road edge to wall, estimated within 0.5 m. Cubic transitions span 1185\u20131200 and 1450\u20131465 m. Earlier Mirabeau escape remains. Positive source side is driver right, exported as native CSV left; negative is driver left, CSV right."
+    }
+  ],
+  "method": "Close urban walls are supported by the supplied Mirabeau and hairpin views at 342 and 534 seconds. Widths are reconstructed, not surveyed. Native racing centreline, elevations, banking and road widths remain unchanged.",
+  "escape_review": "The retained visual runoff ranges are 210\u2013275 m and 2100\u20132240 m. Neither overlaps these sections. Mirabeau Haute at 1183 m and its earlier escape lie before the taper beginning at 1185 m."
+}

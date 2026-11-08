@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import csv
+import hashlib
 import json
 import math
 import struct
@@ -492,3 +493,115 @@ def test_dense_tiles_split_without_losing_vertex_or_material_data(
                     assert record["bounds"][axis] <= point[axis] <= record["bounds"][axis + 3]
     assert b"".join(bodies) == original
     assert tile.minimum + tile.maximum == original_bounds
+
+
+def test_t10_advertisement_follows_its_paving_without_expanding_physical_corridor(
+    scene: CircuitScene, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    from circuit_dataclasses import RoadStation
+    from venues.zandvoort import t10_infield_paint
+
+    def hillside(x: float, y: float) -> float:
+        return 3 + x * 0.1 + y * 0.2
+
+    def straight(station: float) -> RoadStation:
+        x = station - 2480
+        return RoadStation(station, x, 0, hillside(x, 0), 1, 0, 6, 0, 7, 7)
+
+    monkeypatch.setattr(scene, "at", straight)
+    monkeypatch.setattr(scene, "ground", hillside)
+    scene.road_mask = box(-10, -6.15, 120, 6.15)
+    scene.corridor_mask = box(-10, -14, 120, 14)
+    original_corridor = scene.corridor_mask.wkb
+    t10_infield_paint(scene)
+    assert scene.corridor_mask.wkb == original_corridor
+    assert not scene.extra_corridors
+    assert not scene.surface_ranges
+    paving = unary_union(surfaces(scene, {"RunoffNavy"}))
+    lettering = unary_union(surfaces(scene, {"GroundMSC"}))
+    assert not lettering.is_empty
+    assert lettering.difference(paving.buffer(0.00001)).area < 0.00001
+    assert paving.intersection(scene.road_mask).area == 0
+    assert paving.bounds[1] >= 8.0499
+    scene.grid = replace(
+        scene.grid, x=-10.0, y=-20.0, step=5.0, columns=27, rows=11,
+        heights=(0.0,) * 297,
+    )
+    scene.verge_patches.append((scene.corridor_mask.difference(scene.road_mask), "Grass", straight(2500)))
+    scene.terrain()
+    grass = unary_union(surfaces(scene, {"Grass"}))
+    assert grass.intersection(paving.buffer(-0.00001)).area < 0.00001
+    for tile in scene.tiles.values():
+        for offset in range(0, len(tile.triangles), 100):
+            slot = struct.unpack_from("<I", tile.triangles, offset)[0]
+            if tile.materials[slot] != "GroundMSC":
+                continue
+            for corner in range(3):
+                wx, wy, wz, _, _, _, u, v = struct.unpack_from(
+                    "<8f", tile.triangles, offset + 4 + corner * 32
+                )
+                x, y, z = -wy / 100, -wx / 100, wz / 100
+                assert z == pytest.approx(hillside(x, y) + 0.006, abs=0.00001)
+                assert -0.00001 <= u <= 1.00001
+                assert -0.00001 <= v <= 1.00001
+
+
+def test_opted_in_tight_inside_edges_have_one_grass_skin_and_unfolded_bands(
+    scene: CircuitScene,
+) -> None:
+    from circuit_dataclasses import EdgeCorrection, RoadStation
+    from shapely.geometry import LineString
+    from shapely.strtree import STRtree
+
+    points = [(float(x), 0.0) for x in range(41)]
+    points.extend(
+        (40 + 4 * math.cos(angle), -4 + 4 * math.sin(angle))
+        for angle in (math.pi / 2 * (1 - i / 32) for i in range(1, 33))
+    )
+    points.extend([(44, -44), (-20, -44), (-20, 0), (0, 0)])
+    path = LineString(points)
+    scene.length = path.length
+    road = []
+    for index in range(512):
+        station = index * scene.length / 512
+        point = path.interpolate(station)
+        before = path.interpolate((station - 0.01) % scene.length)
+        after = path.interpolate((station + 0.01) % scene.length)
+        dx, dy = after.x - before.x, after.y - before.y
+        length = math.hypot(dx, dy)
+        road.append(RoadStation(station, point.x, point.y, 3, dx / length, dy / length, 6, 0, 5, 5))
+    scene.road = road
+    scene.segments = STRtree([
+        LineString([(a.x, a.y), (road[(i + 1) % len(road)].x, road[(i + 1) % len(road)].y)])
+        for i, a in enumerate(road)
+    ])
+    scene.edge_corrections = [EdgeCorrection(30, 65, 1, "Four-metre radius inside a six-metre half-width")]
+    original = tuple((p.x, p.y, p.z, p.bank, p.half_width) for p in road)
+    scene.road_surfaces()
+    scene.kerb(34, 60, 1, material="SeatYellow", alternate_material="Green")
+    scene.terrain()
+    assert tuple((p.x, p.y, p.z, p.bank, p.half_width) for p in road) == original
+    kerbs = surfaces(scene, {"SeatYellow", "Green"})
+    assert kerbs
+    assert sum(shape.area for shape in kerbs) == pytest.approx(unary_union(kerbs).area, abs=0.00001)
+    assert unary_union(kerbs).intersection(scene.road_mask.buffer(-0.02)).area < 0.00001
+    white = unary_union(surfaces(scene, {"White"})).intersection(scene._edge_mask)
+    assert not white.is_empty
+    assert white.intersection(scene.road_mask.buffer(-0.3)).area < 0.00001
+    grass = [shape.intersection(scene._edge_mask) for shape in surfaces(scene, {"Grass"})]
+    assert sum(shape.area for shape in grass) == pytest.approx(unary_union(grass).area, abs=0.00001)
+    assert unary_union(grass).intersection(scene.road_mask).area < 0.00001
+
+
+def test_default_surface_bytes_match_before_local_edge_opt_in(scene: CircuitScene) -> None:
+    scene.road_surfaces()
+    scene.kerb(10, 40, 1)
+    scene.kerb(80, 120, -1)
+    scene.polygon_surface(box(0, 0, 4, 4), "Runoff", paved=True)
+    scene.paint_surface(box(1, 1, 3, 3), "White")
+    digest = hashlib.sha256()
+    for name, tile in sorted(scene.tiles.items()):
+        digest.update(name.encode())
+        digest.update(json.dumps(tile.materials).encode())
+        digest.update(tile.triangles)
+    assert digest.hexdigest() == "749a5c7d92cc27fc0b6beedb178d5bae24b1603ca4a0866848951b8f1cf01ec2"

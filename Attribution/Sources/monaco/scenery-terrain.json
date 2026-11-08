@@ -1,15 +1,12 @@
 {
-  "provider": "Copernicus DEM, distributed through AWS Open Data",
-  "dataset": "GLO-30 DSM",
-  "source_url": "https://copernicus-dem-30m.s3.eu-central-1.amazonaws.com/Copernicus_DSM_COG_10_N43_00_E007_00_DEM/Copernicus_DSM_COG_10_N43_00_E007_00_DEM.tif",
-  "source_info": "https://registry.opendata.aws/copernicus-dem/",
-  "documentation": "https://copernicus-dem-90m.s3.amazonaws.com/readme.html",
-  "retained_window": "elevation/scenery_dem.tif",
-  "sha256": "feeb9a67cabaed7a25af87768e8a7f7d6b1d06ea0b32ef962438dc894a8f85d9",
-  "grid_spacing_m": 12,
-  "source_resolution_m": 30,
-  "relative_datum_m": 4.904153943978272,
-  "datum_method": "Median offset to unchanged native road profile at 256 stations.",
-  "use": "Surrounding landscape only, bilinearly resampled; not a racing-deck or bare-earth survey. Road-adjacent ground joins the existing road plane.",
-  "terrain_sha256": "40d00025821f43db3273205cd72f0cb95f5f390bfd7276ddbd1765ff08e82644"
+  "provider": "IGN Geoplateforme",
+  "dataset": "RGE ALTI ground elevation resource ign_rge_alti_wld",
+  "retained_window": "elevation/scenery-ground-grid.json.gz",
+  "sha256": "6b166892d5d642fad7202195b1902cbdc03fb0962c98169fa64cd7c1fa3477d5",
+  "grid_spacing_m": 12.0,
+  "relative_datum_m": 1.5128994113,
+  "road_join_distance_m": 2.0,
+  "source_manifest": "scenery-ground.json",
+  "use": "Retained scenery-only ground grid. Heights already use the registered relative datum; racing profiles remain unchanged.",
+  "terrain_sha256": "accbf99b138760659df35ab91f97eace5902ff66db21b5e1a0a0139811c00641"
 }

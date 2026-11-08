@@ -177,6 +177,18 @@
     {
       "url": "https://www.formula1.com/en/latest/article/highs-and-lows-which-f1-track-has-the-most-elevation-changes-.7I9JEcBw3R2AqXbnJ6hyvc.7I9JEcBw3R2AqXbnJ6hyvc",
       "use": "Official2016longitudinalprofile independentlydigitized into circuit elevationcontrols; chartapproximation, not as-built survey."
+    },
+    {
+      "url": "https://www.data.gouv.fr/datasets/rge-alti-r",
+      "use": "Official IGN bare-earth RGE ALTI description and Open Licence 2.0; retained API sampling and vertical registration documented in scenery-ground.json."
+    },
+    {
+      "url": "https://www.fia.com/sites/default/files/media_kit_2026_gb_03.06_1.pdf",
+      "use": "Official page-9 map places Grandstand K from Tabac toward Swimming Pool; used for original station reconstruction, not copied artwork."
+    },
+    {
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=7.4198,43.7335,7.4266,43.7381",
+      "use": "Bounded coastal-district building, green-space and retaining-wall identities; raw response/hash/license retained in coastal-district-provenance.json."
     }
   ],
   "uncertainties": [

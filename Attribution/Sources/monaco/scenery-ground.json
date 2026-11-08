@@ -1,0 +1,843 @@
+{
+  "provider": "IGN Geoplateforme",
+  "dataset": "RGE ALTI ground elevation resource ign_rge_alti_wld",
+  "endpoint": "https://data.geopf.fr/altimetrie/1.0/calcul/alti/rest/elevation.json",
+  "documentation": "https://cartes.gouv.fr/aide/fr/guides-utilisateur/utiliser-les-services-de-la-geoplateforme/calcul-altimetrique/",
+  "resource_url": "https://data.geopf.fr/altimetrie/resources/ign_rge_alti_wld",
+  "retrieved": "2026-11-08",
+  "licence": "Licence Ouverte / Open Licence2.0 (RGE ALTI open data; retain IGN credit)",
+  "licence_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence/",
+  "grid_file": "elevation/scenery-ground-grid.json.gz",
+  "grid_sha256": "6b166892d5d642fad7202195b1902cbdc03fb0962c98169fa64cd7c1fa3477d5",
+  "original_native_terrain_sha256": "40d00025821f43db3273205cd72f0cb95f5f390bfd7276ddbd1765ff08e82644",
+  "raw_api_requests_responses": "elevation/rge-alti-ground/",
+  "grid_spacing_m": 12.0,
+  "columns": 173,
+  "rows": 192,
+  "relative_datum_m": 1.5128994113,
+  "datum_method": "Median of IGN ground elevation minus the unchanged native racing-road elevation at 108 regular station anchors. Tunnel and portal stations between 1510 and 2020 m are excluded. Every observation is retained below.",
+  "native_road_sha256": "ef3afdaec926e9d7ebcdeb814871a16612e5bc197f22304899a7fb7d4bbf7215",
+  "anchors": [
+    {
+      "station_m": 0.0,
+      "native_z_m": 2.49729705,
+      "rge_absolute_z_m": 3.61,
+      "relative_z_m": 2.0971005887,
+      "offset_m": 1.11270295
+    },
+    {
+      "station_m": 26.0703125,
+      "native_z_m": 2.49729705,
+      "rge_absolute_z_m": 3.64,
+      "relative_z_m": 2.1271005887000003,
+      "offset_m": 1.1427029500000003
+    },
+    {
+      "station_m": 52.140625,
+      "native_z_m": 2.49757361,
+      "rge_absolute_z_m": 3.74,
+      "relative_z_m": 2.2271005887,
+      "offset_m": 1.2424263900000003
+    },
+    {
+      "station_m": 78.2109375,
+      "native_z_m": 2.54094243,
+      "rge_absolute_z_m": 3.7,
+      "relative_z_m": 2.1871005887,
+      "offset_m": 1.1590575700000003
+    },
+    {
+      "station_m": 104.28125,
+      "native_z_m": 2.65576267,
+      "rge_absolute_z_m": 3.74,
+      "relative_z_m": 2.2271005887,
+      "offset_m": 1.08423733
+    },
+    {
+      "station_m": 130.351562,
+      "native_z_m": 2.83927393,
+      "rge_absolute_z_m": 3.76,
+      "relative_z_m": 2.2471005886999995,
+      "offset_m": 0.9207260699999997
+    },
+    {
+      "station_m": 156.421875,
+      "native_z_m": 3.08767486,
+      "rge_absolute_z_m": 3.73,
+      "relative_z_m": 2.2171005887,
+      "offset_m": 0.6423251400000001
+    },
+    {
+      "station_m": 182.492188,
+      "native_z_m": 3.39799118,
+      "rge_absolute_z_m": 4.17,
+      "relative_z_m": 2.6571005886999997,
+      "offset_m": 0.7720088199999999
+    },
+    {
+      "station_m": 208.5625,
+      "native_z_m": 3.76660228,
+      "rge_absolute_z_m": 5.32,
+      "relative_z_m": 3.8071005887,
+      "offset_m": 1.5533977200000004
+    },
+    {
+      "station_m": 234.632812,
+      "native_z_m": 4.19036913,
+      "rge_absolute_z_m": 6.3,
+      "relative_z_m": 4.7871005886999995,
+      "offset_m": 2.10963087
+    },
+    {
+      "station_m": 260.703125,
+      "native_z_m": 4.66582108,
+      "rge_absolute_z_m": 6.84,
+      "relative_z_m": 5.3271005887,
+      "offset_m": 2.17417892
+    },
+    {
+      "station_m": 286.773438,
+      "native_z_m": 5.46754122,
+      "rge_absolute_z_m": 7.57,
+      "relative_z_m": 6.0571005887,
+      "offset_m": 2.10245878
+    },
+    {
+      "station_m": 312.84375,
+      "native_z_m": 7.00746202,
+      "rge_absolute_z_m": 9.14,
+      "relative_z_m": 7.6271005887,
+      "offset_m": 2.1325379800000004
+    },
+    {
+      "station_m": 338.914062,
+      "native_z_m": 9.01738071,
+      "rge_absolute_z_m": 11.32,
+      "relative_z_m": 9.807100588700001,
+      "offset_m": 2.302619290000001
+    },
+    {
+      "station_m": 364.984375,
+      "native_z_m": 11.2083826,
+      "rge_absolute_z_m": 13.26,
+      "relative_z_m": 11.7471005887,
+      "offset_m": 2.0516173999999996
+    },
+    {
+      "station_m": 391.054688,
+      "native_z_m": 13.3021612,
+      "rge_absolute_z_m": 15.04,
+      "relative_z_m": 13.5271005887,
+      "offset_m": 1.7378387999999987
+    },
+    {
+      "station_m": 417.125,
+      "native_z_m": 15.4620237,
+      "rge_absolute_z_m": 17.94,
+      "relative_z_m": 16.4271005887,
+      "offset_m": 2.4779763000000017
+    },
+    {
+      "station_m": 443.195312,
+      "native_z_m": 17.7782917,
+      "rge_absolute_z_m": 20.02,
+      "relative_z_m": 18.5071005887,
+      "offset_m": 2.241708299999999
+    },
+    {
+      "station_m": 469.265625,
+      "native_z_m": 20.1478901,
+      "rge_absolute_z_m": 22.65,
+      "relative_z_m": 21.137100588699997,
+      "offset_m": 2.502109899999997
+    },
+    {
+      "station_m": 495.335938,
+      "native_z_m": 22.473774,
+      "rge_absolute_z_m": 24.89,
+      "relative_z_m": 23.3771005887,
+      "offset_m": 2.4162260000000018
+    },
+    {
+      "station_m": 521.40625,
+      "native_z_m": 24.8711224,
+      "rge_absolute_z_m": 27.04,
+      "relative_z_m": 25.527100588699998,
+      "offset_m": 2.1688775999999983
+    },
+    {
+      "station_m": 547.476562,
+      "native_z_m": 27.344614,
+      "rge_absolute_z_m": 29.57,
+      "relative_z_m": 28.0571005887,
+      "offset_m": 2.2253860000000003
+    },
+    {
+      "station_m": 573.546875,
+      "native_z_m": 29.7916679,
+      "rge_absolute_z_m": 31.85,
+      "relative_z_m": 30.3371005887,
+      "offset_m": 2.058332100000001
+    },
+    {
+      "station_m": 599.617188,
+      "native_z_m": 32.1103134,
+      "rge_absolute_z_m": 33.9,
+      "relative_z_m": 32.3871005887,
+      "offset_m": 1.789686599999996
+    },
+    {
+      "station_m": 625.6875,
+      "native_z_m": 34.1959457,
+      "rge_absolute_z_m": 35.86,
+      "relative_z_m": 34.3471005887,
+      "offset_m": 1.6640542999999965
+    },
+    {
+      "station_m": 651.757812,
+      "native_z_m": 36.0209656,
+      "rge_absolute_z_m": 37.8,
+      "relative_z_m": 36.2871005887,
+      "offset_m": 1.7790344000000005
+    },
+    {
+      "station_m": 677.828125,
+      "native_z_m": 37.5923462,
+      "rge_absolute_z_m": 39.08,
+      "relative_z_m": 37.5671005887,
+      "offset_m": 1.4876537999999968
+    },
+    {
+      "station_m": 703.898438,
+      "native_z_m": 38.2152481,
+      "rge_absolute_z_m": 39.71,
+      "relative_z_m": 38.1971005887,
+      "offset_m": 1.4947519000000042
+    },
+    {
+      "station_m": 729.96875,
+      "native_z_m": 38.5422554,
+      "rge_absolute_z_m": 39.46,
+      "relative_z_m": 37.9471005887,
+      "offset_m": 0.9177445999999989
+    },
+    {
+      "station_m": 756.039062,
+      "native_z_m": 38.7835922,
+      "rge_absolute_z_m": 39.59,
+      "relative_z_m": 38.077100588700006,
+      "offset_m": 0.8064078000000023
+    },
+    {
+      "station_m": 782.109375,
+      "native_z_m": 38.9872093,
+      "rge_absolute_z_m": 39.81,
+      "relative_z_m": 38.297100588700005,
+      "offset_m": 0.8227906999999988
+    },
+    {
+      "station_m": 808.179688,
+      "native_z_m": 39.163475,
+      "rge_absolute_z_m": 40.19,
+      "relative_z_m": 38.6771005887,
+      "offset_m": 1.0265249999999995
+    },
+    {
+      "station_m": 834.25,
+      "native_z_m": 39.4861794,
+      "rge_absolute_z_m": 40.72,
+      "relative_z_m": 39.2071005887,
+      "offset_m": 1.2338206000000014
+    },
+    {
+      "station_m": 860.320312,
+      "native_z_m": 40.1316071,
+      "rge_absolute_z_m": 41.45,
+      "relative_z_m": 39.937100588700005,
+      "offset_m": 1.3183929000000063
+    },
+    {
+      "station_m": 886.390625,
+      "native_z_m": 40.9137268,
+      "rge_absolute_z_m": 41.86,
+      "relative_z_m": 40.3471005887,
+      "offset_m": 0.9462732000000003
+    },
+    {
+      "station_m": 912.460938,
+      "native_z_m": 41.6056786,
+      "rge_absolute_z_m": 41.86,
+      "relative_z_m": 40.3471005887,
+      "offset_m": 0.25432140000000203
+    },
+    {
+      "station_m": 938.53125,
+      "native_z_m": 41.9813042,
+      "rge_absolute_z_m": 42.22,
+      "relative_z_m": 40.7071005887,
+      "offset_m": 0.23869580000000212
+    },
+    {
+      "station_m": 964.601562,
+      "native_z_m": 41.6522713,
+      "rge_absolute_z_m": 43.06,
+      "relative_z_m": 41.547100588700005,
+      "offset_m": 1.4077286999999998
+    },
+    {
+      "station_m": 990.671875,
+      "native_z_m": 40.3614197,
+      "rge_absolute_z_m": 42.15,
+      "relative_z_m": 40.6371005887,
+      "offset_m": 1.7885802999999996
+    },
+    {
+      "station_m": 1016.74219,
+      "native_z_m": 38.5351486,
+      "rge_absolute_z_m": 40.39,
+      "relative_z_m": 38.8771005887,
+      "offset_m": 1.8548514000000011
+    },
+    {
+      "station_m": 1042.8125,
+      "native_z_m": 36.6319084,
+      "rge_absolute_z_m": 38.47,
+      "relative_z_m": 36.9571005887,
+      "offset_m": 1.8380915999999985
+    },
+    {
+      "station_m": 1068.88281,
+      "native_z_m": 34.8962898,
+      "rge_absolute_z_m": 36.5,
+      "relative_z_m": 34.9871005887,
+      "offset_m": 1.6037102000000019
+    },
+    {
+      "station_m": 1094.95312,
+      "native_z_m": 32.9882202,
+      "rge_absolute_z_m": 34.61,
+      "relative_z_m": 33.0971005887,
+      "offset_m": 1.6217797999999988
+    },
+    {
+      "station_m": 1121.02344,
+      "native_z_m": 30.9705524,
+      "rge_absolute_z_m": 32.82,
+      "relative_z_m": 31.3071005887,
+      "offset_m": 1.8494476000000013
+    },
+    {
+      "station_m": 1147.09375,
+      "native_z_m": 28.9456577,
+      "rge_absolute_z_m": 30.66,
+      "relative_z_m": 29.1471005887,
+      "offset_m": 1.7143422999999984
+    },
+    {
+      "station_m": 1173.16406,
+      "native_z_m": 27.0156765,
+      "rge_absolute_z_m": 28.82,
+      "relative_z_m": 27.3071005887,
+      "offset_m": 1.8043234999999989
+    },
+    {
+      "station_m": 1199.23438,
+      "native_z_m": 25.2418671,
+      "rge_absolute_z_m": 27.07,
+      "relative_z_m": 25.5571005887,
+      "offset_m": 1.8281329
+    },
+    {
+      "station_m": 1225.30469,
+      "native_z_m": 23.5579243,
+      "rge_absolute_z_m": 24.89,
+      "relative_z_m": 23.3771005887,
+      "offset_m": 1.3320757000000008
+    },
+    {
+      "station_m": 1251.375,
+      "native_z_m": 21.9153976,
+      "rge_absolute_z_m": 22.82,
+      "relative_z_m": 21.3071005887,
+      "offset_m": 0.9046024000000017
+    },
+    {
+      "station_m": 1277.44531,
+      "native_z_m": 20.2694378,
+      "rge_absolute_z_m": 21.24,
+      "relative_z_m": 19.727100588699997,
+      "offset_m": 0.9705621999999998
+    },
+    {
+      "station_m": 1303.51562,
+      "native_z_m": 18.5751686,
+      "rge_absolute_z_m": 19.57,
+      "relative_z_m": 18.0571005887,
+      "offset_m": 0.9948313999999989
+    },
+    {
+      "station_m": 1329.58594,
+      "native_z_m": 16.8119011,
+      "rge_absolute_z_m": 18.47,
+      "relative_z_m": 16.957100588699998,
+      "offset_m": 1.6580988999999988
+    },
+    {
+      "station_m": 1355.65625,
+      "native_z_m": 15.0089426,
+      "rge_absolute_z_m": 16.23,
+      "relative_z_m": 14.717100588700001,
+      "offset_m": 1.2210574000000012
+    },
+    {
+      "station_m": 1381.72656,
+      "native_z_m": 13.1851692,
+      "rge_absolute_z_m": 14.54,
+      "relative_z_m": 13.0271005887,
+      "offset_m": 1.3548307999999984
+    },
+    {
+      "station_m": 1407.79688,
+      "native_z_m": 11.0797749,
+      "rge_absolute_z_m": 12.72,
+      "relative_z_m": 11.207100588700001,
+      "offset_m": 1.6402251000000003
+    },
+    {
+      "station_m": 1433.86719,
+      "native_z_m": 8.6945715,
+      "rge_absolute_z_m": 10.29,
+      "relative_z_m": 8.7771005887,
+      "offset_m": 1.5954284999999988
+    },
+    {
+      "station_m": 1459.9375,
+      "native_z_m": 6.7912178,
+      "rge_absolute_z_m": 8.9,
+      "relative_z_m": 7.3871005887,
+      "offset_m": 2.1087822000000003
+    },
+    {
+      "station_m": 1486.00781,
+      "native_z_m": 6.09782362,
+      "rge_absolute_z_m": 7.83,
+      "relative_z_m": 6.3171005887,
+      "offset_m": 1.7321763800000003
+    },
+    {
+      "station_m": 2033.48438,
+      "native_z_m": 5.67567587,
+      "rge_absolute_z_m": 7.06,
+      "relative_z_m": 5.547100588699999,
+      "offset_m": 1.3843241299999995
+    },
+    {
+      "station_m": 2059.55469,
+      "native_z_m": 5.21246529,
+      "rge_absolute_z_m": 6.28,
+      "relative_z_m": 4.7671005887,
+      "offset_m": 1.0675347100000003
+    },
+    {
+      "station_m": 2085.625,
+      "native_z_m": 3.70807528,
+      "rge_absolute_z_m": 5.16,
+      "relative_z_m": 3.6471005887,
+      "offset_m": 1.45192472
+    },
+    {
+      "station_m": 2111.69531,
+      "native_z_m": 1.95408487,
+      "rge_absolute_z_m": 3.77,
+      "relative_z_m": 2.2571005887,
+      "offset_m": 1.81591513
+    },
+    {
+      "station_m": 2137.76562,
+      "native_z_m": 0.792414129,
+      "rge_absolute_z_m": 2.72,
+      "relative_z_m": 1.2071005887000001,
+      "offset_m": 1.9275858710000002
+    },
+    {
+      "station_m": 2163.83594,
+      "native_z_m": 0.681080997,
+      "rge_absolute_z_m": 2.33,
+      "relative_z_m": 0.8171005887,
+      "offset_m": 1.648919003
+    },
+    {
+      "station_m": 2189.90625,
+      "native_z_m": 0.681080997,
+      "rge_absolute_z_m": 2.3,
+      "relative_z_m": 0.7871005886999998,
+      "offset_m": 1.6189190029999998
+    },
+    {
+      "station_m": 2215.97656,
+      "native_z_m": 0.678025842,
+      "rge_absolute_z_m": 2.33,
+      "relative_z_m": 0.8171005887,
+      "offset_m": 1.651974158
+    },
+    {
+      "station_m": 2242.04688,
+      "native_z_m": 0.654793084,
+      "rge_absolute_z_m": 2.38,
+      "relative_z_m": 0.8671005886999998,
+      "offset_m": 1.7252069159999999
+    },
+    {
+      "station_m": 2268.11719,
+      "native_z_m": 0.612445712,
+      "rge_absolute_z_m": 2.27,
+      "relative_z_m": 0.7571005887,
+      "offset_m": 1.657554288
+    },
+    {
+      "station_m": 2294.1875,
+      "native_z_m": 0.556098759,
+      "rge_absolute_z_m": 2.23,
+      "relative_z_m": 0.7171005886999999,
+      "offset_m": 1.6739012409999998
+    },
+    {
+      "station_m": 2320.25781,
+      "native_z_m": 0.49057278,
+      "rge_absolute_z_m": 2.45,
+      "relative_z_m": 0.9371005887000001,
+      "offset_m": 1.9594272200000002
+    },
+    {
+      "station_m": 2346.32812,
+      "native_z_m": 0.420860797,
+      "rge_absolute_z_m": 2.44,
+      "relative_z_m": 0.9271005886999999,
+      "offset_m": 2.019139203
+    },
+    {
+      "station_m": 2372.39844,
+      "native_z_m": 0.351881325,
+      "rge_absolute_z_m": 2.32,
+      "relative_z_m": 0.8071005886999998,
+      "offset_m": 1.968118675
+    },
+    {
+      "station_m": 2398.46875,
+      "native_z_m": 0.288551658,
+      "rge_absolute_z_m": 2.3,
+      "relative_z_m": 0.7871005886999998,
+      "offset_m": 2.011448342
+    },
+    {
+      "station_m": 2424.53906,
+      "native_z_m": 0.235845461,
+      "rge_absolute_z_m": 2.51,
+      "relative_z_m": 0.9971005886999997,
+      "offset_m": 2.274154539
+    },
+    {
+      "station_m": 2450.60938,
+      "native_z_m": 0.19075489,
+      "rge_absolute_z_m": 2.13,
+      "relative_z_m": 0.6171005886999998,
+      "offset_m": 1.9392451099999999
+    },
+    {
+      "station_m": 2476.67969,
+      "native_z_m": 0.142140478,
+      "rge_absolute_z_m": 1.75,
+      "relative_z_m": 0.23710058869999995,
+      "offset_m": 1.607859522
+    },
+    {
+      "station_m": 2502.75,
+      "native_z_m": 0.0942011774,
+      "rge_absolute_z_m": 1.61,
+      "relative_z_m": 0.09710058870000005,
+      "offset_m": 1.5157988226
+    },
+    {
+      "station_m": 2528.82031,
+      "native_z_m": 0.0516748317,
+      "rge_absolute_z_m": 1.62,
+      "relative_z_m": 0.10710058870000005,
+      "offset_m": 1.5683251683000001
+    },
+    {
+      "station_m": 2554.89062,
+      "native_z_m": 0.0193046927,
+      "rge_absolute_z_m": 1.62,
+      "relative_z_m": 0.10710058870000005,
+      "offset_m": 1.6006953073
+    },
+    {
+      "station_m": 2580.96094,
+      "native_z_m": 0.00180519477,
+      "rge_absolute_z_m": 1.54,
+      "relative_z_m": 0.027100588699999983,
+      "offset_m": 1.53819480523
+    },
+    {
+      "station_m": 2607.03125,
+      "native_z_m": 0.0,
+      "rge_absolute_z_m": 1.28,
+      "relative_z_m": -0.23289941130000003,
+      "offset_m": 1.28
+    },
+    {
+      "station_m": 2633.10156,
+      "native_z_m": 0.0,
+      "rge_absolute_z_m": 1.13,
+      "relative_z_m": -0.38289941130000016,
+      "offset_m": 1.13
+    },
+    {
+      "station_m": 2659.17188,
+      "native_z_m": 0.0,
+      "rge_absolute_z_m": 1.17,
+      "relative_z_m": -0.3428994113000001,
+      "offset_m": 1.17
+    },
+    {
+      "station_m": 2685.24219,
+      "native_z_m": 0.0,
+      "rge_absolute_z_m": 1.23,
+      "relative_z_m": -0.28289941130000007,
+      "offset_m": 1.23
+    },
+    {
+      "station_m": 2711.3125,
+      "native_z_m": 0.0,
+      "rge_absolute_z_m": 1.24,
+      "relative_z_m": -0.27289941130000006,
+      "offset_m": 1.24
+    },
+    {
+      "station_m": 2737.38281,
+      "native_z_m": 0.0,
+      "rge_absolute_z_m": 1.18,
+      "relative_z_m": -0.3328994113000001,
+      "offset_m": 1.18
+    },
+    {
+      "station_m": 2763.45312,
+      "native_z_m": 0.0,
+      "rge_absolute_z_m": 1.25,
+      "relative_z_m": -0.26289941130000005,
+      "offset_m": 1.25
+    },
+    {
+      "station_m": 2789.52344,
+      "native_z_m": 0.0,
+      "rge_absolute_z_m": 1.21,
+      "relative_z_m": -0.3028994113000001,
+      "offset_m": 1.21
+    },
+    {
+      "station_m": 2815.59375,
+      "native_z_m": 0.0,
+      "rge_absolute_z_m": 1.51,
+      "relative_z_m": -0.002899411300000043,
+      "offset_m": 1.51
+    },
+    {
+      "station_m": 2841.66406,
+      "native_z_m": 0.0,
+      "rge_absolute_z_m": 1.09,
+      "relative_z_m": -0.42289941129999997,
+      "offset_m": 1.09
+    },
+    {
+      "station_m": 2867.73438,
+      "native_z_m": 0.0,
+      "rge_absolute_z_m": 1.06,
+      "relative_z_m": -0.4528994113,
+      "offset_m": 1.06
+    },
+    {
+      "station_m": 2893.80469,
+      "native_z_m": 0.012237587,
+      "rge_absolute_z_m": 1.13,
+      "relative_z_m": -0.38289941130000016,
+      "offset_m": 1.117762413
+    },
+    {
+      "station_m": 2919.875,
+      "native_z_m": 0.0490838699,
+      "rge_absolute_z_m": 1.28,
+      "relative_z_m": -0.23289941130000003,
+      "offset_m": 1.2309161301
+    },
+    {
+      "station_m": 2945.94531,
+      "native_z_m": 0.110335633,
+      "rge_absolute_z_m": 1.6,
+      "relative_z_m": 0.08710058870000004,
+      "offset_m": 1.489664367
+    },
+    {
+      "station_m": 2972.01562,
+      "native_z_m": 0.196011081,
+      "rge_absolute_z_m": 1.84,
+      "relative_z_m": 0.32710058870000003,
+      "offset_m": 1.643988919
+    },
+    {
+      "station_m": 2998.08594,
+      "native_z_m": 0.729596794,
+      "rge_absolute_z_m": 2.67,
+      "relative_z_m": 1.1571005886999999,
+      "offset_m": 1.940403206
+    },
+    {
+      "station_m": 3024.15625,
+      "native_z_m": 2.35220695,
+      "rge_absolute_z_m": 4.01,
+      "relative_z_m": 2.4971005886999995,
+      "offset_m": 1.65779305
+    },
+    {
+      "station_m": 3050.22656,
+      "native_z_m": 3.91681647,
+      "rge_absolute_z_m": 5.23,
+      "relative_z_m": 3.7171005887,
+      "offset_m": 1.3131835300000003
+    },
+    {
+      "station_m": 3076.29688,
+      "native_z_m": 4.24135017,
+      "rge_absolute_z_m": 4.96,
+      "relative_z_m": 3.4471005886999997,
+      "offset_m": 0.7186498300000004
+    },
+    {
+      "station_m": 3102.36719,
+      "native_z_m": 3.52047157,
+      "rge_absolute_z_m": 4.31,
+      "relative_z_m": 2.7971005886999993,
+      "offset_m": 0.7895284299999994
+    },
+    {
+      "station_m": 3128.4375,
+      "native_z_m": 2.69308686,
+      "rge_absolute_z_m": 4.06,
+      "relative_z_m": 2.5471005886999993,
+      "offset_m": 1.3669131399999994
+    },
+    {
+      "station_m": 3154.50781,
+      "native_z_m": 2.49729705,
+      "rge_absolute_z_m": 3.98,
+      "relative_z_m": 2.4671005887,
+      "offset_m": 1.4827029500000002
+    },
+    {
+      "station_m": 3180.57812,
+      "native_z_m": 2.49729705,
+      "rge_absolute_z_m": 3.77,
+      "relative_z_m": 2.2571005887,
+      "offset_m": 1.2727029500000002
+    },
+    {
+      "station_m": 3206.64844,
+      "native_z_m": 2.49729705,
+      "rge_absolute_z_m": 3.71,
+      "relative_z_m": 2.1971005886999997,
+      "offset_m": 1.2127029500000002
+    },
+    {
+      "station_m": 3232.71875,
+      "native_z_m": 2.49729705,
+      "rge_absolute_z_m": 3.64,
+      "relative_z_m": 2.1271005887000003,
+      "offset_m": 1.1427029500000003
+    },
+    {
+      "station_m": 3258.78906,
+      "native_z_m": 2.49729705,
+      "rge_absolute_z_m": 3.57,
+      "relative_z_m": 2.0571005887,
+      "offset_m": 1.07270295
+    },
+    {
+      "station_m": 3284.85938,
+      "native_z_m": 2.49729705,
+      "rge_absolute_z_m": 3.52,
+      "relative_z_m": 2.0071005887,
+      "offset_m": 1.0227029500000002
+    },
+    {
+      "station_m": 3310.92969,
+      "native_z_m": 2.49729705,
+      "rge_absolute_z_m": 3.55,
+      "relative_z_m": 2.0371005886999995,
+      "offset_m": 1.05270295
+    }
+  ],
+  "valid_ground_points": 21473,
+  "fallback_points": 11743,
+  "fallback_policy": "Preserve original relative GLO30 grid where RGE returns no-data or a coastal-edge value below\u221210m unsuitable for this land-only ground model.28 such coastal edge/interpolation outliers are explicitly rejected; raw API values retained. No invented zero or interpolated replacement. Marine ground is hidden by retained shoreline water shapes.",
+  "native_resolution_limit": "Sampled at12m to preserve existing landscape-grid topology. API reports RGEAltiIGN with variable accuracy; exact local acquisition epoch/native raster resolution is not independently asserted.",
+  "coverage_bounds_lon_lat": [
+    7.413030871529732,
+    43.72650067978206,
+    7.438539256825383,
+    43.74696773450799
+  ],
+  "rebuild_contract": "tools/generate_circuit_scene.py calls circuit_terrain.acquire before CircuitScene construction only when this manifest exists. materialize_retained_ground validates the cached grid and writes the FFTRN1 binary. Cached heights already use the relative datum; do not rebase them or reacquire the DSM. Racing profiles remain unchanged.",
+  "rejected_coastal_boundary_values_below_minus10m": 28,
+  "fallback_file": "elevation/rge-alti-ground/legacy-glo30-relative-grid.json.gz",
+  "fallback_file_sha256": "3438f95fc326e80126d4e3127139b3610437807d0865b7a83f7c5e282e2b4d68",
+  "licence_source": "https://www.data.gouv.fr/datasets/rge-alti-r",
+  "raw_cache_hashes": {
+    "elevation/rge-alti-ground/absolute-grid.json.gz": "bcb755a587056f88234bd19e180747922943169d612a8762ec6b1fa537171fff",
+    "elevation/rge-alti-ground/grid-00000.request.json.gz": "35f8fc084c6b32b135440d5ac79a106344e83193541d31e01a2b8e48352aa44c",
+    "elevation/rge-alti-ground/grid-00000.response.json.gz": "c765aff75dead4b08436f3dfcd081a9e8b582786b26fc91f9b4f8ea319d02973",
+    "elevation/rge-alti-ground/grid-04000.request.json.gz": "35f8d3acbf54a5bd46b54df34ed16e1bb0b85a886858548b0dedacc65aea0cb5",
+    "elevation/rge-alti-ground/grid-04000.response.json.gz": "24cc94305054fdf15d9d682080da4dd5b82351300b0e0f9d208aa6544364efce",
+    "elevation/rge-alti-ground/grid-08000.request.json.gz": "43df365001e88ec0582888ad118bca8b6f1331cca406f4e68c15b76177013076",
+    "elevation/rge-alti-ground/grid-08000.response.json.gz": "a82bef41b666f4b8787b25b316e8c826b4e8a4df91fff689e06138520268d377",
+    "elevation/rge-alti-ground/grid-12000.request.json.gz": "990be87f5a5e4bf8c3669633a555167be1f1e2aca1fd79f43bcd5f611e33e58f",
+    "elevation/rge-alti-ground/grid-12000.response.json.gz": "8bd4b129717db220c824047d922d4e22a811081ff397624cce40607aa5f430a2",
+    "elevation/rge-alti-ground/grid-16000.request.json.gz": "cb2fe8dfc1e25b20597dd5adaa81f0960fcc9d863dae3d47bb450b00dc95ba47",
+    "elevation/rge-alti-ground/grid-16000.response.json.gz": "99baf35a81a97599b1641d8493ebb0808e915d0d4816ff705e3008f4617460fb",
+    "elevation/rge-alti-ground/grid-20000.request.json.gz": "57c69f015e7aedcf3f600eb3a0cfe8c10b73696ec2a9851e7e2b2f362280be81",
+    "elevation/rge-alti-ground/grid-20000.response.json.gz": "229e0cb3b63a92079b35a4c6ea6eed74eae7487cce8f00b74bdffb10fe389dd6",
+    "elevation/rge-alti-ground/grid-24000.request.json.gz": "7d84b4e6fb0012f2079596db18f4a42f896ed83a37309ab7a92a536190ebff22",
+    "elevation/rge-alti-ground/grid-24000.response.json.gz": "96b2ebd73d186794ead8cab0bbcd0fab863060bfc1ef22fc53b9c3ba72f4e5d5",
+    "elevation/rge-alti-ground/grid-28000.request.json.gz": "11945cf21bb962c642bd43a4360ba0096093e77f9ab43193218bdd6c95b627e4",
+    "elevation/rge-alti-ground/grid-28000.response.json.gz": "d83695d182e69349fb31ccf8f683845fa9f66084d85c5eb1c87c86c8c074da55",
+    "elevation/rge-alti-ground/grid-32000.request.json.gz": "e8190ee91f9d9d875eca48f76532f3721bc1e22a533f7c16c531d11a94055905",
+    "elevation/rge-alti-ground/grid-32000.response.json.gz": "f1950928ab345f4a29402d4680b41a617116be485a6c04905f09b3b78a171ac0",
+    "elevation/rge-alti-ground/legacy-glo30-relative-grid.json.gz": "3438f95fc326e80126d4e3127139b3610437807d0865b7a83f7c5e282e2b4d68",
+    "elevation/rge-alti-ground/native-datum-anchors.request.json.gz": "951c23cca3a5665b2b6c84aad1717dc783f0576e2b3db833976bebea5c73d646",
+    "elevation/rge-alti-ground/native-datum-anchors.response.json.gz": "20423c1063e531ef6723b6d7cd4ccfef15c45bb7cb00ec87e54deea7ad0be769"
+  },
+  "relative_grid_change_min_median_max_m": [
+    -55.129594662764845,
+    -1.291996701339059,
+    35.9229075116126
+  ],
+  "vertical_fit_offset_range_m": [
+    0.23869580000000212,
+    2.502109899999997
+  ],
+  "road_join_distance_m": 2.0,
+  "road_join_note": "A 2 m scenery join beyond the physical corridor preserves real ground between closely stacked Monaco streets. The previous 20 m nearest-road influence raised coastal ground from 3.87 to 13.03 m using an unrelated uphill street. Racing road planes, banking, widths and physics remain unchanged.",
+  "fallback_source_metadata": {
+    "provider": "Copernicus DEM, distributed through AWS Open Data",
+    "dataset": "GLO-30 DSM",
+    "source_url": "https://copernicus-dem-30m.s3.eu-central-1.amazonaws.com/Copernicus_DSM_COG_10_N43_00_E007_00_DEM/Copernicus_DSM_COG_10_N43_00_E007_00_DEM.tif",
+    "source_info": "https://registry.opendata.aws/copernicus-dem/",
+    "documentation": "https://copernicus-dem-90m.s3.amazonaws.com/readme.html",
+    "retained_window": "elevation/scenery_dem.tif",
+    "sha256": "feeb9a67cabaed7a25af87768e8a7f7d6b1d06ea0b32ef962438dc894a8f85d9",
+    "grid_spacing_m": 12,
+    "source_resolution_m": 30,
+    "relative_datum_m": 4.904153943978272,
+    "datum_method": "Median offset to unchanged native road profile at 256 stations.",
+    "use": "Surrounding landscape only, bilinearly resampled; not a racing-deck or bare-earth survey. Road-adjacent ground joins the existing road plane.",
+    "terrain_sha256": "40d00025821f43db3273205cd72f0cb95f5f390bfd7276ddbd1765ff08e82644"
+  }
+}

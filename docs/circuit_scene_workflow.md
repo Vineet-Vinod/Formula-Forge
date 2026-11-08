@@ -72,6 +72,29 @@ into a water polygon. Model ordinary mapped frontage as well as landmarks; a few
 hotel models do not fill an urban circuit. Use semantic tags and actual stand
 footprints rather than classifying buildings by height or guessing stand spans.
 
+Check foundations along the full footprint of long buildings. Spa's Endurance
+pits descend beside the road; a single base height from the footprint centroid
+left the downhill end in the air. Model graded garage bays and clip roofs to the
+mapped footprint. Use the reference or a primary photograph to distinguish a
+garage row from a spectator stand or office block.
+
+Inspect tight inside corners for folded offsets. Albert Park's T3 produced
+overlapping grass faces and a detached white edge stripe even though the native
+lap passed. Trace suspicious pixels to their source triangles before changing
+terrain or the driving line. Check winding, overlapping surfaces and the union
+of the road footprint, rather than covering an artifact with another polygon.
+
+Use ground elevations for dense city terrain. A surface model can include hotel
+roofs and turn the gaps between stacked streets into cliffs. Monaco retains IGN
+RGE ALTI samples in `scenery-ground.json` and the hashed compressed grid it names.
+`circuit_terrain.py monaco` validates and materializes that grid before scene
+generation, including when a terrain binary already exists. Its datum uses the
+unchanged road profile outside the tunnel; unsupported samples retain the
+documented fallback. The 12 m scenery grid does not replace racing elevations.
+Its 2 m ground join and locally narrow shoulders preserve land between roads at
+different heights. Check retaining walls and foundations in cockpit views after
+changing either distance.
+
 After changing road widths, banking, escape shapes or protection, regenerate the
 physical envelope as a deliberate source change:
 

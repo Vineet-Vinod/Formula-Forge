@@ -435,7 +435,7 @@
       736.47,
       1282.83
     ],
-    "observations": "Overview01 and detailed frame in98–100s window show the dark-blue paved inside T10 hairpin island beyond the right red/white kerb. Both the long outside-left escape and other city-road escapes remain ordinary asphalt.",
+    "observations": "Overview01 and detailed frame in98\u2013100s window show the dark-blue paved inside T10 hairpin island beyond the right red/white kerb. Both the long outside-left escape and other city-road escapes remain ordinary asphalt.",
     "registration_status": "Named reference sector matched to retained road shape; widths, ends and star sizes/spacing are original estimates, not exact surveyed paint coordinates.",
     "height_policy": "scene.runoff uses ground-following polygons clipped outside road_mask; no fixed-z tile. New inside-right physical corridor registered separately from outside-left escape.",
     "physical_runoff_extents_changed": true,
@@ -446,8 +446,8 @@
         "end_m": 2805,
         "side": 1,
         "outer_offset_from_road_edge_m": 6.0,
-        "material": "RunoffBlue",
-        "registration": "T10 actual right-hairpin curvature at2720–2800m; reference overview99.06s and detail98–100s driver view and matching hairpin minimap. Ends and6m depth are original bounded reconstruction estimates, not a surveyed footprint."
+        "material": "RunoffNavy",
+        "registration": "T10 actual right-hairpin curvature at2720\u20132800m; reference overview99.06s and detail98\u2013100s driver view and matching hairpin minimap. Ends and6m depth are original bounded reconstruction estimates, not a surveyed footprint."
       }
     ],
     "additional_viewed_frame_windows_s": [
@@ -486,7 +486,16 @@
           104
         ]
       }
-    ]
+    ],
+    "local_hue_correction": {
+      "status": "Source correction; fresh packaged review pending",
+      "reference": "build/reviews/canada/reference/paint-detail-03.jpg",
+      "reference_sha256": "40a550d26ac7779001572993048aa909443523f5009e9be8b1543a0d106fb999",
+      "previous_capture": "build/reviews/canada/corrected-live/targeted/04-2700.0-00002557.jpg",
+      "previous_capture_sha256": "16c1e3c9df606deba2315652d0004a6927725282da50e108e453b7e246dfc5ea",
+      "change": "Only the existing inside-right T10 island uses RunoffNavy instead of RunoffBlue. Its shape, height, native road and physical protection remain unchanged.",
+      "uncertainty": "Reference is overcast/wet, while the scene is dry. Hue family is navy in the supplied view; exact apparent brightness is weather dependent."
+    }
   },
   "ground_appearance_review": "Deep green island woodland and maintained park lawns.",
   "pit_frontage_correction": {

@@ -8,10 +8,13 @@ import sys
 from circuit_art import artwork
 from circuit_dataclasses import PitLane
 from circuit_scene import CircuitScene
+from circuit_terrain import ROOT, acquire
 from pydantic import TypeAdapter
 
 
 def generate(slug: str) -> None:
+    if (ROOT / "Attribution/Sources" / slug / "scenery-ground.json").exists():
+        acquire(slug)
     scene = CircuitScene(slug)
     print(f"{slug}: road surfaces", flush=True)
     base = (

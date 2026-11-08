@@ -1,8 +1,9 @@
-"""Retain a bounded Copernicus GLO-30 landscape window; never replace a racing profile."""
+"""Materialize retained ground or acquire scenery without replacing racing profiles."""
 
 from __future__ import annotations
 
 import csv
+import gzip
 import hashlib
 import json
 import math
@@ -12,12 +13,54 @@ from pathlib import Path
 
 import numpy as np
 import rasterio
-from circuit_dataclasses import Catalogue, Provenance, RoadStation
+from circuit_dataclasses import (
+    Catalogue,
+    Provenance,
+    RetainedTerrainSource,
+    RoadStation,
+    TerrainGrid,
+)
 from pydantic import TypeAdapter
 from rasterio.errors import RasterioIOError
 from rasterio.windows import from_bounds
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def materialize_retained_ground(source: Path, destination: Path) -> bool:
+    manifest = source / "scenery-ground.json"
+    if not manifest.exists():
+        return False
+    profile = TypeAdapter(RetainedTerrainSource).validate_json(manifest.read_bytes())
+    grid_path = (source / profile.grid_file).resolve()
+    if not grid_path.is_relative_to(source.resolve()):
+        raise ValueError("Retained terrain grid must remain within its source directory")
+    encoded = grid_path.read_bytes()
+    if hashlib.sha256(encoded).hexdigest() != profile.grid_sha256:
+        raise ValueError("Retained terrain grid hash does not match its source manifest")
+    grid = TypeAdapter(TerrainGrid).validate_json(gzip.decompress(encoded))
+    if (grid.columns < 2 or grid.rows < 2 or grid.step <= 0
+            or len(grid.heights) != grid.columns * grid.rows
+            or not all(math.isfinite(value) for value in (grid.x, grid.y, grid.step, *grid.heights))):
+        raise ValueError("Retained terrain grid has invalid dimensions or nonfinite heights")
+    payload = (b"FFTRN1\0\0" + struct.pack("<ddfII", grid.x, grid.y, grid.step, grid.columns, grid.rows)
+               + struct.pack(f"<{len(grid.heights)}f", *grid.heights))
+    destination.write_bytes(payload)
+    record = {
+        "provider": profile.provider,
+        "dataset": profile.dataset,
+        "retained_window": str(profile.grid_file),
+        "sha256": profile.grid_sha256,
+        "grid_spacing_m": grid.step,
+        "relative_datum_m": profile.relative_datum_m,
+        "road_join_distance_m": profile.road_join_distance_m,
+        "source_manifest": manifest.name,
+        "use": "Retained scenery-only ground grid. Heights already use the registered relative datum; racing profiles remain unchanged.",
+        "terrain_sha256": hashlib.sha256(payload).hexdigest(),
+    }
+    (source / "scenery-terrain.json").write_text(json.dumps(record, indent=2) + "\n")
+    print(f"{source.name}: materialized retained {grid.columns}x{grid.rows} ground", flush=True)
+    return True
 
 
 def acquire(slug: str, rebase: bool = False) -> None:
@@ -34,6 +77,8 @@ def acquire(slug: str, rebase: bool = False) -> None:
             list(csv.DictReader(handle))
         )
     destination = ROOT / "Content/Generated" / catalogue.content_dir / "terrain.bin"
+    if materialize_retained_ground(source, destination):
+        return
     if destination.exists() and not rebase:
         print(f"{slug}: retaining existing terrain", flush=True)
         return

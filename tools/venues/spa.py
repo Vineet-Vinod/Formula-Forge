@@ -1,7 +1,14 @@
 """Spa: valley pit complexes, gabled Eau Rouge chalet and deep Ardennes woodland."""
 from __future__ import annotations
 
+import math
+from itertools import pairwise
+
+from circuit_dataclasses import Point
+from circuit_mesh import add
 from circuit_scene import CircuitScene
+from shapely.geometry import Polygon
+from shapely.ops import triangulate
 
 from venues.west_architecture import apron_band, mapped_building, mast, trees
 
@@ -18,7 +25,7 @@ def build_venue(scene: CircuitScene) -> None:
     scene.braking_boards(5295, -1, distances=(100, 50))  # Fagnes
     scene.braking_boards(476, -1)  # Bus Stop first apex
     mapped_building(scene, 77352246, 16, facade='Concrete', floors=4, roof='canopy', garage_front=True)
-    mapped_building(scene, 77352249, 8, facade='White', floors=2, roof='pitched')
+    endurance_garages(scene)
     mapped_building(scene, 176136366, 9, facade='Cream', floors=2, roof='pitched')
     scene.stand(730, 1050, -1, rows=20, setback=10, roofed=True, seat_material='SeatRed')
     scene.stand(1970, 2110, -1, rows=26, setback=23, roofed=True, seat_material='SeatRed')
@@ -37,6 +44,74 @@ def build_venue(scene: CircuitScene) -> None:
         trees(scene, start, end, -1, setback=22, spacing=28, rows=1, height=16)
     for station in [520, 1120, 1770, 2040, 3160, 3830, 4710, 5330, 5960, 6750]:
         mast(scene, station, -1, 20)
+
+
+def endurance_garages(scene: CircuitScene) -> None:
+    building = scene.footprint(77352249)
+    footprint = Polygon(building.ring).difference(scene.road_mask.buffer(1.2))
+    if not isinstance(footprint, Polygon) or footprint.is_empty:
+        return
+    scene.modeled_buildings.add(building.osm_id)
+    kind = 'Building_Endurance'
+    height = 6.4
+
+    def point(x: float, y: float, lift: float = 0) -> Point:
+        return x, y, scene.nearest(x, y)[0].z - .015 + lift
+
+    ring = list(footprint.exterior.coords)[:-1]
+    winding = 1 if footprint.exterior.is_ccw else -1
+    for a, b in zip(ring, ring[1:] + ring[:1]):
+        span = math.dist(a, b)
+        if span < .05:
+            continue
+        dx, dy = (b[0] - a[0]) / span, (b[1] - a[1]) / span
+        normal = (dy * winding * .045, -dx * winding * .045, 0.)
+        count = max(1, math.ceil(span / 6))
+        for bay in range(count):
+            left = point(a[0] + dx * span * bay / count, a[1] + dy * span * bay / count)
+            right = point(a[0] + dx * span * (bay + 1) / count, a[1] + dy * span * (bay + 1) / count)
+            scene.quad(kind, 'Concrete', left, right, add(right, (0, 0, height)), add(left, (0, 0, height)))
+            sample, distance = scene.nearest((left[0] + right[0]) / 2, (left[1] + right[1]) / 2)
+            front = distance < 24 and abs(dx * sample.tx + dy * sample.ty) > .8
+            if not front:
+                continue
+            inner_left = tuple(left[i] + (right[i] - left[i]) * .07 + normal[i] for i in range(3))
+            inner_right = tuple(left[i] + (right[i] - left[i]) * .93 + normal[i] for i in range(3))
+            la: Point = inner_left[0], inner_left[1], inner_left[2]
+            rb: Point = inner_right[0], inner_right[1], inner_right[2]
+            scene.quad(kind, 'Steel', add(la, (0, 0, .25)), add(rb, (0, 0, .25)),
+                       add(rb, (0, 0, 3.35)), add(la, (0, 0, 3.35)))
+            scene.quad(kind, 'Glass', add(la, (0, 0, 4.1)), add(rb, (0, 0, 4.1)),
+                       add(rb, (0, 0, 6.05)), add(la, (0, 0, 6.05)))
+            scene.beam(kind, 'Red', left, add(left, (0, 0, height)), .18)
+            scene.beam(kind, 'White', add(left, (0, 0, 3.65)), add(right, (0, 0, 3.65)), .22, .34)
+            scene.beam(kind, 'Steel', add(left, (0, 0, height)), add(right, (0, 0, height)), .16)
+
+    rectangle = list(footprint.minimum_rotated_rectangle.exterior.coords)
+    a, b = max(pairwise(rectangle), key=lambda pair: math.dist(*pair))
+    span = math.dist(a, b)
+    axis = ((b[0] - a[0]) / span, (b[1] - a[1]) / span)
+    side = (-axis[1], axis[0])
+    coordinates = [(x * axis[0] + y * axis[1], x * side[0] + y * side[1]) for x, y in ring]
+    low, high = min(p[1] for p in coordinates), max(p[1] for p in coordinates)
+    start, end = min(p[0] for p in coordinates), max(p[0] for p in coordinates)
+    count = math.ceil((end - start) / 6)
+    for bay in range(count):
+        u0, u1 = start + (end - start) * bay / count, start + (end - start) * (bay + 1) / count
+        strip = Polygon([(axis[0] * u + side[0] * v, axis[1] * u + side[1] * v)
+                         for u, v in [(u0, low - 1), (u1, low - 1), (u1, high + 1), (u0, high + 1)]])
+        roof = footprint.intersection(strip)
+        for triangle in triangulate(roof):
+            if roof.covers(triangle):
+                pa, pb, pc = [point(x, y, height + .12) for x, y in list(triangle.exterior.coords)[:3]]
+                if not triangle.exterior.is_ccw:
+                    pb, pc = pc, pb
+                scene.triangle(kind, 'Roof', pa, pb, pc)
+                scene.triangle(kind, 'Roof', pc, pb, pa)
+    scene.landmarks.append({'osm_id': building.osm_id, 'name': building.name,
+                            'structure': 'Graded Endurance garage row with red piers, grey doors and upper glazing',
+                            'height_m': height, 'foundation': 'Each footprint vertex follows adjacent native road grade; no single centroid foundation.',
+                            'dimensions_status': 'Mapped footprint retained. Height, six-metre maximum bay spacing and shallow roof reconstructed from SRO2024 briefing p11; not a building survey.'})
 
 
 def circuit_edges(scene: CircuitScene) -> None:

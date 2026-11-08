@@ -62,7 +62,10 @@
       198,
       202,
       206,
-      210
+      210,
+      865.8,
+      867.8,
+      869.8
     ],
     "method": "Viewed every frame of overview and detail contact sheets. Sparse review of edited gameplay; rear cameras, menus and cuts are excluded as metric geometry evidence.",
     "whole_lap_sector_inventory": true,
@@ -194,13 +197,18 @@
       ],
       "name": "Back straight and final T15 hairpin",
       "reviewed_video_seconds": [
-        206,
         210,
-        583.27,
-        867.8
+        865.8,
+        867.8,
+        869.8
       ],
       "observed": "Central mainstand presents opposite face and repeated curved shells, very broad final lefthairpin around grass island. Long straight approaches and return to pit, red-white kerbs with green exit apron and gravel beyond.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "865.8–869.8s directly shows final T15 braking and left hairpin.210s is back-straight context only; native bounds and exact camera poses remain estimates.",
+      "direct_final_corner_seconds": [
+        865.8,
+        867.8,
+        869.8
+      ]
     }
   ],
   "primary_sources": [
@@ -213,5 +221,40 @@
   "uncertainties": [
     "The width source now spans the operator-supported 16–22 m range; individual interval transitions remain estimates from road shape and reference footage.",
     "The corrected 22 m road relief uses registered F1 topography controls with its crest near T11. It is not a surveyed racing-deck profile."
-  ]
+  ],
+  "final_hairpin_reference_correction": {
+    "method": "Direct inspection of retained detail and overview images plus three individually decoded1280px frames; no asset, geometry or native changes.",
+    "rejected_final_turn_seconds": [
+      106,
+      110,
+      114
+    ],
+    "rejected_reason": "Formation-lap pitstraight and opening T1RIGHT/T2LEFT, followed by hard cut to grid at118s. These are opening-complex references only.",
+    "direct_t15_sequence": [
+      {
+        "path": "build/reviews/malaysia/reference/final-t15-entry-865.80.jpg",
+        "video_seconds": 865.8,
+        "sha256": "1b76dfdb198cbd8707f2322087206ab19d08514da3cd5d46717d9bb0e8110f1e",
+        "observed": "Final T15 braking approach on back straight; mainstand left and100m board right. Lap13 1:19.902."
+      },
+      {
+        "path": "build/reviews/malaysia/reference/final-t15-867.80.jpg",
+        "video_seconds": 867.8,
+        "sha256": "06d2907ec7031ac94edac214f6392d4fb8713eaa24c3ef829acbae934310efcf",
+        "observed": "Final T15 left hairpin entry/apex around grass island; central mainstand opposite exit. Lap13 1:21.900."
+      },
+      {
+        "path": "build/reviews/malaysia/reference/final-t15-exit-869.80.jpg",
+        "video_seconds": 869.8,
+        "sha256": "838edbb188824b4e9341df9a2bb2f0783ef9a8a47a21c5bf0e21b5065f2fe668",
+        "observed": "Final T15 continuing left near apex; open pit-return apron and low distant service buildings. Lap13 1:23.899."
+      }
+    ],
+    "context_only_seconds": {
+      "206": "Late T14 right before back straight, not T15 apex.",
+      "210": "Back-straight acceleration toward T15, not T15 apex.",
+      "583.27": "Pitstraight beside mainstand and pits, not final hairpin."
+    },
+    "registration_uncertainty": "Native5060m identifies final hairpin; reference camera position remains approximate ±60m. Edited gameplay timestamps are not a linear station clock. Only visible features are direct evidence; absence of offscreen outside gravel is not established."
+  }
 }

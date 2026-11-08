@@ -1,0 +1,177 @@
+{
+  "review": "Read-only all18generic-stand road-overlap audit followed by scoped evidence-backed source correction,2026-11-08",
+  "status": "Source-only; root handles next local rebuild with Monaco, then actual packaged T5review.",
+  "removed_call": {
+    "start_m": 2240,
+    "end_m": 2380,
+    "side": -1,
+    "rows": 12,
+    "setback_m": 27
+  },
+  "finding": "Invented stand follows the inside of T5left hairpin and folds across the racing road. No retained OSM seating footprint at this infield location.",
+  "old_proof": {
+    "source_line": 28,
+    "args": [
+      2240,
+      2380,
+      -1
+    ],
+    "kwargs": {
+      "rows": 12,
+      "setback": 27,
+      "seat_material": "SeatRed"
+    },
+    "structural_triangles": 9952,
+    "overlap_triangles": 4263,
+    "unique_overlap_area_m2": 761.2865579745383,
+    "station_range_m": [
+      2261.360612087729,
+      2421.5476966603387
+    ],
+    "height_above_road_range_m": [
+      -4.11028098021073,
+      11.445564304127153
+    ],
+    "kinds": {
+      "Building_Stand": 4263
+    },
+    "example_triangles": [
+      {
+        "kind": "Building_Stand",
+        "material": "Concrete",
+        "station_m": 2412.2388082339744,
+        "height_above_road_m": -1.280555939460907,
+        "area_m2": 0.003912122598368316,
+        "vertices": [
+          [
+            -134.17977995406156,
+            513.9216814931586,
+            12.117366320842468
+          ],
+          [
+            -131.70098731664265,
+            506.5381121068906,
+            11.874145056060602
+          ],
+          [
+            -130.85308828693562,
+            506.7736269374679,
+            11.874145056060602
+          ]
+        ]
+      },
+      {
+        "kind": "Building_Stand",
+        "material": "Concrete",
+        "station_m": 2412.2651041766044,
+        "height_above_road_m": -1.2812910464452099,
+        "area_m2": 0.0010300547076977306,
+        "vertices": [
+          [
+            -134.17977995406156,
+            513.9216814931586,
+            12.117366320842468
+          ],
+          [
+            -130.85308828693562,
+            506.7736269374679,
+            11.874145056060602
+          ],
+          [
+            -133.33188098378304,
+            514.15719653769,
+            12.117366320842468
+          ]
+        ]
+      }
+    ]
+  },
+  "sources": [
+    {
+      "url": "https://autodromodoalgarve.com/wp-content/uploads/2020/07/Stands_map_novo_PT.pdf",
+      "observation": "Operator2020 seating plan shows named seating around perimeter and green infield around T5/TorreVIP; no inside T5grandstand in the location of the invented source band."
+    },
+    {
+      "reference": "Saved/Refs/portugal.mp4",
+      "video_s": 168.5,
+      "lap_timer_s": 23.916,
+      "observation": "Direct T5left apex/crest: grass on inside/left, thin true sponsor gantry, no large infield seating slab crossing the road."
+    },
+    {
+      "reference": "Saved/Refs/portugal.mp4",
+      "video_s": 170,
+      "lap_timer_s": 25.416,
+      "observation": "T5exit beside neighbouring car, open racing corridor and adjacent TorreVIP/mainstand skyline; no invented overhead stand."
+    },
+    {
+      "reference": "Saved/Refs/portugal.mp4",
+      "video_s": 173.63,
+      "lap_timer_s": 29.049,
+      "observation": "T5exit/T6approach with actual rounded TorreVIP on driver LEFT, proving nearby architectural registration rather than a generic circuit screenshot."
+    }
+  ],
+  "change": "Remove only the unsupported inside generic stand. No speculative replacement. Terrain, physical protection, real sponsor gantry, other stands, road centreline/heights/banking and camera unchanged.",
+  "after_proof": {
+    "scope": "All18currentvenue generic scene.stand callsites plus Monaco harbour_stand wrapper. Structural Building_Stand* only; crowd excluded. Mapped footprint terraces and real bridges/gantries are not part of this generic-stand-only pass. No geometry files written.",
+    "venues": {
+      "portimao": {
+        "generic_stand_calls": 3,
+        "source_sha256": "0d8054ed5215c0d3b3bed93f8f54fa3d406b480e0239185a4f8986fd81fb30bb",
+        "road_csv_sha256": "a231561f08c88a6ec976e5f98049008011df1f768356dd52df164e7e07d81e54",
+        "stands": [
+          {
+            "source_line": 25,
+            "args": [
+              470,
+              1060,
+              -1
+            ],
+            "kwargs": {
+              "rows": 23,
+              "setback": 7,
+              "seat_material": "SeatRed"
+            },
+            "structural_triangles": 71796,
+            "overlap_triangles": 0,
+            "unique_overlap_area_m2": 0.0
+          },
+          {
+            "source_line": 27,
+            "args": [
+              1430,
+              1540,
+              -1
+            ],
+            "kwargs": {
+              "rows": 12,
+              "setback": 24,
+              "seat_material": "SeatRed"
+            },
+            "structural_triangles": 7744,
+            "overlap_triangles": 0,
+            "unique_overlap_area_m2": 0.0
+          },
+          {
+            "source_line": 28,
+            "args": [
+              3480,
+              3570,
+              -1
+            ],
+            "kwargs": {
+              "rows": 12,
+              "setback": 27,
+              "seat_material": "SeatRed"
+            },
+            "structural_triangles": 6640,
+            "overlap_triangles": 0,
+            "unique_overlap_area_m2": 0.0
+          }
+        ],
+        "elapsed_s": 1.7777760839671828,
+        "memory": "VmHWM:\t   69676 kB"
+      }
+    }
+  },
+  "limitations": "This verifies structural road clearance and matched local identity, not whole-route or packaged visual acceptance."
+}

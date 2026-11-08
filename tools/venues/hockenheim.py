@@ -148,9 +148,9 @@ def boxengebaeude(scene: CircuitScene) -> None:
 
 def circuit_edges(scene: CircuitScene) -> None:
     for start, end, side in [(230, 330, 1), (800, 890, 1), (920, 1030, -1), (2040, 2180, 1), (2760, 2870, 1), (2920, 3040, -1), (3400, 3520, 1), (3730, 3870, -1), (4050, 4160, 1), (4220, 4350, 1)]:
-        scene.kerb(start, end, side, material='SeatBlue', alternate_material='White')
+        scene.kerb(start, end, side, material='RunoffNavy' if start in (230, 2040) else 'SeatBlue', alternate_material='White')
     for start, end, side, width, material in [(190, 370, -1, 22, 'Runoff'), (760, 1080, -1, 23, 'Runoff'), (1980, 2240, -1, 25, 'Runoff'), (2710, 3090, -1, 22, 'Runoff'), (3360, 3580, -1, 24, 'Gravel'), (3670, 3930, 1, 24, 'Gravel'), (4000, 4390, -1, 20, 'Runoff')]:
         scene.runoff(start, end, side, width, material)
 
-    apron_band(scene, 190, 370, -1, 1.2, 21.8, 'RunoffBlue')
-    apron_band(scene, 1980, 2240, -1, 1.2, 24.8, 'RunoffBlue')
+    apron_band(scene, 190, 370, -1, 1.2, 21.8, 'RunoffNavy')
+    apron_band(scene, 1980, 2240, -1, 1.2, 24.8, 'RunoffNavy')

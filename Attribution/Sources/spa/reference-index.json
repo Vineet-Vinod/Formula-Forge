@@ -94,6 +94,12 @@
       "reviewed_image_sha256": "145a50dfc794e26f73d63b390ab46a0fefc1dbdb6181bbae675249da92edc141",
       "notes": "Kemmel straight: crowd bank and mature mixed trees left, trees and advertised wall right, grass verge and Armco/catch fence. HUD25.583s.",
       "camera_registration": "Confirmed Kemmel straight; exact position along native2113\u20133165m is unregistered."
+    },
+    {
+      "time_s": 675.0,
+      "reviewed": true,
+      "frame": "build/reviews/spa/reference/endurance-check-675.00.jpg",
+      "notes": "Rear-facing camera on old pit descent; confirms close pit-service frontage but is not a direct forward-camera match for native1679.44. Montage cameras/cuts prevent precise timestamp registration."
     }
   ],
   "registration": {
@@ -290,5 +296,15 @@
     ],
     "observation": "HUD advances5.233\u21928.550\u219211.549s, then jumps to25.583s between674 and676video seconds. This is an edit. Do not derive native station or continuous lap timing by interpolating across it.",
     "remaining_index_policy": "Other old sector-wide labels remain contextual hypotheses unless independently registered; this correction does not verify unreviewed camera poses."
+  },
+  "endurance_architecture_primary_evidence": {
+    "url": "https://www.gt4europeanseries.com/documents/notice/2180/DEF%2BGT4%2BBRIEFING%2BSPA%2B2024.pdf",
+    "publisher": "SRO GT4 European Series",
+    "title": "Spa2024 team managers and drivers briefing",
+    "document_page_1_based": 11,
+    "observed": "Endurance pit-lane photograph: grey lower garage doors and masonry, red vertical piers, dark-framed upper glazed rooms and shallow roof. Original reconstruction; photograph pixels are not shipped.",
+    "retrieved_utc": "2026-11-08",
+    "sha256": "6fb37f257700ea0c4f53ca9ad207a19d066e168a02a6a915a6e0e4562a7498a5",
+    "local_research_only": "build/reviews/spa/reference/sro-spa-briefing-2024.pdf"
   }
 }

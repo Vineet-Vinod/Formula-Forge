@@ -513,5 +513,15 @@
       "dimensions": "1.7\u20133.1m source crown clusters buried at their leaf base to produce roughly0.85\u20131.55m above-ground scrub,11m station spacing with3lateral rows. Small2.2\u00d71.4m stone patches rise0.26m and follow local terrain at all outer vertices; no fixed-Z tiles."
     },
     "material_limit": "Broad beige gravel polish remains pending matched material review; no global Gravel/Grass/material/helper changes made."
+  },
+  "t10_inside_paved_advertising": {
+    "review": "t10-infield-paint-review.json",
+    "side": -1,
+    "start_m": 2480,
+    "end_m": 2590,
+    "material": "RunoffNavy",
+    "lettering": "Private GroundMSC original typeset MSC CRUISES; projected paving+5mm, matching roughness0.7",
+    "physical_change": false,
+    "status": "Source only; requires fresh inside-apex packaged comparison."
   }
 }

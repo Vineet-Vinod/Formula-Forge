@@ -15,10 +15,13 @@ from circuit_dataclasses import (
     BarrierPanel,
     Building,
     Catalogue,
+    EdgeCorrection,
     OsmData,
     PitLane,
     Provenance,
+    RetainedTerrainSource,
     RoadStation,
+    SurfaceProjection,
     TerrainGrid,
 )
 from circuit_mesh import MeshScene, Point, add, cross, mul, norm, sub
@@ -66,6 +69,11 @@ class CircuitScene(MeshScene):
                 for i, p in enumerate(self.road)
             ]
         )
+        self.ground_join_distance = 20.0
+        ground_source = self.sources / "scenery-ground.json"
+        if ground_source.exists():
+            ground_profile = TypeAdapter(RetainedTerrainSource).validate_json(ground_source.read_bytes())
+            self.ground_join_distance = ground_profile.road_join_distance_m
         payload = (self.data / "terrain.bin").read_bytes()
         if payload[:8] != b"FFTRN1\0\0":
             raise ValueError("Invalid terrain header")
@@ -105,6 +113,12 @@ class CircuitScene(MeshScene):
         self.surface_index: STRtree | None = None
         self.panels: list[BarrierPanel] = []
         self._ground_normals: dict[tuple[float, float], Point] = {}
+        edge_path = self.sources / "edge-corrections.json"
+        self.edge_corrections = (
+            TypeAdapter(list[EdgeCorrection]).validate_json(edge_path.read_bytes())
+            if edge_path.exists() else []
+        )
+        self._edge_mask: BaseGeometry = Polygon()
 
     def geo(self, latitude: float, longitude: float) -> tuple[float, float]:
         origin = self.provenance.origin
@@ -276,7 +290,7 @@ class CircuitScene(MeshScene):
                 edge = max(
                     edge, sample.half_width + float(surface["requested_width_m"])
                 )
-        t = max(0.0, min(1.0, (distance - edge) / 20))
+        t = max(0.0, min(1.0, (distance - edge) / self.ground_join_distance))
         blend = t * t * (3 - 2 * t)
         return (sample.z + sample.bank * lane - 0.015) * (1 - blend) + self.raw_ground(
             x, y
@@ -341,7 +355,10 @@ class CircuitScene(MeshScene):
                 else None,
             )
 
-    def paint_surface(self, shape: BaseGeometry, material: str, lift: float = 0.005) -> None:
+    def paint_surface(
+        self, shape: BaseGeometry, material: str, lift: float = 0.005,
+        projection: SurfaceProjection | None = None,
+    ) -> None:
         if not self.surface_shapes or shape.is_empty:
             return
         if self.surface_index is None:
@@ -360,7 +377,15 @@ class CircuitScene(MeshScene):
                     points.append((x, y, u * a[2] + v * b[2] + (1 - u - v) * c[2] + lift))
                 if cross(sub(points[1], points[0]), sub(points[2], points[0]))[2] < 0:
                     points.reverse()
-                self.triangle("Tile_Paint", material, points[0], points[1], points[2], tuple((p[0] / 8, p[1] / 8) for p in points))
+                uv = tuple((p[0] / 8, p[1] / 8) for p in points)
+                if projection:
+                    uv = tuple((
+                        0.5 + ((p[0] - projection.origin[0]) * projection.axis[0]
+                               + (p[1] - projection.origin[1]) * projection.axis[1]) / projection.length_m,
+                        0.5 - (-(p[0] - projection.origin[0]) * projection.axis[1]
+                               + (p[1] - projection.origin[1]) * projection.axis[0]) / projection.depth_m,
+                    ) for p in points)
+                self.triangle("Tile_Paint", material, points[0], points[1], points[2], uv)
 
     def surface_mask(self, sample: RoadStation) -> BaseGeometry:
         if self.catalogue.deck_separation:
@@ -377,7 +402,47 @@ class CircuitScene(MeshScene):
         weight = weight * weight * (3 - 2 * weight)
         return 0.95 - 0.8 * weight
 
+    def _edge_section(self, start: float, end: float, side: int) -> BaseGeometry:
+        span = (end - start) % self.length
+        count = max(1, math.ceil(span / 0.5))
+        samples = [self.at(start + span * index / count) for index in range(count + 1)]
+        reach = max(
+            p.half_width + (p.left_shoulder if side > 0 else p.right_shoulder)
+            + self.kerb_margin(p.station) + 4
+            for p in samples
+        )
+        return LineString([(p.x, p.y) for p in samples]).buffer(
+            -side * reach, single_sided=True, cap_style="flat", join_style="round"
+        )
+
+    def _edge_surface(
+        self, shape: BaseGeometry, material: str, lift: float, kind: str,
+        kerb_width: float | None = None,
+    ) -> None:
+        boundary = self.road_mask.boundary if kerb_width else None
+        for triangle in constrained_delaunay_triangles(shape).geoms:
+            points: list[Point] = []
+            for x, y in list(triangle.exterior.coords)[:3]:
+                road, _ = self.nearest(x, y)
+                lane = (x - road.x) * road.ty - (y - road.y) * road.tx
+                height = lift
+                if kerb_width and boundary is not None:
+                    point = GeoPoint(x, y)
+                    distance = boundary.distance(point) * (-1 if self.road_mask.covers(point) else 1)
+                    fraction = max(0.0, min(1.0, (distance + 0.01) / kerb_width))
+                    height = 0.021 + (lift - 0.021) * fraction
+                points.append((x, y, road.z + road.bank * lane + height))
+            if cross(sub(points[1], points[0]), sub(points[2], points[0]))[2] < 0:
+                points.reverse()
+            self.triangle(kind, material, points[0], points[1], points[2],
+                          tuple((p[0] / 8, p[1] / 8) for p in points))
+
     def road_surfaces(self, base_material: str = "Grass") -> None:
+        if self.edge_corrections:
+            self._edge_mask = unary_union([
+                self._edge_section(section.start_m, section.end_m, section.side)
+                for section in self.edge_corrections
+            ])
         road_shapes: list[Polygon] = []
         corridor_shapes: list[Polygon] = []
         ground_roads: list[Polygon] = []
@@ -457,6 +522,21 @@ class CircuitScene(MeshScene):
                 (na, nb, na),
             )
             for side in (-1, 1):
+                stripe_points = [
+                    a.point(side * (a.half_width - 0.12), 0.019),
+                    b.point(side * (b.half_width - 0.12), 0.019),
+                    b.point(side * b.half_width, 0.019),
+                    a.point(side * a.half_width, 0.019),
+                ]
+                if self.edge_corrections and any(
+                    Polygon([stripe_points[j][:2] for j in indices]).intersects(self._edge_mask)
+                    for indices in ((0, 1, 2), (0, 2, 3))
+                ):
+                    for indices in ((0, 1, 2), (0, 2, 3)):
+                        shape = Polygon([stripe_points[j][:2] for j in indices])
+                        if shape.is_valid and shape.area > 1e-10:
+                            self._edge_surface(shape.difference(self._edge_mask), "White", 0.019, "Tile_Road")
+                    continue
                 self.quad(
                     "Tile_Road",
                     "White",
@@ -480,6 +560,9 @@ class CircuitScene(MeshScene):
         self.ground_corridor_mask = unary_union(
             [self.ground_road_mask.buffer(max(0.05, margin)), *ground_corridors]
         )
+        if self.edge_corrections:
+            stripe = self.road_mask.buffer(-0.15).difference(self.road_mask.buffer(-0.27))
+            self._edge_surface(stripe.intersection(self._edge_mask), "White", 0.019, "Tile_Road")
         verge_shapes: list[Polygon] = []
         for i, a in enumerate(self.road):
             b = self.road[(i + 1) % len(self.road)]
@@ -508,10 +591,17 @@ class CircuitScene(MeshScene):
                             material = "Concrete"
                         elif 2150 < a.station < 2380:
                             mask = self.ground_road_mask
-                    self.verge_patches.append((polygon.difference(mask), material, a))
+                    patch = polygon.difference(mask)
+                    if self.edge_corrections:
+                        patch = patch.difference(self._edge_mask)
+                    self.verge_patches.append((patch, material, a))
         seams = self.corridor_mask.difference(
             unary_union([self.road_mask, *verge_shapes])
         )
+        if self.edge_corrections:
+            seams = seams.difference(self._edge_mask)
+            patch = self.corridor_mask.intersection(self._edge_mask).difference(self.road_mask)
+            self.verge_patches.append((patch, base_material, None))
         if not seams.is_empty:
             self.verge_patches.append((seams, base_material, None))
 
@@ -561,6 +651,31 @@ class CircuitScene(MeshScene):
         alternate_material: str = "White",
     ) -> None:
         span = (end - start) % self.length
+        corrected = any(
+            section.side == side
+            and (start - section.start_m) % self.length <= (section.end_m - section.start_m) % self.length
+            and (end - section.start_m) % self.length <= (section.end_m - section.start_m) % self.length
+            for section in self.edge_corrections
+        )
+        if corrected:
+            shape = self.road_mask.buffer(width - 0.01).difference(self.road_mask.buffer(-0.01))
+            shape = shape.intersection(self._edge_section(start, end, side))
+            claimed: BaseGeometry = Polygon()
+            count = max(1, math.ceil(span / 0.8))
+            for index in range(count):
+                stripe_start = start + span * index / count
+                stripe_end = start + span * (index + 1) / count
+                stripe = shape.intersection(self._edge_section(stripe_start, stripe_end, side)).difference(claimed)
+                color = material if int((stripe_start + stripe_end) / 4) % 2 == 0 else alternate_material
+                self._edge_surface(stripe, color, height, "Tile_Kerb", width)
+                claimed = unary_union([claimed, stripe])
+            remaining = shape.difference(claimed)
+            self._edge_surface(remaining, material, height, "Tile_Kerb", width)
+            pieces = [shape] if isinstance(shape, Polygon) else list(shape.geoms)
+            self.terrain_cutouts.extend(piece for piece in pieces if isinstance(piece, Polygon))
+            self.surface_ranges.append({"type": "kerb", "start_m": start, "end_m": end,
+                                        "side": side, "width_m": width})
+            return
         count = max(1, math.ceil(span / 0.8))
         for i in range(count):
             a, b = (

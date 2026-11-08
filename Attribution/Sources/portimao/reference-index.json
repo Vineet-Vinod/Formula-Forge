@@ -5,18 +5,18 @@
   "reference_sha256": "7135e58931b4ec979eb87d4f59180fe8da4e241607f694445af9a37fbb094973",
   "layout_observed": "Legacy 2021 Portuguese Grand Prix 4.653km/15-corner layout in a newer-game mod; not a claim of a real2026event. Native station0 is final Galp corner, not start/finish.",
   "lighting_weather_observed": "Sunny daytime with dry blue sky and dry ochre grass.",
-  "review_scope": "16 sparse overview frames viewed by author. Clip is an edited career/race montage, includes menus/cuts and changing conditions; not a continuous lap. Unviewed timestamps are not evidence.",
+  "review_scope": "16 sparse overview frames viewed by author. Clip is an edited career/race montage, includes menus/cuts and changing conditions; not a continuous lap. Unviewed timestamps are not evidence. Added individually extracted640px T5views168.5/170s, reviewed2026-11-08;173.63/615.3 old pitstraight label corrected to TorreVIP T5exit/T6approach.",
   "frame_index_file": "build/reviews/portimao/reference/overview-index.json",
   "reviewed_visual_evidence": [
     {
       "time_s": 173.63,
       "reviewed": true,
-      "notes": "Galp exit, pits and long straight: Long white/gray garage bar and faceted blade-like main-grandstand roof. Distinct stacked-disc rounded glazed control/VIP tower at pit end, broad green margins and steep descending/cresting straight."
+      "notes": "T5TorreVIP hairpin EXIT/T6 approach: rounded stacked-disc TorreVIP building on driver LEFT, distinct from pit/mainstraight. Previous Galp/pitstraight association corrected by direct footprint/landmark and minimap registration. No exact elapsed-time station interpolation."
     },
     {
       "time_s": 615.3,
       "reviewed": true,
-      "notes": "Galp exit, pits and long straight: Long white/gray garage bar and faceted blade-like main-grandstand roof. Distinct stacked-disc rounded glazed control/VIP tower at pit end, broad green margins and steep descending/cresting straight."
+      "notes": "T5TorreVIP hairpin EXIT/T6 approach: rounded stacked-disc TorreVIP building on driver LEFT, distinct from pit/mainstraight. Previous Galp/pitstraight association corrected by direct footprint/landmark and minimap registration. No exact elapsed-time station interpolation."
     },
     {
       "time_s": 670.51,
@@ -62,6 +62,16 @@
       "time_s": 560.09,
       "reviewed": true,
       "notes": "Craig Jones and Portim\u00e3o: Blind uphill and descending linked turns among open grassy hills, scattered broadleaf/olive-like trees and limited temporary stands. Raised orange/white-red apex elements are local, not continuous."
+    },
+    {
+      "time_s": 168.5,
+      "reviewed": true,
+      "notes": "Direct T5left apex/crest, lap23.916: open inside grassy bank and thin real sponsor gantry, no invented inside grandstand. View supports removal of generic2240\u20132380LEFT band that intersected racingroad."
+    },
+    {
+      "time_s": 170,
+      "reviewed": true,
+      "notes": "Direct T5exit, lap25.416: adjacent car, open racingroad and nearby TorreVIP/mainstand skyline. No giant inside seating slab."
     }
   ],
   "registration": {

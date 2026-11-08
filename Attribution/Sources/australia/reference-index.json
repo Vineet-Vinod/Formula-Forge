@@ -5,7 +5,7 @@
   "reference_sha256": "c5da1281875a87790c76f556f92171cc59f6c74efe153bc7e5eb9f537cc52797",
   "layout_observed": "Contemporary 14-corner Albert Park Grand Prix loop; do not restore the removed T9/T10 chicane.",
   "lighting_weather_observed": "Day; dry race with partly cloudy sky; earlier overcast qualifying.",
-  "review_scope": "16 sparse overview frames viewed by author. Clip is an edited career/race montage, includes menus/cuts and changing conditions; not a continuous lap. Unviewed timestamps are not evidence.",
+  "review_scope": "16 sparse overview frames viewed by author. Clip is an edited career/race montage, includes menus/cuts and changing conditions; not a continuous lap. Unviewed timestamps are not evidence. Direct bounded T3frames332/334/335s independently viewed2026-11-08; old broad sector labels are not exact camera matches.",
   "frame_index_file": "build/reviews/australia/reference/overview-index.json",
   "reviewed_visual_evidence": [
     {
@@ -21,12 +21,12 @@
     {
       "time_s": 400.4,
       "reviewed": true,
-      "notes": "T3\u2013T5 park corners: Parkland slow corners with low pavilion/service roofs, temporary spectator banks and trees. Green painted apex margins and yellow/green segmented kerbs; no continuous gravel belt."
+      "notes": "General park/city-sector context; previous T3\u2013T5 label was not an exact T3registration. Use continuous332/334/335s for direct T3approach/apex."
     },
     {
       "time_s": 512.52,
       "reviewed": true,
-      "notes": "T3\u2013T5 park corners: Parkland slow corners with low pavilion/service roofs, temporary spectator banks and trees. Green painted apex margins and yellow/green segmented kerbs; no continuous gravel belt."
+      "notes": "General park/city-sector context; previous T3\u2013T5 label was not an exact T3registration. Use continuous332/334/335s for direct T3approach/apex."
     },
     {
       "time_s": 344.35,
@@ -62,6 +62,21 @@
       "time_s": 792.81,
       "reviewed": true,
       "notes": "Return to pits: Grandstand and white curved hospitality roofs return; main-straight flags, open pit roof volumes and continuous close safety walls."
+    },
+    {
+      "time_s": 332,
+      "reviewed": true,
+      "notes": "Direct T3approach, HUD13.032s, mature avenue and Pirelli walls, continuous into334/335s."
+    },
+    {
+      "time_s": 334,
+      "reviewed": true,
+      "notes": "Direct T3right turn-in, HUD15.016s; black inside Pirelli advertising field/yellow lettering, opposing spectator bank. Current geometry correction preserves native road."
+    },
+    {
+      "time_s": 335,
+      "reviewed": true,
+      "notes": "Direct T3apex, HUD16.017s; yellow/green kerb and raised red inner lip beside black advertising infield."
     }
   ],
   "registration": {

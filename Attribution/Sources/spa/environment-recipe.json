@@ -485,5 +485,31 @@
     "confirmed_wrong_label": "667.68s is LaSource, not EauRouge.205.90s is already indexed as LaSource and must not simultaneously be used as a direct EauRouge pose.",
     "montage_cut": "674\u2192676video seconds jumps HUD11.549\u219225.583s; no timing-to-station interpolation across this cut.",
     "geometry_status": "Metadata evidence correction only; scene geometry and outstanding packaged acceptance are unchanged."
+  },
+  "endurance_garage_correction": {
+    "osm_id": 77352249,
+    "name": "Stand Endurance / Endurance pit garages",
+    "native_station_span_m": [
+      1478,
+      1776
+    ],
+    "footprint_source": "Retained OSM way77352249, geometry source Picc/3167734 dated2016-06-22.",
+    "defect": "A single centroid-native foundation at31.282m was used for a garage row descending from39.09m to24.10m. Downstream white office walls floated7.18m above adjacent road and a rectangular pitched roof exceeded the concave footprint.",
+    "authored_geometry": "Continuous local-grade lower grey garage bays, red piers and upper glazing. Facade bays at most6m; concave footprint-clipped shallow roof is triangulated within6m longitudinal strips and double-sided. Every wall/roof vertex follows the adjacent retained native road grade, preserving the road itself.",
+    "height_m": 6.4,
+    "dimension_status": "Height, opening dimensions and bay spacing estimated from official photograph; not a surveyed building elevation. Roof follows retained racing-road grade as a local support reconstruction, not roof-contaminated DSM. Actual garage floor levels require a survey for higher precision.",
+    "road_changes": "None. No physical corridor, shoulder, bank, width or native elevation changes.",
+    "evidence": {
+      "url": "https://www.gt4europeanseries.com/documents/notice/2180/DEF%2BGT4%2BBRIEFING%2BSPA%2B2024.pdf",
+      "publisher": "SRO GT4 European Series",
+      "title": "Spa2024 team managers and drivers briefing",
+      "document_page_1_based": 11,
+      "observed": "Endurance pit-lane photograph: grey lower garage doors and masonry, red vertical piers, dark-framed upper glazed rooms and shallow roof. Original reconstruction; photograph pixels are not shipped.",
+      "retrieved_utc": "2026-11-08",
+      "sha256": "6fb37f257700ea0c4f53ca9ad207a19d066e168a02a6a915a6e0e4562a7498a5",
+      "local_research_only": "build/reviews/spa/reference/sro-spa-briefing-2024.pdf"
+    },
+    "review_image": "build/reviews/spa/corrected-live/targeted/02-1680.0-00000845.jpg",
+    "image_sha256": "8386bf36abb7f5812fca14564fddb77418360bc703c0d6a897c13feca6e5644f"
   }
 }

@@ -86,12 +86,13 @@
   "terrain": {
     "retained_source": "Copernicus DEM GLO-90",
     "retained_relief_m": 57.138,
-    "shortcomings": "GLO-90 relief 57.138m cannot separate cliff terrain, stacked streets, podiums and tunnel roof. Confirm actual Monaco coverage/licensing before using French IGN data. Road-deck anchors, sea plane and retaining walls are necessary. Casino/Hotel de Paris and tunnel close views reviewed at330/414/450/534/558seconds; exact ornamental dimensions remain reconstructed.",
+    "shortcomings": "A bounded official IGN RGE ALTI ground grid now replaces roof-contaminated GLO-30 scenery where coverage is valid. Sampled at the existing 12 m grid spacing; local native acquisition resolution and epoch are not asserted. No-data and 28 implausible coastal-edge values retain the original GLO grid. Published racing elevations remain separate and unchanged.",
     "candidate_primary_sources": [
       "https://geoservices.ign.fr/lidarhd"
     ],
     "data_status": "Candidate portal only; exact coverage, resolution, licence and epoch still require verification. No candidate raster downloaded or incorporated.",
-    "racing_deck_correction": "Separate published Formula1roadprofile now replaces contaminated nativeDSMroad. Landscapegridremains separatelysourced; everybuildingtunnelapproach must conform to correcteddeck."
+    "racing_deck_correction": "Separate published Formula1roadprofile now replaces contaminated nativeDSMroad. Landscapegridremains separatelysourced; everybuildingtunnelapproach must conform to correcteddeck.",
+    "retained_ground_source": "scenery-ground.json"
   },
   "authoring_constraints": [
     "Use mapped building footprints and match rooflines, structural supports, facade depth and stepped volumes; names alone do not establish likeness.",
@@ -256,7 +257,7 @@
     "licence": "ODbL1.0",
     "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
     "file": "environment.osm.json.gz",
-    "sha256": "2adc7694093edbc5a96574c95f91714c04f810082f05b24c972bf5b017b8d972",
+    "sha256": "e358ea6d7b12a079f2ec63021e1e4fea327c8f4c9656ba6e280bb996638ca865",
     "purpose": "Tightly bounded essential landmark query; inline member geometry preserved.",
     "additional_queries": [
       {
@@ -279,6 +280,13 @@
         "purpose": "Retained Casino-district parks, grass beds, pedestrian paths and individual trees; only filtered nonbuilding semantic elements merged.",
         "response_sha256": "264f3bff94278d476b74cf8a73d47da0be2993862b95efbfdf599367e8e96d7a",
         "provenance_file": "gardens-provenance.json"
+      },
+      {
+        "query_url": "https://api.openstreetmap.org/api/0.6/map?bbox=7.4198,43.7335,7.4266,43.7381",
+        "retrieved": "2026-11-08",
+        "response_sha256": "7eba6f0fb70f9485de18463a2ce69ca000f00d5851b19714b8031ef91e40bf00",
+        "purpose": "Small harbour-side district bbox. Retains above-ground building/part footprints, actual parks/gardens/grass, individual trees, pedestrian paths and retaining walls. Existing source geometry is preserved by element ID. Raw road geometry is not imported. Underground structures are not authored as above-ground houses.",
+        "provenance": "coastal-district-provenance.json"
       }
     ]
   },
@@ -486,7 +494,7 @@
     "provenance": "gardens-provenance.json",
     "raw_response": "gardens.map.osm.gz",
     "filtered_semantics": "gardens.osm.json.gz",
-    "model": "Actual mapped park/garden/grass footprints clipped against mapped pedestrian paths, all building footprints, water and physical road/runoff corridors. Grass replaces underlying Concrete on the same retained terrain-grid cells; heights unchanged. Actual individual-tree positions, tagged species/height where available, default11m broadleaf otherwise. Species/untagged height uncertainty retained; no repeated generic garden strip.",
+    "model": "Actual Casino and harbour-district parks, gardens and grass plots are clipped against mapped paths, buildings, water and physical corridors. Mapped park 447008630 is landscaped ground rather than a generic office block. Individual mapped trees retain tagged height/species where available. Ground is registered RGE scenery, with original fallback only where documented.",
     "primary_context": "https://www.montecarlosbm-corporate.com/wp-content/uploads/ra-ri-documents/montecarlosbm_2023_03_31_fr.html"
   },
   "critical_view_corrections": {
@@ -494,6 +502,23 @@
     "tunnel": "Cream wall now has both opaque sides; former right wall backface rendered only grout lines. Right is enclosed and tiled, sea-left low parapet/open bays remain. Dark thin grout replaces bright white lattice.",
     "palaces": "HotelParis8280869/Casino161769674 retain exact footprints but now have arched openings, modeled pilasters/cornices, individual iron balconies and mansard roofs;6/3storeys and24/19m heights remain original estimates. Shared generic office helper no longer supplies these facades.",
     "camera_registration": "At946m all Hotel vertices are behind camera (\u2212118.79 to\u22126.08m forward); Casino has no vertex inside90degreeHFOV. Judge ornate landmarks from860/880m.946 remains a valid ordinary-city/garden context view.",
-    "ground": "Actual planted garden patches replace gray terrain only within retained garden/grass boundaries; no arbitrary mountainside recoloring or road-height changes."
+    "ground": "Canonical RGE ALTI ground, a 2 m off-corridor join and close-wall shoulder sections restore land between stacked streets. Actual mapped park/grass boundaries replace asphalt only within those polygons. No invented green blanket or racing-elevation change.",
+    "upper_road_diagnosis": "SHA-verified ray tests identify the black slabs as upper native road/verge at stations 1205\u20131275, exposed through overlapping broad shoulder corridors. The apparent inverted row is ordinary fa\u00e7ades seen through that void, not the Fairmont roof. Both-side shoulder corrections restore 2389.3 square metres of interstreet land in the diagnostic region.",
+    "supports": "Actual OSM retaining-wall alignments use adjacent registered ground for reconstructed heights. The upper Mirabeau inner street edge at 1200\u20131290 m has stone foundations reaching real RGE ground. These are supports outside the racing surface; they do not change road elevation or native collision geometry.",
+    "stand_K": {
+      "source": "FIA 2026 Monaco official media kit, map on page 9; original PDF retained only in ignored research files.",
+      "source_url": "https://www.fia.com/sites/default/files/media_kit_2026_gb_03.06_1.pdf",
+      "pdf_sha256": "cc2292a7243fc367f89df76cf08973728ba71731442ae62ff76359080833e04b",
+      "registration": "Grandstand K follows Tabac toward the first Swimming Pool sequence. Previous 2350\u20132490 m band began before Tabac and overlapped the uphill racing road by about 913 square metres. Corrected reconstruction spans 2445\u20132550 m, driver right, 18 rows and 3 m setback. Exact limits/dimensions remain estimates.",
+      "source_clearance": "All 11020 checked structural triangles in the corrected stand have zero projected road overlap."
+    }
+  },
+  "coastal_district_source": "coastal-district-provenance.json",
+  "canonical_ground_workflow": {
+    "source": "scenery-ground.json",
+    "input": "elevation/scenery-ground-grid.json.gz",
+    "generator_hook": "generate_circuit_scene.generate calls acquire only for retained-ground manifests, before constructing CircuitScene.",
+    "shoulders": "shoulder-corrections.json; root applies the shared shoulder CLI and regenerates boundaries/exports before source generation.",
+    "validation": "Focused terrain tests verify hash, finite values, dimensions, exact relative samples and FFTRN1 layout before overwrite. No actual native or terrain binary was written by the source author."
   }
 }

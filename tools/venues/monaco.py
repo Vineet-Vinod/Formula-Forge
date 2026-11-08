@@ -42,10 +42,13 @@ def build_venue(scene: CircuitScene) -> None:
     tunnel(scene)
     scene.pit_building(3070, 3330, side=1, depth=12, height=10, levels=3)
     harbour_stand(scene, 0, 180, -1, 15, 6)
-    harbour_stand(scene, 2350, 2490, 1, 18, 8)
+    harbour_stand(scene, 2445, 2550, 1, 18, 3)
+    scene.landmarks.append({'name': 'Grandstand K', 'start_m': 2445, 'end_m': 2550,
+                            'dimensions_status': 'FIA 2026 official map locates K between Tabac and Swimming Pool. Retained reconstruction uses 18 rows and 3 m setback; station endpoints are approximate. This replaces the earlier band across the uphill racing road.'})
     harbour_stand(scene, 2570, 2680, 1, 18, 8)
     ordinary_city(scene)
     casino_gardens(scene)
+    retaining_streets(scene)
     for start, end, side, setback in [(280, 550, 1, 10), (1280, 1440, -1, 10)]:
         trees(scene, start, end, side, setback=setback, rows=1, spacing=16, height=9)
     trees(scene, 1250, 1410, 1, setback=16, rows=1, spacing=17, height=10, palms=True)
@@ -54,11 +57,13 @@ def build_venue(scene: CircuitScene) -> None:
 
 
 def casino_gardens(scene: CircuitScene) -> None:
-    bounds = box(*scene.geo(43.738, 7.425), *scene.geo(43.742, 7.432))
+    bounds = unary_union([box(*scene.geo(43.738, 7.425), *scene.geo(43.742, 7.432)),
+                          box(*scene.geo(43.7335, 7.4198), *scene.geo(43.7381, 7.4266))])
     planted: list[Polygon] = []
     for tags in [{'leisure': 'park'}, {'leisure': 'garden'}, {'natural': 'wood'}, {'landuse': 'grass'}]:
         planted.extend(Polygon(ring) for ring in scene.area_polygons(tags))
-    buildings = unary_union([Polygon(building.ring) for building in scene.buildings])
+    buildings = unary_union([Polygon(building.ring) for building in scene.buildings
+                            if building.tags.get('leisure') not in {'park', 'garden'}])
     protection = unary_union([scene.corridor_mask, *scene.extra_corridors])
     blocked = unary_union([buildings, protection, *scene.water_shapes])
     paths = []
@@ -110,10 +115,65 @@ def casino_gardens(scene: CircuitScene) -> None:
         else:
             scene.broadleaf(base, height, osm_id % 997)
         count += 1
-    scene.landmarks.append({'name': 'Mapped Casino-district gardens and heritage trees',
+    scene.landmarks.append({'name': 'Mapped Monaco city gardens and heritage trees',
                             'garden_area_m2': round(grass.area, 3), 'mapped_trees': count,
                             'trees_excluded_for_clearance_or_query_bounds': skipped,
                             'dimensions_status': 'Retained OSM garden/grass footprints, pedestrian paths and individual tree positions. Road/corridor/water/buildings excluded; exact native terrain-grid cell subdivision replaces underlying Concrete. Tagged tree height/species retained; missing heights estimated11m, untagged broadleaf form. No terrain-height changes.'})
+
+
+def retaining_streets(scene: CircuitScene) -> None:
+    seen: set[int] = set()
+    mapped_segments = 0
+    protected_road = scene.road_mask.buffer(.3)
+    for dataset in scene.osm:
+        for element in dataset.elements:
+            if element.id in seen or element.tags.get('barrier') != 'retaining_wall' or len(element.geometry) < 2:
+                continue
+            seen.add(element.id)
+            for a, b in pairwise(element.geometry):
+                ax, ay = scene.geo(a.lat, a.lon)
+                bx, by = scene.geo(b.lat, b.lon)
+                length = math.hypot(bx - ax, by - ay)
+                if length < .1:
+                    continue
+                nx, ny = -(by - ay) / length, (bx - ax) / length
+                steps = max(1, math.ceil(length / 3))
+                for i in range(steps):
+                    endpoints = []
+                    for fraction in (i / steps, (i + 1) / steps):
+                        x, y = ax + (bx - ax) * fraction, ay + (by - ay) * fraction
+                        low = min(scene.ground(x + nx * 1.5, y + ny * 1.5),
+                                  scene.ground(x - nx * 1.5, y - ny * 1.5))
+                        high = max(scene.ground(x + nx * 1.5, y + ny * 1.5),
+                                   scene.ground(x - nx * 1.5, y - ny * 1.5))
+                        endpoints.append(((x, y, low - .1), (x, y, high)))
+                    midpoint = ShapePoint((endpoints[0][0][0] + endpoints[1][0][0]) / 2,
+                                          (endpoints[0][0][1] + endpoints[1][0][1]) / 2)
+                    if protected_road.covers(midpoint) or max(high[2] - low[2] for low, high in endpoints) < .35:
+                        continue
+                    (la, ha), (lb, hb) = endpoints
+                    scene.quad('Building_MappedRetaining', 'Concrete', la, lb, hb, ha)
+                    scene.quad('Building_MappedRetaining', 'Concrete', lb, la, ha, hb)
+                    scene.beam('Building_MappedRetaining', 'Cream', ha, hb, .16, .12)
+                    mapped_segments += 1
+    support_segments = 0
+    for station in range(1200, 1290, 2):
+        upper_a, upper_b = scene.at(station), scene.at(station + 2)
+        tops, bottoms = [], []
+        for sample in (upper_a, upper_b):
+            lane = -sample.half_width - scene.kerb_margin(sample.station) - sample.right_shoulder
+            top = sample.point(lane, -.015)
+            outside = sample.point(lane - 1.8)
+            low = min(top[2] - .2, scene.raw_ground(outside[0], outside[1]) - .15)
+            tops.append(top)
+            bottoms.append((top[0], top[1], low))
+        scene.quad('Building_MirabeauRetaining', 'Concrete', bottoms[0], bottoms[1], tops[1], tops[0])
+        scene.quad('Building_MirabeauRetaining', 'Concrete', bottoms[1], bottoms[0], tops[0], tops[1])
+        scene.beam('Building_MirabeauRetaining', 'Cream', tops[0], tops[1], .12, .1)
+        support_segments += 1
+    scene.landmarks.append({'name': 'Mapped retaining walls and Mirabeau street foundations',
+                            'mapped_wall_segments': mapped_segments, 'street_support_segments': support_segments,
+                            'dimensions_status': 'Retained OSM retaining-wall alignments with heights derived from adjacent registered ground, not guessed walls across town. Mirabeau upper inside street edge at 1200–1290 m joins actual RGE ground beyond the corrected narrow corridor. Two-sided stone faces support the existing road elevation; no racing surface or native collision geometry is changed.'})
 
 
 def ordinary_city(scene: CircuitScene) -> None:
@@ -122,6 +182,8 @@ def ordinary_city(scene: CircuitScene) -> None:
         if building.osm_id in scene.modeled_buildings:
             continue
         if building.use in {'roof', 'bridge', 'grandstand'}:
+            continue
+        if building.tags.get('leisure') in {'park', 'garden'} or building.tags.get('location') == 'underground':
             continue
         polygon = Polygon(building.ring)
         if polygon.area < 8:

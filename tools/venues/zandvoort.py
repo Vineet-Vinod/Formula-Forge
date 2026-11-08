@@ -4,7 +4,9 @@ from __future__ import annotations
 import math
 
 from circuit_dataclasses import Point
+from circuit_mesh import cross, sub
 from circuit_scene import CircuitScene
+from shapely import constrained_delaunay_triangles
 from shapely.geometry import Point as ShapePoint
 from shapely.geometry import Polygon
 from shapely.ops import unary_union
@@ -106,12 +108,73 @@ def t10_gravel_pocket(scene: CircuitScene) -> None:
                             'dimensions_status': 'Continuous866.5/868s apex sequence and operatorT10 photographs establish grass lip, gravel and close wall. Original1m grass/3m gravel/15m end tapers estimated, not surveyed. Separate typed3.55m native right-shoulder correction plus.95margin brings wall to4.5m outside road; road and bank unchanged.'})
 
 
+def t10_infield_paint(scene: CircuitScene) -> None:
+    cells = []
+    for station in range(2480, 2590, 2):
+        a, b = scene.at(station), scene.at(station + 2)
+
+        def width(distance: float) -> float:
+            t = max(0.0, min(1.0, (distance - 2480) / 15, (2590 - distance) / 15))
+            return 2.05 + 10 * t * t * (3 - 2 * t)
+
+        cell = Polygon([
+            a.point(-a.half_width - 2.05)[:2],
+            b.point(-b.half_width - 2.05)[:2],
+            b.point(-b.half_width - width(b.station))[:2],
+            a.point(-a.half_width - width(a.station))[:2],
+        ])
+        if cell.is_valid and cell.area > 1e-8:
+            cells.append(cell)
+    island = unary_union(cells).difference(scene.road_mask.buffer(0.15))
+    if not isinstance(island, Polygon) or island.is_empty:
+        raise ValueError('T10 infield paint must remain a connected island')
+    first_surface = len(scene.surface_points)
+    scene.terrain_cutouts.append(island)
+    scene.polygon_surface(island, 'RunoffNavy', .001, paved=True, smooth_ground=True)
+    heading = scene.at(2560)
+    label_anchor = heading.point(-heading.half_width - 7)
+    center = ShapePoint(label_anchor[:2])
+    axis = heading.tx, heading.ty
+    across = -heading.ty, heading.tx
+    length, depth = 30.4, 3.8
+    rectangle = Polygon([
+        (center.x + axis[0] * u + across[0] * v,
+         center.y + axis[1] * u + across[1] * v)
+        for u, v in ((-length / 2, -depth / 2), (length / 2, -depth / 2),
+                     (length / 2, depth / 2), (-length / 2, depth / 2))
+    ])
+    for base_a, base_b, base_c in scene.surface_points[first_surface:]:
+        piece = rectangle.intersection(Polygon([base_a[:2], base_b[:2], base_c[:2]]))
+        denominator = (base_b[1] - base_c[1]) * (base_a[0] - base_c[0]) + (base_c[0] - base_b[0]) * (base_a[1] - base_c[1])
+        for triangle in constrained_delaunay_triangles(piece).geoms:
+            points: list[Point] = []
+            for x, y in list(triangle.exterior.coords)[:3]:
+                u = ((base_b[1] - base_c[1]) * (x - base_c[0]) + (base_c[0] - base_b[0]) * (y - base_c[1])) / denominator
+                v = ((base_c[1] - base_a[1]) * (x - base_c[0]) + (base_a[0] - base_c[0]) * (y - base_c[1])) / denominator
+                points.append((x, y, u * base_a[2] + v * base_b[2] + (1 - u - v) * base_c[2] + .005))
+            if cross(sub(points[1], points[0]), sub(points[2], points[0]))[2] < 0:
+                points.reverse()
+            uv = tuple(
+                (.5 + ((p[0] - center.x) * axis[0] + (p[1] - center.y) * axis[1]) / length,
+                 .5 - ((p[0] - center.x) * across[0] + (p[1] - center.y) * across[1]) / depth)
+                for p in points
+            )
+            scene.triangle('Tile_T10GroundLettering', 'GroundMSC', points[0], points[1], points[2], uv)
+    scene.landmarks.append({'name': 'T10 inside navy MSC paved advertising island',
+                            'start_m': 2480, 'end_m': 2590, 'side': -1,
+                            'area_m2': island.area, 'grass_rim_beyond_kerb_m': .81,
+                            'paint_lift_m': .005,
+                            'physical_contract': 'Visual-only island: no runoff range or extra_corridors registration; native shoulder, limits, drive surface and walls unchanged.',
+                            'registration': 'Supplied 866.5/868 s continuous T10 left turn-in/apex shows dark navy paving and large white MSC lettering inside the left kerb. Native 2490–2590 m inside kerb and road-local cells constrain the footprint; 2.05 m edge setback, 10 m maximum paved width and 15 m tapers are bounded estimates, not surveyed advertising dimensions. Existing original typeset MSC texture follows exact paved triangles, with no copied reference pixels.'})
+
+
 def circuit_edges(scene: CircuitScene) -> None:
     for start, end, side in [(340, 480, 1), (680, 770, 1), (805, 950, -1), (1670, 1795, 1), (2030, 2130, 1), (2230, 2340, 1), (2490, 2590, -1), (3130, 3210, 1), (3220, 3290, -1), (3500, 3610, 1), (3720, 3940, 1)]:
         scene.kerb(start, end, side, material='RunoffOrange' if start in (340, 805) else 'Red', alternate_material='White')
     for start, end, side, width, material in [(290, 510, -1, 24, 'Gravel'), (780, 995, 1, 20, 'Gravel'), (1630, 1840, -1, 24, 'Gravel'), (1990, 2170, -1, 22, 'Gravel'), (2190, 2380, -1, 20, 'Gravel'), (3080, 3320, -1, 18, 'Gravel'), (3460, 3650, -1, 20, 'Gravel')]:
         scene.runoff(start, end, side, width, material)
     t10_gravel_pocket(scene)
+    t10_infield_paint(scene)
 
     for start, end, side in [(290, 510, -1), (3080, 3320, -1)]:
         apron_band(scene, start, end, side, 1.2, 3.1, 'RunoffGreen')

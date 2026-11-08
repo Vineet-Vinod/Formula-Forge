@@ -1,0 +1,586 @@
+{
+  "review": "Independent T10 left infield material/pose check,2026-11-08",
+  "status": "Source frozen for next root batch; fresh matched inside-apex packaged capture required, no visual approval.",
+  "source_evidence": [
+    {
+      "video": "Saved/Refs/zandvoort.mp4",
+      "time_s": 866.5,
+      "lap_timer_s": 41.053,
+      "observation": "Continuous T10left turn-in. Outside-right yellow wall/dune; inner paved patch begins on left."
+    },
+    {
+      "video": "Saved/Refs/zandvoort.mp4",
+      "time_s": 868,
+      "lap_timer_s": 42.533,
+      "observation": "T10inside-left apex: dark NAVY paved field beyond pale kerb and narrow grassrim, large white MSC lettering/markings. Flat-boundary/text proves colored paving rather than shadow."
+    }
+  ],
+  "native_registration": {
+    "inside_kerb_m": [
+      2490,
+      2590
+    ],
+    "paved_cells_m": [
+      2480,
+      2590
+    ],
+    "side": -1,
+    "road_edge_offset_m": 2.05,
+    "grass_rim_after_existing_kerb_m": 0.81,
+    "max_paved_width_m": 10,
+    "taper_m": 15,
+    "label_anchor_station_m": 2560,
+    "label_anchor_road_edge_offset_m": 7,
+    "label_projection_rectangle_m": [
+      30.4,
+      3.8
+    ],
+    "uncertainty": "Station association uses continuous corner/minimap/kerb identity, not elapsed-time interpolation. Patch depth/endpoints and label size/orientation are bounded reference reconstructions, not surveyed advertising dimensions."
+  },
+  "visual_contract": "Ground-following navy pavement replaces terrain/vergeGrass only inside retained sourceXYpolygon. Private GroundMSC repeats the existing original MSC CRUISES typesetting/pixels, with projected UVs and roughness0.7 matching the base. Lettering follows exact paved triangles at+5mm; full glyph bounds stay on paving. No copied reference pixels or freestanding label background.",
+  "palette_change": "Only additive RunoffNavy key (.005182,.010960,.045186 linear RGB), matching original PanelNavy sRGB16/27/60 background. Every existing palette value/material branch remains unchanged; other17rendered venues are unaffected by unused new key.",
+  "physical_contract": "No extra_corridors or runoff surface_ranges added. Existing physical limits/collision/shoulder/drive_surface remain byte-identical. Paving changes visible island appearance only and adds no drivable area.",
+  "terrain_exclusion": "Island included in terrain_cutouts before terrain(); focused actual terrain/verge test proves no Grass triangles overlap the paving. Native-road counter proves finite geometry and exact+5mm paint interpolation.",
+  "pose_warning": "Current runtime2460/2500/2540 car uses outside+3.6\u20133.9m lane; source868 is close to inside apex. Exact recorded-camera projection puts label off-left at those outside poses. Comparison at2540lane\u22124 with unchangedFOV/yaw puts glyph bounds roughlyx\u2212129..285,y459..521. This is projection evidence, not a rendered acceptance; do not move advertising solely to catch another lane.",
+  "source_geometry_proof": {
+    "triangle_counts": {
+      "RunoffNavy": 113,
+      "GroundMSC": 72
+    },
+    "paved_area_m2": 675.4949757849515,
+    "advertisement_area_m2": 112.41086054904066,
+    "advertisement_rectangle_area_m2": 115.52,
+    "advertisement_covered_fraction": 0.9730857041987593,
+    "paved_road_overlap_m2": 0.0,
+    "advertisement_outside_paving_m2": 1.0242469766385027e-13,
+    "max_paint_lift_error_m": 8.331009493378616e-15,
+    "extra_corridors_added": 0,
+    "runoff_ranges_added": 0,
+    "native_profile_unchanged": true,
+    "native_profile_sha256": "599b43d0fa04cf56a5db10376e7793e6b9bec0f3b966d07e4a59898f5fa1da03",
+    "physical_files_byte_identical": true,
+    "physical_file_sha256": {
+      "/home/darksca/Vineet/Code/C_C++/Formula Forge/Content/Generated/Zandvoort/Data/track_limits.bin": "9fa9bc324020126ef56539edc884856d69b327eb72bc96a745d170c1e5f8e0ce",
+      "/home/darksca/Vineet/Code/C_C++/Formula Forge/Content/Generated/Zandvoort/Data/drive_surface.bin": "f9ff420aa8714464c4b35ce122b628ceba983e79454108c35d44c0a3787fa0be",
+      "Source/FormulaForge/Native/track_data/zandvoort_survey.inc": "599b43d0fa04cf56a5db10376e7793e6b9bec0f3b966d07e4a59898f5fa1da03"
+    },
+    "island_source_xy": [
+      [
+        679.8605240497883,
+        -173.7401734436533
+      ],
+      [
+        678.0420553581243,
+        -174.92674156441853
+      ],
+      [
+        676.7267635732236,
+        -175.75756518179955
+      ],
+      [
+        675.4459241849934,
+        -176.43015308429494
+      ],
+      [
+        676.4825589437135,
+        -175.33746030868718
+      ],
+      [
+        677.0782825129428,
+        -173.46116394442384
+      ],
+      [
+        677.9895528854076,
+        -170.75858546037057
+      ],
+      [
+        678.7094261697471,
+        -168.00590182979377
+      ],
+      [
+        677.6959229559268,
+        -166.4175124594182
+      ],
+      [
+        676.8307972346931,
+        -165.07228633747602
+      ],
+      [
+        677.9743620603687,
+        -162.63488130666337
+      ],
+      [
+        679.4469682054927,
+        -161.09530343629817
+      ],
+      [
+        679.5507061199111,
+        -160.93372510878825
+      ],
+      [
+        680.9582937496532,
+        -158.91876591300377
+      ],
+      [
+        682.2216872714914,
+        -157.22925373999936
+      ],
+      [
+        682.3856676483333,
+        -157.0142346214889
+      ],
+      [
+        682.6342747939168,
+        -156.51926420824617
+      ],
+      [
+        683.7232712440133,
+        -154.34587743078902
+      ],
+      [
+        684.7301287222781,
+        -152.4911851852764
+      ],
+      [
+        684.7421081843678,
+        -152.49757304114488
+      ],
+      [
+        684.8147921050548,
+        -152.2232645346494
+      ],
+      [
+        685.5077347343422,
+        -149.88735982198168
+      ],
+      [
+        686.1817768556359,
+        -147.86520467689022
+      ],
+      [
+        686.2292621085991,
+        -147.76305459413948
+      ],
+      [
+        686.2780266890111,
+        -147.34027630088988
+      ],
+      [
+        686.5854363298495,
+        -144.94655428644418
+      ],
+      [
+        686.9229062913138,
+        -142.85054640613862
+      ],
+      [
+        686.9541921788493,
+        -142.72510974499016
+      ],
+      [
+        686.9357583969069,
+        -142.3163642922008
+      ],
+      [
+        686.8511081347157,
+        -139.8962868982809
+      ],
+      [
+        686.8504463165011,
+        -137.75445709189475
+      ],
+      [
+        686.8504509597334,
+        -137.75445705799507
+      ],
+      [
+        686.8134665252766,
+        -137.62242785855443
+      ],
+      [
+        686.2878731277841,
+        -135.24186094293222
+      ],
+      [
+        685.9106369422153,
+        -133.18866588531492
+      ],
+      [
+        685.8892947077744,
+        -133.15318523846645
+      ],
+      [
+        684.9241844979512,
+        -130.91440314593348
+      ],
+      [
+        684.1446524789457,
+        -128.93148560000708
+      ],
+      [
+        683.9982911495069,
+        -128.56937636605667
+      ],
+      [
+        683.6885709748927,
+        -128.04885713502358
+      ],
+      [
+        682.4793068666133,
+        -126.04981958319208
+      ],
+      [
+        681.4242111647654,
+        -124.18087431058692
+      ],
+      [
+        681.3781188338087,
+        -124.07432917483425
+      ],
+      [
+        681.1288754612796,
+        -123.79428625344764
+      ],
+      [
+        679.5827083049552,
+        -122.00002460909691
+      ],
+      [
+        678.2389859954222,
+        -120.34020493283998
+      ],
+      [
+        678.0949182880955,
+        -120.1537220151285
+      ],
+      [
+        677.7615596619164,
+        -119.87359356356734
+      ],
+      [
+        675.9632566290986,
+        -118.35168273691357
+      ],
+      [
+        674.4566447377636,
+        -116.82175924661676
+      ],
+      [
+        674.8664988476025,
+        -115.95869282191781
+      ],
+      [
+        675.2465566269149,
+        -114.3766780295055
+      ],
+      [
+        674.2797198985706,
+        -111.57635341372485
+      ],
+      [
+        673.5561493589028,
+        -108.75905112901742
+      ],
+      [
+        673.7150899222183,
+        -106.80270034269186
+      ],
+      [
+        673.1994680787523,
+        -105.22862708437012
+      ],
+      [
+        671.3376359337715,
+        -104.01484421108056
+      ],
+      [
+        673.36878625451,
+        -104.7731544058865
+      ],
+      [
+        674.4853215089964,
+        -105.22678182954844
+      ],
+      [
+        675.4417109008557,
+        -105.78666863823533
+      ],
+      [
+        677.1841686161135,
+        -106.9066606992401
+      ],
+      [
+        679.0358760373069,
+        -108.01187301243394
+      ],
+      [
+        680.1176122024134,
+        -108.69870600822956
+      ],
+      [
+        681.0256699672464,
+        -109.45182084567121
+      ],
+      [
+        682.5578541447613,
+        -110.8342840108637
+      ],
+      [
+        684.2066023477195,
+        -112.2275864501665
+      ],
+      [
+        685.1777411372813,
+        -113.09442881488151
+      ],
+      [
+        685.977021328713,
+        -114.00594813501881
+      ],
+      [
+        687.2729098498272,
+        -115.60777929158539
+      ],
+      [
+        688.6869688532637,
+        -117.2463687006644
+      ],
+      [
+        689.4943943569549,
+        -118.23257672951634
+      ],
+      [
+        690.1052446452768,
+        -119.21703933042886
+      ],
+      [
+        691.1198780947044,
+        -121.01588187476874
+      ],
+      [
+        692.2337953890788,
+        -122.85471238240068
+      ],
+      [
+        692.918837371163,
+        -124.05010041660434
+      ],
+      [
+        693.4321782538789,
+        -125.22448344463264
+      ],
+      [
+        694.1846085651181,
+        -127.14020838463202
+      ],
+      [
+        695.0554252838058,
+        -129.1554295852102
+      ],
+      [
+        695.4889655170135,
+        -130.23900223250982
+      ],
+      [
+        687.2116158940994,
+        -132.87109134910952
+      ],
+      [
+        695.7214815280486,
+        -131.2493218062475
+      ],
+      [
+        696.0945472228915,
+        -133.28504128022698
+      ],
+      [
+        696.569760947432,
+        -135.42818102917974
+      ],
+      [
+        696.8005926468444,
+        -136.61736506260522
+      ],
+      [
+        687.6772190475803,
+        -137.7484209249245
+      ],
+      [
+        696.8501798130461,
+        -137.68145025606867
+      ],
+      [
+        696.8499584913333,
+        -139.74465726407914
+      ],
+      [
+        696.9283369075365,
+        -141.93116991412535
+      ],
+      [
+        696.9418820302614,
+        -143.2211454614474
+      ],
+      [
+        696.8056154292442,
+        -144.3776548158683
+      ],
+      [
+        696.4783134399056,
+        -146.4063427934982
+      ],
+      [
+        696.2017511946533,
+        -148.57303415875
+      ],
+      [
+        696.007846372976,
+        -149.85572986385478
+      ],
+      [
+        695.6882759937617,
+        -150.96786065795092
+      ],
+      [
+        695.0366141192961,
+        -152.9205854428347
+      ],
+      [
+        694.4142680505445,
+        -155.02506066784065
+      ],
+      [
+        694.030449823602,
+        -156.21301336086213
+      ],
+      [
+        684.9956816695002,
+        -152.63278703180393
+      ],
+      [
+        693.5540222445265,
+        -157.19638476744302
+      ],
+      [
+        692.5758001473488,
+        -158.99697751739325
+      ],
+      [
+        691.5953132495787,
+        -160.95770873264314
+      ],
+      [
+        690.9627722336045,
+        -162.15556489033173
+      ],
+      [
+        690.2675190582721,
+        -163.167653428369
+      ],
+      [
+        689.0400299121128,
+        -164.80820906158692
+      ],
+      [
+        687.7793112262947,
+        -166.61615927058878
+      ],
+      [
+        687.0469500048002,
+        -167.61577360481505
+      ],
+      [
+        680.0731145293256,
+        -161.7560603352421
+      ],
+      [
+        686.3046200655348,
+        -168.3733280847342
+      ],
+      [
+        684.7948845403664,
+        -169.77270713804646
+      ],
+      [
+        683.2127927362478,
+        -171.36130322552265
+      ],
+      [
+        682.3883221513565,
+        -172.14909812919967
+      ],
+      [
+        681.6072810961826,
+        -172.67968929028896
+      ],
+      [
+        679.8605240497883,
+        -173.7401734436533
+      ]
+    ],
+    "memory": "VmHWM:\t   68228 kB",
+    "glyph_uv_bounds": [
+      0.29296875,
+      0.296875,
+      0.7099609375,
+      0.671875
+    ],
+    "glyph_bounds_fully_on_paving": true,
+    "projection": {
+      "2459.694580078125": {
+        "glyph_bbox_px": [
+          -443.2990293493838,
+          344.44898474456943,
+          -138.9158891108167,
+          355.7640539238905
+        ],
+        "recorded_frame": 2522,
+        "model": "Recorded unchanged camera transform/FOV; glyph bound projection only, no occlusion/rendered acceptance."
+      },
+      "2500.246826171875": {
+        "glyph_bbox_px": [
+          -301.73981171239507,
+          377.72110925680227,
+          -101.74018052993813,
+          384.4817959819275
+        ],
+        "recorded_frame": 2585,
+        "model": "Recorded unchanged camera transform/FOV; glyph bound projection only, no occlusion/rendered acceptance."
+      },
+      "2540.0908203125": {
+        "glyph_bbox_px": [
+          -883.6704789286514,
+          459.62711727626225,
+          -22.461703405407775,
+          524.5325995974895
+        ],
+        "recorded_frame": 2666,
+        "model": "Recorded unchanged camera transform/FOV; glyph bound projection only, no occlusion/rendered acceptance."
+      }
+    },
+    "inside_apex_pose_projection": {
+      "2500.246826171875": {
+        "hypothetical_lane_m": -4,
+        "actual_recorded_lane_m": 3.6779064851648666,
+        "glyph_bbox_px": [
+          -109.02728627075112,
+          378.5401786164361,
+          106.80384594994769,
+          385.2560652969811
+        ],
+        "meaning": "Same recorded camera/FOV/yaw translated to inside-apex vehicle lane for source-view comparison only; not a rendered capture or measured source synchronization."
+      },
+      "2540.0908203125": {
+        "hypothetical_lane_m": -4,
+        "actual_recorded_lane_m": 3.9148294785443474,
+        "glyph_bbox_px": [
+          -129.21524723955554,
+          459.3653094680784,
+          285.1483662138455,
+          520.6868537702182
+        ],
+        "meaning": "Same recorded camera/FOV/yaw translated to inside-apex vehicle lane for source-view comparison only; not a rendered capture or measured source synchronization."
+      }
+    }
+  }
+}

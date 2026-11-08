@@ -22,10 +22,11 @@
       "end_m": 1750,
       "name": "T3\u2013T5 park corners",
       "reference_times_s": [
-        400.4,
-        512.52
+        332,
+        334,
+        335
       ],
-      "observed_environment": "Parkland slow corners with low pavilion/service roofs, temporary spectator banks and trees. Green painted apex margins and yellow/green segmented kerbs; no continuous gravel belt.",
+      "observed_environment": "Direct T3 sequence: tree-lined braking approach, right yellow/green kerb with red inner apex lip, black Pirelli/yellow-lettering infield and opposing park spectator bank. T4/T5 context requires separate pose registration.",
       "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
     },
     {
@@ -507,5 +508,11 @@
       "build/reviews/australia/reference/overview-05.jpg"
     ],
     "source_check": "413 avenue trees;39 roots ahead of950m in approximate150m cockpit view cone. Source count/clearance proof in ignored review artifact, not a rendered fidelity approval."
+  },
+  "t3_edge_and_infield_correction": {
+    "review": "t3-edge-review.json",
+    "profile": "edge-corrections.json",
+    "status": "Source frozen; fresh packaged moving T3comparison pending.",
+    "physical_change": false
   }
 }
