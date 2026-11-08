@@ -1,0 +1,12 @@
+{
+  "provider": "OpenStreetMap contributors via official Nominatim",
+  "query_url": "https://nominatim.openstreetmap.org/search?q=Albert+Park+Lake+Melbourne&format=jsonv2&polygon_geojson=1&limit=1",
+  "retrieved": "2026-11-08",
+  "file": "water-rings.lonlat.json",
+  "licence": "ODbL1.0",
+  "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "sha256": "63113ec38aea53d46c2ce990c9a5818f5fe6b51571d1e4125f657ade4133a354",
+  "method": "All returned lake exterior/interior rings retained as longitude/latitude coordinate arrays. Original OSM relation identity preserved; no synthetic OSM ways or source member IDs invented.",
+  "osm_type": "relation",
+  "osm_id": 346429
+}

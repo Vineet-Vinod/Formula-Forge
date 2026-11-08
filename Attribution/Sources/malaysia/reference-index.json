@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+  "circuit": "malaysia",
+  "reference": "Saved/Refs/malaysia.mp4",
+  "reference_pixels_shipped": false,
+  "appearance": "Dry bright daylight; tropical haze and blue sky.",
+  "layout_year": "Modern mod/game clip; opening menu incorrectly says French GP, driving geometry is Sepang. Exact event year uncertain.",
+  "native_station_frame": {
+    "length_m": 5543,
+    "origin": {
+      "latitude": 2.7606897977012514,
+      "longitude": 101.73746867379471,
+      "meaning": "Local source origin at the point on the loop nearest the venue coordinate, after rotation to the start."
+    },
+    "approximate_start_finish_station_m": 0,
+    "start_finish_uncertainty_m": 75,
+    "side_convention": "Driver left/right in forward lap direction; geographic footprints retain source east/north coordinates."
+  },
+  "review": {
+    "overview_seconds": [
+      14.23,
+      71.13,
+      128.04,
+      184.94,
+      241.85,
+      298.75,
+      355.66,
+      412.56,
+      469.47,
+      526.37,
+      583.27,
+      640.18,
+      697.08,
+      753.99,
+      810.89,
+      867.8
+    ],
+    "detail_seconds": [
+      106,
+      110,
+      114,
+      118,
+      122,
+      126,
+      130,
+      134,
+      138,
+      142,
+      146,
+      150,
+      154,
+      158,
+      162,
+      166,
+      170,
+      174,
+      178,
+      182,
+      186,
+      190,
+      194,
+      198,
+      202,
+      206,
+      210
+    ],
+    "method": "Viewed every frame of overview and detail contact sheets. Sparse review of edited gameplay; rear cameras, menus and cuts are excluded as metric geometry evidence.",
+    "whole_lap_sector_inventory": true,
+    "continuous_full_video_review": false,
+    "runtime_comparison_completed": false
+  },
+  "sectors": [
+    {
+      "id": "malaysia-01",
+      "native_station_m": [
+        0,
+        700
+      ],
+      "name": "Pit straight, T1–2",
+      "reviewed_video_seconds": [
+        128.04,
+        106,
+        110,
+        114,
+        118,
+        122,
+        126,
+        130,
+        134,
+        138,
+        142
+      ],
+      "observed": "Central scalloped-roof mainstand left, layered white pit building right. Broad slow opening right then left, wide grass and large tan gravel/paved outer escape, red-white kerbs and thin green edge.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "malaysia-02",
+      "native_station_m": [
+        700,
+        1500
+      ],
+      "name": "T3 curve and T4 braking",
+      "reviewed_video_seconds": [
+        146,
+        150,
+        154,
+        158,
+        162
+      ],
+      "observed": "Wide flowing right acceleration past oil palms, banks and spectators; large straight-ahead paved/gravel escape at tight rightT4. Red-white inside strip, light grass outside. Braking boards150/100/50 visible on approach.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "malaysia-03",
+      "native_station_m": [
+        1500,
+        2250
+      ],
+      "name": "T5–6 fast direction change",
+      "reviewed_video_seconds": [
+        166,
+        170,
+        241.85,
+        298.75
+      ],
+      "observed": "Broad grass infield, gentle slope, red-white kerbs and green outer strip. Plantation palm rows/irregular broadleaf patches behind barriers; open sky above low hills.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "malaysia-04",
+      "native_station_m": [
+        2250,
+        2900
+      ],
+      "name": "T7–8 double right and short straight",
+      "reviewed_video_seconds": [
+        174,
+        178,
+        355.66
+      ],
+      "observed": "F stand near native2418 left, curving crowd terraces and tall lighting masts. Very wide asphalt and grass runoffs, gravel beyond outer exit; do not line full outside with close city walls.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "malaysia-05",
+      "native_station_m": [
+        2900,
+        3550
+      ],
+      "name": "T9 hairpin and climb",
+      "reviewed_video_seconds": [
+        182,
+        186,
+        469.47
+      ],
+      "observed": "Slow left corner with distinct broad gravel escape and grassy central island, canopy stand visible in background. Oil palms and low wooded rises; barrier behindescape. Narrow red-white apex strip.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "malaysia-06",
+      "native_station_m": [
+        3550,
+        4250
+      ],
+      "name": "T10–11 technical hill section",
+      "reviewed_video_seconds": [
+        190,
+        194,
+        526.37
+      ],
+      "observed": "Rolling grass verges and off-camber sightlines into linked corners, broad tan gravel outside with green painted edge. Palm plantations and occasional light poles on hill above Armco.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "malaysia-07",
+      "native_station_m": [
+        4250,
+        5000
+      ],
+      "name": "T12–14 return to back straight",
+      "reviewed_video_seconds": [
+        198,
+        202,
+        810.89
+      ],
+      "observed": "Fast direction changes across broad grass, light gravel escape, isolated stand roof and dense palm band. South paddock building right near4520; keep secondary structures low and distant.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "malaysia-08",
+      "native_station_m": [
+        5000,
+        5543
+      ],
+      "name": "Back straight and final T15 hairpin",
+      "reviewed_video_seconds": [
+        206,
+        210,
+        583.27,
+        867.8
+      ],
+      "observed": "Central mainstand presents opposite face and repeated curved shells, very broad final lefthairpin around grass island. Long straight approaches and return to pit, red-white kerbs with green exit apron and gravel beyond.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    }
+  ],
+  "primary_sources": [
+    {
+      "title": "Sepang circuit operator architecture",
+      "url": "https://www.sepangcircuit.com/architecture",
+      "supports": "5.543 km;16–22m track width;1.3km double-frontage main grandstand;33garages8x24m, layered pit hospitality."
+    }
+  ],
+  "uncertainties": [
+    "Original 12 m corner width conflicts with operator minimum16m; broad track is essential to look and driving line.",
+    "GLO-90profile21mrelief is not a survey; no authoritative elevation series verified. Preserve visible hills and banked sightlines without flattening."
+  ]
+}

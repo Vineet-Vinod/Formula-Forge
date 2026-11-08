@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "circuit": "portimao",
+  "reference_file": "Saved/Refs/portugal.mp4",
+  "reference_sha256": "7135e58931b4ec979eb87d4f59180fe8da4e241607f694445af9a37fbb094973",
+  "layout_observed": "Legacy 2021 Portuguese Grand Prix 4.653km/15-corner layout in a newer-game mod; not a claim of a real2026event. Native station0 is final Galp corner, not start/finish.",
+  "lighting_weather_observed": "Sunny daytime with dry blue sky and dry ochre grass.",
+  "review_scope": "16 sparse overview frames viewed by author. Clip is an edited career/race montage, includes menus/cuts and changing conditions; not a continuous lap. Unviewed timestamps are not evidence.",
+  "frame_index_file": "build/reviews/portimao/reference/overview-index.json",
+  "reviewed_visual_evidence": [
+    {
+      "time_s": 173.63,
+      "reviewed": true,
+      "notes": "Galp exit, pits and long straight: Long white/gray garage bar and faceted blade-like main-grandstand roof. Distinct stacked-disc rounded glazed control/VIP tower at pit end, broad green margins and steep descending/cresting straight."
+    },
+    {
+      "time_s": 615.3,
+      "reviewed": true,
+      "notes": "Galp exit, pits and long straight: Long white/gray garage bar and faceted blade-like main-grandstand roof. Distinct stacked-disc rounded glazed control/VIP tower at pit end, broad green margins and steep descending/cresting straight."
+    },
+    {
+      "time_s": 670.51,
+      "reviewed": true,
+      "notes": "Galp exit, pits and long straight: Long white/gray garage bar and faceted blade-like main-grandstand roof. Distinct stacked-disc rounded glazed control/VIP tower at pit end, broad green margins and steep descending/cresting straight."
+    },
+    {
+      "time_s": 725.72,
+      "reviewed": true,
+      "notes": "Galp exit, pits and long straight: Long white/gray garage bar and faceted blade-like main-grandstand roof. Distinct stacked-disc rounded glazed control/VIP tower at pit end, broad green margins and steep descending/cresting straight."
+    },
+    {
+      "time_s": 228.84,
+      "reviewed": true,
+      "notes": "Opening corners and Lagos: Broad descending turns with pale gravel escape and green aprons; low covered stand and dry grassy banks. Roofs visible across lower terrain, not dense forest."
+    },
+    {
+      "time_s": 339.26,
+      "reviewed": true,
+      "notes": "Opening corners and Lagos: Broad descending turns with pale gravel escape and green aprons; low covered stand and dry grassy banks. Roofs visible across lower terrain, not dense forest."
+    },
+    {
+      "time_s": 394.46,
+      "reviewed": true,
+      "notes": "Torre VIP uphill hairpin: Strong elevation break into slow corner, concentric grass banks, sparse olive-like trees and small seating sections. Red/white kerbs, local raised orange apex element."
+    },
+    {
+      "time_s": 449.67,
+      "reviewed": true,
+      "notes": "Torre VIP uphill hairpin: Strong elevation break into slow corner, concentric grass banks, sparse olive-like trees and small seating sections. Red/white kerbs, local raised orange apex element."
+    },
+    {
+      "time_s": 284.05,
+      "reviewed": true,
+      "notes": "Samsung middle corners: Rolling road over blind crests, pale gravel on outside, wide green paved margins where visible and patchy dry grass. Keep low scrub and long hillside sightlines."
+    },
+    {
+      "time_s": 504.88,
+      "reviewed": true,
+      "notes": "Samsung middle corners: Rolling road over blind crests, pale gravel on outside, wide green paved margins where visible and patchy dry grass. Keep low scrub and long hillside sightlines."
+    },
+    {
+      "time_s": 560.09,
+      "reviewed": true,
+      "notes": "Craig Jones and Portim\u00e3o: Blind uphill and descending linked turns among open grassy hills, scattered broadleaf/olive-like trees and limited temporary stands. Raised orange/white-red apex elements are local, not continuous."
+    }
+  ],
+  "registration": {
+    "coordinate_system": "Provenance local tangent plane x east, y north; route uniform_scale applied.",
+    "station_origin": "Retained native Centerline first point; not assumed start/finish.",
+    "route_length_m": 4653,
+    "method": "Named OSM raceway ways projected to nearest retained centerline sample; other corners matched by route shape and official circuit map. Sector boundaries approximate, not surveyed kerb endpoints. Video time is never treated as station.",
+    "named_way_controls": [
+      {
+        "osm_id": 157790380,
+        "name": "Pit Lane",
+        "station_mid_m": 207.69,
+        "station_min_m": 91.86,
+        "station_max_m": 4637.02,
+        "maximum_projection_distance_m": 26.68
+      },
+      {
+        "osm_id": 363133187,
+        "name": "Curva da Torre Vip",
+        "station_mid_m": 2332.49,
+        "station_min_m": 2300.54,
+        "station_max_m": 2356.45,
+        "maximum_projection_distance_m": 1.94
+      },
+      {
+        "osm_id": 363133193,
+        "name": "Curva Portim\u00e3o",
+        "station_mid_m": 3602.58,
+        "station_min_m": 3506.72,
+        "station_max_m": 3650.51,
+        "maximum_projection_distance_m": 2.04
+      },
+      {
+        "osm_id": 363133195,
+        "name": "Curva Galp",
+        "station_mid_m": 119.82,
+        "station_min_m": 7.99,
+        "station_max_m": 4645.01,
+        "maximum_projection_distance_m": 37.26
+      },
+      {
+        "osm_id": 363133196,
+        "name": "Curva Sagres",
+        "station_mid_m": 4337.47,
+        "station_min_m": 4241.62,
+        "station_max_m": 4437.32,
+        "maximum_projection_distance_m": 1.99
+      },
+      {
+        "osm_id": 363133199,
+        "name": "Aut\u00f3dromo Internacional do Algarve",
+        "station_mid_m": 251.62,
+        "station_min_m": 167.75,
+        "station_max_m": 1154.26,
+        "maximum_projection_distance_m": 1.83
+      },
+      {
+        "osm_id": 511858150,
+        "name": "Curva Lagos",
+        "station_mid_m": 1601.59,
+        "station_min_m": 1573.63,
+        "station_max_m": 1633.54,
+        "maximum_projection_distance_m": 1.85
+      },
+      {
+        "osm_id": 511858543,
+        "name": "Curva Samsung",
+        "station_mid_m": 2951.56,
+        "station_min_m": 2915.61,
+        "station_max_m": 2979.52,
+        "maximum_projection_distance_m": 1.98
+      },
+      {
+        "osm_id": 511859290,
+        "name": "Curva Craig Jones",
+        "station_mid_m": 3326.99,
+        "station_min_m": 3271.08,
+        "station_max_m": 3370.93,
+        "maximum_projection_distance_m": 1.83
+      },
+      {
+        "osm_id": 511859459,
+        "name": "Enter Pit Line",
+        "station_mid_m": 423.36,
+        "station_min_m": 287.57,
+        "station_max_m": 423.36,
+        "maximum_projection_distance_m": 15.97
+      }
+    ],
+    "landmark_corrections": [
+      {
+        "landmark": "Rounded TorreVIP",
+        "osm_id": 157736297,
+        "nearest_station_m": 2572,
+        "side": -1,
+        "reference_times_s": [
+          173.63,
+          615.3
+        ],
+        "method": "Mapped curved footprint gives correct parallel-road registration; initial sparse-frame pit-tower interpretation rejected."
+      }
+    ]
+  },
+  "primary_sources": [
+    {
+      "url": "https://ricardopina-arquitetos.com/projetos/servicos-e-equipamentos/autodromo-internacional-do-algarve.html",
+      "use": "Official layout/venue architecture; source year can differ from video."
+    }
+  ],
+  "uncertainties": [
+    "Exact filming lap/year is not established unless visible title/HUD identifies it.",
+    "Overview observations establish visual vocabulary; every individual asset position requires footprint/map registration.",
+    "No high-resolution raster or orthophoto added by this reference review."
+  ]
+}

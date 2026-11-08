@@ -1,0 +1,331 @@
+{
+  "schema_version": 1,
+  "circuit": "cota",
+  "reference_file": "Saved/Refs/cota.mp4",
+  "reference_sha256": "652fe69ef8bccd57e3f0cf9b1b40c482d66d8cd56014c9429345e07120f8b7a7",
+  "layout_observed": "Circuit of the Americas 5.513km/20-corner Grand Prix layout.",
+  "lighting_weather_observed": "Bright daytime with scattered clouds; some qualifying shots warmer/overcast.",
+  "review_scope": "16 sparse overview frames viewed by author. Clip is an edited career/race montage, includes menus/cuts and changing conditions; not a continuous lap. Unviewed timestamps are not evidence.",
+  "frame_index_file": "build/reviews/cota/reference/overview-index.json",
+  "reviewed_visual_evidence": [
+    {
+      "time_s": 535.45,
+      "reviewed": true,
+      "notes": "Main straight, uphill T1 and T2: Long main-stand/pit complex, steep uphill blind T1 crest, spectator hill and low broadleaf trees. Wide asphalt/painted runoff and US flag geometry; opening hill must be real mesh relief."
+    },
+    {
+      "time_s": 836.85,
+      "reviewed": true,
+      "notes": "Main straight, uphill T1 and T2: Long main-stand/pit complex, steep uphill blind T1 crest, spectator hill and low broadleaf trees. Wide asphalt/painted runoff and US flag geometry; opening hill must be real mesh relief."
+    },
+    {
+      "time_s": 309.4,
+      "reviewed": true,
+      "notes": "T3\u2013T10 esses: Rolling linked esses through grassy banks and sparse broadleaf woodland. Spectators on crests, open horizon, red/white kerbs and red/white/blue geometric runoff only on actual outside aprons."
+    },
+    {
+      "time_s": 987.55,
+      "reviewed": true,
+      "notes": "T3\u2013T10 esses: Rolling linked esses through grassy banks and sparse broadleaf woodland. Spectators on crests, open horizon, red/white kerbs and red/white/blue geometric runoff only on actual outside aprons."
+    },
+    {
+      "time_s": 384.75,
+      "reviewed": true,
+      "notes": "T11 hairpin: Broad slow hairpin with large red/white apex treatment, outside paved escape, broad grass and low tree line; no close urban wall."
+    },
+    {
+      "time_s": 460.1,
+      "reviewed": true,
+      "notes": "Back straight to T12: Long cresting straight, wide grass verges, square timing/advertising structures and large braking-zone apron. Stand mass beyond T12; sparse low service buildings."
+    },
+    {
+      "time_s": 610.8,
+      "reviewed": true,
+      "notes": "Back straight to T12: Long cresting straight, wide grass verges, square timing/advertising structures and large braking-zone apron. Stand mass beyond T12; sparse low service buildings."
+    },
+    {
+      "time_s": 158.7,
+      "reviewed": true,
+      "notes": "T13\u2013T15 stadium: Low bowl grandstands and broad coloured paved aprons. Red tubular observation-tower spine/curved cantilever crown rises beyond T16\u201318 and amphitheatre, not arbitrary roadside position."
+    },
+    {
+      "time_s": 686.15,
+      "reviewed": true,
+      "notes": "T13\u2013T15 stadium: Low bowl grandstands and broad coloured paved aprons. Red tubular observation-tower spine/curved cantilever crown rises beyond T16\u201318 and amphitheatre, not arbitrary roadside position."
+    },
+    {
+      "time_s": 761.5,
+      "reviewed": true,
+      "notes": "T16\u2013T18 triple right: Distinctive broad red/white/blue runoff, low trees and temporary bleachers, steel advertising bridges. Tower and amphitheatre compound dominate infield skyline."
+    },
+    {
+      "time_s": 83.35,
+      "reviewed": true,
+      "notes": "T19, T20 and pit return: Wide final painted aprons, grass islands, multi-tier main-straight roof and long white pit bar; catch fences and viewing decks, distant observation wheel."
+    },
+    {
+      "time_s": 912.2,
+      "reviewed": true,
+      "notes": "T19, T20 and pit return: Wide final painted aprons, grass islands, multi-tier main-straight roof and long white pit bar; catch fences and viewing decks, distant observation wheel."
+    }
+  ],
+  "registration": {
+    "coordinate_system": "Provenance local tangent plane x east, y north; route uniform_scale applied.",
+    "station_origin": "Retained native Centerline first point; not assumed start/finish.",
+    "route_length_m": 5513,
+    "method": "Named OSM raceway ways projected to nearest retained centerline sample; other corners matched by route shape and official circuit map. Sector boundaries approximate, not surveyed kerb endpoints. Video time is never treated as station.",
+    "named_way_controls": [
+      {
+        "osm_id": 118256423,
+        "name": "Turn 19",
+        "station_mid_m": 4932.05,
+        "station_min_m": 4879.97,
+        "station_max_m": 4996.16,
+        "maximum_projection_distance_m": 1.98
+      },
+      {
+        "osm_id": 118258928,
+        "name": "Turn 15",
+        "station_mid_m": 4090.68,
+        "station_min_m": 4006.54,
+        "station_max_m": 4130.74,
+        "maximum_projection_distance_m": 1.99
+      },
+      {
+        "osm_id": 118258930,
+        "name": "Turn 6",
+        "station_mid_m": 1410.3,
+        "station_min_m": 1274.08,
+        "station_max_m": 1534.51,
+        "maximum_projection_distance_m": 1.95
+      },
+      {
+        "osm_id": 118258931,
+        "name": "Turn 9",
+        "station_mid_m": 1847.02,
+        "station_min_m": 1822.98,
+        "station_max_m": 1883.07,
+        "maximum_projection_distance_m": 1.92
+      },
+      {
+        "osm_id": 118258937,
+        "name": "Turn 17",
+        "station_mid_m": 4419.21,
+        "station_min_m": 4331.07,
+        "station_max_m": 4535.4,
+        "maximum_projection_distance_m": 1.87
+      },
+      {
+        "osm_id": 118258942,
+        "name": "Turn 12",
+        "station_mid_m": 3649.96,
+        "station_min_m": 3553.8,
+        "station_max_m": 3686.02,
+        "maximum_projection_distance_m": 1.89
+      },
+      {
+        "osm_id": 118258943,
+        "name": "Turn 13",
+        "station_mid_m": 3882.34,
+        "station_min_m": 3838.27,
+        "station_max_m": 3926.41,
+        "maximum_projection_distance_m": 2.0
+      },
+      {
+        "osm_id": 118258946,
+        "name": "Turn 10",
+        "station_mid_m": 2047.34,
+        "station_min_m": 2019.3,
+        "station_max_m": 2075.39,
+        "maximum_projection_distance_m": 1.74
+      },
+      {
+        "osm_id": 118258950,
+        "name": "Turn 1",
+        "station_mid_m": 516.84,
+        "station_min_m": 428.7,
+        "station_max_m": 580.95,
+        "maximum_projection_distance_m": 1.78
+      },
+      {
+        "osm_id": 118258951,
+        "name": "Turn 11",
+        "station_mid_m": 2456.01,
+        "station_min_m": 2343.83,
+        "station_max_m": 2512.1,
+        "maximum_projection_distance_m": 2.04
+      },
+      {
+        "osm_id": 118258952,
+        "name": "Turn 18",
+        "station_mid_m": 4627.55,
+        "station_min_m": 4535.4,
+        "station_max_m": 4723.71,
+        "maximum_projection_distance_m": 1.98
+      },
+      {
+        "osm_id": 118258956,
+        "name": "Turn 2",
+        "station_mid_m": 769.26,
+        "station_min_m": 681.11,
+        "station_max_m": 873.43,
+        "maximum_projection_distance_m": 1.98
+      },
+      {
+        "osm_id": 118258958,
+        "name": "Turn 7",
+        "station_mid_m": 1594.6,
+        "station_min_m": 1534.51,
+        "station_max_m": 1678.74,
+        "maximum_projection_distance_m": 1.86
+      },
+      {
+        "osm_id": 118258959,
+        "name": "Turn 20",
+        "station_mid_m": 5220.52,
+        "station_min_m": 5180.46,
+        "station_max_m": 5256.58,
+        "maximum_projection_distance_m": 1.99
+      },
+      {
+        "osm_id": 118258961,
+        "name": "Turn 14",
+        "station_mid_m": 3970.48,
+        "station_min_m": 3926.41,
+        "station_max_m": 4006.54,
+        "maximum_projection_distance_m": 1.82
+      },
+      {
+        "osm_id": 118258962,
+        "name": "Turn 8",
+        "station_mid_m": 1762.88,
+        "station_min_m": 1678.74,
+        "station_max_m": 1822.98,
+        "maximum_projection_distance_m": 1.96
+      },
+      {
+        "osm_id": 514758200,
+        "name": "Turn 3",
+        "station_mid_m": 1037.69,
+        "station_min_m": 873.43,
+        "station_max_m": 1085.77,
+        "maximum_projection_distance_m": 1.72
+      },
+      {
+        "osm_id": 514820041,
+        "name": "Turn 5",
+        "station_mid_m": 1221.99,
+        "station_min_m": 1169.91,
+        "station_max_m": 1274.08,
+        "maximum_projection_distance_m": 1.85
+      },
+      {
+        "osm_id": 514820043,
+        "name": "Turn 4",
+        "station_mid_m": 1129.84,
+        "station_min_m": 1085.77,
+        "station_max_m": 1169.91,
+        "maximum_projection_distance_m": 1.83
+      },
+      {
+        "osm_id": 514820045,
+        "name": "Short Course 1",
+        "station_mid_m": 3357.48,
+        "station_min_m": 1382.26,
+        "station_max_m": 3409.57,
+        "maximum_projection_distance_m": 78.28
+      },
+      {
+        "osm_id": 514836010,
+        "name": "Turn 16",
+        "station_mid_m": 4166.8,
+        "station_min_m": 4130.74,
+        "station_max_m": 4214.88,
+        "maximum_projection_distance_m": 1.95
+      },
+      {
+        "osm_id": 514836373,
+        "name": "Pit Lane",
+        "station_mid_m": 5300.65,
+        "station_min_m": 8.01,
+        "station_max_m": 5420.85,
+        "maximum_projection_distance_m": 30.77
+      },
+      {
+        "osm_id": 514845765,
+        "name": "Short Course 2",
+        "station_mid_m": 3289.37,
+        "station_min_m": 1498.45,
+        "station_max_m": 3289.37,
+        "maximum_projection_distance_m": 86.62
+      },
+      {
+        "osm_id": 1382286273,
+        "name": "MotoGP Long Lap Penalty",
+        "station_mid_m": 3910.38,
+        "station_min_m": 3854.29,
+        "station_max_m": 4006.54,
+        "maximum_projection_distance_m": 19.11
+      },
+      {
+        "osm_id": 1434351310,
+        "name": "NASCAR Short Course",
+        "station_mid_m": 1462.39,
+        "station_min_m": 1454.37,
+        "station_max_m": 1470.4,
+        "maximum_projection_distance_m": 32.29
+      },
+      {
+        "osm_id": 1571489344,
+        "name": "Short Course 2",
+        "station_mid_m": 3285.36,
+        "station_min_m": 3269.34,
+        "station_max_m": 3289.37,
+        "maximum_projection_distance_m": 16.49
+      },
+      {
+        "osm_id": 1571489345,
+        "name": "Short Course 2",
+        "station_mid_m": 1558.54,
+        "station_min_m": 1534.51,
+        "station_max_m": 1566.56,
+        "maximum_projection_distance_m": 9.42
+      },
+      {
+        "osm_id": 1571489346,
+        "name": "COTA Short Track",
+        "station_mid_m": 3297.38,
+        "station_min_m": 3289.37,
+        "station_max_m": 3305.4,
+        "maximum_projection_distance_m": 16.49
+      },
+      {
+        "osm_id": 1571489347,
+        "name": "COTA Short Track",
+        "station_mid_m": 1538.51,
+        "station_min_m": 1534.51,
+        "station_max_m": 1538.51,
+        "maximum_projection_distance_m": 9.42
+      }
+    ]
+  },
+  "primary_sources": [
+    {
+      "url": "https://circuitoftheamericas.com/blog/2024/2/20/all-about-the-cota-tower/",
+      "use": "Official layout/venue architecture; source year can differ from video."
+    },
+    {
+      "url": "https://circuitoftheamericas.com/ticket/grandstands-and-reserved-seating-f1/",
+      "use": "Official layout/venue architecture; source year can differ from video."
+    },
+    {
+      "url": "https://help.thecircuit.com/hc/en-us/articles/40009157954324-Grandstand-Seating",
+      "use": "Official layout/venue architecture; source year can differ from video."
+    }
+  ],
+  "uncertainties": [
+    "Exact filming lap/year is not established unless visible title/HUD identifies it.",
+    "Overview observations establish visual vocabulary; every individual asset position requires footprint/map registration.",
+    "No high-resolution raster or orthophoto added by this reference review."
+  ]
+}

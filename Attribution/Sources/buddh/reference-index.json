@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "circuit": "buddh",
+  "reference": "Saved/Refs/india.mp4",
+  "reference_pixels_shipped": false,
+  "appearance": "Dry clear daylight, slightly hazy horizon.",
+  "layout_year": "2013F1game; use2013F1layout/scenery, preservecurrentFerrarihandling/camera.",
+  "native_station_frame": {
+    "length_m": 5141,
+    "origin": {
+      "latitude": 28.348860104221142,
+      "longitude": 77.53319286379333,
+      "meaning": "Local source origin at the point on the loop nearest the venue coordinate, after rotation to the start."
+    },
+    "approximate_start_finish_station_m": 4870,
+    "start_finish_uncertainty_m": 75,
+    "side_convention": "Driver left/right in forward lap direction; geographic footprints retain source east/north coordinates."
+  },
+  "review": {
+    "overview_seconds": [
+      5.4,
+      26.99,
+      48.58,
+      70.17,
+      91.76,
+      113.36,
+      134.95,
+      156.54,
+      178.13,
+      199.72,
+      221.31,
+      242.91,
+      264.5,
+      286.09,
+      307.68,
+      329.27
+    ],
+    "detail_seconds": [
+      113,
+      117,
+      121,
+      125,
+      129,
+      133,
+      137,
+      141,
+      145,
+      149,
+      153,
+      157,
+      161,
+      165,
+      169,
+      173,
+      177,
+      181,
+      185,
+      189,
+      193,
+      197,
+      201,
+      205
+    ],
+    "method": "Viewed every frame of overview and detail contact sheets. Sparse review of edited gameplay; rear cameras, menus and cuts are excluded as metric geometry evidence.",
+    "whole_lap_sector_inventory": true,
+    "continuous_full_video_review": false,
+    "runtime_comparison_completed": false
+  },
+  "sectors": [
+    {
+      "id": "buddh-01",
+      "native_station_m": [
+        0,
+        400
+      ],
+      "name": "T1exit andT2curve",
+      "reviewed_video_seconds": [
+        125,
+        129
+      ],
+      "observed": "The short link after the right T1 leads into the quick left T2. Red-white kerbs have green painted outer strips, with broad grass and gravel beyond. The main grandstand recedes behind the car.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "buddh-02",
+      "native_station_m": [
+        400,
+        1450
+      ],
+      "name": "Uphillstraight andT3hairpin",
+      "reviewed_video_seconds": [
+        129,
+        133,
+        221.31
+      ],
+      "observed": "The climb toward the crest is clear in the onboard, with a grassy bank and braking boards. The wide right hairpin has a blue-green painted outer edge and a large open crowd terrace beyond it. A tall fence follows the straight.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "buddh-03",
+      "native_station_m": [
+        1450,
+        2750
+      ],
+      "name": "Longbackstraight andT4",
+      "reviewed_video_seconds": [
+        137,
+        141,
+        145,
+        149,
+        153,
+        48.58,
+        242.91
+      ],
+      "observed": "The long fast straight descends through grass and palms. Guardrail, mesh and distance boards define the approach to T4. The slow right apex has a broad green paved escape, with tan runoff farther out. Stands and pit buildings stay distant.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "buddh-04",
+      "native_station_m": [
+        2750,
+        3500
+      ],
+      "name": "T5–7 infield",
+      "reviewed_video_seconds": [
+        157,
+        161,
+        165,
+        169,
+        134.95
+      ],
+      "observed": "The wide left-left-right sequence crosses a low rise. Red-white inside kerbs border green, yellow and red painted escape areas. Low grass banks, a small service tower and stands beyond the fence give the infield its scale.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "buddh-05",
+      "native_station_m": [
+        3500,
+        3950
+      ],
+      "name": "T8–9 approach tobowl",
+      "reviewed_video_seconds": [
+        173,
+        70.17,
+        156.54
+      ],
+      "observed": "Linked corners lead toward the bowl. Red-white kerbs and green paint border the asphalt; tan runoff widens outside. Separate pale grandstand roof sections appear ahead. Dry grass and scattered palms leave an open horizon.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "buddh-06",
+      "native_station_m": [
+        3950,
+        4500
+      ],
+      "name": "T10–12 longrightbowl",
+      "reviewed_video_seconds": [
+        177,
+        181,
+        185,
+        91.76,
+        178.13
+      ],
+      "observed": "The multi-apex right is continuous. Inside grass and red-white kerbs follow the arc, while green and red outer paint leads to broad tan gravel. Large spectator terraces and separate angular roof sections stand beyond the escape area.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "buddh-07",
+      "native_station_m": [
+        4500,
+        4800
+      ],
+      "name": "T13–16 finalcomplex",
+      "reviewed_video_seconds": [
+        189,
+        193,
+        197,
+        201,
+        199.72,
+        286.09
+      ],
+      "observed": "Sweeping changes lead into the final slow corner beside the main facilities. Grass, gravel and green paint surround the kerbs. The stacked pit roof slabs and blue glazed control tower should remain visible. Preserve the white pit entry fork markings.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "buddh-08",
+      "native_station_m": [
+        4800,
+        5141
+      ],
+      "name": "Pitstraight andopeningT1",
+      "reviewed_video_seconds": [
+        113,
+        117,
+        121,
+        125,
+        205,
+        26.99
+      ],
+      "observed": "The onboard shows the main stand on the left and white pit garages on the right, with deep stacked roof projections. A narrow green verge adjoins the pit wall. White grid and pit marks define the straight. The opening right has a substantial paved and gravel escape area.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    }
+  ],
+  "primary_sources": [
+    {
+      "title": "FIA2013officialmap",
+      "url": "https://www.fia.com/sites/default/files/external_archive/node3786/16-india-circuit-print.pdf",
+      "supports": "Official16-turnGProute,5125mlap, broadrunoffandgravelareas."
+    },
+    {
+      "title": "Tilkearchitectportfolio2024",
+      "url": "https://tilke.de/wp-content/uploads/2024/12/2024-Portfolio.pdf",
+      "supports": "Built2009–2011;5137m,16turns; identifiespit/racecontrol,hospitality,grandstands,mediaandmedicalarchitecture."
+    }
+  ],
+  "uncertainties": [
+    "The native origin is after official T1 on the short T1–T2 link. Approximate SF is station 4870 m. The pit complex belongs there, not at station 0.",
+    "RetainedGLO90relief13.231m is not verified deckelevation. UphillT3 clearlyvisiblebut no primarymetricelevationseriesverified;donotamplifytocirculating40mclaims.",
+    "Architect5137m,FIA20135125m,currentmapping5141m differ;retainlayoutphasewithoutarbitrarilyrescalingtoonepublicnumber."
+  ]
+}

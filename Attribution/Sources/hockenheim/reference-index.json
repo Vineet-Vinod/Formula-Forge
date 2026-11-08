@@ -1,0 +1,231 @@
+{
+  "schema_version": 1,
+  "circuit": "hockenheim",
+  "reference_file": "Saved/Refs/germany.mp4",
+  "reference_sha256": "e4d1648541da7b9296bec1f46a1eed45c45b027c656011e79826555d86a978f4",
+  "layout_observed": "Legacy F1 2019 Hockenheim Grand Prix layout as represented in F1 2020 footage; use blue/white kerbs shown.",
+  "lighting_weather_observed": "Dry hazy/overcast daytime.",
+  "review_scope": "16 sparse overview frames viewed by author. Clip is an edited career/race montage, includes menus/cuts and changing conditions; not a continuous lap. Unviewed timestamps are not evidence.",
+  "frame_index_file": "build/reviews/hockenheim/reference/overview-index.json",
+  "reviewed_visual_evidence": [
+    {
+      "time_s": 48.33,
+      "reviewed": true,
+      "notes": "Main straight and Nordkurve: Motodrom main stand has red seats and repeated swooping/cantilever roof bays; pits opposite have deep overhang and narrow upper glass band. Blue/white edge kerbs and blue outer apron."
+    },
+    {
+      "time_s": 88.65,
+      "reviewed": true,
+      "notes": "Main straight and Nordkurve: Motodrom main stand has red seats and repeated swooping/cantilever roof bays; pits opposite have deep overhang and narrow upper glass band. Blue/white edge kerbs and blue outer apron."
+    },
+    {
+      "time_s": 128.98,
+      "reviewed": true,
+      "notes": "Main straight and Nordkurve: Motodrom main stand has red seats and repeated swooping/cantilever roof bays; pits opposite have deep overhang and narrow upper glass band. Blue/white edge kerbs and blue outer apron."
+    },
+    {
+      "time_s": 249.96,
+      "reviewed": true,
+      "notes": "Einlauf and short approach: Short grass verges, close catch fence and low service buildings. Wide corner-specific escape apron, forest horizon; no city skyline."
+    },
+    {
+      "time_s": 491.92,
+      "reviewed": true,
+      "notes": "Einlauf and short approach: Short grass verges, close catch fence and low service buildings. Wide corner-specific escape apron, forest horizon; no city skyline."
+    },
+    {
+      "time_s": 370.94,
+      "reviewed": true,
+      "notes": "Parabolika and Spitzkehre: Long broad left-curving straight through flat grass with tall forest in distance. Blue/white kerbs; hairpin has large paved/gravel braking escape and limited structures."
+    },
+    {
+      "time_s": 532.25,
+      "reviewed": true,
+      "notes": "Parabolika and Spitzkehre: Long broad left-curving straight through flat grass with tall forest in distance. Blue/white kerbs; hairpin has large paved/gravel braking escape and limited structures."
+    },
+    {
+      "time_s": 290.29,
+      "reviewed": true,
+      "notes": "Mercedes Arena: Open arena approach with grassy interior, low white race facilities, Mercedes circular/cylinder control-building form and tall water-tower-like support structure. Temporary/open stands frame the tight turn group."
+    },
+    {
+      "time_s": 330.61,
+      "reviewed": true,
+      "notes": "Mercedes Arena: Open arena approach with grassy interior, low white race facilities, Mercedes circular/cylinder control-building form and tall water-tower-like support structure. Temporary/open stands frame the tight turn group."
+    },
+    {
+      "time_s": 411.27,
+      "reviewed": true,
+      "notes": "Mobil1 and Sachs stadium entry: Motodrom enclosing curved grandstand bowl, white/gray control structures and banked Sachs bend. Blue outside apron, gravel trap and blue/white kerbs; not a flat fenced road."
+    },
+    {
+      "time_s": 572.57,
+      "reviewed": true,
+      "notes": "Mobil1 and Sachs stadium entry: Motodrom enclosing curved grandstand bowl, white/gray control structures and banked Sachs bend. Blue outside apron, gravel trap and blue/white kerbs; not a flat fenced road."
+    },
+    {
+      "time_s": 451.59,
+      "reviewed": true,
+      "notes": "S\u00fcdkurve and pit return: Continuous curved outer grandstands, roof piers/canopies and broad stadium grass/gravel. Final linked corners lead into pit straight, with blue painted outer edges and close white walls."
+    }
+  ],
+  "registration": {
+    "coordinate_system": "Provenance local tangent plane x east, y north; route uniform_scale applied.",
+    "station_origin": "Retained native Centerline first point; not assumed start/finish.",
+    "route_length_m": 4574,
+    "method": "Named OSM raceway ways projected to nearest retained centerline sample; other corners matched by route shape and official circuit map. Sector boundaries approximate, not surveyed kerb endpoints. Video time is never treated as station.",
+    "named_way_controls": [
+      {
+        "osm_id": 15446020,
+        "name": "Boxengasse",
+        "station_mid_m": 4513.92,
+        "station_min_m": 16.02,
+        "station_max_m": 4549.97,
+        "maximum_projection_distance_m": 24.67
+      },
+      {
+        "osm_id": 22940941,
+        "name": "Kleiner Kurs Kurzanbindung",
+        "station_mid_m": 604.79,
+        "station_min_m": 572.75,
+        "station_max_m": 3308.34,
+        "maximum_projection_distance_m": 201.47
+      },
+      {
+        "osm_id": 31318810,
+        "name": "Schikanenvariante",
+        "station_mid_m": 3348.39,
+        "station_min_m": 3344.39,
+        "station_max_m": 3356.4,
+        "maximum_projection_distance_m": 120.78
+      },
+      {
+        "osm_id": 117568830,
+        "name": "Ravenol-Kurve",
+        "station_mid_m": 268.35,
+        "station_min_m": 220.29,
+        "station_max_m": 400.53,
+        "maximum_projection_distance_m": 1.97
+      },
+      {
+        "osm_id": 117568832,
+        "name": "S\u00fcdkurve",
+        "station_mid_m": 4285.62,
+        "station_min_m": 4189.5,
+        "station_max_m": 4341.7,
+        "maximum_projection_distance_m": 1.77
+      },
+      {
+        "osm_id": 117570493,
+        "name": "Bernie-Ecclestone-Kurve",
+        "station_mid_m": 849.11,
+        "station_min_m": 769.01,
+        "station_max_m": 905.19,
+        "maximum_projection_distance_m": 1.77
+      },
+      {
+        "osm_id": 117570496,
+        "name": "Sachs-Kurve",
+        "station_mid_m": 3800.99,
+        "station_min_m": 3736.9,
+        "station_max_m": 3857.06,
+        "maximum_projection_distance_m": 1.81
+      },
+      {
+        "osm_id": 117570502,
+        "name": "Spitzkehre",
+        "station_mid_m": 2102.76,
+        "station_min_m": 2030.66,
+        "station_max_m": 2178.86,
+        "maximum_projection_distance_m": 1.99
+      },
+      {
+        "osm_id": 117570506,
+        "name": "Hochgeschwindigkeits-(Parabolika-)Kurve",
+        "station_mid_m": 1493.96,
+        "station_min_m": 1045.37,
+        "station_max_m": 1822.39,
+        "maximum_projection_distance_m": 1.98
+      },
+      {
+        "osm_id": 117570511,
+        "name": "Mobil 1 Kurve",
+        "station_mid_m": 3464.54,
+        "station_min_m": 3384.44,
+        "station_max_m": 3540.64,
+        "maximum_projection_distance_m": 1.86
+      },
+      {
+        "osm_id": 446193573,
+        "name": "Einfahrt Parabolika",
+        "station_mid_m": 973.28,
+        "station_min_m": 905.19,
+        "station_max_m": 1045.37,
+        "maximum_projection_distance_m": 1.54
+      },
+      {
+        "osm_id": 446193574,
+        "name": "Rallycross",
+        "station_mid_m": 4037.3,
+        "station_min_m": 3909.13,
+        "station_max_m": 4101.38,
+        "maximum_projection_distance_m": 54.29
+      },
+      {
+        "osm_id": 446193575,
+        "name": "Rallycross",
+        "station_mid_m": 4089.36,
+        "station_min_m": 4089.36,
+        "station_max_m": 4089.36,
+        "maximum_projection_distance_m": 77.58
+      },
+      {
+        "osm_id": 446193576,
+        "name": "Rallycross",
+        "station_mid_m": 4137.43,
+        "station_min_m": 4121.41,
+        "station_max_m": 4141.43,
+        "maximum_projection_distance_m": 47.06
+      },
+      {
+        "osm_id": 446193577,
+        "name": "Rallycross",
+        "station_mid_m": 3448.52,
+        "station_min_m": 3448.52,
+        "station_max_m": 3472.56,
+        "maximum_projection_distance_m": 19.1
+      },
+      {
+        "osm_id": 1386056979,
+        "name": "Ravenol-Kurve",
+        "station_mid_m": 412.54,
+        "station_min_m": 400.53,
+        "station_max_m": 428.56,
+        "maximum_projection_distance_m": 1.51
+      },
+      {
+        "osm_id": 1416119746,
+        "name": "Rico Anthes Quartermile",
+        "station_mid_m": 3035.98,
+        "station_min_m": 2523.31,
+        "station_max_m": 4261.59,
+        "maximum_projection_distance_m": 81.98
+      }
+    ]
+  },
+  "primary_sources": [
+    {
+      "url": "https://www.hockenheimring.de/wp-content/uploads/2025/01/250114_HoRi_Magazin_Lageplan_A4_eng.pdf",
+      "use": "Official layout/venue architecture; source year can differ from video."
+    },
+    {
+      "url": "https://www.hockenheimring.de/en/track-map/",
+      "use": "Official layout/venue architecture; source year can differ from video."
+    }
+  ],
+  "uncertainties": [
+    "Exact filming lap/year is not established unless visible title/HUD identifies it.",
+    "Overview observations establish visual vocabulary; every individual asset position requires footprint/map registration.",
+    "No high-resolution raster or orthophoto added by this reference review."
+  ]
+}

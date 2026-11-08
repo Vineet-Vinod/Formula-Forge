@@ -1,0 +1,11 @@
+{
+  "provider": "OpenStreetMap contributors",
+  "endpoint": "https://overpass-api.de/api/interpreter",
+  "query": "[out:json][timeout:60];(nwr[\"tourism\"=\"artwork\"](47.218,14.752,47.230,14.775);nwr[\"man_made\"=\"tower\"](47.218,14.752,47.230,14.775););out geom;",
+  "retrieved": "2026-11-08",
+  "licence": "ODbL1.0",
+  "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "file": "environment.osm.json.gz",
+  "sha256": "646b8458c82535b31e5109d0f5bc0f24e9c9d67de2b795ad9a8e7c112bff83c2",
+  "purpose": "Tightly bounded essential landmark query; inline member geometry preserved."
+}

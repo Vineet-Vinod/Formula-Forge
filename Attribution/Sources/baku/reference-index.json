@@ -1,0 +1,225 @@
+{
+  "schema_version": 1,
+  "circuit": "baku",
+  "reference": "Saved/Refs/baku.mp4",
+  "reference_pixels_shipped": false,
+  "appearance": "Dry daylight, clear blue sky.",
+  "layout_year": "2026 HUD; modern Baku20-turn GP layout.",
+  "native_station_frame": {
+    "length_m": 6003,
+    "origin": {
+      "latitude": 40.3726832406754,
+      "longitude": 49.853217636212044,
+      "meaning": "Local source origin at the point on the loop nearest the venue coordinate, after rotation to the start."
+    },
+    "approximate_start_finish_station_m": 0,
+    "start_finish_uncertainty_m": 75,
+    "side_convention": "Driver left/right in forward lap direction; geographic footprints retain source east/north coordinates."
+  },
+  "review": {
+    "overview_seconds": [
+      14.55,
+      72.75,
+      130.96,
+      189.16,
+      247.37,
+      305.57,
+      363.77,
+      421.98,
+      480.18,
+      538.38,
+      596.59,
+      654.79,
+      713.0,
+      771.2,
+      829.4,
+      887.61
+    ],
+    "detail_seconds": [
+      125,
+      130,
+      135,
+      140,
+      145,
+      150,
+      155,
+      160,
+      165,
+      170,
+      175,
+      180,
+      185,
+      190,
+      195,
+      200,
+      205,
+      210,
+      215,
+      220,
+      225,
+      230,
+      235,
+      240,
+      245
+    ],
+    "method": "Viewed every frame of overview and detail contact sheets. Sparse review of edited gameplay; rear cameras, menus and cuts are excluded as metric geometry evidence.",
+    "whole_lap_sector_inventory": true,
+    "continuous_full_video_review": false,
+    "runtime_comparison_completed": false
+  },
+  "sectors": [
+    {
+      "id": "baku-01",
+      "native_station_m": [
+        0,
+        700
+      ],
+      "name": "Pit straight and T1–2",
+      "reviewed_video_seconds": [
+        72.75,
+        155,
+        165,
+        170,
+        175,
+        180,
+        185,
+        189.16
+      ],
+      "observed": "Grandstand/pit temporary structures and monumental city facades, broad asphalt channel and tall fencing; trees behind wall, narrow red-white apex kerbs. Escape lanes continue straight at90degree turns.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "baku-02",
+      "native_station_m": [
+        700,
+        1500
+      ],
+      "name": "T2 long city straight",
+      "reviewed_video_seconds": [
+        130.96,
+        190,
+        195,
+        200,
+        205
+      ],
+      "observed": "Landmark tower cluster to right of northern boulevard. Varied pale stone and modern balcony facades, continuous broadleaf trees. Long straight braking boards and uninterrupted wall/fence corridor; do not substitute repeated identical hotels.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "baku-03",
+      "native_station_m": [
+        1500,
+        2050
+      ],
+      "name": "T3–4 boulevard corners",
+      "reviewed_video_seconds": [
+        247.37,
+        210,
+        215,
+        220
+      ],
+      "observed": "Orthogonal street corners among cream/grey ornamental buildings with cornices, arcade ground floors, park trees and white tents. Museum Centre/Maritime Academy left by native registration. Paved terminal escape needs buffer protection.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "baku-04",
+      "native_station_m": [
+        2050,
+        2600
+      ],
+      "name": "T5–7 entry to Old City",
+      "reviewed_video_seconds": [
+        305.57,
+        225,
+        230,
+        235,
+        240,
+        245
+      ],
+      "observed": "Trees and tightly spaced stone street facades, balconies/windows and varied roofline. Houses sit directly behind fence, public junction markings visible. Slow turns have small red-white kerbs and asphalt escape, not gravel.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "baku-05",
+      "native_station_m": [
+        2600,
+        3100
+      ],
+      "name": "Castle T8–12 climb",
+      "reviewed_video_seconds": [
+        363.77,
+        421.98
+      ],
+      "observed": "Narrow uphill masonry-lined sequence and small rounded apexes; rough warm fortification left, close classical facade right. Protect narrow race corridor, no standalone floating barrier blocks; walls follow actual bent street.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "baku-06",
+      "native_station_m": [
+        3100,
+        3750
+      ],
+      "name": "Upper city T13–15 and downhill",
+      "reviewed_video_seconds": [
+        480.18,
+        596.59
+      ],
+      "observed": "Palace/classical facades with projecting bays, low park-side stone retaining walls and tall leafy trees. Crest then descending sightline; T15 has a straight-ahead paved escape. Philharmonic/Palace of Happiness give identity beyond castle.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "baku-07",
+      "native_station_m": [
+        3750,
+        4550
+      ],
+      "name": "T16 and Old City waterfront edge",
+      "reviewed_video_seconds": [
+        713,
+        654.79
+      ],
+      "observed": "Four Seasons and pale monumental facades, leafy park and stone buildings. Road broadens after slow left; Maiden Tower visible behind inner city. Curving approach toward waterfront should remain continuous.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "baku-08",
+      "native_station_m": [
+        4550,
+        6003
+      ],
+      "name": "T17–20 waterfront and long SF return",
+      "reviewed_video_seconds": [
+        538.38,
+        771.2,
+        829.4,
+        125,
+        130,
+        135
+      ],
+      "observed": "Open long boulevard lined by mature broadleaf trees, temporary waterfront stands and varied hotel/glazed skyline. House of Government dominant near SF, low pit structures; straight speed signs and distance boards. Do not place castle facades along entire seafront.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    }
+  ],
+  "primary_sources": [
+    {
+      "title": "Baku City Circuit promoter",
+      "url": "https://www.bakucitycircuit.com/",
+      "supports": "Official circuit, venue and event imagery; current homepage event date is not assumed to match video."
+    },
+    {
+      "title": "FIA circuit/event hub",
+      "url": "https://www.fia.com/events/fia-formula-one-world-championship",
+      "supports": "Route/event authority; retained OSM provides geographic footprints."
+    },
+    {
+      "title": "Baku promoter castle section description",
+      "url": "https://www.bakucitycircuit.com/news/seven-reasons-why-Formula-1-fans-love-Baku",
+      "supports": "The T8–10 castle section narrows to 7.6 m and has no runoff."
+    }
+  ],
+  "uncertainties": [
+    "GLO-90surface can sample facade roofs in narrow Old City; check climbing castle and descending T15 against onboard before treating the profile as racing elevation.",
+    "Generic12–14mwidth must not be imposed at the castle; wall corridor is substantially narrower there. Do not turn all urban shoulders into grass.",
+    "The original native castle width is too broad. The promoter confirms a 7.6 m narrow section around native stations 2580–2800. Width and collision shoulder changes must be coordinated with the native exporter."
+  ]
+}

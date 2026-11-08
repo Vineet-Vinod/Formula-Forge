@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "circuit": "australia",
+  "reference_file": "Saved/Refs/australia.mp4",
+  "reference_sha256": "c5da1281875a87790c76f556f92171cc59f6c74efe153bc7e5eb9f537cc52797",
+  "layout_observed": "Contemporary 14-corner Albert Park Grand Prix loop; do not restore the removed T9/T10 chicane.",
+  "lighting_weather_observed": "Day; dry race with partly cloudy sky; earlier overcast qualifying.",
+  "review_scope": "16 sparse overview frames viewed by author. Clip is an edited career/race montage, includes menus/cuts and changing conditions; not a continuous lap. Unviewed timestamps are not evidence.",
+  "frame_index_file": "build/reviews/australia/reference/overview-index.json",
+  "reviewed_visual_evidence": [
+    {
+      "time_s": 176.17,
+      "reviewed": true,
+      "notes": "Pit straight, T1/T2 and avenue: Long covered temporary stand opposite the tiered pit/hospitality bar. Narrow grass verges, close concrete walls and high catch fence; mature avenue broadleaf trees beyond. Yellow wall panels; green/yellow kerbs."
+    },
+    {
+      "time_s": 288.29,
+      "reviewed": true,
+      "notes": "Pit straight, T1/T2 and avenue: Long covered temporary stand opposite the tiered pit/hospitality bar. Narrow grass verges, close concrete walls and high catch fence; mature avenue broadleaf trees beyond. Yellow wall panels; green/yellow kerbs."
+    },
+    {
+      "time_s": 400.4,
+      "reviewed": true,
+      "notes": "T3\u2013T5 park corners: Parkland slow corners with low pavilion/service roofs, temporary spectator banks and trees. Green painted apex margins and yellow/green segmented kerbs; no continuous gravel belt."
+    },
+    {
+      "time_s": 512.52,
+      "reviewed": true,
+      "notes": "T3\u2013T5 park corners: Parkland slow corners with low pavilion/service roofs, temporary spectator banks and trees. Green painted apex margins and yellow/green segmented kerbs; no continuous gravel belt."
+    },
+    {
+      "time_s": 344.35,
+      "reviewed": true,
+      "notes": "Lakeside sweeps: Lake on the inside of the park loop, palms mixed with mature broadleaf trees, open grass. Distant St Kilda Road apartment silhouettes behind park; blue track walls, painted green edge strips."
+    },
+    {
+      "time_s": 456.46,
+      "reviewed": true,
+      "notes": "Lakeside sweeps: Lake on the inside of the park loop, palms mixed with mature broadleaf trees, open grass. Distant St Kilda Road apartment silhouettes behind park; blue track walls, painted green edge strips."
+    },
+    {
+      "time_s": 568.58,
+      "reviewed": true,
+      "notes": "Fast new T9/T10 sequence: Long fast road framed by catch fencing and park vegetation, temporary white bridges and low race structures. Preserve new flowing sequence, narrow verge and openings toward the lake."
+    },
+    {
+      "time_s": 624.63,
+      "reviewed": true,
+      "notes": "Fast new T9/T10 sequence: Long fast road framed by catch fencing and park vegetation, temporary white bridges and low race structures. Preserve new flowing sequence, narrow verge and openings toward the lake."
+    },
+    {
+      "time_s": 680.69,
+      "reviewed": true,
+      "notes": "T11\u2013T14 final corners: Dense mature tree corridor, blue/yellow wall runs, temporary white hospitality canopies behind fence. Short corner-specific painted exits rather than broad generic runoff."
+    },
+    {
+      "time_s": 736.75,
+      "reviewed": true,
+      "notes": "T11\u2013T14 final corners: Dense mature tree corridor, blue/yellow wall runs, temporary white hospitality canopies behind fence. Short corner-specific painted exits rather than broad generic runoff."
+    },
+    {
+      "time_s": 792.81,
+      "reviewed": true,
+      "notes": "Return to pits: Grandstand and white curved hospitality roofs return; main-straight flags, open pit roof volumes and continuous close safety walls."
+    }
+  ],
+  "registration": {
+    "coordinate_system": "Provenance local tangent plane x east, y north; route uniform_scale applied.",
+    "station_origin": "Retained native Centerline first point; not assumed start/finish.",
+    "route_length_m": 5278,
+    "method": "Named OSM raceway ways projected to nearest retained centerline sample; other corners matched by route shape and official circuit map. Sector boundaries approximate, not surveyed kerb endpoints. Video time is never treated as station.",
+    "named_way_controls": []
+  },
+  "primary_sources": [
+    {
+      "url": "https://www.grandprix.com.au/uploads/images/F126_009_Visitor-Map_A3_V9-Digi-3.pdf",
+      "use": "Official layout/venue architecture; source year can differ from video."
+    }
+  ],
+  "uncertainties": [
+    "Exact filming lap/year is not established unless visible title/HUD identifies it.",
+    "Overview observations establish visual vocabulary; every individual asset position requires footprint/map registration.",
+    "No high-resolution raster or orthophoto added by this reference review."
+  ]
+}

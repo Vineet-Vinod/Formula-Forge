@@ -1,0 +1,243 @@
+{
+  "schema_version": 1,
+  "circuit": "spa",
+  "reference_file": "Saved/Refs/spa.mp4",
+  "reference_sha256": "ca486fbc4470dd746889f918abd2d66cf4d2ada32e2a23d80e91c0f25051efd1",
+  "layout_observed": "Spa-Francorchamps 7.004km F1 loop; station zero is before Bus Stop, not start/finish.",
+  "lighting_weather_observed": "Dry bright race; earlier qualifying/pit shots cloudy or wet.",
+  "review_scope": "16 sparse overview frames viewed by author. Clip is an edited career/race montage, includes menus/cuts and changing conditions; not a continuous lap. Unviewed timestamps are not evidence.",
+  "frame_index_file": "build/reviews/spa/reference/overview-index.json",
+  "reviewed_visual_evidence": [
+    {
+      "time_s": 337.84,
+      "reviewed": true,
+      "notes": "Bus Stop and Grand Prix pits: Broad slow chicane, red/yellow kerbs and local paved escape. Grand Prix garage/hospitality bar on right of race direction, covered stands opposite, white event roofs and green banks."
+    },
+    {
+      "time_s": 139.94,
+      "reviewed": true,
+      "notes": "Bus Stop and Grand Prix pits: Broad slow chicane, red/yellow kerbs and local paved escape. Grand Prix garage/hospitality bar on right of race direction, covered stands opposite, white event roofs and green banks."
+    },
+    {
+      "time_s": 271.87,
+      "reviewed": true,
+      "notes": "La Source and old pit descent: Hairpin opens to dramatic valley descent. Modern grandstand and old endurance pit structures; close red/yellow kerbs, paved outside escape. Do not flatten the descent."
+    },
+    {
+      "time_s": 205.9,
+      "reviewed": true,
+      "notes": "La Source and old pit descent: Hairpin opens to dramatic valley descent. Modern grandstand and old endurance pit structures; close red/yellow kerbs, paved outside escape. Do not flatten the descent."
+    },
+    {
+      "time_s": 667.68,
+      "reviewed": true,
+      "notes": "Eau Rouge and Raidillon: Iconic compression and steep uphill left-right-left. White/dark-timber gabled historic chalet at foot; large modern angular Raidillon covered stand, wooded slopes and gravel outside."
+    },
+    {
+      "time_s": 403.81,
+      "reviewed": true,
+      "notes": "Kemmel, Les Combes and Malmedy: Long uphill forest-lined straight with narrow grass and Armco. Open spectator slopes and brown gravel/soil outside braking/chicane area; dense mixed conifers beyond."
+    },
+    {
+      "time_s": 469.77,
+      "reviewed": true,
+      "notes": "Kemmel, Les Combes and Malmedy: Long uphill forest-lined straight with narrow grass and Armco. Open spectator slopes and brown gravel/soil outside braking/chicane area; dense mixed conifers beyond."
+    },
+    {
+      "time_s": 535.74,
+      "reviewed": true,
+      "notes": "Bruxelles, Speakers Corner and Pouhon: Descending wooded corners with broad red/yellow kerbs, outside grass/gravel and constrained advertised walls. Tree-covered banks enclose lower valley, not a flat plain."
+    },
+    {
+      "time_s": 601.71,
+      "reviewed": true,
+      "notes": "Bruxelles, Speakers Corner and Pouhon: Descending wooded corners with broad red/yellow kerbs, outside grass/gravel and constrained advertised walls. Tree-covered banks enclose lower valley, not a flat plain."
+    },
+    {
+      "time_s": 865.58,
+      "reviewed": true,
+      "notes": "Fagnes, Campus and Paul Fr\u00e8re: Forest sequence with corner-specific gravel traps, green/red painted margins and small white track facilities. Protection follows runoff edge, never continuous blocks across paved escape."
+    },
+    {
+      "time_s": 799.61,
+      "reviewed": true,
+      "notes": "Blanchimont return: Fast rising forest corridor, red/yellow edge kerbs, narrow grass verges and metal Armco/catch fencing; broad spectator hillside at return toward Bus Stop."
+    },
+    {
+      "time_s": 733.65,
+      "reviewed": true,
+      "notes": "Blanchimont return: Fast rising forest corridor, red/yellow edge kerbs, narrow grass verges and metal Armco/catch fencing; broad spectator hillside at return toward Bus Stop."
+    }
+  ],
+  "registration": {
+    "coordinate_system": "Provenance local tangent plane x east, y north; route uniform_scale applied.",
+    "station_origin": "Retained native Centerline first point; not assumed start/finish.",
+    "route_length_m": 7004,
+    "method": "Named OSM raceway ways projected to nearest retained centerline sample; other corners matched by route shape and official circuit map. Sector boundaries approximate, not surveyed kerb endpoints. Video time is never treated as station.",
+    "named_way_controls": [
+      {
+        "osm_id": 24449918,
+        "name": "Les Combes",
+        "station_mid_m": 3285.88,
+        "station_min_m": 3225.84,
+        "station_max_m": 3333.9,
+        "maximum_projection_distance_m": 1.94
+      },
+      {
+        "osm_id": 34403881,
+        "name": "Kart",
+        "station_mid_m": 6423.67,
+        "station_min_m": 6271.58,
+        "station_max_m": 6471.7,
+        "maximum_projection_distance_m": 138.99
+      },
+      {
+        "osm_id": 126807100,
+        "name": "Courbe Paul Fr\u00e8re",
+        "station_mid_m": 5963.41,
+        "station_min_m": 5895.37,
+        "station_max_m": 6087.48,
+        "maximum_projection_distance_m": 1.73
+      },
+      {
+        "osm_id": 126807103,
+        "name": "Double Gauche",
+        "station_mid_m": 4758.72,
+        "station_min_m": 4554.6,
+        "station_max_m": 4926.81,
+        "maximum_projection_distance_m": 1.98
+      },
+      {
+        "osm_id": 126807106,
+        "name": "Speaker's Corner",
+        "station_mid_m": 4106.35,
+        "station_min_m": 4042.31,
+        "station_max_m": 4294.45,
+        "maximum_projection_distance_m": 1.87
+      },
+      {
+        "osm_id": 126807109,
+        "name": "Fagnes",
+        "station_mid_m": 5355.06,
+        "station_min_m": 5218.98,
+        "station_max_m": 5515.15,
+        "maximum_projection_distance_m": 1.97
+      },
+      {
+        "osm_id": 126807112,
+        "name": "Bruxelles",
+        "station_mid_m": 3862.21,
+        "station_min_m": 3766.15,
+        "station_max_m": 3942.25,
+        "maximum_projection_distance_m": 1.83
+      },
+      {
+        "osm_id": 126807525,
+        "name": "Support Pit Lane",
+        "station_mid_m": 1881.07,
+        "station_min_m": 1240.71,
+        "station_max_m": 2449.4,
+        "maximum_projection_distance_m": 24.25
+      },
+      {
+        "osm_id": 126835637,
+        "name": "Raidillon",
+        "station_mid_m": 1993.14,
+        "station_min_m": 1889.08,
+        "station_max_m": 2113.21,
+        "maximum_projection_distance_m": 1.83
+      },
+      {
+        "osm_id": 126835638,
+        "name": "Kemmel",
+        "station_mid_m": 2389.36,
+        "station_min_m": 2113.21,
+        "station_max_m": 3165.81,
+        "maximum_projection_distance_m": 1.96
+      },
+      {
+        "osm_id": 126835639,
+        "name": "Eau Rouge",
+        "station_mid_m": 1845.05,
+        "station_min_m": 1797.03,
+        "station_max_m": 1889.08,
+        "maximum_projection_distance_m": 1.76
+      },
+      {
+        "osm_id": 175178443,
+        "name": "La Source",
+        "station_mid_m": 1176.67,
+        "station_min_m": 1148.66,
+        "station_max_m": 1204.69,
+        "maximum_projection_distance_m": 1.68
+      },
+      {
+        "osm_id": 175195997,
+        "name": "Malmedy",
+        "station_mid_m": 3449.97,
+        "station_min_m": 3405.95,
+        "station_max_m": 3489.99,
+        "maximum_projection_distance_m": 1.85
+      },
+      {
+        "osm_id": 175371353,
+        "name": "Campus",
+        "station_mid_m": 5735.28,
+        "station_min_m": 5691.25,
+        "station_max_m": 5787.31,
+        "maximum_projection_distance_m": 1.89
+      },
+      {
+        "osm_id": 176133745,
+        "name": "Blanchimont",
+        "station_mid_m": 6791.88,
+        "station_min_m": 4.0,
+        "station_max_m": 6996.0,
+        "maximum_projection_distance_m": 1.99
+      },
+      {
+        "osm_id": 323851541,
+        "name": "Pit Lane",
+        "station_mid_m": 720.41,
+        "station_min_m": 556.32,
+        "station_max_m": 1336.76,
+        "maximum_projection_distance_m": 27.32
+      },
+      {
+        "osm_id": 637268672,
+        "name": "Chicane",
+        "station_mid_m": 532.3,
+        "station_min_m": 516.29,
+        "station_max_m": 556.32,
+        "maximum_projection_distance_m": 1.75
+      },
+      {
+        "osm_id": 1134119259,
+        "name": "Moto layout",
+        "station_mid_m": 4086.33,
+        "station_min_m": 4042.31,
+        "station_max_m": 4294.45,
+        "maximum_projection_distance_m": 25.05
+      },
+      {
+        "osm_id": 1430527230,
+        "name": "Les Combes",
+        "station_mid_m": 3197.83,
+        "station_min_m": 3165.81,
+        "station_max_m": 3225.84,
+        "maximum_projection_distance_m": 1.85
+      }
+    ]
+  },
+  "primary_sources": [
+    {
+      "url": "https://www.fia.com/system/files/decision-document/2025_spa_francorchamps_event_-_circuit_map_-_spa_2025.pdf",
+      "use": "Official layout/venue architecture; source year can differ from video."
+    }
+  ],
+  "uncertainties": [
+    "Exact filming lap/year is not established unless visible title/HUD identifies it.",
+    "Overview observations establish visual vocabulary; every individual asset position requires footprint/map registration.",
+    "No high-resolution raster or orthophoto added by this reference review."
+  ]
+}

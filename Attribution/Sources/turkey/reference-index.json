@@ -1,0 +1,225 @@
+{
+  "schema_version": 1,
+  "circuit": "turkey",
+  "reference": "Saved/Refs/turkey.mp4",
+  "reference_pixels_shipped": false,
+  "appearance": "Dry bright daylight, rolling grassy horizon.",
+  "layout_year": "Modern simulator/mod with2024styleFerrari; exactyear unknown. Camera/replaycuts are not metric track evidence.",
+  "native_station_frame": {
+    "length_m": 5338,
+    "origin": {
+      "latitude": 40.95199352638648,
+      "longitude": 29.404908640348772,
+      "meaning": "Local source origin at the point on the loop nearest the venue coordinate, after rotation to the start."
+    },
+    "approximate_start_finish_station_m": 0,
+    "start_finish_uncertainty_m": 75,
+    "side_convention": "Driver left/right in forward lap direction; geographic footprints retain source east/north coordinates."
+  },
+  "review": {
+    "overview_seconds": [
+      13.02,
+      65.11,
+      117.2,
+      169.29,
+      221.38,
+      273.47,
+      325.56,
+      377.65,
+      429.74,
+      481.83,
+      533.92,
+      586.01,
+      638.1,
+      690.19,
+      742.28,
+      794.37
+    ],
+    "detail_seconds": [
+      265,
+      269,
+      273,
+      277,
+      281,
+      285,
+      289,
+      293,
+      297,
+      301,
+      305,
+      309,
+      313,
+      317,
+      321,
+      325,
+      329,
+      333,
+      337,
+      341,
+      345,
+      349,
+      353,
+      357,
+      361,
+      365
+    ],
+    "method": "Viewed every frame of overview and detail contact sheets. Sparse review of edited gameplay; rear cameras, menus and cuts are excluded as metric geometry evidence.",
+    "whole_lap_sector_inventory": true,
+    "continuous_full_video_review": false,
+    "runtime_comparison_completed": false
+  },
+  "sectors": [
+    {
+      "id": "turkey-01",
+      "native_station_m": [
+        0,
+        700
+      ],
+      "name": "Pitstraight, downhillT1 and uphillT2",
+      "reviewed_video_seconds": [
+        221.38,
+        329,
+        333,
+        337,
+        341
+      ],
+      "observed": "Long grandstand opposite the pit complex. The broad left T1 entry descends sharply, with gravel outside and a red-white inside kerb. The road climbs toward T2. Grass banks and distant protection should preserve these changing sightlines.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "turkey-02",
+      "native_station_m": [
+        700,
+        1450
+      ],
+      "name": "T3–5 hillside changes",
+      "reviewed_video_seconds": [
+        345,
+        349,
+        353,
+        357,
+        273.47
+      ],
+      "observed": "Green and brown grass slopes, low broadleaf tree groups, and broad grass or gravel escape areas. Kerbs have green painted outer strips. The linked corners rise and fall with the hills, with Armco and mesh behind the escape areas.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "turkey-03",
+      "native_station_m": [
+        1450,
+        2050
+      ],
+      "name": "T6–7 descent",
+      "reviewed_video_seconds": [
+        117.2,
+        361,
+        365
+      ],
+      "observed": "A fast descent leads to a right corner. The grass bank sets a high horizon, with a distant stand above the barrier. Broad red-white kerbs, green paint and light gravel frame the braking zone.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "turkey-04",
+      "native_station_m": [
+        2050,
+        2850
+      ],
+      "name": "T8 multi-apexleft",
+      "reviewed_video_seconds": [
+        169.29,
+        265,
+        269,
+        273,
+        277,
+        281,
+        285,
+        533.92
+      ],
+      "observed": "The long multi-apex left follows an open hillside. A red-white inside kerb connects the apexes; wide gravel and a grass bank sit outside. Keep the outside protection curved and behind the escape area.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "turkey-05",
+      "native_station_m": [
+        2850,
+        3550
+      ],
+      "name": "T9–10 shortcomplex",
+      "reviewed_video_seconds": [
+        289,
+        293,
+        297,
+        377.65
+      ],
+      "observed": "Downhill braking followed by a left-right change. There are broad green painted aprons, dry grass banks, small marshal posts and distant stands. The reference shows a tall arched crossing nearby; its exact position needs separate registration.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "turkey-06",
+      "native_station_m": [
+        3550,
+        4550
+      ],
+      "name": "T11 fastkink and longstraight",
+      "reviewed_video_seconds": [
+        301,
+        305,
+        309,
+        313,
+        586.01,
+        690.19
+      ],
+      "observed": "An undulating straight and fast kink have broad grass verges and Armco set back from the road. The hill partly hides the horizon. Paddock buildings and a large roof stand appear on the approach, with distance boards before T12.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "turkey-07",
+      "native_station_m": [
+        4550,
+        5050
+      ],
+      "name": "T12–14 finalslowcomplex",
+      "reviewed_video_seconds": [
+        317,
+        321,
+        325,
+        742.28,
+        794.37
+      ],
+      "observed": "Tight left-right-left corners sit beside the pit and main stand. Paved and gravel escape areas surround the red-white kerbs and green paint. The control and hospitality buildings have angular stacked roofs and recessed glazing.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "turkey-08",
+      "native_station_m": [
+        5050,
+        5338
+      ],
+      "name": "Finalexit toSF",
+      "reviewed_video_seconds": [
+        429.74,
+        329,
+        333
+      ],
+      "observed": "The wide final exit joins the pit straight. A roofed crowd stand faces white garage fronts and projecting slabs. Grid marks and a fenced pit wall define the straight; grass embankments remain visible behind the facilities.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    }
+  ],
+  "primary_sources": [
+    {
+      "title": "Intercity operator presentation hosted Istanbul Chamber of Commerce",
+      "url": "https://www.ito.org.tr/documents/Duyurular/2022_dokumanlar/vweekend_sunum.pdf",
+      "supports": "5.338km;14corners;about60mrelief;8.145percent maxgradient. Width text14.5–21m, diagram14–21.5m."
+    },
+    {
+      "title": "Current TOSFED operator",
+      "url": "https://tosfedistanbulpark.com/",
+      "supports": "Venue identity,5.338km,14corners and official venue photos."
+    }
+  ],
+  "uncertainties": [
+    "RetainedGLO90relief35.3m conflicts with operator about60m; stationlocationsofcrests need onboard/map registration rather than uniform height scaling.",
+    "Original 12 m corner width conflicts with published14.5mminimum. Width14.5–21mtext versus14–21.5mdiagram disagreement is retained.",
+    "Retained raw GLO-90 samples span 109 to 146 m, a 37 m range. Smoothing reduces this to 35.31 m. That 1.69 m loss cannot explain the difference from the operator presentation, which describes about 60 m. No replacement racing-deck profile has been verified."
+  ]
+}

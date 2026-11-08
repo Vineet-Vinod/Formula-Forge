@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "circuit": "singapore",
+  "reference": "Saved/Refs/singapore.mp4",
+  "reference_pixels_shipped": false,
+  "appearance": "Dry night race; early qualifying clips show daylight/twilight and must not set main-race lighting.",
+  "layout_year": "2026 HUD,19-turn post2023layout; no old floating-stage23turn sequence.",
+  "native_station_frame": {
+    "length_m": 4940,
+    "origin": {
+      "latitude": 1.291408494648011,
+      "longitude": 103.86424467520384,
+      "meaning": "Local source origin at the point on the loop nearest the venue coordinate, after rotation to the start."
+    },
+    "approximate_start_finish_station_m": 0,
+    "start_finish_uncertainty_m": 75,
+    "side_convention": "Driver left/right in forward lap direction; geographic footprints retain source east/north coordinates."
+  },
+  "review": {
+    "overview_seconds": [
+      25.53,
+      127.63,
+      229.74,
+      331.85,
+      433.95,
+      536.06,
+      638.17,
+      740.27,
+      842.38,
+      944.49,
+      1046.6,
+      1148.7,
+      1250.81,
+      1352.92,
+      1455.02,
+      1557.13
+    ],
+    "detail_seconds": [
+      530,
+      534,
+      538,
+      542,
+      546,
+      550,
+      554,
+      558,
+      562,
+      566,
+      570,
+      574,
+      578,
+      582,
+      586,
+      590,
+      594,
+      598,
+      602,
+      606,
+      610,
+      614,
+      618,
+      622,
+      626,
+      630
+    ],
+    "method": "Viewed every frame of overview and detail contact sheets. Sparse review of edited gameplay; rear cameras, menus and cuts are excluded as metric geometry evidence.",
+    "whole_lap_sector_inventory": true,
+    "continuous_full_video_review": false,
+    "runtime_comparison_completed": false
+  },
+  "sectors": [
+    {
+      "id": "singapore-01",
+      "native_station_m": [
+        0,
+        750
+      ],
+      "name": "Pit straight and T1–3",
+      "reviewed_video_seconds": [
+        536.06,
+        530,
+        534,
+        538,
+        542,
+        566,
+        586,
+        590,
+        594,
+        598,
+        602,
+        608
+      ],
+      "observed": "Long white pit buildings face a covered red crowd stand, with bright paired floodlights and yellow pit-edge paint. The first complex has close mesh fences, individual red-white kerbs and paved escape lanes. The mapped pit footprint is on the driver left near native station 4896.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "singapore-02",
+      "native_station_m": [
+        750,
+        1500
+      ],
+      "name": "Republic Boulevard T4–5",
+      "reviewed_video_seconds": [
+        610,
+        614,
+        618,
+        622,
+        626,
+        630,
+        638.17
+      ],
+      "observed": "The Republic Boulevard walls and mesh sit close to the asphalt. Palms, broadleaf crowns and pale modern facades appear behind them. Long rows of floodlights continue overhead. Urban road markings and paved verges should remain visible.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "singapore-03",
+      "native_station_m": [
+        1500,
+        2200
+      ],
+      "name": "Raffles Boulevard T6–7",
+      "reviewed_video_seconds": [
+        842.38,
+        740.27
+      ],
+      "observed": "Glass office and hotel facades have repeated window mullions. Large yellow hatched junctions, city lamps and close barriers define Raffles Boulevard. Millenia, Suntec and Marina Square use their mapped positions, with trees breaking up the building walls.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "singapore-04",
+      "native_station_m": [
+        2200,
+        2700
+      ],
+      "name": "Stamford and Padang T8–9",
+      "reviewed_video_seconds": [
+        1148.7,
+        1250.81
+      ],
+      "observed": "The Old City Hall colonnade and former Supreme Court give the Padang section its pale civic architecture. A broad lawn and mature tree canopy sit behind close fencing. Low cricket and recreation clubs face them. Kerbs and yellow junction marks remain distinct.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "singapore-05",
+      "native_station_m": [
+        2700,
+        3100
+      ],
+      "name": "Anderson Bridge and Fullerton hairpin",
+      "reviewed_video_seconds": [
+        944.49,
+        1352.92
+      ],
+      "observed": "Anderson Bridge has narrow masonry edges and balustrades. Fullerton and the Waterboat House frame the riverfront turns, with heavy cornices, tall bays and trees. Escape areas remain paved beside these river walls.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "singapore-06",
+      "native_station_m": [
+        3100,
+        3850
+      ],
+      "name": "Esplanade Drive and Connaught",
+      "reviewed_video_seconds": [
+        433.95,
+        1455.02
+      ],
+      "observed": "Esplanade Drive and Connaught are broad paved streets beside grandstands and dense trees. The two spiked Esplanade shells sit beyond the route, with tall office towers and distant marina buildings above the floodlights. Asphalt and wall bases must stay readable at night.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "singapore-07",
+      "native_station_m": [
+        3850,
+        4500
+      ],
+      "name": "New waterfront straight and NS Square bypass",
+      "reviewed_video_seconds": [
+        1046.6,
+        1250.81
+      ],
+      "observed": "The current 19-turn layout has a straight past the NS Square construction area. White worksite walls, open skyline and the Singapore Flyer define it. Preserve this acceleration section and the paved areas behind mesh fencing.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "singapore-08",
+      "native_station_m": [
+        4500,
+        4940
+      ],
+      "name": "Final corners and pit complex",
+      "reviewed_video_seconds": [
+        530,
+        534,
+        538,
+        536.06
+      ],
+      "observed": "The Flyer wheel, low retail base, pit entry and terraces frame the final corners. Bright lights, compact red-white kerbs and yellow paved edges lead back to the white pit roof and main stand. Protection should follow the final curves continuously.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    }
+  ],
+  "primary_sources": [
+    {
+      "title": "FIA Singapore GP2025map",
+      "url": "https://www.fia.com/system/files/decision-document/2025_singapore_grand_prix_-_event_notes_-_circuit_map_pit_lane_emergency_exits_map_and_quarantine_zone.pdf",
+      "supports": "Current19-turn route and official pit/exit layout."
+    },
+    {
+      "title": "Singapore GP2024promoter map",
+      "url": "https://s3.eu-central-1.amazonaws.com/gpt-v2-img/img/events/en_7065_2024_CircuitParkMap.pdf",
+      "supports": "Operator-produced grandstand and landmark map; hosted distributor copy, date explicit."
+    },
+    {
+      "title": "Singapore Flyer operator dimensions",
+      "url": "https://www.singaporeflyer.com/en/fun-facts",
+      "supports": "150 m wheel diameter, 165 m total height, 28 capsules, each 4 by 7 m."
+    },
+    {
+      "title": "Arup Marina Bay Sands engineering project",
+      "url": "https://www.arup.com/projects/marina-bay-sands-integrated-resort/",
+      "supports": "Three towers and the 340 by 38 m SkyPark, 200 m above ground."
+    },
+    {
+      "title": "Esplanade architecture",
+      "url": "https://www.esplanade.com/about-us/our-story/architecture",
+      "supports": "Two glazed shell roofs with projecting aluminium sunshades."
+    }
+  ],
+  "uncertainties": [
+    "Retained GLO-90 surface heights are not road levels amid buildings/trees; no city rooftop spikes in road.",
+    "OSMheight0is unknown placeholder on several landmarks, not evidence to omit skyline.",
+    "Flyer retail footprint height0does not represent wheel; Esplanade compound and35mroofparts require domes, not a single rectangular extrusion."
+  ]
+}

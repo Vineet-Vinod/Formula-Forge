@@ -1,0 +1,212 @@
+{
+  "schema_version": 1,
+  "circuit": "bahrain",
+  "reference": "Saved/Refs/bahrain.mp4",
+  "reference_pixels_shipped": false,
+  "appearance": "Dry night race; qualifying and introductions also include twilight.",
+  "layout_year": "2026 HUD; temporary advertising is game footage, not a surveyed event plan.",
+  "native_station_frame": {
+    "length_m": 5412,
+    "origin": {
+      "latitude": 26.032505437853647,
+      "longitude": 50.51049452512804,
+      "meaning": "Local source origin at the point on the loop nearest the venue coordinate, after rotation to the start."
+    },
+    "approximate_start_finish_station_m": 0,
+    "start_finish_uncertainty_m": 75,
+    "side_convention": "Driver left/right in forward lap direction; geographic footprints retain source east/north coordinates."
+  },
+  "review": {
+    "overview_seconds": [
+      21.04,
+      105.2,
+      189.36,
+      273.52,
+      357.68,
+      441.84,
+      526.0,
+      610.17,
+      694.33,
+      778.49,
+      862.65,
+      946.81,
+      1030.97,
+      1115.13,
+      1199.29,
+      1283.45
+    ],
+    "detail_seconds": [
+      90,
+      95,
+      100,
+      105,
+      110,
+      115,
+      120,
+      125,
+      130,
+      135,
+      140,
+      145,
+      150,
+      155,
+      160,
+      165,
+      170,
+      175,
+      180,
+      185,
+      190,
+      195,
+      200,
+      205
+    ],
+    "method": "Viewed every frame of overview and detail contact sheets. Sparse review of edited gameplay; rear cameras, menus and cuts are excluded as metric geometry evidence.",
+    "whole_lap_sector_inventory": true,
+    "continuous_full_video_review": false,
+    "runtime_comparison_completed": false
+  },
+  "sectors": [
+    {
+      "id": "bahrain-01",
+      "native_station_m": [
+        0,
+        650
+      ],
+      "name": "Pit straight and T1–3",
+      "reviewed_video_seconds": [
+        189.36,
+        195,
+        200,
+        205,
+        357.68,
+        526
+      ],
+      "observed": "Left main grandstand and first-turn stand; right long white pit/hospitality and Sakhir Tower. Red-white kerbs, broad coloured paved T1 escape, sand beyond. Keep braking 150/100/50 boards before T1 and protection behind runoff.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "bahrain-02",
+      "native_station_m": [
+        650,
+        1450
+      ],
+      "name": "T3 climb, first back straight and T4",
+      "reviewed_video_seconds": [
+        441.84,
+        862.65
+      ],
+      "observed": "University stands outside opening sequence, sandy banks, fenced dry infield. Broad outer asphalt at T4, narrow inner red-white kerb, green and blue painted shoulders. Floodlight heads remain visible above the horizon.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "bahrain-03",
+      "native_station_m": [
+        1450,
+        2100
+      ],
+      "name": "T5–8 linked infield bends",
+      "reviewed_video_seconds": [
+        105.2,
+        100,
+        105,
+        110,
+        778.49
+      ],
+      "observed": "Low fast left/right sequence descends through open sand; short grass/painted strips immediately outside red-white kerbs, larger coloured asphalt where a car continues straight. Avoid uniform gravel strips around every bend.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "bahrain-04",
+      "native_station_m": [
+        2100,
+        2650
+      ],
+      "name": "T9–10 downhill left braking",
+      "reviewed_video_seconds": [
+        115,
+        694.33
+      ],
+      "observed": "Slow left apex below approach; large tan/sandy outside with coloured asphalt bordering road. Low barriers set back behind escape area, bright vertical light poles; few distant palms.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "bahrain-05",
+      "native_station_m": [
+        2650,
+        3450
+      ],
+      "name": "Inner straight and T11",
+      "reviewed_video_seconds": [
+        610.17,
+        946.81
+      ],
+      "observed": "Batelco spectator structure is right of inner straight near station2790. Straight Armco/mesh protection, beige dry expanse, asphalt escape at left-hand entry. Keep stand geometry above wall visible.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "bahrain-06",
+      "native_station_m": [
+        3450,
+        4050
+      ],
+      "name": "T12–13 fast right rise",
+      "reviewed_video_seconds": [
+        862.65,
+        1030.97
+      ],
+      "observed": "Open rising sandy ground, red-white inside kerb and coloured paved outside transition. Track floodlighting, low guardrail/tyre backing rather than roadside buildings on both sides.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "bahrain-07",
+      "native_station_m": [
+        4050,
+        4900
+      ],
+      "name": "Back straight and final right T14–15",
+      "reviewed_video_seconds": [
+        1115.13,
+        155,
+        160,
+        165
+      ],
+      "observed": "Long open straight toward white pointed canopy cluster; Victory stands outside final bend. Red-white apex, wide dark/blue-green escape with sand behind; lamps on both sides. Preserve long braking sightline.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    },
+    {
+      "id": "bahrain-08",
+      "native_station_m": [
+        4900,
+        5412
+      ],
+      "name": "Final exit and pit approach",
+      "reviewed_video_seconds": [
+        120,
+        125,
+        130,
+        170,
+        185,
+        190
+      ],
+      "observed": "Mainstand left, pit hospitality right, slim green verge adjoining road; repeated white roofs and lit fences dominate return. Continuous ground contact at pit wall; no misplaced blocks in driving lane.",
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+    }
+  ],
+  "primary_sources": [
+    {
+      "title": "Bahrain International Circuit operator track hire",
+      "url": "https://www.bahraingp.com/corporate-sales/track-hire/",
+      "supports": "15 turns; stated 18 m relief, 1090 m pit straight; floodlit operation."
+    },
+    {
+      "title": "Operator event overview",
+      "url": "https://www.bahraingp.com/blog/events/event-overview-2026/",
+      "supports": "Grandstand names and event viewing areas."
+    }
+  ],
+  "uncertainties": [
+    "Retained GLO-90 profile has 19.736 m relief; operator gives 18 m. These are different accuracy levels, not permission to stretch individual crests arbitrarily.",
+    "Default generic shoulders miss large blue/green/red painted asphalt escape areas and their sand outside."
+  ]
+}

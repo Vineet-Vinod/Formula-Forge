@@ -1,0 +1,19 @@
+{
+  "provider": "OpenStreetMap contributors",
+  "endpoint": "https://overpass-api.de/api/interpreter",
+  "query": "[out:json][timeout:60];(nwr[\"amenity\"=\"casino\"](45.497,-73.530,45.511,-73.515);relation[\"building\"](45.502,-73.527,45.509,-73.520);way[\"building:part\"](45.502,-73.527,45.509,-73.520););out geom;",
+  "retrieved": "2026-11-08",
+  "licence": "ODbL1.0",
+  "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "file": "environment.osm.json.gz",
+  "sha256": "79e518d15eb30b44edb98a0cb505932f08b92189c95010a9fafa466b0d9d939b",
+  "purpose": "Tightly bounded essential landmark query; inline member geometry preserved.",
+  "additional_queries": [
+    {
+      "endpoint": "https://overpass-api.de/api/interpreter",
+      "query": "[out:json][timeout:60];(way[\"natural\"=\"water\"](45.492,-73.532,45.516,-73.514);relation[\"natural\"=\"water\"](45.492,-73.532,45.516,-73.514););out geom;",
+      "retrieved": "2026-11-08",
+      "purpose": "Bounded AlbertParklake/IleNotreDamewaterfrontgeometry; no video pixels."
+    }
+  ]
+}

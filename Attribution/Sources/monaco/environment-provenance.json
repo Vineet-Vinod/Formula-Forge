@@ -1,0 +1,11 @@
+{
+  "provider": "OpenStreetMap contributors",
+  "endpoint": "https://overpass-api.de/api/interpreter",
+  "query": "[out:json][timeout:60];(way[\"building\"](43.7375,7.4258,43.7414,7.4310);relation[\"building\"](43.7375,7.4258,43.7414,7.4310);way[\"building:part\"](43.7375,7.4258,43.7414,7.4310);relation[\"building:part\"](43.7375,7.4258,43.7414,7.4310);nwr[\"amenity\"=\"casino\"](43.7375,7.4258,43.7414,7.4310);node[\"tourism\"=\"hotel\"](43.7375,7.4258,43.7414,7.4310););out geom;",
+  "retrieved": "2026-11-08",
+  "licence": "ODbL1.0",
+  "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "file": "environment.osm.json.gz",
+  "sha256": "202d6992c97fad3c1a347772157d52d25d19fd380303d4595c6c4f9ef96d8888",
+  "purpose": "Tightly bounded essential landmark query; inline member geometry preserved."
+}

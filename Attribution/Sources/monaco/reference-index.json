@@ -1,0 +1,225 @@
+{
+  "schema_version": 1,
+  "circuit": "monaco",
+  "reference_file": "Saved/Refs/monaco.mp4",
+  "reference_sha256": "010bbc56c79bc3d3388718a301957fb380bfbb7a2f63839e9b37447eb4042a99",
+  "layout_observed": "Monaco Grand Prix 3.337km/19-corner street circuit; tunnel below the Fairmont complex.",
+  "lighting_weather_observed": "Bright daytime with intermittent clouds.",
+  "review_scope": "16 sparse overview frames plus24detail frames330\u2013606seconds viewed. Edited race montage with cuts; timestamps are not lap station fractions.",
+  "frame_index_file": "build/reviews/monaco/reference/overview-index.json",
+  "reviewed_visual_evidence": [
+    {
+      "time_s": 97.9,
+      "reviewed": true,
+      "notes": "Pit straight and Sainte-D\u00e9vote: Stands and stone/pink apartment tiers frame the uphill opening. Pit/service bars, marina edge, Armco and high mesh fence. Sainte-D\u00e9vote needs its opening/runoff access, not a solid urban wall."
+    },
+    {
+      "time_s": 727.19,
+      "reviewed": true,
+      "notes": "Pit straight and Sainte-D\u00e9vote: Stands and stone/pink apartment tiers frame the uphill opening. Pit/service bars, marina edge, Armco and high mesh fence. Sainte-D\u00e9vote needs its opening/runoff access, not a solid urban wall."
+    },
+    {
+      "time_s": 906.98,
+      "reviewed": true,
+      "notes": "Pit straight and Sainte-D\u00e9vote: Stands and stone/pink apartment tiers frame the uphill opening. Pit/service bars, marina edge, Armco and high mesh fence. Sainte-D\u00e9vote needs its opening/runoff access, not a solid urban wall."
+    },
+    {
+      "time_s": 817.08,
+      "reviewed": true,
+      "notes": "Beau Rivage, Massenet and Casino: Steep uphill street with continuous inhabited facades, stepped retaining walls, trees and upper hillside apartments. Casino/Hotel de Paris geometry needs targeted review; overview has no reliable close view."
+    },
+    {
+      "time_s": 637.29,
+      "reviewed": true,
+      "notes": "Mirabeau, Fairmont and Portier: Tight descending sequence between pale hotel/apartment walls and planted terraces; palms and close red/white kerbs. Fairmont compound is a broad terraced hotel, not a freestanding tower. Bridge/overhang near hairpin seen, exact assignment needs registration."
+    },
+    {
+      "time_s": 1176.68,
+      "reviewed": true,
+      "notes": "Mirabeau, Fairmont and Portier: Tight descending sequence between pale hotel/apartment walls and planted terraces; palms and close red/white kerbs. Fairmont compound is a broad terraced hotel, not a freestanding tower. Bridge/overhang near hairpin seen, exact assignment needs registration."
+    },
+    {
+      "time_s": 367.59,
+      "reviewed": true,
+      "notes": "Tunnel: Road is below the Fairmont podium and sea-facing gallery. Preserve drivable deck elevation independently from roof heights. Overview does not directly show interior lighting, so tunnel cross-section/portal details need targeted frames."
+    },
+    {
+      "time_s": 457.49,
+      "reviewed": true,
+      "notes": "Nouvelle chicane and harbour edge: Harbour yachts, masts and large moored vessel silhouettes, steep apartment-covered slopes behind. Exposed pale rock cliff/retaining wall on inland side; red/white chicane islands and close Armco."
+    },
+    {
+      "time_s": 547.39,
+      "reviewed": true,
+      "notes": "Nouvelle chicane and harbour edge: Harbour yachts, masts and large moored vessel silhouettes, steep apartment-covered slopes behind. Exposed pale rock cliff/retaining wall on inland side; red/white chicane islands and close Armco."
+    },
+    {
+      "time_s": 996.88,
+      "reviewed": true,
+      "notes": "Tabac and swimming pool: Marina water and yachts opposite close white multi-level balcony facades and apartment terraces. Low harbour structures and grandstands; linked short kerbs with narrow escape corridors."
+    },
+    {
+      "time_s": 1086.78,
+      "reviewed": true,
+      "notes": "Tabac and swimming pool: Marina water and yachts opposite close white multi-level balcony facades and apartment terraces. Low harbour structures and grandstands; linked short kerbs with narrow escape corridors."
+    },
+    {
+      "time_s": 1266.58,
+      "reviewed": true,
+      "notes": "Rascasse, Antony Nogh\u00e8s and pits: Constricted final turns between harbour hospitality and pit structures; roof/canopy layering, guardrail returns and pedestrian gaps. Final corner feeds directly into confined pit straight."
+    }
+  ],
+  "registration": {
+    "coordinate_system": "Provenance local tangent plane x east, y north; route uniform_scale applied.",
+    "station_origin": "Retained native Centerline first point; not assumed start/finish.",
+    "route_length_m": 3337,
+    "method": "Named OSM raceway ways projected to nearest retained centerline sample; other corners matched by route shape and official circuit map. Sector boundaries approximate, not surveyed kerb endpoints. Video time is never treated as station.",
+    "named_way_controls": [
+      {
+        "osm_id": 850261588,
+        "name": "Voie des stands",
+        "station_mid_m": 2878.11,
+        "station_min_m": 28.18,
+        "station_max_m": 3324.92,
+        "maximum_projection_distance_m": 28.92
+      },
+      {
+        "osm_id": 1081401613,
+        "name": "Circuit de Monaco",
+        "station_mid_m": 2181.73,
+        "station_min_m": 2153.55,
+        "station_max_m": 2226.01,
+        "maximum_projection_distance_m": 2.03
+      },
+      {
+        "osm_id": 1081401614,
+        "name": "Circuit de Monaco",
+        "station_mid_m": 2620.49,
+        "station_min_m": 2572.19,
+        "station_max_m": 2648.67,
+        "maximum_projection_distance_m": 1.76
+      },
+      {
+        "osm_id": 1081401615,
+        "name": "Circuit de Monaco",
+        "station_mid_m": 2805.66,
+        "station_min_m": 2729.17,
+        "station_max_m": 2962.64,
+        "maximum_projection_distance_m": 2.14
+      },
+      {
+        "osm_id": 1081401616,
+        "name": "Circuit de Monaco",
+        "station_mid_m": 257.62,
+        "station_min_m": 217.37,
+        "station_max_m": 309.95,
+        "maximum_projection_distance_m": 2.08
+      },
+      {
+        "osm_id": 1081401617,
+        "name": "Circuit de Monaco",
+        "station_mid_m": 3059.25,
+        "station_min_m": 3023.02,
+        "station_max_m": 3075.35,
+        "maximum_projection_distance_m": 1.86
+      },
+      {
+        "osm_id": 1148199871,
+        "name": "Circuit de Monaco",
+        "station_mid_m": 1489.37,
+        "station_min_m": 1481.32,
+        "station_max_m": 1505.47,
+        "maximum_projection_distance_m": 1.83
+      },
+      {
+        "osm_id": 1388331347,
+        "name": "Sortie des stands",
+        "station_mid_m": 277.75,
+        "station_min_m": 217.37,
+        "station_max_m": 309.95,
+        "maximum_projection_distance_m": 13.83
+      },
+      {
+        "osm_id": 1470365906,
+        "name": "Circuit de Monaco",
+        "station_mid_m": 1461.2,
+        "station_min_m": 1441.07,
+        "station_max_m": 1461.2,
+        "maximum_projection_distance_m": 1.68
+      },
+      {
+        "osm_id": 1470365907,
+        "name": "Circuit de Monaco",
+        "station_mid_m": 1473.27,
+        "station_min_m": 1461.2,
+        "station_max_m": 1481.32,
+        "maximum_projection_distance_m": 1.74
+      }
+    ],
+    "start_finish_native_station_m": 50.0,
+    "start_finish_method": "Approximate publishedprofilechartregistration against SainteD\u00e9vote,Casino,Portier,AntonyNogh\u00e8s; see elevation-corrections.json."
+  },
+  "primary_sources": [
+    {
+      "url": "https://www.fia.com/system/files/decision-document/2025_monaco_event_-_circuit_map_-_monaco_2025_revised_0.pdf",
+      "use": "Official layout/venue architecture; source year can differ from video."
+    },
+    {
+      "url": "https://asset.montecarlosbm.com/pdf/GP2025/SBM_BROCHURE_GP_2025_UK.pdf",
+      "use": "Official layout/venue architecture; source year can differ from video."
+    }
+  ],
+  "uncertainties": [
+    "Exact filming lap/year is not established unless visible title/HUD identifies it.",
+    "Overview observations establish visual vocabulary; every individual asset position requires footprint/map registration.",
+    "No high-resolution raster or orthophoto added by this reference review."
+  ],
+  "additional_reviewed_visual_evidence": [
+    {
+      "time_s": 330,
+      "notes": "Casino Square/Hotel de Paris pale ornate facade: repeated arched lower bays, recessed dark glazing, classical pilasters/cornices and palms."
+    },
+    {
+      "time_s": 414,
+      "notes": "Tunnel interior: low white panel ceiling, rectangular pale tiled walls, repeated fluorescent bars and close Armco."
+    },
+    {
+      "time_s": 450,
+      "notes": "Tunnel curve visible continuously under white ceiling; wall tile grid and continuous safety rail."
+    },
+    {
+      "time_s": 534,
+      "notes": "Fairmont hairpin: white layered projecting balcony slabs, recessed dark glazing, palms at apex terrace and tight red/white kerb."
+    },
+    {
+      "time_s": 558,
+      "notes": "Tunnel exit portal: dark underside and piers giving way to daylight, wall/ad panels at road edge."
+    }
+  ],
+  "reviewed_detail_times_s": [
+    330,
+    342,
+    354,
+    366,
+    378,
+    390,
+    402,
+    414,
+    426,
+    438,
+    450,
+    462,
+    474,
+    486,
+    498,
+    510,
+    522,
+    534,
+    546,
+    558,
+    570,
+    582,
+    594,
+    606
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "provider": "Copernicus DEM, distributed through AWS Open Data",
+  "dataset": "GLO-30 DSM",
+  "source_url": "https://copernicus-dem-30m.s3.eu-central-1.amazonaws.com/Copernicus_DSM_COG_10_N37_00_W009_00_DEM/Copernicus_DSM_COG_10_N37_00_W009_00_DEM.tif",
+  "source_info": "https://registry.opendata.aws/copernicus-dem/",
+  "documentation": "https://copernicus-dem-90m.s3.amazonaws.com/readme.html",
+  "retained_window": "elevation/scenery_dem.tif",
+  "sha256": "c5395dc4a6ba494553406632bd632596b47e48ede03a8f225c2b3fb2096b5c6b",
+  "grid_spacing_m": 12,
+  "source_resolution_m": 30,
+  "relative_datum_m": 96.43716359321289,
+  "datum_method": "Median offset to unchanged native road profile at 256 stations.",
+  "use": "Surrounding landscape only, bilinearly resampled; not a racing-deck or bare-earth survey. Road-adjacent ground joins the existing road plane.",
+  "terrain_sha256": "a8e223c0d18b17beb5449bc93e3ff488943ecd100a5238a83cf8866257be6fd2"
+}

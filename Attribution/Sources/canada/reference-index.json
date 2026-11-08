@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "circuit": "canada",
+  "reference_file": "Saved/Refs/canada.mp4",
+  "reference_sha256": "ce9588c3b1093b42927ddf5e72059c3340a11fbc6bb2876c2eca60a3d9715f18",
+  "layout_observed": "Gilles-Villeneuve Grand Prix circuit, 14 corners; island road course.",
+  "lighting_weather_observed": "Day; wet qualifying/race followed by later dry overcast shots.",
+  "review_scope": "16 sparse overview frames viewed by author. Clip is an edited career/race montage, includes menus/cuts and changing conditions; not a continuous lap. Unviewed timestamps are not evidence.",
+  "frame_index_file": "build/reviews/canada/reference/overview-index.json",
+  "reviewed_visual_evidence": [
+    {
+      "time_s": 190.12,
+      "reviewed": true,
+      "notes": "Pits and Senna S: Long gray glazed paddock/garage bar opposite covered stands. Senna S backed by open metal bleachers and flags. Close walls, short grass, red/white kerbs."
+    },
+    {
+      "time_s": 281.18,
+      "reviewed": true,
+      "notes": "Pits and Senna S: Long gray glazed paddock/garage bar opposite covered stands. Senna S backed by open metal bleachers and flags. Close walls, short grass, red/white kerbs."
+    },
+    {
+      "time_s": 554.36,
+      "reviewed": true,
+      "notes": "T3/T4 to T6/T7: Tight tree-lined chicane corridor; concrete panels and tall catch fencing close to asphalt. Mature deciduous canopy, service access gaps and occasional bridge structures."
+    },
+    {
+      "time_s": 827.53,
+      "reviewed": true,
+      "notes": "T3/T4 to T6/T7: Tight tree-lined chicane corridor; concrete panels and tall catch fencing close to asphalt. Mature deciduous canopy, service access gaps and occasional bridge structures."
+    },
+    {
+      "time_s": 918.59,
+      "reviewed": true,
+      "notes": "Island middle straight and T8/T9: Flat island woodland, catch fence, short verges, overhead bridge/catwalk. Long forest views; do not line this stretch with city towers."
+    },
+    {
+      "time_s": 1009.65,
+      "reviewed": true,
+      "notes": "Island middle straight and T8/T9: Flat island woodland, catch fence, short verges, overhead bridge/catwalk. Long forest views; do not line this stretch with city towers."
+    },
+    {
+      "time_s": 99.06,
+      "reviewed": true,
+      "notes": "Hairpin stadium: Tight hairpin with grass on inside and large open unroofed metal grandstands surrounding the outside. Gray stair aisles and flagpoles; small flat-roof race-service tower."
+    },
+    {
+      "time_s": 645.41,
+      "reviewed": true,
+      "notes": "Hairpin stadium: Tight hairpin with grass on inside and large open unroofed metal grandstands surrounding the outside. Gray stair aisles and flagpoles; small flat-roof race-service tower."
+    },
+    {
+      "time_s": 736.47,
+      "reviewed": true,
+      "notes": "Hairpin stadium: Tight hairpin with grass on inside and large open unroofed metal grandstands surrounding the outside. Gray stair aisles and flagpoles; small flat-roof race-service tower."
+    },
+    {
+      "time_s": 1282.83,
+      "reviewed": true,
+      "notes": "Casino straight: Long fenced tree avenue and steel bridge crossing; Montreal casino asymmetric white structural silhouette appears beyond park, not an arbitrary tower wall. Narrow grass shoulders with wall protection."
+    },
+    {
+      "time_s": 1100.71,
+      "reviewed": true,
+      "notes": "Final chicane and pit return: Close final chicane wall, red/white apex kerb, green/blue wall panels and forest behind. Kerb and exit walls must follow the linked left-right geometry."
+    },
+    {
+      "time_s": 1191.77,
+      "reviewed": true,
+      "notes": "Final chicane and pit return: Close final chicane wall, red/white apex kerb, green/blue wall panels and forest behind. Kerb and exit walls must follow the linked left-right geometry."
+    }
+  ],
+  "registration": {
+    "coordinate_system": "Provenance local tangent plane x east, y north; route uniform_scale applied.",
+    "station_origin": "Retained native Centerline first point; not assumed start/finish.",
+    "route_length_m": 4361,
+    "method": "Named OSM raceway ways projected to nearest retained centerline sample; other corners matched by route shape and official circuit map. Sector boundaries approximate, not surveyed kerb endpoints. Video time is never treated as station.",
+    "named_way_controls": [
+      {
+        "osm_id": 136717490,
+        "name": "Circuit Gilles-Villeneuve",
+        "station_mid_m": 1383.05,
+        "station_min_m": 55.96,
+        "station_max_m": 4017.24,
+        "maximum_projection_distance_m": 2.08
+      }
+    ]
+  },
+  "primary_sources": [
+    {
+      "url": "https://gpcanada.ca/",
+      "use": "Official layout/venue architecture; source year can differ from video."
+    }
+  ],
+  "uncertainties": [
+    "Exact filming lap/year is not established unless visible title/HUD identifies it.",
+    "Overview observations establish visual vocabulary; every individual asset position requires footprint/map registration.",
+    "No high-resolution raster or orthophoto added by this reference review."
+  ]
+}

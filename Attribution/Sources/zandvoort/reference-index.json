@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "circuit": "zandvoort",
+  "reference_file": "Saved/Refs/zandvoort.mp4",
+  "reference_sha256": "0b1ffb15bd50a53f4333f68e139bdb6faa0cfa8458ce972733a6fe18893884a9",
+  "layout_observed": "Modern 4.259km Dutch GP layout with banked Hugenholtz T3 and Arie Luyendyk T14.",
+  "lighting_weather_observed": "Cloudy daytime, changing patches of wet/dry road.",
+  "review_scope": "16 sparse overview frames viewed by author. Clip is an edited career/race montage, includes menus/cuts and changing conditions; not a continuous lap. Unviewed timestamps are not evidence.",
+  "frame_index_file": "build/reviews/zandvoort/reference/overview-index.json",
+  "reviewed_visual_evidence": [
+    {
+      "time_s": 80.9,
+      "reviewed": true,
+      "notes": "Main straight and Tarzan: Long angled/cantilever main-stand roof opposite banded glass/gray pit building; white concrete walls and flags. Tarzan broad outer gravel and banked road with red/white kerbs."
+    },
+    {
+      "time_s": 591.23,
+      "reviewed": true,
+      "notes": "Main straight and Tarzan: Long angled/cantilever main-stand roof opposite banded glass/gray pit building; white concrete walls and flags. Tarzan broad outer gravel and banked road with red/white kerbs."
+    },
+    {
+      "time_s": 955.76,
+      "reviewed": true,
+      "notes": "Main straight and Tarzan: Long angled/cantilever main-stand roof opposite banded glass/gray pit building; white concrete walls and flags. Tarzan broad outer gravel and banked road with red/white kerbs."
+    },
+    {
+      "time_s": 153.81,
+      "reviewed": true,
+      "notes": "Gerlach, Hugenholtz and Hunserug: Deeply banked hairpin in sandy dunes; outside gravel, grass/sand retaining slopes and low advertised protection. Grandstands cluster around this opening complex."
+    },
+    {
+      "time_s": 518.33,
+      "reviewed": true,
+      "notes": "Gerlach, Hugenholtz and Hunserug: Deeply banked hairpin in sandy dunes; outside gravel, grass/sand retaining slopes and low advertised protection. Grandstands cluster around this opening complex."
+    },
+    {
+      "time_s": 226.71,
+      "reviewed": true,
+      "notes": "Slotemaker and Scheivlak: Sunken road between wavy dune crests, patchy dry grass, sand exposures and scattered shrubs. Preserve blind rises and falls; no continuous tall forest wall."
+    },
+    {
+      "time_s": 372.52,
+      "reviewed": true,
+      "notes": "Slotemaker and Scheivlak: Sunken road between wavy dune crests, patchy dry grass, sand exposures and scattered shrubs. Preserve blind rises and falls; no continuous tall forest wall."
+    },
+    {
+      "time_s": 664.14,
+      "reviewed": true,
+      "notes": "Masters and middle dune corners: Medium-speed bends hug high dune banks; blue/yellow wall panels, red/white kerbs, outside gravel pockets and scrub. Open stands/temporary tents on hilltops."
+    },
+    {
+      "time_s": 809.95,
+      "reviewed": true,
+      "notes": "Masters and middle dune corners: Medium-speed bends hug high dune banks; blue/yellow wall panels, red/white kerbs, outside gravel pockets and scrub. Open stands/temporary tents on hilltops."
+    },
+    {
+      "time_s": 882.85,
+      "reviewed": true,
+      "notes": "Hans Ernst chicane: Short linked slower corners, local gravel and green/painted paved margins, grandstands and fence close to the exit. Preserve linked apex geometry without decorative islands across escape."
+    },
+    {
+      "time_s": 299.62,
+      "reviewed": true,
+      "notes": "Kumho and banked Arie Luyendyk: Final sweeping banked corner feeds main straight; tall outside SAFER protection, grandstand mass and pits visible beyond. T14 official banking18degrees; zero-bank source cannot be retained."
+    },
+    {
+      "time_s": 737.04,
+      "reviewed": true,
+      "notes": "Kumho and banked Arie Luyendyk: Final sweeping banked corner feeds main straight; tall outside SAFER protection, grandstand mass and pits visible beyond. T14 official banking18degrees; zero-bank source cannot be retained."
+    }
+  ],
+  "registration": {
+    "coordinate_system": "Provenance local tangent plane x east, y north; route uniform_scale applied.",
+    "station_origin": "Retained native Centerline first point; not assumed start/finish.",
+    "route_length_m": 4259,
+    "method": "Named OSM raceway ways projected to nearest retained centerline sample; other corners matched by route shape and official circuit map. Sector boundaries approximate, not surveyed kerb endpoints. Video time is never treated as station.",
+    "named_way_controls": [
+      {
+        "osm_id": 38144527,
+        "name": "Pitstraat",
+        "station_mid_m": 232.16,
+        "station_min_m": 48.03,
+        "station_max_m": 4230.98,
+        "maximum_projection_distance_m": 16.7
+      },
+      {
+        "osm_id": 1311522212,
+        "name": "Tarzanbocht",
+        "station_mid_m": 400.28,
+        "station_min_m": 336.24,
+        "station_max_m": 464.33,
+        "maximum_projection_distance_m": 1.93
+      },
+      {
+        "osm_id": 1311522214,
+        "name": "Gerlachbocht",
+        "station_mid_m": 724.51,
+        "station_min_m": 700.49,
+        "station_max_m": 756.53,
+        "maximum_projection_distance_m": 1.85
+      },
+      {
+        "osm_id": 1311522216,
+        "name": "Hugenholtzbocht",
+        "station_mid_m": 872.61,
+        "station_min_m": 808.57,
+        "station_max_m": 940.66,
+        "maximum_projection_distance_m": 1.95
+      },
+      {
+        "osm_id": 1311522217,
+        "name": "Hunserug",
+        "station_mid_m": 1096.77,
+        "station_min_m": 940.66,
+        "station_max_m": 1216.86,
+        "maximum_projection_distance_m": 1.92
+      },
+      {
+        "osm_id": 1311522218,
+        "name": "Slotemakerbocht",
+        "station_mid_m": 1368.96,
+        "station_min_m": 1216.86,
+        "station_max_m": 1533.08,
+        "maximum_projection_distance_m": 1.97
+      },
+      {
+        "osm_id": 1311566937,
+        "name": "Scheivlak",
+        "station_mid_m": 1729.22,
+        "station_min_m": 1601.13,
+        "station_max_m": 1837.29,
+        "maximum_projection_distance_m": 1.98
+      },
+      {
+        "osm_id": 1311566940,
+        "name": "Mastersbocht",
+        "station_mid_m": 2077.46,
+        "station_min_m": 2033.43,
+        "station_max_m": 2165.53,
+        "maximum_projection_distance_m": 1.87
+      },
+      {
+        "osm_id": 1311802779,
+        "name": "Hans Ernst chicane",
+        "station_mid_m": 3186.24,
+        "station_min_m": 3106.19,
+        "station_max_m": 3258.3,
+        "maximum_projection_distance_m": 2.0
+      },
+      {
+        "osm_id": 1311879069,
+        "name": "Arie Luyendykbocht",
+        "station_mid_m": 3786.67,
+        "station_min_m": 3658.58,
+        "station_max_m": 3922.76,
+        "maximum_projection_distance_m": 1.97
+      },
+      {
+        "osm_id": 1313671990,
+        "name": "CM.com Circuit Zandvoort",
+        "station_mid_m": 700.49,
+        "station_min_m": 656.46,
+        "station_max_m": 700.49,
+        "maximum_projection_distance_m": 1.88
+      }
+    ]
+  },
+  "primary_sources": [
+    {
+      "url": "https://www.circuitzandvoort.nl/en/corners/",
+      "use": "Official layout/venue architecture; source year can differ from video."
+    },
+    {
+      "url": "https://www.circuitzandvoort.nl/en/presentation/",
+      "use": "Official layout/venue architecture; source year can differ from video."
+    }
+  ],
+  "uncertainties": [
+    "Exact filming lap/year is not established unless visible title/HUD identifies it.",
+    "Overview observations establish visual vocabulary; every individual asset position requires footprint/map registration.",
+    "No high-resolution raster or orthophoto added by this reference review."
+  ]
+}

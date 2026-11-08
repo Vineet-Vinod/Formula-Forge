@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "circuit": "austria",
+  "reference_file": "Saved/Refs/austria.mp4",
+  "reference_sha256": "689444ee4524973ee08fdc2890a39da48b3557672fa3718a7e9c5215a37c3c2d",
+  "layout_observed": "Red Bull Ring F1 10-corner layout; exclude MotoGP-only chicane at approximately823m.",
+  "lighting_weather_observed": "Predominantly wet/overcast with low cloud over wooded hills.",
+  "review_scope": "16 sparse overview frames viewed by author. Clip is an edited career/race montage, includes menus/cuts and changing conditions; not a continuous lap. Unviewed timestamps are not evidence.",
+  "frame_index_file": "build/reviews/austria/reference/overview-index.json",
+  "reviewed_visual_evidence": [
+    {
+      "time_s": 220.27,
+      "reviewed": true,
+      "notes": "Main straight and Niki Lauda T1: Long red-seated covered main stand opposite tiered glazed pits. Outside T1 hillside grandstand; broad red/white kerbs and corner-specific painted/asphalt escape beyond steep grass banks."
+    },
+    {
+      "time_s": 291.03,
+      "reviewed": true,
+      "notes": "Main straight and Niki Lauda T1: Long red-seated covered main stand opposite tiered glazed pits. Outside T1 hillside grandstand; broad red/white kerbs and corner-specific painted/asphalt escape beyond steep grass banks."
+    },
+    {
+      "time_s": 574.06,
+      "reviewed": true,
+      "notes": "Main straight and Niki Lauda T1: Long red-seated covered main stand opposite tiered glazed pits. Outside T1 hillside grandstand; broad red/white kerbs and corner-specific painted/asphalt escape beyond steep grass banks."
+    },
+    {
+      "time_s": 78.76,
+      "reviewed": true,
+      "notes": "Uphill to Remus T3: Steep uphill road with conifer woodland and grass embankments, outside open bleachers at hairpin. Wide red-painted/red-white escape apron at braking zone; no F1 chicane midway up."
+    },
+    {
+      "time_s": 361.79,
+      "reviewed": true,
+      "notes": "Uphill to Remus T3: Steep uphill road with conifer woodland and grass embankments, outside open bleachers at hairpin. Wide red-painted/red-white escape apron at braking zone; no F1 chicane midway up."
+    },
+    {
+      "time_s": 432.54,
+      "reviewed": true,
+      "notes": "Downhill Schlossgold T4: Strong downhill grade and open valley views; forests beyond. Infield Red Bull bull-and-ring sculpture visible offset from track; wide corner-specific runoff and barriers on elevated banks."
+    },
+    {
+      "time_s": 644.82,
+      "reviewed": true,
+      "notes": "Downhill Schlossgold T4: Strong downhill grade and open valley views; forests beyond. Infield Red Bull bull-and-ring sculpture visible offset from track; wide corner-specific runoff and barriers on elevated banks."
+    },
+    {
+      "time_s": 503.3,
+      "reviewed": true,
+      "notes": "Rauch and W\u00fcrth middle corners: Sweeping downhill curves bordered by grass, red/white kerbs, gravel/asphalt outside and open hillside spectator seating. Conifer ridges frame the entire view."
+    },
+    {
+      "time_s": 786.33,
+      "reviewed": true,
+      "notes": "Rauch and W\u00fcrth middle corners: Sweeping downhill curves bordered by grass, red/white kerbs, gravel/asphalt outside and open hillside spectator seating. Conifer ridges frame the entire view."
+    },
+    {
+      "time_s": 857.09,
+      "reviewed": true,
+      "notes": "Rindt and Red Bull Mobile: Fast descending right-hand finish sequence; pit and main-stand roofs across valley. Green outer strips, red/white kerbs and a limited orange/black raised kerb element near pit entry."
+    },
+    {
+      "time_s": 927.84,
+      "reviewed": true,
+      "notes": "Rindt and Red Bull Mobile: Fast descending right-hand finish sequence; pit and main-stand roofs across valley. Green outer strips, red/white kerbs and a limited orange/black raised kerb element near pit entry."
+    },
+    {
+      "time_s": 715.57,
+      "reviewed": true,
+      "notes": "Pit entry and finish: Close pit complex, long glazed hospitality upper floor and deep steel stand roof; low service pavilions and timing structures rather than city blocks."
+    }
+  ],
+  "registration": {
+    "coordinate_system": "Provenance local tangent plane x east, y north; route uniform_scale applied.",
+    "station_origin": "Retained native Centerline first point; not assumed start/finish.",
+    "route_length_m": 4318,
+    "method": "Named OSM raceway ways projected to nearest retained centerline sample; other corners matched by route shape and official circuit map. Sector boundaries approximate, not surveyed kerb endpoints. Video time is never treated as station.",
+    "named_way_controls": [
+      {
+        "osm_id": 84416610,
+        "name": "Red Bull Ring S\u00fcdschleife National Circuit",
+        "station_mid_m": 2756.94,
+        "station_min_m": 662.15,
+        "station_max_m": 2797.07,
+        "maximum_projection_distance_m": 56.2
+      },
+      {
+        "osm_id": 289111668,
+        "name": "Boxenstra\u00dfe",
+        "station_mid_m": 4105.31,
+        "station_min_m": 80.26,
+        "station_max_m": 4105.31,
+        "maximum_projection_distance_m": 39.07
+      },
+      {
+        "osm_id": 347958266,
+        "name": "Remus",
+        "station_mid_m": 1227.98,
+        "station_min_m": 1203.9,
+        "station_max_m": 1256.07,
+        "maximum_projection_distance_m": 2.01
+      },
+      {
+        "osm_id": 822592399,
+        "name": "Schlossgold",
+        "station_mid_m": 2046.64,
+        "station_min_m": 1998.48,
+        "station_max_m": 2110.84,
+        "maximum_projection_distance_m": 1.98
+      },
+      {
+        "osm_id": 822592401,
+        "name": "Rauch",
+        "station_mid_m": 2564.31,
+        "station_min_m": 2463.99,
+        "station_max_m": 2652.6,
+        "maximum_projection_distance_m": 1.76
+      },
+      {
+        "osm_id": 822592403,
+        "name": "Niki Lauda Kurve",
+        "station_mid_m": 284.92,
+        "station_min_m": 264.86,
+        "station_max_m": 321.04,
+        "maximum_projection_distance_m": 2.03
+      },
+      {
+        "osm_id": 822592405,
+        "name": "W\u00fcrth Kurve",
+        "station_mid_m": 2873.32,
+        "station_min_m": 2797.07,
+        "station_max_m": 2929.5,
+        "maximum_projection_distance_m": 2.02
+      },
+      {
+        "osm_id": 822592407,
+        "name": "Rindt",
+        "station_mid_m": 3619.74,
+        "station_min_m": 3575.59,
+        "station_max_m": 3675.92,
+        "maximum_projection_distance_m": 1.73
+      },
+      {
+        "osm_id": 822592409,
+        "name": "Red Bull Mobile",
+        "station_mid_m": 3844.46,
+        "station_min_m": 3792.3,
+        "station_max_m": 3964.86,
+        "maximum_projection_distance_m": 2.02
+      },
+      {
+        "osm_id": 823820476,
+        "name": "MotoGP Long Lap Penalty",
+        "station_mid_m": 345.12,
+        "station_min_m": 272.88,
+        "station_max_m": 469.52,
+        "maximum_projection_distance_m": 36.2
+      },
+      {
+        "osm_id": 1077423714,
+        "name": "Moto GP chicane",
+        "station_mid_m": 822.67,
+        "station_min_m": 706.29,
+        "station_max_m": 963.12,
+        "maximum_projection_distance_m": 27.32
+      }
+    ]
+  },
+  "primary_sources": [
+    {
+      "url": "https://www.redbullring.com/en/events-tickets/formula-1/formula-1-circuit/",
+      "use": "Official layout/venue architecture; source year can differ from video."
+    },
+    {
+      "url": "https://api.fia.com/sites/default/files/spg2024_0060_f1_mediakit_2024_eng_a4_300dpi_240625_view_tisc_0.pdf",
+      "use": "Official layout/venue architecture; source year can differ from video."
+    }
+  ],
+  "uncertainties": [
+    "Exact filming lap/year is not established unless visible title/HUD identifies it.",
+    "Overview observations establish visual vocabulary; every individual asset position requires footprint/map registration.",
+    "No high-resolution raster or orthophoto added by this reference review."
+  ]
+}
