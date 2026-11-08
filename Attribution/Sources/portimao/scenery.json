@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=portimao",
   "tiles": 115,
-  "triangles": 700225,
+  "triangles": 678725,
   "road_sha256": "2bd9a62e4ed6d9a485d74656961ede220d4905601530ba73a0c49aac815434b7",
   "terrain_sha256": "a8e223c0d18b17beb5449bc93e3ff488943ecd100a5238a83cf8866257be6fd2",
   "landmarks": [
@@ -110,13 +110,6 @@
       "name": "Authored grandstand",
       "start_m": 1430,
       "end_m": 1540,
-      "side": -1,
-      "rows": 12
-    },
-    {
-      "name": "Authored grandstand",
-      "start_m": 2240,
-      "end_m": 2380,
       "side": -1,
       "rows": 12
     },

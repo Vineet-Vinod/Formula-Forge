@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=australia",
   "tiles": 195,
-  "triangles": 752153,
+  "triangles": 753534,
   "road_sha256": "dd48dd7f8cc9ae28e77e0b4784731f7f6c333818a82028707eb69c3738b4d26b",
   "terrain_sha256": "b383bd6d65e5ee5b6b951832f450083067f2d6ddb504c6816697b6121f9a4758",
   "landmarks": [
@@ -13,6 +13,23 @@
       "outer_offset_m": 13.0,
       "source_note": "Common authored pit garage front is roadhalf+13m, matching original pit/apron reconstruction4940\u20135230m and reviewed main-straight176.17s/792.81s. Added20m visual apron extension before/after row; endpoints are reconstruction, not surveyed access.",
       "access": "Visual service area outside the closed driving boundary."
+    },
+    {
+      "name": "T3 raised red inner apex lip",
+      "start_m": 1016,
+      "end_m": 1038,
+      "side": 1,
+      "area_m2": 6.537171190525819,
+      "registration": "Direct 335 s T3 apex, lap 16.017 s, shows red inner lip behind the yellow/green kerb. Outer 0.47 m of the exact corrected kerb footprint, short station span and 8 cm top height are bounded estimates. Raised above the existing kerb; no coplanar duplicate paving or native collision change."
+    },
+    {
+      "name": "T3 black Pirelli paved infield",
+      "start_m": 996,
+      "end_m": 1064,
+      "side": 1,
+      "area_m2": 217.23921318205183,
+      "registration": "Direct supplied 332\u2013334 s T3 approach/apex, lap 13.032\u201315.016 s, shows black paving with yellow Pirelli lettering inside the right kerb. Exact footprint depth and lettering dimensions are bounded estimates; native road union constrains the edge.",
+      "physical_contract": "Visual-only paving; no runoff range or extra corridor. Native racing XYZ, banking, shoulders, drive surface and collision unchanged."
     },
     {
       "name": "Reference event panels",

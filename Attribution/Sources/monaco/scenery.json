@@ -1,9 +1,9 @@
 {
   "recipe": "make circuit-assets CIRCUIT=monaco",
   "tiles": 111,
-  "triangles": 1520462,
+  "triangles": 1548216,
   "road_sha256": "415db676f90d4adce092ba579154838db97dd7597637bd7193c9de30ba15ee44",
-  "terrain_sha256": "40d00025821f43db3273205cd72f0cb95f5f390bfd7276ddbd1765ff08e82644",
+  "terrain_sha256": "accbf99b138760659df35ab91f97eace5902ff66db21b5e1a0a0139811c00641",
   "landmarks": [
     {
       "name": "Paved pit lane and working apron",
@@ -226,10 +226,16 @@
     },
     {
       "name": "Authored grandstand",
-      "start_m": 2350,
-      "end_m": 2490,
+      "start_m": 2445,
+      "end_m": 2550,
       "side": 1,
       "rows": 18
+    },
+    {
+      "name": "Grandstand K",
+      "start_m": 2445,
+      "end_m": 2550,
+      "dimensions_status": "FIA 2026 official map locates K between Tabac and Swimming Pool. Retained reconstruction uses 18 rows and 3 m setback; station endpoints are approximate. This replaces the earlier band across the uphill racing road."
     },
     {
       "name": "Authored grandstand",
@@ -2966,15 +2972,6 @@
       "removed_road_area_m2": 0.0
     },
     {
-      "osm_id": 447008630,
-      "name": "Mapped Monaco frontage",
-      "height_m": 6.8,
-      "levels": 2,
-      "height_status": "Unmeasured conservative retained default; not a verified storey survey",
-      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
-    },
-    {
       "osm_id": 478668725,
       "name": "Mapped Monaco frontage",
       "height_m": 6.8,
@@ -3758,11 +3755,233 @@
       "removed_road_area_m2": 0.0
     },
     {
-      "name": "Mapped Casino-district gardens and heritage trees",
-      "garden_area_m2": 27960.621,
-      "mapped_trees": 97,
-      "trees_excluded_for_clearance_or_query_bounds": 13,
+      "osm_id": 94399402,
+      "name": "FAMI",
+      "height_m": 6.8,
+      "levels": 2,
+      "height_status": "Unmeasured conservative retained default; not a verified storey survey",
+      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
+      "removed_road_area_m2": -0.0
+    },
+    {
+      "osm_id": 94399416,
+      "name": "Harbour Crest",
+      "height_m": 27.2,
+      "levels": 8,
+      "height_status": "Retained height/levels",
+      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
+      "removed_road_area_m2": 0.0
+    },
+    {
+      "osm_id": 94399450,
+      "name": "Villa Bellevue B\u00e2t. B",
+      "height_m": 27.2,
+      "levels": 8,
+      "height_status": "Retained height/levels",
+      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
+      "removed_road_area_m2": 0.0
+    },
+    {
+      "osm_id": 94399475,
+      "name": "Mapped Monaco frontage",
+      "height_m": 6.8,
+      "levels": 2,
+      "height_status": "Unmeasured conservative retained default; not a verified storey survey",
+      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
+      "removed_road_area_m2": 0.0
+    },
+    {
+      "osm_id": 94399487,
+      "name": "Mapped Monaco frontage",
+      "height_m": 10.2,
+      "levels": 3,
+      "height_status": "Retained height/levels",
+      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
+      "removed_road_area_m2": 0.0
+    },
+    {
+      "osm_id": 94399517,
+      "name": "Mapped Monaco frontage",
+      "height_m": 13.6,
+      "levels": 4,
+      "height_status": "Retained height/levels",
+      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
+      "removed_road_area_m2": 0.0
+    },
+    {
+      "osm_id": 94399531,
+      "name": "Mapped Monaco frontage",
+      "height_m": 10.2,
+      "levels": 3,
+      "height_status": "Retained height/levels",
+      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
+      "removed_road_area_m2": 0.0
+    },
+    {
+      "osm_id": 94399536,
+      "name": "Mapped Monaco frontage",
+      "height_m": 13.6,
+      "levels": 4,
+      "height_status": "Retained height/levels",
+      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
+      "removed_road_area_m2": 0.0
+    },
+    {
+      "osm_id": 94399815,
+      "name": "Harbour Lights",
+      "height_m": 34.0,
+      "levels": 10,
+      "height_status": "Retained height/levels",
+      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
+      "removed_road_area_m2": -0.0
+    },
+    {
+      "osm_id": 94399888,
+      "name": "Mapped Monaco frontage",
+      "height_m": 6.8,
+      "levels": 2,
+      "height_status": "Unmeasured conservative retained default; not a verified storey survey",
+      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
+      "removed_road_area_m2": 0.0
+    },
+    {
+      "osm_id": 94399981,
+      "name": "Villa Portofino",
+      "height_m": 6.8,
+      "levels": 2,
+      "height_status": "Unmeasured conservative retained default; not a verified storey survey",
+      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
+      "removed_road_area_m2": 0.0
+    },
+    {
+      "osm_id": 94400000,
+      "name": "CFM Indosuez Wealth Management",
+      "height_m": 6.8,
+      "levels": 2,
+      "height_status": "Unmeasured conservative retained default; not a verified storey survey",
+      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
+      "removed_road_area_m2": 0.0
+    },
+    {
+      "osm_id": 94400001,
+      "name": "Mapped Monaco frontage",
+      "height_m": 10.2,
+      "levels": 3,
+      "height_status": "Retained height/levels",
+      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
+      "removed_road_area_m2": 0.0
+    },
+    {
+      "osm_id": 94400046,
+      "name": "Mapped Monaco frontage",
+      "height_m": 10.2,
+      "levels": 3,
+      "height_status": "Retained height/levels",
+      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
+      "removed_road_area_m2": 0.0
+    },
+    {
+      "osm_id": 94400048,
+      "name": "Mapped Monaco frontage",
+      "height_m": 23.8,
+      "levels": 7,
+      "height_status": "Retained height/levels",
+      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
+      "removed_road_area_m2": -0.0
+    },
+    {
+      "osm_id": 94400109,
+      "name": "Mapped Monaco frontage",
+      "height_m": 6.8,
+      "levels": 2,
+      "height_status": "Unmeasured conservative retained default; not a verified storey survey",
+      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
+      "removed_road_area_m2": 0.0
+    },
+    {
+      "osm_id": 94400200,
+      "name": "Mapped Monaco frontage",
+      "height_m": 6.8,
+      "levels": 2,
+      "height_status": "Unmeasured conservative retained default; not a verified storey survey",
+      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
+      "removed_road_area_m2": 0.0
+    },
+    {
+      "osm_id": 112689147,
+      "name": "Suffren",
+      "height_m": 27.2,
+      "levels": 8,
+      "height_status": "Retained height/levels",
+      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
+      "removed_road_area_m2": 0.0
+    },
+    {
+      "osm_id": 373918253,
+      "name": "La Fr\u00e9gate",
+      "height_m": 6.8,
+      "levels": 2,
+      "height_status": "Unmeasured conservative retained default; not a verified storey survey",
+      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
+      "removed_road_area_m2": 0.0
+    },
+    {
+      "osm_id": 373918257,
+      "name": "Mapped Monaco frontage",
+      "height_m": 13.6,
+      "levels": 4,
+      "height_status": "Retained height/levels",
+      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
+      "removed_road_area_m2": -0.0
+    },
+    {
+      "osm_id": 444328145,
+      "name": "Mapped Monaco frontage",
+      "height_m": 6.8,
+      "levels": 2,
+      "height_status": "Unmeasured conservative retained default; not a verified storey survey",
+      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
+      "removed_road_area_m2": 0.0
+    },
+    {
+      "osm_id": 890157278,
+      "name": "Mapped Monaco frontage",
+      "height_m": 17.0,
+      "levels": 5,
+      "height_status": "Retained height/levels",
+      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
+      "removed_road_area_m2": 0.0
+    },
+    {
+      "osm_id": 1078789373,
+      "name": "Mapped Monaco frontage",
+      "height_m": 6.8,
+      "levels": 2,
+      "height_status": "Unmeasured conservative retained default; not a verified storey survey",
+      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
+      "removed_road_area_m2": -0.0
+    },
+    {
+      "osm_id": 1079442963,
+      "name": "Social Funds of Monaco",
+      "height_m": 20.4,
+      "levels": 6,
+      "height_status": "Retained height/levels",
+      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
+      "removed_road_area_m2": 0.0
+    },
+    {
+      "name": "Mapped Monaco city gardens and heritage trees",
+      "garden_area_m2": 30185.726,
+      "mapped_trees": 119,
+      "trees_excluded_for_clearance_or_query_bounds": 50,
       "dimensions_status": "Retained OSM garden/grass footprints, pedestrian paths and individual tree positions. Road/corridor/water/buildings excluded; exact native terrain-grid cell subdivision replaces underlying Concrete. Tagged tree height/species retained; missing heights estimated11m, untagged broadleaf form. No terrain-height changes."
+    },
+    {
+      "name": "Mapped retaining walls and Mirabeau street foundations",
+      "mapped_wall_segments": 180,
+      "street_support_segments": 45,
+      "dimensions_status": "Retained OSM retaining-wall alignments with heights derived from adjacent registered ground, not guessed walls across town. Mirabeau upper inside street edge at 1200\u20131290 m joins actual RGE ground beyond the corrected narrow corridor. Two-sided stone faces support the existing road elevation; no racing surface or native collision geometry is changed."
     }
   ],
   "vegetation": [

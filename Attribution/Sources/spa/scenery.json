@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=spa",
   "tiles": 222,
-  "triangles": 1052166,
+  "triangles": 1051747,
   "road_sha256": "63049d8f4a8f62d434d24ff1aaf023d7eeedac92011635b563abaa67793300af",
   "terrain_sha256": "69649c840bd3358de249a5cd39d910704ea1d99541ba4da53555f3e2f753d2bb",
   "landmarks": [
@@ -85,12 +85,10 @@
     {
       "osm_id": 77352249,
       "name": "Stand Endurance",
-      "height_m": 8,
-      "removed_road_area_m2": 0.0,
-      "structure": "enclosed",
-      "ground_floor": "Facade windows",
-      "road_clearance_exception": "none",
-      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+      "structure": "Graded Endurance garage row with red piers, grey doors and upper glazing",
+      "height_m": 6.4,
+      "foundation": "Each footprint vertex follows adjacent native road grade; no single centroid foundation.",
+      "dimensions_status": "Mapped footprint retained. Height, six-metre maximum bay spacing and shallow roof reconstructed from SRO2024 briefing p11; not a building survey."
     },
     {
       "osm_id": 176136366,
