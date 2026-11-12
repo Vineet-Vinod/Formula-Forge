@@ -226,13 +226,16 @@ class CircuitScene(MeshScene):
         return result
 
     def at(self, station: float) -> RoadStation:
-        position = (station % self.length) / self.length * len(self.road)
-        index = int(position)
+        wrapped = station % self.length
+        if wrapped >= self.length:
+            wrapped = 0.0
+        position = wrapped / self.length * len(self.road)
+        index = min(int(position), len(self.road) - 1)
         t = position - index
         a, b = self.road[index], self.road[(index + 1) % len(self.road)]
         tangent = norm((a.tx * (1 - t) + b.tx * t, a.ty * (1 - t) + b.ty * t, 0))
         return RoadStation(
-            station % self.length,
+            wrapped,
             a.x * (1 - t) + b.x * t,
             a.y * (1 - t) + b.y * t,
             a.z * (1 - t) + b.z * t,

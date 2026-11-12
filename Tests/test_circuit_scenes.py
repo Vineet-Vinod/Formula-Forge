@@ -190,6 +190,15 @@ def test_positive_lane_is_right_of_source_tangent(scene: CircuitScene) -> None:
     )
 
 
+def test_periodic_sampling_handles_sub_ulp_negative_stations(scene: CircuitScene) -> None:
+    first = scene.at(0)
+    for station in (-math.ulp(0.0), -1e-20, 0.0, scene.length,
+                    math.nextafter(scene.length, 0.0)):
+        sample = scene.at(station)
+        assert 0 <= sample.station < scene.length
+        assert sample.point(0) == pytest.approx(first.point(0), abs=1e-8)
+
+
 def test_barrier_lettering_reads_left_to_right_from_the_road(
     scene: CircuitScene,
 ) -> None:
