@@ -117,6 +117,20 @@ def test_runoff_does_not_cover_another_road_arm(scene: CircuitScene) -> None:
     assert gravel.intersection(scene.road_mask.buffer(-0.001)).area < 0.0001
 
 
+def test_bounded_ground_patch_replaces_dsm_and_grounds_details(scene: CircuitScene) -> None:
+    parcel = box(55, -10, 75, 10)
+    scene.ground_patches.append((parcel, 4.0, 'Runoff'))
+    assert scene.raw_ground(65, 0) == 4.0
+    assert scene.raw_ground(76, 0) == 3.0
+    scene.road_surfaces()
+    scene.terrain()
+    paving = unary_union(surfaces(scene, {'Runoff'}))
+    grass = unary_union(surfaces(scene, {'Grass'}))
+    assert paving.intersection(grass).area < 0.000001
+    assert parcel.difference(paving).area < 0.000001
+    assert paving.intersection(scene.road_mask).area < 0.000001
+
+
 def test_escape_surface_follows_road_instead_of_climbing_the_bank(
     scene: CircuitScene,
 ) -> None:
@@ -205,6 +219,37 @@ def test_barrier_lettering_reads_left_to_right_from_the_road(
             assert (bx - ax) * outward_y - (by - ay) * outward_x > 0
             panels.add((ax, ay))
     assert len(panels) == 2
+
+
+@pytest.mark.parametrize("interleaved", [False, True])
+def test_barrier_lettering_remains_continuous_across_native_sample_jumps(
+    scene: CircuitScene, interleaved: bool,
+) -> None:
+    with (scene.scratch / "barriers.csv").open("w") as handle:
+        writer = csv.writer(handle)
+        writer.writerow(("ax", "ay", "bx", "by", "bottom", "top", "radius"))
+        rows = (
+            (50, 0, 50, 1, 3, 4, 0.2), (50, 1, 50, 2, 3, 4, 0.2),
+            (30, 0, 30, 1, 3, 4, 0.2), (30, 1, 30, 2, 3, 4, 0.2),
+        )
+        writer.writerows([rows[i] for i in (0, 2, 1, 3)] if interleaved else rows)
+    for side in (-1, 1):
+        scene.branding(0, scene.length - 0.001, side, "PanelGreen")
+    scene.barriers()
+    seams: dict[int, list[float]] = {}
+    for tile in scene.tiles.values():
+        for offset in range(0, len(tile.triangles), 100):
+            slot = struct.unpack_from("<I", tile.triangles, offset)[0]
+            if tile.materials[slot] != "PanelGreen":
+                continue
+            for corner in range(3):
+                vertex = struct.unpack_from("<8f", tile.triangles, offset + 4 + corner * 32)
+                if round(-vertex[0] / 100) == 1:
+                    seams.setdefault(round(-vertex[1] / 1000), []).append(vertex[6])
+    assert len(seams) == 2
+    for coordinates in seams.values():
+        assert len(coordinates) >= 4
+        assert max(coordinates) - min(coordinates) < 0.000001
 
 
 @pytest.mark.parametrize(

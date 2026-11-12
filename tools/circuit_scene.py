@@ -107,6 +107,7 @@ class CircuitScene(MeshScene):
         self.extra_corridors: list[Polygon] = []
         self.water_shapes: list[Polygon] = []
         self.terrain_cutouts: list[Polygon] = []
+        self.ground_patches: list[tuple[Polygon, float, str]] = []
         self.verge_patches: list[tuple[BaseGeometry, str, RoadStation | None]] = []
         self.surface_shapes: list[Polygon] = []
         self.surface_points: list[tuple[Point, Point, Point]] = []
@@ -255,6 +256,9 @@ class CircuitScene(MeshScene):
         return self.at(a.station + t * self.length / len(self.road)), distance
 
     def raw_ground(self, x: float, y: float) -> float:
+        for shape, height, _material in self.ground_patches:
+            if shape.covers(GeoPoint(x, y)):
+                return height
         grid = self.grid
         cx = max(0.0, min(grid.columns - 1.00001, (x - grid.x) / grid.step))
         cy = max(0.0, min(grid.rows - 1.00001, (y - grid.y) / grid.step))
@@ -630,6 +634,9 @@ class CircuitScene(MeshScene):
                 *self.terrain_cutouts,
             ]
         )
+        for shape, _height, patch_material in self.ground_patches:
+            self.polygon_surface(shape.difference(terrain_voids), patch_material, smooth_ground=True)
+        terrain_voids = unary_union([terrain_voids, *[shape for shape, _, _ in self.ground_patches]])
         grid = self.grid
         for row in range(grid.rows - 1):
             for column in range(grid.columns - 1):
@@ -747,11 +754,19 @@ class CircuitScene(MeshScene):
 
     def barriers(self, street: bool = False) -> None:
         post_distance = 4.0
+        wall_ends: dict[tuple[float, float], list[tuple[float, float]]] = {}
         with (self.scratch / "barriers.csv").open() as handle:
             for row in csv.DictReader(handle):
                 x, y, bx, by, bottom, _top, radius = (
                     float(row[key])
                     for key in ("ax", "ay", "bx", "by", "bottom", "top", "radius")
+                )
+                connections = wall_ends.get((round(x, 4), round(y, 4)), [])
+                wall_connections = [entry for entry in connections if abs(entry[0] - bottom) < 1.0]
+                segment_start = min(wall_connections, key=lambda entry: abs(entry[0] - bottom))[1] if wall_connections else 0.0
+                segment_length = math.hypot(bx - x, by - y)
+                wall_ends.setdefault((round(bx, 4), round(by, 4)), []).append(
+                    (bottom, segment_start + segment_length)
                 )
                 sample, _ = self.nearest((x + bx) / 2, (y + by) / 2)
                 if self.catalogue.deck_separation:
@@ -822,23 +837,18 @@ class CircuitScene(MeshScene):
                         add(b, mul(inward, radius + 0.02)),
                     )
                     along = (pb[0] - pa[0]) * sample.tx + (pb[1] - pa[1]) * sample.ty
-                    if (along > 0) == (panel.side > 0):
+                    reverse = (along > 0) == (panel.side > 0)
+                    if reverse:
                         pa, pb = pb, pa
-                    phase = (
-                        -panel.side
-                        * (
-                            (self.nearest(pa[0], pa[1])[0].station - panel.start)
-                            % self.length
-                        )
-                        / 8
-                    )
+                    # Use continuous wall distance; nearest road stations jump between samples.
+                    phase = -(segment_start + segment_length) / 8 if reverse else segment_start / 8
                     self.banner(
                         add(pa, (0, 0, 0.08)),
                         add(pb, (0, 0, 0.08)),
                         0.80,
                         panel.material,
                         u0=phase,
-                        repeat=math.dist(pa, pb) / 8,
+                        repeat=segment_length / 8,
                     )
                     break
                 self.banner(add(a, (0, 0, 0.95)), add(b, (0, 0, 0.95)), 2.2, "Fence")
