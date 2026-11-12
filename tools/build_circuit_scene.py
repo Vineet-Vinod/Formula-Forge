@@ -23,6 +23,7 @@ PALETTE = {
     "Cream": (0.63, 0.58, 0.46),
     "CanopyFabric": (0.78, 0.78, 0.74),
     "Roof": (0.14, 0.15, 0.16),
+    "JeddahConstruction": (0.19, 0.17, 0.145),
     "Glass": (0.055, 0.10, 0.13),
     "WarmGlass": (0.30, 0.22, 0.11),
     "Water": (0.035, 0.12, 0.16),
@@ -66,6 +67,7 @@ class Importer:
             "/Data"
         )
         self.night = slug in ("bahrain", "jeddah", "singapore")
+        self.road_floor = 0.05 if slug == "bahrain" else 0.15
         self.copies: dict[str, unreal.MaterialInterface] = {}
         self.bounds = (0.0, 0.0, 1.0, 1.0)
         self.field = None
@@ -149,7 +151,7 @@ class Importer:
                     )
                     is not None
                 ):
-                    shade(material, self.bounds, self.field)
+                    shade(material, self.bounds, self.field, self.road_floor)
             if name == "Concrete" and isinstance(
                 material, unreal.MaterialInstanceConstant
             ):
@@ -251,6 +253,8 @@ class Importer:
                 material, unreal.MaterialExpressionConstant
             )
             roughness.r = 0.22 if name in ("Glass", "WarmGlass", "Water") else 0.7
+            if self.slug == "jeddah" and name == "JeddahConstruction":
+                roughness.r = 0.94
             EDIT.connect_material_property(
                 roughness, "", unreal.MaterialProperty.MP_ROUGHNESS
             )
@@ -260,7 +264,7 @@ class Importer:
                     color, "", unreal.MaterialProperty.MP_EMISSIVE_COLOR
                 )
             elif self.night:
-                shade(material, self.bounds, self.field)
+                shade(material, self.bounds, self.field, self.road_floor)
         elif (self.scratch / "art" / (name + ".png")).exists():
             texture = self.texture(name)
             sample = EDIT.create_material_expression(
@@ -275,7 +279,7 @@ class Importer:
                 roughness.r = 0.7
                 EDIT.connect_material_property(roughness, "", unreal.MaterialProperty.MP_ROUGHNESS)
             if self.night:
-                shade(material, self.bounds, self.field)
+                shade(material, self.bounds, self.field, self.road_floor)
         else:
             raise ValueError(f"Unknown material {name} for {self.slug}")
         EDIT.recompile_material(material)

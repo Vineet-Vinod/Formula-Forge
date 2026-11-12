@@ -567,5 +567,10 @@
       "registration": "Middle-sector landscape context only. Exact corner and pose are not registered; do not infer tree coordinates or road dimensions from this still."
     },
     "status": "Source-backed woodland polygons replace parallel station rows. Native road, protection and all measured ground heights remain unchanged. Fresh packaged visual review required; source geometry is not visual acceptance."
+  },
+  "t3_inner_shoulder_correction": {
+    "source": "shoulder-corrections.json",
+    "evidence": "t3-inside-protection-correction.json",
+    "status": "Source-only correction; exact in-memory mesh proof and fresh post-build review required."
   }
 }

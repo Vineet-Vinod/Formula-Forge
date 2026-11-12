@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "status": "Canonical source openings; native application and fresh visual review pending.",
+  "source_registration": "protection-openings.json",
+  "native_source_frame": "Final retained local XY east/north metres; the same frame as current road.csv and native barrier endpoints. Do not replace with a mirrored driver-side convention.",
+  "road_csv_sha256": "44fca954f6ef64fbc4fef4aba3b723696d44a3a6055ea15b7ea334a1f1897545",
+  "source_manifest_sha256": "3c80dff43f38b227e30c881e46265bbe877ac1cec6750d20030108b838a17a8c",
+  "evidence": [
+    {
+      "timestamp_s": 318,
+      "path": "build/reviews/resume-20261112/fold-visual-triage/turkey-ref-318.jpg",
+      "sha256": "2c5130e635faede4cd1a28a931ede2cc7c264fda1cda54229e757ca99a9c08b3",
+      "observed": "Forward T13 right entry/apex/exit, open grass/green strip and bollard, no inside Armco.",
+      "registration": "Continuous1s sequence, handedness, the final left-right-left order and fixed pit/control/mainstand landmarks. Video lap time is not mapped directly to native station."
+    },
+    {
+      "timestamp_s": 319,
+      "path": "build/reviews/resume-20261112/fold-visual-triage/turkey-ref-319.jpg",
+      "sha256": "392da696ec9d8b769905bfb685a78703e0b6936a1f32f525475304917c220e8e",
+      "observed": "Forward T13 right entry/apex/exit, open grass/green strip and bollard, no inside Armco.",
+      "registration": "Continuous1s sequence, handedness, the final left-right-left order and fixed pit/control/mainstand landmarks. Video lap time is not mapped directly to native station."
+    },
+    {
+      "timestamp_s": 320,
+      "path": "build/reviews/resume-20261112/fold-visual-triage/turkey-ref-320.jpg",
+      "sha256": "6179b3250def9d9b7aa2711cbbf6d3e25e93b6c5afaefe85d885edd49b5fdd37",
+      "observed": "Forward T13 right entry/apex/exit, open grass/green strip and bollard, no inside Armco.",
+      "registration": "Continuous1s sequence, handedness, the final left-right-left order and fixed pit/control/mainstand landmarks. Video lap time is not mapped directly to native station."
+    },
+    {
+      "timestamp_s": 322,
+      "path": "build/reviews/resume-20261112/fold-visual-triage/turkey-ref-322.jpg",
+      "sha256": "420c018889531657fedaefb8446cf2d90c6304701428a399e9e82b0eb7f4d8b9",
+      "observed": "Forward T14 left entry/apex/exit, open grass/green strip and bollard, no inside Armco.",
+      "registration": "Continuous1s sequence, handedness, the final left-right-left order and fixed pit/control/mainstand landmarks. Video lap time is not mapped directly to native station."
+    },
+    {
+      "timestamp_s": 323,
+      "path": "build/reviews/resume-20261112/fold-visual-triage/turkey-ref-323.jpg",
+      "sha256": "b845cfc52ee67d8d2c53b08aac1358a3e0c38e3ad6470755c79cc13b89f19d74",
+      "observed": "Forward T14 left entry/apex/exit, open grass/green strip and bollard, no inside Armco.",
+      "registration": "Continuous1s sequence, handedness, the final left-right-left order and fixed pit/control/mainstand landmarks. Video lap time is not mapped directly to native station."
+    },
+    {
+      "timestamp_s": 324,
+      "path": "build/reviews/resume-20261112/fold-visual-triage/turkey-ref-324.jpg",
+      "sha256": "0c53fb6c401365cfcbd2049fa4cb84f69a34bc85cd5b5947b3815e96e9baf78a",
+      "observed": "Forward T14 left entry/apex/exit, open grass/green strip and bollard, no inside Armco.",
+      "registration": "Continuous1s sequence, handedness, the final left-right-left order and fixed pit/control/mainstand landmarks. Video lap time is not mapped directly to native station."
+    }
+  ],
+  "directly_measured_conflict": [
+    {
+      "image": "build/reviews/turkey/resume-scenery-corrections-live/targeted/19-4881.2-00004312.jpg",
+      "primitive": [
+        "Tile_Street_m2_00",
+        32208
+      ],
+      "road_station_m": 4893.411,
+      "steel_edge_clearance_m": 1.0055,
+      "kerb_width_m": 1.2
+    },
+    {
+      "image": "build/reviews/turkey/resume-scenery-corrections-live/targeted/21-4995.9-00004521.jpg",
+      "primitive": [
+        "Tile_Street_m2_m1",
+        13548
+      ],
+      "road_station_m": 5011.343,
+      "steel_edge_clearance_m": 1.0833,
+      "kerb_width_m": 1.2
+    }
+  ],
+  "interpretation": "Physical boundary remained outside asphalt, but visible Armco/posts overlapped the outer kerb. Continuous matched reference proves these inside grass islands are open, rather than grounds for narrowing the shoulder to preserve an invented rail.",
+  "registration_basis": "Continuous official final left-right-left corner order, camera steering/bearing, pit/control/mainstand landmarks and existing native kerb ranges. Automatic native turn labels and elapsed lap time are not used as a station survey.",
+  "bounded_scope": "Driver RIGHT 4840\u20134910 m and driver LEFT 4940\u20135045 m only, with matching local XY boxes and maximum 12 m road-edge offset. Neighbouring outside T12 before 4840 m, outside T14 RIGHT, farther/nonlocal walls and other inside protection remain. No whole polygon interior is deleted.",
+  "end_treatment": "Split crossing wall segments at station/XY/offset limits; retained ends remain at actual segment joints. Existing rail/fence/post producer renders only the filtered native-export list. Do not invent across-track/infield return walls or relocate a farther wall solely outside camera view. Exact endpoint position remains estimated within about 10 m.",
+  "preserved": "Road XYZ, asphalt width, banking, white-line lap limits, kerbs, drive surface, outside protection, other venues and accepted assets. No display-only wall removal.",
+  "in_memory_proof": {
+    "original_wall_count": 6246,
+    "new_wall_count": 6167,
+    "changed_original_wall_count": 83,
+    "unchanged_original_wall_count": 6163,
+    "all_unmatched_original_tuples_preserved": true,
+    "removed_total_length_m": 142.42816417104854,
+    "split_original_segments": 4,
+    "offending_primitives_after_filter": [
+      {
+        "original_mesh_primitive": [
+          "Tile_Street_m2_00",
+          32208
+        ],
+        "original_wall_endpoint_xy": [
+          -334.679199,
+          38.2523994
+        ],
+        "minimum_distance_from_any_remaining_physical_wall_m": 17.552246418645534
+      },
+      {
+        "original_mesh_primitive": [
+          "Tile_Street_m2_m1",
+          13548
+        ],
+        "original_wall_endpoint_xy": [
+          -320.592896,
+          -56.4676018
+        ],
+        "minimum_distance_from_any_remaining_physical_wall_m": 30.398502827483465
+      }
+    ]
+  },
+  "future_rebuild": "Boundary writer consumes typed source before native header output. Compile and export the changed native barrier list before generating visual meshes. Revisit local XY boxes if the alignment or source geographic scale changes.",
+  "visual_approval": "Not granted by source proof. Fresh runtime review required."
+}

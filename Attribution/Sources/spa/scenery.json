@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=spa",
   "tiles": 273,
-  "triangles": 3134882,
+  "triangles": 3132353,
   "road_sha256": "933a5a4689cff639e6f0cb37403c0fac13588fbe7490c13966f2128a5c8de387",
   "terrain_sha256": "31af9866fe4389610a55b7ae5c5770e212c296a262f760b4e6021406a064c937",
   "landmarks": [
@@ -23,6 +23,12 @@
       "area_m2": 1481.9074148837929,
       "source": "Supplied continuous277\u2013280.5s, forward then rear camera",
       "registration": "Forward278.4s identifies EauRouge/Raidillon. Rear279.8/280.5s shows striped paving on cameraRIGHT, hence forward-driverLEFT outside the uphillRIGHT bend. Width16m,1880\u20132000m endpoints,25/45m tapers and stripe spacing are bounded estimates. Wrong RIGHT gravel removed only1880\u20131960; first-left1800\u20131880 and crest1960\u20132100 portions remain historical uncertain ranges, not newly verified. Native road and measured grades are unchanged."
+    },
+    {
+      "name": "La Source narrow green inside apron",
+      "start_m": 1150.0,
+      "end_m": 1210.0,
+      "source_note": "Continuous supplied 668.5\u2013670 s forward views show a rounded white/black board-covered wall close to red/yellow kerb, with green paving rather than broad grass. The strip begins 1.25 m beyond asphalt, outside the unchanged 1.1 m kerb plus 0.14 m edge offset, and tapers to a 2.8 m outer extent within the reconstructed 2.95 m protection envelope. Widths and endpoints are visual estimates; road and classified heights remain unchanged."
     },
     {
       "name": "Reference event panels",
@@ -51,6 +57,13 @@
       "end_m": 3220,
       "side": -1,
       "material": "PanelYellow"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 1140,
+      "end_m": 1220,
+      "side": 1,
+      "material": "PanelWhite"
     },
     {
       "name": "Braking distance boards",

@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "circuit": "portimao",
+  "recorded_utc": "2026-11-12T17:59:00Z",
+  "purpose": "Qualify two disputed uphill source registrations without changing the road or height observations.",
+  "orthophoto": {
+    "url": "https://ortos.dgterritorio.gov.pt/wms/ortosat2023?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=ortoSat2023-CorVerdadeira&STYLES=&SRS=EPSG%3A3763&BBOX=-44161%2C-270482%2C-43590%2C-269831&WIDTH=2048&HEIGHT=2048&FORMAT=image%2Fpng&TRANSPARENT=FALSE",
+    "parameters": {
+      "SERVICE": "WMS",
+      "VERSION": "1.1.1",
+      "REQUEST": "GetMap",
+      "LAYERS": "ortoSat2023-CorVerdadeira",
+      "STYLES": "",
+      "SRS": "EPSG:3763",
+      "BBOX": "-44161,-270482,-43590,-269831",
+      "WIDTH": 2048,
+      "HEIGHT": 2048,
+      "FORMAT": "image/png",
+      "TRANSPARENT": "FALSE"
+    },
+    "crs": "EPSG:3763",
+    "bbox_easting_northing_m": [
+      -44161,
+      -270482,
+      -43590,
+      -269831
+    ],
+    "raster_dimensions_px": [
+      2048,
+      2048
+    ],
+    "pixel_size_m": [
+      0.27880859375,
+      0.31787109375
+    ],
+    "sha256": "4d9484caf3d50f22a281629fa1c6560e119bbbf0b641781bfb92c0377ae6a0fe",
+    "file_bytes": 2674261,
+    "provider": "Dire\u00e7\u00e3o-Geral do Territ\u00f3rio",
+    "dataset": "OrtoSat2023 true-colour satellite orthoimage, nominal30cm",
+    "primary_metadata": "https://www.dgterritorio.gov.pt/formularios/ortosat2023?language=en",
+    "acquisition_epoch": "2023; distinct from April2024 class2 lidar",
+    "source_image_modified": false,
+    "requests": "One bounded2048\u00d72048 GetMap raster."
+  },
+  "registration": {
+    "origin_lat_lon": [
+      37.226434389512065,
+      -8.626569271539783
+    ],
+    "effective_uniform_scale": 1.001037204324165,
+    "transform": "Exact current inverse local source projection, then EPSG:4326 to EPSG:3763. No image fit, translation or rotation.",
+    "result": "Road centreline and all selected eight-neighbour class2 observations lie on racing asphalt at both inspected sectors.",
+    "accuracy_note": "Nominal30cm pixels do not establish centimetre absolute registration; ortho2023 and lidarApril2024 differ in acquisition epoch."
+  },
+  "classified_ground_check": {
+    "source_sha256": "ac579c22852e4fefa49f74d491248ad891eb34cc5b3714fea9e876d70c2e7039",
+    "road_sha256": "4c0239f6c9ef2985d5acd69fe80b002516b0a9745827e8edc15186a99cf513ac",
+    "relative_datum_m": 95.3269154055956,
+    "selection": "Same eight nearest retained class2 observations and closest containing triangle as circuit_ground.interpolate_ground; queried only these two bounded road sectors.",
+    "all_containing_triangles": true,
+    "local_bridge_sector": {
+      "start_station_m": 1670.4679,
+      "end_station_m": 1754.53088,
+      "raw_start_end_height_m": [
+        101.6414622428308,
+        107.45130940935702
+      ],
+      "raw_range_m": [
+        101.6385230227355,
+        107.45130940935702
+      ],
+      "maximum_raw_adjacent_step_m": 0.09869694298772913,
+      "maximum_native_raw_difference_m": 0.041127230601702536,
+      "maximum_nearest_observation_m": 0.6862771212792322,
+      "maximum_eight_neighbour_distance_m": 1.7018814852941055,
+      "maximum_neighbour_height_range_m": 0.3300018310546875
+    },
+    "unobstructed_global_climb": {
+      "start_station_m": 3350.02368,
+      "end_station_m": 3459.64648,
+      "raw_start_end_height_m": [
+        113.04708286624674,
+        122.10110319135576
+      ],
+      "raw_range_m": [
+        113.04708286624674,
+        122.10110319135576
+      ],
+      "maximum_raw_adjacent_step_m": 0.08654205075370669,
+      "maximum_native_raw_difference_m": 0.042478839248616396,
+      "maximum_nearest_observation_m": 0.6751680120815411,
+      "maximum_eight_neighbour_distance_m": 1.6967399366967977,
+      "maximum_neighbour_height_range_m": 0.35999298095703125
+    }
+  },
+  "global_100m_uphill": {
+    "start_station_m": 3356.84,
+    "end_station_m": 3456.81,
+    "rise_percent": 8.4499,
+    "operator_published_percent": 6.2,
+    "status": "Unresolved source-definition discrepancy. Interval averaging does not generally reconcile it."
+  },
+  "interpretation": "No observed sampling on adjacent cut/embankment and no bridge-deck step/hump at1713m. Retained raw ground supports the broad100m climb. Keep literal measured source rather than scaling or clipping to a headline; this is not full-circuit visual approval.",
+  "evidence": {
+    "build/reviews/resume-20261112/portimao-horizontal-registration/class2-neighbour-proof.json": "ae981b1e36c358e291d9fc18dff7d1772e64ac2a0df698e3664a09d22f33e3af",
+    "build/reviews/resume-20261112/portimao-horizontal-registration/registered-road-two-regions.png": "997736f45f2132d41c2c41ba354c412e60a72de9f0a9cbe1b162127c6a4f8bb8",
+    "build/reviews/resume-20261112/portimao-horizontal-registration/bridge-class2-neighbours-overlay.png": "ca6efc102440656b8f9fa43a391b838e86f285cecca51334dda47b32a6512104",
+    "build/reviews/resume-20261112/portimao-horizontal-registration/bridge-raw-native-height-trace.png": "0456a35e26ad44ca3fd794aeca6599eedc846d16d544cfc580851791ae19707e",
+    "build/reviews/resume-20261112/portimao-horizontal-registration/conclusions.md": "196c93b3bd48aa40aa5e34add8c1aaf8079dfd9baedb7b09d4715342162d4c91"
+  }
+}

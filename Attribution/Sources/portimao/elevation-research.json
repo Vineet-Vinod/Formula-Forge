@@ -13,10 +13,25 @@
     "retrieved": "2026-11-12",
     "configuration_note": "Operator and road-paving supplier list4684m/16corners; Honda also repeats these gradient figures for4653m/15corners. None defines the gradient measurement interval.",
     "classified_ground_extremes": [
-      {"station_m": 1713.06738, "instantaneous_percent": 10.23, "over_50m_percent": 8.19, "over_100m_percent": 6.33},
-      {"station_m": 3720.35522, "instantaneous_percent": -15.51, "over_50m_percent": -13.77, "over_100m_percent": -11.63}
+      {
+        "station_m": 1713.06738,
+        "instantaneous_percent": 10.23,
+        "over_50m_percent": 8.19,
+        "over_100m_percent": 6.33
+      },
+      {
+        "station_m": 3720.35522,
+        "instantaneous_percent": -15.51,
+        "over_50m_percent": -13.77,
+        "over_100m_percent": -11.63
+      }
     ],
     "independent_review": "Luna High checked CRS axis order, route scale, fixed origin and station-zero registration, Cascais datum and all containing local triangles. No concrete projection or datum error found. Coarse older Copernicus samples independently support the steep downhill; they do not resolve the short uphill.",
-    "status": "Open source-definition discrepancy. Local steepening is credible;100m aggregate grades roughly match the quoted figures, but this does not prove the operator used100m intervals. Do not claim the published maxima are satisfied, or flatten/rescale measured ground to force a match. Exact comparison needs a registered engineering profile or defined operator interval."
+    "status": "Open source-definition discrepancy. Earlier50/100m values refer only to the instantaneous steepest location near1713m. The current GLOBAL100m maximum is8.4499% near3406.8m, so interval averaging does not generally reconcile the published6.2% uphill figure. No projection, off-road sampling or bridge-deck hump was found in the two disputed sectors. See profile-registration-validation.json. Do not flatten/rescale measured ground to force agreement; resolution needs a registered engineering profile or a defined operator measurement interval.",
+    "current_global_100m_uphill": {
+      "start_station_m": 3356.84,
+      "end_station_m": 3456.81,
+      "rise_percent": 8.4499
+    }
   }
 }

@@ -1,0 +1,13 @@
+{
+  "sections": [
+    {
+      "start_m": 1200.0,
+      "end_m": 1260.0,
+      "side": 1,
+      "shoulder_m": 1.5,
+      "transition_m": 25.0,
+      "source_note": "Remus T3 inside, driver RIGHT. Retained mapped inner wall 1187845202 near native 1257.14 m lies 2.595 m from the asphalt edge. A 1.5 m shoulder plus the shared 0.95 m protection margin reconstructs 2.45 m total. Apex placement is estimated with about 1 m uncertainty, not a surveyed constant setback. The previous 8\u201310 m shoulder crossed the mapped 12.73 m arc centre and produced 52 invalid inner verge quads. Cubic tapers at 1175\u20131200 m and 1260\u20131285 m retain approach and exit continuity. Road XYZ, asphalt width and banking remain unchanged."
+    }
+  ],
+  "method": "Bounded grass and protection correction from retained OSM wall geometry and qualified supplied T3 footage. Positive source side is driver RIGHT, corresponding to native CSV left. Apply the typed profile, refresh physical boundaries twice, and export the unchanged road with updated protection."
+}

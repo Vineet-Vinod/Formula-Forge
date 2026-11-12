@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=turkey",
   "tiles": 171,
-  "triangles": 805918,
+  "triangles": 802260,
   "road_sha256": "3ef9d19f8a46144b01d3a3202f0f2c15f7135664e20f82e56467dd9e3a6d0791",
   "terrain_sha256": "9b4eac7ca4ff3e5f8d20e4eb461beb198ff84128efb358b2b1aa865f9c6b2a7c",
   "landmarks": [

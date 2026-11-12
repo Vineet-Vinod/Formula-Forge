@@ -75,7 +75,7 @@
         0,
         650
       ],
-      "name": "Pit straight, T1–3",
+      "name": "Pit straight, T1\u20133",
       "reviewed_video_seconds": [
         235,
         239,
@@ -157,7 +157,7 @@
         3500,
         4200
       ],
-      "name": "T17–21 direction changes",
+      "name": "T17\u201321 direction changes",
       "reviewed_video_seconds": [
         876.33,
         946.22
@@ -171,7 +171,7 @@
         4200,
         5350
       ],
-      "name": "Long southern acceleration and T22–26",
+      "name": "Long southern acceleration and T22\u201326",
       "reviewed_video_seconds": [
         271,
         275,
@@ -199,8 +199,8 @@
         299,
         303
       ],
-      "observed": "Continuous 289–293 s approaches, turns through and exits the T27 left hairpin. A two-level white-framed glazed pavilion appears across the corner and passes to the right on exit; a sparse mature tree belt and green Aramco wall follow the turn. Later pit return leads toward the LEFT pit compound and RIGHT main stand.",
-      "registration": "T27 pavilion identity and continuous turn direction are direct video observations. The 291 s position is estimated near native 5390±40 m, not an exact match to the old 5410 m static target. A driver/camera cut at 294 s prevents continuous time-to-station interpolation beyond 293 s."
+      "observed": "Continuous 289\u2013293 s approaches, turns through and exits the T27 left hairpin. A two-level white-framed glazed pavilion appears across the corner and passes to the right on exit; a sparse mature tree belt and green Aramco wall follow the turn. Later pit return leads toward the LEFT pit compound and RIGHT main stand.",
+      "registration": "T27 pavilion identity and continuous turn direction are direct video observations. The 291 s position is estimated near native 5390\u00b140 m, not an exact match to the old 5410 m static target. A driver/camera cut at 294 s prevents continuous time-to-station interpolation beyond 293 s."
     }
   ],
   "primary_sources": [
@@ -221,7 +221,7 @@
   ],
   "targeted_registration_review": {
     "method": "Direct Jeddah frame/landmark and minimap checks; source geometry and native data are unchanged by reference registration.",
-    "notes": "The 331.06 s frame is the northern T13 banked hairpin, not the southern esses. The continuous 289–293 s sequence covers T27 with the HUD lap clock approximately 1:23.87→1:27.87; 291 s is approximately native 5390±40 m. The clip cuts at 294 s. The 307–327 s views begin a later-lap opening/esses sequence. Exact native station associations remain estimates; sponsor colour alone does not establish corner identity. Older overview links elsewhere remain contextual until actual continuity review.",
+    "notes": "The 331.06 s frame is the northern T13 banked hairpin, not the southern esses. The continuous 289\u2013293 s sequence covers T27 with the HUD lap clock approximately 1:23.87\u21921:27.87; 291 s is approximately native 5390\u00b140 m. The clip cuts at 294 s. The 307\u2013327 s views begin a later-lap opening/esses sequence. Exact native station associations remain estimates; sponsor colour alone does not establish corner identity. Older overview links elsewhere remain contextual until actual continuity review.",
     "next_gate": "Actual packaged full-lap review and targeted captures in build/reviews/east-final-targets.json; these metadata corrections are not visual approval."
   },
   "diamond_tower_reference": {
@@ -245,7 +245,7 @@
     "rendered_construction_envelope_m": 300,
     "visual_height_uncertainty_m": 80,
     "base_z_m": 3.2402936476608333,
-    "base_evidence": "Adjacent native road3.24m; source-footprint corners2.41–3.24m, center3.13m. Site-level road datum chosen, avoiding any addition of height on a DSM roof.",
+    "base_evidence": "Adjacent native road3.24m; source-footprint corners2.41\u20133.24m, center3.13m. Site-level road datum chosen, avoiding any addition of height on a DSM roof.",
     "state_correction": "Fully glazed planned-height placeholder replaced by open concrete floorplates/columns, exposed core, top formwork and tower crane. Existing footprint and world registration retained.",
     "survey_claim": false,
     "runtime_gate": "Requires actual packaged capture and Luna High comparison; source check is not appearance approval."
@@ -276,7 +276,7 @@
       "tree_roots_in_water": 0,
       "trees_checked": 77,
       "proof": "build/reviews/jeddah/reference/coastal-source-proof.json",
-      "coastal_roof_overhang": "Only 28 high parapet triangles on mapped coastal building1258945369 project beyond the footprint: 0.8 m beams centered on roof edges create about 0.4 m overhang. All overlap is at z9.399–9.899 m, not foundations or submerged offices. No other structural overlap was found."
+      "coastal_roof_overhang": "Only 28 high parapet triangles on mapped coastal building1258945369 project beyond the footprint: 0.8 m beams centered on roof edges create about 0.4 m overhang. All overlap is at z9.399\u20139.899 m, not foundations or submerged offices. No other structural overlap was found."
     },
     "reference_visibility": "Supplied cockpit sequences reviewed here mostly hide coastal water behind barriers, buildings and trees. They establish context and day/night appearance, not a surveyed sea-camera pair. Direct geographic water context comes from the official aerial/map listed below. Off-axis absence from a cockpit still is not evidence that water is missing.",
     "next_gate": "Fresh source generation/import and complete packaged live lap with Luna High. Source topology and height proofs are not rendered acceptance.",
@@ -385,7 +385,7 @@
     ],
     "confirmed_corrections": [
       "311s is the openingT2 right turn, not a later southern esses view.",
-      "295s belongs theT27/pit-return sequence after the direct291s final hairpin, notT22–T26.",
+      "295s belongs theT27/pit-return sequence after the direct291s final hairpin, notT22\u2013T26.",
       "339s shows late-lap acceleration atHUD1:15.917; the clip jumps from the northern return at335s to this later section, so missing intermediate station views cannot be inferred from playback time."
     ],
     "new_frame": {
@@ -408,5 +408,27 @@
     "pit_lane": "pit-lane.json",
     "former_side_claim_rejected": "The old right-pit/left-mainstand description contradicts direct forward video and the FIA pit plan.",
     "runtime_approval": false
+  },
+  "construction_material_correction": {
+    "source": "construction-material-correction.json",
+    "scope": "Tower1244131504 only. Dark rough non-emissive exposed construction; no completed glazing or invented skyline. Geometry and all other materials are unchanged.",
+    "direct_video_seconds": [
+      323
+    ],
+    "context_video_seconds": [
+      165
+    ],
+    "runtime_gate": "Await fresh packaged capture and Luna High comparison."
+  },
+  "edition_frontage_correction": {
+    "source": "edition-frontage-correction.json",
+    "osm_id": 1258744123,
+    "identity": "The Jeddah EDITION outside northern T13 banked hairpin",
+    "direct_video_seconds": [
+      331
+    ],
+    "native_approach_target_m": 2270,
+    "scope": "Mapped terraced frontage, deep canopy, recessed glazing and angled exterior frame. Roof height24.5\u00b14m is an estimate; source four-storey/12m-lobby facts do not establish uniform floor heights.",
+    "runtime_gate": "Await fresh packaged capture and Luna High review."
   }
 }

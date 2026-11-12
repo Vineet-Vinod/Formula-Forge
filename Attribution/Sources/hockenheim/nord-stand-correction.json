@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "circuit": "hockenheim",
+  "date": "2026-11-12",
+  "status": "Source correction; packaged Nord cockpit comparison remains required.",
+  "mapped_owner": {
+    "osm_id": 232009789,
+    "name": "Nordtrib\u00fcne",
+    "source": "Existing retained OSM grandstand outline; no invented rectangle replaces its curved plan.",
+    "area_m2": 8758.667246010376,
+    "OBB_overfill_ratio": 4.449202760772151
+  },
+  "direct_reference": {
+    "video": "Saved/Refs/germany.mp4",
+    "continuous_forward_seconds": [
+      136,
+      137,
+      138
+    ],
+    "lap": 1,
+    "HUD_lap_seconds": [
+      3.219,
+      4.219,
+      5.221
+    ],
+    "registration": "One continuous first-right Nordkurve apex and exit. The curved stand is on driver LEFT. Approximate native245\u2013435m matching is by corner shape, stand identity and blue/white kerbs, not playback-time interpolation. Camera/speed differ from the fixed Formula Forge cockpit and review pace.",
+    "observed": "Coherent sloping seating and a connected supported roof. No alternating tall/low seating peaks or disconnected black panels.",
+    "retained_reference_sha256": {
+      "build/reviews/hockenheim/reference/nord-0136.jpg": "26f253308a4c719c00f0b9fd08069573245d4e619f764274ad1c3ef8ea92e1e2",
+      "build/reviews/hockenheim/reference/nord-0137.jpg": "94fa9e3acce15cf78abb2fd02b44e610e56567815e57914e4615231ae3f6e5b8",
+      "build/reviews/hockenheim/reference/nord-0138.jpg": "d2be64a9d36181fdb6578923e5c5f2e25877b31c015d65b11c1a262a190d1000"
+    }
+  },
+  "confirmed_previous_defect": {
+    "capture": "build/reviews/hockenheim/resume-scenery-corrections-live/targeted/01-245.0-00000288.jpg",
+    "capture_sha256": "819400036574be0d43450ff68933f9ad3d14cbdc753083ea73c1ffe13aad0d2f",
+    "mechanism": [
+      "202 exact-pad boundary queries fell through at approximately1e-14m into the old DSM roof.",
+      "102 unclipped row-corner queries were outside the actual footprint, but their exterior terrain heights lifted the clipped seating.",
+      "Per-bay roof height used each corrupted last-row maximum plus4m, while fixed rear offsets could omit supports outside the variable-width outline."
+    ],
+    "old_tread_z_range_m": [
+      0.2854978132718682,
+      15.816475761509937
+    ],
+    "old_roof_z_range_m": [
+      10.185,
+      20.062
+    ],
+    "old_producer_audit": "build/reviews/resume-20261112/hockenheim-nord-producer-audit.json"
+  },
+  "source_correction": {
+    "private_module": "tools/venues/hockenheim_nord.py",
+    "foundation_datum_m": 0.03697429652502382,
+    "foundation_method": "Preserve the already-registered Nord adjacent-road datum. A3cm stand-footprint buffer absorbs roundoff at its boundary; all current road/protection/escape/other-building exclusions remain. No exterior DSM sample defines seating height.",
+    "foundation_added_area_m2": 22.480061776242515,
+    "foundation_overlap_unrelated_buildings_m2": 0,
+    "rows_estimate": 24,
+    "row_pitch_estimate_m": 0.9,
+    "row_rise_estimate_m": 0.46,
+    "first_floor_above_datum_m": 1.2,
+    "roof_level_above_datum_estimate_m": 15.2,
+    "roof_height_uncertainty_m": 2,
+    "roof": "One closed, connected roof over the retained grandstand outline, dark existing Roof top and pale Concrete soffit/fascia. The outline is the mapped stand envelope, not a claimed separately surveyed roof edge.",
+    "rear_support_bays": 54,
+    "support_spacing_estimate_m": 8,
+    "support_geometry": "Inset columns and triangulated cantilever frames follow the actual rear boundary; each complete truss segment stays inside the mapped outline.",
+    "uncertainty": "Terrace cross-section, roof elevation and support pitch are reconstructed from the supplied view, not construction drawings. Exact roof edge may differ within the mapped plan uncertainty.",
+    "other_callers": "Shared east_architecture.py and pit_compounds.py are unchanged. Only the Nord call and3cm Nord foundation tolerance are changed; all other Hockenheim stands remain as before."
+  },
+  "in_memory_proof": {
+    "whole_road_triangle_overlap_m2": 0,
+    "all_triangle_excess_actual_footprint_m2": 0,
+    "row_levels_constant_along_complete_curved_front": true,
+    "roof_one_component": true,
+    "roof_closed_shell_unpaired_edges_at_1um": 0,
+    "support_base_datum_error_m": 0,
+    "previous_202_boundary_fallthrough_queries_now_raw_datum_error_m": 0,
+    "source_proof": "build/reviews/resume-20261112/hockenheim-nord-source-proof.json",
+    "boundary_proof": "build/reviews/resume-20261112/hockenheim-nord-boundary-source-proof.json"
+  },
+  "regression": {
+    "file": "Tests/test_circuit_scenes.py",
+    "test": "test_hockenheim_nord_rows_and_roof_ignore_exterior_dsm",
+    "result": "PASS;24 constant row levels, one roof level and exact geometry/material stream invariant under a poisoned DSM height field. Included in the existing guarded circuit-check test path."
+  },
+  "preserved": "Native road/alignment/elevation/width/bank/protection, pit layout, handling and camera unchanged. No new material or importer branch.",
+  "runtime_targets_m": [
+    180,
+    245,
+    320,
+    420
+  ],
+  "runtime_approval": false
+}

@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=jeddah",
   "tiles": 141,
-  "triangles": 1034328,
+  "triangles": 1040493,
   "road_sha256": "d221dedd42a8b3e5299eb1dd7977e1d321202412434ee6096f272d250ae775e2",
   "terrain_sha256": "a30c782d9e70e53575eaa3a1295d86b00eeca559983b25de642725c36fdfe647",
   "landmarks": [
@@ -163,10 +163,16 @@
       "registration": "Mapped footprint retained.300m is a coarse scene estimate from the wider view, not a measured built height.432m/93levels in stale OSM describe the planned tower and are not asserted as its observed completed state. Footprint corner ground2.41\u20133.24m agrees with adjacent road3.24m; use road/site datum rather than adding height to a DSM roof."
     },
     {
-      "name": "The Jeddah EDITION",
+      "name": "The Jeddah EDITION terraced track frontage",
       "osm_id": 1258744123,
-      "height_m": 25,
-      "facade": "modern"
+      "mapped_length_m": 102.69445760603175,
+      "mapped_width_m": 34.187693818549974,
+      "adjacent_native_station_m": 2339.36719,
+      "distance_from_road_m": 86.99964790426921,
+      "foundation_top_m": 3.400435080379823,
+      "roof_above_foundation_m": 24.5,
+      "roof_height_uncertainty_m": 4.0,
+      "source": "Owner identifies four storeys and a 12 m lobby volume; direct overview04/331s show tiered slabs, recessed glazing, deep roof and angled white bracing. Four visual tiers are not a measured floor section. The provisional17.2m total estimate was rejected; no unsupported height reduction is made."
     },
     {
       "name": "Mapped building",

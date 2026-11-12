@@ -1,5 +1,7 @@
 #include "FFSimulation.hpp"
 
+#include <algorithm>
+#include <array>
 #include <cmath>
 #include <fstream>
 #include <iostream>
@@ -121,6 +123,12 @@ bool CheckGenerated(const TrackCatalogEntry& track) {
     }
     const float length = track.targetLengthMeters;
     if (!track.authoredBarriers.empty()) {
+        // Source-registered T13/T14 ends; every other barrier endpoint stays paired.
+        const std::array<std::pair<float, float>, 4> turkeyOpeningEnds{{
+            {-347.4275f, 26.1874f}, {-369.4077f, 36.1422f},
+            {-314.1103f, -9.9649f}, {-290.8085f, -40.2754f}
+        }};
+        std::array<bool, 4> foundOpeningEnds{};
         std::map<std::pair<float,float>,int> endpoints;
         for (const auto& wall : track.authoredBarriers) {
             ++endpoints[{wall.ax,wall.ay}];
@@ -128,9 +136,24 @@ bool CheckGenerated(const TrackCatalogEntry& track) {
         }
         for (const auto& [point,count] : endpoints) {
             if (count%2 != 0) {
+                if (track.id == TrackLayoutId::Turkey && count == 1) {
+                    const auto opening = std::find_if(turkeyOpeningEnds.begin(), turkeyOpeningEnds.end(),
+                        [&](const auto& expected) {
+                            return std::hypot(point.first - expected.first, point.second - expected.second) < .001f;
+                        });
+                    if (opening != turkeyOpeningEnds.end()) {
+                        foundOpeningEnds[opening - turkeyOpeningEnds.begin()] = true;
+                        continue;
+                    }
+                }
                 std::cerr << track.slug << " open protection at " << point.first << ',' << point.second << '\n';
                 return false;
             }
+        }
+        if (track.id == TrackLayoutId::Turkey &&
+            !std::all_of(foundOpeningEnds.begin(), foundOpeningEnds.end(), [](bool found) { return found; })) {
+            std::cerr << "turkey source-registered T13/T14 protection openings missing\n";
+            return false;
         }
     }
     if (std::abs(simulation.lapLength - length) > 0.05f || simulation.Barriers().size() < length / 4.0f) {
@@ -159,7 +182,12 @@ bool CheckGenerated(const TrackCatalogEntry& track) {
         const Vec2 normal{-road.tangent.y, road.tangent.x};
         for (const float lane : {-2.5f, 0.0f, 2.5f}) {
             const Vec2 position = road.position + normal * (lane * 17.0f);
-            if (!track.authoredBarriers.empty()) {
+            if (track.id == TrackLayoutId::Turkey) {
+                if (!simulation.trackLimits.Touches(position / 17.0f, {1.0f, 0.0f}, 0.0f)) {
+                    std::cerr << "turkey road leaves white-line envelope at " << station << " lane " << lane << '\n';
+                    return false;
+                }
+            } else if (!track.authoredBarriers.empty()) {
                 const float x = position.x / 17.0f, y = -position.y / 17.0f;
                 bool inside = false;
                 for (const auto& wall : track.authoredBarriers) {

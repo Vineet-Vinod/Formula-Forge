@@ -494,5 +494,19 @@
   "grandstand_ground_correction": {
     "source": "grandstand-ground-correction.json",
     "status": "Inferred occupied substructure parcels correct actual generated seat burial; fresh rendered review pending."
+  },
+  "nord_stand_source_correction": {
+    "source": "nord-stand-correction.json",
+    "osm_id": 232009789,
+    "continuous_video_seconds": [
+      136,
+      137,
+      138
+    ],
+    "native_range_estimate_m": [
+      245,
+      435
+    ],
+    "status": "Private source correction authored; fresh packaged review pending."
   }
 }

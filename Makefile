@@ -74,9 +74,9 @@ circuit-assets: check build build/tests/export-circuit-scene
 		bash tools/unreal.sh python tools/build_circuit_scene.py -FFCircuitAssets=$(CIRCUIT) -FFTileBatch=$$batch -FFTileBatches=4 || exit $$?; \
 	done
 circuit-check:
-	$(CIRCUIT_PYTHON) -m pytest -q Tests/test_circuit_scenes.py Tests/test_circuit_profiles.py Tests/test_circuit_recordings.py Tests/test_circuit_terrain.py Tests/test_coastal_water.py
+	$(CIRCUIT_PYTHON) -m pytest -q Tests/test_circuit_scenes.py Tests/test_circuit_profiles.py Tests/test_circuit_recordings.py Tests/test_circuit_terrain.py Tests/test_coastal_water.py Tests/test_circuit_protection.py
 	$(CIRCUIT_PYTHON) -m mypy tools/circuit*.py tools/generate_circuit_scene.py tools/review_circuit_recording.py tools/venues --ignore-missing-imports --follow-imports=silent
-	$(CIRCUIT_PYTHON) -m ruff check tools/circuit*.py tools/generate_circuit_scene.py tools/build_circuit_scene.py tools/review_circuit_recording.py tools/venues Tests/test_circuit_scenes.py Tests/test_circuit_profiles.py Tests/test_circuit_recordings.py Tests/test_circuit_terrain.py Tests/test_coastal_water.py
+	$(CIRCUIT_PYTHON) -m ruff check tools/circuit*.py tools/generate_circuit_scene.py tools/build_circuit_scene.py tools/review_circuit_recording.py tools/venues Tests/test_circuit_scenes.py Tests/test_circuit_profiles.py Tests/test_circuit_recordings.py Tests/test_circuit_terrain.py Tests/test_coastal_water.py Tests/test_circuit_protection.py
 
 .PHONY: lasvegas-assets
 .NOTPARALLEL: lasvegas-assets

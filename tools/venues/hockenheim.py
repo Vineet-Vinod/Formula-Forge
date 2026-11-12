@@ -10,7 +10,7 @@ from shapely.geometry import LineString, MultiPolygon, Polygon, box
 from shapely.geometry import Point as ShapePoint
 from shapely.ops import polygonize, unary_union
 
-from venues.east_architecture import footprint_stand
+from venues.hockenheim_nord import nord_stand
 from venues.west_architecture import apron_band, mapped_building, mast, trees
 
 
@@ -32,7 +32,7 @@ def build_venue(scene: CircuitScene) -> None:
     stand_ground(scene)
     scene.stand(0, 180, -1, rows=28, setback=18, roofed=True, seat_material='SeatRed')
     scene.stand(4430, 4574, -1, rows=28, setback=18, roofed=True, seat_material='SeatRed')
-    footprint_stand(scene, 232009789, rows=24, roof='flat', seat_material='SeatRed')
+    nord_stand(scene)
     scene.stand(3280, 3530, -1, rows=24, setback=22, seat_material='SeatRed')
     scene.stand(3660, 3920, -1, rows=27, setback=27, roofed=True, seat_material='SeatRed')
     scene.stand(3970, 4390, -1, rows=29, setback=18, roofed=True, seat_material='SeatRed')
@@ -78,7 +78,7 @@ def stand_ground(scene: CircuitScene) -> None:
         *[Polygon(building.ring).buffer(.5) for building in scene.buildings
           if building.osm_id not in owners],
     ])
-    north = Polygon(scene.footprint(232009789).ring).difference(blocked)
+    north = Polygon(scene.footprint(232009789).ring).buffer(.03).difference(blocked)
     north_parts = [north] if isinstance(north, Polygon) else (
         list(north.geoms) if isinstance(north, MultiPolygon) else []
     )

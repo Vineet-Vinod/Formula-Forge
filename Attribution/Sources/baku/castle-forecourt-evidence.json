@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "circuit": "baku",
+  "status": "Original local reconstruction; packaged visual review pending",
+  "observed_defect": {
+    "packet": "887f09f0002522423e4737a1cb102523587bcda2",
+    "image": "build/reviews/baku/resume-scenery-corrections-live/targeted/03-2680.0-00002701.jpg",
+    "owner": "Tile_Street_m7_m2 Runoff terrain triangle 4967",
+    "cause": "GLO-90 surface heights of roughly 14 m are blended toward the adjacent 5 m road, producing an unsupported street-side ramp. This is a scenery DSM artifact, not a racing-road elevation correction."
+  },
+  "source": {
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=49.8343,40.3682,49.8373,40.3698",
+    "retrieved_utc": "2026-11-12",
+    "raw_sha256": "095b0a42579097096748d6805e3fa8974506e2796d1047d3ea3867c035946a1b",
+    "retained_file": "forecourt-context.osm.gz",
+    "retained_sha256": "2bb093c5a6f553e9d68956c35226d0120bd67b43fffa0ff6599885fb5206b83e",
+    "licence": "OpenStreetMap contributors, ODbL 1.0",
+    "service_way_id": 339124204,
+    "park_way_id": 299424032,
+    "Court_building_way_id": 133641457
+  },
+  "references": [
+    {
+      "path": "build/reviews/resume-20261112/fold-visual-triage/baku-ref-236.5.jpg",
+      "timestamp_s": 236.5,
+      "pose": "Forward castle approach; Court frontage right."
+    },
+    {
+      "path": "build/reviews/resume-20261112/fold-visual-triage/baku-ref-237.jpg",
+      "timestamp_s": 237.0,
+      "pose": "Forward T9 right turn; cream frontage and fence at street level, trees beyond."
+    },
+    {
+      "path": "build/reviews/resume-20261112/fold-visual-triage/baku-ref-237.5.jpg",
+      "timestamp_s": 237.5,
+      "pose": "Rear camera; use only for continuity, reverse left/right."
+    }
+  ],
+  "reconstruction": {
+    "recipe": "castle-forecourt.json",
+    "scope": "Service street buffer clipped to driver RIGHT of native 2590\u20132850; all protected racing corridors, buildings, water and the exact Sabir Park polygon excluded. Real Court footprint is separately cut out of the DSM terrain; its facade and floor datum stay unchanged.",
+    "height": "Linear grade between unchanged nearest racing-road heights at the two mapped service-street endpoints. Cubic fades rejoin original joined scenery ground at road, Park and outer boundaries.",
+    "core_half_width_m": 2.0,
+    "lateral_transition_extent_m": 42.0,
+    "park_transition_m": 16.0,
+    "vertical_uncertainty_m": 2.0,
+    "surface_note": "Mapped street is asphalt. Adjoining light hardscape and substructure ground are estimates from the supplied view, not surveyed paving extents. The wider transition preserves outer heights and does not assert a 42 m wide street.",
+    "unchanged": "All native road XYZ, bank, asphalt widths, protection and physics. Sabir Park and Court facade heights are unchanged. No scenery ground value provider or global vertical datum is modified."
+  },
+  "registration_caveat": "The original 236 s reference is an earlier approach than the 2680 m game target. Continuous forward/rear frames establish frontage and slope context, not an exact camera match. Sabir Park is 27.8 m from the original ramp ray; the ramp itself is mapped service-street frontage, not Park.",
+  "source_proof": {
+    "minimum_driver_right_lane_m": 4.049971577106631,
+    "nearest_native_station_range_m": [
+      2651.1534643079135,
+      2797.1087997964783
+    ],
+    "source_module_sha256": "66b63a0c6f34fcead012308700e2694ea2c2470969534bf03cc8431277ffef41",
+    "local_triangles": 5462,
+    "area_m2": 4476.302465021169,
+    "road_corridor_overlap_m2": 0.0,
+    "Court_footprint_overlap_m2": 0.0,
+    "park_overlap_m2": 0.0,
+    "Court_ground_witness_change_m": 0.0,
+    "worst_new_face": {
+      "material": "Concrete",
+      "points": [
+        [
+          -1449.0,
+          -425.43755213276484,
+          5.292396036988874
+        ],
+        [
+          -1449.0,
+          -424.5,
+          5.348345018177023
+        ],
+        [
+          -1449.0070877783307,
+          -425.4367676642058,
+          5.295741115711524
+        ]
+      ]
+    },
+    "maximum_new_face_grade": 0.4691561837925945,
+    "maximum_old_field_face_grade_on_same_triangles": 0.7469349939886729,
+    "protected_boundary_max_join_error_m": 0.0,
+    "unoccupied_outer_boundary_max_join_error_m": 2.6340259145385403e-05,
+    "rays": [
+      {
+        "pixel": [
+          1450,
+          350
+        ],
+        "old_distance_m": 16.822549587293587,
+        "old_point_m": [
+          -1444.3212391308296,
+          -418.6746701031973,
+          7.481602022143556
+        ],
+        "new_hits": []
+      },
+      {
+        "pixel": [
+          1300,
+          400
+        ],
+        "old_distance_m": 19.846397991315953,
+        "old_point_m": [
+          -1447.198247782532,
+          -420.1852118706654,
+          6.51878204135713
+        ],
+        "new_hits": []
+      },
+      {
+        "pixel": [
+          1550,
+          300
+        ],
+        "old_distance_m": 16.539757366698872,
+        "old_point_m": [
+          -1444.226675957721,
+          -416.822581030368,
+          8.488932389240055
+        ],
+        "new_hits": []
+      },
+      {
+        "pixel": [
+          1230,
+          410
+        ],
+        "old_distance_m": 23.72872266729344,
+        "old_point_m": [
+          -1451.0923174074062,
+          -420.16105771681725,
+          6.335402307224257
+        ],
+        "new_hits": []
+      }
+    ],
+    "memory": [
+      "VmHWM:\t  104448 kB"
+    ],
+    "scope_note": "Street-only numeric proof; Park surface and planting have a separate proof. All street triangle centroids are driver RIGHT. These are source proofs, not packaged visual acceptance."
+  },
+  "Sabir_Park": {
+    "osm_id": 299424032,
+    "material": "Grass",
+    "mapped_path_count": 17,
+    "path_half_width_estimate_m": 1.4,
+    "planting_note": "49 original broadleaf positions jittered within the retained park planting area. Heights 8.5\u201312.5 m, approximately 8 m spacing are visual estimates from the dense-tree reference. Source ground is unchanged; canopy cannot intersect protected roads or buildings. No grass is placed on mapped paths, road corridors, building footprints or water.",
+    "source_proof": {
+      "ground_triangles": 680,
+      "grass_area_m2": 7780.418793145767,
+      "outside_mapped_park_m2": 0.0,
+      "road_corridor_overlap_m2": 1.3695641842836892e-15,
+      "building_overlap_m2": 0.0,
+      "mapped_path_overlap_m2": 0.0,
+      "maximum_surface_vertex_height_change_m": 0.0,
+      "park_perimeter_witness_change_m": 0.0,
+      "tree_count": 49,
+      "tree_root_height_error_m": 0.0,
+      "minimum_tree_root_road_corridor_distance_m": 8.970539148875329,
+      "minimum_tree_root_building_distance_m": 9.740111077637444,
+      "memory": [
+        "VmHWM:\t  105696 kB"
+      ]
+    }
+  }
+}

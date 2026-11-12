@@ -20,6 +20,7 @@ from venues.east_architecture import (
     frame,
     trees,
 )
+from venues.malaysia_crown import end_umbrella
 from venues.west_architecture import apron_band
 
 
@@ -100,6 +101,9 @@ def main_grandstand(scene: CircuitScene) -> None:
                                        -center[0] * axis[0] - center[1] * axis[1],
                                        -center[0] * side[0] - center[1] * side[1]])
     start, low, end, high = local.bounds
+    crown_local = local.intersection(box(268.4, low - 1, end + 1, high + 1))
+    crown = affine_transform(crown_local, [axis[0], side[0], axis[1], side[1], center[0], center[1]])
+    wing_footprint = footprint.difference(crown)
     roof_edges: Counter[tuple[Point, Point]] = Counter()
     roof_edge_direction: dict[tuple[Point, Point], tuple[Point, Point]] = {}
     modules = max(1, round(length / 25))
@@ -159,6 +163,8 @@ def main_grandstand(scene: CircuitScene) -> None:
             for across in range(32):
                 v0, v1 = low + (high - low) * across / 32, low + (high - low) * (across + 1) / 32
                 patch = local.intersection(box(u0, v0, u1, v1))
+                if u1 > 268.4:
+                    patch = patch.difference(crown_local)
                 for triangle in constrained_delaunay_triangles(patch).geoms:
                     p = [roof_point(u, v) for u, v in list(triangle.exterior.coords)[:3]]
                     if not triangle.exterior.is_ccw:
@@ -208,12 +214,12 @@ def main_grandstand(scene: CircuitScene) -> None:
                     u = middle + (target_u - middle) * fraction
                     v = rear_v + (front_v - rear_v) * fraction
                     point_on_rib = add(roof_point(u, v), (0, 0, -.30))
-                    if footprint.covers(LineString([previous[:2], point_on_rib[:2]]).buffer(.065)):
+                    if wing_footprint.covers(LineString([previous[:2], point_on_rib[:2]]).buffer(.065)):
                         scene.beam('Building_SepangMembraneRibs', 'White', previous, point_on_rib, .13)
                     previous = point_on_rib
             rear = lo + 1 if face > 0 else hi - 1
             root, mast = point(middle, rear, .2), point(middle, rear, 27)
-            if footprint.covers(LineString([root[:2], mast[:2]]).buffer(.3)):
+            if wing_footprint.covers(LineString([root[:2], mast[:2]]).buffer(.3)):
                 scene.beam('Building_SepangMasts', 'Steel', root, mast, .5)
             for delta in [-bay * .4, bay * .4]:
                 tip_u = middle + delta
@@ -221,7 +227,7 @@ def main_grandstand(scene: CircuitScene) -> None:
                            key=lambda p: abs((p[0] + p[1]) / 2 - (lo + hi) / 2))
                 tip_v = wing[1] - .6 if face > 0 else wing[0] + .6
                 tip = roof_point(tip_u, tip_v)
-                if footprint.covers(LineString([mast[:2], tip[:2]]).buffer(.08)):
+                if wing_footprint.covers(LineString([mast[:2], tip[:2]]).buffer(.08)):
                     scene.beam('Building_SepangMasts', 'Steel', mast, tip, .10)
     for edge, count in roof_edges.items():
         if count != 1:
@@ -229,6 +235,10 @@ def main_grandstand(scene: CircuitScene) -> None:
         edge_a, edge_b = roof_edge_direction[edge]
         scene.quad('Building_SepangLeafFascia', 'White',
                    add(edge_a, (0, 0, -.18)), add(edge_b, (0, 0, -.18)), edge_b, edge_a)
+    if not isinstance(crown, Polygon):
+        raise TypeError('Sepang round end must remain one mapped crown footprint')
+    end_umbrella(scene, crown, center, axis, side, floor(293.99818933, -6.12008151),
+                 lambda u, v: roof_point(u, v)[2])
     scene.landmarks.append({'name': 'Sepang mapped double-frontage palm-leaf grandstand',
                             'osm_id': building.osm_id, 'roof_bays': modules,
                             'road_area_removed_m2': round(Polygon(building.ring).area - footprint.area, 3),

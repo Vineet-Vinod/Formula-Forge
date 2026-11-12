@@ -9,13 +9,13 @@
     {
       "start_m": 0,
       "end_m": 650,
-      "name": "Pit straight and Sainte-Dévote",
+      "name": "Pit straight and Sainte-D\u00e9vote",
       "reference_times_s": [
         97.9,
         727.19,
         906.98
       ],
-      "observed_environment": "Stands and stone/pink apartment tiers frame the uphill opening. Pit/service bars, marina edge, Armco and high mesh fence. Sainte-Dévote needs its opening/runoff access, not a solid urban wall.",
+      "observed_environment": "Stands and stone/pink apartment tiers frame the uphill opening. Pit/service bars, marina edge, Armco and high mesh fence. Sainte-D\u00e9vote needs its opening/runoff access, not a solid urban wall.",
       "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
     },
     {
@@ -74,7 +74,7 @@
     {
       "start_m": 2880,
       "end_m": 3337,
-      "name": "Rascasse, Antony Noghès and pits",
+      "name": "Rascasse, Antony Nogh\u00e8s and pits",
       "reference_times_s": [
         97.9,
         1266.58
@@ -309,7 +309,7 @@
     ],
     "surface_elevation_relative_m": -2.5,
     "water_level_status": "Originalreferenceheight estimate beneathcorrectedRascassedeck; notlocalMSLsurvey.",
-    "fleet": "Original17–27myachtforms, mooringgridinsidePortHerculewater; fleet/positions reconstruct observedvisualdensity, notspecificvesselidentities.",
+    "fleet": "Original17\u201327myachtforms, mooringgridinsidePortHerculewater; fleet/positions reconstruct observedvisualdensity, notspecificvesselidentities.",
     "source_reference_times_s": [
       367.59,
       457.49,
@@ -501,15 +501,15 @@
     "status": "Source corrections awaiting packaged review",
     "tunnel": "Cream wall now has both opaque sides; former right wall backface rendered only grout lines. Right is enclosed and tiled, sea-left low parapet/open bays remain. Dark thin grout replaces bright white lattice.",
     "palaces": "HotelParis8280869/Casino161769674 retain exact footprints but now have arched openings, modeled pilasters/cornices, individual iron balconies and mansard roofs;6/3storeys and24/19m heights remain original estimates. Shared generic office helper no longer supplies these facades.",
-    "camera_registration": "At946m all Hotel vertices are behind camera (−118.79 to−6.08m forward); Casino has no vertex inside90degreeHFOV. Judge ornate landmarks from860/880m.946 remains a valid ordinary-city/garden context view.",
+    "camera_registration": "At946m all Hotel vertices are behind camera (\u2212118.79 to\u22126.08m forward); Casino has no vertex inside90degreeHFOV. Judge ornate landmarks from860/880m.946 remains a valid ordinary-city/garden context view.",
     "ground": "Canonical RGE ALTI ground, a 2 m off-corridor join and close-wall shoulder sections restore land between stacked streets. Actual mapped park/grass boundaries replace asphalt only within those polygons. No invented green blanket or racing-elevation change.",
-    "upper_road_diagnosis": "SHA-verified ray tests identify the black slabs as upper native road/verge at stations 1205–1275, exposed through overlapping broad shoulder corridors. The apparent inverted row is ordinary façades seen through that void, not the Fairmont roof. Both-side shoulder corrections restore 2389.3 square metres of interstreet land in the diagnostic region.",
-    "supports": "Actual OSM retaining-wall alignments use adjacent registered ground for reconstructed heights. The upper Mirabeau inner street edge at 1200–1290 m has stone foundations reaching real RGE ground. These are supports outside the racing surface; they do not change road elevation or native collision geometry.",
+    "upper_road_diagnosis": "SHA-verified ray tests identify the black slabs as upper native road/verge at stations 1205\u20131275, exposed through overlapping broad shoulder corridors. The apparent inverted row is ordinary fa\u00e7ades seen through that void, not the Fairmont roof. Both-side shoulder corrections restore 2389.3 square metres of interstreet land in the diagnostic region.",
+    "supports": "Actual OSM retaining-wall alignments use adjacent registered ground for reconstructed heights. The upper Mirabeau inner street edge at 1200\u20131290 m has stone foundations reaching real RGE ground. These are supports outside the racing surface; they do not change road elevation or native collision geometry.",
     "stand_K": {
       "source": "FIA 2026 Monaco official media kit, map on page 9; original PDF retained only in ignored research files.",
       "source_url": "https://www.fia.com/sites/default/files/media_kit_2026_gb_03.06_1.pdf",
       "pdf_sha256": "cc2292a7243fc367f89df76cf08973728ba71731442ae62ff76359080833e04b",
-      "registration": "Grandstand K follows Tabac toward the first Swimming Pool sequence. Previous 2350–2490 m band began before Tabac and overlapped the uphill racing road by about 913 square metres. Corrected reconstruction spans 2445–2550 m, driver right, 18 rows and 3 m setback. Exact limits/dimensions remain estimates.",
+      "registration": "Grandstand K follows Tabac toward the first Swimming Pool sequence. Previous 2350\u20132490 m band began before Tabac and overlapped the uphill racing road by about 913 square metres. Corrected reconstruction spans 2445\u20132550 m, driver right, 18 rows and 3 m setback. Exact limits/dimensions remain estimates.",
       "source_clearance": "All 11020 checked structural triangles in the corrected stand have zero projected road overlap."
     }
   },
@@ -559,13 +559,13 @@
       835592938,
       835592939
     ],
-    "landcover_geometry": "Mapped woods replace underlying asphalt and support251 reconstructed5.5–10m broadleaf trees, no palms. Limestone applies to unplanted existing12m cells within60m of mapped cliff where IGN ground>8m and gradient>=.2, plus registered Mirabeau interstreet strip. Cliff buffer/slope threshold are original visual classification estimates, not surveyed geology boundaries. Roads, protection, paths, water and actual building footprints are excluded.",
+    "landcover_geometry": "Mapped woods replace underlying asphalt and support251 reconstructed5.5\u201310m broadleaf trees, no palms. Limestone applies to unplanted existing12m cells within60m of mapped cliff where IGN ground>8m and gradient>=.2, plus registered Mirabeau interstreet strip. Cliff buffer/slope threshold are original visual classification estimates, not surveyed geology boundaries. Roads, protection, paths, water and actual building footprints are excluded.",
     "scenery_street_exclusion": "Avenue de la Porte Neuve165636031 retains its existing asphalt through an estimated6m width supported by its two-lane tag; no racing-road or native collision edits. Below-ground tunnels do not remove above-ground vegetation.",
     "architecture": "Twelve actual mapped Rocher crest footprints. Tagged3/4 storeys retained with shared3.4m storey conversion. Untagged houses estimated3storeys. Narrow recessed openings, original dark shutter geometry, cream plaster and footprint-clipped terracotta hip roofs distinguish historic houses from modern office grids. Individual facade colours, shutter positions and roof pitches remain reconstructed. Chapel separately plain masonry, timber entrance and pale stone doorframe; estimated10.5m eave, no invented office floors or tower.",
     "primary_architecture_evidence": [
       {
         "url": "https://commons.wikimedia.org/wiki/File:Chapelle_de_la_Mis%C3%A9ricorde_de_Monaco_-_porte_principale.jpg",
-        "author": "Benoît Prieur",
+        "author": "Beno\u00eet Prieur",
         "capture_date": "2021-11-04",
         "licence": "CC0 1.0",
         "retrieved": "2026-11-08",
@@ -643,7 +643,7 @@
       ],
       "reference_sha256": "adbdfe43b01de69527412eb9086b910094a907a3676520d9fcb36ac0c0b7a047",
       "form": "Seven genuinely open balcony/loggia storeys: recessed room wall, white thin floorplates/partitions/parapets. Original2.1m depth/4.6m bays; actual mapped concave envelope.",
-      "height_source": "IGN BDTopo mainhotel74074334:33m above0.9mground gives33.9mabsolute roof,±1.5m. Upperroomvolume uses thatroofminus existingRGEdatum and tunnel-clearing base, not33m added above elevatedbase.",
+      "height_source": "IGN BDTopo mainhotel74074334:33m above0.9mground gives33.9mabsolute roof,\u00b11.5m. Upperroomvolume uses thatroofminus existingRGEdatum and tunnel-clearing base, not33m added above elevatedbase.",
       "official_storeys_source": "https://at.media.france.fr/sites/default/files/document/press_kit/Monaco-%20Press%20kit%202014.pdf",
       "clearance": "Full-width native road intersection proof minimum slab soffit5.549m above tunnelroad, exceeding existing5.4m ceiling. No nativeXYZ/protection change."
     },
@@ -660,7 +660,7 @@
       ],
       "diagnosis": "Min-ground+6.8m default buried the partly-underground theatre below upperstreet; actualroofgarden/entrypavilion was missing.",
       "original_geometry": "Mapped theatre/pavilion outlines clipped against fullroad/protection. Terrace36.1978mrelative estimated from adjacent upperentry650m+.3;3.3mpavilion and plantedpalms follow realpublicrooftop use.",
-      "independent_primary_check": "IGN pavilion74074338 matches94.3%,height3.2m,maxroof41.2mabsolute,±1.5m; reconstructedpavilionroof39.4978mrelative differs only.1893m from source39.6871mrelative.",
+      "independent_primary_check": "IGN pavilion74074338 matches94.3%,height3.2m,maxroof41.2mabsolute,\u00b11.5m; reconstructedpavilionroof39.4978mrelative differs only.1893m from source39.6871mrelative.",
       "government_plan_url": "https://documents.gouv.mc/www/dpum/plans/condamine/PU-C3-CDN-Z2-I3-D2.pdf",
       "government_plan_sha256": "4a9394c57be6ebe15e2bb685eaee4f04afbbb1fc68a79c340c70bc3a8ec58073",
       "operator_theatre_plan_url": "https://www.tpgmonaco.mc/fr/telechargements/medias_upload/moxie/pdf/TPG-Plan.pdf",
@@ -675,5 +675,11 @@
       "no_ground_changes": "All original RGE ground samples and native racing heights/banking/widths/protection preserved; mappedsurfacepaint/vegetation only.",
       "source_uncertainties": "Per-building primaryheightprecision/sourcegeometry kept. Somefields/roofboundaryextents are inconsistent on multi-level structures: visible floorrows follow actualeaves and sourcefloorcount, not blindly lowgroundanchor. Roofridgeaxis and facadeopenings remain original contextual estimates."
     }
+  },
+  "tabac_lower_frontage_correction": {
+    "source": "tabac-frontage-correction.json",
+    "scope": "Private fine RGE lower-quay strip and actual hotel/retail facade bases; upperstreet/realhill/theatre unchanged.",
+    "target_native_station_m": 2380,
+    "runtime_gate": "Await fresh packaged capture and Luna High review."
   }
 }

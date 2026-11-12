@@ -823,5 +823,10 @@
   "t8_runoff_correction": {
     "source": "t8-runoff-correction.json",
     "status": "Confirmed inside/outside material correction. Source frozen; fresh visual review pending."
+  },
+  "open_inside_grass_islands": {
+    "source": "protection-openings.json",
+    "evidence": "protection-opening-evidence.json",
+    "status": "Reference-backed T13/T14 physical and visual openings; fresh review pending."
   }
 }

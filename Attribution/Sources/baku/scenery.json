@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=baku",
   "tiles": 202,
-  "triangles": 3918399,
+  "triangles": 3930769,
   "road_sha256": "26bc10ef7913eb8b758e60bada4eb749e94aa7bb524952c47ead9fff2130166e",
   "terrain_sha256": "e6e5423c2f5f02fc7e47ddb1459d9e39edcc2ae0b7891724be8520abedc5231e",
   "landmarks": [
@@ -140,6 +140,11 @@
       "water_removed_for_roads_buildings_piers_m2": 40141.861,
       "source": "coastal-water.json and coastal-provenance.json; original shoreline geometry, no game pixels.",
       "dimensions_status": "Water is flat in the registered native datum. Pier footprints are mapped; deck levels are estimated from retained shore ground with minimum 0.6 m freeboard. Water only excludes scenery terrain; no physical corridor or native road changes."
+    },
+    {
+      "name": "Court service street and paved forecourt",
+      "osm_id": 339124204,
+      "source_note": "Actual mapped one-way asphalt service street and adjoining hardscape, on the driver-right side of the racing road, outside the racing corridor, retained buildings and Sabir Park. Ground is reconstructed from unchanged adjacent road endpoint grades, with a smooth 42 m fade to original scenery and a 16 m fade at the untouched park. About \u00b12 m vertical uncertainty; this is not a bare-earth survey. Native road, Court facade placement, park heights and physical protection remain unchanged. DSM terrain hidden inside the real Court footprint does not form part of its ground-floor architecture."
     },
     {
       "name": "Muzey M\u0259rk\u0259zi",
@@ -1920,6 +1925,12 @@
     }
   ],
   "vegetation": [
+    {
+      "name": "Sabir Park",
+      "osm_id": 299424032,
+      "count": 49,
+      "placement": "Exact mapped park with retained paths excluded; path half-width 1.4 m, broadleaf heights 8.5\u201312.5 m and approximately 8 m spacing are visual estimates. Existing joined scenery heights are unchanged. Tree roots are grounded; crown radius clears roads and mapped buildings."
+    },
     {
       "type": "broadleaf",
       "start_m": 0,

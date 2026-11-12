@@ -25,6 +25,7 @@ def field_nodes(
     material: unreal.Material,
     bounds: tuple[float, float, float, float],
     texture: unreal.Texture,
+    road_floor: float = 0.15,
 ) -> unreal.MaterialExpression:
     position = EDIT.create_material_expression(
         material, unreal.MaterialExpressionWorldPosition
@@ -96,7 +97,7 @@ def field_nodes(
     floor.r = (
         0.35
         if "Facade" in material.get_name()
-        else 0.15
+        else road_floor
         if any(word in material.get_name() for word in ("PresentationSurface", "Asphalt"))
         else 0.12
     )
@@ -110,6 +111,7 @@ def shade(
     material: unreal.Material,
     bounds: tuple[float, float, float, float],
     texture: unreal.Texture,
+    road_floor: float = 0.15,
 ) -> None:
     source = EDIT.get_material_property_input_node(
         material, unreal.MaterialProperty.MP_BASE_COLOR
@@ -123,7 +125,7 @@ def shade(
         material, unreal.MaterialExpressionMultiply
     )
     connect(source, output, multiply, "A")
-    connect(field_nodes(material, bounds, texture), "", multiply, "B")
+    connect(field_nodes(material, bounds, texture, road_floor), "", multiply, "B")
     EDIT.connect_material_property(multiply, "", unreal.MaterialProperty.MP_BASE_COLOR)
     name = material.get_name()
     painted = name in (

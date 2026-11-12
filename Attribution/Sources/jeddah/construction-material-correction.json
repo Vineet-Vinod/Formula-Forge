@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "circuit": "jeddah",
+  "osm_id": 1244131504,
+  "correction": "Diamond Tower construction material only",
+  "date": "2026-11-12",
+  "direct_evidence": [
+    {
+      "clip": "Saved/Refs/jeddah.mp4",
+      "time_s": 323,
+      "reference_image": "build/reviews/jeddah/reference/detail-0323.jpg",
+      "image_sha256": "a4c5a156096859a11d7811c4b72d27928655f176c0c3eb766279af8d623ad233",
+      "observation": "Exposed dark gray/brown concrete core and open floorplates with a crane. The top is cropped; this frame does not establish built height. Finished glazing is not supported."
+    }
+  ],
+  "context_evidence": [
+    {
+      "time_s": 165,
+      "reference_image": "build/reviews/jeddah/reference/diamond-check-165.jpg",
+      "image_sha256": "19646c5ea6ee58ca42e9505b774e10229a10075858943bbe25099e918a4b8f31",
+      "qualification": "Distant pit-return view, not the close native1600m camera. It does not establish a separate missing glazed building."
+    }
+  ],
+  "model_registration": {
+    "osm_id": 1244131504,
+    "native1600_distance_m": 292.48,
+    "native1600_bearing_right_of_track_deg": 14.57,
+    "native_nearest_station_m": 1878.8,
+    "native_nearest_distance_m": 56.3,
+    "height_m": 300,
+    "height_uncertainty_m": 80
+  },
+  "previous_materials": [
+    "Concrete on core, floorplates and columns",
+    "Cream on exposed slab edges and top formwork; the night shader treats Cream as painted/emissive"
+  ],
+  "replacement": {
+    "name": "JeddahConstruction",
+    "linear_rgb": [
+      0.19,
+      0.17,
+      0.145
+    ],
+    "roughness": 0.94,
+    "emissive": false,
+    "scope": [
+      "construction core",
+      "open floorplates",
+      "exposed columns",
+      "floor edges",
+      "temporary upper formwork"
+    ],
+    "parameters": "Restrained visual reconstruction from the supplied night reference, not measured spectral reflectance. New constant-color material uses the existing venue irradiance field without an emissive branch."
+  },
+  "preserved": [
+    "Mapped footprint and base datum",
+    "300\u00b180m estimated construction envelope, open floor rhythm and all triangle positions/normals/topology",
+    "Crane geometry and Yellow/Steel/Concrete counterweight materials",
+    "All other Jeddah buildings and all existing material behavior",
+    "Native racing geometry, widths, elevations, protection, camera and handling",
+    "Root-owned Bahrain road-floor edits"
+  ],
+  "source_proof": {
+    "triangles": 26508,
+    "positions_normals_byte_identical": true,
+    "changed_material_triangles": {
+      "Concrete\u2192JeddahConstruction": 17460,
+      "Cream\u2192JeddahConstruction": 5688
+    },
+    "all_unchanged_material_vertices_byte_identical": true,
+    "unused_uv_change": "Old Concrete automatic projected texture UVs become unused default UVs on the new untextured constant color. No shared mesh branch was changed.",
+    "actual_night_emissive_predicate": false,
+    "scope_isolated_by_ast_comparison": true
+  },
+  "review_status": "Source checks only. Fresh packaged Jeddah capture and Luna High review are required."
+}

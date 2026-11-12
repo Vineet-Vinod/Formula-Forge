@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "circuit": "bahrain",
+  "status": "Source adjustment; fresh identical-view packaged review required.",
+  "finding": "887f09f0 whole-route night review found uniformly pale asphalt and weak light-pool falloff compared with the supplied forward footage.",
+  "references": [
+    {
+      "path": "build/reviews/bahrain/reference/detail-0185.jpg",
+      "sha256": "00fdd490517f0aeccf01dc5601df0bf7c81061438cfc3a8038906e41c0d5ee8f"
+    },
+    {
+      "path": "build/reviews/bahrain/reference/detail-0205.jpg",
+      "sha256": "47540e0f13d26fe5ce9bdd30c552dda14144958ca28a4b0fa45b127b0735943e"
+    }
+  ],
+  "change": {
+    "private_paved_surface_floor_before": 0.15,
+    "private_paved_surface_floor_after": 0.05,
+    "field_nodes_and_fixture_stream": "Unchanged: same projected lightfield, texture, head count, power, pole positions and material emissive strengths.",
+    "scope": "Only Bahrain import passes0.05; other venues retain the0.15 default. Accepted LasVegas authoring/assets, runtime lighting actor, exposure and camera unchanged. Facade/other material floors retain their existing branches."
+  },
+  "source_field_contrast": {
+    "field_road_R_quantiles": [
+      0.0,
+      0.00784313725490196,
+      0.1411764705882353,
+      0.2784313725490196,
+      0.4235294117647059
+    ],
+    "0.15": {
+      "p05": 0.15784313725490196,
+      "p95": 0.42843137254901964,
+      "p95_over_p05": 2.7142857142857144
+    },
+    "0.05": {
+      "p05": 0.05784313725490196,
+      "p95": 0.3284313725490196,
+      "p95_over_p05": 5.677966101694915
+    }
+  },
+  "qualification": "Artist material calibration to supplied footage, not measured illuminance. Multiplier contrast is a source diagnostic, not a rendered result or approval."
+}

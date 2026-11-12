@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-12",
+  "issue": "At the exact 887 capture at Tabac, station 2380 m, opaque gray pixels belonged to Runoff terrain triangles rising from the lower quay to narrow building-front corners. Coarse 12 m IGN bare-earth interpolation bridged the adjacent upper BeauRivage arm and lower quay; this was not proof that the real hill should be flattened.",
+  "affected_footprints": [
+    507048725,
+    508221117
+  ],
+  "hotel_identity": {
+    "name": "Hotel Miramar",
+    "owner_url": "https://www.hotelmiramar.mc/fr/plan.html",
+    "owner_pin_lat_lon": [
+      43.7369725,
+      7.4229654
+    ],
+    "qualification": "Owner address1AvenueJF Kennedy and pin coincide with the retained hotel frontage; no hotel billboard is added."
+  },
+  "source": {
+    "provider": "IGN Geoplateforme",
+    "resource": "ign_rge_alti_wld",
+    "endpoint": "https://data.geopf.fr/altimetrie/1.0/calcul/alti/rest/elevation.json",
+    "retained_requests_responses": "architecture/tabac-frontage-ground-source.json",
+    "typed_grid": "architecture/tabac-frontage-ground-grid.json",
+    "sample_interval_m": 2,
+    "observations": 588,
+    "accuracy": "Provider explicitly reports variable source accuracy;2m query spacing is not 2 m or centimetre engineering-accuracy claim. Street/underground levels remain limited by the terrain source."
+  },
+  "confirmed_old_witnesses": [
+    {
+      "source_xy_m": [
+        108.42462890625,
+        261.411484375
+      ],
+      "old_grid_relative_m": 6.887028363232297,
+      "direct_RGE_absolute_m": 5.4,
+      "direct_RGE_relative_m": 3.8871005887
+    },
+    {
+      "source_xy_m": [
+        99.9271,
+        258.9048
+      ],
+      "old_grid_relative_m": 5.924657393406121,
+      "direct_RGE_absolute_m": 4.4,
+      "direct_RGE_relative_m": 2.8871005887
+    }
+  ],
+  "reconstruction": {
+    "fine_ground_exposed_area_m2": 451.8587774142506,
+    "extent": "Actual mapped hotel/retail footprints plus a 6 m estimated strip toward the lower quay; only exposed strip ground is emitted. Other buildings, all native corridors, water and the upper arm plus a 2 m guard are excluded.",
+    "seams": "Two-metre smooth transitions to existing outer terrain/native corridor/upper-guard edges. Fine sampled heights remain in the interior; no globalgrid or raw_ground function is replaced.",
+    "hotel_base_relative_m": 1.6349336696921277,
+    "hotel_retained_roof_relative_m": 12.133374640281717,
+    "retail_base_relative_m": 3.2433184239138027,
+    "retail_retained_roof_relative_m": 12.442009577941018,
+    "facades": "Existing actual footprints and roof planes retained. Lower hotel frontage uses three estimated visual storeys, retail uses two. Quay-facing balconies explicitly address the lower street at stations 2380/2410 m rather than the geometrically nearest elevated 353 m arm. Window/balcony details remain reconstruction, not a room-by-room survey."
+  },
+  "preserved": [
+    "Native roadXYZ/width/elevation/protection/physics/camera",
+    "Upper BeauRivage racing corridor and its raw-ground witnesses",
+    "Real hill and all terrain outside the bounded lower forecourt",
+    "Exact prior approximate roof elevations of both affected buildings",
+    "Theatre Princesse Grace terrace and all other Monaco architecture",
+    "All other venues and shared APIs/materials"
+  ],
+  "proof_scope": "Fine-ground overlap with all protected corridors and upper guard is zero. All affected architecture haszero racing-asphalt overlap. Existing building footprints already extend into outer protection margins and are retained; this is not a claim that every architectural plan lies outside the upper guard.",
+  "reference_registration": {
+    "exact_capture": "build/reviews/monaco/resume-scenery-corrections-live/targeted/05-2380.0-00002731.jpg",
+    "station_m": 2379.5810546875,
+    "reference": "Saved/Refs/monaco.mp4 at462s, lower-quay streetfront context. It is not an exact camera-pose survey.",
+    "theatre570": "Exact rays identify actual Cream terrace wall, not gray hill.594/606 s are approximate climb poses; no quantified terrace-height correction is justified from them."
+  },
+  "runtime_gate": "Fresh packaged capture/Luna High review required. Source sampling and pixel ownership alone are not appearance approval.",
+  "source_proof": {
+    "finite_vertices": true,
+    "all_new_geometry_racing_asphalt_overlap_m2": 0.0,
+    "new_fine_ground_protected_corridor_overlap_m2": 0.0,
+    "new_fine_ground_upper_guard_overlap_m2": 0.0,
+    "upper_raw_ground_witnesses_unchanged": true,
+    "original_approximate_roof_envelopes_preserved": {
+      "507048725": 12.133374640281717,
+      "508221117": 12.442009577941018
+    },
+    "theatre_untouched": true,
+    "exact_original_camera": "887f09f0 frame2731, station2379.5810546875m; original pixels and triangles retained in ignored monaco-tabac-solid-ray-audit.json and monaco-tabac-source-proof.json."
+  }
+}

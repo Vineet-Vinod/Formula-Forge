@@ -1,0 +1,31 @@
+{
+  "sections": [
+    {
+      "start_m": 4840.0,
+      "end_m": 4910.0,
+      "side": 1,
+      "max_edge_offset_m": 12.0,
+      "bounds_xy_m": [
+        -371.0,
+        25.0,
+        -333.0,
+        40.0
+      ],
+      "source_note": "Official T13 inside RIGHT grass island. Continuous supplied video 318\u2013320 s shows green edge paint, open grass and a slender apex bollard, with no Armco or catch fence. Remove only local near-road protection; the neighbouring T12 outside before 4840 m and T14 outside RIGHT from 4910 m remain. Station endpoints estimated within about 10 m."
+    },
+    {
+      "start_m": 4940.0,
+      "end_m": 5045.0,
+      "side": -1,
+      "max_edge_offset_m": 12.0,
+      "bounds_xy_m": [
+        -323.0,
+        -58.0,
+        -289.0,
+        5.0
+      ],
+      "source_note": "Official T14 inside LEFT grass island. Continuous supplied video 322\u2013324 s shows open grass and green edge paint, without Armco or catch fence. Outside RIGHT barriers, pit approach and protection outside the bounded local island remain. Station endpoints estimated within about 10 m."
+    }
+  ],
+  "method": "Reference-backed local openings in the exact same exported wall list used for physical collision and visual rails/fences. Station, driver side, local XY bounds and maximum distance from asphalt must all match. No global interior-ring deletion or invented farther wall. Unmatched wall tuples remain unchanged; crossing end segments are split at source station/XY limits."
+}

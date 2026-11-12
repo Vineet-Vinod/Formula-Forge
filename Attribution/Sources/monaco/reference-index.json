@@ -357,5 +357,11 @@
     },
     "next_gate": "Fresh Monaco generation/import and entire packaged live lap with Luna High. This source proof is not rendered acceptance."
   },
-  "architecture_correction_20261112": "environment-recipe.json:architecture_correction_20261112"
+  "architecture_correction_20261112": "environment-recipe.json:architecture_correction_20261112",
+  "tabac_lower_frontage_correction": {
+    "source": "tabac-frontage-correction.json",
+    "scope": "Private fine RGE lower-quay strip and actual hotel/retail facade bases; upperstreet/realhill/theatre unchanged.",
+    "target_native_station_m": 2380,
+    "runtime_gate": "Await fresh packaged capture and Luna High review."
+  }
 }

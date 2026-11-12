@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "status": "Source correction ready for root native application and fresh rendered review.",
+  "circuit": "austria",
+  "official_corner": "T3 Remus",
+  "station_origin": "Retained native source origin, not lap-timer inference.",
+  "source_inputs": {
+    "barriers.osm.json.gz": "db0e99e032435331eb017fda6a2a8586c4c35dbb59ec8e101bea94b92559ac03",
+    "alignment-arcs.json": "3c08e9006bb510442899da9670b84c31702edbf1b1794fbd380f9b980ceb778b",
+    "scenery-ground.json": "e9a91094c5f8388cd76956c55e087b182174115c762a1dbf4c1cf4234bb73965",
+    "elevation/styria-dgm-scenery-4m.tif": "d370c7aef16202e642bf97d873ba94c0282bc212eb4119ec54e2660525ba7e14",
+    "elevation/styria-scenery-grid.json.gz": "c5d1e61aeba56f01f883de9c73e4ee98c142f64e24bf787c18c85172ee4e62bd"
+  },
+  "source_manifest_sha256": "b7a1d1960be1f8ede8d711cd7d69107906c9a58a1f5e3ce6d263e425bff263cc",
+  "direct_frame": {
+    "path": "build/reviews/austria/reference/overview-09.jpg",
+    "timestamp_s": 644.82,
+    "sha256": "6dcc61115447fd257d4bf88d0d4aea9cf6e7f9d5c0b5dae1c764181eee611806",
+    "observation": "Actual supplied T3 uphill right hairpin with broad left escape. Inside grass and rail setback are foreshortened; this frame establishes corner identity and side, not a metric survey. Wet reference compared to dry runtime."
+  },
+  "mapped_control": {
+    "osm_way": 1187845202,
+    "native_station_m": 1257.1442565,
+    "distance_centerline_m": 8.59538699,
+    "asphalt_half_width_m": 6.0,
+    "edge_to_wall_m": 2.59538699,
+    "uncertainty": "One retained irregular inside-wall control, not a constant-radius apex wall. Other neighbouring service/escape walls may reflect a different event configuration. About 1 m metric and additional apex-registration uncertainty."
+  },
+  "old_defect": {
+    "inner_offset_m": [
+      14.96,
+      17.1905
+    ],
+    "native_local_radius_m": [
+      12.198,
+      12.908
+    ],
+    "negative_inner_offset_jacobians": 52,
+    "invalid_inner_quads": 52,
+    "cause": "Shoulder extends through the tight arc centre. Invalid bow-tie strips are omitted and replaced by coarse seam triangles; real camera rays see their exposed Grass undersides. Grounding vertices alone cannot repair a folded offset."
+  },
+  "correction_file": "shoulder-corrections.json",
+  "geometry_scope": "Only driver RIGHT at 1200\u20131260 m, with 25 m cubic transitions. No asphalt, centreline, elevation, camber, left escape, woodland, other venue or accepted asset changes. Root rebuilds physical protection and local scenery from the same typed correction.",
+  "in_memory_source_proof": {
+    "local_triangles": 5302,
+    "negative_inner_offset_jacobians": 0,
+    "invalid_inner_quads": 0,
+    "minimum_inner_jacobian": 0.3058255004439433
+  },
+  "ray_result": "Exact 887 camera pixels at (1064,390) and (1180,364) no longer intersect the local black caps; unchanged distant terrain remains. At (1080,393), the first new local surface is front-facing Grass, covering the farther backside. This includes the formerly valid but unsupported cap owned by native 1244.48 m. No global ground or normal adjustment.",
+  "runtime_review": "Required after root regeneration. Local source proof is not visual approval."
+}

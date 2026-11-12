@@ -781,3 +781,53 @@ def test_terrain_verges_keep_ground_join_and_upper_deck_heights(
     expected = 6.2 - .015 if upper_deck or separate_branch else 0.0
     assert elevations
     assert elevations == pytest.approx([expected] * len(elevations), abs=1e-5)
+
+
+def test_hockenheim_nord_rows_and_roof_ignore_exterior_dsm(
+    scene: CircuitScene, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    from circuit_dataclasses import Building
+    from venues.hockenheim_nord import nord_stand
+
+    ring = [
+        (radius * math.cos(angle), radius * math.sin(angle))
+        for radius, angles in (
+            (50., [-1.2 + 2.4 * index / 24 for index in range(25)]),
+            (75., [1.2 - 2.4 * index / 24 for index in range(25)]),
+        )
+        for angle in angles
+    ]
+    scene.buildings.append(Building(232009789, "Nord fixture", "grandstand", 15, ring, {}))
+    scene.road_surfaces()
+    footprint = Polygon(ring)
+    digest = hashlib.sha256()
+    row_heights: set[float] = set()
+    roof_heights: set[float] = set()
+
+    def capture(
+        kind: str, material: str,
+        a: tuple[float, float, float], b: tuple[float, float, float],
+        c: tuple[float, float, float],
+        uv: tuple[tuple[float, float], ...] = ((0, 0), (1, 0), (1, 1)),
+        normals: tuple[tuple[float, float, float], ...] | None = None,
+    ) -> None:
+        digest.update(kind.encode() + material.encode() + struct.pack("<9d", *a, *b, *c))
+        if kind == "Building_NordTreads":
+            assert max(a[2], b[2], c[2]) == pytest.approx(min(a[2], b[2], c[2]))
+            row_heights.add(round(a[2], 7))
+        if kind == "Building_NordCanopyRoof":
+            roof_heights.update(round(p[2], 7) for p in (a, b, c))
+        assert footprint.buffer(1e-6).covers(Polygon([a[:2], b[:2], c[:2]]))
+
+    monkeypatch.setattr(scene, "triangle", capture)
+    monkeypatch.setattr(scene, "spectators", lambda *args: None)
+    monkeypatch.setattr(scene, "ground", lambda x, y: 3.)
+    nord_stand(scene)
+    expected = digest.hexdigest()
+    assert len(row_heights) == 24
+    assert len(roof_heights) == 1
+    assert max(abs(b - a - .46) for a, b in zip(sorted(row_heights), sorted(row_heights)[1:])) < 1e-6
+    digest = hashlib.sha256()
+    monkeypatch.setattr(scene, "ground", lambda x, y: 40 * math.sin(x) + 90)
+    nord_stand(scene)
+    assert digest.hexdigest() == expected

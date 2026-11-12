@@ -7,6 +7,7 @@ from typing import Annotated, Literal
 from pydantic import AliasChoices, Field, FiniteFloat, StrictBool
 
 Point = tuple[float, float, float]
+BarrierSegment = tuple[float, float, float, float, float, float, float]
 
 
 @dataclass(frozen=True)
@@ -144,6 +145,21 @@ class ShoulderCorrection:
 @dataclass(frozen=True)
 class ShoulderCorrections:
     sections: list[ShoulderCorrection] = field(default_factory=list)
+
+
+@dataclass(frozen=True)
+class ProtectionOpening:
+    start_m: Annotated[FiniteFloat, Field(ge=0)]
+    end_m: Annotated[FiniteFloat, Field(gt=0)]
+    side: Literal[-1, 1]
+    max_edge_offset_m: Annotated[FiniteFloat, Field(gt=0)]
+    bounds_xy_m: tuple[FiniteFloat, FiniteFloat, FiniteFloat, FiniteFloat]
+    source_note: str
+
+
+@dataclass(frozen=True)
+class ProtectionOpenings:
+    sections: list[ProtectionOpening] = field(default_factory=list)
 
 
 @dataclass(frozen=True)

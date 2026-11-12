@@ -56,6 +56,14 @@ exported columns against the intended physical side. An overly wide shoulder
 also flattens terrain: it can depress a spectator bank or remove the land between
 stacked streets even when the road profile itself is correct.
 
+Keep source-backed open infields open in both collision and scenery. Turkey's
+T13/T14 grass islands had invented rails overlapping the kerbs. Its typed
+`protection-openings.json` filters the same exported wall list used by both
+systems, bounded by station, side, XY and distance from the asphalt. Preserve
+unmatched walls and split the boundary segments at the registered ends. Audit
+those exact open ends and the independent white-line envelope; do not remove
+an entire polygon interior or accept arbitrary gaps elsewhere.
+
 The 8,192-station samples for the new venues supply the visual road, contact
 surface and simulation path. The accepted circuits retain their sampling.
 Native station zero is an arbitrary retained source origin at several venues;
@@ -92,6 +100,10 @@ the canopy remained visible. A raw-height probe alone can also falsely report
 burial where terrain is excluded. Reconstruct only supported occupied parcels;
 preserve genuine hills, neighbouring buildings and clear stands. Move guessed
 seating onto its actual footprint instead of erasing a conflicting building.
+Query clipped row positions, not discarded corners outside that footprint.
+Check boundary tolerance and adjoining bay heights too: Hockenheim's Nord stand
+still developed sawtooth terraces and disconnected roof panels after its burial
+was fixed. Supports must reach the actual roof within its variable-width plan.
 
 Query `building:part` as well as whole buildings. Singapore's shopping-centre
 outline omitted three major towers. Retain total height, `min_height`, levels
@@ -110,6 +122,10 @@ overlapping grass faces and a detached white edge stripe even though the native
 lap passed. Trace suspicious pixels to their source triangles before changing
 terrain or the driving line. Check winding, overlapping surfaces and the union
 of the road footprint, rather than covering an artifact with another polygon.
+Include shoulders and protection in the offset check. Austria's T3 asphalt
+remained valid while its wider inside verge folded across the curve centre,
+leaving seam-fill caps with visible undersides. Correct a source-supported
+boundary locally; do not clamp every shoulder or alter the driving line.
 
 Check black patches with the exact recorded camera pose and sunlight direction.
 At Albert Park, a separate dark strip hit intact upward-facing paving; opaque
@@ -122,7 +138,11 @@ complete shoreline relations, island and pier masks, wet/dry witness points and
 the water's relative vertical datum. Bridge crossings need water below the road.
 Water must never enlarge the physical driving envelope. Compare DSM terrain
 against mapped buildings too: Singapore's apparent hills included the roofs of
-The Shoppes and Flower Dome. Replace those footprints with grounded architecture.
+buildings in early surface-model reconstructions. Inspect actual deck/podium
+layers before flattening a later slope. Singapore's Shoppes and Flower Dome
+were present in the later package; off-camera or occluded structures were not
+evidence of missing models. The separately missing ECP viaduct needed its own
+deck and supports, rather than a district-wide ground correction.
 
 Use ground elevations for dense city terrain. A surface model can include hotel
 roofs and turn the gaps between stacked streets into cliffs. Monaco retains IGN

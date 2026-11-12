@@ -20,6 +20,7 @@ def build_venue(scene: CircuitScene) -> None:
     scene.branding(740, 1060, -1, 'PanelWhite')
     scene.branding(1560, 1840, 1, 'PanelWhite')
     scene.branding(2860, 3220, -1, 'PanelYellow')
+    scene.branding(1140, 1220, 1, 'PanelWhite')
     scene.braking_boards(1177, -1)  # La Source
     scene.braking_boards(3198, -1)  # Les Combes
     scene.braking_boards(3862, -1)  # Bruxelles
@@ -114,9 +115,32 @@ def circuit_edges(scene: CircuitScene) -> None:
     for start, end, side, width, material in [(440, 655, -1, 17, 'Runoff'), (1070, 1290, -1, 22, 'Runoff'), (1800, 1880, 1, 24, 'Gravel'), (1960, 2100, 1, 24, 'Gravel'), (3100, 3530, -1, 24, 'Gravel'), (3750, 3990, -1, 23, 'Gravel'), (4620, 4890, 1, 24, 'Gravel'), (5250, 5530, -1, 22, 'Gravel'), (6670, 6900, 1, 21, 'Gravel')]:
         scene.runoff(start, end, side, width, material)
 
+    la_source_inside(scene)
     for start, end, side in [(440, 655, -1), (1070, 1290, -1)]:
         apron_band(scene, start, end, side, 1.2, 2.8, 'RunoffGreen')
         apron_band(scene, start, end, side, 2.8, 6.0, 'RunoffRed')
+
+
+def la_source_inside(scene: CircuitScene) -> None:
+    start, end = 1150., 1210.
+    scene.surface_ranges.append({'type': 'runoff', 'start_m': start, 'end_m': end,
+                                 'side': 1, 'requested_width_m': 2.8, 'material': 'RunoffGreen'})
+    for station in range(1150, 1210):
+        a, b = scene.at(station), scene.at(station + 1)
+        points = []
+        for sample, outer in ((a, False), (b, False), (b, True), (a, True)):
+            t = max(0., min(1., (sample.station - start) / 10, (end - sample.station) / 10))
+            width = 1.25 + 1.55 * t * t * (3 - 2 * t) if outer else 1.25
+            points.append(sample.point(sample.half_width + width)[:2])
+        shape = Polygon(points)
+        if shape.is_valid and shape.area > .0001:
+            scene.extra_corridors.append(shape)
+            scene.polygon_surface(shape.difference(scene.surface_mask(a)), 'RunoffGreen',
+                                  .001, a, paved=True)
+    scene.landmarks.append({
+        'name': 'La Source narrow green inside apron', 'start_m': start, 'end_m': end,
+        'source_note': 'Continuous supplied 668.5–670 s forward views show a rounded white/black board-covered wall close to red/yellow kerb, with green paving rather than broad grass. The strip begins 1.25 m beyond asphalt, outside the unchanged 1.1 m kerb plus 0.14 m edge offset, and tapers to a 2.8 m outer extent within the reconstructed 2.95 m protection envelope. Widths and endpoints are visual estimates; road and classified heights remain unchanged.',
+    })
 
 
 def raidillon_apron(scene: CircuitScene) -> None:

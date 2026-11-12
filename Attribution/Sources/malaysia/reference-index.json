@@ -432,5 +432,17 @@
       ]
     },
     "acceptance_status": "Named sectors have direct witnesses. Individual endpoint/width/scenery estimates and final runtime quality remain separately reviewable."
+  },
+  "main_stand_end_umbrella_correction": {
+    "source": "end-umbrella-correction.json",
+    "scope": "Actual mapped round T15-end crown only. Long wings and all seating retained.",
+    "primary_reference": "Operator architecture photo, not a matched5060m frontal pose",
+    "forward_native_capture_stations_m": [
+      4700,
+      4800,
+      4850,
+      4900
+    ],
+    "review_status": "Await fresh packaged capture and Luna High review."
   }
 }

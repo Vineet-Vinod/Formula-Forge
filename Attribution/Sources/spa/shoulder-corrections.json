@@ -1,0 +1,13 @@
+{
+  "sections": [
+    {
+      "start_m": 1140.0,
+      "end_m": 1220.0,
+      "side": 1,
+      "shoulder_m": 2.0,
+      "transition_m": 25.0,
+      "source_note": "La Source inside RIGHT. Continuous supplied forward views at 668.5, 669.25 and 670 s show a rounded board-covered wall close to red/yellow kerb with a narrow green paved strip. Reconstruct 2.95 m asphalt-edge-to-wall using 2.0 m shoulder plus shared 0.95 m protection margin; visual estimate about \u00b11 m, not a surveyed constant setback. Retained OSM walls here describe farther irregular service boundaries and do not survey the event apex wall. Cubic tapers cover 1115\u20131140 and 1220\u20131245 m. Road XYZ, asphalt width, banking, left escape and classified ground source remain unchanged."
+    }
+  ],
+  "method": "Reference-qualified local protection and painted infield reconstruction; positive source side is driver RIGHT. Native protection/export and visual scene use the same registered section."
+}

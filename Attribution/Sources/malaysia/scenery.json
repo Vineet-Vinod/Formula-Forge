@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=malaysia",
   "tiles": 130,
-  "triangles": 2094216,
+  "triangles": 2097096,
   "road_sha256": "00ab0b9f54b4ac5604f494858bb37fb19aba3018306bb42e0091a3b2cd386f91",
   "terrain_sha256": "c1a3f8ad1402cf7701010ed05c72a538dd64937722c1daf04c4c2fea1d15b839",
   "landmarks": [
@@ -72,6 +72,17 @@
       "end_m": 650,
       "side": -1,
       "material": "PanelPetronas"
+    },
+    {
+      "name": "Sepang round T15-end umbrella",
+      "osm_id": 144247993,
+      "mapped_diameter_m": 64.58400668,
+      "center_x_m": 398.2848433821575,
+      "center_y_m": -7.607516034943471,
+      "concourse_datum_m": 14.61165916113053,
+      "radial_ribs": 24,
+      "spire_above_concourse_m": 35.0,
+      "source": "Operator architecture photograph; actual mapped circular end outline. Roof height/radial section, pier and spire dimensions are visual estimates, not a structural survey. Native5060 forward camera misses the crown; no relocation is made for that view."
     },
     {
       "name": "Sepang mapped double-frontage palm-leaf grandstand",

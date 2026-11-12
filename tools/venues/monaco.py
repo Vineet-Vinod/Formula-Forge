@@ -15,6 +15,7 @@ from shapely.geometry import Point as ShapePoint
 from shapely.ops import polygonize, triangulate, unary_union
 
 from venues.monaco_hillside import hillside_city
+from venues.monaco_tabac import tabac_frontage_ground
 from venues.west_architecture import dome, mast, trees, water
 
 
@@ -32,6 +33,9 @@ def build_venue(scene: CircuitScene) -> None:
     scene.braking_boards(2431, 1, distances=(100, 50))  # Tabac
     water(scene)
     harbour(scene)
+    for osm_id, (base, height) in tabac_frontage_ground(scene).items():
+        frontage(scene, scene.footprint(osm_id), height, 3 if osm_id == 507048725 else 2,
+                 base_z=base, street_station=2380 if osm_id == 507048725 else 2410)
     for osm_id, height, floors in [(161880705, 61, 18), (94399585, 54, 16),
                                    (94399672, 14, 4), (94400205, 20, 6),
                                    (94399922, 48, 14), (94399524, 81, 26),
@@ -479,7 +483,7 @@ def ordinary_city(scene: CircuitScene) -> None:
 
 def frontage(scene: CircuitScene, building: Building,
              height: float | None = None, floors: int | None = None,
-             base_z: float | None = None) -> None:
+             base_z: float | None = None, street_station: float | None = None) -> None:
     original = Polygon(building.ring)
     clipped = original.difference(scene.road_mask.buffer(1.2))
     components = [clipped] if isinstance(clipped, Polygon) else list(getattr(clipped, 'geoms', []))
@@ -516,7 +520,7 @@ def frontage(scene: CircuitScene, building: Building,
             scene.quad(kind, facade, (a[0], a[1], bottom_a), (b[0], b[1], bottom_b),
                        (b[0], b[1], base + h), (a[0], a[1], base + h))
             middle = ((a[0] + b[0]) / 2, (a[1] + b[1]) / 2)
-            road, _ = scene.nearest(*middle)
+            road = scene.at(street_station) if street_station is not None else scene.nearest(*middle)[0]
             facing = (road.x - middle[0]) * nx + (road.y - middle[1]) * ny > 0
             bays = max(1, round(span / (3.1 if apartment else 3.8)))
             for floor in range(levels):

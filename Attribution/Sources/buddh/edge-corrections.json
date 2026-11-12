@@ -1,0 +1,8 @@
+[
+  {
+    "start_m": 1000.0,
+    "end_m": 1080.0,
+    "side": 1,
+    "source_note": "T1 inside RIGHT kerb. Exact fresh 887 frame 537 at native 1040.30 m shows folded, downward-facing red/white kerb triangles and grass slivers across the bands. Use the existing union-road edge/kerb clipping path only for the full registered 1000\u20131080 m kerb call, with actual kerb terrain exclusions. Preserve native road XYZ, asphalt width, bank, physical protection, outside apron and every other circuit."
+  }
+]

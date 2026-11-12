@@ -538,5 +538,10 @@
   "raidillon_runoff_correction": {
     "source": "raidillon-runoff-correction.json",
     "status": "Actual continuous forward/rear sequence establishes outside-left striped paving and inside-right grass. Initial LaSource gravel misidentification withdrawn."
+  },
+  "la_source_inside_correction": {
+    "source": "la-source-inside-correction.json",
+    "profile": "shoulder-corrections.json",
+    "status": "Local reference-backed inside protection and green paving remove confirmed folded cap; fresh review pending."
   }
 }

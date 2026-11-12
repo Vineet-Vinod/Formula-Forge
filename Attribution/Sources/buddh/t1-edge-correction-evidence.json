@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "status": "Source correction using existing opt-in API; fresh rendered review pending.",
+  "source_registration": "edge-corrections.json",
+  "source_manifest_sha256": "da5e5748f391bf6bacbcdd776ba1dd61e8faf1015683d9198b8cb82aaf3882ce",
+  "source_frame": {
+    "path": "build/reviews/buddh/resume-scenery-corrections-live/frames/00000537.jpg",
+    "sha256": "206f8eb2e23a122dca982039592ad0b288a2623963f4c5605382dac992a66731",
+    "native_station_m": 1040.3
+  },
+  "observed_defect": "Red/white kerb bands fray into long grass slivers. Exact rays hit White triangle3431 and Red3415 from their backsides. Both have negative source-XY surface orientation, unlike an upward kerb. Adjacent rays hit Grass in the fractured strip. This is direct mesh evidence, not solely a shoulder-fold candidate.",
+  "correction": "Use already tested road-mask union edge bands, constrained triangulation and exact kerb terrain-cutout path. The full existing T1 kerb call is 1000\u20131080 m, driver RIGHT, width1.2m; that full call must be inside the registered correction for the existing API to opt in.",
+  "in_memory_proof": {
+    "local_triangles": 2731,
+    "grass_overlap_with_actual_corrected_kerb_m2": 1.7245646936061685e-15
+  },
+  "ray_result": "Previously backward-facing White/Red ray intersections become front-facing White/Red. Grass triangles no longer overlap the actual corrected kerb footprint; original grass pixels outside the corrected band remain grass.",
+  "preserved": "Native XYZ, bank, asphalt width, physics, barriers, outside runoff, other kerb sections and every other venue unchanged. This is neither an elevation adjustment nor a global shoulder clamp.",
+  "runtime_review": "Source proof does not grant visual approval. Review the exact fresh T1 approach/apex/exit after root scene rebuild.",
+  "registration_correction": "Official T1: native 1040 m is the opening RIGHT corner after the timing straight. The following LEFT bend is T2; official T3 is the later RIGHT corner near 1429 m. Earlier ignored proof filenames called this T3 in error; numeric correction bounds remain unchanged."
+}

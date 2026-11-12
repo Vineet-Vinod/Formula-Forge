@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "status": "Frozen source correction; fresh rendered approval pending.",
+  "official_corner": "T1 La Source",
+  "source_profile": "shoulder-corrections.json",
+  "source_inputs": {
+    "barriers.osm.json.gz": "11fcd317117a945ebc6c7ba2682c5ef2b6dfe884d1d080687447f701ba0e9d43",
+    "alignment-arcs.json": "f38a2c2fb7915868bdc4b9fb708910648ca704da76cbb7bc020d37eb74fc404e",
+    "elevation-corrections.json": "780359287fe9c4bdbb5d4739c6b05b1ff79dc077a97d1069245cd4bd5286223d",
+    "scenery-ground.json": "0ac98f7a3a848d84d4af0472dd2640ae98887699b69a2dc9763cf79659a3f8e4",
+    "elevation/spw-mnt-scenery-grid.json.gz": "72a7e8db74b5781981402e139e0a1d9df3cfe9622c190808c7117eedd47df22b"
+  },
+  "reference_sequence": [
+    {
+      "time_s": 668.5,
+      "path": "build/reviews/resume-20261112/fold-visual-triage/spa-ref-668.5.jpg",
+      "sha256": "cc7c298ffeedc4df47c9e33a2d9f58fe4b827a6c7e266c200f9100782ac9a8cc",
+      "view": "Continuous forward La Source turn-in, apex and exit. Rounded white/black board-covered inside wall, red/yellow kerb and narrow green paving; no broad grass platform."
+    },
+    {
+      "time_s": 669.25,
+      "path": "build/reviews/resume-20261112/fold-visual-triage/spa-ref-669.25.jpg",
+      "sha256": "e2fd2f5fd04aef2fc6e31c56bfcecf6e2900c1b99c5e2916bf6c76d54993e5a3",
+      "view": "Continuous forward La Source turn-in, apex and exit. Rounded white/black board-covered inside wall, red/yellow kerb and narrow green paving; no broad grass platform."
+    },
+    {
+      "time_s": 670.0,
+      "path": "build/reviews/resume-20261112/fold-visual-triage/spa-ref-670.jpg",
+      "sha256": "8e4249915e68060d1668505bcb69c9b9ae5cf5f12ef09fdf2a012301640b2267",
+      "view": "Continuous forward La Source turn-in, apex and exit. Rounded white/black board-covered inside wall, red/yellow kerb and narrow green paving; no broad grass platform."
+    }
+  ],
+  "registration": "Named retained OSM La Source way175178443 maps to native1149.83\u20131207.11m. Supplied continuous forward turn order, inside RIGHT and fixed outside stands establish identity. Video lap timers are not converted to station.",
+  "mapped_wall_limitation": "Retained walls126837735/126837738 describe irregular farther service boundaries, with nearest projections jumping from approach1110m to exit1240m. They do not survey the rounded event apex wall seen in the supplied reference.",
+  "dimensions": "Visual estimate \u00b11m. Reconstruct2.95m asphalt-edge-to-wall from2.0m shoulder plus shared0.95m margin; this allows the unchanged1.1m kerb at0.14m offset and roughly1.6m green paving beyond it before the wall inner face. Core1140\u20131220m,25m cubic transitions1115\u20131140/1220\u20131245.",
+  "paved_strip": "Native1150\u20131210m inside RIGHT,1.25m inneroffset from asphalt and2.8m maximum outeroffset,10m entry/exit width tapers. Remains within the new2.95m protection envelope and outside the actual red/yellow kerb. MaterialRunoffGreen; source white boards represented with original typeset PanelWhite.",
+  "old_defect": "The old inside shoulder passed through mapped13.20m hairpin centre, producing35invalid inner offset quads. Actual fresh887 black pixels hit the undersides of seam Grass caps; simply grounding their vertices did not fix the planar fold.",
+  "in_memory_proof": {
+    "local_triangles": 11197,
+    "negative_inner_offset_jacobians": 0,
+    "invalid_inner_quads": 0,
+    "minimum_inner_jacobian": 0.3141592774883022,
+    "inside_green_area_m2": 46.23322485296718,
+    "inside_green_overlap_kerb_m2": 0.0,
+    "inside_green_outside_native_corridor_m2": 0.0,
+    "grass_overlap_inside_green_m2": 9.919478162045275e-13
+  },
+  "ray_result": "With actual proposed closed local boundary and the existing barrier producer, all five formerly black camera rays hit the legitimate nearer inside wall/white-board treatment at19\u201323m. Behind-wall road undersides are occluded by the real protection form. No invented foundation or ground flattening was added.",
+  "preserved": "Racing road XYZ, asphalt width, banking, left22m escape, white-line limits, classified SPW ground heights, woodland and every other venue unchanged. Only local inside protection/paving metadata and private Spa authoring changed.",
+  "workflow": "Apply typed source profile, compile/export and refresh boundaries twice before scene generation; the renderer reads the same exported native walls. No native/binary writes by source author.",
+  "review_requirement": "Fresh critical approach/apex/exit and full lap remain required. Source proof is not visual approval."
+}

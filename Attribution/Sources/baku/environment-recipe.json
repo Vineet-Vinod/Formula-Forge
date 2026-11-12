@@ -17,7 +17,7 @@
         0,
         700
       ],
-      "name": "Pit straight and T1–2",
+      "name": "Pit straight and T1\u20132",
       "reviewed_video_seconds": [
         72.75,
         155,
@@ -54,7 +54,7 @@
         1500,
         2050
       ],
-      "name": "T3–4 boulevard corners",
+      "name": "T3\u20134 boulevard corners",
       "reviewed_video_seconds": [
         215,
         220
@@ -68,7 +68,7 @@
         2050,
         2600
       ],
-      "name": "T5–7 entry to Old City",
+      "name": "T5\u20137 entry to Old City",
       "reviewed_video_seconds": [
         305.57,
         225,
@@ -83,7 +83,7 @@
         2600,
         3100
       ],
-      "name": "Castle T8–12 climb",
+      "name": "Castle T8\u201312 climb",
       "reviewed_video_seconds": [
         234,
         235,
@@ -91,7 +91,7 @@
         238,
         240
       ],
-      "observed": "Direct234s forward view shows T8approach and left entry with redLenovo barriers.236s shows the narrow castle ramp with rough stone curtain wall/roundturret LEFT and pale façades/catchfence RIGHT.238s is a REAR camera, useful for battlements/turret architecture but not forward corner direction. Preserve the7.6m narrow section and near-zero shoulders.240s is already the upper-city departure.",
+      "observed": "Direct234s forward view shows T8approach and left entry with redLenovo barriers.236s shows the narrow castle ramp with rough stone curtain wall/roundturret LEFT and pale fa\u00e7ades/catchfence RIGHT.238s is a REAR camera, useful for battlements/turret architecture but not forward corner direction. Preserve the7.6m narrow section and near-zero shoulders.240s is already the upper-city departure.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
     },
     {
@@ -100,7 +100,7 @@
         3100,
         3750
       ],
-      "name": "Upper city T13–15 and downhill",
+      "name": "Upper city T13\u201315 and downhill",
       "reviewed_video_seconds": [
         480.18,
         596.59,
@@ -134,7 +134,7 @@
         4550,
         6003
       ],
-      "name": "T17–20 waterfront and long SF return",
+      "name": "T17\u201320 waterfront and long SF return",
       "reviewed_video_seconds": [
         538.38,
         771.2,
@@ -335,7 +335,7 @@
     },
     {
       "osm_id": 133641456,
-      "name": "Azərbaycan Həmkarlar İttifaqları Konfederasiyası",
+      "name": "Az\u0259rbaycan H\u0259mkarlar \u0130ttifaqlar\u0131 Konfederasiyas\u0131",
       "source_xy_m": [
         -1417.34,
         -367.27
@@ -391,7 +391,7 @@
     },
     {
       "osm_id": 133641457,
-      "name": "Konstitusiya Məhkəməsi",
+      "name": "Konstitusiya M\u0259hk\u0259m\u0259si",
       "source_xy_m": [
         -1408.9,
         -404.64
@@ -459,7 +459,7 @@
     },
     {
       "osm_id": 152110144,
-      "name": "Azərbaycan Dövlət İqtisad Universiteti",
+      "name": "Az\u0259rbaycan D\u00f6vl\u0259t \u0130qtisad Universiteti",
       "source_xy_m": [
         -1788.03,
         -570.36
@@ -615,7 +615,7 @@
     },
     {
       "osm_id": 152184311,
-      "name": "Azərbaycan Dövlət Kukla Teatrı",
+      "name": "Az\u0259rbaycan D\u00f6vl\u0259t Kukla Teatr\u0131",
       "source_xy_m": [
         -1195.28,
         -641.71
@@ -907,7 +907,7 @@
     },
     {
       "osm_id": 152192127,
-      "name": "Səfərbərlik və Hərbi Xidmətə Çağırış üzrə Dövlət Xidməti / Hərbi Komissarlıq",
+      "name": "S\u0259f\u0259rb\u0259rlik v\u0259 H\u0259rbi Xidm\u0259t\u0259 \u00c7a\u011f\u0131r\u0131\u015f \u00fczr\u0259 D\u00f6vl\u0259t Xidm\u0259ti / H\u0259rbi Komissarl\u0131q",
       "source_xy_m": [
         -803.52,
         -297.12
@@ -1339,7 +1339,7 @@
     },
     {
       "osm_id": 152302601,
-      "name": "Prezident Aparatı",
+      "name": "Prezident Aparat\u0131",
       "source_xy_m": [
         -1972.05,
         -993.5
@@ -1819,7 +1819,7 @@
     },
     {
       "osm_id": 153876708,
-      "name": "Mərkəzi Univermaq, MUM, Nizami küç.",
+      "name": "M\u0259rk\u0259zi Univermaq, MUM, Nizami k\u00fc\u00e7.",
       "source_xy_m": [
         -1602.79,
         -170.84
@@ -2227,7 +2227,7 @@
     },
     {
       "osm_id": 175841296,
-      "name": "Xəqani Ticarət Mərkəzi",
+      "name": "X\u0259qani Ticar\u0259t M\u0259rk\u0259zi",
       "source_xy_m": [
         -1175.75,
         -64.08
@@ -2543,7 +2543,7 @@
     },
     {
       "osm_id": 196291853,
-      "name": "Qərb Universiteti",
+      "name": "Q\u0259rb Universiteti",
       "source_xy_m": [
         -1945.31,
         -850.72
@@ -2971,7 +2971,7 @@
     },
     {
       "osm_id": 217364414,
-      "name": "134 saylı Məktəb",
+      "name": "134 sayl\u0131 M\u0259kt\u0259b",
       "source_xy_m": [
         -1937.87,
         -660.29
@@ -3039,7 +3039,7 @@
     },
     {
       "osm_id": 220432121,
-      "name": "7 saylı Məktəb",
+      "name": "7 sayl\u0131 M\u0259kt\u0259b",
       "source_xy_m": [
         -602.7,
         -6.71
@@ -3135,7 +3135,7 @@
     },
     {
       "osm_id": 253081011,
-      "name": "189-190 saylı məktəb",
+      "name": "189-190 sayl\u0131 m\u0259kt\u0259b",
       "source_xy_m": [
         -1824.7,
         -331.85
@@ -3291,7 +3291,7 @@
     },
     {
       "osm_id": 279935608,
-      "name": "Dənizkənarı Bulvar İdarəsi",
+      "name": "D\u0259nizk\u0259nar\u0131 Bulvar \u0130dar\u0259si",
       "source_xy_m": [
         -1448.3,
         -1019.99
@@ -3395,7 +3395,7 @@
     },
     {
       "osm_id": 286018678,
-      "name": "Bakı Şəhər Prokurorluğu",
+      "name": "Bak\u0131 \u015e\u0259h\u0259r Prokurorlu\u011fu",
       "source_xy_m": [
         -526.46,
         17.64
@@ -3451,7 +3451,7 @@
     },
     {
       "osm_id": 286018680,
-      "name": "Səbail Rayon İcra Hakimiyyəti",
+      "name": "S\u0259bail Rayon \u0130cra Hakimiyy\u0259ti",
       "source_xy_m": [
         -551.72,
         1.74
@@ -3507,7 +3507,7 @@
     },
     {
       "osm_id": 286018689,
-      "name": "Dolçasaray",
+      "name": "Dol\u00e7asaray",
       "source_xy_m": [
         103.97,
         477.25
@@ -3663,7 +3663,7 @@
     },
     {
       "osm_id": 299418022,
-      "name": "Two‑Storeyed Caravanserai / Gasim bey Caravanserai",
+      "name": "Two\u2011Storeyed Caravanserai / Gasim bey Caravanserai",
       "source_xy_m": [
         -1409.23,
         -788.53
@@ -3699,7 +3699,7 @@
     },
     {
       "osm_id": 299418023,
-      "name": "Seyid Murtuza Məscidi",
+      "name": "Seyid Murtuza M\u0259scidi",
       "source_xy_m": [
         -1526.14,
         -889.41
@@ -3735,7 +3735,7 @@
     },
     {
       "osm_id": 299418024,
-      "name": "Cümə Məscidi",
+      "name": "C\u00fcm\u0259 M\u0259scidi",
       "source_xy_m": [
         -1499.68,
         -812.84
@@ -3915,7 +3915,7 @@
     },
     {
       "osm_id": 299469586,
-      "name": "Beşmərtəbə",
+      "name": "Be\u015fm\u0259rt\u0259b\u0259",
       "source_xy_m": [
         -1744.04,
         386.5
@@ -4307,7 +4307,7 @@
     },
     {
       "osm_id": 384669516,
-      "name": "Bar POİNT Music bar",
+      "name": "Bar PO\u0130NT Music bar",
       "source_xy_m": [
         -1508.64,
         129.93
@@ -4351,7 +4351,7 @@
     },
     {
       "osm_id": 384682388,
-      "name": "Maliyyə bazarlarına nəzarət palatası",
+      "name": "Maliyy\u0259 bazarlar\u0131na n\u0259zar\u0259t palatas\u0131",
       "source_xy_m": [
         -894.18,
         209.1
@@ -4943,7 +4943,7 @@
     },
     {
       "osm_id": 809349518,
-      "name": "Qədim Hamam",
+      "name": "Q\u0259dim Hamam",
       "source_xy_m": [
         -1619.99,
         -1000.16
@@ -5514,7 +5514,7 @@
     "status": "The native racing-deck profile now follows registered published topography controls. Raw DEM remains for source comparison and scenery terrain.",
     "findings": [
       "GLO-90surface can sample facade roofs in narrow Old City; check climbing castle and descending T15 against onboard before treating the profile as racing elevation.",
-      "Generic12–14mwidth must not be imposed at the castle; wall corridor is substantially narrower there. Do not turn all urban shoulders into grass."
+      "Generic12\u201314mwidth must not be imposed at the castle; wall corridor is substantially narrower there. Do not turn all urban shoulders into grass."
     ],
     "replacement_profile": {
       "schema_version": 1,
@@ -5638,7 +5638,7 @@
     {
       "title": "Baku promoter castle section description",
       "url": "https://www.bakucitycircuit.com/news/seven-reasons-why-Formula-1-fans-love-Baku",
-      "supports": "The T8–10 castle section narrows to 7.6 m and has no runoff."
+      "supports": "The T8\u201310 castle section narrows to 7.6 m and has no runoff."
     }
   ],
   "acceptance": {
@@ -5794,7 +5794,7 @@
     "The castle width now reaches 7.6 m with0.05m shoulders; transition extents remain visual estimates and the exporter must accept shoulders below1.2m."
   ],
   "width_shoulder_corrections": {
-    "section": "Castle T8–10",
+    "section": "Castle T8\u201310",
     "native_station_frame": true,
     "source": "https://www.bakucitycircuit.com/news/seven-reasons-why-Formula-1-fans-love-Baku",
     "published_narrow_width_m": 7.6,
@@ -6062,7 +6062,7 @@
           245
         ],
         "endpoint_uncertainty_m": 60,
-        "station_registration": "Registered through the directly identified T8–10 castle frontage, retained left curtain-wall end at 2860 m, following upper-city corners and their building/stand context. No playback-time interpolation."
+        "station_registration": "Registered through the directly identified T8\u201310 castle frontage, retained left curtain-wall end at 2860 m, following upper-city corners and their building/stand context. No playback-time interpolation."
       },
       {
         "start_m": 2820,
@@ -6077,7 +6077,7 @@
           245
         ],
         "endpoint_uncertainty_m": 60,
-        "station_registration": "Registered through the directly identified T8–10 castle frontage, retained left curtain-wall end at 2860 m, following upper-city corners and their building/stand context. No playback-time interpolation."
+        "station_registration": "Registered through the directly identified T8\u201310 castle frontage, retained left curtain-wall end at 2860 m, following upper-city corners and their building/stand context. No playback-time interpolation."
       }
     ],
     "msc_registration_assessment": {
@@ -6107,7 +6107,7 @@
           3290
         ]
       },
-      "geographic_anchor": "Castle ramp at native 2580–2800 m; left modeled curtain wall ends at 2860 m; T11/T12 upper-city departure and T13 crest follow. Preserve the bare left castle wall instead of applying sponsor panels to the stone frontage.",
+      "geographic_anchor": "Castle ramp at native 2580\u20132800 m; left modeled curtain wall ends at 2860 m; T11/T12 upper-city departure and T13 crest follow. Preserve the bare left castle wall instead of applying sponsor panels to the stone frontage.",
       "uncertainty_m": 60,
       "scope": "Only barrier-panel visual ranges changed. No road, terrain, collision, wall-envelope or physical shoulder widths changed. Requires Baku mesh regeneration and packaged visual review; no final appearance approval claimed."
     }
@@ -6145,13 +6145,13 @@
       "forward narrow ramp",
       "rear architecture context"
     ],
-    "mapped_section": "Castle frontage and corrected narrow corridor around native2580–2800m",
+    "mapped_section": "Castle frontage and corrected narrow corridor around native2580\u20132800m",
     "source_limitation": "Appearance and topology identify the castle directly. Native camera positions are inferred from corner/footprint registration, not measured or surveyed.",
     "inspection": "Individual640px frames, decoder/filter threads1,1GB virtual cap, observed peak RSS<88MiB each. Reference pixels remain ignored under build/reviews/baku/reference and are not shipped."
   },
   "targeted_registration_review": {
     "method": "Direct appearance/topology checks of retained frames and bounded individual Baku reference seeks; source geometry and all native data unchanged.",
-    "notes": "New bounded individual-frame review closes the castle gap at234/236/238s. Earlier235–245s labels as T5–7 were wrong:235/236arecastle,238rearcastle,240uppercitydeparture,245/247uppercityfastsection.250–256s continue into the late-city/downhill approach before a hard cut toLAP2by258s.363.77/421.98s are ordinary city views and cannot directly validate the castle. Exact station estimates are±60m; no survey or uninterrupted playback-time registration is claimed.",
+    "notes": "New bounded individual-frame review closes the castle gap at234/236/238s. Earlier235\u2013245s labels as T5\u20137 were wrong:235/236arecastle,238rearcastle,240uppercitydeparture,245/247uppercityfastsection.250\u2013256s continue into the late-city/downhill approach before a hard cut toLAP2by258s.363.77/421.98s are ordinary city views and cannot directly validate the castle. Exact station estimates are\u00b160m; no survey or uninterrupted playback-time registration is claimed.",
     "next_gate": "Actual packaged full-lap review and targeted captures in build/reviews/east-final-targets.json; these metadata corrections are not visual approval."
   },
   "coastal_water_correction": {
@@ -6200,7 +6200,7 @@
       "corrected_f1_datum_m": -24.7,
       "uniform_shift_m": 4.23191995962036,
       "type": "Same retained GLO-90 DSM scenery, not bare earth. Existing 20 m near-road joins retained; no coastal mask or incompatible vertical datums.",
-      "effects": "384 racing-deck and edge probes change 0 m. Farther building-centroid ground usually rises 4.232 m; near-road building centroids change 0–3.79 m under existing ground joins. No relief rescaling.",
+      "effects": "384 racing-deck and edge probes change 0 m. Farther building-centroid ground usually rises 4.232 m; near-road building centroids change 0\u20133.79 m under existing ground joins. No relief rescaling.",
       "shore_freeboard_before_m": [
         -3.2319199562072765,
         -1.6388157247471833,
@@ -6233,5 +6233,12 @@
     ],
     "reference_review_targets": "build/reviews/coastal-water-review-targets.json"
   },
-  "oldcity_architecture_correction_20261112": "oldcity-architecture-correction.json"
+  "oldcity_architecture_correction_20261112": "oldcity-architecture-correction.json",
+  "castle_forecourt_reconstruction": {
+    "source": "castle-forecourt.json",
+    "evidence": "castle-forecourt-evidence.json",
+    "status": "Source reconstructed; fresh packaged review pending",
+    "native_physics_changed": false,
+    "Sabir_Park": "Exact 299424032 grass surface with 17 mapped paths and all buildings/roads excluded. 49 grounded broadleaf trees; existing height/rise unchanged. Ground is still the retained scenery model, not newly surveyed Park ground."
+  }
 }

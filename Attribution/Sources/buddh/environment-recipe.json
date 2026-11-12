@@ -1175,5 +1175,10 @@
       4320
     ],
     "status": "Source-backed paint authored; packaged comparison pending."
+  },
+  "t1_edge_correction": {
+    "source": "edge-corrections.json",
+    "evidence": "t1-edge-correction-evidence.json",
+    "status": "Existing bounded edge API corrects confirmed inverted kerb and grass overlap; fresh review required."
   }
 }

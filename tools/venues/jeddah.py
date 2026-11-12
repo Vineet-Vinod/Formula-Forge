@@ -16,6 +16,7 @@ from venues.east_architecture import (
     roof_polygon,
     trees,
 )
+from venues.jeddah_edition import edition_hotel
 from venues.jeddah_facilities import (
     mapped_stands,
     pit_compound,
@@ -95,7 +96,7 @@ def construction_tower(scene: CircuitScene) -> None:
     footprint = Polygon(tower.ring)
     scene.box(
         "Building_DiamondConstructionCore",
-        "Concrete",
+        "JeddahConstruction",
         (center[0], center[1], base_z + (height + 5) / 2),
         13,
         12,
@@ -124,11 +125,16 @@ def construction_tower(scene: CircuitScene) -> None:
             if not isinstance(part, Polygon) or part.area < 1:
                 continue
             ring = list(part.exterior.coords)[:-1]
-            roof_polygon(scene, ring, z, "Concrete")
+            roof_polygon(scene, ring, z, "JeddahConstruction")
             for a, b in zip(ring, ring[1:] + ring[:1]):
                 pa, pb = (a[0], a[1], z), (b[0], b[1], z)
                 scene.beam(
-                    "Building_DiamondExposedFloorEdges", "Cream", pa, pb, 0.35, 0.27
+                    "Building_DiamondExposedFloorEdges",
+                    "JeddahConstruction",
+                    pa,
+                    pb,
+                    0.35,
+                    0.27,
                 )
                 if level < levels - 1:
                     for fraction_along in (0.1, 0.5, 0.9):
@@ -137,14 +143,18 @@ def construction_tower(scene: CircuitScene) -> None:
                         )
                         scene.beam(
                             "Building_DiamondExposedColumns",
-                            "Concrete",
+                            "JeddahConstruction",
                             post,
                             add(post, (0.0, 0.0, height / (levels - 1))),
                             0.55,
                         )
                 if level >= levels - 3:
                     scene.banner(
-                        pa, pb, 1.1, "Cream", "Building_DiamondTemporaryFormwork"
+                        pa,
+                        pb,
+                        1.1,
+                        "JeddahConstruction",
+                        "Building_DiamondTemporaryFormwork",
                     )
     crane_base = add((center[0], center[1], base_z), mul(axis, -8))
     crane_height = height + 23
@@ -224,7 +234,7 @@ def build_venue(scene: CircuitScene) -> None:
     t27_pavilion(scene)
     t27_tree_belt(scene)
     construction_tower(scene)
-    facade(scene, 1258744123, 25, "modern", "White")
+    edition_hotel(scene)
     for building in scene.buildings:
         if building.osm_id in scene.modeled_buildings or building.use == "grandstand":
             continue

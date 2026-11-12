@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=austria",
   "tiles": 178,
-  "triangles": 1558475,
+  "triangles": 1558814,
   "road_sha256": "3d5e959213c73355280e6f2b11bb3a14ccc197a1af5912010d2afbdaec529918",
   "terrain_sha256": "9cc567093ec0c60548f45cf0584c888c9dc4a5060149b93c7171d2aa90cd6050",
   "landmarks": [

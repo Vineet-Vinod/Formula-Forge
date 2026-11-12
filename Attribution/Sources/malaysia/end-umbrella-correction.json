@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-12",
+  "circuit": "malaysia",
+  "mapped_footprint_id": 144247993,
+  "issue": "The linear canopy function was applied through the mapped round T15 end, omitting the distinct radial umbrella, central pier and spire shown in the operator architecture photograph. This is separate from cropped or dark underside views of the existing long wings.",
+  "primary_evidence": {
+    "url": "https://www.sepangcircuit.com/media/wysiwyg/hero-banner_4.jpg",
+    "context_url": "https://www.sepangcircuit.com/architecture",
+    "retained_reference": "build/reviews/malaysia/reference/primary-operator-architecture.jpg",
+    "reference_sha256": "542b85ac4f79c80b317c687480889004e8dc6dc446a913f9abafdb6258f5db7c",
+    "observed": "A circular end membrane with radial branching underside ribs, a large central pier/collar and a central mast/cage; the long repeated leaf-wing roofs continue behind it."
+  },
+  "plan_registration": {
+    "footprint_source": "Retained actual OSM144247993 polygon, including the round end boundary",
+    "local_coordinate_frame": "Main-grandstand minimum rotated frame in malaysia.main_grandstand; local +u points toward the T15 end",
+    "round_boundary_fit_center_uv_m": [
+      293.99818933,
+      -6.12008151
+    ],
+    "round_boundary_fit_radius_m": 32.29200334,
+    "round_fit_residual_rms_m": 0.0031896,
+    "accuracy_note": "The small residual describes consistency of the mapped circle vertices, not survey accuracy. Retained mapping registration uncertainty remains approximately2m.",
+    "replaced_roof_region": "Actual footprint portion at localu\u2265268.4m; new roof clips to that exact owned polygon. Adjacent long wings and all seating remain.",
+    "visual_estimates": {
+      "roof_hub_above_concourse_m": 22.4,
+      "roof_rim_nominal_above_concourse_m": 24.5,
+      "radial_fold_lift_m": 1,
+      "radial_sectors": 24,
+      "pier_radius_m": 3.2,
+      "pier_height_m": 20.3,
+      "collar_radius_m": 5.2,
+      "spire_above_concourse_m": 35,
+      "section_uncertainty_m": 3,
+      "qualification": "Original visual reconstruction from the primary photograph, not structural survey dimensions. The first11.6m at the wing junction blends to the previous wing roof height."
+    }
+  },
+  "pose_qualification": {
+    "runtime5060": "Crown centre lies58.7m away at92.2degreesLEFT of the local track tangent, outside the forward90degree field. It is not moved to appear in that view.",
+    "reference867_80": "The continuous final-T15 supplied frame is outer-stand/corner context; it is not registered as a frontal view of the central end umbrella.",
+    "proposed_forward_capture_stations_m": [
+      4700,
+      4800,
+      4850,
+      4900
+    ],
+    "capture_basis": "Geometric track-tangent bearings; actual driver yaw can shift the final projection. At4800centre195m away/11.1degreesLEFT, at4900centre99m away/23.7degreesLEFT."
+  },
+  "preserved": [
+    "Actual footprint and existing central-mall gaps",
+    "Long-wing roof sections outside the local end junction and all seating",
+    "Existing road-relative concourse datum; no DSM-roof height added to the pier",
+    "All native roadXYZ, width, elevation, protection, camera and handling",
+    "Existing White/Concrete/Steel materials; no importer or shader changes"
+  ],
+  "runtime_gate": "Source proof only; fresh packaged views at the registered approach stations and Luna High review are required.",
+  "source_proof": {
+    "whole_mainstand_structural_road_overlap_m2_sum": 0.0,
+    "new_crown_triangle_excess_beyond_actual_footprint_m2_sum": 0,
+    "finite_vertices": true,
+    "long_wing_input_geometry_material_stream_unchanged_u_below240m": true,
+    "seating_geometry_material_stream_unchanged": true,
+    "new_crown_roof_single_component": true,
+    "crown_roof_area_m2": 2600.0174034512256,
+    "crown_roof_shell_edge_count_distribution": {
+      "2": 2226
+    },
+    "existing_unchanged_seat_beam_plan_excess_m2": 0.05918140233128882,
+    "note": "The pre-existing tiny seat-beam outline excess is unchanged. Every new crown/support triangle remains inside the actual footprint. Long-wing triangles at local u < 240 m remain unchanged."
+  }
+}

@@ -242,5 +242,19 @@
     "Overview observations establish visual vocabulary; every individual asset position requires footprint/map registration.",
     "No high-resolution raster or orthophoto added by this reference review."
   ],
-  "racing_elevation_correction": "elevation-corrections.json"
+  "racing_elevation_correction": "elevation-corrections.json",
+  "nord_stand_direct_review": {
+    "source": "nord-stand-correction.json",
+    "osm_id": 232009789,
+    "continuous_video_seconds": [
+      136,
+      137,
+      138
+    ],
+    "native_range_estimate_m": [
+      245,
+      435
+    ],
+    "status": "Private source correction authored; fresh packaged review pending."
+  }
 }

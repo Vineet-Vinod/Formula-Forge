@@ -158,6 +158,14 @@ smoothed grade or estimated barrier offset needs its own justification and
 confidence. Do not relabel estimates as measurements or storage precision as
 accuracy. A centimetre-encoded grid is not necessarily accurate to a centimetre.
 
+Investigate conflicting height sources at their actual locations. At Portimão,
+an unshifted primary orthophoto and the eight retained class-2 neighbours ruled
+out embankment sampling and a bridge-deck step at the disputed climbs. The
+operator's maximum uphill figure still differs from the measured profile,
+including its global 100 m maximum. Preserve that discrepancy and the raw data;
+do not cite an average at another location as reconciliation or scale the ground
+to force agreement. See the [registration evidence](../Attribution/Sources/portimao/profile-registration-validation.json).
+
 ### Reference footage and Google views
 
 Inventory the user's reference folder before asking for material. If the video
@@ -345,6 +353,13 @@ Carry deck corrections through shoulders and barrier bases, not just along the
 centreline. Keep interpolation diagonals consistent between rendered terrain and
 the simulation grid.
 
+Check the entire inside offset, including shoulders and protection. A valid
+asphalt edge does not guarantee a valid verge: Austria's T3 had a 12 m local
+radius but an inside offset beyond 15 m. Folded grass quads were skipped and
+seam triangles exposed their undersides. Register the real inner boundary;
+do not narrow the road or cover the defect with another cap. An open infield
+in the reference also does not justify an invented inside guardrail.
+
 Rebuild from canonical source coordinates. Applying the same terrain warp twice
 must not raise buildings or deepen dips. Save transforms and revision hashes;
 regenerate dependent road, runoff, barrier and collision data together.
@@ -523,6 +538,12 @@ the historical Blender commands in that file do not.
 Avoid dense transparent layers, repeated identical tree outlines and crowds that
 float or cover railings. Place crowds on real seating/deck surfaces. Build original
 event artwork; do not paste sponsor strips or screens from the reference video.
+
+For footprint-clipped seating, query heights at the clipped geometry. Unclipped
+row corners can fall outside a corrected foundation and pick up unrelated DSM
+roof heights. Check parcel-boundary tolerance, adjoining terrace heights, the
+whole canopy and actual support endpoints. Hockenheim's Nord stand passed a
+burial check while these queries still produced sawtooth seats and detached roofs.
 
 ## 8. Implement the Unreal assets and runtime data together
 

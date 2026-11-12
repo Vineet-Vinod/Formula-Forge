@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-12",
+  "circuit": "jeddah",
+  "osm_id": 1258744123,
+  "owner_name": "The Jeddah EDITION",
+  "issue": "The explicit generic25m modern facade produced seven rows of square office windows. The registered T13 reference instead shows stepped open/glazed terraces, deep pale slabs/canopy and angled exterior bracing.",
+  "primary_sources": [
+    {
+      "url": "https://www.editionhotels.com/jeddah/",
+      "supports": "Owner identity and position beside the F1 track, Corniche and marina; rooftop/pool facilities."
+    },
+    {
+      "url": "https://www.prnewswire.com/news-releases/edition-opens-its-20th-outpost-in-jeddah-reflecting-a-new-era-for-the-kingdom-of-saudi-arabia-302134246.html",
+      "publisher": "Marriott International, owner-issued release, May2 2024",
+      "supports": "Four-storey low-rise yacht-inspired building, wraparound terraces and a12m-high lobby volume. These are not a measured complete exterior floor section."
+    }
+  ],
+  "direct_reference": [
+    {
+      "clip": "Saved/Refs/jeddah.mp4",
+      "time_s": 331,
+      "image": "build/reviews/jeddah/reference/detail-0331.jpg",
+      "image_sha256": "d4369cfa9b3d7cb898268a25d6cd2f8ddd27623fe8be7fdd0318787af55e93d0",
+      "observed": "Forward driving through northern banked T13 hairpin: building ahead across the corner, three strong pale deck bands and broad projecting roof, dark recessed glazing and angled white exterior frame."
+    },
+    {
+      "image": "build/reviews/jeddah/reference/overview-04.jpg",
+      "image_sha256": "365b2dec6b935bab014444662e0387a0a08756774ec226a83c66f42d839e5088",
+      "qualification": "Same direct T13 view as331s, HUDlapclock40.227s. Native2270 camera differs in yaw/position; geometric owner registration is independent of elapsed lap time."
+    }
+  ],
+  "registration": {
+    "mapped_footprint": "Actual retained four-corner ring1258744123",
+    "mapped_frame_length_m": 102.69445760603175,
+    "mapped_frame_width_m": 34.187693818549974,
+    "native_nearest_station_m": 2339.36719,
+    "distance_from_road_m": 86.99964790426921,
+    "native2270_center_distance_m": 134.06106743246818,
+    "native2270_center_bearing_right_of_tangent_deg": -1.1326687124815016,
+    "plan_uncertainty_m": 2
+  },
+  "reconstruction": {
+    "roof_above_reconstructed_foundation_m": 24.5,
+    "roof_height_uncertainty_m": 4,
+    "storey_organization": "Four visual tiers at0/6/12/18m with top canopy24.5m. Lobby can span more than one tier; the internal section is not modeled as a measured survey.",
+    "front_recesses_m": [
+      1.3,
+      3.4,
+      6.3,
+      8.8
+    ],
+    "slab_thickness_m": 0.32,
+    "top_canopy_thickness_m": 0.48,
+    "angled_white_frame_width_m": 0.7,
+    "front_frame_longitudinal_offset_m": 8,
+    "frame_tall_height_m": 18.5,
+    "foundation": "Level reconstructed podium0.15m above highest retained footprint-corner ground. Foundation foot follows actual corner ground minus0.1m; only actual occupied footprint is cut from terrain. No parcel land flattening or road/profile change.",
+    "estimate_note": "Section dimensions and deck recesses are visual estimates. The provisional17.2m roof-height inference from four storeys was rejected before authoring because the owner also states a12m-high lobby volume. Near25m envelope is retained as a bounded reconstruction, rather than claim an unsupported height reduction.",
+    "supplier_floor_count": "If supplier five-terraced-level wording is used, it does not supersede the owner four-storey statement or establish a fifth public storey."
+  },
+  "preserved": [
+    "Mapped ground footprint and all road/native profiles/camera/handling",
+    "All other Jeddah city blocks and established facilities",
+    "Diamond Tower construction state, geometry and private material refinement",
+    "Existing material palette and shaders; no importer/helper changes"
+  ],
+  "runtime_gate": "Requires fresh packaged T13 approach/turn capture and Luna High review. Source proof is not visual approval.",
+  "source_proof": {
+    "whole_road_triangle_overlap_m2_sum": 0.0,
+    "triangle_excess_beyond_actual_mapped_footprint_m2_sum": 0.0,
+    "finite_vertices": true,
+    "top_canopy_single_component": true,
+    "top_canopy_shell_edge_count_distribution": {
+      "2": 1794
+    },
+    "all_other_jeddah_module_ast_unchanged": true,
+    "diamond_material_fix_retained": true,
+    "foundation_top_m": 3.400435080379823,
+    "geometry_z_range_m": [
+      1.9031086394222516,
+      27.900435080379822
+    ],
+    "glazing_inset_guard_m": 0.08
+  }
+}

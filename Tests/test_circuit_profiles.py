@@ -327,3 +327,34 @@ def test_australia_removed_clark_chicane_is_a_continuous_sweep() -> None:
     # The current map curves left here; the surviving T9/T10 chicane is farther down the lap.
     assert min(deflections) > math.radians(-2)
     assert max(deflections) < math.radians(15)
+
+
+def test_remus_inner_shoulder_stays_inside_the_mapped_corner_center() -> None:
+    from circuit_dataclasses import ShoulderCorrections
+    from shapely.geometry import Polygon
+
+    source = SOURCES / 'austria'
+    sections = TypeAdapter(ShoulderCorrections).validate_json(
+        (source / 'shoulder-corrections.json').read_bytes()
+    ).sections
+    remus = next(arc for arc in json.loads((source / 'alignment-arcs.json').read_text())
+                 if arc['official_corner'] == 'T3_Remus')
+    radius = float(remus['radius_m'])
+    profile = sections[0]
+    half_width = 6.0
+    outer = half_width + .95 + .01 + profile.shoulder_m
+    assert profile.side == 1
+    assert profile.start_m <= remus['core_native_range_m'][0]
+    assert profile.end_m >= remus['core_native_range_m'][1]
+    assert 1 - outer / radius > .2
+    for step in range(16):
+        angles = [math.pi * step / 16, math.pi * (step + 1) / 16]
+        points = [
+            ((radius - offset) * math.cos(angle), (radius - offset) * math.sin(angle))
+            for offset, angle in (
+                (half_width + .14, angles[0]), (half_width + .14, angles[1]),
+                (outer, angles[1]), (outer, angles[0]),
+            )
+        ]
+        assert Polygon(points).is_valid
+        assert Polygon(points).area > 0

@@ -9,6 +9,8 @@ import sys
 from itertools import pairwise
 from pathlib import Path
 
+from circuit_dataclasses import BarrierSegment
+from circuit_protection import filter_barriers, load_openings
 from circuit_scene import CircuitScene
 from shapely.geometry import Polygon
 from shapely.ops import unary_union
@@ -40,7 +42,7 @@ def generate(slug: str) -> None:
     prefix = scene.catalogue.content_dir.split("/")[0]
     if prefix == "COTA":
         prefix = "Cota"
-    walls = []
+    walls: list[BarrierSegment] = []
     for polygon in polygons:
         for ring in (polygon.exterior, *polygon.interiors):
             points = list(ring.coords)
@@ -61,6 +63,8 @@ def generate(slug: str) -> None:
                     ) * sample.tx
                     bottom = sample.z + sample.bank * lane
                     walls.append((*pa, *pb, bottom, bottom + 0.95, 0.15))
+    openings = load_openings(scene.sources, scene.length)
+    walls = filter_barriers(walls, openings, scene.nearest)
     header = f"constexpr TrackBarrier k{prefix}SceneWalls[] = {{\n"
     header += (
         "".join(
