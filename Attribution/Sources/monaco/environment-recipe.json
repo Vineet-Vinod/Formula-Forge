@@ -627,5 +627,53 @@
       "native_and_terrain_inputs_unchanged": true
     },
     "next_gate": "Fresh Monaco generation/import and entire packaged live lap with Luna High. This source proof is not rendered acceptance."
+  },
+  "architecture_correction_20261112": {
+    "status": "Source complete; pending root generation/import and fresh matched review",
+    "source_modules": [
+      "tools/venues/monaco.py",
+      "tools/venues/monaco_hillside.py",
+      "tools/venues/monaco_dataclasses.py"
+    ],
+    "source_provenance": "hillside-architecture-provenance.json",
+    "fairmont": {
+      "osm_id": 2093796,
+      "reference_times_s": [
+        534
+      ],
+      "reference_sha256": "adbdfe43b01de69527412eb9086b910094a907a3676520d9fcb36ac0c0b7a047",
+      "form": "Seven genuinely open balcony/loggia storeys: recessed room wall, white thin floorplates/partitions/parapets. Original2.1m depth/4.6m bays; actual mapped concave envelope.",
+      "height_source": "IGN BDTopo mainhotel74074334:33m above0.9mground gives33.9mabsolute roof,±1.5m. Upperroomvolume uses thatroofminus existingRGEdatum and tunnel-clearing base, not33m added above elevatedbase.",
+      "official_storeys_source": "https://at.media.france.fr/sites/default/files/document/press_kit/Monaco-%20Press%20kit%202014.pdf",
+      "clearance": "Full-width native road intersection proof minimum slab soffit5.549m above tunnelroad, exceeding existing5.4m ceiling. No nativeXYZ/protection change."
+    },
+    "beau_rivage": {
+      "theatre_osm_id": 176722820,
+      "pavilion_osm_id": 879995948,
+      "reference_times_s": [
+        594,
+        606
+      ],
+      "reference_sha256": [
+        "6e1561d5d624dfe6e1b31e71f10a3351878f90435ae20251067d336648734a43",
+        "8fe5416bd225d475419e4ba1053f6df6c36029ba08bc58584e1ecdbd62b7bc52"
+      ],
+      "diagnosis": "Min-ground+6.8m default buried the partly-underground theatre below upperstreet; actualroofgarden/entrypavilion was missing.",
+      "original_geometry": "Mapped theatre/pavilion outlines clipped against fullroad/protection. Terrace36.1978mrelative estimated from adjacent upperentry650m+.3;3.3mpavilion and plantedpalms follow realpublicrooftop use.",
+      "independent_primary_check": "IGN pavilion74074338 matches94.3%,height3.2m,maxroof41.2mabsolute,±1.5m; reconstructedpavilionroof39.4978mrelative differs only.1893m from source39.6871mrelative.",
+      "government_plan_url": "https://documents.gouv.mc/www/dpum/plans/condamine/PU-C3-CDN-Z2-I3-D2.pdf",
+      "government_plan_sha256": "4a9394c57be6ebe15e2bb685eaee4f04afbbb1fc68a79c340c70bc3a8ec58073",
+      "operator_theatre_plan_url": "https://www.tpgmonaco.mc/fr/telechargements/medias_upload/moxie/pdf/TPG-Plan.pdf",
+      "nearby_frontage": "Castellara447008628/Portobello447008629 now use actual matchedIGN24.7m height and6.6mabsolute floor anchor, rather than6.8m defaults."
+    },
+    "beausoleil": {
+      "source_buildings": 250,
+      "pitched_tile_roofs": 130,
+      "actual_vegetation_regions": 7,
+      "reconstructed_trees": 2203,
+      "vegetation_area_m2": 168156.62155144836,
+      "no_ground_changes": "All original RGE ground samples and native racing heights/banking/widths/protection preserved; mappedsurfacepaint/vegetation only.",
+      "source_uncertainties": "Per-building primaryheightprecision/sourcegeometry kept. Somefields/roofboundaryextents are inconsistent on multi-level structures: visible floorrows follow actualeaves and sourcefloorcount, not blindly lowgroundanchor. Roofridgeaxis and facadeopenings remain original contextual estimates."
+    }
   }
 }

@@ -1,0 +1,11 @@
+{
+  "grid_file": "elevation/gsi-scenery-grid.json.gz",
+  "grid_sha256": "1d58a05ae2aafe41396d69cb5b001ff32e3a5bfe0c0257dcae377e444d0466ac",
+  "provider": "Geospatial Information Authority of Japan",
+  "dataset": "Retained processed GSI5m scenery, original8m export lattice",
+  "relative_datum_m": 0,
+  "road_join_distance_m": 20,
+  "source_note": "Exact decoded pre-registration native terrain grid retained without height changes. Source GSI provenance and original binary remain available. Horizontal coordinates use the historical source projection scale before native Catmull normalization.",
+  "grid_uniform_scale": 0.99956,
+  "grid_frame_note": "Retained grid XY uses this original geographic projection scale. Materialization composes current provenance scene scale into XY origin/spacing only; source heights and vertical datum remain unchanged."
+}

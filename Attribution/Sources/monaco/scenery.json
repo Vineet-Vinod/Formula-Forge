@@ -1,9 +1,9 @@
 {
   "recipe": "make circuit-assets CIRCUIT=monaco",
-  "tiles": 111,
-  "triangles": 1617476,
-  "road_sha256": "415db676f90d4adce092ba579154838db97dd7597637bd7193c9de30ba15ee44",
-  "terrain_sha256": "accbf99b138760659df35ab91f97eace5902ff66db21b5e1a0a0139811c00641",
+  "tiles": 116,
+  "triangles": 2026656,
+  "road_sha256": "3a7544d64e64e34c445dbf4049745ad0e2fc4f2d8e96dcf6d29b2c8ee7f67df3",
+  "terrain_sha256": "f1538f328db1481498922f0c8d143010e2a9bcd9c17cb30b52457605ac30a21a",
   "landmarks": [
     {
       "name": "Paved pit lane and working apron",
@@ -103,7 +103,7 @@
       "levels": 16,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94399672,
@@ -148,7 +148,7 @@
       "levels": 3,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94399684,
@@ -175,17 +175,44 @@
       "levels": 3,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 1884.523
+      "removed_road_area_m2": 1900.089
+    },
+    {
+      "osm_id": 447008628,
+      "name": "Le Castellara",
+      "height_m": 24.7,
+      "levels": 7,
+      "height_status": "Unmeasured conservative retained default; not a verified storey survey",
+      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
+      "removed_road_area_m2": -0.0
+    },
+    {
+      "osm_id": 447008629,
+      "name": "Le Portobello",
+      "height_m": 24.7,
+      "levels": 7,
+      "height_status": "Unmeasured conservative retained default; not a verified storey survey",
+      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
+      "removed_road_area_m2": 0.006
     },
     {
       "osm_id": 2093796,
-      "name": "2093796",
-      "height_m": 24,
-      "removed_road_area_m2": 0.0,
-      "structure": "enclosed",
-      "ground_floor": "Facade windows",
-      "road_clearance_exception": "Authored elevated tunnel/bridge deck",
-      "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
+      "name": "Fairmont Monte Carlo open balcony hotel",
+      "storeys": 7,
+      "height_m": 20.9114247187,
+      "base_z_m": 11.47567587,
+      "loggia_depth_m": 2.1,
+      "dimensions_status": "Complete mapped concave footprint and existing elevated base retained. IGN BDTopo main-hotel footprint matches80.4percent and gives roof33.9mabsolute, registered to the unchanged RGE datum. Seven storeys are supported by official Monaco tourism material; supplied534s hairpin view establishes deep open loggias, white floorplates/partitions and recessed room glazing. Balcony depth2.1m and bay spacing4.6m are original metric estimates. No solid outer window-grid wall remains; the hotel slab clears the independent tunnel road."
+    },
+    {
+      "osm_id": 176722820,
+      "name": "Theatre Princesse Grace roof terrace",
+      "terrace_z_m": 36.197781202217556,
+      "roof_pavilion_osm_id": 879995948,
+      "roof_pavilion_height_m": 3.3,
+      "reconstructed_palms": 3,
+      "removed_protection_overlap_m2": 173.12894379673617,
+      "dimensions_status": "Actual mapped partly-underground theatre footprint and retained roof-pavilion footprint. Public roof garden and pale terrace/palms are supported by government planning context and supplied 594/606 s climb views. Terrace level is an explicit architectural estimate tied to adjacent upper entrance street at native650m plus0.3m, not a roof DSM measurement; pavilion3.3m and palm spacing are estimates. Replaces the buried min-ground+6.8m office fallback. Roads, protection, RGE terrain heights and racing physics are unchanged."
     },
     {
       "name": "Hotel de Paris",
@@ -248,91 +275,91 @@
       "osm_id": 49209597,
       "name": "Mapped Rocher house",
       "height_m": 10.2,
-      "base_z_m": 57.102736543686134,
+      "base_z_m": 57.10273763356393,
       "dimensions_status": "Actual mapped footprint and tagged storeys retained. Untagged three-storey height, cream plaster, narrow shuttered openings and terracotta roof are historic-district reconstruction; chapel10.5m estimate, plain masonry with framed timber entrance, no invented office storeys."
     },
     {
       "osm_id": 49209636,
       "name": "Mapped Rocher house",
       "height_m": 10.2,
-      "base_z_m": 58.60710736394647,
+      "base_z_m": 58.60710767152229,
       "dimensions_status": "Actual mapped footprint and tagged storeys retained. Untagged three-storey height, cream plaster, narrow shuttered openings and terracotta roof are historic-district reconstruction; chapel10.5m estimate, plain masonry with framed timber entrance, no invented office storeys."
     },
     {
       "osm_id": 49209637,
       "name": "Mapped Rocher house",
       "height_m": 10.2,
-      "base_z_m": 60.66574774386347,
+      "base_z_m": 60.66574742178459,
       "dimensions_status": "Actual mapped footprint and tagged storeys retained. Untagged three-storey height, cream plaster, narrow shuttered openings and terracotta roof are historic-district reconstruction; chapel10.5m estimate, plain masonry with framed timber entrance, no invented office storeys."
     },
     {
       "osm_id": 49209638,
       "name": "Mapped Rocher house",
       "height_m": 13.6,
-      "base_z_m": 60.87961846189248,
+      "base_z_m": 60.87961900857183,
       "dimensions_status": "Actual mapped footprint and tagged storeys retained. Untagged three-storey height, cream plaster, narrow shuttered openings and terracotta roof are historic-district reconstruction; chapel10.5m estimate, plain masonry with framed timber entrance, no invented office storeys."
     },
     {
       "osm_id": 49209639,
       "name": "Mapped Rocher house",
       "height_m": 13.6,
-      "base_z_m": 59.327032942733254,
+      "base_z_m": 59.327035192636984,
       "dimensions_status": "Actual mapped footprint and tagged storeys retained. Untagged three-storey height, cream plaster, narrow shuttered openings and terracotta roof are historic-district reconstruction; chapel10.5m estimate, plain masonry with framed timber entrance, no invented office storeys."
     },
     {
       "osm_id": 49209640,
       "name": "Mapped Rocher house",
       "height_m": 13.6,
-      "base_z_m": 59.489031287083414,
+      "base_z_m": 59.48903053086926,
       "dimensions_status": "Actual mapped footprint and tagged storeys retained. Untagged three-storey height, cream plaster, narrow shuttered openings and terracotta roof are historic-district reconstruction; chapel10.5m estimate, plain masonry with framed timber entrance, no invented office storeys."
     },
     {
       "osm_id": 49209641,
       "name": "Mapped Rocher house",
       "height_m": 13.6,
-      "base_z_m": 58.95190833798361,
+      "base_z_m": 58.95190894805286,
       "dimensions_status": "Actual mapped footprint and tagged storeys retained. Untagged three-storey height, cream plaster, narrow shuttered openings and terracotta roof are historic-district reconstruction; chapel10.5m estimate, plain masonry with framed timber entrance, no invented office storeys."
     },
     {
       "osm_id": 49209644,
       "name": "Chapelle de la Mis\u00e9ricorde",
       "height_m": 10.5,
-      "base_z_m": 60.751177278313506,
+      "base_z_m": 60.75117688463679,
       "dimensions_status": "Actual mapped footprint and tagged storeys retained. Untagged three-storey height, cream plaster, narrow shuttered openings and terracotta roof are historic-district reconstruction; chapel10.5m estimate, plain masonry with framed timber entrance, no invented office storeys."
     },
     {
       "osm_id": 49209645,
       "name": "Mapped Rocher house",
       "height_m": 10.2,
-      "base_z_m": 59.55616165453524,
+      "base_z_m": 59.55616331894711,
       "dimensions_status": "Actual mapped footprint and tagged storeys retained. Untagged three-storey height, cream plaster, narrow shuttered openings and terracotta roof are historic-district reconstruction; chapel10.5m estimate, plain masonry with framed timber entrance, no invented office storeys."
     },
     {
       "osm_id": 835592937,
       "name": "Mapped Rocher house",
       "height_m": 13.6,
-      "base_z_m": 60.44770377998475,
+      "base_z_m": 60.44770407413792,
       "dimensions_status": "Actual mapped footprint and tagged storeys retained. Untagged three-storey height, cream plaster, narrow shuttered openings and terracotta roof are historic-district reconstruction; chapel10.5m estimate, plain masonry with framed timber entrance, no invented office storeys."
     },
     {
       "osm_id": 835592938,
       "name": "Mapped Rocher house",
       "height_m": 10.2,
-      "base_z_m": 60.93376397613636,
+      "base_z_m": 60.933763637199874,
       "dimensions_status": "Actual mapped footprint and tagged storeys retained. Untagged three-storey height, cream plaster, narrow shuttered openings and terracotta roof are historic-district reconstruction; chapel10.5m estimate, plain masonry with framed timber entrance, no invented office storeys."
     },
     {
       "osm_id": 835592939,
       "name": "Mapped Rocher house",
       "height_m": 10.2,
-      "base_z_m": 61.137590577322605,
+      "base_z_m": 61.137591231506406,
       "dimensions_status": "Actual mapped footprint and tagged storeys retained. Untagged three-storey height, cream plaster, narrow shuttered openings and terracotta roof are historic-district reconstruction; chapel10.5m estimate, plain masonry with framed timber entrance, no invented office storeys."
     },
     {
       "name": "Mapped north Rocher woodland and limestone slope",
-      "wood_area_m2": 18432.426,
-      "reconstructed_trees": 251,
-      "stone_area_m2": 7006.949,
+      "wood_area_m2": 18580.59,
+      "reconstructed_trees": 254,
+      "stone_area_m2": 7089.553,
       "dimensions_status": "Three actual woodland polygons, mapped cliff690653926 and twelve crest footprints. Limestone only on unplanted cells within60m of mapped cliff, IGN slope>=.2 and ground>8m, plus registered interstreet retaining strip. Split and individual trees reconstructed, not surveyed. All original IGN/road heights preserved; exclusions retain roads, protection, buildings, paths and water."
     },
     {
@@ -351,7 +378,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 49209620,
@@ -378,7 +405,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 3.832
+      "removed_road_area_m2": 1.521
     },
     {
       "osm_id": 94252402,
@@ -396,7 +423,7 @@
       "levels": 4,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94252418,
@@ -405,7 +432,7 @@
       "levels": 4,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94252425,
@@ -414,7 +441,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94252435,
@@ -441,7 +468,7 @@
       "levels": 4,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94399411,
@@ -450,7 +477,7 @@
       "levels": 3,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94399412,
@@ -459,7 +486,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94399426,
@@ -468,7 +495,7 @@
       "levels": 2,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94399440,
@@ -495,7 +522,7 @@
       "levels": 4,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94399445,
@@ -576,7 +603,7 @@
       "levels": 3,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94399482,
@@ -639,7 +666,7 @@
       "levels": 5,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94399508,
@@ -657,7 +684,7 @@
       "levels": 7,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94399512,
@@ -666,7 +693,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94399518,
@@ -675,7 +702,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94399519,
@@ -720,7 +747,7 @@
       "levels": 8,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94399538,
@@ -729,7 +756,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94399555,
@@ -756,7 +783,7 @@
       "levels": 7,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94399566,
@@ -765,7 +792,7 @@
       "levels": 4,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94399568,
@@ -792,7 +819,7 @@
       "levels": 3,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94399584,
@@ -810,7 +837,7 @@
       "levels": 2,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94399603,
@@ -828,7 +855,7 @@
       "levels": 4,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94399612,
@@ -855,7 +882,7 @@
       "levels": 4,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94399630,
@@ -891,7 +918,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94399651,
@@ -900,7 +927,7 @@
       "levels": 20,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94399662,
@@ -918,7 +945,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94399668,
@@ -936,7 +963,7 @@
       "levels": 11,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94399677,
@@ -972,7 +999,7 @@
       "levels": 4,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94399705,
@@ -981,7 +1008,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94399721,
@@ -990,7 +1017,7 @@
       "levels": 3,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94399727,
@@ -1008,7 +1035,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94399752,
@@ -1017,7 +1044,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94399760,
@@ -1044,7 +1071,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94399790,
@@ -1053,7 +1080,7 @@
       "levels": 6,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94399793,
@@ -1062,7 +1089,7 @@
       "levels": 2,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94399797,
@@ -1089,7 +1116,7 @@
       "levels": 5,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94399824,
@@ -1116,7 +1143,7 @@
       "levels": 4,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94399848,
@@ -1143,7 +1170,7 @@
       "levels": 4,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94399858,
@@ -1233,7 +1260,7 @@
       "levels": 9,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94399945,
@@ -1251,7 +1278,7 @@
       "levels": 3,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94399950,
@@ -1296,7 +1323,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94399978,
@@ -1314,7 +1341,7 @@
       "levels": 2,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94399990,
@@ -1341,7 +1368,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94400013,
@@ -1395,7 +1422,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94400066,
@@ -1422,7 +1449,7 @@
       "levels": 9,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94400087,
@@ -1431,7 +1458,7 @@
       "levels": 4,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94400097,
@@ -1458,7 +1485,7 @@
       "levels": 6,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94400116,
@@ -1503,7 +1530,7 @@
       "levels": 3,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94400170,
@@ -1521,7 +1548,7 @@
       "levels": 8,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94400178,
@@ -1530,7 +1557,7 @@
       "levels": 4,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94400179,
@@ -1539,7 +1566,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94400182,
@@ -1557,7 +1584,7 @@
       "levels": 4,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94400208,
@@ -1620,7 +1647,7 @@
       "levels": 3,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94401980,
@@ -1719,7 +1746,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 104863461,
@@ -1737,7 +1764,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 112681614,
@@ -1755,7 +1782,7 @@
       "levels": 4,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 215.707
+      "removed_road_area_m2": 209.711
     },
     {
       "osm_id": 128840977,
@@ -1764,7 +1791,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 128840986,
@@ -1773,7 +1800,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 128840988,
@@ -1836,7 +1863,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 143210179,
@@ -1863,7 +1890,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 143210203,
@@ -1881,7 +1908,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 143210467,
@@ -1917,7 +1944,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 143210742,
@@ -1944,7 +1971,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 143211549,
@@ -1953,7 +1980,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 143211595,
@@ -1980,7 +2007,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 143211907,
@@ -1989,7 +2016,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 143211958,
@@ -2007,7 +2034,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 143211972,
@@ -2016,7 +2043,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 143211973,
@@ -2025,7 +2052,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 143211974,
@@ -2044,6 +2071,15 @@
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
       "removed_road_area_m2": 0.0
+    },
+    {
+      "osm_id": 143212146,
+      "name": "Mapped Monaco frontage",
+      "height_m": 6.8,
+      "levels": 2,
+      "height_status": "Unmeasured conservative retained default; not a verified storey survey",
+      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 143212252,
@@ -2070,7 +2106,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 143212399,
@@ -2106,7 +2142,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 143212687,
@@ -2115,7 +2151,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 143212811,
@@ -2187,7 +2223,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 143213182,
@@ -2196,7 +2232,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 143213207,
@@ -2223,7 +2259,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 143213259,
@@ -2241,7 +2277,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 143213315,
@@ -2250,7 +2286,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 143213341,
@@ -2277,7 +2313,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 143213596,
@@ -2295,7 +2331,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 143213686,
@@ -2322,7 +2358,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 143213881,
@@ -2331,7 +2367,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 143213994,
@@ -2340,7 +2376,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 143214000,
@@ -2394,7 +2430,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 143214190,
@@ -2412,7 +2448,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 143214252,
@@ -2421,7 +2457,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 143214300,
@@ -2430,7 +2466,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 143214316,
@@ -2439,7 +2475,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 143214334,
@@ -2448,7 +2484,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 143214355,
@@ -2457,7 +2493,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 143214363,
@@ -2466,7 +2502,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 143214366,
@@ -2493,7 +2529,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 143214443,
@@ -2520,7 +2556,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 143214483,
@@ -2529,7 +2565,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 143214503,
@@ -2538,7 +2574,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 143214529,
@@ -2565,7 +2601,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 143214681,
@@ -2610,7 +2646,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 143214815,
@@ -2619,7 +2655,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 143214844,
@@ -2673,7 +2709,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 143214888,
@@ -2709,7 +2745,7 @@
       "levels": 2,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 127.286
+      "removed_road_area_m2": 124.976
     },
     {
       "osm_id": 160004394,
@@ -2718,7 +2754,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 62.825
+      "removed_road_area_m2": 56.977
     },
     {
       "osm_id": 161733281,
@@ -2727,7 +2763,7 @@
       "levels": 8,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 9.375
+      "removed_road_area_m2": 3.981
     },
     {
       "osm_id": 161775595,
@@ -2736,7 +2772,7 @@
       "levels": 3,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 161883155,
@@ -2754,7 +2790,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 16.967
+      "removed_road_area_m2": 6.115
     },
     {
       "osm_id": 167014907,
@@ -2775,15 +2811,6 @@
       "removed_road_area_m2": 0.0
     },
     {
-      "osm_id": 176722820,
-      "name": "Centre de Rencontre International",
-      "height_m": 6.8,
-      "levels": 2,
-      "height_status": "Unmeasured conservative retained default; not a verified storey survey",
-      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 5.227
-    },
-    {
       "osm_id": 176802610,
       "name": "Mapped Monaco frontage",
       "height_m": 13.6,
@@ -2799,7 +2826,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 182693522,
@@ -2808,7 +2835,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 211243051,
@@ -2844,7 +2871,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 297420983,
@@ -2853,7 +2880,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 304220442,
@@ -2862,7 +2889,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 320119396,
@@ -2871,7 +2898,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 373918255,
@@ -2988,7 +3015,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 390066684,
@@ -3006,7 +3033,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 46.442
+      "removed_road_area_m2": 39.434
     },
     {
       "osm_id": 438472013,
@@ -3024,7 +3051,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 444328144,
@@ -3042,25 +3069,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 93.718
-    },
-    {
-      "osm_id": 447008628,
-      "name": "Le Castellara",
-      "height_m": 6.8,
-      "levels": 2,
-      "height_status": "Unmeasured conservative retained default; not a verified storey survey",
-      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
-    },
-    {
-      "osm_id": 447008629,
-      "name": "Le Portobello",
-      "height_m": 6.8,
-      "levels": 2,
-      "height_status": "Unmeasured conservative retained default; not a verified storey survey",
-      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": 80.309
     },
     {
       "osm_id": 478668725,
@@ -3096,7 +3105,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 6.621
+      "removed_road_area_m2": 12.473
     },
     {
       "osm_id": 508221117,
@@ -3105,7 +3114,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 3.333
+      "removed_road_area_m2": 11.005
     },
     {
       "osm_id": 510086797,
@@ -3114,7 +3123,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 554456830,
@@ -3132,7 +3141,7 @@
       "levels": 10,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 554456832,
@@ -3141,7 +3150,7 @@
       "levels": 15,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 554456833,
@@ -3231,7 +3240,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 585666927,
@@ -3267,7 +3276,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 587264596,
@@ -3330,7 +3339,7 @@
       "levels": 4,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 720161649,
@@ -3357,7 +3366,7 @@
       "levels": 4,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 720163625,
@@ -3384,7 +3393,7 @@
       "levels": 4,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 720163628,
@@ -3411,7 +3420,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 9.061
+      "removed_road_area_m2": 6.881
     },
     {
       "osm_id": 778754301,
@@ -3429,7 +3438,7 @@
       "levels": 6,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 828210538,
@@ -3438,7 +3447,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 833313381,
@@ -3456,7 +3465,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 835116296,
@@ -3465,7 +3474,7 @@
       "levels": 2,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 835382433,
@@ -3501,7 +3510,7 @@
       "levels": 7,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 840647882,
@@ -3528,7 +3537,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 845115753,
@@ -3555,7 +3564,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 845119023,
@@ -3636,7 +3645,7 @@
       "levels": 3,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 982061459,
@@ -3645,7 +3654,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 1078560451,
@@ -3663,7 +3672,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 1086898677,
@@ -3672,7 +3681,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 5.795
+      "removed_road_area_m2": 2.336
     },
     {
       "osm_id": 1152567278,
@@ -3681,7 +3690,7 @@
       "levels": 9,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 1159576146,
@@ -3699,7 +3708,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 1202570723,
@@ -3708,7 +3717,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 1340550272,
@@ -3717,7 +3726,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 1341964786,
@@ -3744,7 +3753,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 1447995052,
@@ -3771,7 +3780,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 238.544
+      "removed_road_area_m2": 245.051
     },
     {
       "osm_id": 1528483283,
@@ -3789,7 +3798,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": 0.476
     },
     {
       "osm_id": 16248281,
@@ -3798,7 +3807,7 @@
       "levels": 9,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 16248282,
@@ -3807,7 +3816,7 @@
       "levels": 9,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 16248283,
@@ -3825,7 +3834,7 @@
       "levels": 10,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 16248285,
@@ -3852,7 +3861,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94399416,
@@ -3924,7 +3933,7 @@
       "levels": 10,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94399888,
@@ -3942,7 +3951,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94400000,
@@ -3969,7 +3978,7 @@
       "levels": 3,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94400048,
@@ -3978,7 +3987,7 @@
       "levels": 7,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 94400109,
@@ -3987,7 +3996,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 94400200,
@@ -3996,7 +4005,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "removed_road_area_m2": -0.0
     },
     {
       "osm_id": 112689147,
@@ -4023,7 +4032,7 @@
       "levels": 4,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 444328145,
@@ -4050,7 +4059,7 @@
       "levels": 2,
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
+      "removed_road_area_m2": 0.0
     },
     {
       "osm_id": 1079442963,
@@ -4062,15 +4071,29 @@
       "removed_road_area_m2": 0.0
     },
     {
+      "name": "Measured Beausoleil urban hillside",
+      "source_building_components": 250,
+      "pitched_tile_roofs": 130,
+      "source": "architecture/hillside-buildings.json and hillside-architecture-provenance.json",
+      "dimensions_status": "Actual bounded IGN footprints, storeys where supplied, ground/eaves/ridge levels, source precision and documented roof-material codes. Native road and RGE ground are unchanged. Complex roofs retain original 3D boundary heights; simple tile roofs use an estimated ridge axis within measured eaves/ridge limits. Facade openings and shutter details are original contextual reconstruction; no generic constant-height city strip."
+    },
+    {
+      "name": "Measured Beausoleil woodland and hedges",
+      "vegetation_area_m2": 169483.10597984833,
+      "reconstructed_trees": 2210,
+      "source": "architecture/hillside-vegetation.json",
+      "dimensions_status": "Seven exact IGN orthophotographic conifer/mixed-forest and hedge polygons. Ground surfaces follow the unchanged RGE grid; no green blanket outside these regions. Roads, buildings and water excluded. Individual trees and heights are bounded original reconstruction, not measured tree positions."
+    },
+    {
       "name": "Mapped Monaco city gardens and heritage trees",
-      "garden_area_m2": 30185.726,
-      "mapped_trees": 119,
-      "trees_excluded_for_clearance_or_query_bounds": 50,
+      "garden_area_m2": 30415.242,
+      "mapped_trees": 121,
+      "trees_excluded_for_clearance_or_query_bounds": 48,
       "dimensions_status": "Retained OSM garden/grass footprints, pedestrian paths and individual tree positions. Road/corridor/water/buildings excluded; exact native terrain-grid cell subdivision replaces underlying Concrete. Tagged tree height/species retained; missing heights estimated11m, untagged broadleaf form. No terrain-height changes."
     },
     {
       "name": "Mapped retaining walls and Mirabeau street foundations",
-      "mapped_wall_segments": 188,
+      "mapped_wall_segments": 191,
       "street_support_segments": 45,
       "dimensions_status": "Retained OSM retaining-wall alignments with heights derived from adjacent registered ground, not guessed walls across town. Mirabeau upper inside street edge at 1200\u20131290 m joins actual RGE ground beyond the corrected narrow corridor. Two-sided stone faces support the existing road elevation; no racing surface or native collision geometry is changed."
     }

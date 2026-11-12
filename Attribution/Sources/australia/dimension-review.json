@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-12",
+  "status": "Primary dimensions audited; root coordinates local profile corrections and native checks.",
+  "operator_source_url": "https://www.fia.com/sites/default/files/gp22_166_media_kit_v2.pdf",
+  "pages": [
+    19,
+    20
+  ],
+  "absolute_width_fact": {
+    "official_corner": "Turn11 approach, formerlyTurn13",
+    "published_old_width_m": 12,
+    "published_new_width_m": 15,
+    "native_apex_station_m": 4065,
+    "proposed_plateau_native_range_m": [
+      3980,
+      4050
+    ],
+    "proposed_scope_native_range_m": [
+      3900,
+      4110
+    ],
+    "station_uncertainty_m": 30,
+    "method": "Absolute approach width is supported by the operator; station extent and joins are reconstruction estimates. Preserve other road widths rather than reapply a generic complete-lap profile.",
+    "status": "Canonical source controls authored in environment-recipe.json; native application and runtime review pending.",
+    "local_join_range_m": [
+      3900,
+      4110
+    ],
+    "plateau_native_range_m": [
+      3980,
+      4050
+    ]
+  },
+  "relative_change_facts": [
+    {
+      "official_corner": "T1",
+      "widening_m": 2.5
+    },
+    {
+      "official_corner": "T3",
+      "widening_m": 4
+    },
+    {
+      "official_corner": "T6",
+      "widening_m": 7.5
+    },
+    {
+      "official_corner": "T13",
+      "widening_m": 3.5
+    }
+  ],
+  "pit_lane_width_m": 14,
+  "pit_lane_note": "Separate pit lane dimension, not racecourse width. Do not transfer to the racing deck.",
+  "alignment_evidence": "Retained mapped contexts for seven suspicious native bends were delivered. Modern T5 is near1376m;1607m is an unnumbered connecting kink. T6/T11 are sparse hard vertices, so mapped controls do not establish an actual arc radius.",
+  "elevation_decision": "No new operator-contradicted elevation defect established. Retain the existing2.6m relative F1 reconstruction; changed2022 sectors remain estimates.",
+  "preserve": "The existing opt-in T3 robust edge, black PIRELLI island and red inner lip remain source-backed. The outside-left dark slit at1018m was traced to canopy shadow and unpainted Runoff, not missing geometry."
+}

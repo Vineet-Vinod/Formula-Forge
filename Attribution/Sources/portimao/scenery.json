@@ -1,18 +1,27 @@
 {
   "recipe": "make circuit-assets CIRCUIT=portimao",
-  "tiles": 115,
-  "triangles": 678725,
-  "road_sha256": "2bd9a62e4ed6d9a485d74656961ede220d4905601530ba73a0c49aac815434b7",
-  "terrain_sha256": "a8e223c0d18b17beb5449bc93e3ff488943ecd100a5238a83cf8866257be6fd2",
+  "tiles": 120,
+  "triangles": 647170,
+  "road_sha256": "ad1daae6388bbf318a69b776c791be1afd4182d9fdf2b94d8d5fb0e6229481ff",
+  "terrain_sha256": "192d3bcbc901d7fe05bdbe00caad46ec36cb489f38cdec0cd413a7ee2fc849da",
   "landmarks": [
     {
       "name": "Paved pit lane and working apron",
-      "start_m": 535.0,
-      "end_m": 950.0,
+      "start_m": 560.3386899897871,
+      "end_m": 976.378573574755,
       "side": 1,
-      "outer_offset_m": 20.0,
-      "source_note": "Mapped Boxes38167081 front558.7\u2192922.7m, offsets19.1\u201319.4m;20m pavingback reaches front. Mainstand38166697 is LEFT, garages RIGHT. Supplied725.72s maincomplex approach establishes paving/roof relation; extensions are visual estimates.",
+      "outer_offset_m": 17.45,
+      "source_note": "Mapped Boxes38167081 garage frontage on driver RIGHT. The old estimated535\u2013950m apron span maps geographically to560.338690\u2013976.378574m on the combined full Galp/direct T1 route. With the operator18m main-straight width,21samples along the actual365.13m garage-front edge give16.873\u201317.426m outside the road edge.17.45m paving meets the full frontage, extending at most0.58m under the garage floor; this is retained-map geometry with1\u20132m source uncertainty, not surveyed dimensions.",
       "access": "Visual service area outside the closed driving boundary."
+    },
+    {
+      "name": "Galp black inner paved island",
+      "start_m": 10,
+      "end_m": 130,
+      "side": 1,
+      "area_m2": 1134.3159536025255,
+      "registration": "Direct supplied 667.5 s apex view shows a tapering black island inside the right red/white kerb. Its 120 m length and 22.4 m maximum depth are reconstruction estimates. Original white PORTIM\u00c3O lettering substitutes for the foreshortened, unidentifiable source wordmark; no sponsor identity or copied pixels are claimed.",
+      "surface_contract": "Actual paved triangles exclude the road and inner kerb. Lettering clips to those triangles at +5 mm. Paving enters extra_corridors for root protection synchronization, while the white-line track limits remain separate."
     },
     {
       "name": "Reference event panels",
@@ -44,31 +53,31 @@
     },
     {
       "name": "Braking distance boards",
-      "apex_m": 1254,
+      "apex_m": 1281.138157,
       "side": -1,
       "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
     },
     {
       "name": "Braking distance boards",
-      "apex_m": 1602,
+      "apex_m": 1597.443353,
       "side": -1,
       "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
     },
     {
       "name": "Braking distance boards",
-      "apex_m": 2332,
+      "apex_m": 2329.251761,
       "side": 1,
       "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
     },
     {
       "name": "Braking distance boards",
-      "apex_m": 2952,
+      "apex_m": 2950.78815,
       "side": -1,
       "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
     },
     {
       "name": "Braking distance boards",
-      "apex_m": 3327,
+      "apex_m": 3326.722683,
       "side": 1,
       "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
     },
@@ -76,7 +85,7 @@
       "osm_id": 38167081,
       "name": "Boxes",
       "height_m": 12,
-      "removed_road_area_m2": 0.0,
+      "removed_road_area_m2": -0.0,
       "structure": "enclosed",
       "ground_floor": "Recessed road-facing garage bays",
       "road_clearance_exception": "none",
@@ -93,11 +102,47 @@
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
     {
-      "name": "Authored grandstand",
-      "start_m": 470,
-      "end_m": 1060,
-      "side": -1,
-      "rows": 23
+      "name": "Bancada Principal block 1",
+      "osm_id": -381666970,
+      "roof": "",
+      "rows": 23,
+      "seat_material": "SeatRed",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+    },
+    {
+      "name": "Bancada Principal block 2",
+      "osm_id": -381666971,
+      "roof": "",
+      "rows": 23,
+      "seat_material": "SeatRed",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+    },
+    {
+      "name": "Bancada Principal block 3",
+      "osm_id": -381666972,
+      "roof": "",
+      "rows": 23,
+      "seat_material": "SeatRed",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+    },
+    {
+      "name": "Bancada Principal block 4",
+      "osm_id": -381666973,
+      "roof": "",
+      "rows": 23,
+      "seat_material": "SeatRed",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+    },
+    {
+      "name": "Bancada Principal dimension correction",
+      "roof_osm_id": 38166697,
+      "roof_length_m": 375.5936966417364,
+      "structural_blocks": 4,
+      "block_length_m": 90,
+      "seating_length_m": 360,
+      "expansion_joint_gap_m": 0.3,
+      "source": "https://dimeconsult.pt/projectos_desenv2.php?ano=2008&id=9&menu=pp",
+      "dimensions_status": "Structural consultant gives four90m mainstand blocks. Original seating now fits that360m span and mapped roof axis instead of591m of racing-road stations. Actual mapped375m canopy outline and roof geometry are unchanged; end overhangs,23rows and0.3m expansion gaps are reconstruction estimates."
     },
     {
       "name": "Torre VIP layered circular terraces",
@@ -108,17 +153,26 @@
     },
     {
       "name": "Authored grandstand",
-      "start_m": 1430,
-      "end_m": 1540,
+      "start_m": 1425.070832,
+      "end_m": 1535.296422,
       "side": -1,
       "rows": 12
     },
     {
       "name": "Authored grandstand",
-      "start_m": 3480,
-      "end_m": 3570,
+      "start_m": 3480.105667,
+      "end_m": 3570.330375,
       "side": -1,
       "rows": 12
+    },
+    {
+      "name": "Galp outside Sul spectator banks and tree belt",
+      "start_m": 4510,
+      "end_m": 127.0,
+      "side": -1,
+      "stand_blocks": 8,
+      "registration": "Operator 2020 seating plan places Sul blocks outside the final right arc; direct 666/667.5 s views show stepped lower seating, a short roofed upper section and trees behind. No mapped OSM Sul footprint exists in the retained source. Eight 25 m blocks, 10 m gaps, 32 m road-edge setback and 11 rows are bounded reconstructions, with approximately 15 m positional uncertainty. Roofs cover only the first three blocks.",
+      "ground_contract": "Each bay and row follows local ground, with monotone tread heights and closed risers. Tree roots use sampled ground behind the terraces and avoid road, paved escape and mapped buildings."
     }
   ],
   "vegetation": [

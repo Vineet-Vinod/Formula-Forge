@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "source": "FIA2026 fourteen-corner map; original registered labels geographically remapped through the disclosed event geometry and exact native normalization. No curvature-peak renumbering.",
+  "source_url": "https://www.fia.com/system/files/decision-document/2026_melbourne_event_-_circuit_map_-_melbourne_2026_0.pdf",
+  "turns": [
+    {
+      "official_turn": 1,
+      "native_station_m": 287.352051,
+      "direction": "right",
+      "previous_native_station_m": 286,
+      "final_curve_match_residual_m": 0.1932945162944382,
+      "station_uncertainty_m": 35
+    },
+    {
+      "official_turn": 2,
+      "native_station_m": 407.189453,
+      "direction": "left",
+      "previous_native_station_m": 405,
+      "final_curve_match_residual_m": 0.1474949460797032,
+      "station_uncertainty_m": 35
+    },
+    {
+      "official_turn": 3,
+      "native_station_m": 1022.48364,
+      "direction": "right",
+      "previous_native_station_m": 1018,
+      "final_curve_match_residual_m": 0.31536610644940566,
+      "station_uncertainty_m": 35
+    },
+    {
+      "official_turn": 4,
+      "native_station_m": 1164.87109,
+      "direction": "left",
+      "previous_native_station_m": 1161,
+      "final_curve_match_residual_m": 0.29312545888442404,
+      "station_uncertainty_m": 35
+    },
+    {
+      "official_turn": 5,
+      "native_station_m": 1380.06299,
+      "direction": "right",
+      "previous_native_station_m": 1376,
+      "final_curve_match_residual_m": 0.1582101758678893,
+      "station_uncertainty_m": 35
+    },
+    {
+      "official_turn": 6,
+      "native_station_m": 1807.86963,
+      "direction": "right",
+      "previous_native_station_m": 1810,
+      "final_curve_match_residual_m": 0.07041507814569481,
+      "station_uncertainty_m": 35
+    },
+    {
+      "official_turn": 7,
+      "native_station_m": 1892.27124,
+      "direction": "left",
+      "previous_native_station_m": 1900,
+      "final_curve_match_residual_m": 0.01792369414164212,
+      "station_uncertainty_m": 35
+    },
+    {
+      "official_turn": 8,
+      "native_station_m": 2193.15332,
+      "direction": "right",
+      "previous_native_station_m": 2200,
+      "final_curve_match_residual_m": 0.15435994450551788,
+      "station_uncertainty_m": 35
+    },
+    {
+      "official_turn": 9,
+      "native_station_m": 3231.09985,
+      "direction": "left",
+      "previous_native_station_m": 3234,
+      "final_curve_match_residual_m": 0.13212647006514486,
+      "station_uncertainty_m": 35
+    },
+    {
+      "official_turn": 10,
+      "native_station_m": 3358.6687,
+      "direction": "right",
+      "previous_native_station_m": 3361,
+      "final_curve_match_residual_m": 0.3311530769814724,
+      "station_uncertainty_m": 35
+    },
+    {
+      "official_turn": 11,
+      "native_station_m": 4062.23022,
+      "direction": "right",
+      "previous_native_station_m": 4065,
+      "final_curve_match_residual_m": 0.1765995067344976,
+      "station_uncertainty_m": 35
+    },
+    {
+      "official_turn": 12,
+      "native_station_m": 4310.28076,
+      "direction": "right",
+      "previous_native_station_m": 4315,
+      "final_curve_match_residual_m": 0.27427496167116944,
+      "station_uncertainty_m": 35
+    },
+    {
+      "official_turn": 13,
+      "native_station_m": 4575.08301,
+      "direction": "left",
+      "previous_native_station_m": 4578,
+      "final_curve_match_residual_m": 0.26597890091040705,
+      "station_uncertainty_m": 35
+    },
+    {
+      "official_turn": 14,
+      "native_station_m": 4727.13477,
+      "direction": "right",
+      "previous_native_station_m": 4729,
+      "final_curve_match_residual_m": 0.10906508383308132,
+      "station_uncertainty_m": 35
+    }
+  ]
+}

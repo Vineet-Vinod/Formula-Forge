@@ -1,0 +1,365 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-12",
+  "method": "Typed tools/circuit_alignment.py reconstructs tangent circular fillets from retained source arcs, with35m quintic exterior joins and at most2m movement. No native writes in the source-authoring step.",
+  "source_files": [
+    "circuit.osm.json.gz",
+    "alignment-base-road.csv.gz",
+    "alignment-arcs.json",
+    "alignment-corrections.json"
+  ],
+  "accepted": [
+    {
+      "official_corner": "T6",
+      "core_native_range_m": [
+        4911.7227500099025,
+        4932.382361528359
+      ],
+      "radius_m": 19.630041998303916,
+      "center_xy_m": [
+        -368.53898995068243,
+        258.060813137443
+      ],
+      "minimum_radius_m": 15.95822768256426,
+      "maximum_displacement_m": 1.9127384937319618,
+      "source_radial_max_m": 1.4709855942673187
+    },
+    {
+      "official_corner": "T11",
+      "core_native_range_m": [
+        1002.1280461234835,
+        1026.2080090454435
+      ],
+      "radius_m": 17.187026881035926,
+      "center_xy_m": [
+        95.28212432697887,
+        506.65014775164934
+      ],
+      "minimum_radius_m": 16.316996257029064,
+      "maximum_displacement_m": 1.5105652022925642,
+      "source_radial_max_m": 1.182923602825067
+    }
+  ],
+  "rejected_attempts": [
+    {
+      "official_corner": "T11",
+      "reason": "china/T11: displacement 2.099 m exceeds source allowance",
+      "attempted_arc": {
+        "official_corner": "T11",
+        "source_way_id": 156328670,
+        "core_native_range_m": [
+          1002.1280461234835,
+          1026.2080090454435
+        ],
+        "circle_center_source_xy_m": [
+          96.15122538705731,
+          506.5877786972725
+        ],
+        "radius_m": 16.343705563648864,
+        "raw_controls_xy_native_m": [
+          [
+            110.34593246514132,
+            514.7183285395786,
+            1002.1280461234835
+          ],
+          [
+            105.9327305697578,
+            519.5520584969695,
+            1008.6351662228412
+          ],
+          [
+            101.69036229544366,
+            522.1744958989751,
+            1013.5922877322096
+          ],
+          [
+            96.77415029170491,
+            522.8523292953197,
+            1018.5441655791054
+          ],
+          [
+            93.20562574816414,
+            522.5189686086576,
+            1022.1183203787111
+          ],
+          [
+            89.21950790747714,
+            521.4966625026304,
+            1026.2080090454435
+          ]
+        ],
+        "incoming_fit_m": [
+          45,
+          15
+        ],
+        "outgoing_fit_m": [
+          15,
+          45
+        ],
+        "blend_m": 35,
+        "maximum_displacement_m": 2,
+        "source_radial_rms_m": 0.11865898619240883,
+        "source_radial_max_m": 0.19799298322657322,
+        "source_status": "Retained mapped raceway center controls; uncertainty2m. No kerb survey claimed."
+      }
+    },
+    {
+      "official_corner": "T14 hairpin",
+      "reason": "china/T14 hairpin: displacement 2.062 m exceeds source allowance",
+      "attempted_arc": {
+        "official_corner": "T14 hairpin",
+        "source_way_id": 156328670,
+        "core_native_range_m": [
+          2664.1024042100257,
+          2687.731716233002
+        ],
+        "circle_center_source_xy_m": [
+          829.7425630321337,
+          -428.7010150025041
+        ],
+        "radius_m": 9.484824599432708,
+        "raw_controls_xy_native_m": [
+          [
+            838.1161427218176,
+            -424.4698461636103,
+            2664.1024042100257
+          ],
+          [
+            839.1316536947297,
+            -427.6923328016077,
+            2667.450023908703
+          ],
+          [
+            839.0462368848692,
+            -431.6037648593649,
+            2671.1810539146654
+          ],
+          [
+            837.7744754783301,
+            -433.8928415747083,
+            2673.65775164752
+          ],
+          [
+            835.9047963946763,
+            -435.6707652370381,
+            2676.1385838613755
+          ],
+          [
+            833.1904399605286,
+            -437.61536924309377,
+            2679.3135733734016
+          ],
+          [
+            829.46057255212,
+            -437.8709457694031,
+            2682.8866670951907
+          ],
+          [
+            824.6297773582415,
+            -436.9375358467491,
+            2687.731716233002
+          ]
+        ],
+        "incoming_fit_m": [
+          45,
+          15
+        ],
+        "outgoing_fit_m": [
+          15,
+          45
+        ],
+        "blend_m": 35,
+        "maximum_displacement_m": 2,
+        "source_radial_rms_m": 0.18215749583162735,
+        "source_radial_max_m": 0.3105590211676681,
+        "source_status": "Retained mapped raceway center controls; uncertainty2m. No kerb survey claimed."
+      }
+    },
+    {
+      "official_corner": "T11",
+      "status": "accepted",
+      "arc": {
+        "official_corner": "T11",
+        "source_way_id": 156328670,
+        "core_native_range_m": [
+          1002.1280461234835,
+          1026.2080090454435
+        ],
+        "circle_center_source_xy_m": [
+          96.15122538705731,
+          506.5877786972725
+        ],
+        "radius_m": 16.343705563648864,
+        "raw_controls_xy_native_m": [
+          [
+            110.34593246514132,
+            514.7183285395786,
+            1002.1280461234835
+          ],
+          [
+            105.9327305697578,
+            519.5520584969695,
+            1008.6351662228412
+          ],
+          [
+            101.69036229544366,
+            522.1744958989751,
+            1013.5922877322096
+          ],
+          [
+            96.77415029170491,
+            522.8523292953197,
+            1018.5441655791054
+          ],
+          [
+            93.20562574816414,
+            522.5189686086576,
+            1022.1183203787111
+          ],
+          [
+            89.21950790747714,
+            521.4966625026304,
+            1026.2080090454435
+          ]
+        ],
+        "incoming_fit_m": [
+          45,
+          15
+        ],
+        "outgoing_fit_m": [
+          12,
+          27
+        ],
+        "blend_m": 35,
+        "maximum_displacement_m": 2,
+        "source_radial_rms_m": 0.11865898619240883,
+        "source_radial_max_m": 0.19799298322657322,
+        "source_status": "Retained mapped raceway center controls; uncertainty2m. No kerb survey claimed.",
+        "tangent_registration_note": "Default exit window crossed the T12direction reversal at1062m. Use the gentle road segment1038\u20131053m before that reversal.",
+        "tangent_fit_residuals": [
+          {
+            "range_m": [
+              957.1280461234835,
+              987.1280461234835
+            ],
+            "maximum_line_residual_m": 5.434484922517413e-05
+          },
+          {
+            "range_m": [
+              1038.2080090454435,
+              1053.2080090454435
+            ],
+            "maximum_line_residual_m": 0.14047526846414105
+          }
+        ]
+      }
+    },
+    {
+      "official_corner": "T14 hairpin",
+      "reason": "china/T14 hairpin: displacement 2.010 m exceeds source allowance",
+      "attempted_arc": {
+        "official_corner": "T14 hairpin",
+        "source_way_id": 156328670,
+        "core_native_range_m": [
+          2664.1024042100257,
+          2687.731716233002
+        ],
+        "circle_center_source_xy_m": [
+          829.7425630321337,
+          -428.7010150025041
+        ],
+        "radius_m": 9.484824599432708,
+        "raw_controls_xy_native_m": [
+          [
+            838.1161427218176,
+            -424.4698461636103,
+            2664.1024042100257
+          ],
+          [
+            839.1316536947297,
+            -427.6923328016077,
+            2667.450023908703
+          ],
+          [
+            839.0462368848692,
+            -431.6037648593649,
+            2671.1810539146654
+          ],
+          [
+            837.7744754783301,
+            -433.8928415747083,
+            2673.65775164752
+          ],
+          [
+            835.9047963946763,
+            -435.6707652370381,
+            2676.1385838613755
+          ],
+          [
+            833.1904399605286,
+            -437.61536924309377,
+            2679.3135733734016
+          ],
+          [
+            829.46057255212,
+            -437.8709457694031,
+            2682.8866670951907
+          ],
+          [
+            824.6297773582415,
+            -436.9375358467491,
+            2687.731716233002
+          ]
+        ],
+        "incoming_fit_m": [
+          35,
+          10
+        ],
+        "outgoing_fit_m": [
+          10,
+          35
+        ],
+        "blend_m": 35,
+        "maximum_displacement_m": 2,
+        "source_radial_rms_m": 0.18215749583162735,
+        "source_radial_max_m": 0.3105590211676681,
+        "source_status": "Retained mapped raceway center controls; uncertainty2m. No kerb survey claimed.",
+        "tangent_registration_note": "Keep tangent observations local to the hairpin straight approaches; avoid unnecessarily distant exit observations near the followingkink.",
+        "tangent_fit_residuals": [
+          {
+            "range_m": [
+              2629.1024042100257,
+              2654.1024042100257
+            ],
+            "maximum_line_residual_m": 0.09297986989604112
+          },
+          {
+            "range_m": [
+              2697.731716233002,
+              2722.731716233002
+            ],
+            "maximum_line_residual_m": 0.035131156950832576
+          }
+        ]
+      }
+    }
+  ],
+  "retained_rejection_policy": "Rejected proposals remain evidence, not active geometry. The2m movement allowance and20% circle/tangent radius comparison are preserved. No source radius is invented for sparse hard vertices or sign-changing bends.",
+  "survey_status": "Mapped centerline estimates with2m source uncertainty; not a kerb or engineering survey.",
+  "runtime_status": "Root coordinates native synchronization, physical envelope refresh and cockpit review; no appearance approval is claimed.",
+  "primary_numbering_registration": {
+    "primary_url": "https://www.fia.com/system/files/decision-document/2025_chinese_grand_prix_-_event_notes_-_circuit_map_pit_lane_and_quarantine_zone.pdf",
+    "retained_primary_map": "Retained FIA2025 map inspected during authoring; no map raster ships as an asset.",
+    "native_origin": "Native0 is near officialTurn7. The timing/start anchor is3450m. These are separate origins.",
+    "corner_native_stations_m": {
+      "T11": 1015,
+      "T13": 1230,
+      "T14": 2676,
+      "T1": 3950,
+      "T2": 4093,
+      "T6": 4924
+    },
+    "geometry_witness": "T11 lies at the northern left entry before the large T12/T13 loop. T1/T2 form the southwestern spiral, distinct from T11. SourceXY at1015 is(100.31,522.51), while3950 is(-267.85,-290.52).",
+    "height_witness": "The7.4m F1 crest is the southwestern T2 at4093m, not the mappedT11 arc at1015m."
+  }
+}

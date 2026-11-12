@@ -1,0 +1,9 @@
+{
+  "grid_file": "elevation/classified-scenery-grid.json.gz",
+  "grid_sha256": "3b385e0a99f4759e76487aa2c31e0fbeda47cb8187fa14d12531ee62e29e0720",
+  "provider": "Direcao-Geral do Territorio, Portugal",
+  "dataset": "Mainland LiDAR2024, published Portugal3D classified point-cloud preview",
+  "relative_datum_m": 95.3269154055956,
+  "road_join_distance_m": 20.0,
+  "grid_uniform_scale": 1.001037204324165
+}

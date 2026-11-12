@@ -1,9 +1,9 @@
 {
-  "start_m": 5130,
-  "end_m": 230,
+  "start_m": 5190,
+  "end_m": 270,
   "side": -1,
-  "outer_offset_m": 13.0,
+  "outer_offset_m": 17.5,
   "shoulder_m": 0.1,
   "transition_m": 25.0,
-  "source_note": "Authored Istanbul garage frontage scene.pit_building(5130,230,-1) lies exactly 13 m beyond road edge, underneath its three stacked hospitality roofs. Reference325/329/333/337s shows garages left and mainstand right. Retained compound295742112 is excluded from duplicate extrusion. Native interval crosses zero; dimensions remain reference estimates."
+  "source_note": "Actual mapped garage-front 295742112 spans native 5211.60 to 250.01 across zero. Frontage lies 17.523\u201320.444 m beyond the asphalt edge. Visual pit paving begins 5190 and ends 270, with a 17.5 m outer offset; its outer white line is 17.1 m from the road edge, safely in front of the minimum mapped frontage. Local source-authored apron polygons continue from that boundary to the real facade without another white stripe. Shoulder 0.10 m and 25 m transitions retain the closed pit-wall contract. Full footprint/arched-bay model replaces the old 438 m station strip; no road XYZ/bank/width changes."
 }

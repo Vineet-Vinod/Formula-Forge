@@ -91,7 +91,7 @@
       "reviewed_image": "build/reviews/zandvoort/reference/final-875.00.jpg",
       "reviewed_image_sha256": "2c0eaacd11b8a51bc72d8e031e7c98096198c7dbe24465992921a568be92068a",
       "notes": "Main straight after final banking: long left stand canopy and catch fence, right pit compound, grassy edge, flags and paved straight. HUD1:10.482.",
-      "camera_registration": "Same main-straight context; the872\u2192875s sequence is consistent, but exact native station is not surveyed."
+      "camera_registration": "Same main-straight context; the872→875s sequence is consistent, but exact native station is not surveyed."
     },
     {
       "time_s": 866.5,
@@ -224,6 +224,11 @@
     {
       "url": "https://www.circuitzandvoort.nl/en/corners/",
       "use": "Operator Turn10section identifies 2020exit double kerb and supplies credited ChrisSchotanus photographs showing real narrow outside gravel, grass lip and wall/scrub bank. No photo pixels ship."
+    },
+    {
+      "title": "AHN5 classified-ground DTM, official dataroom",
+      "url": "https://www.ahn.nl/dataroom",
+      "supports": "Post2019 ground heights,18.14-degree T14 cross-section, modern Hunzerug/T3 road profile; original F32 export retained. CC BY4.0 attribution applies to AHN5, unlike AHN4 CC0."
     }
   ],
   "uncertainties": [
@@ -237,7 +242,7 @@
       872,
       875
     ],
-    "observation": "865\u2192866.50\u2192868video seconds progresses HUD39.556\u219241.053\u219242.533s continuously through the middle left bend. By872s HUD jumps to1:07.481s on final banking, then1:10.482s at875. The868\u2192872interval contains an edit; no station interpolation across it.",
+    "observation": "865→866.50→868video seconds progresses HUD39.556→41.053→42.533s continuously through the middle left bend. By872s HUD jumps to1:07.481s on final banking, then1:10.482s at875. The868→872interval contains an edit; no station interpolation across it.",
     "remaining_index_policy": "Old broad sector labels are contextual unless separately registered; no unverified corner relabels are made here."
   },
   "operator_photo_review": [
@@ -259,5 +264,6 @@
       "credit": "Chris Schotanus / Essay Produkties; operator page",
       "observation": "T10 has genuine outside gravel, with grass lip and close wall backed by dune scrub. Telephoto perspective does not establish precise metres; photos are supplementary geometry evidence, not exported textures."
     }
-  ]
+  ],
+  "racing_elevation_correction": "elevation-corrections.json"
 }

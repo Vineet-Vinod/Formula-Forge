@@ -1,15 +1,15 @@
 {
-  "provider": "Copernicus DEM, distributed through AWS Open Data",
-  "dataset": "GLO-30 DSM",
-  "source_url": "https://copernicus-dem-30m.s3.eu-central-1.amazonaws.com/Copernicus_DSM_COG_10_N30_00_W098_00_DEM/Copernicus_DSM_COG_10_N30_00_W098_00_DEM.tif",
-  "source_info": "https://registry.opendata.aws/copernicus-dem/",
-  "documentation": "https://copernicus-dem-90m.s3.amazonaws.com/readme.html",
-  "retained_window": "elevation/scenery_dem.tif",
-  "sha256": "50539c512f42c82ead2a1eafedbfc412b06a3e553adefd37f7db5d4adbfca40b",
-  "grid_spacing_m": 12,
-  "source_resolution_m": 30,
-  "relative_datum_m": 150.15244100839845,
-  "datum_method": "Median offset to unchanged native road profile at 256 stations.",
-  "use": "Surrounding landscape only, bilinearly resampled; not a racing-deck or bare-earth survey. Road-adjacent ground joins the existing road plane.",
-  "terrain_sha256": "4bdab515c5a634890eb2d0fb24349f7ba8d3d535db63820503a913fecc4992ce"
+  "provider": "United States Geological Survey,3D Elevation Program",
+  "dataset": "TX Central B1 2017 one-metre bare-earth DEM; bounded unstyled F32 scenery export",
+  "retained_window": "elevation/usgs-scenery-grid.json.gz",
+  "sha256": "290ef6064c6ad6ce571c70c1279e62990f2d6efdc321f33ad626317de2fc33fb",
+  "grid_spacing_m": 12.0,
+  "runtime_grid_spacing_m": 11.992146104895616,
+  "horizontal_frame_correction": 0.9993455087413013,
+  "grid_uniform_scale": 1.001577,
+  "relative_datum_m": 151.06596096433813,
+  "road_join_distance_m": 20.0,
+  "source_manifest": "scenery-ground.json",
+  "use": "Retained scenery-only ground grid. Heights already use the registered relative datum; racing profiles remain unchanged.",
+  "terrain_sha256": "c9c0a1c53aaafed665cbfefb341340b6476df40e7621da732aecb033cfabf564"
 }

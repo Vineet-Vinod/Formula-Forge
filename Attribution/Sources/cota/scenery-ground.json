@@ -1,0 +1,27 @@
+{
+  "provider": "United States Geological Survey,3D Elevation Program",
+  "dataset": "TX Central B1 2017 one-metre bare-earth DEM; bounded unstyled F32 scenery export",
+  "grid_file": "elevation/usgs-scenery-grid.json.gz",
+  "grid_sha256": "290ef6064c6ad6ce571c70c1279e62990f2d6efdc321f33ad626317de2fc33fb",
+  "relative_datum_m": 151.06596096433813,
+  "road_join_distance_m": 20,
+  "source_window": "elevation/usgs-scenery.tif",
+  "source_window_sha256": "12ad35435f4d4ef96f1e759888ee349c27640fc9061fe9215094963f392dc014",
+  "source_resolution_m": 1,
+  "retained_export_resolution_m": 4,
+  "grid_spacing_m": 12.0,
+  "source_catalog_raster_ids": [
+    116248,
+    40760
+  ],
+  "source_acquisition": "2017-01-28 through2017-03-22",
+  "horizontal_crs": "Original export EPSG:32614; retained grid in unchanged local source east/north metres",
+  "vertical_datum": "NAVD88 heights minus exactly the same filtered road minimum as elevation-corrections.json. No independent median rebase or vertical scaling.",
+  "licence": "USGS public domain",
+  "licence_url": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+  "attribution": "U.S. Geological Survey,3DEP,TX Central B1 2017 bare-earth DEM. Modified by bounded unstyled F32 export, bilinear centreline sampling, a documented2m noise filter and shared relative datum subtraction.",
+  "coverage_note": "Every node of the previous263x197 scenery lattice is covered by valid classified ground. Adjacent one-metre tile40760 supplies the16m westernedge beyond tile116248; no extrapolation, water-plane fill, canopy/roof DSM or interpolation over missing ground.",
+  "method": "Bilinear sampling of bounded4m F32 bare-earth export onto the retained12m scenery lattice. Default20m near-road join and horizon extent preserved. Racing widths/banking/protection unchanged.",
+  "grid_uniform_scale": 1.001577,
+  "grid_frame_note": "Retained grid XY uses this original geographic projection scale. Materialization composes current provenance scene scale into XY origin/spacing only; source heights and vertical datum remain unchanged."
+}

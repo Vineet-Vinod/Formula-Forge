@@ -1,0 +1,466 @@
+{
+  "schema_version": 1,
+  "circuit": "portimao",
+  "method": "Match unchanged geographic road positions after the disclosed uniform source-scale correction. The old Galp chord and optional first-corner S detour have no valid road correspondence and are excluded from ordinary station interpolation.",
+  "old_uniform_scale": 0.998192,
+  "new_uniform_scale": 1.0006930822456528,
+  "fixed_local_origin": {
+    "latitude": 37.226434389512065,
+    "longitude": -8.626569271539783,
+    "meaning": "Retained local WGS84 reference from the original route selection. After replacing the false Galp chord, this coordinate lies inside the curve rather than on the racing asphalt; actual road station0 is separately registered."
+  },
+  "actual_arc_station_zero_lonlat": [
+    -8.626439990820899,
+    37.22624512961028
+  ],
+  "actual_arc_station_zero_source_xy_m": [
+    11.467158050542475,
+    -21.0829179702822
+  ],
+  "station_zero_rule": "Closest point of the correct full Galp geometry to the retained old local WGS84 origin. Retain that fixed coordinate frame; the first road point need not be the local coordinate zero.",
+  "old_nonphysical_chord_station_range_m": [
+    4605.28857,
+    169.261963
+  ],
+  "old_nonphysical_first_corner_detour_station_range_m": [
+    1264.35278,
+    1406.9
+  ],
+  "correct_first_corner_connector_way": 157736307,
+  "actual_galp_way": 363133195,
+  "actual_galp_start_end_station_m": [
+    4607.9449301823815,
+    193.53631937363406
+  ],
+  "actual_galp_vertex_stations_m": [
+    4607.9449301823815,
+    4635.537203241789,
+    3.3816215313957336,
+    18.577091290005548,
+    36.960739790742814,
+    57.24702266377029,
+    75.68960101154043,
+    93.08904826710703,
+    107.26251216399373,
+    120.35207006025055,
+    134.78938652827554,
+    148.95391680108276,
+    163.7855876063811,
+    178.57934993859467,
+    193.53631937363406
+  ],
+  "ordinary_road_correspondence": [
+    {
+      "old_station_m": 200.0,
+      "new_station_m": 224.47155431389328,
+      "geographic_match_residual_m": 0.02772142953780229,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 310.0,
+      "new_station_m": 334.77490466065757,
+      "geographic_match_residual_m": 0.023577263315891626,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 330.0,
+      "new_station_m": 354.824986391668,
+      "geographic_match_residual_m": 1.2373968595446045e-08,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 400,
+      "new_station_m": 425.0003921856452,
+      "geographic_match_residual_m": 2.636795469374119e-05,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 470,
+      "new_station_m": 495.1758243840004,
+      "geographic_match_residual_m": 2.1902716965855935e-05,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 480.0,
+      "new_station_m": 505.2008611976843,
+      "geographic_match_residual_m": 5.134492863846594e-07,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 500,
+      "new_station_m": 525.2509778253335,
+      "geographic_match_residual_m": 2.3173222109415704e-06,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 535.0,
+      "new_station_m": 560.3386899897871,
+      "geographic_match_residual_m": 1.1418745403663124e-05,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 600,
+      "new_station_m": 625.5015624539226,
+      "geographic_match_residual_m": 7.778013248675051e-06,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 700,
+      "new_station_m": 725.7521350656331,
+      "geographic_match_residual_m": 6.928608693845014e-06,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 800,
+      "new_station_m": 826.0027182272438,
+      "geographic_match_residual_m": 4.241435122232677e-06,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 900,
+      "new_station_m": 926.2532962919449,
+      "geographic_match_residual_m": 1.7328724299889184e-05,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 950.0,
+      "new_station_m": 976.378573574755,
+      "geographic_match_residual_m": 8.218409495835564e-09,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 1000,
+      "new_station_m": 1026.5038350826655,
+      "geographic_match_residual_m": 6.500560224134629e-05,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 1060,
+      "new_station_m": 1086.6541987811313,
+      "geographic_match_residual_m": 5.807627992867266e-06,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 1100,
+      "new_station_m": 1126.7544320328723,
+      "geographic_match_residual_m": 7.953265808586065e-07,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 1150.0,
+      "new_station_m": 1176.879672668135,
+      "geographic_match_residual_m": 5.855965558181787e-05,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 1200,
+      "new_station_m": 1227.005123594628,
+      "geographic_match_residual_m": 0.08461937039828864,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 1233.68115,
+      "new_station_m": 1260.7844417697097,
+      "geographic_match_residual_m": 0.2160731902749267,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 1254,
+      "new_station_m": 1281.1381572534606,
+      "geographic_match_residual_m": 0.14567065028969917,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 1264.35278,
+      "new_station_m": 1291.1302664607908,
+      "geographic_match_residual_m": 0.8090644353328176,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 1292.18445,
+      "new_station_m": 1306.6076028943855,
+      "geographic_match_residual_m": 23.830785446460773,
+      "ordinary_road_correspondence": false
+    },
+    {
+      "old_station_m": 1300,
+      "new_station_m": 1310.4833816141854,
+      "geographic_match_residual_m": 30.629250745074962,
+      "ordinary_road_correspondence": false
+    },
+    {
+      "old_station_m": 1400,
+      "new_station_m": 1395.7980041471271,
+      "geographic_match_residual_m": 3.571149882022794,
+      "ordinary_road_correspondence": false
+    },
+    {
+      "old_station_m": 1406.9,
+      "new_station_m": 1401.9762379562856,
+      "geographic_match_residual_m": 0.5511972279179473,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 1430,
+      "new_station_m": 1425.0708317356573,
+      "geographic_match_residual_m": 0.17912517345971843,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 1500,
+      "new_station_m": 1495.196154944028,
+      "geographic_match_residual_m": 1.7357942230061006e-05,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 1540,
+      "new_station_m": 1535.296421851041,
+      "geographic_match_residual_m": 6.277439185488389e-05,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 1600,
+      "new_station_m": 1595.4392353496146,
+      "geographic_match_residual_m": 0.006922475777199175,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 1602,
+      "new_station_m": 1597.4433533999413,
+      "geographic_match_residual_m": 0.007529887101537297,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 1700,
+      "new_station_m": 1695.682178395916,
+      "geographic_match_residual_m": 0.0005852010246695856,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 1800,
+      "new_station_m": 1795.930034512898,
+      "geographic_match_residual_m": 1.0712409630097373e-05,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 1900,
+      "new_station_m": 1896.1806258225424,
+      "geographic_match_residual_m": 6.7258645553813975e-06,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 2000,
+      "new_station_m": 1996.4311905653162,
+      "geographic_match_residual_m": 5.174917686534939e-06,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 2100,
+      "new_station_m": 2096.6817584238947,
+      "geographic_match_residual_m": 1.2546405739008434e-06,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 2200,
+      "new_station_m": 2196.932289695114,
+      "geographic_match_residual_m": 2.833699112471394e-06,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 2300,
+      "new_station_m": 2297.182482831047,
+      "geographic_match_residual_m": 0.0023967281891882305,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 2332,
+      "new_station_m": 2329.251761388423,
+      "geographic_match_residual_m": 0.0028510450319336124,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 2400,
+      "new_station_m": 2397.415377448799,
+      "geographic_match_residual_m": 8.616771022260626e-06,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 2450.0,
+      "new_station_m": 2447.540730802848,
+      "geographic_match_residual_m": 7.99986361931711e-06,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 2500,
+      "new_station_m": 2497.665942214709,
+      "geographic_match_residual_m": 9.636924683235655e-06,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 2600,
+      "new_station_m": 2597.9158509960835,
+      "geographic_match_residual_m": 0.0002522264649350938,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 2700,
+      "new_station_m": 2698.16631690706,
+      "geographic_match_residual_m": 9.235092643401067e-07,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 2800,
+      "new_station_m": 2798.4153473886568,
+      "geographic_match_residual_m": 0.00245495094550782,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 2900,
+      "new_station_m": 2898.6646090668396,
+      "geographic_match_residual_m": 2.790466113075586e-05,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 2952,
+      "new_station_m": 2950.788149834777,
+      "geographic_match_residual_m": 0.005186066694647918,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 3000,
+      "new_station_m": 2998.904288983277,
+      "geographic_match_residual_m": 2.7547180370821323e-06,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 3100,
+      "new_station_m": 3099.154803410013,
+      "geographic_match_residual_m": 4.741601644949928e-06,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 3200,
+      "new_station_m": 3199.4054379552017,
+      "geographic_match_residual_m": 5.642751383041624e-06,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 3300,
+      "new_station_m": 3299.6553332077356,
+      "geographic_match_residual_m": 0.0006993839497753157,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 3327,
+      "new_station_m": 3326.722682860008,
+      "geographic_match_residual_m": 0.0010556693386611553,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 3400,
+      "new_station_m": 3399.90527161417,
+      "geographic_match_residual_m": 2.8345976455226352e-05,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 3480,
+      "new_station_m": 3480.1056674334554,
+      "geographic_match_residual_m": 7.634860478016575e-05,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 3500,
+      "new_station_m": 3500.155733451094,
+      "geographic_match_residual_m": 8.740294008765409e-05,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 3570,
+      "new_station_m": 3570.3303751314165,
+      "geographic_match_residual_m": 0.00023905575866815906,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 3600,
+      "new_station_m": 3600.4052746335874,
+      "geographic_match_residual_m": 0.0005507786073406599,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 3700,
+      "new_station_m": 3700.6489118602763,
+      "geographic_match_residual_m": 1.0281843861919129e-05,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 3790.0,
+      "new_station_m": 3790.874442280248,
+      "geographic_match_residual_m": 7.174962354647657e-06,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 3800,
+      "new_station_m": 3800.899376186457,
+      "geographic_match_residual_m": 0.0006373385697919752,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 3900,
+      "new_station_m": 3901.148402883481,
+      "geographic_match_residual_m": 0.0002199417789914627,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 4000,
+      "new_station_m": 4001.399018513015,
+      "geographic_match_residual_m": 3.377763782086747e-06,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 4100,
+      "new_station_m": 4101.639552691329,
+      "geographic_match_residual_m": 0.0024625962508154076,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 4200,
+      "new_station_m": 4201.889211263804,
+      "geographic_match_residual_m": 2.1437458364627313e-06,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 4300,
+      "new_station_m": 4302.135109892453,
+      "geographic_match_residual_m": 0.0016691560337653798,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 4400,
+      "new_station_m": 4402.38221534878,
+      "geographic_match_residual_m": 0.00022363615416252908,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 4500,
+      "new_station_m": 4502.632016447162,
+      "geographic_match_residual_m": 1.3312896719556965e-06,
+      "ordinary_road_correspondence": true
+    },
+    {
+      "old_station_m": 4510.0,
+      "new_station_m": 4512.657178572036,
+      "geographic_match_residual_m": 1.7940972109466592e-06,
+      "ordinary_road_correspondence": true
+    }
+  ],
+  "normalization": {
+    "fia_published_station_target_m": 4653.0,
+    "operator_standard_centerline_m": 4684,
+    "unscaled_full_mapped_route_m": 4648.074971015831,
+    "preexisting_scaled_reconstruction_polyline_m": 4641.384935240439,
+    "pre_normalization_native_catmull_plan_m": 4641.370524493977,
+    "additional_uniform_correction": 1.002505612392859,
+    "final_native_catmull_plan_m": 4652.9997671525925,
+    "decision": "Restore the full named Galp and FIA 2021 direct T1 connector 157736307; reject the alternate chord and first-corner S detour. Keep the FIA 4653 m station target using the disclosed uniform correction derived from the native Catmull curve. The operator publishes 4684 m for a standard configuration; its measurement/configuration difference from the FIA plan is not independently resolved. Every mapped building and DTM sample uses the same updated geographic scale."
+  }
+}

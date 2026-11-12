@@ -1,9 +1,35 @@
 {
-  "start_m": 535,
-  "end_m": 950,
+  "start_m": 560.3386899897871,
+  "end_m": 976.378573574755,
   "side": 1,
-  "outer_offset_m": 20.0,
+  "outer_offset_m": 17.45,
   "shoulder_m": 0.1,
   "transition_m": 25.0,
-  "source_note": "Mapped Boxes38167081 front558.7\u2192922.7m, offsets19.1\u201319.4m;20m pavingback reaches front. Mainstand38166697 is LEFT, garages RIGHT. Supplied725.72s maincomplex approach establishes paving/roof relation; extensions are visual estimates."
+  "source_note": "Mapped Boxes38167081 garage frontage on driver RIGHT. The old estimated535\u2013950m apron span maps geographically to560.338690\u2013976.378574m on the combined full Galp/direct T1 route. With the operator18m main-straight width,21samples along the actual365.13m garage-front edge give16.873\u201317.426m outside the road edge.17.45m paving meets the full frontage, extending at most0.58m under the garage floor; this is retained-map geometry with1\u20132m source uncertainty, not surveyed dimensions.",
+  "retained_pre_alignment_range_m": [
+    535,
+    950
+  ],
+  "station_registration_file": "station-registration-corrections.json",
+  "retained_pre_width_outer_offset_m": 20.0,
+  "frontage_measurement": {
+    "alignment_file": "alignment-corrections.json",
+    "osm_id": 38167081,
+    "front_edge_length_m": 365.1298778493684,
+    "sample_count": 21,
+    "road_center_distance_range_m": [
+      25.87295944309046,
+      26.425582071466994
+    ],
+    "road_edge_distance_range_m": [
+      16.87295944309046,
+      17.425582071466994
+    ],
+    "frontage_station_range_estimate_m": [
+      584.0880126450724,
+      949.0291867370537
+    ],
+    "station_method": "Physical length along the corrected source polyline; native spline export may differ slightly. Root final CSV proof remains required.",
+    "uncertainty_m": 2
+  }
 }

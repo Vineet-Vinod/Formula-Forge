@@ -19,11 +19,12 @@
     "chosen": "name:Grand Prix Circuit",
     "measured_plan_m": 5422.525,
     "published_m": 5412,
-    "uniform_scale": 0.998059,
-    "scale_rule": "Applied only when the mapped plan was within 1.5% of a published length. Larger gaps keep the mapped length."
+    "uniform_scale": 0.9984886688421669,
+    "scale_rule": "Composed source projection and native32-subdivision Catmull length normalization, including the disclosed local corner reconstruction/refinement stages. Original source projection is retained separately; see scene-registration.json.",
+    "source_projection_uniform_scale": 0.998059
   },
   "elevation": {
-    "provider": "Formula 1 published 2016 topography diagram",
+    "provider": "F1 published topography with Bahrain operator 2019 grade limits",
     "dataset": "Published circuit topography profile, reconstructed",
     "dataset_note": "Read relative heights from the published numerical extremum labels and drawn trace, then register individual official corners to retained native centerline geometry using FIA maps. Intermediate heights are graphical estimates, not measurements.",
     "licence": "Factual derived heights with source attribution; no source image redistributed.",
@@ -32,13 +33,22 @@
     "relative_datum": "Relative to the published profile minimum; absolute diagram altitude is not used.",
     "relief_m": 16.9,
     "uncertainty_m": 1.0,
-    "smoothing": "Piecewise monotone cubic Hermite. Interior Fritsch-Carlson harmonic slopes; flat SF seam. No uniform rescaling of the previous DEM.",
-    "deck": null
+    "smoothing": "Original registered F1 profile outside native560\u2013800m and3160\u20133950m. Local monotone Hermite controls respect operator3.60% uphill/5.60% downhill bounds; endpoint slopes match the retained profile. Dense1m local controls avoid raster-like pitch steps.",
+    "deck": null,
+    "operator_constraints_source": "https://www.fia.com/sites/default/files/25.03.2019_final_bahrain_media_kit.pdf"
   },
   "width": {
-    "base_m": 12.0,
-    "straight_m": 15.0,
-    "method": "Authored from typical Grade 1 asphalt width, wider on low-curvature sections. Not a traced white-line survey."
+    "source": "https://www.fia.com/sites/default/files/25.03.2019_final_bahrain_media_kit.pdf",
+    "source_page": 11,
+    "published_range_m": [
+      14,
+      22
+    ],
+    "canonical_controls_file": "environment-recipe.json",
+    "canonical_controls_key": "width_profile.controls_m",
+    "local_uncertainty_m": 2,
+    "station_uncertainty_m": 50,
+    "method": "Published operator range with wider braking entries and tighter apexes registered to retained mapped corners. Local widths are reconstruction estimates, not a white-line survey. Existing smooth cubic transitions join the controls."
   },
   "shoulders": {
     "default_m": 12.0,
@@ -66,5 +76,31 @@
     "relief_m": 19.736,
     "uncertainty_m": 5,
     "deck": null
+  },
+  "retained_generic_width": {
+    "base_m": 12.0,
+    "straight_m": 15.0,
+    "method": "Authored from typical Grade 1 asphalt width, wider on low-curvature sections. Not a traced white-line survey."
+  },
+  "scene_coordinate_registration": {
+    "source_projection_uniform_scale": 0.998059,
+    "effective_scene_uniform_scale": 0.9984886688421669,
+    "native_normalization_chain": {
+      "initial_corrected_controls_factor": 0.9999741946949678,
+      "initial_catmull_length_m": 5412.139558026567,
+      "refinement_controls_factor": 1.000416923971737,
+      "refinement_catmull_length_m": 5409.744262825698,
+      "post_original_chain_factor": 1.0003911079078547,
+      "fitted_minus_chain_factor": -1.2685577176929641e-05,
+      "baseline_factor": 1.0000393811411765,
+      "all_chain_factor": 1.0004305044513069,
+      "effective_scene_uniform_scale": 0.9984886688421669,
+      "method": "Replicate exact float32 native32-step Catmull expression and float32 segment norms, double arc accumulation, float32 correction includingUnits17. Compose firstcontrols then refinementcontrols; original native factor independently instrumented. Port hasmixedraw/old-native sourceframe caveat.",
+      "baseline_factor_applied_to_selected_scale": true
+    },
+    "final_road_sha256": "c97fbf0bfeacb234a563fdbf8cd3b87ee066aec1fb6006514a272be445c2be9e",
+    "source_basis": "alignment-corrections.json",
+    "source_basis_sha256": "6abeebf1bc00c830ec957774e760ef4e0053272aabc90893353f64e9761baadc",
+    "scope": "Scenery WGS84-to-native XY registration only. Native road geometry, physical road widths, elevations, vehicle tuning and camera are not changed by this metadata update. Original corner authoring controls retain their explicitly documented historical coordinate frame."
   }
 }

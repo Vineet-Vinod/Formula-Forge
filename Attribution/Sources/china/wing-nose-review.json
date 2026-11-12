@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-12",
+  "circuit": "china",
+  "status": "Source geometry frozen with closed-shell and mapped-envelope proof; fresh packaged appearance and Luna High review pending.",
+  "source_module": "tools/venues/china_wing_nose.py",
+  "source_module_sha256": "5d98b8f1bca9749cb37ac631894db00c80dfd5fdb55b654aeb9b136f51d7c915",
+  "registered_crossings": {
+    "source_osm_id": 107371135,
+    "center_stations_m": [
+      3306.5,
+      3666
+    ],
+    "centerline_intervals_m": [
+      [
+        3292,
+        3321
+      ],
+      [
+        3651,
+        3681
+      ]
+    ],
+    "evidence_kind": "Retained geographic outline plus event-video identity; not an architectural survey."
+  },
+  "observed_form": "Pointed white lens front with two dark oval openings. The central oval uses original circuit-name VenueSign lettering; game/event logos and pixels are not copied.",
+  "reconstructed_dimensions_m": {
+    "width": 135,
+    "height": 7,
+    "center_height_above_road": 27,
+    "porthole_width": 14,
+    "porthole_height": 2.3,
+    "porthole_lateral_centers": [
+      -45,
+      45
+    ],
+    "porthole_center_height": 27.2,
+    "solid_depth": 0.55,
+    "minimum_nose_clearance": 23.5,
+    "preserved_room_clearance": 23.3
+  },
+  "uncertainty_m": {
+    "width": 5,
+    "height": 1.5,
+    "porthole_width": 3,
+    "porthole_height": 0.7,
+    "front_and_depth": 0.5
+  },
+  "geometry_contract": "Fascia registers to the actual crossing front, excluding the adjacent long main-roof branch from its front search. Every emitted lens/tunnel triangle stays inside the mapped envelope. Lens volume is closed and front normals face approaching cars. Original front glazing is cut behind the fascia. Roof/support positions and native road/physics are unchanged.",
+  "materials": [
+    "White",
+    "Glass",
+    "VenueSign"
+  ],
+  "frames": [
+    {
+      "path": "build/reviews/china/reference/resume-0707.jpg",
+      "sha256": "d19f41199e229fe876250d43ed06d870ac241fdb5c0d4ed24281730360c1bdbe",
+      "registration": "Continuous approach to entry wing."
+    },
+    {
+      "path": "build/reviews/china/reference/resume-0708.jpg",
+      "sha256": "fcc13a1a34b90758db5f1f2b4aa3fabffda7426a9129a297302c58f08fdb9645",
+      "registration": "Direct under entry wing, native3306.5±40m."
+    },
+    {
+      "path": "build/reviews/china/reference/detail-0626.jpg",
+      "sha256": "98e05fa3c04d8817898da6c9897b9060c5c14f0d5a4c4c7719dcf59c30d6778e",
+      "registration": "Direct under exit wing towardT1, native3666±40m."
+    },
+    {
+      "path": "build/reviews/china/reference/detail-0682.jpg",
+      "sha256": "80d3e68437646e562d94c2372e6186b8cefaf92bbb43984c61f0fa685bd8064a",
+      "registration": "Another lap beneath the exit wing."
+    }
+  ],
+  "proofs": [
+    {
+      "path": "build/reviews/resume-20261112/china-wing-nose-source-proof.json",
+      "sha256": "e3457b5b47271f699417a72ead1c13f315c4c6fcf9cc7c86d428375221c06211"
+    },
+    {
+      "path": "build/reviews/resume-20261112/china-complex-source-proof.json",
+      "sha256": "8cccbe92d35179295d71e6af0a52478810b040684042378a90a093260143d540"
+    },
+    {
+      "path": "build/reviews/resume-20261112/pit-wing-nose-default-equivalence.json",
+      "sha256": "79ca1584bd51d7da86787730871c7ad754df509a7dbe7e54846fa31b4e9532bd"
+    }
+  ],
+  "other_compounds_unchanged": {
+    "old_helper_sha256": "19360023053ca6630bb1426a0c97afe15f85561d1db2d70306d1ace18b6b298b",
+    "new_helper_sha256": "724e815c67c95d2dcf2f3d3abf613eff4735084411153db620647cff111ad6e4",
+    "qualification": "Exact ordered material/kind/source-vertex/UV streams match for Bahrain14909 and Singapore12848 triangles before/after the optional China-only callback."
+  },
+  "reference_pixels_shipped": false,
+  "runtime_approval": false
+}

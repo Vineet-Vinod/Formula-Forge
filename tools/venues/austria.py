@@ -3,7 +3,8 @@ from __future__ import annotations
 
 from circuit_scene import CircuitScene
 
-from venues.west_architecture import apron_band, mapped_building, mast, trees
+from venues.west_architecture import apron_band, mapped_building, mast
+from venues.woodland import mapped_woodland, stand_with_clearing
 
 
 def build_venue(scene: CircuitScene) -> None:
@@ -22,15 +23,11 @@ def build_venue(scene: CircuitScene) -> None:
     scene.stand(3990, 4310, -1, rows=20, setback=5, roofed=True, seat_material='SeatRed')
     scene.stand(70, 250, -1, rows=19, setback=9, roofed=True, seat_material='SeatRed')
     scene.stand(330, 580, -1, rows=19, setback=12, roofed=True, seat_material='SeatRed')
-    scene.stand(1110, 1300, -1, rows=20, setback=26, seat_material='SeatRed')
+    remus_stand = stand_with_clearing(scene, 1110, 1300, -1, rows=20, setback=26,
+                                     seat_material='SeatRed')
     scene.stand(1900, 2110, -1, rows=19, setback=29, seat_material='SeatRed')
     scene.stand(2670, 2890, 1, rows=14, setback=25, seat_material='SeatRed')
-    for start, end, side, setback in [(470, 1120, 1, 35), (470, 1110, -1, 35),
-                                      (1320, 1880, -1, 55), (2140, 2630, -1, 40),
-                                      (2700, 3340, -1, 40), (2850, 3350, 1, 65),
-                                      (3390, 3810, -1, 55)]:
-        trees(scene, start, end, side, setback=setback, rows=4, spacing=16,
-              height=19, conifers=True)
+    mapped_woodland(scene, (remus_stand,))
     for station in [180, 1170, 1990, 2520, 2880, 3550, 3920, 4190]:
         mast(scene, station, -1, 24)
 

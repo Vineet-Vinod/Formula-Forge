@@ -12,9 +12,12 @@
       "longitude": 103.86424467520384,
       "meaning": "Local source origin at the point on the loop nearest the venue coordinate, after rotation to the start."
     },
-    "approximate_start_finish_station_m": 0,
+    "approximate_start_finish_station_m": 0.0,
     "start_finish_uncertainty_m": 75,
-    "side_convention": "Driver left/right in forward lap direction; geographic footprints retain source east/north coordinates."
+    "side_convention": "Driver left/right in forward lap direction; geographic footprints retain source east/north coordinates.",
+    "runtime_scene_geo_uniform_scale": 1.0052314376858864,
+    "original_source_uniform_scale": 0.996616,
+    "post_corner_native_uniform_factor": 1.0079684986372148
   },
   "review": {
     "overview_seconds": [
@@ -72,14 +75,14 @@
     {
       "id": "singapore-01",
       "native_station_m": [
-        0,
-        750
+        0.0,
+        755.462336
       ],
-      "name": "Pit straight and T1\u20133",
+      "name": "Pit straight and T1–3",
       "reviewed_video_seconds": [
-        536.06,
         530,
         534,
+        536.06,
         538,
         542,
         566,
@@ -88,26 +91,25 @@
         594,
         598,
         602,
-        608
+        608,
+        610,
+        614,
+        1148.7
       ],
-      "observed": "Long white pit buildings face a covered red crowd stand, with bright paired floodlights and yellow pit-edge paint. The first complex has close mesh fences, individual red-white kerbs and paved escape lanes. The mapped pit footprint is on the driver left near native station 4896.",
+      "observed": "Long white pit buildings face a covered red crowd stand, with bright paired floodlights and yellow pit-edge paint. The first complex has close mesh fences, individual red-white kerbs and paved escape lanes. The actual driver-LEFT pit footprint crosses native zero, approximately4769→163m in the corrected frame. The old4896m center label is historical and superseded.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
     },
     {
       "id": "singapore-02",
       "native_station_m": [
-        750,
-        1500
+        604.275906,
+        1108.162052
       ],
-      "name": "Republic Boulevard T4\u20135",
+      "name": "Republic Boulevard T4–5",
       "reviewed_video_seconds": [
-        610,
-        614,
         618,
         622,
-        626,
-        630,
-        638.17
+        626
       ],
       "observed": "The Republic Boulevard walls and mesh sit close to the asphalt. Palms, broadleaf crowns and pale modern facades appear behind them. Long rows of floodlights continue overhead. Urban road markings and paved verges should remain visible.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
@@ -115,13 +117,15 @@
     {
       "id": "singapore-03",
       "native_station_m": [
-        1500,
-        2200
+        1108.162052,
+        1858.058552
       ],
-      "name": "Raffles Boulevard T6\u20137",
+      "name": "Raffles Boulevard T6–7",
       "reviewed_video_seconds": [
-        842.38,
-        740.27
+        229.74,
+        630,
+        740.27,
+        842.38
       ],
       "observed": "Glass office and hotel facades have repeated window mullions. Large yellow hatched junctions, city lamps and close barriers define Raffles Boulevard. Millenia, Suntec and Marina Square use their mapped positions, with trees breaking up the building walls.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
@@ -129,24 +133,35 @@
     {
       "id": "singapore-04",
       "native_station_m": [
-        2200,
-        2700
+        1858.058552,
+        2704.016319
       ],
-      "name": "Stamford and Padang T8\u20139",
-      "reviewed_video_seconds": [
-        1148.7
-      ],
+      "name": "Stamford, Padang and T8–T10",
+      "reviewed_video_seconds": [],
       "observed": "The Old City Hall colonnade and former Supreme Court give the Padang section its pale civic architecture. A broad lawn and mature tree canopy sit behind close fencing. Low cricket and recreation clubs face them. Kerbs and yellow junction marks remain distinct.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
     },
     {
       "id": "singapore-05",
       "native_station_m": [
-        2700,
-        3100
+        2663.45313,
+        3095.028104
       ],
       "name": "Anderson Bridge and Fullerton hairpin",
       "reviewed_video_seconds": [
+        638.17,
+        639,
+        642,
+        645,
+        646,
+        647,
+        648,
+        675,
+        677,
+        678,
+        679,
+        680,
+        681,
         944.49,
         1352.92
       ],
@@ -156,26 +171,28 @@
     {
       "id": "singapore-06",
       "native_station_m": [
-        3100,
-        3850
+        3095.028104,
+        3841.72127
       ],
       "name": "Esplanade Drive and Connaught",
       "reviewed_video_seconds": [
-        433.95,
-        1455.02
+        649,
+        650,
+        651,
+        652
       ],
       "observed": "Esplanade Drive and Connaught are broad paved streets beside grandstands and dense trees. The two spiked Esplanade shells sit beyond the route, with tall office towers and distant marina buildings above the floodlights. Asphalt and wall bases must stay readable at night.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries.",
+      "coverage_note": "Direct EsplanadeDrive views afterT13. ActualT14/T15 corner poses remain unmatched; do not use646s asT14."
     },
     {
       "id": "singapore-07",
       "native_station_m": [
-        3850,
-        4500
+        3841.72127,
+        4496.688784
       ],
       "name": "New waterfront straight and NS Square bypass",
       "reviewed_video_seconds": [
-        1046.6,
         1250.81
       ],
       "observed": "Modern NS Square bypass/waterfront straight, continuous urban fencing and overhead race-light strings.1250.81s directly shows the Singapore Flyer rim/capsule ring ahead above the road; its white capsule points contrast with a dark rim/sky. Preserve the current19-turn layout without the removed old grandstand tunnel sequence.",
@@ -184,8 +201,8 @@
     {
       "id": "singapore-08",
       "native_station_m": [
-        4500,
-        4940
+        4496.688784,
+        4940.0
       ],
       "name": "Final corners and pit complex",
       "reviewed_video_seconds": [
@@ -237,12 +254,12 @@
     ],
     "direct_frame": "build/reviews/singapore/reference/overview-12.jpg",
     "observed": "The circular rim and distinct white capsule points are directly visible ahead above the waterfront straight. The rim is dark against the night sky; do not substitute a uniformly glowing neon circle.",
-    "native_frame_station_estimate_m": 4100,
+    "native_frame_station_estimate_m": 4093.71341,
     "camera_station_uncertainty_m": 100,
-    "mapped_nearest_station_m": 4522.7,
+    "mapped_nearest_station_m": 4519.537779206614,
     "mapped_driver_side": "left",
-    "mapped_centerline_distance_m": 80.0,
-    "geographic_check": "At native4100m the mapped wheel is373m forward and2m right of the source tangent, matching its near-central forward skyline view. By4480m it is only37m forward and82m left, mostly outside the horizontal/vertical cockpit FOV. Capture earlier on the straight.",
+    "mapped_centerline_distance_m": 80.6327473039337,
+    "geographic_check": "At the re-registered native 4093.713 m viewpoint, the mapped wheel is approximately 375.6 m forward and 2.2 m right of the source tangent. The original 4100 m nominal estimate remains a pose estimate with ±100 m uncertainty; it is not a surveyed camera reconstruction.",
     "camera_warning": "This is a native scene/map/FOV registration estimate, not a surveyed camera reconstruction. Footprint/operator dimensions remain separate evidence.",
     "runtime_gate": "Direct reference now available; packaged skyline/rim/capsule comparison still required."
   },
@@ -252,5 +269,252 @@
     "source_status": "The mapped shoreline and district buildings now replace the former estimated skyline placement and asphalt terrain through roofs.",
     "runtime_status": "Awaiting regenerated packaged review.",
     "native_profile_changed": false
+  },
+  "registration_review_2026_11_12": {
+    "scope": "Known false associations corrected from individually retained frames/contact sheets. This is a partial index audit; uncertain old overview associations are not promoted to verified poses.",
+    "retained_former_associations": [
+      {
+        "sector_id": "singapore-01",
+        "reviewed_video_seconds": [
+          536.06,
+          530,
+          534,
+          538,
+          542,
+          566,
+          586,
+          590,
+          594,
+          598,
+          602,
+          608
+        ]
+      },
+      {
+        "sector_id": "singapore-02",
+        "reviewed_video_seconds": [
+          610,
+          614,
+          618,
+          622,
+          626,
+          630,
+          638.17
+        ]
+      },
+      {
+        "sector_id": "singapore-03",
+        "reviewed_video_seconds": [
+          842.38,
+          740.27
+        ]
+      },
+      {
+        "sector_id": "singapore-04",
+        "reviewed_video_seconds": [
+          1148.7
+        ]
+      },
+      {
+        "sector_id": "singapore-05",
+        "reviewed_video_seconds": [
+          944.49,
+          1352.92
+        ]
+      },
+      {
+        "sector_id": "singapore-06",
+        "reviewed_video_seconds": [
+          433.95,
+          1455.02
+        ]
+      },
+      {
+        "sector_id": "singapore-07",
+        "reviewed_video_seconds": [
+          1046.6,
+          1250.81
+        ]
+      },
+      {
+        "sector_id": "singapore-08",
+        "reviewed_video_seconds": [
+          530,
+          534,
+          538,
+          536.06
+        ]
+      }
+    ],
+    "confirmed_corrections": [
+      "610/614s are openingT1–T3 sequence views, not the later RepublicBoulevard sector.",
+      "229.74/630s show the long Pirelli-lined RafflesBoulevard approach, not the pit straight.",
+      "1148.7s shows the opening grandstand complex, notStamford/Padang.",
+      "1046.6s is an external side view on the pit straight, not the new waterfront straight.",
+      "639/642/645s contain the AndersonBridge/Fullerton sequence;642s directly shows the historic white arch bridge."
+    ],
+    "direct_landmark_frames": [
+      {
+        "seconds": 642,
+        "landmark": "AndersonBridge white arch",
+        "native_sector_m": [
+          2700,
+          3100
+        ],
+        "confidence": "Direct structure identity and circuit-map sequence; no exact camera station claimed."
+      },
+      {
+        "seconds": 1250.81,
+        "landmark": "SingaporeFlyer above the waterfront straight",
+        "registration": "Existing flyer_reference_registration remains unchanged."
+      }
+    ],
+    "remaining_uncertainties": [
+      "Rear-facing618/622/626s support road/building context but are not matched forward RepublicBoulevard poses.",
+      "Old842.38/740.27/944.49/433.95/1455.02 overview-to-sector labels require additional primary-map/minimap reconciliation. They are not evidence of exact station fidelity.",
+      "The same clip contains edited corner/lap jumps. Playback time must not be interpolated into native station.",
+      "TrueT14/T15 and intermediate final-sector pose matching remains incomplete. Existing Flyer1250.81s and final530s views are independent witnesses; they do not make the cut interval continuous."
+    ],
+    "context_only_unregistered_seconds": [
+      1046.6,
+      618,
+      622,
+      626,
+      842.38,
+      740.27,
+      944.49,
+      433.95,
+      1455.02
+    ],
+    "acceptance_status": "Partial reference registration audit only; no new runtime visual acceptance.",
+    "primary_fia_2025_map": {
+      "url": "https://www.fia.com/system/files/decision-document/2025_singapore_grand_prix_-_event_notes_-_circuit_map_pit_lane_emergency_exits_map_and_quarantine_zone.pdf",
+      "page": 4,
+      "retained_pdf_sha256": "d36769fe74365d21594000c0bf4e9be4fccb4c30822678e166e89bdbad0a7625",
+      "published_length_m": 4927,
+      "retained_native_length_m": 4940,
+      "length_note": "Different source epochs/registration are disclosed; this reference-index audit does not rescale or change the native course."
+    },
+    "native_corner_registration_m": {
+      "T1": 325.505959,
+      "T2": 402.928727,
+      "T3": 489.422627,
+      "T4": 694.985699,
+      "T5": 883.43425,
+      "T6": 1337.973104,
+      "T7": 1712.478558,
+      "T8": 1925.229242,
+      "T9": 2112.438148,
+      "T10": 2574.929437,
+      "T11": 2690.662745,
+      "T12": 2798.823191,
+      "T13": 2964.961013,
+      "T14": 3506.283961,
+      "T15": 3759.07258,
+      "T16": 4240.869811,
+      "T17": 4341.465441,
+      "T18": 4618.564489,
+      "T19": 4715.251259
+    },
+    "station_uncertainty_m": 60,
+    "mislabelled_t14_files": {
+      "files_preserved": true,
+      "actual_pose": "T13 left hairpin and EsplanadeDrive after it, not T14.",
+      "direct_seconds": [
+        642,
+        645,
+        646,
+        647,
+        648,
+        649,
+        650,
+        651,
+        652
+      ],
+      "witness": "Historic AndersonBridge at642s precedes the646s LEFT hairpin. Primary FIA map and native tangents establish T13 asLEFT at2966m and T14 asRIGHT at3513m. The subsequent AMEX-lined straight is EsplanadeDrive.",
+      "building_identity": "Curved modern Fullerton-precinct facade at the hairpin. OneFullerton and WaterboatHouse footprints provide nearby context; exact source-raster building ownership is not claimed.",
+      "reject": "Never compare runtime3520m/T14 to t14-detail-646.jpg solely because of its legacy filename."
+    },
+    "verified_edit_gap": {
+      "before_video_seconds": 652,
+      "before_identity": "EsplanadeDrive, lap1, HUD1:11.154",
+      "after_video_seconds": 653,
+      "after_identity": "Pit straight, lap2, previous lap1:38.546",
+      "conclusion": "A cut removes the intervening T14–T19 sequence at this point. Those corners are not implicitly observed between these frames."
+    }
+  },
+  "T11_direct_registration": {
+    "status": "Qualified event-junction estimate from direct cut-free supplied video and primary operator route. No wrong optional route branch proved.",
+    "reference_file": "Saved/Refs/singapore.mp4",
+    "frames": [
+      {
+        "seconds": 675,
+        "pose": "Approach beside Victoria Theatre and Concert Hall, Salesforce barrier bands."
+      },
+      {
+        "seconds": 677,
+        "pose": "Braking before right T11; pale civic structure and clock tower beyond, palms left."
+      },
+      {
+        "seconds": 678,
+        "pose": "T11 right apex, blue Salesforce outside left and red Lenovo inside right; no square racing centreline spike."
+      },
+      {
+        "seconds": 679,
+        "pose": "Immediate left T12 with close white line and black SingaporeGP barrier on left."
+      },
+      {
+        "seconds": 680,
+        "pose": "Anderson Bridge masonry portal and white steel arch directly ahead."
+      },
+      {
+        "seconds": 681,
+        "pose": "Within Anderson Bridge; same lap3 and monotonic lapclock."
+      }
+    ],
+    "continuity": "HUD49.5s at675 through55.5s at681 with same Lap3. Distinct from638–642 sequence, which cuts44.3→1:01.1 and cannot establish T11.",
+    "native_station_registration": "Right-hand event corner near2690–2718m, followed by mapped T12 near2795m and Anderson Bridge. Approximate station uncertainty35m for the video apex; fit uses geometric street axes rather than elapsed-time interpolation.",
+    "source_radius_estimate_m": 11,
+    "source_radius_uncertainty_m": 4,
+    "short_exit_native_fit_m": [
+      2721,
+      2731
+    ],
+    "reason_for_short_exit": "The road begins the opposite T12 bend shortly afterward. Fitting a longer2730–2750m exit rotated the tangent and inflated displacement from2.557m to7.855m.",
+    "tangent_line_max_residual_m": [
+      0.15848246827668966,
+      0.03667563235056975
+    ],
+    "preliminary_maximum_movement_m": 2.5569984807371187,
+    "preliminary_minimum_radius_m": 9.313510152515864,
+    "raw_way_ids": [
+      1015882722,
+      1121759130,
+      475215022
+    ],
+    "station_frame_note": "Its tangent/core station numbers describe the original nominal authoring frame used by alignment-arcs.json. Final runtime station correspondences are in station-registration-corrections.json."
+  },
+  "decor_station_registration_2026_11_12": {
+    "source": "station-registration-corrections.json",
+    "method": "Match each nominal pre-resampling station to its corrected XY in alignment-corrections.json, multiply by the disclosed native uniform correction factor, then project that point to the final five-corner/refined native road. This preserves geographical scenery registration; playback time is not used.",
+    "maximum_registration_residual_m": 0.2558776082963532,
+    "limitations": "Geographic structures retain their mapped XY. Historical descriptive strings may quote original nominal stations; the explicit numerical fields and correction table are canonical. Source endpoints remain estimates and need fresh cockpit review."
+  },
+  "raffles_context_review": {
+    "source": "raffles-context-review.json",
+    "direct_seconds": [
+      1250.81
+    ],
+    "status": "Source frozen with emitted geometry/ground/clearance proof. Fresh packaged appearance and Luna High review remain pending."
+  },
+  "pit_dimension_correction": {
+    "source": "pit-dimension-review.json",
+    "source_footprint": {
+      "osm_id": 49890775,
+      "footprint_area_m2": 8137.096014232145,
+      "source_file": "buildings.osm.json.gz",
+      "evidence_kind": "Mapped plan and tagged dimensions, not a surveyed architectural drawing."
+    },
+    "runtime_approval": false
   }
 }

@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-12",
+  "circuit": "singapore",
+  "status": "Source correction; final native protection synchronization, packaged appearance and Luna High review pending.",
+  "module": "tools/venues/pit_compounds.py",
+  "coordinate_frame": "Current canonical native east/north; +1 driverRIGHT,−1 driverLEFT. Exact scene geographic normalization remains in scene-registration.json/provenance.json.",
+  "mapped_building": {
+    "osm_id": 49890775,
+    "footprint_area_m2": 8137.096014232145,
+    "source_file": "buildings.osm.json.gz",
+    "evidence_kind": "Mapped plan and tagged dimensions, not a surveyed architectural drawing."
+  },
+  "observed_facade": "Actual stepped3-storey white body, continuous glazed hospitality bands,36 garage openings distributed across mapped road-facing segments, narrow projecting terraces, original typeset DHL fascia and closed pale shallow eaves. Tagged15m height retained;4.6m doors, facade subdivisions,1m balcony projection and0.65m roof rise are reference estimates.",
+  "supplied_video_seconds": [
+    534,
+    536.06
+  ],
+  "primary_sources": [
+    {
+      "url": "https://www.stb.gov.sg/content/dam/stb/documents/trade-events-and-resources/F1-Pit-Building-Rental/F1%20Pit%20Building%20Rental%20Info%20Kit%20-%20updated%2029%20Aug%202023.pdf",
+      "supports": "Owner/STB indexed primary document specifies3 storeys and24,220m² gross floor area. Indexed text was read; the direct research download returned HTML and is not retained or claimed as an inspected floorplan."
+    },
+    {
+      "url": "https://www.fosroc.com/public/case-studies/singapore-f1-grand-prix",
+      "supports": "Original waterproofing supplier describes a nominal350m,3-storey project with36 planned team garages. This is primary project evidence but not a surveyed as-built footprint."
+    }
+  ],
+  "pit_lane": {
+    "start_m": 4760,
+    "end_m": 170,
+    "side": -1,
+    "outer_offset_m": 10.9,
+    "shoulder_m": 0.1,
+    "transition_m": 25.0,
+    "source_note": "Actual mapped pit compound49890775 replaces the former generic block. The mapped compound projects to native4768.76→162.65m across zero. Its three road-facing segments stand11.292–11.459m,15.405–15.656m and12.768–16.367m beyond the road edge. The paving control is rounded by less than10m at the longitudinal ends and ends at a constant10.9m offset before the nearest garage face. Local unstriped apron polygons meet each variable mapped front and exclude the occupied building; the generic outer white stripe therefore stays outside all garage bays. Mapped plan registration has approximately±2m uncertainty. Facade/roof dimensions remain reconstructed. Paving stays beyond a closed pit wall; racing XYZ, banking and handling are unchanged. See pit-dimension-review.json.",
+    "former_generic_registration": "See pit-lane.json for full historical record.",
+    "former_registration_status": "Superseded by actual retained footprint. Root restores the original shoulder lattice before applying this profile."
+  },
+  "grounding": "Each body/garage bay follows the nearest canonical road grade. Exact occupied-footprint strips replace only roof-contaminated DSM ground, with local road-level uncertainty±1m; no broad surrounding land flattening or road-physics change. Roof tops/soffits are closed and remain within the actual footprint plus1.5m roadward canopy overhang.",
+  "ground_and_facade_uncertainty_m": 1.0,
+  "plan_registration_uncertainty_m": 2.0,
+  "emitted_geometry_proof": {
+    "path": "build/reviews/resume-20261112/singapore-mapped-pit-source-proof.json",
+    "sha256": "f55839c02aaad18453e111912aca34315ed39008ee6310b87ccb41498a8769ad",
+    "whole_road_structural_overlap_m2": 0.0,
+    "roof_minimum_whole_road_clearance_m": 9.638553162947387,
+    "finite_vertices": true,
+    "roof_shell_unpaired_edges_at_1um": 0,
+    "paving_under_occupied_body_m2": 0.0,
+    "white_stripe_under_occupied_body_m2": 0.0,
+    "extra_corridors_added": 0
+  },
+  "reference_pixels_shipped": false,
+  "runtime_approval": false,
+  "source_conflicts": {
+    "nominal_supplier_length_m": 350,
+    "retained_main_body_obb_length_m": 332.6924994725879,
+    "owner_gross_floor_area_m2": 24220,
+    "mapped_footprint_times_three_levels_m2": 24411.288042696433,
+    "interpretation": "The nominal supplier project length is5.2% larger than the mapped body. The mapped footprint times3 differs from owner gross floor area by only0.8%, supporting the retained body outline rather than stretching it to the nominal project number. Exact inclusions such as external circulation/canopies are not established; retain both sources without claiming they agree."
+  },
+  "variable_apron": {
+    "constant_paving_outer_offset_m": 10.9,
+    "geometry": "Original unstriped Runoff polygons from that constant edge to each retained garage-front segment, clipped against exact occupied building and all road arms, projected to the adjacent native road plane. No extra_corridors or access through the closed pit wall.",
+    "stripe_clearance": "The shared outer stripe is0.4m inward of this constant paving edge, before every garage face.",
+    "driving_envelope_changed": false
+  },
+  "source_frame_hashes": [
+    {
+      "path": "build/reviews/singapore/reference/detail-0534.jpg",
+      "sha256": "6b8a0840589b035544cec67d4f4eb66edaa1d38e23411da27dda424fd6ba7422"
+    }
+  ],
+  "roof_closure": "Roof tops, undersides and side skins share the exact tessellated boundary. Closed triangle-edge counts, not just plan containment, verify the curved folds and concave ends."
+}

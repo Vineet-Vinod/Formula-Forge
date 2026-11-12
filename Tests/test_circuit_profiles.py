@@ -12,11 +12,12 @@ import sys
 from pathlib import Path
 
 import pytest
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, TypeAdapter
+from shapely.geometry import LineString, Point
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
-from circuit_dataclasses import PitLane
+from circuit_dataclasses import AlignmentControls, PitLane, TurnRegistrations
 from circuit_profiles import (
     native_profile,
     pit_shoulders,
@@ -27,10 +28,37 @@ from circuit_profiles import (
 SOURCES = ROOT / "Attribution/Sources"
 NATIVE = ROOT / "Source/FormulaForge/Native/track_data"
 ELEVATION_FILES = tuple(sorted(SOURCES.glob("*/elevation-corrections.json")))
+ALIGNMENT_FILES = tuple(sorted({
+    path.parent / "alignment-refinement.json"
+    if (path.parent / "alignment-refinement.json").exists() else path
+    for pattern in ("*/alignment-corrections.json", "*/alignment-refinement.json")
+    for path in SOURCES.glob(pattern)
+}))
 EVIDENCE_FILES = tuple(
     sorted((*SOURCES.glob("*/reference-index.json"), *SOURCES.glob("*/environment-recipe.json")))
 )
 NUMBER = r"[-+]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][-+]?\d+)?"
+
+
+@pytest.mark.parametrize("path", ALIGNMENT_FILES, ids=lambda path: path.parent.name)
+def test_native_alignment_retains_the_registered_corner_reconstruction(path: Path) -> None:
+    source = TypeAdapter(AlignmentControls).validate_json(path.read_bytes())
+    text = (NATIVE / f"{path.parent.name}_survey.inc").read_text()
+    block = re.search(r"constexpr TrackControlPoint \w+\[\] = \{(.*?)\n\};", text, re.DOTALL)
+    assert block is not None
+    controls = re.findall(rf"\{{\s*({NUMBER})f,\s*({NUMBER})f\s*\}}", block[1])
+    assert len(controls) == len(source.controls_xy_m)
+    for (x, y), expected in zip(controls, source.controls_xy_m, strict=True):
+        assert (float(x), float(y)) == pytest.approx(expected, abs=0.000001)
+
+
+@pytest.mark.parametrize("path", tuple(sorted(SOURCES.glob("*/alignment-refinement.json"))),
+                         ids=lambda path: path.parent.name)
+def test_refined_periodic_alignment_has_no_duplicate_closing_control(path: Path) -> None:
+    source = TypeAdapter(AlignmentControls).validate_json(path.read_bytes())
+    length = float(json.loads((path.parent / "reconstruction.json").read_text())["target_m"])
+    assert len(source.controls_xy_m) == math.ceil(length)
+    assert 0.5 < math.dist(source.controls_xy_m[-1], source.controls_xy_m[0]) < 1.5
 
 
 def test_registered_racing_replacement_preserves_alignment_and_bank() -> None:
@@ -44,6 +72,32 @@ def test_registered_racing_replacement_preserves_alignment_and_bank() -> None:
     strip = r"constexpr TrackElevationPoint \w+\[\] = \{.*?\n\};"
     assert re.sub(strip, "", updated, flags=re.DOTALL) == re.sub(strip, "", original, flags=re.DOTALL)
     assert replace_profile(updated, "Elevation", replacement, elevation[-1][0]) == updated
+
+
+def test_portimao_keeps_the_fia_galp_and_direct_first_corner_configuration() -> None:
+    source = SOURCES / "portimao"
+    evidence = json.loads((source / "galp-plan-source.json").read_text())
+    provenance = json.loads((source / "provenance.json").read_text())
+    scale = provenance["route"]["uniform_scale"] / evidence["raw_controls_old_uniform_scale"]
+    alignment = TypeAdapter(AlignmentControls).validate_json((source / "alignment-corrections.json").read_bytes())
+    route = LineString([*alignment.controls_xy_m, alignment.controls_xy_m[0]])
+    for x, y in evidence["raw_controls_xy_m"] + evidence["first_corner_raw_controls_xy_m"]:
+        assert route.distance(Point(x * scale, y * scale)) < 1.5
+
+
+@pytest.mark.parametrize(("slug", "rise", "fall", "tolerance"), [
+    ("bahrain", 3.6, 5.6, 0.02),
+    ("china", 3.0, 8.0, 0.02),
+    ("turkey", 8.145, 8.145, 0.01),
+    ("austria", 12.0, 9.3, 0.3),
+])
+def test_racing_grades_respect_retained_operator_constraints(
+    slug: str, rise: float, fall: float, tolerance: float,
+) -> None:
+    controls = native_controls(slug, "Elevation")
+    grades = [(b[1] - a[1]) * 100 / (b[0] - a[0]) for a, b in itertools.pairwise(controls)]
+    assert max(grades) <= rise + tolerance
+    assert min(grades) >= -fall - tolerance
 
 
 @pytest.mark.parametrize("controls", [
@@ -110,6 +164,7 @@ class Digitisation(BaseModel):
 
 class Profile(BaseModel):
     controls: Controls
+    registered_controls_m: Controls = Field(default_factory=list)
     source_controls_m: Controls = Field(default_factory=list)
     coarse_registered_controls: Controls = Field(default_factory=list)
     digitisation: Digitisation = Field(default_factory=Digitisation)
@@ -180,7 +235,8 @@ def test_native_elevation_preserves_registered_source_anchors_and_extrema(path: 
     profile = Profile.model_validate_json(path.read_bytes())
     native = native_controls(path.parent.name, "Elevation")
     anchors = (
-        profile.source_controls_m
+        profile.registered_controls_m
+        or profile.source_controls_m
         or profile.coarse_registered_controls
         or profile.digitisation.coarse_registered_controls
     )
@@ -231,6 +287,9 @@ def test_zandvoort_banking_is_registered_and_raises_the_outside() -> None:
 
 def test_australia_has_the_current_fourteen_registered_turns() -> None:
     review = LayoutReview.model_validate_json((SOURCES / "australia/layout-review.json").read_bytes())
+    registered = TypeAdapter(TurnRegistrations).validate_json(
+        (SOURCES / "australia/turn-registration.json").read_bytes()
+    ).turns
     assert [turn.number for turn in review.turns] == list(range(1, 15))
     assert sum(turn.direction == "Right" for turn in review.turns) == 9
     text = (NATIVE / "australia_survey.inc").read_text()
@@ -238,10 +297,11 @@ def test_australia_has_the_current_fourteen_registered_turns() -> None:
     assert block is not None
     turns = re.findall(rf'\{{"([^"]+)",\s*({NUMBER})f,\s*TrackTurnDirection::(Left|Right)\}}', block[1])
     assert len(turns) == 14
-    for native, source in zip(turns, review.turns, strict=True):
+    for native, source, current in zip(turns, review.turns, registered, strict=True):
         name, fraction, direction = native
         assert (name, direction) == (source.name, source.direction)
-        assert float(fraction) * review.published_length_m == pytest.approx(source.station_m, abs=0.05)
+        assert (current.official_turn, current.direction.title()) == (source.number, source.direction)
+        assert float(fraction) * review.published_length_m == pytest.approx(current.native_station_m, abs=0.05)
     assert review.turns[8].station_m == 3234
     assert review.turns[9].station_m == 3361
 

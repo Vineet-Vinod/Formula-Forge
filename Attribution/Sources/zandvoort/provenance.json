@@ -19,22 +19,25 @@
     "chosen": "relation-cycle/13545573",
     "measured_plan_m": 4255.917,
     "published_m": 4259,
-    "uniform_scale": 1.000724,
-    "scale_rule": "Applied only when the mapped plan was within 1.5% of a published length. Larger gaps keep the mapped length."
+    "uniform_scale": 1.001198341004055,
+    "scale_rule": "Composed source projection and native32-subdivision Catmull length normalization, including the disclosed local corner reconstruction/refinement stages. Original source projection is retained separately; see scene-registration.json.",
+    "source_projection_uniform_scale": 1.000724
   },
   "elevation": {
-    "provider": "Open-Meteo Elevation API",
-    "dataset": "Copernicus DEM GLO-90",
-    "dataset_note": "Surface model, about 90 m, includes roofs and canopy. Not a bare-earth racing survey.",
-    "licence": "Copernicus DEM, see https://registry.opendata.aws/copernicus-dem/",
-    "retrieved": "2026-11-04",
-    "sample_spacing_m": 19.9,
-    "smoothing": "Two circular binomial passes on the coarse samples, then linear interpolation onto the 4 m centreline. Isolated samples more than 6 m above their neighbours were treated as overpasses or roofs.",
-    "relative_datum": "Heights stored after subtracting the lap minimum.",
-    "removed_minimum_m": 3.0,
-    "relief_m": 7.812,
-    "uncertainty_m": 5,
-    "deck": null
+    "provider": "AHN, the Dutch water authorities, provinces and Rijkswaterstaat",
+    "dataset": "AHN5 classified-ground DTM 0.5 m, official AHN dataroom-linked WCS",
+    "dataset_note": "AHN5 classified-ground lidar after the2019 banking rebuild, with the actual postrebuild18-degree bank independently verified. No roof DSM heights used for racing profile.",
+    "controls": "elevation-corrections.json",
+    "source": "elevation/ahn5-road-2m.tif",
+    "source_sha256": "8b0294b532e052887ae773070a1ce9a6f412ab05e1ea8976775e16d32f80c3aa",
+    "licence": "CC BY4.0",
+    "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+    "removed_minimum_m": 2.5812805503449576,
+    "relative_datum": "Metres above the filtered road minimum, derived from NAP heights without a vertical multiplier.",
+    "relief_m": 8.718312224907294,
+    "uncertainty_m": 0.5,
+    "smoothing": "Circular Gaussian sigma2m, truncated at3sigma, removes source-pixel/IDW noise while retaining the broad T3 compression and Hunzerug climb. Maximum raw-height change0.162m; no grade clipping. Dense4m controls plus independent anchors retain the measured crest and trough. Periodic samples close the SF seam.",
+    "deck": "A single13.52m racing-deck chord spans the mapped service tunnel; exact anchors and uncertainty retained."
   },
   "width": {
     "base_m": 12.0,
@@ -75,5 +78,33 @@
     "licence": "ODbL 1.0"
   },
   "protection": "Both sides are walled at the shoulder offset. Pit entry is closed. That closure is a game boundary, not a claim about the real pit lane.",
-  "not_claimed": "No lidar, no orthophoto registration, no cockpit capture in this build. Centimetre storage is not centimetre accuracy."
+  "not_claimed": "No lidar, no orthophoto registration, no cockpit capture in this build. Centimetre storage is not centimetre accuracy.",
+  "scenery_ground": {
+    "source": "scenery-ground.json",
+    "dataset": "AHN5 classified-ground DTM",
+    "water": "water-provenance.json",
+    "estimated_gap_classification": "elevation/ahn5-scenery-coverage.json.gz",
+    "datum": "Same filtered NAP road minimum as elevation-corrections.json; no separate scenery median."
+  },
+  "scene_coordinate_registration": {
+    "source_projection_uniform_scale": 1.000724,
+    "effective_scene_uniform_scale": 1.001198341004055,
+    "native_normalization_chain": {
+      "initial_corrected_controls_factor": 1.0,
+      "initial_catmull_length_m": null,
+      "refinement_controls_factor": 1.0005379845114315,
+      "refinement_catmull_length_m": 4256.7101741191,
+      "post_original_chain_factor": 1.0005379845114315,
+      "fitted_minus_chain_factor": -5.08799165632734e-05,
+      "baseline_factor": 0.9999360477235293,
+      "all_chain_factor": 1.0004739978296266,
+      "effective_scene_uniform_scale": 1.001198341004055,
+      "method": "Replicate exact float32 native32-step Catmull expression and float32 segment norms, double arc accumulation, float32 correction includingUnits17. Compose firstcontrols then refinementcontrols; original native factor independently instrumented. Port hasmixedraw/old-native sourceframe caveat.",
+      "baseline_factor_applied_to_selected_scale": true
+    },
+    "final_road_sha256": "d67e0b0c19ca250b798c47b08837bf9df38de18a4713ec5c92217cf90e2c39b6",
+    "source_basis": "alignment-refinement-base.csv.gz",
+    "source_basis_sha256": "24b1dc71ed3b4b4b595fd87a047cf98787a282808016032d9636a2b7682991a1",
+    "scope": "Scenery WGS84-to-native XY registration only. Native road geometry, physical road widths, elevations, vehicle tuning and camera are not changed by this metadata update. Original corner authoring controls retain their explicitly documented historical coordinate frame."
+  }
 }

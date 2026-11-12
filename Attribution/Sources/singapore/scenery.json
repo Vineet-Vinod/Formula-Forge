@@ -1,70 +1,98 @@
 {
   "recipe": "make circuit-assets CIRCUIT=singapore",
-  "tiles": 152,
-  "triangles": 1225282,
-  "road_sha256": "5643c49144b08d65b4f75e024408fa6d72e7f7ebdba3df91802d37c8f68b966d",
-  "terrain_sha256": "5761c535c9e7f1b2bb86f061fe2d83e272015f79e95487bd4bfd6cf66fea984f",
+  "tiles": 151,
+  "triangles": 1268649,
+  "road_sha256": "ec9d5ee923d51133a3137cd5b22ec2aee14288ba70378d40154fa1818f3eb374",
+  "terrain_sha256": "0bd73918edfa845abde307374336cd0958a4c5866988aa6f48b4bb9b0d4c6591",
   "landmarks": [
     {
       "name": "Paved pit lane and working apron",
-      "start_m": 4710.0,
+      "start_m": 4760.0,
       "end_m": 170.0,
       "side": -1,
-      "outer_offset_m": 13.0,
-      "source_note": "Authored Marina Bay garage frontage scene.pit_building(4710,170,-1) lies exactly 13 m beyond road edge. The retained compound49890775 is excluded from duplicate extrusion. Reference530/534/538/566/594/598/602s confirms garages left, red mainstand right and yellow apron along the pit wall. Interval crosses native zero.",
+      "outer_offset_m": 10.9,
+      "source_note": "Actual mapped pit compound49890775 replaces the former generic block. The mapped compound projects to native4768.76\u2192162.65m across zero. Its three road-facing segments stand11.292\u201311.459m,15.405\u201315.656m and12.768\u201316.367m beyond the road edge. The paving control is rounded by less than10m at the longitudinal ends and ends at a constant10.9m offset before the nearest garage face. Local unstriped apron polygons meet each variable mapped front and exclude the occupied building; the generic outer white stripe therefore stays outside all garage bays. Mapped plan registration has approximately\u00b12m uncertainty. Facade/roof dimensions remain reconstructed. Paving stays beyond a closed pit wall; racing XYZ, banking and handling are unchanged. See pit-dimension-review.json.",
       "access": "Visual service area outside the closed driving boundary."
     },
     {
+      "name": "NS Square construction site ground reconstruction",
+      "osm_id": 1221351351,
+      "height_m": 1.721459829271255,
+      "uncertainty_m": 1.0,
+      "source_note": "Adjacent-road-level reconstruction inside the exact mapped construction parcel, excluding water, road corridors and architecture at emission. The obsolete floating grandstand was demolished; its coarse DSM roof must not become an earth hill. Absolute pad height is an estimate, not a survey."
+    },
+    {
+      "name": "Ritz-Carlton three-storey podium footprint ground reconstruction",
+      "osm_id": 46594815,
+      "height_m": 1.6737766436842108,
+      "uncertainty_m": 1.0,
+      "source_note": "Adjacent-road-level building foundation reconstruction confined to the mapped podium outline. The separate lobby driveway rises to Level 3 and is not flattened as an entire commercial property. OSM 16 m height and three levels describe the podium above this estimated foundation; no roof-contaminated DSM base is added."
+    },
+    {
+      "name": "Ritz-Carlton road-facing garden beneath the rising driveway ground reconstruction",
+      "osm_id": 1163299805,
+      "height_m": 1.6737766436842108,
+      "uncertainty_m": 2.0,
+      "source_note": "Bounded frontage subarea only, not the large Marina Centre commercial parcel. Its south boundary follows the actual commercial parcel edge along Raffles Avenue; its rear meets the mapped podium front. Lateral ends extend 10 m beyond the mapped podium ends and remain reconstruction estimates. This removes coarse roof smear from the street-side garden while a separate mapped driveway rises 7.2\u00b12 m toward the Level 3 lobby. The actual podium and raised access are modeled, not flattened into generic terrain. No racing corridor or water is replaced."
+    },
+    {
+      "name": "Singapore Flyer terminal foundation ground reconstruction",
+      "osm_id": 51761904,
+      "height_m": 2.3691486848382066,
+      "uncertainty_m": 1.0,
+      "source_note": "The former wheel base sampled 12.77 m from the retail terminal roof DSM, then added the operator 165 m structure, incorrectly raising the whole wheel. The terminal corners include lower 2.6\u20133 m samples and the adjacent road is about 1.37 m. A road+1 m plaza foundation is a bounded estimate, not surveyed MSL. The 150 m rim diameter, 165 m total structural height and 28 capsules are preserved."
+    },
+    {
       "name": "Braking distance boards",
-      "apex_m": 323,
+      "apex_m": 325.505959,
       "side": 1,
       "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
     },
     {
       "name": "Braking distance boards",
-      "apex_m": 486,
+      "apex_m": 489.422627,
       "side": 1,
       "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
     },
     {
       "name": "Braking distance boards",
-      "apex_m": 877,
+      "apex_m": 883.43425,
       "side": -1,
       "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
     },
     {
       "name": "Braking distance boards",
-      "apex_m": 1702,
+      "apex_m": 1712.478558,
       "side": 1,
       "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
     },
     {
       "name": "Braking distance boards",
-      "apex_m": 2572,
+      "apex_m": 2574.929437,
       "side": 1,
       "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
     },
     {
       "name": "Braking distance boards",
-      "apex_m": 2966,
+      "apex_m": 2964.961013,
       "side": 1,
       "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
     },
     {
       "name": "Braking distance boards",
-      "apex_m": 3513,
+      "apex_m": 3506.283961,
       "side": -1,
       "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
     },
     {
       "name": "Braking distance boards",
-      "apex_m": 4246,
+      "apex_m": 4240.869811,
       "side": -1,
       "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
     },
     {
       "name": "Reference event panels",
-      "start_m": 4710,
+      "start_m": 4708.211713,
       "end_m": 4940,
       "side": -1,
       "material": "PanelSingapore"
@@ -72,13 +100,13 @@
     {
       "name": "Reference event panels",
       "start_m": 0,
-      "end_m": 170,
+      "end_m": 171.354734,
       "side": -1,
       "material": "PanelSingapore"
     },
     {
       "name": "Reference event panels",
-      "start_m": 4710,
+      "start_m": 4708.211713,
       "end_m": 4940,
       "side": 1,
       "material": "PanelSingapore"
@@ -86,21 +114,35 @@
     {
       "name": "Reference event panels",
       "start_m": 0,
-      "end_m": 170,
+      "end_m": 171.354734,
       "side": 1,
       "material": "PanelSingapore"
     },
     {
       "name": "Reference event panels",
-      "start_m": 780,
-      "end_m": 920,
+      "start_m": 785.700774,
+      "end_m": 926.761387,
       "side": -1,
       "material": "PanelYellow"
     },
     {
+      "name": "Reference event panels",
+      "start_m": 3892.119939,
+      "end_m": 4335.435917,
+      "side": -1,
+      "material": "PanelGreen"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 3892.119939,
+      "end_m": 4335.435917,
+      "side": 1,
+      "material": "PanelGreen"
+    },
+    {
       "name": "Marina Reservoir and Singapore River",
       "water_height_m": -4.811936793826295,
-      "area_m2": 1399490.7383102446,
+      "area_m2": 1418885.6514161723,
       "source": "Complete retained OSM relations 9542146 and 9569901. The PUB map corroborates the shoreline. Water uses the flattened DSM water datum and lies below the existing bridges. This changes scenery only."
     },
     {
@@ -119,6 +161,31 @@
       "source": "Mapped footprint. Project engineer Atelier Ten specifies a 170 m by 86 m by 38 m glass gridshell, which overrides the coarse 30 m OSM height. Shell curvature and rib spacing are visual estimates."
     },
     {
+      "name": "NS Square construction frontage",
+      "osm_id": 1221351351,
+      "height_estimate_m": 4.0,
+      "source_note": "Actual mapped construction parcel and street-facing boundary. Supplied 1250.81 s shows pale construction frontage behind race fencing. PUB confirms demolition and redevelopment during 2023\u20132027. Hoarding height and support spacing are estimates; no finished future stadium is invented."
+    },
+    {
+      "name": "Ritz-Carlton mapped three-storey podium and glazed barrel-vault entrance",
+      "osm_id": 46594815,
+      "height_m": 16.0,
+      "source_note": "Mapped 16 m/three-level outline, primary BCA description and owner entryway photo. Granite-coloured piers, glazing and an aluminium/glass barrel vault replace a generic roof-based extrusion. Exact vault width, position and mullion sizes are estimates."
+    },
+    {
+      "name": "The Ritz-Carlton, Millenia Singapore mapped slender tower and exposed legs",
+      "osm_id": 326926564,
+      "height_m": 140,
+      "underbody_height_m": 37,
+      "source_note": "Previously omitted OSM building-part outline: height 140 m, min_height 30 m, 32 levels. Owner describes 37 m stilt-like legs, while BCA places first guestrooms about 30 m above street. The rendered 37 m clearance follows the owner, with the 30\u201337 m source discrepancy retained. Twenty-nine upper floor bands follow the mapped three-level podium offset; exact window spacing is reconstructed. No source pixels are shipped."
+    },
+    {
+      "name": "Ritz-Carlton mapped rising lobby driveway",
+      "height_rise_estimate_m": 8.0,
+      "height_uncertainty_m": 2.0,
+      "source_note": "Exact mapped access paths 620797981/784662624/741167072 connect Raffles Avenue with the podium. Marriott identifies the lobby on Level 3; the owner shows the glazed barrel-vault arrival. The 8.0 m rise, 4.8 m pavement width and retaining edges are reconstructed estimates, not survey. The raised driveway is retained instead of flattening the entire hotel property. Paving beyond the closed race wall is visual only."
+    },
+    {
       "name": "Esplanade Concert Hall",
       "osm_id": 256163011,
       "height_m": 35,
@@ -131,10 +198,11 @@
       "roof": "Ellipsoidal glass shell with individual projecting triangular sunshades"
     },
     {
-      "name": "Singapore Flyer",
+      "name": "Singapore Flyer mapped three-storey retail terminal",
       "osm_id": 51761904,
-      "height_m": 12,
-      "facade": "modern"
+      "height_estimate_m": 16.0,
+      "levels": 3,
+      "source_note": "Retained operator retail description specifies a 16 m, three-storey centre beneath the 150 m wheel. The mapped exterior replaces a generic four-window-level extrusion. Exact shopfront rhythm, terraces and 60 by 28 m central roof opening are reconstructed. The operator describes the central rainforest atrium; the opening also clears the lowest capsule path. Its exact inner outline is not surveyed."
     },
     {
       "name": "Singapore Flyer",
@@ -148,21 +216,15 @@
       "name": "Sands SkyPark",
       "osm_id": 116800998,
       "deck_height_m": 200,
-      "mapped_length_m": 340.162833377683,
-      "mapped_maximum_width_m": 57.71896180410143,
-      "mapped_area_m2": 12454.877740886599,
+      "mapped_length_m": 343.1034360712179,
+      "mapped_maximum_width_m": 58.21792441228488,
+      "mapped_area_m2": 12671.145649499076,
       "source": "Retained OSM outline 116800998. Arup specifies 340 m length, 38 m nominal width and 200 m height. Mapped length is 340.16 m and area is 12,454.9 m\u00b2; the operator reports 12,400 m\u00b2. The mapped maximum bounding width of 57.72 m differs from the nominal width. The model follows the mapped outline. The closed belly and longitudinal ribs follow the JFE photograph."
     },
     {
       "name": "Raffles City Shopping Centre",
       "osm_id": 39487263,
       "height_m": 30.0,
-      "facade": "modern"
-    },
-    {
-      "name": "Mapped building",
-      "osm_id": 46594815,
-      "height_m": 16.0,
       "facade": "modern"
     },
     {
@@ -176,6 +238,12 @@
       "osm_id": 46594819,
       "height_m": 15,
       "facade": "classical"
+    },
+    {
+      "name": "Singapore Cricket Club",
+      "osm_id": 46594820,
+      "footprint_clip_m2": 0.55,
+      "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
     },
     {
       "name": "Singapore Cricket Club",
@@ -426,7 +494,7 @@
     {
       "name": "Marina Square",
       "osm_id": 303311927,
-      "footprint_clip_m2": 781.88,
+      "footprint_clip_m2": 791.15,
       "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
     },
     {
@@ -610,42 +678,34 @@
       "facade": "modern"
     },
     {
-      "name": "NS Square",
-      "osm_id": 1492514975,
-      "footprint_clip_m2": 54.48,
-      "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
-    },
-    {
-      "name": "NS Square",
-      "osm_id": 1492514975,
-      "height_m": 10,
-      "facade": "modern"
-    },
-    {
-      "name": "Authored pit building",
-      "start_m": 4710,
-      "end_m": 170,
-      "side": -1,
-      "height_m": 15
+      "name": "Singapore mapped pit compound",
+      "osm_id": 49890775,
+      "mapped_length_m": 332.6924994725879,
+      "mapped_width_m": 31.710078310749527,
+      "body_height_m": 15.0,
+      "floors": 3,
+      "garage_bays": 36,
+      "roof_form": "eaves",
+      "source_note": "Actual retained footprint, adjacent-road per-bay foundation and closed roof/soffit. Floors, door/terrace dimensions and roof details are reference reconstructions; see pit-dimension-review.json. No native physical road or profile changes."
     },
     {
       "name": "Authored grandstand",
-      "start_m": 4720,
-      "end_m": 120,
+      "start_m": 4718.266285,
+      "end_m": 120.956315,
       "side": 1,
       "rows": 23
     },
     {
       "name": "Authored grandstand",
-      "start_m": 2200,
-      "end_m": 2530,
+      "start_m": 2200.061823,
+      "end_m": 2532.691906,
       "side": -1,
       "rows": 14
     },
     {
       "name": "Authored grandstand",
-      "start_m": 3210,
-      "end_m": 3450,
+      "start_m": 3205.904624,
+      "end_m": 3447.812678,
       "side": -1,
       "rows": 14
     },
@@ -659,8 +719,8 @@
   "vegetation": [
     {
       "type": "broadleaf",
-      "start_m": 500,
-      "end_m": 1120,
+      "start_m": 503.510135,
+      "end_m": 1128.320683,
       "side": -1,
       "count": 35,
       "setback_m": 5,
@@ -668,8 +728,8 @@
     },
     {
       "type": "broadleaf",
-      "start_m": 650,
-      "end_m": 1150,
+      "start_m": 654.667603,
+      "end_m": 1158.559456,
       "side": 1,
       "count": 23,
       "setback_m": 7,
@@ -677,17 +737,17 @@
     },
     {
       "type": "broadleaf",
-      "start_m": 1380,
-      "end_m": 1950,
+      "start_m": 1390.380744,
+      "end_m": 1948.274616,
       "side": 1,
-      "count": 18,
+      "count": 17,
       "setback_m": 5,
       "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
     },
     {
       "type": "broadleaf",
-      "start_m": 1950,
-      "end_m": 2600,
+      "start_m": 1948.274616,
+      "end_m": 2602.976801,
       "side": -1,
       "count": 37,
       "setback_m": 6,
@@ -695,8 +755,8 @@
     },
     {
       "type": "broadleaf",
-      "start_m": 2250,
-      "end_m": 2750,
+      "start_m": 2250.460027,
+      "end_m": 2753.506502,
       "side": 1,
       "count": 30,
       "setback_m": 4,
@@ -704,8 +764,8 @@
     },
     {
       "type": "broadleaf",
-      "start_m": 2750,
-      "end_m": 3120,
+      "start_m": 2753.506502,
+      "end_m": 3115.187419,
       "side": 1,
       "count": 12,
       "setback_m": 6,
@@ -713,35 +773,42 @@
     },
     {
       "type": "broadleaf",
-      "start_m": 3150,
-      "end_m": 3750,
+      "start_m": 3145.426532,
+      "end_m": 3740.932435,
       "side": -1,
-      "count": 31,
+      "count": 32,
       "setback_m": 6,
       "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
     },
     {
       "type": "broadleaf",
-      "start_m": 3150,
-      "end_m": 3750,
+      "start_m": 3145.426532,
+      "end_m": 3740.932435,
       "side": 1,
-      "count": 15,
+      "count": 18,
       "setback_m": 8,
       "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
     },
     {
-      "type": "broadleaf",
-      "start_m": 3900,
-      "end_m": 4450,
+      "type": "Raffles Avenue broadleaf frontage",
       "side": -1,
-      "count": 23,
-      "setback_m": 12,
-      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+      "start_m": 3892.119939,
+      "end_m": 4446.291439,
+      "count": 33,
+      "placement": "Observed near-wall canopy in the direct Flyer approach reference; individual positions and heights estimated. Roots avoid the mapped rising driveway, buildings, water and every racing arm."
+    },
+    {
+      "type": "Raffles Avenue broadleaf frontage",
+      "side": 1,
+      "start_m": 3892.119939,
+      "end_m": 4446.291439,
+      "count": 35,
+      "placement": "Observed near-wall canopy in the direct Flyer approach reference; individual positions and heights estimated. Roots avoid the mapped rising driveway, buildings, water and every racing arm."
     },
     {
       "type": "palms",
-      "start_m": 450,
-      "end_m": 800,
+      "start_m": 453.227322,
+      "end_m": 805.860027,
       "side": 1,
       "count": 8,
       "setback_m": 8,
@@ -749,17 +816,17 @@
     },
     {
       "type": "palms",
-      "start_m": 1200,
-      "end_m": 1600,
+      "start_m": 1208.957514,
+      "end_m": 1612.133386,
       "side": -1,
-      "count": 7,
+      "count": 8,
       "setback_m": 8,
       "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
     },
     {
       "type": "palms",
-      "start_m": 4000,
-      "end_m": 4350,
+      "start_m": 3992.916696,
+      "end_m": 4345.495629,
       "side": 1,
       "count": 5,
       "setback_m": 8,

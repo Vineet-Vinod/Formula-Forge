@@ -913,5 +913,38 @@
       ]
     }
   },
-  "t15_island_correction": "t15-island.json"
+  "t15_island_correction": "t15-island.json",
+  "classified_ground_source_review": {
+    "road": "elevation-corrections.json",
+    "scenery": "scenery-ground.json",
+    "source": "Official USGS3DEP TX Central B1 2017 classified bare-earth DEM",
+    "diagnosis": "F1chart totalrelief was credible, but local station/height registration differs by up to2.51m; GLO30scenery includes roof/canopy artefacts. Independent actual source restores localgrade and consistent ground without a relief multiplier.",
+    "rendered_validation": "Pending root native application/materialization and fresh matched runtime review."
+  },
+  "mainstand_tensile_canopy_review": {
+    "status": "Source correction pending root generation/import and matched moving review",
+    "source_module": "tools/venues/cota.py:main_grandstand",
+    "primary_engineer_url": "https://www.walterpmoore.com/projects/circuit-americas",
+    "primary_architect_press_package": "https://web.williams.edu/Mathematics/sjmiller/public_html/legos/cotatower/Main%20Grandstand_Miro%20Rivera%20Architects_Email.pdf",
+    "direct_reference": "build/reviews/cota/reference/paint-detail-03.jpg",
+    "reference_sha256": "eea470d3680ea4da34d2486ea6877eecc1a03d21bec9e38ac6deda11f8e13bc8",
+    "diagnosis": "The old broad dark planes were solid flat roof geometry with Concrete underside, while the actual canopy is pale tensile fabric with scalloped bays. The rear mapped building376713393 is offset42.6\u201359.3m from the road; seating460658889 is20.6\u201337.2m away, so removing its16m cantilever would incorrectly leave every seating row uncovered.",
+    "retained_geometry": "Existing mapped seating/rear support footprints and16m maximum front reach remain. No physical corridor, road, protection or survey changes.",
+    "original_form_estimates": {
+      "bay_spacing_m": 10,
+      "front_edge_scallop_m": 0.8,
+      "interior_saddle_sag_m": 0.45,
+      "fabric_thickness_m": 0.035,
+      "materials": "Existing White fabric on upper and lower faces; Steel trusses.",
+      "heights_above_road_m": [
+        15.2,
+        18
+      ]
+    },
+    "pose_uncertainty": "Native5390m is just after mapped canopy longitudinal start5382m; referencepaint03 appears farther before that edge. Do not treat the angular roof area in unmatched cameras as a surveyed width."
+  },
+  "architecture_dimensions_correction_20261112": {
+    "source": "tower-deck-plan.json",
+    "status": "Source corrected; fresh packaged images and independent reference review still required."
+  }
 }

@@ -10,7 +10,8 @@ from circuit_scene import CircuitScene
 from shapely.geometry import Polygon
 from shapely.ops import triangulate
 
-from venues.west_architecture import apron_band, mapped_building, mast, trees
+from venues.west_architecture import apron_band, mapped_building, mast
+from venues.woodland import mapped_woodland, stand_with_clearing
 
 
 def build_venue(scene: CircuitScene) -> None:
@@ -29,19 +30,11 @@ def build_venue(scene: CircuitScene) -> None:
     mapped_building(scene, 176136366, 9, facade='Cream', floors=2, roof='pitched')
     scene.stand(730, 1050, -1, rows=20, setback=10, roofed=True, seat_material='SeatRed')
     scene.stand(1970, 2110, -1, rows=26, setback=23, roofed=True, seat_material='SeatRed')
-    scene.stand(3080, 3280, -1, rows=14, setback=32, seat_material='SeatRed')
-    scene.stand(6510, 6700, 1, rows=14, setback=30, seat_material='SeatRed')
-    for start, end, side, setback in [(1280, 1720, -1, 40), (2160, 3030, 1, 25),
-                                      (2160, 3010, -1, 35), (3380, 3760, 1, 32),
-                                      (3400, 3750, -1, 38), (3920, 4560, 1, 30),
-                                      (3940, 4560, -1, 35), (4820, 5200, 1, 42),
-                                      (4820, 5220, -1, 34), (5500, 5860, 1, 35),
-                                      (5520, 5850, -1, 32), (6110, 6910, 1, 32),
-                                      (6140, 6900, -1, 32)]:
-        trees(scene, start, end, side, setback=setback, rows=4, spacing=13,
-              height=20, conifers=True)
-    for start, end in [(1390, 1690), (3520, 3690), (4150, 4490), (5530, 5770)]:
-        trees(scene, start, end, -1, setback=22, spacing=28, rows=1, height=16)
+    les_combes_stand = stand_with_clearing(scene, 3080, 3280, -1, rows=14, setback=32,
+                                          seat_material='SeatRed')
+    blanchimont_stand = stand_with_clearing(scene, 6510, 6700, 1, rows=14, setback=30,
+                                           seat_material='SeatRed')
+    mapped_woodland(scene, (les_combes_stand, blanchimont_stand))
     for station in [520, 1120, 1770, 2040, 3160, 3830, 4710, 5330, 5960, 6750]:
         mast(scene, station, -1, 20)
 
@@ -115,11 +108,56 @@ def endurance_garages(scene: CircuitScene) -> None:
 
 
 def circuit_edges(scene: CircuitScene) -> None:
+    raidillon_apron(scene)
     for start, end, side in [(480, 540, 1), (550, 620, -1), (1115, 1240, 1), (1800, 1870, -1), (1880, 1960, 1), (1980, 2055, -1), (3160, 3220, 1), (3235, 3320, -1), (3400, 3500, 1), (3800, 3935, 1), (4060, 4155, -1), (4670, 4820, -1), (5300, 5375, 1), (5410, 5485, -1), (5700, 5780, 1), (5900, 6030, 1), (6720, 6860, -1)]:
         scene.kerb(start, end, side, material='Red', alternate_material='Yellow')
-    for start, end, side, width, material in [(440, 655, -1, 17, 'Runoff'), (1070, 1290, -1, 22, 'Runoff'), (1800, 2100, 1, 24, 'Gravel'), (3100, 3530, -1, 24, 'Gravel'), (3750, 3990, -1, 23, 'Gravel'), (4620, 4890, 1, 24, 'Gravel'), (5250, 5530, -1, 22, 'Gravel'), (6670, 6900, 1, 21, 'Gravel')]:
+    for start, end, side, width, material in [(440, 655, -1, 17, 'Runoff'), (1070, 1290, -1, 22, 'Runoff'), (1800, 1880, 1, 24, 'Gravel'), (1960, 2100, 1, 24, 'Gravel'), (3100, 3530, -1, 24, 'Gravel'), (3750, 3990, -1, 23, 'Gravel'), (4620, 4890, 1, 24, 'Gravel'), (5250, 5530, -1, 22, 'Gravel'), (6670, 6900, 1, 21, 'Gravel')]:
         scene.runoff(start, end, side, width, material)
 
     for start, end, side in [(440, 655, -1), (1070, 1290, -1)]:
         apron_band(scene, start, end, side, 1.2, 2.8, 'RunoffGreen')
         apron_band(scene, start, end, side, 2.8, 6.0, 'RunoffRed')
+
+
+def raidillon_apron(scene: CircuitScene) -> None:
+    start, end = 1880., 2000.
+    scene.surface_ranges.append({'type': 'runoff', 'start_m': start, 'end_m': end,
+                                 'side': -1, 'requested_width_m': 16, 'material': 'RunoffRed'})
+    cells = []
+
+    def width(station: float) -> float:
+        t = max(0, min(1, (station - start) / 25, (end - station) / 45))
+        return .15 + 15.85 * t * t * (3 - 2 * t)
+
+    for station in range(1880, 2000, 2):
+        a, b = scene.at(station), scene.at(station + 2)
+        shape = Polygon([a.point(-a.half_width - .15)[:2], b.point(-b.half_width - .15)[:2],
+                         b.point(-b.half_width - width(station + 2))[:2],
+                         a.point(-a.half_width - width(station))[:2]])
+        if not shape.is_valid:
+            continue
+        shape = shape.difference(scene.surface_mask(a))
+        pieces = [shape] if isinstance(shape, Polygon) else list(getattr(shape, 'geoms', []))
+        for piece in pieces:
+            if isinstance(piece, Polygon) and not piece.is_empty:
+                cells.append(piece)
+                scene.extra_corridors.append(piece)
+                scene.polygon_surface(piece, 'RunoffRed', .001, a, paved=True)
+    from shapely.ops import unary_union
+
+    apron = unary_union(cells)
+    reference = scene.at(1940)
+    for band in range(-30, 31):
+        corners = []
+        for u, v in [(band * 7, -45), (band * 7 + 3.5, -45),
+                     (band * 7 + 3.5 + 45, 45), (band * 7 + 45, 45)]:
+            corners.append((reference.x + reference.tx * u + reference.ty * v,
+                            reference.y + reference.ty * u - reference.tx * v))
+        stripe = Polygon(corners).intersection(apron)
+        if not stripe.is_empty:
+            scene.paint_surface(stripe, 'Yellow')
+    scene.landmarks.append({'name': 'Raidillon outside-left striped paved wedge',
+                            'start_m': start, 'end_m': end, 'side': -1,
+                            'maximum_width_m': 16, 'area_m2': apron.area,
+                            'source': 'Supplied continuous277–280.5s, forward then rear camera',
+                            'registration': 'Forward278.4s identifies EauRouge/Raidillon. Rear279.8/280.5s shows striped paving on cameraRIGHT, hence forward-driverLEFT outside the uphillRIGHT bend. Width16m,1880–2000m endpoints,25/45m tapers and stripe spacing are bounded estimates. Wrong RIGHT gravel removed only1880–1960; first-left1800–1880 and crest1960–2100 portions remain historical uncertain ranges, not newly verified. Native road and measured grades are unchanged.'})

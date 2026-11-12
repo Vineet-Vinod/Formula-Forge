@@ -1,0 +1,264 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-12",
+  "method": "Typed tools/circuit_alignment.py reconstructs tangent circular fillets from retained source arcs, with35m quintic exterior joins and at most2m movement. No native writes in the source-authoring step.",
+  "source_files": [
+    "circuit.osm.json.gz",
+    "alignment-base-road.csv.gz",
+    "alignment-arcs.json",
+    "alignment-corrections.json"
+  ],
+  "accepted": [
+    {
+      "official_corner": "T3",
+      "core_native_range_m": [
+        1013.7807162982854,
+        1036.8732295923062
+      ],
+      "radius_m": 17.861166907184966,
+      "center_xy_m": [
+        -518.7758596332906,
+        799.7770076192251
+      ],
+      "minimum_radius_m": 14.954652712904865,
+      "maximum_displacement_m": 1.4393944594438364,
+      "source_radial_max_m": 1.6527229918752901
+    },
+    {
+      "official_corner": "T13",
+      "core_native_range_m": [
+        4563.45609086767,
+        4587.040911588731
+      ],
+      "radius_m": 15.059813082053756,
+      "center_xy_m": [
+        510.83982125055195,
+        -299.91777343507937
+      ],
+      "minimum_radius_m": 14.95456543015341,
+      "maximum_displacement_m": 1.370253273476438,
+      "source_radial_max_m": 0.8906513877037678
+    },
+    {
+      "official_corner": "T1",
+      "core_native_range_m": [
+        273.4113825035718,
+        298.8270191037027
+      ],
+      "radius_m": 17.561432194861514,
+      "center_xy_m": [
+        -182.05909591821535,
+        207.78226763858066
+      ],
+      "minimum_radius_m": 17.55864867385278,
+      "maximum_displacement_m": 1.3662402955691937,
+      "source_radial_max_m": 1.219080256948164
+    }
+  ],
+  "rejected_attempts": [
+    {
+      "official_corner": "T1",
+      "reason": "australia/T1: displacement 2.124 m exceeds source allowance",
+      "attempted_arc": {
+        "official_corner": "T1",
+        "source_way_id": 987030977,
+        "core_native_range_m": [
+          273.4113825035718,
+          298.8270191037027
+        ],
+        "circle_center_source_xy_m": [
+          -182.20293517130574,
+          208.6773030020004
+        ],
+        "radius_m": 17.084248873949793,
+        "raw_controls_xy_native_m": [
+          [
+            -192.27848940792748,
+            194.29747091542322,
+            273.4113825035718
+          ],
+          [
+            -194.45501021502182,
+            197.09814706354257,
+            276.9594633511411
+          ],
+          [
+            -196.02839875128848,
+            199.30105043699248,
+            279.65752831713854
+          ],
+          [
+            -197.31333272249006,
+            201.3379058178719,
+            282.0531625971182
+          ],
+          [
+            -198.28358898544457,
+            203.23085293805173,
+            284.2017044750793
+          ],
+          [
+            -199.08776534737635,
+            205.53338510767313,
+            286.6194718443441
+          ],
+          [
+            -199.48111248268518,
+            207.0720965092681,
+            288.11845256330605
+          ],
+          [
+            -199.54229981346415,
+            208.74364630523408,
+            289.76184674677086
+          ],
+          [
+            -199.3237736285616,
+            210.26021797417172,
+            291.3544962424023
+          ],
+          [
+            -198.95664963643486,
+            211.94283763646635,
+            293.0358177453932
+          ],
+          [
+            -198.12625013132103,
+            214.3892780667874,
+            295.59068190591097
+          ],
+          [
+            -196.86753930330147,
+            217.3670720745924,
+            298.8270191037027
+          ]
+        ],
+        "incoming_fit_m": [
+          45,
+          15
+        ],
+        "outgoing_fit_m": [
+          15,
+          45
+        ],
+        "blend_m": 35,
+        "maximum_displacement_m": 2,
+        "source_radial_rms_m": 0.24150493939589462,
+        "source_radial_max_m": 0.4741213241426543,
+        "source_status": "Retained mapped raceway center controls; uncertainty2m. No kerb survey claimed."
+      }
+    },
+    {
+      "official_corner": "T1",
+      "status": "accepted",
+      "arc": {
+        "official_corner": "T1",
+        "source_way_id": 987030977,
+        "core_native_range_m": [
+          273.4113825035718,
+          298.8270191037027
+        ],
+        "circle_center_source_xy_m": [
+          -182.20293517130574,
+          208.6773030020004
+        ],
+        "radius_m": 17.084248873949793,
+        "raw_controls_xy_native_m": [
+          [
+            -192.27848940792748,
+            194.29747091542322,
+            273.4113825035718
+          ],
+          [
+            -194.45501021502182,
+            197.09814706354257,
+            276.9594633511411
+          ],
+          [
+            -196.02839875128848,
+            199.30105043699248,
+            279.65752831713854
+          ],
+          [
+            -197.31333272249006,
+            201.3379058178719,
+            282.0531625971182
+          ],
+          [
+            -198.28358898544457,
+            203.23085293805173,
+            284.2017044750793
+          ],
+          [
+            -199.08776534737635,
+            205.53338510767313,
+            286.6194718443441
+          ],
+          [
+            -199.48111248268518,
+            207.0720965092681,
+            288.11845256330605
+          ],
+          [
+            -199.54229981346415,
+            208.74364630523408,
+            289.76184674677086
+          ],
+          [
+            -199.3237736285616,
+            210.26021797417172,
+            291.3544962424023
+          ],
+          [
+            -198.95664963643486,
+            211.94283763646635,
+            293.0358177453932
+          ],
+          [
+            -198.12625013132103,
+            214.3892780667874,
+            295.59068190591097
+          ],
+          [
+            -196.86753930330147,
+            217.3670720745924,
+            298.8270191037027
+          ]
+        ],
+        "incoming_fit_m": [
+          45,
+          15
+        ],
+        "outgoing_fit_m": [
+          5,
+          15
+        ],
+        "blend_m": 35,
+        "maximum_displacement_m": 2,
+        "source_radial_rms_m": 0.24150493939589462,
+        "source_radial_max_m": 0.4741213241426543,
+        "source_status": "Retained mapped raceway center controls; uncertainty2m. No kerb survey claimed.",
+        "tangent_registration_note": "Default exit window crossed the beginning ofT2. Use the short road segment immediately afterT1, before the mappedleft turn begins.",
+        "tangent_fit_residuals": [
+          {
+            "range_m": [
+              228.41138250357182,
+              258.4113825035718
+            ],
+            "maximum_line_residual_m": 0.018758933369025677
+          },
+          {
+            "range_m": [
+              303.8270191037027,
+              313.8270191037027
+            ],
+            "maximum_line_residual_m": 0.050250865884817975
+          }
+        ]
+      }
+    }
+  ],
+  "retained_rejection_policy": "Rejected proposals remain evidence, not active geometry. The2m movement allowance and20% circle/tangent radius comparison are preserved. No source radius is invented for sparse hard vertices or sign-changing bends.",
+  "survey_status": "Mapped centerline estimates with2m source uncertainty; not a kerb or engineering survey.",
+  "runtime_status": "Root coordinates native synchronization, physical envelope refresh and cockpit review; no appearance approval is claimed."
+}

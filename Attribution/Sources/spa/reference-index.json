@@ -100,6 +100,30 @@
       "reviewed": true,
       "frame": "build/reviews/spa/reference/endurance-check-675.00.jpg",
       "notes": "Rear-facing camera on old pit descent; confirms close pit-service frontage but is not a direct forward-camera match for native1679.44. Montage cameras/cuts prevent precise timestamp registration."
+    },
+    {
+      "time_s": 278.4,
+      "camera": "forward",
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261112/route-audit/spa-eaurouge-278.40.jpg",
+      "sha256": "560c5317b5049629dee80018611c2e6d8525951fb040e901aaa74db25ff79582",
+      "reviewed": true,
+      "notes": "EauRouge/Raidillon direct sequence. Forward278.4 establishes approach and corner order; rear279.8/280.5 confirms forward-left red/yellow paved apron and forward-right inside grass. Reverse left/right for rear cameras. No precise camera station or width measurement claimed."
+    },
+    {
+      "time_s": 279.8,
+      "camera": "rear",
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261112/route-audit/spa-eaurouge-279.80.jpg",
+      "sha256": "3104420ccb33907cb138522ec7a8f82b91c787b24981b447db50c91478e2a091",
+      "reviewed": true,
+      "notes": "EauRouge/Raidillon direct sequence. Forward278.4 establishes approach and corner order; rear279.8/280.5 confirms forward-left red/yellow paved apron and forward-right inside grass. Reverse left/right for rear cameras. No precise camera station or width measurement claimed."
+    },
+    {
+      "time_s": 280.5,
+      "camera": "rear",
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261112/route-audit/spa-eaurouge-280.50.jpg",
+      "sha256": "69d0b7803f5d685334bb1cbef431dc88704d3ece498d7d13e5f33f69efe86a08",
+      "reviewed": true,
+      "notes": "EauRouge/Raidillon direct sequence. Forward278.4 establishes approach and corner order; rear279.8/280.5 confirms forward-left red/yellow paved apron and forward-right inside grass. Reverse left/right for rear cameras. No precise camera station or width measurement claimed."
     }
   ],
   "registration": {
@@ -279,12 +303,17 @@
     {
       "url": "https://www.formula1.com/en/latest/article/highs-and-lows-which-f1-track-has-the-most-elevation-changes-.7I9JEcBw3R2AqXbnJ6hyvc.7I9JEcBw3R2AqXbnJ6hyvc",
       "use": "Official2016longitudinalprofile independentlydigitized into circuit elevationcontrols; chartapproximation, not as-built survey."
+    },
+    {
+      "title": "Relief de la Wallonie - Mod\u00e8le Num\u00e9rique de Terrain (MNT) 2021\u20132022, updated 2024-01-23",
+      "url": "https://geoportail.wallonie.be/catalogue/a004e570-99d6-4fe5-b83d-49b774409278.html",
+      "supports": "Numeric classified-ground road profile, horizontal EPSG:3812 / vertical EPSG:5710; CC BY 4.0. Raw API batches retained, no styled map pixels used as heights."
     }
   ],
   "uncertainties": [
     "Exact filming lap/year is not established unless visible title/HUD identifies it.",
     "Overview observations establish visual vocabulary; every individual asset position requires footprint/map registration.",
-    "No high-resolution raster or orthophoto added by this reference review."
+    "Road and the entire existing scenery lattice now sample classified-ground SPW0.5m lidar. The retained terrain grid remains12m spaced; exact small walls, drains and road crossfall are not inferred from it."
   ],
   "racing_elevation_correction": "elevation-corrections.json",
   "montage_cut_review": {
@@ -306,5 +335,22 @@
     "retrieved_utc": "2026-11-08",
     "sha256": "6fb37f257700ea0c4f53ca9ad207a19d066e168a02a6a915a6e0e4562a7498a5",
     "local_research_only": "build/reviews/spa/reference/sro-spa-briefing-2024.pdf"
+  },
+  "scenery_ground_correction": "scenery-ground.json",
+  "woodland_fidelity_correction": {
+    "source": "vegetation/woodland-provenance.json",
+    "model": "tools/venues/woodland.py",
+    "reference": {
+      "path": "build/reviews/spa/reference/final-676.00.jpg",
+      "time_s": 676.0,
+      "sha256": "145a50dfc794e26f73d63b390ab46a0fefc1dbdb6181bbae675249da92edc141",
+      "observation": "Continuous densely wooded banks/ridges with mixed canopy edges and real open grass/spectator clearings. Prior sparse parallel rows leave artificial bare bands.",
+      "registration": "Confirmed Kemmel straight, HUD25.583s, native corridor2113\u20133165m. Exact position within the straight is unregistered; there is a montage cut between674 and676s."
+    },
+    "status": "Source-backed woodland polygons replace parallel station rows. Native road, protection and all measured ground heights remain unchanged. Fresh packaged visual review required; source geometry is not visual acceptance."
+  },
+  "raidillon_runoff_correction": {
+    "source": "raidillon-runoff-correction.json",
+    "status": "Actual continuous forward/rear sequence establishes outside-left striped paving and inside-right grass. Initial LaSource gravel misidentification withdrawn."
   }
 }

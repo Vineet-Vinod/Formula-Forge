@@ -1,9 +1,9 @@
 {
   "recipe": "make circuit-assets CIRCUIT=canada",
   "tiles": 159,
-  "triangles": 639790,
-  "road_sha256": "e1ca993f00bebddbaa6f7efbefca8dcf28480f22104b58c5d49af886cc923e94",
-  "terrain_sha256": "1bfe05750beafbd59aee48c03aabdca186a18a544ce80d40b2b42a3e364418db",
+  "triangles": 639661,
+  "road_sha256": "97a8419f820ba44d8ec34551568ef259554fc59f61bcd7fcd3bdfe950fd1fd11",
+  "terrain_sha256": "63e1d10f96fa645c03d52b7777096da7be72905bfa31c65f3d29f0f58b8933de",
   "landmarks": [
     {
       "name": "Paved pit lane and working apron",
@@ -103,7 +103,7 @@
       "osm_id": 42229671,
       "name": "Paddocks",
       "height_m": 14,
-      "removed_road_area_m2": -0.0,
+      "removed_road_area_m2": 0.0,
       "structure": "enclosed",
       "ground_floor": "Recessed road-facing garage bays",
       "road_clearance_exception": "none",
@@ -113,7 +113,7 @@
       "osm_id": 26698931,
       "name": "26698931",
       "height_m": 28,
-      "removed_road_area_m2": -0.0,
+      "removed_road_area_m2": 0.0,
       "structure": "enclosed",
       "ground_floor": "Facade windows",
       "road_clearance_exception": "none",

@@ -1,14 +1,14 @@
 {
   "recipe": "make circuit-assets CIRCUIT=australia",
-  "tiles": 195,
-  "triangles": 753534,
-  "road_sha256": "dd48dd7f8cc9ae28e77e0b4784731f7f6c333818a82028707eb69c3738b4d26b",
-  "terrain_sha256": "b383bd6d65e5ee5b6b951832f450083067f2d6ddb504c6816697b6121f9a4758",
+  "tiles": 194,
+  "triangles": 748073,
+  "road_sha256": "cc4f53e3bbd34a0e974df682c5514cc2131d1c9d485fbd9b9330f544bb4bd76c",
+  "terrain_sha256": "1382800585867629b5c85fc07467a9dca5356ed72da50a0c8c70ee9186cf9b5c",
   "landmarks": [
     {
       "name": "Paved pit lane and working apron",
-      "start_m": 4920.0,
-      "end_m": 5250.0,
+      "start_m": 4918.48779,
+      "end_m": 5249.65137,
       "side": 1,
       "outer_offset_m": 13.0,
       "source_note": "Common authored pit garage front is roadhalf+13m, matching original pit/apron reconstruction4940\u20135230m and reviewed main-straight176.17s/792.81s. Added20m visual apron extension before/after row; endpoints are reconstruction, not surveyed access.",
@@ -16,117 +16,117 @@
     },
     {
       "name": "T3 raised red inner apex lip",
-      "start_m": 1016,
-      "end_m": 1038,
+      "start_m": 1020.551,
+      "end_m": 1041.168,
       "side": 1,
-      "area_m2": 6.537171190525819,
+      "area_m2": 6.539907689406379,
       "registration": "Direct 335 s T3 apex, lap 16.017 s, shows red inner lip behind the yellow/green kerb. Outer 0.47 m of the exact corrected kerb footprint, short station span and 8 cm top height are bounded estimates. Raised above the existing kerb; no coplanar duplicate paving or native collision change."
     },
     {
       "name": "T3 black Pirelli paved infield",
-      "start_m": 996,
-      "end_m": 1064,
+      "start_m": 999.934,
+      "end_m": 1067.584,
       "side": 1,
-      "area_m2": 217.23921318205183,
+      "area_m2": 215.84857401670908,
       "registration": "Direct supplied 332\u2013334 s T3 approach/apex, lap 13.032\u201315.016 s, shows black paving with yellow Pirelli lettering inside the right kerb. Exact footprint depth and lettering dimensions are bounded estimates; native road union constrains the edge.",
       "physical_contract": "Visual-only paving; no runoff range or extra corridor. Native racing XYZ, banking, shoulders, drive surface and collision unchanged."
     },
     {
       "name": "Reference event panels",
-      "start_m": 4930,
-      "end_m": 5270,
+      "start_m": 4928.796,
+      "end_m": 5270.269,
       "side": 1,
       "material": "PanelPurple"
     },
     {
       "name": "Reference event panels",
-      "start_m": 4930,
-      "end_m": 5270,
+      "start_m": 4928.796,
+      "end_m": 5270.269,
       "side": -1,
       "material": "PanelPurple"
     },
     {
       "name": "Reference event panels",
-      "start_m": 650,
-      "end_m": 1030,
+      "start_m": 652.663,
+      "end_m": 1033.437,
       "side": 1,
       "material": "PanelYellow"
     },
     {
       "name": "Reference event panels",
-      "start_m": 650,
-      "end_m": 1030,
+      "start_m": 652.663,
+      "end_m": 1033.437,
       "side": -1,
       "material": "PanelYellow"
     },
     {
       "name": "Braking distance boards",
-      "apex_m": 286,
+      "apex_m": 287.352,
       "side": -1,
       "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
     },
     {
       "name": "Braking distance boards",
-      "apex_m": 1018,
+      "apex_m": 1022.484,
       "side": -1,
       "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
     },
     {
       "name": "Braking distance boards",
-      "apex_m": 3234,
+      "apex_m": 3231.1,
       "side": 1,
       "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
     },
     {
       "name": "Braking distance boards",
-      "apex_m": 4065,
+      "apex_m": 4062.23,
       "side": -1,
       "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
     },
     {
       "name": "Braking distance boards",
-      "apex_m": 4578,
+      "apex_m": 4575.083,
       "side": 1,
       "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
     },
     {
       "name": "Authored pit building",
-      "start_m": 4940,
-      "end_m": 5230,
+      "start_m": 4939.105,
+      "end_m": 5229.679,
       "side": 1,
       "height_m": 13
     },
     {
       "name": "Authored grandstand",
-      "start_m": 4900,
-      "end_m": 5270,
+      "start_m": 4898.515,
+      "end_m": 5270.269,
       "side": -1,
       "rows": 20
     },
     {
       "name": "Authored grandstand",
-      "start_m": 80,
-      "end_m": 230,
+      "start_m": 80.536,
+      "end_m": 230.655,
       "side": -1,
       "rows": 18
     },
     {
       "name": "Authored grandstand",
-      "start_m": 1050,
-      "end_m": 1130,
+      "start_m": 1053.409,
+      "end_m": 1133.301,
       "side": -1,
       "rows": 12
     },
     {
       "name": "Authored grandstand",
-      "start_m": 1070,
-      "end_m": 1140,
+      "start_m": 1073.382,
+      "end_m": 1143.61,
       "side": 1,
       "rows": 12
     },
     {
       "name": "Authored grandstand",
-      "start_m": 3900,
+      "start_m": 3899.226,
       "end_m": 4020,
       "side": -1,
       "rows": 13
@@ -135,7 +135,7 @@
       "osm_id": 26811587,
       "name": "Powerhouse Function Centre",
       "height_m": 7,
-      "removed_road_area_m2": 0.0,
+      "removed_road_area_m2": -0.0,
       "structure": "enclosed",
       "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
@@ -155,7 +155,7 @@
       "osm_id": 45384591,
       "name": "YVE Apartments",
       "height_m": 70,
-      "removed_road_area_m2": 0.0,
+      "removed_road_area_m2": -0.0,
       "structure": "enclosed",
       "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
@@ -165,7 +165,7 @@
       "osm_id": 306782098,
       "name": "Pullman Melbourne Albert Park",
       "height_m": 16,
-      "removed_road_area_m2": -0.0,
+      "removed_road_area_m2": 0.0,
       "structure": "enclosed",
       "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
@@ -175,7 +175,7 @@
       "osm_id": 1081955937,
       "name": "Kingstoun",
       "height_m": 77.8,
-      "removed_road_area_m2": 0.0,
+      "removed_road_area_m2": -0.0,
       "structure": "enclosed",
       "ground_floor": "Facade windows",
       "road_clearance_exception": "none",
@@ -184,8 +184,8 @@
   ],
   "vegetation": [
     {
-      "start_m": 240,
-      "end_m": 1045,
+      "start_m": 240.963,
+      "end_m": 1048.255,
       "side": 1,
       "setback_m": 6,
       "rows": 3,
@@ -193,8 +193,8 @@
       "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
     },
     {
-      "start_m": 300,
-      "end_m": 1045,
+      "start_m": 301.526,
+      "end_m": 1048.255,
       "side": -1,
       "setback_m": 6,
       "rows": 3,
@@ -202,8 +202,8 @@
       "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
     },
     {
-      "start_m": 1120,
-      "end_m": 1700,
+      "start_m": 1123.637,
+      "end_m": 1704.784,
       "side": 1,
       "setback_m": 18,
       "rows": 2,
@@ -211,8 +211,8 @@
       "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
     },
     {
-      "start_m": 1160,
-      "end_m": 1720,
+      "start_m": 1163.583,
+      "end_m": 1724.757,
       "side": -1,
       "setback_m": 17,
       "rows": 2,
@@ -220,8 +220,8 @@
       "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
     },
     {
-      "start_m": 1800,
-      "end_m": 2860,
+      "start_m": 1801.427,
+      "end_m": 2855.48,
       "side": -1,
       "setback_m": 18,
       "rows": 2,
@@ -229,8 +229,8 @@
       "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
     },
     {
-      "start_m": 2940,
-      "end_m": 3860,
+      "start_m": 2936.016,
+      "end_m": 3859.28,
       "side": -1,
       "setback_m": 14,
       "rows": 2,
@@ -238,8 +238,8 @@
       "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
     },
     {
-      "start_m": 3880,
-      "end_m": 4800,
+      "start_m": 3879.253,
+      "end_m": 4798.006,
       "side": 1,
       "setback_m": 18,
       "rows": 2,
@@ -247,8 +247,8 @@
       "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
     },
     {
-      "start_m": 4100,
-      "end_m": 4760,
+      "start_m": 4095.089,
+      "end_m": 4758.061,
       "side": -1,
       "setback_m": 22,
       "rows": 2,
@@ -256,7 +256,7 @@
       "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
     },
     {
-      "start_m": 1900,
+      "start_m": 1892.271,
       "end_m": 2810,
       "side": 1,
       "setback_m": 24,

@@ -19,8 +19,9 @@
     "chosen": "relation-cycle/421263",
     "measured_plan_m": 4956.775,
     "published_m": 4940,
-    "uniform_scale": 0.996616,
-    "scale_rule": "Applied only when the mapped plan was within 1.5% of a published length. Larger gaps keep the mapped length."
+    "uniform_scale": 1.0052314376858864,
+    "scale_rule": "Composed source projection and native32-subdivision Catmull length normalization, including the disclosed local corner reconstruction/refinement stages. Original source projection is retained separately; see scene-registration.json.",
+    "source_projection_uniform_scale": 0.996616
   },
   "elevation": {
     "provider": "Formula 1 published 2016 topography diagram",
@@ -66,5 +67,38 @@
     "relief_m": 20.046,
     "uncertainty_m": 8,
     "deck": null
+  },
+  "runtime_frame_normalization_2026_11_12": {
+    "original_source_uniform_scale": 0.996616,
+    "post_event_corner_native_uniform_factor": 1.0079684986372148,
+    "composed_scene_geo_uniform_scale": 1.0045575332378265,
+    "source_alignment_sha256": "da492d906bc96ce7f6d093fbed42c657dd5f49e84e1c06e64b489582f905de66",
+    "final_road_sha256": "a0a79fcc27f90446a46b6d2b7d76e9757c529e0f6958bf0c42b8ad9f612859c9",
+    "fit_samples": 124,
+    "maximum_registration_residual_m": 0.1799532204876024,
+    "rms_registration_residual_m": 0.033697357990513245,
+    "method": "The native authoredCircuitPlan sampler normalizes the corrected loop to its retained 4940 m target length. Five event fillets shorten the raw loop, so that runtime normalization uniformly expands every native XY coordinate. Compose that factor once with the historical source WGS-to-local scale so mapped buildings, shorelines and road share the final runtime frame. The original scale is retained here as historical evidence. Fit uses corrected source controls against the final exported road; interpolation refinement remains the small residual.",
+    "limitations": "The factor is a runtime coordinate registration, not a new geographic survey or proof of measured circuit length. Native road XYZ, width, profile, timing phase and collision are not changed by this provenance update."
+  },
+  "scene_coordinate_registration": {
+    "source_projection_uniform_scale": 0.996616,
+    "effective_scene_uniform_scale": 1.0052314376858864,
+    "native_normalization_chain": {
+      "initial_corrected_controls_factor": 1.00741049822639,
+      "initial_catmull_length_m": 4903.6612746166065,
+      "refinement_controls_factor": 1.0005591897403492,
+      "refinement_catmull_length_m": 4937.239055998623,
+      "post_original_chain_factor": 1.0079738318413183,
+      "fitted_minus_chain_factor": -5.333204103452616e-06,
+      "baseline_factor": 1.0006655524764707,
+      "all_chain_factor": 1.0086446913213178,
+      "effective_scene_uniform_scale": 1.0052314376858864,
+      "method": "Exact float32 native32-step Catmull expression and float32 segment norms, double arc accumulation, float32 correction including Units17. Compose original9d8e native factor,5-event alignment controls, then sigma2 refinement controls. No production metadata or native source edited.",
+      "baseline_factor_applied_to_selected_scale": true
+    },
+    "final_road_sha256": "a0a79fcc27f90446a46b6d2b7d76e9757c529e0f6958bf0c42b8ad9f612859c9",
+    "source_basis": "alignment-corrections.json",
+    "source_basis_sha256": "da492d906bc96ce7f6d093fbed42c657dd5f49e84e1c06e64b489582f905de66",
+    "scope": "Scenery WGS84-to-native XY registration only. Native road geometry, physical road widths, elevations, vehicle tuning and camera are not changed by this metadata update. Original corner authoring controls retain their explicitly documented historical coordinate frame."
   }
 }

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-12",
+  "status": "Source audit; local elevation correction ready, width reassignment withheld pending unambiguous edge registration.",
+  "elevation": {
+    "primary_operator_url": "https://www.fia.com/sites/default/files/media_kit_-_chinese_gp.pdf",
+    "page": 14,
+    "published_max_uphill_pct": 3,
+    "published_max_downhill_pct": 8,
+    "old_native_max_uphill_pct": 4.5091,
+    "canonical_profile": "elevation-corrections.json",
+    "corrected_native_ranges_m": [
+      [
+        950,
+        1126
+      ],
+      [
+        3700,
+        4093
+      ]
+    ],
+    "preserved_relative_relief_m": 7.4,
+    "uncertainty_height_m": 1,
+    "uncertainty_station_m": 50
+  },
+  "width": {
+    "prior_generic_range_m": [
+      13,
+      16
+    ],
+    "team_source_url": "https://au.motorsport.com/f1/news/chinese-gp-williams-preview-2008-10-15/2821338/",
+    "source_credit": "Williams original team preview, republished by Motorsport.com.",
+    "published_average_range_m": [
+      13,
+      15
+    ],
+    "published_named_corner_width_m": 20,
+    "published_corner_name": "Turn13",
+    "numbering_conflict": "The same preview describes14 turns and names the first left asTurn2, while the present official map has16 turns and the first left isTurn3. Do not transfer its20m width to the modern T13 without a matching physical location.",
+    "direct_reference": "Saved/Refs/china.mp4 at662s; retained detail-0662.jpg. Modern T13, right turn around purple inner apron, ANTING stand outside.",
+    "edge_observation": "Black racecourse is distinct from the purple inner apron. The apron is excluded from white-edge racing width. The view supports broad road geometry but is not an absolute measurement.",
+    "decision": "No new width controls authored from an ambiguously numbered historical specification."
+  },
+  "alignment": "Read-only raw mapped controls delivered for native1015m/T11,2676m/T14 and4924m/T6. Root coordinates any qualified tangent-continuous correction."
+}

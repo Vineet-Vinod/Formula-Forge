@@ -1,9 +1,9 @@
 {
   "recipe": "make circuit-assets CIRCUIT=austria",
-  "tiles": 149,
-  "triangles": 893972,
-  "road_sha256": "d6f39b8390deb936be2c083cc6a44c7ea30d053d3afa116e7f8e281898d193d0",
-  "terrain_sha256": "6408e26119b1d40ee27a2177945afc07c4f942b1c7a06ed3919193ec6d5cfc4b",
+  "tiles": 178,
+  "triangles": 978293,
+  "road_sha256": "3d5e959213c73355280e6f2b11bb3a14ccc197a1af5912010d2afbdaec529918",
+  "terrain_sha256": "9cc567093ec0c60548f45cf0584c888c9dc4a5060149b93c7171d2aa90cd6050",
   "landmarks": [
     {
       "name": "Paved pit lane and working apron",
@@ -134,67 +134,15 @@
   ],
   "vegetation": [
     {
-      "start_m": 470,
-      "end_m": 1120,
-      "side": 1,
-      "setback_m": 35,
-      "rows": 4,
-      "species_form": "mixed conifer/broadleaf",
-      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
-    },
-    {
-      "start_m": 470,
-      "end_m": 1110,
-      "side": -1,
-      "setback_m": 35,
-      "rows": 4,
-      "species_form": "mixed conifer/broadleaf",
-      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
-    },
-    {
-      "start_m": 1320,
-      "end_m": 1880,
-      "side": -1,
-      "setback_m": 55,
-      "rows": 4,
-      "species_form": "mixed conifer/broadleaf",
-      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
-    },
-    {
-      "start_m": 2140,
-      "end_m": 2630,
-      "side": -1,
-      "setback_m": 40,
-      "rows": 4,
-      "species_form": "mixed conifer/broadleaf",
-      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
-    },
-    {
-      "start_m": 2700,
-      "end_m": 3340,
-      "side": -1,
-      "setback_m": 40,
-      "rows": 4,
-      "species_form": "mixed conifer/broadleaf",
-      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
-    },
-    {
-      "start_m": 2850,
-      "end_m": 3350,
-      "side": 1,
-      "setback_m": 65,
-      "rows": 4,
-      "species_form": "mixed conifer/broadleaf",
-      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
-    },
-    {
-      "start_m": 3390,
-      "end_m": 3810,
-      "side": -1,
-      "setback_m": 55,
-      "rows": 4,
-      "species_form": "mixed conifer/broadleaf",
-      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+      "name": "Mapped continuous woodland",
+      "source": "vegetation/woodland-provenance.json",
+      "patches": 19,
+      "woodland_area_m2": 1651960.180867353,
+      "reconstructed_trees": 10689,
+      "detailed_edge_trees": 87,
+      "needleleaf_trees": 6929,
+      "minimum_crown_clearance_from_corridor_m": 12.457482818885214,
+      "placement_status": "Actual OSM forest/wood polygons and holes, clipped to retained classified-ground coverage. Roads, protection, aprons, buildings and water excluded. Tree positions, 12\u201328m edge/interior heights and mixed proportions where untagged are original reference-guided estimates; distant layered foliage preserves canopy continuity without extending woodland into mapped clearings."
     }
   ],
   "review_status": "Awaiting packaged whole-route review; asset import is not visual approval."

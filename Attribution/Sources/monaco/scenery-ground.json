@@ -839,5 +839,7 @@
     "datum_method": "Median offset to unchanged native road profile at 256 stations.",
     "use": "Surrounding landscape only, bilinearly resampled; not a racing-deck or bare-earth survey. Road-adjacent ground joins the existing road plane.",
     "terrain_sha256": "40d00025821f43db3273205cd72f0cb95f5f390bfd7276ddbd1765ff08e82644"
-  }
+  },
+  "grid_uniform_scale": 1.005977,
+  "grid_frame_note": "Retained grid XY uses this original geographic projection scale. Materialization composes current provenance scene scale into XY origin/spacing only; source heights and vertical datum remain unchanged."
 }

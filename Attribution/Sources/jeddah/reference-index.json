@@ -82,11 +82,12 @@
         243,
         247,
         251,
-        255,
         253.16,
-        307
+        255,
+        307,
+        311
       ],
-      "observed": "Long white layered pit building on right, opposite roof stand; close sponsor walls and tall catchfence. Large green/blue painted escape at first left/right. Palms and low white utility buildings beyond wall.",
+      "observed": "The forward 235/239/243 s views show the four-storey white-framed glazed pit and club compound on driver LEFT and the open crowd grandstand on driver RIGHT. The former opposite-side description is rejected. Close sponsor walls, tall catchfence, opening painted escape and narrow red-white kerbs remain visible.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
     },
     {
@@ -100,7 +101,6 @@
         259,
         263,
         267,
-        311,
         315
       ],
       "observed": "Narrow asphalt channel between concrete and continuous mesh; red-white narrow apex kerbs, occasional green-painted outer lane. Blue evening sky over white apartment and event blocks, not continuous generic forest.",
@@ -177,8 +177,7 @@
         275,
         279,
         283,
-        287,
-        295
+        287
       ],
       "observed": "Long flowing fenced run, articulated pit/hospitality visible across road loop. Sponsor bridges and uninterrupted light rows; small green verge beside wall; no grass parkland replacing paved shoulders.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
@@ -191,12 +190,17 @@
       ],
       "name": "T27 hairpin and return pit straight",
       "reviewed_video_seconds": [
+        289,
+        290,
         291,
+        292,
+        293,
+        295,
         299,
         303
       ],
-      "observed": "Wide slow left turnaround, coloured paved runoff and terminal impact barriers, mainstand and high white-framed pit decks dominate. Preserve hotel/site access behind fence, continuous curved outer protection.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "observed": "Continuous 289–293 s approaches, turns through and exits the T27 left hairpin. A two-level white-framed glazed pavilion appears across the corner and passes to the right on exit; a sparse mature tree belt and green Aramco wall follow the turn. Later pit return leads toward the LEFT pit compound and RIGHT main stand.",
+      "registration": "T27 pavilion identity and continuous turn direction are direct video observations. The 291 s position is estimated near native 5390±40 m, not an exact match to the old 5410 m static target. A driver/camera cut at 294 s prevents continuous time-to-station interpolation beyond 293 s."
     }
   ],
   "primary_sources": [
@@ -216,8 +220,8 @@
     "Barrier-vertex median widths cannot reproduce chicane escape lanes; author terminal protection behind paved escape, never directly across turn exit."
   ],
   "targeted_registration_review": {
-    "method": "Direct appearance/topology checks of retained frames and bounded individual Baku reference seeks; source geometry and all native data unchanged.",
-    "notes": "Targeted frame review corrects331.06s to northern T13banked hairpin (~40s relative lap timer), not the southern esses.291s is late T27(~1:21), followed by pit return;307–327s begins a later-lap opening/esses sequence. Exact native station association remains a visual estimate, approximately±60m. Sponsor colours alone do not establish corner identity; older overview links elsewhere remain contextual until full-lap continuity review.",
+    "method": "Direct Jeddah frame/landmark and minimap checks; source geometry and native data are unchanged by reference registration.",
+    "notes": "The 331.06 s frame is the northern T13 banked hairpin, not the southern esses. The continuous 289–293 s sequence covers T27 with the HUD lap clock approximately 1:23.87→1:27.87; 291 s is approximately native 5390±40 m. The clip cuts at 294 s. The 307–327 s views begin a later-lap opening/esses sequence. Exact native station associations remain estimates; sponsor colour alone does not establish corner identity. Older overview links elsewhere remain contextual until actual continuity review.",
     "next_gate": "Actual packaged full-lap review and targeted captures in build/reviews/east-final-targets.json; these metadata corrections are not visual approval."
   },
   "diamond_tower_reference": {
@@ -301,5 +305,108 @@
       }
     ],
     "reference_review_targets": "build/reviews/coastal-water-review-targets.json"
+  },
+  "registration_review_2026_11_12": {
+    "scope": "Known false frame associations corrected; Diamond construction and northern-bank registration from the earlier direct review preserved.",
+    "retained_former_associations": [
+      {
+        "sector_id": "jeddah-01",
+        "reviewed_video_seconds": [
+          235,
+          239,
+          243,
+          247,
+          251,
+          255,
+          253.16,
+          307
+        ]
+      },
+      {
+        "sector_id": "jeddah-02",
+        "reviewed_video_seconds": [
+          259,
+          263,
+          267,
+          311,
+          315
+        ]
+      },
+      {
+        "sector_id": "jeddah-03",
+        "reviewed_video_seconds": [
+          408.95,
+          486.85,
+          319,
+          323,
+          327
+        ]
+      },
+      {
+        "sector_id": "jeddah-04",
+        "reviewed_video_seconds": [
+          331.06
+        ]
+      },
+      {
+        "sector_id": "jeddah-05",
+        "reviewed_video_seconds": [
+          642.64,
+          720.54,
+          335
+        ]
+      },
+      {
+        "sector_id": "jeddah-06",
+        "reviewed_video_seconds": [
+          876.33,
+          946.22
+        ]
+      },
+      {
+        "sector_id": "jeddah-07",
+        "reviewed_video_seconds": [
+          271,
+          275,
+          279,
+          283,
+          287,
+          295
+        ]
+      },
+      {
+        "sector_id": "jeddah-08",
+        "reviewed_video_seconds": [
+          291,
+          299,
+          303
+        ]
+      }
+    ],
+    "confirmed_corrections": [
+      "311s is the openingT2 right turn, not a later southern esses view.",
+      "295s belongs theT27/pit-return sequence after the direct291s final hairpin, notT22–T26.",
+      "339s shows late-lap acceleration atHUD1:15.917; the clip jumps from the northern return at335s to this later section, so missing intermediate station views cannot be inferred from playback time."
+    ],
+    "new_frame": {
+      "seconds": 339,
+      "observation": "Direct late-lap coastal straight, crypto.com walls, high tower left and construction beyond the fence. Exact station is not claimed."
+    },
+    "unverified_overview_sector_associations": [
+      408.95,
+      486.85,
+      642.64,
+      720.54,
+      876.33,
+      946.22
+    ],
+    "uncertainty": "These older overview-to-sector labels remain contextual, not precise per-point witnesses. Additional actual pose matching is required before using them to approve named intermediate-corner geometry.",
+    "acceptance_status": "Reference audit only; no new runtime acceptance."
+  },
+  "pit_facilities_correction": {
+    "source": "pit-facilities-review.json",
+    "pit_lane": "pit-lane.json",
+    "former_side_claim_rejected": "The old right-pit/left-mainstand description contradicts direct forward video and the FIA pit plan.",
+    "runtime_approval": false
   }
 }

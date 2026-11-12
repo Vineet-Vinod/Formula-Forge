@@ -348,5 +348,17 @@
     "Overview observations establish visual vocabulary; every individual asset position requires footprint/map registration.",
     "No high-resolution raster or orthophoto added by this reference review."
   ],
-  "racing_elevation_correction": "elevation-corrections.json"
+  "racing_elevation_correction": "elevation-corrections.json",
+  "classified_ground_source_review": {
+    "road": "elevation-corrections.json",
+    "scenery": "scenery-ground.json",
+    "source": "Official USGS3DEP TX Central B1 2017 classified bare-earth DEM",
+    "diagnosis": "F1chart totalrelief was credible, but local station/height registration differs by up to2.51m; GLO30scenery includes roof/canopy artefacts. Independent actual source restores localgrade and consistent ground without a relief multiplier.",
+    "rendered_validation": "Pending root native application/materialization and fresh matched runtime review."
+  },
+  "mainstand_roof_source_review": "environment-recipe.json:mainstand_tensile_canopy_review",
+  "architecture_dimensions_correction_20261112": {
+    "source": "tower-deck-plan.json",
+    "status": "Source corrected; fresh packaged images and independent reference review still required."
+  }
 }

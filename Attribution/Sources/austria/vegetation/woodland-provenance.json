@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "provider": "OpenStreetMap contributors",
+  "retrieved_utc": "2026-11-12",
+  "licence": "ODbL 1.0",
+  "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "copyright_url": "https://www.openstreetmap.org/copyright",
+  "inputs": [
+    {
+      "file": "austria-map.osm.gz",
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=14.7445,47.2125,14.7800,47.2330",
+      "sha256": "41f4a05dbcd638d6a5def69c35544a8f182345b1d286446ee5629eda2a0e4861",
+      "uncompressed_sha256": "bc6880a3794c4b63955e58ffde7582250a74dc29cfcb92e93358e6dc3da22d68"
+    },
+    {
+      "file": "austria-relation-5691267.osm.gz",
+      "url": "https://api.openstreetmap.org/api/0.6/relation/5691267/full",
+      "sha256": "133ac97d023b09e4d334736bf616fa4f7fe46a7c668d4cdac0bbe30e9a274ea0",
+      "uncompressed_sha256": "c8626ba0b2d749571d68147a53dbd43ab89cc9675f1d7530f728b2dad49ce96f"
+    },
+    {
+      "file": "austria-relation-8060399.osm.gz",
+      "url": "https://api.openstreetmap.org/api/0.6/relation/8060399/full",
+      "sha256": "206265ddf5286d2e0b5570c4d7baf6af1e33e13b8fd314bf6049652d9209bc33",
+      "uncompressed_sha256": "7e833215cde30312bb75f38a29709617f5bc83e817be13dfc1488bce08f03c16"
+    },
+    {
+      "file": "austria-relation-8223993.osm.gz",
+      "url": "https://api.openstreetmap.org/api/0.6/relation/8223993/full",
+      "sha256": "e8b925826556144e11b9c9833944f06bdb0d36132701c665bebf6d3341bb013b",
+      "uncompressed_sha256": "601fd8388e8b5ac408acafa5b6ce2fddf4756074e67eb950969ced9d9de7feb2"
+    }
+  ],
+  "conversion": "Original bounded OSM API XML plus three complete forest relations converted to forest-only Overpass-compatible geometry. All original XML is retained. Relation member chains are polygonized with inner rings subtracted; no simplification.",
+  "polygons_file": "woodland-polygons.json",
+  "polygons_sha256": "531de2e9da5997469231e6f9265296c05bf0778ee79b259d67ae27e1d769e196",
+  "source_components": 19,
+  "source_inner_rings": 237,
+  "mapped_attributes": "Natural wood/landuse forest outlines and interior clearings. Leaf type/cycle used where tagged; unspecified stands remain explicit inferred mixed woodland. Current mapping may postdate the supplied game reference. OSM canopy outlines are not a surveyed individual-tree inventory.",
+  "placement": "Clip each original polygon to the classified-ground terrain grid and preserve its clearings. Exclude the complete road, protection and apron corridor, every mapped building, water and the existing authored temporary stands, with a 12 m safety buffer. Place trees in jittered 12 m cells at least 5 m inside each woodland polygon. Road geometry, protection, runoff and all measured ground heights remain unchanged.",
+  "tree_estimates": {
+    "interior_height_m": [
+      17,
+      28
+    ],
+    "edge_minimum_m": 12,
+    "spacing_m": 12,
+    "jitter_m": 3.6,
+    "detailed_distance_from_road_m": 65,
+    "untagged_conifer_fraction": 0.65,
+    "uncertainty": "Individual positions, heights, density and untagged species proportions are original reference-guided reconstruction. Approximate mature mixed/conifer forms, not precise species assignments. Foliage uses the existing accepted TreeCanopy atlas; no video pixels are shipped."
+  },
+  "geometry_budget": "At most 600,000 new woodland triangles per venue. Remove the old four-row station bands. Near trees retain detailed trunks and leaf clusters. Distant trees use layered foliage cards with varied heights and outlines.",
+  "ground_source": "../scenery-ground.json",
+  "reference": {
+    "path": "build/reviews/austria/reference/overview-11.jpg",
+    "time_s": 786.33,
+    "sha256": "42da6729549ff33988ef7eedea7f93a23daa8b901878b785cf67c12dc542f991",
+    "observation": "Continuous densely wooded banks/ridges with mixed canopy edges and real open grass/spectator clearings. Prior sparse parallel rows leave artificial bare bands.",
+    "registration": "Middle-sector landscape context only. Exact corner and pose are not registered; do not infer tree coordinates or road dimensions from this still."
+  },
+  "temporary_stand_clearings": {
+    "geometry": "Original authored stand parameters and seat geometry are unchanged. Their exact swept seating envelope excludes tree crowns locally; no new physical corridor or terrain cut is added.",
+    "ranges": [
+      {
+        "start_m": 1110,
+        "end_m": 1300,
+        "side": -1,
+        "rows": 20,
+        "setback_m": 26
+      }
+    ]
+  }
+}

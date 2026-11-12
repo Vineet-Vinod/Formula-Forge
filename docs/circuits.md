@@ -1,10 +1,58 @@
-# Added circuits
+# Circuit sources
 
-Nineteen layouts were built from OpenStreetMap raceway geometry and Copernicus GLO-90 elevations sampled on 2026-11-04. The driving length is the mapped plan, scaled to a published length only when the two already agreed within 1.5%. Shoulders use nearby OSM barriers where a vertex exists and a venue default where one does not.
+The playable catalogue contains **22 circuits**: the preserved Silverstone, Monza, Interlagos and Las Vegas baselines, plus 18 venues reconstructed from the supplied reference videos. Hanoi remains excluded. An enum entry alone does not make a layout playable.
 
-Suzuka is the only figure-eight. The back straight is the bridge over the Degner curves. Where the ground model falls into that underpass, the deck is filled to keep about 6.2 m of clearance and the lower road stays on the sampled ground. Its road profile is the Geospatial Information Authority of Japan 5 m mesh, not the earlier GLO-90 surface.
+## Current native profiles
 
-Walls are continuous, including pit entry. That closure is for the game. Widths are typical asphalt figures, not a white-line survey. The initial generated circuits use GLO-90, a surface model with stated vertical uncertainty of 8 m on streets and 5 m on permanent circuits. Las Vegas has since been rebuilt with USGS 3DEP bare-earth terrain, a filtered road profile, native scenery and cockpit review. Its original footprint count in the table is superseded by [scenery.json](../Attribution/Sources/lasvegas/scenery.json); see [Las Vegas validation](lasvegas_validation.json) for evidence and limits.
+The 18 reconstructed venues each export 8,192 native road samples. The table below uses the current exported length, elevation relief and full asphalt-width range. Native station zero is not always the timing line; use each venue's registered station anchors.
+
+Racing profiles and surrounding terrain have separate sources:
+
+- Austria, Spa, COTA and Zandvoort use retained classified-ground elevation products. Portimão uses retained DGT class-2 lidar points. Suzuka uses processed GSI ground data with separate bridge treatment. Turkey uses a digitised closed engineering profile; Buddh retains GLO-30 outside its source-corrected climb. Other published-profile and coarse-DEM reconstructions retain their stated uncertainty.
+- Surrounding ground now uses the same regional ground providers at Austria, Spa, COTA, Zandvoort and Portimão, IGN RGE ALTI at Monaco, and GSI at Suzuka. The other venues retain documented GLO DSM sources and bounded local ground corrections. Grid spacing does not establish source accuracy.
+
+Published profiles are digitised reconstructions; DSMs can include roofs and vegetation. These are not engineering surveys. Widths, banking, shoulder offsets and local escapes use the retained operator evidence and authored estimates documented per venue.
+
+| Circuit | Native m | Relief m | Width m | Racing profile | Surrounding terrain |
+| --- | ---: | ---: | ---: | --- | --- |
+| [Bahrain](../Attribution/Sources/bahrain/provenance.json) | 5412 | 16.900 | 14.0–22.0 | [F1 profile](../Attribution/Sources/bahrain/elevation-corrections.json) | [GLO-30 DSM](../Attribution/Sources/bahrain/scenery-terrain.json) |
+| [Jeddah](../Attribution/Sources/jeddah/provenance.json) | 6174 | 3.936 | 12.0–15.0 | [Retained GLO-90](../Attribution/Sources/jeddah/provenance.json) | [GLO-30 DSM](../Attribution/Sources/jeddah/scenery-terrain.json) |
+| [Australia](../Attribution/Sources/australia/provenance.json) | 5278 | 2.600 | 12.0–15.0 | [F1 profile](../Attribution/Sources/australia/elevation-corrections.json) | [GLO-30 DSM](../Attribution/Sources/australia/scenery-terrain.json) |
+| [Japan (Suzuka)](../Attribution/Sources/japan/provenance.json) | 5807 | 40.576 | 12.0–15.0 | [Processed GSI 5 m](../Attribution/Sources/japan/provenance.json) | [GSI 5 m](../Attribution/Sources/japan/provenance.json) |
+| [China](../Attribution/Sources/china/provenance.json) | 5451 | 7.400 | 13.0–16.0 | [F1 profile](../Attribution/Sources/china/elevation-corrections.json) | [GLO-30 DSM](../Attribution/Sources/china/scenery-terrain.json) |
+| [Canada](../Attribution/Sources/canada/provenance.json) | 4361 | 5.200 | 12.0–13.5 | [F1 profile](../Attribution/Sources/canada/elevation-corrections.json) | [GLO-30 DSM](../Attribution/Sources/canada/scenery-terrain.json) |
+| [Monaco](../Attribution/Sources/monaco/provenance.json) | 3337 | 42.000 | 10.5–12.0 | [F1 profile](../Attribution/Sources/monaco/elevation-corrections.json) | [IGN RGE ALTI](../Attribution/Sources/monaco/scenery-terrain.json) |
+| [Austria](../Attribution/Sources/austria/provenance.json) | 4318 | 63.338 | 12.0–13.0 | [Styria classified-ground DGM](../Attribution/Sources/austria/elevation-corrections.json) | [Styria DGM](../Attribution/Sources/austria/scenery-terrain.json) |
+| [Spa](../Attribution/Sources/spa/provenance.json) | 7004 | 102.256 | 12.0–15.0 | [SPW classified-ground MNT](../Attribution/Sources/spa/elevation-corrections.json) | [SPW MNT](../Attribution/Sources/spa/scenery-terrain.json) |
+| [Zandvoort](../Attribution/Sources/zandvoort/provenance.json) | 4259 | 8.718 | 12.0–14.0 | [AHN5 ground DTM](../Attribution/Sources/zandvoort/elevation-corrections.json) | [AHN5 DTM](../Attribution/Sources/zandvoort/scenery-terrain.json) |
+| [Baku](../Attribution/Sources/baku/provenance.json) | 6003 | 26.800 | 7.6–14.0 | [F1 profile](../Attribution/Sources/baku/elevation-corrections.json) | [GLO-90 DSM](../Attribution/Sources/baku/scenery-terrain.json) |
+| [Malaysia (Sepang)](../Attribution/Sources/malaysia/provenance.json) | 5543 | 22.000 | 16.0–22.0 | [F1 profile](../Attribution/Sources/malaysia/elevation-corrections.json) | [GLO-30 DSM](../Attribution/Sources/malaysia/scenery-terrain.json) |
+| [Singapore](../Attribution/Sources/singapore/provenance.json) | 4940 | 5.300 | 12.0–14.0 | [F1 profile](../Attribution/Sources/singapore/elevation-corrections.json) | [GLO-30 DSM](../Attribution/Sources/singapore/scenery-terrain.json) |
+| [COTA](../Attribution/Sources/cota/provenance.json) | 5513 | 30.956 | 12.0–16.0 | [USGS 3DEP 1 m](../Attribution/Sources/cota/elevation-corrections.json) | [USGS 3DEP](../Attribution/Sources/cota/scenery-terrain.json) |
+| [Turkey](../Attribution/Sources/turkey/provenance.json) | 5338 | 47.888 | 14.5–21.0 | [METU engineering profile](../Attribution/Sources/turkey/elevation-corrections.json) | [GLO-30 DSM](../Attribution/Sources/turkey/scenery-terrain.json) |
+| [Portimão](../Attribution/Sources/portimao/provenance.json) | 4653 | 28.738 | 14.0–18.0 | [DGT class-2 lidar](../Attribution/Sources/portimao/elevation-corrections.json) | [DGT ground](../Attribution/Sources/portimao/scenery-terrain.json) |
+| [Buddh](../Attribution/Sources/buddh/provenance.json) | 5141 | 16.234 | 18.0–25.0 | [FIA climb + retained GLO-30](../Attribution/Sources/buddh/elevation-corrections.json) | [GLO-30 DSM](../Attribution/Sources/buddh/scenery-terrain.json) |
+| [Hockenheim](../Attribution/Sources/hockenheim/provenance.json) | 4574 | 4.300 | 12.0–15.0 | [F1 profile](../Attribution/Sources/hockenheim/elevation-corrections.json) | [GLO-30 DSM](../Attribution/Sources/hockenheim/scenery-terrain.json) |
+
+Suzuka is the only figure-eight. Its back straight crosses the lower Degner road with a modelled clearance of about 6.2 m. Keep its separate deck protection; the planar boundary-union tool deliberately rejects this layout.
+
+Native scenes include circuit-specific architecture, vegetation, protection, kerbs, escape surfaces, braking boards and pit paving. Pit access remains closed for the game. Source generation, native geometry checks and a clean simulated lap do not establish visual or performance acceptance. Follow the [whole-lap workflow](map.md) and compare the exact current assets against registered references.
+
+The 2026-11-12 rebuild changes all 18 additional venues. Historical visual approvals
+predating these geometry and terrain changes do not approve the new assets. Fresh
+packaged whole-route review is pending. Accepted Silverstone, Monza, Interlagos
+and Las Vegas remain separate baselines.
+
+Portimão's retained DGT class-2 ground produces steeper local grades than published
+operator maxima whose measurement interval is unspecified. The source record keeps
+this discrepancy open; heights have not been scaled or clipped to force agreement.
+Event-corner reconstructions at Australia and Singapore retain explicit schematic
+radius uncertainty. Neither dense controls nor a smooth rendered curve establishes
+survey accuracy.
+
+## Historical alignment inventory — 2026-11-04
+
+This retained generator table records mapped alignment, uniform scale and the early footprint-count definition, including Las Vegas. It belongs to the initial 2026-11-04 source-fetch work; the Suzuka row already includes its later GSI update. Its relief and building columns are historical, not the current road or scene inventory. Most initial racing profiles used GLO-90. Scaling was applied only when mapped and published lengths already agreed within 1.5%.
 
 | Circuit | Mapped m | Published m | Scale | Relief m | Turns found | Buildings |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -28,6 +76,8 @@ Walls are continuous, including pit entry. That closure is for the game. Widths 
 | Buddh | 5137.1 | 5141 | 1.0008 | 13.2 | 16 | 1 |
 | Hockenheim | 4567.2 | 4574 | 1.0015 | 9.2 | 13 | 41 |
 
-Hanoi is not in the game. OpenStreetMap's circuit relation there is two separate pieces, about 2.6 km and 2.3 km, and the roads around My Dinh do not join them into the published 5.607 km lap. Closing that gap would mean inventing roughly 600 m of circuit.
+Las Vegas's initial row is superseded by its [scenery inventory](../Attribution/Sources/lasvegas/scenery.json) and [recorded validation](lasvegas_validation.json). Its accepted reconstruction uses USGS 3DEP ground data and remains a separate baseline.
 
-Source notes for each venue are in `Attribution/Sources/<slug>/provenance.json`. Contact surfaces are regenerated with `make circuits`.
+Hanoi was excluded because the retained OpenStreetMap relation contained two disconnected pieces of about 2.6 km and 2.3 km. Joining them into the published 5.607 km layout would require inventing roughly 600 m of circuit.
+
+Per-venue provenance, reference indices, environment recipes and correction files live under `Attribution/Sources/<slug>/`. Preserve the retained raw data and earlier-source notes when revising a reconstruction. Native survey controls remain in [track_data](../Source/FormulaForge/Native/track_data/); use the guarded commands in the [map workflow](map.md) when applying changes.

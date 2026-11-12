@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "used_to_replace_native_profile": false,
+  "used_to_replace_native_profile": true,
   "primary_source": {
     "title": "ABB Contact India3/2011, electrical supplier account of Buddh project",
     "url": "https://library.e.abb.com/public/bade2cb5c7c3d0e94825797e0062298a/Contact_3_11_India.pdf",
@@ -23,5 +23,15 @@
     "Exact bilinear sampling of the retained GLO-30 DSM gives a11.738m rise fromT2toT3 and a12.053m whole-lap range, with its summit near native1445m.",
     "The electrical supplier lists14m highest elevation without a full profile or datum. The direct GLO-30 profile improves the previous coarse climb without forcing a14m range."
   ],
-  "decision": "The native profile now uses direct GLO-30 centerline sampling with bounded3m DSM uncertainty. No road heights were fabricated from the14m summary."
+  "decision": "Superseded on2026-11-12 by the direct FIA2013 Indian GP preview: T3 is14m above T1. Canonical elevation-corrections.json retains GLO-30 outside native1165\u20132100m and applies a local operator-constrained climb; full range16.234m because T2 is lower than T1.",
+  "historical_glo30_decision": "The native profile now uses direct GLO-30 centerline sampling with bounded3m DSM uncertainty. No road heights were fabricated from the14m summary.",
+  "fia_2013_correction": {
+    "url": "https://api.fia.com/news/2013-indian-grand-prix-preview",
+    "published_metric": "14m rise between Turns1 and3, not whole-lap relief.",
+    "profile_file": "elevation-corrections.json",
+    "native_sync_status": "Source ready; root coordinates application and runtime checks.",
+    "construction_gradient_source": "https://www.consultanthart.com/www/pdf/RoadNews_24_en_India.pdf",
+    "published_max_gradient_pct": 10,
+    "local_reconstructed_max_gradient_pct": 9.3905
+  }
 }

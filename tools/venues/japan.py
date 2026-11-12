@@ -130,6 +130,7 @@ def build_venue(scene: CircuitScene) -> None:
     for side in (-1, 1):
         scene.branding(5480, 180, side, "PanelGreen")
         scene.branding(4628, 4676, side, "PanelAmericanExpress")
+        scene.branding(2235, 2430, side, "PanelAmericanExpress")
     bridge(scene)
     wheel(scene)
 

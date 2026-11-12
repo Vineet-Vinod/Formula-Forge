@@ -1,0 +1,125 @@
+[
+  {
+    "official_corner": "T6",
+    "source_way_id": 156328670,
+    "core_native_range_m": [
+      4911.7227500099025,
+      4932.382361528359
+    ],
+    "circle_center_source_xy_m": [
+      -369.510153550679,
+      257.3589345899076
+    ],
+    "radius_m": 19.03111116997357,
+    "raw_controls_xy_native_m": [
+      [
+        -384.1984210454034,
+        269.4537593009117,
+        4911.7227500099025
+      ],
+      [
+        -379.08290314929314,
+        273.8207842969756,
+        4918.343177954458
+      ],
+      [
+        -373.0088188201776,
+        276.05430089800683,
+        4924.811482604151
+      ],
+      [
+        -365.44468567839965,
+        275.95429269161343,
+        4932.382361528359
+      ]
+    ],
+    "incoming_fit_m": [
+      45,
+      15
+    ],
+    "outgoing_fit_m": [
+      15,
+      45
+    ],
+    "blend_m": 35,
+    "maximum_displacement_m": 2,
+    "source_radial_rms_m": 0.008532679461542963,
+    "source_radial_max_m": 0.011736060833641204,
+    "source_status": "Retained mapped raceway center controls; uncertainty2m. No kerb survey claimed."
+  },
+  {
+    "official_corner": "T11",
+    "source_way_id": 156328670,
+    "core_native_range_m": [
+      1002.1280461234835,
+      1026.2080090454435
+    ],
+    "circle_center_source_xy_m": [
+      96.15122538705731,
+      506.5877786972725
+    ],
+    "radius_m": 16.343705563648864,
+    "raw_controls_xy_native_m": [
+      [
+        110.34593246514132,
+        514.7183285395786,
+        1002.1280461234835
+      ],
+      [
+        105.9327305697578,
+        519.5520584969695,
+        1008.6351662228412
+      ],
+      [
+        101.69036229544366,
+        522.1744958989751,
+        1013.5922877322096
+      ],
+      [
+        96.77415029170491,
+        522.8523292953197,
+        1018.5441655791054
+      ],
+      [
+        93.20562574816414,
+        522.5189686086576,
+        1022.1183203787111
+      ],
+      [
+        89.21950790747714,
+        521.4966625026304,
+        1026.2080090454435
+      ]
+    ],
+    "incoming_fit_m": [
+      45,
+      15
+    ],
+    "outgoing_fit_m": [
+      12,
+      27
+    ],
+    "blend_m": 35,
+    "maximum_displacement_m": 2,
+    "source_radial_rms_m": 0.11865898619240883,
+    "source_radial_max_m": 0.19799298322657322,
+    "source_status": "Retained mapped raceway center controls; uncertainty2m. No kerb survey claimed.",
+    "tangent_registration_note": "Default exit window crossed the T12direction reversal at1062m. Use the gentle road segment1038\u20131053m before that reversal.",
+    "tangent_fit_residuals": [
+      {
+        "range_m": [
+          957.1280461234835,
+          987.1280461234835
+        ],
+        "maximum_line_residual_m": 5.434484922517413e-05
+      },
+      {
+        "range_m": [
+          1038.2080090454435,
+          1053.2080090454435
+        ],
+        "maximum_line_residual_m": 0.14047526846414105
+      }
+    ]
+  }
+]

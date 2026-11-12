@@ -6,7 +6,7 @@
   "origin": {
     "latitude": 37.226434389512065,
     "longitude": -8.626569271539783,
-    "meaning": "Local source origin at the point on the loop nearest the venue coordinate, after rotation to the start."
+    "meaning": "Retained local WGS84 reference from the original route selection. After replacing the false Galp chord, this coordinate lies inside the curve rather than on the racing asphalt; actual road station0 is separately registered."
   },
   "projection": "Local tangent plane, x east metres, y north metres. Vertical values are relative to the lowest smoothed sample on the lap.",
   "route": {
@@ -19,8 +19,13 @@
     "chosen": "cycle",
     "measured_plan_m": 4661.428,
     "published_m": 4653,
-    "uniform_scale": 0.998192,
-    "scale_rule": "Applied only when the mapped plan was within 1.5% of a published length. Larger gaps keep the mapped length."
+    "uniform_scale": 1.001037204324165,
+    "scale_rule": "Composed source projection and native32-subdivision Catmull length normalization, including the disclosed local corner reconstruction/refinement stages. Original source projection is retained separately; see scene-registration.json.",
+    "former_uniform_scale": 0.998192,
+    "authored_alignment": "alignment-corrections.json",
+    "variant_correction": "Named CurvaGalp363133195 replaces alternate39218673 chord; direct T1 connector157736307 replaces optional363133191 S detour. Both verified against FIA2021 map and supplied footage. Fixed local geographic datum; every source feature uses updated uniform scale.",
+    "full_variant_measured_plan_m": 4648.074971015831,
+    "source_projection_uniform_scale": 1.0006930822456528
   },
   "elevation": {
     "provider": "Open-Meteo Elevation API",
@@ -37,9 +42,41 @@
     "deck": null
   },
   "width": {
-    "base_m": 12.0,
-    "straight_m": 14.0,
-    "method": "Authored from typical Grade 1 asphalt width, wider on low-curvature sections. Not a traced white-line survey."
+    "provider": "Autodromo Internacional do Algarve operator technical characteristics",
+    "source_url": "https://autodromodoalgarve.com/the-park/racing-track/",
+    "retrieved": "2026-11-12",
+    "operator_track_width_m": 14,
+    "operator_main_straight_width_m": 18,
+    "controls_m": [
+      [
+        0,
+        14
+      ],
+      [
+        200,
+        14
+      ],
+      [
+        310,
+        18
+      ],
+      [
+        1150,
+        18
+      ],
+      [
+        1254,
+        14
+      ],
+      [
+        4653,
+        14
+      ]
+    ],
+    "registration": "Mapped main-straight way363133199 runs167.75\u20131154.26m; Galp exit/front straight and T1apex1254m registered in reference-index.json. Retain nominal14m elsewhere; widen the pit straight to18m. Transition positions are reconstructed, not surveyed edges.",
+    "local_width_uncertainty_m": 1.0,
+    "transition_station_uncertainty_m": 30,
+    "excludes": "Pit lane and green painted runoff outside racing white lines."
   },
   "shoulders": {
     "default_m": 8.0,
@@ -53,5 +90,33 @@
     "licence": "ODbL 1.0"
   },
   "protection": "Both sides are walled at the shoulder offset. Pit entry is closed. That closure is a game boundary, not a claim about the real pit lane.",
-  "not_claimed": "No lidar, no orthophoto registration, no cockpit capture in this build. Centimetre storage is not centimetre accuracy."
+  "not_claimed": "No lidar, no orthophoto registration, no cockpit capture in this build. Centimetre storage is not centimetre accuracy.",
+  "width_prior_to_2026_11_12": {
+    "base_m": 12.0,
+    "straight_m": 14.0,
+    "method": "Authored from typical Grade 1 asphalt width, wider on low-curvature sections. Not a traced white-line survey."
+  },
+  "scene_coordinate_registration": {
+    "source_projection_uniform_scale": 1.0006930822456528,
+    "effective_scene_uniform_scale": 1.001037204324165,
+    "native_normalization_chain": {
+      "initial_corrected_controls_factor": 1.0,
+      "initial_catmull_length_m": 4652.9997671525925,
+      "refinement_controls_factor": 1.0003438837387983,
+      "refinement_catmull_length_m": 4651.400678819045,
+      "post_original_chain_factor": 1.0003438837387983,
+      "fitted_minus_chain_factor": -1.3100819319600276e-05,
+      "baseline_factor": 1.0,
+      "all_chain_factor": 1.0003438837387983,
+      "effective_scene_uniform_scale": 1.001037204324165,
+      "method": "Replicate exact float32 native32-step Catmull expression and float32 segment norms, double arc accumulation, float32 correction includingUnits17. Compose firstcontrols then refinementcontrols; original native factor independently instrumented. Port hasmixedraw/old-native sourceframe caveat.",
+      "historical_all_factors_candidate_not_selected": 1.001037204324165,
+      "baseline_factor_applied_to_selected_scale": false
+    },
+    "final_road_sha256": "a9c30fd466deb5637ff6b91ef4a248e0aa662f5d9b9b7d8a709121aa6a697453",
+    "source_basis": "alignment-corrections.json",
+    "source_basis_sha256": "22d93846a380c0c94e1c9cc66f5b51bd901c7f34b47a667957d837b00cdd1adb",
+    "scope": "Scenery WGS84-to-native XY registration only. Native road geometry, physical road widths, elevations, vehicle tuning and camera are not changed by this metadata update. Original corner authoring controls retain their explicitly documented historical coordinate frame.",
+    "source_uncertainty_note": "Selected full-variant registration omits original false-route normalization. Local full Galp/T1 raw-map replacement and unchanged old-native portions leave about0.35m mixed-frame registration uncertainty; raw-source fit supports the selected scale. Classified heights are resampled separately in the selected final frame."
+  }
 }

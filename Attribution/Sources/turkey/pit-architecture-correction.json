@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "status": "Source correction; fresh rendered review required",
+  "footprint": {
+    "osm_id": 295742112,
+    "retained_file": "buildings.osm.json.gz",
+    "sha256": "2aafb16c43eccce2d833074679b3d05c8c40a67d627f597e9ed641987be29190",
+    "licence": "OpenStreetMap contributors, ODbL 1.0"
+  },
+  "reference": {
+    "file": "build/reviews/turkey/reference/detail-0329.jpg",
+    "time_s": 329,
+    "sha256": "2e8977279c6b404c026c012b431b35d6ffc5299f30c494f2cbff726ff42aad14",
+    "observation": "Forward mainstraight view. Pits on driver LEFT have repeated arched upper glazing; mainstand is on RIGHT. This validates sides and facade form, not a numeric height survey."
+  },
+  "old_model": {
+    "pit_station_range_m": [
+      5130,
+      230
+    ],
+    "length_m": 438,
+    "depth_m": 30,
+    "source_mismatch": "Synthetic strip starts about 80 m before actual frontage and lies about 5\u20137 m too far toward the road. Three long stacked roofs and guessed hospitality boxes replace actual concave geometry."
+  },
+  "replacement": {
+    "footprint": "Actual concave mapped footprint, including rear wings and real open courtyard",
+    "frontage_native_m": [
+      5211.599919,
+      250.009408
+    ],
+    "frontage_length_m": 374.901917,
+    "asphalt_edge_setback_m": [
+      17.5232444,
+      20.4443878
+    ],
+    "height_m": 16,
+    "foundation": "Project each point longitudinally to the actual long garage-front axis and then to the mainstraight grade. This avoids choosing the lower T 1 branch for rear building vertices. No DSM roof-derived base.",
+    "facade": "Recessed garage bays with repeated upper arched glazing and shallow mapped-footprint roof.",
+    "uncertainty": "Existing 16 m overall height, 6.4 m bay spacing, arch shapes and openings are reference-based reconstruction, not survey measurements. End VIP tower heights remain unverified; the prior three arbitrary glass boxes are removed rather than relabeled as mapped towers."
+  },
+  "pit_paving": {
+    "start_m": 5190,
+    "end_m": 270,
+    "side": -1,
+    "outer_offset_m": 17.5,
+    "shoulder_m": 0.1,
+    "transition_m": 25.0,
+    "source_note": "Actual mapped garage-front 295742112 spans native 5211.60 to 250.01 across zero. Frontage lies 17.523\u201320.444 m beyond the asphalt edge. Visual pit paving begins 5190 and ends 270, with a 17.5 m outer offset; its outer white line is 17.1 m from the road edge, safely in front of the minimum mapped frontage. Local source-authored apron polygons continue from that boundary to the real facade without another white stripe. Shoulder 0.10 m and 25 m transitions retain the closed pit-wall contract. Full footprint/arched-bay model replaces the old 438 m station strip; no road XYZ/bank/width changes."
+  },
+  "physics": "Root must apply the updated typed pit shoulder interval and refresh export/boundaries. Agent made no native writes. The additional facade apron uses terrain_cutouts only, never extra_corridors."
+}

@@ -19,27 +19,184 @@
     "chosen": "relation/2532569",
     "measured_plan_m": 5137.107,
     "published_m": 5141,
-    "uniform_scale": 1.000758,
-    "scale_rule": "Applied only when the mapped plan was within 1.5% of a published length. Larger gaps keep the mapped length."
+    "uniform_scale": 1.0010540807344797,
+    "scale_rule": "Composed source projection and native32-subdivision Catmull length normalization, including the disclosed local corner reconstruction/refinement stages. Original source projection is retained separately; see scene-registration.json.",
+    "source_projection_uniform_scale": 1.000758
   },
   "elevation": {
-    "provider": "Copernicus DEM GLO-30",
-    "dataset": "Copernicus DEM GLO-30",
-    "dataset_note": "30m digital surface model, not lidar or bare-earth road survey. Canopy and roof influences remain possible. Geographic source pixels are retained with provenance; no reference video pixels redistributed.",
+    "provider": "Registered FIA 2013 T1\u2013T3 climb constraint plus retained Copernicus GLO-30 profile outside the corrected sector",
+    "dataset": "Mixed registered FIA constraint and retained GLO-30 DSM",
+    "dataset_note": "FIA directly supports the14m T1\u2013T3 rise; contractor supports gradients up to10%. Intermediate station heights are a reference reconstruction, not a civil survey. Outside this local sector the30m DSM retains its earlier3m uncertainty.",
     "licence": "Copernicus DEM, see retained scenery-terrain.json",
     "controls": "elevation-corrections.json",
-    "source": "scenery-terrain.json",
+    "source": "elevation-corrections.json",
     "removed_minimum_m": 192.67316436767578,
     "relative_datum": "Relative to the minimum sampled GLO-30 centerline value.",
-    "relief_m": 12.053,
+    "relief_m": 16.234,
     "uncertainty_m": 3.0,
-    "smoothing": "Exact native XY centerline inverted to retained WGS84 origin/scale, bilinear raster sampling. Two circular[1,2,1]/4 passes at4m sample spacing. No vertical scale factor.",
+    "smoothing": "Retained profile outside native1165\u20132100m. Inside, monotone cubic Hermite controls sampled at1m with endpoint slopes matched to the retained profile; source apex heights and shape estimates recorded separately.",
     "deck": null
   },
   "width": {
-    "base_m": 12.0,
-    "straight_m": 15.0,
-    "method": "Authored from typical Grade 1 asphalt width, wider on low-curvature sections. Not a traced white-line survey."
+    "base_m": 18.0,
+    "straight_m": 20.0,
+    "minimum_m": 18.0,
+    "maximum_m": 25.0,
+    "method": "Construction-published paved circuit range, registered to white racing edges in the supplied 2013 onboard. Wider approaches and hairpins at T1, T3 and T4 are local visual estimates. Existing smooth cubic transitions join the controls.",
+    "source": "https://www.consultanthart.com/www/pdf/RoadNews_24_en_India.pdf",
+    "controls_m": [
+      [
+        0,
+        18
+      ],
+      [
+        180,
+        18
+      ],
+      [
+        260,
+        20
+      ],
+      [
+        350,
+        20
+      ],
+      [
+        400,
+        20
+      ],
+      [
+        900,
+        20
+      ],
+      [
+        960,
+        22
+      ],
+      [
+        1005,
+        25
+      ],
+      [
+        1055,
+        25
+      ],
+      [
+        1110,
+        20
+      ],
+      [
+        1190,
+        20
+      ],
+      [
+        1250,
+        18
+      ],
+      [
+        1320,
+        18
+      ],
+      [
+        1370,
+        22
+      ],
+      [
+        1405,
+        25
+      ],
+      [
+        1460,
+        25
+      ],
+      [
+        1530,
+        20
+      ],
+      [
+        2480,
+        20
+      ],
+      [
+        2580,
+        22
+      ],
+      [
+        2650,
+        25
+      ],
+      [
+        2745,
+        25
+      ],
+      [
+        2820,
+        18
+      ],
+      [
+        3150,
+        18
+      ],
+      [
+        3250,
+        20
+      ],
+      [
+        3330,
+        20
+      ],
+      [
+        3420,
+        18
+      ],
+      [
+        3820,
+        18
+      ],
+      [
+        3950,
+        20
+      ],
+      [
+        4100,
+        22
+      ],
+      [
+        4350,
+        22
+      ],
+      [
+        4470,
+        20
+      ],
+      [
+        4550,
+        18
+      ],
+      [
+        4800,
+        18
+      ],
+      [
+        4950,
+        20
+      ],
+      [
+        5040,
+        20
+      ],
+      [
+        5100,
+        18
+      ],
+      [
+        5141,
+        18
+      ]
+    ],
+    "uncertainty_m": 2.0,
+    "source_conflict": "ABB lists 18\u201320 m in a venue summary; the paving engineer and V\u00d6GELE construction account lists 18\u201325 m. The construction account is more specific. It does not supply station-resolved white-line dimensions.",
+    "edge_definition": "Racing asphalt inside white lines and kerbs. Excludes coloured runoff, green aprons and the separate pit lane. The contractor describes the paved circuit; local white-line placement remains a reference reconstruction."
   },
   "shoulders": {
     "default_m": 10.0,
@@ -67,5 +224,31 @@
     "relief_m": 13.231,
     "uncertainty_m": 5,
     "deck": null
+  },
+  "retained_generic_width": {
+    "base_m": 12.0,
+    "straight_m": 15.0,
+    "method": "Authored from typical Grade 1 asphalt width, wider on low-curvature sections. Not a traced white-line survey."
+  },
+  "scene_coordinate_registration": {
+    "source_projection_uniform_scale": 1.000758,
+    "effective_scene_uniform_scale": 1.0010540807344797,
+    "native_normalization_chain": {
+      "initial_corrected_controls_factor": 0.9996554430793313,
+      "initial_catmull_length_m": 5142.771926812828,
+      "refinement_controls_factor": 1.0003517375272863,
+      "refinement_catmull_length_m": 5139.192360078916,
+      "post_original_chain_factor": 1.0000070594130184,
+      "fitted_minus_chain_factor": -2.366734789727154e-05,
+      "baseline_factor": 1.0002887950235295,
+      "all_chain_factor": 1.0002958564752713,
+      "effective_scene_uniform_scale": 1.0010540807344797,
+      "method": "Replicate exact float32 native32-step Catmull expression and float32 segment norms, double arc accumulation, float32 correction includingUnits17. Compose firstcontrols then refinementcontrols; original native factor independently instrumented. Port hasmixedraw/old-native sourceframe caveat.",
+      "baseline_factor_applied_to_selected_scale": true
+    },
+    "final_road_sha256": "7eb5df0e1794e9f7fc4e82a5a4c683ae1c4ebe58d1d07ab61ca48b0e2186a373",
+    "source_basis": "alignment-corrections.json",
+    "source_basis_sha256": "a519366b0a394ac9c5fba94ff1f2a6efb02ec7fa071a7ee959512a0d2c83d31b",
+    "scope": "Scenery WGS84-to-native XY registration only. Native road geometry, physical road widths, elevations, vehicle tuning and camera are not changed by this metadata update. Original corner authoring controls retain their explicitly documented historical coordinate frame."
   }
 }

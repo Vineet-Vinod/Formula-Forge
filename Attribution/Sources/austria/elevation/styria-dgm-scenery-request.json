@@ -1,0 +1,12 @@
+{
+  "url": "https://gis.stmk.gv.at/image/rest/services/OGD_Hoehen/ALS_Hoehen_aktuell_DGM_UTM33N_32633/ImageServer/exportImage?bbox=480680%2C5228857%2C483334%2C5231049&bboxSR=32633&imageSR=32633&size=664%2C548&format=tiff&pixelType=F32&noData=-9999&interpolation=RSP_BilinearInterpolation&renderingRule=%7B%22rasterFunction%22%3A+%22None%22%7D&f=image",
+  "bbox_m": [
+    480680,
+    5228857,
+    483334,
+    5231049
+  ],
+  "estimated_uncompressed_bytes": 1455488,
+  "resolution_m": 4,
+  "note": "Full retained native road+700m covers existing650m scenery window afterprojectionrotation. Current officialDGMmosaic; query reports old1m and ALS2022\u20132023 .5m sources. Do not claim singleflightdate without raster lock/selection metadata."
+}

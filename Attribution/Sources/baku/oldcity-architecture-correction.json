@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "scope": "Baku Old City approach and castle ramp: original architecture correction.",
+  "raw_osm_context": {
+    "provider": "OpenStreetMap contributors",
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=49.8340,40.3675,49.8383,40.3703",
+    "retrieved_utc": "2026-11-12",
+    "file": "architecture/oldcity-context.osm.gz",
+    "sha256": "a4028cf39e9e5970d5ee5e62119837b64276d7f8a37a91ff90dbfe254eb24af9",
+    "licence": "ODbL1.0",
+    "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "limitation": "No correctly tagged outer fortress wall was found in the bounded response. Retained city_wall 299450006 is a separate southern palace wall, about 191 m from the racing street, and is not used as the castle alignment."
+  },
+  "primary_dimensions": {
+    "provider": "National Commission of the Republic of Azerbaijan forUNESCO",
+    "url": "https://unesco.az/en/articles/material_cultural_heritage/iceri-seher-qiz-qalasi-ve-sirvansahlar-saray-kompleksi",
+    "wall_height_m": [
+      8,
+      10
+    ],
+    "wall_thickness_m": 3.5,
+    "supporting_reserve_description": "https://artsandculture.google.com/story/open-air-museum-the-historical-and-architectural-reserve-of-icherisher/mQUBZT2pzcklJA?hl=en-GB",
+    "limitation": "These are authority-described regional dimensions, not measurements of each wall bay beside the circuit."
+  },
+  "reference_views": [
+    {
+      "file": "build/reviews/baku/reference/castle-check-234.jpg",
+      "time_s": 234,
+      "sha256": "f7ac67d7815ba5a980dfc2eff47f4c34efdee20b570ad5c4beb914a2ae415897",
+      "camera": "forward"
+    },
+    {
+      "file": "build/reviews/baku/reference/castle-check-236.jpg",
+      "time_s": 236,
+      "sha256": "9735fd9f271cbe0c66310ce85a9c475535e8f3a0dc15cfe6935c0cff2a19006f",
+      "camera": "forward"
+    },
+    {
+      "file": "build/reviews/baku/reference/castle-check-238.jpg",
+      "time_s": 238,
+      "sha256": "b571b4c4690e3a70c8c33b99ad3878bb5be3e29146452d406d9ee15359580507",
+      "camera": "rear"
+    }
+  ],
+  "source_diagnosis": {
+    "blank_approach": "The shared facade helper discarded every window within 16 m of the road, despite first clipping the building footprint to roadmask +1.2 m. The Baku exception retains narrow-street openings and trim. Every other circuit keeps its previous behavior.",
+    "wrong_silhouette": "The invented smooth white wall and turret strip at 2540\u20132860 m obscured the ordinary approach at 2570 m. The corrected wall begins at 2610 m, after the entry. Warm masonry, tapered turrets, narrow loopholes, stone joints and merlons replace the white horizontal bands.",
+    "tagged_dimensions": "Tagged heights and storeys are now honored. The former 10 m minimum and generic 4.2 m storey rounding were inappropriate for small historic buildings. Untagged context heights remain estimates."
+  },
+  "original_reconstruction": {
+    "wall_station_range_m": [
+      2610,
+      2850
+    ],
+    "side": -1,
+    "stone_course_height_m": 0.34,
+    "wall_setback_beyond_nativeprotection_m": 1.15,
+    "turrets_station_radius_height_m": [
+      [
+        2642,
+        4.2,
+        10.5
+      ],
+      [
+        2710,
+        4.4,
+        10.2
+      ],
+      [
+        2790,
+        3.8,
+        10
+      ],
+      [
+        2840,
+        4,
+        9.7
+      ]
+    ],
+    "native_station_uncertainty_m": 60,
+    "explicit_inference": "The wall alignment, turret positions, stone pattern, arches and balconies are bounded original reconstruction from the supplied views and street registration. They are not claimed as an OSM trace or an as-built architectural survey.",
+    "road_clearance": "Every wall and turret footprint remains outside the complete protected corridor plus 0.25 m. Native road XYZ, banking, widths, protection and physical corridors are unchanged."
+  },
+  "decor": {
+    "ranges": [
+      {
+        "start_m": 2480,
+        "end_m": 2850,
+        "side": -1,
+        "material": "PanelLenovo"
+      },
+      {
+        "start_m": 2480,
+        "end_m": 2850,
+        "side": 1,
+        "material": "PanelLenovo"
+      }
+    ],
+    "source": "Direct 234/236 s views show red Lenovo panels on the approach and ramp. Existing original typeset artwork is used; event-specific endpoints are estimated."
+  },
+  "near_street_details": {
+    "source_footprints": [
+      299424046,
+      133847240,
+      133641457
+    ],
+    "form": "Actual mapped frontages retain arched upper openings and narrow iron balconies. The pale Court frontage contrasts with warm stone approach buildings.",
+    "dimensions": "Arch and balcony positions are visual estimates on the clipped mapped frontage. No reference pixels or hotel signboards are used."
+  },
+  "material": {
+    "name": "BakuStone",
+    "source": "Privatebaku-only clone ofacceptedtexturedConcrete; parentowned materialbuilder",
+    "tint": [
+      0.7,
+      0.62,
+      0.49
+    ],
+    "roughness": 0.9,
+    "normal_strength": 0.12
+  },
+  "runtime_validation": "Pending root generation, import and matched whole-route review. Static clearance and type checks are not visual approval."
+}

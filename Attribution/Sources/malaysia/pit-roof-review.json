@@ -1,0 +1,331 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-12",
+  "circuit": "malaysia",
+  "mapped_footprint_id": 144362327,
+  "mapped_footprint_area_m2": 9099.114759816348,
+  "issue": "The prior generic pit building and three continuous dark roof planes extended approximately 573 m, whereas the retained compound is approximately 345 m long. The runtime silhouette lacked the pale upper terraces and discrete garage frontage shown by the supplied reference.",
+  "source_support": [
+    {
+      "url": "https://www.sepangcircuit.com/architecture",
+      "supports": "Operator specifies 33 pits, 8 m wide by 24 m deep, offices and paddock rooms above, and a refurbished roof terrace."
+    },
+    {
+      "reference": "Saved/Refs/malaysia.mp4",
+      "timestamps_s": [
+        122,
+        126,
+        130,
+        134
+      ],
+      "supports": "White office body, separate dark garage openings, exposed pale terrace edges and upper cantilever canopy. These views determine form and palette; roof/support dimensions are estimates."
+    }
+  ],
+  "correction": "Use the actual rounded/stepped compound outline. Thirty-three garage bays occupy the retained long front wall, with white piers, narrow upper window bands and projecting terrace edges. A single pale canopy and explicit white underside follow the mapped roof outline with exposed transverse ribs and rear columns. The foundation uses the adjacent road grade rather than the roof-contaminated DSM.",
+  "dimensions": {
+    "mapped_plan_length_m": 345.35350368991766,
+    "mapped_plan_width_m": 32.42279288565821,
+    "body_height_m": 10.2,
+    "body_height_basis": "Three mapped levels, estimated 3.4 m each.",
+    "roof_height_estimate_above_road_m": [
+      12.2,
+      14.75
+    ],
+    "garage_count": 33,
+    "garage_width_m": 8,
+    "roof_bay_m": 32,
+    "transverse_frame_spacing_m": 16,
+    "estimates_note": "Roof height, slopes, beam sizes and exact office/terrace details are reconstructed; no surveyed claim."
+  },
+  "garage_frontage_measurement": {
+    "garage_frontage_samples": [
+      {
+        "native_station_m": 207.1059371096398,
+        "centerline_distance_m": 19.30039137918259,
+        "road_edge_offset_m": 10.300391379182589,
+        "x": -208.04410621360128,
+        "y": 2.751351395845072,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 199.1481956927863,
+        "centerline_distance_m": 19.266167794030956,
+        "road_edge_offset_m": 10.266167794030956,
+        "x": -200.0682408024066,
+        "y": 3.3722949882716087,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 191.16705681887493,
+        "centerline_distance_m": 19.25029675513678,
+        "road_edge_offset_m": 10.25029675513678,
+        "x": -192.09237539121196,
+        "y": 3.993238580698147,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 183.16728965866403,
+        "centerline_distance_m": 19.235248550933214,
+        "road_edge_offset_m": 10.235248550933214,
+        "x": -184.11650998001727,
+        "y": 4.6141821731246875,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 175.1670037290699,
+        "centerline_distance_m": 19.22024493463284,
+        "road_edge_offset_m": 10.220244934632841,
+        "x": -176.14064456882258,
+        "y": 5.235125765551224,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 167.16732184368638,
+        "centerline_distance_m": 19.205198153529274,
+        "road_edge_offset_m": 10.205198153529274,
+        "x": -168.16477915762792,
+        "y": 5.856069357977761,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 159.16698289528486,
+        "centerline_distance_m": 19.190193837320358,
+        "road_edge_offset_m": 10.190193837320358,
+        "x": -160.18891374643323,
+        "y": 6.4770129504042995,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 151.1670669202261,
+        "centerline_distance_m": 19.17511589921024,
+        "road_edge_offset_m": 10.17511589921024,
+        "x": -152.21304833523854,
+        "y": 7.09795654283084,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 143.1672311837551,
+        "centerline_distance_m": 19.160133924627875,
+        "road_edge_offset_m": 10.160133924627875,
+        "x": -144.23718292404388,
+        "y": 7.718900135257378,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 135.16699362638002,
+        "centerline_distance_m": 19.145066523353314,
+        "road_edge_offset_m": 10.145066523353314,
+        "x": -136.26131751284922,
+        "y": 8.339843727683919,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 127.16747853210299,
+        "centerline_distance_m": 19.130014931375886,
+        "road_edge_offset_m": 10.130014931375886,
+        "x": -128.28545210165453,
+        "y": 8.960787320110455,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 119.16713741948372,
+        "centerline_distance_m": 19.115011728332604,
+        "road_edge_offset_m": 10.115011728332604,
+        "x": -120.30958669045984,
+        "y": 9.581730912536996,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 111.16709970506359,
+        "centerline_distance_m": 19.09993378119257,
+        "road_edge_offset_m": 10.099933781192568,
+        "x": -112.33372127926516,
+        "y": 10.202674504963534,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 103.16729183869784,
+        "centerline_distance_m": 19.084951850625146,
+        "road_edge_offset_m": 10.084951850625146,
+        "x": -104.35785586807049,
+        "y": 10.823618097390073,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 95.16716084798523,
+        "centerline_distance_m": 19.06988429601791,
+        "road_edge_offset_m": 10.06988429601791,
+        "x": -96.38199045687581,
+        "y": 11.444561689816613,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 87.16753354860953,
+        "centerline_distance_m": 19.054835865259136,
+        "road_edge_offset_m": 10.054835865259136,
+        "x": -88.40612504568114,
+        "y": 12.065505282243148,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 79.1671855338122,
+        "centerline_distance_m": 19.03983257519552,
+        "road_edge_offset_m": 10.039832575195518,
+        "x": -80.43025963448646,
+        "y": 12.686448874669686,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 71.16721545249494,
+        "centerline_distance_m": 19.024755287610862,
+        "road_edge_offset_m": 10.024755287610862,
+        "x": -72.45439422329179,
+        "y": 13.307392467096225,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 63.16740867159406,
+        "centerline_distance_m": 19.009772498708877,
+        "road_edge_offset_m": 10.009772498708877,
+        "x": -64.4785288120971,
+        "y": 13.928336059522765,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 55.167236733366785,
+        "centerline_distance_m": 18.9947033102997,
+        "road_edge_offset_m": 9.994703310299698,
+        "x": -56.50266340090243,
+        "y": 14.549279651949304,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 47.16738323951238,
+        "centerline_distance_m": 18.979720482799497,
+        "road_edge_offset_m": 9.979720482799497,
+        "x": -48.52679798970775,
+        "y": 15.170223244375844,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 39.16727046595066,
+        "centerline_distance_m": 18.964651812768732,
+        "road_edge_offset_m": 9.964651812768732,
+        "x": -40.55093257851308,
+        "y": 15.791166836802383,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 31.167528686593474,
+        "centerline_distance_m": 18.949605343788544,
+        "road_edge_offset_m": 9.949605343788544,
+        "x": -32.575067167318394,
+        "y": 16.412110429228917,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 23.167276043554573,
+        "centerline_distance_m": 18.934601500300435,
+        "road_edge_offset_m": 9.934601500300435,
+        "x": -24.599201756123723,
+        "y": 17.033054021655456,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 15.16732342433501,
+        "centerline_distance_m": 18.919524429278127,
+        "road_edge_offset_m": 9.919524429278127,
+        "x": -16.62333634492904,
+        "y": 17.653997614081995,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 7.167469805544041,
+        "centerline_distance_m": 18.90454142588907,
+        "road_edge_offset_m": 9.904541425889072,
+        "x": -8.647470933734368,
+        "y": 18.274941206508537,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 5542.1673074514365,
+        "centerline_distance_m": 18.88947150857071,
+        "road_edge_offset_m": 9.889471508570711,
+        "x": -0.6716055225396882,
+        "y": 18.89588479893507,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 5534.168013463731,
+        "centerline_distance_m": 18.87442388062553,
+        "road_edge_offset_m": 9.874423880625528,
+        "x": 7.304259888654985,
+        "y": 19.516828391361614,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 5526.167230354862,
+        "centerline_distance_m": 18.85941988671418,
+        "road_edge_offset_m": 9.859419886714178,
+        "x": 15.280125299849658,
+        "y": 20.13777198378815,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 5518.167466882768,
+        "centerline_distance_m": 18.844342193488725,
+        "road_edge_offset_m": 9.844342193488725,
+        "x": 23.25599071104434,
+        "y": 20.75871557621469,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 5510.167462476764,
+        "centerline_distance_m": 18.829359817035908,
+        "road_edge_offset_m": 9.829359817035908,
+        "x": 31.23185612223902,
+        "y": 21.37965916864123,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 5502.167377992241,
+        "centerline_distance_m": 18.814291593130104,
+        "road_edge_offset_m": 9.814291593130104,
+        "x": 39.2077215334337,
+        "y": 22.000602761067768,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 5494.1676564379395,
+        "centerline_distance_m": 18.79924485671159,
+        "road_edge_offset_m": 9.799244856711589,
+        "x": 47.18358694462837,
+        "y": 22.62154635349431,
+        "road_ground_z_m": 13.3000002
+      },
+      {
+        "native_station_m": 5486.167285521134,
+        "centerline_distance_m": 18.784239661412936,
+        "road_edge_offset_m": 9.784239661412936,
+        "x": 55.15945235582305,
+        "y": 23.242489945920845,
+        "road_ground_z_m": 13.3000002
+      }
+    ],
+    "minimum_edge_offset_m": 9.784239661412936,
+    "maximum_edge_offset_m": 10.300391379182589
+  },
+  "proof": {
+    "module_sha256": "6cd8a284428a80d8c4cd1ba65dd01f5faef9a08f308982c14fb455edd8e7008a",
+    "road_sha256": "9f37f11dda9847cecd545369ab807cc7987f26fb722dacd41433bc4c909f08a1",
+    "all_structural_road_overlap_m2_sum": 0.0,
+    "roof_outside_actual_mapped_outlines_m2_sum": 2.947588353183127e-11,
+    "main_white_top_triangles": 8662,
+    "main_white_soffit_triangles": 8662,
+    "pit_white_top_triangles": 1757,
+    "pit_white_soffit_triangles": 1757,
+    "finite_vertices": true,
+    "native_geometry_changed": false
+  },
+  "review_status": "Source frozen; fresh packaged appearance review pending. Pit-side paving registration changes are separate from the unchanged racing XYZ."
+}

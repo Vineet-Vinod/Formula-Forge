@@ -43,7 +43,12 @@ def materialize_retained_ground(source: Path, destination: Path) -> bool:
             or len(grid.heights) != grid.columns * grid.rows
             or not all(math.isfinite(value) for value in (grid.x, grid.y, grid.step, *grid.heights))):
         raise ValueError("Retained terrain grid has invalid dimensions or nonfinite heights")
-    payload = (b"FFTRN1\0\0" + struct.pack("<ddfII", grid.x, grid.y, grid.step, grid.columns, grid.rows)
+    horizontal_scale = 1.0
+    if profile.grid_uniform_scale is not None:
+        provenance = TypeAdapter(Provenance).validate_json((source / "provenance.json").read_bytes())
+        horizontal_scale = provenance.route.uniform_scale / profile.grid_uniform_scale
+    payload = (b"FFTRN1\0\0" + struct.pack("<ddfII", grid.x * horizontal_scale, grid.y * horizontal_scale,
+                                          grid.step * horizontal_scale, grid.columns, grid.rows)
                + struct.pack(f"<{len(grid.heights)}f", *grid.heights))
     destination.write_bytes(payload)
     record = {
@@ -52,6 +57,9 @@ def materialize_retained_ground(source: Path, destination: Path) -> bool:
         "retained_window": str(profile.grid_file),
         "sha256": profile.grid_sha256,
         "grid_spacing_m": grid.step,
+        "runtime_grid_spacing_m": grid.step * horizontal_scale,
+        "horizontal_frame_correction": horizontal_scale,
+        "grid_uniform_scale": profile.grid_uniform_scale,
         "relative_datum_m": profile.relative_datum_m,
         "road_join_distance_m": profile.road_join_distance_m,
         "source_manifest": manifest.name,

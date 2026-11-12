@@ -19,8 +19,9 @@
     "chosen": "cycle",
     "measured_plan_m": 6192.579,
     "published_m": 6174,
-    "uniform_scale": 0.997,
-    "scale_rule": "Applied only when the mapped plan was within 1.5% of a published length. Larger gaps keep the mapped length."
+    "uniform_scale": 0.997450175270678,
+    "scale_rule": "Composed source projection and native32-subdivision Catmull length normalization, including the disclosed local corner reconstruction/refinement stages. Original source projection is retained separately; see scene-registration.json.",
+    "source_projection_uniform_scale": 0.997
   },
   "elevation": {
     "provider": "Open-Meteo Elevation API",
@@ -53,5 +54,26 @@
     "licence": "ODbL 1.0"
   },
   "protection": "Both sides are walled at the shoulder offset. Pit entry is closed. That closure is a game boundary, not a claim about the real pit lane.",
-  "not_claimed": "No lidar, no orthophoto registration, no cockpit capture in this build. Centimetre storage is not centimetre accuracy."
+  "not_claimed": "No lidar, no orthophoto registration, no cockpit capture in this build. Centimetre storage is not centimetre accuracy.",
+  "scene_coordinate_registration": {
+    "source_projection_uniform_scale": 0.997,
+    "effective_scene_uniform_scale": 0.997450175270678,
+    "native_normalization_chain": {
+      "initial_corrected_controls_factor": 1.0,
+      "initial_catmull_length_m": null,
+      "refinement_controls_factor": 1.0002674775965072,
+      "refinement_catmull_length_m": 6172.348733102903,
+      "post_original_chain_factor": 1.0002674775965072,
+      "fitted_minus_chain_factor": -1.4952219164809932e-05,
+      "baseline_factor": 1.0001840030470588,
+      "all_chain_factor": 1.0004515298602588,
+      "effective_scene_uniform_scale": 0.997450175270678,
+      "method": "Replicate exact float32 native32-step Catmull expression and float32 segment norms, double arc accumulation, float32 correction includingUnits17. Compose firstcontrols then refinementcontrols; original native factor independently instrumented. Port hasmixedraw/old-native sourceframe caveat.",
+      "baseline_factor_applied_to_selected_scale": true
+    },
+    "final_road_sha256": "70dd6041888188d199d57f02083882b862ad15b3c311917dfb3800e784f85a04",
+    "source_basis": "alignment-refinement-base.csv.gz",
+    "source_basis_sha256": "bbb2b2f629c130bd3b7f87fcf8130e816e56ad183bcc367024d58432470f2dbd",
+    "scope": "Scenery WGS84-to-native XY registration only. Native road geometry, physical road widths, elevations, vehicle tuning and camera are not changed by this metadata update. Original corner authoring controls retain their explicitly documented historical coordinate frame."
+  }
 }

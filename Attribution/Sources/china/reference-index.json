@@ -77,15 +77,14 @@
       ],
       "name": "Official T7–10 grassy sweeps",
       "reviewed_video_seconds": [
-        726.39,
-        826.58,
-        926.77,
-        690,
+        660,
         694,
-        698
+        698,
+        700,
+        702
       ],
       "observed": "Open low grass inside sweeping left/right, red-white kerbs, gravel or paved escape outside with barriers well back. Distant low tree rows, small marshal huts; main facilities visible across flat infield.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frame sequence, minimap, road handedness and fixed landmarks registered to the primary FIA map and native plan. Native0 lies nearTurn7, not the timing line. A frame supports its visible road section, not every metre in the containing sector; native endpoints are estimates."
     },
     {
       "id": "china-02",
@@ -95,44 +94,51 @@
       ],
       "name": "T11–13 slow entry and long right exit",
       "reviewed_video_seconds": [
-        1026.96,
-        1327.53,
-        650,
-        654,
-        662
+        661,
+        662,
+        726.39,
+        729,
+        731,
+        733,
+        735
       ],
       "observed": "Broad tightening entry and progressively opening right, grass inner island, extensive coloured paved escape outside; low grandstands/steel structures. Align kerbs individually through curved sequence.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frame sequence, minimap, road handedness and fixed landmarks registered to the primary FIA map and native plan. Native0 lies nearTurn7, not the timing line. A frame supports its visible road section, not every metre in the containing sector; native endpoints are estimates."
     },
     {
       "id": "china-03",
       "native_station_m": [
         1550,
-        2700
+        2600
       ],
       "name": "Long back straight",
       "reviewed_video_seconds": [
-        1127.15,
-        1427.72,
+        325.62,
         666,
-        670
+        670,
+        826.58,
+        1127.15,
+        1427.72
       ],
       "observed": "Very long straight with grass both sides and distant low buildings, high catchfence near stands, braking boards approaching hairpin. Sponsor bridge spans road. Avoid roadside tower wall.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frame sequence, minimap, road handedness and fixed landmarks registered to the primary FIA map and native plan. Native0 lies nearTurn7, not the timing line. A frame supports its visible road section, not every metre in the containing sector; native endpoints are estimates."
     },
     {
       "id": "china-04",
       "native_station_m": [
-        2700,
+        2600,
         3150
       ],
       "name": "T14–16 hairpin and final left",
       "reviewed_video_seconds": [
+        225.43,
         674,
-        678
+        678,
+        926.77,
+        1026.96
       ],
       "observed": "Tight right hairpin with paved escape and red-white kerb, followed by paired H/K terraces under pale oval lotus-disc roofs on slender central stalks. The repeated roofs flank the short exit straight; final left has broad grass/gravel escape and the pit roof silhouette ahead.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frame sequence, minimap, road handedness and fixed landmarks registered to the primary FIA map and native plan. Native0 lies nearTurn7, not the timing line. A frame supports its visible road section, not every metre in the containing sector; native endpoints are estimates."
     },
     {
       "id": "china-05",
@@ -142,18 +148,18 @@
       ],
       "name": "Pit straight and Section A bridge",
       "reviewed_video_seconds": [
-        626.2,
         610,
         614,
         618,
         622,
         626,
+        626.2,
         682,
         706,
         710
       ],
       "observed": "Main pit garages right, towering roof stand left with massive overhead pale wing slabs and glazed cylindrical volumes. Keep open road passage beneath spanning structure. Fine white urban grid marks, no generic boxes over race line.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frame sequence, minimap, road handedness and fixed landmarks registered to the primary FIA map and native plan. Native0 lies nearTurn7, not the timing line. A frame supports its visible road section, not every metre in the containing sector; native endpoints are estimates."
     },
     {
       "id": "china-06",
@@ -170,37 +176,35 @@
         690
       ],
       "observed": "Long tightening right drops into left recovery; red-white kerb, green outer shoulder and broad light gravel escape. B1/B2/B3 are low open red spectator terraces beyond the fence. The lotus roofs belong to H/K at the T14 hairpin, not this opening sequence.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frame sequence, minimap, road handedness and fixed landmarks registered to the primary FIA map and native plan. Native0 lies nearTurn7, not the timing line. A frame supports its visible road section, not every metre in the containing sector; native endpoints are estimates."
     },
     {
       "id": "china-07",
       "native_station_m": [
         4400,
-        4950
+        4850
       ],
       "name": "T4–5 acceleration toward T6",
       "reviewed_video_seconds": [
-        325.62,
-        658
+        648
       ],
       "observed": "Long grassy left verge, broad outside gravel, long stand facilities and sponsor bridge receding. Open horizon and distant trees; green painted shoulder only at exit.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frame sequence, minimap, road handedness and fixed landmarks registered to the primary FIA map and native plan. Native0 lies nearTurn7, not the timing line. A frame supports its visible road section, not every metre in the containing sector; native endpoints are estimates."
     },
     {
       "id": "china-08",
       "native_station_m": [
-        4950,
+        4850,
         5451
       ],
       "name": "T6 hairpin and T7 approach",
       "reviewed_video_seconds": [
-        646,
         650,
         654,
-        1527.92
+        658
       ],
       "observed": "Tight right apex, broad paved escape and gravel beyond, repeated braking marker sequence. Conventional low roof stands sit beyond fence; return to broad grass infield.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frame sequence, minimap, road handedness and fixed landmarks registered to the primary FIA map and native plan. Native0 lies nearTurn7, not the timing line. A frame supports its visible road section, not every metre in the containing sector; native endpoints are estimates."
     }
   ],
   "primary_sources": [
@@ -249,5 +253,243 @@
     "method": "Direct appearance/topology checks of retained frames and bounded individual Baku reference seeks; source geometry and all native data unchanged.",
     "notes": "Frame662s directly shows the long-right T13inner violet apron and Anting terrace, not T4–5. H/K lotus canopies at674–678s remain registered to T14, not opening Bterraces. Exact station/frame pairing is visual, approximately±60m, and edited gameplay is not a linear station clock.",
     "next_gate": "Actual packaged full-lap review and targeted captures in build/reviews/east-final-targets.json; these metadata corrections are not visual approval."
+  },
+  "registration_review_2026_11_12": {
+    "retained_former_associations": [
+      {
+        "sector_id": "china-01",
+        "reviewed_video_seconds": [
+          726.39,
+          826.58,
+          926.77,
+          690,
+          694,
+          698
+        ],
+        "native_station_m": [
+          0,
+          700
+        ]
+      },
+      {
+        "sector_id": "china-02",
+        "reviewed_video_seconds": [
+          1026.96,
+          1327.53,
+          650,
+          654,
+          662
+        ],
+        "native_station_m": [
+          700,
+          1550
+        ]
+      },
+      {
+        "sector_id": "china-03",
+        "reviewed_video_seconds": [
+          1127.15,
+          1427.72,
+          666,
+          670
+        ],
+        "native_station_m": [
+          1550,
+          2700
+        ]
+      },
+      {
+        "sector_id": "china-04",
+        "reviewed_video_seconds": [
+          674,
+          678
+        ],
+        "native_station_m": [
+          2700,
+          3150
+        ]
+      },
+      {
+        "sector_id": "china-05",
+        "reviewed_video_seconds": [
+          626.2,
+          610,
+          614,
+          618,
+          622,
+          626,
+          682,
+          706,
+          710
+        ],
+        "native_station_m": [
+          3150,
+          3800
+        ]
+      },
+      {
+        "sector_id": "china-06",
+        "reviewed_video_seconds": [
+          630,
+          634,
+          638,
+          686,
+          690
+        ],
+        "native_station_m": [
+          3800,
+          4400
+        ]
+      },
+      {
+        "sector_id": "china-07",
+        "reviewed_video_seconds": [
+          325.62,
+          658
+        ],
+        "native_station_m": [
+          4400,
+          4950
+        ]
+      },
+      {
+        "sector_id": "china-08",
+        "reviewed_video_seconds": [
+          646,
+          650,
+          654,
+          1527.92
+        ],
+        "native_station_m": [
+          4950,
+          5451
+        ]
+      }
+    ],
+    "primary_map_url": "https://www.fia.com/system/files/decision-document/2025_chinese_grand_prix_-_event_notes_-_circuit_map_pit_lane_and_quarantine_zone.pdf",
+    "native_origin_witness": "Native0 is nearT7; timing/start anchor3450m. OfficialT11 is1015m at the north left-turn entry, whileT1/T2 are the southwestern spiral3950–4093m. T14 hairpin is2676m andT6 hairpin4924m.",
+    "confirmed_new_frames": [
+      {
+        "seconds": 648,
+        "official_corner": "T5 straight towardT6",
+        "native_station_m": 4790,
+        "observation": "Forward view, HUD28.339, LouisVuitton gantry and timing pylon right; T6braking follows.Station±70m."
+      },
+      {
+        "seconds": 650,
+        "official_corner": "T6 approach",
+        "native_station_m": 4880,
+        "observation": "Direct right-hairpin approach, HUD29.337,50m boards both sides; it is notT11."
+      },
+      {
+        "seconds": 654,
+        "official_corner": "T6 exit",
+        "native_station_m": 4980,
+        "observation": "Direct exit, HUD34.909, outer-left kerb andQatar stand ahead; it is notT11/T12."
+      },
+      {
+        "seconds": 660,
+        "official_corner": "T7 left",
+        "native_station_m": 0,
+        "observation": "Direct broad left, HUD40.048, grass insideleft and main stand across infield."
+      },
+      {
+        "seconds": 700,
+        "official_corner": "T8 exit towardT9",
+        "native_station_m": 335,
+        "observation": "Direct right-turn exit, HUD42.038, inside-right red/white kerb,100m boards andAMEX barriers ahead."
+      },
+      {
+        "seconds": 729,
+        "official_corner": "T11 approach",
+        "native_station_m": 930,
+        "observation": "Forward approach towardANTING stand, HUD54.328, MSC barriers; station±80m."
+      },
+      {
+        "seconds": 731,
+        "official_corner": "T11 entry",
+        "native_station_m": 995,
+        "observation": "Direct left entry, tower andANTING stand ahead, outer-right red/white kerb; station±40m."
+      },
+      {
+        "seconds": 733,
+        "official_corner": "T11 left apex",
+        "native_station_m": 1015,
+        "observation": "Direct slow left, gear2/58mph, grass island inside and crane/ANTING outside; station±30m."
+      },
+      {
+        "seconds": 735,
+        "official_corner": "T12 right",
+        "native_station_m": 1126,
+        "observation": "Direct next right, HUD1:00.246, inner-right kerb andANTING stand outside; station±50m."
+      },
+      {
+        "seconds": 661,
+        "official_corner": "T13 right entry",
+        "native_station_m": 1200,
+        "observation": "Direct right entry around purple inner apron, HUD1:06.908; station±50m."
+      }
+    ],
+    "context_only_unregistered_seconds": [
+      425.81,
+      526,
+      1227.34,
+      1327.53,
+      1527.92,
+      642,
+      644,
+      646
+    ],
+    "context_note": "Rear views, menus and unregistered overview poses remain retained. They no longer stand in for unrelated corner views.726.39 is registered only as the broadT11approach, not a precise apex.",
+    "video_edit_warning": "The supplied clip jumps fromT7 at660s toT13 at661s. Individual corner identity is established from road/minimap/landmarks; playback time cannot be linearly mapped to lap station.",
+    "acceptance_status": "All named circuit sectors now have direct witnesses. This does not establish centimetre geometry or per-point runtime visual acceptance."
+  },
+  "pit_dimension_correction": {
+    "source": "pit-dimension-review.json",
+    "source_footprint": {
+      "osm_id": 156328694,
+      "footprint_area_m2": 9983.82984246426,
+      "source_file": "buildings.osm.json.gz",
+      "evidence_kind": "Mapped plan and tagged dimensions, not a surveyed architectural drawing."
+    },
+    "runtime_approval": false
+  },
+  "pit_complex_direct_registration": {
+    "entry_wing": {
+      "reference_seconds": [
+        706,
+        707,
+        708
+      ],
+      "identity": "Continuous706→707→708s approaches and then passes beneath the entry wing. The first RIGHT support tower and second wing ahead distinguish it from the exit crossing.708s is approximately native3306.5±40m; this is identity/geometry registration, not linear video-clock interpolation."
+    },
+    "between_wings": {
+      "reference_seconds": [
+        610,
+        618,
+        622,
+        710
+      ],
+      "identity": "Grid/pit-straight architecture between the two wing structures; exact parked car station is not derived from elapsed video time."
+    },
+    "exit_wing": {
+      "reference_seconds": [
+        626,
+        682
+      ],
+      "identity": "Direct forward beneath the wing nearest T1, recognizable by pit-end support tower RIGHT and open T1 approach beyond. Approximate native3666±40m."
+    },
+    "post_exit": {
+      "reference_seconds": [
+        630
+      ],
+      "identity": "T1 approach after pit complex; does not show the entry wing."
+    },
+    "source_note": "Native wing intervals derive from the retained geographic outline. Camera position uncertainties are explicit, and no edited-lap timer is used as a station clock."
+  },
+  "wing_nose_correction": {
+    "source": "wing-nose-review.json",
+    "module": "tools/venues/china_wing_nose.py",
+    "runtime_approval": false
   }
 }

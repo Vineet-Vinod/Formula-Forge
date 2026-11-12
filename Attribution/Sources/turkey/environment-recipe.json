@@ -17,14 +17,13 @@
       ],
       "name": "Pitstraight, downhillT1 and uphillT2",
       "reviewed_video_seconds": [
-        221.38,
         329,
         333,
-        337,
-        341
+        341,
+        345
       ],
       "observed": "Long grandstand opposite the pit complex. The broad left T1 entry descends sharply, with gravel outside and a red-white inside kerb. The road climbs toward T2. Grass banks and distant protection should preserve these changing sightlines.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Named road sequence registered from directly reviewed frames, handedness, elevation sequence and fixed pit/stand/bridge landmarks. Native bounds remain approximate authoring sectors, not surveyed corner boundaries. Elapsed video time is not interpolated into circuit station."
     },
     {
       "id": "turkey-02",
@@ -32,16 +31,13 @@
         700,
         1450
       ],
-      "name": "T3–5 hillside changes",
+      "name": "T3\u20135 hillside changes",
       "reviewed_video_seconds": [
-        345,
         349,
-        353,
-        357,
-        273.47
+        357
       ],
       "observed": "Green and brown grass slopes, low broadleaf tree groups, and broad grass or gravel escape areas. Kerbs have green painted outer strips. The linked corners rise and fall with the hills, with Armco and mesh behind the escape areas.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Named road sequence registered from directly reviewed frames, handedness, elevation sequence and fixed pit/stand/bridge landmarks. Native bounds remain approximate authoring sectors, not surveyed corner boundaries. Elapsed video time is not interpolated into circuit station."
     },
     {
       "id": "turkey-03",
@@ -49,14 +45,16 @@
         1450,
         2050
       ],
-      "name": "T6–7 descent",
+      "name": "T6\u20137 descent",
       "reviewed_video_seconds": [
-        117.2,
+        265,
+        269,
+        273,
         361,
         365
       ],
       "observed": "A fast descent leads to a right corner. The grass bank sets a high horizon, with a distant stand above the barrier. Broad red-white kerbs, green paint and light gravel frame the braking zone.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Named road sequence registered from directly reviewed frames, handedness, elevation sequence and fixed pit/stand/bridge landmarks. Native bounds remain approximate authoring sectors, not surveyed corner boundaries. Elapsed video time is not interpolated into circuit station."
     },
     {
       "id": "turkey-04",
@@ -66,17 +64,13 @@
       ],
       "name": "T8 multi-apexleft",
       "reviewed_video_seconds": [
-        169.29,
-        265,
-        269,
-        273,
         277,
         281,
         285,
-        533.92
+        289
       ],
-      "observed": "The long multi-apex left follows an open hillside. A red-white inside kerb connects the apexes; wide gravel and a grass bank sit outside. Keep the outside protection curved and behind the escape area.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "observed": "The long multi-apex left follows an open hillside. Grass lies immediately beyond the inside-left red-white kerb. Outside-right green paved runoff precedes a broad pale gravel bed and grass bank. Keep the outside protection curved behind the escape area.",
+      "registration": "Named road sequence registered from directly reviewed frames, handedness, elevation sequence and fixed pit/stand/bridge landmarks. Native bounds remain approximate authoring sectors, not surveyed corner boundaries. Elapsed video time is not interpolated into circuit station."
     },
     {
       "id": "turkey-05",
@@ -84,15 +78,13 @@
         2850,
         3550
       ],
-      "name": "T9–10 shortcomplex",
+      "name": "T9\u201310 shortcomplex",
       "reviewed_video_seconds": [
-        289,
         293,
-        297,
-        377.65
+        297
       ],
       "observed": "Downhill braking followed by a left-right change. There are broad green painted aprons, dry grass banks, small marshal posts and distant stands. The reference shows a tall arched crossing nearby; its exact position needs separate registration.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Named road sequence registered from directly reviewed frames, handedness, elevation sequence and fixed pit/stand/bridge landmarks. Native bounds remain approximate authoring sectors, not surveyed corner boundaries. Elapsed video time is not interpolated into circuit station."
     },
     {
       "id": "turkey-06",
@@ -103,14 +95,10 @@
       "name": "T11 fastkink and longstraight",
       "reviewed_video_seconds": [
         301,
-        305,
-        309,
-        313,
-        586.01,
-        690.19
+        313
       ],
       "observed": "An undulating straight and fast kink have broad grass verges and Armco set back from the road. The hill partly hides the horizon. Paddock buildings and a large roof stand appear on the approach, with distance boards before T12.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Named road sequence registered from directly reviewed frames, handedness, elevation sequence and fixed pit/stand/bridge landmarks. Native bounds remain approximate authoring sectors, not surveyed corner boundaries. Elapsed video time is not interpolated into circuit station."
     },
     {
       "id": "turkey-07",
@@ -118,16 +106,15 @@
         4550,
         5050
       ],
-      "name": "T12–14 finalslowcomplex",
+      "name": "T12\u201314 finalslowcomplex",
       "reviewed_video_seconds": [
+        313,
         317,
         321,
-        325,
-        742.28,
-        794.37
+        325
       ],
       "observed": "Tight left-right-left corners sit beside the pit and main stand. Paved and gravel escape areas surround the red-white kerbs and green paint. The control and hospitality buildings have angular stacked roofs and recessed glazing.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Named road sequence registered from directly reviewed frames, handedness, elevation sequence and fixed pit/stand/bridge landmarks. Native bounds remain approximate authoring sectors, not surveyed corner boundaries. Elapsed video time is not interpolated into circuit station."
     },
     {
       "id": "turkey-08",
@@ -137,18 +124,18 @@
       ],
       "name": "Finalexit toSF",
       "reviewed_video_seconds": [
-        429.74,
+        325,
         329,
         333
       ],
       "observed": "The wide final exit joins the pit straight. A roofed crowd stand faces white garage fronts and projecting slabs. Grid marks and a fenced pit wall define the straight; grass embankments remain visible behind the facilities.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Named road sequence registered from directly reviewed frames, handedness, elevation sequence and fixed pit/stand/bridge landmarks. Native bounds remain approximate authoring sectors, not surveyed corner boundaries. Elapsed video time is not interpolated into circuit station."
     }
   ],
   "mapped_landmarks": [
     {
       "osm_id": 295742112,
-      "name": "İstanbul Park",
+      "name": "\u0130stanbul Park",
       "source_xy_m": [
         62.81,
         86.78
@@ -296,13 +283,13 @@
   "elevation_review": {
     "retained_dataset": "Copernicus DEM GLO-90",
     "retained_relief_m": 35.312,
-    "status": "The native deck now uses the retained higher-resolution GLO-30 centerline profile. Published range conflicts remain disclosed; no range was forced.",
+    "status": "Current longitudinal road source is the closed METU engineering-profile reconstruction in elevation-corrections.json. GLO90 and GLO30 racing profiles are historical and rejected; the separately attributed GLO30 scenery grid remains.",
     "findings": [
       "RetainedGLO90relief35.3m conflicts with operator about60m; stationlocationsofcrests need onboard/map registration rather than uniform height scaling.",
-      "Original 12 m corner width conflicts with published14.5mminimum. Width14.5–21mtext versus14–21.5mdiagram disagreement is retained."
+      "Original 12 m corner width conflicts with published14.5mminimum. Width14.5\u201321mtext versus14\u201321.5mdiagram disagreement is retained."
     ],
     "research_file": "elevation-research.json",
-    "replacement_profile": {
+    "historical_GLO30_replacement_profile": {
       "schema_version": 1,
       "provider": "Copernicus DEM GLO-30, retained bounded scenery raster",
       "source_file": "elevation/scenery_dem.tif",
@@ -314,14 +301,17 @@
       "uncertainty_m": 3.0,
       "limitations": "30m digital surface model, not lidar or bare-earth road survey. Canopy and roof influences remain possible. Geographic source pixels are retained with provenance; no reference video pixels redistributed.",
       "structural_findings": "The higher-resolution crest is atT3near1090m, matching the engineering course diagram, instead of the old1285mcrest.",
-      "research_file": "elevation-research.json"
-    }
+      "research_file": "elevation-research.json",
+      "status": "Historical rejected racing-road input. Kept as scenery-source research only; current road controls are elevation-corrections.json."
+    },
+    "replacement_profile": "elevation-corrections.json",
+    "current_reconstructed_relief_m": 47.887883274307356
   },
   "primary_sources": [
     {
       "title": "Intercity operator presentation hosted Istanbul Chamber of Commerce",
       "url": "https://www.ito.org.tr/documents/Duyurular/2022_dokumanlar/vweekend_sunum.pdf",
-      "supports": "5.338km;14corners;about60mrelief;8.145percent maxgradient. Width text14.5–21m, diagram14–21.5m."
+      "supports": "5.338km;14corners;about60mrelief;8.145percent maxgradient. Width text14.5\u201321m, diagram14\u201321.5m."
     },
     {
       "title": "Current TOSFED operator",
@@ -819,5 +809,19 @@
     "registration": "Authored Istanbul garage frontage scene.pit_building(5130,230,-1) lies exactly 13 m beyond road edge, underneath its three stacked hospitality roofs. Reference325/329/333/337s shows garages left and mainstand right. Retained compound295742112 is excluded from duplicate extrusion. Native interval crosses zero; dimensions remain reference estimates.",
     "garage_front_outer_offset_m": 13.0,
     "source_world_frame": "Native east/north station frame; +1 driver right, -1 driver left. No route-origin rotation."
+  },
+  "racing_profile_source_review": {
+    "source": "elevation-corrections.json",
+    "actual_reconstructed_relief_m": 47.887883274307356,
+    "reason": "Replace surface-model roof humps with the closed primary engineering profile. Firsthill/T8drop heights calibrate the original trace; operatorgrade and measured\u00b12m uncertainty constrain interpolation.",
+    "rendered_validation": "Pending root native application, scenery regeneration and matched T3/T8/T11 packaged review."
+  },
+  "architecture_dimensions_correction_20261112": {
+    "source": "pit-architecture-correction.json",
+    "status": "Source corrected; fresh packaged images and independent reference review still required."
+  },
+  "t8_runoff_correction": {
+    "source": "t8-runoff-correction.json",
+    "status": "Confirmed inside/outside material correction. Source frozen; fresh visual review pending."
   }
 }

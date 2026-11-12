@@ -17,15 +17,14 @@
       ],
       "name": "Official T7–10 grassy sweeps",
       "reviewed_video_seconds": [
-        726.39,
-        826.58,
-        926.77,
-        690,
+        660,
         694,
-        698
+        698,
+        700,
+        702
       ],
       "observed": "Open low grass inside sweeping left/right, red-white kerbs, gravel or paved escape outside with barriers well back. Distant low tree rows, small marshal huts; main facilities visible across flat infield.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frame sequence, minimap, road handedness and fixed landmarks registered to the primary FIA map and native plan. Native0 lies nearTurn7, not the timing line. A frame supports its visible road section, not every metre in the containing sector; native endpoints are estimates."
     },
     {
       "id": "china-02",
@@ -35,44 +34,51 @@
       ],
       "name": "T11–13 slow entry and long right exit",
       "reviewed_video_seconds": [
-        1026.96,
-        1327.53,
-        650,
-        654,
-        662
+        661,
+        662,
+        726.39,
+        729,
+        731,
+        733,
+        735
       ],
       "observed": "Broad tightening entry and progressively opening right, grass inner island, extensive coloured paved escape outside; low grandstands/steel structures. Align kerbs individually through curved sequence.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frame sequence, minimap, road handedness and fixed landmarks registered to the primary FIA map and native plan. Native0 lies nearTurn7, not the timing line. A frame supports its visible road section, not every metre in the containing sector; native endpoints are estimates."
     },
     {
       "id": "china-03",
       "native_station_m": [
         1550,
-        2700
+        2600
       ],
       "name": "Long back straight",
       "reviewed_video_seconds": [
-        1127.15,
-        1427.72,
+        325.62,
         666,
-        670
+        670,
+        826.58,
+        1127.15,
+        1427.72
       ],
       "observed": "Very long straight with grass both sides and distant low buildings, high catchfence near stands, braking boards approaching hairpin. Sponsor bridge spans road. Avoid roadside tower wall.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frame sequence, minimap, road handedness and fixed landmarks registered to the primary FIA map and native plan. Native0 lies nearTurn7, not the timing line. A frame supports its visible road section, not every metre in the containing sector; native endpoints are estimates."
     },
     {
       "id": "china-04",
       "native_station_m": [
-        2700,
+        2600,
         3150
       ],
       "name": "T14–16 hairpin and final left",
       "reviewed_video_seconds": [
+        225.43,
         674,
-        678
+        678,
+        926.77,
+        1026.96
       ],
       "observed": "Tight right hairpin with paved escape and red-white kerb, followed by paired H/K terraces under pale oval lotus-disc roofs on slender central stalks. The repeated roofs flank the short exit straight; final left has broad grass/gravel escape and the pit roof silhouette ahead.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frame sequence, minimap, road handedness and fixed landmarks registered to the primary FIA map and native plan. Native0 lies nearTurn7, not the timing line. A frame supports its visible road section, not every metre in the containing sector; native endpoints are estimates."
     },
     {
       "id": "china-05",
@@ -82,18 +88,18 @@
       ],
       "name": "Pit straight and Section A bridge",
       "reviewed_video_seconds": [
-        626.2,
         610,
         614,
         618,
         622,
         626,
+        626.2,
         682,
         706,
         710
       ],
       "observed": "Main pit garages right, towering roof stand left with massive overhead pale wing slabs and glazed cylindrical volumes. Keep open road passage beneath spanning structure. Fine white urban grid marks, no generic boxes over race line.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frame sequence, minimap, road handedness and fixed landmarks registered to the primary FIA map and native plan. Native0 lies nearTurn7, not the timing line. A frame supports its visible road section, not every metre in the containing sector; native endpoints are estimates."
     },
     {
       "id": "china-06",
@@ -110,37 +116,35 @@
         690
       ],
       "observed": "Long tightening right drops into left recovery; red-white kerb, green outer shoulder and broad light gravel escape. B1/B2/B3 are low open red spectator terraces beyond the fence. The lotus roofs belong to H/K at the T14 hairpin, not this opening sequence.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frame sequence, minimap, road handedness and fixed landmarks registered to the primary FIA map and native plan. Native0 lies nearTurn7, not the timing line. A frame supports its visible road section, not every metre in the containing sector; native endpoints are estimates."
     },
     {
       "id": "china-07",
       "native_station_m": [
         4400,
-        4950
+        4850
       ],
       "name": "T4–5 acceleration toward T6",
       "reviewed_video_seconds": [
-        325.62,
-        658
+        648
       ],
       "observed": "Long grassy left verge, broad outside gravel, long stand facilities and sponsor bridge receding. Open horizon and distant trees; green painted shoulder only at exit.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frame sequence, minimap, road handedness and fixed landmarks registered to the primary FIA map and native plan. Native0 lies nearTurn7, not the timing line. A frame supports its visible road section, not every metre in the containing sector; native endpoints are estimates."
     },
     {
       "id": "china-08",
       "native_station_m": [
-        4950,
+        4850,
         5451
       ],
       "name": "T6 hairpin and T7 approach",
       "reviewed_video_seconds": [
-        646,
         650,
         654,
-        1527.92
+        658
       ],
       "observed": "Tight right apex, broad paved escape and gravel beyond, repeated braking marker sequence. Conventional low roof stands sit beyond fence; return to broad grass infield.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frame sequence, minimap, road handedness and fixed landmarks registered to the primary FIA map and native plan. Native0 lies nearTurn7, not the timing line. A frame supports its visible road section, not every metre in the containing sector; native endpoints are estimates."
     }
   ],
   "mapped_landmarks": [
@@ -2026,7 +2030,7 @@
   "elevation_review": {
     "retained_dataset": "Copernicus DEM GLO-90",
     "retained_relief_m": 8.688,
-    "status": "The native racing-deck profile now follows registered published topography controls. Raw DEM remains for source comparison and scenery terrain.",
+    "status": "Canonical operator-constrained local ramps ready for native synchronization and cockpit review.",
     "findings": [
       "Native station0 is around officialT7, not SF; all recipes use retained native station frame. SF~3450m is approximate, register exact line before spawn change.",
       "OSM SectionA footprint centroid is6.5m from road: it represents overhead/compound architecture. Never extrude the whole ring from ground and block road.",
@@ -2134,6 +2138,53 @@
       "registration_notes": "The openingT2crest remains near native4093. Relative heights follow the F1 diagram7.4mrange, replacing coarse8.688mGLO-90variations. Native station0is around officialT7, notSF.",
       "supersedes": "Coarse GLO-90 road profile remains retained as source evidence, not as the racing deck. No new lidar or survey is claimed.",
       "controls_file": "elevation-corrections.json"
+    },
+    "operator_grade_corrections": {
+      "date": "2026-11-12",
+      "source_url": "https://www.fia.com/sites/default/files/media_kit_-_chinese_gp.pdf",
+      "source_page": 14,
+      "published_maximum_uphill_pct": 3.0,
+      "published_maximum_downhill_pct": 8.0,
+      "source_language": "Chinese: maximum uphill gradient 3%, maximum downhill gradient 8%.",
+      "local_ranges_m": [
+        [
+          950.0,
+          1126.0
+        ],
+        [
+          3700.0,
+          4093.0
+        ]
+      ],
+      "method": "Integrate continuous linear grade ramps, with constant-grade middle sections, bounded by 3%. Preserve the F 1 graphical T 12 and T 2 crest heights. Join existing zero slope at the crests; match the old incoming slope at 950 m. The extended T 1 approach starts from the retained flat section, with no change to the later descent.",
+      "ramp_parameters": [
+        {
+          "start_m": 950.0,
+          "start_height_m": 0.5985755633450174,
+          "start_grade": 0.003304957436154332,
+          "up_ramp_m": 100.0,
+          "plateau_m": 6.411770989817782,
+          "down_ramp_m": 69.58822901018222,
+          "end_m": 1126.0,
+          "end_height_m": 3.5
+        },
+        {
+          "start_m": 3792.0,
+          "start_height_m": 0.0,
+          "start_grade": 0.0,
+          "up_ramp_m": 71.33333333333333,
+          "plateau_m": 192.33333333333334,
+          "down_ramp_m": 37.333333333333336,
+          "end_m": 4093.0,
+          "end_height_m": 7.4
+        }
+      ],
+      "maximum_local_uphill_pct": 3.0000000006857874,
+      "minimum_local_grade_pct": 0.0,
+      "graphical_anchor_uncertainty_m": 1.0,
+      "station_uncertainty_m": 50.0,
+      "source_conflict": "Sparse F 1 diagram anchors joined by unconstrained cubic interpolation produced up to 4.509% uphill, contradicting the operator 3% maximum. T 1 intermediate height changes 2.7→3.67 m, within the diagram reconstruction uncertainty; T 2 summit 7.4 m and full relief are preserved.",
+      "limitations": "This is an operator-constrained profile reconstruction, not a civil survey. Current cockpit verification remains required."
     }
   },
   "primary_sources": [
@@ -2476,13 +2527,29 @@
   "pit_lane": {
     "source": "pit-lane.json",
     "visual_only_outside_pit_wall": true,
-    "registration": "Authored Shanghai garage frontage scene.pit_building(3230,3740,+1), including yellow fascia and roof slabs, lies exactly 13 m beyond road edge. Reference610–626/682/706/710s confirms pits right and Section A stand left. Native timing line3450m is inside this frontage; route origin near officialT7 remains unchanged.",
-    "garage_front_outer_offset_m": 13.0,
-    "source_world_frame": "Native east/north station frame; +1 driver right, -1 driver left. No route-origin rotation."
+    "registration": "Actual mapped pit compound156328694 replaces the former generic block. The mapped compound projects to native3324.97–3647.05m. Its garage face stands18.786–19.907m beyond the road edge. The paving control is rounded by less than10m at the longitudinal ends and ends at a constant18.4m offset before the nearest garage face. Local unstriped apron polygons meet each variable mapped front and exclude the occupied building; the generic outer white stripe therefore stays outside all garage bays. Mapped plan registration has approximately±2m uncertainty. Facade/roof dimensions remain reconstructed. Paving stays beyond a closed pit wall; racing XYZ, banking and handling are unchanged. See pit-dimension-review.json.",
+    "garage_front_outer_offset_m": 18.4,
+    "source_world_frame": "Native east/north station frame; +1 driver right, -1 driver left. No route-origin rotation.",
+    "start_m": 3320,
+    "end_m": 3655,
+    "side": 1,
+    "outer_offset_interpretation": "Constant striped paving ends before the nearest facade; private unstriped apron polygons follow the actual variable garage front."
   },
   "targeted_registration_review": {
     "method": "Direct appearance/topology checks of retained frames and bounded individual Baku reference seeks; source geometry and all native data unchanged.",
     "notes": "Frame662s directly shows the long-right T13inner violet apron and Anting terrace, not T4–5. H/K lotus canopies at674–678s remain registered to T14, not opening Bterraces. Exact station/frame pairing is visual, approximately±60m, and edited gameplay is not a linear station clock.",
     "next_gate": "Actual packaged full-lap review and targeted captures in build/reviews/east-final-targets.json; these metadata corrections are not visual approval."
+  },
+  "reference_registration_review": "reference-index.json:registration_review_2026_11_12",
+  "pit_dimension_correction": {
+    "source": "pit-dimension-review.json",
+    "status": "Mapped source geometry frozen after emitted checks; native synchronization and packaged review pending.",
+    "former_generic_body_rejected": true,
+    "runtime_approval": false
+  },
+  "wing_nose_correction": {
+    "source": "wing-nose-review.json",
+    "module": "tools/venues/china_wing_nose.py",
+    "runtime_approval": false
   }
 }

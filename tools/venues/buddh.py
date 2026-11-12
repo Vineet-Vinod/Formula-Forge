@@ -3,18 +3,21 @@
 from __future__ import annotations
 
 import math
+from itertools import pairwise
 
-from circuit_mesh import add, mul
+from circuit_dataclasses import Point
+from circuit_mesh import add, cross, mul, sub
 from circuit_scene import CircuitScene
+from shapely import constrained_delaunay_triangles
+from shapely.affinity import translate
+from shapely.geometry import LineString, Polygon
+from shapely.geometry.polygon import orient
+from shapely.ops import unary_union
 
 from venues.east_architecture import (
-    double_quad,
     facade,
     footprint_stand,
-    frame,
-    mapped,
     trees,
-    upward_quad,
 )
 from venues.east_paint import apron_hatching
 from venues.west_architecture import apron_band
@@ -73,6 +76,68 @@ def mapped_garage_front(scene: CircuitScene) -> None:
             "registration": "Road-facing retained ring edges9–15; dark full-width ground-floor portals, white structural piers and overhead roller boxes replace office-window appearance. Garage threshold elevations follow the adjacent road/pit apron; heights and bay spacing estimated from reference113–125s.",
         }
     )
+
+
+def mapped_pit_roofs(scene: CircuitScene) -> None:
+    pit = scene.footprint(188019421)
+    footprint = Polygon(pit.ring)
+    scene.terrain_cutouts.append(footprint)
+    foundation = min(scene.ground(x, y) for x, y in pit.ring)
+    for station, roof_height in ((804., 24.), (528., 20.)):
+        sample = scene.at(station)
+        axis = sample.tx, sample.ty, 0.
+        outward = sample.ty, -sample.tx, 0.
+        for level in range(4):
+            half = 35+level*1.2
+            corners = [add(sample.point(lane), mul(axis, along))
+                       for along, lane in ((-half, 12), (half, 12), (half, 70), (-half, 70))]
+            wing = footprint.intersection(Polygon([p[:2] for p in corners]))
+            extension = 6-level*.9
+            roof = unary_union([wing, translate(wing, xoff=-outward[0]*extension,
+                                               yoff=-outward[1]*extension)])
+            parts = [roof] if isinstance(roof, Polygon) else [p for p in roof.geoms if isinstance(p, Polygon)]
+            coordinates = [p for part in parts for p in part.exterior.coords]
+            lanes = [(x-sample.x)*outward[0]+(y-sample.y)*outward[1] for x, y in coordinates]
+            near, far = min(lanes), max(lanes)
+            slab = max(11.8, roof_height-level*3.2)
+
+            def height(x: float, y: float, front: float = near, rear: float = far,
+                       z: float = slab, origin: Point = (sample.x, sample.y, 0),
+                       direction: Point = outward) -> float:
+                lane = (x-origin[0])*direction[0]+(y-origin[1])*direction[1]
+                return foundation+z+1.3*(lane-front)/max(.1, rear-front)
+
+            for triangle in constrained_delaunay_triangles(roof).geoms:
+                points: list[Point] = [(x, y, height(x, y)) for x, y in list(triangle.exterior.coords)[:3]]
+                if cross(sub(points[1], points[0]), sub(points[2], points[0]))[2] < 0:
+                    points.reverse()
+                a, b, c = points
+                scene.triangle('Building_BuddhPitRoof', 'Roof', a, b, c)
+                scene.triangle('Building_BuddhPitSoffit', 'Concrete',
+                               add(c, (0, 0, -.3)), add(b, (0, 0, -.3)), add(a, (0, 0, -.3)))
+            for part in parts:
+                for pa, pb in pairwise(list(orient(part).exterior.coords)):
+                    a, b = (*pa, height(*pa)), (*pb, height(*pb))
+                    scene.quad('Building_BuddhPitFascia', 'White',
+                               add(a, (0, 0, -.3)), add(b, (0, 0, -.3)), b, a)
+        for along in (-28., 0., 28.):
+            location = add((sample.x, sample.y, 0), mul(axis, along))
+            line = LineString([add(location, mul(outward, 12))[:2],
+                               add(location, mul(outward, 70))[:2]])
+            intersection = footprint.intersection(line)
+            paths = [intersection] if isinstance(intersection, LineString) else [p for p in intersection.geoms if isinstance(p, LineString)]
+            if not paths:
+                continue
+            path = max(paths, key=lambda p: p.length)
+            foot = path.interpolate(path.length*.75)
+            scene.beam('Building_BuddhPitColumns', 'White',
+                       (foot.x, foot.y, foundation),
+                       (foot.x, foot.y, foundation+roof_height-.5), .6)
+    scene.landmarks.append({'name': 'Buddh mapped pit roof wings', 'osm_id': 188019421,
+                            'roof_group_stations_m': '528 and 804',
+                            'maximum_front_overhang_m': 6,
+                            'foundation_m': foundation,
+                            'source': 'Four-layer side canopies observed in reference 113, 117 and 121 seconds. Each group follows its actual mapped garage wing instead of the empty courtyard in the compound bounding rectangle. Layer spacing, overhang and heights remain visual estimates. The lowest fin clears the existing 11 m office roof.'})
 
 
 def circuit_edges(scene: CircuitScene) -> None:
@@ -150,78 +215,7 @@ def build_venue(scene: CircuitScene) -> None:
     )
     facade(scene, 188019421, 11, "modern", "White")
     mapped_garage_front(scene)
-    pit = mapped(scene, 188019421)
-    if pit is not None:
-        center, axis, lateral, length, width = frame(pit)
-        z = min(scene.ground(x, y) for x, y in pit.ring)
-        heading_sample, _ = scene.nearest(center[0], center[1])
-        if (center[0] - heading_sample.x) * lateral[0] + (
-            center[1] - heading_sample.y
-        ) * lateral[1] < 0:
-            lateral = mul(lateral, -1)
-        for fraction, roof_height in ((-0.34, 24.0), (0.35, 20.0)):
-            c = add((center[0], center[1], z), mul(axis, length * fraction))
-            for level in range(4):
-                slab_height = roof_height - level * 3.2
-                half = 35 + level * 1.2
-                near, far = -width * 0.5 - 6 + level * 0.9, width * 0.5 + 2
-                a = add(
-                    c,
-                    add(add(mul(axis, -half), mul(lateral, near)), (0, 0, slab_height)),
-                )
-                b = add(
-                    c,
-                    add(add(mul(axis, half), mul(lateral, near)), (0, 0, slab_height)),
-                )
-                d = add(
-                    c,
-                    add(
-                        add(mul(axis, half + 4), mul(lateral, far)),
-                        (0, 0, slab_height + 1.3),
-                    ),
-                )
-                e = add(
-                    c,
-                    add(
-                        add(mul(axis, -half + 4), mul(lateral, far)),
-                        (0, 0, slab_height + 1.3),
-                    ),
-                )
-                upward_quad(scene, "Building_BuddhPitRoof", "Roof", a, b, d, e)
-                double_quad(
-                    scene,
-                    "Building_BuddhPitSoffit",
-                    "Concrete",
-                    add(a, (0, 0, -0.3)),
-                    add(b, (0, 0, -0.3)),
-                    add(d, (0, 0, -0.3)),
-                    add(e, (0, 0, -0.3)),
-                )
-                scene.beam("Building_BuddhPitRoof", "White", a, b, 0.45, 0.3)
-            for offset in (-28, 0, 28):
-                top = add(
-                    c,
-                    add(
-                        add(mul(axis, offset), mul(lateral, -width * 0.4)),
-                        (0, 0, roof_height - 1),
-                    ),
-                )
-                scene.beam(
-                    "Building_BuddhPitColumns",
-                    "White",
-                    (top[0], top[1], scene.ground(top[0], top[1])),
-                    top,
-                    0.6,
-                )
-        scene.landmarks.append(
-            {
-                "name": "Buddh mapped pit and projecting control roofs",
-                "osm_id": 188019421,
-                "start_m": 470,
-                "end_m": 870,
-                "dimensions": "Registered articulated garage frontage and two angular layered roof groups estimated from 2013 footage.",
-            }
-        )
+    mapped_pit_roofs(scene)
     facade(scene, 188028655, 8, "modern", "White")
     facade(scene, 496650379, 8, "modern", "Cream")
     scene.stand(

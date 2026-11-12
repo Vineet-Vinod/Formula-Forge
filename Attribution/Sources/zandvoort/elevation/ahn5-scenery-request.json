@@ -1,0 +1,17 @@
+{
+  "source": "AHN5 DTM0.5m, linked by official ahn.nl/dataroom; snapshot2024-12-10, AHN5 acquisition2023\u20132025",
+  "bbox_28992": [
+    96535,
+    488137,
+    98915,
+    490367
+  ],
+  "requested_dimensions": [
+    595,
+    558
+  ],
+  "nominal_resolution_m": 4,
+  "url": "https://api.ellipsis-drive.com/v3/ogc/wcs/51e11c02-1065-463d-a0b0-263d80293b16?service=WCS&request=GetCoverage&version=1.0.0&coverage=41eaf86f-fa84-48f7-a949-355044ed0e4e&CRS=EPSG%3A28992&BBOX=96535%2C488137%2C98915%2C490367&WIDTH=595&HEIGHT=558&FORMAT=GeoTIFF",
+  "source_pixel_class": "DTM classified-ground; not DSM",
+  "native_physics_modified": false
+}

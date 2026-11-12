@@ -1,0 +1,19 @@
+{
+  "source_projection_uniform_scale": 0.994423,
+  "effective_scene_uniform_scale": 0.9981905009295947,
+  "native_normalization_chain": {
+    "initial_corrected_controls_factor": 1.0033063327564913,
+    "initial_catmull_length_m": 5260.606967454776,
+    "refinement_controls_factor": 1.0002807168399586,
+    "refinement_catmull_length_m": 5276.5187137797475,
+    "post_original_chain_factor": 1.0035879777397332,
+    "baseline_factor": 1.000199935017647,
+    "all_chain_factor": 1.0037886301197727,
+    "effective_scene_uniform_scale": 0.9981905009295947,
+    "method": "Exact float32 Catmull32 subdivision and float32 segment norms, double arc accumulation, Units17 normalization; original9d8e factor independently instrumented."
+  },
+  "final_road_sha256": "35438aa4cdbe034aa909db7f56df08ee84877d9b045c86f9b449db505a5e7225",
+  "source_basis": "alignment-corrections.json",
+  "source_basis_sha256": "1045117c1ae91d0e46404fcee0941e2849c303509ccfe9a614c8f7ef3243662d",
+  "scope": "Source-WGS to native world XY alignment after disclosed event-corner replacement. Width/elevation/camera/vehicle parameters are not rescaled."
+}

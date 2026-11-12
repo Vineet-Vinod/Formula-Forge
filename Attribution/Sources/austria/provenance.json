@@ -19,42 +19,125 @@
     "chosen": "relation-cycle/5309181",
     "measured_plan_m": 4303.032,
     "published_m": 4318,
-    "uniform_scale": 1.003478,
-    "scale_rule": "Applied only when the mapped plan was within 1.5% of a published length. Larger gaps keep the mapped length."
+    "uniform_scale": 1.0030608983567237,
+    "scale_rule": "Composed source projection and native32-subdivision Catmull length normalization, including the disclosed local corner reconstruction/refinement stages. Original source projection is retained separately; see scene-registration.json.",
+    "source_projection_uniform_scale": 1.003478
   },
   "elevation": {
-    "provider": "Formula1 official published longitudinal road-profile chart; original numericaldigitisation",
-    "dataset": "2016circuitTopographyprofile",
-    "recipe": "elevation-corrections.json",
-    "relative_datum": "Chart minimumsubtracted, absolutechartaltitude notclaimed localMSL.",
-    "relief_m": 63.5,
-    "uncertainty_m": 2.0,
-    "source_url": "https://www.formula1.com/en/latest/article/highs-and-lows-which-f1-track-has-the-most-elevation-changes-.7I9JEcBw3R2AqXbnJ6hyvc.7I9JEcBw3R2AqXbnJ6hyvc",
-    "previous_source": {
-      "provider": "Open-Meteo Elevation API",
-      "dataset": "Copernicus DEM GLO-90",
-      "dataset_note": "Surface model, about 90 m, includes roofs and canopy. Not a bare-earth racing survey.",
-      "licence": "Copernicus DEM, see https://registry.opendata.aws/copernicus-dem/",
-      "retrieved": "2026-11-04",
-      "sample_spacing_m": 20.0,
-      "smoothing": "Two circular binomial passes on the coarse samples, then linear interpolation onto the 4 m centreline. Isolated samples more than 6 m above their neighbours were treated as overpasses or roofs.",
-      "relative_datum": "Heights stored after subtracting the lap minimum.",
-      "removed_minimum_m": 678.314,
-      "relief_m": 67.677,
-      "uncertainty_m": 5,
-      "deck": null
-    },
-    "limitations": [
-      "Publisheddiagram is not an engineering/as-built survey. Smallresurfacingbumps, bankcrosssections and underpassdeckdetails need separatecontrols.",
-      "Graph/profile registration is approximate and depends on sourceplanlandmarks; do not claim geodetic precision from pixelreading.",
-      "Existingnativewidths/plan/vehicleparameters preserved. Landscapeterrain remains separatelysourced."
-    ],
-    "layout_note": "2016numbering has9corners beforeF1counted uphillkink asT2. Operatorcurrentlyquotes65mrelief vs2016chart63.5m; retain publishedchart values rather than rescaling to a different datum/survey."
+    "provider": "Land Steiermark, GIS-Steiermark",
+    "dataset": "ALS H\u00f6hen aktuell DGM UTM33N, official classified-ground mosaic",
+    "dataset_note": "Official classified-ground lidar DGM, unstyled F32 numeric export; not roof DSM or a digitised promotional graph.",
+    "licence": "CC BY 4.0",
+    "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+    "controls": "elevation-corrections.json",
+    "source": "elevation/styria-dgm-road-2m.tif",
+    "source_sha256": "623d076a509ff858667cc40868459830f3ede1eea35045e548ce929eada648cf",
+    "removed_minimum_m": 677.6563874284709,
+    "relative_datum": "Official Austrian Gebrauchsh\u00f6hen as delivered by the DGM service; local road elevations are relative to the filtered minimum. No conversion to ellipsoidal heights.",
+    "relief_m": 63.337977415263936,
+    "uncertainty_m": 0.25,
+    "smoothing": "Circular Gaussian sigma 2 m, truncated at 3 sigma, suppresses centimetre lidar/export noise. Maximum alteration of any raw height is 0.0444 m. Linear sampling of the dense filtered data supplies 4 m native controls plus independent retained source anchors and extrema; the last height equals the first. No grade clipping or vertical scaling.",
+    "deck": null
   },
   "width": {
-    "base_m": 12.0,
-    "straight_m": 15.0,
-    "method": "Authored from typical Grade 1 asphalt width, wider on low-curvature sections. Not a traced white-line survey."
+    "minimum_m": 12,
+    "maximum_m": 13,
+    "base_m": 12,
+    "straight_m": 13,
+    "controls_m": [
+      [
+        0,
+        13
+      ],
+      [
+        210,
+        13
+      ],
+      [
+        285,
+        12
+      ],
+      [
+        375,
+        12.5
+      ],
+      [
+        1080,
+        12.5
+      ],
+      [
+        1228,
+        12
+      ],
+      [
+        1370,
+        12
+      ],
+      [
+        1460,
+        13
+      ],
+      [
+        1910,
+        13
+      ],
+      [
+        2047,
+        12
+      ],
+      [
+        2239,
+        12
+      ],
+      [
+        2584,
+        12
+      ],
+      [
+        2873,
+        12
+      ],
+      [
+        3070,
+        12
+      ],
+      [
+        3460,
+        12.5
+      ],
+      [
+        3620,
+        12
+      ],
+      [
+        3844,
+        12
+      ],
+      [
+        3950,
+        13
+      ],
+      [
+        4318,
+        13
+      ]
+    ],
+    "source": "https://api.fia.com/sites/default/files/spg2024_0060_f1_mediakit_2024_eng_a4_300dpi_240625_view_tisc_0.pdf",
+    "source_publisher": "Red Bull Ring operator, FIA-hosted Austrian Grand Prix2024 media kit",
+    "source_note": "Circuit details specify12\u201313 m track width. This replaces the former generic12\u201315 m curvature-derived estimate. Main straight uses13 m; narrow corner controls use12 m, with12.5\u201313 m on the broad connecting straights. Local station transitions are reconstructed from registered corners and supplied video, not surveyed white-line edges.",
+    "interpolation": "Smooth cubic transitions between explicit station controls; no instantaneous-curvature width inference.",
+    "width_uncertainty_m": 0.5,
+    "station_uncertainty_m": 40,
+    "registered_corners": {
+      "T1_Niki_Lauda": 285,
+      "T3_Remus": 1228,
+      "T4_Rauch_Schlossgold": 2047,
+      "T6_Rauch": 2584,
+      "T7_Wurth": 2873,
+      "T8_Wurth_exit": 3070,
+      "T9_Rindt": 3620,
+      "T10_Red_Bull_Mobile": 3844
+    }
   },
   "shoulders": {
     "default_m": 8.0,
@@ -68,5 +151,26 @@
     "licence": "ODbL 1.0"
   },
   "protection": "Both sides are walled at the shoulder offset. Pit entry is closed. That closure is a game boundary, not a claim about the real pit lane.",
-  "not_claimed": "No lidar, no orthophoto registration, no cockpit capture in this build. Centimetre storage is not centimetre accuracy."
+  "not_claimed": "No lidar, no orthophoto registration, no cockpit capture in this build. Centimetre storage is not centimetre accuracy.",
+  "scene_coordinate_registration": {
+    "source_projection_uniform_scale": 1.003478,
+    "effective_scene_uniform_scale": 1.0030608983567237,
+    "native_normalization_chain": {
+      "initial_corrected_controls_factor": 0.9996952730066636,
+      "initial_catmull_length_m": 4319.31618392095,
+      "refinement_controls_factor": 1.0,
+      "refinement_catmull_length_m": null,
+      "post_original_chain_factor": 0.9996952730066636,
+      "fitted_minus_chain_factor": -6.229954641057134e-08,
+      "baseline_factor": 0.9998890371882352,
+      "all_chain_factor": 0.9995843440082628,
+      "effective_scene_uniform_scale": 1.0030608983567237,
+      "method": "Replicate exact float32 native32-step Catmull expression and float32 segment norms, double arc accumulation, float32 correction includingUnits17. Compose firstcontrols then refinementcontrols; original native factor independently instrumented. Port hasmixedraw/old-native sourceframe caveat.",
+      "baseline_factor_applied_to_selected_scale": true
+    },
+    "final_road_sha256": "767ac01a51c692e22fbb46e07b7cb66b747703462679d8e9d9608f4dce531d1a",
+    "source_basis": "alignment-corrections.json",
+    "source_basis_sha256": "920c42c88c8d08d6fa9b1155e39ff4d09fbe34d849538285a462aa62c4638a94",
+    "scope": "Scenery WGS84-to-native XY registration only. Native road geometry, physical road widths, elevations, vehicle tuning and camera are not changed by this metadata update. Original corner authoring controls retain their explicitly documented historical coordinate frame."
+  }
 }

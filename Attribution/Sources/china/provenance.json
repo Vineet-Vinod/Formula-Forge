@@ -19,11 +19,12 @@
     "chosen": "relation/2094941",
     "measured_plan_m": 5460.772,
     "published_m": 5451,
-    "uniform_scale": 0.99821,
-    "scale_rule": "Applied only when the mapped plan was within 1.5% of a published length. Larger gaps keep the mapped length."
+    "uniform_scale": 0.9987357414204638,
+    "scale_rule": "Composed source projection and native32-subdivision Catmull length normalization, including the disclosed local corner reconstruction/refinement stages. Original source projection is retained separately; see scene-registration.json.",
+    "source_projection_uniform_scale": 0.99821
   },
   "elevation": {
-    "provider": "Formula 1 published 2016 topography diagram",
+    "provider": "F1 published topography with Shanghai operator2024 grade limits",
     "dataset": "Published circuit topography profile, reconstructed",
     "dataset_note": "Read relative heights from the published numerical extremum labels and drawn trace, then register individual official corners to retained native centerline geometry using FIA maps. Intermediate heights are graphical estimates, not measurements.",
     "licence": "Factual derived heights with source attribution; no source image redistributed.",
@@ -32,8 +33,9 @@
     "relative_datum": "Relative to the published profile minimum; absolute diagram altitude is not used.",
     "relief_m": 7.4,
     "uncertainty_m": 1.0,
-    "smoothing": "Piecewise monotone cubic Hermite. Interior Fritsch-Carlson harmonic slopes; flat SF seam. No uniform rescaling of the previous DEM.",
-    "deck": null
+    "smoothing": "Retained F1 profile outside950\u20131126m and3700\u20134093m; local continuous grade ramps bounded by operator3% uphill limit. Dense1m samples, with exact ramp junctions and crest anchors.",
+    "deck": null,
+    "operator_constraints_source": "https://www.fia.com/sites/default/files/media_kit_-_chinese_gp.pdf"
   },
   "width": {
     "base_m": 13.0,
@@ -66,5 +68,26 @@
     "relief_m": 8.688,
     "uncertainty_m": 5,
     "deck": null
+  },
+  "scene_coordinate_registration": {
+    "source_projection_uniform_scale": 0.99821,
+    "effective_scene_uniform_scale": 0.9987357414204638,
+    "native_normalization_chain": {
+      "initial_corrected_controls_factor": 0.9993168325985179,
+      "initial_catmull_length_m": 5454.726405609399,
+      "refinement_controls_factor": 1.0008670582490808,
+      "refinement_catmull_length_m": 5446.277829380706,
+      "post_original_chain_factor": 1.0001832985016679,
+      "fitted_minus_chain_factor": -4.4100893980436595e-05,
+      "baseline_factor": 1.0003433227529412,
+      "all_chain_factor": 1.0005266841851552,
+      "effective_scene_uniform_scale": 0.9987357414204638,
+      "method": "Replicate exact float32 native32-step Catmull expression and float32 segment norms, double arc accumulation, float32 correction includingUnits17. Compose firstcontrols then refinementcontrols; original native factor independently instrumented. Port hasmixedraw/old-native sourceframe caveat.",
+      "baseline_factor_applied_to_selected_scale": true
+    },
+    "final_road_sha256": "05f3c68703c9f2b64a0d60e0008b429520a1c5823f8f918b75aec994b007a73d",
+    "source_basis": "alignment-corrections.json",
+    "source_basis_sha256": "4bb9fba68166a6fa00f530dd06347552bb4bb375d2992d4187b2789e9fa0e71b",
+    "scope": "Scenery WGS84-to-native XY registration only. Native road geometry, physical road widths, elevations, vehicle tuning and camera are not changed by this metadata update. Original corner authoring controls retain their explicitly documented historical coordinate frame."
   }
 }

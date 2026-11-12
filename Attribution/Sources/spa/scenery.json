@@ -1,9 +1,9 @@
 {
   "recipe": "make circuit-assets CIRCUIT=spa",
-  "tiles": 222,
-  "triangles": 1051747,
-  "road_sha256": "63049d8f4a8f62d434d24ff1aaf023d7eeedac92011635b563abaa67793300af",
-  "terrain_sha256": "69649c840bd3358de249a5cd39d910704ea1d99541ba4da53555f3e2f753d2bb",
+  "tiles": 273,
+  "triangles": 1364834,
+  "road_sha256": "933a5a4689cff639e6f0cb37403c0fac13588fbe7490c13966f2128a5c8de387",
+  "terrain_sha256": "31af9866fe4389610a55b7ae5c5770e212c296a262f760b4e6021406a064c937",
   "landmarks": [
     {
       "name": "Paved pit lane and working apron",
@@ -13,6 +13,16 @@
       "outer_offset_m": 19.5,
       "source_note": "Mapped F1pit77352246 road-facing stepped edge753.9\u21921051m; front offsets14.8\u201318.7m.19.5m reaches front while avoiding unrelated rear wing extendingtoward1327m. Supplied139.94/337.84s mainpit views. Native SF790m preserved; endpoints estimated.",
       "access": "Visual service area outside the closed driving boundary."
+    },
+    {
+      "name": "Raidillon outside-left striped paved wedge",
+      "start_m": 1880.0,
+      "end_m": 2000.0,
+      "side": -1,
+      "maximum_width_m": 16,
+      "area_m2": 1481.9074148837929,
+      "source": "Supplied continuous277\u2013280.5s, forward then rear camera",
+      "registration": "Forward278.4s identifies EauRouge/Raidillon. Rear279.8/280.5s shows striped paving on cameraRIGHT, hence forward-driverLEFT outside the uphillRIGHT bend. Width16m,1880\u20132000m endpoints,25/45m tapers and stripe spacing are bounded estimates. Wrong RIGHT gravel removed only1880\u20131960; first-left1800\u20131880 and crest1960\u20132100 portions remain historical uncertain ranges, not newly verified. Native road and measured grades are unchanged."
     },
     {
       "name": "Reference event panels",
@@ -131,157 +141,15 @@
   ],
   "vegetation": [
     {
-      "start_m": 1280,
-      "end_m": 1720,
-      "side": -1,
-      "setback_m": 40,
-      "rows": 4,
-      "species_form": "mixed conifer/broadleaf",
-      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
-    },
-    {
-      "start_m": 2160,
-      "end_m": 3030,
-      "side": 1,
-      "setback_m": 25,
-      "rows": 4,
-      "species_form": "mixed conifer/broadleaf",
-      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
-    },
-    {
-      "start_m": 2160,
-      "end_m": 3010,
-      "side": -1,
-      "setback_m": 35,
-      "rows": 4,
-      "species_form": "mixed conifer/broadleaf",
-      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
-    },
-    {
-      "start_m": 3380,
-      "end_m": 3760,
-      "side": 1,
-      "setback_m": 32,
-      "rows": 4,
-      "species_form": "mixed conifer/broadleaf",
-      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
-    },
-    {
-      "start_m": 3400,
-      "end_m": 3750,
-      "side": -1,
-      "setback_m": 38,
-      "rows": 4,
-      "species_form": "mixed conifer/broadleaf",
-      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
-    },
-    {
-      "start_m": 3920,
-      "end_m": 4560,
-      "side": 1,
-      "setback_m": 30,
-      "rows": 4,
-      "species_form": "mixed conifer/broadleaf",
-      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
-    },
-    {
-      "start_m": 3940,
-      "end_m": 4560,
-      "side": -1,
-      "setback_m": 35,
-      "rows": 4,
-      "species_form": "mixed conifer/broadleaf",
-      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
-    },
-    {
-      "start_m": 4820,
-      "end_m": 5200,
-      "side": 1,
-      "setback_m": 42,
-      "rows": 4,
-      "species_form": "mixed conifer/broadleaf",
-      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
-    },
-    {
-      "start_m": 4820,
-      "end_m": 5220,
-      "side": -1,
-      "setback_m": 34,
-      "rows": 4,
-      "species_form": "mixed conifer/broadleaf",
-      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
-    },
-    {
-      "start_m": 5500,
-      "end_m": 5860,
-      "side": 1,
-      "setback_m": 35,
-      "rows": 4,
-      "species_form": "mixed conifer/broadleaf",
-      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
-    },
-    {
-      "start_m": 5520,
-      "end_m": 5850,
-      "side": -1,
-      "setback_m": 32,
-      "rows": 4,
-      "species_form": "mixed conifer/broadleaf",
-      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
-    },
-    {
-      "start_m": 6110,
-      "end_m": 6910,
-      "side": 1,
-      "setback_m": 32,
-      "rows": 4,
-      "species_form": "mixed conifer/broadleaf",
-      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
-    },
-    {
-      "start_m": 6140,
-      "end_m": 6900,
-      "side": -1,
-      "setback_m": 32,
-      "rows": 4,
-      "species_form": "mixed conifer/broadleaf",
-      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
-    },
-    {
-      "start_m": 1390,
-      "end_m": 1690,
-      "side": -1,
-      "setback_m": 22,
-      "rows": 1,
-      "species_form": "broadleaf",
-      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
-    },
-    {
-      "start_m": 3520,
-      "end_m": 3690,
-      "side": -1,
-      "setback_m": 22,
-      "rows": 1,
-      "species_form": "broadleaf",
-      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
-    },
-    {
-      "start_m": 4150,
-      "end_m": 4490,
-      "side": -1,
-      "setback_m": 22,
-      "rows": 1,
-      "species_form": "broadleaf",
-      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
-    },
-    {
-      "start_m": 5530,
-      "end_m": 5770,
-      "side": -1,
-      "setback_m": 22,
-      "rows": 1,
-      "species_form": "broadleaf",
-      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+      "name": "Mapped continuous woodland",
+      "source": "vegetation/woodland-provenance.json",
+      "patches": 66,
+      "woodland_area_m2": 4405471.504586072,
+      "reconstructed_trees": 27435,
+      "detailed_edge_trees": 857,
+      "needleleaf_trees": 20286,
+      "minimum_crown_clearance_from_corridor_m": 11.9924449099579,
+      "placement_status": "Actual OSM forest/wood polygons and holes, clipped to retained classified-ground coverage. Roads, protection, aprons, buildings and water excluded. Tree positions, 12\u201328m edge/interior heights and mixed proportions where untagged are original reference-guided estimates; distant layered foliage preserves canopy continuity without extending woodland into mapped clearings."
     }
   ],
   "review_status": "Awaiting packaged whole-route review; asset import is not visual approval."

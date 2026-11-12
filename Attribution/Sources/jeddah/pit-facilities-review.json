@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "circuit": "jeddah",
+  "date": "2026-11-12",
+  "status": "Source correction with emitted-geometry checks; packaged appearance and Luna review remain pending.",
+  "coordinate_frame": "Native east/north metres; +1 is driver RIGHT, -1 is driver LEFT. Scene WGS registration scale 0.997450175270678.",
+  "correction": "Replace the reversed generic pits and two generic left-side stands with the left-side 280 m pit compound and all four actual mapped right-side stands. Add the directly observed T27 pavilion and a small tree belt, rather than an invented city skyline.",
+  "primary_sources": [
+    {
+      "url": "https://www.formula1.com/en/latest/article/revealed-new-images-of-state-of-the-art-saudi-arabian-pit-and-team-building.3XR9bIkbSNnUljmD176uzD",
+      "supports": "F1/Tilke primary description: 280 m compound, four storeys, staggered horizontal architectural form. Text read; failed image downloads are not image evidence."
+    },
+    {
+      "url": "https://www.fia.com/system/files/decision-document/2025_saudi_arabian_grand_prix_-_event_notes_-_circuit_map_pit_lane_and_quarantine_zone.pdf",
+      "sha256": "fdbd4a72211efad4089aadb2efe261f75acfac67cbf8aa9dcd187e0fcbcfb7d0",
+      "pages": {
+        "3": "Pit plan: 45 numbered garages, central passage between bays 21 and 22, left-side garage lane.",
+        "5": "Geolocated T27 outfield staging point and actual two-level framed pavilion photographs. Primary photo shows preparation state; supplied race video supports finished glazing."
+      }
+    }
+  ],
+  "pit_compound": {
+    "start_m": 6009,
+    "end_m": 115,
+    "side": -1,
+    "length_m_primary": 280,
+    "storeys_primary": 4,
+    "garages_primary": 45,
+    "garage_front_outer_offset_m_estimate": 13,
+    "depth_m_estimate": 26,
+    "floor_height_m_estimate": 4.6,
+    "roof_height_above_road_m_estimate": [
+      19.2,
+      21.9
+    ],
+    "longitudinal_registration_uncertainty_m": 20,
+    "ground": "Exact authored compound patch follows adjacent native zero road level, replacing only the occupied DSM footprint. Road XYZ and physical surface are unchanged."
+  },
+  "stands": [
+    {
+      "osm_id": 1154622779,
+      "position": "Main stand, driver RIGHT opposite pits",
+      "native_station_m": [
+        6019,
+        116
+      ],
+      "mapped_dimensions_m": [
+        271.3,
+        16.6
+      ]
+    },
+    {
+      "osm_id": 1154622781,
+      "position": "T1, driver RIGHT",
+      "native_center_station_m": 337,
+      "mapped_dimensions_m": [
+        65.6,
+        17
+      ]
+    },
+    {
+      "osm_id": 1154622780,
+      "position": "Central stand, driver RIGHT",
+      "native_center_station_m": 4091,
+      "mapped_dimensions_m": [
+        66,
+        20
+      ]
+    },
+    {
+      "osm_id": 1154622782,
+      "position": "Central stand, driver RIGHT",
+      "native_center_station_m": 4146,
+      "mapped_dimensions_m": [
+        49.5,
+        28
+      ]
+    }
+  ],
+  "stand_style": "Retained footprint bounds and local road-facing orientation; blue seats and shallow cantilever roof. Row counts and roof heights are reconstructed. Foundations use adjacent road-level patches confined to each actual footprint, with ±1 m vertical uncertainty rather than roof-contaminated DSM bases.",
+  "t27_pavilion": {
+    "primary_ers_staging_wgs_lat_lon": [
+      21.62480556,
+      39.10658333
+    ],
+    "estimated_center_wgs_lat_lon": [
+      21.6251343,
+      39.1069061
+    ],
+    "placement_note": "Estimated pavilion center is about 33 m east and 37 m north of the primary staging control, consistent with the site photograph. This is not a measured pavilion footprint.",
+    "placement_uncertainty_m": 20,
+    "length_depth_height_m_estimate": [
+      85,
+      20,
+      10.7
+    ],
+    "form": "Two levels of white vertical framing, dark/bright glazing, shallow pale roof with a closed underside; dimensions and exact bay rhythm estimated from direct video and primary photographs.",
+    "ground": "Only the estimated occupied 85×20 m footprint receives an adjacent-road-level reconstruction at native 5390 m. No broad land flattening or water replacement.",
+    "minimum_road_edge_clearance_m": 17.59596526921508,
+    "runtime_pose_note": "The 291 s video is mid/late T27, approximately native 5390±40 m. Native 5410 is farther through the turn; the old static 5410 pair was not an exact matched pose. At 292 s the pavilion passes to the right; 294 s cuts to a different driver/camera."
+  },
+  "tree_belt": {
+    "reference_seconds": [
+      289,
+      290,
+      291,
+      292
+    ],
+    "placed_roots": 10,
+    "placement": "Sparse mature broadleaf crowns beyond T27 barriers. Exact roots and 10–12 m heights are estimates; all are grounded and clear of every road arm, water and pavilion."
+  },
+  "source_frames": [
+    {
+      "path": "build/reviews/jeddah/reference/detail-0235.jpg",
+      "sha256": "8574e5608df82b5b90230581070631ae6197247a694839d1dcd2c07508ccb5a3"
+    },
+    {
+      "path": "build/reviews/jeddah/reference/detail-0239.jpg",
+      "sha256": "20253e4ac2aa7a21852e56fc28fbf4c576f49bc69a4cfb22fa96f99d3a6439f2"
+    },
+    {
+      "path": "build/reviews/jeddah/reference/detail-0243.jpg",
+      "sha256": "b04179bf456285f82af162b8f4011b341965715347a9ea5e5a1b85822f63ebed"
+    },
+    {
+      "path": "build/reviews/jeddah/reference/resume-0289.jpg",
+      "sha256": "99d6bb705fad90607426e47dc9c1706d73b8b9549e08c5c027f2cf1cb88220ef"
+    },
+    {
+      "path": "build/reviews/jeddah/reference/resume-0290.jpg",
+      "sha256": "2d741d6d5b43014f6059a444ee397b4cf1faf8a45a9c6f3e5dfa9582fd089936"
+    },
+    {
+      "path": "build/reviews/jeddah/reference/detail-0291.jpg",
+      "sha256": "1871d166f74e531325b2731ca0122377211e264c11c502ba72c1251144da5e63"
+    },
+    {
+      "path": "build/reviews/jeddah/reference/resume-0292.jpg",
+      "sha256": "5946c9c4891fdf91d18f23178118f72ee5c705f749a87ba23d680a681d0c9e4d"
+    },
+    {
+      "path": "build/reviews/jeddah/reference/resume-0293.jpg",
+      "sha256": "cdcd62d22e02f6a0132c9a3955a55b2a7a548415d1b185b8201ddbd1583966eb"
+    },
+    {
+      "path": "build/reviews/jeddah/reference/primary-t27-001.jpg",
+      "sha256": "afd67d7c2d4cd1c229e83eee98ae0041e04825708357cef2ca567f57941e1b45"
+    },
+    {
+      "path": "build/reviews/jeddah/reference/primary-t27-002.jpg",
+      "sha256": "65dea6f9df1c5439afe8d301a7b9f1cbc6296d10a7ebd440ecb4a7feb6bb7f8e"
+    }
+  ],
+  "geometry_proof": {
+    "path": "build/reviews/resume-20261112/jeddah-facilities-source-proof.json",
+    "sha256": "45fba3ecfe7c3b105afdfd60371a3d58316a1ac64fd72fbee1b61bd08a52904e",
+    "structural_whole_road_xy_overlap_m2": 0,
+    "pit_water_overlap_m2": 0,
+    "pavilion_water_overlap_m2": 0,
+    "finite_vertices": true,
+    "peak_rss_kib": 95676,
+    "production_mesh_written": false
+  },
+  "native_followup": "Root must restore the original RIGHT shoulder profile in the rejected 5830→210 interval, then apply only the new LEFT 6009→115 pit-lane profile and regenerate protection. No centerline, road elevation, banking or handling changes are requested.",
+  "pixels_policy": "Reference images remain ignored under build/reviews; no source or game pixels are shipped."
+}

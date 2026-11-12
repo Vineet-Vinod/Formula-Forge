@@ -1,0 +1,281 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-12",
+  "source": "https://www.fia.com/sites/default/files/25.03.2019_final_bahrain_media_kit.pdf",
+  "source_page": 11,
+  "published_width_range_m": [
+    14,
+    22
+  ],
+  "prior_generic_width_range_m": [
+    12,
+    15
+  ],
+  "profile": {
+    "base_m": 14.0,
+    "straight_m": 16.0,
+    "minimum_m": 14.0,
+    "maximum_m": 22.0,
+    "source": "https://www.fia.com/sites/default/files/25.03.2019_final_bahrain_media_kit.pdf",
+    "source_page": 11,
+    "controls_m": [
+      [
+        0,
+        16
+      ],
+      [
+        300,
+        16
+      ],
+      [
+        400,
+        18
+      ],
+      [
+        450,
+        22
+      ],
+      [
+        470,
+        22
+      ],
+      [
+        488,
+        20
+      ],
+      [
+        540,
+        16
+      ],
+      [
+        580,
+        14
+      ],
+      [
+        630,
+        14
+      ],
+      [
+        720,
+        16
+      ],
+      [
+        800,
+        16
+      ],
+      [
+        1100,
+        16
+      ],
+      [
+        1210,
+        18
+      ],
+      [
+        1293,
+        18
+      ],
+      [
+        1370,
+        16
+      ],
+      [
+        1450,
+        14
+      ],
+      [
+        1900,
+        14
+      ],
+      [
+        1980,
+        18
+      ],
+      [
+        2050,
+        18
+      ],
+      [
+        2140,
+        14
+      ],
+      [
+        2380,
+        16
+      ],
+      [
+        2450,
+        14
+      ],
+      [
+        2490,
+        14
+      ],
+      [
+        2550,
+        14
+      ],
+      [
+        2850,
+        16
+      ],
+      [
+        3100,
+        16
+      ],
+      [
+        3240,
+        16
+      ],
+      [
+        3350,
+        14
+      ],
+      [
+        3550,
+        14
+      ],
+      [
+        3850,
+        14
+      ],
+      [
+        3950,
+        14
+      ],
+      [
+        4100,
+        16
+      ],
+      [
+        4500,
+        16
+      ],
+      [
+        4620,
+        18
+      ],
+      [
+        4700,
+        18
+      ],
+      [
+        4800,
+        16
+      ],
+      [
+        4950,
+        16
+      ],
+      [
+        5412,
+        16
+      ]
+    ],
+    "method": "Published operator range with wider braking entries and tighter apexes registered to retained mapped corners. Local widths are reconstruction estimates, not a white-line survey. Existing smooth cubic transitions join the controls.",
+    "edge_definition": "Racecourse between white edges or kerbs, excluding painted runoff, pit lane and blue/red escape aprons.",
+    "uncertainty_m": 2.0,
+    "station_uncertainty_m": 50.0,
+    "registration": [
+      {
+        "official_corner": "Pit straight and T1",
+        "native_range_m": [
+          0,
+          540
+        ],
+        "width_m": [
+          16,
+          22
+        ],
+        "reference_frames": [
+          "detail-0195.jpg",
+          "detail-0200.jpg",
+          "overview-12.jpg"
+        ],
+        "observation": "Direct pit straight and T1 braking entry, including HUD7.752 at1030.97s. The wider approach is distinct from the tighter turn and subsequent T2.22m entry and20m apex are local estimates within operator bounds."
+      },
+      {
+        "official_corner": "T2",
+        "native_range_m": [
+          580,
+          630
+        ],
+        "width_m": [
+          14,
+          14
+        ],
+        "reference_frames": [
+          "detail-0100.jpg"
+        ],
+        "observation": "Direct left T2 frame, Sakhir tower on driver right. Distinct track edge excludes the outside painted escape."
+      },
+      {
+        "official_corner": "T4",
+        "native_range_m": [
+          1210,
+          1370
+        ],
+        "width_m": [
+          16,
+          18
+        ],
+        "reference_frames": [
+          "detail-0155.jpg"
+        ],
+        "observation": "Direct T4 exit at HUD25.215, right-hand bend and Aramco bridge ahead. Racecourse edge is separated from the sand-coloured outside escape by the red/white kerb.18m apex is a local estimate, supported by the mapped23.44m center arc."
+      },
+      {
+        "official_corner": "T9\u2013T10",
+        "native_range_m": [
+          2380,
+          2550
+        ],
+        "width_m": [
+          14,
+          16
+        ],
+        "reference_frames": [
+          "detail-0160.jpg"
+        ],
+        "observation": "Direct T10 exit at HUD47.233. The outside-right red/white kerb bounds the racing asphalt, with sand beyond. Tight mapped center arc radius8.49m independently supports the narrow14m apex estimate; the exact apex white-edge width remains unmeasured."
+      },
+      {
+        "official_corner": "T11",
+        "native_range_m": [
+          3100,
+          3350
+        ],
+        "width_m": [
+          14,
+          16
+        ],
+        "reference_frames": [
+          "detail-0110.jpg"
+        ],
+        "observation": "Direct left T11 at HUD57.320. The inside red/white kerb borders blue/navy painted escape, which is excluded from road width.16m entry is an estimate, with a narrower exit."
+      },
+      {
+        "official_corner": "T14\u2013T15",
+        "native_range_m": [
+          4620,
+          4950
+        ],
+        "width_m": [
+          16,
+          18
+        ],
+        "reference_frames": [
+          "detail-0115.jpg"
+        ],
+        "observation": "Direct right T14 apex at HUD1:19.781, with red/white inside kerb and painted outside apron.18 m is a local estimate."
+      }
+    ],
+    "registration_correction": "Former sector labels were wrong:115s isT14,160s isT10exit,862.65s isT13,1030.97s isT1entry;140s is a menu. Current reference-index retains historical assignments and corrected direct witnesses."
+  },
+  "mapped_arc_proposals": "Retained OSM circle fit: T1 radius 13.8027 m;T4 radius 23.4376 m;T10 radius 8.4926 m. Circle fits are not a kerb survey. Root coordinates tangent-continuous local alignment corrections separately.",
+  "limitations": [
+    "Published bounds do not define station-resolved white-line locations. Local widths carry explicit 2 m uncertainty.",
+    "Direct T1entry/T2/T4exit/T10exit/T11/T13/T14 views are registered. Widths remain local estimates within the primary range; intermediate T5\u2013T7/T9/T12 pose coverage still needs closure.",
+    "No native road, physics, protection or runtime asset was changed by this source-only correction."
+  ]
+}

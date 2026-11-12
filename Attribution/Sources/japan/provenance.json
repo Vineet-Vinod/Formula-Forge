@@ -19,8 +19,9 @@
     "chosen": "relation/284570",
     "measured_plan_m": 5809.557,
     "published_m": 5807,
-    "uniform_scale": 0.99956,
-    "scale_rule": "Applied only when the mapped plan was within 1.5% of a published length. Larger gaps keep the mapped length."
+    "uniform_scale": 0.999535073853083,
+    "scale_rule": "Composed source projection and native32-subdivision Catmull length normalization, including the disclosed local corner reconstruction/refinement stages. Original source projection is retained separately; see scene-registration.json.",
+    "source_projection_uniform_scale": 0.99956
   },
   "elevation": {
     "provider": "Geospatial Information Authority of Japan",
@@ -64,5 +65,26 @@
   "reference_video": {
     "file": "Saved/Refs/japan.mp4",
     "use": "Appearance only. The clip is a commercial racing-game Japanese Grand Prix replay, not an onboard survey. Its pixels and meshes are not shipped."
+  },
+  "scene_coordinate_registration": {
+    "source_projection_uniform_scale": 0.99956,
+    "effective_scene_uniform_scale": 0.999535073853083,
+    "native_normalization_chain": {
+      "initial_corrected_controls_factor": 0.9998156603644875,
+      "initial_catmull_length_m": 5808.070580031723,
+      "refinement_controls_factor": 1.0,
+      "refinement_catmull_length_m": null,
+      "post_original_chain_factor": 0.9998156603644875,
+      "fitted_minus_chain_factor": -2.643520969902724e-07,
+      "baseline_factor": 1.0001594319058824,
+      "all_chain_factor": 0.9999750628807506,
+      "effective_scene_uniform_scale": 0.999535073853083,
+      "method": "Replicate exact float32 native32-step Catmull expression and float32 segment norms, double arc accumulation, float32 correction includingUnits17. Compose firstcontrols then refinementcontrols; original native factor independently instrumented. Port hasmixedraw/old-native sourceframe caveat.",
+      "baseline_factor_applied_to_selected_scale": true
+    },
+    "final_road_sha256": "ae4c6658e01de8adee7fb2d6019f830c839a2f9d714843016e167479506a050d",
+    "source_basis": "alignment-corrections.json",
+    "source_basis_sha256": "6679068c378f9fb0a69dbcb155748f5d376215918479b603e57b54f059db6e24",
+    "scope": "Scenery WGS84-to-native XY registration only. Native road geometry, physical road widths, elevations, vehicle tuning and camera are not changed by this metadata update. Original corner authoring controls retain their explicitly documented historical coordinate frame."
   }
 }

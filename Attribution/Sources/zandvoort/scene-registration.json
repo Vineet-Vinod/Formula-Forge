@@ -1,0 +1,21 @@
+{
+  "source_projection_uniform_scale": 1.000724,
+  "effective_scene_uniform_scale": 1.001198341004055,
+  "native_normalization_chain": {
+    "initial_corrected_controls_factor": 1.0,
+    "initial_catmull_length_m": null,
+    "refinement_controls_factor": 1.0005379845114315,
+    "refinement_catmull_length_m": 4256.7101741191,
+    "post_original_chain_factor": 1.0005379845114315,
+    "fitted_minus_chain_factor": -5.08799165632734e-05,
+    "baseline_factor": 0.9999360477235293,
+    "all_chain_factor": 1.0004739978296266,
+    "effective_scene_uniform_scale": 1.001198341004055,
+    "method": "Replicate exact float32 native32-step Catmull expression and float32 segment norms, double arc accumulation, float32 correction includingUnits17. Compose firstcontrols then refinementcontrols; original native factor independently instrumented. Port hasmixedraw/old-native sourceframe caveat.",
+    "baseline_factor_applied_to_selected_scale": true
+  },
+  "final_road_sha256": "d67e0b0c19ca250b798c47b08837bf9df38de18a4713ec5c92217cf90e2c39b6",
+  "source_basis": "alignment-refinement-base.csv.gz",
+  "source_basis_sha256": "24b1dc71ed3b4b4b595fd87a047cf98787a282808016032d9636a2b7682991a1",
+  "scope": "Scenery WGS84-to-native XY registration only. Native road geometry, physical road widths, elevations, vehicle tuning and camera are not changed by this metadata update. Original corner authoring controls retain their explicitly documented historical coordinate frame."
+}

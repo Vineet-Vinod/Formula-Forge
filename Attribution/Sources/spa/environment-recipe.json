@@ -38,10 +38,13 @@
       "name": "Eau Rouge and Raidillon",
       "reference_times_s": [
         671,
-        674
+        674,
+        278.4,
+        279.8,
+        280.5
       ],
-      "observed_environment": "From the upstream LaSource exit/old-pit descent, the valley, large covered stand on the left bank toward EauRouge and forested ridge are visible. These approach views do not establish the exact compression, Raidillon crest, or a gabled chalet at EauRouge.",
-      "placement_confidence": "Approach context only. Prior205.90/667.68s claims of direct EauRouge evidence were incorrect; both show LaSource. Use retained map/profile for station geometry and independently verify close landmark identity/footprint."
+      "observed_environment": "Continuous forward approach278.4s then rear279.8/280.5s identifies the uphill RIGHT bend and shows a broad striped red/yellow paved apron on forward-driverLEFT. The forward-driverRIGHT inside is grass. Earlier671/674s frames remain upstream context only.",
+      "placement_confidence": "Direct corner-order and material/side evidence from the continuous sequence. Camera switch at279.1s reverses left/right. Width, exact apron bounds and stripe geometry remain explicit estimates, not a measured survey."
     },
     {
       "start_m": 2250,
@@ -91,15 +94,17 @@
     }
   ],
   "terrain": {
-    "retained_source": "Copernicus DEM GLO-90",
-    "retained_relief_m": 99.798,
-    "shortcomings": "GLO-90 relief99.798m is insufficient for Eau Rouge/Raidillon compression, drainage, banks and bridges. SPW 0.5m 2021\u201322 MNT is authoritative bare-earth candidate; identify height payload rather than reading coloured map export. Bridges removed from MNT require deck masks. Historical README fine survey is not retained.",
+    "retained_source": "Service public de Wallonie (SPW), official classified-ground0.5m MNT2021\u20132022",
+    "retained_relief_m": 102.256256,
+    "shortcomings": "The retained12m scenery lattice cannot resolve small drains/retaining faces/bridge decks. OSM-to-lidar road registration remains approximately2m uncertain. No unmeasured terrain is labelled as lidar and no DSM roof fallback is used.",
     "candidate_primary_sources": [
       "https://geoportail.wallonie.be/catalogue/a004e570-99d6-4fe5-b83d-49b774409278.html",
       "https://geoservices.wallonie.be/arcgis/rest/services/RELIEF/WALLONIE_MNT_2021_2022/MapServer"
     ],
-    "data_status": "Candidate metadata reviewed; no candidate raster downloaded or claimed as incorporated.",
-    "racing_deck_correction": "Separate independentlydigitized primary Formula1roadprofile now replaces contaminated/coarseGLO90 racingprofile. Landscapegrid remains separatelysourced. Post2022runoff/grandstands differ from2016diagram, but same7.004kmracingline. EauRouge/Raidillon grade registered to namedways; constructionverticaltransitions not surveyed."
+    "data_status": "All61,411 existing12m scenery-grid points sampled from numeric ground raster, originalquery/responsebatches retained. Native terrain.bin materializes from scenery-ground.json before scene generation.",
+    "racing_deck_correction": "elevation-corrections.json and scenery-ground.json use the same classified-ground source and identical relative datum. Separate density/bridge treatment remains explicit.",
+    "retained_grid_manifest": "scenery-ground.json",
+    "terrain_grid_relief_m": 202.24056999999993
   },
   "authoring_constraints": [
     "Use mapped building footprints and match rooflines, structural supports, facade depth and stepped volumes; names alone do not establish likeness.",
@@ -511,5 +516,27 @@
     },
     "review_image": "build/reviews/spa/corrected-live/targeted/02-1680.0-00000845.jpg",
     "image_sha256": "8386bf36abb7f5812fca14564fddb77418360bc703c0d6a897c13feca6e5644f"
+  },
+  "racing_profile_source_review": {
+    "source": "elevation-corrections.json",
+    "actual_sampled_relief_m": 102.25625600000001,
+    "reason": "Independent classified-ground data resolves Raidillon steepness and the misregistered Blanchimont climb. No vertical multiplier, grade clipping or road-plan change.",
+    "rendered_validation": "Pending root native application, regenerated scenery and matched packaged review."
+  },
+  "woodland_fidelity_correction": {
+    "source": "vegetation/woodland-provenance.json",
+    "model": "tools/venues/woodland.py",
+    "reference": {
+      "path": "build/reviews/spa/reference/final-676.00.jpg",
+      "time_s": 676.0,
+      "sha256": "145a50dfc794e26f73d63b390ab46a0fefc1dbdb6181bbae675249da92edc141",
+      "observation": "Continuous densely wooded banks/ridges with mixed canopy edges and real open grass/spectator clearings. Prior sparse parallel rows leave artificial bare bands.",
+      "registration": "Confirmed Kemmel straight, HUD25.583s, native corridor2113\u20133165m. Exact position within the straight is unregistered; there is a montage cut between674 and676s."
+    },
+    "status": "Source-backed woodland polygons replace parallel station rows. Native road, protection and all measured ground heights remain unchanged. Fresh packaged visual review required; source geometry is not visual acceptance."
+  },
+  "raidillon_runoff_correction": {
+    "source": "raidillon-runoff-correction.json",
+    "status": "Actual continuous forward/rear sequence establishes outside-left striped paving and inside-right grass. Initial LaSource gravel misidentification withdrawn."
   }
 }

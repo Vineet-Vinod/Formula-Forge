@@ -9,6 +9,9 @@ The code paths and capture example were checked on 2026-11-03. Recheck the
 loaders and commands when the implementation changes.
 Whole-lap quality guidance was updated after the accepted Las Vegas review on
 2026-11-06.
+The additional-circuit workflow was revised on 2026-11-12 for source registration,
+ground classification and dimension checks. These revisions do not establish
+visual acceptance of the 18 additional venues.
 
 This guide records the lessons from Silverstone, Monza and Interlagos. It also
 maps those lessons to the current Unreal-only repository. It is not a claim that
@@ -19,8 +22,8 @@ an automatic track generator already exists here.
 Confirm the circuit variant, direction, reference year and requested scope. A
 historic layout, current Grand Prix layout and commercial game's interpretation
 may differ. Record those differences before combining their sources. Adding a
-track is authorized when the user requests it; the current three-track scope in
-AGENTS.md should not silently prevent that requested addition.
+track is authorized when the user requests it. Check the current project scope
+and preserve its accepted baselines while adding the requested venue.
 
 The acceptance history matters:
 
@@ -68,10 +71,10 @@ guard just to finish a render.
 
 The editable shipping assets are native `.uasset` and `.umap` files in
 `Content/Generated`. Source records are under [Attribution](../Attribution/README.md).
-Many of those records describe historical Blender/GLB authoring. The old `.blend`
-files, downloaded reference videos, raw survey archives and generator scripts
-were removed during cleanup. A manifest entry is not proof that its payload is
-still on disk. Inventory what is present and reacquire missing permitted inputs.
+Some records describe historical Blender/GLB authoring whose payloads were removed
+during earlier cleanup. Current supplied reference videos are in `Saved/Refs`;
+current circuit recipes and retained survey inputs are under `Attribution/Sources`.
+Inventory the actual files before assuming a manifest entry has a local payload.
 
 Do not invoke historical targets such as `make monza-assets` or scripts under
 `tools/blender/`; they are not current build instructions. Do not restore Blender
@@ -87,16 +90,15 @@ Current tools have specific limits:
 - The enabled Python/editor-scripting plugins can automate editor asset creation
   and placement. Python is an authoring tool, not a runtime requirement. See
   [Epic's editor Python documentation](https://dev.epicgames.com/documentation/en-us/unreal-engine/scripting-the-unreal-editor-using-python).
-- Implement the missing per-track builder/importer as part of the map task. Use
-  editor APIs supported by the installed engine, or a small editor-only C++ mesh
-  builder exposed to the authoring script. Check local engine headers before
-  assuming an API or plugin is available.
+- The additional circuits use `generate_circuit_scene.py` for offline geometry and
+  `build_circuit_scene.py` for native Unreal imports. See the linked circuit scene
+  workflow before introducing another builder. For extensions, check local engine
+  headers before assuming an editor API or plugin is available.
 - Keep new recipes and small source metadata versioned. Scratch conversions go
   in `build/`; a necessary generation script must not live only there. Validate
   inputs, give units explicit names and make rebuilding repeatable.
 
-A proposed new-track organization is below. `<slug>` is a placeholder, not an
-existing tool or asset directory:
+Use the existing circuit organization. `<slug>` denotes the venue identifier:
 
 ```text
 Attribution/Sources/<slug>/       provenance, source URLs/hashes, licences, decisions
@@ -104,8 +106,9 @@ Content/Generated/<Track>/        native track assets and Review.umap
 Content/Generated/<Track>/Data/   surface, limits and render manifest
 Source/FormulaForge/Native/track_data/<slug>_*.inc
 Source/FormulaForge/FF<Track>Geometry.cpp
-tools/build_<slug>.py             new Unreal authoring entry point, if needed
-build/references/<slug>/          raw inputs and reference frames
+tools/venues/<slug>.py            circuit-specific geometry and scenery
+Saved/Refs/                      supplied reference videos; preserve these
+build/reviews/<slug>/reference/   extracted reference frames
 build/reviews/<slug>/             runtime captures, profiles, metrics and review notes
 ```
 
@@ -257,6 +260,30 @@ wrong width, wrong camera, oversized building, wrong barrier setback or a
 perspective mismatch. Measure before choosing which one to change.
 
 ## 5. Reconstruct road and terrain as related surfaces
+
+Check the actual event route before smoothing it. A public-road centreline can
+cross a temporary event corner by a chord, include an unused junction, or retain
+a removed chicane. Portimão needed two route corrections; Australia and Singapore
+needed event-corner curves absent from their street mapping. Use an event plan
+and continuous reference views to choose the route. Keep schematic curve estimates
+and their uncertainty explicit. Dense sampling alone cannot correct the shape.
+
+After editing curves, audit the complete horizontal transformation. The native
+sampler normalises the interpolated lap to the catalogue length. That extra scale
+also affects where mapped buildings, trees, water and terrain must land. Record
+the composed transformation in `scene-registration.json`; preserve the original
+source scale separately. A station remap between two native curves uses their
+relative transformation, rather than the full source-to-world transformation.
+Rebase retained ground grids horizontally from their recorded `grid_uniform_scale`.
+Keep their elevation datum and heights unchanged. Verify several mapped witnesses
+around the entire lap, including the lap seam.
+
+Prefer classified ground to a surface model for road heights. Retain raw samples,
+classification, horizontal CRS, vertical datum, interpolation and missing-data
+treatment. Compare local grades with primary evidence using a stated measurement
+interval: a marketing maximum with no interval is not permission to flatten a
+measured crest. Separate surveyed ground, reconstructed racing profiles and
+estimated event widths in the source record.
 
 ### Use the right observations
 

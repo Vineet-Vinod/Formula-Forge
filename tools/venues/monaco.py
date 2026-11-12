@@ -5,15 +5,17 @@ import math
 import random
 from itertools import pairwise
 
-from circuit_dataclasses import Building, Point
+from circuit_dataclasses import Building, Point, RetainedTerrainSource
 from circuit_mesh import add, mul
 from circuit_scene import CircuitScene
+from pydantic import TypeAdapter
 from shapely import constrained_delaunay_triangles
 from shapely.geometry import LineString, Polygon, box
 from shapely.geometry import Point as ShapePoint
 from shapely.ops import polygonize, triangulate, unary_union
 
-from venues.west_architecture import dome, mapped_building, mast, trees, water
+from venues.monaco_hillside import hillside_city
+from venues.west_architecture import dome, mast, trees, water
 
 
 def build_venue(scene: CircuitScene) -> None:
@@ -36,8 +38,13 @@ def build_venue(scene: CircuitScene) -> None:
                                    (161775596, 11, 3), (94399684, 54, 16),
                                    (94399872, 75, 22), (176722821, 11, 3)]:
         frontage(scene, scene.footprint(osm_id), height, floors)
-    mapped_building(scene, 2093796, 24, floors=7, balconies=True,
-                    base_z=scene.at(1750).z + 5.8, elevated=True)
+    datum = TypeAdapter(RetainedTerrainSource).validate_json(
+        (scene.sources / 'scenery-ground.json').read_bytes()
+    ).relative_datum_m
+    for osm_id in [447008628, 447008629]:
+        frontage(scene, scene.footprint(osm_id), 24.7, 7, base_z=6.6 - datum)
+    fairmont(scene)
+    theatre_terrace(scene)
     heritage_frontage(scene, scene.footprint(8280869), 24, 6, scene.at(876).z)
     hotel_crowns(scene)
     casino(scene)
@@ -50,6 +57,7 @@ def build_venue(scene: CircuitScene) -> None:
     harbour_stand(scene, 2570, 2680, 1, 18, 8)
     rocher(scene)
     ordinary_city(scene)
+    hillside_city(scene)
     casino_gardens(scene)
     retaining_streets(scene)
     for start, end, side, setback in [(280, 550, 1, 10), (1280, 1440, -1, 10)]:
@@ -57,6 +65,142 @@ def build_venue(scene: CircuitScene) -> None:
     trees(scene, 1250, 1410, 1, setback=16, rows=1, spacing=17, height=10, palms=True)
     for station in [200, 920, 1370, 2200, 2440, 2950, 3260]:
         mast(scene, station, -1, 12)
+
+
+def fairmont(scene: CircuitScene) -> None:
+    building = scene.footprint(2093796)
+    footprint = Polygon(building.ring)
+    core = footprint.buffer(-2.1, join_style='mitre')
+    if not footprint.is_valid or core.is_empty:
+        raise ValueError('Fairmont requires its complete mapped hotel footprint')
+    datum = TypeAdapter(RetainedTerrainSource).validate_json(
+        (scene.sources / 'scenery-ground.json').read_bytes()
+    ).relative_datum_m
+    base, floors = scene.at(1750).z + 5.8, 7
+    height = 33.9 - datum - base
+    kind = 'Building_FairmontLoggias'
+    scene.modeled_buildings.add(building.osm_id)
+    scene.terrain_cutouts.append(footprint)
+    parts = [core] if isinstance(core, Polygon) else list(getattr(core, 'geoms', []))
+    for part in parts:
+        if not isinstance(part, Polygon):
+            continue
+        ring = list(part.exterior.coords)[:-1]
+        if not part.exterior.is_ccw:
+            ring.reverse()
+        for a, b in zip(ring, ring[1:] + ring[:1]):
+            scene.quad(kind, 'Cream', (*a, base), (*b, base),
+                       (*b, base + height), (*a, base + height))
+            span = math.dist(a, b)
+            if span < 1:
+                continue
+            tx, ty = (b[0] - a[0]) / span, (b[1] - a[1]) / span
+            nx, ny = ty, -tx
+            bays = max(1, round(span / 4.6))
+            for floor in range(floors):
+                z = base + floor * height / floors + .25
+                for bay in range(bays):
+                    center = (bay + .5) * span / bays
+                    width = min(3.2, .76 * span / bays)
+                    p = (a[0] + tx * (center - width / 2) + nx * .025,
+                         a[1] + ty * (center - width / 2) + ny * .025, z)
+                    q = (p[0] + tx * width, p[1] + ty * width, z)
+                    scene.banner(p, q, height / floors - .55, 'Glass', kind)
+                    scene.beam(kind, 'White', add(p, (tx * width / 2, ty * width / 2, 0)),
+                               add(p, (tx * width / 2, ty * width / 2, height / floors - .55)), .055)
+    for floor in range(floors + 1):
+        z = base + floor * height / floors
+        for triangle in constrained_delaunay_triangles(footprint).geoms:
+            points = [(x, y, z) for x, y in list(triangle.exterior.coords)[:3]]
+            if not triangle.exterior.is_ccw:
+                points[1], points[2] = points[2], points[1]
+            scene.triangle(kind, 'White', points[0], points[1], points[2])
+            scene.triangle(kind, 'Concrete', add(points[2], (0, 0, -.16)),
+                           add(points[1], (0, 0, -.16)), add(points[0], (0, 0, -.16)))
+    ring = list(footprint.exterior.coords)[:-1]
+    if not footprint.exterior.is_ccw:
+        ring.reverse()
+    for a, b in zip(ring, ring[1:] + ring[:1]):
+        span = math.dist(a, b)
+        if span < .5:
+            continue
+        tx, ty = (b[0] - a[0]) / span, (b[1] - a[1]) / span
+        nx, ny = ty, -tx
+        bays = max(1, round(span / 4.6))
+        for floor in range(floors):
+            z = base + floor * height / floors
+            outer_a, outer_b = (*a, z), (*b, z)
+            scene.banner(add(outer_a, (0, 0, -.16)), add(outer_b, (0, 0, -.16)), .16, 'White', kind)
+            scene.banner(add(outer_a, (0, 0, .16)), add(outer_b, (0, 0, .16)), .6, 'White', kind)
+            scene.beam(kind, 'White', add(outer_a, (0, 0, .8)), add(outer_b, (0, 0, .8)), .075)
+            for bay in range(bays + 1):
+                p = (a[0] + tx * span * bay / bays, a[1] + ty * span * bay / bays, z + .16)
+                q = (p[0] - nx * 2.1, p[1] - ny * 2.1, p[2])
+                # Partitions stop at the recessed room wall; the balcony cavity stays open.
+                partition = LineString([p[:2], q[:2]]).intersection(footprint)
+                if not isinstance(partition, LineString) or partition.length < .1:
+                    continue
+                first, last = partition.coords[0], partition.coords[-1]
+                p, q = (*first, p[2]), (*last, p[2])
+                scene.banner(p, q, height / floors - .18, 'White', kind)
+                scene.banner(q, p, height / floors - .18, 'White', kind)
+    scene.landmarks.append({'osm_id': building.osm_id, 'name': 'Fairmont Monte Carlo open balcony hotel',
+                            'storeys': floors, 'height_m': height, 'base_z_m': base,
+                            'loggia_depth_m': 2.1,
+                            'dimensions_status': 'Complete mapped concave footprint and existing elevated base retained. IGN BDTopo main-hotel footprint matches80.4percent and gives roof33.9mabsolute, registered to the unchanged RGE datum. Seven storeys are supported by official Monaco tourism material; supplied534s hairpin view establishes deep open loggias, white floorplates/partitions and recessed room glazing. Balcony depth2.1m and bay spacing4.6m are original metric estimates. No solid outer window-grid wall remains; the hotel slab clears the independent tunnel road.'})
+
+
+def theatre_terrace(scene: CircuitScene) -> None:
+    building = scene.footprint(176722820)
+    footprint = Polygon(building.ring).difference(scene.corridor_mask.buffer(.3))
+    if not isinstance(footprint, Polygon) or footprint.is_empty:
+        raise ValueError('Theatre terrace must retain its mapped street-side footprint')
+    scene.modeled_buildings.update({building.osm_id, 879995948})
+    scene.terrain_cutouts.append(footprint)
+    roof = scene.at(650).z + .3
+    kind = 'Building_TheatreTerrace'
+    ring = list(footprint.exterior.coords)[:-1]
+    if not footprint.exterior.is_ccw:
+        ring.reverse()
+    for a, b in zip(ring, ring[1:] + ring[:1]):
+        low_a, low_b = min(roof, scene.ground(*a) - .1), min(roof, scene.ground(*b) - .1)
+        scene.quad(kind, 'Cream', (*a, low_a), (*b, low_b), (*b, roof), (*a, roof))
+        scene.banner((*a, roof), (*b, roof), .85, 'White', kind)
+        scene.beam(kind, 'White', (*a, roof + .9), (*b, roof + .9), .16)
+    for triangle in constrained_delaunay_triangles(footprint).geoms:
+        points = [(x, y, roof) for x, y in list(triangle.exterior.coords)[:3]]
+        if not triangle.exterior.is_ccw:
+            points[1], points[2] = points[2], points[1]
+        scene.triangle(kind, 'Concrete', points[0], points[1], points[2])
+    pavilion = Polygon(scene.footprint(879995948).ring).intersection(footprint)
+    if isinstance(pavilion, Polygon) and not pavilion.is_empty:
+        for a, b in pairwise(list(pavilion.exterior.coords)):
+            scene.banner((*a, roof), (*b, roof), 3.2, 'Cream', kind)
+            span = math.dist(a, b)
+            if span > 3:
+                first = (a[0] + (b[0] - a[0]) * .12, a[1] + (b[1] - a[1]) * .12, roof + 1)
+                last = (a[0] + (b[0] - a[0]) * .88, a[1] + (b[1] - a[1]) * .88, roof + 1)
+                scene.banner(first, last, 1.5, 'Glass', kind)
+            scene.beam(kind, 'White', (*a, roof + 3.25), (*b, roof + 3.25), .25, .35)
+        for triangle in constrained_delaunay_triangles(pavilion).geoms:
+            points = [(x, y, roof + 3.3) for x, y in list(triangle.exterior.coords)[:3]]
+            if not triangle.exterior.is_ccw:
+                points[1], points[2] = points[2], points[1]
+            scene.triangle(kind, 'Roof', points[0], points[1], points[2])
+    palms = 0
+    for station in range(580, 656, 15):
+        sample = scene.at(station)
+        p = sample.point(sample.half_width + sample.left_shoulder + .95 + 4)
+        if not footprint.buffer(-.8).covers(ShapePoint(p[:2])) or pavilion.buffer(1).covers(ShapePoint(p[:2])):
+            continue
+        scene.box(kind, 'Cream', (p[0], p[1], roof + .3), 2.5, 2.5, .6)
+        scene.palm((p[0], p[1], roof + .6), 8.0 + .5 * math.sin(station))
+        palms += 1
+    scene.landmarks.append({'osm_id': building.osm_id, 'name': 'Theatre Princesse Grace roof terrace',
+                            'terrace_z_m': roof, 'roof_pavilion_osm_id': 879995948,
+                            'roof_pavilion_height_m': 3.3, 'reconstructed_palms': palms,
+                            'removed_protection_overlap_m2': Polygon(building.ring).area - footprint.area,
+                            'dimensions_status': 'Actual mapped partly-underground theatre footprint and retained roof-pavilion footprint. Public roof garden and pale terrace/palms are supported by government planning context and supplied 594/606 s climb views. Terrace level is an explicit architectural estimate tied to adjacent upper entrance street at native650m plus0.3m, not a roof DSM measurement; pavilion3.3m and palm spacing are estimates. Replaces the buried min-ground+6.8m office fallback. Roads, protection, RGE terrain heights and racing physics are unchanged.'})
 
 
 def rocher_house(scene: CircuitScene, building: Building) -> None:
@@ -334,7 +478,8 @@ def ordinary_city(scene: CircuitScene) -> None:
 
 
 def frontage(scene: CircuitScene, building: Building,
-             height: float | None = None, floors: int | None = None) -> None:
+             height: float | None = None, floors: int | None = None,
+             base_z: float | None = None) -> None:
     original = Polygon(building.ring)
     clipped = original.difference(scene.road_mask.buffer(1.2))
     components = [clipped] if isinstance(clipped, Polygon) else list(getattr(clipped, 'geoms', []))
@@ -357,7 +502,7 @@ def frontage(scene: CircuitScene, building: Building,
         if not footprint.exterior.is_ccw:
             ring.reverse()
         closest = min(ring, key=lambda p: scene.nearest(*p)[1])
-        base = min(scene.ground(*closest), min(scene.ground(*p) for p in ring))
+        base = base_z if base_z is not None else min(scene.ground(*closest), min(scene.ground(*p) for p in ring))
         winding = 1
         kind = 'Building_MonacoFrontage'
         for a, b in zip(ring, ring[1:] + ring[:1]):

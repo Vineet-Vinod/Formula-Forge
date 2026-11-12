@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "status": "Source correction; fresh rendered review required",
+  "primary_source": {
+    "author": "Mir\u00f3 Rivera Architects",
+    "url": "https://web.williams.edu/Mathematics/sjmiller/public_html/legos/cotatower/Observation%20Tower_Miro%20Rivera%20Architects_Email.pdf",
+    "pdf_sha256": "711fb885e584aa2d1327707238f6f354d287781640855691c195f84ccd030edf",
+    "plan_page_1based": 14,
+    "facts_page_1based": 20,
+    "research_render": "pdftoppm -f 14 -l 14 -singlefile -scale-to 1500 -png",
+    "render_sha256": "97c876a662e8f32bfb9c5f8682ef0c1a7f8da3890a88363a0501f22156173711"
+  },
+  "area_distinction": {
+    "viewing_only_ft2": 900,
+    "gross_observation_deck_and_core_ft2": 1362,
+    "gross_model_area_m2": 126.53394048000001,
+    "old_rectangular_slab_m2": 180,
+    "note": "900 sqft describes the public viewing portion.1362 sqft includes the observation-deck/core plan. Do not force the gross outline to 900 sqft."
+  },
+  "digitization": {
+    "source_pixels": [
+      [
+        378,
+        622
+      ],
+      [
+        725,
+        622
+      ],
+      [
+        679,
+        260
+      ],
+      [
+        674,
+        238
+      ],
+      [
+        664,
+        219
+      ],
+      [
+        648,
+        201
+      ],
+      [
+        625,
+        189
+      ],
+      [
+        596,
+        182
+      ],
+      [
+        552,
+        180
+      ],
+      [
+        508,
+        182
+      ],
+      [
+        479,
+        188
+      ],
+      [
+        456,
+        201
+      ],
+      [
+        439,
+        220
+      ],
+      [
+        428,
+        242
+      ],
+      [
+        423,
+        262
+      ]
+    ],
+    "scale_bar_pixels": 150,
+    "scale_bar_ft": 16,
+    "core_pixel": [
+      551,
+      521
+    ],
+    "method": "Original numeric trace of the rounded tapered outline. Convert from the 16 ft plan scale and apply a 0.97564738 lateral factor to reconcile outside-edge digitization with the architect 1362 sqft gross area. No vertical scaling.",
+    "uncertainty_m": 0.25
+  },
+  "preserved": {
+    "source_position": [
+      30.134249,
+      -97.6379009
+    ],
+    "world_orientation": "Prior authored orientation retained; plan is used for proportions, not an unverified new georeferenced yaw.",
+    "slab_top_above_base_m": 69.4,
+    "rail_top_above_base_m": 70.7,
+    "tower_veil_peak_m": 76.5
+  },
+  "model": "Rounded/tapered original deck mesh and perimeter balustrade replace two solid rectangular boxes. Native scene, roof canopy and all other architecture remain unchanged."
+}

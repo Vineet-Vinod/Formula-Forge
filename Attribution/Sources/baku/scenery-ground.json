@@ -22,5 +22,7 @@
   },
   "method": "Existing retained DSM relative grid is uniformly shifted by old median datum minus factual F1 absolute minimum. No resampling, land mask, coastal blend, racing-road or native collision changes. Existing20m near-road join remains. This removes an incompatible median roof-biased datum; it does not make GLO-90 bare earth.",
   "licence": "Copernicus DEM open data licence; see retained scenery-terrain source attribution.",
-  "uncertainty_m": 2
+  "uncertainty_m": 2,
+  "grid_uniform_scale": 1.005358,
+  "grid_frame_note": "Retained grid XY uses this original geographic projection scale. Materialization composes current provenance scene scale into XY origin/spacing only; source heights and vertical datum remain unchanged."
 }

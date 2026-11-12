@@ -8,8 +8,8 @@
   "sha256": "a8d0151433412225d8b7c5ac64d542d4d7262b052546f05406424c8942d8765d",
   "grid_spacing_m": 12,
   "source_resolution_m": 30,
-  "relative_datum_m": 7.528116719914551,
+  "relative_datum_m": 7.50102967107544,
   "datum_method": "Median offset to unchanged native road profile at 256 stations.",
   "use": "Surrounding landscape only, bilinearly resampled; not a racing-deck or bare-earth survey. Road-adjacent ground joins the existing road plane.",
-  "terrain_sha256": "16636be15acc8811a2cfb23a00fcea77aa2da4a0366b4cbf15e1956531103270"
+  "terrain_sha256": "f69faf963f7720346c494bbe4240ffc8d95c00493b77f8cfd92084bf65d94407"
 }

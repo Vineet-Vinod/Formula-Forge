@@ -1,9 +1,14 @@
 {
-  "start_m": 4920,
-  "end_m": 5250,
+  "start_m": 4918.48779,
+  "end_m": 5249.65137,
   "side": 1,
   "outer_offset_m": 13.0,
   "shoulder_m": 0.1,
   "transition_m": 25.0,
-  "source_note": "Common authored pit garage front is roadhalf+13m, matching original pit/apron reconstruction4940\u20135230m and reviewed main-straight176.17s/792.81s. Added20m visual apron extension before/after row; endpoints are reconstruction, not surveyed access."
+  "source_note": "Common authored pit garage front is roadhalf+13m, matching original pit/apron reconstruction4940\u20135230m and reviewed main-straight176.17s/792.81s. Added20m visual apron extension before/after row; endpoints are reconstruction, not surveyed access.",
+  "previous_station_registration": {
+    "start_m": 4920,
+    "end_m": 5250
+  },
+  "station_registration_note": "Geographically remapped after disclosed event corners via corrected controls and exact native normalization. Paving depth/shoulder preserved."
 }

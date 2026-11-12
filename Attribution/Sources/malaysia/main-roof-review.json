@@ -5,7 +5,7 @@
   "issue": "The earlier main-grandstand roof used one bounding rectangle through a concave double-frontage complex. It covered 18,720 m\u00b2 of the racing road, and its masts covered another 303 m\u00b2.",
   "mapped_footprint_id": 144247993,
   "mapped_footprint_area_m2": 34842.686124712505,
-  "correction": "Retain the actual concave wings and central mall gaps. The two seating faces and repeated palm-leaf shells follow individual cross-sections inside that footprint, with a 3 m road margin. Concourse floors follow the adjacent road grade instead of the roof-contaminated DSM. Pale top and soffit faces have closed 0.18 m edges; terrace risers close the gaps between rows.",
+  "correction": "Retain the actual concave wings, central mall gaps and 3 m road margin. The lower front canopy edge rises toward the rear and branching ribs follow each pale membrane underside. Both top and soffit use White rather than the previous dark ochre Cream top. The former three black pit-roof strips and overlong generic pit building are replaced by the actual mapped compound, white terrace edges, distinct garage bays and one pale upper cantilever canopy.",
   "source_support": [
     {
       "url": "https://www.sepangcircuit.com/architecture",
@@ -19,20 +19,29 @@
         134
       ],
       "supports": "Supplied reference shows repeated pale curved leaf modules, branching supports and seating facing both straights. Exact module dimensions remain estimates."
+    },
+    {
+      "url": "https://www.sepangcircuit.com/media/wysiwyg/hero-banner_4.jpg",
+      "supports": "Operator architecture photo shows the pale membrane shells and visible underside fan/branch ribs; no source pixels enter game assets.",
+      "reference_sha256": "542b85ac4f79c80b317c687480889004e8dc6dc446a913f9abafdb6258f5db7c"
     }
   ],
   "estimates": {
     "bay_length_m": 25,
-    "roof_front_spring_above_concourse_m": 18,
-    "roof_lobe_rise_m": 3.8,
+    "roof_front_spring_above_concourse_m": 18.5,
+    "roof_lobe_rise_m": 2.6,
     "roof_rear_rise_m": 2.8,
     "mast_height_above_concourse_m": 27,
     "leaf_thickness_m": 0.18,
     "row_rise_m": 0.47,
     "row_depth_m": 0.91,
-    "note": "These are original visual reconstruction dimensions, not a structural survey."
+    "note": "These are original visual reconstruction dimensions, not a structural survey.",
+    "roof_lobe_shape": "Along-bay squared sine, scaled from 0.3 at the front to 1 at the rear; an unmeasured membrane reconstruction, not a structural analysis.",
+    "underside_fan_ribs_per_wing_bay": 5,
+    "rib_width_m": 0.13
   },
-  "proof": {
+  "review_status": "Source proof complete; fresh packaged appearance comparison pending. Prior footprint correction alone did not establish roof fidelity.",
+  "prior_footprint_fix_proof": {
     "module_sha256": "39263bc371a65880a7136c572901ebea04103a1c58bad64f6e3a8ea049564348",
     "leaf_roof_road_overlap_m2": 0.0,
     "leaf_roof_outside_actual_footprint_m2_sum": 2.439730093408582e-11,
@@ -43,5 +52,16 @@
     "old_centroid_dsm_ground_m": 21.281104551115618,
     "native_road_or_physics_changed": false
   },
-  "review_status": "Source checks passed. Regenerated packaged review remains required. No visual approval is asserted."
+  "proof": {
+    "module_sha256": "6cd8a284428a80d8c4cd1ba65dd01f5faef9a08f308982c14fb455edd8e7008a",
+    "road_sha256": "9f37f11dda9847cecd545369ab807cc7987f26fb722dacd41433bc4c909f08a1",
+    "all_structural_road_overlap_m2_sum": 0.0,
+    "roof_outside_actual_mapped_outlines_m2_sum": 2.947588353183127e-11,
+    "main_white_top_triangles": 8662,
+    "main_white_soffit_triangles": 8662,
+    "pit_white_top_triangles": 1757,
+    "pit_white_soffit_triangles": 1757,
+    "finite_vertices": true,
+    "native_geometry_changed": false
+  }
 }

@@ -87,8 +87,8 @@
       "name": "Final T15 exit and T16",
       "reviewed_video_seconds": [
         197,
-        201,
-        205
+        199,
+        201
       ],
       "observed": "The final slow left T16 lies near native304m. Red-white kerbs and green paint lead onto the long pit straight. The stepped pit roof volumes and main grandstand appear ahead; low grass and paved/gravel escape remain outside.",
       "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
@@ -102,13 +102,9 @@
       "name": "Pit straight and start/finish",
       "reviewed_video_seconds": [
         113,
-        114,
-        115,
-        116,
         117,
         121,
-        205,
-        26.99
+        205
       ],
       "observed": "The main grandstand is on the left, mapped OSM169886092 near697m. The pit and control roof complex is on the right, OSM188019421 near669m. Deep layered roof slabs, white garages, a separate pit wall and green verge define the straight. The finish line is seen near116s; approximate native station470m.",
       "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
@@ -123,8 +119,7 @@
       "reviewed_video_seconds": [
         125,
         129,
-        133,
-        221.31
+        133
       ],
       "observed": "T1 is the right near1041m, T2 the left near1165m, and T3 the uphill right hairpin near1429m. The road dips into T2 and climbs strongly toward the blind crest. Braking boards, green/blue paint and an open crowd terrace frame the hairpin.",
       "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
@@ -141,9 +136,7 @@
         141,
         145,
         149,
-        153,
-        48.58,
-        242.91
+        153
       ],
       "observed": "The long fast straight descends through grass and palms. Guardrail, mesh and distance boards define the approach to T4. The slow right apex has a broad green paved escape and tan runoff beyond. Stands and pit buildings stay distant.",
       "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
@@ -154,13 +147,12 @@
         2750,
         3500
       ],
-      "name": "T5–7 infield",
+      "name": "T5\u20137 infield",
       "reviewed_video_seconds": [
         157,
         161,
         165,
-        169,
-        134.95
+        169
       ],
       "observed": "The wide left-left-right sequence crosses a low rise. Red-white kerbs border green, yellow and red paved escape areas. A white timing pylon with a dark position panel appears beside the braking approach. Low grass banks and distant stands leave an open horizon.",
       "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
@@ -171,11 +163,10 @@
         3500,
         3950
       ],
-      "name": "T8–9 bowl approach",
+      "name": "T8\u20139 bowl approach",
       "reviewed_video_seconds": [
         173,
-        70.17,
-        156.54
+        175
       ],
       "observed": "Linked corners lead toward the bowl. Red-white kerbs and green paint border the asphalt; tan runoff widens outside. Separate pale grandstand roof sections appear ahead, with dry grass and scattered palms.",
       "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
@@ -186,13 +177,11 @@
         3950,
         4500
       ],
-      "name": "T10–12 continuous right bowl",
+      "name": "T10\u201312 continuous right bowl",
       "reviewed_video_seconds": [
         177,
         181,
-        185,
-        91.76,
-        178.13
+        185
       ],
       "observed": "The multi-apex right is continuous. Inside grass and red-white kerbs follow the arc, with green/red paint leading to broad tan gravel outside. Large crowd terraces and separated angular roof sections sit beyond the escape area.",
       "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
@@ -203,11 +192,10 @@
         4500,
         4800
       ],
-      "name": "T13–14 fast changes",
+      "name": "T13\u201314 fast changes",
       "reviewed_video_seconds": [
         189,
-        193,
-        199.72
+        193
       ],
       "observed": "Sweeping direction changes cross broad grass and painted edges. The main facilities gradually return to view, with gravel outside and fences behind the escape areas.",
       "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
@@ -220,10 +208,8 @@
       ],
       "name": "T15 approach and exit",
       "reviewed_video_seconds": [
-        193,
-        197,
-        201,
-        286.09
+        195,
+        197
       ],
       "observed": "The late right bends lead into the short link toward T16 across the station seam. Kerbs, grass, green paint and paved/gravel escape border the sequence. The long pit straight begins after the final left at native304m, rather than inside this interval.",
       "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
@@ -238,12 +224,149 @@
     {
       "title": "Tilkearchitectportfolio2024",
       "url": "https://tilke.de/wp-content/uploads/2024/12/2024-Portfolio.pdf",
-      "supports": "Built2009–2011;5137m,16turns; identifiespit/racecontrol,hospitality,grandstands,mediaandmedicalarchitecture."
+      "supports": "Built2009\u20132011;5137m,16turns; identifiespit/racecontrol,hospitality,grandstands,mediaandmedicalarchitecture."
     }
   ],
   "uncertainties": [
     "Architect5137m,FIA20135125m,currentmapping5141m differ;retainlayoutphasewithoutarbitrarilyrescalingtoonepublicnumber.",
-    "Native source origin is in the final sector beforeT16. SF is estimated near470±100m, T1near1041m, T2near1165m, T3near1429m. Geographic pit and grandstand footprints establish this route phase.",
+    "Native source origin is in the final sector beforeT16. SF is estimated near470\u00b1100m, T1near1041m, T2near1165m, T3near1429m. Geographic pit and grandstand footprints establish this route phase.",
     "Road elevation now comes directly from bilinear GLO-30 centerline samples. It remains a30m surface model with3m stated uncertainty, not a surveyed racing deck."
-  ]
+  ],
+  "width_registration": {
+    "provenance": "width-review.json",
+    "source_controls": "environment-recipe.json:width_profile.controls_m",
+    "status": "Published 18\u201325 m range replaces the generic 12\u201315 m assumption. Exact white-line widths and transition stations remain estimates from the supplied onboard."
+  },
+  "registration_review_2026_11_12": {
+    "retained_former_associations": [
+      {
+        "sector_id": "buddh-01",
+        "reviewed_video_seconds": [
+          197,
+          201,
+          205
+        ]
+      },
+      {
+        "sector_id": "buddh-02",
+        "reviewed_video_seconds": [
+          113,
+          114,
+          115,
+          116,
+          117,
+          121,
+          205,
+          26.99
+        ]
+      },
+      {
+        "sector_id": "buddh-03",
+        "reviewed_video_seconds": [
+          125,
+          129,
+          133,
+          221.31
+        ]
+      },
+      {
+        "sector_id": "buddh-04",
+        "reviewed_video_seconds": [
+          137,
+          141,
+          145,
+          149,
+          153,
+          48.58,
+          242.91
+        ]
+      },
+      {
+        "sector_id": "buddh-05",
+        "reviewed_video_seconds": [
+          157,
+          161,
+          165,
+          169,
+          134.95
+        ]
+      },
+      {
+        "sector_id": "buddh-06",
+        "reviewed_video_seconds": [
+          173,
+          70.17,
+          156.54
+        ]
+      },
+      {
+        "sector_id": "buddh-07",
+        "reviewed_video_seconds": [
+          177,
+          181,
+          185,
+          91.76,
+          178.13
+        ]
+      },
+      {
+        "sector_id": "buddh-08",
+        "reviewed_video_seconds": [
+          189,
+          193,
+          199.72
+        ]
+      },
+      {
+        "sector_id": "buddh-09",
+        "reviewed_video_seconds": [
+          193,
+          197,
+          201,
+          286.09
+        ]
+      }
+    ],
+    "primary_map_url": "https://www.fia.com/sites/default/files/external_archive/node3786/16-india-circuit-print.pdf",
+    "native_origin_witness": "Native0 lies on the final short straight afterT15 and beforeT16. Pit/start timing anchor is near470m, with main garage/stand footprints around670\u2013700m. T1 is1041m andT3 is1429m. These origins are distinct.",
+    "confirmed_new_frames": [
+      {
+        "seconds": 175,
+        "official_corner": "T8\u2013T9 transition before the bowl",
+        "native_sector_m": [
+          3500,
+          3950
+        ],
+        "observation": "Direct approach into the bowl sequence, independent of any elapsed-time station interpolation."
+      },
+      {
+        "seconds": 195,
+        "official_corner": "T15 right apex",
+        "native_station_m": 5000,
+        "observation": "Direct right-hand apex beside the inner red/whiteUBS kerb; source-native position estimated\u00b160m."
+      },
+      {
+        "seconds": 199,
+        "official_corner": "T16 approach",
+        "native_station_m": 120,
+        "observation": "Direct final short straight with timing pylon right, before the final left. Source-native position estimated\u00b180m."
+      }
+    ],
+    "correction": "The201s final-leftT16 frame belongs the native0\u2013400m wrap sector, not the4800\u20135141m T15 sector.195s provides a directT15 apex witness.",
+    "context_only_unregistered_seconds": [
+      26.99,
+      48.58,
+      70.17,
+      91.76,
+      134.95,
+      156.54,
+      178.13,
+      199.72,
+      221.31,
+      242.91,
+      286.09
+    ],
+    "context_note": "Old overview associations remain retained here as unregistered context. Direct113\u2013205s sequence supports the corner geometry, pits, climb and bowl.",
+    "acceptance_status": "Named sectors have direct source witnesses. Exact widths, station endpoints and final runtime appearance still require separate review."
+  }
 }

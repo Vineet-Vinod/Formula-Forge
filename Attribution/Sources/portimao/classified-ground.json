@@ -1,0 +1,1642 @@
+{
+  "point_file": "elevation/dgt-classified-ground.npz",
+  "point_sha256": "ac579c22852e4fefa49f74d491248ad891eb34cc5b3714fea9e876d70c2e7039",
+  "provider": "Direcao-Geral do Territorio, Portugal",
+  "dataset": "Mainland LiDAR2024, published Portugal3D classified point-cloud preview",
+  "crs": "EPSG:3763",
+  "vertical_datum": "Cascais orthometric datum",
+  "classification": 2,
+  "vertical_uncertainty_m": 0.4,
+  "published_survey_vertical_accuracy_m": 0.1,
+  "accuracy_note": "Estimated racing-profile uncertainty includes mapped-road registration and interpolation. Preview coordinates are quantized0.01m, not evidence of centimetre survey accuracy.",
+  "acquisition": "April2024, per selected source-tile filenames; preview headers record processing in2026, not a new flight.",
+  "retrieved": "2026-11-12",
+  "licence": "CC BY4.0",
+  "attribution": "Direcao-Geral do Territorio, mainland LiDAR. Class2selection,1m representative decimation and ground interpolation modified by Formula Forge.",
+  "licence_url": "https://www.dgterritorio.gov.pt/dados-abertos",
+  "technical_metadata_url": "https://www.dgterritorio.gov.pt/atividades/cartografia/cartografia-topografica/modelos-digitais",
+  "viewer_url": "https://portugal3d.dgterritorio.gov.pt/continente",
+  "raw_class2_points": 8603709,
+  "retained_ground_points": 1048726,
+  "selection": "Actual class-2 observation closest to each1m EPSG3763 bin center. No averaged/invented point heights.",
+  "tiles": [
+    {
+      "filename": "LO-155029-04-2024_v01.laz",
+      "info_url": "https://portugal3d.dgterritorio.gov.pt/info/point?x=-44500&y=-271500&location=portugal",
+      "data_url": "https://portugal3d.dgterritorio.gov.pt/laz/LO-155029-04-2024_v01.laz?location=portugal",
+      "header_sha256": "d67efd67eba695058cf2c1cd6da097264e41f3c7981bfbbc4ebc10092e6d9834"
+    },
+    {
+      "filename": "LO-155030-04-2024_v01.laz",
+      "info_url": "https://portugal3d.dgterritorio.gov.pt/info/point?x=-44500&y=-270500&location=portugal",
+      "data_url": "https://portugal3d.dgterritorio.gov.pt/laz/LO-155030-04-2024_v01.laz?location=portugal",
+      "header_sha256": "0504399526b873fd1d7cd2d7d7a63cfadaefb2307c70851dca563e2a55f83527"
+    },
+    {
+      "filename": "LO-155031-04-2024_v01.laz",
+      "info_url": "https://portugal3d.dgterritorio.gov.pt/info/point?x=-44500&y=-269500&location=portugal",
+      "data_url": "https://portugal3d.dgterritorio.gov.pt/laz/LO-155031-04-2024_v01.laz?location=portugal",
+      "header_sha256": "29a1fa831a056a49f709247eec8ae6a7ca61980ca622f729e63cb66af869fdb2"
+    },
+    {
+      "filename": "LO-156029-04-2024_v01.laz",
+      "info_url": "https://portugal3d.dgterritorio.gov.pt/info/point?x=-43500&y=-271500&location=portugal",
+      "data_url": "https://portugal3d.dgterritorio.gov.pt/laz/LO-156029-04-2024_v01.laz?location=portugal",
+      "header_sha256": "62105ab6c28c9892417016e8d4996722cadb153d84ea0c08a99a240eac9c8436"
+    },
+    {
+      "filename": "LO-156030-04-2024_v01.laz",
+      "info_url": "https://portugal3d.dgterritorio.gov.pt/info/point?x=-43500&y=-270500&location=portugal",
+      "data_url": "https://portugal3d.dgterritorio.gov.pt/laz/LO-156030-04-2024_v01.laz?location=portugal",
+      "header_sha256": "e633d26290b774ffcf82828291783b5832cf29d12199efd31b8b257519a7b293"
+    },
+    {
+      "filename": "LO-156031-04-2024_v01.laz",
+      "info_url": "https://portugal3d.dgterritorio.gov.pt/info/point?x=-43500&y=-269500&location=portugal",
+      "data_url": "https://portugal3d.dgterritorio.gov.pt/laz/LO-156031-04-2024_v01.laz?location=portugal",
+      "header_sha256": "d921d87fde70de040d3413ec76581e254aa999ffc4517c0a268faee98e5ee807"
+    },
+    {
+      "filename": "LO-157029-04-2024_v01.laz",
+      "info_url": "https://portugal3d.dgterritorio.gov.pt/info/point?x=-42500&y=-271500&location=portugal",
+      "data_url": "https://portugal3d.dgterritorio.gov.pt/laz/LO-157029-04-2024_v01.laz?location=portugal",
+      "header_sha256": "a7b7691c7c8f9c265517a0b9594c01fce6233c318015eb615a11574ae9448ca0"
+    },
+    {
+      "filename": "LO-157030-04-2024_v01.laz",
+      "info_url": "https://portugal3d.dgterritorio.gov.pt/info/point?x=-42500&y=-270500&location=portugal",
+      "data_url": "https://portugal3d.dgterritorio.gov.pt/laz/LO-157030-04-2024_v01.laz?location=portugal",
+      "header_sha256": "dfc2f4e92189dc2089d426a4be6a2fcffbbebc8f234177fb7638130307f3998b"
+    },
+    {
+      "filename": "LO-157031-04-2024_v01.laz",
+      "info_url": "https://portugal3d.dgterritorio.gov.pt/info/point?x=-42500&y=-269500&location=portugal",
+      "data_url": "https://portugal3d.dgterritorio.gov.pt/laz/LO-157031-04-2024_v01.laz?location=portugal",
+      "header_sha256": "dcd0bc40aac4ccec49af5166e3912c8c300d84bb8edaf9ffdf9d34b843406b4c"
+    }
+  ],
+  "chunks": [
+    {
+      "tile": "LO-155029-04-2024_v01",
+      "chunk": 628,
+      "range_start": 107619593,
+      "range_end_exclusive": 107933072,
+      "sha256": "47e0f2fabc44064c13e17c012fa588a91de2cadef887d9fa562d0ce28fe755cf"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 340,
+      "range_start": 80523675,
+      "range_end_exclusive": 80813755,
+      "sha256": "00891ec101cf3736de198f75db1361eecc2a0fc7d3f8d1ec96dd9a44be383371"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 336,
+      "range_start": 79682356,
+      "range_end_exclusive": 79898442,
+      "sha256": "8923fbc629ab710d212717db18a0ddba2af08a4bc69b96d50f24f8b13803de0a"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 338,
+      "range_start": 80104002,
+      "range_end_exclusive": 80314591,
+      "sha256": "597c98f3a7d21a6b7357165ae7bab5c05238e03741533cd40b5b8e8c4e064671"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 320,
+      "range_start": 76578610,
+      "range_end_exclusive": 76771433,
+      "sha256": "8bd7611dbbc6d1e97b94e9286f2a7b7e6b2537ea776f168b474ef9718716035f"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 322,
+      "range_start": 76975633,
+      "range_end_exclusive": 77169584,
+      "sha256": "a69a5d070fbc9996093503611ea4ed42228799481c1ba16b16e14bb70a15fb56"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 323,
+      "range_start": 77169584,
+      "range_end_exclusive": 77356839,
+      "sha256": "c5883ccc92b7924a0e7e4400bf574772cb763a06a63625d9a4876e6e87dbcd66"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 334,
+      "range_start": 79272661,
+      "range_end_exclusive": 79471299,
+      "sha256": "3db0677e916621188d829bdff94ded282d332c4b4dea908faffe9f511bf175f9"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 325,
+      "range_start": 77574196,
+      "range_end_exclusive": 77738927,
+      "sha256": "e369c12d9cb7fa6c7c8cc73ff38d26823c7ff62f7f434cfd06b95d4fc2b1cb91"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 256,
+      "range_start": 65665513,
+      "range_end_exclusive": 65849086,
+      "sha256": "3b291ef149ab11d6d2cf96007ff56293b672abdcc397fc72b79bd4da165adfee"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 268,
+      "range_start": 67694719,
+      "range_end_exclusive": 67833087,
+      "sha256": "023129f4b01f392b0df11ac4141b3775a09ee8e2602a58c37ff69cb4e858450c"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 314,
+      "range_start": 75488816,
+      "range_end_exclusive": 75659668,
+      "sha256": "002b4dc5f72c42bf169a7162695499371b472bc8ae14fe34123ec42270c96f0f"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 259,
+      "range_start": 66225876,
+      "range_end_exclusive": 66368431,
+      "sha256": "3323e5367f9cdf909769b5bf7577a5249b705a16407025527e0fa1be0d1961f4"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 263,
+      "range_start": 66887673,
+      "range_end_exclusive": 67073655,
+      "sha256": "c4763a91bfafbb09732bad92635d2bfee2e775589bb5028b38ec99fe3ef3c77c"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 308,
+      "range_start": 74432349,
+      "range_end_exclusive": 74576006,
+      "sha256": "3780647e3b9dc1d6c45417a1c721ae2d488c753b3de22515425278a3c68a8202"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 318,
+      "range_start": 76166055,
+      "range_end_exclusive": 76341921,
+      "sha256": "ed099be83f5835423be6a178a76174b56b2f7df6beeae2e260bae99bb3fd68bb"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 317,
+      "range_start": 75981387,
+      "range_end_exclusive": 76166055,
+      "sha256": "8dae3b66409716f83fda76ef60af840bac5415bb4ab4a94b60c81ab87f715104"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 293,
+      "range_start": 71932733,
+      "range_end_exclusive": 72101669,
+      "sha256": "6e782f070ac6884a30e6fe3266284265087c4b63e20b6bc72f8ceaf6d0cb8681"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 279,
+      "range_start": 69609325,
+      "range_end_exclusive": 69765036,
+      "sha256": "a94f676bef74940e8d59f359bae642868ea83028a2e8005a29c7acaa3273b456"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 304,
+      "range_start": 73785924,
+      "range_end_exclusive": 73932140,
+      "sha256": "c6612d4ee449e9b33136f85fa9fd6ccc144b89757a4154daa9cf264ea533a0fc"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 315,
+      "range_start": 75659668,
+      "range_end_exclusive": 75784731,
+      "sha256": "32c487415b6ef37e6e97eb4b775e822e257891c55a78d7ae85b800773ace08d7"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 294,
+      "range_start": 72101669,
+      "range_end_exclusive": 72232766,
+      "sha256": "f9fe74646986f8be0986a8ca49a16ffb4ea8f22f6765f4b7c1f6794d595c0700"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 262,
+      "range_start": 66757668,
+      "range_end_exclusive": 66887673,
+      "sha256": "9e00325c4432150fded7bccd5f85c72188774b50e877484e8c57d2c72d77cc4a"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 171,
+      "range_start": 44313269,
+      "range_end_exclusive": 44476970,
+      "sha256": "8460c7a151b6fa58cd54dccebc5a155c0d6bab333dec754f60a58e5b2c0b5184"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 173,
+      "range_start": 44671548,
+      "range_end_exclusive": 44857986,
+      "sha256": "fc3e61d2a42aad1f5fcc8dabf63f5d0365ca3ca208b02ef8a6b16cf80f97e301"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 174,
+      "range_start": 44857986,
+      "range_end_exclusive": 45015856,
+      "sha256": "881b90ff38d0bdae985fc51246e890e98cbb8f4daaaf0e8ff10b776c83a1a565"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 175,
+      "range_start": 45015856,
+      "range_end_exclusive": 45184741,
+      "sha256": "dafc25680e9653ba00ff4d0dde4a278f87312e72ce06fca3a46ae2e00258daf2"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 183,
+      "range_start": 46899819,
+      "range_end_exclusive": 47225257,
+      "sha256": "8d5b1b11f1cc4b61de5724c45f5d2769bec5b35b8e16e46283351ef16004f4de"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 184,
+      "range_start": 47225257,
+      "range_end_exclusive": 47419966,
+      "sha256": "17cc6abda4c1371eb937f92b0c3600e941dc58962768b25d21d4d3f448d23a8d"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 185,
+      "range_start": 47419966,
+      "range_end_exclusive": 47608766,
+      "sha256": "54d00c3362c767aa547b3238e9835e15aa59dcfed7cb6edadd4107dd700676b3"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 186,
+      "range_start": 47608766,
+      "range_end_exclusive": 47780950,
+      "sha256": "65dc106ccff915a17e1709ecfc24eff836746acd87fe630dd8de500d7849dc6f"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 187,
+      "range_start": 47780950,
+      "range_end_exclusive": 47959334,
+      "sha256": "d73e7b3af6de0ad05d8e2270cea4bf41bc0cfa0d66de0a024257ec0558b6772a"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 188,
+      "range_start": 47959334,
+      "range_end_exclusive": 48294252,
+      "sha256": "e2eb9c09d02b51ab62320b345f018f647264ef509f158724794962f06dfff9b5"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 189,
+      "range_start": 48294252,
+      "range_end_exclusive": 48628782,
+      "sha256": "9626c1220bed324c5cbe66e1c3444ed51c22f7cef199a0f9b8e3d726172430a3"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 190,
+      "range_start": 48628782,
+      "range_end_exclusive": 48981195,
+      "sha256": "55537670f078ccf412d1b7d401c4a2e8d8f524c95d0ad3625386387306feeec7"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 222,
+      "range_start": 57688078,
+      "range_end_exclusive": 57874242,
+      "sha256": "05421ce8e270adf45bdc6e58acdf60372b2bc7d95b6b0e222924ebf3e74c5a96"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 223,
+      "range_start": 57874242,
+      "range_end_exclusive": 58062375,
+      "sha256": "612d1add6e8e48222a5e8f0e804624d23c897f8dfb708ace5f15054dce9741cd"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 226,
+      "range_start": 58704587,
+      "range_end_exclusive": 59037810,
+      "sha256": "913c42e3d31acef398b97cad8686e0ccea526aa42f030946e863a6fa8a217b58"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 227,
+      "range_start": 59037810,
+      "range_end_exclusive": 59363311,
+      "sha256": "24c8499d0e507dd216cfcac5d014aa0116c5ecfe62940f5e5b4e4a58f8c5e93a"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 228,
+      "range_start": 59363311,
+      "range_end_exclusive": 59688783,
+      "sha256": "be81110c83b2d415dcae5a49d4fe346313f535577430c52a32dd097c069c4188"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 229,
+      "range_start": 59688783,
+      "range_end_exclusive": 59986984,
+      "sha256": "ddee6ad581bf97bf94a6952c5beb24ce437a560a810a0b7a5d98b3ceff7fe7ca"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 230,
+      "range_start": 59986984,
+      "range_end_exclusive": 60326697,
+      "sha256": "2d74ffebab03aeaaa251c38f1dbedb593a2d5b1d66085ad55b6239f3e3a297f5"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 231,
+      "range_start": 60326697,
+      "range_end_exclusive": 60647734,
+      "sha256": "e0251d508288d600e7c5921970b50a24e892786d6a9e2b0599c77d20c0db3f59"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 232,
+      "range_start": 60647734,
+      "range_end_exclusive": 60993868,
+      "sha256": "fb8bfb7f17d51914cc47c4c1f6a580c7e801890f482e0a1290488cf7dcc33e49"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 233,
+      "range_start": 60993868,
+      "range_end_exclusive": 61334964,
+      "sha256": "9bac26c99201d114574538b446a19d07db36099c526fd8193611cf3e97ff9a76"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 234,
+      "range_start": 61334964,
+      "range_end_exclusive": 61627539,
+      "sha256": "c6de12ab6d697926a17abf374325e4392d3ebb6ba0fb63f06a06ea90b98a247b"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 235,
+      "range_start": 61627539,
+      "range_end_exclusive": 61936316,
+      "sha256": "8d9d8f2d0f55c7d5bce258d9dca8784655b4da155bdf0f1dec3ee21b26097aa1"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 236,
+      "range_start": 61936316,
+      "range_end_exclusive": 62235130,
+      "sha256": "e52268f7ccd8e743e0caa70665f202dcb161106d4e6c6c642933cad1501dd78b"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 238,
+      "range_start": 62528852,
+      "range_end_exclusive": 62841321,
+      "sha256": "898c603c23a64d3cadf815b045ef28af087d17dee97d31f9ea6b9c9f25103fe7"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 239,
+      "range_start": 62841321,
+      "range_end_exclusive": 63140981,
+      "sha256": "90d5254b92c5e17f3655d76e514ad72f4cb0b6205d4b49aa9408e94f8929fae6"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 240,
+      "range_start": 63140981,
+      "range_end_exclusive": 63318539,
+      "sha256": "41d464fbe8b227dc81bc04ec28a1ee92b4c4d53d2bc8b2116143e890de8e294e"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 241,
+      "range_start": 63318539,
+      "range_end_exclusive": 63479830,
+      "sha256": "8644196190c2d0f770968ca632ba814d08452e9ce34dfaed8b32f603d1c500ae"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 242,
+      "range_start": 63479830,
+      "range_end_exclusive": 63654811,
+      "sha256": "cb4a4255354e370b04803fd6567369f897230e7012bf388d70a5cf26d2a859cc"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 243,
+      "range_start": 63654811,
+      "range_end_exclusive": 63808169,
+      "sha256": "8f0bb1e2f6976330d4c3cad438be4cdbd929b45c91d023fcd78f61353ba65095"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 244,
+      "range_start": 63808169,
+      "range_end_exclusive": 63966415,
+      "sha256": "35f77d53792862cd346d96567427134a15ef1effb8b8c14c6873fec0060116cd"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 245,
+      "range_start": 63966415,
+      "range_end_exclusive": 64122164,
+      "sha256": "0b425466ac483e0e32e438c1d3686551ea0c32ac401fc977266e6bc9f011c013"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 248,
+      "range_start": 64412746,
+      "range_end_exclusive": 64567140,
+      "sha256": "c31c2de86114e505fa3a6dad05286048a2b0c63292ebd2b3b5b1ee113906f70f"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 249,
+      "range_start": 64567140,
+      "range_end_exclusive": 64712711,
+      "sha256": "aa4bc30cbf6aab0d67e962218c098e1c755415c2b6f564c05affaad8a03aa95a"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 250,
+      "range_start": 64712711,
+      "range_end_exclusive": 64871670,
+      "sha256": "5c4cc1cc10db38eeea7143940d458e3b4224420940f5748aa4c8135394fa709c"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 251,
+      "range_start": 64871670,
+      "range_end_exclusive": 65040079,
+      "sha256": "9780fd9c3c8c31fc3066ebed509b415050bce04323a59177cc351886ed117239"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 252,
+      "range_start": 65040079,
+      "range_end_exclusive": 65185989,
+      "sha256": "5b1bc6b1e3dcb3b46c9cf0146d71eb40ca7c518239f83306f989a5be1f3ae590"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 253,
+      "range_start": 65185989,
+      "range_end_exclusive": 65338097,
+      "sha256": "be90e3f011f6f6ad8441b1bbe6ecc32c0e9cb6028bc2e9b2c371502af2e8cad9"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 254,
+      "range_start": 65338097,
+      "range_end_exclusive": 65501283,
+      "sha256": "59d412452440d1b473f34a712a0f350249620235d1791c3aab6dc0faf58d8e40"
+    },
+    {
+      "tile": "LO-155030-04-2024_v01",
+      "chunk": 255,
+      "range_start": 65501283,
+      "range_end_exclusive": 65665513,
+      "sha256": "0412a21a4f9306a7ec1f9e0ba10e81367f15a6d24e381aa0fbab93bea2362452"
+    },
+    {
+      "tile": "LO-155031-04-2024_v01",
+      "chunk": 388,
+      "range_start": 93388405,
+      "range_end_exclusive": 93720650,
+      "sha256": "c75685d985690027fdb9c7dd65e6c42ce490f10e148671639398b955e8e17eb5"
+    },
+    {
+      "tile": "LO-155031-04-2024_v01",
+      "chunk": 385,
+      "range_start": 92609169,
+      "range_end_exclusive": 92835908,
+      "sha256": "0598dfc890d17ac47615f5ba23db35e89eb246a359520e5c42fc654446781958"
+    },
+    {
+      "tile": "LO-155031-04-2024_v01",
+      "chunk": 370,
+      "range_start": 88807041,
+      "range_end_exclusive": 89014676,
+      "sha256": "867035d3b58f80a857e3ea7d0e2ea5e52788553ff9de7d60eddcc6c9224045db"
+    },
+    {
+      "tile": "LO-155031-04-2024_v01",
+      "chunk": 380,
+      "range_start": 91428774,
+      "range_end_exclusive": 91602352,
+      "sha256": "a99a91b7fbeca1a7f4e09922e3be115665b43f55af8cd45cfd8c619047295bf9"
+    },
+    {
+      "tile": "LO-155031-04-2024_v01",
+      "chunk": 349,
+      "range_start": 83961919,
+      "range_end_exclusive": 84104003,
+      "sha256": "50337571472349083b1759244d6144877b7d66761f5857b3d2f25b446f62d425"
+    },
+    {
+      "tile": "LO-155031-04-2024_v01",
+      "chunk": 305,
+      "range_start": 74041193,
+      "range_end_exclusive": 74179806,
+      "sha256": "6a210aa7118d954d84caffedbcf639c0a8f5c29d2a9672dfdd715dacd06f7e6f"
+    },
+    {
+      "tile": "LO-155031-04-2024_v01",
+      "chunk": 359,
+      "range_start": 86106004,
+      "range_end_exclusive": 86250147,
+      "sha256": "fc54f993af171920ad6227e4fa73ed2133bd6e789aaeb8258b9fc36bc49167b5"
+    },
+    {
+      "tile": "LO-155031-04-2024_v01",
+      "chunk": 325,
+      "range_start": 78567233,
+      "range_end_exclusive": 78715007,
+      "sha256": "3a58fd3e8e83b63e0a1fd7531d22e29832f9ca8d0043a954918193380631469c"
+    },
+    {
+      "tile": "LO-155031-04-2024_v01",
+      "chunk": 310,
+      "range_start": 75113706,
+      "range_end_exclusive": 75258194,
+      "sha256": "19c41d7f8d4979845aba09efdbd3f3bebfb2779dd2d59c928634da17b0eddeab"
+    },
+    {
+      "tile": "LO-155031-04-2024_v01",
+      "chunk": 131,
+      "range_start": 36614347,
+      "range_end_exclusive": 36789205,
+      "sha256": "9cdee4d63fce3c4a773c4fdcedc2875cbedaa61d26bc237c421e50cacaaa2d73"
+    },
+    {
+      "tile": "LO-155031-04-2024_v01",
+      "chunk": 132,
+      "range_start": 36789205,
+      "range_end_exclusive": 36946006,
+      "sha256": "5880551a425dc433d8285af293a199d9b363b071cfbca2d5f293ee3e0874f2f8"
+    },
+    {
+      "tile": "LO-155031-04-2024_v01",
+      "chunk": 153,
+      "range_start": 41550036,
+      "range_end_exclusive": 41713162,
+      "sha256": "021e6e3d9b717b78dff5043a874792e8f578b64562663fec2d9bbee96a202285"
+    },
+    {
+      "tile": "LO-155031-04-2024_v01",
+      "chunk": 154,
+      "range_start": 41713162,
+      "range_end_exclusive": 41872192,
+      "sha256": "b8f569c0da942dc78edccfe78e1130c646e3800c2418705ae8568cdb984ad91a"
+    },
+    {
+      "tile": "LO-155031-04-2024_v01",
+      "chunk": 155,
+      "range_start": 41872192,
+      "range_end_exclusive": 42044888,
+      "sha256": "c246f7660dc1813aee09eca00e420ae5e112fe45cbc4dc97b066627c07372a44"
+    },
+    {
+      "tile": "LO-155031-04-2024_v01",
+      "chunk": 156,
+      "range_start": 42044888,
+      "range_end_exclusive": 42212911,
+      "sha256": "e871bee9bc650ea8bc1610a0499cc20e60349224ff085d558002f4c70e95a868"
+    },
+    {
+      "tile": "LO-155031-04-2024_v01",
+      "chunk": 157,
+      "range_start": 42212911,
+      "range_end_exclusive": 42369016,
+      "sha256": "2ba84e97421fcc5d8e5f8e2d90edf4de83a9717fa6e36820f41ce467319f6c38"
+    },
+    {
+      "tile": "LO-155031-04-2024_v01",
+      "chunk": 159,
+      "range_start": 42567325,
+      "range_end_exclusive": 42731042,
+      "sha256": "68d8b7fa7084fede731973ac82244d4bd39c98c51b1d2171e3be784c8e49e47f"
+    },
+    {
+      "tile": "LO-155031-04-2024_v01",
+      "chunk": 160,
+      "range_start": 42731042,
+      "range_end_exclusive": 42919226,
+      "sha256": "765774e2013244e7320e10f40ef0b0c1988575569bd908a0e9216b8ec8c38cd2"
+    },
+    {
+      "tile": "LO-155031-04-2024_v01",
+      "chunk": 161,
+      "range_start": 42919226,
+      "range_end_exclusive": 43083857,
+      "sha256": "58aecbbfcb88fb8a87ba0a134e0c5e1c0a063ffa6703d56ed5a0f7e2337bfd48"
+    },
+    {
+      "tile": "LO-155031-04-2024_v01",
+      "chunk": 162,
+      "range_start": 43083857,
+      "range_end_exclusive": 43248402,
+      "sha256": "fa05bc3e3893331d83c9d128ad6d13c7bda2f3f2fb4941f1fbea6b1487b2fe91"
+    },
+    {
+      "tile": "LO-155031-04-2024_v01",
+      "chunk": 163,
+      "range_start": 43248402,
+      "range_end_exclusive": 43447086,
+      "sha256": "b02fadbba90218b03e6da4f5af9d4a0a0fffb8478dddaecb27e57be178daa1d7"
+    },
+    {
+      "tile": "LO-155031-04-2024_v01",
+      "chunk": 164,
+      "range_start": 43447086,
+      "range_end_exclusive": 43617525,
+      "sha256": "1a3ebedbe2a415c5c3a03ec1c1c103b8421fbf50e139c858f1a735bec072bf3b"
+    },
+    {
+      "tile": "LO-155031-04-2024_v01",
+      "chunk": 165,
+      "range_start": 43617525,
+      "range_end_exclusive": 43787401,
+      "sha256": "ed914be6bda89ee50c189f2a319109da3f6873bddcfc7ddbd8c18f13818b3bf0"
+    },
+    {
+      "tile": "LO-155031-04-2024_v01",
+      "chunk": 166,
+      "range_start": 43787401,
+      "range_end_exclusive": 43967336,
+      "sha256": "98269ab0ba0610666b37f89da0a93afc26324f3a91d1d75acd8e151c72367d65"
+    },
+    {
+      "tile": "LO-155031-04-2024_v01",
+      "chunk": 167,
+      "range_start": 43967336,
+      "range_end_exclusive": 44126917,
+      "sha256": "43bee258415046363e1c14d3966f56dfc55a8c2030b891e7ca118665c68e4d3e"
+    },
+    {
+      "tile": "LO-156029-04-2024_v01",
+      "chunk": 692,
+      "range_start": 124714702,
+      "range_end_exclusive": 125050392,
+      "sha256": "6fdf836e44ccb65d1d382076b8e61b07cc3ae8bf8b74422ccb18da4040595c08"
+    },
+    {
+      "tile": "LO-156029-04-2024_v01",
+      "chunk": 690,
+      "range_start": 124138975,
+      "range_end_exclusive": 124406683,
+      "sha256": "7fd58d220c138c48e3a793284fa80f7353402927e7a7f8b0db35a95ff5c015e8"
+    },
+    {
+      "tile": "LO-156029-04-2024_v01",
+      "chunk": 670,
+      "range_start": 118706411,
+      "range_end_exclusive": 118930974,
+      "sha256": "495866d68a6440769ae40cbbe017ffddb6c3a19abdc2023c8d949098a0cb2fd9"
+    },
+    {
+      "tile": "LO-156029-04-2024_v01",
+      "chunk": 565,
+      "range_start": 95475172,
+      "range_end_exclusive": 95667997,
+      "sha256": "eeb5113926048237af21e15c5ecf63fc3b04bd3a1ba0c2cf9ff439f439bd405a"
+    },
+    {
+      "tile": "LO-156029-04-2024_v01",
+      "chunk": 545,
+      "range_start": 91334047,
+      "range_end_exclusive": 91516457,
+      "sha256": "6dfc91047e82d377ba07af0cd465b5f0b08153b99fa307a5f7bc39e9302f0b2b"
+    },
+    {
+      "tile": "LO-156029-04-2024_v01",
+      "chunk": 41,
+      "range_start": 10718601,
+      "range_end_exclusive": 10921913,
+      "sha256": "a5fbd871056c08f9ceb94eb05437331640ef2a833464cab2e12df110ec02b825"
+    },
+    {
+      "tile": "LO-156029-04-2024_v01",
+      "chunk": 47,
+      "range_start": 12151913,
+      "range_end_exclusive": 12354150,
+      "sha256": "f930133b4725a46963b664c8802dcd09677ebd400278d29b9357bbd32611cee6"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 448,
+      "range_start": 100291335,
+      "range_end_exclusive": 100628578,
+      "sha256": "732118d3c2bd064a693efc92df2a62c9551effbf23509b79b96c53dbcc4e0d44"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 444,
+      "range_start": 99221990,
+      "range_end_exclusive": 99434737,
+      "sha256": "0716dd07684f403c7ff9adfc28acb31e527b8e10a48dc0bf7f804a4f8224441d"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 445,
+      "range_start": 99434737,
+      "range_end_exclusive": 99683129,
+      "sha256": "9f4351bddbd522fcd3ae5f19d26228f46f2ccd360b01845211078f2c165f7626"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 431,
+      "range_start": 95826387,
+      "range_end_exclusive": 95998004,
+      "sha256": "acc14dfeeb6591ee3013d3e46ddac743f01c715cff7e5790354e22a60e74ba65"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 429,
+      "range_start": 95403898,
+      "range_end_exclusive": 95581893,
+      "sha256": "c28b845e095de95bf7d6d3f678d6a1a56b36b045cd6905ac20f8d64c39e14c1f"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 426,
+      "range_start": 94491311,
+      "range_end_exclusive": 94706368,
+      "sha256": "9619df7e86187bb4c7b08cb5469e25979e564c7392e1cc819cd6db9fb4af4f5b"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 436,
+      "range_start": 97138034,
+      "range_end_exclusive": 97341461,
+      "sha256": "8ff508c9da2e1bb7887b275bf685f2a456770f9353c3767c1d5d99242b56ced8"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 438,
+      "range_start": 97585353,
+      "range_end_exclusive": 97784364,
+      "sha256": "9e2325dfaf494d83ba70ceed2b93e1aea25e3413ad46ccbf68a8e5c0bb97434f"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 441,
+      "range_start": 98414043,
+      "range_end_exclusive": 98582946,
+      "sha256": "f8aae3bacdae91034d225d0501f022543f9981e90cd4c37f15c8d76ddd0dcf61"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 430,
+      "range_start": 95581893,
+      "range_end_exclusive": 95826387,
+      "sha256": "1ccd77efea513dcfefc9dccad8022739c293b827064a1c83de49ebc285c399b5"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 386,
+      "range_start": 85979282,
+      "range_end_exclusive": 86122075,
+      "sha256": "a0b16f2d62e47e29f03890b6049ff4cb002013c6c41cac274778052c3338788b"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 402,
+      "range_start": 89095419,
+      "range_end_exclusive": 89237443,
+      "sha256": "7810a1bdafec16338927b867cfbdd5979ab75eafb05239c27682ff08b07599d8"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 350,
+      "range_start": 78371077,
+      "range_end_exclusive": 78522025,
+      "sha256": "bf4050cda49201483e7bbbb5ab71d14c31af9a08ccbbb283324560f2af8f2754"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 353,
+      "range_start": 78960705,
+      "range_end_exclusive": 79100185,
+      "sha256": "bcef6c0e00a7580a9f97e41e546198bf01cd86b0f5ba691bb0a7dde2e8ef982b"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 345,
+      "range_start": 77401938,
+      "range_end_exclusive": 77578116,
+      "sha256": "35aa66e10d1d63e4a8bebbc08c0b391fd605a09561492a18f7b09f44a983be33"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 378,
+      "range_start": 84060667,
+      "range_end_exclusive": 84184935,
+      "sha256": "56f136a7bd72ccef0694b8212fc83547c341b1b0908f3ab991cc2fd59961db5e"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 398,
+      "range_start": 88343705,
+      "range_end_exclusive": 88514071,
+      "sha256": "5e794b108757b5c0ba58cf3e44783ac8131c9b143cf97e9d3f94209397a5ded5"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 337,
+      "range_start": 75838534,
+      "range_end_exclusive": 75992151,
+      "sha256": "b9c24eb116c5a12c5733d8dda44f5f6becb632ed1eeda7e4f03bb52e90d04915"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 423,
+      "range_start": 93831190,
+      "range_end_exclusive": 93968409,
+      "sha256": "b2b5bbc5af97de231fc286f6f3881e3b48e77cc29e34ce5e347e02fdaa5b1a7f"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 390,
+      "range_start": 86849988,
+      "range_end_exclusive": 87018607,
+      "sha256": "54e778e52ddf74f1f24888614733b4f494177610e3b0e4c80477d61a1c94b73a"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 363,
+      "range_start": 81068228,
+      "range_end_exclusive": 81213722,
+      "sha256": "31991810a180e012425be5c8d24c7baa5fc0394478554008321b8013a6ae5fc5"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 360,
+      "range_start": 80502126,
+      "range_end_exclusive": 80698825,
+      "sha256": "eb966dca6d8bfc641ee50d4308682a5ac81ebe78444072da5616df609e2b1c2e"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 364,
+      "range_start": 81213722,
+      "range_end_exclusive": 81381081,
+      "sha256": "72169bf9ce0ed2aad1bf535920b818d1c96707d21de16f3ce249672ef328e599"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 381,
+      "range_start": 84665165,
+      "range_end_exclusive": 84870931,
+      "sha256": "dcde0160bad2d99ff37e52e92ba0b33be6957396d5b040916fd9926a1ea27b4c"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 418,
+      "range_start": 92640636,
+      "range_end_exclusive": 92803764,
+      "sha256": "7b037f7af7dbfb30b1e51f11858939764e6971ea391c0ec3c1e0a837eea949a5"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 410,
+      "range_start": 90897685,
+      "range_end_exclusive": 91078956,
+      "sha256": "7080a7c18d6ef08945ccfb4c4106041116db19d9c727756514ee57d22d687fe2"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 366,
+      "range_start": 81559683,
+      "range_end_exclusive": 81753836,
+      "sha256": "cd950b4ed283cac560eb47832576eece63f80df5a24438dbbdae986ee0804daa"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 376,
+      "range_start": 83685893,
+      "range_end_exclusive": 83853633,
+      "sha256": "2c6a8e69728b6add8e4d9002370357598349b81f0fe824cda1788a009210793d"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 372,
+      "range_start": 82930747,
+      "range_end_exclusive": 83076115,
+      "sha256": "b06dcb04500fc96de1d02d3da24cfee3cd6f63008683a5e8f8c964a0ed739f48"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 403,
+      "range_start": 89237443,
+      "range_end_exclusive": 89366412,
+      "sha256": "6102f9feda1dfbcb8ebb95898ad09e6846856e39712239f170630be8174a6e07"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 396,
+      "range_start": 87997846,
+      "range_end_exclusive": 88136159,
+      "sha256": "8f69d13c66b522990c9cc430d3763e40bb5e8822d8247a4f311fe0fb2ce41499"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 400,
+      "range_start": 88697797,
+      "range_end_exclusive": 88845596,
+      "sha256": "daa98786389786c4b935f44575ba959bc0003f1188620c89cf59fc7b94479f1c"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 347,
+      "range_start": 77790872,
+      "range_end_exclusive": 77985059,
+      "sha256": "ba523b37acbcee781780249404919e057644ae11b654b6f35f9b57a0d75acb07"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 351,
+      "range_start": 78522025,
+      "range_end_exclusive": 78755132,
+      "sha256": "e0f072a7a1fbbfd7826d7c252e4832aea23b20a40af34393aa624653d54cec65"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 369,
+      "range_start": 82231968,
+      "range_end_exclusive": 82428921,
+      "sha256": "d94b4ff60d227011bc5f61cec68daa3be7e9e59727ad37bcfc912cbe5cfcd247"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 0,
+      "range_start": 34745,
+      "range_end_exclusive": 204145,
+      "sha256": "08e4f582cde81abc4f662080f402db4f7d8635fc2e785a561d01f4f7a9936e1f"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 1,
+      "range_start": 204145,
+      "range_end_exclusive": 396944,
+      "sha256": "c5e8f01ebe3f84116c37d258b3b3102293bb5b2a606beccb4554707566b7db10"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 2,
+      "range_start": 396944,
+      "range_end_exclusive": 568247,
+      "sha256": "a6d0ce041764245af52cecdfec8f31c0fcb00d5a87f1c2c6c2fc3a701b640383"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 3,
+      "range_start": 568247,
+      "range_end_exclusive": 772154,
+      "sha256": "11992aebd1e1eb2e95a5f6dbbc9480da0933f8daed52a173514e03b58ce44d91"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 4,
+      "range_start": 772154,
+      "range_end_exclusive": 959639,
+      "sha256": "bf6f9c0ac406fa0e30006cbb58431bf2a185137db72dba96db3b37e11ec03684"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 5,
+      "range_start": 959639,
+      "range_end_exclusive": 1127010,
+      "sha256": "a59b8284cf4749194e8f91d4836d45e173b59b45e045b359a16a7cdefa92b85e"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 8,
+      "range_start": 1508388,
+      "range_end_exclusive": 1676058,
+      "sha256": "aa22cd5f4e9255bab1696ae4593c1e467fb0fa748b04455d4f955156ec61c3a6"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 9,
+      "range_start": 1676058,
+      "range_end_exclusive": 1896029,
+      "sha256": "d1e6c3e9b0cce93be0344d64e5914f3987c15c815ba4fdb262a1fe1cc98cdc05"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 10,
+      "range_start": 1896029,
+      "range_end_exclusive": 2067298,
+      "sha256": "5b014d812cd1e3dd13194e5b995d0d84e0d922be8cdc5b1f8ea9e434f76663d5"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 11,
+      "range_start": 2067298,
+      "range_end_exclusive": 2282169,
+      "sha256": "07d92a459935a9fae0071a8fe5efc1c72605141309ac1631c76cef8c6893c797"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 12,
+      "range_start": 2282169,
+      "range_end_exclusive": 2463884,
+      "sha256": "1fd6269ead78f729b2be32b533ac5b33e2d065da506882e841c65e6bd30ee677"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 13,
+      "range_start": 2463884,
+      "range_end_exclusive": 2628021,
+      "sha256": "a1406f817968b6fd165bede2c6fdd7959f040b631521cd3130391914dbd5c0ad"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 14,
+      "range_start": 2628021,
+      "range_end_exclusive": 2829157,
+      "sha256": "d2fd003324878c4a50464b6adfa3c9271efe2fe0b326a9363023a38ece55eab6"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 15,
+      "range_start": 2829157,
+      "range_end_exclusive": 3003371,
+      "sha256": "faec4b24b086e6a79c769d7cb783bb506298ce768b9eee77b8f1411761a9d0e2"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 21,
+      "range_start": 4043969,
+      "range_end_exclusive": 4362972,
+      "sha256": "3c1f187116bcc6d0d963a70312d1300e0b5aa91e04c5cd258a0622b4335db7c3"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 23,
+      "range_start": 4749955,
+      "range_end_exclusive": 5090332,
+      "sha256": "809692e78f10793309143ce2da737de0c66fa73f2bbad416c1d8fdfbeb17f64a"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 24,
+      "range_start": 5090332,
+      "range_end_exclusive": 5250405,
+      "sha256": "34142d6ad558ca64858201fc83fc009d7b93c0af22363b08177c27aa0e6620b4"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 25,
+      "range_start": 5250405,
+      "range_end_exclusive": 5404151,
+      "sha256": "7c12446a7690c7fccb5e574a3c2a3e4719afe122f8b7d4e7fa59514a9f786572"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 26,
+      "range_start": 5404151,
+      "range_end_exclusive": 5571607,
+      "sha256": "23a79d14ee91a05d590b94d47cd248127cfcceeb56dc20ac35c1f0eb48b2101f"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 27,
+      "range_start": 5571607,
+      "range_end_exclusive": 5734504,
+      "sha256": "2062ec2e63ebfad3434f3b1b80b68edfccc0bc89d96106738efff70bc6aa1431"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 28,
+      "range_start": 5734504,
+      "range_end_exclusive": 6083688,
+      "sha256": "e0877370f48014a3d5ac21b8f94ef5577be9026eeed0069f2a0a62a47c8e144e"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 30,
+      "range_start": 6418927,
+      "range_end_exclusive": 6758137,
+      "sha256": "30a5301a1a7ebc6c41700004abd01c7480bfec8d03d08a092c87b56dd1c06e3d"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 31,
+      "range_start": 6758137,
+      "range_end_exclusive": 7102075,
+      "sha256": "3077fbbce0a6f5c307299ce6b4413a5d47d727a312079c214567bfeb0a03bdd7"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 32,
+      "range_start": 7102075,
+      "range_end_exclusive": 7287410,
+      "sha256": "07a03f878fc3b1f00be3e1463f03dc15acd27515abfd3346d8b778cd7b48c4ea"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 33,
+      "range_start": 7287410,
+      "range_end_exclusive": 7470248,
+      "sha256": "ba9f9965b49da8599b15ca5f49aa4fa3afef33406a4f236e9a40bf50ffee90a6"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 35,
+      "range_start": 7712348,
+      "range_end_exclusive": 7909778,
+      "sha256": "da8eca4cefa0f0d4893a4883f3b796958262c466c0ee85357b94dd7538125a5f"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 36,
+      "range_start": 7909778,
+      "range_end_exclusive": 8095429,
+      "sha256": "7813895ad053bb231456c6088447959db2b11fd3766cfa9356ce15a6e194f1ec"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 37,
+      "range_start": 8095429,
+      "range_end_exclusive": 8281187,
+      "sha256": "32ecba6370a28a843609f419345cb19c3836f4b49ad84fe5f9dca5c2b7401213"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 38,
+      "range_start": 8281187,
+      "range_end_exclusive": 8459930,
+      "sha256": "c08a59540132dddc82d19a3011e698a3944c8dfe81bf8c4098f3a07ca2f2b7b6"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 39,
+      "range_start": 8459930,
+      "range_end_exclusive": 8640336,
+      "sha256": "02e911839c5f215d362514d6e55b7690726451d13a79342bfb785a1e46b9db3b"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 44,
+      "range_start": 9755820,
+      "range_end_exclusive": 9971212,
+      "sha256": "a0d5966d61b52728bf0f3f3a008c6d47cf7f6a19f4af3c7316c42118061c62a0"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 45,
+      "range_start": 9971212,
+      "range_end_exclusive": 10143545,
+      "sha256": "ec7aa6704512ecfd7835d59f5e14618eb5371680a49e340b640de1125d8d513f"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 48,
+      "range_start": 10611197,
+      "range_end_exclusive": 10785531,
+      "sha256": "9df5629c41e3fe16e75de5b94d774a57bcd6ca182085c062e170b80b0f377ca2"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 49,
+      "range_start": 10785531,
+      "range_end_exclusive": 10995219,
+      "sha256": "12799d7149469aba95f98c369da5601b9735a018d74b0647300c3fce5cf79ffc"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 50,
+      "range_start": 10995219,
+      "range_end_exclusive": 11175767,
+      "sha256": "efb1fd0ac2d36042925afe3d760540ae0438ca598823c459075c4813854271ec"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 51,
+      "range_start": 11175767,
+      "range_end_exclusive": 11361830,
+      "sha256": "fd96bf64f907989bccfc9451a41913b8533c2a38a5d765a9743d5539bf219f86"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 52,
+      "range_start": 11361830,
+      "range_end_exclusive": 11725671,
+      "sha256": "15f4b2d280b82acdf687007fc2c3c8ea3f7afab5a10d818f6a04ccad278a3a39"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 53,
+      "range_start": 11725671,
+      "range_end_exclusive": 12136741,
+      "sha256": "508227f2c1bf928f3bb750c26375f22518b207d6216b62212dde71cfa09eed7b"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 54,
+      "range_start": 12136741,
+      "range_end_exclusive": 12511645,
+      "sha256": "1a86fedb6ac1ab19a8e6953ecba4ca7b1ddfef8b2a96070dd7ddf1c0ae646906"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 55,
+      "range_start": 12511645,
+      "range_end_exclusive": 12873293,
+      "sha256": "a06c268098b208842f474906847de2070e2d509d3b599703f466253f13cd6070"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 56,
+      "range_start": 12873293,
+      "range_end_exclusive": 13041202,
+      "sha256": "1bf4c65a5977c140a77aa4580cb624ffe061d2f7849ac050026e2a36d98dc993"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 57,
+      "range_start": 13041202,
+      "range_end_exclusive": 13240960,
+      "sha256": "ce169f9bf95c33779b59b754813c9df9e67e2940b3656ad3d3385e7b5e0dd899"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 60,
+      "range_start": 13703753,
+      "range_end_exclusive": 14105807,
+      "sha256": "2f8ce84807ba46f270e404861587de395f93e769c9633d35c2cb98025e58b596"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 61,
+      "range_start": 14105807,
+      "range_end_exclusive": 14426799,
+      "sha256": "76de10b619b853cb53f57b2e8a9c4162bc88bfc89f7bcd23af136105204c25b5"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 64,
+      "range_start": 15232279,
+      "range_end_exclusive": 15558863,
+      "sha256": "4dc7ee824f0bb90bb59b07d7dad9e81e4d7e719a6c4772fa674a0fabba319f8e"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 65,
+      "range_start": 15558863,
+      "range_end_exclusive": 15884556,
+      "sha256": "643465a6b4aaecae6ee76b991e093b11f4b1e0d66378b07f5315f9dc4b3bc103"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 66,
+      "range_start": 15884556,
+      "range_end_exclusive": 16208675,
+      "sha256": "ab59f68a7120077a334ec48caed0949152b977e55229757e1cf58c85630b5a5f"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 67,
+      "range_start": 16208675,
+      "range_end_exclusive": 16526690,
+      "sha256": "76cab277ebc10115b1a931792d2aedc85b530dcb1923e90df5f76c707cf13270"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 68,
+      "range_start": 16526690,
+      "range_end_exclusive": 16912910,
+      "sha256": "7e67e36e334fc5af818f71f13421b4ee557954e39b1a284a2614e5f620a896ef"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 69,
+      "range_start": 16912910,
+      "range_end_exclusive": 17241062,
+      "sha256": "b40220d4d1c200422da60fe565ff39556b15df40d9890d49f50c633c40fc3734"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 70,
+      "range_start": 17241062,
+      "range_end_exclusive": 17562938,
+      "sha256": "9ab2c67551790963f7bd05724b849e6e436ea62540e9673e903d8eb89f098146"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 71,
+      "range_start": 17562938,
+      "range_end_exclusive": 17868152,
+      "sha256": "a5c985e5d220a9e080ba9d8c62fca8a9dfe03436ce2274fe17d38bc91931a5ae"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 75,
+      "range_start": 19057776,
+      "range_end_exclusive": 19353365,
+      "sha256": "1669f3c943ee191ca28e8448fe8a0593e574bae4a8148f8a488233db4f30b422"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 76,
+      "range_start": 19353365,
+      "range_end_exclusive": 19683981,
+      "sha256": "47076bc3dbfd0857fcb87f8517d4b7561d3c7ff25ceb040edd5394e90b076e68"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 77,
+      "range_start": 19683981,
+      "range_end_exclusive": 19995793,
+      "sha256": "5a4c1525c566bf8c65ab18faacf2b6e208422b4c0d22d181037f7b8253f67b20"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 78,
+      "range_start": 19995793,
+      "range_end_exclusive": 20346417,
+      "sha256": "05b45c5165ab9fb6ae7b1ee5fe3daf14d77322bc5b425f67a7682de266f8853a"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 79,
+      "range_start": 20346417,
+      "range_end_exclusive": 20669887,
+      "sha256": "ba99717ee11afe9d2cac83b58e052c8465ff1b1824b298e3aa6778696698c773"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 80,
+      "range_start": 20669887,
+      "range_end_exclusive": 20856977,
+      "sha256": "7308fcb04735f75ee5718f1bdfe8196d0b0260dcdb5ff8713e0184f2d404d548"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 81,
+      "range_start": 20856977,
+      "range_end_exclusive": 21033357,
+      "sha256": "329cf67e8b1865b6093245de06bea79722962fbd1d54a7c68025045854c08c77"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 82,
+      "range_start": 21033357,
+      "range_end_exclusive": 21195665,
+      "sha256": "f092d40da872c766038f31bd44eced8a4c2211bbd6bafad53d427a3b53406a94"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 83,
+      "range_start": 21195665,
+      "range_end_exclusive": 21366752,
+      "sha256": "5a7031c203759badfbfa664efc62a4dd4901b688d56668091441daf2ef1e4877"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 84,
+      "range_start": 21366752,
+      "range_end_exclusive": 21523326,
+      "sha256": "91cd073688d8d78341a3c2285daa9b89e160399606d72a9eff9b35b0eff37edc"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 85,
+      "range_start": 21523326,
+      "range_end_exclusive": 21685253,
+      "sha256": "10a77c709d2bf50c425b042fd4f0d8bc79250846a765322dbe6c323ed5f913e7"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 86,
+      "range_start": 21685253,
+      "range_end_exclusive": 21856091,
+      "sha256": "ef15ce74a18fd6df8b4555eab7d5c3b3f872f78b672e7c5b3981ca044dbedafb"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 87,
+      "range_start": 21856091,
+      "range_end_exclusive": 22022870,
+      "sha256": "1e56a393aed7a9fe30a641be93f9dbd4a597ca706c722842499acb066f5be2b5"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 88,
+      "range_start": 22022870,
+      "range_end_exclusive": 22180023,
+      "sha256": "96d10e092dc13f5de75bdda7e74e3b079729edc67843d4e85e3c3d465de49a7b"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 89,
+      "range_start": 22180023,
+      "range_end_exclusive": 22338622,
+      "sha256": "c498010c1e49bba66dd97c2dc032e09a63664987d24851d097258a7996bd3b21"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 90,
+      "range_start": 22338622,
+      "range_end_exclusive": 22508929,
+      "sha256": "67fa18d37ef8f88ed837b6b987b5018779083002beffcf0ed5c2aa5a9baa5a01"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 92,
+      "range_start": 22687190,
+      "range_end_exclusive": 22842197,
+      "sha256": "7fafe2cca618b84b088e696351cc80d0d5aba365e0e5e131d5cdc2c1e6238911"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 93,
+      "range_start": 22842197,
+      "range_end_exclusive": 23008308,
+      "sha256": "34cd3bcc8076ab98c46397a25b5e9c1df6983d84fc6cc869f3f2d09e2b3a929d"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 97,
+      "range_start": 23856579,
+      "range_end_exclusive": 24183088,
+      "sha256": "9bac425edc099d81b6f94b993a10cde514e4503484a3e98e7d8ad5f0bf82ec40"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 98,
+      "range_start": 24183088,
+      "range_end_exclusive": 24522193,
+      "sha256": "8bdeb85beac5b37c296da3445faf574e599437213a0e1ba1a58389f7e3e1e8d9"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 99,
+      "range_start": 24522193,
+      "range_end_exclusive": 24919524,
+      "sha256": "775fe8024c7173568e8b54659965ec31ada127ef2a3179bfdcde06ff302c055a"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 100,
+      "range_start": 24919524,
+      "range_end_exclusive": 25322354,
+      "sha256": "49334c16debaf97d77c19a9a60a2ce0921bab3fe4f23cbe639d19b1ec207b54c"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 102,
+      "range_start": 25720277,
+      "range_end_exclusive": 26226394,
+      "sha256": "f9a74cdbe288bff8665141b35f71a73dc5a74a368c5ebe5b75007f21f16fd8b5"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 104,
+      "range_start": 26663322,
+      "range_end_exclusive": 26985092,
+      "sha256": "aa070f852755f9bfdeab669ef906dafe5fe3e5819a0b1459140ff1482b18fafb"
+    },
+    {
+      "tile": "LO-156030-04-2024_v01",
+      "chunk": 105,
+      "range_start": 26985092,
+      "range_end_exclusive": 27420250,
+      "sha256": "322f5d588a202b42df7aaf017bede70007fbf3186d89071ae0007e3d396f6734"
+    },
+    {
+      "tile": "LO-156031-04-2024_v01",
+      "chunk": 368,
+      "range_start": 95859414,
+      "range_end_exclusive": 96198598,
+      "sha256": "84640487022d9bca197c874b0452b99c7959c8e1fcc8c0122199717fd051a206"
+    },
+    {
+      "tile": "LO-156031-04-2024_v01",
+      "chunk": 366,
+      "range_start": 95329122,
+      "range_end_exclusive": 95590360,
+      "sha256": "57e817bbe06decb633dd1e5d7feaf8c1e3d3660aa742ac44016a57233747aece"
+    },
+    {
+      "tile": "LO-156031-04-2024_v01",
+      "chunk": 358,
+      "range_start": 93162706,
+      "range_end_exclusive": 93355294,
+      "sha256": "8014d41ebeaa038d978882739f3c5debc7731283948c72fc10c85de000707d98"
+    },
+    {
+      "tile": "LO-156031-04-2024_v01",
+      "chunk": 316,
+      "range_start": 82908951,
+      "range_end_exclusive": 83056530,
+      "sha256": "b194fe4c6f641e19a1517eabf194ab4031edde6b0ad8c4500203764999b503d7"
+    },
+    {
+      "tile": "LO-156031-04-2024_v01",
+      "chunk": 340,
+      "range_start": 88569712,
+      "range_end_exclusive": 88739821,
+      "sha256": "772f01dec3010a01b341116389183300ebef277caf75491ab19527c664332c60"
+    },
+    {
+      "tile": "LO-156031-04-2024_v01",
+      "chunk": 299,
+      "range_start": 78883044,
+      "range_end_exclusive": 79050895,
+      "sha256": "ea21fbe7767a462638331c080a5a46f7d565744b668b5fd270dd98c7842a4d80"
+    },
+    {
+      "tile": "LO-156031-04-2024_v01",
+      "chunk": 0,
+      "range_start": 34745,
+      "range_end_exclusive": 211749,
+      "sha256": "66519bb28ac4bb16a15b47e39a39df365dbc836cc66e22431126209a73dcea40"
+    },
+    {
+      "tile": "LO-156031-04-2024_v01",
+      "chunk": 1,
+      "range_start": 211749,
+      "range_end_exclusive": 395344,
+      "sha256": "f0949ed0c63a0bac6ea560fe02e35e70659e89a24ac27acccf4f9ede9bd2bfb8"
+    },
+    {
+      "tile": "LO-156031-04-2024_v01",
+      "chunk": 2,
+      "range_start": 395344,
+      "range_end_exclusive": 557422,
+      "sha256": "845de0941282e14c0587580e1c04fff0023f5ea14973d17745fb264c0f99752a"
+    },
+    {
+      "tile": "LO-156031-04-2024_v01",
+      "chunk": 4,
+      "range_start": 747504,
+      "range_end_exclusive": 912964,
+      "sha256": "c251ad039f90a9ecc9691591921d22263690e71e4e2482a091da2e99b22af5e8"
+    },
+    {
+      "tile": "LO-156031-04-2024_v01",
+      "chunk": 8,
+      "range_start": 1562558,
+      "range_end_exclusive": 1743545,
+      "sha256": "2149b82bafac48976b1a2f44a4e21a14880af849614f7f6032b6d5f2227886a5"
+    },
+    {
+      "tile": "LO-157029-04-2024_v01",
+      "chunk": 620,
+      "range_start": 107640281,
+      "range_end_exclusive": 107936300,
+      "sha256": "7189f85da2c49b4ed7b134aaa433dbb11b05d0217e246f7277959bd40e9541b5"
+    },
+    {
+      "tile": "LO-157030-04-2024_v01",
+      "chunk": 468,
+      "range_start": 105863630,
+      "range_end_exclusive": 106200959,
+      "sha256": "357e499d844567dcd19e8e49d6e43a1dca96ba5134730b8d9ffa61f5debdf2e5"
+    },
+    {
+      "tile": "LO-157031-04-2024_v01",
+      "chunk": 384,
+      "range_start": 96248139,
+      "range_end_exclusive": 96578291,
+      "sha256": "eaea13f5ee3c29b64a76cc8d12b35c076ba46191be568cf408ecffff30ed321a"
+    }
+  ],
+  "decoding": {
+    "method": "Official public Portugal3D viewer WASM point decoder; source SDK is not redistributed. Class2selected directly from decoded classification array, XYZ retained before any interpolation.",
+    "worker_url": "https://portugal3d.dgterritorio.gov.pt/assets/ChunkReaderWorker-BEPOD9iZ.js",
+    "worker_sha256": "77d8f5238c166e407af38c3de6b34bde4b778d1f7df54f1ec884cec26d94f072",
+    "wasm_url": "https://portugal3d.dgterritorio.gov.pt/assets/las_wasm_bg-DgGaQ7YS.wasm",
+    "wasm_sha256": "4de0b3576eafac1369dfc07bd75f11a084456d424774e25b1e34a8f1981bc884",
+    "tree_validation": "All decoded coordinates were checked against source quadtree node bounds; childorderSW,NW,SE,NE."
+  }
+}

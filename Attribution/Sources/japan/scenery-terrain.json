@@ -1,0 +1,15 @@
+{
+  "provider": "Geospatial Information Authority of Japan",
+  "dataset": "Retained processed GSI5m scenery, original8m export lattice",
+  "retained_window": "elevation/gsi-scenery-grid.json.gz",
+  "sha256": "1d58a05ae2aafe41396d69cb5b001ff32e3a5bfe0c0257dcae377e444d0466ac",
+  "grid_spacing_m": 7.996479034423828,
+  "runtime_grid_spacing_m": 7.996279625272571,
+  "horizontal_frame_correction": 0.9999750628807506,
+  "grid_uniform_scale": 0.99956,
+  "relative_datum_m": 0.0,
+  "road_join_distance_m": 20.0,
+  "source_manifest": "scenery-ground.json",
+  "use": "Retained scenery-only ground grid. Heights already use the registered relative datum; racing profiles remain unchanged.",
+  "terrain_sha256": "4d8db8b7504937f4695e4ab517de0e6fb841159f916dc9f59c00213bd851a61e"
+}

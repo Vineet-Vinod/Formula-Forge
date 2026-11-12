@@ -1,0 +1,468 @@
+[
+  {
+    "official_corner": "T3",
+    "source_way_id": 784076839,
+    "core_native_range_m": [
+      1013.7807162982854,
+      1036.8732295923062
+    ],
+    "circle_center_source_xy_m": [
+      -518.1022542013848,
+      801.2019319772899
+    ],
+    "radius_m": 18.10876411356446,
+    "raw_controls_xy_native_m": [
+      [
+        -535.9415097020035,
+        804.4352862228517,
+        1013.7807162982854
+      ],
+      [
+        -534.8139145849253,
+        807.9997831389973,
+        1017.526580476598
+      ],
+      [
+        -532.7073221579935,
+        811.9849349701268,
+        1022.0367473516088
+      ],
+      [
+        -529.656696608805,
+        815.2726852319885,
+        1026.5690989150737
+      ],
+      [
+        -525.9067872654439,
+        817.3759598092669,
+        1030.9055926056449
+      ],
+      [
+        -520.2425885393559,
+        819.2356973312473,
+        1036.8732295923062
+      ]
+    ],
+    "incoming_fit_m": [
+      45,
+      15
+    ],
+    "outgoing_fit_m": [
+      15,
+      45
+    ],
+    "blend_m": 35,
+    "maximum_displacement_m": 2,
+    "source_radial_rms_m": 0.08358897704097623,
+    "source_radial_max_m": 0.1502031284086911,
+    "source_status": "Retained mapped raceway center controls; uncertainty2m. No kerb survey claimed."
+  },
+  {
+    "official_corner": "T13",
+    "source_way_id": 987030973,
+    "core_native_range_m": [
+      4563.45609086767,
+      4587.040911588731
+    ],
+    "circle_center_source_xy_m": [
+      510.2790937729588,
+      -299.8697475690862
+    ],
+    "radius_m": 14.56322621745809,
+    "raw_controls_xy_native_m": [
+      [
+        521.9524951285214,
+        -291.1272317906452,
+        4563.45609086767
+      ],
+      [
+        518.6046739673685,
+        -287.96125005761246,
+        4568.06737048733
+      ],
+      [
+        514.9421751004528,
+        -286.04616320556187,
+        4572.033622029536
+      ],
+      [
+        510.1345990201764,
+        -285.38197123370696,
+        4576.910256790165
+      ],
+      [
+        506.34098443983487,
+        -285.7583466841626,
+        4580.529157561839
+      ],
+      [
+        503.334064130111,
+        -287.07566076233024,
+        4583.880626340921
+      ],
+      [
+        500.6418215236656,
+        -288.97967774805215,
+        4587.040911588731
+      ]
+    ],
+    "incoming_fit_m": [
+      45,
+      15
+    ],
+    "outgoing_fit_m": [
+      15,
+      45
+    ],
+    "blend_m": 35,
+    "maximum_displacement_m": 2,
+    "source_radial_rms_m": 0.047645438912147266,
+    "source_radial_max_m": 0.08738264547525176,
+    "source_status": "Retained mapped raceway center controls; uncertainty2m. No kerb survey claimed."
+  },
+  {
+    "official_corner": "T1",
+    "source_way_id": 987030977,
+    "core_native_range_m": [
+      273.4113825035718,
+      298.8270191037027
+    ],
+    "circle_center_source_xy_m": [
+      -182.20293517130574,
+      208.6773030020004
+    ],
+    "radius_m": 17.084248873949793,
+    "raw_controls_xy_native_m": [
+      [
+        -192.27848940792748,
+        194.29747091542322,
+        273.4113825035718
+      ],
+      [
+        -194.45501021502182,
+        197.09814706354257,
+        276.9594633511411
+      ],
+      [
+        -196.02839875128848,
+        199.30105043699248,
+        279.65752831713854
+      ],
+      [
+        -197.31333272249006,
+        201.3379058178719,
+        282.0531625971182
+      ],
+      [
+        -198.28358898544457,
+        203.23085293805173,
+        284.2017044750793
+      ],
+      [
+        -199.08776534737635,
+        205.53338510767313,
+        286.6194718443441
+      ],
+      [
+        -199.48111248268518,
+        207.0720965092681,
+        288.11845256330605
+      ],
+      [
+        -199.54229981346415,
+        208.74364630523408,
+        289.76184674677086
+      ],
+      [
+        -199.3237736285616,
+        210.26021797417172,
+        291.3544962424023
+      ],
+      [
+        -198.95664963643486,
+        211.94283763646635,
+        293.0358177453932
+      ],
+      [
+        -198.12625013132103,
+        214.3892780667874,
+        295.59068190591097
+      ],
+      [
+        -196.86753930330147,
+        217.3670720745924,
+        298.8270191037027
+      ]
+    ],
+    "incoming_fit_m": [
+      45,
+      15
+    ],
+    "outgoing_fit_m": [
+      5,
+      15
+    ],
+    "blend_m": 35,
+    "maximum_displacement_m": 2,
+    "source_radial_rms_m": 0.24150493939589462,
+    "source_radial_max_m": 0.4741213241426543,
+    "source_status": "Retained mapped raceway center controls; uncertainty2m. No kerb survey claimed.",
+    "tangent_registration_note": "Default exit window crossed the beginning ofT2. Use the short road segment immediately afterT1, before the mappedleft turn begins.",
+    "tangent_fit_residuals": [
+      {
+        "range_m": [
+          228.41138250357182,
+          258.4113825035718
+        ],
+        "maximum_line_residual_m": 0.018758933369025677
+      },
+      {
+        "range_m": [
+          303.8270191037027,
+          313.8270191037027
+        ],
+        "maximum_line_residual_m": 0.050250865884817975
+      }
+    ]
+  },
+  {
+    "official_corner": "T5",
+    "source_way_id": 784083210,
+    "core_native_range_m": [
+      1355,
+      1405
+    ],
+    "circle_center_source_xy_m": [
+      -356.0490327698417,
+      1047.2208961163967
+    ],
+    "radius_m": 45,
+    "raw_controls_xy_native_m": [
+      [
+        -400.847778,
+        1043.29028,
+        1355.58008
+      ],
+      [
+        -401.18634,
+        1051.01428,
+        1363.31152
+      ],
+      [
+        -400.742798,
+        1058.62305,
+        1371.04297
+      ],
+      [
+        -397.585999,
+        1065.62854,
+        1378.77441
+      ],
+      [
+        -393.002228,
+        1071.85229,
+        1386.50586
+      ],
+      [
+        -388.026611,
+        1077.7644,
+        1394.2373
+      ],
+      [
+        -382.502167,
+        1083.16748,
+        1401.96875
+      ]
+    ],
+    "incoming_fit_m": [
+      55,
+      20
+    ],
+    "outgoing_fit_m": [
+      15,
+      45
+    ],
+    "blend_m": 35,
+    "maximum_displacement_m": 15,
+    "evidence_kind": "event_junction_estimate",
+    "radius_uncertainty_m": 20,
+    "source_note": "FIA2026 schematic road-band reconstruction replacing a public-street-axis vertex. Radius is an estimate within the independently reviewed map bounds, not a surveyed arc. Dense raw controls below witness the old native street axis, not an event-kerb survey. Incoming/outgoing tangents constrain the fitted shape; T6 exits before the independent T7 left bend. Schematic registration uncertainty20\u201335m along course and several metres laterally; local absolute station and radius estimates require fresh reference/runtime review. Source way identifier records retained street topology only.",
+    "source_urls": [
+      "https://www.fia.com/system/files/decision-document/2026_melbourne_event_-_circuit_map_-_melbourne_2026_0.pdf"
+    ],
+    "source_way_candidates": [
+      {
+        "way_id": 784083210,
+        "distance_to_old_native_core_m": 0.11385917178796691
+      },
+      {
+        "way_id": 987030966,
+        "distance_to_old_native_core_m": 8.847170833167668
+      },
+      {
+        "way_id": 987030978,
+        "distance_to_old_native_core_m": 45.36548627166208
+      }
+    ]
+  },
+  {
+    "official_corner": "T6",
+    "source_way_id": 1013633269,
+    "core_native_range_m": [
+      1785,
+      1845
+    ],
+    "circle_center_source_xy_m": [
+      -40.81201646640929,
+      1231.1169939616614
+    ],
+    "radius_m": 35,
+    "raw_controls_xy_native_m": [
+      [
+        -49.2136803,
+        1267.55322,
+        1785.31958
+      ],
+      [
+        -40.8818588,
+        1272.44995,
+        1794.98389
+      ],
+      [
+        -32.50214,
+        1277.2616,
+        1804.64819
+      ],
+      [
+        -24.0408916,
+        1275.4231,
+        1814.3125
+      ],
+      [
+        -18.7138577,
+        1267.36731,
+        1823.97681
+      ],
+      [
+        -12.4733372,
+        1259.99524,
+        1833.64111
+      ],
+      [
+        -5.90647984,
+        1252.9054,
+        1843.30542
+      ]
+    ],
+    "incoming_fit_m": [
+      55,
+      20
+    ],
+    "outgoing_fit_m": [
+      15,
+      35
+    ],
+    "blend_m": 35,
+    "maximum_displacement_m": 15,
+    "evidence_kind": "event_junction_estimate",
+    "radius_uncertainty_m": 15,
+    "source_note": "FIA2026 schematic road-band reconstruction replacing a public-street-axis vertex. Radius is an estimate within the independently reviewed map bounds, not a surveyed arc. Dense raw controls below witness the old native street axis, not an event-kerb survey. Incoming/outgoing tangents constrain the fitted shape; T6 exits before the independent T7 left bend. Schematic registration uncertainty20\u201335m along course and several metres laterally; local absolute station and radius estimates require fresh reference/runtime review. Source way identifier records retained street topology only.",
+    "source_urls": [
+      "https://www.fia.com/system/files/decision-document/2026_melbourne_event_-_circuit_map_-_melbourne_2026_0.pdf"
+    ],
+    "source_way_candidates": [
+      {
+        "way_id": 1013633269,
+        "distance_to_old_native_core_m": 0.3045420830113293
+      },
+      {
+        "way_id": 1013633268,
+        "distance_to_old_native_core_m": 6.346572274955237
+      },
+      {
+        "way_id": 1050371045,
+        "distance_to_old_native_core_m": 18.710654504806104
+      }
+    ]
+  },
+  {
+    "official_corner": "T11",
+    "source_way_id": 987030985,
+    "core_native_range_m": [
+      4040,
+      4095
+    ],
+    "circle_center_source_xy_m": [
+      881.2025173525439,
+      -410.8125230230911
+    ],
+    "radius_m": 25,
+    "raw_controls_xy_native_m": [
+      [
+        903.47821,
+        -404.90741,
+        4040.32446
+      ],
+      [
+        904.916443,
+        -413.158905,
+        4048.7002
+      ],
+      [
+        906.386902,
+        -421.404266,
+        4057.07593
+      ],
+      [
+        905.477661,
+        -429.331543,
+        4065.45166
+      ],
+      [
+        898.01709,
+        -432.543274,
+        4073.82739
+      ],
+      [
+        889.863037,
+        -434.458344,
+        4082.20312
+      ],
+      [
+        881.70929,
+        -436.374481,
+        4090.57886
+      ]
+    ],
+    "incoming_fit_m": [
+      65,
+      20
+    ],
+    "outgoing_fit_m": [
+      15,
+      50
+    ],
+    "blend_m": 35,
+    "maximum_displacement_m": 15,
+    "evidence_kind": "event_junction_estimate",
+    "radius_uncertainty_m": 10,
+    "source_note": "FIA2026 schematic road-band reconstruction replacing a public-street-axis vertex. Radius is an estimate within the independently reviewed map bounds, not a surveyed arc. Dense raw controls below witness the old native street axis, not an event-kerb survey. Incoming/outgoing tangents constrain the fitted shape; T6 exits before the independent T7 left bend. Schematic registration uncertainty20\u201335m along course and several metres laterally; local absolute station and radius estimates require fresh reference/runtime review. Source way identifier records retained street topology only.",
+    "source_urls": [
+      "https://www.fia.com/system/files/decision-document/2026_melbourne_event_-_circuit_map_-_melbourne_2026_0.pdf"
+    ],
+    "source_way_candidates": [
+      {
+        "way_id": 987030985,
+        "distance_to_old_native_core_m": 0.28671711523851184
+      },
+      {
+        "way_id": 987030972,
+        "distance_to_old_native_core_m": 3.7106540703478017
+      },
+      {
+        "way_id": 1126808201,
+        "distance_to_old_native_core_m": 84.30486665969015
+      }
+    ]
+  }
+]

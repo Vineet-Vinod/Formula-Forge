@@ -1,0 +1,440 @@
+{
+  "method": "Known station literals only, through authored old-station correctedXY then exact F1\u00d7F2 native scale; closest finalnative sample. Source geometry dimensions/materials and WGS footprints remain unchanged.",
+  "anchors": [
+    {
+      "old_station_m": 80,
+      "new_station_m": 80.5358887,
+      "residual_m": 0.24831934775308334
+    },
+    {
+      "old_station_m": 120,
+      "new_station_m": 120.481689,
+      "residual_m": 0.0505731999695829
+    },
+    {
+      "old_station_m": 230,
+      "new_station_m": 230.654785,
+      "residual_m": 0.1699034896925761
+    },
+    {
+      "old_station_m": 240,
+      "new_station_m": 240.963379,
+      "residual_m": 0.10279777166071245
+    },
+    {
+      "old_station_m": 245,
+      "new_station_m": 246.117676,
+      "residual_m": 0.23915148534902533
+    },
+    {
+      "old_station_m": 255,
+      "new_station_m": 255.781982,
+      "residual_m": 0.13240805583517035
+    },
+    {
+      "old_station_m": 286,
+      "new_station_m": 287.352051,
+      "residual_m": 0.1932945162944382
+    },
+    {
+      "old_station_m": 300,
+      "new_station_m": 301.526367,
+      "residual_m": 0.16959824512423508
+    },
+    {
+      "old_station_m": 320,
+      "new_station_m": 321.499268,
+      "residual_m": 0.263954767822421
+    },
+    {
+      "old_station_m": 355,
+      "new_station_m": 356.935059,
+      "residual_m": 0.05213959463254672
+    },
+    {
+      "old_station_m": 360,
+      "new_station_m": 362.089355,
+      "residual_m": 0.1924357411877803
+    },
+    {
+      "old_station_m": 440,
+      "new_station_m": 441.980957,
+      "residual_m": 0.18069924725235437
+    },
+    {
+      "old_station_m": 650,
+      "new_station_m": 652.662842,
+      "residual_m": 0.24104077893535658
+    },
+    {
+      "old_station_m": 965,
+      "new_station_m": 969.007812,
+      "residual_m": 0.023140767788518538
+    },
+    {
+      "old_station_m": 980,
+      "new_station_m": 983.826416,
+      "residual_m": 0.2564947321540611
+    },
+    {
+      "old_station_m": 986,
+      "new_station_m": 990.269287,
+      "residual_m": 0.16482386088371725
+    },
+    {
+      "old_station_m": 996,
+      "new_station_m": 999.933594,
+      "residual_m": 0.2067336781570709
+    },
+    {
+      "old_station_m": 1016,
+      "new_station_m": 1020.55078,
+      "residual_m": 0.328624267134458
+    },
+    {
+      "old_station_m": 1018,
+      "new_station_m": 1022.48364,
+      "residual_m": 0.31536610644940566
+    },
+    {
+      "old_station_m": 1027,
+      "new_station_m": 1030.85938,
+      "residual_m": 0.14234364226646923
+    },
+    {
+      "old_station_m": 1030,
+      "new_station_m": 1033.43652,
+      "residual_m": 0.1766344300590515
+    },
+    {
+      "old_station_m": 1038,
+      "new_station_m": 1041.16797,
+      "residual_m": 0.17883248296552537
+    },
+    {
+      "old_station_m": 1039,
+      "new_station_m": 1042.45654,
+      "residual_m": 0.10656797066152118
+    },
+    {
+      "old_station_m": 1045,
+      "new_station_m": 1048.25513,
+      "residual_m": 0.10856771681981708
+    },
+    {
+      "old_station_m": 1050,
+      "new_station_m": 1053.40942,
+      "residual_m": 0.04731149423848805
+    },
+    {
+      "old_station_m": 1060,
+      "new_station_m": 1063.07373,
+      "residual_m": 0.2917842056659454
+    },
+    {
+      "old_station_m": 1064,
+      "new_station_m": 1067.58374,
+      "residual_m": 0.20459714390672878
+    },
+    {
+      "old_station_m": 1065,
+      "new_station_m": 1068.22803,
+      "residual_m": 0.1608140305971095
+    },
+    {
+      "old_station_m": 1070,
+      "new_station_m": 1073.38232,
+      "residual_m": 0.01343225904203331
+    },
+    {
+      "old_station_m": 1110,
+      "new_station_m": 1113.32812,
+      "residual_m": 0.2059509654009212
+    },
+    {
+      "old_station_m": 1120,
+      "new_station_m": 1123.63672,
+      "residual_m": 0.06681379435227403
+    },
+    {
+      "old_station_m": 1125,
+      "new_station_m": 1128.79102,
+      "residual_m": 0.20318844838064112
+    },
+    {
+      "old_station_m": 1130,
+      "new_station_m": 1133.30103,
+      "residual_m": 0.30613142623066286
+    },
+    {
+      "old_station_m": 1140,
+      "new_station_m": 1143.60962,
+      "residual_m": 0.030064599240995166
+    },
+    {
+      "old_station_m": 1160,
+      "new_station_m": 1163.58252,
+      "residual_m": 0.10758962524784063
+    },
+    {
+      "old_station_m": 1190,
+      "new_station_m": 1193.86401,
+      "residual_m": 0.20083178498189197
+    },
+    {
+      "old_station_m": 1340,
+      "new_station_m": 1343.98291,
+      "residual_m": 0.218119103009845
+    },
+    {
+      "old_station_m": 1415,
+      "new_station_m": 1419.3645,
+      "residual_m": 0.2635285309988386
+    },
+    {
+      "old_station_m": 1700,
+      "new_station_m": 1704.78369,
+      "residual_m": 0.2162654466222786
+    },
+    {
+      "old_station_m": 1720,
+      "new_station_m": 1724.75659,
+      "residual_m": 0.31455690411583653
+    },
+    {
+      "old_station_m": 1740,
+      "new_station_m": 1745.37378,
+      "residual_m": 0.23171475651128154
+    },
+    {
+      "old_station_m": 1770,
+      "new_station_m": 1775.01099,
+      "residual_m": 0.2337548848042439
+    },
+    {
+      "old_station_m": 1780,
+      "new_station_m": 1785.31958,
+      "residual_m": 0.19581827677913308
+    },
+    {
+      "old_station_m": 1800,
+      "new_station_m": 1801.42676,
+      "residual_m": 0.061844738487325995
+    },
+    {
+      "old_station_m": 1855,
+      "new_station_m": 1847.17114,
+      "residual_m": 0.022113222638798245
+    },
+    {
+      "old_station_m": 1895,
+      "new_station_m": 1887.11694,
+      "residual_m": 0.12203751617785709
+    },
+    {
+      "old_station_m": 1900,
+      "new_station_m": 1892.27124,
+      "residual_m": 0.01792369414164212
+    },
+    {
+      "old_station_m": 1990,
+      "new_station_m": 1982.47144,
+      "residual_m": 0.1014484750259484
+    },
+    {
+      "old_station_m": 2100,
+      "new_station_m": 2092.64453,
+      "residual_m": 0.31384008219163834
+    },
+    {
+      "old_station_m": 2250,
+      "new_station_m": 2243.40771,
+      "residual_m": 0.07767689390740871
+    },
+    {
+      "old_station_m": 2440,
+      "new_station_m": 2434.1167,
+      "residual_m": 0.04546239475463319
+    },
+    {
+      "old_station_m": 2860,
+      "new_station_m": 2855.48047,
+      "residual_m": 0.18000070705825896
+    },
+    {
+      "old_station_m": 2940,
+      "new_station_m": 2936.01636,
+      "residual_m": 0.07128964740946245
+    },
+    {
+      "old_station_m": 3180,
+      "new_station_m": 3176.97974,
+      "residual_m": 0.17846941863831386
+    },
+    {
+      "old_station_m": 3190,
+      "new_station_m": 3186.64404,
+      "residual_m": 0.19303876891054417
+    },
+    {
+      "old_station_m": 3234,
+      "new_station_m": 3231.09985,
+      "residual_m": 0.13212647006514486
+    },
+    {
+      "old_station_m": 3290,
+      "new_station_m": 3287.15283,
+      "residual_m": 0.004568063772544657
+    },
+    {
+      "old_station_m": 3320,
+      "new_station_m": 3317.43433,
+      "residual_m": 0.16930628210916313
+    },
+    {
+      "old_station_m": 3405,
+      "new_station_m": 3402.48022,
+      "residual_m": 0.008604300942419893
+    },
+    {
+      "old_station_m": 3860,
+      "new_station_m": 3859.27979,
+      "residual_m": 0.1669297587334095
+    },
+    {
+      "old_station_m": 3880,
+      "new_station_m": 3879.25269,
+      "residual_m": 0.06807346818666753
+    },
+    {
+      "old_station_m": 3900,
+      "new_station_m": 3899.22559,
+      "residual_m": 0.030675837125345325
+    },
+    {
+      "old_station_m": 3970,
+      "new_station_m": 3969.45288,
+      "residual_m": 0.05419483409724505
+    },
+    {
+      "old_station_m": 4015,
+      "new_station_m": 4014.55298,
+      "residual_m": 0.11531240392913718
+    },
+    {
+      "old_station_m": 4050,
+      "new_station_m": 4049.98877,
+      "residual_m": 0.24288078130683782
+    },
+    {
+      "old_station_m": 4065,
+      "new_station_m": 4062.23022,
+      "residual_m": 0.1765995067344976
+    },
+    {
+      "old_station_m": 4100,
+      "new_station_m": 4095.08887,
+      "residual_m": 0.286130971964548
+    },
+    {
+      "old_station_m": 4110,
+      "new_station_m": 4104.75293,
+      "residual_m": 0.08558430182214961
+    },
+    {
+      "old_station_m": 4160,
+      "new_station_m": 4155.00781,
+      "residual_m": 0.01000475365294926
+    },
+    {
+      "old_station_m": 4275,
+      "new_station_m": 4270.33496,
+      "residual_m": 0.09475594520333783
+    },
+    {
+      "old_station_m": 4360,
+      "new_station_m": 4355.38086,
+      "residual_m": 0.28399749096390203
+    },
+    {
+      "old_station_m": 4535,
+      "new_station_m": 4531.27148,
+      "residual_m": 0.0098741465043223
+    },
+    {
+      "old_station_m": 4578,
+      "new_station_m": 4575.08301,
+      "residual_m": 0.26597890091040705
+    },
+    {
+      "old_station_m": 4615,
+      "new_station_m": 4612.45117,
+      "residual_m": 0.2813303396059886
+    },
+    {
+      "old_station_m": 4620,
+      "new_station_m": 4617.60547,
+      "residual_m": 0.14459969326221123
+    },
+    {
+      "old_station_m": 4650,
+      "new_station_m": 4647.88721,
+      "residual_m": 0.02936944301059532
+    },
+    {
+      "old_station_m": 4690,
+      "new_station_m": 4687.83301,
+      "residual_m": 0.18904741232595462
+    },
+    {
+      "old_station_m": 4760,
+      "new_station_m": 4758.06055,
+      "residual_m": 0.11419497680475217
+    },
+    {
+      "old_station_m": 4780,
+      "new_station_m": 4778.0332,
+      "residual_m": 0.18205653952388512
+    },
+    {
+      "old_station_m": 4800,
+      "new_station_m": 4798.00586,
+      "residual_m": 0.2807116395959595
+    },
+    {
+      "old_station_m": 4830,
+      "new_station_m": 4828.2876,
+      "residual_m": 0.10669255915807589
+    },
+    {
+      "old_station_m": 4900,
+      "new_station_m": 4898.51465,
+      "residual_m": 0.13085689131081932
+    },
+    {
+      "old_station_m": 4930,
+      "new_station_m": 4928.79639,
+      "residual_m": 0.04319339563900029
+    },
+    {
+      "old_station_m": 4940,
+      "new_station_m": 4939.10498,
+      "residual_m": 0.31570742393645007
+    },
+    {
+      "old_station_m": 5120,
+      "new_station_m": 5119.50537,
+      "residual_m": 0.0705886697783231
+    },
+    {
+      "old_station_m": 5230,
+      "new_station_m": 5229.67871,
+      "residual_m": 0.15079389178024621
+    },
+    {
+      "old_station_m": 5270,
+      "new_station_m": 5270.26855,
+      "residual_m": 0.295335359803784
+    }
+  ]
+}

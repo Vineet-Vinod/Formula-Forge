@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "circuit": "singapore",
+  "date": "2026-11-12",
+  "status": "Source frozen with emitted geometry/ground/clearance proof. Fresh packaged appearance and Luna High review remain pending.",
+  "trigger": "The 9d8e477 Flyer approach showed empty gray hills beside a flat street. Exact cooked-mesh pixel rays identified coarse DSM Runoff terrain at 8\u20139 m immediately beside the road. The Ritz-Carlton tower was also missing because the earlier extract omitted building parts.",
+  "source_data": {
+    "file": "raffles-context.osm.json.gz",
+    "sha256": "f17f3930d291bcae39fd631ecb45b2b66be0fe47ade84e5d6c569bf33e361fec",
+    "provider": "OpenStreetMap contributors",
+    "licence": "ODbL 1.0",
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=103.8590,1.2890,103.8612,1.2910",
+    "retained_feature_ids": [
+      46594815,
+      149965106,
+      326926564,
+      395120471,
+      542186310,
+      591301835,
+      591301844,
+      591301847,
+      591619207,
+      620719456,
+      620797981,
+      741167072,
+      784662624,
+      1163299805,
+      1221351351
+    ],
+    "coordinate_frame": "Retained WGS84 geometry is projected with the final composed scene scale in provenance.json. No video pixels are shipped."
+  },
+  "primary_sources": [
+    {
+      "url": "https://www.pub.gov.sg/Public/Places-of-Interest/Marina-Barrage/Notices/2024/07/Construction-of-NS-Square-at-Marina-Bay",
+      "supports": "2023\u20132027 demolition, cofferdam and redevelopment works; obsolete Float grandstand DSM must not become a terrain hill."
+    },
+    {
+      "url": "https://www.dsta.gov.sg/whats-on/spotlight/new-beginning-for-ns-square",
+      "supports": "March 2024 groundbreaking and removal of the former floating platform."
+    },
+    {
+      "url": "https://www.pontiacland.com/hospitality/the-ritz-carlton-millenia-singapore/",
+      "supports": "Slender hotel tower and owner-described 37 m stilt-like supports."
+    },
+    {
+      "url": "https://www.pontiacland.com/wp-content/uploads/2015/11/The-Ritz-Carlton-Millenia-Singapore-Driveway-1199x1600.jpg",
+      "supports": "Pale granite, glazed barrel vault, aluminium lattice and curved arrival architecture.",
+      "reference_sha256": "a878edf407bb250c585000eb23b7d8f7163790225f70bfbca09efbc0561cdd4b"
+    },
+    {
+      "url": "https://www.marriott.com/en-us/dining/restaurant-bar/sinrz-the-ritz-carlton-millenia-singapore/7255454-the-ritz-lounge.mi",
+      "supports": "Level 3 lobby/lounge at 7 Raffles Avenue; the actual rising driveway is retained rather than flattening the whole property."
+    },
+    {
+      "url": "https://www1.bca.gov.sg/docs/default-source/docs-corp-buildsg/bca-awards/cea/archive/cea1997.pdf?sfvrsn=f2da5c14_2",
+      "supports": "Indexed primary BCA award description: 32-storey hotel, three-storey podium, first guest rooms about 30 m above street and glass barrel-vault entrance.",
+      "retrieval_limitation": "Search index retains the primary text; the original PDF currently returns 404/403. Do not claim a downloaded construction drawing."
+    },
+    {
+      "url": "https://www.singaporeflyer.com/en/fun-facts",
+      "supports": "150 m wheel diameter, 165 m overall height, 28 capsules and 4 by 7 m capsule size."
+    },
+    {
+      "url": "https://www.singaporeflyer.com.sg/retail.html",
+      "supports": "Operator design-era description of the 16 m, three-storey terminal and central rainforest atrium. The exact present internal layout is not surveyed."
+    }
+  ],
+  "geometry_changes": {
+    "NS_Square": "Exact construction parcel ground reconstruction with reservoir water and racing corridors excluded. Pale street-facing hoarding replaces a generic future building. Height and support pitch are unmeasured scene estimates.",
+    "Ritz_Carlton": "Actual 19-point tower part 326926564 at 140 m, three mapped support parts and the mapped podium. The 37 m support clearance follows the owner; OSM min_height/BCA first-floor evidence around 30 m is retained as a 30\u201337 m source discrepancy. Exact facade/window spacing, vault section and support detailing are reconstructions.",
+    "Ritz_driveway": "Exact connected OSM paths 620797981/784662624/741167072 rise from the race avenue toward the Level 3 lobby. An estimated 8\u00b12 m rise is modeled above the bounded front garden; neither the raised access nor the entire large commercial parcel is flattened.",
+    "ground_frontage": "The reconstructed low garden is 5,422 m\u00b2, only 1.66% of commercial parcel 1163299805. Actual street parcel edge and mapped podium front bound it; lateral ends extend about 10 m beyond the podium and remain estimates.",
+    "Flyer": "Terminal-roof DSM no longer adds about 11 m to the wheel foundation. A bounded terminal/plaza ground estimate is tied to the adjacent road. The hub is derived so the 150 m rim and 4 m capsule envelope fit the 165 m operator overall height. Rim/spokes use private dark structural material; actual white legs and capsule caps remain. The terminal has three levels and an estimated central roof opening clearing the lower capsule path.",
+    "vegetation": "Grounded street-side broadleaf canopies match the direct 1250.81 s context, avoiding mapped buildings, the rising driveway, water and all racing arms. Individual placements and heights remain visual estimates."
+  },
+  "reference": {
+    "file": "Saved/Refs/singapore.mp4",
+    "direct_seconds": [
+      1250.81
+    ],
+    "registration": "Wheel identity, road direction, near-wall canopy, Aramco bands and urban construction context. Camera registration is approximate, \u00b1100 m; no elapsed-time interpolation is used."
+  },
+  "physical_contract": "New ground and buildings are scenery beyond the protected race corridor. No native road XYZ, width, banking or driveable escape extent changes. Earlier event-corner station remapping remains separately documented.",
+  "remaining_limits": [
+    "No structural survey establishes the Ritz 30\u201337 m lower clearance conflict or exact podium/driveway heights.",
+    "The terminal atrium outline, facade rhythms, support sizes, garden lateral ends and construction hoarding height are estimated.",
+    "Actual current cockpit views and Luna High review are still required after generation/import."
+  ],
+  "proof": {
+    "terminal_roof_low_capsule_path_overlap_m2": 0.0,
+    "module_sha256": "98a2b077f0e78bb944dd119d1812365e7f0f2f03056f13f45bc644344c8cf4dc",
+    "context_module_sha256": "0e594a20512e7a788164c3073f249ad2699fc2b5dfad6f0f1763a0eb399fbf19",
+    "road_sha256": "a0a79fcc27f90446a46b6d2b7d76e9757c529e0f6958bf0c42b8ad9f612859c9",
+    "scene_geo_uniform_scale": 1.0052314376858864,
+    "ground_patches": [
+      {
+        "area_m2": 58928.048411527794,
+        "height_m": 1.721459829271255,
+        "material": "Runoff",
+        "water_overlap_m2": 0.0,
+        "racing_road_overlap_m2": 0.0
+      },
+      {
+        "area_m2": 3407.2840226093194,
+        "height_m": 1.6737766436842108,
+        "material": "Runoff",
+        "water_overlap_m2": 0.0,
+        "racing_road_overlap_m2": 0.0
+      },
+      {
+        "area_m2": 5421.520596492477,
+        "height_m": 1.6737766436842108,
+        "material": "Grass",
+        "water_overlap_m2": 0.0,
+        "racing_road_overlap_m2": 0.0
+      },
+      {
+        "area_m2": 9353.450291637406,
+        "height_m": 2.3691486848382066,
+        "material": "Runoff",
+        "water_overlap_m2": 0.0,
+        "racing_road_overlap_m2": 0.0
+      }
+    ],
+    "old_gray_ridge_witnesses": [
+      {
+        "old_source_point_xy_m": [
+          -472.4581249927532,
+          -174.94965223486554
+        ],
+        "active_patches": [
+          {
+            "height_m": 1.6737766436842108,
+            "material": "Grass"
+          }
+        ],
+        "current_ground_m": 1.6432035043942779
+      },
+      {
+        "old_source_point_xy_m": [
+          -462.8017768406916,
+          -222.19028280460788
+        ],
+        "active_patches": [
+          {
+            "height_m": 1.721459829271255,
+            "material": "Runoff"
+          }
+        ],
+        "current_ground_m": 1.5844301096812101
+      }
+    ],
+    "road_structural_overlap_m2_sum": 0.0,
+    "frontage_tree_roots": 72,
+    "roots_in_water": 0,
+    "maximum_tree_ground_error_m": 0.0,
+    "flyer_rim_max_world_z_m": 165.65402083841266,
+    "flyer_capsule_max_world_z_m": 167.36914868483817,
+    "flyer_capsule_envelope_height_above_plaza_m": 164.99999999999997,
+    "finite_vertices": true,
+    "production_mesh_written": false,
+    "physical_corridor_changed": false,
+    "runtime_approval": false
+  }
+}

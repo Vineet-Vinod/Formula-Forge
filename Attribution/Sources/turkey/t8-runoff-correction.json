@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "status": "Source corrected; fresh packaged moving views required.",
+  "evidence": [
+    {
+      "time_s": 281,
+      "path": "build/reviews/turkey/reference/detail-0281.jpg",
+      "sha256": "301161f37391c2edd2f2c6cf2455ccb92d9ff65ab1c9e08326468269c1eaf468"
+    },
+    {
+      "time_s": 285,
+      "path": "build/reviews/turkey/reference/detail-0285.jpg",
+      "sha256": "414cb88ac2c1deeab091bac067146a5663fea76eb801e285cea516918eced566"
+    }
+  ],
+  "registration": "Continuous lap3/8 sequence, HUD49.880 to53.880seconds. Both views show the inside-left T8 kerb/grass and the outside-right green paved apron followed by pale gravel. Corner identity follows the multi-apex left sequence, not a fraction of total video duration. Exact camera stations and apron dimensions remain unmeasured.",
+  "correction": {
+    "inside_left": {
+      "removed_green_range_m": [
+        2310,
+        2860
+      ],
+      "removed_green_width_m": 2.6,
+      "removed_white_stripe_offsets_m": [
+        2.35,
+        2.55
+      ],
+      "retained": "Original inside red-white kerbs. Grass now follows the native ground/verge again."
+    },
+    "outside_right": {
+      "green_range_m": [
+        2310,
+        2860
+      ],
+      "green_maximum_width_m": 6,
+      "green_end_tapers_m": 25,
+      "outer_gravel_range_m": [
+        2260,
+        2910
+      ],
+      "outer_gravel_extent_from_asphalt_m": 18,
+      "geometry": "Split the original right runoff cells into an inner green paved apron and remaining outer gravel. Subtract paving before rendering gravel; no coplanar overlap, no raised paint tile.",
+      "uncertainty": "The handedness and material order are directly observed. Six-metre apron width, station endpoints and25m end tapers are bounded reconstruction estimates. Existing18m outer envelope remains unchanged."
+    }
+  },
+  "native_handoff": "Root should remove the old inside-left2.6m green source zone and export/check the new source ranges. Outside protection footprint remains the original18m union. No native writes by this author. Road centreline, racing width, elevation, banking and handling unchanged."
+}

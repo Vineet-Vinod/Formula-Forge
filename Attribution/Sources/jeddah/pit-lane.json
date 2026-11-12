@@ -1,9 +1,19 @@
 {
-  "start_m": 5830,
-  "end_m": 210,
-  "side": 1,
+  "start_m": 6009,
+  "end_m": 115,
+  "side": -1,
   "outer_offset_m": 13.0,
   "shoulder_m": 0.1,
   "transition_m": 25.0,
-  "source_note": "Authored Corniche garage frontage scene.pit_building(5830,210,+1) lies 13 m beyond road edge. Reference235/239/243/303s places the multi-level garage balconies on driver right and main stand left. Interval crosses native zero; width is the actual authored garage-front offset, not a surveyed pit-lane measurement."
+  "source_note": "Direct forward frames 235/239/243 s place the four-storey pit and club building on driver LEFT, opposite the actual mapped 271 m RIGHT main stand 1154622779. F1/Tilke describes a 280 m, four-storey compound; the FIA 2025 pit plan shows 45 numbered bays and a central passage. The reconstructed 280 m garage frontage spans native 6009→115 m across zero, with ±20 m endpoint uncertainty and its front 13 m beyond the road edge. Depth, height, exact garage-front offset and roof articulation are visual estimates, not surveyed dimensions. Paving remains outside the closed pit wall. See pit-facilities-review.json.",
+  "former_erroneous_registration": {
+    "start_m": 5830,
+    "end_m": 210,
+    "side": 1,
+    "outer_offset_m": 13.0,
+    "shoulder_m": 0.1,
+    "transition_m": 25.0,
+    "source_note": "Authored Corniche garage frontage scene.pit_building(5830,210,+1) lies 13 m beyond road edge. Reference235/239/243/303s places the multi-level garage balconies on driver right and main stand left. Interval crosses native zero; width is the actual authored garage-front offset, not a surveyed pit-lane measurement."
+  },
+  "former_registration_status": "Rejected: the old source reversed driver sides and stretched a generic compound to 554 m. Its claim that 235/239/243 s showed right-side garages was false. Restore the former RIGHT pit-side shoulder before applying this LEFT profile."
 }

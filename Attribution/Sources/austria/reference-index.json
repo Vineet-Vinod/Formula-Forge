@@ -183,12 +183,39 @@
     {
       "url": "https://www.formula1.com/en/latest/article/highs-and-lows-which-f1-track-has-the-most-elevation-changes-.7I9JEcBw3R2AqXbnJ6hyvc.7I9JEcBw3R2AqXbnJ6hyvc",
       "use": "Official2016longitudinalprofile independentlydigitized into circuit elevationcontrols; chartapproximation, not as-built survey."
+    },
+    {
+      "title": "ALS H\u00f6hen aktuell DGM UTM33N, official classified-ground mosaic",
+      "url": "https://www.landesentwicklung.steiermark.at/cms/ziel/143660187/DE/",
+      "supports": "Official classified-ground lidar heights, CC BY4.0. Bounded unstyled F32 raster retained; no display shading or video pixels interpreted as metric height."
     }
   ],
   "uncertainties": [
     "Exact filming lap/year is not established unless visible title/HUD identifies it.",
     "Overview observations establish visual vocabulary; every individual asset position requires footprint/map registration.",
-    "No high-resolution raster or orthophoto added by this reference review."
+    "Official classified-ground DGM now supplies the road and full retained scenery grid. No independent orthophoto-to-centreline registration or as-built crossfall survey is claimed."
   ],
-  "racing_elevation_correction": "elevation-corrections.json"
+  "racing_elevation_correction": "elevation-corrections.json",
+  "width_review": {
+    "recipe": "environment-recipe.json/width_profile",
+    "published_range_m": [
+      12,
+      13
+    ],
+    "source": "https://api.fia.com/sites/default/files/spg2024_0060_f1_mediakit_2024_eng_a4_300dpi_240625_view_tisc_0.pdf",
+    "limitations": "Published extrema are factual. Local corner widths and transition stations are bounded video/map reconstruction, not a metric edge survey."
+  },
+  "scenery_ground_correction": "scenery-ground.json",
+  "woodland_fidelity_correction": {
+    "source": "vegetation/woodland-provenance.json",
+    "model": "tools/venues/woodland.py",
+    "reference": {
+      "path": "build/reviews/austria/reference/overview-11.jpg",
+      "time_s": 786.33,
+      "sha256": "42da6729549ff33988ef7eedea7f93a23daa8b901878b785cf67c12dc542f991",
+      "observation": "Continuous densely wooded banks/ridges with mixed canopy edges and real open grass/spectator clearings. Prior sparse parallel rows leave artificial bare bands.",
+      "registration": "Middle-sector landscape context only. Exact corner and pose are not registered; do not infer tree coordinates or road dimensions from this still."
+    },
+    "status": "Source-backed woodland polygons replace parallel station rows. Native road, protection and all measured ground heights remain unchanged. Fresh packaged visual review required; source geometry is not visual acceptance."
+  }
 }

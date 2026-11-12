@@ -1,0 +1,339 @@
+{
+ "currentVersion": 11.2,
+ "serviceDescription": "Digitales Geländemodell aus allen Airborne Laserscanning-Befliegungen inklusive verschiedener Raster Functions wie Hangneigung, Exposition, etc.. \nWCS-Service ist auf 10.000x10.000 beschränkt!",
+ "name": "OGD_Hoehen/ALS_Hoehen_aktuell_DGM_UTM33N_32633",
+ "description": "Digitales Geländemodell aus allen Airborne Laserscanning-Befliegungen inklusive verschiedener Raster Functions wie Hangneigung, Exposition, etc.. \nWCS-Service ist auf 10.000x10.000 beschränkt!",
+ "extent": {
+  "xmin": 386706.84839999955,
+  "ymin": 5160999.5,
+  "xmax": 589513.8483999996,
+  "ymax": 5298053.5,
+  "spatialReference": {
+   "wkid": 32633,
+   "latestWkid": 32633
+  }
+ },
+ "initialExtent": {
+  "xmin": 386706.84839999955,
+  "ymin": 5160999.5,
+  "xmax": 589513.8483999996,
+  "ymax": 5298053.5,
+  "spatialReference": {
+   "wkid": 32633,
+   "latestWkid": 32633
+  }
+ },
+ "fullExtent": {
+  "xmin": 386706.84839999955,
+  "ymin": 5160999.5,
+  "xmax": 589513.8483999996,
+  "ymax": 5298053.5,
+  "spatialReference": {
+   "wkid": 32633,
+   "latestWkid": 32633
+  }
+ },
+ "sortableFields": "MinPS,MaxPS,LowPS,HighPS,CenterX,CenterY,ZOrder,Shape_Length,Shape_Area",
+ "bandCount": 1,
+ "pixelType": "F32",
+ "minValues": [
+  197.0092010498047
+ ],
+ "maxValues": [
+  2890.2255859375
+ ],
+ "meanValues": [
+  973.3329198089924
+ ],
+ "stdvValues": [
+  501.4993930850019
+ ],
+ "hasMultidimensions": false,
+ "pixelSizeX": 0.5,
+ "pixelSizeY": 0.5,
+ "meanPixelSize": 0.5,
+ "datasetFormat": "AMD",
+ "uncompressedSize": 444728169248,
+ "blockWidth": 2048,
+ "blockHeight": 256,
+ "compressionType": "None",
+ "bandNames": [
+  "Band_1"
+ ],
+ "allowCopy": true,
+ "allowAnalysis": true,
+ "itemAccess": false,
+ "inspectionCapabilities": "",
+ "minPixelSize": 0,
+ "maxPixelSize": 0,
+ "copyrightText": "@ Land Steiermark // GIS Steiermark",
+ "serviceDataType": "esriImageServiceDataTypeGeneric",
+ "serviceSourceType": "esriImageServiceSourceTypeMosaicDataset",
+ "objectIdField": "OBJECTID",
+ "fields": [
+  {
+   "name": "OBJECTID",
+   "type": "esriFieldTypeOID",
+   "alias": "OBJECTID",
+   "domain": null
+  },
+  {
+   "name": "Shape",
+   "type": "esriFieldTypeGeometry",
+   "alias": "Shape",
+   "domain": null
+  },
+  {
+   "name": "Name",
+   "type": "esriFieldTypeString",
+   "alias": "Name",
+   "domain": null,
+   "length": 200
+  },
+  {
+   "name": "MinPS",
+   "type": "esriFieldTypeDouble",
+   "alias": "MinPS",
+   "domain": null
+  },
+  {
+   "name": "MaxPS",
+   "type": "esriFieldTypeDouble",
+   "alias": "MaxPS",
+   "domain": null
+  },
+  {
+   "name": "LowPS",
+   "type": "esriFieldTypeDouble",
+   "alias": "LowPS",
+   "domain": null
+  },
+  {
+   "name": "HighPS",
+   "type": "esriFieldTypeDouble",
+   "alias": "HighPS",
+   "domain": null
+  },
+  {
+   "name": "Category",
+   "type": "esriFieldTypeInteger",
+   "alias": "Category",
+   "domain": {
+    "type": "codedValue",
+    "name": "MosaicCatalogItemCategoryDomain",
+    "description": "Catalog item categories.",
+    "codedValues": [
+     {
+      "name": "Unknown",
+      "code": 0
+     },
+     {
+      "name": "Primary",
+      "code": 1
+     },
+     {
+      "name": "Overview",
+      "code": 2
+     },
+     {
+      "name": "Unprocessed Overview",
+      "code": 3
+     },
+     {
+      "name": "Partial Overview",
+      "code": 4
+     },
+     {
+      "name": "Inactive",
+      "code": 5
+     },
+     {
+      "name": "Uploaded",
+      "code": 253
+     },
+     {
+      "name": "Incomplete",
+      "code": 254
+     },
+     {
+      "name": "Custom",
+      "code": 255
+     }
+    ],
+    "mergePolicy": "esriMPTDefaultValue",
+    "splitPolicy": "esriSPTDefaultValue"
+   }
+  },
+  {
+   "name": "Tag",
+   "type": "esriFieldTypeString",
+   "alias": "Tag",
+   "domain": null,
+   "length": 100
+  },
+  {
+   "name": "GroupName",
+   "type": "esriFieldTypeString",
+   "alias": "GroupName",
+   "domain": null,
+   "length": 100
+  },
+  {
+   "name": "ProductName",
+   "type": "esriFieldTypeString",
+   "alias": "ProductName",
+   "domain": null,
+   "length": 100
+  },
+  {
+   "name": "CenterX",
+   "type": "esriFieldTypeDouble",
+   "alias": "CenterX",
+   "domain": null
+  },
+  {
+   "name": "CenterY",
+   "type": "esriFieldTypeDouble",
+   "alias": "CenterY",
+   "domain": null
+  },
+  {
+   "name": "ZOrder",
+   "type": "esriFieldTypeInteger",
+   "alias": "ZOrder",
+   "domain": null
+  },
+  {
+   "name": "Shape_Length",
+   "type": "esriFieldTypeDouble",
+   "alias": "Shape_Length",
+   "domain": null
+  },
+  {
+   "name": "Shape_Area",
+   "type": "esriFieldTypeDouble",
+   "alias": "Shape_Area",
+   "domain": null
+  }
+ ],
+ "capabilities": "Catalog,Mensuration,Pixels,Download,Image,Metadata",
+ "defaultMosaicMethod": "Northwest",
+ "allowedMosaicMethods": "NorthWest,Center,LockRaster,ByAttribute,Nadir,Viewpoint,Seamline,None",
+ "sortField": "",
+ "sortValue": null,
+ "sortAscending": true,
+ "mosaicOperator": "First",
+ "maxDownloadSizeLimit": 2048,
+ "defaultCompressionQuality": 75,
+ "defaultResamplingMethod": "Bilinear",
+ "maxImageHeight": 4100,
+ "maxImageWidth": 15000,
+ "maxRecordCount": 1000,
+ "maxDownloadImageCount": 20,
+ "maxMosaicImageCount": 20,
+ "allowRasterFunction": true,
+ "rasterFunctionInfos": [
+  {
+   "name": "None",
+   "description": "Make a Raster or Raster Dataset into a Function Raster Dataset.",
+   "help": ""
+  },
+  {
+   "name": "Exposition",
+   "description": "Shows which direction a pixel is facing, where 0 is due north and angles increase clockwise to 360.",
+   "help": ""
+  },
+  {
+   "name": "Exposition_farbig",
+   "description": "Exposition_farbig",
+   "help": ""
+  },
+  {
+   "name": "Exposition_Hangneigung_kombiniert",
+   "description": "Creates a raster that simultaneously displays the aspect (direction) and slope(steepness) of a continuous surface, as represented in a digital elevation model.",
+   "help": ""
+  },
+  {
+   "name": "Hangneigung",
+   "description": "Calculates the rate of change from one pixel value to its neighbors.",
+   "help": ""
+  },
+  {
+   "name": "Hangneigung_Grad_farbig",
+   "description": "Hangneigung_Grad_farbig",
+   "help": ""
+  },
+  {
+   "name": "Hangneigung_Prozent_farbig",
+   "description": "Hangneigung_Prozent_farbig",
+   "help": ""
+  },
+  {
+   "name": "Hangneigung_Prozent_farbig_Bodenschaetzung",
+   "description": "Hangneigung_Prozent_farbig\nFür die Bodenschäzung gibt es Klassen von 5% bis 30%",
+   "help": ""
+  },
+  {
+   "name": "Hoehenschichtenlinien5",
+   "description": "Hoehenschichtenlinien5",
+   "help": ""
+  },
+  {
+   "name": "Hoehenschichtenlinien10",
+   "description": "Hoehenschichtenlinien10",
+   "help": ""
+  },
+  {
+   "name": "Hoehenschichtenlinien100",
+   "description": "Hoehenschichtenlinien100",
+   "help": ""
+  },
+  {
+   "name": "Reliefdarstellung",
+   "description": "Creates a 3D representation of the surface, with the sun's relative position taken into account for shading the image.",
+   "help": ""
+  },
+  {
+   "name": "Reliefdarstellung_farbig",
+   "description": "Creates a multiband, color coded, 3D representation of the surface, with the sun's relative position taken into account for shading the image.",
+   "help": ""
+  },
+  {
+   "name": "Reliefdarstellung_multidirektional",
+   "description": "Reliefdarstellung_multidirektional",
+   "help": ""
+  }
+ ],
+ "rasterTypeInfos": [
+  {
+   "name": "Raster Dataset",
+   "description": "Supports all ArcGIS Raster Datasets",
+   "help": ""
+  }
+ ],
+ "mensurationCapabilities": "None",
+ "hasHistograms": true,
+ "hasColormap": false,
+ "hasRasterAttributeTable": false,
+ "minScale": 0,
+ "maxScale": 0,
+ "exportTilesAllowed": false,
+ "supportsStatistics": true,
+ "supportsAdvancedQueries": true,
+ "editFieldsInfo": null,
+ "ownershipBasedAccessControlForRasters": null,
+ "allowComputeTiePoints": false,
+ "useStandardizedQueries": true,
+ "advancedQueryCapabilities": {
+  "useStandardizedQueries": true,
+  "supportsStatistics": true,
+  "supportsOrderBy": true,
+  "supportsDistinct": true,
+  "supportsPagination": true
+ },
+ "spatialReference": {
+  "wkid": 32633,
+  "latestWkid": 32633
+ },
+ "resampling": false
+}

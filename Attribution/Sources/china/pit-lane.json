@@ -1,9 +1,19 @@
 {
-  "start_m": 3230,
-  "end_m": 3740,
+  "start_m": 3320,
+  "end_m": 3655,
   "side": 1,
-  "outer_offset_m": 13.0,
+  "outer_offset_m": 18.4,
   "shoulder_m": 0.1,
   "transition_m": 25.0,
-  "source_note": "Authored Shanghai garage frontage scene.pit_building(3230,3740,+1), including yellow fascia and roof slabs, lies exactly 13 m beyond road edge. Reference610–626/682/706/710s confirms pits right and Section A stand left. Native timing line3450m is inside this frontage; route origin near officialT7 remains unchanged."
+  "source_note": "Actual mapped pit compound156328694 replaces the former generic block. The mapped compound projects to native3324.97–3647.05m. Its garage face stands18.786–19.907m beyond the road edge. The paving control is rounded by less than10m at the longitudinal ends and ends at a constant18.4m offset before the nearest garage face. Local unstriped apron polygons meet each variable mapped front and exclude the occupied building; the generic outer white stripe therefore stays outside all garage bays. Mapped plan registration has approximately±2m uncertainty. Facade/roof dimensions remain reconstructed. Paving stays beyond a closed pit wall; racing XYZ, banking and handling are unchanged. See pit-dimension-review.json.",
+  "former_generic_registration": {
+    "start_m": 3230,
+    "end_m": 3740,
+    "side": 1,
+    "outer_offset_m": 13.0,
+    "shoulder_m": 0.1,
+    "transition_m": 25.0,
+    "source_note": "Authored Shanghai garage frontage scene.pit_building(3230,3740,+1), including yellow fascia and roof slabs, lies exactly 13 m beyond road edge. Reference610–626/682/706/710s confirms pits right and Section A stand left. Native timing line3450m is inside this frontage; route origin near officialT7 remains unchanged."
+  },
+  "former_registration_status": "Superseded by actual retained footprint. Root restores the original shoulder lattice before applying this profile."
 }

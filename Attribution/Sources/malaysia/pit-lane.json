@@ -1,9 +1,18 @@
 {
-  "start_m": 5290,
-  "end_m": 320,
+  "start_m": 5420,
+  "end_m": 230,
   "side": 1,
-  "outer_offset_m": 13.0,
+  "outer_offset_m": 10.35,
   "shoulder_m": 0.1,
-  "transition_m": 25.0,
-  "source_note": "Authored Sepang garage frontage scene.pit_building(5290,320,+1) lies exactly 13 m beyond road edge. Retained pit compound144362327 is excluded from duplicate extrusion; its multi-storey bays and stacked roof silhouette are modeled on the right, opposite the double-sided grandstand. Reference118/122/126/130/134/138s supports this registration. Native interval crosses zero."
+  "transition_m": 25,
+  "source_note": "The retained pit compound 144362327 spans approximately native 5425\u2013227 m across zero. The actual 33-bay garage front spans approximately 5486\u2013207 m and lies 9.784\u201310.300 m beyond the current road edge. Paving extends 10.35 m to meet that frontage; up to 0.57 m lies under the building edge. The rounded control/timing end projects farther toward the apron and remains occupied architecture. Registration and OSM footprint uncertainty are about 2 m; interval ends are rounded by at most 7 m. Paving remains visual beyond the closed pit wall, with no pit access functionality. See pit-roof-review.json.",
+  "former_generic_registration": {
+    "start_m": 5290,
+    "end_m": 320,
+    "side": 1,
+    "outer_offset_m": 13.0,
+    "shoulder_m": 0.1,
+    "transition_m": 25.0,
+    "source_note": "Authored Sepang garage frontage scene.pit_building(5290,320,+1) lies exactly 13 m beyond road edge. Retained pit compound144362327 is excluded from duplicate extrusion; its multi-storey bays and stacked roof silhouette are modeled on the right, opposite the double-sided grandstand. Reference118/122/126/130/134/138s supports this registration. Native interval crosses zero."
+  }
 }

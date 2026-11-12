@@ -1,10 +1,1914 @@
 {
   "source": "Registered native road and reference-authored escape ranges",
   "method": "Exact planar polygon union, preserving interior islands; simplification tolerance2cm, wallsegments atmost2m. One closed boundary supplies physical and visible protection.",
-  "wall_count": 5729,
+  "wall_count": 5926,
   "occupied_footprints": 0,
   "structure_clearance_m": 0.5,
   "runoff_ranges": [
+    {
+      "type": "runoff",
+      "start_m": 4530.0,
+      "end_m": 4531.994350282486,
+      "side": -1,
+      "requested_width_m": 3.09756602821346,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4531.994350282486,
+      "end_m": 4533.988700564972,
+      "side": -1,
+      "requested_width_m": 3.3796029743428035,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4533.988700564972,
+      "end_m": 4535.983050847458,
+      "side": -1,
+      "requested_width_m": 3.830119130621993,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4535.983050847458,
+      "end_m": 4537.977401129943,
+      "side": -1,
+      "requested_width_m": 4.433122789284331,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4537.977401129943,
+      "end_m": 4539.9717514124295,
+      "side": -1,
+      "requested_width_m": 5.172622242564072,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4539.9717514124295,
+      "end_m": 4541.966101694915,
+      "side": -1,
+      "requested_width_m": 6.032625782694256,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4541.966101694915,
+      "end_m": 4543.960451977401,
+      "side": -1,
+      "requested_width_m": 6.997141701909372,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4543.960451977401,
+      "end_m": 4545.954802259887,
+      "side": -1,
+      "requested_width_m": 8.050178292442752,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4545.954802259887,
+      "end_m": 4547.949152542373,
+      "side": -1,
+      "requested_width_m": 9.175743846527569,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4547.949152542373,
+      "end_m": 4549.943502824859,
+      "side": -1,
+      "requested_width_m": 10.35784665639855,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4549.943502824859,
+      "end_m": 4551.937853107344,
+      "side": -1,
+      "requested_width_m": 11.580495014288333,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4551.937853107344,
+      "end_m": 4553.932203389831,
+      "side": -1,
+      "requested_width_m": 12.827697212431739,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4553.932203389831,
+      "end_m": 4555.926553672316,
+      "side": -1,
+      "requested_width_m": 14.083461543061341,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4555.926553672316,
+      "end_m": 4557.920903954802,
+      "side": -1,
+      "requested_width_m": 15.331796298411993,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4557.920903954802,
+      "end_m": 4559.9152542372885,
+      "side": -1,
+      "requested_width_m": 16.55670977071682,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4559.9152542372885,
+      "end_m": 4561.909604519774,
+      "side": -1,
+      "requested_width_m": 17.74221025220899,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4561.909604519774,
+      "end_m": 4563.90395480226,
+      "side": -1,
+      "requested_width_m": 18.87230603512329,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4563.90395480226,
+      "end_m": 4565.8983050847455,
+      "side": -1,
+      "requested_width_m": 19.931005411692407,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4565.8983050847455,
+      "end_m": 4567.892655367232,
+      "side": -1,
+      "requested_width_m": 20.902316674151,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4567.892655367232,
+      "end_m": 4569.887005649717,
+      "side": -1,
+      "requested_width_m": 21.770248114731906,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4569.887005649717,
+      "end_m": 4571.881355932203,
+      "side": -1,
+      "requested_width_m": 22.51880802566962,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4571.881355932203,
+      "end_m": 4573.87570621469,
+      "side": -1,
+      "requested_width_m": 23.13200469919742,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4573.87570621469,
+      "end_m": 4575.870056497175,
+      "side": -1,
+      "requested_width_m": 23.59384642754883,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4575.870056497175,
+      "end_m": 4577.864406779661,
+      "side": -1,
+      "requested_width_m": 23.888341502957974,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4577.864406779661,
+      "end_m": 4579.858757062147,
+      "side": -1,
+      "requested_width_m": 23.9994982176583,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4579.858757062147,
+      "end_m": 4581.853107344633,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4581.853107344633,
+      "end_m": 4583.847457627118,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4583.847457627118,
+      "end_m": 4585.8418079096045,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4585.8418079096045,
+      "end_m": 4587.836158192091,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4587.836158192091,
+      "end_m": 4589.830508474576,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4589.830508474576,
+      "end_m": 4591.824858757062,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4591.824858757062,
+      "end_m": 4593.819209039548,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4593.819209039548,
+      "end_m": 4595.813559322034,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4595.813559322034,
+      "end_m": 4597.807909604519,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4597.807909604519,
+      "end_m": 4599.802259887006,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4599.802259887006,
+      "end_m": 4601.796610169492,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4601.796610169492,
+      "end_m": 4603.790960451977,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4603.790960451977,
+      "end_m": 4605.785310734464,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4605.785310734464,
+      "end_m": 4607.779661016949,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4607.779661016949,
+      "end_m": 4609.774011299435,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4609.774011299435,
+      "end_m": 4611.7683615819205,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4611.7683615819205,
+      "end_m": 4613.762711864407,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4613.762711864407,
+      "end_m": 4615.757062146893,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4615.757062146893,
+      "end_m": 4617.751412429378,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4617.751412429378,
+      "end_m": 4619.745762711865,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4619.745762711865,
+      "end_m": 4621.74011299435,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4621.74011299435,
+      "end_m": 4623.734463276836,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4623.734463276836,
+      "end_m": 4625.728813559322,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4625.728813559322,
+      "end_m": 4627.723163841808,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4627.723163841808,
+      "end_m": 4629.717514124294,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4629.717514124294,
+      "end_m": 4631.71186440678,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4631.71186440678,
+      "end_m": 4633.706214689266,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4633.706214689266,
+      "end_m": 4635.700564971751,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4635.700564971751,
+      "end_m": 4637.6949152542375,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4637.6949152542375,
+      "end_m": 4639.689265536723,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4639.689265536723,
+      "end_m": 4641.683615819209,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4641.683615819209,
+      "end_m": 4643.677966101695,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4643.677966101695,
+      "end_m": 4645.672316384181,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4645.672316384181,
+      "end_m": 4647.666666666667,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4647.666666666667,
+      "end_m": 4649.661016949152,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4649.661016949152,
+      "end_m": 4651.655367231639,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4651.655367231639,
+      "end_m": 0.6497175141239495,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 0.6497175141239495,
+      "end_m": 2.6440677966102157,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 2.6440677966102157,
+      "end_m": 4.638418079096482,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 4.638418079096482,
+      "end_m": 6.632768361581839,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 6.632768361581839,
+      "end_m": 8.627118644068105,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 8.627118644068105,
+      "end_m": 10.621468926553462,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 10.621468926553462,
+      "end_m": 12.615819209039728,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 12.615819209039728,
+      "end_m": 14.610169491525085,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 14.610169491525085,
+      "end_m": 16.60451977401135,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 16.60451977401135,
+      "end_m": 18.598870056497617,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 18.598870056497617,
+      "end_m": 20.593220338982974,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 20.593220338982974,
+      "end_m": 22.58757062146924,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 22.58757062146924,
+      "end_m": 24.581920903954597,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 24.581920903954597,
+      "end_m": 26.576271186440863,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 26.576271186440863,
+      "end_m": 28.57062146892622,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 28.57062146892622,
+      "end_m": 30.564971751412486,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 30.564971751412486,
+      "end_m": 32.55932203389784,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 32.55932203389784,
+      "end_m": 34.55367231638411,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 34.55367231638411,
+      "end_m": 36.548022598870375,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 36.548022598870375,
+      "end_m": 38.54237288135573,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 38.54237288135573,
+      "end_m": 40.536723163842,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 40.536723163842,
+      "end_m": 42.531073446327355,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 42.531073446327355,
+      "end_m": 44.52542372881362,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 44.52542372881362,
+      "end_m": 46.51977401129989,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 46.51977401129989,
+      "end_m": 48.514124293785244,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 48.514124293785244,
+      "end_m": 50.50847457627151,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 50.50847457627151,
+      "end_m": 52.50282485875687,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 52.50282485875687,
+      "end_m": 54.49717514124313,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 54.49717514124313,
+      "end_m": 56.49152542372849,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 56.49152542372849,
+      "end_m": 58.485875706214756,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 58.485875706214756,
+      "end_m": 60.48022598870011,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 60.48022598870011,
+      "end_m": 62.47457627118638,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 62.47457627118638,
+      "end_m": 64.46892655367265,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 64.46892655367265,
+      "end_m": 66.463276836158,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 66.463276836158,
+      "end_m": 68.45762711864427,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 68.45762711864427,
+      "end_m": 70.45197740112962,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 70.45197740112962,
+      "end_m": 72.44632768361589,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 72.44632768361589,
+      "end_m": 74.44067796610216,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 74.44067796610216,
+      "end_m": 76.43502824858751,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 76.43502824858751,
+      "end_m": 78.42937853107378,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 78.42937853107378,
+      "end_m": 80.42372881355914,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 80.42372881355914,
+      "end_m": 82.4180790960454,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 82.4180790960454,
+      "end_m": 84.41242937853076,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 84.41242937853076,
+      "end_m": 86.40677966101703,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 86.40677966101703,
+      "end_m": 88.40112994350238,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 88.40112994350238,
+      "end_m": 90.39548022598865,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 90.39548022598865,
+      "end_m": 92.38983050847492,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 92.38983050847492,
+      "end_m": 94.38418079096027,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 94.38418079096027,
+      "end_m": 96.37853107344654,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 96.37853107344654,
+      "end_m": 98.3728813559319,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 98.3728813559319,
+      "end_m": 100.36723163841816,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 100.36723163841816,
+      "end_m": 102.36158192090352,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 102.36158192090352,
+      "end_m": 104.35593220338978,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 104.35593220338978,
+      "end_m": 106.35028248587605,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 106.35028248587605,
+      "end_m": 108.34463276836141,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 108.34463276836141,
+      "end_m": 110.33898305084767,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 110.33898305084767,
+      "end_m": 112.33333333333303,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 112.33333333333303,
+      "end_m": 114.3276836158193,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 114.3276836158193,
+      "end_m": 116.32203389830465,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 116.32203389830465,
+      "end_m": 118.31638418079092,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 118.31638418079092,
+      "end_m": 120.31073446327719,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 120.31073446327719,
+      "end_m": 122.30508474576254,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 122.30508474576254,
+      "end_m": 124.29943502824881,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 124.29943502824881,
+      "end_m": 126.29378531073417,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 126.29378531073417,
+      "end_m": 128.28813559322043,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 128.28813559322043,
+      "end_m": 130.2824858757058,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 130.2824858757058,
+      "end_m": 132.27683615819205,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 132.27683615819205,
+      "end_m": 134.27118644067832,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 134.27118644067832,
+      "end_m": 136.26553672316368,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 136.26553672316368,
+      "end_m": 138.25988700564994,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 138.25988700564994,
+      "end_m": 140.2542372881353,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 140.2542372881353,
+      "end_m": 142.24858757062157,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 142.24858757062157,
+      "end_m": 144.24293785310692,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 144.24293785310692,
+      "end_m": 146.2372881355932,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 146.2372881355932,
+      "end_m": 148.23163841807946,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 148.23163841807946,
+      "end_m": 150.2259887005648,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 150.2259887005648,
+      "end_m": 152.22033898305108,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 152.22033898305108,
+      "end_m": 154.21468926553644,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 154.21468926553644,
+      "end_m": 156.2090395480227,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 156.2090395480227,
+      "end_m": 158.20338983050806,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 158.20338983050806,
+      "end_m": 160.19774011299432,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 160.19774011299432,
+      "end_m": 162.1920903954806,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 162.1920903954806,
+      "end_m": 164.18644067796595,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 164.18644067796595,
+      "end_m": 166.1807909604522,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 166.1807909604522,
+      "end_m": 168.17514124293757,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 168.17514124293757,
+      "end_m": 170.16949152542384,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 170.16949152542384,
+      "end_m": 172.1638418079092,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 172.1638418079092,
+      "end_m": 174.15819209039546,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 174.15819209039546,
+      "end_m": 176.15254237288173,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 176.15254237288173,
+      "end_m": 178.14689265536708,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 178.14689265536708,
+      "end_m": 180.14124293785335,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 180.14124293785335,
+      "end_m": 182.1355932203387,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 182.1355932203387,
+      "end_m": 184.12994350282497,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 184.12994350282497,
+      "end_m": 186.12429378531033,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 186.12429378531033,
+      "end_m": 188.1186440677966,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 188.1186440677966,
+      "end_m": 190.11299435028286,
+      "side": -1,
+      "requested_width_m": 24,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 190.11299435028286,
+      "end_m": 192.10734463276822,
+      "side": -1,
+      "requested_width_m": 23.999498217658303,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 192.10734463276822,
+      "end_m": 194.10169491525448,
+      "side": -1,
+      "requested_width_m": 23.831281029337518,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 194.10169491525448,
+      "end_m": 196.09604519773984,
+      "side": -1,
+      "requested_width_m": 23.38284441325542,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 196.09604519773984,
+      "end_m": 198.0903954802261,
+      "side": -1,
+      "requested_width_m": 22.685422173643445,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 198.0903954802261,
+      "end_m": 200.08474576271146,
+      "side": -1,
+      "requested_width_m": 21.770248114732,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 200.08474576271146,
+      "end_m": 202.07909604519773,
+      "side": -1,
+      "requested_width_m": 20.668556040752943,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 202.07909604519773,
+      "end_m": 204.073446327684,
+      "side": -1,
+      "requested_width_m": 19.411579755936323,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 204.073446327684,
+      "end_m": 206.06779661016935,
+      "side": -1,
+      "requested_width_m": 18.030553064513654,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 206.06779661016935,
+      "end_m": 208.06214689265562,
+      "side": -1,
+      "requested_width_m": 16.55670977071668,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 208.06214689265562,
+      "end_m": 210.05649717514098,
+      "side": -1,
+      "requested_width_m": 15.021283678775115,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 210.05649717514098,
+      "end_m": 212.05084745762724,
+      "side": -1,
+      "requested_width_m": 13.455508592921376,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 212.05084745762724,
+      "end_m": 214.0451977401126,
+      "side": -1,
+      "requested_width_m": 11.890618317385078,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 214.0451977401126,
+      "end_m": 216.03954802259886,
+      "side": -1,
+      "requested_width_m": 10.357846656398689,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 216.03954802259886,
+      "end_m": 218.03389830508513,
+      "side": -1,
+      "requested_width_m": 8.888427414191842,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 218.03389830508513,
+      "end_m": 220.0282485875705,
+      "side": -1,
+      "requested_width_m": 7.513594394996312,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 220.0282485875705,
+      "end_m": 222.02259887005675,
+      "side": -1,
+      "requested_width_m": 6.264581403043694,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 222.02259887005675,
+      "end_m": 224.0169491525421,
+      "side": -1,
+      "requested_width_m": 5.1726222425638895,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 224.0169491525421,
+      "end_m": 226.01129943502838,
+      "side": -1,
+      "requested_width_m": 4.2689507177889245,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 226.01129943502838,
+      "end_m": 228.00564971751373,
+      "side": -1,
+      "requested_width_m": 3.5848006329490207,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 228.00564971751373,
+      "end_m": 230.0,
+      "side": -1,
+      "requested_width_m": 3.1514057922758294,
+      "material": "Runoff"
+    },
+    {
+      "type": "runoff",
+      "start_m": 10,
+      "end_m": 12,
+      "side": 1,
+      "requested_width_m": 2.1636363636363636,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 12,
+      "end_m": 14,
+      "side": 1,
+      "requested_width_m": 2.927272727272727,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 14,
+      "end_m": 16,
+      "side": 1,
+      "requested_width_m": 3.690909090909091,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 16,
+      "end_m": 18,
+      "side": 1,
+      "requested_width_m": 4.454545454545454,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 18,
+      "end_m": 20,
+      "side": 1,
+      "requested_width_m": 5.218181818181819,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 20,
+      "end_m": 22,
+      "side": 1,
+      "requested_width_m": 5.981818181818182,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 22,
+      "end_m": 24,
+      "side": 1,
+      "requested_width_m": 6.745454545454544,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 24,
+      "end_m": 26,
+      "side": 1,
+      "requested_width_m": 7.509090909090908,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 26,
+      "end_m": 28,
+      "side": 1,
+      "requested_width_m": 8.272727272727273,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 28,
+      "end_m": 30,
+      "side": 1,
+      "requested_width_m": 9.036363636363637,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 30,
+      "end_m": 32,
+      "side": 1,
+      "requested_width_m": 9.8,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 32,
+      "end_m": 34,
+      "side": 1,
+      "requested_width_m": 10.563636363636364,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 34,
+      "end_m": 36,
+      "side": 1,
+      "requested_width_m": 11.327272727272728,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 36,
+      "end_m": 38,
+      "side": 1,
+      "requested_width_m": 12.09090909090909,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 38,
+      "end_m": 40,
+      "side": 1,
+      "requested_width_m": 12.854545454545454,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 40,
+      "end_m": 42,
+      "side": 1,
+      "requested_width_m": 13.618181818181817,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 42,
+      "end_m": 44,
+      "side": 1,
+      "requested_width_m": 14.381818181818181,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 44,
+      "end_m": 46,
+      "side": 1,
+      "requested_width_m": 15.145454545454546,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 46,
+      "end_m": 48,
+      "side": 1,
+      "requested_width_m": 15.90909090909091,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 48,
+      "end_m": 50,
+      "side": 1,
+      "requested_width_m": 16.672727272727272,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 50,
+      "end_m": 52,
+      "side": 1,
+      "requested_width_m": 17.436363636363637,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 52,
+      "end_m": 54,
+      "side": 1,
+      "requested_width_m": 18.2,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 54,
+      "end_m": 56,
+      "side": 1,
+      "requested_width_m": 18.96363636363636,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 56,
+      "end_m": 58,
+      "side": 1,
+      "requested_width_m": 19.727272727272727,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 58,
+      "end_m": 60,
+      "side": 1,
+      "requested_width_m": 20.49090909090909,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 60,
+      "end_m": 62,
+      "side": 1,
+      "requested_width_m": 21.254545454545454,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 62,
+      "end_m": 64,
+      "side": 1,
+      "requested_width_m": 22.018181818181816,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 64,
+      "end_m": 65,
+      "side": 1,
+      "requested_width_m": 22.4,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 65,
+      "end_m": 66,
+      "side": 1,
+      "requested_width_m": 22.4,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 66,
+      "end_m": 68,
+      "side": 1,
+      "requested_width_m": 22.076923076923077,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 68,
+      "end_m": 70,
+      "side": 1,
+      "requested_width_m": 21.43076923076923,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 70,
+      "end_m": 72,
+      "side": 1,
+      "requested_width_m": 20.784615384615385,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 72,
+      "end_m": 74,
+      "side": 1,
+      "requested_width_m": 20.138461538461538,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 74,
+      "end_m": 76,
+      "side": 1,
+      "requested_width_m": 19.49230769230769,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 76,
+      "end_m": 78,
+      "side": 1,
+      "requested_width_m": 18.846153846153847,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 78,
+      "end_m": 80,
+      "side": 1,
+      "requested_width_m": 18.2,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 80,
+      "end_m": 82,
+      "side": 1,
+      "requested_width_m": 17.553846153846152,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 82,
+      "end_m": 84,
+      "side": 1,
+      "requested_width_m": 16.907692307692308,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 84,
+      "end_m": 86,
+      "side": 1,
+      "requested_width_m": 16.26153846153846,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 86,
+      "end_m": 88,
+      "side": 1,
+      "requested_width_m": 15.615384615384617,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 88,
+      "end_m": 90,
+      "side": 1,
+      "requested_width_m": 14.969230769230771,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 90,
+      "end_m": 92,
+      "side": 1,
+      "requested_width_m": 14.323076923076924,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 92,
+      "end_m": 94,
+      "side": 1,
+      "requested_width_m": 13.676923076923078,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 94,
+      "end_m": 96,
+      "side": 1,
+      "requested_width_m": 13.030769230769232,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 96,
+      "end_m": 98,
+      "side": 1,
+      "requested_width_m": 12.384615384615385,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 98,
+      "end_m": 100,
+      "side": 1,
+      "requested_width_m": 11.73846153846154,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 100,
+      "end_m": 102,
+      "side": 1,
+      "requested_width_m": 11.092307692307694,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 102,
+      "end_m": 104,
+      "side": 1,
+      "requested_width_m": 10.446153846153846,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 104,
+      "end_m": 106,
+      "side": 1,
+      "requested_width_m": 9.8,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 106,
+      "end_m": 108,
+      "side": 1,
+      "requested_width_m": 9.153846153846155,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 108,
+      "end_m": 110,
+      "side": 1,
+      "requested_width_m": 8.507692307692308,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 110,
+      "end_m": 112,
+      "side": 1,
+      "requested_width_m": 7.861538461538462,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 112,
+      "end_m": 114,
+      "side": 1,
+      "requested_width_m": 7.215384615384616,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 114,
+      "end_m": 116,
+      "side": 1,
+      "requested_width_m": 6.569230769230769,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 116,
+      "end_m": 118,
+      "side": 1,
+      "requested_width_m": 5.923076923076923,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 118,
+      "end_m": 120,
+      "side": 1,
+      "requested_width_m": 5.276923076923078,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 120,
+      "end_m": 122,
+      "side": 1,
+      "requested_width_m": 4.63076923076923,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 122,
+      "end_m": 124,
+      "side": 1,
+      "requested_width_m": 3.9846153846153847,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 124,
+      "end_m": 126,
+      "side": 1,
+      "requested_width_m": 3.3384615384615386,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 126,
+      "end_m": 128,
+      "side": 1,
+      "requested_width_m": 2.6923076923076925,
+      "material": "RunoffBlack"
+    },
+    {
+      "type": "runoff",
+      "start_m": 128,
+      "end_m": 130,
+      "side": 1,
+      "requested_width_m": 2.046153846153846,
+      "material": "RunoffBlack"
+    },
     {
       "type": "runoff",
       "start_m": 1170,

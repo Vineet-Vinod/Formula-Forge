@@ -1,17 +1,17 @@
 {
   "recipe": "make circuit-assets CIRCUIT=china",
-  "tiles": 159,
-  "triangles": 975554,
-  "road_sha256": "9436af24512bfb4cfc21dec59da29cf3c2a4e1c6ab906480648b3d9a8f21cca5",
-  "terrain_sha256": "f420e4ec2b420347926b871771743e3b5cc9c5fc5de4bede76abc4574b218e40",
+  "tiles": 157,
+  "triangles": 930081,
+  "road_sha256": "96695e22b99d127cbe3bae32734fe8c4bddc92eb3c3bfa37e0644599bbf3191b",
+  "terrain_sha256": "189d2b5ce6dd372e7c90efe534f6d3aa91e315886bc48d9184cea955e32ba153",
   "landmarks": [
     {
       "name": "Paved pit lane and working apron",
-      "start_m": 3230.0,
-      "end_m": 3740.0,
+      "start_m": 3320.0,
+      "end_m": 3655.0,
       "side": 1,
-      "outer_offset_m": 13.0,
-      "source_note": "Authored Shanghai garage frontage scene.pit_building(3230,3740,+1), including yellow fascia and roof slabs, lies exactly 13 m beyond road edge. Reference610\u2013626/682/706/710s confirms pits right and Section A stand left. Native timing line3450m is inside this frontage; route origin near officialT7 remains unchanged.",
+      "outer_offset_m": 18.4,
+      "source_note": "Actual mapped pit compound156328694 replaces the former generic block. The mapped compound projects to native3324.97\u20133647.05m. Its garage face stands18.786\u201319.907m beyond the road edge. The paving control is rounded by less than10m at the longitudinal ends and ends at a constant18.4m offset before the nearest garage face. Local unstriped apron polygons meet each variable mapped front and exclude the occupied building; the generic outer white stripe therefore stays outside all garage bays. Mapped plan registration has approximately\u00b12m uncertainty. Facade/roof dimensions remain reconstructed. Paving stays beyond a closed pit wall; racing XYZ, banking and handling are unchanged. See pit-dimension-review.json.",
       "access": "Visual service area outside the closed driving boundary."
     },
     {
@@ -76,7 +76,7 @@
       "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
       "boundary_chains": 1,
       "bays": 20,
-      "max_foundation_height_m": 11.793563112297951,
+      "max_foundation_height_m": 11.793186354293653,
       "tensile_roof_bays": 0
     },
     {
@@ -88,7 +88,7 @@
       "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
       "boundary_chains": 1,
       "bays": 28,
-      "max_foundation_height_m": 13.787507541138032,
+      "max_foundation_height_m": 13.785204829902213,
       "tensile_roof_bays": 0
     },
     {
@@ -112,25 +112,61 @@
       "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
     },
     {
-      "name": "Authored grandstand",
-      "start_m": 3240,
-      "end_m": 3690,
+      "name": "Shanghai footprint-registered Section A main grandstand",
+      "osm_id": 107371135,
+      "start_m": 3292.0,
+      "end_m": 3681.0,
       "side": -1,
-      "rows": 34
+      "roof_front_height_estimate_m": 27,
+      "roof_rear_height_estimate_m": 34.5,
+      "source_note": "Retained Section A footprint fixes389m seating/roof extent and17\u201369m LEFT roof bounds, replacing the450m generic slab. 34rows,27\u201334.5m gently rising roof, truss pitch and facade details are reference estimates; source overall height35m. The two real crossing wings remain present, with their own unchanged23.3m underclearance."
     },
     {
-      "name": "Authored pit building",
-      "start_m": 3230,
-      "end_m": 3740,
-      "side": 1,
-      "height_m": 16
+      "name": "Shanghai mapped pit compound",
+      "osm_id": 156328694,
+      "mapped_length_m": 321.93547700892,
+      "mapped_width_m": 31.018188265563563,
+      "body_height_m": 16.0,
+      "floors": 2,
+      "garage_bays": 38,
+      "roof_form": "terrace",
+      "source_note": "Actual retained footprint, adjacent-road per-bay foundation and closed roof/soffit. Floors, door/terrace dimensions and roof details are reference reconstructions; see pit-dimension-review.json. No native physical road or profile changes."
     },
     {
-      "name": "Shanghai Section A roof bridges",
-      "start_m": 3230,
-      "end_m": 3740,
-      "clearance_m": 23.3,
-      "dimensions": "Reference-estimated roof volumes; mapped compound excluded from solid extrusion."
+      "name": "Shanghai crossing-wing white lens fascia and oval openings",
+      "native_center_station_m": 3306.5,
+      "fascia_width_estimate_m": 135,
+      "fascia_height_estimate_m": 7,
+      "porthole_width_estimate_m": 14,
+      "porthole_height_estimate_m": 2.3,
+      "nose_depth_estimate_m": 0.55,
+      "source_note": "Direct continuous707/708s entry wing and626/682s exit wing show pointed white lens fronts with two dark oval openings. Width\u00b15m,height\u00b11.5m,portholewidth\u00b13m/height\u00b1.7m are visual estimates. The nose lies inside the actual mapped crossing envelope and above the preserved23.3m clearance. No supplied pixels or game logos are shipped."
+    },
+    {
+      "name": "Shanghai mapped media/hospitality crossing wing",
+      "osm_id": 107371135,
+      "native_center_station_m": 3306.5,
+      "road_clearance_m": 23.3,
+      "outline_area_m2": 4526.028507402579,
+      "source_note": "Actual retained Section A footprint crosses the racing centerline at3292\u20133321m and3651\u20133681m. Exact crossing outlines replace old50m\u00d7166m boxes; original23.3m clearance retained. Curved white roof height29\u201332.5m and glazed support-tower sections are reference estimates within the tagged35m complex envelope. F1 primary describes two towers and real media/hospitality structures over the track."
+    },
+    {
+      "name": "Shanghai crossing-wing white lens fascia and oval openings",
+      "native_center_station_m": 3666.0,
+      "fascia_width_estimate_m": 135,
+      "fascia_height_estimate_m": 7,
+      "porthole_width_estimate_m": 14,
+      "porthole_height_estimate_m": 2.3,
+      "nose_depth_estimate_m": 0.55,
+      "source_note": "Direct continuous707/708s entry wing and626/682s exit wing show pointed white lens fronts with two dark oval openings. Width\u00b15m,height\u00b11.5m,portholewidth\u00b13m/height\u00b1.7m are visual estimates. The nose lies inside the actual mapped crossing envelope and above the preserved23.3m clearance. No supplied pixels or game logos are shipped."
+    },
+    {
+      "name": "Shanghai mapped media/hospitality crossing wing",
+      "osm_id": 107371135,
+      "native_center_station_m": 3666.0,
+      "road_clearance_m": 23.3,
+      "outline_area_m2": 4517.7403599258105,
+      "source_note": "Actual retained Section A footprint crosses the racing centerline at3292\u20133321m and3651\u20133681m. Exact crossing outlines replace old50m\u00d7166m boxes; original23.3m clearance retained. Curved white roof height29\u201332.5m and glazed support-tower sections are reference estimates within the tagged35m complex envelope. F1 primary describes two towers and real media/hospitality structures over the track."
     }
   ],
   "vegetation": [
@@ -139,7 +175,7 @@
       "start_m": 0,
       "end_m": 550,
       "side": -1,
-      "count": 16,
+      "count": 17,
       "setback_m": 65,
       "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
     },

@@ -1,0 +1,16 @@
+{
+  "slug": "austria",
+  "source_metadata": "styria-current-dgm.json",
+  "crs": "EPSG:32633",
+  "native_resolution_m": 0.5,
+  "requested_resolution_m": 2,
+  "bbox_m": [
+    481180,
+    5229357,
+    482834,
+    5230549
+  ],
+  "estimated_uncompressed_bytes": 1971568,
+  "url": "https://gis.stmk.gv.at/image/rest/services/OGD_Hoehen/ALS_Hoehen_aktuell_DGM_UTM33N_32633/ImageServer/exportImage?bbox=481180%2C5229357%2C482834%2C5230549&bboxSR=32633&imageSR=32633&size=827%2C596&format=tiff&pixelType=F32&noData=-9999&interpolation=RSP_BilinearInterpolation&renderingRule=%7B%22rasterFunction%22%3A+%22None%22%7D&f=image",
+  "note": "Numeric one-band F32 height; renderingRule None; validate bands/dtype+range before using. Current mosaic includes separate MotoGP2022 chicane; sample actual F1 native XY, do not change plan."
+}

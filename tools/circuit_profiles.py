@@ -12,11 +12,14 @@ from pathlib import Path
 from typing import Literal
 
 from circuit_dataclasses import (
+    AlignmentControls,
     ElevationControls,
     PitLane,
     RacingRecipe,
+    ShoulderBaseline,
     ShoulderCorrection,
     ShoulderCorrections,
+    TurnRegistrations,
 )
 from pydantic import TypeAdapter
 
@@ -74,8 +77,61 @@ def apply_racing(slug: str) -> None:
             t = max(0.0, min(1.0, (station - a[0]) / (b[0] - a[0])))
             widths.append((station, a[1] + (b[1] - a[1]) * t * t * (3 - 2 * t)))
         text = replace_profile(text, "Width", widths, length)
+    turns_path = source / "turn-registration.json"
+    if turns_path.exists():
+        turns = TypeAdapter(TurnRegistrations).validate_json(turns_path.read_bytes()).turns
+        if (sorted(turn.official_turn for turn in turns) != list(range(1, len(turns) + 1))
+                or any(not 0 <= turn.native_station_m < length for turn in turns)):
+            raise ValueError(f"Invalid official turn registration: {slug}")
+        match = re.search(r"constexpr TrackTurnExpectation \w+\[\] = \{(.*?)\n\};", text, re.DOTALL)
+        if match is None:
+            raise ValueError(f"Missing native turn expectations: {slug}")
+        body = "\n" + ",\n".join(
+            f'    {{"Turn {turn.official_turn}", {turn.native_station_m / length:.9f}f, TrackTurnDirection::{turn.direction.title()}}}'
+            for turn in turns
+        )
+        text = text[:match.start(1)] + body + text[match.end(1):]
     path.write_text(text)
+    catalogue = ROOT / "Source/FormulaForge/Native/track_data/generated_catalog.inc"
+    entries = re.split(r"(?=    \{TrackLayoutId::)", catalogue.read_text())
+    for index, entry in enumerate(entries):
+        if f'     "{slug}",' not in entry:
+            continue
+        lines = entry.splitlines(keepends=True)
+        if re.fullmatch(rf"\s+{NUMBER}f,\n", lines[9]) is None:
+            raise ValueError(f"Unexpected native catalogue relief field: {slug}")
+        heights = [height for _, height in native_profile(text, "Elevation")]
+        lines[9] = f"     {max(heights) - min(heights):.6f}f,\n"
+        start_line = source / "start-line.json"
+        if start_line.exists():
+            station = float(json.loads(start_line.read_text())["native_station_m"])
+            if not math.isfinite(station) or not 0 <= station < length:
+                raise ValueError(f"Invalid timing-line station: {slug}")
+            if re.fullmatch(rf"\s+{NUMBER}f,\n", lines[8]) is None:
+                raise ValueError(f"Unexpected native catalogue timing field: {slug}")
+            lines[8] = f"     {station / length:.9f}f,\n"
+        entries[index] = "".join(lines)
+        break
+    else:
+        raise ValueError(f"Missing native catalogue entry: {slug}")
+    catalogue.write_text("".join(entries))
     print(f"{slug}: applied retained racing controls; alignment, bank and protection unchanged")
+
+
+def apply_alignment(slug: str) -> None:
+    source = ROOT / "Attribution/Sources" / slug / "alignment-corrections.json"
+    refinement = source.with_name("alignment-refinement.json")
+    if refinement.exists():
+        source = refinement
+    profile = TypeAdapter(AlignmentControls).validate_json(source.read_bytes())
+    path = ROOT / "Source/FormulaForge/Native/track_data" / f"{slug}_survey.inc"
+    text = path.read_text()
+    match = re.search(r"constexpr TrackControlPoint \w+\[\] = \{(.*?)\n\};", text, re.DOTALL)
+    if match is None:
+        raise ValueError(f"Missing native alignment: {slug}")
+    body = "\n" + ",\n".join(f"    {{{x:.6f}f, {y:.6f}f}}" for x, y in profile.controls_xy_m)
+    path.write_text(text[:match.start(1)] + body + text[match.end(1):])
+    print(f"{slug}: applied retained alignment; refresh exported surfaces and protection")
 
 
 def pit_shoulders(
@@ -137,6 +193,14 @@ def apply(slug: str) -> None:
     rows = [tuple(float(value) for value in row) for row in
             re.findall(r"\{([\d.]+)f, ([\d.]+)f, ([\d.]+)f\}", match[2])]
     original = [(row[0], row[1], row[2]) for row in rows]
+    baseline_path = source / "shoulder-baseline.json"
+    if baseline_path.exists():
+        original = TypeAdapter(ShoulderBaseline).validate_json(baseline_path.read_bytes()).controls
+        if (abs(original[0][0]) > 0.001 or abs(original[-1][0] - length) > 0.001
+                or original[0][1:] != original[-1][1:]
+                or any(b[0] <= a[0] for a, b in itertools.pairwise(original))
+                or any(left < 0 or right < 0 for _, left, right in original)):
+            raise ValueError(f"Invalid retained shoulder baseline: {slug}")
     result = original
     pit_path = source / "pit-lane.json"
     if pit_path.exists():
@@ -153,11 +217,15 @@ def apply(slug: str) -> None:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--racing", action="store_true", help="Apply explicit elevation and width evidence")
+    operation = parser.add_mutually_exclusive_group()
+    operation.add_argument("--racing", action="store_true", help="Apply explicit elevation and width evidence")
+    operation.add_argument("--alignment", action="store_true", help="Apply retained local alignment corrections")
     parser.add_argument("circuits", nargs="+")
     arguments = parser.parse_args()
     for circuit in arguments.circuits:
         if arguments.racing:
             apply_racing(circuit)
+        elif arguments.alignment:
+            apply_alignment(circuit)
         else:
             apply(circuit)

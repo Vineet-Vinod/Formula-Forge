@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-12",
+  "status": "Dimension and elevation audit; no new road-profile change justified by the available primary evidence.",
+  "width_source_url": "https://www.sepangcircuit.com/architecture",
+  "published_width_range_m": [
+    16,
+    22
+  ],
+  "canonical_profile": "environment-recipe.json:width_profile.controls_m",
+  "elevation_source_url": "https://www.formula1.com/en/latest/article/highs-and-lows-which-f1-track-has-the-most-elevation-changes-.7I9JEcBw3R2AqXbnJ6hyvc",
+  "published_relative_relief_m": 22,
+  "minimum_corner": "Turn3",
+  "maximum_corner": "Turn11",
+  "native_extremum_stations_m": [
+    991,
+    3433
+  ],
+  "existing_profile_grade_range_pct": [
+    -6.07,
+    5.72
+  ],
+  "limitations": [
+    "The official graphical profile establishes relative relief and corner registration, not a station-resolved civil survey. Intermediate controls retain1m height/50m station uncertainty.",
+    "No primary operator maximum uphill/downhill grade was verified. A secondary travel guide gives lower gradients without a survey; those numbers are not used to flatten the circuit.",
+    "The FIA2016 preview confirms local reprofiling atTurns2,5,9and15. Current graphical profile cannot resolve exact post-work crossfall.",
+    "The concave main-roof correction has separate actual-footprint and whole-road-mask proof; no over-road roof remains in its audited scope."
+  ],
+  "fia_2016_reprofiling_source": "https://www.fia.com/sites/default/files/preview_5.pdf",
+  "current_acceptance": "Native/profile and cockpit review remain separate from source audit."
+}

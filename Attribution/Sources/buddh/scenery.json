@@ -1,9 +1,9 @@
 {
   "recipe": "make circuit-assets CIRCUIT=buddh",
-  "tiles": 162,
-  "triangles": 1369195,
-  "road_sha256": "7ee160614f5d132771b6400128d983695ffb8effa85915e9249ef0d1c2933a3c",
-  "terrain_sha256": "7f3364a0809bc72cbf31bee31cafefc4335370ede8bba7d34c81b3e39f6f91a5",
+  "tiles": 164,
+  "triangles": 1359611,
+  "road_sha256": "0576dd77ac95f42d6290346aeba16a9077766f7e6553b85105e3b5064a00bfb5",
+  "terrain_sha256": "ab3043ed90befa8c289f8f9ee94c3b328644e64ca7bffef1e69c729fe19b3313",
   "landmarks": [
     {
       "name": "Paved pit lane and working apron",
@@ -94,11 +94,12 @@
       "registration": "Road-facing retained ring edges9\u201315; dark full-width ground-floor portals, white structural piers and overhead roller boxes replace office-window appearance. Garage threshold elevations follow the adjacent road/pit apron; heights and bay spacing estimated from reference113\u2013125s."
     },
     {
-      "name": "Buddh mapped pit and projecting control roofs",
+      "name": "Buddh mapped pit roof wings",
       "osm_id": 188019421,
-      "start_m": 470,
-      "end_m": 870,
-      "dimensions": "Registered articulated garage frontage and two angular layered roof groups estimated from 2013 footage."
+      "roof_group_stations_m": "528 and 804",
+      "maximum_front_overhang_m": 6,
+      "foundation_m": 0.8281567849371392,
+      "source": "Four-layer side canopies observed in reference 113, 117 and 121 seconds. Each group follows its actual mapped garage wing instead of the empty courtyard in the compound bounding rectangle. Layer spacing, overhang and heights remain visual estimates. The lowest fin clears the existing 11 m office roof."
     },
     {
       "name": "Mapped building",
@@ -189,7 +190,7 @@
       "start_m": 3450,
       "end_m": 3800,
       "side": 1,
-      "count": 4,
+      "count": 3,
       "setback_m": 60,
       "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
     },

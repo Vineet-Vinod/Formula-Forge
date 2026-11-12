@@ -19,8 +19,9 @@
     "chosen": "relation-cycle/280443",
     "measured_plan_m": 5307.598,
     "published_m": 5278,
-    "uniform_scale": 0.994423,
-    "scale_rule": "Applied only when the mapped plan was within 1.5% of a published length. Larger gaps keep the mapped length."
+    "uniform_scale": 0.9981905009295947,
+    "scale_rule": "Original projection composed with exact native normalization after mapped/event corner geometry and bounded interpolation refinement; see scene-registration.json.",
+    "source_projection_uniform_scale": 0.994423
   },
   "elevation": {
     "provider": "Formula1 official published longitudinal road-profile chart; original numericaldigitisation",
@@ -52,9 +53,16 @@
     "layout_note": "2016sixteen-corner diagram compared with currentfourteen-corner route. Removedchicane sector controls denote geographiclocations, not instructions to restore oldcorners. Local heights in changed2022sector remain approximate."
   },
   "width": {
-    "base_m": 12.0,
-    "straight_m": 14.0,
-    "method": "Authored from typical Grade 1 asphalt width, wider on low-curvature sections. Not a traced white-line survey."
+    "provider": "Retained generic native width plus operator-supported local T11 approach correction",
+    "source": "https://www.fia.com/sites/default/files/gp22_166_media_kit_v2.pdf",
+    "source_page": 20,
+    "local_width_m": 15,
+    "native_range_m": [
+      3900,
+      4110
+    ],
+    "canonical_controls": "environment-recipe.json:width_profile.controls_m",
+    "outside_scope": "All earlier generic native width controls preserved exactly; not surveyed."
   },
   "shoulders": {
     "default_m": 5.0,
@@ -70,5 +78,29 @@
   "protection": "Both sides are walled at the shoulder offset. Pit entry is closed. That closure is a game boundary, not a claim about the real pit lane.",
   "not_claimed": "No lidar, no orthophoto registration, no cockpit capture in this build. Centimetre storage is not centimetre accuracy.",
   "layout_review": "layout-review.json",
-  "turn_registration": "Explicit14cornercontrols in layout-review.json; currentcenterline already bypassesremovedClarkchicane. Twentycurvaturepeaks are not20numberedcorners."
+  "turn_registration": "Explicit14cornercontrols in layout-review.json; currentcenterline already bypassesremovedClarkchicane. Twentycurvaturepeaks are not20numberedcorners.",
+  "retained_generic_width": {
+    "base_m": 12.0,
+    "straight_m": 14.0,
+    "method": "Authored from typical Grade 1 asphalt width, wider on low-curvature sections. Not a traced white-line survey."
+  },
+  "scene_coordinate_registration": {
+    "source_projection_uniform_scale": 0.994423,
+    "effective_scene_uniform_scale": 0.9981905009295947,
+    "native_normalization_chain": {
+      "initial_corrected_controls_factor": 1.0033063327564913,
+      "initial_catmull_length_m": 5260.606967454776,
+      "refinement_controls_factor": 1.0002807168399586,
+      "refinement_catmull_length_m": 5276.5187137797475,
+      "post_original_chain_factor": 1.0035879777397332,
+      "baseline_factor": 1.000199935017647,
+      "all_chain_factor": 1.0037886301197727,
+      "effective_scene_uniform_scale": 0.9981905009295947,
+      "method": "Exact float32 Catmull32 subdivision and float32 segment norms, double arc accumulation, Units17 normalization; original9d8e factor independently instrumented."
+    },
+    "final_road_sha256": "35438aa4cdbe034aa909db7f56df08ee84877d9b045c86f9b449db505a5e7225",
+    "source_basis": "alignment-corrections.json",
+    "source_basis_sha256": "1045117c1ae91d0e46404fcee0941e2849c303509ccfe9a614c8f7ef3243662d",
+    "scope": "Source-WGS to native world XY alignment after disclosed event-corner replacement. Width/elevation/camera/vehicle parameters are not rescaled."
+  }
 }

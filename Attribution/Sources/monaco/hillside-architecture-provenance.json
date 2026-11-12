@@ -1,0 +1,93 @@
+{
+  "provider": "IGN Geoplateforme,BDTopo V3",
+  "service": "https://data.geopf.fr/wfs/ows",
+  "feature_type": "BDTOPO_V3:batiment",
+  "retrieved_utc": "2026-11-12",
+  "source_catalogue": "https://www.data.gouv.fr/datasets/bd-topo-r",
+  "licence": "Licence Ouverte / Open Licence2.0",
+  "licence_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence/",
+  "attribution": "\u00a9IGN,BDTopo via Geoplateforme WFS. Modified by a bounded geographic query, overlap exclusion, numeric source-height registration and original facade/roof reconstruction.",
+  "raw_file": "architecture/ign-bdtopo-beausoleil.json.gz",
+  "raw_sha256": "341b03cfdd23ad96e756a348a90b95926907b1ba07247ee332234c728cfbbb79",
+  "beau_rivage_raw_file": "architecture/ign-bdtopo-beau-rivage.json.gz",
+  "beau_rivage_raw_sha256": "dad3620bd35268b33f65dbb3d2745202a5e614469fe21eb08031998e1b2276ad",
+  "filtered_file": "architecture/hillside-buildings.json",
+  "filtered_sha256": "bc96fa65377c71c3325b3b92c2775cd74d99f1afbe7255b8cc2cc389898f4eab",
+  "raw_features": 274,
+  "retained_components": 250,
+  "skipped": [
+    {
+      "source_id": "BATIMENT0000000074066694",
+      "component": 0,
+      "reason": "Inconsistent source roof/ground altitude"
+    }
+  ],
+  "roof_code_dictionary": "https://doc-datafoncier.cerema.fr/doc/ff/pb40_pevprincipale/dmatto",
+  "height_source": "Per-feature actual altitudes/height/number_d_etages and source precision retained in original response. Some values derive from photogrammetry/cadastre/correlation and different survey dates; not a new engineering survey.",
+  "vertical_registration": "Source metric ground/eaves/roof altitudes minus the existing RGE scenery-ground.json relative datum; no terrain or native-road rescale.",
+  "roof_method": "Retain actual footprint, floorcount where supplied, numeric eaves/ridge range and documented roof material. Tile roofs use an original ridge along the longest footprint axis; exact ridge geometry and window/balcony modules are estimates, not surveyclaims. Unclassified roofing is neutral rather than inventedterracotta.",
+  "source_diagnosis": "Exact recorded-camera ray from native860m hits the gray Runoff backdrop at43.74458089N7.42189114E,z190.145m with nearestretainedbuilding285m away; actual Beausoleil city was not retained. This source fills only that bounded urban district.",
+  "beau_rivage_matches": [
+    {
+      "osm_ids": [
+        447008628,
+        447008629
+      ],
+      "ign_id": "BATIMENT0000000074074362",
+      "height_m": 24.7,
+      "minimum_ground_m": 6.6,
+      "source_height_precision_m": 1.5,
+      "footprint_overlap_fractions": [
+        0.998256,
+        0.872869
+      ]
+    },
+    {
+      "osm_ids": [
+        879995948
+      ],
+      "ign_id": "BATIMENT0000000074074338",
+      "height_m": 3.2,
+      "minimum_ground_m": 33.7,
+      "maximum_ground_m": 38.9,
+      "maximum_roof_m": 41.2,
+      "source_height_precision_m": 1.5,
+      "footprint_overlap_fraction": 0.943383
+    }
+  ],
+  "source_osm_context": {
+    "file": "architecture/beau-rivage-context.osm.gz",
+    "sha256": "81702d17f641da979a04ea46ea0db2393d63d13a4f755eb8b3a4e2fa2d32a230",
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=7.4248,43.7371,7.4275,43.7398",
+    "licence": "OpenStreetMap contributors,ODbL1.0"
+  },
+  "vegetation": {
+    "raw_file": "architecture/ign-bdtopo-beausoleil-vegetation.json.gz",
+    "raw_sha256": "4e504221e8c55ea978ae51b8dc6ef960dc2a01ab8c15151b994a7ea2cacdfbbe",
+    "filtered_file": "architecture/hillside-vegetation.json",
+    "filtered_sha256": "bff61d3fe44f10429d3355e5c5c7fac7ffd67162d60598a0a496ad20a2c63acb",
+    "source_regions": 7,
+    "nature": [
+      "Haie",
+      "For\u00eat ferm\u00e9e de conif\u00e8res",
+      "For\u00eat ferm\u00e9e mixte",
+      "For\u00eat ferm\u00e9e mixte",
+      "For\u00eat ferm\u00e9e de conif\u00e8res",
+      "Haie",
+      "For\u00eat ferm\u00e9e de conif\u00e8res"
+    ],
+    "source_method": "Official IGN BDTopo orthophotographic vegetation polygons,2022creation,3m planimetric precision. Full exact polygons retained and clipped only at rendering against existingterrainbounds, buildingfootprints, roads and water. Reconstructed individualtrees are not claimed surveyed."
+  },
+  "fairmont": {
+    "raw_file": "architecture/ign-bdtopo-fairmont.json.gz",
+    "raw_sha256": "98c32c6ba01847ebc502d11f4aa8c46136f904cd8183e960bb39a4bb83c8e409",
+    "dominant_ign_id": "BATIMENT0000000074074334",
+    "osm_id": 2093796,
+    "footprint_overlap_fraction": 0.804,
+    "minimum_ground_m": 0.9,
+    "height_m": 33,
+    "absolute_roof_m": 33.9,
+    "source_height_precision_m": 1.5,
+    "registration": "Subtract the existing RGE relative datum from actual dominant roof33.9mabsolute; retain existing tunnel-clearing hotel-base elevation. The upper seven-storey guestroom volume is therefore20.9114mhigh ratherthan the guessed24m. Do not extrude33mabove the elevatedhotelbase: thatheightincludes the seawardplinth."
+  }
+}

@@ -3,11 +3,12 @@ from __future__ import annotations
 
 import math
 from collections.abc import Iterator
+from itertools import pairwise
 
 from circuit_dataclasses import Point, RoadStation
 from circuit_mesh import add
 from circuit_scene import CircuitScene
-from shapely.geometry import Polygon
+from shapely.geometry import Polygon, box
 from shapely.geometry.base import BaseGeometry
 from shapely.ops import triangulate, unary_union
 
@@ -127,15 +128,40 @@ def main_grandstand(scene: CircuitScene) -> None:
         outline.append((x + (road.x - x) * projection / distance,
                         y + (road.y - y) * projection / distance))
     polygon = Polygon(outline).difference(scene.road_mask.buffer(1.2))
+    rectangle = list(polygon.minimum_rotated_rectangle.exterior.coords)
+    axis_a, axis_b = max(pairwise(rectangle), key=lambda edge: math.dist(*edge))
+    span = math.dist(axis_a, axis_b)
+    axis = ((axis_b[0] - axis_a[0]) / span, (axis_b[1] - axis_a[1]) / span)
+    normal = (-axis[1], axis[0])
+    local_outline = [((x - axis_a[0]) * axis[0] + (y - axis_a[1]) * axis[1],
+                      (x - axis_a[0]) * normal[0] + (y - axis_a[1]) * normal[1]) for x, y in outline]
+    local = Polygon(local_outline)
+    umin, vmin, umax, vmax = local.bounds
+    bays = max(1, round((umax - umin) / 10))
+    bay_width = (umax - umin) / bays
     def point(x: float, y: float, lift: float = 0) -> Point:
         road, distance = scene.nearest(x, y)
-        height = 16 + 2 * max(0, min(1, (distance - (low - 16)) / max(1, high - low + 16)))
+        depth = max(0, min(1, (distance - (low - 16)) / max(1, high - low + 16)))
+        along = (x - axis_a[0]) * axis[0] + (y - axis_a[1]) * axis[1]
+        phase = ((along - umin) / bay_width) % 1
+        scallop = math.sin(math.pi * phase)
+        height = 16 + 2 * depth - .8 * scallop * (1 - depth) ** 2 - .45 * scallop * math.sin(math.pi * depth)
         return x, y, road.z + height + lift
-    for triangle in triangulate(polygon):
-        if polygon.covers(triangle):
-            a, b, c = list(triangle.exterior.coords)[:3]
-            scene.triangle('Building_CotaMainRoof', 'White', point(*a), point(*b), point(*c))
-            scene.triangle('Building_CotaMainRoof', 'Concrete', point(c[0], c[1], -.22), point(b[0], b[1], -.22), point(a[0], a[1], -.22))
+    for i in range(math.ceil((umax - umin) / 2)):
+        for j in range(math.ceil((vmax - vmin) / 2)):
+            cell = local.intersection(box(umin + i * 2, vmin + j * 2,
+                                          umin + (i + 1) * 2, vmin + (j + 1) * 2))
+            for triangle in triangulate(cell):
+                if not cell.covers(triangle):
+                    continue
+                coordinates = list(triangle.exterior.coords)[:3]
+                if not triangle.exterior.is_ccw:
+                    coordinates.reverse()
+                points = [point(axis_a[0] + u * axis[0] + v * normal[0],
+                                axis_a[1] + u * axis[1] + v * normal[1]) for u, v in coordinates]
+                scene.triangle('Building_CotaMainRoof', 'White', points[0], points[1], points[2])
+                scene.triangle('Building_CotaMainRoof', 'White', add(points[2], (0, 0, -.035)),
+                               add(points[1], (0, 0, -.035)), add(points[0], (0, 0, -.035)))
     for a, b in zip(outline, outline[1:] + outline[:1]):
         count = max(1, round(math.dist(a, b) / 10))
         scene.beam('Building_CotaMainRoof', 'Steel', point(*a), point(*b), .24)
@@ -146,7 +172,8 @@ def main_grandstand(scene: CircuitScene) -> None:
                 continue
             base = x, y, scene.ground(x, y)
             scene.beam('Building_CotaMainRoof', 'White', base, point(x, y), .45)
-            front = x + (road.x - x) * 29 / distance, y + (road.y - y) * 29 / distance
+            reach = distance - (low - 16)
+            front = x + (road.x - x) * reach / distance, y + (road.y - y) * reach / distance
             upper, lower = point(*front), add(point(*front), (0, 0, -1.1))
             rear_upper, rear_lower = point(x, y), add(point(x, y), (0, 0, -1.1))
             scene.beam('Building_CotaMainRoof', 'Steel', rear_upper, upper, .16)
@@ -159,7 +186,7 @@ def main_grandstand(scene: CircuitScene) -> None:
     scene.modeled_buildings.add(376713393)
     scene.landmarks.append({'name': 'Mapped main grandstand with cantilever canopy',
                             'osm_id': 460658889, 'roof_osm_id': 376713393,
-                            'dimensions_status': 'Actual seating/support footprints retained; rear support outline projects16m toward seating without extending the uncovered longitudinal end. Roof16–18m above road, open trusses and underside reconstructed from supplied paint-detail-03, not surveyed dimensions.'})
+                            'dimensions_status': 'Actual seating/support footprints retained; rear lounge outline projects16m over the rear seating without extending the uncovered longitudinal end. White tensile fabric has repeating shallow saddle/scalloped bays and a pale underside, replacing the opaque concrete slab. Roof15.2–18m above road,0.8m leading-edge scallop,0.45m interior sag and approximately10m bays are reference-estimated; retained estimated16m reach is unchanged. Original geometry from supplied paint-detail-03 and Walter P Moore structural project description, not a surveyed membrane shape.'})
 
 
 def observation_tower(scene: CircuitScene) -> None:
@@ -172,8 +199,26 @@ def observation_tower(scene: CircuitScene) -> None:
     for z in range(5, 69, 5):
         scene.beam('Building_CotaTower', 'Steel', add(base, (-2, 0, z - 5)), add(base, (2, 0, z)), .14)
         scene.beam('Building_CotaTower', 'Steel', add(base, (2, 0, z - 5)), add(base, (-2, 0, z)), .14)
-    scene.box('Building_CotaTower', 'White', add(base, (1, 0, 69)), 15, 12, .8)
-    scene.box('Building_CotaTower', 'Glass', add(base, (1, 0, 70)), 14.5, 11.5, 1.4)
+    deck = tower_deck_outline()
+    for triangle in triangulate(deck):
+        if not deck.covers(triangle):
+            continue
+        points = [add(base, (x, y, 69.4)) for x, y in list(triangle.exterior.coords)[:3]]
+        if not triangle.exterior.is_ccw:
+            points.reverse()
+        scene.triangle('Building_CotaTower', 'White', points[0], points[1], points[2])
+        scene.triangle('Building_CotaTower', 'White', add(points[2], (0, 0, -.8)),
+                       add(points[1], (0, 0, -.8)), add(points[0], (0, 0, -.8)))
+    deck_ring = list(deck.exterior.coords)
+    for a, b in pairwise(deck_ring):
+        pa, pb = add(base, (a[0], a[1], 69.4)), add(base, (b[0], b[1], 69.4))
+        scene.banner(add(pa, (0, 0, -.8)), add(pb, (0, 0, -.8)), .8, 'White', 'Building_CotaTower')
+        scene.banner(pa, pb, 1.3, 'Glass', 'Building_CotaTower')
+        scene.beam('Building_CotaTower', 'Steel', add(pa, (0, 0, 1.3)), add(pb, (0, 0, 1.3)), .055)
+    scene.landmarks.append({'name': 'Observation tower measured-plan deck',
+                            'gross_plan_area_m2': deck.area, 'public_viewing_area_m2': 900 * .3048 ** 2,
+                            'source': 'Miró Rivera architect press kit, Viewing Deck Plan p14 and Building Details p20',
+                            'dimensions_status': 'Rounded tapered outline digitized from the primary16ft-scale plan, constrained to the architect1362sqft total observation deck/core area. The separately published900sqft is the visitor viewing portion, not the full footprint. Replaces180m² rectangle while retaining original tower position, orientation,69.4m slab top,70.7m rail top and76.5m veil peak. Original plan scale/trace uncertainty approximately0.25m.'})
     for ribbon in range(18):
         lateral = (ribbon - 8.5) * .64
         previous: Point | None = None
@@ -188,6 +233,18 @@ def observation_tower(scene: CircuitScene) -> None:
             if previous is not None:
                 scene.beam('Building_CotaTower', 'Red', previous, point, .18)
             previous = point
+
+
+def tower_deck_outline() -> Polygon:
+    # Architect p14 scale:150pixels=16ft; pixel551,521 is the elevator/core centre.
+    pixels = [(378, 622), (725, 622), (679, 260), (674, 238), (664, 219),
+              (648, 201), (625, 189), (596, 182), (552, 180), (508, 182),
+              (479, 188), (456, 201), (439, 220), (428, 242), (423, 262)]
+    metres = 16 * .3048 / 150
+    outline = [((521 - y) * metres, (x - 551) * metres) for x, y in pixels]
+    gross_area = 1362 * .3048 ** 2
+    correction = math.sqrt(gross_area / Polygon(outline).area)
+    return Polygon([(x * correction, y * correction) for x, y in outline])
 
 
 def circuit_edges(scene: CircuitScene) -> None:

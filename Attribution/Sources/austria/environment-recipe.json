@@ -43,7 +43,7 @@
     {
       "start_m": 2250,
       "end_m": 3150,
-      "name": "Rauch and Würth middle corners",
+      "name": "Rauch and W\u00fcrth middle corners",
       "reference_times_s": [
         503.3,
         786.33
@@ -75,14 +75,16 @@
     }
   ],
   "terrain": {
-    "retained_source": "Copernicus DEM GLO-90",
-    "retained_relief_m": 67.677,
-    "shortcomings": "Retained coarse relief67.677m roughly agrees with operator65m but does not verify local crests/camber or roadside banks. BEV/geoland Styria bare-earth data is a candidate, coverage/access still to verify. Avoid tuning road heights to noisy DSM roofs.",
+    "retained_source": "Land Steiermark / GIS-Steiermark, current classified-ground ALS DGM",
+    "retained_relief_m": 63.337977415263936,
+    "shortcomings": "Current mosaic combines older1 m and2022\u20132023 .5 m lidar; per-pixel flight selection and asphalt resurfacing epochs are not asserted. NativeXY road registration remains approximately2 m uncertain. The12 m scenery grid does not resolve kerb drains or retaining-wall faces; authored roads and real retaining geometry remain separate.",
     "candidate_primary_sources": [
       "https://www.bev.gv.at/"
     ],
-    "data_status": "Candidate portal only; exact coverage, resolution, licence and epoch still require verification. No candidate raster downloaded or incorporated.",
-    "racing_deck_correction": "Separate independentlydigitized primary Formula1roadprofile now replaces contaminated/coarseGLO90 racingprofile. Landscapegrid remains separatelysourced. 2016numbering has9corners beforeF1counted uphillkink asT2. Operatorcurrentlyquotes65mrelief vs2016chart63.5m; retain publishedchart values rather than rescaling to a different datum/survey."
+    "data_status": "Official numeric F32 2 m road and4 m fullscenery exports retained. Every cell of previous12 m scenery lattice is covered; no extrapolation or oldDSM fallback. Root materializes terrain.bin from scenery-ground.json before scene generation.",
+    "racing_deck_correction": "The road now samples official classified-ground Styria ALS DGM. See elevation-corrections.json for exact source export, filtering and registration uncertainty. Surrounding scenery is only replaced when the retained scenery-ground.json manifest is supplied.",
+    "terrain_grid_relief_m": 328.471435546875,
+    "retained_grid_manifest": "scenery-ground.json"
   },
   "authoring_constraints": [
     "Use mapped building footprints and match rooflines, structural supports, facade depth and stepped volumes; names alone do not establish likeness.",
@@ -447,5 +449,123 @@
     "status": "Source change awaiting new rendered review",
     "geometry": "Mapped pit front now has recessed garage bays below retained upper floors; no repeated ground-floor office windows on road-facing facade. Bay widths/depths are original reference reconstruction, not an as-built survey.",
     "paving_profile": "pit-lane.json"
+  },
+  "racing_profile_source_review": {
+    "source": "elevation-corrections.json",
+    "relief_m": 63.337977415263936,
+    "reason": "Independent ground data resolves the misplaced steepest climb and agrees approximately with operator uphill/downhill maxima. No vertical scale, road-plan or width change.",
+    "rendered_validation": "Pending root native application, scenery regeneration and matched packaged review."
+  },
+  "width_profile": {
+    "minimum_m": 12,
+    "maximum_m": 13,
+    "base_m": 12,
+    "straight_m": 13,
+    "controls_m": [
+      [
+        0,
+        13
+      ],
+      [
+        210,
+        13
+      ],
+      [
+        285,
+        12
+      ],
+      [
+        375,
+        12.5
+      ],
+      [
+        1080,
+        12.5
+      ],
+      [
+        1228,
+        12
+      ],
+      [
+        1370,
+        12
+      ],
+      [
+        1460,
+        13
+      ],
+      [
+        1910,
+        13
+      ],
+      [
+        2047,
+        12
+      ],
+      [
+        2239,
+        12
+      ],
+      [
+        2584,
+        12
+      ],
+      [
+        2873,
+        12
+      ],
+      [
+        3070,
+        12
+      ],
+      [
+        3460,
+        12.5
+      ],
+      [
+        3620,
+        12
+      ],
+      [
+        3844,
+        12
+      ],
+      [
+        3950,
+        13
+      ],
+      [
+        4318,
+        13
+      ]
+    ],
+    "source": "https://api.fia.com/sites/default/files/spg2024_0060_f1_mediakit_2024_eng_a4_300dpi_240625_view_tisc_0.pdf",
+    "source_publisher": "Red Bull Ring operator, FIA-hosted Austrian Grand Prix2024 media kit",
+    "source_note": "Circuit details specify12\u201313 m track width. This replaces the former generic12\u201315 m curvature-derived estimate. Main straight uses13 m; narrow corner controls use12 m, with12.5\u201313 m on the broad connecting straights. Local station transitions are reconstructed from registered corners and supplied video, not surveyed white-line edges.",
+    "interpolation": "Smooth cubic transitions between explicit station controls; no instantaneous-curvature width inference.",
+    "width_uncertainty_m": 0.5,
+    "station_uncertainty_m": 40,
+    "registered_corners": {
+      "T1_Niki_Lauda": 285,
+      "T3_Remus": 1228,
+      "T4_Rauch_Schlossgold": 2047,
+      "T6_Rauch": 2584,
+      "T7_Wurth": 2873,
+      "T8_Wurth_exit": 3070,
+      "T9_Rindt": 3620,
+      "T10_Red_Bull_Mobile": 3844
+    }
+  },
+  "woodland_fidelity_correction": {
+    "source": "vegetation/woodland-provenance.json",
+    "model": "tools/venues/woodland.py",
+    "reference": {
+      "path": "build/reviews/austria/reference/overview-11.jpg",
+      "time_s": 786.33,
+      "sha256": "42da6729549ff33988ef7eedea7f93a23daa8b901878b785cf67c12dc542f991",
+      "observation": "Continuous densely wooded banks/ridges with mixed canopy edges and real open grass/spectator clearings. Prior sparse parallel rows leave artificial bare bands.",
+      "registration": "Middle-sector landscape context only. Exact corner and pose are not registered; do not infer tree coordinates or road dimensions from this still."
+    },
+    "status": "Source-backed woodland polygons replace parallel station rows. Native road, protection and all measured ground heights remain unchanged. Fresh packaged visual review required; source geometry is not visual acceptance."
   }
 }

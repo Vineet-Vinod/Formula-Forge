@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "status": "Source corrected; fresh current-package review remains required.",
+  "evidence": [
+    {
+      "time_s": 278.4,
+      "camera": "forward",
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261112/route-audit/spa-eaurouge-278.40.jpg",
+      "sha256": "560c5317b5049629dee80018611c2e6d8525951fb040e901aaa74db25ff79582"
+    },
+    {
+      "time_s": 279.8,
+      "camera": "rear",
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261112/route-audit/spa-eaurouge-279.80.jpg",
+      "sha256": "3104420ccb33907cb138522ec7a8f82b91c787b24981b447db50c91478e2a091"
+    },
+    {
+      "time_s": 280.5,
+      "camera": "rear",
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261112/route-audit/spa-eaurouge-280.50.jpg",
+      "sha256": "69d0b7803f5d685334bb1cbef431dc88704d3ece498d7d13e5f33f69efe86a08"
+    }
+  ],
+  "withdrawn_initial_identification": {
+    "frame": "build/reviews/spa/reference/overview-04.jpg",
+    "time_s": 271.87,
+    "incorrect_claim": "Left gravel apron at Eau Rouge.",
+    "correction": "Continuous 272.6\u2013278.4 s reveals 271.87 s is La Source exit, followed by the old-pit descent. Traffic delays make its 14.549 s lap timer unsuitable for station registration. No gravel was added from that misidentified still."
+  },
+  "current_corner_registration": {
+    "Eau_Rouge_named_way": {
+      "osm_id": 126835639,
+      "native_station_m": [
+        1797.724037,
+        1890.652532
+      ]
+    },
+    "Raidillon_named_way": {
+      "osm_id": 126835637,
+      "native_station_m": [
+        1890.652532,
+        2113.507733
+      ]
+    },
+    "source_order": "Left compression, uphill RIGHT, then left crest.278.4 s is forward;279.1 s cuts to a rear camera. Thus the large striped apron on cameraRIGHT in 279.8/280.5 is forward-driverLEFT, while cameraLEFT grass is forward-driverRIGHT. Exact camera station is not surveyed."
+  },
+  "correction": {
+    "left_paved_wedge_native_m": [
+      1880,
+      2000
+    ],
+    "side": -1,
+    "maximum_width_m": 16,
+    "entry_taper_m": 25,
+    "crest_taper_m": 45,
+    "base_material": "RunoffRed",
+    "stripe_material": "Yellow",
+    "stripe_period_m": 7,
+    "stripe_width_m": 3.5,
+    "geometry": "Native-sample-following wedge on the outside of the right climb, tapered before/into the left crest. Original clipped stripe geometry follows actual paved triangles at 5mm; no fixed-z or copied-pixel tile.",
+    "removed_wrong_right_gravel_native_m": [
+      1880,
+      1960
+    ],
+    "unknown_right_gravel_retained_native_m": [
+      [
+        1800,
+        1880
+      ],
+      [
+        1960,
+        2100
+      ]
+    ],
+    "uncertainty": "Handedness, paving, red/yellow striping and inside grass are directly observed.16 m maximum width,1880\u20132000 m endpoints,25/45 m tapers and stripe dimensions are bounded reconstruction estimates. The retained first-left/crest right-gravel portions were not verified by these views; they remain separate historical estimates, not evidence-backed new claims."
+  },
+  "native_handoff": "Root must refresh source runoff zones, envelope and native export twice. The new left wedge changes physical runoff extent locally; the wrong right 1880\u20131960 m gravel zone is removed. Road XYZ, banking, width and physics tuning are unchanged."
+}

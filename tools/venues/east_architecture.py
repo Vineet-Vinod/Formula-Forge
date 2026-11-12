@@ -838,6 +838,10 @@ def facade(
         classical = style in ("classical", "mansard")
         winding = 1 if Polygon(ring).exterior.is_ccw else -1
         floors = max(2, min(40, round(h / (4.2 if classical else 3.8))))
+        if scene.slug == 'baku':
+            levels = building.tags.get('building:levels', '')
+            if levels.isdecimal():
+                floors = max(1, min(40, int(levels)))
         for a, b in zip(ring, ring[1:] + ring[:1]):
             span = math.dist(a, b)
             if span < 0.3:
@@ -863,7 +867,7 @@ def facade(
                     w = min(2.0, span / bays * 0.53)
                     left = add(c, add(mul(tangent, -w / 2), (0, 0, level)))
                     right = add(c, add(mul(tangent, w / 2), (0, 0, level)))
-                    if scene.nearest(c[0], c[1])[1] < 16:
+                    if scene.slug != 'baku' and scene.nearest(c[0], c[1])[1] < 16:
                         continue
                     scene.banner(
                         left,

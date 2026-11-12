@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-12",
+  "circuit": "china",
+  "status": "Source correction; final native protection synchronization, packaged appearance and Luna High review pending.",
+  "module": "tools/venues/pit_compounds.py",
+  "coordinate_frame": "Current canonical native east/north; +1 driverRIGHT,−1 driverLEFT. Exact scene geographic normalization remains in scene-registration.json/provenance.json.",
+  "mapped_building": {
+    "osm_id": 156328694,
+    "footprint_area_m2": 9983.82984246426,
+    "source_file": "buildings.osm.json.gz",
+    "evidence_kind": "Mapped plan and tagged dimensions, not a surveyed architectural drawing."
+  },
+  "observed_facade": "Retained garage footprint with2 mapped levels and tagged16m overall height, dark ground garage portals, recessed upper glazing, projecting white balcony ledge, original typeset yellow/red DHL fascia and an occupied flat roof terrace. Facade subdivisions,4.5m doors,approximately8.5m bay rhythm and38 rendered bays are reconstruction estimates. The source says2 levels; roof spectators are not counted as a third enclosed storey.",
+  "supplied_video_seconds": [
+    610,
+    618,
+    622,
+    626,
+    682,
+    706,
+    710
+  ],
+  "primary_sources": [
+    {
+      "url": "https://www.formula1.com/en/latest/article/why-we-love-the-chinese-grand-prix.3AqunaR9kFuH2D2dWG8wqJ.3AqunaR9kFuH2D2dWG8wqJ",
+      "supports": "F1 primary article describes2 towers at the pit-building ends and real media/hospitality structures crossing the racing straight. It does not give measured wing clearances or facade dimensions."
+    },
+    {
+      "url": "https://www.gt-world-challenge-asia.com/documents/team/158/SUPPLEMENTARY%20REGS.PDF",
+      "supports": "SRO event document identifies the podium and briefing room on the pit building second floor; supports occupied upper facility rather than a generic office stack."
+    }
+  ],
+  "pit_lane": {
+    "start_m": 3320,
+    "end_m": 3655,
+    "side": 1,
+    "outer_offset_m": 18.4,
+    "shoulder_m": 0.1,
+    "transition_m": 25.0,
+    "source_note": "Actual mapped pit compound156328694 replaces the former generic block. The mapped compound projects to native3324.97–3647.05m. Its garage face stands18.786–19.907m beyond the road edge. The paving control is rounded by less than10m at the longitudinal ends and ends at a constant18.4m offset before the nearest garage face. Local unstriped apron polygons meet each variable mapped front and exclude the occupied building; the generic outer white stripe therefore stays outside all garage bays. Mapped plan registration has approximately±2m uncertainty. Facade/roof dimensions remain reconstructed. Paving stays beyond a closed pit wall; racing XYZ, banking and handling are unchanged. See pit-dimension-review.json.",
+    "former_generic_registration": "See pit-lane.json for full historical record.",
+    "former_registration_status": "Superseded by actual retained footprint. Root restores the original shoulder lattice before applying this profile."
+  },
+  "grounding": "Each body/garage bay follows the nearest canonical road grade. Exact occupied-footprint strips replace only roof-contaminated DSM ground, with local road-level uncertainty±1m; no broad surrounding land flattening or road-physics change. Roof tops/soffits are closed and remain within the actual footprint plus1.5m roadward canopy overhang.",
+  "ground_and_facade_uncertainty_m": 1.0,
+  "plan_registration_uncertainty_m": 2.0,
+  "emitted_geometry_proof": {
+    "path": "build/reviews/resume-20261112/china-mapped-pit-source-proof.json",
+    "sha256": "dacd66a7cd8559675afee330038943c94729766d15892e29f159ca9a1a5ffe1e",
+    "whole_road_structural_overlap_m2": 0.0,
+    "roof_minimum_whole_road_clearance_m": 17.136154762883265,
+    "finite_vertices": true,
+    "roof_shell_unpaired_edges_at_1um": 0,
+    "paving_under_occupied_body_m2": 0.0,
+    "white_stripe_under_occupied_body_m2": 0.0,
+    "extra_corridors_added": 0
+  },
+  "reference_pixels_shipped": false,
+  "runtime_approval": false,
+  "section_a_complex": {
+    "source_osm_id": 107371135,
+    "source_tagged_height_m": 35,
+    "main_stand_native_m": [
+      3292,
+      3681
+    ],
+    "main_roof_left_lane_m": [
+      17,
+      69
+    ],
+    "estimated_main_roof_front_rear_height_m": [
+      27,
+      34.5
+    ],
+    "crossing_centerline_ranges_m": [
+      [
+        3292,
+        3321
+      ],
+      [
+        3651,
+        3681
+      ]
+    ],
+    "crossing_center_stations_m": [
+      3306.5,
+      3666
+    ],
+    "estimated_wing_clearance_m": 23.3,
+    "estimated_wing_roof_height_m": [
+      29,
+      32.5
+    ],
+    "pit_side_towers": 2,
+    "note": "Actual20-point SectionA footprint fixes main-roof and real crossing-wing outlines. Old450m mainstand and50×166m crossing boxes were larger/misregistered. Genuine crossing rooms remain above the track with unchanged23.3m reconstructed clearance. Two RIGHT pit-side support towers replace four generic cylinders; their13×16.5m radii and23.3m heights are estimates. The tagged35m is the overall complex envelope, not a measured roof-curve section.",
+    "proof": "build/reviews/resume-20261112/china-complex-source-proof.json",
+    "runtime_capture_stations_m": [
+      3250,
+      3306.5,
+      3350,
+      3615,
+      3666,
+      3710
+    ],
+    "proof_sha256": "8cccbe92d35179295d71e6af0a52478810b040684042378a90a093260143d540",
+    "entry_wing_direct_reference_seconds": [
+      706,
+      707,
+      708
+    ],
+    "exit_wing_direct_reference_seconds": [
+      626,
+      682
+    ],
+    "former_declared_simplification": "Exact707/708s and626/682s show white lens-shaped front fascia with two oval dark openings. The current closed crossing loft restores source plan dimensions and underclearance but simplifies that distinctive nose detail; a further source exception is pending coordination, and no fidelity approval is claimed.",
+    "wing_nose_correction": "See wing-nose-review.json. Closed white lens fronts and oval apertures replace the former simplified nose; packaged appearance remains unreviewed."
+  },
+  "variable_apron": {
+    "constant_paving_outer_offset_m": 18.4,
+    "geometry": "Original unstriped Runoff polygons from that constant edge to each retained garage-front segment, clipped against exact occupied building and all road arms, projected to the adjacent native road plane. No extra_corridors or access through the closed pit wall.",
+    "stripe_clearance": "The shared outer stripe is0.4m inward of this constant paving edge, before every garage face.",
+    "driving_envelope_changed": false
+  },
+  "source_frame_hashes": [
+    {
+      "path": "build/reviews/china/reference/detail-0610.jpg",
+      "sha256": "61c93e258ff0c6ff11958084ba639f49acfd26382bfa1a678b2de015c8cb8e9a"
+    },
+    {
+      "path": "build/reviews/china/reference/detail-0618.jpg",
+      "sha256": "66f3563ed02db41d6478dd523483a4af98e8e58d94bf127c01b569be5a0c85f0"
+    },
+    {
+      "path": "build/reviews/china/reference/detail-0622.jpg",
+      "sha256": "d92e7cb72a2fffdbdb965255c1a696d83d029b6cb247740f8f3ed45a71b16246"
+    },
+    {
+      "path": "build/reviews/china/reference/detail-0626.jpg",
+      "sha256": "98e05fa3c04d8817898da6c9897b9060c5c14f0d5a4c4c7719dcf59c30d6778e"
+    },
+    {
+      "path": "build/reviews/china/reference/detail-0682.jpg",
+      "sha256": "80d3e68437646e562d94c2372e6186b8cefaf92bbb43984c61f0fa685bd8064a"
+    },
+    {
+      "path": "build/reviews/china/reference/detail-0706.jpg",
+      "sha256": "d7e5e1bce01adea1b04a1089da0d8ed045231c1ed5169b60d1b7d7e94aaadde8"
+    },
+    {
+      "path": "build/reviews/china/reference/detail-0710.jpg",
+      "sha256": "adddd10611652031781c37e84e499c85740b24ab680b65770e741096bb2ab8b0"
+    },
+    {
+      "path": "build/reviews/china/reference/resume-0707.jpg",
+      "sha256": "d19f41199e229fe876250d43ed06d870ac241fdb5c0d4ed24281730360c1bdbe"
+    },
+    {
+      "path": "build/reviews/china/reference/resume-0708.jpg",
+      "sha256": "fcc13a1a34b90758db5f1f2b4aa3fabffda7426a9129a297302c58f08fdb9645"
+    }
+  ],
+  "roof_closure": "Roof tops, undersides and side skins share the exact tessellated boundary. Closed triangle-edge counts, not just plan containment, verify the curved folds and concave ends."
+}

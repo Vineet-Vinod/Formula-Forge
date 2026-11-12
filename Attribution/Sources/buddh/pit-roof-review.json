@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-12",
+  "circuit": "buddh",
+  "issue": "The earlier pit canopy used the full 401.6 m by 118.8 m compound bounding frame. It covered 19,587 m\u00b2, including 15,370 m\u00b2 outside the actual articulated pit footprint. It did not cross the racing road; the defect was unsupported courtyard roofing.",
+  "mapped_footprint_id": 188019421,
+  "source_support": {
+    "reference": "Saved/Refs/india.mp4",
+    "timestamps_s": [
+      113,
+      117,
+      121
+    ],
+    "observation": "Layered side-mounted control roofs sit over the actual garage wings. The separate main grandstand canopy remains on the left, with open sky between."
+  },
+  "correction": "Retain two groups and four layered fins. Register each group to its actual mapped garage wing at native 528 m and 804 m. Restrict overhang to at most 6 m toward the pit apron. Keep support columns inside those wings and close each slab with a downward soffit and edge fascia. Remove the roof-contaminated ground only inside the mapped pit footprint.",
+  "foundation": "Use the low mapped building-foot ground already used by its facade, not the compound centroid DSM roof. Its value depends on the current joined road profile. The lowest fin clears the existing 11 m office roof.",
+  "estimates": {
+    "roof_group_stations_m": [
+      528,
+      804
+    ],
+    "group_station_uncertainty_m": 50,
+    "top_fin_heights_m": [
+      20,
+      24
+    ],
+    "maximum_front_overhang_m": 6,
+    "slab_thickness_m": 0.3,
+    "fin_spacing_m": 3.2,
+    "note": "Locations are mapped wing registrations. Fine heights, spacing and overhang are original visual estimates."
+  },
+  "proof": {
+    "module_sha256": "86e265f6bc8ff353f23a0cf76515b78865ce85a5b2619f3f1e8a5125c149f807",
+    "scenarios": [
+      {
+        "width_scenario": "currentnativeCSV",
+        "whole_venue_building_road_xy_overlap_m2": 0.0,
+        "roof_union_m2": 5117.424432022331,
+        "roof_outside_actual_pit_m2": 900.4800000000001,
+        "roof_outside_directional6m_front_envelope_m2": 0.0,
+        "roof_body_unpaired_directed_edges": 0,
+        "roof_top_all_up": true,
+        "roof_soffit_all_down": true,
+        "counts": {
+          "Building_BuddhPitRoof": 46,
+          "Building_BuddhPitSoffit": 46,
+          "Building_BuddhPitFascia": 124,
+          "Building_BuddhPitColumns": 72
+        },
+        "world_z_range_m": [
+          12.714872742839006,
+          26.514872742839007
+        ],
+        "building_terrain_cutout_exact_m2": 0.0,
+        "memory": "VmHWM:\t  101380 kB"
+      },
+      {
+        "width_scenario": "predicted18\u201325m explicitsourcecontrols",
+        "whole_venue_building_road_xy_overlap_m2": 0.0,
+        "roof_union_m2": 5117.424432022331,
+        "roof_outside_actual_pit_m2": 900.4800000000001,
+        "roof_outside_directional6m_front_envelope_m2": 0.0,
+        "roof_body_unpaired_directed_edges": 0,
+        "roof_top_all_up": true,
+        "roof_soffit_all_down": true,
+        "counts": {
+          "Building_BuddhPitRoof": 46,
+          "Building_BuddhPitSoffit": 46,
+          "Building_BuddhPitFascia": 124,
+          "Building_BuddhPitColumns": 72
+        },
+        "world_z_range_m": [
+          12.313597231153015,
+          26.113597231153015
+        ],
+        "building_terrain_cutout_exact_m2": 0.0,
+        "memory": "VmHWM:\t  112652 kB"
+      }
+    ]
+  },
+  "separate_findings": {
+    "whole_road_roof_claim": "Both original and corrected structures have zero racing-road XY overlap. Perspective alone was not an over-track roof defect.",
+    "main_stand": "The mapped left stand canopy already fits its footprint and matches the supplied reference. It is preserved.",
+    "width_and_elevation": "Registered width and local FIA climb corrections are recorded separately. Root must synchronize and rebuild native surfaces before the final runtime review."
+  },
+  "visual_review_status": "Awaiting regenerated packaged comparison; source proof is not visual approval."
+}

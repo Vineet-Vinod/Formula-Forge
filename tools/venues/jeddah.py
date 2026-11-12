@@ -12,10 +12,15 @@ from venues.coastal_water import coastal_water
 from venues.east_architecture import (
     facade,
     frame,
-    layered_pit_roofs,
     mapped,
     roof_polygon,
     trees,
+)
+from venues.jeddah_facilities import (
+    mapped_stands,
+    pit_compound,
+    t27_pavilion,
+    t27_tree_belt,
 )
 
 
@@ -66,8 +71,11 @@ def circuit_edges(scene: CircuitScene) -> None:
         scene.braking_boards(apex, side, distances=distances)
 
     for start, end, side, material in (
-        (5830, 6174, 1, "PanelGreen"),
+        (5290, 6174, 1, "PanelGreen"),
         (0, 200, 1, "PanelGreen"),
+        (5290, 5900, -1, "PanelGreen"),
+        (5900, 6174, -1, "PanelStc"),
+        (0, 200, -1, "PanelStc"),
         (250, 650, 1, "PanelYellow"),
         (370, 650, -1, "PanelYellow"),
         (2150, 2380, 1, "PanelGreen"),
@@ -211,40 +219,10 @@ def construction_tower(scene: CircuitScene) -> None:
 def build_venue(scene: CircuitScene) -> None:
     circuit_edges(scene)
     coastal_water(scene)
-    scene.stand(
-        5810, 6140, -1, rows=22, setback=5, roofed=True, seat_material="SeatBlue"
-    )
-    scene.stand(
-        180, 360, -1, rows=15, setback=7, roofed=False, seat_material="SeatBlue"
-    )
-    scene.pit_building(5830, 210, 1, depth=26, height=17, levels=3)
-    layered_pit_roofs(scene, 5830, 210, 1, 2, 18.5, 25)
-    for station in range(5840, 6360, 16):
-        p = scene.at(station)
-        for lane in (p.half_width + 14, p.half_width + 38):
-            scene.beam(
-                "Building_CornichePits",
-                "White",
-                p.point(lane),
-                p.point(lane, 19.5),
-                0.45,
-            )
-        a, b = scene.at(station), scene.at(station + 14)
-        scene.beam(
-            "Building_CornichePits",
-            "White",
-            a.point(a.half_width + 13, 11),
-            b.point(b.half_width + 13, 11),
-            0.5,
-            0.4,
-        )
-        scene.banner(
-            a.point(a.half_width + 12.7, 6.5),
-            b.point(b.half_width + 12.7, 6.5),
-            1.25,
-            "Fence",
-            "Building_Balcony",
-        )
+    mapped_stands(scene)
+    pit_compound(scene)
+    t27_pavilion(scene)
+    t27_tree_belt(scene)
     construction_tower(scene)
     facade(scene, 1258744123, 25, "modern", "White")
     for building in scene.buildings:

@@ -508,5 +508,307 @@
     "removed": "Invented inside(-LEFT)2240\u20132380m generic12row stand/setback27m.",
     "replacement": "None. Existing grass, protection, sponsor gantry, other stands and road/profile preserved.",
     "evidence": "t5-stand-review.json"
+  },
+  "width_profile": {
+    "provider": "Autodromo Internacional do Algarve operator technical characteristics",
+    "source_url": "https://autodromodoalgarve.com/the-park/racing-track/",
+    "retrieved": "2026-11-12",
+    "operator_track_width_m": 14,
+    "operator_main_straight_width_m": 18,
+    "controls_m": [
+      [
+        0,
+        14
+      ],
+      [
+        224.47155431389328,
+        14
+      ],
+      [
+        334.77490466065757,
+        18
+      ],
+      [
+        1176.879672668135,
+        18
+      ],
+      [
+        1281.138151173855,
+        14
+      ],
+      [
+        4653,
+        14
+      ]
+    ],
+    "registration": "After the combined full Galp and direct T1 route correction, match each main-straight width knot to the same geographic road point using station-registration-corrections.json. Nominal14m elsewhere and18m on the straight are operator-supported; exact transition positions remain estimates. Native seams0/4653 stay14m.",
+    "local_width_uncertainty_m": 1.0,
+    "transition_station_uncertainty_m": 30,
+    "excludes": "Pit lane and green painted runoff outside racing white lines.",
+    "retained_pre_alignment_controls_m": [
+      [
+        0,
+        14
+      ],
+      [
+        200,
+        14
+      ],
+      [
+        310,
+        18
+      ],
+      [
+        1150,
+        18
+      ],
+      [
+        1254,
+        14
+      ],
+      [
+        4653,
+        14
+      ]
+    ],
+    "station_registration_file": "station-registration-corrections.json"
+  },
+  "galp_scenery_correction": {
+    "schema_version": 1,
+    "date": "2026-11-12",
+    "status": "Source geometry frozen against the corrected route and second native protection export. Fresh packaged runtime appearance review remains pending.",
+    "reference": {
+      "file": "Saved/Refs/portugal.mp4",
+      "direct_seconds": [
+        666,
+        667.5,
+        669
+      ],
+      "observed": "A continuous final-right sequence shows pale paved escape and a green edge band on driver left, stepped Sul spectator banks and a tree belt outside, and a tapering black advertising island behind the inside right red/white kerb. The main grandstand remains ahead on exit.",
+      "registration": "Direct road direction, minimap, named Galp mapped way and fixed pit/main-stand silhouettes; never elapsed-time interpolation."
+    },
+    "operator_source": {
+      "url": "https://autodromodoalgarve.com/wp-content/uploads/2020/07/Stands_map_novo_PT.pdf",
+      "label": "3 Sul",
+      "observation": "Operator seating blocks follow the outside of the final right arc. The map is illustrative, not georeferenced survey geometry.",
+      "retained_reference_pdf_sha256": "69450f25901b9573f984066b06f9ae66bb3bacfe6d87178b70719f09dd43cd81"
+    },
+    "mapped_source": {
+      "galp_way": 363133195,
+      "sul_stand_footprint": "No corresponding grandstand polygon is present in the retained OSM dataset. Nearby157850564 is a67.5m\u00b2 hut, not a stand roof. Do not expand that hut into grandstand geometry.",
+      "coordinate_frame": "Combined full Galp and direct T1 mapped variant; fixed original WGS84 local frame. All local decor ranges are reconstructed in this corrected native phase.",
+      "actual_galp_native_range_m": [
+        4607.9449301823815,
+        193.53631937363406
+      ],
+      "actual_galp_apex_estimate_m": 75.68960101154043,
+      "new_uniform_scale": 1.0006930822456528,
+      "station_registration_file": "station-registration-corrections.json"
+    },
+    "paving": {
+      "outer_left": {
+        "native_range_m": [
+          4530,
+          230
+        ],
+        "wraps_origin": true,
+        "maximum_width_from_road_edge_m": 24,
+        "material": "Runoff",
+        "green_band_from_road_edge_m": [
+          0.15,
+          3.0
+        ],
+        "end_transition": "Outside paving grows from3m to24m over the first50m and returns to3m over the final40m. Estimated smooth end tapers avoid a full-width rectangular slab at the adjoining grass.",
+        "height_contract": "Each approximately2m paved cell follows the local road branch. Local width registrations keep adjacent terrain continuous around the tapered edge."
+      },
+      "inner_right": {
+        "native_range_m": [
+          10,
+          130
+        ],
+        "shape": "Tapering curvilinear triangular island, tips at native10/130m, maximum depth22.4m near native65m, inner edge1.4m beyond the road edge.",
+        "material": "RunoffBlack",
+        "kerb": "Red/white inside right; no invented outside-left kerb.",
+        "lettering": "Original white PORTIM\u00c3O on black. Source lettering is foreshortened and not identified confidently, so no sponsor attribution is invented.",
+        "lettering_length_depth_m": [
+          36,
+          7
+        ],
+        "material_key": "GroundAlgarve",
+        "paint_lift_m": 0.005,
+        "terrain_join": "Two-metre local width registrations keep adjacent ground at the same road plane around the triangular paving, avoiding a floating apron edge. Only the actual triangle-shaped cells enter the physical corridor union."
+      },
+      "physical_contract": "Observed pavement enters extra_corridors for root boundary/drive-surface synchronization. White-line lap limits remain separate from traversable escape paving."
+    },
+    "sul_seating": {
+      "blocks": 8,
+      "native_first_start_m": 4510,
+      "block_length_m": 25,
+      "block_spacing_m": 35,
+      "driver_side": -1,
+      "road_edge_setback_m": 32,
+      "rows": 11,
+      "tread_depth_m": 0.9,
+      "minimum_riser_m": 0.38,
+      "roofed_blocks": 3,
+      "height_method": "Bay front/rear ground samples constrain each tread. Tops rise monotonically and never sink below any cell corner. End/rear closures and rear roof columns reach actual ground.",
+      "source_uncertainty": "Approximate15m positional uncertainty; row count and bay/roof dimensions are reference reconstruction estimates, not an OSM or engineering survey."
+    },
+    "tree_belt": {
+      "native_range_unwrapped_m": [
+        4490,
+        4922
+      ],
+      "road_edge_setback_m": [
+        51,
+        57
+      ],
+      "nominal_spacing_m": 12,
+      "height_m": [
+        5.5,
+        8.5
+      ],
+      "method": "Grounded irregular broadleaf/olive-like silhouettes behind seating. Roots avoid road, paved escape and mapped buildings."
+    },
+    "shared_changes": "Only the Portim\u00e3o artwork branch and additive GroundAlgarve ground-roughness key. Existing material values/branches and accepted assets unchanged.",
+    "pending_gates": [
+      "Register all wrap ranges to the finalized Galp roadCSV.",
+      "Count every new structural triangle against the full road mask and apron bounds.",
+      "Verify exact base/paint projection, no Grass overlap, finite triangles and ground-root/support contacts.",
+      "Root regenerates physical envelope after route and scenery freeze, then supplies fresh matched cockpit views."
+    ],
+    "pit_profile_registration": {
+      "profile": "pit-lane.json",
+      "range_m": [
+        560.3386899897871,
+        976.378573574755
+      ],
+      "outer_offset_m": 17.45,
+      "registration": "Same mapped garage footprint under corrected road stationing and operator18m width; original source ranges/20m offset retained as historical."
+    },
+    "corrected_route_source_proof": {
+      "road_sha256": "a9c30fd466deb5637ff6b91ef4a248e0aa662f5d9b9b7d8a709121aa6a697453",
+      "barriers_sha256": "ddce20c5036a0d7de49aa85495fea2714c61ab39fe412eb513d0146928a2afe9",
+      "module_sha256": "62a091fcb952b94630b1e03a2d1c142a5fc3638db7e02666ec2fae4149409e68",
+      "structural_road_overlap_m2": 0,
+      "structural_paving_overlap_m2": 0,
+      "paving_area_m2": 9377.074192738066,
+      "inner_black_island_area_m2": 1134.3159536025255,
+      "paint_area_m2": 251.99999999999994,
+      "paint_outside_black_m2": 0.0,
+      "max_paint_height_error_from_5mm_m": 4.3342066047280525e-15,
+      "paint_barrier_intersection_m": 0.0,
+      "paving_interior_barrier_intersection_m": 0.0,
+      "black_interior_barrier_intersection_m": 0.0,
+      "outer_seam_max_height_above_ground_m": 0.01600000000000046,
+      "outer_seam_min_height_above_ground_m": 0.015999999999999792,
+      "tree_roots": 36,
+      "roots_in_paving": 0,
+      "max_tree_root_ground_error_m": 0.0,
+      "finite_vertices": true,
+      "runtime_approval": false
+    }
+  },
+  "registered_feature_remap_2026_11_12": {
+    "source": "station-registration-corrections.json",
+    "method": "Match unchanged geographic corner/stand locations after the combined actual Galp and direct T1 route correction. Do not interpolate positions through the rejected old T1 S-detour.",
+    "features": [
+      {
+        "feature": "apex braking boards",
+        "old_station_m": 1254,
+        "new_station_m": 1281.1381572534606
+      },
+      {
+        "feature": "apex braking boards",
+        "old_station_m": 1602,
+        "new_station_m": 1597.4433533999413
+      },
+      {
+        "feature": "apex braking boards",
+        "old_station_m": 2332,
+        "new_station_m": 2329.251761388423
+      },
+      {
+        "feature": "apex braking boards",
+        "old_station_m": 2952,
+        "new_station_m": 2950.788149834777
+      },
+      {
+        "feature": "apex braking boards",
+        "old_station_m": 3327,
+        "new_station_m": 3326.722682860008
+      },
+      {
+        "feature": "ordinary mapped straight stand",
+        "old_range_m": [
+          470,
+          1060
+        ],
+        "new_range_m": [
+          495.1758243840004,
+          1086.6541987811313
+        ]
+      },
+      {
+        "feature": "ordinary mapped straight stand",
+        "old_range_m": [
+          1430,
+          1540
+        ],
+        "new_range_m": [
+          1425.0708317356573,
+          1535.296421851041
+        ]
+      },
+      {
+        "feature": "ordinary mapped straight stand",
+        "old_range_m": [
+          3480,
+          3570
+        ],
+        "new_range_m": [
+          3480.1056674334554,
+          3570.3303751314165
+        ]
+      }
+    ],
+    "first_corner_reconstruction": {
+      "reference_seconds": [
+        152,
+        154,
+        156,
+        158,
+        160
+      ],
+      "observed": "A single rightT1 leads directly toward the next right-hand sequence. Direct156/158/160s show a genuine outer-left red/white kerb and green exit strip. This is not evidence of an extra left chicane.",
+      "inside_right_kerb_range_m": [
+        1250,
+        1305
+      ],
+      "outside_left_kerb_range_m": [
+        1210,
+        1360
+      ],
+      "source_station_uncertainty_m": 25,
+      "method": "Reconstruct around the corrected T1core1260\u20131291m and its actual approach/exit. The old1300\u20131360LEFT kerb location overlaps a real exit feature, so it is retained geographically on the corrected branch rather than deleted as a false chicane.",
+      "outer_black_strip": {
+        "native_range_m": [
+          1285,
+          1340
+        ],
+        "side": -1,
+        "offsets_beyond_road_edge_m": [
+          3.8,
+          8.0
+        ],
+        "source": "Direct158s shows a black paved strip outside the green T1exit band. By160s the outer area is pale gravel again. Endpoints and width are approximate, with25m station/2m width uncertainty.",
+        "surface_contract": "Ground paint follows the existing apron triangles at+5mm, adjacent to the green strip without area overlap. It does not create a second coplanar base surface or change the escape extent."
+      }
+    },
+    "native_status": "No native writes; root updates the road/profile/protection and supplies new CSV for final geometry proof."
+  },
+  "architecture_dimensions_correction_20261112": {
+    "source": "mainstand-dimensions-correction.json",
+    "status": "Source corrected; fresh packaged images and independent reference review still required."
   }
 }

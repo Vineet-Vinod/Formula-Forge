@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-12",
+  "circuit": "japan",
+  "source_video": "Saved/Refs/japan.mp4",
+  "reference_frames": [
+    {
+      "seconds": 869,
+      "reference_sha256": "982d7795580aaf268207611447613e2e7b4887a6a415d0d173b6f0b08a1c2251"
+    },
+    {
+      "seconds": 870.5,
+      "reference_sha256": "7c9bf614cac84ed42d1b6812c5eb92ee3d962b51d8075f2ab0774194fbd4a2c1"
+    },
+    {
+      "seconds": 872,
+      "reference_sha256": "3753eb846c33ed1f2f575eac242424c82c5c7a51417fe94546e013fe5788b259"
+    }
+  ],
+  "native_ranges": [
+    {
+      "start_m": 2235,
+      "end_m": 2430,
+      "side": -1,
+      "material": "PanelAmericanExpress"
+    },
+    {
+      "start_m": 2235,
+      "end_m": 2430,
+      "side": 1,
+      "material": "PanelAmericanExpress"
+    }
+  ],
+  "observation": "The direct underpass and exit sequence shows continuous blue American Express event wall panels on both sides of the lower branch. The previous module branded only the upper deck, leaving bare lower Armco despite the reference. Range endpoints are visual estimates within roughly 35 m. Original typeset art is used; no source pixels are shipped.",
+  "abutment_assessment": "The real reference contains a large left concrete abutment, mostly in bridge shadow, with a sloping end. Current deck underside to lower-road height is about 5.48 m. Different camera pose and shadow prevent inferring an oversized support from image width alone. The existing structural abutment is retained; no fake dark material or unsupported soil flattening is introduced. Wing-wall taper remains unverified against backing soil.",
+  "changed_geometry": "Collision-aligned branding panels only. Road XYZ, width, shoulders, deck separation, abutment and terrain positions are unchanged.",
+  "module_sha256": "2b596713dedb384aa088da8973e9424140a6e05b59f408aff1738c517960334c",
+  "runtime_approval": false
+}

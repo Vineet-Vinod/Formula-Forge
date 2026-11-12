@@ -12,10 +12,12 @@ from shapely.geometry import Polygon
 from shapely.ops import unary_union
 
 from venues.west_architecture import apron_band, mapped_building, mast
+from venues.zandvoort_water import water_bodies
 
 
 def build_venue(scene: CircuitScene) -> None:
     circuit_edges(scene)
+    water_bodies(scene)
     scene.branding(4050, 4250, 1, 'PanelWhite')
     scene.branding(4050, 4250, -1, 'PanelWhite')
     scene.branding(0, 280, 1, 'PanelWhite')

@@ -42,6 +42,14 @@ closed envelope as below. The source builder also consumes this registration.
 Pit paving is a visual service area beyond the closed driving boundary; it must
 not enlarge that boundary. Include garage bays, foundations and roof structure.
 
+When relocating or shortening a pit, restore the retained original shoulder
+lattice from `shoulder-baseline.json` before applying the new registration. Leaving
+the old inset in place can put a closed wall on both sides of the straight.
+Preserve locally varying original widths; a constant replacement loses them.
+Check the driving side against forward-facing footage and a mapped event plan.
+Primary building lengths and actual stand footprints take precedence over generic
+station intervals. Audit both ends, depth, seating coverage and roof coverage.
+
 Use typed `sections` in `shoulder-corrections.json` for locally registered
 protection distances, with explicit side and cubic transition spans. Check the
 exported columns against the intended physical side. An overly wide shoulder
@@ -84,6 +92,19 @@ lap passed. Trace suspicious pixels to their source triangles before changing
 terrain or the driving line. Check winding, overlapping surfaces and the union
 of the road footprint, rather than covering an artifact with another polygon.
 
+Check black patches with the exact recorded camera pose and sunlight direction.
+At Albert Park, a separate dark strip hit intact upward-facing paving; opaque
+leaves blocked its sunlight. Include the foliage atlas alpha in shadow-ray
+checks. Keep that finding separate from a missing face or folded curb elsewhere.
+
+Audit visible coastlines and rivers explicitly. Singapore, Jeddah and Baku once
+had no water geometry, so the urban terrain material filled their bays. Retain
+complete shoreline relations, island and pier masks, wet/dry witness points and
+the water's relative vertical datum. Bridge crossings need water below the road.
+Water must never enlarge the physical driving envelope. Compare DSM terrain
+against mapped buildings too: Singapore's apparent hills included the roofs of
+The Shoppes and Flower Dome. Replace those footprints with grounded architecture.
+
 Use ground elevations for dense city terrain. A surface model can include hotel
 roofs and turn the gaps between stacked streets into cliffs. Monaco retains IGN
 RGE ALTI samples in `scenery-ground.json` and the hashed compressed grid it names.
@@ -121,6 +142,30 @@ union; apply its shoulder recipe and rebuild/export directly.
 The envelope also excludes occupied building footprints with a small foundation
 clearance. Check the visible wall against the actual garage and stand fronts;
 a barrier hidden behind a foundation still passes a centreline-only test.
+
+Apply retained controls with `circuit_profiles.py --alignment <slug>` for XY,
+`--racing <slug>` for elevation, width and registered official turns, and the
+default operation for pit/shoulder corrections. Export and compile after each
+dependent native change. The final `alignment-refinement.json`, when present,
+takes precedence over `alignment-corrections.json`. Preserve its frozen input
+and the recorded composed source-to-world transformation. If the primary event
+curve changes, rebuild refinement from a fresh export of that curve; refining
+the previous frozen input would silently discard the new event geometry.
+
+`circuit_alignment.py` reconstructs the explicitly evidenced arcs; its optional
+`--refine-sigma` operation removes bounded mapping noise and retains a one-metre
+movement limit. It does not select the correct event route. Portimão's retained
+replacement alignment includes two route changes and must not be reconstructed
+from its historical false-route baseline. Avoid running the legacy global
+`build_circuits.py` generator over curated source decisions without checking
+every output it would replace.
+
+Use `circuit_ground.py <slug>` only for a venue with a validated
+`classified-ground.json` and retained classified points. It derives the road
+profile and surrounding grid in the current registered frame. Retained regional
+ground grids are materialised by `circuit_terrain.py`; their horizontal scale
+can change after alignment edits, while source heights and datum stay fixed.
+Use bounded processes for either operation, alongside the machine memory monitor.
 
 Retained `elevation-corrections.json`, `banking-corrections.json`, width recipes,
 layout reviews and pit-shoulder corrections are rebuild inputs. They must survive

@@ -1,9 +1,19 @@
 {
-  "start_m": 5180,
-  "end_m": 220,
+  "start_m": 5130,
+  "end_m": 135,
   "side": 1,
-  "outer_offset_m": 13.0,
+  "outer_offset_m": 17.5,
   "shoulder_m": 0.1,
   "transition_m": 25.0,
-  "source_note": "Custom Sakhir garage frontage sakhir_pits(scene), native5180→220m driverRIGHT, lies exactly13m beyond the road edge. It replaces the earlier common pit_building skin with recessed garages, balcony fascia and folded/scalloped roof bays; actual source bounds and paving registration remain unchanged. Reference120/130/170/185s confirms the garage/pit-wall side. Width is registration to the authored geometry, not a measured real-world pit-lane width."
+  "source_note": "Actual mapped pit compound187123416 replaces the former generic block. The full mapped compound projects to native5137.31→126.46m across zero. Road-facing garage segments stand17.893–18.598m and22.645–22.701m beyond the road edge. The paving control is rounded by less than10m at the longitudinal ends and ends at a constant17.5m offset before the nearest garage face. Local unstriped apron polygons meet each variable mapped front and exclude the occupied building; the generic outer white stripe therefore stays outside all garage bays. Mapped plan registration has approximately±2m uncertainty. Facade/roof dimensions remain reconstructed. Paving stays beyond a closed pit wall; racing XYZ, banking and handling are unchanged. See pit-dimension-review.json.",
+  "former_generic_registration": {
+    "start_m": 5180,
+    "end_m": 220,
+    "side": 1,
+    "outer_offset_m": 13.0,
+    "shoulder_m": 0.1,
+    "transition_m": 25.0,
+    "source_note": "Custom Sakhir garage frontage sakhir_pits(scene), native5180→220m driverRIGHT, lies exactly13m beyond the road edge. It replaces the earlier common pit_building skin with recessed garages, balcony fascia and folded/scalloped roof bays; actual source bounds and paving registration remain unchanged. Reference120/130/170/185s confirms the garage/pit-wall side. Width is registration to the authored geometry, not a measured real-world pit-lane width."
+  },
+  "former_registration_status": "Superseded by actual retained footprint. Root restores the original shoulder lattice before applying this profile."
 }

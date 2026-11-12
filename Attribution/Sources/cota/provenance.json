@@ -19,37 +19,23 @@
     "chosen": "relation/6537729",
     "measured_plan_m": 5504.318,
     "published_m": 5513,
-    "uniform_scale": 1.001577,
-    "scale_rule": "Applied only when the mapped plan was within 1.5% of a published length. Larger gaps keep the mapped length."
+    "uniform_scale": 1.0009214766085863,
+    "scale_rule": "Composed source projection and native32-subdivision Catmull length normalization, including the disclosed local corner reconstruction/refinement stages. Original source projection is retained separately; see scene-registration.json.",
+    "source_projection_uniform_scale": 1.001577
   },
   "elevation": {
-    "provider": "Formula1 official published longitudinal road-profile chart; original numericaldigitisation",
-    "dataset": "2016circuitTopographyprofile",
+    "provider": "United States Geological Survey,3D Elevation Program",
+    "dataset": "TX_Central_B1_2017 one-metre classified bare-earth DEM",
+    "source_url": "https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer",
     "recipe": "elevation-corrections.json",
-    "relative_datum": "Chart minimumsubtracted, absolutechartaltitude notclaimed localMSL.",
-    "relief_m": 30.9,
-    "uncertainty_m": 1.5,
-    "source_url": "https://www.formula1.com/en/latest/article/highs-and-lows-which-f1-track-has-the-most-elevation-changes-.7I9JEcBw3R2AqXbnJ6hyvc.7I9JEcBw3R2AqXbnJ6hyvc",
-    "previous_source": {
-      "provider": "Open-Meteo Elevation API",
-      "dataset": "Copernicus DEM GLO-90",
-      "dataset_note": "Surface model, about 90 m, includes roofs and canopy. Not a bare-earth racing survey.",
-      "licence": "Copernicus DEM, see https://registry.opendata.aws/copernicus-dem/",
-      "retrieved": "2026-11-04",
-      "sample_spacing_m": 27.8,
-      "smoothing": "Two circular binomial passes on the coarse samples, then linear interpolation onto the 4 m centreline. Isolated samples more than 6 m above their neighbours were treated as overpasses or roofs.",
-      "relative_datum": "Heights stored after subtracting the lap minimum.",
-      "removed_minimum_m": 151.816,
-      "relief_m": 21.933,
-      "uncertainty_m": 5,
-      "deck": null
-    },
-    "limitations": [
-      "Publisheddiagram is not an engineering/as-built survey. Smallresurfacingbumps, bankcrosssections and underpassdeckdetails need separatecontrols.",
-      "Graph/profile registration is approximate and depends on sourceplanlandmarks; do not claim geodetic precision from pixelreading.",
-      "Existingnativewidths/plan/vehicleparameters preserved. Landscapeterrain remains separatelysourced."
-    ],
-    "layout_note": "T1relativeclimb30.9m is independently stated in official article. Preserve rollingesses and backstraight crests by everycorner registration; no use of marketing133ft as surveyed roadheight."
+    "scenery_source": "scenery-ground.json",
+    "licence": "USGS public domain",
+    "source_acquisition": "2017-01-28 through2017-03-22",
+    "removed_minimum_m": 151.06596096433813,
+    "relief_m": 30.95640916103241,
+    "source_controls": "elevation-corrections.json",
+    "historical_source": "elevation/historical-f1-chart-profile.json.gz",
+    "independent_check": "Actual source relief30.956m agrees with officialF1 value30.9m; no use of conflicting133ft marketing as a scale."
   },
   "width": {
     "base_m": 12.0,
@@ -68,5 +54,26 @@
     "licence": "ODbL 1.0"
   },
   "protection": "Both sides are walled at the shoulder offset. Pit entry is closed. That closure is a game boundary, not a claim about the real pit lane.",
-  "not_claimed": "No lidar, no orthophoto registration, no cockpit capture in this build. Centimetre storage is not centimetre accuracy."
+  "not_claimed": "No lidar, no orthophoto registration, no cockpit capture in this build. Centimetre storage is not centimetre accuracy.",
+  "scene_coordinate_registration": {
+    "source_projection_uniform_scale": 1.001577,
+    "effective_scene_uniform_scale": 1.0009214766085863,
+    "native_normalization_chain": {
+      "initial_corrected_controls_factor": 0.998973061056698,
+      "initial_catmull_length_m": 5518.667059965432,
+      "refinement_controls_factor": 1.0,
+      "refinement_catmull_length_m": null,
+      "post_original_chain_factor": 0.998973061056698,
+      "fitted_minus_chain_factor": -2.538588899092531e-07,
+      "baseline_factor": 1.0003728305588235,
+      "all_chain_factor": 0.9993455087413015,
+      "effective_scene_uniform_scale": 1.0009214766085863,
+      "method": "Replicate exact float32 native32-step Catmull expression and float32 segment norms, double arc accumulation, float32 correction includingUnits17. Compose firstcontrols then refinementcontrols; original native factor independently instrumented. Port hasmixedraw/old-native sourceframe caveat.",
+      "baseline_factor_applied_to_selected_scale": true
+    },
+    "final_road_sha256": "066a25047bf4ac3400fd6c45f48fa0e1aa2605de782849df14602a95ed86a504",
+    "source_basis": "alignment-corrections.json",
+    "source_basis_sha256": "ea73266435e07ba9e6bd4c486c58a8f4a42844215fa252ac915d88fb3eb44de4",
+    "scope": "Scenery WGS84-to-native XY registration only. Native road geometry, physical road widths, elevations, vehicle tuning and camera are not changed by this metadata update. Original corner authoring controls retain their explicitly documented historical coordinate frame."
+  }
 }

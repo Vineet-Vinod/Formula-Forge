@@ -89,7 +89,7 @@
         0,
         700
       ],
-      "name": "Pit straight and T1–2",
+      "name": "Pit straight and T1\u20132",
       "reviewed_video_seconds": [
         72.75,
         155,
@@ -126,7 +126,7 @@
         1500,
         2050
       ],
-      "name": "T3–4 boulevard corners",
+      "name": "T3\u20134 boulevard corners",
       "reviewed_video_seconds": [
         215,
         220
@@ -140,7 +140,7 @@
         2050,
         2600
       ],
-      "name": "T5–7 entry to Old City",
+      "name": "T5\u20137 entry to Old City",
       "reviewed_video_seconds": [
         305.57,
         225,
@@ -155,7 +155,7 @@
         2600,
         3100
       ],
-      "name": "Castle T8–12 climb",
+      "name": "Castle T8\u201312 climb",
       "reviewed_video_seconds": [
         234,
         235,
@@ -163,7 +163,7 @@
         238,
         240
       ],
-      "observed": "Direct234s forward view shows T8approach and left entry with redLenovo barriers.236s shows the narrow castle ramp with rough stone curtain wall/roundturret LEFT and pale façades/catchfence RIGHT.238s is a REAR camera, useful for battlements/turret architecture but not forward corner direction. Preserve the7.6m narrow section and near-zero shoulders.240s is already the upper-city departure.",
+      "observed": "Direct234s forward view shows T8approach and left entry with redLenovo barriers.236s shows the narrow castle ramp with rough stone curtain wall/roundturret LEFT and pale fa\u00e7ades/catchfence RIGHT.238s is a REAR camera, useful for battlements/turret architecture but not forward corner direction. Preserve the7.6m narrow section and near-zero shoulders.240s is already the upper-city departure.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
     },
     {
@@ -172,7 +172,7 @@
         3100,
         3750
       ],
-      "name": "Upper city T13–15 and downhill",
+      "name": "Upper city T13\u201315 and downhill",
       "reviewed_video_seconds": [
         480.18,
         596.59,
@@ -206,7 +206,7 @@
         4550,
         6003
       ],
-      "name": "T17–20 waterfront and long SF return",
+      "name": "T17\u201320 waterfront and long SF return",
       "reviewed_video_seconds": [
         538.38,
         771.2,
@@ -234,7 +234,7 @@
     {
       "title": "Baku promoter castle section description",
       "url": "https://www.bakucitycircuit.com/news/seven-reasons-why-Formula-1-fans-love-Baku",
-      "supports": "The T8–10 castle section narrows to 7.6 m and has no runoff."
+      "supports": "The T8\u201310 castle section narrows to 7.6 m and has no runoff."
     }
   ],
   "uncertainties": [
@@ -260,13 +260,13 @@
       "forward narrow ramp",
       "rear architecture context"
     ],
-    "mapped_section": "Castle frontage and corrected narrow corridor around native2580–2800m",
+    "mapped_section": "Castle frontage and corrected narrow corridor around native2580\u20132800m",
     "source_limitation": "Appearance and topology identify the castle directly. Native camera positions are inferred from corner/footprint registration, not measured or surveyed.",
     "inspection": "Individual640px frames, decoder/filter threads1,1GB virtual cap, observed peak RSS<88MiB each. Reference pixels remain ignored under build/reviews/baku/reference and are not shipped."
   },
   "targeted_registration_review": {
     "method": "Direct appearance/topology checks of retained frames and bounded individual Baku reference seeks; source geometry and all native data unchanged.",
-    "notes": "New bounded individual-frame review closes the castle gap at234/236/238s. Earlier235–245s labels as T5–7 were wrong:235/236arecastle,238rearcastle,240uppercitydeparture,245/247uppercityfastsection.250–256s continue into the late-city/downhill approach before a hard cut toLAP2by258s.363.77/421.98s are ordinary city views and cannot directly validate the castle. Exact station estimates are±60m; no survey or uninterrupted playback-time registration is claimed.",
+    "notes": "New bounded individual-frame review closes the castle gap at234/236/238s. Earlier235\u2013245s labels as T5\u20137 were wrong:235/236arecastle,238rearcastle,240uppercitydeparture,245/247uppercityfastsection.250\u2013256s continue into the late-city/downhill approach before a hard cut toLAP2by258s.363.77/421.98s are ordinary city views and cannot directly validate the castle. Exact station estimates are\u00b160m; no survey or uninterrupted playback-time registration is claimed.",
     "next_gate": "Actual packaged full-lap review and targeted captures in build/reviews/east-final-targets.json; these metadata corrections are not visual approval."
   },
   "msc_wall_band_registration": {
@@ -279,7 +279,7 @@
       245
     ],
     "camera_note": "238/240 s are rear views; 245 s is forward. Reverse screen left/right when reading the rear camera.",
-    "native_anchor": "T8–10 castle topology and retained curtain-wall/building footprints, followed by T11/T12 departure and T13 upper-city return.",
+    "native_anchor": "T8\u201310 castle topology and retained curtain-wall/building footprints, followed by T11/T12 departure and T13 upper-city return.",
     "driver_right_native_range_m": [
       2820,
       3290
@@ -337,7 +337,7 @@
       "corrected_f1_datum_m": -24.7,
       "uniform_shift_m": 4.23191995962036,
       "type": "Same retained GLO-90 DSM scenery, not bare earth. Existing 20 m near-road joins retained; no coastal mask or incompatible vertical datums.",
-      "effects": "384 racing-deck and edge probes change 0 m. Farther building-centroid ground usually rises 4.232 m; near-road building centroids change 0–3.79 m under existing ground joins. No relief rescaling.",
+      "effects": "384 racing-deck and edge probes change 0 m. Farther building-centroid ground usually rises 4.232 m; near-road building centroids change 0\u20133.79 m under existing ground joins. No relief rescaling.",
       "shore_freeboard_before_m": [
         -3.2319199562072765,
         -1.6388157247471833,
@@ -369,5 +369,6 @@
       }
     ],
     "reference_review_targets": "build/reviews/coastal-water-review-targets.json"
-  }
+  },
+  "oldcity_architecture_correction_20261112": "oldcity-architecture-correction.json"
 }

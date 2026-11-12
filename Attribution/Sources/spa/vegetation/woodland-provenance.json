@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "provider": "OpenStreetMap contributors",
+  "retrieved_utc": "2026-11-12",
+  "licence": "ODbL 1.0",
+  "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "copyright_url": "https://www.openstreetmap.org/copyright",
+  "inputs": [
+    {
+      "file": "woodland.osm.json.gz",
+      "url": "https://overpass-api.de/api/interpreter",
+      "query_file": "woodland-query.txt",
+      "sha256": "8fd8e30100bda6d73fc4b6097e439a58b4efc9d670239e38526aca4c76ac0be5",
+      "uncompressed_sha256": "80ec683231db20289be9f9d30d6098358a5e2736dfe2ea5f453873ae7e5430f0"
+    }
+  ],
+  "conversion": "Original bounded Overpass forest/wood ways and complete relation geometry. Relation member chains are polygonized with inner rings subtracted; no simplification.",
+  "polygons_file": "woodland-polygons.json",
+  "polygons_sha256": "503df0e6f13a379455a39fe69e882ffd1642e5290671a695ad9835691b87e1da",
+  "source_components": 66,
+  "source_inner_rings": 34,
+  "mapped_attributes": "Natural wood/landuse forest outlines and interior clearings. Leaf type/cycle used where tagged; unspecified stands remain explicit inferred mixed woodland. Current mapping may postdate the supplied game reference. OSM canopy outlines are not a surveyed individual-tree inventory.",
+  "placement": "Clip each original polygon to the classified-ground terrain grid and preserve its clearings. Exclude the complete road, protection and apron corridor, every mapped building, water and the existing authored temporary stands, with a 12 m safety buffer. Place trees in jittered 12 m cells at least 5 m inside each woodland polygon. Road geometry, protection, runoff and all measured ground heights remain unchanged.",
+  "tree_estimates": {
+    "interior_height_m": [
+      17,
+      28
+    ],
+    "edge_minimum_m": 12,
+    "spacing_m": 12,
+    "jitter_m": 3.6,
+    "detailed_distance_from_road_m": 65,
+    "untagged_conifer_fraction": 0.5,
+    "uncertainty": "Individual positions, heights, density and untagged species proportions are original reference-guided reconstruction. Approximate mature mixed/conifer forms, not precise species assignments. Foliage uses the existing accepted TreeCanopy atlas; no video pixels are shipped."
+  },
+  "geometry_budget": "At most 600,000 new woodland triangles per venue. Remove the old four-row station bands. Near trees retain detailed trunks and leaf clusters. Distant trees use layered foliage cards with varied heights and outlines.",
+  "ground_source": "../scenery-ground.json",
+  "reference": {
+    "path": "build/reviews/spa/reference/final-676.00.jpg",
+    "time_s": 676.0,
+    "sha256": "145a50dfc794e26f73d63b390ab46a0fefc1dbdb6181bbae675249da92edc141",
+    "observation": "Continuous densely wooded banks/ridges with mixed canopy edges and real open grass/spectator clearings. Prior sparse parallel rows leave artificial bare bands.",
+    "registration": "Confirmed Kemmel straight, HUD 25.583 s, native corridor 2113\u20133165 m. Exact position within the straight is unregistered; there is a montage cut between 674 and 676 s."
+  },
+  "temporary_stand_clearings": {
+    "geometry": "Original authored stand parameters and seat geometry are unchanged. Their exact swept seating envelope excludes tree crowns locally; no new physical corridor or terrain cut is added.",
+    "ranges": [
+      {
+        "start_m": 3080,
+        "end_m": 3280,
+        "side": -1,
+        "rows": 14,
+        "setback_m": 32
+      },
+      {
+        "start_m": 6510,
+        "end_m": 6700,
+        "side": 1,
+        "rows": 14,
+        "setback_m": 30
+      }
+    ]
+  }
+}

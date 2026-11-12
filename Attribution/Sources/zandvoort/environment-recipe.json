@@ -441,7 +441,7 @@
     "index": "reference-index.json",
     "verified_final_banking_time_s": 872,
     "verified_straight_exit_time_s": 875,
-    "montage_cut": "865\u2192872video seconds jumps HUD39.556s\u21921:07.481s. Do not interpolate across the edit.",
+    "montage_cut": "865→872video seconds jumps HUD39.556s→1:07.481s. Do not interpolate across the edit.",
     "geometry_status": "Metadata evidence correction only; road banking/scene geometry and pending packaged acceptance unchanged."
   },
   "whole_lap_review_corrections": {
@@ -463,7 +463,7 @@
         "visual_taper_m": 15
       },
       "registration": "Compare corrected2540m apex with continuous866.50/868.00s turn-in/apex, not865s earlier entry. Operator T10 photographs independently establish real outside gravel with grass lip and adjacent wall/bank. Retain OUTSIDE RIGHT and inside-left kerb/grass.",
-      "uncertainty": "1m grass lip,3m gravel band,4.5m roadedge-to-wall are original photo/reference reconstruction with approximately\u00b11\u20131.5m uncertainty, not surveyed dimensions. Tapers/endpoints estimated within roughly20m.",
+      "uncertainty": "1m grass lip,3m gravel band,4.5m roadedge-to-wall are original photo/reference reconstruction with approximately±1–1.5m uncertainty, not surveyed dimensions. Tapers/endpoints estimated within roughly20m.",
       "physical_action": "Root applies typed shoulder override, refreshes native CSV, regenerates closed protection/native export, then regenerates scene. Agent changes source only; shared CLI modifies only shoulder profile, never centreline/elevation/bank/roadwidth.",
       "branding": {
         "ranges": [
@@ -510,7 +510,7 @@
       "side": 1,
       "method": "Low ground-starting scrub crowns and small terrain-following exposed-stone facets replace isolated trunk-heavy tiny-tree silhouettes. Same low scrub form updates existing middle-dune vegetation bands. Actual dune elevation and18degree banking unchanged.",
       "source": "872s directly shows final bank low irregular vegetation/stone patches.865/866.5/868s show middle-dune bank texture. Exact shrub/stone positions and counts are original reconstruction beyond existing protection/buildings/water.",
-      "dimensions": "1.7\u20133.1m source crown clusters buried at their leaf base to produce roughly0.85\u20131.55m above-ground scrub,11m station spacing with3lateral rows. Small2.2\u00d71.4m stone patches rise0.26m and follow local terrain at all outer vertices; no fixed-Z tiles."
+      "dimensions": "1.7–3.1m source crown clusters buried at their leaf base to produce roughly0.85–1.55m above-ground scrub,11m station spacing with3lateral rows. Small2.2×1.4m stone patches rise0.26m and follow local terrain at all outer vertices; no fixed-Z tiles."
     },
     "material_limit": "Broad beige gravel polish remains pending matched material review; no global Gravel/Grass/material/helper changes made."
   },
@@ -523,5 +523,21 @@
     "lettering": "Private GroundMSC original typeset MSC CRUISES; projected paving+5mm, matching roughness0.7",
     "physical_change": false,
     "status": "Source only; requires fresh inside-apex packaged comparison."
+  },
+  "racing_profile_source_review": {
+    "source": "elevation-corrections.json",
+    "source_relief_m": 8.718312224907294,
+    "reason": "AHN5 resolves the real T3 compression and Hunzerug crest missed by the old90m surface model. Modern T14 banking is independently visible in the numeric cross-section. No vertical range scaling, bank override or width change.",
+    "estimated_gap": "One mapped under-track service tunnel; source-labelled chord from adjacent valid road anchors.",
+    "rendered_validation": "Pending root native application, scenery regeneration and matched packaged review."
+  },
+  "classified_ground_scenery_review": {
+    "source": "scenery-ground.json",
+    "water_source": "water-provenance.json",
+    "water_bodies": "water-bodies.json",
+    "coverage_mask": "elevation/ahn5-scenery-coverage.json.gz",
+    "method": "Modern AHN5 classified ground replaces the older DSM; mapped sea and ponds have explicitly estimated flat planes. Small NoData gaps use bounded local support, separately flagged from measured ground.",
+    "native_physics_change": false,
+    "runtime_status": "Pending root application/export, terrain materialization and matched live review."
   }
 }

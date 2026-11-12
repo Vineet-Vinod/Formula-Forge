@@ -4,9 +4,12 @@
   "retained_window": "elevation/scenery-datum-grid.json.gz",
   "sha256": "092bb5744bef804343c949c09cce14b4d81576fa4e6e6d5918ec20e5e23a3f06",
   "grid_spacing_m": 12.0,
+  "runtime_grid_spacing_m": 12.010487415435879,
+  "horizontal_frame_correction": 1.0008739512863232,
+  "grid_uniform_scale": 1.005358,
   "relative_datum_m": -24.7,
   "road_join_distance_m": 20.0,
   "source_manifest": "scenery-ground.json",
   "use": "Retained scenery-only ground grid. Heights already use the registered relative datum; racing profiles remain unchanged.",
-  "terrain_sha256": "83e3e3168f3d6df95e909c93732b14a91dd0f8923ab4df53c65e4beb096a2091"
+  "terrain_sha256": "e6e5423c2f5f02fc7e47ddb1459d9e39edcc2ae0b7891724be8520abedc5231e"
 }

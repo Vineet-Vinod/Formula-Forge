@@ -1,6 +1,6 @@
 {
-  "native_station_m": 480,
+  "native_station_m": 505.2008611976843,
   "uncertainty_m": 45,
-  "method": "FIA 2021 circuit map control line; approximate projection into retained road origin.",
-  "semantics": "Time-trial timing/start anchor; route origin and world placement unchanged."
+  "method": "FIA 2021 circuit map control line, geographically remapped from old station480 after replacing the alternate Galp chord and first-corner S detour. See station-registration-corrections.json.",
+  "semantics": "Time-trial timing/start anchor. The retained local coordinate frame is unchanged; corrected road station0 lies on the actual Galp arc."
 }

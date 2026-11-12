@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "used_to_replace_native_profile": false,
-  "source_title": "Ethem Ers\u00f6z, Development of a racing strategy for a solar car, METU mechanical engineering thesis,2006",
+  "source_title": "Ethem Ersöz, Development of a racing strategy for a solar car, METU mechanical engineering thesis,2006",
   "source_url": "https://open.metu.edu.tr/bitstream/handle/11511/16582/index.pdf",
   "repository_url": "https://open.metu.edu.tr/handle/11511/16582",
   "pdf_sha256": "f80fe81a5ad8d28adf5ece30c54d98b06b6c99adea0f34db6383e1fb3724d5d1",
@@ -79,7 +79,7 @@
     {
       "title": "Current TOSFED circuit specifications",
       "url": "https://tosfedistanbulpark.com/en/the-circuit/",
-      "supports": "14.5\u201321.5m width, maximum gradient8.145%, T8about640m, currentcourse5338m."
+      "supports": "14.5–21.5m width, maximum gradient8.145%, T8about640m, currentcourse5338m."
     },
     {
       "title": "RedBull Racing circuit scout2021",
@@ -92,5 +92,8 @@
       "supports": "Operator says about60m relief, disagreeing with other sources."
     }
   ],
-  "decision": "The research vector is retained for resolving its closure error. The native deck instead now uses direct GLO-30 centerline sampling, with its summit nearT3as in the engineering diagram and3m DSM uncertainty. No vertical range was forced."
+  "decision": "Use the original closed drawn profile and independent34.8m/37.5m prose calibrations, registered to native landmarks. Retain the inconsistent AppendixA vector as rejected evidence. See elevation-corrections.json and retained numerical digitisation; no thesis/reference pixels are shipped.",
+  "diagram_used_to_replace_native_profile": true,
+  "printed_gradient_vector_used_to_replace_native_profile": false,
+  "previous_decision": "The research vector is retained for resolving its closure error. The native deck instead now uses direct GLO-30 centerline sampling, with its summit nearT3as in the engineering diagram and3m DSM uncertainty. No vertical range was forced."
 }

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<WCS_Capabilities xmlns="http://www.opengis.net/wcs" xmlns:gml="http://www.opengis.net/gml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wcs http://schemas.opengis.net/wcs/1.0.0/wcsCapabilities.xsd" version="1.0.0">
+  <Service>
+    <name>Ellipsis Drive WCS 1.0.0</name>
+    <Title>AHN5 DTM 0.5m</Title>
+    <label>Ellipsis Drive WCS 1.0.0</label>
+    <fees>NONE</fees>
+    <accessConstraints>NONE</accessConstraints>
+  </Service>
+  <Capability>
+    <Request>
+      <GetCapabilities>
+        <DCPType>
+          <HTTP>
+            <Get>
+              <OnlineResource xlink:type="simple" xlink:href="https://api.ellipsis-drive.com/v3/ogc/wcs/51e11c02-1065-463d-a0b0-263d80293b16?VERSION=1.0.0"/>
+            </Get>
+          </HTTP>
+        </DCPType>
+      </GetCapabilities>
+      <DescribeCoverage>
+        <DCPType>
+          <HTTP>
+            <Get>
+              <OnlineResource xlink:type="simple" xlink:href="https://api.ellipsis-drive.com/v3/ogc/wcs/51e11c02-1065-463d-a0b0-263d80293b16?VERSION=1.0.0"/>
+            </Get>
+          </HTTP>
+        </DCPType>
+      </DescribeCoverage>
+      <GetCoverage>
+        <DCPType>
+          <HTTP>
+            <Get>
+              <OnlineResource xlink:type="simple" xlink:href="https://api.ellipsis-drive.com/v3/ogc/wcs/51e11c02-1065-463d-a0b0-263d80293b16?VERSION=1.0.0"/>
+            </Get>
+          </HTTP>
+        </DCPType>
+      </GetCoverage>
+    </Request>
+    <Exception>
+      <Format>application/vnd.ogc.se_xml</Format>
+    </Exception>
+  </Capability>
+  <ContentMetadata>
+    <CoverageOfferingBrief>
+      <name>41eaf86f-fa84-48f7-a949-355044ed0e4e</name>
+      <label>AHN5 DTM 0.5m</label>
+      <lonLatEnvelope srsName="urn:ogc:def:crs:OGC:1.3:CRS84">
+        <gml:pos>3.3032682 50.744865</gml:pos>
+        <gml:pos>6.4432893 53.552895</gml:pos>
+      </lonLatEnvelope>
+    </CoverageOfferingBrief>
+  </ContentMetadata>
+</WCS_Capabilities>

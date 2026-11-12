@@ -1,18 +1,28 @@
 {
   "recipe": "make circuit-assets CIRCUIT=turkey",
   "tiles": 171,
-  "triangles": 809804,
-  "road_sha256": "897221623ca8b3e768861f3d22163e0ed840270684acf08ab237bdf9d45f71ea",
-  "terrain_sha256": "b7e5a64af96289dae33ca2e053de555f12493f1fa118f842cab1b3989123efc5",
+  "triangles": 816933,
+  "road_sha256": "3ef9d19f8a46144b01d3a3202f0f2c15f7135664e20f82e56467dd9e3a6d0791",
+  "terrain_sha256": "9b4eac7ca4ff3e5f8d20e4eb461beb198ff84128efb358b2b1aa865f9c6b2a7c",
   "landmarks": [
     {
       "name": "Paved pit lane and working apron",
-      "start_m": 5130.0,
-      "end_m": 230.0,
+      "start_m": 5190.0,
+      "end_m": 270.0,
       "side": -1,
-      "outer_offset_m": 13.0,
-      "source_note": "Authored Istanbul garage frontage scene.pit_building(5130,230,-1) lies exactly 13 m beyond road edge, underneath its three stacked hospitality roofs. Reference325/329/333/337s shows garages left and mainstand right. Retained compound295742112 is excluded from duplicate extrusion. Native interval crosses zero; dimensions remain reference estimates.",
+      "outer_offset_m": 17.5,
+      "source_note": "Actual mapped garage-front 295742112 spans native 5211.60 to 250.01 across zero. Frontage lies 17.523\u201320.444 m beyond the asphalt edge. Visual pit paving begins 5190 and ends 270, with a 17.5 m outer offset; its outer white line is 17.1 m from the road edge, safely in front of the minimum mapped frontage. Local source-authored apron polygons continue from that boundary to the real facade without another white stripe. Shoulder 0.10 m and 25 m transitions retain the closed pit-wall contract. Full footprint/arched-bay model replaces the old 438 m station strip; no road XYZ/bank/width changes.",
       "access": "Visual service area outside the closed driving boundary."
+    },
+    {
+      "name": "T8 outside green apron and gravel",
+      "start_m": 2310,
+      "end_m": 2860,
+      "side": 1,
+      "green_maximum_width_m": 6,
+      "outer_runoff_width_m": 18,
+      "source": "Continuous supplied detail0281 and0285 frames",
+      "dimensions_status": "Outside-right green paving precedes pale gravel in the reference; inside-left has grass beyond the kerb. The former inside green band and white stripe are removed. Existing18m outer gravel envelope retained;6m paving and25m end tapers are reference estimates. All heights follow native surface samples. No centreline, width, elevation, bank or handling changes."
     },
     {
       "name": "Braking distance boards",
@@ -81,11 +91,12 @@
       "material": "PanelGreen"
     },
     {
-      "name": "Authored pit building",
-      "start_m": 5130,
-      "end_m": 230,
-      "side": -1,
-      "height_m": 16
+      "name": "Istanbul mapped pit garages",
+      "osm_id": 295742112,
+      "garage_front_length_m": 374.90191732218364,
+      "height_m": 16,
+      "source": "Supplied reference detail0329 and retained OSM295742112",
+      "dimensions_status": "Actual concave footprint and three collinear road-facing segments replace a438m station strip and overlapping guessed hospitality boxes. Floors follow the main-straight grade projected from the actual garage front, never the nearby T1 branch or DSM roof. Existing16m height is an estimate; garage bays, upper arched glazing and shallow roof are original reconstruction from329s, not a construction survey. End VIP tower heights remain unverified and are not invented."
     },
     {
       "name": "Authored grandstand",
@@ -114,13 +125,6 @@
       "end_m": 3010,
       "side": 1,
       "rows": 16
-    },
-    {
-      "name": "Istanbul Park pit and control terraces",
-      "start_m": 5130,
-      "end_m": 230,
-      "roof": "Three stacked cantilevered slabs with raised angular glazed hospitality volumes",
-      "dimensions": "Visual estimate registered to native pit straight; OSM compound excluded from duplicate extrusion."
     }
   ],
   "vegetation": [

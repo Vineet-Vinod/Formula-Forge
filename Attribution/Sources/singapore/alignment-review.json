@@ -1,0 +1,401 @@
+{
+  "schema_version": 1,
+  "circuit": "singapore",
+  "date": "2026-11-12",
+  "status": "Five qualified event-junction/hairpin estimates frozen for root native reconstruction and fresh runtime validation. No visual acceptance claimed.",
+  "reason": "Sparse street axes produce approximately 1\u20133 m centreline radii at T7/T8/T14. These are unsuitable event corner controls. The source does not establish a wrong optional route branch at these junctions.",
+  "source_registration": {
+    "retained_route_relation": 421263,
+    "native_length_m": 4940,
+    "fia_2025_map_length_m": 4927,
+    "epoch_limitation": "The 13 m length difference is retained; this local corner reconstruction does not rescale or change the native zero/timing registration.",
+    "raw_junctions": [
+      {
+        "corner": "T7",
+        "incoming_way": 51511352,
+        "outgoing_way": 459186771,
+        "latitude": 1.293172,
+        "longitude": 103.8558226,
+        "native_station_m": 1704.1233571495663
+      },
+      {
+        "corner": "T8",
+        "incoming_way": 16688065,
+        "outgoing_way": 51511339,
+        "latitude": 1.2914505,
+        "longitude": 103.8548655,
+        "native_station_m": 1921.21
+      },
+      {
+        "corner": "T14",
+        "incoming_way": 581766308,
+        "outgoing_way": 479605911,
+        "latitude": 1.291324,
+        "longitude": 103.8550077,
+        "native_station_m": 3512.297983057051
+      }
+    ]
+  },
+  "radius_estimation_evidence": {
+    "source_pdf_page": 4,
+    "source_svg": "build/reviews/resume-20261112/singapore-fia-2025-map.svg",
+    "road_band_triangles": "build/reviews/resume-20261112/singapore-fia-road-band.json",
+    "local_metric_scale_estimate_m_per_pdf_point": 2.68,
+    "scale_basis": "Approximate 220 m mapped T7-to-T8 street-axis segment divided by approximately 82 PDF points. The official map is schematic: its T8/T14 junction separation is exaggerated, so do not use a global affine transform or treat these radii as a survey. Conservative radius uncertainty covers this local calibration.",
+    "results": [
+      {
+        "corner": "T7",
+        "road_band_edges": [
+          {
+            "boundary_points_pdf_pt": [
+              [
+                150.1,
+                394.11
+              ],
+              [
+                151.06,
+                392.08
+              ],
+              [
+                152.57,
+                390.86
+              ],
+              [
+                154.3,
+                390.4
+              ]
+            ],
+            "fit_center_pdf_pt": [
+              154.61777376252098,
+              394.98661862744444
+            ],
+            "fit_radius_pdf_pt": 4.600144977453858,
+            "maximum_radial_fit_residual_pdf_pt": 0.006628153365666023
+          },
+          {
+            "boundary_points_pdf_pt": [
+              [
+                153.22,
+                385.96
+              ],
+              [
+                150.88,
+                386.68
+              ],
+              [
+                149.68,
+                387.34
+              ],
+              [
+                148.55,
+                388.18
+              ],
+              [
+                146.75,
+                390.34
+              ],
+              [
+                145.73,
+                392.92
+              ]
+            ],
+            "fit_center_pdf_pt": [
+              154.67168238520102,
+              395.05509217390545
+            ],
+            "fit_radius_pdf_pt": 9.201684483761092,
+            "maximum_radial_fit_residual_pdf_pt": 0.01705436818762962
+          }
+        ],
+        "centerline_radius_at_local_2p68m_per_point_m": 18.494451478028033
+      },
+      {
+        "corner": "T8",
+        "road_band_edges": [
+          {
+            "boundary_points_pdf_pt": [
+              [
+                138.96,
+                465.06
+              ],
+              [
+                138.48,
+                466.14
+              ],
+              [
+                137.56,
+                466.91
+              ],
+              [
+                136.38,
+                467.28
+              ],
+              [
+                134.76,
+                466.86
+              ]
+            ],
+            "fit_center_pdf_pt": [
+              136.21745894013054,
+              464.4645219376123
+            ],
+            "fit_radius_pdf_pt": 2.8071715960804022,
+            "maximum_radial_fit_residual_pdf_pt": 0.017408263635319887
+          },
+          {
+            "boundary_points_pdf_pt": [
+              [
+                143.51,
+                465.18
+              ],
+              [
+                143.15,
+                466.8
+              ],
+              [
+                142.02,
+                469.02
+              ],
+              [
+                141.23,
+                469.86
+              ],
+              [
+                138.96,
+                471.29
+              ],
+              [
+                136.68,
+                471.77
+              ],
+              [
+                134.22,
+                471.47
+              ]
+            ],
+            "fit_center_pdf_pt": [
+              136.3347844022622,
+              464.5984094499967
+            ],
+            "fit_radius_pdf_pt": 7.186762005723335,
+            "maximum_radial_fit_residual_pdf_pt": 0.024767549322755045
+          }
+        ],
+        "centerline_radius_at_local_2p68m_per_point_m": 13.391871026417007
+      },
+      {
+        "corner": "T14",
+        "road_band_edges": [
+          {
+            "boundary_points_pdf_pt": [
+              [
+                151.42,
+                479.92
+              ],
+              [
+                151.96,
+                478.61
+              ],
+              [
+                153.22,
+                477.64
+              ],
+              [
+                154.18,
+                477.46
+              ]
+            ],
+            "fit_center_pdf_pt": [
+              154.24224918932057,
+              480.30266488086863
+            ],
+            "fit_radius_pdf_pt": 2.8462560899449056,
+            "maximum_radial_fit_residual_pdf_pt": 0.005897074399151769
+          },
+          {
+            "boundary_points_pdf_pt": [
+              [
+                146.99,
+                480.82
+              ],
+              [
+                146.99,
+                478.9
+              ],
+              [
+                147.59,
+                476.99
+              ],
+              [
+                148.79,
+                475.25
+              ],
+              [
+                149.92,
+                474.23
+              ],
+              [
+                152.62,
+                473.09
+              ],
+              [
+                154.54,
+                472.91
+              ]
+            ],
+            "fit_center_pdf_pt": [
+              154.04280064476296,
+              480.0351013658161
+            ],
+            "fit_radius_pdf_pt": 7.118975261140806,
+            "maximum_radial_fit_residual_pdf_pt": 0.02963152168234018
+          }
+        ],
+        "centerline_radius_at_local_2p68m_per_point_m": 13.353410010454853
+      }
+    ]
+  },
+  "primary_sources": [
+    "https://www.fia.com/system/files/decision-document/2025_singapore_grand_prix_-_event_notes_-_circuit_map_pit_lane_emergency_exits_map_and_quarantine_zone.pdf",
+    "https://singaporegp.sg/en/news/2015/enhancements-to-marina-bay-street-circuit/",
+    "https://storage.singaporegp.sg/Uploaded/PressReleaseFiles/Annex%201%20Track%20Modification%20Illustration.png"
+  ],
+  "primary_illustration_sha256": "7716ae94a071859534bf907473f7008f2f0d9eb6aac679d0f23903285d0b5ec6",
+  "proposed_plan_clearance": {
+    "current": {
+      "minimum_centerline_separation_m": 25.621086432156982,
+      "overlap_area_assuming_7p5m_each_halfwidth_m2": 0.0
+    },
+    "proposed": {
+      "minimum_centerline_separation_m": 39.12659949162611,
+      "overlap_area_assuming_7p5m_each_halfwidth_m2": 0.0
+    }
+  },
+  "preliminary_proof": [
+    {
+      "corner": "T7",
+      "radius_m": 18,
+      "radius_uncertainty_m": 4,
+      "maximum_movement_m": 5.78742245491196,
+      "minimum_radius_in_blended_range_m": 15.2940231828181,
+      "tangent_line_max_residual_m": [
+        0.010619190864750827,
+        0.0408050405782987
+      ]
+    },
+    {
+      "corner": "T8",
+      "radius_m": 14,
+      "radius_uncertainty_m": 3,
+      "maximum_movement_m": 8.309961075262121,
+      "minimum_radius_in_blended_range_m": 13.362739536266963,
+      "tangent_line_max_residual_m": [
+        0.0002039972171017368,
+        0.2176283948729143
+      ]
+    },
+    {
+      "corner": "T14",
+      "radius_m": 14,
+      "radius_uncertainty_m": 3,
+      "maximum_movement_m": 7.188612142488233,
+      "minimum_radius_in_blended_range_m": 13.190936075191656,
+      "tangent_line_max_residual_m": [
+        0.008540448556176194,
+        0.0013624774776097581
+      ]
+    }
+  ],
+  "physical_contract": "Only plan alignment is proposed. Root must reconstruct, export and validate full curvature/width/protection. Road elevation, banking, timing phase and unrelated route geometry remain unchanged by this source proposal.",
+  "T11_reference_closure": {
+    "status": "Qualified event-junction estimate from direct cut-free supplied video and primary operator route. No wrong optional route branch proved.",
+    "reference_file": "Saved/Refs/singapore.mp4",
+    "frames": [
+      {
+        "seconds": 675,
+        "pose": "Approach beside Victoria Theatre and Concert Hall, Salesforce barrier bands."
+      },
+      {
+        "seconds": 677,
+        "pose": "Braking before right T11; pale civic structure and clock tower beyond, palms left."
+      },
+      {
+        "seconds": 678,
+        "pose": "T11 right apex, blue Salesforce outside left and red Lenovo inside right; no square racing centreline spike."
+      },
+      {
+        "seconds": 679,
+        "pose": "Immediate left T12 with close white line and black SingaporeGP barrier on left."
+      },
+      {
+        "seconds": 680,
+        "pose": "Anderson Bridge masonry portal and white steel arch directly ahead."
+      },
+      {
+        "seconds": 681,
+        "pose": "Within Anderson Bridge; same lap3 and monotonic lapclock."
+      }
+    ],
+    "continuity": "HUD49.5s at675 through55.5s at681 with same Lap3. Distinct from638\u2013642 sequence, which cuts44.3\u21921:01.1 and cannot establish T11.",
+    "native_station_registration": "Right-hand event corner near2690\u20132718m, followed by mapped T12 near2795m and Anderson Bridge. Approximate station uncertainty35m for the video apex; fit uses geometric street axes rather than elapsed-time interpolation.",
+    "source_radius_estimate_m": 11,
+    "source_radius_uncertainty_m": 4,
+    "short_exit_native_fit_m": [
+      2721,
+      2731
+    ],
+    "reason_for_short_exit": "The road begins the opposite T12 bend shortly afterward. Fitting a longer2730\u20132750m exit rotated the tangent and inflated displacement from2.557m to7.855m.",
+    "tangent_line_max_residual_m": [
+      0.15848246827668966,
+      0.03667563235056975
+    ],
+    "preliminary_maximum_movement_m": 2.5569984807371187,
+    "preliminary_minimum_radius_m": 9.313510152515864,
+    "raw_way_ids": [
+      1015882722,
+      1121759130,
+      475215022
+    ]
+  },
+  "T13_event_estimate": {
+    "status": "Qualified source estimate; native reconstruction and current packaged comparison pending.",
+    "radius_m": 14,
+    "radius_uncertainty_m": 3,
+    "preliminary_turn_angle_degrees": 132.7419214757202,
+    "preliminary_maximum_movement_m": 7.461056902568463,
+    "preliminary_minimum_radius_m": 13.53406390478499,
+    "tangent_line_max_residual_m": [
+      0.25470644362031714,
+      0.00021081572670106352
+    ],
+    "FIA_pdf_boundary_circles": [
+      {
+        "side": "inner",
+        "center_pdf_pt": [
+          187.62770684,
+          670.42077207
+        ],
+        "radius_pdf_pt": 2.71379599,
+        "maximum_residual_pdf_pt": 0.02811092
+      },
+      {
+        "side": "outer",
+        "center_pdf_pt": [
+          187.33141111,
+          670.37325365
+        ],
+        "radius_pdf_pt": 7.64024258,
+        "maximum_residual_pdf_pt": 0.01398132
+      }
+    ],
+    "local_metric_estimate_m_per_pdf_point": 2.68,
+    "estimated_centerline_radius_from_band_m": 13.8744,
+    "uncertainty_note": "The official diagram is schematic, locally calibrated and not a survey. Radius uncertainty3m explicitly covers reconstruction scale. Direct video determines corner identity, direction and surrounding property, not metric radius.",
+    "operator_2015_width_fact": "T13 widened by1m relative to the previous layout. No absolute current width follows from that statement; no width change is included here.",
+    "direct_video_seconds": [
+      645,
+      646,
+      647
+    ]
+  }
+}

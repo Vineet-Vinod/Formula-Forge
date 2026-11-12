@@ -1,9 +1,28 @@
 {
-  "start_m": 4710,
+  "start_m": 4760,
   "end_m": 170,
   "side": -1,
-  "outer_offset_m": 13.0,
+  "outer_offset_m": 10.9,
   "shoulder_m": 0.1,
   "transition_m": 25.0,
-  "source_note": "Authored Marina Bay garage frontage scene.pit_building(4710,170,-1) lies exactly 13 m beyond road edge. The retained compound49890775 is excluded from duplicate extrusion. Reference530/534/538/566/594/598/602s confirms garages left, red mainstand right and yellow apron along the pit wall. Interval crosses native zero."
+  "source_note": "Actual mapped pit compound49890775 replaces the former generic block. The mapped compound projects to native4768.76→162.65m across zero. Its three road-facing segments stand11.292–11.459m,15.405–15.656m and12.768–16.367m beyond the road edge. The paving control is rounded by less than10m at the longitudinal ends and ends at a constant10.9m offset before the nearest garage face. Local unstriped apron polygons meet each variable mapped front and exclude the occupied building; the generic outer white stripe therefore stays outside all garage bays. Mapped plan registration has approximately±2m uncertainty. Facade/roof dimensions remain reconstructed. Paving stays beyond a closed pit wall; racing XYZ, banking and handling are unchanged. See pit-dimension-review.json.",
+  "former_generic_registration": {
+    "start_m": 4708.211713,
+    "end_m": 171.354734,
+    "side": -1,
+    "outer_offset_m": 13.0,
+    "shoulder_m": 0.1,
+    "transition_m": 25.0,
+    "source_note": "Garage-side paving re-registered to native 4708.212 → 171.355 m across zero, with its front still 13 m beyond the road edge. The retained compound 49890775 is excluded from duplicate extrusion. Supplied 530/534/538/566/594/598/602 s shows garages left, red main stand right and yellow pit apron. The original 4710 → 170 m nominal registration is retained separately. See station-registration-corrections.json and provenance.json for the composed runtime XY frame.",
+    "prior_nominal_registration": {
+      "start_m": 4710,
+      "end_m": 170,
+      "side": -1,
+      "outer_offset_m": 13.0,
+      "shoulder_m": 0.1,
+      "transition_m": 25.0,
+      "source_note": "Authored Marina Bay garage frontage scene.pit_building(4710,170,-1) lies exactly 13 m beyond road edge. The retained compound49890775 is excluded from duplicate extrusion. Reference530/534/538/566/594/598/602s confirms garages left, red mainstand right and yellow apron along the pit wall. Interval crosses native zero."
+    }
+  },
+  "former_registration_status": "Superseded by actual retained footprint. Root restores the original shoulder lattice before applying this profile."
 }

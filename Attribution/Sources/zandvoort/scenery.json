@@ -1,9 +1,9 @@
 {
   "recipe": "make circuit-assets CIRCUIT=zandvoort",
-  "tiles": 128,
-  "triangles": 878361,
-  "road_sha256": "f9ff420aa8714464c4b35ce122b628ceba983e79454108c35d44c0a3787fa0be",
-  "terrain_sha256": "84c222c25f07d507a044bb39c21fd9945055d380f9b409b957b8eb66057a9f7a",
+  "tiles": 120,
+  "triangles": 874580,
+  "road_sha256": "57616627308e317d3fb3e4baa6f2b8455c98110f17712e8a21bfd551936fec01",
+  "terrain_sha256": "88baa51a0620bbff03349518e05a7daf511b8ac25fa27059730b18b65a998a1a",
   "landmarks": [
     {
       "name": "Paved pit lane and working apron",
@@ -28,11 +28,19 @@
       "start_m": 2480,
       "end_m": 2590,
       "side": -1,
-      "area_m2": 675.4949757849513,
+      "area_m2": 694.8562855355278,
       "grass_rim_beyond_kerb_m": 0.81,
       "paint_lift_m": 0.005,
       "physical_contract": "Visual-only island: no runoff range or extra_corridors registration; native shoulder, limits, drive surface and walls unchanged.",
       "registration": "Supplied 866.5/868 s continuous T10 left turn-in/apex shows dark navy paving and large white MSC lettering inside the left kerb. Native 2490\u20132590 m inside kerb and road-local cells constrain the footprint; 2.05 m edge setback, 10 m maximum paved width and 15 m tapers are bounded estimates, not surveyed advertising dimensions. Existing original typeset MSC texture follows exact paved triangles, with no copied reference pixels."
+    },
+    {
+      "name": "Mapped North Sea and dune ponds",
+      "water_bodies": 41,
+      "water_area_m2": 698686.1318006695,
+      "removed_for_roads_and_buildings_m2": -1.2434497875801753e-11,
+      "source": "water-bodies.json and scenery-ground.json",
+      "level_status": "Sea is NAP0; inland pond planes are separately estimated from valid AHN5 shoreline heights. Water is a scenery cutout only; racing road, protection and physical corridors remain unchanged."
     },
     {
       "name": "Reference event panels",
@@ -212,7 +220,7 @@
       "end_m": 2050,
       "side": 1,
       "species_form": "Low windswept scrub with small exposed stone patches",
-      "shrubs": 68,
+      "shrubs": 67,
       "rock_patches": 22,
       "placement_status": "Reference865/866.5/868s middle dune and872s final bank vegetation character; individual footprints reconstructed beyond protection/buildings/water. Low crowns start at sampled ground; small rock facets follow sampled terrain rather than fixed-Z tiles."
     },
@@ -239,8 +247,8 @@
       "end_m": 2780,
       "side": -1,
       "species_form": "Low windswept scrub with small exposed stone patches",
-      "shrubs": 161,
-      "rock_patches": 54,
+      "shrubs": 155,
+      "rock_patches": 52,
       "placement_status": "Reference865/866.5/868s middle dune and872s final bank vegetation character; individual footprints reconstructed beyond protection/buildings/water. Low crowns start at sampled ground; small rock facets follow sampled terrain rather than fixed-Z tiles."
     },
     {

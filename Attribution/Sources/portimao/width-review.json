@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "circuit": "portimao",
+  "source": {
+    "provider": "Autodromo Internacional do Algarve operator technical characteristics",
+    "source_url": "https://autodromodoalgarve.com/the-park/racing-track/",
+    "retrieved": "2026-11-12",
+    "operator_track_width_m": 14,
+    "operator_main_straight_width_m": 18,
+    "controls_m": [
+      [
+        0,
+        14
+      ],
+      [
+        200,
+        14
+      ],
+      [
+        310,
+        18
+      ],
+      [
+        1150,
+        18
+      ],
+      [
+        1254,
+        14
+      ],
+      [
+        4653,
+        14
+      ]
+    ],
+    "registration": "Mapped main-straight way363133199 runs167.75\u20131154.26m; Galp exit/front straight and T1apex1254m registered in reference-index.json. Retain nominal14m elsewhere; widen the pit straight to18m. Transition positions are reconstructed, not surveyed edges.",
+    "local_width_uncertainty_m": 1.0,
+    "transition_station_uncertainty_m": 30,
+    "excludes": "Pit lane and green painted runoff outside racing white lines."
+  },
+  "previous": "Native12m corners/14m straights were a generic curvature-based estimate, below the operator14/18m specifications.",
+  "reference_times_s": [
+    173.63,
+    615.3,
+    670.51,
+    725.72
+  ],
+  "reference_role": "Check separation of racing asphalt, pit lane and painted runoff; no camera-derived metric scale is claimed."
+}

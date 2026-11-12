@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "status": "Source corrected; fresh packaged review remains required.",
+  "grandstand": "Grandstand 1 opposite the team garages",
+  "native_range_m": [
+    4200,
+    4350
+  ],
+  "side": 1,
+  "change": "Remove the invented roof. Preserve the same seat rows, grandstand structure, footprint and material. No other stands or paddock structures change.",
+  "evidence": {
+    "promoter_page": "https://gpcanada.ca/en/tickets/grandstand-1/",
+    "promoter_photo": "https://gpcanada.ca/wp-content/uploads/2023/03/tribune_1-2.png",
+    "photo_sha256": "8a75c9320df486a156627a336e43c3ff39d9f0ccb3793d4faf1e7e25ba54eafd",
+    "retrieved_utc": "2026-11-12",
+    "observation": "Promoter photograph shows open sky and flags above the entire top seating row, with no canopy or roof supports. Promoter separately identifies the covered Platine stand on the run toward the Senna curve. This change applies only to pit-opposite Grandstand 1."
+  },
+  "preserved": "All driving geometry, physics, other stands, paddock building and unrelated decoration."
+}

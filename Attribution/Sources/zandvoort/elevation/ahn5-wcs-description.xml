@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<CoverageDescription xmlns="http://www.opengis.net/wcs" xmlns:gml="http://www.opengis.net/gml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wcs http://schemas.opengis.net/wcs/1.0.0/describeCoverage.xsd" version="1.0.0">
+  <CoverageOffering>
+    <name>41eaf86f-fa84-48f7-a949-355044ed0e4e</name>
+    <label>2024-12-10</label>
+    <lonLatEnvelope srsName="EPSG:28992">
+      <gml:pos>7916.51659819379 306637.23094584385</gml:pos>
+      <gml:pos>229543.82569102262 620539.3538804291</gml:pos>
+    </lonLatEnvelope>
+    <domainSet>
+      <spatialDomain>
+        <gml:Envelope srsName="EPSG:28992">
+          <gml:pos>7916.51659819379 306637.23094584385</gml:pos>
+          <gml:pos>229543.82569102262 620539.3538804291</gml:pos>
+        </gml:Envelope>
+        <gml:RectifiedGrid srsName="EPSG:28992" dimension="2">
+          <gml:limits>
+            <gml:GridEnvelope>
+              <gml:low>0 0</gml:low>
+              <gml:high>443294 627858</gml:high>
+            </gml:GridEnvelope>
+          </gml:limits>
+          <gml:axisName>X</gml:axisName>
+          <gml:axisName>Y</gml:axisName>
+          <gml:origin>
+            <gml:pos>7916.51659819379 620539.3538804291</gml:pos>
+          </gml:origin>
+          <gml:offsetVector>0.49995558047893457, 0</gml:offsetVector>
+          <gml:offsetVector>0, -0.4999571924457205</gml:offsetVector>
+        </gml:RectifiedGrid>
+      </spatialDomain>
+    </domainSet>
+    <rangeSet>
+      <RangeSet>
+        <name>RangeSet_2</name>
+        <label>Band 1</label>
+      </RangeSet>
+    </rangeSet>
+    <supportedCRSs>
+      <requestResponseCRSs>EPSG:3857</requestResponseCRSs>
+      <nativeCRSs>EPSG:3857</nativeCRSs>
+    </supportedCRSs>
+    <supportedCRSs>
+      <requestResponseCRSs>EPSG:28992</requestResponseCRSs>
+      <nativeCRSs>EPSG:28992</nativeCRSs>
+    </supportedCRSs>
+    <supportedFormats nativeFormat="GeoTIFF">
+      <formats>GeoTIFF</formats>
+    </supportedFormats>
+    <supportedInterpolations default="nearest neighbor">
+      <interpolationMethod>nearest neighbor</interpolationMethod>
+    </supportedInterpolations>
+  </CoverageOffering>
+</CoverageDescription>

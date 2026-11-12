@@ -25,7 +25,7 @@ def build_venue(scene: CircuitScene) -> None:
     mapped_building(scene, 42229671, 14, facade='Concrete', floors=3, roof='canopy', garage_front=True)
     mapped_building(scene, 26698931, 28, facade='White', floors=7, balconies=True)
     mapped_building(scene, 439917766, 22, facade='Glass', floors=5, roof='canopy')
-    scene.stand(4200, 4350, 1, rows=22, setback=7, roofed=True, seat_material='Concrete')
+    scene.stand(4200, 4350, 1, rows=22, setback=7, seat_material='Concrete')
     scene.stand(200, 330, -1, rows=23, setback=12, seat_material='Concrete')
     scene.stand(440, 610, -1, rows=18, setback=18, seat_material='Concrete')
     scene.stand(2580, 2800, -1, rows=26, setback=22, seat_material='Concrete')

@@ -1,0 +1,981 @@
+{
+  "schema_version": 1,
+  "circuit": "singapore",
+  "date": "2026-11-12",
+  "method": "Original nominal station indexes reference the corrected 1 m XY controls in alignment-corrections.json. Multiply by the disclosed runtime uniform normalization factor, then project those geographic points onto the final exported/refined native line; do not linearly interpolate playback time or indiscriminately shift every station.",
+  "original_nominal_length_m": 4940,
+  "final_nominal_length_m": 4940.0,
+  "source_alignment_sha256": "da492d906bc96ce7f6d093fbed42c657dd5f49e84e1c06e64b489582f905de66",
+  "final_road_sha256": "a0a79fcc27f90446a46b6d2b7d76e9757c529e0f6958bf0c42b8ad9f612859c9",
+  "mapping": [
+    {
+      "old_native_station_m": 0.0,
+      "new_native_station_m": 0.0,
+      "registration_residual_m": 0.0,
+      "corrected_source_xy_m": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "old_native_station_m": 120.0,
+      "new_native_station_m": 120.956315,
+      "registration_residual_m": 1.003229769242892e-05,
+      "corrected_source_xy_m": [
+        -16.840828228901504,
+        119.76504499945327
+      ]
+    },
+    {
+      "old_native_station_m": 170.0,
+      "new_native_station_m": 171.354734,
+      "registration_residual_m": 1.0971017985530928e-06,
+      "corrected_source_xy_m": [
+        -24.295178623093136,
+        169.60913563955148
+      ]
+    },
+    {
+      "old_native_station_m": 265.0,
+      "new_native_station_m": 267.111744,
+      "registration_residual_m": 1.4748590164758305e-05,
+      "corrected_source_xy_m": [
+        -38.458591535458034,
+        264.31289959039634
+      ]
+    },
+    {
+      "old_native_station_m": 290.0,
+      "new_native_station_m": 292.310953,
+      "registration_residual_m": 0.0002510320015015364,
+      "corrected_source_xy_m": [
+        -42.18663660936817,
+        289.2348007709502
+      ]
+    },
+    {
+      "old_native_station_m": 323.0,
+      "new_native_station_m": 325.505959,
+      "registration_residual_m": 0.002382667326816759,
+      "corrected_source_xy_m": [
+        -47.947039495364045,
+        321.6748547357223
+      ]
+    },
+    {
+      "old_native_station_m": 345.0,
+      "new_native_station_m": 347.513185,
+      "registration_residual_m": 0.03593478768493016,
+      "corrected_source_xy_m": [
+        -67.1334456994918,
+        330.0646775102237
+      ]
+    },
+    {
+      "old_native_station_m": 355.0,
+      "new_native_station_m": 357.591562,
+      "registration_residual_m": 0.014357019416238646,
+      "corrected_source_xy_m": [
+        -77.20228091294462,
+        329.6235441286691
+      ]
+    },
+    {
+      "old_native_station_m": 375.0,
+      "new_native_station_m": 377.737782,
+      "registration_residual_m": 0.061692384947390114,
+      "corrected_source_xy_m": [
+        -97.19341187154987,
+        331.6290980424391
+      ]
+    },
+    {
+      "old_native_station_m": 400.0,
+      "new_native_station_m": 402.928727,
+      "registration_residual_m": 0.0013262476843776312,
+      "corrected_source_xy_m": [
+        -120.36649476274759,
+        341.36789715428864
+      ]
+    },
+    {
+      "old_native_station_m": 425.0,
+      "new_native_station_m": 428.059639,
+      "registration_residual_m": 0.026560167916604607,
+      "corrected_source_xy_m": [
+        -139.42740284098403,
+        356.85253803920267
+      ]
+    },
+    {
+      "old_native_station_m": 440.0,
+      "new_native_station_m": 443.168519,
+      "registration_residual_m": 0.061154302713380085,
+      "corrected_source_xy_m": [
+        -146.68033693790397,
+        370.1033161135315
+      ]
+    },
+    {
+      "old_native_station_m": 450.0,
+      "new_native_station_m": 453.227322,
+      "registration_residual_m": 0.046757019183264546,
+      "corrected_source_xy_m": [
+        -153.48704438844572,
+        377.47694335050977
+      ]
+    },
+    {
+      "old_native_station_m": 486.0,
+      "new_native_station_m": 489.422627,
+      "registration_residual_m": 0.09306210117735687,
+      "corrected_source_xy_m": [
+        -187.57859224418806,
+        379.5785223912709
+      ]
+    },
+    {
+      "old_native_station_m": 500.0,
+      "new_native_station_m": 503.510135,
+      "registration_residual_m": 0.00996706408656504,
+      "corrected_source_xy_m": [
+        -197.3314474767511,
+        369.5038449924
+      ]
+    },
+    {
+      "old_native_station_m": 510.0,
+      "new_native_station_m": 513.58681,
+      "registration_residual_m": 0.03673606936536651,
+      "corrected_source_xy_m": [
+        -202.85827684646324,
+        361.08188919013054
+      ]
+    },
+    {
+      "old_native_station_m": 525.0,
+      "new_native_station_m": 528.691351,
+      "registration_residual_m": 0.06014289227190004,
+      "corrected_source_xy_m": [
+        -208.0989399275383,
+        346.9736182024521
+      ]
+    },
+    {
+      "old_native_station_m": 600.0,
+      "new_native_station_m": 604.275906,
+      "registration_residual_m": 0.01553655842198222,
+      "corrected_source_xy_m": [
+        -210.92006030495713,
+        271.60839414920275
+      ]
+    },
+    {
+      "old_native_station_m": 650.0,
+      "new_native_station_m": 654.667603,
+      "registration_residual_m": 0.010347458734692866,
+      "corrected_source_xy_m": [
+        -194.74893138639266,
+        224.11925861527365
+      ]
+    },
+    {
+      "old_native_station_m": 690.0,
+      "new_native_station_m": 694.985699,
+      "registration_residual_m": 0.0005424435580764182,
+      "corrected_source_xy_m": [
+        -180.41722301365283,
+        186.44149189322192
+      ]
+    },
+    {
+      "old_native_station_m": 750.0,
+      "new_native_station_m": 755.462336,
+      "registration_residual_m": 0.016831163343318797,
+      "corrected_source_xy_m": [
+        -161.24367546366216,
+        129.11388529042404
+      ]
+    },
+    {
+      "old_native_station_m": 780.0,
+      "new_native_station_m": 785.700774,
+      "registration_residual_m": 0.0007278826643865288,
+      "corrected_source_xy_m": [
+        -155.9193540211057,
+        99.35376454749806
+      ]
+    },
+    {
+      "old_native_station_m": 800.0,
+      "new_native_station_m": 805.860027,
+      "registration_residual_m": 0.008787199843928903,
+      "corrected_source_xy_m": [
+        -152.70138938999392,
+        79.4529304309062
+      ]
+    },
+    {
+      "old_native_station_m": 845.0,
+      "new_native_station_m": 851.213587,
+      "registration_residual_m": 0.01718809327963937,
+      "corrected_source_xy_m": [
+        -149.93275796417316,
+        34.26529642569491
+      ]
+    },
+    {
+      "old_native_station_m": 877.0,
+      "new_native_station_m": 883.43425,
+      "registration_residual_m": 0.047772976900898455,
+      "corrected_source_xy_m": [
+        -162.83484647186287,
+        5.429890015292726
+      ]
+    },
+    {
+      "old_native_station_m": 905.0,
+      "new_native_station_m": 911.644731,
+      "registration_residual_m": 0.02729214718125798,
+      "corrected_source_xy_m": [
+        -186.55577536159743,
+        -9.531031605067934
+      ]
+    },
+    {
+      "old_native_station_m": 920.0,
+      "new_native_station_m": 926.761387,
+      "registration_residual_m": 0.001956628688620837,
+      "corrected_source_xy_m": [
+        -200.92565852528617,
+        -14.189906356383082
+      ]
+    },
+    {
+      "old_native_station_m": 1100.0,
+      "new_native_station_m": 1108.162052,
+      "registration_residual_m": 0.01566424016904232,
+      "corrected_source_xy_m": [
+        -381.5218927124229,
+        -8.554301058171985
+      ]
+    },
+    {
+      "old_native_station_m": 1120.0,
+      "new_native_station_m": 1128.320683,
+      "registration_residual_m": 0.00029714129579366274,
+      "corrected_source_xy_m": [
+        -401.5659843518836,
+        -6.432236065644542
+      ]
+    },
+    {
+      "old_native_station_m": 1150.0,
+      "new_native_station_m": 1158.559456,
+      "registration_residual_m": 0.006015181722500214,
+      "corrected_source_xy_m": [
+        -431.60436588651186,
+        -2.959864217350729
+      ]
+    },
+    {
+      "old_native_station_m": 1200.0,
+      "new_native_station_m": 1208.957514,
+      "registration_residual_m": 0.0011551560741082107,
+      "corrected_source_xy_m": [
+        -481.89829774802433,
+        0.2598623426966631
+      ]
+    },
+    {
+      "old_native_station_m": 1290.0,
+      "new_native_station_m": 1299.673799,
+      "registration_residual_m": 0.0007657807785311784,
+      "corrected_source_xy_m": [
+        -572.4133790529559,
+        6.149787164830416
+      ]
+    },
+    {
+      "old_native_station_m": 1328.0,
+      "new_native_station_m": 1337.973104,
+      "registration_residual_m": 0.03990679661036748,
+      "corrected_source_xy_m": [
+        -610.1857728496911,
+        12.245149070576916
+      ]
+    },
+    {
+      "old_native_station_m": 1360.0,
+      "new_native_station_m": 1370.223443,
+      "registration_residual_m": 0.04924582994354867,
+      "corrected_source_xy_m": [
+        -640.3692716090683,
+        23.576861968161307
+      ]
+    },
+    {
+      "old_native_station_m": 1380.0,
+      "new_native_station_m": 1390.380744,
+      "registration_residual_m": 0.002176841666323095,
+      "corrected_source_xy_m": [
+        -657.9144803204395,
+        33.50118070609051
+      ]
+    },
+    {
+      "old_native_station_m": 1600.0,
+      "new_native_station_m": 1612.133386,
+      "registration_residual_m": 0.0016201861711925107,
+      "corrected_source_xy_m": [
+        -849.7608605783139,
+        144.70073115719444
+      ]
+    },
+    {
+      "old_native_station_m": 1645.0,
+      "new_native_station_m": 1657.491802,
+      "registration_residual_m": 0.0014952372296220013,
+      "corrected_source_xy_m": [
+        -889.142139421645,
+        167.20269753434602
+      ]
+    },
+    {
+      "old_native_station_m": 1675.0,
+      "new_native_station_m": 1687.731011,
+      "registration_residual_m": 0.001639415173021591,
+      "corrected_source_xy_m": [
+        -915.4933086862428,
+        182.03574827096955
+      ]
+    },
+    {
+      "old_native_station_m": 1702.0,
+      "new_native_station_m": 1712.478558,
+      "registration_residual_m": 0.10989540857251733,
+      "corrected_source_xy_m": [
+        -938.2357884427913,
+        190.52186227614573
+      ]
+    },
+    {
+      "old_native_station_m": 1730.0,
+      "new_native_station_m": 1737.103121,
+      "registration_residual_m": 0.005053334386855904,
+      "corrected_source_xy_m": [
+        -955.7341235950704,
+        174.57162965405763
+      ]
+    },
+    {
+      "old_native_station_m": 1750.0,
+      "new_native_station_m": 1757.261687,
+      "registration_residual_m": 0.007168103966742564,
+      "corrected_source_xy_m": [
+        -966.2786342625575,
+        157.3908015549438
+      ]
+    },
+    {
+      "old_native_station_m": 1850.0,
+      "new_native_station_m": 1858.058552,
+      "registration_residual_m": 0.0051358625973380485,
+      "corrected_source_xy_m": [
+        -1016.3898032918341,
+        69.98321254164188
+      ]
+    },
+    {
+      "old_native_station_m": 1890.0,
+      "new_native_station_m": 1898.377329,
+      "registration_residual_m": 0.004955196226882796,
+      "corrected_source_xy_m": [
+        -1035.128902307353,
+        34.283864213408314
+      ]
+    },
+    {
+      "old_native_station_m": 1922.0,
+      "new_native_station_m": 1925.229242,
+      "registration_residual_m": 0.14512038601403596,
+      "corrected_source_xy_m": [
+        -1052.0225964680712,
+        14.876274441782103
+      ]
+    },
+    {
+      "old_native_station_m": 1950.0,
+      "new_native_station_m": 1948.274616,
+      "registration_residual_m": 0.0017608997903049298,
+      "corrected_source_xy_m": [
+        -1071.0050039596338,
+        26.177255387811545
+      ]
+    },
+    {
+      "old_native_station_m": 2050.0,
+      "new_native_station_m": 2049.068716,
+      "registration_residual_m": 0.00394175469027472,
+      "corrected_source_xy_m": [
+        -1141.3603141203585,
+        98.34355432691986
+      ]
+    },
+    {
+      "old_native_station_m": 2080.0,
+      "new_native_station_m": 2079.294084,
+      "registration_residual_m": 0.004235221715289214,
+      "corrected_source_xy_m": [
+        -1164.3681536797951,
+        117.78366519418611
+      ]
+    },
+    {
+      "old_native_station_m": 2113.0,
+      "new_native_station_m": 2112.438148,
+      "registration_residual_m": 0.13990270707689476,
+      "corrected_source_xy_m": [
+        -1193.3883156761551,
+        132.5394430497671
+      ]
+    },
+    {
+      "old_native_station_m": 2140.0,
+      "new_native_station_m": 2139.601088,
+      "registration_residual_m": 0.018505953460011302,
+      "corrected_source_xy_m": [
+        -1217.506216831582,
+        120.77509293710317
+      ]
+    },
+    {
+      "old_native_station_m": 2160.0,
+      "new_native_station_m": 2159.748244,
+      "registration_residual_m": 0.04282351710167617,
+      "corrected_source_xy_m": [
+        -1231.4938561652802,
+        106.36511681841262
+      ]
+    },
+    {
+      "old_native_station_m": 2200.0,
+      "new_native_station_m": 2200.061823,
+      "registration_residual_m": 0.005875842406283533,
+      "corrected_source_xy_m": [
+        -1250.951147855606,
+        71.06018253182181
+      ]
+    },
+    {
+      "old_native_station_m": 2250.0,
+      "new_native_station_m": 2250.460027,
+      "registration_residual_m": 0.006021854722291303,
+      "corrected_source_xy_m": [
+        -1275.5192712445396,
+        27.056642384920107
+      ]
+    },
+    {
+      "old_native_station_m": 2530.0,
+      "new_native_station_m": 2532.691906,
+      "registration_residual_m": 0.0056980553295900935,
+      "corrected_source_xy_m": [
+        -1412.8951285850978,
+        -219.48232028239434
+      ]
+    },
+    {
+      "old_native_station_m": 2535.0,
+      "new_native_station_m": 2537.731602,
+      "registration_residual_m": 0.0040714433001699715,
+      "corrected_source_xy_m": [
+        -1415.3395136803715,
+        -223.88949118804078
+      ]
+    },
+    {
+      "old_native_station_m": 2572.0,
+      "new_native_station_m": 2574.929437,
+      "registration_residual_m": 0.2558776082963532,
+      "corrected_source_xy_m": [
+        -1430.2877207860902,
+        -257.6289042408157
+      ]
+    },
+    {
+      "old_native_station_m": 2600.0,
+      "new_native_station_m": 2602.976801,
+      "registration_residual_m": 0.003454054262284458,
+      "corrected_source_xy_m": [
+        -1409.2957456501963,
+        -275.81622618065325
+      ]
+    },
+    {
+      "old_native_station_m": 2655.0,
+      "new_native_station_m": 2658.413769,
+      "registration_residual_m": 0.022952821140900817,
+      "corrected_source_xy_m": [
+        -1364.3369416615142,
+        -308.2390751311222
+      ]
+    },
+    {
+      "old_native_station_m": 2660.0,
+      "new_native_station_m": 2663.45313,
+      "registration_residual_m": 0.004286950605146705,
+      "corrected_source_xy_m": [
+        -1360.3923728584746,
+        -311.37567553705543
+      ]
+    },
+    {
+      "old_native_station_m": 2687.0,
+      "new_native_station_m": 2690.662745,
+      "registration_residual_m": 0.005810900410264303,
+      "corrected_source_xy_m": [
+        -1339.1134845292859,
+        -328.3335903947272
+      ]
+    },
+    {
+      "old_native_station_m": 2700.0,
+      "new_native_station_m": 2704.016319,
+      "registration_residual_m": 0.17972724936062096,
+      "corrected_source_xy_m": [
+        -1328.8203259264612,
+        -336.86849209117435
+      ]
+    },
+    {
+      "old_native_station_m": 2715.0,
+      "new_native_station_m": 2718.177348,
+      "registration_residual_m": 0.006895442991863682,
+      "corrected_source_xy_m": [
+        -1326.725977043741,
+        -350.5811949132791
+      ]
+    },
+    {
+      "old_native_station_m": 2750.0,
+      "new_native_station_m": 2753.506502,
+      "registration_residual_m": 0.027431853034600086,
+      "corrected_source_xy_m": [
+        -1323.504444204144,
+        -385.3304936207757
+      ]
+    },
+    {
+      "old_native_station_m": 2760.0,
+      "new_native_station_m": 2763.594638,
+      "registration_residual_m": 0.002097945671621991,
+      "corrected_source_xy_m": [
+        -1320.732078255036,
+        -395.03050106495516
+      ]
+    },
+    {
+      "old_native_station_m": 2795.0,
+      "new_native_station_m": 2798.823191,
+      "registration_residual_m": 0.013913429977643197,
+      "corrected_source_xy_m": [
+        -1298.620521260682,
+        -421.97583348857074
+      ]
+    },
+    {
+      "old_native_station_m": 2820.0,
+      "new_native_station_m": 2824.021025,
+      "registration_residual_m": 0.02183086220133029,
+      "corrected_source_xy_m": [
+        -1280.499010592089,
+        -439.4779545705307
+      ]
+    },
+    {
+      "old_native_station_m": 2900.0,
+      "new_native_station_m": 2904.634192,
+      "registration_residual_m": 0.03058985272245808,
+      "corrected_source_xy_m": [
+        -1220.0523855778795,
+        -492.32013965719597
+      ]
+    },
+    {
+      "old_native_station_m": 2920.0,
+      "new_native_station_m": 2924.779077,
+      "registration_residual_m": 0.016454694608614515,
+      "corrected_source_xy_m": [
+        -1208.0835478879283,
+        -508.4733055691462
+      ]
+    },
+    {
+      "old_native_station_m": 2966.0,
+      "new_native_station_m": 2964.961013,
+      "registration_residual_m": 0.15000145015497532,
+      "corrected_source_xy_m": [
+        -1179.5387811303603,
+        -533.0901541553039
+      ]
+    },
+    {
+      "old_native_station_m": 3010.0,
+      "new_native_station_m": 3004.31077,
+      "registration_residual_m": 0.005505456048304693,
+      "corrected_source_xy_m": [
+        -1165.321305827571,
+        -498.55454880139246
+      ]
+    },
+    {
+      "old_native_station_m": 3040.0,
+      "new_native_station_m": 3034.549723,
+      "registration_residual_m": 0.005499554515044779,
+      "corrected_source_xy_m": [
+        -1159.6874705220437,
+        -468.8450653719325
+      ]
+    },
+    {
+      "old_native_station_m": 3100.0,
+      "new_native_station_m": 3095.028104,
+      "registration_residual_m": 0.005590528066425339,
+      "corrected_source_xy_m": [
+        -1148.4194783690375,
+        -409.425820313707
+      ]
+    },
+    {
+      "old_native_station_m": 3120.0,
+      "new_native_station_m": 3115.187419,
+      "registration_residual_m": 0.005545602701981635,
+      "corrected_source_xy_m": [
+        -1144.6635165995892,
+        -389.61952053869686
+      ]
+    },
+    {
+      "old_native_station_m": 3150.0,
+      "new_native_station_m": 3145.426532,
+      "registration_residual_m": 0.00568643133565011,
+      "corrected_source_xy_m": [
+        -1139.0294746605193,
+        -359.9099050653636
+      ]
+    },
+    {
+      "old_native_station_m": 3210.0,
+      "new_native_station_m": 3205.904624,
+      "registration_residual_m": 0.005618972222135432,
+      "corrected_source_xy_m": [
+        -1127.7616528541896,
+        -300.4908101944444
+      ]
+    },
+    {
+      "old_native_station_m": 3450.0,
+      "new_native_station_m": 3447.812678,
+      "registration_residual_m": 0.005178765564727277,
+      "corrected_source_xy_m": [
+        -1054.8938058240929,
+        -70.40952072251851
+      ]
+    },
+    {
+      "old_native_station_m": 3475.0,
+      "new_native_station_m": 3473.01187,
+      "registration_residual_m": 0.0063047605168898785,
+      "corrected_source_xy_m": [
+        -1046.6038102337595,
+        -46.61299318741769
+      ]
+    },
+    {
+      "old_native_station_m": 3513.0,
+      "new_native_station_m": 3506.283961,
+      "registration_residual_m": 0.14333139395541525,
+      "corrected_source_xy_m": [
+        -1030.1144727159547,
+        -19.457142510987715
+      ]
+    },
+    {
+      "old_native_station_m": 3540.0,
+      "new_native_station_m": 3529.264329,
+      "registration_residual_m": 0.0036245741699741916,
+      "corrected_source_xy_m": [
+        -1010.2696040343127,
+        -29.031374637938743
+      ]
+    },
+    {
+      "old_native_station_m": 3730.0,
+      "new_native_station_m": 3720.777376,
+      "registration_residual_m": 0.005876542067098767,
+      "corrected_source_xy_m": [
+        -865.5925046985689,
+        -154.49464094670694
+      ]
+    },
+    {
+      "old_native_station_m": 3750.0,
+      "new_native_station_m": 3740.932435,
+      "registration_residual_m": 0.014553303248288232,
+      "corrected_source_xy_m": [
+        -849.2958333034991,
+        -166.28742685868593
+      ]
+    },
+    {
+      "old_native_station_m": 3768.0,
+      "new_native_station_m": 3759.07258,
+      "registration_residual_m": 0.015889960674460992,
+      "corrected_source_xy_m": [
+        -832.9692927779092,
+        -174.1509489613089
+      ]
+    },
+    {
+      "old_native_station_m": 3795.0,
+      "new_native_station_m": 3786.284915,
+      "registration_residual_m": 0.01864916942917302,
+      "corrected_source_xy_m": [
+        -806.7948808692323,
+        -181.48671790944684
+      ]
+    },
+    {
+      "old_native_station_m": 3850.0,
+      "new_native_station_m": 3841.72127,
+      "registration_residual_m": 0.001086830051520497,
+      "corrected_source_xy_m": [
+        -751.6216214660677,
+        -186.36215973253667
+      ]
+    },
+    {
+      "old_native_station_m": 3900.0,
+      "new_native_station_m": 3892.119939,
+      "registration_residual_m": 0.0011846689748757305,
+      "corrected_source_xy_m": [
+        -701.2940526877873,
+        -189.03733635103782
+      ]
+    },
+    {
+      "old_native_station_m": 4000.0,
+      "new_native_station_m": 3992.916696,
+      "registration_residual_m": 0.0013737026037850104,
+      "corrected_source_xy_m": [
+        -600.6389030356041,
+        -194.37873277996118
+      ]
+    },
+    {
+      "old_native_station_m": 4100.0,
+      "new_native_station_m": 4093.71341,
+      "registration_residual_m": 0.001195551830532684,
+      "corrected_source_xy_m": [
+        -499.98080003572016,
+        -199.6481179234049
+      ]
+    },
+    {
+      "old_native_station_m": 4205.0,
+      "new_native_station_m": 4199.549801,
+      "registration_residual_m": 0.0012130312026395142,
+      "corrected_source_xy_m": [
+        -394.29868871979505,
+        -205.35864451215122
+      ]
+    },
+    {
+      "old_native_station_m": 4246.0,
+      "new_native_station_m": 4240.869811,
+      "registration_residual_m": 0.058947273075629976,
+      "corrected_source_xy_m": [
+        -353.182950098371,
+        -208.88768132553292
+      ]
+    },
+    {
+      "old_native_station_m": 4280.0,
+      "new_native_station_m": 4275.02695,
+      "registration_residual_m": 0.05004033343649369,
+      "corrected_source_xy_m": [
+        -332.0711063406505,
+        -232.30158805042504
+      ]
+    },
+    {
+      "old_native_station_m": 4315.0,
+      "new_native_station_m": 4310.287205,
+      "registration_residual_m": 0.028835145834758432,
+      "corrected_source_xy_m": [
+        -327.94026395109444,
+        -267.0384847135144
+      ]
+    },
+    {
+      "old_native_station_m": 4346.0,
+      "new_native_station_m": 4341.465441,
+      "registration_residual_m": 0.023803859128518488,
+      "corrected_source_xy_m": [
+        -305.3186305458162,
+        -286.88942237348664
+      ]
+    },
+    {
+      "old_native_station_m": 4350.0,
+      "new_native_station_m": 4345.495629,
+      "registration_residual_m": 0.03242729992290753,
+      "corrected_source_xy_m": [
+        -301.3906639919178,
+        -287.79609003801085
+      ]
+    },
+    {
+      "old_native_station_m": 4375.0,
+      "new_native_station_m": 4370.693376,
+      "registration_residual_m": 0.0016826325787192703,
+      "corrected_source_xy_m": [
+        -276.3987160564882,
+        -290.9753738779874
+      ]
+    },
+    {
+      "old_native_station_m": 4450.0,
+      "new_native_station_m": 4446.291439,
+      "registration_residual_m": 0.001663183776368281,
+      "corrected_source_xy_m": [
+        -201.20983105223297,
+        -298.8234791024237
+      ]
+    },
+    {
+      "old_native_station_m": 4500.0,
+      "new_native_station_m": 4496.688784,
+      "registration_residual_m": 0.0014773301334969088,
+      "corrected_source_xy_m": [
+        -151.01354412308893,
+        -303.15546362181976
+      ]
+    },
+    {
+      "old_native_station_m": 4522.7,
+      "new_native_station_m": 4519.569688,
+      "registration_residual_m": 0.0016788629386042427,
+      "corrected_source_xy_m": [
+        -128.14886088648402,
+        -304.0156757317882
+      ]
+    },
+    {
+      "old_native_station_m": 4540.0,
+      "new_native_station_m": 4537.007576,
+      "registration_residual_m": 0.001635975305630886,
+      "corrected_source_xy_m": [
+        -110.72305652664863,
+        -304.6715843195174
+      ]
+    },
+    {
+      "old_native_station_m": 4570.0,
+      "new_native_station_m": 4567.246657,
+      "registration_residual_m": 0.002093459111512968,
+      "corrected_source_xy_m": [
+        -80.5058129978742,
+        -305.8157031551396
+      ]
+    },
+    {
+      "old_native_station_m": 4621.0,
+      "new_native_station_m": 4618.564489,
+      "registration_residual_m": 0.24971042236071803,
+      "corrected_source_xy_m": [
+        -29.657501486016713,
+        -304.5929789041198
+      ]
+    },
+    {
+      "old_native_station_m": 4650.0,
+      "new_native_station_m": 4647.739375,
+      "registration_residual_m": 0.0007491225312601209,
+      "corrected_source_xy_m": [
+        -12.404912077610913,
+        -281.1157586539227
+      ]
+    },
+    {
+      "old_native_station_m": 4670.0,
+      "new_native_station_m": 4667.898788,
+      "registration_residual_m": 0.0007526323224587145,
+      "corrected_source_xy_m": [
+        -1.5498967141185216,
+        -264.1285461838696
+      ]
+    },
+    {
+      "old_native_station_m": 4680.0,
+      "new_native_station_m": 4677.978262,
+      "registration_residual_m": 0.0007325196473473536,
+      "corrected_source_xy_m": [
+        3.877702188776801,
+        -255.63502764210244
+      ]
+    },
+    {
+      "old_native_station_m": 4710.0,
+      "new_native_station_m": 4708.211713,
+      "registration_residual_m": 0.039099833571466805,
+      "corrected_source_xy_m": [
+        19.5931759236268,
+        -229.82468790732236
+      ]
+    },
+    {
+      "old_native_station_m": 4717.0,
+      "new_native_station_m": 4715.251259,
+      "registration_residual_m": 0.12455440901140885,
+      "corrected_source_xy_m": [
+        22.286171409246837,
+        -223.31027720982638
+      ]
+    },
+    {
+      "old_native_station_m": 4720.0,
+      "new_native_station_m": 4718.266285,
+      "registration_residual_m": 0.0025011350805654977,
+      "corrected_source_xy_m": [
+        22.824275392244314,
+        -220.33613612666096
+      ]
+    },
+    {
+      "old_native_station_m": 4755.0,
+      "new_native_station_m": 4753.527739,
+      "registration_residual_m": 3.358804658102766e-05,
+      "corrected_source_xy_m": [
+        21.474579365388117,
+        -185.2335525241401
+      ]
+    },
+    {
+      "old_native_station_m": 4940.0,
+      "new_native_station_m": 4940.0,
+      "registration_residual_m": 0.0,
+      "corrected_source_xy_m": [
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "native_uniform_correction_factor": 1.0079684986372148,
+  "maximum_registration_residual_m": 0.2558776082963532,
+  "module_sha256": "98a2b077f0e78bb944dd119d1812365e7f0f2f03056f13f45bc644344c8cf4dc",
+  "scope": "Kerbs, runoff intervals, braking apexes, branding, yellow pit-edge paint, generic stand/pit endpoints, tree ranges and explicit reference sector/landmark station fields. Actual mapped building/waterfront XY coordinates are unchanged. No native application or production meshes are written.",
+  "runtime_approval": false,
+  "additional_context_note": "Subsequent Raffles/Flyer scenery corrections do not change the registered physical surface intervals. The final mapped WGS scene scale is recorded separately in provenance.json and scene-registration.json."
+}

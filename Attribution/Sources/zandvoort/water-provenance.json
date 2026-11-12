@@ -1,0 +1,38 @@
+{
+  "provider": "OpenStreetMap contributors",
+  "licence": "ODbL1.0",
+  "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "retrieved_utc": "2026-11-12",
+  "map_url": "https://api.openstreetmap.org/api/0.6/map?bbox=4.5281,52.3779,4.5637,52.3984",
+  "relation_full_urls": [
+    "https://api.openstreetmap.org/api/0.6/relation/1520747/full",
+    "https://api.openstreetmap.org/api/0.6/relation/1520771/full",
+    "https://api.openstreetmap.org/api/0.6/relation/1520784/full"
+  ],
+  "retained_files": [
+    {
+      "file": "elevation/ahn5-full-context.osm.gz",
+      "sha256": "d761e6ac4d9f70996972a15c1dc8ad9e71e7ccc683d9746a8518149be16f0c85"
+    },
+    {
+      "file": "elevation/water-relation-1520747.osm.gz",
+      "sha256": "8d9e5de617727acceaa81ba0e35807925df332926458ba9bf034066926571911"
+    },
+    {
+      "file": "elevation/water-relation-1520771.osm.gz",
+      "sha256": "5e3e97ff1628970a46ba6e461864fafc8cdacf95d30498c113b01d812880eae8"
+    },
+    {
+      "file": "elevation/water-relation-1520784.osm.gz",
+      "sha256": "60bb4c013160e63171483b3c3cc8a55ff95323aa740c9f0091062fd2bcf5a79e"
+    },
+    {
+      "file": "elevation/water-rings.json",
+      "sha256": "bd5515e79c2f685be8a8822edad8061b5457f38bd3dde511868491a04b3ff6d8"
+    }
+  ],
+  "assembly": "Join actual outer/inner relation way nodes, retaining every component and island hole. Use coastline1323654259 direction, landLEFT/seaRIGHT, to select the sea side within the unchanged scenery bounds. No guessed broad sea plane crosses inland circuit ground.",
+  "vertical_registration": "Mean North Sea plane NAP0. Individual inland pond heights are uncertain shore-derived estimates recorded per body in water-bodies.json. All levels subtract the same AHN5 road datum2.5812805503m; AHN water NoData is never treated as measured zero.",
+  "terrain_fill_mask": "elevation/ahn5-scenery-coverage.json.gz",
+  "physics": "Water clips scenery only, after road/corridor/building exclusions. It never appends a physical corridor or modifies roadXYZ/bank/width."
+}

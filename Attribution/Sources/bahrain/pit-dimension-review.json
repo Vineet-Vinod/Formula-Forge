@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-12",
+  "circuit": "bahrain",
+  "status": "Source correction; final native protection synchronization, packaged appearance and Luna High review pending.",
+  "module": "tools/venues/pit_compounds.py",
+  "coordinate_frame": "Current canonical native east/north; +1 driverRIGHT,−1 driverLEFT. Exact scene geographic normalization remains in scene-registration.json/provenance.json.",
+  "mapped_building": {
+    "osm_id": 187123416,
+    "footprint_area_m2": 9363.277744630142,
+    "source_file": "buildings.osm.json.gz",
+    "evidence_kind": "Mapped plan and tagged dimensions, not a surveyed architectural drawing."
+  },
+  "observed_facade": "White structural piers, dark recessed garages and roller headers, one glazed upper hospitality level with projecting balcony fascia, and repeated pale folded canopy bays with entry-end stays/spires. Body9.6m, garage4.3m, approximately8m bay spacing and roof10.8–15m are reference estimates, not measured dimensions. The retained garage arrangement yields41 bays, a reconstruction rather than a claimed surveyed count.",
+  "supplied_video_seconds": [
+    120,
+    130,
+    185
+  ],
+  "primary_sources": [
+    {
+      "url": "https://www.cebarco.com.bh/project/bahrain-international-circuit/",
+      "supports": "Original contractor confirms pit building/paddock club and other race facilities; it does not establish exact facade height or bay count."
+    }
+  ],
+  "pit_lane": {
+    "start_m": 5130,
+    "end_m": 135,
+    "side": 1,
+    "outer_offset_m": 17.5,
+    "shoulder_m": 0.1,
+    "transition_m": 25.0,
+    "source_note": "Actual mapped pit compound187123416 replaces the former generic block. The full mapped compound projects to native5137.31→126.46m across zero. Road-facing garage segments stand17.893–18.598m and22.645–22.701m beyond the road edge. The paving control is rounded by less than10m at the longitudinal ends and ends at a constant17.5m offset before the nearest garage face. Local unstriped apron polygons meet each variable mapped front and exclude the occupied building; the generic outer white stripe therefore stays outside all garage bays. Mapped plan registration has approximately±2m uncertainty. Facade/roof dimensions remain reconstructed. Paving stays beyond a closed pit wall; racing XYZ, banking and handling are unchanged. See pit-dimension-review.json.",
+    "former_generic_registration": "See pit-lane.json for full historical record.",
+    "former_registration_status": "Superseded by actual retained footprint. Root restores the original shoulder lattice before applying this profile."
+  },
+  "grounding": "Each body/garage bay follows the nearest canonical road grade. Exact occupied-footprint strips replace only roof-contaminated DSM ground, with local road-level uncertainty±1m; no broad surrounding land flattening or road-physics change. Roof tops/soffits are closed and remain within the actual footprint plus1.5m roadward canopy overhang.",
+  "ground_and_facade_uncertainty_m": 1.0,
+  "plan_registration_uncertainty_m": 2.0,
+  "emitted_geometry_proof": {
+    "path": "build/reviews/resume-20261112/bahrain-mapped-pit-source-proof.json",
+    "sha256": "ee6548804bc4af173f5f648cfc29138b556a1ffe17543de55f32d0567de2d20e",
+    "whole_road_structural_overlap_m2": 0.0,
+    "roof_minimum_whole_road_clearance_m": 16.242926806566327,
+    "finite_vertices": true,
+    "roof_shell_unpaired_edges_at_1um": 0,
+    "paving_under_occupied_body_m2": 0.0,
+    "white_stripe_under_occupied_body_m2": 0.0,
+    "extra_corridors_added": 0
+  },
+  "reference_pixels_shipped": false,
+  "runtime_approval": false,
+  "variable_apron": {
+    "constant_paving_outer_offset_m": 17.5,
+    "geometry": "Original unstriped Runoff polygons from that constant edge to each retained garage-front segment, clipped against exact occupied building and all road arms, projected to the adjacent native road plane. No extra_corridors or access through the closed pit wall.",
+    "stripe_clearance": "The shared outer stripe is0.4m inward of this constant paving edge, before every garage face.",
+    "driving_envelope_changed": false
+  },
+  "source_frame_hashes": [
+    {
+      "path": "build/reviews/bahrain/reference/detail-0120.jpg",
+      "sha256": "d397a06635c34a068123c1c7915fb8935cdf79b35f6a25ead6200e6c778f3992"
+    },
+    {
+      "path": "build/reviews/bahrain/reference/detail-0130.jpg",
+      "sha256": "8e6f7d734d1cc5e183f3a313862c1710ced58abaa95a713d5b5f66b5d7779a9a"
+    },
+    {
+      "path": "build/reviews/bahrain/reference/detail-0185.jpg",
+      "sha256": "00fdd490517f0aeccf01dc5601df0bf7c81061438cfc3a8038906e41c0d5ee8f"
+    }
+  ],
+  "roof_closure": "Roof tops, undersides and side skins share the exact tessellated boundary. Closed triangle-edge counts, not just plan containment, verify the curved folds and concave ends."
+}

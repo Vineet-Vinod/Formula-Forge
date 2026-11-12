@@ -1,9 +1,9 @@
 {
   "recipe": "make circuit-assets CIRCUIT=baku",
-  "tiles": 194,
-  "triangles": 3166003,
-  "road_sha256": "72c25aeed75ec4db3b06f34baf8249eb8934b256630bb9def874aea84584678c",
-  "terrain_sha256": "83e3e3168f3d6df95e909c93732b14a91dd0f8923ab4df53c65e4beb096a2091",
+  "tiles": 202,
+  "triangles": 3918399,
+  "road_sha256": "26bc10ef7913eb8b758e60bada4eb749e94aa7bb524952c47ead9fff2130166e",
+  "terrain_sha256": "e6e5423c2f5f02fc7e47ddb1459d9e39edcc2ae0b7891724be8520abedc5231e",
   "landmarks": [
     {
       "name": "Paved pit lane and working apron",
@@ -119,11 +119,25 @@
       "material": "PanelNavy"
     },
     {
+      "name": "Reference event panels",
+      "start_m": 2480,
+      "end_m": 2850,
+      "side": -1,
+      "material": "PanelLenovo"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 2480,
+      "end_m": 2850,
+      "side": 1,
+      "material": "PanelLenovo"
+    },
+    {
       "name": "Mapped coastal sea, lagoon and pier decks",
-      "water_area_m2": 2947374.138,
+      "water_area_m2": 2952528.112,
       "water_level_m": -4.3,
       "mapped_piers": 6,
-      "water_removed_for_roads_buildings_piers_m2": 40071.789,
+      "water_removed_for_roads_buildings_piers_m2": 40141.861,
       "source": "coastal-water.json and coastal-provenance.json; original shoreline geometry, no game pixels.",
       "dimensions_status": "Water is flat in the registered native datum. Pier footprints are mapped; deck levels are estimated from retained shore ground with minimum 0.6 m freeboard. Water only excludes scenery terrain; no physical corridor or native road changes."
     },
@@ -172,7 +186,7 @@
     {
       "name": "Mapped footprint clearance",
       "osm_id": 133641453,
-      "footprint_clip_m2": 8.68,
+      "footprint_clip_m2": 17.66,
       "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
     },
     {
@@ -202,7 +216,7 @@
     {
       "name": "Mapped footprint clearance",
       "osm_id": 133847240,
-      "footprint_clip_m2": 30.9,
+      "footprint_clip_m2": 52.19,
       "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
     },
     {
@@ -250,13 +264,13 @@
     {
       "name": "Az\u0259rbaycan D\u00f6vl\u0259t Filarmoniyas\u0131",
       "osm_id": 152190848,
-      "footprint_clip_m2": 3.78,
+      "footprint_clip_m2": 28.62,
       "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
     },
     {
       "name": "Az\u0259rbaycan D\u00f6vl\u0259t Filarmoniyas\u0131",
       "osm_id": 152190848,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
@@ -400,7 +414,7 @@
     {
       "name": "La Casa Hotel Baku",
       "osm_id": 169688229,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
@@ -676,7 +690,7 @@
     {
       "name": "Rotunda",
       "osm_id": 200195774,
-      "height_m": 10.0,
+      "height_m": 8.0,
       "facade": "classical"
     },
     {
@@ -712,13 +726,13 @@
     {
       "name": "Mapped footprint clearance",
       "osm_id": 217366428,
-      "footprint_clip_m2": 4.01,
+      "footprint_clip_m2": 1.83,
       "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
     },
     {
       "name": "Mapped building",
       "osm_id": 217366428,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
@@ -759,12 +773,6 @@
     },
     {
       "name": "Mapped building",
-      "osm_id": 224648430,
-      "height_m": 10.0,
-      "facade": "classical"
-    },
-    {
-      "name": "Mapped building",
       "osm_id": 249199840,
       "height_m": 22,
       "facade": "classical"
@@ -778,7 +786,7 @@
     {
       "name": "Mapped footprint clearance",
       "osm_id": 249200550,
-      "footprint_clip_m2": 3.05,
+      "footprint_clip_m2": 3.02,
       "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
     },
     {
@@ -820,7 +828,7 @@
     {
       "name": "D\u0259nizk\u0259nar\u0131 Bulvar \u0130dar\u0259si",
       "osm_id": 279935608,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
@@ -862,7 +870,7 @@
     {
       "name": "Mapped building",
       "osm_id": 286018688,
-      "height_m": 10.0,
+      "height_m": 8.0,
       "facade": "classical"
     },
     {
@@ -874,13 +882,13 @@
     {
       "name": "Mapped building",
       "osm_id": 286018691,
-      "height_m": 10.0,
+      "height_m": 5.0,
       "facade": "classical"
     },
     {
       "name": "Mapped building",
       "osm_id": 286018693,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
@@ -916,19 +924,19 @@
     {
       "name": "Two\u2011Storeyed Caravanserai / Gasim bey Caravanserai",
       "osm_id": 299418022,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
       "name": "Seyid Murtuza M\u0259scidi",
       "osm_id": 299418023,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
       "name": "C\u00fcm\u0259 M\u0259scidi",
       "osm_id": 299418024,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
@@ -958,19 +966,19 @@
     {
       "name": "Multani Karvansaray",
       "osm_id": 299450010,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
       "name": "\u015eirvan\u015fahlar ail\u0259 t\u00fcrb\u0259si",
       "osm_id": 299450764,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
       "name": "\u015eah m\u0259scidi",
       "osm_id": 299450765,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
@@ -1048,37 +1056,37 @@
     {
       "name": "Mirvari Kafe",
       "osm_id": 318180621,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
       "name": "Mapped footprint clearance",
       "osm_id": 327765450,
-      "footprint_clip_m2": 8.05,
+      "footprint_clip_m2": 14.45,
       "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
     },
     {
       "name": "Mapped building",
       "osm_id": 327765450,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
       "name": "S\u0259d\u0259f Milli M\u0259tb\u0259x - Bulvar",
       "osm_id": 360220302,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
       "name": "Carousel",
       "osm_id": 360221018,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
       "name": "Mapped building",
       "osm_id": 360221790,
-      "height_m": 10.0,
+      "height_m": 3.4,
       "facade": "classical"
     },
     {
@@ -1096,7 +1104,7 @@
     {
       "name": "Mapped building",
       "osm_id": 385595163,
-      "height_m": 10.0,
+      "height_m": 3.4,
       "facade": "classical"
     },
     {
@@ -1120,7 +1128,7 @@
     {
       "name": "Stay High Restobar",
       "osm_id": 387071128,
-      "height_m": 10.0,
+      "height_m": 3.4,
       "facade": "classical"
     },
     {
@@ -1132,7 +1140,7 @@
     {
       "name": "Mapped building",
       "osm_id": 446813419,
-      "height_m": 10.0,
+      "height_m": 3.4,
       "facade": "classical"
     },
     {
@@ -1162,7 +1170,7 @@
     {
       "name": "Mapped building",
       "osm_id": 465003802,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
@@ -1342,7 +1350,7 @@
     {
       "name": "Mapped building",
       "osm_id": 505549662,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
@@ -1378,7 +1386,7 @@
     {
       "name": "Underground Bath of Baku",
       "osm_id": 694786373,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
@@ -1408,43 +1416,31 @@
     {
       "name": "Baku Khans' Palace",
       "osm_id": 809349515,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
       "name": "Bak\u0131 Xanlar\u0131n Evi",
       "osm_id": 809349516,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
       "name": "Q\u0259dim Hamam",
       "osm_id": 809349518,
-      "height_m": 10.0,
+      "height_m": 3.4,
       "facade": "classical"
     },
     {
       "name": "Mapped building",
       "osm_id": 809349519,
-      "height_m": 10.0,
+      "height_m": 3.4,
       "facade": "classical"
     },
     {
       "name": "Mapped building",
       "osm_id": 809349520,
       "height_m": 10.2,
-      "facade": "classical"
-    },
-    {
-      "name": "Baku City Circuit",
-      "osm_id": 822375068,
-      "height_m": 10.0,
-      "facade": "classical"
-    },
-    {
-      "name": "Mapped building",
-      "osm_id": 822375069,
-      "height_m": 10.0,
       "facade": "classical"
     },
     {
@@ -1480,19 +1476,19 @@
     {
       "name": "Mapped building",
       "osm_id": 1068848089,
-      "height_m": 10.0,
+      "height_m": 3.4,
       "facade": "classical"
     },
     {
       "name": "Mapped building",
       "osm_id": 1068850868,
-      "height_m": 10.0,
+      "height_m": 3.4,
       "facade": "classical"
     },
     {
       "name": "Mapped building",
       "osm_id": 1069051475,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
@@ -1510,7 +1506,7 @@
     {
       "name": "Mapped building",
       "osm_id": 1277818821,
-      "height_m": 10.0,
+      "height_m": 3.4,
       "facade": "classical"
     },
     {
@@ -1552,19 +1548,19 @@
     {
       "name": "Mapped building",
       "osm_id": 1325630860,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
       "name": "Mapped building",
       "osm_id": 1325630861,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
       "name": "Mapped building",
       "osm_id": 1325630862,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
@@ -1588,7 +1584,7 @@
     {
       "name": "Mapped building",
       "osm_id": 1326224084,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
@@ -1612,13 +1608,13 @@
     {
       "name": "Mapped building",
       "osm_id": 1378423614,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
       "name": "Small Caravanserai / Khan Caravanserai",
       "osm_id": 1411050897,
-      "height_m": 10.0,
+      "height_m": 3.4,
       "facade": "classical"
     },
     {
@@ -1630,18 +1626,6 @@
     {
       "name": "Mapped building",
       "osm_id": 1413346271,
-      "height_m": 22,
-      "facade": "classical"
-    },
-    {
-      "name": "Mapped building",
-      "osm_id": 1413368983,
-      "height_m": 22,
-      "facade": "classical"
-    },
-    {
-      "name": "Mapped building",
-      "osm_id": 1413368987,
       "height_m": 22,
       "facade": "classical"
     },
@@ -1701,50 +1685,32 @@
     },
     {
       "name": "Mapped building",
-      "osm_id": 1414182639,
-      "height_m": 22,
-      "facade": "classical"
-    },
-    {
-      "name": "Mapped building",
-      "osm_id": 1414182643,
-      "height_m": 22,
-      "facade": "classical"
-    },
-    {
-      "name": "Mapped building",
-      "osm_id": 1414182653,
-      "height_m": 22,
-      "facade": "classical"
-    },
-    {
-      "name": "Mapped building",
       "osm_id": 1414741409,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
       "name": "Mapped building",
       "osm_id": 1414741410,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
       "name": "Mapped building",
       "osm_id": 1414741411,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
       "name": "Mapped building",
       "osm_id": 1414741412,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
       "name": "Mapped building",
       "osm_id": 1414972270,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
@@ -1858,7 +1824,7 @@
     {
       "name": "Mapped building",
       "osm_id": 1425684009,
-      "height_m": 10.0,
+      "height_m": 6.8,
       "facade": "classical"
     },
     {
@@ -1880,15 +1846,9 @@
       "facade": "classical"
     },
     {
-      "name": "Mapped building",
-      "osm_id": 1502989777,
-      "height_m": 10.0,
-      "facade": "classical"
-    },
-    {
       "name": "Mapped footprint clearance",
       "osm_id": 1502989778,
-      "footprint_clip_m2": 5.86,
+      "footprint_clip_m2": 5.01,
       "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
     },
     {
@@ -1906,8 +1866,23 @@
     {
       "name": "Mapped building",
       "osm_id": 1527793777,
-      "height_m": 10.0,
+      "height_m": 3.4,
       "facade": "classical"
+    },
+    {
+      "osm_id": 299424046,
+      "name": "Mapped Old City approach frontage",
+      "detail_status": "Actual clipped footprint and tagged storeys retained. Supplied234/236s supports articulated arched upper openings, pale stone surrounds and narrow projecting iron balconies. Individual bay/arch/balcony dimensions and placement are original visual estimates; no template office signboard."
+    },
+    {
+      "osm_id": 133847240,
+      "name": "Mapped Old City approach frontage",
+      "detail_status": "Actual clipped footprint and tagged storeys retained. Supplied234/236s supports articulated arched upper openings, pale stone surrounds and narrow projecting iron balconies. Individual bay/arch/balcony dimensions and placement are original visual estimates; no template office signboard."
+    },
+    {
+      "osm_id": 133641457,
+      "name": "Konstitusiya M\u0259hk\u0259m\u0259si",
+      "detail_status": "Actual clipped footprint and tagged storeys retained. Supplied234/236s supports articulated arched upper openings, pale stone surrounds and narrow projecting iron balconies. Individual bay/arch/balcony dimensions and placement are original visual estimates; no template office signboard."
     },
     {
       "name": "Four Seasons",
@@ -1922,10 +1897,12 @@
       "dimensions": "Footprint registered, upper dimensions visually estimated."
     },
     {
-      "name": "Old City curtain wall",
-      "start_m": 2540,
-      "end_m": 2860,
-      "dimensions": "Reference-estimated wall and turret heights, native curve registration."
+      "name": "Icherisheher castle-ramp masonry",
+      "start_m": 2610,
+      "end_m": 2850,
+      "wall_height_m": 9,
+      "wall_thickness_m": 3.5,
+      "dimensions_status": "Original reconstruction registered to the supplied234/236s forward and238s rear castle views. The ordinary2570m approach is left unobscured. Azerbaijan UNESCO commission documents8\u201310m walls/3.5m thickness; localcourse size,tower radii/locations and crenellation dimensions are visual estimates, not an OSM trace. The retained city_wall299450006 is a separate palace wall and is explicitly not used. Protected road and native collision remain unchanged."
     },
     {
       "name": "Authored grandstand",
@@ -1957,7 +1934,7 @@
       "start_m": 550,
       "end_m": 1250,
       "side": 1,
-      "count": 5,
+      "count": 6,
       "setback_m": 9,
       "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
     },
@@ -1966,7 +1943,7 @@
       "start_m": 550,
       "end_m": 1250,
       "side": -1,
-      "count": 10,
+      "count": 9,
       "setback_m": 7,
       "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
     },
@@ -1975,7 +1952,7 @@
       "start_m": 1400,
       "end_m": 2050,
       "side": 1,
-      "count": 7,
+      "count": 8,
       "setback_m": 8,
       "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
     },
@@ -2002,7 +1979,7 @@
       "start_m": 3800,
       "end_m": 4450,
       "side": -1,
-      "count": 25,
+      "count": 24,
       "setback_m": 8,
       "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
     },
@@ -2011,7 +1988,7 @@
       "start_m": 4550,
       "end_m": 5650,
       "side": -1,
-      "count": 27,
+      "count": 29,
       "setback_m": 10,
       "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
     },

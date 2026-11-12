@@ -1,0 +1,1 @@
+[out:json][timeout:75];(way["natural"="wood"](50.4210,5.9495,50.4530,5.9875);relation["natural"="wood"](50.4210,5.9495,50.4530,5.9875);way["landuse"="forest"](50.4210,5.9495,50.4530,5.9875);relation["landuse"="forest"](50.4210,5.9495,50.4530,5.9875););out body geom;

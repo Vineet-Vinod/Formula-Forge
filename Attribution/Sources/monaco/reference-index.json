@@ -5,23 +5,23 @@
   "reference_sha256": "010bbc56c79bc3d3388718a301957fb380bfbb7a2f63839e9b37447eb4042a99",
   "layout_observed": "Monaco Grand Prix 3.337km/19-corner street circuit; tunnel below the Fairmont complex.",
   "lighting_weather_observed": "Bright daytime with intermittent clouds.",
-  "review_scope": "16 sparse overview frames plus24detail frames330–606seconds viewed. Edited race montage with cuts; timestamps are not lap station fractions.",
+  "review_scope": "16 sparse overview frames plus24detail frames330\u2013606seconds viewed. Edited race montage with cuts; timestamps are not lap station fractions.",
   "frame_index_file": "build/reviews/monaco/reference/overview-index.json",
   "reviewed_visual_evidence": [
     {
       "time_s": 97.9,
       "reviewed": true,
-      "notes": "Pit straight and Sainte-Dévote: Stands and stone/pink apartment tiers frame the uphill opening. Pit/service bars, marina edge, Armco and high mesh fence. Sainte-Dévote needs its opening/runoff access, not a solid urban wall."
+      "notes": "Pit straight and Sainte-D\u00e9vote: Stands and stone/pink apartment tiers frame the uphill opening. Pit/service bars, marina edge, Armco and high mesh fence. Sainte-D\u00e9vote needs its opening/runoff access, not a solid urban wall."
     },
     {
       "time_s": 727.19,
       "reviewed": true,
-      "notes": "Pit straight and Sainte-Dévote: Stands and stone/pink apartment tiers frame the uphill opening. Pit/service bars, marina edge, Armco and high mesh fence. Sainte-Dévote needs its opening/runoff access, not a solid urban wall."
+      "notes": "Pit straight and Sainte-D\u00e9vote: Stands and stone/pink apartment tiers frame the uphill opening. Pit/service bars, marina edge, Armco and high mesh fence. Sainte-D\u00e9vote needs its opening/runoff access, not a solid urban wall."
     },
     {
       "time_s": 906.98,
       "reviewed": true,
-      "notes": "Pit straight and Sainte-Dévote: Stands and stone/pink apartment tiers frame the uphill opening. Pit/service bars, marina edge, Armco and high mesh fence. Sainte-Dévote needs its opening/runoff access, not a solid urban wall."
+      "notes": "Pit straight and Sainte-D\u00e9vote: Stands and stone/pink apartment tiers frame the uphill opening. Pit/service bars, marina edge, Armco and high mesh fence. Sainte-D\u00e9vote needs its opening/runoff access, not a solid urban wall."
     },
     {
       "time_s": 817.08,
@@ -66,7 +66,7 @@
     {
       "time_s": 1266.58,
       "reviewed": true,
-      "notes": "Rascasse, Antony Noghès and pits: Constricted final turns between harbour hospitality and pit structures; roof/canopy layering, guardrail returns and pedestrian gaps. Final corner feeds directly into confined pit straight."
+      "notes": "Rascasse, Antony Nogh\u00e8s and pits: Constricted final turns between harbour hospitality and pit structures; roof/canopy layering, guardrail returns and pedestrian gaps. Final corner feeds directly into confined pit straight."
     }
   ],
   "registration": {
@@ -157,12 +157,12 @@
       }
     ],
     "start_finish_native_station_m": 50.0,
-    "start_finish_method": "Approximate publishedprofilechartregistration against SainteDévote,Casino,Portier,AntonyNoghès; see elevation-corrections.json.",
+    "start_finish_method": "Approximate publishedprofilechartregistration against SainteD\u00e9vote,Casino,Portier,AntonyNogh\u00e8s; see elevation-corrections.json.",
     "start_anchor_review": {
       "station_m": 50,
       "status": "Registered reconstruction",
       "uncertainty_m": 10,
-      "evidence": "Official Formula1profilechart registered against SainteDévote,Casino,Portier,AntonyNoghès; see elevation-corrections.json."
+      "evidence": "Official Formula1profilechart registered against SainteD\u00e9vote,Casino,Portier,AntonyNogh\u00e8s; see elevation-corrections.json."
     }
   },
   "primary_sources": [
@@ -189,6 +189,11 @@
     {
       "url": "https://api.openstreetmap.org/api/0.6/map?bbox=7.4198,43.7335,7.4266,43.7381",
       "use": "Bounded coastal-district building, green-space and retaining-wall identities; raw response/hash/license retained in coastal-district-provenance.json."
+    },
+    {
+      "title": "IGN BDTopo actual building/roof/vegetation source",
+      "url": "https://www.data.gouv.fr/datasets/bd-topo-r",
+      "supports": "Bounded actual Beausoleil city behind CasinoSquare and measured Monaco landmark heights; rawinputs and per-feature uncertainties retained in hillside-architecture-provenance.json."
     }
   ],
   "uncertainties": [
@@ -283,13 +288,13 @@
       835592938,
       835592939
     ],
-    "landcover_geometry": "Mapped woods replace underlying asphalt and support251 reconstructed5.5–10m broadleaf trees, no palms. Limestone applies to unplanted existing12m cells within60m of mapped cliff where IGN ground>8m and gradient>=.2, plus registered Mirabeau interstreet strip. Cliff buffer/slope threshold are original visual classification estimates, not surveyed geology boundaries. Roads, protection, paths, water and actual building footprints are excluded.",
+    "landcover_geometry": "Mapped woods replace underlying asphalt and support251 reconstructed5.5\u201310m broadleaf trees, no palms. Limestone applies to unplanted existing12m cells within60m of mapped cliff where IGN ground>8m and gradient>=.2, plus registered Mirabeau interstreet strip. Cliff buffer/slope threshold are original visual classification estimates, not surveyed geology boundaries. Roads, protection, paths, water and actual building footprints are excluded.",
     "scenery_street_exclusion": "Avenue de la Porte Neuve165636031 retains its existing asphalt through an estimated6m width supported by its two-lane tag; no racing-road or native collision edits. Below-ground tunnels do not remove above-ground vegetation.",
     "architecture": "Twelve actual mapped Rocher crest footprints. Tagged3/4 storeys retained with shared3.4m storey conversion. Untagged houses estimated3storeys. Narrow recessed openings, original dark shutter geometry, cream plaster and footprint-clipped terracotta hip roofs distinguish historic houses from modern office grids. Individual facade colours, shutter positions and roof pitches remain reconstructed. Chapel separately plain masonry, timber entrance and pale stone doorframe; estimated10.5m eave, no invented office floors or tower.",
     "primary_architecture_evidence": [
       {
         "url": "https://commons.wikimedia.org/wiki/File:Chapelle_de_la_Mis%C3%A9ricorde_de_Monaco_-_porte_principale.jpg",
-        "author": "Benoît Prieur",
+        "author": "Beno\u00eet Prieur",
         "capture_date": "2021-11-04",
         "licence": "CC0 1.0",
         "retrieved": "2026-11-08",
@@ -351,5 +356,6 @@
       "native_and_terrain_inputs_unchanged": true
     },
     "next_gate": "Fresh Monaco generation/import and entire packaged live lap with Luna High. This source proof is not rendered acceptance."
-  }
+  },
+  "architecture_correction_20261112": "environment-recipe.json:architecture_correction_20261112"
 }

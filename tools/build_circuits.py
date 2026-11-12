@@ -1161,6 +1161,10 @@ out geom;
         target = measured
     chosen["error"] = length_error
     chosen["published"] = published
+    for filename in ("alignment-corrections.json", "alignment-refinement.json"):
+        alignment_correction = source / filename
+        if alignment_correction.exists():
+            local = [tuple(point) for point in json.loads(alignment_correction.read_text())["controls_xy_m"]]
     count = len(local)
     spacing = target / count
     stations = [index * spacing for index in range(count)]

@@ -4,9 +4,10 @@
   "appearance": "Dry night race, with blue-hour race start.",
   "terrain_character": "Flat coastal city, pale paved and sandy verges, sparse formal palms and sea-side open space.",
   "distinctive_geometry": [
-    "Pit building: exposed white horizontal frame, recessed dark glazing, stacked balcony decks and cantilevered roof.",
+    "Driver LEFT: 280 m, four-storey pit/team compound with 45 garage bays, exposed white horizontal frame, recessed glazing, projecting balcony decks and staggered pale cantilever roofs. Actual mapped 271 m main stand is opposite on driver RIGHT.",
     "Diamond Tower construction site: exposed concrete core/floorplates, temporary upper formwork and crane at retained footprint1244131504. Planned432m/93levels are not observed completed dimensions; construction mass uses an approximate300±80m visual envelope.",
-    "Jeddah EDITION: low horizontal coastal hospitality mass with balconies and planted terraces."
+    "Jeddah EDITION: low horizontal coastal hospitality mass with balconies and planted terraces.",
+    "T27 outfield pavilion: two-level pale structural frame and glazing, registered to the FIA staging photograph and direct 289–293 s turn sequence; reconstructed 85×20×10.7 m envelope and ±20 m placement uncertainty."
   ],
   "sectors": [
     {
@@ -22,11 +23,12 @@
         243,
         247,
         251,
-        255,
         253.16,
-        307
+        255,
+        307,
+        311
       ],
-      "observed": "Long white layered pit building on right, opposite roof stand; close sponsor walls and tall catchfence. Large green/blue painted escape at first left/right. Palms and low white utility buildings beyond wall.",
+      "observed": "The forward 235/239/243 s views show the four-storey white-framed glazed pit and club compound on driver LEFT and the open crowd grandstand on driver RIGHT. The former opposite-side description is rejected. Close sponsor walls, tall catchfence, opening painted escape and narrow red-white kerbs remain visible.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
     },
     {
@@ -40,7 +42,6 @@
         259,
         263,
         267,
-        311,
         315
       ],
       "observed": "Narrow asphalt channel between concrete and continuous mesh; red-white narrow apex kerbs, occasional green-painted outer lane. Blue evening sky over white apartment and event blocks, not continuous generic forest.",
@@ -117,8 +118,7 @@
         275,
         279,
         283,
-        287,
-        295
+        287
       ],
       "observed": "Long flowing fenced run, articulated pit/hospitality visible across road loop. Sponsor bridges and uninterrupted light rows; small green verge beside wall; no grass parkland replacing paved shoulders.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
@@ -131,12 +131,17 @@
       ],
       "name": "T27 hairpin and return pit straight",
       "reviewed_video_seconds": [
+        289,
+        290,
         291,
+        292,
+        293,
+        295,
         299,
         303
       ],
-      "observed": "Wide slow left turnaround, coloured paved runoff and terminal impact barriers, mainstand and high white-framed pit decks dominate. Preserve hotel/site access behind fence, continuous curved outer protection.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "observed": "Continuous 289–293 s approaches, turns through and exits the T27 left hairpin. A two-level white-framed glazed pavilion appears across the corner and passes to the right on exit; a sparse mature tree belt and green Aramco wall follow the turn. Later pit return leads toward the LEFT pit compound and RIGHT main stand.",
+      "registration": "T27 pavilion identity and continuous turn direction are direct video observations. The 291 s position is estimated near native 5390±40 m, not an exact match to the old 5410 m static target. A driver/camera cut at 294 s prevents continuous time-to-station interpolation beyond 293 s."
     }
   ],
   "mapped_landmarks": [
@@ -565,17 +570,20 @@
     "unbranded_sections": "Retain bare Armco and concrete outside these explicit bands. Unsupported legible identities are left without a substitute sponsor. A sponsor bridge alone is not evidence for a matching roadside band.",
     "ranges": [
       {
-        "start_m": 5830,
+        "start_m": 5290,
         "end_m": 6174,
         "side": 1,
         "material": "PanelGreen",
-        "location": "Pit straight garage-side wall",
+        "location": "T27 outside and pit straight RIGHT main-stand wall",
         "observed_identity": "aramco",
         "reviewed_video_seconds": [
+          289,
+          290,
+          291,
+          292,
           235,
           239,
-          243,
-          303
+          243
         ]
       },
       {
@@ -583,13 +591,16 @@
         "end_m": 200,
         "side": 1,
         "material": "PanelGreen",
-        "location": "Pit straight garage-side wall",
+        "location": "T27 outside and pit straight RIGHT main-stand wall",
         "observed_identity": "aramco",
         "reviewed_video_seconds": [
+          289,
+          290,
+          291,
+          292,
           235,
           239,
-          243,
-          303
+          243
         ]
       },
       {
@@ -630,8 +641,47 @@
         "location": "T13 northern hairpin outer wall",
         "observed_identity": "aramco",
         "reviewed_video_seconds": [
-          287,
-          291
+          331.06
+        ]
+      },
+      {
+        "start_m": 5290,
+        "end_m": 5900,
+        "side": -1,
+        "material": "PanelGreen",
+        "location": "T27 return LEFT wall",
+        "observed_identity": "aramco",
+        "reviewed_video_seconds": [
+          289,
+          290,
+          291,
+          292
+        ]
+      },
+      {
+        "start_m": 5900,
+        "end_m": 6174,
+        "side": -1,
+        "material": "PanelStc",
+        "location": "LEFT grid and garage-side wall",
+        "observed_identity": "stc",
+        "reviewed_video_seconds": [
+          235,
+          239,
+          243
+        ]
+      },
+      {
+        "start_m": 0,
+        "end_m": 200,
+        "side": -1,
+        "material": "PanelStc",
+        "location": "LEFT grid and garage-side wall",
+        "observed_identity": "stc",
+        "reviewed_video_seconds": [
+          235,
+          239,
+          243
         ]
       }
     ]
@@ -669,18 +719,21 @@
       "test_shoulders_m": 0.1,
       "VmHWM_kib": 71616
     },
-    "pit_lane_clearance": "Roof-mounted pit-side banks/supports remain above the authored roof, with field ground_z tied to native road/garage ground. Other fixed masts are set beyond garage rear depth, not placed in the pit lane when native shoulder is narrowed to0.10m."
+    "pit_lane_clearance": "Lighting reads the corrected LEFT pit profile. Pit-side banks are roof-mounted at 21.5 m support / 25 m head height; elsewhere ground poles are set beyond the actual garage rear. This correction changes the active pit-side interval and requires the next generated lighting check; the older fixture counts above are historical pre-correction measurements."
   },
   "pit_lane": {
     "source": "pit-lane.json",
     "visual_only_outside_pit_wall": true,
-    "registration": "Authored Corniche garage frontage scene.pit_building(5830,210,+1) lies 13 m beyond road edge. Reference235/239/243/303s places the multi-level garage balconies on driver right and main stand left. Interval crosses native zero; width is the actual authored garage-front offset, not a surveyed pit-lane measurement.",
+    "registration": "Direct forward frames 235/239/243 s place the four-storey pit and club building on driver LEFT, opposite the actual mapped 271 m RIGHT main stand 1154622779. F1/Tilke describes a 280 m, four-storey compound; the FIA 2025 pit plan shows 45 numbered bays and a central passage. The reconstructed 280 m garage frontage spans native 6009→115 m across zero, with ±20 m endpoint uncertainty and its front 13 m beyond the road edge. Depth, height, exact garage-front offset and roof articulation are visual estimates, not surveyed dimensions. Paving remains outside the closed pit wall. See pit-facilities-review.json.",
     "garage_front_outer_offset_m": 13.0,
-    "source_world_frame": "Native east/north station frame; +1 driver right, -1 driver left. No route-origin rotation."
+    "source_world_frame": "Native east/north station frame; +1 driver right, -1 driver left. No route-origin rotation.",
+    "start_m": 6009,
+    "end_m": 115,
+    "side": -1
   },
   "targeted_registration_review": {
     "method": "Direct appearance/topology checks of retained frames and bounded individual Baku reference seeks; source geometry and all native data unchanged.",
-    "notes": "Targeted frame review corrects331.06s to northern T13banked hairpin (~40s relative lap timer), not the southern esses.291s is late T27(~1:21), followed by pit return;307–327s begins a later-lap opening/esses sequence. Exact native station association remains a visual estimate, approximately±60m. Sponsor colours alone do not establish corner identity; older overview links elsewhere remain contextual until full-lap continuity review.",
+    "notes": "The 331.06 s frame is the northern T13 banked hairpin, not the southern esses. The continuous 289–293 s sequence covers T27 with the HUD lap clock approximately 1:23.87→1:27.87; 291 s is approximately native 5390±40 m. The clip cuts at 294 s. The 307–327 s views begin a later-lap opening/esses sequence. Exact native station associations remain estimates; sponsor colour alone does not establish corner identity. Older overview links elsewhere remain contextual until actual continuity review.",
     "next_gate": "Actual packaged full-lap review and targeted captures in build/reviews/east-final-targets.json; these metadata corrections are not visual approval."
   },
   "diamond_tower_reference": {
@@ -764,5 +817,12 @@
       }
     ],
     "reference_review_targets": "build/reviews/coastal-water-review-targets.json"
+  },
+  "reference_registration_review": "reference-index.json:registration_review_2026_11_12",
+  "pit_facilities_correction": {
+    "source": "pit-facilities-review.json",
+    "pit_lane": "pit-lane.json",
+    "former_side_claim_rejected": "The old right-pit/left-mainstand description contradicts direct forward video and the FIA pit plan.",
+    "runtime_approval": false
   }
 }

@@ -1,0 +1,31 @@
+{
+  "provider": "AHN, the Dutch water authorities, provinces and Rijkswaterstaat",
+  "dataset": "AHN5 classified-ground DTM, bounded numeric scenery export with explicitly classified mapped-water/ground-gap fills",
+  "grid_file": "elevation/ahn5-scenery-grid.json.gz",
+  "grid_sha256": "b522ea714156a84bd58f3f3365f33867b7e48451c5a0d498683e689dbb5f1c79",
+  "relative_datum_m": 2.5812805503449576,
+  "road_join_distance_m": 20,
+  "source_window": "elevation/ahn5-scenery.tif",
+  "source_window_sha256": "805c94e235fa4dc751b8288dec76c67f32efbf06cd8d3557daf23c6f2849fd93",
+  "source_resolution_m": 0.5,
+  "retained_export_resolution_m": 4,
+  "grid_spacing_m": 12.0,
+  "horizontal_crs": "Original source EPSG:28992, retained grid in unchanged local source east/north metres",
+  "vertical_datum": "AHN5 NAP heights minus exactly the same filtered road minimum as elevation-corrections.json. No additional vertical scaling or median rebase.",
+  "licence": "CC BY4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "Bron: AHN(www.ahn.nl), AHN5 DTM via official AHN dataroom-linked WCS. Modified by bounded numeric export, bilinear local-grid sampling and labelled estimates for water/NoData holes. Water geometry\u00a9OpenStreetMap contributors, ODbL1.0.",
+  "coverage_mask_file": "elevation/ahn5-scenery-coverage.json.gz",
+  "coverage_mask_sha256": "47df34c1aadd932b12d734c60e3cee01d979014ea1371933fc206df51fe5c642",
+  "water_geometry": "water-bodies.json",
+  "coverage_counts": {
+    "0": 24474,
+    "1": 4389,
+    "2": 555,
+    "3": 4962
+  },
+  "maximum_ground_fill_nearest_distance_m": 31.09197008391288,
+  "method": "Preserve the previous scenery lattice and20m near-road join. Valid AHN5 numeric ground is measured input. Water planes come from actual mapped coast/pond polygons; they are not lidar returns. Remaining small gaps under buildings/scrub use bounded inverse-distance support, never a roof DSM or unconstrained plane. RoadXYZ, width and banking are not modified.",
+  "grid_uniform_scale": 1.000724,
+  "grid_frame_note": "Retained grid XY uses this original geographic projection scale. Materialization composes current provenance scene scale into XY origin/spacing only; source heights and vertical datum remain unchanged."
+}

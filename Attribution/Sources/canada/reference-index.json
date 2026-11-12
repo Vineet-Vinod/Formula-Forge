@@ -106,5 +106,9 @@
     "Overview observations establish visual vocabulary; every individual asset position requires footprint/map registration.",
     "No high-resolution raster or orthophoto added by this reference review."
   ],
-  "racing_elevation_correction": "elevation-corrections.json"
+  "racing_elevation_correction": "elevation-corrections.json",
+  "grandstand1_roof_correction": {
+    "source": "grandstand1-roof-correction.json",
+    "status": "Only the unsupported pit-opposite Grandstand1 canopy removed; geometry and seats retained."
+  }
 }

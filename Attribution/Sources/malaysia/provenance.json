@@ -19,8 +19,9 @@
     "chosen": "relation/284496",
     "measured_plan_m": 5547.698,
     "published_m": 5543,
-    "uniform_scale": 0.999153,
-    "scale_rule": "Applied only when the mapped plan was within 1.5% of a published length. Larger gaps keep the mapped length."
+    "uniform_scale": 0.9998261699074149,
+    "scale_rule": "Composed source projection and native32-subdivision Catmull length normalization, including the disclosed local corner reconstruction/refinement stages. Original source projection is retained separately; see scene-registration.json.",
+    "source_projection_uniform_scale": 0.999153
   },
   "elevation": {
     "provider": "Formula 1 published 2016 topography diagram",
@@ -184,5 +185,26 @@
     "relief_m": 21.0,
     "uncertainty_m": 5,
     "deck": null
+  },
+  "scene_coordinate_registration": {
+    "source_projection_uniform_scale": 0.999153,
+    "effective_scene_uniform_scale": 0.9998261699074149,
+    "native_normalization_chain": {
+      "initial_corrected_controls_factor": 1.0,
+      "initial_catmull_length_m": null,
+      "refinement_controls_factor": 1.0003962797277115,
+      "refinement_catmull_length_m": 5540.8040415123105,
+      "post_original_chain_factor": 1.0003962797277115,
+      "fitted_minus_chain_factor": -3.468016473640034e-05,
+      "baseline_factor": 1.0002773509294118,
+      "all_chain_factor": 1.000673740565674,
+      "effective_scene_uniform_scale": 0.9998261699074149,
+      "method": "Replicate exact float32 native32-step Catmull expression and float32 segment norms, double arc accumulation, float32 correction includingUnits17. Compose firstcontrols then refinementcontrols; original native factor independently instrumented. Port hasmixedraw/old-native sourceframe caveat.",
+      "baseline_factor_applied_to_selected_scale": true
+    },
+    "final_road_sha256": "9f37f11dda9847cecd545369ab807cc7987f26fb722dacd41433bc4c909f08a1",
+    "source_basis": "alignment-refinement-base.csv.gz",
+    "source_basis_sha256": "03e01d9e1abbeae7d29580458d75920a4da5b1439c1596b2175ae63fe70dca05",
+    "scope": "Scenery WGS84-to-native XY registration only. Native road geometry, physical road widths, elevations, vehicle tuning and camera are not changed by this metadata update. Original corner authoring controls retain their explicitly documented historical coordinate frame."
   }
 }

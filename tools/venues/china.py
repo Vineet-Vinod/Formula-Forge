@@ -1,10 +1,15 @@
 """Shanghai lotus canopy terraces and open parkland with the pit roof bridge."""
 from __future__ import annotations
 
-from circuit_mesh import add
 from circuit_scene import CircuitScene
 
-from venues.east_architecture import cylinder, footprint_stand, trees
+from venues.east_architecture import footprint_stand, trees
+from venues.pit_compounds import (
+    SHANGHAI,
+    mapped_pit,
+    shanghai_crossing_wings,
+    shanghai_main_stand,
+)
 from venues.west_architecture import apron_band
 
 
@@ -47,24 +52,8 @@ def build_venue(scene: CircuitScene) -> None:
         footprint_stand(scene, osm_id, 19, 'lotus', seat_material='SeatRed')
     # Section A includes the bridge and roof footprint across the straight.
     scene.modeled_buildings.add(107371135)
-    scene.stand(3240, 3690, -1, rows=34, setback=7, roofed=True, seat_material='SeatRed')
-    scene.pit_building(3230, 3740, 1, depth=28, height=16, levels=3)
-    for station in range(3230, 3740, 30):
-        a, b = scene.at(station), scene.at(station+30)
-        scene.beam('Building_ShanghaiPits', 'SeatYellow', a.point(a.half_width+13, 9), b.point(b.half_width+13, 9), .55, .65)
-        scene.quad('Building_ShanghaiPits', 'Roof', a.point(a.half_width+10, 18), b.point(b.half_width+10, 18), b.point(b.half_width+44, 18.7), a.point(a.half_width+44, 18.7))
-    for station in (3280, 3650):
-        p = scene.at(station)
-        for side in (-1, 1):
-            c = p.point(side*(p.half_width+45))
-            base = c[0], c[1], scene.ground(c[0], c[1])
-            cylinder(scene, base, 15, 18, 27, 'Glass', heading=0.25)
-            for floor in range(1, 7):
-                cylinder(scene, add(base, (0, 0, floor*4)), 15.3, 18.3, .28, 'White', heading=.25)
-        a, b = scene.at(station-25), scene.at(station+25)
-        scene.quad('Building_ShanghaiBridge', 'White', a.point(-83, 29), b.point(-83, 29), b.point(83, 29), a.point(83, 29))
-        scene.quad('Building_ShanghaiBridge', 'Concrete', a.point(83, 28.6), b.point(83, 28.6), b.point(-83, 28.6), a.point(-83, 28.6))
-        scene.beam('Building_ShanghaiBridge', 'Glass', p.point(-80, 25.6), p.point(80, 25.6), 24, 4.5)
-    scene.landmarks.append({'name': 'Shanghai Section A roof bridges', 'start_m': 3230, 'end_m': 3740, 'clearance_m': 23.3, 'dimensions': 'Reference-estimated roof volumes; mapped compound excluded from solid extrusion.'})
+    shanghai_main_stand(scene)
+    mapped_pit(scene, SHANGHAI)
+    shanghai_crossing_wings(scene)
     for start, end, side, setback in ((0, 550, -1, 65), (600, 1400, 1, 90), (1450, 2550, 1, 75), (1700, 2500, -1, 110), (4400, 5000, -1, 80), (5000, 5440, 1, 95)):
         trees(scene, start, end, side, setback, 34, 10)

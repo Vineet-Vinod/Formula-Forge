@@ -25,6 +25,83 @@ class RacingRecipe:
 
 
 @dataclass(frozen=True)
+class AlignmentControls:
+    controls_xy_m: Annotated[list[tuple[FiniteFloat, FiniteFloat]], Field(min_length=4)]
+
+
+@dataclass(frozen=True)
+class TurnRegistration:
+    official_turn: Annotated[int, Field(gt=0)]
+    native_station_m: FiniteFloat
+    direction: Literal["right", "left"]
+
+
+@dataclass(frozen=True)
+class TurnRegistrations:
+    turns: Annotated[list[TurnRegistration], Field(min_length=1)]
+
+
+@dataclass(frozen=True)
+class ShoulderBaseline:
+    controls: Annotated[list[tuple[FiniteFloat, FiniteFloat, FiniteFloat]], Field(min_length=2)]
+
+
+@dataclass(frozen=True)
+class MappedCornerArc:
+    official_corner: str
+    source_way_id: int
+    core_native_range_m: tuple[FiniteFloat, FiniteFloat]
+    circle_center_source_xy_m: tuple[FiniteFloat, FiniteFloat]
+    radius_m: Annotated[FiniteFloat, Field(gt=0)]
+    raw_controls_xy_native_m: list[tuple[FiniteFloat, FiniteFloat, FiniteFloat]]
+    incoming_fit_m: tuple[float, float] = (45, 15)
+    outgoing_fit_m: tuple[float, float] = (15, 45)
+    blend_m: float = 35
+    maximum_displacement_m: float = 2
+    evidence_kind: Literal["mapped_arc", "event_junction_estimate"] = "mapped_arc"
+    radius_uncertainty_m: float = 0
+    source_note: str = ""
+    source_urls: list[str] = field(default_factory=list)
+
+
+@dataclass(frozen=True)
+class CornerFitProof:
+    official_corner: str
+    core_native_range_m: tuple[float, float]
+    radius_m: float
+    center_xy_m: tuple[float, float]
+    minimum_radius_m: float
+    maximum_displacement_m: float
+    source_radial_max_m: float
+    evidence_kind: Literal["mapped_arc", "event_junction_estimate"] = "mapped_arc"
+    radius_uncertainty_m: float = 0
+
+
+@dataclass(frozen=True)
+class AlignmentRecipe:
+    schema_version: int
+    circuit: str
+    method: str
+    source_road_sha256: str
+    source_arcs_sha256: str
+    corrected_corners: list[CornerFitProof]
+    controls_xy_m: list[tuple[float, float]]
+    maximum_composed_displacement_m: float | None = None
+
+
+@dataclass(frozen=True)
+class ClassifiedGroundSource:
+    point_file: Path
+    point_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")]
+    provider: str
+    dataset: str
+    crs: str
+    vertical_datum: str
+    classification: Literal[2] = 2
+    vertical_uncertainty_m: float = 0.4
+
+
+@dataclass(frozen=True)
 class RetainedTerrainSource:
     grid_file: Path
     grid_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")]
@@ -32,6 +109,7 @@ class RetainedTerrainSource:
     dataset: str = "Retained TerrainGrid"
     relative_datum_m: FiniteFloat = 0
     road_join_distance_m: Annotated[FiniteFloat, Field(gt=0, le=20)] = 20
+    grid_uniform_scale: Annotated[FiniteFloat, Field(gt=0)] | None = None
 
 
 @dataclass(frozen=True)

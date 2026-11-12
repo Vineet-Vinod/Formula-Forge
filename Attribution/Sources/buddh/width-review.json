@@ -1,0 +1,282 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-12",
+  "circuit": "buddh",
+  "previous_width_m": [
+    12,
+    15
+  ],
+  "previous_source": "Generic curvature-derived Grade 1 assumption, not traced venue dimensions.",
+  "replacement": {
+    "base_m": 18.0,
+    "straight_m": 20.0,
+    "minimum_m": 18.0,
+    "maximum_m": 25.0,
+    "method": "Construction-published paved circuit range, registered to white racing edges in the supplied 2013 onboard. Wider approaches and hairpins at T1, T3 and T4 are local visual estimates. Existing smooth cubic transitions join the controls.",
+    "source": "https://www.consultanthart.com/www/pdf/RoadNews_24_en_India.pdf",
+    "controls_m": [
+      [
+        0,
+        18
+      ],
+      [
+        180,
+        18
+      ],
+      [
+        260,
+        20
+      ],
+      [
+        350,
+        20
+      ],
+      [
+        400,
+        20
+      ],
+      [
+        900,
+        20
+      ],
+      [
+        960,
+        22
+      ],
+      [
+        1005,
+        25
+      ],
+      [
+        1055,
+        25
+      ],
+      [
+        1110,
+        20
+      ],
+      [
+        1190,
+        20
+      ],
+      [
+        1250,
+        18
+      ],
+      [
+        1320,
+        18
+      ],
+      [
+        1370,
+        22
+      ],
+      [
+        1405,
+        25
+      ],
+      [
+        1460,
+        25
+      ],
+      [
+        1530,
+        20
+      ],
+      [
+        2480,
+        20
+      ],
+      [
+        2580,
+        22
+      ],
+      [
+        2650,
+        25
+      ],
+      [
+        2745,
+        25
+      ],
+      [
+        2820,
+        18
+      ],
+      [
+        3150,
+        18
+      ],
+      [
+        3250,
+        20
+      ],
+      [
+        3330,
+        20
+      ],
+      [
+        3420,
+        18
+      ],
+      [
+        3820,
+        18
+      ],
+      [
+        3950,
+        20
+      ],
+      [
+        4100,
+        22
+      ],
+      [
+        4350,
+        22
+      ],
+      [
+        4470,
+        20
+      ],
+      [
+        4550,
+        18
+      ],
+      [
+        4800,
+        18
+      ],
+      [
+        4950,
+        20
+      ],
+      [
+        5040,
+        20
+      ],
+      [
+        5100,
+        18
+      ],
+      [
+        5141,
+        18
+      ]
+    ],
+    "uncertainty_m": 2.0,
+    "source_conflict": "ABB lists 18\u201320 m in a venue summary; the paving engineer and V\u00d6GELE construction account lists 18\u201325 m. The construction account is more specific. It does not supply station-resolved white-line dimensions.",
+    "edge_definition": "Racing asphalt inside white lines and kerbs. Excludes coloured runoff, green aprons and the separate pit lane. The contractor describes the paved circuit; local white-line placement remains a reference reconstruction.",
+    "registration": [
+      {
+        "official_corner": "T16 and pit straight",
+        "native_range_m": [
+          180,
+          960
+        ],
+        "width_m": [
+          18,
+          20
+        ],
+        "reference_seconds": [
+          113,
+          117,
+          121
+        ],
+        "confidence": "Published range, visually broad straight. Exact 20 m width is an estimate."
+      },
+      {
+        "official_corner": "T1",
+        "native_range_m": [
+          960,
+          1110
+        ],
+        "width_m": [
+          20,
+          25
+        ],
+        "reference_seconds": [
+          121,
+          125
+        ],
+        "confidence": "Direct T1 approach/apex shows a broad right hairpin. The coloured infield is excluded from road width."
+      },
+      {
+        "official_corner": "T2 and uphill T3",
+        "native_range_m": [
+          1110,
+          1530
+        ],
+        "width_m": [
+          18,
+          25
+        ],
+        "reference_seconds": [
+          125,
+          129,
+          133
+        ],
+        "confidence": "Direct climb and crest hairpin. Broad T3 is distinct from its painted/gravel escape."
+      },
+      {
+        "official_corner": "T4 braking and hairpin",
+        "native_range_m": [
+          2580,
+          2820
+        ],
+        "width_m": [
+          18,
+          25
+        ],
+        "reference_seconds": [
+          149,
+          153
+        ],
+        "confidence": "Wide braking approach and right hairpin after the long straight. Exact transition stations are estimates."
+      },
+      {
+        "official_corner": "T10\u201312 bowl",
+        "native_range_m": [
+          3950,
+          4470
+        ],
+        "width_m": [
+          20,
+          22
+        ],
+        "reference_seconds": [
+          177,
+          181,
+          185
+        ],
+        "confidence": "Wide banked continuous right; coloured outer escape is excluded."
+      }
+    ],
+    "native_sync": "Root must apply the recipe with circuit_profiles.py --racing buddh, repair the demonstrated native interpolation kinks, then rebuild/export/check all physical and visual surfaces. No centreline coordinates are changed by this source file."
+  },
+  "primary_sources": [
+    {
+      "url": "https://www.consultanthart.com/www/pdf/RoadNews_24_en_India.pdf",
+      "title": "V\u00d6GELE RoadNews 24, construction of Buddh International Circuit, hosted by the project paving engineer Dr Rainer Hart",
+      "reference_pdf_sha256": "a4cfb756ca6d25c63ef5f54b7236597a71cb9cfe5265724f0fe65cc7dc8aa914",
+      "supports": "Published road range 18\u201325 m, longitudinal gradients up to 10%, superelevation up to 12%. These are different dimensions and must not be substituted for one another."
+    },
+    {
+      "url": "https://library.e.abb.com/public/bade2cb5c7c3d0e94825797e0062298a/Contact_3_11_India.pdf",
+      "supports": "Supplier venue summary lists 18\u201320 m width and 14 m highest elevation. It is less specific than the paving account and is not a full elevation profile."
+    }
+  ],
+  "geometry_preflight": {
+    "finding": "The native interpolated line has short curvature spikes that are tighter than the retained mapped corner arcs. Widening without repairing these would fold inside road/kerb offsets.",
+    "candidate_circles": "Mapped raw controls fit T1 radius 20.681 m, T3 radius 15.833 m and T4 radius 18.075 m. Their source RMS errors are 0.244 m, 0.169 m and 0.679 m. Root owns the C1/C2 transition implementation and native synchronization.",
+    "not_a_kerb_survey": true
+  },
+  "acceptance_requirements": [
+    "Native width range matches these controls after source synchronization.",
+    "Racing road and inside kerb envelopes have no folded offsets, intruding grass or barrier crossings.",
+    "Pit wall and garage apron remain outside the driving corridor.",
+    "Actual cockpit comparison confirms wide T1/T3/T4 approaches, continuous bowl banking and unchanged source corner identities."
+  ],
+  "visual_review_status": "Pending regenerated packaged comparison.",
+  "source_media_policy": "Reference video and PDF photographs are inspection sources only; their pixels are not shipped."
+}

@@ -1,17 +1,17 @@
 {
   "recipe": "make circuit-assets CIRCUIT=bahrain",
   "tiles": 122,
-  "triangles": 981411,
-  "road_sha256": "117ba548200545452b1cd44feb5c0a00b1c6227443198cda76e25abaa221956d",
-  "terrain_sha256": "16636be15acc8811a2cfb23a00fcea77aa2da4a0366b4cbf15e1956531103270",
+  "triangles": 977668,
+  "road_sha256": "d43084a3c02ec2b31078513579b786fb0871a85abce6e307d8f1d90ecd691537",
+  "terrain_sha256": "f69faf963f7720346c494bbe4240ffc8d95c00493b77f8cfd92084bf65d94407",
   "landmarks": [
     {
       "name": "Paved pit lane and working apron",
-      "start_m": 5180.0,
-      "end_m": 220.0,
+      "start_m": 5130.0,
+      "end_m": 135.0,
       "side": 1,
-      "outer_offset_m": 13.0,
-      "source_note": "Custom Sakhir garage frontage sakhir_pits(scene), native5180\u2192220m driverRIGHT, lies exactly13m beyond the road edge. It replaces the earlier common pit_building skin with recessed garages, balcony fascia and folded/scalloped roof bays; actual source bounds and paving registration remain unchanged. Reference120/130/170/185s confirms the garage/pit-wall side. Width is registration to the authored geometry, not a measured real-world pit-lane width.",
+      "outer_offset_m": 17.5,
+      "source_note": "Actual mapped pit compound187123416 replaces the former generic block. The full mapped compound projects to native5137.31\u2192126.46m across zero. Road-facing garage segments stand17.893\u201318.598m and22.645\u201322.701m beyond the road edge. The paving control is rounded by less than10m at the longitudinal ends and ends at a constant17.5m offset before the nearest garage face. Local unstriped apron polygons meet each variable mapped front and exclude the occupied building; the generic outer white stripe therefore stays outside all garage bays. Mapped plan registration has approximately\u00b12m uncertainty. Facade/roof dimensions remain reconstructed. Paving stays beyond a closed pit wall; racing XYZ, banking and handling are unchanged. See pit-dimension-review.json.",
       "access": "Visual service area outside the closed driving boundary."
     },
     {
@@ -87,7 +87,7 @@
       "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
       "boundary_chains": 1,
       "bays": 50,
-      "max_foundation_height_m": 11.159866670135925,
+      "max_foundation_height_m": 11.131177735156722,
       "tensile_roof_bays": 15
     },
     {
@@ -99,7 +99,7 @@
       "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
       "boundary_chains": 1,
       "bays": 30,
-      "max_foundation_height_m": 8.738351967169281,
+      "max_foundation_height_m": 8.75182704136431,
       "tensile_roof_bays": 9
     },
     {
@@ -111,7 +111,7 @@
       "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
       "boundary_chains": 1,
       "bays": 10,
-      "max_foundation_height_m": 6.6178566414685305,
+      "max_foundation_height_m": 6.6193401607409355,
       "tensile_roof_bays": 3
     },
     {
@@ -123,7 +123,7 @@
       "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
       "boundary_chains": 1,
       "bays": 10,
-      "max_foundation_height_m": 6.418664554456843,
+      "max_foundation_height_m": 6.422970124690529,
       "tensile_roof_bays": 3
     },
     {
@@ -135,7 +135,7 @@
       "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
       "boundary_chains": 1,
       "bays": 13,
-      "max_foundation_height_m": 6.579542824206856,
+      "max_foundation_height_m": 6.583275771509444,
       "tensile_roof_bays": 4
     },
     {
@@ -147,7 +147,7 @@
       "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
       "boundary_chains": 1,
       "bays": 10,
-      "max_foundation_height_m": 6.335624690648622,
+      "max_foundation_height_m": 6.319764548158732,
       "tensile_roof_bays": 3
     },
     {
@@ -159,7 +159,7 @@
       "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
       "boundary_chains": 1,
       "bays": 10,
-      "max_foundation_height_m": 6.79369018769591,
+      "max_foundation_height_m": 6.3261814938891305,
       "tensile_roof_bays": 3
     },
     {
@@ -171,14 +171,15 @@
       "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
     },
     {
-      "name": "Sakhir garage frontage and folded pit canopy",
-      "start_m": 5180.0,
-      "end_m": 220.0,
-      "side": 1,
-      "garage_front_offset_m": 13,
-      "garage_bays": 57,
-      "folded_roof_bays": 19,
-      "registration": "Original authored 4.3 m garage recesses, roller headers, white piers, projecting balcony and narrow upper hospitality glazing. Repeated white folded roof/scalloped front edge and four pit-entry spires estimated from reference120/130/185s. No reference pixels or measured architectural survey claimed."
+      "name": "Sakhir mapped pit compound",
+      "osm_id": 187123416,
+      "mapped_length_m": 401.3125176774295,
+      "mapped_width_m": 30.39228907184457,
+      "body_height_m": 9.6,
+      "floors": 2,
+      "garage_bays": 41,
+      "roof_form": "folded",
+      "source_note": "Actual retained footprint, adjacent-road per-bay foundation and closed roof/soffit. Floors, door/terrace dimensions and roof details are reference reconstructions; see pit-dimension-review.json. No native physical road or profile changes."
     },
     {
       "name": "Sakhir Tower",

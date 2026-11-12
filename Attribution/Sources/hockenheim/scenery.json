@@ -1,9 +1,9 @@
 {
   "recipe": "make circuit-assets CIRCUIT=hockenheim",
   "tiles": 152,
-  "triangles": 1104877,
-  "road_sha256": "e1931211f2fb2738b84d89f7e2e3e5334c054d15676352e641abede48b98ddf9",
-  "terrain_sha256": "0502f6e0d0b22746062be629bfbffa4c61dddf83f64da971fcfad228ef43919d",
+  "triangles": 1095417,
+  "road_sha256": "675b66da724eeba83b45910b5fb75526bb60c29a25e86b038ad9d24bde69b289",
+  "terrain_sha256": "d1ac435fcadfa6cf28b567d770c62b6e97e01f14e1dfdd0218ea1d54814c04da",
   "landmarks": [
     {
       "name": "Paved pit lane and working apron",
@@ -88,7 +88,7 @@
       "osm_id": 256789030,
       "name": "SACHS-Haus",
       "height_m": 8,
-      "removed_road_area_m2": -0.0,
+      "removed_road_area_m2": 0.0,
       "structure": "enclosed",
       "ground_floor": "Facade windows",
       "road_clearance_exception": "none",

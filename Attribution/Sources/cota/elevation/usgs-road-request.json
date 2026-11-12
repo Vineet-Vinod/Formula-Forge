@@ -1,0 +1,20 @@
+{
+  "provider": "USGS3DEP bare-earth DEM dynamicImageServer",
+  "raster_id": 116248,
+  "source_title": "USGS one meter x63y334 TX Central B1 2017",
+  "source_acquisition": "2017-03-22",
+  "source_vertical_datum": "NAVD88, metres",
+  "native_source_resolution_m": 1,
+  "retained_export_resolution_m": 2,
+  "bbox_epsg32614": [
+    630624,
+    3333940,
+    632528,
+    3335076
+  ],
+  "dimensions": [
+    952,
+    568
+  ],
+  "url": "https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer/exportImage?bbox=630624%2C3333940%2C632528%2C3335076&bboxSR=32614&imageSR=32614&size=952%2C568&format=tiff&pixelType=F32&noData=-9999&interpolation=RSP_BilinearInterpolation&renderingRule=%7B%22rasterFunction%22%3A%22None%22%7D&mosaicRule=%7B%22mosaicMethod%22%3A%22esriMosaicLockRaster%22%2C%22lockRasterIds%22%3A%5B116248%5D%7D&f=image"
+}

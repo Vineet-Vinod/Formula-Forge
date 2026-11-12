@@ -1,0 +1,327 @@
+[
+  {
+    "official_corner": "T7",
+    "source_way_id": 51511352,
+    "core_native_range_m": [
+      1685,
+      1723
+    ],
+    "circle_center_source_xy_m": [
+      -928.2600151659284,
+      171.19845647346455
+    ],
+    "radius_m": 18,
+    "raw_controls_xy_native_m": [
+      [
+        -917.0170306718868,
+        185.7853825913252,
+        1685.1805667445878
+      ],
+      [
+        -934.1311544052098,
+        195.64819623439791,
+        1704.1233571495663
+      ]
+    ],
+    "incoming_fit_m": [
+      45,
+      15
+    ],
+    "outgoing_fit_m": [
+      15,
+      45
+    ],
+    "blend_m": 35,
+    "maximum_displacement_m": 10,
+    "evidence_kind": "event_junction_estimate",
+    "radius_uncertainty_m": 4,
+    "source_note": "Estimated race-event corner replacing a sparse public-street-axis junction. The FIA 2025 schematic road-band curvature and adjacent mapped street distances constrain the estimated radius; the retained street-axis vertex is not a surveyed racing centreline. Straight approaches/exits are fitted to the original native samples. Radius and up to 10 m movement are disclosed reconstruction estimates, not the 1 m interpolation-denoising allowance. See alignment-review.json for PDF boundary witnesses, scale limitations and raw OSM registration.",
+    "source_urls": [
+      "https://www.fia.com/system/files/decision-document/2025_singapore_grand_prix_-_event_notes_-_circuit_map_pit_lane_emergency_exits_map_and_quarantine_zone.pdf"
+    ]
+  },
+  {
+    "official_corner": "T8",
+    "source_way_id": 16688065,
+    "core_native_range_m": [
+      1900,
+      1945
+    ],
+    "circle_center_source_xy_m": [
+      -1045.5814144019525,
+      28.632464337176113
+    ],
+    "radius_m": 14,
+    "raw_controls_xy_native_m": [
+      [
+        -1033.7324707489897,
+        19.759503886407728,
+        1905.792678125944
+      ],
+      [
+        -1036.1836835465062,
+        14.11251609751738,
+        1911.9847474473768
+      ],
+      [
+        -1040.2875239740556,
+        4.660190761292789,
+        1921.2052678103373
+      ],
+      [
+        -1052.6212281813514,
+        17.119065588246368,
+        1936.7349528705172
+      ],
+      [
+        -1063.635048574721,
+        28.235532709028302,
+        1952.3830624543466
+      ]
+    ],
+    "incoming_fit_m": [
+      50,
+      10
+    ],
+    "outgoing_fit_m": [
+      15,
+      55
+    ],
+    "blend_m": 35,
+    "maximum_displacement_m": 10,
+    "evidence_kind": "event_junction_estimate",
+    "radius_uncertainty_m": 3,
+    "source_note": "Estimated race-event corner replacing a sparse public-street-axis junction. The FIA 2025 schematic road-band curvature and adjacent mapped street distances constrain the estimated radius; the retained street-axis vertex is not a surveyed racing centreline. Straight approaches/exits are fitted to the original native samples. Radius and up to 10 m movement are disclosed reconstruction estimates, not the 1 m interpolation-denoising allowance. See alignment-review.json for PDF boundary witnesses, scale limitations and raw OSM registration.",
+    "source_urls": [
+      "https://www.fia.com/system/files/decision-document/2025_singapore_grand_prix_-_event_notes_-_circuit_map_pit_lane_emergency_exits_map_and_quarantine_zone.pdf"
+    ]
+  },
+  {
+    "official_corner": "T11",
+    "source_way_id": 1121759130,
+    "core_native_range_m": [
+      2689,
+      2718
+    ],
+    "circle_center_source_xy_m": [
+      -1326.8989286402302,
+      -341.0844658787204
+    ],
+    "radius_m": 11,
+    "raw_controls_xy_native_m": [
+      [
+        -1331.5049139458258,
+        -322.4989898019766,
+        2682.647425600239
+      ],
+      [
+        -1326.2142872317388,
+        -326.67043854190314,
+        2689.298510058987
+      ],
+      [
+        -1320.2027155761853,
+        -333.61545692275854,
+        2698.2259149030797
+      ],
+      [
+        -1318.8717403023004,
+        -336.5332521849758,
+        2701.529656834543
+      ],
+      [
+        -1316.098875148636,
+        -339.19587904025286,
+        2705.4631975117104
+      ],
+      [
+        -1312.6272479749994,
+        -340.5382867464737,
+        2708.1958
+      ],
+      [
+        -1314.912088862098,
+        -347.98254766266433,
+        2714.9568428986204
+      ],
+      [
+        -1315.666308183441,
+        -350.4676660609179,
+        2717.612189802539
+      ],
+      [
+        -1316.2763385174364,
+        -367.530666491811,
+        2734.8415975312623
+      ]
+    ],
+    "incoming_fit_m": [
+      39,
+      9
+    ],
+    "outgoing_fit_m": [
+      3,
+      13
+    ],
+    "blend_m": 35,
+    "maximum_displacement_m": 10,
+    "evidence_kind": "event_junction_estimate",
+    "radius_uncertainty_m": 4,
+    "source_note": "The continuous supplied675\u2013681s sequence shows T11 RIGHT immediately followed by T12 LEFT into Anderson Bridge, matching the primary2015 operator modification illustration. Retain that hook. Replace only the impossible public-roundabout axis vertex/backtracking spike with an estimated11m event corner tangent to the observed approach and short exit before T12; exit fit2721\u20132731m avoids fitting across the next bend. The radius is an unmeasured scene reconstruction, not surveyed kerb geometry. Raw public-road observations are retained separately; they do not define a racing arc.",
+    "source_urls": [
+      "https://singaporegp.sg/en/news/2015/enhancements-to-marina-bay-street-circuit/",
+      "https://storage.singaporegp.sg/Uploaded/PressReleaseFiles/Annex%201%20Track%20Modification%20Illustration.png"
+    ],
+    "reference_seconds": [
+      675,
+      677,
+      678,
+      679,
+      680,
+      681
+    ]
+  },
+  {
+    "official_corner": "T13",
+    "source_way_id": 1206760203,
+    "core_native_range_m": [
+      2950,
+      2980
+    ],
+    "circle_center_source_xy_m": [
+      -1181.6107429732579,
+      -517.8890357673546
+    ],
+    "radius_m": 14,
+    "raw_controls_xy_native_m": [
+      [
+        -1190.554632419327,
+        -514.3856318387441,
+        2933.042704586307
+      ],
+      [
+        -1177.866001472854,
+        -532.2141374905322,
+        2966.5694887072727
+      ],
+      [
+        -1175.1042277791482,
+        -536.7073203087951,
+        2965.9769630467367
+      ],
+      [
+        -1171.97643588473,
+        -536.3744919518886,
+        2968.615278723211
+      ],
+      [
+        -1170.368174096109,
+        -536.0083807592963,
+        2969.6954049061555
+      ],
+      [
+        -1167.5176687164271,
+        -535.3649126025988,
+        2971.185439328561
+      ],
+      [
+        -1162.6263345845052,
+        -532.8686999257751,
+        2974.4977154936437
+      ],
+      [
+        -1161.80556649868,
+        -528.3533285503719,
+        2978.417324910529
+      ],
+      [
+        -1160.6520545951716,
+        -522.2958524546336,
+        2984.428633647451
+      ]
+    ],
+    "incoming_fit_m": [
+      50,
+      10
+    ],
+    "outgoing_fit_m": [
+      15,
+      55
+    ],
+    "blend_m": 35,
+    "maximum_displacement_m": 10,
+    "evidence_kind": "event_junction_estimate",
+    "radius_uncertainty_m": 3,
+    "source_note": "Preserve the approximately133 degree left Fullerton hairpin. The FIA2025 vector road band gives inner/outer schematic radii2.714/7.640 PDFpoints, locally corresponding to an estimated13.87m centreline radius. Reconstruct an estimated14\u00b13m event corner tangent to the registered approaches. The 2015 operator states only a relative1m widening, not an absolute current width; current width is not changed. Direct supplied646s confirms the left hairpin, inside red/white kerb, broad AMEX outside wall and OneFullerton across the exit. Public footway/street-axis observations are retained separately and are not surveyed racing-edge controls.",
+    "source_urls": [
+      "https://www.fia.com/system/files/decision-document/2025_singapore_grand_prix_-_event_notes_-_circuit_map_pit_lane_emergency_exits_map_and_quarantine_zone.pdf",
+      "https://singaporegp.sg/en/news/2015/enhancements-to-marina-bay-street-circuit/"
+    ],
+    "reference_seconds": [
+      645,
+      646,
+      647
+    ]
+  },
+  {
+    "official_corner": "T14",
+    "source_way_id": 581766308,
+    "core_native_range_m": [
+      3492,
+      3535
+    ],
+    "circle_center_source_xy_m": [
+      -1018.9078059009802,
+      -32.964124565700246
+    ],
+    "radius_m": 14,
+    "raw_controls_xy_native_m": [
+      [
+        -1038.3687012876696,
+        -48.25951798729064,
+        3473.088258508849
+      ],
+      [
+        -1033.9986658037665,
+        -36.144565795789084,
+        3485.968624325937
+      ],
+      [
+        -1024.515466976153,
+        -9.374071621731071,
+        3512.297983057051
+      ],
+      [
+        -1018.8255476799002,
+        -14.444156925295394,
+        3518.073136222679
+      ],
+      [
+        -1001.3232228259467,
+        -29.033133236505037,
+        3540.880529608984
+      ],
+      [
+        -999.2158453076485,
+        -30.852594920945524,
+        3543.6633711202794
+      ]
+    ],
+    "incoming_fit_m": [
+      60,
+      20
+    ],
+    "outgoing_fit_m": [
+      20,
+      60
+    ],
+    "blend_m": 35,
+    "maximum_displacement_m": 10,
+    "evidence_kind": "event_junction_estimate",
+    "radius_uncertainty_m": 3,
+    "source_note": "Estimated race-event corner replacing a sparse public-street-axis junction. The FIA 2025 schematic road-band curvature and adjacent mapped street distances constrain the estimated radius; the retained street-axis vertex is not a surveyed racing centreline. Straight approaches/exits are fitted to the original native samples. Radius and up to 10 m movement are disclosed reconstruction estimates, not the 1 m interpolation-denoising allowance. See alignment-review.json for PDF boundary witnesses, scale limitations and raw OSM registration.",
+    "source_urls": [
+      "https://www.fia.com/system/files/decision-document/2025_singapore_grand_prix_-_event_notes_-_circuit_map_pit_lane_emergency_exits_map_and_quarantine_zone.pdf"
+    ]
+  }
+]

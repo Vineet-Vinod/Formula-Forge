@@ -1,15 +1,15 @@
 {
-  "provider": "Copernicus DEM, distributed through AWS Open Data",
-  "dataset": "GLO-30 DSM",
-  "source_url": "https://copernicus-dem-30m.s3.eu-central-1.amazonaws.com/Copernicus_DSM_COG_10_N37_00_W009_00_DEM/Copernicus_DSM_COG_10_N37_00_W009_00_DEM.tif",
-  "source_info": "https://registry.opendata.aws/copernicus-dem/",
-  "documentation": "https://copernicus-dem-90m.s3.amazonaws.com/readme.html",
-  "retained_window": "elevation/scenery_dem.tif",
-  "sha256": "c5395dc4a6ba494553406632bd632596b47e48ede03a8f225c2b3fb2096b5c6b",
-  "grid_spacing_m": 12,
-  "source_resolution_m": 30,
-  "relative_datum_m": 96.43716359321289,
-  "datum_method": "Median offset to unchanged native road profile at 256 stations.",
-  "use": "Surrounding landscape only, bilinearly resampled; not a racing-deck or bare-earth survey. Road-adjacent ground joins the existing road plane.",
-  "terrain_sha256": "a8e223c0d18b17beb5449bc93e3ff488943ecd100a5238a83cf8866257be6fd2"
+  "provider": "Direcao-Geral do Territorio, Portugal",
+  "dataset": "Mainland LiDAR2024, published Portugal3D classified point-cloud preview",
+  "retained_window": "elevation/classified-scenery-grid.json.gz",
+  "sha256": "3b385e0a99f4759e76487aa2c31e0fbeda47cb8187fa14d12531ee62e29e0720",
+  "grid_spacing_m": 12.0,
+  "runtime_grid_spacing_m": 12.0,
+  "horizontal_frame_correction": 1.0,
+  "grid_uniform_scale": 1.001037204324165,
+  "relative_datum_m": 95.3269154055956,
+  "road_join_distance_m": 20.0,
+  "source_manifest": "scenery-ground.json",
+  "use": "Retained scenery-only ground grid. Heights already use the registered relative datum; racing profiles remain unchanged.",
+  "terrain_sha256": "192d3bcbc901d7fe05bdbe00caad46ec36cb489f38cdec0cd413a7ee2fc849da"
 }

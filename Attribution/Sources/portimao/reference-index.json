@@ -5,7 +5,7 @@
   "reference_sha256": "7135e58931b4ec979eb87d4f59180fe8da4e241607f694445af9a37fbb094973",
   "layout_observed": "Legacy 2021 Portuguese Grand Prix 4.653km/15-corner layout in a newer-game mod; not a claim of a real2026event. Native station0 is final Galp corner, not start/finish.",
   "lighting_weather_observed": "Sunny daytime with dry blue sky and dry ochre grass.",
-  "review_scope": "16 sparse overview frames viewed by author. Clip is an edited career/race montage, includes menus/cuts and changing conditions; not a continuous lap. Unviewed timestamps are not evidence. Added individually extracted640px T5views168.5/170s, reviewed2026-11-08;173.63/615.3 old pitstraight label corrected to TorreVIP T5exit/T6approach.",
+  "review_scope": "16 sparse overview frames viewed by author. Clip is an edited career/race montage, includes menus/cuts and changing conditions; not a continuous lap. Unviewed timestamps are not evidence. Added individually extracted640px T5views168.5/170s, reviewed2026-11-08;173.63/615.3 old pitstraight label corrected to TorreVIP T5exit/T6approach. Reviewed individual full-resolution Galp frames at 666/667.5/669 s and opening-corner frames at 153.5/154.5/155/156/158/160/161.5 s on 2026-11-12; route evidence and frame hashes are retained in galp-plan-source.json. These samples do not establish a continuous full-lap survey.",
   "frame_index_file": "build/reviews/portimao/reference/overview-index.json",
   "reviewed_visual_evidence": [
     {
@@ -76,10 +76,126 @@
   ],
   "registration": {
     "coordinate_system": "Provenance local tangent plane x east, y north; route uniform_scale applied.",
-    "station_origin": "Retained native Centerline first point; not assumed start/finish.",
+    "station_origin": "Closest point on the restored full Galp to the retained local WGS84 coordinate reference. Actual road station zero is registered separately from that fixed geographic origin.",
     "route_length_m": 4653,
     "method": "Named OSM raceway ways projected to nearest retained centerline sample; other corners matched by route shape and official circuit map. Sector boundaries approximate, not surveyed kerb endpoints. Video time is never treated as station.",
     "named_way_controls": [
+      {
+        "osm_id": 157790380,
+        "name": "Pit Lane",
+        "station_mid_m": 999.1,
+        "station_min_m": 125.526,
+        "station_max_m": 4620.624,
+        "maximum_projection_distance_m": 57.496,
+        "note": "Min/max do not describe a continuous range when the way crosses station zero."
+      },
+      {
+        "osm_id": 363133187,
+        "name": "Curva da Torre Vip",
+        "station_mid_m": 2326.5,
+        "station_min_m": 2298.668,
+        "station_max_m": 2353.764,
+        "maximum_projection_distance_m": 0.701,
+        "note": "Min/max do not describe a continuous range when the way crosses station zero."
+      },
+      {
+        "osm_id": 363133193,
+        "name": "Curva Portim\u00e3o",
+        "station_mid_m": 3589.433,
+        "station_min_m": 3507.358,
+        "station_max_m": 3652.764,
+        "maximum_projection_distance_m": 0.492,
+        "note": "Min/max do not describe a continuous range when the way crosses station zero."
+      },
+      {
+        "osm_id": 363133195,
+        "name": "Curva Galp",
+        "station_mid_m": 120.415,
+        "station_min_m": 3.408,
+        "station_max_m": 4635.392,
+        "maximum_projection_distance_m": 0.229,
+        "note": "Min/max do not describe a continuous range when the way crosses station zero."
+      },
+      {
+        "osm_id": 363133196,
+        "name": "Curva Sagres",
+        "station_mid_m": 4334.072,
+        "station_min_m": 4244.045,
+        "station_max_m": 4439.435,
+        "maximum_projection_distance_m": 0.35,
+        "note": "Min/max do not describe a continuous range when the way crosses station zero."
+      },
+      {
+        "osm_id": 363133199,
+        "name": "Aut\u00f3dromo Internacional do Algarve",
+        "station_mid_m": 277.749,
+        "station_min_m": 193.686,
+        "station_max_m": 1181.994,
+        "maximum_projection_distance_m": 0.256,
+        "note": "Min/max do not describe a continuous range when the way crosses station zero."
+      },
+      {
+        "osm_id": 511858150,
+        "name": "Curva Lagos",
+        "station_mid_m": 1598.901,
+        "station_min_m": 1569.933,
+        "station_max_m": 1628.436,
+        "maximum_projection_distance_m": 0.725,
+        "note": "Min/max do not describe a continuous range when the way crosses station zero."
+      },
+      {
+        "osm_id": 511858543,
+        "name": "Curva Samsung",
+        "station_mid_m": 2946.465,
+        "station_min_m": 2913.805,
+        "station_max_m": 2978.556,
+        "maximum_projection_distance_m": 0.402,
+        "note": "Min/max do not describe a continuous range when the way crosses station zero."
+      },
+      {
+        "osm_id": 511859290,
+        "name": "Curva Craig Jones",
+        "station_mid_m": 3320.204,
+        "station_min_m": 3271.641,
+        "station_max_m": 3372.175,
+        "maximum_projection_distance_m": 0.412,
+        "note": "Min/max do not describe a continuous range when the way crosses station zero."
+      },
+      {
+        "osm_id": 511859459,
+        "name": "Enter Pit Line",
+        "station_mid_m": 381.975,
+        "station_min_m": 314.1,
+        "station_max_m": 449.851,
+        "maximum_projection_distance_m": 16.018,
+        "note": "Min/max do not describe a continuous range when the way crosses station zero."
+      }
+    ],
+    "landmark_corrections": [
+      {
+        "landmark": "Rounded TorreVIP",
+        "osm_id": 157736297,
+        "nearest_station_m": 2572,
+        "side": -1,
+        "reference_times_s": [
+          173.63,
+          615.3
+        ],
+        "method": "Mapped curved footprint gives correct parallel-road registration; initial sparse-frame pit-tower interpretation rejected."
+      }
+    ],
+    "start_anchor_review": {
+      "station_m": 505.2008611976843,
+      "status": "Approximate timingcontrolmarker registration from primaryFIAmap; not an as-built coordinate",
+      "uncertainty_m": 45,
+      "evidence": "Control-line transverse marker near(505,954) lies~23percentalongmainstraightfromGalpexit~250toT1~1254, giving~480m. Earlier800pitmidpoint estimate rejected after primarymapreview.",
+      "source_url": "https://www.fia.com/sites/default/files/doc_1_-_2021_portuguese_grand_prix_-_circuit_map_1.pdf",
+      "map_sha256": "f9cd060266c222c9e6f00fa0d824dce6e8fb26e99a88bb7426842870787e5a9e",
+      "start_grid_note": "Car/starticonisillustrative; do not infer an independently precise gridfrontstation from iconlength.",
+      "historical_wrong_variant_station_m": 480,
+      "source_registration": "station-registration-corrections.json; geographic control-line location retained."
+    },
+    "historical_incorrect_variant_controls": [
       {
         "osm_id": 157790380,
         "name": "Pit Lane",
@@ -161,27 +277,25 @@
         "maximum_projection_distance_m": 15.97
       }
     ],
-    "landmark_corrections": [
-      {
-        "landmark": "Rounded TorreVIP",
-        "osm_id": 157736297,
-        "nearest_station_m": 2572,
-        "side": -1,
-        "reference_times_s": [
-          173.63,
-          615.3
-        ],
-        "method": "Mapped curved footprint gives correct parallel-road registration; initial sparse-frame pit-tower interpretation rejected."
-      }
-    ],
-    "start_anchor_review": {
-      "station_m": 480,
-      "status": "Approximate timingcontrolmarker registration from primaryFIAmap; not an as-built coordinate",
-      "uncertainty_m": 45,
-      "evidence": "Control-line transverse marker near(505,954) lies~23percentalongmainstraightfromGalpexit~250toT1~1254, giving~480m. Earlier800pitmidpoint estimate rejected after primarymapreview.",
-      "source_url": "https://www.fia.com/sites/default/files/doc_1_-_2021_portuguese_grand_prix_-_circuit_map_1.pdf",
-      "map_sha256": "f9cd060266c222c9e6f00fa0d824dce6e8fb26e99a88bb7426842870787e5a9e",
-      "start_grid_note": "Car/starticonisillustrative; do not infer an independently precise gridfrontstation from iconlength."
+    "alignment_source": "alignment-corrections.json",
+    "station_correspondence_source": "station-registration-corrections.json",
+    "variant_review": {
+      "source": "galp-plan-source.json",
+      "correct_Galp_way": 363133195,
+      "rejected_Galp_chord": 39218673,
+      "correct_T1_link": 157736307,
+      "rejected_T1_detour": [
+        511858147,
+        363133191,
+        511858146
+      ],
+      "FIA_length_m": 4653,
+      "mapped_full_variant_length_m": 4648.074971015831,
+      "actual_Galp_station_range_m": [
+        4607.9449301823815,
+        193.53631937363406
+      ],
+      "local_source_scale": 1.0006930822456528
     }
   },
   "primary_sources": [
@@ -194,5 +308,9 @@
     "Exact filming lap/year is not established unless visible title/HUD identifies it.",
     "Overview observations establish visual vocabulary; every individual asset position requires footprint/map registration.",
     "No high-resolution raster or orthophoto added by this reference review."
-  ]
+  ],
+  "architecture_dimensions_correction_20261112": {
+    "source": "mainstand-dimensions-correction.json",
+    "status": "Source corrected; fresh packaged images and independent reference review still required."
+  }
 }

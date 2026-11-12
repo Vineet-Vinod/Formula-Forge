@@ -502,5 +502,9 @@
     "status": "Source change awaiting new rendered review",
     "geometry": "Mapped pit front now has recessed garage bays below retained upper floors; no repeated ground-floor office windows on road-facing facade. Bay widths/depths are original reference reconstruction, not an as-built survey.",
     "paving_profile": "pit-lane.json"
+  },
+  "grandstand1_roof_correction": {
+    "source": "grandstand1-roof-correction.json",
+    "status": "Only the unsupported pit-opposite Grandstand1 canopy removed; geometry and seats retained."
   }
 }

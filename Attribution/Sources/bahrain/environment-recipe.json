@@ -17,16 +17,17 @@
       ],
       "name": "Pit straight and T1–3",
       "reviewed_video_seconds": [
+        100,
         189.36,
         195,
         200,
         205,
         357.68,
         526,
-        100
+        1030.97
       ],
       "observed": "Left main grandstand and first-turn stand; right long white pit/hospitality and Sakhir Tower. Red-white kerbs, broad coloured paved T1 escape, sand beyond. Keep braking 150/100/50 boards before T1 and protection behind runoff.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frames registered by HUD, minimap, road handedness and fixed landmarks; native ranges remain approximate authoring sectors. A frame supports its visible corner, not every metre in the containing sector. No elapsed-time station interpolation."
     },
     {
       "id": "bahrain-02",
@@ -36,11 +37,12 @@
       ],
       "name": "T3 climb, first back straight and T4",
       "reviewed_video_seconds": [
-        441.84,
-        862.65
+        102.5,
+        155,
+        441.84
       ],
       "observed": "University stands outside opening sequence, sandy banks, fenced dry infield. Broad outer asphalt at T4, narrow inner red-white kerb, green and blue painted shoulders. Floodlight heads remain visible above the horizon.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frames registered by HUD, minimap, road handedness and fixed landmarks; native ranges remain approximate authoring sectors. A frame supports its visible corner, not every metre in the containing sector. No elapsed-time station interpolation."
     },
     {
       "id": "bahrain-03",
@@ -50,13 +52,15 @@
       ],
       "name": "T5–8 linked infield bends",
       "reviewed_video_seconds": [
-        105.2,
+        103.5,
+        104,
+        104.5,
         105,
-        110,
-        778.49
+        105.2,
+        448
       ],
       "observed": "Low fast left/right sequence descends through open sand; short grass/painted strips immediately outside red-white kerbs, larger coloured asphalt where a car continues straight. Avoid uniform gravel strips around every bend.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frames registered by HUD, minimap, road handedness and fixed landmarks; native ranges remain approximate authoring sectors. A frame supports its visible corner, not every metre in the containing sector. No elapsed-time station interpolation."
     },
     {
       "id": "bahrain-04",
@@ -66,11 +70,12 @@
       ],
       "name": "T9–10 downhill left braking",
       "reviewed_video_seconds": [
-        115,
-        694.33
+        107,
+        108,
+        160
       ],
       "observed": "Slow left apex below approach; large tan/sandy outside with coloured asphalt bordering road. Low barriers set back behind escape area, bright vertical light poles; few distant palms.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frames registered by HUD, minimap, road handedness and fixed landmarks; native ranges remain approximate authoring sectors. A frame supports its visible corner, not every metre in the containing sector. No elapsed-time station interpolation."
     },
     {
       "id": "bahrain-05",
@@ -80,11 +85,10 @@
       ],
       "name": "Inner straight and T11",
       "reviewed_video_seconds": [
-        610.17,
-        946.81
+        110
       ],
       "observed": "Batelco spectator structure is right of inner straight near station2790. Straight Armco/mesh protection, beige dry expanse, asphalt escape at left-hand entry. Keep stand geometry above wall visible.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frames registered by HUD, minimap, road handedness and fixed landmarks; native ranges remain approximate authoring sectors. A frame supports its visible corner, not every metre in the containing sector. No elapsed-time station interpolation."
     },
     {
       "id": "bahrain-06",
@@ -94,11 +98,11 @@
       ],
       "name": "T12–13 fast right rise",
       "reviewed_video_seconds": [
-        862.65,
-        1030.97
+        112,
+        862.65
       ],
       "observed": "Open rising sandy ground, red-white inside kerb and coloured paved outside transition. Track floodlighting, low guardrail/tyre backing rather than roadside buildings on both sides.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frames registered by HUD, minimap, road handedness and fixed landmarks; native ranges remain approximate authoring sectors. A frame supports its visible corner, not every metre in the containing sector. No elapsed-time station interpolation."
     },
     {
       "id": "bahrain-07",
@@ -108,13 +112,12 @@
       ],
       "name": "Back straight and final right T14–15",
       "reviewed_video_seconds": [
-        1115.13,
-        155,
-        160,
-        165
+        115,
+        165,
+        1115.13
       ],
       "observed": "Long open straight toward white pointed canopy cluster; Victory stands outside final bend. Red-white apex, wide dark/blue-green escape with sand behind; lamps on both sides. Preserve long braking sightline.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frames registered by HUD, minimap, road handedness and fixed landmarks; native ranges remain approximate authoring sectors. A frame supports its visible corner, not every metre in the containing sector. No elapsed-time station interpolation."
     },
     {
       "id": "bahrain-08",
@@ -132,7 +135,7 @@
         190
       ],
       "observed": "Mainstand left, pit hospitality right, slim green verge adjoining road; repeated white roofs and lit fences dominate return. Continuous ground contact at pit wall; no misplaced blocks in driving lane.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frames registered by HUD, minimap, road handedness and fixed landmarks; native ranges remain approximate authoring sectors. A frame supports its visible corner, not every metre in the containing sector. No elapsed-time station interpolation."
     }
   ],
   "mapped_landmarks": [
@@ -570,7 +573,7 @@
   "elevation_review": {
     "retained_dataset": "Copernicus DEM GLO-90",
     "retained_relief_m": 19.736,
-    "status": "The native racing-deck profile now follows registered published topography controls. Raw DEM remains for source comparison and scenery terrain.",
+    "status": "Canonical operator-constrained local ramps are ready for root native synchronization and cockpit review.",
     "findings": [
       "Retained GLO-90 profile has 19.736 m relief; operator gives 18 m. These are different accuracy levels, not permission to stretch individual crests arbitrarily.",
       "Default generic shoulders miss large blue/green/red painted asphalt escape areas and their sand outside."
@@ -669,6 +672,112 @@
       "registration_notes": "The old GLO-90 maximum was near T13. The operator and F1 diagram identify T4 as the summit. F1 gives 16.9 m relief, while the operator rounds the venue relief to18m. Relative heights only; the chart absolute sea-level datum is not used.",
       "supersedes": "Coarse GLO-90 road profile remains retained as source evidence, not as the racing deck. No new lidar or survey is claimed.",
       "controls_file": "elevation-corrections.json"
+    },
+    "operator_grade_corrections": {
+      "date": "2026-11-12",
+      "source_url": "https://www.fia.com/sites/default/files/25.03.2019_final_bahrain_media_kit.pdf",
+      "source_page": 11,
+      "published_maximum_uphill_pct": 3.6,
+      "published_maximum_downhill_pct": 5.6,
+      "source_controls_m": [
+        [
+          [
+            560,
+            1.919347707341518
+          ],
+          [
+            599,
+            1.5
+          ],
+          [
+            620,
+            1.9
+          ],
+          [
+            645,
+            2.65
+          ],
+          [
+            675,
+            3.67
+          ],
+          [
+            702,
+            4.5
+          ],
+          [
+            745,
+            5.45
+          ],
+          [
+            800,
+            7.139071761463292
+          ]
+        ],
+        [
+          [
+            3160,
+            2.5202155600100227
+          ],
+          [
+            3200,
+            2.9
+          ],
+          [
+            3233,
+            3.45
+          ],
+          [
+            3300,
+            5.45
+          ],
+          [
+            3400,
+            8.8
+          ],
+          [
+            3500,
+            12.15
+          ],
+          [
+            3592,
+            14.3
+          ],
+          [
+            3660,
+            14.7
+          ],
+          [
+            3750,
+            14.6
+          ],
+          [
+            3887,
+            14.2
+          ],
+          [
+            3950,
+            14.021705086444502
+          ]
+        ]
+      ],
+      "local_ranges_m": [
+        [
+          560,
+          800
+        ],
+        [
+          3160,
+          3950
+        ]
+      ],
+      "maximum_local_uphill_pct": 3.5511815620985487,
+      "minimum_local_grade_pct": -1.8038137414915223,
+      "graphical_anchor_vertical_uncertainty_m": 1,
+      "graphical_anchor_station_uncertainty_m": 50,
+      "source_conflict": "F 1 gives 16.9 m relative relief; the operator rounds this to 18 m. Preserve 16.9 m rather than scale the whole lap. The old unconstrained Hermite ramps reached 3.90% after T2 and 4.86% before T12, above the more specific operator maximum.",
+      "method": "Spread the climb through the observed road approach instead of adding a steep cubic bulge between sparse graphical labels. T11 and T12 heights stay within 1 m of the earlier graphical estimates; the highest T4 anchor and other sectors are unchanged.",
+      "survey_status": "Local ramp positions and intermediate heights are estimates constrained by primary metric bounds, not a civil survey."
     }
   },
   "primary_sources": [
@@ -1057,9 +1166,13 @@
   "pit_lane": {
     "source": "pit-lane.json",
     "visual_only_outside_pit_wall": true,
-    "registration": "Custom sakhir_pits(scene) keeps the authored garage front13m outside the road edge, same5180→220m interval and driverRIGHT side. Folded-roof/garage details follow reference120/130/185s.",
-    "garage_front_outer_offset_m": 13.0,
-    "source_world_frame": "Native east/north station frame; +1 driver right, -1 driver left. No route-origin rotation."
+    "registration": "Actual mapped pit compound187123416 replaces the former generic block. The full mapped compound projects to native5137.31→126.46m across zero. Road-facing garage segments stand17.893–18.598m and22.645–22.701m beyond the road edge. The paving control is rounded by less than10m at the longitudinal ends and ends at a constant17.5m offset before the nearest garage face. Local unstriped apron polygons meet each variable mapped front and exclude the occupied building; the generic outer white stripe therefore stays outside all garage bays. Mapped plan registration has approximately±2m uncertainty. Facade/roof dimensions remain reconstructed. Paving stays beyond a closed pit wall; racing XYZ, banking and handling are unchanged. See pit-dimension-review.json.",
+    "garage_front_outer_offset_m": 17.5,
+    "source_world_frame": "Native east/north station frame; +1 driver right, -1 driver left. No route-origin rotation.",
+    "start_m": 5130,
+    "end_m": 135,
+    "side": 1,
+    "outer_offset_interpretation": "Constant striped paving ends before the nearest facade; private unstriped apron polygons follow the actual variable garage front."
   },
   "pilot_geometry_correction": {
     "reference_video_seconds": [
@@ -1070,7 +1183,7 @@
       185
     ],
     "mainstand": "Retained mainstand187123419 is a four-vertex near-rectangle, OBB ratio1.00002, not a curved ring. Bahrain sail stands now explicitly use footprint-clipped tensile panels:15 mainstand bays with White tops, Cream soffits, exposed rims/ribs and rear supports. No generic dark flat roof is substituted.",
-    "pits": "Custom Sakhir frontage preserves garage front13m and profile5180→220m.57 recessed garage bays/roller headers, white piers/balcony fascia, narrower upper glazing ribbon and19 folded/scalloped white roof bays with first4entryspire details. Dimensions are reference estimates.",
+    "pits": "Superseded: see pit-dimension-review.json and actual footprint187123416. The former57-bay/452m block and13m garage-front registration are rejected.",
     "tower": "Mapped tower187123438 remains native332.79m driverRIGHT91.79m fromcenterline. It is visible in the opening-corner approach at100s; absence from the station0forwardFOV is not evidence of wrong registration.",
     "geometry_check": {
       "triangle_kinds": {
@@ -1143,11 +1256,280 @@
       },
       "VmHWM_kib": 64884
     },
-    "runtime_status": "Packaged pilot rejected; source geometry correction ready for new root capture. No final visual approval claimed."
+    "runtime_status": "Packaged pilot rejected; source geometry correction ready for new root capture. No final visual approval claimed.",
+    "status": "Historical pilot correction superseded for pit geometry by the2026-11-12 mapped-compound reconstruction; retain these prior counts/hashes as history, not current emitted statistics."
   },
   "targeted_registration_review": {
     "method": "Direct appearance/topology checks of retained frames and bounded individual Baku reference seeks; source geometry and all native data unchanged.",
     "notes": "Frame100s shows the Sakhir Tower/opening-corner approach; mapped tower187123438 is native332.79m ondriverRIGHT at91.79m from centerline. It must not be assigned to infield sector1450–2100m. Other sparse overview associations remain approximate until full-lap continuity review; relative station/camera registration is not surveyed.",
     "next_gate": "Actual packaged full-lap review and targeted captures in build/reviews/east-final-targets.json; these metadata corrections are not visual approval."
+  },
+  "width_profile": {
+    "base_m": 14.0,
+    "straight_m": 16.0,
+    "minimum_m": 14.0,
+    "maximum_m": 22.0,
+    "source": "https://www.fia.com/sites/default/files/25.03.2019_final_bahrain_media_kit.pdf",
+    "source_page": 11,
+    "controls_m": [
+      [
+        0,
+        16
+      ],
+      [
+        300,
+        16
+      ],
+      [
+        400,
+        18
+      ],
+      [
+        450,
+        22
+      ],
+      [
+        470,
+        22
+      ],
+      [
+        488,
+        20
+      ],
+      [
+        540,
+        16
+      ],
+      [
+        580,
+        14
+      ],
+      [
+        630,
+        14
+      ],
+      [
+        720,
+        16
+      ],
+      [
+        800,
+        16
+      ],
+      [
+        1100,
+        16
+      ],
+      [
+        1210,
+        18
+      ],
+      [
+        1293,
+        18
+      ],
+      [
+        1370,
+        16
+      ],
+      [
+        1450,
+        14
+      ],
+      [
+        1900,
+        14
+      ],
+      [
+        1980,
+        18
+      ],
+      [
+        2050,
+        18
+      ],
+      [
+        2140,
+        14
+      ],
+      [
+        2380,
+        16
+      ],
+      [
+        2450,
+        14
+      ],
+      [
+        2490,
+        14
+      ],
+      [
+        2550,
+        14
+      ],
+      [
+        2850,
+        16
+      ],
+      [
+        3100,
+        16
+      ],
+      [
+        3240,
+        16
+      ],
+      [
+        3350,
+        14
+      ],
+      [
+        3550,
+        14
+      ],
+      [
+        3850,
+        14
+      ],
+      [
+        3950,
+        14
+      ],
+      [
+        4100,
+        16
+      ],
+      [
+        4500,
+        16
+      ],
+      [
+        4620,
+        18
+      ],
+      [
+        4700,
+        18
+      ],
+      [
+        4800,
+        16
+      ],
+      [
+        4950,
+        16
+      ],
+      [
+        5412,
+        16
+      ]
+    ],
+    "method": "Published operator range with wider braking entries and tighter apexes registered to retained mapped corners. Local widths are reconstruction estimates, not a white-line survey. Existing smooth cubic transitions join the controls.",
+    "edge_definition": "Racecourse between white edges or kerbs, excluding painted runoff, pit lane and blue/red escape aprons.",
+    "uncertainty_m": 2.0,
+    "station_uncertainty_m": 50.0,
+    "registration": [
+      {
+        "official_corner": "Pit straight and T1",
+        "native_range_m": [
+          0,
+          540
+        ],
+        "width_m": [
+          16,
+          22
+        ],
+        "reference_frames": [
+          "detail-0195.jpg",
+          "detail-0200.jpg",
+          "overview-12.jpg"
+        ],
+        "observation": "Direct pit straight and T1 braking entry, including HUD7.752 at1030.97s. The wider approach is distinct from the tighter turn and subsequent T2.22m entry and20m apex are local estimates within operator bounds."
+      },
+      {
+        "official_corner": "T2",
+        "native_range_m": [
+          580,
+          630
+        ],
+        "width_m": [
+          14,
+          14
+        ],
+        "reference_frames": [
+          "detail-0100.jpg"
+        ],
+        "observation": "Direct left T2 frame, Sakhir tower on driver right. Distinct track edge excludes the outside painted escape."
+      },
+      {
+        "official_corner": "T4",
+        "native_range_m": [
+          1210,
+          1370
+        ],
+        "width_m": [
+          16,
+          18
+        ],
+        "reference_frames": [
+          "detail-0155.jpg"
+        ],
+        "observation": "Direct T4 exit at HUD25.215, right-hand bend and Aramco bridge ahead. Racecourse edge is separated from the sand-coloured outside escape by the red/white kerb.18m apex is a local estimate, supported by the mapped23.44m center arc."
+      },
+      {
+        "official_corner": "T9–T10",
+        "native_range_m": [
+          2380,
+          2550
+        ],
+        "width_m": [
+          14,
+          16
+        ],
+        "reference_frames": [
+          "detail-0160.jpg"
+        ],
+        "observation": "Direct T10 exit at HUD47.233. The outside-right red/white kerb bounds the racing asphalt, with sand beyond. Tight mapped center arc radius8.49m independently supports the narrow14m apex estimate; the exact apex white-edge width remains unmeasured."
+      },
+      {
+        "official_corner": "T11",
+        "native_range_m": [
+          3100,
+          3350
+        ],
+        "width_m": [
+          14,
+          16
+        ],
+        "reference_frames": [
+          "detail-0110.jpg"
+        ],
+        "observation": "Direct left T11 at HUD57.320. The inside red/white kerb borders blue/navy painted escape, which is excluded from road width.16m entry is an estimate, with a narrower exit."
+      },
+      {
+        "official_corner": "T14–T15",
+        "native_range_m": [
+          4620,
+          4950
+        ],
+        "width_m": [
+          16,
+          18
+        ],
+        "reference_frames": [
+          "detail-0115.jpg"
+        ],
+        "observation": "Direct right T14 apex at HUD1:19.781, with red/white inside kerb and painted outside apron.18 m is a local estimate."
+      }
+    ],
+    "registration_correction": "Former sector labels were wrong:115s isT14,160s isT10exit,862.65s isT13,1030.97s isT1entry;140s is a menu. Current reference-index retains historical assignments and corrected direct witnesses."
+  },
+  "reference_registration_review": "reference-index.json:registration_review_2026_11_12",
+  "pit_dimension_correction": {
+    "source": "pit-dimension-review.json",
+    "status": "Mapped source geometry frozen after emitted checks; native synchronization and packaged review pending.",
+    "former_generic_body_rejected": true,
+    "runtime_approval": false
   }
 }

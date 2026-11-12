@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "circuit": "portimao",
+  "current_source": "DGT classified LiDAR2024; see classified-ground.json and elevation-corrections.json",
+  "operator_gradient_discrepancy": {
+    "published_maximum_rise_percent": 6.2,
+    "published_maximum_fall_percent": 12.0,
+    "sources": [
+      "https://portugalf1gp.com/en/the-race",
+      "https://global.honda/en/F1/circuit/autodromo-internacional-do-algarve/",
+      "https://www.wirtgen-group.com/en-global/magazine/the-road/passion/race-track-rehabilitation-in-portugal/"
+    ],
+    "retrieved": "2026-11-12",
+    "configuration_note": "Operator and road-paving supplier list4684m/16corners; Honda also repeats these gradient figures for4653m/15corners. None defines the gradient measurement interval.",
+    "classified_ground_extremes": [
+      {"station_m": 1713.06738, "instantaneous_percent": 10.23, "over_50m_percent": 8.19, "over_100m_percent": 6.33},
+      {"station_m": 3720.35522, "instantaneous_percent": -15.51, "over_50m_percent": -13.77, "over_100m_percent": -11.63}
+    ],
+    "independent_review": "Luna High checked CRS axis order, route scale, fixed origin and station-zero registration, Cascais datum and all containing local triangles. No concrete projection or datum error found. Coarse older Copernicus samples independently support the steep downhill; they do not resolve the short uphill.",
+    "status": "Open source-definition discrepancy. Local steepening is credible;100m aggregate grades roughly match the quoted figures, but this does not prove the operator used100m intervals. Do not claim the published maxima are satisfied, or flatten/rescale measured ground to force a match. Exact comparison needs a registered engineering profile or defined operator interval."
+  }
+}

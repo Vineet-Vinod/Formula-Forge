@@ -20,8 +20,8 @@
       "name": "Final T15 exit and T16",
       "reviewed_video_seconds": [
         197,
-        201,
-        205
+        199,
+        201
       ],
       "observed": "The final slow left T16 lies near native304m. Red-white kerbs and green paint lead onto the long pit straight. The stepped pit roof volumes and main grandstand appear ahead; low grass and paved/gravel escape remain outside.",
       "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
@@ -35,13 +35,9 @@
       "name": "Pit straight and start/finish",
       "reviewed_video_seconds": [
         113,
-        114,
-        115,
-        116,
         117,
         121,
-        205,
-        26.99
+        205
       ],
       "observed": "The main grandstand is on the left, mapped OSM169886092 near697m. The pit and control roof complex is on the right, OSM188019421 near669m. Deep layered roof slabs, white garages, a separate pit wall and green verge define the straight. The finish line is seen near116s; approximate native station470m.",
       "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
@@ -56,8 +52,7 @@
       "reviewed_video_seconds": [
         125,
         129,
-        133,
-        221.31
+        133
       ],
       "observed": "T1 is the right near1041m, T2 the left near1165m, and T3 the uphill right hairpin near1429m. The road dips into T2 and climbs strongly toward the blind crest. Braking boards, green/blue paint and an open crowd terrace frame the hairpin.",
       "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
@@ -74,9 +69,7 @@
         141,
         145,
         149,
-        153,
-        48.58,
-        242.91
+        153
       ],
       "observed": "The long fast straight descends through grass and palms. Guardrail, mesh and distance boards define the approach to T4. The slow right apex has a broad green paved escape and tan runoff beyond. Stands and pit buildings stay distant.",
       "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
@@ -87,13 +80,12 @@
         2750,
         3500
       ],
-      "name": "T5–7 infield",
+      "name": "T5\u20137 infield",
       "reviewed_video_seconds": [
         157,
         161,
         165,
-        169,
-        134.95
+        169
       ],
       "observed": "The wide left-left-right sequence crosses a low rise. Red-white kerbs border green, yellow and red paved escape areas. A white timing pylon with a dark position panel appears beside the braking approach. Low grass banks and distant stands leave an open horizon.",
       "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
@@ -104,11 +96,10 @@
         3500,
         3950
       ],
-      "name": "T8–9 bowl approach",
+      "name": "T8\u20139 bowl approach",
       "reviewed_video_seconds": [
         173,
-        70.17,
-        156.54
+        175
       ],
       "observed": "Linked corners lead toward the bowl. Red-white kerbs and green paint border the asphalt; tan runoff widens outside. Separate pale grandstand roof sections appear ahead, with dry grass and scattered palms.",
       "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
@@ -119,13 +110,11 @@
         3950,
         4500
       ],
-      "name": "T10–12 continuous right bowl",
+      "name": "T10\u201312 continuous right bowl",
       "reviewed_video_seconds": [
         177,
         181,
-        185,
-        91.76,
-        178.13
+        185
       ],
       "observed": "The multi-apex right is continuous. Inside grass and red-white kerbs follow the arc, with green/red paint leading to broad tan gravel outside. Large crowd terraces and separated angular roof sections sit beyond the escape area.",
       "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
@@ -136,11 +125,10 @@
         4500,
         4800
       ],
-      "name": "T13–14 fast changes",
+      "name": "T13\u201314 fast changes",
       "reviewed_video_seconds": [
         189,
-        193,
-        199.72
+        193
       ],
       "observed": "Sweeping direction changes cross broad grass and painted edges. The main facilities gradually return to view, with gravel outside and fences behind the escape areas.",
       "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
@@ -153,10 +141,8 @@
       ],
       "name": "T15 approach and exit",
       "reviewed_video_seconds": [
-        193,
-        197,
-        201,
-        286.09
+        195,
+        197
       ],
       "observed": "The late right bends lead into the short link toward T16 across the station seam. Kerbs, grass, green paint and paved/gravel escape border the sequence. The long pit straight begins after the final left at native304m, rather than inside this interval.",
       "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
@@ -377,11 +363,11 @@
   "elevation_review": {
     "retained_dataset": "Copernicus DEM GLO-90",
     "retained_relief_m": 13.231,
-    "status": "The native deck now uses the retained higher-resolution GLO-30 centerline profile. Published range conflicts remain disclosed; no range was forced.",
+    "status": "The canonical profile now includes the FIA14m T1\u2013T3climb. Root must synchronize/re-export the native road and joined scenery before packaged review.",
     "findings": [
       "RetainedGLO90relief13.231m is not verified deckelevation. UphillT3 clearlyvisiblebut no primarymetricelevationseriesverified;donotamplifytocirculating40mclaims.",
       "Architect5137m,FIA20135125m,currentmapping5141m differ;retainlayoutphasewithoutarbitrarilyrescalingtoonepublicnumber.",
-      "The pit straight is registered by mapped footprints near station669m; officialT1/T2/T3are1041/1165/1429m. Higher-resolution GLO-30 places the crest near1445m and gives a11.738m T2–T3climb."
+      "The pit straight is registered by mapped footprints near station669m; officialT1/T2/T3are1041/1165/1429m. Higher-resolution GLO-30 places the crest near1445m and gives a11.738m T2\u2013T3climb."
     ],
     "research_file": "elevation-research.json",
     "replacement_profile": {
@@ -395,8 +381,111 @@
       "interpolation": "Exact native XY centerline inverted to retained WGS84 origin/scale, bilinear raster sampling. Two circular[1,2,1]/4 passes at4m sample spacing. No vertical scale factor.",
       "uncertainty_m": 3.0,
       "limitations": "30m digital surface model, not lidar or bare-earth road survey. Canopy and roof influences remain possible. Geographic source pixels are retained with provenance; no reference video pixels redistributed.",
-      "structural_findings": "Correct route registration putsT1near1041m,T2near1165m,T3near1429m. The GLO-30 climb fromT2toT3is11.738m, compared with7.832m from the coarse deck. The mapped pit straight is400–1000m, not4870m.",
+      "structural_findings": "Correct route registration putsT1near1041m,T2near1165m,T3near1429m. The GLO-30 climb fromT2toT3is11.738m, compared with7.832m from the coarse deck. The mapped pit straight is400\u20131000m, not4870m.",
       "research_file": "elevation-research.json"
+    },
+    "fia_2013_local_correction": {
+      "date": "2026-11-12",
+      "source": "https://api.fia.com/news/2013-indian-grand-prix-preview",
+      "source_claim": "The track rises14metres between TurnsOne andThree alone.",
+      "t1_native_station_m": 1041.0,
+      "t3_native_station_m": 1429.0,
+      "previous_t1_to_t3_m": 9.57705,
+      "corrected_t1_to_t3_m": 14.0,
+      "source_controls_m": [
+        [
+          1165.0,
+          0.0887202797202802
+        ],
+        [
+          1177.145,
+          0.0
+        ],
+        [
+          1190,
+          0.04790049962528112
+        ],
+        [
+          1220,
+          1.5
+        ],
+        [
+          1250,
+          3.6
+        ],
+        [
+          1290,
+          7.2
+        ],
+        [
+          1330,
+          10.8
+        ],
+        [
+          1370,
+          14.0
+        ],
+        [
+          1400,
+          15.6
+        ],
+        [
+          1429.0,
+          16.234486010492134
+        ],
+        [
+          1450,
+          16.1
+        ],
+        [
+          1500,
+          15.0
+        ],
+        [
+          1550,
+          13.4
+        ],
+        [
+          1650,
+          10.5
+        ],
+        [
+          1750,
+          8.8
+        ],
+        [
+          1850,
+          6.6
+        ],
+        [
+          1950,
+          4.2
+        ],
+        [
+          2050,
+          2.3
+        ],
+        [
+          2100.0,
+          2.2056272727272743
+        ]
+      ],
+      "native_range_m": [
+        1165.0,
+        2100.0
+      ],
+      "endpoint_slopes": [
+        -0.01368631368630073,
+        0.020779220779203467
+      ],
+      "maximum_authored_absolute_grade_pct": 9.390528272920307,
+      "shape_sources": [
+        "Supplied2013onboard125s T1,129s risingT2exit,133s cresthairpin. These frames establish roadshape and stationidentity, not metric heights.",
+        "V\u00d6GELE RoadNews24 construction account specifies longitudinal gradients up to10%.",
+        "Renault Sport2012preview says the T3\u2013T4straight dips in its middle. Existing broad trough near native2050m is preserved."
+      ],
+      "uncertainty_m": 1.0,
+      "decision": "Replace the demonstrably short GLO-30 climb with the FIA metric constraint. Start the rise earlier and distribute it across the actual T2\u2013T3link rather than steepening only the last raster cell. Preserve the rest of the lap."
     }
   },
   "primary_sources": [
@@ -408,12 +497,12 @@
     {
       "title": "Tilkearchitectportfolio2024",
       "url": "https://tilke.de/wp-content/uploads/2024/12/2024-Portfolio.pdf",
-      "supports": "Built2009–2011;5137m,16turns; identifiespit/racecontrol,hospitality,grandstands,mediaandmedicalarchitecture."
+      "supports": "Built2009\u20132011;5137m,16turns; identifiespit/racecontrol,hospitality,grandstands,mediaandmedicalarchitecture."
     },
     {
       "title": "ABB Contact India3/2011, electrical supplier account of Buddh project",
       "url": "https://library.e.abb.com/public/bade2cb5c7c3d0e94825797e0062298a/Contact_3_11_India.pdf",
-      "supports": "Supplier quotes14m highest elevation and18–20m track width. This is a venue-specification summary, not a station-resolved civil survey."
+      "supports": "Supplier quotes14m highest elevation and18\u201320m track width. This is a venue-specification summary, not a station-resolved civil survey."
     }
   ],
   "acceptance": {
@@ -582,7 +671,7 @@
   },
   "source_conflicts": "Retained city footprints can cross the modeled road corridor. Native facade authoring clips ground walls outside the road mask plus 1.2 m and records the removed area; these are disclosed registration conflicts, not validated building surveys.",
   "uncertainties": [
-    "Native source origin is in the final sector beforeT16. SF is estimated near470±100m, T1near1041m, T2near1165m, T3near1429m. Geographic pit and grandstand footprints establish this route phase.",
+    "Native source origin is in the final sector beforeT16. SF is estimated near470\u00b1100m, T1near1041m, T2near1165m, T3near1429m. Geographic pit and grandstand footprints establish this route phase.",
     "Road elevation now comes directly from bilinear GLO-30 centerline samples. It remains a30m surface model with3m stated uncertainty, not a surveyed racing deck."
   ],
   "braking_markers": {
@@ -800,13 +889,13 @@
         "observed": "White separator outlines the bowl green strip and red outer field."
       }
     ],
-    "native_changes": "T5/T6 native3190–3430m driverRIGHT width15m changes gravel to paved asphalt. All other apron bounds and surface classes unchanged.",
+    "native_changes": "T5/T6 native3190\u20133430m driverRIGHT width15m changes gravel to paved asphalt. All other apron bounds and surface classes unchanged.",
     "unpainted_policy": "Gravel, grass and unpainted asphalt remain beyond the observed paint bands."
   },
   "pit_lane": {
     "source": "pit-lane.json",
     "visual_only_outside_pit_wall": true,
-    "registration": "Custom mapped pit compound188019421: use its articulated road-facing ring edges9–15, not the 401.64×118.80m compound OBB. Frontage endpoints register to native470.0 and868.1m; intermediate offsets vary10.18–23.25m outside the road edge. A fixed23.5m paving back extent covers that entire front and can extend under the building at narrower ends. Reference113/117/121/125/201/205s confirms garages right and mainstand left. These are retained-footprint registrations, not a surveyed pit-lane width.",
+    "registration": "Custom mapped pit compound188019421: use its articulated road-facing ring edges9\u201315, not the 401.64\u00d7118.80m compound OBB. Frontage endpoints register to native470.0 and868.1m; intermediate offsets vary10.18\u201323.25m outside the road edge. A fixed23.5m paving back extent covers that entire front and can extend under the building at narrower ends. Reference113/117/121/125/201/205s confirms garages right and mainstand left. These are retained-footprint registrations, not a surveyed pit-lane width.",
     "garage_front_outer_offset_m": 23.5,
     "source_world_frame": "Native east/north station frame; +1 driver right, -1 driver left. No route-origin rotation.",
     "garage_architecture": {
@@ -814,7 +903,259 @@
       "osm_id": 188019421,
       "start_m": 470,
       "end_m": 870,
-      "registration": "Road-facing retained ring edges9–15; dark full-width ground-floor portals, white structural piers and overhead roller boxes replace office-window appearance. Garage threshold elevations follow the adjacent road/pit apron; heights and bay spacing estimated from reference113–125s."
+      "registration": "Road-facing retained ring edges9\u201315; dark full-width ground-floor portals, white structural piers and overhead roller boxes replace office-window appearance. Garage threshold elevations follow the adjacent road/pit apron; heights and bay spacing estimated from reference113\u2013125s."
     }
-  }
+  },
+  "width_profile": {
+    "base_m": 18.0,
+    "straight_m": 20.0,
+    "minimum_m": 18.0,
+    "maximum_m": 25.0,
+    "method": "Construction-published paved circuit range, registered to white racing edges in the supplied 2013 onboard. Wider approaches and hairpins at T1, T3 and T4 are local visual estimates. Existing smooth cubic transitions join the controls.",
+    "source": "https://www.consultanthart.com/www/pdf/RoadNews_24_en_India.pdf",
+    "controls_m": [
+      [
+        0,
+        18
+      ],
+      [
+        180,
+        18
+      ],
+      [
+        260,
+        20
+      ],
+      [
+        350,
+        20
+      ],
+      [
+        400,
+        20
+      ],
+      [
+        900,
+        20
+      ],
+      [
+        960,
+        22
+      ],
+      [
+        1005,
+        25
+      ],
+      [
+        1055,
+        25
+      ],
+      [
+        1110,
+        20
+      ],
+      [
+        1190,
+        20
+      ],
+      [
+        1250,
+        18
+      ],
+      [
+        1320,
+        18
+      ],
+      [
+        1370,
+        22
+      ],
+      [
+        1405,
+        25
+      ],
+      [
+        1460,
+        25
+      ],
+      [
+        1530,
+        20
+      ],
+      [
+        2480,
+        20
+      ],
+      [
+        2580,
+        22
+      ],
+      [
+        2650,
+        25
+      ],
+      [
+        2745,
+        25
+      ],
+      [
+        2820,
+        18
+      ],
+      [
+        3150,
+        18
+      ],
+      [
+        3250,
+        20
+      ],
+      [
+        3330,
+        20
+      ],
+      [
+        3420,
+        18
+      ],
+      [
+        3820,
+        18
+      ],
+      [
+        3950,
+        20
+      ],
+      [
+        4100,
+        22
+      ],
+      [
+        4350,
+        22
+      ],
+      [
+        4470,
+        20
+      ],
+      [
+        4550,
+        18
+      ],
+      [
+        4800,
+        18
+      ],
+      [
+        4950,
+        20
+      ],
+      [
+        5040,
+        20
+      ],
+      [
+        5100,
+        18
+      ],
+      [
+        5141,
+        18
+      ]
+    ],
+    "uncertainty_m": 2.0,
+    "source_conflict": "ABB lists 18\u201320 m in a venue summary; the paving engineer and V\u00d6GELE construction account lists 18\u201325 m. The construction account is more specific. It does not supply station-resolved white-line dimensions.",
+    "edge_definition": "Racing asphalt inside white lines and kerbs. Excludes coloured runoff, green aprons and the separate pit lane. The contractor describes the paved circuit; local white-line placement remains a reference reconstruction.",
+    "registration": [
+      {
+        "official_corner": "T16 and pit straight",
+        "native_range_m": [
+          180,
+          960
+        ],
+        "width_m": [
+          18,
+          20
+        ],
+        "reference_seconds": [
+          113,
+          117,
+          121
+        ],
+        "confidence": "Published range, visually broad straight. Exact 20 m width is an estimate."
+      },
+      {
+        "official_corner": "T1",
+        "native_range_m": [
+          960,
+          1110
+        ],
+        "width_m": [
+          20,
+          25
+        ],
+        "reference_seconds": [
+          121,
+          125
+        ],
+        "confidence": "Direct T1 approach/apex shows a broad right hairpin. The coloured infield is excluded from road width."
+      },
+      {
+        "official_corner": "T2 and uphill T3",
+        "native_range_m": [
+          1110,
+          1530
+        ],
+        "width_m": [
+          18,
+          25
+        ],
+        "reference_seconds": [
+          125,
+          129,
+          133
+        ],
+        "confidence": "Direct climb and crest hairpin. Broad T3 is distinct from its painted/gravel escape."
+      },
+      {
+        "official_corner": "T4 braking and hairpin",
+        "native_range_m": [
+          2580,
+          2820
+        ],
+        "width_m": [
+          18,
+          25
+        ],
+        "reference_seconds": [
+          149,
+          153
+        ],
+        "confidence": "Wide braking approach and right hairpin after the long straight. Exact transition stations are estimates."
+      },
+      {
+        "official_corner": "T10\u201312 bowl",
+        "native_range_m": [
+          3950,
+          4470
+        ],
+        "width_m": [
+          20,
+          22
+        ],
+        "reference_seconds": [
+          177,
+          181,
+          185
+        ],
+        "confidence": "Wide banked continuous right; coloured outer escape is excluded."
+      }
+    ],
+    "native_sync": "Root must apply the recipe with circuit_profiles.py --racing buddh, repair the demonstrated native interpolation kinks, then rebuild/export/check all physical and visual surfaces. No centreline coordinates are changed by this source file."
+  },
+  "pit_roof_reconstruction": {
+    "provenance": "pit-roof-review.json",
+    "status": "Actual mapped garage wings replace the compound bounding roof. Roof geometry is frozen for native width/elevation integration and packaged review."
+  },
+  "reference_registration_review": "reference-index.json:registration_review_2026_11_12"
 }

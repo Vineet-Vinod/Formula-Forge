@@ -1,17 +1,17 @@
 {
   "recipe": "make circuit-assets CIRCUIT=malaysia",
   "tiles": 130,
-  "triangles": 2063457,
-  "road_sha256": "c3002a0fe74e0bf19ad980dc9b17c5fcb8d323fba06b92bc2048ff96df87e664",
-  "terrain_sha256": "40c5568107dbe7613d3cdf8f29d2af8c10cb0093a10b698f6986c6c53dbcbebb",
+  "triangles": 2094216,
+  "road_sha256": "00ab0b9f54b4ac5604f494858bb37fb19aba3018306bb42e0091a3b2cd386f91",
+  "terrain_sha256": "c1a3f8ad1402cf7701010ed05c72a538dd64937722c1daf04c4c2fea1d15b839",
   "landmarks": [
     {
       "name": "Paved pit lane and working apron",
-      "start_m": 5290.0,
-      "end_m": 320.0,
+      "start_m": 5420.0,
+      "end_m": 230.0,
       "side": 1,
-      "outer_offset_m": 13.0,
-      "source_note": "Authored Sepang garage frontage scene.pit_building(5290,320,+1) lies exactly 13 m beyond road edge. Retained pit compound144362327 is excluded from duplicate extrusion; its multi-storey bays and stacked roof silhouette are modeled on the right, opposite the double-sided grandstand. Reference118/122/126/130/134/138s supports this registration. Native interval crosses zero.",
+      "outer_offset_m": 10.35,
+      "source_note": "The retained pit compound 144362327 spans approximately native 5425\u2013227 m across zero. The actual 33-bay garage front spans approximately 5486\u2013207 m and lies 9.784\u201310.300 m beyond the current road edge. Paving extends 10.35 m to meet that frontage; up to 0.57 m lies under the building edge. The rounded control/timing end projects farther toward the apron and remains occupied architecture. Registration and OSM footprint uncertainty are about 2 m; interval ends are rounded by at most 7 m. Paving remains visual beyond the closed pit wall, with no pit access functionality. See pit-roof-review.json.",
       "access": "Visual service area outside the closed driving boundary."
     },
     {
@@ -77,8 +77,8 @@
       "name": "Sepang mapped double-frontage palm-leaf grandstand",
       "osm_id": 144247993,
       "roof_bays": 26,
-      "road_area_removed_m2": 1968.144,
-      "dimensions_status": "Actual concave wing outlines and open central mall gaps retained, with 3 m road clearance. Each wing follows adjacent retained road/concourse floor grade, not roof-contaminated DSM. Original 25 m leaf modules, 18 m roof spring, branching masts and pale cream/white shells reconstructed from supplied122/130/134 s and operator double-frontage description; dimensions estimated, no road profile or global material changes."
+      "road_area_removed_m2": 1980.359,
+      "dimensions_status": "Actual concave wing outlines and open central mall gaps retained, with 3 m road clearance. Each wing follows adjacent retained road/concourse floor grade, not roof-contaminated DSM. White membrane modules retain the actual concave footprint and open central mall. Low front edges and rising rear fabric are supported by visible branching ribs below each canopy and rear masts. Bay spacing around 25 m, front spring 18.5 m and rib thickness are unmeasured reconstructions from supplied 122/130/134 s and the operator architecture photo; no road profile or global material changes."
     },
     {
       "name": "F Grandstand",
@@ -97,15 +97,17 @@
       "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
       "boundary_chains": 1,
       "bays": 39,
-      "max_foundation_height_m": 10.196704139709755,
+      "max_foundation_height_m": 10.004162103008703,
       "tensile_roof_bays": 0
     },
     {
-      "name": "Authored pit building",
-      "start_m": 5290,
-      "end_m": 320,
-      "side": 1,
-      "height_m": 14.5
+      "name": "Sepang mapped pit garages and white upper cantilever terraces",
+      "osm_id": 144362327,
+      "garage_count": 33,
+      "garage_width_m": 8,
+      "body_height_m": 10.2,
+      "roof_height_estimate_m": "12.2\u201314.75",
+      "dimensions_status": "Mapped 345 m compound replaces an invented 573 m generic building. Operator specifies 33 garages 8 m wide and 24 m deep, three office/paddock levels and a refurbished roof terrace. White body, narrower window bands, exposed terrace edges and pale roof/soffits match supplied122/126/130/134 s. Roof profiles and support spacing are explicitly reconstructed estimates; footprint, whole-road clearance and adjacent road-grade foundation are retained."
     },
     {
       "name": "South Padock",

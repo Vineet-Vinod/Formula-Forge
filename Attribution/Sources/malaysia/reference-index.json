@@ -77,11 +77,10 @@
       "id": "malaysia-01",
       "native_station_m": [
         0,
-        700
+        800
       ],
       "name": "Pit straight, T1\u20132",
       "reviewed_video_seconds": [
-        128.04,
         106,
         110,
         114,
@@ -91,43 +90,42 @@
         130,
         134,
         138,
-        142
+        142,
+        146
       ],
       "observed": "Central scalloped-roof mainstand left, layered white pit building right. Broad slow opening right then left, wide grass and large tan gravel/paved outer escape, red-white kerbs and thin green edge.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frame sequence and physical circuit landmarks registered to the native plan/F1 corner controls. Bounds are approximate sector endpoints, not survey observations. Formation-lap and race images are labelled separately; their geometric evidence does not establish a matched runtime driving pose."
     },
     {
       "id": "malaysia-02",
       "native_station_m": [
-        700,
-        1500
+        800,
+        1600
       ],
       "name": "T3 curve and T4 braking",
       "reviewed_video_seconds": [
-        146,
         150,
-        154,
         158,
-        162
+        162,
+        166
       ],
       "observed": "Wide flowing right acceleration past oil palms, banks and spectators; large straight-ahead paved/gravel escape at tight rightT4. Red-white inside strip, light grass outside. Braking boards150/100/50 visible on approach.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frame sequence and physical circuit landmarks registered to the native plan/F1 corner controls. Bounds are approximate sector endpoints, not survey observations. Formation-lap and race images are labelled separately; their geometric evidence does not establish a matched runtime driving pose."
     },
     {
       "id": "malaysia-03",
       "native_station_m": [
-        1500,
+        1600,
         2250
       ],
       "name": "T5\u20136 fast direction change",
       "reviewed_video_seconds": [
-        166,
         170,
-        241.85,
-        298.75
+        174,
+        178
       ],
       "observed": "Broad grass infield, gentle slope, red-white kerbs and green outer strip. Plantation palm rows/irregular broadleaf patches behind barriers; open sky above low hills.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frame sequence and physical circuit landmarks registered to the native plan/F1 corner controls. Bounds are approximate sector endpoints, not survey observations. Formation-lap and race images are labelled separately; their geometric evidence does not establish a matched runtime driving pose."
     },
     {
       "id": "malaysia-04",
@@ -137,62 +135,56 @@
       ],
       "name": "T7\u20138 double right and short straight",
       "reviewed_video_seconds": [
-        174,
-        178,
-        355.66
+        182
       ],
       "observed": "F stand near native2418 left, curving crowd terraces and tall lighting masts. Very wide asphalt and grass runoffs, gravel beyond outer exit; do not line full outside with close city walls.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frame sequence and physical circuit landmarks registered to the native plan/F1 corner controls. Bounds are approximate sector endpoints, not survey observations. Formation-lap and race images are labelled separately; their geometric evidence does not establish a matched runtime driving pose."
     },
     {
       "id": "malaysia-05",
       "native_station_m": [
         2900,
-        3550
+        3170
       ],
       "name": "T9 hairpin and climb",
       "reviewed_video_seconds": [
-        182,
-        186,
-        469.47
+        186
       ],
       "observed": "Slow left corner with distinct broad gravel escape and grassy central island, canopy stand visible in background. Oil palms and low wooded rises; barrier behindescape. Narrow red-white apex strip.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frame sequence and physical circuit landmarks registered to the native plan/F1 corner controls. Bounds are approximate sector endpoints, not survey observations. Formation-lap and race images are labelled separately; their geometric evidence does not establish a matched runtime driving pose."
     },
     {
       "id": "malaysia-06",
       "native_station_m": [
-        3550,
-        4250
+        3170,
+        3600
       ],
       "name": "T10\u201311 technical hill section",
       "reviewed_video_seconds": [
-        190,
         194,
-        526.37
+        198
       ],
       "observed": "Rolling grass verges and off-camber sightlines into linked corners, broad tan gravel outside with green painted edge. Palm plantations and occasional light poles on hill above Armco.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frame sequence and physical circuit landmarks registered to the native plan/F1 corner controls. Bounds are approximate sector endpoints, not survey observations. Formation-lap and race images are labelled separately; their geometric evidence does not establish a matched runtime driving pose."
     },
     {
       "id": "malaysia-07",
       "native_station_m": [
-        4250,
-        5000
+        3600,
+        4250
       ],
       "name": "T12\u201314 return to back straight",
       "reviewed_video_seconds": [
-        198,
         202,
-        810.89
+        206
       ],
       "observed": "Fast direction changes across broad grass, light gravel escape, isolated stand roof and dense palm band. South paddock building right near4520; keep secondary structures low and distant.",
-      "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
+      "registration": "Direct retained frame sequence and physical circuit landmarks registered to the native plan/F1 corner controls. Bounds are approximate sector endpoints, not survey observations. Formation-lap and race images are labelled separately; their geometric evidence does not establish a matched runtime driving pose."
     },
     {
       "id": "malaysia-08",
       "native_station_m": [
-        5000,
+        4250,
         5543
       ],
       "name": "Back straight and final T15 hairpin",
@@ -203,7 +195,7 @@
         869.8
       ],
       "observed": "Central mainstand presents opposite face and repeated curved shells, very broad final lefthairpin around grass island. Long straight approaches and return to pit, red-white kerbs with green exit apron and gravel beyond.",
-      "registration": "865.8\u2013869.8s directly shows final T15 braking and left hairpin.210s is back-straight context only; native bounds and exact camera poses remain estimates.",
+      "registration": "Direct retained frame sequence and physical circuit landmarks registered to the native plan/F1 corner controls. Bounds are approximate sector endpoints, not survey observations. Formation-lap and race images are labelled separately; their geometric evidence does not establish a matched runtime driving pose.",
       "direct_final_corner_seconds": [
         865.8,
         867.8,
@@ -261,5 +253,184 @@
     "provenance": "main-roof-review.json",
     "mapped_footprint_id": 144247993,
     "status": "Actual concave footprint, separate wings and open central gaps replace the former bounding roof. Awaiting regenerated packaged review."
+  },
+  "registration_review_2026_11_12": {
+    "retained_former_associations": [
+      {
+        "sector_id": "malaysia-01",
+        "native_station_m": [
+          0,
+          700
+        ],
+        "reviewed_video_seconds": [
+          128.04,
+          106,
+          110,
+          114,
+          118,
+          122,
+          126,
+          130,
+          134,
+          138,
+          142
+        ]
+      },
+      {
+        "sector_id": "malaysia-02",
+        "native_station_m": [
+          700,
+          1500
+        ],
+        "reviewed_video_seconds": [
+          146,
+          150,
+          154,
+          158,
+          162
+        ]
+      },
+      {
+        "sector_id": "malaysia-03",
+        "native_station_m": [
+          1500,
+          2250
+        ],
+        "reviewed_video_seconds": [
+          166,
+          170,
+          241.85,
+          298.75
+        ]
+      },
+      {
+        "sector_id": "malaysia-04",
+        "native_station_m": [
+          2250,
+          2900
+        ],
+        "reviewed_video_seconds": [
+          174,
+          178,
+          355.66
+        ]
+      },
+      {
+        "sector_id": "malaysia-05",
+        "native_station_m": [
+          2900,
+          3550
+        ],
+        "reviewed_video_seconds": [
+          182,
+          186,
+          469.47
+        ]
+      },
+      {
+        "sector_id": "malaysia-06",
+        "native_station_m": [
+          3550,
+          4250
+        ],
+        "reviewed_video_seconds": [
+          190,
+          194,
+          526.37
+        ]
+      },
+      {
+        "sector_id": "malaysia-07",
+        "native_station_m": [
+          4250,
+          5000
+        ],
+        "reviewed_video_seconds": [
+          198,
+          202,
+          810.89
+        ]
+      },
+      {
+        "sector_id": "malaysia-08",
+        "native_station_m": [
+          5000,
+          5543
+        ],
+        "reviewed_video_seconds": [
+          210,
+          865.8,
+          867.8,
+          869.8
+        ]
+      }
+    ],
+    "native_corner_stations_m": {
+      "T1": 567,
+      "T2": 699,
+      "T3": 991,
+      "T4": 1495,
+      "T5": 1886,
+      "T6": 2102,
+      "T7": 2482,
+      "T8": 2590,
+      "T9": 3077,
+      "T10": 3213,
+      "T11": 3433,
+      "T12": 3769,
+      "T13": 3968,
+      "T14": 4128,
+      "T15": 5068
+    },
+    "station_status": "Approximate apex registration from retained native plan, explicit kerb ranges and F1 topography. The1640m height control is an intermediate climb afterT4, notT5. Not surveyed station limits.",
+    "corrections": [
+      "174/178s show theT5/T6 fast change, notT7/T8.",
+      "186s is theT9 left hairpin;194/198s supportT10/T11.",
+      "202/206s show theT12\u2013T14 return;4250\u20135000m is the back straight, not those corners.",
+      "The previously corrected directT15 views865.8/867.8/869.8 remain authoritative;106/110/114 areformation/openingT1/T2 and are notT15."
+    ],
+    "reference_contexts": {
+      "formation_and_grid_seconds": [
+        106,
+        110,
+        114,
+        118,
+        122,
+        126
+      ],
+      "race_opening_sequence_seconds": [
+        130,
+        134,
+        138,
+        142,
+        146,
+        150,
+        158,
+        162,
+        166,
+        170,
+        174,
+        178,
+        182,
+        186,
+        194,
+        198,
+        202,
+        206,
+        210
+      ],
+      "unregistered_or_rear_context_only_seconds": [
+        128.04,
+        154,
+        190,
+        241.85,
+        298.75,
+        355.66,
+        469.47,
+        526.37,
+        810.89
+      ]
+    },
+    "acceptance_status": "Named sectors have direct witnesses. Individual endpoint/width/scenery estimates and final runtime quality remain separately reviewable."
   }
 }

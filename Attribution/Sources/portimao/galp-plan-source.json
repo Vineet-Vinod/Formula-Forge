@@ -1,0 +1,241 @@
+{
+  "source_way_ids": [
+    363133198,
+    363133195,
+    363133199,
+    363133200,
+    157736307,
+    511858151
+  ],
+  "rejected_alternate_way_id": 39218673,
+  "source_osm_sha256": "8e1e248dfd2ab3276bf30f478f30dbde1c70ea026f4f2b6d302e5acd495f9baf",
+  "raw_controls_xy_m": [
+    [
+      109.44727898478509,
+      77.62562550094016
+    ],
+    [
+      88.86477083094523,
+      52.67120412363674
+    ],
+    [
+      68.47944290354302,
+      28.169635477473733
+    ],
+    [
+      47.448225679824695,
+      5.6459712384781975
+    ],
+    [
+      26.231204685806226,
+      -11.855149223292393
+    ],
+    [
+      8.464825137928996,
+      -22.622505240208753
+    ],
+    [
+      -5.470457624995182,
+      -28.556218464079798
+    ],
+    [
+      -22.92716422258172,
+      -34.145465189106396
+    ],
+    [
+      -42.76392863808083,
+      -38.07905035972993
+    ],
+    [
+      -61.123110690804744,
+      -39.06800256331368
+    ],
+    [
+      -78.46479590676941,
+      -38.53463508265821
+    ],
+    [
+      -92.46201325968886,
+      -36.590066142636935
+    ],
+    [
+      -105.16745202013327,
+      -33.60098588580569
+    ],
+    [
+      -118.86384422128786,
+      -29.167368702462433
+    ],
+    [
+      -131.7639345504011,
+      -23.411444639336235
+    ],
+    [
+      -145.12411040568747,
+      -17.06659398311789
+    ],
+    [
+      -157.5464196114187,
+      -9.121640884143632
+    ],
+    [
+      -168.84505839760905,
+      0.6123156393975477
+    ],
+    [
+      -178.86076638969303,
+      10.079588422611
+    ],
+    [
+      -189.5931460667714,
+      22.61372421959333
+    ],
+    [
+      -195.8750830583153,
+      30.992038396205377
+    ],
+    [
+      -201.75886911383853,
+      40.1926274390911
+    ],
+    [
+      -208.55397842286783,
+      53.56014992499235
+    ],
+    [
+      -214.5616336585388,
+      69.7278516851243
+    ],
+    [
+      -219.83492161200647,
+      86.4844800383484
+    ],
+    [
+      -224.922405795174,
+      104.36340246532008
+    ],
+    [
+      -236.1399957752754,
+      143.57344187433296
+    ]
+  ],
+  "raw_controls_old_uniform_scale": 0.998192,
+  "first_corner_raw_controls_xy_m": [
+    [
+      -465.77592151268504,
+      941.1700011660416
+    ],
+    [
+      -483.83553563063055,
+      1004.8543872903701
+    ],
+    [
+      -485.09192302900215,
+      1012.3437556656265
+    ],
+    [
+      -484.9857494460633,
+      1018.5219289837453
+    ],
+    [
+      -482.64993062093714,
+      1024.6445431902168
+    ],
+    [
+      -475.837125714699,
+      1031.5449849723811
+    ],
+    [
+      -469.1304943913997,
+      1036.2008386062607
+    ],
+    [
+      -381.13913751699846,
+      1101.8939333167289
+    ],
+    [
+      -367.22155035128316,
+      1110.8833977317236
+    ],
+    [
+      -362.29332654236674,
+      1113.4946760233538
+    ],
+    [
+      -356.89616940890846,
+      1115.3503503830027
+    ],
+    [
+      -348.1899356065084,
+      1116.7504400205128
+    ],
+    [
+      -336.61701506428795,
+      1115.3947976735835
+    ],
+    [
+      -292.99571095713037,
+      1105.042016671655
+    ]
+  ],
+  "rejected_first_corner_detour_way_ids": [
+    511858147,
+    363133191,
+    511858146
+  ],
+  "method": "Cubic Hermite through retained full Galp vertices and mapped approach/exit vertices, plus the FIA 2021 direct T1\u2013T2 connector 157736307. Endpoint tangents match the unchanged road outside the 4510\u2013330 m wrap and 1160\u20131500 m interval. Resample at approximately 1 m, then evaluate the native 32-sample float32 Catmull rule before deriving one uniform geographic scale.",
+  "reference_frames": [
+    {
+      "time_s": 666,
+      "sha256": "e15a6f0ebf2a5eaf6bb709578c45317e4f646b5827d590a723ca9f69e3fd0d4e"
+    },
+    {
+      "time_s": 667.5,
+      "sha256": "2ab69ec52e5f8b70abfeae436bdb9f3cf394b523a9457db691f07878c6ae54f9"
+    },
+    {
+      "time_s": 669,
+      "sha256": "872830268d149601a2fe38d11abc8ed9567bf39c83179b1956c87b6dede99659"
+    }
+  ],
+  "fia_map_sha256": "f9cd060266c222c9e6f00fa0d824dce6e8fb26e99a88bb7426842870787e5a9e",
+  "reference_observation": "Continuous lap5 HUD1:12.124\u21921:15.125 shows sustained rightward Galp at163\u2013173mph across all three frames; the FIA2021 map also shows the full bowed corner. The old alternate chord is nearly straight between two sharp direction changes.",
+  "primary_plan_url": "https://www.fia.com/sites/default/files/doc_1_-_2021_portuguese_grand_prix_-_circuit_map_1.pdf",
+  "operator_technical_url": "https://autodromodoalgarve.com/the-park/racing-track/",
+  "reference_file": "Saved/Refs/portugal.mp4",
+  "reference_sha256": "7135e58931b4ec979eb87d4f59180fe8da4e241607f694445af9a37fbb094973",
+  "T1_evidence": {
+    "primary_map_observation": "The FIA 2021 plan shows the direct northeast leg from the first right-hander to the next corner. The selected optional southeast S detour is absent. This is a route identity decision, not a choice made to match a desired length.",
+    "reviewed_frames": [
+      {
+        "time_s": 153.5,
+        "sha256": "8092c3a9927d1b507b3d47ba01df2000952c5a71ca7814fb404490c0f05c07db"
+      },
+      {
+        "time_s": 154.5,
+        "sha256": "06de6e1087ce7d0d76f8d37aea8f5decd415c79653890ddd28a6da56229159e1"
+      },
+      {
+        "time_s": 155,
+        "sha256": "3db0a0a8bb3b2279716f6ad416b58e8ac924b22b2a16d433ef86264ddf7ed53a"
+      },
+      {
+        "time_s": 156,
+        "sha256": "d8a90ca885e81d5f9052ebe1c9558cfa6aa7cb9fb0553326d19b2bc931241507"
+      },
+      {
+        "time_s": 158,
+        "sha256": "639c9f14c1dd1eed2626260df190aec4b45b77ac9bf345ba57de3a47cb09abd1"
+      },
+      {
+        "time_s": 160,
+        "sha256": "567d84a5712f0ffe0eec61c7af872a257da8164b18a6e49368708dabdd0a59a1"
+      },
+      {
+        "time_s": 161.5,
+        "sha256": "9e1f076a279a69ee2a00ae45ec0076fe3a0dee7601790a3065def4c0ee0e2346"
+      }
+    ],
+    "observation": "Same opening lap: approach at 153.5\u2013155 s, then first-right sequence and exit at 156\u2013161.5 s. The tiny minimap is supporting context, not a survey of the centerline."
+  }
+}

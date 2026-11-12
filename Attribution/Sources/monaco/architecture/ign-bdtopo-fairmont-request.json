@@ -1,0 +1,3 @@
+{
+  "url": "https://data.geopf.fr/wfs/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=BDTOPO_V3%3Abatiment&bbox=1056674.7108486588%2C6303286.781518334%2C1056806.243093634%2C6303505.618055437%2CEPSG%3A2154&count=200&outputFormat=application%2Fjson&srsName=EPSG%3A4326"
+}

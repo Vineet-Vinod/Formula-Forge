@@ -1,17 +1,17 @@
 {
   "recipe": "make circuit-assets CIRCUIT=jeddah",
-  "tiles": 140,
-  "triangles": 1056240,
-  "road_sha256": "488969c35ce5188455fe77bfe4f676a0e3d4743d4ff9000922f2bbaaab34186f",
-  "terrain_sha256": "a305b9d139a8c289c9fde6dbf9a646c874c3861a36917d818aeb4dbfb8431149",
+  "tiles": 141,
+  "triangles": 1034328,
+  "road_sha256": "d221dedd42a8b3e5299eb1dd7977e1d321202412434ee6096f272d250ae775e2",
+  "terrain_sha256": "a30c782d9e70e53575eaa3a1295d86b00eeca559983b25de642725c36fdfe647",
   "landmarks": [
     {
       "name": "Paved pit lane and working apron",
-      "start_m": 5830.0,
-      "end_m": 210.0,
-      "side": 1,
+      "start_m": 6009.0,
+      "end_m": 115.0,
+      "side": -1,
       "outer_offset_m": 13.0,
-      "source_note": "Authored Corniche garage frontage scene.pit_building(5830,210,+1) lies 13 m beyond road edge. Reference235/239/243/303s places the multi-level garage balconies on driver right and main stand left. Interval crosses native zero; width is the actual authored garage-front offset, not a surveyed pit-lane measurement.",
+      "source_note": "Direct forward frames 235/239/243 s place the four-storey pit and club building on driver LEFT, opposite the actual mapped 271 m RIGHT main stand 1154622779. F1/Tilke describes a 280 m, four-storey compound; the FIA 2025 pit plan shows 45 numbered bays and a central passage. The reconstructed 280 m garage frontage spans native 6009\u2192115 m across zero, with \u00b120 m endpoint uncertainty and its front 13 m beyond the road edge. Depth, height, exact garage-front offset and roof articulation are visual estimates, not surveyed dimensions. Paving remains outside the closed pit wall. See pit-facilities-review.json.",
       "access": "Visual service area outside the closed driving boundary."
     },
     {
@@ -34,7 +34,7 @@
     },
     {
       "name": "Reference event panels",
-      "start_m": 5830,
+      "start_m": 5290,
       "end_m": 6174,
       "side": 1,
       "material": "PanelGreen"
@@ -45,6 +45,27 @@
       "end_m": 200,
       "side": 1,
       "material": "PanelGreen"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 5290,
+      "end_m": 5900,
+      "side": -1,
+      "material": "PanelGreen"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 5900,
+      "end_m": 6174,
+      "side": -1,
+      "material": "PanelStc"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 0,
+      "end_m": 200,
+      "side": -1,
+      "material": "PanelStc"
     },
     {
       "name": "Reference event panels",
@@ -69,33 +90,65 @@
     },
     {
       "name": "Mapped coastal sea, lagoon and pier decks",
-      "water_area_m2": 3184070.053,
+      "water_area_m2": 3186946.108,
       "water_level_m": -0.3999675521591186,
       "mapped_piers": 7,
-      "water_removed_for_roads_buildings_piers_m2": 3947.226,
+      "water_removed_for_roads_buildings_piers_m2": 3950.792,
       "source": "coastal-water.json and coastal-provenance.json; original shoreline geometry, no game pixels.",
       "dimensions_status": "Water is flat in the registered native datum. Pier footprints are mapped; deck levels are estimated from retained shore ground with minimum 0.6 m freeboard. Water only excludes scenery terrain; no physical corridor or native road changes."
     },
     {
-      "name": "Authored grandstand",
-      "start_m": 5810,
-      "end_m": 6140,
-      "side": -1,
-      "rows": 22
+      "name": "Mapped spectator terrace",
+      "osm_id": 1154622779,
+      "roof": "cantilever",
+      "rows": 18,
+      "seat_material": "SeatBlue",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
     },
     {
-      "name": "Authored grandstand",
-      "start_m": 180,
-      "end_m": 360,
-      "side": -1,
-      "rows": 15
+      "name": "Mapped spectator terrace",
+      "osm_id": 1154622781,
+      "roof": "cantilever",
+      "rows": 16,
+      "seat_material": "SeatBlue",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
     },
     {
-      "name": "Authored pit building",
-      "start_m": 5830,
-      "end_m": 210,
-      "side": 1,
-      "height_m": 17
+      "name": "Mapped spectator terrace",
+      "osm_id": 1154622780,
+      "roof": "cantilever",
+      "rows": 16,
+      "seat_material": "SeatBlue",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+    },
+    {
+      "name": "Mapped spectator terrace",
+      "osm_id": 1154622782,
+      "roof": "cantilever",
+      "rows": 19,
+      "seat_material": "SeatBlue",
+      "structure": "Closed concrete treads and risers, end walls, sloping soffit, grounded braced rear columns and two-sided roof soffit."
+    },
+    {
+      "name": "Jeddah 280 m four-storey pit and team compound",
+      "start_m": 6009.0,
+      "end_m": 115.0,
+      "side": -1,
+      "length_m": 280,
+      "levels": 4,
+      "garage_bays": 45,
+      "body_height_estimate_m": 18.4,
+      "source_note": "Primary F1/Tilke description gives 280 m and four storeys. FIA 2025 pit plan shows 45 numbered bays and a central service break. Direct forward 235/239/243 s puts the glazed garage/club building LEFT and open crowd stand RIGHT. Placement is opposite the actual 271 m main-stand footprint, with \u00b120 m longitudinal uncertainty. Depth, floor heights, canopy slopes and terrace details are reconstructed estimates. The prior 554 m/right-side generic compound is removed."
+    },
+    {
+      "name": "FIA-photo registered T27 outfield pavilion",
+      "center_latitude": 21.6251343,
+      "center_longitude": 39.1069061,
+      "length_estimate_m": 85,
+      "depth_estimate_m": 20,
+      "height_estimate_m": 10.7,
+      "position_uncertainty_m": 20,
+      "source_note": "FIA 2025 event notes page 5 locates the T27 outfield staging area at 21\u00b037\u203229.3\u2033N, 39\u00b006\u203223.7\u2033E and photographs the actual two-level framed pavilion beside the race fence. Supplied 289\u2013293 s shows the same pale/glazed corner context before the main-straight exit. The footprint is a reconstruction about 33 m east and 37 m north of that staging control, not an OSM building or survey. Dimensions and current glazing follow the direct visual baseline; the FIA preparation photo shows its exposed frame."
     },
     {
       "name": "Diamond Tower construction state",
@@ -103,8 +156,8 @@
       "planned_height_m": 432.0,
       "rendered_construction_envelope_m": 300.0,
       "visual_height_uncertainty_m": 80.0,
-      "base_z_m": 3.2402936476608333,
-      "adjacent_road_station_m": 1878.8171012753864,
+      "base_z_m": 3.2414325320909247,
+      "adjacent_road_station_m": 1878.6968690791568,
       "state": "Exposed concrete core, open floorplates and columns, partial upper formwork and tower crane; no completed glazing.",
       "reference": "Jeddah165s wider silhouette and323s cropped close construction view.",
       "registration": "Mapped footprint retained.300m is a coarse scene estimate from the wider view, not a measured built height.432m/93levels in stale OSM describe the planned tower and are not asserted as its observed completed state. Footprint corner ground2.41\u20133.24m agrees with adjacent road3.24m; use road/site datum rather than adding height to a DSM roof."
@@ -130,7 +183,7 @@
     {
       "name": "Mapped footprint clearance",
       "osm_id": 1257884698,
-      "footprint_clip_m2": 381.85,
+      "footprint_clip_m2": 381.81,
       "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
     },
     {
@@ -142,7 +195,7 @@
     {
       "name": "Mapped footprint clearance",
       "osm_id": 1257884705,
-      "footprint_clip_m2": 759.96,
+      "footprint_clip_m2": 760.64,
       "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
     },
     {
@@ -165,6 +218,14 @@
     }
   ],
   "vegetation": [
+    {
+      "type": "T27 outfield broadleaf belt",
+      "start_m": 5260,
+      "end_m": 5550,
+      "side": 1,
+      "count": 10,
+      "placement": "Direct 289\u2013292 s shows mature crowns behind the final-corner pavilion and outside wall. Individual positions are estimated; roots avoid the pavilion, all race arms and water."
+    },
     {
       "type": "palms",
       "start_m": 400,

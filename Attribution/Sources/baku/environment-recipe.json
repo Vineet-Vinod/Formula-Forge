@@ -6232,5 +6232,6 @@
       }
     ],
     "reference_review_targets": "build/reviews/coastal-water-review-targets.json"
-  }
+  },
+  "oldcity_architecture_correction_20261112": "oldcity-architecture-correction.json"
 }

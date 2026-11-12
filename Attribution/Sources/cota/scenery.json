@@ -1,9 +1,9 @@
 {
   "recipe": "make circuit-assets CIRCUIT=cota",
   "tiles": 167,
-  "triangles": 866303,
-  "road_sha256": "0e6c2f6c97ec505c75a93a66712ed75b53baec84d8c8d66d34f5378438d5a298",
-  "terrain_sha256": "4bdab515c5a634890eb2d0fb24349f7ba8d3d535db63820503a913fecc4992ce",
+  "triangles": 870708,
+  "road_sha256": "f408ad7e01162624a3d911225abc3ed27f04f8b5ab6ff0688d5e75d06dec0c23",
+  "terrain_sha256": "c9c0a1c53aaafed665cbfefb341340b6476df40e7621da732aecb033cfabf564",
   "landmarks": [
     {
       "name": "Paved pit lane and working apron",
@@ -18,7 +18,7 @@
       "name": "T15 red paved inner cap",
       "start_m": 4120,
       "end_m": 4206,
-      "area_m2": 655.095,
+      "area_m2": 654.415,
       "side": -1,
       "source": "Supplied reference158.70s and161\u2013164s; IMSA2024aerial establishes rounded peninsula boundary, later clip establishes red paved cap.",
       "registration": "Inside kerb-following head of peninsula; upstream chord and exact extent reconstructed, not surveyed. Star remains at4153m/left13m."
@@ -105,7 +105,7 @@
       "name": "Mapped main grandstand with cantilever canopy",
       "osm_id": 460658889,
       "roof_osm_id": 376713393,
-      "dimensions_status": "Actual seating/support footprints retained; rear support outline projects16m toward seating without extending the uncovered longitudinal end. Roof16\u201318m above road, open trusses and underside reconstructed from supplied paint-detail-03, not surveyed dimensions."
+      "dimensions_status": "Actual seating/support footprints retained; rear lounge outline projects16m over the rear seating without extending the uncovered longitudinal end. White tensile fabric has repeating shallow saddle/scalloped bays and a pale underside, replacing the opaque concrete slab. Roof15.2\u201318m above road,0.8m leading-edge scallop,0.45m interior sag and approximately10m bays are reference-estimated; retained estimated16m reach is unchanged. Original geometry from supplied paint-detail-03 and Walter P Moore structural project description, not a surveyed membrane shape."
     },
     {
       "name": "Mapped spectator terrace",
@@ -167,6 +167,13 @@
       "osm_id": 7911006730,
       "height_m": 76.5,
       "dimensions_status": "Mapped OSM position/height corroborated by official251ft; platform/veil widths reconstructed from operator photographs."
+    },
+    {
+      "name": "Observation tower measured-plan deck",
+      "gross_plan_area_m2": 126.53394047999998,
+      "public_viewing_area_m2": 83.61273600000001,
+      "source": "Mir\u00f3 Rivera architect press kit, Viewing Deck Plan p14 and Building Details p20",
+      "dimensions_status": "Rounded tapered outline digitized from the primary16ft-scale plan, constrained to the architect1362sqft total observation deck/core area. The separately published900sqft is the visitor viewing portion, not the full footprint. Replaces180m\u00b2 rectangle while retaining original tower position, orientation,69.4m slab top,70.7m rail top and76.5m veil peak. Original plan scale/trace uncertainty approximately0.25m."
     }
   ],
   "vegetation": [

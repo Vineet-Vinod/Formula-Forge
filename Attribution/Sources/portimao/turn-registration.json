@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "circuit": "portimao",
+  "date": "2026-11-12",
+  "source": "FIA 2021 Portuguese GP numbered circuit map, retained official-map.png; sequential geographic registration to corrected full Galp + direct T1 layout.",
+  "source_url": "https://www.fia.com/sites/default/files/doc_1_-_2021_portuguese_grand_prix_-_circuit_map_1.pdf",
+  "road_sha256": "a9c30fd466deb5637ff6b91ef4a248e0aa662f5d9b9b7d8a709121aa6a697453",
+  "method": "Approximate official corner labels registered by ordered corrected plan-space bends, not counting each interpolated curvature peak as a separate turn. Source map labels are schematic, not apex surveys.",
+  "turns": [
+    {
+      "official_turn": 1,
+      "native_station_m": 1281,
+      "direction": "right",
+      "station_uncertainty_m": 30
+    },
+    {
+      "official_turn": 2,
+      "native_station_m": 1438,
+      "direction": "right",
+      "station_uncertainty_m": 30
+    },
+    {
+      "official_turn": 3,
+      "native_station_m": 1600,
+      "direction": "right",
+      "station_uncertainty_m": 30
+    },
+    {
+      "official_turn": 4,
+      "native_station_m": 1758,
+      "direction": "left",
+      "station_uncertainty_m": 30
+    },
+    {
+      "official_turn": 5,
+      "native_station_m": 2334,
+      "direction": "left",
+      "station_uncertainty_m": 30
+    },
+    {
+      "official_turn": 6,
+      "native_station_m": 2542,
+      "direction": "left",
+      "station_uncertainty_m": 50
+    },
+    {
+      "official_turn": 7,
+      "native_station_m": 2806,
+      "direction": "right",
+      "station_uncertainty_m": 30
+    },
+    {
+      "official_turn": 8,
+      "native_station_m": 2942,
+      "direction": "right",
+      "station_uncertainty_m": 30
+    },
+    {
+      "official_turn": 9,
+      "native_station_m": 3271,
+      "direction": "left",
+      "station_uncertainty_m": 50
+    },
+    {
+      "official_turn": 10,
+      "native_station_m": 3543,
+      "direction": "right",
+      "station_uncertainty_m": 30
+    },
+    {
+      "official_turn": 11,
+      "native_station_m": 3631,
+      "direction": "right",
+      "station_uncertainty_m": 30
+    },
+    {
+      "official_turn": 12,
+      "native_station_m": 3871,
+      "direction": "left",
+      "station_uncertainty_m": 30
+    },
+    {
+      "official_turn": 13,
+      "native_station_m": 4048,
+      "direction": "left",
+      "station_uncertainty_m": 30
+    },
+    {
+      "official_turn": 14,
+      "native_station_m": 4330,
+      "direction": "right",
+      "station_uncertainty_m": 80
+    },
+    {
+      "official_turn": 15,
+      "native_station_m": 75.69,
+      "direction": "right",
+      "station_uncertainty_m": 40
+    }
+  ],
+  "notes": [
+    "The false optional T1 S-detour previously contributed a spurious left turn near old native1326m. It is excluded.",
+    "T6, T9 and T14 each contain more than one local curvature maximum but retain a single official corner number. T14 spans approximately4230\u20134410m.",
+    "T15 is the actual broad Galp right arc across nativezero, approximately4608\u2192194m; no generic curvaturepeak inside that span creates a new official corner.",
+    "Nine right turns and six left turns. Runtime validation remains pending."
+  ],
+  "primary_pdf_sha256": "f9cd060266c222c9e6f00fa0d824dce6e8fb26e99a88bb7426842870787e5a9e"
+}

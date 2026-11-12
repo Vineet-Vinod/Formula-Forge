@@ -19,6 +19,7 @@ PALETTE = {
     "Red": (0.65, 0.035, 0.025),
     "Black": (0.012, 0.015, 0.018),
     "Steel": (0.38, 0.41, 0.42),
+    "FlyerSteel": (0.14, 0.15, 0.16),
     "Cream": (0.63, 0.58, 0.46),
     "CanopyFabric": (0.78, 0.78, 0.74),
     "Roof": (0.14, 0.15, 0.16),
@@ -169,6 +170,14 @@ class Importer:
                 )
                 EDIT.set_material_instance_scalar_parameter_value(material, "Roughness", 1.0)
                 EDIT.set_material_instance_scalar_parameter_value(material, "NormalStrength", 0.12 if name == "Limestone" else 0.08)
+            if self.slug == "baku" and name == "BakuStone" and isinstance(
+                material, unreal.MaterialInstanceConstant
+            ):
+                EDIT.set_material_instance_vector_parameter_value(
+                    material, "Tint", unreal.LinearColor(0.70, 0.62, 0.49)
+                )
+                EDIT.set_material_instance_scalar_parameter_value(material, "Roughness", 0.9)
+                EDIT.set_material_instance_scalar_parameter_value(material, "NormalStrength", 0.12)
             ground_tints = {
                 "cota": (1.4, 1.08, 0.55),
                 "portimao": (1.65, 1.25, 0.65),
@@ -203,10 +212,12 @@ class Importer:
             == self.material_hash
         ):
             return existing
-        if self.slug == "monaco" and name in ("Limestone", "Terracotta", "MonacoShutter"):
+        if (self.slug == "monaco" and name in ("Limestone", "Terracotta", "MonacoShutter")) or (
+            self.slug == "baku" and name == "BakuStone"
+        ):
             source = unreal.load_asset(SOURCES["Concrete"])
             if source is None:
-                raise RuntimeError("Missing accepted Concrete source for Monaco limestone")
+                raise RuntimeError(f"Missing accepted Concrete source for {self.slug} masonry")
             return self.copy(name, source)
         if name in SOURCES:
             source = unreal.load_asset(SOURCES[name])
@@ -232,6 +243,10 @@ class Importer:
             EDIT.connect_material_property(
                 color, "", unreal.MaterialProperty.MP_BASE_COLOR
             )
+            if self.slug == "singapore" and name == "FlyerSteel":
+                metal = EDIT.create_material_expression(material, unreal.MaterialExpressionConstant)
+                metal.r = 0.65
+                EDIT.connect_material_property(metal, "", unreal.MaterialProperty.MP_METALLIC)
             roughness = EDIT.create_material_expression(
                 material, unreal.MaterialExpressionConstant
             )
@@ -255,7 +270,7 @@ class Importer:
             EDIT.connect_material_property(
                 sample, "RGB", unreal.MaterialProperty.MP_BASE_COLOR
             )
-            if name in ("GroundPirelli", "GroundMSC"):
+            if name in ("GroundPirelli", "GroundMSC", "GroundAlgarve"):
                 roughness = EDIT.create_material_expression(material, unreal.MaterialExpressionConstant)
                 roughness.r = 0.7
                 EDIT.connect_material_property(roughness, "", unreal.MaterialProperty.MP_ROUGHNESS)
