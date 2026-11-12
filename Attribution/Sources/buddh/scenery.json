@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=buddh",
   "tiles": 164,
-  "triangles": 1359611,
+  "triangles": 1362607,
   "road_sha256": "0576dd77ac95f42d6290346aeba16a9077766f7e6553b85105e3b5064a00bfb5",
   "terrain_sha256": "ab3043ed90befa8c289f8f9ee94c3b328644e64ca7bffef1e69c729fe19b3313",
   "landmarks": [

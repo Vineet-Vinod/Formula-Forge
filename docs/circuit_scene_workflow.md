@@ -86,6 +86,25 @@ left the downhill end in the air. Model graded garage bays and clip roofs to the
 mapped footprint. Use the reference or a primary photograph to distinguish a
 garage row from a spectator stand or office block.
 
+Check seating against actual emitted terrain after cutouts and ground parcels.
+Roof-containing DSMs buried Turkey and Hockenheim seats by several metres while
+the canopy remained visible. A raw-height probe alone can also falsely report
+burial where terrain is excluded. Reconstruct only supported occupied parcels;
+preserve genuine hills, neighbouring buildings and clear stands. Move guessed
+seating onto its actual footprint instead of erasing a conflicting building.
+
+Query `building:part` as well as whole buildings. Singapore's shopping-centre
+outline omitted three major towers. Retain total height, `min_height`, levels
+and podium datum: a 226 m tower above a 30 m podium does not become 256 m tall.
+Elevated roads and pedestrian bridges also need their own decks and supports;
+their surface-model heights are not evidence of solid earth beneath them.
+
+Judge foliage at its projected size throughout the route. A 65 m detail cutoff
+left almost every Austrian ridge made from sparse suspended crowns. Preserve
+mapped clearings and use grounded stems, coherent crowns and sufficient detail
+range. Partition dense geometry into bounded native tiles rather than replacing
+conspicuous trees with inadequate silhouettes to meet an arbitrary count.
+
 Inspect tight inside corners for folded offsets. Albert Park's T3 produced
 overlapping grass faces and a detached white edge stripe even though the native
 lap passed. Trace suspicious pixels to their source triangles before changing
@@ -229,6 +248,12 @@ and asset revision. Reopen that image before changing geometry: a stale capture
 or swapped filename can turn a valid bridge into a reported obstruction elsewhere.
 Measure projected visibility when needed. A grounded eleven-metre marking can
 be only a few pixels tall in a distant, low cockpit view.
+
+Trace dark regions before changing terrain or lighting. Austria's black wedge
+was a verge projected onto the wrong part of a rising bend; genuinely separate
+branches still needed anchoring. Spa's dark bank was present, unoccluded and
+grazing the sun. Compare the actual hit geometry and barycentrically interpolated
+normals; a single vertex normal is not the normal at the camera-ray hit.
 
 The packaged executable opens the menu by default. For an unattended driving
 capture, explicitly open the existing review level with the trial game mode:

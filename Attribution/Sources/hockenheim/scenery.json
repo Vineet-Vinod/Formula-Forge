@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=hockenheim",
   "tiles": 152,
-  "triangles": 1095417,
+  "triangles": 1138680,
   "road_sha256": "675b66da724eeba83b45910b5fb75526bb60c29a25e86b038ad9d24bde69b289",
   "terrain_sha256": "d1ac435fcadfa6cf28b567d770c62b6e97e01f14e1dfdd0218ea1d54814c04da",
   "landmarks": [
@@ -105,6 +105,12 @@
       "dimensions_status": "Mapped footprint; foundation tied to adjacent racing-road level to avoid DSM roof-on-roof. Height/facade/roof reconstructed unless source tags supply height."
     },
     {
+      "name": "Hockenheim occupied grandstand foundations and forecourts",
+      "osm_ids": "34400164, 34400180, 34400189, 232009789, 232009793",
+      "ground_area_m2": 43111.768156904334,
+      "source_note": "Only the actual Nordtribuene footprint and the three authored main/Sued seating ribbons with their protected forecourts receive inferred ground beneath exposed terraces. Retained GLO30 DSM roof/terrace mounds buried actual seat meshes by 3.95\u20139.01m. Adjacent native road-plane anchors estimate substructure ground; this is not a bare-earth survey. Actual roads, shoulders, escape paving, unrelated buildings, the two clear stands and outer berms are excluded. The guessed Nord230\u2013430 seating overlapped service footprints532896900/901; actual footprint-clipped Nord seating replaces it, leaving both service footprints unchanged. Retained mapped owners register the stand complexes; seating/setback dimensions remain reference reconstructions."
+    },
+    {
       "name": "Authored grandstand",
       "start_m": 0,
       "end_m": 180,
@@ -119,11 +125,16 @@
       "rows": 28
     },
     {
-      "name": "Authored grandstand",
-      "start_m": 230,
-      "end_m": 430,
-      "side": -1,
-      "rows": 24
+      "name": "Nordtrib\u00fcne",
+      "osm_id": 232009789,
+      "roof": "flat",
+      "rows": 24,
+      "seat_material": "SeatRed",
+      "structure": "Footprint-clipped curved terraces on local front-edge ground; road-facing boundary chains and inward rows retain the mapped grass interior.",
+      "boundary_chains": 1,
+      "bays": 62,
+      "max_foundation_height_m": 15.829501464984913,
+      "tensile_roof_bays": 0
     },
     {
       "name": "Authored grandstand",

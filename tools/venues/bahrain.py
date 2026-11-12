@@ -6,6 +6,7 @@ import math
 
 from circuit_mesh import add
 from circuit_scene import CircuitScene
+from shapely.geometry import Polygon
 
 from venues.east_architecture import cylinder, footprint_stand, frame, mapped, trees
 from venues.east_paint import apron_fan
@@ -37,7 +38,7 @@ def circuit_edges(scene: CircuitScene) -> None:
         (1460, 1810, 1, 8, "RunoffBlue"),
         (1940, 2100, -1, 15, "RunoffBlue"),
         (2370, 2580, 1, 16, "RunoffBlue"),
-        (3130, 3320, 1, 14, "RunoffGreen"),
+        (3130, 3320, 1, 14, "RunoffBlue"),
         (3820, 3950, -1, 10, "RunoffBlue"),
         (4590, 4810, -1, 16, "RunoffBlue"),
     ):
@@ -63,6 +64,34 @@ def circuit_edges(scene: CircuitScene) -> None:
 
     apron_fan(scene, 4630, 4760, -1, 5.0, 15.8, "Cream")
     apron_band(scene, 3825, 3940, -1, 0.2, 3.2, "RunoffBlue")
+    t11_painted_island(scene)
+
+
+def t11_painted_island(scene: CircuitScene) -> None:
+    apron_band(scene, 3165, 3290, 1, 1.4, 4.0, "Cream")
+    for station in range(3165, 3290, 2):
+        a, b = scene.at(station), scene.at(min(3290, station + 2))
+        shape = Polygon([
+            a.point(-a.half_width - 1.4)[:2],
+            b.point(-b.half_width - 1.4)[:2],
+            b.point(-b.half_width - 11.4)[:2],
+            a.point(-a.half_width - 11.4)[:2],
+        ]).intersection(scene.corridor_mask).difference(scene.road_mask)
+        scene.terrain_cutouts.append(shape)
+        scene.polygon_surface(shape, "Cream", lift=.002, sample=a, paved=True)
+        blue = Polygon([
+            a.point(-a.half_width - 1.4)[:2],
+            b.point(-b.half_width - 1.4)[:2],
+            b.point(-b.half_width - 5.4)[:2],
+            a.point(-a.half_width - 5.4)[:2],
+        ]).intersection(shape)
+        scene.paint_surface(blue, "RunoffBlue", lift=.007)
+    scene.surface_ranges.append({
+        "type": "Bahrain T11 blue and cream paving", "start_m": 3165,
+        "end_m": 3290, "inside_side": -1, "outer_side": 1,
+        "inside_blue_band_estimate_m": 4.0,
+        "source_note": "Continuous supplied 109.8/110/110.2 s shows blue paint on the pale inner island and blue/cream paving outside T11. Estimated inner island reach 11.4 m and blue band 1.4–5.4 m are clipped to the existing physical corridor. The outer apron retains its original extent. Native road, protection and driving surfaces are unchanged.",
+    })
 
 
 def build_venue(scene: CircuitScene) -> None:

@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=bahrain",
   "tiles": 122,
-  "triangles": 977668,
+  "triangles": 979535,
   "road_sha256": "d43084a3c02ec2b31078513579b786fb0871a85abce6e307d8f1d90ecd691537",
   "terrain_sha256": "f69faf963f7720346c494bbe4240ffc8d95c00493b77f8cfd92084bf65d94407",
   "landmarks": [

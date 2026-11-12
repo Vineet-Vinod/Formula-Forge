@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "circuit": "singapore",
+  "status": "Source correction only. Fresh packaged views remain required.",
+  "source_snapshot": {
+    "file": "stamford-context.osm.json.gz",
+    "sha256": "c8747387832a320412dc26a299c14a5d0208a5e3bfe01532904dcb017821cb2a",
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=103.8520,1.2920,103.8542,1.2944",
+    "retrieved_utc_date": "2026-11-12",
+    "provider": "OpenStreetMap contributors",
+    "license": "ODbL 1.0",
+    "retained_way_versions": [
+      {
+        "id": "39487263",
+        "version": "28",
+        "timestamp": "2022-01-23T07:27:23Z",
+        "changeset": "116489060"
+      },
+      {
+        "id": "172364973",
+        "version": "15",
+        "timestamp": "2023-09-22T07:20:14Z",
+        "changeset": "141590338"
+      },
+      {
+        "id": "172364974",
+        "version": "12",
+        "timestamp": "2021-05-04T07:20:41Z",
+        "changeset": "104101859"
+      },
+      {
+        "id": "172364975",
+        "version": "22",
+        "timestamp": "2023-10-17T17:24:04Z",
+        "changeset": "142722692"
+      },
+      {
+        "id": "460428718",
+        "version": "13",
+        "timestamp": "2026-05-04T14:24:09Z",
+        "changeset": "182208280"
+      }
+    ],
+    "selection": "Actual Raffles City mall and three building-part rings, plus War Memorial Park. Only selected geometry/tags are retained; reference video and owner photos are not shipped."
+  },
+  "primary_sources": [
+    {
+      "title": "Swiss\u00f4tel The Stamford owner 2023 factsheet",
+      "url": "https://downloads.swissotel.com/pdf/sts-swissotel-the-stamford-factsheet-2023/",
+      "supports": "226 m and 73 floors; balcony rooms. These owner dimensions agree with retained height and level tags."
+    },
+    {
+      "title": "Swiss\u00f4tel owner exterior photograph",
+      "url": "https://www.swissotel.com/assets/0/92/2119/3396/3435/3437/6442451796/f3c9833b-0553-4ce6-943c-94eb6f13f730.jpg",
+      "supports": "Curved balcony grid, flatter service rear, glazed upper crown, pale cap, lower Fairmont wings and rectangular office tower. Geometry is reconstructed; pixels are not used as textures."
+    },
+    {
+      "title": "Swiss\u00f4tel SKAI bar",
+      "url": "https://www.swissotel.com/hotels/singapore-stamford/bars/skai-bar/",
+      "supports": "Level 70 upper venue, consistent with the glazed crown location."
+    },
+    {
+      "title": "Singapore GP 2025 Circuit Park Map",
+      "url": "https://storage.singaporegp.sg/web/2025/circuit-park-map/circuit-park-map.pdf",
+      "supports": "Stamford Grandstand on driver RIGHT between T7 and T8 beside War Memorial Park. The map explicitly is not drawn to scale."
+    },
+    {
+      "title": "Singapore GP Stamford Grandstand ticket page",
+      "url": "https://singaporegp.sg/en/tickets/general-tickets/grandstands/stamford-grandstand/",
+      "supports": "Grandstand identity and T7\u2013T8 location."
+    }
+  ],
+  "direct_reference_registration": {
+    "continuous_video_seconds": [
+      632,
+      634,
+      636,
+      638,
+      640,
+      641
+    ],
+    "identity": [
+      "632 s: left T7",
+      "634\u2013636 s: T7 exit and forward straight, Stamford spectators on RIGHT",
+      "638 s: right T8",
+      "640\u2013641 s: forward cockpit view toward T9, Swiss\u00f4tel ahead/right"
+    ],
+    "camera": "Forward cockpit and car ahead, not a rear camera. Tower is at +6.8\u00b0/+7.8\u00b0 horizontal bearing from current native 1950/2000 m. Exact video-to-native pose remains a landmark estimate, approximately \u00b140\u201360 m.",
+    "cut": "642 s cuts from the prior 44.3 s lap clock to 1:01.1 at Anderson Bridge. Never interpolate station across that cut. The separate continuous 675\u2013681 s T11/T12 sequence remains valid.",
+    "fresh_runtime_targets_m": [
+      1800,
+      1850,
+      1950,
+      2000,
+      2080
+    ]
+  },
+  "previous_defect": {
+    "missing_parts": [
+      172364973,
+      172364974,
+      172364975
+    ],
+    "proof": "Current generated mesh under the Swiss\u00f4tel ring contained only the approximately 32.19 m mall roof and low terrain. No 226 m tower was present. All old stands were at least 105 m from the expected near-side Stamford region; no existing stand geometry covered it."
+  },
+  "tower_controls": [
+    {
+      "osm_id": 172364975,
+      "name": "Swiss\u00f4tel The Stamford",
+      "height_m": 226,
+      "levels": 73,
+      "minimum_height_m": 30,
+      "minimum_level": 4,
+      "room_floor_count": 65,
+      "crown_floor_count": 4,
+      "crown_height_estimate_m": 12,
+      "curved_front": "The first twelve mapped points are resampled at about 2 m spacing by angular/radial interpolation about their fitted circle. Maximum departure from the original coarse mapped chords is 0.515 m. Flat rear edges are unchanged. This is a rounded architectural reconstruction within approximately 1 m map uncertainty, not a surveyed circular footprint."
+    },
+    {
+      "osm_id": 172364973,
+      "name": "Fairmont Singapore",
+      "height_m": 88,
+      "levels": 26,
+      "minimum_height_m": 30,
+      "minimum_level": 4,
+      "geometry": "Actual multi-wing mapped part, with recessed windows and balcony bands. No bounding rectangle replaces its concavities."
+    },
+    {
+      "osm_id": 172364974,
+      "name": "Raffles City Tower",
+      "height_m": 158,
+      "levels": 42,
+      "minimum_height_m": 30,
+      "minimum_level": 4,
+      "geometry": "Actual chamfered mapped office outline with dark glazing and gray horizontal/vertical framing."
+    }
+  ],
+  "podium": {
+    "osm_id": 39487263,
+    "height_m": 30,
+    "levels": 4,
+    "foundation_datum_m": 2.1899656679128414,
+    "roof_datum_m": 32.18996566791284,
+    "method": "Use the existing mall facade foundation: minimum existing ground at its retained ring. All three part heights are total heights above this same ground datum. Upper structures start at min_height 30 m, rather than adding 226/88/158 m above the podium. Existing raw DSM at the Swiss\u00f4tel center is approximately 10.15 m and is not used as a second foundation.",
+    "height_uncertainty_m": 1,
+    "terrain_treatment": "No district flattening. The existing mall remains intact and encloses its original occupied terrain; only the temporary stand footprint gets an adjacent-road-level pad."
+  },
+  "facade_estimates": {
+    "hotel_glass_recess_m": 0.9,
+    "office_glass_recess_m": 0.28,
+    "hotel_bay_spacing_m": 3.1,
+    "office_bay_spacing_m": 4.0,
+    "horizontal_band_thickness_m": [
+      0.18,
+      0.24
+    ],
+    "note": "Bay rhythm, crown heights and glazing distribution are reconstructed from owner exterior and supplied night views. Existing White/Concrete/Glass/WarmGlass materials are used. No new importer/material behavior."
+  },
+  "temporary_stand": {
+    "name": "Stamford Grandstand",
+    "native_range_estimate_m": [
+      1765,
+      1870
+    ],
+    "side": 1,
+    "axis_anchor_m": 1818,
+    "length_estimate_m": 105,
+    "length_uncertainty_m": 25,
+    "depth_estimate_m": 16.2,
+    "depth_uncertainty_m": 4,
+    "rows_estimate": 18,
+    "front_offset_from_road_edge_m": 10,
+    "roofed": false,
+    "foundation_level_m": 2.1107810582793523,
+    "foundation_method": "Adjacent canonical road at the two estimated ends, averaged and raised 0.12 m. Only the exact 1701 m\u00b2 occupied terrace pad replaces DSM vegetation relief. This temporary stand footprint is estimated from primary event-map location and direct forward reference, not an OSM building survey.",
+    "whole_road_clearance_m": 9.849265591748035,
+    "vegetation": "The existing tree lattice, heights and seeds in 1390.38\u20131948.27 m are retained, excluding roots within 2 m of this stand. No additional tree rows are invented."
+  },
+  "physical_changes": "None. Road XYZ, width, elevation, banking, camera, driving surfaces, barriers and pit profile remain unchanged.",
+  "proofs": [
+    "build/reviews/resume-20261112/singapore-stamford-source-proof.json",
+    "build/reviews/resume-20261112/singapore-stamford-mesh-audit.json",
+    "build/reviews/resume-20261112/singapore-stamford-stand-audit.json"
+  ],
+  "runtime_approval": false
+}

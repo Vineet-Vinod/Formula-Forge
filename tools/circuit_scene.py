@@ -339,15 +339,23 @@ class CircuitScene(MeshScene):
     ) -> None:
         for triangle in constrained_delaunay_triangles(shape).geoms:
             points: list[Point] = []
+            joined_ground = True
             for x, y in list(triangle.exterior.coords)[:3]:
                 if sample:
                     branch, _ = self.nearest(x, y)
                     gap = abs(branch.station - sample.station)
-                    if min(gap, self.length - gap) > 20:
+                    gap = min(gap, self.length - gap)
+                    chord = math.hypot(branch.x - sample.x, branch.y - sample.y)
+                    separate_branch = gap > 20 and gap > 2 * chord
+                    if separate_branch:
                         along = (x - sample.x) * sample.tx + (y - sample.y) * sample.ty
                         branch = self.at(sample.station + along)
-                    lane = (x - branch.x) * branch.ty - (y - branch.y) * branch.tx
-                    z = branch.z + branch.bank * lane
+                    if smooth_ground and not separate_branch:
+                        z = self.ground(x, y)
+                    else:
+                        lane = (x - branch.x) * branch.ty - (y - branch.y) * branch.tx
+                        z = branch.z + branch.bank * lane - (0.015 if smooth_ground else 0.0)
+                        joined_ground = False
                 else:
                     z = self.ground(x, y)
                 points.append((x, y, z + lift))
@@ -365,7 +373,7 @@ class CircuitScene(MeshScene):
                 points[2],
                 tuple((p[0] / 8, p[1] / 8) for p in points),
                 tuple(self._ground_normal(p[0], p[1]) for p in points)
-                if smooth_ground and sample is None
+                if smooth_ground and joined_ground
                 else None,
             )
 
@@ -626,9 +634,9 @@ class CircuitScene(MeshScene):
             self.polygon_surface(
                 shape if upper_deck else shape.difference(exclusions),
                 verge_material,
-                -0.015,
+                -0.015 if upper_deck else 0.0,
                 sample,
-                smooth_ground=True,
+                smooth_ground=not upper_deck,
             )
         self.corridor_mask = unary_union([self.corridor_mask, *self.extra_corridors])
         ground_corridor = (

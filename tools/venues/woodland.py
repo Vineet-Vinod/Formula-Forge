@@ -6,6 +6,7 @@ import math
 import random
 
 from circuit_dataclasses import Point
+from circuit_mesh import add
 from circuit_scene import CircuitScene
 from pydantic import TypeAdapter
 from shapely.geometry import Point as ShapePoint
@@ -13,7 +14,6 @@ from shapely.geometry import Polygon, box
 from shapely.geometry.base import BaseGeometry
 from shapely.ops import unary_union
 
-from venues.west_architecture import conifer
 from venues.woodland_dataclasses import WoodlandPatch
 
 
@@ -74,22 +74,26 @@ def mapped_woodland(scene: CircuitScene, clearings: tuple[BaseGeometry, ...] = (
                     continue
                 distance = scene.nearest(px, py)[1]
                 edge = shape.boundary.distance(position)
-                height = min(rng.uniform(17, 28), max(12, edge * 2.1))
+                height = rng.uniform(17, 28)
                 base = (px, py, scene.ground(px, py))
                 fraction = 1. if record.leaf_type == 'needleleaved' else 0. if record.leaf_type == 'broadleaved' else .65 if scene.slug == 'austria' else .5
                 needle = rng.random() < fraction
                 seed = count * 137 + 941
-                if distance < 65:
-                    if needle:
-                        conifer(scene, base, height, seed)
-                    else:
-                        scene.broadleaf(base, height, seed)
-                    detailed += 1
+                height *= random.Random(seed + 1709).uniform(.88, 1.08)
+                if not needle:
+                    height = min(height, edge * 2.3)
+                near = distance < 250
+                if needle:
+                    needleleaf_tree(scene, base, height, seed, near, edge * .96)
+                elif near:
+                    scene.broadleaf(base, height, seed)
                 else:
-                    distant_crown(scene, base, height, seed, needle)
+                    distant_broadleaf(scene, base, height, seed)
+                detailed += int(near)
                 count += 1
                 needles += int(needle)
-                minimum_clearance = min(minimum_clearance, scene.corridor_mask.distance(position) - height * .42)
+                crown_radius = min(height * .42, edge * .96)
+                minimum_clearance = min(minimum_clearance, scene.corridor_mask.distance(position) - crown_radius)
                 x += spacing
             y += spacing
     scene.vegetation.append({'name': 'Mapped continuous woodland',
@@ -98,29 +102,64 @@ def mapped_woodland(scene: CircuitScene, clearings: tuple[BaseGeometry, ...] = (
                              'reconstructed_trees': count, 'detailed_edge_trees': detailed,
                              'needleleaf_trees': needles,
                              'minimum_crown_clearance_from_corridor_m': minimum_clearance,
-                             'placement_status': 'Actual OSM forest/wood polygons and holes, clipped to retained classified-ground coverage. Roads, protection, aprons, buildings and water excluded. Tree positions, 12–28m edge/interior heights and mixed proportions where untagged are original reference-guided estimates; distant layered foliage preserves canopy continuity without extending woodland into mapped clearings.'})
+                             'detailed_range_m': 250,
+                             'placement_status': 'Actual OSM forest/wood polygons and holes, clipped to retained classified-ground coverage. Roads, protection, aprons, buildings and water excluded. Tree positions, approximately 10–31 m edge/interior heights and mixed proportions where untagged are original reference-guided estimates; grounded layered crowns preserve canopy continuity without extending woodland into mapped clearings.'})
 
 
-def distant_crown(scene: CircuitScene, base: Point, height: float, seed: int,
-                   needle: bool) -> None:
+def needleleaf_tree(scene: CircuitScene, base: Point, height: float, seed: int,
+                    detailed: bool, crown_limit: float) -> None:
     rng = random.Random(seed)
-    layers = 3 if needle else 2
+    lean_x, lean_y = rng.uniform(-.025, .025), rng.uniform(-.025, .025)
+    top = add(base, (lean_x * height, lean_y * height, height))
+    scene.beam('Building_WoodlandTrunks', 'Trunk', base, top, height * .012)
+    layers = rng.randrange(14, 19) if detailed else rng.randrange(8, 11)
+    bottom = rng.uniform(.13, .22)
+    spread = rng.uniform(.25, .31)
+    turn = rng.uniform(0, math.tau)
+    profile = rng.uniform(.7, 1.15)
     for layer in range(layers):
-        level = (.42 + layer * .19) if needle else (.59 + layer * .17)
-        radius = height * ((.26 - layer * .065) if needle else .27)
-        depth = height * (.43 if needle else .45)
-        turn = rng.uniform(0, math.tau)
-        column, row = (2, 5)[rng.randrange(2)], rng.randrange(3)
+        fraction = layer / max(1, layers - 1)
+        level = bottom + fraction * (1.01 - bottom) + rng.uniform(-.012, .012)
+        radius = height * (spread * (1 - fraction) ** profile + .018) * rng.uniform(.88, 1.1)
+        radius = min(radius, max(.1, (crown_limit - math.hypot(lean_x, lean_y) * height) / 1.1))
+        depth = height * (.14 + .035 * (1 - fraction)) * rng.uniform(.88, 1.08)
+        angle = turn + layer * 2.39996
+        offset = radius * .10
+        center = add(base, (lean_x * height * level + math.cos(angle) * offset,
+                            lean_y * height * level + math.sin(angle) * offset,
+                            height * level))
+        if detailed and layer % 4 == 0:
+            root = add(base, (lean_x * height * level, lean_y * height * level, height * (level + .035)))
+            branch = add(center, (math.cos(angle) * radius * .72, math.sin(angle) * radius * .72, -depth * .16))
+            scene.beam('Building_WoodlandBranches', 'Trunk', root, branch, height * .003)
+        column, row = (2, 5)[rng.randrange(2)], rng.randrange(6)
         u0, u1 = (column + .012) / 6, (column + .988) / 6
         v0, v1 = (row + .012) / 6, (row + .988) / 6
         for plane in range(3):
-            angle = turn + plane * math.pi / 3
-            dx, dy = math.cos(angle) * radius, math.sin(angle) * radius
-            bottom = base[2] + height * level - depth / 2
-            a = base[0] - dx, base[1] - dy, bottom
-            b = base[0] + dx, base[1] + dy, bottom
-            ta, tb = (a[0], a[1], bottom + depth), (b[0], b[1], bottom + depth)
-            scene.triangle('Building_Woodland', 'TreeCanopy', ta, tb, b,
+            azimuth = angle + plane * math.pi / 3 + rng.uniform(-.12, .12)
+            dx, dy = math.cos(azimuth) * radius, math.sin(azimuth) * radius
+            low = center[2] - depth * .48
+            a, b = (center[0] - dx, center[1] - dy, low), (center[0] + dx, center[1] + dy, low)
+            ta, tb = add(a, (lean_x * depth, lean_y * depth, depth)), add(b, (lean_x * depth, lean_y * depth, depth))
+            scene.triangle('Building_WoodlandNeedles', 'TreeCanopy', ta, tb, b,
                            ((u0, v0), (u1, v0), (u1, v1)))
-            scene.triangle('Building_Woodland', 'TreeCanopy', ta, b, a,
+            scene.triangle('Building_WoodlandNeedles', 'TreeCanopy', ta, b, a,
                            ((u0, v0), (u1, v1), (u0, v1)))
+
+
+def distant_broadleaf(scene: CircuitScene, base: Point, height: float, seed: int) -> None:
+    rng = random.Random(seed)
+    column, row = (0, 1, 3, 4)[rng.randrange(4)], rng.randrange(6)
+    u0, u1 = (column + .012) / 6, (column + .988) / 6
+    v0, v1 = (row + .012) / 6, (row + .988) / 6
+    scene.beam('Building_WoodlandTrunks', 'Trunk', base, add(base, (0, 0, height * .58)), height * .01)
+    turn = rng.uniform(0, math.tau)
+    for plane in range(3):
+        angle = turn + plane * math.pi / 3
+        dx, dy = math.cos(angle) * height * .34, math.sin(angle) * height * .34
+        a, b = (base[0] - dx, base[1] - dy, base[2]), (base[0] + dx, base[1] + dy, base[2])
+        ta, tb = add(a, (0, 0, height)), add(b, (0, 0, height))
+        scene.triangle('Building_WoodlandBroadleaf', 'TreeCanopy', ta, tb, b,
+                       ((u0, v0), (u1, v0), (u1, v1)))
+        scene.triangle('Building_WoodlandBroadleaf', 'TreeCanopy', ta, b, a,
+                       ((u0, v0), (u1, v1), (u0, v1)))

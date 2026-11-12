@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=turkey",
   "tiles": 171,
-  "triangles": 816933,
+  "triangles": 805918,
   "road_sha256": "3ef9d19f8a46144b01d3a3202f0f2c15f7135664e20f82e56467dd9e3a6d0791",
   "terrain_sha256": "9b4eac7ca4ff3e5f8d20e4eb461beb198ff84128efb358b2b1aa865f9c6b2a7c",
   "landmarks": [
@@ -99,9 +99,14 @@
       "dimensions_status": "Actual concave footprint and three collinear road-facing segments replace a438m station strip and overlapping guessed hospitality boxes. Floors follow the main-straight grade projected from the actual garage front, never the nearby T1 branch or DSM roof. Existing16m height is an estimate; garage bays, upper arched glazing and shallow roof are original reconstruction from329s, not a construction survey. End VIP tower heights remain unverified and are not invented."
     },
     {
+      "name": "Main grandstand podium and grass forecourt",
+      "osm_id": 316361269,
+      "source_note": "Actual mapped stand spans native5202\u2013259. Roof-contaminated DSM ground is reconstructed only beneath its footprint plus2m foundation margin and the adjoining protected forecourt. The retained engineering road profile is flat here; its datum grounds the podium. Ground below seats is an estimate, not a classified-ground survey. Reference0329/0333 shows exposed seating rather than a grass mound."
+    },
+    {
       "name": "Authored grandstand",
-      "start_m": 5180,
-      "end_m": 270,
+      "start_m": 5202,
+      "end_m": 259,
       "side": 1,
       "rows": 29
     },

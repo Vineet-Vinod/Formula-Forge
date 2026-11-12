@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "circuit": "singapore",
+  "status": "Source correction only; fresh packaged right/left sequence review required.",
+  "retained_geometry": {
+    "file": "flyer-viaduct.osm.json.gz",
+    "sha256": "228da96e7c6cdf9f3427aff0beb8cadc124fae2af8f0d8e6644c53f7f7cfbed0",
+    "provider": "OpenStreetMap contributors",
+    "license": "ODbL 1.0",
+    "request": "https://api.openstreetmap.org/api/0.6/map?bbox=103.856,1.280,103.866,1.291",
+    "original_retained_response_sha256": "58efb13408c753706592806644786da678b95555dc8732b68c7da0d4de3e1833",
+    "source_retrieval_context": "Existing 2026-11-08 Marina Bay district response, not a fresh inferred road trace. Selected ways retain actual coordinates, lane counts, names and layer/bridge tags.",
+    "way_versions": [
+      {
+        "id": "21697558",
+        "version": "28",
+        "timestamp": "2026-10-25T03:49:54Z",
+        "changeset": "190993687"
+      },
+      {
+        "id": "39961203",
+        "version": "30",
+        "timestamp": "2026-01-30T13:19:40Z",
+        "changeset": "177889405"
+      },
+      {
+        "id": "122067631",
+        "version": "18",
+        "timestamp": "2026-01-30T13:19:26Z",
+        "changeset": "177889405"
+      }
+    ]
+  },
+  "mapped_alignments": [
+    {
+      "osm_id": 39961203,
+      "identity": "East Coast Parkway / Benjamin Sheares Bridge carriageway",
+      "lanes": 4,
+      "layer": 1,
+      "width_estimate_m": 15.6
+    },
+    {
+      "osm_id": 122067631,
+      "identity": "Opposite ECP / Benjamin Sheares Bridge carriageway",
+      "lanes": 4,
+      "layer": 1,
+      "width_estimate_m": 15.6
+    },
+    {
+      "osm_id": 21697558,
+      "identity": "Elevated two-lane Rochor Road exit ramp",
+      "lanes": 2,
+      "layer": 1,
+      "width_estimate_m": 8.6
+    }
+  ],
+  "direct_reference": {
+    "file": "Saved/Refs/singapore.mp4",
+    "continuous_forward_seconds": [
+      1250.81,
+      1254,
+      1255,
+      1255.8
+    ],
+    "HUD_lap_seconds": [
+      80.661,
+      83.888,
+      84.868,
+      85.665
+    ],
+    "pose": "Waterfront straight toward Flyer, right corner then leftward transition beneath/along the concrete road deck. Soffit beams and forked piers are visible to the driver LEFT during the exit.",
+    "station_registration": "Landmark and actual mapped bridge alignment, approximately 4250\u20134365 m with \u00b160 m source-pose uncertainty. The camera is forward cockpit throughout. No proportional playback-time station interpolation.",
+    "cut_warning": "1257 s is a trackside camera and1260 s is another lap. These do not form an exact forward MBS-facing pair.",
+    "source_geometry": "Closed pale concrete slab, repeated longitudinal underside beams, forked supporting piers and solid top-edge parapets."
+  },
+  "section_estimates": {
+    "lane_width_m": 3.5,
+    "lane_width_uncertainty_m": 0.3,
+    "total_shoulders_m": 1.6,
+    "shoulder_uncertainty_m": 0.6,
+    "deck_top_above_adjacent_street_m": 13,
+    "deck_height_uncertainty_m": 3,
+    "road_height_anchor_native_station_m": 4290,
+    "deck_top_relative_world_m": 14.346140704736841,
+    "slab_thickness_m": 0.9,
+    "girder_depth_below_soffit_m": 0.6,
+    "girder_spacing_estimate_m": 1.8,
+    "parapet_height_m": 1.1,
+    "pier_bay_pitch_estimate_m": 32,
+    "pitch_uncertainty_m": 10,
+    "pier_geometry": "A concrete shaft branches to two sloping arms beneath a transverse pier head. Support candidates intersecting racing protection or existing buildings are omitted rather than placed in the driving corridor. Exact engineering bay positions are not surveyed.",
+    "scope": "Local retained carriageway segments only. Their finite ends reflect the retained way bounds; this is not a reconstruction of the entire elevated expressway."
+  },
+  "ground_reconstruction": {
+    "geometry": "Only the estimated deck footprints generated from the actual retained street axes and lane tags, minus water and permanent building footprints.",
+    "reason": "The DSM reaches14\u201317 m under the known elevated road, while direct cockpit footage shows an open street-level underside. Retaining that duplicated elevated-deck height as ground would bury the supports.",
+    "method": "Adjacent canonical street height at native4290 plus0.10 m is a reconstructed low ground pad under the deck. All native road geometry remains authoritative and unchanged. This scenery height is an estimate, not a ground survey.",
+    "height_uncertainty_m": 1.5,
+    "area_m2": 10178.583541895694,
+    "minimum_distance_to_Shoppes_m": 296.7293376363247,
+    "overlap_Shoppes_m2": 0,
+    "overlap_FlowerDome_m2": 0,
+    "overlap_water_m2": 0,
+    "ambiguity_policy": "No changes to the mall, Gardens-by-the-Bay layer2 pedestrian approach, Bayfront Bridge or their uncertain land levels. Earlier absent-frontage and definitive roof-spill claims remain withdrawn."
+  },
+  "intended_road_overlap": {
+    "native_ranges_m": [
+      [
+        1050,
+        1059
+      ],
+      [
+        4305,
+        4365
+      ]
+    ],
+    "description": "Real overhead ramp/carriageway geometry across the earlier Republic Boulevard street arm and the Flyer corner exit. These are explicitly allowed elevated structures, not accidental grandstand/roof road intrusions.",
+    "minimum_clearance_above_banked_road_m": 11.338334296502687,
+    "pier_overlap_all_protected_corridors_m2": 0,
+    "closed_deck_shell_odd_edges_at_1um": 0
+  },
+  "physical_changes": "None. Racing XYZ, width/elevation/banking, protection, track limits, driving surfaces, camera and handling are untouched. All new geometry uses existing Road/Concrete/Steel materials.",
+  "runtime_targets_m": [
+    1054,
+    4250,
+    4290,
+    4329,
+    4360
+  ],
+  "proof": "build/reviews/resume-20261112/singapore-viaduct-source-proof.json",
+  "runtime_approval": false,
+  "lighting": {
+    "source_module": "tools/venues/night_lighting.py",
+    "dip_ranges_m": [
+      [
+        1005,
+        1030,
+        1080,
+        1105
+      ],
+      [
+        4255,
+        4280,
+        4380,
+        4410
+      ]
+    ],
+    "range_semantics": "Transition start, low plateau start, plateau end, transition end. Cubic smoothstep transitions preserve the original15.5 m height outside these two local ranges.",
+    "low_fitting_height_above_road_estimate_m": 9.5,
+    "head_height_uncertainty_m": 1.5,
+    "changed_fixture_count": 72,
+    "minimum_head_housing_clearance_below_soffit_m": 2.108892219417003,
+    "lighting_triangle_overlap_deck_volume_m2": 0,
+    "power": 0.23,
+    "pool_radius_m": 11,
+    "field_input_stream_exactly_equal": true,
+    "relative_road_field_output_bound": [
+      1,
+      1
+    ],
+    "field_explanation": "Actual circuit_art irradiance uses fixture XY, nearest road frame/height, pool radius and power, not fixture Z. All these inputs are byte-identical, so its full radiance/elevation arrays and road-field texture remain exactly unchanged. Power stays0.23 and pool11m; applying an extra inverse-square change would alter an already-calibrated field.",
+    "compatibility": "Actual non-Singapore lighting function ASTs are unchanged; original heights outside these two dips, including Anderson Bridge, are identical.",
+    "proof": "build/reviews/resume-20261112/singapore-viaduct-lighting-source-proof.json"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "status": "Source correction; fresh rendered review required.",
+  "reason": "Actual current generated Grass terrain intersects the rendered SeatRed seating. This is not based solely on the mathematical ground sampler.",
+  "prior_manifest_sha256": "fdc905f7d040bf47766c62c3b3d3a92bab755aceb57e6c5f22433df84b7000c9",
+  "dataset": "Retained Copernicus GLO-30 DSM. This is a roof/canopy surface model, not a bare-earth survey.",
+  "source_inputs": {
+    "buildings.osm.json.gz": "40a5fe40bf79520f1d8676185ccbe2a2aff0ac1209ef48fd90c1cedd6315686f",
+    "elevation/scenery_dem.tif": "96487674b4ea6ab961c634eba6418795a532c5994e78fe070e43d504198e0d8e",
+    "provenance.json": "108ed889d9cf7963f6ca322ede263f7d9a5d7810c67e54fb491b318efd78cd08"
+  },
+  "registered_complexes": [
+    {
+      "osm_ids": [
+        34400180
+      ],
+      "name": "LBBW-Haupttribuene",
+      "native_ranges_m": [
+        [
+          0,
+          180
+        ],
+        [
+          4430,
+          4574
+        ]
+      ]
+    },
+    {
+      "osm_ids": [
+        232009789,
+        34400164
+      ],
+      "name": "Nordtribuene",
+      "native_ranges_m": [
+        [
+          230,
+          430
+        ]
+      ]
+    },
+    {
+      "osm_ids": [
+        232009793,
+        34400189
+      ],
+      "name": "Suedtribuene",
+      "native_ranges_m": [
+        [
+          3970,
+          4390
+        ]
+      ]
+    }
+  ],
+  "geometry": "Only actual Nordtribuene232009789 footprint and the three existing main/Sued modeled seating ribbons, with0.4m construction/end-cap margin, plus occupied forecourts receive ground parcels. Both clear stands3280\u20133530/3660\u20133920, protected road/shoulder/runoff/pit/water, unrelated building footprints and outer berms are excluded.",
+  "ground_height_status": "Inferred substructure/forecourt grade, not measured bare-earth elevation. Each <=8m main/Sued parcel uses minimum existing native road-plane projection beneath its four seating corners minus15mm. Nord actual footprint uses the lowest adjacent retained road anchor minus15mm; its curved terrace follows local ground. Native road XYZ, banking, width, barriers and physics unchanged.",
+  "surfaces": "Concrete below occupied terraces; Grass in the adjacent protected forecourt. Existing accepted materials are reused.",
+  "retained_road_and_seating": "Main/Sued seat positions and roofs unchanged. The guessed Nord230\u2013430 strip is replaced with footprint-clipped curved terraces232009789, using existing helper,24 estimated rows and covered form. No changes to two clear stands.",
+  "registration_uncertainty": "Guessed Nord row12 at250m overlapped tiny mapped service footprints532896900/901 (6.2/36.8m2), outside the real Nord stand. New footprint-clipped seating leaves both service footprints and their ground unchanged. Source survey era and exact row count remain uncertain; no assertion that these service sites are free space.",
+  "reference_context": [
+    {
+      "path": "build/reviews/hockenheim/reference/overview-01.jpg",
+      "time_s": 48.33,
+      "status": "Direct pit-lane camera context for main straight stand/pit level; not the racing-line camera."
+    },
+    {
+      "path": "build/reviews/hockenheim/reference/overview-10.jpg",
+      "time_s": 411.27,
+      "status": "Direct Motodrom stadium view with exposed seating above protected grass forecourt. Exact final-corner camera differs."
+    }
+  ],
+  "bounded_source_proof": {
+    "ground_parcels": 185,
+    "total_area_m2": 40826.15729373882,
+    "emitted_ground_patch_triangles": 2626,
+    "protected_surface_overlap_m2": 0.0,
+    "maximum_terrain_above_affected_actual_seat_m": -0.9849996208892586,
+    "clear_stands_touched": false
+  },
+  "future_source": "A classified bare-earth survey may replace inferred stand substructure grades; do not restore DSM roof mounds as grass underneath occupied terraces."
+}

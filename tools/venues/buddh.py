@@ -206,6 +206,25 @@ def circuit_edges(scene: CircuitScene) -> None:
     apron_hatching(scene, 3210, 3410, 1, 2.8, 14.7, "Yellow")
     apron_band(scene, 3950, 4320, -1, 0.15, 2.6, "RunoffGreen")
     apron_band(scene, 3950, 4320, -1, 2.6, 2.8, "White")
+    bowl_runoff_bars(scene)
+
+
+def bowl_runoff_bars(scene: CircuitScene) -> None:
+    apron = unary_union(scene.extra_corridors).difference(scene.road_mask)
+    for station in range(3940, 4300, 18):
+        corners = []
+        for offset, reach in ((0, 3.0), (9, 3.0), (23, 17.8), (14, 17.8)):
+            sample = scene.at(min(4320, station + offset))
+            corners.append(sample.point(-sample.half_width - reach)[:2])
+        stripe = Polygon(corners)
+        if stripe.is_valid:
+            scene.paint_surface(stripe.intersection(apron), "White", lift=.007)
+    scene.surface_ranges.append({
+        "type": "Buddh bowl diagonal white bars", "start_m": 3940,
+        "end_m": 4320, "side": -1, "period_estimate_m": 18,
+        "bar_width_estimate_m": 9, "outer_reach_m": 17.8,
+        "source_note": "Continuous supplied reference 177–185 s shows broad alternating red/white diagonal bars outside the right-hand bowl. Period, width and 14 m diagonal advance are visual estimates, not measured dimensions. Paint is clipped to the existing red apron beyond the green edge band and projected onto its emitted triangles.",
+    })
 
 
 def build_venue(scene: CircuitScene) -> None:

@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=austria",
   "tiles": 178,
-  "triangles": 978293,
+  "triangles": 1558475,
   "road_sha256": "3d5e959213c73355280e6f2b11bb3a14ccc197a1af5912010d2afbdaec529918",
   "terrain_sha256": "9cc567093ec0c60548f45cf0584c888c9dc4a5060149b93c7171d2aa90cd6050",
   "landmarks": [
@@ -139,10 +139,11 @@
       "patches": 19,
       "woodland_area_m2": 1651960.180867353,
       "reconstructed_trees": 10689,
-      "detailed_edge_trees": 87,
+      "detailed_edge_trees": 2540,
       "needleleaf_trees": 6929,
-      "minimum_crown_clearance_from_corridor_m": 12.457482818885214,
-      "placement_status": "Actual OSM forest/wood polygons and holes, clipped to retained classified-ground coverage. Roads, protection, aprons, buildings and water excluded. Tree positions, 12\u201328m edge/interior heights and mixed proportions where untagged are original reference-guided estimates; distant layered foliage preserves canopy continuity without extending woodland into mapped clearings."
+      "minimum_crown_clearance_from_corridor_m": 12.219899312755434,
+      "detailed_range_m": 250,
+      "placement_status": "Actual OSM forest/wood polygons and holes, clipped to retained classified-ground coverage. Roads, protection, aprons, buildings and water excluded. Tree positions, approximately 10\u201331 m edge/interior heights and mixed proportions where untagged are original reference-guided estimates; grounded layered crowns preserve canopy continuity without extending woodland into mapped clearings."
     }
   ],
   "review_status": "Awaiting packaged whole-route review; asset import is not visual approval."

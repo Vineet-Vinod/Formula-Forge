@@ -15,7 +15,7 @@
         0,
         650
       ],
-      "name": "Pit straight and T1–3",
+      "name": "Pit straight and T1\u20133",
       "reviewed_video_seconds": [
         100,
         189.36,
@@ -50,7 +50,7 @@
         1450,
         2100
       ],
-      "name": "T5–8 linked infield bends",
+      "name": "T5\u20138 linked infield bends",
       "reviewed_video_seconds": [
         103.5,
         104,
@@ -68,7 +68,7 @@
         2100,
         2650
       ],
-      "name": "T9–10 downhill left braking",
+      "name": "T9\u201310 downhill left braking",
       "reviewed_video_seconds": [
         107,
         108,
@@ -96,7 +96,7 @@
         3450,
         4050
       ],
-      "name": "T12–13 fast right rise",
+      "name": "T12\u201313 fast right rise",
       "reviewed_video_seconds": [
         112,
         862.65
@@ -110,7 +110,7 @@
         4050,
         4900
       ],
-      "name": "Back straight and final right T14–15",
+      "name": "Back straight and final right T14\u201315",
       "reviewed_video_seconds": [
         115,
         165,
@@ -802,7 +802,7 @@
     "status": "Reference inventory and scene recipe authored; native runtime acceptance is separate."
   },
   "authored_edges": {
-    "side_convention": "Numeric+1 is driver right, -1 is driver left. Shader runoff widths clamp to exported collision shoulders.",
+    "side_convention": "Numeric +1 is driver right; -1 is driver left. Authored apron bounds are reconciled with native protection during generation.",
     "registration": "Intervals visually estimated against mapped native curves and supplied video; not a surveyed curb or safety-installation trace.",
     "kerbs": [
       {
@@ -912,7 +912,7 @@
         "end_m": 3320,
         "side": 1,
         "requested_width_m": 14,
-        "material": "RunoffGreen"
+        "material": "RunoffBlue"
       },
       {
         "start_m": 3820,
@@ -929,7 +929,8 @@
         "material": "RunoffBlue"
       }
     ],
-    "physical_escape_review": "Large terminal escape mouths still need explicit footprint geometry and matching collision-barrier changes. Surface ribbons must not extend through existing collision walls."
+    "physical_escape_review": "Large terminal escape mouths still need explicit footprint geometry and matching collision-barrier changes. Surface ribbons must not extend through existing collision walls.",
+    "visual_paving_review": "runoff-paint-review.json: T11 inside paint/paving is clipped to the existing corridor; no new physical apron interval."
   },
   "native_scene_module": "tools/venues/bahrain.py",
   "native_scene_status": "Authored geometry and type checks complete. Native cockpit review and collision acceptance are pending.",
@@ -1104,7 +1105,7 @@
   "apron_paint_review": {
     "reference": "Saved/Refs/bahrain.mp4",
     "reviewed": "Overview and detailed frames across the lap; specific added motifs are tied to the listed frame timestamps. Paint registration is estimated from official corners and landmarks, not proportional playback time.",
-    "geometry": "Original vector shapes, road-branch height with sample=scene.at(station), clipped away from the road. No reference pixels shipped.",
+    "geometry": "Original vector shapes clipped to actual emitted paving and projected at 5 or 7 mm above its triangles. No reference pixels are shipped.",
     "patches": [
       {
         "kind": "fan",
@@ -1115,9 +1116,13 @@
         "outer_m": 15.8,
         "material": "Cream",
         "reviewed_video_seconds": [
+          115
+        ],
+        "observed": "T14 outside: pale sand-coloured curved field inside the broad blue paved escape. Shape boundaries are estimated from the reference.",
+        "former_reviewed_video_seconds": [
           110
         ],
-        "observed": "T14 outside: pale sand-coloured curved field inside the broad blue paved escape. Shape boundaries are estimated from the reference."
+        "registration_note": "The old 110 s citation was T11 and is superseded. The corrected direct index identifies 115 s as T14."
       },
       {
         "kind": "band",
@@ -1127,20 +1132,23 @@
         "inner_m": 0.2,
         "outer_m": 3.2,
         "material": "RunoffBlue",
-        "reviewed_video_seconds": [
+        "reviewed_video_seconds": [],
+        "observed": "T12/13 outer paved edge has layered blue rather than a single green strip.",
+        "former_reviewed_video_seconds": [
           105
         ],
-        "observed": "T12/13 outer paved edge has layered blue rather than a single green strip."
+        "registration_status": "Historical appearance reconstruction; the old 105 s pose was not qualified as this corner and must not be used for exact comparison."
       }
     ],
     "native_changes": "No corridor extent or physical surface-class changes.",
-    "unpainted_policy": "Gravel, grass and unpainted asphalt remain beyond the observed paint bands."
+    "unpainted_policy": "Gravel, grass and unpainted asphalt remain beyond the observed paint bands.",
+    "additional_source_review": "runoff-paint-review.json"
   },
   "night_lighting": {
     "recipe": "tools/venues/night_lighting.py",
     "observed": {
       "name": "Bahrain floodlight recipe",
-      "structure": "30–32 m straight multi-head masts in open sectors; 24 m canted pit-front banks. Individual positions, heights and 50–55 m spacing are visual estimates.",
+      "structure": "30\u201332 m straight multi-head masts in open sectors; 24 m canted pit-front banks. Individual positions, heights and 50\u201355 m spacing are visual estimates.",
       "reference": "Saved/Refs/bahrain.mp4:100,120,130,170,195,200 seconds",
       "confidence": "High for bank versus streetlamp distinction; moderate for sector distribution; low for metric dimensions. Relative field powers are rendering parameters, not photometry."
     },
@@ -1166,7 +1174,7 @@
   "pit_lane": {
     "source": "pit-lane.json",
     "visual_only_outside_pit_wall": true,
-    "registration": "Actual mapped pit compound187123416 replaces the former generic block. The full mapped compound projects to native5137.31→126.46m across zero. Road-facing garage segments stand17.893–18.598m and22.645–22.701m beyond the road edge. The paving control is rounded by less than10m at the longitudinal ends and ends at a constant17.5m offset before the nearest garage face. Local unstriped apron polygons meet each variable mapped front and exclude the occupied building; the generic outer white stripe therefore stays outside all garage bays. Mapped plan registration has approximately±2m uncertainty. Facade/roof dimensions remain reconstructed. Paving stays beyond a closed pit wall; racing XYZ, banking and handling are unchanged. See pit-dimension-review.json.",
+    "registration": "Actual mapped pit compound187123416 replaces the former generic block. The full mapped compound projects to native5137.31\u2192126.46m across zero. Road-facing garage segments stand17.893\u201318.598m and22.645\u201322.701m beyond the road edge. The paving control is rounded by less than10m at the longitudinal ends and ends at a constant17.5m offset before the nearest garage face. Local unstriped apron polygons meet each variable mapped front and exclude the occupied building; the generic outer white stripe therefore stays outside all garage bays. Mapped plan registration has approximately\u00b12m uncertainty. Facade/roof dimensions remain reconstructed. Paving stays beyond a closed pit wall; racing XYZ, banking and handling are unchanged. See pit-dimension-review.json.",
     "garage_front_outer_offset_m": 17.5,
     "source_world_frame": "Native east/north station frame; +1 driver right, -1 driver left. No route-origin rotation.",
     "start_m": 5130,
@@ -1261,7 +1269,7 @@
   },
   "targeted_registration_review": {
     "method": "Direct appearance/topology checks of retained frames and bounded individual Baku reference seeks; source geometry and all native data unchanged.",
-    "notes": "Frame100s shows the Sakhir Tower/opening-corner approach; mapped tower187123438 is native332.79m ondriverRIGHT at91.79m from centerline. It must not be assigned to infield sector1450–2100m. Other sparse overview associations remain approximate until full-lap continuity review; relative station/camera registration is not surveyed.",
+    "notes": "Frame100s shows the Sakhir Tower/opening-corner approach; mapped tower187123438 is native332.79m ondriverRIGHT at91.79m from centerline. It must not be assigned to infield sector1450\u20132100m. Other sparse overview associations remain approximate until full-lap continuity review; relative station/camera registration is not surveyed.",
     "next_gate": "Actual packaged full-lap review and targeted captures in build/reviews/east-final-targets.json; these metadata corrections are not visual approval."
   },
   "width_profile": {
@@ -1478,7 +1486,7 @@
         "observation": "Direct T4 exit at HUD25.215, right-hand bend and Aramco bridge ahead. Racecourse edge is separated from the sand-coloured outside escape by the red/white kerb.18m apex is a local estimate, supported by the mapped23.44m center arc."
       },
       {
-        "official_corner": "T9–T10",
+        "official_corner": "T9\u2013T10",
         "native_range_m": [
           2380,
           2550
@@ -1508,7 +1516,7 @@
         "observation": "Direct left T11 at HUD57.320. The inside red/white kerb borders blue/navy painted escape, which is excluded from road width.16m entry is an estimate, with a narrower exit."
       },
       {
-        "official_corner": "T14–T15",
+        "official_corner": "T14\u2013T15",
         "native_range_m": [
           4620,
           4950
@@ -1531,5 +1539,18 @@
     "status": "Mapped source geometry frozen after emitted checks; native synchronization and packaged review pending.",
     "former_generic_body_rejected": true,
     "runtime_approval": false
+  },
+  "runoff_paint_correction": {
+    "source": "runoff-paint-review.json",
+    "continuous_video_seconds": [
+      109.8,
+      110,
+      110.2
+    ],
+    "native_station_range_m": [
+      3165,
+      3290
+    ],
+    "status": "Source-backed paint authored; packaged comparison pending."
   }
 }

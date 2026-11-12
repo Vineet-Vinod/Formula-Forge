@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "feature": "Broad diagonal white bars outside the right-hand bowl",
+  "native_station_range_m": [
+    3940,
+    4320
+  ],
+  "side": -1,
+  "continuous_video_seconds": [
+    177,
+    179,
+    181,
+    183,
+    185
+  ],
+  "pattern_estimates": {
+    "period_m": 18,
+    "period_uncertainty_m": 6,
+    "white_bar_width_m": 9,
+    "width_uncertainty_m": 3,
+    "diagonal_advance_m": 14,
+    "diagonal_uncertainty_m": 5,
+    "inner_offset_from_road_edge_m": 3,
+    "outer_offset_m": 17.8
+  },
+  "method": "White bars are clipped to the existing red apron and all-road exclusion, then projected onto emitted paving triangles at +7 mm. The existing green edge band and white separator are untouched. No apron widening or physical changes.",
+  "fresh_runtime_targets_m": [
+    3990,
+    4100,
+    4250
+  ],
+  "runtime_approval": false
+}

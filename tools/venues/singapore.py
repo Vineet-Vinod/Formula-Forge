@@ -14,6 +14,8 @@ from venues.singapore_raffles import (
     frontage_trees,
     ground_parcels,
 )
+from venues.singapore_stamford import build_stamford, stamford_tree_band
+from venues.singapore_viaduct import build_viaduct
 from venues.singapore_waterfront import build_waterfront, skypark, tower
 
 
@@ -118,7 +120,9 @@ def build_venue(scene: CircuitScene) -> None:
     ground_parcels(scene)
     circuit_edges(scene)
     build_waterfront(scene)
+    build_viaduct(scene)
     build_context(scene)
+    stamford = build_stamford(scene)
     scene.modeled_buildings.add(97582570)
     esplanade(scene, 256163011)
     esplanade(scene, 256163012)
@@ -146,8 +150,9 @@ def build_venue(scene: CircuitScene) -> None:
     scene.stand(4718.266285, 120.956315, 1, rows=23, setback=5, roofed=True, seat_material='SeatRed')
     scene.stand(2200.061823, 2532.691906, -1, rows=14, setback=5, roofed=False, seat_material='SeatRed')
     scene.stand(3205.904624, 3447.812678, -1, rows=14, setback=6, roofed=False, seat_material='SeatRed')
-    for start, end, side, setback, spacing in ((503.510135, 1128.320683, -1, 5, 18), (654.667603, 1158.559456, 1, 7, 21), (1390.380744, 1948.274616, 1, 5, 18), (1948.274616, 2602.976801, -1, 6, 16), (2250.460027, 2753.506502, 1, 4, 17), (2753.506502, 3115.187419, 1, 6, 18), (3145.426532, 3740.932435, -1, 6, 16), (3145.426532, 3740.932435, 1, 8, 20)):
+    for start, end, side, setback, spacing in ((503.510135, 1128.320683, -1, 5, 18), (654.667603, 1158.559456, 1, 7, 21), (1948.274616, 2602.976801, -1, 6, 16), (2250.460027, 2753.506502, 1, 4, 17), (2753.506502, 3115.187419, 1, 6, 18), (3145.426532, 3740.932435, -1, 6, 16), (3145.426532, 3740.932435, 1, 8, 20)):
         trees(scene, start, end, side, setback, spacing, 13)
+    stamford_tree_band(scene, stamford)
     frontage_trees(scene)
     for start, end, side in ((453.227322, 805.860027, 1), (1208.957514, 1612.133386, -1), (3992.916696, 4345.495629, 1)):
         trees(scene, start, end, side, 8, 45, 11, palm=True)

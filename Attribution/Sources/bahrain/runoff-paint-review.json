@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "feature": "T11 blue and cream inner island and outer apron",
+  "native_station_range_m": [
+    3165,
+    3290
+  ],
+  "continuous_video_seconds": [
+    109.8,
+    110,
+    110.2
+  ],
+  "registration": "Same car, HUD 56.223\u219257.121\u219258.023. This is fast playback and not a linear metric station clock. T11 is the left bend at native approximately 3233 m.",
+  "inside": {
+    "side": -1,
+    "cream_paving_offset_m": [
+      1.4,
+      11.4
+    ],
+    "blue_band_offset_m": [
+      1.4,
+      5.4
+    ],
+    "estimated_width_uncertainty_m": 2,
+    "method": "Two-metre longitudinal cells clipped to the existing native physical corridor and road exclusion. Cream paving uses the local road branch plane at +2 mm. Blue paint projects to those actual triangles at +7 mm. Existing grass is removed only beneath this occupied paving."
+  },
+  "outside": {
+    "side": 1,
+    "existing_apron_range_m": [
+      3130,
+      3320
+    ],
+    "existing_width_m": 14,
+    "base_material": "RunoffBlue",
+    "cream_band_offset_m": [
+      1.4,
+      4.0
+    ],
+    "method": "Replace incorrect green base with blue within the original apron. Cream paint projects to the existing emitted apron at +5 mm."
+  },
+  "dimensions_policy": "Palette and island identity are direct observations. Exact reaches and band widths are visual estimates, not a survey. Native road, widths, elevation, physical corridor, barriers and driving surfaces remain unchanged.",
+  "fresh_runtime_targets_m": [
+    3200,
+    3233,
+    3280
+  ],
+  "runtime_approval": false
+}

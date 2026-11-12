@@ -6,7 +6,7 @@ import math
 from circuit_dataclasses import Point
 from circuit_mesh import add
 from circuit_scene import CircuitScene
-from shapely.geometry import Polygon
+from shapely.geometry import MultiPolygon, Polygon
 from shapely.ops import triangulate
 
 from venues.east_architecture import trees
@@ -48,12 +48,43 @@ def circuit_edges(scene: CircuitScene) -> None:
 def build_venue(scene: CircuitScene) -> None:
     circuit_edges(scene)
     pit_garages(scene)
-    scene.stand(5180, 270, 1, rows=29, setback=7, roofed=True, seat_material='SeatRed')
+    mainstand_ground(scene)
+    scene.stand(5202, 259, 1, rows=29, setback=7, roofed=True, seat_material='SeatRed')
     scene.stand(4600, 4820, 1, rows=21, setback=14, roofed=True, seat_material='SeatRed')
     scene.stand(1100, 1250, 1, rows=16, setback=18, roofed=False, seat_material='SeatRed')
     scene.stand(2860, 3010, 1, rows=16, setback=25, roofed=False, seat_material='SeatRed')
     for start, end, side, setback, spacing in ((500, 1200, -1, 75, 38), (850, 1500, 1, 90, 42), (1500, 2000, -1, 90, 44), (2100, 2800, 1, 105, 43), (2900, 3400, -1, 80, 38), (3550, 4200, 1, 90, 40), (4200, 4550, -1, 80, 42)):
         trees(scene, start, end, side, setback, spacing, 10)
+
+
+def mainstand_ground(scene: CircuitScene) -> None:
+    building = scene.footprint(316361269)
+    podium = Polygon(building.ring).buffer(2)
+    datum = scene.at(0).z - .015
+    # GLO is a surface model: its roof mound buried the actual seating rows.
+    scene.ground_patches.append((podium, datum, 'Concrete'))
+    span = (259 - 5202) % scene.length
+    steps = math.ceil(span / 8)
+    for step in range(steps):
+        a = scene.at(5202 + span * step / steps)
+        b = scene.at(5202 + span * (step + 1) / steps)
+        near_a = a.half_width + .95 + a.left_shoulder
+        near_b = b.half_width + .95 + b.left_shoulder
+        forecourt = Polygon([
+            a.point(near_a)[:2], b.point(near_b)[:2],
+            b.point(near_b + 9)[:2], a.point(near_a + 9)[:2],
+        ]).difference(podium)
+        parts = [forecourt] if isinstance(forecourt, Polygon) else (
+            list(forecourt.geoms) if isinstance(forecourt, MultiPolygon) else []
+        )
+        for part in parts:
+            if not part.is_empty:
+                scene.ground_patches.append((part, datum, 'Grass'))
+    scene.modeled_buildings.add(building.osm_id)
+    scene.landmarks.append({
+        'name': 'Main grandstand podium and grass forecourt', 'osm_id': building.osm_id,
+        'source_note': 'Actual mapped stand spans native5202–259. Roof-contaminated DSM ground is reconstructed only beneath its footprint plus2m foundation margin and the adjoining protected forecourt. The retained engineering road profile is flat here; its datum grounds the podium. Ground below seats is an estimate, not a classified-ground survey. Reference0329/0333 shows exposed seating rather than a grass mound.',
+    })
 
 
 def pit_garages(scene: CircuitScene) -> None:

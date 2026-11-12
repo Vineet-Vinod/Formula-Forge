@@ -177,13 +177,15 @@
         3950,
         4500
       ],
-      "name": "T10\u201312 continuous right bowl",
+      "name": "Banked right-hand bowl and following exit",
       "reviewed_video_seconds": [
         177,
+        179,
         181,
+        183,
         185
       ],
-      "observed": "The multi-apex right is continuous. Inside grass and red-white kerbs follow the arc, with green/red paint leading to broad tan gravel outside. Large crowd terraces and separated angular roof sections sit beyond the escape area.",
+      "observed": "The multi-apex right is continuous. Inside grass and red-white kerbs follow the arc, with green/red paint leading to broad tan gravel outside. Large crowd terraces and separated angular roof sections sit beyond the escape area. The broad outer LEFT apron has alternating diagonal white/red bars through 177/179/181/183 s. The 185 s view exits the striped bowl. This label does not classify the later T12 exit as another right turn.",
       "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
     },
     {
@@ -368,5 +370,20 @@
     ],
     "context_note": "Old overview associations remain retained here as unregistered context. Direct113\u2013205s sequence supports the corner geometry, pits, climb and bowl.",
     "acceptance_status": "Named sectors have direct source witnesses. Exact widths, station endpoints and final runtime appearance still require separate review."
+  },
+  "runoff_paint_correction": {
+    "source": "runoff-paint-review.json",
+    "continuous_video_seconds": [
+      177,
+      179,
+      181,
+      183,
+      185
+    ],
+    "native_station_range_m": [
+      3940,
+      4320
+    ],
+    "status": "Source-backed paint authored; packaged comparison pending."
   }
 }

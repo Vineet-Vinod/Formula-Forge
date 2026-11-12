@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "status": "Source correction; fresh packaged visual review required.",
+  "trigger": "AF6987 live Austria target07station1165.4 andtarget09station1298.2 show repeated floating leaf strips and abrupt forest edges. Spa target04station5700 shows the same distant representation.",
+  "diagnosis": {
+    "detailed_range_before_m": 65,
+    "austria_detailed_before": 87,
+    "austria_tree_count_before": 10689,
+    "spa_detailed_before": 857,
+    "spa_tree_count_before": 27435,
+    "cause": "Nearly all visible70\u2013200m slopes used only2\u20133 crown-only crossed-card layers with no trunk. AtlasUVs address valid crown cells; no accepted material regression was established. Near-constant edge-height caps and onlysix mask variants accentuated repetition."
+  },
+  "replacement": {
+    "detailed_range_m": 250,
+    "evergreen": "Grounded stem,14\u201318 coherent tapered foliage whorls and visible bough supports nearby. Beyond250m retain a grounded stem and8\u201310 overlapping tapered whorls, not suspended blobs. Vary lean, crown spread and taper profile with stable per-tree seeds. All12 crown atlas cells are available.",
+    "broadleaf": "Existing detailed clustered-tree form within250m. Distant trees use the24 whole-tree atlas silhouettes, including their natural stems, plus a grounded geometric trunk.",
+    "edge": "Preserve exact generatedXY tree positions, mapped forest holes, exclusions and seed order. Mature-height evergreens narrow their crowns at the forest edge instead of collapsing to a uniform12m row. Every crown remains inside the existing woodland/exclusion boundary; road and stand safety buffers remain intact."
+  },
+  "accepted_material": {
+    "asset": "/Game/Generated/Interlagos/Materials/runtime_leaf_silhouette",
+    "atlas_input": "build/reviews/material-baseline/Leaf-Atlas.png",
+    "atlas_sha256": "6cc88dcea9a733afe776ee9acdcbfa114517accf5487e45842a58c1251b0e4d2",
+    "parameters_sha256": "a2c868a0e53e4e0fc50a62c1ff023188f4728cb745ab3acde4faee645e95c03a",
+    "rule": "Use existing accepted material copies only. No accepted texture, material, global lighting or native asset edited."
+  },
+  "uncertainty": "Spruce/pine-like branching form, individual heights and leaf proportions are reference-guided estimates. The OSM source measures woodland boundaries and some leaf types, not individual trees or exact species.",
+  "separate_terrain_findings": "Austria black verge wedges arise from wrong owner-branch height projection; Spa dark hillside is grazing-light/smoothed-normal behavior. This woodland change does not hide those issues or alter road/ground heights."
+}

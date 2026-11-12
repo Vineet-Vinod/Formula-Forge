@@ -110,13 +110,15 @@
         3950,
         4500
       ],
-      "name": "T10\u201312 continuous right bowl",
+      "name": "Banked right-hand bowl and following exit",
       "reviewed_video_seconds": [
         177,
+        179,
         181,
+        183,
         185
       ],
-      "observed": "The multi-apex right is continuous. Inside grass and red-white kerbs follow the arc, with green/red paint leading to broad tan gravel outside. Large crowd terraces and separated angular roof sections sit beyond the escape area.",
+      "observed": "The multi-apex right is continuous. Inside grass and red-white kerbs follow the arc, with green/red paint leading to broad tan gravel outside. Large crowd terraces and separated angular roof sections sit beyond the escape area. The broad outer LEFT apron has alternating diagonal white/red bars through 177/179/181/183 s. The 185 s view exits the striped bowl. This label does not classify the later T12 exit as another right turn.",
       "registration": "Approximate route intervals registered from the FIA map, actual mapped pit/stand footprints and reference corner order. Native source origin is in the final sector beforeT16, notSF."
     },
     {
@@ -515,7 +517,7 @@
     "status": "Reference inventory and scene recipe authored; native runtime acceptance is separate."
   },
   "authored_edges": {
-    "side_convention": "Numeric+1 is driver right, -1 is driver left. Shader runoff widths clamp to exported collision shoulders.",
+    "side_convention": "Numeric +1 is driver right; -1 is driver left. Authored apron bounds are reconciled with native protection during generation.",
     "registration": "Intervals visually estimated against mapped native curves and supplied video; not a surveyed curb or safety-installation trace.",
     "kerbs": [
       {
@@ -612,7 +614,7 @@
         "end_m": 1505,
         "side": -1,
         "requested_width_m": 18,
-        "material": "RunoffGreen"
+        "material": "Runoff"
       },
       {
         "start_m": 2600,
@@ -626,7 +628,7 @@
         "end_m": 3430,
         "side": 1,
         "requested_width_m": 15,
-        "material": "Gravel"
+        "material": "RunoffRed"
       },
       {
         "start_m": 3500,
@@ -830,7 +832,7 @@
   "apron_paint_review": {
     "reference": "Saved/Refs/india.mp4",
     "reviewed": "Overview and detailed frames across the lap; specific added motifs are tied to the listed frame timestamps. Paint registration is estimated from official corners and landmarks, not proportional playback time.",
-    "geometry": "Original vector shapes, road-branch height with sample=scene.at(station), clipped away from the road. No reference pixels shipped.",
+    "geometry": "Original vector shapes clipped to actual emitted paving and projected at 5 or 7 mm above its triangles. No reference pixels are shipped.",
     "patches": [
       {
         "kind": "band",
@@ -890,7 +892,8 @@
       }
     ],
     "native_changes": "T5/T6 native3190\u20133430m driverRIGHT width15m changes gravel to paved asphalt. All other apron bounds and surface classes unchanged.",
-    "unpainted_policy": "Gravel, grass and unpainted asphalt remain beyond the observed paint bands."
+    "unpainted_policy": "Gravel, grass and unpainted asphalt remain beyond the observed paint bands.",
+    "additional_source_review": "runoff-paint-review.json"
   },
   "pit_lane": {
     "source": "pit-lane.json",
@@ -1157,5 +1160,20 @@
     "provenance": "pit-roof-review.json",
     "status": "Actual mapped garage wings replace the compound bounding roof. Roof geometry is frozen for native width/elevation integration and packaged review."
   },
-  "reference_registration_review": "reference-index.json:registration_review_2026_11_12"
+  "reference_registration_review": "reference-index.json:registration_review_2026_11_12",
+  "runoff_paint_correction": {
+    "source": "runoff-paint-review.json",
+    "continuous_video_seconds": [
+      177,
+      179,
+      181,
+      183,
+      185
+    ],
+    "native_station_range_m": [
+      3940,
+      4320
+    ],
+    "status": "Source-backed paint authored; packaged comparison pending."
+  }
 }

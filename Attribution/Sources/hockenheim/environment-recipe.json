@@ -490,5 +490,9 @@
       "source_module_sha256": "0b1c8d1b92373b875c986983bfb44e541d64d0c07d672af133450d1d6dc825fd"
     },
     "scope": "No native corridor/elevation/road/handling or common material/helper changes."
+  },
+  "grandstand_ground_correction": {
+    "source": "grandstand-ground-correction.json",
+    "status": "Inferred occupied substructure parcels correct actual generated seat burial; fresh rendered review pending."
   }
 }

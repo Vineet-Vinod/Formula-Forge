@@ -6,10 +6,11 @@ import math
 from circuit_dataclasses import Point
 from circuit_mesh import add
 from circuit_scene import CircuitScene
-from shapely.geometry import LineString, Polygon, box
+from shapely.geometry import LineString, MultiPolygon, Polygon, box
 from shapely.geometry import Point as ShapePoint
 from shapely.ops import polygonize, unary_union
 
+from venues.east_architecture import footprint_stand
 from venues.west_architecture import apron_band, mapped_building, mast, trees
 
 
@@ -28,9 +29,10 @@ def build_venue(scene: CircuitScene) -> None:
     boxengebaeude(scene)
     mapped_building(scene, 256789030, 8, facade='White', floors=2, roof='pitched')
     mapped_building(scene, 232009816, 25, facade='Concrete', floors=7, balconies=True)
+    stand_ground(scene)
     scene.stand(0, 180, -1, rows=28, setback=18, roofed=True, seat_material='SeatRed')
     scene.stand(4430, 4574, -1, rows=28, setback=18, roofed=True, seat_material='SeatRed')
-    scene.stand(230, 430, -1, rows=24, setback=25, roofed=True, seat_material='SeatRed')
+    footprint_stand(scene, 232009789, rows=24, roof='flat', seat_material='SeatRed')
     scene.stand(3280, 3530, -1, rows=24, setback=22, seat_material='SeatRed')
     scene.stand(3660, 3920, -1, rows=27, setback=27, roofed=True, seat_material='SeatRed')
     scene.stand(3970, 4390, -1, rows=29, setback=18, roofed=True, seat_material='SeatRed')
@@ -51,6 +53,84 @@ def build_venue(scene: CircuitScene) -> None:
         pa, pb = add(base, (math.cos(a) * 10, math.sin(a) * 10, 0)), add(base, (math.cos(b) * 10, math.sin(b) * 10, 0))
         scene.banner(pa, pb, 8, 'White', 'Building_Arena')
         scene.banner(add(pa, (0, 0, 3)), add(pb, (0, 0, 3)), 2, 'Glass', 'Building_Arena')
+
+
+def stand_ground(scene: CircuitScene) -> None:
+    owners = {34400180, 232009789, 34400164, 232009793, 34400189}
+    clear_stands: list[Polygon] = []
+    for start, end, rows, setback in ((3280, 3530, 24, 22), (3660, 3920, 27, 27)):
+        steps = math.ceil((end - start) / 8)
+        for step in range(steps):
+            a = scene.at(start + (end - start) * step / steps)
+            b = scene.at(start + (end - start) * (step + 1) / steps)
+            near_a = a.half_width + .95 + a.right_shoulder
+            near_b = b.half_width + .95 + b.right_shoulder
+            shape = Polygon([
+                a.point(-near_a)[:2], b.point(-near_b)[:2],
+                b.point(-(near_b + setback + rows * .88 + .4))[:2],
+                a.point(-(near_a + setback + rows * .88 + .4))[:2],
+            ])
+            if shape.is_valid:
+                clear_stands.append(shape)
+    blocked = unary_union([
+        *clear_stands, scene.corridor_mask, *scene.extra_corridors, *scene.terrain_cutouts,
+        *scene.water_shapes,
+        *[Polygon(building.ring).buffer(.5) for building in scene.buildings
+          if building.osm_id not in owners],
+    ])
+    north = Polygon(scene.footprint(232009789).ring).difference(blocked)
+    north_parts = [north] if isinstance(north, Polygon) else (
+        list(north.geoms) if isinstance(north, MultiPolygon) else []
+    )
+    north_datum = min(scene.nearest(*point)[0].z for point in scene.footprint(232009789).ring) - .015
+    area = 0.0
+    for part in north_parts:
+        if not part.is_empty:
+            scene.ground_patches.append((part, north_datum, 'Concrete'))
+            area += part.area
+    for start, end, rows, setback in (
+        (0, 180, 28, 18), (4430, 4574, 28, 18),
+        (3970, 4390, 29, 18),
+    ):
+        steps = math.ceil((end - start) / 8)
+        for step in range(steps):
+            a = scene.at(start + (end - start) * step / steps)
+            b = scene.at(start + (end - start) * (step + 1) / steps)
+            wall_a = a.half_width + .95 + a.right_shoulder
+            wall_b = b.half_width + .95 + b.right_shoulder
+            front_a, front_b = wall_a + setback - .4, wall_b + setback - .4
+            rear_a, rear_b = wall_a + setback + rows * .88 + .4, wall_b + setback + rows * .88 + .4
+            # A DSM roof is not ground below an occupied seating terrace.
+            datum = min(a.point(-front_a)[2], b.point(-front_b)[2],
+                        a.point(-rear_a)[2], b.point(-rear_b)[2]) - .015
+            for near_a, near_b, far_a, far_b, material in (
+                (wall_a, wall_b, front_a, front_b, 'Grass'),
+                (front_a, front_b, rear_a, rear_b, 'Concrete'),
+            ):
+                points = [a.point(-near_a), b.point(-near_b),
+                          b.point(-far_b), a.point(-far_a)]
+                if step == 0:
+                    for corner in (0, 3):
+                        points[corner] = add(points[corner], (-a.tx * .4, -a.ty * .4, 0))
+                if step == steps - 1:
+                    for corner in (1, 2):
+                        points[corner] = add(points[corner], (b.tx * .4, b.ty * .4, 0))
+                parcel = Polygon([point[:2] for point in points])
+                if not parcel.is_valid:
+                    continue
+                parcel = parcel.difference(blocked)
+                parts = [parcel] if isinstance(parcel, Polygon) else (
+                    list(parcel.geoms) if isinstance(parcel, MultiPolygon) else []
+                )
+                for part in parts:
+                    if not part.is_empty:
+                        scene.ground_patches.append((part, datum, material))
+                        area += part.area
+    scene.landmarks.append({
+        'name': 'Hockenheim occupied grandstand foundations and forecourts',
+        'osm_ids': ', '.join(str(owner) for owner in sorted(owners)), 'ground_area_m2': area,
+        'source_note': 'Only the actual Nordtribuene footprint and the three authored main/Sued seating ribbons with their protected forecourts receive inferred ground beneath exposed terraces. Retained GLO30 DSM roof/terrace mounds buried actual seat meshes by 3.95–9.01m. Adjacent native road-plane anchors estimate substructure ground; this is not a bare-earth survey. Actual roads, shoulders, escape paving, unrelated buildings, the two clear stands and outer berms are excluded. The guessed Nord230–430 seating overlapped service footprints532896900/901; actual footprint-clipped Nord seating replaces it, leaving both service footprints unchanged. Retained mapped owners register the stand complexes; seating/setback dimensions remain reference reconstructions.',
+    })
 
 
 def einlauf_woods(scene: CircuitScene) -> None:

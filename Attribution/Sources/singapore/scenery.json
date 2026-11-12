@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=singapore",
-  "tiles": 151,
-  "triangles": 1268649,
+  "tiles": 152,
+  "triangles": 1391605,
   "road_sha256": "ec9d5ee923d51133a3137cd5b22ec2aee14288ba70378d40154fa1818f3eb374",
   "terrain_sha256": "0bd73918edfa845abde307374336cd0958a4c5866988aa6f48b4bb9b0d4c6591",
   "landmarks": [
@@ -161,6 +161,42 @@
       "source": "Mapped footprint. Project engineer Atelier Ten specifies a 170 m by 86 m by 38 m glass gridshell, which overrides the coarse 30 m OSM height. Shell curvature and rib spacing are visual estimates."
     },
     {
+      "name": "ECP Flyer viaduct 21697558",
+      "osm_id": 21697558,
+      "lanes": 2,
+      "deck_width_estimate_m": 8.6,
+      "deck_top_m": 14.346140704736841,
+      "soffit_m": 13.446140704736841,
+      "lowest_girder_m": 12.846140704736841,
+      "pier_bays": 8,
+      "pier_bays_omitted_at_protected_corridors": 4,
+      "source_note": "Actual retained layer-1 ECP/Benjamin Sheares carriageway or Rochor Road exit alignment. Continuous supplied 1254\u20131255.8 s shows the closed concrete underside, repeated girders and forked supports. Lane width 3.5 m, combined shoulders 1.6 m, local deck 13 m above adjacent racing street, 0.9 m slab and 32 m support pitch are visual reconstruction estimates, not surveyed dimensions. Deck height uncertainty is \u00b13 m. Supports avoid every protected racing corridor and existing building. The known elevated-road DSM is replaced only beneath these actual deck footprints on land; ambiguous mall/layer-2 terrain is untouched."
+    },
+    {
+      "name": "ECP Flyer viaduct 39961203",
+      "osm_id": 39961203,
+      "lanes": 4,
+      "deck_width_estimate_m": 15.6,
+      "deck_top_m": 14.346140704736841,
+      "soffit_m": 13.446140704736841,
+      "lowest_girder_m": 12.846140704736841,
+      "pier_bays": 6,
+      "pier_bays_omitted_at_protected_corridors": 1,
+      "source_note": "Actual retained layer-1 ECP/Benjamin Sheares carriageway or Rochor Road exit alignment. Continuous supplied 1254\u20131255.8 s shows the closed concrete underside, repeated girders and forked supports. Lane width 3.5 m, combined shoulders 1.6 m, local deck 13 m above adjacent racing street, 0.9 m slab and 32 m support pitch are visual reconstruction estimates, not surveyed dimensions. Deck height uncertainty is \u00b13 m. Supports avoid every protected racing corridor and existing building. The known elevated-road DSM is replaced only beneath these actual deck footprints on land; ambiguous mall/layer-2 terrain is untouched."
+    },
+    {
+      "name": "ECP Flyer viaduct 122067631",
+      "osm_id": 122067631,
+      "lanes": 4,
+      "deck_width_estimate_m": 15.6,
+      "deck_top_m": 14.346140704736841,
+      "soffit_m": 13.446140704736841,
+      "lowest_girder_m": 12.846140704736841,
+      "pier_bays": 10,
+      "pier_bays_omitted_at_protected_corridors": 1,
+      "source_note": "Actual retained layer-1 ECP/Benjamin Sheares carriageway or Rochor Road exit alignment. Continuous supplied 1254\u20131255.8 s shows the closed concrete underside, repeated girders and forked supports. Lane width 3.5 m, combined shoulders 1.6 m, local deck 13 m above adjacent racing street, 0.9 m slab and 32 m support pitch are visual reconstruction estimates, not surveyed dimensions. Deck height uncertainty is \u00b13 m. Supports avoid every protected racing corridor and existing building. The known elevated-road DSM is replaced only beneath these actual deck footprints on land; ambiguous mall/layer-2 terrain is untouched."
+    },
+    {
       "name": "NS Square construction frontage",
       "osm_id": 1221351351,
       "height_estimate_m": 4.0,
@@ -184,6 +220,43 @@
       "height_rise_estimate_m": 8.0,
       "height_uncertainty_m": 2.0,
       "source_note": "Exact mapped access paths 620797981/784662624/741167072 connect Raffles Avenue with the podium. Marriott identifies the lobby on Level 3; the owner shows the glazed barrel-vault arrival. The 8.0 m rise, 4.8 m pavement width and retaining edges are reconstructed estimates, not survey. The raised driveway is retained instead of flattening the entire hotel property. Paving beyond the closed race wall is visual only."
+    },
+    {
+      "name": "Fairmont Singapore",
+      "osm_id": 172364973,
+      "height_m": 88.0,
+      "minimum_height_m": 30.0,
+      "foundation_datum_m": 2.1899656679128414,
+      "mapped_levels": 26,
+      "source_note": "Retained OSM building-part ring and height/min_height tags share the existing 30 m mall podium. Height is total above ground, not additional to the podium. Owner exterior supports recessed balcony grids, the Swiss\u00f4tel glazed crown and the contrasting rectangular office tower. Floor-band, bay and crown details are reconstructed estimates; no source pixels are used."
+    },
+    {
+      "name": "Raffles City Tower",
+      "osm_id": 172364974,
+      "height_m": 158.0,
+      "minimum_height_m": 30.0,
+      "foundation_datum_m": 2.1899656679128414,
+      "mapped_levels": 42,
+      "source_note": "Retained OSM building-part ring and height/min_height tags share the existing 30 m mall podium. Height is total above ground, not additional to the podium. Owner exterior supports recessed balcony grids, the Swiss\u00f4tel glazed crown and the contrasting rectangular office tower. Floor-band, bay and crown details are reconstructed estimates; no source pixels are used."
+    },
+    {
+      "name": "Swiss\u00f4tel The Stamford",
+      "osm_id": 172364975,
+      "height_m": 226.0,
+      "minimum_height_m": 30.0,
+      "foundation_datum_m": 2.1899656679128414,
+      "mapped_levels": 73,
+      "source_note": "Retained OSM building-part ring and height/min_height tags share the existing 30 m mall podium. Height is total above ground, not additional to the podium. Owner exterior supports recessed balcony grids, the Swiss\u00f4tel glazed crown and the contrasting rectangular office tower. Floor-band, bay and crown details are reconstructed estimates; no source pixels are used."
+    },
+    {
+      "name": "Temporary Stamford Grandstand",
+      "start_m": 1765,
+      "end_m": 1870,
+      "side": 1,
+      "rows_estimate": 18,
+      "length_estimate_m": 105.0,
+      "depth_estimate_m": 16.2,
+      "source_note": "Operator 2025 event map and ticket page place Stamford Grandstand on the RIGHT between T7 and T8, beside War Memorial Park. Continuous supplied 634/636/638 s shows the open scaffold-backed seating. Length 105 \u00b125 m, depth 16.2 \u00b14 m and 18 rows are visual estimates, not an OSM stand survey. Only its temporary footprint receives adjacent-road-level ground reconstruction; the rest of the park remains unchanged."
     },
     {
       "name": "Esplanade Concert Hall",
@@ -711,8 +784,8 @@
     },
     {
       "name": "Singapore floodlight recipe",
-      "structure": "Small race fittings at roughly 7 m intervals along continuous paired cables, supported about every 42 m; pit-side cable posts attach above the garage roof. Separate civic lamps include taller curved streetlamps along Esplanade Drive. Lower race-light line at Anderson Bridge has gradual cable-height transitions.",
-      "reference": "Saved/Refs/singapore.mp4:534,598,614,618,642,650 seconds",
+      "structure": "Small race fittings at roughly 7 m intervals along continuous paired cables, supported about every 42 m; pit-side cable posts attach above the garage roof. Separate civic lamps include taller curved streetlamps along Esplanade Drive. Anderson Bridge and the ECP crossings have gradual cable-height transitions. Estimated 9.5 m ECP fittings remain below the reconstructed soffit; field power and pool radius are unchanged.",
+      "reference": "Saved/Refs/singapore.mp4:534,598,614,618,642,650,1254,1255,1255.8 seconds",
       "confidence": "High for continuous cable strings and separate streetlamps; moderate for bridge distinction; low for metric height/spacing estimates. Cable support registrations are authoring estimates."
     }
   ],
@@ -733,15 +806,6 @@
       "side": 1,
       "count": 23,
       "setback_m": 7,
-      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
-    },
-    {
-      "type": "broadleaf",
-      "start_m": 1390.380744,
-      "end_m": 1948.274616,
-      "side": 1,
-      "count": 17,
-      "setback_m": 5,
       "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
     },
     {
@@ -788,6 +852,15 @@
       "count": 18,
       "setback_m": 8,
       "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 1390.380744,
+      "end_m": 1948.274616,
+      "side": 1,
+      "count": 11,
+      "setback_m": 5,
+      "placement": "Original tree lattice, heights and seeds retained. Roots within 2 m of the source-backed temporary Stamford stand are excluded."
     },
     {
       "type": "Raffles Avenue broadleaf frontage",

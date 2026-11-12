@@ -23,17 +23,17 @@
   "placement": "Clip each original polygon to the classified-ground terrain grid and preserve its clearings. Exclude the complete road, protection and apron corridor, every mapped building, water and the existing authored temporary stands, with a 12 m safety buffer. Place trees in jittered 12 m cells at least 5 m inside each woodland polygon. Road geometry, protection, runoff and all measured ground heights remain unchanged.",
   "tree_estimates": {
     "interior_height_m": [
-      17,
-      28
+      15,
+      31
     ],
-    "edge_minimum_m": 12,
+    "edge_minimum_m": 10,
     "spacing_m": 12,
     "jitter_m": 3.6,
-    "detailed_distance_from_road_m": 65,
+    "detailed_distance_from_road_m": 250,
     "untagged_conifer_fraction": 0.5,
-    "uncertainty": "Individual positions, heights, density and untagged species proportions are original reference-guided reconstruction. Approximate mature mixed/conifer forms, not precise species assignments. Foliage uses the existing accepted TreeCanopy atlas; no video pixels are shipped."
+    "uncertainty": "Tree positions, heights and untagged species proportions remain original reconstruction inside actual mapped woodland. Seeded height variation removes the previous uniform12m dwarf edge. Evergreen crown width narrows at mapped edges while preserving mature height; broadleaf crown height remains constrained to clearings. No new forest or clearing removal."
   },
-  "geometry_budget": "At most 600,000 new woodland triangles per venue. Remove the old four-row station bands. Near trees retain detailed trunks and leaf clusters. Distant trees use layered foliage cards with varied heights and outlines.",
+  "geometry_budget": "Preserve mature tree silhouettes throughout the visible slopes. Detailed trees extend250m from every road station. Every evergreen has a grounded trunk and8\u201318 tapered foliage whorls; distant broadleaf uses complete rooted tree silhouettes. Geometry is partitioned through the existing400000triangle perasset limit. The former600000triangle authoring target no longer justifies suspended low-detail crowns in visible scenery.",
   "ground_source": "../scenery-ground.json",
   "reference": {
     "path": "build/reviews/spa/reference/final-676.00.jpg",
@@ -60,5 +60,6 @@
         "setback_m": 30
       }
     ]
-  }
+  },
+  "silhouette_correction": "woodland-silhouette-correction.json"
 }

@@ -78,7 +78,7 @@
         0.0,
         755.462336
       ],
-      "name": "Pit straight and T1–3",
+      "name": "Pit straight and T1\u20133",
       "reviewed_video_seconds": [
         530,
         534,
@@ -96,7 +96,7 @@
         614,
         1148.7
       ],
-      "observed": "Long white pit buildings face a covered red crowd stand, with bright paired floodlights and yellow pit-edge paint. The first complex has close mesh fences, individual red-white kerbs and paved escape lanes. The actual driver-LEFT pit footprint crosses native zero, approximately4769→163m in the corrected frame. The old4896m center label is historical and superseded.",
+      "observed": "Long white pit buildings face a covered red crowd stand, with bright paired floodlights and yellow pit-edge paint. The first complex has close mesh fences, individual red-white kerbs and paved escape lanes. The actual driver-LEFT pit footprint crosses native zero, approximately4769\u2192163m in the corrected frame. The old4896m center label is historical and superseded.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
     },
     {
@@ -105,7 +105,7 @@
         604.275906,
         1108.162052
       ],
-      "name": "Republic Boulevard T4–5",
+      "name": "Republic Boulevard T4\u20135",
       "reviewed_video_seconds": [
         618,
         622,
@@ -120,14 +120,17 @@
         1108.162052,
         1858.058552
       ],
-      "name": "Raffles Boulevard T6–7",
+      "name": "Raffles Boulevard T6\u20137",
       "reviewed_video_seconds": [
         229.74,
         630,
+        632,
+        634,
+        636,
         740.27,
         842.38
       ],
-      "observed": "Glass office and hotel facades have repeated window mullions. Large yellow hatched junctions, city lamps and close barriers define Raffles Boulevard. Millenia, Suntec and Marina Square use their mapped positions, with trees breaking up the building walls.",
+      "observed": "Glass office and hotel facades have repeated window mullions. Large yellow hatched junctions, city lamps and close barriers define Raffles Boulevard. Millenia, Suntec and Marina Square use their mapped positions, with trees breaking up the building walls. Direct 632/634/636 s continues through T7 and the T7\u2013T8 straight, with the temporary Stamford spectators close on driver RIGHT.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
     },
     {
@@ -136,9 +139,15 @@
         1858.058552,
         2704.016319
       ],
-      "name": "Stamford, Padang and T8–T10",
-      "reviewed_video_seconds": [],
-      "observed": "The Old City Hall colonnade and former Supreme Court give the Padang section its pale civic architecture. A broad lawn and mature tree canopy sit behind close fencing. Low cricket and recreation clubs face them. Kerbs and yellow junction marks remain distinct.",
+      "name": "Stamford, Padang and T8\u2013T10",
+      "reviewed_video_seconds": [
+        638,
+        638.17,
+        639,
+        640,
+        641
+      ],
+      "observed": "The Old City Hall colonnade and former Supreme Court give the Padang section its pale civic architecture. A broad lawn and mature tree canopy sit behind close fencing. Low cricket and recreation clubs face them. Kerbs and yellow junction marks remain distinct. Direct 638 s is RIGHT T8; 640\u2013641 s faces toward T9 with the rounded Swiss\u00f4tel tower ahead/right above the 30 m Raffles City podium.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
     },
     {
@@ -149,8 +158,6 @@
       ],
       "name": "Anderson Bridge and Fullerton hairpin",
       "reviewed_video_seconds": [
-        638.17,
-        639,
         642,
         645,
         646,
@@ -208,10 +215,13 @@
       "reviewed_video_seconds": [
         530,
         534,
+        536.06,
         538,
-        536.06
+        1254,
+        1255,
+        1255.8
       ],
-      "observed": "The Flyer wheel, low retail base, pit entry and terraces frame the final corners. Bright lights, compact red-white kerbs and yellow paved edges lead back to the white pit roof and main stand. Protection should follow the final curves continuously.",
+      "observed": "The Flyer wheel, low retail base, pit entry and terraces frame the final corners. Bright lights, compact red-white kerbs and yellow paved edges lead back to the white pit roof and main stand. Protection should follow the final curves continuously. Continuous 1254/1255/1255.8 s directly shows the ECP viaduct deck, underside beams and forked piers through the Flyer right/left sequence. The1257 s trackside cut is excluded as a matching cockpit pose.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
     }
   ],
@@ -240,6 +250,31 @@
       "title": "Esplanade architecture",
       "url": "https://www.esplanade.com/about-us/our-story/architecture",
       "supports": "Two glazed shell roofs with projecting aluminium sunshades."
+    },
+    {
+      "title": "Swiss\u00f4tel The Stamford owner 2023 factsheet",
+      "url": "https://downloads.swissotel.com/pdf/sts-swissotel-the-stamford-factsheet-2023/",
+      "supports": "226 m and 73 floors; balcony rooms. These owner dimensions agree with retained height and level tags."
+    },
+    {
+      "title": "Swiss\u00f4tel owner exterior photograph",
+      "url": "https://www.swissotel.com/assets/0/92/2119/3396/3435/3437/6442451796/f3c9833b-0553-4ce6-943c-94eb6f13f730.jpg",
+      "supports": "Curved balcony grid, flatter service rear, glazed upper crown, pale cap, lower Fairmont wings and rectangular office tower. Geometry is reconstructed; pixels are not used as textures."
+    },
+    {
+      "title": "Swiss\u00f4tel SKAI bar",
+      "url": "https://www.swissotel.com/hotels/singapore-stamford/bars/skai-bar/",
+      "supports": "Level 70 upper venue, consistent with the glazed crown location."
+    },
+    {
+      "title": "Singapore GP 2025 Circuit Park Map",
+      "url": "https://storage.singaporegp.sg/web/2025/circuit-park-map/circuit-park-map.pdf",
+      "supports": "Stamford Grandstand on driver RIGHT between T7 and T8 beside War Memorial Park. The map explicitly is not drawn to scale."
+    },
+    {
+      "title": "Singapore GP Stamford Grandstand ticket page",
+      "url": "https://singaporegp.sg/en/tickets/general-tickets/grandstands/stamford-grandstand/",
+      "supports": "Grandstand identity and T7\u2013T8 location."
     }
   ],
   "uncertainties": [
@@ -259,7 +294,7 @@
     "mapped_nearest_station_m": 4519.537779206614,
     "mapped_driver_side": "left",
     "mapped_centerline_distance_m": 80.6327473039337,
-    "geographic_check": "At the re-registered native 4093.713 m viewpoint, the mapped wheel is approximately 375.6 m forward and 2.2 m right of the source tangent. The original 4100 m nominal estimate remains a pose estimate with ±100 m uncertainty; it is not a surveyed camera reconstruction.",
+    "geographic_check": "At the re-registered native 4093.713 m viewpoint, the mapped wheel is approximately 375.6 m forward and 2.2 m right of the source tangent. The original 4100 m nominal estimate remains a pose estimate with \u00b1100 m uncertainty; it is not a surveyed camera reconstruction.",
     "camera_warning": "This is a native scene/map/FOV registration estimate, not a surveyed camera reconstruction. Footprint/operator dimensions remain separate evidence.",
     "runtime_gate": "Direct reference now available; packaged skyline/rim/capsule comparison still required."
   },
@@ -347,11 +382,11 @@
       }
     ],
     "confirmed_corrections": [
-      "610/614s are openingT1–T3 sequence views, not the later RepublicBoulevard sector.",
+      "610/614s are openingT1\u2013T3 sequence views, not the later RepublicBoulevard sector.",
       "229.74/630s show the long Pirelli-lined RafflesBoulevard approach, not the pit straight.",
       "1148.7s shows the opening grandstand complex, notStamford/Padang.",
       "1046.6s is an external side view on the pit straight, not the new waterfront straight.",
-      "639/642/645s contain the AndersonBridge/Fullerton sequence;642s directly shows the historic white arch bridge."
+      "638\u2013641 s is T8 and the approach to T9, with Swiss\u00f4tel ahead. At 642 s a hard cut jumps to Anderson Bridge; 645 s remains in the Anderson/Fullerton sequence."
     ],
     "direct_landmark_frames": [
       {
@@ -440,7 +475,7 @@
       "before_identity": "EsplanadeDrive, lap1, HUD1:11.154",
       "after_video_seconds": 653,
       "after_identity": "Pit straight, lap2, previous lap1:38.546",
-      "conclusion": "A cut removes the intervening T14–T19 sequence at this point. Those corners are not implicitly observed between these frames."
+      "conclusion": "A cut removes the intervening T14\u2013T19 sequence at this point. Those corners are not implicitly observed between these frames."
     }
   },
   "T11_direct_registration": {
@@ -472,15 +507,15 @@
         "pose": "Within Anderson Bridge; same lap3 and monotonic lapclock."
       }
     ],
-    "continuity": "HUD49.5s at675 through55.5s at681 with same Lap3. Distinct from638–642 sequence, which cuts44.3→1:01.1 and cannot establish T11.",
-    "native_station_registration": "Right-hand event corner near2690–2718m, followed by mapped T12 near2795m and Anderson Bridge. Approximate station uncertainty35m for the video apex; fit uses geometric street axes rather than elapsed-time interpolation.",
+    "continuity": "HUD49.5s at675 through55.5s at681 with same Lap3. Distinct from638\u2013642 sequence, which cuts44.3\u21921:01.1 and cannot establish T11.",
+    "native_station_registration": "Right-hand event corner near2690\u20132718m, followed by mapped T12 near2795m and Anderson Bridge. Approximate station uncertainty35m for the video apex; fit uses geometric street axes rather than elapsed-time interpolation.",
     "source_radius_estimate_m": 11,
     "source_radius_uncertainty_m": 4,
     "short_exit_native_fit_m": [
       2721,
       2731
     ],
-    "reason_for_short_exit": "The road begins the opposite T12 bend shortly afterward. Fitting a longer2730–2750m exit rotated the tangent and inflated displacement from2.557m to7.855m.",
+    "reason_for_short_exit": "The road begins the opposite T12 bend shortly afterward. Fitting a longer2730\u20132750m exit rotated the tangent and inflated displacement from2.557m to7.855m.",
     "tangent_line_max_residual_m": [
       0.15848246827668966,
       0.03667563235056975
@@ -516,5 +551,49 @@
       "evidence_kind": "Mapped plan and tagged dimensions, not a surveyed architectural drawing."
     },
     "runtime_approval": false
+  },
+  "stamford_context_review": {
+    "source": "stamford-context-review.json",
+    "direct_video_seconds": [
+      632,
+      634,
+      636,
+      638,
+      640,
+      641
+    ],
+    "native_targets_m": [
+      1800,
+      1850,
+      1950,
+      2000,
+      2080
+    ],
+    "status": "Mapped building parts and temporary stand authored; fresh packaged comparison pending."
+  },
+  "flyer_viaduct_review": {
+    "source": "flyer-viaduct-review.json",
+    "source_way_ids": [
+      39961203,
+      122067631,
+      21697558
+    ],
+    "continuous_video_seconds": [
+      1250.81,
+      1254,
+      1255,
+      1255.8
+    ],
+    "intended_overhead_native_ranges_m": [
+      [
+        1050,
+        1059
+      ],
+      [
+        4305,
+        4365
+      ]
+    ],
+    "status": "Source-authored mapped viaduct; fresh packaged review pending."
   }
 }

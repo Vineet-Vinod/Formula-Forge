@@ -721,3 +721,63 @@ def test_skypark_closes_actual_concave_footprint(scene: CircuitScene, monkeypatc
     assert edge_counts
     assert all(count == 1 and edge_counts[(end, start)] == 1
                for (start, end), count in edge_counts.items())
+
+
+@pytest.mark.parametrize(
+    ('arc_gap', 'center_chord', 'owner_z', 'nearest_z', 'expected_z'),
+    [(31.612, 24.434, 62.09, 59.12, 59.12), (2373.0, 1.0, 6.2, 0.0, 6.2)],
+    ids=['austria-local-uphill-bend', 'japan-separated-crossing'],
+)
+def test_surface_projection_distinguishes_local_bend_from_separate_branch(
+    scene: CircuitScene, monkeypatch: pytest.MonkeyPatch,
+    arc_gap: float, center_chord: float, owner_z: float,
+    nearest_z: float, expected_z: float,
+) -> None:
+    from circuit_dataclasses import RoadStation
+
+    scene.length = 7004
+    owner = RoadStation(4645, 0, 0, owner_z, 1, 0, 6, 0)
+    nearest = RoadStation(owner.station - arc_gap, center_chord, 0, nearest_z, 1, 0, 6, 0)
+    monkeypatch.setattr(scene, 'nearest', lambda x, y: (nearest, center_chord))
+    monkeypatch.setattr(scene, 'at', lambda station: replace(owner, station=station))
+    scene.polygon_surface(box(0, 0, .5, .5), 'Runoff', sample=owner)
+    elevations = [
+        struct.unpack_from('<8f', tile.triangles, offset + 4 + corner * 32)[2] / 100
+        for tile in scene.tiles.values()
+        for offset in range(0, len(tile.triangles), 100)
+        for corner in range(3)
+    ]
+    assert elevations
+    assert elevations == pytest.approx([expected_z] * len(elevations), abs=1e-5)
+
+
+@pytest.mark.parametrize(
+    ('upper_deck', 'separate_branch'),
+    [(False, False), (False, True), (True, True)],
+    ids=['joined-ground-verge', 'separate-lower-branch-verge', 'upper-japan-deck'],
+)
+def test_terrain_verges_keep_ground_join_and_upper_deck_heights(
+    scene: CircuitScene, monkeypatch: pytest.MonkeyPatch, upper_deck: bool, separate_branch: bool,
+) -> None:
+    from circuit_dataclasses import RoadStation
+
+    scene.length = 5807
+    scene.catalogue = replace(scene.catalogue, deck_separation=upper_deck)
+    owner = RoadStation(4645, 0, 0, 6.2, 1, 0, 6, 0)
+    lower = RoadStation(2272 if separate_branch else 4613.388, 1 if separate_branch else 24.434, 0, 0, 1, 0, 6, 0)
+    scene.verge_patches = [(box(0, 0, .5, .5), 'Concrete' if upper_deck else 'Grass', owner)]
+    scene.corridor_mask = box(-100, -100, 100, 100)
+    scene.ground_corridor_mask = scene.corridor_mask
+    monkeypatch.setattr(scene, 'ground', lambda x, y: 0.0)
+    monkeypatch.setattr(scene, 'nearest', lambda x, y: (lower, 1.0))
+    monkeypatch.setattr(scene, 'at', lambda station: replace(owner, station=station))
+    scene.terrain()
+    elevations = [
+        struct.unpack_from('<8f', tile.triangles, offset + 4 + corner * 32)[2] / 100
+        for tile in scene.tiles.values()
+        for offset in range(0, len(tile.triangles), 100)
+        for corner in range(3)
+    ]
+    expected = 6.2 - .015 if upper_deck or separate_branch else 0.0
+    assert elevations
+    assert elevations == pytest.approx([expected] * len(elevations), abs=1e-5)

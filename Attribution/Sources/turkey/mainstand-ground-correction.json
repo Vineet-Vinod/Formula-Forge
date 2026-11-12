@@ -1,0 +1,20 @@
+{
+  "source_footprint": 316361269,
+  "source_road_sha256": "44fca954f6ef64fbc4fef4aba3b723696d44a3a6055ea15b7ea334a1f1897545",
+  "samples": 174,
+  "maximum_terrain_above_seat_before_m": 5.9643245412617105,
+  "minimum_seat_above_ground_after_m": 0.8150000000000013,
+  "podium_ground_datum_m": 24.3493742,
+  "registered_stand_native_range_m": [
+    5202,
+    259
+  ],
+  "foundation_margin_m": 2,
+  "road_relief_under_stand_m": 0.00022785312851425488,
+  "ground_status": "Bounded road-datum reconstruction beneath mapped stand and protected grass forecourt, replacing roof-contaminated DSM. Not surveyed ground.",
+  "reference_frames": [
+    "detail-0329.jpg",
+    "detail-0333.jpg"
+  ],
+  "limitations": "Outlying DSM ground remains uncertain. Stand height and rows retain the existing reference reconstruction. Road, banks, physics and camera are unchanged."
+}

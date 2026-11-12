@@ -73,7 +73,7 @@
         0,
         650
       ],
-      "name": "Pit straight and T1–3",
+      "name": "Pit straight and T1\u20133",
       "reviewed_video_seconds": [
         100,
         189.36,
@@ -108,7 +108,7 @@
         1450,
         2100
       ],
-      "name": "T5–8 linked infield bends",
+      "name": "T5\u20138 linked infield bends",
       "reviewed_video_seconds": [
         103.5,
         104,
@@ -126,7 +126,7 @@
         2100,
         2650
       ],
-      "name": "T9–10 downhill left braking",
+      "name": "T9\u201310 downhill left braking",
       "reviewed_video_seconds": [
         107,
         108,
@@ -154,7 +154,7 @@
         3450,
         4050
       ],
-      "name": "T12–13 fast right rise",
+      "name": "T12\u201313 fast right rise",
       "reviewed_video_seconds": [
         112,
         862.65
@@ -168,7 +168,7 @@
         4050,
         4900
       ],
-      "name": "Back straight and final right T14–15",
+      "name": "Back straight and final right T14\u201315",
       "reviewed_video_seconds": [
         115,
         165,
@@ -214,7 +214,7 @@
   ],
   "targeted_registration_review": {
     "method": "Direct appearance/topology checks of retained frames and bounded individual Baku reference seeks; source geometry and all native data unchanged.",
-    "notes": "Frame100s shows the Sakhir Tower/opening-corner approach; mapped tower187123438 is native332.79m ondriverRIGHT at91.79m from centerline. It must not be assigned to infield sector1450–2100m. Other sparse overview associations remain approximate until full-lap continuity review; relative station/camera registration is not surveyed.",
+    "notes": "Frame100s shows the Sakhir Tower/opening-corner approach; mapped tower187123438 is native332.79m ondriverRIGHT at91.79m from centerline. It must not be assigned to infield sector1450\u20132100m. Other sparse overview associations remain approximate until full-lap continuity review; relative station/camera registration is not surveyed.",
     "next_gate": "Actual packaged full-lap review and targeted captures in build/reviews/east-final-targets.json; these metadata corrections are not visual approval."
   },
   "registration_review_2026_11_12": {
@@ -260,79 +260,79 @@
         "seconds": 155,
         "official_corner": "T4 exit",
         "native_station_m": 1330,
-        "confidence": "Direct right turn, HUD25.215 and Aramco bridge ahead; station±50m."
+        "confidence": "Direct right turn, HUD25.215 and Aramco bridge ahead; station\u00b150m."
       },
       {
         "seconds": 110,
         "official_corner": "T11",
         "native_station_m": 3233,
-        "confidence": "Direct left turn, HUD57.181, blue/navy inner paint; station±50m."
+        "confidence": "Direct left turn, HUD57.181, blue/navy inner paint; station\u00b150m."
       },
       {
         "seconds": 115,
         "official_corner": "T14",
         "native_station_m": 4693,
-        "confidence": "Direct right turn, HUD1:19.781, red/white inner kerb; station±50m."
+        "confidence": "Direct right turn, HUD1:19.781, red/white inner kerb; station\u00b150m."
       },
       {
         "seconds": 160,
         "official_corner": "T10 exit",
         "native_station_m": 2530,
-        "confidence": "Direct low-speed exit, HUD47.233, outside-right red/white kerb and sand.Station±50m; exact apex not claimed."
+        "confidence": "Direct low-speed exit, HUD47.233, outside-right red/white kerb and sand.Station\u00b150m; exact apex not claimed."
       },
       {
         "seconds": 862.65,
         "official_corner": "T13",
         "native_station_m": 3887,
-        "confidence": "Direct right turn, HUD1:09.377, crypto.com bridge beyond.Station±50m."
+        "confidence": "Direct right turn, HUD1:09.377, crypto.com bridge beyond.Station\u00b150m."
       },
       {
         "seconds": 1030.97,
         "official_corner": "T1 entry",
         "native_station_m": 450,
-        "confidence": "Direct braking approach, HUD7.752, left50mboard and opponent on right.Station±50m."
+        "confidence": "Direct braking approach, HUD7.752, left50mboard and opponent on right.Station\u00b150m."
       },
       {
         "seconds": 102.5,
         "official_corner": "T4 right apex",
         "native_station_m": 1293,
-        "confidence": "Direct tight right turn, HUD23.138; outside sand left.Station±50m."
+        "confidence": "Direct tight right turn, HUD23.138; outside sand left.Station\u00b150m."
       },
       {
         "seconds": 103.5,
         "official_corner": "T5 approach",
         "native_station_m": 1470,
-        "confidence": "Direct approach afterT4, grass/sand island left, Aramco right. Station±60m."
+        "confidence": "Direct approach afterT4, grass/sand island left, Aramco right. Station\u00b160m."
       },
       {
         "seconds": 104,
         "official_corner": "T5 linked entry",
         "native_station_m": 1533,
-        "confidence": "Direct left entry afterT4, blue/green outside paint left, Santander barriers ahead.Station±60m."
+        "confidence": "Direct left entry afterT4, blue/green outside paint left, Santander barriers ahead.Station\u00b160m."
       },
       {
         "seconds": 104.5,
-        "official_corner": "T6–T7 linked sequence",
+        "official_corner": "T6\u2013T7 linked sequence",
         "native_station_m": 1690,
-        "confidence": "Direct linked-road view beforeT8, red/white inner kerb right and blue/green escape left. Sequence identity is direct; exact per-apex station is estimated±80m."
+        "confidence": "Direct linked-road view beforeT8, red/white inner kerb right and blue/green escape left. Sequence identity is direct; exact per-apex station is estimated\u00b180m."
       },
       {
         "seconds": 107,
         "official_corner": "T9 left entry",
         "native_station_m": 2370,
-        "confidence": "Direct left entry, HUD43.523, LasVegas barrier left and MSC far outside.Station±50m."
+        "confidence": "Direct left entry, HUD43.523, LasVegas barrier left and MSC far outside.Station\u00b150m."
       },
       {
         "seconds": 108,
         "official_corner": "T10 exit",
         "native_station_m": 2540,
-        "confidence": "Direct low-speed exit, HUD48.013, outside-right red/white kerb and navy/beige apron.Station±50m."
+        "confidence": "Direct low-speed exit, HUD48.013, outside-right red/white kerb and navy/beige apron.Station\u00b150m."
       },
       {
         "seconds": 112,
         "official_corner": "T12 right crest",
         "native_station_m": 3592,
-        "confidence": "Direct fast right, HUD1:05.911, blue/red outside escape left and insidePZero panel right.Station±50m."
+        "confidence": "Direct fast right, HUD1:05.911, blue/red outside escape left and insidePZero panel right.Station\u00b150m."
       }
     ],
     "remaining_gap": "All named circuit sectors now have direct forward-view witnesses. Exact station, width and intermediate scenery positions remain reconstruction estimates and require matched runtime review; this is not a per-point visual approval.",
@@ -414,7 +414,7 @@
       946.81
     ],
     "context_note": "These retained overview frames were previously assigned to unrelated sectors. They remain available as visual context but no longer count as precise station evidence.",
-    "extraction_review": "Original stills extracted individually at640px with ffmpeg-threads1 under512MB virtual cap; observed peak86–87MB. The edited clip jumps fromT5 onlap4 at448s toT13 onlap5 at449s, so elapsed-time interpolation is explicitly rejected."
+    "extraction_review": "Original stills extracted individually at640px with ffmpeg-threads1 under512MB virtual cap; observed peak86\u201387MB. The edited clip jumps fromT5 onlap4 at448s toT13 onlap5 at449s, so elapsed-time interpolation is explicitly rejected."
   },
   "pit_dimension_correction": {
     "source": "pit-dimension-review.json",
@@ -425,5 +425,18 @@
       "evidence_kind": "Mapped plan and tagged dimensions, not a surveyed architectural drawing."
     },
     "runtime_approval": false
+  },
+  "runoff_paint_correction": {
+    "source": "runoff-paint-review.json",
+    "continuous_video_seconds": [
+      109.8,
+      110,
+      110.2
+    ],
+    "native_station_range_m": [
+      3165,
+      3290
+    ],
+    "status": "Source-backed paint authored; packaged comparison pending."
   }
 }

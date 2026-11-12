@@ -17,7 +17,7 @@
         0.0,
         755.462336
       ],
-      "name": "Pit straight and T1–3",
+      "name": "Pit straight and T1\u20133",
       "reviewed_video_seconds": [
         530,
         534,
@@ -35,7 +35,7 @@
         614,
         1148.7
       ],
-      "observed": "Long white pit buildings face a covered red crowd stand, with bright paired floodlights and yellow pit-edge paint. The first complex has close mesh fences, individual red-white kerbs and paved escape lanes. The mapped pit footprint is on the driver left near native station 4896.",
+      "observed": "Long white pit buildings face a covered red crowd stand, with bright paired floodlights and yellow pit-edge paint. The first complex has close mesh fences, individual red-white kerbs and paved escape lanes. The actual driver-LEFT pit footprint crosses native zero, approximately4769\u2192163m in the corrected frame. The old4896m center label is historical and superseded.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
     },
     {
@@ -44,7 +44,7 @@
         604.275906,
         1108.162052
       ],
-      "name": "Republic Boulevard T4–5",
+      "name": "Republic Boulevard T4\u20135",
       "reviewed_video_seconds": [
         618,
         622,
@@ -59,14 +59,17 @@
         1108.162052,
         1858.058552
       ],
-      "name": "Raffles Boulevard T6–7",
+      "name": "Raffles Boulevard T6\u20137",
       "reviewed_video_seconds": [
         229.74,
         630,
+        632,
+        634,
+        636,
         740.27,
         842.38
       ],
-      "observed": "Glass office and hotel facades have repeated window mullions. Large yellow hatched junctions, city lamps and close barriers define Raffles Boulevard. Millenia, Suntec and Marina Square use their mapped positions, with trees breaking up the building walls.",
+      "observed": "Glass office and hotel facades have repeated window mullions. Large yellow hatched junctions, city lamps and close barriers define Raffles Boulevard. Millenia, Suntec and Marina Square use their mapped positions, with trees breaking up the building walls. Direct 632/634/636 s continues through T7 and the T7\u2013T8 straight, with the temporary Stamford spectators close on driver RIGHT.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
     },
     {
@@ -75,9 +78,15 @@
         1858.058552,
         2704.016319
       ],
-      "name": "Stamford, Padang and T8–T10",
-      "reviewed_video_seconds": [],
-      "observed": "The Old City Hall colonnade and former Supreme Court give the Padang section its pale civic architecture. A broad lawn and mature tree canopy sit behind close fencing. Low cricket and recreation clubs face them. Kerbs and yellow junction marks remain distinct.",
+      "name": "Stamford, Padang and T8\u2013T10",
+      "reviewed_video_seconds": [
+        638,
+        638.17,
+        639,
+        640,
+        641
+      ],
+      "observed": "The Old City Hall colonnade and former Supreme Court give the Padang section its pale civic architecture. A broad lawn and mature tree canopy sit behind close fencing. Low cricket and recreation clubs face them. Kerbs and yellow junction marks remain distinct. Direct 638 s is RIGHT T8; 640\u2013641 s faces toward T9 with the rounded Swiss\u00f4tel tower ahead/right above the 30 m Raffles City podium.",
       "registration": "Approximate sector association from road shape, map and landmarks, not linear playback time. Bounds are authoring intervals, not surveyed corner boundaries."
     },
     {
@@ -88,8 +97,6 @@
       ],
       "name": "Anderson Bridge and Fullerton hairpin",
       "reviewed_video_seconds": [
-        638.17,
-        639,
         642,
         645,
         646,
@@ -11370,7 +11377,7 @@
     },
     {
       "osm_id": 257192963,
-      "name": "Cathedral Café",
+      "name": "Cathedral Caf\u00e9",
       "source_xy_m": [
         -1366.416,
         154.325
@@ -17464,7 +17471,7 @@
       "height_tag": "140",
       "min_height_tag": "30",
       "source_dataset": "raffles-context.osm.json.gz",
-      "note": "The aggregate low podium reconstruction supersedes separate duplicate rendering of the 10 m low part. Heights and the 30–37 m support conflict are documented in raffles-context-review.json."
+      "note": "The aggregate low podium reconstruction supersedes separate duplicate rendering of the 10 m low part. Heights and the 30\u201337 m support conflict are documented in raffles-context-review.json."
     },
     {
       "osm_id": 591301835,
@@ -17500,7 +17507,7 @@
       "height_tag": "30",
       "min_height_tag": "10",
       "source_dataset": "raffles-context.osm.json.gz",
-      "note": "The aggregate low podium reconstruction supersedes separate duplicate rendering of the 10 m low part. Heights and the 30–37 m support conflict are documented in raffles-context-review.json."
+      "note": "The aggregate low podium reconstruction supersedes separate duplicate rendering of the 10 m low part. Heights and the 30\u201337 m support conflict are documented in raffles-context-review.json."
     },
     {
       "osm_id": 591301844,
@@ -17540,7 +17547,7 @@
       "height_tag": "30",
       "min_height_tag": "10",
       "source_dataset": "raffles-context.osm.json.gz",
-      "note": "The aggregate low podium reconstruction supersedes separate duplicate rendering of the 10 m low part. Heights and the 30–37 m support conflict are documented in raffles-context-review.json."
+      "note": "The aggregate low podium reconstruction supersedes separate duplicate rendering of the 10 m low part. Heights and the 30\u201337 m support conflict are documented in raffles-context-review.json."
     },
     {
       "osm_id": 591301847,
@@ -17580,7 +17587,7 @@
       "height_tag": "30",
       "min_height_tag": "10",
       "source_dataset": "raffles-context.osm.json.gz",
-      "note": "The aggregate low podium reconstruction supersedes separate duplicate rendering of the 10 m low part. Heights and the 30–37 m support conflict are documented in raffles-context-review.json."
+      "note": "The aggregate low podium reconstruction supersedes separate duplicate rendering of the 10 m low part. Heights and the 30\u201337 m support conflict are documented in raffles-context-review.json."
     },
     {
       "osm_id": 591619207,
@@ -17672,7 +17679,7 @@
       "height_tag": "10",
       "min_height_tag": "0",
       "source_dataset": "raffles-context.osm.json.gz",
-      "note": "The aggregate low podium reconstruction supersedes separate duplicate rendering of the 10 m low part. Heights and the 30–37 m support conflict are documented in raffles-context-review.json."
+      "note": "The aggregate low podium reconstruction supersedes separate duplicate rendering of the 10 m low part. Heights and the 30\u201337 m support conflict are documented in raffles-context-review.json."
     }
   ],
   "dimensions_policy": "OSM XY footprints are registered geographic evidence. Tagged height and levels are retained verbatim; missing/zero heights are unknown. Roof/detail sizes and sparse-vegetation spacing in native authoring are visual estimates pending cockpit comparison.",
@@ -17793,7 +17800,7 @@
       "vertical_uncertainty_m": 1.0,
       "station_uncertainty_m": 50.0,
       "method": "Read relative heights from the published numerical extremum labels and drawn trace, then register individual official corners to retained native centerline geometry using FIA maps. Intermediate heights are graphical estimates, not measurements.",
-      "registration_notes": "The old20.046mCityHallpeak near2408m is inconsistent with the F1diagram5.3mrange. The real profile has a modest bridge hump betweenT13andT14. Old2016T1–15are retained; currentT16–19correspond to oldT20–23. The new bypass between oldT15/T20is interpolated nearly flat, not copied from removed corners.",
+      "registration_notes": "The old20.046mCityHallpeak near2408m is inconsistent with the F1diagram5.3mrange. The real profile has a modest bridge hump betweenT13andT14. Old2016T1\u201315are retained; currentT16\u201319correspond to oldT20\u201323. The new bypass between oldT15/T20is interpolated nearly flat, not copied from removed corners.",
       "supersedes": "Coarse GLO-90 road profile remains retained as source evidence, not as the racing deck. No new lidar or survey is claimed.",
       "controls_file": "elevation-corrections.json"
     }
@@ -18307,7 +18314,7 @@
   "pit_lane": {
     "source": "pit-lane.json",
     "visual_only_outside_pit_wall": true,
-    "registration": "Actual mapped pit compound49890775 replaces the former generic block. The mapped compound projects to native4768.76→162.65m across zero. Its three road-facing segments stand11.292–11.459m,15.405–15.656m and12.768–16.367m beyond the road edge. The paving control is rounded by less than10m at the longitudinal ends and ends at a constant10.9m offset before the nearest garage face. Local unstriped apron polygons meet each variable mapped front and exclude the occupied building; the generic outer white stripe therefore stays outside all garage bays. Mapped plan registration has approximately±2m uncertainty. Facade/roof dimensions remain reconstructed. Paving stays beyond a closed pit wall; racing XYZ, banking and handling are unchanged. See pit-dimension-review.json.",
+    "registration": "Actual mapped pit compound49890775 replaces the former generic block. The mapped compound projects to native4768.76\u2192162.65m across zero. Its three road-facing segments stand11.292\u201311.459m,15.405\u201315.656m and12.768\u201316.367m beyond the road edge. The paving control is rounded by less than10m at the longitudinal ends and ends at a constant10.9m offset before the nearest garage face. Local unstriped apron polygons meet each variable mapped front and exclude the occupied building; the generic outer white stripe therefore stays outside all garage bays. Mapped plan registration has approximately\u00b12m uncertainty. Facade/roof dimensions remain reconstructed. Paving stays beyond a closed pit wall; racing XYZ, banking and handling are unchanged. See pit-dimension-review.json.",
     "garage_front_outer_offset_m": 10.9,
     "source_world_frame": "Native east/north station frame; +1 driver right, -1 driver left. No route-origin rotation.",
     "start_m": 4760,
@@ -18327,7 +18334,7 @@
     "mapped_nearest_station_m": 4519.537779206614,
     "mapped_driver_side": "left",
     "mapped_centerline_distance_m": 80.6327473039337,
-    "geographic_check": "At the re-registered native 4093.713 m viewpoint, the mapped wheel is approximately 375.6 m forward and 2.2 m right of the source tangent. The original 4100 m nominal estimate remains a pose estimate with ±100 m uncertainty; it is not a surveyed camera reconstruction.",
+    "geographic_check": "At the re-registered native 4093.713 m viewpoint, the mapped wheel is approximately 375.6 m forward and 2.2 m right of the source tangent. The original 4100 m nominal estimate remains a pose estimate with \u00b1100 m uncertainty; it is not a surveyed camera reconstruction.",
     "camera_warning": "This is a native scene/map/FOV registration estimate, not a surveyed camera reconstruction. Footprint/operator dimensions remain separate evidence.",
     "runtime_gate": "Direct reference now available; packaged skyline/rim/capsule comparison still required."
   },
@@ -18338,7 +18345,179 @@
     "runtime_status": "Awaiting regenerated packaged review.",
     "native_profile_changed": false
   },
-  "reference_registration_review": "reference-index.json:registration_review_2026_11_12",
+  "reference_registration_review": {
+    "scope": "Known false associations corrected from individually retained frames/contact sheets. This is a partial index audit; uncertain old overview associations are not promoted to verified poses.",
+    "retained_former_associations": [
+      {
+        "sector_id": "singapore-01",
+        "reviewed_video_seconds": [
+          536.06,
+          530,
+          534,
+          538,
+          542,
+          566,
+          586,
+          590,
+          594,
+          598,
+          602,
+          608
+        ]
+      },
+      {
+        "sector_id": "singapore-02",
+        "reviewed_video_seconds": [
+          610,
+          614,
+          618,
+          622,
+          626,
+          630,
+          638.17
+        ]
+      },
+      {
+        "sector_id": "singapore-03",
+        "reviewed_video_seconds": [
+          842.38,
+          740.27
+        ]
+      },
+      {
+        "sector_id": "singapore-04",
+        "reviewed_video_seconds": [
+          1148.7
+        ]
+      },
+      {
+        "sector_id": "singapore-05",
+        "reviewed_video_seconds": [
+          944.49,
+          1352.92
+        ]
+      },
+      {
+        "sector_id": "singapore-06",
+        "reviewed_video_seconds": [
+          433.95,
+          1455.02
+        ]
+      },
+      {
+        "sector_id": "singapore-07",
+        "reviewed_video_seconds": [
+          1046.6,
+          1250.81
+        ]
+      },
+      {
+        "sector_id": "singapore-08",
+        "reviewed_video_seconds": [
+          530,
+          534,
+          538,
+          536.06
+        ]
+      }
+    ],
+    "confirmed_corrections": [
+      "610/614s are openingT1\u2013T3 sequence views, not the later RepublicBoulevard sector.",
+      "229.74/630s show the long Pirelli-lined RafflesBoulevard approach, not the pit straight.",
+      "1148.7s shows the opening grandstand complex, notStamford/Padang.",
+      "1046.6s is an external side view on the pit straight, not the new waterfront straight.",
+      "638\u2013641 s is T8 and the approach to T9, with Swiss\u00f4tel ahead. At 642 s a hard cut jumps to Anderson Bridge; 645 s remains in the Anderson/Fullerton sequence."
+    ],
+    "direct_landmark_frames": [
+      {
+        "seconds": 642,
+        "landmark": "AndersonBridge white arch",
+        "native_sector_m": [
+          2700,
+          3100
+        ],
+        "confidence": "Direct structure identity and circuit-map sequence; no exact camera station claimed."
+      },
+      {
+        "seconds": 1250.81,
+        "landmark": "SingaporeFlyer above the waterfront straight",
+        "registration": "Existing flyer_reference_registration remains unchanged."
+      }
+    ],
+    "remaining_uncertainties": [
+      "Rear-facing618/622/626s support road/building context but are not matched forward RepublicBoulevard poses.",
+      "Old842.38/740.27/944.49/433.95/1455.02 overview-to-sector labels require additional primary-map/minimap reconciliation. They are not evidence of exact station fidelity.",
+      "The same clip contains edited corner/lap jumps. Playback time must not be interpolated into native station.",
+      "TrueT14/T15 and intermediate final-sector pose matching remains incomplete. Existing Flyer1250.81s and final530s views are independent witnesses; they do not make the cut interval continuous."
+    ],
+    "context_only_unregistered_seconds": [
+      1046.6,
+      618,
+      622,
+      626,
+      842.38,
+      740.27,
+      944.49,
+      433.95,
+      1455.02
+    ],
+    "acceptance_status": "Partial reference registration audit only; no new runtime visual acceptance.",
+    "primary_fia_2025_map": {
+      "url": "https://www.fia.com/system/files/decision-document/2025_singapore_grand_prix_-_event_notes_-_circuit_map_pit_lane_emergency_exits_map_and_quarantine_zone.pdf",
+      "page": 4,
+      "retained_pdf_sha256": "d36769fe74365d21594000c0bf4e9be4fccb4c30822678e166e89bdbad0a7625",
+      "published_length_m": 4927,
+      "retained_native_length_m": 4940,
+      "length_note": "Different source epochs/registration are disclosed; this reference-index audit does not rescale or change the native course."
+    },
+    "native_corner_registration_m": {
+      "T1": 325.505959,
+      "T2": 402.928727,
+      "T3": 489.422627,
+      "T4": 694.985699,
+      "T5": 883.43425,
+      "T6": 1337.973104,
+      "T7": 1712.478558,
+      "T8": 1925.229242,
+      "T9": 2112.438148,
+      "T10": 2574.929437,
+      "T11": 2690.662745,
+      "T12": 2798.823191,
+      "T13": 2964.961013,
+      "T14": 3506.283961,
+      "T15": 3759.07258,
+      "T16": 4240.869811,
+      "T17": 4341.465441,
+      "T18": 4618.564489,
+      "T19": 4715.251259
+    },
+    "station_uncertainty_m": 60,
+    "mislabelled_t14_files": {
+      "files_preserved": true,
+      "actual_pose": "T13 left hairpin and EsplanadeDrive after it, not T14.",
+      "direct_seconds": [
+        642,
+        645,
+        646,
+        647,
+        648,
+        649,
+        650,
+        651,
+        652
+      ],
+      "witness": "Historic AndersonBridge at642s precedes the646s LEFT hairpin. Primary FIA map and native tangents establish T13 asLEFT at2966m and T14 asRIGHT at3513m. The subsequent AMEX-lined straight is EsplanadeDrive.",
+      "building_identity": "Curved modern Fullerton-precinct facade at the hairpin. OneFullerton and WaterboatHouse footprints provide nearby context; exact source-raster building ownership is not claimed.",
+      "reject": "Never compare runtime3520m/T14 to t14-detail-646.jpg solely because of its legacy filename."
+    },
+    "verified_edit_gap": {
+      "before_video_seconds": 652,
+      "before_identity": "EsplanadeDrive, lap1, HUD1:11.154",
+      "after_video_seconds": 653,
+      "after_identity": "Pit straight, lap2, previous lap1:38.546",
+      "conclusion": "A cut removes the intervening T14\u2013T19 sequence at this point. Those corners are not implicitly observed between these frames."
+    }
+  },
   "T11_direct_registration": {
     "status": "Qualified event-junction estimate from direct cut-free supplied video and primary operator route. No wrong optional route branch proved.",
     "reference_file": "Saved/Refs/singapore.mp4",
@@ -18368,15 +18547,15 @@
         "pose": "Within Anderson Bridge; same lap3 and monotonic lapclock."
       }
     ],
-    "continuity": "HUD49.5s at675 through55.5s at681 with same Lap3. Distinct from638–642 sequence, which cuts44.3→1:01.1 and cannot establish T11.",
-    "native_station_registration": "Right-hand event corner near2690–2718m, followed by mapped T12 near2795m and Anderson Bridge. Approximate station uncertainty35m for the video apex; fit uses geometric street axes rather than elapsed-time interpolation.",
+    "continuity": "HUD49.5s at675 through55.5s at681 with same Lap3. Distinct from638\u2013642 sequence, which cuts44.3\u21921:01.1 and cannot establish T11.",
+    "native_station_registration": "Right-hand event corner near2690\u20132718m, followed by mapped T12 near2795m and Anderson Bridge. Approximate station uncertainty35m for the video apex; fit uses geometric street axes rather than elapsed-time interpolation.",
     "source_radius_estimate_m": 11,
     "source_radius_uncertainty_m": 4,
     "short_exit_native_fit_m": [
       2721,
       2731
     ],
-    "reason_for_short_exit": "The road begins the opposite T12 bend shortly afterward. Fitting a longer2730–2750m exit rotated the tangent and inflated displacement from2.557m to7.855m.",
+    "reason_for_short_exit": "The road begins the opposite T12 bend shortly afterward. Fitting a longer2730\u20132750m exit rotated the tangent and inflated displacement from2.557m to7.855m.",
     "tangent_line_max_residual_m": [
       0.15848246827668966,
       0.03667563235056975
@@ -18407,5 +18586,50 @@
     "status": "Mapped source geometry frozen after emitted checks; native synchronization and packaged review pending.",
     "former_generic_body_rejected": true,
     "runtime_approval": false
+  },
+  "stamford_context_reconstruction": {
+    "source": "stamford-context-review.json",
+    "direct_video_seconds": [
+      632,
+      634,
+      636,
+      638,
+      640,
+      641
+    ],
+    "native_targets_m": [
+      1800,
+      1850,
+      1950,
+      2000,
+      2080
+    ],
+    "status": "Mapped building parts and temporary stand authored; fresh packaged comparison pending."
+  },
+  "flyer_viaduct_reconstruction": {
+    "source": "flyer-viaduct-review.json",
+    "source_way_ids": [
+      39961203,
+      122067631,
+      21697558
+    ],
+    "continuous_video_seconds": [
+      1250.81,
+      1254,
+      1255,
+      1255.8
+    ],
+    "intended_overhead_native_ranges_m": [
+      [
+        1050,
+        1059
+      ],
+      [
+        4305,
+        4365
+      ]
+    ],
+    "status": "Source-authored mapped viaduct; fresh packaged review pending.",
+    "lighting_review": "flyer-viaduct-review.json: two local cable-height dips, with unchanged irradiance-field inputs."
   }
 }

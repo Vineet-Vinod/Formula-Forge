@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=monaco",
   "tiles": 116,
-  "triangles": 2026656,
+  "triangles": 2026657,
   "road_sha256": "3a7544d64e64e34c445dbf4049745ad0e2fc4f2d8e96dcf6d29b2c8ee7f67df3",
   "terrain_sha256": "f1538f328db1481498922f0c8d143010e2a9bcd9c17cb30b52457605ac30a21a",
   "landmarks": [

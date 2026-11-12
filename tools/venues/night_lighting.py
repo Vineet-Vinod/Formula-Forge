@@ -268,6 +268,11 @@ def jeddah(scene: CircuitScene) -> list[CircuitLight]:
 
 
 def singapore_cable_height(station: float) -> float:
+    for start, low, high, end in ((1005., 1030., 1080., 1105.), (4255., 4280., 4380., 4410.)):
+        if start <= station <= end:
+            weight = min(1., (station - start) / (low - start), (end - station) / (end - high))
+            weight = weight * weight * (3 - 2 * weight)
+            return 15.5 - 6.0 * weight
     if station < 2600 or station > 2920:
         return 15.5
     if station < 2680:
@@ -326,8 +331,8 @@ def singapore(scene: CircuitScene) -> list[CircuitLight]:
     scene.landmarks.append(
         {
             "name": "Singapore floodlight recipe",
-            "structure": "Small race fittings at roughly 7 m intervals along continuous paired cables, supported about every 42 m; pit-side cable posts attach above the garage roof. Separate civic lamps include taller curved streetlamps along Esplanade Drive. Lower race-light line at Anderson Bridge has gradual cable-height transitions.",
-            "reference": "Saved/Refs/singapore.mp4:534,598,614,618,642,650 seconds",
+            "structure": "Small race fittings at roughly 7 m intervals along continuous paired cables, supported about every 42 m; pit-side cable posts attach above the garage roof. Separate civic lamps include taller curved streetlamps along Esplanade Drive. Anderson Bridge and the ECP crossings have gradual cable-height transitions. Estimated 9.5 m ECP fittings remain below the reconstructed soffit; field power and pool radius are unchanged.",
+            "reference": "Saved/Refs/singapore.mp4:534,598,614,618,642,650,1254,1255,1255.8 seconds",
             "confidence": "High for continuous cable strings and separate streetlamps; moderate for bridge distinction; low for metric height/spacing estimates. Cable support registrations are authoring estimates.",
         }
     )
