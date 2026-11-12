@@ -108,6 +108,8 @@ class CircuitScene(MeshScene):
         self.water_shapes: list[Polygon] = []
         self.terrain_cutouts: list[Polygon] = []
         self.ground_patches: list[tuple[Polygon, float, str]] = []
+        self._ground_patch_shapes: tuple[Polygon, ...] = ()
+        self._ground_patch_index: STRtree | None = None
         self.verge_patches: list[tuple[BaseGeometry, str, RoadStation | None]] = []
         self.surface_shapes: list[Polygon] = []
         self.surface_points: list[tuple[Point, Point, Point]] = []
@@ -259,9 +261,14 @@ class CircuitScene(MeshScene):
         return self.at(a.station + t * self.length / len(self.road)), distance
 
     def raw_ground(self, x: float, y: float) -> float:
-        for shape, height, _material in self.ground_patches:
-            if shape.covers(GeoPoint(x, y)):
-                return height
+        if self.ground_patches:
+            shapes = tuple(shape for shape, _height, _material in self.ground_patches)
+            if self._ground_patch_index is None or shapes != self._ground_patch_shapes:
+                self._ground_patch_index = STRtree(shapes)
+                self._ground_patch_shapes = shapes
+            matches = self._ground_patch_index.query(GeoPoint(x, y), predicate="covered_by")
+            if len(matches):
+                return self.ground_patches[int(min(matches))][1]
         grid = self.grid
         cx = max(0.0, min(grid.columns - 1.00001, (x - grid.x) / grid.step))
         cy = max(0.0, min(grid.rows - 1.00001, (y - grid.y) / grid.step))

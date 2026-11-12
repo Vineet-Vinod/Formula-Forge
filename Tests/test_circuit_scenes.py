@@ -131,6 +131,23 @@ def test_bounded_ground_patch_replaces_dsm_and_grounds_details(scene: CircuitSce
     assert paving.intersection(scene.road_mask).area < 0.000001
 
 
+def test_ground_parcels_keep_priority_and_follow_authoring_edits(scene: CircuitScene) -> None:
+    scene.ground_patches.extend([
+        (box(50, -10, 70, 10), 4.0, 'Concrete'),
+        (box(60, -10, 80, 10), 6.0, 'Concrete'),
+    ])
+    assert scene.raw_ground(65, 0) == 4.0
+    assert scene.raw_ground(70, 0) == 4.0
+    assert scene.raw_ground(75, 0) == 6.0
+    scene.ground_patches[0] = (box(40, -10, 55, 10), 8.0, 'Concrete')
+    assert scene.raw_ground(65, 0) == 6.0
+    assert scene.raw_ground(45, 0) == 8.0
+    scene.ground_patches.append((box(81, -10, 90, 10), 9.0, 'Concrete'))
+    assert scene.raw_ground(85, 0) == 9.0
+    scene.ground_patches.clear()
+    assert scene.raw_ground(65, 0) == 3.0
+
+
 def test_escape_surface_follows_road_instead_of_climbing_the_bank(
     scene: CircuitScene,
 ) -> None:
