@@ -1,9 +1,9 @@
 {
   "recipe": "make circuit-assets CIRCUIT=baku",
-  "tiles": 221,
-  "triangles": 3205963,
+  "tiles": 194,
+  "triangles": 3166003,
   "road_sha256": "72c25aeed75ec4db3b06f34baf8249eb8934b256630bb9def874aea84584678c",
-  "terrain_sha256": "9706a6beea5c92b41e20bb4b5b06e9bdbe3d650f81d9bce928cbf8b99538adfd",
+  "terrain_sha256": "83e3e3168f3d6df95e909c93732b14a91dd0f8923ab4df53c65e4beb096a2091",
   "landmarks": [
     {
       "name": "Paved pit lane and working apron",
@@ -117,6 +117,15 @@
       "end_m": 3290,
       "side": 1,
       "material": "PanelNavy"
+    },
+    {
+      "name": "Mapped coastal sea, lagoon and pier decks",
+      "water_area_m2": 2947374.138,
+      "water_level_m": -4.3,
+      "mapped_piers": 6,
+      "water_removed_for_roads_buildings_piers_m2": 40071.789,
+      "source": "coastal-water.json and coastal-provenance.json; original shoreline geometry, no game pixels.",
+      "dimensions_status": "Water is flat in the registered native datum. Pier footprints are mapped; deck levels are estimated from retained shore ground with minimum 0.6 m freeboard. Water only excludes scenery terrain; no physical corridor or native road changes."
     },
     {
       "name": "Muzey M\u0259rk\u0259zi",

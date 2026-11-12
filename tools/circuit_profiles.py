@@ -1,17 +1,81 @@
-"""Apply reference-registered pit-wall offsets to native shoulder profiles."""
+"""Apply registered road and shoulder controls without rebuilding the alignment."""
 
 from __future__ import annotations
 
+import argparse
 import bisect
+import itertools
 import json
+import math
 import re
-import sys
 from pathlib import Path
+from typing import Literal
 
-from circuit_dataclasses import PitLane, ShoulderCorrection, ShoulderCorrections
+from circuit_dataclasses import (
+    ElevationControls,
+    PitLane,
+    RacingRecipe,
+    ShoulderCorrection,
+    ShoulderCorrections,
+)
 from pydantic import TypeAdapter
 
 ROOT = Path(__file__).resolve().parents[1]
+NUMBER = r"[-+]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][-+]?\d+)?"
+
+
+def native_profile(text: str, kind: Literal["Elevation", "Width"]) -> list[tuple[float, float]]:
+    match = re.search(rf"constexpr Track{kind}Point \w+\[\] = \{{(.*?)\n\}};", text, re.DOTALL)
+    if match is None:
+        raise ValueError(f"Missing native {kind} profile")
+    return [(float(a), float(b)) for a, b in re.findall(
+        rf"\{{\s*({NUMBER})f,\s*({NUMBER})f\s*\}}", match[1]
+    )]
+
+
+def replace_profile(
+    text: str, kind: Literal["Elevation", "Width"], controls: list[tuple[float, float]], length: float
+) -> str:
+    if (not all(math.isfinite(value) for row in controls for value in row)
+            or not all(b[0] > a[0] for a, b in itertools.pairwise(controls))
+            or abs(controls[0][0]) > 0.0001 or abs(controls[-1][0] - length) > 0.001
+            or abs(controls[0][1] - controls[-1][1]) > 0.0001):
+        raise ValueError(f"{kind} controls must be ordered and close the complete lap")
+    if kind == "Width" and any(value <= 0 for _, value in controls):
+        raise ValueError("Road widths must be positive")
+    match = re.search(rf"constexpr Track{kind}Point \w+\[\] = \{{(.*?)\n\}};", text, re.DOTALL)
+    if match is None:
+        raise ValueError(f"Missing native {kind} profile")
+    body = "\n" + ",\n".join(f"    {{{station:.6f}f, {value:.6f}f}}" for station, value in controls)
+    return text[:match.start(1)] + body + text[match.end(1):]
+
+
+def apply_racing(slug: str) -> None:
+    source = ROOT / "Attribution/Sources" / slug
+    path = ROOT / "Source/FormulaForge/Native/track_data" / f"{slug}_survey.inc"
+    text = path.read_text()
+    original_width = native_profile(text, "Width")
+    length = original_width[-1][0]
+    elevation_path = source / "elevation-corrections.json"
+    if elevation_path.exists():
+        profile = TypeAdapter(ElevationControls).validate_json(elevation_path.read_bytes())
+        text = replace_profile(text, "Elevation", profile.controls, length)
+    recipe = TypeAdapter(RacingRecipe).validate_json((source / "environment-recipe.json").read_bytes())
+    if recipe.width_profile is not None:
+        controls = recipe.width_profile.controls_m
+        # Validate source controls before interpolating onto the retained station lattice.
+        replace_profile(text, "Width", controls, length)
+        positions = [row[0] for row in controls]
+        stations = sorted(set([row[0] for row in original_width] + positions))
+        widths = []
+        for station in stations:
+            i = max(0, min(len(controls) - 2, bisect.bisect_right(positions, station) - 1))
+            a, b = controls[i], controls[i + 1]
+            t = max(0.0, min(1.0, (station - a[0]) / (b[0] - a[0])))
+            widths.append((station, a[1] + (b[1] - a[1]) * t * t * (3 - 2 * t)))
+        text = replace_profile(text, "Width", widths, length)
+    path.write_text(text)
+    print(f"{slug}: applied retained racing controls; alignment, bank and protection unchanged")
 
 
 def pit_shoulders(
@@ -88,5 +152,12 @@ def apply(slug: str) -> None:
 
 
 if __name__ == "__main__":
-    for circuit in sys.argv[1:]:
-        apply(circuit)
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--racing", action="store_true", help="Apply explicit elevation and width evidence")
+    parser.add_argument("circuits", nargs="+")
+    arguments = parser.parse_args()
+    for circuit in arguments.circuits:
+        if arguments.racing:
+            apply_racing(circuit)
+        else:
+            apply(circuit)

@@ -1,0 +1,213 @@
+{
+  "reference": "Saved/Refs/japan.mp4",
+  "review_date": "2026-11-08",
+  "reference_frames": [
+    {
+      "time_s": 869,
+      "path": "build/reviews/japan/corrected-critical/reference-869.jpg",
+      "sha256": "982d7795580aaf268207611447613e2e7b4887a6a415d0d173b6f0b08a1c2251",
+      "camera_registration": "Visual lower-branch approach/underpass/exit context. Only870.5s is directly anchored to the retained2272m crossover; other positions are estimates, not timestamp interpolation or surveyed camera poses.",
+      "native_anchor_station_m": 2235,
+      "station_uncertainty_m": 25
+    },
+    {
+      "time_s": 870.5,
+      "path": "build/reviews/japan/corrected-critical/reference-870p5.jpg",
+      "sha256": "7c9bf614cac84ed42d1b6812c5eb92ee3d962b51d8075f2ab0774194fbd4a2c1",
+      "camera_registration": "Visual lower-branch approach/underpass/exit context. Only870.5s is directly anchored to the retained2272m crossover; other positions are estimates, not timestamp interpolation or surveyed camera poses.",
+      "native_anchor_station_m": 2272,
+      "station_uncertainty_m": 15
+    },
+    {
+      "time_s": 872,
+      "path": "build/reviews/japan/corrected-critical/reference-872.jpg",
+      "sha256": "3753eb846c33ed1f2f575eac242424c82c5c7a51417fe94546e013fe5788b259",
+      "camera_registration": "Visual lower-branch approach/underpass/exit context. Only870.5s is directly anchored to the retained2272m crossover; other positions are estimates, not timestamp interpolation or surveyed camera poses.",
+      "native_anchor_station_m": 2325,
+      "station_uncertainty_m": 35
+    }
+  ],
+  "observed": "869 s shows left gravel/green before bridge.870.5 s shows concrete left abutment and close event wall beneath bridge.872 s shows narrow left grass behind close protection after bridge. Old 22 m flat gravel extending through 2370 m is not supported.",
+  "defect": "SourceRunoff 22 m and nativeLEFT 21.05 m shoulder persisted across upper approach. Paved lower apron was clipped out by upper approach ground-road mask, exposing below-terrain background. Grass beyond the opening was viewed from underneath. Authored bridge had beams/underside only and no left abutment.",
+  "exact_failed_capture": "build/reviews/japan/local-fixed-live/frames/00002220.jpg",
+  "exact_camera": "Actual recorded camera position/rotation/FOV, station 2276.78125 m and lane−3.9985 m. Centreline-camera guesses are insufficient for these edge pixels.",
+  "source_changes": {
+    "source_runoff": "Canonical runoff-corrections.json 22 m lowerLEFT zone ends 2215 m. tools/build_circuits.py 1403–1410 ingests this file on rebuild; no hardcodedJP2080/2370literal exists there.",
+    "base_shoulders": "Explicit 21.05 m anchor 2080–2215 m represents previously resolved 22 m envelope. Cubic 2215–2255 to 1.25 m shoulder, plateau 2255–2370, release 2370–2410. SourceRunoff cannot re-widen taper.",
+    "visual_taper": "One-metre original footprint cells 2215–2255 follow exported CSV shoulder+.95 m; gravel is height-projected onto lower branch, masked against actual road. No broad remaining 22 m zone after 2215 m.",
+    "kerb_and_green": "Left red-white kerb ends 2240 m; leftgreen 1.2–4.5 m strip ends 2240 m, before underpass.",
+    "abutment": "Left end wall at upper 4637 m and 9 m reconstructed wing walls toward 4628 m, within actual upper deck edge. Top is unchanged underside; bottom reaches unchanged lower road grade minus.15 m or lower retained GSI ground. Two-sided faces provide support; no generic wall across underpass.",
+    "preserved": "Both branch XYZ, widths, bank, upper bridge 0.4 m shoulder,6.2 m road separation and accepted G2 RIGHT1.25 m correction. No planar crossover boundary union."
+  },
+  "uncertainty": "Apron/kerb/green endpoints estimated within 15 m; close shoulder 1.25 m estimated within.75 m. Wing length 9 m reconstructed from visible support, not surveyed. Native road coordinates remain authoritative.",
+  "proof": {
+    "source_module_sha256": "3009436b0e5eb553d1bb80fbf2442f07050aebf13f347d7701b19231afc4d41b",
+    "lower_branch_clearance_scope": "All native road/protection segments except upper branch4500–4800m;150m spatial bound around support includes every potentially nearer branch.",
+    "native_header_sha256": "71353211ccc364a22cfe08cc8ddcf9fda40b13ca25bc596fb752991692e2ea0f",
+    "native_header_unchanged": true,
+    "terrain_unchanged": true,
+    "both_native_branch_XYZ_bank_width_unchanged": true,
+    "typed_shoulders_idempotent": true,
+    "clearance": {
+      "road_m": 3.2190226994890323,
+      "protection_m": 1.169022717532437,
+      "road_overlap_m2": 0.0,
+      "protection_overlap_m2": 0.0
+    },
+    "expected_resolved_shoulders": [
+      {
+        "station_m": 2215,
+        "left_shoulder_m": 21.046791303924003,
+        "right_shoulder_m": 15.666000399999998,
+        "left_wall_offset_from_edge_m": 21.996791303924002
+      },
+      {
+        "station_m": 2225,
+        "left_shoulder_m": 17.81609680146279,
+        "right_shoulder_m": 13.45666388300327,
+        "left_wall_offset_from_edge_m": 18.76609680146279
+      },
+      {
+        "station_m": 2235,
+        "left_shoulder_m": 11.161798450064163,
+        "right_shoulder_m": 12.2159996,
+        "left_wall_offset_from_edge_m": 12.111798450064162
+      },
+      {
+        "station_m": 2245,
+        "left_shoulder_m": 4.580911599405657,
+        "right_shoulder_m": 11.497572031427593,
+        "left_wall_offset_from_edge_m": 5.530911599405657
+      },
+      {
+        "station_m": 2255,
+        "left_shoulder_m": 1.272158874658447,
+        "right_shoulder_m": 7.418076415534656,
+        "left_wall_offset_from_edge_m": 2.222158874658447
+      },
+      {
+        "station_m": 2276,
+        "left_shoulder_m": 1.25,
+        "right_shoulder_m": 6.9952692709901685,
+        "left_wall_offset_from_edge_m": 2.2
+      },
+      {
+        "station_m": 2323,
+        "left_shoulder_m": 1.25,
+        "right_shoulder_m": 1.25,
+        "left_wall_offset_from_edge_m": 2.2
+      },
+      {
+        "station_m": 2370,
+        "left_shoulder_m": 1.2575830540778736,
+        "right_shoulder_m": 1.25,
+        "left_wall_offset_from_edge_m": 2.2075830540778734
+      },
+      {
+        "station_m": 2410,
+        "left_shoulder_m": 5.997784198933774,
+        "right_shoulder_m": 1.25,
+        "left_wall_offset_from_edge_m": 6.947784198933774
+      }
+    ],
+    "corrected_local_rays": [
+      {
+        "pixel": [
+          30,
+          490
+        ],
+        "first_hits": [
+          [
+            8.620111138466127,
+            "Concrete"
+          ],
+          [
+            8.620111138466127,
+            "Concrete"
+          ]
+        ]
+      },
+      {
+        "pixel": [
+          120,
+          495
+        ],
+        "first_hits": [
+          [
+            9.294313344142752,
+            "Concrete"
+          ],
+          [
+            9.294313344142754,
+            "Concrete"
+          ]
+        ]
+      },
+      {
+        "pixel": [
+          250,
+          360
+        ],
+        "first_hits": [
+          [
+            10.424167052233186,
+            "Concrete"
+          ],
+          [
+            10.424167052233186,
+            "Concrete"
+          ],
+          [
+            17.243829949745134,
+            "Concrete"
+          ]
+        ]
+      },
+      {
+        "pixel": [
+          300,
+          390
+        ],
+        "first_hits": [
+          [
+            10.969552760977352,
+            "Concrete"
+          ],
+          [
+            10.969552760977354,
+            "Concrete"
+          ],
+          [
+            16.29865656444575,
+            "Concrete"
+          ]
+        ]
+      },
+      {
+        "pixel": [
+          350,
+          395
+        ],
+        "first_hits": [
+          [
+            11.563548232756805,
+            "Concrete"
+          ],
+          [
+            11.563548232756805,
+            "Concrete"
+          ],
+          [
+            15.406592942009338,
+            "Concrete"
+          ]
+        ]
+      }
+    ],
+    "source_runoff_22m_end": 2215,
+    "upper_bridge_and_G2RIGHT_unchanged": true,
+    "counterproof_scope": "Only local apron/terrain/support mesh, not full generation or rendered approval; original rail/fence/trees omitted from ray comparison. Native header and CSV not written.",
+    "peak_rss_mib": 100.7421875
+  },
+  "workflow": "Parent applies typed shoulder-corrections to native profile, synchronizes existing kJapanRunoff 2080–2370 end to 2215, compiles and exports Japan, then regenerates/imports/package. Source-only author did not write native header/CSV or run full generator/UE. Full fresh live lap and Luna High review required."
+}

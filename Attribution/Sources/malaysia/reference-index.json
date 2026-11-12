@@ -79,7 +79,7 @@
         0,
         700
       ],
-      "name": "Pit straight, T1–2",
+      "name": "Pit straight, T1\u20132",
       "reviewed_video_seconds": [
         128.04,
         106,
@@ -119,7 +119,7 @@
         1500,
         2250
       ],
-      "name": "T5–6 fast direction change",
+      "name": "T5\u20136 fast direction change",
       "reviewed_video_seconds": [
         166,
         170,
@@ -135,7 +135,7 @@
         2250,
         2900
       ],
-      "name": "T7–8 double right and short straight",
+      "name": "T7\u20138 double right and short straight",
       "reviewed_video_seconds": [
         174,
         178,
@@ -165,7 +165,7 @@
         3550,
         4250
       ],
-      "name": "T10–11 technical hill section",
+      "name": "T10\u201311 technical hill section",
       "reviewed_video_seconds": [
         190,
         194,
@@ -180,7 +180,7 @@
         4250,
         5000
       ],
-      "name": "T12–14 return to back straight",
+      "name": "T12\u201314 return to back straight",
       "reviewed_video_seconds": [
         198,
         202,
@@ -203,7 +203,7 @@
         869.8
       ],
       "observed": "Central mainstand presents opposite face and repeated curved shells, very broad final lefthairpin around grass island. Long straight approaches and return to pit, red-white kerbs with green exit apron and gravel beyond.",
-      "registration": "865.8–869.8s directly shows final T15 braking and left hairpin.210s is back-straight context only; native bounds and exact camera poses remain estimates.",
+      "registration": "865.8\u2013869.8s directly shows final T15 braking and left hairpin.210s is back-straight context only; native bounds and exact camera poses remain estimates.",
       "direct_final_corner_seconds": [
         865.8,
         867.8,
@@ -215,11 +215,11 @@
     {
       "title": "Sepang circuit operator architecture",
       "url": "https://www.sepangcircuit.com/architecture",
-      "supports": "5.543 km;16–22m track width;1.3km double-frontage main grandstand;33garages8x24m, layered pit hospitality."
+      "supports": "5.543 km;16\u201322m track width;1.3km double-frontage main grandstand;33garages8x24m, layered pit hospitality."
     }
   ],
   "uncertainties": [
-    "The width source now spans the operator-supported 16–22 m range; individual interval transitions remain estimates from road shape and reference footage.",
+    "The width source now spans the operator-supported 16\u201322 m range; individual interval transitions remain estimates from road shape and reference footage.",
     "The corrected 22 m road relief uses registered F1 topography controls with its crest near T11. It is not a surveyed racing-deck profile."
   ],
   "final_hairpin_reference_correction": {
@@ -255,6 +255,11 @@
       "210": "Back-straight acceleration toward T15, not T15 apex.",
       "583.27": "Pitstraight beside mainstand and pits, not final hairpin."
     },
-    "registration_uncertainty": "Native5060m identifies final hairpin; reference camera position remains approximate ±60m. Edited gameplay timestamps are not a linear station clock. Only visible features are direct evidence; absence of offscreen outside gravel is not established."
+    "registration_uncertainty": "Native5060m identifies final hairpin; reference camera position remains approximate \u00b160m. Edited gameplay timestamps are not a linear station clock. Only visible features are direct evidence; absence of offscreen outside gravel is not established."
+  },
+  "main_roof_reconstruction": {
+    "provenance": "main-roof-review.json",
+    "mapped_footprint_id": 144247993,
+    "status": "Actual concave footprint, separate wings and open central gaps replace the former bounding roof. Awaiting regenerated packaged review."
   }
 }

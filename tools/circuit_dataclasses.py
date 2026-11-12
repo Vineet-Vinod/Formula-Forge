@@ -10,6 +10,21 @@ Point = tuple[float, float, float]
 
 
 @dataclass(frozen=True)
+class ElevationControls:
+    controls: Annotated[list[tuple[FiniteFloat, FiniteFloat]], Field(min_length=2)]
+
+
+@dataclass(frozen=True)
+class WidthControls:
+    controls_m: Annotated[list[tuple[FiniteFloat, FiniteFloat]], Field(min_length=2)]
+
+
+@dataclass(frozen=True)
+class RacingRecipe:
+    width_profile: WidthControls | None = None
+
+
+@dataclass(frozen=True)
 class RetainedTerrainSource:
     grid_file: Path
     grid_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")]

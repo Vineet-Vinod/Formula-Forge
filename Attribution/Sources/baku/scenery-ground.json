@@ -1,0 +1,26 @@
+{
+  "provider": "Copernicus DEM, distributed through AWS Open Data",
+  "dataset": "GLO-90 DSM scenery, aligned to published F1 start/finish absolute datum; not bare-earth terrain",
+  "grid_file": "elevation/scenery-datum-grid.json.gz",
+  "grid_sha256": "092bb5744bef804343c949c09cce14b4d81576fa4e6e6d5918ec20e5e23a3f06",
+  "relative_datum_m": -24.7,
+  "road_join_distance_m": 20,
+  "source_window": "elevation/scenery_dem.tif",
+  "source_window_sha256": "06b6c6e5db9d46f865f128b0effbd711aa1595cad069ea7ba62f322c089ac69a",
+  "source_url": "https://copernicus-dem-90m.s3.eu-central-1.amazonaws.com/Copernicus_DSM_COG_30_N40_00_E049_00_DEM/Copernicus_DSM_COG_30_N40_00_E049_00_DEM.tif",
+  "source_resolution_m": 90,
+  "grid_spacing_m": 12.0,
+  "previous_relative_datum_m": -20.46808004037964,
+  "uniform_height_correction_m": 4.23191995962036,
+  "original_terrain_sha256": "9706a6beea5c92b41e20bb4b5b06e9bdbe3d650f81d9bce928cbf8b99538adfd",
+  "absolute_anchor": {
+    "publisher": "Formula1",
+    "article": "https://www.formula1.com/en/latest/article/highs-and-lows-which-f1-track-has-the-most-elevation-changes-.7I9JEcBw3R2AqXbnJ6hyvc",
+    "image_sha256": "1933fff5f4ee497d2094bda0fdfe6451d73ae255ed133995edf455bbfb463335",
+    "published_sf_absolute_m": -24.7,
+    "native_sf_relative_m": 0
+  },
+  "method": "Existing retained DSM relative grid is uniformly shifted by old median datum minus factual F1 absolute minimum. No resampling, land mask, coastal blend, racing-road or native collision changes. Existing20m near-road join remains. This removes an incompatible median roof-biased datum; it does not make GLO-90 bare earth.",
+  "licence": "Copernicus DEM open data licence; see retained scenery-terrain source attribution.",
+  "uncertainty_m": 2
+}

@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=monaco",
   "tiles": 111,
-  "triangles": 1548216,
+  "triangles": 1617476,
   "road_sha256": "415db676f90d4adce092ba579154838db97dd7597637bd7193c9de30ba15ee44",
   "terrain_sha256": "accbf99b138760659df35ab91f97eace5902ff66db21b5e1a0a0139811c00641",
   "landmarks": [
@@ -243,6 +243,97 @@
       "end_m": 2680,
       "side": 1,
       "rows": 18
+    },
+    {
+      "osm_id": 49209597,
+      "name": "Mapped Rocher house",
+      "height_m": 10.2,
+      "base_z_m": 57.102736543686134,
+      "dimensions_status": "Actual mapped footprint and tagged storeys retained. Untagged three-storey height, cream plaster, narrow shuttered openings and terracotta roof are historic-district reconstruction; chapel10.5m estimate, plain masonry with framed timber entrance, no invented office storeys."
+    },
+    {
+      "osm_id": 49209636,
+      "name": "Mapped Rocher house",
+      "height_m": 10.2,
+      "base_z_m": 58.60710736394647,
+      "dimensions_status": "Actual mapped footprint and tagged storeys retained. Untagged three-storey height, cream plaster, narrow shuttered openings and terracotta roof are historic-district reconstruction; chapel10.5m estimate, plain masonry with framed timber entrance, no invented office storeys."
+    },
+    {
+      "osm_id": 49209637,
+      "name": "Mapped Rocher house",
+      "height_m": 10.2,
+      "base_z_m": 60.66574774386347,
+      "dimensions_status": "Actual mapped footprint and tagged storeys retained. Untagged three-storey height, cream plaster, narrow shuttered openings and terracotta roof are historic-district reconstruction; chapel10.5m estimate, plain masonry with framed timber entrance, no invented office storeys."
+    },
+    {
+      "osm_id": 49209638,
+      "name": "Mapped Rocher house",
+      "height_m": 13.6,
+      "base_z_m": 60.87961846189248,
+      "dimensions_status": "Actual mapped footprint and tagged storeys retained. Untagged three-storey height, cream plaster, narrow shuttered openings and terracotta roof are historic-district reconstruction; chapel10.5m estimate, plain masonry with framed timber entrance, no invented office storeys."
+    },
+    {
+      "osm_id": 49209639,
+      "name": "Mapped Rocher house",
+      "height_m": 13.6,
+      "base_z_m": 59.327032942733254,
+      "dimensions_status": "Actual mapped footprint and tagged storeys retained. Untagged three-storey height, cream plaster, narrow shuttered openings and terracotta roof are historic-district reconstruction; chapel10.5m estimate, plain masonry with framed timber entrance, no invented office storeys."
+    },
+    {
+      "osm_id": 49209640,
+      "name": "Mapped Rocher house",
+      "height_m": 13.6,
+      "base_z_m": 59.489031287083414,
+      "dimensions_status": "Actual mapped footprint and tagged storeys retained. Untagged three-storey height, cream plaster, narrow shuttered openings and terracotta roof are historic-district reconstruction; chapel10.5m estimate, plain masonry with framed timber entrance, no invented office storeys."
+    },
+    {
+      "osm_id": 49209641,
+      "name": "Mapped Rocher house",
+      "height_m": 13.6,
+      "base_z_m": 58.95190833798361,
+      "dimensions_status": "Actual mapped footprint and tagged storeys retained. Untagged three-storey height, cream plaster, narrow shuttered openings and terracotta roof are historic-district reconstruction; chapel10.5m estimate, plain masonry with framed timber entrance, no invented office storeys."
+    },
+    {
+      "osm_id": 49209644,
+      "name": "Chapelle de la Mis\u00e9ricorde",
+      "height_m": 10.5,
+      "base_z_m": 60.751177278313506,
+      "dimensions_status": "Actual mapped footprint and tagged storeys retained. Untagged three-storey height, cream plaster, narrow shuttered openings and terracotta roof are historic-district reconstruction; chapel10.5m estimate, plain masonry with framed timber entrance, no invented office storeys."
+    },
+    {
+      "osm_id": 49209645,
+      "name": "Mapped Rocher house",
+      "height_m": 10.2,
+      "base_z_m": 59.55616165453524,
+      "dimensions_status": "Actual mapped footprint and tagged storeys retained. Untagged three-storey height, cream plaster, narrow shuttered openings and terracotta roof are historic-district reconstruction; chapel10.5m estimate, plain masonry with framed timber entrance, no invented office storeys."
+    },
+    {
+      "osm_id": 835592937,
+      "name": "Mapped Rocher house",
+      "height_m": 13.6,
+      "base_z_m": 60.44770377998475,
+      "dimensions_status": "Actual mapped footprint and tagged storeys retained. Untagged three-storey height, cream plaster, narrow shuttered openings and terracotta roof are historic-district reconstruction; chapel10.5m estimate, plain masonry with framed timber entrance, no invented office storeys."
+    },
+    {
+      "osm_id": 835592938,
+      "name": "Mapped Rocher house",
+      "height_m": 10.2,
+      "base_z_m": 60.93376397613636,
+      "dimensions_status": "Actual mapped footprint and tagged storeys retained. Untagged three-storey height, cream plaster, narrow shuttered openings and terracotta roof are historic-district reconstruction; chapel10.5m estimate, plain masonry with framed timber entrance, no invented office storeys."
+    },
+    {
+      "osm_id": 835592939,
+      "name": "Mapped Rocher house",
+      "height_m": 10.2,
+      "base_z_m": 61.137590577322605,
+      "dimensions_status": "Actual mapped footprint and tagged storeys retained. Untagged three-storey height, cream plaster, narrow shuttered openings and terracotta roof are historic-district reconstruction; chapel10.5m estimate, plain masonry with framed timber entrance, no invented office storeys."
+    },
+    {
+      "name": "Mapped north Rocher woodland and limestone slope",
+      "wood_area_m2": 18432.426,
+      "reconstructed_trees": 251,
+      "stone_area_m2": 7006.949,
+      "dimensions_status": "Three actual woodland polygons, mapped cliff690653926 and twelve crest footprints. Limestone only on unplanted cells within60m of mapped cliff, IGN slope>=.2 and ground>8m, plus registered interstreet retaining strip. Split and individual trees reconstructed, not surveyed. All original IGN/road heights preserved; exclusions retain roads, protection, buildings, paths and water."
     },
     {
       "osm_id": 25722685,
@@ -3979,7 +4070,7 @@
     },
     {
       "name": "Mapped retaining walls and Mirabeau street foundations",
-      "mapped_wall_segments": 180,
+      "mapped_wall_segments": 188,
       "street_support_segments": 45,
       "dimensions_status": "Retained OSM retaining-wall alignments with heights derived from adjacent registered ground, not guessed walls across town. Mirabeau upper inside street edge at 1200\u20131290 m joins actual RGE ground beyond the corrected narrow corridor. Two-sided stone faces support the existing road elevation; no racing surface or native collision geometry is changed."
     }

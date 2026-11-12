@@ -158,6 +158,17 @@ class Importer:
                 EDIT.set_material_instance_vector_parameter_value(
                     material, "Tint", unreal.LinearColor(0.82, 0.82, 0.82)
                 )
+            if self.slug == "monaco" and name in ("Limestone", "Terracotta", "MonacoShutter") and isinstance(
+                material, unreal.MaterialInstanceConstant
+            ):
+                tint = {"Limestone": (0.94, 0.82, 0.66),
+                        "Terracotta": (0.62, 0.26, 0.12),
+                        "MonacoShutter": (0.045, 0.10, 0.065)}[name]
+                EDIT.set_material_instance_vector_parameter_value(
+                    material, "Tint", unreal.LinearColor(*tint)
+                )
+                EDIT.set_material_instance_scalar_parameter_value(material, "Roughness", 1.0)
+                EDIT.set_material_instance_scalar_parameter_value(material, "NormalStrength", 0.12 if name == "Limestone" else 0.08)
             ground_tints = {
                 "cota": (1.4, 1.08, 0.55),
                 "portimao": (1.65, 1.25, 0.65),
@@ -192,6 +203,11 @@ class Importer:
             == self.material_hash
         ):
             return existing
+        if self.slug == "monaco" and name in ("Limestone", "Terracotta", "MonacoShutter"):
+            source = unreal.load_asset(SOURCES["Concrete"])
+            if source is None:
+                raise RuntimeError("Missing accepted Concrete source for Monaco limestone")
+            return self.copy(name, source)
         if name in SOURCES:
             source = unreal.load_asset(SOURCES[name])
             if source is None:

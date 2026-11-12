@@ -973,6 +973,8 @@ def trees(
         if distance < nearest.half_width + 5:
             continue
         base = p[0], p[1], scene.ground(p[0], p[1])
+        if any(polygon.covers(GeoPoint(base[0], base[1])) for polygon in scene.water_shapes):
+            continue
         if any(polygon.contains(GeoPoint(base[0], base[1])) for polygon in footprints):
             continue
         if palm:
@@ -1023,6 +1025,7 @@ def layered_pit_roofs(
                 b.point(near_b, z),
                 b.point(far_b, z + 1),
                 a.point(far_a, z + 1),
+                up=True,
             )
             scene.quad(
                 "Building_PitRoof",
@@ -1031,6 +1034,7 @@ def layered_pit_roofs(
                 b.point(far_b, z + 0.8),
                 b.point(near_b, z - 0.2),
                 a.point(near_a, z - 0.2),
+                up=False,
             )
             scene.beam(
                 "Building_PitRoof",

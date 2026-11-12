@@ -17,7 +17,12 @@ from pydantic import BaseModel, Field
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 from circuit_dataclasses import PitLane
-from circuit_profiles import pit_shoulders, section_shoulders
+from circuit_profiles import (
+    native_profile,
+    pit_shoulders,
+    replace_profile,
+    section_shoulders,
+)
 
 SOURCES = ROOT / "Attribution/Sources"
 NATIVE = ROOT / "Source/FormulaForge/Native/track_data"
@@ -26,6 +31,31 @@ EVIDENCE_FILES = tuple(
     sorted((*SOURCES.glob("*/reference-index.json"), *SOURCES.glob("*/environment-recipe.json")))
 )
 NUMBER = r"[-+]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][-+]?\d+)?"
+
+
+def test_registered_racing_replacement_preserves_alignment_and_bank() -> None:
+    original = (NATIVE / "portimao_survey.inc").read_text()
+    elevation = native_profile(original, "Elevation")
+    replacement = [(station, height + 1.25) for station, height in elevation]
+    updated = replace_profile(original, "Elevation", replacement, elevation[-1][0])
+    for actual, expected in zip(native_profile(updated, "Elevation"), replacement, strict=True):
+        assert actual == pytest.approx(expected)
+    assert native_profile(updated, "Width") == native_profile(original, "Width")
+    strip = r"constexpr TrackElevationPoint \w+\[\] = \{.*?\n\};"
+    assert re.sub(strip, "", updated, flags=re.DOTALL) == re.sub(strip, "", original, flags=re.DOTALL)
+    assert replace_profile(updated, "Elevation", replacement, elevation[-1][0]) == updated
+
+
+@pytest.mark.parametrize("controls", [
+    [(0.0, 14.0), (20.0, 18.0), (15.0, 16.0), (100.0, 14.0)],
+    [(0.0, 14.0), (90.0, 14.0)],
+    [(0.0, 14.0), (100.0, 18.0)],
+    [(0.0, 14.0), (50.0, -1.0), (100.0, 14.0)],
+])
+def test_invalid_registered_width_never_replaces_native_text(controls: Controls) -> None:
+    original = "constexpr TrackWidthPoint kFixtureWidth[] = {\n    {0.0f, 14.0f},\n    {100.0f, 14.0f}\n};"
+    with pytest.raises(ValueError):
+        replace_profile(original, "Width", controls, 100.0)
 
 
 def test_pit_wall_profile_wraps_smoothly_without_repeated_application_drift() -> None:

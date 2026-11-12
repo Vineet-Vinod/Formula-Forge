@@ -2,11 +2,13 @@
 from __future__ import annotations
 
 import math
+import random
 from itertools import pairwise
 
 from circuit_dataclasses import Building, Point
 from circuit_mesh import add, mul
 from circuit_scene import CircuitScene
+from shapely import constrained_delaunay_triangles
 from shapely.geometry import LineString, Polygon, box
 from shapely.geometry import Point as ShapePoint
 from shapely.ops import polygonize, triangulate, unary_union
@@ -46,6 +48,7 @@ def build_venue(scene: CircuitScene) -> None:
     scene.landmarks.append({'name': 'Grandstand K', 'start_m': 2445, 'end_m': 2550,
                             'dimensions_status': 'FIA 2026 official map locates K between Tabac and Swimming Pool. Retained reconstruction uses 18 rows and 3 m setback; station endpoints are approximate. This replaces the earlier band across the uphill racing road.'})
     harbour_stand(scene, 2570, 2680, 1, 18, 8)
+    rocher(scene)
     ordinary_city(scene)
     casino_gardens(scene)
     retaining_streets(scene)
@@ -54,6 +57,141 @@ def build_venue(scene: CircuitScene) -> None:
     trees(scene, 1250, 1410, 1, setback=16, rows=1, spacing=17, height=10, palms=True)
     for station in [200, 920, 1370, 2200, 2440, 2950, 3260]:
         mast(scene, station, -1, 12)
+
+
+def rocher_house(scene: CircuitScene, building: Building) -> None:
+    footprint = Polygon(building.ring)
+    scene.modeled_buildings.add(building.osm_id)
+    scene.terrain_cutouts.append(footprint)
+    ring = list(footprint.exterior.coords)[:-1]
+    if not footprint.exterior.is_ccw:
+        ring.reverse()
+    chapel = building.use == 'chapel'
+    floors = int(building.tags.get('building:levels', '3'))
+    height = 10.5 if chapel else floors * 3.4
+    base = min(scene.ground(x, y) for x, y in ring)
+    kind = 'Building_RocherHeritage'
+    front = min(zip(ring, ring[1:] + ring[:1]),
+                key=lambda edge: (edge[0][1] + edge[1][1]) / 2)
+    for a, b in zip(ring, ring[1:] + ring[:1]):
+        length = math.dist(a, b)
+        if length < .1:
+            continue
+        tx, ty = (b[0] - a[0]) / length, (b[1] - a[1]) / length
+        nx, ny = ty, -tx
+        def point(u: float, z: float, out: float = 0, *,
+                  origin: tuple[float, float] = a, dx: float = tx, dy: float = ty,
+                  normal_x: float = nx, normal_y: float = ny) -> Point:
+            return origin[0] + dx * u + normal_x * out, origin[1] + dy * u + normal_y * out, base + z
+        low_a, low_b = min(base, scene.ground(*a) - .1), min(base, scene.ground(*b) - .1)
+        scene.quad(kind, 'Cream', (a[0], a[1], low_a), (b[0], b[1], low_b), point(length, height), point(0, height))
+        if chapel:
+            if (a, b) == front:
+                middle = length / 2
+                scene.banner(point(middle - .9, 0, .04), point(middle + .9, 0, .04), 3.4, 'Trunk', kind)
+                for u in [middle - 1, middle + 1]:
+                    scene.beam(kind, 'Limestone', point(u, 0, .12), point(u, 3.6, .12), .18)
+                scene.beam(kind, 'Limestone', point(middle - 1, 3.6, .12), point(middle + 1, 3.6, .12), .22)
+                scene.beam(kind, 'White', point(0, height - 1), point(length, height - 1), .3)
+            continue
+        bays = max(1, round(length / 3.6))
+        for floor in range(floors):
+            for bay in range(bays):
+                middle = (bay + .5) * length / bays
+                bottom = floor * 3.4 + .8
+                scene.banner(point(middle - .48, bottom, .035), point(middle + .48, bottom, .035), 1.75, 'Black', kind)
+                for offset in [-.77, .77]:
+                    scene.banner(point(middle + offset - .18, bottom, .06), point(middle + offset + .18, bottom, .06),
+                                 1.75, 'MonacoShutter', kind)
+                scene.beam(kind, 'Limestone', point(middle - .58, bottom - .1, .12), point(middle + .58, bottom - .1, .12), .14)
+        scene.beam(kind, 'Limestone', point(0, height, .12), point(length, height, .12), .35, .25)
+    inner = footprint.buffer(-1.2)
+    for surface in [footprint.difference(inner), inner]:
+        for triangle in constrained_delaunay_triangles(surface).geoms:
+            if not surface.covers(triangle):
+                continue
+            points = []
+            for x, y in list(triangle.exterior.coords)[:3]:
+                rise = min(1.6, footprint.boundary.distance(ShapePoint(x, y)) * 1.6 / 1.2)
+                points.append((x, y, base + height + rise))
+            if not triangle.exterior.is_ccw:
+                points[1], points[2] = points[2], points[1]
+            scene.triangle(kind, 'Terracotta', points[0], points[1], points[2])
+    scene.landmarks.append({'osm_id': building.osm_id, 'name': building.name or 'Mapped Rocher house',
+                            'height_m': height, 'base_z_m': base,
+                            'dimensions_status': 'Actual mapped footprint and tagged storeys retained. Untagged three-storey height, cream plaster, narrow shuttered openings and terracotta roof are historic-district reconstruction; chapel10.5m estimate, plain masonry with framed timber entrance, no invented office storeys.'})
+
+
+def rocher(scene: CircuitScene) -> None:
+    ids = [49209597, 49209636, 49209637, 49209638, 49209639, 49209640,
+           49209641, 49209644, 49209645, 835592937, 835592938, 835592939]
+    for osm_id in ids:
+        rocher_house(scene, scene.footprint(osm_id))
+    wood_ids = {688650286, 821246915, 920066618}
+    woods, cliffs, paths = [], [], []
+    seen: set[int] = set()
+    for dataset in scene.osm:
+        for element in dataset.elements:
+            if element.id in seen or len(element.geometry) < 2:
+                continue
+            seen.add(element.id)
+            points = [scene.geo(p.lat, p.lon) for p in element.geometry]
+            if element.id in wood_ids:
+                woods.append(Polygon(points))
+            elif element.id == 690653926:
+                cliffs.append(LineString(points))
+            elif element.id == 165636031:
+                paths.append(LineString(points).buffer(3))
+            elif element.tags.get('highway') in {'footway', 'path', 'steps', 'pedestrian'} and element.tags.get('tunnel') != 'yes':
+                paths.append(LineString(points).buffer(1))
+    blocked = unary_union([scene.corridor_mask.buffer(.3), *scene.extra_corridors,
+                           *scene.water_shapes, *paths,
+                           *[Polygon(b.ring).buffer(.6) for b in scene.buildings]])
+    wood = unary_union(woods).difference(blocked)
+    cliff_band = unary_union(cliffs).buffer(60).difference(unary_union([blocked, wood]))
+    # This is the narrow land strip between two registered Mirabeau street edges.
+    upper = [scene.at(st).point(-scene.at(st).half_width - 1.15)[:2] for st in range(1200, 1291, 2)]
+    lower = [scene.at(st).point(-scene.at(st).half_width - 1.15)[:2] for st in range(1320, 1411, 2)]
+    retaining = Polygon(upper + lower).buffer(0).difference(blocked)
+    grid = scene.grid
+    surfaces: dict[str, list[Polygon]] = {'Grass': [], 'Limestone': []}
+    bounds = unary_union([wood, cliff_band, retaining]).bounds
+    for row in range(max(0, int((bounds[1] - grid.y) // grid.step)), min(grid.rows - 1, math.ceil((bounds[3] - grid.y) / grid.step))):
+        for column in range(max(0, int((bounds[0] - grid.x) // grid.step)), min(grid.columns - 1, math.ceil((bounds[2] - grid.x) / grid.step))):
+            x, y = grid.x + column * grid.step, grid.y + row * grid.step
+            cell = box(x, y, x + grid.step, y + grid.step)
+            cx, cy = x + grid.step / 2, y + grid.step / 2
+            slope = math.hypot(scene.raw_ground(cx + 6, cy) - scene.raw_ground(cx - 6, cy),
+                               scene.raw_ground(cx, cy + 6) - scene.raw_ground(cx, cy - 6)) / 12
+            rock = cell.intersection(retaining)
+            if slope >= .2 and scene.raw_ground(cx, cy) > 8:
+                rock = unary_union([rock, cell.intersection(cliff_band)])
+            for material, shape in [('Grass', cell.intersection(wood)), ('Limestone', rock)]:
+                parts = [shape] if isinstance(shape, Polygon) else list(getattr(shape, 'geoms', []))
+                for part in parts:
+                    if isinstance(part, Polygon) and part.area > .01:
+                        surfaces[material].append(part)
+                        scene.terrain_cutouts.append(part)
+                        scene.polygon_surface(part, material, smooth_ground=material == 'Grass')
+    rng = random.Random(688650286)
+    count = 0
+    xmin, ymin, xmax, ymax = wood.bounds
+    tree_area = wood.buffer(-1)
+    y = ymin
+    while y < ymax:
+        x = xmin
+        while x < xmax:
+            px, py = x + rng.uniform(-2, 2), y + rng.uniform(-2, 2)
+            if tree_area.covers(ShapePoint(px, py)):
+                height = rng.uniform(5.5, 10)
+                scene.broadleaf((px, py, scene.ground(px, py)), height, count + 688)
+                count += 1
+            x += 8
+        y += 8
+    scene.landmarks.append({'name': 'Mapped north Rocher woodland and limestone slope',
+                            'wood_area_m2': round(wood.area, 3), 'reconstructed_trees': count,
+                            'stone_area_m2': round(sum(p.area for p in surfaces['Limestone']), 3),
+                            'dimensions_status': 'Three actual woodland polygons, mapped cliff690653926 and twelve crest footprints. Limestone only on unplanted cells within60m of mapped cliff, IGN slope>=.2 and ground>8m, plus registered interstreet retaining strip. Split and individual trees reconstructed, not surveyed. All original IGN/road heights preserved; exclusions retain roads, protection, buildings, paths and water.'})
 
 
 def casino_gardens(scene: CircuitScene) -> None:

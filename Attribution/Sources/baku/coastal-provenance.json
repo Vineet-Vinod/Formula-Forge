@@ -1,0 +1,78 @@
+{
+  "provider": "OpenStreetMap contributors",
+  "licence": "ODbL1.0",
+  "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "retrieved": "2026-11-08",
+  "raw_inputs": [
+    {
+      "file": "coastal-query.json.gz",
+      "url": "https://overpass-api.de/api/interpreter",
+      "query": "[out:json][timeout:25];(way[\"natural\"=\"coastline\"](40.350,49.815,40.380,49.870);way[\"man_made\"=\"pier\"](40.350,49.815,40.380,49.870);way[\"man_made\"=\"breakwater\"](40.350,49.815,40.380,49.870);way[\"natural\"=\"water\"](40.350,49.815,40.380,49.870););out geom;",
+      "raw_sha256": "1ffc0ada91a6c6fd94ee6f7d5d6e1bea395a5ae81bf2bc022a8ec746733775c7",
+      "gzip_sha256": "dab1b0a0bb077eb07992ca9fb05d9da1fa97de2397a54c59c9ea4855bf9525e1",
+      "bytes": 135361
+    }
+  ],
+  "filtered_file": "coastal.osm.json.gz",
+  "filtered_sha256": "eca05eb9ab68c6c3c0259f096f3b375f47938e37632470681bec8e21b649ab2a",
+  "coastal_geometry_file": "coastal-water.json",
+  "coastal_geometry_sha256": "5d54fe062f08dde71aafe20491bae30fa6e69a932f945706aa234c291347baec",
+  "coastline_way_ids": [
+    287035247,
+    358625702,
+    1528395467,
+    1528410534
+  ],
+  "pier_ids": [
+    25359784,
+    25402708,
+    164613152,
+    186930646,
+    220425433,
+    1415119615
+  ],
+  "water_level_m": -4.3,
+  "raw_water_area_m2": 2987445.926757919,
+  "raw_water_over_native_centrelines": 0,
+  "retained_terrain_bounds_m": [
+    -2556.0,
+    -1788.0,
+    828.0,
+    1044.0
+  ],
+  "preservation": "Sea/lagoon clipping affects scenery terrain only. Islands, actual mapped pier footprints, native road/protection and buildings remain land. Water is never added to extra_corridors. No native or terrain binary writes during authoring.",
+  "vertical_registration": {
+    "f1_sf_absolute_m": -24.7,
+    "f1_sf_native_m": 0,
+    "caspian_absolute_m": -29,
+    "relative_water_m": -4.3,
+    "caspian_source": "https://files.preslib.az/projects/eco/en/eco_m3_4.pdf",
+    "source_page_1_based": 11,
+    "source_epoch": "July 2025, cited on page 11 of the Presidential Library report; undated summary figures elsewhere in that report are not the chosen epoch.",
+    "uncertainty_m": 1.5,
+    "datum_note": "Caspian absolute altitude is not a native relative altitude. Scenery DSM uses factual F1SFdatum via scenery-ground.json, replacing incompatible oldmedianroof rebase. Waterlevel2025 is not a precise game-reference epoch measurement."
+  },
+  "reference_visual_context": [
+    {
+      "url": "https://cdn.bakucitycircuit.com/uploads/faq/road-map.pdf",
+      "publisher": "Baku City Circuit",
+      "page_1_based": 1,
+      "local_research_only": "build/reviews/baku/reference/operator-waterfront-map.png",
+      "pdf_sha256": "0aed2fec16a5e81798ab034b166f1ce8f9f5456898e65f9075d816635a6c9377",
+      "supports": "Viewed official 2024 operator map: Caspian Sea below the boulevard, actual pier platforms and wider coastal park separating the racing street from water. Map corroborates shape/dry pier controls; exact shoreline comes from retained OSM ways."
+    }
+  ],
+  "source_validation": {
+    "water_area_m2": 2947374.138035766,
+    "water_triangles": 182,
+    "mesh_coverage": 0.9999999747133912,
+    "road_overlap_m2": 0.0,
+    "protection_overlap_m2": 0.0,
+    "building_overlap_m2": 0.0,
+    "pier_overlap_m2": 0.0,
+    "physical_extra_corridors_added": 0,
+    "tree_roots_in_water": 0,
+    "trees_checked": 161,
+    "proof": "build/reviews/baku/reference/coastal-source-proof.json"
+  }
+}

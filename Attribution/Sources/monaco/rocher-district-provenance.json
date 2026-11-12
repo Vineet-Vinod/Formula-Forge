@@ -1,0 +1,37 @@
+{
+  "provider": "OpenStreetMap contributors",
+  "query_url": "https://api.openstreetmap.org/api/0.6/map?bbox=7.4220,43.7310,7.4257,43.7327",
+  "retrieved": "2026-11-08",
+  "licence": "ODbL1.0",
+  "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "raw_file": "rocher-district.map.osm.gz",
+  "raw_response_sha256": "e65fa53513c90b4fa98193633228df78615775924877cf775d23d36109c5ed09",
+  "raw_gzip_sha256": "16cf5894af02deacbd41463d4c08887cf698f9509945d927ce2b77baaef79f8c",
+  "filtered_file": "rocher-district.osm.json.gz",
+  "filtered_sha256": "4192b8555bd4964cabd4e8742fc81bb2e93b7fb20dc2a310326a160eaf07a886",
+  "crest_building_ids": [
+    49209597,
+    49209636,
+    49209637,
+    49209638,
+    49209639,
+    49209640,
+    49209641,
+    49209644,
+    49209645,
+    835592937,
+    835592938,
+    835592939
+  ],
+  "woodland_ids": [
+    688650286,
+    821246915,
+    920066618
+  ],
+  "cliff_id": 690653926,
+  "selected_elements": 86,
+  "new_elements_merged": 85,
+  "scope": "Actual north Rocher woodland, mapped cliff line, twelve missing crest footprints and pedestrian paths. Existing elements are preserved by type/id. No road or racing geometry imported. Individual reconstructed trees are not mapped positions.",
+  "height_limits": "Tagged storeys retained with shared3.4m conversion. Untagged historic houses use explicitly estimated3storeys; chapel height and roof form estimated from municipal/confraternity photographs, not a survey.",
+  "additional_exclusion": "Above-ground Avenue de la Porte Neuve165636031 is retained only to preserve its visual paving beneath the cliffs. Two-lane tag supports an estimated6m exclusion width, not a native road/collision change."
+}

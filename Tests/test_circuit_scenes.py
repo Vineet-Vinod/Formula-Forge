@@ -605,3 +605,48 @@ def test_default_surface_bytes_match_before_local_edge_opt_in(scene: CircuitScen
         digest.update(json.dumps(tile.materials).encode())
         digest.update(tile.triangles)
     assert digest.hexdigest() == "749a5c7d92cc27fc0b6beedb178d5bae24b1603ca4a0866848951b8f1cf01ec2"
+
+
+def test_skypark_closes_actual_concave_footprint(scene: CircuitScene, monkeypatch: pytest.MonkeyPatch) -> None:
+    import gzip
+    from collections import Counter
+
+    from circuit_dataclasses import Building, OsmData, Point
+    from circuit_mesh import cross, sub
+    from pydantic import TypeAdapter
+    from venues.singapore_waterfront import skypark
+
+    source = Path(__file__).resolve().parents[1] / 'Attribution/Sources/singapore/environment.osm.json.gz'
+    dataset = TypeAdapter(OsmData).validate_json(gzip.decompress(source.read_bytes()))
+    mapped = next(e for e in dataset.elements if e.id == 116800998)
+    latitude = sum(p.lat for p in mapped.geometry)/len(mapped.geometry)
+    longitude = sum(p.lon for p in mapped.geometry)/len(mapped.geometry)
+    ring = [(math.radians(p.lon-longitude)*6378137*math.cos(math.radians(latitude)),
+             math.radians(p.lat-latitude)*6378137) for p in mapped.geometry]
+    shape = Polygon(ring)
+    assert shape.convex_hull.area > shape.area*1.01
+    building = Building(mapped.id, 'SkyPark', 'commercial', 207, ring, mapped.tags)
+    faces: list[tuple[str, Point, Point, Point]] = []
+
+    def triangle(kind: str, material: str, a: Point, b: Point, c: Point,
+                 uv: tuple[tuple[float, float], ...] = ((0, 0), (1, 0), (1, 1)),
+                 normals: tuple[Point, ...] | None = None) -> None:
+        if kind in ('Building_SandsSkyparkDeck', 'Building_SandsSkyparkSoffit') or (
+            kind == 'Building_SandsSkypark' and material == 'Cream'
+        ):
+            faces.append((kind, a, b, c))
+
+    monkeypatch.setattr(scene, 'triangle', triangle)
+    skypark(scene, building)
+    edge_counts: Counter[tuple[Point, Point]] = Counter()
+    for kind, a, b, c in faces:
+        assert Polygon([a[:2], b[:2], c[:2]]).difference(shape).area < 1e-7
+        if kind == 'Building_SandsSkyparkSoffit':
+            assert cross(sub(b, a), sub(c, a))[2] < 0
+        for start, end in ((a, b), (b, c), (c, a)):
+            first = round(start[0], 7), round(start[1], 7), round(start[2], 7)
+            last = round(end[0], 7), round(end[1], 7), round(end[2], 7)
+            edge_counts[(first, last)] += 1
+    assert edge_counts
+    assert all(count == 1 and edge_counts[(end, start)] == 1
+               for (start, end), count in edge_counts.items())

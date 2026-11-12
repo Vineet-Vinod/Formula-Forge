@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=jeddah",
-  "tiles": 180,
-  "triangles": 1118053,
+  "tiles": 140,
+  "triangles": 1056240,
   "road_sha256": "488969c35ce5188455fe77bfe4f676a0e3d4743d4ff9000922f2bbaaab34186f",
   "terrain_sha256": "a305b9d139a8c289c9fde6dbf9a646c874c3861a36917d818aeb4dbfb8431149",
   "landmarks": [
@@ -66,6 +66,15 @@
       "end_m": 2380,
       "side": 1,
       "material": "PanelGreen"
+    },
+    {
+      "name": "Mapped coastal sea, lagoon and pier decks",
+      "water_area_m2": 3184070.053,
+      "water_level_m": -0.3999675521591186,
+      "mapped_piers": 7,
+      "water_removed_for_roads_buildings_piers_m2": 3947.226,
+      "source": "coastal-water.json and coastal-provenance.json; original shoreline geometry, no game pixels.",
+      "dimensions_status": "Water is flat in the registered native datum. Pier footprints are mapped; deck levels are estimated from retained shore ground with minimum 0.6 m freeboard. Water only excludes scenery terrain; no physical corridor or native road changes."
     },
     {
       "name": "Authored grandstand",
@@ -197,7 +206,7 @@
       "start_m": 3950,
       "end_m": 4650,
       "side": -1,
-      "count": 10,
+      "count": 7,
       "setback_m": 18,
       "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
     },

@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=malaysia",
-  "tiles": 129,
-  "triangles": 1833315,
+  "tiles": 130,
+  "triangles": 2063457,
   "road_sha256": "c3002a0fe74e0bf19ad980dc9b17c5fcb8d323fba06b92bc2048ff96df87e664",
   "terrain_sha256": "40c5568107dbe7613d3cdf8f29d2af8c10cb0093a10b698f6986c6c53dbcbebb",
   "landmarks": [
@@ -74,11 +74,11 @@
       "material": "PanelPetronas"
     },
     {
-      "name": "Sepang double-frontage main grandstand",
+      "name": "Sepang mapped double-frontage palm-leaf grandstand",
       "osm_id": 144247993,
-      "roof": "Repeated curved palm-leaf shells with branching masts",
       "roof_bays": 26,
-      "dimensions": "Footprint registered; roof section and steel details estimated from reference."
+      "road_area_removed_m2": 1968.144,
+      "dimensions_status": "Actual concave wing outlines and open central mall gaps retained, with 3 m road clearance. Each wing follows adjacent retained road/concourse floor grade, not roof-contaminated DSM. Original 25 m leaf modules, 18 m roof spring, branching masts and pale cream/white shells reconstructed from supplied122/130/134 s and operator double-frontage description; dimensions estimated, no road profile or global material changes."
     },
     {
       "name": "F Grandstand",

@@ -6,6 +6,7 @@ import math
 from circuit_mesh import add
 from circuit_scene import CircuitScene
 
+from venues.coastal_water import coastal_water
 from venues.east_architecture import cylinder, facade, frame, mapped, trees
 
 
@@ -43,6 +44,7 @@ def circuit_edges(scene: CircuitScene) -> None:
 
 def build_venue(scene: CircuitScene) -> None:
     circuit_edges(scene)
+    coastal_water(scene)
     custom = {299418016, 152190583}
     modern = {200195772, 200195781, 286017123, 152192792, 152192676, 152192493, 152192304}
     for building in scene.buildings:

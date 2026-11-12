@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=singapore",
-  "tiles": 147,
-  "triangles": 1157004,
+  "tiles": 152,
+  "triangles": 1225282,
   "road_sha256": "5643c49144b08d65b4f75e024408fa6d72e7f7ebdba3df91802d37c8f68b966d",
   "terrain_sha256": "5761c535c9e7f1b2bb86f061fe2d83e272015f79e95487bd4bfd6cf66fea984f",
   "landmarks": [
@@ -98,6 +98,27 @@
       "material": "PanelYellow"
     },
     {
+      "name": "Marina Reservoir and Singapore River",
+      "water_height_m": -4.811936793826295,
+      "area_m2": 1399490.7383102446,
+      "source": "Complete retained OSM relations 9542146 and 9569901. The PUB map corroborates the shoreline. Water uses the flattened DSM water datum and lies below the existing bridges. This changes scenery only."
+    },
+    {
+      "name": "The Shoppes waterfront podium and gallerias",
+      "osm_id": 2298319,
+      "foundation_m": 2.5,
+      "podium_height_m": 15,
+      "roof_crest_height_m": 25,
+      "source": "Mapped outer footprint and round-roof parts 1056849313, 1056849314 and 1056849315. Safdie photographs show curved glazed gallerias and cream ribs. Heights come from OSM tags; the section is a visual reconstruction."
+    },
+    {
+      "name": "Flower Dome",
+      "osm_id": 171142595,
+      "height_m": 38,
+      "foundation_m": 0.9,
+      "source": "Mapped footprint. Project engineer Atelier Ten specifies a 170 m by 86 m by 38 m glass gridshell, which overrides the coarse 30 m OSM height. Shell curvature and rib spacing are visual estimates."
+    },
+    {
       "name": "Esplanade Concert Hall",
       "osm_id": 256163011,
       "height_m": 35,
@@ -124,13 +145,13 @@
       "source": "Singapore Flyer operator fun facts; wheel orientation estimated from mapped base."
     },
     {
-      "name": "Marina Bay Sands",
-      "latitude": 1.28375,
-      "longitude": 103.86055,
-      "height_m": 200,
-      "skypark_length_m": 340,
-      "skypark_width_m": 38,
-      "source": "Arup project description; geographic position and tower plan are visual estimates."
+      "name": "Sands SkyPark",
+      "osm_id": 116800998,
+      "deck_height_m": 200,
+      "mapped_length_m": 340.162833377683,
+      "mapped_maximum_width_m": 57.71896180410143,
+      "mapped_area_m2": 12454.877740886599,
+      "source": "Retained OSM outline 116800998. Arup specifies 340 m length, 38 m nominal width and 200 m height. Mapped length is 340.16 m and area is 12,454.9 m\u00b2; the operator reports 12,400 m\u00b2. The mapped maximum bounding width of 57.72 m differs from the nominal width. The model follows the mapped outline. The closed belly and longitudinal ribs follow the JFE photograph."
     },
     {
       "name": "Raffles City Shopping Centre",
@@ -686,7 +707,7 @@
       "start_m": 2750,
       "end_m": 3120,
       "side": 1,
-      "count": 21,
+      "count": 12,
       "setback_m": 6,
       "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
     },
@@ -695,7 +716,7 @@
       "start_m": 3150,
       "end_m": 3750,
       "side": -1,
-      "count": 36,
+      "count": 31,
       "setback_m": 6,
       "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
     },
@@ -704,7 +725,7 @@
       "start_m": 3150,
       "end_m": 3750,
       "side": 1,
-      "count": 19,
+      "count": 15,
       "setback_m": 8,
       "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
     },

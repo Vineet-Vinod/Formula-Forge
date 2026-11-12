@@ -245,5 +245,61 @@
     "state_correction": "Fully glazed planned-height placeholder replaced by open concrete floorplates/columns, exposed core, top formwork and tower crane. Existing footprint and world registration retained.",
     "survey_claim": false,
     "runtime_gate": "Requires actual packaged capture and Luna High comparison; source check is not appearance approval."
+  },
+  "coastal_water_correction": {
+    "source_provenance": "coastal-provenance.json",
+    "coastal_geometry": "coastal-water.json",
+    "omission_fixed": "The previous venue contained no sea geometry and rendered the coastal scenery grid as Runoff. Actual directed shoreline faces now replace only mapped water, retaining land, buildings and pier footprints.",
+    "topology": [
+      14293463,
+      40600375,
+      434970468,
+      1135837919,
+      1463901269
+    ],
+    "water_level_m": -0.3999675521591186,
+    "preservation": "Water is appended only to water_shapes, never extra_corridors. Native roads/protection and mapped building/pier land are excluded. Actual coast edges and island holes are retained. Terrain under water is removed; flat water uses the existing Water material. Native road XYZ, widths, bank and physics are untouched.",
+    "pier_levels": "Actual mapped footprints. Each deck is estimated from retained ground at the closest coastline vertex, with minimum 0.6 m freeboard. These are original scenery reconstructions, not surveyed pier elevations.",
+    "source_checks": {
+      "water_area_m2": 3184070.053390289,
+      "water_triangles": 551,
+      "mesh_coverage": 0.9999999817976012,
+      "road_overlap_m2": 0.0,
+      "protection_overlap_m2": 0.0,
+      "building_overlap_m2": 0.0,
+      "pier_overlap_m2": 0.0,
+      "physical_extra_corridors_added": 0,
+      "tree_roots_in_water": 0,
+      "trees_checked": 77,
+      "proof": "build/reviews/jeddah/reference/coastal-source-proof.json",
+      "coastal_roof_overhang": "Only 28 high parapet triangles on mapped coastal building1258945369 project beyond the footprint: 0.8 m beams centered on roof edges create about 0.4 m overhang. All overlap is at z9.399–9.899 m, not foundations or submerged offices. No other structural overlap was found."
+    },
+    "reference_visibility": "Supplied cockpit sequences reviewed here mostly hide coastal water behind barriers, buildings and trees. They establish context and day/night appearance, not a surveyed sea-camera pair. Direct geographic water context comes from the official aerial/map listed below. Off-axis absence from a cockpit still is not evidence that water is missing.",
+    "next_gate": "Fresh source generation/import and complete packaged live lap with Luna High. Source topology and height proofs are not rendered acceptance.",
+    "lagoon_relation": 17098729,
+    "vertical_registration": {
+      "red_sea_msl_absolute_m": 0,
+      "retained_scenery_datum_m": 0.3999675521591186,
+      "relative_water_m": -0.3999675521591186,
+      "uncertainty_m": 0.5,
+      "source_note": "OpenRedSea zeroMSL minus retained native scenery datum. Lagoon shown by officialF1 circuit overview/OSMrelation; shared flat level estimated, not tide/hydraulic survey."
+    },
+    "primary_visual_context": [
+      {
+        "url": "https://www.formula1.com/en/latest/article/first-look-fastest-ever-f1-street-circuit-revealed-for-saudi-arabian-grand.3DlnO9gJaDmaGJtpWnBLHR",
+        "image": "https://media.formula1.com/image/upload/c_fit,w_1600,h_1000/q_auto/v1740000001/content/dam/fom-website/Upgrade/Jeddah_5.webp",
+        "local_research_only": "build/reviews/jeddah/reference/official-sea-lagoon-south.webp",
+        "sha256": "c5e14c43f62ee852b608a0387eef25b0b627986ecf0fedca4687a8148764384a",
+        "supports": "Viewed official 2021 planned aerial: sea and enclosed lagoon on opposite sides of the race peninsula, preserving islands/piers. This is geography context, not evidence for current building completion or a direct cockpit pose."
+      }
+    ],
+    "supplied_context_frames": [
+      {
+        "time_s": 150,
+        "path": "build/reviews/jeddah/reference/water-search-150.jpg",
+        "observed": "Actual night road/building/lighting context; water occluded, not a direct water view."
+      }
+    ],
+    "reference_review_targets": "build/reviews/coastal-water-review-targets.json"
   }
 }

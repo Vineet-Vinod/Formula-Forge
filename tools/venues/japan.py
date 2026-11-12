@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import math
 
-from circuit_dataclasses import RunoffRange
+from circuit_dataclasses import Point, RunoffRange
 from circuit_mesh import add, mul
 from circuit_scene import CircuitScene
 from pydantic import TypeAdapter
@@ -32,7 +32,7 @@ def build_venue(scene: CircuitScene) -> None:
         (1400, 1595, -1),
         (1970, 2080, 1),
         (2140, 2235, 1),
-        (2220, 2370, -1),
+        (2220, 2240, -1),
         (2585, 2705, -1),
         (3475, 3600, -1),
         (3620, 3770, -1),
@@ -49,8 +49,9 @@ def build_venue(scene: CircuitScene) -> None:
     )
     for zone in runoffs:
         scene.runoff(zone.start_m, zone.end_m, zone.side, zone.width_m, zone.material)
+    degner_apron_taper(scene)
     for start, end, side, inner, outer, material in (
-        (2080, 2370, -1, 1.2, 4.5, "RunoffGreen"),
+        (2080, 2240, -1, 1.2, 4.5, "RunoffGreen"),
         (3380, 3810, 1, 1.2, 18, "RunoffGreen"),
         (3500, 3630, 1, 18, 23.8, "RunoffPurple"),
         (5000, 5160, -1, 1.2, 7, "RunoffGreen"),
@@ -244,7 +245,42 @@ def pit_front(scene: CircuitScene) -> None:
     )
 
 
+def degner_apron_taper(scene: CircuitScene) -> None:
+    for station in range(2215, 2255):
+        a, b = scene.at(station), scene.at(station + 1)
+        points = [a.point(-a.half_width - .14), b.point(-b.half_width - .14),
+                  b.point(-b.half_width - b.right_shoulder - .95),
+                  a.point(-a.half_width - a.right_shoulder - .95)]
+        polygon = Polygon([p[:2] for p in points])
+        scene.extra_corridors.append(polygon)
+        scene.polygon_surface(polygon.difference(scene.surface_mask(a)), 'Gravel', .001, a, paved=True)
+    scene.landmarks.append({'name': 'Degner left apron taper before underpass',
+                            'start_m': 2215, 'end_m': 2255,
+                            'dimensions_status': 'Visual apron follows exported native LEFT shoulder plus 0.95 m. Reference at 869 s shows gravel before the close underpass wall at 870.5 s; 872 s shows narrow grass. SourceRunoff 22 m ends at 2215 m. Cubic taper comes from shoulder-corrections.json; endpoints estimated within 15 m, with no road profile changes.'})
+
+
+def bridge_left_abutment(scene: CircuitScene) -> None:
+    end, behind = scene.at(4637), scene.at(4628)
+    lower = scene.at(2272)
+    def base(point: Point) -> Point:
+        along = (point[0] - lower.x) * lower.tx + (point[1] - lower.y) * lower.ty
+        floor = scene.at(2272 + along).z - .15
+        return point[0], point[1], min(floor, scene.raw_ground(point[0], point[1]) - .1)
+    left, right = end.point(-end.half_width - 1.35, -.6), end.point(end.half_width + 1.35, -.6)
+    pairs = [(left, right)]
+    for side, front in [(-1, left), (1, right)]:
+        pairs.append((front, behind.point(side * (behind.half_width + 1.35), -.6)))
+    for a, b in pairs:
+        aa, bb = base(a), base(b)
+        scene.quad('Building_BridgeAbutment', 'Concrete', aa, bb, b, a)
+        scene.quad('Building_BridgeAbutment', 'Concrete', bb, aa, a, b)
+    scene.landmarks.append({'name': 'Degner crossover left concrete abutment and wing walls',
+                            'upper_station_m': 4637, 'wing_end_station_m': 4628,
+                            'dimensions_status': 'Reference at 869 and 870.5 s shows the left concrete bridge support. End wall follows the actual upper deck end; short 9 m wings are reconstructed. Top follows the unchanged deck underside and bottom reaches below unchanged lower-road grade or retained GSI ground. The upper bridge and both road profiles are preserved.'})
+
+
 def bridge(scene: CircuitScene) -> None:
+    bridge_left_abutment(scene)
     a, b = scene.at(4637), scene.at(4667)
     for side in (-1, 1):
         lane_a, lane_b = side * (a.half_width + 0.6), side * (b.half_width + 0.6)

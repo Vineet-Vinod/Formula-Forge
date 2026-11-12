@@ -1,0 +1,84 @@
+{
+  "provider": "OpenStreetMap contributors",
+  "licence": "ODbL1.0",
+  "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "retrieved": "2026-11-08",
+  "raw_inputs": [
+    {
+      "file": "coastal-map.osm.gz",
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=39.092,21.618,39.116,21.660",
+      "query": "",
+      "raw_sha256": "4924278c5a0c09bdd861604d517ac0d559bcbd741a44b64e911d4e38b4d1affa",
+      "gzip_sha256": "1500b7b3fbe42ae189faa62cbce22ce8801d21b8ebb99987e6d8a06d321495a5",
+      "bytes": 2601657
+    },
+    {
+      "file": "lagoon-17098729.osm.gz",
+      "url": "https://api.openstreetmap.org/api/0.6/relation/17098729/full",
+      "query": "",
+      "raw_sha256": "ffe1cee3fad27d042edfa07c779afe883fe27febec98b54d1afc7be2c7b95bb4",
+      "gzip_sha256": "fc11e347cc4c8021ba94449a5f7e036ad13f2cd743b2d0f9e9cc65b3dd3418ab",
+      "bytes": 20637
+    }
+  ],
+  "filtered_file": "coastal.osm.json.gz",
+  "filtered_sha256": "ce3b5bc122a327560ad4118f45e8c5449b0d13dd96fe2ba08b86c8a2f6c38ceb",
+  "coastal_geometry_file": "coastal-water.json",
+  "coastal_geometry_sha256": "b29cb8f1be249968ffc8f0817fb6fd18b0bccbb65cf7dcaa25d3b2130ab67488",
+  "coastline_way_ids": [
+    14293463,
+    40600375,
+    434970468,
+    1135837919,
+    1463901269
+  ],
+  "pier_ids": [
+    1258744117,
+    1258744118,
+    1258744119,
+    1258744120,
+    1258744121,
+    1258744122,
+    1258945368
+  ],
+  "water_level_m": -0.3999675521591186,
+  "raw_water_area_m2": 3188017.279675631,
+  "raw_water_over_native_centrelines": 0,
+  "retained_terrain_bounds_m": [
+    -1056.0,
+    -1392.0,
+    840.0,
+    2664.0
+  ],
+  "preservation": "Sea/lagoon clipping affects scenery terrain only. Islands, actual mapped pier footprints, native road/protection and buildings remain land. Water is never added to extra_corridors. No native or terrain binary writes during authoring.",
+  "vertical_registration": {
+    "red_sea_msl_absolute_m": 0,
+    "retained_scenery_datum_m": 0.3999675521591186,
+    "relative_water_m": -0.3999675521591186,
+    "uncertainty_m": 0.5,
+    "source_note": "OpenRedSea zeroMSL minus retained native scenery datum. Lagoon shown by officialF1 circuit overview/OSMrelation; shared flat level estimated, not tide/hydraulic survey."
+  },
+  "reference_visual_context": [
+    {
+      "url": "https://www.formula1.com/en/latest/article/first-look-fastest-ever-f1-street-circuit-revealed-for-saudi-arabian-grand.3DlnO9gJaDmaGJtpWnBLHR",
+      "image": "https://media.formula1.com/image/upload/c_fit,w_1600,h_1000/q_auto/v1740000001/content/dam/fom-website/Upgrade/Jeddah_5.webp",
+      "local_research_only": "build/reviews/jeddah/reference/official-sea-lagoon-south.webp",
+      "sha256": "c5e14c43f62ee852b608a0387eef25b0b627986ecf0fedca4687a8148764384a",
+      "supports": "Viewed official 2021 planned aerial: sea and enclosed lagoon on opposite sides of the race peninsula, preserving islands/piers. This is geography context, not evidence for current building completion or a direct cockpit pose."
+    }
+  ],
+  "source_validation": {
+    "water_area_m2": 3184070.053390289,
+    "water_triangles": 551,
+    "mesh_coverage": 0.9999999817976012,
+    "road_overlap_m2": 0.0,
+    "protection_overlap_m2": 0.0,
+    "building_overlap_m2": 0.0,
+    "pier_overlap_m2": 0.0,
+    "physical_extra_corridors_added": 0,
+    "tree_roots_in_water": 0,
+    "trees_checked": 77,
+    "proof": "build/reviews/jeddah/reference/coastal-source-proof.json",
+    "coastal_roof_overhang": "Only 28 high parapet triangles on mapped coastal building1258945369 project beyond the footprint: 0.8 m beams centered on roof edges create about 0.4 m overhang. All overlap is at z9.399–9.899 m, not foundations or submerged offices. No other structural overlap was found."
+  }
+}

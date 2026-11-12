@@ -7,6 +7,7 @@ from circuit_mesh import add, mul
 from circuit_scene import CircuitScene
 
 from venues.east_architecture import cylinder, facade, frame, mapped, trees
+from venues.singapore_waterfront import build_waterfront, skypark, tower
 
 
 def esplanade(scene: CircuitScene, osm_id: int) -> None:
@@ -64,32 +65,10 @@ def flyer(scene: CircuitScene) -> None:
 
 
 def sands(scene: CircuitScene) -> None:
-    # Distant skyline coordinates are estimated; they are outside the corridor footprint extract.
-    xy = scene.geo(1.28375, 103.86055)
-    base_z = scene.ground(*xy)
-    axis = .73, .683, 0.
-    normal = -axis[1], axis[0], 0.
-    heading = math.atan2(axis[1], axis[0])
-    for along in (-90, 0, 90):
-        center = add((xy[0], xy[1], base_z), mul(axis, along))
-        for leg in (-1, 1):
-            for floor in range(55):
-                rise = floor*200/55
-                lean = leg*(10+13*(1-floor/55)**2)
-                c = add(center, add(mul(normal, lean), (0, 0, rise+1.65)))
-                scene.box('Building_SandsTowers', 'Glass', c, 48, 19, 3.6, heading)
-                scene.box('Building_SandsBalconies', 'Cream', add(c, (0, 0, 1.8)), 49, 20, .22, heading)
-                if floor % 4 == 0:
-                    scene.box('Building_SandsWindows', 'WarmGlass', add(c, mul(normal, leg*9.55)), 36, .12, 1.4, heading)
-    center = xy[0], xy[1], base_z+200
-    for segment in range(80):
-        a, b = segment*math.tau/80, (segment+1)*math.tau/80
-        def rim(angle: float, z: float, scale: float = 1.) -> tuple[float, float, float]:
-            return add(center, add(add(mul(axis, 170*math.cos(angle)*scale), mul(normal, 19*math.sin(angle)*scale)), (0, 0, z)))
-        scene.quad('Building_SandsSkypark', 'Cream', rim(a, 0), rim(b, 0), rim(b, -6, .95), rim(a, -6, .95))
-        scene.triangle('Building_SandsSkypark', 'Grass', add(center, (0, 0, .15)), rim(a, .15), rim(b, .15))
-        scene.beam('Building_SandsSkypark', 'White', rim(a, .5), rim(b, .5), .35)
-    scene.landmarks.append({'name': 'Marina Bay Sands', 'latitude': 1.28375, 'longitude': 103.86055, 'height_m': 200, 'skypark_length_m': 340, 'skypark_width_m': 38, 'source': 'Arup project description; geographic position and tower plan are visual estimates.'})
+    for osm_id in (116801004, 172307472, 172307471):
+        tower(scene, scene.footprint(osm_id))
+    skypark(scene, scene.footprint(116800998))
+
 
 from venues.west_architecture import apron_band
 
@@ -128,6 +107,7 @@ def circuit_edges(scene: CircuitScene) -> None:
 
 def build_venue(scene: CircuitScene) -> None:
     circuit_edges(scene)
+    build_waterfront(scene)
     scene.modeled_buildings.add(97582570)
     esplanade(scene, 256163011)
     esplanade(scene, 256163012)

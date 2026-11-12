@@ -15,7 +15,7 @@
         866,
         868
       ],
-      "section": "Degner/crossover ~2200\u20132370m",
+      "section": "Degner/crossover ~2200–2370m",
       "surface": "Driver-left red/white kerb, green strip, tan/gravel beyond; blue bridge/event panels.",
       "confidence": "high palette, estimated extent"
     },
@@ -37,7 +37,7 @@
         856,
         858
       ],
-      "section": "Spoon ~3547\u20133750m",
+      "section": "Spoon ~3547–3750m",
       "surface": "Wide green and purple/blue painted pavement on outside right.",
       "confidence": "high pavement/paint, estimated boundaries"
     },
@@ -55,11 +55,18 @@
         890,
         892
       ],
-      "section": "Casio ~5111\u20135340m",
+      "section": "Casio ~5111–5340m",
       "surface": "Paved escape with green painted bands through chicane.",
       "confidence": "high palette, estimated boundaries"
     }
   ],
   "dimensions": "Runoff widths, transitions and temporary marking shapes are bounded reconstruction estimates; not engineering measurements. Physical protection uses the same outer widths.",
-  "geometry": "Escape mesh follows local road branch height; terrain outside the escape blends back to GSI. The bridge is handled independently from the lower road."
+  "geometry": "Escape mesh follows local road branch height; terrain outside the escape blends back to GSI. The bridge is handled independently from the lower road.",
+  "crossover_left_extent_correction": {
+    "review": "crossover-left-review.json",
+    "supersedes": "Earlier2200–2370m palette association does not support post-bridge gravel. Direct869/870.5/872s sequence corrects extent to taper before bridge and close grass verge after it.",
+    "canonical_runoff_end_m": 2215,
+    "visual_gravel_taper_end_m": 2255,
+    "green_and_kerb_end_m": 2240
+  }
 }

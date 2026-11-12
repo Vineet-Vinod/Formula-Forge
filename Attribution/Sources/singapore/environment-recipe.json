@@ -17,7 +17,7 @@
         0,
         750
       ],
-      "name": "Pit straight and T1–3",
+      "name": "Pit straight and T1\u20133",
       "reviewed_video_seconds": [
         536.06,
         530,
@@ -41,7 +41,7 @@
         750,
         1500
       ],
-      "name": "Republic Boulevard T4–5",
+      "name": "Republic Boulevard T4\u20135",
       "reviewed_video_seconds": [
         610,
         614,
@@ -60,7 +60,7 @@
         1500,
         2200
       ],
-      "name": "Raffles Boulevard T6–7",
+      "name": "Raffles Boulevard T6\u20137",
       "reviewed_video_seconds": [
         842.38,
         740.27
@@ -74,7 +74,7 @@
         2200,
         2700
       ],
-      "name": "Stamford and Padang T8–9",
+      "name": "Stamford and Padang T8\u20139",
       "reviewed_video_seconds": [
         1148.7
       ],
@@ -5979,7 +5979,7 @@
     },
     {
       "osm_id": 257192963,
-      "name": "Cathedral Café",
+      "name": "Cathedral Caf\u00e9",
       "source_xy_m": [
         -1342.61,
         150.46
@@ -9216,7 +9216,7 @@
       "vertical_uncertainty_m": 1.0,
       "station_uncertainty_m": 50.0,
       "method": "Read relative heights from the published numerical extremum labels and drawn trace, then register individual official corners to retained native centerline geometry using FIA maps. Intermediate heights are graphical estimates, not measurements.",
-      "registration_notes": "The old20.046mCityHallpeak near2408m is inconsistent with the F1diagram5.3mrange. The real profile has a modest bridge hump betweenT13andT14. Old2016T1–15are retained; currentT16–19correspond to oldT20–23. The new bypass between oldT15/T20is interpolated nearly flat, not copied from removed corners.",
+      "registration_notes": "The old20.046mCityHallpeak near2408m is inconsistent with the F1diagram5.3mrange. The real profile has a modest bridge hump betweenT13andT14. Old2016T1\u201315are retained; currentT16\u201319correspond to oldT20\u201323. The new bypass between oldT15/T20is interpolated nearly flat, not copied from removed corners.",
       "supersedes": "Coarse GLO-90 road profile remains retained as source evidence, not as the racing deck. No new lidar or survey is claimed.",
       "controls_file": "elevation-corrections.json"
     }
@@ -9725,5 +9725,12 @@
     "geographic_check": "At native4100m the mapped wheel is373m forward and2m right of the source tangent, matching its near-central forward skyline view. By4480m it is only37m forward and82m left, mostly outside the horizontal/vertical cockpit FOV. Capture earlier on the straight.",
     "camera_warning": "This is a native scene/map/FOV registration estimate, not a surveyed camera reconstruction. Footprint/operator dimensions remain separate evidence.",
     "runtime_gate": "Direct reference now available; packaged skyline/rim/capsule comparison still required."
+  },
+  "marina_context_review": {
+    "provenance": "marina-context-provenance.json",
+    "retained_geometry": "environment.osm.json.gz",
+    "source_status": "The mapped shoreline and district buildings now replace the former estimated skyline placement and asphalt terrain through roofs.",
+    "runtime_status": "Awaiting regenerated packaged review.",
+    "native_profile_changed": false
   }
 }

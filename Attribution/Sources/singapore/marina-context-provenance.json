@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-08",
+  "circuit": "singapore",
+  "scope": "Marina Bay and Singapore River water, the three Sands towers and SkyPark, the Shoppes podium and roof parts, and Flower Dome. These are scenery changes.",
+  "retained_geometry": {
+    "file": "environment.osm.json.gz",
+    "sha256": "5901241eca446d4d80d70d6eb8e0eb173dce37d0fdaae6277fe19719d90bc72b",
+    "source": "OpenStreetMap contributors, ODbL. Full water relations and selected district building geometry from the OSM API.",
+    "requests": [
+      "https://api.openstreetmap.org/api/0.6/relation/9542146/full",
+      "https://api.openstreetmap.org/api/0.6/relation/9569901/full",
+      "https://api.openstreetmap.org/api/0.6/map?bbox=103.856,1.280,103.866,1.291"
+    ],
+    "water_roles": "Both complete relations contain outer members only. There are no omitted inner island rings.",
+    "building_ids": [
+      116801004,
+      172307472,
+      172307471,
+      116800998,
+      2298319,
+      1056849313,
+      1056849314,
+      1056849315,
+      171142595
+    ]
+  },
+  "pixel_diagnosis": {
+    "capture_station_m": 4290.5,
+    "lane_m": 0,
+    "revision": "939204885c109ae7736f6b2b0e761467e85e5aac",
+    "owners": [
+      {
+        "pixel": [
+          1050,
+          365
+        ],
+        "source_xy_z_m": [
+          -440.762,
+          -600.748,
+          18.266
+        ],
+        "owner": "The Shoppes and its northern roof part",
+        "mapped_land": true,
+        "distance_to_water_shore_m": 56.076
+      },
+      {
+        "pixel": [
+          1100,
+          375
+        ],
+        "source_xy_z_m": [
+          -456.103,
+          -581.505,
+          13.204
+        ],
+        "owner": "The Shoppes",
+        "mapped_land": true,
+        "distance_to_water_shore_m": 42.278
+      },
+      {
+        "pixel": [
+          300,
+          390
+        ],
+        "source_xy_z_m": [
+          -14.835,
+          -743.163,
+          8.879
+        ],
+        "owner": "Flower Dome",
+        "mapped_land": true,
+        "distance_to_water_shore_m": 73.192
+      }
+    ],
+    "cause": "The generator used asphalt-colored DSM terrain through building roofs and omitted the bay water. Replace the mapped roof footprints with architecture; retain the land."
+  },
+  "primary_sources": [
+    {
+      "url": "https://www.pub.gov.sg/-/media/PUB/Reservoirs/ABC/PDF/Map_of_demarcation_Marina_Reservoir.pdf",
+      "supports": "Shoreline, Marina Bay, the river mouth, Shoppes, ArtScience Museum and bridge positions."
+    },
+    {
+      "url": "https://www.arup.com/projects/marina-bay-sands-integrated-resort/",
+      "supports": "Three towers, 340 m SkyPark length, 38 m nominal width and 200 m roof height."
+    },
+    {
+      "url": "https://www.jfe-eng.co.jp/en/products/project/architecture01.html",
+      "image_url": "https://www.jfe-eng.co.jp/en/products/project/img/architecture01_im01.webp",
+      "supports": "Directly inspected closed curved SkyPark belly and longitudinal rib pattern."
+    },
+    {
+      "url": "https://www.safdiearchitects.com/projects/marina-bay-sands-public-realm-and-retail-galleria",
+      "supports": "Directly inspected photographs show low glazed waterfront gallerias, arched glazing, cream ribs and a planted promenade."
+    },
+    {
+      "url": "https://www.atelierten.com/articles/in-depth-gardens-by-the-bay/",
+      "supports": "Flower Dome is 170 m long, 86 m wide and 38 m high, with a glass gridshell."
+    }
+  ],
+  "architecture": {
+    "tower_footprints": "The actual Tower 1, 2 and 3 polygons set their locations. The upper wall shape tapers from the mapped lower outline. The splay and window pattern are estimates from the primary photograph.",
+    "tower_height_m": 193,
+    "shoppes_podium_height_m": 15,
+    "roof_part_crest_height_m": 25,
+    "flower_dome_height_m": 38,
+    "skypark": "The actual 35-vertex SkyPark outline replaces the ellipse. Its length is 340.16 m and area is 12,454.9 m\u00b2. The mapped maximum bounding width is 57.72 m, while Arup gives a nominal width of 38 m. Preserve the outline and retain this source disagreement.",
+    "hull_depth_m": 8,
+    "dimensions_status": "OSM height tags and engineering dimensions are distinguished above. Curvature, mullion spacing, ribs and facade lighting are visual estimates."
+  },
+  "foundation_estimate": {
+    "marina_buildings_m": 2.5,
+    "flower_dome_m": 0.9,
+    "method": "Use adjacent low ground rather than a DSM roof. Southern Bayfront Avenue samples at source XY (-536.458, -1014.649) and (-533.241, -1010.034) are 2.080 m and 2.496 m. Low ground beside Tower 1 has a median near 2.9 m. Flower Dome uses its low boundary estimate. These are local scenery bases, not changes to the terrain height field.",
+    "previous_sands_anchor_ground_m": 10.035741334853045,
+    "uncertainty_m": 2.0
+  },
+  "water": {
+    "polygons": 2,
+    "rendered_area_m2": 1399490.7383102458,
+    "height_m": -4.811936793826295,
+    "water_witnesses": {
+      "MarinaBay": true,
+      "SingaporeRiver": true,
+      "MarinaChannel": true
+    },
+    "dry_land_witnesses": {
+      "Tower1": true,
+      "Shoppes": true,
+      "FlowerDome": true
+    },
+    "road_crossings_are_existing_bridges": [
+      {
+        "start_m": 2824.58008,
+        "end_m": 2878.24951,
+        "minimum_deck_water_clearance_m": 7.991901115223711
+      },
+      {
+        "start_m": 3024.78516,
+        "end_m": 3237.05078,
+        "minimum_deck_water_clearance_m": 9.814089243953699
+      }
+    ],
+    "minimum_all_road_z_above_water_m": 4.811975836734895,
+    "method": "Clip complete source polygons to the existing scenery grid. Water height uses the flattened source DSM value of zero minus the retained scenery datum. It is an estimate in the existing relative coordinate frame.",
+    "dry_witness_source_xy_m": {
+      "tower1": [
+        -450.432,
+        -969.324
+      ],
+      "shoppes": [
+        -440.762,
+        -600.748
+      ],
+      "flower_dome": [
+        -14.835,
+        -743.163
+      ]
+    },
+    "wet_witness_lat_lon": {
+      "marina_bay": [
+        1.2865,
+        103.8568
+      ],
+      "singapore_river": [
+        1.287,
+        103.8528
+      ],
+      "marina_channel": [
+        1.287,
+        103.867
+      ]
+    },
+    "bridge_registration": "The two road crossings are Anderson Bridge and Esplanade Bridge. Water remains below their existing decks. No physical corridor or road profile changes."
+  },
+  "source_proof": {
+    "hull": {
+      "triangles": 2880,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "all_soffit_downward": true,
+      "soffit_outside_actual_roof_plan_m2": 3.263490581002481e-13,
+      "closed_body": true
+    },
+    "new_architecture_road_overlap_m2": 0.0,
+    "roof_outside_mapped_footprints_m2": {
+      "Building_SandsGalleriaRoof": 1.8497227689627943e-12,
+      "Building_FlowerDomeGlass": 6.059526735771861e-13
+    },
+    "terrain_cutout_outside_owned_buildings_m2": 0.0,
+    "all_vertices_finite": true,
+    "native_hashes": {
+      "drive_surface.bin": "5643c49144b08d65b4f75e024408fa6d72e7f7ebdba3df91802d37c8f68b966d",
+      "track_limits.bin": "7644b1e83700aeccbe0ced2c917e0b925303c7be64bb2a1d9a4618370e30856f",
+      "singapore_survey.inc": "dd02437d10328d41c104f5f4be1a04db42ad6b816b645b0f905972662e353903"
+    }
+  },
+  "review_status": "Source geometry checks passed. Regenerated packaged comparison is pending. No visual approval is asserted.",
+  "media_policy": "Primary photographs and supplied video frames are inspection references only. Their pixels are not shipped."
+}

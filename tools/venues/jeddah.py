@@ -8,6 +8,7 @@ from circuit_mesh import add, mul
 from circuit_scene import CircuitScene
 from shapely.geometry import Polygon
 
+from venues.coastal_water import coastal_water
 from venues.east_architecture import (
     facade,
     frame,
@@ -209,6 +210,7 @@ def construction_tower(scene: CircuitScene) -> None:
 
 def build_venue(scene: CircuitScene) -> None:
     circuit_edges(scene)
+    coastal_water(scene)
     scene.stand(
         5810, 6140, -1, rows=22, setback=5, roofed=True, seat_material="SeatBlue"
     )

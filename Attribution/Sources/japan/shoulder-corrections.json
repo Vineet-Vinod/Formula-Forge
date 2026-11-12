@@ -7,7 +7,7 @@
     "release_m": 210,
     "shoulder_m": 0.1
   },
-  "method": "Reference pit wall at about0.95m outside road edge; cubic transitions. Estimated, not surveyed. Pit access remains physically closed.",
+  "method": "Reference pit wall at about 0.95 m outside road edge; cubic transitions. Estimated, not surveyed. Pit access remains physically closed.",
   "back_straight_bridge": {
     "approach_m": 4620,
     "start_m": 4637,
@@ -23,7 +23,23 @@
       "side": 1,
       "shoulder_m": 1.25,
       "transition_m": 25,
-      "source_note": "G-2 post-crossover driver-RIGHT grass bank; video870.5s under-deck exit and872s straight show protection near road with grass bank rising to upper spectators. Operator G2 map and mapped184102012 footprint register seating front to native2307\u20132417. Conservative1\u20131.5m shoulder estimated, not measured; plateau1.25m, cubic approach2275\u20132300/release2417\u20132442. Native CSV column left is reflected +RIGHT. Lower-road section only; upper bridge4637\u20134667 untouched."
+      "source_note": "G-2 post-crossover driver-RIGHT grass bank; video 870.5 s under-deck exit and 872 s straight show protection near road with grass bank rising to upper spectators. Operator G2 map and mapped 184102012 footprint register seating front to native 2307–2417. Conservative 1–1.5 m shoulder estimated, not measured; plateau 1.25 m, cubic approach 2275–2300/release 2417–2442. Native CSV column left is reflected +RIGHT. Lower-road section only; upper bridge 4637–4667 untouched."
+    },
+    {
+      "start_m": 2080,
+      "end_m": 2215,
+      "side": -1,
+      "shoulder_m": 21.05,
+      "transition_m": 0,
+      "source_note": "Explicit existing 22 m gravel envelope anchor before taper. SourceRunoff width 22 m resolves to 21.05 m shoulder plus 0.95 m protection margin; no resolved physical width changes before 2215 m."
+    },
+    {
+      "start_m": 2255,
+      "end_m": 2370,
+      "side": -1,
+      "shoulder_m": 1.25,
+      "transition_m": 40,
+      "source_note": "Degner crossover LEFT: supplied 869 s shows gravel/green before the bridge;870.5 s shows a close left concrete abutment/banner wall and 872 s narrow grass beyond. Cubic taper 2215–2255 m from existing 21.05 m shoulder, plateau 1.25 m plus 0.95 m protection margin, release 2370–2410 m. Width estimated within 0.75 m and endpoints within 15 m; no native road XYZ, bank, road width, upperbridge 0.4 m or G2 RIGHT changes. SourceRunoff 22 m ends 2215 m so it cannot override this taper."
     }
   ]
 }

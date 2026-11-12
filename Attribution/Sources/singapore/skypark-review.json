@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-08",
+  "circuit": "singapore",
+  "issue": "The earlier SkyPark had no underside and its side faces pointed inward.",
+  "source_outline": {
+    "osm_id": 116800998,
+    "vertices": 35,
+    "mapped_length_m": 340.162833,
+    "mapped_maximum_width_m": 57.718962,
+    "mapped_area_m2": 12454.877741,
+    "nominal_primary_dimensions_m": [
+      340,
+      38
+    ],
+    "source_disagreement": "The mapped maximum bounding width differs from the primary nominal width. The model uses the actual outline; it does not force the footprint into an ellipse."
+  },
+  "correction": "Close the mapped outline with a deck, outward side walls and a curved belly. Add fine longitudinal ribs from the primary JFE photograph. The underside stays inside the concave mapped plan.",
+  "primary_sources": [
+    {
+      "url": "https://www.arup.com/projects/marina-bay-sands-integrated-resort/",
+      "supports": "Three towers, 340 m SkyPark length, 38 m nominal width and 200 m roof height."
+    },
+    {
+      "url": "https://www.jfe-eng.co.jp/en/products/project/architecture01.html",
+      "image_url": "https://www.jfe-eng.co.jp/en/products/project/img/architecture01_im01.webp",
+      "supports": "Directly inspected closed curved SkyPark belly and longitudinal rib pattern."
+    }
+  ],
+  "estimated_dimensions": {
+    "hull_depth_m": 8,
+    "rib_width_m": 0.11,
+    "rib_spacing": "Eleven longitudinal lines. This is a visual estimate, not an engineering drawing."
+  },
+  "geometry_proof": {
+    "triangles": 2880,
+    "nonmanifold_edges": 0,
+    "inconsistent_winding_edges": 0,
+    "all_soffit_downward": true,
+    "soffit_outside_actual_roof_plan_m2": 3.263490581002481e-13,
+    "closed_body": true
+  },
+  "physical_contract": "Native road, physics, drive surface and collision are unchanged.",
+  "context_provenance": "marina-context-provenance.json",
+  "review_status": "Awaiting regenerated packaged review."
+}

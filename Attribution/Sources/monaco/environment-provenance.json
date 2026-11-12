@@ -6,7 +6,7 @@
   "licence": "ODbL1.0",
   "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
   "file": "environment.osm.json.gz",
-  "sha256": "e358ea6d7b12a079f2ec63021e1e4fea327c8f4c9656ba6e280bb996638ca865",
+  "sha256": "14e393c8402f3572ad8815073b95454c3423ff4bf4e247d8bf5cb58fae36825c",
   "purpose": "Tightly bounded essential landmark query; inline member geometry preserved.",
   "additional_queries": [
     {
@@ -36,6 +36,12 @@
       "response_sha256": "7eba6f0fb70f9485de18463a2ce69ca000f00d5851b19714b8031ef91e40bf00",
       "purpose": "Small harbour-side district bbox. Retains above-ground building/part footprints, actual parks/gardens/grass, individual trees, pedestrian paths and retaining walls. Existing source geometry is preserved by element ID. Raw road geometry is not imported. Underground structures are not authored as above-ground houses.",
       "provenance": "coastal-district-provenance.json"
+    },
+    {
+      "provenance_file": "rocher-district-provenance.json",
+      "query_url": "https://api.openstreetmap.org/api/0.6/map?bbox=7.4220,43.7310,7.4257,43.7327",
+      "response_sha256": "e65fa53513c90b4fa98193633228df78615775924877cf775d23d36109c5ed09",
+      "purpose": "Actual north Rocher woodland, mapped cliff line, twelve missing crest footprints and pedestrian paths. Existing elements are preserved by type/id. No road or racing geometry imported. Individual reconstructed trees are not mapped positions."
     }
   ]
 }

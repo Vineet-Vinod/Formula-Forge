@@ -1,10 +1,16 @@
 {
   "recipe": "make circuit-assets CIRCUIT=japan",
   "tiles": 102,
-  "triangles": 1620327,
+  "triangles": 1619713,
   "road_sha256": "bb40f25c218cf57ba4757dcf9d5b823632494805044e3e5925e3b1a15453ddde",
   "terrain_sha256": "d7690ee68e2d8a389b89973937be81cd217b5d621db02bd12eeebaecc5540b25",
   "landmarks": [
+    {
+      "name": "Degner left apron taper before underpass",
+      "start_m": 2215,
+      "end_m": 2255,
+      "dimensions_status": "Visual apron follows exported native LEFT shoulder plus 0.95 m. Reference at 869 s shows gravel before the close underpass wall at 870.5 s; 872 s shows narrow grass. SourceRunoff 22 m ends at 2215 m. Cubic taper comes from shoulder-corrections.json; endpoints estimated within 15 m, with no road profile changes."
+    },
     {
       "name": "A1",
       "osm_id": 184120096,
@@ -2472,6 +2478,12 @@
       "end_m": 4676,
       "side": 1,
       "material": "PanelAmericanExpress"
+    },
+    {
+      "name": "Degner crossover left concrete abutment and wing walls",
+      "upper_station_m": 4637,
+      "wing_end_station_m": 4628,
+      "dimensions_status": "Reference at 869 and 870.5 s shows the left concrete bridge support. End wall follows the actual upper deck end; short 9 m wings are reconstructed. Top follows the unchanged deck underside and bottom reaches below unchanged lower-road grade or retained GSI ground. The upper bridge and both road profiles are preserved."
     },
     {
       "name": "Back straight over Degner underpass",

@@ -6153,5 +6153,84 @@
     "method": "Direct appearance/topology checks of retained frames and bounded individual Baku reference seeks; source geometry and all native data unchanged.",
     "notes": "New bounded individual-frame review closes the castle gap at234/236/238s. Earlier235–245s labels as T5–7 were wrong:235/236arecastle,238rearcastle,240uppercitydeparture,245/247uppercityfastsection.250–256s continue into the late-city/downhill approach before a hard cut toLAP2by258s.363.77/421.98s are ordinary city views and cannot directly validate the castle. Exact station estimates are±60m; no survey or uninterrupted playback-time registration is claimed.",
     "next_gate": "Actual packaged full-lap review and targeted captures in build/reviews/east-final-targets.json; these metadata corrections are not visual approval."
+  },
+  "coastal_water_correction": {
+    "source_provenance": "coastal-provenance.json",
+    "coastal_geometry": "coastal-water.json",
+    "omission_fixed": "The previous venue contained no sea geometry and rendered the coastal scenery grid as Runoff. Actual directed shoreline faces now replace only mapped water, retaining land, buildings and pier footprints.",
+    "topology": [
+      287035247,
+      358625702,
+      1528395467,
+      1528410534
+    ],
+    "water_level_m": -4.3,
+    "preservation": "Water is appended only to water_shapes, never extra_corridors. Native roads/protection and mapped building/pier land are excluded. Actual coast edges and island holes are retained. Terrain under water is removed; flat water uses the existing Water material. Native road XYZ, widths, bank and physics are untouched.",
+    "pier_levels": "Actual mapped footprints. Each deck is estimated from retained ground at the closest coastline vertex, with minimum 0.6 m freeboard. These are original scenery reconstructions, not surveyed pier elevations.",
+    "source_checks": {
+      "water_area_m2": 2947374.138035766,
+      "water_triangles": 182,
+      "mesh_coverage": 0.9999999747133912,
+      "road_overlap_m2": 0.0,
+      "protection_overlap_m2": 0.0,
+      "building_overlap_m2": 0.0,
+      "pier_overlap_m2": 0.0,
+      "physical_extra_corridors_added": 0,
+      "tree_roots_in_water": 0,
+      "trees_checked": 161,
+      "proof": "build/reviews/baku/reference/coastal-source-proof.json"
+    },
+    "reference_visibility": "Supplied cockpit sequences reviewed here mostly hide coastal water behind barriers, buildings and trees. They establish context and day/night appearance, not a surveyed sea-camera pair. Direct geographic water context comes from the official aerial/map listed below. Off-axis absence from a cockpit still is not evidence that water is missing.",
+    "next_gate": "Fresh source generation/import and complete packaged live lap with Luna High. Source topology and height proofs are not rendered acceptance.",
+    "vertical_registration": {
+      "f1_sf_absolute_m": -24.7,
+      "f1_sf_native_m": 0,
+      "caspian_absolute_m": -29,
+      "relative_water_m": -4.3,
+      "caspian_source": "https://files.preslib.az/projects/eco/en/eco_m3_4.pdf",
+      "source_page_1_based": 11,
+      "source_epoch": "July2025 cited in PresidentialLibrary report",
+      "uncertainty_m": 1.5,
+      "datum_note": "Caspian absolute altitude is not a native relative altitude. Scenery DSM uses factual F1SFdatum via scenery-ground.json, replacing incompatible oldmedianroof rebase. Waterlevel2025 is not a precise game-reference epoch measurement."
+    },
+    "scenery_datum_correction": {
+      "manifest": "scenery-ground.json",
+      "grid": "elevation/scenery-datum-grid.json.gz",
+      "old_datum_m": -20.46808004037964,
+      "corrected_f1_datum_m": -24.7,
+      "uniform_shift_m": 4.23191995962036,
+      "type": "Same retained GLO-90 DSM scenery, not bare earth. Existing 20 m near-road joins retained; no coastal mask or incompatible vertical datums.",
+      "effects": "384 racing-deck and edge probes change 0 m. Farther building-centroid ground usually rises 4.232 m; near-road building centroids change 0–3.79 m under existing ground joins. No relief rescaling.",
+      "shore_freeboard_before_m": [
+        -3.2319199562072765,
+        -1.6388157247471833,
+        -0.1349677756970813
+      ],
+      "shore_freeboard_after_m": [
+        1.000000003413084,
+        2.5931042348731754,
+        4.096952183923278
+      ],
+      "uncertainty": "F1 profile and historical Caspian water epochs are approximate. Dataset still includes roofs and canopy. Native car profiles remain exactly unchanged.",
+      "proof": "build/reviews/baku/reference/coastal-datum-proof.json"
+    },
+    "primary_visual_context": [
+      {
+        "url": "https://cdn.bakucitycircuit.com/uploads/faq/road-map.pdf",
+        "publisher": "Baku City Circuit",
+        "page_1_based": 1,
+        "local_research_only": "build/reviews/baku/reference/operator-waterfront-map.png",
+        "pdf_sha256": "0aed2fec16a5e81798ab034b166f1ce8f9f5456898e65f9075d816635a6c9377",
+        "supports": "Viewed official 2024 operator map: Caspian Sea below the boulevard, actual pier platforms and wider coastal park separating the racing street from water. Map corroborates shape/dry pier controls; exact shoreline comes from retained OSM ways."
+      }
+    ],
+    "supplied_context_frames": [
+      {
+        "time_s": 42,
+        "path": "build/reviews/baku/reference/water-search-42.jpg",
+        "observed": "Actual long straight with dense park trees toward sea; water occluded, not a direct sea view."
+      }
+    ],
+    "reference_review_targets": "build/reviews/coastal-water-review-targets.json"
   }
 }
