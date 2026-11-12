@@ -34,14 +34,17 @@ Published profiles are digitised reconstructions; DSMs can include roofs and veg
 | [Buddh](../Attribution/Sources/buddh/provenance.json) | 5141 | 16.234 | 18.0–25.0 | [FIA climb + retained GLO-30](../Attribution/Sources/buddh/elevation-corrections.json) | [GLO-30 DSM](../Attribution/Sources/buddh/scenery-terrain.json) |
 | [Hockenheim](../Attribution/Sources/hockenheim/provenance.json) | 4574 | 4.300 | 12.0–15.0 | [F1 profile](../Attribution/Sources/hockenheim/elevation-corrections.json) | [GLO-30 DSM](../Attribution/Sources/hockenheim/scenery-terrain.json) |
 
-Suzuka is the only figure-eight. Its back straight crosses the lower Degner road with a modelled clearance of about 6.2 m. Keep its separate deck protection; the planar boundary-union tool deliberately rejects this layout.
+Suzuka is the only figure-eight. Its back straight crosses the lower Degner road with about 6.14 m between the exported road surfaces. This is not underside clearance. Keep its separate deck protection; the planar boundary-union tool deliberately rejects this layout.
 
 Native scenes include circuit-specific architecture, vegetation, protection, kerbs, escape surfaces, braking boards and pit paving. Pit access remains closed for the game. Source generation, native geometry checks and a clean simulated lap do not establish visual or performance acceptance. Follow the [whole-lap workflow](map.md) and compare the exact current assets against registered references.
 
-The 2026-11-12 rebuild changes all 18 additional venues. Historical visual approvals
-predating these geometry and terrain changes do not approve the new assets. Fresh
-packaged whole-route review is pending. Accepted Silverstone, Monza, Interlagos
-and Las Vegas remain separate baselines.
+The 2026-11-12 rebuild changes all 18 additional venues. Work is paused at the
+user's wrap-up request. The final package is built from `6a970d40`: 12 current
+scenes have Luna High visual passes; six fresh reviews and uncapped performance
+checks remain pending. See the [validation checkpoint](additional_circuits_validation.md)
+for exact scene identities, captured laps and remaining source limits. Historical
+approvals do not approve changed assets. Silverstone, Monza, Interlagos and
+Las Vegas remain preserved baselines.
 
 Portimão's retained DGT class-2 ground produces steeper local grades than published
 operator maxima whose measurement interval is unspecified. The source record keeps

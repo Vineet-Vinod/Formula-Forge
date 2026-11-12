@@ -1,0 +1,1396 @@
+{
+  "recorded_utc": "2026-11-12T19:12:12.018716+00:00",
+  "scope": "The eighteen additional circuits; accepted Silverstone, Monza, Interlagos and Las Vegas are preserved baselines.",
+  "status": "Paused at user request.12current-scene visual passes;6fresh reviews pending. Final uncapped performance samples were not run.",
+  "packaged_source_revision": "6a970d404c704a21324aac4450a2f6202281e2fa",
+  "packaged_payload_sha256": {
+    "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.pak": "17e9c5d208d74db77d8c528ac6d888e3254d6bff9ce8746804f37231245add91",
+    "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.ucas": "f3e53337eabd372e7f826a2ff27267500ea32cb8d974e7d5118887d6654bf54d",
+    "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.utoc": "5c345a2b2a91ae2d10d63a12542a7a23820864df96072570aea6e3d6e755929c",
+    "build/unreal/package/Linux/FormulaForge/Content/Paks/global.ucas": "9ba0d5a57ffa7082f1cae440750e0994cdc7a3b312068fc5618df81036c36152",
+    "build/unreal/package/Linux/FormulaForge/Content/Paks/global.utoc": "612984d5375495cee07af35967bf98b7ece7393d55435575f25212a6f4391444",
+    "build/unreal/package/Linux/FormulaForge/Binaries/Linux/FormulaForge": "b571eb243b26c740e1ea075e26c63d70939a4df644b6ad82c27fcb66e59cb6da"
+  },
+  "reviewer": {
+    "model": "gpt-6-luna",
+    "reasoning_effort": "high",
+    "method": "Whole-route contact sheets plus original critical driver frames, compared with pose-qualified retained reference video frames. Root separately adjudicated source mesh and geometry findings."
+  },
+  "checks": {
+    "source": {
+      "pytest": 177,
+      "mypy_files": 59,
+      "ruff": "passed",
+      "command": "make circuit-check CIRCUIT_PYTHON=build/tmp/lasvegas-python/bin/python"
+    },
+    "native": "Passed after registered Turkey opening audit; all other barriers remain paired, white-line containment and collision clearance retained.",
+    "package": "Final6a970d40 package succeeded; six payloads hashed and all18 native scenes pinned.",
+    "session": "FormulaForge.Session.LapLimits passed on final packaged build.",
+    "live_flow": "Fresh packaged whole-route laps are separate from physical controller/menu tests.",
+    "performance": "Not run: queued stationary samples stopped before starting at user wrap-up request.",
+    "final_live_laps": "Five repaired circuits completed clean fresh laps; Spa recording interrupted by user wrap-up. Remaining final-capture/review work is pending."
+  },
+  "preservation": {
+    "comparison_base_revision": "939204885c109ae7736f6b2b0e761467e85e5aac",
+    "accepted_circuits": "Zero content differences against939204885c109ae7736f6b2b0e761467e85e5aac; all Generated changes confined to18 additional-venue directories.",
+    "runtime_physics_camera_handling": "No implementation/configuration changes; source-world data and focused native audit updated.",
+    "proof": {
+      "baseline_revision": "939204885c109ae7736f6b2b0e761467e85e5aac",
+      "final_source_revision": "6a970d404c704a21324aac4450a2f6202281e2fa",
+      "accepted_four_and_shared_generated_content": {
+        "entries": 2208,
+        "git_blob_tree_sha256": "53532a08420e069a166171d7bb0924519a5eadf26c15efff21ceb1281db050bf"
+      },
+      "runtime_implementation_and_configuration_diff": [],
+      "native_world_data_paths_changed": [
+        "Source/FormulaForge/Native/track_data/australia_boundaries.inc",
+        "Source/FormulaForge/Native/track_data/australia_survey.inc",
+        "Source/FormulaForge/Native/track_data/austria_boundaries.inc",
+        "Source/FormulaForge/Native/track_data/austria_survey.inc",
+        "Source/FormulaForge/Native/track_data/bahrain_boundaries.inc",
+        "Source/FormulaForge/Native/track_data/bahrain_survey.inc",
+        "Source/FormulaForge/Native/track_data/baku_boundaries.inc",
+        "Source/FormulaForge/Native/track_data/baku_survey.inc",
+        "Source/FormulaForge/Native/track_data/buddh_boundaries.inc",
+        "Source/FormulaForge/Native/track_data/buddh_survey.inc",
+        "Source/FormulaForge/Native/track_data/canada_boundaries.inc",
+        "Source/FormulaForge/Native/track_data/canada_survey.inc",
+        "Source/FormulaForge/Native/track_data/china_boundaries.inc",
+        "Source/FormulaForge/Native/track_data/china_survey.inc",
+        "Source/FormulaForge/Native/track_data/cota_boundaries.inc",
+        "Source/FormulaForge/Native/track_data/cota_survey.inc",
+        "Source/FormulaForge/Native/track_data/generated_catalog.inc",
+        "Source/FormulaForge/Native/track_data/hockenheim_boundaries.inc",
+        "Source/FormulaForge/Native/track_data/hockenheim_survey.inc",
+        "Source/FormulaForge/Native/track_data/japan_survey.inc",
+        "Source/FormulaForge/Native/track_data/jeddah_boundaries.inc",
+        "Source/FormulaForge/Native/track_data/jeddah_survey.inc",
+        "Source/FormulaForge/Native/track_data/malaysia_boundaries.inc",
+        "Source/FormulaForge/Native/track_data/malaysia_survey.inc",
+        "Source/FormulaForge/Native/track_data/monaco_boundaries.inc",
+        "Source/FormulaForge/Native/track_data/monaco_survey.inc",
+        "Source/FormulaForge/Native/track_data/portimao_boundaries.inc",
+        "Source/FormulaForge/Native/track_data/portimao_survey.inc",
+        "Source/FormulaForge/Native/track_data/singapore_boundaries.inc",
+        "Source/FormulaForge/Native/track_data/singapore_survey.inc",
+        "Source/FormulaForge/Native/track_data/spa_boundaries.inc",
+        "Source/FormulaForge/Native/track_data/spa_survey.inc",
+        "Source/FormulaForge/Native/track_data/turkey_boundaries.inc",
+        "Source/FormulaForge/Native/track_data/turkey_survey.inc",
+        "Source/FormulaForge/Native/track_data/zandvoort_boundaries.inc",
+        "Source/FormulaForge/Native/track_data/zandvoort_survey.inc"
+      ],
+      "unchanged_887_scene_asset_and_native_data_identity": [
+        "australia",
+        "canada",
+        "china",
+        "cota",
+        "japan",
+        "portimao",
+        "singapore",
+        "zandvoort"
+      ],
+      "changed_scenes_require_fresh_review": [
+        "austria",
+        "bahrain",
+        "baku",
+        "buddh",
+        "hockenheim",
+        "jeddah",
+        "malaysia",
+        "monaco",
+        "spa",
+        "turkey"
+      ]
+    }
+  },
+  "resources": {
+    "ceiling_bytes": 11000000000,
+    "peak_machine_used_bytes": 7589736448,
+    "peak_sample_utc": "2026-11-12T10:24:10.826859+00:00",
+    "one_heavy_job_at_a_time": true,
+    "sample_interval_s": 1,
+    "monitor_csv_sha256": "278892512291cb4a1819cf2ab0f17514f3da61fb577a29470b36ceed26b5e69e"
+  },
+  "known_limits": [
+    "Widths, crossfalls, event-corner radii and temporary structures remain reconstructions with per-venue uncertainty; dense samples do not make them surveys.",
+    "Portimao retained DGT ground yields local+10.162/-15.582% grades versus published+6.2/-12%. Global100m uphill maximum8.450% remains inconsistent; averaging does not resolve the source-definition discrepancy. Ground was not vertically scaled to force agreement.",
+    "Suzuka operator publishes10-16m width while current native envelope is12-15m. Local registrations of the extremal widths are still needed. Its6.144m road-surface separation at the crossing is not underside clearance.",
+    "Buddh T1-to-T3 rise is14.0003m; other sectors retain coarse DSM-derived heights with3m allowance. Generic width controls remain at several venues, including Japan/Jeddah/China and most of Australia.",
+    "Zandvoort uses scalar lateral banking; the progressive T3 bowl is represented by equivalent edge-to-edge rise. Other venues retain neutral camber where a crossfall profile was not registered.",
+    "Visual judgments cover whole-route sampled sheets and original critical images, not frame-by-frame human inspection of every archived video frame. Reference views can include cuts, reversed bearings and different weather.",
+    "Automated live racing-line laps exercise actual simulation. They do not establish physical-controller handling or new menu/input coverage for all18 venues.",
+    "Uncapped stationary render samples measure one registered local scene per venue. They do not establish moving full-lap frame-time parity with accepted circuits. Capped recorded laps include GPU readback and encoder overhead."
+  ],
+  "circuits": {
+    "australia": {
+      "profile": {
+        "samples": 8192,
+        "length_m": 5278,
+        "relief_m": 2.5998833643535,
+        "full_width_range_m": [
+          12.0,
+          15.0
+        ],
+        "maximum_rise_percent_single_native_chord": 0.8127732404401338,
+        "maximum_fall_percent_single_native_chord": 1.110196165715559,
+        "racing_provider": "Formula1",
+        "vertical_uncertainty_m": 0.35
+      },
+      "profile_accuracy_note": "Sample spacing and numeric consistency do not establish source survey accuracy. Local grades are chord diagnostics.",
+      "source_input_sha256": {
+        "Attribution/Sources/australia/provenance.json": "58bb5b8a1e82eb72885d0fd9f0e1d64b41903f90ef5a8b0b597823afc154f80d",
+        "Source/FormulaForge/Native/track_data/australia_survey.inc": "970eeba194583e3017daffe61286bbbe05525bb142577fa8bfc6b2a7dc8e0225",
+        "build/circuits/australia/road.csv": "671f4363b1768922ebf45f479b98b405cb5b377e83b33226bfe2a973af3a1c9f",
+        "build/circuits/australia/catalogue.json": "eafaf028972a7aeac3aabfdd903f6bce5d3638a6094d623c8216658f88f1104f",
+        "Attribution/Sources/australia/scene-registration.json": "e04a4188c88763f028dd83d290d4fdad812f60a15513d2b503aa620d450f3224",
+        "Attribution/Sources/australia/elevation-corrections.json": "f44a808f1a027b2776a1252995e4f3cc2473e10f5ad6b03b1d692dfd3d94bbe1",
+        "Attribution/Sources/australia/environment-recipe.json": "bb1315f6cbd8dde60c9d9b5e8a5853eddb83e7e5b9e82dcc74f1a6cad68fedb3",
+        "Attribution/Sources/australia/alignment-arcs.json": "1352396fcc559ca2c15d8948be12a4cc142d765701e0437b95165f7def2d2902",
+        "Attribution/Sources/australia/alignment-corrections.json": "1045117c1ae91d0e46404fcee0941e2849c303509ccfe9a614c8f7ef3243662d",
+        "Attribution/Sources/australia/alignment-refinement.json": "df59e21cf1cba7d0eeaddaa80b1b6fa6c114fd2d3a25aef855598e8b068ed23e",
+        "Attribution/Sources/australia/scenery-terrain.json": "e3a02630754f02da3958f83ad89656fc1b237e0da483e804d42e0191f960d58a",
+        "Attribution/Sources/australia/alignment-review.json": "b86fb20183f35c206033ddab04071bb93b96e89712b7b400e55121177c17a38d",
+        "Attribution/Sources/australia/boundaries.json": "1dabd28b85be5ab29979eaf60c89c5603af1f73145ff5c05ebd25a9d8619698e",
+        "Attribution/Sources/australia/dimension-review.json": "63be0be9cdd48cdfce8dacbefb766720dced0c007e18912d2dbb04ad75517bca",
+        "Attribution/Sources/australia/edge-corrections.json": "4709b2a801a3c2e327908f4a8b688c3da5bb29e6bd4984a9256fc73a33ab6bed",
+        "Attribution/Sources/australia/elevation_samples.json": "fa343874240e6dda93f2686d745c3f18bfb7f736cf33f4a926dfaea34fb4b5b7",
+        "Attribution/Sources/australia/environment-provenance.json": "6ec1eefcda7b9b555660e8086a8c9e0dc1d9d890c49064a8279ca1f267b1b5bb",
+        "Attribution/Sources/australia/layout-review.json": "40bbedc5690ffdc4f2f82e2279d98f4d764e76452105224aed629d4ef4a2094d",
+        "Attribution/Sources/australia/pit-lane.json": "3129a1739ec11fc4892f0116875803bbb4ea910e1209524310647dad3d9911ea",
+        "Attribution/Sources/australia/reconstruction.json": "be9bef8d17d97791f09b0e0aadce088b7e2003abff6d63b92a847d21575c4c5a",
+        "Attribution/Sources/australia/reference-index.json": "843792af8f6c92d9dd4b0708f85b48da51fdb3d75c83fc31dea30b7e81d0619a",
+        "Attribution/Sources/australia/scenery.json": "7be19ba438ce1b87c60e6be41163ef9b4f46ec5922db16cd2f565211376427fd",
+        "Attribution/Sources/australia/shoulder-baseline.json": "4a18262a579684f7bef4d321479d5064814cc621fd1d86e43243825f088d6310",
+        "Attribution/Sources/australia/start-line.json": "c6f9f0d2dc34a4e37a0f0a8b956e0279330fbd6951274182568cd6f2cbb97a94",
+        "Attribution/Sources/australia/station-registration-corrections.json": "46d3b2db268d5a917fbf330c9d513d72c2a8dc0601203b6799b7743d85f7c490",
+        "Attribution/Sources/australia/t3-edge-review.json": "82d89149aaa4f593d14cb7eac858709ae1ac36a05a683d9d91abcf1c9c995b5a",
+        "Attribution/Sources/australia/turn-registration.json": "3685f176d40e7dd03a307fe18d5e3eb40df348988a26adbec7e85ddf92f8918b",
+        "Attribution/Sources/australia/water-rings.lonlat.json": "63113ec38aea53d46c2ce990c9a5818f5fe6b51571d1e4125f657ade4133a354"
+      },
+      "scene": {
+        "source_manifest_sha256": "5ea80900a634d562380d6ed6d42ce9c2230c509f4e508ff936bbf4a3f821546b",
+        "native_asset_count": 231,
+        "native_assets_sha256": "772b97d4c9c0cb075689ac557661324e071d1d4c15c0f2f8c71ce777825903c4",
+        "native_data_sha256": {
+          "buildings.bin": "b1e76f4705e98db022b5af358f3965d03cbc8fff5e139bbb1dad3fc5a713b824",
+          "drive_surface.bin": "cc4f53e3bbd34a0e974df682c5514cc2131d1c9d485fbd9b9330f544bb4bd76c",
+          "render_tiles.csv": "37b544e17ecff3dd56512155e8d2937292bcc708ccb3029dd528a89d62a9e7a4",
+          "terrain.bin": "1382800585867629b5c85fc07467a9dca5356ed72da50a0c8c70ee9186cf9b5c",
+          "track_limits.bin": "4f3de06e8fdd1b5784ca52c921ad516584d725c76986d29aa5271c03a0948a52"
+        },
+        "tiles": 194,
+        "triangles": 748073,
+        "maximum_tile_triangles": 52622
+      },
+      "native_lap": {
+        "valid": true,
+        "lap_seconds": 142.131259,
+        "maximum_tracking_error_m": 3.27796149,
+        "maximum_speed_kph": 221.08461
+      },
+      "visual_review": {
+        "decision": "pass",
+        "notes": [
+          "Three event-corner estimates and mapped arcs retained; removed false road-edge fold. Park/track whole-route review passed on887. Event radii remain explicit estimates."
+        ],
+        "report": "build/reviews/resume-20261112/australia-887f09f0-review.md",
+        "report_sha256": "b65600053d54a2820566cbd4ccf23c61a9dffa958fe1dcf249d7f58388387734"
+      },
+      "live_evidence": {
+        "packet": "build/reviews/australia/resume-scenery-corrections-live",
+        "captured_package_revision": "887f09f0002522423e4737a1cb102523587bcda2",
+        "package_manifest_sha256": "3e6f4f94e9cee3c70ab914cb886cc2d75418d2f806a50f5909d99a01256f149f",
+        "summary_sha256": "51dfb36a66ea88271b427e88194b0ceb0063bbf679ba5947bc39598dc55994dd",
+        "target_index_sha256": "945e52968faaa7657f7e64cd909788b517951363822943c5ed0a8072b3458a00",
+        "frame_count": 4341,
+        "station_bins_visited": 125,
+        "station_bins_total": 125,
+        "maximum_circular_frame_gap_m": 21.1806640625,
+        "contacts": 0,
+        "offtrack_frames": 0,
+        "airborne_frames": 0,
+        "maximum_visual_penetration_m": 0.0,
+        "complete_video_frames": 4341,
+        "video_sha256": "292df4ed1ea5355c62fc1fb58c3984a61a2fd59085ab2ec68fe326329cf260bd",
+        "capture_conditions": "1600x900,100% render scale,production cockpit,live racing-line controller,30fps cap. Recorder overhead prevents performance inference."
+      }
+    },
+    "austria": {
+      "profile": {
+        "samples": 8192,
+        "length_m": 4318,
+        "relief_m": 63.3379784,
+        "full_width_range_m": [
+          12.0,
+          13.0
+        ],
+        "maximum_rise_percent_single_native_chord": 12.133911570856485,
+        "maximum_fall_percent_single_native_chord": 9.164439993534927,
+        "racing_provider": "Land Steiermark, GIS-Steiermark",
+        "vertical_uncertainty_m": 0.25
+      },
+      "profile_accuracy_note": "Sample spacing and numeric consistency do not establish source survey accuracy. Local grades are chord diagnostics.",
+      "source_input_sha256": {
+        "Attribution/Sources/austria/provenance.json": "f44fdf56b853bd0321c928c0b7f8b934abfc1e396a163ae6317704e8cf39dc12",
+        "Source/FormulaForge/Native/track_data/austria_survey.inc": "218a89383f33de0418735617c6b6ff2d96989934168e01990e152dc0d0469b03",
+        "build/circuits/austria/road.csv": "00ffb01597fcd8c2b3d8fe960d04f965764c5e0828a17dfe2b9f7a09f47bc1a2",
+        "build/circuits/austria/catalogue.json": "67ec9e0ca535e0cb0162928be251a02d63e94fa171482aaa2ad9d5f2e628670a",
+        "Attribution/Sources/austria/scene-registration.json": "1bd5567d0ca3eb305bbb59f588b9b6bf4e4666a9a6a71a346a03ef60f4cd85fa",
+        "Attribution/Sources/austria/elevation-corrections.json": "f4129ea39b8b46a0522612563447cfdc89d1716854618af622ff2f52ac23f5d7",
+        "Attribution/Sources/austria/environment-recipe.json": "f025977c086d6fb51593fdb8a7b1155f672d7dba90f7cccc3e8a115062cd7bb0",
+        "Attribution/Sources/austria/alignment-arcs.json": "3c08e9006bb510442899da9670b84c31702edbf1b1794fbd380f9b980ceb778b",
+        "Attribution/Sources/austria/alignment-corrections.json": "920c42c88c8d08d6fa9b1155e39ff4d09fbe34d849538285a462aa62c4638a94",
+        "Attribution/Sources/austria/scenery-terrain.json": "3413e958e21b5492bb6c07d4eda61d540a1a03f33799b5fb364ddad1183819ff",
+        "Attribution/Sources/austria/scenery-ground.json": "e9a91094c5f8388cd76956c55e087b182174115c762a1dbf4c1cf4234bb73965",
+        "Attribution/Sources/austria/boundaries.json": "67b31eecc669271770203fcf4d441bedee997040f0c2b7532cf50527c134f797",
+        "Attribution/Sources/austria/elevation_samples.json": "248de2559d3ec1037b2489521274ba0e13d8c88cb592b0704992677437460dc7",
+        "Attribution/Sources/austria/environment-provenance.json": "d23572b7b3338ce82ae05648788383186ce236ae103f3868c636047e2b5ac988",
+        "Attribution/Sources/austria/pit-lane.json": "a972b2f5ada4c7c8d556c85328193f4d789487ec43e4922aeaec72321931e531",
+        "Attribution/Sources/austria/reconstruction.json": "d53f4c457e593d3ca5ca8642490eb7d1be47b7a43c4a8de050e00bb02420d1f3",
+        "Attribution/Sources/austria/reference-index.json": "dd8e58a0e587543052ec5b2d969a1202105005f8a1230a39ba1cc28aa37c764a",
+        "Attribution/Sources/austria/scenery.json": "d3d4b03bb7bf605539b052a83df6f980dc46bf3ea087557853d27def9d633339",
+        "Attribution/Sources/austria/shoulder-corrections.json": "c5a98467e1b27f500c90dcdeaeecf93d609a70217dc7230f7602ad3e2065d766",
+        "Attribution/Sources/austria/t3-inside-protection-correction.json": "948b52168863cc5777197859511945bbd52e570bb3215b04f49834b1f02c803a"
+      },
+      "scene": {
+        "source_manifest_sha256": "fd73cd07be46cd2a7da5af016e203cdba2347def603fe8dc65fad97f4df13c25",
+        "native_asset_count": 209,
+        "native_assets_sha256": "0dfe9525d4970c7c4bf8fed6f46c86f6b77fd799481ef5f2cc428bef721de5a8",
+        "native_data_sha256": {
+          "buildings.bin": "6aa2ac841e1051f5eb9ea112832db7393a3bbaa5ae1e6a8a6c22c44ae569669f",
+          "drive_surface.bin": "3d5e959213c73355280e6f2b11bb3a14ccc197a1af5912010d2afbdaec529918",
+          "render_tiles.csv": "fb1f1cc97b28c4a9d55370a332797dd9d6065dfb98aa624de58a2fe366231582",
+          "terrain.bin": "9cc567093ec0c60548f45cf0584c888c9dc4a5060149b93c7171d2aa90cd6050",
+          "track_limits.bin": "b524647adb2dedbc05e32ea834d3edcf2cffd07d1cd2bdca642ea71d2ba09690"
+        },
+        "tiles": 178,
+        "triangles": 1558814,
+        "maximum_tile_triangles": 88553
+      },
+      "native_lap": {
+        "valid": true,
+        "lap_seconds": 116.173093,
+        "maximum_tracking_error_m": 4.50000286,
+        "maximum_speed_kph": 195.157013
+      },
+      "visual_review": {
+        "decision": "pass",
+        "notes": [
+          "T3 inner shoulder/protection corrected from source-backed setback;52 folded verge quads removed. Forest coverage and grounded crowns rebuilt."
+        ],
+        "report": "build/reviews/resume-20261112/austria-final-followups-review.md",
+        "report_sha256": "0061b324adc9d79faff5bc546ca48d03c549894e46679596c0813228500b216d"
+      },
+      "live_evidence": {
+        "packet": "build/reviews/austria/resume-final-followups-live",
+        "captured_package_revision": "6a970d404c704a21324aac4450a2f6202281e2fa",
+        "package_manifest_sha256": "db5b600c7de972c1387667f6bc5aca001311ea27bd246ec83e3cdcc7d0f8e264",
+        "summary_sha256": "fdcd5fc629262ff5778c39800f7c236f0f161dd24c3bacc354062217b183c67f",
+        "target_index_sha256": "a273038f19b1804204fbb0192425118fd5fe985bc648d55ef00f1fdcbf4cf435",
+        "frame_count": 3602,
+        "station_bins_visited": 125,
+        "station_bins_total": 125,
+        "maximum_circular_frame_gap_m": 7.97314453125,
+        "contacts": 0,
+        "offtrack_frames": 0,
+        "airborne_frames": 0,
+        "maximum_visual_penetration_m": 0.0,
+        "complete_video_frames": 3602,
+        "video_sha256": "e762fef3c715001d8eed7daeefd5e8c600bf0935865891a49e58a18b00c421fa",
+        "capture_conditions": "1600x900,100% render scale,production cockpit,live racing-line controller,30fps cap. Recorder overhead prevents performance inference."
+      }
+    },
+    "bahrain": {
+      "profile": {
+        "samples": 8192,
+        "length_m": 5412,
+        "relief_m": 16.8999424,
+        "full_width_range_m": [
+          14.0,
+          22.0
+        ],
+        "maximum_rise_percent_single_native_chord": 3.551253781792045,
+        "maximum_fall_percent_single_native_chord": 4.848764896294237,
+        "racing_provider": "F1 published topography with Bahrain operator 2019 grade limits",
+        "vertical_uncertainty_m": 1.0
+      },
+      "profile_accuracy_note": "Sample spacing and numeric consistency do not establish source survey accuracy. Local grades are chord diagnostics.",
+      "source_input_sha256": {
+        "Attribution/Sources/bahrain/provenance.json": "244a279501753d3f7ef71d58e1952259ff43b0833157e92517700dbdc616c60f",
+        "Source/FormulaForge/Native/track_data/bahrain_survey.inc": "c2ddfdb045da9dfb40ae4a78353fd8cf8a7edac6d6e75abd93956490fb920bea",
+        "build/circuits/bahrain/road.csv": "97929e146fedb3da4d70f750d7347d9cba2fe7aef620b49ab2edb0f6410b335b",
+        "build/circuits/bahrain/catalogue.json": "57cb022376d7184de09d063299e4a717df06b718373be9f34dd7f6c3aa7ec133",
+        "Attribution/Sources/bahrain/scene-registration.json": "37e7f7903ab5ad93cd99385e7a7615f3c4d5bf18269559328f64f75a53c74a8e",
+        "Attribution/Sources/bahrain/elevation-corrections.json": "d0e39d528ff4d1c057ea4fd855291e40a7be42b5c0f05665c9d23745dbcb3be8",
+        "Attribution/Sources/bahrain/environment-recipe.json": "804c1a71f0d2973e5f624c53f1da25394faeede0b91a4205e54743c89654dbc4",
+        "Attribution/Sources/bahrain/alignment-arcs.json": "f7365403c92d99436b4f2e4942d6ec326d9198ba66bf02a1e7fc283cf5b44c48",
+        "Attribution/Sources/bahrain/alignment-corrections.json": "6abeebf1bc00c830ec957774e760ef4e0053272aabc90893353f64e9761baadc",
+        "Attribution/Sources/bahrain/alignment-refinement.json": "7083b3a71bd3e36c0a94fb11b7d2638f9c22a9564d9fbfb513f96bf28f10148a",
+        "Attribution/Sources/bahrain/scenery-terrain.json": "2082cde1fe5553738dee76ea892b8520dc77ac74a6070eb3c11b89c6390392b4",
+        "Attribution/Sources/bahrain/boundaries.json": "af2ce2e6d528ca23d51529f80ee9d9c4b949bda7030f2dfaeb6a7d06b68d7210",
+        "Attribution/Sources/bahrain/elevation_samples.json": "9af558f4dbb8239a222eabc731326cee06da3d6e93d4419a87fd2c023750e12a",
+        "Attribution/Sources/bahrain/night-lighting-correction.json": "ad3d901ae1718b38f9de90bfd412b56a649e0ead31da0e657221b3a30ccad0b4",
+        "Attribution/Sources/bahrain/pit-dimension-review.json": "a6c335e2c94b0a8ac78dcb7a1e9fe13e447f40b104deedbe5c99e89dcd312b8f",
+        "Attribution/Sources/bahrain/pit-lane.json": "e8df9b45a09971f8a77ce6ac8eca0a4b0173073a9a87583f6b0de7be5be90cc2",
+        "Attribution/Sources/bahrain/reconstruction.json": "c57e69c5f57caea344e8289dec28eea262b0fa8fc44b1d7c9d1ca17eed58bf50",
+        "Attribution/Sources/bahrain/reference-index.json": "6c597ee388e3514e1118e136b5bf5e731eb2441af4fbc58bf2b9f47132275c9e",
+        "Attribution/Sources/bahrain/runoff-paint-review.json": "05f388b8a7a7fe911c57aaa8e0a4e6a871f6d10771f73bc49b22479f5ee83060",
+        "Attribution/Sources/bahrain/scenery.json": "1530359a8b61a4433b5bc5cbf6c88dddb062a585fa5a793450c1d93623a1b578",
+        "Attribution/Sources/bahrain/shoulder-baseline.json": "e265987e94551af7e92ed3f8dfdd60ed820c9e553111d3637b03ab7d2beedd40",
+        "Attribution/Sources/bahrain/width-review.json": "c1a17293938a7ca303811cba4cd365067c49ded8aa59dd7585e8d74e69f68292"
+      },
+      "scene": {
+        "source_manifest_sha256": "30ae52425ed0cec76e117db6111049d644a134683a935dc48aa65a2c363b855c",
+        "native_asset_count": 164,
+        "native_assets_sha256": "2c91747b74e15d76bc4df9074320f2e002ddfe886ecd2976d47d81efdf3eb50a",
+        "native_data_sha256": {
+          "buildings.bin": "dfe1a191c02bcb5c77a0dea666670ad91d8bbd4a87b8f76b8a138640a0965506",
+          "drive_surface.bin": "d43084a3c02ec2b31078513579b786fb0871a85abce6e307d8f1d90ecd691537",
+          "render_tiles.csv": "be3143ed556904a13cb15c3fbfeacfa660f900a13955b042512ca7fe7f4f1634",
+          "terrain.bin": "f69faf963f7720346c494bbe4240ffc8d95c00493b77f8cfd92084bf65d94407",
+          "track_limits.bin": "ccd0e661f9d9e386fdef0cf7d80970074b7ede0121366024cb7ae7e1fbddbe9b"
+        },
+        "tiles": 122,
+        "triangles": 979535,
+        "maximum_tile_triangles": 66981
+      },
+      "native_lap": {
+        "valid": true,
+        "lap_seconds": 156.421272,
+        "maximum_tracking_error_m": 5.30031013,
+        "maximum_speed_kph": 211.506638
+      },
+      "visual_review": {
+        "decision": "pass",
+        "notes": [
+          "Source-constrained elevation/widths and T11 blue/cream paving retained. Bahrain-only uniform paved-material light floor reduced. Artist lighting calibration requires fresh review."
+        ],
+        "report": "build/reviews/resume-20261112/bahrain-final-followups-review.md",
+        "report_sha256": "a325883f7cbef26182d366f289512cdee56619b340f1edad9da21697298486f5"
+      },
+      "live_evidence": {
+        "packet": "build/reviews/bahrain/resume-final-followups-live",
+        "captured_package_revision": "6a970d404c704a21324aac4450a2f6202281e2fa",
+        "package_manifest_sha256": "db5b600c7de972c1387667f6bc5aca001311ea27bd246ec83e3cdcc7d0f8e264",
+        "summary_sha256": "cbb6edd9bc49532862511523d4a297097f49007a610a4a99053419c8a8c7545c",
+        "target_index_sha256": "f203f7ad3ab743c0b0c72a71abd46975f1fdf9236e3416579be8dab911e22022",
+        "frame_count": 4791,
+        "station_bins_visited": 125,
+        "station_bins_total": 125,
+        "maximum_circular_frame_gap_m": 5.311767578125,
+        "contacts": 0,
+        "offtrack_frames": 0,
+        "airborne_frames": 0,
+        "maximum_visual_penetration_m": 0.0,
+        "complete_video_frames": 4791,
+        "video_sha256": "3c0722d3191bd10d340566923f3500438682d000dda2f1afb9f9f16676f7960f",
+        "capture_conditions": "1600x900,100% render scale,production cockpit,live racing-line controller,30fps cap. Recorder overhead prevents performance inference."
+      }
+    },
+    "baku": {
+      "scene": {
+        "source_manifest_sha256": "ffe22bb437b098fa730d71e81f5c6538c39d40e0859d87fa09f14906cda00048",
+        "native_asset_count": 236,
+        "native_assets_sha256": "00ad54e8233d42362f98fbed1039f764ae4b3d4612ac45c6b4b19e1eec2816a3",
+        "native_data_sha256": {
+          "buildings.bin": "66124b81b9566466e4372a03e6bbcfdf77459d3614eee676b407a531be73c0c4",
+          "drive_surface.bin": "26bc10ef7913eb8b758e60bada4eb749e94aa7bb524952c47ead9fff2130166e",
+          "render_tiles.csv": "7a4ce680653e3b1df4e26c3d784817f5e2f055ae486d643b9c3928ebc897fc05",
+          "terrain.bin": "e6e5423c2f5f02fc7e47ddb1459d9e39edcc2ae0b7891724be8520abedc5231e",
+          "track_limits.bin": "4b49688582d85ea9d89800723f5ce8c48f84a99f2deb9fc0d145731a9273d6e6"
+        },
+        "tiles": 202,
+        "triangles": 3930769,
+        "maximum_tile_triangles": 400000
+      },
+      "visual_review": {
+        "decision": "pending",
+        "notes": [
+          "Mapped castle/frontages retained. Actual service-road grade reconstructs bounded castle forecourt; true upper park/Court unchanged. Exact SabirPark addsGrass/49 grounded trees, preserving heights/paths."
+        ],
+        "limitation": "Current affected scene has no closed fresh packet at checkpoint time."
+      },
+      "expected_packet": "build/reviews/baku/resume-final-followups-live"
+    },
+    "buddh": {
+      "profile": {
+        "samples": 8192,
+        "length_m": 5141,
+        "relief_m": 16.234391870701902,
+        "full_width_range_m": [
+          18.0,
+          25.0
+        ],
+        "maximum_rise_percent_single_native_chord": 10.172803347924228,
+        "maximum_fall_percent_single_native_chord": 9.163600598858812,
+        "racing_provider": "Registered FIA 2013 T1–T3 climb constraint plus retained Copernicus GLO-30 profile outside the corrected sector",
+        "vertical_uncertainty_m": 3.0
+      },
+      "profile_accuracy_note": "Sample spacing and numeric consistency do not establish source survey accuracy. Local grades are chord diagnostics.",
+      "source_input_sha256": {
+        "Attribution/Sources/buddh/provenance.json": "3d165b240598c51ded57bc34b43c40e85bbb79e89910aef6fae0b5e38f379a92",
+        "Source/FormulaForge/Native/track_data/buddh_survey.inc": "4c340259acaeeb7e1455cd1634c8b5aed815bb332ea5c5c58ed5fe0032219e52",
+        "build/circuits/buddh/road.csv": "7eb5df0e1794e9f7fc4e82a5a4c683ae1c4ebe58d1d07ab61ca48b0e2186a373",
+        "build/circuits/buddh/catalogue.json": "cf69ab0e9aa0db171af22853b683e428838df27e5cbef60c2329e063f734b591",
+        "Attribution/Sources/buddh/scene-registration.json": "d4d4ed60cd12e9e04bb2c5524e33557279e2468480b122aabc9320706bed3d49",
+        "Attribution/Sources/buddh/elevation-corrections.json": "dd3986fa9deb6d658cbbf04cea3e0782c71627adcb7e6af25e18f5212c853515",
+        "Attribution/Sources/buddh/environment-recipe.json": "986591c0af1959c78ef0c4b771551f00e9e493ea415de57ed48fc92229e67855",
+        "Attribution/Sources/buddh/alignment-arcs.json": "3929c4f807a346c9fe5708049a39033b5c000b45521fcde5e4c9a35b3f7e35ba",
+        "Attribution/Sources/buddh/alignment-corrections.json": "a519366b0a394ac9c5fba94ff1f2a6efb02ec7fa071a7ee959512a0d2c83d31b",
+        "Attribution/Sources/buddh/alignment-refinement.json": "a76b9ddea7d58dc7f0843070cce831dbeed906046b03bec4786be999ef13f2ed",
+        "Attribution/Sources/buddh/scenery-terrain.json": "8c37d70ff559da62508bfc8653df5ac701be2646757e26b5d4e4ca2189c74342",
+        "Attribution/Sources/buddh/boundaries.json": "cb58f33b9f36a9a57f5d404cc42d223ad6d126ff1fc7b9f771b457d6c3a39c0f",
+        "Attribution/Sources/buddh/edge-corrections.json": "cdab7d0f4dd33a0af7ac9f5f8ba290bab3a79ff03526b4eef3f8a4ff70c073ed",
+        "Attribution/Sources/buddh/elevation-research.json": "2660a2186402945e5899f66a144b9c2e500703ab677df7e8d9ac3399e572ee03",
+        "Attribution/Sources/buddh/elevation_samples.json": "c48180f68ecb02f6d314e5534a6761024735f34ad9db5e6c4bee363c900daa70",
+        "Attribution/Sources/buddh/pit-lane.json": "bd97f0351b933200014cc6c7b1f3177add28d892b40dea1d7a568bd0d6527a71",
+        "Attribution/Sources/buddh/pit-roof-review.json": "e5859820ad97aabe36b17c29ec7acca78c8ad83831d13a36baee41cd63094b67",
+        "Attribution/Sources/buddh/reconstruction.json": "a5f3d5f9976058f305bcc5bfd33ed5a76c8bcf001fb49195ee66fc7234771437",
+        "Attribution/Sources/buddh/reference-index.json": "3f339dbea964c5d9dffe1eb5c3ca7ee5d9ff0f402c791f1f22d767a00d02577a",
+        "Attribution/Sources/buddh/runoff-paint-review.json": "0e7fccb88f0bafe17e8cd72d98c202b4bee85ff3be9aefb4883560f4dc462b04",
+        "Attribution/Sources/buddh/scenery.json": "6d1f9b449ba0f076f905f97504e3b4d3828017587ba118f95bd91fc6149575fc",
+        "Attribution/Sources/buddh/start-line.json": "22cd74eb6ceff71779aaa67f2ea822e0317685f65798d3faab15c320b39b2879",
+        "Attribution/Sources/buddh/t1-edge-correction-evidence.json": "ab21b5e7c6ae24357f114bf3c133cd89395496153608ed67d4561cb8e938bf79",
+        "Attribution/Sources/buddh/width-review.json": "046224d8e34c64e95559ebcabfdb045a5a5761b1ecc020f6754b9d60a3f4f506"
+      },
+      "scene": {
+        "source_manifest_sha256": "7976f601f41840d70cbb3ee0ae03d3076100c075076cf3da051403d419c0952c",
+        "native_asset_count": 196,
+        "native_assets_sha256": "86b0cfd71428a146746f3f3ede1cd7fc0078e339f5a6de770c0525048098a412",
+        "native_data_sha256": {
+          "buildings.bin": "c5a45ed09e6005600cfe52bf4774f3731fbb4348e93f89d0d4637f205ce3b3a0",
+          "drive_surface.bin": "0576dd77ac95f42d6290346aeba16a9077766f7e6553b85105e3b5064a00bfb5",
+          "render_tiles.csv": "1764c3ee64a75c64cc0d6d3dc555ec2d85f553c80c77595cb4f467ac4ed39df6",
+          "terrain.bin": "ab3043ed90befa8c289f8f9ee94c3b328644e64ca7bffef1e69c729fe19b3313",
+          "track_limits.bin": "cf9a61b8d332282a81aa5c62b3a6b6bc3f04a1b3d37da8c377e4e515c8c9592c"
+        },
+        "tiles": 164,
+        "triangles": 1363154,
+        "maximum_tile_triangles": 131412
+      },
+      "native_lap": {
+        "valid": true,
+        "lap_seconds": 150.174325,
+        "maximum_tracking_error_m": 7.63046312,
+        "maximum_speed_kph": 192.348389
+      },
+      "visual_review": {
+        "decision": "pending",
+        "notes": [
+          "Source-backed T1-to-T3 climb and18-25m widths retained. T1 right kerb clipped to true road boundary; bowl escape diagonal bars restored."
+        ],
+        "report": "build/reviews/resume-20261112/buddh-final-followups-review.md",
+        "report_sha256": null
+      },
+      "live_evidence": {
+        "packet": "build/reviews/buddh/resume-final-followups-live",
+        "captured_package_revision": "6a970d404c704a21324aac4450a2f6202281e2fa",
+        "package_manifest_sha256": "db5b600c7de972c1387667f6bc5aca001311ea27bd246ec83e3cdcc7d0f8e264",
+        "summary_sha256": "076007a1796da6620796a0457f731bbfa49f3d878c5b15ea229585670344faf4",
+        "target_index_sha256": "9bf6bbdca2541d1727d68f876295236b039c85c30a5c8c7e5e09486ee60a559d",
+        "frame_count": 4613,
+        "station_bins_visited": 125,
+        "station_bins_total": 125,
+        "maximum_circular_frame_gap_m": 2.5884246826171875,
+        "contacts": 0,
+        "offtrack_frames": 0,
+        "airborne_frames": 0,
+        "maximum_visual_penetration_m": 0.0,
+        "complete_video_frames": 4613,
+        "video_sha256": "fd8392b16c7f500e5690ed3b31a82aff3c584ff55a2ac19f992cc10fb5d747fa",
+        "capture_conditions": "1600x900,100% render scale,production cockpit,live racing-line controller,30fps cap. Recorder overhead prevents performance inference."
+      }
+    },
+    "canada": {
+      "profile": {
+        "samples": 8192,
+        "length_m": 4361,
+        "relief_m": 5.1999740427496,
+        "full_width_range_m": [
+          12.0,
+          13.5
+        ],
+        "maximum_rise_percent_single_native_chord": 3.4129212658637873,
+        "maximum_fall_percent_single_native_chord": 4.000282342159968,
+        "racing_provider": "Formula1",
+        "vertical_uncertainty_m": 0.6
+      },
+      "profile_accuracy_note": "Sample spacing and numeric consistency do not establish source survey accuracy. Local grades are chord diagnostics.",
+      "source_input_sha256": {
+        "Attribution/Sources/canada/provenance.json": "d3b5781da49ba4d760db61edd3edfde1e73fc6593533ba911bf93a009d1f107b",
+        "Source/FormulaForge/Native/track_data/canada_survey.inc": "428e62ceab5c3f7ad976e6f92ce526e8362060ef7536bf4c7267f8efeee6900d",
+        "build/circuits/canada/road.csv": "dd2c8208ba2b08c15e122ebffa983c0d00f20c581952bb85d564b87694fe3d53",
+        "build/circuits/canada/catalogue.json": "4583aa7c1c0874c223cc63b2e2f9cc616a35c95d7888bea5e1ba193371ced1fa",
+        "Attribution/Sources/canada/scene-registration.json": "80c7b5a4cb10c123f99af552640f4cc04eea23b752745822abe85f8c90e2ce30",
+        "Attribution/Sources/canada/elevation-corrections.json": "fa12c8f510972de001a9042d42f4b5910da45e43d0aade0e5ddc1028f504afe1",
+        "Attribution/Sources/canada/environment-recipe.json": "5794e00ef6d7ea416de445df3adeb84e9e731e0d1e78f904c14a1c490a45fe99",
+        "Attribution/Sources/canada/alignment-arcs.json": "054fa8cdb45ce81f12d60ba7451012dd1aae09c687d514afbf42c8c8fb7c6ed2",
+        "Attribution/Sources/canada/alignment-corrections.json": "00420edaf1b683518306e9fe8fd17112e6a97c10a6513040eaaa4fa69bbd88e4",
+        "Attribution/Sources/canada/alignment-refinement.json": "12ece3307e4d0440a412a635b8250505db29a0a0c8e7aed45ad6cb3ffbed1567",
+        "Attribution/Sources/canada/scenery-terrain.json": "e9ba035af5433c147c182c6e796b0c4e755098e42487fcc7cbcfafcbafeee469",
+        "Attribution/Sources/canada/boundaries.json": "08d266ddfcacb0ed9a047569013fa8f1287c1eb84b0021747b380618576ca0e7",
+        "Attribution/Sources/canada/elevation_samples.json": "138e58dd3dc305447f156260b951b3f594a8bff45ad5c0b28510362e2e42dc11",
+        "Attribution/Sources/canada/environment-provenance.json": "4bceaa24dee4674239a6664a43860d3a87b95c48a3ce392a75bea493e4f5d01d",
+        "Attribution/Sources/canada/grandstand1-roof-correction.json": "1a9476297678c1775e023438f07effa23a8658c40bd8610d583441de549412be",
+        "Attribution/Sources/canada/pit-lane.json": "4ba6b2aee8c6f5cbc8dd6908fec74b8a9a54e96d23bf1b326fdabd6387a7b71d",
+        "Attribution/Sources/canada/reconstruction.json": "39c659ac5cb23056f8c33075e31a635b8ecb7ff74d915f5fd65be02eb354dbb8",
+        "Attribution/Sources/canada/reference-index.json": "3810254a92566e0596a8f8e3fff83e0eaf9eb521f67793f4190ac40c8dbfc87b",
+        "Attribution/Sources/canada/scenery.json": "fcd81e2f191ec845095204170ce71c5ea33d94c3e0c41ddbd9843ff9176bcc74"
+      },
+      "scene": {
+        "source_manifest_sha256": "1ff28c2b0f74750155b0d43cf4db120536e05289b62d784b60ebe477074b0006",
+        "native_asset_count": 188,
+        "native_assets_sha256": "8e34a1cf8deec2fdc84ebedecd4a6be2b67731458baa64ed0db258597a63fc64",
+        "native_data_sha256": {
+          "buildings.bin": "eb75c1ae572a0e3aff073c3571922cf04cad806bdef8bf37c531f334d0937df2",
+          "drive_surface.bin": "97a8419f820ba44d8ec34551568ef259554fc59f61bcd7fcd3bdfe950fd1fd11",
+          "render_tiles.csv": "cb7fdc21b96fc4e693638fcac27d78c0d67a25958c41f6902f6996be19df3b0c",
+          "terrain.bin": "63e1d10f96fa645c03d52b7777096da7be72905bfa31c65f3d29f0f58b8933de",
+          "track_limits.bin": "990d112f58a0436d95caab41cfc320bb09700bc504f3870db3c523fbd6f81807"
+        },
+        "tiles": 159,
+        "triangles": 639661,
+        "maximum_tile_triangles": 31956
+      },
+      "native_lap": {
+        "valid": true,
+        "lap_seconds": 126.331277,
+        "maximum_tracking_error_m": 3.5075779,
+        "maximum_speed_kph": 191.403885
+      },
+      "visual_review": {
+        "decision": "pass",
+        "notes": [
+          "Source profile retained; T10 island paint and source-supported open Grandstand1 without roof verified on887."
+        ],
+        "report": "build/reviews/resume-20261112/canada-887f09f0-review.md",
+        "report_sha256": "1d8f9c43eb1c18d018911f34bf897d0099e81563353176157b3087af0d483d1f"
+      },
+      "live_evidence": {
+        "packet": "build/reviews/canada/resume-scenery-corrections-live",
+        "captured_package_revision": "887f09f0002522423e4737a1cb102523587bcda2",
+        "package_manifest_sha256": "3e6f4f94e9cee3c70ab914cb886cc2d75418d2f806a50f5909d99a01256f149f",
+        "summary_sha256": "2395e2ecf75ed9269e03982745af11b916a92c69e51f095dba514236216c2203",
+        "target_index_sha256": "2ce6ea63b988ee92188ed26038a41a1abcfc9f0f6fbdf3b2de76717e3f30bcbc",
+        "frame_count": 3857,
+        "station_bins_visited": 125,
+        "station_bins_total": 125,
+        "maximum_circular_frame_gap_m": 11.779541015625,
+        "contacts": 0,
+        "offtrack_frames": 0,
+        "airborne_frames": 0,
+        "maximum_visual_penetration_m": 0.0,
+        "complete_video_frames": 3857,
+        "video_sha256": "a934240d465acdb9c2da35261f181aaaf983130880dd368e8940d356b816601c",
+        "capture_conditions": "1600x900,100% render scale,production cockpit,live racing-line controller,30fps cap. Recorder overhead prevents performance inference."
+      }
+    },
+    "china": {
+      "profile": {
+        "samples": 8192,
+        "length_m": 5451,
+        "relief_m": 7.3999629,
+        "full_width_range_m": [
+          13.0,
+          16.0
+        ],
+        "maximum_rise_percent_single_native_chord": 3.001675841240535,
+        "maximum_fall_percent_single_native_chord": 6.975580005898601,
+        "racing_provider": "F1 published topography with Shanghai operator2024 grade limits",
+        "vertical_uncertainty_m": 1.0
+      },
+      "profile_accuracy_note": "Sample spacing and numeric consistency do not establish source survey accuracy. Local grades are chord diagnostics.",
+      "source_input_sha256": {
+        "Attribution/Sources/china/provenance.json": "ebf807116b39b6dec7728d121da6d6e214698503fd6db6e7ed4384877926a7fe",
+        "Source/FormulaForge/Native/track_data/china_survey.inc": "b81d11b4112159cad5a2c4062a7806e2c8be45ece8bdbed28bfaeff1f1d2b837",
+        "build/circuits/china/road.csv": "469495537e433eb0def6825fa6ad910ac804063bfa12b892b2f54d25eb13a0d8",
+        "build/circuits/china/catalogue.json": "5c07e11e1c2720fed17098478d03151ba6ce477350747bf5c97290a1cd0bd377",
+        "Attribution/Sources/china/scene-registration.json": "b972f20a2a3e0b3935fad3e52b9b4137dc4531cf5e9ae5fde59ba273ae41e1ca",
+        "Attribution/Sources/china/elevation-corrections.json": "728bb0248748c1379fd908980de66ad22a123200188a6afefa60df30a5a60a60",
+        "Attribution/Sources/china/environment-recipe.json": "59ed222867797c0059636d08313e86f6f90e22823b4fba8a2fe3f4cc43bea4c9",
+        "Attribution/Sources/china/alignment-arcs.json": "5a1f55b652d169f5b001123691e2369101396e192ce94af75fea471377d943ec",
+        "Attribution/Sources/china/alignment-corrections.json": "4bb9fba68166a6fa00f530dd06347552bb4bb375d2992d4187b2789e9fa0e71b",
+        "Attribution/Sources/china/alignment-refinement.json": "6720570f591314357bc43f1eb973287da0326131ef440abac20a870fbe9b0e7c",
+        "Attribution/Sources/china/scenery-terrain.json": "1d61b707a4aff789f4e813edf699ee6f0e7a2fd3b1d72b8a2e789dc4bf36be44",
+        "Attribution/Sources/china/alignment-review.json": "5be5ed3615234a0e32ff14870d87df77ef8b88851d81e314c2bc041b8fad3d2a",
+        "Attribution/Sources/china/boundaries.json": "d12e0f821ba58f5cbdd1ea03c1994422089182bbd9f027b54867f6dca1862bec",
+        "Attribution/Sources/china/dimension-review.json": "2546845bbca6bad8999df805242f19e0bd020c0e06e175a117ec4ab94bbefab7",
+        "Attribution/Sources/china/elevation_samples.json": "57f4bf4a7b3d05329a1707db8b02a5d9d103647f19bc90165c499a6339203a59",
+        "Attribution/Sources/china/pit-dimension-review.json": "f001cf1ea1c70174ac44effdd624d6ac8d39bcbee82393d1cf458dbc87d499be",
+        "Attribution/Sources/china/pit-lane.json": "4bbe298f29dc5ff5a81c60b5c15e7725567b2dbbf4e448776b7eaffd6c343a3e",
+        "Attribution/Sources/china/reconstruction.json": "209ad9294a498263da1d0b89b22ef83b8b93ad6155e4896075be36c325780938",
+        "Attribution/Sources/china/reference-index.json": "2194551d967da4e0e973996ee290555fafe45ccbd37c596dcc2fb77a7371fb70",
+        "Attribution/Sources/china/scenery.json": "f6ef8579b96b657bbb161f54af371437306973c26df54b5afa6c9285d1d559b8",
+        "Attribution/Sources/china/shoulder-baseline.json": "0bbb338a15196cd33fdd2183861e072c6fd3d1202c7d922f17033b1010247d7a",
+        "Attribution/Sources/china/start-line.json": "d25270111d0163665840055a4dd2eef57174f80a714c4953cd9e99e619326417",
+        "Attribution/Sources/china/wing-nose-review.json": "0bd4f5316286ba1847b5e8aaec0e9994733057725650b6e673c983f5b087ca4e"
+      },
+      "scene": {
+        "source_manifest_sha256": "5ff52859015d20ce0d5eab935a77342ea02d021929a080032cb99591f4dcb4ba",
+        "native_asset_count": 192,
+        "native_assets_sha256": "b0bef1aebb14f6d8b2a8ff6bf489807928c52de97c4d6e44f100708f6a798ead",
+        "native_data_sha256": {
+          "buildings.bin": "5b88d591795cd27398ec700d42fb3b4818e645d157a419bb471500ab230fcc67",
+          "drive_surface.bin": "96695e22b99d127cbe3bae32734fe8c4bddc92eb3c3bfa37e0644599bbf3191b",
+          "render_tiles.csv": "541ca9aa4f9a43575fd2c3c53a01f3a2f2f72d1714532d255e7754b32a104d3c",
+          "terrain.bin": "189d2b5ce6dd372e7c90efe534f6d3aa91e315886bc48d9184cea955e32ba153",
+          "track_limits.bin": "20c966e2587a4f51135e913dab0c5c412843ea77273668b6653ef497a30b3f64"
+        },
+        "tiles": 157,
+        "triangles": 930081,
+        "maximum_tile_triangles": 82240
+      },
+      "native_lap": {
+        "valid": true,
+        "lap_seconds": 172.639885,
+        "maximum_tracking_error_m": 0.369797021,
+        "maximum_speed_kph": 199.432816
+      },
+      "visual_review": {
+        "decision": "pass",
+        "notes": [
+          "Mapped SectionA roof/crossing wings and cylindrical glass volumes present; no missing-cylinder claim established. Daytime canopy-soffit contrast remains under independent review."
+        ],
+        "report": "build/reviews/resume-20261112/china-887f09f0-adjudication.md",
+        "report_sha256": "4f14904b255931cca5e355a1ca455b917c848d9d9529bc9655ff623f4e0a1cd5"
+      },
+      "live_evidence": {
+        "packet": "build/reviews/china/resume-scenery-corrections-live",
+        "captured_package_revision": "887f09f0002522423e4737a1cb102523587bcda2",
+        "package_manifest_sha256": "3e6f4f94e9cee3c70ab914cb886cc2d75418d2f806a50f5909d99a01256f149f",
+        "summary_sha256": "4423c157bcafbc84c5b9a75e9e16114a9563a9570b47535f37cbe4a686fd0911",
+        "target_index_sha256": "f1bbddf3068d326a90362a926cd46b3ce5ced17db5693094bc9d40fd44a8c186",
+        "frame_count": 5283,
+        "station_bins_visited": 125,
+        "station_bins_total": 125,
+        "maximum_circular_frame_gap_m": 2.216552734375,
+        "contacts": 0,
+        "offtrack_frames": 0,
+        "airborne_frames": 0,
+        "maximum_visual_penetration_m": 0.0,
+        "complete_video_frames": 5283,
+        "video_sha256": "ddfe8bb628c068889d85340a6cea6005d20570ebf8c4ce91ea8941a93425b303",
+        "capture_conditions": "1600x900,100% render scale,production cockpit,live racing-line controller,30fps cap. Recorder overhead prevents performance inference."
+      }
+    },
+    "cota": {
+      "profile": {
+        "samples": 8192,
+        "length_m": 5513,
+        "relief_m": 30.9564095,
+        "full_width_range_m": [
+          12.0,
+          16.0
+        ],
+        "maximum_rise_percent_single_native_chord": 13.634282121269187,
+        "maximum_fall_percent_single_native_chord": 12.370220475049866,
+        "racing_provider": "United States Geological Survey,3D Elevation Program",
+        "vertical_uncertainty_m": 0.5
+      },
+      "profile_accuracy_note": "Sample spacing and numeric consistency do not establish source survey accuracy. Local grades are chord diagnostics.",
+      "source_input_sha256": {
+        "Attribution/Sources/cota/provenance.json": "1bde7fddf6f5830518d101d75d987cdf9c98341a7852de5adef1359c2f0c9bbe",
+        "Source/FormulaForge/Native/track_data/cota_survey.inc": "a3ec97d09409a82f7c0d3af474a62ccc2fd3611272788b32f72a9be9e87e042d",
+        "build/circuits/cota/road.csv": "066a25047bf4ac3400fd6c45f48fa0e1aa2605de782849df14602a95ed86a504",
+        "build/circuits/cota/catalogue.json": "65fb477de9df38763bfa85f697dd168b179a9b06bcbc7d32f8db27168a1b0982",
+        "Attribution/Sources/cota/scene-registration.json": "af6cd59a630fb1318ee06ca1cf0cde4f30447d2c41ad139dfc70621746d74905",
+        "Attribution/Sources/cota/elevation-corrections.json": "a7feddf4ca2114a46d87773983fd8384f064f24ee233ffa12ae0c3bcfe27a40b",
+        "Attribution/Sources/cota/environment-recipe.json": "08d7349b735ccacffd612c0db68db23686d0abf5d6506ca705b190f6645d3fd9",
+        "Attribution/Sources/cota/alignment-arcs.json": "2f13f930a67d050b55ed4c0e692f52168a4afcec4b7ce0063d456c8229f32a5a",
+        "Attribution/Sources/cota/alignment-corrections.json": "ea73266435e07ba9e6bd4c486c58a8f4a42844215fa252ac915d88fb3eb44de4",
+        "Attribution/Sources/cota/scenery-terrain.json": "911396633a63b2a1fa2ee4530279f826a62e8462d518de78136937b837b40d1f",
+        "Attribution/Sources/cota/scenery-ground.json": "c1a7803234f9d65127c26b4c8c6820a9aa659468ccd94b6e40908b25940cfe8f",
+        "Attribution/Sources/cota/boundaries.json": "a5d3b53f61b1f8a00dfe8a0b6d436197d8edd19d7ca1f3c1997f4fc8e269abc8",
+        "Attribution/Sources/cota/elevation_samples.json": "850e19029aa5ff2300b7c153048a228ea07d8fae25b6c8320b5ede6c97a3d394",
+        "Attribution/Sources/cota/environment-provenance.json": "5bb266e8632d428a4d9b3c9d43b472dd7c2b4c1004ed7ec035420f423073f26d",
+        "Attribution/Sources/cota/pit-lane.json": "708d9001c845ba702c27a0d4afd6c1e20c48bb2c700e9f1206bca2de9c3fb779",
+        "Attribution/Sources/cota/reconstruction.json": "a7f64401876c16e26bc3d2759e9f94655439b9b2048ab72a9a40ca35046642c6",
+        "Attribution/Sources/cota/reference-index.json": "8b0fd7c2686254851cf3ca775eae0b0efaacae45f871e23c428afeb5b4a9ced4",
+        "Attribution/Sources/cota/scenery.json": "e33ed34494c88eeee45612f64a0e58b9822b6bd8b21316800c2ddc0db1a177df",
+        "Attribution/Sources/cota/t1-stand-review.json": "e52a8cd6dd79d5e49d0439e17e9989be21e5a05ee66cfae6a72a522585bf05ba",
+        "Attribution/Sources/cota/t1-t12-stand-review.json": "49cac4ed407fd7338eec7f498d8d8a315eded1487f7e7ccd98ceeaa01f2916f4",
+        "Attribution/Sources/cota/t15-island.json": "a73f416c0bcef472c75f05c4cd52acdcf682fdd329a104b181d6d23be9baf806",
+        "Attribution/Sources/cota/tower-deck-plan.json": "45c7f06d6a12e31b51f0cd0785d6f4b5437bb838a6b9bc36ca11cd04bb0156d0"
+      },
+      "scene": {
+        "source_manifest_sha256": "7570216cf5425ce6674567caa18e3481f1060922be185d6ba0ac09ec55c82d77",
+        "native_asset_count": 201,
+        "native_assets_sha256": "4c3fa9d1a875a670e21effd1c91e432ef04ed624910b571165e4d8ef8930e43f",
+        "native_data_sha256": {
+          "buildings.bin": "785dc311e3b80c877cf45e9647a56db8b22cb39089ee36f3e574ec38845340e7",
+          "drive_surface.bin": "f408ad7e01162624a3d911225abc3ed27f04f8b5ab6ff0688d5e75d06dec0c23",
+          "render_tiles.csv": "289437879a5b7d470461ffc60fee054a4a6a65571c0cb877ce5ad2bc3a023596",
+          "terrain.bin": "c9c0a1c53aaafed665cbfefb341340b6476df40e7621da732aecb033cfabf564",
+          "track_limits.bin": "f918b106e299b67c7a04dcaad029916301e9ce878d943bf487dbccce01c7b489"
+        },
+        "tiles": 167,
+        "triangles": 870710,
+        "maximum_tile_triangles": 50351
+      },
+      "native_lap": {
+        "valid": true,
+        "lap_seconds": 176.072179,
+        "maximum_tracking_error_m": 5.89099789,
+        "maximum_speed_kph": 194.409195
+      },
+      "visual_review": {
+        "decision": "pass",
+        "notes": [
+          "USGS3DEP road/ground retained; source-registered T1 outside stand, tensile mainstand and tapered observation deck verified on887."
+        ],
+        "report": "build/reviews/resume-20261112/cota-887f09f0-review.md",
+        "report_sha256": "c209571561f63447eb1fc7d677768d114763fe4ad00c0b149143309744077baa"
+      },
+      "live_evidence": {
+        "packet": "build/reviews/cota/resume-scenery-corrections-live",
+        "captured_package_revision": "887f09f0002522423e4737a1cb102523587bcda2",
+        "package_manifest_sha256": "3e6f4f94e9cee3c70ab914cb886cc2d75418d2f806a50f5909d99a01256f149f",
+        "summary_sha256": "0c81b3bea3648c1a1bf2c97d9e996ba8a6e53ed03b36176a71bf0cdc14494139",
+        "target_index_sha256": "079de6a44fd065f38d429e9d1a4d012f7b0c4defcbbd2062ef44d81f098d24f4",
+        "frame_count": 5368,
+        "station_bins_visited": 125,
+        "station_bins_total": 125,
+        "maximum_circular_frame_gap_m": 20.06573486328125,
+        "contacts": 0,
+        "offtrack_frames": 0,
+        "airborne_frames": 0,
+        "maximum_visual_penetration_m": 0.0,
+        "complete_video_frames": 5368,
+        "video_sha256": "3f65e7b59c4e87be7a0f41bbf47399d165eb2d3b7d60deb7b8cb2ec5f44646b3",
+        "capture_conditions": "1600x900,100% render scale,production cockpit,live racing-line controller,30fps cap. Recorder overhead prevents performance inference."
+      }
+    },
+    "hockenheim": {
+      "profile": {
+        "samples": 8192,
+        "length_m": 4574,
+        "relief_m": 4.29994070686461,
+        "full_width_range_m": [
+          12.0,
+          14.99999904
+        ],
+        "maximum_rise_percent_single_native_chord": 2.6106882438713965,
+        "maximum_fall_percent_single_native_chord": 2.1340323656283124,
+        "racing_provider": "Formula1",
+        "vertical_uncertainty_m": 0.5
+      },
+      "profile_accuracy_note": "Sample spacing and numeric consistency do not establish source survey accuracy. Local grades are chord diagnostics.",
+      "source_input_sha256": {
+        "Attribution/Sources/hockenheim/provenance.json": "108ed889d9cf7963f6ca322ede263f7d9a5d7810c67e54fb491b318efd78cd08",
+        "Source/FormulaForge/Native/track_data/hockenheim_survey.inc": "53ec6a171e9869eb3d64bff286789914ee89ba54f2a36b29c3fd0c307c8d1e03",
+        "build/circuits/hockenheim/road.csv": "cc673b3c079fa36acb11bd7505cbc4ff0da248651160b848efc071cf52dc9dd8",
+        "build/circuits/hockenheim/catalogue.json": "e2bc8fa5363a02fd2243aa32e59704551e453198f27fa8246f03492822f3b4b4",
+        "Attribution/Sources/hockenheim/scene-registration.json": "22b3d0eb009566730a406bdcc75ba51fb498fcb8d4f1eff79ad4e7089a7fb3ae",
+        "Attribution/Sources/hockenheim/elevation-corrections.json": "ca0260f158bb93771a2b157ea9413cfbc55900cdc83dd762f0726cf36894edfd",
+        "Attribution/Sources/hockenheim/environment-recipe.json": "ee584d388f0faf8a6380d2565ebe73ea87bea97175457445beb24861ffee8425",
+        "Attribution/Sources/hockenheim/alignment-arcs.json": "f23da160c8f7fb95869e19148f9360497fb1d722ca4fcc960e4baad3dc5edef3",
+        "Attribution/Sources/hockenheim/alignment-corrections.json": "2fc221374617d54eff2a09338f785cce3e3a83da05ee8198735d48075d127323",
+        "Attribution/Sources/hockenheim/alignment-refinement.json": "16df8cfb40e56871d94ebf5f259180dc00100d9b897d39fe12a24fec5f27352c",
+        "Attribution/Sources/hockenheim/scenery-terrain.json": "d864d09c15a9a51cbd933bb53ef25abbbaf4b0849e948867c573b498ae4d67fa",
+        "Attribution/Sources/hockenheim/boundaries.json": "3706ddab149b26cc4504dcf909e19e831f14596057ef4bc0b69da9e7dae112ec",
+        "Attribution/Sources/hockenheim/einlauf-forest-provenance.json": "8094a63d8380f27b4435298eb865ac147d46d3416744cfb4d068b47c723638b1",
+        "Attribution/Sources/hockenheim/elevation_samples.json": "2b363e78a2bb1cd5e0bae3a56e6bffec6ff66e1aac493d450984d7e2aed29e45",
+        "Attribution/Sources/hockenheim/environment-provenance.json": "713f40fe120cfd1397249c416937041bbb9cbb99dc592b8d048a5ed3b78cee50",
+        "Attribution/Sources/hockenheim/grandstand-ground-correction.json": "64272f19f0bd82d3051b5c4f308dc1fb97f6889c4cd86e1a7e4aefabad712ba6",
+        "Attribution/Sources/hockenheim/nord-stand-correction.json": "5af74960a1183d036fdf49a4dee679d692c7b6498cb36d2e01a866db9a84995b",
+        "Attribution/Sources/hockenheim/pit-lane.json": "9934e80147caf0645bdfe42277e2fc97c03a68c802ef8188dbec57694655903a",
+        "Attribution/Sources/hockenheim/reconstruction.json": "713a2a631a2f1fadd8b9adee33ac972838509eaf5a85d2d5c27a770a10cc4869",
+        "Attribution/Sources/hockenheim/reference-index.json": "4ae1ae590e1069feddb236e0851dc7127433d34ea7b354be04639f329bf48892",
+        "Attribution/Sources/hockenheim/scenery.json": "ef145adda615f82dc0913c59952f344ae8ae83a527070681574d6afa5cadf53a"
+      },
+      "scene": {
+        "source_manifest_sha256": "ed59632d558c06206fee3d64146b3224dd84268e4d8a8fd4ad2fb3a095276f55",
+        "native_asset_count": 180,
+        "native_assets_sha256": "04af6021731a3c6ad04000846cd66753d6a0b60443733540ada32c0b41ce3fff",
+        "native_data_sha256": {
+          "buildings.bin": "442426c793f77d26a7dac302143113b313dd020505d34c419ec2f39eddb45bf2",
+          "drive_surface.bin": "675b66da724eeba83b45910b5fb75526bb60c29a25e86b038ad9d24bde69b289",
+          "render_tiles.csv": "a48eefb99dd2660bdcdd4f8e88cabce0ec3b87c32a987454e4e948cbe288f8cb",
+          "terrain.bin": "d1ac435fcadfa6cf28b567d770c62b6e97e01f14e1dfdd0218ea1d54814c04da",
+          "track_limits.bin": "01c450d27a3837778d0e7a80219f462d7a0dafe616b734c4892a13379a3e7e19"
+        },
+        "tiles": 152,
+        "triangles": 1106382,
+        "maximum_tile_triangles": 146358
+      },
+      "native_lap": {
+        "valid": true,
+        "lap_seconds": 133.891578,
+        "maximum_tracking_error_m": 5.24057817,
+        "maximum_speed_kph": 196.918701
+      },
+      "visual_review": {
+        "decision": "pass",
+        "notes": [
+          "Buried main/Sued seating foundations corrected; Nord replaced with coherent terraces, one closed canopy and grounded frames in its actual footprint."
+        ],
+        "report": "build/reviews/resume-20261112/hockenheim-final-followups-review.md",
+        "report_sha256": "59a0c6957c2616a1955353e0c78aab416a985298aabf4e5a2c6b5227ec85cd3e"
+      },
+      "live_evidence": {
+        "packet": "build/reviews/hockenheim/resume-final-followups-live",
+        "captured_package_revision": "6a970d404c704a21324aac4450a2f6202281e2fa",
+        "package_manifest_sha256": "db5b600c7de972c1387667f6bc5aca001311ea27bd246ec83e3cdcc7d0f8e264",
+        "summary_sha256": "99ecf4b30e1292202d32718f49957528255cbe3d057b3447690fe180ac76e6a9",
+        "target_index_sha256": "db7a081aa5f615e2e29d461b6110b2d4f925207f99279167c4d7da18c484d9cd",
+        "frame_count": 4112,
+        "station_bins_visited": 125,
+        "station_bins_total": 125,
+        "maximum_circular_frame_gap_m": 2.0762939453125,
+        "contacts": 0,
+        "offtrack_frames": 0,
+        "airborne_frames": 0,
+        "maximum_visual_penetration_m": 0.0,
+        "complete_video_frames": 4112,
+        "video_sha256": "b061e643dfa5f8ba9917ce2f74d782fb0bba41b6c897d21fea5e909186fe589d",
+        "capture_conditions": "1600x900,100% render scale,production cockpit,live racing-line controller,30fps cap. Recorder overhead prevents performance inference."
+      }
+    },
+    "japan": {
+      "profile": {
+        "samples": 8192,
+        "length_m": 5807,
+        "relief_m": 40.57592391255,
+        "full_width_range_m": [
+          12.0,
+          15.0
+        ],
+        "maximum_rise_percent_single_native_chord": 8.796060966457114,
+        "maximum_fall_percent_single_native_chord": 8.822066556698028,
+        "racing_provider": "Geospatial Information Authority of Japan",
+        "vertical_uncertainty_m": 2
+      },
+      "profile_accuracy_note": "Sample spacing and numeric consistency do not establish source survey accuracy. Local grades are chord diagnostics.",
+      "source_input_sha256": {
+        "Attribution/Sources/japan/provenance.json": "1937fa15b156f4499ccc47883f15ee6d9d51f8ae58752fb45ddc67de59ba5aa6",
+        "Source/FormulaForge/Native/track_data/japan_survey.inc": "7a0bab15073fa2346e242a2b1ee09b96941bee7718704a59c6b8b4c0f7a7b1ac",
+        "build/circuits/japan/road.csv": "ae4c6658e01de8adee7fb2d6019f830c839a2f9d714843016e167479506a050d",
+        "build/circuits/japan/catalogue.json": "ed98280d99f0a8c1fc4441791b29d6827b736516d9d6135894dff8f5f414c9b6",
+        "Attribution/Sources/japan/scene-registration.json": "0917fa456d89db44adf9808cbc4f4737b44e57a0378cd4464b8c69641662ce40",
+        "Attribution/Sources/japan/alignment-arcs.json": "51a52866a973de4bf3889da42d6451f86d1a1a0b5bca39c334f313cb0bcb498a",
+        "Attribution/Sources/japan/alignment-corrections.json": "6679068c378f9fb0a69dbcb155748f5d376215918479b603e57b54f059db6e24",
+        "Attribution/Sources/japan/scenery-terrain.json": "b729591e9f0f0ba52643b059a8bfd1b4a425a326af95c25318e823d78e088a5c",
+        "Attribution/Sources/japan/scenery-ground.json": "ab62da671be6431c21a3784e2107fa1f22079c89d55889fe639aa6145dce74d8",
+        "Attribution/Sources/japan/crossover-left-review.json": "1159ab66f53c6b9237bed98eb294bdf131363bb0ed744f969eaf1a018ddb0348",
+        "Attribution/Sources/japan/elevation_samples.json": "9e23b2c2dba3d1b4c61f658b0ea4f385925c0e456bff858680612c09193d7a3d",
+        "Attribution/Sources/japan/reconstruction.json": "fb1b57835eca0bd93a9cd55ea4cab5ab7a145d39432780cf9d3c3a98110b99db",
+        "Attribution/Sources/japan/runoff-corrections.json": "2c023bf905065ed2fb882eb125d5139be0013e59eb22209ec1404ac80453228d",
+        "Attribution/Sources/japan/runoff-review.json": "48c82ce64ac5ced7179e144e27397993de646a12f63a87c9729d00e4cf720157",
+        "Attribution/Sources/japan/scenery.json": "0d54824eb9d46be17f3714e9606fae19f01fed8c6ace903194febe74a79350a9",
+        "Attribution/Sources/japan/shoulder-corrections.json": "101c13ec142293d2fb579512b4df407b8ef254baa3827ac434b3d0ee3cf9b7bb",
+        "Attribution/Sources/japan/stand-review.json": "357cbc60cca023012c1d2f18ab0347cc5b7bfba5f4168cb19b4c3d1b15b26388",
+        "Attribution/Sources/japan/underpass-decor-review.json": "bdea5537ceccb207af5717a2b898b3e82b897ea848547f8368aa145edb183446",
+        "Attribution/Sources/japan/video-index.json": "dc8a2473fe368182395dd15998bbea8d2c5228720400ccd4d365ccdac20963e1"
+      },
+      "scene": {
+        "source_manifest_sha256": "99573ce0936131142ebfa6e4c7234e8b3b06d61fadc27b3206258e101643d309",
+        "native_asset_count": 211,
+        "native_assets_sha256": "f2a71564cdf785d02c1ae9489387937eb612ece0fb48435e0236ffeb680faa93",
+        "native_data_sha256": {
+          "buildings.bin": "e538de1aa2902ad9f0c12815ba43ec707cdef885c80fa0d3ac12ba5dc68527b2",
+          "drive_surface.bin": "0e2bfc39992a9cff2bbbcdba13f9deace1450cee4709418504ad5b84cc86ac86",
+          "landmarks.bin": "0ee3dfa88feb92fbcbe66448f7df813abbd0c8df142e8539c05d5188e5d276af",
+          "render_tiles.csv": "52c6fe35f4337c0cbf4a85800bffa47db37d805a499279093111df2880d330ad",
+          "terrain.bin": "4d8db8b7504937f4695e4ab517de0e6fb841159f916dc9f59c00213bd851a61e",
+          "track_limits.bin": "27a0dc70550917fb25579632ad8cc258a6c5eed52d2bb1edd503a0f3fd67d685"
+        },
+        "tiles": 102,
+        "triangles": 1620696,
+        "maximum_tile_triangles": 85946
+      },
+      "native_lap": {
+        "valid": true,
+        "lap_seconds": 162.376281,
+        "maximum_tracking_error_m": 5.41280127,
+        "maximum_speed_kph": 246.546188
+      },
+      "visual_review": {
+        "decision": "pass",
+        "notes": [
+          "GSI ground/separate crossing decks retained; bridge/abutment/G2 repaired route reviewed on887. Operator10-16m width versus native12-15m remains an unresolved local registration gap."
+        ],
+        "report": "build/reviews/resume-20261112/japan-887f09f0-review.md",
+        "report_sha256": "423df4ff45e841029d54c985bd3ed911bbb518d466d9dcbbaa8b4fd39851f887"
+      },
+      "live_evidence": {
+        "packet": "build/reviews/japan/resume-scenery-corrections-live",
+        "captured_package_revision": "887f09f0002522423e4737a1cb102523587bcda2",
+        "package_manifest_sha256": "3e6f4f94e9cee3c70ab914cb886cc2d75418d2f806a50f5909d99a01256f149f",
+        "summary_sha256": "44ae597e11e8f79e31815c7893a99040efaf31ba9f0e1b53b8b225935144afe2",
+        "target_index_sha256": "90e0fd4db7caa8a2a75fd8b59840918f25d3059265e6d76c9284f8936913a1a7",
+        "frame_count": 4937,
+        "station_bins_visited": 125,
+        "station_bins_total": 125,
+        "maximum_circular_frame_gap_m": 2.55255126953125,
+        "contacts": 0,
+        "offtrack_frames": 0,
+        "airborne_frames": 0,
+        "maximum_visual_penetration_m": 0.0,
+        "complete_video_frames": 4937,
+        "video_sha256": "b33936f0a9435562b6c6406967d8d4397726b14bfd496997fc7606e38d09eef3",
+        "capture_conditions": "1600x900,100% render scale,production cockpit,live racing-line controller,30fps cap. Recorder overhead prevents performance inference."
+      }
+    },
+    "jeddah": {
+      "scene": {
+        "source_manifest_sha256": "66e167f87773db78e776c78b44f0e6ac4c838c43a4601a4cd0e15e341cac6047",
+        "native_asset_count": 188,
+        "native_assets_sha256": "75c1084a8e8ff98c63db66aad89207898d6678d42b309c9da8c41fdadcb3a51b",
+        "native_data_sha256": {
+          "buildings.bin": "7e429e2da5a9f6a9d3cfd33641917b8ba942df48dea762ffd43c6dd6d41c3959",
+          "drive_surface.bin": "d221dedd42a8b3e5299eb1dd7977e1d321202412434ee6096f272d250ae775e2",
+          "render_tiles.csv": "ba859be4da70b81e08e6f40254b305ab04752b56f4d44a84ddbfc22e19947ad5",
+          "terrain.bin": "a30c782d9e70e53575eaa3a1295d86b00eeca559983b25de642725c36fdfe647",
+          "track_limits.bin": "4a5b59668b05add5efeb47e6e98b55a7a31704978acb886f9009c16c8defb5a7"
+        },
+        "tiles": 141,
+        "triangles": 1040493,
+        "maximum_tile_triangles": 105712
+      },
+      "visual_review": {
+        "decision": "pending",
+        "notes": [
+          "Mapped pits/stands/T27 pavilion retained. Construction tower remains unfinished with darker non-emissive concrete. Mapped EDITION hotel replaces seven-row grid with terraced decks/glazing/angled frame."
+        ],
+        "limitation": "Current affected scene has no closed fresh packet at checkpoint time."
+      },
+      "expected_packet": "build/reviews/jeddah/resume-final-followups-live"
+    },
+    "malaysia": {
+      "scene": {
+        "source_manifest_sha256": "d0bdec39faf52e7fee605b4aab8295cddf00ac1ac97b6c55de36c49dcccf9b7b",
+        "native_asset_count": 160,
+        "native_assets_sha256": "986fdc3f0d4d4445385b782c1b2251cce6a0733d97194cafff296000411acbba",
+        "native_data_sha256": {
+          "buildings.bin": "c16315e32251a9eacfa2c4005663ce80c75228a9fe06856c607746a63b82f9be",
+          "drive_surface.bin": "00ab0b9f54b4ac5604f494858bb37fb19aba3018306bb42e0091a3b2cd386f91",
+          "render_tiles.csv": "b6f742a79732dc4c42552fbd03f56aa82718c754aa334e810df9db0cd15e5fe5",
+          "terrain.bin": "c1a3f8ad1402cf7701010ed05c72a538dd64937722c1daf04c4c2fea1d15b839",
+          "track_limits.bin": "8fff284c93f5e5d6bb0c4e6961a26fbdc7c43e7ca4d5caa1754b61adb2241083"
+        },
+        "tiles": 130,
+        "triangles": 2097096,
+        "maximum_tile_triangles": 243668
+      },
+      "visual_review": {
+        "decision": "pending",
+        "notes": [
+          "Mapped345m pits and double-fronted mainstand retained. Actual64.584m round end canopy receives radial umbrella/pier/spire; longwing/seating preserved. Approaches4800/4900 are in-FOV;5060 is not."
+        ],
+        "limitation": "Current affected scene has no closed fresh packet at checkpoint time."
+      },
+      "expected_packet": "build/reviews/malaysia/resume-final-followups-live"
+    },
+    "monaco": {
+      "scene": {
+        "source_manifest_sha256": "1f0ee208321ed203c11efb1a996a831fac5a16b75f1d92b14d86c090d2b35f93",
+        "native_asset_count": 153,
+        "native_assets_sha256": "89b292bf9690bdb5606265d411f353045539673a0a0563dbd3610a56f661fc4d",
+        "native_data_sha256": {
+          "buildings.bin": "c7e89a92bca0411eec419b718ba140b2fb7c6c54ee12f23267f564da17469507",
+          "drive_surface.bin": "3a7544d64e64e34c445dbf4049745ad0e2fc4f2d8e96dcf6d29b2c8ee7f67df3",
+          "render_tiles.csv": "fe97bafdac3ed6515bdd3b33aedce99b3f498c67661379ae1a7cc8e5288f53c0",
+          "terrain.bin": "f1538f328db1481498922f0c8d143010e2a9bcd9c17cb30b52457605ac30a21a",
+          "track_limits.bin": "85528c1cf80cda2568fc1c22cbe69a96c7de48f48880ee19184a68db336b07ce"
+        },
+        "tiles": 116,
+        "triangles": 2027267,
+        "maximum_tile_triangles": 400000
+      },
+      "visual_review": {
+        "decision": "pending",
+        "notes": [
+          "IGN terrain retained with588-point direct2m lower-quay patch: coarse12m sampling inflated lower hotel/retail frontage. Roof envelopes/upperstreet preserved; lower facades now face quay. Theatre terrace height/articulation remains qualified separately."
+        ],
+        "limitation": "Current affected scene has no closed fresh packet at checkpoint time."
+      },
+      "expected_packet": "build/reviews/monaco/resume-final-followups-live"
+    },
+    "portimao": {
+      "profile": {
+        "samples": 8192,
+        "length_m": 4653,
+        "relief_m": 28.7382927,
+        "full_width_range_m": [
+          14.0,
+          18.0
+        ],
+        "maximum_rise_percent_single_native_chord": 10.162281460520072,
+        "maximum_fall_percent_single_native_chord": 15.58193014403435,
+        "racing_provider": "Direcao-Geral do Territorio, Portugal",
+        "vertical_uncertainty_m": 0.4
+      },
+      "profile_accuracy_note": "Sample spacing and numeric consistency do not establish source survey accuracy. Local grades are chord diagnostics.",
+      "source_input_sha256": {
+        "Attribution/Sources/portimao/provenance.json": "828a62a2c1fbccd1b636be779eaab4350f1689befb40b4ada4940331abc1c8f0",
+        "Source/FormulaForge/Native/track_data/portimao_survey.inc": "24bd37fc8b411869688384e61e435d59cd3b657011f088b49c07bf8deb131eeb",
+        "build/circuits/portimao/road.csv": "4c0239f6c9ef2985d5acd69fe80b002516b0a9745827e8edc15186a99cf513ac",
+        "build/circuits/portimao/catalogue.json": "95b4330d1c33f6e26ba431e1c48b9d5ed06fc42a7f66719a73d36ad8a5b248ff",
+        "Attribution/Sources/portimao/scene-registration.json": "f4bf2a6c17532c42aaf5842e98c3b13479a04250da246e3cef8943866c225168",
+        "Attribution/Sources/portimao/elevation-corrections.json": "85c59c3e4ced9a37a50b6691fa879c19361bdb2fc69a5ff073be2dd882150a85",
+        "Attribution/Sources/portimao/environment-recipe.json": "712ea6cfa62e0187c87a1c043d2bb207fd05acb2106a9f54d3e8b862440495e1",
+        "Attribution/Sources/portimao/alignment-corrections.json": "22d93846a380c0c94e1c9cc66f5b51bd901c7f34b47a667957d837b00cdd1adb",
+        "Attribution/Sources/portimao/alignment-refinement.json": "ba7c0a4442e55f392dcd2a9161926f8cef941d05c86464bcdf96ccc4abd6cc02",
+        "Attribution/Sources/portimao/scenery-terrain.json": "3bb4a944689444ce1ade8dce1ee9f270fe8d8045bc5b3455ea0f4dc27bd0b853",
+        "Attribution/Sources/portimao/classified-ground.json": "960266218ece88cf2e90af7cdfbe416d71f63435998866f8bedf1fadb6c5444e",
+        "Attribution/Sources/portimao/scenery-ground.json": "89ca67b036a8664497fd635e37428cb4b277cf37cb05497d5ae071b36e0480f6",
+        "Attribution/Sources/portimao/boundaries.json": "27f7f8ce3c34ab8144db383f420fcdf1b3883dd2c75c1afbf503a3722328c991",
+        "Attribution/Sources/portimao/elevation-research.json": "c197ed2a1d0c1c714b8a86cef51000fa7c39d96666a777a1a0f36496c9f5392d",
+        "Attribution/Sources/portimao/elevation_samples.json": "352bcee8f13e7cff50a545442eef73197bea1cf9468d7ebddade205bc3a6ffa2",
+        "Attribution/Sources/portimao/galp-plan-source.json": "2065140fa1428f4694163cdba2d5a91f80c79c9dec4fa19dc99da47d97d70a7f",
+        "Attribution/Sources/portimao/mainstand-dimensions-correction.json": "d08137d79803e9de24c22494e7e2162610ec7903e43ae4a4c47e4222be4f1d5a",
+        "Attribution/Sources/portimao/pit-lane.json": "4706c1dec22d5f6d34be36e045a6da6b17cc0aa933450b9e4e96e01aa2e303ee",
+        "Attribution/Sources/portimao/profile-registration-validation.json": "ccf703fdca7c1837ce54150719673f0f55718a0c13daabc70e2690562a5fad10",
+        "Attribution/Sources/portimao/reconstruction.json": "f2a031377971daa7fa18439d0ccbc89bb0325548d0798c4a020c6d780b502be7",
+        "Attribution/Sources/portimao/reference-index.json": "46ac2cf1bba255d7bb56a3d7664a98a29c5a85412938ca9e98f58c15396cbb07",
+        "Attribution/Sources/portimao/scenery.json": "3641ccf8e96a71ad8261c7a7ac94cd1585bb75643f29011a9a69c7ce2bbae45d",
+        "Attribution/Sources/portimao/start-line.json": "51d6b7f0cceba8837ef27392d4224ed131a624986a625a2e6a3104e18120542c",
+        "Attribution/Sources/portimao/station-registration-corrections.json": "bb5d8d02040db9b1663f1d09d16841f0f5bd80addc55ae94eb9e8f931339238d",
+        "Attribution/Sources/portimao/t5-stand-review.json": "25ee3737687e0ce23b0c8178c580d764cd4124fa96d5d655af9fb51e3352ba12",
+        "Attribution/Sources/portimao/turn-registration.json": "fd7d294e3591ffa8d9f16a92d0a76c944b52023e73f69a1d006366951d0e19f8",
+        "Attribution/Sources/portimao/width-review.json": "081dbea4dd06e749e85f78156de64d519d19962c9f79220899bd3dba33104de5"
+      },
+      "scene": {
+        "source_manifest_sha256": "2fe65068e31cef999cee5b619f015be29f8f2d1d06c02a296e3f4c2802740edf",
+        "native_asset_count": 153,
+        "native_assets_sha256": "e4d58856f911b282e04d27bfa8ba0c7e6ec4f9ed52d264737bda2c4f7db5889e",
+        "native_data_sha256": {
+          "buildings.bin": "119f94418243c4407d645b367ad1bf68a2a411f215d09d47d252142289b1d8f9",
+          "drive_surface.bin": "ad1daae6388bbf318a69b776c791be1afd4182d9fdf2b94d8d5fb0e6229481ff",
+          "render_tiles.csv": "3701e166ca5e6fdf7e323f35523b22f5efbb31e996b66ef078451a7b12d31b79",
+          "terrain.bin": "192d3bcbc901d7fe05bdbe00caad46ec36cb489f38cdec0cd413a7ee2fc849da",
+          "track_limits.bin": "0f04c46693d8dd49061e0d48bd54b43542f8b589623bf034dcec25ab2f3e2c01"
+        },
+        "tiles": 120,
+        "triangles": 647170,
+        "maximum_tile_triangles": 48854
+      },
+      "native_lap": {
+        "valid": true,
+        "lap_seconds": 143.866784,
+        "maximum_tracking_error_m": 6.98237896,
+        "maximum_speed_kph": 211.641571
+      },
+      "visual_review": {
+        "decision": "pass",
+        "notes": [
+          "DGT class2 ground retained. Primary orthophoto and exact neighbours confirm sampling on racing asphalt and no pedestrian-bridge hump. Published6.2% uphill versus measured100m8.45% source-definition conflict remains unresolved."
+        ],
+        "report": "build/reviews/resume-20261112/portimao-887f09f0-adjudication.md",
+        "report_sha256": "1341dfa7d4d8d73e805ef62d2f285bcd24303848e35dbfde66572023a4081fda"
+      },
+      "live_evidence": {
+        "packet": "build/reviews/portimao/resume-scenery-corrections-live",
+        "captured_package_revision": "887f09f0002522423e4737a1cb102523587bcda2",
+        "package_manifest_sha256": "3e6f4f94e9cee3c70ab914cb886cc2d75418d2f806a50f5909d99a01256f149f",
+        "summary_sha256": "63ec0b5fd72fd7ea8e498607a4d958a1f5ecf6c7fcd64f46ec65c9ce911536a0",
+        "target_index_sha256": "6ab20b513100afbe890f5ffac0cfb9d417740c4b598d427dfa5922b028a2c4a1",
+        "frame_count": 4389,
+        "station_bins_visited": 125,
+        "station_bins_total": 125,
+        "maximum_circular_frame_gap_m": 21.266845703125,
+        "contacts": 0,
+        "offtrack_frames": 0,
+        "airborne_frames": 0,
+        "maximum_visual_penetration_m": 0.0,
+        "complete_video_frames": 4389,
+        "video_sha256": "530fa8f7c15b25f16bc66b2e62d98cc2d12ab40653537bd60b5a35e385f5dd45",
+        "capture_conditions": "1600x900,100% render scale,production cockpit,live racing-line controller,30fps cap. Recorder overhead prevents performance inference."
+      }
+    },
+    "singapore": {
+      "profile": {
+        "samples": 8192,
+        "length_m": 4940,
+        "relief_m": 5.299944457091399,
+        "full_width_range_m": [
+          12.0,
+          14.0
+        ],
+        "maximum_rise_percent_single_native_chord": 1.389843880979451,
+        "maximum_fall_percent_single_native_chord": 1.351822372502673,
+        "racing_provider": "Formula 1 published 2016 topography diagram",
+        "vertical_uncertainty_m": 1.0
+      },
+      "profile_accuracy_note": "Sample spacing and numeric consistency do not establish source survey accuracy. Local grades are chord diagnostics.",
+      "source_input_sha256": {
+        "Attribution/Sources/singapore/provenance.json": "89627dfa598e032898df37c31a05b8eb5f305e3b020416de5fc6f421346c1ca8",
+        "Source/FormulaForge/Native/track_data/singapore_survey.inc": "90362cdd067a04cdc19ab63c773dda85e1c2c79dade6a3393cbbe1bdbd8b433c",
+        "build/circuits/singapore/road.csv": "1765c40a65a567d2c594c2b4a3de8b6285399f7e2d829533b4796df49f850470",
+        "build/circuits/singapore/catalogue.json": "b3c568c2c0589f20cc80984ec58829be5eb9e878463f20a87833e9ee455004a8",
+        "Attribution/Sources/singapore/scene-registration.json": "ff097b78bf9abf1a8d18de608c6d551093ab74b8b2d9ecd7706fe4bfd8dd6dc6",
+        "Attribution/Sources/singapore/elevation-corrections.json": "50c6e3315f347cb535d3e56603ab4a380e9b3c0df43f665a77e3f91658f9aed7",
+        "Attribution/Sources/singapore/environment-recipe.json": "fb32f610dac2ff67cc30adac4df968b52bc3fa753d12a00166694f8f275e5e10",
+        "Attribution/Sources/singapore/alignment-arcs.json": "405c55fa6ab8152d62a88c6e18fe0821ba77cf48d189c3f2269aaa3a7dc27b5f",
+        "Attribution/Sources/singapore/alignment-corrections.json": "da492d906bc96ce7f6d093fbed42c657dd5f49e84e1c06e64b489582f905de66",
+        "Attribution/Sources/singapore/alignment-refinement.json": "20e8aac6dec2106149f574e2532c83e012282177a7ed06f64f1ef9e3b418a135",
+        "Attribution/Sources/singapore/scenery-terrain.json": "3df98a9804a5fd075c9ef062bffb2e72248fcb07de1cb4e958575470b07f6829",
+        "Attribution/Sources/singapore/alignment-review.json": "81ae4b40569cdaefaf415f9443f774d134f29253b5e333a279c300b341edeb31",
+        "Attribution/Sources/singapore/boundaries.json": "bf82cea7f843548dcd8b1a406d8ae1a8e60d3b470572fab84429e77a5318286b",
+        "Attribution/Sources/singapore/elevation_samples.json": "5bb14c8cf4f4b0639a5c69530e59306f167f2db519620c6dc2878f65404c1ab7",
+        "Attribution/Sources/singapore/flyer-viaduct-review.json": "30a5d44f902f7892d1dbda8e6abdf4c31fdfac68417495788fb49fbae08d6bef",
+        "Attribution/Sources/singapore/ground-parcels.json": "5c2fba6e9bafe6d882e9af376ca7d6ce6eb52be76c8d31315ff857836db79025",
+        "Attribution/Sources/singapore/marina-context-provenance.json": "8fe5a446758ae3fde37aec2cd638eaff413f0e869c9a53cde7579e1807739fc2",
+        "Attribution/Sources/singapore/pit-dimension-review.json": "d22649402d4ec1f19c9abd12c8c63127dbf545bba4d48d8287455c19883b26bb",
+        "Attribution/Sources/singapore/pit-lane.json": "3e386332f7a2e57663d7c0689912c717a8113e2d5fc23d9d3d78c59c329f93c2",
+        "Attribution/Sources/singapore/raffles-context-review.json": "52764dd03148e1a603c3f8805fb80898357abab72297eda4c6c351a422480274",
+        "Attribution/Sources/singapore/reconstruction.json": "b47f4e341913ebbfe728559bdcc9f1dd60a42a16008176d890e5c3786883c5ab",
+        "Attribution/Sources/singapore/reference-index.json": "74eb2ef7b26dac09ac2ed5c9cdd1dbd6e8ab7f256efb97eed379fbc5f0d04645",
+        "Attribution/Sources/singapore/scenery.json": "d09d6a556fe24fb689b7725d4ebe937b006ed29e0fbe532f30cd057072ef00ad",
+        "Attribution/Sources/singapore/shoulder-baseline.json": "5e6e8d6aa14aa57f8b577f194c6ab6aa56047adc7fca15696dd31e2cae216715",
+        "Attribution/Sources/singapore/skypark-review.json": "280da4c942e79eb398954dfa094e09130e4a4f26e0574580b4e250172ca5e8f1",
+        "Attribution/Sources/singapore/stamford-context-review.json": "a442fd45e4e8844750859faa7c37a7b58833ddcc12d6418d76e46c4fbf508f98",
+        "Attribution/Sources/singapore/station-registration-corrections.json": "22a295b6b8106cccba55832528f406037f9b1413654424070f881968e299bb2b"
+      },
+      "scene": {
+        "source_manifest_sha256": "74289262ec0ed2ea1726a0e69925e1ad33b10bb7745b07d445040386f2f67a5c",
+        "native_asset_count": 206,
+        "native_assets_sha256": "ae2753ab10406831c813a422bdaa97a85e05e97bda32ffb8a3ff30c552ed7c4a",
+        "native_data_sha256": {
+          "buildings.bin": "40f6856003c89285f884e4d477bfd6624543d186eb2810e3fa37f74fc1e2fb09",
+          "drive_surface.bin": "ec9d5ee923d51133a3137cd5b22ec2aee14288ba70378d40154fa1818f3eb374",
+          "render_tiles.csv": "c878c5a39f0d2659a74b954c9c52f050046b588193e144128549d0e05c00583f",
+          "terrain.bin": "0bd73918edfa845abde307374336cd0958a4c5866988aa6f48b4bb9b0d4c6591",
+          "track_limits.bin": "e055c51a9800432a6e7ed435cbb603e152d032560928672e2043af2fc11d3d9c"
+        },
+        "tiles": 152,
+        "triangles": 1391605,
+        "maximum_tile_triangles": 119119
+      },
+      "native_lap": {
+        "valid": true,
+        "lap_seconds": 156.733268,
+        "maximum_tracking_error_m": 4.48333263,
+        "maximum_speed_kph": 195.735474
+      },
+      "visual_review": {
+        "decision": "pass",
+        "notes": [
+          "Five event-corner reconstructions, mapped waterfront, omitted tower parts, Stamford stand and ECP viaduct restored. Light cables clear actual viaduct; road lighting unchanged. Secondary city facades remain simplified."
+        ],
+        "report": "build/reviews/resume-20261112/singapore-887f09f0-review.md",
+        "report_sha256": "bee2cfb67732e4405b91a8ba8bbb3d13a8e861b3e4f2d7417a2fdd9ba5bea29d"
+      },
+      "live_evidence": {
+        "packet": "build/reviews/singapore/resume-scenery-corrections-live",
+        "captured_package_revision": "887f09f0002522423e4737a1cb102523587bcda2",
+        "package_manifest_sha256": "3e6f4f94e9cee3c70ab914cb886cc2d75418d2f806a50f5909d99a01256f149f",
+        "summary_sha256": "2243fe826b88d97ecff9462ef9643e5db2824fa109629f4342025ef1b7cdbbed",
+        "target_index_sha256": "6b0a9fb8d0e8ba9befdcfe033aeb9430afbe0dc7f4be5727b8c5303ce31634fa",
+        "frame_count": 4784,
+        "station_bins_visited": 125,
+        "station_bins_total": 125,
+        "maximum_circular_frame_gap_m": 9.718994140625,
+        "contacts": 0,
+        "offtrack_frames": 0,
+        "airborne_frames": 0,
+        "maximum_visual_penetration_m": 0.0,
+        "complete_video_frames": 4784,
+        "video_sha256": "8dfdb4e3bcec08ed3b7cb2df577a6929eb714d7dcc0cbf6b1f1d1ca658255e62",
+        "capture_conditions": "1600x900,100% render scale,production cockpit,live racing-line controller,30fps cap. Recorder overhead prevents performance inference."
+      }
+    },
+    "spa": {
+      "scene": {
+        "source_manifest_sha256": "70a0d4c872d5ffad9ac5a93d3d206a728afbe93684f65b40c97e04d443c07a6e",
+        "native_asset_count": 306,
+        "native_assets_sha256": "81e1d660a550199d5f202c47fd3a65b97fd588456af24e483b6e7ecbfe8835e1",
+        "native_data_sha256": {
+          "buildings.bin": "517b9e63467f2afafd425bae393838a3669e120d1e3eec7b35ebc33ce96fd5c9",
+          "drive_surface.bin": "933a5a4689cff639e6f0cb37403c0fac13588fbe7490c13966f2128a5c8de387",
+          "render_tiles.csv": "7002a5546cf66681a16091d177b1b79694e03308e8f277c68c060525f2302fcf",
+          "terrain.bin": "31af9866fe4389610a55b7ae5c5770e212c296a262f760b4e6021406a064c937",
+          "track_limits.bin": "45281842ba218bc53489884d21c028bb0b037a7912e962f704c630cdc8b49630"
+        },
+        "tiles": 273,
+        "triangles": 3132353,
+        "maximum_tile_triangles": 96714
+      },
+      "visual_review": {
+        "decision": "pending",
+        "notes": [
+          "Classified-ground road/terrain and full woodland retained. LaSource inside protection narrowed with registered green paving/white boards;35 folded verge quads removed."
+        ],
+        "limitation": "Current affected scene has no closed fresh packet at checkpoint time."
+      },
+      "expected_packet": "build/reviews/spa/resume-final-followups-live"
+    },
+    "turkey": {
+      "profile": {
+        "samples": 8192,
+        "length_m": 5338,
+        "relief_m": 47.8877102224624,
+        "full_width_range_m": [
+          14.5,
+          20.9994698
+        ],
+        "maximum_rise_percent_single_native_chord": 8.14801432195457,
+        "maximum_fall_percent_single_native_chord": 8.148406318109874,
+        "racing_provider": "Original numerical reconstruction of the engineering profile reproduced by Ethem Ersöz, METU2006",
+        "vertical_uncertainty_m": 2
+      },
+      "profile_accuracy_note": "Sample spacing and numeric consistency do not establish source survey accuracy. Local grades are chord diagnostics.",
+      "source_input_sha256": {
+        "Attribution/Sources/turkey/provenance.json": "eb23af2446396a3515150595b255e718b35a9ad484e9d6d816df68eaf625d4df",
+        "Source/FormulaForge/Native/track_data/turkey_survey.inc": "630b7e9b7d213314f4b80913786ab6d5c62f04634f6f05bc538deb33e4c7f32f",
+        "build/circuits/turkey/road.csv": "44fca954f6ef64fbc4fef4aba3b723696d44a3a6055ea15b7ea334a1f1897545",
+        "build/circuits/turkey/catalogue.json": "6b9cc5359399af78d4fee82322ccfc2acd382cb72774a64519734e55099c2c42",
+        "Attribution/Sources/turkey/scene-registration.json": "069e4217fd71829252908f0ee730e0bca087a43400a77535c88926811f7ed6c9",
+        "Attribution/Sources/turkey/elevation-corrections.json": "4a03032f20b77cf4759d16ba0c3b4f6910144fb56bf3342dd708759de61113dd",
+        "Attribution/Sources/turkey/environment-recipe.json": "397765b9c1ac8f2316342077c44793b2bb2aaaeeb9acfd6fd925277876c297b7",
+        "Attribution/Sources/turkey/alignment-arcs.json": "fb2d5979e2e84e37518ec3c7497e7af5db5c0a3aff2f823fae11dc3313e01475",
+        "Attribution/Sources/turkey/alignment-corrections.json": "64a7a16440a2c056c39cb1f096b4919c2bd6f58f636bcca71f7f88174995978a",
+        "Attribution/Sources/turkey/alignment-refinement.json": "a385907f892a6994301f6822650117dfb4c1a0496881bb287963d3e783d35000",
+        "Attribution/Sources/turkey/scenery-terrain.json": "e2ff2751ea5d2cd57e467ea9fac5827e9c3810457e4141a2a6787d4a685358a2",
+        "Attribution/Sources/turkey/boundaries.json": "ea55336076e0c5a4760fc93faa9ddf9adf50fb6af726a798f028347f7e4e65c1",
+        "Attribution/Sources/turkey/elevation-research.json": "4bc60a65ee1e787c65d580a6e6fbe5c331d717ab15dc63620ed8747d145bb99b",
+        "Attribution/Sources/turkey/elevation_samples.json": "de3cc4ae74c03bf689901eb4847283c7f7053da71e3766c8048f36152a2650de",
+        "Attribution/Sources/turkey/mainstand-ground-correction.json": "cdc561daf2116519776acd7ae94a098c0fff0ebde7676e0a65cfea739f99286b",
+        "Attribution/Sources/turkey/pit-architecture-correction.json": "33ff4dfb84c9f6c4352ef1669f992ce385889bcf58288bb3e0df94badc9aa901",
+        "Attribution/Sources/turkey/pit-lane.json": "0dd9ea00cf722efdd611198be87efaaec6d64692a682d2d5eb27b82abc8ccb75",
+        "Attribution/Sources/turkey/protection-opening-evidence.json": "f74ffbf4f270d60b132d52b22d12a07337ee8dc9838d53d04a83538e153eb9cd",
+        "Attribution/Sources/turkey/protection-openings.json": "9770658ffd80e5cc4356624c02fdded0131ed71f3ae126633b39483acdc95c3e",
+        "Attribution/Sources/turkey/reconstruction.json": "7e5fb4b668b3a68610ccc207ff7ed70bdf6688d5727fb607410a5e4b258d9eec",
+        "Attribution/Sources/turkey/reference-index.json": "026b2a18be39c7576d7c9e3298622d2b1750c838ed4a19ae2acb9456295330b0",
+        "Attribution/Sources/turkey/scenery.json": "e0b0ff913751939decc9af57eb78bfebfb29f36e12e48dab5de6ae0b820e5e5f",
+        "Attribution/Sources/turkey/shoulder-baseline.json": "93f6f60e3e9e4d960f47c349da0095d17c2e252a3c0458142352ad4dcec88eba",
+        "Attribution/Sources/turkey/t8-runoff-correction.json": "ea24fa4e18e8d9458e72adfdab313bde0d665556bf4cecfcd12ee673479d6bc9"
+      },
+      "scene": {
+        "source_manifest_sha256": "263311633bb30d91dec0849a773c2d9f3cee1cc582166cfd6dbc64590bad0f70",
+        "native_asset_count": 201,
+        "native_assets_sha256": "489780e851cedd78c4fb84d2edc85a4182fb797b42a426dbd713efc4d1aa8c01",
+        "native_data_sha256": {
+          "buildings.bin": "85aeb6fa6ef89467f8fa2f664f9e19c806ea3abeba6cd0001f221f575b2f5f72",
+          "drive_surface.bin": "3ef9d19f8a46144b01d3a3202f0f2c15f7135664e20f82e56467dd9e3a6d0791",
+          "render_tiles.csv": "444959a4d4c1e1311e72a0830f27d4a39c1d08439ee26ce46dbbfd407aa2d9c1",
+          "terrain.bin": "9b4eac7ca4ff3e5f8d20e4eb461beb198ff84128efb358b2b1aa865f9c6b2a7c",
+          "track_limits.bin": "cfa35b159b8994390e86f7ecc5ec17fe8dbfb6bcf2ebeabbae9ef8edcfe9fbc8"
+        },
+        "tiles": 171,
+        "triangles": 802260,
+        "maximum_tile_triangles": 38974
+      },
+      "native_lap": {
+        "valid": true,
+        "lap_seconds": 157.493255,
+        "maximum_tracking_error_m": 6.16742706,
+        "maximum_speed_kph": 209.490677
+      },
+      "visual_review": {
+        "decision": "pass",
+        "notes": [
+          "Engineering elevation profile retained; mainstand burial corrected. Invented insideT13/T14 barriers removed from the same physical/visual wall list with exact registered openings."
+        ],
+        "report": "build/reviews/resume-20261112/turkey-final-followups-review.md",
+        "report_sha256": "5bbafa8ef655fb019577c56c27f99b16519489fa21f282aa3812da62747b12c6"
+      },
+      "live_evidence": {
+        "packet": "build/reviews/turkey/resume-final-followups-live",
+        "captured_package_revision": "6a970d404c704a21324aac4450a2f6202281e2fa",
+        "package_manifest_sha256": "db5b600c7de972c1387667f6bc5aca001311ea27bd246ec83e3cdcc7d0f8e264",
+        "summary_sha256": "2969db2ebafe8d2956c0059e7d4e391f2a7544e38edf174fd5d54c4438481159",
+        "target_index_sha256": "9cd9dd4d3db5a0c46770639bb7233d832f7a2b81cd6f5f36bd65b949322da9a2",
+        "frame_count": 4816,
+        "station_bins_visited": 125,
+        "station_bins_total": 125,
+        "maximum_circular_frame_gap_m": 18.768455505371094,
+        "contacts": 0,
+        "offtrack_frames": 0,
+        "airborne_frames": 0,
+        "maximum_visual_penetration_m": 0.0,
+        "complete_video_frames": 4816,
+        "video_sha256": "65596006af5f5bc9e37698a1946b38cb365d3bbd2bb4d439c87209d7c1d5e1f7",
+        "capture_conditions": "1600x900,100% render scale,production cockpit,live racing-line controller,30fps cap. Recorder overhead prevents performance inference."
+      }
+    },
+    "zandvoort": {
+      "profile": {
+        "samples": 8192,
+        "length_m": 4259,
+        "relief_m": 8.71831226,
+        "full_width_range_m": [
+          12.0,
+          14.0
+        ],
+        "maximum_rise_percent_single_native_chord": 9.508936186721032,
+        "maximum_fall_percent_single_native_chord": 8.841030070671517,
+        "racing_provider": "AHN, the Dutch water authorities, provinces and Rijkswaterstaat",
+        "vertical_uncertainty_m": 0.5
+      },
+      "profile_accuracy_note": "Sample spacing and numeric consistency do not establish source survey accuracy. Local grades are chord diagnostics.",
+      "source_input_sha256": {
+        "Attribution/Sources/zandvoort/provenance.json": "a7f983431a1789043ce0ec0a6467bbadbf15de6bf694edc0484f0b53e07cc040",
+        "Source/FormulaForge/Native/track_data/zandvoort_survey.inc": "07406b590fc7521ac77fc043eb7c8822004d568006184d76c02023df4d947b5d",
+        "build/circuits/zandvoort/road.csv": "d67e0b0c19ca250b798c47b08837bf9df38de18a4713ec5c92217cf90e2c39b6",
+        "build/circuits/zandvoort/catalogue.json": "70520d929ade845146216d14c92a49c3c8e946dc68675a1783c87242fadf4fbe",
+        "Attribution/Sources/zandvoort/scene-registration.json": "4aa51182f5a8dd1ef389b990c44ccc1c18acbe9c3903db70317a3713ab62e7a3",
+        "Attribution/Sources/zandvoort/elevation-corrections.json": "bb44061c957ee44ba05c4ce082fa2ed6e8005d646eb00c8e44da252a53aa2ee7",
+        "Attribution/Sources/zandvoort/environment-recipe.json": "1766408e4f6af528c82b9622d60d60403567b8021dc1cc3def57da4b2d608682",
+        "Attribution/Sources/zandvoort/alignment-refinement.json": "88edf22e7eeab4d235722dd4a8334e4101d963a4d2abcb9b4711fa1615952f20",
+        "Attribution/Sources/zandvoort/scenery-terrain.json": "b6c41951830fbd9c1d094ca52ac1ef48e4bf448da7f658d759fd1d7aadce2b8b",
+        "Attribution/Sources/zandvoort/scenery-ground.json": "c0472f6adf26d903e200cb50d27260ba08c6a5f30b496fa99389518837e7652c",
+        "Attribution/Sources/zandvoort/banking-corrections.json": "4bae5d96cf76d85c4a8cdc83aabff00f0e5bf3b2083911fabe6aab2a51b95a52",
+        "Attribution/Sources/zandvoort/boundaries.json": "cfc7a7d412d39800e6a500b06f0de75baec5eb5abcc3b3d2def80f0c2596e6c7",
+        "Attribution/Sources/zandvoort/elevation_samples.json": "5c1543e125fea53a4338113887da524b3eb3d077d39b06d298120be647cff957",
+        "Attribution/Sources/zandvoort/pit-lane.json": "877e066c8119d56da89316403cbb6e7f9129cf3665b2104233eb3f3b1468e1df",
+        "Attribution/Sources/zandvoort/reconstruction.json": "ef14a8bdaa6cc91f4a6f3509b510e793c08d00796da45e7abd531af118e5c261",
+        "Attribution/Sources/zandvoort/reference-index.json": "0232bb57060f84e88605ca2db1259f51bbad993ae87feb1575d20a3f7f55f610",
+        "Attribution/Sources/zandvoort/scenery.json": "66ad0ef9ccbc85ab309a6486c32df41ac1093b79752762d5a69d54394cce06aa",
+        "Attribution/Sources/zandvoort/shoulder-corrections.json": "e5a53be339701cbabd57fd8db865847815d3ea7c993ae308f12d8f7a0749f9c6",
+        "Attribution/Sources/zandvoort/t10-infield-paint-review.json": "c716a6a9e0368985efc6bd6578fcb4446b396f0766c7936775ffa970f91d2d83",
+        "Attribution/Sources/zandvoort/water-bodies.json": "96121c959f78c060dc7ceb307278f4206b95de38358a0c4d6a37f587d2399304",
+        "Attribution/Sources/zandvoort/water-provenance.json": "d684d464a3a48959647c32416dd8ae54cc614b658cd5447548ae930e13c3b919"
+      },
+      "scene": {
+        "source_manifest_sha256": "2ef68fc4fc103fb59b4dd58dcfb0ef8ec5f9b95a54adb111601cd5779adb745e",
+        "native_asset_count": 164,
+        "native_assets_sha256": "c07785030803909007cb52f5849a2b2e71b79e4c1baecc1b42a795d74c033233",
+        "native_data_sha256": {
+          "buildings.bin": "8bb5ab010aec74f0ba15ffa54f400b1c44cf3e8e676d583271524842e034d314",
+          "drive_surface.bin": "57616627308e317d3fb3e4baa6f2b8455c98110f17712e8a21bfd551936fec01",
+          "render_tiles.csv": "38ce1263642b0dc3d662b0af1202d35fd242201d90800b504ffde27cf4e4cd2c",
+          "terrain.bin": "88baa51a0620bbff03349518e05a7daf511b8ac25fa27059730b18b65a998a1a",
+          "track_limits.bin": "9a6e55c64d01e2469b22bd5e8df7bd3dddeb92c4479853cf24691739d06fb26b"
+        },
+        "tiles": 120,
+        "triangles": 874580,
+        "maximum_tile_triangles": 61156
+      },
+      "native_lap": {
+        "valid": true,
+        "lap_seconds": 138.712392,
+        "maximum_tracking_error_m": 4.94435358,
+        "maximum_speed_kph": 196.539307
+      },
+      "visual_review": {
+        "decision": "pass",
+        "notes": [
+          "AHN5 relief/bankedT3+T14 retained; T10 narrowed escape and continuous dune road edges verified on887. Scalar banking does not reproduce progressive bowl cross-section."
+        ],
+        "report": "build/reviews/resume-20261112/zandvoort-887f09f0-review.md",
+        "report_sha256": "d19f17aab92c18a8ab06fcc4349aeb32e42db4f292536c7e0e11c423a167b665"
+      },
+      "live_evidence": {
+        "packet": "build/reviews/zandvoort/resume-scenery-corrections-live",
+        "captured_package_revision": "887f09f0002522423e4737a1cb102523587bcda2",
+        "package_manifest_sha256": "3e6f4f94e9cee3c70ab914cb886cc2d75418d2f806a50f5909d99a01256f149f",
+        "summary_sha256": "49c4e59e3259d2aab7dd7a0326aa0dd42a3822c698b63693ee43f61c26b19e5b",
+        "target_index_sha256": "fe2bee5343d4850dfede1ce436cf3cc7ff24d699727ddeaae216985202bd0db0",
+        "frame_count": 4241,
+        "station_bins_visited": 125,
+        "station_bins_total": 125,
+        "maximum_circular_frame_gap_m": 7.6383056640625,
+        "contacts": 0,
+        "offtrack_frames": 0,
+        "airborne_frames": 0,
+        "maximum_visual_penetration_m": 0.0,
+        "complete_video_frames": 4241,
+        "video_sha256": "9e49dfe1e66198dc46e3cbbb2326f981966d562b5d596bcc1c4b7961a480eca9",
+        "capture_conditions": "1600x900,100% render scale,production cockpit,live racing-line controller,30fps cap. Recorder overhead prevents performance inference."
+      }
+    }
+  },
+  "baseline_performance_samples": {}
+}
