@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=baku",
-  "tiles": 213,
-  "triangles": 4222256,
+  "tiles": 389,
+  "triangles": 4314245,
   "road_sha256": "26bc10ef7913eb8b758e60bada4eb749e94aa7bb524952c47ead9fff2130166e",
   "terrain_sha256": "e6e5423c2f5f02fc7e47ddb1459d9e39edcc2ae0b7891724be8520abedc5231e",
   "landmarks": [
@@ -2213,6 +2213,36 @@
       "height_m": 54.4,
       "facade": "context",
       "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Flame Tower 1",
+      "osm_id": 253081850,
+      "height_m": 181.8,
+      "floors": 39,
+      "base_relative_m": 103.72054699563341,
+      "foundation_uncertainty_m": 10.0,
+      "source": "flame-towers.json; HOK architect photographs, CVU architectural height, actual OSM plan",
+      "dimensions_status": "Actual curved triangular ground footprint; upper sections/crown lean are reconstructed from HOK photos. Constant base uses retained coarse GLO90 boundary minimum, not a second sample of the tower roof. About10 m foundation allowance is retained. No source photo pixels or generic rectangular tower templates."
+    },
+    {
+      "name": "Flame Tower 2",
+      "osm_id": 253082095,
+      "height_m": 164.6,
+      "floors": 36,
+      "base_relative_m": 108.9035016808109,
+      "foundation_uncertainty_m": 10.0,
+      "source": "flame-towers.json; HOK architect photographs, CVU architectural height, actual OSM plan",
+      "dimensions_status": "Actual curved triangular ground footprint; upper sections/crown lean are reconstructed from HOK photos. Constant base uses retained coarse GLO90 boundary minimum, not a second sample of the tower roof. About10 m foundation allowance is retained. No source photo pixels or generic rectangular tower templates."
+    },
+    {
+      "name": "Flame Tower 3",
+      "osm_id": 253081914,
+      "height_m": 160.8,
+      "floors": 28,
+      "base_relative_m": 92.01832428635464,
+      "foundation_uncertainty_m": 10.0,
+      "source": "flame-towers.json; HOK architect photographs, CVU architectural height, actual OSM plan",
+      "dimensions_status": "Actual curved triangular ground footprint; upper sections/crown lean are reconstructed from HOK photos. Constant base uses retained coarse GLO90 boundary minimum, not a second sample of the tower roof. About10 m foundation allowance is retained. No source photo pixels or generic rectangular tower templates."
     },
     {
       "name": "Authored grandstand",
