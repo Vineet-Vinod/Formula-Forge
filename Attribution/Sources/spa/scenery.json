@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=spa",
   "tiles": 273,
-  "triangles": 3132353,
+  "triangles": 3815431,
   "road_sha256": "933a5a4689cff639e6f0cb37403c0fac13588fbe7490c13966f2128a5c8de387",
   "terrain_sha256": "31af9866fe4389610a55b7ae5c5770e212c296a262f760b4e6021406a064c937",
   "landmarks": [
@@ -150,6 +150,12 @@
       "end_m": 6700,
       "side": 1,
       "rows": 14
+    },
+    {
+      "name": "Blanchimont classified-ground bank refinement",
+      "source": "bank-refinement.json",
+      "triangles": 697881,
+      "method": "Same joined classified-ground field and Grass material. Submetre interior mesh; one original-grid-cell ring rejoins the old emitted planes and interpolated normals exactly. No source-grid, native road, physical corridor or lighting changes."
     }
   ],
   "vegetation": [
