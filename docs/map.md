@@ -386,6 +386,11 @@ At a bounded repair's outer edge, match the actual rendered terrain triangles.
 Inserting vertices from a continuous height function can still leave a crack
 against a coarse baked triangle whose plane differs from that function.
 
+Test triangle interiors as well as vertices. Spa's smooth vertex normals hid a
+coarse mesh approximation that departed by up to 1.13 m from its unchanged ground
+field. Refine a demonstrated problem locally, preserve the exterior triangle
+planes, and measure the resulting render cost. More geometry needs a reason.
+
 Check the entire inside offset, including shoulders and protection. A valid
 asphalt edge does not guarantee a valid verge: Austria's T3 had a 12 m local
 radius but an inside offset beyond 15 m. Folded grass quads were skipped and

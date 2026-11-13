@@ -2,6 +2,8 @@
 
 from dataclasses import dataclass
 
+from circuit_dataclasses import Point
+
 
 @dataclass(frozen=True)
 class SachsGroundAnchor:
@@ -23,3 +25,25 @@ class SachsStandSource:
     first_floor_m: float = 0.75
     canopy_above_front_m: float = 15.1
     section_uncertainty_m: float = 2.0
+
+
+@dataclass(frozen=True)
+class SachsGroundTriangle:
+    material: str
+    points: tuple[Point, Point, Point]
+    uv: tuple[tuple[float, float], tuple[float, float], tuple[float, float]]
+    normals: tuple[Point, Point, Point]
+
+
+@dataclass(frozen=True)
+class SachsForecourtSource:
+    uniform_scale: float
+    ground_datum_nhn_m: float
+    grid_x_m: float
+    grid_y_m: float
+    grid_step_m: float
+    cells: list[tuple[int, int]]
+    triangles: list[SachsGroundTriangle]
+    width_m: float = 4.5
+    full_front_length_m: float = 9.0
+    taper_end_m: float = 14.0

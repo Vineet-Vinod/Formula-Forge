@@ -6,7 +6,7 @@
   "runtime_image_sha256": "be349112fb59f40ce3ada319948c67d9469b4c50a144d268f1983cf65b64576c",
   "material_inspection": "build/reviews/resume-20261113/spa-grass-materials.json",
   "material_inspection_sha256": "ac9cef5ac8d0bce8552e4815adc0f0b5911646fb8d1cf32aeb16618d6bf1a066",
-  "finding": "Spa Grass inherits NormalStrength0.18 from the Interlagos material instance. Its parent normalizes (Normal.xy*Strength, lerp(1,Normal.z,Strength)). On steep slopes at low light incidence this micro-normal map may produce dark bands. This is a shading hypothesis to test, not a demonstrated terrain defect.",
+  "finding": "Historical normal-strength hypothesis was rejected: DefaultNormal is flat, so changing strength did not change the effective tangent normal. Restored0.18 stays unchanged. The120degree daylight orientation improves legibility but does not close the pale facet defect. Fresh0e32f075 mesh rays demonstrate12m coarse triangles departing up to1.13m from the unchanged classified/joined ground field; this measured geometry approximation is the next correction.",
   "candidate": {
     "material": "Spa-privateGrassonly",
     "previous_normal_strength": 0.18,
@@ -16,9 +16,10 @@
       "Allterrainelevations/meshnormals/shadows",
       "Sun/skylight/exposure/camera",
       "AcceptedInterlagosGrassassetandsharedparent"
-    ]
+    ],
+    "status": "Historical rejected normal-strength experiment; not active."
   },
-  "status": "Normal-strength candidate failed and is reverted in source. Daylight orientation candidate is source-only until rebuilt, packaged and checked around the whole route. No visual fix is claimed.",
+  "status": "Rejected normal trial remains reverted;120degree daylight is retained for legibility. Source-only bounded geometry refinement passes its numeric criterion and awaits regeneration/import and exact-camera review.",
   "normal_strength_test": {
     "package_revision": "92dca960",
     "packet": "build/reviews/spa/resume-20261113-corrections-live",
@@ -108,6 +109,36 @@
           "246": 0.26651789171923757
         }
       }
-    ]
+    ],
+    "runtime_package_revision": "0e32f07506d91a4befba1a788b48c698aedf632f",
+    "runtime_result": "Legibility improved, visual hold remains on pale triangular bank facets. No geometry closure claimed.",
+    "status": "Retained legibility improvement only, not a closed geometry fix."
+  },
+  "geometric_diagnosis": {
+    "source": "Exact5700m frame3777 and neighboring5640/5760 original cameras from0e32f075 package.",
+    "material": "All tested bank rays hit Grass; no material-region mismatch found.",
+    "normals": "Stored shared-edge normals agree exactly, so no flat-normal seam. Face-to-shading-normal mismatch5.3\u201317.7degrees; current12m planar interiors depart up to1.13m from the unchanged ground field.",
+    "occlusion": "No solid terrain blocks any tested ray toward the246degree/-37.8degree sun within300m. Foliage alpha and GPU shadow bias are not simulated.",
+    "repair_source": "bank-refinement.json",
+    "evidence": [
+      {
+        "path": "build/reviews/resume-20261113/spa-final-bank-ray-proof.json",
+        "sha256": "5c61790afdc4eaf19b52176f398b252424a1e6f4ed1148a4f93d2b3b02d8abfa"
+      },
+      {
+        "path": "build/reviews/resume-20261113/spa-final-bank-ground-normal-proof.json",
+        "sha256": "7d8f486a9545c61fd57d21149f2e2a7d3a9c0caa0c42fb625d0185597b395248"
+      },
+      {
+        "path": "build/reviews/resume-20261113/spa-final-bank-shared-normal-proof.json",
+        "sha256": "4e86496c62a03b9cd7d32fce74655b9c91c42c3ded0a029334e3258c05400f3f"
+      },
+      {
+        "path": "build/reviews/resume-20261113/spa-final-bank-sun-occlusion.json",
+        "sha256": "1270618ea6004c62ba756642230a0f9790a954919b4ad429d19e4b4843b91e02"
+      }
+    ],
+    "preserved": "Same SPW classified lattice/datum, source native road and join field, Grass/DefaultNormal/NormalStrength0.18,120degree daylight, shadows, camera and all other venues.",
+    "numeric_result": "Root-run persistent bounded proof:697881 triangles; visible-core maximum2.517cm, explicit outer-ring approximation3.201cm, original outer planes matched within3.6e-15m. Zero road overlap or reversed faces; source grid/native road unchanged. Fresh runtime visual review remains pending."
   }
 }

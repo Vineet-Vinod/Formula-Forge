@@ -1,0 +1,46 @@
+{
+  "core_bounds_m": [
+    -525,
+    -978,
+    -345,
+    -880
+  ],
+  "subdivisions": 48,
+  "transition_cells": 1,
+  "source": "Same SPW2021\u20132022 classified-ground grid and existing native-road joining function, scenery-ground.json. This is mesh refinement, not new survey data.",
+  "evidence": "Exact0e32f075 target25/native5700 and neighboring5640/5760 rays hit Grass terrain. Existing12m triangles depart up to1.13m from the unchanged ground field. Full-domain trials at1m and0.5m found9.01cm and4.69cm maximum core errors, so both failed the3cm criterion. Final48-way subdivision evaluates the same field at about0.25m; its completed numeric proof and fresh runtime review are required before claiming closure.",
+  "boundary": "Grid-aligned region; outer one-cell transition uses the exact old constrained triangulation plane and interpolated old normals. Visible core uses unchanged ground(). Existing native corridor, extra corridors, water, ground parcels and all prior terrain cutouts remain excluded.",
+  "limitations": "The12m retained source lattice cannot recover sub-grid terrain detail. Refined mesh reproduces its existing interpolation; source datum and every classified grid-node height remain unchanged. Fresh runtime review required.",
+  "scope": "Only complete scenery cells whose centres are driverLEFT of native5500\u20135920m by at least6m. Exact road/apron/body/ground-parcel exclusions remain. This avoids changing the opposite-side ground just because it lies in the rectangular search bounds.",
+  "frame": "Source east/north metres in the current scene-registration.json frame. Bounds select scenery cells, not a new surveyed feature boundary.",
+  "old_plane_agreement": {
+    "poses_native_m": [
+      5640,
+      5700,
+      5760
+    ],
+    "rays": 33,
+    "maximum_error_m": 1.669300461948353e-05,
+    "proof": "build/reviews/resume-20261113/spa-bank-original-plane-agreement.json",
+    "proof_sha256": "371b19661d8592e9903163915e0b4d2bfde4b032b451b78ddd0339dbe0359412",
+    "method": "Recreated old constrained terrain planes using actual local native corridor masks agree with original0e32f075 mesh rays within float packing error. Empty-mask diagnostic was superseded."
+  },
+  "numeric_proof": {
+    "triangles": 697881,
+    "core_maximum_interpolation_error_m": 0.025168457574505254,
+    "outer_ring_maximum_interpolation_error_m": 0.032010319882020966,
+    "outer_edge_old_plane_error_m": 3.552713678800501e-15,
+    "road_overlap_m2": 0.0,
+    "wrong_winding_triangles": 0,
+    "native_road_and_classified_grid_unchanged": true,
+    "per_tile_new_triangles": {
+      "(-3, -5)": 69408,
+      "(-2, -5)": 183456,
+      "(-3, -4)": 125623,
+      "(-2, -4)": 319394
+    },
+    "proof_path": "build/reviews/resume-20261113/spa-bank-refinement-proof.json",
+    "proof_sha256": "211ed669a1849a4f349602abb720fb8dc7fa10de7f214a863a948b5a65d20734",
+    "status": "Source mesh approximation passes the3cm visible-core criterion. Outer transition is explicitly3.201cm; original external planes join exactly. This is not runtime visual approval."
+  }
+}

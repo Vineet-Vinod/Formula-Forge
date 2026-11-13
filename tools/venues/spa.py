@@ -10,6 +10,7 @@ from circuit_scene import CircuitScene
 from shapely.geometry import Polygon
 from shapely.ops import triangulate
 
+from venues.spa_bank import refine_blanchimont_bank
 from venues.west_architecture import apron_band, mapped_building, mast
 from venues.woodland import mapped_woodland, stand_with_clearing
 
@@ -38,6 +39,8 @@ def build_venue(scene: CircuitScene) -> None:
     mapped_woodland(scene, (les_combes_stand, blanchimont_stand))
     for station in [520, 1120, 1770, 2040, 3160, 3830, 4710, 5330, 5960, 6750]:
         mast(scene, station, -1, 20)
+
+    refine_blanchimont_bank(scene)
 
 
 def endurance_garages(scene: CircuitScene) -> None:

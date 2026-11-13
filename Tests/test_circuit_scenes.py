@@ -1430,3 +1430,106 @@ def test_jeddah_named_residency_keeps_geometry_and_other_tiles(
     first_bounds = tile.minimum + tile.maximum
     skyline_residency(scene)
     assert tile.minimum + tile.maximum == first_bounds
+
+
+def test_sachs_visible_foundation_joins_original_planes_without_dsm_replacement(
+    scene: CircuitScene, monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    from circuit_dataclasses import Building, Provenance
+    from pydantic import TypeAdapter
+    from shapely.geometry import LineString
+    from shapely.geometry import Point as ShapePoint
+    from venues.hockenheim_dataclasses import SachsForecourtSource, SachsStandSource
+    from venues.hockenheim_forecourt import build_sachs_forecourt, plane
+    from venues.hockenheim_sachs import SachsFoundation
+
+    retained = Path(__file__).resolve().parents[1] / 'Attribution/Sources/hockenheim'
+    scene.provenance = TypeAdapter(Provenance).validate_json((retained / 'provenance.json').read_bytes())
+    for name in ('sachs-forecourt-correction.json', 'sachs-stand-correction.json', 'scenery-ground.json'):
+        (scene.sources / name).write_bytes((retained / name).read_bytes())
+    source = TypeAdapter(SachsForecourtSource).validate_json((scene.sources / 'sachs-forecourt-correction.json').read_bytes())
+    section = TypeAdapter(SachsStandSource).validate_json((scene.sources / 'sachs-stand-correction.json').read_bytes())
+    ring = [scene.geo(anchor.latitude, anchor.longitude) for anchor in section.ground_anchors]
+    scene.buildings.append(Building(232009782, 'Innentribuene', 'grandstand', 6.8, ring, {}))
+    front = LineString(ring[3:18])
+    foundation = SachsFoundation(scene, section, front)
+    scene.road_surfaces()
+    generated: list[tuple[str, tuple[tuple[float, float, float], ...]]] = []
+
+    def capture(
+        kind: str, material: str, a: tuple[float, float, float],
+        b: tuple[float, float, float], c: tuple[float, float, float],
+        uv: tuple[tuple[float, float], ...] = ((0, 0), (1, 0), (1, 1)),
+        normals: tuple[tuple[float, float, float], ...] | None = None,
+    ) -> None:
+        generated.append((kind, (a, b, c)))
+
+    monkeypatch.setattr(scene, 'triangle', capture)
+    monkeypatch.setattr(scene, 'ground', lambda x, y: 999.)
+    monkeypatch.setattr(scene, 'raw_ground', lambda x, y: 999.)
+    build_sachs_forecourt(scene)
+    graded = [(Polygon([p[:2] for p in points]), points) for kind, points in generated
+              if kind == 'Tile_SachsForecourt']
+    paving = unary_union([shape for shape, _points in graded])
+    assert paving.area == pytest.approx(291.249, abs=.001)
+    assert paving.intersection(Polygon(ring)).area < 1e-6
+    assert paving.intersection(scene.road_mask).area < 1e-8
+    assert all(not polygon.has_z for polygon in scene.terrain_cutouts)
+    for offset in (0., 1.5, 3., 6., 9.):
+        point = front.interpolate(offset)
+        candidates = [points for shape, points in graded if shape.distance(point) < .0001]
+        assert candidates
+        assert min(abs(plane((points[0], points[1], points[2]), point.x, point.y)
+                       - foundation.ground(point.x, point.y)) for points in candidates) < .0005
+    original = [(Polygon([p[:2] for p in triangle.points]), triangle.points)
+                for triangle in source.triangles]
+    for kind, points in generated:
+        if kind != 'Tile_SachsExterior':
+            continue
+        for x, y, z in points:
+            candidates = [vertices for shape, vertices in original if shape.distance(ShapePoint(x, y)) < .0001]
+            assert candidates
+            assert min(abs(z - plane(vertices, x, y)) for vertices in candidates) < 1e-8
+
+
+def test_spa_refined_bank_tracks_the_existing_field_and_preserves_outer_planes() -> None:
+    from shapely.geometry import Point as GeoPoint
+    from shapely.geometry import Polygon
+    from venues.spa_bank import BankSurface
+    from venues.spa_bank_dataclasses import BankRefinement
+
+    scene = CircuitScene("spa")
+    scene.corridor_mask = Polygon()
+    x, y = -451.3883804434962, -942.9109581362972
+    step = scene.grid.step
+    left = scene.grid.x + math.floor((x - scene.grid.x) / step) * step
+    bottom = scene.grid.y + math.floor((y - scene.grid.y) / step) * step
+    source = BankRefinement((left, bottom, left + step, bottom + step))
+    surface = BankSurface(scene, source)
+    road = list(scene.road)
+    heights = tuple(scene.grid.heights)
+    fine = step / source.subdivisions
+    for column in range(source.subdivisions):
+        for row in range(source.subdivisions):
+            corners = [(left + column * fine, bottom + row * fine),
+                       (left + (column + 1) * fine, bottom + row * fine),
+                       (left + (column + 1) * fine, bottom + (row + 1) * fine),
+                       (left + column * fine, bottom + (row + 1) * fine)]
+            for indices in ((0, 1, 2), (0, 2, 3)):
+                points = [surface.vertex(*corners[index])[0] for index in indices]
+                cx, cy, cz = (sum(point[i] for point in points) / 3 for i in range(3))
+                assert abs(cz - scene.ground(cx, cy)) < .03
+    bounds = surface.region.bounds
+    edge_x = bounds[0]
+    edge_y = (bounds[1] + bounds[3]) / 2
+    point, _normal = surface.vertex(edge_x, edge_y)
+    indices = surface.index.query(GeoPoint(edge_x, edge_y).buffer(.000001), predicate="intersects")
+    assert len(indices)
+    a, b, c = surface.old_triangles[int(indices[0])]
+    denominator = (b[1] - c[1]) * (a[0] - c[0]) + (c[0] - b[0]) * (a[1] - c[1])
+    u = ((b[1] - c[1]) * (edge_x - c[0]) + (c[0] - b[0]) * (edge_y - c[1])) / denominator
+    v = ((c[1] - a[1]) * (edge_x - c[0]) + (a[0] - c[0]) * (edge_y - c[1])) / denominator
+    old_z = u * a[2] + v * b[2] + (1 - u - v) * c[2]
+    assert abs(point[2] - old_z) < 1e-9
+    assert scene.road == road
+    assert scene.grid.heights == heights

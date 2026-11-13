@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=hockenheim",
   "tiles": 152,
-  "triangles": 1140375,
+  "triangles": 1142390,
   "road_sha256": "aae82124e5f654f6c786640822ce199df4a000d251612eb972a090297cc858c9",
   "terrain_sha256": "3c153de3ac7dfad905902d664ce2e979f4c3bd35d66dc9d68fefc98bacdbc0bc",
   "landmarks": [
@@ -160,6 +160,14 @@
       "ground_datum_nhn_m": 100.25724665983111,
       "mapped_roof_fraction": 0.32772872089642663,
       "source_note": "Actual curved seating footprint and separately mapped rear roof strip. Front rows stay open. Precise LGL ground anchors retain the raised rear earth terrace; section and support spacing remain visual estimates from continuous 412\u2013420 s views and 2018 ortho."
+    },
+    {
+      "name": "Sachs visible low-end foundation forecourt",
+      "source": "sachs-forecourt-correction.json",
+      "width_estimate_m": 8.0,
+      "full_front_length_m": 9.0,
+      "taper_end_m": 14.0,
+      "limitation": "Only the visible low end is joined. The hidden 1.479m mismatch elsewhere remains pending. Measured terraces and protected racing corridor are unchanged."
     },
     {
       "name": "Authored grandstand",

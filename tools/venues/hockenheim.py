@@ -10,6 +10,7 @@ from shapely.geometry import LineString, MultiPolygon, Polygon, box
 from shapely.geometry import Point as ShapePoint
 from shapely.ops import polygonize, unary_union
 
+from venues.hockenheim_forecourt import build_sachs_forecourt
 from venues.hockenheim_nord import nord_stand
 from venues.hockenheim_sachs import build_sachs_stand
 from venues.west_architecture import apron_band, mapped_building, mast, trees
@@ -36,6 +37,7 @@ def build_venue(scene: CircuitScene) -> None:
     nord_stand(scene)
     scene.stand(3280, 3530, -1, rows=24, setback=22, seat_material='SeatRed')
     build_sachs_stand(scene)
+    build_sachs_forecourt(scene)
     scene.stand(3970, 4390, -1, rows=29, setback=18, roofed=True, seat_material='SeatRed')
     for start, end, side in [(500, 780, -1), (1020, 1880, -1), (1060, 1830, 1),
                               (2220, 2650, -1), (2320, 2640, 1), (3060, 3290, 1)]:

@@ -543,5 +543,11 @@
     "source": "la-source-inside-correction.json",
     "profile": "shoulder-corrections.json",
     "status": "Local reference-backed inside protection and green paving remove confirmed folded cap; fresh review pending."
+  },
+  "blanchimont_mesh_refinement": {
+    "source": "bank-refinement.json",
+    "shading_history": "grass-shading-review.json",
+    "scope": "Bounded driverLEFT scenery cells5500\u20135920m, selected from exact5640/5700/5760m captures. Existing source-grid/join/native data remain unchanged.",
+    "status": "Source geometry correction; fresh generated assets and exact-camera runtime review required. No whole-route visual approval claimed."
   }
 }
