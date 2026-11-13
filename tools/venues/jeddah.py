@@ -23,6 +23,7 @@ from venues.jeddah_facilities import (
     t27_pavilion,
     t27_tree_belt,
 )
+from venues.jeddah_skyline import skyline_residency
 
 
 def circuit_edges(scene: CircuitScene) -> None:
@@ -257,3 +258,4 @@ def build_venue(scene: CircuitScene) -> None:
         (4800, 5400, 1, 12),
     ):
         trees(scene, start, end, side, setback, 52, 9, palm=True)
+    skyline_residency(scene)

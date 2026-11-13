@@ -1,0 +1,17 @@
+{
+  "sections": [
+    {
+      "start_m": 3660.0,
+      "end_m": 3990.0,
+      "side": -1,
+      "max_edge_offset_m": 40.0,
+      "bounds_xy_m": [
+        60.069908142089844,
+        -99.48307037353516,
+        275.6671600341797,
+        153.12487030029297
+      ],
+      "source_note": "Continuous supplied Germany412/414/416/418/420s shows open inside Sachs grass, no invented roofed stand or inside Armco. Retained2018DOP20 confirms open central island. Bounded nearest-station/side/XY opening preserves outside stand wall, other course branches and far field; white-line limits and kerbs remain. The40 m radial bound includes the source-width transition at the two registered endpoints; nearest-station, negative-side and island-XY tests still exclude outside and nonlocal protection."
+    }
+  ]
+}

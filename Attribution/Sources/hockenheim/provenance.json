@@ -19,18 +19,18 @@
     "chosen": "relation-cycle/284588",
     "measured_plan_m": 4567.174,
     "published_m": 4574,
-    "uniform_scale": 1.001905915781631,
-    "scale_rule": "Composed source projection and native32-subdivision Catmull length normalization, including the disclosed local corner reconstruction/refinement stages. Original source projection is retained separately; see scene-registration.json.",
+    "uniform_scale": 1.0018173360583138,
+    "scale_rule": "Prior exact runtime geographic scale composed with independent Sachs midpoint replacement native32-step Catmull normalization; see scene-registration.json. No feature-only correction.",
     "source_projection_uniform_scale": 1.001495
   },
   "elevation": {
-    "provider": "Formula1 official published longitudinal road-profile chart; original numericaldigitisation",
-    "dataset": "2016circuitTopographyprofile",
+    "provider": "LGL Baden-Wuerttemberg",
+    "dataset": "DGM025 numeric bare-earth heights at actual final native XY",
     "recipe": "elevation-corrections.json",
-    "relative_datum": "Chart minimumsubtracted, absolutechartaltitude notclaimed localMSL.",
-    "relief_m": 4.3,
-    "uncertainty_m": 0.5,
-    "source_url": "https://www.formula1.com/en/latest/article/highs-and-lows-which-f1-track-has-the-most-elevation-changes-.7I9JEcBw3R2AqXbnJ6hyvc.7I9JEcBw3R2AqXbnJ6hyvc",
+    "relative_datum": "DHHN2016 NHN minus common filtered road minimum",
+    "relief_m": 4.286066676565042,
+    "uncertainty_m": 0.15,
+    "source_url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025",
     "previous_source": {
       "provider": "Open-Meteo Elevation API",
       "dataset": "Copernicus DEM GLO-90",
@@ -50,12 +50,42 @@
       "Graph/profile registration is approximate and depends on sourceplanlandmarks; do not claim geodetic precision from pixelreading.",
       "Existingnativewidths/plan/vehicleparameters preserved. Landscapeterrain remains separatelysourced."
     ],
-    "layout_note": "Samepost2002GPplan as2019reference. Chart labels17turns; curvature detector only13peaks is not a basis for shiftingcornernames. LocalSachscamber remains separate from longitudinalprofile."
+    "layout_note": "Samepost2002GPplan as2019reference. Chart labels17turns; curvature detector only13peaks is not a basis for shiftingcornernames. LocalSachscamber remains separate from longitudinalprofile.",
+    "previous_source_chart": {
+      "provider": "Formula1 official published longitudinal road-profile chart; original numericaldigitisation",
+      "dataset": "2016circuitTopographyprofile",
+      "recipe": "elevation-corrections.json",
+      "relative_datum": "Chart minimumsubtracted, absolutechartaltitude notclaimed localMSL.",
+      "relief_m": 4.3,
+      "uncertainty_m": 0.5,
+      "source_url": "https://www.formula1.com/en/latest/article/highs-and-lows-which-f1-track-has-the-most-elevation-changes-.7I9JEcBw3R2AqXbnJ6hyvc.7I9JEcBw3R2AqXbnJ6hyvc",
+      "previous_source": {
+        "provider": "Open-Meteo Elevation API",
+        "dataset": "Copernicus DEM GLO-90",
+        "dataset_note": "Surface model, about 90 m, includes roofs and canopy. Not a bare-earth racing survey.",
+        "licence": "Copernicus DEM, see https://registry.opendata.aws/copernicus-dem/",
+        "retrieved": "2026-11-04",
+        "sample_spacing_m": 23.8,
+        "smoothing": "Two circular binomial passes on the coarse samples, then linear interpolation onto the 4 m centreline. Isolated samples more than 6 m above their neighbours were treated as overpasses or roofs.",
+        "relative_datum": "Heights stored after subtracting the lap minimum.",
+        "removed_minimum_m": 99.136,
+        "relief_m": 9.177,
+        "uncertainty_m": 5,
+        "deck": null
+      },
+      "limitations": [
+        "Publisheddiagram is not an engineering/as-built survey. Smallresurfacingbumps, bankcrosssections and underpassdeckdetails need separatecontrols.",
+        "Graph/profile registration is approximate and depends on sourceplanlandmarks; do not claim geodetic precision from pixelreading.",
+        "Existingnativewidths/plan/vehicleparameters preserved. Landscapeterrain remains separatelysourced."
+      ],
+      "layout_note": "Samepost2002GPplan as2019reference. Chart labels17turns; curvature detector only13peaks is not a basis for shiftingcornernames. LocalSachscamber remains separate from longitudinalprofile."
+    },
+    "removed_minimum_m": 100.25724665983111
   },
   "width": {
-    "base_m": 12.0,
-    "straight_m": 15.0,
-    "method": "Authored from typical Grade 1 asphalt width, wider on low-curvature sections. Not a traced white-line survey."
+    "method": "Source-traced marked racing width in Motodrom; generic historical width retained elsewhere. Full pavement and marked racing lane are explicitly different definitions.",
+    "source": "environment-recipe.json width_profile",
+    "uncertainty_m_per_edge": 0.5
   },
   "shoulders": {
     "default_m": 8.0,

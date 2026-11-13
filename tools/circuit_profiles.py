@@ -34,7 +34,7 @@ def native_profile(text: str, kind: Literal["Elevation", "Width", "Bank"]) -> li
     if match is None:
         raise ValueError(f"Missing native {kind} profile")
     return [(float(a), float(b)) for a, b in re.findall(
-        rf"\{{\s*({NUMBER})f,\s*({NUMBER})f(?:,\s*{NUMBER}f)?\s*\}}", match[1]
+        rf"\{{\s*({NUMBER})f,\s*({NUMBER})f(?:,\s*{NUMBER}f)*\s*\}}", match[1]
     )]
 
 
@@ -44,8 +44,22 @@ def native_bank_profile(text: str) -> list[tuple[float, float, float]]:
         raise ValueError("Missing native Bank profile")
     return [(float(station), float(angle), float(quadratic or 0))
             for station, angle, quadratic in re.findall(
-                rf"\{{\s*({NUMBER})f,\s*({NUMBER})f(?:,\s*({NUMBER})f)?\s*\}}", match[1]
+                rf"\{{\s*({NUMBER})f,\s*({NUMBER})f(?:,\s*({NUMBER})f)?(?:,\s*{NUMBER}f)*\s*\}}", match[1]
             )]
+
+
+def native_bank_edges(text: str) -> list[tuple[float, float, float, float]]:
+    match = re.search(r"constexpr TrackBankPoint \w+\[\] = \{(.*?)\n\};", text, re.DOTALL)
+    if match is None:
+        raise ValueError("Missing native Bank profile")
+    result = []
+    for body in re.findall(r"\{([^{}]+)\}", match[1]):
+        values = [float(value) for value in re.findall(rf"({NUMBER})f", body)]
+        if len(values) not in (2, 3, 6):
+            raise ValueError("Native bank points require two, three or six values")
+        result.append((values[0], values[3], values[4], values[5]) if len(values) == 6
+                      else (values[0], 0.0, 0.0, 0.0))
+    return result
 
 
 def banking_rows(profile: BankingControls, length: float) -> list[tuple[float, float, float]]:
@@ -71,6 +85,32 @@ def banking_rows(profile: BankingControls, length: float) -> list[tuple[float, f
     positions = sorted({row[0] for row in profile.controls + profile.quadratic_controls})
     return [(station, sample(profile.controls, station), sample(profile.quadratic_controls, station))
             for station in positions]
+
+
+def banking_edge_rows(profile: BankingControls, length: float) -> list[tuple[float, float, float, float, float, float]]:
+    bank = banking_rows(profile, length)
+    edges = profile.edge_controls
+    if (len(edges) < 2 or edges[0][0] != 0 or abs(edges[-1][0] - length) > .001
+            or edges[0][1:] != edges[-1][1:]
+            or not all(math.isfinite(value) for row in edges for value in row)
+            or not all(b[0] > a[0] for a, b in itertools.pairwise(edges))
+            or any(row[1] < 0 for row in edges)):
+        raise ValueError("Bank-edge controls must be ordered, nonnegative and close the complete lap")
+    positions = sorted({row[0] for row in bank} | {row[0] for row in edges})
+    bank_positions = [row[0] for row in bank]
+    edge_positions = [row[0] for row in edges]
+    result = []
+    for station in positions:
+        i = max(0, min(len(bank) - 2, bisect.bisect_right(bank_positions, station) - 1))
+        a, b = bank[i], bank[i + 1]
+        t = (station - a[0]) / (b[0] - a[0])
+        j = max(0, min(len(edges) - 2, bisect.bisect_right(edge_positions, station) - 1))
+        c, d = edges[j], edges[j + 1]
+        u = (station - c[0]) / (d[0] - c[0])
+        result.append((station, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t,
+                       c[1] + (d[1] - c[1]) * u, c[2] + (d[2] - c[2]) * u,
+                       c[3] + (d[3] - c[3]) * u))
+    return result
 
 
 def replace_profile(
@@ -99,7 +139,15 @@ def apply_banking(slug: str) -> None:
     text = path.read_text()
     length = native_profile(text, "Width")[-1][0]
     updated = replace_profile(text, "Bank", profile.controls, length)
-    if profile.quadratic_controls:
+    if profile.edge_controls:
+        rows_edge = banking_edge_rows(profile, length)
+        match = re.search(r"constexpr TrackBankPoint \w+\[\] = \{(.*?)\n\};", updated, re.DOTALL)
+        if match is None:
+            raise ValueError("Missing native Bank profile")
+        body = "\n" + ",\n".join("    {" + ", ".join(f"{value:.9f}f" for value in row) + "}"
+                                 for row in rows_edge)
+        updated = updated[:match.start(1)] + body + updated[match.end(1):]
+    elif profile.quadratic_controls:
         rows = banking_rows(profile, length)
         match = re.search(r"constexpr TrackBankPoint \w+\[\] = \{(.*?)\n\};", updated, re.DOTALL)
         if match is None:

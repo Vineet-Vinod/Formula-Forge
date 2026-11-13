@@ -1,0 +1,222 @@
+{
+  "source": "Official LGL Baden-Wuerttemberg DGM025 ALS3 numeric GetFeatureInfo",
+  "source_endpoint": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025",
+  "horizontal_crs": "EPSG:25832 ETRS89/UTM32N",
+  "vertical_datum": "DHHN2016 NHN",
+  "method": "Official numeric DGM025 GetFeatureInfo at individually retained WGS/native registered lane positions. Only racing-edge-contained samples fit the bank; extended samples fit the outside slope descriptor. Decimal storage does not imply centimetre survey accuracy.",
+  "queries": 28,
+  "body_bytes_total": 6308,
+  "road_csv_sha256": "cc673b3c079fa36acb11bd7505cbc4ff0da248651160b848efc071cf52dc9dd8",
+  "projection_scale": 1.001905915781631,
+  "sections": [
+    {
+      "native_station_m": 3739.82568,
+      "half_width_m": 6.0,
+      "existing_native_z_m": 2.54000115,
+      "samples": [
+        {
+          "lane_m": -24,
+          "easting_m": 468614.4960330754,
+          "northing_m": 5464057.921230525,
+          "height_nhn_m": 99.43099975585938
+        },
+        {
+          "lane_m": -18,
+          "easting_m": 468618.8597486591,
+          "northing_m": 5464062.024115525,
+          "height_nhn_m": 99.57099914550781
+        },
+        {
+          "lane_m": -12,
+          "easting_m": 468623.2234577331,
+          "northing_m": 5464066.127003995,
+          "height_nhn_m": 99.79100036621094
+        },
+        {
+          "lane_m": -8,
+          "easting_m": 468626.13259349955,
+          "northing_m": 5464068.8622649,
+          "height_nhn_m": 99.99500274658203
+        },
+        {
+          "lane_m": 8,
+          "easting_m": 468637.76910763374,
+          "northing_m": 5464079.803323938,
+          "height_nhn_m": 100.79100036621094
+        },
+        {
+          "lane_m": 12,
+          "easting_m": 468640.6782289344,
+          "northing_m": 5464082.53859255,
+          "height_nhn_m": 100.85299682617188
+        },
+        {
+          "lane_m": 18,
+          "easting_m": 468645.0419054609,
+          "northing_m": 5464086.641498359,
+          "height_nhn_m": 100.73699951171875
+        },
+        {
+          "lane_m": 24,
+          "easting_m": 468649.4055754778,
+          "northing_m": 5464090.744407636,
+          "height_nhn_m": 100.86499786376953
+        }
+      ]
+    },
+    {
+      "native_station_m": 3769.97656,
+      "half_width_m": 6.0,
+      "existing_native_z_m": 2.40931606,
+      "samples": [
+        {
+          "lane_m": -24,
+          "easting_m": 468601.24047449674,
+          "northing_m": 5464067.712654933,
+          "height_nhn_m": 99.39199829101562
+        },
+        {
+          "lane_m": -18,
+          "easting_m": 468602.7469798873,
+          "northing_m": 5464073.501571999,
+          "height_nhn_m": 99.45500183105469
+        },
+        {
+          "lane_m": -12,
+          "easting_m": 468604.2534821921,
+          "northing_m": 5464079.290489514,
+          "height_nhn_m": 99.72599792480469
+        },
+        {
+          "lane_m": -8,
+          "easting_m": 468605.25781534764,
+          "northing_m": 5464083.1497681085,
+          "height_nhn_m": 99.93299865722656
+        }
+      ]
+    },
+    {
+      "native_station_m": 3801.24414,
+      "half_width_m": 6.0,
+      "existing_native_z_m": 2.09716606,
+      "samples": [
+        {
+          "lane_m": -24,
+          "easting_m": 468588.4989753137,
+          "northing_m": 5464066.115080272,
+          "height_nhn_m": 99.41400146484375
+        },
+        {
+          "lane_m": -18,
+          "easting_m": 468585.60465917294,
+          "northing_m": 5464071.353422736,
+          "height_nhn_m": 99.46900177001953
+        },
+        {
+          "lane_m": -12,
+          "easting_m": 468582.71034861944,
+          "northing_m": 5464076.591766793,
+          "height_nhn_m": 99.71399688720703
+        },
+        {
+          "lane_m": -8,
+          "easting_m": 468580.78081135475,
+          "northing_m": 5464080.083997049,
+          "height_nhn_m": 99.94100189208984
+        }
+      ]
+    },
+    {
+      "native_station_m": 3830.27832,
+      "half_width_m": 6.0,
+      "existing_native_z_m": 1.53018284,
+      "samples": [
+        {
+          "lane_m": -24,
+          "easting_m": 468582.6333031411,
+          "northing_m": 5464058.203125508,
+          "height_nhn_m": 99.43099975585938
+        },
+        {
+          "lane_m": -18,
+          "easting_m": 468576.86628200125,
+          "northing_m": 5464059.8461678075,
+          "height_nhn_m": 99.52400207519531
+        },
+        {
+          "lane_m": -12,
+          "easting_m": 468571.0992642611,
+          "northing_m": 5464061.489216185,
+          "height_nhn_m": 99.94599914550781
+        },
+        {
+          "lane_m": -8,
+          "easting_m": 468567.25458765635,
+          "northing_m": 5464062.584585149,
+          "height_nhn_m": 100.14800262451172
+        }
+      ]
+    },
+    {
+      "native_station_m": 3859.87085,
+      "half_width_m": 6.0,
+      "existing_native_z_m": 0.977104247,
+      "samples": [
+        {
+          "lane_m": -24,
+          "easting_m": 468583.1432803236,
+          "northing_m": 5464041.3669342855,
+          "height_nhn_m": 99.5979995727539
+        },
+        {
+          "lane_m": -18,
+          "easting_m": 468577.3185360485,
+          "northing_m": 5464039.940984491,
+          "height_nhn_m": 99.7770004272461
+        },
+        {
+          "lane_m": -12,
+          "easting_m": 468571.4937886916,
+          "northing_m": 5464038.515040866,
+          "height_nhn_m": 100.0199966430664
+        },
+        {
+          "lane_m": -8,
+          "easting_m": 468567.6106220748,
+          "northing_m": 5464037.564415215,
+          "height_nhn_m": 100.40699768066406
+        },
+        {
+          "lane_m": 8,
+          "easting_m": 468552.07794191025,
+          "northing_m": 5464033.761940029,
+          "height_nhn_m": 100.99600219726562
+        },
+        {
+          "lane_m": 12,
+          "easting_m": 468548.19476844475,
+          "northing_m": 5464032.811328091,
+          "height_nhn_m": 101.05999755859375
+        },
+        {
+          "lane_m": 18,
+          "easting_m": 468542.3700056782,
+          "northing_m": 5464031.385415325,
+          "height_nhn_m": 100.95500183105469
+        },
+        {
+          "lane_m": 24,
+          "easting_m": 468536.5452398298,
+          "northing_m": 5464029.959508732,
+          "height_nhn_m": 100.62699890136719
+        }
+      ]
+    }
+  ],
+  "status": "Retained original numeric source observations. Canonical bank reconstruction is banking-corrections.json; raw queries and response hashes remain unchanged.",
+  "source_date": "Tile updated2022-02-15, flight lot24-1_2022",
+  "source_accuracy_m": 0.15,
+  "licence": "https://www.govdata.de/dl-de/by-2-0",
+  "source_vertical_accuracy_m": 0.15,
+  "source_epoch": "Sachs tile324685464 updated2022-02-15, regional2022flightlot24-1_2022"
+}

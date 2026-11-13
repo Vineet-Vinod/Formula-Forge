@@ -7,6 +7,8 @@ import sys
 
 from circuit_art import artwork
 from circuit_dataclasses import PitLane
+from circuit_partition import partition_city
+from circuit_partition_dataclasses import CityPartitionRecipe
 from circuit_scene import CircuitScene
 from circuit_terrain import ROOT, acquire
 from pydantic import TypeAdapter
@@ -38,9 +40,16 @@ def generate(slug: str) -> None:
     )
     scene.markings()
     artwork(scene)
+    triangle_count = sum(len(tile.triangles) // 100 for tile in scene.tiles.values())
     tile_count = scene.save()
+    partition = scene.sources / "scene-partition.json"
+    if partition.exists():
+        scene.tiles.clear()
+        tile_count = partition_city(
+            scene.scratch, TypeAdapter(CityPartitionRecipe).validate_json(partition.read_bytes())
+        )
     print(
-        f"{slug}: {tile_count} tiles, {sum(len(t.triangles) // 100 for t in scene.tiles.values())} triangles",
+        f"{slug}: {tile_count} tiles, {triangle_count} triangles",
         flush=True,
     )
 

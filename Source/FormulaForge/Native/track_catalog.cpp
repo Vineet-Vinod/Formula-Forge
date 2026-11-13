@@ -327,14 +327,48 @@ float sampleTrackBankQuadratic(const TrackCatalogEntry& track, float distanceMet
                           [](const TrackBankPoint& point) { return point.quadraticPerMeter; });
 }
 
-float trackLateralHeightMeters(float slope, float quadratic, float halfWidth, float lane) noexcept {
+float sampleTrackBankFadeMeters(const TrackCatalogEntry& track, float distanceMeters) noexcept {
+    return sampleStations(track.bankProfile, distanceMeters, track.targetLengthMeters,
+                          [](const TrackBankPoint& point) { return point.edgeFadeMeters; });
+}
+
+float sampleTrackBankOuterSlope(const TrackCatalogEntry& track, float distanceMeters, bool positiveSide) noexcept {
+    return sampleStations(track.bankProfile, distanceMeters, track.targetLengthMeters,
+        [positiveSide](const TrackBankPoint& point) {
+            return positiveSide ? point.positiveOuterSlope : point.negativeOuterSlope;
+        });
+}
+
+float trackLateralHeightMeters(float slope, float quadratic, float halfWidth, float lane,
+    float fadeMeters, float positiveOuterSlope, float negativeOuterSlope) noexcept {
+    if (fadeMeters > 0.0f && std::abs(lane) > halfWidth) {
+        const float sign = lane > 0.0f ? 1.0f : -1.0f;
+        const float edge = sign * halfWidth;
+        const float distance = std::abs(lane) - halfWidth;
+        const float inside = std::min(distance, fadeMeters);
+        const float t = inside / fadeMeters;
+        const float firstSlope = sign * (slope + 2.0f * quadratic * edge);
+        const float lastSlope = sign * (lane > 0.0f ? positiveOuterSlope : negativeOuterSlope);
+        // Integral of the smoothstep roll transition, joined to the road at its white edge.
+        return slope * edge + quadratic * edge * edge + firstSlope * inside +
+            (lastSlope - firstSlope) * fadeMeters * (t * t * t - 0.5f * t * t * t * t) +
+            lastSlope * std::max(0.0f, distance - fadeMeters);
+    }
     if (quadratic == 0.0f) return slope * lane;
     const float edge = std::clamp(lane, -halfWidth, halfWidth);
     // Continue the edge tangent into shoulders rather than extending the bowl indefinitely.
     return slope * lane + quadratic * edge * (2.0f * lane - edge);
 }
 
-float trackLateralSlope(float slope, float quadratic, float halfWidth, float lane) noexcept {
+float trackLateralSlope(float slope, float quadratic, float halfWidth, float lane,
+    float fadeMeters, float positiveOuterSlope, float negativeOuterSlope) noexcept {
+    if (fadeMeters > 0.0f && std::abs(lane) > halfWidth) {
+        const float edge = std::copysign(halfWidth, lane);
+        const float t = std::clamp((std::abs(lane) - halfWidth) / fadeMeters, 0.0f, 1.0f);
+        const float firstSlope = slope + 2.0f * quadratic * edge;
+        const float lastSlope = lane > 0.0f ? positiveOuterSlope : negativeOuterSlope;
+        return firstSlope + (lastSlope - firstSlope) * t * t * (3.0f - 2.0f * t);
+    }
     if (quadratic == 0.0f) return slope;
     return slope + 2.0f * quadratic * std::clamp(lane, -halfWidth, halfWidth);
 }

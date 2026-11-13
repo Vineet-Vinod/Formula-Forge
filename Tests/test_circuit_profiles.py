@@ -28,7 +28,9 @@ from circuit_dataclasses import (
     TurnRegistrations,
 )
 from circuit_profiles import (
+    banking_edge_rows,
     banking_rows,
+    native_bank_edges,
     native_bank_profile,
     native_profile,
     pit_shoulders,
@@ -458,3 +460,45 @@ def test_remus_inner_shoulder_stays_inside_the_mapped_corner_center() -> None:
         ]
         assert Polygon(points).is_valid
         assert Polygon(points).area > 0
+
+
+def test_banked_road_edges_ease_into_measured_gravel_without_moving_the_racing_plane() -> None:
+    road = RoadStation(0, 0, 0, 3, 1, 0, 4.5, .11,
+                       bank_fade=.25, bank_outer_positive=.015, bank_outer_negative=.03)
+    for lane in (-4.5, -3., 0., 3., 4.5):
+        assert road.height(lane) == 3 + .11 * lane
+        assert road.slope(lane) == .11
+    for lane in (-24., -8., -4.75, -4.6, -4.5, 4.5, 4.6, 4.75, 8., 24.):
+        delta = .00001
+        derivative = (road.height(lane + delta) - road.height(lane - delta)) / (2 * delta)
+        assert derivative == pytest.approx(road.slope(lane), abs=.00001)
+    assert road.slope(24) == .015
+    assert road.slope(-24) == .03
+    assert road.height(24) < 3 + .11 * 24 - 1.5
+    assert road.height(-24) > 3 - .11 * 24 + 1.5
+    unchanged = RoadStation(0, 0, 0, 3, 1, 0, 4.5, .11,
+                            bank_outer_positive=.015, bank_outer_negative=.03)
+    for lane in (-24., -4.75, 0., 4.75, 24.):
+        assert unchanged.height(lane) == 3 + .11 * lane
+        assert unchanged.slope(lane) == .11
+
+
+def test_bank_edge_source_schema_closes_and_reads_legacy_native_profiles() -> None:
+    profile = BankingControls([(0, 0), (50, 6), (100, 0)],
+                              edge_controls=[(0, 0, 0, 0), (40, .25, .01, .03),
+                                             (60, .25, .01, .03), (100, 0, 0, 0)])
+    rows = banking_edge_rows(profile, 100)
+    middle = next(row for row in rows if row[0] == 50)
+    assert middle == pytest.approx((50, 6, 0, .25, .01, .03))
+    text = "constexpr TrackBankPoint bank[] = {\n" + ",\n".join(
+        "    {" + ", ".join(f"{value:.9f}f" for value in row) + "}" for row in rows
+    ) + "\n};"
+    assert native_bank_edges(text) == [(row[0], *row[3:]) for row in rows]
+    for actual, expected in zip(native_bank_profile(text), rows, strict=True):
+        assert actual == pytest.approx(expected[:3])
+    legacy = "constexpr TrackBankPoint bank[] = {\n    {0.0f, 1.0f},\n    {100.0f, 1.0f}\n};"
+    assert native_bank_edges(legacy) == [(0, 0, 0, 0), (100, 0, 0, 0)]
+    for bad in ([(0, 0, 0, 0), (100, .25, 0, 0)],
+                [(0, 0, 0, 0), (50, .25, 0, 0), (40, .25, 0, 0), (100, 0, 0, 0)]):
+        with pytest.raises(ValueError):
+            banking_edge_rows(BankingControls([(0, 0), (100, 0)], edge_controls=bad), 100)

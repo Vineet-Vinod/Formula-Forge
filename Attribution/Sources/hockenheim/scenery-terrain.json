@@ -1,15 +1,15 @@
 {
-  "provider": "Copernicus DEM, distributed through AWS Open Data",
-  "dataset": "GLO-30 DSM",
-  "source_url": "https://copernicus-dem-30m.s3.eu-central-1.amazonaws.com/Copernicus_DSM_COG_10_N49_00_E008_00_DEM/Copernicus_DSM_COG_10_N49_00_E008_00_DEM.tif",
-  "source_info": "https://registry.opendata.aws/copernicus-dem/",
-  "documentation": "https://copernicus-dem-90m.s3.amazonaws.com/readme.html",
-  "retained_window": "elevation/scenery_dem.tif",
-  "sha256": "96487674b4ea6ab961c634eba6418795a532c5994e78fe070e43d504198e0d8e",
-  "grid_spacing_m": 12,
-  "source_resolution_m": 30,
-  "relative_datum_m": 99.93866534556093,
-  "datum_method": "Median offset to unchanged native road profile at 256 stations.",
-  "use": "Surrounding landscape only, bilinearly resampled; not a racing-deck or bare-earth survey. Road-adjacent ground joins the existing road plane.",
-  "terrain_sha256": "d1ac435fcadfa6cf28b567d770c62b6e97e01f14e1dfdd0218ea1d54814c04da"
+  "provider": "LGL Baden-Wuerttemberg",
+  "dataset": "ATKIS DGM1 bare-earth, bounded8m WCS export stored in integer metres; scenery only",
+  "retained_window": "elevation/lgl-scenery-grid.json.gz",
+  "sha256": "8ee53ecc018a853faaee861496a97800bd6ad56fdaf5b70a61c9f62c65dfda8c",
+  "grid_spacing_m": 12.0,
+  "runtime_grid_spacing_m": 11.998939065372243,
+  "horizontal_frame_correction": 0.9999115887810203,
+  "grid_uniform_scale": 1.001905915781631,
+  "relative_datum_m": 100.25724665983111,
+  "road_join_distance_m": 20.0,
+  "source_manifest": "scenery-ground.json",
+  "use": "Retained scenery-only ground grid. Heights already use the registered relative datum; racing profiles remain unchanged.",
+  "terrain_sha256": "3c153de3ac7dfad905902d664ce2e979f4c3bd35d66dc9d68fefc98bacdbc0bc"
 }

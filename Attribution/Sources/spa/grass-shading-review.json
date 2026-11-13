@@ -18,5 +18,96 @@
       "AcceptedInterlagosGrassassetandsharedparent"
     ]
   },
-  "status": "Candidate only. Compare the same5700 m pose and the whole lap before retaining this change; no rendered correction is claimed yet."
+  "status": "Normal-strength candidate failed and is reverted in source. Daylight orientation candidate is source-only until rebuilt, packaged and checked around the whole route. No visual fix is claimed.",
+  "normal_strength_test": {
+    "package_revision": "92dca960",
+    "packet": "build/reviews/spa/resume-20261113-corrections-live",
+    "result": "Rejected. The bank remains dark in the station-matched whole-lap review. Material inspection records DefaultNormal, so varying strength does not alter a flat tangent normal. Restore0.18.",
+    "review": "build/reviews/resume-20261113/spa-corrections-review.md"
+  },
+  "daylight_candidate": {
+    "sky_cube_and_dome_rotation_degrees": 120,
+    "directional_sun_yaw_degrees": 246,
+    "sun_pitch_degrees": -37.8,
+    "sun_intensity": 3.6,
+    "skylight_intensity": 0.8,
+    "rationale": "Spa-only authored afternoon light direction illuminates the source-grounded bank. Same sunlight elevation, energy, sky intensity, exposure, shadows, terrain, normals and camera. The sun azimuth/elevation is physically possible at Spa latitude; no exact event time is claimed. Sky cubemap and visible dome rotate with the sun, following existing venue-specific daylight conventions.",
+    "probes": [
+      {
+        "pixel": [
+          80,
+          230
+        ],
+        "normal_source": [
+          -0.457164596625794,
+          0.39686285203736293,
+          0.7959273888142971
+        ],
+        "sun_incidence_dot_by_ue_yaw": {
+          "126": 0.011268012095947327,
+          "246": 0.6902845897673898
+        }
+      },
+      {
+        "pixel": [
+          200,
+          260
+        ],
+        "normal_source": [
+          -0.4057891689581736,
+          0.36099248432593223,
+          0.8396544388118403
+        ],
+        "sun_incidence_dot_by_ue_yaw": {
+          "126": 0.08756999773566737,
+          "246": 0.6915284368779449
+        }
+      },
+      {
+        "pixel": [
+          80,
+          350
+        ],
+        "normal_source": [
+          -0.3367122942140605,
+          0.2814728489562677,
+          0.8985532072312391
+        ],
+        "sun_incidence_dot_by_ue_yaw": {
+          "126": 0.2047589957449606,
+          "246": 0.7033216997836645
+        }
+      },
+      {
+        "pixel": [
+          450,
+          350
+        ],
+        "normal_source": [
+          -0.28989797781594473,
+          0.35296961709085095,
+          0.8895906990683772
+        ],
+        "sun_incidence_dot_by_ue_yaw": {
+          "126": 0.195985744794583,
+          "246": 0.6410579624496441
+        }
+      },
+      {
+        "pixel": [
+          720,
+          345
+        ],
+        "normal_source": [
+          0.22719331255961234,
+          0.3746835610768559,
+          0.8988856589060459
+        ],
+        "sun_incidence_dot_by_ue_yaw": {
+          "126": 0.5221478393553897,
+          "246": 0.26651789171923757
+        }
+      }
+    ]
+  }
 }

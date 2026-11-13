@@ -7,6 +7,8 @@
 #include "Misc/FileHelper.h"
 #include "Misc/Paths.h"
 
+#include <cmath>
+
 namespace {
 struct RibbonMesh {
     TArray<FVector> Vertices;
@@ -142,7 +144,20 @@ int32 BuildGeneratedRibbon(AActor& owner, const TrackCatalogEntry& track, TArray
             FVector(second.tangent.x - first.tangent.x, second.tangent.y - first.tangent.y, 0),
             FVector(first.tangent.x, first.tangent.y, 0)).Z, 1.0f)) > 0.0f;
         RibbonMesh& kerb = (static_cast<int>(first.station / 8.0f) % 2 == 0) ? kerbRed : kerbWhite;
-        if (coloured) {
+        const bool bankEdges = first.bankFade > 0.0f || second.bankFade > 0.0f;
+        if (coloured && bankEdges) {
+            const auto fractions = circuitBankEdgeFractions(first, second, .8f, .8f);
+            for (const float sign : {-1.0f, 1.0f}) {
+                for (std::size_t strip = 1; strip < fractions.size(); ++strip) {
+                    const float lo = fractions[strip - 1] * .8f;
+                    const float hi = fractions[strip] * .8f;
+                    kerb.Quad(side(first, left, sign * (first.halfWidth + hi)),
+                        side(second, leftNext, sign * (second.halfWidth + hi)),
+                        side(second, leftNext, sign * (second.halfWidth + lo)),
+                        side(first, left, sign * (first.halfWidth + lo)), length, hi - lo);
+                }
+            }
+        } else if (coloured) {
             kerb.Quad(side(first, left, first.halfWidth + 0.8f), side(second, leftNext, second.halfWidth + 0.8f), roadLeftNext, roadLeft, length, 0.8f);
             kerb.Quad(roadRight, roadRightNext, side(second, leftNext, -(second.halfWidth + 0.8f)), side(first, left, -(first.halfWidth + 0.8f)), length, 0.8f);
         }
@@ -154,7 +169,18 @@ int32 BuildGeneratedRibbon(AActor& owner, const TrackCatalogEntry& track, TArray
             const float innerNext = sign * (second.halfWidth + 0.85f);
             const float outerNext = sign * (second.halfWidth + 0.85f + sampleTrackShoulderMeters(track, second.station, positive));
             RibbonMesh& shoulderMesh = Gravel(track, first.station, positive) ? gravel : verge;
-            shoulderMesh.Quad(side(first, left, outer), side(second, leftNext, outerNext), side(second, leftNext, innerNext), side(first, left, inner), length, shoulder);
+            if (bankEdges) {
+                const auto fractions = circuitBankEdgeFractions(first, second, std::abs(outer - inner), std::abs(outerNext - innerNext));
+                for (std::size_t strip = 1; strip < fractions.size(); ++strip) {
+                    const float lo = fractions[strip - 1], hi = fractions[strip];
+                    shoulderMesh.Quad(side(first, left, inner + (outer - inner) * hi),
+                        side(second, leftNext, innerNext + (outerNext - innerNext) * hi),
+                        side(second, leftNext, innerNext + (outerNext - innerNext) * lo),
+                        side(first, left, inner + (outer - inner) * lo), length, shoulder * (hi - lo));
+                }
+            } else {
+                shoulderMesh.Quad(side(first, left, outer), side(second, leftNext, outerNext), side(second, leftNext, innerNext), side(first, left, inner), length, shoulder);
+            }
             const FVector base = side(first, left, outer);
             const FVector baseNext = side(second, leftNext, outerNext);
             const FVector top = base + FVector(0, 0, 90.0f);

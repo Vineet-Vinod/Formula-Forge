@@ -24,7 +24,7 @@ import urllib.request
 from pathlib import Path
 
 from circuit_dataclasses import BankingControls
-from circuit_profiles import banking_rows
+from circuit_profiles import banking_edge_rows, banking_rows
 from pydantic import TypeAdapter
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -163,7 +163,7 @@ CIRCUITS = [
          venue="Hockenheimring", country="Germany",
          lat=49.3278, lon=8.5658, radius=2200, lengths=[4574], turns=17,
          clockwise=True, street=False, shoulder=8.0, base=12.0, straight=15.0,
-         names=["Hockenheim", "Grand Prix"], crossings=0, environment="forest",
+         bank_profile="banking-corrections.json", names=["Hockenheim", "Grand Prix"], crossings=0, environment="forest",
          description="The current Hockenheimring Grand Prix loop, not the old forest circuit."),
 ]
 
@@ -997,7 +997,7 @@ def write_survey(spec, xy, elevation, width, bank, runoff, turns, shoulders):
     rows_z = [f"    {{{distance:.3f}f, {height:.4f}f}}" for distance, height in elevation]
     rows_w = [f"    {{{distance:.3f}f, {value:.3f}f}}" for distance, value in width]
     rows_b = ["    {" + ", ".join(f"{value:.9f}f" for value in row) + "}"
-              if len(row) == 3 else f"    {{{row[0]:.3f}f, {row[1]:.3f}f}}" for row in bank]
+              if len(row) > 2 else f"    {{{row[0]:.3f}f, {row[1]:.3f}f}}" for row in bank]
     rows_r = []
     for zone in runoff:
         surface = f"TrackRunoffSurface::{zone['surface']}"
@@ -1327,7 +1327,9 @@ out geom;
     if spec.get("bank_profile"):
         authored_banking = json.loads((source / spec["bank_profile"]).read_text())
         bank = [tuple(control) for control in authored_banking["controls"]]
-        if authored_banking.get("quadratic_controls"):
+        if authored_banking.get("edge_controls"):
+            bank = banking_edge_rows(TypeAdapter(BankingControls).validate_python(authored_banking), target)
+        elif authored_banking.get("quadratic_controls"):
             bank = banking_rows(TypeAdapter(BankingControls).validate_python(authored_banking), target)
         bank_notes = [authored_banking["method"]] if "method" in authored_banking else ["Explicit source-registered banking controls; see " + spec["bank_profile"]]
 
@@ -1381,6 +1383,8 @@ out geom;
         time.sleep(1.0)
     origin = samples[0]
     scale_xy = scale
+    if spec["slug"] == "hockenheim" and (source / "scene-registration.json").exists():
+        scale_xy = json.loads((source / "scene-registration.json").read_text())["effective_scene_uniform_scale"]
     for element in barrier_payload.get("elements", []):
         points = way_points(element)
         if not points:
@@ -1443,7 +1447,7 @@ out geom;
             right[index] += (.05-right[index])*weight
     shoulders = [(stations[index], left[index], right[index]) for index in range(0, count, 2)]
     shoulders.append((target, shoulders[0][1], shoulders[0][2]))
-    if spec["slug"] == "zandvoort" and (source / "shoulder-baseline.json").exists():
+    if spec["slug"] in {"zandvoort", "hockenheim"} and (source / "shoulder-baseline.json").exists():
         from circuit_dataclasses import ShoulderBaseline
 
         shoulders = TypeAdapter(ShoulderBaseline).validate_json(
@@ -1563,6 +1567,9 @@ out geom;
     }
     if spec["slug"] in {"lasvegas", "japan"}:
         record["turns_registered"] = len(turns)
+    if spec["slug"] == "hockenheim" and (source / "scenery-ground.json").exists():
+        record["uniform_scale"] = scale_xy
+        record["elevation_datum_removed_m"] = json.loads((source / "scenery-ground.json").read_text())["relative_datum_m"]
     (source / "reconstruction.json").write_text(json.dumps(record, indent=2) + "\n")
     provenance = {
         "circuit": spec["venue"],
@@ -1684,6 +1691,14 @@ out geom;
         provenance["elevation"]["controls"] = "elevation-corrections.json"
     if "width_profile" in recipe:
         provenance["width"] = recipe["width_profile"]
+    if spec["slug"] == "hockenheim" and (source / "scene-registration.json").exists():
+        registration = json.loads((source / "scene-registration.json").read_text())
+        provenance["route"]["uniform_scale"] = registration["effective_scene_uniform_scale"]
+        provenance["route"]["source_projection_uniform_scale"] = registration["source_projection_uniform_scale"]
+        provenance["route"]["scale_rule"] = "Exact retained native normalization chain, including the bounded Sachs midpoint reconstruction; see scene-registration.json. All mapped features use this same geographic frame."
+        provenance["shoulders"]["method"] = "Explicit retained shoulder-baseline controls preserve the actual variable Sachs wall contour. Descriptor-active banking keeps material selectors separate from corridor widths; bounded inside grass protection is open."
+        provenance["protection"] = "One exported wall list supplies native and visible protection. Sachs inside grass uses the source-registered opening; outside mapped stand protection remains. Pit entry stays closed."
+        provenance["not_claimed"] = "LGL source accuracy is plus/minus 0.15 m, distinct from the retained bank-fit reconstruction residual. Orthophoto picks, race-event walls and source-era registration remain estimates. Fresh packaged review is recorded separately; this generator does not grant visual approval."
     (source / "provenance.json").write_text(json.dumps(provenance, indent=2) + "\n")
     write_plan(spec, local, turns)
     log(f"{spec['slug']}: {chosen['name']} {target:.1f} m (mapped {measured:.1f}, published {published}, scale {scale:.4f}) relief {relief:.1f} m turns {len(turns)} buildings {len(footprints)}")

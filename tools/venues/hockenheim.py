@@ -11,6 +11,7 @@ from shapely.geometry import Point as ShapePoint
 from shapely.ops import polygonize, unary_union
 
 from venues.hockenheim_nord import nord_stand
+from venues.hockenheim_sachs import build_sachs_stand
 from venues.west_architecture import apron_band, mapped_building, mast, trees
 
 
@@ -34,7 +35,7 @@ def build_venue(scene: CircuitScene) -> None:
     scene.stand(4430, 4574, -1, rows=28, setback=18, roofed=True, seat_material='SeatRed')
     nord_stand(scene)
     scene.stand(3280, 3530, -1, rows=24, setback=22, seat_material='SeatRed')
-    scene.stand(3660, 3920, -1, rows=27, setback=27, roofed=True, seat_material='SeatRed')
+    build_sachs_stand(scene)
     scene.stand(3970, 4390, -1, rows=29, setback=18, roofed=True, seat_material='SeatRed')
     for start, end, side in [(500, 780, -1), (1020, 1880, -1), (1060, 1830, 1),
                               (2220, 2650, -1), (2320, 2640, 1), (3060, 3290, 1)]:
@@ -58,7 +59,7 @@ def build_venue(scene: CircuitScene) -> None:
 def stand_ground(scene: CircuitScene) -> None:
     owners = {34400180, 232009789, 34400164, 232009793, 34400189}
     clear_stands: list[Polygon] = []
-    for start, end, rows, setback in ((3280, 3530, 24, 22), (3660, 3920, 27, 27)):
+    for start, end, rows, setback in ((3280, 3530, 24, 22),):
         steps = math.ceil((end - start) / 8)
         for step in range(steps):
             a = scene.at(start + (end - start) * step / steps)
@@ -229,8 +230,49 @@ def boxengebaeude(scene: CircuitScene) -> None:
 def circuit_edges(scene: CircuitScene) -> None:
     for start, end, side in [(230, 330, 1), (800, 890, 1), (920, 1030, -1), (2040, 2180, 1), (2760, 2870, 1), (2920, 3040, -1), (3400, 3520, 1), (3730, 3870, -1), (4050, 4160, 1), (4220, 4350, 1)]:
         scene.kerb(start, end, side, material='RunoffNavy' if start in (230, 2040) else 'SeatBlue', alternate_material='White')
-    for start, end, side, width, material in [(190, 370, -1, 22, 'Runoff'), (760, 1080, -1, 23, 'Runoff'), (1980, 2240, -1, 25, 'Runoff'), (2710, 3090, -1, 22, 'Runoff'), (3360, 3580, -1, 24, 'Gravel'), (3670, 3930, 1, 24, 'Gravel'), (4000, 4390, -1, 20, 'Runoff')]:
+    for start, end, side, width, material in [(190, 370, -1, 22, 'Runoff'), (760, 1080, -1, 23, 'Runoff'), (1980, 2240, -1, 25, 'Runoff'), (2710, 3090, -1, 22, 'Runoff'), (3360, 3580, -1, 24, 'Gravel'), (4000, 4390, -1, 20, 'Runoff')]:
         scene.runoff(start, end, side, width, material)
 
+    sachs_aprons(scene)
     apron_band(scene, 190, 370, -1, 1.2, 21.8, 'RunoffNavy')
     apron_band(scene, 1980, 2240, -1, 1.2, 24.8, 'RunoffNavy')
+
+
+def sachs_aprons(scene: CircuitScene) -> None:
+    """Keep the actual variable outer corridor and open grass island at Sachs."""
+    maximum_depth = 0.
+    for station in range(3600, 4030, 2):
+        a, b = scene.at(station), scene.at(station + 2)
+        outer_a = a.half_width + .95 + a.left_shoulder - .18
+        outer_b = b.half_width + .95 + b.left_shoulder - .18
+        maximum_depth = max(maximum_depth, outer_a - a.half_width, outer_b - b.half_width)
+        for near, material in ((.15, 'Grass'), (1.8, 'Gravel')):
+            far_a = a.half_width + 1.8 if material == 'Grass' else outer_a
+            far_b = b.half_width + 1.8 if material == 'Grass' else outer_b
+            points = [a.point(a.half_width + near), b.point(b.half_width + near),
+                      b.point(far_b), a.point(far_a)]
+            shape = Polygon([point[:2] for point in points])
+            if shape.is_valid and not shape.is_empty:
+                shape = shape.difference(scene.road_mask)
+                scene.extra_corridors.append(shape)
+                scene.polygon_surface(shape, material, .001, a, paved=material == 'Gravel')
+    scene.surface_ranges.append({
+        'type': 'runoff', 'start_m': 3600., 'end_m': 4030., 'side': 1,
+        'requested_width_m': maximum_depth, 'material': 'Gravel',
+        'source_note': 'Variable physical extent comes from explicit shoulder-baseline controls. This maximum selects gravel material only; descriptor-active native stations skip legacy constant-width padding.',
+    })
+    for station in range(3730, 3890, 2):
+        a, b = scene.at(station), scene.at(station + 2)
+        points = [a.point(-a.half_width - 1.25), b.point(-b.half_width - 1.25),
+                  b.point(-b.half_width - 1.85), a.point(-a.half_width - 1.85)]
+        shape = Polygon([point[:2] for point in points]).difference(scene.road_mask)
+        if shape.is_valid and not shape.is_empty:
+            scene.extra_corridors.append(shape)
+            scene.polygon_surface(shape, 'RunoffGreen', .003, a, paved=True)
+    scene.surface_ranges.append({'type': 'runoff', 'start_m': 3730., 'end_m': 3890.,
+                                'side': -1, 'requested_width_m': 1.85, 'material': 'RunoffGreen'})
+    scene.landmarks.append({
+        'name': 'Sachs measured bank and variable outside gravel, open inside grass',
+        'source': 'sachs-corridor-source.json', 'native_scope_m': '3600–4030',
+        'dimensions_status': '2018DOP20/mapped grandstand front plus2022DGM crossfalls. Forecourt standoff1.75m±1m and bowl/exit wall tracing±2m are explicit original reconstruction estimates. Broad gravel is preserved; the innergreen strip is0.6m wide beyond the actualkerb, within the2.2m corridor. Inside opening is shared by physical and visible protection.',
+    })

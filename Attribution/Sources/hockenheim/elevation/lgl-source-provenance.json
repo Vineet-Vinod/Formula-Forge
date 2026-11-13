@@ -1,0 +1,32 @@
+{
+  "provider": "LGL Baden-Wuerttemberg",
+  "numeric_endpoint": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025",
+  "metadata": "https://metadaten.geoportal-bw.de/geonetwork/srv/api/records/e54f2396-1ce0-4f73-b47a-56d2b3c55c27/formatters/xml",
+  "horizontal_crs": "ETRS89 / UTM32N EPSG25832",
+  "vertical_crs": "DHHN2016 NHN",
+  "source_epoch": "Sachs tile324685464 updated2022-02-15, regional flightlot24-1_2022,8points/m2, RieglVQ-780II. Other track tiles not individually date-queried.",
+  "licence_url": "https://www.govdata.de/dl-de/by-2-0",
+  "attribution": "Datenquelle: LGL, www.lgl-bw.de, dl-de/by-2-0",
+  "precision": "Numeric DGM025 source storage retains decimals but provider vertical accuracy is\u00b1.15m. DGM1 WCS TIFF is integer metres, reserved for broad scenery, with\u00b1.5m export quantization.",
+  "raw_inputs": {
+    "alignment-pre-sachs.json": "16df8cfb40e56871d94ebf5f259180dc00100d9b897d39fe12a24fec5f27352c",
+    "chart-profile-superseded.json": "ca0260f158bb93771a2b157ea9413cfbc55900cdc83dd762f0726cf36894edfd",
+    "corrected-profile-query-journal.json.gz": "0d8205b54622440c96a2d415f4b5cf9714740cfc52196d188bfc842122c0967e",
+    "endpoints-numeric-query-journal.json.gz": "1da3d49467201c1db144cbd908f9648cf26b0e81b1eb4450a60d13f3096f4c23",
+    "epoch-point.json": "47ba05b8ec8ac71d0cc928e1038bf62be51ca4c46fd7776b2c3c5ac3bc309c74",
+    "epoch-request.json": "5b85b1ca1e788f07c64953ebe48970e56fdccce4f7e8eec9f444221d8188a556",
+    "extra-numeric-query-journal.json.gz": "ddee03897716c8a86377ed013ac11aa8d1d7f2c597f410e8617b857f495d2390",
+    "lgl-bank-fit.json": "f180195ea5fcb5ec00b2ba5f6f0cfbf89d540535c1352458443fc2bd66b2c6d0",
+    "lgl-corrected-road-source.json": "c1af1ac2e2c00fddd1877da118ae19e9f57d2c6d1e529a9e2917f183676d7522",
+    "lgl-scenery-grid.json.gz": "8ee53ecc018a853faaee861496a97800bd6ad56fdaf5b70a61c9f62c65dfda8c",
+    "numeric-query-journal.json.gz": "f296c7d2ed5d506d3a985ac178870513742d500c8164779c0722e65255c8e106",
+    "sachs-cross-sections-endpoints.json": "00cddb2c9ebfba754d146211ea02e0e60bcf586d129a1dce5f42e2e629998646",
+    "sachs-cross-sections-extra.json": "b4763551619267746cb69b65ef99fb6e3e077fc2cd8b5aa47b78d6a168983d1d",
+    "sachs-cross-sections-wide.json": "840f1dd35742d43237248f187382ee6c55b69641600e7fb125b7891e0beab096",
+    "sachs-cross-sections.json": "e23bc6d1cb38e40f62beed9d7d9dd836c521664c3c240baadb03b0ac3a0f00ab",
+    "scenery-crop-request.json": "ebafc88ed3b92ffc9d6559030f4885ae706b1e175e52ca7cadecb4d7eda6b6b0",
+    "scenery-dgm1-8m.tif": "873cded89afe2d5efcf4a87f9d9716ff91e6044b9e10acc41029e43b65694d22",
+    "scenery_dem.tif": "96487674b4ea6ab961c634eba6418795a532c5994e78fe070e43d504198e0d8e",
+    "wide-numeric-query-journal.json.gz": "6b5ef3f7ad28ec30da25d90d1d6f7480e9076f6c162eafb90e80551011387352"
+  }
+}

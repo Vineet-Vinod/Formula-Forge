@@ -327,6 +327,21 @@ paved outer bank up to the barrier, including entry and exit tapers. A correct
 racing ribbon can still leave the car falling through its runoff if off-road
 support blends back to a coarse terrain grid.
 
+Do not extend the road's bank angle across a wide gravel trap by default.
+Hockenheim's measured Sachs cross-sections flatten outside the kerb. Its optional
+bank-edge controls join the road slope to the measured outer slope over a stated
+distance. Use the same height function for rendering, tyre support and car roll.
+Build one coherent lateral mesh partition at both ends of each road segment.
+Merging nearly identical fractions from independently divided ends can create
+strips that the degenerate-triangle filter removes, leaving contact holes.
+Probe between the white line and the barrier as well as on the racing line.
+
+Check elevation service precision before fitting crossfall. A service may return
+integer metre heights even when queried at one metre intervals. Query spacing
+does not establish measurement precision. Hockenheim uses the retained numeric
+25 cm ground service for the road and bank fit; its integer metre scenery export
+only supplies broad surrounding ground. Keep these roles separate in provenance.
+
 Choose smoothing distances from source resolution and observed features. Record
 any anchors and uncertainty. Do not apply one circuit's smoothing length to all
 tracks or flatten real elevation merely to stop camera movement.
@@ -362,6 +377,14 @@ surfaces, raised ground covering the track, cracks and visible hanging edges.
 Carry deck corrections through shoulders and barrier bases, not just along the
 centreline. Keep interpolation diagonals consistent between rendered terrain and
 the simulation grid.
+
+Treat city foundations and public paving as a connected ground model. Roof-biased
+DSM values cannot establish a building's ground-floor height. Check mapped street
+connections, steps and property thresholds before fitting the surrounding paving.
+Label assumed stair risers and reconstructed grades with their uncertainty.
+At a bounded repair's outer edge, match the actual rendered terrain triangles.
+Inserting vertices from a continuous height function can still leave a crack
+against a coarse baked triangle whose plane differs from that function.
 
 Check the entire inside offset, including shoulders and protection. A valid
 asphalt edge does not guarantee a valid verge: Austria's T3 had a 12 m local
@@ -487,6 +510,19 @@ Use a focused regression for a demonstrated generator defect. For the Vegas
 sidewalk overhang, intersect exported pavement triangles with every escape
 footprint; a test of panel centres would repeat the original mistake. Keep this
 separate from the visual check that the exposed edge no longer floats.
+
+Trace dark patches through the packaged material and lighting before changing
+terrain. Spa's normal-strength experiment had no effect because the normal input
+was flat. Preserve that failed result, then test the demonstrated cause with a
+registered view. Keep a daylight direction consistent with the visible sky and
+check the whole lap after rotating it; brightening one bank can darken another.
+Do not use emissive grass or flatten supported ground to conceal poor lighting.
+
+Check landmark residency as well as authored geometry. A distant tower may exist
+in the source scene but be absent from the live view because its tile is outside
+the streaming range. Qualify the actual camera pose and tile bounds before
+duplicating the building or declaring a skyline omission. Performance changes
+must retain visible geometry and pass a moving-lap comparison at the same settings.
 
 ### Barriers, runoff and pit routes
 

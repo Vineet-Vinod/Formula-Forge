@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-13",
+  "scope": [
+    "baku",
+    "monaco"
+  ],
+  "status": "Source-only experiment pending full parent-by-parent byte proof, native import, fresh captures and uncapped route comparison. Remove the opt-in if quality or performance regresses.",
+  "method": "Partition each saved City parent independently into120m centroid cells. Preserve all100-byte encoded triangle rows, including normals, UVs and material indices. Street/Crowd meshes remain unchanged. Each child keeps the old parent CSV residency bounds, while Unreal derives tighter renderer bounds from its actual geometry.",
+  "proof": "One exact duplicate-preserving Counter per bounded400000-triangle parent, compared with independently reopened child mesh files. No approximate floating-point comparison or geometry simplification.",
+  "cleanup": "After every child asset is validated, remove only recorded replaced parent assets that have no Unreal asset referencers. References, source inputs and accepted circuits are preserved.",
+  "baseline_package_revision": "92dca960",
+  "baseline_baku_moving_frame_ms": {
+    "median": 29.80255,
+    "p95": 40.6498
+  },
+  "baseline_monaco_moving_frame_ms": {
+    "median": 27.45385,
+    "p95": 35.7416
+  },
+  "limitations": "Renderer primitive grouping and draw/streaming costs change. Byte-preserved geometry alone does not prove identical images or faster rendering; both require fresh runtime checks."
+}

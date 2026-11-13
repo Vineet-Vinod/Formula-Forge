@@ -246,15 +246,19 @@ FFTrackProjection FFSimulation::Project(Vec2 position) const {
     FFTrackProjection projection = Sample(station);
     projection.lane = dot(position - projection.position, Vec2{-projection.tangent.y, projection.tangent.x});
     const float quadratic = sampleTrackBankQuadratic(*track, station);
-    if (quadratic != 0.0f) {
+    const float fade = sampleTrackBankFadeMeters(*track, station);
+    if (quadratic != 0.0f || fade > 0.0f) {
         projection.bankSlope = trackLateralSlope(
-            projection.bankSlope, quadratic, projection.halfWidth, projection.lane / Units);
+            projection.bankSlope, quadratic, projection.halfWidth, projection.lane / Units, fade,
+            sampleTrackBankOuterSlope(*track, station, true), sampleTrackBankOuterSlope(*track, station, false));
         const float spacing = lapLength / plan.size();
         const auto lateralHeight = [&](float distance) {
             return trackLateralHeightMeters(
                 std::tan(sampleTrackBankDegrees(*track, distance) * kPi / 180.0f),
                 sampleTrackBankQuadratic(*track, distance),
-                sampleTrackWidthMeters(*track, distance) * .5f, projection.lane / Units);
+                sampleTrackWidthMeters(*track, distance) * .5f, projection.lane / Units,
+                sampleTrackBankFadeMeters(*track, distance),
+                sampleTrackBankOuterSlope(*track, distance, true), sampleTrackBankOuterSlope(*track, distance, false));
         };
         projection.grade += (lateralHeight(station + spacing) - lateralHeight(station - spacing)) / (2.0f * spacing);
     }
@@ -272,16 +276,19 @@ float FFSimulation::Ground(Vec2 position, bool protectMainRoad) const {
     const FFTrackProjection projection = Project(position);
     float road = projection.elevation + projection.bankSlope * projection.lane;
     const float quadratic = sampleTrackBankQuadratic(*track, projection.station);
+    const float fade = sampleTrackBankFadeMeters(*track, projection.station);
     const bool jeddahBank = circuit == TrackLayoutId::Jeddah && projection.bankSlope != 0.0f;
-    if (quadratic != 0.0f || jeddahBank ||
+    if (quadratic != 0.0f || fade > 0.0f || jeddahBank ||
         circuitBankedPaving(*track, projection.station, projection.lane >= 0.0f)) {
         const auto height = driveSurface.Height(position.x / Units, -position.y / Units);
         if (height) return *height * Units;
     }
-    if (quadratic != 0.0f) {
+    if (quadratic != 0.0f || fade > 0.0f) {
         const float slope = std::tan(sampleTrackBankDegrees(*track, projection.station) * kPi / 180.0f);
         road = projection.elevation + trackLateralHeightMeters(
-            slope, quadratic, projection.halfWidth, projection.lane / Units) * Units;
+            slope, quadratic, projection.halfWidth, projection.lane / Units, fade,
+            sampleTrackBankOuterSlope(*track, projection.station, true),
+            sampleTrackBankOuterSlope(*track, projection.station, false)) * Units;
     }
     const float blend = smoothstep(std::clamp((std::abs(projection.lane) / Units - projection.halfWidth) / 4.0f, 0.0f, 1.0f));
     float nativeGround = road;
@@ -298,12 +305,14 @@ float FFSimulation::Ground(Vec2 position, bool protectMainRoad) const {
         const float transition = (projection.halfWidth + 4.0f) * Units;
         if (std::abs(projection.lane) > transition) {
             const float falloff = smoothstep(std::clamp((std::abs(projection.lane) - transition) / (32.0f * Units), 0.0f, 1.0f));
-            if (quadratic == 0.0f) {
+            if (quadratic == 0.0f && fade == 0.0f) {
                 nativeGround = projection.elevation + lerp(std::copysign(transition, projection.lane) * projection.bankSlope, 0.0f, falloff);
             } else {
                 const float slope = std::tan(sampleTrackBankDegrees(*track, projection.station) * kPi / 180.0f);
                 const float edge = trackLateralHeightMeters(slope, quadratic, projection.halfWidth,
-                    std::copysign(transition / Units, projection.lane));
+                    std::copysign(transition / Units, projection.lane), fade,
+                    sampleTrackBankOuterSlope(*track, projection.station, true),
+                    sampleTrackBankOuterSlope(*track, projection.station, false));
                 nativeGround = projection.elevation + edge * Units * (1.0f - falloff);
             }
         }

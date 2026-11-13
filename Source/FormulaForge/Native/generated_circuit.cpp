@@ -9,6 +9,7 @@
 #include <fstream>
 #include <limits>
 #include <tuple>
+#include <utility>
 
 namespace {
 constexpr float Units = 17.0f;
@@ -50,7 +51,8 @@ float circuitShoulderMeters(const TrackCatalogEntry& track, float station, bool 
     }
     const float minimum = track.generated ? 0.05f : 1.2f;
     float width = std::clamp(sampleTrackShoulderMeters(track, station, left), minimum, 24.0f);
-    if (!track.authoredBarriers.empty() || track.id == TrackLayoutId::Japan) {
+    if (sampleTrackBankFadeMeters(track, station) == 0.0f &&
+        (!track.authoredBarriers.empty() || track.id == TrackLayoutId::Japan)) {
         for (const auto& zone : track.runoffProfile) {
             const bool inside = zone.startMeters <= zone.endMeters ?
                 station >= zone.startMeters && station <= zone.endMeters :
@@ -64,12 +66,14 @@ float circuitShoulderMeters(const TrackCatalogEntry& track, float station, bool 
 }
 
 float circuitSurfaceHeight(const CircuitSample& sample, float lane) noexcept {
-    if (sample.bankQuadratic == 0.0f) return sample.elevation + sample.bankSlope * lane;
+    if (sample.bankQuadratic == 0.0f && sample.bankFade == 0.0f) return sample.elevation + sample.bankSlope * lane;
     return sample.elevation + trackLateralHeightMeters(
-        sample.bankSlope, sample.bankQuadratic, sample.halfWidth, lane);
+        sample.bankSlope, sample.bankQuadratic, sample.halfWidth, lane,
+        sample.bankFade, sample.bankOuterPositive, sample.bankOuterNegative);
 }
 
 bool circuitBankedPaving(const TrackCatalogEntry& track, float station, bool positiveSide) noexcept {
+    if (sampleTrackBankFadeMeters(track, station) > 0.0f) return true;
     const bool progressive = std::any_of(track.bankProfile.begin(), track.bankProfile.end(),
         [](const TrackBankPoint& point) { return point.quadraticPerMeter != 0.0f; });
     const bool jeddahBank = track.id == TrackLayoutId::Jeddah && sampleTrackBankDegrees(track, station) != 0.0f;
@@ -104,6 +108,28 @@ float circuitPavedBankReach(const TrackCatalogEntry& track, const CircuitSample&
     return std::isfinite(nearest) ? nearest : nominal - .17f;
 }
 
+std::vector<float> circuitBankEdgeFractions(const CircuitSample& first, const CircuitSample& second,
+    float firstSpan, float secondSpan) {
+    std::vector<float> fractions{0.0f};
+    const float span = std::max(firstSpan, secondSpan);
+    if (span <= 0.0f) return {0.0f, 1.0f};
+    const float fade = std::min(std::max(first.bankFade, second.bankFade), span);
+    const int fineCount = fade > .005f ? static_cast<int>(std::ceil(fade / .1f)) : 0;
+    const float fineEnd = fineCount ? fade : 0.0f;
+    for (int index = 1; index <= fineCount; ++index) {
+        fractions.push_back((fineEnd * static_cast<float>(index) / fineCount) / span);
+    }
+    const float remaining = span - fineEnd;
+    if (remaining > 0.0f) {
+        const int coarseCount = std::max(1, static_cast<int>(std::ceil(remaining / 1.5f)));
+        for (int index = 1; index < coarseCount; ++index) {
+            fractions.push_back((fineEnd + remaining * static_cast<float>(index) / coarseCount) / span);
+        }
+        fractions.push_back(1.0f);
+    }
+    return fractions;
+}
+
 std::vector<CircuitSample> sampleCircuit(const TrackCatalogEntry& track, int sampleCount) {
     if (sampleCount == 0) sampleCount = track.id == TrackLayoutId::LasVegas ? 12288 : track.surfaceSamples;
     const int tangentSpan = sampleCount >= 8192 ? 1 : std::max(1, sampleCount / 512);
@@ -121,6 +147,9 @@ std::vector<CircuitSample> sampleCircuit(const TrackCatalogEntry& track, int sam
             sampleTrackWidthMeters(track, station) * 0.5f,
             std::tan(sampleTrackBankDegrees(track, station) * kPi / 180.0f),
             sampleTrackBankQuadratic(track, station),
+            sampleTrackBankFadeMeters(track, station),
+            sampleTrackBankOuterSlope(track, station, true),
+            sampleTrackBankOuterSlope(track, station, false),
         };
     }
     return samples;
@@ -317,9 +346,10 @@ bool writeGeneratedContact(const TrackCatalogEntry& track, const std::vector<Cir
         const CircuitSample& first = samples[index];
         const CircuitSample& second = samples[(index + 1) % count];
         const bool progressive = first.bankQuadratic != 0.0f || second.bankQuadratic != 0.0f;
+        const bool bankEdges = first.bankFade > 0.0f || second.bankFade > 0.0f;
         const bool jeddahBank = track.id == TrackLayoutId::Jeddah &&
             (first.bankSlope != 0.0f || second.bankSlope != 0.0f);
-        const float extra = progressive || jeddahBank ? 1.25f : 0.35f;
+        const float extra = bankEdges ? 0.0f : progressive || jeddahBank ? 1.25f : 0.35f;
         const int strips = progressive ? 8 : 1;
         for (int strip = 0; strip < strips; ++strip) {
             const float high = 1.0f - 2.0f * static_cast<float>(strip) / strips;
@@ -340,6 +370,19 @@ bool writeGeneratedContact(const TrackCatalogEntry& track, const std::vector<Cir
             const float endA = circuitPavedBankReach(track, first, positiveSide);
             const float endB = circuitPavedBankReach(track, second, positiveSide);
             if (endA <= startA || endB <= startB) continue;
+            if (bankEdges) {
+                const auto fractions = circuitBankEdgeFractions(first, second, endA - startA, endB - startB);
+                for (std::size_t strip = 0; strip + 1 < fractions.size(); ++strip) {
+                    const float lo = fractions[strip], hi = fractions[strip + 1];
+                    const auto a = sourceEdge(first, sign * (startA + (endA - startA) * lo));
+                    const auto b = sourceEdge(second, sign * (startB + (endB - startB) * lo));
+                    const auto c = sourceEdge(second, sign * (startB + (endB - startB) * hi));
+                    const auto d = sourceEdge(first, sign * (startA + (endA - startA) * hi));
+                    pushDrive(a, b, c);
+                    pushDrive(a, c, d);
+                }
+                continue;
+            }
             const int apronStrips = std::max(1, static_cast<int>(std::ceil(std::max(endA - startA, endB - startB) / 1.5f)));
             for (int strip = 0; strip < apronStrips; ++strip) {
                 const float lo = static_cast<float>(strip) / apronStrips;

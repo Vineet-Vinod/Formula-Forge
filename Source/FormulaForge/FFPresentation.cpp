@@ -111,6 +111,8 @@ void AFFPresentation::ConfigureDaylight() {
     float skyYaw = 0.0f;
     if (circuit.Equals(TEXT("interlagos"), ESearchCase::IgnoreCase)) {
         skyYaw = 124.0f;
+    } else if (circuit.Equals(TEXT("spa"), ESearchCase::IgnoreCase)) {
+        skyYaw = 120.0f;
     } else if (monza) {
         skyYaw = 180.0f;
     }

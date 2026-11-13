@@ -1146,3 +1146,287 @@ def test_zero_quadratic_keeps_the_existing_road_mesh(scene: CircuitScene) -> Non
         digest.update(bytes(tile.triangles))
     # Captured from the same fixture using the pre-extension 6a970d40 authoring code.
     assert digest.hexdigest() == 'e5edd8fac518ca0d8f716e686089c1313d24035588729f0cae382b0fc4c34f44'
+
+
+def test_sachs_stand_keeps_mapped_rear_canopy_and_measured_foundations(
+    scene: CircuitScene, monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    import gzip
+    from collections import Counter
+
+    from circuit_dataclasses import Building, OsmData, Provenance
+    from pydantic import TypeAdapter
+    from shapely.geometry import LineString
+    from venues.hockenheim_dataclasses import SachsStandSource
+    from venues.hockenheim_sachs import SachsFoundation, build_sachs_stand
+
+    retained = Path(__file__).resolve().parents[1] / 'Attribution/Sources/hockenheim'
+    scene.provenance = TypeAdapter(Provenance).validate_json((retained / 'provenance.json').read_bytes())
+    (scene.sources / 'sachs-stand-correction.json').write_bytes((retained / 'sachs-stand-correction.json').read_bytes())
+    (scene.sources / 'scenery-ground.json').write_text(json.dumps({
+        'grid_file': 'unused', 'grid_sha256': '0' * 64, 'relative_datum_m': 100.0,
+    }))
+    osm = TypeAdapter(OsmData).validate_json(gzip.decompress((retained / 'buildings.osm.json.gz').read_bytes()))
+    for element in osm.elements:
+        if element.id in (232009782, 34400102):
+            ring = [scene.geo(point.lat, point.lon) for point in element.geometry[:-1]]
+            scene.buildings.append(Building(element.id, 'Sachs source fixture', 'grandstand', 15., ring, element.tags))
+    stand = Polygon(scene.footprint(232009782).ring)
+    roof = Polygon(scene.footprint(34400102).ring)
+    source = TypeAdapter(SachsStandSource).validate_json((scene.sources / 'sachs-stand-correction.json').read_bytes())
+    front = LineString(scene.footprint(232009782).ring[3:18])
+    foundation = SachsFoundation(scene, source, front)
+    digest = hashlib.sha256()
+    roof_edges: Counter[tuple[tuple[float, ...], tuple[float, ...]]] = Counter()
+    roof_faces: list[Polygon] = []
+    rows: set[int] = set()
+
+    def capture(
+        kind: str, material: str, a: tuple[float, float, float],
+        b: tuple[float, float, float], c: tuple[float, float, float],
+        uv: tuple[tuple[float, float], ...] = ((0, 0), (1, 0), (1, 1)),
+        normals: tuple[tuple[float, float, float], ...] | None = None,
+    ) -> None:
+        digest.update(kind.encode() + material.encode() + struct.pack('<9d', *a, *b, *c))
+        triangle = Polygon([p[:2] for p in (a, b, c)])
+        if material != 'Crowd':
+            assert triangle.difference(stand.buffer(1e-6)).area < 1e-8
+        if kind == 'Building_SachsTreadRoof':
+            for x, y, z in (a, b, c):
+                row = (z - foundation.front_height(x, y) - source.first_floor_m) / source.row_rise_m
+                assert row == pytest.approx(round(row), abs=1e-8)
+                rows.add(round(row))
+        if kind.startswith('Building_SachsCanopy'):
+            assert triangle.difference(roof.buffer(1e-6)).area < 1e-8
+            vertices = [tuple(round(value, 6) for value in point) for point in (a, b, c)]
+            for p, q in zip(vertices, vertices[1:] + vertices[:1]):
+                roof_edges[tuple(sorted((p, q)))] += 1
+        if kind == 'Building_SachsCanopyRoof':
+            roof_faces.append(triangle)
+
+    monkeypatch.setattr(scene, 'triangle', capture)
+    monkeypatch.setattr(scene, 'raw_ground', lambda x, y: 999 + math.sin(x))
+    monkeypatch.setattr(scene, 'ground', lambda x, y: 999 + math.cos(y))
+    build_sachs_stand(scene)
+    expected = digest.hexdigest()
+    assert rows == set(range(source.row_count))
+    assert roof.area / stand.area == pytest.approx(.3277287208964271)
+    assert unary_union(roof_faces).symmetric_difference(roof).area < 1e-7
+    assert set(roof_edges.values()) == {2}
+    assert all(not shape.has_z for shape in scene.terrain_cutouts)
+    for anchor in source.ground_anchors:
+        x, y = scene.geo(anchor.latitude, anchor.longitude)
+        assert foundation.ground(x, y) == pytest.approx(anchor.height_nhn_m - 100., abs=1e-7)
+    digest = hashlib.sha256()
+    monkeypatch.setattr(scene, 'raw_ground', lambda x, y: -999.)
+    monkeypatch.setattr(scene, 'ground', lambda x, y: -999.)
+    build_sachs_stand(scene)
+    assert digest.hexdigest() == expected
+
+
+def test_measured_bank_edge_surface_is_tessellated_across_the_narrow_fade(scene: CircuitScene) -> None:
+    from circuit_dataclasses import RoadStation
+
+    road = RoadStation(0, 0, 0, 3, 1, 0, 4.5, .11,
+                       bank_fade=.25, bank_outer_positive=.015, bank_outer_negative=.03)
+
+    def vertex(x: float, y: float) -> tuple[float, float, float]:
+        return x, y, road.height(y)
+
+    triangles = scene._bank_surface_triangles((vertex(0, 4.5), vertex(1, 24), vertex(0, 24)), vertex)
+    assert len(triangles) > 2
+    maximum_error = 0.
+    for a, b, c in triangles:
+        for weights in ((.25, .25, .5), (.5, .25, .25), (.25, .5, .25), (1 / 3, 1 / 3, 1 / 3)):
+            point = tuple(sum(w * p[i] for w, p in zip(weights, (a, b, c), strict=True)) for i in range(3))
+            maximum_error = max(maximum_error, abs(point[2] - road.height(point[1])))
+    assert maximum_error < .003
+    linear = RoadStation(0, 0, 0, 3, 1, 0, 4.5, .11)
+    assert len(scene._bank_surface_triangles(
+        ((0, 4.5, linear.height(4.5)), (1, 24, linear.height(24)), (0, 24, linear.height(24))),
+        lambda x, y: (x, y, linear.height(y)),
+    )) == 1
+
+
+def test_rascasse_corner_occupies_ground_body_and_keeps_road_clear(
+    scene: CircuitScene, monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    import gzip
+    from collections import Counter
+
+    from circuit_dataclasses import Building, OsmData, Provenance
+    from pydantic import TypeAdapter
+    from shapely.geometry import LineString
+    from shapely.strtree import STRtree
+    from venues.monaco_dataclasses import PropertyEnvelope
+    from venues.monaco_rascasse_frontage import rascasse_frontage
+
+    retained = Path(__file__).resolve().parents[1] / 'Attribution/Sources/monaco'
+    scene.provenance = TypeAdapter(Provenance).validate_json((retained / 'provenance.json').read_bytes())
+    architecture = scene.sources / 'architecture'
+    architecture.mkdir()
+    for filename in ('rascasse-frontage-correction.json', 'rascasse-frontage-ground-grid.json',
+                     'property-envelopes.json'):
+        (architecture / filename).write_bytes((retained / 'architecture' / filename).read_bytes())
+    (scene.sources / 'scenery-ground.json').write_bytes((retained / 'scenery-ground.json').read_bytes())
+    osm = TypeAdapter(OsmData).validate_json(gzip.decompress((retained / 'buildings.osm.json.gz').read_bytes()))
+    element = next(element for element in osm.elements if element.id == 161885377)
+    body_ring = [scene.geo(point.lat, point.lon) for point in element.geometry[:-1]]
+    scene.buildings.append(Building(element.id, 'Actual quay ground body', 'yes', 25., body_ring, element.tags))
+    scene.road = [replace(point, x=point.x + 180, y=point.y - 200, z=.3) for point in scene.road]
+    scene.segments = STRtree([LineString([(a.x, a.y), (b.x, b.y)])
+                             for a, b in zip(scene.road, scene.road[1:] + scene.road[:1])])
+    scene.road_surfaces()
+    records = TypeAdapter(list[PropertyEnvelope]).validate_json((architecture / 'property-envelopes.json').read_bytes())
+    record = next(record for record in records if record.style == 'ruscino')
+    roof = Polygon([scene.geo(lat, lon) for lon, lat in record.outer])
+    body = Polygon(body_ring)
+    digest = hashlib.sha256()
+    top_faces: list[Polygon] = []
+    edges: Counter[tuple[tuple[float, ...], tuple[float, ...]]] = Counter()
+
+    def capture(
+        kind: str, material: str, a: tuple[float, float, float],
+        b: tuple[float, float, float], c: tuple[float, float, float],
+        uv: tuple[tuple[float, float], ...] = ((0, 0), (1, 0), (1, 1)),
+        normals: tuple[tuple[float, float, float], ...] | None = None,
+    ) -> None:
+        if not kind.startswith('Building_QuaiCorner'):
+            return
+        digest.update(kind.encode() + material.encode() + struct.pack('<9d', *a, *b, *c))
+        triangle = Polygon([p[:2] for p in (a, b, c)])
+        assert triangle.difference(body.buffer(.11)).area < 1e-8
+        assert triangle.intersection(scene.road_mask).area < 1e-8
+        if kind.startswith('Building_QuaiCornerPodium'):
+            vertices = [tuple(round(value, 6) for value in point) for point in (a, b, c)]
+            for p, q in zip(vertices, vertices[1:] + vertices[:1]):
+                edges[tuple(sorted((p, q)))] += 1
+        if kind == 'Building_QuaiCornerPodiumRoof':
+            top_faces.append(triangle)
+
+    monkeypatch.setattr(scene, 'triangle', capture)
+    rascasse_frontage(scene)
+    expected = digest.hexdigest()
+    podium = unary_union(top_faces)
+    assert podium.area == pytest.approx(12.79677009146649, abs=1e-6)
+    assert podium.intersection(roof).area < 1e-7
+    assert set(edges.values()) == {2}
+    assert all(not patch.has_z for patch in scene.terrain_cutouts)
+    assert all(patch.intersection(scene.road_mask).area < 1e-8 for patch in scene.terrain_cutouts)
+    digest = hashlib.sha256()
+    monkeypatch.setattr(scene, 'ground', lambda x, y: 40.)
+    rascasse_frontage(scene)
+    assert digest.hexdigest() == expected
+
+
+def test_flame_towers_keep_actual_bases_primary_heights_and_closed_crowns(
+    scene: CircuitScene, monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    import gzip
+    from collections import Counter
+
+    from circuit_dataclasses import Building, OsmData, Provenance
+    from pydantic import TypeAdapter
+    from shapely.geometry import Point as ShapePoint
+    from venues.baku_flames import flame_towers
+    from venues.baku_skyline_dataclasses import FlameTowerRecipe
+
+    retained = Path(__file__).resolve().parents[1] / 'Attribution/Sources/baku'
+    scene.provenance = TypeAdapter(Provenance).validate_json((retained / 'provenance.json').read_bytes())
+    for filename in ('flame-towers.json', 'flame-towers.osm.json.gz'):
+        (scene.sources / filename).write_bytes((retained / filename).read_bytes())
+    recipe = TypeAdapter(FlameTowerRecipe).validate_json((scene.sources / 'flame-towers.json').read_bytes())
+    osm = TypeAdapter(OsmData).validate_json(gzip.decompress((scene.sources / recipe.source_file).read_bytes()))
+    plans = {element.id: Polygon([scene.geo(p.lat, p.lon) for p in element.geometry])
+             for element in osm.elements}
+    primary_heights = {253081850: 181.8, 253082095: 164.6, 253081914: 160.8}
+    records = {record.osm_id: record for record in recipe.towers}
+    shells: dict[int, Counter[tuple[tuple[float, ...], tuple[float, ...]]]] = {osm_id: Counter() for osm_id in records}
+    z_bounds = {osm_id: [math.inf, -math.inf] for osm_id in records}
+    bases: dict[int, list[Polygon]] = {osm_id: [] for osm_id in records}
+    source_building = Building(1, 'Preserved source property', 'yes', 4., [(0, 0), (1, 0), (1, 1), (0, 1)], {})
+    scene.buildings.append(source_building)
+    scene.road_surfaces()
+
+    def capture(
+        kind: str, material: str, a: tuple[float, float, float],
+        b: tuple[float, float, float], c: tuple[float, float, float],
+        uv: tuple[tuple[float, float], ...] = ((0, 0), (1, 0), (1, 1)),
+        normals: tuple[tuple[float, float, float], ...] | None = None,
+    ) -> None:
+        osm_id = next(osm_id for osm_id in records if kind.startswith(f'Building_FlameTower{osm_id}'))
+        if kind != f'Building_FlameTower{osm_id}':
+            return
+        vertices = [tuple(round(value, 6) for value in point) for point in (a, b, c)]
+        for p, q in zip(vertices, vertices[1:] + vertices[:1]):
+            shells[osm_id][tuple(sorted((p, q)))] += 1
+        for x, y, z in (a, b, c):
+            assert plans[osm_id].buffer(.25).covers(ShapePoint(x, y))
+            z_bounds[osm_id][0] = min(z_bounds[osm_id][0], z)
+            z_bounds[osm_id][1] = max(z_bounds[osm_id][1], z)
+        if material == 'Concrete':
+            bases[osm_id].append(Polygon([point[:2] for point in (a, b, c)]))
+        if normals is not None:
+            assert all(sum(value * value for value in normal) == pytest.approx(1., abs=1e-10) for normal in normals)
+
+    monkeypatch.setattr(scene, 'triangle', capture)
+    monkeypatch.setattr(scene, 'ground', lambda x, y: 999.)
+    monkeypatch.setattr(scene, 'raw_ground', lambda x, y: 999.)
+    flame_towers(scene)
+    assert scene.buildings[0] is source_building
+    assert len(scene.buildings) == 4
+    assert all(not polygon.has_z for polygon in scene.terrain_cutouts)
+    for osm_id, record in records.items():
+        assert z_bounds[osm_id][0] == pytest.approx(record.base_relative_m)
+        assert z_bounds[osm_id][1] - z_bounds[osm_id][0] == pytest.approx(primary_heights[osm_id])
+        assert set(shells[osm_id].values()) == {2}
+        assert unary_union(bases[osm_id]).symmetric_difference(plans[osm_id]).area < 1e-7
+
+
+def test_jeddah_named_residency_keeps_geometry_and_other_tiles(
+    scene: CircuitScene,
+) -> None:
+    import gzip
+
+    from circuit_dataclasses import Building, OsmData, Provenance
+    from pydantic import TypeAdapter
+    from venues.jeddah_skyline import skyline_residency
+
+    retained = Path(__file__).resolve().parents[1] / 'Attribution/Sources/jeddah'
+    scene.provenance = TypeAdapter(Provenance).validate_json((retained / 'provenance.json').read_bytes())
+    (scene.sources / 'skyline-residency.json').write_bytes((retained / 'skyline-residency.json').read_bytes())
+    osm = TypeAdapter(OsmData).validate_json(gzip.decompress((retained / 'buildings.osm.json.gz').read_bytes()))
+    element = next(element for element in osm.elements if element.id == 1244131504)
+    ring = [scene.geo(point.lat, point.lon) for point in element.geometry[:-1]]
+    scene.buildings.append(Building(element.id, 'Actual Diamond site', 'yes', 300., ring, element.tags))
+    center = Polygon(ring).centroid
+    scene.box('Building_DiamondConstructionCore', 'Concrete', (center.x, center.y, 100.), 13., 12., 200.)
+    scene.box('Building_Unrelated', 'White', (1000., 1000., 10.), 10., 10., 20.)
+    source_bounds = json.loads((scene.sources / 'skyline-residency.json').read_text())['actual_baseline_bounds_ue_cm']
+    scene.tiles['Building_City_m1_04'].minimum = source_bounds[:3]
+    scene.tiles['Building_City_m1_04'].maximum = source_bounds[3:]
+    before = {name: (bytes(tile.triangles), tuple(tile.materials), tuple(tile.minimum + tile.maximum))
+              for name, tile in scene.tiles.items()}
+    skyline_residency(scene)
+    changed = 'Building_City_m1_04'
+    for name, tile in scene.tiles.items():
+        triangles, materials, bounds = before[name]
+        assert bytes(tile.triangles) == triangles
+        assert tuple(tile.materials) == materials
+        after = tile.minimum + tile.maximum
+        expected = list(bounds)
+        if name == changed:
+            expected[3] += 60000.
+        assert after == expected
+    actor = (64900., -17600., 0.)
+
+    def distance(bounds: tuple[float, ...] | list[float]) -> float:
+        return math.sqrt(sum(max(lo - p, 0., p - hi) ** 2
+                             for p, lo, hi in zip(actor, bounds[:3], bounds[3:]))) / 100
+
+    assert distance(before[changed][2]) > 2050.
+    tile = scene.tiles[changed]
+    assert distance(tile.minimum + tile.maximum) < 1800.
+    first_bounds = tile.minimum + tile.maximum
+    skyline_residency(scene)
+    assert tile.minimum + tile.maximum == first_bounds

@@ -90,6 +90,62 @@ bool CheckProgressiveBank() {
     return true;
 }
 
+bool CheckBankEdges() {
+    TrackCatalogEntry fixture;
+    fixture.targetLengthMeters = 200;
+    fixture.shoulderMeters = 15;
+    const std::array<TrackBankPoint, 2> bank{{{0, 6, 0, .25f, .015f, .03f}, {200, 6, 0, .25f, .015f, .03f}}};
+    const std::array<TrackBarrier, 2> walls{{{-1, -17.9999f, 51, -18.0051f, 0, 10, .15f}, {-1, 14, 51, 14, 0, 10, .15f}}};
+    fixture.bankProfile = bank;
+    fixture.authoredBarriers = walls;
+    const float slope = std::tan(6.0f * kPi / 180.0f);
+    std::vector<CircuitSample> samples{
+        {{0, 0}, {1, 0}, 0, 3, 4.5f, slope},
+        {{850, 0}, {1, 0}, 50, 3, 4.5f, slope},
+        {{850, -850}, {0, -1}, 100, 3, 4.5f, slope},
+        {{0, -850}, {-1, 0}, 150, 3, 4.5f, slope},
+    };
+    const std::string directory = "build/tmp/bank-edge-fixture";
+    std::filesystem::create_directories(directory);
+    if (!writeGeneratedContact(fixture, samples, directory)) return false;
+    const auto limits = Read(directory + "/track_limits.bin");
+    for (auto& point : samples) {
+        point.bankFade = .25f;
+        point.bankOuterPositive = .015f;
+        point.bankOuterNegative = .03f;
+    }
+    if (!writeGeneratedContact(fixture, samples, directory) || limits != Read(directory + "/track_limits.bin")) return false;
+    FFDriveSurface surface;
+    if (!surface.Load(Read(directory + "/drive_surface.bin"))) return false;
+    const auto& sample = samples.front();
+    const auto fractions = circuitBankEdgeFractions(samples[0], samples[1], 20.934f, 20.939f);
+    if (fractions.front() != 0 || fractions.back() != 1) return false;
+    for (std::size_t index = 1; index < fractions.size(); ++index) {
+        if ((fractions[index] - fractions[index - 1]) * 20.934f < .005f) return false;
+    }
+    for (float lane = -13.75f; lane < 17.8f; lane += .025f) {
+        const auto height = surface.Height(25.0f, -lane);
+        if (!height || std::abs(*height - circuitSurfaceHeight(sample, lane)) > .002f) return false;
+        const float derivative = (circuitSurfaceHeight(sample, lane + .001f) -
+            circuitSurfaceHeight(sample, lane - .001f)) / .002f;
+        if (std::abs(derivative - trackLateralSlope(slope, 0, 4.5f, lane, .25f, .015f, .03f)) > .0005f) return false;
+    }
+    if (surface.Height(25, -18) || surface.Height(25, 14)) return false;
+    if (std::abs(circuitSurfaceHeight(sample, 24) - (3 + slope * 4.5f +
+        (slope + .015f) * .125f + .015f * (24 - 4.75f))) > .00001f) return false;
+    const std::array<TrackShoulderPoint, 3> shoulders{{{0, 5, 1.25f}, {100, 24, 1.25f}, {200, 5, 1.25f}}};
+    const std::array<TrackRunoffZone, 1> gravel{{{0, 200, 1, TrackRunoffSurface::Gravel, 40}}};
+    fixture.shoulders = shoulders;
+    fixture.runoffProfile = gravel;
+    if (circuitShoulderMeters(fixture, 0, true) != 5 ||
+        circuitShoulderMeters(fixture, 100, true) != 24 ||
+        circuitShoulderMeters(fixture, 0, false) != 1.25f) return false;
+    const std::array<TrackBankPoint, 2> legacy{{{0, 6}, {200, 6}}};
+    fixture.bankProfile = legacy;
+    if (std::abs(circuitShoulderMeters(fixture, 0, true) - 39.05f) > .00001f) return false;
+    return true;
+}
+
 bool Check(TrackLayoutId layout, const std::string& slug, float length) {
     FFSimulation simulation(layout);
     const auto* catalog = findTrackCatalogEntry(layout);
@@ -204,6 +260,8 @@ bool CheckGenerated(const TrackCatalogEntry& track) {
             {-314.1103f, -9.9649f}, {-290.8085f, -40.2754f}
         }};
         std::array<bool, 4> foundOpeningEnds{};
+        const std::array<float, 2> hockenheimOpeningStations{{3660, 3990}};
+        std::array<bool, 2> foundHockenheimEnds{};
         std::map<std::pair<float,float>,int> endpoints;
         for (const auto& wall : track.authoredBarriers) {
             ++endpoints[{wall.ax,wall.ay}];
@@ -211,6 +269,18 @@ bool CheckGenerated(const TrackCatalogEntry& track) {
         }
         for (const auto& [point,count] : endpoints) {
             if (count%2 != 0) {
+                if (track.id == TrackLayoutId::Hockenheim && count == 1) {
+                    const auto projection = simulation.Project({point.first * 17, -point.second * 17});
+                    const auto opening = std::find_if(hockenheimOpeningStations.begin(), hockenheimOpeningStations.end(),
+                        [&](float expected) { return std::abs(projection.station - expected) < .05f; });
+                    if (opening != hockenheimOpeningStations.end() && projection.lane < 0 &&
+                        std::abs(projection.lane) / 17 - projection.halfWidth <= 40.01f) {
+                        const auto index = opening - hockenheimOpeningStations.begin();
+                        if (foundHockenheimEnds[index]) return false;
+                        foundHockenheimEnds[index] = true;
+                        continue;
+                    }
+                }
                 if (track.id == TrackLayoutId::Turkey && count == 1) {
                     const auto opening = std::find_if(turkeyOpeningEnds.begin(), turkeyOpeningEnds.end(),
                         [&](const auto& expected) {
@@ -224,6 +294,11 @@ bool CheckGenerated(const TrackCatalogEntry& track) {
                 std::cerr << track.slug << " open protection at " << point.first << ',' << point.second << '\n';
                 return false;
             }
+        }
+        if (track.id == TrackLayoutId::Hockenheim &&
+            !std::all_of(foundHockenheimEnds.begin(), foundHockenheimEnds.end(), [](bool found) { return found; })) {
+            std::cerr << "hockenheim source-registered Sachs opening ends missing\n";
+            return false;
         }
         if (track.id == TrackLayoutId::Turkey &&
             !std::all_of(foundOpeningEnds.begin(), foundOpeningEnds.end(), [](bool found) { return found; })) {
@@ -265,10 +340,12 @@ bool CheckGenerated(const TrackCatalogEntry& track) {
                 }
             }
         }
-        if (sampleTrackBankQuadratic(track, station) != 0.0f ||
+        if (sampleTrackBankQuadratic(track, station) != 0.0f || sampleTrackBankFadeMeters(track, station) > 0.0f ||
             (track.id == TrackLayoutId::Jeddah && road.bankSlope != 0.0f)) {
             const CircuitSample sample{road.position, road.tangent, station, road.elevation / 17.0f,
-                road.halfWidth, road.bankSlope, sampleTrackBankQuadratic(track, station)};
+                road.halfWidth, road.bankSlope, sampleTrackBankQuadratic(track, station),
+                sampleTrackBankFadeMeters(track, station), sampleTrackBankOuterSlope(track, station, true),
+                sampleTrackBankOuterSlope(track, station, false)};
             for (float side : {-1.0f, 1.0f}) {
                 for (float beyond : {.5f, .75f, 1.0f, 1.2f}) {
                     const float lane = side * (road.halfWidth + beyond);
@@ -277,7 +354,9 @@ bool CheckGenerated(const TrackCatalogEntry& track) {
                     const float expected = circuitSurfaceHeight(sample, lane);
                     if (!surface || std::abs(*surface - expected) > .02f ||
                         std::abs(simulation.Ground(position) / 17.0f - expected) > .02f) {
-                        std::cerr << track.slug << " banked kerb support disagreement at " << station << ", lane " << lane << '\n';
+                        std::cerr << track.slug << " banked kerb support disagreement at " << station << ", lane " << lane
+                                  << ": expected " << expected << ", contact " << (surface ? *surface : -9999.0f)
+                                  << ", ground " << simulation.Ground(position) / 17.0f << '\n';
                         return false;
                     }
                 }
@@ -286,7 +365,9 @@ bool CheckGenerated(const TrackCatalogEntry& track) {
         for (const bool positiveSide : {true, false}) {
             if (!circuitBankedPaving(track, station, positiveSide)) continue;
             const CircuitSample sample{road.position, road.tangent, station, road.elevation / 17.0f,
-                road.halfWidth, road.bankSlope, sampleTrackBankQuadratic(track, station)};
+                road.halfWidth, road.bankSlope, sampleTrackBankQuadratic(track, station),
+                sampleTrackBankFadeMeters(track, station), sampleTrackBankOuterSlope(track, station, true),
+                sampleTrackBankOuterSlope(track, station, false)};
             const float inner = road.halfWidth + .35f;
             const float outer = circuitPavedBankReach(track, sample, positiveSide);
             for (const float fraction : {.1f, .5f, .9f, .99f}) {
@@ -296,16 +377,18 @@ bool CheckGenerated(const TrackCatalogEntry& track) {
                 const float expected = circuitSurfaceHeight(sample, lane);
                 if (!surface || std::abs(*surface - expected) > .02f ||
                     std::abs(simulation.Ground(position) / 17.0f - expected) > .02f) {
-                    std::cerr << track.slug << " paved-bank support missing at " << station << ", lane " << lane << '\n';
+                    std::cerr << track.slug << " paved-bank support missing at " << station << ", lane " << lane
+                              << ": expected " << expected << ", contact " << (surface ? *surface : -9999.0f)
+                              << ", ground " << simulation.Ground(position) / 17.0f << '\n';
                     return false;
                 }
             }
         }
         for (const float lane : {-2.5f, 0.0f, 2.5f}) {
             const Vec2 position = road.position + normal * (lane * 17.0f);
-            if (track.id == TrackLayoutId::Turkey) {
+            if (track.id == TrackLayoutId::Turkey || track.id == TrackLayoutId::Hockenheim) {
                 if (!simulation.trackLimits.Touches(position / 17.0f, {1.0f, 0.0f}, 0.0f)) {
-                    std::cerr << "turkey road leaves white-line envelope at " << station << " lane " << lane << '\n';
+                    std::cerr << track.slug << " road leaves white-line envelope at " << station << " lane " << lane << '\n';
                     return false;
                 }
             } else if (!track.authoredBarriers.empty()) {
@@ -371,6 +454,10 @@ bool CheckGenerated(const TrackCatalogEntry& track) {
 }
 
 int main() {
+    if (!CheckBankEdges()) {
+        std::cerr << "bank-edge height, derivative, contact or white-line mismatch\n";
+        return 1;
+    }
     if (!CheckProgressiveBank()) {
         std::cerr << "progressive-bank height, derivative or contact mismatch\n";
         return 1;

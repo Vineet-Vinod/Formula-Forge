@@ -1,0 +1,30 @@
+{
+  "provider": "LGL Baden-Wuerttemberg, official INSPIRE DGM1 WCS",
+  "source_url": "https://owsproxy.lgl-bw.de/owsproxy/wcs/WCS_INSP_BW_Hoehe_Coverage_DGM1",
+  "request": {
+    "SERVICE": "WCS",
+    "VERSION": "1.0.0",
+    "REQUEST": "GetCoverage",
+    "COVERAGE": "EL.ElevationGridCoverage",
+    "CRS": "EPSG:25832",
+    "BBOX": "467672,5463072,470464,5465320",
+    "WIDTH": 349,
+    "HEIGHT": 281,
+    "FORMAT": "GeoTIFF"
+  },
+  "bytes": 196712,
+  "sha256": "873cded89afe2d5efcf4a87f9d9716ff91e6044b9e10acc41029e43b65694d22",
+  "native_source_resolution_m": 1,
+  "requested_grid_resolution_m": 8,
+  "returned_dtype": "uint16 integer metres",
+  "source_vertical_accuracy_m": 0.15,
+  "additional_quantization_bound_m": 0.5,
+  "valid_fraction": 1,
+  "returned_height_min_max_nhn_m": [
+    95,
+    116
+  ],
+  "status": "Canonical bounded scenery input. Integer-metre export is not used for road/camber; high-precision DGM025 numeric observations are retained separately.",
+  "licence": "https://www.govdata.de/dl-de/by-2-0",
+  "coverage": "Existing scenery bounds, expanded to projected8m grid cells. No broad tile/cloud download."
+}

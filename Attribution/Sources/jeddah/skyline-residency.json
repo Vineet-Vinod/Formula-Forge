@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "circuit": "jeddah",
+  "osm_id": 1244131504,
+  "name": "Diamond Tower construction silhouette",
+  "tile_name": "Building_City_m1_04",
+  "south_margin_m": 600.0,
+  "uniform_scale": 0.997450175270678,
+  "actual_baseline_bounds_ue_cm": [
+    -179606.3914437629,
+    1399.0911271849575,
+    35.27434375886255,
+    -144195.01917148655,
+    30075.425306981397,
+    32815.1432532091
+  ],
+  "expanded_residency_bounds_ue_cm": [
+    -179606.3914437629,
+    1399.0911271849575,
+    35.27434375886255,
+    -84195.01917148655,
+    30075.425306981397,
+    32815.1432532091
+  ],
+  "baseline_source_manifest_sha256": "2685d64aac027302c51f9fc81f0ff3a752c97b722c420740af6c64b359785ea0",
+  "baseline_mesh_file": "Building_City_m1_04.mesh",
+  "baseline_mesh_sha256": "08467484df432c40b841a4036821be9dd3cc4f57b51fe51e8349e28c85841c11",
+  "baseline_triangles": 105712,
+  "baseline_materials": [
+    "JeddahConstruction",
+    "Yellow",
+    "Steel",
+    "Concrete",
+    "White",
+    "Glass",
+    "Roof",
+    "Trunk",
+    "Leaves",
+    "Black",
+    "Lamp"
+  ],
+  "bound_role": "Expanded bounds are only the seven-field render_tiles.csv residency envelope used by FFPresentation. They do not change building dimensions, collision or the actual UE render bounds, which still come from the unchanged mesh vertices. No global residency radius or renderer code is modified.",
+  "confirmed_mechanism": {
+    "building_load_radius_m": 1800,
+    "building_release_radius_m": 2050,
+    "old_maximum_whole_road_distance_m": 2182.6816193411287,
+    "old_maximum_distance_station_m": 5393.95996,
+    "old_distance_at_native5500_m": 2099.8908203485753,
+    "old_distance_at_native5800_m": 1802.3662860356571,
+    "new_maximum_whole_road_distance_m": 1585.0235462452201,
+    "effect": "The tower is loaded during the first half of the lap, released beforeT27 by the narrow city envelope, and still outside the load radius through the early pit approach. A600 m southward residency margin holds the existing named skyline through the whole loop instead of fabricating a nearer or taller tower.",
+    "old_beyond_release_radius_profile_interval_m": [
+      5164.84668,
+      5550.72168
+    ]
+  },
+  "reference_registration": {
+    "video": "Saved/Refs/jeddah.mp4",
+    "landmarks": "The twisted skeletal tower is consistent with the mapped Diamond Tower north of the pit straight. The two clip poses are not identical to native5449/5500; pit building and stand approach suggests a later portion of the final straight. Exact frame-to-station registration remains estimated; video playback time is not used as a survey station.",
+    "native_targets_m": [
+      5449.7,
+      5500.2,
+      5800.2,
+      6000
+    ],
+    "other_silhouettes": "The far-right completed towers cannot yet be assigned reliable2021 identities/heights from the retained map. No generic skyline masses are introduced to force the game-reference horizon.",
+    "paired_seconds": [
+      295,
+      299
+    ],
+    "edited_cut_note": "The287/291 s views use a Red Bull race HUD, while295/299 s use a separate Mercedes insert without the same HUD. They are not treated as a proven uninterrupted lap from291 s. The tower/bearing identification is qualified; the tile-release defect is independently established from exact native bounds and live actor positions."
+  },
+  "preserved": "Every existing per-material triangle position, normal, UV, material, actual building footprint and height remains unchanged. Road/native/protection/handling/camera, all other Jeddah tiles and accepted circuits are untouched.",
+  "runtime_approval": false,
+  "live_policy_proof": {
+    "mesh_file_sha256_before": "08467484df432c40b841a4036821be9dd3cc4f57b51fe51e8349e28c85841c11",
+    "mesh_file_sha256_after": "08467484df432c40b841a4036821be9dd3cc4f57b51fe51e8349e28c85841c11",
+    "all_per_material_triangle_bytes_identical": true,
+    "actual_live_actor_positions": 5012,
+    "old_maximum_distance_m": 2185.3083945772228,
+    "new_maximum_distance_m": 1587.7301300396625,
+    "new_all_live_positions_within_load_radius": true,
+    "old_unloaded_policy_frames": 555,
+    "new_unloaded_policy_frames": 0,
+    "load_release_transitions": [
+      {
+        "policy": "old_m",
+        "loaded": true,
+        "frame": 0,
+        "station_m": 6154,
+        "distance_m": 1460.9818545222643
+      },
+      {
+        "policy": "new_m",
+        "loaded": true,
+        "frame": 0,
+        "station_m": 6154,
+        "distance_m": 861.0827932447584
+      },
+      {
+        "policy": "old_m",
+        "loaded": false,
+        "frame": 4247,
+        "station_m": 5166.66455078125,
+        "distance_m": 2050.816804766336
+      },
+      {
+        "policy": "old_m",
+        "loaded": true,
+        "frame": 4802,
+        "station_m": 5804.58544921875,
+        "distance_m": 1798.4553048404666
+      }
+    ],
+    "witnesses": [
+      {
+        "target_station_m": 4900,
+        "frame": 4097,
+        "station_m": 4900.8388671875,
+        "old_m": 1832.7479283876594,
+        "new_m": 1232.7479283876596,
+        "old_loaded_policy": true,
+        "new_loaded_policy": true
+      },
+      {
+        "target_station_m": 5165,
+        "frame": 4246,
+        "station_m": 5164.89208984375,
+        "old_m": 2049.5823723214835,
+        "new_m": 1449.5823723214833,
+        "old_loaded_policy": true,
+        "new_loaded_policy": true
+      },
+      {
+        "target_station_m": 5394,
+        "frame": 4435,
+        "station_m": 5393.98779296875,
+        "old_m": 2185.256050088387,
+        "new_m": 1587.6000016373407,
+        "old_loaded_policy": false,
+        "new_loaded_policy": true
+      },
+      {
+        "target_station_m": 5449.7,
+        "frame": 4562,
+        "station_m": 5449.87060546875,
+        "old_m": 2149.647491298763,
+        "new_m": 1553.350006836114,
+        "old_loaded_policy": false,
+        "new_loaded_policy": true
+      },
+      {
+        "target_station_m": 5500.2,
+        "frame": 4620,
+        "station_m": 5499.87353515625,
+        "old_m": 2099.195722424574,
+        "new_m": 1502.8173546839485,
+        "old_loaded_policy": false,
+        "new_loaded_policy": true
+      },
+      {
+        "target_station_m": 5551,
+        "frame": 4657,
+        "station_m": 5550.75146484375,
+        "old_m": 2049.109361900144,
+        "new_m": 1452.482411462763,
+        "old_loaded_policy": false,
+        "new_loaded_policy": true
+      },
+      {
+        "target_station_m": 5800.2,
+        "frame": 4800,
+        "station_m": 5801.044921875,
+        "old_m": 1801.9432747154215,
+        "new_m": 1204.0740219006125,
+        "old_loaded_policy": false,
+        "new_loaded_policy": true
+      },
+      {
+        "target_station_m": 5900,
+        "frame": 4856,
+        "station_m": 5900.7421875,
+        "old_m": 1704.563808800378,
+        "new_m": 1106.1175020174664,
+        "old_loaded_policy": true,
+        "new_loaded_policy": true
+      },
+      {
+        "target_station_m": 6000,
+        "frame": 4912,
+        "station_m": 5999.9384765625,
+        "old_m": 1607.9889377368015,
+        "new_m": 1008.921268732462,
+        "old_loaded_policy": true,
+        "new_loaded_policy": true
+      }
+    ],
+    "qualification": "Exact FFPresentation bound-distance/load-release policy evaluated at recorded actor positions. This is policy eligibility/hysteresis proof, not an asset-name event log or a substitute for new cooked visibility/performance review. No full scene emission or source binary write."
+  },
+  "primary_source_construction_context": "https://gssarabia.sa/project/diamond-tower-chorniche-jeddah/"
+}

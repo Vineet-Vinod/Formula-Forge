@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "native_scope_m": [
+    3600,
+    4030
+  ],
+  "side_convention": "+RIGHT outside Sachs left turn, -LEFT open inside grass",
+  "wall_controls_m": [
+    [
+      3600.0,
+      26.5
+    ],
+    [
+      3640.0,
+      26.8
+    ],
+    [
+      3652.164794921875,
+      27.37714979563654
+    ],
+    [
+      3680.082275390625,
+      26.923770357564507
+    ],
+    [
+      3701.85791015625,
+      26.382496449753997
+    ],
+    [
+      3735.917236328125,
+      26.572708353925673
+    ],
+    [
+      3750.434326171875,
+      27.6140372265128
+    ],
+    [
+      3757.134521484375,
+      28.451455487301907
+    ],
+    [
+      3763.2763671875,
+      28.87329574514736
+    ],
+    [
+      3766.62646484375,
+      29.096568956703976
+    ],
+    [
+      3772.768310546875,
+      29.378088505533604
+    ],
+    [
+      3778.351806640625,
+      29.965054665613746
+    ],
+    [
+      3785.052001953125,
+      30.107548722952505
+    ],
+    [
+      3796.218994140625,
+      30.138374648009396
+    ],
+    [
+      3804.035888671875,
+      30.832957482581122
+    ],
+    [
+      3835.0,
+      29.5
+    ],
+    [
+      3880.0,
+      29.0
+    ],
+    [
+      3920.0,
+      27.5
+    ],
+    [
+      3960.0,
+      24.0
+    ],
+    [
+      4000.0,
+      22.0
+    ],
+    [
+      4030.0,
+      20.0
+    ]
+  ],
+  "mapped_stand_owner": 232009782,
+  "mapped_front_ring_indices": [
+    4,
+    17
+  ],
+  "mapped_front_standoff_m": 1.75,
+  "standoff_uncertainty_m": 1.0,
+  "bowl_exit_wall": "Original2018DOP20 tracing with\u00b12 m plan uncertainty at 3835/3880/3920/3960/4000/4030. Broad gravel remains; the forward game view alone does not establish metric wall distance.",
+  "grass_verge_m": 1.8,
+  "inside_shoulder_m": 1.25,
+  "kerb_allowance_m": 0.95,
+  "inside_opening_m": [
+    3660,
+    3990
+  ],
+  "reference_times_s": [
+    412,
+    414,
+    416,
+    418,
+    420
+  ],
+  "reference_role": "Continuous59.234\u201367.332lap-time sequence confirms source corner order, open inside grass, outside grass verge/gravel and actual stand side. Supplied game is visual evidence, not geodetic authority.",
+  "orthophoto_request": {
+    "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_HIST_DOP_2010-2019?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=2018&CRS=EPSG%3A25832&BBOX=468348%2C5463716%2C469060%2C5464172&WIDTH=2848&HEIGHT=1824&FORMAT=image%2Fjpeg&STYLES=",
+    "bbox_utm32": [
+      468348,
+      5463716,
+      469060,
+      5464172
+    ],
+    "dimensions": [
+      2848,
+      1824
+    ],
+    "native_source_resolution_m": 0.2,
+    "requested_resolution_m": 0.25,
+    "bytes": 864065,
+    "sha256": "2a8b8accd1e6d3da618e0c9ff4de3c34e6986b46f24d41b758d3c88fd7e1a74c",
+    "requested_layer": "2018"
+  },
+  "source_date": "2018orthophoto/2022DGM; current2026orthophoto independently confirms same permanent bowl and marked-width pattern.",
+  "uncertainty": "Measured ground\u00b1.15 m; marked-edge picks\u00b1.5 m each; outside wall/forecourt line is a qualified reconstruction, not race-event barrier survey."
+}

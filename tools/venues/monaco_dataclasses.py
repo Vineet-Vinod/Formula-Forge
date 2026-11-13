@@ -66,3 +66,17 @@ class GardenFrontage:
     wall_height_m: FiniteFloat
     wall_inset_m: FiniteFloat
     source_note: str
+
+
+@dataclass(frozen=True)
+class RascasseFrontage:
+    ground_body_osm_id: int
+    roof_source_id: str
+    roof_front_vertices: tuple[int, int]
+    region_wgs84: list[tuple[FiniteFloat, FiniteFloat]]
+    ground_grid_file: str
+    uniform_scale: FiniteFloat
+    podium_height_above_source_minimum_m: FiniteFloat
+    body_search_width_m: FiniteFloat = 2.5
+    street_threshold_sample_distance_m: FiniteFloat = 2.5
+    forecourt_width_m: FiniteFloat = 6.0

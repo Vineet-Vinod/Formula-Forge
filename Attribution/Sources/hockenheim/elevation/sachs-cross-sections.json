@@ -1,0 +1,951 @@
+{
+  "source": "Official LGL Baden-Wuerttemberg DGM025 ALS3 numeric GetFeatureInfo",
+  "source_endpoint": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025",
+  "horizontal_crs": "EPSG:25832 ETRS89/UTM32N",
+  "vertical_datum": "DHHN2016 NHN",
+  "method": "Official numeric DGM025 GetFeatureInfo at individually retained WGS/native registered lane positions. Only racing-edge-contained samples fit the bank; extended samples fit the outside slope descriptor. Decimal storage does not imply centimetre survey accuracy.",
+  "queries": 99,
+  "body_bytes_total": 22344,
+  "road_csv_sha256": "cc673b3c079fa36acb11bd7505cbc4ff0da248651160b848efc071cf52dc9dd8",
+  "projection_scale": 1.001905915781631,
+  "sections": [
+    {
+      "native_station_m": 3680.08228,
+      "half_width_m": 7.44492054,
+      "existing_native_z_m": 2.68388343,
+      "samples": [
+        {
+          "lane_m": -7,
+          "easting_m": 468665.5321874112,
+          "northing_m": 5464024.632867666,
+          "height_nhn_m": 100.40599822998047
+        },
+        {
+          "lane_m": -6,
+          "easting_m": 468666.29313599906,
+          "northing_m": 5464025.27923868,
+          "height_nhn_m": 100.4530029296875
+        },
+        {
+          "lane_m": -5,
+          "easting_m": 468667.0540844078,
+          "northing_m": 5464025.925609801,
+          "height_nhn_m": 100.50900268554688
+        },
+        {
+          "lane_m": -3,
+          "easting_m": 468668.57598068827,
+          "northing_m": 5464027.218352361,
+          "height_nhn_m": 100.5530014038086
+        },
+        {
+          "lane_m": -1,
+          "easting_m": 468670.0978762524,
+          "northing_m": 5464028.5110953385,
+          "height_nhn_m": 100.59300231933594
+        },
+        {
+          "lane_m": 0,
+          "easting_m": 468670.8588237658,
+          "northing_m": 5464029.157466987,
+          "height_nhn_m": 100.6240005493164
+        },
+        {
+          "lane_m": 1,
+          "easting_m": 468671.6197711003,
+          "northing_m": 5464029.80383874,
+          "height_nhn_m": 100.62999725341797
+        },
+        {
+          "lane_m": 3,
+          "easting_m": 468673.141665232,
+          "northing_m": 5464031.096582563,
+          "height_nhn_m": 100.65599822998047
+        },
+        {
+          "lane_m": 5,
+          "easting_m": 468674.66355864756,
+          "northing_m": 5464032.389326806,
+          "height_nhn_m": 100.73100280761719
+        },
+        {
+          "lane_m": 6,
+          "easting_m": 468675.4245050866,
+          "northing_m": 5464033.035699087,
+          "height_nhn_m": 100.7699966430664
+        },
+        {
+          "lane_m": 7,
+          "easting_m": 468676.18545134674,
+          "northing_m": 5464033.6820714725,
+          "height_nhn_m": 100.75399780273438
+        }
+      ],
+      "fit_inside_5m": {
+        "slope": 0.020799800327847232,
+        "angle_degrees": 1.1915689564886036,
+        "max_residual_m": 0.020116206577881712,
+        "rms_residual_m": 0.010076931206346418
+      },
+      "racing_edge_picks": {
+        "inside_negative_lane_m": -4.1,
+        "outside_positive_lane_m": 4.0,
+        "marked_width_m": 8.1,
+        "midpoint_lane_offset_m": -0.04999999999999982,
+        "per_edge_uncertainty_m": 0.5,
+        "worst_case_width_uncertainty_m": 1.0,
+        "definition": "Dark racing asphalt between white/kerb boundaries, excluding blue-white kerbs, green paint and gravel. Picks at the middle row of each2m longitudinal ortho strip. White paint thickness and0.2m imagery limit accuracy."
+      },
+      "fit_strictly_inside_picked_edges": {
+        "sample_lanes_m": [
+          -3,
+          -1,
+          0,
+          1,
+          3
+        ],
+        "slope": 0.017299270629885836,
+        "angle_degrees": 0.9910763388933095,
+        "maximum_residual_m": 0.012800598144551145,
+        "rms_residual_m": 0.007169506285863073,
+        "uncertainty": "Official absolute height accuracy\u00b10.15m is not the centimetre fit residual. Conservative independent-edge difference allowance\u00b10.30m across the marked width means roughly\u00b12degrees. Relative errors may correlate, but that covariance is not measured."
+      }
+    },
+    {
+      "native_station_m": 3710.23315,
+      "half_width_m": 6.9186039,
+      "existing_native_z_m": 2.62286973,
+      "samples": [
+        {
+          "lane_m": -7,
+          "easting_m": 468645.98748771433,
+          "northing_m": 5464047.512008053,
+          "height_nhn_m": 100.33499908447266
+        },
+        {
+          "lane_m": -6,
+          "easting_m": 468646.74844864046,
+          "northing_m": 5464048.158360973,
+          "height_nhn_m": 100.3499984741211
+        },
+        {
+          "lane_m": -5,
+          "easting_m": 468647.50940938765,
+          "northing_m": 5464048.804714001,
+          "height_nhn_m": 100.39299774169922
+        },
+        {
+          "lane_m": -3,
+          "easting_m": 468649.0313303445,
+          "northing_m": 5464050.09742037,
+          "height_nhn_m": 100.44499969482422
+        },
+        {
+          "lane_m": -1,
+          "easting_m": 468650.5532505853,
+          "northing_m": 5464051.390127162,
+          "height_nhn_m": 100.50299835205078
+        },
+        {
+          "lane_m": 0,
+          "easting_m": 468651.3142104371,
+          "northing_m": 5464052.036480716,
+          "height_nhn_m": 100.50199890136719
+        },
+        {
+          "lane_m": 1,
+          "easting_m": 468652.07517010986,
+          "northing_m": 5464052.682834375,
+          "height_nhn_m": 100.53099822998047
+        },
+        {
+          "lane_m": 3,
+          "easting_m": 468653.59708891815,
+          "northing_m": 5464053.975542011,
+          "height_nhn_m": 100.552001953125
+        },
+        {
+          "lane_m": 5,
+          "easting_m": 468655.11900701036,
+          "northing_m": 5464055.268250068,
+          "height_nhn_m": 100.56999969482422
+        },
+        {
+          "lane_m": 6,
+          "easting_m": 468655.87996578775,
+          "northing_m": 5464055.914604253,
+          "height_nhn_m": 100.54299926757812
+        },
+        {
+          "lane_m": 7,
+          "easting_m": 468656.64092438616,
+          "northing_m": 5464056.560958545,
+          "height_nhn_m": 100.65599822998047
+        }
+      ],
+      "fit_inside_5m": {
+        "slope": 0.01762880597795655,
+        "angle_degrees": 1.0099515665621317,
+        "max_residual_m": 0.021199362618531836,
+        "rms_residual_m": 0.013606853827450152
+      },
+      "racing_edge_picks": {
+        "inside_negative_lane_m": -3.8,
+        "outside_positive_lane_m": 5.1,
+        "marked_width_m": 8.899999999999999,
+        "midpoint_lane_offset_m": 0.6499999999999999,
+        "per_edge_uncertainty_m": 0.5,
+        "worst_case_width_uncertainty_m": 1.0,
+        "definition": "Dark racing asphalt between white/kerb boundaries, excluding blue-white kerbs, green paint and gravel. Picks at the middle row of each2m longitudinal ortho strip. White paint thickness and0.2m imagery limit accuracy."
+      },
+      "fit_strictly_inside_picked_edges": {
+        "sample_lanes_m": [
+          -3,
+          -1,
+          0,
+          1,
+          3
+        ],
+        "slope": 0.017450332641607055,
+        "angle_degrees": 0.9997289425129854,
+        "maximum_residual_m": 0.013849258422865773,
+        "rms_residual_m": 0.008888963498362521,
+        "uncertainty": "Official absolute height accuracy\u00b10.15m is not the centimetre fit residual. Conservative independent-edge difference allowance\u00b10.30m across the marked width means roughly\u00b12degrees. Relative errors may correlate, but that covariance is not measured."
+      }
+    },
+    {
+      "native_station_m": 3739.82568,
+      "half_width_m": 6.0,
+      "existing_native_z_m": 2.54000115,
+      "samples": [
+        {
+          "lane_m": -7,
+          "easting_m": 468626.85987698904,
+          "northing_m": 5464069.546080367,
+          "height_nhn_m": 100.06500244140625
+        },
+        {
+          "lane_m": -6,
+          "easting_m": 468627.5871602978,
+          "northing_m": 5464070.229895931,
+          "height_nhn_m": 100.11799621582031
+        },
+        {
+          "lane_m": -5,
+          "easting_m": 468628.31444342574,
+          "northing_m": 5464070.913711591,
+          "height_nhn_m": 100.16400146484375
+        },
+        {
+          "lane_m": -3,
+          "easting_m": 468629.76900913904,
+          "northing_m": 5464072.281343199,
+          "height_nhn_m": 100.25900268554688
+        },
+        {
+          "lane_m": -1,
+          "easting_m": 468631.22357412905,
+          "northing_m": 5464073.6489751935,
+          "height_nhn_m": 100.34100341796875
+        },
+        {
+          "lane_m": 0,
+          "easting_m": 468631.9508563529,
+          "northing_m": 5464074.332791335,
+          "height_nhn_m": 100.37799835205078
+        },
+        {
+          "lane_m": 1,
+          "easting_m": 468632.6781383958,
+          "northing_m": 5464075.016607573,
+          "height_nhn_m": 100.4530029296875
+        },
+        {
+          "lane_m": 3,
+          "easting_m": 468634.13270193926,
+          "northing_m": 5464076.384240339,
+          "height_nhn_m": 100.56199645996094
+        },
+        {
+          "lane_m": 5,
+          "easting_m": 468635.5872647595,
+          "northing_m": 5464077.751873489,
+          "height_nhn_m": 100.66699981689453
+        },
+        {
+          "lane_m": 6,
+          "easting_m": 468636.31454589835,
+          "northing_m": 5464078.435690209,
+          "height_nhn_m": 100.7020034790039
+        },
+        {
+          "lane_m": 7,
+          "easting_m": 468637.04182685644,
+          "northing_m": 5464079.119507024,
+          "height_nhn_m": 100.69999694824219
+        }
+      ],
+      "fit_inside_5m": {
+        "slope": 0.050513894217355006,
+        "angle_degrees": 2.89177501418509,
+        "max_residual_m": 0.02543095179969157,
+        "rms_residual_m": 0.013001207610657881
+      },
+      "racing_edge_picks": {
+        "inside_negative_lane_m": -3.2,
+        "outside_positive_lane_m": 5.4,
+        "marked_width_m": 8.600000000000001,
+        "midpoint_lane_offset_m": 1.1,
+        "per_edge_uncertainty_m": 0.5,
+        "worst_case_width_uncertainty_m": 1.0,
+        "definition": "Dark racing asphalt between white/kerb boundaries, excluding blue-white kerbs, green paint and gravel. Picks at the middle row of each2m longitudinal ortho strip. White paint thickness and0.2m imagery limit accuracy."
+      },
+      "fit_strictly_inside_picked_edges": {
+        "sample_lanes_m": [
+          -1,
+          0,
+          1,
+          3
+        ],
+        "slope": 0.05685577392578375,
+        "angle_degrees": 3.25409253392775,
+        "maximum_residual_m": 0.01286010742190058,
+        "rms_residual_m": 0.007789232952831961,
+        "uncertainty": "Official absolute height accuracy\u00b10.15m is not the centimetre fit residual. Conservative independent-edge difference allowance\u00b10.30m across the marked width means roughly\u00b12degrees. Relative errors may correlate, but that covariance is not measured."
+      }
+    },
+    {
+      "native_station_m": 3769.97656,
+      "half_width_m": 6.0,
+      "existing_native_z_m": 2.40931606,
+      "samples": [
+        {
+          "lane_m": -7,
+          "easting_m": 468605.5088984223,
+          "northing_m": 5464084.11458779,
+          "height_nhn_m": 99.96600341796875
+        },
+        {
+          "lane_m": -6,
+          "easting_m": 468605.7599814113,
+          "northing_m": 5464085.079407483,
+          "height_nhn_m": 99.98500061035156
+        },
+        {
+          "lane_m": -5,
+          "easting_m": 468606.0110643145,
+          "northing_m": 5464086.044227188,
+          "height_nhn_m": 99.9800033569336
+        },
+        {
+          "lane_m": -3,
+          "easting_m": 468606.51322986383,
+          "northing_m": 5464087.973866636,
+          "height_nhn_m": 100.0469970703125
+        },
+        {
+          "lane_m": -1,
+          "easting_m": 468607.0153950703,
+          "northing_m": 5464089.903506136,
+          "height_nhn_m": 100.24400329589844
+        },
+        {
+          "lane_m": 0,
+          "easting_m": 468607.26647754497,
+          "northing_m": 5464090.868325904,
+          "height_nhn_m": 100.3270034790039
+        },
+        {
+          "lane_m": 1,
+          "easting_m": 468607.5175599338,
+          "northing_m": 5464091.833145685,
+          "height_nhn_m": 100.45800018310547
+        },
+        {
+          "lane_m": 3,
+          "easting_m": 468608.0197244546,
+          "northing_m": 5464093.762785284,
+          "height_nhn_m": 100.65399932861328
+        },
+        {
+          "lane_m": 5,
+          "easting_m": 468608.52188863256,
+          "northing_m": 5464095.692424933,
+          "height_nhn_m": 100.89299774169922
+        },
+        {
+          "lane_m": 6,
+          "easting_m": 468608.772970593,
+          "northing_m": 5464096.657244776,
+          "height_nhn_m": 100.96800231933594
+        },
+        {
+          "lane_m": 7,
+          "easting_m": 468609.02405246766,
+          "northing_m": 5464097.622064633,
+          "height_nhn_m": 100.9209976196289
+        }
+      ],
+      "fit_inside_5m": {
+        "slope": 0.09428536551339234,
+        "angle_degrees": 5.386230463186588,
+        "max_residual_m": 0.07957240513390218,
+        "rms_residual_m": 0.044357578262280005
+      },
+      "racing_edge_picks": {
+        "inside_negative_lane_m": -3.7,
+        "outside_positive_lane_m": 4.8,
+        "marked_width_m": 8.5,
+        "midpoint_lane_offset_m": 0.5499999999999998,
+        "per_edge_uncertainty_m": 0.5,
+        "worst_case_width_uncertainty_m": 1.0,
+        "definition": "Dark racing asphalt between white/kerb boundaries, excluding blue-white kerbs, green paint and gravel. Picks at the middle row of each2m longitudinal ortho strip. White paint thickness and0.2m imagery limit accuracy."
+      },
+      "fit_strictly_inside_picked_edges": {
+        "sample_lanes_m": [
+          -3,
+          -1,
+          0,
+          1,
+          3
+        ],
+        "slope": 0.1017501831054726,
+        "angle_degrees": 5.809861089255321,
+        "maximum_residual_m": 0.01899719238279829,
+        "rms_residual_m": 0.010125014755083253,
+        "uncertainty": "Official absolute height accuracy\u00b10.15m is not the centimetre fit residual. Conservative independent-edge difference allowance\u00b10.30m across the marked width means roughly\u00b12degrees. Relative errors may correlate, but that covariance is not measured."
+      }
+    },
+    {
+      "native_station_m": 3801.24414,
+      "half_width_m": 6.0,
+      "existing_native_z_m": 2.09716606,
+      "samples": [
+        {
+          "lane_m": -7,
+          "easting_m": 468580.29842742666,
+          "northing_m": 5464080.957054723,
+          "height_nhn_m": 99.9540023803711
+        },
+        {
+          "lane_m": -6,
+          "easting_m": 468579.81604365364,
+          "northing_m": 5464081.830112442,
+          "height_nhn_m": 99.98100280761719
+        },
+        {
+          "lane_m": -5,
+          "easting_m": 468579.3336600359,
+          "northing_m": 5464082.703170205,
+          "height_nhn_m": 99.93599700927734
+        },
+        {
+          "lane_m": -3,
+          "easting_m": 468578.3688932661,
+          "northing_m": 5464084.449285863,
+          "height_nhn_m": 100.06500244140625
+        },
+        {
+          "lane_m": -1,
+          "easting_m": 468577.4041271169,
+          "northing_m": 5464086.195401699,
+          "height_nhn_m": 100.27400207519531
+        },
+        {
+          "lane_m": 0,
+          "easting_m": 468576.92174427526,
+          "northing_m": 5464087.068459683,
+          "height_nhn_m": 100.37200164794922
+        },
+        {
+          "lane_m": 1,
+          "easting_m": 468576.4393615887,
+          "northing_m": 5464087.941517711,
+          "height_nhn_m": 100.49800109863281
+        },
+        {
+          "lane_m": 3,
+          "easting_m": 468575.47459668136,
+          "northing_m": 5464089.6876339,
+          "height_nhn_m": 100.7229995727539
+        },
+        {
+          "lane_m": 5,
+          "easting_m": 468574.50983239483,
+          "northing_m": 5464091.433750265,
+          "height_nhn_m": 100.86599731445312
+        },
+        {
+          "lane_m": 6,
+          "easting_m": 468574.02745048446,
+          "northing_m": 5464092.306808515,
+          "height_nhn_m": 100.87000274658203
+        },
+        {
+          "lane_m": 7,
+          "easting_m": 468573.5450687291,
+          "northing_m": 5464093.179866809,
+          "height_nhn_m": 100.90399932861328
+        }
+      ],
+      "fit_inside_5m": {
+        "slope": 0.0978284563337068,
+        "angle_degrees": 5.587378432630742,
+        "max_residual_m": 0.03894260951449269,
+        "rms_residual_m": 0.02595935337904565
+      },
+      "racing_edge_picks": {
+        "inside_negative_lane_m": -4.7,
+        "outside_positive_lane_m": 3.8,
+        "marked_width_m": 8.5,
+        "midpoint_lane_offset_m": -0.4500000000000002,
+        "per_edge_uncertainty_m": 0.5,
+        "worst_case_width_uncertainty_m": 1.0,
+        "definition": "Dark racing asphalt between white/kerb boundaries, excluding blue-white kerbs, green paint and gravel. Picks at the middle row of each2m longitudinal ortho strip. White paint thickness and0.2m imagery limit accuracy."
+      },
+      "fit_strictly_inside_picked_edges": {
+        "sample_lanes_m": [
+          -3,
+          -1,
+          0,
+          1,
+          3
+        ],
+        "slope": 0.10989952087402781,
+        "angle_degrees": 6.271610224901219,
+        "maximum_residual_m": 0.014399719238284092,
+        "rms_residual_m": 0.008160643727306367,
+        "uncertainty": "Official absolute height accuracy\u00b10.15m is not the centimetre fit residual. Conservative independent-edge difference allowance\u00b10.30m across the marked width means roughly\u00b12degrees. Relative errors may correlate, but that covariance is not measured."
+      }
+    },
+    {
+      "native_station_m": 3830.27832,
+      "half_width_m": 6.0,
+      "existing_native_z_m": 1.53018284,
+      "samples": [
+        {
+          "lane_m": -7,
+          "easting_m": 468566.29341874126,
+          "northing_m": 5464062.8584278105,
+          "height_nhn_m": 100.14800262451172
+        },
+        {
+          "lane_m": -6,
+          "easting_m": 468565.3322499207,
+          "northing_m": 5464063.132270642,
+          "height_nhn_m": 100.1729965209961
+        },
+        {
+          "lane_m": -5,
+          "easting_m": 468564.37108119443,
+          "northing_m": 5464063.406113642,
+          "height_nhn_m": 100.14299774169922
+        },
+        {
+          "lane_m": -3,
+          "easting_m": 468562.4487440254,
+          "northing_m": 5464063.953800148,
+          "height_nhn_m": 100.26499938964844
+        },
+        {
+          "lane_m": -1,
+          "easting_m": 468560.5264072341,
+          "northing_m": 5464064.501487331,
+          "height_nhn_m": 100.43299865722656
+        },
+        {
+          "lane_m": 0,
+          "easting_m": 468559.56523898,
+          "northing_m": 5464064.775331176,
+          "height_nhn_m": 100.5530014038086
+        },
+        {
+          "lane_m": 1,
+          "easting_m": 468558.6040708204,
+          "northing_m": 5464065.049175189,
+          "height_nhn_m": 100.64600372314453
+        },
+        {
+          "lane_m": 3,
+          "easting_m": 468556.68173478456,
+          "northing_m": 5464065.596863723,
+          "height_nhn_m": 100.85800170898438
+        },
+        {
+          "lane_m": 5,
+          "easting_m": 468554.7593991264,
+          "northing_m": 5464066.144552931,
+          "height_nhn_m": 101.04900360107422
+        },
+        {
+          "lane_m": 6,
+          "easting_m": 468553.7982314391,
+          "northing_m": 5464066.418397788,
+          "height_nhn_m": 101.05899810791016
+        },
+        {
+          "lane_m": 7,
+          "easting_m": 468552.8370638462,
+          "northing_m": 5464066.692242815,
+          "height_nhn_m": 101.06999969482422
+        }
+      ],
+      "fit_inside_5m": {
+        "slope": 0.09317201886858377,
+        "angle_degrees": 5.32299592530706,
+        "max_residual_m": 0.044999803815542805,
+        "rms_residual_m": 0.02575931974085331
+      },
+      "racing_edge_picks": {
+        "inside_negative_lane_m": -4.6,
+        "outside_positive_lane_m": 4.1,
+        "marked_width_m": 8.7,
+        "midpoint_lane_offset_m": -0.25,
+        "per_edge_uncertainty_m": 0.5,
+        "worst_case_width_uncertainty_m": 1.0,
+        "definition": "Dark racing asphalt between white/kerb boundaries, excluding blue-white kerbs, green paint and gravel. Picks at the middle row of each2m longitudinal ortho strip. White paint thickness and0.2m imagery limit accuracy."
+      },
+      "fit_strictly_inside_picked_edges": {
+        "sample_lanes_m": [
+          -3,
+          -1,
+          0,
+          1,
+          3
+        ],
+        "slope": 0.09960060119629584,
+        "angle_degrees": 5.6879349498093426,
+        "maximum_residual_m": 0.01840171813961433,
+        "rms_residual_m": 0.010907182841067408,
+        "uncertainty": "Official absolute height accuracy\u00b10.15m is not the centimetre fit residual. Conservative independent-edge difference allowance\u00b10.30m across the marked width means roughly\u00b12degrees. Relative errors may correlate, but that covariance is not measured."
+      }
+    },
+    {
+      "native_station_m": 3859.87085,
+      "half_width_m": 6.0,
+      "existing_native_z_m": 0.977104247,
+      "samples": [
+        {
+          "lane_m": -7,
+          "easting_m": 468566.63983020664,
+          "northing_m": 5464037.326759231,
+          "height_nhn_m": 100.44400024414062
+        },
+        {
+          "lane_m": -6,
+          "easting_m": 468565.6690382528,
+          "northing_m": 5464037.089103415,
+          "height_nhn_m": 100.50399780273438
+        },
+        {
+          "lane_m": -5,
+          "easting_m": 468564.69824621326,
+          "northing_m": 5464036.851447773,
+          "height_nhn_m": 100.52799987792969
+        },
+        {
+          "lane_m": -3,
+          "easting_m": 468562.75666187756,
+          "northing_m": 5464036.376137004,
+          "height_nhn_m": 100.59400177001953
+        },
+        {
+          "lane_m": -1,
+          "easting_m": 468560.81507719954,
+          "northing_m": 5464035.90082692,
+          "height_nhn_m": 100.68599700927734
+        },
+        {
+          "lane_m": 0,
+          "easting_m": 468559.84428473207,
+          "northing_m": 5464035.663172135,
+          "height_nhn_m": 100.7239990234375
+        },
+        {
+          "lane_m": 1,
+          "easting_m": 468558.87349217886,
+          "northing_m": 5464035.425517523,
+          "height_nhn_m": 100.7969970703125
+        },
+        {
+          "lane_m": 3,
+          "easting_m": 468556.93190681585,
+          "northing_m": 5464034.95020881,
+          "height_nhn_m": 100.91999816894531
+        },
+        {
+          "lane_m": 5,
+          "easting_m": 468554.9903211105,
+          "northing_m": 5464034.474900783,
+          "height_nhn_m": 101.0250015258789
+        },
+        {
+          "lane_m": 6,
+          "easting_m": 468554.0195281294,
+          "northing_m": 5464034.2372470265,
+          "height_nhn_m": 101.0250015258789
+        },
+        {
+          "lane_m": 7,
+          "easting_m": 468553.0487350626,
+          "northing_m": 5464033.999593442,
+          "height_nhn_m": 101.01200103759766
+        }
+      ],
+      "fit_inside_5m": {
+        "slope": 0.051057107107981274,
+        "angle_degrees": 2.922818752451864,
+        "max_residual_m": 0.029857635498032664,
+        "rms_residual_m": 0.019144772464822025
+      },
+      "racing_edge_picks": {
+        "inside_negative_lane_m": -4.1,
+        "outside_positive_lane_m": 4.3,
+        "marked_width_m": 8.399999999999999,
+        "midpoint_lane_offset_m": 0.10000000000000009,
+        "per_edge_uncertainty_m": 0.5,
+        "worst_case_width_uncertainty_m": 1.0,
+        "definition": "Dark racing asphalt between white/kerb boundaries, excluding blue-white kerbs, green paint and gravel. Picks at the middle row of each2m longitudinal ortho strip. White paint thickness and0.2m imagery limit accuracy."
+      },
+      "fit_strictly_inside_picked_edges": {
+        "sample_lanes_m": [
+          -3,
+          -1,
+          0,
+          1,
+          3
+        ],
+        "slope": 0.05444946289063097,
+        "angle_degrees": 3.1166468316644207,
+        "maximum_residual_m": 0.020199584960934658,
+        "rms_residual_m": 0.012270472845656898,
+        "uncertainty": "Official absolute height accuracy\u00b10.15m is not the centimetre fit residual. Conservative independent-edge difference allowance\u00b10.30m across the marked width means roughly\u00b12degrees. Relative errors may correlate, but that covariance is not measured."
+      }
+    },
+    {
+      "native_station_m": 3890.02173,
+      "half_width_m": 6.60382986,
+      "existing_native_z_m": 0.505958915,
+      "samples": [
+        {
+          "lane_m": -7,
+          "easting_m": 468575.2171442229,
+          "northing_m": 5464008.9531119345,
+          "height_nhn_m": 100.84300231933594
+        },
+        {
+          "lane_m": -6,
+          "easting_m": 468574.26232649066,
+          "northing_m": 5464008.658032631,
+          "height_nhn_m": 100.89900207519531
+        },
+        {
+          "lane_m": -5,
+          "easting_m": 468573.3075086544,
+          "northing_m": 5464008.362953493,
+          "height_nhn_m": 100.89399719238281
+        },
+        {
+          "lane_m": -3,
+          "easting_m": 468571.3978726699,
+          "northing_m": 5464007.772795715,
+          "height_nhn_m": 100.92500305175781
+        },
+        {
+          "lane_m": -1,
+          "easting_m": 468569.48823626904,
+          "northing_m": 5464007.1826386,
+          "height_nhn_m": 100.96900177001953
+        },
+        {
+          "lane_m": 0,
+          "easting_m": 468568.53341791255,
+          "northing_m": 5464006.887560291,
+          "height_nhn_m": 101.01000213623047
+        },
+        {
+          "lane_m": 1,
+          "easting_m": 468567.5785994519,
+          "northing_m": 5464006.592482147,
+          "height_nhn_m": 101.00399780273438
+        },
+        {
+          "lane_m": 3,
+          "easting_m": 468565.6689622187,
+          "northing_m": 5464006.002326357,
+          "height_nhn_m": 101.05799865722656
+        },
+        {
+          "lane_m": 5,
+          "easting_m": 468563.75932456914,
+          "northing_m": 5464005.4121712325,
+          "height_nhn_m": 101.0719985961914
+        },
+        {
+          "lane_m": 6,
+          "easting_m": 468562.8045055883,
+          "northing_m": 5464005.117093919,
+          "height_nhn_m": 101.0530014038086
+        },
+        {
+          "lane_m": 7,
+          "easting_m": 468561.84968650347,
+          "northing_m": 5464004.82201677,
+          "height_nhn_m": 101.03900146484375
+        }
+      ],
+      "fit_inside_5m": {
+        "slope": 0.01891414097377315,
+        "angle_degrees": 1.0835712492696243,
+        "max_residual_m": 0.019716535295728477,
+        "rms_residual_m": 0.01057609920720234
+      },
+      "racing_edge_picks": {
+        "inside_negative_lane_m": -4.0,
+        "outside_positive_lane_m": 4.1,
+        "marked_width_m": 8.1,
+        "midpoint_lane_offset_m": 0.04999999999999982,
+        "per_edge_uncertainty_m": 0.5,
+        "worst_case_width_uncertainty_m": 1.0,
+        "definition": "Dark racing asphalt between white/kerb boundaries, excluding blue-white kerbs, green paint and gravel. Picks at the middle row of each2m longitudinal ortho strip. White paint thickness and0.2m imagery limit accuracy."
+      },
+      "fit_strictly_inside_picked_edges": {
+        "sample_lanes_m": [
+          -3,
+          -1,
+          0,
+          1,
+          3
+        ],
+        "slope": 0.02169914245605667,
+        "angle_degrees": 1.2430742046265437,
+        "maximum_residual_m": 0.016801452636713066,
+        "rms_residual_m": 0.00913337526874815,
+        "uncertainty": "Official absolute height accuracy\u00b10.15m is not the centimetre fit residual. Conservative independent-edge difference allowance\u00b10.30m across the marked width means roughly\u00b12degrees. Relative errors may correlate, but that covariance is not measured."
+      }
+    },
+    {
+      "native_station_m": 3920.17261,
+      "half_width_m": 6.23362732,
+      "existing_native_z_m": 0.308460802,
+      "samples": [
+        {
+          "lane_m": -7,
+          "easting_m": 468584.14274280047,
+          "northing_m": 5463980.362369816,
+          "height_nhn_m": 100.93199920654297
+        },
+        {
+          "lane_m": -6,
+          "easting_m": 468583.1927163185,
+          "northing_m": 5463980.052281417,
+          "height_nhn_m": 100.99700164794922
+        },
+        {
+          "lane_m": -5,
+          "easting_m": 468582.24268972763,
+          "northing_m": 5463979.742193179,
+          "height_nhn_m": 101.08100128173828
+        },
+        {
+          "lane_m": -3,
+          "easting_m": 468580.34263622004,
+          "northing_m": 5463979.122017199,
+          "height_nhn_m": 101.15699768066406
+        },
+        {
+          "lane_m": -1,
+          "easting_m": 468578.4425822776,
+          "northing_m": 5463978.501841872,
+          "height_nhn_m": 101.18499755859375
+        },
+        {
+          "lane_m": 0,
+          "easting_m": 468577.4925551434,
+          "northing_m": 5463978.191754458,
+          "height_nhn_m": 101.18699645996094
+        },
+        {
+          "lane_m": 1,
+          "easting_m": 468576.54252790037,
+          "northing_m": 5463977.881667205,
+          "height_nhn_m": 101.2249984741211
+        },
+        {
+          "lane_m": 3,
+          "easting_m": 468574.64247308846,
+          "northing_m": 5463977.261493192,
+          "height_nhn_m": 101.25900268554688
+        },
+        {
+          "lane_m": 5,
+          "easting_m": 468572.7424178417,
+          "northing_m": 5463976.641319837,
+          "height_nhn_m": 101.28399658203125
+        },
+        {
+          "lane_m": 6,
+          "easting_m": 468571.7923900554,
+          "northing_m": 5463976.3312334055,
+          "height_nhn_m": 101.25399780273438
+        },
+        {
+          "lane_m": 7,
+          "easting_m": 468570.8423621602,
+          "northing_m": 5463976.0211471375,
+          "height_nhn_m": 101.27200317382812
+        }
+      ],
+      "fit_inside_5m": {
+        "slope": 0.019442749023436973,
+        "angle_degrees": 1.113847122975606,
+        "max_residual_m": 0.01864079066687907,
+        "rms_residual_m": 0.012160184829415875
+      },
+      "racing_edge_picks": {
+        "inside_negative_lane_m": -4.0,
+        "outside_positive_lane_m": 4.5,
+        "marked_width_m": 8.5,
+        "midpoint_lane_offset_m": 0.25,
+        "per_edge_uncertainty_m": 0.5,
+        "worst_case_width_uncertainty_m": 1.0,
+        "definition": "Dark racing asphalt between white/kerb boundaries, excluding blue-white kerbs, green paint and gravel. Picks at the middle row of each2m longitudinal ortho strip. White paint thickness and0.2m imagery limit accuracy."
+      },
+      "fit_strictly_inside_picked_edges": {
+        "sample_lanes_m": [
+          -3,
+          -1,
+          0,
+          1,
+          3
+        ],
+        "slope": 0.01730079650879288,
+        "angle_degrees": 0.9911637391566047,
+        "maximum_residual_m": 0.01560211181640625,
+        "rms_residual_m": 0.0081177744106525,
+        "uncertainty": "Official absolute height accuracy\u00b10.15m is not the centimetre fit residual. Conservative independent-edge difference allowance\u00b10.30m across the marked width means roughly\u00b12degrees. Relative errors may correlate, but that covariance is not measured."
+      }
+    }
+  ],
+  "status": "Retained original numeric source observations. Canonical bank reconstruction is banking-corrections.json; raw queries and response hashes remain unchanged.",
+  "acquisition": "Tile324685464 updated2022-02-15. Flight lot24-1_2022,Riegl VQ-780II,8points/m\u00b2; date is tile metadata, not an individual pulse time.",
+  "provider_accuracy_m": 0.15,
+  "licence": "Datenlizenz Deutschland Namensnennung2.0",
+  "licence_url": "https://www.govdata.de/dl-de/by-2-0",
+  "attribution": "Datenquelle: LGL, www.lgl-bw.de, dl-de/by-2-0. Original queries and derived registered cross-sections.",
+  "orthophoto": {
+    "request": "ortho-request.json",
+    "sha256": "ac3a89cc2b0f009be980f4c106914d2ad9511a2253d3a9e17a61abf023d67a46",
+    "native_resolution_m": 0.2,
+    "epoch": "Current official DOP20 mosaic, local flight date unresolved. Contemporary2020s research, not asserted2019 event imagery."
+  },
+  "rejected_wcs": {
+    "reason": "Both WCS2 image/tiff and WCS1 GeoTIFF return uint16 integer metres. Not used to fit bank.",
+    "files": [
+      "sachs-dgm1.tif",
+      "sachs-dgm1-wcs10.tif"
+    ]
+  },
+  "source_vertical_accuracy_m": 0.15,
+  "source_epoch": "Sachs tile324685464 updated2022-02-15, regional2022flightlot24-1_2022"
+}

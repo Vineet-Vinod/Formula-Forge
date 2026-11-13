@@ -1,6 +1,6 @@
 {
   "source_projection_uniform_scale": 1.001495,
-  "effective_scene_uniform_scale": 1.001905915781631,
+  "effective_scene_uniform_scale": 1.0018173360583138,
   "native_normalization_chain": {
     "initial_corrected_controls_factor": 1.0000711328843062,
     "initial_catmull_length_m": 4573.67461919412,
@@ -14,8 +14,42 @@
     "method": "Replicate exact float32 native32-step Catmull expression and float32 segment norms, double arc accumulation, float32 correction includingUnits17. Compose firstcontrols then refinementcontrols; original native factor independently instrumented. Port hasmixedraw/old-native sourceframe caveat.",
     "baseline_factor_applied_to_selected_scale": true
   },
-  "final_road_sha256": "cc673b3c079fa36acb11bd7505cbc4ff0da248651160b848efc071cf52dc9dd8",
+  "final_road_sha256": "Pending root native export; source-only receipt must not claim the old exported road as final.",
   "source_basis": "alignment-corrections.json",
   "source_basis_sha256": "2fc221374617d54eff2a09338f785cce3e3a83da05ee8198735d48075d127323",
-  "scope": "Scenery WGS84-to-native XY registration only. Native road geometry, physical road widths, elevations, vehicle tuning and camera are not changed by this metadata update. Original corner authoring controls retain their explicitly documented historical coordinate frame."
+  "scope": "Scenery WGS84-to-native XY registration only. Native road geometry, physical road widths, elevations, vehicle tuning and camera are not changed by this metadata update. Original corner authoring controls retain their explicitly documented historical coordinate frame.",
+  "previous_scene_uniform_scale": 1.001905915781631,
+  "sachs_midpoint_normalization_factor": 0.9999115887810203,
+  "sachs_midpoint_proof": {
+    "status": "Read-only in-memory candidate. No native source/export. Width joins3620/3990 are rejected by source imagery; candidate width used only to detect geometric folds, not approved for authoring. Midpoint window can remain independently local.",
+    "source_road_sha256": "cc673b3c079fa36acb11bd7505cbc4ff0da248651160b848efc071cf52dc9dd8",
+    "source_frame_scale": 1.001905915781631,
+    "maximum_source_midpoint_displacement_m": 1.1000994588804716,
+    "native_uniform_factor": 0.9999115887810203,
+    "candidate_effective_scene_scale": 1.0018173360583138,
+    "pre_normalization_catmull_length_m": 4574.404361821711,
+    "endpoint_conditions": [
+      {
+        "station_m": 3620,
+        "offset_m": -0.0,
+        "central_numeric_offset_derivative": -3.2535273053064277e-09
+      },
+      {
+        "station_m": 3990,
+        "offset_m": -0.0,
+        "central_numeric_offset_derivative": 3.336413504765644e-10
+      }
+    ],
+    "source_midpoint_window_m": [
+      3620,
+      3990
+    ],
+    "minimum_local_three_point_radius_m": 18.83624458772089,
+    "asphalt_fold_count": 0,
+    "fold_stations": [],
+    "closed_centerline_is_simple": true,
+    "max_same_station_displacement_m": 1.1159120008158931,
+    "outside_source_window_same_station_displacement_m": 0.3403032149711701,
+    "note": "Outside-window differences are disclosed target-length normalization plus chainage reparameterization, not extra unregistered local edits. The matching geographic scale must compose this factor exactly."
+  }
 }

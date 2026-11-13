@@ -17,6 +17,9 @@ struct CircuitSample {
     float halfWidth = 6.0f;
     float bankSlope = 0.0f;
     float bankQuadratic = 0.0f;
+    float bankFade = 0.0f;
+    float bankOuterPositive = 0.0f;
+    float bankOuterNegative = 0.0f;
 };
 
 struct GeneratedSupport {
@@ -30,6 +33,8 @@ float circuitShoulderMeters(const TrackCatalogEntry& track, float station, bool 
 float circuitSurfaceHeight(const CircuitSample& sample, float lane) noexcept;
 bool circuitBankedPaving(const TrackCatalogEntry& track, float station, bool positiveSide) noexcept;
 float circuitPavedBankReach(const TrackCatalogEntry& track, const CircuitSample& sample, bool positiveSide) noexcept;
+std::vector<float> circuitBankEdgeFractions(const CircuitSample& first, const CircuitSample& second,
+    float firstSpan, float secondSpan);
 std::vector<CircuitSample> sampleCircuit(const TrackCatalogEntry& track, int sampleCount = 0);
 void buildGeneratedSupport(const TrackCatalogEntry& track, const std::vector<CircuitSample>& samples, GeneratedSupport& support);
 bool writeGeneratedContact(const TrackCatalogEntry& track, const std::vector<CircuitSample>& samples, const std::string& directory);

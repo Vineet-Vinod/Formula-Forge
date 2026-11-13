@@ -1,0 +1,359 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "circuit": "baku",
+  "source_file": "flame-towers.osm.json.gz",
+  "source_sha256": "65f029c68aab646f1eea60fe8dc978003cd3ab3bcacf4346b391039cce539d17",
+  "towers": [
+    {
+      "osm_id": 253081850,
+      "name": "Flame Tower 1",
+      "height_m": 181.8,
+      "floors": 39,
+      "base_relative_m": 103.72054699563341,
+      "ground_uncertainty_m": 10.0,
+      "crown_tip_fraction": 0.82,
+      "service_bands": [
+        0.4,
+        0.76
+      ],
+      "source_ground_boundary_range_m": [
+        103.72054699563341,
+        109.95992710702708
+      ],
+      "source_ground_outer_25m_range_m": [
+        100.03587137644799,
+        110.98962598604744
+      ]
+    },
+    {
+      "osm_id": 253082095,
+      "name": "Flame Tower 2",
+      "height_m": 164.6,
+      "floors": 36,
+      "base_relative_m": 108.9035016808109,
+      "ground_uncertainty_m": 10.0,
+      "crown_tip_fraction": 0.72,
+      "service_bands": [
+        0.77
+      ],
+      "source_ground_boundary_range_m": [
+        108.9035016808109,
+        111.49829011389217
+      ],
+      "source_ground_outer_25m_range_m": [
+        106.33346901386297,
+        112.68815328787664
+      ]
+    },
+    {
+      "osm_id": 253081914,
+      "name": "Flame Tower 3",
+      "height_m": 160.8,
+      "floors": 28,
+      "base_relative_m": 92.01832428635464,
+      "ground_uncertainty_m": 10.0,
+      "crown_tip_fraction": 0.84,
+      "service_bands": [
+        0.47,
+        0.63
+      ],
+      "source_ground_boundary_range_m": [
+        92.01832428635464,
+        105.25928480464253
+      ],
+      "source_ground_outer_25m_range_m": [
+        87.5188317881251,
+        109.7354299166433
+      ]
+    }
+  ],
+  "source_metadata": {
+    "retained_original": "coast-west.map.osm",
+    "raw_original_sha256": "93ab92f8faba2e54dd7e4394e23a136c8fb765aa0d70d38793053129a1a0018d",
+    "licence": "OpenStreetMap contributors, ODbL1.0. Reference photos are research only and are not shipped as game assets.",
+    "geometry": "Exact original WGS84 three tower rings and separately retained common podium way687226634. The tower bases retain those curved triangular outlines; upper lofts and asymmetric crown sections are reconstructed within the source plan context."
+  },
+  "primary_sources": {
+    "architect": "https://www.hok.com/projects/view/baku-flame-towers/",
+    "tower_1": "https://www.skyscrapercenter.com/pdf/building/8993",
+    "tower_2": "https://www.skyscrapercenter.com/building/flame-tower-2/8994",
+    "tower_3": "https://www.skyscrapercenter.com/building/flame-tower-3/8995",
+    "facade_consultant": "https://priedemann.net/en/projects/projectdb/flame-towers-baku.html",
+    "facade_case_study": "https://priedemann.net/en/cases/facade-structural-analysis-and-facade-cleaning.html"
+  },
+  "primary_height_qualification": "Architectural CVU/CTBUH listings are preferred:181.8/164.6/160.8 m and39/36/28 floors. OSM floor tags differ for Tower2/3, and facade consultant figures around190/160/140 m have a different/unclear scope. None of these differences is concealed by changing the retained OSM tags. Heights are architectural heights above reconstructed foundations, not absolute world elevations.",
+  "shape_qualification": "HOK day photographs show curved triangular glass towers, asymmetrically rising smooth flame crowns, close curtain-wall grids and dark service belts. The source-ground ring is exact; rounding of upper sections, outward crown lean, floor-panel spacing and belt elevations are reconstructed estimates. Service belt fractions carry about0.08 of building-height interpretation uncertainty, not a measured facade section.",
+  "ground_qualification": "Constant tower bases are the retained minimum sampled GLO90 ground values at each actual boundary, in the canonical scene-relative datum. The road/SF absolute context is approximately\u221224.7 m; no second datum offset or centre-DSM roof height is added. About10 m foundation allowance covers the coarse scene terrain. The nearby25 m samples are retained as independent context. No land flattening or native road/profile change.",
+  "podium_context": {
+    "osm_id": 687226634,
+    "tagged_levels": 3,
+    "status": "Actual curved podium outline retained for attribution/registration; no unsupported uniform roof or foundation altitude is assigned. The present source correction models the three skyline towers. HOK common-podium fact does not measure its stepped sections."
+  },
+  "reference_photo_sha256": {
+    "hok-flame-skyline.jpg": "07821534fef035bf090cda9d48d7bd6d8ff39a18f30496c0e5f457e0b7be6a2e",
+    "hok-flame-skyline-04.jpg": "9bbf822845e3f88938d1da032895fd148fdc37308768ea3eb247d6cbdb88e3df",
+    "hok-flame-skyline-01.jpg": "70fb387bdbf06d94f468a64ab834bad43ea05d03bdc3eb29396a0523e8ec95ed"
+  },
+  "native_capture_targets_m": [
+    3181,
+    3300,
+    3400
+  ],
+  "preserved": "Existing961 source properties, eastern44 additional skyline models, track/native protection/physics/camera and accepted circuit assets.",
+  "runtime_approval": false,
+  "identity_qualification": "Retained OSM tower numbers/height tags register the three absolute footprints to CVU1/2/3. HOK gives broad south/north/west programme descriptions that do not exactly match those mapped cardinal positions; no tower is relocated to force that prose. The original OSM tags and coordinates remain available for future disambiguation.",
+  "in_memory_proof": {
+    "triangles": 91974,
+    "geometry_sha256": "c6f1674f3e3840d984486fa3f90fedfc5828e9b60748afa684116e94a1010ffb",
+    "existing_building_prefix_preserved": true,
+    "normal_max_unit_error": 5.551115123125783e-16,
+    "all_terrain_masks_xy_only": true,
+    "towers": [
+      {
+        "osm_id": 253081850,
+        "base_expected_m": 103.72054699563341,
+        "z_min_m": 103.72054699563341,
+        "z_max_m": 285.5205469956334,
+        "height_measured_from_vertices_m": 181.8,
+        "height_expected_m": 181.8,
+        "base_sym_difference_actual_footprint_m2": 0.0,
+        "shell_unpaired_edges_1um": 0,
+        "maximum_upper_vertex_plan_distance_m": 0.10556379521054803,
+        "asphalt_separation_m": 607.6697185061196,
+        "corridor_separation_m": 599.8212418904013,
+        "upper_crown_range_note": "Asymmetric smooth loft/crown reconstructed from HOK; source plan and height/base witnesses are retained."
+      },
+      {
+        "osm_id": 253082095,
+        "base_expected_m": 108.9035016808109,
+        "z_min_m": 108.9035016808109,
+        "z_max_m": 273.5035016808109,
+        "height_measured_from_vertices_m": 164.60000000000002,
+        "height_expected_m": 164.6,
+        "base_sym_difference_actual_footprint_m2": 0.0,
+        "shell_unpaired_edges_1um": 0,
+        "maximum_upper_vertex_plan_distance_m": 0.21206241554275818,
+        "asphalt_separation_m": 592.8406170111045,
+        "corridor_separation_m": 584.9917116370407,
+        "upper_crown_range_note": "Asymmetric smooth loft/crown reconstructed from HOK; source plan and height/base witnesses are retained."
+      },
+      {
+        "osm_id": 253081914,
+        "base_expected_m": 92.01832428635464,
+        "z_min_m": 92.01832428635464,
+        "z_max_m": 252.81832428635465,
+        "height_measured_from_vertices_m": 160.8,
+        "height_expected_m": 160.8,
+        "base_sym_difference_actual_footprint_m2": 0.0,
+        "shell_unpaired_edges_1um": 0,
+        "maximum_upper_vertex_plan_distance_m": 0.17561930417728452,
+        "asphalt_separation_m": 500.9400422668283,
+        "corridor_separation_m": 493.09326381927906,
+        "upper_crown_range_note": "Asymmetric smooth loft/crown reconstructed from HOK; source plan and height/base witnesses are retained."
+      }
+    ]
+  },
+  "capture_projection_witnesses": [
+    {
+      "target_station_m": 3181,
+      "actual_station_m": 3181.511474609375,
+      "actual_frame": 2858,
+      "camera_position_cm": [
+        54551.99634615126,
+        183853.9473353688,
+        2806.0959310563544
+      ],
+      "camera_rotation_deg": [
+        -3.3566513076952202,
+        35.731437683105476,
+        1.048651094259661e-05
+      ],
+      "towers": [
+        {
+          "osm_id": 253081850,
+          "tip_xyz_m": [
+            -2239.8923257070996,
+            -1543.5826298634897,
+            285.5205469956334
+          ],
+          "bearing_deg": -14.042785061221856,
+          "tip_pixel_unoccluded_1600x900": [
+            599.9029507393619,
+            202.31974552034296
+          ],
+          "range_m": 1106.1187266512623,
+          "inside_horizontal_90deg_FOV": true,
+          "occlusion_qualification": "Projection alone does not prove tower visibility through existing city/terrain. Fresh cooked capture required."
+        },
+        {
+          "osm_id": 253081914,
+          "tip_xyz_m": [
+            -2271.1284550991754,
+            -1320.2107967117354,
+            252.81832428635465
+          ],
+          "bearing_deg": -6.662273848576141,
+          "tip_pixel_unoccluded_1600x900": [
+            706.5555832918184,
+            195.29041826574104
+          ],
+          "range_m": 915.3114155086142,
+          "inside_horizontal_90deg_FOV": true,
+          "occlusion_qualification": "Projection alone does not prove tower visibility through existing city/terrain. Fresh cooked capture required."
+        },
+        {
+          "osm_id": 253082095,
+          "tip_xyz_m": [
+            -2366.957203110823,
+            -1430.2348353328016,
+            273.5035016808109
+          ],
+          "bearing_deg": -4.960192014427455,
+          "tip_pixel_unoccluded_1600x900": [
+            730.5691139877183,
+            208.4570318545139
+          ],
+          "range_m": 1059.333631693569,
+          "inside_horizontal_90deg_FOV": true,
+          "occlusion_qualification": "Projection alone does not prove tower visibility through existing city/terrain. Fresh cooked capture required."
+        }
+      ]
+    },
+    {
+      "target_station_m": 3300,
+      "actual_station_m": 3300.554931640625,
+      "actual_frame": 2928,
+      "camera_position_cm": [
+        65542.01776625044,
+        188240.9435081216,
+        2766.6133717110697
+      ],
+      "camera_rotation_deg": [
+        -3.829080263781813,
+        13.984840393066413,
+        0.0010626424969890863
+      ],
+      "towers": [
+        {
+          "osm_id": 253081850,
+          "tip_xyz_m": [
+            -2239.8923257070996,
+            -1543.5826298634897,
+            285.5205469956334
+          ],
+          "bearing_deg": 8.102912595231507,
+          "tip_pixel_unoccluded_1600x900": [
+            913.8983520958014,
+            173.88451511863514
+          ],
+          "range_m": 991.5217884832972,
+          "inside_horizontal_90deg_FOV": true,
+          "occlusion_qualification": "Projection alone does not prove tower visibility through existing city/terrain. Fresh cooked capture required."
+        },
+        {
+          "osm_id": 253081914,
+          "tip_xyz_m": [
+            -2271.1284550991754,
+            -1320.2107967117354,
+            252.81832428635465
+          ],
+          "bearing_deg": 16.687485059765276,
+          "tip_pixel_unoccluded_1600x900": [
+            1039.8210449556816,
+            146.53978529744796
+          ],
+          "range_m": 802.3356857436366,
+          "inside_horizontal_90deg_FOV": true,
+          "occlusion_qualification": "Projection alone does not prove tower visibility through existing city/terrain. Fresh cooked capture required."
+        },
+        {
+          "osm_id": 253082095,
+          "tip_xyz_m": [
+            -2366.957203110823,
+            -1430.2348353328016,
+            273.5035016808109
+          ],
+          "bearing_deg": 18.399160425823098,
+          "tip_pixel_unoccluded_1600x900": [
+            1066.1115596272193,
+            164.72316932950605
+          ],
+          "range_m": 946.3404803402068,
+          "inside_horizontal_90deg_FOV": true,
+          "occlusion_qualification": "Projection alone does not prove tower visibility through existing city/terrain. Fresh cooked capture required."
+        }
+      ]
+    },
+    {
+      "target_station_m": 3400,
+      "actual_station_m": 3400.297119140625,
+      "actual_frame": 2984,
+      "camera_position_cm": [
+        75300.25705106491,
+        189865.84088545133,
+        2697.801288419523
+      ],
+      "camera_rotation_deg": [
+        -3.9573333380863773,
+        4.495193481445317,
+        -0.0023222840964221246
+      ],
+      "towers": [
+        {
+          "osm_id": 253081850,
+          "tip_xyz_m": [
+            -2239.8923257070996,
+            -1543.5826298634897,
+            285.5205469956334
+          ],
+          "bearing_deg": 19.285863353797037,
+          "tip_pixel_unoccluded_1600x900": [
+            1079.9344433885835,
+            133.90176684399762
+          ],
+          "range_m": 899.0559816839344,
+          "inside_horizontal_90deg_FOV": true,
+          "occlusion_qualification": "Projection alone does not prove tower visibility through existing city/terrain. Fresh cooked capture required."
+        },
+        {
+          "osm_id": 253081914,
+          "tip_xyz_m": [
+            -2271.1284550991754,
+            -1320.2107967117354,
+            252.81832428635465
+          ],
+          "bearing_deg": 29.50370154859223,
+          "tip_pixel_unoccluded_1600x900": [
+            1252.6864521985358,
+            81.13964282772912
+          ],
+          "range_m": 715.1663816720609,
+          "inside_horizontal_90deg_FOV": true,
+          "occlusion_qualification": "Projection alone does not prove tower visibility through existing city/terrain. Fresh cooked capture required."
+        },
+        {
+          "osm_id": 253082095,
+          "tip_xyz_m": [
+            -2366.957203110823,
+            -1430.2348353328016,
+            273.5035016808109
+          ],
+          "bearing_deg": 30.83564815308218,
+          "tip_pixel_unoccluded_1600x900": [
+            1277.5705817743067,
+            109.4458572388416
+          ],
+          "range_m": 859.4894518517756,
+          "inside_horizontal_90deg_FOV": true,
+          "occlusion_qualification": "Projection alone does not prove tower visibility through existing city/terrain. Fresh cooked capture required."
+        }
+      ]
+    }
+  ],
+  "regression": {
+    "file": "Tests/test_circuit_scenes.py",
+    "test": "test_flame_towers_keep_actual_bases_primary_heights_and_closed_crowns",
+    "result": "PASS; actual source outlines, exact primary architectural heights above retained bases, closed facade/crown shells, unit smooth normals, no centre-roof resampling, existing property prefix preserved and XY-only masks."
+  }
+}

@@ -1,0 +1,3 @@
+{
+  "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_Aktualitaet?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=verm%3Av_dgm_laserflug_durchgefuehrt%2Cverm%3Av_dgm_kacheln%2Cverm%3Av_dgm_bearbeitungsuebersicht&QUERY_LAYERS=verm%3Av_dgm_laserflug_durchgefuehrt%2Cverm%3Av_dgm_kacheln%2Cverm%3Av_dgm_bearbeitungsuebersicht&CRS=EPSG%3A25832&BBOX=468575.92174427526%2C5464086.068459683%2C468577.92174427526%2C5464088.068459683&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=&FEATURE_COUNT=10"
+}

@@ -190,12 +190,6 @@ class Importer:
                 "zandvoort": (1.1, 1.05, 0.85),
                 "turkey": (1.25, 1.05, 0.65),
             }
-            if self.slug == "spa" and name == "Grass" and isinstance(
-                material, unreal.MaterialInstanceConstant
-            ):
-                EDIT.set_material_instance_scalar_parameter_value(
-                    material, "NormalStrength", 0.06
-                )
             if (
                 name == "Grass"
                 and self.slug in ground_tints
@@ -337,6 +331,20 @@ class Importer:
                     != record["sha256"]
                 ):
                     raise RuntimeError(f"Incomplete mesh batch: {record['name']}")
+            partition = self.manifest.get("city_partition")
+            if partition is not None:
+                current = {tile["name"] for tile in self.manifest["tiles"]}
+                for name in partition["superseded_assets"]:
+                    if name in current:
+                        raise RuntimeError(f"Partition parent is still active: {name}")
+                    path = self.assets + "/Track/" + name
+                    if not LIBRARY.does_asset_exist(path):
+                        continue
+                    references = LIBRARY.find_package_referencers_for_asset(path, True)
+                    if references:
+                        raise RuntimeError(f"Partition parent still has asset references: {path}: {references}")
+                    if not LIBRARY.delete_asset(path):
+                        raise RuntimeError(f"Cannot remove replaced partition parent: {path}")
             self.data.joinpath("render_tiles.csv").write_text(
                 "\n".join(
                     record["name"]

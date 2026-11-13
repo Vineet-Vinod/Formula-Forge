@@ -1,0 +1,21 @@
+{
+  "provider": "LGL Baden-Wuerttemberg",
+  "dataset": "ATKIS DGM1 bare-earth, bounded8m WCS export stored in integer metres; scenery only",
+  "grid_file": "elevation/lgl-scenery-grid.json.gz",
+  "grid_sha256": "8ee53ecc018a853faaee861496a97800bd6ad56fdaf5b70a61c9f62c65dfda8c",
+  "relative_datum_m": 100.25724665983111,
+  "road_join_distance_m": 20,
+  "grid_uniform_scale": 1.001905915781631,
+  "source_window": "elevation/scenery-dgm1-8m.tif",
+  "source_window_sha256": "873cded89afe2d5efcf4a87f9d9716ff91e6044b9e10acc41029e43b65694d22",
+  "source_crs": "EPSG25832, ETRS89 / UTM32N",
+  "vertical_crs": "DHHN2016 NHN",
+  "grid_spacing_m": 12.0,
+  "source_export_spacing_m": 8,
+  "source_vertical_accuracy_m": 0.15,
+  "export_quantization_m": 1,
+  "licence": "Datenlizenz Deutschland Namensnennung2.0",
+  "licence_url": "https://www.govdata.de/dl-de/by-2-0",
+  "attribution": "Datenquelle: LGL, www.lgl-bw.de, dl-de/by-2-0",
+  "method": "Bilinear numeric sampling of the bounded bare-earth export onto the existing scenery lattice in the original scene frame. Grid materialization composes current/source scale into XY only. Common exact road minimum is subtracted; no median rebase or vertical rescale.\u00b1.5 m integer quantization is additional to\u00b1.15 m provider accuracy. High-precision DGM025 road/camber observations remain independent."
+}

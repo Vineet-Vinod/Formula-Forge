@@ -10,6 +10,7 @@ from circuit_scene import CircuitScene
 from shapely.geometry import Point as ShapePoint
 from shapely.geometry import Polygon
 
+from venues.baku_flames import flame_towers
 from venues.baku_forecourt import court_forecourt
 from venues.baku_philharmonic import philharmonic_hall
 from venues.baku_skyline import waterfront_skyline
@@ -90,6 +91,7 @@ def build_venue(scene: CircuitScene) -> None:
     castle_ramp(scene)
     philharmonic_hall(scene)
     waterfront_skyline(scene)
+    flame_towers(scene)
     scene.stand(5710, 6000, 1, rows=18, setback=8, roofed=False, seat_material='SeatBlue')
     scene.pit_building(5720, 5990, -1, depth=15, height=6.5, levels=1)
     for start, end, side, offset, spacing in ((0, 430, -1, 7, 17), (550, 1250, 1, 9, 18), (550, 1250, -1, 7, 22), (1400, 2050, 1, 8, 18), (2050, 2500, -1, 9, 20), (3100, 3650, -1, 7, 18), (3800, 4450, -1, 8, 18), (4550, 5650, -1, 10, 17), (4700, 5650, 1, 9, 22)):

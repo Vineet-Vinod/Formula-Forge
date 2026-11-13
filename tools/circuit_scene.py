@@ -5,10 +5,12 @@ from __future__ import annotations
 import csv
 import gzip
 import hashlib
+import itertools
 import json
 import math
 import re
 import struct
+from collections.abc import Callable
 from pathlib import Path
 
 from circuit_dataclasses import (
@@ -55,6 +57,7 @@ class CircuitScene(MeshScene):
             self.road = TypeAdapter(list[RoadStation]).validate_python(
                 list(csv.DictReader(handle))
             )
+        self.bank_edge_geometry = any(p.bank_fade > 0 for p in self.road)
         self.segments = STRtree(
             [
                 LineString(
@@ -249,6 +252,9 @@ class CircuitScene(MeshScene):
             a.left_shoulder * (1 - t) + b.left_shoulder * t,
             a.right_shoulder * (1 - t) + b.right_shoulder * t,
             a.bank_quadratic * (1 - t) + b.bank_quadratic * t,
+            a.bank_fade * (1 - t) + b.bank_fade * t,
+            a.bank_outer_positive * (1 - t) + b.bank_outer_positive * t,
+            a.bank_outer_negative * (1 - t) + b.bank_outer_negative * t,
         )
 
     def nearest(self, x: float, y: float) -> tuple[RoadStation, float]:
@@ -330,6 +336,56 @@ class CircuitScene(MeshScene):
         self._ground_normals[key] = normal
         return normal
 
+    def _surface_vertex(
+        self, x: float, y: float, lift: float, sample: RoadStation | None,
+        smooth_ground: bool,
+    ) -> tuple[Point, bool]:
+        joined_ground = True
+        if sample:
+            branch, _ = self.nearest(x, y)
+            gap = abs(branch.station - sample.station)
+            gap = min(gap, self.length - gap)
+            chord = math.hypot(branch.x - sample.x, branch.y - sample.y)
+            separate_branch = gap > 20 and gap > 2 * chord
+            if separate_branch:
+                along = (x - sample.x) * sample.tx + (y - sample.y) * sample.ty
+                branch = self.at(sample.station + along)
+            if smooth_ground and not separate_branch:
+                z = self.ground(x, y)
+            else:
+                lane = (x - branch.x) * branch.ty - (y - branch.y) * branch.tx
+                z = branch.height(lane) - (0.015 if smooth_ground else 0.0)
+                joined_ground = False
+        else:
+            z = self.ground(x, y)
+        return (x, y, z + lift), joined_ground
+
+    def _bank_surface_triangles(
+        self, points: tuple[Point, Point, Point],
+        vertex: Callable[[float, float], Point], depth: int = 0,
+    ) -> list[tuple[Point, Point, Point]]:
+        midpoints = [vertex((points[i][0] + points[(i + 1) % 3][0]) / 2,
+                            (points[i][1] + points[(i + 1) % 3][1]) / 2)
+                     for i in range(3)]
+        errors = [abs(midpoints[i][2] - (points[i][2] + points[(i + 1) % 3][2]) / 2)
+                  for i in range(3)]
+        center = vertex(sum(p[0] for p in points) / 3, sum(p[1] for p in points) / 3)
+        center_error = abs(center[2] - sum(p[2] for p in points) / 3)
+        for weights in ((.5, .25, .25), (.25, .5, .25), (.25, .25, .5)):
+            x, y, z = (sum(w * p[index] for w, p in zip(weights, points, strict=True))
+                       for index in range(3))
+            center_error = max(center_error, abs(vertex(x, y)[2] - z))
+        longest = max(math.dist(points[i][:2], points[(i + 1) % 3][:2]) for i in range(3))
+        if depth >= 20 or longest <= .05 or max(*errors, center_error) <= .002:
+            return [points]
+        edge = max(range(3), key=lambda i: errors[i])
+        if max(errors) <= .002:
+            edge = max(range(3), key=lambda i: math.dist(points[i][:2], points[(i + 1) % 3][:2]))
+        a, b, c = points[edge], points[(edge + 1) % 3], points[(edge + 2) % 3]
+        middle = midpoints[edge]
+        return [*self._bank_surface_triangles((a, middle, c), vertex, depth + 1),
+                *self._bank_surface_triangles((middle, b, c), vertex, depth + 1)]
+
     def polygon_surface(
         self,
         shape: BaseGeometry,
@@ -339,45 +395,30 @@ class CircuitScene(MeshScene):
         paved: bool = False,
         smooth_ground: bool = False,
     ) -> None:
+        def vertex(x: float, y: float) -> Point:
+            return self._surface_vertex(x, y, lift, sample, smooth_ground)[0]
+
         for triangle in constrained_delaunay_triangles(shape).geoms:
-            points: list[Point] = []
-            joined_ground = True
-            for x, y in list(triangle.exterior.coords)[:3]:
-                if sample:
-                    branch, _ = self.nearest(x, y)
-                    gap = abs(branch.station - sample.station)
-                    gap = min(gap, self.length - gap)
-                    chord = math.hypot(branch.x - sample.x, branch.y - sample.y)
-                    separate_branch = gap > 20 and gap > 2 * chord
-                    if separate_branch:
-                        along = (x - sample.x) * sample.tx + (y - sample.y) * sample.ty
-                        branch = self.at(sample.station + along)
-                    if smooth_ground and not separate_branch:
-                        z = self.ground(x, y)
-                    else:
-                        lane = (x - branch.x) * branch.ty - (y - branch.y) * branch.tx
-                        z = branch.height(lane) - (0.015 if smooth_ground else 0.0)
-                        joined_ground = False
-                else:
-                    z = self.ground(x, y)
-                points.append((x, y, z + lift))
+            vertices = [self._surface_vertex(x, y, lift, sample, smooth_ground)
+                        for x, y in list(triangle.exterior.coords)[:3]]
+            points = [point for point, _joined in vertices]
+            joined_ground = all(joined for _point, joined in vertices)
             if cross(sub(points[1], points[0]), sub(points[2], points[0]))[2] < 0:
                 points.reverse()
-            if paved:
-                self.surface_shapes.append(Polygon([point[:2] for point in points]))
-                self.surface_points.append((points[0], points[1], points[2]))
-                self.surface_index = None
-            self.triangle(
-                "Tile_Ground",
-                material,
-                points[0],
-                points[1],
-                points[2],
-                tuple((p[0] / 8, p[1] / 8) for p in points),
-                tuple(self._ground_normal(p[0], p[1]) for p in points)
-                if smooth_ground and joined_ground
-                else None,
-            )
+            parts = [(points[0], points[1], points[2])]
+            if getattr(self, "bank_edge_geometry", False) and sample and sample.bank_fade > 0:
+                parts = self._bank_surface_triangles(parts[0], vertex)
+            for a, b, c in parts:
+                if paved:
+                    self.surface_shapes.append(Polygon([point[:2] for point in (a, b, c)]))
+                    self.surface_points.append((a, b, c))
+                    self.surface_index = None
+                self.triangle(
+                    "Tile_Ground", material, a, b, c,
+                    tuple((p[0] / 8, p[1] / 8) for p in (a, b, c)),
+                    tuple(self._ground_normal(p[0], p[1]) for p in (a, b, c))
+                    if smooth_ground and joined_ground else None,
+                )
 
     def paint_surface(
         self, shape: BaseGeometry, material: str, lift: float = 0.005,
@@ -471,10 +512,29 @@ class CircuitScene(MeshScene):
             return norm((-grade * sample.tx - slope * sample.ty,
                          -grade * sample.ty + slope * sample.tx, 1.0))
 
-        for strip in range(8):
-            lo, hi = -1 + strip / 4, -1 + (strip + 1) / 4
-            lanes = (lo * (a.half_width + .15), lo * (b.half_width + .15),
-                     hi * (b.half_width + .15), hi * (a.half_width + .15))
+        edge_fade = a.bank_fade > 0 or b.bank_fade > 0
+        if edge_fade:
+            fractions = [-1., 1.]
+            if a.bank_quadratic != 0 or b.bank_quadratic != 0:
+                fractions = [-1 + index / 4 for index in range(9)]
+            strips = [(lo * a.half_width, lo * b.half_width,
+                       hi * b.half_width, hi * a.half_width)
+                      for lo, hi in itertools.pairwise(fractions)]
+            for side in (-1, 1):
+                for lo, hi in ((0., .075), (.075, .15)):
+                    strips.append((side * (a.half_width + lo), side * (b.half_width + lo),
+                                   side * (b.half_width + hi), side * (a.half_width + hi)))
+        else:
+            strips = []
+            for strip in range(8):
+                lo, hi = -1 + strip / 4, -1 + (strip + 1) / 4
+                strips.append((lo * (a.half_width + .15), lo * (b.half_width + .15),
+                               hi * (b.half_width + .15), hi * (a.half_width + .15)))
+        for index, lanes in enumerate(strips):
+            if edge_fade:
+                lo, hi = lanes[0] / (a.half_width + .15), lanes[3] / (a.half_width + .15)
+            else:
+                lo, hi = -1 + index / 4, -1 + (index + 1) / 4
             points = [a.point(lanes[0], .006), b.point(lanes[1], .006),
                       b.point(lanes[2], .006), a.point(lanes[3], .006)]
             uv = ((a.station / 2, lo * a.half_width / 2),
@@ -548,7 +608,7 @@ class CircuitScene(MeshScene):
 
             na = normal(a, (b.z - previous.z) / (2 * ds))
             nb = normal(b, (following.z - a.z) / (2 * ds))
-            if a.bank_quadratic != 0 or b.bank_quadratic != 0:
+            if a.bank_quadratic != 0 or b.bank_quadratic != 0 or a.bank_fade > 0 or b.bank_fade > 0:
                 self._banked_road(a, b, previous, following, ds)
             else:
                 p = [
@@ -744,14 +804,22 @@ class CircuitScene(MeshScene):
                 else alternate_material
             )
             edge_a, edge_b = side * (a.half_width + 0.14), side * (b.half_width + 0.14)
-            self.quad(
-                "Tile_Kerb",
-                color,
-                a.point(edge_a, 0.021),
-                b.point(edge_b, 0.021),
-                b.point(edge_b + side * width, height),
-                a.point(edge_a + side * width, height),
-            )
+            if a.bank_fade == 0 and b.bank_fade == 0:
+                self.quad(
+                    "Tile_Kerb", color, a.point(edge_a, .021), b.point(edge_b, .021),
+                    b.point(edge_b + side * width, height), a.point(edge_a + side * width, height),
+                )
+                continue
+            strips = max(1, math.ceil(width / .075))
+            for strip in range(strips):
+                lo, hi = strip / strips, (strip + 1) / strips
+                self.quad(
+                    "Tile_Kerb", color,
+                    a.point(edge_a + side * width * lo, .021 + (height - .021) * lo),
+                    b.point(edge_b + side * width * lo, .021 + (height - .021) * lo),
+                    b.point(edge_b + side * width * hi, .021 + (height - .021) * hi),
+                    a.point(edge_a + side * width * hi, .021 + (height - .021) * hi),
+                )
         self.surface_ranges.append(
             {
                 "type": "kerb",

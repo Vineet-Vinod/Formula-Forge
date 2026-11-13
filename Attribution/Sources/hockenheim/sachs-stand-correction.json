@@ -1,0 +1,465 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "circuit": "hockenheim",
+  "status": "Source reconstruction; fresh packaged comparison required.",
+  "ground_anchors": [
+    {
+      "ring_index": 0,
+      "longitude": 8.5668805,
+      "latitude": 49.3290482,
+      "easting_m": 468529.8029338321,
+      "northing_m": 5464125.773893001,
+      "height_nhn_m": 110.87000274658203,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468529.6779338321%2C5464125.648893001%2C468529.9279338321%2C5464125.898893001&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "1aca0d1672de671b05b66d07adae49717b43bed29261b354e7b0e9fc491ab6b3"
+    },
+    {
+      "ring_index": 1,
+      "longitude": 8.5668873,
+      "latitude": 49.3290398,
+      "easting_m": 468530.2916620683,
+      "northing_m": 5464124.837222504,
+      "height_nhn_m": 110.90499877929688,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468530.1666620683%2C5464124.712222504%2C468530.4166620683%2C5464124.962222504&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "9e5af7d18b069e6533e65c25e1e2f373b47cd01dfcd8bac1055305934738acf4"
+    },
+    {
+      "ring_index": 2,
+      "longitude": 8.5669026,
+      "latitude": 49.3290209,
+      "easting_m": 468531.3913012173,
+      "northing_m": 5464122.729714056,
+      "height_nhn_m": 110.79199981689453,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468531.2663012173%2C5464122.604714056%2C468531.5163012173%2C5464122.854714056&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "fb5f528246a2ae24770eed929e777ea43643d691df3bb42dfc84dd8481d6605d"
+    },
+    {
+      "ring_index": 3,
+      "longitude": 8.566796,
+      "latitude": 49.3287882,
+      "easting_m": 468523.49747376,
+      "northing_m": 5464096.9046015125,
+      "height_nhn_m": 102.9729995727539,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468523.37247376%2C5464096.7796015125%2C468523.62247376%2C5464097.0296015125&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "cfd594d5f336b22d7c3ac602fa72fe6092b4580005dcc507aeef5c36003dfdf9"
+    },
+    {
+      "ring_index": 4,
+      "longitude": 8.5672529,
+      "latitude": 49.3289287,
+      "easting_m": 468556.78510712355,
+      "northing_m": 5464112.333865752,
+      "height_nhn_m": 102.73600006103516,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468556.66010712355%2C5464112.208865752%2C468556.91010712355%2C5464112.458865752&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "3e1cfd2397e23f4035903e3bad40c06a30a2bcd0db1fe112a0b9892067549dd6"
+    },
+    {
+      "ring_index": 5,
+      "longitude": 8.5674416,
+      "latitude": 49.3289867,
+      "easting_m": 468570.53284964035,
+      "northing_m": 5464118.7032645065,
+      "height_nhn_m": 102.79399871826172,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468570.40784964035%2C5464118.5782645065%2C468570.65784964035%2C5464118.8282645065&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "02fce1499b54671019ab716d6ba4c26dc63e8e25841f63e22df9955a25ee49e6"
+    },
+    {
+      "ring_index": 6,
+      "longitude": 8.5676807,
+      "latitude": 49.3290276,
+      "easting_m": 468587.9317033708,
+      "northing_m": 5464123.150711904,
+      "height_nhn_m": 102.56999969482422,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468587.8067033708%2C5464123.025711904%2C468588.0567033708%2C5464123.275711904&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "a001249c963fd48e51701ea84eaa77fe8d4d18bc2be83cba6481dcf25cf29804"
+    },
+    {
+      "ring_index": 7,
+      "longitude": 8.5678406,
+      "latitude": 49.3290346,
+      "easting_m": 468599.5543632394,
+      "northing_m": 5464123.862430959,
+      "height_nhn_m": 102.43599700927734,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468599.4293632394%2C5464123.737430959%2C468599.6793632394%2C5464123.987430959&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "f41d37219bb9bbf5a9138b355aadd5ec6ccaec068583a99cddc0f668ac791f3b"
+    },
+    {
+      "ring_index": 8,
+      "longitude": 8.567985,
+      "latitude": 49.3290228,
+      "easting_m": 468610.03884958837,
+      "northing_m": 5464122.490597722,
+      "height_nhn_m": 102.38700103759766,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468609.91384958837%2C5464122.365597722%2C468610.16384958837%2C5464122.615597722&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "a1f91be83d5e7e916c58000efce93c8d3f777ec08fe16912d799008a111147c8"
+    },
+    {
+      "ring_index": 9,
+      "longitude": 8.5681272,
+      "latitude": 49.3289989,
+      "easting_m": 468620.3558001726,
+      "northing_m": 5464119.774527511,
+      "height_nhn_m": 102.39199829101562,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468620.2308001726%2C5464119.649527511%2C468620.4808001726%2C5464119.899527511&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "2d3c00c53bb86997f493d0de8644a64af99ef22f1c73d684cd28f1eb2d93f35a"
+    },
+    {
+      "ring_index": 10,
+      "longitude": 8.5682281,
+      "latitude": 49.3289706,
+      "easting_m": 468627.66913625895,
+      "northing_m": 5464116.586474924,
+      "height_nhn_m": 102.37000274658203,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468627.54413625895%2C5464116.461474924%2C468627.79413625895%2C5464116.711474924&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "c9b682885b2cf0b8cf166b9db53f4b964549c9ceb86c1e30867c40b57b04daed"
+    },
+    {
+      "ring_index": 11,
+      "longitude": 8.5683368,
+      "latitude": 49.3289274,
+      "easting_m": 468635.5397581018,
+      "northing_m": 5464111.738743437,
+      "height_nhn_m": 102.25,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468635.4147581018%2C5464111.613743437%2C468635.6647581018%2C5464111.863743437&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "c035f04bbb8b1605dcd0ac8c7c9425b87442af328815c0fa09af51e762c0884b"
+    },
+    {
+      "ring_index": 12,
+      "longitude": 8.5684371,
+      "latitude": 49.3288741,
+      "easting_m": 468642.793639929,
+      "northing_m": 5464105.771681574,
+      "height_nhn_m": 101.91200256347656,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468642.668639929%2C5464105.646681574%2C468642.918639929%2C5464105.896681574&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "5a59a64031afea5306a88719c546e9b5009dfefe100f5d85912f4f3be86813ca"
+    },
+    {
+      "ring_index": 13,
+      "longitude": 8.568444,
+      "latitude": 49.3288693,
+      "easting_m": 468643.29194152215,
+      "northing_m": 5464105.235195878,
+      "height_nhn_m": 101.86100006103516,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468643.16694152215%2C5464105.110195878%2C468643.41694152215%2C5464105.360195878&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "40a59a451fe79189dca771511eec44ba3d2cde7b3ea9bfd93b0da13d669f8029"
+    },
+    {
+      "ring_index": 14,
+      "longitude": 8.568624,
+      "latitude": 49.3287442,
+      "easting_m": 468656.2912225888,
+      "northing_m": 5464091.252983642,
+      "height_nhn_m": 101.88700103759766,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468656.1662225888%2C5464091.127983642%2C468656.4162225888%2C5464091.377983642&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "aa8b812ecf2f15b9c7154999f5192a0981723aa044dcf779ae470042cd852d48"
+    },
+    {
+      "ring_index": 15,
+      "longitude": 8.5689344,
+      "latitude": 49.3284997,
+      "easting_m": 468678.6896642366,
+      "northing_m": 5464063.942893028,
+      "height_nhn_m": 101.74700164794922,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468678.5646642366%2C5464063.817893028%2C468678.8146642366%2C5464064.067893028&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "0f9247f5a0653214b20e1975aab7bd6f592ffb0f067a61c612c73828dfc0ce67"
+    },
+    {
+      "ring_index": 16,
+      "longitude": 8.5691327,
+      "latitude": 49.3283501,
+      "easting_m": 468693.0032800098,
+      "northing_m": 5464047.229489077,
+      "height_nhn_m": 101.93599700927734,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468692.8782800098%2C5464047.104489077%2C468693.1282800098%2C5464047.354489077&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "4537713aec0d997fd70738908e1287f7b5285111d60eb91a8e02f438aea4f8a8"
+    },
+    {
+      "ring_index": 17,
+      "longitude": 8.5693721,
+      "latitude": 49.3281705,
+      "easting_m": 468710.28431494057,
+      "northing_m": 5464027.163964512,
+      "height_nhn_m": 102.27799987792969,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468710.15931494057%2C5464027.038964512%2C468710.40931494057%2C5464027.288964512&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "9640acfd0407a0870797ebf849ad36f5ef3b33fffe58e32646329a09ee2f5f2b"
+    },
+    {
+      "ring_index": 18,
+      "longitude": 8.5695752,
+      "latitude": 49.3282897,
+      "easting_m": 468725.11716338963,
+      "northing_m": 5464040.3314588405,
+      "height_nhn_m": 110.03700256347656,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468724.99216338963%2C5464040.2064588405%2C468725.24216338963%2C5464040.4564588405&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "ef13b2b08e33c783f7b417a4916a14d5318e8ef42986c5f18017592c202accde"
+    },
+    {
+      "ring_index": 19,
+      "longitude": 8.5696351,
+      "latitude": 49.3283243,
+      "easting_m": 468729.4914293241,
+      "northing_m": 5464044.153182799,
+      "height_nhn_m": 110.84600067138672,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468729.3664293241%2C5464044.028182799%2C468729.6164293241%2C5464044.278182799&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "cb4d0a9108cba5c9ce8ed91083ba07ddd0d24f282b9797941a669dc0acc5f3a6"
+    },
+    {
+      "ring_index": 20,
+      "longitude": 8.5695613,
+      "latitude": 49.3283777,
+      "easting_m": 468724.1629297728,
+      "northing_m": 5464050.120273948,
+      "height_nhn_m": 110.86100006103516,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468724.0379297728%2C5464049.995273948%2C468724.2879297728%2C5464050.245273948&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "48546b18335ed6f76a74ac7ea9a611d5a14eb625e75fba5a1b2adbffb4c5ebcf"
+    },
+    {
+      "ring_index": 21,
+      "longitude": 8.569121,
+      "latitude": 49.3287214,
+      "easting_m": 468692.38860086264,
+      "northing_m": 5464088.512183228,
+      "height_nhn_m": 110.85399627685547,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468692.26360086264%2C5464088.387183228%2C468692.51360086264%2C5464088.637183228&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "6985e0c83d00cecd2bd52caf051d8b87d0ca2a7bac45aec05ffadb3914453715"
+    },
+    {
+      "ring_index": 22,
+      "longitude": 8.5687901,
+      "latitude": 49.3289769,
+      "easting_m": 468668.50765868573,
+      "northing_m": 5464117.053604218,
+      "height_nhn_m": 110.83300018310547,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468668.38265868573%2C5464116.928604218%2C468668.63265868573%2C5464117.178604218&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "5d1f163967dd665a389b2404e3c052a8a4d24bf93a40016a6b786d415d460d18"
+    },
+    {
+      "ring_index": 23,
+      "longitude": 8.5686894,
+      "latitude": 49.3290383,
+      "easting_m": 468661.22984214243,
+      "northing_m": 5464123.921284419,
+      "height_nhn_m": 110.83399963378906,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468661.10484214243%2C5464123.796284419%2C468661.35484214243%2C5464124.046284419&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "f4fdf12b000b97d9f7f2b179d661ba37ec8f7a933d6664c83e86d7239982b497"
+    },
+    {
+      "ring_index": 24,
+      "longitude": 8.5686182,
+      "latitude": 49.3290817,
+      "easting_m": 468656.08406007575,
+      "northing_m": 5464128.775652872,
+      "height_nhn_m": 110.81900024414062,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468655.95906007575%2C5464128.650652872%2C468656.20906007575%2C5464128.900652872&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "96d676d637376173eb0a63cc9f8987f41140aa3f4ba4986cdf74a6b829b06262"
+    },
+    {
+      "ring_index": 25,
+      "longitude": 8.5684514,
+      "latitude": 49.3291501,
+      "easting_m": 468644.00795770687,
+      "northing_m": 5464136.44898314,
+      "height_nhn_m": 110.85099792480469,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468643.88295770687%2C5464136.32398314%2C468644.13295770687%2C5464136.57398314&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "267767dd6384d6a045ecbb360eda7428d33d66befbd27c4ca1fb84a9e6bad1d8"
+    },
+    {
+      "ring_index": 26,
+      "longitude": 8.5682846,
+      "latitude": 49.3291981,
+      "easting_m": 468631.91892790253,
+      "northing_m": 5464141.854448676,
+      "height_nhn_m": 110.82499694824219,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468631.79392790253%2C5464141.729448676%2C468632.04392790253%2C5464141.979448676&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "faeef01bdecff01b1465efd80fc6c26175a19cbd180a1b786f058a35cdf7c1a6"
+    },
+    {
+      "ring_index": 27,
+      "longitude": 8.5681163,
+      "latitude": 49.3292286,
+      "easting_m": 468619.7098104594,
+      "northing_m": 5464145.31506891,
+      "height_nhn_m": 110.84200286865234,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468619.5848104594%2C5464145.19006891%2C468619.8348104594%2C5464145.44006891&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "d6bcea8750b056149694d149d09c6dce5dbcb3878f608541de8db977729382cc"
+    },
+    {
+      "ring_index": 28,
+      "longitude": 8.568069,
+      "latitude": 49.3292347,
+      "easting_m": 468616.27692130033,
+      "northing_m": 5464146.012862963,
+      "height_nhn_m": 110.81700134277344,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468616.15192130033%2C5464145.887862963%2C468616.40192130033%2C5464146.137862963&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "8fcdead2f72ee43cbd107ea08280f5a77f35a762da11bd15384fe3e29ea241be"
+    },
+    {
+      "ring_index": 29,
+      "longitude": 8.5679332,
+      "latitude": 49.3292464,
+      "easting_m": 468606.41728139296,
+      "northing_m": 5464147.369993316,
+      "height_nhn_m": 110.84500122070312,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468606.29228139296%2C5464147.244993316%2C468606.54228139296%2C5464147.494993316&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "21be708e37bf9341e17915d87aeb7e6af74ed229d4a03b0cefc17bd505dcc03c"
+    },
+    {
+      "ring_index": 30,
+      "longitude": 8.5677348,
+      "latitude": 49.3292467,
+      "easting_m": 468592.00194860663,
+      "northing_m": 5464147.485816067,
+      "height_nhn_m": 110.85199737548828,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468591.87694860663%2C5464147.360816067%2C468592.12694860663%2C5464147.610816067&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "0de37392de00c7323e17d0221e23a7d8e8000733c38677c03a42b22d3bab9be8"
+    },
+    {
+      "ring_index": 31,
+      "longitude": 8.5675466,
+      "latitude": 49.329231,
+      "easting_m": 468578.317553756,
+      "northing_m": 5464145.818695409,
+      "height_nhn_m": 110.85700225830078,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468578.192553756%2C5464145.693695409%2C468578.442553756%2C5464145.943695409&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "2070b89b857e394383ea5b1bad9c5aa78192b3bdbb0994baf0dabac5f2386f4a"
+    },
+    {
+      "ring_index": 32,
+      "longitude": 8.5673858,
+      "latitude": 49.3291974,
+      "easting_m": 468566.6126086542,
+      "northing_m": 5464142.15024335,
+      "height_nhn_m": 110.86299896240234,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468566.4876086542%2C5464142.02524335%2C468566.7376086542%2C5464142.27524335&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "7ea73cf6182344edfc6a85d25866c9fc4f82473af5692de12b5dcf58850d22ed"
+    },
+    {
+      "ring_index": 33,
+      "longitude": 8.5673574,
+      "latitude": 49.3291889,
+      "easting_m": 468564.5436821124,
+      "northing_m": 5464141.217106583,
+      "height_nhn_m": 110.87000274658203,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468564.4186821124%2C5464141.092106583%2C468564.6686821124%2C5464141.342106583&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "0b61d9d54997ffe962487bbeb2e677ebf7555f687c6210a328a28389f7fe99a9"
+    },
+    {
+      "ring_index": 34,
+      "longitude": 8.5673337,
+      "latitude": 49.3291821,
+      "easting_m": 468562.81733456504,
+      "northing_m": 5464140.471005568,
+      "height_nhn_m": 110.86199951171875,
+      "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DGM_025?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=DGM025_Hoehen_Graustufen&QUERY_LAYERS=DGM025_Hoehen_Graustufen&CRS=EPSG%3A25832&BBOX=468562.69233456504%2C5464140.346005568%2C468562.94233456504%2C5464140.596005568&WIDTH=1&HEIGHT=1&I=0&J=0&INFO_FORMAT=application%2Fjson&FORMAT=image%2Fpng&STYLES=",
+      "response_sha256": "0d0924f5f05793bcf0f866a006bd2ce6e072dc927f0668fa047e204992029d5f"
+    }
+  ],
+  "front_ring_indices": [
+    3,
+    17
+  ],
+  "row_count": 27,
+  "row_pitch_m": 1.0,
+  "row_rise_m": 0.41,
+  "first_floor_m": 0.75,
+  "canopy_above_front_m": 15.1,
+  "section_uncertainty_m": 2.0,
+  "owners": {
+    "seating_osm_id": 232009782,
+    "roof_osm_id": 34400102,
+    "name": "Innentrib\u00fcne",
+    "seating_area_current_source_frame_m2": 5963.395736153,
+    "roof_area_current_source_frame_m2": 1954.376056809,
+    "roof_note": "The separately retained roof is only the rear strip, not the whole stand envelope. The lower/front rows remain uncovered."
+  },
+  "observations": {
+    "direct_video": "Saved/Refs/germany.mp4",
+    "continuous_seconds": [
+      412,
+      414,
+      416,
+      418,
+      420
+    ],
+    "HUD_lap_seconds": [
+      59.234,
+      61.233,
+      63.264,
+      65.231,
+      67.332
+    ],
+    "approximate_native_brackets_m": [
+      3730,
+      3801,
+      3850,
+      3930,
+      4050
+    ],
+    "registration_uncertainty_m": 25,
+    "pose_note": "412 s is the Sachs entry with the Baden-W\u00fcrttemberg-Center left of the curved stand. 414/416 s look through the bowl/exit with the entry canopy leaving the forward field. Inside driver LEFT is open grass throughout, not a roofed grandstand. Forward low open bleachers seen after apex are not automatically assigned to the entry owner behind the camera.",
+    "section_note": "Row count, pitch, rise, canopy height, support spacing and aisle widths are visual section estimates, not a measured structural drawing. The mapped roof strip and current plan are retained exactly. The historical ortho shows predominantly white seats with a few pale coloured section blocks. Existing White is used for the dominant seating; exact faded section colours are not claimed from the crowded video or replaced by saturated rainbow stripes."
+  },
+  "primary_sources": [
+    "https://www.hockenheimring.de/wp-content/uploads/2025/01/250114_HoRi_Magazin_Lageplan_A4_eng.pdf",
+    "https://www.hockenheimring.de/infos/hockenheimring/daten-fakten/"
+  ],
+  "ground_source": {
+    "provider": "LGL Baden-W\u00fcrttemberg ATKIS DGM025 WMS numeric GetFeatureInfo",
+    "CRS": "EPSG:25832 horizontal; NHN DHHN2016 vertical as qualified by source-road record",
+    "method": "Absolute floating-point GRAY_INDEX observations at every retained seating-ring vertex. Runtime subtracts the exact canonical scenery-ground.json relative_datum_m. No integer-metre raster is used for foundations.",
+    "front_height_nhn_range_m": [
+      101.74700164794922,
+      102.9729995727539
+    ],
+    "rear_note": "Rear ground around 110.8 m NHN is a real raised terrace and is preserved. A triangulated field through retained numeric ground anchors defines the bottom of terrace closures and support foundations. The visible terrace tops rise continuously from the road-facing front, independently of exterior DSM samples.",
+    "sampling_cell_m": 0.25,
+    "uncertainty_note": "The numeric service returns float heights; millimetre decimal places are not a claimed vertical accuracy. Provider-classified terrain may include engineered grandstand earthworks. Retained front and rear samples explicitly preserve that terrain rather than treating its height difference as contamination."
+  },
+  "aerial": {
+    "url": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_HIST_DOP_2010-2019?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=2018&CRS=EPSG%3A25832&BBOX=468435%2C5463907%2C468755%2C5464215&WIDTH=1024&HEIGHT=986&FORMAT=image%2Fjpeg&STYLES=",
+    "bbox_epsg25832_m": [
+      468435,
+      5463907,
+      468755,
+      5464215
+    ],
+    "width": 1024,
+    "height": 986,
+    "layer": "2018",
+    "exact_image_date": "Unresolved historical layer date, not a current aerial survey.",
+    "sha256": "3227eddaa32eb17430d09721a2f7ce4f3075e2d0c55240c86402af464c262fbb",
+    "bytes": 189979
+  },
+  "preserved": "All native road, alignment, width, banking, protection, physics, camera and unrelated architecture. Baden-W\u00fcrttemberg-Center remains the existing actual footprint model.",
+  "proof": {
+    "triangles": 81638,
+    "architecture_triangle_sha256": "650d5d69e6c437f194eb19f00c6009f42598e4ff54869e9805a3460786eb1563",
+    "noncrowd_projected_excess_owner_m2": 0.0,
+    "canopy_shell_projected_excess_roof_m2": 0.0,
+    "canopy_top_missing_actual_roof_m2": 0.0,
+    "roof_shell_unpaired_edges_1um": 0,
+    "canopy_components": 1,
+    "whole_owner_asphalt_overlap_m2": 0.0,
+    "whole_owner_asphalt_separation_m": 21.174110128644386,
+    "tread_row_level_max_error_rows": 3.552713678800501e-15,
+    "terrain_masks_xy_only": true,
+    "ground_source_minmax_nhn_m": [
+      101.74700164794922,
+      110.90499877929688
+    ],
+    "poisoned_DSM_geometry_stream_equal": true,
+    "minimum_canopy_soffit_above_back_row_floor_m": 3.469999999999999,
+    "roof_support_note": "31 rear columns are inset within the actual roof strip, with approximately 8 m pitch and closed cantilever frames. Their base centres follow the retained triangulated primary ground. No front columns are planted in the uncovered lower seating.",
+    "protection_status": "The pre-correction native outside corridor crosses the real stand. West owns the source-grounded entry protection correction. This source-only proof establishes asphalt clearance; final protection intersection is to be checked against the coordinated fresh native export, not claimed against obsolete walls.",
+    "regression": "Tests/test_circuit_scenes.py::test_sachs_stand_keeps_mapped_rear_canopy_and_measured_foundations, PASS. Actual retained footprints, exact roof coverage/watertightness, 27 coherent rows, XY-only terrain masks, exact measured anchor interpolation, and full stream invariance under poisoned DSM."
+  },
+  "runtime_approval": false,
+  "runtime_capture_targets_m": [
+    3660,
+    3730,
+    3801,
+    3850,
+    3930
+  ]
+}

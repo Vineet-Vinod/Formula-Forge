@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "ground_body_osm_id": 161885377,
+  "roof_source_id": "BATIMENT0000000074074354",
+  "roof_front_vertices": [
+    2,
+    3
+  ],
+  "region_wgs84": [
+    [
+      7.4234533013677835,
+      43.732367567640715
+    ],
+    [
+      7.423687197350619,
+      43.732367567640715
+    ],
+    [
+      7.423687197350619,
+      43.732509884583834
+    ],
+    [
+      7.4234533013677835,
+      43.732509884583834
+    ]
+  ],
+  "ground_grid_file": "architecture/rascasse-frontage-ground-grid.json",
+  "uniform_scale": 1.0099320735128836,
+  "podium_height_above_source_minimum_m": 3.5,
+  "body_search_width_m": 2.5,
+  "street_threshold_sample_distance_m": 2.5,
+  "forecourt_width_m": 6.0,
+  "source_note": "Actual retained OSM ground body extends beyond the measured IGN upper roof along this street-facing corner. Continuous496 s shows a recessed lower arcade and projecting first-floor terrace. Only the largest road-facing body-minus-roof wedge is occupied by the new low podium. Its slab level matches the existing estimated3.5 m storey; source upper roofs and existing upper geometry stay unchanged. Thresholds use source lower-street samples2.5 m roadward, not the minimum ground elevation of the complete291 m property. Podium slab/arcade/balustrade sections remain qualified architectural estimates.",
+  "dimensions_uncertainty": {
+    "plan_m": 2.5,
+    "ground_floor_section_m": 0.75,
+    "paving_extent_m": 2.0,
+    "note": "IGN states2.5 m plan and1.5 m height precision for the measured roof. The OSM ground-body date and datum of individual ground-floor bays are not independent surveys."
+  },
+  "runtime_evidence": {
+    "packet": "build/reviews/monaco/resume-20261113-corrections-live",
+    "manifest_sha256": "029c9d1b1a9cb6c204fb26ecba31a439f7c9b45713274c797c2df72dcbf2cab3",
+    "frame": 3243,
+    "actual_station_m": 2975.12939453125,
+    "reference_video": "Saved/Refs/monaco.mp4",
+    "reference_seconds": 496,
+    "reference_sha256": "243e8192471d78a7ca2c58705eab55b63fc65d9d4a4bc18ce8f39730d463f305",
+    "owning_obstruction": "Runoff, Tile_Street_00_m2. Gray foreground triangles precede Black/Glass/Rose ground-floor faces in exact camera rays. The highest owning vertex is inside the actual OSM ground body, outside the narrower measured roof mask.",
+    "source_camera_witnesses": "street-integration-original-witnesses.json",
+    "current_target_sha256": "1fe9719e41e1ffcbec589ccea57c68ac9dfc232cb39eae170675e92755dfe059"
+  },
+  "ground_source_note": "Direct IGN RGE queries are retained at1 m intervals but repeat across provider cells. This is not a claim of1 m source resolution or survey accuracy. The direct496 s view shows paved access at the lower arcade. A bounded ruled forecourt joins local lower-street threshold samples to the adjacent native-road toe, rather than reproducing the source high-cell bleed around occupied building bodies as an earthen mound. Higher unoccupied ground outside the narrow actual front strip and all upper streets remain untouched. The paving shape,2.5 m threshold sampling offset and6 m maximum foreground width are qualified reconstructions.",
+  "pole_correction": {
+    "removed_generic_mast_authored_station_m": 1370,
+    "old_position_xy_m": [
+      648.1692744685065,
+      665.6125896133917
+    ],
+    "nearest_other_arm_station_m": 1262.0420432967326,
+    "center_distance_m": 4.530264745869527,
+    "half_width_m": 5.25,
+    "reason": "Unsupported generic decoration intruded into the adjacent racing arm. Exact frame1213 Steel triangle rays confirm its visual ownership. Other six masts remain unchanged."
+  },
+  "preserved": "All native data/profiles/protection/handling/camera, measured roofs, upper streets, existing upper architecture and La Rascasse fence caps.",
+  "visual_approval": false,
+  "in_memory_proof": {
+    "triangles": 1381,
+    "new_podium_top_area_m2": 12.796770091466465,
+    "structural_excess_ground_body_with_11cm_fascia_tolerance_m2": 0.0,
+    "structural_asphalt_overlap_m2": 0.0,
+    "structural_barrier_separation_m": 0.24702230045788598,
+    "podium_roof_unpaired_edges_1um": 0,
+    "foreground_area_m2": 48.96543395329253,
+    "foreground_asphalt_overlap_m2": 0.0,
+    "all_new_masks_xy_only": true,
+    "upper_property_geometry_before_sha256": "655f382151427b67fdd13438381de716278d9fa02f3712ccb1022f6489f285a9",
+    "upper_property_geometry_after_sha256": "655f382151427b67fdd13438381de716278d9fa02f3712ccb1022f6489f285a9",
+    "upper_property_geometry_identical": true,
+    "old_obstruction_witnesses": [
+      {
+        "pixel": [
+          300,
+          380
+        ],
+        "old_gray_hit": [
+          183.9627201383127,
+          -244.87687553878177,
+          1.8060341838983605
+        ],
+        "removed_by_new_masks": true
+      },
+      {
+        "pixel": [
+          450,
+          375
+        ],
+        "old_gray_hit": [
+          182.01258980452445,
+          -245.14589840335657,
+          1.8921292835996162
+        ],
+        "removed_by_new_masks": true
+      },
+      {
+        "pixel": [
+          640,
+          350
+        ],
+        "old_gray_hit": [
+          179.53968411662973,
+          -247.68536725388628,
+          2.4401144966248665
+        ],
+        "removed_by_new_masks": true
+      },
+      {
+        "pixel": [
+          750,
+          370
+        ],
+        "old_gray_hit": [
+          177.52746426657137,
+          -248.93731227544873,
+          2.141868431855661
+        ],
+        "removed_by_new_masks": true
+      }
+    ]
+  }
+}

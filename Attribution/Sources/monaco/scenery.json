@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=monaco",
-  "tiles": 116,
-  "triangles": 2251386,
+  "tiles": 224,
+  "triangles": 2252737,
   "road_sha256": "3a7544d64e64e34c445dbf4049745ad0e2fc4f2d8e96dcf6d29b2c8ee7f67df3",
   "terrain_sha256": "f1538f328db1481498922f0c8d143010e2a9bcd9c17cb30b52457605ac30a21a",
   "landmarks": [
@@ -111,6 +111,15 @@
       "height_status": "Unmeasured conservative retained default; not a verified storey survey",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
       "removed_road_area_m2": 11.005
+    },
+    {
+      "name": "Actual Quai Antoine corner ground body and lower forecourt",
+      "osm_id": 161885377,
+      "podium_area_m2": 12.796770091466481,
+      "fine_ground_area_m2": 48.96543395349262,
+      "podium_deck_z_m": 4.2871005886999995,
+      "source": "architecture/rascasse-frontage-correction.json",
+      "dimensions_status": "The retained OSM ground-body wedge projects beyond the measured IGN upper roof. The registered496 s view supports a recessed ground arcade and shallow first-floor terrace. Upper roofs/storeys stay unchanged. Local lower-street thresholds use retained IGN ground2.5 m toward the adjacent road; the3.5 m podium storey and railing section are architectural estimates. Only the mapped corner frontage receives a ruled paved forecourt between the local lower-street thresholds and the adjacent road toe. Repeated high terrain cells are not treated as street-level survey points. Actual unoccupied hillsides, occupied upper parcels and upper streets remain untouched."
     },
     {
       "name": "Quai Antoine exhibition and residential complex",

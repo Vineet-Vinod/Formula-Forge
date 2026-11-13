@@ -1,9 +1,9 @@
 {
   "recipe": "make circuit-assets CIRCUIT=hockenheim",
   "tiles": 152,
-  "triangles": 1106382,
-  "road_sha256": "675b66da724eeba83b45910b5fb75526bb60c29a25e86b038ad9d24bde69b289",
-  "terrain_sha256": "d1ac435fcadfa6cf28b567d770c62b6e97e01f14e1dfdd0218ea1d54814c04da",
+  "triangles": 1140375,
+  "road_sha256": "aae82124e5f654f6c786640822ce199df4a000d251612eb972a090297cc858c9",
+  "terrain_sha256": "3c153de3ac7dfad905902d664ce2e979f4c3bd35d66dc9d68fefc98bacdbc0bc",
   "landmarks": [
     {
       "name": "Paved pit lane and working apron",
@@ -13,6 +13,12 @@
       "outer_offset_m": 22.4,
       "source_note": "Mapped Boxengebaeude202491057 front21\u2192217.4m, road-edge offsets18.7\u201322.2m.22.4m covers variable facade setback. Supplied48.33s mainstraight confirms pit-side paved area RIGHT. End extensions rounded reconstruction.",
       "access": "Visual service area outside the closed driving boundary."
+    },
+    {
+      "name": "Sachs measured bank and variable outside gravel, open inside grass",
+      "source": "sachs-corridor-source.json",
+      "native_scope_m": "3600\u20134030",
+      "dimensions_status": "2018DOP20/mapped grandstand front plus2022DGM crossfalls. Forecourt standoff1.75m\u00b11m and bowl/exit wall tracing\u00b12m are explicit original reconstruction estimates. Broad gravel is preserved; the innergreen strip is0.6m wide beyond the actualkerb, within the2.2m corridor. Inside opening is shared by physical and visible protection."
     },
     {
       "name": "Reference event panels",
@@ -107,7 +113,7 @@
     {
       "name": "Hockenheim occupied grandstand foundations and forecourts",
       "osm_ids": "34400164, 34400180, 34400189, 232009789, 232009793",
-      "ground_area_m2": 43134.24821868057,
+      "ground_area_m2": 43482.836964037226,
       "source_note": "Only the actual Nordtribuene footprint and the three authored main/Sued seating ribbons with their protected forecourts receive inferred ground beneath exposed terraces. Retained GLO30 DSM roof/terrace mounds buried actual seat meshes by 3.95\u20139.01m. Adjacent native road-plane anchors estimate substructure ground; this is not a bare-earth survey. Actual roads, shoulders, escape paving, unrelated buildings, the two clear stands and outer berms are excluded. The guessed Nord230\u2013430 seating overlapped service footprints532896900/901; actual footprint-clipped Nord seating replaces it, leaving both service footprints unchanged. Retained mapped owners register the stand complexes; seating/setback dimensions remain reference reconstructions."
     },
     {
@@ -128,7 +134,7 @@
       "name": "Nordtrib\u00fcne continuous mapped terraces",
       "osm_id": 232009789,
       "rows_estimate": 24,
-      "foundation_datum_m": 0.03697429652502382,
+      "foundation_datum_m": 0.07410196739707117,
       "front_floor_above_datum_m": 1.2,
       "row_pitch_m": 0.9,
       "row_rise_m": 0.46,
@@ -144,11 +150,16 @@
       "rows": 24
     },
     {
-      "name": "Authored grandstand",
-      "start_m": 3660,
-      "end_m": 3920,
-      "side": -1,
-      "rows": 27
+      "name": "Sachs Innentrib\u00fcne",
+      "osm_id": 232009782,
+      "roof_osm_id": 34400102,
+      "rows_estimate": 27,
+      "row_pitch_m": 1.0,
+      "row_rise_m": 0.41,
+      "roof_rear_support_bays": 31,
+      "ground_datum_nhn_m": 100.25724665983111,
+      "mapped_roof_fraction": 0.32772872089642663,
+      "source_note": "Actual curved seating footprint and separately mapped rear roof strip. Front rows stay open. Precise LGL ground anchors retain the raised rear earth terrace; section and support spacing remain visual estimates from continuous 412\u2013420 s views and 2018 ortho."
     },
     {
       "name": "Authored grandstand",

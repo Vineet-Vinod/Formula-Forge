@@ -79,8 +79,12 @@ float sampleTrackElevationMeters(const TrackCatalogEntry& track, float distanceM
 float sampleTrackWidthMeters(const TrackCatalogEntry& track, float distanceMeters) noexcept;
 float sampleTrackBankDegrees(const TrackCatalogEntry& track, float distanceMeters) noexcept;
 float sampleTrackBankQuadratic(const TrackCatalogEntry& track, float distanceMeters) noexcept;
-float trackLateralHeightMeters(float slope, float quadratic, float halfWidth, float lane) noexcept;
-float trackLateralSlope(float slope, float quadratic, float halfWidth, float lane) noexcept;
+float sampleTrackBankFadeMeters(const TrackCatalogEntry& track, float distanceMeters) noexcept;
+float sampleTrackBankOuterSlope(const TrackCatalogEntry& track, float distanceMeters, bool positiveSide) noexcept;
+float trackLateralHeightMeters(float slope, float quadratic, float halfWidth, float lane,
+    float fadeMeters = 0.0f, float positiveOuterSlope = 0.0f, float negativeOuterSlope = 0.0f) noexcept;
+float trackLateralSlope(float slope, float quadratic, float halfWidth, float lane,
+    float fadeMeters = 0.0f, float positiveOuterSlope = 0.0f, float negativeOuterSlope = 0.0f) noexcept;
 float sampleTrackShoulderMeters(const TrackCatalogEntry& track, float distanceMeters, bool left) noexcept;
 
 enum class TrackTurnDirection : int {

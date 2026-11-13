@@ -16,6 +16,7 @@ from shapely.ops import polygonize, triangulate, unary_union
 
 from venues.monaco_hillside import hillside_city
 from venues.monaco_properties import fairmont_garden, mirabeau, property_envelopes
+from venues.monaco_rascasse_frontage import rascasse_frontage
 from venues.monaco_tabac import tabac_frontage_ground
 from venues.west_architecture import dome, mast, trees, water
 
@@ -37,6 +38,7 @@ def build_venue(scene: CircuitScene) -> None:
     for osm_id, (base, height) in tabac_frontage_ground(scene).items():
         frontage(scene, scene.footprint(osm_id), height, 3 if osm_id == 507048725 else 2,
                  base_z=base, street_station=2380 if osm_id == 507048725 else 2410)
+    rascasse_frontage(scene)
     property_envelopes(scene)
     mirabeau(scene)
     fairmont_garden(scene)
@@ -71,7 +73,7 @@ def build_venue(scene: CircuitScene) -> None:
     for start, end, side, setback in [(280, 550, 1, 10), (1280, 1440, -1, 10)]:
         trees(scene, start, end, side, setback=setback, rows=1, spacing=16, height=9)
     trees(scene, 1250, 1410, 1, setback=16, rows=1, spacing=17, height=10, palms=True)
-    for station in [200, 920, 1370, 2200, 2440, 2950, 3260]:
+    for station in [200, 920, 2200, 2440, 2950, 3260]:
         mast(scene, station, -1, 12)
 
 

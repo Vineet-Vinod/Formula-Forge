@@ -26,8 +26,11 @@ int main(int argc, char* argv[]) {
     std::ofstream road(directory / "road.csv");
     const bool progressive = std::any_of(samples.begin(), samples.end(),
         [](const CircuitSample& sample) { return sample.bankQuadratic != 0.0f; });
+    const bool bankEdges = std::any_of(samples.begin(), samples.end(),
+        [](const CircuitSample& sample) { return sample.bankFade != 0.0f; });
     road << "station,x,y,z,tx,ty,half_width,bank,left_shoulder,right_shoulder";
     if (progressive) road << ",bank_quadratic";
+    if (bankEdges) road << ",bank_fade,bank_outer_positive,bank_outer_negative";
     road << '\n' << std::setprecision(9);
     for (const auto& sample : samples) {
         road << sample.station << ',' << sample.sim.x / 17.0f << ',' << -sample.sim.y / 17.0f << ','
@@ -36,6 +39,7 @@ int main(int argc, char* argv[]) {
             << circuitShoulderMeters(*track, sample.station, true) << ','
             << circuitShoulderMeters(*track, sample.station, false);
         if (progressive) road << ',' << sample.bankQuadratic;
+        if (bankEdges) road << ',' << sample.bankFade << ',' << sample.bankOuterPositive << ',' << sample.bankOuterNegative;
         road << '\n';
     }
     std::ofstream walls(directory / "barriers.csv");

@@ -40,12 +40,15 @@ struct TrackElevationPoint {
     float elevationMeters = 0.0f;
 };
 
-// Signed road crossfall. Positive angles raise the driver's left edge and
-// therefore provide positive camber through a right-hand corner.
+// Positive crossfall raises the native positive-lane edge. Source exports
+// map that direction to driver RIGHT in east/north coordinates.
 struct TrackBankPoint {
     float distanceMeters = 0.0f;
     float angleDegrees = 0.0f;
     float quadraticPerMeter = 0.0f;
+    float edgeFadeMeters = 0.0f;
+    float positiveOuterSlope = 0.0f;
+    float negativeOuterSlope = 0.0f;
 };
 
 enum class TrackRunoffSurface : std::uint8_t {
@@ -54,7 +57,7 @@ enum class TrackRunoffSurface : std::uint8_t {
     Grass,
 };
 
-// Side uses the driver's frame: -1 right, 0 both, +1 left.
+// Side uses the native lane sign: -1 negative, 0 both, +1 positive.
 struct TrackRunoffZone {
     float startMeters = 0.0f;
     float endMeters = 0.0f;

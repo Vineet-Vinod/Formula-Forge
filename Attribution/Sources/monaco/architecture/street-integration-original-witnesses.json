@@ -1,0 +1,380 @@
+{
+  "schema_version": 1,
+  "packet": "build/reviews/monaco/resume-20261113-corrections-live",
+  "source_manifest_sha256": "029c9d1b1a9cb6c204fb26ecba31a439f7c9b45713274c797c2df72dcbf2cab3",
+  "camera_model": "Exact current saved mesh triangles, actual per-frame camera pose, fixed90degreehorizontalFOV. Alpha fence/crowd/trees skipped. No full scene generation.",
+  "rays": [
+    {
+      "frame": 3243,
+      "native_station_m": 2975.12939453125,
+      "pixel": [
+        300,
+        380
+      ],
+      "camera": {
+        "camera_position_cm": [
+          23299.748086514723,
+          -17798.018286452916,
+          146.8114840100125
+        ],
+        "camera_rotation_deg": [
+          -3.2865579485684786,
+          5.188613891601563,
+          0.0005810229909491792
+        ],
+        "camera_fov_deg": 90
+      },
+      "nearest_original_hit": {
+        "distance_m": 11.251747686964526,
+        "tile": "Tile_Street_00_m2",
+        "material": "Runoff",
+        "point": [
+          183.9627201383127,
+          -244.87687553878177,
+          1.8060341838983605
+        ],
+        "triangle": [
+          [
+            180.70771484375,
+            -248.64845703125,
+            4.158176879882813
+          ],
+          [
+            187.93287109375,
+            -246.4998046875,
+            3.0735284423828126
+          ],
+          [
+            180.70771484375,
+            -242.72046875,
+            0.21794868469238282
+          ]
+        ],
+        "native_station_m": 2980.97729,
+        "distance_to_road_center_m": 12.290875380340065,
+        "ground_now_m": 2.3322745413380908,
+        "raw_ground_now_m": 2.3322745413380908,
+        "nearest_property": [
+          [
+            2.687283194917825,
+            "Quai Antoine exhibition and residential complex"
+          ],
+          [
+            13.208176745886687,
+            "Western exhibition annex"
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 3243,
+      "native_station_m": 2975.12939453125,
+      "pixel": [
+        450,
+        375
+      ],
+      "camera": {
+        "camera_position_cm": [
+          23299.748086514723,
+          -17798.018286452916,
+          146.8114840100125
+        ],
+        "camera_rotation_deg": [
+          -3.2865579485684786,
+          5.188613891601563,
+          0.0005810229909491792
+        ],
+        "camera_fov_deg": 90
+      },
+      "nearest_original_hit": {
+        "distance_m": 11.690361071103863,
+        "tile": "Tile_Street_00_m2",
+        "material": "Runoff",
+        "point": [
+          182.01258980452445,
+          -245.14589840335657,
+          1.8921292835996162
+        ],
+        "triangle": [
+          [
+            180.70771484375,
+            -248.64845703125,
+            4.158176879882813
+          ],
+          [
+            187.93287109375,
+            -246.4998046875,
+            3.0735284423828126
+          ],
+          [
+            180.70771484375,
+            -242.72046875,
+            0.21794868469238282
+          ]
+        ],
+        "native_station_m": 2981.462684889257,
+        "distance_to_road_center_m": 10.759484889897655,
+        "ground_now_m": 2.4778608382160865,
+        "raw_ground_now_m": 2.4778608382160865,
+        "nearest_property": [
+          [
+            2.985298700502217,
+            "Quai Antoine exhibition and residential complex"
+          ],
+          [
+            11.419217165001838,
+            "Western exhibition annex"
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 3243,
+      "native_station_m": 2975.12939453125,
+      "pixel": [
+        640,
+        350
+      ],
+      "camera": {
+        "camera_position_cm": [
+          23299.748086514723,
+          -17798.018286452916,
+          146.8114840100125
+        ],
+        "camera_rotation_deg": [
+          -3.2865579485684786,
+          5.188613891601563,
+          0.0005810229909491792
+        ],
+        "camera_fov_deg": 90
+      },
+      "nearest_original_hit": {
+        "distance_m": 14.40711731406438,
+        "tile": "Tile_Street_00_m2",
+        "material": "Runoff",
+        "point": [
+          179.53968411662973,
+          -247.68536725388628,
+          2.4401144966248665
+        ],
+        "triangle": [
+          [
+            180.70771484375,
+            -248.64845703125,
+            4.158176879882813
+          ],
+          [
+            178.44783203125,
+            -246.00404296875,
+            0.23895757675170898
+          ],
+          [
+            177.9697265625,
+            -246.54220703125,
+            0.24617080688476561
+          ]
+        ],
+        "native_station_m": 2983.386704116626,
+        "distance_to_road_center_m": 10.331497538891863,
+        "ground_now_m": 3.437202891217689,
+        "raw_ground_now_m": 3.4482171036284655,
+        "nearest_property": [
+          [
+            1.2560758013132345,
+            "Quai Antoine exhibition and residential complex"
+          ],
+          [
+            7.972821030681015,
+            "Western exhibition annex"
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 3243,
+      "native_station_m": 2975.12939453125,
+      "pixel": [
+        750,
+        370
+      ],
+      "camera": {
+        "camera_position_cm": [
+          23299.748086514723,
+          -17798.018286452916,
+          146.8114840100125
+        ],
+        "camera_rotation_deg": [
+          -3.2865579485684786,
+          5.188613891601563,
+          0.0005810229909491792
+        ],
+        "camera_fov_deg": 90
+      },
+      "nearest_original_hit": {
+        "distance_m": 15.850655244294035,
+        "tile": "Tile_Street_00_m2",
+        "material": "Runoff",
+        "point": [
+          177.52746426657137,
+          -248.93731227544873,
+          2.141868431855661
+        ],
+        "triangle": [
+          [
+            180.70771484375,
+            -248.64845703125,
+            4.158176879882813
+          ],
+          [
+            176.46865234375,
+            -248.006171875,
+            0.2678274345397949
+          ],
+          [
+            175.6123046875,
+            -250.16375,
+            2.1598614501953124
+          ]
+        ],
+        "native_station_m": 2984.623344528276,
+        "distance_to_road_center_m": 9.800147126597961,
+        "ground_now_m": 2.785477063387653,
+        "raw_ground_now_m": 3.47883437712977,
+        "nearest_property": [
+          [
+            0.6296453242954605,
+            "Quai Antoine exhibition and residential complex"
+          ],
+          [
+            5.605780946481375,
+            "Western exhibition annex"
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 1213,
+      "native_station_m": 1250.0999755859375,
+      "pixel": [
+        480,
+        480
+      ],
+      "camera": {
+        "camera_position_cm": [
+          -67489.8122399877,
+          -64034.630781093925,
+          2328.8146199676817
+        ],
+        "camera_rotation_deg": [
+          -7.121884224628362,
+          -18.840431213378874,
+          -0.04597504743230676
+        ],
+        "camera_fov_deg": 90
+      },
+      "nearest_original_hit": {
+        "distance_m": 11.37223852235027,
+        "tile": "Building_City_01_01_Part_01",
+        "material": "Steel",
+        "point": [
+          648.2780788102357,
+          665.737578125,
+          21.45142001298986
+        ],
+        "triangle": [
+          [
+            648.0442578125,
+            665.737578125,
+            21.2298828125
+          ],
+          [
+            648.2942578125,
+            665.737578125,
+            33.2298828125
+          ],
+          [
+            648.2942578125,
+            665.737578125,
+            21.2298828125
+          ]
+        ],
+        "native_station_m": 1262.0011693341387,
+        "distance_to_road_center_m": 4.690858970326631,
+        "ground_now_m": 21.23245744596869,
+        "raw_ground_now_m": 18.56291144051788,
+        "nearest_property": [
+          [
+            789.4975378468819,
+            "Ermanno Palace"
+          ],
+          [
+            841.8571114538656,
+            "Quai Antoine exhibition and residential complex"
+          ]
+        ]
+      }
+    },
+    {
+      "frame": 1213,
+      "native_station_m": 1250.0999755859375,
+      "pixel": [
+        479,
+        420
+      ],
+      "camera": {
+        "camera_position_cm": [
+          -67489.8122399877,
+          -64034.630781093925,
+          2328.8146199676817
+        ],
+        "camera_rotation_deg": [
+          -7.121884224628362,
+          -18.840431213378874,
+          -0.04597504743230676
+        ],
+        "camera_fov_deg": 90
+      },
+      "nearest_original_hit": {
+        "distance_m": 11.255188395195429,
+        "tile": "Building_City_01_01_Part_01",
+        "material": "Steel",
+        "point": [
+          648.2441930857626,
+          665.737578125,
+          22.307939571146438
+        ],
+        "triangle": [
+          [
+            648.0442578125,
+            665.737578125,
+            21.2298828125
+          ],
+          [
+            648.2942578125,
+            665.737578125,
+            33.2298828125
+          ],
+          [
+            648.2942578125,
+            665.737578125,
+            21.2298828125
+          ]
+        ],
+        "native_station_m": 1261.9818831983653,
+        "distance_to_road_center_m": 4.662994349212362,
+        "ground_now_m": 21.233671948697786,
+        "raw_ground_now_m": 18.57421497664369,
+        "nearest_property": [
+          [
+            789.4694920870583,
+            "Ermanno Palace"
+          ],
+          [
+            841.8501645147016,
+            "Quai Antoine exhibition and residential complex"
+          ]
+        ]
+      }
+    }
+  ]
+}

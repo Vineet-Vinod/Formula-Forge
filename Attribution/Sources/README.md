@@ -83,11 +83,10 @@ apply. Individual seamless-photo tile capture dates remain unresolved.
 | Bahrain | F1 graphical longitudinal profile | 16.90 m |
 | Sepang | F1 graphical longitudinal profile | 22.00 m |
 | Istanbul | METU engineering gradient diagram, reconciled and corner registered | 53.43 m |
-| Hockenheim | LGL DGM025 bare-earth lidar, 0.25 m; 2022 update | 4.21 m |
+| Hockenheim | LGL DGM025 numeric bare-earth road samples; Sachs tile updated2022-02-15 | 4.286 m |
 | Buddh | Team-described landmarks and sparse terrain controls | 14.00 m |
 
-Broad terrain at Silverstone, Interlagos and Hockenheim uses the same regional
-lidar as the road. The other eight venues use retained Copernicus GLO-30
+Broad terrain at Silverstone and Interlagos uses the same regional lidar as the road. Hockenheim uses a bounded official DGM1 bare-earth scenery export at8m, quantized to integer metres; the high-precision numeric DGM025 road and Sachs bank samples are retained separately. Hockenheim source accuracy is±0.15m, with additional±0.5m scenery export quantization. The other eight venues use retained Copernicus GLO-30
 2021 terrain: a surface model containing trees and roofs, based on 2011–2015
 data. Filtering and resampling cannot recover finer measurements.
 Centimetre storage precision is not accuracy.
@@ -141,10 +140,9 @@ The 2022 composite contains surveys from 2000–2022; the local flight epoch
 remains unresolved. Heights use Ordnance Datum Newlyn.
 
 Hockenheim attribution: **Datenquelle: LGL, www.lgl-bw.de, dl-de/by-2-0;
-LGL-BW (2026).** [DGM025](https://opengeodata.lgl-bw.de/) crops are used under
+LGL-BW (2026).** [DGM025 numeric observations and DGM1 scenery](https://opengeodata.lgl-bw.de/) are used under
 [Datenlizenz Deutschland Namensnennung 2.0](https://www.govdata.de/dl-de/by-2-0).
-Per-tile CSV records give a 2016-01-29 acquisition, 2022-02-15 update,
-0.15 m stated height accuracy and the DHHN2016 height datum.
+The retained official Sachs tile query gives a2016-01-29 first version and2022-02-15 update, regional2022flightlot24-1_2022,0.15m stated height accuracy and DHHN2016 NHN datum. Other road tile epochs were not individually queried. See hockenheim/elevation/lgl-source-provenance.json for exact numeric requests, raw response journals and uncertainty.
 
 Interlagos attribution: **Prefeitura Municipal de São Paulo (PMSP), GeoSampa
 M3DC 2017; accessed 2026-09-07.** The retained EPT subset contains 5,487,560
