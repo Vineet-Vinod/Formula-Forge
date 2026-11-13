@@ -21,6 +21,10 @@ PALETTE = {
     "Steel": (0.38, 0.41, 0.42),
     "FlyerSteel": (0.14, 0.15, 0.16),
     "Cream": (0.63, 0.58, 0.46),
+    "MonacoRuscinoRose": (0.56, 0.36, 0.32),
+    "BakuSkyGlass": (0.10, 0.17, 0.23),
+    "BakuSkyGlassLight": (0.18, 0.25, 0.29),
+    "BakuPhilharmonicOchre": (0.72, 0.52, 0.22),
     "CanopyFabric": (0.78, 0.78, 0.74),
     "Roof": (0.14, 0.15, 0.16),
     "JeddahConstruction": (0.19, 0.17, 0.145),
@@ -186,6 +190,12 @@ class Importer:
                 "zandvoort": (1.1, 1.05, 0.85),
                 "turkey": (1.25, 1.05, 0.65),
             }
+            if self.slug == "spa" and name == "Grass" and isinstance(
+                material, unreal.MaterialInstanceConstant
+            ):
+                EDIT.set_material_instance_scalar_parameter_value(
+                    material, "NormalStrength", 0.06
+                )
             if (
                 name == "Grass"
                 and self.slug in ground_tints
@@ -252,7 +262,9 @@ class Importer:
             roughness = EDIT.create_material_expression(
                 material, unreal.MaterialExpressionConstant
             )
-            roughness.r = 0.22 if name in ("Glass", "WarmGlass", "Water") else 0.7
+            roughness.r = 0.22 if name in ("Glass", "WarmGlass", "Water", "BakuSkyGlass", "BakuSkyGlassLight") else 0.7
+            if self.slug == "monaco" and name == "MonacoRuscinoRose":
+                roughness.r = 0.85
             if self.slug == "jeddah" and name == "JeddahConstruction":
                 roughness.r = 0.94
             EDIT.connect_material_property(

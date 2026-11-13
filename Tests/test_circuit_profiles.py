@@ -3,6 +3,9 @@
 from __future__ import annotations
 
 import bisect
+import csv
+import gzip
+import io
 import itertools
 import json
 import math
@@ -17,8 +20,16 @@ from shapely.geometry import LineString, Point
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
-from circuit_dataclasses import AlignmentControls, PitLane, TurnRegistrations
+from circuit_dataclasses import (
+    AlignmentControls,
+    BankingControls,
+    PitLane,
+    RoadStation,
+    TurnRegistrations,
+)
 from circuit_profiles import (
+    banking_rows,
+    native_bank_profile,
     native_profile,
     pit_shoulders,
     replace_profile,
@@ -195,7 +206,7 @@ def native_controls(slug: str, kind: str) -> Controls:
         rf"constexpr Track{kind}Point \w+{kind}\[\] = \{{(.*?)\n\}};", text, re.DOTALL
     )
     assert block is not None, f"{slug}: missing native {kind} profile"
-    rows = re.findall(rf"\{{\s*({NUMBER})f,\s*({NUMBER})f\s*\}}", block[1])
+    rows = re.findall(rf"\{{\s*({NUMBER})f,\s*({NUMBER})f(?:,\s*{NUMBER}f)?\s*\}}", block[1])
     assert rows, f"{slug}: empty native {kind} profile"
     return [(float(station), float(value)) for station, value in rows]
 
@@ -281,8 +292,97 @@ def test_zandvoort_banking_is_registered_and_raises_the_outside() -> None:
     for station in (720, 780, 873, 980, 3600, 3786.67, 4000):
         assert value_at(native, station) == pytest.approx(value_at(source, station), abs=0.001)
     assert value_at(native, 720) == 0  # The previous recipe banked Gerlach instead of Hugenholtz.
-    assert 11.8 < value_at(native, 873) < 11.9
+    assert 9 < value_at(native, 873) < 9.7
     assert value_at(native, 3786.67) == pytest.approx(-18, abs=0.001)
+
+
+def test_progressive_t3_matches_classified_ground_sections_and_keeps_t14_planar() -> None:
+    source = SOURCES / 'zandvoort'
+    profile = TypeAdapter(BankingControls).validate_json((source / 'banking-corrections.json').read_bytes())
+    native = native_bank_profile((NATIVE / 'zandvoort_survey.inc').read_text())
+    for actual, expected in zip(native, banking_rows(profile, 4259), strict=True):
+        assert actual == pytest.approx(expected, abs=.0000006)
+    assert all(q == 0 for station, _angle, q in native if station <= 780 or station >= 980)
+    evidence = json.loads((source / 'progressive-t3-evidence.json').read_text())
+    angles = [(station, angle) for station, angle, _q in native]
+    quadratic = [(station, q) for station, _angle, q in native]
+    for section in evidence['samples']['sections']:
+        station = section['native_station_m']
+        if not 835 < station < 905:
+            continue
+        sample = RoadStation(station, 0, 0, 0, 1, 0, 6,
+                             math.tan(math.radians(value_at(angles, station))),
+                             bank_quadratic=value_at(quadratic, station))
+        center = next(p['height_nap_m'] for p in section['cross_section'] if p['lane_m'] == 0)
+        errors = [sample.height(p['lane_m']) - (p['height_nap_m'] - center)
+                  for p in section['cross_section']
+                  if abs(p['lane_m']) <= 5 and p['height_nap_m'] is not None]
+        assert max(abs(error) for error in errors) < .055
+        assert math.sqrt(sum(error * error for error in errors) / len(errors)) < .03
+        assert sample.height(0) == 0
+        assert sample.slope(-5) < sample.slope(5)
+
+
+def test_banking_sections_validate_quadratic_closure_and_default_to_original_plane() -> None:
+    profile = BankingControls([(0, 0), (100, 0)], [(0, 0), (30, .01), (100, 0)])
+    assert banking_rows(profile, 100) == [(0, 0, 0), (30, 0, .01), (100, 0, 0)]
+    with pytest.raises(ValueError):
+        banking_rows(BankingControls([(0, 0), (100, 0)], [(0, .01), (100, 0)]), 100)
+    for bank in (-.3, 0., .16, .4):
+        sample = RoadStation(0, 0, 0, 3, 1, 0, 6, bank)
+        for lane in (-15., -6., -3., 0., 3., 6., 15.):
+            assert sample.height(lane) == 3 + bank * lane
+            assert sample.slope(lane) == bank
+
+
+def test_suzuka_registered_widths_and_spoon_keep_the_observed_road_corridor() -> None:
+    width = native_controls('japan', 'Width')
+    assert value_at(width, 0) == 15
+    assert value_at(width, 2650) == 12
+    for station in (900, 2350, 3400, 4300, 4500, 4950):
+        assert value_at(width, station) == pytest.approx(10, abs=.001)
+    source = SOURCES / 'japan'
+    alignment = TypeAdapter(AlignmentControls).validate_json((source / 'alignment-refinement.json').read_bytes())
+    road = LineString([*alignment.controls_xy_m, alignment.controls_xy_m[0]])
+    retained = list(csv.DictReader(io.StringIO(gzip.decompress(
+        (source / 'alignment-refinement-base.csv.gz').read_bytes()).decode())))
+    observations = json.loads((source / 'width-and-spoon-evidence.json').read_text())['observations']
+    for observation in observations:
+        if not 3500 <= observation['target_m'] <= 3800:
+            continue
+        row = min(retained, key=lambda row: abs(float(row['station']) - observation['native_station_m']))
+        lane = observation['inferred_road_center_lane_m']
+        point = Point(float(row['x']) + float(row['ty']) * lane,
+                      float(row['y']) - float(row['tx']) * lane)
+        assert road.distance(point) < 1.0
+
+
+def test_jeddah_t13_has_the_published_bank_without_banking_other_sectors() -> None:
+    source = Profile.model_validate_json(
+        (SOURCES / "jeddah/banking-corrections.json").read_bytes()
+    ).controls
+    native = native_controls("jeddah", "Bank")
+    for station in (0, 2000, 2140, 2480, 3000, 6174):
+        assert value_at(native, station) == 0
+    for station in (2200, 2277, 2350, 2410):
+        assert value_at(native, station) == pytest.approx(12, abs=0.000001)
+    assert all(b[0] > a[0] for a, b in itertools.pairwise(source))
+    for actual, expected in zip(native, source, strict=True):
+        assert actual == pytest.approx(expected, abs=0.000001)
+    assert max(abs(b[1] - a[1]) for a, b in itertools.pairwise(source)) < 0.75
+    assert math.tan(math.radians(value_at(native, 2277))) * 12 == pytest.approx(2.55068, abs=0.00001)
+
+
+def test_bank_replacement_preserves_other_road_profiles_and_rejects_vertical_planes() -> None:
+    text = (NATIVE / "jeddah_survey.inc").read_text()
+    controls = native_profile(text, "Bank")
+    replaced = replace_profile(text, "Bank", [(0, 0), (6174, 0)], 6174)
+    strip = r"constexpr TrackBankPoint \w+\[\] = \{.*?\n\};"
+    assert re.sub(strip, "", text, flags=re.DOTALL) == re.sub(strip, "", replaced, flags=re.DOTALL)
+    assert replace_profile(replaced, "Bank", controls, 6174) == text
+    for angle in (-90, 90, float("inf")):
+        with pytest.raises(ValueError):
+            replace_profile(text, "Bank", [(0, 0), (2277, angle), (6174, 0)], 6174)
 
 
 def test_australia_has_the_current_fourteen_registered_turns() -> None:

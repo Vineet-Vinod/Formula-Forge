@@ -78,6 +78,9 @@ const TrackCatalogEntry* findTrackCatalogEntry(std::string_view slug) noexcept;
 float sampleTrackElevationMeters(const TrackCatalogEntry& track, float distanceMeters) noexcept;
 float sampleTrackWidthMeters(const TrackCatalogEntry& track, float distanceMeters) noexcept;
 float sampleTrackBankDegrees(const TrackCatalogEntry& track, float distanceMeters) noexcept;
+float sampleTrackBankQuadratic(const TrackCatalogEntry& track, float distanceMeters) noexcept;
+float trackLateralHeightMeters(float slope, float quadratic, float halfWidth, float lane) noexcept;
+float trackLateralSlope(float slope, float quadratic, float halfWidth, float lane) noexcept;
 float sampleTrackShoulderMeters(const TrackCatalogEntry& track, float distanceMeters, bool left) noexcept;
 
 enum class TrackTurnDirection : int {

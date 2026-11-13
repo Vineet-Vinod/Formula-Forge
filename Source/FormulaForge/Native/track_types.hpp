@@ -45,6 +45,7 @@ struct TrackElevationPoint {
 struct TrackBankPoint {
     float distanceMeters = 0.0f;
     float angleDegrees = 0.0f;
+    float quadraticPerMeter = 0.0f;
 };
 
 enum class TrackRunoffSurface : std::uint8_t {

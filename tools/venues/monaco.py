@@ -15,6 +15,7 @@ from shapely.geometry import Point as ShapePoint
 from shapely.ops import polygonize, triangulate, unary_union
 
 from venues.monaco_hillside import hillside_city
+from venues.monaco_properties import fairmont_garden, mirabeau, property_envelopes
 from venues.monaco_tabac import tabac_frontage_ground
 from venues.west_architecture import dome, mast, trees, water
 
@@ -36,9 +37,12 @@ def build_venue(scene: CircuitScene) -> None:
     for osm_id, (base, height) in tabac_frontage_ground(scene).items():
         frontage(scene, scene.footprint(osm_id), height, 3 if osm_id == 507048725 else 2,
                  base_z=base, street_station=2380 if osm_id == 507048725 else 2410)
-    for osm_id, height, floors in [(161880705, 61, 18), (94399585, 54, 16),
+    property_envelopes(scene)
+    mirabeau(scene)
+    fairmont_garden(scene)
+    for osm_id, height, floors in [(94399585, 54, 16),
                                    (94399672, 14, 4), (94400205, 20, 6),
-                                   (94399922, 48, 14), (94399524, 81, 26),
+                                   (94399922, 48, 14),
                                    (161775596, 11, 3), (94399684, 54, 16),
                                    (94399872, 75, 22), (176722821, 11, 3)]:
         frontage(scene, scene.footprint(osm_id), height, floors)

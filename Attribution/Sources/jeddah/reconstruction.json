@@ -22,6 +22,9 @@
   "buildings": 7,
   "barrier_vertices": 0,
   "deck": null,
-  "banks": [],
-  "osm_sha256": "5ddffb70edee68fdf0d697feee56f5ef3ad94a9e1cd43e4743f88465f1e49502"
+  "banks": [
+    "Turn13positive12degrees at2200\u20132410m; reconstructed quintic transitions2140\u20132200/2410\u20132480m."
+  ],
+  "osm_sha256": "5ddffb70edee68fdf0d697feee56f5ef3ad94a9e1cd43e4743f88465f1e49502",
+  "banking_recipe": "banking-corrections.json"
 }

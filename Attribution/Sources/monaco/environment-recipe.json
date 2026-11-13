@@ -13,7 +13,8 @@
       "reference_times_s": [
         97.9,
         727.19,
-        906.98
+        906.98,
+        367.59
       ],
       "observed_environment": "Stands and stone/pink apartment tiers frame the uphill opening. Pit/service bars, marina edge, Armco and high mesh fence. Sainte-D\u00e9vote needs its opening/runoff access, not a solid urban wall.",
       "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
@@ -44,9 +45,9 @@
       "end_m": 2040,
       "name": "Tunnel",
       "reference_times_s": [
-        367.59
+        450
       ],
-      "observed_environment": "Road is below the Fairmont podium and sea-facing gallery. Preserve drivable deck elevation independently from roof heights. Overview does not directly show interior lighting, so tunnel cross-section/portal details need targeted frames.",
+      "observed_environment": "Direct450 s interior establishes pale tiled right wall/soffit, left gallery openings, Armco and ceiling lights. Exact camera station is approximate;367.59 s is the start/pit straight and was incorrectly assigned here.",
       "placement_confidence": "Sector-level reconstruction; boundaries and depths inferred, not measured from video."
     },
     {
@@ -681,5 +682,11 @@
     "scope": "Private fine RGE lower-quay strip and actual hotel/retail facade bases; upperstreet/realhill/theatre unchanged.",
     "target_native_station_m": 2380,
     "runtime_gate": "Await fresh packaged capture and Luna High review."
+  },
+  "property_architecture_correction_20261113": {
+    "source": "property-architecture-correction.json",
+    "module": "tools/venues/monaco_properties.py",
+    "status": "Source frozen after geometry proof; fresh runtime review pending.",
+    "native_inputs": "No road, width, banking, elevation, protection, surface-profile or camera edits."
   }
 }

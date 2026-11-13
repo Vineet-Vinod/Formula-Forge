@@ -2,7 +2,9 @@
 
 #include <algorithm>
 #include <array>
+#include <bit>
 #include <cmath>
+#include <filesystem>
 #include <fstream>
 #include <iostream>
 #include <iterator>
@@ -13,6 +15,79 @@ namespace {
 std::vector<std::uint8_t> Read(const std::string& path) {
     std::ifstream input(path, std::ios::binary);
     return {std::istreambuf_iterator<char>(input), std::istreambuf_iterator<char>()};
+}
+
+bool CheckProgressiveBank() {
+    for (float slope : {-0.3f, 0.0f, 0.16f, 0.4f}) {
+        for (float lane : {-15.0f, -6.0f, -2.0f, 0.0f, 3.0f, 6.0f, 15.0f}) {
+            if (std::bit_cast<std::uint32_t>(trackLateralHeightMeters(slope, 0.0f, 6.0f, lane)) !=
+                std::bit_cast<std::uint32_t>(slope * lane)) return false;
+            if (trackLateralSlope(slope, 0.0f, 6.0f, lane) != slope) return false;
+        }
+    }
+    CircuitSample sample;
+    sample.elevation = 3.0f;
+    sample.halfWidth = 6.0f;
+    sample.bankSlope = 0.16f;
+    sample.bankQuadratic = 0.01f;
+    if (std::abs(circuitSurfaceHeight(sample, -6.0f) - 2.4f) > .000001f ||
+        std::abs(circuitSurfaceHeight(sample, 6.0f) - 4.32f) > .000001f) return false;
+    for (float lane : {-12.0f, -6.0f, -3.0f, 0.0f, 3.0f, 6.0f, 12.0f}) {
+        const float derivative = (circuitSurfaceHeight(sample, lane + .01f) -
+            circuitSurfaceHeight(sample, lane - .01f)) / .02f;
+        if (std::abs(derivative - trackLateralSlope(.16f, .01f, 6.0f, lane)) > .0001f) return false;
+    }
+    if (trackLateralSlope(.16f, .01f, 6.0f, -12.0f) != trackLateralSlope(.16f, .01f, 6.0f, -6.0f) ||
+        trackLateralSlope(.16f, .01f, 6.0f, 12.0f) != trackLateralSlope(.16f, .01f, 6.0f, 6.0f)) return false;
+    TrackCatalogEntry fixture;
+    fixture.targetLengthMeters = 200.0f;
+    fixture.shoulderMeters = 5.0f;
+    const std::array<TrackBankPoint, 2> banking{{{0, 9.090277f, .01f}, {200, 9.090277f, .01f}}};
+    const std::array<TrackRunoffZone, 1> paving{{{0, 50, 1, TrackRunoffSurface::Asphalt, 3}}};
+    const std::array<TrackBarrier, 1> walls{{{-1, -10.5f, 51, -10.5f, 0, 10, .15f}}};
+    fixture.bankProfile = banking;
+    fixture.runoffProfile = paving;
+    fixture.authoredBarriers = walls;
+    sample.sim = {425, 0};
+    sample.tangent = {1, 0};
+    if (std::abs(circuitPavedBankReach(fixture, sample, true) - 10.33f) > .00001f) return false;
+    const std::vector<CircuitSample> samples{
+        {{0, 0}, {1, 0}, 0, 3, 6, .16f, .01f},
+        {{850, 0}, {1, 0}, 50, 3, 6, .16f, .01f},
+        {{850, -850}, {0, -1}, 100, 3, 6, .16f, .01f},
+        {{0, -850}, {-1, 0}, 150, 3, 6, .16f, .01f},
+    };
+    const std::string directory = "build/tmp/bank-contact-fixture";
+    std::filesystem::create_directories(directory);
+    if (!writeGeneratedContact(fixture, samples, directory)) return false;
+    FFDriveSurface surface;
+    if (!surface.Load(Read(directory + "/drive_surface.bin"))) return false;
+    for (float lane : {-7.2f, -7.0f, -6.75f, -6.5f, -5.5f, -3.0f, 0.0f, 2.0f, 5.5f}) {
+        const auto height = surface.Height(25.0f, -lane);
+        if (!height || std::abs(*height - circuitSurfaceHeight(sample, lane)) > .01f) return false;
+    }
+    for (float lane : {7.5f, 9.0f, 10.25f}) {
+        const auto height = surface.Height(25.0f, -lane);
+        if (!height || std::abs(*height - circuitSurfaceHeight(sample, lane)) > .00001f) return false;
+    }
+    if (surface.Height(25.0f, -10.4f) || surface.Height(25.0f, 9.0f)) return false;
+    const std::array<TrackBankPoint, 2> planar{{{0, 9.090277f}, {200, 9.090277f}}};
+    fixture.bankProfile = planar;
+    if (circuitBankedPaving(fixture, 25, true)) return false;
+    fixture.id = TrackLayoutId::Jeddah;
+    if (!circuitBankedPaving(fixture, 25, true) || circuitBankedPaving(fixture, 25, false)) return false;
+    auto planarSamples = samples;
+    for (auto& point : planarSamples) point.bankQuadratic = 0.0f;
+    if (!writeGeneratedContact(fixture, planarSamples, directory) ||
+        !surface.Load(Read(directory + "/drive_surface.bin"))) return false;
+    for (float lane : {-7.2f, -7.0f, -6.75f, -6.5f, 7.0f, 9.0f, 10.25f}) {
+        const auto height = surface.Height(25.0f, -lane);
+        if (!height || std::abs(*height - (3.0f + .16f * lane)) > .00001f) return false;
+    }
+    const std::array<TrackBankPoint, 2> flat{{{0, 0}, {200, 0}}};
+    fixture.bankProfile = flat;
+    if (circuitBankedPaving(fixture, 25, true)) return false;
+    return true;
 }
 
 bool Check(TrackLayoutId layout, const std::string& slug, float length) {
@@ -180,6 +255,52 @@ bool CheckGenerated(const TrackCatalogEntry& track) {
             return false;
         }
         const Vec2 normal{-road.tangent.y, road.tangent.x};
+        if (sampleTrackBankQuadratic(track, station) != 0.0f) {
+            for (const float lane : {-4.0f, -2.0f, 0.0f, 2.0f, 4.0f}) {
+                const Vec2 position = road.position + normal * (lane * 17.0f);
+                const auto surface = simulation.driveSurface.Height(position.x / 17.0f, -position.y / 17.0f);
+                if (!surface || std::abs(*surface - simulation.Ground(position) / 17.0f) > .02f) {
+                    std::cerr << track.slug << " progressive contact disagreement at " << station << ", lane " << lane << '\n';
+                    return false;
+                }
+            }
+        }
+        if (sampleTrackBankQuadratic(track, station) != 0.0f ||
+            (track.id == TrackLayoutId::Jeddah && road.bankSlope != 0.0f)) {
+            const CircuitSample sample{road.position, road.tangent, station, road.elevation / 17.0f,
+                road.halfWidth, road.bankSlope, sampleTrackBankQuadratic(track, station)};
+            for (float side : {-1.0f, 1.0f}) {
+                for (float beyond : {.5f, .75f, 1.0f, 1.2f}) {
+                    const float lane = side * (road.halfWidth + beyond);
+                    const Vec2 position = road.position + normal * (lane * 17.0f);
+                    const auto surface = simulation.driveSurface.Height(position.x / 17.0f, -position.y / 17.0f);
+                    const float expected = circuitSurfaceHeight(sample, lane);
+                    if (!surface || std::abs(*surface - expected) > .02f ||
+                        std::abs(simulation.Ground(position) / 17.0f - expected) > .02f) {
+                        std::cerr << track.slug << " banked kerb support disagreement at " << station << ", lane " << lane << '\n';
+                        return false;
+                    }
+                }
+            }
+        }
+        for (const bool positiveSide : {true, false}) {
+            if (!circuitBankedPaving(track, station, positiveSide)) continue;
+            const CircuitSample sample{road.position, road.tangent, station, road.elevation / 17.0f,
+                road.halfWidth, road.bankSlope, sampleTrackBankQuadratic(track, station)};
+            const float inner = road.halfWidth + .35f;
+            const float outer = circuitPavedBankReach(track, sample, positiveSide);
+            for (const float fraction : {.1f, .5f, .9f, .99f}) {
+                const float lane = (positiveSide ? 1.0f : -1.0f) * (inner + (outer - inner) * fraction);
+                const Vec2 position = road.position + normal * (lane * 17.0f);
+                const auto surface = simulation.driveSurface.Height(position.x / 17.0f, -position.y / 17.0f);
+                const float expected = circuitSurfaceHeight(sample, lane);
+                if (!surface || std::abs(*surface - expected) > .02f ||
+                    std::abs(simulation.Ground(position) / 17.0f - expected) > .02f) {
+                    std::cerr << track.slug << " paved-bank support missing at " << station << ", lane " << lane << '\n';
+                    return false;
+                }
+            }
+        }
         for (const float lane : {-2.5f, 0.0f, 2.5f}) {
             const Vec2 position = road.position + normal * (lane * 17.0f);
             if (track.id == TrackLayoutId::Turkey) {
@@ -226,7 +347,8 @@ bool CheckGenerated(const TrackCatalogEntry& track) {
                 const Vec2 start = road.position + normal * (sign * beside * 17.0f);
                 const Vec2 end = road.position + normal * (sign * outer * 17.0f);
                 const float wallLane = sign * (road.halfWidth + 0.85f + circuitShoulderMeters(track, station, left));
-                const float bottom = road.elevation + road.bankSlope * wallLane * 17.0f;
+                const float bottom = road.elevation + trackLateralHeightMeters(road.bankSlope,
+                    sampleTrackBankQuadratic(track, station), road.halfWidth, wallLane) * 17.0f;
                 if (!firstAuthoredBarrierHit(simulation.Barriers(), start, end, road.tangent,
                         83.6f * 0.5f, 34.4f * 0.5f, bottom, 0.8f * 17.0f).hit) {
                     std::cerr << track.slug << " missing " << (left ? "left" : "right") << " wall at " << station << '\n';
@@ -249,6 +371,10 @@ bool CheckGenerated(const TrackCatalogEntry& track) {
 }
 
 int main() {
+    if (!CheckProgressiveBank()) {
+        std::cerr << "progressive-bank height, derivative or contact mismatch\n";
+        return 1;
+    }
     if (!Check(TrackLayoutId::Monza, "monza", 5793.0f) || !Check(TrackLayoutId::Interlagos, "interlagos", 4309.0f)) return 1;
     for (const TrackCatalogEntry& track : trackCatalog()) {
         if (track.generated && !CheckGenerated(track)) return 1;

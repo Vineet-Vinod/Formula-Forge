@@ -61,7 +61,7 @@ def generate(slug: str) -> None:
                     lane = ((pa[0] + pb[0]) / 2 - sample.x) * sample.ty - (
                         (pa[1] + pb[1]) / 2 - sample.y
                     ) * sample.tx
-                    bottom = sample.z + sample.bank * lane
+                    bottom = sample.height(lane)
                     walls.append((*pa, *pb, bottom, bottom + 0.95, 0.15))
     openings = load_openings(scene.sources, scene.length)
     walls = filter_barriers(walls, openings, scene.nearest)

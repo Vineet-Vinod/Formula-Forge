@@ -1,0 +1,2344 @@
+{
+  "schema_version": 1,
+  "circuit": "zandvoort",
+  "dataset": "AHN5 classified-ground DTM0.5m, official AHN dataroom-linked WCS",
+  "request": {
+    "url": "https://api.ellipsis-drive.com/v3/ogc/wcs/51e11c02-1065-463d-a0b0-263d80293b16?service=WCS&request=GetCoverage&version=1.0.0&coverage=41eaf86f-fa84-48f7-a949-355044ed0e4e&CRS=EPSG%3A28992&BBOX=97353%2C489205%2C97481%2C489333&WIDTH=256&HEIGHT=256&FORMAT=GeoTIFF",
+    "bbox_rd": [
+      97353,
+      489205,
+      97481,
+      489333
+    ],
+    "bytes": 224126
+  },
+  "source_file": "elevation/ahn5-t3-0.5m.tif",
+  "source_sha256": "399fbfce4ef7a02beefc96d17c6a9a6641990c7f8967eb3a8234f2e1db8f7ec4",
+  "retrieved_utc": "2026-11-13",
+  "acquisition_period": "AHN5 2023\u20132025, service snapshot2024-12-10; exact local flight day not asserted",
+  "crs": "EPSG:28992 horizontal, EPSG:5709 NAP vertical",
+  "licence": "CC BY4.0",
+  "attribution": "Bron: AHN(www.ahn.nl), AHN5 DTM. Modified by bounded numeric export and original fitted geometry.",
+  "reference_image_request": {
+    "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0?service=WMS&request=GetMap&version=1.1.1&layers=2024_orthoHR&styles=&SRS=EPSG%3A28992&BBOX=97353%2C489205%2C97481%2C489333&WIDTH=1024&HEIGHT=1024&FORMAT=image%2Fjpeg",
+    "bbox_rd": [
+      97353,
+      489205,
+      97481,
+      489333
+    ],
+    "bytes": 164056
+  },
+  "reference_image_note": "PDOK2024 orthoHR photograph confirms marked-road boundaries; ignored image is research only, not a shipped texture. No pixel data used as game art.",
+  "samples": {
+    "source_sha256": "399fbfce4ef7a02beefc96d17c6a9a6641990c7f8967eb3a8234f2e1db8f7ec4",
+    "road_sha256": "d67e0b0c19ca250b798c47b08837bf9df38de18a4713ec5c92217cf90e2c39b6",
+    "sections": [
+      {
+        "native_station_m": 800.122192,
+        "half_width_m": 6.10246086,
+        "existing_bank_deg": 4.74625168678108,
+        "cross_section": [
+          {
+            "lane_m": -12,
+            "height_nap_m": 5.294432163238525
+          },
+          {
+            "lane_m": -11,
+            "height_nap_m": 5.295098304748535
+          },
+          {
+            "lane_m": -10,
+            "height_nap_m": 5.311039447784424
+          },
+          {
+            "lane_m": -9,
+            "height_nap_m": 5.376406192779541
+          },
+          {
+            "lane_m": -8,
+            "height_nap_m": 5.428013324737549
+          },
+          {
+            "lane_m": -7,
+            "height_nap_m": 5.480345249176025
+          },
+          {
+            "lane_m": -6,
+            "height_nap_m": 5.559037685394287
+          },
+          {
+            "lane_m": -5,
+            "height_nap_m": 5.6169915199279785
+          },
+          {
+            "lane_m": -4,
+            "height_nap_m": 5.665420055389404
+          },
+          {
+            "lane_m": -3,
+            "height_nap_m": 5.733309745788574
+          },
+          {
+            "lane_m": -2,
+            "height_nap_m": 5.774586200714111
+          },
+          {
+            "lane_m": -1,
+            "height_nap_m": 5.819369792938232
+          },
+          {
+            "lane_m": 0,
+            "height_nap_m": 5.86569356918335
+          },
+          {
+            "lane_m": 1,
+            "height_nap_m": 5.910387992858887
+          },
+          {
+            "lane_m": 2,
+            "height_nap_m": 5.962459564208984
+          },
+          {
+            "lane_m": 3,
+            "height_nap_m": 6.009965896606445
+          },
+          {
+            "lane_m": 4,
+            "height_nap_m": 6.032679557800293
+          },
+          {
+            "lane_m": 5,
+            "height_nap_m": 6.074237823486328
+          },
+          {
+            "lane_m": 6,
+            "height_nap_m": null
+          },
+          {
+            "lane_m": 7,
+            "height_nap_m": null
+          },
+          {
+            "lane_m": 8,
+            "height_nap_m": 3.3934593200683594
+          },
+          {
+            "lane_m": 9,
+            "height_nap_m": 3.387779712677002
+          },
+          {
+            "lane_m": 10,
+            "height_nap_m": 3.385190963745117
+          },
+          {
+            "lane_m": 11,
+            "height_nap_m": 3.378683567047119
+          },
+          {
+            "lane_m": 12,
+            "height_nap_m": 3.3740620613098145
+          }
+        ],
+        "local_bank_samples": [
+          {
+            "lane_m": -11,
+            "bank_deg": 0.4757527225687165
+          },
+          {
+            "lane_m": -10,
+            "bank_deg": 2.3280174391129274
+          },
+          {
+            "lane_m": -9,
+            "bank_deg": 3.3472415457526745
+          },
+          {
+            "lane_m": -8,
+            "bank_deg": 2.974958267923717
+          },
+          {
+            "lane_m": -7,
+            "bank_deg": 3.748215308807174
+          },
+          {
+            "lane_m": -6,
+            "bank_deg": 3.908553077554936
+          },
+          {
+            "lane_m": -5,
+            "bank_deg": 3.0447610546137835
+          },
+          {
+            "lane_m": -4,
+            "bank_deg": 3.328522200961894
+          },
+          {
+            "lane_m": -3,
+            "bank_deg": 3.1242794234328715
+          },
+          {
+            "lane_m": -2,
+            "bank_deg": 2.4639187766725814
+          },
+          {
+            "lane_m": -1,
+            "bank_deg": 2.608230698852257
+          },
+          {
+            "lane_m": 0,
+            "bank_deg": 2.6056814928815317
+          },
+          {
+            "lane_m": 1,
+            "bank_deg": 2.769981475397985
+          },
+          {
+            "lane_m": 2,
+            "bank_deg": 2.850343087445877
+          },
+          {
+            "lane_m": 3,
+            "bank_deg": 2.0108286490921254
+          },
+          {
+            "lane_m": 4,
+            "bank_deg": 1.8406216344126052
+          },
+          {
+            "lane_m": 5,
+            "bank_deg": null
+          },
+          {
+            "lane_m": 6,
+            "bank_deg": null
+          },
+          {
+            "lane_m": 7,
+            "bank_deg": null
+          },
+          {
+            "lane_m": 8,
+            "bank_deg": null
+          },
+          {
+            "lane_m": 9,
+            "bank_deg": -0.23686961094214112
+          },
+          {
+            "lane_m": 10,
+            "bank_deg": -0.2605835805033741
+          },
+          {
+            "lane_m": 11,
+            "bank_deg": -0.3188162795897309
+          }
+        ]
+      },
+      {
+        "native_station_m": 825.077271,
+        "half_width_m": 6.0,
+        "existing_bank_deg": 11.81402823511345,
+        "cross_section": [
+          {
+            "lane_m": -12,
+            "height_nap_m": 4.002317428588867
+          },
+          {
+            "lane_m": -11,
+            "height_nap_m": 4.030384540557861
+          },
+          {
+            "lane_m": -10,
+            "height_nap_m": 4.052745342254639
+          },
+          {
+            "lane_m": -9,
+            "height_nap_m": 4.074314117431641
+          },
+          {
+            "lane_m": -8,
+            "height_nap_m": 4.1274261474609375
+          },
+          {
+            "lane_m": -7,
+            "height_nap_m": 4.206015586853027
+          },
+          {
+            "lane_m": -6,
+            "height_nap_m": 4.2689971923828125
+          },
+          {
+            "lane_m": -5,
+            "height_nap_m": 4.3777031898498535
+          },
+          {
+            "lane_m": -4,
+            "height_nap_m": 4.486988544464111
+          },
+          {
+            "lane_m": -3,
+            "height_nap_m": 4.570484638214111
+          },
+          {
+            "lane_m": -2,
+            "height_nap_m": 4.692312717437744
+          },
+          {
+            "lane_m": -1,
+            "height_nap_m": 4.833805084228516
+          },
+          {
+            "lane_m": 0,
+            "height_nap_m": 4.945096969604492
+          },
+          {
+            "lane_m": 1,
+            "height_nap_m": 5.099330902099609
+          },
+          {
+            "lane_m": 2,
+            "height_nap_m": 5.240960121154785
+          },
+          {
+            "lane_m": 3,
+            "height_nap_m": 5.360095977783203
+          },
+          {
+            "lane_m": 4,
+            "height_nap_m": 5.492557525634766
+          },
+          {
+            "lane_m": 5,
+            "height_nap_m": 5.6405439376831055
+          },
+          {
+            "lane_m": 6,
+            "height_nap_m": 5.7644734382629395
+          },
+          {
+            "lane_m": 7,
+            "height_nap_m": 5.885483741760254
+          },
+          {
+            "lane_m": 8,
+            "height_nap_m": 6.049363613128662
+          },
+          {
+            "lane_m": 9,
+            "height_nap_m": 6.163559436798096
+          },
+          {
+            "lane_m": 10,
+            "height_nap_m": 6.341396808624268
+          },
+          {
+            "lane_m": 11,
+            "height_nap_m": null
+          },
+          {
+            "lane_m": 12,
+            "height_nap_m": null
+          }
+        ],
+        "local_bank_samples": [
+          {
+            "lane_m": -11,
+            "bank_deg": 1.4443472850319508
+          },
+          {
+            "lane_m": -10,
+            "bank_deg": 1.258287346971824
+          },
+          {
+            "lane_m": -9,
+            "bank_deg": 2.138453957594829
+          },
+          {
+            "lane_m": -8,
+            "bank_deg": 3.7675297224479394
+          },
+          {
+            "lane_m": -7,
+            "bank_deg": 4.048958143190821
+          },
+          {
+            "lane_m": -6,
+            "bank_deg": 4.9064589585202745
+          },
+          {
+            "lane_m": -5,
+            "bank_deg": 6.220436729808968
+          },
+          {
+            "lane_m": -4,
+            "bank_deg": 5.505772032400521
+          },
+          {
+            "lane_m": -3,
+            "bank_deg": 5.8615691535948455
+          },
+          {
+            "lane_m": -2,
+            "bank_deg": 7.500435092321829
+          },
+          {
+            "lane_m": -1,
+            "bank_deg": 7.203538672661742
+          },
+          {
+            "lane_m": 0,
+            "bank_deg": 7.562528942113316
+          },
+          {
+            "lane_m": 1,
+            "bank_deg": 8.41482645270947
+          },
+          {
+            "lane_m": 2,
+            "bank_deg": 7.428464622350521
+          },
+          {
+            "lane_m": 3,
+            "bank_deg": 7.170070143300588
+          },
+          {
+            "lane_m": 4,
+            "bank_deg": 7.982196419192807
+          },
+          {
+            "lane_m": 5,
+            "bank_deg": 7.742345353746008
+          },
+          {
+            "lane_m": 6,
+            "bank_deg": 6.982238463231487
+          },
+          {
+            "lane_m": 7,
+            "bank_deg": 8.106964164621356
+          },
+          {
+            "lane_m": 8,
+            "bank_deg": 7.915535714075726
+          },
+          {
+            "lane_m": 9,
+            "bank_deg": 8.307426315340804
+          },
+          {
+            "lane_m": 10,
+            "bank_deg": null
+          },
+          {
+            "lane_m": 11,
+            "bank_deg": null
+          }
+        ]
+      },
+      {
+        "native_station_m": 840.154297,
+        "half_width_m": 6.0,
+        "existing_bank_deg": 11.81402823511345,
+        "cross_section": [
+          {
+            "lane_m": -12,
+            "height_nap_m": 3.3246283531188965
+          },
+          {
+            "lane_m": -11,
+            "height_nap_m": 3.3463149070739746
+          },
+          {
+            "lane_m": -10,
+            "height_nap_m": 3.360078811645508
+          },
+          {
+            "lane_m": -9,
+            "height_nap_m": 3.3704633712768555
+          },
+          {
+            "lane_m": -8,
+            "height_nap_m": 3.3929946422576904
+          },
+          {
+            "lane_m": -7,
+            "height_nap_m": 3.4412336349487305
+          },
+          {
+            "lane_m": -6,
+            "height_nap_m": 3.496300458908081
+          },
+          {
+            "lane_m": -5,
+            "height_nap_m": 3.561880350112915
+          },
+          {
+            "lane_m": -4,
+            "height_nap_m": 3.6262755393981934
+          },
+          {
+            "lane_m": -3,
+            "height_nap_m": 3.732403039932251
+          },
+          {
+            "lane_m": -2,
+            "height_nap_m": 3.8696727752685547
+          },
+          {
+            "lane_m": -1,
+            "height_nap_m": 3.9643592834472656
+          },
+          {
+            "lane_m": 0,
+            "height_nap_m": 4.135569095611572
+          },
+          {
+            "lane_m": 1,
+            "height_nap_m": 4.302985668182373
+          },
+          {
+            "lane_m": 2,
+            "height_nap_m": 4.467526435852051
+          },
+          {
+            "lane_m": 3,
+            "height_nap_m": 4.76030158996582
+          },
+          {
+            "lane_m": 4,
+            "height_nap_m": 4.9988508224487305
+          },
+          {
+            "lane_m": 5,
+            "height_nap_m": 5.23448371887207
+          },
+          {
+            "lane_m": 6,
+            "height_nap_m": 5.46047306060791
+          },
+          {
+            "lane_m": 7,
+            "height_nap_m": 5.77330207824707
+          },
+          {
+            "lane_m": 8,
+            "height_nap_m": 5.9928412437438965
+          },
+          {
+            "lane_m": 9,
+            "height_nap_m": 6.224330902099609
+          },
+          {
+            "lane_m": 10,
+            "height_nap_m": null
+          },
+          {
+            "lane_m": 11,
+            "height_nap_m": 6.709827423095703
+          },
+          {
+            "lane_m": 12,
+            "height_nap_m": null
+          }
+        ],
+        "local_bank_samples": [
+          {
+            "lane_m": -11,
+            "bank_deg": 1.0154744880694693
+          },
+          {
+            "lane_m": -10,
+            "bank_deg": 0.691768924590014
+          },
+          {
+            "lane_m": -9,
+            "bank_deg": 0.9428839619855336
+          },
+          {
+            "lane_m": -8,
+            "bank_deg": 2.02657316475643
+          },
+          {
+            "lane_m": -7,
+            "bank_deg": 2.9568658529587166
+          },
+          {
+            "lane_m": -6,
+            "bank_deg": 3.4520905716289265
+          },
+          {
+            "lane_m": -5,
+            "bank_deg": 3.718283084713968
+          },
+          {
+            "lane_m": -4,
+            "bank_deg": 4.873329140327663
+          },
+          {
+            "lane_m": -3,
+            "bank_deg": 6.938696121069158
+          },
+          {
+            "lane_m": -2,
+            "bank_deg": 6.615501007412504
+          },
+          {
+            "lane_m": -1,
+            "bank_deg": 7.57295896005347
+          },
+          {
+            "lane_m": 0,
+            "bank_deg": 9.609795108282588
+          },
+          {
+            "lane_m": 1,
+            "bank_deg": 9.423964022261861
+          },
+          {
+            "lane_m": 2,
+            "bank_deg": 12.879713241799127
+          },
+          {
+            "lane_m": 3,
+            "bank_deg": 14.877672554285633
+          },
+          {
+            "lane_m": 4,
+            "bank_deg": 13.33803717306904
+          },
+          {
+            "lane_m": 5,
+            "bank_deg": 12.996895444899371
+          },
+          {
+            "lane_m": 6,
+            "bank_deg": 15.07801902129642
+          },
+          {
+            "lane_m": 7,
+            "bank_deg": 14.905600214244917
+          },
+          {
+            "lane_m": 8,
+            "bank_deg": 12.708433826935241
+          },
+          {
+            "lane_m": 9,
+            "bank_deg": null
+          },
+          {
+            "lane_m": 10,
+            "bank_deg": 13.644527939642588
+          },
+          {
+            "lane_m": 11,
+            "bank_deg": null
+          }
+        ]
+      },
+      {
+        "native_station_m": 859.9104,
+        "half_width_m": 6.0,
+        "existing_bank_deg": 11.81402823511345,
+        "cross_section": [
+          {
+            "lane_m": -12,
+            "height_nap_m": 2.850554943084717
+          },
+          {
+            "lane_m": -11,
+            "height_nap_m": 2.8399860858917236
+          },
+          {
+            "lane_m": -10,
+            "height_nap_m": 2.8538126945495605
+          },
+          {
+            "lane_m": -9,
+            "height_nap_m": 2.8974382877349854
+          },
+          {
+            "lane_m": -8,
+            "height_nap_m": 2.9456734657287598
+          },
+          {
+            "lane_m": -7,
+            "height_nap_m": 2.984722375869751
+          },
+          {
+            "lane_m": -6,
+            "height_nap_m": 2.997551918029785
+          },
+          {
+            "lane_m": -5,
+            "height_nap_m": 3.0347418785095215
+          },
+          {
+            "lane_m": -4,
+            "height_nap_m": 3.1277856826782227
+          },
+          {
+            "lane_m": -3,
+            "height_nap_m": 3.1962108612060547
+          },
+          {
+            "lane_m": -2,
+            "height_nap_m": 3.314729690551758
+          },
+          {
+            "lane_m": -1,
+            "height_nap_m": 3.4573440551757812
+          },
+          {
+            "lane_m": 0,
+            "height_nap_m": 3.57204008102417
+          },
+          {
+            "lane_m": 1,
+            "height_nap_m": 3.744290590286255
+          },
+          {
+            "lane_m": 2,
+            "height_nap_m": 3.971203088760376
+          },
+          {
+            "lane_m": 3,
+            "height_nap_m": 4.159201622009277
+          },
+          {
+            "lane_m": 4,
+            "height_nap_m": 4.491665363311768
+          },
+          {
+            "lane_m": 5,
+            "height_nap_m": 4.765981674194336
+          },
+          {
+            "lane_m": 6,
+            "height_nap_m": 5.096566677093506
+          },
+          {
+            "lane_m": 7,
+            "height_nap_m": 5.4540252685546875
+          },
+          {
+            "lane_m": 8,
+            "height_nap_m": 5.698081970214844
+          },
+          {
+            "lane_m": 9,
+            "height_nap_m": 6.038595199584961
+          },
+          {
+            "lane_m": 10,
+            "height_nap_m": 6.286214828491211
+          },
+          {
+            "lane_m": 11,
+            "height_nap_m": 6.513394355773926
+          },
+          {
+            "lane_m": 12,
+            "height_nap_m": null
+          }
+        ],
+        "local_bank_samples": [
+          {
+            "lane_m": -11,
+            "bank_deg": 0.09332762227903883
+          },
+          {
+            "lane_m": -10,
+            "bank_deg": 1.645431846876423
+          },
+          {
+            "lane_m": -9,
+            "bank_deg": 2.62976903099749
+          },
+          {
+            "lane_m": -8,
+            "bank_deg": 2.4989192355114493
+          },
+          {
+            "lane_m": -7,
+            "bank_deg": 1.485874988279962
+          },
+          {
+            "lane_m": -6,
+            "bank_deg": 1.4326545445273904
+          },
+          {
+            "lane_m": -5,
+            "bank_deg": 3.725662611344892
+          },
+          {
+            "lane_m": -4,
+            "bank_deg": 4.615734445473067
+          },
+          {
+            "lane_m": -3,
+            "bank_deg": 5.34003540670138
+          },
+          {
+            "lane_m": -2,
+            "bank_deg": 7.438833911636497
+          },
+          {
+            "lane_m": -1,
+            "bank_deg": 7.331128038392413
+          },
+          {
+            "lane_m": 0,
+            "bank_deg": 8.164694684063514
+          },
+          {
+            "lane_m": 1,
+            "bank_deg": 11.28687479063937
+          },
+          {
+            "lane_m": 2,
+            "bank_deg": 11.720077404911638
+          },
+          {
+            "lane_m": 3,
+            "bank_deg": 14.586620136550696
+          },
+          {
+            "lane_m": 4,
+            "bank_deg": 16.87727405484347
+          },
+          {
+            "lane_m": 5,
+            "bank_deg": 16.827975809713188
+          },
+          {
+            "lane_m": 6,
+            "bank_deg": 18.984333788058787
+          },
+          {
+            "lane_m": 7,
+            "bank_deg": 16.739061567077165
+          },
+          {
+            "lane_m": 8,
+            "bank_deg": 16.292847802337405
+          },
+          {
+            "lane_m": 9,
+            "bank_deg": 16.386839370063626
+          },
+          {
+            "lane_m": 10,
+            "bank_deg": 13.354771788950652
+          },
+          {
+            "lane_m": 11,
+            "bank_deg": null
+          }
+        ]
+      },
+      {
+        "native_station_m": 880.186401,
+        "half_width_m": 6.0,
+        "existing_bank_deg": 11.81402823511345,
+        "cross_section": [
+          {
+            "lane_m": -12,
+            "height_nap_m": 2.8133561611175537
+          },
+          {
+            "lane_m": -11,
+            "height_nap_m": 2.8110439777374268
+          },
+          {
+            "lane_m": -10,
+            "height_nap_m": 2.841721296310425
+          },
+          {
+            "lane_m": -9,
+            "height_nap_m": 2.846285104751587
+          },
+          {
+            "lane_m": -8,
+            "height_nap_m": 2.870882511138916
+          },
+          {
+            "lane_m": -7,
+            "height_nap_m": 2.8988099098205566
+          },
+          {
+            "lane_m": -6,
+            "height_nap_m": 2.9156007766723633
+          },
+          {
+            "lane_m": -5,
+            "height_nap_m": 2.9160943031311035
+          },
+          {
+            "lane_m": -4,
+            "height_nap_m": 2.9841315746307373
+          },
+          {
+            "lane_m": -3,
+            "height_nap_m": 3.0963447093963623
+          },
+          {
+            "lane_m": -2,
+            "height_nap_m": 3.1804683208465576
+          },
+          {
+            "lane_m": -1,
+            "height_nap_m": 3.2864434719085693
+          },
+          {
+            "lane_m": 0,
+            "height_nap_m": 3.4674782752990723
+          },
+          {
+            "lane_m": 1,
+            "height_nap_m": 3.6140549182891846
+          },
+          {
+            "lane_m": 2,
+            "height_nap_m": 3.779888391494751
+          },
+          {
+            "lane_m": 3,
+            "height_nap_m": 4.046908855438232
+          },
+          {
+            "lane_m": 4,
+            "height_nap_m": 4.24889612197876
+          },
+          {
+            "lane_m": 5,
+            "height_nap_m": 4.549083709716797
+          },
+          {
+            "lane_m": 6,
+            "height_nap_m": 4.945646286010742
+          },
+          {
+            "lane_m": 7,
+            "height_nap_m": 5.218549728393555
+          },
+          {
+            "lane_m": 8,
+            "height_nap_m": 5.4933977127075195
+          },
+          {
+            "lane_m": 9,
+            "height_nap_m": 5.819125175476074
+          },
+          {
+            "lane_m": 10,
+            "height_nap_m": 6.229205131530762
+          },
+          {
+            "lane_m": 11,
+            "height_nap_m": 6.481203079223633
+          },
+          {
+            "lane_m": 12,
+            "height_nap_m": 6.711491107940674
+          }
+        ],
+        "local_bank_samples": [
+          {
+            "lane_m": -11,
+            "bank_deg": 0.8125467888881658
+          },
+          {
+            "lane_m": -10,
+            "bank_deg": 1.0094794544201176
+          },
+          {
+            "lane_m": -9,
+            "bank_deg": 0.835348074234845
+          },
+          {
+            "lane_m": -8,
+            "bank_deg": 1.5043790250377795
+          },
+          {
+            "lane_m": -7,
+            "bank_deg": 1.2808705206719775
+          },
+          {
+            "lane_m": -6,
+            "bank_deg": 0.49514906715569706
+          },
+          {
+            "lane_m": -5,
+            "bank_deg": 1.9624949185851492
+          },
+          {
+            "lane_m": -4,
+            "bank_deg": 5.149880450018672
+          },
+          {
+            "lane_m": -3,
+            "bank_deg": 5.6066689686851605
+          },
+          {
+            "lane_m": -2,
+            "bank_deg": 5.429616516714356
+          },
+          {
+            "lane_m": -1,
+            "bank_deg": 8.166474862069341
+          },
+          {
+            "lane_m": 0,
+            "bank_deg": 9.302758876333401
+          },
+          {
+            "lane_m": 1,
+            "bank_deg": 8.878145519498519
+          },
+          {
+            "lane_m": 2,
+            "bank_deg": 12.212004147646375
+          },
+          {
+            "lane_m": 3,
+            "bank_deg": 13.197609481406078
+          },
+          {
+            "lane_m": 4,
+            "bank_deg": 14.094868433828609
+          },
+          {
+            "lane_m": 5,
+            "bank_deg": 19.207063527460264
+          },
+          {
+            "lane_m": 6,
+            "bank_deg": 18.507094465616113
+          },
+          {
+            "lane_m": 7,
+            "bank_deg": 15.316346190833512
+          },
+          {
+            "lane_m": 8,
+            "bank_deg": 16.71436720539495
+          },
+          {
+            "lane_m": 9,
+            "bank_deg": 20.19875599986292
+          },
+          {
+            "lane_m": 10,
+            "bank_deg": 18.31655496230793
+          },
+          {
+            "lane_m": 11,
+            "bank_deg": 13.557638909499431
+          }
+        ]
+      },
+      {
+        "native_station_m": 899.942505,
+        "half_width_m": 6.0,
+        "existing_bank_deg": 11.81402823511345,
+        "cross_section": [
+          {
+            "lane_m": -12,
+            "height_nap_m": 3.0887465476989746
+          },
+          {
+            "lane_m": -11,
+            "height_nap_m": 3.083106517791748
+          },
+          {
+            "lane_m": -10,
+            "height_nap_m": 3.1033201217651367
+          },
+          {
+            "lane_m": -9,
+            "height_nap_m": 3.10920786857605
+          },
+          {
+            "lane_m": -8,
+            "height_nap_m": 3.137181043624878
+          },
+          {
+            "lane_m": -7,
+            "height_nap_m": 3.1850152015686035
+          },
+          {
+            "lane_m": -6,
+            "height_nap_m": 3.210385799407959
+          },
+          {
+            "lane_m": -5,
+            "height_nap_m": 3.2492218017578125
+          },
+          {
+            "lane_m": -4,
+            "height_nap_m": 3.3656606674194336
+          },
+          {
+            "lane_m": -3,
+            "height_nap_m": 3.4454803466796875
+          },
+          {
+            "lane_m": -2,
+            "height_nap_m": 3.548574686050415
+          },
+          {
+            "lane_m": -1,
+            "height_nap_m": 3.701965570449829
+          },
+          {
+            "lane_m": 0,
+            "height_nap_m": 3.8151583671569824
+          },
+          {
+            "lane_m": 1,
+            "height_nap_m": 3.989335298538208
+          },
+          {
+            "lane_m": 2,
+            "height_nap_m": 4.185953140258789
+          },
+          {
+            "lane_m": 3,
+            "height_nap_m": 4.364261150360107
+          },
+          {
+            "lane_m": 4,
+            "height_nap_m": 4.649833679199219
+          },
+          {
+            "lane_m": 5,
+            "height_nap_m": 4.899641036987305
+          },
+          {
+            "lane_m": 6,
+            "height_nap_m": 5.157194137573242
+          },
+          {
+            "lane_m": 7,
+            "height_nap_m": 5.48158073425293
+          },
+          {
+            "lane_m": 8,
+            "height_nap_m": 5.805965423583984
+          },
+          {
+            "lane_m": 9,
+            "height_nap_m": 6.081879138946533
+          },
+          {
+            "lane_m": 10,
+            "height_nap_m": 6.471245765686035
+          },
+          {
+            "lane_m": 11,
+            "height_nap_m": 6.733063220977783
+          },
+          {
+            "lane_m": 12,
+            "height_nap_m": 7.021934986114502
+          }
+        ],
+        "local_bank_samples": [
+          {
+            "lane_m": -11,
+            "bank_deg": 0.41749475403425595
+          },
+          {
+            "lane_m": -10,
+            "bank_deg": 0.7477061718896469
+          },
+          {
+            "lane_m": -9,
+            "bank_deg": 0.969951287799163
+          },
+          {
+            "lane_m": -8,
+            "bank_deg": 2.1706809858766336
+          },
+          {
+            "lane_m": -7,
+            "bank_deg": 2.0962259790849185
+          },
+          {
+            "lane_m": -6,
+            "bank_deg": 1.8387520913330886
+          },
+          {
+            "lane_m": -5,
+            "bank_deg": 4.439392008832671
+          },
+          {
+            "lane_m": -4,
+            "bank_deg": 5.604450041983321
+          },
+          {
+            "lane_m": -3,
+            "bank_deg": 5.225563455699672
+          },
+          {
+            "lane_m": -2,
+            "bank_deg": 7.307872450734123
+          },
+          {
+            "lane_m": -1,
+            "bank_deg": 7.592307520678005
+          },
+          {
+            "lane_m": 0,
+            "bank_deg": 8.176573390874713
+          },
+          {
+            "lane_m": 1,
+            "bank_deg": 10.503231683470093
+          },
+          {
+            "lane_m": 2,
+            "bank_deg": 10.617603215806138
+          },
+          {
+            "lane_m": 3,
+            "bank_deg": 13.058303527508494
+          },
+          {
+            "lane_m": 4,
+            "bank_deg": 14.986140243017402
+          },
+          {
+            "lane_m": 5,
+            "bank_deg": 14.234528949568075
+          },
+          {
+            "lane_m": 6,
+            "bank_deg": 16.223403186868413
+          },
+          {
+            "lane_m": 7,
+            "bank_deg": 17.9723186055763
+          },
+          {
+            "lane_m": 8,
+            "bank_deg": 16.70708672360504
+          },
+          {
+            "lane_m": 9,
+            "bank_deg": 18.399197647186423
+          },
+          {
+            "lane_m": 10,
+            "bank_deg": 18.034837057252787
+          },
+          {
+            "lane_m": 11,
+            "bank_deg": 15.394606131545736
+          }
+        ]
+      },
+      {
+        "native_station_m": 920.218506,
+        "half_width_m": 6.0,
+        "existing_bank_deg": 11.81402823511345,
+        "cross_section": [
+          {
+            "lane_m": -12,
+            "height_nap_m": 4.313809871673584
+          },
+          {
+            "lane_m": -11,
+            "height_nap_m": 4.321113586425781
+          },
+          {
+            "lane_m": -10,
+            "height_nap_m": 4.33331823348999
+          },
+          {
+            "lane_m": -9,
+            "height_nap_m": 4.380949020385742
+          },
+          {
+            "lane_m": -8,
+            "height_nap_m": 4.421062469482422
+          },
+          {
+            "lane_m": -7,
+            "height_nap_m": 4.45911169052124
+          },
+          {
+            "lane_m": -6,
+            "height_nap_m": 4.530150413513184
+          },
+          {
+            "lane_m": -5,
+            "height_nap_m": 4.609311580657959
+          },
+          {
+            "lane_m": -4,
+            "height_nap_m": 4.723305702209473
+          },
+          {
+            "lane_m": -3,
+            "height_nap_m": 4.86189603805542
+          },
+          {
+            "lane_m": -2,
+            "height_nap_m": 4.981503009796143
+          },
+          {
+            "lane_m": -1,
+            "height_nap_m": 5.163078308105469
+          },
+          {
+            "lane_m": 0,
+            "height_nap_m": 5.320505142211914
+          },
+          {
+            "lane_m": 1,
+            "height_nap_m": 5.460495948791504
+          },
+          {
+            "lane_m": 2,
+            "height_nap_m": 5.642206192016602
+          },
+          {
+            "lane_m": 3,
+            "height_nap_m": 5.775628089904785
+          },
+          {
+            "lane_m": 4,
+            "height_nap_m": 5.936305999755859
+          },
+          {
+            "lane_m": 5,
+            "height_nap_m": 6.164649963378906
+          },
+          {
+            "lane_m": 6,
+            "height_nap_m": 6.3138275146484375
+          },
+          {
+            "lane_m": 7,
+            "height_nap_m": 6.487927436828613
+          },
+          {
+            "lane_m": 8,
+            "height_nap_m": 6.682951927185059
+          },
+          {
+            "lane_m": 9,
+            "height_nap_m": 6.831844329833984
+          },
+          {
+            "lane_m": 10,
+            "height_nap_m": 7.030194282531738
+          },
+          {
+            "lane_m": 11,
+            "height_nap_m": 7.045519828796387
+          },
+          {
+            "lane_m": 12,
+            "height_nap_m": null
+          }
+        ],
+        "local_bank_samples": [
+          {
+            "lane_m": -11,
+            "bank_deg": 0.558855675166917
+          },
+          {
+            "lane_m": -10,
+            "bank_deg": 1.713647759484134
+          },
+          {
+            "lane_m": -9,
+            "bank_deg": 2.512076308938468
+          },
+          {
+            "lane_m": -8,
+            "bank_deg": 2.2380565883611014
+          },
+          {
+            "lane_m": -7,
+            "bank_deg": 3.122045771365117
+          },
+          {
+            "lane_m": -6,
+            "bank_deg": 4.2948476859571825
+          },
+          {
+            "lane_m": -5,
+            "bank_deg": 5.516382989490804
+          },
+          {
+            "lane_m": -4,
+            "bank_deg": 7.19790490233176
+          },
+          {
+            "lane_m": -3,
+            "bank_deg": 7.356121223372677
+          },
+          {
+            "lane_m": -2,
+            "bank_deg": 8.563886980513574
+          },
+          {
+            "lane_m": -1,
+            "bank_deg": 9.620259180333079
+          },
+          {
+            "lane_m": 0,
+            "bank_deg": 8.458400699418542
+          },
+          {
+            "lane_m": 1,
+            "bank_deg": 9.137785706822498
+          },
+          {
+            "lane_m": 2,
+            "bank_deg": 8.954252550176268
+          },
+          {
+            "lane_m": 3,
+            "bank_deg": 8.3653858828802
+          },
+          {
+            "lane_m": 4,
+            "bank_deg": 11.007211740694363
+          },
+          {
+            "lane_m": 5,
+            "bank_deg": 10.689422089274094
+          },
+          {
+            "lane_m": 6,
+            "bank_deg": 9.181802486729472
+          },
+          {
+            "lane_m": 7,
+            "bank_deg": 10.456962594201023
+          },
+          {
+            "lane_m": 8,
+            "bank_deg": 9.757068822501395
+          },
+          {
+            "lane_m": 9,
+            "bank_deg": 9.849574405979325
+          },
+          {
+            "lane_m": 10,
+            "bank_deg": 6.098220028464641
+          },
+          {
+            "lane_m": 11,
+            "bank_deg": null
+          }
+        ]
+      },
+      {
+        "native_station_m": 939.974609,
+        "half_width_m": 6.0,
+        "existing_bank_deg": 10.296265448720051,
+        "cross_section": [
+          {
+            "lane_m": -12,
+            "height_nap_m": 6.306772232055664
+          },
+          {
+            "lane_m": -11,
+            "height_nap_m": 6.363513469696045
+          },
+          {
+            "lane_m": -10,
+            "height_nap_m": 6.369449615478516
+          },
+          {
+            "lane_m": -9,
+            "height_nap_m": 6.379738807678223
+          },
+          {
+            "lane_m": -8,
+            "height_nap_m": 6.417746543884277
+          },
+          {
+            "lane_m": -7,
+            "height_nap_m": 6.464176654815674
+          },
+          {
+            "lane_m": -6,
+            "height_nap_m": 6.525768280029297
+          },
+          {
+            "lane_m": -5,
+            "height_nap_m": 6.565214157104492
+          },
+          {
+            "lane_m": -4,
+            "height_nap_m": 6.6175456047058105
+          },
+          {
+            "lane_m": -3,
+            "height_nap_m": 6.663022041320801
+          },
+          {
+            "lane_m": -2,
+            "height_nap_m": 6.711834907531738
+          },
+          {
+            "lane_m": -1,
+            "height_nap_m": 6.792069435119629
+          },
+          {
+            "lane_m": 0,
+            "height_nap_m": 6.872616767883301
+          },
+          {
+            "lane_m": 1,
+            "height_nap_m": 6.940215587615967
+          },
+          {
+            "lane_m": 2,
+            "height_nap_m": 7.034841060638428
+          },
+          {
+            "lane_m": 3,
+            "height_nap_m": 7.105711460113525
+          },
+          {
+            "lane_m": 4,
+            "height_nap_m": 7.201711654663086
+          },
+          {
+            "lane_m": 5,
+            "height_nap_m": 7.326084136962891
+          },
+          {
+            "lane_m": 6,
+            "height_nap_m": 7.427675247192383
+          },
+          {
+            "lane_m": 7,
+            "height_nap_m": 7.544130802154541
+          },
+          {
+            "lane_m": 8,
+            "height_nap_m": 7.600366592407227
+          },
+          {
+            "lane_m": 9,
+            "height_nap_m": 7.631143569946289
+          },
+          {
+            "lane_m": 10,
+            "height_nap_m": 7.675449371337891
+          },
+          {
+            "lane_m": 11,
+            "height_nap_m": 7.680253982543945
+          },
+          {
+            "lane_m": 12,
+            "height_nap_m": 7.64741325378418
+          }
+        ],
+        "local_bank_samples": [
+          {
+            "lane_m": -11,
+            "bank_deg": 1.7949872972005712
+          },
+          {
+            "lane_m": -10,
+            "bank_deg": 0.46481149670376976
+          },
+          {
+            "lane_m": -9,
+            "bank_deg": 1.3833362256166335
+          },
+          {
+            "lane_m": -8,
+            "bank_deg": 2.4175304525140113
+          },
+          {
+            "lane_m": -7,
+            "bank_deg": 3.0915908873651152
+          },
+          {
+            "lane_m": -6,
+            "bank_deg": 2.892052587268263
+          },
+          {
+            "lane_m": -5,
+            "bank_deg": 2.627383492750056
+          },
+          {
+            "lane_m": -4,
+            "bank_deg": 2.799758942344072
+          },
+          {
+            "lane_m": -3,
+            "bank_deg": 2.6991909794927427
+          },
+          {
+            "lane_m": -2,
+            "bank_deg": 3.6918177957551803
+          },
+          {
+            "lane_m": -1,
+            "bank_deg": 4.5961767765958434
+          },
+          {
+            "lane_m": 0,
+            "bank_deg": 4.2363379398264
+          },
+          {
+            "lane_m": 1,
+            "bank_deg": 4.637231707896048
+          },
+          {
+            "lane_m": 2,
+            "bank_deg": 4.730330614124614
+          },
+          {
+            "lane_m": 3,
+            "bank_deg": 4.769443439953795
+          },
+          {
+            "lane_m": 4,
+            "bank_deg": 6.287847041083329
+          },
+          {
+            "lane_m": 5,
+            "bank_deg": 6.44604515381895
+          },
+          {
+            "lane_m": 6,
+            "bank_deg": 6.222002724864273
+          },
+          {
+            "lane_m": 7,
+            "bank_deg": 4.93500248108525
+          },
+          {
+            "lane_m": 8,
+            "bank_deg": 2.4911612105039236
+          },
+          {
+            "lane_m": 9,
+            "bank_deg": 2.149953536149764
+          },
+          {
+            "lane_m": 10,
+            "bank_deg": 1.4066270190271883
+          },
+          {
+            "lane_m": 11,
+            "bank_deg": -0.8031230014811893
+          }
+        ]
+      },
+      {
+        "native_station_m": 960.25061,
+        "half_width_m": 6.62870884,
+        "existing_bank_deg": 2.954770727741616,
+        "cross_section": [
+          {
+            "lane_m": -12,
+            "height_nap_m": null
+          },
+          {
+            "lane_m": -11,
+            "height_nap_m": null
+          },
+          {
+            "lane_m": -10,
+            "height_nap_m": null
+          },
+          {
+            "lane_m": -9,
+            "height_nap_m": null
+          },
+          {
+            "lane_m": -8,
+            "height_nap_m": null
+          },
+          {
+            "lane_m": -7,
+            "height_nap_m": null
+          },
+          {
+            "lane_m": -6,
+            "height_nap_m": null
+          },
+          {
+            "lane_m": -5,
+            "height_nap_m": null
+          },
+          {
+            "lane_m": -4,
+            "height_nap_m": null
+          },
+          {
+            "lane_m": -3,
+            "height_nap_m": null
+          },
+          {
+            "lane_m": -2,
+            "height_nap_m": null
+          },
+          {
+            "lane_m": -1,
+            "height_nap_m": null
+          },
+          {
+            "lane_m": 0,
+            "height_nap_m": null
+          },
+          {
+            "lane_m": 1,
+            "height_nap_m": null
+          },
+          {
+            "lane_m": 2,
+            "height_nap_m": null
+          },
+          {
+            "lane_m": 3,
+            "height_nap_m": null
+          },
+          {
+            "lane_m": 4,
+            "height_nap_m": null
+          },
+          {
+            "lane_m": 5,
+            "height_nap_m": null
+          },
+          {
+            "lane_m": 6,
+            "height_nap_m": null
+          },
+          {
+            "lane_m": 7,
+            "height_nap_m": null
+          },
+          {
+            "lane_m": 8,
+            "height_nap_m": null
+          },
+          {
+            "lane_m": 9,
+            "height_nap_m": null
+          },
+          {
+            "lane_m": 10,
+            "height_nap_m": null
+          },
+          {
+            "lane_m": 11,
+            "height_nap_m": null
+          },
+          {
+            "lane_m": 12,
+            "height_nap_m": null
+          }
+        ],
+        "local_bank_samples": [
+          {
+            "lane_m": -11,
+            "bank_deg": null
+          },
+          {
+            "lane_m": -10,
+            "bank_deg": null
+          },
+          {
+            "lane_m": -9,
+            "bank_deg": null
+          },
+          {
+            "lane_m": -8,
+            "bank_deg": null
+          },
+          {
+            "lane_m": -7,
+            "bank_deg": null
+          },
+          {
+            "lane_m": -6,
+            "bank_deg": null
+          },
+          {
+            "lane_m": -5,
+            "bank_deg": null
+          },
+          {
+            "lane_m": -4,
+            "bank_deg": null
+          },
+          {
+            "lane_m": -3,
+            "bank_deg": null
+          },
+          {
+            "lane_m": -2,
+            "bank_deg": null
+          },
+          {
+            "lane_m": -1,
+            "bank_deg": null
+          },
+          {
+            "lane_m": 0,
+            "bank_deg": null
+          },
+          {
+            "lane_m": 1,
+            "bank_deg": null
+          },
+          {
+            "lane_m": 2,
+            "bank_deg": null
+          },
+          {
+            "lane_m": 3,
+            "bank_deg": null
+          },
+          {
+            "lane_m": 4,
+            "bank_deg": null
+          },
+          {
+            "lane_m": 5,
+            "bank_deg": null
+          },
+          {
+            "lane_m": 6,
+            "bank_deg": null
+          },
+          {
+            "lane_m": 7,
+            "bank_deg": null
+          },
+          {
+            "lane_m": 8,
+            "bank_deg": null
+          },
+          {
+            "lane_m": 9,
+            "bank_deg": null
+          },
+          {
+            "lane_m": 10,
+            "bank_deg": null
+          },
+          {
+            "lane_m": 11,
+            "bank_deg": null
+          }
+        ]
+      }
+    ]
+  },
+  "quadratic_fits": [
+    {
+      "station_m": 825.077271,
+      "a": 0.1278921300714667,
+      "bank_degrees": 7.288115363169936,
+      "q_per_m": 0.0026607260153656423,
+      "maximum_fit_error_m": 0.02943598734589703,
+      "rms_fit_m": 0.014336136858558354,
+      "old_plane_rms_m": 0.25984759861543094,
+      "edge_derivative_degrees": [
+        5.4815135769070045,
+        9.080267882782465
+      ],
+      "center_source_nap_m": 4.945096969604492
+    },
+    {
+      "station_m": 840.154297,
+      "a": 0.16792133938182494,
+      "bank_degrees": 9.532252492409095,
+      "q_per_m": 0.010750258662970968,
+      "maximum_fit_error_m": 0.04688637317505523,
+      "rms_fit_m": 0.020052067213161287,
+      "old_plane_rms_m": 0.1948968155625467,
+      "edge_derivative_degrees": [
+        2.228725859162091,
+        16.537441263132674
+      ],
+      "center_source_nap_m": 4.135569095611572
+    },
+    {
+      "station_m": 859.9104,
+      "a": 0.16909621195359667,
+      "bank_degrees": 9.597709072370833,
+      "q_per_m": 0.013559231232086895,
+      "maximum_fit_error_m": 0.04216017596446464,
+      "rms_fit_m": 0.02404179700964488,
+      "old_plane_rms_m": 0.22217113926162313,
+      "edge_derivative_degrees": [
+        0.36585362774300045,
+        18.356204919174896
+      ],
+      "center_source_nap_m": 3.57204008102417
+    },
+    {
+      "station_m": 880.186401,
+      "a": 0.16001953861930157,
+      "bank_degrees": 9.091368454569425,
+      "q_per_m": 0.010197390453077554,
+      "maximum_fit_error_m": 0.048418522855234625,
+      "rms_fit_m": 0.02246535011921632,
+      "old_plane_rms_m": 0.2077703030793544,
+      "edge_derivative_degrees": [
+        2.1562164926489715,
+        15.769054819998047
+      ],
+      "center_source_nap_m": 3.4674782752990723
+    },
+    {
+      "station_m": 899.942505,
+      "a": 0.16097506609829998,
+      "bank_degrees": 9.144741291272554,
+      "q_per_m": 0.010837153102574718,
+      "maximum_fit_error_m": 0.036945116288571944,
+      "rms_fit_m": 0.02048816854337838,
+      "old_plane_rms_m": 0.21106597271546146,
+      "edge_derivative_degrees": [
+        1.7715495234813203,
+        16.226100040491175
+      ],
+      "center_source_nap_m": 3.8151583671569824
+    },
+    {
+      "station_m": 920.218506,
+      "a": 0.15444284785877582,
+      "bank_degrees": 8.779556837535091,
+      "q_per_m": 0.0017892688482360466,
+      "maximum_fit_error_m": 0.03727351209116403,
+      "rms_fit_m": 0.020078753621730696,
+      "old_plane_rms_m": 0.17584002954648442,
+      "edge_derivative_degrees": [
+        7.574279854260602,
+        9.977053941651732
+      ],
+      "center_source_nap_m": 5.320505142211914
+    },
+    {
+      "station_m": 939.974609,
+      "a": 0.07512037103826352,
+      "bank_degrees": 4.296011442451139,
+      "q_per_m": 0.002574218305796231,
+      "maximum_fit_error_m": 0.020837991498220382,
+      "rms_fit_m": 0.010741805230615986,
+      "old_plane_rms_m": 0.33883511662943366,
+      "edge_derivative_degrees": [
+        2.5325275063404042,
+        6.051380751142125
+      ],
+      "center_source_nap_m": 6.872616767883301
+    }
+  ],
+  "formula": "h(lane)-h(0)=a*lane+q*lane\u00b2. a and q fitted jointly to valid AHN5 heights over lanes\u22125\u2026+5m. Centreline height remains exactly unchanged. Bank angle=atan(a).",
+  "source_uncertainty_m": 0.5,
+  "horizontal_registration_uncertainty_m": 1.0,
+  "qualified_scope_m": [
+    780,
+    980
+  ],
+  "status": "Canonical source; compiled native/contact and fresh packaged review pending",
+  "local_derivative_limitation": "At880.186m, AHN two-metre derivative at lane+5m is approximately19.2deg versus14.5deg for the fitted quadratic. The relative-height fit remains within 4.9 cm over lanes\u22125\u2026+5. This is a limited quadratic representation, not a claim of exact pointwise banking. Edge derivatives include possible curb/pixel effects.",
+  "source_mesh_proof": {
+    "source_only_counter": true,
+    "paved_triangles": 801,
+    "paved_area_m2": 1509.6293180351493,
+    "paved_road_overlap_m2": 0.0,
+    "paving_outside_new_protection_corridor_m2": 0.0,
+    "maximum_paved_vertex_to_road_surface_error_m": 3.3393426912553537e-16,
+    "banked_road_triangles_total": 20696,
+    "minimum_road_normal_z": 0.9490486009307187,
+    "road_center_height_change_m": 0.0,
+    "road_plan_change_m": 0.0,
+    "active_road_width_change_m": 0.0,
+    "opposite_shoulder_change_m": 0.0,
+    "outside_755_995_shoulder_change_m": 0.0,
+    "protection_offsets": [
+      {
+        "station_m": 800,
+        "old_source_outer_gravel_width_m": 20,
+        "new_edge_to_wall_m": 7.899668535436848,
+        "paved_outer_m": 7.720000000000001,
+        "opposite_shoulder_m": 7.3241603518314164
+      },
+      {
+        "station_m": 825,
+        "old_source_outer_gravel_width_m": 20,
+        "new_edge_to_wall_m": 3.6037921084799205,
+        "paved_outer_m": 3.42,
+        "opposite_shoulder_m": 3.820538865813571
+      },
+      {
+        "station_m": 840,
+        "old_source_outer_gravel_width_m": 20,
+        "new_edge_to_wall_m": 4.360900290541649,
+        "paved_outer_m": 4.181,
+        "opposite_shoulder_m": 3.81999993
+      },
+      {
+        "station_m": 860,
+        "old_source_outer_gravel_width_m": 20,
+        "new_edge_to_wall_m": 5.30022245243015,
+        "paved_outer_m": 5.12,
+        "opposite_shoulder_m": 4.953485630277067
+      },
+      {
+        "station_m": 880,
+        "old_source_outer_gravel_width_m": 20,
+        "new_edge_to_wall_m": 6.7,
+        "paved_outer_m": 6.5200000000000005,
+        "opposite_shoulder_m": 5.801826245736088
+      },
+      {
+        "station_m": 900,
+        "old_source_outer_gravel_width_m": 20,
+        "new_edge_to_wall_m": 6.499693178084528,
+        "paved_outer_m": 6.32,
+        "opposite_shoulder_m": 5.442798104644282
+      },
+      {
+        "station_m": 920,
+        "old_source_outer_gravel_width_m": 20,
+        "new_edge_to_wall_m": 3.6099100466938845,
+        "paved_outer_m": 3.42,
+        "opposite_shoulder_m": 4.530094264174686
+      },
+      {
+        "station_m": 940,
+        "old_source_outer_gravel_width_m": 20,
+        "new_edge_to_wall_m": 3.8010143375538865,
+        "paved_outer_m": 3.6199999999999997,
+        "opposite_shoulder_m": 3.83299994
+      },
+      {
+        "station_m": 960,
+        "old_source_outer_gravel_width_m": 20,
+        "new_edge_to_wall_m": 3.2036286398951406,
+        "paved_outer_m": 3.02,
+        "opposite_shoulder_m": 4.470144762016904
+      },
+      {
+        "station_m": 995,
+        "old_source_outer_gravel_width_m": 20,
+        "new_edge_to_wall_m": 10.227860713760995,
+        "paved_outer_m": 10.061,
+        "opposite_shoulder_m": 9.12199974
+      }
+    ],
+    "compiled_validation": "Pending root-owned guarded compile/export/contact and fresh packaged review. No full scene or Unreal generated by this proof.",
+    "memory": [
+      "VmHWM:\t  103688 kB"
+    ],
+    "zero_quadratic_mesh_baseline_sha256": "e5edd8fac518ca0d8f716e686089c1313d24035588729f0cae382b0fc4c34f44",
+    "focused_checks": "193 Python tests passed; mypy 63 source files and Ruff passed. Native C++ fixture/contact tests added; compilation and validation are pending the root-owned guarded pipeline."
+  },
+  "paved_bank_contact": {
+    "status": "Source implementation complete; actual compiled/exported contact and final-wall coverage await the root-owned pipeline.",
+    "registration": {
+      "start_m": 755,
+      "end_m": 995,
+      "side": 1,
+      "material": "Asphalt",
+      "minimum_width_m": 3
+    },
+    "old_problem": "The generic 8 m native scenery grid and off-road blend did not follow the paved bowl. Numerical reproduction measured up to 3.27 m of missing support at sampled points inside the mapped paved extent.",
+    "scope": "Contact extension covers Asphalt runoff sections of tracks containing nonzero quadratic bank controls, including their flat entry/exit. An explicit separate Jeddah exception covers its nonzero scalar-bank Asphalt sections. Every other wholly-q0 circuit retains the previous contact and Ground paths.",
+    "contact_geometry": "Additional contact strips extend from the existing active-road contact edge to the nearest final authored wall nearface, with 0.02 m clearance. The wall normal and thickness are included. Strip width is at most 1.5 m; heights use the same quadratic road surface and its tangent continuation beyond the white lines.",
+    "limits": "White-line track limits, road centre, active width, longitudinal elevation and all unrelated protection are unchanged. This supplies existing paved scenery rather than extending the valid lap envelope.",
+    "checks": "Native fixtures test nonlinear heights, derivatives, wall-face clipping, opposite-side exclusion and a wholly planar control track. The real native audit samples 10%, 50%, 90% and 99% of the full wall-bounded apron on each selected section.",
+    "source_geometry": {
+      "source_only_counter": true,
+      "paved_triangles": 801,
+      "paved_area_m2": 1509.6293180351493,
+      "paved_road_overlap_m2": 0.0,
+      "paving_outside_new_protection_corridor_m2": 0.0,
+      "maximum_paved_vertex_to_road_surface_error_m": 3.3393426912553537e-16,
+      "banked_road_triangles_total": 20696,
+      "minimum_road_normal_z": 0.9490486009307187,
+      "road_center_height_change_m": 0.0,
+      "road_plan_change_m": 0.0,
+      "active_road_width_change_m": 0.0,
+      "opposite_shoulder_change_m": 0.0,
+      "outside_755_995_shoulder_change_m": 0.0,
+      "protection_offsets": [
+        {
+          "station_m": 800,
+          "old_source_outer_gravel_width_m": 20,
+          "new_edge_to_wall_m": 7.899668535436848,
+          "paved_outer_m": 7.720000000000001,
+          "opposite_shoulder_m": 7.3241603518314164
+        },
+        {
+          "station_m": 825,
+          "old_source_outer_gravel_width_m": 20,
+          "new_edge_to_wall_m": 3.6037921084799205,
+          "paved_outer_m": 3.42,
+          "opposite_shoulder_m": 3.820538865813571
+        },
+        {
+          "station_m": 840,
+          "old_source_outer_gravel_width_m": 20,
+          "new_edge_to_wall_m": 4.360900290541649,
+          "paved_outer_m": 4.181,
+          "opposite_shoulder_m": 3.81999993
+        },
+        {
+          "station_m": 860,
+          "old_source_outer_gravel_width_m": 20,
+          "new_edge_to_wall_m": 5.30022245243015,
+          "paved_outer_m": 5.12,
+          "opposite_shoulder_m": 4.953485630277067
+        },
+        {
+          "station_m": 880,
+          "old_source_outer_gravel_width_m": 20,
+          "new_edge_to_wall_m": 6.7,
+          "paved_outer_m": 6.5200000000000005,
+          "opposite_shoulder_m": 5.801826245736088
+        },
+        {
+          "station_m": 900,
+          "old_source_outer_gravel_width_m": 20,
+          "new_edge_to_wall_m": 6.499693178084528,
+          "paved_outer_m": 6.32,
+          "opposite_shoulder_m": 5.442798104644282
+        },
+        {
+          "station_m": 920,
+          "old_source_outer_gravel_width_m": 20,
+          "new_edge_to_wall_m": 3.6099100466938845,
+          "paved_outer_m": 3.42,
+          "opposite_shoulder_m": 4.530094264174686
+        },
+        {
+          "station_m": 940,
+          "old_source_outer_gravel_width_m": 20,
+          "new_edge_to_wall_m": 3.8010143375538865,
+          "paved_outer_m": 3.6199999999999997,
+          "opposite_shoulder_m": 3.83299994
+        },
+        {
+          "station_m": 960,
+          "old_source_outer_gravel_width_m": 20,
+          "new_edge_to_wall_m": 3.2036286398951406,
+          "paved_outer_m": 3.02,
+          "opposite_shoulder_m": 4.470144762016904
+        },
+        {
+          "station_m": 995,
+          "old_source_outer_gravel_width_m": 20,
+          "new_edge_to_wall_m": 10.227860713760995,
+          "paved_outer_m": 10.061,
+          "opposite_shoulder_m": 9.12199974
+        }
+      ],
+      "compiled_validation": "Pending root-owned guarded compile/export/contact and fresh packaged review. No full scene or Unreal generated by this proof.",
+      "memory": [
+        "VmHWM:\t  103688 kB"
+      ],
+      "zero_quadratic_mesh_baseline_sha256": "e5edd8fac518ca0d8f716e686089c1313d24035588729f0cae382b0fc4c34f44",
+      "focused_checks": "193 Python tests passed; mypy 63 source files and Ruff passed. Native C++ fixture/contact tests added; compilation and validation are pending the root-owned guarded pipeline."
+    },
+    "uncertainty": "The quadratic model approximates the measured section heights. It does not exactly reproduce the changing local gradient at the outer white line. This limitation remains explicit in the retained cross-sections.",
+    "inside_kerb_contact": {
+      "diagnostic": {
+        "circuit": "zandvoort",
+        "road_csv_sha256": "805620c15a56f851c2311abed5fb4a40da8d3c37cffba0e6f0311bd483c7ea5f",
+        "native_survey_sha256": "529fbf332131918a4d6b94c40be363a58060808a4a84aa69bcab490c4865dfb8",
+        "measurements": [
+          {
+            "native_station_m": 840.154297,
+            "inside_negative_lane_m": -6.5,
+            "beyond_white_line_m": 0.5,
+            "quadratic_per_m": 0.010750259,
+            "base_bank_height_m": 0.8776508994553517,
+            "generated_grid_height_m": 1.477337451212507,
+            "existing_native_Ground_height_m": 0.903418680976167,
+            "native_minus_bank_base_m": 0.02576778152081527,
+            "rendered_kerb_lift_m": 0.03212727272727273,
+            "native_minus_rendered_kerb_m": -0.006359491206457457,
+            "outside_existing_contact_skin": true,
+            "new_contact_bank_plane_support": "Covered by1.25m contact skin; old mismatch is diagnostic only. Native export validation pending."
+          },
+          {
+            "native_station_m": 840.154297,
+            "inside_negative_lane_m": -6.75,
+            "beyond_white_line_m": 0.75,
+            "quadratic_per_m": 0.010750259,
+            "base_bank_height_m": 0.8679213438190191,
+            "generated_grid_height_m": 1.4765181816437558,
+            "existing_native_Ground_height_m": 0.9240857980909308,
+            "native_minus_bank_base_m": 0.056164454271911746,
+            "rendered_kerb_lift_m": 0.039854545454545455,
+            "native_minus_rendered_kerb_m": 0.01630990881736629,
+            "outside_existing_contact_skin": true,
+            "new_contact_bank_plane_support": "Covered by1.25m contact skin; old mismatch is diagnostic only. Native export validation pending."
+          },
+          {
+            "native_station_m": 840.154297,
+            "inside_negative_lane_m": -7.0,
+            "beyond_white_line_m": 1.0,
+            "quadratic_per_m": 0.010750259,
+            "base_bank_height_m": 0.8581917881826865,
+            "generated_grid_height_m": 1.4756989120750046,
+            "existing_native_Ground_height_m": 0.9546772762908612,
+            "native_minus_bank_base_m": 0.0964854881081747,
+            "rendered_kerb_lift_m": 0.04758181818181818,
+            "native_minus_rendered_kerb_m": 0.048903669926356516,
+            "outside_existing_contact_skin": true,
+            "new_contact_bank_plane_support": "Covered by1.25m contact skin; old mismatch is diagnostic only. Native export validation pending."
+          },
+          {
+            "native_station_m": 859.9104,
+            "inside_negative_lane_m": -6.5,
+            "beyond_white_line_m": 0.5,
+            "quadratic_per_m": 0.013559231,
+            "base_bank_height_m": 0.41615995474659107,
+            "generated_grid_height_m": 0.9447553186325006,
+            "existing_native_Ground_height_m": 0.43887303678856376,
+            "native_minus_bank_base_m": 0.0227130820419727,
+            "rendered_kerb_lift_m": 0.03212727272727273,
+            "native_minus_rendered_kerb_m": -0.009414190685300028,
+            "outside_existing_contact_skin": true,
+            "new_contact_bank_plane_support": "Covered by1.25m contact skin; old mismatch is diagnostic only. Native export validation pending."
+          },
+          {
+            "native_station_m": 859.9104,
+            "inside_negative_lane_m": -6.75,
+            "beyond_white_line_m": 0.75,
+            "quadratic_per_m": 0.013559231,
+            "base_bank_height_m": 0.41456359508299856,
+            "generated_grid_height_m": 0.9403136976087507,
+            "existing_native_Ground_height_m": 0.4630825254430411,
+            "native_minus_bank_base_m": 0.04851893036004257,
+            "rendered_kerb_lift_m": 0.039854545454545455,
+            "native_minus_rendered_kerb_m": 0.008664384905497112,
+            "outside_existing_contact_skin": true,
+            "new_contact_bank_plane_support": "Covered by1.25m contact skin; old mismatch is diagnostic only. Native export validation pending."
+          },
+          {
+            "native_station_m": 859.9104,
+            "inside_negative_lane_m": -7.0,
+            "beyond_white_line_m": 1.0,
+            "quadratic_per_m": 0.013559231,
+            "base_bank_height_m": 0.41296723541940583,
+            "generated_grid_height_m": 0.9358720765850007,
+            "existing_native_Ground_height_m": 0.49467111685153003,
+            "native_minus_bank_base_m": 0.0817038814321242,
+            "rendered_kerb_lift_m": 0.04758181818181818,
+            "native_minus_rendered_kerb_m": 0.03412206325030602,
+            "outside_existing_contact_skin": true,
+            "new_contact_bank_plane_support": "Covered by1.25m contact skin; old mismatch is diagnostic only. Native export validation pending."
+          },
+          {
+            "native_station_m": 880.186401,
+            "inside_negative_lane_m": -6.5,
+            "beyond_white_line_m": 0.5,
+            "quadratic_per_m": 0.01019739,
+            "base_bank_height_m": 0.22515253686430087,
+            "generated_grid_height_m": 0.83,
+            "existing_native_Ground_height_m": 0.25114207629591295,
+            "native_minus_bank_base_m": 0.025989539431612085,
+            "rendered_kerb_lift_m": 0.03212727272727273,
+            "native_minus_rendered_kerb_m": -0.006137733295660641,
+            "outside_existing_contact_skin": true,
+            "new_contact_bank_plane_support": "Covered by1.25m contact skin; old mismatch is diagnostic only. Native export validation pending."
+          },
+          {
+            "native_station_m": 880.186401,
+            "inside_negative_lane_m": -6.75,
+            "beyond_white_line_m": 0.75,
+            "quadratic_per_m": 0.01019739,
+            "base_bank_height_m": 0.21573982424369698,
+            "generated_grid_height_m": 0.83,
+            "existing_native_Ground_height_m": 0.27242692054151985,
+            "native_minus_bank_base_m": 0.05668709629782287,
+            "rendered_kerb_lift_m": 0.039854545454545455,
+            "native_minus_rendered_kerb_m": 0.016832550843277415,
+            "outside_existing_contact_skin": true,
+            "new_contact_bank_plane_support": "Covered by1.25m contact skin; old mismatch is diagnostic only. Native export validation pending."
+          },
+          {
+            "native_station_m": 880.186401,
+            "inside_negative_lane_m": -7.0,
+            "beyond_white_line_m": 1.0,
+            "quadratic_per_m": 0.01019739,
+            "base_bank_height_m": 0.20632711162309314,
+            "generated_grid_height_m": 0.83,
+            "existing_native_Ground_height_m": 0.3037760004319848,
+            "native_minus_bank_base_m": 0.09744888880889169,
+            "rendered_kerb_lift_m": 0.04758181818181818,
+            "native_minus_rendered_kerb_m": 0.049867070627073504,
+            "outside_existing_contact_skin": true,
+            "new_contact_bank_plane_support": "Covered by1.25m contact skin; old mismatch is diagnostic only. Native export validation pending."
+          },
+          {
+            "native_station_m": 899.942505,
+            "inside_negative_lane_m": -6.5,
+            "beyond_white_line_m": 0.5,
+            "quadratic_per_m": 0.010837153,
+            "base_bank_height_m": 0.7191127502611367,
+            "generated_grid_height_m": 1.3634611733156226,
+            "existing_native_Ground_height_m": 0.7467995965642592,
+            "native_minus_bank_base_m": 0.02768684630312246,
+            "rendered_kerb_lift_m": 0.03212727272727273,
+            "native_minus_rendered_kerb_m": -0.004440426424150268,
+            "outside_existing_contact_skin": true,
+            "new_contact_bank_plane_support": "Covered by1.25m contact skin; old mismatch is diagnostic only. Native export validation pending."
+          },
+          {
+            "native_station_m": 899.942505,
+            "inside_negative_lane_m": -6.75,
+            "beyond_white_line_m": 0.75,
+            "quadratic_per_m": 0.010837153,
+            "base_bank_height_m": 0.7113804440404112,
+            "generated_grid_height_m": 1.3646941520921856,
+            "existing_native_Ground_height_m": 0.7716716016682361,
+            "native_minus_bank_base_m": 0.06029115762782489,
+            "rendered_kerb_lift_m": 0.039854545454545455,
+            "native_minus_rendered_kerb_m": 0.020436612173279432,
+            "outside_existing_contact_skin": true,
+            "new_contact_bank_plane_support": "Covered by1.25m contact skin; old mismatch is diagnostic only. Native export validation pending."
+          },
+          {
+            "native_station_m": 899.942505,
+            "inside_negative_lane_m": -7.0,
+            "beyond_white_line_m": 1.0,
+            "quadratic_per_m": 0.010837153,
+            "base_bank_height_m": 0.7036481378196856,
+            "generated_grid_height_m": 1.3650145428424973,
+            "existing_native_Ground_height_m": 0.8069866386044999,
+            "native_minus_bank_base_m": 0.10333850078481432,
+            "rendered_kerb_lift_m": 0.04758181818181818,
+            "native_minus_rendered_kerb_m": 0.05575668260299614,
+            "outside_existing_contact_skin": true,
+            "new_contact_bank_plane_support": "Covered by1.25m contact skin; old mismatch is diagnostic only. Native export validation pending."
+          }
+        ]
+      },
+      "correction": {
+        "skin_m": 1.25,
+        "scope": "Segments with nonzero quadratic banking, or Jeddah segments with nonzero scalar bank. All other road segments keep0.35m.",
+        "height": "Contact follows the bank base; existing rendered kerb lift and dynamic kerb treatment stay unchanged.",
+        "ground": "Jeddah queries drive contact on both sides of its banked road, even where no Asphalt runoff registration exists.",
+        "new_tests": "Synthetic quadratic and scalar bank contacts include negative-side lane halfWidth+0.5,+0.75,+1,+1.2. Full native audit checks both sides at those offsets against bank height to2cm and Ground agreement.",
+        "compiled_status": "Pending root-owned guarded native build/contact export."
+      }
+    }
+  }
+}

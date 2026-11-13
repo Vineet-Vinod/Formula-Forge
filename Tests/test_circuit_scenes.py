@@ -831,3 +831,318 @@ def test_hockenheim_nord_rows_and_roof_ignore_exterior_dsm(
     monkeypatch.setattr(scene, "ground", lambda x, y: 40 * math.sin(x) + 90)
     nord_stand(scene)
     assert digest.hexdigest() == expected
+
+
+def test_monaco_quai_roof_preserves_component_hole_and_storey_step(
+    scene: CircuitScene, monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    from dataclasses import asdict
+
+    from circuit_dataclasses import Provenance, RetainedTerrainSource
+    from pydantic import TypeAdapter
+    from venues.monaco_dataclasses import PropertyEnvelope
+    from venues.monaco_properties import property_envelopes
+
+    retained = Path(__file__).resolve().parents[1] / 'Attribution/Sources/monaco'
+    records = TypeAdapter(list[PropertyEnvelope]).validate_json(
+        (retained / 'architecture/property-envelopes.json').read_bytes()
+    )
+    record = next(record for record in records if record.style == 'ruscino')
+    scene.provenance = TypeAdapter(Provenance).validate_json((retained / 'provenance.json').read_bytes())
+    architecture = scene.sources / 'architecture'
+    architecture.mkdir()
+    (architecture / 'property-envelopes.json').write_text(json.dumps([asdict(record)]))
+    (scene.sources / 'scenery-ground.json').write_bytes((retained / 'scenery-ground.json').read_bytes())
+    datum = TypeAdapter(RetainedTerrainSource).validate_json(
+        (scene.sources / 'scenery-ground.json').read_bytes()
+    ).relative_datum_m
+    footprint = Polygon([scene.geo(lat, lon) for lon, lat in record.outer],
+                        [[scene.geo(lat, lon) for lon, lat in ring] for ring in record.holes])
+    roof_faces: list[tuple[tuple[float, float, float], ...]] = []
+
+    def capture(
+        kind: str, material: str, a: tuple[float, float, float],
+        b: tuple[float, float, float], c: tuple[float, float, float],
+        uv: tuple[tuple[float, float], ...] = ((0, 0), (1, 0), (1, 1)),
+        normals: tuple[tuple[float, float, float], ...] | None = None,
+    ) -> None:
+        if kind == 'Building_QuaiAntoineResidential' and material == 'Roof':
+            roof_faces.append((a, b, c))
+
+    monkeypatch.setattr(scene, 'triangle', capture)
+    monkeypatch.setattr(scene, 'ground', lambda x, y: 0.)
+    property_envelopes(scene)
+    expected = tuple(roof_faces)
+    assert expected
+    roofs = unary_union([Polygon([p[:2] for p in face]) for face in roof_faces])
+    assert roofs.symmetric_difference(footprint).area < 1e-7
+    assert len(footprint.interiors) == 1
+    assert roofs.intersection(Polygon(footprint.interiors[0])).area < 1e-7
+    vertices = {(round(x, 6), round(y, 6), round(z, 6)) for face in roof_faces for x, y, z in face}
+    for ring, heights_m in [(record.outer, record.roof_outline_m),
+                           *zip(record.holes, record.holes_roof_m, strict=True)]:
+        for (lon, lat), z in zip(ring, heights_m, strict=True):
+            x, y = scene.geo(lat, lon)
+            assert (round(x, 6), round(y, 6), round(z - datum, 6)) in vertices
+    assert max(p[2] for face in roof_faces for p in face) == pytest.approx(
+        max([*record.roof_outline_m, *[z for ring in record.holes_roof_m for z in ring]]) - datum
+    )
+    heights: dict[tuple[float, float], set[float]] = {}
+    for face in roof_faces:
+        for x, y, z in face:
+            heights.setdefault((round(x, 6), round(y, 6)), set()).add(z)
+    assert any(max(values) - min(values) > 6.5 for values in heights.values())
+    roof_faces.clear()
+    monkeypatch.setattr(scene, 'ground', lambda x, y: 200. + 30 * math.sin(x))
+    property_envelopes(scene)
+    assert tuple(roof_faces) == expected
+
+
+def test_monaco_ermanno_uses_primary_roof_envelope_over_stale_osm_storeys(
+    scene: CircuitScene, monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    from dataclasses import asdict
+
+    from circuit_dataclasses import Building, Provenance, RetainedTerrainSource
+    from pydantic import TypeAdapter
+    from venues.monaco_dataclasses import PropertyEnvelope
+    from venues.monaco_properties import property_envelopes
+
+    retained = Path(__file__).resolve().parents[1] / 'Attribution/Sources/monaco'
+    record = next(record for record in TypeAdapter(list[PropertyEnvelope]).validate_json(
+        (retained / 'architecture/property-envelopes.json').read_bytes()
+    ) if record.style == 'ermanno')
+    scene.provenance = TypeAdapter(Provenance).validate_json((retained / 'provenance.json').read_bytes())
+    architecture = scene.sources / 'architecture'
+    architecture.mkdir()
+    (architecture / 'property-envelopes.json').write_text(json.dumps([asdict(record)]))
+    (scene.sources / 'scenery-ground.json').write_bytes((retained / 'scenery-ground.json').read_bytes())
+    datum = TypeAdapter(RetainedTerrainSource).validate_json(
+        (scene.sources / 'scenery-ground.json').read_bytes()
+    ).relative_datum_m
+    measured = Polygon([scene.geo(lat, lon) for lon, lat in record.outer])
+    detailed = measured.buffer(-.6, join_style='mitre')
+    ring = list(detailed.exterior.coords)
+    scene.buildings.append(Building(record.osm_id, record.name, 'apartments', 61, ring,
+                                    {'building:levels': '18'}))
+    maximum_z = -math.inf
+    floor_levels: set[float] = set()
+
+    def capture(
+        kind: str, material: str, a: tuple[float, float, float],
+        b: tuple[float, float, float], c: tuple[float, float, float],
+        uv: tuple[tuple[float, float], ...] = ((0, 0), (1, 0), (1, 1)),
+        normals: tuple[tuple[float, float, float], ...] | None = None,
+    ) -> None:
+        nonlocal maximum_z
+        maximum_z = max(maximum_z, a[2], b[2], c[2])
+        upward = (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0])
+        if kind == 'Building_ErmannoPalace' and material == 'Cream' and a[2] == b[2] == c[2] and upward > 1e-6:
+            floor_levels.add(round(a[2], 7))
+
+    monkeypatch.setattr(scene, 'triangle', capture)
+    monkeypatch.setattr(scene, 'ground', lambda x, y: 200.)
+    property_envelopes(scene)
+    assert record.roof_peak_m - datum <= maximum_z <= record.roof_peak_m - datum + .2
+    assert len(floor_levels) == 13
+    assert unary_union(scene.terrain_cutouts).symmetric_difference(detailed).area < 1e-7
+
+
+def test_monaco_rascasse_keeps_ground_open_below_the_measured_overhang(
+    scene: CircuitScene, monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    import gzip
+    from dataclasses import asdict
+
+    from circuit_dataclasses import Building, OsmData, Provenance, RetainedTerrainSource
+    from pydantic import TypeAdapter
+    from shapely.geometry import Point as ShapePoint
+    from venues.monaco_dataclasses import PropertyEnvelope
+    from venues.monaco_properties import property_envelopes, roof_height
+
+    retained = Path(__file__).resolve().parents[1] / 'Attribution/Sources/monaco'
+    record = next(record for record in TypeAdapter(list[PropertyEnvelope]).validate_json(
+        (retained / 'architecture/property-envelopes.json').read_bytes()
+    ) if record.style == 'rascasse')
+    scene.provenance = TypeAdapter(Provenance).validate_json((retained / 'provenance.json').read_bytes())
+    architecture = scene.sources / 'architecture'
+    architecture.mkdir()
+    (architecture / 'property-envelopes.json').write_text(json.dumps([asdict(record)]))
+    (scene.sources / 'scenery-ground.json').write_bytes((retained / 'scenery-ground.json').read_bytes())
+    datum = TypeAdapter(RetainedTerrainSource).validate_json(
+        (scene.sources / 'scenery-ground.json').read_bytes()
+    ).relative_datum_m
+    dataset = TypeAdapter(OsmData).validate_json(gzip.decompress((retained / 'buildings.osm.json.gz').read_bytes()))
+    mapped = next(element for element in dataset.elements if element.id == record.osm_id)
+    ground = Polygon([scene.geo(p.lat, p.lon) for p in mapped.geometry])
+    roof = Polygon([(*scene.geo(lat, lon), z - datum)
+                    for (lon, lat), z in zip(record.outer, record.roof_outline_m, strict=True)])
+    body = ground.intersection(roof)
+    assert roof.difference(ground).area > 60
+    scene.buildings.append(Building(record.osm_id, record.name, 'yes', 6.8,
+                                    list(ground.exterior.coords), mapped.tags))
+    top_faces: list[Polygon] = []
+    soffit_faces: list[Polygon] = []
+
+    def capture(
+        kind: str, material: str, a: tuple[float, float, float],
+        b: tuple[float, float, float], c: tuple[float, float, float],
+        uv: tuple[tuple[float, float], ...] = ((0, 0), (1, 0), (1, 1)),
+        normals: tuple[tuple[float, float, float], ...] | None = None,
+    ) -> None:
+        if kind != 'Building_LaRascasse':
+            return
+        shape = Polygon([a[:2], b[:2], c[:2]])
+        normal_z = (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0])
+        if material == 'Roof':
+            assert normal_z > 0
+            top_faces.append(shape)
+        elif material == 'Cream':
+            assert normal_z < 0
+            soffit_faces.append(shape)
+        for x, y, z in (a, b, c):
+            if roof.covers(ShapePoint(x, y)) and z < roof_height(roof, x, y) - .3:
+                assert body.distance(ShapePoint(x, y)) < .1
+
+    monkeypatch.setattr(scene, 'triangle', capture)
+    monkeypatch.setattr(scene, 'ground', lambda x, y: 0.)
+    property_envelopes(scene)
+    assert unary_union(top_faces).symmetric_difference(roof).area < 1e-7
+    assert unary_union(soffit_faces).symmetric_difference(roof).area < 1e-7
+    assert unary_union(scene.terrain_cutouts).symmetric_difference(body).area < 1e-7
+    witness_a = (137.655594, -237.110794, 1.78009999)
+    witness_b = (138.006302, -238.584396, 1.78009999)
+    ceiling = scene.fence_ceiling(witness_a, witness_b)
+    assert ceiling == pytest.approx(5.8 - datum - .18 - .12)
+    assert witness_a[2] + .95 < ceiling < witness_a[2] + 3.15
+
+
+def test_overhead_fence_cap_preserves_default_mesh_and_concrete_wall(scene: CircuitScene) -> None:
+    (scene.scratch / 'barriers.csv').write_text(
+        'ax,ay,bx,by,bottom,top,radius\n'
+        '48,-6,48,-2,3,3.95,0.15\n'
+        '48,-2,48,2,3,3.95,0.15\n'
+        '48,2,48,6,3,3.95,0.15\n'
+        '48,6,47.5,10,3,3.95,0.15\n'
+    )
+    assert scene.overhead_soffits == []
+    scene.barriers(street=True)
+    digest = hashlib.sha256()
+    original_concrete = bytearray()
+    for name, tile in sorted(scene.tiles.items()):
+        digest.update(name.encode())
+        digest.update(bytes(tile.triangles))
+        for offset in range(0, len(tile.triangles), 100):
+            slot = struct.unpack_from('<I', tile.triangles, offset)[0]
+            if tile.materials[slot] == 'Concrete':
+                original_concrete.extend(tile.triangles[offset:offset + 100])
+    # Same fixture emitted by the pre-hook6a970d40 barrier producer.
+    assert digest.hexdigest() == '2054eb8c57c64a2dbbe380cab4461063f7c9aed783ee30cbd74d011495514b9a'
+    scene.tiles.clear()
+    scene.overhead_soffits.extend([
+        ((47, -3, 5.9), (49, 7, 5.9), (49, -3, 5.9)),
+        ((47, -3, 5.9), (47, 7, 5.9), (49, 7, 5.9)),
+    ])
+    scene.barriers(street=True)
+    capped_concrete = bytearray()
+    capped_vertices: list[float] = []
+    for _name, tile in sorted(scene.tiles.items()):
+        for offset in range(0, len(tile.triangles), 100):
+            slot = struct.unpack_from('<I', tile.triangles, offset)[0]
+            material = tile.materials[slot]
+            if material == 'Concrete':
+                capped_concrete.extend(tile.triangles[offset:offset + 100])
+            elif material in ('Fence', 'Steel'):
+                for corner in range(3):
+                    vertex = struct.unpack_from('<8f', tile.triangles, offset + 4 + corner * 32)
+                    x, y, z = -vertex[1] / 100, -vertex[0] / 100, vertex[2] / 100
+                    if 47 <= x <= 49 and -3 <= y <= 7:
+                        capped_vertices.append(z)
+    assert capped_concrete == original_concrete
+    assert capped_vertices
+    assert max(capped_vertices) < 5.9 - .08
+
+
+def test_monaco_property_roofs_never_add_z_to_terrain_masks(
+    scene: CircuitScene, monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    import gzip
+
+    from circuit_dataclasses import Building, OsmData, Provenance
+    from pydantic import TypeAdapter
+    from venues.monaco_dataclasses import PropertyEnvelope
+    from venues.monaco_properties import property_envelopes
+
+    retained = Path(__file__).resolve().parents[1] / 'Attribution/Sources/monaco'
+    records = TypeAdapter(list[PropertyEnvelope]).validate_json(
+        (retained / 'architecture/property-envelopes.json').read_bytes()
+    )
+    scene.provenance = TypeAdapter(Provenance).validate_json((retained / 'provenance.json').read_bytes())
+    architecture = scene.sources / 'architecture'
+    architecture.mkdir()
+    (architecture / 'property-envelopes.json').write_bytes(
+        (retained / 'architecture/property-envelopes.json').read_bytes()
+    )
+    (scene.sources / 'scenery-ground.json').write_bytes((retained / 'scenery-ground.json').read_bytes())
+    identifiers = {record.osm_id for record in records}
+    dataset = TypeAdapter(OsmData).validate_json(gzip.decompress((retained / 'buildings.osm.json.gz').read_bytes()))
+    for element in dataset.elements:
+        if element.type == 'way' and element.id in identifiers:
+            scene.buildings.append(Building(element.id, '', 'yes', 6.8,
+                                            [scene.geo(p.lat, p.lon) for p in element.geometry], element.tags))
+
+    def discard(
+        kind: str, material: str, a: tuple[float, float, float],
+        b: tuple[float, float, float], c: tuple[float, float, float],
+        uv: tuple[tuple[float, float], ...] = ((0, 0), (1, 0), (1, 1)),
+        normals: tuple[tuple[float, float, float], ...] | None = None,
+    ) -> None:
+        pass
+
+    monkeypatch.setattr(scene, 'triangle', discard)
+    monkeypatch.setattr(scene, 'ground', lambda x, y: 0.)
+    property_envelopes(scene)
+    assert scene.terrain_cutouts
+    assert all(not mask.has_z for mask in scene.terrain_cutouts)
+    assert any(mask.interiors for mask in scene.terrain_cutouts)
+    owned = unary_union(scene.terrain_cutouts)
+    clipped_ground = box(*owned.buffer(1).bounds).difference(owned)
+    assert not clipped_ground.has_z
+    scene.polygon_surface(clipped_ground, 'Grass')
+
+
+def test_progressive_bank_road_and_contact_heights_follow_the_same_bowl(scene: CircuitScene) -> None:
+    scene.road = [replace(sample, bank=.16, bank_quadratic=.01) for sample in scene.road]
+    scene.road_surfaces()
+    maximum_error = 0.0
+    road_triangles = 0
+    for tile in scene.tiles.values():
+        for offset in range(0, len(tile.triangles), 100):
+            slot = struct.unpack_from('<I', tile.triangles, offset)[0]
+            if tile.materials[slot] != 'Road':
+                continue
+            road_triangles += 1
+            for corner in range(3):
+                vertex = struct.unpack_from('<8f', tile.triangles, offset + 4 + corner * 32)
+                x, y, z = -vertex[1] / 100, -vertex[0] / 100, vertex[2] / 100
+                sample, _distance = scene.nearest(x, y)
+                lane = (x - sample.x) * sample.ty - (y - sample.y) * sample.tx
+                maximum_error = max(maximum_error, abs(z - sample.height(lane) - .006))
+    assert road_triangles == len(scene.road) * 16
+    assert maximum_error < .003
+    sample = scene.at(40)
+    assert sample.height(0) == sample.z
+    assert sample.height(-5) == pytest.approx(sample.z - .55)
+    assert sample.height(5) == pytest.approx(sample.z + 1.05)
+    assert sample.slope(-5) == pytest.approx(.06)
+    assert sample.slope(5) == pytest.approx(.26)
+
+
+def test_zero_quadratic_keeps_the_existing_road_mesh(scene: CircuitScene) -> None:
+    scene.road_surfaces()
+    digest = hashlib.sha256()
+    for name, tile in sorted(scene.tiles.items()):
+        digest.update(name.encode())
+        digest.update(bytes(tile.triangles))
+    # Captured from the same fixture using the pre-extension 6a970d40 authoring code.
+    assert digest.hexdigest() == 'e5edd8fac518ca0d8f716e686089c1313d24035588729f0cae382b0fc4c34f44'

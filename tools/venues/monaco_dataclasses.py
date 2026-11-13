@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Literal
 
 from pydantic import FiniteFloat
@@ -28,3 +28,41 @@ class HillsideVegetation:
     nature: str
     outer: list[tuple[FiniteFloat, FiniteFloat]]
     holes: list[list[tuple[FiniteFloat, FiniteFloat]]]
+
+
+@dataclass(frozen=True)
+class PropertyRoofStep:
+    start_vertex: int
+    end_vertex: int
+    lower_endpoint_m: tuple[FiniteFloat, FiniteFloat]
+    upper_endpoint_m: tuple[FiniteFloat, FiniteFloat]
+    seam: list[tuple[FiniteFloat, FiniteFloat]]
+    source_note: str
+
+
+@dataclass(frozen=True)
+class PropertyEnvelope:
+    osm_id: int
+    name: str
+    style: Literal['ruscino', 'ermanno', 'rascasse', 'annex', 'roof_component']
+    source_id: str
+    component: int
+    outer: list[tuple[FiniteFloat, FiniteFloat]]
+    holes: list[list[tuple[FiniteFloat, FiniteFloat]]]
+    roof_outline_m: list[FiniteFloat]
+    holes_roof_m: list[list[FiniteFloat]]
+    ground_m: FiniteFloat
+    roof_peak_m: FiniteFloat
+    height_precision_m: FiniteFloat
+    roof_step: PropertyRoofStep | None = None
+    covered_osm_ids: list[int] = field(default_factory=list)
+
+
+@dataclass(frozen=True)
+class GardenFrontage:
+    osm_id: int
+    ring: list[tuple[FiniteFloat, FiniteFloat]]
+    native_range_m: tuple[FiniteFloat, FiniteFloat]
+    wall_height_m: FiniteFloat
+    wall_inset_m: FiniteFloat
+    source_note: str

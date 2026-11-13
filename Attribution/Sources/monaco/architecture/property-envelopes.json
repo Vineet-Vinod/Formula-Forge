@@ -1,0 +1,400 @@
+[
+  {
+    "osm_id": 161885377,
+    "name": "Quai Antoine exhibition and residential complex",
+    "style": "ruscino",
+    "source_id": "BATIMENT0000000074074354",
+    "component": 0,
+    "outer": [
+      [
+        7.42445883,
+        43.73266429
+      ],
+      [
+        7.42363797,
+        43.7324967
+      ],
+      [
+        7.42364944,
+        43.73245207
+      ],
+      [
+        7.42349777,
+        43.73241948
+      ],
+      [
+        7.42352732,
+        43.73235159
+      ],
+      [
+        7.42361186,
+        43.73236798
+      ],
+      [
+        7.42404826,
+        43.73233761
+      ],
+      [
+        7.42446821,
+        43.73241607
+      ],
+      [
+        7.4252309,
+        43.7325707
+      ],
+      [
+        7.42523229,
+        43.73258867
+      ],
+      [
+        7.42656036,
+        43.73286991
+      ],
+      [
+        7.42657017,
+        43.73283616
+      ],
+      [
+        7.42728792,
+        43.7329881
+      ],
+      [
+        7.42722279,
+        43.73315839
+      ],
+      [
+        7.4271916,
+        43.73323717
+      ],
+      [
+        7.42646072,
+        43.73309206
+      ],
+      [
+        7.42554365,
+        43.73288604
+      ],
+      [
+        7.42457504,
+        43.73268841
+      ],
+      [
+        7.42447961,
+        43.73265984
+      ],
+      [
+        7.42445883,
+        43.73266429
+      ]
+    ],
+    "holes": [
+      [
+        [
+          7.42649561,
+          43.73299691
+        ],
+        [
+          7.42708529,
+          43.73311622
+        ],
+        [
+          7.42710472,
+          43.73304603
+        ],
+        [
+          7.42651132,
+          43.73292688
+        ],
+        [
+          7.42649561,
+          43.73299691
+        ]
+      ]
+    ],
+    "roof_outline_m": [
+      24.2,
+      23.4,
+      23.5,
+      24,
+      23.5,
+      24.2,
+      24.3,
+      23.7,
+      23.2,
+      23.2,
+      26.6,
+      33.5,
+      33.1,
+      33,
+      33,
+      33,
+      25.5,
+      24.3,
+      24.3,
+      24.2
+    ],
+    "holes_roof_m": [
+      [
+        33.2,
+        33.7,
+        33.9,
+        34.5,
+        33.2
+      ]
+    ],
+    "ground_m": 2.3,
+    "roof_peak_m": 34.5,
+    "height_precision_m": 1.5,
+    "roof_step": {
+      "start_vertex": 10,
+      "end_vertex": 15,
+      "lower_endpoint_m": [
+        26.6,
+        25.5
+      ],
+      "upper_endpoint_m": [
+        33.2,
+        33.0
+      ],
+      "source_note": "The high eastern wing and its separate inner component retain their measured 33.0-34.5 m roof edges. A vertical transition joins the two actual perimeter corners at indices 10 and 15. The lower endpoint at index 15 is reconstructed from the adjacent 25.5 m low-wing edge; the upper endpoint at index 10 is reconstructed from the adjacent 33.2 m separate inner component edge. Internal step position is estimated, not a measured roof seam. This avoids turning the seven-metre storey change into a sloping continuous roof. The estimated internal seam jogs two metres west of the measured separate inner component corner so the complete original separate inner component remains excluded from this parent roof and is rendered from its own measured source record.",
+      "seam": [
+        [
+          7.426486700076433,
+          43.73292688
+        ],
+        [
+          7.426470990047643,
+          43.73299691
+        ]
+      ]
+    },
+    "covered_osm_ids": [
+      1447995581
+    ]
+  },
+  {
+    "osm_id": 161880705,
+    "name": "Ermanno Palace",
+    "style": "ermanno",
+    "source_id": "BATIMENT0000000074074396",
+    "component": 0,
+    "outer": [
+      [
+        7.42117833,
+        43.73637296
+      ],
+      [
+        7.42129749,
+        43.73656369
+      ],
+      [
+        7.4212724,
+        43.73662509
+      ],
+      [
+        7.42116723,
+        43.73664739
+      ],
+      [
+        7.42107408,
+        43.73663225
+      ],
+      [
+        7.42096565,
+        43.73641945
+      ],
+      [
+        7.42117833,
+        43.73637296
+      ]
+    ],
+    "holes": [],
+    "roof_outline_m": [
+      42.5,
+      44.1,
+      44.1,
+      43.6,
+      43.2,
+      42.8,
+      42.5
+    ],
+    "holes_roof_m": [],
+    "ground_m": 4.9,
+    "roof_peak_m": 48.6,
+    "height_precision_m": 1.5
+  },
+  {
+    "osm_id": 112681614,
+    "name": "La Rascasse",
+    "style": "rascasse",
+    "source_id": "BATIMENT0000000074074372",
+    "component": 0,
+    "outer": [
+      [
+        7.42303185,
+        43.73256641
+      ],
+      [
+        7.42303774,
+        43.73253012
+      ],
+      [
+        7.42298604,
+        43.7325205
+      ],
+      [
+        7.42301203,
+        43.73247078
+      ],
+      [
+        7.42335348,
+        43.73251457
+      ],
+      [
+        7.4233071,
+        43.73262191
+      ],
+      [
+        7.42303185,
+        43.73256641
+      ]
+    ],
+    "holes": [],
+    "roof_outline_m": [
+      7.7,
+      5.8,
+      5.8,
+      6.1,
+      9.5,
+      9.4,
+      7.7
+    ],
+    "holes_roof_m": [],
+    "ground_m": 1.1,
+    "roof_peak_m": 9.5,
+    "height_precision_m": 1.5
+  },
+  {
+    "osm_id": 161885377,
+    "name": "Quai Antoine separate inner roof component",
+    "style": "roof_component",
+    "source_id": "BATIMENT0000000074074345",
+    "component": 0,
+    "outer": [
+      [
+        7.42649561,
+        43.73299691
+      ],
+      [
+        7.42651132,
+        43.73292688
+      ],
+      [
+        7.42710472,
+        43.73304603
+      ],
+      [
+        7.42708529,
+        43.73311622
+      ],
+      [
+        7.42649561,
+        43.73299691
+      ]
+    ],
+    "holes": [],
+    "roof_outline_m": [
+      33.2,
+      34.5,
+      33.9,
+      33.7,
+      33.2
+    ],
+    "holes_roof_m": [],
+    "ground_m": 5.2,
+    "roof_peak_m": 34.5,
+    "height_precision_m": 1.5
+  },
+  {
+    "osm_id": 161885377,
+    "name": "Western exhibition annex",
+    "style": "annex",
+    "source_id": "BATIMENT0000000074074434",
+    "component": 0,
+    "outer": [
+      [
+        7.42319952,
+        43.7323559
+      ],
+      [
+        7.42322914,
+        43.73228891
+      ],
+      [
+        7.42348511,
+        43.73233618
+      ],
+      [
+        7.42346072,
+        43.73240657
+      ],
+      [
+        7.42319952,
+        43.7323559
+      ]
+    ],
+    "holes": [],
+    "roof_outline_m": [
+      13.8,
+      13.8,
+      14.2,
+      14.2,
+      13.8
+    ],
+    "holes_roof_m": [],
+    "ground_m": 6.6,
+    "roof_peak_m": 14.2,
+    "height_precision_m": 1.5
+  },
+  {
+    "osm_id": 161885377,
+    "name": "Western low exhibition annex",
+    "style": "annex",
+    "source_id": "BATIMENT0000000074074442",
+    "component": 0,
+    "outer": [
+      [
+        7.42301013,
+        43.73231764
+      ],
+      [
+        7.42303873,
+        43.73226961
+      ],
+      [
+        7.42319977,
+        43.73231083
+      ],
+      [
+        7.42318417,
+        43.73235022
+      ],
+      [
+        7.42301013,
+        43.73231764
+      ]
+    ],
+    "holes": [],
+    "roof_outline_m": [
+      8.9,
+      8.9,
+      7.8,
+      7.8,
+      8.9
+    ],
+    "holes_roof_m": [],
+    "ground_m": 6.7,
+    "roof_peak_m": 8.9,
+    "height_precision_m": 1.5
+  }
+]

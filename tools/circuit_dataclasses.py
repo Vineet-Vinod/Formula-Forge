@@ -16,6 +16,15 @@ class ElevationControls:
 
 
 @dataclass(frozen=True)
+class BankingControls:
+    controls: Annotated[
+        list[tuple[FiniteFloat, Annotated[FiniteFloat, Field(gt=-90, lt=90)]]],
+        Field(min_length=2),
+    ]
+    quadratic_controls: list[tuple[FiniteFloat, FiniteFloat]] = field(default_factory=list)
+
+
+@dataclass(frozen=True)
 class WidthControls:
     controls_m: Annotated[list[tuple[FiniteFloat, FiniteFloat]], Field(min_length=2)]
 
@@ -275,12 +284,24 @@ class RoadStation:
     bank: float
     left_shoulder: float = 2.2
     right_shoulder: float = 2.2
+    bank_quadratic: float = 0.0
+
+    def height(self, lane: float) -> float:
+        if self.bank_quadratic == 0:
+            return self.z + self.bank * lane
+        edge = max(-self.half_width, min(self.half_width, lane))
+        return self.z + self.bank * lane + self.bank_quadratic * edge * (2 * lane - edge)
+
+    def slope(self, lane: float) -> float:
+        if self.bank_quadratic == 0:
+            return self.bank
+        return self.bank + 2 * self.bank_quadratic * max(-self.half_width, min(self.half_width, lane))
 
     def point(self, lane: float, lift: float = 0.0) -> Point:
         return (
             self.x + self.ty * lane,
             self.y - self.tx * lane,
-            self.z + self.bank * lane + lift,
+            self.height(lane) + lift,
         )
 
 

@@ -1,0 +1,16 @@
+{
+  "url": "https://data.geopf.fr/wfs/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=BDTOPO_V3%3Abatiment&bbox=1055995.4731679617%2C6302999.647086976%2C1056077.2914740315%2C6303094.825294042%2CEPSG%3A2154&count=200&outputFormat=application%2Fjson&srsName=EPSG%3A4326",
+  "bounds_epsg2154_m": [
+    1055995.4731679617,
+    6302999.647086976,
+    1056077.2914740315,
+    6303094.825294042
+  ],
+  "target_osm_ids": [
+    161880705,
+    94399585
+  ],
+  "bytes": 10395,
+  "returned": 8,
+  "matched": 8
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "issue": "Dark striped grass bank at native5550\u20135770 m. Prior mesh analysis found front-facing, unoccluded terrain with low sun incidence. The former negative interpolated-normal claim was withdrawn.",
+  "runtime_image": "build/reviews/spa/resume-20261113-live/targeted/04-5700.0-00003959.jpg",
+  "runtime_image_sha256": "be349112fb59f40ce3ada319948c67d9469b4c50a144d268f1983cf65b64576c",
+  "material_inspection": "build/reviews/resume-20261113/spa-grass-materials.json",
+  "material_inspection_sha256": "ac9cef5ac8d0bce8552e4815adc0f0b5911646fb8d1cf32aeb16618d6bf1a066",
+  "finding": "Spa Grass inherits NormalStrength0.18 from the Interlagos material instance. Its parent normalizes (Normal.xy*Strength, lerp(1,Normal.z,Strength)). On steep slopes at low light incidence this micro-normal map may produce dark bands. This is a shading hypothesis to test, not a demonstrated terrain defect.",
+  "candidate": {
+    "material": "Spa-privateGrassonly",
+    "previous_normal_strength": 0.18,
+    "candidate_normal_strength": 0.06,
+    "preserved": [
+      "Sourcealbedoandmacrotextures,Tint,UVscale,roughness,specular",
+      "Allterrainelevations/meshnormals/shadows",
+      "Sun/skylight/exposure/camera",
+      "AcceptedInterlagosGrassassetandsharedparent"
+    ]
+  },
+  "status": "Candidate only. Compare the same5700 m pose and the whole lap before retaining this change; no rendered correction is claimed yet."
+}

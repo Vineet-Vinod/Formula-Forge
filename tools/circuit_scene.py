@@ -26,7 +26,7 @@ from circuit_dataclasses import (
 )
 from circuit_mesh import MeshScene, Point, add, cross, mul, norm, sub
 from pydantic import TypeAdapter
-from shapely import constrained_delaunay_triangles
+from shapely import constrained_delaunay_triangles, get_coordinates
 from shapely.geometry import LineString, Polygon, box
 from shapely.geometry import Point as GeoPoint
 from shapely.geometry.base import BaseGeometry
@@ -115,6 +115,7 @@ class CircuitScene(MeshScene):
         self.surface_points: list[tuple[Point, Point, Point]] = []
         self.surface_index: STRtree | None = None
         self.panels: list[BarrierPanel] = []
+        self.overhead_soffits: list[tuple[Point, Point, Point]] = []
         self._ground_normals: dict[tuple[float, float], Point] = {}
         edge_path = self.sources / "edge-corrections.json"
         self.edge_corrections = (
@@ -247,6 +248,7 @@ class CircuitScene(MeshScene):
             a.bank * (1 - t) + b.bank * t,
             a.left_shoulder * (1 - t) + b.left_shoulder * t,
             a.right_shoulder * (1 - t) + b.right_shoulder * t,
+            a.bank_quadratic * (1 - t) + b.bank_quadratic * t,
         )
 
     def nearest(self, x: float, y: float) -> tuple[RoadStation, float]:
@@ -306,7 +308,7 @@ class CircuitScene(MeshScene):
                 )
         t = max(0.0, min(1.0, (distance - edge) / self.ground_join_distance))
         blend = t * t * (3 - 2 * t)
-        return (sample.z + sample.bank * lane - 0.015) * (1 - blend) + self.raw_ground(
+        return (sample.height(lane) - 0.015) * (1 - blend) + self.raw_ground(
             x, y
         ) * blend
 
@@ -354,7 +356,7 @@ class CircuitScene(MeshScene):
                         z = self.ground(x, y)
                     else:
                         lane = (x - branch.x) * branch.ty - (y - branch.y) * branch.tx
-                        z = branch.z + branch.bank * lane - (0.015 if smooth_ground else 0.0)
+                        z = branch.height(lane) - (0.015 if smooth_ground else 0.0)
                         joined_ground = False
                 else:
                     z = self.ground(x, y)
@@ -453,11 +455,37 @@ class CircuitScene(MeshScene):
                     distance = boundary.distance(point) * (-1 if self.road_mask.covers(point) else 1)
                     fraction = max(0.0, min(1.0, (distance + 0.01) / kerb_width))
                     height = 0.021 + (lift - 0.021) * fraction
-                points.append((x, y, road.z + road.bank * lane + height))
+                points.append((x, y, road.height(lane) + height))
             if cross(sub(points[1], points[0]), sub(points[2], points[0]))[2] < 0:
                 points.reverse()
             self.triangle(kind, material, points[0], points[1], points[2],
                           tuple((p[0] / 8, p[1] / 8) for p in points))
+
+    def _banked_road(
+        self, a: RoadStation, b: RoadStation, previous: RoadStation,
+        following: RoadStation, ds: float,
+    ) -> None:
+        def normal(sample: RoadStation, before: RoadStation, after: RoadStation, lane: float) -> Point:
+            grade = (after.height(lane) - before.height(lane)) / (2 * ds)
+            slope = sample.slope(lane)
+            return norm((-grade * sample.tx - slope * sample.ty,
+                         -grade * sample.ty + slope * sample.tx, 1.0))
+
+        for strip in range(8):
+            lo, hi = -1 + strip / 4, -1 + (strip + 1) / 4
+            lanes = (lo * (a.half_width + .15), lo * (b.half_width + .15),
+                     hi * (b.half_width + .15), hi * (a.half_width + .15))
+            points = [a.point(lanes[0], .006), b.point(lanes[1], .006),
+                      b.point(lanes[2], .006), a.point(lanes[3], .006)]
+            uv = ((a.station / 2, lo * a.half_width / 2),
+                  ((a.station + ds) / 2, lo * b.half_width / 2),
+                  ((a.station + ds) / 2, hi * b.half_width / 2),
+                  (a.station / 2, hi * a.half_width / 2))
+            normals = (normal(a, previous, b, lanes[0]), normal(b, a, following, lanes[1]),
+                       normal(b, a, following, lanes[2]), normal(a, previous, b, lanes[3]))
+            for i, j, k in ((0, 1, 2), (0, 2, 3)):
+                self.triangle("Tile_Road", "Road", points[i], points[j], points[k],
+                              (uv[i], uv[j], uv[k]), (normals[i], normals[j], normals[k]))
 
     def road_surfaces(self, base_material: str = "Grass") -> None:
         if self.edge_corrections:
@@ -520,29 +548,32 @@ class CircuitScene(MeshScene):
 
             na = normal(a, (b.z - previous.z) / (2 * ds))
             nb = normal(b, (following.z - a.z) / (2 * ds))
-            p = [
-                a.point(-a.half_width - 0.15, 0.006),
-                b.point(-b.half_width - 0.15, 0.006),
-                b.point(b.half_width + 0.15, 0.006),
-                a.point(a.half_width + 0.15, 0.006),
-            ]
-            # The accepted asphalt shader expects U along the road and V across it, in 2 m units.
-            uv = (
-                (a.station / 2, -a.half_width / 2),
-                ((a.station + ds) / 2, -b.half_width / 2),
-                ((a.station + ds) / 2, b.half_width / 2),
-                (a.station / 2, a.half_width / 2),
-            )
-            self.triangle("Tile_Road", "Road", p[0], p[1], p[2], uv[:3], (na, nb, nb))
-            self.triangle(
-                "Tile_Road",
-                "Road",
-                p[0],
-                p[2],
-                p[3],
-                (uv[0], uv[2], uv[3]),
-                (na, nb, na),
-            )
+            if a.bank_quadratic != 0 or b.bank_quadratic != 0:
+                self._banked_road(a, b, previous, following, ds)
+            else:
+                p = [
+                    a.point(-a.half_width - 0.15, 0.006),
+                    b.point(-b.half_width - 0.15, 0.006),
+                    b.point(b.half_width + 0.15, 0.006),
+                    a.point(a.half_width + 0.15, 0.006),
+                ]
+                # The accepted asphalt shader expects U along the road and V across it, in 2 m units.
+                uv = (
+                    (a.station / 2, -a.half_width / 2),
+                    ((a.station + ds) / 2, -b.half_width / 2),
+                    ((a.station + ds) / 2, b.half_width / 2),
+                    (a.station / 2, a.half_width / 2),
+                )
+                self.triangle("Tile_Road", "Road", p[0], p[1], p[2], uv[:3], (na, nb, nb))
+                self.triangle(
+                    "Tile_Road",
+                    "Road",
+                    p[0],
+                    p[2],
+                    p[3],
+                    (uv[0], uv[2], uv[3]),
+                    (na, nb, na),
+                )
             for side in (-1, 1):
                 stripe_points = [
                     a.point(side * (a.half_width - 0.12), 0.019),
@@ -770,6 +801,24 @@ class CircuitScene(MeshScene):
                     shape.difference(self.surface_mask(a)), material, 0.001, a, paved=True
                 )
 
+    def fence_ceiling(self, a: Point, b: Point) -> float:
+        ceiling = math.inf
+        if not self.overhead_soffits:
+            return ceiling
+        envelope = LineString([a[:2], b[:2]]).buffer(0.12)
+        for p, q, r in self.overhead_soffits:
+            overlap = envelope.intersection(Polygon([p[:2], q[:2], r[:2]]))
+            if overlap.is_empty:
+                continue
+            determinant = (q[1] - r[1]) * (p[0] - r[0]) + (r[0] - q[0]) * (p[1] - r[1])
+            if abs(determinant) < 1e-12:
+                raise ValueError("An overhead soffit must have a nondegenerate footprint")
+            for x, y in get_coordinates(overlap):
+                u = ((q[1] - r[1]) * (x - r[0]) + (r[0] - q[0]) * (y - r[1])) / determinant
+                v = ((r[1] - p[1]) * (x - r[0]) + (p[0] - r[0]) * (y - r[1])) / determinant
+                ceiling = min(ceiling, u * p[2] + v * q[2] + (1 - u - v) * r[2] - 0.12)
+        return ceiling
+
     def barriers(self, street: bool = False) -> None:
         post_distance = 4.0
         wall_ends: dict[tuple[float, float], list[tuple[float, float]]] = {}
@@ -808,7 +857,7 @@ class CircuitScene(MeshScene):
                     lane = (px - endpoint.x) * endpoint.ty - (
                         py - endpoint.y
                     ) * endpoint.tx
-                    return px, py, endpoint.z + endpoint.bank * lane
+                    return px, py, endpoint.height(lane)
 
                 a, b = base(x, y), base(bx, by)
                 lane = (x - sample.x) * sample.ty - (y - sample.y) * sample.tx
@@ -869,18 +918,23 @@ class CircuitScene(MeshScene):
                         repeat=segment_length / 8,
                     )
                     break
-                self.banner(add(a, (0, 0, 0.95)), add(b, (0, 0, 0.95)), 2.2, "Fence")
+                fence_height = min(2.2, self.fence_ceiling(a, b) - max(a[2], b[2]) - 0.95)
+                if fence_height > 0:
+                    self.banner(add(a, (0, 0, 0.95)), add(b, (0, 0, 0.95)), fence_height, "Fence")
                 post_distance += math.dist(a, b)
                 if post_distance >= 4:
                     post_distance = 0.0
-                    self.beam("Tile_Barrier", "Steel", a, add(a, (0, 0, 3.2)), 0.08)
-                    self.beam(
-                        "Tile_Barrier",
-                        "Steel",
-                        add(a, (0, 0, 3.2)),
-                        add(a, (0, 0, 3.6)),
-                        0.08,
-                    )
+                    post_height = min(3.6, self.fence_ceiling(a, add(a, (0.001, 0, 0))) - a[2])
+                    if post_height > 0:
+                        self.beam("Tile_Barrier", "Steel", a, add(a, (0, 0, min(3.2, post_height))), 0.08)
+                    if post_height > 3.2:
+                        self.beam(
+                            "Tile_Barrier",
+                            "Steel",
+                            add(a, (0, 0, 3.2)),
+                            add(a, (0, 0, post_height)),
+                            0.08,
+                        )
 
     def branding(self, start: float, end: float, side: int, material: str) -> None:
         self.panels.append(BarrierPanel(start, end, side, material))

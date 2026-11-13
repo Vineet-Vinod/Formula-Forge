@@ -191,6 +191,15 @@ and the recorded composed source-to-world transformation. If the primary event
 curve changes, rebuild refinement from a fresh export of that curve; refining
 the previous frozen input would silently discard the new event geometry.
 
+Use `circuit_profiles.py --banking <slug>` for retained bank controls. Optional
+quadratic controls describe progressive crossfall rather than one plane. The
+Python scene and native simulation share the same lateral height convention.
+Keep their contact tessellation, paved shoulders and barrier heights consistent;
+verify unchanged zero-quadratic profiles retain their prior exports. Monaco's optional
+`overhead_soffits` triangles cap decorative fence panels and posts beneath an
+actual retained roof, while leaving native concrete protection unchanged. Leave
+that list empty for venues without an evidenced overhead clearance constraint.
+
 `circuit_alignment.py` reconstructs the explicitly evidenced arcs; its optional
 `--refine-sigma` operation removes bounded mapping noise and retains a one-metre
 movement limit. It does not select the correct event route. Portimão's retained
@@ -198,6 +207,11 @@ replacement alignment includes two route changes and must not be reconstructed
 from its historical false-route baseline. Avoid running the legacy global
 `build_circuits.py` generator over curated source decisions without checking
 every output it would replace.
+
+Suzuka's composed registration is recorded in `scene-registration.json` and
+`provenance.json`. The legacy global builder does not restore that effective
+scale from the registration file. Rebuild the curated native profiles directly;
+running the global builder would overwrite the current scene projection.
 
 Use `circuit_ground.py <slug>` only for a venue with a validated
 `classified-ground.json` and retained classified points. It derives the road

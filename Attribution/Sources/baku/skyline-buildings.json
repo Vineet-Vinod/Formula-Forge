@@ -1,0 +1,427 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "circuit": "baku",
+  "source_file": "skyline.osm.json.gz",
+  "source_sha256": "efaeaffe73aa1f7ceaf33640d0cbb6f9b232f3f25a5b4109992e4264739631bc",
+  "source_request": {
+    "endpoint": "https://overpass-api.de/api/interpreter",
+    "query": "[out:json][timeout:60];(way[\"building\"](40.3715,49.8550,40.3810,49.8730);way[\"building:part\"](40.3715,49.8550,40.3810,49.8730););out geom;",
+    "retrieved_utc": "2026-11-13T10:04:19Z",
+    "raw_sha256": "3cfe6a830ab4cec6f423729530de5970aa8b03a79422e52dce67fa7983d14022",
+    "features": 255,
+    "licence": "OpenStreetMap contributors, ODbL1.0"
+  },
+  "building_count": 44,
+  "buildings": [
+    {
+      "osm_id": 152193798,
+      "name": "Mapped eastern residential block",
+      "height_m": 61.199999999999996,
+      "floors": 18,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 152193926,
+      "name": "Mapped eastern residential block",
+      "height_m": 54.4,
+      "floors": 16,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 152193991,
+      "name": "Port Baku Towers 1",
+      "height_m": 51.0,
+      "floors": 15,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 152617908,
+      "name": "Mapped eastern residential block",
+      "height_m": 54.4,
+      "floors": 16,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 152618455,
+      "name": "Mapped eastern residential block",
+      "height_m": 47.6,
+      "floors": 14,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 153128834,
+      "name": "JW Marriott Absheron",
+      "height_m": 84,
+      "floors": 20,
+      "style": "hotel",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 153131528,
+      "name": "Port Baku Towers",
+      "height_m": 51.0,
+      "floors": 15,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 180350528,
+      "name": "Baku Palace Apartments",
+      "height_m": 47.6,
+      "floors": 14,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 249189226,
+      "name": "Mapped eastern residential block",
+      "height_m": 40.8,
+      "floors": 12,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 249189227,
+      "name": "Mapped eastern residential block",
+      "height_m": 40.8,
+      "floors": 12,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 249191799,
+      "name": "Mapped eastern residential block",
+      "height_m": 40.8,
+      "floors": 12,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 249191921,
+      "name": "Mapped eastern residential block",
+      "height_m": 39.0,
+      "floors": 12,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 299466741,
+      "name": "Mapped eastern residential block",
+      "height_m": 54.4,
+      "floors": 16,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 299633123,
+      "name": "Mapped eastern residential block",
+      "height_m": 47.6,
+      "floors": 14,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 299633128,
+      "name": "Mapped eastern residential block",
+      "height_m": 47.6,
+      "floors": 14,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 299634248,
+      "name": "Mapped eastern residential block",
+      "height_m": 61.199999999999996,
+      "floors": 18,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 299634249,
+      "name": "Mapped eastern residential block",
+      "height_m": 68.0,
+      "floors": 20,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 299634250,
+      "name": "Mapped eastern residential block",
+      "height_m": 68.0,
+      "floors": 20,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 299634253,
+      "name": "Mapped eastern residential block",
+      "height_m": 68.0,
+      "floors": 20,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 299634255,
+      "name": "Mapped eastern residential block",
+      "height_m": 68.0,
+      "floors": 20,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 299634256,
+      "name": "Mapped eastern residential block",
+      "height_m": 68.0,
+      "floors": 20,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 299634257,
+      "name": "Mapped eastern residential block",
+      "height_m": 68.0,
+      "floors": 20,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 385592321,
+      "name": "Mapped eastern residential block",
+      "height_m": 54.4,
+      "floors": 16,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 388385561,
+      "name": "Mapped eastern residential block",
+      "height_m": 54.4,
+      "floors": 16,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 388385562,
+      "name": "Mapped eastern residential block",
+      "height_m": 47.6,
+      "floors": 14,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 388385572,
+      "name": "Mapped eastern residential block",
+      "height_m": 54.4,
+      "floors": 16,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 388385574,
+      "name": "Mapped eastern residential block",
+      "height_m": 54.4,
+      "floors": 16,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 388385576,
+      "name": "Mapped eastern residential block",
+      "height_m": 54.4,
+      "floors": 16,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 388388715,
+      "name": "Crescent Place",
+      "height_m": 170,
+      "floors": 35,
+      "style": "residence",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 389884198,
+      "name": "Alyans MTK",
+      "height_m": 68.0,
+      "floors": 20,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 389884200,
+      "name": "Alyans MTK",
+      "height_m": 68.0,
+      "floors": 20,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 389884202,
+      "name": "Alyans MTK",
+      "height_m": 68.0,
+      "floors": 20,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 389884204,
+      "name": "Alyans MTK",
+      "height_m": 68.0,
+      "floors": 20,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 389884209,
+      "name": "Alyans MTK",
+      "height_m": 68.0,
+      "floors": 20,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 389884215,
+      "name": "Mapped eastern residential block",
+      "height_m": 88.39999999999999,
+      "floors": 26,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 423715660,
+      "name": "Mapped eastern residential block",
+      "height_m": 54.4,
+      "floors": 16,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 793956928,
+      "name": "Crescent Mall podium",
+      "height_m": 20,
+      "floors": 5,
+      "style": "podium",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 901738189,
+      "name": "Crescent Hotel",
+      "height_m": 166,
+      "floors": 36,
+      "style": "crescent",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 997697649,
+      "name": "Port Baku Towers 2",
+      "height_m": 81.6,
+      "floors": 24,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 1067699501,
+      "name": "Crescent City",
+      "height_m": 210,
+      "floors": 43,
+      "style": "torch",
+      "height_basis": "AIDEA architectural collaborator gives 210 m and 43 storeys. This concept/project figure differs from the earlier Doka construction account of 205 m and 41 storeys; the difference remains unresolved."
+    },
+    {
+      "osm_id": 1067990017,
+      "name": "Mapped eastern residential block",
+      "height_m": 61.199999999999996,
+      "floors": 18,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 1067990018,
+      "name": "Mapped eastern residential block",
+      "height_m": 61.199999999999996,
+      "floors": 18,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 1184878761,
+      "name": "Mapped eastern residential block",
+      "height_m": 68.0,
+      "floors": 20,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    },
+    {
+      "osm_id": 1211928760,
+      "name": "Mapped eastern residential block",
+      "height_m": 54.4,
+      "floors": 16,
+      "style": "context",
+      "height_basis": "OSM height tag, or tagged storeys multiplied by an estimated 3.4 m. Crescent Place170 m and Hotel166 m retain 4 m reconstruction allowances against Doka174/170 m construction figures. The five-storey podium uses an estimated20 m height. These are not independent surveyed heights."
+    }
+  ],
+  "source_diagnosis": "The original building request stopped at the raceway bounding box plus 0.0008 degrees. It omitted the eastern waterfront beyond Turn 1, including Crescent City. This source augmentation adds actual missing properties and preserves every existing property ID.",
+  "primary_sources": [
+    {
+      "url": "https://aidea.co/crescent-city",
+      "provider": "AIDEA, architectural VDC collaborator with Heerim",
+      "supports": "210 m, 43 storeys, torch form and relationship to Crescent Place and Hotel. Source artwork is conceptual; exact sections remain reconstructions."
+    },
+    {
+      "url": "https://www.doka.com/uk/references/asia/Crescent_Development_Project",
+      "provider": "Doka, project formwork supplier",
+      "supports": "Earlier construction account gives City205 m/41 storeys and Place174 m. This conflicts with AIDEA210 m/43 storeys; the height definitions and project revisions have not been reconciled."
+    },
+    {
+      "url": "https://www.chapmantaylor.com/projects/port-baku-tower",
+      "provider": "Chapman Taylor, architect",
+      "supports": "Port Baku Tower1 is120 m tall. This identifies waterfront context only; its height is not transferred to an unqualified adjacent OSM component."
+    }
+  ],
+  "reference_images": [
+    {
+      "image": "aidea-crescent-city.webp",
+      "url": "https://vold-independent.s3.ap-southeast-1.amazonaws.com/experiences/mixed-use/crescent-city/56dd860b-853c-43fc-aeea-80af193a7017/webp/00exp-heroimgcrescent-citypng.webp",
+      "sha256": "74bfb52622ff8708b5314e66aa7a9637e5d00c355c397a23ccd68cfa08a75915",
+      "use": "Referenceonly; architecturalcollaboratororiginalprojectsite, no pixels shipped."
+    },
+    {
+      "image": "aidea-crescent-whole.webp",
+      "url": "https://vold-independent.s3.ap-southeast-1.amazonaws.com/experiences/mixed-use/crescent-city/0f1f460f-335c-45d4-a874-ba7a6a02aae8/webp/01crescent-citypng.webp",
+      "sha256": "56bfb7a50fc3826354e327809dbf38c0946d29534be04dba396ab8962a77f0ca",
+      "use": "Referenceonly; architecturalcollaboratororiginalprojectsite, no pixels shipped."
+    }
+  ],
+  "direct_reference": [
+    {
+      "file": "build/reviews/baku/reference/detail-0175.jpg",
+      "sha256": "f8194f338e52cc97e56ebde764d93772b2c4db440f8838c069aa8a54925f5a49",
+      "observed": "A rounded glazed crown rises ahead of the start grid in the eastern skyline. It is consistent with the Crescent City site and form. It is not the Flame Towers behind the camera."
+    },
+    {
+      "file": "build/reviews/baku/reference/detail-0185.jpg",
+      "sha256": "dfb50bf947814e611c66a171a9250e0a6fa784cb47ca89d62387c7b7b1b69a89",
+      "observed": "The same eastern skyline is visible above the forward Turn1 approach."
+    }
+  ],
+  "reconstruction": {
+    "City": "Actual mapped base frame. An original64-segment oval curtain wall has23 percent midheight bulge and a leaning crown taper above73 percent height,43 storey bands and diagonal structural lines. Section multipliers are visual estimates. This radial section simplifies the visibly asymmetric swept crown; it is not as-built BIM.",
+    "Hotel": "Actual mapped long axis and depth. An original curved arch retains its open void within a166 m roof envelope. The section radius, roughly106 m central opening and base mass are visual estimates.",
+    "Place": "Actual mapped170 m building component with35 storeys, deep window bands and shallow balconies. Roof section and detail remain reconstructions.",
+    "context": "Only new mapped properties with12 or more tagged storeys are added beyond the old request. Heights use tags or estimated3.4 m storeys. Existing road-adjacent properties retain their earlier geometry. These distant masses are not surveyed facades.",
+    "foundation": "Retained coastal ground joins the existing road and datum. Far-field foundations inherit coarse ground uncertainty. No landscape flattening is applied."
+  },
+  "preserved": [
+    "All racing/native data, physics and camera",
+    "Existing Baku properties and coastal/forecourt repairs",
+    "Other circuits and accepted baselines"
+  ],
+  "runtime_gate": "Pending native import, fresh packaged start-straight/Turn1/full-lap views, Luna High review and performance checks. Source geometry is not visual acceptance."
+}

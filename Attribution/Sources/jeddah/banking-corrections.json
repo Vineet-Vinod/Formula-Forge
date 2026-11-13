@@ -1,0 +1,1052 @@
+{
+  "schema_version": 1,
+  "circuit": "jeddah",
+  "date": "2026-11-13",
+  "units": {
+    "station": "metres from native centerline origin",
+    "bank": "degrees; positive raises source driver-right/+lane"
+  },
+  "controls": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      2140.0,
+      0.0
+    ],
+    [
+      2142.0,
+      0.004225
+    ],
+    [
+      2144.0,
+      0.032095
+    ],
+    [
+      2146.0,
+      0.10272
+    ],
+    [
+      2148.0,
+      0.23059
+    ],
+    [
+      2150.0,
+      0.425926
+    ],
+    [
+      2152.0,
+      0.69504
+    ],
+    [
+      2154.0,
+      1.040687
+    ],
+    [
+      2156.0,
+      1.462424
+    ],
+    [
+      2158.0,
+      1.95696
+    ],
+    [
+      2160.0,
+      2.518519
+    ],
+    [
+      2162.0,
+      3.139188
+    ],
+    [
+      2164.0,
+      3.80928
+    ],
+    [
+      2166.0,
+      4.517683
+    ],
+    [
+      2168.0,
+      5.252219
+    ],
+    [
+      2170.0,
+      6.0
+    ],
+    [
+      2172.0,
+      6.747781
+    ],
+    [
+      2174.0,
+      7.482317
+    ],
+    [
+      2176.0,
+      8.19072
+    ],
+    [
+      2178.0,
+      8.860812
+    ],
+    [
+      2180.0,
+      9.481481
+    ],
+    [
+      2182.0,
+      10.04304
+    ],
+    [
+      2184.0,
+      10.537576
+    ],
+    [
+      2186.0,
+      10.959313
+    ],
+    [
+      2188.0,
+      11.30496
+    ],
+    [
+      2190.0,
+      11.574074
+    ],
+    [
+      2192.0,
+      11.76941
+    ],
+    [
+      2194.0,
+      11.89728
+    ],
+    [
+      2196.0,
+      11.967905
+    ],
+    [
+      2198.0,
+      11.995775
+    ],
+    [
+      2200.0,
+      12.0
+    ],
+    [
+      2202.0,
+      12.0
+    ],
+    [
+      2204.0,
+      12.0
+    ],
+    [
+      2206.0,
+      12.0
+    ],
+    [
+      2208.0,
+      12.0
+    ],
+    [
+      2210.0,
+      12.0
+    ],
+    [
+      2212.0,
+      12.0
+    ],
+    [
+      2214.0,
+      12.0
+    ],
+    [
+      2216.0,
+      12.0
+    ],
+    [
+      2218.0,
+      12.0
+    ],
+    [
+      2220.0,
+      12.0
+    ],
+    [
+      2222.0,
+      12.0
+    ],
+    [
+      2224.0,
+      12.0
+    ],
+    [
+      2226.0,
+      12.0
+    ],
+    [
+      2228.0,
+      12.0
+    ],
+    [
+      2230.0,
+      12.0
+    ],
+    [
+      2232.0,
+      12.0
+    ],
+    [
+      2234.0,
+      12.0
+    ],
+    [
+      2236.0,
+      12.0
+    ],
+    [
+      2238.0,
+      12.0
+    ],
+    [
+      2240.0,
+      12.0
+    ],
+    [
+      2242.0,
+      12.0
+    ],
+    [
+      2244.0,
+      12.0
+    ],
+    [
+      2246.0,
+      12.0
+    ],
+    [
+      2248.0,
+      12.0
+    ],
+    [
+      2250.0,
+      12.0
+    ],
+    [
+      2252.0,
+      12.0
+    ],
+    [
+      2254.0,
+      12.0
+    ],
+    [
+      2256.0,
+      12.0
+    ],
+    [
+      2258.0,
+      12.0
+    ],
+    [
+      2260.0,
+      12.0
+    ],
+    [
+      2262.0,
+      12.0
+    ],
+    [
+      2264.0,
+      12.0
+    ],
+    [
+      2266.0,
+      12.0
+    ],
+    [
+      2268.0,
+      12.0
+    ],
+    [
+      2270.0,
+      12.0
+    ],
+    [
+      2272.0,
+      12.0
+    ],
+    [
+      2274.0,
+      12.0
+    ],
+    [
+      2276.0,
+      12.0
+    ],
+    [
+      2278.0,
+      12.0
+    ],
+    [
+      2280.0,
+      12.0
+    ],
+    [
+      2282.0,
+      12.0
+    ],
+    [
+      2284.0,
+      12.0
+    ],
+    [
+      2286.0,
+      12.0
+    ],
+    [
+      2288.0,
+      12.0
+    ],
+    [
+      2290.0,
+      12.0
+    ],
+    [
+      2292.0,
+      12.0
+    ],
+    [
+      2294.0,
+      12.0
+    ],
+    [
+      2296.0,
+      12.0
+    ],
+    [
+      2298.0,
+      12.0
+    ],
+    [
+      2300.0,
+      12.0
+    ],
+    [
+      2302.0,
+      12.0
+    ],
+    [
+      2304.0,
+      12.0
+    ],
+    [
+      2306.0,
+      12.0
+    ],
+    [
+      2308.0,
+      12.0
+    ],
+    [
+      2310.0,
+      12.0
+    ],
+    [
+      2312.0,
+      12.0
+    ],
+    [
+      2314.0,
+      12.0
+    ],
+    [
+      2316.0,
+      12.0
+    ],
+    [
+      2318.0,
+      12.0
+    ],
+    [
+      2320.0,
+      12.0
+    ],
+    [
+      2322.0,
+      12.0
+    ],
+    [
+      2324.0,
+      12.0
+    ],
+    [
+      2326.0,
+      12.0
+    ],
+    [
+      2328.0,
+      12.0
+    ],
+    [
+      2330.0,
+      12.0
+    ],
+    [
+      2332.0,
+      12.0
+    ],
+    [
+      2334.0,
+      12.0
+    ],
+    [
+      2336.0,
+      12.0
+    ],
+    [
+      2338.0,
+      12.0
+    ],
+    [
+      2340.0,
+      12.0
+    ],
+    [
+      2342.0,
+      12.0
+    ],
+    [
+      2344.0,
+      12.0
+    ],
+    [
+      2346.0,
+      12.0
+    ],
+    [
+      2348.0,
+      12.0
+    ],
+    [
+      2350.0,
+      12.0
+    ],
+    [
+      2352.0,
+      12.0
+    ],
+    [
+      2354.0,
+      12.0
+    ],
+    [
+      2356.0,
+      12.0
+    ],
+    [
+      2358.0,
+      12.0
+    ],
+    [
+      2360.0,
+      12.0
+    ],
+    [
+      2362.0,
+      12.0
+    ],
+    [
+      2364.0,
+      12.0
+    ],
+    [
+      2366.0,
+      12.0
+    ],
+    [
+      2368.0,
+      12.0
+    ],
+    [
+      2370.0,
+      12.0
+    ],
+    [
+      2372.0,
+      12.0
+    ],
+    [
+      2374.0,
+      12.0
+    ],
+    [
+      2376.0,
+      12.0
+    ],
+    [
+      2378.0,
+      12.0
+    ],
+    [
+      2380.0,
+      12.0
+    ],
+    [
+      2382.0,
+      12.0
+    ],
+    [
+      2384.0,
+      12.0
+    ],
+    [
+      2386.0,
+      12.0
+    ],
+    [
+      2388.0,
+      12.0
+    ],
+    [
+      2390.0,
+      12.0
+    ],
+    [
+      2392.0,
+      12.0
+    ],
+    [
+      2394.0,
+      12.0
+    ],
+    [
+      2396.0,
+      12.0
+    ],
+    [
+      2398.0,
+      12.0
+    ],
+    [
+      2400.0,
+      12.0
+    ],
+    [
+      2402.0,
+      12.0
+    ],
+    [
+      2404.0,
+      12.0
+    ],
+    [
+      2406.0,
+      12.0
+    ],
+    [
+      2408.0,
+      12.0
+    ],
+    [
+      2410.0,
+      12.0
+    ],
+    [
+      2412.0,
+      11.99732
+    ],
+    [
+      2414.0,
+      11.979485
+    ],
+    [
+      2416.0,
+      11.933814
+    ],
+    [
+      2418.0,
+      11.850178
+    ],
+    [
+      2420.0,
+      11.720831
+    ],
+    [
+      2422.0,
+      11.540247
+    ],
+    [
+      2424.0,
+      11.30496
+    ],
+    [
+      2426.0,
+      11.013392
+    ],
+    [
+      2428.0,
+      10.665694
+    ],
+    [
+      2430.0,
+      10.263581
+    ],
+    [
+      2432.0,
+      9.810162
+    ],
+    [
+      2434.0,
+      9.309786
+    ],
+    [
+      2436.0,
+      8.767865
+    ],
+    [
+      2438.0,
+      8.19072
+    ],
+    [
+      2440.0,
+      7.585411
+    ],
+    [
+      2442.0,
+      6.959573
+    ],
+    [
+      2444.0,
+      6.321254
+    ],
+    [
+      2446.0,
+      5.678746
+    ],
+    [
+      2448.0,
+      5.040427
+    ],
+    [
+      2450.0,
+      4.414589
+    ],
+    [
+      2452.0,
+      3.80928
+    ],
+    [
+      2454.0,
+      3.232135
+    ],
+    [
+      2456.0,
+      2.690214
+    ],
+    [
+      2458.0,
+      2.189838
+    ],
+    [
+      2460.0,
+      1.736419
+    ],
+    [
+      2462.0,
+      1.334306
+    ],
+    [
+      2464.0,
+      0.986608
+    ],
+    [
+      2466.0,
+      0.69504
+    ],
+    [
+      2468.0,
+      0.459753
+    ],
+    [
+      2470.0,
+      0.279169
+    ],
+    [
+      2472.0,
+      0.149822
+    ],
+    [
+      2474.0,
+      0.066186
+    ],
+    [
+      2476.0,
+      0.020515
+    ],
+    [
+      2478.0,
+      0.00268
+    ],
+    [
+      2480.0,
+      0.0
+    ],
+    [
+      6174.0,
+      0.0
+    ]
+  ],
+  "method": "12-degree positive lateral plane through the northern left hairpin, with quintic entry/exit tapers sampled every2m. Both native contact and rendered road use the same existing banking profile.",
+  "registration": {
+    "official_corner": "Turn13",
+    "native_apex_station_m": 2277,
+    "transition_in_m": [
+      2140,
+      2200
+    ],
+    "full_bank_range_m": [
+      2200,
+      2410
+    ],
+    "transition_out_m": [
+      2410,
+      2480
+    ],
+    "station_uncertainty_m": 30,
+    "angle_degrees": 12,
+    "angle_uncertainty_degrees": 1,
+    "status": "Published angle; station extent and transition shape reconstructed from retained road curvature and supplied reference331s, not an as-built cross-section.",
+    "sign_proof": "Source tangent rotates counterclockwise through northern left hairpin. RoadStation.point +lane=(x+ty*lane,y-tx*lane), source driver-right/outside; positive bank raises outside."
+  },
+  "primary_sources": [
+    {
+      "url": "https://jeddahcircuit.com/en",
+      "retrieved": "2026-11-13",
+      "supports": "Circuit operator identifies Turn13 and approximately12degrees of banking."
+    },
+    {
+      "url": "https://www.formula1.com/en/latest/article/the-circuit-the-challenge-and-the-culture-how-jeddah-is-shaping-up-for-the.6nm5W4zEpXtCKsA3VQBkgb",
+      "supports": "F1 construction-site report identifies a long-radius left hairpin with12-degree bank."
+    },
+    {
+      "url": "https://www.mclaren.com/racing/formula-1/2021/saudi-arabian-grand-prix/jeddah-track-guide/",
+      "supports": "Original team guide also specifies12degrees atTurn13."
+    }
+  ],
+  "direct_reference": [
+    {
+      "path": "build/reviews/jeddah/reference/detail-0331.jpg",
+      "sha256": "d4369cfa9b3d7cb898268a25d6cd2f8ddd27623fe8be7fdd0318787af55e93d0",
+      "observed": "Banked northern left hairpin, green/white inside kerb and EDITION structure across corner."
+    }
+  ],
+  "kerb_correction": {
+    "old": "Default red/white on every Jeddah authored kerb.",
+    "new": "Green/white, retaining existing geometry/width/height.",
+    "evidence_seconds": [
+      255,
+      263,
+      271,
+      275,
+      279,
+      291,
+      319,
+      323,
+      331
+    ],
+    "qualification": "Visible kerbs in supplied onboard are green/white. Coloured escape areas and yellow inside rumble strips remain separate; no video pixels shipped."
+  },
+  "preserved": [
+    "Centerline XY and longitudinal road elevation",
+    "Existing width and shoulder controls",
+    "Vehicle tuning, camera, shifting and simulation implementation",
+    "All other venues and accepted baseline assets"
+  ],
+  "runtime_gate": "Pending source/native rebuild, contact/kerb/terrain checks, full clean live lap, original matched approach/apex/exit captures and Luna High review.",
+  "paved_apron_contact": {
+    "range_m": [
+      2150,
+      2370
+    ],
+    "side": 1,
+    "width_m": 14,
+    "problem": "The generated scenery ground ignored the bank outside the white lines; the existing4m blend lowered contact beneath the authored paved apron.",
+    "old_contact_gap_m": {
+      "at_apex_6m_beyond_white_line": 2.6340735696402677,
+      "at_apex_13m_beyond_white_line": 4.2485040173816655,
+      "maximum_sampled": 4.28463581815542
+    },
+    "proof": {
+      "method": "Read-only numerical reproduction of native generated8m grid and4m off-road blend, applied to the new 12-degree bank. Not a packaged measurement.",
+      "points": [
+        {
+          "station_m": 2180.34448,
+          "lane_m": 8.48960066,
+          "paved_visual_height_m": 4.338419578201168,
+          "existing_generic_physical_height_m": 3.59435671769496,
+          "under_support_m": 0.7440628605062081
+        },
+        {
+          "station_m": 2180.34448,
+          "lane_m": 12.48960066,
+          "paved_visual_height_m": 5.013403853940313,
+          "existing_generic_physical_height_m": 2.792439731726534,
+          "under_support_m": 2.2209641222137795
+        },
+        {
+          "station_m": 2180.34448,
+          "lane_m": 16.48960066,
+          "paved_visual_height_m": 5.688388129679459,
+          "existing_generic_physical_height_m": 2.7232118084757895,
+          "under_support_m": 2.9651763212036695
+        },
+        {
+          "station_m": 2180.34448,
+          "lane_m": 19.48960066,
+          "paved_visual_height_m": 6.194626336483818,
+          "existing_generic_physical_height_m": 2.670095023607414,
+          "under_support_m": 3.524531312876404
+        },
+        {
+          "station_m": 2220.28857,
+          "lane_m": 8.0,
+          "paved_visual_height_m": 4.479980943360178,
+          "existing_generic_physical_height_m": 3.612227213070089,
+          "under_support_m": 0.8677537302900888
+        },
+        {
+          "station_m": 2220.28857,
+          "lane_m": 12.0,
+          "paved_visual_height_m": 5.330207190040266,
+          "existing_generic_physical_height_m": 2.6704990050549986,
+          "under_support_m": 2.6597081849852673
+        },
+        {
+          "station_m": 2220.28857,
+          "lane_m": 16.0,
+          "paved_visual_height_m": 6.180433436720354,
+          "existing_generic_physical_height_m": 2.5973093867500014,
+          "under_support_m": 3.5831240499703525
+        },
+        {
+          "station_m": 2220.28857,
+          "lane_m": 19.0,
+          "paved_visual_height_m": 6.818103121730421,
+          "existing_generic_physical_height_m": 2.5468087330937488,
+          "under_support_m": 4.271294388636672
+        },
+        {
+          "station_m": 2276.81323,
+          "lane_m": 8.0,
+          "paved_visual_height_m": 4.8468544433601775,
+          "existing_generic_physical_height_m": 3.9942221584800883,
+          "under_support_m": 0.8526322848800891
+        },
+        {
+          "station_m": 2276.81323,
+          "lane_m": 12.0,
+          "paved_visual_height_m": 5.6970806900402655,
+          "existing_generic_physical_height_m": 3.063007120399998,
+          "under_support_m": 2.6340735696402677
+        },
+        {
+          "station_m": 2276.81323,
+          "lane_m": 16.0,
+          "paved_visual_height_m": 6.5473069367203545,
+          "existing_generic_physical_height_m": 2.989081285570004,
+          "under_support_m": 3.5582256511503503
+        },
+        {
+          "station_m": 2276.81323,
+          "lane_m": 19.0,
+          "paved_visual_height_m": 7.184976621730421,
+          "existing_generic_physical_height_m": 2.9364726043487552,
+          "under_support_m": 4.2485040173816655
+        },
+        {
+          "station_m": 2340.12085,
+          "lane_m": 8.0,
+          "paved_visual_height_m": 5.579632523360178,
+          "existing_generic_physical_height_m": 4.707327259280089,
+          "under_support_m": 0.8723052640800883
+        },
+        {
+          "station_m": 2340.12085,
+          "lane_m": 12.0,
+          "paved_visual_height_m": 6.429858770040266,
+          "existing_generic_physical_height_m": 3.767911808380002,
+          "under_support_m": 2.661946961660264
+        },
+        {
+          "station_m": 2340.12085,
+          "lane_m": 16.0,
+          "paved_visual_height_m": 7.280085016720354,
+          "existing_generic_physical_height_m": 3.6821860861200038,
+          "under_support_m": 3.59789893060035
+        },
+        {
+          "station_m": 2340.12085,
+          "lane_m": 19.0,
+          "paved_visual_height_m": 7.917754701730421,
+          "existing_generic_physical_height_m": 3.6331188835750012,
+          "under_support_m": 4.28463581815542
+        }
+      ]
+    },
+    "correction": "For Jeddah only, nonzero scalar-bank stations inside registered Asphalt zones receive actual drive-surface contact strips, using the same bank plane and final authored wall nearface. Unrelated wholly-planar circuits keep the original path.",
+    "validation": "Native fixtures and full-width live-data contact tests added; root-owned compile/export and packaged validation pending.",
+    "unchanged": [
+      "Centreline and longitudinal profile",
+      "Active road width and bank data",
+      "White-line track limits",
+      "Vehicle tuning and all other wholly-q0 circuit paths"
+    ],
+    "inside_kerb_contact": {
+      "diagnostic": {
+        "circuit": "jeddah",
+        "road_csv_sha256": "0fd64b395d06164a211d59e962a59357fd833a0cf671b2a7542517b2fce4df67",
+        "native_survey_sha256": "68c03c0e26dc57738cffb5d876546bb2a50b5898a3e6ab6b756129a3d3d5d7df",
+        "measurements": [
+          {
+            "native_station_m": 2220.28857,
+            "inside_negative_lane_m": -6.5,
+            "beyond_white_line_m": 0.5,
+            "quadratic_per_m": 0.0,
+            "base_bank_height_m": 1.3969107991448562,
+            "generated_grid_height_m": 2.7437577910512494,
+            "existing_native_Ground_height_m": 1.454783130828334,
+            "native_minus_bank_base_m": 0.05787233168347794,
+            "rendered_kerb_lift_m": 0.033884210526315794,
+            "native_minus_rendered_kerb_m": 0.023988121157162146,
+            "outside_existing_contact_skin": true,
+            "new_contact_bank_plane_support": "Covered by1.25m contact skin; old mismatch is diagnostic only. Native export validation pending."
+          },
+          {
+            "native_station_m": 2220.28857,
+            "inside_negative_lane_m": -6.75,
+            "beyond_white_line_m": 0.75,
+            "quadratic_per_m": 0.0,
+            "base_bank_height_m": 1.3437716587273507,
+            "generated_grid_height_m": 2.7412905633993745,
+            "existing_native_Ground_height_m": 1.4727419092073373,
+            "native_minus_bank_base_m": 0.12897025047998656,
+            "rendered_kerb_lift_m": 0.04283157894736843,
+            "native_minus_rendered_kerb_m": 0.08613867153261813,
+            "outside_existing_contact_skin": true,
+            "new_contact_bank_plane_support": "Covered by1.25m contact skin; old mismatch is diagnostic only. Native export validation pending."
+          },
+          {
+            "native_station_m": 2220.28857,
+            "inside_negative_lane_m": -7.0,
+            "beyond_white_line_m": 1.0,
+            "quadratic_per_m": 0.0,
+            "base_bank_height_m": 1.2906325183098453,
+            "generated_grid_height_m": 2.7388233357475,
+            "existing_native_Ground_height_m": 1.5169123335344787,
+            "native_minus_bank_base_m": 0.22627981522463347,
+            "rendered_kerb_lift_m": 0.051778947368421056,
+            "native_minus_rendered_kerb_m": 0.1745008678562124,
+            "outside_existing_contact_skin": true,
+            "new_contact_bank_plane_support": "Covered by1.25m contact skin; old mismatch is diagnostic only. Native export validation pending."
+          },
+          {
+            "native_station_m": 2276.81323,
+            "inside_negative_lane_m": -6.5,
+            "beyond_white_line_m": 0.5,
+            "quadratic_per_m": 0.0,
+            "base_bank_height_m": 1.7637842991448562,
+            "generated_grid_height_m": 3.1014274556487433,
+            "existing_native_Ground_height_m": 1.8212611535258827,
+            "native_minus_bank_base_m": 0.057476854381026454,
+            "rendered_kerb_lift_m": 0.033884210526315794,
+            "native_minus_rendered_kerb_m": 0.02359264385471066,
+            "outside_existing_contact_skin": true,
+            "new_contact_bank_plane_support": "Covered by1.25m contact skin; old mismatch is diagnostic only. Native export validation pending."
+          },
+          {
+            "native_station_m": 2276.81323,
+            "inside_negative_lane_m": -6.75,
+            "beyond_white_line_m": 0.75,
+            "quadratic_per_m": 0.0,
+            "base_bank_height_m": 1.7106451587273508,
+            "generated_grid_height_m": 3.0936395862506254,
+            "existing_native_Ground_height_m": 1.8382750155642156,
+            "native_minus_bank_base_m": 0.12762985683686479,
+            "rendered_kerb_lift_m": 0.04283157894736843,
+            "native_minus_rendered_kerb_m": 0.08479827788949636,
+            "outside_existing_contact_skin": true,
+            "new_contact_bank_plane_support": "Covered by1.25m contact skin; old mismatch is diagnostic only. Native export validation pending."
+          },
+          {
+            "native_station_m": 2276.81323,
+            "inside_negative_lane_m": -7.0,
+            "beyond_white_line_m": 1.0,
+            "quadratic_per_m": 0.0,
+            "base_bank_height_m": 1.6575060183098453,
+            "generated_grid_height_m": 3.085851716852491,
+            "existing_native_Ground_height_m": 1.8806850337071337,
+            "native_minus_bank_base_m": 0.22317901539728835,
+            "rendered_kerb_lift_m": 0.051778947368421056,
+            "native_minus_rendered_kerb_m": 0.1714000680288673,
+            "outside_existing_contact_skin": true,
+            "new_contact_bank_plane_support": "Covered by1.25m contact skin; old mismatch is diagnostic only. Native export validation pending."
+          },
+          {
+            "native_station_m": 2340.12085,
+            "inside_negative_lane_m": -6.5,
+            "beyond_white_line_m": 0.5,
+            "quadratic_per_m": 0.0,
+            "base_bank_height_m": 2.496562379144856,
+            "generated_grid_height_m": 3.8705371605637504,
+            "existing_native_Ground_height_m": 2.5556003580339492,
+            "native_minus_bank_base_m": 0.059037978889093345,
+            "rendered_kerb_lift_m": 0.033884210526315794,
+            "native_minus_rendered_kerb_m": 0.02515376836277755,
+            "outside_existing_contact_skin": true,
+            "new_contact_bank_plane_support": "Covered by1.25m contact skin; old mismatch is diagnostic only. Native export validation pending."
+          },
+          {
+            "native_station_m": 2340.12085,
+            "inside_negative_lane_m": -6.75,
+            "beyond_white_line_m": 0.75,
+            "quadratic_per_m": 0.0,
+            "base_bank_height_m": 2.4434232387273505,
+            "generated_grid_height_m": 3.8690356080274992,
+            "existing_native_Ground_height_m": 2.574986098980147,
+            "native_minus_bank_base_m": 0.13156286025279673,
+            "rendered_kerb_lift_m": 0.04283157894736843,
+            "native_minus_rendered_kerb_m": 0.0887312813054283,
+            "outside_existing_contact_skin": true,
+            "new_contact_bank_plane_support": "Covered by1.25m contact skin; old mismatch is diagnostic only. Native export validation pending."
+          },
+          {
+            "native_station_m": 2340.12085,
+            "inside_negative_lane_m": -7.0,
+            "beyond_white_line_m": 1.0,
+            "quadratic_per_m": 0.0,
+            "base_bank_height_m": 2.390284098309845,
+            "generated_grid_height_m": 3.863663977259998,
+            "existing_native_Ground_height_m": 2.6204997043958063,
+            "native_minus_bank_base_m": 0.23021560608596126,
+            "rendered_kerb_lift_m": 0.051778947368421056,
+            "native_minus_rendered_kerb_m": 0.1784366587175402,
+            "outside_existing_contact_skin": true,
+            "new_contact_bank_plane_support": "Covered by1.25m contact skin; old mismatch is diagnostic only. Native export validation pending."
+          }
+        ]
+      },
+      "correction": {
+        "skin_m": 1.25,
+        "scope": "Segments with nonzero quadratic banking, or Jeddah segments with nonzero scalar bank. All other road segments keep0.35m.",
+        "height": "Contact follows the bank base; existing rendered kerb lift and dynamic kerb treatment stay unchanged.",
+        "ground": "Jeddah queries drive contact on both sides of its banked road, even where no Asphalt runoff registration exists.",
+        "new_tests": "Synthetic quadratic and scalar bank contacts include negative-side lane halfWidth+0.5,+0.75,+1,+1.2. Full native audit checks both sides at those offsets against bank height to2cm and Ground agreement.",
+        "compiled_status": "Pending root-owned guarded native build/contact export."
+      }
+    }
+  }
+}

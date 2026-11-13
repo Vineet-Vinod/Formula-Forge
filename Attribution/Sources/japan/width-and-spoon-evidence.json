@@ -1,0 +1,736 @@
+{
+  "status": "Canonical source registered; compiled export/contact and fresh packaged review pending",
+  "source": "GSI seamlessphoto, local-government aerial acquisition2023Oct\u2013Dec confirmed using official spec polygons",
+  "metadata_file": "build/reviews/resume-20261113/west/gsi-spec-11-1800-812.geojson",
+  "metadata_sha256": "ea4e88906ad58497281c98d3dbcc52471b8759e895948035991c6c0efb5552e9",
+  "native_road_sha256": "ae4c6658e01de8adee7fb2d6019f830c839a2f9d714843016e167479506a050d",
+  "observations": [
+    {
+      "native_station_m": 399.79834,
+      "target_m": 400,
+      "active_edge_lane_m": [
+        -6,
+        4.3
+      ],
+      "inferred_marked_width_m": 10.3,
+      "proposed_width_m": 10.5,
+      "inferred_road_center_lane_m": -0.85,
+      "native_width_m": 13.33077716,
+      "edge_pick_uncertainty_m": 0.75,
+      "source_strip": "build/reviews/resume-20261113/west/suzuka-ortho-strip-400.png",
+      "method": "Manual active-asphalt/white-edge-band pick at strip row100,0.1m display pixel; source imagery is0.49m pixels. Red/white kerb outer edges and adjacent green paving excluded. Ambiguous junctions not used.",
+      "source_tiles": [
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230499-103976.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230499/103976.jpg",
+          "sha256": "3a87a554967981031a3c3864d0dabdd1eb6b7a98c30ec1dc0f34d788f886a75e"
+        }
+      ]
+    },
+    {
+      "native_station_m": 599.69751,
+      "target_m": 600,
+      "active_edge_lane_m": [
+        -4.8,
+        5.5
+      ],
+      "inferred_marked_width_m": 10.3,
+      "proposed_width_m": 10.5,
+      "inferred_road_center_lane_m": 0.35,
+      "native_width_m": 12.94314956,
+      "edge_pick_uncertainty_m": 0.75,
+      "source_strip": "build/reviews/resume-20261113/west/suzuka-ortho-strip-600.png",
+      "method": "Manual active-asphalt/white-edge-band pick at strip row100,0.1m display pixel; source imagery is0.49m pixels. Red/white kerb outer edges and adjacent green paving excluded. Ambiguous junctions not used.",
+      "source_tiles": [
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230499-103977.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230499/103977.jpg",
+          "sha256": "97f57e8db9a6cb08271a50fa3f0d88494e1b3f879ed243b173385a1d2916c060"
+        }
+      ]
+    },
+    {
+      "native_station_m": 900.255127,
+      "target_m": 900,
+      "active_edge_lane_m": [
+        -5.2,
+        4.6
+      ],
+      "inferred_marked_width_m": 9.8,
+      "proposed_width_m": 10,
+      "inferred_road_center_lane_m": -0.3,
+      "native_width_m": 12.4271803,
+      "edge_pick_uncertainty_m": 0.75,
+      "source_strip": "build/reviews/resume-20261113/west/suzuka-ortho-strip-900.png",
+      "method": "Manual active-asphalt/white-edge-band pick at strip row100,0.1m display pixel; source imagery is0.49m pixels. Red/white kerb outer edges and adjacent green paving excluded. Ambiguous junctions not used.",
+      "source_tiles": [
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230497-103975.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230497/103975.jpg",
+          "sha256": "f3cceab4967692d64e78bd0bd4dc8d7750789ed07b1ca57801c5744d817e9cf9"
+        },
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230497-103976.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230497/103976.jpg",
+          "sha256": "e4d920886ce19bcd0edbf7fe2dce06dc78711e11c6d30a30162403cf6934f8ae"
+        }
+      ]
+    },
+    {
+      "native_station_m": 1300.05347,
+      "target_m": 1300,
+      "active_edge_lane_m": [
+        -4,
+        6.5
+      ],
+      "inferred_marked_width_m": 10.5,
+      "proposed_width_m": 10.5,
+      "inferred_road_center_lane_m": 1.25,
+      "native_width_m": 12.0,
+      "edge_pick_uncertainty_m": 0.75,
+      "source_strip": "build/reviews/resume-20261113/west/suzuka-ortho-strip-1300.png",
+      "method": "Manual active-asphalt/white-edge-band pick at strip row100,0.1m display pixel; source imagery is0.49m pixels. Red/white kerb outer edges and adjacent green paving excluded. Ambiguous junctions not used.",
+      "source_tiles": [
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230495-103974.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230495/103974.jpg",
+          "sha256": "28fd5673326b48b1d0e43f587dfbd2480dbb9647bfcd30adc06b813313f25674"
+        }
+      ]
+    },
+    {
+      "native_station_m": 2349.87842,
+      "target_m": 2350,
+      "active_edge_lane_m": [
+        -4.7,
+        4.8
+      ],
+      "inferred_marked_width_m": 9.5,
+      "proposed_width_m": 10,
+      "inferred_road_center_lane_m": 0.05,
+      "native_width_m": 12.0,
+      "edge_pick_uncertainty_m": 0.75,
+      "source_strip": "build/reviews/resume-20261113/west/suzuka-ortho-strip-2350.png",
+      "method": "Manual active-asphalt/white-edge-band pick at strip row100,0.1m display pixel; source imagery is0.49m pixels. Red/white kerb outer edges and adjacent green paving excluded. Ambiguous junctions not used.",
+      "source_tiles": [
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230490-103972.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230490/103972.jpg",
+          "sha256": "019966c12ac5a9c125de75ae5679cec9127d2994296b7064c813becd64f3afef"
+        }
+      ]
+    },
+    {
+      "native_station_m": 2500.15723,
+      "target_m": 2500,
+      "active_edge_lane_m": [
+        -4.4,
+        5.1
+      ],
+      "inferred_marked_width_m": 9.5,
+      "proposed_width_m": 10,
+      "inferred_road_center_lane_m": 0.35,
+      "native_width_m": 12.0,
+      "edge_pick_uncertainty_m": 0.75,
+      "source_strip": "build/reviews/resume-20261113/west/suzuka-ortho-strip-2500.png",
+      "method": "Manual active-asphalt/white-edge-band pick at strip row100,0.1m display pixel; source imagery is0.49m pixels. Red/white kerb outer edges and adjacent green paving excluded. Ambiguous junctions not used.",
+      "source_tiles": [
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230490-103971.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230490/103971.jpg",
+          "sha256": "5ed323910bbeccb66a018dd99e130d866dde371c676ccd210b19f1fca221dc4e"
+        }
+      ]
+    },
+    {
+      "native_station_m": 2819.85425,
+      "target_m": 2820,
+      "active_edge_lane_m": [
+        -4.1,
+        5.1
+      ],
+      "inferred_marked_width_m": 9.2,
+      "proposed_width_m": 9.5,
+      "inferred_road_center_lane_m": 0.5,
+      "native_width_m": 13.49099922,
+      "edge_pick_uncertainty_m": 0.75,
+      "source_strip": "build/reviews/resume-20261113/west/suzuka-ortho-strip-2820.png",
+      "method": "Manual active-asphalt/white-edge-band pick at strip row100,0.1m display pixel; source imagery is0.49m pixels. Red/white kerb outer edges and adjacent green paving excluded. Ambiguous junctions not used.",
+      "source_tiles": [
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230489-103971.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230489/103971.jpg",
+          "sha256": "3449d540c8afab8e60b7623bab2c93f37e154a046b7fff2e71c377a3614efcb8"
+        }
+      ]
+    },
+    {
+      "native_station_m": 3050.23438,
+      "target_m": 3050,
+      "active_edge_lane_m": [
+        -5.8,
+        4.7
+      ],
+      "inferred_marked_width_m": 10.5,
+      "proposed_width_m": 10.5,
+      "inferred_road_center_lane_m": -0.55,
+      "native_width_m": 13.93155098,
+      "edge_pick_uncertainty_m": 0.75,
+      "source_strip": "build/reviews/resume-20261113/west/suzuka-ortho-strip-3050.png",
+      "method": "Manual active-asphalt/white-edge-band pick at strip row100,0.1m display pixel; source imagery is0.49m pixels. Red/white kerb outer edges and adjacent green paving excluded. Ambiguous junctions not used.",
+      "source_tiles": [
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230487-103971.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230487/103971.jpg",
+          "sha256": "5860f258964da05fc4b0e4523ffae7d05446f13e5d6aa2a065ee1bd4d41d82d5"
+        },
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230487-103972.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230487/103972.jpg",
+          "sha256": "4725dee26c04dd5464224b90cc4f3b0815430ca0d19e9f3c1e98937ce9abf556"
+        },
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230488-103971.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230488/103971.jpg",
+          "sha256": "f512f97b5e09b8fe5fced3e75382e06b1afe3a7dc1d8e3f8ea66728975e940a0"
+        },
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230488-103972.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230488/103972.jpg",
+          "sha256": "9ff1e88f8e7bc7c8dd64aa27922fa3f1a767b76572ca05ed0bfffcda0b130344"
+        }
+      ]
+    },
+    {
+      "native_station_m": 3399.70361,
+      "target_m": 3400,
+      "active_edge_lane_m": [
+        -4.3,
+        5.7
+      ],
+      "inferred_marked_width_m": 10.0,
+      "proposed_width_m": 10,
+      "inferred_road_center_lane_m": 0.7,
+      "native_width_m": 13.08756732,
+      "edge_pick_uncertainty_m": 0.75,
+      "source_strip": "build/reviews/resume-20261113/west/suzuka-ortho-strip-3400.png",
+      "method": "Manual active-asphalt/white-edge-band pick at strip row100,0.1m display pixel; source imagery is0.49m pixels. Red/white kerb outer edges and adjacent green paving excluded. Ambiguous junctions not used.",
+      "source_tiles": [
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230485-103970.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230485/103970.jpg",
+          "sha256": "7fd391bfca8a3f76b81ce2ec4cf520b3b1c477149dae31fb993883c7ac953eb1"
+        },
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230486-103970.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230486/103970.jpg",
+          "sha256": "c3ade98c9efb6f1900338530180ce92b8565521b35bd61122b51f20e27536e63"
+        }
+      ]
+    },
+    {
+      "native_station_m": 3499.65332,
+      "target_m": 3500,
+      "active_edge_lane_m": [
+        -3.7,
+        6
+      ],
+      "inferred_marked_width_m": 9.7,
+      "proposed_width_m": 10,
+      "inferred_road_center_lane_m": 1.15,
+      "native_width_m": 13.00393582,
+      "edge_pick_uncertainty_m": 0.75,
+      "source_strip": "build/reviews/resume-20261113/west/suzuka-ortho-strip-3500.png",
+      "method": "Manual active-asphalt/white-edge-band pick at strip row100,0.1m display pixel; source imagery is0.49m pixels. Red/white kerb outer edges and adjacent green paving excluded. Ambiguous junctions not used.",
+      "source_tiles": [
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230485-103969.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230485/103969.jpg",
+          "sha256": "29c2b9af6f647b9b3ae9bc38afaed0018053ce374e2950ce863acd9722b47d44"
+        }
+      ]
+    },
+    {
+      "native_station_m": 3549.98242,
+      "target_m": 3550,
+      "active_edge_lane_m": [
+        -4.4,
+        4.9
+      ],
+      "inferred_marked_width_m": 9.3,
+      "proposed_width_m": 9.5,
+      "inferred_road_center_lane_m": 0.25,
+      "native_width_m": 13.0,
+      "edge_pick_uncertainty_m": 0.75,
+      "source_strip": "build/reviews/resume-20261113/west/suzuka-ortho-strip-3550.png",
+      "method": "Manual active-asphalt/white-edge-band pick at strip row100,0.1m display pixel; source imagery is0.49m pixels. Red/white kerb outer edges and adjacent green paving excluded. Ambiguous junctions not used.",
+      "source_tiles": [
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230485-103969.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230485/103969.jpg",
+          "sha256": "29c2b9af6f647b9b3ae9bc38afaed0018053ce374e2950ce863acd9722b47d44"
+        }
+      ]
+    },
+    {
+      "native_station_m": 3600.31152,
+      "target_m": 3600,
+      "active_edge_lane_m": [
+        -5.6,
+        3.2
+      ],
+      "inferred_marked_width_m": 8.8,
+      "proposed_width_m": 9,
+      "inferred_road_center_lane_m": -1.2,
+      "native_width_m": 13.15645504,
+      "edge_pick_uncertainty_m": 0.75,
+      "source_strip": "build/reviews/resume-20261113/west/suzuka-ortho-strip-3600.png",
+      "method": "Manual active-asphalt/white-edge-band pick at strip row100,0.1m display pixel; source imagery is0.49m pixels. Red/white kerb outer edges and adjacent green paving excluded. Ambiguous junctions not used.",
+      "source_tiles": [
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230484-103969.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230484/103969.jpg",
+          "sha256": "16c4f37a3d2cf3a851b868d0c3daebcf045ac180ce3a3b4812ce973aa0057802"
+        },
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230485-103969.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230485/103969.jpg",
+          "sha256": "29c2b9af6f647b9b3ae9bc38afaed0018053ce374e2950ce863acd9722b47d44"
+        }
+      ]
+    },
+    {
+      "native_station_m": 3649.93213,
+      "target_m": 3650,
+      "active_edge_lane_m": [
+        -6.5,
+        2.8
+      ],
+      "inferred_marked_width_m": 9.3,
+      "proposed_width_m": 9.5,
+      "inferred_road_center_lane_m": -1.85,
+      "native_width_m": 13.75769042,
+      "edge_pick_uncertainty_m": 0.75,
+      "source_strip": "build/reviews/resume-20261113/west/suzuka-ortho-strip-3650.png",
+      "method": "Manual active-asphalt/white-edge-band pick at strip row100,0.1m display pixel; source imagery is0.49m pixels. Red/white kerb outer edges and adjacent green paving excluded. Ambiguous junctions not used.",
+      "source_tiles": [
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230484-103969.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230484/103969.jpg",
+          "sha256": "16c4f37a3d2cf3a851b868d0c3daebcf045ac180ce3a3b4812ce973aa0057802"
+        }
+      ]
+    },
+    {
+      "native_station_m": 3700.26123,
+      "target_m": 3700,
+      "active_edge_lane_m": [
+        -7.2,
+        2.6
+      ],
+      "inferred_marked_width_m": 9.8,
+      "proposed_width_m": 10,
+      "inferred_road_center_lane_m": -2.3,
+      "native_width_m": 14.52267932,
+      "edge_pick_uncertainty_m": 0.75,
+      "source_strip": "build/reviews/resume-20261113/west/suzuka-ortho-strip-3700.png",
+      "method": "Manual active-asphalt/white-edge-band pick at strip row100,0.1m display pixel; source imagery is0.49m pixels. Red/white kerb outer edges and adjacent green paving excluded. Ambiguous junctions not used.",
+      "source_tiles": [
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230484-103969.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230484/103969.jpg",
+          "sha256": "16c4f37a3d2cf3a851b868d0c3daebcf045ac180ce3a3b4812ce973aa0057802"
+        }
+      ]
+    },
+    {
+      "native_station_m": 3749.88159,
+      "target_m": 3750,
+      "active_edge_lane_m": [
+        -6.5,
+        3.5
+      ],
+      "inferred_marked_width_m": 10.0,
+      "proposed_width_m": 10,
+      "inferred_road_center_lane_m": -1.5,
+      "native_width_m": 14.9541092,
+      "edge_pick_uncertainty_m": 0.75,
+      "source_strip": "build/reviews/resume-20261113/west/suzuka-ortho-strip-3750.png",
+      "method": "Manual active-asphalt/white-edge-band pick at strip row100,0.1m display pixel; source imagery is0.49m pixels. Red/white kerb outer edges and adjacent green paving excluded. Ambiguous junctions not used.",
+      "source_tiles": [
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230484-103969.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230484/103969.jpg",
+          "sha256": "16c4f37a3d2cf3a851b868d0c3daebcf045ac180ce3a3b4812ce973aa0057802"
+        },
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230484-103970.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230484/103970.jpg",
+          "sha256": "1b2415c6f2fc6d2819d058abc25cf0664f469f300c76b61a73017a623fad0067"
+        }
+      ]
+    },
+    {
+      "native_station_m": 3800.21094,
+      "target_m": 3800,
+      "active_edge_lane_m": [
+        -5.5,
+        4.2
+      ],
+      "inferred_marked_width_m": 9.7,
+      "proposed_width_m": 10,
+      "inferred_road_center_lane_m": -0.65,
+      "native_width_m": 15.0,
+      "edge_pick_uncertainty_m": 0.75,
+      "source_strip": "build/reviews/resume-20261113/west/suzuka-ortho-strip-3800.png",
+      "method": "Manual active-asphalt/white-edge-band pick at strip row100,0.1m display pixel; source imagery is0.49m pixels. Red/white kerb outer edges and adjacent green paving excluded. Ambiguous junctions not used.",
+      "source_tiles": [
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230484-103970.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230484/103970.jpg",
+          "sha256": "1b2415c6f2fc6d2819d058abc25cf0664f469f300c76b61a73017a623fad0067"
+        }
+      ]
+    },
+    {
+      "native_station_m": 3900.1604,
+      "target_m": 3900,
+      "active_edge_lane_m": [
+        -5.3,
+        4.5
+      ],
+      "inferred_marked_width_m": 9.8,
+      "proposed_width_m": 10,
+      "inferred_road_center_lane_m": -0.4,
+      "native_width_m": 15.0,
+      "edge_pick_uncertainty_m": 0.75,
+      "source_strip": "build/reviews/resume-20261113/west/suzuka-ortho-strip-3900.png",
+      "method": "Manual active-asphalt/white-edge-band pick at strip row100,0.1m display pixel; source imagery is0.49m pixels. Red/white kerb outer edges and adjacent green paving excluded. Ambiguous junctions not used.",
+      "source_tiles": [
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230484-103970.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230484/103970.jpg",
+          "sha256": "1b2415c6f2fc6d2819d058abc25cf0664f469f300c76b61a73017a623fad0067"
+        },
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230484-103971.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230484/103971.jpg",
+          "sha256": "53c5f94ffb05713a6001d32c87b45b64ea8c3aa43dc801222a3eebbbfe647aa1"
+        },
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230485-103970.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230485/103970.jpg",
+          "sha256": "7fd391bfca8a3f76b81ce2ec4cf520b3b1c477149dae31fb993883c7ac953eb1"
+        },
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230485-103971.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230485/103971.jpg",
+          "sha256": "d20dcfd8f4bc46b80f5c2c7b113c0898b93534976df9b00f0b9b1fa94c113fb3"
+        }
+      ]
+    },
+    {
+      "native_station_m": 4100.05957,
+      "target_m": 4100,
+      "active_edge_lane_m": [
+        -4.4,
+        4.8
+      ],
+      "inferred_marked_width_m": 9.2,
+      "proposed_width_m": 9.5,
+      "inferred_road_center_lane_m": 0.2,
+      "native_width_m": 15.0,
+      "edge_pick_uncertainty_m": 0.75,
+      "source_strip": "build/reviews/resume-20261113/west/suzuka-ortho-strip-4100.png",
+      "method": "Manual active-asphalt/white-edge-band pick at strip row100,0.1m display pixel; source imagery is0.49m pixels. Red/white kerb outer edges and adjacent green paving excluded. Ambiguous junctions not used.",
+      "source_tiles": [
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230486-103971.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230486/103971.jpg",
+          "sha256": "458f960513f7800fa7db9c32a5cd41e09384a15f5a4469a0bba84f5f7447d43d"
+        }
+      ]
+    },
+    {
+      "native_station_m": 4299.95898,
+      "target_m": 4300,
+      "active_edge_lane_m": [
+        -5.3,
+        4
+      ],
+      "inferred_marked_width_m": 9.3,
+      "proposed_width_m": 9.5,
+      "inferred_road_center_lane_m": -0.65,
+      "native_width_m": 15.0,
+      "edge_pick_uncertainty_m": 0.75,
+      "source_strip": "build/reviews/resume-20261113/west/suzuka-ortho-strip-4300.png",
+      "method": "Manual active-asphalt/white-edge-band pick at strip row100,0.1m display pixel; source imagery is0.49m pixels. Red/white kerb outer edges and adjacent green paving excluded. Ambiguous junctions not used.",
+      "source_tiles": [
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230487-103972.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230487/103972.jpg",
+          "sha256": "4725dee26c04dd5464224b90cc4f3b0815430ca0d19e9f3c1e98937ce9abf556"
+        },
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230488-103972.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230488/103972.jpg",
+          "sha256": "9ff1e88f8e7bc7c8dd64aa27922fa3f1a767b76572ca05ed0bfffcda0b130344"
+        }
+      ]
+    },
+    {
+      "native_station_m": 4499.85791,
+      "target_m": 4500,
+      "active_edge_lane_m": [
+        -5.2,
+        4.1
+      ],
+      "inferred_marked_width_m": 9.3,
+      "proposed_width_m": 9.5,
+      "inferred_road_center_lane_m": -0.55,
+      "native_width_m": 15.0,
+      "edge_pick_uncertainty_m": 0.75,
+      "source_strip": "build/reviews/resume-20261113/west/suzuka-ortho-strip-4500.png",
+      "method": "Manual active-asphalt/white-edge-band pick at strip row100,0.1m display pixel; source imagery is0.49m pixels. Red/white kerb outer edges and adjacent green paving excluded. Ambiguous junctions not used.",
+      "source_tiles": [
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230489-103972.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230489/103972.jpg",
+          "sha256": "80ff323796d310b5217820a597206efc531fac16f620c133717a06c9e576c1b0"
+        },
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230489-103973.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230489/103973.jpg",
+          "sha256": "0f535f7cde09fe205f3acb4faa346f922ab45e32f2123442e74d07c3e7eeecc4"
+        }
+      ]
+    },
+    {
+      "native_station_m": 4750.08643,
+      "target_m": 4750,
+      "active_edge_lane_m": [
+        -3.6,
+        6.3
+      ],
+      "inferred_marked_width_m": 9.9,
+      "proposed_width_m": 10,
+      "inferred_road_center_lane_m": 1.35,
+      "native_width_m": 13.9746437,
+      "edge_pick_uncertainty_m": 0.75,
+      "source_strip": "build/reviews/resume-20261113/west/suzuka-ortho-strip-4750.png",
+      "method": "Manual active-asphalt/white-edge-band pick at strip row100,0.1m display pixel; source imagery is0.49m pixels. Red/white kerb outer edges and adjacent green paving excluded. Ambiguous junctions not used.",
+      "source_tiles": [
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230491-103973.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230491/103973.jpg",
+          "sha256": "72b3ad87d94d5ae10aa63342c257399c89b3a90342f06ed7f712553af421e492"
+        }
+      ]
+    },
+    {
+      "native_station_m": 4949.98535,
+      "target_m": 4950,
+      "active_edge_lane_m": [
+        -3.3,
+        6.9
+      ],
+      "inferred_marked_width_m": 10.2,
+      "proposed_width_m": 10,
+      "inferred_road_center_lane_m": 1.8,
+      "native_width_m": 12.61787606,
+      "edge_pick_uncertainty_m": 0.75,
+      "source_strip": "build/reviews/resume-20261113/west/suzuka-ortho-strip-4950.png",
+      "method": "Manual active-asphalt/white-edge-band pick at strip row100,0.1m display pixel; source imagery is0.49m pixels. Red/white kerb outer edges and adjacent green paving excluded. Ambiguous junctions not used.",
+      "source_tiles": [
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230492-103972.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230492/103972.jpg",
+          "sha256": "f74ea4ade60877c45b882e2e077c28e38eca946c2d6abe4668e1d0200216923b"
+        }
+      ]
+    },
+    {
+      "native_station_m": 5149.88477,
+      "target_m": 5150,
+      "active_edge_lane_m": [
+        -6.1,
+        3.3
+      ],
+      "inferred_marked_width_m": 9.4,
+      "proposed_width_m": 9.5,
+      "inferred_road_center_lane_m": -1.4,
+      "native_width_m": 12.08963012,
+      "edge_pick_uncertainty_m": 0.75,
+      "source_strip": "build/reviews/resume-20261113/west/suzuka-ortho-strip-5150.png",
+      "method": "Manual active-asphalt/white-edge-band pick at strip row100,0.1m display pixel; source imagery is0.49m pixels. Red/white kerb outer edges and adjacent green paving excluded. Ambiguous junctions not used.",
+      "source_tiles": [
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230493-103971.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230493/103971.jpg",
+          "sha256": "f6a1eec766112daeee5c901a5354d457f62a89a75b85535cb886989b47ab6a6e"
+        },
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230494-103971.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230494/103971.jpg",
+          "sha256": "b5bfbfd814c644e4246ea63d1b03c4c5527df6ab5697341d64e51281650de8d7"
+        }
+      ]
+    },
+    {
+      "native_station_m": 5200.21387,
+      "target_m": 5200,
+      "active_edge_lane_m": [
+        -3.2,
+        6.2
+      ],
+      "inferred_marked_width_m": 9.4,
+      "proposed_width_m": 9.5,
+      "inferred_road_center_lane_m": 1.5,
+      "native_width_m": 12.72624206,
+      "edge_pick_uncertainty_m": 0.75,
+      "source_strip": "build/reviews/resume-20261113/west/suzuka-ortho-strip-5200.png",
+      "method": "Manual active-asphalt/white-edge-band pick at strip row100,0.1m display pixel; source imagery is0.49m pixels. Red/white kerb outer edges and adjacent green paving excluded. Ambiguous junctions not used.",
+      "source_tiles": [
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230494-103971.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230494/103971.jpg",
+          "sha256": "b5bfbfd814c644e4246ea63d1b03c4c5527df6ab5697341d64e51281650de8d7"
+        }
+      ]
+    },
+    {
+      "native_station_m": 5349.78369,
+      "target_m": 5350,
+      "active_edge_lane_m": [
+        -5.7,
+        4.7
+      ],
+      "inferred_marked_width_m": 10.4,
+      "proposed_width_m": 10.5,
+      "inferred_road_center_lane_m": -0.5,
+      "native_width_m": 14.5,
+      "edge_pick_uncertainty_m": 0.75,
+      "source_strip": "build/reviews/resume-20261113/west/suzuka-ortho-strip-5350.png",
+      "method": "Manual active-asphalt/white-edge-band pick at strip row100,0.1m display pixel; source imagery is0.49m pixels. Red/white kerb outer edges and adjacent green paving excluded. Ambiguous junctions not used.",
+      "source_tiles": [
+        {
+          "file": "build/reviews/resume-20261113/west/gsi-18-230495-103971.jpg",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/230495/103971.jpg",
+          "sha256": "2dabfafef5fa14a7712cc7f207dde3e2db39bbfe56d14f4b49c0a87c88f1b0e0"
+        }
+      ]
+    }
+  ],
+  "unmodified_unqualified_regions": "Pit straight and final return are still retained15m estimates. Native2650 Hairpin remains12m until kerb/line ambiguity is resolved; 1700 and2025/2179 junction/apex picks are not used.",
+  "headline_conflict": "Operator10\u201316m is an overall course range; JAF2024 says10\u201315m. These labels do not define white-line endpoints. Some orthophoto active-asphalt picks are9\u20139.5m\u00b10.75m; do not silently inflate them to10m or claim disagreement is reconciled. Full paved/kerb width is separately larger.",
+  "Spoon_alignment_proposal": {
+    "core_station_m": [
+      3500,
+      3800
+    ],
+    "blend_station_m": [
+      3400,
+      3900
+    ],
+    "center_offset_knots_m": [
+      [
+        3400,
+        0
+      ],
+      [
+        3500,
+        1.15
+      ],
+      [
+        3550,
+        0.25
+      ],
+      [
+        3600,
+        -1.2
+      ],
+      [
+        3650,
+        -1.85
+      ],
+      [
+        3700,
+        -2.3
+      ],
+      [
+        3750,
+        -1.5
+      ],
+      [
+        3800,
+        -0.65
+      ],
+      [
+        3900,
+        0
+      ]
+    ],
+    "uncertainty_m": 0.8,
+    "method": "Source-qualified lateral offset toward the observed white-edge midpoint, independently of width. Fit a bounded smooth curve with unchanged endpoints/tangents and quantify final map residual/radius before native application. Do not globally translate/rescale or apply raw piecewise kinks.",
+    "caveat": "Exact numerical offsets depend on whether line centre or active-asphalt edge is picked; both show a sustained outside bias around native3600\u20133750. Peak2.3m is an estimate, not a survey."
+  },
+  "applied_width_rule": "Operator-constrained reconstruction uses10m where9.0\u20139.8m active-edge picks with0.75m per-edge uncertainty overlap the published10m minimum. Raw picks retained.10.5m anchors follow wider observed sections. No16m anchor invented. Hairpin and pit straight stay at their prior values; unmeasured interpolation/transition stations are estimates.",
+  "source_proof": {
+    "status": "In-memory source proposal; no native export",
+    "native_sampler_uniform_factor": 1.0009030734791475,
+    "catmull_arc_before_normalization_m": 5801.760308392346,
+    "lap_length_m": 5807.0,
+    "maximum_source_offset_m": 2.963935279036224,
+    "maximum_smoothing_beyond_picked_midpoint_m": 0.7160747807108203,
+    "start_end_offset_m": [
+      0.0,
+      1.457167719820518e-16
+    ],
+    "start_end_offset_derivative": [
+      6.217248937900877e-17,
+      1.734723475976807e-18
+    ],
+    "Spoon_minimum_three_point_radius_m": 43.19567882177553,
+    "maximum_same_station_displacement_m": 2.525867049764123,
+    "maximum_displacement_outside_Spoon_m": 2.525867049764123,
+    "effective_geo_scale_candidate": 1.0004377274697576,
+    "station_mapping_note": "Compare geographic nearest projections after applying; fixed published lap length requires disclosed tiny plan normalization. Elevation/bank/width stations remain native stations.",
+    "road_csv_sha256": "ae4c6658e01de8adee7fb2d6019f830c839a2f9d714843016e167479506a050d",
+    "asphalt_inside_offset_fold_count": 0,
+    "fold_stations_m": [],
+    "crossings": [
+      {
+        "stations_m": [
+          2275.4804668361185,
+          4652.363331359067
+        ],
+        "xy_m": [
+          -908.6526217862714,
+          99.75618356854973
+        ],
+        "road_height_separation_m": 6.159588327434399
+      }
+    ],
+    "width_extrema_m": [
+      10.0,
+      15.0
+    ],
+    "sampling_note": "Python float32 replica of unchanged native32-subdivision sampler. Actual compiled export/contact review remains required."
+  },
+  "licence": "Derived original metric geometry from GSI imagery and documented source range. Aerial pixels remain ignored research files and are not shipped as assets. GSI Content Use/Public Data License plus local-government photo source caveat applies to any future pixel republication.",
+  "provider": "Geospatial Information Authority of Japan, seamlessphoto local-government aerial imagery",
+  "acquisition_period": "2023-10 through2023-12, confirmed for all sampled sectors using the official metadata polygons",
+  "metadata_url": "https://maps.gsi.go.jp/xyz/seamlessphoto_spec/11/1800/812.geojson",
+  "tile_catalogue_url": "https://maps.gsi.go.jp/development/ichiran.html",
+  "retrieved_utc": "2026-11-13",
+  "operator_sources": [
+    {
+      "url": "https://www.suzukacircuit.jp/eng/course_s/",
+      "claim": "Overall course width10\u201316m; no station extrema identified."
+    },
+    {
+      "url": "https://motorsports.jaf.or.jp/course/circuit/suzuka/",
+      "claim": "Homologated road-course width10\u201315m. Different definition/date may explain maximum; unresolved."
+    }
+  ]
+}

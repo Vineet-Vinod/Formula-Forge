@@ -3,7 +3,8 @@
   "circuit": "zandvoort",
   "units": {
     "station": "metres from native centerline origin",
-    "bank": "degrees; positive raises +lane/source driver-right"
+    "bank": "degrees; positive raises +lane/source driver-right",
+    "quadratic_controls": "1/metre in z=centreHeight+tan(angle)*lane+q*lane\u00b2. Outside road half-width continue the edge tangent, not the quadratic."
   },
   "controls": [
     [
@@ -16,207 +17,235 @@
     ],
     [
       784.0,
-      0.072304
+      0.149864454
     ],
     [
       788.0,
-      0.499366
+      0.823723151
     ],
     [
       792.0,
-      1.43976
+      1.778249164
     ],
     [
       796.0,
-      2.880945
+      2.467296864
     ],
     [
       800.0,
-      4.686477
+      2.629586729
+    ],
+    [
+      800.122192,
+      2.629592563
     ],
     [
       804.0,
-      6.643206
+      2.766177887
     ],
     [
       808.0,
-      8.508479
+      3.488778816
     ],
     [
       812.0,
-      10.057346
+      4.749260142
     ],
     [
       816.0,
-      11.129759
+      6.091399843
     ],
     [
       820.0,
-      11.677779
+      7.00576718
     ],
     [
       824.0,
-      11.812774
+      7.284606296
     ],
     [
-      825.0,
-      11.814028
+      825.077271,
+      7.288115363
     ],
     [
       828.0,
-      11.814028
+      7.407745671
     ],
     [
       832.0,
-      11.814028
+      8.239091385
     ],
     [
       836.0,
-      11.814028
+      9.235441024
     ],
     [
       840.0,
-      11.814028
+      9.532228807
+    ],
+    [
+      840.154297,
+      9.532252492
     ],
     [
       844.0,
-      11.814028
+      9.535780615
     ],
     [
       848.0,
-      11.814028
+      9.552706972
     ],
     [
       852.0,
-      11.814028
+      9.576884954
     ],
     [
       856.0,
-      11.814028
+      9.594020893
+    ],
+    [
+      859.9104,
+      9.597709072
     ],
     [
       860.0,
-      11.814028
+      9.597708638
     ],
     [
       864.0,
-      11.814028
+      9.567717878
     ],
     [
       868.0,
-      11.814028
+      9.437873123
     ],
     [
       872.0,
-      11.814028
+      9.255390949
     ],
     [
       876.0,
-      11.814028
+      9.123273084
     ],
     [
       880.0,
-      11.814028
+      9.091372335
+    ],
+    [
+      880.186401,
+      9.091368455
     ],
     [
       884.0,
-      11.814028
+      9.09418172
     ],
     [
       888.0,
-      11.814028
+      9.107897956
     ],
     [
       892.0,
-      11.814028
+      9.127611274
     ],
     [
       896.0,
-      11.814028
+      9.14166799
+    ],
+    [
+      899.942505,
+      9.144741291
     ],
     [
       900.0,
-      11.814028
+      9.144741208
     ],
     [
       904.0,
-      11.814028
+      9.123558052
     ],
     [
       908.0,
-      11.814028
+      9.030460075
     ],
     [
       912.0,
-      11.814028
+      8.898860206
     ],
     [
       916.0,
-      11.814028
+      8.803035487
     ],
     [
       920.0,
-      11.814028
+      8.779561334
+    ],
+    [
+      920.218506,
+      8.779556838
     ],
     [
       924.0,
-      11.814028
-    ],
-    [
-      925.0,
-      11.814028
+      8.548500471
     ],
     [
       928.0,
-      11.79639
+      7.403484438
     ],
     [
       932.0,
-      11.614599
+      5.747654654
     ],
     [
       936.0,
-      11.129759
+      4.559792941
+    ],
+    [
+      939.974609,
+      4.296011442
     ],
     [
       940.0,
-      10.290941
+      4.296011381
     ],
     [
       944.0,
-      9.118606
+      4.119270863
     ],
     [
       948.0,
-      7.6873
+      3.330670366
     ],
     [
       952.0,
-      6.108345
+      2.209423192
     ],
     [
       956.0,
-      4.512534
+      1.388324553
     ],
     [
       960.0,
-      3.032823
+      1.184282065
+    ],
+    [
+      960.25061,
+      1.184224392
     ],
     [
       964.0,
-      1.787024
+      1.124515974
     ],
     [
       968.0,
-      0.8605
+      0.823783285
     ],
     [
       972.0,
-      0.288855
+      0.386350258
     ],
     [
       976.0,
-      0.040632
+      0.070920433
     ],
     [
       980.0,
@@ -635,7 +664,7 @@
       0.0
     ]
   ],
-  "interpolation": "Native bank profile is piecewise linear. Controls sample quintic easing every4m through each transition; exact plateau boundaries retained.",
+  "interpolation": "Native angle and optional quadratic coefficient are piecewise linear.4m controls sample quintic transitions between measured section fits. Zero coefficient retains the original planar evaluator and mesh exactly.",
   "corners": [
     {
       "name": "Hugenholtz T3",
@@ -649,13 +678,14 @@
       "plateau_end_m": 925,
       "transition_end_m": 980,
       "direction": "left in source east/north coordinates",
-      "effective_bank_degrees": 11.814028,
       "actual_cross_section_degrees": [
         4.5,
         19
       ],
-      "effective_method": "Assume angle varies linearly across width between designer endpoints; mean slope=ln(cos(4.5deg)/cos(19deg))/(19deg-4.5deg in radians), scalar angle=atan(mean slope). This approximates edge-to-edge rise, not the actual Fibonacci/progressive bowl.",
-      "width_status": "Existing authored native width12\u201314m retained. No surveyed white-line width acquired; do not mistake this for the full paved bank width."
+      "width_status": "Existing authored native width12\u201314m retained. No surveyed white-line width acquired; do not mistake this for the full paved bank width.",
+      "historical_effective_bank_degrees": 11.814028,
+      "historical_effective_method": "Assume angle varies linearly across width between designer endpoints; mean slope=ln(cos(4.5deg)/cos(19deg))/(19deg-4.5deg in radians), scalar angle=atan(mean slope). This approximates edge-to-edge rise, not the actual Fibonacci/progressive bowl.",
+      "current_model": "AHN5-fitted progressive cross-section. Existing 12 m active-road width retained. Nominal 4.5\u201319deg complete-bank endpoints do not uniquely locate those angles relative to the white line; this quadratic fits height observations rather than forcing endpoint slopes."
     },
     {
       "name": "Arie Luyendyk T14",
@@ -694,8 +724,481 @@
     }
   ],
   "limitations": [
-    "Native TrackBankPoint stores one lateral slope per station: cannot represent progressive T3bowl or variable lateral tyre-contact normals. Both runtime collision and rendered road share this same plane, avoiding visual/contact disagreement.",
-    "Transition stations/shape and width are authored approximations, not lidar/as-built measurements.",
-    "Only banking profile changes; centerline, longitudinal elevation, widths and vehicle handling parameters are preserved."
-  ]
+    "Quadratic is a measured-section approximation of the progressive bowl, not an exact Fibonacci/as-built surface. Lane-height RMS residual2\u20132.4cm at core840\u2013900m; original-plane RMS19\u201322cm. Classification/registration uncertainty remains much larger than numeric fit residual.",
+    "Source road datum, longitudinal elevations, centreline and full road widths unchanged. The quadratic is anchored at lane0 and preserves that height.",
+    "Centreline-to-orthophoto registration allowance approximately 1 m and ground-height allowance 0.5 m are reconstruction estimates. AHN local two-metre slope estimates can reach 19.2 degrees within the marked road. The quadratic matches relative heights more closely than every local derivative; its outer slope can differ by approximately 4.7 degrees at 880 m. Curbs/pixel noise affect edge derivatives. Exact Fibonacci geometry is not claimed.",
+    "Transition bank coefficients are interpolated from sparse cross-sections. Near960m only the previously retained2m AHN export is available; neutral quadratic continuation is retained because its small measured inverse crown is below the height allowance.",
+    "All other circuits and ZandvoortT14 retain zero quadratic coefficient; vehicle tuning, handling and camera algorithms unchanged."
+  ],
+  "historical_scalar_T3": {
+    "source": "Previous reconstruction before 2026-11-13",
+    "controls": [
+      [
+        780.0,
+        0.0
+      ],
+      [
+        784.0,
+        0.072304
+      ],
+      [
+        788.0,
+        0.499366
+      ],
+      [
+        792.0,
+        1.43976
+      ],
+      [
+        796.0,
+        2.880945
+      ],
+      [
+        800.0,
+        4.686477
+      ],
+      [
+        804.0,
+        6.643206
+      ],
+      [
+        808.0,
+        8.508479
+      ],
+      [
+        812.0,
+        10.057346
+      ],
+      [
+        816.0,
+        11.129759
+      ],
+      [
+        820.0,
+        11.677779
+      ],
+      [
+        824.0,
+        11.812774
+      ],
+      [
+        825.0,
+        11.814028
+      ],
+      [
+        828.0,
+        11.814028
+      ],
+      [
+        832.0,
+        11.814028
+      ],
+      [
+        836.0,
+        11.814028
+      ],
+      [
+        840.0,
+        11.814028
+      ],
+      [
+        844.0,
+        11.814028
+      ],
+      [
+        848.0,
+        11.814028
+      ],
+      [
+        852.0,
+        11.814028
+      ],
+      [
+        856.0,
+        11.814028
+      ],
+      [
+        860.0,
+        11.814028
+      ],
+      [
+        864.0,
+        11.814028
+      ],
+      [
+        868.0,
+        11.814028
+      ],
+      [
+        872.0,
+        11.814028
+      ],
+      [
+        876.0,
+        11.814028
+      ],
+      [
+        880.0,
+        11.814028
+      ],
+      [
+        884.0,
+        11.814028
+      ],
+      [
+        888.0,
+        11.814028
+      ],
+      [
+        892.0,
+        11.814028
+      ],
+      [
+        896.0,
+        11.814028
+      ],
+      [
+        900.0,
+        11.814028
+      ],
+      [
+        904.0,
+        11.814028
+      ],
+      [
+        908.0,
+        11.814028
+      ],
+      [
+        912.0,
+        11.814028
+      ],
+      [
+        916.0,
+        11.814028
+      ],
+      [
+        920.0,
+        11.814028
+      ],
+      [
+        924.0,
+        11.814028
+      ],
+      [
+        925.0,
+        11.814028
+      ],
+      [
+        928.0,
+        11.79639
+      ],
+      [
+        932.0,
+        11.614599
+      ],
+      [
+        936.0,
+        11.129759
+      ],
+      [
+        940.0,
+        10.290941
+      ],
+      [
+        944.0,
+        9.118606
+      ],
+      [
+        948.0,
+        7.6873
+      ],
+      [
+        952.0,
+        6.108345
+      ],
+      [
+        956.0,
+        4.512534
+      ],
+      [
+        960.0,
+        3.032823
+      ],
+      [
+        964.0,
+        1.787024
+      ],
+      [
+        968.0,
+        0.8605
+      ],
+      [
+        972.0,
+        0.288855
+      ],
+      [
+        976.0,
+        0.040632
+      ],
+      [
+        980.0,
+        0.0
+      ]
+    ],
+    "effective_bank_degrees": 11.814028,
+    "limitation": "Single plane inferred from nominal 4.5\u201319deg full-bank endpoints; superseded locally by registered AHN5 cross-sections."
+  },
+  "quadratic_controls": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      780.0,
+      0.0
+    ],
+    [
+      784.0,
+      0.0
+    ],
+    [
+      788.0,
+      0.0
+    ],
+    [
+      792.0,
+      0.0
+    ],
+    [
+      796.0,
+      0.0
+    ],
+    [
+      800.0,
+      0.0
+    ],
+    [
+      800.122192,
+      0.0
+    ],
+    [
+      804.0,
+      7.8011e-05
+    ],
+    [
+      808.0,
+      0.000490726
+    ],
+    [
+      812.0,
+      0.001210653
+    ],
+    [
+      816.0,
+      0.001977219
+    ],
+    [
+      820.0,
+      0.002499462
+    ],
+    [
+      824.0,
+      0.002658722
+    ],
+    [
+      825.077271,
+      0.002660726
+    ],
+    [
+      828.0,
+      0.003091962
+    ],
+    [
+      832.0,
+      0.006088748
+    ],
+    [
+      836.0,
+      0.00968033
+    ],
+    [
+      840.0,
+      0.010750173
+    ],
+    [
+      840.154297,
+      0.010750259
+    ],
+    [
+      844.0,
+      0.010901663
+    ],
+    [
+      848.0,
+      0.011628032
+    ],
+    [
+      852.0,
+      0.012665595
+    ],
+    [
+      856.0,
+      0.013400958
+    ],
+    [
+      859.9104,
+      0.013559231
+    ],
+    [
+      860.0,
+      0.013559228
+    ],
+    [
+      864.0,
+      0.013360105
+    ],
+    [
+      868.0,
+      0.012498003
+    ],
+    [
+      872.0,
+      0.011286415
+    ],
+    [
+      876.0,
+      0.010409221
+    ],
+    [
+      880.0,
+      0.010197416
+    ],
+    [
+      880.186401,
+      0.01019739
+    ],
+    [
+      884.0,
+      0.010231112
+    ],
+    [
+      888.0,
+      0.010395524
+    ],
+    [
+      892.0,
+      0.010631821
+    ],
+    [
+      896.0,
+      0.010800314
+    ],
+    [
+      899.942505,
+      0.010837153
+    ],
+    [
+      900.0,
+      0.010837151
+    ],
+    [
+      904.0,
+      0.010312313
+    ],
+    [
+      908.0,
+      0.008005698
+    ],
+    [
+      912.0,
+      0.004745153
+    ],
+    [
+      916.0,
+      0.002370981
+    ],
+    [
+      920.0,
+      0.00178938
+    ],
+    [
+      920.218506,
+      0.001789269
+    ],
+    [
+      924.0,
+      0.001829721
+    ],
+    [
+      928.0,
+      0.002030182
+    ],
+    [
+      932.0,
+      0.002320074
+    ],
+    [
+      936.0,
+      0.002528037
+    ],
+    [
+      939.974609,
+      0.002574218
+    ],
+    [
+      940.0,
+      0.002574218
+    ],
+    [
+      944.0,
+      0.00242801
+    ],
+    [
+      948.0,
+      0.001775642
+    ],
+    [
+      952.0,
+      0.000848093
+    ],
+    [
+      956.0,
+      0.000168841
+    ],
+    [
+      960.0,
+      4.8e-08
+    ],
+    [
+      960.25061,
+      0.0
+    ],
+    [
+      964.0,
+      0.0
+    ],
+    [
+      968.0,
+      0.0
+    ],
+    [
+      972.0,
+      0.0
+    ],
+    [
+      976.0,
+      0.0
+    ],
+    [
+      980.0,
+      0.0
+    ],
+    [
+      4259.0,
+      0.0
+    ]
+  ],
+  "method": "AHN5 classified-ground T3 cross-sections at native0.5m resolution, fitted over registered active-road lanes\u22125 to+5m by centre-anchored quadratic height. Native4m controls sample quintic joins between independent section fits. T14 retains its previous\u221218deg scalar bank unchanged.",
+  "progressive_source": "progressive-t3-evidence.json"
 }

@@ -6240,5 +6240,7 @@
     "status": "Source reconstructed; fresh packaged review pending",
     "native_physics_changed": false,
     "Sabir_Park": "Exact 299424032 grass surface with 17 mapped paths and all buildings/roads excluded. 49 grounded broadleaf trees; existing height/rise unchanged. Ground is still the retained scenery model, not newly surveyed Park ground."
-  }
+  },
+  "skyline_correction_20261113": "skyline-buildings.json",
+  "philharmonic_correction_20261113": "philharmonic-architecture.json"
 }

@@ -5,7 +5,7 @@
   "reference_sha256": "010bbc56c79bc3d3388718a301957fb380bfbb7a2f63839e9b37447eb4042a99",
   "layout_observed": "Monaco Grand Prix 3.337km/19-corner street circuit; tunnel below the Fairmont complex.",
   "lighting_weather_observed": "Bright daytime with intermittent clouds.",
-  "review_scope": "16 sparse overview frames plus24detail frames330\u2013606seconds viewed. Edited race montage with cuts; timestamps are not lap station fractions.",
+  "review_scope": "16 sparse overview frames plus 24detail frames 330\u2013606seconds viewed. Edited race montage with cuts; timestamps are not lap station fractions. Eighteen additional 1280px original stills reviewed on 2026-11-13 for exact property/turn associations. Edited cuts are explicitly retained in property-architecture-correction.json.",
   "frame_index_file": "build/reviews/monaco/reference/overview-index.json",
   "reviewed_visual_evidence": [
     {
@@ -41,7 +41,7 @@
     {
       "time_s": 367.59,
       "reviewed": true,
-      "notes": "Tunnel: Road is below the Fairmont podium and sea-facing gallery. Preserve drivable deck elevation independently from roof heights. Overview does not directly show interior lighting, so tunnel cross-section/portal details need targeted frames."
+      "notes": "Start/pit straight with close left pit building and right harbour grandstands. Earlier tunnel association was incorrect; this image is not a tunnel source."
     },
     {
       "time_s": 457.49,
@@ -363,5 +363,225 @@
     "scope": "Private fine RGE lower-quay strip and actual hotel/retail facade bases; upperstreet/realhill/theatre unchanged.",
     "target_native_station_m": 2380,
     "runtime_gate": "Await fresh packaged capture and Luna High review."
+  },
+  "property_registration_20261113": {
+    "source": "property-architecture-correction.json",
+    "reviewed_views": [
+      {
+        "time_s": 494,
+        "identity": "Rascasse approach, outside quay complex",
+        "native_station_range_estimate_m": [
+          2920,
+          2970
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Pink panelled multi-storey frontage, alternating wide recessed openings, pale window surrounds, ground arches and balcony rails.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-494.jpg",
+        "frame_sha256": "56e77baafbe484566e34a73d701d317f09e2402903f708a5cf374e7d323105c9"
+      },
+      {
+        "time_s": 496,
+        "identity": "Rascasse right-hand apex",
+        "native_station_range_estimate_m": [
+          2950,
+          3000
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Close pink outside frontage confirms panel joints, dark glazing, white lintels, balustrades and ground-level arched openings. La Rascasse inside property is largely outside this forward crop.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-496.jpg",
+        "frame_sha256": "243e8192471d78a7ca2c58705eab55b63fc65d9d4a4bc18ce8f39730d463f305"
+      },
+      {
+        "time_s": 498,
+        "identity": "Rascasse exit toward Antony Noghes",
+        "native_station_range_estimate_m": [
+          3000,
+          3060
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Exit and stepped inhabited backdrop. The clip later enters the pit lane; elapsed video time must not be extrapolated onto the racing route.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-498.jpg",
+        "frame_sha256": "78db447a8347dd73ad0da183cef01ec4430d949e657dbcdddaff970760749e91"
+      },
+      {
+        "time_s": 1158,
+        "identity": "Rascasse approach, lap 34",
+        "native_station_range_estimate_m": [
+          2920,
+          2970
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Independent repeat of the same low pink western frontage, roof terrace and planted Rocher behind it.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-1158.jpg",
+        "frame_sha256": "4ba77785dbfc779c0a8bbc4875a0bef0eb03053bd371bd46daec45283e0ebdc1"
+      },
+      {
+        "time_s": 1160,
+        "identity": "Rascasse right-hand apex, lap 34",
+        "native_station_range_estimate_m": [
+          2950,
+          3000
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Repeat close facade view. A cut occurs before 1162 s; these are not a continuous opening-lap registration.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-1160.jpg",
+        "frame_sha256": "ae013c68094a903fe22ba59172ff00f56f75a85a0702a1174fc291dab5b04550"
+      },
+      {
+        "time_s": 1162,
+        "identity": "Beau Rivage uphill after Sainte Devote",
+        "native_station_range_estimate_m": [
+          300,
+          550
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Close left-side residential balcony frontage, harbour-side fence and palms. This is not a start-straight/Ermanno front-on view.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-1162.jpg",
+        "frame_sha256": "d162adc2f1c4dcbaafc5b9efee2031b0208b64377d7201ec77ce25a281d9e7f7"
+      },
+      {
+        "time_s": 1172,
+        "identity": "Casino exit toward Mirabeau",
+        "native_station_range_estimate_m": [
+          950,
+          1110
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Casino-side ornate masses and the descending inhabited street.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-1172.jpg",
+        "frame_sha256": "e31ca4b7fb5d773a905da82bed6fd4509246f69f568645a3d4cc9e086b156192"
+      },
+      {
+        "time_s": 1176,
+        "identity": "Mirabeau Haute approach",
+        "native_station_range_estimate_m": [
+          1155,
+          1200
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Le Mirabeau directly ahead: broad north-west solid spine with narrow vertical window stacks, recessed south loggias, white floorplates and dark room fronts. The 19.921 HUD value is a frozen sector split, not a continuously advancing lap clock.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-1176.jpg",
+        "frame_sha256": "8083bc29ea4b5c108e6b2f4711dbc7bfcf77e3494886ea41c5557381997323ea"
+      },
+      {
+        "time_s": 1180,
+        "identity": "Descent toward Fairmont hairpin",
+        "native_station_range_estimate_m": [
+          1230,
+          1305
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Right garden edge has pale rough stone masonry and dense broadleaf foliage above it; thin isolated palms alone do not reproduce this boundary.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-1180.jpg",
+        "frame_sha256": "51c1d34b204304f8f8abf5a23ad62cd39504995f0c85d885c6396f72b5b85583"
+      },
+      {
+        "time_s": 1182,
+        "identity": "Fairmont hairpin",
+        "native_station_range_estimate_m": [
+          1310,
+          1365
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Actual hotel has deep open white loggias and repeated floorplates. This confirms the existing Nov 12 hotel treatment rather than a new height change.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-1182.jpg",
+        "frame_sha256": "1bc5627eb5ba278ca051c0557626d2b9c27b75e9a97bac1cde3e78deb1c44242"
+      },
+      {
+        "time_s": 1183,
+        "identity": "Hairpin exit",
+        "native_station_range_estimate_m": [
+          1330,
+          1380
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Recovery opening, crane and lower Mirabeau apartment face. Registered locally by the hairpin shape and hotel position.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-1183.jpg",
+        "frame_sha256": "dd261c5b1d2b5429c11bdefc6796a9361f57e0b10e69a5fd62834827a9efd472"
+      },
+      {
+        "time_s": 1184,
+        "identity": "Mirabeau Bas",
+        "native_station_range_estimate_m": [
+          1380,
+          1440
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Right corner between inhabited frontage and stone retaining wall. It precedes an edited cut; 1186 s must not be assigned to Portier by temporal interpolation.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-1184.jpg",
+        "frame_sha256": "6347464b5cd53d19b32bef25bd14e270de1efa43839f363ce8044e88fc9f523c"
+      },
+      {
+        "time_s": 1186,
+        "identity": "Edited-cut harbour straight",
+        "native_station_range_estimate_m": [
+          2260,
+          2440
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Long inhabited frontage on the left and tree-lined stone boundary on the right, approaching Tabac. HUD has jumped to 1:14.258; this is not a continuation of the 28.931 hairpin sequence.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-1186.jpg",
+        "frame_sha256": "f0c0ca75cc06564bd53d9c3ac0c4ca4af1d0a82894960dc6cfa9b3dba075474c"
+      },
+      {
+        "time_s": 1188,
+        "identity": "Edited-cut harbour straight, later lap",
+        "native_station_range_estimate_m": [
+          2260,
+          2440
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Same harbour-side street context, with a new lap and HUD1:15.207. Detailed camera station remains approximate, not an accepted pose match.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-1188.jpg",
+        "frame_sha256": "bc0de74e6a203a34d9fd6e1cc88a040fd6a2408b19f33229636059442cae84f2"
+      },
+      {
+        "time_s": 450,
+        "identity": "Tunnel interior",
+        "native_station_range_estimate_m": [
+          1700,
+          1940
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Tiled pale right wall and soffit, left gallery openings, close Armco. Exact native pose remains approximate.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-450.jpg",
+        "frame_sha256": "a7bac9fafc434dc6b5572630108bc281cce90f84288e46d07a1c89c209ee7da4"
+      },
+      {
+        "time_s": 454,
+        "identity": "Tunnel exit before Nouvelle chicane",
+        "native_station_range_estimate_m": [
+          2010,
+          2115
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Pale stone waterfront building on the right, marina on the left, chicane braking approach.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-454.jpg",
+        "frame_sha256": "b8277a44759e8456463980adf7c66ace500bb2895cbb5556934f5cbf081139dd"
+      },
+      {
+        "time_s": 1154,
+        "identity": "External television shot near the harbour",
+        "native_station_range_estimate_m": null,
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Not an onboard pose or a source for exact facade station registration.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-1154.jpg",
+        "frame_sha256": "8953b2489003f069850ab419759b6eca241b1594b220630b72c9015bcc87a38f"
+      },
+      {
+        "time_s": 1156,
+        "identity": "External television shot along a fenced straight",
+        "native_station_range_estimate_m": null,
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Not an onboard pose. Do not infer an Ermanno camera station from this time alone.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-1156.jpg",
+        "frame_sha256": "02752310973b298f34bbb465512ef6550ca2511c9610c25cbbe26946a6efa644"
+      }
+    ],
+    "edited_cut_warning": [
+      "1160-1162 s jumps from Rascasse on lap 34 to Beau Rivage on lap 35.",
+      "1184-1186 s jumps from Mirabeau Bas to the harbour straight.",
+      "A frozen sector split such as 19.921 is not a running lap clock."
+    ]
   }
 }

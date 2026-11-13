@@ -116,7 +116,7 @@ int32 BuildGeneratedRibbon(AActor& owner, const TrackCatalogEntry& track, TArray
         const Vec2 left{-first.tangent.y, first.tangent.x};
         const Vec2 leftNext{-second.tangent.y, second.tangent.x};
         auto side = [&](const CircuitSample& sample, Vec2 normal, float lane) {
-            return World(sample.sim + normal * (lane * 17.0f), sample.elevation + sample.bankSlope * lane);
+            return World(sample.sim + normal * (lane * 17.0f), circuitSurfaceHeight(sample, lane));
         };
         const float span = FMath::Max(1.0f, (second.station - first.station + track.targetLengthMeters) );
         const float length = FMath::Min(span, track.targetLengthMeters / count * 1.5f);
@@ -124,7 +124,18 @@ int32 BuildGeneratedRibbon(AActor& owner, const TrackCatalogEntry& track, TArray
         const FVector roadRight = side(first, left, -first.halfWidth);
         const FVector roadLeftNext = side(second, leftNext, second.halfWidth);
         const FVector roadRightNext = side(second, leftNext, -second.halfWidth);
-        road.Quad(roadLeft, roadLeftNext, roadRightNext, roadRight, length, first.halfWidth * 2.0f);
+        if (first.bankQuadratic == 0.0f && second.bankQuadratic == 0.0f) {
+            road.Quad(roadLeft, roadLeftNext, roadRightNext, roadRight, length, first.halfWidth * 2.0f);
+        } else {
+            for (int strip = 0; strip < 8; ++strip) {
+                const float high = 1.0f - static_cast<float>(strip) / 4.0f;
+                const float low = high - 0.25f;
+                road.Quad(side(first, left, high * first.halfWidth),
+                    side(second, leftNext, high * second.halfWidth),
+                    side(second, leftNext, low * second.halfWidth),
+                    side(first, left, low * first.halfWidth), length, first.halfWidth / 4.0f);
+            }
+        }
         kerbWhite.Quad(roadLeft, roadLeftNext, side(second, leftNext, second.halfWidth - 0.28f), side(first, left, first.halfWidth - 0.28f), length, 0.28f);
         kerbWhite.Quad(side(first, left, -(first.halfWidth - 0.28f)), side(second, leftNext, -(second.halfWidth - 0.28f)), roadRightNext, roadRight, length, 0.28f);
         const bool coloured = FMath::Abs(FMath::Atan2(FVector::CrossProduct(
@@ -295,7 +306,7 @@ int32 BuildGeneratedRibbon(AActor& owner, const TrackCatalogEntry& track, TArray
                 const Vec2 left{-first.tangent.y, first.tangent.x};
                 const Vec2 leftNext{-second.tangent.y, second.tangent.x};
                 auto side = [&](const CircuitSample& sample, Vec2 normal, float lane) {
-                    return World(sample.sim + normal * (lane * 17.0f), sample.elevation + sample.bankSlope * lane);
+                    return World(sample.sim + normal * (lane * 17.0f), circuitSurfaceHeight(sample, lane));
                 };
                 const FVector leftEdge = side(first, left, first.halfWidth);
                 const FVector rightEdge = side(first, left, -first.halfWidth);

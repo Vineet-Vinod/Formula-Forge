@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "osm_id": 152190848,
+  "name": "Azerbaijan State Philharmonic Hall",
+  "actual_site": "Niyazi/Istiqlaliyyat corner, using the retained complete hall and rotunda outline. This is the main Philharmonic building, separate from the Lutheran church used by the chamber/organ ensemble.",
+  "problem": "The two-storey OSM tag produced a6.8 m flat-roof office facade. Concert-hall storeys do not imply3.4 m floors. The actual building has ochre walls, white arcades and pilasters, a rotunda dome and two open roof belvederes.",
+  "primary_sources": [
+    {
+      "url": "https://www.azer.com/aiweb/categories/magazine/ai122_folder/122_articles/122_sharifov_philharmonic.html",
+      "author": "Abid Sharifov, Deputy Prime Minister in charge of construction",
+      "published": "Summer2004",
+      "supports": "First-person account of the2002\u20132004 renovation that preserved the exterior. Betty Blair\u2019s Niyazi Street photograph supplies the arcade, tower, roof and colour reference."
+    },
+    {
+      "url": "https://artsandculture.google.com/story/mini-azerbaijan-heydar-aliyev-center/DAXh7jN9SVlpLw?hl=en",
+      "provider": "Heydar Aliyev Center museum exhibit",
+      "supports": "Identifies the main hall with terraces and porches. Scale-model centimetres are not treated as building metres."
+    },
+    {
+      "url": "https://admin.culture.gov.az/storage/uploads/fileUpload/files/JBoxnO7WvbYMHlydTTpt1778831641.pdf",
+      "provider": "Azerbaijan Ministry of Culture,2026 cultural guide",
+      "supports": "Identifies the1910\u20131912 main Philharmonic building, distinct from the organ/chamber church."
+    }
+  ],
+  "original_photo": {
+    "file": "build/reviews/resume-20261113/baku-skyline/philharmonic-niyazi.jpg",
+    "source_url": "https://www.azer.com/aiweb/categories/magazine/ai122_folder/122_photos/122_176_philharmonic_side.jpg",
+    "sha256": "6e39740935d3513ef946813598a63863dca2248b5ea69e8634ec7c5ad6d751a6",
+    "use": "Reference only. No photograph pixels are shipped in game assets."
+  },
+  "reconstruction": {
+    "complete_footprint": "Existing OSM152190848 in the same geographic frame. Road overlap uses the former facade\u2019s1.2 m mask clearance; the removed area is reported.",
+    "body_wall_height_m": 11.5,
+    "body_height_uncertainty_m": 2.5,
+    "dome_center_local_frame_m": [
+      12,
+      4
+    ],
+    "dome_radius_m": 14,
+    "dome_rise_m": 5.3,
+    "belvedere_centers_local_frame_m": [
+      [
+        37,
+        -23
+      ],
+      [
+        -35,
+        -22
+      ]
+    ],
+    "belvedere_peak_above_foundation_m": 25.1,
+    "belvedere_position_uncertainty_m": 6,
+    "belvedere_height_uncertainty_m": 4,
+    "section_status": "All wall heights, arch dimensions, pilasters, balustrades, dome/tower positions and roof sections are visual estimates with the stated uncertainty. None are lidar measurements. The two-storey tag is not treated as a measured height.",
+    "foundation": "Original minimum retained scenery-ground value at the footprint. It is not classified ground; the building shares that datum and road/native heights remain unchanged."
+  },
+  "runtime_gate": "Pending fresh packaged T14/T15 Niyazi Street frontages and a whole-lap Luna High review. Source geometry does not establish visual acceptance."
+}

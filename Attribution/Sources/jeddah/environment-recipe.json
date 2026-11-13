@@ -846,5 +846,6 @@
     "native_approach_target_m": 2270,
     "scope": "Mapped terraced frontage, deep canopy, recessed glazing and angled exterior frame. Roof height24.5\u00b14m is an estimate; source four-storey/12m-lobby facts do not establish uniform floor heights.",
     "runtime_gate": "Await fresh packaged capture and Luna High review."
-  }
+  },
+  "banking_recipe": "banking-corrections.json"
 }

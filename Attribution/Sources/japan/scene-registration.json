@@ -1,21 +1,37 @@
 {
   "source_projection_uniform_scale": 0.99956,
-  "effective_scene_uniform_scale": 0.999535073853083,
+  "effective_scene_uniform_scale": 1.0004377274697576,
   "native_normalization_chain": {
-    "initial_corrected_controls_factor": 0.9998156603644875,
-    "initial_catmull_length_m": 5808.070580031723,
-    "refinement_controls_factor": 1.0,
-    "refinement_catmull_length_m": null,
-    "post_original_chain_factor": 0.9998156603644875,
-    "fitted_minus_chain_factor": -2.643520969902724e-07,
-    "baseline_factor": 1.0001594319058824,
-    "all_chain_factor": 0.9999750628807506,
-    "effective_scene_uniform_scale": 0.999535073853083,
-    "method": "Replicate exact float32 native32-step Catmull expression and float32 segment norms, double arc accumulation, float32 correction includingUnits17. Compose firstcontrols then refinementcontrols; original native factor independently instrumented. Port hasmixedraw/old-native sourceframe caveat.",
-    "baseline_factor_applied_to_selected_scale": true
+    "previous_effective_uniform_scale": 0.999535073853083,
+    "refinement_controls_factor": 1.0009030734791475,
+    "refinement_catmull_length_m": 5801.760308392346,
+    "effective_scene_uniform_scale": 1.0004377274697576
   },
-  "final_road_sha256": "ae4c6658e01de8adee7fb2d6019f830c839a2f9d714843016e167479506a050d",
-  "source_basis": "alignment-corrections.json",
-  "source_basis_sha256": "6679068c378f9fb0a69dbcb155748f5d376215918479b603e57b54f059db6e24",
-  "scope": "Scenery WGS84-to-native XY registration only. Native road geometry, physical road widths, elevations, vehicle tuning and camera are not changed by this metadata update. Original corner authoring controls retain their explicitly documented historical coordinate frame."
+  "final_road_sha256": "Pending compiled export after source correction",
+  "source_basis": "alignment-refinement.json",
+  "source_basis_sha256": "5a54eece5ef67642b5d47185c6ab7468708d79597c00671135248cfa8a6c1776",
+  "scope": "Source-qualified Spoon centreline and explicit width correction, with coherent scenery horizontal registration. Native elevation/banking/handling/camera parameters unchanged.",
+  "previous_stage": {
+    "source_projection_uniform_scale": 0.99956,
+    "effective_scene_uniform_scale": 0.999535073853083,
+    "native_normalization_chain": {
+      "initial_corrected_controls_factor": 0.9998156603644875,
+      "initial_catmull_length_m": 5808.070580031723,
+      "refinement_controls_factor": 1.0,
+      "refinement_catmull_length_m": null,
+      "post_original_chain_factor": 0.9998156603644875,
+      "fitted_minus_chain_factor": -2.643520969902724e-07,
+      "baseline_factor": 1.0001594319058824,
+      "all_chain_factor": 0.9999750628807506,
+      "effective_scene_uniform_scale": 0.999535073853083,
+      "method": "Replicate exact float32 native32-step Catmull expression and float32 segment norms, double arc accumulation, float32 correction includingUnits17. Compose firstcontrols then refinementcontrols; original native factor independently instrumented. Port hasmixedraw/old-native sourceframe caveat.",
+      "baseline_factor_applied_to_selected_scale": true
+    },
+    "final_road_sha256": "ae4c6658e01de8adee7fb2d6019f830c839a2f9d714843016e167479506a050d",
+    "source_basis": "alignment-corrections.json",
+    "source_basis_sha256": "6679068c378f9fb0a69dbcb155748f5d376215918479b603e57b54f059db6e24",
+    "scope": "Scenery WGS84-to-native XY registration only. Native road geometry, physical road widths, elevations, vehicle tuning and camera are not changed by this metadata update. Original corner authoring controls retain their explicitly documented historical coordinate frame."
+  },
+  "previous_native_frame_uniform_scale": 0.999535073853083,
+  "new_native_normalization_factor": 1.0009030734791475
 }

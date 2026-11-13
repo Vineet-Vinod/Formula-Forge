@@ -1,0 +1,590 @@
+{
+  "schema_version": 1,
+  "date_utc": "2026-11-13",
+  "status": "Source frozen after owned type/lint checks, five focused regressions and bounded emitted-geometry proofs. Fresh packaged views and Luna High review pending.",
+  "scope": "Private Monaco architecture only. Native route, road elevation, width, banking, protection, driving surfaces, handling and camera are unchanged.",
+  "source_provider": "IGN Geoplateforme BDTopo V3, BDTOPO_V3:batiment",
+  "source_catalogue": "https://www.data.gouv.fr/datasets/bd-topo-r",
+  "licence": "Licence Ouverte / Open Licence 2.0",
+  "licence_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence/",
+  "queries": [
+    {
+      "raw_file": "architecture/ign-bdtopo-rascasse.json.gz",
+      "raw_sha256": "b7516cbb879c7ed8600456b487aac04ef363ca5aec9f2d512ef78fa70fa41007",
+      "request_file": "architecture/ign-bdtopo-rascasse-request.json",
+      "features_returned": 7,
+      "request_url": "https://data.geopf.fr/wfs/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=BDTOPO_V3%3Abatiment&bbox=1056223.948300682%2C6302554.622436527%2C1056521.562751743%2C6302675.410956422%2CEPSG%3A2154&count=200&outputFormat=application%2Fjson&srsName=EPSG%3A4326"
+    },
+    {
+      "raw_file": "architecture/ign-bdtopo-opening-towers.json.gz",
+      "raw_sha256": "bf06805972bac48403fc288c92a1c471eebec9877f110f52eeddcef02d27894b",
+      "request_file": "architecture/ign-bdtopo-opening-towers-request.json",
+      "features_returned": 8,
+      "request_url": "https://data.geopf.fr/wfs/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=BDTOPO_V3%3Abatiment&bbox=1055995.4731679617%2C6302999.647086976%2C1056077.2914740315%2C6303094.825294042%2CEPSG%3A2154&count=200&outputFormat=application%2Fjson&srsName=EPSG%3A4326"
+    },
+    {
+      "raw_file": "architecture/ign-bdtopo-mirabeau.json.gz",
+      "raw_sha256": "0442afc2a0746e228f6c2c61ff8c133c749155196b97587e0ca32be3e5f058ed",
+      "request_file": "architecture/ign-bdtopo-mirabeau-request.json",
+      "features_returned": 4,
+      "request_url": "https://data.geopf.fr/wfs/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=BDTOPO_V3%3Abatiment&bbox=1056656.3363858482%2C6303557.93975494%2C1056705.067336796%2C6303639.664111487%2CEPSG%3A2154&count=200&outputFormat=application%2Fjson&srsName=EPSG%3A4326"
+    }
+  ],
+  "vertical_registration": {
+    "relative_datum_m": 1.5128994113,
+    "rule": "Subtract the existing RGE scenery datum from source absolute altitudes. No fitted vertical scale or road-height change.",
+    "source_vertical_precision_m": 1.5,
+    "source_plan_precision_m": 2.5,
+    "qualification": "Per-feature photogrammetric source precision, not a new engineering survey. Source acquisition dates differ."
+  },
+  "geometry_files": [
+    "architecture/property-envelopes.json",
+    "architecture/fairmont-garden-frontage.json"
+  ],
+  "properties": [
+    {
+      "name": "Quai Antoine exhibition/residential complex",
+      "osm_id": 161885377,
+      "covered_osm_id": 1447995581,
+      "main_ign_id": "BATIMENT0000000074074354",
+      "main_overlap_osm_fraction": 0.8882303703839637,
+      "covered_industrial_fraction": 0.952,
+      "ground_absolute_m": 2.3,
+      "roof_edges_absolute_m": [
+        23.2,
+        34.5
+      ],
+      "old_fallback_roof_absolute_m": 8.9248667,
+      "identity": "The OSM museum/exhibition tag is a ground-floor use and cannot establish the height of this whole long complex. The Ruscino residential address 14 Quai Antoine is distinguished from OSM address 4; neither the six-level western frontage nor every annex is labelled as a nine-storey residence.",
+      "roof_parts": "Measured parent boundary, separate inner component BATIMENT0000000074074345, and western low annexes BATIMENT0000000074074434/4442 are all retained. The parent polygon hole belongs to the separate inner roof; it is not an empty courtyard. The 95.2%-covered industrial OSM footprint is claimed by the measured parent to avoid a duplicate low shell.",
+      "estimated_details": "Western panel grid, wide glazing, pale surrounds, alternating ground arches and balcony rail rhythm follow 494/496/498 and 1158/1160 s. Window bays 4.8 m, storey module 3.5 m, shallow balcony projection 0.48 m and masonry-joint dimensions are estimates. The far eastern wing keeps its actual source rise; an explicitly retained internal roof seam reconstructs the storey step rather than inventing a continuous ramp.",
+      "material": "MonacoRuscinoRose, original matte linear tint 0.56/0.36/0.32, not copied game pixels.",
+      "western_annex_ground_qualification": "The two low western annexes likewise use the common mapped ground/IGN roof area, retaining measured eaves beyond it as closed cantilevers. Roof-to-fence clearance is at least1.7476 m and7.6983 m; all ground bodies remain clear of existing walls."
+    },
+    {
+      "name": "Ermanno Palace",
+      "osm_id": 161880705,
+      "ign_id": "BATIMENT0000000074074396",
+      "overlap_osm_fraction": 0.8510628281946364,
+      "ground_absolute_m": 4.9,
+      "eaves_absolute_m": [
+        42.5,
+        44.1
+      ],
+      "roof_peak_absolute_m": 48.6,
+      "old_explicit_roof_absolute_m": 66.005409,
+      "old_storeys": 18,
+      "reconstructed_main_storeys": 12,
+      "primary_floor_witness": "https://f1experiences.com/2027-monaco-grand-prix/champions-club-ermanno-penthouse",
+      "primary_exterior_witness": "https://www.carolineolds.com/wp-content/uploads/2023/04/Ermanno-Palace-2P-6.65-mil.pdf",
+      "exterior_pdf_sha256": "7d8646bd930182f734a28d733c46bf8ce95fdb84a87cc5baaf583e407abe307e",
+      "geometry": "Detailed curved OSM floorplate, 1.7 m estimated recessed balcony core, measured sloping eaves and a3.5 m estimated inset roof room below the 48.6 m source peak. The selling agent exterior supports rounded wraparound balconies and an inset roof terrace. Roof-room plan and floor spacing are estimates, not a surveyed section.",
+      "nearby_source_check": "All eight returned building features were tested. The seven other features have zero overlap with Ermanno; the nearest taller neighbour is 7.05 m away. No separate source component supplies a hidden 61 m tower."
+    },
+    {
+      "name": "Le Mirabeau",
+      "osm_id": 94399524,
+      "preserved_height_m": 81,
+      "preserved_storeys": 26,
+      "source_ign_id": "BATIMENT0000002009009599",
+      "source_ign_osm_overlap": 0.7907542789757384,
+      "source_ign_height_m": 84.9,
+      "source_ign_ground_absolute_m": 14.5,
+      "height_qualification": "The existing 81 m architectural height is independently listed by the building-height authority. The matching IGN component reports 84.9 m. The reason for that 3.9 m discrepancy is not established; both values remain in the source record and the existing 81 m envelope is retained for this facade correction.",
+      "height_authority": "https://www.skyscrapercenter.com/building/le-mirabeau/11246",
+      "builder_primary": "https://jbpastoretfils.mc/?chantier=le-mirabeau",
+      "builder_exterior_image": "https://jbpastoretfils.mc/wp-content/uploads/2013/11/mirabeauR18x24.jpg",
+      "geometry": "Open 2.1 m estimated loggias, thin white floorplates and metal rails replace the flat grid. The mapped north-west wall spanning vertices 0-2 is the solid spine to the left in the eastward 1176 s view; two narrow vertical window stacks distinguish it from the open south loggias. Depths, bay spacing and window proportions remain estimates."
+    },
+    {
+      "name": "Le Parc Spelugues / Fairmont approach",
+      "park_osm_id": 157719660,
+      "native_range_m": [
+        1188,
+        1305
+      ],
+      "source": "architecture/fairmont-garden-frontage.json",
+      "geometry": "Stone wall 1.8 m high and 0.28 m thick, reconstructed 0.8 m inside the actual park boundary. Low hedge 3.0\u00b10.4 m sits behind it. Only strips and roots within the actual park and clear of unchanged protection are emitted. Existing source ground and mature mapped trees remain.",
+      "qualification": "The wall itself is not mapped; its inset, section and hedge spacing are disclosed visual estimates from 1180 s, not independently surveyed wall coordinates. Mapped retaining walls 1488095480/481 are on the opposite street side and are not repurposed as this wall."
+    },
+    {
+      "name": "La Rascasse",
+      "osm_id": 112681614,
+      "ign_id": "BATIMENT0000000074074372",
+      "ground_absolute_m": 1.1,
+      "roof_edges_absolute_m": [
+        5.8,
+        9.5
+      ],
+      "old_fallback_roof_absolute_m": 8.6781684,
+      "qualification": "Its old overall height was already close. The large problem was a roof footprint being treated as a solid ground wall. The independently mapped roof1082340323 remains untouched. Exact door/floor subdivision and frame spacing remain estimates; no source pixel textures are used.",
+      "owner_primary": "https://www.montecarlosbm-corporate.com/wp-content/uploads/2026/04/mcsbm-pr-la-rascasse.pdf",
+      "owner_date_qualification": "The 2026 release confirms the property at 1 Quai Antoine. Its recent interior renovation is not treated as evidence of 2025 external trim.",
+      "geometry": "The retained OSM ground body and measured IGN roof differ. The closed room volume uses their common plan area, keeping all ground-level walls and columns inside the original mapped body. The full measured roof remains above its 64.59 m\u00b2 overhang, with an original 0.18 m closed fascia/soffit and recessed dark metal/glass room front. This separation follows the owner exterior tour and avoids extruding roof-only area down through the existing event protection. Source plan disagreement remains within the retained mapping uncertainty; the common room outline is a reconstruction, not a surveyed ground-floor plan.",
+      "owner_exterior_page": "https://www.montecarlosbm.com/en/bar-nightclub-monaco/la-rascasse",
+      "owner_exterior_tour": "https://www.montecarlovirtualtour.com/rascasse/rascasseext/tour.xml",
+      "owner_tour_observation": "The linked terrace tour directly shows a recessed glazed room front, open covered seating, dark metal posts, glass screens and roof/louvre framing. The tour image date is not established; it supports the roof/room relationship and material form, not a claim about 2026 interior trim or event-fence dimensions.",
+      "owner_tour_original_sha256": {
+        "la-rascasse-owner-tour-xml.txt": "b528334d2bfe60a64d006e70ff77eda6240aac1595a17b60ef30fcdc2c72f9d6",
+        "rascasse-exterior-mobile_f.jpg": "fd719e256b792fed9338df729928a60d909427f8a036dbab10591d702a408766",
+        "rascasse-exterior-mobile_b.jpg": "c4b6d984287100771c14addc604779d36e199dc6d0d2b7ce58d7fb7db19e53ba",
+        "rascasse-exterior-mobile_l.jpg": "d072c36f22baa0cb3ce75caac7b0ee606618caefce5730b29033b33f77404b52",
+        "rascasse-exterior-mobile_r.jpg": "d993754d61bdc83d7357a8f64a02dd0cb9f89e9c7a11a74ca85297faefaaaf10"
+      },
+      "roof_protection": {
+        "existing_native_wall_and_ground_body": "No intersection. Existing and authored ground bodies have zero barrier-centerline crossing.",
+        "minimum_soffit_clearance_over_native_wall_m": 1.3770006687,
+        "generic_fence_defect": "The blanket visual catch fence and maximum post envelope intersect the low roof by 0.82294 m / 1.27294 m. A source-owned overhead ceiling is required for the decorative fence; the measured roof and native collision wall must remain unchanged.",
+        "status": "Corrected with four measured downward soffit faces registered to the default-empty shared decorative-fence ceiling hook. All 435 actual fence/post intersection witnesses clear by at least 0.12 m; the full concrete geometry stream and native protection are unchanged."
+      }
+    }
+  ],
+  "ermanno_all_nearby_components": [
+    {
+      "source_id": "BATIMENT0000002476006783",
+      "overlap_m2": 0.0,
+      "overlap_fraction_of_osm": 0.0,
+      "distance_to_osm_m": 40.13511821358614,
+      "source_height_m": 12.1,
+      "geometry_roof_range_absolute_m": [
+        17.6,
+        18.7
+      ],
+      "roof_peak_absolute_m": null
+    },
+    {
+      "source_id": "BATIMENT0000000074074359",
+      "overlap_m2": 0.0,
+      "overlap_fraction_of_osm": 0.0,
+      "distance_to_osm_m": 27.009743822933974,
+      "source_height_m": 49.3,
+      "geometry_roof_range_absolute_m": [
+        61.4,
+        62.5
+      ],
+      "roof_peak_absolute_m": 62.9
+    },
+    {
+      "source_id": "BATIMENT0000000074074381",
+      "overlap_m2": 0.0,
+      "overlap_fraction_of_osm": 0.0,
+      "distance_to_osm_m": 7.048506525120649,
+      "source_height_m": 53.6,
+      "geometry_roof_range_absolute_m": [
+        41.7,
+        56.9
+      ],
+      "roof_peak_absolute_m": null
+    },
+    {
+      "source_id": "BATIMENT0000000074074440",
+      "overlap_m2": 0.0,
+      "overlap_fraction_of_osm": 0.0,
+      "distance_to_osm_m": 67.18662798717568,
+      "source_height_m": 16.3,
+      "geometry_roof_range_absolute_m": [
+        38.1,
+        39.4
+      ],
+      "roof_peak_absolute_m": 39.7
+    },
+    {
+      "source_id": "BATIMENT0000002476006735",
+      "overlap_m2": 0.0,
+      "overlap_fraction_of_osm": 0.0,
+      "distance_to_osm_m": 74.01112530009142,
+      "source_height_m": 16.6,
+      "geometry_roof_range_absolute_m": [
+        51.9,
+        60.1
+      ],
+      "roof_peak_absolute_m": null
+    },
+    {
+      "source_id": "BATIMENT0000000074074387",
+      "overlap_m2": 0.0,
+      "overlap_fraction_of_osm": 0.0,
+      "distance_to_osm_m": 22.19126756124697,
+      "source_height_m": 5,
+      "geometry_roof_range_absolute_m": [
+        10.7,
+        11.6
+      ],
+      "roof_peak_absolute_m": null
+    },
+    {
+      "source_id": "BATIMENT0000000074074396",
+      "overlap_m2": 456.0730738119682,
+      "overlap_fraction_of_osm": 0.8510628281946364,
+      "distance_to_osm_m": 0.0,
+      "source_height_m": 39.2,
+      "geometry_roof_range_absolute_m": [
+        42.5,
+        44.1
+      ],
+      "roof_peak_absolute_m": 48.6
+    },
+    {
+      "source_id": "BATIMENT0000000074074712",
+      "overlap_m2": 0.0,
+      "overlap_fraction_of_osm": 0.0,
+      "distance_to_osm_m": 45.1026843224619,
+      "source_height_m": 28.1,
+      "geometry_roof_range_absolute_m": [
+        42.6,
+        43.1
+      ],
+      "roof_peak_absolute_m": 44.8
+    }
+  ],
+  "reference_video": {
+    "file": "Saved/Refs/monaco.mp4",
+    "sha256": "010bbc56c79bc3d3388718a301957fb380bfbb7a2f63839e9b37447eb4042a99",
+    "observed_year": 2025,
+    "edited_cut_warnings": [
+      "1160-1162 s jumps from Rascasse on lap 34 to Beau Rivage on lap 35.",
+      "1184-1186 s jumps from Mirabeau Bas to the harbour straight.",
+      "A frozen sector split such as 19.921 is not a running lap clock."
+    ],
+    "registered_views": [
+      {
+        "time_s": 494,
+        "identity": "Rascasse approach, outside quay complex",
+        "native_station_range_estimate_m": [
+          2920,
+          2970
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Pink panelled multi-storey frontage, alternating wide recessed openings, pale window surrounds, ground arches and balcony rails.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-494.jpg",
+        "frame_sha256": "56e77baafbe484566e34a73d701d317f09e2402903f708a5cf374e7d323105c9"
+      },
+      {
+        "time_s": 496,
+        "identity": "Rascasse right-hand apex",
+        "native_station_range_estimate_m": [
+          2950,
+          3000
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Close pink outside frontage confirms panel joints, dark glazing, white lintels, balustrades and ground-level arched openings. La Rascasse inside property is largely outside this forward crop.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-496.jpg",
+        "frame_sha256": "243e8192471d78a7ca2c58705eab55b63fc65d9d4a4bc18ce8f39730d463f305"
+      },
+      {
+        "time_s": 498,
+        "identity": "Rascasse exit toward Antony Noghes",
+        "native_station_range_estimate_m": [
+          3000,
+          3060
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Exit and stepped inhabited backdrop. The clip later enters the pit lane; elapsed video time must not be extrapolated onto the racing route.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-498.jpg",
+        "frame_sha256": "78db447a8347dd73ad0da183cef01ec4430d949e657dbcdddaff970760749e91"
+      },
+      {
+        "time_s": 1158,
+        "identity": "Rascasse approach, lap 34",
+        "native_station_range_estimate_m": [
+          2920,
+          2970
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Independent repeat of the same low pink western frontage, roof terrace and planted Rocher behind it.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-1158.jpg",
+        "frame_sha256": "4ba77785dbfc779c0a8bbc4875a0bef0eb03053bd371bd46daec45283e0ebdc1"
+      },
+      {
+        "time_s": 1160,
+        "identity": "Rascasse right-hand apex, lap 34",
+        "native_station_range_estimate_m": [
+          2950,
+          3000
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Repeat close facade view. A cut occurs before 1162 s; these are not a continuous opening-lap registration.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-1160.jpg",
+        "frame_sha256": "ae013c68094a903fe22ba59172ff00f56f75a85a0702a1174fc291dab5b04550"
+      },
+      {
+        "time_s": 1162,
+        "identity": "Beau Rivage uphill after Sainte Devote",
+        "native_station_range_estimate_m": [
+          300,
+          550
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Close left-side residential balcony frontage, harbour-side fence and palms. This is not a start-straight/Ermanno front-on view.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-1162.jpg",
+        "frame_sha256": "d162adc2f1c4dcbaafc5b9efee2031b0208b64377d7201ec77ce25a281d9e7f7"
+      },
+      {
+        "time_s": 1172,
+        "identity": "Casino exit toward Mirabeau",
+        "native_station_range_estimate_m": [
+          950,
+          1110
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Casino-side ornate masses and the descending inhabited street.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-1172.jpg",
+        "frame_sha256": "e31ca4b7fb5d773a905da82bed6fd4509246f69f568645a3d4cc9e086b156192"
+      },
+      {
+        "time_s": 1176,
+        "identity": "Mirabeau Haute approach",
+        "native_station_range_estimate_m": [
+          1155,
+          1200
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Le Mirabeau directly ahead: broad north-west solid spine with narrow vertical window stacks, recessed south loggias, white floorplates and dark room fronts. The 19.921 HUD value is a frozen sector split, not a continuously advancing lap clock.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-1176.jpg",
+        "frame_sha256": "8083bc29ea4b5c108e6b2f4711dbc7bfcf77e3494886ea41c5557381997323ea"
+      },
+      {
+        "time_s": 1180,
+        "identity": "Descent toward Fairmont hairpin",
+        "native_station_range_estimate_m": [
+          1230,
+          1305
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Right garden edge has pale rough stone masonry and dense broadleaf foliage above it; thin isolated palms alone do not reproduce this boundary.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-1180.jpg",
+        "frame_sha256": "51c1d34b204304f8f8abf5a23ad62cd39504995f0c85d885c6396f72b5b85583"
+      },
+      {
+        "time_s": 1182,
+        "identity": "Fairmont hairpin",
+        "native_station_range_estimate_m": [
+          1310,
+          1365
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Actual hotel has deep open white loggias and repeated floorplates. This confirms the existing Nov 12 hotel treatment rather than a new height change.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-1182.jpg",
+        "frame_sha256": "1bc5627eb5ba278ca051c0557626d2b9c27b75e9a97bac1cde3e78deb1c44242"
+      },
+      {
+        "time_s": 1183,
+        "identity": "Hairpin exit",
+        "native_station_range_estimate_m": [
+          1330,
+          1380
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Recovery opening, crane and lower Mirabeau apartment face. Registered locally by the hairpin shape and hotel position.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-1183.jpg",
+        "frame_sha256": "dd261c5b1d2b5429c11bdefc6796a9361f57e0b10e69a5fd62834827a9efd472"
+      },
+      {
+        "time_s": 1184,
+        "identity": "Mirabeau Bas",
+        "native_station_range_estimate_m": [
+          1380,
+          1440
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Right corner between inhabited frontage and stone retaining wall. It precedes an edited cut; 1186 s must not be assigned to Portier by temporal interpolation.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-1184.jpg",
+        "frame_sha256": "6347464b5cd53d19b32bef25bd14e270de1efa43839f363ce8044e88fc9f523c"
+      },
+      {
+        "time_s": 1186,
+        "identity": "Edited-cut harbour straight",
+        "native_station_range_estimate_m": [
+          2260,
+          2440
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Long inhabited frontage on the left and tree-lined stone boundary on the right, approaching Tabac. HUD has jumped to 1:14.258; this is not a continuation of the 28.931 hairpin sequence.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-1186.jpg",
+        "frame_sha256": "f0c0ca75cc06564bd53d9c3ac0c4ca4af1d0a82894960dc6cfa9b3dba075474c"
+      },
+      {
+        "time_s": 1188,
+        "identity": "Edited-cut harbour straight, later lap",
+        "native_station_range_estimate_m": [
+          2260,
+          2440
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Same harbour-side street context, with a new lap and HUD1:15.207. Detailed camera station remains approximate, not an accepted pose match.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-1188.jpg",
+        "frame_sha256": "bc0de74e6a203a34d9fd6e1cc88a040fd6a2408b19f33229636059442cae84f2"
+      },
+      {
+        "time_s": 450,
+        "identity": "Tunnel interior",
+        "native_station_range_estimate_m": [
+          1700,
+          1940
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Tiled pale right wall and soffit, left gallery openings, close Armco. Exact native pose remains approximate.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-450.jpg",
+        "frame_sha256": "a7bac9fafc434dc6b5572630108bc281cce90f84288e46d07a1c89c209ee7da4"
+      },
+      {
+        "time_s": 454,
+        "identity": "Tunnel exit before Nouvelle chicane",
+        "native_station_range_estimate_m": [
+          2010,
+          2115
+        ],
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Pale stone waterfront building on the right, marina on the left, chicane braking approach.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-454.jpg",
+        "frame_sha256": "b8277a44759e8456463980adf7c66ace500bb2895cbb5556934f5cbf081139dd"
+      },
+      {
+        "time_s": 1154,
+        "identity": "External television shot near the harbour",
+        "native_station_range_estimate_m": null,
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Not an onboard pose or a source for exact facade station registration.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-1154.jpg",
+        "frame_sha256": "8953b2489003f069850ab419759b6eca241b1594b220630b72c9015bcc87a38f"
+      },
+      {
+        "time_s": 1156,
+        "identity": "External television shot along a fenced straight",
+        "native_station_range_estimate_m": null,
+        "registration": "Property identity, minimap and local road sequence; not elapsed-time interpolation across edited cuts.",
+        "observation": "Not an onboard pose. Do not infer an Ermanno camera station from this time alone.",
+        "research_frame": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261113/monaco-architecture-audit/reference-1156.jpg",
+        "frame_sha256": "02752310973b298f34bbb465512ef6550ca2511c9610c25cbbe26946a6efa644"
+      }
+    ]
+  },
+  "media_policy": "Reference video stills and owner/builder photos stay ignored under build/reviews. Only open source numeric geometry, source URLs, hashes and original code-native forms are versioned; no reference pixels ship in the game.",
+  "review_gate": "Fresh source-identified cockpit captures, followed by Luna High review. No visual approval is claimed by source or geometry checks.",
+  "geometry_validation": {
+    "source_only": true,
+    "emitted_property_and_garden_triangles": 254802,
+    "asphalt_overlap_summed_m2": {},
+    "parent_roof_intrusion_into_separate_component_m2": 0.0,
+    "separate_inner_component_roof_area_m2": 397.88654314305023,
+    "fence_and_post_clearance": {
+      "overhead_source_triangles": 4,
+      "minimum_conservative_fence_or_post_clearance_m": 0.120000000000001,
+      "checked_roof_intersection_vertices": 435,
+      "lowest_witness": {
+        "xy_m": [
+          137.8272491547105,
+          -237.83205322217827
+        ],
+        "triangle_max_z_m": 3.987100588699999,
+        "soffit_z_m": 4.1071005887,
+        "kind": "Tile_Detail",
+        "material": "Fence"
+      },
+      "concrete_geometry_hash_before_and_after": "fc31c4c6a368ad443a6f9de51574162eb9713afa5a1a78637c0ad81b00fd5c63",
+      "concrete_unchanged": true,
+      "native_barriers_sha256": "dad6509038eca19820a08f825f837a13415fd2f3a23a4433b7f8ae3746af5e8e",
+      "qualification": "Actual current barrier producer and all current native segments, with source-owned soffits. The test checks projected intersection coordinates against each source roof face and conservatively uses the maximum emitted fence/post triangle height. Native concrete is byte-identical in source coordinates, and no profile/limit/physics files are modified."
+    },
+    "ground_roof_distinction": {
+      "barriers_sha256": "dad6509038eca19820a08f825f837a13415fd2f3a23a4433b7f8ae3746af5e8e",
+      "measurements": [
+        {
+          "source_id": "BATIMENT0000000074074372",
+          "name": "La Rascasse",
+          "original_ground_body_barrier_intersection_m": 0.0,
+          "authored_body_barrier_intersection_m": 0.0,
+          "roof_barrier_intersection_m": 30.399512361846163,
+          "roof_overhang_area_m2": 64.5875253335655,
+          "body_area_m2": 234.24190709917957,
+          "minimum_soffit_clearance_above_wall_m": 1.3770006687,
+          "minimum_soffit_clearance_above_fence_plane_m": -0.8229993313000001,
+          "minimum_soffit_clearance_above_maximum_post_envelope_m": -1.2729994013000003,
+          "minimum_clearance_above_actual_rendered_fence_m": -0.8229443065708391,
+          "minimum_clearance_above_actual_rendered_post_envelope_m": -1.2729443065708392,
+          "lowest_fence_clearance_witness": {
+            "xy_m": [
+              137.8272491547105,
+              -237.83205322217827
+            ],
+            "soffit_z_m": 4.1071005887,
+            "wall_top_z_m": 2.73009992,
+            "mesh_fence_top_z_m": 4.93009992,
+            "maximum_possible_post_z_m": 5.38009999,
+            "actual_rendered_fence_top_z_m": 4.9300448952708384,
+            "actual_rendered_post_envelope_top_z_m": 5.380044895270839
+          }
+        },
+        {
+          "source_id": "BATIMENT0000000074074434",
+          "name": "Western exhibition annex",
+          "original_ground_body_barrier_intersection_m": 0.0,
+          "authored_body_barrier_intersection_m": 0.0,
+          "roof_barrier_intersection_m": 3.152221704929653,
+          "roof_overhang_area_m2": 8.051566921006264,
+          "body_area_m2": 166.24071340078163,
+          "minimum_soffit_clearance_above_wall_m": 9.879500488700002,
+          "minimum_soffit_clearance_above_fence_plane_m": 7.679500488700001,
+          "minimum_soffit_clearance_above_maximum_post_envelope_m": 7.229500538700002,
+          "minimum_clearance_above_actual_rendered_fence_m": 7.69829659640412,
+          "minimum_clearance_above_actual_rendered_post_envelope_m": 7.248296596404121,
+          "lowest_fence_clearance_witness": {
+            "xy_m": [
+              153.24065992684226,
+              -263.12120167820177
+            ],
+            "soffit_z_m": 12.107100588700002,
+            "wall_top_z_m": 2.2276001,
+            "mesh_fence_top_z_m": 4.4276001,
+            "maximum_possible_post_z_m": 4.87760005,
+            "actual_rendered_fence_top_z_m": 4.408803992295881,
+            "actual_rendered_post_envelope_top_z_m": 4.858803992295881
+          }
+        },
+        {
+          "source_id": "BATIMENT0000000074074442",
+          "name": "Western low exhibition annex",
+          "original_ground_body_barrier_intersection_m": 0.0,
+          "authored_body_barrier_intersection_m": 0.0,
+          "roof_barrier_intersection_m": 4.1207005482717625,
+          "roof_overhang_area_m2": 3.931630792727506,
+          "body_area_m2": 70.3954885086235,
+          "minimum_soffit_clearance_above_wall_m": 3.9471804780351385,
+          "minimum_soffit_clearance_above_fence_plane_m": 1.7471804780351383,
+          "minimum_soffit_clearance_above_maximum_post_envelope_m": 1.2971805280351378,
+          "minimum_clearance_above_actual_rendered_fence_m": 1.7476428503585786,
+          "minimum_clearance_above_actual_rendered_post_envelope_m": 1.2976428503585784,
+          "lowest_fence_clearance_witness": {
+            "xy_m": [
+              136.51306979168035,
+              -261.4801942132543
+            ],
+            "soffit_z_m": 7.1671805080351385,
+            "wall_top_z_m": 3.22000003,
+            "mesh_fence_top_z_m": 5.420000030000001,
+            "maximum_possible_post_z_m": 5.86999998,
+            "actual_rendered_fence_top_z_m": 5.41953765767656,
+            "actual_rendered_post_envelope_top_z_m": 5.86953765767656
+          }
+        }
+      ],
+      "qualification": "Wall/fence plane heights use the exact current exporter bottom/top values. The3.6m post result is a conservative continuous height envelope; actual posts occur at4m intervals and may not occupy its lowest spot. No native protection is changed."
+    },
+    "focused_checks": [
+      "Measured source roof vertices, separate component hole and storey step survive poisoned exterior ground.",
+      "Ermanno ignores stale61 m/18-storey data and removes ground only under its emitted detailed floorplate.",
+      "La Rascasse preserves the measured roof and downward soffit while leaving ground beneath its open overhang.",
+      "Default-empty fence output matches the actual6a970d40 producer byte-for-byte; capped wire/posts leave concrete unchanged.",
+      "Every retained property supplies2D-only terrain masks, including holes; clipped ground emission succeeds while the full architectural triangle stream remains unchanged."
+    ],
+    "qualification": "These are source geometry and data checks. They do not replace fresh packaged visual review."
+  },
+  "terrain_mask_correction_20261113": {
+    "cause": "Measured roof rings are three-dimensional. Passing them or their intersections directly into terrain_cutouts propagated Z through Shapely terrain differences, whose ground tessellator requires XY coordinates.",
+    "correction": "All parent/inner component masks and both annex/La Rascasse body intersections explicitly construct XY-only polygons, including every interior ring. The separate roof polygons remain three-dimensional. No shared terrain API or geometric data was changed.",
+    "geometry_stream_sha256_before_and_after": "d4b888014e8a30b4c22a8492dca5c57f6f086825a40948ec939aa944cab20707",
+    "emitted_property_triangles_before_and_after": 254802,
+    "invariant": "The complete emitted private architecture/garden stream is byte-identical in source positions/materials before and after the mask-only fix.",
+    "regression": "All retained property styles populate only2D terrain masks, preserve the source inner component hole, and emit a surrounding clipped ground polygon without coordinate unpacking failure."
+  }
+}

@@ -13,6 +13,7 @@ from typing import Literal
 
 from circuit_dataclasses import (
     AlignmentControls,
+    BankingControls,
     ElevationControls,
     PitLane,
     RacingRecipe,
@@ -27,17 +28,53 @@ ROOT = Path(__file__).resolve().parents[1]
 NUMBER = r"[-+]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][-+]?\d+)?"
 
 
-def native_profile(text: str, kind: Literal["Elevation", "Width"]) -> list[tuple[float, float]]:
+def native_profile(text: str, kind: Literal["Elevation", "Width", "Bank"]) -> list[tuple[float, float]]:
+    """Read scalar station values; use native_bank_profile to retain quadratic banking."""
     match = re.search(rf"constexpr Track{kind}Point \w+\[\] = \{{(.*?)\n\}};", text, re.DOTALL)
     if match is None:
         raise ValueError(f"Missing native {kind} profile")
     return [(float(a), float(b)) for a, b in re.findall(
-        rf"\{{\s*({NUMBER})f,\s*({NUMBER})f\s*\}}", match[1]
+        rf"\{{\s*({NUMBER})f,\s*({NUMBER})f(?:,\s*{NUMBER}f)?\s*\}}", match[1]
     )]
 
 
+def native_bank_profile(text: str) -> list[tuple[float, float, float]]:
+    match = re.search(r"constexpr TrackBankPoint \w+\[\] = \{(.*?)\n\};", text, re.DOTALL)
+    if match is None:
+        raise ValueError("Missing native Bank profile")
+    return [(float(station), float(angle), float(quadratic or 0))
+            for station, angle, quadratic in re.findall(
+                rf"\{{\s*({NUMBER})f,\s*({NUMBER})f(?:,\s*({NUMBER})f)?\s*\}}", match[1]
+            )]
+
+
+def banking_rows(profile: BankingControls, length: float) -> list[tuple[float, float, float]]:
+    for controls in (profile.controls, profile.quadratic_controls):
+        if controls and (
+            len(controls) < 2
+            or not all(math.isfinite(value) for row in controls for value in row)
+            or not all(b[0] > a[0] for a, b in itertools.pairwise(controls))
+            or controls[0][0] != 0 or abs(controls[-1][0] - length) > .001
+            or controls[0][1] != controls[-1][1]
+        ):
+            raise ValueError("Banking controls must be ordered and close the complete lap")
+
+    def sample(controls: list[tuple[float, float]], station: float) -> float:
+        if not controls:
+            return 0.0
+        positions = [row[0] for row in controls]
+        index = max(0, min(len(controls) - 2, bisect.bisect_right(positions, station) - 1))
+        a, b = controls[index], controls[index + 1]
+        blend = (station - a[0]) / (b[0] - a[0])
+        return a[1] + (b[1] - a[1]) * blend
+
+    positions = sorted({row[0] for row in profile.controls + profile.quadratic_controls})
+    return [(station, sample(profile.controls, station), sample(profile.quadratic_controls, station))
+            for station in positions]
+
+
 def replace_profile(
-    text: str, kind: Literal["Elevation", "Width"], controls: list[tuple[float, float]], length: float
+    text: str, kind: Literal["Elevation", "Width", "Bank"], controls: list[tuple[float, float]], length: float
 ) -> str:
     if (not all(math.isfinite(value) for row in controls for value in row)
             or not all(b[0] > a[0] for a, b in itertools.pairwise(controls))
@@ -46,11 +83,32 @@ def replace_profile(
         raise ValueError(f"{kind} controls must be ordered and close the complete lap")
     if kind == "Width" and any(value <= 0 for _, value in controls):
         raise ValueError("Road widths must be positive")
+    if kind == "Bank" and any(abs(value) >= 90 for _, value in controls):
+        raise ValueError("Road banking must remain between -90 and 90 degrees")
     match = re.search(rf"constexpr Track{kind}Point \w+\[\] = \{{(.*?)\n\}};", text, re.DOTALL)
     if match is None:
         raise ValueError(f"Missing native {kind} profile")
     body = "\n" + ",\n".join(f"    {{{station:.6f}f, {value:.6f}f}}" for station, value in controls)
     return text[:match.start(1)] + body + text[match.end(1):]
+
+
+def apply_banking(slug: str) -> None:
+    source = ROOT / "Attribution/Sources" / slug / "banking-corrections.json"
+    profile = TypeAdapter(BankingControls).validate_json(source.read_bytes())
+    path = ROOT / "Source/FormulaForge/Native/track_data" / f"{slug}_survey.inc"
+    text = path.read_text()
+    length = native_profile(text, "Width")[-1][0]
+    updated = replace_profile(text, "Bank", profile.controls, length)
+    if profile.quadratic_controls:
+        rows = banking_rows(profile, length)
+        match = re.search(r"constexpr TrackBankPoint \w+\[\] = \{(.*?)\n\};", updated, re.DOTALL)
+        if match is None:
+            raise ValueError("Missing native Bank profile")
+        body = "\n" + ",\n".join(f"    {{{station:.6f}f, {angle:.6f}f, {q:.9f}f}}"
+                                 for station, angle, q in rows)
+        updated = updated[:match.start(1)] + body + updated[match.end(1):]
+    path.write_text(updated)
+    print(f"{slug}: applied registered banking; alignment, elevation and width unchanged")
 
 
 def apply_racing(slug: str) -> None:
@@ -220,10 +278,13 @@ if __name__ == "__main__":
     operation = parser.add_mutually_exclusive_group()
     operation.add_argument("--racing", action="store_true", help="Apply explicit elevation and width evidence")
     operation.add_argument("--alignment", action="store_true", help="Apply retained local alignment corrections")
+    operation.add_argument("--banking", action="store_true", help="Apply registered lateral banking controls")
     parser.add_argument("circuits", nargs="+")
     arguments = parser.parse_args()
     for circuit in arguments.circuits:
-        if arguments.racing:
+        if arguments.banking:
+            apply_banking(circuit)
+        elif arguments.racing:
             apply_racing(circuit)
         elif arguments.alignment:
             apply_alignment(circuit)

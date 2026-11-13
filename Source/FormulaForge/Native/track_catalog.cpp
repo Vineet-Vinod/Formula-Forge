@@ -322,6 +322,23 @@ float sampleTrackBankDegrees(const TrackCatalogEntry& track, float distanceMeter
                           [](const TrackBankPoint& point) { return point.angleDegrees; });
 }
 
+float sampleTrackBankQuadratic(const TrackCatalogEntry& track, float distanceMeters) noexcept {
+    return sampleStations(track.bankProfile, distanceMeters, track.targetLengthMeters,
+                          [](const TrackBankPoint& point) { return point.quadraticPerMeter; });
+}
+
+float trackLateralHeightMeters(float slope, float quadratic, float halfWidth, float lane) noexcept {
+    if (quadratic == 0.0f) return slope * lane;
+    const float edge = std::clamp(lane, -halfWidth, halfWidth);
+    // Continue the edge tangent into shoulders rather than extending the bowl indefinitely.
+    return slope * lane + quadratic * edge * (2.0f * lane - edge);
+}
+
+float trackLateralSlope(float slope, float quadratic, float halfWidth, float lane) noexcept {
+    if (quadratic == 0.0f) return slope;
+    return slope + 2.0f * quadratic * std::clamp(lane, -halfWidth, halfWidth);
+}
+
 float sampleTrackShoulderMeters(const TrackCatalogEntry& track, float distanceMeters, bool left) noexcept {
     if (track.shoulders.empty()) return track.shoulderMeters;
     return sampleStations(track.shoulders, distanceMeters, track.targetLengthMeters,

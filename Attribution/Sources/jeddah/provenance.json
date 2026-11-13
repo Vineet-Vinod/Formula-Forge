@@ -47,7 +47,11 @@
     "method": "Nearest OSM barrier vertex on each side, median-smoothed, clamped to 1.2-24 m outside the kerb. Missing sides keep the venue default.",
     "barrier_file": "barriers.osm.json.gz"
   },
-  "banking": "Neutral. No published camber was anchored to a detected corner.",
+  "banking": {
+    "recipe": "banking-corrections.json",
+    "method": "12-degree positive lateral plane through the northern left hairpin, with quintic entry/exit tapers sampled every2m. Both native contact and rendered road use the same existing banking profile.",
+    "qualification": "Published angle; station extent and transition shape reconstructed from retained road curvature and supplied reference331s, not an as-built cross-section."
+  },
   "buildings": {
     "count": 7,
     "method": "OSM footprints within 14-85 m of the centreline, extruded to a tagged height or a default. Roof shape is flat.",
@@ -75,5 +79,6 @@
     "source_basis": "alignment-refinement-base.csv.gz",
     "source_basis_sha256": "bbb2b2f629c130bd3b7f87fcf8130e816e56ad183bcc367024d58432470f2dbd",
     "scope": "Scenery WGS84-to-native XY registration only. Native road geometry, physical road widths, elevations, vehicle tuning and camera are not changed by this metadata update. Original corner authoring controls retain their explicitly documented historical coordinate frame."
-  }
+  },
+  "retained_banking": "Neutral. No published camber was anchored to a detected corner."
 }

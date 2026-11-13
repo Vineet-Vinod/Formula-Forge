@@ -1,5 +1,6 @@
 #include "generated_circuit.hpp"
 
+#include <algorithm>
 #include <filesystem>
 #include <fstream>
 #include <iomanip>
@@ -23,13 +24,19 @@ int main(int argc, char* argv[]) {
         << ",\"start_station_m\":" << track->startPhase * track->targetLengthMeters
         << ",\"deck_separation\":" << (track->deckSeparation ? "true" : "false") << "}\n";
     std::ofstream road(directory / "road.csv");
-    road << "station,x,y,z,tx,ty,half_width,bank,left_shoulder,right_shoulder\n" << std::setprecision(9);
+    const bool progressive = std::any_of(samples.begin(), samples.end(),
+        [](const CircuitSample& sample) { return sample.bankQuadratic != 0.0f; });
+    road << "station,x,y,z,tx,ty,half_width,bank,left_shoulder,right_shoulder";
+    if (progressive) road << ",bank_quadratic";
+    road << '\n' << std::setprecision(9);
     for (const auto& sample : samples) {
         road << sample.station << ',' << sample.sim.x / 17.0f << ',' << -sample.sim.y / 17.0f << ','
             << sample.elevation << ',' << sample.tangent.x << ',' << -sample.tangent.y << ','
             << sample.halfWidth << ',' << sample.bankSlope << ','
             << circuitShoulderMeters(*track, sample.station, true) << ','
-            << circuitShoulderMeters(*track, sample.station, false) << '\n';
+            << circuitShoulderMeters(*track, sample.station, false);
+        if (progressive) road << ',' << sample.bankQuadratic;
+        road << '\n';
     }
     std::ofstream walls(directory / "barriers.csv");
     walls << "ax,ay,bx,by,bottom,top,radius\n" << std::setprecision(9);

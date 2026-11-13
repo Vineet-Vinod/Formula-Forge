@@ -2,10 +2,12 @@
 from __future__ import annotations
 
 import math
+from bisect import bisect_right
 
-from circuit_dataclasses import Point
+from circuit_dataclasses import Point, WidthControls
 from circuit_mesh import cross, sub
 from circuit_scene import CircuitScene
+from pydantic import TypeAdapter
 from shapely import constrained_delaunay_triangles
 from shapely.geometry import Point as ShapePoint
 from shapely.geometry import Polygon
@@ -173,10 +175,44 @@ def t10_infield_paint(scene: CircuitScene) -> None:
 def circuit_edges(scene: CircuitScene) -> None:
     for start, end, side in [(340, 480, 1), (680, 770, 1), (805, 950, -1), (1670, 1795, 1), (2030, 2130, 1), (2230, 2340, 1), (2490, 2590, -1), (3130, 3210, 1), (3220, 3290, -1), (3500, 3610, 1), (3720, 3940, 1)]:
         scene.kerb(start, end, side, material='RunoffOrange' if start in (340, 805) else 'Red', alternate_material='White')
-    for start, end, side, width, material in [(290, 510, -1, 24, 'Gravel'), (780, 995, 1, 20, 'Gravel'), (1630, 1840, -1, 24, 'Gravel'), (1990, 2170, -1, 22, 'Gravel'), (2190, 2380, -1, 20, 'Gravel'), (3080, 3320, -1, 18, 'Gravel'), (3460, 3650, -1, 20, 'Gravel')]:
+    for start, end, side, width, material in [(290, 510, -1, 24, 'Gravel'), (1630, 1840, -1, 24, 'Gravel'), (1990, 2170, -1, 22, 'Gravel'), (2190, 2380, -1, 20, 'Gravel'), (3080, 3320, -1, 18, 'Gravel'), (3460, 3650, -1, 20, 'Gravel')]:
         scene.runoff(start, end, side, width, material)
+    t3_outer_bank(scene)
     t10_gravel_pocket(scene)
     t10_infield_paint(scene)
 
     for start, end, side in [(290, 510, -1), (3080, 3320, -1)]:
         apron_band(scene, start, end, side, 1.2, 3.1, 'RunoffGreen')
+
+
+def t3_outer_bank(scene: CircuitScene) -> None:
+    controls = TypeAdapter(WidthControls).validate_json(
+        (scene.sources / 't3-outer-bank.json').read_bytes()).controls_m
+    stations = [station for station, _width in controls]
+
+    def width(station: float) -> float:
+        index = max(0, min(len(controls) - 2, bisect_right(stations, station) - 1))
+        a, b = controls[index], controls[index + 1]
+        blend = (station - a[0]) / (b[0] - a[0])
+        return a[1] + (b[1] - a[1]) * blend
+
+    # This is a native material/minimum-width registration; the mapped profile sets the wall.
+    scene.surface_ranges.append({'type': 'runoff', 'start_m': 755, 'end_m': 995,
+                                 'side': 1, 'requested_width_m': 3, 'material': 'Runoff'})
+    for start in range(755, 995, 2):
+        a, b = scene.at(start), scene.at(min(995, start + 2))
+        points = [a.point(a.half_width + .15), b.point(b.half_width + .15),
+                  b.point(b.half_width + width(b.station) - .18),
+                  a.point(a.half_width + width(a.station) - .18)]
+        shape = Polygon([p[:2] for p in points]).difference(scene.road_mask)
+        if shape.is_empty:
+            continue
+        pieces = [shape] if isinstance(shape, Polygon) else list(shape.geoms)
+        for piece in pieces:
+            if isinstance(piece, Polygon):
+                scene.extra_corridors.append(piece)
+        scene.polygon_surface(shape, 'Runoff', .001, a)
+    scene.landmarks.append({
+        'name': 'Hugenholtz mapped outer paved bank', 'start_m': 755, 'end_m': 995,
+        'source_note': 'Retained tyre-wall fronts 1318064312/1318339544 match the 2024 PDOK orthophoto. Variable paved extent follows the actual wall, typically 3.6–6.7m beyond the white line through the bowl. Metric reconstruction allowance ±1 m. The 3 m native range is only a material/minimum-width control; it does not define a constant bank width. Longitudinal heights and active road widths are unchanged.',
+    })

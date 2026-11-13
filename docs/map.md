@@ -317,6 +317,16 @@ bump. Check width and banking continuity at that seam too. Use cross-sections
 through the road, shoulders and barriers to catch lateral
 steps that a centreline plot misses.
 
+A progressive bowl needs several lateral height samples. One bank angle only
+represents a plane. The optional quadratic bank control preserves the centre
+crossfall while varying slope across the road; outside the white lines it
+continues the edge tangent. Fit those controls against registered cross-sections,
+and record residuals and source precision. Tessellate both the visible surface
+and tyre-support surface closely enough to follow the curve. Inspect the entire
+paved outer bank up to the barrier, including entry and exit tapers. A correct
+racing ribbon can still leave the car falling through its runoff if off-road
+support blends back to a coarse terrain grid.
+
 Choose smoothing distances from source resolution and observed features. Record
 any anchors and uncertainty. Do not apply one circuit's smoothing length to all
 tracks or flatten real elevation merely to stop camera movement.
@@ -435,6 +445,11 @@ Reuse the method; placements, heights and light values belong to that circuit.
 3. Model the architecture that identifies each visible property: wings, curvature,
    roof profile, colonnades, projecting piers, balconies and entrance depth.
    Check operator or architect views when the onboard cannot resolve them.
+   Distinguish roof outlines from ground-level walls. Covered terraces and eaves
+   can extend beyond the building body; do not extrude their complete outline
+   down to the ground or cut away terrain below an open overhang. Check fence
+   panels and posts against the retained roof underside. Local decorative
+   clearance corrections must preserve the actual concrete protection.
    Hotel names on generic blocks do not meet this standard. Grand Chateau and
    Signature needed their own facade/crown designs, just as Venetian and Forum
    Shops needed their street-level architecture.

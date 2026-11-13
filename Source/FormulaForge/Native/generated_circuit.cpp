@@ -7,6 +7,7 @@
 #include <cmath>
 #include <cstdint>
 #include <fstream>
+#include <limits>
 #include <tuple>
 
 namespace {
@@ -62,6 +63,47 @@ float circuitShoulderMeters(const TrackCatalogEntry& track, float station, bool 
     return width;
 }
 
+float circuitSurfaceHeight(const CircuitSample& sample, float lane) noexcept {
+    if (sample.bankQuadratic == 0.0f) return sample.elevation + sample.bankSlope * lane;
+    return sample.elevation + trackLateralHeightMeters(
+        sample.bankSlope, sample.bankQuadratic, sample.halfWidth, lane);
+}
+
+bool circuitBankedPaving(const TrackCatalogEntry& track, float station, bool positiveSide) noexcept {
+    const bool progressive = std::any_of(track.bankProfile.begin(), track.bankProfile.end(),
+        [](const TrackBankPoint& point) { return point.quadraticPerMeter != 0.0f; });
+    const bool jeddahBank = track.id == TrackLayoutId::Jeddah && sampleTrackBankDegrees(track, station) != 0.0f;
+    if (!progressive && !jeddahBank) return false;
+    for (const auto& zone : track.runoffProfile) {
+        const bool inside = zone.startMeters <= zone.endMeters ?
+            station >= zone.startMeters && station <= zone.endMeters :
+            station >= zone.startMeters || station <= zone.endMeters;
+        if (inside && zone.widthMeters > 0.0f && zone.surface == TrackRunoffSurface::Asphalt &&
+            (zone.side == 0 || (zone.side > 0) == positiveSide)) return true;
+    }
+    return false;
+}
+
+float circuitPavedBankReach(const TrackCatalogEntry& track, const CircuitSample& sample, bool positiveSide) noexcept {
+    const float nominal = sample.halfWidth + Kerb + circuitShoulderMeters(track, sample.station, positiveSide);
+    const Vec2 origin{sample.sim.x / Units, -sample.sim.y / Units};
+    const float sign = positiveSide ? 1.0f : -1.0f;
+    const Vec2 ray{-sample.tangent.y * sign, -sample.tangent.x * sign};
+    float nearest = std::numeric_limits<float>::infinity();
+    for (const auto& wall : track.authoredBarriers) {
+        const Vec2 edge{wall.bx - wall.ax, wall.by - wall.ay};
+        const float denominator = ray.x * edge.y - ray.y * edge.x;
+        if (std::abs(denominator) < .000001f) continue;
+        const Vec2 delta{wall.ax - origin.x, wall.ay - origin.y};
+        const float distance = (delta.x * edge.y - delta.y * edge.x) / denominator;
+        const float position = (delta.x * ray.y - delta.y * ray.x) / denominator;
+        if (distance <= sample.halfWidth || distance > nominal + 1.1f || position < 0 || position > 1) continue;
+        const float normalIncidence = std::abs(denominator) / std::max(.001f, length(edge));
+        nearest = std::min(nearest, distance - wall.halfThickness / normalIncidence - .02f);
+    }
+    return std::isfinite(nearest) ? nearest : nominal - .17f;
+}
+
 std::vector<CircuitSample> sampleCircuit(const TrackCatalogEntry& track, int sampleCount) {
     if (sampleCount == 0) sampleCount = track.id == TrackLayoutId::LasVegas ? 12288 : track.surfaceSamples;
     const int tangentSpan = sampleCount >= 8192 ? 1 : std::max(1, sampleCount / 512);
@@ -78,6 +120,7 @@ std::vector<CircuitSample> sampleCircuit(const TrackCatalogEntry& track, int sam
             sampleTrackElevationMeters(track, station),
             sampleTrackWidthMeters(track, station) * 0.5f,
             std::tan(sampleTrackBankDegrees(track, station) * kPi / 180.0f),
+            sampleTrackBankQuadratic(track, station),
         };
     }
     return samples;
@@ -126,8 +169,8 @@ void buildGeneratedSupport(const TrackCatalogEntry& track, const std::vector<Cir
                     a = separate(a, first);
                     b = separate(b, second);
                 }
-                const float bottomA = (first.elevation + first.bankSlope * laneA) * Units;
-                const float bottomB = (second.elevation + second.bankSlope * laneB) * Units;
+                const float bottomA = circuitSurfaceHeight(first, laneA) * Units;
+                const float bottomB = circuitSurfaceHeight(second, laneB) * Units;
                 const float clearance = std::min(first.halfWidth, second.halfWidth) * Units;
                 bool crosses = !track.authoredBarriers.empty();
                 for (int step = 0; step <= 4 && !crosses; ++step) {
@@ -250,7 +293,7 @@ bool writeGeneratedContact(const TrackCatalogEntry& track, const std::vector<Cir
     const int count = static_cast<int>(samples.size());
     auto sourceEdge = [](const CircuitSample& sample, float lane) {
         const Vec2 sim = offsetPoint(sample, lane);
-        const float height = sample.elevation + sample.bankSlope * lane;
+        const float height = circuitSurfaceHeight(sample, lane);
         return std::tuple<float, float, float>{sim.x / Units, -sim.y / Units, height};
     };
     auto limitEdge = [](const CircuitSample& sample, float lane) {
@@ -273,13 +316,42 @@ bool writeGeneratedContact(const TrackCatalogEntry& track, const std::vector<Cir
     for (int index = 0; index < count; ++index) {
         const CircuitSample& first = samples[index];
         const CircuitSample& second = samples[(index + 1) % count];
-        constexpr float extra = 0.35f;
-        const auto a = sourceEdge(first, first.halfWidth + extra);
-        const auto b = sourceEdge(first, -(first.halfWidth + extra));
-        const auto c = sourceEdge(second, second.halfWidth + extra);
-        const auto d = sourceEdge(second, -(second.halfWidth + extra));
-        pushDrive(a, b, d);
-        pushDrive(a, d, c);
+        const bool progressive = first.bankQuadratic != 0.0f || second.bankQuadratic != 0.0f;
+        const bool jeddahBank = track.id == TrackLayoutId::Jeddah &&
+            (first.bankSlope != 0.0f || second.bankSlope != 0.0f);
+        const float extra = progressive || jeddahBank ? 1.25f : 0.35f;
+        const int strips = progressive ? 8 : 1;
+        for (int strip = 0; strip < strips; ++strip) {
+            const float high = 1.0f - 2.0f * static_cast<float>(strip) / strips;
+            const float low = 1.0f - 2.0f * static_cast<float>(strip + 1) / strips;
+            const auto a = sourceEdge(first, high * (first.halfWidth + extra));
+            const auto b = sourceEdge(first, low * (first.halfWidth + extra));
+            const auto c = sourceEdge(second, high * (second.halfWidth + extra));
+            const auto d = sourceEdge(second, low * (second.halfWidth + extra));
+            pushDrive(a, b, d);
+            pushDrive(a, d, c);
+        }
+        for (const bool positiveSide : {true, false}) {
+            if (!circuitBankedPaving(track, first.station, positiveSide) &&
+                !circuitBankedPaving(track, second.station, positiveSide)) continue;
+            const float sign = positiveSide ? 1.0f : -1.0f;
+            const float startA = first.halfWidth + extra;
+            const float startB = second.halfWidth + extra;
+            const float endA = circuitPavedBankReach(track, first, positiveSide);
+            const float endB = circuitPavedBankReach(track, second, positiveSide);
+            if (endA <= startA || endB <= startB) continue;
+            const int apronStrips = std::max(1, static_cast<int>(std::ceil(std::max(endA - startA, endB - startB) / 1.5f)));
+            for (int strip = 0; strip < apronStrips; ++strip) {
+                const float lo = static_cast<float>(strip) / apronStrips;
+                const float hi = static_cast<float>(strip + 1) / apronStrips;
+                const auto a = sourceEdge(first, sign * (startA + (endA - startA) * lo));
+                const auto b = sourceEdge(second, sign * (startB + (endB - startB) * lo));
+                const auto c = sourceEdge(second, sign * (startB + (endB - startB) * hi));
+                const auto d = sourceEdge(first, sign * (startA + (endA - startA) * hi));
+                pushDrive(a, b, c);
+                pushDrive(a, c, d);
+            }
+        }
         const auto la = limitEdge(first, first.halfWidth);
         const auto ra = limitEdge(first, -first.halfWidth);
         const auto lb = limitEdge(second, second.halfWidth);

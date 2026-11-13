@@ -23,6 +23,10 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
+from circuit_dataclasses import BankingControls
+from circuit_profiles import banking_rows
+from pydantic import TypeAdapter
+
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES = ROOT / "Attribution" / "Sources"
 TRACK_DATA = ROOT / "Source" / "FormulaForge" / "Native" / "track_data"
@@ -46,6 +50,7 @@ CIRCUITS = [
          lat=21.6319, lon=39.1044, radius=4500, lengths=[6174], turns=27,
          clockwise=False, street=True, shoulder=5.0, base=12.0, straight=15.0,
          names=["Jeddah", "Corniche"], crossings=0, environment="corniche",
+         bank_profile="banking-corrections.json",
          description="The Jeddah Corniche street loop along the Red Sea, anti-clockwise."),
     dict(slug="australia", enum="Australia", folder="Australia", title="Australia",
          venue="Albert Park Circuit", country="Australia",
@@ -991,7 +996,8 @@ def write_survey(spec, xy, elevation, width, bank, runoff, turns, shoulders):
     rows_xy = [f"    {{{x:.4f}f, {y:.4f}f}}" for x, y in xy]
     rows_z = [f"    {{{distance:.3f}f, {height:.4f}f}}" for distance, height in elevation]
     rows_w = [f"    {{{distance:.3f}f, {value:.3f}f}}" for distance, value in width]
-    rows_b = [f"    {{{distance:.3f}f, {value:.3f}f}}" for distance, value in bank]
+    rows_b = ["    {" + ", ".join(f"{value:.9f}f" for value in row) + "}"
+              if len(row) == 3 else f"    {{{row[0]:.3f}f, {row[1]:.3f}f}}" for row in bank]
     rows_r = []
     for zone in runoff:
         surface = f"TrackRunoffSurface::{zone['surface']}"
@@ -1321,6 +1327,8 @@ out geom;
     if spec.get("bank_profile"):
         authored_banking = json.loads((source / spec["bank_profile"]).read_text())
         bank = [tuple(control) for control in authored_banking["controls"]]
+        if authored_banking.get("quadratic_controls"):
+            bank = banking_rows(TypeAdapter(BankingControls).validate_python(authored_banking), target)
         bank_notes = [authored_banking["method"]] if "method" in authored_banking else ["Explicit source-registered banking controls; see " + spec["bank_profile"]]
 
     runoff = []
@@ -1435,10 +1443,14 @@ out geom;
             right[index] += (.05-right[index])*weight
     shoulders = [(stations[index], left[index], right[index]) for index in range(0, count, 2)]
     shoulders.append((target, shoulders[0][1], shoulders[0][2]))
+    if spec["slug"] == "zandvoort" and (source / "shoulder-baseline.json").exists():
+        from circuit_dataclasses import ShoulderBaseline
+
+        shoulders = TypeAdapter(ShoulderBaseline).validate_json(
+            (source / "shoulder-baseline.json").read_bytes()).controls
     if (source / "pit-lane.json").exists():
         from circuit_dataclasses import PitLane
         from circuit_profiles import pit_shoulders
-        from pydantic import TypeAdapter
 
         shoulders = pit_shoulders(shoulders, target, TypeAdapter(PitLane).validate_json((source / "pit-lane.json").read_bytes()))
     if spec["slug"] == "japan" and (source / "shoulder-corrections.json").exists():
