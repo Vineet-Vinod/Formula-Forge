@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=monaco",
   "tiles": 116,
-  "triangles": 2027267,
+  "triangles": 2251386,
   "road_sha256": "3a7544d64e64e34c445dbf4049745ad0e2fc4f2d8e96dcf6d29b2c8ee7f67df3",
   "terrain_sha256": "f1538f328db1481498922f0c8d143010e2a9bcd9c17cb30b52457605ac30a21a",
   "landmarks": [
@@ -113,13 +113,80 @@
       "removed_road_area_m2": 11.005
     },
     {
+      "name": "Quai Antoine exhibition and residential complex",
+      "osm_id": 161885377,
+      "ign_id": "BATIMENT0000000074074354",
+      "base_z_m": 0.7871005886999998,
+      "roof_min_z_m": 21.687100588699998,
+      "roof_max_z_m": 32.9871005887,
+      "source": "architecture/property-envelopes.json",
+      "dimensions_status": "Retained IGN BDTopo 3D footprint and roof edges with1.5 m stated vertical precision. The parent roof excludes a separate measured inner component, rendered from its own source record. Internal roof-step join and quay-front facade details are reconstructed from the registered494-498 s supplied views; they are not survey measurements. La Rascasse and the low western annexes keep their own measured small envelopes."
+    },
+    {
+      "name": "Ermanno Palace rounded balconies and roof terrace",
       "osm_id": 161880705,
-      "name": "Ermanno Palace",
-      "height_m": 61,
-      "levels": 18,
-      "height_status": "Retained height/levels",
-      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "storeys": 12,
+      "base_z_m": 3.3871005887,
+      "eaves_z_m": 40.9871005887,
+      "maximum_roof_z_m": 47.087100588700004,
+      "balcony_depth_m": 1.7,
+      "dimensions_status": "Detailed retained curved OSM footprint, matching IGN component BATIMENT0000000074074396 with measured ground4.9 m, eaves42.5-44.1 m and peak48.6 m absolute. Official F1 Experiences locates the penthouse on floor12; the agent exterior shows rounded balconies and an inset planted roof terrace. Balcony depth1.7 m, floor subdivision and inset roof-room plan are explicit reconstruction estimates within the measured envelope. Replaces unsupported61 m/18-storey massing."
+    },
+    {
+      "name": "La Rascasse",
+      "osm_id": 112681614,
+      "ign_id": "BATIMENT0000000074074372",
+      "base_z_m": -0.41289941129999996,
+      "roof_min_z_m": 4.2871005886999995,
+      "roof_max_z_m": 7.9871005887,
+      "source": "architecture/property-envelopes.json",
+      "dimensions_status": "Retained IGN BDTopo 3D footprint and roof edges with1.5 m stated vertical precision. The parent roof excludes a separate measured inner component, rendered from its own source record. Internal roof-step join and quay-front facade details are reconstructed from the registered494-498 s supplied views; they are not survey measurements. La Rascasse and the low western annexes keep their own measured small envelopes."
+    },
+    {
+      "name": "Quai Antoine separate inner roof component",
+      "osm_id": 161885377,
+      "ign_id": "BATIMENT0000000074074345",
+      "base_z_m": 3.6871005887,
+      "roof_min_z_m": 31.6871005887,
+      "roof_max_z_m": 32.9871005887,
+      "source": "architecture/property-envelopes.json",
+      "dimensions_status": "Retained IGN BDTopo 3D footprint and roof edges with1.5 m stated vertical precision. The parent roof excludes a separate measured inner component, rendered from its own source record. Internal roof-step join and quay-front facade details are reconstructed from the registered494-498 s supplied views; they are not survey measurements. La Rascasse and the low western annexes keep their own measured small envelopes."
+    },
+    {
+      "name": "Western exhibition annex",
+      "osm_id": 161885377,
+      "ign_id": "BATIMENT0000000074074434",
+      "base_z_m": 5.087100588699999,
+      "roof_min_z_m": 12.287100588700001,
+      "roof_max_z_m": 12.6871005887,
+      "source": "architecture/property-envelopes.json",
+      "dimensions_status": "Retained IGN BDTopo 3D footprint and roof edges with1.5 m stated vertical precision. The parent roof excludes a separate measured inner component, rendered from its own source record. Internal roof-step join and quay-front facade details are reconstructed from the registered494-498 s supplied views; they are not survey measurements. La Rascasse and the low western annexes keep their own measured small envelopes."
+    },
+    {
+      "name": "Western low exhibition annex",
+      "osm_id": 161885377,
+      "ign_id": "BATIMENT0000000074074442",
+      "base_z_m": 5.1871005887,
+      "roof_min_z_m": 6.2871005886999995,
+      "roof_max_z_m": 7.3871005887,
+      "source": "architecture/property-envelopes.json",
+      "dimensions_status": "Retained IGN BDTopo 3D footprint and roof edges with1.5 m stated vertical precision. The parent roof excludes a separate measured inner component, rendered from its own source record. Internal roof-step join and quay-front facade details are reconstructed from the registered494-498 s supplied views; they are not survey measurements. La Rascasse and the low western annexes keep their own measured small envelopes."
+    },
+    {
+      "name": "Le Mirabeau recessed loggias and vertical spines",
+      "osm_id": 94399524,
+      "height_m": 81,
+      "storeys": 26,
+      "loggia_depth_m": 2.1,
+      "dimensions_status": "Mapped twelve-vertex footprint and existing81 m/26-level envelope retained. The directly registered1176 s supplied view shows open white balconies, broad solid vertical spines and dark recessed room fronts. Depth2.1 m and spine/bay proportions are architectural estimates. A matching IGN component reports84.9 m above ground14.5 m; its height convention is retained as independent evidence, not silently substituted for the tagged envelope."
+    },
+    {
+      "name": "Le Parc Spelugues stone boundary and dense low hedge",
+      "osm_id": 157719660,
+      "stone_wall_length_m": 103.9090986193195,
+      "reconstructed_hedge_clusters": 58,
+      "wall_height_m": 1.8,
+      "dimensions_status": "Actual retained OSM Le Parc Spelugues boundary, restricted to its right-side Fairmont approach frontage 1188-1305 m. Continuous supplied 1176/1180/1182 s views show a rough pale stone wall with dense mature foliage above it. Wall 1.8 m, 0.28 m thickness and low hedge 3.0\u00b10.4 m are visual estimates, not surveyed sections. All reconstructed roots and wall strips are inside the park and outside the current protected racing corridor; existing terrain, street levels and tall mapped trees remain unchanged. Nearby mapped retaining walls 1488095480/481 are on the opposite side and are not used as this wall alignment. The unmapped wall is reconstructed 0.8 m inside the mapped park edge, leaving a narrow street-side margin and respecting the unchanged protection. This offset is an explicit plan estimate within mapping uncertainty, not an independently surveyed wall alignment."
     },
     {
       "osm_id": 94399585,
@@ -153,15 +220,6 @@
       "name": "Le Shangri-La",
       "height_m": 48,
       "levels": 14,
-      "height_status": "Retained height/levels",
-      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
-    },
-    {
-      "osm_id": 94399524,
-      "name": "Le Mirabeau",
-      "height_m": 81,
-      "levels": 26,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
       "removed_road_area_m2": 0.0
@@ -1792,15 +1850,6 @@
       "removed_road_area_m2": -0.0
     },
     {
-      "osm_id": 112681614,
-      "name": "Mapped Monaco frontage",
-      "height_m": 6.8,
-      "levels": 2,
-      "height_status": "Unmeasured conservative retained default; not a verified storey survey",
-      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
-    },
-    {
       "osm_id": 112689159,
       "name": "Auditorium Rainier III",
       "height_m": 12.5,
@@ -2809,15 +2858,6 @@
       "removed_road_area_m2": 0.0
     },
     {
-      "osm_id": 161885377,
-      "name": "Salle d'Exposition",
-      "height_m": 6.8,
-      "levels": 2,
-      "height_status": "Unmeasured conservative retained default; not a verified storey survey",
-      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 6.115
-    },
-    {
       "osm_id": 167014907,
       "name": "Mapped Monaco frontage",
       "height_m": 6.8,
@@ -3764,15 +3804,6 @@
     },
     {
       "osm_id": 1447995052,
-      "name": "Mapped Monaco frontage",
-      "height_m": 6.8,
-      "levels": 2,
-      "height_status": "Unmeasured conservative retained default; not a verified storey survey",
-      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
-    },
-    {
-      "osm_id": 1447995581,
       "name": "Mapped Monaco frontage",
       "height_m": 6.8,
       "levels": 2,

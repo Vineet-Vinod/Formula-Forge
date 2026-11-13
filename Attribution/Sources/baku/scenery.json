@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=baku",
-  "tiles": 202,
-  "triangles": 3930769,
+  "tiles": 213,
+  "triangles": 4222256,
   "road_sha256": "26bc10ef7913eb8b758e60bada4eb749e94aa7bb524952c47ead9fff2130166e",
   "terrain_sha256": "e6e5423c2f5f02fc7e47ddb1459d9e39edcc2ae0b7891724be8520abedc5231e",
   "landmarks": [
@@ -264,18 +264,6 @@
       "name": "Az\u0259rbaycan D\u00f6vl\u0259t Kukla Teatr\u0131",
       "osm_id": 152184311,
       "height_m": 22,
-      "facade": "classical"
-    },
-    {
-      "name": "Az\u0259rbaycan D\u00f6vl\u0259t Filarmoniyas\u0131",
-      "osm_id": 152190848,
-      "footprint_clip_m2": 28.62,
-      "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
-    },
-    {
-      "name": "Az\u0259rbaycan D\u00f6vl\u0259t Filarmoniyas\u0131",
-      "osm_id": 152190848,
-      "height_m": 6.8,
       "facade": "classical"
     },
     {
@@ -1908,6 +1896,323 @@
       "wall_height_m": 9,
       "wall_thickness_m": 3.5,
       "dimensions_status": "Original reconstruction registered to the supplied234/236s forward and238s rear castle views. The ordinary2570m approach is left unobscured. Azerbaijan UNESCO commission documents8\u201310m walls/3.5m thickness; localcourse size,tower radii/locations and crenellation dimensions are visual estimates, not an OSM trace. The retained city_wall299450006 is a separate palace wall and is explicitly not used. Protected road and native collision remain unchanged."
+    },
+    {
+      "name": "Azerbaijan State Philharmonic Hall",
+      "osm_id": 152190848,
+      "wall_height_m": 11.5,
+      "belvedere_peak_m": 44.21335392820622,
+      "body_footprint_area_m2": 4074.298516461987,
+      "road_registration_clip_m2": 28.62393272080999,
+      "source": "philharmonic-architecture.json. Actual OSM hall/rotunda outline; yellow Renaissance walls, white pilasters/arcades, balustrades, dome and twin open belvederes from the construction supervisor's published Niyazi Street photograph. Heights/roof sections are disclosed visual estimates, not measured elevations."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 152193798,
+      "height_m": 61.199999999999996,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 152193926,
+      "height_m": 54.4,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Port Baku Towers 1",
+      "osm_id": 152193991,
+      "height_m": 51.0,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 152617908,
+      "height_m": 54.4,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 152618455,
+      "height_m": 47.6,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "JW Marriott Absheron",
+      "osm_id": 153128834,
+      "height_m": 84.0,
+      "facade": "hotel",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Port Baku Towers",
+      "osm_id": 153131528,
+      "height_m": 51.0,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Baku Palace Apartments",
+      "osm_id": 180350528,
+      "height_m": 47.6,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 249189226,
+      "height_m": 40.8,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 249189227,
+      "height_m": 40.8,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 249191799,
+      "height_m": 40.8,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 249191921,
+      "height_m": 39.0,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 299466741,
+      "height_m": 54.4,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 299633123,
+      "height_m": 47.6,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 299633128,
+      "height_m": 47.6,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 299634248,
+      "height_m": 61.199999999999996,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 299634249,
+      "height_m": 68.0,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 299634250,
+      "height_m": 68.0,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 299634253,
+      "height_m": 68.0,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 299634255,
+      "height_m": 68.0,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 299634256,
+      "height_m": 68.0,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 299634257,
+      "height_m": 68.0,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 385592321,
+      "height_m": 54.4,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 388385561,
+      "height_m": 54.4,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 388385562,
+      "height_m": 47.6,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 388385572,
+      "height_m": 54.4,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 388385574,
+      "height_m": 54.4,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 388385576,
+      "height_m": 54.4,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Crescent Place",
+      "osm_id": 388388715,
+      "height_m": 170.0,
+      "facade": "residence",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Alyans MTK",
+      "osm_id": 389884198,
+      "height_m": 68.0,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Alyans MTK",
+      "osm_id": 389884200,
+      "height_m": 68.0,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Alyans MTK",
+      "osm_id": 389884202,
+      "height_m": 68.0,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Alyans MTK",
+      "osm_id": 389884204,
+      "height_m": 68.0,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Alyans MTK",
+      "osm_id": 389884209,
+      "height_m": 68.0,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 389884215,
+      "height_m": 88.39999999999999,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 423715660,
+      "height_m": 54.4,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Crescent Mall podium",
+      "osm_id": 793956928,
+      "height_m": 20.0,
+      "facade": "podium",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Crescent Hotel",
+      "osm_id": 901738189,
+      "height_m": 166.0,
+      "facade": "crescent",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Port Baku Towers 2",
+      "osm_id": 997697649,
+      "height_m": 81.6,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Crescent City",
+      "osm_id": 1067699501,
+      "height_m": 210.0,
+      "facade": "torch",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 1067990017,
+      "height_m": 61.199999999999996,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 1067990018,
+      "height_m": 61.199999999999996,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 1184878761,
+      "height_m": 68.0,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
+    },
+    {
+      "name": "Mapped eastern residential block",
+      "osm_id": 1211928760,
+      "height_m": 54.4,
+      "facade": "context",
+      "source": "skyline-buildings.json; actual additional OSM footprint. Heights and section uncertainty are recorded per property. No source photograph pixels are shipped."
     },
     {
       "name": "Authored grandstand",

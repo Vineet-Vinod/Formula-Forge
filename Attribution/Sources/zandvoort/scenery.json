@@ -1,8 +1,8 @@
 {
   "recipe": "make circuit-assets CIRCUIT=zandvoort",
   "tiles": 120,
-  "triangles": 874580,
-  "road_sha256": "57616627308e317d3fb3e4baa6f2b8455c98110f17712e8a21bfd551936fec01",
+  "triangles": 881767,
+  "road_sha256": "0f6a208a26a27188092688c98bc539c8a2386b968becdbf35d2ed1ae82b62cb9",
   "terrain_sha256": "88baa51a0620bbff03349518e05a7daf511b8ac25fa27059730b18b65a998a1a",
   "landmarks": [
     {
@@ -13,6 +13,12 @@
       "outer_offset_m": 15.6,
       "source_note": "Mapped Pitgebouw52473177 true155.6m garagefront35.2\u2192190.8m liesRIGHT, edge offsets11.3\u201315.3m. Rear compound also projects500\u2013815m and is not part of racing pit frontage.15.6m pavingback reaches front. Supplied80.90/299.62s pitstraight; rounded extensions reconstructed.",
       "access": "Visual service area outside the closed driving boundary."
+    },
+    {
+      "name": "Hugenholtz mapped outer paved bank",
+      "start_m": 755,
+      "end_m": 995,
+      "source_note": "Retained tyre-wall fronts 1318064312/1318339544 match the 2024 PDOK orthophoto. Variable paved extent follows the actual wall, typically 3.6\u20136.7m beyond the white line through the bowl. Metric reconstruction allowance \u00b11 m. The 3 m native range is only a material/minimum-width control; it does not define a constant bank width. Longitudinal heights and active road widths are unchanged."
     },
     {
       "name": "T10 bounded outside gravel band",

@@ -1,8 +1,8 @@
 {
   "recipe": "make circuit-assets CIRCUIT=jeddah",
   "tiles": 141,
-  "triangles": 1040493,
-  "road_sha256": "d221dedd42a8b3e5299eb1dd7977e1d321202412434ee6096f272d250ae775e2",
+  "triangles": 1040495,
+  "road_sha256": "86ac9b9b678308d892ee45f96061bee4ae87afbda9aaf7791eb9bc0166c365e6",
   "terrain_sha256": "a30c782d9e70e53575eaa3a1295d86b00eeca559983b25de642725c36fdfe647",
   "landmarks": [
     {
