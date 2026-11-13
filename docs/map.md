@@ -906,7 +906,7 @@ a visibly unfinished track "done" or wait for the user to rediscover the defects
 > 11 GB used memory and one heavy job at a time. First inventory sources and the
 > missing authoring tools, then build a representative straight/turn section and
 > review matched Unreal driving views before extending the lap. Use **[authorized
-> reviewer, e.g. Luna low]** for independent critique. Deliver the playable native
+> reviewer, e.g. Luna High]** for independent critique. Deliver the playable native
 > Unreal circuit, complete collision/terrain coverage, source/licence records,
 > repeatable authoring steps and measured validation. Keep failures visible and
 > close them with evidence. Follow the task's commit instructions; do not merge or

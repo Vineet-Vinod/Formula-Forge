@@ -1,43 +1,91 @@
 {
-  "recorded_utc": "2026-11-13T06:57:27.228376+00:00",
-  "map_work_status": "Paused. Cleanup does not resume modeling or validation.",
-  "workspace_bytes_before": 78760087552,
-  "workspace_bytes_after": 44008517632,
-  "filesystem_available_before": 17721352192,
-  "filesystem_available_after": 52472700928,
-  "reclaimed_workspace_bytes": 34751569920,
+  "recorded_utc": "2026-11-13T17:20:05.358891+00:00",
+  "map_work_status": "Paused for the requested 09:30 PST checkpoint. The 18-map work remains incomplete; cleanup preserves what is needed to resume.",
+  "logical_bytes_reclaimed": 13523562840,
+  "filesystem_free_increase_bytes": 13555769344,
+  "workspace_allocated_bytes_after": 52117082112,
   "removed_groups": {
-    "Saved/Cooked": 5706516317,
-    "build/unreal/ddc": 9522291010,
-    "imported_raw_mesh_intermediates": 2576103740
+    "superseded_runtime_videos": {
+      "count": 20,
+      "bytes": 4366796397
+    },
+    "imported_raw_mesh_intermediates": {
+      "count": 1536,
+      "bytes": 2241486932
+    },
+    "Saved/Cooked": {
+      "bytes": 5822138589
+    }
   },
-  "raw_mesh_files_removed": 2820,
+  "exact_duplicate_closed_journals_hardlinked": {
+    "count": 95,
+    "bytes_deduplicated": 1093140922,
+    "content_change": false
+  },
   "preserved": {
     "original_reference_files": 19,
-    "reference_identity_unchanged": true,
-    "native_content_source_config_git_diff": [],
-    "packaged_payload_hashes_unchanged": true,
+    "reference_names_and_sizes_unchanged": true,
+    "native_content_and_authoring_sources": "Preserved. Only imported raw .mesh output was removed.",
+    "current_complete_review_packets": 18,
+    "current_review_videos_selected_images_targets_and_telemetry": "Preserved. Superseded full videos were compacted; their original selected/target images and journal content remain.",
     "playable_package": "build/unreal/package",
-    "accepted_baseline_review_artifacts": "Preserved",
-    "current_scene_review_videos_images_and_journals": "Preserved",
-    "engine_and_git_history": "Untouched"
+    "package_revision": "219ac9a795ba6b2ede38c27c7a89f3c9decfd43b",
+    "package_payload_hashes_verified_after_cleanup": true,
+    "engine_and_git_history": "Untouched",
+    "active_DDC_and_compilation_cache": "Retained for the paused map work."
   },
-  "regeneration_note": "Unreal cache/cooked outputs and raw .mesh imports regenerate on a later build. Retained manifests, CSVs, racing lines, authoring tools, source data, native Unreal assets and current package remain available.",
-  "superseded_review_videos_removed": {
-    "count": 37,
-    "bytes": 8239962454
+  "post_cleanup_session_check": {
+    "target": "make session-check",
+    "result": "passed",
+    "log": "build/reviews/resume-20261113/session-post-cleanup.log",
+    "sha256": "dab712880f66358a49a8e068f7b73fa1cefa5be69e2ea6271fe85b850969af28"
   },
-  "interrupted_raw_frames_removed": {
-    "count": 8277,
-    "bytes": 4567721582,
-    "retained_original_frames": 202
-  },
-  "duplicate_journals_replaced_with_relative_links": {
-    "count": 320,
-    "bytes": 3669715406
-  },
+  "regeneration_note": "Removed cook output and raw import meshes regenerate from retained authoring data and native assets. Current package launches independently of Saved/Cooked. No Git history was pruned.",
   "detailed_audit": {
-    "path": "build/reviews/storage-cleanup-20261112.json",
-    "sha256": "631fb892e6214dbf76fb78bac15f31bc2e34976968e721df50b61934175cd475"
+    "path": "build/reviews/resume-20261113/storage-cleanup-final.json",
+    "sha256": "e5c0f59d762936f51fc3724197938e490b77ab7af6af21a04b3a5085cf7cbb49"
+  },
+  "previous_cleanup": {
+    "recorded_utc": "2026-11-13T06:57:27.228376+00:00",
+    "map_work_status": "Paused. Cleanup does not resume modeling or validation.",
+    "workspace_bytes_before": 78760087552,
+    "workspace_bytes_after": 44008517632,
+    "filesystem_available_before": 17721352192,
+    "filesystem_available_after": 52472700928,
+    "reclaimed_workspace_bytes": 34751569920,
+    "removed_groups": {
+      "Saved/Cooked": 5706516317,
+      "build/unreal/ddc": 9522291010,
+      "imported_raw_mesh_intermediates": 2576103740
+    },
+    "raw_mesh_files_removed": 2820,
+    "preserved": {
+      "original_reference_files": 19,
+      "reference_identity_unchanged": true,
+      "native_content_source_config_git_diff": [],
+      "packaged_payload_hashes_unchanged": true,
+      "playable_package": "build/unreal/package",
+      "accepted_baseline_review_artifacts": "Preserved",
+      "current_scene_review_videos_images_and_journals": "Preserved",
+      "engine_and_git_history": "Untouched"
+    },
+    "regeneration_note": "Unreal cache/cooked outputs and raw .mesh imports regenerate on a later build. Retained manifests, CSVs, racing lines, authoring tools, source data, native Unreal assets and current package remain available.",
+    "superseded_review_videos_removed": {
+      "count": 37,
+      "bytes": 8239962454
+    },
+    "interrupted_raw_frames_removed": {
+      "count": 8277,
+      "bytes": 4567721582,
+      "retained_original_frames": 202
+    },
+    "duplicate_journals_replaced_with_relative_links": {
+      "count": 320,
+      "bytes": 3669715406
+    },
+    "detailed_audit": {
+      "path": "build/reviews/storage-cleanup-20261112.json",
+      "sha256": "631fb892e6214dbf76fb78bac15f31bc2e34976968e721df50b61934175cd475"
+    }
   }
 }

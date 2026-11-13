@@ -1,0 +1,152 @@
+[
+  {
+    "osm_id": 94399990,
+    "name": "Casa Mia",
+    "source_id": "BATIMENT0000000074074428",
+    "coverage_fraction": 0.19392004337846616,
+    "roof_z_minmax": [
+      54,
+      55.3
+    ],
+    "source_ground_m": 25.8,
+    "source_height_m": 29.5,
+    "source_roof_field_m": 55.7,
+    "wall_material": null,
+    "roof_material": null,
+    "floors": null,
+    "usages": [
+      "Indiff\u00e9renci\u00e9",
+      null
+    ],
+    "date": null,
+    "source_precision_xy_z_m": [
+      2.5,
+      1.5
+    ]
+  },
+  {
+    "osm_id": 94399990,
+    "name": "Casa Mia",
+    "source_id": "BATIMENT0000000074074383",
+    "coverage_fraction": 0.4546067130950965,
+    "roof_z_minmax": [
+      44.1,
+      52.7
+    ],
+    "source_ground_m": 32,
+    "source_height_m": 20.7,
+    "source_roof_field_m": 54.6,
+    "wall_material": null,
+    "roof_material": null,
+    "floors": null,
+    "usages": [
+      "Indiff\u00e9renci\u00e9",
+      null
+    ],
+    "date": null,
+    "source_precision_xy_z_m": [
+      2.5,
+      1.5
+    ]
+  },
+  {
+    "osm_id": 94399990,
+    "name": "Casa Mia",
+    "source_id": "BATIMENT0000000074074384",
+    "coverage_fraction": 0.2448622809645766,
+    "roof_z_minmax": [
+      36.5,
+      37.7
+    ],
+    "source_ground_m": 18.8,
+    "source_height_m": 18.9,
+    "source_roof_field_m": 38.2,
+    "wall_material": null,
+    "roof_material": null,
+    "floors": null,
+    "usages": [
+      "Indiff\u00e9renci\u00e9",
+      null
+    ],
+    "date": null,
+    "source_precision_xy_z_m": [
+      2.5,
+      1.5
+    ]
+  },
+  {
+    "osm_id": 94401978,
+    "name": "Villa Marie Antoinette",
+    "source_id": "BATIMENT0000000074074453",
+    "coverage_fraction": 0.9423017870126219,
+    "roof_z_minmax": [
+      54.8,
+      56.9
+    ],
+    "source_ground_m": 39,
+    "source_height_m": 17.9,
+    "source_roof_field_m": null,
+    "wall_material": null,
+    "roof_material": null,
+    "floors": null,
+    "usages": [
+      "Indiff\u00e9renci\u00e9",
+      null
+    ],
+    "date": null,
+    "source_precision_xy_z_m": [
+      2.5,
+      1.5
+    ]
+  },
+  {
+    "osm_id": 94399519,
+    "name": "Rose De France",
+    "source_id": "BATIMENT0000000074074392",
+    "coverage_fraction": 0.29310856882541275,
+    "roof_z_minmax": [
+      82,
+      82.7
+    ],
+    "source_ground_m": 56.9,
+    "source_height_m": 25.8,
+    "source_roof_field_m": 85,
+    "wall_material": null,
+    "roof_material": null,
+    "floors": null,
+    "usages": [
+      "Indiff\u00e9renci\u00e9",
+      null
+    ],
+    "date": null,
+    "source_precision_xy_z_m": [
+      2.5,
+      1.5
+    ]
+  },
+  {
+    "osm_id": 94399519,
+    "name": "Rose De France",
+    "source_id": "BATIMENT0000000074074390",
+    "coverage_fraction": 0.5235738888973215,
+    "roof_z_minmax": [
+      68.2,
+      69
+    ],
+    "source_ground_m": 48.8,
+    "source_height_m": 20.2,
+    "source_roof_field_m": 78.2,
+    "wall_material": null,
+    "roof_material": null,
+    "floors": null,
+    "usages": [
+      "Indiff\u00e9renci\u00e9",
+      null
+    ],
+    "date": null,
+    "source_precision_xy_z_m": [
+      2.5,
+      1.5
+    ]
+  }
+]
