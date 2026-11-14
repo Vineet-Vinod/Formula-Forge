@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=monaco",
   "tiles": 116,
-  "triangles": 2309438,
+  "triangles": 2321435,
   "road_sha256": "3a7544d64e64e34c445dbf4049745ad0e2fc4f2d8e96dcf6d29b2c8ee7f67df3",
   "terrain_sha256": "f1538f328db1481498922f0c8d143010e2a9bcd9c17cb30b52457605ac30a21a",
   "landmarks": [
@@ -4172,6 +4172,19 @@
       "dimensions_status": "Retained OSM retaining-wall alignments with heights derived from adjacent registered ground, not guessed walls across town. Mirabeau upper inside street edge at 1200\u20131290 m joins actual RGE ground beyond the corrected narrow corridor. Two-sided stone faces support the existing road elevation; no racing surface or native collision geometry is changed."
     },
     {
+      "name": "Separate west belvedere and source-grid natural cliff below held terraces",
+      "cliff_area_m2": 161.8249999999998,
+      "cliff_render_triangles": 2608,
+      "west_leaf_banks": 7,
+      "retained_existing_grass_support_triangles": 2,
+      "enclosed_existing_grass_area_m2": 7.477626665123687,
+      "belvedere_radius_m": 4.909494005595582,
+      "belvedere_paving_absolute_m": 41.21,
+      "belvedere_cap_absolute_m": 42.31,
+      "source": "architecture/west-setting-provenance.json",
+      "status": "Bounded reconstruction from primary 2012/2014 photos, 2019 ortho and retained 2 m IGN grid. The 0.5 m rendered cliff estimates between source observations, ties to original outer planes, and does not change the native field or road/contact data. Curved masonry and natural rock/ivy remain separate. Roof/paving/support details and canopy positions are estimated. No unsupported L terrace deck or enclosed annex is emitted. Fresh cooked review is required."
+    },
+    {
       "name": "Casa garden, Larvotto arch and separate ravine planting",
       "terrain_cells": 28,
       "leaf_banks": 52,
@@ -4182,7 +4195,7 @@
       "central_stair_count": 22.0,
       "lower_stair_count": 12.0,
       "bridge_plan_area_m2": 940.1319657711987,
-      "status": "Bounded architectural reconstruction. Exact bridge plan and source approach anchors; arch rise, garden terrace level, steps and planting positions are declared reconstructions. Existing valley and all terrain planes outside the exact engineered patio/stair/apron plans remain untouched. Source field/native contact data do not change. Supplied edited reference year unverified; 2019 ortho and 2024 arch photo have different epochs. Annex 4420 remains held."
+      "status": "Bounded architectural reconstruction. Exact bridge plan and source approach anchors; arch rise, garden terrace level, steps and planting positions are declared reconstructions. Existing terrain planes outside the engineered patio/stair/apron and separately bounded west cliff/belvedere plans remain untouched. Source field/native contact data do not change. Supplied edited reference year unverified; 2019 ortho and 2024 arch photo have different epochs. Annex 4420 remains held."
     }
   ],
   "vegetation": [
