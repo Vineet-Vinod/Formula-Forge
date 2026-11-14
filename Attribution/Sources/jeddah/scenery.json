@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=jeddah",
   "tiles": 141,
-  "triangles": 1040495,
+  "triangles": 1043795,
   "road_sha256": "86ac9b9b678308d892ee45f96061bee4ae87afbda9aaf7791eb9bc0166c365e6",
   "terrain_sha256": "a30c782d9e70e53575eaa3a1295d86b00eeca559983b25de642725c36fdfe647",
   "landmarks": [
@@ -148,6 +148,7 @@
       "depth_estimate_m": 20,
       "height_estimate_m": 10.7,
       "position_uncertainty_m": 20,
+      "glazing": "Dark recessed panes with separate mullions and transoms; no broad emissive warm-glass wall. Pane rhythm and roof truss dimensions are visual reconstructions from the direct 291s view and FIA preparation photo.",
       "source_note": "FIA 2025 event notes page 5 locates the T27 outfield staging area at 21\u00b037\u203229.3\u2033N, 39\u00b006\u203223.7\u2033E and photographs the actual two-level framed pavilion beside the race fence. Supplied 289\u2013293 s shows the same pale/glazed corner context before the main-straight exit. The footprint is a reconstruction about 33 m east and 37 m north of that staging control, not an OSM building or survey. Dimensions and current glazing follow the direct visual baseline; the FIA preparation photo shows its exposed frame."
     },
     {
@@ -215,6 +216,14 @@
       "osm_id": 1258945369,
       "height_m": 10,
       "facade": "modern"
+    },
+    {
+      "name": "Diamond Tower named skyline residency",
+      "osm_id": 1244131504,
+      "tile": "Building_City_m1_04",
+      "south_residency_margin_m": 600.0,
+      "source": "skyline-residency.json",
+      "dimensions_status": "Only the named tile CSV load/unload envelope extends toward the southern hairpin. Tower geometry, height, construction state, materials, actual UE mesh bounds and the global streaming radii remain unchanged. Exact prior bounds and whole-lap range witnesses are retained in the source record."
     },
     {
       "name": "Jeddah floodlight recipe",
