@@ -47,6 +47,7 @@ def build_venue(scene: CircuitScene) -> None:
                               (1990, 2300, -1), (2660, 3350, 1), (2700, 3300, -1),
                               (4350, 4710, -1), (4780, 5090, 1)]:
         trees(scene, start, end, side, setback=38, spacing=26, rows=2, height=8)
+    trees(scene, 2360, 2580, 1, setback=11, spacing=14, rows=2, height=11)
     for station in [220, 490, 1100, 1740, 2390, 3590, 4040, 4510, 4920, 5290]:
         mast(scene, station, -1, 24)
 

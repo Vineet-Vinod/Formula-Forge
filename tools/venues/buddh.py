@@ -280,6 +280,7 @@ def build_venue(scene: CircuitScene) -> None:
         (4400, 4660, 1, 45, 45),
     ):
         trees(scene, start, end, side, setback, spacing, 8, palm=True)
+    trees(scene, 2030, 2370, -1, 6, 12, 11)
     for start, end, side, setback in (
         (1000, 1300, -1, 90),
         (2000, 2600, 1, 95),

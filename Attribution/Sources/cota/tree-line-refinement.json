@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "circuit": "cota",
+  "status": "Reference-qualified source generation and placement/scope checks passed; native import and fresh cooked review pending.",
+  "reference_frames": [
+    "build/reviews/cota/reference/overview-05.jpg"
+  ],
+  "native_range_and_side": [
+    2360,
+    2580,
+    1
+  ],
+  "height_estimate_m": 11,
+  "method": "Restore the observed broadleaf silhouette beyond the outside protection, using existing accepted canopy assets and original terrain/road data. Individual positions, spacing and heights are reconstruction estimates, not mapped tree surveys.",
+  "registration_uncertainty_m": 30,
+  "review": "build/reviews/resume-20261114/reviews/buddh-bahrain-china-cota-targeted-audit.md",
+  "native_geometry_preserved": true,
+  "authoring_validation": {
+    "root_count": 32,
+    "all_roads_and_barriers_clear": true,
+    "only_city_tiles_changed": true,
+    "all_street_tiles_and_physical_data_unchanged": true,
+    "proof_directory": "build/reviews/resume-20261114/vegetation"
+  }
+}
