@@ -239,14 +239,40 @@ def t27_pavilion(scene: CircuitScene) -> None:
                 point(u0, 10, level),
                 up=True,
             )
+            scene.quad(
+                "Building_T27PavilionSoffits",
+                "Concrete",
+                point(u0, -10, level - 0.24),
+                point(u1, -10, level - 0.24),
+                point(u1, 10, level - 0.24),
+                point(u0, 10, level - 0.24),
+                up=False,
+            )
         for side in (-1, 1):
             for level in (0.0, 4.4):
-                scene.banner(
-                    point(u0 + 0.3, side * 10, level + 0.7),
-                    point(u1 - 0.3, side * 10, level + 0.7),
-                    3.2,
-                    "WarmGlass" if bay % 4 else "Glass",
-                    "Building_T27PavilionGlazing",
+                for pane in range(3):
+                    left = u0 + 0.3 + pane * (8.5 - 0.6) / 3
+                    right = u0 + 0.3 + (pane + 1) * (8.5 - 0.6) / 3
+                    scene.banner(
+                        point(left, side * 9.62, level + 0.55),
+                        point(right, side * 9.62, level + 0.55),
+                        3.5,
+                        "Glass",
+                        "Building_T27PavilionGlazing",
+                    )
+                    scene.beam(
+                        "Building_T27PavilionMullions",
+                        "Steel",
+                        point(left, side * 9.68, level + 0.5),
+                        point(left, side * 9.68, level + 4.1),
+                        0.07,
+                    )
+                scene.beam(
+                    "Building_T27PavilionTransoms",
+                    "Steel",
+                    point(u0 + 0.3, side * 9.68, level + 3.2),
+                    point(u1 - 0.3, side * 9.68, level + 3.2),
+                    0.08,
                 )
                 scene.beam(
                     "Building_T27PavilionFrame",
@@ -267,9 +293,9 @@ def t27_pavilion(scene: CircuitScene) -> None:
             z0, z1 = 9.1 + (1.6 if v0 == 0 else 0), 9.1 + (1.6 if v1 == 0 else 0)
             roof = [
                 point(u0, v0, z0),
-                point(u1, v0, z0),
-                point(u1, v1, z1),
                 point(u0, v1, z1),
+                point(u1, v1, z1),
+                point(u1, v0, z0),
             ]
             scene.quad(
                 "Building_T27PavilionCanopy",
@@ -289,6 +315,16 @@ def t27_pavilion(scene: CircuitScene) -> None:
                 add(roof[0], (0, 0, -0.18)),
                 up=False,
             )
+            for index in range(4):
+                following = (index + 1) % 4
+                scene.quad(
+                    "Building_T27PavilionCanopyEdges",
+                    "White",
+                    roof[index],
+                    add(roof[index], (0, 0, -0.18)),
+                    add(roof[following], (0, 0, -0.18)),
+                    roof[following],
+                )
             scene.beam(
                 "Building_T27PavilionCanopyFrame",
                 "White",
@@ -296,6 +332,22 @@ def t27_pavilion(scene: CircuitScene) -> None:
                 point(u0, v1, z1 - 0.22),
                 0.16,
             )
+        scene.beam(
+            "Building_T27PavilionRoofTruss",
+            "White",
+            point(u0, -10.8, 8.85),
+            point(u0, 10.8, 8.85),
+            0.13,
+        )
+        for side in (-1, 1):
+            for fraction in (0.25, 0.5, 0.75):
+                scene.beam(
+                    "Building_T27PavilionRoofTruss",
+                    "White",
+                    point(u0, side * 10.8 * fraction, 8.85),
+                    point(u0, side * 10.8 * (1 - fraction), 10.45 - 1.6 * (1 - fraction)),
+                    0.09,
+                )
     for u in (-42.5, 42.5):
         for level in (0.0, 4.4):
             scene.banner(
@@ -314,6 +366,7 @@ def t27_pavilion(scene: CircuitScene) -> None:
             "depth_estimate_m": 20,
             "height_estimate_m": 10.7,
             "position_uncertainty_m": 20,
+            "glazing": "Dark recessed panes with separate mullions and transoms; no broad emissive warm-glass wall. Pane rhythm and roof truss dimensions are visual reconstructions from the direct 291s view and FIA preparation photo.",
             "source_note": "FIA 2025 event notes page 5 locates the T27 outfield staging area at 21°37′29.3″N, 39°06′23.7″E and photographs the actual two-level framed pavilion beside the race fence. Supplied 289–293 s shows the same pale/glazed corner context before the main-straight exit. The footprint is a reconstruction about 33 m east and 37 m north of that staging control, not an OSM building or survey. Dimensions and current glazing follow the direct visual baseline; the FIA preparation photo shows its exposed frame.",
         }
     )

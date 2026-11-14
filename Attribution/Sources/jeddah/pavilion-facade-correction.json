@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "circuit": "jeddah",
+  "date": "2026-11-14",
+  "status": "Source geometry qualified; native import and fresh pose-qualified runtime review pending.",
+  "issue": "Broad emissive WarmGlass panels read as a beige opaque block. Roof skins also lacked closing edge geometry.",
+  "scope": "Existing T27 pavilion only. Footprint,85m by20m envelope,10.7m top,height datum and registered placement unchanged.",
+  "references": [
+    {
+      "path": "build/reviews/jeddah/reference/detail-0291.jpg",
+      "sha256": "1871d166f74e531325b2731ca0122377211e264c11c502ba72c1251144da5e63",
+      "supports": "Continuous T27 forward sequence: dark/open glazed bays, narrow white structural divisions and exposed light canopy."
+    },
+    {
+      "path": "build/reviews/jeddah/reference/primary-t27-002.jpg",
+      "sha256": "65dea6f9df1c5439afe8d301a7b9f1cbc6296d10a7ebd440ecb4a7feb6bb7f8e",
+      "supports": "FIA2025 preparation photograph: real two-level concrete frame and roof support; no furnished interior or measured pane section is inferred."
+    }
+  ],
+  "correction": {
+    "glazing_material": "Existing nonemissive Glass; no shared material/importer changes.",
+    "glazing_recess_m": 0.38,
+    "pane_rhythm": "Three dark panes per existing8.5m bay with separate0.07m mullions and0.08m transoms. These section dimensions are visual reconstruction, not a measured specification.",
+    "slabs": "Retain existing floor tops, add0.24m underside separation.",
+    "roof": "Retain pitched canopy surface and0.18m skin thickness; add closing edge caps and reconstructed exposed truss members.",
+    "physical_scope": "No native road/contact/limit/protection/camera/car changes."
+  },
+  "qualification": "The supplied291s view and native5409.8m view differ in pose. New capture set must include5350,5390and5409.8m; geometry is not moved to force an unmatched frame.",
+  "source_checks": {
+    "focused_tests": 2,
+    "mypy": "passed",
+    "ruff": "passed",
+    "road_overlap": "No positive-area overlap in emitted pavilion triangles against actual current road mask.",
+    "roof_shell": "Directed edge incidences cancel across all canopy skin/cap triangles."
+  },
+  "runtime_approval": false
+}
