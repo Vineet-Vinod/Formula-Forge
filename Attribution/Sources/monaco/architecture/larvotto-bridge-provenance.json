@@ -1,0 +1,2227 @@
+{
+  "date_utc": "2026-11-14T06:54:59.182399+00:00",
+  "scope": "Retained bounded IGN approach/valley observations and literal OSM bridge/road features, supporting a separate reconstructed arch above unchanged valley ground.",
+  "ground_provider": "IGN RGE Alti via Geoplateforme",
+  "endpoint": "https://data.geopf.fr/altimetrie/1.0/calcul/alti/rest/elevation.json",
+  "resource": "ign_rge_alti_wld",
+  "licence": "Licence Ouverte/Open Licence 2.0",
+  "relative_datum_m": 1.5128994113,
+  "uniform_scale": 1.0099320735128836,
+  "origin": {
+    "latitude": 43.7346446387306,
+    "longitude": 7.4213359272073856
+  },
+  "source_query_points": 84,
+  "request_response_bytes": 30340,
+  "requests_responses": [
+    {
+      "request": "architecture/larvotto-ground/000.request.json",
+      "request_sha256": "235d8889a72600e984d0e76d8ecc88f3330bda7bfc980d7d48e580c5d7958320",
+      "response": "architecture/larvotto-ground/000.response.json",
+      "response_sha256": "7ba9ea60f58ea51cd9e6b076735aff01cfbf30d0ff0fd9a167213275ed96c205",
+      "raw_bytes": 18083
+    },
+    {
+      "request": "architecture/larvotto-ground/050.request.json",
+      "request_sha256": "b45caea88c2d0bdaa2a0f0fd04899d1a15194e825363c896e9f5b5cef0a38e0b",
+      "response": "architecture/larvotto-ground/050.response.json",
+      "response_sha256": "7e14878de04fcf5d9e840a84463a44e994fe4c763f4982332e917f2a46aad8cd",
+      "raw_bytes": 12257
+    }
+  ],
+  "osm_source": {
+    "file": "Attribution/Sources/monaco/coastal-district.map.osm.gz",
+    "sha256": "955b74d07485535c627c56538d6656e351dd69dbb7025720b7b1703be6f46024",
+    "licence": "OpenStreetMap contributors, ODbL 1.0",
+    "features": [
+      {
+        "osm_id": 93137606,
+        "tags": {
+          "abandoned:railway": "rail",
+          "bridge": "yes",
+          "foot": "private",
+          "highway": "primary",
+          "lanes": "2",
+          "layer": "1",
+          "lit": "yes",
+          "maxheight": "4.3",
+          "maxspeed": "50",
+          "name": "Boulevard du Larvotto",
+          "name:etymology": "Larvotto",
+          "name:etymology:wikidata": "Q55088",
+          "railway": "abandoned",
+          "sidewalk": "no",
+          "smoothness": "excellent",
+          "source:maxheight": "Signage at Tunnel du Larvotto",
+          "surface": "asphalt",
+          "wikidata": "Q96208556"
+        },
+        "nodes": [
+          {
+            "id": 25211216,
+            "latitude": 43.7375157,
+            "longitude": 7.4220391
+          },
+          {
+            "id": 4940452482,
+            "latitude": 43.7374764,
+            "longitude": 7.4218739
+          },
+          {
+            "id": 4940452484,
+            "latitude": 43.7374328,
+            "longitude": 7.4217108
+          },
+          {
+            "id": 25211267,
+            "latitude": 43.737385,
+            "longitude": 7.42155
+          },
+          {
+            "id": 4940452481,
+            "latitude": 43.7373331,
+            "longitude": 7.4213917
+          },
+          {
+            "id": 4940452483,
+            "latitude": 43.737277,
+            "longitude": 7.4212361
+          },
+          {
+            "id": 1780810197,
+            "latitude": 43.737217,
+            "longitude": 7.4210834
+          },
+          {
+            "id": 25211277,
+            "latitude": 43.737153,
+            "longitude": 7.4209338
+          }
+        ]
+      },
+      {
+        "osm_id": 1388235621,
+        "tags": {
+          "bridge:structure": "arch",
+          "layer": "1",
+          "man_made": "bridge"
+        },
+        "nodes": [
+          {
+            "id": 25211277,
+            "latitude": 43.737153,
+            "longitude": 7.4209338
+          },
+          {
+            "id": 12850931262,
+            "latitude": 43.7371939,
+            "longitude": 7.4209001
+          },
+          {
+            "id": 8721122113,
+            "latitude": 43.737211,
+            "longitude": 7.4209408
+          },
+          {
+            "id": 8721122114,
+            "latitude": 43.7372384,
+            "longitude": 7.4210014
+          },
+          {
+            "id": 12850931263,
+            "latitude": 43.7373048,
+            "longitude": 7.4211611
+          },
+          {
+            "id": 12850931264,
+            "latitude": 43.7373718,
+            "longitude": 7.4213458
+          },
+          {
+            "id": 12850931265,
+            "latitude": 43.7374281,
+            "longitude": 7.4215118
+          },
+          {
+            "id": 12850931266,
+            "latitude": 43.7374653,
+            "longitude": 7.421642
+          },
+          {
+            "id": 12850931267,
+            "latitude": 43.7375024,
+            "longitude": 7.4217822
+          },
+          {
+            "id": 12850931268,
+            "latitude": 43.7375407,
+            "longitude": 7.4219443
+          },
+          {
+            "id": 12850931269,
+            "latitude": 43.7375587,
+            "longitude": 7.4220262
+          },
+          {
+            "id": 25211216,
+            "latitude": 43.7375157,
+            "longitude": 7.4220391
+          },
+          {
+            "id": 12850931270,
+            "latitude": 43.7374765,
+            "longitude": 7.4220558
+          },
+          {
+            "id": 12850931271,
+            "latitude": 43.7374495,
+            "longitude": 7.4219389
+          },
+          {
+            "id": 12850931272,
+            "latitude": 43.7374169,
+            "longitude": 7.4217978
+          },
+          {
+            "id": 12850931273,
+            "latitude": 43.7373729,
+            "longitude": 7.4216349
+          },
+          {
+            "id": 12850931274,
+            "latitude": 43.7373256,
+            "longitude": 7.4214861
+          },
+          {
+            "id": 12850931275,
+            "latitude": 43.7372648,
+            "longitude": 7.4213037
+          },
+          {
+            "id": 12850931276,
+            "latitude": 43.7372153,
+            "longitude": 7.4211752
+          },
+          {
+            "id": 12850931277,
+            "latitude": 43.7371697,
+            "longitude": 7.4210622
+          },
+          {
+            "id": 12850931278,
+            "latitude": 43.7371156,
+            "longitude": 7.4209593
+          },
+          {
+            "id": 25211277,
+            "latitude": 43.737153,
+            "longitude": 7.4209338
+          }
+        ]
+      },
+      {
+        "osm_id": 78141884,
+        "tags": {
+          "abandoned:railway": "rail",
+          "foot": "no",
+          "highway": "primary",
+          "lanes": "2",
+          "maxheight": "4.3",
+          "name": "Boulevard du Larvotto",
+          "name:etymology": "Larvotto",
+          "name:etymology:wikidata": "Q55088",
+          "railway": "abandoned",
+          "source:maxheight": "Signage at Tunnel du Larvotto",
+          "surface": "asphalt",
+          "wikidata": "Q96208556"
+        },
+        "nodes": [
+          {
+            "id": 25211277,
+            "latitude": 43.737153,
+            "longitude": 7.4209338
+          },
+          {
+            "id": 1878805717,
+            "latitude": 43.7371166,
+            "longitude": 7.4208514
+          },
+          {
+            "id": 1878787443,
+            "latitude": 43.7369923,
+            "longitude": 7.4206056
+          },
+          {
+            "id": 25211283,
+            "latitude": 43.7369253,
+            "longitude": 7.4204901
+          }
+        ]
+      },
+      {
+        "osm_id": 176752959,
+        "tags": {
+          "abandoned:railway": "rail",
+          "foot": "private",
+          "highway": "primary",
+          "lanes": "2",
+          "lit": "yes",
+          "maxheight": "4.3",
+          "maxspeed": "50",
+          "name": "Boulevard du Larvotto",
+          "name:etymology": "Larvotto",
+          "name:etymology:wikidata": "Q55088",
+          "railway": "abandoned",
+          "sidewalk": "no",
+          "smoothness": "excellent",
+          "source:maxheight": "Signage at Tunnel du Larvotto",
+          "surface": "asphalt",
+          "wikidata": "Q96208556"
+        },
+        "nodes": [
+          {
+            "id": 1872310876,
+            "latitude": 43.7375949,
+            "longitude": 7.4225362
+          },
+          {
+            "id": 11414717752,
+            "latitude": 43.7375857,
+            "longitude": 7.4224629
+          },
+          {
+            "id": 1872310873,
+            "latitude": 43.7375791,
+            "longitude": 7.4224108
+          },
+          {
+            "id": 1872310867,
+            "latitude": 43.7375606,
+            "longitude": 7.4222861
+          },
+          {
+            "id": 1872310866,
+            "latitude": 43.7375394,
+            "longitude": 7.4221621
+          },
+          {
+            "id": 25211216,
+            "latitude": 43.7375157,
+            "longitude": 7.4220391
+          }
+        ]
+      }
+    ]
+  },
+  "primary_photo": "chapel-wide-2024-1280.jpg and phase2-primary-qualification.json",
+  "limits": "Source accuracy is variable, as retained literally. Bridgecenter values are valley ground and must not be assigned to the separate elevated deck. The4.3 m maxheight tag cites road vehicle clearance at TunnelduLarvotto, not archrise or deckelevation. Approach ground samples require actual street/abutment qualification before selecting a vertical anchor.",
+  "observations": [
+    {
+      "label": "east_approach_out0_cross-4",
+      "source_xy_m": [
+        58.37152982381065,
+        318.9800487710812
+      ],
+      "absolute_z_m": 22.55,
+      "relative_z_m": 21.0371005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 22.55,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 21.8411262519429
+    },
+    {
+      "label": "east_approach_out0_cross-2",
+      "source_xy_m": [
+        57.74607385299387,
+        320.8797342262473
+      ],
+      "absolute_z_m": 22.55,
+      "relative_z_m": 21.0371005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 22.55,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 22.12158114393149
+    },
+    {
+      "label": "east_approach_out0_cross0",
+      "source_xy_m": [
+        57.120617882177086,
+        322.7794196814134
+      ],
+      "absolute_z_m": 22.55,
+      "relative_z_m": 21.0371005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 22.55,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 22.418573097575678
+    },
+    {
+      "label": "east_approach_out0_cross2",
+      "source_xy_m": [
+        56.495161911360306,
+        324.6791051365795
+      ],
+      "absolute_z_m": 23.01,
+      "relative_z_m": 21.4971005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 23.01,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 22.732102112875488
+    },
+    {
+      "label": "east_approach_out0_cross4",
+      "source_xy_m": [
+        55.869705940543525,
+        326.5787905917456
+      ],
+      "absolute_z_m": 23.01,
+      "relative_z_m": 21.4971005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 23.01,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 23.400029286011698
+    },
+    {
+      "label": "east_approach_out2_cross-4",
+      "source_xy_m": [
+        60.27121527897675,
+        319.605504741898
+      ],
+      "absolute_z_m": 22.55,
+      "relative_z_m": 21.0371005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 22.55,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 22.021919061626814
+    },
+    {
+      "label": "east_approach_out2_cross-2",
+      "source_xy_m": [
+        59.64575930815997,
+        321.5051901970641
+      ],
+      "absolute_z_m": 22.55,
+      "relative_z_m": 21.0371005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 22.55,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 22.281499101358058
+    },
+    {
+      "label": "east_approach_out2_cross0",
+      "source_xy_m": [
+        59.02030333734319,
+        323.4048756522302
+      ],
+      "absolute_z_m": 22.85,
+      "relative_z_m": 21.3371005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 22.85,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 22.5560995509574
+    },
+    {
+      "label": "east_approach_out2_cross2",
+      "source_xy_m": [
+        58.394847366526406,
+        325.3045611073963
+      ],
+      "absolute_z_m": 22.85,
+      "relative_z_m": 21.3371005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 22.85,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 22.857219801509064
+    },
+    {
+      "label": "east_approach_out2_cross4",
+      "source_xy_m": [
+        57.769391395709626,
+        327.2042465625624
+      ],
+      "absolute_z_m": 22.85,
+      "relative_z_m": 21.3371005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 22.85,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 23.75097811034362
+    },
+    {
+      "label": "east_approach_out4_cross-4",
+      "source_xy_m": [
+        62.17090073414285,
+        320.23096071271476
+      ],
+      "absolute_z_m": 22.56,
+      "relative_z_m": 21.047100588699998,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 22.56,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 22.112411463390114
+    },
+    {
+      "label": "east_approach_out4_cross-2",
+      "source_xy_m": [
+        61.54544476332607,
+        322.13064616788085
+      ],
+      "absolute_z_m": 22.56,
+      "relative_z_m": 21.047100588699998,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 22.56,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 22.385933581429985
+    },
+    {
+      "label": "east_approach_out4_cross0",
+      "source_xy_m": [
+        60.91998879250929,
+        324.03033162304695
+      ],
+      "absolute_z_m": 22.79,
+      "relative_z_m": 21.277100588699998,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 22.79,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 22.663549038365286
+    },
+    {
+      "label": "east_approach_out4_cross2",
+      "source_xy_m": [
+        60.294532821692506,
+        325.93001707821304
+      ],
+      "absolute_z_m": 22.85,
+      "relative_z_m": 21.3371005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 22.85,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 23.189845474005008
+    },
+    {
+      "label": "east_approach_out4_cross4",
+      "source_xy_m": [
+        59.669076850875726,
+        327.82970253337913
+      ],
+      "absolute_z_m": 24.77,
+      "relative_z_m": 23.2571005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 24.77,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 24.147772317812947
+    },
+    {
+      "label": "east_approach_out6_cross-4",
+      "source_xy_m": [
+        64.07058618930895,
+        320.85641668353156
+      ],
+      "absolute_z_m": 22.56,
+      "relative_z_m": 21.047100588699998,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 22.56,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 22.198810526257983
+    },
+    {
+      "label": "east_approach_out6_cross-2",
+      "source_xy_m": [
+        63.44513021849217,
+        322.75610213869766
+      ],
+      "absolute_z_m": 22.56,
+      "relative_z_m": 21.047100588699998,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 22.56,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 22.466790183590874
+    },
+    {
+      "label": "east_approach_out6_cross0",
+      "source_xy_m": [
+        62.81967424767539,
+        324.65578759386375
+      ],
+      "absolute_z_m": 22.79,
+      "relative_z_m": 21.277100588699998,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 22.79,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 22.7388631798192
+    },
+    {
+      "label": "east_approach_out6_cross2",
+      "source_xy_m": [
+        62.19421827685861,
+        326.55547304902984
+      ],
+      "absolute_z_m": 22.79,
+      "relative_z_m": 21.277100588699998,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 22.79,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 23.46072157528761
+    },
+    {
+      "label": "east_approach_out6_cross4",
+      "source_xy_m": [
+        61.568762306041826,
+        328.45515850419594
+      ],
+      "absolute_z_m": 23.98,
+      "relative_z_m": 22.4671005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 23.98,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 24.427801025311854
+    },
+    {
+      "label": "east_approach_out8_cross-4",
+      "source_xy_m": [
+        65.97027164447505,
+        321.48187265434836
+      ],
+      "absolute_z_m": 22.56,
+      "relative_z_m": 21.047100588699998,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 22.56,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 22.28111625023035
+    },
+    {
+      "label": "east_approach_out8_cross-2",
+      "source_xy_m": [
+        65.34481567365827,
+        323.38155810951446
+      ],
+      "absolute_z_m": 22.76,
+      "relative_z_m": 21.2471005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 22.76,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 22.54355344685626
+    },
+    {
+      "label": "east_approach_out8_cross0",
+      "source_xy_m": [
+        64.71935970284149,
+        325.28124356468055
+      ],
+      "absolute_z_m": 22.76,
+      "relative_z_m": 21.2471005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 22.76,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 22.812405083671575
+    },
+    {
+      "label": "east_approach_out8_cross2",
+      "source_xy_m": [
+        64.0939037320247,
+        327.18092901984664
+      ],
+      "absolute_z_m": 22.76,
+      "relative_z_m": 21.2471005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 22.76,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 23.696231231011744
+    },
+    {
+      "label": "east_approach_out8_cross4",
+      "source_xy_m": [
+        63.468447761207926,
+        329.08061447501274
+      ],
+      "absolute_z_m": 23.98,
+      "relative_z_m": 22.4671005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 23.98,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 24.615423823910465
+    },
+    {
+      "label": "west_approach_out0_cross-4",
+      "source_xy_m": [
+        -34.703780483721346,
+        285.4447657409998
+      ],
+      "absolute_z_m": 20.24,
+      "relative_z_m": 18.727100588699997,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 20.24,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 19.219745937667764
+    },
+    {
+      "label": "west_approach_out0_cross-2",
+      "source_xy_m": [
+        -33.68482774622297,
+        283.72379644471806
+      ],
+      "absolute_z_m": 22.53,
+      "relative_z_m": 21.0171005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 22.53,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 19.085391245003937
+    },
+    {
+      "label": "west_approach_out0_cross0",
+      "source_xy_m": [
+        -32.6658750087246,
+        282.00282714843627
+      ],
+      "absolute_z_m": 20.12,
+      "relative_z_m": 18.6071005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 20.12,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 18.87443354513499
+    },
+    {
+      "label": "west_approach_out0_cross2",
+      "source_xy_m": [
+        -31.646922271226224,
+        280.2818578521545
+      ],
+      "absolute_z_m": 20.12,
+      "relative_z_m": 18.6071005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 20.12,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 18.586872838060817
+    },
+    {
+      "label": "west_approach_out0_cross4",
+      "source_xy_m": [
+        -30.627969533727853,
+        278.56088855587274
+      ],
+      "absolute_z_m": 20.94,
+      "relative_z_m": 19.4271005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 20.94,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 18.222709123781375
+    },
+    {
+      "label": "west_approach_out2_cross-4",
+      "source_xy_m": [
+        -36.42474978000311,
+        284.42581300350145
+      ],
+      "absolute_z_m": 20.24,
+      "relative_z_m": 18.727100588699997,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 20.24,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 20.6653288149133
+    },
+    {
+      "label": "west_approach_out2_cross-2",
+      "source_xy_m": [
+        -35.405797042504744,
+        282.7048437072197
+      ],
+      "absolute_z_m": 22.53,
+      "relative_z_m": 21.0171005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 22.53,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 20.57323907936702
+    },
+    {
+      "label": "west_approach_out2_cross0",
+      "source_xy_m": [
+        -34.38684430500637,
+        280.9838744109379
+      ],
+      "absolute_z_m": 22.53,
+      "relative_z_m": 21.0171005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 22.53,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 20.404293463177748
+    },
+    {
+      "label": "west_approach_out2_cross2",
+      "source_xy_m": [
+        -33.367891567507996,
+        279.2629051146561
+      ],
+      "absolute_z_m": 20.94,
+      "relative_z_m": 19.4271005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 20.94,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 20.15874483978331
+    },
+    {
+      "label": "west_approach_out2_cross4",
+      "source_xy_m": [
+        -32.34893883000963,
+        277.5419358183744
+      ],
+      "absolute_z_m": 20.94,
+      "relative_z_m": 19.4271005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 20.94,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 19.836593209183693
+    },
+    {
+      "label": "west_approach_out4_cross-4",
+      "source_xy_m": [
+        -38.14571907628489,
+        283.40686026600304
+      ],
+      "absolute_z_m": 23.25,
+      "relative_z_m": 21.7371005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 23.25,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 22.057622281199272
+    },
+    {
+      "label": "west_approach_out4_cross-2",
+      "source_xy_m": [
+        -37.12676633878652,
+        281.6858909697213
+      ],
+      "absolute_z_m": 22.53,
+      "relative_z_m": 21.0171005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 22.53,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 21.966806364500822
+    },
+    {
+      "label": "west_approach_out4_cross0",
+      "source_xy_m": [
+        -36.10781360128814,
+        279.9649216734395
+      ],
+      "absolute_z_m": 22.53,
+      "relative_z_m": 21.0171005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 22.53,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 22.010756388425907
+    },
+    {
+      "label": "west_approach_out4_cross2",
+      "source_xy_m": [
+        -35.08886086378977,
+        278.2439523771577
+      ],
+      "absolute_z_m": 23.04,
+      "relative_z_m": 21.527100588699998,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 23.04,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 21.80721984871131
+    },
+    {
+      "label": "west_approach_out4_cross4",
+      "source_xy_m": [
+        -34.069908126291395,
+        276.522983080876
+      ],
+      "absolute_z_m": 23.04,
+      "relative_z_m": 21.527100588699998,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 23.04,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 21.180668964021567
+    },
+    {
+      "label": "west_approach_out6_cross-4",
+      "source_xy_m": [
+        -39.86668837256666,
+        282.3879075285047
+      ],
+      "absolute_z_m": 23.25,
+      "relative_z_m": 21.7371005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 23.25,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 23.30565079545492
+    },
+    {
+      "label": "west_approach_out6_cross-2",
+      "source_xy_m": [
+        -38.84773563506828,
+        280.66693823222295
+      ],
+      "absolute_z_m": 23.25,
+      "relative_z_m": 21.7371005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 23.25,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 23.1357143395258
+    },
+    {
+      "label": "west_approach_out6_cross0",
+      "source_xy_m": [
+        -37.82878289756991,
+        278.94596893594115
+      ],
+      "absolute_z_m": 23.54,
+      "relative_z_m": 22.027100588699998,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 23.54,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 23.110042835627087
+    },
+    {
+      "label": "west_approach_out6_cross2",
+      "source_xy_m": [
+        -36.809830160071535,
+        277.22499963965936
+      ],
+      "absolute_z_m": 23.04,
+      "relative_z_m": 21.527100588699998,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 23.04,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 23.228636283758775
+    },
+    {
+      "label": "west_approach_out6_cross4",
+      "source_xy_m": [
+        -35.79087742257316,
+        275.5040303433776
+      ],
+      "absolute_z_m": 23.04,
+      "relative_z_m": 21.527100588699998,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 23.04,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 22.285372433685453
+    },
+    {
+      "label": "west_approach_out8_cross-4",
+      "source_xy_m": [
+        -41.58765766884842,
+        281.36895479100633
+      ],
+      "absolute_z_m": 24.3,
+      "relative_z_m": 22.7871005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 24.3,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 24.4094143576802
+    },
+    {
+      "label": "west_approach_out8_cross-2",
+      "source_xy_m": [
+        -40.568704931350055,
+        279.6479854947246
+      ],
+      "absolute_z_m": 23.25,
+      "relative_z_m": 21.7371005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 23.25,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 24.160357362520468
+    },
+    {
+      "label": "west_approach_out8_cross0",
+      "source_xy_m": [
+        -39.54975219385168,
+        277.9270161984428
+      ],
+      "absolute_z_m": 23.54,
+      "relative_z_m": 22.027100588699998,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 23.54,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 24.055565319391164
+    },
+    {
+      "label": "west_approach_out8_cross2",
+      "source_xy_m": [
+        -38.53079945635331,
+        276.206046902161
+      ],
+      "absolute_z_m": 23.54,
+      "relative_z_m": 22.027100588699998,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 23.54,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 23.616348729514353
+    },
+    {
+      "label": "west_approach_out8_cross4",
+      "source_xy_m": [
+        -37.51184671885494,
+        274.48507760587927
+      ],
+      "absolute_z_m": 23.22,
+      "relative_z_m": 21.707100588699998,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 23.22,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 22.754366798895482
+    },
+    {
+      "label": "under_bridge_0.25_cross-9",
+      "source_xy_m": [
+        30.64704497687969,
+        323.12776360754447
+      ],
+      "absolute_z_m": 22.01,
+      "relative_z_m": 20.4971005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 22.01,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 20.442746513132068
+    },
+    {
+      "label": "under_bridge_0.25_cross-6",
+      "source_xy_m": [
+        31.687994334028097,
+        320.31414948406297
+      ],
+      "absolute_z_m": 18.92,
+      "relative_z_m": 17.4071005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 18.92,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 18.992683469375095
+    },
+    {
+      "label": "under_bridge_0.25_cross-3",
+      "source_xy_m": [
+        32.728943691176504,
+        317.50053536058147
+      ],
+      "absolute_z_m": 16.44,
+      "relative_z_m": 14.927100588700002,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 16.44,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 17.74240352177399
+    },
+    {
+      "label": "under_bridge_0.25_cross0",
+      "source_xy_m": [
+        33.76989304832491,
+        314.6869212371
+      ],
+      "absolute_z_m": 16.44,
+      "relative_z_m": 14.927100588700002,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 16.44,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 16.691906670328695
+    },
+    {
+      "label": "under_bridge_0.25_cross3",
+      "source_xy_m": [
+        34.810842405473316,
+        311.8733071136186
+      ],
+      "absolute_z_m": 13.59,
+      "relative_z_m": 12.0771005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 13.59,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 15.482698461407578
+    },
+    {
+      "label": "under_bridge_0.25_cross6",
+      "source_xy_m": [
+        35.85179176262172,
+        309.0596929901371
+      ],
+      "absolute_z_m": 13.59,
+      "relative_z_m": 12.0771005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 13.59,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 13.82974425724062
+    },
+    {
+      "label": "under_bridge_0.25_cross9",
+      "source_xy_m": [
+        36.89274111977013,
+        306.2460788666556
+      ],
+      "absolute_z_m": 9.95,
+      "relative_z_m": 8.4371005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 9.95,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 12.104353524406942
+    },
+    {
+      "label": "under_bridge_0.5_cross-9",
+      "source_xy_m": [
+        7.246308296616533,
+        313.3660404142821
+      ],
+      "absolute_z_m": 10.43,
+      "relative_z_m": 8.9171005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 10.43,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 10.359376223260693
+    },
+    {
+      "label": "under_bridge_0.5_cross-6",
+      "source_xy_m": [
+        8.485921397546761,
+        310.634125452208
+      ],
+      "absolute_z_m": 8.69,
+      "relative_z_m": 7.177100588699999,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 8.69,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 9.991451622022355
+    },
+    {
+      "label": "under_bridge_0.5_cross-3",
+      "source_xy_m": [
+        9.72553449847699,
+        307.902210490134
+      ],
+      "absolute_z_m": 8.26,
+      "relative_z_m": 6.7471005886999995,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 8.26,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 9.707793065482253
+    },
+    {
+      "label": "under_bridge_0.5_cross0",
+      "source_xy_m": [
+        10.965147599407217,
+        305.1702955280599
+      ],
+      "absolute_z_m": 8.26,
+      "relative_z_m": 6.7471005886999995,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 8.26,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 9.411534341374248
+    },
+    {
+      "label": "under_bridge_0.5_cross3",
+      "source_xy_m": [
+        12.204760700337445,
+        302.4383805659858
+      ],
+      "absolute_z_m": 8.82,
+      "relative_z_m": 7.3071005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 8.82,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 9.080795164967297
+    },
+    {
+      "label": "under_bridge_0.5_cross6",
+      "source_xy_m": [
+        13.444373801267673,
+        299.7064656039118
+      ],
+      "absolute_z_m": 8.82,
+      "relative_z_m": 7.3071005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 8.82,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 8.615227249789443
+    },
+    {
+      "label": "under_bridge_0.5_cross9",
+      "source_xy_m": [
+        14.683986902197901,
+        296.9745506418377
+      ],
+      "absolute_z_m": 7.66,
+      "relative_z_m": 6.1471005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 7.66,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 8.190261557860714
+    },
+    {
+      "label": "under_bridge_0.75_cross-9",
+      "source_xy_m": [
+        -15.505798119208889,
+        302.1659353221939
+      ],
+      "absolute_z_m": 6.43,
+      "relative_z_m": 4.917100588699999,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 6.43,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 6.723558768212018
+    },
+    {
+      "label": "under_bridge_0.75_cross-6",
+      "source_xy_m": [
+        -14.072589471708083,
+        299.53042531979816
+      ],
+      "absolute_z_m": 6.43,
+      "relative_z_m": 4.917100588699999,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 6.43,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 6.75639305916534
+    },
+    {
+      "label": "under_bridge_0.75_cross-3",
+      "source_xy_m": [
+        -12.639380824207278,
+        296.89491531740236
+      ],
+      "absolute_z_m": 6.69,
+      "relative_z_m": 5.1771005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 6.69,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 6.735163731450391
+    },
+    {
+      "label": "under_bridge_0.75_cross0",
+      "source_xy_m": [
+        -11.206172176706472,
+        294.25940531500663
+      ],
+      "absolute_z_m": 6.69,
+      "relative_z_m": 5.1771005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 6.69,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 6.727916766384234
+    },
+    {
+      "label": "under_bridge_0.75_cross3",
+      "source_xy_m": [
+        -9.772963529205667,
+        291.6238953126109
+      ],
+      "absolute_z_m": 6.99,
+      "relative_z_m": 5.4771005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 6.99,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 6.814721658083363
+    },
+    {
+      "label": "under_bridge_0.75_cross6",
+      "source_xy_m": [
+        -8.339754881704861,
+        288.9883853102151
+      ],
+      "absolute_z_m": 6.95,
+      "relative_z_m": 5.4371005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 6.95,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 6.861380321924689
+    },
+    {
+      "label": "under_bridge_0.75_cross9",
+      "source_xy_m": [
+        -6.906546234204056,
+        286.3528753078194
+      ],
+      "absolute_z_m": 6.95,
+      "relative_z_m": 5.4371005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 6.95,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 6.729406027037199
+    },
+    {
+      "label": "bridge_node_0",
+      "source_xy_m": [
+        57.120617882177086,
+        322.7794196814134
+      ],
+      "absolute_z_m": 22.55,
+      "relative_z_m": 21.0371005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 22.55,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 22.418573097575678
+    },
+    {
+      "label": "bridge_node_1",
+      "source_xy_m": [
+        43.70097739938825,
+        318.3611123014472
+      ],
+      "absolute_z_m": 21.71,
+      "relative_z_m": 20.1971005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 21.71,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 20.15473345357185
+    },
+    {
+      "label": "bridge_node_2",
+      "source_xy_m": [
+        30.45192556684929,
+        313.45937688833743
+      ],
+      "absolute_z_m": 16.48,
+      "relative_z_m": 14.967100588700001,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 16.48,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 15.3899140133464
+    },
+    {
+      "label": "bridge_node_3",
+      "source_xy_m": [
+        17.389708922648335,
+        308.0854559538326
+      ],
+      "absolute_z_m": 9.94,
+      "relative_z_m": 8.4271005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 9.94,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 10.903876708097506
+    },
+    {
+      "label": "bridge_node_4",
+      "source_xy_m": [
+        4.530574004873493,
+        302.2505920096812
+      ],
+      "absolute_z_m": 6.72,
+      "relative_z_m": 5.2071005886999995,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 6.72,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 7.616331595864942
+    },
+    {
+      "label": "bridge_node_5",
+      "source_xy_m": [
+        -8.109232648387119,
+        295.94354254413474
+      ],
+      "absolute_z_m": 6.63,
+      "relative_z_m": 5.1171005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 6.63,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 6.631017288668309
+    },
+    {
+      "label": "bridge_node_6",
+      "source_xy_m": [
+        -20.51346449897324,
+        289.1980350948352
+      ],
+      "absolute_z_m": 10.7,
+      "relative_z_m": 9.1871005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 10.7,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 10.646283476575036
+    },
+    {
+      "label": "bridge_node_7",
+      "source_xy_m": [
+        -32.6658750087246,
+        282.00282714843627
+      ],
+      "absolute_z_m": 20.12,
+      "relative_z_m": 18.6071005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 20.12,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 18.87443354513499
+    },
+    {
+      "label": "chapel_valley_0",
+      "source_xy_m": [
+        -20,
+        313
+      ],
+      "absolute_z_m": 6.6,
+      "relative_z_m": 5.087100588699999,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 6.6,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 6.907217447518216
+    },
+    {
+      "label": "chapel_valley_1",
+      "source_xy_m": [
+        -18,
+        318
+      ],
+      "absolute_z_m": 6.73,
+      "relative_z_m": 5.2171005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 6.73,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 9.35492617401509
+    },
+    {
+      "label": "chapel_valley_2",
+      "source_xy_m": [
+        -14,
+        308
+      ],
+      "absolute_z_m": 6.21,
+      "relative_z_m": 4.6971005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 6.21,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 6.763067948253991
+    },
+    {
+      "label": "chapel_valley_3",
+      "source_xy_m": [
+        -10,
+        302
+      ],
+      "absolute_z_m": 6.4,
+      "relative_z_m": 4.8871005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 6.4,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 6.482602624846786
+    },
+    {
+      "label": "chapel_valley_4",
+      "source_xy_m": [
+        -30,
+        315
+      ],
+      "absolute_z_m": 6.75,
+      "relative_z_m": 5.2371005887,
+      "nodata": false,
+      "literal_accuracy": "Variable suivant la source de mesure",
+      "literal_measures": [
+        {
+          "z": 6.75,
+          "source_name": "RGE Alti IGN",
+          "source_measure": "Fixed value",
+          "acc": "Variable suivant la source de mesure",
+          "title": "Pyramide RGE Alti France Enti\u00e8re (M\u00e9tropole, DOM et COM couvertes)"
+        }
+      ],
+      "native_raw_field_absolute_z_m": 7.330687534247766
+    }
+  ],
+  "architectural_decisions": {
+    "bridge_osm_id": 1388235621,
+    "road_osm_id": 93137606,
+    "outline_wgs84": [
+      [
+        7.4209338,
+        43.737153
+      ],
+      [
+        7.4209001,
+        43.7371939
+      ],
+      [
+        7.4209408,
+        43.737211
+      ],
+      [
+        7.4210014,
+        43.7372384
+      ],
+      [
+        7.4211611,
+        43.7373048
+      ],
+      [
+        7.4213458,
+        43.7373718
+      ],
+      [
+        7.4215118,
+        43.7374281
+      ],
+      [
+        7.421642,
+        43.7374653
+      ],
+      [
+        7.4217822,
+        43.7375024
+      ],
+      [
+        7.4219443,
+        43.7375407
+      ],
+      [
+        7.4220262,
+        43.7375587
+      ],
+      [
+        7.4220391,
+        43.7375157
+      ],
+      [
+        7.4220558,
+        43.7374765
+      ],
+      [
+        7.4219389,
+        43.7374495
+      ],
+      [
+        7.4217978,
+        43.7374169
+      ],
+      [
+        7.4216349,
+        43.7373729
+      ],
+      [
+        7.4214861,
+        43.7373256
+      ],
+      [
+        7.4213037,
+        43.7372648
+      ],
+      [
+        7.4211752,
+        43.7372153
+      ],
+      [
+        7.4210622,
+        43.7371697
+      ],
+      [
+        7.4209593,
+        43.7371156
+      ],
+      [
+        7.4209338,
+        43.737153
+      ]
+    ],
+    "centerline_wgs84": [
+      [
+        7.4220391,
+        43.7375157
+      ],
+      [
+        7.4218739,
+        43.7374764
+      ],
+      [
+        7.4217108,
+        43.7374328
+      ],
+      [
+        7.42155,
+        43.737385
+      ],
+      [
+        7.4213917,
+        43.7373331
+      ],
+      [
+        7.4212361,
+        43.737277
+      ],
+      [
+        7.4210834,
+        43.737217
+      ],
+      [
+        7.4209338,
+        43.737153
+      ]
+    ],
+    "east_deck_absolute_m": 22.79,
+    "west_deck_absolute_m": 22.53,
+    "anchor_basis": "Median centerline ground of the 2 / 4 / 6 m outside nonbridge approach probes. End/node and valley ground values are not assumed to be deck elevations. Vertical line across the bridge is original architectural inference, not a deck DSM. Variable source accuracy retained.",
+    "crown_thickness_m": 1.4,
+    "arch_rise_m": 8.5,
+    "parapet_height_m": 0.85,
+    "parapet_thickness_m": 0.24,
+    "approach_transition_m": 8.0,
+    "sample_interval_m": 0.5,
+    "estimated_dimensions": "Arch rise, crown/parapet dimensions and transition distance are bounded original reconstruction from the 2024 photograph taken at the site and approach heights. No measured engineering elevation/section of the bridge recovered.",
+    "ground_policy": "Existing field represents valley ground, with~6.6 m low point between~22.5 m road approaches. Preserve it below the arch. No prism, hillside flattening, terraincutout or native driving/contact change. Exact original ground planes required only at bounded approach ties; no geometry outside mapped bridge/qualified nonbridge support strips changes.",
+    "source_licences": "Literal OSM outline/centerline, ODbL 1.0. Literal IGN approach/valley observations, Open Licence 2.0.2024 photo review-only, no texture copying.",
+    "source_epoch_note": "OSM retained snapshot and 2024 primary arch photograph; 2019 orthophoto. Supplied edited reference year unverified.",
+    "status": "Bridge plan and approach-based anchors source qualified; arch rise/crown/parapet estimates require cooked live review."
+  },
+  "source_epoch_note": "Supplied edited reference year unverified; 2019 ortho and 2024 primary arch photograph are dated. Current date does not establish game/event year."
+}

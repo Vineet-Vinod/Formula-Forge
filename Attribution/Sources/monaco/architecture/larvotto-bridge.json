@@ -1,0 +1,142 @@
+{
+  "bridge_osm_id": 1388235621,
+  "road_osm_id": 93137606,
+  "outline_wgs84": [
+    [
+      7.4209338,
+      43.737153
+    ],
+    [
+      7.4209001,
+      43.7371939
+    ],
+    [
+      7.4209408,
+      43.737211
+    ],
+    [
+      7.4210014,
+      43.7372384
+    ],
+    [
+      7.4211611,
+      43.7373048
+    ],
+    [
+      7.4213458,
+      43.7373718
+    ],
+    [
+      7.4215118,
+      43.7374281
+    ],
+    [
+      7.421642,
+      43.7374653
+    ],
+    [
+      7.4217822,
+      43.7375024
+    ],
+    [
+      7.4219443,
+      43.7375407
+    ],
+    [
+      7.4220262,
+      43.7375587
+    ],
+    [
+      7.4220391,
+      43.7375157
+    ],
+    [
+      7.4220558,
+      43.7374765
+    ],
+    [
+      7.4219389,
+      43.7374495
+    ],
+    [
+      7.4217978,
+      43.7374169
+    ],
+    [
+      7.4216349,
+      43.7373729
+    ],
+    [
+      7.4214861,
+      43.7373256
+    ],
+    [
+      7.4213037,
+      43.7372648
+    ],
+    [
+      7.4211752,
+      43.7372153
+    ],
+    [
+      7.4210622,
+      43.7371697
+    ],
+    [
+      7.4209593,
+      43.7371156
+    ],
+    [
+      7.4209338,
+      43.737153
+    ]
+  ],
+  "centerline_wgs84": [
+    [
+      7.4220391,
+      43.7375157
+    ],
+    [
+      7.4218739,
+      43.7374764
+    ],
+    [
+      7.4217108,
+      43.7374328
+    ],
+    [
+      7.42155,
+      43.737385
+    ],
+    [
+      7.4213917,
+      43.7373331
+    ],
+    [
+      7.4212361,
+      43.737277
+    ],
+    [
+      7.4210834,
+      43.737217
+    ],
+    [
+      7.4209338,
+      43.737153
+    ]
+  ],
+  "east_deck_absolute_m": 22.79,
+  "west_deck_absolute_m": 22.53,
+  "anchor_basis": "Median centerline ground of the 2 / 4 / 6 m outside nonbridge approach probes. End/node and valley ground values are not assumed to be deck elevations. Vertical line across the bridge is original architectural inference, not a deck DSM. Variable source accuracy retained.",
+  "crown_thickness_m": 1.4,
+  "arch_rise_m": 8.5,
+  "parapet_height_m": 0.85,
+  "parapet_thickness_m": 0.24,
+  "approach_transition_m": 8.0,
+  "sample_interval_m": 0.5,
+  "estimated_dimensions": "Arch rise, crown/parapet dimensions and transition distance are bounded original reconstruction from the 2024 photograph taken at the site and approach heights. No measured engineering elevation/section of the bridge recovered.",
+  "ground_policy": "Existing field represents valley ground, with~6.6 m low point between~22.5 m road approaches. Preserve it below the arch. No prism, hillside flattening, terraincutout or native driving/contact change. Exact original ground planes required only at bounded approach ties; no geometry outside mapped bridge/qualified nonbridge support strips changes.",
+  "source_licences": "Literal OSM outline/centerline, ODbL 1.0. Literal IGN approach/valley observations, Open Licence 2.0.2024 photo review-only, no texture copying.",
+  "source_epoch_note": "OSM retained snapshot and 2024 primary arch photograph; 2019 orthophoto. Supplied edited reference year unverified.",
+  "status": "Qualified bridge plan and declared architectural estimates; native cooked review remains required."
+}

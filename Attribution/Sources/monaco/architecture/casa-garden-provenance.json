@@ -1,0 +1,277 @@
+{
+  "scope": "Original bounded reconstruction of the actual Casa Mia garden hardscape, natural ivy/rock banks and Larvotto setting. No copied photographic textures.",
+  "source_frame": {
+    "uniform_scale": 1.0099320735128836,
+    "relative_datum_m": 1.5128994113,
+    "coordinates": "Local metres from the unchanged Monaco origin; garden UV axes align with the literal Casa porch source edge."
+  },
+  "primary_refs": [
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:%C3%89glise_de_Saint-D%C3%A9vote_Monaco_IMG_1203.jpg",
+      "author": "Alexander Migl",
+      "capture_date": "2019-06-02",
+      "licence": "CC BY-SA 4.0",
+      "local_file": "chapel-wide-2019-1280.jpg",
+      "use": "Review only. Original photograph directly shows the Sainte-Devote ravine: fractured pale rock, ivy, tall cypress/conifer and dense foliage, pale heritage facade and separate narrow retaining paths. Exact planting/rock mask boundaries are not a survey.",
+      "sha256": "f3605c2caeabd2c7e3c2ce3dc53f98a57c101cec95b351c3ed11545c0e1b679e",
+      "bytes": 451924
+    },
+    {
+      "url": "https://documents.gouv.mc/www/dpum/plans/monte-carlo/PU-C2-MCO-Z1-D3.pdf",
+      "publisher": "Direction de la Prospective, de lUrbanisme et de la Mobilite, Gouvernement Princier Monaco",
+      "document": "PU-C2-MCO-Z1-D3",
+      "local_file": "official-building-plan.pdf",
+      "use": "Review only. Existing Casa hierarchy is separated into upper core(+51.84), intermediate west entry(+42.53), lower south wing(+35.71). Regulatory maximum top-level cotes and indicative base mapping, not an independent engineering/roof survey. No footprint/terrain coordinate copying.",
+      "sha256": "ee51ea008068f212b998d5b53839e0fa6c25ddce025c95ab90927210117f8570",
+      "bytes": 1948749
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:2024-09-22_%C3%89glise_de_Sainte-D%C3%A9vote,_Monte_Carlo.jpg",
+      "author": "Alexey Komarov / Alexkom000",
+      "capture_date": "2024-09-22",
+      "licence": "CC BY 4.0",
+      "local_file": "chapel-wide-2024-1280.jpg",
+      "use": "Review only. Wide actual ravine opening, concrete arched road viaduct, natural fractured cliff/ivy, separate narrow stone paths and planted plaza. Published GPS longitude7.426592 is inconsistent with the visible church location and must not drive geographic registration. Annex 4420 lower body remains outside/obscured in view.",
+      "sha256": "2972a1bc88c213ad9b1374bbfc6802be420fe29a54de18fabf60619288649d82",
+      "bytes": 350096
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:%C3%89glise_de_Saint-D%C3%A9vote_Monaco_IMG_1202.jpg",
+      "author": "Alexander Migl",
+      "capture_date": "2019-06-02",
+      "licence": "CC BY-SA 4.0",
+      "local_file": "chapel-side-2019-1280.jpg",
+      "use": "Review only. Adjacent frame to IMG1203 confirms ravine cliff/ivy/conifer distinction; no new annex enclosure measurement.",
+      "sha256": "3b67b4df6679fcf4e256fe17794a634fe5f67df3015f78f3bb22dbd7efde4f46",
+      "bytes": 495545
+    }
+  ],
+  "owner_photo": {
+    "publisher": "Les Ballets de Monte-Carlo",
+    "url": "https://www.balletsdemontecarlo.com/fr/groupe/presentation",
+    "image_url": "https://www.balletsdemontecarlo.com/sites/default/files/styles/page_diaporama/public/cover/av_de_la_costa_05_villa_casa_mia_002_0.jpg?itok=U5rmFLY7",
+    "sha256": "06769b2e02e65d80402df0bc648132e07a35b554a31cc99594321a0017e395e4",
+    "acquisition_epoch": "Unverified",
+    "use": "Review only. Salmon stucco, paired arches, dark timber, pale rough stone gallery, terracotta stairs/fountain niche and separate planted garden. No photo pixels in native materials."
+  },
+  "orthophoto": {
+    "service": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer",
+    "year": 2019,
+    "copyright": "DSN, Gouvernement Princier de Monaco",
+    "purpose": "Review only, no game textures or source geometry copied from service. Open IGN/OSM coordinates qualify modeled geometry.",
+    "tile_resolution_m": 0.10583354500042334,
+    "tiles": [
+      {
+        "file": "orthophoto2019-l8-r796835-c680971.jpg",
+        "url": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer/tile/8/796835/680971",
+        "sha256": "41ec82e39f245bde2991d94ab95343c11179ca66efdd510eb3a591069f985c9c",
+        "bytes": 65547,
+        "bbox_3944": [
+          2055922.3859114423,
+          3180426.924053848,
+          2055976.5726864785,
+          3180481.110828884
+        ]
+      },
+      {
+        "file": "orthophoto2019-l8-r796835-c680972.jpg",
+        "url": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer/tile/8/796835/680972",
+        "sha256": "3d97d3b4fe136829c8c0f87341815af566ce9efb9c9dda43d1f5444599a695d6",
+        "bytes": 77050,
+        "bbox_3944": [
+          2055976.5726864785,
+          3180426.924053848,
+          2056030.759461522,
+          3180481.110828884
+        ]
+      },
+      {
+        "file": "orthophoto2019-l8-r796835-c680973.jpg",
+        "url": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer/tile/8/796835/680973",
+        "sha256": "e456d43026377c2a2ca52800610b75d80294f75ee1237dd48ba732091416b63d",
+        "bytes": 71014,
+        "bbox_3944": [
+          2056030.759461522,
+          3180426.924053848,
+          2056084.9462365657,
+          3180481.110828884
+        ]
+      },
+      {
+        "file": "orthophoto2019-l8-r796836-c680971.jpg",
+        "url": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer/tile/8/796836/680971",
+        "sha256": "13da4a6b30f4bb356e0c516f9630486facc756abdee6390231d2f5a4776fb2e3",
+        "bytes": 73884,
+        "bbox_3944": [
+          2055922.3859114423,
+          3180372.737278804,
+          2055976.5726864785,
+          3180426.924053848
+        ]
+      },
+      {
+        "file": "orthophoto2019-l8-r796836-c680972.jpg",
+        "url": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer/tile/8/796836/680972",
+        "sha256": "f8171280685bb48fb5b9d7c6e7a2c518dc00bb00cdc469c92a404003ea237bff",
+        "bytes": 75788,
+        "bbox_3944": [
+          2055976.5726864785,
+          3180372.737278804,
+          2056030.759461522,
+          3180426.924053848
+        ]
+      },
+      {
+        "file": "orthophoto2019-l8-r796836-c680973.jpg",
+        "url": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer/tile/8/796836/680973",
+        "sha256": "b005fa76e85faebee12efe9a56dd620f538ad1b2979c8be89897df6084c6392e",
+        "bytes": 71128,
+        "bbox_3944": [
+          2056030.759461522,
+          3180372.737278804,
+          2056084.9462365657,
+          3180426.924053848
+        ]
+      },
+      {
+        "file": "orthophoto2019-l8-r796837-c680971.jpg",
+        "url": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer/tile/8/796837/680971",
+        "sha256": "8eebd066f732dadd835cfb923a1f8d2515520c44cab02edd0cb819a3e1533f50",
+        "bytes": 63825,
+        "bbox_3944": [
+          2055922.3859114423,
+          3180318.5505037606,
+          2055976.5726864785,
+          3180372.737278804
+        ]
+      },
+      {
+        "file": "orthophoto2019-l8-r796837-c680972.jpg",
+        "url": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer/tile/8/796837/680972",
+        "sha256": "fb23ed7287521b43c80359b0886135411094def745312ec19ab3888a2403f532",
+        "bytes": 63216,
+        "bbox_3944": [
+          2055976.5726864785,
+          3180318.5505037606,
+          2056030.759461522,
+          3180372.737278804
+        ]
+      },
+      {
+        "file": "orthophoto2019-l8-r796837-c680973.jpg",
+        "url": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer/tile/8/796837/680973",
+        "sha256": "edef9e14c2f61cf8c75e67f15f14b88308bde50e2da7e191696d00993db1a936",
+        "bytes": 64620,
+        "bbox_3944": [
+          2056030.759461522,
+          3180318.5505037606,
+          2056084.9462365657,
+          3180372.737278804
+        ]
+      }
+    ]
+  },
+  "registered_supplied_reference": {
+    "file": "Saved/Refs/monaco.mp4",
+    "sha256": "010bbc56c79bc3d3388718a301957fb380bfbb7a2f63839e9b37447eb4042a99",
+    "seconds": [
+      723,
+      724,
+      725,
+      726,
+      727,
+      729
+    ],
+    "year": "Supplied edited reference, year unverified. Do not infer event/game year from current date.",
+    "registration": "Continuous723-727 s T1 approach/apex;729 s immediate exit.731 s cuts to harbour and cannot extend this sequence. Registered by balcony buildings, arch, villa facades and turn geometry, not elapsed-time station."
+  },
+  "height_decisions": {
+    "patio_absolute_m": 28.34,
+    "patio_basis": "Architectural flat-deck estimate using the retained RGE plateau near the registered paved witness. Not an independent as-built terrace survey.",
+    "regulatory_limit_absolute_m": 30.05,
+    "regulatory_limit_basis": "Official 2021 J1 landscape plan maximum garden cote. Never used as proof of a flat as-built level.",
+    "stair_ground_observations": {
+      "scope": "Literal retained 2 m RGE bilinear observations at original stair-plan centers, not an engineered deck/stair survey. Existing coarse ground remains separate.",
+      "datum_m": 1.5128994113,
+      "samples": [
+        {
+          "name": "upper_stair_top",
+          "garden_uv_m": [
+            7.75,
+            5.2
+          ],
+          "source_xy_m": [
+            34.550762257775816,
+            339.0842948683931
+          ],
+          "fine_ground_absolute_m": 27.12
+        },
+        {
+          "name": "upper_stair_bottom",
+          "garden_uv_m": [
+            7.75,
+            11.4
+          ],
+          "source_xy_m": [
+            35.67461176095658,
+            332.9870034784233
+          ],
+          "fine_ground_absolute_m": 24.737007139230315
+        },
+        {
+          "name": "lower_stair_top",
+          "garden_uv_m": [
+            13.3,
+            15.8
+          ],
+          "source_xy_m": [
+            41.930241604235285,
+            329.66592003113067
+          ],
+          "fine_ground_absolute_m": 23.17
+        },
+        {
+          "name": "lower_stair_bottom",
+          "garden_uv_m": [
+            13.3,
+            19.75
+          ],
+          "source_xy_m": [
+            42.64624249739077,
+            325.78135535526275
+          ],
+          "fine_ground_absolute_m": 21.19635246118234
+        }
+      ]
+    },
+    "stair_decision": "Central22 and lower12 risers follow these registered RGE estimates. Small bounded landings retain their estimated levels and close to the original rendered planes with side retaining. The surrounding native field/contact data remain unchanged.",
+    "ground_source": "architecture/costa-ground-grid.json and retained architecture/costa-ground raw requests/responses, IGN RGE Alti, Licence Ouverte 2.0. The 2 m node spacing is not accuracy."
+  },
+  "layout_and_planting_confidence": {
+    "patio_and_stairs": "Original metric estimates from the 2019 ortho and owner photo. A short central stair and separate east-offset lower stair are distinct; no straight stair through the whole garden.",
+    "natural_cover": "Original masks from dated primary views; rock/ivy boundaries are not surveyed. Preserve original triangle planes/normals/UVs outside exact engineered patio/stair/landing/apron interiors.",
+    "vegetation": "52 dense low banks reuse the accepted five-cluster leaf recipe and original atlas. Two cypress forms reuse the same atlas with original narrow layered geometry. Positions/heights are reconstruction estimates, not surveyed trees. Source-visible mature vegetation is required; sparse identical shrub dots were rejected.",
+    "materials": "Private MonacoIvyGround and MonacoRockGround copies only. Global accepted Grass/Limestone remain unchanged."
+  },
+  "source_limits": [
+    "Annex IGN BATIMENT0000000074074420 lower body/support remains held; its roof plan is not painted green.",
+    "Source epochs differ. The supplied reference game/event year is unverified.",
+    "The 2019 garden predates the 2023 underground Studio Caroline opening. The 2023 official ribbon/plaque images are indoors and do not independently qualify current garden/support geometry.",
+    "Top patio flowerbed/planter details and exact garden stair construction are approximate and must be checked in fresh cooked driving views."
+  ],
+  "rejected_or_corrected_attempts": [
+    {
+      "issue": "Estimated patio overlapped retained Casa owner plus0.4 m clearance by5.931311 m\u00b2 at its lower-west corner.",
+      "resolution": "Before geometry emission, clip the original patio estimate to that qualified exclusion. Keep the guard for all remaining engineered surfaces."
+    },
+    {
+      "issue": "An initial cypress point lay on the 2019 paved plaza edge.",
+      "resolution": "Withdraw it; place both estimated trunks in the source-visible natural bank. A separate0.15 m trunk/root guard and1.5 m body/bridge clearance allow normal narrow-crown overhang. These positions are not called surveyed."
+    },
+    {
+      "issue": "Coarse old terrain gave28 compact central steps and6 broad lower steps.",
+      "resolution": "Use the registered RGE estimates with 22 / 12 risers and explicit retained-plane closures at the small engineered landings."
+    }
+  ],
+  "acceptance": "Source/prototype checks are not a visual pass. Fresh full source diff, scoped native import, cooked packet and independent Luna review remain required."
+}

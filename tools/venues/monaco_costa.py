@@ -143,7 +143,7 @@ def walls(scene: CircuitScene, body: Polygon, roof: Polygon, record: CostaCompon
     kind = 'Building_CostaBody_' + record.style
     base = record.upper_floor_base_m - datum
     pink = record.style == 'casa_core'
-    wall = 'MonacoRuscinoRose' if pink else 'Cream'
+    wall = 'MonacoRuscinoRose' if record.style in {'casa_core', 'casa_west'} else 'Cream'
     for a, b in pairwise(orient(body).exterior.coords):
         span = math.dist(a[:2], b[:2])
         if span < .2:
@@ -172,7 +172,9 @@ def walls(scene: CircuitScene, body: Polygon, roof: Polygon, record: CostaCompon
                 width = min(1.9 if pink else 1.15, span / count * .7)
                 first = (x - tx * width / 2 + nx * .035,
                          y - ty * width / 2 + ny * .035, low)
-                if pink:
+                if record.style == 'casa_west':
+                    arch(scene, first, add(first, (tx * width, ty * width, 0)), top - low, kind)
+                elif pink:
                     for offset in [0., width / 2 + .065]:
                         p = add(first, (tx * offset, ty * offset, 0))
                         arch(scene, p, add(p, (tx * (width / 2 - .065), ty * (width / 2 - .065), 0)), top - low, kind)

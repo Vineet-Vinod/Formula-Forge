@@ -15,10 +15,12 @@ from shapely.geometry import Point as ShapePoint
 from shapely.ops import polygonize, triangulate, unary_union
 
 from venues.monaco_costa import costa_properties
+from venues.monaco_dataclasses import RetailTerrace
 from venues.monaco_hillside import hillside_city
-from venues.monaco_landcover import costa_landcover
 from venues.monaco_properties import fairmont_garden, mirabeau, property_envelopes
 from venues.monaco_rascasse_frontage import rascasse_frontage
+from venues.monaco_retail import retail_terrace
+from venues.monaco_setting_scene import costa_setting
 from venues.monaco_tabac import tabac_frontage_ground
 from venues.west_architecture import dome, mast, trees, water
 
@@ -37,9 +39,14 @@ def build_venue(scene: CircuitScene) -> None:
     scene.braking_boards(2431, 1, distances=(100, 50))  # Tabac
     water(scene)
     harbour(scene)
+    retail = TypeAdapter(RetailTerrace).validate_json(
+        (scene.sources / 'architecture/kennedy-retail-terrace.json').read_bytes()
+    )
     for osm_id, (base, height) in tabac_frontage_ground(scene).items():
-        frontage(scene, scene.footprint(osm_id), height, 3 if osm_id == 507048725 else 2,
-                 base_z=base, street_station=2380 if osm_id == 507048725 else 2410)
+        if osm_id == retail.osm_id:
+            retail_terrace(scene, base, retail)
+        else:
+            frontage(scene, scene.footprint(osm_id), height, 3, base_z=base, street_station=2380)
     rascasse_frontage(scene)
     property_envelopes(scene)
     costa_properties(scene)
@@ -78,7 +85,7 @@ def build_venue(scene: CircuitScene) -> None:
     trees(scene, 1250, 1410, 1, setback=16, rows=1, spacing=17, height=10, palms=True)
     for station in [200, 920, 2200, 2440, 2950, 3260]:
         mast(scene, station, -1, 12)
-    costa_landcover(scene)
+    costa_setting(scene)
 
 
 def fairmont(scene: CircuitScene) -> None:

@@ -13,22 +13,22 @@
       "BATIMENT0000000074074428",
       "BATIMENT0000000074074453"
     ],
-    "retained": "Literal3D roof outline coordinates and their separate source ground/maximum-roof metadata. Component4383 is split along the photographed lower porch chord, with upper duplicated seam corners reconstructed from adjacent main-eave values.",
+    "retained": "Literal 3D roof outline coordinates and their separate source ground/maximum-roof metadata. Component 4383 is split along the photographed lower porch chord, with upper duplicated seam corners reconstructed from adjacent main-eave values.",
     "plan_precision_m": 2.5,
     "height_precision_m": 1.5,
-    "licence": "Licence Ouverte/Open Licence2.0",
+    "licence": "Licence Ouverte/Open Licence 2.0",
     "licence_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence/"
   },
-  "ground_body_source": "OpenStreetMap contributors,ODbL1.0,retained buildings.osm.json.gz. Actual mapped ground-body intersection is separate from the larger measured roof envelope.",
-  "ground_threshold_source": "costa-ground-source.json;1,632 raw 2 m RGE values with literal response accuracy/measures. Existing 1.5128994113 m relative datum retained. Sample spacing is not accuracy.",
+  "ground_body_source": "OpenStreetMap contributors, ODbL 1.0, retained buildings.osm.json.gz. Actual mapped ground-body intersection is separate from the larger measured roof envelope.",
+  "ground_threshold_source": "costa-ground-source.json; 1,632 raw 2 m RGE values with literal response accuracy/measures. Existing 1.5128994113 m relative datum retained. Sample spacing is not accuracy.",
   "primary_visual_sources": [
     {
-      "publisher": "Les Ballets de Monte-Carlo,property operator",
+      "publisher": "Les Ballets de Monte-Carlo, property operator",
       "page": "https://www.balletsdemontecarlo.com/fr/groupe/presentation",
       "image": "https://www.balletsdemontecarlo.com/sites/default/files/styles/page_diaporama/public/cover/av_de_la_costa_05_villa_casa_mia_002_0.jpg?itok=U5rmFLY7",
       "image_sha256": "06769b2e02e65d80402df0bc648132e07a35b554a31cc99594321a0017e395e4",
       "copyright": "\u00a9AB, Les Ballets de Monte-Carlo. Review only, no game texture reuse.",
-      "observed": "Pink plaster villa,rough pale-stone lower gallery,paired arched upper openings,deep three-arch porch with cylindrical columns/lattice balustrade,deep dark eaves and terracotta roof."
+      "observed": "Pink plaster villa, rough pale-stone lower gallery, paired arched upper openings, deep three-arch porch with cylindrical columns/lattice balustrade, deep dark eaves and terracotta roof."
     },
     {
       "publisher": "DSN, Gouvernement Princier de Monaco",
@@ -148,29 +148,43 @@
       "observed": "Separate hipped main roof with an inset gray cap, a low porch, a west wing and an elongated east wing. Terraced planting and stairs occupy the garden in front of the villa."
     },
     {
-      "publisher": "Direction de la Prospective,de l\u2019Urbanisme etde la Mobilit\u00e9,Gouvernement Princier",
+      "publisher": "Direction de la Prospective, de l\u2019Urbanisme et de la Mobilit\u00e9, Gouvernement Princier",
       "url": "https://documents.gouv.mc/www/dpum/plans/monte-carlo/PU-C3-MCO-Z1-D4.pdf",
-      "title": "PU-C3-MCO-Z1-D4,landscape andheritage plan,1:500,2021-02-25",
+      "title": "PU-C3-MCO-Z1-D4, landscape and heritage plan,1:500,2021-02-25",
       "sha256": "7f080aa5557163b92f25c85cb8c71c979b26049c8c17f3fc3464bae5aef96caf",
-      "observed": "Casa Mia core and separate lower wing,stairs and gardenJ1. This regulatory plan indicates parcel context; proposed garden/height rules are not treated as a completed construction survey."
+      "observed": "Casa Mia core and separate lower wing, stairs and garden J1. This regulatory plan indicates parcel context; proposed garden/height rules are not treated as a completed construction survey."
     },
     {
       "publisher": "Conseil Communal de Monaco",
       "url": "https://www.vivremaville.mc/seances-publiques/session-ordinaire-611e53ac77010",
-      "observed": "Construction within Casa Mia garden is conditional on restoring its landscape andequivalent tree count. No above-ground building is invented from the proposed underground dance-hall volume."
+      "observed": "Construction within Casa Mia garden is conditional on restoring its landscape and equivalent tree count. No above-ground building is invented from the proposed underground dance-hall volume."
+    },
+    {
+      "publisher": "User-supplied edited reference",
+      "file": "Saved/Refs/monaco.mp4",
+      "sha256": "010bbc56c79bc3d3388718a301957fb380bfbb7a2f63839e9b37447eb4042a99",
+      "seconds": [
+        723,
+        724,
+        725,
+        726
+      ],
+      "year": "Unverified game/event year",
+      "observed": "Continuous T1 approach shows the low Casa west wing in salmon stucco, with small dark arched openings and a pale cornice above the separate Larvotto arch. This qualifies the west-wing material/opening treatment, not a changed roof/body envelope. Neighboring ornate apartments overlap east/Antoinette in perspective; their details are not indiscriminately transferred."
     }
   ],
   "reconstruction_estimates": {
-    "roof_hips": "Insets 4.2/1.5/3.4/2.5 m for core/west/east/Antoinette are metric architectural estimates within actual source outlines. Hipped tile bands andgray core cap follow primary imagery; exact internal ridges are unmeasured. Source peak fields bound the reconstructed caps.",
-    "visible_storeys": "Casa core has three photographed upper rows,3.6 m reconstructed floor pitch with40.5 m absolute lower porch deck. Other components use three conservative 3.2/3.4 m upper rows within measured roofs; exact basement/storey layouts remain unmeasured. No global minimum-terrain roof placement is used.",
-    "porch": "Three actual photographed open upper/lower arches;4 m gallery depth/height, columns 0.22 m radius,arch rise 0.8/0.85 m andlattice divisions 0.3 m are explicit metric estimates. Deck/support footprints stay within the actual mapped property.",
-    "materials": "Existing original pink plaster,limestone,terracotta,timber and neutral glass materials. Review photographs are never used as texture assets."
+    "roof_hips": "Insets 4.2/1.5/3.4/2.5 m for core/west/east/Antoinette are metric architectural estimates within actual source outlines. Hipped tile bands and gray core cap follow primary imagery; exact internal ridges are unmeasured. Source peak fields bound the reconstructed caps.",
+    "visible_storeys": "Casa core has three photographed upper rows,3.6 m reconstructed floor pitch with 40.5 m absolute lower porch deck. Other components use three conservative 3.2/3.4 m upper rows within measured roofs; exact basement/storey layouts remain unmeasured. No global minimum-terrain roof placement is used.",
+    "porch": "Three actual photographed open upper/lower arches; 4 m gallery depth/height, columns 0.22 m radius, arch rise 0.8/0.85 m and lattice divisions 0.3 m are explicit metric estimates. Deck/support footprints stay within the actual mapped property.",
+    "materials": "Existing original pink plaster, limestone, terracotta, timber and neutral glass materials. Review photographs are never used as texture assets.",
+    "west_wing_facade": "Salmon stucco reuses MonacoRuscinoRose. Single small arched openings retain the existing three upper rows and existing bay positions/pale cornices. Geometry of all four measured roofs, their support/body intersections and the unchanged ground datum remains fixed."
   },
-  "preservation": "Native racing road,survey/control profiles,terrain.bin,vehicle tuning and camera unchanged. Existing terrain is not flattened or recolored to hide the hill. Source-qualified land-cover work is a separate follow-up.",
+  "preservation": "Native racing road, survey/control profiles, terrain.bin, vehicle tuning and camera unchanged. Existing terrain is not flattened or recolored to hide the hill. Source-qualified land-cover work is a separate follow-up.",
   "remaining_limits": [
     "Rose de France has conflicting partial source heights and is unchanged.",
-    "The2019 orthophoto and owner photograph do not establish the supplied edited clip\u2019s precise season;the terrace/roof interpretation is bounded accordingly.",
-    "The source geometry does not survey openings,balustrades,hip ridges,materials or basement floor elevations.",
-    "The inner west-roof aerial detail may be a lightwell/skylight;no unsupported courtyard hole is cut from the literal IGN component."
+    "The 2019 orthophoto and owner photograph do not establish the supplied edited clip\u2019s precise season; the terrace/roof interpretation is bounded accordingly.",
+    "The source geometry does not survey openings, balustrades, hip ridges, materials or basement floor elevations.",
+    "The inner west-roof aerial detail may be a lightwell/skylight; no unsupported courtyard hole is cut from the literal IGN component."
   ]
 }

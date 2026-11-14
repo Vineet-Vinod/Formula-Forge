@@ -184,6 +184,16 @@ class Importer:
                 )
                 EDIT.set_material_instance_scalar_parameter_value(material, "Roughness", 0.9)
                 EDIT.set_material_instance_scalar_parameter_value(material, "NormalStrength", 0.12)
+            if self.slug == "monaco" and name in ("MonacoIvyGround", "MonacoRockGround") and isinstance(
+                material, unreal.MaterialInstanceConstant
+            ):
+                tint = ((0.48, 0.70, 0.40) if name == "MonacoIvyGround"
+                        else (0.68, 0.66, 0.61))
+                EDIT.set_material_instance_vector_parameter_value(
+                    material, "Tint", unreal.LinearColor(*tint)
+                )
+                EDIT.set_material_instance_scalar_parameter_value(material, "Roughness", 0.95)
+                EDIT.set_material_instance_scalar_parameter_value(material, "NormalStrength", 0.18)
             ground_tints = {
                 "cota": (1.4, 1.08, 0.55),
                 "portimao": (1.65, 1.25, 0.65),
@@ -218,6 +228,12 @@ class Importer:
             == self.material_hash
         ):
             return existing
+        if self.slug == "monaco" and name in ("MonacoIvyGround", "MonacoRockGround"):
+            source_name = "Grass" if name == "MonacoIvyGround" else "Concrete"
+            source = unreal.load_asset(SOURCES[source_name])
+            if source is None:
+                raise RuntimeError(f"Missing accepted {source_name} source for {name}")
+            return self.copy(name, source)
         if (self.slug == "monaco" and name in ("Limestone", "Terracotta", "MonacoShutter")) or (
             self.slug == "baku" and name == "BakuStone"
         ):

@@ -1,0 +1,41 @@
+{
+  "osm_id": 508221117,
+  "name_note": "Quick Silver is the historical label in the 2017 planning source, not a present tenant claim.",
+  "source_epoch_note": "2017 coordination plan,2019 ortho and supplied edited reference with year unverified differ in epoch.",
+  "roof_absolute_m": 9.95,
+  "height_qualification": "Declared planning-based architectural roof/terrace anchor, not a new measured roof survey. The source independent roof query found no qualifying retail roof; uncertainty remains explicit.",
+  "planning_source": [
+    {
+      "file": "retail-footprint-source-overlay.png",
+      "original_source": "orthophoto2019-l8-r796837-c680973.jpg",
+      "rights": "DSN/Gouvernement Princier Monaco, review only",
+      "observed": "The thin strip lies between upper Avenue dOstende/Beau Rivage sidewalk and lower Avenue John Fitzgerald Kennedy. Top is paved/terrace-like with small inset structures; no numeric roof height follows from nadir imagery."
+    },
+    {
+      "url": "https://documents.gouv.mc/www/dpum/plans/condamine/PU-C2-CDN-Z2-I3-D2.pdf",
+      "file": "official-retail-plan.pdf",
+      "crop": "official-retail-plan-crop.png",
+      "sha256": "db1c9548ba284a4ad8d6d30a63b3982867be41ccceaa48dcd037030952ab9d8a",
+      "observed": "Thin strip labeled Quick Silver has+9.95 regulatory upper-level cote, adjacent Miramar+12.95. These are planning upper-level cotes with indicative base mapping, not an independent roof survey.",
+      "caveat": "Do not substitute9.95 m for the actual roof without qualifying the parameter and matched reference/street facade."
+    }
+  ],
+  "footprint_and_support": "Exact same original road-clipped OSM parcel181.122535 m\u00b2 and existing lower fine-ground base4.756217835 m absolute. No expanded parcel, native road/contact changes or nearby Miramar changes.",
+  "lower_frontage": "Two lower storeys are estimated. Pale flat terrace/coping and local upper street retaining use existing original materials. No unqualified upper pavilion, public roof stair or hotel sign is added.",
+  "reference_registration": {
+    "video_sha256": "010bbc56c79bc3d3388718a301957fb380bfbb7a2f63839e9b37447eb4042a99",
+    "direct_seconds": [
+      727,
+      729
+    ],
+    "note": "729 s beside Les Princes shows low/open roof-edge context. Game/event year unverified."
+  },
+  "source_access": "Mapped external west steps1365041507 stay outside the actual body.",
+  "seam_tolerance_m": 0.002,
+  "seam_tolerance_basis": "Small construction overlap closes submillimetre differences between the unchanged rendered verge planes and the frontage producer; it does not alter terrain or roof level.",
+  "source_geometry_limits": [
+    "No independent current retail roof/eave survey recovered.",
+    "The old generic slab roof 13.954909 m was above eye level in the registered native 300 / 320 m views; all four original slab rays clear in the 9.95 m candidate.",
+    "Cooked live review remains required."
+  ]
+}
