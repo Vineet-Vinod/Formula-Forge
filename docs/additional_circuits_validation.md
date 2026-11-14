@@ -1,8 +1,8 @@
 # Additional circuit validation — 2026-11-14
 
-Checkpoint for the 18 additional circuits, current package `776d1fe6`. The explicit review register records 15 visual passes, 3 holds and 0 pending reviews. This checkpoint does not declare the work complete.
+Checkpoint for the 18 additional circuits, current package `c6a58fcc`. The explicit review register records 14 visual passes, 4 holds and 0 pending reviews. This checkpoint does not declare the work complete.
 
-Active work toward Sunday 15 November 10:00 PST. The 18-map work remains incomplete. Baku, Jeddah and Monaco retain visual holds. Malaysia passes its reconstructed legal lane and final-corner surface review with explicit estimated section dimensions. Fresh current performance comparisons remain pending.
+Active work toward Sunday 15 November 10:00 PST. The 18-map work remains incomplete. Baku, Jeddah, Monaco and Portimão retain visual holds. Current vegetation and Sepang surface repairs pass their bounded reviews; fresh performance comparisons are in progress.
 
 The [validation record](additional_circuits_validation.json) pins package payloads, exact scene identities, reports, archived frames, current profiles, runtime scope and performance evidence.
 
@@ -12,16 +12,16 @@ The [validation record](additional_circuits_validation.json) pins package payloa
 | austria | 6a970d40 | pass | 3602 | 125/125 |
 | bahrain | 6a970d40 | pass | 4791 | 125/125 |
 | baku | 0e32f075 | held | 5117 | 125/125 |
-| buddh | 6a970d40 | pass | 4613 | 125/125 |
+| buddh | c6a58fcc | pass | 4601 | 125/125 |
 | canada | 887f09f0 | pass | 3857 | 125/125 |
 | china | 887f09f0 | pass | 5283 | 125/125 |
-| cota | 887f09f0 | pass | 5368 | 125/125 |
+| cota | c6a58fcc | pass | 5249 | 125/125 |
 | hockenheim | 219ac9a7 | pass | 4146 | 125/125 |
 | japan | 92dca960 | pass | 4992 | 125/125 |
 | jeddah | d3bd1953 | held | 5003 | 125/125 |
 | malaysia | 776d1fe6 | pass | 5176 | 125/125 |
 | monaco | 776d1fe6 | held | 3812 | 125/125 |
-| portimao | 887f09f0 | pass | 4389 | 125/125 |
+| portimao | 887f09f0 | held | 4389 | 125/125 |
 | singapore | 79189b47 | pass | 4835 | 125/125 |
 | spa | 219ac9a7 | pass | 5223 | 125/125 |
 | turkey | 6a970d40 | pass | 4816 | 125/125 |
@@ -36,6 +36,7 @@ These independent source findings remain unresolved despite retained visual pass
 | Circuit | Outstanding source finding |
 | --- | --- |
 | monaco | Measured property roofs, arch/approaches, garden and low Kennedy retail are imported. The fresh 200 m driving view retains an angular charcoal slope and abrupt planted edge. The annex/terrace 4420 lower enclosure remains unqualified; no opaque prism or blanket vegetation is justified. Kennedy retail is independently closed. |
+| portimao | Primary architect photos and section show two raked tiers separated by a glazed VIP-box level and a broad cantilever canopy. The exact unchanged current scene has one continuous23-row terrace and repeated tall front posts. A private architectural correction awaits dimensional/contact/native and fresh rendered review. |
 
 ## Current native profiles
 
@@ -71,7 +72,7 @@ These figures are recalculated from the current road exports. Sample density is 
 
 The supplied scope proofs and their hashes are retained in the JSON. Accepted-circuit assets, shared runtime changes and car/input/camera scope are reported separately; asset preservation is not a claim that no runtime code changed.
 
-Current reviewed package 776d1fe6 adds the source-qualified Monaco arch bridge, measured approaches, terraced garden and low Kennedy retail body, plus Sepang’s 16 m legal lane, preserved outside pavement, estimated adverse final-corner profile and rising exit. Full-route Luna reviews pass Malaysia and close Monaco’s retail item; Monaco’s opening slope/annex remains held. Earlier Australian pit, Singapore bridge/marker and Jeddah pavilion repairs remain shipped. Buddh/Austin vegetation is committed/imported after this package, awaiting a fresh cook/review. Baku and Jeddah context prototypes remain unshipped.
+Reviewed package c6a58fcc adds the reference Buddh broadleaf band and COTA T11 tree group; fresh complete laps and Luna visual reviews pass both. Earlier Monaco bridge/garden/retail and Sepang surface repairs remain shipped. Monaco retail is closed while its upper opening hillside remains held. A stricter primary-architect check reopens Portimão: the current generic single-tier stand lacks the two-tier/VIP/cantilever structure. Its correction is private. Baku bounded frontage/ground and Jeddah Sail/mall context are also still unshipped.
 
 Sampled peak machine memory was 7.089 GB against 11 GB, using the 5 s monitor. One heavy job at a time is attested in the register.
 
