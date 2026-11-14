@@ -10,10 +10,15 @@ EDIT = unreal.MaterialEditingLibrary
 def build(material: unreal.Material) -> None:
     position = EDIT.create_material_expression(material, unreal.MaterialExpressionWorldPosition)
     coordinate = EDIT.create_material_expression(material, unreal.MaterialExpressionMultiply)
-    coordinate.const_b = .00375
+    scale = EDIT.create_material_expression(material, unreal.MaterialExpressionConstant)
+    scale.r = .00375
     connect(position, '', coordinate, 'A')
+    connect(scale, '', coordinate, 'B')
     xy = EDIT.create_material_expression(material, unreal.MaterialExpressionComponentMask)
-    xy.r, xy.g, xy.b, xy.a = True, True, False, False
+    xy.set_editor_property('r', True)
+    xy.set_editor_property('g', True)
+    xy.set_editor_property('b', False)
+    xy.set_editor_property('a', False)
     connect(coordinate, '', xy, '')
     samples = []
     for path, tint in (
@@ -33,12 +38,12 @@ def build(material: unreal.Material) -> None:
         connect(color, '', tinted, 'B')
         samples.append(tinted)
     noise = EDIT.create_material_expression(material, unreal.MaterialExpressionNoise)
-    noise.scale = .002
-    noise.levels = 2
-    noise.quality = 1
-    noise.output_min = 0.0
-    noise.output_max = 1.0
-    connect(position, '', noise, 'Position')
+    noise.set_editor_property('scale', .002)
+    noise.set_editor_property('levels', 2)
+    noise.set_editor_property('quality', 1)
+    noise.set_editor_property('output_min', 0.0)
+    noise.set_editor_property('output_max', 1.0)
+    connect(position, '', noise, 'World Position')
     mix = EDIT.create_material_expression(material, unreal.MaterialExpressionLinearInterpolate)
     connect(samples[0], '', mix, 'A')
     connect(samples[1], '', mix, 'B')
