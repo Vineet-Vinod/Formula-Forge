@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=monaco",
   "tiles": 116,
-  "triangles": 2277058,
+  "triangles": 2279250,
   "road_sha256": "3a7544d64e64e34c445dbf4049745ad0e2fc4f2d8e96dcf6d29b2c8ee7f67df3",
   "terrain_sha256": "f1538f328db1481498922f0c8d143010e2a9bcd9c17cb30b52457605ac30a21a",
   "landmarks": [
@@ -4169,6 +4169,15 @@
       "mapped_wall_segments": 191,
       "street_support_segments": 45,
       "dimensions_status": "Retained OSM retaining-wall alignments with heights derived from adjacent registered ground, not guessed walls across town. Mirabeau upper inside street edge at 1200\u20131290 m joins actual RGE ground beyond the corrected narrow corridor. Two-sided stone faces support the existing road elevation; no racing surface or native collision geometry is changed."
+    },
+    {
+      "name": "Costa planted slope and rocky ravine margin",
+      "planted_area_m2": 451.5573996830028,
+      "exposed_rock_area_m2": 139.77867129225194,
+      "reconstructed_shrubs": 17,
+      "replaced_terrain_cells": 14,
+      "source": "architecture/costa-landcover.json and costa-landcover-provenance.json",
+      "dimensions_status": "Separate bounded original land-cover reconstruction from primary2019 orthophoto and2019/2024 ravine photographs. No new terrain heights. Existing emitted cell triangle planes, outer vertices and interpolated normals retained. Paths, plaza, road/property bodies, existing venue surfaces and unqualified annex4420 excluded. Rock/ivy boundaries and individual shrubs are estimates, not surveyed objects."
     }
   ],
   "vegetation": [

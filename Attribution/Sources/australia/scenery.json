@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=australia",
   "tiles": 194,
-  "triangles": 748073,
+  "triangles": 756813,
   "road_sha256": "cc4f53e3bbd34a0e974df682c5514cc2131d1c9d485fbd9b9330f544bb4bd76c",
   "terrain_sha256": "1382800585867629b5c85fc07467a9dca5356ed72da50a0c8c70ee9186cf9b5c",
   "landmarks": [
@@ -90,11 +90,16 @@
       "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
     },
     {
-      "name": "Authored pit building",
+      "name": "Reference-era Albert Park pit building",
       "start_m": 4939.105,
       "end_m": 5229.679,
       "side": 1,
-      "height_m": 13
+      "depth_m": 21.0,
+      "storeys": 2,
+      "roof_height_estimate_m": 9.2,
+      "flag_top_estimate_m": 13.0,
+      "source": "pit-facade-review.json; supplied 174/176/178 s and Parks Victoria February 2026 plan, PDF p112.",
+      "qualification": "Existing horizontal envelope retained; storey arrangement is observed. Heights, framing sizes and flag spacing are bounded visual estimates, not a survey. Pre-redevelopment building, not the proposed 2028 facility."
     },
     {
       "name": "Authored grandstand",
