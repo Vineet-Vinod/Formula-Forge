@@ -1,0 +1,109 @@
+{
+  "provider": "IGN Geoplateforme",
+  "resource": "ign_rge_alti_wld",
+  "endpoint": "https://data.geopf.fr/altimetrie/1.0/calcul/alti/rest/elevation.json",
+  "acquired_utc": "2026-11-14T12:03:27.133465+00:00",
+  "source_survey_epoch": "Unverified; acquisition time is not survey date.",
+  "relative_datum_m": 1.5128994113,
+  "uniform_scale": 1.0099320735128836,
+  "origin": {
+    "latitude": 43.7346446387306,
+    "longitude": 7.4213359272073856,
+    "meaning": "Local source origin at the point on the loop nearest the venue coordinate, after rotation to the start."
+  },
+  "request": "west-cliff-extrema.request.json",
+  "response": "west-cliff-extrema.response.json",
+  "response_bytes": 2672,
+  "sha256": "5041057334ce70cfdd8572088502706209ea292d508f9d9940b32f8046464744",
+  "checks": [
+    {
+      "native_xy_m": [
+        -4.0,
+        338.0
+      ],
+      "retained_grid_absolute_m": 32.04,
+      "new_literal_absolute_m": 32.04,
+      "difference_m": 0.0,
+      "acc": "Variable suivant la source de mesure",
+      "source_measure": "Fixed value"
+    },
+    {
+      "native_xy_m": [
+        -2.0,
+        338.0
+      ],
+      "retained_grid_absolute_m": 34.27,
+      "new_literal_absolute_m": 34.27,
+      "difference_m": 0.0,
+      "acc": "Variable suivant la source de mesure",
+      "source_measure": "Fixed value"
+    },
+    {
+      "native_xy_m": [
+        -4.0,
+        340.0
+      ],
+      "retained_grid_absolute_m": 32.04,
+      "new_literal_absolute_m": 32.04,
+      "difference_m": 0.0,
+      "acc": "Variable suivant la source de mesure",
+      "source_measure": "Fixed value"
+    },
+    {
+      "native_xy_m": [
+        -2.0,
+        340.0
+      ],
+      "retained_grid_absolute_m": 34.27,
+      "new_literal_absolute_m": 34.27,
+      "difference_m": 0.0,
+      "acc": "Variable suivant la source de mesure",
+      "source_measure": "Fixed value"
+    },
+    {
+      "native_xy_m": [
+        -2.0,
+        336.0
+      ],
+      "retained_grid_absolute_m": 27.85,
+      "new_literal_absolute_m": 27.85,
+      "difference_m": 0.0,
+      "acc": "Variable suivant la source de mesure",
+      "source_measure": "Fixed value"
+    },
+    {
+      "native_xy_m": [
+        0.0,
+        336.0
+      ],
+      "retained_grid_absolute_m": 27.85,
+      "new_literal_absolute_m": 27.85,
+      "difference_m": 0.0,
+      "acc": "Variable suivant la source de mesure",
+      "source_measure": "Fixed value"
+    },
+    {
+      "native_xy_m": [
+        -2.0,
+        342.0
+      ],
+      "retained_grid_absolute_m": 34.27,
+      "new_literal_absolute_m": 34.27,
+      "difference_m": 0.0,
+      "acc": "Variable suivant la source de mesure",
+      "source_measure": "Fixed value"
+    },
+    {
+      "native_xy_m": [
+        0.0,
+        342.0
+      ],
+      "retained_grid_absolute_m": 34.27,
+      "new_literal_absolute_m": 34.27,
+      "difference_m": 0.0,
+      "acc": "Variable suivant la source de mesure",
+      "source_measure": "Fixed value"
+    }
+  ],
+  "native_field_mutated": false
+}

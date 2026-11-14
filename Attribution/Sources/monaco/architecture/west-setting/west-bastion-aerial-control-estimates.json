@@ -1,0 +1,92 @@
+{
+  "source": {
+    "file": "orthophoto2019-l8-r796836-c680971.jpg",
+    "url": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer/tile/8/796836/680971",
+    "sha256": "13da4a6b30f4bb356e0c516f9630486facc756abdee6390231d2f5a4776fb2e3",
+    "bytes": 73884,
+    "bbox_3944": [
+      2055922.3859114423,
+      3180372.737278804,
+      2055976.5726864785,
+      3180426.924053848
+    ]
+  },
+  "status": "Manual approximate curve controls from original 2019 pixels, not a survey or an accepted mesh.",
+  "controls": [
+    {
+      "label": "center",
+      "source_pixel": [
+        366,
+        196
+      ],
+      "native_xy_m": [
+        -18.654218668710648,
+        348.78228389249676
+      ],
+      "wgs84": [
+        7.421106287901621,
+        43.73774699050918
+      ]
+    },
+    {
+      "label": "west_rim",
+      "source_pixel": [
+        320,
+        196
+      ],
+      "native_xy_m": [
+        -23.556612413501515,
+        349.04623066849973
+      ],
+      "wgs84": [
+        7.421045937890927,
+        43.737749338265324
+      ]
+    },
+    {
+      "label": "south_rim",
+      "source_pixel": [
+        366,
+        242
+      ],
+      "native_xy_m": [
+        -18.917255317446855,
+        343.86289772264945
+      ],
+      "wgs84": [
+        7.421103049837648,
+        43.73770323350907
+      ]
+    },
+    {
+      "label": "east_rim",
+      "source_pixel": [
+        412,
+        196
+      ],
+      "native_xy_m": [
+        -13.751825309123953,
+        348.5183335177712
+      ],
+      "wgs84": [
+        7.4211666379075725,
+        43.737744642721026
+      ]
+    },
+    {
+      "label": "west_deck_nw",
+      "source_pixel": [
+        476,
+        220
+      ],
+      "native_xy_m": [
+        -7.068345776271542,
+        345.58445620446884
+      ],
+      "wgs84": [
+        7.421248913645156,
+        43.737718546442856
+      ]
+    }
+  ]
+}

@@ -46,11 +46,13 @@ def setting_masks(scene: CircuitScene, config: CasaGardenSetting,
     return {'MonacoIvyGround': ivy, 'MonacoRockGround': rock, 'Terracotta': paths}
 
 
-def leaf_banks(scene: CircuitScene, planted: BaseGeometry,
-               faces: list[CostaGroundFace], config: CasaGardenSetting) -> int:
+def leaf_banks(scene: MeshScene, planted: BaseGeometry,
+               faces: list[CostaGroundFace], config: CasaGardenSetting,
+               excluded: BaseGeometry | None = None) -> int:
     rng = random.Random(74384420)
     xmin, ymin, xmax, ymax = planted.bounds
     count = 0
+    source_count = 0
     y = ymin + config.plant_spacing_m / 2
     while y < ymax:
         x = xmin + config.plant_spacing_m / 2
@@ -64,8 +66,10 @@ def leaf_banks(scene: CircuitScene, planted: BaseGeometry,
                 if face is not None:
                     z, _normal = interpolate(face, px, py)
                     # Sink the original five-cluster recipe until its low leaves meet the slope.
-                    scene.broadleaf((px, py, z - height * .46), height, 74420 + count)
-                    count += 1
+                    if excluded is None or not excluded.covers(point):
+                        scene.broadleaf((px, py, z - height * .46), height, 74420 + source_count)
+                        count += 1
+                    source_count += 1
             x += config.plant_spacing_m
         y += config.plant_spacing_m
     return count

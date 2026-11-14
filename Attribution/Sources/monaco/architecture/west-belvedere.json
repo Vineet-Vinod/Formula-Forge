@@ -1,0 +1,29 @@
+{
+  "center_xy_m": [
+    -18.654218668710648,
+    348.78228389249676
+  ],
+  "east_axis": [
+    0.998553730099536,
+    -0.05376288779727983
+  ],
+  "south_axis": [
+    -0.05376288779727983,
+    -0.998553730099536
+  ],
+  "radius_m": 4.909494005595582,
+  "paving_absolute_m": 41.21,
+  "cap_absolute_m": 42.31,
+  "relative_datum_m": 1.5128994113,
+  "wall_thickness_m": 0.3,
+  "rim_walk_width_m": 0.8,
+  "arc_segments": 128,
+  "arch_bays": 12,
+  "arch_width_m": 0.65,
+  "arch_height_m": 0.82,
+  "arch_recess_m": 0.1,
+  "course_height_m": 0.42,
+  "stone_joint_m": 0.025,
+  "base_overlap_m": 0.12,
+  "existing_wood_ground_file": "architecture/west-existing-ground.json"
+}

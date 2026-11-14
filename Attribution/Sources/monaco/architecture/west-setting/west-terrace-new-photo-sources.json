@@ -1,0 +1,52 @@
+[
+  {
+    "file": "ravine-station-2026-1280.jpg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Sainte_Devote%2C_Monaco_%2820260620-IMG_3873%29.jpg/1280px-Sainte_Devote%2C_Monaco_%2820260620-IMG_3873%29.jpg",
+    "author": "Matti Blume",
+    "capture_date": "2026-06-20",
+    "licence": "CC BY-SA 4.0",
+    "bytes": 429772,
+    "sha256": "6180f140e86016b2be5a3844621005ff8cd61175f104f714d89d412f98eb828b",
+    "use": "Unmodified public source observation, review only. No photo pixels enter game textures."
+  },
+  {
+    "file": "ravine-ramp-2026-1280.jpg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Ravin_Sainte-Devote%2C_Monaco_%2820260620-IMG_3868%29.jpg/1280px-Ravin_Sainte-Devote%2C_Monaco_%2820260620-IMG_3868%29.jpg",
+    "author": "Matti Blume",
+    "capture_date": "2026-06-20",
+    "licence": "CC BY-SA 4.0",
+    "bytes": 424173,
+    "sha256": "f225c3e4d55b56191e7bfa5a820f6fdf6ff3215124dfa6a9de3553e15f31608c",
+    "use": "Unmodified public source observation, review only. No photo pixels enter game textures."
+  },
+  {
+    "file": "ravine-station-2012-1280.jpg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/View_over_Ravin_de_Sainte-D%C3%A9vote_in_Monaco%2C_2012_July.jpg/1280px-View_over_Ravin_de_Sainte-D%C3%A9vote_in_Monaco%2C_2012_July.jpg",
+    "author": "Simo R\u00e4s\u00e4nen",
+    "capture_date": "2012-07-26",
+    "licence": "CC BY-SA 4.0",
+    "bytes": 558660,
+    "sha256": "a9693f6f3617f793059ba3f180ff75155299082b2b6f2301b25cfd015c1e69ec",
+    "use": "Unmodified public source observation, review only. No photo pixels enter game textures."
+  },
+  {
+    "file": "chapel-wide-2014-50326126733-1280.jpg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Eclectic_architecture_of_Monaco_%2850326126733%29.jpg/1280px-Eclectic_architecture_of_Monaco_%2850326126733%29.jpg",
+    "author": "Jorge L\u00e1scar",
+    "capture_date": "2014-12-17 (camera clock not independently verified)",
+    "licence": "CC BY 2.0",
+    "bytes": 329825,
+    "sha256": "b8db8a88f02cbaaed7cafb3f2040f29e6dff92c790b9c29b8253f0e57543471f",
+    "use": "Unmodified first-person public site photograph, review only. No photographic pixels enter game textures."
+  },
+  {
+    "file": "chapel-wide-2014-50326922292-1280.jpg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Eclectic_architecture_of_Monaco_%2850326922292%29.jpg/1280px-Eclectic_architecture_of_Monaco_%2850326922292%29.jpg",
+    "author": "Jorge L\u00e1scar",
+    "capture_date": "2014-12-17 (camera clock not independently verified)",
+    "licence": "CC BY 2.0",
+    "bytes": 307730,
+    "sha256": "fb79a231242bfce78226cecfc83139bb98bf3e9ff1e5e38569ef1b4b4410c776",
+    "use": "Unmodified first-person public site photograph, review only. No photographic pixels enter game textures."
+  }
+]

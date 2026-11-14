@@ -1,0 +1,103 @@
+{
+  "status": "Exploratory photo registration; not a measured camera or authoring qualification. Manual control pixels have at least 10 px uncertainty; chapel-front base levels are nearby RGE observations, not surveyed facade floor points.",
+  "photo": "chapel-wide-2014-50326922292-1280.jpg",
+  "lens_basis": "Nikon D800, EXIF 28 mm, 35.9 mm nominal full-frame sensor width, full 7360:4912 image aspect retained. Zero roll is an estimate.",
+  "source_xyz_m": [
+    [
+      -30.594441399134944,
+      277.7981275052712,
+      23.38
+    ],
+    [
+      -26.7115187897,
+      309.828045378,
+      6.52
+    ],
+    [
+      -17.9140184006,
+      321.059315282,
+      7.74
+    ]
+  ],
+  "manual_pixels": [
+    [
+      274.0,
+      503.0
+    ],
+    [
+      588.0,
+      696.0
+    ],
+    [
+      700.0,
+      690.0
+    ]
+  ],
+  "fit_camera_source_xyz_yaw_pitch": [
+    57.86884491992621,
+    241.88130582110563,
+    5.818376082458505,
+    -47.62248349727154,
+    15.552996841259413
+  ],
+  "residual_pixels": [
+    [
+      2.8993633833480885,
+      1.8428487322768774
+    ],
+    [
+      -13.101782577048994,
+      1.8981908646750298
+    ],
+    [
+      9.897494239410776,
+      -3.9551377595107624
+    ]
+  ],
+  "estimated_camera_height_above_current_native_ground_m": 1.6274682620929255,
+  "deck_vertices_projected": [
+    [
+      896.9705755225709,
+      372.1984469614436
+    ],
+    [
+      845.4658644137603,
+      374.3278565164557
+    ],
+    [
+      899.5518604606029,
+      362.75723721322345
+    ],
+    [
+      920.4695525539412,
+      359.1407776435542
+    ],
+    [
+      977.976164529148,
+      319.9147825556048
+    ],
+    [
+      1000.6643698691573,
+      329.9986976488185
+    ],
+    [
+      896.9705755225709,
+      372.1984469614436
+    ]
+  ],
+  "visible_gray_ray_projected": [
+    [
+      911.4378857243502,
+      467.2031822562836
+    ]
+  ],
+  "observed_small_east_bastion_approximate_bbox_px": [
+    817,
+    410,
+    863,
+    462
+  ],
+  "native_ground_used_only_as_soft_photo_eye_height_prior_not_as_a_survey": true,
+  "large_west_yellow_arcade_excluded": true,
+  "east_bridge_endpoint_excluded_as_occluded": true
+}

@@ -17,7 +17,8 @@ from pydantic import TypeAdapter
 from shapely.geometry import LineString, Polygon
 from shapely.ops import unary_union
 from shapely.strtree import STRtree
-from venues import monaco_setting_scene
+from venues import monaco, monaco_setting_scene
+from venues.monaco_belvedere import half_disc
 from venues.monaco_dataclasses import (
     BridgeApproach,
     CasaGardenSetting,
@@ -26,6 +27,7 @@ from venues.monaco_dataclasses import (
     SettingCypress,
 )
 from venues.monaco_landcover import interpolate
+from venues.monaco_west_dataclasses import BelvedereArchitecture
 
 
 @pytest.fixture(scope='module')
@@ -34,6 +36,7 @@ def setting() -> tuple[CircuitScene, list[CostaGroundFace], list[tuple[str, str,
     scene.road_surfaces('Runoff')
     scene.tiles.clear()
     scene.terrain_cutouts.extend(Polygon(b.ring) for b in scene.buildings)
+    monaco.casino_gardens(scene)
     originals: list[CostaGroundFace] = []
     records: list[tuple[str, str, CostaGroundFace]] = []
     old_faces = monaco_setting_scene.original_faces
@@ -67,13 +70,15 @@ def setting() -> tuple[CircuitScene, list[CostaGroundFace], list[tuple[str, str,
 def test_setting_replacement_covers_original_surfaces_once_and_preserves_all_outer_planes(
     setting: tuple[CircuitScene, list[CostaGroundFace], list[tuple[str, str, CostaGroundFace]]],
 ) -> None:
-    _scene, originals, records = setting
+    scene, originals, records = setting
     original_shapes = [Polygon([p[:2] for p in f.points]) for f in originals]
     index = STRtree(original_shapes)
     surfaces = []
     for kind, _material, face in records:
-        if kind in {'Tile_CostaSetting', 'Building_LarvottoApproach',
-                    'Building_CasaGardenPatio', 'Building_CasaGardenTreads'}:
+        if kind in {'Tile_CostaSetting', 'Tile_WestCliff', 'Building_LarvottoApproach',
+                    'Building_CasaGardenPatio', 'Building_CasaGardenTreads',
+                    'Building_WestBelvedereRimWalk', 'Building_WestBelvedereRetainedGarden',
+                    'Building_WestBelvedereParapetSeat'}:
             surfaces.append(Polygon([p[:2] for p in face.points]))
         if kind != 'Tile_CostaSetting':
             continue
@@ -88,10 +93,14 @@ def test_setting_replacement_covers_original_surfaces_once_and_preserves_all_out
         height, normal = interpolate(source, midpoint[0], midpoint[1])
         assert midpoint[2] == pytest.approx(height, abs=1e-9)
         assert tuple(sum(p[axis] for p in face.normals) / 3 for axis in range(3)) == pytest.approx(normal, abs=1e-9)
+    belvedere = TypeAdapter(BelvedereArchitecture).validate_json(
+        (scene.sources / 'architecture/west-belvedere.json').read_bytes()
+    )
     original = unary_union(original_shapes)
+    expected = unary_union([original, half_disc(belvedere, belvedere.radius_m - .18)])
     candidate = unary_union(surfaces)
-    assert candidate.symmetric_difference(original).area < 1e-7
-    assert sum(s.area for s in surfaces) == pytest.approx(original.area, abs=1e-7)
+    assert candidate.symmetric_difference(expected).area < 1e-7
+    assert sum(s.area for s in surfaces) == pytest.approx(expected.area, abs=1e-7)
 
 
 def test_garden_landing_and_tread_edges_have_retaining_or_riser_closure(
