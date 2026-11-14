@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=monaco",
   "tiles": 116,
-  "triangles": 2321826,
+  "triangles": 2322540,
   "road_sha256": "3a7544d64e64e34c445dbf4049745ad0e2fc4f2d8e96dcf6d29b2c8ee7f67df3",
   "terrain_sha256": "f1538f328db1481498922f0c8d143010e2a9bcd9c17cb30b52457605ac30a21a",
   "landmarks": [
@@ -4203,6 +4203,13 @@
       "affected_street_tiles": 2,
       "source": "architecture/west-visible-surfaces.json",
       "status": "Original 2019 orthophoto role interpretation, approximately \u00b11m boundary uncertainty. All old height planes and complete outside packed rows are preserved; clipped outside faces retain interpolated normals and UVs. Pools, paths, buildings and the belvedere are excluded. Elevated L roof/deck and uncertain pale cap are not ground evidence. No native field, road, protection, contact or camera change; fresh cooked review required."
+    },
+    {
+      "name": "Source-observed west-bank canopy clumps",
+      "canopy_clumps": 7,
+      "minimum_packed_trunk_embed_m": 0.09998294225471227,
+      "source": "architecture/west-bank-groves.json",
+      "dimensions_status": "Original canopy estimates from the government 2019 orthophoto and 2012/2014 oblique views, not individual tree identities. Heights/crowns and inferred stems retain broad uncertainty. Two uncertain belvedere-overhang crowns and the unresolved roadside species are omitted. Existing ground, building/roof layers, road, contact and native field are unchanged."
     }
   ],
   "vegetation": [
