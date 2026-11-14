@@ -1,8 +1,8 @@
 {
   "recipe": "make circuit-assets CIRCUIT=cota",
   "tiles": 168,
-  "triangles": 876993,
-  "road_sha256": "0c0fad2e33fa1952b768c0f0c774de037b322429a71aa0cff89682d960022994",
+  "triangles": 891819,
+  "road_sha256": "44a1530106f34720d4e8b563f582dffb4c637ade49e3e287f3f8cbab2a553da8",
   "terrain_sha256": "c9c0a1c53aaafed665cbfefb341340b6476df40e7621da732aecb033cfabf564",
   "landmarks": [
     {
@@ -29,6 +29,14 @@
       "end_m": 2380,
       "source": "architecture/t11-width/source-review.md and source-index.json",
       "dimensions_status": "Registered imagery supports an approximately13m legal span at2220\u20132340m, widening by2380m. Raised0.85m red/white curb and flat red apron reaching3.4m beyond the edge are reconstructed within approximately1m image/epoch uncertainty. Existing barrier corridor, centreline, elevation and banking are retained."
+    },
+    {
+      "name": "T11\u2013T12 flat red edge strips",
+      "start_m": 2520,
+      "end_m": 3590,
+      "paint_faces_collapsed_at_native_precision": 54,
+      "source": "architecture/backstraight-width/source-review.md",
+      "dimensions_status": "The middle legal span is estimated at14\u00b11m. The flat painted strips reach3.2m beyond each legal edge, joining the existing T11 exit and T12 approach paving. Extents and paint widths are reference estimates, not a survey. No raised straight kerbs or protection relocation."
     },
     {
       "name": "Reference event panels",

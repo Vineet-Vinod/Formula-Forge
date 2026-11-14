@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=baku",
   "tiles": 390,
-  "triangles": 4363297,
+  "triangles": 4450848,
   "road_sha256": "26bc10ef7913eb8b758e60bada4eb749e94aa7bb524952c47ead9fff2130166e",
   "terrain_sha256": "e6e5423c2f5f02fc7e47ddb1459d9e39edcc2ae0b7891724be8520abedc5231e",
   "landmarks": [
@@ -277,12 +277,6 @@
       "name": "Az\u0259rbaycan D\u00f6vl\u0259t \u0130qtisad Universiteti",
       "osm_id": 152110144,
       "height_m": 15,
-      "facade": "classical"
-    },
-    {
-      "name": "Mapped building",
-      "osm_id": 152110152,
-      "height_m": 10.2,
       "facade": "classical"
     },
     {
@@ -2283,6 +2277,18 @@
       "end_m": 5990,
       "side": -1,
       "height_m": 6.5
+    },
+    {
+      "name": "Mariinsky gymnasium",
+      "osm_id": 152110152,
+      "datum_m": 23.901038946260982,
+      "dimensions": "NW C-shaped former Mariinsky gymnasium; central22\u00b14m/wings20\u00b14m cornices,4/3/4 main front and6-bay NW side. SE connector-side18-bay count is estimated. Main front floor rhythm is photo-derived; datum is retained renderer support, not survey; entry/steps held."
+    },
+    {
+      "name": "De Bour mansion",
+      "osm_id": 3977156,
+      "datum_m": 19.48450553510287,
+      "dimensions": "NE short entrance of De Bour; seven bays, arches0/3/6, porticoes1/5. Distinct SE nine-window upper run, three-arch gallery and ornate terminal bay. Cornice14.4\u00b13m, mansard4\u00b11.5m, portico/gallery depths and rear rhythm are architectural estimates. Datum is retained renderer support; entry/garden paving/steps held."
     }
   ],
   "vegetation": [
