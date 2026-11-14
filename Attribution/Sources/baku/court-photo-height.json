@@ -1,0 +1,62 @@
+{
+  "status": "ARCHITECTURAL DIMENSION ESTIMATE; edge11 identity and22.4+/-2m scale independently accepted for cooked review; native visual acceptance pending",
+  "photo_original_url": "https://upload.wikimedia.org/wikipedia/commons/archive/7/76/20150921193447%21Konstitusiya_M%C9%99hk%C9%99m%C9%99sinin_binas%C4%B1_%281%29.JPG",
+  "photo_description_url": "https://commons.wikimedia.org/wiki/File:Konstitusiya_M%C9%99hk%C9%99m%C9%99sinin_binas%C4%B1_(1).JPG",
+  "photo_sha256": "69ad2eabc1da6c02ad08acd6bdbfb1654cfa0a4b45c64438f3460568e6aa7cf3",
+  "photo_dimensions_px": [
+    4608,
+    3456
+  ],
+  "photo_author": "Samral",
+  "photo_license": "CC-BY-SA-4.0; authoring reference only, not a shipped texture",
+  "photo_version": "Original 2015-09-06 upload, before 2015/2018 retouches",
+  "normalized_dimensions_px": [
+    1280,
+    960
+  ],
+  "manually_measured_corners_top_left_top_right_bottom_right_bottom_left_px": [
+    [
+      146.0,
+      114.0
+    ],
+    [
+      1153.0,
+      147.0
+    ],
+    [
+      1208.0,
+      858.0
+    ],
+    [
+      56.0,
+      851.0
+    ]
+  ],
+  "registered_osm_id": 133641457,
+  "registered_edge": 11,
+  "mapped_width_m": 32.82247051177092,
+  "camera_exif_focal_mm": 5,
+  "camera_exif_focal_plane_x_resolution_px_per_inch": 19041.32231405,
+  "normalized_focal_px": 1041.192165028981,
+  "assumed_principal_point_px": [
+    640,
+    480
+  ],
+  "estimate_body_height_m": 22.443606063417707,
+  "absolute_orthogonality_residual": 0.009712893085127797,
+  "sensitivity_min_max_m": [
+    21.490136427490107,
+    23.590675078083382
+  ],
+  "sensitivity_perturbations": "5000 bounded samples: each corner coordinate +/-5 normalized px, footprint width +/-1m, focal +/-10%; this is sensitivity, not a probabilistic confidence interval.",
+  "proposed_uncertainty_m": 2,
+  "old_default_body_height_m": 13.6,
+  "limitations": "Not a surveyed height. Assumes square pixels, original full sensor frame, principal point at center, negligible lens distortion and correct physical footprint/endpoints. Ground is partly obscured; bottom corners are estimated from frontage plinth. The seven-arch frontal facade identity is primary-photo supported; edge11 registration relies on the separately matched continuous Court/service/Gate photo. No terrain or native skyline approval follows from this estimate.",
+  "independent_source_review": {
+    "file": "civic-source-review.md",
+    "reviewer": "Luna High",
+    "reviewed_measurement_file_sha256": "d4beaba289b52e813066d64912463ae5aa174adc878aaef2744dbf52efc96791",
+    "review_sha256": "2683c64248766b3c563e4ba325d49f75d4060d13288843f74d94a9fa0d715c85",
+    "decision": "Source reconstruction acceptable for cooked review. Architectural dimensions and datum are estimates, not survey; rear/crown and native visual acceptance remain held. Only review metadata is appended to the reviewed measurement record."
+  }
+}

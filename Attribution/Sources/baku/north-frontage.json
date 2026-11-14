@@ -1,0 +1,14 @@
+{
+  "osm_id": 133641456,
+  "street_edge": 8,
+  "main_threshold_m": 7.15,
+  "upper_bays": 8,
+  "uncertainty_m": 2.0,
+  "primary_photos": [
+    "https://commons.wikimedia.org/wiki/File:Wikiwyprawa_2015_baku_6.jpg",
+    "https://commons.wikimedia.org/wiki/File:Building_of_Constitutional_Court_in_Baku.jpg"
+  ],
+  "source_note": "Bounded architectural reconstruction of the western frontage of133641456 beside Court. Continuous primary-photo street/sidewalk and exact shared Court11/north8 endpoint support a low service-street frontage, without a5-8m retaining plinth. West wall bottom follows native-anchored5.016/7.052m service profile; main7.15m datum has about+/-2m uncertainty, not survey. Rectangular upper openings, tall ground arches/mezzanine and attic language are observed; precise west sill/bay/door positions are estimated. The24m body height (+/-3m) is an architectural envelope supported by the observed tall multi-level block and independently estimated22.4m Court; no complete north crown or measured roof is registered. The resulting31.15m absolute roof is an estimate, replacing the unvalidated old15.1m west rise that came from roof-biased base12.059+OSM3x3.4m. Original rear ground is held; rear upper bands are estimated around that held datum within the new envelope. Neither old DSM nor OSMlevel convention validates the rear ground or exact crown. Terrain/public joins/native skyline review pending. In the bounded paving candidate, the grade-following public footing callback fits the native western street to the retained7.6127m public Concrete cap; this cap is inherited preservation data, not an independent elevation survey. Ground-floor sills follow the resulting public footprint edge, avoiding hidden under-building gradients. A12cm projected/30cm high dressed-stone base course is an architectural estimate whose actual emitted volume defines the Ground cut.",
+  "body_height_m": 24.0,
+  "height_uncertainty_m": 3.0
+}

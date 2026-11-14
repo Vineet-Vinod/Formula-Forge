@@ -34,6 +34,10 @@ def generate(slug: str) -> None:
     importlib.import_module("venues." + slug).build_venue(scene)
     print(f"{slug}: terrain", flush=True)
     scene.terrain(base)
+    if slug == "baku":
+        from venues.baku import finish_terrain
+
+        finish_terrain(scene)
     print(f"{slug}: barriers and furniture", flush=True)
     scene.barriers(
         slug in ("jeddah", "monaco", "baku", "singapore", "australia", "canada")

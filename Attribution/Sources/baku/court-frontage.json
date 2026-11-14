@@ -1,0 +1,25 @@
+{
+  "osm_id": 133641457,
+  "height_m": 22.4,
+  "floor_bands_m": [
+    0,
+    5.4,
+    11.5,
+    17.8,
+    22.4
+  ],
+  "entrance_edge": 11,
+  "track_front_edges": [
+    10,
+    11
+  ],
+  "primary_photos": [
+    "https://commons.wikimedia.org/wiki/File:Konstitusiya_M%C9%99hk%C9%99m%C9%99sinin_binas%C4%B1_v%C9%99_%C6%8Fziz_%C6%8Fliyev_k%C3%BC%C3%A7%C9%99si.JPG",
+    "https://commons.wikimedia.org/wiki/File:Constitutional_Court_of_the_Respublic_of_Azerbaijan_-_panoramio.jpg",
+    "https://commons.wikimedia.org/wiki/File:Konstitusiya_M%C9%99hk%C9%99m%C9%99sinin_binas%C4%B1_(1).JPG",
+    "https://commons.wikimedia.org/wiki/File:Wikiwyprawa_2015_baku_6.jpg"
+  ],
+  "source_note": "Primary-photo reconstruction of Constitutional Court133641457. The entrance is sourceedge11 beside service339124204, registered through the continuous street/Gate/SabirPark relation. Seven upper arches,13first-floor rectangular windows,14small attic windows and3central ground doors plus4broad flanking windows are observed. The22.4m body height is a calibrated single-photo architectural estimate (+/-2m), using the original2015 image,32.822m mapped frontage and EXIFintrinsics; it is not survey. The former13.6m convention conflicts with the primary facade proportions. Floor bands5.4/11.5/17.8/22.4m are image-derived estimates. Main entrance datum follows the native-anchored service profile at midfront plus an estimated0.3m low entry stair rise. The original minimum renderer footing remains as a conservative embedded wall extent, not as validated public ground or floor datum. Southside openings/canopies and unobserved rear elevations remain estimates. Terrain/step/rear and native skyline qualification are pending. The photographed low entry stair is reconstructed as three broad0.55m treads with0.15m riser spacing; the uphill portions embed into the fitted street, so visible riser count varies with grade. These small entrance dimensions are architectural estimates, separate from the held public Nizami/southern stair corridors. A12cm projected/30cm high dressed-stone base course follows the fitted public paving, with entry steps kept separate. These are estimated architectural dimensions; its actual emitted footprint must match the Ground cut before integration.",
+  "entrance_rise_m": 0.3,
+  "height_uncertainty_m": 2.0
+}

@@ -1,0 +1,143 @@
+{
+  "status": "Exact isolated shared-board history proof; source and native scene otherwise unchanged",
+  "seconds": 0.24067306518554688,
+  "peak_rss_kB": 95000,
+  "old_method_revision": "88446426^",
+  "old_method_source": "def braking_boards(\n        self, apex: float, side: int, distances: tuple[int, ...] = (150, 100, 50)\n    ) -> None:\n        for distance in distances:\n            p = self.at(apex - distance)\n            shoulder = p.left_shoulder if side > 0 else p.right_shoulder\n            lane = side * (p.half_width + self.kerb_margin(p.station) + shoulder - 0.25)\n            a, b = p.point(lane - 0.6, 0.55), p.point(lane + 0.6, 0.55)\n            self.banner(a, b, 1.1, str(distance))\n            self.beam(\"Tile_Boards\", \"Steel\", p.point(lane), p.point(lane, 0.55), 0.08)\n        self.landmarks.append(\n            {\n                \"name\": \"Braking distance boards\",\n                \"apex_m\": apex,\n                \"side\": side,\n                \"placement\": \"Reference/map approach reconstruction; exact event mounting positions estimated.\",\n            }\n        )",
+  "changed_packed_rows": [
+    {
+      "tile": "Tile_Street_m6_m3",
+      "material": "50",
+      "old_payload": "C0BARz0cAkiudtVDno9yv361oz4AAAAAAAAAAAAAAACtGUBH0f8BSK521UOej3K/frWjPgAAAAAAAIA/AAAAAK0ZQEfR/wFIrnaeQ56Pcr9+taM+AAAAAAAAgD8AAIA/",
+      "new_payload": "gTpARyMYAkiudtVDno9yv361oz4AAAAAAAAAAAAAAAAjFEBHtvsBSK521UOej3K/frWjPgAAAAAAAIA/AAAAACMUQEe2+wFIrnaeQ56Pcr9+taM+AAAAAAAAgD8AAIA/"
+    },
+    {
+      "tile": "Tile_Street_m6_m3",
+      "material": "50",
+      "old_payload": "C0BARz0cAkiudtVDno9yv361oz4AAAAAAAAAAAAAAACtGUBH0f8BSK52nkOej3K/frWjPgAAAAAAAIA/AACAPwtAQEc9HAJIrnaeQ56Pcr9+taM+AAAAAAAAAAAAAIA/",
+      "new_payload": "gTpARyMYAkiudtVDno9yv361oz4AAAAAAAAAAAAAAAAjFEBHtvsBSK52nkOej3K/frWjPgAAAAAAAIA/AACAP4E6QEcjGAJIrnaeQ56Pcr9+taM+AAAAAAAAAAAAAIA/"
+    },
+    {
+      "tile": "Tile_Street_m6_m3",
+      "material": "50",
+      "old_payload": "rRlAR9H/AUiudtVDno9yP361o74AAAAAAACAPwAAAAALQEBHPRwCSK521UOej3I/frWjvgAAAAAAAAAAAAAAAAtAQEc9HAJIrnaeQ56Pcj9+taO+AAAAAAAAAAAAAIA/",
+      "new_payload": "IxRAR7b7AUiudtVDno9yP361o74AAAAAAACAPwAAAACBOkBHIxgCSK521UOej3I/frWjvgAAAAAAAAAAAAAAAIE6QEcjGAJIrnaeQ56Pcj9+taO+AAAAAAAAAAAAAIA/"
+    },
+    {
+      "tile": "Tile_Street_m6_m3",
+      "material": "50",
+      "old_payload": "rRlAR9H/AUiudtVDno9yP361o74AAAAAAACAPwAAAAALQEBHPRwCSK52nkOej3I/frWjvgAAAAAAAAAAAACAP60ZQEfR/wFIrnaeQ56Pcj9+taO+AAAAAAAAgD8AAIA/",
+      "new_payload": "IxRAR7b7AUiudtVDno9yP361o74AAAAAAACAPwAAAACBOkBHIxgCSK52nkOej3I/frWjvgAAAAAAAAAAAACAPyMUQEe2+wFIrnaeQ56Pcj9+taO+AAAAAAAAgD8AAIA/"
+    },
+    {
+      "tile": "Tile_Street_m6_m3",
+      "material": "Steel",
+      "old_payload": "3ChARwcPAkiu9oJDAAAAgAAAAIAAAIC/AAAAAAAAAADcKEBHBw0CSK72gkMAAACAAAAAgAAAgL8AAIA/AAAAANwwQEcHDQJIrvaCQwAAAIAAAACAAACAvwAAgD8AAIA/",
+      "new_payload": "UiNAR+wKAkiu9oJDAAAAgAAAAIAAAIC/AAAAAAAAAABSI0BH7AgCSK72gkMAAACAAAAAgAAAgL8AAIA/AAAAAFIrQEfsCAJIrvaCQwAAAIAAAACAAACAvwAAgD8AAIA/"
+    },
+    {
+      "tile": "Tile_Street_m6_m3",
+      "material": "Steel",
+      "old_payload": "3ChARwcPAkiu9oJDAAAAgAAAAIAAAIC/AAAAAAAAAADcMEBHBw0CSK72gkMAAACAAAAAgAAAgL8AAIA/AACAP9wwQEcHDwJIrvaCQwAAAIAAAACAAACAvwAAAAAAAIA/",
+      "new_payload": "UiNAR+wKAkiu9oJDAAAAgAAAAIAAAIC/AAAAAAAAAABSK0BH7AgCSK72gkMAAACAAAAAgAAAgL8AAIA/AACAP1IrQEfsCgJIrvaCQwAAAIAAAACAAACAvwAAAAAAAIA/"
+    },
+    {
+      "tile": "Tile_Street_m6_m3",
+      "material": "Steel",
+      "old_payload": "3DBARwcPAkiudp5DAAAAgAAAAIAAAIA/AAAAAAAAAADcMEBHBw0CSK52nkMAAACAAAAAgAAAgD8AAIA/AAAAANwoQEcHDQJIrnaeQwAAAIAAAACAAACAPwAAgD8AAIA/",
+      "new_payload": "UitAR+wKAkiudp5DAAAAgAAAAIAAAIA/AAAAAAAAAABSK0BH7AgCSK52nkMAAACAAAAAgAAAgD8AAIA/AAAAAFIjQEfsCAJIrnaeQwAAAIAAAACAAACAPwAAgD8AAIA/"
+    },
+    {
+      "tile": "Tile_Street_m6_m3",
+      "material": "Steel",
+      "old_payload": "3DBARwcPAkiudp5DAAAAgAAAAIAAAIA/AAAAAAAAAADcKEBHBw0CSK52nkMAAACAAAAAgAAAgD8AAIA/AACAP9woQEcHDwJIrnaeQwAAAIAAAACAAACAPwAAAAAAAIA/",
+      "new_payload": "UitAR+wKAkiudp5DAAAAgAAAAIAAAIA/AAAAAAAAAABSI0BH7AgCSK52nkMAAACAAAAAgAAAgD8AAIA/AACAP1IjQEfsCgJIrnaeQwAAAIAAAACAAACAPwAAAAAAAIA/"
+    },
+    {
+      "tile": "Tile_Street_m6_m3",
+      "material": "Steel",
+      "old_payload": "3ChARwcPAkiu9oJDAACAvwAAAIAAAAAAAAAAAAAAAADcKEBHBw8CSK52nkMAAIC/AAAAgAAAAAAAAIA/AAAAANwoQEcHDQJIrnaeQwAAgL8AAACAAAAAAAAAgD8AAIA/",
+      "new_payload": "UiNAR+wKAkiu9oJDAACAvwAAAIAAAAAAAAAAAAAAAABSI0BH7AoCSK52nkMAAIC/AAAAgAAAAAAAAIA/AAAAAFIjQEfsCAJIrnaeQwAAgL8AAACAAAAAAAAAgD8AAIA/"
+    },
+    {
+      "tile": "Tile_Street_m6_m3",
+      "material": "Steel",
+      "old_payload": "3ChARwcPAkiu9oJDAACAvwAAAIAAAAAAAAAAAAAAAADcKEBHBw0CSK52nkMAAIC/AAAAgAAAAAAAAIA/AACAP9woQEcHDQJIrvaCQwAAgL8AAACAAAAAAAAAAAAAAIA/",
+      "new_payload": "UiNAR+wKAkiu9oJDAACAvwAAAIAAAAAAAAAAAAAAAABSI0BH7AgCSK52nkMAAIC/AAAAgAAAAAAAAIA/AACAP1IjQEfsCAJIrvaCQwAAgL8AAACAAAAAAAAAAAAAAIA/"
+    },
+    {
+      "tile": "Tile_Street_m6_m3",
+      "material": "Steel",
+      "old_payload": "3ChARwcNAkiu9oJDAAAAgAAAgL8AAACAAAAAAAAAAADcKEBHBw0CSK52nkMAAACAAACAvwAAAIAAAIA/AAAAANwwQEcHDQJIrnaeQwAAAIAAAIC/AAAAgAAAgD8AAIA/",
+      "new_payload": "UiNAR+wIAkiu9oJDAAAAgAAAgL8AAACAAAAAAAAAAABSI0BH7AgCSK52nkMAAACAAACAvwAAAIAAAIA/AAAAAFIrQEfsCAJIrnaeQwAAAIAAAIC/AAAAgAAAgD8AAIA/"
+    },
+    {
+      "tile": "Tile_Street_m6_m3",
+      "material": "Steel",
+      "old_payload": "3ChARwcNAkiu9oJDAAAAgAAAgL8AAAAAAAAAAAAAAADcMEBHBw0CSK52nkMAAACAAACAvwAAAAAAAIA/AACAP9wwQEcHDQJIrvaCQwAAAIAAAIC/AAAAAAAAAAAAAIA/",
+      "new_payload": "UiNAR+wIAkiu9oJDAAAAgAAAgL8AAAAAAAAAAAAAAABSK0BH7AgCSK52nkMAAACAAACAvwAAAAAAAIA/AACAP1IrQEfsCAJIrvaCQwAAAIAAAIC/AAAAAAAAAAAAAIA/"
+    },
+    {
+      "tile": "Tile_Street_m6_m3",
+      "material": "Steel",
+      "old_payload": "3DBARwcNAkiu9oJDAACAPwAAAIAAAAAAAAAAAAAAAADcMEBHBw0CSK52nkMAAIA/AAAAgAAAAAAAAIA/AAAAANwwQEcHDwJIrnaeQwAAgD8AAACAAAAAAAAAgD8AAIA/",
+      "new_payload": "UitAR+wIAkiu9oJDAACAPwAAAIAAAAAAAAAAAAAAAABSK0BH7AgCSK52nkMAAIA/AAAAgAAAAAAAAIA/AAAAAFIrQEfsCgJIrnaeQwAAgD8AAACAAAAAAAAAgD8AAIA/"
+    },
+    {
+      "tile": "Tile_Street_m6_m3",
+      "material": "Steel",
+      "old_payload": "3DBARwcNAkiu9oJDAACAPwAAAIAAAAAAAAAAAAAAAADcMEBHBw8CSK52nkMAAIA/AAAAgAAAAAAAAIA/AACAP9wwQEcHDwJIrvaCQwAAgD8AAACAAAAAAAAAAAAAAIA/",
+      "new_payload": "UitAR+wIAkiu9oJDAACAPwAAAIAAAAAAAAAAAAAAAABSK0BH7AoCSK52nkMAAIA/AAAAgAAAAAAAAIA/AACAP1IrQEfsCgJIrvaCQwAAgD8AAACAAAAAAAAAAAAAAIA/"
+    },
+    {
+      "tile": "Tile_Street_m6_m3",
+      "material": "Steel",
+      "old_payload": "3DBARwcPAkiu9oJDAAAAgAAAgD8AAAAAAAAAAAAAAADcMEBHBw8CSK52nkMAAACAAACAPwAAAAAAAIA/AAAAANwoQEcHDwJIrnaeQwAAAIAAAIA/AAAAAAAAgD8AAIA/",
+      "new_payload": "UitAR+wKAkiu9oJDAAAAgAAAgD8AAAAAAAAAAAAAAABSK0BH7AoCSK52nkMAAACAAACAPwAAAAAAAIA/AAAAAFIjQEfsCgJIrnaeQwAAAIAAAIA/AAAAAAAAgD8AAIA/"
+    },
+    {
+      "tile": "Tile_Street_m6_m3",
+      "material": "Steel",
+      "old_payload": "3DBARwcPAkiu9oJDAAAAgAAAgD8AAAAAAAAAAAAAAADcKEBHBw8CSK52nkMAAACAAACAPwAAAAAAAIA/AACAP9woQEcHDwJIrvaCQwAAAIAAAIA/AAAAAAAAAAAAAIA/",
+      "new_payload": "UitAR+wKAkiu9oJDAAAAgAAAgD8AAAAAAAAAAAAAAABSI0BH7AoCSK52nkMAAACAAACAPwAAAAAAAIA/AACAP1IjQEfsCgJIrvaCQwAAAIAAAIA/AAAAAAAAAAAAAIA/"
+    }
+  ],
+  "changed_rows_count": 16,
+  "changed_row_counts_by_material": {
+    "50": 4,
+    "Steel": 12
+  },
+  "changed_tile_names": [
+    "Tile_Street_m6_m3"
+  ],
+  "changed_rows_found_in_private_baseline": 16,
+  "private_baseline_original_sha256": "4448b7dcd6d892835420511f46e2e45e648fa7c26829243bbb5a9256139894ca",
+  "private_baseline_patched_in_memory_sha256": "aea62066aaf9a99c4edbe38c11ad0f71317a069b04f09f6207a194a50c8d0b7c",
+  "old_manifest_sha256": "aea62066aaf9a99c4edbe38c11ad0f71317a069b04f09f6207a194a50c8d0b7c",
+  "old_manifest_hash_recovered_exactly": true,
+  "current_source_mesh_bytes_unchanged": true,
+  "displacements": [
+    {
+      "apex_station_m": 2601,
+      "board_distance_m": 50,
+      "station_m": 2551.0,
+      "side": 1,
+      "half_width_m": 4.363387713673158,
+      "kerb_margin_m": 0.3128175999999999,
+      "shoulder_m": 0.5139421980504698,
+      "old_reach_m": 4.9401475117236275,
+      "new_reach_m": 5.113387713673158,
+      "outward_displacement_m": 0.17324020194953071,
+      "old_center_xyz": [
+        -1331.761084634847,
+        -491.9685961919117,
+        2.619271806395137
+      ],
+      "new_center_xyz": [
+        -1331.5969388590051,
+        -491.91320366674086,
+        2.619271806395137
+      ]
+    }
+  ]
+}

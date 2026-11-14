@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "status": "Full source CI239tests/mypy102/Ruff, actualfullscene/rebuild and bounded contact checks passed; native/cooked driving review pending. Baku remains incomplete.",
+  "source_scope": "Western public service frontage of Constitutional Court133641457 and adjacent northbody133641456; exact authored patch/body masks. Cross-access165508060, footpath299421404, Garden and east/rear planes are held.",
+  "control_field": {
+    "file": "oldcity-control-field.json.gz",
+    "sha256": "3ccdde904936b71b88d37dc08987fec3980c65ff9ab729f7eddc2b7a614b603e",
+    "points": 3709,
+    "faces": 4386,
+    "kind": "Explicit authored piecewise-linear control mesh, not a new bare-earth survey.",
+    "basis": "Native road controls, retained original Concrete cap7.6127m, literal mapped public/building boundaries, primary-photo street continuity and declared Court/north architectural estimates."
+  },
+  "ground_delta": {
+    "file": "oldcity-ground-delta.json.gz",
+    "sha256": "f3de1cfe5706f7a5d5be8ad34556d6f8192596b1e72336ff86828ee5a3ab3d6b",
+    "removed_rows": 2849,
+    "added_rows": 6728,
+    "tiles": [
+      "Tile_Street_m6_m2",
+      "Tile_Street_m7_m2"
+    ],
+    "format": "Counted original semantic material and exact96-byteXYZ/normal/UVpayload removals/additions. All removals/sourcehashes validate before mutation. Other100-byte rows and materialindices remain unchanged.",
+    "rebuild": "make baku-ground CIRCUIT_PYTHON=<environment-python>; tracked tools/rebuild_baku_ground.py rebuilds from ordinary pre-hook scene and authored control field using existing NumPy/Shapely."
+  },
+  "actual_masonry_support": {
+    "source": "Literal52closed triangular footsupport prisms in the control field, tied to actual barriers.csv hash and retained box indices. No barrier moved. Court/north12cm projected30cm high estimated stone base courses and entry steps define the actuallocalGroundcuts.",
+    "public_foot_witnesses": 1891,
+    "continuous_north_contact_intervals": 9,
+    "uncovered_interval_length_m": 0,
+    "odd_packed_boundary_edges": 0,
+    "minimum_base_embed_m": 0.00766,
+    "actual453_short_fragment_native_triangles": 52
+  },
+  "remaining_exposed_junctions": {
+    "count": 4,
+    "area_m2": 0.2527,
+    "maximum_grade_percent": 19.4343,
+    "maximum_new_old_vertex_displacement_m": 0.032255,
+    "interpretation": "Explicit small inherited junction ramps outside the publiccore, not hidden with false barrier/kerb exemptions.15percent is a diagnostic screen, not a universal source specification.",
+    "seams": "11/12 surrounding face edges have identical nativeXY/height. One preserved outside endpoint differs0.078125mmXY with0.501micrometre sameXYheight error. Nativeasphalttieexact; no centimetre step is accepted."
+  },
+  "source_limits": [
+    "Court22.4\u00b12m and north24\u00b13m bodyheights are calibrated/architectural estimates; norththreshold7.15\u00b12m and exactcrownremainuncertain.",
+    "Old retained Concrete cap and native profile are preservation constraints, not independent elevation measurements.",
+    "Source-held rear openings are estimated and clamped above their grade-following masonry sill; western source-observed openingrhythm stays separate.",
+    "Other approach intrusion witnesses,3630bank and ordinary city frontages remain separate unclosed visual items."
+  ],
+  "evidence": [
+    "build/reviews/resume-20261114/baku/BATCH-HANDOFF.md",
+    "build/reviews/resume-20261114/baku/durable-rebuild-proof.json",
+    "build/reviews/resume-20261114/baku/actual-base-course-proof.json",
+    "build/reviews/resume-20261114/baku/junction-height-displacement-witness.json",
+    "build/reviews/resume-20261114/baku/junction-actual-shared-seam-proof.json",
+    "build/reviews/resume-20261114/baku/remaining-exposed-face-witness.json",
+    "build/reviews/resume-20261114/baku/canonical-civic-counter-proof.json",
+    "build/reviews/resume-20261114/baku/civic-source-scope-proof.json",
+    "build/reviews/resume-20261114/baku/civic-actual-rebuild-proof.json"
+  ],
+  "preservation": "Native racingroad,kerbs,barriers,terrainprovider,globalunions,contactbytes,landmarks,handlingandcamera stayfixed. No photo pixels, copied mesh or experimental CDT dependency are shipped.",
+  "native_import_scope": "12City+3Street meshes;374othermeshesretainexactsemanticgeometry.23oftheseonlychangeparentCSVbounds/materialslotorderinginsource; nativeassetswillbepreserved. ThethirdStreettilecontainsanearliercommittedsharedboardclamp, notthetwo-tileGroundpatch.",
+  "shared_board_followup": {
+    "source_commit": "88446426",
+    "distance_board_m": 50,
+    "native_station_m": 2551,
+    "outward_displacement_m": 0.173240202,
+    "height_change_m": 0,
+    "source_note": "The existing shared lane-clearance clamp affected one Baku board; the earlier Baku native scene predates that helper. Exact16-row replacement recovers its oldmanifestSHA. This batch includes the outward correction without changing road/kerb/barrier/contact.",
+    "evidence": "shared-board-history.json"
+  }
+}

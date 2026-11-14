@@ -10,8 +10,10 @@ from circuit_scene import CircuitScene
 from shapely.geometry import Point as ShapePoint
 from shapely.geometry import Polygon
 
+from venues.baku_civic import civic_frontage, close_native_facade_fragments
 from venues.baku_flames import flame_towers
 from venues.baku_forecourt import court_forecourt
+from venues.baku_ground import finish_terrain as finish_ground
 from venues.baku_philharmonic import philharmonic_hall
 from venues.baku_skyline import waterfront_skyline
 from venues.coastal_water import coastal_water
@@ -56,7 +58,8 @@ def build_venue(scene: CircuitScene) -> None:
     circuit_edges(scene)
     coastal_water(scene)
     court_forecourt(scene)
-    custom = {299418016, 152190583, 152190848}
+    civic_frontage(scene)
+    custom = {299418016, 152190583, 152190848, 133641457, 133641456}
     modern = {200195772, 200195781, 286017123, 152192792, 152192676, 152192493, 152192304}
     for building in scene.buildings:
         if building.osm_id in custom or building.use in {'grandstand', 'roof', 'carport'}:
@@ -70,6 +73,7 @@ def build_venue(scene: CircuitScene) -> None:
             h = 19 if sample.station < 2600 else 15 if sample.station < 3800 else 22
         material = 'BakuStone' if building.osm_id in {299424046, 133847240} else 'Concrete' if building.osm_id in modern else 'Cream'
         facade(scene, building.osm_id, h, 'modern' if building.osm_id in modern else 'classical', material)
+    close_native_facade_fragments(scene, 133641453)
     oldcity_relief(scene)
     facade(scene, 152190583, 36, 'mansard')
     tower = mapped(scene, 299418016)
@@ -96,6 +100,10 @@ def build_venue(scene: CircuitScene) -> None:
     scene.pit_building(5720, 5990, -1, depth=15, height=6.5, levels=1)
     for start, end, side, offset, spacing in ((0, 430, -1, 7, 17), (550, 1250, 1, 9, 18), (550, 1250, -1, 7, 22), (1400, 2050, 1, 8, 18), (2050, 2500, -1, 9, 20), (3100, 3650, -1, 7, 18), (3800, 4450, -1, 8, 18), (4550, 5650, -1, 10, 17), (4700, 5650, 1, 9, 22)):
         trees(scene, start, end, side, offset, spacing, 12)
+
+
+def finish_terrain(scene: CircuitScene) -> None:
+    finish_ground(scene, scene.sources / 'oldcity-ground-delta.json.gz')
 
 
 def castle_ramp(scene: CircuitScene) -> None:
@@ -195,7 +203,7 @@ def castle_turret(scene: CircuitScene, station: float, radius: float, height: fl
 
 
 def oldcity_relief(scene: CircuitScene) -> None:
-    for osm_id in [299424046, 133847240, 133641457]:
+    for osm_id in [299424046, 133847240]:
         building = scene.footprint(osm_id)
         original = Polygon(building.ring)
         shape = original.difference(scene.road_mask.buffer(1.2))
