@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=monaco",
   "tiles": 116,
-  "triangles": 2331837,
+  "triangles": 2369451,
   "road_sha256": "3a7544d64e64e34c445dbf4049745ad0e2fc4f2d8e96dcf6d29b2c8ee7f67df3",
   "terrain_sha256": "f1538f328db1481498922f0c8d143010e2a9bcd9c17cb30b52457605ac30a21a",
   "landmarks": [
@@ -4196,7 +4196,14 @@
       "status": "Original 2019 orthophoto role interpretation, approximately \u00b11m boundary uncertainty. All old height planes and complete outside packed rows are preserved; clipped outside faces retain interpolated normals and UVs. Pools, paths, buildings and the belvedere are excluded. Elevated L roof/deck and uncertain pale cap are not ground evidence. No native field, road, protection, contact or camera change; fresh cooked review required."
     },
     {
-      "name": "Villa Hermosa measured eaves and reconstructed hip",
+      "name": "Villa Hermosa developer-photo loggias and attic",
+      "source": "Groupe Marzocco project/photo, reviewed locally",
+      "visible_levels": 6,
+      "estimated_balcony_depth_m": 1.2,
+      "limits": "Plausible south-elevation registration; bay proportions, depths, columns, mansard break and ornament sizes estimated. Literal body and measured eaves/ridge unchanged. Unphotographed faces remain estimates; Ground/native data unchanged."
+    },
+    {
+      "name": "Villa Hermosa measured envelope and photographed garden front",
       "osm_id": 94399624,
       "ign_id": "BATIMENT0000000074074444",
       "roof_boundary_min_absolute_m": 82.1,
@@ -4205,7 +4212,7 @@
       "body_area_m2": 547.2505460590272,
       "roof_body_join_area_m2": 8.985520482002752,
       "source": "architecture/villa-hermosa.json and villa-hermosa-provenance.json",
-      "dimensions_status": "Literal OSM body and IGN eaves, retained datum and actual emitted wall-foot support. Ridge, horizontal floor schedule, plain window rhythm, roof material and sub-precision body/eave join are architectural estimates. Garden/pool/L-roof unchanged; native road, field and contact unchanged."
+      "dimensions_status": "Literal OSM body and IGN eaves, retained datum and actual emitted wall-foot support. Ridge/profile, horizontal floor schedule, loggia/ornament dimensions, simpler unphotographed sides, roof material and sub-precision body/eave join remain architectural estimates. Garden/pool/L-roof unchanged; native road, field and contact unchanged."
     },
     {
       "name": "Source-observed open west ravine terrain form",
@@ -4219,6 +4226,20 @@
       "minimum_packed_trunk_embed_m": 0.09998294225471227,
       "source": "architecture/west-bank-groves.json",
       "dimensions_status": "Original canopy estimates from the government 2019 orthophoto and 2012/2014 oblique views, not individual tree identities. Heights/crowns and inferred stems retain broad uncertainty. Two uncertain belvedere-overhang crowns and the unresolved roadside species are omitted. The separate finite ravine form updates its qualified Ground. Clumps0/1 reanchor with their source height above centre Ground preserved; other five poses remain fixed. Building/roof layers, road, contact and native field remain unchanged."
+    },
+    {
+      "name": "Finite mixed-natural ravine base",
+      "material_only_faces": 6283,
+      "plan_area_m2": 432.4474058746106,
+      "unchanged_overlap_tile_faces": 6940,
+      "source": "architecture/ravine-outline.json; architecture/natural-ground-source-review.md",
+      "limits": "General mixed natural land use, not uniform lawn or bare rock. Existing photographed rock/ivy and all structures/paths remain separate. Original1\u20132m outline uncertainty and grid-crop edge retained; no height, normal, UV, tree pose or native contact changes. Applied after canopy support checks; those original supporting vertex payloads remain exact."
+    },
+    {
+      "name": "Two finite photographed lower planted sites",
+      "classified_ground_area_m2": 38.15414850000002,
+      "source": "architecture/lower-natural-sites.json",
+      "limits": "Mixed natural appearance only; no species or height claim. Original planes retained. Roofs, buildings, paths and actual protection are excluded with stated margins. Existing precise rock/ivy/paving roles and the ambiguous house-eave ray remain separate. Native contact, terrain field and tree poses unchanged; cooked review pending."
     }
   ],
   "vegetation": [

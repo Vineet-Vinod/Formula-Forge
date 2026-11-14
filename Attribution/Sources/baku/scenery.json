@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=baku",
-  "tiles": 390,
-  "triangles": 4450848,
+  "tiles": 393,
+  "triangles": 4835888,
   "road_sha256": "26bc10ef7913eb8b758e60bada4eb749e94aa7bb524952c47ead9fff2130166e",
   "terrain_sha256": "e6e5423c2f5f02fc7e47ddb1459d9e39edcc2ae0b7891724be8520abedc5231e",
   "landmarks": [
@@ -667,12 +667,6 @@
       "name": "Mapped building",
       "osm_id": 191041238,
       "height_m": 19,
-      "facade": "classical"
-    },
-    {
-      "name": "Mapped building",
-      "osm_id": 196291852,
-      "height_m": 15,
       "facade": "classical"
     },
     {
@@ -1898,12 +1892,6 @@
       "detail_status": "Actual clipped footprint and tagged storeys retained. Supplied234/236s supports articulated arched upper openings, pale stone surrounds and narrow projecting iron balconies. Individual bay/arch/balcony dimensions and placement are original visual estimates; no template office signboard."
     },
     {
-      "name": "Four Seasons",
-      "osm_id": 152190583,
-      "height_m": 36,
-      "facade": "mansard"
-    },
-    {
       "name": "Maiden Tower",
       "osm_id": 299418016,
       "height_m": 29,
@@ -1916,15 +1904,6 @@
       "wall_height_m": 9,
       "wall_thickness_m": 3.5,
       "dimensions_status": "Original reconstruction registered to the supplied234/236s forward and238s rear castle views. The ordinary2570m approach is left unobscured. Azerbaijan UNESCO commission documents8\u201310m walls/3.5m thickness; localcourse size,tower radii/locations and crenellation dimensions are visual estimates, not an OSM trace. The retained city_wall299450006 is a separate palace wall and is explicitly not used. Protected road and native collision remain unchanged."
-    },
-    {
-      "name": "Azerbaijan State Philharmonic Hall",
-      "osm_id": 152190848,
-      "wall_height_m": 11.5,
-      "belvedere_peak_m": 44.21335392820622,
-      "body_footprint_area_m2": 4074.298516461987,
-      "road_registration_clip_m2": 28.62393272080999,
-      "source": "philharmonic-architecture.json. Actual OSM hall/rotunda outline; yellow Renaissance walls, white pilasters/arcades, balustrades, dome and twin open belvederes from the construction supervisor's published Niyazi Street photograph. Heights/roof sections are disclosed visual estimates, not measured elevations."
     },
     {
       "name": "Mapped eastern residential block",
@@ -2289,6 +2268,27 @@
       "osm_id": 3977156,
       "datum_m": 19.48450553510287,
       "dimensions": "NE short entrance of De Bour; seven bays, arches0/3/6, porticoes1/5. Distinct SE nine-window upper run, three-arch gallery and ornate terminal bay. Cornice14.4\u00b13m, mansard4\u00b11.5m, portico/gallery depths and rear rhythm are architectural estimates. Datum is retained renderer support; entry/garden paving/steps held."
+    },
+    {
+      "name": "Four Seasons Hotel Baku",
+      "osm_id": 152190583,
+      "cornice_estimate_m": 34.0,
+      "mansard_estimate_m": 5.2,
+      "source": "hotel-reconstruction.json; primary rear/photographed returns, explicit unseen-return/height/datum estimates; native review pending"
+    },
+    {
+      "name": "Azerbaijan State Philharmonic",
+      "osm_id": 152190848,
+      "body_height_estimate_m": 11.5,
+      "tower_peak_estimate_m": 32.0,
+      "source": "streetscape/reconstruction.json; mapped roof parts and primary exterior rhythm; base/heights estimated, native review pending"
+    },
+    {
+      "name": "Historic Western University building, heritage 3289",
+      "osm_id": 196291852,
+      "cornice_estimate_m": 15.0,
+      "mansard_estimate_m": 2.3,
+      "source": "streetscape/reconstruction.json; primary frontage, current operator not assumed; height/base estimated, native review pending"
     }
   ],
   "vegetation": [
