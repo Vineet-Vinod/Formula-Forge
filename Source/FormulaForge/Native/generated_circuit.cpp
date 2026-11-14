@@ -17,6 +17,7 @@ constexpr float Kerb = 0.85f;
 #include "track_data/lasvegas_boundaries.inc"
 #include "track_data/malaysia_paving.inc"
 #include "track_data/cota_t11_paving.inc"
+#include "track_data/cota_backstraight_paving.inc"
 
 Vec2 leftNormal(Vec2 tangent) { return {-tangent.y, tangent.x}; }
 
@@ -64,7 +65,7 @@ float circuitShoulderMeters(const TrackCatalogEntry& track, float station, bool 
             }
         }
     }
-    if (track.id == TrackLayoutId::Cota && left && station >= 2350.0f && station <= 2380.0f) {
+    if (track.id == TrackLayoutId::Cota && left && station >= 2350.0f && station <= 2570.0f) {
         const auto next = std::upper_bound(std::begin(kCotaT11RetainedWidth),
             std::end(kCotaT11RetainedWidth), station,
             [](float distance, const TrackWidthPoint& point) { return distance < point.distanceMeters; });
@@ -175,6 +176,13 @@ std::vector<CircuitSample> sampleCircuit(const TrackCatalogEntry& track, int sam
 void buildGeneratedSupport(const TrackCatalogEntry& track, const std::vector<CircuitSample>& samples, GeneratedSupport& support) {
     support.barriers.clear();
     support.runoff.clear();
+    if (track.id == TrackLayoutId::Cota) {
+        for (const auto& triangle : kCotaBackstraightPaving) {
+            support.runoff.push_back({{triangle[0] * Units, -triangle[1] * Units},
+                {triangle[3] * Units, -triangle[4] * Units},
+                {triangle[6] * Units, -triangle[7] * Units}, true});
+        }
+    }
     const int count = static_cast<int>(samples.size());
     const bool paved = streetVenue(track);
     if (track.id != TrackLayoutId::LasVegas || kLasVegasWalls.empty()) {
@@ -425,6 +433,9 @@ bool writeGeneratedContact(const TrackCatalogEntry& track, const std::vector<Cir
     }
     if (track.id == TrackLayoutId::Malaysia) {
         for (const auto& triangle : kMalaysiaPaving) drive.insert(drive.end(), triangle.begin(), triangle.end());
+    }
+    if (track.id == TrackLayoutId::Cota) {
+        for (const auto& triangle : kCotaBackstraightPaving) drive.insert(drive.end(), triangle.begin(), triangle.end());
     }
     const bool surface = writeBytes(directory + "/drive_surface.bin", "FFSURF1", 8,
         static_cast<std::uint32_t>(drive.size() / 9), drive.data(), drive.size());

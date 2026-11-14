@@ -1,0 +1,2038 @@
+[
+  {
+    "retrieved_utc": "2026-11-14T17:30:27.850023+00:00",
+    "source_epoch": "Unverified; service citation retained separately. Not a survey",
+    "scene_scale": 1.0009214766085863,
+    "road_sha256": "7feec8d0948f7ba5f8700d9def7043280150fe6c266d82250434b984d977a90d",
+    "sections": [
+      {
+        "station_m": 2500,
+        "native_road": {
+          "station": "2500.09717",
+          "x": "1562.31152",
+          "y": "733.293518",
+          "z": "14.53234",
+          "tx": "-0.953579426",
+          "ty": "-0.30114156",
+          "half_width": "6",
+          "bank": "0",
+          "left_shoulder": "23.0499992",
+          "right_shoulder": "12"
+        },
+        "wgs84": [
+          -97.6249418018845,
+          30.139374247978665
+        ],
+        "pixel_in_world": [
+          30711647.653385654,
+          55314864.222011425
+        ],
+        "resolution_m_per_pixel_estimate": 0.2582157987507759,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119966,
+              216073
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216073/119966",
+            "file": "tile-19-216073-119966.jpg",
+            "bytes": 15227,
+            "sha256": "4f2e0eaa9eb154db4a96d4f2b2a851b50e14874ee23bdfdf6621976812bed74a"
+          },
+          {
+            "zxy": [
+              19,
+              119966,
+              216074
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216074/119966",
+            "file": "tile-19-216074-119966.jpg",
+            "bytes": 13037,
+            "sha256": "670c61788db7a209152deaf16fe8be694f37f81c85b2c45333c2ec58115ba8de"
+          },
+          {
+            "zxy": [
+              19,
+              119967,
+              216073
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216073/119967",
+            "file": "tile-19-216073-119967.jpg",
+            "bytes": 13846,
+            "sha256": "3b80bb07c49b1171164c3d94dbdc7726714ddc2c7a26ccd9564453b7e8ca275f"
+          },
+          {
+            "zxy": [
+              19,
+              119967,
+              216074
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216074/119967",
+            "file": "tile-19-216074-119967.jpg",
+            "bytes": 15243,
+            "sha256": "06d5202a846e4285f6b35bbe5acf213c2fa319201b66187e4633c8128f741b01"
+          }
+        ]
+      },
+      {
+        "station_m": 2600,
+        "native_road": {
+          "station": "2599.69727",
+          "x": "1467.39392",
+          "y": "703.116516",
+          "z": "9.03261566",
+          "tx": "-0.955050766",
+          "ty": "-0.296442151",
+          "half_width": "7.97093201",
+          "bank": "0",
+          "left_shoulder": "12",
+          "right_shoulder": "11.6999998"
+        },
+        "wgs84": [
+          -97.62592678228418,
+          30.139103412925575
+        ],
+        "pixel_in_world": [
+          30711280.426076297,
+          55314980.98163254
+        ],
+        "resolution_m_per_pixel_estimate": 0.25821650741251456,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119965,
+              216073
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216073/119965",
+            "file": "tile-19-216073-119965.jpg",
+            "bytes": 15389,
+            "sha256": "a53418b7a392d34c4e6f3e948c38e7c7a7d9e6a10fecafb102062608a3807afd"
+          },
+          {
+            "zxy": [
+              19,
+              119965,
+              216074
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216074/119965",
+            "file": "tile-19-216074-119965.jpg",
+            "bytes": 14054,
+            "sha256": "04a2133bc8ba98b105cf4e7e978234fad274967975e60326bfeed7b85297d7cb"
+          },
+          {
+            "zxy": [
+              19,
+              119966,
+              216073
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216073/119966",
+            "file": "tile-19-216073-119966.jpg",
+            "bytes": 15227,
+            "sha256": "4f2e0eaa9eb154db4a96d4f2b2a851b50e14874ee23bdfdf6621976812bed74a"
+          },
+          {
+            "zxy": [
+              19,
+              119966,
+              216074
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216074/119966",
+            "file": "tile-19-216074-119966.jpg",
+            "bytes": 13037,
+            "sha256": "670c61788db7a209152deaf16fe8be694f37f81c85b2c45333c2ec58115ba8de"
+          }
+        ]
+      },
+      {
+        "station_m": 2680,
+        "native_road": {
+          "station": "2679.78101",
+          "x": "1390.84473",
+          "y": "679.594666",
+          "z": "7.51738596",
+          "tx": "-0.963130474",
+          "ty": "-0.269034684",
+          "half_width": "7.91103506",
+          "bank": "0",
+          "left_shoulder": "12",
+          "right_shoulder": "12"
+        },
+        "wgs84": [
+          -97.62672114973302,
+          30.138892307081015
+        ],
+        "pixel_in_world": [
+          30710984.264425796,
+          55315071.991189666
+        ],
+        "resolution_m_per_pixel_estimate": 0.2582170597839652,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119964,
+              216074
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216074/119964",
+            "file": "tile-19-216074-119964.jpg",
+            "bytes": 14746,
+            "sha256": "535bf85f37cef6ae5709b5c40e14dcaf25a6da24dd30b48ee948e03ed3007017"
+          },
+          {
+            "zxy": [
+              19,
+              119965,
+              216074
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216074/119965",
+            "file": "tile-19-216074-119965.jpg",
+            "bytes": 14054,
+            "sha256": "04a2133bc8ba98b105cf4e7e978234fad274967975e60326bfeed7b85297d7cb"
+          }
+        ]
+      },
+      {
+        "station_m": 2760,
+        "native_road": {
+          "station": "2759.86475",
+          "x": "1313.71704",
+          "y": "658.038147",
+          "z": "8.83773327",
+          "tx": "-0.963086247",
+          "ty": "-0.269193023",
+          "half_width": "7.95796156",
+          "bank": "0",
+          "left_shoulder": "6.07999992",
+          "right_shoulder": "12"
+        },
+        "wgs84": [
+          -97.62752152040106,
+          30.138698839851642
+        ],
+        "pixel_in_world": [
+          30710685.864612956,
+          55315155.396416135
+        ],
+        "resolution_m_per_pixel_estimate": 0.25821756599981394,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119963,
+              216074
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216074/119963",
+            "file": "tile-19-216074-119963.jpg",
+            "bytes": 14738,
+            "sha256": "2f8a795973d1456ad842e029e5d308196ec54c802e447cb714bee158c933d9bb"
+          },
+          {
+            "zxy": [
+              19,
+              119963,
+              216075
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216075/119963",
+            "file": "tile-19-216075-119963.jpg",
+            "bytes": 13370,
+            "sha256": "b49ce499903e2380b121f1a7a0ec848282597ba305808e29efbbac0139af4c3c"
+          }
+        ]
+      },
+      {
+        "station_m": 2860,
+        "native_road": {
+          "station": "2860.13794",
+          "x": "1216.73169",
+          "y": "632.603027",
+          "z": "11.3587971",
+          "tx": "-0.969951451",
+          "ty": "-0.243298575",
+          "half_width": "7.93680048",
+          "bank": "0",
+          "left_shoulder": "12",
+          "right_shoulder": "10.0100002"
+        },
+        "wgs84": [
+          -97.6285279582883,
+          30.138470562633263
+        ],
+        "pixel_in_world": [
+          30710310.637372404,
+          55315253.80828916
+        ],
+        "resolution_m_per_pixel_estimate": 0.25821816329380376,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119961,
+              216074
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216074/119961",
+            "file": "tile-19-216074-119961.jpg",
+            "bytes": 11275,
+            "sha256": "b8271e314318b875010949d7bb872477433f9e4284a57094b473fbc48bc0157f"
+          },
+          {
+            "zxy": [
+              19,
+              119961,
+              216075
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216075/119961",
+            "file": "tile-19-216075-119961.jpg",
+            "bytes": 14531,
+            "sha256": "b10e040f3f7ff70fd86a984af52c6787f2e89c5c39b2fd059cfabc9e21f11724"
+          },
+          {
+            "zxy": [
+              19,
+              119962,
+              216074
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216074/119962",
+            "file": "tile-19-216074-119962.jpg",
+            "bytes": 13821,
+            "sha256": "9ff299e4ff23dec24396b9c4ac6e528aa3a959762a25b61751ec34b4a16c2c78"
+          },
+          {
+            "zxy": [
+              19,
+              119962,
+              216075
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216075/119962",
+            "file": "tile-19-216075-119962.jpg",
+            "bytes": 14408,
+            "sha256": "18e0f5cfac351e4f2dea7b3116611eea9d78a103e5df0d12d6506ded36c8b098"
+          }
+        ]
+      },
+      {
+        "station_m": 2960,
+        "native_road": {
+          "station": "2959.73804",
+          "x": "1119.74927",
+          "y": "609.92981",
+          "z": "11.8123827",
+          "tx": "-0.974567115",
+          "ty": "-0.224095821",
+          "half_width": "7.93477774",
+          "bank": "0",
+          "left_shoulder": "12",
+          "right_shoulder": "12"
+        },
+        "wgs84": [
+          -97.6295343657703,
+          30.138267073170333
+        ],
+        "pixel_in_world": [
+          30709935.421467748,
+          55315341.53379907
+        ],
+        "resolution_m_per_pixel_estimate": 0.2582186957264541,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119960,
+              216075
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216075/119960",
+            "file": "tile-19-216075-119960.jpg",
+            "bytes": 15182,
+            "sha256": "ee6bd65c94b8832b27f85e4edf914a22b9d532661093f89943383e6941a26059"
+          },
+          {
+            "zxy": [
+              19,
+              119961,
+              216075
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216075/119961",
+            "file": "tile-19-216075-119961.jpg",
+            "bytes": 14531,
+            "sha256": "b10e040f3f7ff70fd86a984af52c6787f2e89c5c39b2fd059cfabc9e21f11724"
+          }
+        ]
+      },
+      {
+        "station_m": 3040,
+        "native_road": {
+          "station": "3039.82178",
+          "x": "1041.37646",
+          "y": "593.503723",
+          "z": "10.6966839",
+          "tx": "-0.980982363",
+          "ty": "-0.194096744",
+          "half_width": "7.97314644",
+          "bank": "0",
+          "left_shoulder": "10.6515932",
+          "right_shoulder": "12"
+        },
+        "wgs84": [
+          -97.63034765731705,
+          30.138119650966342
+        ],
+        "pixel_in_world": [
+          30709632.204402175,
+          55315405.088269345
+        ],
+        "resolution_m_per_pixel_estimate": 0.25821908145640615,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119959,
+              216075
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216075/119959",
+            "file": "tile-19-216075-119959.jpg",
+            "bytes": 14905,
+            "sha256": "6f9f3c647f2464bc615c2a1e2b5b65436e6e8f62859fd770fd6d57cd8727e617"
+          },
+          {
+            "zxy": [
+              19,
+              119959,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119959",
+            "file": "tile-19-216076-119959.jpg",
+            "bytes": 13251,
+            "sha256": "a2b33b2483be42b4a8a0f70d43110c11decd3195a081da068828969b3c12c813"
+          }
+        ]
+      },
+      {
+        "station_m": 3080,
+        "native_road": {
+          "station": "3080.2002",
+          "x": "1001.76587",
+          "y": "585.666992",
+          "z": "9.7950983",
+          "tx": "-0.980990469",
+          "ty": "-0.194055676",
+          "half_width": "7.94334602",
+          "bank": "0",
+          "left_shoulder": "8.56050396",
+          "right_shoulder": "9.75901318"
+        },
+        "wgs84": [
+          -97.63075870494961,
+          30.13804931722489
+        ],
+        "pixel_in_world": [
+          30709478.954737335,
+          55315435.40947353
+        ],
+        "resolution_m_per_pixel_estimate": 0.25821926548392155,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119958,
+              216075
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216075/119958",
+            "file": "tile-19-216075-119958.jpg",
+            "bytes": 14130,
+            "sha256": "224537fa3299c9f41c91b3089e1398519902b39cad9ef82c135a6357149c12c2"
+          },
+          {
+            "zxy": [
+              19,
+              119958,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119958",
+            "file": "tile-19-216076-119958.jpg",
+            "bytes": 12326,
+            "sha256": "1356bbe317bffae354b407efd3affc42044e6f825343c6def1f4f35b048df81d"
+          },
+          {
+            "zxy": [
+              19,
+              119959,
+              216075
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216075/119959",
+            "file": "tile-19-216075-119959.jpg",
+            "bytes": 14905,
+            "sha256": "6f9f3c647f2464bc615c2a1e2b5b65436e6e8f62859fd770fd6d57cd8727e617"
+          },
+          {
+            "zxy": [
+              19,
+              119959,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119959",
+            "file": "tile-19-216076-119959.jpg",
+            "bytes": 13251,
+            "sha256": "a2b33b2483be42b4a8a0f70d43110c11decd3195a081da068828969b3c12c813"
+          }
+        ]
+      },
+      {
+        "station_m": 3140,
+        "native_road": {
+          "station": "3140.09497",
+          "x": "942.871704",
+          "y": "574.801575",
+          "z": "8.99344444",
+          "tx": "-0.986627042",
+          "ty": "-0.162994221",
+          "half_width": "7.92832422",
+          "bank": "0",
+          "left_shoulder": "11.666893",
+          "right_shoulder": "12"
+        },
+        "wgs84": [
+          -97.63136986240794,
+          30.137951801381863
+        ],
+        "pixel_in_world": [
+          30709251.09872204,
+          55315477.448972814
+        ],
+        "resolution_m_per_pixel_estimate": 0.2582195206324841,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119957,
+              216075
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216075/119957",
+            "file": "tile-19-216075-119957.jpg",
+            "bytes": 16779,
+            "sha256": "6d935959505a1d0511df992af2128310337c2076646cd0b2c6bb09c1f5729eae"
+          },
+          {
+            "zxy": [
+              19,
+              119957,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119957",
+            "file": "tile-19-216076-119957.jpg",
+            "bytes": 13242,
+            "sha256": "87a4e398237873688cdaad438f2b33b7adb088bafb55105b6c837e40e407552d"
+          },
+          {
+            "zxy": [
+              19,
+              119958,
+              216075
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216075/119958",
+            "file": "tile-19-216075-119958.jpg",
+            "bytes": 14130,
+            "sha256": "224537fa3299c9f41c91b3089e1398519902b39cad9ef82c135a6357149c12c2"
+          },
+          {
+            "zxy": [
+              19,
+              119958,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119958",
+            "file": "tile-19-216076-119958.jpg",
+            "bytes": 12326,
+            "sha256": "1356bbe317bffae354b407efd3affc42044e6f825343c6def1f4f35b048df81d"
+          }
+        ]
+      },
+      {
+        "station_m": 3200,
+        "native_road": {
+          "station": "3199.98975",
+          "x": "883.778625",
+          "y": "565.035095",
+          "z": "8.90199757",
+          "tx": "-0.986607671",
+          "ty": "-0.163111627",
+          "half_width": "7.95635128",
+          "bank": "0",
+          "left_shoulder": "12",
+          "right_shoulder": "12"
+        },
+        "wgs84": [
+          -97.63198308402933,
+          30.137864148369502
+        ],
+        "pixel_in_world": [
+          30709022.473130975,
+          55315515.236527935
+        ],
+        "resolution_m_per_pixel_estimate": 0.25821974997447783,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119956,
+              216075
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216075/119956",
+            "file": "tile-19-216075-119956.jpg",
+            "bytes": 14093,
+            "sha256": "9401f211880b2f70429a96719fae77f97972bbd8aed7ad1467e7c42283396e5c"
+          },
+          {
+            "zxy": [
+              19,
+              119956,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119956",
+            "file": "tile-19-216076-119956.jpg",
+            "bytes": 14858,
+            "sha256": "b09c24aecae7431168057a8ed44a8f7186a741a25c01f7d2ccf108e79eab4cef"
+          },
+          {
+            "zxy": [
+              19,
+              119957,
+              216075
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216075/119957",
+            "file": "tile-19-216075-119957.jpg",
+            "bytes": 16779,
+            "sha256": "6d935959505a1d0511df992af2128310337c2076646cd0b2c6bb09c1f5729eae"
+          },
+          {
+            "zxy": [
+              19,
+              119957,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119957",
+            "file": "tile-19-216076-119957.jpg",
+            "bytes": 13242,
+            "sha256": "87a4e398237873688cdaad438f2b33b7adb088bafb55105b6c837e40e407552d"
+          }
+        ]
+      },
+      {
+        "station_m": 3260,
+        "native_road": {
+          "station": "3259.88428",
+          "x": "824.599487",
+          "y": "555.832886",
+          "z": "9.09505653",
+          "tx": "-0.990610182",
+          "ty": "-0.136716843",
+          "half_width": "7.91510153",
+          "bank": "0",
+          "left_shoulder": "8.73099995",
+          "right_shoulder": "9.09599972"
+        },
+        "wgs84": [
+          -97.63259719870354,
+          30.13778155962318
+        ],
+        "pixel_in_world": [
+          30708793.514585685,
+          55315550.84082753
+        ],
+        "resolution_m_per_pixel_estimate": 0.25821996606538855,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119955,
+              216075
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216075/119955",
+            "file": "tile-19-216075-119955.jpg",
+            "bytes": 14578,
+            "sha256": "c0885e34b2dad920d24a3b86b6a3e37224523b3cf6ceedfa950215e04c0e5a73"
+          },
+          {
+            "zxy": [
+              19,
+              119955,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119955",
+            "file": "tile-19-216076-119955.jpg",
+            "bytes": 14886,
+            "sha256": "719152c5221f1c94c06bab0562d51c5070fe9dd437e978d3a6068c79e8c3d9b6"
+          },
+          {
+            "zxy": [
+              19,
+              119956,
+              216075
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216075/119956",
+            "file": "tile-19-216075-119956.jpg",
+            "bytes": 14093,
+            "sha256": "9401f211880b2f70429a96719fae77f97972bbd8aed7ad1467e7c42283396e5c"
+          },
+          {
+            "zxy": [
+              19,
+              119956,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119956",
+            "file": "tile-19-216076-119956.jpg",
+            "bytes": 14858,
+            "sha256": "b09c24aecae7431168057a8ed44a8f7186a741a25c01f7d2ccf108e79eab4cef"
+          }
+        ]
+      },
+      {
+        "station_m": 3320,
+        "native_road": {
+          "station": "3319.77881",
+          "x": "765.23822",
+          "y": "547.876526",
+          "z": "9.28504181",
+          "tx": "-0.99260205",
+          "ty": "-0.121413335",
+          "half_width": "7.94720507",
+          "bank": "0",
+          "left_shoulder": "12",
+          "right_shoulder": "12"
+        },
+        "wgs84": [
+          -97.63321320336964,
+          30.137710152225484
+        ],
+        "pixel_in_world": [
+          30708563.85140035,
+          55315581.624784306
+        ],
+        "resolution_m_per_pixel_estimate": 0.25822015290021255,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119954,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119954",
+            "file": "tile-19-216076-119954.jpg",
+            "bytes": 15534,
+            "sha256": "94c731f912db982f0dc6f916913ca09f13963caefb572fd1ff8c1795f9ef5607"
+          },
+          {
+            "zxy": [
+              19,
+              119955,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119955",
+            "file": "tile-19-216076-119955.jpg",
+            "bytes": 14886,
+            "sha256": "719152c5221f1c94c06bab0562d51c5070fe9dd437e978d3a6068c79e8c3d9b6"
+          }
+        ]
+      },
+      {
+        "station_m": 3400,
+        "native_road": {
+          "station": "3399.86279",
+          "x": "685.703491",
+          "y": "538.534424",
+          "z": "9.50640869",
+          "tx": "-0.994595349",
+          "ty": "-0.103826925",
+          "half_width": "7.98346853",
+          "bank": "0",
+          "left_shoulder": "10.9469967",
+          "right_shoulder": "12"
+        },
+        "wgs84": [
+          -97.63403855240036,
+          30.137626307955895
+        ],
+        "pixel_in_world": [
+          30708256.138978932,
+          55315617.77028778
+        ],
+        "resolution_m_per_pixel_estimate": 0.2582203722751415,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119953,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119953",
+            "file": "tile-19-216076-119953.jpg",
+            "bytes": 14111,
+            "sha256": "2b43deb4614e9477be9df02806b17bbb656feb6114c9e29ef8a338dbe22cf35b"
+          },
+          {
+            "zxy": [
+              19,
+              119953,
+              216077
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216077/119953",
+            "file": "tile-19-216077-119953.jpg",
+            "bytes": 13047,
+            "sha256": "9a4e27764c52a4f23bbd9be108337686d5159035299e06ab00d0b1ccc1c43709"
+          },
+          {
+            "zxy": [
+              19,
+              119954,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119954",
+            "file": "tile-19-216076-119954.jpg",
+            "bytes": 15534,
+            "sha256": "94c731f912db982f0dc6f916913ca09f13963caefb572fd1ff8c1795f9ef5607"
+          },
+          {
+            "zxy": [
+              19,
+              119954,
+              216077
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216077/119954",
+            "file": "tile-19-216077-119954.jpg",
+            "bytes": 13963,
+            "sha256": "403388468e488467e33dc428878c8fed2bfe675d3bbfe153085507113bba7db2"
+          }
+        ]
+      },
+      {
+        "station_m": 3480,
+        "native_road": {
+          "station": "3479.94678",
+          "x": "606.118774",
+          "y": "529.614258",
+          "z": "9.26696587",
+          "tx": "-0.993437707",
+          "ty": "-0.114374653",
+          "half_width": "7.98901749",
+          "bank": "0",
+          "left_shoulder": "9.16602612",
+          "right_shoulder": "12"
+        },
+        "wgs84": [
+          -97.63486442016733,
+          30.137546250512408
+        ],
+        "pixel_in_world": [
+          30707948.233158622,
+          55315652.28325107
+        ],
+        "resolution_m_per_pixel_estimate": 0.2582205817414866,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119952,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119952",
+            "file": "tile-19-216076-119952.jpg",
+            "bytes": 13452,
+            "sha256": "3d019c198d5e4565bdd84fd4a4f48c8d5b89701df0ddec1f6d96796193a5c4d2"
+          },
+          {
+            "zxy": [
+              19,
+              119952,
+              216077
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216077/119952",
+            "file": "tile-19-216077-119952.jpg",
+            "bytes": 11301,
+            "sha256": "fa3edb0c3a38c91e59d0974b5aa672164bbe518d912256feeabbf6e774f4cadb"
+          },
+          {
+            "zxy": [
+              19,
+              119953,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119953",
+            "file": "tile-19-216076-119953.jpg",
+            "bytes": 14111,
+            "sha256": "2b43deb4614e9477be9df02806b17bbb656feb6114c9e29ef8a338dbe22cf35b"
+          },
+          {
+            "zxy": [
+              19,
+              119953,
+              216077
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216077/119953",
+            "file": "tile-19-216077-119953.jpg",
+            "bytes": 13047,
+            "sha256": "9a4e27764c52a4f23bbd9be108337686d5159035299e06ab00d0b1ccc1c43709"
+          }
+        ]
+      },
+      {
+        "station_m": 3540,
+        "native_road": {
+          "station": "3539.84131",
+          "x": "546.58783",
+          "y": "523.026001",
+          "z": "8.64969635",
+          "tx": "-0.994007528",
+          "ty": "-0.109311804",
+          "half_width": "7.9904685",
+          "bank": "0",
+          "left_shoulder": "12",
+          "right_shoulder": "12"
+        },
+        "wgs84": [
+          -97.63548218560824,
+          30.137487121678657
+        ],
+        "pixel_in_world": [
+          30707717.913508855,
+          55315677.773820594
+        ],
+        "resolution_m_per_pixel_estimate": 0.25822073644883475,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119951,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119951",
+            "file": "tile-19-216076-119951.jpg",
+            "bytes": 12373,
+            "sha256": "edcc54dda1414ce0c054b539b803bb86b52f9d99818360046b33cb6d78e0e79d"
+          },
+          {
+            "zxy": [
+              19,
+              119951,
+              216077
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216077/119951",
+            "file": "tile-19-216077-119951.jpg",
+            "bytes": 12622,
+            "sha256": "baa3d210d097713d670d47a645f9af02af904682dae1f1fafc9f2c9bf52e6331"
+          },
+          {
+            "zxy": [
+              19,
+              119952,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119952",
+            "file": "tile-19-216076-119952.jpg",
+            "bytes": 13452,
+            "sha256": "3d019c198d5e4565bdd84fd4a4f48c8d5b89701df0ddec1f6d96796193a5c4d2"
+          },
+          {
+            "zxy": [
+              19,
+              119952,
+              216077
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216077/119952",
+            "file": "tile-19-216077-119952.jpg",
+            "bytes": 11301,
+            "sha256": "fa3edb0c3a38c91e59d0974b5aa672164bbe518d912256feeabbf6e774f4cadb"
+          }
+        ]
+      },
+      {
+        "station_m": 3600,
+        "native_road": {
+          "station": "3599.73584",
+          "x": "487.07605",
+          "y": "516.267395",
+          "z": "7.77751589",
+          "tx": "-0.993476927",
+          "ty": "-0.114032835",
+          "half_width": "6.38364697",
+          "bank": "0",
+          "left_shoulder": "25.0499992",
+          "right_shoulder": "13.5056047"
+        },
+        "wgs84": [
+          -97.63609975218019,
+          30.137426463982614
+        ],
+        "pixel_in_world": [
+          30707487.66800281,
+          55315703.923470125
+        ],
+        "resolution_m_per_pixel_estimate": 0.25822089515608143,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119950,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119950",
+            "file": "tile-19-216076-119950.jpg",
+            "bytes": 13196,
+            "sha256": "61cb21edf057f8fcd832f6597e42c05ae998605510a4e40d4f5f3e12dd2779a7"
+          },
+          {
+            "zxy": [
+              19,
+              119950,
+              216077
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216077/119950",
+            "file": "tile-19-216077-119950.jpg",
+            "bytes": 12637,
+            "sha256": "de9821dd6a3c2e01d655e41eafc58907090331bcc3e6a7e3a40d9b0e08665d76"
+          },
+          {
+            "zxy": [
+              19,
+              119951,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119951",
+            "file": "tile-19-216076-119951.jpg",
+            "bytes": 12373,
+            "sha256": "edcc54dda1414ce0c054b539b803bb86b52f9d99818360046b33cb6d78e0e79d"
+          },
+          {
+            "zxy": [
+              19,
+              119951,
+              216077
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216077/119951",
+            "file": "tile-19-216077-119951.jpg",
+            "bytes": 12622,
+            "sha256": "baa3d210d097713d670d47a645f9af02af904682dae1f1fafc9f2c9bf52e6331"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "retrieved_utc": "2026-11-14T17:44:35.974236+00:00",
+    "source_epoch": "Unverified; service citation retained separately. Not a survey",
+    "scene_scale": 1.0009214766085863,
+    "road_sha256": "7feec8d0948f7ba5f8700d9def7043280150fe6c266d82250434b984d977a90d",
+    "sections": [
+      {
+        "station_m": 2480,
+        "native_road": {
+          "station": "2479.90771",
+          "x": "1581.56348",
+          "y": "739.374695",
+          "z": "15.339654",
+          "tx": "-0.954625666",
+          "ty": "-0.297808379",
+          "half_width": "6",
+          "bank": "0",
+          "left_shoulder": "23.0499992",
+          "right_shoulder": "12"
+        },
+        "wgs84": [
+          -97.62474202014482,
+          30.139428825828897
+        ],
+        "pixel_in_world": [
+          30711722.137416754,
+          55314840.69293146
+        ],
+        "resolution_m_per_pixel_estimate": 0.25821565594273466,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119967,
+              216073
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216073/119967",
+            "file": "tile-19-216073-119967.jpg",
+            "bytes": 13846,
+            "sha256": "3b80bb07c49b1171164c3d94dbdc7726714ddc2c7a26ccd9564453b7e8ca275f"
+          },
+          {
+            "zxy": [
+              19,
+              119968,
+              216073
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216073/119968",
+            "file": "tile-19-216073-119968.jpg",
+            "bytes": 12568,
+            "sha256": "285be8a6fe811e6df1fb90f440541ec3f64badea7264ba10357276c55b5b57c3"
+          }
+        ]
+      },
+      {
+        "station_m": 2500,
+        "native_road": {
+          "station": "2500.09717",
+          "x": "1562.31152",
+          "y": "733.293518",
+          "z": "14.53234",
+          "tx": "-0.953579426",
+          "ty": "-0.30114156",
+          "half_width": "6",
+          "bank": "0",
+          "left_shoulder": "23.0499992",
+          "right_shoulder": "12"
+        },
+        "wgs84": [
+          -97.6249418018845,
+          30.139374247978665
+        ],
+        "pixel_in_world": [
+          30711647.653385654,
+          55314864.222011425
+        ],
+        "resolution_m_per_pixel_estimate": 0.2582157987507759,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119966,
+              216073
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216073/119966",
+            "file": "tile-19-216073-119966.jpg",
+            "bytes": 15227,
+            "sha256": "4f2e0eaa9eb154db4a96d4f2b2a851b50e14874ee23bdfdf6621976812bed74a"
+          },
+          {
+            "zxy": [
+              19,
+              119966,
+              216074
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216074/119966",
+            "file": "tile-19-216074-119966.jpg",
+            "bytes": 13037,
+            "sha256": "670c61788db7a209152deaf16fe8be694f37f81c85b2c45333c2ec58115ba8de"
+          },
+          {
+            "zxy": [
+              19,
+              119967,
+              216073
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216073/119967",
+            "file": "tile-19-216073-119967.jpg",
+            "bytes": 13846,
+            "sha256": "3b80bb07c49b1171164c3d94dbdc7726714ddc2c7a26ccd9564453b7e8ca275f"
+          },
+          {
+            "zxy": [
+              19,
+              119967,
+              216074
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216074/119967",
+            "file": "tile-19-216074-119967.jpg",
+            "bytes": 15243,
+            "sha256": "06d5202a846e4285f6b35bbe5acf213c2fa319201b66187e4633c8128f741b01"
+          }
+        ]
+      },
+      {
+        "station_m": 2520,
+        "native_road": {
+          "station": "2520.28613",
+          "x": "1543.04517",
+          "y": "727.260864",
+          "z": "13.3328648",
+          "tx": "-0.952917933",
+          "ty": "-0.303228319",
+          "half_width": "7.14978123",
+          "bank": "0",
+          "left_shoulder": "23.0499992",
+          "right_shoulder": "12"
+        },
+        "wgs84": [
+          -97.62514173295233,
+          30.139320105616665
+        ],
+        "pixel_in_world": [
+          30711573.11368099,
+          55314887.56333502
+        ],
+        "resolution_m_per_pixel_estimate": 0.2582159404190899,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119966,
+              216073
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216073/119966",
+            "file": "tile-19-216073-119966.jpg",
+            "bytes": 15227,
+            "sha256": "4f2e0eaa9eb154db4a96d4f2b2a851b50e14874ee23bdfdf6621976812bed74a"
+          },
+          {
+            "zxy": [
+              19,
+              119966,
+              216074
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216074/119966",
+            "file": "tile-19-216074-119966.jpg",
+            "bytes": 13037,
+            "sha256": "670c61788db7a209152deaf16fe8be694f37f81c85b2c45333c2ec58115ba8de"
+          },
+          {
+            "zxy": [
+              19,
+              119967,
+              216073
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216073/119967",
+            "file": "tile-19-216073-119967.jpg",
+            "bytes": 13846,
+            "sha256": "3b80bb07c49b1171164c3d94dbdc7726714ddc2c7a26ccd9564453b7e8ca275f"
+          },
+          {
+            "zxy": [
+              19,
+              119967,
+              216074
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216074/119967",
+            "file": "tile-19-216074-119967.jpg",
+            "bytes": 15243,
+            "sha256": "06d5202a846e4285f6b35bbe5acf213c2fa319201b66187e4633c8128f741b01"
+          }
+        ]
+      },
+      {
+        "station_m": 2540,
+        "native_road": {
+          "station": "2539.80249",
+          "x": "1524.45911",
+          "y": "721.30719",
+          "z": "12.0708752",
+          "tx": "-0.952297211",
+          "ty": "-0.305172026",
+          "half_width": "7.91236448",
+          "bank": "0",
+          "left_shoulder": "23.0499992",
+          "right_shoulder": "12"
+        },
+        "wgs84": [
+          -97.62533460450415,
+          30.1392666720909
+        ],
+        "pixel_in_world": [
+          30711501.205954652,
+          55314910.59905952
+        ],
+        "resolution_m_per_pixel_estimate": 0.2582160802324447,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119966,
+              216073
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216073/119966",
+            "file": "tile-19-216073-119966.jpg",
+            "bytes": 15227,
+            "sha256": "4f2e0eaa9eb154db4a96d4f2b2a851b50e14874ee23bdfdf6621976812bed74a"
+          },
+          {
+            "zxy": [
+              19,
+              119966,
+              216074
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216074/119966",
+            "file": "tile-19-216074-119966.jpg",
+            "bytes": 13037,
+            "sha256": "670c61788db7a209152deaf16fe8be694f37f81c85b2c45333c2ec58115ba8de"
+          },
+          {
+            "zxy": [
+              19,
+              119967,
+              216073
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216073/119967",
+            "file": "tile-19-216073-119967.jpg",
+            "bytes": 13846,
+            "sha256": "3b80bb07c49b1171164c3d94dbdc7726714ddc2c7a26ccd9564453b7e8ca275f"
+          },
+          {
+            "zxy": [
+              19,
+              119967,
+              216074
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216074/119967",
+            "file": "tile-19-216074-119967.jpg",
+            "bytes": 15243,
+            "sha256": "06d5202a846e4285f6b35bbe5acf213c2fa319201b66187e4633c8128f741b01"
+          }
+        ]
+      },
+      {
+        "station_m": 2560,
+        "native_road": {
+          "station": "2559.9917",
+          "x": "1505.23328",
+          "y": "715.14502",
+          "z": "10.8785219",
+          "tx": "-0.952344358",
+          "ty": "-0.305025101",
+          "half_width": "7.99423504",
+          "bank": "0",
+          "left_shoulder": "23.0499992",
+          "right_shoulder": "12"
+        },
+        "wgs84": [
+          -97.6255341150872,
+          30.139211367337992
+        ],
+        "pixel_in_world": [
+          30711426.82301807,
+          55314934.44147555
+        ],
+        "resolution_m_per_pixel_estimate": 0.2582162249417877,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119966,
+              216073
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216073/119966",
+            "file": "tile-19-216073-119966.jpg",
+            "bytes": 15227,
+            "sha256": "4f2e0eaa9eb154db4a96d4f2b2a851b50e14874ee23bdfdf6621976812bed74a"
+          },
+          {
+            "zxy": [
+              19,
+              119966,
+              216074
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216074/119966",
+            "file": "tile-19-216074-119966.jpg",
+            "bytes": 13037,
+            "sha256": "670c61788db7a209152deaf16fe8be694f37f81c85b2c45333c2ec58115ba8de"
+          }
+        ]
+      },
+      {
+        "station_m": 2580,
+        "native_road": {
+          "station": "2580.18091",
+          "x": "1486.00745",
+          "y": "708.983032",
+          "z": "9.83753395",
+          "tx": "-0.952317595",
+          "ty": "-0.305108577",
+          "half_width": "7.97153473",
+          "bank": "0",
+          "left_shoulder": "12",
+          "right_shoulder": "12"
+        },
+        "wgs84": [
+          -97.62573362567025,
+          30.139156064218515
+        ],
+        "pixel_in_world": [
+          30711352.440081492,
+          55314958.28317401
+        ],
+        "resolution_m_per_pixel_estimate": 0.25821636964661604,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119965,
+              216073
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216073/119965",
+            "file": "tile-19-216073-119965.jpg",
+            "bytes": 15389,
+            "sha256": "a53418b7a392d34c4e6f3e948c38e7c7a7d9e6a10fecafb102062608a3807afd"
+          },
+          {
+            "zxy": [
+              19,
+              119965,
+              216074
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216074/119965",
+            "file": "tile-19-216074-119965.jpg",
+            "bytes": 14054,
+            "sha256": "04a2133bc8ba98b105cf4e7e978234fad274967975e60326bfeed7b85297d7cb"
+          },
+          {
+            "zxy": [
+              19,
+              119966,
+              216073
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216073/119966",
+            "file": "tile-19-216073-119966.jpg",
+            "bytes": 15227,
+            "sha256": "4f2e0eaa9eb154db4a96d4f2b2a851b50e14874ee23bdfdf6621976812bed74a"
+          },
+          {
+            "zxy": [
+              19,
+              119966,
+              216074
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216074/119966",
+            "file": "tile-19-216074-119966.jpg",
+            "bytes": 13037,
+            "sha256": "670c61788db7a209152deaf16fe8be694f37f81c85b2c45333c2ec58115ba8de"
+          }
+        ]
+      },
+      {
+        "station_m": 3480,
+        "native_road": {
+          "station": "3479.94678",
+          "x": "606.118774",
+          "y": "529.614258",
+          "z": "9.26696587",
+          "tx": "-0.993437707",
+          "ty": "-0.114374653",
+          "half_width": "7.98901749",
+          "bank": "0",
+          "left_shoulder": "9.16602612",
+          "right_shoulder": "12"
+        },
+        "wgs84": [
+          -97.63486442016733,
+          30.137546250512408
+        ],
+        "pixel_in_world": [
+          30707948.233158622,
+          55315652.28325107
+        ],
+        "resolution_m_per_pixel_estimate": 0.2582205817414866,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119952,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119952",
+            "file": "tile-19-216076-119952.jpg",
+            "bytes": 13452,
+            "sha256": "3d019c198d5e4565bdd84fd4a4f48c8d5b89701df0ddec1f6d96796193a5c4d2"
+          },
+          {
+            "zxy": [
+              19,
+              119952,
+              216077
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216077/119952",
+            "file": "tile-19-216077-119952.jpg",
+            "bytes": 11301,
+            "sha256": "fa3edb0c3a38c91e59d0974b5aa672164bbe518d912256feeabbf6e774f4cadb"
+          },
+          {
+            "zxy": [
+              19,
+              119953,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119953",
+            "file": "tile-19-216076-119953.jpg",
+            "bytes": 14111,
+            "sha256": "2b43deb4614e9477be9df02806b17bbb656feb6114c9e29ef8a338dbe22cf35b"
+          },
+          {
+            "zxy": [
+              19,
+              119953,
+              216077
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216077/119953",
+            "file": "tile-19-216077-119953.jpg",
+            "bytes": 13047,
+            "sha256": "9a4e27764c52a4f23bbd9be108337686d5159035299e06ab00d0b1ccc1c43709"
+          }
+        ]
+      },
+      {
+        "station_m": 3500,
+        "native_road": {
+          "station": "3500.13574",
+          "x": "586.055481",
+          "y": "527.364746",
+          "z": "9.09189892",
+          "tx": "-0.994018316",
+          "ty": "-0.109213553",
+          "half_width": "7.98851347",
+          "bank": "0",
+          "left_shoulder": "12",
+          "right_shoulder": "12"
+        },
+        "wgs84": [
+          -97.63507262128448,
+          30.137526061406085
+        ],
+        "pixel_in_world": [
+          30707870.610156093,
+          55315660.98682067
+        ],
+        "resolution_m_per_pixel_estimate": 0.2582206345652061,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119952,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119952",
+            "file": "tile-19-216076-119952.jpg",
+            "bytes": 13452,
+            "sha256": "3d019c198d5e4565bdd84fd4a4f48c8d5b89701df0ddec1f6d96796193a5c4d2"
+          },
+          {
+            "zxy": [
+              19,
+              119952,
+              216077
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216077/119952",
+            "file": "tile-19-216077-119952.jpg",
+            "bytes": 11301,
+            "sha256": "fa3edb0c3a38c91e59d0974b5aa672164bbe518d912256feeabbf6e774f4cadb"
+          }
+        ]
+      },
+      {
+        "station_m": 3520,
+        "native_road": {
+          "station": "3520.3252",
+          "x": "565.987",
+          "y": "525.158691",
+          "z": "8.88770485",
+          "tx": "-0.994009078",
+          "ty": "-0.109297894",
+          "half_width": "7.99928904",
+          "bank": "0",
+          "left_shoulder": "12",
+          "right_shoulder": "12"
+        },
+        "wgs84": [
+          -97.63528087623864,
+          30.137506262321235
+        ],
+        "pixel_in_world": [
+          30707792.96708167,
+          55315669.52224939
+        ],
+        "resolution_m_per_pixel_estimate": 0.2582206863684241,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119951,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119951",
+            "file": "tile-19-216076-119951.jpg",
+            "bytes": 12373,
+            "sha256": "edcc54dda1414ce0c054b539b803bb86b52f9d99818360046b33cb6d78e0e79d"
+          },
+          {
+            "zxy": [
+              19,
+              119951,
+              216077
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216077/119951",
+            "file": "tile-19-216077-119951.jpg",
+            "bytes": 12622,
+            "sha256": "baa3d210d097713d670d47a645f9af02af904682dae1f1fafc9f2c9bf52e6331"
+          },
+          {
+            "zxy": [
+              19,
+              119952,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119952",
+            "file": "tile-19-216076-119952.jpg",
+            "bytes": 13452,
+            "sha256": "3d019c198d5e4565bdd84fd4a4f48c8d5b89701df0ddec1f6d96796193a5c4d2"
+          },
+          {
+            "zxy": [
+              19,
+              119952,
+              216077
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216077/119952",
+            "file": "tile-19-216077-119952.jpg",
+            "bytes": 11301,
+            "sha256": "fa3edb0c3a38c91e59d0974b5aa672164bbe518d912256feeabbf6e774f4cadb"
+          }
+        ]
+      },
+      {
+        "station_m": 3540,
+        "native_road": {
+          "station": "3539.84131",
+          "x": "546.58783",
+          "y": "523.026001",
+          "z": "8.64969635",
+          "tx": "-0.994007528",
+          "ty": "-0.109311804",
+          "half_width": "7.9904685",
+          "bank": "0",
+          "left_shoulder": "12",
+          "right_shoulder": "12"
+        },
+        "wgs84": [
+          -97.63548218560824,
+          30.137487121678657
+        ],
+        "pixel_in_world": [
+          30707717.913508855,
+          55315677.773820594
+        ],
+        "resolution_m_per_pixel_estimate": 0.25822073644883475,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119951,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119951",
+            "file": "tile-19-216076-119951.jpg",
+            "bytes": 12373,
+            "sha256": "edcc54dda1414ce0c054b539b803bb86b52f9d99818360046b33cb6d78e0e79d"
+          },
+          {
+            "zxy": [
+              19,
+              119951,
+              216077
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216077/119951",
+            "file": "tile-19-216077-119951.jpg",
+            "bytes": 12622,
+            "sha256": "baa3d210d097713d670d47a645f9af02af904682dae1f1fafc9f2c9bf52e6331"
+          },
+          {
+            "zxy": [
+              19,
+              119952,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119952",
+            "file": "tile-19-216076-119952.jpg",
+            "bytes": 13452,
+            "sha256": "3d019c198d5e4565bdd84fd4a4f48c8d5b89701df0ddec1f6d96796193a5c4d2"
+          },
+          {
+            "zxy": [
+              19,
+              119952,
+              216077
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216077/119952",
+            "file": "tile-19-216077-119952.jpg",
+            "bytes": 11301,
+            "sha256": "fa3edb0c3a38c91e59d0974b5aa672164bbe518d912256feeabbf6e774f4cadb"
+          }
+        ]
+      },
+      {
+        "station_m": 3560,
+        "native_road": {
+          "station": "3560.03052",
+          "x": "526.522339",
+          "y": "520.79364",
+          "z": "8.38602924",
+          "tx": "-0.993501723",
+          "ty": "-0.113817401",
+          "half_width": "7.98405457",
+          "bank": "0",
+          "left_shoulder": "25.0499992",
+          "right_shoulder": "12"
+        },
+        "wgs84": [
+          -97.63569040953452,
+          30.137467086500546
+        ],
+        "pixel_in_world": [
+          30707640.282002464,
+          55315686.411026224
+        ],
+        "resolution_m_per_pixel_estimate": 0.2582207888697163,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119951,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119951",
+            "file": "tile-19-216076-119951.jpg",
+            "bytes": 12373,
+            "sha256": "edcc54dda1414ce0c054b539b803bb86b52f9d99818360046b33cb6d78e0e79d"
+          },
+          {
+            "zxy": [
+              19,
+              119951,
+              216077
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216077/119951",
+            "file": "tile-19-216077-119951.jpg",
+            "bytes": 12622,
+            "sha256": "baa3d210d097713d670d47a645f9af02af904682dae1f1fafc9f2c9bf52e6331"
+          },
+          {
+            "zxy": [
+              19,
+              119952,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119952",
+            "file": "tile-19-216076-119952.jpg",
+            "bytes": 13452,
+            "sha256": "3d019c198d5e4565bdd84fd4a4f48c8d5b89701df0ddec1f6d96796193a5c4d2"
+          },
+          {
+            "zxy": [
+              19,
+              119952,
+              216077
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216077/119952",
+            "file": "tile-19-216077-119952.jpg",
+            "bytes": 11301,
+            "sha256": "fa3edb0c3a38c91e59d0974b5aa672164bbe518d912256feeabbf6e774f4cadb"
+          }
+        ]
+      },
+      {
+        "station_m": 3580,
+        "native_road": {
+          "station": "3580.21973",
+          "x": "506.464844",
+          "y": "518.492493",
+          "z": "8.0724802",
+          "tx": "-0.993477881",
+          "ty": "-0.114024557",
+          "half_width": "7.73413467",
+          "bank": "0",
+          "left_shoulder": "25.0499992",
+          "right_shoulder": "12.554883"
+        },
+        "wgs84": [
+          -97.63589855048458,
+          30.13744643397615
+        ],
+        "pixel_in_world": [
+          30707562.68143185,
+          55315695.31436925
+        ],
+        "resolution_m_per_pixel_estimate": 0.25822084290581543,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119951,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119951",
+            "file": "tile-19-216076-119951.jpg",
+            "bytes": 12373,
+            "sha256": "edcc54dda1414ce0c054b539b803bb86b52f9d99818360046b33cb6d78e0e79d"
+          },
+          {
+            "zxy": [
+              19,
+              119951,
+              216077
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216077/119951",
+            "file": "tile-19-216077-119951.jpg",
+            "bytes": 12622,
+            "sha256": "baa3d210d097713d670d47a645f9af02af904682dae1f1fafc9f2c9bf52e6331"
+          }
+        ]
+      },
+      {
+        "station_m": 3600,
+        "native_road": {
+          "station": "3599.73584",
+          "x": "487.07605",
+          "y": "516.267395",
+          "z": "7.77751589",
+          "tx": "-0.993476927",
+          "ty": "-0.114032835",
+          "half_width": "6.38364697",
+          "bank": "0",
+          "left_shoulder": "25.0499992",
+          "right_shoulder": "13.5056047"
+        },
+        "wgs84": [
+          -97.63609975218019,
+          30.137426463982614
+        ],
+        "pixel_in_world": [
+          30707487.66800281,
+          55315703.923470125
+        ],
+        "resolution_m_per_pixel_estimate": 0.25822089515608143,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119950,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119950",
+            "file": "tile-19-216076-119950.jpg",
+            "bytes": 13196,
+            "sha256": "61cb21edf057f8fcd832f6597e42c05ae998605510a4e40d4f5f3e12dd2779a7"
+          },
+          {
+            "zxy": [
+              19,
+              119950,
+              216077
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216077/119950",
+            "file": "tile-19-216077-119950.jpg",
+            "bytes": 12637,
+            "sha256": "de9821dd6a3c2e01d655e41eafc58907090331bcc3e6a7e3a40d9b0e08665d76"
+          },
+          {
+            "zxy": [
+              19,
+              119951,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119951",
+            "file": "tile-19-216076-119951.jpg",
+            "bytes": 12373,
+            "sha256": "edcc54dda1414ce0c054b539b803bb86b52f9d99818360046b33cb6d78e0e79d"
+          },
+          {
+            "zxy": [
+              19,
+              119951,
+              216077
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216077/119951",
+            "file": "tile-19-216077-119951.jpg",
+            "bytes": 12622,
+            "sha256": "baa3d210d097713d670d47a645f9af02af904682dae1f1fafc9f2c9bf52e6331"
+          }
+        ]
+      },
+      {
+        "station_m": 3620,
+        "native_road": {
+          "station": "3619.92529",
+          "x": "467.018188",
+          "y": "513.96521",
+          "z": "7.47163963",
+          "tx": "-0.993469834",
+          "ty": "-0.114094302",
+          "half_width": "6",
+          "bank": "0",
+          "left_shoulder": "25.0499992",
+          "right_shoulder": "15.3545513"
+        },
+        "wgs84": [
+          -97.63630789693869,
+          30.137405802142293
+        ],
+        "pixel_in_world": [
+          30707410.066012308,
+          55315712.8308256
+        ],
+        "resolution_m_per_pixel_estimate": 0.2582209492164892,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119950,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119950",
+            "file": "tile-19-216076-119950.jpg",
+            "bytes": 13196,
+            "sha256": "61cb21edf057f8fcd832f6597e42c05ae998605510a4e40d4f5f3e12dd2779a7"
+          },
+          {
+            "zxy": [
+              19,
+              119950,
+              216077
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216077/119950",
+            "file": "tile-19-216077-119950.jpg",
+            "bytes": 12637,
+            "sha256": "de9821dd6a3c2e01d655e41eafc58907090331bcc3e6a7e3a40d9b0e08665d76"
+          },
+          {
+            "zxy": [
+              19,
+              119951,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119951",
+            "file": "tile-19-216076-119951.jpg",
+            "bytes": 12373,
+            "sha256": "edcc54dda1414ce0c054b539b803bb86b52f9d99818360046b33cb6d78e0e79d"
+          },
+          {
+            "zxy": [
+              19,
+              119951,
+              216077
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216077/119951",
+            "file": "tile-19-216077-119951.jpg",
+            "bytes": 12622,
+            "sha256": "baa3d210d097713d670d47a645f9af02af904682dae1f1fafc9f2c9bf52e6331"
+          }
+        ]
+      },
+      {
+        "station_m": 3640,
+        "native_road": {
+          "station": "3640.11426",
+          "x": "446.984802",
+          "y": "511.518738",
+          "z": "7.18581915",
+          "tx": "-0.965721369",
+          "ty": "-0.259580731",
+          "half_width": "6",
+          "bank": "0",
+          "left_shoulder": "25.0499992",
+          "right_shoulder": "12"
+        },
+        "wgs84": [
+          -97.63651578770445,
+          30.137383845343074
+        ],
+        "pixel_in_world": [
+          30707332.55871716,
+          55315722.29643807
+        ],
+        "resolution_m_per_pixel_estimate": 0.25822100666503867,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119950,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119950",
+            "file": "tile-19-216076-119950.jpg",
+            "bytes": 13196,
+            "sha256": "61cb21edf057f8fcd832f6597e42c05ae998605510a4e40d4f5f3e12dd2779a7"
+          },
+          {
+            "zxy": [
+              19,
+              119950,
+              216077
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216077/119950",
+            "file": "tile-19-216077-119950.jpg",
+            "bytes": 12637,
+            "sha256": "de9821dd6a3c2e01d655e41eafc58907090331bcc3e6a7e3a40d9b0e08665d76"
+          }
+        ]
+      },
+      {
+        "station_m": 3660,
+        "native_road": {
+          "station": "3660.30371",
+          "x": "437.386871",
+          "y": "495.91745",
+          "z": "6.93556643",
+          "tx": "0.203807622",
+          "ty": "-0.97901094",
+          "half_width": "6",
+          "bank": "0",
+          "left_shoulder": "25.0499992",
+          "right_shoulder": "12"
+        },
+        "wgs84": [
+          -97.63661538750378,
+          30.137243825613353
+        ],
+        "pixel_in_world": [
+          30707295.425220564,
+          55315782.65912566
+        ],
+        "resolution_m_per_pixel_estimate": 0.25822137301674225,
+        "tiles": [
+          {
+            "zxy": [
+              19,
+              119949,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119949",
+            "file": "tile-19-216076-119949.jpg",
+            "bytes": 12887,
+            "sha256": "96ac49c048ef42d920e8ba36e1fae035f639668593389ead49c2e5e546802109"
+          },
+          {
+            "zxy": [
+              19,
+              119949,
+              216077
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216077/119949",
+            "file": "tile-19-216077-119949.jpg",
+            "bytes": 13727,
+            "sha256": "e79034611299a8d6befff9d76455fb588f81fc5b1ca741e6459d9bd7d901dfff"
+          },
+          {
+            "zxy": [
+              19,
+              119950,
+              216076
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119950",
+            "file": "tile-19-216076-119950.jpg",
+            "bytes": 13196,
+            "sha256": "61cb21edf057f8fcd832f6597e42c05ae998605510a4e40d4f5f3e12dd2779a7"
+          },
+          {
+            "zxy": [
+              19,
+              119950,
+              216077
+            ],
+            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216077/119950",
+            "file": "tile-19-216077-119950.jpg",
+            "bytes": 12637,
+            "sha256": "de9821dd6a3c2e01d655e41eafc58907090331bcc3e6a7e3a40d9b0e08665d76"
+          }
+        ]
+      }
+    ]
+  }
+]

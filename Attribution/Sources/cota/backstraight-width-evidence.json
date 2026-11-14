@@ -1,0 +1,56 @@
+{
+  "interval_m": [
+    2500,
+    3420
+  ],
+  "source_supported_core_m": [
+    2580,
+    3340
+  ],
+  "core_legal_width_m_estimate": 14,
+  "uncertainty_m": 1,
+  "join_length_m": 80,
+  "source_review": "architecture/backstraight-width/source-review.md",
+  "source_index": "architecture/backstraight-width/source-index.json",
+  "baseline_revision": "d839d7c2aa3c11860656d5a24ec0a5271017e09a",
+  "baseline_road_sha256": "7feec8d0948f7ba5f8700d9def7043280150fe6c266d82250434b984d977a90d",
+  "compiled_private_proof": {
+    "status": "Private compiled-native profile and retained protection PASS; flat-apron treatment and cooked review pending.",
+    "samples": 8192,
+    "core_width_m": 14,
+    "core_width_range_m": [
+      14.0,
+      14.0
+    ],
+    "maximum_half_width_plus_effective_shoulder_delta_m": 0.0005369000000019497,
+    "maximum_outside_interval_halfwidth_delta_m": 4.799999997473492e-07,
+    "all_road_positions_elevations_tangents_banks_exact": true,
+    "actual_barriers_csv_exact": true,
+    "baseline_road_sha256": "7feec8d0948f7ba5f8700d9def7043280150fe6c266d82250434b984d977a90d",
+    "private_road_sha256": "ecd71ed71bc541e9005fb492cd9e859604cee1473c457dd11b7ab098d995bd9d",
+    "runtime_overlap": "Positive T11 exit runoff retains its original outer paving through2570m using the old width after the runoff minimum."
+  },
+  "protection": "Existing barriers stay exact. Positive T11 exit runoff through2570m retains old exterior using the old width after the generic runoff minimum.",
+  "apron": "Flat red painted edge strips,2520\u20133590m, no raised back-straight kerbs. Extent and3.2m edge reach are reference reconstructions within approximately1m; source legal-edge and epoch uncertainty remain.",
+  "compiled_canonical_validation": {
+    "baseline_revision": "d839d7c2aa3c11860656d5a24ec0a5271017e09a",
+    "compiled_samples": 8192,
+    "maximum_existing_protected_halfwidth_plus_effective_shoulder_difference_m": 0.0005369000000019497,
+    "maximum_outside_interval_halfwidth_difference_m": 4.799999997473492e-07,
+    "core_width_m": 14,
+    "alignment_elevation_tangents_banking_identical": true,
+    "survey_changes_only_width_shoulder": true,
+    "other_native_data_exact": true,
+    "intentional_changed_data": [
+      "Content/Generated/COTA/Data/track_limits.bin",
+      "Content/Generated/COTA/Data/drive_surface.bin"
+    ],
+    "guarded_native_check": "backstraight-guarded-native-check.log",
+    "focused_contact_tests": "backstraight-focused-tests2.log",
+    "source_mypy": "backstraight-focused-mypy.log",
+    "source_ruff": "backstraight-focused-ruff.log",
+    "public_paving_replay_byte_identical": true,
+    "public_profile_replay_byte_identical_twice": true,
+    "visual_status": "Native import and fresh whole-route cooked review pending."
+  }
+}

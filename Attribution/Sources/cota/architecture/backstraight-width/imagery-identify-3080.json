@@ -1,0 +1,26 @@
+{
+ "results": [
+  {
+   "layerId": 0,
+   "layerName": "World Imagery",
+   "displayFieldName": "SOURCE_INFO",
+   "value": "Vivid Advanced",
+   "attributes": {
+    "OBJECTID": "2126305",
+    "Shape": "Polygon",
+    "DATE (YYYYMMDD)": "20250119",
+    "RESOLUTION (M)": "0.5",
+    "ACCURACY (M)": "8.47",
+    "DESCRIPTION": "WV02",
+    "SOURCE_INFO": "Vivid Advanced",
+    "SOURCE": "Vantor",
+    "SRC_DATE2": "1/19/2025",
+    "MinMapLevel": "12",
+    "MaxMapLevel": "19",
+    "DrawOrder": "80",
+    "BlockName": "DYNAMIC_ESRI_Austin_25Q2",
+    "ReleaseName": "Raster Basemaps 2026.R04"
+   }
+  }
+ ]
+}

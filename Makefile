@@ -75,8 +75,8 @@ circuit-assets: check build build/tests/export-circuit-scene
 	done
 circuit-check:
 	$(CIRCUIT_PYTHON) -m pytest -q Tests/test_circuit_scenes.py Tests/test_circuit_profiles.py Tests/test_circuit_recordings.py Tests/test_circuit_terrain.py Tests/test_coastal_water.py Tests/test_circuit_protection.py Tests/test_baku_architecture.py Tests/test_baku_ground.py Tests/test_baku_museums.py Tests/test_circuit_partition.py Tests/test_jeddah_architecture.py Tests/test_monaco_costa.py Tests/test_monaco_landcover.py Tests/test_australia_architecture.py Tests/test_singapore_bridge.py Tests/test_monaco_setting.py Tests/test_monaco_west.py Tests/test_monaco_surfaces.py Tests/test_monaco_groves.py Tests/test_malaysia_surface.py Tests/test_jeddah_context.py Tests/test_portimao_architecture.py Tests/test_cota_surface.py Tests/test_jeddah_masarat.py
-	$(CIRCUIT_PYTHON) -m mypy tools/circuit*.py tools/generate_circuit_scene.py tools/rebuild_baku_ground.py tools/review_circuit_recording.py tools/venues --ignore-missing-imports --follow-imports=silent
-	$(CIRCUIT_PYTHON) -m ruff check tools/circuit*.py tools/generate_circuit_scene.py tools/rebuild_baku_ground.py tools/build_circuit_scene.py tools/review_circuit_recording.py tools/venues Tests/test_circuit_scenes.py Tests/test_circuit_profiles.py Tests/test_circuit_recordings.py Tests/test_circuit_terrain.py Tests/test_coastal_water.py Tests/test_circuit_protection.py Tests/test_baku_architecture.py Tests/test_baku_ground.py Tests/test_baku_museums.py Tests/test_circuit_partition.py Tests/test_jeddah_architecture.py Tests/test_monaco_costa.py Tests/test_monaco_landcover.py Tests/test_australia_architecture.py Tests/test_singapore_bridge.py Tests/test_monaco_setting.py Tests/test_monaco_west.py Tests/test_monaco_surfaces.py Tests/test_monaco_groves.py Tests/test_malaysia_surface.py Tests/test_jeddah_context.py Tests/test_portimao_architecture.py Tests/test_cota_surface.py Tests/test_jeddah_masarat.py
+	$(CIRCUIT_PYTHON) -m mypy tools/circuit*.py tools/generate_circuit_scene.py tools/rebuild_baku_ground.py tools/rebuild_cota_paving.py tools/review_circuit_recording.py tools/venues --ignore-missing-imports --follow-imports=silent
+	$(CIRCUIT_PYTHON) -m ruff check tools/circuit*.py tools/generate_circuit_scene.py tools/rebuild_baku_ground.py tools/rebuild_cota_paving.py tools/build_circuit_scene.py tools/review_circuit_recording.py tools/venues Tests/test_circuit_scenes.py Tests/test_circuit_profiles.py Tests/test_circuit_recordings.py Tests/test_circuit_terrain.py Tests/test_coastal_water.py Tests/test_circuit_protection.py Tests/test_baku_architecture.py Tests/test_baku_ground.py Tests/test_baku_museums.py Tests/test_circuit_partition.py Tests/test_jeddah_architecture.py Tests/test_monaco_costa.py Tests/test_monaco_landcover.py Tests/test_australia_architecture.py Tests/test_singapore_bridge.py Tests/test_monaco_setting.py Tests/test_monaco_west.py Tests/test_monaco_surfaces.py Tests/test_monaco_groves.py Tests/test_malaysia_surface.py Tests/test_jeddah_context.py Tests/test_portimao_architecture.py Tests/test_cota_surface.py Tests/test_jeddah_masarat.py
 
 .PHONY: baku-ground
 baku-ground: check
@@ -108,3 +108,9 @@ build/tests/lasvegas-lap-audit: Tests/lasvegas_lap_audit.cpp $(OBJECTS)
 .PHONY: lasvegas-flow-check
 lasvegas-flow-check:
 	bash tools/unreal.sh run -windowed -RenderOffscreen -ForceRes -ResX=1600 -ResY=900 -FFCircuit=lasvegas -FFFlowAudit -FFFlowCircuit=lasvegas -FFDrive -FFRecord -FFRecordSeconds=420 '-ExecCmds=t.MaxFPS 30'
+
+.PHONY: cota-paving
+cota-paving: check build/tests/export-circuit-scene
+	build/tests/export-circuit-scene cota
+	$(CIRCUIT_PYTHON) tools/rebuild_cota_paving.py
+	$(MAKE) check

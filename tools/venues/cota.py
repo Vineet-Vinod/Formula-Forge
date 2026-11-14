@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import bisect
 import math
+import struct
 from collections.abc import Iterator
 from itertools import pairwise
 
@@ -280,7 +281,9 @@ def circuit_edges(scene: CircuitScene) -> None:
                    apron_star(scene, 4153, -1, 13, 5.5)]
     for station in [4300, 4420, 4540, 4660]:
         star_shapes.append(apron_star(scene, station, -1, 12, 4.5))
-    paint_exclusion = unary_union([island, *star_shapes, t11_approach_edges(scene)])
+    paint_exclusion = unary_union([
+        island, *star_shapes, t11_approach_edges(scene), backstraight_edges(scene),
+    ])
 
     for start, end, side, width in [(420, 640, 1, 25), (960, 1490, 1, 18),
                                      (1510, 1930, 1, 18), (2350, 2570, 1, 24),
@@ -318,6 +321,39 @@ def t11_approach_edges(scene: CircuitScene) -> BaseGeometry:
     return unary_union(shapes)
 
 
+def backstraight_edges(scene: CircuitScene) -> BaseGeometry:
+    scene.runoff(2570, 3540, 1, 3.2, 'Runoff')
+    scene.runoff(2520, 3590, -1, 3.2, 'Runoff')
+    starts = {name: len(tile.triangles) for name, tile in scene.tiles.items()}
+    shapes: list[Polygon] = []
+    for side in (-1, 1):
+        paint_band(scene, 2520, 3590, side, .15, 3.2, 'RunoffRed', Polygon())
+        shapes.extend(cell for cell, _sample in apron_cells(scene, 2520, 3590, side, .15, 3.2))
+    collapsed = 0
+    for name, tile in scene.tiles.items():
+        start = starts.get(name, 0)
+        retained = tile.triangles[:start]
+        for offset in range(start, len(tile.triangles), 100):
+            row = tile.triangles[offset:offset + 100]
+            v = struct.unpack_from('<24f', row, 4)
+            area = (v[8] - v[0]) * (v[17] - v[1]) - (v[9] - v[1]) * (v[16] - v[0])
+            if area == 0:
+                collapsed += 1
+                continue
+            if area > 0:
+                row = row[:36] + row[68:100] + row[36:68]
+            retained.extend(row)
+        tile.triangles = retained
+    scene.landmarks.append({
+        'name': 'T11–T12 flat red edge strips',
+        'start_m': 2520, 'end_m': 3590,
+        'paint_faces_collapsed_at_native_precision': collapsed,
+        'source': 'architecture/backstraight-width/source-review.md',
+        'dimensions_status': 'The middle legal span is estimated at14±1m. The flat painted strips reach3.2m beyond each legal edge, joining the existing T11 exit and T12 approach paving. Extents and paint widths are reference estimates, not a survey. No raised straight kerbs or protection relocation.',
+    })
+    return unary_union(shapes)
+
+
 def t15_island(scene: CircuitScene) -> Polygon:
     outline = []
     for station in range(4120, 4207, 2):
@@ -333,12 +369,12 @@ def t15_island(scene: CircuitScene) -> Polygon:
 def apron_cells(scene: CircuitScene, start: float, end: float, side: int,
                  inner: float, outer: float) -> Iterator[tuple[Polygon, RoadStation]]:
     controls = []
-    if side == 1 and outer > 20 and start < 2380 and end > 2350:
+    if side == 1 and outer > 20 and start < 2570 and end > 2350:
         controls = TypeAdapter(WidthControls).validate_json(
             (scene.sources / 't11-retained-width.json').read_bytes()).controls_m
 
     def reach(sample: RoadStation) -> float:
-        if not controls or not 2350 <= sample.station <= 2380:
+        if not controls or not 2350 <= sample.station <= 2570:
             return outer
         index = bisect.bisect_right(controls, sample.station, key=lambda row: row[0]) - 1
         a, b = controls[index:index + 2]

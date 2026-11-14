@@ -588,6 +588,16 @@ that minimum, and the rendered apron uses the same retained width. Compare all
 native samples and actual packed surfaces; Python profile arithmetic alone misses
 runtime clamps and overrides. Keep raised kerbs separate from adjacent flat paint.
 
+Check physical contact beneath new flat aprons as well. COTA's back straight uses
+the rendered apron planes for native height contact and asphalt grip, while its
+legal limits follow the narrower white-line envelope. Colouring a grass shoulder
+red would leave the wrong driving surface. Rebuild its contact with
+`make cota-paving CIRCUIT_PYTHON=<circuit-python>` after profile edits, and compare
+actual packed paint and native contact at both joins and along both sides.
+Reject triangles that collapse at the final float precision. The
+[back-straight evidence](../Attribution/Sources/cota/backstraight-width-evidence.json)
+retains the width estimate, source uncertainty and unchanged protection scope.
+
 Unreal collision on the streamed decorative mesh is disabled in the current
 presentation code. Vehicle contact is handled by `FFSimulation` and its authored
 barriers. Adding a visible wall alone will not stop the car; adding collision alone

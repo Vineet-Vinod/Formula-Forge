@@ -1,0 +1,115 @@
+{
+  "retrieved_utc": "2026-11-14T17:52:40.465046+00:00",
+  "receipts": [
+    {
+      "station_m": 2500,
+      "request": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/identify?f=pjson&geometry=%7B%22x%22%3A+-97.6249418018845%2C+%22y%22%3A+30.139374247978665%7D&geometryType=esriGeometryPoint&sr=4326&layers=all%3A0&tolerance=1&mapExtent=-97.62594180188451%2C30.138374247978664%2C-97.6239418018845%2C30.140374247978666&imageDisplay=1024%2C1024%2C96&returnGeometry=false",
+      "file": "imagery-identify-2500.json",
+      "sha256": "0c2aeb30a4ee8c2661ad74ecf92f196caa81d7b2f4291b6d3bfa9879ea44b65d",
+      "attributes": {
+        "OBJECTID": "2126305",
+        "Shape": "Polygon",
+        "DATE (YYYYMMDD)": "20250119",
+        "RESOLUTION (M)": "0.5",
+        "ACCURACY (M)": "8.47",
+        "DESCRIPTION": "WV02",
+        "SOURCE_INFO": "Vivid Advanced",
+        "SOURCE": "Vantor",
+        "SRC_DATE2": "1/19/2025",
+        "MinMapLevel": "12",
+        "MaxMapLevel": "19",
+        "DrawOrder": "80",
+        "BlockName": "DYNAMIC_ESRI_Austin_25Q2",
+        "ReleaseName": "Raster Basemaps 2026.R04"
+      }
+    },
+    {
+      "station_m": 2680,
+      "request": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/identify?f=pjson&geometry=%7B%22x%22%3A+-97.62672114973302%2C+%22y%22%3A+30.138892307081015%7D&geometryType=esriGeometryPoint&sr=4326&layers=all%3A0&tolerance=1&mapExtent=-97.62772114973302%2C30.137892307081014%2C-97.62572114973301%2C30.139892307081016&imageDisplay=1024%2C1024%2C96&returnGeometry=false",
+      "file": "imagery-identify-2680.json",
+      "sha256": "0c2aeb30a4ee8c2661ad74ecf92f196caa81d7b2f4291b6d3bfa9879ea44b65d",
+      "attributes": {
+        "OBJECTID": "2126305",
+        "Shape": "Polygon",
+        "DATE (YYYYMMDD)": "20250119",
+        "RESOLUTION (M)": "0.5",
+        "ACCURACY (M)": "8.47",
+        "DESCRIPTION": "WV02",
+        "SOURCE_INFO": "Vivid Advanced",
+        "SOURCE": "Vantor",
+        "SRC_DATE2": "1/19/2025",
+        "MinMapLevel": "12",
+        "MaxMapLevel": "19",
+        "DrawOrder": "80",
+        "BlockName": "DYNAMIC_ESRI_Austin_25Q2",
+        "ReleaseName": "Raster Basemaps 2026.R04"
+      }
+    },
+    {
+      "station_m": 3080,
+      "request": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/identify?f=pjson&geometry=%7B%22x%22%3A+-97.63075870494961%2C+%22y%22%3A+30.13804931722489%7D&geometryType=esriGeometryPoint&sr=4326&layers=all%3A0&tolerance=1&mapExtent=-97.63175870494962%2C30.13704931722489%2C-97.62975870494961%2C30.13904931722489&imageDisplay=1024%2C1024%2C96&returnGeometry=false",
+      "file": "imagery-identify-3080.json",
+      "sha256": "0c2aeb30a4ee8c2661ad74ecf92f196caa81d7b2f4291b6d3bfa9879ea44b65d",
+      "attributes": {
+        "OBJECTID": "2126305",
+        "Shape": "Polygon",
+        "DATE (YYYYMMDD)": "20250119",
+        "RESOLUTION (M)": "0.5",
+        "ACCURACY (M)": "8.47",
+        "DESCRIPTION": "WV02",
+        "SOURCE_INFO": "Vivid Advanced",
+        "SOURCE": "Vantor",
+        "SRC_DATE2": "1/19/2025",
+        "MinMapLevel": "12",
+        "MaxMapLevel": "19",
+        "DrawOrder": "80",
+        "BlockName": "DYNAMIC_ESRI_Austin_25Q2",
+        "ReleaseName": "Raster Basemaps 2026.R04"
+      }
+    },
+    {
+      "station_m": 3400,
+      "request": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/identify?f=pjson&geometry=%7B%22x%22%3A+-97.63403855240036%2C+%22y%22%3A+30.137626307955895%7D&geometryType=esriGeometryPoint&sr=4326&layers=all%3A0&tolerance=1&mapExtent=-97.63503855240036%2C30.136626307955893%2C-97.63303855240035%2C30.138626307955896&imageDisplay=1024%2C1024%2C96&returnGeometry=false",
+      "file": "imagery-identify-3400.json",
+      "sha256": "0c2aeb30a4ee8c2661ad74ecf92f196caa81d7b2f4291b6d3bfa9879ea44b65d",
+      "attributes": {
+        "OBJECTID": "2126305",
+        "Shape": "Polygon",
+        "DATE (YYYYMMDD)": "20250119",
+        "RESOLUTION (M)": "0.5",
+        "ACCURACY (M)": "8.47",
+        "DESCRIPTION": "WV02",
+        "SOURCE_INFO": "Vivid Advanced",
+        "SOURCE": "Vantor",
+        "SRC_DATE2": "1/19/2025",
+        "MinMapLevel": "12",
+        "MaxMapLevel": "19",
+        "DrawOrder": "80",
+        "BlockName": "DYNAMIC_ESRI_Austin_25Q2",
+        "ReleaseName": "Raster Basemaps 2026.R04"
+      }
+    },
+    {
+      "station_m": 3600,
+      "request": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/identify?f=pjson&geometry=%7B%22x%22%3A+-97.63609975218019%2C+%22y%22%3A+30.137426463982614%7D&geometryType=esriGeometryPoint&sr=4326&layers=all%3A0&tolerance=1&mapExtent=-97.63709975218019%2C30.136426463982612%2C-97.63509975218018%2C30.138426463982615&imageDisplay=1024%2C1024%2C96&returnGeometry=false",
+      "file": "imagery-identify-3600.json",
+      "sha256": "0c2aeb30a4ee8c2661ad74ecf92f196caa81d7b2f4291b6d3bfa9879ea44b65d",
+      "attributes": {
+        "OBJECTID": "2126305",
+        "Shape": "Polygon",
+        "DATE (YYYYMMDD)": "20250119",
+        "RESOLUTION (M)": "0.5",
+        "ACCURACY (M)": "8.47",
+        "DESCRIPTION": "WV02",
+        "SOURCE_INFO": "Vivid Advanced",
+        "SOURCE": "Vantor",
+        "SRC_DATE2": "1/19/2025",
+        "MinMapLevel": "12",
+        "MaxMapLevel": "19",
+        "DrawOrder": "80",
+        "BlockName": "DYNAMIC_ESRI_Austin_25Q2",
+        "ReleaseName": "Raster Basemaps 2026.R04"
+      }
+    }
+  ]
+}
