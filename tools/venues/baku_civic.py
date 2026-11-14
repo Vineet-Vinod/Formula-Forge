@@ -56,8 +56,12 @@ def _panel(
         points = [
             _point(face, x, y, depth) for x, y in list(triangle.exterior.coords)[:3]
         ]
+        uv = ((0.0, 0.0), (1.0, 0.0), (1.0, 1.0))
+        if not triangle.exterior.is_ccw:
+            points[1], points[2] = points[2], points[1]
+            uv = uv[0], uv[2], uv[1]
         scene.triangle(
-            "Building_CourtMasonry", material, points[0], points[1], points[2]
+            "Building_CourtMasonry", material, points[0], points[1], points[2], uv
         )
 
 
@@ -379,8 +383,12 @@ def _face(
     masonry = wall.difference(unary_union([opening.shape for opening in openings]))
     for triangle in constrained_delaunay_triangles(masonry).geoms:
         points = [_point(frame, x, y) for x, y in list(triangle.exterior.coords)[:3]]
+        uv = ((0.0, 0.0), (1.0, 0.0), (1.0, 1.0))
+        if not triangle.exterior.is_ccw:
+            points[1], points[2] = points[2], points[1]
+            uv = uv[0], uv[2], uv[1]
         scene.triangle(
-            "Building_CourtMasonry", "Cream", points[0], points[1], points[2]
+            "Building_CourtMasonry", "Cream", points[0], points[1], points[2], uv
         )
     for opening in openings:
         _glazing(scene, frame, opening)
@@ -609,8 +617,12 @@ def _north_front(
     masonry = wall.difference(unary_union([opening.shape for opening in openings]))
     for triangle in constrained_delaunay_triangles(masonry).geoms:
         points = [_point(frame, x, y) for x, y in list(triangle.exterior.coords)[:3]]
+        uv = ((0.0, 0.0), (1.0, 0.0), (1.0, 1.0))
+        if not triangle.exterior.is_ccw:
+            points[1], points[2] = points[2], points[1]
+            uv = uv[0], uv[2], uv[1]
         scene.triangle(
-            "Building_NorthFrontMasonry", "Cream", points[0], points[1], points[2]
+            "Building_NorthFrontMasonry", "Cream", points[0], points[1], points[2], uv
         )
     for opening in openings:
         _glazing(scene, frame, opening)
@@ -705,8 +717,17 @@ def _retained_north_face(
     masonry = wall.difference(unary_union([opening.shape for opening in openings]))
     for triangle in constrained_delaunay_triangles(masonry).geoms:
         points = [_point(frame, x, y) for x, y in list(triangle.exterior.coords)[:3]]
+        uv = ((0.0, 0.0), (1.0, 0.0), (1.0, 1.0))
+        if not triangle.exterior.is_ccw:
+            points[1], points[2] = points[2], points[1]
+            uv = uv[0], uv[2], uv[1]
         scene.triangle(
-            "Building_NorthRetainedMasonry", "Cream", points[0], points[1], points[2]
+            "Building_NorthRetainedMasonry",
+            "Cream",
+            points[0],
+            points[1],
+            points[2],
+            uv,
         )
     for opening in openings:
         _glazing(scene, frame, opening)

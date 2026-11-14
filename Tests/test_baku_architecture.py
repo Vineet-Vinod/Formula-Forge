@@ -6,13 +6,24 @@ import math
 import struct
 import sys
 from pathlib import Path
+from typing import Literal
+
+import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 from circuit_dataclasses import Building, Point
 from circuit_mesh import add, cross, mul, sub
 from circuit_scene import CircuitScene
+from pydantic import TypeAdapter
 from shapely import prepare
-from shapely.geometry import Polygon
+from shapely.geometry import LineString, Polygon
+from venues.baku_civic import _face, _north_front, _panel, _retained_north_face
+from venues.baku_civic_dataclasses import (
+    CourtFace,
+    CourtFrontageSource,
+    NorthFrontageSource,
+    StreetGrade,
+)
 from venues.baku_philharmonic import philharmonic_hall
 from venues.baku_skyline import crescent_hotel, waterfront_skyline
 from venues.east_architecture import frame
@@ -90,3 +101,64 @@ def test_philharmonic_roofs_and_arcades_leave_the_racing_surface_clear() -> None
                 overlap += scene.road_mask.intersection(projected).area
     assert overlap < 0.001
     assert scene.road == road
+
+
+class CivicPanelScene(CircuitScene):
+    def triangle(
+        self,
+        kind: str,
+        material: str,
+        a: Point,
+        b: Point,
+        c: Point,
+        uv: tuple[tuple[float, float], ...] = ((0, 0), (1, 0), (1, 1)),
+        normals: tuple[Point, ...] | None = None,
+    ) -> None:
+        if kind in {
+            "Building_CourtMasonry",
+            "Building_NorthFrontMasonry",
+            "Building_NorthRetainedMasonry",
+        }:
+            super().triangle(kind, material, a, b, c, uv, normals)
+
+
+@pytest.mark.parametrize("emitter", ("panel", "court", "north", "retained"))
+def test_triangulated_civic_facades_face_outward_in_source_coordinates(
+    emitter: Literal["panel", "court", "north", "retained"],
+) -> None:
+    scene = CivicPanelScene("baku")
+    scene.road_mask = Polygon()
+    face = CourtFace((-1450, -400, 7.15), (0.6, 0.8, 0), (0.8, -0.6, 0), 33, 33)
+    if emitter == "panel":
+        _panel(
+            scene,
+            face,
+            Polygon(
+                [(0, 0), (8, 0), (8, 6), (0, 6)], [[(2, 2), (4, 2), (4, 4), (2, 4)]]
+            ),
+            0,
+            "Cream",
+        )
+    elif emitter == "court":
+        source = TypeAdapter(CourtFrontageSource).validate_json(
+            (scene.sources / "court-frontage.json").read_bytes()
+        )
+        _face(scene, face, source, source.entrance_edge, -0.03)
+    elif emitter == "north":
+        north = TypeAdapter(NorthFrontageSource).validate_json(
+            (scene.sources / "north-frontage.json").read_bytes()
+        )
+        street = StreetGrade(LineString([(0, 0), (100, 0)]), 7.15, 7.15)
+        _north_front(scene, face, street, north, 31.15, lambda x, y: 7.15)
+    else:
+        _retained_north_face(scene, face, 12, 31.15, 7.15, 7.15, lambda x, y: 7.15)
+    assert scene.tiles
+    for tile in scene.tiles.values():
+        for row in struct.iter_unpack("<I24f", tile.triangles):
+            normal = -row[5], -row[4], row[6]
+            assert sum(a * b for a, b in zip(normal, face.outward)) > 0.999
+            a = row[1], row[2], row[3]
+            b = row[9], row[10], row[11]
+            c = row[17], row[18], row[19]
+            native_cross = cross(sub(b, a), sub(c, a))
+            assert sum(a * b for a, b in zip(native_cross, row[4:7])) < 0
