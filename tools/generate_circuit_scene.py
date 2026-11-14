@@ -51,6 +51,9 @@ def generate(slug: str) -> None:
         from venues.monaco_groves import add_groves
 
         add_groves(scene)
+        from venues.monaco_natural_ground import finish as finish_natural_ground
+
+        finish_natural_ground(scene)
     if slug == "jeddah":
         from venues.jeddah import finish_terrain as finish_jeddah_terrain
 

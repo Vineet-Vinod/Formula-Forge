@@ -87,6 +87,8 @@ class Importer:
             )
         if self.night:
             recipe += (self.scratch / "night-field.json").read_bytes()
+        if self.slug == "monaco":
+            recipe += (ROOT / "tools/venues/monaco_natural_material.py").read_bytes()
         self.material_hash = hashlib.sha256(recipe).hexdigest()
         if self.night:
             self.bounds = tuple(
@@ -229,6 +231,19 @@ class Importer:
             == self.material_hash
         ):
             return existing
+        if self.slug == "monaco" and name == "MonacoNaturalGround":
+            from venues.monaco_natural_material import build
+
+            material = existing or TOOLS.create_asset(
+                name, self.assets + "/Materials", unreal.Material, unreal.MaterialFactoryNew())
+            if not isinstance(material, unreal.Material):
+                raise TypeError("Natural ravine cover requires its own source material")
+            EDIT.delete_all_material_expressions(material)
+            build(material)
+            EDIT.recompile_material(material)
+            LIBRARY.set_metadata_tag(material, "CircuitMaterialRecipe", self.material_hash)
+            LIBRARY.save_loaded_asset(material)
+            return material
         if self.slug == "monaco" and name in ("MonacoIvyGround", "MonacoRockGround"):
             source_name = "Grass" if name == "MonacoIvyGround" else "Concrete"
             source = unreal.load_asset(SOURCES[source_name])
