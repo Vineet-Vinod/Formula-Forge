@@ -16,6 +16,7 @@ from shapely.ops import polygonize, triangulate, unary_union
 
 from venues.monaco_costa import costa_properties
 from venues.monaco_dataclasses import RetailTerrace
+from venues.monaco_hermosa import prepare as prepare_villa_hermosa
 from venues.monaco_hillside import hillside_city
 from venues.monaco_properties import fairmont_garden, mirabeau, property_envelopes
 from venues.monaco_rascasse_frontage import rascasse_frontage
@@ -50,6 +51,7 @@ def build_venue(scene: CircuitScene) -> None:
     rascasse_frontage(scene)
     property_envelopes(scene)
     costa_properties(scene)
+    prepare_villa_hermosa(scene)
     mirabeau(scene)
     fairmont_garden(scene)
     for osm_id, height, floors in [(94399585, 54, 16),

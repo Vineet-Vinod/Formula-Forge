@@ -1,0 +1,180 @@
+{
+  "property": {
+    "osm_way_id": 94399624,
+    "name": "Villa Hermosa",
+    "address": "9 Boulevard de Suisse",
+    "levels": 6,
+    "roof_shape_tag": "hipped"
+  },
+  "source_basis": {
+    "osm_file": "Attribution/Sources/monaco/buildings.osm.json.gz",
+    "osm_sha256": "fc3964cd49b8cb3c37cca673c7614fd4d7b13dea8dbf17cc979d687bae0c8e65",
+    "ign_feature_id": "BATIMENT0000000074074444",
+    "ign_file": "Attribution/Sources/monaco/architecture/pending-hill-properties/ign-local-buildings.json.gz",
+    "ign_sha256": "f4a45e3fc55d0831593e04049cb5fbc11bde44dc4e82f21ac5f25d872754506a",
+    "orthophoto": "villa-hermosa/orthophoto2019-l8-r796835-c680971.jpg",
+    "orthophoto_sha256": "41ec82e39f245bde2991d94ab95343c11179ca66efdd510eb3a591069f985c9c",
+    "orthophoto_publisher": "Gouvernement Princier de Monaco, DSN, 2019 orthophoto",
+    "orthophoto_tile_bbox_epsg3944_m": [
+      2055922.3859114423,
+      3180426.924053848,
+      2055976.5726864785,
+      3180481.110828884
+    ],
+    "terrain_grid": "architecture/ravine-upper-garden-grid.json",
+    "terrain_grid_sha256": "e41818b4a45034db8cf5ec5343c72521dbc5123f3a2412c3ce103192855d05c9",
+    "terrain_grid_limits": "Retained RGE Alti query at 2 m request spacing; spacing is not a claim of 2 m source accuracy. Survey epoch and vertical errors remain unverified.",
+    "scene_origin_lat_lon": [
+      43.7346446387306,
+      7.4213359272073856
+    ],
+    "scene_uniform_scale": 1.0099320735128836,
+    "scene_relative_datum_m": 1.5128994113
+  },
+  "source_roof": {
+    "source_outline": "Use the literal IGN BDTopo 3D ring as the eave outline; do not widen the OSM body or join the separate L-shaped roof feature.",
+    "eave_vertices": [
+      {
+        "wgs84": [
+          7.42059734,
+          43.73826397
+        ],
+        "native_xy_m": [
+          -59.997,
+          406.904
+        ],
+        "ortho_pixel": [
+          -49.9,
+          186.8
+        ],
+        "absolute_z_m": 82.8,
+        "scene_z_m": 81.2871
+      },
+      {
+        "wgs84": [
+          7.42058331,
+          43.73808249
+        ],
+        "native_xy_m": [
+          -61.137,
+          386.501
+        ],
+        "ortho_pixel": [
+          -50.3,
+          377.6
+        ],
+        "absolute_z_m": 82.8,
+        "scene_z_m": 81.2871
+      },
+      {
+        "wgs84": [
+          7.42098356,
+          43.73806623
+        ],
+        "native_xy_m": [
+          -28.624,
+          384.673
+        ],
+        "ortho_pixel": [
+          254.8,
+          378.4
+        ],
+        "absolute_z_m": 82.8,
+        "scene_z_m": 81.2871
+      },
+      {
+        "wgs84": [
+          7.42098981,
+          43.73825974
+        ],
+        "native_xy_m": [
+          -28.116,
+          406.428
+        ],
+        "ortho_pixel": [
+          248.6,
+          175.3
+        ],
+        "absolute_z_m": 82.1,
+        "scene_z_m": 80.5871
+      }
+    ],
+    "observed_plan_shape": "2019 ortho shows a broad muted gray-green roof with a long near east-west ridge and four hip planes; the ridge is visible in the central roof seams.",
+    "estimated_ridge_endpoints": [
+      {
+        "native_xy_m": [
+          -55.5,
+          396.1
+        ],
+        "wgs84_estimate": [
+          7.420652704731211,
+          43.73816787255367
+        ],
+        "ortho_pixel_estimate": [
+          -2.4,
+          285.3
+        ],
+        "absolute_z_m_estimate": 89.2,
+        "scene_z_m_estimate": 87.6871
+      },
+      {
+        "native_xy_m": [
+          -33.5,
+          395.45
+        ],
+        "wgs84_estimate": [
+          7.420923531658703,
+          43.73816209092785
+        ],
+        "ortho_pixel_estimate": [
+          203.8,
+          280.3
+        ],
+        "absolute_z_m_estimate": 89.2,
+        "scene_z_m_estimate": 87.6871
+      }
+    ],
+    "ridge_uncertainty_m": {
+      "plan": 2.5,
+      "vertical": 1.5
+    },
+    "roof_material_estimate": "Matte muted gray-green metal/slate appearance based on 2019 orthophoto pixels only; no material tag or ground-level material source exists.",
+    "roof_surface_model": "Four hipped planes from the IGN eave ring to the estimated ridge line. The maximum 89.2 m absolute roof elevation anchors the ridge, not a flat full-footprint cap. Eave altitudes remain the measured boundary values 82.1\u201382.8 m absolute.",
+    "roof_overhang_and_ridge_length_status": "Ridge inset and roof-plane intersections are architectural plan estimates; IGN has 2.5 m plan / 1.5 m vertical precision, and the orthophoto does not provide a surveyed ridge polyline."
+  },
+  "body_footprint": [
+    [
+      7.4205916,
+      43.738085
+    ],
+    [
+      7.4209874,
+      43.7380707
+    ],
+    [
+      7.4209979,
+      43.7382217
+    ],
+    [
+      7.420602,
+      43.738236
+    ]
+  ],
+  "ground_grid_file": "architecture/ravine-upper-garden-grid.json",
+  "source_review": "villa-hermosa/source-review.md",
+  "primary_orthophoto": "villa-hermosa/orthophoto2019-l8-r796835-c680971.jpg",
+  "architecture": "Literal OSM body and IGN eave ring. Six hip facets meet the estimated ridge, with a thin roof/body join only where their separately sourced plans differ within2.5m. Wall feet use actual emitted surrounding Ground and the retained2m RGE observations; no terrain or property pad is flattened.",
+  "floor_reconstruction": "Six common horizontal3.6m storey bands begin at60.5m absolute, reaching the lowest measured eave at82.1m. Nominal floor spacing/base and plain window rhythm are estimates, not a floor survey. Stepped ground clips exposed lower walls/windows; corner heights do not tilt floor bands.",
+  "uncertainty": {
+    "plan_m": 2.5,
+    "height_m": 1.5,
+    "floor_spacing_m_estimate_allowance": 0.6
+  },
+  "exclusions": [
+    "No flattening of the courtyard, pool or hillside.",
+    "No extension of BATIMENT0000000074074420 (the separate L-shaped roof/terrace feature).",
+    "No transfer of fa\u00e7ade details from Casa Mia or other neighboring properties.",
+    "No treating the maximum IGN roof altitude as a uniform eave or building-body height."
+  ],
+  "status": "Bounded source authoring in progress; native import and fresh cooked review required."
+}
