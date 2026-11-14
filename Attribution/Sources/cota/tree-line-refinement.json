@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "circuit": "cota",
-  "status": "Reference-qualified source generation and placement/scope checks passed; native import and fresh cooked review pending.",
+  "status": "Reference-qualified source and native import placement/scope checks passed; fresh cooked review pending.",
   "reference_frames": [
     "build/reviews/cota/reference/overview-05.jpg"
   ],

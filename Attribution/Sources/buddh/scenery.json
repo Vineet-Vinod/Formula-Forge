@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=buddh",
   "tiles": 164,
-  "triangles": 1363154,
+  "triangles": 1366112,
   "road_sha256": "0576dd77ac95f42d6290346aeba16a9077766f7e6553b85105e3b5064a00bfb5",
   "terrain_sha256": "ab3043ed90befa8c289f8f9ee94c3b328644e64ca7bffef1e69c729fe19b3313",
   "landmarks": [
@@ -201,6 +201,15 @@
       "side": 1,
       "count": 3,
       "setback_m": 45,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 2030,
+      "end_m": 2370,
+      "side": -1,
+      "count": 29,
+      "setback_m": 6,
       "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
     },
     {

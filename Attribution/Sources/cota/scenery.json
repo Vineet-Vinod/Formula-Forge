@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=cota",
-  "tiles": 167,
-  "triangles": 870710,
+  "tiles": 168,
+  "triangles": 873974,
   "road_sha256": "f408ad7e01162624a3d911225abc3ed27f04f8b5ab6ff0688d5e75d06dec0c23",
   "terrain_sha256": "c9c0a1c53aaafed665cbfefb341340b6476df40e7621da732aecb033cfabf564",
   "landmarks": [
@@ -245,6 +245,15 @@
       "end_m": 5090,
       "side": 1,
       "setback_m": 38,
+      "rows": 2,
+      "species_form": "broadleaf",
+      "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
+    },
+    {
+      "start_m": 2360,
+      "end_m": 2580,
+      "side": 1,
+      "setback_m": 11,
       "rows": 2,
       "species_form": "broadleaf",
       "placement_status": "Reference-observed sector bands; individual positions reconstructed outside protection."
