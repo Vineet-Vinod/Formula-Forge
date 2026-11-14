@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=monaco",
   "tiles": 116,
-  "triangles": 2279250,
+  "triangles": 2309438,
   "road_sha256": "3a7544d64e64e34c445dbf4049745ad0e2fc4f2d8e96dcf6d29b2c8ee7f67df3",
   "terrain_sha256": "f1538f328db1481498922f0c8d143010e2a9bcd9c17cb30b52457605ac30a21a",
   "landmarks": [
@@ -104,13 +104,14 @@
       "removed_road_area_m2": 12.473
     },
     {
+      "name": "Quick Silver strip with a planning-based roof anchor",
       "osm_id": 508221117,
-      "name": "Mapped Monaco frontage",
-      "height_m": 9.198691154027216,
-      "levels": 2,
-      "height_status": "Unmeasured conservative retained default; not a verified storey survey",
-      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 11.005
+      "roof_absolute_m": 9.95,
+      "body_area_m2": 181.12253543252137,
+      "base_relative_m": 3.2433184239138027,
+      "street_retaining_area_m2": 15.697199877402984,
+      "retaining_ground_overlap_m": 0.002,
+      "qualification": "Planning upper-level 9.95 m anchor, not a new roof survey. Retained 2017 plan and 2019 ortho differ in epoch from supplied edited reference with year unverified. Same lower fine-ground base and exact original road-clipped parcel. Two lower storeys remain an estimate. Pale flat terrace/coping and upper street retaining are bounded reconstruction. No public rooftop access, stair or raised pavilion invented. External mapped west steps1365041507 and nearby Miramar remain separate. No road/terrain/physics edits."
     },
     {
       "name": "Actual Quai Antoine corner ground body and lower forecourt",
@@ -4171,13 +4172,17 @@
       "dimensions_status": "Retained OSM retaining-wall alignments with heights derived from adjacent registered ground, not guessed walls across town. Mirabeau upper inside street edge at 1200\u20131290 m joins actual RGE ground beyond the corrected narrow corridor. Two-sided stone faces support the existing road elevation; no racing surface or native collision geometry is changed."
     },
     {
-      "name": "Costa planted slope and rocky ravine margin",
-      "planted_area_m2": 451.5573996830028,
-      "exposed_rock_area_m2": 139.77867129225194,
-      "reconstructed_shrubs": 17,
-      "replaced_terrain_cells": 14,
-      "source": "architecture/costa-landcover.json and costa-landcover-provenance.json",
-      "dimensions_status": "Separate bounded original land-cover reconstruction from primary2019 orthophoto and2019/2024 ravine photographs. No new terrain heights. Existing emitted cell triangle planes, outer vertices and interpolated normals retained. Paths, plaza, road/property bodies, existing venue surfaces and unqualified annex4420 excluded. Rock/ivy boundaries and individual shrubs are estimates, not surveyed objects."
+      "name": "Casa garden, Larvotto arch and separate ravine planting",
+      "terrain_cells": 28,
+      "leaf_banks": 52,
+      "cypress_count": 2,
+      "patio_area_m2": 101.20868889285651,
+      "patio_anchor_absolute_m": 28.34,
+      "patio_property_exclusion_m2": 5.93131110714439,
+      "central_stair_count": 22.0,
+      "lower_stair_count": 12.0,
+      "bridge_plan_area_m2": 940.1319657711987,
+      "status": "Bounded architectural reconstruction. Exact bridge plan and source approach anchors; arch rise, garden terrace level, steps and planting positions are declared reconstructions. Existing valley and all terrain planes outside the exact engineered patio/stair/apron plans remain untouched. Source field/native contact data do not change. Supplied edited reference year unverified; 2019 ortho and 2024 arch photo have different epochs. Annex 4420 remains held."
     }
   ],
   "vegetation": [

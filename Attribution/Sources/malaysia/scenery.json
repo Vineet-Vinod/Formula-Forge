@@ -1,8 +1,8 @@
 {
   "recipe": "make circuit-assets CIRCUIT=malaysia",
   "tiles": 130,
-  "triangles": 2097096,
-  "road_sha256": "00ab0b9f54b4ac5604f494858bb37fb19aba3018306bb42e0091a3b2cd386f91",
+  "triangles": 2335162,
+  "road_sha256": "5b7c05bc2a1161ae231aed4cb40c8bdacd9dd90f0623f02bf3b021463789a0ea",
   "terrain_sha256": "c1a3f8ad1402cf7701010ed05c72a538dd64937722c1daf04c4c2fea1d15b839",
   "landmarks": [
     {
@@ -10,9 +10,14 @@
       "start_m": 5420.0,
       "end_m": 230.0,
       "side": 1,
-      "outer_offset_m": 10.35,
-      "source_note": "The retained pit compound 144362327 spans approximately native 5425\u2013227 m across zero. The actual 33-bay garage front spans approximately 5486\u2013207 m and lies 9.784\u201310.300 m beyond the current road edge. Paving extends 10.35 m to meet that frontage; up to 0.57 m lies under the building edge. The rounded control/timing end projects farther toward the apron and remains occupied architecture. Registration and OSM footprint uncertainty are about 2 m; interval ends are rounded by at most 7 m. Paving remains visual beyond the closed pit wall, with no pit access functionality. See pit-roof-review.json.",
+      "outer_offset_m": 11.35,
+      "source_note": "The unchanged mapped 33-bay garage compound is now 10.784\u201311.300 m beyond the corrected 16 m legal lane, instead of 9.784\u201310.300 m beyond the old 18 m lane. Increase the visual apron offset and pit-wall shoulder by exactly 1 m to preserve their world positions. Original footprint, frontage, occupancy and about 2 m mapping uncertainty remain unchanged. See pit-roof-review.json and racing-surface-review.json.",
       "access": "Visual service area outside the closed driving boundary."
+    },
+    {
+      "name": "Sepang 16 m legal lane and separate asphalt margins",
+      "legal_width_m": 16,
+      "pavement_status": "The primary designer specifies constant 16 m white-line width after 2016. The previous 16\u201322 m width estimates are retained only as a separate wider paving envelope, with inside kerb/grass islands kept clear. Exact pavement limits and 20 m apron tapers remain visual reconstructions, not surveyed road edges."
     },
     {
       "name": "Braking distance boards",
@@ -79,7 +84,7 @@
       "mapped_diameter_m": 64.58400668,
       "center_x_m": 398.2848433821575,
       "center_y_m": -7.607516034943471,
-      "concourse_datum_m": 14.61165916113053,
+      "concourse_datum_m": 15.382287597851409,
       "radial_ribs": 24,
       "spire_above_concourse_m": 35.0,
       "source": "Operator architecture photograph; actual mapped circular end outline. Roof height/radial section, pier and spire dimensions are visual estimates, not a structural survey. Native5060 forward camera misses the crown; no relocation is made for that view."
@@ -88,7 +93,7 @@
       "name": "Sepang mapped double-frontage palm-leaf grandstand",
       "osm_id": 144247993,
       "roof_bays": 26,
-      "road_area_removed_m2": 1980.359,
+      "road_area_removed_m2": 756.74,
       "dimensions_status": "Actual concave wing outlines and open central mall gaps retained, with 3 m road clearance. Each wing follows adjacent retained road/concourse floor grade, not roof-contaminated DSM. White membrane modules retain the actual concave footprint and open central mall. Low front edges and rising rear fabric are supported by visible branching ribs below each canopy and rear masts. Bay spacing around 25 m, front spring 18.5 m and rib thickness are unmeasured reconstructions from supplied 122/130/134 s and the operator architecture photo; no road profile or global material changes."
     },
     {
@@ -178,7 +183,7 @@
       "start_m": 2000,
       "end_m": 2850,
       "side": 1,
-      "count": 23,
+      "count": 24,
       "setback_m": 43,
       "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
     },
