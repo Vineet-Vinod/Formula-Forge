@@ -1,0 +1,185 @@
+{
+  "status": "Bounded source-qualified architecture and render-only cliff reconstruction. Fresh cooked visual review remains required; unsupported L terraces/enclosure remain held.",
+  "geographic_roles": [
+    "Curved stone belvedere west of IGN feature ending 4420, registered independently from the 2019 ortho semicircular rim.",
+    "Literal stepped white L terraces, preserving all original IGN absolute boundary Z observations; geometry held because supports remain obscured/unqualified.",
+    "Natural pale rock and irregular vegetation substrate. Exact hidden lower enclosure beneath L terraces remains uncertain; no ordinary house or uniform maximum-height prism is inferred."
+  ],
+  "sources": {
+    "primary_photos": "architecture/west-setting/west-terrace-new-photo-sources.json",
+    "literal_L_feature": "architecture/west-setting/unmodeled-terrace4420-feature.json",
+    "aerial_controls": "architecture/west-setting/west-bastion-aerial-control-estimates.json",
+    "height_source": "architecture/costa-ground-source.json",
+    "retained_grid": "architecture/costa-ground-grid.json",
+    "observed_north_ground": "architecture/west-setting/west-bastion-north-ground-source.json",
+    "exact_extremum_primary_replay": "architecture/west-setting/west-cliff-extrema-verification.json",
+    "visible_ray_review_packet": "build/reviews/resume-20261114/monaco/776-hill-exact-rays.json (review evidence, not a runtime dependency)"
+  },
+  "epochs": "2012 and 2014 primary photographs; official 2019 ortho; 2024 chapel photo. Supplied edited game reference year unverified. IGN terrain survey epoch not recovered; preserved request acquisition dates are not survey dates.",
+  "belvedere_interpretation": {
+    "registered_center_xy_m": [
+      -18.654218668710648,
+      348.78228389249676
+    ],
+    "radius_m": 4.909494005595582,
+    "estimated_paving_absolute_m": 41.21,
+    "estimated_cap_absolute_m": 42.31,
+    "estimated_height_uncertainty_m": 3.0,
+    "section": "Weathered gray/pale stone curved retaining body; blind decorative arcade below planted rim; separate open pale balustrade above. Dimensions, individual arch/baluster rhythm and plant positions reconstructed from photographs, not surveyed.",
+    "support": "The complete retaining perimeter is split at actual packed ground triangle crossings and closes 0.12 m below those planes. Local raised planted top is enclosed by this retaining body; no native valley or hillside height changes."
+  },
+  "cliff_interpretation": {
+    "outer_xy_m": [
+      [
+        -11.4,
+        332.0
+      ],
+      [
+        -8.6,
+        329.8
+      ],
+      [
+        -2.5,
+        330.1
+      ],
+      [
+        -0.4,
+        333.6
+      ],
+      [
+        -0.4,
+        342.0
+      ],
+      [
+        -2.1,
+        346.7
+      ],
+      [
+        -8.9,
+        346.0
+      ],
+      [
+        -11.2,
+        341.0
+      ]
+    ],
+    "ivy_rings_xy_m": [
+      [
+        [
+          -10.8,
+          334.0
+        ],
+        [
+          -9.8,
+          334.0
+        ],
+        [
+          -8.5,
+          336.5
+        ],
+        [
+          -9.2,
+          339.2
+        ],
+        [
+          -8.2,
+          341.4
+        ],
+        [
+          -9.1,
+          343.2
+        ],
+        [
+          -8.5,
+          345.5
+        ],
+        [
+          -9.0,
+          345.3
+        ],
+        [
+          -10.6,
+          340.8
+        ]
+      ],
+      [
+        [
+          -7.8,
+          330.6
+        ],
+        [
+          -3.2,
+          330.9
+        ],
+        [
+          -1.8,
+          332.5
+        ],
+        [
+          -3.4,
+          333.8
+        ],
+        [
+          -6.3,
+          332.9
+        ],
+        [
+          -8.9,
+          333.4
+        ]
+      ],
+      [
+        [
+          -1.5,
+          335.5
+        ],
+        [
+          -0.7,
+          336.1
+        ],
+        [
+          -0.9,
+          339.6
+        ],
+        [
+          -2.6,
+          340.8
+        ],
+        [
+          -3.3,
+          339.8
+        ],
+        [
+          -2.1,
+          338.0
+        ]
+      ]
+    ],
+    "geometry": "Retained literal 2 m IGN samples in the unchanged registered east/north/datum frame. 0.5 m render tessellation estimates between those observations, with a 2 m smooth boundary collar meeting actual old packed planes. This does not imply 0.5 m survey precision.",
+    "materials": "Pale rough MonacoRockGround rock, separate darker MonacoIvyGround substrate, original procedural TreeCanopy recipe. Stone courses occur only on photographed engineered belvedere masonry. No photo/reference pixels become game textures.",
+    "cover_uncertainty": "Rock/ivy edges and connected leaf banks are bounded visual reconstruction from 2019 overhead cover plus 2012/2014 primary cliff views; individual canopies are not surveyed. The exact 595/260 lower support is obscured in the 2014 view, not directly photographed.",
+    "held": "No L-shaped deck or enclosed annex geometry emitted. New point API jump is excluded; only literal retained 2 m grid is used. Native field, racing road, contact data, four qualified roofs and garden remain fixed."
+  },
+  "review_gate": "Inspect source geometry/mask proof and fresh actual 200 m cooked view before promotion or any whole-route acceptance.",
+  "raw_terrace_roof_z_absolute_m": [
+    45.8,
+    42.9,
+    42.4,
+    43.9,
+    47.3,
+    47.5
+  ],
+  "photo_handling": "Photo/source file names identify review copies; URLs, author/date/licence and hashes are retained. No photograph is loaded by game geometry or copied into game textures.",
+  "independent_review": "Frozen private source/geometry packet 4fd3fbad1e461d8c5b0c5eb621fbbb5fcfb48991cf6ea72a6fe0bf935ca3b48f was accepted for cooked review by Luna High; source acceptance is not a cooked or whole-circuit quality pass.",
+  "existing_natural_ground": {
+    "osm_id": 967508764,
+    "tags": {
+      "natural": "wood"
+    },
+    "source_file": "environment.osm.json.gz",
+    "source_file_sha256": "14e393c8402f3572ad8815073b95454c3423ff4bf4e247d8bf5cb58fae36825c",
+    "literal_ring_sha256": "0c41bbe6b8c645f13e2da6cc8df0f1d8307156a94b1bf58f8ec2bed7d5ece67f",
+    "overlap_with_observed_outer_rim_m2": 7.8680124276104,
+    "handling": "Retain the existing Grass triangle rows and terrain cutout unchanged. Only this exact source natural-wood ring may contribute its actual already-emitted Grass planes to the separate belvedere foundation lookup. No natural surface is duplicated, deleted or silently replaced; no solid/road/garden-apron exclusion is relaxed."
+  }
+}

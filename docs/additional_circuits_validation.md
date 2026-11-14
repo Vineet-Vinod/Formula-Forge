@@ -1,6 +1,6 @@
 # Additional circuit validation — 2026-11-14
 
-Checkpoint for the 18 additional circuits, current package `97f852c9`. The explicit review register records 15 visual passes, 3 holds and 0 pending reviews. This checkpoint does not declare the work complete.
+Checkpoint for the 18 additional circuits, current package `e5914f42`. The explicit review register records 15 visual passes, 3 holds and 0 pending reviews. This checkpoint does not declare the work complete.
 
 Active work toward Sunday 15 November 10:00 PST. The 18-map work remains incomplete. Fifteen scenes have current Luna High visual passes; Baku, Jeddah and Monaco retain visual holds. Fresh moving performance comparisons are in progress.
 
@@ -11,7 +11,7 @@ The [validation record](additional_circuits_validation.json) pins package payloa
 | australia | c0832124 | pass | 4366 | 125/125 |
 | austria | 6a970d40 | pass | 3602 | 125/125 |
 | bahrain | 6a970d40 | pass | 4791 | 125/125 |
-| baku | 0e32f075 | held | 5117 | 125/125 |
+| baku | e5914f42 | held | 5230 | 125/125 |
 | buddh | c6a58fcc | pass | 4601 | 125/125 |
 | canada | 887f09f0 | pass | 3857 | 125/125 |
 | china | 887f09f0 | pass | 5283 | 125/125 |
@@ -35,7 +35,8 @@ These independent source findings remain unresolved despite retained visual pass
 
 | Circuit | Outstanding source finding |
 | --- | --- |
-| jeddah | Sail tower and Red Sea Mall are imported, but the current T27exit/return still lacks nearer ordinary mapped city context and the Sail crown/highest-occupied height allocation needs primary qualification. Source/native geometry gates do not close this visual hold. |
+| baku | Court/north frontages and bounded paving are imported and improved in fresh whole-route review. Repetitive ordinary-city facades, downhill banks and earlier separate intrusion findings remain held. |
+| jeddah | Sail and mall are imported. The T27/return skyline still lacks nearer context. Primary supplier photos withdraw the pronounced-crown objection; a14triangle upper-room-lighting correction is source-reviewed but not imported in this checkpoint. |
 | monaco | Measured property roofs, arch/approaches, garden and low Kennedy retail are imported. The fresh 200 m driving view retains an angular charcoal slope and abrupt planted edge. The annex/terrace 4420 lower enclosure remains unqualified; no opaque prism or blanket vegetation is justified. Kennedy retail is independently closed. |
 
 ## Current native profiles
@@ -72,7 +73,7 @@ These figures are recalculated from the current road exports. Sample density is 
 
 The supplied scope proofs and their hashes are retained in the JSON. Accepted-circuit assets, shared runtime changes and car/input/camera scope are reported separately; asset preservation is not a claim that no runtime code changed.
 
-Reviewed package97f852c9 includes the reference-qualified Portimao two-tier mainstand/VIP/cantilever reconstruction and Jeddah Sail/mall context. Fresh whole-route Luna review closes Portimao architecture. Jeddah stays held for sparse nearer T27exit surroundings and unresolved Sail upper termination; moving the actual tower or mall to fill the view is not justified. The earlier Buddh/COTA tree additions and Sepang surface repair remain passed. Baku frontage/ground and Monaco west terrace/cliff work remain private.
+Package e5914f42 adds distinct Baku Court/north frontages and bounded public paving. Fresh whole-route review recognizes the improvement but retains ordinary-city, downhill-bank and earlier approach-intrusion holds. Portimao mainstand remains passed. Jeddah T27/return context and Monaco west setting remain held; new work is in progress.
 
 Sampled peak machine memory was 7.089 GB against 11 GB, using the 5 s monitor. One heavy job at a time is attested in the register.
 
@@ -82,14 +83,15 @@ Moving measurements are separate from capped image recordings and stationary sam
 
 | Circuit | Kind | Measured frames | Median ms | p95 ms | p99 ms | Max ms |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| — | No current uncapped runs registered | — | — | — | — | — |
+| lasvegas | moving | 7538 | 20.30 | 27.15 | 30.10 | 36.60 |
+| interlagos | moving | 7348 | 17.41 | 21.73 | 24.31 | 31.09 |
 
 Moving runs require one full warmup route and complete measured route coverage. They use automatic driving input and do not establish physical-controller handling. Stationary numbers describe only their registered local scene. Capped recording intervals include readback and encoding overhead.
 
 ## Remaining source and platform limits
 
 - Dense native controls do not make reconstructed widths, event radii, height fields or temporary architecture into surveys.
-- Six tested Baku pixel rays establish old-city exterior ground intrusions, with additional facade/terrain cuts. These are ray witnesses, not six separately mapped defects. The attempted public-paving/foundation repair failed grade/join qualification and remains unintegrated in its preserved candidate archive.
+- Baku civic paving and Court/north frontages are imported, but the fresh whole-route review retains repetitive ordinary-city facades and downhill-bank views. Six earlier approach ray witnesses remain separate unresolved findings; no broad grade change is justified by them.
 - Portimao classified DGT ground yields a maximum 100 m rise of 8.45%, inconsistent with the operator headline 6.2%. The source-definition difference is unresolved; no unsupported vertical rescaling was applied.
 - Japan now uses registered GSI widths around 10 to 15 m; the operator 16 m extremum is not yet locally registered. Road-top separation at the crossing is not underside clearance.
 - Zandvoort T3 now uses the measured progressive quadratic bowl and bounded paved bank. Cross-sections and source epochs still carry their stated uncertainties.
