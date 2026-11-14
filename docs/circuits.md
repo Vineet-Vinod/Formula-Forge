@@ -42,7 +42,7 @@ Suzuka is the only figure-eight. Its back straight crosses the lower Degner road
 
 Native scenes include circuit-specific architecture, vegetation, protection, kerbs, escape surfaces, braking boards and pit paving. Pit access remains closed for the game. Source generation, native geometry checks and a clean simulated lap do not establish visual or performance acceptance. Follow the [whole-lap workflow](map.md) and compare the exact current assets against registered references.
 
-Work is active through Sunday 15 November at 10am PST. The reviewed `4531fdcd`
+Work is active through Sunday 15 November at 10am PST. The reviewed `f66b8dac`
 checkpoint records 15 Luna High visual passes and three holds: Baku, Jeddah
 and Monaco. Portimão's reconstructed two seating tiers, glazed VIP level and
 cantilever canopy now pass fresh whole-route review. Sepang's legal lane,
@@ -53,7 +53,10 @@ COTA vegetation passes fresh whole-route review. Jeddah's Sail/mall context is
 imported, but its nearer final-hairpin surroundings remain held. Primary supplier
 photos resolve the earlier crown objection, and the upper-window lighting
 correction passes fresh cooked review. Baku's Court/north frontages and bounded paving are imported
-and improved, while ordinary city facades and downhill banks remain held.
+and improved. New Niyazi/T15 trees pass their bounded coverage review, while
+ordinary city facades and downhill banks remain held. Pedestrian-frontage grade
+uncertainty is separate from the visual findings; ray intersections alone do not
+establish incorrect street levels.
 Monaco's belvedere is now present, but fresh review retains the broader hillside
 material and form hold. The literal L terrace supports remain a separate uncertainty.
 See the [validation checkpoint](additional_circuits_validation.md)

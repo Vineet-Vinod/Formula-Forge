@@ -1,6 +1,6 @@
 # Additional circuit validation — 2026-11-14
 
-Checkpoint for the 18 additional circuits, current package `4531fdcd`. The explicit review register records 15 visual passes, 3 holds and 0 pending reviews. This checkpoint does not declare the work complete.
+Checkpoint for the 18 additional circuits, current package `f66b8dac`. The explicit review register records 15 visual passes, 3 holds and 0 pending reviews. This checkpoint does not declare the work complete.
 
 Active work toward Sunday 15 November 10:00 PST. The 18-map work remains incomplete. Fifteen scenes have current Luna High visual passes; Baku, Jeddah and Monaco retain visual holds. Fresh moving performance comparisons are in progress.
 
@@ -11,7 +11,7 @@ The [validation record](additional_circuits_validation.json) pins package payloa
 | australia | c0832124 | pass | 4366 | 125/125 |
 | austria | 6a970d40 | pass | 3602 | 125/125 |
 | bahrain | 6a970d40 | pass | 4791 | 125/125 |
-| baku | e5914f42 | held | 5230 | 125/125 |
+| baku | f66b8dac | held | 5233 | 125/125 |
 | buddh | c6a58fcc | pass | 4601 | 125/125 |
 | canada | 887f09f0 | pass | 3857 | 125/125 |
 | china | 887f09f0 | pass | 5283 | 125/125 |
@@ -35,7 +35,7 @@ These independent source findings remain unresolved despite retained visual pass
 
 | Circuit | Outstanding source finding |
 | --- | --- |
-| baku | Court/north frontages and bounded paving are imported and improved in fresh whole-route review. Repetitive ordinary-city facades, downhill banks and earlier separate intrusion findings remain held. |
+| baku | New right-side trees improve3490–3800m coverage with no tree-specific blocker. Whole-route ordinary-city/bank holds remain; all six earlier actual approach Ground intersections survive unchanged, with visibility caveats recorded separately. |
 | jeddah | Upper Sail room-lighting correction is visually closed. Sparse nearer T27/return skyline remains below the supplied reference; source-qualified Masarat context is in private authoring. |
 | monaco | Curved belvedere now present and bounded cliff/planting improved. Fresh200/230views retain broad charcoal angular banks above/underbridge unlike pale fractured rock and irregular vegetation in photos. This is separate from unqualified L4420terrace supports; no invented opaque enclosure is justified. |
 
@@ -73,7 +73,7 @@ These figures are recalculated from the current road exports. Sample density is 
 
 The supplied scope proofs and their hashes are retained in the JSON. Accepted-circuit assets, shared runtime changes and car/input/camera scope are reported separately; asset preservation is not a claim that no runtime code changed.
 
-Package4531fdcd includes the curved Monaco belvedere and bounded source-grid cliff repair plus Sail upper-glazing correction. Fresh whole-route reviews close belvedere absence and upper room glow, but Monaco broader hillside, Jeddah nearer skyline, and Baku ordinary-city/downhill holds remain. Work remains active; no circuit completion inferred from source checks.
+Package f66b8dac adds21source-qualified Niyazi/T15 trees with exact actual-ground roots and branch clearance. Fresh5233frame whole-route review recognizes the planting improvement and retains Baku city/bank/approach holds. Earlier4531fdcd closes Sail upper room glow and Monaco belvedere absence, while nearer Jeddah skyline and broader Monaco hillside remain held. Additional source work is active.
 
 Sampled peak machine memory was 7.089 GB against 11 GB, using the 5 s monitor. One heavy job at a time is attested in the register.
 
@@ -85,7 +85,14 @@ Moving measurements are separate from capped image recordings and stationary sam
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
 | lasvegas | moving | 7538 | 20.30 | 27.15 | 30.10 | 36.60 |
 | interlagos | moving | 7348 | 17.41 | 21.73 | 24.31 | 31.09 |
+| canada | moving | 7952 | 15.76 | 17.99 | 19.43 | 21.67 |
+| cota | moving | 11366 | 15.35 | 17.86 | 19.08 | 23.09 |
+| china | moving | 10946 | 15.66 | 18.37 | 19.62 | 26.12 |
+| buddh | moving | 8265 | 17.62 | 21.99 | 24.09 | 27.90 |
 | australia | moving | 8629 | 16.20 | 18.74 | 20.59 | 26.42 |
+| austria | moving | 5587 | 20.48 | 23.33 | 25.53 | 35.44 |
+| hockenheim | moving | 7857 | 16.83 | 20.70 | 22.20 | 25.92 |
+| bahrain | moving | 9151 | 16.76 | 19.97 | 21.43 | 24.35 |
 
 Moving runs require one full warmup route and complete measured route coverage. They use automatic driving input and do not establish physical-controller handling. Stationary numbers describe only their registered local scene. Capped recording intervals include readback and encoding overhead.
 
