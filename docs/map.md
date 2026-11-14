@@ -378,6 +378,16 @@ Carry deck corrections through shoulders and barrier bases, not just along the
 centreline. Keep interpolation diagonals consistent between rendered terrain and
 the simulation grid.
 
+For a local material change, compare the actual emitted triangles before and
+after, including outside the painted region. Adding a small mask to a global
+polygon union can change distant triangulation diagonals: the first Monaco
+land-cover candidate moved an unrelated hillside surface by over 4 m despite
+equal projected coverage. Preserve the original triangle planes, interpolated
+normals and UVs. `CircuitScene.emitted_terrain_cells` lets a private producer
+finish selected grid cells and skip only those cells in the final terrain loop.
+Before using it, prove full coverage without overlap and preserve any deferred
+verge or ground patches that share the cells.
+
 Treat city foundations and public paving as a connected ground model. Roof-biased
 DSM values cannot establish a building's ground-floor height. Check mapped street
 connections, steps and property thresholds before fitting the surrounding paving.
@@ -535,6 +545,16 @@ Generate the visible protection and custom collision segments from one surveyed
 path and one elevation revision. Keep posts upright; interpolate rail/fence
 endpoints along slopes. Document the intended base, top, thickness, joins and
 openings. A low-detail collision proxy still has to agree with the visible wall.
+
+At a narrow bridge, distinguish the clear structural opening, girder axes,
+legal racing width, kerb allowance, shoulder and wall thickness. Calculate both
+the inner and outer wall faces. A wall can fit between the girders yet intrude
+into the legal lane. Verify the emitted truss faces against the exported native
+walls and limits, including both abutments. Anderson Bridge needs three
+longitudinal trusses and two openings; the race uses the left opening. Removing
+the central truss to fit an oversized road would conceal the alignment error.
+Optional `kerb-margins.json` controls let a venue narrow its allowance with smooth
+joins while other circuits retain their existing defaults.
 
 Unreal collision on the streamed decorative mesh is disabled in the current
 presentation code. Vehicle contact is handled by `FFSimulation` and its authored
@@ -785,6 +805,14 @@ logs in parallel; they must not launch competing Unreal builds or unguarded game
 A model that can only inspect captures must report that limitation rather than
 claiming it played the game. The implementation agent must inspect the evidence
 too; delegating review does not delegate responsibility for the result.
+
+Keep geometry preservation and appearance decisions separate. Monaco's corrected
+land-cover geometry passed its plane and seam proofs, but the cockpit still
+showed a stark faceted slope, an angular green patch and undersized vegetation.
+That remained a visual hold. Trace disputed image pixels to their actual mesh
+faces and then to the primary sources: gray areas can be a garden terrace,
+another road, an omitted bridge or an unmodeled building. Each needs its own
+treatment; expanding a grass mask cannot resolve all of them.
 
 Give the critic the reference frames/video sections, accepted baseline captures,
 new runtime captures, station index, known uncertainty and measured dimensions.

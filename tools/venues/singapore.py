@@ -8,6 +8,7 @@ from circuit_scene import CircuitScene
 
 from venues.east_architecture import cylinder, facade, frame, mapped, trees
 from venues.pit_compounds import SINGAPORE, mapped_pit
+from venues.singapore_bridge import anderson_bridge
 from venues.singapore_raffles import (
     build_context,
     flyer_terminal,
@@ -121,6 +122,7 @@ def build_venue(scene: CircuitScene) -> None:
     circuit_edges(scene)
     build_waterfront(scene)
     build_viaduct(scene)
+    anderson_bridge(scene)
     build_context(scene)
     stamford = build_stamford(scene)
     scene.modeled_buildings.add(97582570)

@@ -19,8 +19,8 @@
     "chosen": "relation-cycle/421263",
     "measured_plan_m": 4956.775,
     "published_m": 4940,
-    "uniform_scale": 1.0052314376858864,
-    "scale_rule": "Composed source projection and native32-subdivision Catmull length normalization, including the disclosed local corner reconstruction/refinement stages. Original source projection is retained separately; see scene-registration.json.",
+    "uniform_scale": 1.0051432406527032,
+    "scale_rule": "Previous effective geographic frame composed with exact new native32-subdivision Catmull/Units17 normalization for the Anderson left-opening correction. See scene-registration.json; metric widths/heights are not globally scaled.",
     "source_projection_uniform_scale": 0.996616
   },
   "elevation": {
@@ -37,9 +37,10 @@
     "deck": null
   },
   "width": {
-    "base_m": 12.0,
-    "straight_m": 14.0,
-    "method": "Authored from typical Grade 1 asphalt width, wider on low-curvature sections. Not a traced white-line survey."
+    "method": "Original native width control lattice retained outside2770\u20132940m.8.8m legal racing strip inside Anderson left-opening; quintic sampled transitions2817\u20132895m plateau.9.6m estimated clear roadway and event walls are distinct from the legal white-line width.",
+    "source": "environment-recipe.json width_profile; anderson-bridge-review.json",
+    "uncertainty_m_each_edge": 0.3,
+    "scope": "Bridge estimate only; prior generic widths elsewhere remain qualified."
   },
   "shoulders": {
     "default_m": 3.5,
@@ -82,7 +83,7 @@
   },
   "scene_coordinate_registration": {
     "source_projection_uniform_scale": 0.996616,
-    "effective_scene_uniform_scale": 1.0052314376858864,
+    "effective_scene_uniform_scale": 1.0051432406527032,
     "native_normalization_chain": {
       "initial_corrected_controls_factor": 1.00741049822639,
       "initial_catmull_length_m": 4903.6612746166065,
@@ -96,9 +97,13 @@
       "method": "Exact float32 native32-step Catmull expression and float32 segment norms, double arc accumulation, float32 correction including Units17. Compose original9d8e native factor,5-event alignment controls, then sigma2 refinement controls. No production metadata or native source edited.",
       "baseline_factor_applied_to_selected_scale": true
     },
-    "final_road_sha256": "a0a79fcc27f90446a46b6d2b7d76e9757c529e0f6958bf0c42b8ad9f612859c9",
-    "source_basis": "alignment-corrections.json",
-    "source_basis_sha256": "da492d906bc96ce7f6d093fbed42c657dd5f49e84e1c06e64b489582f905de66",
-    "scope": "Scenery WGS84-to-native XY registration only. Native road geometry, physical road widths, elevations, vehicle tuning and camera are not changed by this metadata update. Original corner authoring controls retain their explicitly documented historical coordinate frame."
-  }
+    "final_road_sha256": "df74c61feddac1dd46f4cbc3456ed317677ef6fa2d0b2773f5807f127f014b7d",
+    "source_basis": "alignment-refinement.json",
+    "source_basis_sha256": "791e983fa7b78f36b513077f2a851425e02dcd2bf991c5a5a52582b6bc67cb37",
+    "scope": "Geographic frame composed after the local bridge road correction. The local alignment/legal width/shoulder/wall changes are disclosed in anderson-bridge-review.json; elevation, banking and shared vehicle/camera settings remain unchanged.",
+    "previous_registration_file": "anderson/scene-registration.json.gz",
+    "previous_scene_uniform_scale": 1.0052314376858864,
+    "anderson_native_normalization_factor": 0.9999122619628906
+  },
+  "anderson_bridge_reconstruction": "anderson-bridge-review.json"
 }

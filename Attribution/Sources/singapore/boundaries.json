@@ -1,8 +1,8 @@
 {
   "source": "Registered native road and reference-authored escape ranges",
   "method": "Exact planar polygon union, preserving interior islands; simplification tolerance2cm, wallsegments atmost2m. One closed boundary supplies physical and visible protection.",
-  "wall_count": 5875,
-  "occupied_footprints": 7,
+  "wall_count": 5842,
+  "occupied_footprints": 6,
   "structure_clearance_m": 0.5,
   "runoff_ranges": [
     {

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import bisect
 import csv
 import gzip
 import hashlib
@@ -25,6 +26,7 @@ from circuit_dataclasses import (
     RoadStation,
     SurfaceProjection,
     TerrainGrid,
+    WidthControls,
 )
 from circuit_mesh import MeshScene, Point, add, cross, mul, norm, sub
 from pydantic import TypeAdapter
@@ -127,6 +129,19 @@ class CircuitScene(MeshScene):
             if edge_path.exists() else []
         )
         self._edge_mask: BaseGeometry = Polygon()
+        margin_path = self.sources / "kerb-margins.json"
+        self.kerb_margins = (
+            TypeAdapter(WidthControls).validate_json(margin_path.read_bytes()).controls_m
+            if margin_path.exists() else []
+        )
+        if self.kerb_margins and (
+            self.kerb_margins[0][0] != 0
+            or abs(self.kerb_margins[-1][0] - self.length) > 0.001
+            or self.kerb_margins[0][1] != self.kerb_margins[-1][1]
+            or any(value < 0 for _station, value in self.kerb_margins)
+            or any(b[0] <= a[0] for a, b in itertools.pairwise(self.kerb_margins))
+        ):
+            raise ValueError("Kerb margins must be nonnegative, ordered and close the lap")
 
     def geo(self, latitude: float, longitude: float) -> tuple[float, float]:
         origin = self.provenance.origin
@@ -462,6 +477,11 @@ class CircuitScene(MeshScene):
         return self.road_mask
 
     def kerb_margin(self, station: float) -> float:
+        if self.kerb_margins:
+            index = max(0, min(len(self.kerb_margins) - 2, bisect.bisect_right(self.kerb_margins, (station, math.inf)) - 1))
+            a, b = self.kerb_margins[index], self.kerb_margins[index + 1]
+            t = max(0.0, min(1.0, (station - a[0]) / (b[0] - a[0])))
+            return a[1] + (b[1] - a[1]) * t**3 * (10 + t * (-15 + 6 * t))
         if self.slug != "baku" or station < 2480 or station > 2920:
             return 0.95
         weight = min(1.0, (station - 2480) / 100, (2920 - station) / 120)

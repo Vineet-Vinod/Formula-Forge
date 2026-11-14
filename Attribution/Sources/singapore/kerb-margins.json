@@ -1,0 +1,30 @@
+{
+  "controls_m": [
+    [
+      0.0,
+      0.95
+    ],
+    [
+      2770.0,
+      0.95
+    ],
+    [
+      2817.0,
+      0.15
+    ],
+    [
+      2895.0,
+      0.15
+    ],
+    [
+      2940.0,
+      0.95
+    ],
+    [
+      4940.0,
+      0.95
+    ]
+  ],
+  "method": "C2 quintic margin joins; bridge event walls sit within the left clear opening. Legal8.8m +.15m kerb+.05m shoulder+wallradius.15m eachside gives9.5m outer envelope. Exact offsets are estimates, not surveyed.",
+  "source": "anderson-bridge-review.json"
+}

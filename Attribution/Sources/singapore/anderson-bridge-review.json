@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "circuit": "singapore",
+  "feature": "Anderson Bridge9574530",
+  "map_file": "anderson-bridge.osm.json.gz",
+  "map_sha256": "093861a59f632c39f1102818368ea6cfb509a964db6d3ed896934200e3372bda",
+  "map_derivation": "Six outer ways retained from bridge relation9574530 in the original OSM river-bridge extract. Axis endpoints average the two opposite longest straight deck sides; the central longitudinal girder follows this center axis. ODbL factual geometry.",
+  "reference_seconds": [
+    675,
+    678,
+    681,
+    684
+  ],
+  "primary_sources": [
+    "https://singaporegp.sg/en/news/2015/enhancements-to-marina-bay-street-circuit/",
+    "https://www.nlb.gov.sg/main/article-detail?cmsuuid=13e377d8-020f-4eb6-935b-e9ee85ccdfc4",
+    "https://era.ed.ac.uk/server/api/core/bitstreams/5a943fcf-aa77-4ef5-9479-cac1214df2eb/content"
+  ],
+  "observed": "Three longitudinal bowstring lattice trusses make two openings. Race route uses the driver-left opening. Repeated arched lattice cross ties, four outer pedestrian stone portals, cantilevered footwalks and overhead red event panels.",
+  "dimension_conflicts": "Dissertation says31ft6in per roadway but parenthetical24.5m is arithmetically incompatible.31ft6in=9.6012m, consistent with historical government10m circuit-width description.20ft(~6m) and26ft(~7.925m) truss descriptions lack a common established datum. The drawing2680mm callout refers below deck to river clearance, not overhead height. None establishes a modern structural survey.",
+  "reconstruction_estimates": {
+    "clear_opening_m": 9.6,
+    "girder_axis_pitch_m": 9.9,
+    "girder_width_m": 0.3,
+    "legal_racing_width_m": 8.8,
+    "kerb_allowance_m_each_side": 0.15,
+    "shoulder_m_each_side": 0.05,
+    "event_wall_radius_m": 0.15,
+    "physical_wall_outer_width_m": 9.5,
+    "residual_clearance_m_each_side": 0.05,
+    "longitudinal_truss_top_m": 6.0,
+    "cross_tie_rise_above_truss_m": 1.25,
+    "cross_tie_lattice_depth_m": 0.32,
+    "note": "Mapped axis and structural topology are factual source observations. Exact span endpoints, members, arch heights, lane and wall offsets are bounded original authoring estimates. The legal corridor sits inside the protected opening; do not remove the middle truss to fit the prior13.7m road."
+  },
+  "native_correction_status": "Applied and freshly exported:8192 canonical samples,5842 shared native/visible wall segments. Focused tests verify actual packed truss, native legal road and wall clearances; cooked visual/full-lap review pending.",
+  "source_epoch": "2012 measured-drawing publication,2015 lane change, supplied modern race footage; actual OSM deck geometry retained in2026.",
+  "final_native_road_sha256": "df74c61feddac1dd46f4cbc3456ed317677ef6fa2d0b2773f5807f127f014b7d",
+  "alignment_recipe": "alignment-refinement.json; anderson/alignment-refinement.json.gz retains previous controls",
+  "alignment_transition": "C2 quintic Hermite2770\u20132817 and2890\u20132940m; actual deck-axis left-opening fit in between. Native target-length normalization0.9999122619628906 composed into source geography; maxcontrolmovement2.26m, outside-window same-station0.329m is disclosed chainage/scale effect."
+}
