@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=singapore",
   "tiles": 152,
-  "triangles": 1400925,
+  "triangles": 1401413,
   "road_sha256": "6e6811d0bcffafefe7574bc2ee1c4667fede177b0c3ae00676a2abca2c2ccb6a",
   "terrain_sha256": "0bd73918edfa845abde307374336cd0958a4c5866988aa6f48b4bb9b0d4c6591",
   "landmarks": [
@@ -195,6 +195,20 @@
       "pier_bays": 10,
       "pier_bays_omitted_at_protected_corridors": 1,
       "source_note": "Actual retained layer-1 ECP/Benjamin Sheares carriageway or Rochor Road exit alignment. Continuous supplied 1254\u20131255.8 s shows the closed concrete underside, repeated girders and forked supports. Lane width 3.5 m, combined shoulders 1.6 m, local deck 13 m above adjacent racing street, 0.9 m slab and 32 m support pitch are visual reconstruction estimates, not surveyed dimensions. Deck height uncertainty is \u00b13 m. Supports avoid every protected racing corridor and existing building. The known elevated-road DSM is replaced only beneath these actual deck footprints on land; ambiguous mall/layer-2 terrain is untouched."
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 2798.0,
+      "end_m": 2905.0,
+      "side": -1,
+      "material": "PanelLenovo"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 2798.0,
+      "end_m": 2905.0,
+      "side": 1,
+      "material": "PanelLenovo"
     },
     {
       "name": "Anderson Bridge",
