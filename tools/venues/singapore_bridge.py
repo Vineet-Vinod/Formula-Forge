@@ -30,6 +30,8 @@ def anderson_bridge(scene: CircuitScene) -> None:
     if abs(scene.provenance.route.uniform_scale - source.uniform_scale) > 1e-9:
         raise ValueError("Anderson Bridge requires its registered geographic frame")
     center, axis, right = bridge_frame(scene, source)
+    for side in (-1, 1):
+        scene.branding(2798.0, 2905.0, side, "PanelLenovo")
 
     def point(along: float, across: float, height: float) -> Point:
         xy = add(center, add(mul(axis, along), mul(right, across)))

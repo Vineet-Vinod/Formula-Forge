@@ -131,3 +131,14 @@ def test_bridge_margin_returns_to_the_original_street_allowance() -> None:
         assert scene.kerb_margin(station) == pytest.approx(0.95)
     for station in (2820, 2850, 2890):
         assert scene.kerb_margin(station) == pytest.approx(0.15)
+
+
+def test_entire_braking_marker_stays_outside_the_narrow_bridge_legal_lane() -> None:
+    scene = BridgeScene()
+    scene.braking_boards(2964.961013, 1, distances=(100,))
+    assert scene.faces
+    for _kind, face in scene.faces:
+        for point in face:
+            road, _distance = scene.nearest(point[0], point[1])
+            lane = (point[0] - road.x) * road.ty - (point[1] - road.y) * road.tx
+            assert lane - road.half_width > 0.14

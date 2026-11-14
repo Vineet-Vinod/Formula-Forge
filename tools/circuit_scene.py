@@ -1045,7 +1045,11 @@ class CircuitScene(MeshScene):
         for distance in distances:
             p = self.at(apex - distance)
             shoulder = p.left_shoulder if side > 0 else p.right_shoulder
-            lane = side * (p.half_width + self.kerb_margin(p.station) + shoulder - 0.25)
+            reach = max(
+                p.half_width + self.kerb_margin(p.station) + shoulder - 0.25,
+                p.half_width + 0.75,
+            )
+            lane = side * reach
             a, b = p.point(lane - 0.6, 0.55), p.point(lane + 0.6, 0.55)
             self.banner(a, b, 1.1, str(distance))
             self.beam("Tile_Boards", "Steel", p.point(lane), p.point(lane, 0.55), 0.08)
