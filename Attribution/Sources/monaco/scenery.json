@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=monaco",
   "tiles": 116,
-  "triangles": 2321435,
+  "triangles": 2321826,
   "road_sha256": "3a7544d64e64e34c445dbf4049745ad0e2fc4f2d8e96dcf6d29b2c8ee7f67df3",
   "terrain_sha256": "f1538f328db1481498922f0c8d143010e2a9bcd9c17cb30b52457605ac30a21a",
   "landmarks": [
@@ -4196,6 +4196,13 @@
       "lower_stair_count": 12.0,
       "bridge_plan_area_m2": 940.1319657711987,
       "status": "Bounded architectural reconstruction. Exact bridge plan and source approach anchors; arch rise, garden terrace level, steps and planting positions are declared reconstructions. Existing terrain planes outside the engineered patio/stair/apron and separately bounded west cliff/belvedere plans remain untouched. Source field/native contact data do not change. Supplied edited reference year unverified; 2019 ortho and 2024 arch photo have different epochs. Annex 4420 remains held."
+    },
+    {
+      "name": "Source-classified west gardens, rock strips and paved circulation",
+      "classified_ground_area_m2": 621.5506787086861,
+      "affected_street_tiles": 2,
+      "source": "architecture/west-visible-surfaces.json",
+      "status": "Original 2019 orthophoto role interpretation, approximately \u00b11m boundary uncertainty. All old height planes and complete outside packed rows are preserved; clipped outside faces retain interpolated normals and UVs. Pools, paths, buildings and the belvedere are excluded. Elevated L roof/deck and uncertain pale cap are not ground evidence. No native field, road, protection, contact or camera change; fresh cooked review required."
     }
   ],
   "vegetation": [
