@@ -480,6 +480,11 @@ Reuse the method; placements, heights and light values belong to that circuit.
    height must not extrude its whole casino compound to tower height. Retain the
    mapped podiums and separate tower parts. Check whether the recipe's height
    already includes its crown; do not subtract or add the crown twice.
+   `building:levels` multiplied by a standard floor height is only a fallback.
+   Historic halls can have much taller floors: Baku's Court photo proportions
+   contradicted its generic four-level envelope. Register a known facade width
+   and several photo corners, retain perspective uncertainty, and model each
+   floor's actual rhythm. An old estimate does not become a measured constraint.
 3. Model the architecture that identifies each visible property: wings, curvature,
    roof profile, colonnades, projecting piers, balconies and entrance depth.
    Check operator or architect views when the onboard cannot resolve them.
@@ -555,6 +560,15 @@ longitudinal trusses and two openings; the race uses the left opening. Removing
 the central truss to fit an oversized road would conceal the alignment error.
 Optional `kerb-margins.json` controls let a venue narrow its allowance with smooth
 joins while other circuits retain their existing defaults.
+
+Separate legal white-line width from the wider asphalt envelope. Sepang's 2016
+designer specifies a constant 16 m legal lane; former outside asphalt becomes
+runoff. Shrinking the asphalt with the legal line loses that pavement. Retain the
+actual sampled width and shoulder lattice before changing it, and keep pit-wall
+and garage offsets in world coordinates. A baseline that already includes a pit
+transition must not have that transition applied again. Check effective native
+shoulders too: runoff-width overrides can expand them beyond the raw controls.
+See the [Sepang surface record](../Attribution/Sources/malaysia/racing-surface-review.json).
 
 Unreal collision on the streamed decorative mesh is disabled in the current
 presentation code. Vehicle contact is handled by `FFSimulation` and its authored
@@ -649,6 +663,14 @@ float32/uint32 encoding and exact byte counts, not padded host-language structs.
 `FFDriveSurface` supports up to four million triangles and uses an XY spatial
 index. It is not Unreal's mesh collision. Do not feed roofs or scenery into a
 surface query just because they are triangles in the same visible tile.
+
+Verify that the simulation actually queries a new contact mesh in every intended
+sector. A banking condition can make appended apron triangles reachable in a
+banked corner but unreachable on flat straights. Exercise both cases and preserve
+the protected road's existing height behavior. When rendered pavement supplies
+contact, compare its actual packed vertices with the serialized contact data;
+an analytic strip spanning the whole shoulder can cross a grass island or overlap
+another branch even though the real apron is clear.
 
 The current render components are placed at world zero: tile vertices already
 carry the required placement. If generating local-origin meshes instead, add a
