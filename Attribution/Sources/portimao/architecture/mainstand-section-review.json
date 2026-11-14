@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "Reference-qualified source correction; native/cooked review pending.",
+  "status": "Source/native scope checks and fresh97f852c9 whole-route Luna High visual review passed.",
   "problem": "Current single continuous23-row terrace and repeated tall front posts do not match the architect-documented two-tier/VIP/cantilever structure.",
   "primary_architect": {
     "publisher": "Ricardo Pina Arquitetos",
@@ -102,6 +102,7 @@
     "build/reviews/portimao/reference/overview-13.jpg",
     "build/reviews/portimao/resume-scenery-corrections-live/targeted/00-720.0-00000256.jpg"
   ],
-  "review": "build/reviews/resume-20261114/reviews/portimao-mainstand-source-adjudication.md",
-  "preservation": "No source field heights, racing road, limits/contact data, pit frontage, VIP tower, shared shaders, car handling or camera change. Only this grandstand and canopy are reconstructed."
+  "review": "build/reviews/resume-20261114/reviews/portimao-97f852c9-mainstand-review.md",
+  "preservation": "No source field heights, racing road, limits/contact data, pit frontage, VIP tower, shared shaders, car handling or camera change. Only this grandstand and canopy are reconstructed.",
+  "historical_source_adjudication": "build/reviews/resume-20261114/reviews/portimao-mainstand-source-adjudication.md"
 }
