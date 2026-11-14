@@ -1,0 +1,125 @@
+{
+  "provider": "IGN Geoplateforme",
+  "resource": "ign_rge_alti_wld",
+  "endpoint": "https://data.geopf.fr/altimetrie/1.0/calcul/alti/rest/elevation.json",
+  "requests_responses": [
+    {
+      "request": "costa-ground/00000.request.json.gz",
+      "response": "costa-ground/00000.response.json.gz",
+      "response_sha256": "d493f08b322479dfece1c0d1fe12e2b2d628cfb5c76251969232fc8598dbfb7d",
+      "request_sha256": "b1357c93e5e5fc418272d66fe4da5c92f5c18622bdead295fc67bf015e889fe2"
+    },
+    {
+      "request": "costa-ground/00100.request.json.gz",
+      "response": "costa-ground/00100.response.json.gz",
+      "response_sha256": "ea657a84184c9525a0ff805f948dd6ee0943f55418d65b7af0e180189512e96d",
+      "request_sha256": "9da86365ebe119935025545eb29e7abb0a616d0239e27aa94749897de78ef2f3"
+    },
+    {
+      "request": "costa-ground/00200.request.json.gz",
+      "response": "costa-ground/00200.response.json.gz",
+      "response_sha256": "330101bef5fe5b48b749af6d5886448859613921e02c6d513a4d617a340c3c62",
+      "request_sha256": "50a55947aa3d943103153b32e9fc2497dfdd93b5a2abaadffa77ecff449460be"
+    },
+    {
+      "request": "costa-ground/00300.request.json.gz",
+      "response": "costa-ground/00300.response.json.gz",
+      "response_sha256": "21fa9fbece549a5fa2f82a5da84336a5233709d5768baf31cef3952391e91cf7",
+      "request_sha256": "0a6b1be6303d9ac1a1e9c5e594680c7f665f328f27fbaffb947bb07800d146ec"
+    },
+    {
+      "request": "costa-ground/00400.request.json.gz",
+      "response": "costa-ground/00400.response.json.gz",
+      "response_sha256": "cde4b2cfcdc84570fe90672ac6f885e3bb8e80da8ae709ac8cdea2bd12abe543",
+      "request_sha256": "a45332c19d9beb4121590f758e38eb9bedc1902c13df36306d98477234252954"
+    },
+    {
+      "request": "costa-ground/00500.request.json.gz",
+      "response": "costa-ground/00500.response.json.gz",
+      "response_sha256": "3a3f79221a254b955ec1415f3ae9d320f2c8f1523f83c5d08c5c1bcf8b026201",
+      "request_sha256": "707e7066c3e0369f509ceefaccad2a189a6bd610b47edc53c689c7382bb0ff9b"
+    },
+    {
+      "request": "costa-ground/00600.request.json.gz",
+      "response": "costa-ground/00600.response.json.gz",
+      "response_sha256": "e8c5c0fdd56048bc3bb4609b262441763d1755f591e63ce802f69226643358c8",
+      "request_sha256": "6e80a58352847ef8f7172caa61a4f31936b5ba1c4bcf6a6381ee4122e8dd1f3d"
+    },
+    {
+      "request": "costa-ground/00700.request.json.gz",
+      "response": "costa-ground/00700.response.json.gz",
+      "response_sha256": "9cb9a5e699065ffd40b1d20a76384665891fc2fec4e49bee56683b1f9ced2c95",
+      "request_sha256": "449298bee69de6b57f154db6376236ec81c56070d3ee7bbd95ed00297476c232"
+    },
+    {
+      "request": "costa-ground/00800.request.json.gz",
+      "response": "costa-ground/00800.response.json.gz",
+      "response_sha256": "cf45d8c3f1a60d3b36f9786f32c09fb2610c830a0279f57d38a27e254a708c78",
+      "request_sha256": "4e1964309804ba5bc16ead98af2e31f0a1f88fb28e93d9865b8a2cd2e6f96f18"
+    },
+    {
+      "request": "costa-ground/00900.request.json.gz",
+      "response": "costa-ground/00900.response.json.gz",
+      "response_sha256": "08b7c65a13054d4878e062f5bfee30aa58566db182dc9431249217d8bd71a21d",
+      "request_sha256": "36137e34a3cf9629c43dfac806f97fdb5e2594b107c701eae5351762557cd94a"
+    },
+    {
+      "request": "costa-ground/01000.request.json.gz",
+      "response": "costa-ground/01000.response.json.gz",
+      "response_sha256": "b5c389086c7be10633ad32e7077ed9963ae2b2f2a2575406b9ab28df58fba50a",
+      "request_sha256": "8f96837ab420a58f0d7a70252c632930cf7d921146c9a3188503f445ee15e11c"
+    },
+    {
+      "request": "costa-ground/01100.request.json.gz",
+      "response": "costa-ground/01100.response.json.gz",
+      "response_sha256": "8d6eb94ff23dc4e4b3dd290302c8e238c17f01eea394193172235d510836efeb",
+      "request_sha256": "9a1adf262d1ea069870cc21e957160ae918651cae416cdff5c787576b8468637"
+    },
+    {
+      "request": "costa-ground/01200.request.json.gz",
+      "response": "costa-ground/01200.response.json.gz",
+      "response_sha256": "b28ef5cfe8b2417915ef8b41198d25553aa7426058e2a48d01f59589f566d960",
+      "request_sha256": "351bd49a40a72e8081c8f562679d94a31d04b4d3878676eb325471307ce0ef9f"
+    },
+    {
+      "request": "costa-ground/01300.request.json.gz",
+      "response": "costa-ground/01300.response.json.gz",
+      "response_sha256": "463ce8817f44335619338c7c65904ece34d53c0b49b1f5a8c197e575435e22b4",
+      "request_sha256": "c51fa0feac640fd95bc877d6ef670e3f10e67a3b305b2113cdd33728b63070ae"
+    },
+    {
+      "request": "costa-ground/01400.request.json.gz",
+      "response": "costa-ground/01400.response.json.gz",
+      "response_sha256": "e1ceadd4c6a5ae9218e2838ea31d57aeacc38376b5d04b3e288dc91d69aa66c6",
+      "request_sha256": "98dd2b89d4859dd282db0eb856b59ca2ed4f3800fb748e8581b58cc91ef45c6c"
+    },
+    {
+      "request": "costa-ground/01500.request.json.gz",
+      "response": "costa-ground/01500.response.json.gz",
+      "response_sha256": "07843504371911a492314435363771d1edc3233dcc566ae6ff339ce74e8e44ee",
+      "request_sha256": "e6639d900f2babe221ee3aa1faefacea030dd19bd165d96f31ee5d18576a7876"
+    },
+    {
+      "request": "costa-ground/01600.request.json.gz",
+      "response": "costa-ground/01600.response.json.gz",
+      "response_sha256": "c84522f00c4a57260f173c94d922e3aff2d842e1eed015ba03b22b7a55a13554",
+      "request_sha256": "2700a1f4c566956d42b927b9d3b8ded05693105d541f47ff3c64e35598de996f"
+    }
+  ],
+  "source_observation_count": 1632,
+  "uniform_scale": 1.0099320735128836,
+  "origin": {
+    "latitude": 43.7346446387306,
+    "longitude": 7.4213359272073856,
+    "meaning": "Local source origin at the point on the loop nearest the venue coordinate, after rotation to the start."
+  },
+  "relative_datum_m": 1.5128994113,
+  "source_grid_frame": "Current registered Monaco source east/north; unchanged datum.",
+  "sample_interval_m": 2.0,
+  "limitations": "Sample interval is not source accuracy. Individual measured/accuracy/nodata fields remain in original responses. Local building base/floor thresholds only; racing road and native terrain are unchanged.",
+  "licence": "Licence Ouverte / Open Licence2.0, IGN credit retained",
+  "grid_file": "costa-ground-grid.json",
+  "grid_sha256": "93d65b3ab96c5586fe44516b7c034fd872129969654f1b030f8d1dde98388bbe",
+  "precision": "The provider reports variable accuracy. Literal per-node acc and measures are preserved;2m sampling does not imply2m or finer accuracy.",
+  "request_response_hash_semantics": "response_sha256 identifies the literal decompressed JSON response bytes. Paths end.gz only to reduce storage."
+}

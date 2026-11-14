@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-14",
+  "scope": "Only Casa Mia 94399990 and Villa Marie Antoinette 94401978. Four actual roof components replace the former generic constant-height ordinary frontages.",
+  "geometry_source": {
+    "publisher": "IGN BDTopo V3 via Geoplateforme WFS",
+    "raw_file": "pending-hill-properties/ign-local-buildings.json.gz",
+    "raw_sha256_uncompressed": "4280d96d41303dbb53a5bb11f6a0b8a9faf05c6da9933cdc35a12aef0df4dd7c",
+    "request_file": "pending-hill-properties/ign-local-buildings-request.json",
+    "feature_ids": [
+      "BATIMENT0000000074074383",
+      "BATIMENT0000000074074384",
+      "BATIMENT0000000074074428",
+      "BATIMENT0000000074074453"
+    ],
+    "retained": "Literal3D roof outline coordinates and their separate source ground/maximum-roof metadata. Component4383 is split along the photographed lower porch chord, with upper duplicated seam corners reconstructed from adjacent main-eave values.",
+    "plan_precision_m": 2.5,
+    "height_precision_m": 1.5,
+    "licence": "Licence Ouverte/Open Licence2.0",
+    "licence_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence/"
+  },
+  "ground_body_source": "OpenStreetMap contributors,ODbL1.0,retained buildings.osm.json.gz. Actual mapped ground-body intersection is separate from the larger measured roof envelope.",
+  "ground_threshold_source": "costa-ground-source.json;1,632 raw 2 m RGE values with literal response accuracy/measures. Existing 1.5128994113 m relative datum retained. Sample spacing is not accuracy.",
+  "primary_visual_sources": [
+    {
+      "publisher": "Les Ballets de Monte-Carlo,property operator",
+      "page": "https://www.balletsdemontecarlo.com/fr/groupe/presentation",
+      "image": "https://www.balletsdemontecarlo.com/sites/default/files/styles/page_diaporama/public/cover/av_de_la_costa_05_villa_casa_mia_002_0.jpg?itok=U5rmFLY7",
+      "image_sha256": "06769b2e02e65d80402df0bc648132e07a35b554a31cc99594321a0017e395e4",
+      "copyright": "\u00a9AB, Les Ballets de Monte-Carlo. Review only, no game texture reuse.",
+      "observed": "Pink plaster villa,rough pale-stone lower gallery,paired arched upper openings,deep three-arch porch with cylindrical columns/lattice balustrade,deep dark eaves and terracotta roof."
+    },
+    {
+      "publisher": "DSN, Gouvernement Princier de Monaco",
+      "service": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer",
+      "year": 2019,
+      "rights": "Review only. No image pixels or textures are shipped. Open IGN/OSM data supplies source geometry.",
+      "tiles": [
+        {
+          "file": "orthophoto2019-l8-r796835-c680971.jpg",
+          "url": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer/tile/8/796835/680971",
+          "sha256": "41ec82e39f245bde2991d94ab95343c11179ca66efdd510eb3a591069f985c9c",
+          "bytes": 65547,
+          "bbox_3944": [
+            2055922.3859114423,
+            3180426.924053848,
+            2055976.5726864785,
+            3180481.110828884
+          ]
+        },
+        {
+          "file": "orthophoto2019-l8-r796835-c680972.jpg",
+          "url": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer/tile/8/796835/680972",
+          "sha256": "3d97d3b4fe136829c8c0f87341815af566ce9efb9c9dda43d1f5444599a695d6",
+          "bytes": 77050,
+          "bbox_3944": [
+            2055976.5726864785,
+            3180426.924053848,
+            2056030.759461522,
+            3180481.110828884
+          ]
+        },
+        {
+          "file": "orthophoto2019-l8-r796835-c680973.jpg",
+          "url": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer/tile/8/796835/680973",
+          "sha256": "e456d43026377c2a2ca52800610b75d80294f75ee1237dd48ba732091416b63d",
+          "bytes": 71014,
+          "bbox_3944": [
+            2056030.759461522,
+            3180426.924053848,
+            2056084.9462365657,
+            3180481.110828884
+          ]
+        },
+        {
+          "file": "orthophoto2019-l8-r796836-c680971.jpg",
+          "url": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer/tile/8/796836/680971",
+          "sha256": "13da4a6b30f4bb356e0c516f9630486facc756abdee6390231d2f5a4776fb2e3",
+          "bytes": 73884,
+          "bbox_3944": [
+            2055922.3859114423,
+            3180372.737278804,
+            2055976.5726864785,
+            3180426.924053848
+          ]
+        },
+        {
+          "file": "orthophoto2019-l8-r796836-c680972.jpg",
+          "url": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer/tile/8/796836/680972",
+          "sha256": "f8171280685bb48fb5b9d7c6e7a2c518dc00bb00cdc469c92a404003ea237bff",
+          "bytes": 75788,
+          "bbox_3944": [
+            2055976.5726864785,
+            3180372.737278804,
+            2056030.759461522,
+            3180426.924053848
+          ]
+        },
+        {
+          "file": "orthophoto2019-l8-r796836-c680973.jpg",
+          "url": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer/tile/8/796836/680973",
+          "sha256": "b005fa76e85faebee12efe9a56dd620f538ad1b2979c8be89897df6084c6392e",
+          "bytes": 71128,
+          "bbox_3944": [
+            2056030.759461522,
+            3180372.737278804,
+            2056084.9462365657,
+            3180426.924053848
+          ]
+        },
+        {
+          "file": "orthophoto2019-l8-r796837-c680971.jpg",
+          "url": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer/tile/8/796837/680971",
+          "sha256": "8eebd066f732dadd835cfb923a1f8d2515520c44cab02edd0cb819a3e1533f50",
+          "bytes": 63825,
+          "bbox_3944": [
+            2055922.3859114423,
+            3180318.5505037606,
+            2055976.5726864785,
+            3180372.737278804
+          ]
+        },
+        {
+          "file": "orthophoto2019-l8-r796837-c680972.jpg",
+          "url": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer/tile/8/796837/680972",
+          "sha256": "fb23ed7287521b43c80359b0886135411094def745312ec19ab3888a2403f532",
+          "bytes": 63216,
+          "bbox_3944": [
+            2055976.5726864785,
+            3180318.5505037606,
+            2056030.759461522,
+            3180372.737278804
+          ]
+        },
+        {
+          "file": "orthophoto2019-l8-r796837-c680973.jpg",
+          "url": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer/tile/8/796837/680973",
+          "sha256": "edef9e14c2f61cf8c75e67f15f14b88308bde50e2da7e191696d00993db1a936",
+          "bytes": 64620,
+          "bbox_3944": [
+            2056030.759461522,
+            3180318.5505037606,
+            2056084.9462365657,
+            3180372.737278804
+          ]
+        }
+      ],
+      "observed": "Separate hipped main roof with an inset gray cap, a low porch, a west wing and an elongated east wing. Terraced planting and stairs occupy the garden in front of the villa."
+    },
+    {
+      "publisher": "Direction de la Prospective,de l\u2019Urbanisme etde la Mobilit\u00e9,Gouvernement Princier",
+      "url": "https://documents.gouv.mc/www/dpum/plans/monte-carlo/PU-C3-MCO-Z1-D4.pdf",
+      "title": "PU-C3-MCO-Z1-D4,landscape andheritage plan,1:500,2021-02-25",
+      "sha256": "7f080aa5557163b92f25c85cb8c71c979b26049c8c17f3fc3464bae5aef96caf",
+      "observed": "Casa Mia core and separate lower wing,stairs and gardenJ1. This regulatory plan indicates parcel context; proposed garden/height rules are not treated as a completed construction survey."
+    },
+    {
+      "publisher": "Conseil Communal de Monaco",
+      "url": "https://www.vivremaville.mc/seances-publiques/session-ordinaire-611e53ac77010",
+      "observed": "Construction within Casa Mia garden is conditional on restoring its landscape andequivalent tree count. No above-ground building is invented from the proposed underground dance-hall volume."
+    }
+  ],
+  "reconstruction_estimates": {
+    "roof_hips": "Insets 4.2/1.5/3.4/2.5 m for core/west/east/Antoinette are metric architectural estimates within actual source outlines. Hipped tile bands andgray core cap follow primary imagery; exact internal ridges are unmeasured. Source peak fields bound the reconstructed caps.",
+    "visible_storeys": "Casa core has three photographed upper rows,3.6 m reconstructed floor pitch with40.5 m absolute lower porch deck. Other components use three conservative 3.2/3.4 m upper rows within measured roofs; exact basement/storey layouts remain unmeasured. No global minimum-terrain roof placement is used.",
+    "porch": "Three actual photographed open upper/lower arches;4 m gallery depth/height, columns 0.22 m radius,arch rise 0.8/0.85 m andlattice divisions 0.3 m are explicit metric estimates. Deck/support footprints stay within the actual mapped property.",
+    "materials": "Existing original pink plaster,limestone,terracotta,timber and neutral glass materials. Review photographs are never used as texture assets."
+  },
+  "preservation": "Native racing road,survey/control profiles,terrain.bin,vehicle tuning and camera unchanged. Existing terrain is not flattened or recolored to hide the hill. Source-qualified land-cover work is a separate follow-up.",
+  "remaining_limits": [
+    "Rose de France has conflicting partial source heights and is unchanged.",
+    "The2019 orthophoto and owner photograph do not establish the supplied edited clip\u2019s precise season;the terrace/roof interpretation is bounded accordingly.",
+    "The source geometry does not survey openings,balustrades,hip ridges,materials or basement floor elevations.",
+    "The inner west-roof aerial detail may be a lightwell/skylight;no unsupported courtyard hole is cut from the literal IGN component."
+  ]
+}

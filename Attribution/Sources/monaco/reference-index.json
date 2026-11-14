@@ -11,7 +11,8 @@
     {
       "time_s": 97.9,
       "reviewed": true,
-      "notes": "Pit straight and Sainte-D\u00e9vote: Stands and stone/pink apartment tiers frame the uphill opening. Pit/service bars, marina edge, Armco and high mesh fence. Sainte-D\u00e9vote needs its opening/runoff access, not a solid urban wall."
+      "notes": "Qualifying-results menu,not a circuit view. The former pit/Sainte-D\u00e9vote label was incorrect andmust not qualify local buildings orland cover.",
+      "valid_as_circuit_reference": false
     },
     {
       "time_s": 727.19,
@@ -583,5 +584,6 @@
       "1184-1186 s jumps from Mirabeau Bas to the harbour straight.",
       "A frozen sector split such as 19.921 is not a running lap clock."
     ]
-  }
+  },
+  "costa_property_correction": "architecture/costa-properties-provenance.json"
 }

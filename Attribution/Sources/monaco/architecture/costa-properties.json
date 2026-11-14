@@ -1,0 +1,272 @@
+{
+  "uniform_scale": 1.0099320735128836,
+  "ground_grid_file": "architecture/costa-ground-grid.json",
+  "components": [
+    {
+      "osm_id": 94399990,
+      "name": "Casa Mia core and open porch",
+      "source_id": "BATIMENT0000000074074383",
+      "style": "casa_core",
+      "outer": [
+        [
+          7.42165583,
+          43.73769372
+        ],
+        [
+          7.42181659,
+          43.73771513
+        ],
+        [
+          7.42181083,
+          43.73775321
+        ],
+        [
+          7.42190729,
+          43.73776281
+        ],
+        [
+          7.42189495,
+          43.73784443
+        ],
+        [
+          7.42184864,
+          43.73787245
+        ],
+        [
+          7.42176076,
+          43.73792559
+        ],
+        [
+          7.4216628,
+          43.73792867
+        ],
+        [
+          7.42160393,
+          43.73790673
+        ],
+        [
+          7.42152862,
+          43.73781696
+        ],
+        [
+          7.42156958,
+          43.73771976
+        ],
+        [
+          7.4216478,
+          43.73773461
+        ],
+        [
+          7.42165583,
+          43.73769372
+        ]
+      ],
+      "roof_outline_m": [
+        44.1,
+        45.1,
+        46.9,
+        52,
+        51.9,
+        51.9,
+        52.2,
+        52.4,
+        52.7,
+        52.5,
+        51.3,
+        47.6,
+        44.1
+      ],
+      "ground_m": 32,
+      "roof_peak_m": 54.6,
+      "roof_inset_m": 4.2,
+      "upper_floor_base_m": 40.5,
+      "upper_floor_height_m": 3.6,
+      "upper_floors": 3,
+      "plan_precision_m": 2.5,
+      "height_precision_m": 1.5,
+      "roof_step": {
+        "start_vertex": 2,
+        "end_vertex": 11,
+        "lower_endpoint_m": [
+          46.9,
+          47.6
+        ],
+        "upper_endpoint_m": [
+          52.0,
+          51.3
+        ],
+        "seam": [],
+        "source_note": "The original lower C/L source corners remain46.9/47.6m. The photographed separate porch is partitioned along their chord; upper coincident corners are reconstructed using adjacent measured main-eave52.0/51.3m. Roofsplit is architectural reconstruction, not an additional survey seam."
+      }
+    },
+    {
+      "osm_id": 94399990,
+      "name": "Casa Mia west wing",
+      "source_id": "BATIMENT0000000074074384",
+      "style": "casa_west",
+      "outer": [
+        [
+          7.42143651,
+          43.73771886
+        ],
+        [
+          7.42144734,
+          43.73764992
+        ],
+        [
+          7.421363,
+          43.73763623
+        ],
+        [
+          7.42134268,
+          43.73761452
+        ],
+        [
+          7.42136986,
+          43.73749986
+        ],
+        [
+          7.42159348,
+          43.73753043
+        ],
+        [
+          7.42157612,
+          43.73761134
+        ],
+        [
+          7.42158942,
+          43.73763874
+        ],
+        [
+          7.42155991,
+          43.73765887
+        ],
+        [
+          7.42153694,
+          43.73769946
+        ],
+        [
+          7.42153104,
+          43.73773575
+        ],
+        [
+          7.42143651,
+          43.73771886
+        ]
+      ],
+      "roof_outline_m": [
+        37.5,
+        37.1,
+        37,
+        36.5,
+        36.7,
+        36.7,
+        36.5,
+        36.5,
+        36.5,
+        37.5,
+        37.7,
+        37.5
+      ],
+      "ground_m": 18.8,
+      "roof_peak_m": 38.2,
+      "roof_inset_m": 1.5,
+      "upper_floor_base_m": 27.5,
+      "upper_floor_height_m": 3.2,
+      "upper_floors": 3,
+      "plan_precision_m": 2.5,
+      "height_precision_m": 1.5
+    },
+    {
+      "osm_id": 94399990,
+      "name": "Casa Mia east wing",
+      "source_id": "BATIMENT0000000074074428",
+      "style": "casa_east",
+      "outer": [
+        [
+          7.42195972,
+          43.73773364
+        ],
+        [
+          7.42191718,
+          43.73772997
+        ],
+        [
+          7.42196169,
+          43.73758215
+        ],
+        [
+          7.42220776,
+          43.73762983
+        ],
+        [
+          7.42219574,
+          43.73766727
+        ],
+        [
+          7.42195972,
+          43.73773364
+        ]
+      ],
+      "roof_outline_m": [
+        55.2,
+        55.3,
+        54.3,
+        54,
+        54,
+        55.2
+      ],
+      "ground_m": 25.8,
+      "roof_peak_m": 55.7,
+      "roof_inset_m": 3.4,
+      "upper_floor_base_m": 43.8,
+      "upper_floor_height_m": 3.4,
+      "upper_floors": 3,
+      "plan_precision_m": 2.5,
+      "height_precision_m": 1.5
+    },
+    {
+      "osm_id": 94401978,
+      "name": "Villa Marie Antoinette",
+      "source_id": "BATIMENT0000000074074453",
+      "style": "antoinette",
+      "outer": [
+        [
+          7.42128512,
+          43.73791518
+        ],
+        [
+          7.42128951,
+          43.73777891
+        ],
+        [
+          7.42145921,
+          43.73778733
+        ],
+        [
+          7.42144781,
+          43.73792929
+        ],
+        [
+          7.42128512,
+          43.73791518
+        ]
+      ],
+      "roof_outline_m": [
+        56.9,
+        54.8,
+        54.8,
+        55.1,
+        56.9
+      ],
+      "ground_m": 39,
+      "roof_peak_m": 56.9,
+      "roof_inset_m": 2.5,
+      "upper_floor_base_m": 44.6,
+      "upper_floor_height_m": 3.4,
+      "upper_floors": 3,
+      "plan_precision_m": 2.5,
+      "height_precision_m": 1.5
+    }
+  ]
+}

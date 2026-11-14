@@ -80,3 +80,29 @@ class RascasseFrontage:
     body_search_width_m: FiniteFloat = 2.5
     street_threshold_sample_distance_m: FiniteFloat = 2.5
     forecourt_width_m: FiniteFloat = 6.0
+
+
+@dataclass(frozen=True)
+class CostaComponent:
+    osm_id: int
+    name: str
+    source_id: str
+    style: Literal['casa_core', 'casa_west', 'casa_east', 'antoinette']
+    outer: list[tuple[FiniteFloat, FiniteFloat]]
+    roof_outline_m: list[FiniteFloat]
+    ground_m: FiniteFloat
+    roof_peak_m: FiniteFloat
+    roof_inset_m: FiniteFloat
+    upper_floor_base_m: FiniteFloat
+    upper_floor_height_m: FiniteFloat
+    upper_floors: int
+    plan_precision_m: FiniteFloat
+    height_precision_m: FiniteFloat
+    roof_step: PropertyRoofStep | None = None
+
+
+@dataclass(frozen=True)
+class CostaArchitecture:
+    uniform_scale: FiniteFloat
+    ground_grid_file: str
+    components: list[CostaComponent]
