@@ -1,0 +1,46 @@
+{
+  "controls_m": [
+    [
+      2347.833,
+      15.96
+    ],
+    [
+      2351.839,
+      15.943
+    ],
+    [
+      2355.846,
+      15.925
+    ],
+    [
+      2359.852,
+      15.856
+    ],
+    [
+      2363.859,
+      15.772
+    ],
+    [
+      2367.866,
+      15.604
+    ],
+    [
+      2371.872,
+      15.413
+    ],
+    [
+      2375.879,
+      15.105
+    ],
+    [
+      2379.885,
+      14.759
+    ],
+    [
+      2383.892,
+      14.302
+    ]
+  ],
+  "source": "t11-width-evidence.json retained native width before legal-edge correction",
+  "role": "Locates the unchanged outer paving across the2350\u20132380m runoff overlap. Not a new surveyed dimension."
+}

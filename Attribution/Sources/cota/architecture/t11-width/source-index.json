@@ -1,0 +1,292 @@
+[
+  {
+    "station_m": 2200,
+    "native_road": {
+      "station": "2199.95068",
+      "x": "1459.11926",
+      "y": "531.726746",
+      "z": "13.1152592",
+      "tx": "0.636571467",
+      "ty": "0.771217704",
+      "half_width": "8",
+      "bank": "0",
+      "left_shoulder": "12",
+      "right_shoulder": "12"
+    },
+    "wgs84": [
+      -97.62601265021505,
+      30.137565209844407
+    ],
+    "tile_zxy": [
+      19,
+      119965,
+      216076
+    ],
+    "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119965",
+    "file": "Attribution/Sources/cota/architecture/t11-width/tile-19-216076-119965.jpg",
+    "bytes": 15256,
+    "sha256": "7496f3f1c39ccfb2361ebe0f7d12db5808b02b14851c877e7a8e65e0629252bc",
+    "role": "Private source observation; legal edges require manual qualification. Source epoch and image registration accuracy unverified."
+  },
+  {
+    "station_m": 2220,
+    "native_road": {
+      "station": "2220.14014",
+      "x": "1471.9718",
+      "y": "547.296814",
+      "z": "12.5784168",
+      "tx": "0.636511803",
+      "ty": "0.771266878",
+      "half_width": "8",
+      "bank": "0",
+      "left_shoulder": "12",
+      "right_shoulder": "12"
+    },
+    "wgs84": [
+      -97.62587927663643,
+      30.137704949378286
+    ],
+    "tile_zxy": [
+      19,
+      119966,
+      216076
+    ],
+    "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119966",
+    "file": "Attribution/Sources/cota/architecture/t11-width/tile-19-216076-119966.jpg",
+    "bytes": 14615,
+    "sha256": "13564113391b587f96acbf2928a9a6151ff9aa599aa1dc8caa0b64bfee99f2f9",
+    "role": "Private source observation; legal edges require manual qualification. Source epoch and image registration accuracy unverified."
+  },
+  {
+    "station_m": 2240,
+    "native_road": {
+      "station": "2240.3291",
+      "x": "1484.82422",
+      "y": "562.866333",
+      "z": "12.2431774",
+      "tx": "0.636571467",
+      "ty": "0.771217704",
+      "half_width": "8",
+      "bank": "0",
+      "left_shoulder": "12",
+      "right_shoulder": "12"
+    },
+    "wgs84": [
+      -97.62574590430306,
+      30.137844683984955
+    ],
+    "tile_zxy": [
+      19,
+      119966,
+      216076
+    ],
+    "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119966",
+    "file": "Attribution/Sources/cota/architecture/t11-width/tile-19-216076-119966.jpg",
+    "bytes": 14615,
+    "sha256": "13564113391b587f96acbf2928a9a6151ff9aa599aa1dc8caa0b64bfee99f2f9",
+    "role": "Private source observation; legal edges require manual qualification. Source epoch and image registration accuracy unverified."
+  },
+  {
+    "station_m": 2260,
+    "native_road": {
+      "station": "2259.84546",
+      "x": "1497.24817",
+      "y": "577.917236",
+      "z": "11.9547539",
+      "tx": "0.636466742",
+      "ty": "0.77130419",
+      "half_width": "8",
+      "bank": "0",
+      "left_shoulder": "5.46600008",
+      "right_shoulder": "12"
+    },
+    "wgs84": [
+      -97.62561697829528,
+      30.13797976407386
+    ],
+    "tile_zxy": [
+      19,
+      119966,
+      216076
+    ],
+    "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216076/119966",
+    "file": "Attribution/Sources/cota/architecture/t11-width/tile-19-216076-119966.jpg",
+    "bytes": 14615,
+    "sha256": "13564113391b587f96acbf2928a9a6151ff9aa599aa1dc8caa0b64bfee99f2f9",
+    "role": "Private source observation; legal edges require manual qualification. Source epoch and image registration accuracy unverified."
+  },
+  {
+    "station_m": 2280,
+    "native_road": {
+      "station": "2280.03467",
+      "x": "1510.10059",
+      "y": "593.487305",
+      "z": "11.8424873",
+      "tx": "0.636544883",
+      "ty": "0.771239698",
+      "half_width": "8",
+      "bank": "0",
+      "left_shoulder": "6.8045249",
+      "right_shoulder": "12"
+    },
+    "wgs84": [
+      -97.62548360596193,
+      30.138119503616718
+    ],
+    "tile_zxy": [
+      19,
+      119966,
+      216075
+    ],
+    "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216075/119966",
+    "file": "Attribution/Sources/cota/architecture/t11-width/tile-19-216075-119966.jpg",
+    "bytes": 15355,
+    "sha256": "5984efd19d3ec586cc1003e331bc82bff4e972ef8933b6278378357f0b424e76",
+    "role": "Private source observation; legal edges require manual qualification. Source epoch and image registration accuracy unverified."
+  },
+  {
+    "station_m": 2300,
+    "native_road": {
+      "station": "2300.22388",
+      "x": "1522.95276",
+      "y": "609.057068",
+      "z": "11.8900557",
+      "tx": "0.636559427",
+      "ty": "0.771227717",
+      "half_width": "7.9994998",
+      "bank": "0",
+      "left_shoulder": "12",
+      "right_shoulder": "14.7869997"
+    },
+    "wgs84": [
+      -97.62535023622287,
+      30.138259240413255
+    ],
+    "tile_zxy": [
+      19,
+      119966,
+      216075
+    ],
+    "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216075/119966",
+    "file": "Attribution/Sources/cota/architecture/t11-width/tile-19-216075-119966.jpg",
+    "bytes": 15355,
+    "sha256": "5984efd19d3ec586cc1003e331bc82bff4e972ef8933b6278378357f0b424e76",
+    "role": "Private source observation; legal edges require manual qualification. Source epoch and image registration accuracy unverified."
+  },
+  {
+    "station_m": 2320,
+    "native_road": {
+      "station": "2319.74023",
+      "x": "1535.37708",
+      "y": "624.108032",
+      "z": "12.0762482",
+      "tx": "0.63662225",
+      "ty": "0.771175802",
+      "half_width": "7.99900007",
+      "bank": "0",
+      "left_shoulder": "12",
+      "right_shoulder": "14.999465"
+    },
+    "wgs84": [
+      -97.62522130637552,
+      30.13839432104963
+    ],
+    "tile_zxy": [
+      19,
+      119966,
+      216075
+    ],
+    "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216075/119966",
+    "file": "Attribution/Sources/cota/architecture/t11-width/tile-19-216075-119966.jpg",
+    "bytes": 15355,
+    "sha256": "5984efd19d3ec586cc1003e331bc82bff4e972ef8933b6278378357f0b424e76",
+    "role": "Private source observation; legal edges require manual qualification. Source epoch and image registration accuracy unverified."
+  },
+  {
+    "station_m": 2340,
+    "native_road": {
+      "station": "2339.9292",
+      "x": "1548.22925",
+      "y": "639.677673",
+      "z": "12.4192648",
+      "tx": "0.636532784",
+      "ty": "0.771249592",
+      "half_width": "7.99580908",
+      "bank": "0",
+      "left_shoulder": "9.65699959",
+      "right_shoulder": "13.1999998"
+    },
+    "wgs84": [
+      -97.62508793663648,
+      30.138534056751233
+    ],
+    "tile_zxy": [
+      19,
+      119967,
+      216075
+    ],
+    "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216075/119967",
+    "file": "Attribution/Sources/cota/architecture/t11-width/tile-19-216075-119967.jpg",
+    "bytes": 14177,
+    "sha256": "0049554de72a3c63080179db801412997237fa7a4e00151630a74bf7bd8e509f",
+    "role": "Private source observation; legal edges require manual qualification. Source epoch and image registration accuracy unverified."
+  },
+  {
+    "station_m": 2360,
+    "native_road": {
+      "station": "2360.11865",
+      "x": "1561.07556",
+      "y": "655.252563",
+      "z": "12.9434967",
+      "tx": "0.636170924",
+      "ty": "0.771548212",
+      "half_width": "7.92520523",
+      "bank": "0",
+      "left_shoulder": "23.0499992",
+      "right_shoulder": "13.2290001"
+    },
+    "wgs84": [
+      -97.62495462770791,
+      30.138673839562
+    ],
+    "tile_zxy": [
+      19,
+      119967,
+      216074
+    ],
+    "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216074/119967",
+    "file": "Attribution/Sources/cota/architecture/t11-width/tile-19-216074-119967.jpg",
+    "bytes": 15243,
+    "sha256": "06d5202a846e4285f6b35bbe5acf213c2fa319201b66187e4633c8128f741b01",
+    "role": "Private source observation; legal edges require manual qualification. Source epoch and image registration accuracy unverified."
+  },
+  {
+    "station_m": 2380,
+    "native_road": {
+      "station": "2380.30762",
+      "x": "1573.92004",
+      "y": "670.828796",
+      "z": "13.5962257",
+      "tx": "0.636149883",
+      "ty": "0.771565437",
+      "half_width": "7.35540104",
+      "bank": "0",
+      "left_shoulder": "23.0499992",
+      "right_shoulder": "12.4205837"
+    },
+    "wgs84": [
+      -97.62482133776965,
+      30.138813634426032
+    ],
+    "tile_zxy": [
+      19,
+      119967,
+      216074
+    ],
+    "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/216074/119967",
+    "file": "Attribution/Sources/cota/architecture/t11-width/tile-19-216074-119967.jpg",
+    "bytes": 15243,
+    "sha256": "06d5202a846e4285f6b35bbe5acf213c2fa319201b66187e4633c8128f741b01",
+    "role": "Private source observation; legal edges require manual qualification. Source epoch and image registration accuracy unverified."
+  }
+]

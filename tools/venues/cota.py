@@ -1,13 +1,15 @@
 """COTA: rolling spectator hills, stadium stands and the red steel observation veil."""
 from __future__ import annotations
 
+import bisect
 import math
 from collections.abc import Iterator
 from itertools import pairwise
 
-from circuit_dataclasses import Point, RoadStation
+from circuit_dataclasses import Point, RoadStation, WidthControls
 from circuit_mesh import add
 from circuit_scene import CircuitScene
+from pydantic import TypeAdapter
 from shapely.geometry import Polygon, box
 from shapely.geometry.base import BaseGeometry
 from shapely.ops import triangulate, unary_union
@@ -253,7 +255,7 @@ def circuit_edges(scene: CircuitScene) -> None:
         scene.kerb(start, end, side, material='Red', alternate_material='White')
     island = t15_island(scene)
     for start, end, side, width, material in [(420, 640, 1, 25, 'Runoff'), (960, 1490, 1, 18, 'Runoff'), (1510, 1930, 1, 18, 'Runoff'), (2350, 2570, 1, 24, 'Runoff'), (3540, 3780, 1, 26, 'Runoff'), (3800, 4170, -1, 24, 'Runoff'), (4200, 4750, -1, 24, 'Runoff'), (4830, 5050, 1, 25, 'Runoff'), (5120, 5330, 1, 23, 'Runoff')]:
-        if start not in (3800, 4200):
+        if start not in (2350, 3800, 4200):
             scene.runoff(start, end, side, width, material)
             continue
         scene.surface_ranges.append({'type': 'runoff', 'start_m': start, 'end_m': end,
@@ -278,7 +280,7 @@ def circuit_edges(scene: CircuitScene) -> None:
                    apron_star(scene, 4153, -1, 13, 5.5)]
     for station in [4300, 4420, 4540, 4660]:
         star_shapes.append(apron_star(scene, station, -1, 12, 4.5))
-    paint_exclusion = unary_union([island, *star_shapes])
+    paint_exclusion = unary_union([island, *star_shapes, t11_approach_edges(scene)])
 
     for start, end, side, width in [(420, 640, 1, 25), (960, 1490, 1, 18),
                                      (1510, 1930, 1, 18), (2350, 2570, 1, 24),
@@ -298,6 +300,24 @@ def circuit_edges(scene: CircuitScene) -> None:
         paint_band(scene, start, end, side, width - 5.4, width - 4.4, 'White', paint_exclusion)
 
 
+def t11_approach_edges(scene: CircuitScene) -> BaseGeometry:
+    # The positive-side escape already supplies the base from2350m onward.
+    scene.runoff(2220, 2350, 1, 3.4, 'Runoff')
+    scene.runoff(2220, 2380, -1, 3.4, 'Runoff')
+    shapes: list[Polygon] = []
+    for side in (-1, 1):
+        scene.kerb(2220, 2380, side, width=.85, height=.045)
+        paint_band(scene, 2220, 2380, side, .99, 3.4, 'RunoffRed', Polygon())
+        shapes.extend(cell for cell, _sample in apron_cells(scene, 2220, 2380, side, .14, 3.4))
+    scene.landmarks.append({
+        'name': 'T11 approach legal edges and separate painted apron',
+        'start_m': 2220, 'end_m': 2380,
+        'source': 'architecture/t11-width/source-review.md and source-index.json',
+        'dimensions_status': 'Registered imagery supports an approximately13m legal span at2220–2340m, widening by2380m. Raised0.85m red/white curb and flat red apron reaching3.4m beyond the edge are reconstructed within approximately1m image/epoch uncertainty. Existing barrier corridor, centreline, elevation and banking are retained.',
+    })
+    return unary_union(shapes)
+
+
 def t15_island(scene: CircuitScene) -> Polygon:
     outline = []
     for station in range(4120, 4207, 2):
@@ -312,11 +332,25 @@ def t15_island(scene: CircuitScene) -> Polygon:
 
 def apron_cells(scene: CircuitScene, start: float, end: float, side: int,
                  inner: float, outer: float) -> Iterator[tuple[Polygon, RoadStation]]:
+    controls = []
+    if side == 1 and outer > 20 and start < 2380 and end > 2350:
+        controls = TypeAdapter(WidthControls).validate_json(
+            (scene.sources / 't11-retained-width.json').read_bytes()).controls_m
+
+    def reach(sample: RoadStation) -> float:
+        if not controls or not 2350 <= sample.station <= 2380:
+            return outer
+        index = bisect.bisect_right(controls, sample.station, key=lambda row: row[0]) - 1
+        a, b = controls[index:index + 2]
+        t = (sample.station - a[0]) / (b[0] - a[0])
+        return outer + (a[1] + (b[1] - a[1]) * t) / 2 - sample.half_width
+
     count = max(1, math.ceil((end - start) / 2))
     for i in range(count):
         a, b = scene.at(start + (end - start) * i / count), scene.at(start + (end - start) * (i + 1) / count)
+        outer_a, outer_b = reach(a), reach(b)
         points = [a.point(side * (a.half_width + inner)), b.point(side * (b.half_width + inner)),
-                  b.point(side * (b.half_width + outer)), a.point(side * (a.half_width + outer))]
+                  b.point(side * (b.half_width + outer_b)), a.point(side * (a.half_width + outer_a))]
         polygon = Polygon([p[:2] for p in points])
         if polygon.is_valid:
             yield polygon, a

@@ -16,6 +16,7 @@ constexpr float Units = 17.0f;
 constexpr float Kerb = 0.85f;
 #include "track_data/lasvegas_boundaries.inc"
 #include "track_data/malaysia_paving.inc"
+#include "track_data/cota_t11_paving.inc"
 
 Vec2 leftNormal(Vec2 tangent) { return {-tangent.y, tangent.x}; }
 
@@ -62,6 +63,17 @@ float circuitShoulderMeters(const TrackCatalogEntry& track, float station, bool 
                 width = std::max(width, zone.widthMeters - 0.95f);
             }
         }
+    }
+    if (track.id == TrackLayoutId::Cota && left && station >= 2350.0f && station <= 2380.0f) {
+        const auto next = std::upper_bound(std::begin(kCotaT11RetainedWidth),
+            std::end(kCotaT11RetainedWidth), station,
+            [](float distance, const TrackWidthPoint& point) { return distance < point.distanceMeters; });
+        const auto& a = *(next - 1);
+        const auto& b = *next;
+        const float t = (station - a.distanceMeters) / (b.distanceMeters - a.distanceMeters);
+        const float retainedWidth = a.roadWidthMeters + (b.roadWidthMeters - a.roadWidthMeters) * t;
+        // Narrowing the legal lane must retain the existing wide escape's outer edge.
+        width = std::max(width, 23.05f + (retainedWidth - sampleTrackWidthMeters(track, station)) * 0.5f);
     }
     return width;
 }
