@@ -1,0 +1,2638 @@
+{
+  "title": "Monaco west finite visible-surface polygons",
+  "status": "Source-qualified surface-role reconstruction with declared approximate edges. Height planes, native field, road and protection are preserved. Fresh native visual review remains required.",
+  "source": {
+    "orthophoto": "Monaco Government 2019 orthophoto, EPSG:3944, 0.105833545 m/pixel",
+    "tile_index": "build/reviews/resume-20261114/monaco/orthophoto-tiles.json",
+    "source_use": "Authoring observation only; no reference pixels are game textures.",
+    "primary_tile_service": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer",
+    "copyright": "DSN, Gouvernement Princier de Monaco",
+    "historical_review_input_sha256": "1fc7ba4c9082f595dda3a035ef6745f5136de13c3e81c0a93cbfb08eb972bc40"
+  },
+  "transform": {
+    "scene_origin_latitude": 43.7346446387306,
+    "scene_origin_longitude": 7.4213359272073856,
+    "scene_scale": 1.0099320735128836,
+    "method": "EPSG:3944 inverse Lambert conformal conic (GRS80; central meridian 3\u00b0, standard parallels 43.25\u00b0/44.75\u00b0, origin latitude 44\u00b0); resulting WGS84 transformed using CircuitScene.geo local tangent plane."
+  },
+  "limits": {
+    "digitized_edge_uncertainty_m": "approximately \u00b11m; shadows, tree crowns and orthophoto parallax obscure some boundaries",
+    "elevation": "No elevations are assigned. IGN RGE points vary by measurement source; the sampled 2m grid does not imply 2m accuracy.",
+    "layer": "Upper white cap/path and all roofs/buildings are excluded; the white/paved appearance over BATIMENT0000000074074420 is an elevated roof/deck, not ground proof.",
+    "usage": "Do not flatten, extend contact, move walls, or assign terrain beneath the held L terraces from these polygons."
+  },
+  "registration_checks": [
+    {
+      "ray": "ray1",
+      "source_pixel_approx": [
+        38.42,
+        412.87
+      ],
+      "projected_native_xy_m": [
+        -51.878,
+        382.224
+      ],
+      "ray_native_xy_m": [
+        -51.8783204,
+        382.224227
+      ],
+      "note": "Visual pixel pick; agreement checks transform only, not source accuracy."
+    },
+    {
+      "ray": "ray7",
+      "source_pixel_approx": [
+        88,
+        388
+      ],
+      "projected_native_xy_m": [
+        -46.452,
+        384.599
+      ],
+      "ray_native_xy_m": [
+        -46.4729892,
+        384.6276926
+      ],
+      "note": "Visual pixel pick; agreement checks transform only, not source accuracy."
+    },
+    {
+      "ray": "ray3",
+      "source_pixel_approx": [
+        389,
+        373
+      ],
+      "projected_native_xy_m": [
+        -20.143,
+        274.966
+      ],
+      "ray_native_xy_m": [
+        -20.1449443,
+        274.9574838
+      ],
+      "note": "Visual pixel pick; agreement checks transform only, not source accuracy."
+    }
+  ],
+  "candidate_regions": [
+    {
+      "id": "garden_lawn_west_of_pool",
+      "tile": "orthophoto2019-l8-r796835-c680971.jpg",
+      "role": "visible planted lawn and garden around the west side of the pool complex",
+      "class": "Ivy/Garden cover candidate",
+      "certainty": "source-visible vegetation; parcel edge is digitized",
+      "limit": "Pool and its coping lie at x\u22480\u201327 and are excluded. White access/path strip toward x\u2248140\u2013150 is excluded by the polygon edge. House/terrace north of y\u2248394 is excluded.",
+      "tile_sha256": "41ec82e39f245bde2991d94ab95343c11179ca66efdd510eb3a591069f985c9c",
+      "tile_bbox_epsg3944_m": [
+        2055922.3859114423,
+        3180426.924053848,
+        2055976.5726864785,
+        3180481.110828884
+      ],
+      "vertices": [
+        {
+          "pixel": [
+            28,
+            394
+          ],
+          "epsg3944": [
+            2055925.349,
+            3180439.412
+          ],
+          "wgs84": [
+            7.420684948,
+            43.73806293
+          ],
+          "native_xy_m": [
+            -52.881,
+            384.302
+          ]
+        },
+        {
+          "pixel": [
+            138,
+            394
+          ],
+          "epsg3944": [
+            2055936.991,
+            3180439.412
+          ],
+          "wgs84": [
+            7.420829264,
+            43.738057316
+          ],
+          "native_xy_m": [
+            -41.158,
+            383.671
+          ]
+        },
+        {
+          "pixel": [
+            141,
+            407
+          ],
+          "epsg3944": [
+            2055937.308,
+            3180438.037
+          ],
+          "wgs84": [
+            7.420832284,
+            43.738044797
+          ],
+          "native_xy_m": [
+            -40.912,
+            382.263
+          ]
+        },
+        {
+          "pixel": [
+            140,
+            468
+          ],
+          "epsg3944": [
+            2055937.203,
+            3180431.581
+          ],
+          "wgs84": [
+            7.420826679,
+            43.737986822
+          ],
+          "native_xy_m": [
+            -41.368,
+            375.745
+          ]
+        },
+        {
+          "pixel": [
+            129,
+            484
+          ],
+          "epsg3944": [
+            2055936.038,
+            3180429.887
+          ],
+          "wgs84": [
+            7.420811121,
+            43.737972164
+          ],
+          "native_xy_m": [
+            -42.631,
+            374.097
+          ]
+        },
+        {
+          "pixel": [
+            28,
+            484
+          ],
+          "epsg3944": [
+            2055925.349,
+            3180429.887
+          ],
+          "wgs84": [
+            7.420678613,
+            43.737977318
+          ],
+          "native_xy_m": [
+            -53.395,
+            374.677
+          ]
+        }
+      ]
+    },
+    {
+      "id": "garden_lawn_central_between_pools",
+      "tile": "orthophoto2019-l8-r796835-c680971.jpg",
+      "role": "visible lawn/planting between pool aprons",
+      "class": "Ivy/Garden cover candidate",
+      "certainty": "source-visible vegetation; parcel edge is digitized",
+      "limit": "Pool at x\u2248150\u2013175 and the central pale path at x\u2248282\u2013300 are excluded. Building and upper terrace are excluded.",
+      "tile_sha256": "41ec82e39f245bde2991d94ab95343c11179ca66efdd510eb3a591069f985c9c",
+      "tile_bbox_epsg3944_m": [
+        2055922.3859114423,
+        3180426.924053848,
+        2055976.5726864785,
+        3180481.110828884
+      ],
+      "vertices": [
+        {
+          "pixel": [
+            180,
+            395
+          ],
+          "epsg3944": [
+            2055941.436,
+            3180439.307
+          ],
+          "wgs84": [
+            7.420884296,
+            43.738054221
+          ],
+          "native_xy_m": [
+            -36.687,
+            383.323
+          ]
+        },
+        {
+          "pixel": [
+            280,
+            395
+          ],
+          "epsg3944": [
+            2055952.019,
+            3180439.307
+          ],
+          "wgs84": [
+            7.421015492,
+            43.738049118
+          ],
+          "native_xy_m": [
+            -26.03,
+            382.749
+          ]
+        },
+        {
+          "pixel": [
+            282,
+            467
+          ],
+          "epsg3944": [
+            2055952.231,
+            3180431.687
+          ],
+          "wgs84": [
+            7.421013048,
+            43.737980526
+          ],
+          "native_xy_m": [
+            -26.228,
+            375.038
+          ]
+        },
+        {
+          "pixel": [
+            275,
+            484
+          ],
+          "epsg3944": [
+            2055951.49,
+            3180429.887
+          ],
+          "wgs84": [
+            7.421002667,
+            43.737964713
+          ],
+          "native_xy_m": [
+            -27.072,
+            373.26
+          ]
+        },
+        {
+          "pixel": [
+            180,
+            484
+          ],
+          "epsg3944": [
+            2055941.436,
+            3180429.887
+          ],
+          "wgs84": [
+            7.420878031,
+            43.737969561
+          ],
+          "native_xy_m": [
+            -37.196,
+            373.805
+          ]
+        }
+      ]
+    },
+    {
+      "id": "garden_lawn_east_of_central_path",
+      "tile": "orthophoto2019-l8-r796835-c680971.jpg",
+      "role": "visible garden lawn immediately west of the eastern pool/deck",
+      "class": "Ivy/Garden cover candidate",
+      "certainty": "source-visible vegetation; parcel edge is digitized",
+      "limit": "The eastern pool and pale deck begin around x\u2248423 and are excluded. The path/dividing strip at x\u2248282\u2013300 and the building/terrace are excluded.",
+      "tile_sha256": "41ec82e39f245bde2991d94ab95343c11179ca66efdd510eb3a591069f985c9c",
+      "tile_bbox_epsg3944_m": [
+        2055922.3859114423,
+        3180426.924053848,
+        2055976.5726864785,
+        3180481.110828884
+      ],
+      "vertices": [
+        {
+          "pixel": [
+            302,
+            396
+          ],
+          "epsg3944": [
+            2055954.348,
+            3180439.201
+          ],
+          "wgs84": [
+            7.421044285,
+            43.738047044
+          ],
+          "native_xy_m": [
+            -23.691,
+            382.516
+          ]
+        },
+        {
+          "pixel": [
+            417,
+            396
+          ],
+          "epsg3944": [
+            2055966.518,
+            3180439.201
+          ],
+          "wgs84": [
+            7.421195161,
+            43.738041174
+          ],
+          "native_xy_m": [
+            -11.435,
+            381.856
+          ]
+        },
+        {
+          "pixel": [
+            418,
+            475
+          ],
+          "epsg3944": [
+            2055966.624,
+            3180430.84
+          ],
+          "wgs84": [
+            7.421190911,
+            43.737965975
+          ],
+          "native_xy_m": [
+            -11.78,
+            373.402
+          ]
+        },
+        {
+          "pixel": [
+            410,
+            484
+          ],
+          "epsg3944": [
+            2055965.778,
+            3180429.887
+          ],
+          "wgs84": [
+            7.421179782,
+            43.737957822
+          ],
+          "native_xy_m": [
+            -12.684,
+            372.485
+          ]
+        },
+        {
+          "pixel": [
+            302,
+            484
+          ],
+          "epsg3944": [
+            2055954.348,
+            3180429.887
+          ],
+          "wgs84": [
+            7.42103809,
+            43.737963335
+          ],
+          "native_xy_m": [
+            -24.194,
+            373.105
+          ]
+        }
+      ]
+    },
+    {
+      "id": "adjacent_enclosed_planted_courtyard",
+      "tile": "orthophoto2019-l8-r796835-c680972.jpg",
+      "role": "separate visible planted courtyard/garden on adjoining tile",
+      "class": "Ivy/Garden cover candidate",
+      "certainty": "vegetated courtyard is visible; exact parcel ownership is not asserted",
+      "limit": "Adjacent roof/building areas, the white service path, and the southern retaining boundary are outside this polygon. Do not join it to the west pool garden as one parcel.",
+      "tile_sha256": "3d97d3b4fe136829c8c0f87341815af566ce9efb9c9dda43d1f5444599a695d6",
+      "tile_bbox_epsg3944_m": [
+        2055976.5726864785,
+        3180426.924053848,
+        2056030.759461522,
+        3180481.110828884
+      ],
+      "vertices": [
+        {
+          "pixel": [
+            2,
+            369
+          ],
+          "epsg3944": [
+            2055976.784,
+            3180442.058
+          ],
+          "wgs84": [
+            7.421324322,
+            43.738061907
+          ],
+          "native_xy_m": [
+            -0.943,
+            384.187
+          ]
+        },
+        {
+          "pixel": [
+            54,
+            369
+          ],
+          "epsg3944": [
+            2055982.288,
+            3180442.058
+          ],
+          "wgs84": [
+            7.421392544,
+            43.738059253
+          ],
+          "native_xy_m": [
+            4.599,
+            383.888
+          ]
+        },
+        {
+          "pixel": [
+            88,
+            375
+          ],
+          "epsg3944": [
+            2055985.886,
+            3180441.423
+          ],
+          "wgs84": [
+            7.421436728,
+            43.73805181
+          ],
+          "native_xy_m": [
+            8.188,
+            383.052
+          ]
+        },
+        {
+          "pixel": [
+            116,
+            382
+          ],
+          "epsg3944": [
+            2055988.849,
+            3180440.682
+          ],
+          "wgs84": [
+            7.42147297,
+            43.738043722
+          ],
+          "native_xy_m": [
+            11.132,
+            382.142
+          ]
+        },
+        {
+          "pixel": [
+            151,
+            393
+          ],
+          "epsg3944": [
+            2055992.554,
+            3180439.518
+          ],
+          "wgs84": [
+            7.421518115,
+            43.738031472
+          ],
+          "native_xy_m": [
+            14.8,
+            380.765
+          ]
+        },
+        {
+          "pixel": [
+            185,
+            407
+          ],
+          "epsg3944": [
+            2055996.152,
+            3180438.037
+          ],
+          "wgs84": [
+            7.421561736,
+            43.738016419
+          ],
+          "native_xy_m": [
+            18.343,
+            379.073
+          ]
+        },
+        {
+          "pixel": [
+            190,
+            425
+          ],
+          "epsg3944": [
+            2055996.681,
+            3180436.132
+          ],
+          "wgs84": [
+            7.421567028,
+            43.737999041
+          ],
+          "native_xy_m": [
+            18.773,
+            377.119
+          ]
+        },
+        {
+          "pixel": [
+            175,
+            439
+          ],
+          "epsg3944": [
+            2055995.094,
+            3180434.65
+          ],
+          "wgs84": [
+            7.421546363,
+            43.73798649
+          ],
+          "native_xy_m": [
+            17.094,
+            375.708
+          ]
+        },
+        {
+          "pixel": [
+            143,
+            449
+          ],
+          "epsg3944": [
+            2055991.707,
+            3180433.592
+          ],
+          "wgs84": [
+            7.421503677,
+            43.737978611
+          ],
+          "native_xy_m": [
+            13.627,
+            374.822
+          ]
+        },
+        {
+          "pixel": [
+            102,
+            459
+          ],
+          "epsg3944": [
+            2055987.368,
+            3180432.533
+          ],
+          "wgs84": [
+            7.421449182,
+            43.737971191
+          ],
+          "native_xy_m": [
+            9.2,
+            373.988
+          ]
+        },
+        {
+          "pixel": [
+            57,
+            463
+          ],
+          "epsg3944": [
+            2055982.605,
+            3180432.11
+          ],
+          "wgs84": [
+            7.421389862,
+            43.737969683
+          ],
+          "native_xy_m": [
+            4.381,
+            373.819
+          ]
+        },
+        {
+          "pixel": [
+            2,
+            459
+          ],
+          "epsg3944": [
+            2055976.784,
+            3180432.533
+          ],
+          "wgs84": [
+            7.421317986,
+            43.737976295
+          ],
+          "native_xy_m": [
+            -1.457,
+            374.562
+          ]
+        }
+      ]
+    },
+    {
+      "id": "paved_private_access_around_ray3",
+      "tile": "orthophoto2019-l8-r796837-c680971.jpg",
+      "role": "small gray paved apron/circulation area around ray 3",
+      "class": "Paved ground candidate",
+      "certainty": "paving is clear; exact edge is digitized",
+      "limit": "Keep adjacent planted slope, house roofs, and the larger public road separate.",
+      "tile_sha256": "8eebd066f732dadd835cfb923a1f8d2515520c44cab02edd0cb819a3e1533f50",
+      "tile_bbox_epsg3944_m": [
+        2055922.3859114423,
+        3180318.5505037606,
+        2055976.5726864785,
+        3180372.737278804
+      ],
+      "vertices": [
+        {
+          "pixel": [
+            365,
+            369
+          ],
+          "epsg3944": [
+            2055961.015,
+            3180333.685
+          ],
+          "wgs84": [
+            7.421056757,
+            43.737095443
+          ],
+          "native_xy_m": [
+            -22.678,
+            275.532
+          ]
+        },
+        {
+          "pixel": [
+            376,
+            364
+          ],
+          "epsg3944": [
+            2055962.179,
+            3180334.214
+          ],
+          "wgs84": [
+            7.421071541,
+            43.737099637
+          ],
+          "native_xy_m": [
+            -21.477,
+            276.004
+          ]
+        },
+        {
+          "pixel": [
+            394,
+            362
+          ],
+          "epsg3944": [
+            2055964.084,
+            3180334.426
+          ],
+          "wgs84": [
+            7.421095297,
+            43.737100621
+          ],
+          "native_xy_m": [
+            -19.547,
+            276.114
+          ]
+        },
+        {
+          "pixel": [
+            408,
+            367
+          ],
+          "epsg3944": [
+            2055965.566,
+            3180333.896
+          ],
+          "wgs84": [
+            7.421113312,
+            43.737095151
+          ],
+          "native_xy_m": [
+            -18.084,
+            275.499
+          ]
+        },
+        {
+          "pixel": [
+            413,
+            374
+          ],
+          "epsg3944": [
+            2055966.095,
+            3180333.156
+          ],
+          "wgs84": [
+            7.421119379,
+            43.737088237
+          ],
+          "native_xy_m": [
+            -17.591,
+            274.722
+          ]
+        },
+        {
+          "pixel": [
+            409,
+            383
+          ],
+          "epsg3944": [
+            2055965.672,
+            3180332.203
+          ],
+          "wgs84": [
+            7.421113497,
+            43.73707988
+          ],
+          "native_xy_m": [
+            -18.069,
+            273.782
+          ]
+        },
+        {
+          "pixel": [
+            401,
+            389
+          ],
+          "epsg3944": [
+            2055964.825,
+            3180331.568
+          ],
+          "wgs84": [
+            7.42110258,
+            43.737074581
+          ],
+          "native_xy_m": [
+            -18.955,
+            273.187
+          ]
+        },
+        {
+          "pixel": [
+            389,
+            389
+          ],
+          "epsg3944": [
+            2055963.555,
+            3180331.568
+          ],
+          "wgs84": [
+            7.421086836,
+            43.737075193
+          ],
+          "native_xy_m": [
+            -20.234,
+            273.255
+          ]
+        },
+        {
+          "pixel": [
+            378,
+            384
+          ],
+          "epsg3944": [
+            2055962.391,
+            3180332.097
+          ],
+          "wgs84": [
+            7.421072757,
+            43.737080511
+          ],
+          "native_xy_m": [
+            -21.378,
+            273.853
+          ]
+        },
+        {
+          "pixel": [
+            370,
+            378
+          ],
+          "epsg3944": [
+            2055961.544,
+            3180332.732
+          ],
+          "wgs84": [
+            7.421062684,
+            43.737086626
+          ],
+          "native_xy_m": [
+            -22.196,
+            274.541
+          ]
+        }
+      ]
+    },
+    {
+      "id": "paved_circular_drive",
+      "tile": "orthophoto2019-l8-r796837-c680971.jpg",
+      "role": "curved paved private drive/court visible on the south-east side",
+      "class": "Paved ground candidate",
+      "certainty": "paved circulation is clear; boundary is digitized from visible curb/green edge",
+      "limit": "The adjacent green planted island to the west and building roofs to the south are excluded. Do not merge with the public racing road.",
+      "tile_sha256": "8eebd066f732dadd835cfb923a1f8d2515520c44cab02edd0cb819a3e1533f50",
+      "tile_bbox_epsg3944_m": [
+        2055922.3859114423,
+        3180318.5505037606,
+        2055976.5726864785,
+        3180372.737278804
+      ],
+      "vertices": [
+        {
+          "pixel": [
+            433,
+            419
+          ],
+          "epsg3944": [
+            2055968.212,
+            3180328.393
+          ],
+          "wgs84": [
+            7.42114245,
+            43.73704441
+          ],
+          "native_xy_m": [
+            -15.717,
+            269.795
+          ]
+        },
+        {
+          "pixel": [
+            442,
+            412
+          ],
+          "epsg3944": [
+            2055969.164,
+            3180329.134
+          ],
+          "wgs84": [
+            7.42115475,
+            43.737050609
+          ],
+          "native_xy_m": [
+            -14.718,
+            270.492
+          ]
+        },
+        {
+          "pixel": [
+            456,
+            410
+          ],
+          "epsg3944": [
+            2055970.646,
+            3180329.346
+          ],
+          "wgs84": [
+            7.421173258,
+            43.737051797
+          ],
+          "native_xy_m": [
+            -13.214,
+            270.625
+          ]
+        },
+        {
+          "pixel": [
+            473,
+            414
+          ],
+          "epsg3944": [
+            2055972.445,
+            3180328.922
+          ],
+          "wgs84": [
+            7.42119528,
+            43.737047125
+          ],
+          "native_xy_m": [
+            -11.425,
+            270.1
+          ]
+        },
+        {
+          "pixel": [
+            488,
+            426
+          ],
+          "epsg3944": [
+            2055974.033,
+            3180327.652
+          ],
+          "wgs84": [
+            7.421214114,
+            43.737034944
+          ],
+          "native_xy_m": [
+            -9.895,
+            268.73
+          ]
+        },
+        {
+          "pixel": [
+            497,
+            444
+          ],
+          "epsg3944": [
+            2055974.985,
+            3180325.747
+          ],
+          "wgs84": [
+            7.421224654,
+            43.737017363
+          ],
+          "native_xy_m": [
+            -9.039,
+            266.754
+          ]
+        },
+        {
+          "pixel": [
+            498,
+            462
+          ],
+          "epsg3944": [
+            2055975.091,
+            3180323.842
+          ],
+          "wgs84": [
+            7.421224699,
+            43.737000189
+          ],
+          "native_xy_m": [
+            -9.035,
+            264.823
+          ]
+        },
+        {
+          "pixel": [
+            491,
+            480
+          ],
+          "epsg3944": [
+            2055974.35,
+            3180321.937
+          ],
+          "wgs84": [
+            7.421214248,
+            43.736983424
+          ],
+          "native_xy_m": [
+            -9.884,
+            262.938
+          ]
+        },
+        {
+          "pixel": [
+            478,
+            491
+          ],
+          "epsg3944": [
+            2055972.974,
+            3180320.773
+          ],
+          "wgs84": [
+            7.421196419,
+            43.736973624
+          ],
+          "native_xy_m": [
+            -11.333,
+            261.836
+          ]
+        },
+        {
+          "pixel": [
+            460,
+            492
+          ],
+          "epsg3944": [
+            2055971.069,
+            3180320.667
+          ],
+          "wgs84": [
+            7.421172734,
+            43.736973592
+          ],
+          "native_xy_m": [
+            -13.257,
+            261.833
+          ]
+        },
+        {
+          "pixel": [
+            446,
+            483
+          ],
+          "epsg3944": [
+            2055969.588,
+            3180321.62
+          ],
+          "wgs84": [
+            7.421155,
+            43.736982867
+          ],
+          "native_xy_m": [
+            -14.697,
+            262.876
+          ]
+        },
+        {
+          "pixel": [
+            437,
+            469
+          ],
+          "epsg3944": [
+            2055968.635,
+            3180323.101
+          ],
+          "wgs84": [
+            7.421144178,
+            43.736996644
+          ],
+          "native_xy_m": [
+            -15.576,
+            264.424
+          ]
+        },
+        {
+          "pixel": [
+            431,
+            452
+          ],
+          "epsg3944": [
+            2055968.0,
+            3180324.901
+          ],
+          "wgs84": [
+            7.421137503,
+            43.737013121
+          ],
+          "native_xy_m": [
+            -16.119,
+            266.277
+          ]
+        },
+        {
+          "pixel": [
+            429,
+            436
+          ],
+          "epsg3944": [
+            2055967.789,
+            3180326.594
+          ],
+          "wgs84": [
+            7.421136005,
+            43.737028443
+          ],
+          "native_xy_m": [
+            -16.24,
+            268.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cliff_exposed_stone_west_strip",
+      "tile": "orthophoto2019-l8-r796836-c680971.jpg",
+      "role": "pale exposed stone face/rock band below upper garden wall",
+      "class": "Rock candidate",
+      "certainty": "pale rough exposed face is visible; pixel edge and height/layer are approximate",
+      "limit": "Do not include the bright upper garden wall/path (mostly y\u224820\u201390). This west strip ends before the belvedere rim exclusion.",
+      "tile_sha256": "13da4a6b30f4bb356e0c516f9630486facc756abdee6390231d2f5a4776fb2e3",
+      "tile_bbox_epsg3944_m": [
+        2055922.3859114423,
+        3180372.737278804,
+        2055976.5726864785,
+        3180426.924053848
+      ],
+      "vertices": [
+        {
+          "pixel": [
+            110,
+            91
+          ],
+          "epsg3944": [
+            2055934.028,
+            3180417.293
+          ],
+          "wgs84": [
+            7.420777818,
+            43.737859936
+          ],
+          "native_xy_m": [
+            -45.337,
+            361.48
+          ]
+        },
+        {
+          "pixel": [
+            129,
+            97
+          ],
+          "epsg3944": [
+            2055936.038,
+            3180416.658
+          ],
+          "wgs84": [
+            7.420802323,
+            43.737853259
+          ],
+          "native_xy_m": [
+            -43.346,
+            360.73
+          ]
+        },
+        {
+          "pixel": [
+            151,
+            106
+          ],
+          "epsg3944": [
+            2055938.367,
+            3180415.706
+          ],
+          "wgs84": [
+            7.420830552,
+            43.737843575
+          ],
+          "native_xy_m": [
+            -41.053,
+            359.641
+          ]
+        },
+        {
+          "pixel": [
+            178,
+            117
+          ],
+          "epsg3944": [
+            2055941.224,
+            3180414.542
+          ],
+          "wgs84": [
+            7.420865201,
+            43.737831733
+          ],
+          "native_xy_m": [
+            -38.238,
+            358.31
+          ]
+        },
+        {
+          "pixel": [
+            205,
+            128
+          ],
+          "epsg3944": [
+            2055944.082,
+            3180413.377
+          ],
+          "wgs84": [
+            7.420899849,
+            43.737819892
+          ],
+          "native_xy_m": [
+            -35.424,
+            356.978
+          ]
+        },
+        {
+          "pixel": [
+            231,
+            137
+          ],
+          "epsg3944": [
+            2055946.833,
+            3180412.425
+          ],
+          "wgs84": [
+            7.420933327,
+            43.737810004
+          ],
+          "native_xy_m": [
+            -32.704,
+            355.867
+          ]
+        },
+        {
+          "pixel": [
+            260,
+            146
+          ],
+          "epsg3944": [
+            2055949.903,
+            3180411.472
+          ],
+          "wgs84": [
+            7.42097074,
+            43.737799962
+          ],
+          "native_xy_m": [
+            -29.665,
+            354.738
+          ]
+        },
+        {
+          "pixel": [
+            286,
+            154
+          ],
+          "epsg3944": [
+            2055952.654,
+            3180410.626
+          ],
+          "wgs84": [
+            7.421004288,
+            43.737791026
+          ],
+          "native_xy_m": [
+            -26.94,
+            353.733
+          ]
+        },
+        {
+          "pixel": [
+            312,
+            162
+          ],
+          "epsg3944": [
+            2055955.406,
+            3180409.779
+          ],
+          "wgs84": [
+            7.421037836,
+            43.737782089
+          ],
+          "native_xy_m": [
+            -24.215,
+            352.728
+          ]
+        },
+        {
+          "pixel": [
+            312,
+            172
+          ],
+          "epsg3944": [
+            2055955.406,
+            3180408.721
+          ],
+          "wgs84": [
+            7.421037132,
+            43.737772576
+          ],
+          "native_xy_m": [
+            -24.272,
+            351.659
+          ]
+        },
+        {
+          "pixel": [
+            286,
+            167
+          ],
+          "epsg3944": [
+            2055952.654,
+            3180409.25
+          ],
+          "wgs84": [
+            7.421003373,
+            43.737778659
+          ],
+          "native_xy_m": [
+            -27.014,
+            352.343
+          ]
+        },
+        {
+          "pixel": [
+            258,
+            158
+          ],
+          "epsg3944": [
+            2055949.691,
+            3180410.202
+          ],
+          "wgs84": [
+            7.420967271,
+            43.73778865
+          ],
+          "native_xy_m": [
+            -29.947,
+            353.466
+          ]
+        },
+        {
+          "pixel": [
+            230,
+            150
+          ],
+          "epsg3944": [
+            2055946.728,
+            3180411.049
+          ],
+          "wgs84": [
+            7.4209311,
+            43.737797689
+          ],
+          "native_xy_m": [
+            -32.885,
+            354.482
+          ]
+        },
+        {
+          "pixel": [
+            204,
+            141
+          ],
+          "epsg3944": [
+            2055943.976,
+            3180412.002
+          ],
+          "wgs84": [
+            7.420897622,
+            43.737807577
+          ],
+          "native_xy_m": [
+            -35.605,
+            355.594
+          ]
+        },
+        {
+          "pixel": [
+            177,
+            131
+          ],
+          "epsg3944": [
+            2055941.118,
+            3180413.06
+          ],
+          "wgs84": [
+            7.420862903,
+            43.737818467
+          ],
+          "native_xy_m": [
+            -38.425,
+            356.818
+          ]
+        },
+        {
+          "pixel": [
+            150,
+            121
+          ],
+          "epsg3944": [
+            2055938.261,
+            3180414.118
+          ],
+          "wgs84": [
+            7.420828184,
+            43.737829357
+          ],
+          "native_xy_m": [
+            -41.245,
+            358.042
+          ]
+        },
+        {
+          "pixel": [
+            128,
+            113
+          ],
+          "epsg3944": [
+            2055935.933,
+            3180414.965
+          ],
+          "wgs84": [
+            7.420799884,
+            43.73783809
+          ],
+          "native_xy_m": [
+            -43.544,
+            359.024
+          ]
+        },
+        {
+          "pixel": [
+            110,
+            106
+          ],
+          "epsg3944": [
+            2055934.028,
+            3180415.706
+          ],
+          "wgs84": [
+            7.420776762,
+            43.737845667
+          ],
+          "native_xy_m": [
+            -45.423,
+            359.876
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cliff_ivy_west_lower_strip",
+      "tile": "orthophoto2019-l8-r796836-c680971.jpg",
+      "role": "dense ivy/shrub cover immediately below the exposed west stone band",
+      "class": "Ivy candidate",
+      "certainty": "vegetation is visible; exact vegetation/rock interleave is approximate",
+      "limit": "Do not extend over the upper wall/path or onto the belvedere.",
+      "tile_sha256": "13da4a6b30f4bb356e0c516f9630486facc756abdee6390231d2f5a4776fb2e3",
+      "tile_bbox_epsg3944_m": [
+        2055922.3859114423,
+        3180372.737278804,
+        2055976.5726864785,
+        3180426.924053848
+      ],
+      "vertices": [
+        {
+          "pixel": [
+            110,
+            130
+          ],
+          "epsg3944": [
+            2055934.028,
+            3180413.166
+          ],
+          "wgs84": [
+            7.420775072,
+            43.737822838
+          ],
+          "native_xy_m": [
+            -45.56,
+            357.309
+          ]
+        },
+        {
+          "pixel": [
+            129,
+            137
+          ],
+          "epsg3944": [
+            2055936.038,
+            3180412.425
+          ],
+          "wgs84": [
+            7.420799507,
+            43.737815209
+          ],
+          "native_xy_m": [
+            -43.575,
+            356.452
+          ]
+        },
+        {
+          "pixel": [
+            151,
+            145
+          ],
+          "epsg3944": [
+            2055938.367,
+            3180411.578
+          ],
+          "wgs84": [
+            7.420827807,
+            43.737806477
+          ],
+          "native_xy_m": [
+            -41.276,
+            355.47
+          ]
+        },
+        {
+          "pixel": [
+            177,
+            154
+          ],
+          "epsg3944": [
+            2055941.118,
+            3180410.626
+          ],
+          "wgs84": [
+            7.420861284,
+            43.737796589
+          ],
+          "native_xy_m": [
+            -38.557,
+            354.358
+          ]
+        },
+        {
+          "pixel": [
+            205,
+            163
+          ],
+          "epsg3944": [
+            2055944.082,
+            3180409.673
+          ],
+          "wgs84": [
+            7.420897386,
+            43.737786598
+          ],
+          "native_xy_m": [
+            -35.624,
+            353.235
+          ]
+        },
+        {
+          "pixel": [
+            232,
+            171
+          ],
+          "epsg3944": [
+            2055946.939,
+            3180408.827
+          ],
+          "wgs84": [
+            7.420932245,
+            43.737777611
+          ],
+          "native_xy_m": [
+            -32.792,
+            352.225
+          ]
+        },
+        {
+          "pixel": [
+            260,
+            179
+          ],
+          "epsg3944": [
+            2055949.903,
+            3180407.98
+          ],
+          "wgs84": [
+            7.420968417,
+            43.737768572
+          ],
+          "native_xy_m": [
+            -29.854,
+            351.209
+          ]
+        },
+        {
+          "pixel": [
+            286,
+            185
+          ],
+          "epsg3944": [
+            2055952.654,
+            3180407.345
+          ],
+          "wgs84": [
+            7.421002106,
+            43.737761537
+          ],
+          "native_xy_m": [
+            -27.117,
+            350.418
+          ]
+        },
+        {
+          "pixel": [
+            312,
+            190
+          ],
+          "epsg3944": [
+            2055955.406,
+            3180406.816
+          ],
+          "wgs84": [
+            7.421035865,
+            43.737755454
+          ],
+          "native_xy_m": [
+            -24.375,
+            349.734
+          ]
+        },
+        {
+          "pixel": [
+            312,
+            202
+          ],
+          "epsg3944": [
+            2055955.406,
+            3180405.546
+          ],
+          "wgs84": [
+            7.42103502,
+            43.737744039
+          ],
+          "native_xy_m": [
+            -24.444,
+            348.45
+          ]
+        },
+        {
+          "pixel": [
+            286,
+            198
+          ],
+          "epsg3944": [
+            2055952.654,
+            3180405.969
+          ],
+          "wgs84": [
+            7.421001191,
+            43.737749171
+          ],
+          "native_xy_m": [
+            -27.192,
+            349.027
+          ]
+        },
+        {
+          "pixel": [
+            258,
+            192
+          ],
+          "epsg3944": [
+            2055949.691,
+            3180406.604
+          ],
+          "wgs84": [
+            7.420964878,
+            43.737756308
+          ],
+          "native_xy_m": [
+            -30.141,
+            349.83
+          ]
+        },
+        {
+          "pixel": [
+            230,
+            185
+          ],
+          "epsg3944": [
+            2055946.728,
+            3180407.345
+          ],
+          "wgs84": [
+            7.420928636,
+            43.737764395
+          ],
+          "native_xy_m": [
+            -33.085,
+            350.739
+          ]
+        },
+        {
+          "pixel": [
+            204,
+            177
+          ],
+          "epsg3944": [
+            2055943.976,
+            3180408.192
+          ],
+          "wgs84": [
+            7.420895088,
+            43.737773332
+          ],
+          "native_xy_m": [
+            -35.811,
+            351.744
+          ]
+        },
+        {
+          "pixel": [
+            177,
+            168
+          ],
+          "epsg3944": [
+            2055941.118,
+            3180409.144
+          ],
+          "wgs84": [
+            7.420860299,
+            43.737783271
+          ],
+          "native_xy_m": [
+            -38.637,
+            352.861
+          ]
+        },
+        {
+          "pixel": [
+            151,
+            159
+          ],
+          "epsg3944": [
+            2055938.367,
+            3180410.097
+          ],
+          "wgs84": [
+            7.420826822,
+            43.737793159
+          ],
+          "native_xy_m": [
+            -41.356,
+            353.973
+          ]
+        },
+        {
+          "pixel": [
+            129,
+            151
+          ],
+          "epsg3944": [
+            2055936.038,
+            3180410.943
+          ],
+          "wgs84": [
+            7.420798522,
+            43.737801892
+          ],
+          "native_xy_m": [
+            -43.655,
+            354.955
+          ]
+        },
+        {
+          "pixel": [
+            110,
+            144
+          ],
+          "epsg3944": [
+            2055934.028,
+            3180411.684
+          ],
+          "wgs84": [
+            7.420774087,
+            43.73780952
+          ],
+          "native_xy_m": [
+            -45.64,
+            355.812
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cliff_east_ivy_strip",
+      "tile": "orthophoto2019-l8-r796836-c680971.jpg",
+      "role": "small eastern ivy/rock transition beyond the belvedere exclusion",
+      "class": "Ivy/Rock mixed candidate",
+      "certainty": "mixed vegetation/pale substrate visible; use conservatively",
+      "limit": "The proposed ring begins outside the belvedere exclusion centered near (366,196), radius \u224846 px. No pool, wall, path, building, or roof is included.",
+      "tile_sha256": "13da4a6b30f4bb356e0c516f9630486facc756abdee6390231d2f5a4776fb2e3",
+      "tile_bbox_epsg3944_m": [
+        2055922.3859114423,
+        3180372.737278804,
+        2055976.5726864785,
+        3180426.924053848
+      ],
+      "vertices": [
+        {
+          "pixel": [
+            418,
+            128
+          ],
+          "epsg3944": [
+            2055966.624,
+            3180413.377
+          ],
+          "wgs84": [
+            7.421179296,
+            43.737809021
+          ],
+          "native_xy_m": [
+            -12.724,
+            355.756
+          ]
+        },
+        {
+          "pixel": [
+            440,
+            134
+          ],
+          "epsg3944": [
+            2055968.953,
+            3180412.742
+          ],
+          "wgs84": [
+            7.421207737,
+            43.73780219
+          ],
+          "native_xy_m": [
+            -10.413,
+            354.988
+          ]
+        },
+        {
+          "pixel": [
+            462,
+            141
+          ],
+          "epsg3944": [
+            2055971.281,
+            3180412.002
+          ],
+          "wgs84": [
+            7.421236107,
+            43.737794409
+          ],
+          "native_xy_m": [
+            -8.109,
+            354.113
+          ]
+        },
+        {
+          "pixel": [
+            480,
+            148
+          ],
+          "epsg3944": [
+            2055973.186,
+            3180411.261
+          ],
+          "wgs84": [
+            7.42125923,
+            43.737786831
+          ],
+          "native_xy_m": [
+            -6.23,
+            353.261
+          ]
+        },
+        {
+          "pixel": [
+            480,
+            169
+          ],
+          "epsg3944": [
+            2055973.186,
+            3180409.038
+          ],
+          "wgs84": [
+            7.421257752,
+            43.737766855
+          ],
+          "native_xy_m": [
+            -6.35,
+            351.016
+          ]
+        },
+        {
+          "pixel": [
+            462,
+            164
+          ],
+          "epsg3944": [
+            2055971.281,
+            3180409.567
+          ],
+          "wgs84": [
+            7.421234488,
+            43.73777253
+          ],
+          "native_xy_m": [
+            -8.24,
+            351.654
+          ]
+        },
+        {
+          "pixel": [
+            440,
+            157
+          ],
+          "epsg3944": [
+            2055968.953,
+            3180410.308
+          ],
+          "wgs84": [
+            7.421206118,
+            43.737780312
+          ],
+          "native_xy_m": [
+            -10.545,
+            352.528
+          ]
+        },
+        {
+          "pixel": [
+            418,
+            151
+          ],
+          "epsg3944": [
+            2055966.624,
+            3180410.943
+          ],
+          "wgs84": [
+            7.421177677,
+            43.737787142
+          ],
+          "native_xy_m": [
+            -12.855,
+            353.296
+          ]
+        }
+      ]
+    }
+  ],
+  "explicit_exclusions": [
+    {
+      "id": "west_edge_pool_water_and_coping",
+      "tile": "orthophoto2019-l8-r796835-c680971.jpg",
+      "role": "pool water plus visible coping; never garden ground",
+      "tile_sha256": "41ec82e39f245bde2991d94ab95343c11179ca66efdd510eb3a591069f985c9c",
+      "tile_bbox_epsg3944_m": [
+        2055922.3859114423,
+        3180426.924053848,
+        2055976.5726864785,
+        3180481.110828884
+      ],
+      "vertices": [
+        {
+          "pixel": [
+            0,
+            392
+          ],
+          "epsg3944": [
+            2055922.386,
+            3180439.624
+          ],
+          "wgs84": [
+            7.420648353,
+            43.738066261
+          ],
+          "native_xy_m": [
+            -55.853,
+            384.676
+          ]
+        },
+        {
+          "pixel": [
+            26,
+            392
+          ],
+          "epsg3944": [
+            2055925.138,
+            3180439.624
+          ],
+          "wgs84": [
+            7.420682464,
+            43.738064934
+          ],
+          "native_xy_m": [
+            -53.083,
+            384.527
+          ]
+        },
+        {
+          "pixel": [
+            28,
+            402
+          ],
+          "epsg3944": [
+            2055925.349,
+            3180438.566
+          ],
+          "wgs84": [
+            7.420684385,
+            43.73805532
+          ],
+          "native_xy_m": [
+            -52.927,
+            383.446
+          ]
+        },
+        {
+          "pixel": [
+            27,
+            415
+          ],
+          "epsg3944": [
+            2055925.243,
+            3180437.19
+          ],
+          "wgs84": [
+            7.420682158,
+            43.738043005
+          ],
+          "native_xy_m": [
+            -53.107,
+            382.062
+          ]
+        },
+        {
+          "pixel": [
+            0,
+            418
+          ],
+          "epsg3944": [
+            2055922.386,
+            3180436.872
+          ],
+          "wgs84": [
+            7.420646523,
+            43.738041529
+          ],
+          "native_xy_m": [
+            -56.002,
+            381.896
+          ]
+        }
+      ]
+    },
+    {
+      "id": "central_pool_water_and_coping",
+      "tile": "orthophoto2019-l8-r796835-c680971.jpg",
+      "role": "long pool and coping; never garden ground",
+      "tile_sha256": "41ec82e39f245bde2991d94ab95343c11179ca66efdd510eb3a591069f985c9c",
+      "tile_bbox_epsg3944_m": [
+        2055922.3859114423,
+        3180426.924053848,
+        2055976.5726864785,
+        3180481.110828884
+      ],
+      "vertices": [
+        {
+          "pixel": [
+            148,
+            402
+          ],
+          "epsg3944": [
+            2055938.049,
+            3180438.566
+          ],
+          "wgs84": [
+            7.42084182,
+            43.738049196
+          ],
+          "native_xy_m": [
+            -40.138,
+            382.758
+          ]
+        },
+        {
+          "pixel": [
+            175,
+            402
+          ],
+          "epsg3944": [
+            2055940.907,
+            3180438.566
+          ],
+          "wgs84": [
+            7.420877243,
+            43.738047818
+          ],
+          "native_xy_m": [
+            -37.26,
+            382.603
+          ]
+        },
+        {
+          "pixel": [
+            176,
+            500
+          ],
+          "epsg3944": [
+            2055941.013,
+            3180428.194
+          ],
+          "wgs84": [
+            7.420871657,
+            43.737954545
+          ],
+          "native_xy_m": [
+            -37.714,
+            372.117
+          ]
+        },
+        {
+          "pixel": [
+            148,
+            500
+          ],
+          "epsg3944": [
+            2055938.049,
+            3180428.194
+          ],
+          "wgs84": [
+            7.420834922,
+            43.737955974
+          ],
+          "native_xy_m": [
+            -40.698,
+            372.277
+          ]
+        }
+      ]
+    },
+    {
+      "id": "east_pool_water_and_coping",
+      "tile": "orthophoto2019-l8-r796835-c680971.jpg",
+      "role": "small pool and pale deck; do not bridge with garden mask",
+      "tile_sha256": "41ec82e39f245bde2991d94ab95343c11179ca66efdd510eb3a591069f985c9c",
+      "tile_bbox_epsg3944_m": [
+        2055922.3859114423,
+        3180426.924053848,
+        2055976.5726864785,
+        3180481.110828884
+      ],
+      "vertices": [
+        {
+          "pixel": [
+            422,
+            391
+          ],
+          "epsg3944": [
+            2055967.048,
+            3180439.73
+          ],
+          "wgs84": [
+            7.421202072,
+            43.738045675
+          ],
+          "native_xy_m": [
+            -10.873,
+            382.362
+          ]
+        },
+        {
+          "pixel": [
+            466,
+            391
+          ],
+          "epsg3944": [
+            2055971.704,
+            3180439.73
+          ],
+          "wgs84": [
+            7.421259799,
+            43.738043429
+          ],
+          "native_xy_m": [
+            -6.184,
+            382.109
+          ]
+        },
+        {
+          "pixel": [
+            467,
+            466
+          ],
+          "epsg3944": [
+            2055971.81,
+            3180431.792
+          ],
+          "wgs84": [
+            7.421255831,
+            43.737972035
+          ],
+          "native_xy_m": [
+            -6.506,
+            374.083
+          ]
+        },
+        {
+          "pixel": [
+            458,
+            475
+          ],
+          "epsg3944": [
+            2055970.858,
+            3180430.84
+          ],
+          "wgs84": [
+            7.42124339,
+            43.737963934
+          ],
+          "native_xy_m": [
+            -7.517,
+            373.172
+          ]
+        },
+        {
+          "pixel": [
+            422,
+            471
+          ],
+          "epsg3944": [
+            2055967.048,
+            3180431.263
+          ],
+          "wgs84": [
+            7.421196441,
+            43.737969576
+          ],
+          "native_xy_m": [
+            -11.331,
+            373.806
+          ]
+        }
+      ]
+    },
+    {
+      "id": "central_vertical_walkway",
+      "tile": "orthophoto2019-l8-r796835-c680971.jpg",
+      "role": "paved path between west lawn and central pool",
+      "tile_sha256": "41ec82e39f245bde2991d94ab95343c11179ca66efdd510eb3a591069f985c9c",
+      "tile_bbox_epsg3944_m": [
+        2055922.3859114423,
+        3180426.924053848,
+        2055976.5726864785,
+        3180481.110828884
+      ],
+      "vertices": [
+        {
+          "pixel": [
+            142,
+            392
+          ],
+          "epsg3944": [
+            2055937.414,
+            3180439.624
+          ],
+          "wgs84": [
+            7.420834652,
+            43.738059014
+          ],
+          "native_xy_m": [
+            -40.72,
+            383.862
+          ]
+        },
+        {
+          "pixel": [
+            150,
+            392
+          ],
+          "epsg3944": [
+            2055938.261,
+            3180439.624
+          ],
+          "wgs84": [
+            7.420845148,
+            43.738058606
+          ],
+          "native_xy_m": [
+            -39.867,
+            383.816
+          ]
+        },
+        {
+          "pixel": [
+            151,
+            500
+          ],
+          "epsg3944": [
+            2055938.367,
+            3180428.194
+          ],
+          "wgs84": [
+            7.420838858,
+            43.737955821
+          ],
+          "native_xy_m": [
+            -40.378,
+            372.26
+          ]
+        },
+        {
+          "pixel": [
+            142,
+            500
+          ],
+          "epsg3944": [
+            2055937.414,
+            3180428.194
+          ],
+          "wgs84": [
+            7.42082705,
+            43.737956281
+          ],
+          "native_xy_m": [
+            -41.337,
+            372.312
+          ]
+        }
+      ]
+    },
+    {
+      "id": "east_separating_path",
+      "tile": "orthophoto2019-l8-r796835-c680971.jpg",
+      "role": "paved/stone boundary path between garden areas",
+      "tile_sha256": "41ec82e39f245bde2991d94ab95343c11179ca66efdd510eb3a591069f985c9c",
+      "tile_bbox_epsg3944_m": [
+        2055922.3859114423,
+        3180426.924053848,
+        2055976.5726864785,
+        3180481.110828884
+      ],
+      "vertices": [
+        {
+          "pixel": [
+            282,
+            392
+          ],
+          "epsg3944": [
+            2055952.231,
+            3180439.624
+          ],
+          "wgs84": [
+            7.421018327,
+            43.738051869
+          ],
+          "native_xy_m": [
+            -25.8,
+            383.058
+          ]
+        },
+        {
+          "pixel": [
+            301,
+            392
+          ],
+          "epsg3944": [
+            2055954.242,
+            3180439.624
+          ],
+          "wgs84": [
+            7.421043255,
+            43.7380509
+          ],
+          "native_xy_m": [
+            -23.775,
+            382.949
+          ]
+        },
+        {
+          "pixel": [
+            301,
+            486
+          ],
+          "epsg3944": [
+            2055954.242,
+            3180429.676
+          ],
+          "wgs84": [
+            7.421036638,
+            43.737961483
+          ],
+          "native_xy_m": [
+            -24.312,
+            372.897
+          ]
+        },
+        {
+          "pixel": [
+            282,
+            486
+          ],
+          "epsg3944": [
+            2055952.231,
+            3180429.676
+          ],
+          "wgs84": [
+            7.42101171,
+            43.737962453
+          ],
+          "native_xy_m": [
+            -26.337,
+            373.006
+          ]
+        }
+      ]
+    },
+    {
+      "id": "upper_white_garden_wall_and_path",
+      "tile": "orthophoto2019-l8-r796836-c680971.jpg",
+      "role": "upper wall/path and property cap, not rock/ivy ground",
+      "tile_sha256": "13da4a6b30f4bb356e0c516f9630486facc756abdee6390231d2f5a4776fb2e3",
+      "tile_bbox_epsg3944_m": [
+        2055922.3859114423,
+        3180372.737278804,
+        2055976.5726864785,
+        3180426.924053848
+      ],
+      "vertices": [
+        {
+          "pixel": [
+            75,
+            0
+          ],
+          "epsg3944": [
+            2055930.323,
+            3180426.924
+          ],
+          "wgs84": [
+            7.420738304,
+            43.737948285
+          ],
+          "native_xy_m": [
+            -48.547,
+            371.413
+          ]
+        },
+        {
+          "pixel": [
+            500,
+            0
+          ],
+          "epsg3944": [
+            2055975.303,
+            3180426.924
+          ],
+          "wgs84": [
+            7.421295888,
+            43.737926594
+          ],
+          "native_xy_m": [
+            -3.253,
+            368.974
+          ]
+        },
+        {
+          "pixel": [
+            500,
+            92
+          ],
+          "epsg3944": [
+            2055975.303,
+            3180417.187
+          ],
+          "wgs84": [
+            7.421289411,
+            43.73783908
+          ],
+          "native_xy_m": [
+            -3.779,
+            359.135
+          ]
+        },
+        {
+          "pixel": [
+            430,
+            91
+          ],
+          "epsg3944": [
+            2055967.894,
+            3180417.293
+          ],
+          "wgs84": [
+            7.421197645,
+            43.737843604
+          ],
+          "native_xy_m": [
+            -11.233,
+            359.644
+          ]
+        },
+        {
+          "pixel": [
+            360,
+            89
+          ],
+          "epsg3944": [
+            2055960.486,
+            3180417.505
+          ],
+          "wgs84": [
+            7.421105948,
+            43.737849079
+          ],
+          "native_xy_m": [
+            -18.682,
+            360.26
+          ]
+        },
+        {
+          "pixel": [
+            290,
+            82
+          ],
+          "epsg3944": [
+            2055953.078,
+            3180418.246
+          ],
+          "wgs84": [
+            7.421014604,
+            43.737859311
+          ],
+          "native_xy_m": [
+            -26.102,
+            361.41
+          ]
+        },
+        {
+          "pixel": [
+            220,
+            72
+          ],
+          "epsg3944": [
+            2055945.669,
+            3180419.304
+          ],
+          "wgs84": [
+            7.420923471,
+            43.737872396
+          ],
+          "native_xy_m": [
+            -33.505,
+            362.881
+          ]
+        },
+        {
+          "pixel": [
+            150,
+            59
+          ],
+          "epsg3944": [
+            2055938.261,
+            3180420.68
+          ],
+          "wgs84": [
+            7.420832548,
+            43.737888334
+          ],
+          "native_xy_m": [
+            -40.891,
+            364.673
+          ]
+        },
+        {
+          "pixel": [
+            105,
+            47
+          ],
+          "epsg3944": [
+            2055933.498,
+            3180421.95
+          ],
+          "wgs84": [
+            7.420774355,
+            43.737902046
+          ],
+          "native_xy_m": [
+            -45.618,
+            366.214
+          ]
+        },
+        {
+          "pixel": [
+            75,
+            39
+          ],
+          "epsg3944": [
+            2055930.323,
+            3180422.797
+          ],
+          "wgs84": [
+            7.420735559,
+            43.737911187
+          ],
+          "native_xy_m": [
+            -48.77,
+            367.242
+          ]
+        }
+      ]
+    },
+    {
+      "id": "belvedere_rim_exclusion_approx",
+      "tile": "orthophoto2019-l8-r796836-c680971.jpg",
+      "circle_px": {
+        "center": [
+          366,
+          196
+        ],
+        "radius": 46
+      },
+      "role": "belvedere rim/stone structure; exclude from adjacent terrain masks",
+      "tile_sha256": "13da4a6b30f4bb356e0c516f9630486facc756abdee6390231d2f5a4776fb2e3",
+      "tile_bbox_epsg3944_m": [
+        2055922.3859114423,
+        3180372.737278804,
+        2055976.5726864785,
+        3180426.924053848
+      ]
+    }
+  ]
+}
