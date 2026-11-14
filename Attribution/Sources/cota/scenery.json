@@ -1,8 +1,8 @@
 {
   "recipe": "make circuit-assets CIRCUIT=cota",
   "tiles": 168,
-  "triangles": 873974,
-  "road_sha256": "f408ad7e01162624a3d911225abc3ed27f04f8b5ab6ff0688d5e75d06dec0c23",
+  "triangles": 876993,
+  "road_sha256": "0c0fad2e33fa1952b768c0f0c774de037b322429a71aa0cff89682d960022994",
   "terrain_sha256": "c9c0a1c53aaafed665cbfefb341340b6476df40e7621da732aecb033cfabf564",
   "landmarks": [
     {
@@ -22,6 +22,13 @@
       "side": -1,
       "source": "Supplied reference158.70s and161\u2013164s; IMSA2024aerial establishes rounded peninsula boundary, later clip establishes red paved cap.",
       "registration": "Inside kerb-following head of peninsula; upstream chord and exact extent reconstructed, not surveyed. Star remains at4153m/left13m."
+    },
+    {
+      "name": "T11 approach legal edges and separate painted apron",
+      "start_m": 2220,
+      "end_m": 2380,
+      "source": "architecture/t11-width/source-review.md and source-index.json",
+      "dimensions_status": "Registered imagery supports an approximately13m legal span at2220\u20132340m, widening by2380m. Raised0.85m red/white curb and flat red apron reaching3.4m beyond the edge are reconstructed within approximately1m image/epoch uncertainty. Existing barrier corridor, centreline, elevation and banking are retained."
     },
     {
       "name": "Reference event panels",

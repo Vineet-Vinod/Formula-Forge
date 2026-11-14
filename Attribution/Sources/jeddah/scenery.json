@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=jeddah",
   "tiles": 146,
-  "triangles": 1146291,
+  "triangles": 1308320,
   "road_sha256": "86ac9b9b678308d892ee45f96061bee4ae87afbda9aaf7791eb9bc0166c365e6",
   "terrain_sha256": "a30c782d9e70e53575eaa3a1295d86b00eeca559983b25de642725c36fdfe647",
   "landmarks": [
@@ -246,6 +246,27 @@
       "tiles": "Building_City_00_m3, Building_City_01_m3",
       "source": "context-residency.json",
       "qualification": "Only the two named CSV envelopes extend toward the northern approach. The retained 5,003-pose packet has zero potentially visible unloaded frames under unchanged 1,800 m load / 2,050 m release hysteresis. Potential frustum overlap is not proof of rendered visibility or absence of occlusion. Existing Diamond rule, actual mesh bounds, geometry, location and global streaming radii remain fixed."
+    },
+    {
+      "name": "Masarat five-finger residential complex",
+      "source": "masarat-source-qualification.json",
+      "project_site_area_m2": 9559,
+      "occupied_body_area_m2": 3862.2275860784057,
+      "estimated_high_wing_height_m": 144.0,
+      "high_wing_height_uncertainty_m": 12.0,
+      "cvu_estimated_floors": 42,
+      "developer_storeys": 43,
+      "estimated_high_core_top_above_entry_m": 145.1,
+      "estimated_short_return_height_m": 90.5,
+      "estimated_entry_uncertainty_m": 2.0,
+      "original_ground_rows_clipped": 105,
+      "minimum_foundation_burial_m": 0.11999999999999389,
+      "maximum_exposed_basement_m": 3.9674295399279655,
+      "maximum_ground_above_first_floor_m": 1.465266092324959,
+      "fence_minimum_ground_burial_m": 0.0634399378967192,
+      "estimated_entry_step_m": 0.28655391379304795,
+      "retained_mesh_entry_grade_percent": 12.507320883755924,
+      "source_limits": "Original reconstructed architecture, not a surveyed footprint or section. The operator point is directions only. Masarat is CVU-estimated 144 m / 42 floors versus developer 43 storeys; Sail is a different 264.7 m tower. Component depths, 23\u201325-floor lower fingers, 27-floor return, corner bearing/top extent and stepped entry levels remain estimates. Actual original 4\u201310 m emitted ground may represent a raised site or DSM uncertainty; it is not proved bare earth. Rear connectors remain unmodeled. No full-site pad, fake building OSM ID, field/road/contact mutation, provider change or streaming-radius change. Normal-start residency uses an 8,192-source-pose estimate, not a moving native proof. Fresh native night and full-route review remain required."
     },
     {
       "name": "Jeddah floodlight recipe",
