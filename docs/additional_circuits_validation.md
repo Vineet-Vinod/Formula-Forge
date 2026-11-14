@@ -1,14 +1,14 @@
-# Additional circuit validation — 2026-11-13
+# Additional circuit validation — 2026-11-14
 
-Checkpoint for the 18 additional circuits, current package `219ac9a7`. The explicit review register records 16 visual passes, 2 holds and 0 pending reviews. This checkpoint does not declare the work complete.
+Checkpoint for the 18 additional circuits, current package `79189b47`. The explicit review register records 15 visual passes, 3 holds and 0 pending reviews. This checkpoint does not declare the work complete.
 
-Paused at the requested 09:30 PST deadline. The 18-map work remains incomplete. Baku and Jeddah retain visual holds; Malaysia and Monaco have independent source-completion holds. Other visual passes remain limited by the stated survey and modeling caveats.
+Active work toward Sunday 15 November, 10:00 PST. The 18-map work remains incomplete. Baku, Jeddah and Monaco retain visual holds; Malaysia retains an independent source-completion hold. Visual passes remain bounded by source, modeling and performance caveats.
 
 The [validation record](additional_circuits_validation.json) pins package payloads, exact scene identities, reports, archived frames, current profiles, runtime scope and performance evidence.
 
 | Circuit | Captured revision | Visual review | Live frames | Route bins |
 | --- | --- | --- | ---: | ---: |
-| australia | 887f09f0 | pass | 4341 | 125/125 |
+| australia | c0832124 | pass | 4366 | 125/125 |
 | austria | 6a970d40 | pass | 3602 | 125/125 |
 | bahrain | 6a970d40 | pass | 4791 | 125/125 |
 | baku | 0e32f075 | held | 5117 | 125/125 |
@@ -18,11 +18,11 @@ The [validation record](additional_circuits_validation.json) pins package payloa
 | cota | 887f09f0 | pass | 5368 | 125/125 |
 | hockenheim | 219ac9a7 | pass | 4146 | 125/125 |
 | japan | 92dca960 | pass | 4992 | 125/125 |
-| jeddah | 0e32f075 | held | 4990 | 125/125 |
+| jeddah | d3bd1953 | held | 5003 | 125/125 |
 | malaysia | 6a970d40 | pass | 5076 | 125/125 |
-| monaco | 219ac9a7 | pass | 3784 | 125/125 |
+| monaco | c0832124 | held | 3934 | 125/125 |
 | portimao | 887f09f0 | pass | 4389 | 125/125 |
-| singapore | 887f09f0 | pass | 4784 | 125/125 |
+| singapore | 79189b47 | pass | 4835 | 125/125 |
 | spa | 219ac9a7 | pass | 5223 | 125/125 |
 | turkey | 6a970d40 | pass | 4816 | 125/125 |
 | zandvoort | 92dca960 | pass | 4258 | 125/125 |
@@ -35,8 +35,8 @@ These independent source findings remain unresolved despite retained visual pass
 
 | Circuit | Outstanding source finding |
 | --- | --- |
-| malaysia | T15 remains flat despite primary confirmation of adverse post-2016 crossfall. Its numerical transverse profile and entry/exit warp need qualification. |
-| monaco | Casa Mia and Villa Marie Antoinette use under-height generic bodies. Strongly matched IGN components establish larger, separate measured envelopes; component-aware modeling and fresh validation remain pending. |
+| malaysia | T15 remains flat across the track and the local longitudinal crest precedes the exit. Primary designer evidence also distinguishes 16 m legal width from wider outside asphalt. A bounded estimated reconstruction is in preparation; exact civil cross-sections remain unavailable. |
+| monaco | Measured Casa Mia/Villa Marie Antoinette component envelopes are imported. The current visual hold concerns the coarse bridge/garden/rock/planted setting and low retail 508221117; annex 4420 remains unqualified. Private bridge, approach, terrace and retail candidates are unshipped. |
 
 ## Current native profiles
 
@@ -58,7 +58,7 @@ These figures are recalculated from the current road exports. Sample density is 
 | malaysia | 8192 | 22.00 | 16.00–22.00 | 5.72/-6.07 | 4.95/-5.88 |
 | monaco | 8192 | 42.00 | 10.50–12.00 | 9.52/-9.30 | 9.27/-7.99 |
 | portimao | 8192 | 28.74 | 14.00–18.00 | 10.16/-15.58 | 8.45/-11.64 |
-| singapore | 8192 | 5.30 | 12.00–14.00 | 1.39/-1.35 | 1.30/-1.32 |
+| singapore | 8192 | 5.30 | 8.80–14.00 | 1.39/-1.35 | 1.30/-1.32 |
 | spa | 8192 | 102.26 | 12.00–15.00 | 15.59/-8.40 | 14.23/-7.21 |
 | turkey | 8192 | 47.89 | 14.50–21.00 | 8.15/-8.15 | 8.14/-8.14 |
 | zandvoort | 8192 | 8.72 | 12.00–14.00 | 9.51/-8.84 | 6.29/-4.92 |
@@ -67,12 +67,13 @@ These figures are recalculated from the current road exports. Sample density is 
 
 - Optional progressive quadratic banking and measured bank-edge fade now share height/slope functions between simulation, tyre support and rendered geometry. Default paths and unaffected physical data retain their exact outputs; shared vehicle tuning and camera code are unchanged.
 - Spa alone rotates the sky, dome and sun by 120 degrees at unchanged energy, elevation and exposure. The ineffective 0.06 normal-strength trial was rejected and 0.18 restored. Source grid heights and native data are unchanged. A bounded 0.25 m mesh represents the existing field within 2.517 cm in the visible core and rejoins the actual old outer triangle planes. Fresh full-route visual review passes; residual tone and rounded-hollow differences lack matched source classification.
+- Singapore-only generated road controls are aligned with Anderson Bridge driver-left opening, with an 8.8 m legal lane and separately accounted kerbs/shoulders/wall thickness. Local smooth joins replace the rejected infinite-axis exit shift. No shared vehicle/camera implementation changes.
 
 The supplied scope proofs and their hashes are retained in the JSON. Accepted-circuit assets, shared runtime changes and car/input/camera scope are reported separately; asset preservation is not a claim that no runtime code changed.
 
-This session corrected registered Japan widths and the Spoon curve, progressive Zandvoort banking, Jeddah T13 support and Diamond residency, measured Hockenheim road banking and stand geometry, Monaco frontage integration, and sourced Baku landmarks. The final Spa mesh closes the coarse 1.13 m planar cap using the existing height field. Hockenheim's visible lower grass join is closed; the hidden mismatch remains qualified. Baku retains finer city batching after a better combined-scene sample. Monaco showed no useful batching benefit, so its exact original parent meshes were restored. The failed Baku paving candidate remains archived and unintegrated.
+This resumed session imported the articulated Jeddah pavilion, measured multi-component Monaco properties, the reference-era two-storey Albert Park pit building and classified Monaco planting. Anderson Bridge now has three longitudinal trusses, two clear openings, real overhead lattice and suspended panels, masonry portals and a locally aligned 8.8 m racing lane; its braking boards are outside the lane. Fresh complete laps cover all four changed circuits. Monaco bridge/terrace and Baku frontage candidates remain private pending qualification; no unfinished prototype is declared shipped.
 
-Sampled peak machine memory was 7.227 GB against 11 GB, using the 5 s monitor. One heavy job at a time is attested in the register.
+Sampled peak machine memory was 7.089 GB against 11 GB, using the 5 s monitor. One heavy job at a time is attested in the register.
 
 ## Uncapped performance
 
@@ -80,12 +81,7 @@ Moving measurements are separate from capped image recordings and stationary sam
 
 | Circuit | Kind | Measured frames | Median ms | p95 ms | p99 ms | Max ms |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| baku | moving | 6270 | 26.33 | 34.91 | 39.04 | 49.83 |
-| monaco | moving | 4838 | 26.29 | 34.63 | 37.93 | 44.76 |
-| spa | moving | 6450 | 28.63 | 37.65 | 40.87 | 46.29 |
-| hockenheim | moving | 6567 | 20.29 | 25.55 | 27.86 | 34.35 |
-| jeddah | moving | 8085 | 19.96 | 24.99 | 27.32 | 35.24 |
-| lasvegas | moving | 6719 | 23.09 | 31.35 | 34.82 | 48.31 |
+| — | No current uncapped runs registered | — | — | — | — | — |
 
 Moving runs require one full warmup route and complete measured route coverage. They use automatic driving input and do not establish physical-controller handling. Stationary numbers describe only their registered local scene. Capped recording intervals include readback and encoding overhead.
 
@@ -93,7 +89,6 @@ Moving runs require one full warmup route and complete measured route coverage. 
 
 - Dense native controls do not make reconstructed widths, event radii, height fields or temporary architecture into surveys.
 - Six tested Baku pixel rays establish old-city exterior ground intrusions, with additional facade/terrain cuts. These are ray witnesses, not six separately mapped defects. The attempted public-paving/foundation repair failed grade/join qualification and remains unintegrated in its preserved candidate archive.
-- Malaysia T15 still has zero modeled bank despite primary confirmation of post-2016 adverse crossfall. Exact magnitude and entry/exit warping remain unresolved.
 - Portimao classified DGT ground yields a maximum 100 m rise of 8.45%, inconsistent with the operator headline 6.2%. The source-definition difference is unresolved; no unsupported vertical rescaling was applied.
 - Japan now uses registered GSI widths around 10 to 15 m; the operator 16 m extremum is not yet locally registered. Road-top separation at the crossing is not underside clearance.
 - Zandvoort T3 now uses the measured progressive quadratic bowl and bounded paved bank. Cross-sections and source epochs still carry their stated uncertainties.
@@ -102,15 +97,17 @@ Moving runs require one full warmup route and complete measured route coverage. 
 - Automated native/live laps do not establish physical-controller handling or all menu/input paths. Reference clips can contain edited cuts and different cameras.
 - Only explicit uncapped moving samples establish measured whole-route frame times. Stationary samples and capped image recordings have separate scopes.
 - Hockenheim visible stand-front join is closed; a hidden mismatch up to 1.479 m remains outside the bounded repair. No broad earth bank was invented to conceal it.
+- Malaysia T15 adverse crossfall, exit-rise warp and16 m legal-width reconstruction are not yet integrated. The proposed numerical slopes/heights are estimates; primary sources establish qualitative shape and legal width, not a civil survey.
+- Monaco measured property roofs are imported, but bridge approaches, terraces, low retail frontage and classified setting remain under review. Never fill the unqualified annex 4420with an invented opaque prism or repaint the actual patio/bridge as vegetation.
 - baku: Flame Towers are present in the current scene. Exact rays establish old-city exterior ground intrusions and facade/terrain cuts; repeated secondary frontages remain under-modeled. The failed paving/foundation candidate is excluded from production.
 - canada: Visual decision is bound to the unchanged 887 scene; performance is separate.
 - china: No missing crossing-cylinder or parasol defect is established. Ordinary secondary façades remain simplified; no current blocker was demonstrated.
 - cota: No confirmed blocker in the reviewed complete route; performance remains separate.
 - hockenheim: A hidden stand-front terrain mismatch up to 1.479 m remains outside the repaired visible low end. Forest density and some secondary facilities remain simplified. Numerical closure does not establish survey precision.
 - japan: Stylized forest/crowd/facility detail and width survey limits remain caveats, not demonstrated blockers.
-- jeddah: The Diamond tower residency omission is corrected without changing its source-supported construction state. Secondary street/tree context and the isolated low pavilion remain too sparse or simplified. Edited reference inserts do not establish a missing named tower.
+- jeddah: Diamond remains a source-supported construction skeleton. Low urban frontage, mall and tower subparts need mapped/photo qualification; do not extrude an entire podium as the full-height tower.
 - malaysia: No primary numerical transverse profile or entry/exit warp was recovered; zero modeled crossfall remains a known omission.
-- monaco: Casa Mia currently has a flat roof at 24.741 m absolute versus matched component roof boundaries from 36.5 to 55.3 m. Villa Marie Antoinette is 49.431 m versus 54.8 to 56.9 m. Source plan/vertical precision is 2.5/1.5 m. The candidate envelopes hide three of six tested hillside rays, leaving the lower gray slope unresolved. Preserve measured terrain and the actual mapped garden.
+- monaco: IGN properties retain measured component envelopes and declared source precision. Setting bridge/patio/rock surfaces require separate modeled surfaces; annex 4420and exact event chronology remain unqualified.
 - portimao: Retained DGT road samples are correctly registered to asphalt with no bridge-deck hump, but observed local grades remain in conflict with the operator-published headline values. The vertical/source-definition discrepancy is unresolved; do not clamp or rescale from the headline alone.
 - singapore: Mapped landmark/frontage revisions are simplified in secondary city sectors; no current source-qualified blocker is demonstrated by the reviewed packet.
 - spa: Source grid nodes and native data are unchanged. The refined mesh reproduces an existing interpolation, not finer survey data. Remaining bank tone/shape differences are unclassified, not declared wrong terrain.

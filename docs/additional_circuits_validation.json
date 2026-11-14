@@ -1,26 +1,26 @@
 {
   "schema_version": 2,
-  "recorded_utc": "2026-11-13T17:17:30.244573+00:00",
-  "checkpoint_date": "2026-11-13",
-  "status": "Paused at the requested 09:30 PST deadline. The 18-map work remains incomplete. Baku and Jeddah retain visual holds; Malaysia and Monaco have independent source-completion holds. Other visual passes remain limited by the stated survey and modeling caveats.",
+  "recorded_utc": "2026-11-14T07:57:03.274990+00:00",
+  "checkpoint_date": "2026-11-14",
+  "status": "Active work toward Sunday 15 November, 10:00 PST. The 18-map work remains incomplete. Baku, Jeddah and Monaco retain visual holds; Malaysia retains an independent source-completion hold. Visual passes remain bounded by source, modeling and performance caveats.",
   "completion_claim": false,
   "scope": "18 additional circuits. Silverstone, Monza, Interlagos and Las Vegas are accepted baselines, with their asset/runtime scope separately evidenced.",
   "review_register": {
-    "path": "build/reviews/resume-20261113/final-review-register.json",
-    "sha256": "eb083524b58f22064180b6799e3a8bfd1c09fbc598a7df8fdd98b044e98bb7dc"
+    "path": "build/reviews/resume-20261114/final-review-register.json",
+    "sha256": "2eacc1650a9603b2728974f8c64f1256059ecdd9975097533fcd91fe17f2fcb5"
   },
   "current_package_pin": {
     "path": "build/reviews/current-package.json",
-    "sha256": "85aa042a6d5d714fd18b2109d6c46885fed367628efad9a50688815d3ed5a6c9"
+    "sha256": "e7ced54e6a749d5484af2044a0bb27e49c6ba26503ec378447f8788324c19e43"
   },
-  "packaged_source_revision": "219ac9a795ba6b2ede38c27c7a89f3c9decfd43b",
+  "packaged_source_revision": "79189b4738d04458fa0963ad273636e989717912",
   "packaged_payload_sha256": {
-    "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.pak": "70cd8c92fe1245c20ce6594ec3bbfd83e003a4cf219bb46e6084acbe08eb7b02",
-    "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.ucas": "44c2dc1a3820cc2b164a3068eb92c381b26ae9fb55f46265bfbb15002d99ce76",
-    "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.utoc": "96fa1a930e1c1bc5eabeee0270811beb0c3b928214ffa8c03a3c93a04788650a",
+    "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.pak": "e8c49e2bbc20d342a5797111118b1048104cba6b552652ce58b12c177f1e4043",
+    "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.ucas": "edfa853e1d05bd4ed042e8019ec0b82320ce3f5a40d78930142567539d3f69e2",
+    "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.utoc": "2e0aae1a88f7f2236b07e6bd1be9c53bd4c4fad3640c0f9a84dddcb7cfc56228",
     "build/unreal/package/Linux/FormulaForge/Content/Paks/global.ucas": "9ba0d5a57ffa7082f1cae440750e0994cdc7a3b312068fc5618df81036c36152",
     "build/unreal/package/Linux/FormulaForge/Content/Paks/global.utoc": "612984d5375495cee07af35967bf98b7ece7393d55435575f25212a6f4391444",
-    "build/unreal/package/Linux/FormulaForge/Binaries/Linux/FormulaForge": "b7654a7c069f383bbde5ba2354c1a430c5c802e370231e49a9e22da621b1a049"
+    "build/unreal/package/Linux/FormulaForge/Binaries/Linux/FormulaForge": "ebc671ac2b20ba2b15e02444009310e86a09c157fc81286624a0bebbc74cf7fb"
   },
   "reviewer": {
     "model": "gpt-6-luna",
@@ -29,28 +29,26 @@
   },
   "checks": {
     "source": {
-      "pytest": 204,
-      "mypy_files": 74,
+      "pytest": 218,
+      "mypy_files": 79,
       "ruff": "passed",
-      "evidence": "build/reviews/resume-20261113/refined-source-check.log"
+      "evidence": "build/reviews/resume-20261114/singapore/marker-complete-source-check.log"
     },
     "native": "All guarded native, contact, support, limits, camera and preserved Las Vegas dynamic-lap checks passed.",
-    "package": "Package 219ac9a7 built and pinned. Its executable is identical to 0e32f075. Fresh complete recordings cover the three subsequently changed scenes.",
-    "session": "FormulaForge.Session.LapLimits passed on 219ac9a7.",
-    "live_flow": "All five first-wave changed scenes completed clean laps covering 125 of 125 route bins. Final Hockenheim, Spa and Monaco captures on 219ac9a7 also completed clean full laps. Original captured revisions are retained.",
-    "performance": "Only the explicitly current uncapped moving runs below establish measured full-route frame times after a full warmup. Coverage is partial across the 18 circuits. Historical stationary and moving samples retain their original revisions and are excluded from the current table. No all-circuit performance parity is claimed.",
+    "package": "Package 79189b47 built and pinned; six cooked payloads and 18 native scene identities retained. Only two Singapore Street tiles changed after dbac09a1; 150 mesh assets, all materials/textures, physical data and render manifest stayed identical.",
+    "session": "FormulaForge.Session.LapLimits passed on 79189b47.",
+    "live_flow": "Fresh clean full-route laps: Jeddah 5,003 frames, Monaco 3,934 frames, Australia 4,366 frames and Singapore 4,835 frames. Each covers 125/125 station bins. Original capture revisions remain explicit. Singapore physical route also passed guarded native checks after alignment and before marker-only changes.",
+    "performance": "Fresh uncapped moving profiles for changed scenes are pending. All prior profiles remain historical in this active checkpoint. Capped recordings do not establish frame-time parity.",
     "source_completion_holds": {
       "malaysia": {
-        "reason": "T15 remains flat despite primary confirmation of adverse post-2016 crossfall. Its numerical transverse profile and entry/exit warp need qualification.",
-        "report": "build/reviews/resume-20261113/malaysia-t15-source-adjudication.md",
-        "report_sha256": "6c18657e8213f86b7736313ab0db25df010be49639cb36f6b541a894de313320",
+        "reason": "T15 remains flat across the track and the local longitudinal crest precedes the exit. Primary designer evidence also distinguishes 16 m legal width from wider outside asphalt. A bounded estimated reconstruction is in preparation; exact civil cross-sections remain unavailable.",
+        "report": "build/reviews/resume-20261114/malaysia/t15-crossfall-adjudication.md",
         "historical_visual_decision": "pass"
       },
       "monaco": {
-        "reason": "Casa Mia and Villa Marie Antoinette use under-height generic bodies. Strongly matched IGN components establish larger, separate measured envelopes; component-aware modeling and fresh validation remain pending.",
-        "report": "build/reviews/resume-20261113/monaco-hill-source-completion-adjudication.md",
-        "report_sha256": "644b6ababe81ee43acb78797fdc48eb319cd397aefb8268ed0b9cdcb6ca7538a",
-        "historical_visual_decision": "pass"
+        "reason": "Measured Casa Mia/Villa Marie Antoinette component envelopes are imported. The current visual hold concerns the coarse bridge/garden/rock/planted setting and low retail 508221117; annex 4420 remains unqualified. Private bridge, approach, terrace and retail candidates are unshipped.",
+        "report": "build/reviews/resume-20261114/reviews/monaco-c0832124-review.md",
+        "historical_visual_decision": "held"
       }
     },
     "completion_held_circuits": [
@@ -63,8 +61,9 @@
   "preservation": {
     "accepted_four_content_unchanged": "Accepted Silverstone, Monza, Interlagos and Las Vegas content and shared Generated assets remain unchanged.",
     "shared_vehicle_tuning_and_camera_unchanged": true,
-    "round_two_scope": "Compared with 92dca960, only Hockenheim physical map data changed. Other 17 circuits retain exact physical data. All 73 physical files are identical between 0e32f075 and 219ac9a7.",
-    "runtime_implementation": "Optional bank-height/contact evaluators and Spa-specific daylight changed; do not interpret preservation as no implementation changes."
+    "round_two_scope": "Historical Nov 13 scope retained in the underlying immutable baseline record; the resumed-session scope above describes current changes.",
+    "runtime_implementation": "Optional bank-height/contact evaluators and Spa-specific daylight changed; do not interpret preservation as no implementation changes.",
+    "resumed_session_scope": "From ceb62146 to 79189b47, accepted four Content folders and shared vehicle/camera implementations are unchanged. Singapore alone changes generated survey/boundary arrays and two physical data files; other 17 circuits retain their physical data. AU/Monaco/Jeddah changes are scenery assets/source only."
   },
   "scope_proofs": [
     {
@@ -1506,6 +1505,65 @@
         "current_scene_runtime_compatible": true,
         "note": "Retain the original captured revision; exact executable and complete per-scene native/source identity permit carrying this sample. Monaco changed mesh grouping again and needs a fresh sample."
       }
+    },
+    {
+      "file": {
+        "path": "build/reviews/resume-20261114/first-native-scope-proof.json",
+        "sha256": "e837b0390bfb2b982616ff91cd31ebbfc22028af25a2a80d27ee9949bf774a46"
+      },
+      "data": {
+        "baseline_revision": "219ac9a795ba6b2ede38c27c7a89f3c9decfd43b",
+        "current_revision": "d3bd19532a70fc3f260d37e71bf6e4a7759c08ec",
+        "only_changed_scenes": [
+          "jeddah",
+          "monaco"
+        ],
+        "all_eighteen_non_render_manifest_native_data_unchanged": true,
+        "all_cpp_source_unchanged_since_baseline": true,
+        "accepted_four_content_changed": false,
+        "caveat": "render_tiles.csv is a visual bounds/residency manifest; Monaco bounds changed to fit the measured buildings.",
+        "cpp_source_diff_paths": [],
+        "accepted_content_diff_paths": []
+      }
+    },
+    {
+      "file": {
+        "path": "build/reviews/resume-20261114/singapore/native-scope-proof.json",
+        "sha256": "81dc1ae0796f0e2d2509e82032078b1562bcea3a9c8dbc81db23c8243ad48287"
+      },
+      "data": {
+        "baseline_revision": "c0832124",
+        "changed_native_data_files": [
+          "Content/Generated/Singapore/Data/drive_surface.bin",
+          "Content/Generated/Singapore/Data/track_limits.bin"
+        ],
+        "source_cpp_implementation_changed": [],
+        "checks": [
+          "native-check-stage1.log",
+          "native-check-final.log",
+          "native-lap.log",
+          "complete-source-check.log"
+        ],
+        "focused_clearance_tests": "Tests/test_singapore_bridge.py: actualpackedtruss/nativelegal/nativewall separation passed; overheadclearance passed",
+        "caveat": "This is source/nativegeometry verification; cookedvisual/livebridgecontactreviewpending."
+      }
+    },
+    {
+      "file": {
+        "path": "build/reviews/resume-20261114/singapore/marker-import-scope-proof.json",
+        "sha256": "825c2329cb823b971a03f83f31b6246f0b504f0b4ff33fd3982cee52a467d884"
+      },
+      "data": {
+        "baseline_revision": "88446426",
+        "changed_native_paths": [
+          "Content/Generated/Singapore/Track/Tile_Street_m6_m2.uasset",
+          "Content/Generated/Singapore/Track/Tile_Street_m6_m3.uasset"
+        ],
+        "fully_identical_meshes_restored": 150,
+        "night_field_and_all_artwork_bytes_identical": true,
+        "existing_materials_textures_restored": 54,
+        "physical_data_and_render_manifest_changed": false
+      }
     }
   ],
   "runtime_changes": {
@@ -1550,34 +1608,56 @@
           "sha256": "ffaca742f9b65f6639916eb5f82c9a664d092dfeed89e858c049b85647a67a37"
         }
       ]
+    },
+    "singapore_route": {
+      "description": "Singapore-only generated road controls are aligned with Anderson Bridge driver-left opening, with an 8.8 m legal lane and separately accounted kerbs/shoulders/wall thickness. Local smooth joins replace the rejected infinite-axis exit shift. No shared vehicle/camera implementation changes.",
+      "source_files": [
+        {
+          "path": "Source/FormulaForge/Native/track_data/singapore_survey.inc",
+          "sha256": "694d33f939d79471937942fccce5148a0030aa8e4db3eef593646087b177e194"
+        },
+        {
+          "path": "Source/FormulaForge/Native/track_data/singapore_boundaries.inc",
+          "sha256": "f7561e18db4b74cee4dcea294c010b110d95becbb53e111af14db44878dc889f"
+        }
+      ],
+      "evidence_files": [
+        {
+          "path": "build/reviews/resume-20261114/singapore/native-scope-proof.json",
+          "sha256": "81dc1ae0796f0e2d2509e82032078b1562bcea3a9c8dbc81db23c8243ad48287"
+        },
+        {
+          "path": "build/reviews/resume-20261114/singapore/marker-import-scope-proof.json",
+          "sha256": "825c2329cb823b971a03f83f31b6246f0b504f0b4ff33fd3982cee52a467d884"
+        }
+      ]
     }
   },
   "resources": {
     "ceiling_bytes": 11000000000,
-    "peak_machine_used_bytes": 7227469824,
-    "peak_sample_utc": "2026-11-13T09:55:42Z",
+    "peak_machine_used_bytes": 7089299456,
+    "peak_sample_utc": "2026-11-14T04:53:26Z",
     "within_sampled_ceiling": true,
-    "first_sample_utc": "2026-11-13T09:42:37Z",
-    "last_sample_utc": "2026-11-13T17:17:24Z",
-    "samples": 5437,
+    "first_sample_utc": "2026-11-14T04:15:41Z",
+    "last_sample_utc": "2026-11-14T07:57:00Z",
+    "samples": 2642,
     "configured_sample_interval_s": 5.0,
     "observed_interval_range_s": [
       5.0,
-      11.0
+      10.0
     ],
     "observed_interval_median_s": 5.0,
     "one_heavy_job_at_a_time_attested": true,
     "monitor": {
-      "path": "build/reviews/resume-20261113/resources.csv",
-      "snapshot_sha256": "c68a95042a13f5fb5209f001639d375f5774084c64c7a152e57f105e665d0e0f",
-      "snapshot_bytes": 244710
+      "path": "build/reviews/resume-20261114/resources.csv",
+      "snapshot_sha256": "ddbea33f8062b31cc2cf5c68fd2f96637179d475ba0d8d6d0c61882587c1d35b",
+      "snapshot_bytes": 118935
     },
     "scope": "Sampled total machine usage, not engine RSS. The hash covers the parsed byte prefix if monitoring continues. Sampling cannot establish every transient peak or job concurrency by itself."
   },
   "known_limits": [
     "Dense native controls do not make reconstructed widths, event radii, height fields or temporary architecture into surveys.",
     "Six tested Baku pixel rays establish old-city exterior ground intrusions, with additional facade/terrain cuts. These are ray witnesses, not six separately mapped defects. The attempted public-paving/foundation repair failed grade/join qualification and remains unintegrated in its preserved candidate archive.",
-    "Malaysia T15 still has zero modeled bank despite primary confirmation of post-2016 adverse crossfall. Exact magnitude and entry/exit warping remain unresolved.",
     "Portimao classified DGT ground yields a maximum 100 m rise of 8.45%, inconsistent with the operator headline 6.2%. The source-definition difference is unresolved; no unsupported vertical rescaling was applied.",
     "Japan now uses registered GSI widths around 10 to 15 m; the operator 16 m extremum is not yet locally registered. Road-top separation at the crossing is not underside clearance.",
     "Zandvoort T3 now uses the measured progressive quadratic bowl and bounded paved bank. Cross-sections and source epochs still carry their stated uncertainties.",
@@ -1585,7 +1665,9 @@
     "Ordinary city facades, vegetation and crowds remain stylized. A visual pass is limited to its exact current scene, whole-route sampled sheets and original critical views.",
     "Automated native/live laps do not establish physical-controller handling or all menu/input paths. Reference clips can contain edited cuts and different cameras.",
     "Only explicit uncapped moving samples establish measured whole-route frame times. Stationary samples and capped image recordings have separate scopes.",
-    "Hockenheim visible stand-front join is closed; a hidden mismatch up to 1.479 m remains outside the bounded repair. No broad earth bank was invented to conceal it."
+    "Hockenheim visible stand-front join is closed; a hidden mismatch up to 1.479 m remains outside the bounded repair. No broad earth bank was invented to conceal it.",
+    "Malaysia T15 adverse crossfall, exit-rise warp and16 m legal-width reconstruction are not yet integrated. The proposed numerical slopes/heights are estimates; primary sources establish qualitative shape and legal width, not a civil survey.",
+    "Monaco measured property roofs are imported, but bridge approaches, terraces, low retail frontage and classified setting remain under review. Never fill the unqualified annex 4420with an invented opaque prism or repaint the actual patio/bridge as vegetation."
   ],
   "circuits": {
     "australia": {
@@ -1648,13 +1730,14 @@
           "Attribution/Sources/australia/environment-provenance.json": "6ec1eefcda7b9b555660e8086a8c9e0dc1d9d890c49064a8279ca1f267b1b5bb",
           "Attribution/Sources/australia/environment-recipe.json": "bb1315f6cbd8dde60c9d9b5e8a5853eddb83e7e5b9e82dcc74f1a6cad68fedb3",
           "Attribution/Sources/australia/layout-review.json": "40bbedc5690ffdc4f2f82e2279d98f4d764e76452105224aed629d4ef4a2094d",
+          "Attribution/Sources/australia/pit-facade-review.json": "4386edae2914df89fe3020d47549848148d05c3b55f1b1157cd6092b109bf469",
           "Attribution/Sources/australia/pit-lane.json": "3129a1739ec11fc4892f0116875803bbb4ea910e1209524310647dad3d9911ea",
           "Attribution/Sources/australia/provenance.json": "58bb5b8a1e82eb72885d0fd9f0e1d64b41903f90ef5a8b0b597823afc154f80d",
           "Attribution/Sources/australia/reconstruction.json": "be9bef8d17d97791f09b0e0aadce088b7e2003abff6d63b92a847d21575c4c5a",
           "Attribution/Sources/australia/reference-index.json": "843792af8f6c92d9dd4b0708f85b48da51fdb3d75c83fc31dea30b7e81d0619a",
           "Attribution/Sources/australia/scene-registration.json": "e04a4188c88763f028dd83d290d4fdad812f60a15513d2b503aa620d450f3224",
           "Attribution/Sources/australia/scenery-terrain.json": "e3a02630754f02da3958f83ad89656fc1b237e0da483e804d42e0191f960d58a",
-          "Attribution/Sources/australia/scenery.json": "7be19ba438ce1b87c60e6be41163ef9b4f46ec5922db16cd2f565211376427fd",
+          "Attribution/Sources/australia/scenery.json": "808b7921478f3275f90fdcea897425690e554424bc2d49c7dd3f0e1602555722",
           "Attribution/Sources/australia/shoulder-baseline.json": "4a18262a579684f7bef4d321479d5064814cc621fd1d86e43243825f088d6310",
           "Attribution/Sources/australia/start-line.json": "c6f9f0d2dc34a4e37a0f0a8b956e0279330fbd6951274182568cd6f2cbb97a94",
           "Attribution/Sources/australia/station-registration-corrections.json": "46d3b2db268d5a917fbf330c9d513d72c2a8dc0601203b6799b7743d85f7c490",
@@ -1669,27 +1752,30 @@
         "accuracy_note": "Dense native samples do not establish survey accuracy. Single-chord grades use horizontal XY chords; 100 m windows use registered station distance and may differ from operator definitions. Scenery ground is a separate source family."
       },
       "scene": {
-        "source_manifest_sha256": "5ea80900a634d562380d6ed6d42ce9c2230c509f4e508ff936bbf4a3f821546b",
-        "native_asset_count": 231,
-        "native_assets_sha256": "772b97d4c9c0cb075689ac557661324e071d1d4c15c0f2f8c71ce777825903c4",
+        "source_manifest_sha256": "6488bd8f6840b061628d3d3423ac494eeea7a94bc90818b85053b940937b5d3d",
+        "native_asset_count": 232,
+        "native_assets_sha256": "06a3e5c913986e509ceed7fb2f9fcf0fdd7ac95406b9e6b764616d997189b80b",
         "native_data_sha256": {
           "buildings.bin": "b1e76f4705e98db022b5af358f3965d03cbc8fff5e139bbb1dad3fc5a713b824",
           "drive_surface.bin": "cc4f53e3bbd34a0e974df682c5514cc2131d1c9d485fbd9b9330f544bb4bd76c",
-          "render_tiles.csv": "37b544e17ecff3dd56512155e8d2937292bcc708ccb3029dd528a89d62a9e7a4",
+          "render_tiles.csv": "b05aceeed9fef6331a0da3bc87a02283ff7da4e87ba8ef38f6f29c4bdcd4f35b",
           "terrain.bin": "1382800585867629b5c85fc07467a9dca5356ed72da50a0c8c70ee9186cf9b5c",
           "track_limits.bin": "4f3de06e8fdd1b5784ca52c921ad516584d725c76986d29aa5271c03a0948a52"
         },
         "tiles": 194,
-        "triangles": 748073,
+        "triangles": 756813,
         "maximum_tile_triangles": 52622
       },
       "visual_review": {
         "decision": "pass",
-        "notes": "Latest exact-scene review retained; source limitations remain explicit.",
-        "historical_evidence": [],
+        "notes": "Reference-era two-storey pit facade, glazing recesses, terrace, blue garage frames and roof flags pass current visual review. Mapped parcel is fixed; storey heights and bay dimensions retain explicit reconstruction uncertainty.",
+        "historical_evidence": [
+          "build/reviews/australia/resume-scenery-corrections-live",
+          "build/reviews/resume-20261112/australia-887f09f0-review.md"
+        ],
         "report": {
-          "path": "build/reviews/resume-20261112/australia-887f09f0-review.md",
-          "sha256": "b65600053d54a2820566cbd4ccf23c61a9dffa958fe1dcf249d7f58388387734"
+          "path": "build/reviews/resume-20261114/reviews/australia-c0832124-review.md",
+          "sha256": "e1df074e8a8984fb6a9022a34986cd02ecb1ee1bce3419466af3b28910e96aea"
         },
         "native_lap": {
           "slug": "australia",
@@ -1706,30 +1792,30 @@
           "sha256": "3acfd8cc5516dbe22685cb4cb82c9ebf365dc2f81eb3c3e3ea374f64e00bce68"
         },
         "live_evidence": {
-          "packet": "build/reviews/australia/resume-scenery-corrections-live",
-          "captured_package_revision": "887f09f0002522423e4737a1cb102523587bcda2",
-          "package_manifest_sha256": "3e6f4f94e9cee3c70ab914cb886cc2d75418d2f806a50f5909d99a01256f149f",
-          "summary_sha256": "51dfb36a66ea88271b427e88194b0ceb0063bbf679ba5947bc39598dc55994dd",
-          "archive_sha256": "674a9c49ac4dbaab30f40a8800b6338a5b60b0dcd3cceaa0b741c46af48285f8",
-          "target_index_sha256": "945e52968faaa7657f7e64cd909788b517951363822943c5ed0a8072b3458a00",
-          "selected_index_sha256": "8a63eceac120b4ecbbc31925fb4df4191ded6d695c6af07cd678fe6903a6be4e",
-          "frame_count": 4341,
+          "packet": "build/reviews/australia/resume-20261114-second-live",
+          "captured_package_revision": "c0832124fa6d92d73e9f609e22bf60ea39464192",
+          "package_manifest_sha256": "fbe5a41f354220172c02bcdf2b7f1007961b0733479fe75e6d1a036208f4657a",
+          "summary_sha256": "c2b159b518e29a99c8083d87cafe6472b1e265683829649d34f1ab6b603c48b0",
+          "archive_sha256": "57f452d27b197d349bcba632f97e42dcda9e00655381726b612ae348afd7a75e",
+          "target_index_sha256": "aa13c440842ff3f1425aed75699b46f01bd270c11be5bb71f3b85d2ca96f3cb0",
+          "selected_index_sha256": "7e70f31d0e2c05d0ea74b6d16f8612f6d20fb4ce8bb0c546fabe4549f1c90aa8",
+          "frame_count": 4366,
           "station_bins_visited": 125,
           "station_bins_total": 125,
-          "maximum_circular_frame_gap_m": 21.1806640625,
+          "maximum_circular_frame_gap_m": 4.89111328125,
           "clean_live_recording": true,
           "contacts": 0,
           "offtrack_frames": 0,
           "airborne_frames": 0,
           "maximum_visual_penetration_m": 0.0,
-          "complete_video_frames": 4341,
-          "video_sha256": "292df4ed1ea5355c62fc1fb58c3984a61a2fd59085ab2ec68fe326329cf260bd",
+          "complete_video_frames": 4366,
+          "video_sha256": "bbc66c7fcfecebfb1a935537d46299089020d19488f003cf15b17859bfb7082a",
           "journal_sha256": {
-            "frames.jsonl": "7dc3cc6e529efb3c1f010b5f6311d42902527b68d646c3639a52cce7839fcc01",
+            "frames.jsonl": "1e85aac7992b2706b845fa87b8be7a25c1a20181428c1080507271126649b334",
             "inputs.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-            "ticks.jsonl": "b6468024af19cd34dc1c8f43ff041da02a0782da2a21eec1ce8f087c3ddd0e4e",
-            "steps.jsonl": "33f715d7920fd5a085a430805a00eb2a73958b3a4fd521d090ea9c536452a5e1",
-            "session.json": "7bba27c7dfc2b2ead2e69515f32f98bb8d1140049c8abf2629f9292e30f63bc8"
+            "ticks.jsonl": "1000b64ef0d911da4f346f413d0daefb5f2609939b1da4b89a7dfa23ef5d7dd3",
+            "steps.jsonl": "a27e9d3723e99b8f49b6f469a53ce646da711ceabe51efb9e9220f82b508a9e5",
+            "session.json": "42bc2e2992e0cafc6d1235c2c66f69e53548d345d62280d792adc7a8b3867dfd"
           },
           "capture_conditions": "Production live cockpit with image recording. Capped/readback/encoding frame intervals are not uncapped performance measurements.",
           "dimensions": [
@@ -3261,6 +3347,7 @@
           "Attribution/Sources/jeddah/elevation_samples.json": "e2e2cd6a5a3dd086fc1e913b3fbaefd29f639d12caed71746581b6af29751faa",
           "Attribution/Sources/jeddah/environment-recipe.json": "0363e44f9d342c592e44f75886aac65b55c43583b3e26fd95cb5b07d3e2acfda",
           "Attribution/Sources/jeddah/lagoon-17098729.osm.gz": "fc11e347cc4c8021ba94449a5f7e036ad13f2cd743b2d0f9e9cc65b3dd3418ab",
+          "Attribution/Sources/jeddah/pavilion-facade-correction.json": "811ac2f515b77506b980818720f9701cc338a4b2c49cefefe10d2c4799763973",
           "Attribution/Sources/jeddah/pit-facilities-review.json": "44ab4cf8173b05dee6a2cb24e8c1aa847a1b701a2f191ce7a10d11b82c0bc547",
           "Attribution/Sources/jeddah/pit-lane.json": "c841f44eae0bf61ee89e9d87408c415cdff7a1e59e16b18db5ef8184e6f3de94",
           "Attribution/Sources/jeddah/provenance.json": "a419ee0fd40621175d9f3a4a39577a560a20109851515df66448f4449845cf8c",
@@ -3268,7 +3355,7 @@
           "Attribution/Sources/jeddah/reference-index.json": "5324a50dda0e3bec798f2b88a8e083fb8e2f6aff62ef0644f6412947377db9d7",
           "Attribution/Sources/jeddah/scene-registration.json": "59960e5d8c625895d5a34454f7d46887c305ccad76c3d0fa3111aeeab7241d02",
           "Attribution/Sources/jeddah/scenery-terrain.json": "9b8f1377e1811c455a017310e59eee730c7f65c2e7673e2c2edab1fe0c0bdaf9",
-          "Attribution/Sources/jeddah/scenery.json": "ba6aaf1a8c95c2c655c2f0ac54106410434c6d28b94e36eb2d33c6b0859057a1",
+          "Attribution/Sources/jeddah/scenery.json": "ca963246116861d98a26807c70c59d2438cd887f5f19dcc5925eef912a2ded97",
           "Attribution/Sources/jeddah/shoulder-baseline.json": "f9efc39e5ab4394a503640a33afaf86787c5a4da5670e0e3a3e966559bc922d6",
           "Attribution/Sources/jeddah/skyline-residency.json": "0cfe6adc0f287df1f7922491882a53d4714f4f6309c212544af208288e6d5906",
           "build/circuits/jeddah/road.csv": "0fd64b395d06164a211d59e962a59357fd833a0cf671b2a7542517b2fce4df67",
@@ -3279,9 +3366,9 @@
         "accuracy_note": "Dense native samples do not establish survey accuracy. Single-chord grades use horizontal XY chords; 100 m windows use registered station distance and may differ from operator definitions. Scenery ground is a separate source family."
       },
       "scene": {
-        "source_manifest_sha256": "9a24682f82d7253e35a1b3630380f91d189d03f39bbb82850144bc27bf2fcba6",
+        "source_manifest_sha256": "4e27d253cee28c2d51a8694e6f6ae3c9128ec0eb9126e4f5ce7ef8eb898752c2",
         "native_asset_count": 189,
-        "native_assets_sha256": "834c8c8b042a2a39dcedc105be35578a92b96b64f60ac7328228ee39f59c5bec",
+        "native_assets_sha256": "dc79579d225b5f847cb68671e7d1ba37865030795db825d1673c606ed2f22b81",
         "native_data_sha256": {
           "buildings.bin": "7e429e2da5a9f6a9d3cfd33641917b8ba942df48dea762ffd43c6dd6d41c3959",
           "drive_surface.bin": "86ac9b9b678308d892ee45f96061bee4ae87afbda9aaf7791eb9bc0166c365e6",
@@ -3290,19 +3377,21 @@
           "track_limits.bin": "4a5b59668b05add5efeb47e6e98b55a7a31704978acb886f9009c16c8defb5a7"
         },
         "tiles": 141,
-        "triangles": 1040495,
+        "triangles": 1043795,
         "maximum_tile_triangles": 105712
       },
       "visual_review": {
         "decision": "held",
-        "notes": "Road/bank/kerb continuity passes. Urban context remains underbuilt, including the isolated low pavilion and sparse street/tree context. Diamond geometry stays in the source-supported construction state; the corrected named residency rule is not a complete city-fidelity fix.",
+        "notes": "The articulated pavilion is shipped. Wider city/context density remains insufficient. Diamond is faintly visible behind the lamp and is not a current residency omission. Sail/Shangri-La lies behind the5450 m exit camera and does not establish its missing ahead context.",
         "historical_evidence": [
           "build/reviews/jeddah/resume-20261113-corrections-live",
-          "build/reviews/resume-20261113/jeddah-corrections-review.md"
+          "build/reviews/resume-20261113/jeddah-corrections-review.md",
+          "build/reviews/jeddah/resume-20261113-final-live",
+          "build/reviews/resume-20261113/jeddah-final-followups-review.md"
         ],
         "report": {
-          "path": "build/reviews/resume-20261113/jeddah-final-followups-review.md",
-          "sha256": "e02425589107c90442dd379355aafcaefb169940dd8635a6c427b5f04c57432a"
+          "path": "build/reviews/resume-20261114/reviews/jeddah-d3bd1953-review.md",
+          "sha256": "ee4579fc03b4f6fb626c8a2457f1d34a7ef6bdc823d99313affeb616d37d9bb7"
         },
         "native_lap": {
           "slug": "jeddah",
@@ -3319,30 +3408,30 @@
           "sha256": "c8d363abe665f64fe96648643a5701ae8d6b03d3fdf9e02858102dccb0d6c76b"
         },
         "live_evidence": {
-          "packet": "build/reviews/jeddah/resume-20261113-final-live",
-          "captured_package_revision": "0e32f07506d91a4befba1a788b48c698aedf632f",
-          "package_manifest_sha256": "b7d03eae22002e98bb78086a682197f32bfdb47ba3326f7a6645aa25537131ee",
-          "summary_sha256": "461fbb6a6c175b5c31fc853b7c375e56ab75152df37db7c11f2366bfb1427bfb",
-          "archive_sha256": "b7395286ce1f38dd842c19bee2bc01b3db36efb87a10157e495f3638a8e0f5b9",
-          "target_index_sha256": "b649d6df54a9c6f8baff4d65e83caed007ab22555270241d8f780f710e533a11",
-          "selected_index_sha256": "251fe47eae261934a1a34303e915476eb61f593997b763a17a20b93b236c99bc",
-          "frame_count": 4990,
+          "packet": "build/reviews/jeddah/resume-20261114-first-live",
+          "captured_package_revision": "d3bd19532a70fc3f260d37e71bf6e4a7759c08ec",
+          "package_manifest_sha256": "d399067ac8cd377701168ba681de5c82d1d499c8a8ccdf9702fb9468a768b3ca",
+          "summary_sha256": "938db49c91fd5fbe1f6ef41c34f7fb0460d7e3cea61cacdb329f745c9347d1d4",
+          "archive_sha256": "48c78bd3011e350fe5044ae57d8824446831ee3c28ef9c9ceefff10cc1a0571e",
+          "target_index_sha256": "245b4968f5bf0abf74c689b279a331646c2baaf1b299e5b10400fd82c9691cff",
+          "selected_index_sha256": "2011332418410f0e1cbf0d72e0b02ade5185d7faa721e82aec371b87af8c4cfc",
+          "frame_count": 5003,
           "station_bins_visited": 125,
           "station_bins_total": 125,
-          "maximum_circular_frame_gap_m": 20.220016479492188,
+          "maximum_circular_frame_gap_m": 3.274965286254883,
           "clean_live_recording": true,
           "contacts": 0,
           "offtrack_frames": 0,
           "airborne_frames": 0,
           "maximum_visual_penetration_m": 0.0,
-          "complete_video_frames": 4990,
-          "video_sha256": "4efd1be8122475147b1a221337da97088b8282535055482273d78e1312b0aa05",
+          "complete_video_frames": 5003,
+          "video_sha256": "2c7035808ab808cddde2562e0916c66ccf0911343bfb1e17b460417c64ff9916",
           "journal_sha256": {
-            "frames.jsonl": "e34cc7ab7500a4e3733284585df219f2c7550e47dfd7e74573a4736633e0d8b5",
+            "frames.jsonl": "3a62571ec734e4432b5741818a2afa359677135b190c2fdf2ef456eb78935142",
             "inputs.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-            "ticks.jsonl": "fb023fad45f0798222c14e88ca8f148a368ce3386d9c6da7402c5399b87f8fb3",
-            "steps.jsonl": "65b578fca681169e3605f84e58f2be88479d73b2a43a5f8bcb4b1d18928cd140",
-            "session.json": "8a8a592f20b924fcefdd3730a3846144dd651bfdd9d0900d927370fb0ccc6826"
+            "ticks.jsonl": "79c2e1233a15f1feb315691f548b8525b7e174310bd87af7977e790920aacf92",
+            "steps.jsonl": "fe95e057345d35eab4f7ec32743c79988003edec6bf5f272fcd13a7063f4130f",
+            "session.json": "201d6d4bd22502c7ad3d8aa21eeeda0ea2e957f9c441a0e174bd8836a8a7784e"
           },
           "capture_conditions": "Production live cockpit with image recording. Capped/readback/encoding frame intervals are not uncapped performance measurements.",
           "dimensions": [
@@ -3358,7 +3447,7 @@
         }
       },
       "source_limits": [
-        "The Diamond tower residency omission is corrected without changing its source-supported construction state. Secondary street/tree context and the isolated low pavilion remain too sparse or simplified. Edited reference inserts do not establish a missing named tower."
+        "Diamond remains a source-supported construction skeleton. Low urban frontage, mall and tower subparts need mapped/photo qualification; do not extrude an entire podium as the full-height tower."
       ]
     },
     "malaysia": {
@@ -3561,6 +3650,46 @@
           "Attribution/Sources/monaco/alignment-refinement-base.csv.gz": "ff6295609ae5eaecf59ab75be4fc52f800b1710255b160a2ee1d3d1f4cca00e2",
           "Attribution/Sources/monaco/alignment-refinement.json": "395fc471a12ae4e41b9b366bc517c3ffc78caa16a8d5641c9559c67a4abba8d7",
           "Attribution/Sources/monaco/architecture/beau-rivage-context.osm.gz": "81702d17f641da979a04ea46ea0db2393d63d13a4f755eb8b3a4e2fa2d32a230",
+          "Attribution/Sources/monaco/architecture/costa-ground/00000.request.json.gz": "f9193d9c5465a951224ff88c62184081d2e01fdd44708129d8d4e01d45a97b69",
+          "Attribution/Sources/monaco/architecture/costa-ground/00000.response.json.gz": "bba0a476be7bb2a6eb65ac11435bdab7666ea8603a6e69532c9ae59ead6fe968",
+          "Attribution/Sources/monaco/architecture/costa-ground/00100.request.json.gz": "9802a548cc11fde1cab0398fac0e3d14bfdda391dd891bddf09c74a2d6b18041",
+          "Attribution/Sources/monaco/architecture/costa-ground/00100.response.json.gz": "252195ef0381d601d0c479e7bdea4e953ef0a8b62028f7c070911d412a82db9a",
+          "Attribution/Sources/monaco/architecture/costa-ground/00200.request.json.gz": "47190e1cbd3b0b19a3fb43ade71df633641cd5f188bd6b5e9400d3546aae336a",
+          "Attribution/Sources/monaco/architecture/costa-ground/00200.response.json.gz": "5198f62f825cdd1c172c0d6e64e3cc315cd49798a0f6577b690413ae86ccfca0",
+          "Attribution/Sources/monaco/architecture/costa-ground/00300.request.json.gz": "effc2e13abdbd1d179d9b1c2b28c60694d4e8f75e17e6f3816162a5ef988c6e7",
+          "Attribution/Sources/monaco/architecture/costa-ground/00300.response.json.gz": "9104259750e3895e6eea04118d5643917fbab9037ca194eae43109e8039de685",
+          "Attribution/Sources/monaco/architecture/costa-ground/00400.request.json.gz": "3794e833efd25f4f44dd7d3391457244cb1807fb528502af6fb32b735ad6077e",
+          "Attribution/Sources/monaco/architecture/costa-ground/00400.response.json.gz": "f0b1b39fc65acddd958b7176266ed42922dcc4ab85f632b4da24d9620241f72a",
+          "Attribution/Sources/monaco/architecture/costa-ground/00500.request.json.gz": "b26d2991a062640fe16b5eccca306b5a9eadad65f16a4eefe0f6c085af682f56",
+          "Attribution/Sources/monaco/architecture/costa-ground/00500.response.json.gz": "cd79dc191e2c39d6fcd6d173aa796da7b6a95dcdc4869574aaaf7a7675e6cc1e",
+          "Attribution/Sources/monaco/architecture/costa-ground/00600.request.json.gz": "2080668a439579b3b57bba1d7bac9840c6d592349f65a3279f89bed8b5d68431",
+          "Attribution/Sources/monaco/architecture/costa-ground/00600.response.json.gz": "88d5699220bcc586dcc00667d24bfa0c3926ed3f1a776cc4f748a8313763eddc",
+          "Attribution/Sources/monaco/architecture/costa-ground/00700.request.json.gz": "16811ea93d6c877e84cafaebe1b2e3f7af75fe9cd614b7b0d681b30b65e96702",
+          "Attribution/Sources/monaco/architecture/costa-ground/00700.response.json.gz": "c3cffac35565d1d1900b88cde8c24999e414c2a95934deb5fd36658b36ceef22",
+          "Attribution/Sources/monaco/architecture/costa-ground/00800.request.json.gz": "7a61d929a766e96874393547a1a14b3ae5f7b919e1dc7be2a51a5f61c607b979",
+          "Attribution/Sources/monaco/architecture/costa-ground/00800.response.json.gz": "30fdbf7d1b044dfec98a0e6f8b0a6b70925ae635d2fa7a0eef1bb534b8ad0ffe",
+          "Attribution/Sources/monaco/architecture/costa-ground/00900.request.json.gz": "716a88806c0170d17f6491766bda6d0c79f50df2b77917513ffec4f1d6ad5921",
+          "Attribution/Sources/monaco/architecture/costa-ground/00900.response.json.gz": "bdd8ab9eba25f01e1e1acc7ef1d69edc9ed948996201b3525d337a9a784d8430",
+          "Attribution/Sources/monaco/architecture/costa-ground/01000.request.json.gz": "5a263beddd1c55ddbc3c8e1de5cd32af4e50ab67ad5ac088cadebd4f1884a7ef",
+          "Attribution/Sources/monaco/architecture/costa-ground/01000.response.json.gz": "655d2dac5b75a9fb2a8ae62e52c37a6aaa84661fbeb2d51ec9bac221da4eb199",
+          "Attribution/Sources/monaco/architecture/costa-ground/01100.request.json.gz": "3894dc769740e3ed769e83b64d6aa8cd65bb8252c29e0ad30ee5662dc9c2f681",
+          "Attribution/Sources/monaco/architecture/costa-ground/01100.response.json.gz": "c4e706cfbba100095537cf2923e53854733a55b1cc71448b23dd26bf0d0b7e65",
+          "Attribution/Sources/monaco/architecture/costa-ground/01200.request.json.gz": "a21ff016f3832005fb299e64e222681da5e66c850b67b54c1241d19d0b98b049",
+          "Attribution/Sources/monaco/architecture/costa-ground/01200.response.json.gz": "975f54988d36d5a7bacfda00bf1c1d9131e661472b5a29031be29c788a5c92b8",
+          "Attribution/Sources/monaco/architecture/costa-ground/01300.request.json.gz": "5c3673ccb0230172b997923b1f82ad0d9e065da5afdad99ee30fe89e0bb06cbf",
+          "Attribution/Sources/monaco/architecture/costa-ground/01300.response.json.gz": "070e76f866666699fc4d33573fda24bf9559ff7989da1966d6034d20743913b7",
+          "Attribution/Sources/monaco/architecture/costa-ground/01400.request.json.gz": "66036fed7cc9782791f51150f3568a0442aa75d8d6d64ea6b11ff58e00e5144c",
+          "Attribution/Sources/monaco/architecture/costa-ground/01400.response.json.gz": "3dcdf9db5c2806f2ddbac1ef848993b058a06b631950d3e1c0973276ca0952d6",
+          "Attribution/Sources/monaco/architecture/costa-ground/01500.request.json.gz": "199b09361860f1fa3bd4620a323d16a35db38491b587fe36a8288146852e5245",
+          "Attribution/Sources/monaco/architecture/costa-ground/01500.response.json.gz": "8152c78f542b23d327120b5783efe2fda0a97689bfb5ab4286e6a22c047359ae",
+          "Attribution/Sources/monaco/architecture/costa-ground/01600.request.json.gz": "3236f7d47957f260d8c8cb4f8a28f57732aeee6bd846af8d099befdf793e1c44",
+          "Attribution/Sources/monaco/architecture/costa-ground/01600.response.json.gz": "46fd4c05220e37c896a99f1888aeae47328fe2ae99b1cf3f74f46de30f699cc3",
+          "Attribution/Sources/monaco/architecture/costa-ground-grid.json": "93d65b3ab96c5586fe44516b7c034fd872129969654f1b030f8d1dde98388bbe",
+          "Attribution/Sources/monaco/architecture/costa-ground-source.json": "01b835c5dceb5a58f66c8c0d488034242464f227dc23d6529d74ae9189b8a399",
+          "Attribution/Sources/monaco/architecture/costa-landcover-provenance.json": "e06d0deca7df067205751b6eca71cabab31e237ba4fc21ab4ebe96cebb06dd41",
+          "Attribution/Sources/monaco/architecture/costa-landcover.json": "01f4df864469547c173be995cf852a4aac2f26cf2ab25f41a1f6a2d14c985fe0",
+          "Attribution/Sources/monaco/architecture/costa-properties-provenance.json": "eea257327c8fd992d659e1c0edea44dac6c32637dac40ccbb6c43a8d75506862",
+          "Attribution/Sources/monaco/architecture/costa-properties.json": "5c48b465c9ae29df8c94e4c93fe82a4889a730080dd53a8bc3fb90a8b55260b4",
           "Attribution/Sources/monaco/architecture/fairmont-garden-frontage.json": "844bcf2515c008fa00434aee221bc41f812e943318c2b80f7a203c2d6d8da8c0",
           "Attribution/Sources/monaco/architecture/hillside-buildings.json": "bc96fa65377c71c3325b3b92c2775cd74d99f1afbe7255b8cc2cc389898f4eab",
           "Attribution/Sources/monaco/architecture/hillside-vegetation.json": "bff61d3fe44f10429d3355e5c5c7fac7ffd67162d60598a0a496ad20a2c63acb",
@@ -3631,14 +3760,14 @@
           "Attribution/Sources/monaco/property-architecture-correction.json": "1992d5e1c1b6bfdd1f5c3888c3a9326729862058c9ca62cdadcae5b1078b9ade",
           "Attribution/Sources/monaco/provenance.json": "0fea60646f17427ad9840be166b1bbc180124a44ad73ea6e4832d5656a3e9101",
           "Attribution/Sources/monaco/reconstruction.json": "1095d9731133827437a27f05b17d56e14111a691ae0fff4ae1c9f5acbc31d8fc",
-          "Attribution/Sources/monaco/reference-index.json": "18ee88dd299d8801fe844baa9e2e9598ece68ccb24aeba7f57b87eae849a6f40",
+          "Attribution/Sources/monaco/reference-index.json": "7e4eeb94facd312b004e2594dcec8061cac03bb35538eab137b943ae327647cf",
           "Attribution/Sources/monaco/rocher-district-provenance.json": "6f7711cf23551674390f7a2b444bbe2405c110557275c3dbe5eb62b18932fc2d",
           "Attribution/Sources/monaco/rocher-district.map.osm.gz": "16cf5894af02deacbd41463d4c08887cf698f9509945d927ce2b77baaef79f8c",
           "Attribution/Sources/monaco/rocher-district.osm.json.gz": "4192b8555bd4964cabd4e8742fc81bb2e93b7fb20dc2a310326a160eaf07a886",
           "Attribution/Sources/monaco/scene-registration.json": "bd101b3491a0b3645640b89506021431545c06fe97292b1b0b2fdf0ab3940099",
           "Attribution/Sources/monaco/scenery-ground.json": "39a525148c0c00015b75f9a8b9ce8870279fb5d8b240caca71525b3d73834044",
           "Attribution/Sources/monaco/scenery-terrain.json": "be9e386f186cec44663ace0a2096b1cc93f047306ac44acbaa85571b83873dea",
-          "Attribution/Sources/monaco/scenery.json": "169c9dc37af4dcc4edbc73236235d7e27edcd867bfafcb00e6419f325ea1d594",
+          "Attribution/Sources/monaco/scenery.json": "3759f0db91e03aae1bcbf26b5a62c7846d846cc02e52682d2747671a6330f556",
           "Attribution/Sources/monaco/shoulder-corrections.json": "a9d6c17b82e40d8f095fc0810b8aca15e373e980fabafef4f1268a95c5f39baf",
           "Attribution/Sources/monaco/start-line.json": "1827e8734b72397a51e505844ec15834a73c3a7abf3f2f64a7e3d6febcc41285",
           "Attribution/Sources/monaco/tabac-frontage-correction.json": "3b8584878c16a6e42900c93d9932d9fc6d4c0b7e3b4f8773342fbf81d31e1acb",
@@ -3650,32 +3779,34 @@
         "accuracy_note": "Dense native samples do not establish survey accuracy. Single-chord grades use horizontal XY chords; 100 m windows use registered station distance and may differ from operator definitions. Scenery ground is a separate source family."
       },
       "scene": {
-        "source_manifest_sha256": "965ec16d9f0ac59aab01a7fa124169fceedf8f1209aba12cb95a5d6070bb4a20",
+        "source_manifest_sha256": "97ad034661cb4a8f844133a0877b6e55d10ce794b3cc7bf3ce12f11b58a7d70e",
         "native_asset_count": 154,
-        "native_assets_sha256": "d18c644591dee3e0e763d7a3d45d8491f0decc69a707da9286c263f3a0fcaa59",
+        "native_assets_sha256": "d9b58553ed2b6a55e836d442470d03ad337fbfe6e5ac108653004837d59c7afa",
         "native_data_sha256": {
           "buildings.bin": "c7e89a92bca0411eec419b718ba140b2fb7c6c54ee12f23267f564da17469507",
           "drive_surface.bin": "3a7544d64e64e34c445dbf4049745ad0e2fc4f2d8e96dcf6d29b2c8ee7f67df3",
-          "render_tiles.csv": "678b3a907ea1cdb1e467f5e03667955de861ae43b9a0c86640452697036199ab",
+          "render_tiles.csv": "180109c2f0e9b57217ed78da179adf852581461d8bcc06a7cdd90936016da697",
           "terrain.bin": "f1538f328db1481498922f0c8d143010e2a9bcd9c17cb30b52457605ac30a21a",
           "track_limits.bin": "85528c1cf80cda2568fc1c22cbe69a96c7de48f48880ee19184a68db336b07ce"
         },
         "tiles": 116,
-        "triangles": 2252737,
+        "triangles": 2279250,
         "maximum_tile_triangles": 400000
       },
       "visual_review": {
-        "decision": "pass",
-        "notes": "The unchanged opening hillside and current whole route retain their reconciled visual pass. Newly recovered IGN property components independently establish a source-completion hold for under-modeled Casa Mia and Villa Marie Antoinette bodies. Neither status implies the unapplied property repair is complete.",
+        "decision": "held",
+        "notes": "Measured multi-component property envelopes are imported. The exact 200 m view still has a coarse faceted slope and hard green wedge; source registration identifies bridge, patio, rock, vegetation and the held annex separately. Bridge/terrace/retail candidates are private.",
         "historical_evidence": [
           "build/reviews/monaco/resume-20261113-corrections-live",
           "build/reviews/resume-20261113/monaco-corrections-review.md",
           "build/reviews/monaco/resume-20261113-final-live",
-          "build/reviews/resume-20261113/monaco-final-followups-review.md"
+          "build/reviews/resume-20261113/monaco-final-followups-review.md",
+          "build/reviews/monaco/resume-20261113-refined-live",
+          "build/reviews/resume-20261113/monaco-refined-live-review.md"
         ],
         "report": {
-          "path": "build/reviews/resume-20261113/monaco-refined-live-review.md",
-          "sha256": "6bcf256b820605e5973f5b337ad3d77eb580cc76b539df6a9a6b000c76860ab8"
+          "path": "build/reviews/resume-20261114/reviews/monaco-c0832124-review.md",
+          "sha256": "004c03349f570ec86d7a8098fc43870d14bd67c0333840ff673947acf6a1be49"
         },
         "native_lap": {
           "slug": "monaco",
@@ -3692,30 +3823,30 @@
           "sha256": "496cc758fb69c9ae47712cde6d7b19d9a36cd463c9d95e4bd1b5cfd7489eccb8"
         },
         "live_evidence": {
-          "packet": "build/reviews/monaco/resume-20261113-refined-live",
-          "captured_package_revision": "219ac9a795ba6b2ede38c27c7a89f3c9decfd43b",
-          "package_manifest_sha256": "85aa042a6d5d714fd18b2109d6c46885fed367628efad9a50688815d3ed5a6c9",
-          "summary_sha256": "2151c9a37a267907dd3e52f2949bc8d9cc4b720dac960eac9f5d01e1bdc857de",
-          "archive_sha256": "24be91b793bdccede5ad9090c5236ca379875a1bfbe00c00ce0c25db6c34fe58",
-          "target_index_sha256": "4c4253b14972b40203e0e8d2795773fca274659fff6263870d9929a1dc592087",
-          "selected_index_sha256": "6425e0287a22cc73e44ed2568a1001da97c86111b14d60b0893f728b39d40061",
-          "frame_count": 3784,
+          "packet": "build/reviews/monaco/resume-20261114-second-live",
+          "captured_package_revision": "c0832124fa6d92d73e9f609e22bf60ea39464192",
+          "package_manifest_sha256": "fbe5a41f354220172c02bcdf2b7f1007961b0733479fe75e6d1a036208f4657a",
+          "summary_sha256": "0a0b1fc79e772ddaf8f738536b10657d8e73cfb3516aa04a6ddebe54a5d1593b",
+          "archive_sha256": "82eadbb61f6928f241c8933dac9abd352ade18cb18e3e5081be7f5461df87b27",
+          "target_index_sha256": "5348fa17c68e89feb74ca20af18b89465426e128988cfe7171a724d5fb312491",
+          "selected_index_sha256": "f91fe623bfc63b15d67c54b309824965115c9cc0ea664644aeba8afe7df02e11",
+          "frame_count": 3934,
           "station_bins_visited": 125,
           "station_bins_total": 125,
-          "maximum_circular_frame_gap_m": 6.79217529296875,
+          "maximum_circular_frame_gap_m": 5.1536865234375,
           "clean_live_recording": true,
           "contacts": 0,
           "offtrack_frames": 0,
           "airborne_frames": 0,
           "maximum_visual_penetration_m": 0.0,
-          "complete_video_frames": 3784,
-          "video_sha256": "1e48df15611902dd98c46cce78365e60a1a5db2dceb52546acb007f66be9925b",
+          "complete_video_frames": 3934,
+          "video_sha256": "95b05ce027296a22f4b17c8ad19dd8102ae9a90b8d7ae545d8164ea806bf109d",
           "journal_sha256": {
-            "frames.jsonl": "075f07b677a7c29a3728d0181fbb0d9039d09a76bb0bd88b7f67d272a7451040",
+            "frames.jsonl": "834c8800f9ac7a0fbea1243bcc49084c119d6cd7eca1be2d97ea6aa0ae4654f8",
             "inputs.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-            "ticks.jsonl": "ad13f863c92291ff793c4506f664a3b39b7eaa45da9431471e0bc0f2258ff665",
-            "steps.jsonl": "36e432cd7d96b585b4dea75d084d6787f83abac9e745235f514dcec5a34d04f0",
-            "session.json": "44288c587e9eaa94c26345c7f95f3afe911d6bdbce827f83ac0cef9f57a8a1cc"
+            "ticks.jsonl": "e3af98601ea8b2766ff4d724f6ccca846cea213baa089dbd0cd656df2700e3db",
+            "steps.jsonl": "3a36e7e2852b65ff000d39552b619e5488fa44725b718288a4864529e3f63e49",
+            "session.json": "92bd25e6ea47b1c7e8afadf5b7ec02e2849c6b9b06a6aa6ddd93aff6f0d2baf4"
           },
           "capture_conditions": "Production live cockpit with image recording. Capped/readback/encoding frame intervals are not uncapped performance measurements.",
           "dimensions": [
@@ -3731,7 +3862,7 @@
         }
       },
       "source_limits": [
-        "Casa Mia currently has a flat roof at 24.741 m absolute versus matched component roof boundaries from 36.5 to 55.3 m. Villa Marie Antoinette is 49.431 m versus 54.8 to 56.9 m. Source plan/vertical precision is 2.5/1.5 m. The candidate envelopes hide three of six tested hillside rays, leaving the lower gray slope unresolved. Preserve measured terrain and the actual mapped garden."
+        "IGN properties retain measured component envelopes and declared source precision. Setting bridge/patio/rock surfaces require separate modeled surfaces; annex 4420and exact event chronology remain unqualified."
       ]
     },
     "portimao": {
@@ -3900,7 +4031,7 @@
       "profile": {
         "samples": 8192,
         "length_m": 4940.0,
-        "sampled_plan_length_m": 4939.9784104601285,
+        "sampled_plan_length_m": 4939.978508156961,
         "native_start_station_m": 0.0,
         "native_station_spacing_range_m": [
           0.6030199999995602,
@@ -3908,13 +4039,13 @@
         ],
         "relief_m": 5.299944457091399,
         "full_width_range_m": [
-          12.0,
+          8.8000002,
           14.0
         ],
-        "maximum_rise_percent_single_native_chord": 1.389843880979451,
-        "maximum_rise_station_m": 2873.42529,
-        "maximum_fall_percent_single_native_chord": -1.3518223725026728,
-        "maximum_fall_station_m": 3346.19873,
+        "maximum_rise_percent_single_native_chord": 1.3898627300515545,
+        "maximum_rise_station_m": 2867.99805,
+        "maximum_fall_percent_single_native_chord": -1.3517401254600991,
+        "maximum_fall_station_m": 3347.40479,
         "maximum_rise_percent_100m_station_window": 1.2978943093647106,
         "maximum_rise_100m_start_station_m": 2822.771,
         "maximum_fall_percent_100m_station_window": -1.3156912187129812,
@@ -3943,104 +4074,117 @@
           "Attribution/Sources/singapore/alignment-base-road.csv.gz": "7227355da32561df78c521de2e53c2d46378790a213eafa3f6b799fe156f3027",
           "Attribution/Sources/singapore/alignment-corrections.json": "da492d906bc96ce7f6d093fbed42c657dd5f49e84e1c06e64b489582f905de66",
           "Attribution/Sources/singapore/alignment-refinement-base.csv.gz": "4647a95bed4707b9f5607d116f3dbb2e19092df29cdbe1ed82671d046a1607e6",
-          "Attribution/Sources/singapore/alignment-refinement.json": "20e8aac6dec2106149f574e2532c83e012282177a7ed06f64f1ef9e3b418a135",
+          "Attribution/Sources/singapore/alignment-refinement.json": "ce3dbab34e1b0b87c539484779b1a417abdcf4bfd4c437b55bac11f9d97580b4",
           "Attribution/Sources/singapore/alignment-review.json": "81ae4b40569cdaefaf415f9443f774d134f29253b5e333a279c300b341edeb31",
+          "Attribution/Sources/singapore/anderson/alignment-refinement.json.gz": "5d3e52bc349a76007a7fc227da91805a2a68e318a50a60f67a38cd82496c0133",
+          "Attribution/Sources/singapore/anderson/environment-recipe.json.gz": "831e584b2f8c334b8881221a7fa5280f6f60f9a9c9f5b1f557cedac3460e57fa",
+          "Attribution/Sources/singapore/anderson/pre-bridge-width.json": "86aadad9e1a38267be0687d2a39928185fc3c124ca628ecb0b33f1c31ff9b264",
+          "Attribution/Sources/singapore/anderson/provenance.json.gz": "592b149658211f286f5fe05b1936853eab7c48e98dee894d474782b8f18c19d9",
+          "Attribution/Sources/singapore/anderson/scene-registration.json.gz": "75be25774edc5ee8605e019c8974b3a67ff87b95f6c7e8bcf08f0c4f31fdbf00",
+          "Attribution/Sources/singapore/anderson-bridge-review.json": "01b33167120aa079cd3507b67a5a44bf43f5a4d7c6f0a487ef81eef6cf7dcfac",
+          "Attribution/Sources/singapore/anderson-bridge.json": "67a1581eae019692916c5ab2a098dfabdf44570161722dc97b2d046329121c7a",
+          "Attribution/Sources/singapore/anderson-bridge.osm.json.gz": "093861a59f632c39f1102818368ea6cfb509a964db6d3ed896934200e3372bda",
           "Attribution/Sources/singapore/barriers.osm.json.gz": "5539341bb66e9d10e9f78423e7eb93b4909c102449cbdfc22c003de759636187",
-          "Attribution/Sources/singapore/boundaries.json": "bf82cea7f843548dcd8b1a406d8ae1a8e60d3b470572fab84429e77a5318286b",
+          "Attribution/Sources/singapore/boundaries.json": "f99aa1efa9b5614e928ff921d079934c29c9b1ec9281caffa6f77d5d1d5be2f6",
           "Attribution/Sources/singapore/buildings.osm.json.gz": "1e1d74d2b5315908fe68f4f8e2cf66e2051ebdac8ec65197422e607e1f23d40e",
           "Attribution/Sources/singapore/circuit.osm.json.gz": "f0ad1bd81537cdee74eeb610667f7a81dca9a4e914e1e52596a720bd300593de",
           "Attribution/Sources/singapore/elevation-corrections.json": "50c6e3315f347cb535d3e56603ab4a380e9b3c0df43f665a77e3f91658f9aed7",
           "Attribution/Sources/singapore/elevation_samples.json": "5bb14c8cf4f4b0639a5c69530e59306f167f2db519620c6dc2878f65404c1ab7",
-          "Attribution/Sources/singapore/environment-recipe.json": "fb32f610dac2ff67cc30adac4df968b52bc3fa753d12a00166694f8f275e5e10",
+          "Attribution/Sources/singapore/environment-recipe.json": "331c7bd883f41a474295ddbe8726a14f23b984be26e22984f9dfd7521d179cff",
           "Attribution/Sources/singapore/environment.osm.json.gz": "5901241eca446d4d80d70d6eb8e0eb173dce37d0fdaae6277fe19719d90bc72b",
           "Attribution/Sources/singapore/flyer-viaduct-review.json": "30a5d44f902f7892d1dbda8e6abdf4c31fdfac68417495788fb49fbae08d6bef",
           "Attribution/Sources/singapore/flyer-viaduct.osm.json.gz": "228da96e7c6cdf9f3427aff0beb8cadc124fae2af8f0d8e6644c53f7f7cfbed0",
           "Attribution/Sources/singapore/ground-parcels.json": "5c2fba6e9bafe6d882e9af376ca7d6ce6eb52be76c8d31315ff857836db79025",
+          "Attribution/Sources/singapore/kerb-margins.json": "a852b48b625c989687b2bf6be8e277201bbeaf9bb61e94468d031aec2b670b39",
           "Attribution/Sources/singapore/marina-context-provenance.json": "8fe5a446758ae3fde37aec2cd638eaff413f0e869c9a53cde7579e1807739fc2",
           "Attribution/Sources/singapore/pit-dimension-review.json": "d22649402d4ec1f19c9abd12c8c63127dbf545bba4d48d8287455c19883b26bb",
           "Attribution/Sources/singapore/pit-lane.json": "3e386332f7a2e57663d7c0689912c717a8113e2d5fc23d9d3d78c59c329f93c2",
-          "Attribution/Sources/singapore/provenance.json": "89627dfa598e032898df37c31a05b8eb5f305e3b020416de5fc6f421346c1ca8",
+          "Attribution/Sources/singapore/provenance.json": "f0bd1931812a97bcb104e4e58c0ebfae43844054d4c59c8c5e900184d26f56fd",
           "Attribution/Sources/singapore/raffles-context-review.json": "52764dd03148e1a603c3f8805fb80898357abab72297eda4c6c351a422480274",
           "Attribution/Sources/singapore/raffles-context.osm.json.gz": "f17f3930d291bcae39fd631ecb45b2b66be0fe47ade84e5d6c569bf33e361fec",
           "Attribution/Sources/singapore/reconstruction.json": "b47f4e341913ebbfe728559bdcc9f1dd60a42a16008176d890e5c3786883c5ab",
           "Attribution/Sources/singapore/reference-index.json": "74eb2ef7b26dac09ac2ed5c9cdd1dbd6e8ab7f256efb97eed379fbc5f0d04645",
-          "Attribution/Sources/singapore/scene-registration.json": "ff097b78bf9abf1a8d18de608c6d551093ab74b8b2d9ecd7706fe4bfd8dd6dc6",
+          "Attribution/Sources/singapore/scene-registration.json": "734bc8c4ad4eb8543f12b4b3abdc630e18f593ba491a7fec23493006c1d3dc14",
           "Attribution/Sources/singapore/scenery-terrain.json": "3df98a9804a5fd075c9ef062bffb2e72248fcb07de1cb4e958575470b07f6829",
-          "Attribution/Sources/singapore/scenery.json": "d09d6a556fe24fb689b7725d4ebe937b006ed29e0fbe532f30cd057072ef00ad",
+          "Attribution/Sources/singapore/scenery.json": "11220ee58e33c8962f0017900c21ad9762c44e2036f30f631776bff0826c80cd",
           "Attribution/Sources/singapore/shoulder-baseline.json": "5e6e8d6aa14aa57f8b577f194c6ab6aa56047adc7fca15696dd31e2cae216715",
+          "Attribution/Sources/singapore/shoulder-corrections.json": "b9b145ddeb72f85b9fa8abc8aec0379330db54b5c6a1370e531460134bf30186",
           "Attribution/Sources/singapore/skypark-review.json": "280da4c942e79eb398954dfa094e09130e4a4f26e0574580b4e250172ca5e8f1",
           "Attribution/Sources/singapore/stamford-context-review.json": "a442fd45e4e8844750859faa7c37a7b58833ddcc12d6418d76e46c4fbf508f98",
           "Attribution/Sources/singapore/stamford-context.osm.json.gz": "c8747387832a320412dc26a299c14a5d0208a5e3bfe01532904dcb017821cb2a",
           "Attribution/Sources/singapore/station-registration-corrections.json": "22a295b6b8106cccba55832528f406037f9b1413654424070f881968e299bb2b",
-          "build/circuits/singapore/road.csv": "1765c40a65a567d2c594c2b4a3de8b6285399f7e2d829533b4796df49f850470",
+          "build/circuits/singapore/road.csv": "df74c61feddac1dd46f4cbc3456ed317677ef6fa2d0b2773f5807f127f014b7d",
           "build/circuits/singapore/catalogue.json": "b3c568c2c0589f20cc80984ec58829be5eb9e878463f20a87833e9ee455004a8",
-          "Source/FormulaForge/Native/track_data/singapore_survey.inc": "90362cdd067a04cdc19ab63c773dda85e1c2c79dade6a3393cbbe1bdbd8b433c",
-          "Source/FormulaForge/Native/track_data/singapore_boundaries.inc": "3950ff81ff7add24e8132e5d9fdff39e7bc6b1c8bb31469d5a1ecdec72ef2545"
+          "Source/FormulaForge/Native/track_data/singapore_survey.inc": "694d33f939d79471937942fccce5148a0030aa8e4db3eef593646087b177e194",
+          "Source/FormulaForge/Native/track_data/singapore_boundaries.inc": "f7561e18db4b74cee4dcea294c010b110d95becbb53e111af14db44878dc889f"
         },
         "accuracy_note": "Dense native samples do not establish survey accuracy. Single-chord grades use horizontal XY chords; 100 m windows use registered station distance and may differ from operator definitions. Scenery ground is a separate source family."
       },
       "scene": {
-        "source_manifest_sha256": "74289262ec0ed2ea1726a0e69925e1ad33b10bb7745b07d445040386f2f67a5c",
-        "native_asset_count": 206,
-        "native_assets_sha256": "ae2753ab10406831c813a422bdaa97a85e05e97bda32ffb8a3ff30c552ed7c4a",
+        "source_manifest_sha256": "47aabd2c66ad93d2a1fa14a21dea26da28845179a03d79232dcebd602a837cf8",
+        "native_asset_count": 208,
+        "native_assets_sha256": "5a959fc0da8b38176d563e2a42ebc81fca8f513861b30a8e2c783f6130e68c0f",
         "native_data_sha256": {
           "buildings.bin": "40f6856003c89285f884e4d477bfd6624543d186eb2810e3fa37f74fc1e2fb09",
-          "drive_surface.bin": "ec9d5ee923d51133a3137cd5b22ec2aee14288ba70378d40154fa1818f3eb374",
-          "render_tiles.csv": "c878c5a39f0d2659a74b954c9c52f050046b588193e144128549d0e05c00583f",
+          "drive_surface.bin": "6e6811d0bcffafefe7574bc2ee1c4667fede177b0c3ae00676a2abca2c2ccb6a",
+          "render_tiles.csv": "d116bc4700556e46d398bda0c8549f1cce5da6d9946d4e9d6aa5dc0c3122f6de",
           "terrain.bin": "0bd73918edfa845abde307374336cd0958a4c5866988aa6f48b4bb9b0d4c6591",
-          "track_limits.bin": "e055c51a9800432a6e7ed435cbb603e152d032560928672e2043af2fc11d3d9c"
+          "track_limits.bin": "ded429db1e0d07a50c6306141cda926d46c2542a26b4a92e257664158ca2734f"
         },
         "tiles": 152,
-        "triangles": 1391605,
-        "maximum_tile_triangles": 119119
+        "triangles": 1401413,
+        "maximum_tile_triangles": 119222
       },
       "visual_review": {
         "decision": "pass",
-        "notes": "Latest exact-scene review retained; source limitations remain explicit.",
-        "historical_evidence": [],
+        "notes": "Luna closes the marker obstruction after exact 79189b47 whole-route and bridge-sequence review. Red wall bands match the reference. Current packet passes with generic ordinary night-frontage and unsurveyed-dimension limitations retained.",
+        "historical_evidence": [
+          "build/reviews/singapore/resume-scenery-corrections-live",
+          "build/reviews/resume-20261112/singapore-887f09f0-review.md"
+        ],
         "report": {
-          "path": "build/reviews/resume-20261112/singapore-887f09f0-review.md",
-          "sha256": "bee2cfb67732e4405b91a8ba8bbb3d13a8e861b3e4f2d7417a2fdd9ba5bea29d"
+          "path": "build/reviews/resume-20261114/reviews/singapore-79189b-anderson-marker-review.md",
+          "sha256": "3f2872bf3c165962800a96952629c66c70ec776a37fcc772c42727bbe5d74ae1"
         },
         "native_lap": {
           "slug": "singapore",
           "valid": true,
-          "lap_seconds": 156.733268,
-          "simulated_seconds": 158.858333,
-          "maximum_tracking_error_m": 4.48333263,
-          "maximum_speed_kph": 195.735474,
+          "lap_seconds": 157.54992,
+          "simulated_seconds": 159.675,
+          "maximum_tracking_error_m": 4.4830308,
+          "maximum_speed_kph": 195.740829,
           "pace": 0.550000012,
           "fixed_step_s": 0.00833333377
         },
         "native_lap_record": {
           "path": "build/circuits/singapore/review-lap.json",
-          "sha256": "982129a62108c54f909df9d227a0a75f7e14af7536349114cf5f0af680b3f037"
+          "sha256": "7d7c04518231eaca78f4171db006e78be9f4324d22abc1377c44849dcf495deb"
         },
         "live_evidence": {
-          "packet": "build/reviews/singapore/resume-scenery-corrections-live",
-          "captured_package_revision": "887f09f0002522423e4737a1cb102523587bcda2",
-          "package_manifest_sha256": "3e6f4f94e9cee3c70ab914cb886cc2d75418d2f806a50f5909d99a01256f149f",
-          "summary_sha256": "2243fe826b88d97ecff9462ef9643e5db2824fa109629f4342025ef1b7cdbbed",
-          "archive_sha256": "a0183b3a98ae9893a56ba13967c6e61be4a7bdc2aa6bd578ed4af7fb55d6e41c",
-          "target_index_sha256": "6b0a9fb8d0e8ba9befdcfe033aeb9430afbe0dc7f4be5727b8c5303ce31634fa",
-          "selected_index_sha256": "a22bc88a1784dcc9bf05af60abc65cb3286300b714f8437c7354807653b521c7",
-          "frame_count": 4784,
+          "packet": "build/reviews/singapore/resume-20261114-anderson-marker-live",
+          "captured_package_revision": "79189b4738d04458fa0963ad273636e989717912",
+          "package_manifest_sha256": "e7ced54e6a749d5484af2044a0bb27e49c6ba26503ec378447f8788324c19e43",
+          "summary_sha256": "940e51c8aaa1f734a6592b104e061ccf14af4929cede796f56ac5d9cbeb56797",
+          "archive_sha256": "629bb3573bc05aa3e6a3669a14413eb56b2dd6d0ee24bbad866c198f9635d485",
+          "target_index_sha256": "93795ba647f7d4ac24c7d972701f7e2ee3d7ab8ddf394923c103af0de8b6e9e3",
+          "selected_index_sha256": "808c4d9d89b1a2642c6adb4c0f1fe5bb43371e4adc680e76e9fd1180062a4014",
+          "frame_count": 4835,
           "station_bins_visited": 125,
           "station_bins_total": 125,
-          "maximum_circular_frame_gap_m": 9.718994140625,
+          "maximum_circular_frame_gap_m": 2.469970703125,
           "clean_live_recording": true,
           "contacts": 0,
           "offtrack_frames": 0,
           "airborne_frames": 0,
           "maximum_visual_penetration_m": 0.0,
-          "complete_video_frames": 4784,
-          "video_sha256": "8dfdb4e3bcec08ed3b7cb2df577a6929eb714d7dcc0cbf6b1f1d1ca658255e62",
+          "complete_video_frames": 4835,
+          "video_sha256": "a598fc9567310f9cb5b6781c689ae81e47df19b80f593cb99a4ee12405f04f08",
           "journal_sha256": {
-            "frames.jsonl": "9d917615b136a8a3132b72846f6ab5ce2e04bb0c8c1337eb25fedd8cd2e0ead2",
+            "frames.jsonl": "2ce7ea3e9a86e2b4cb389be26ab6d5051f973abeca1febf632c313de9db1e52d",
             "inputs.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-            "ticks.jsonl": "7118991434241a2059a648f75a049c16e2df8a856db6476e9f98e2ffc89673df",
-            "steps.jsonl": "1cb80b8be7931273589592a4c239249235befb5c9e937e3c53991c301e180fac",
-            "session.json": "49c33707b86faa7bb78884f745f6994eec35ee7cd78259196e2617206acd1716"
+            "ticks.jsonl": "1bb1d87dcfa2bc448e789969fd36759666e7da626122779bc19630f081f764b8",
+            "steps.jsonl": "790d9f0f806cfeefce8e370f626ff3c824fbc4d24e52172038adfeff6cd03eb3",
+            "session.json": "bb18aeb14154cd683d9e53e94d9f228941b99d9029e4693e7507e7992f722aaf"
           },
           "capture_conditions": "Production live cockpit with image recording. Capped/readback/encoding frame intervals are not uncapped performance measurements.",
           "dimensions": [
@@ -4560,7 +4704,7 @@
       "captured_package_revision": "6a970d404c704a21324aac4450a2f6202281e2fa",
       "summary_sha256": "3dfe45b6b74c1f6b45616dfa9ec1f7e3d8d408409171b5c7a5bff76577f410c5",
       "package_manifest_sha256": "db5b600c7de972c1387667f6bc5aca001311ea27bd246ec83e3cdcc7d0f8e264",
-      "runtime_compatibility_note": "Historical measurement at its original package revision. Excluded from the current performance table.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "australia",
         "mode": "Stationary cockpit, no image recorder or readback; 900 frames after 500 startup frames.",
@@ -4611,7 +4755,7 @@
       "captured_package_revision": "6a970d404c704a21324aac4450a2f6202281e2fa",
       "summary_sha256": "3920df1d010921eca554a9ddf910979bda3b9d99241f766f65c7f8e98a17788a",
       "package_manifest_sha256": "db5b600c7de972c1387667f6bc5aca001311ea27bd246ec83e3cdcc7d0f8e264",
-      "runtime_compatibility_note": "Historical measurement at its original package revision. Excluded from the current performance table.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "austria",
         "mode": "Stationary cockpit, no image recorder or readback; 900 frames after 500 startup frames.",
@@ -4662,7 +4806,7 @@
       "captured_package_revision": "6a970d404c704a21324aac4450a2f6202281e2fa",
       "summary_sha256": "65755cc1cd69ea74b7ebb54cc02a25e024b40500007eed36e659c8f2a68ad3f3",
       "package_manifest_sha256": "db5b600c7de972c1387667f6bc5aca001311ea27bd246ec83e3cdcc7d0f8e264",
-      "runtime_compatibility_note": "Historical measurement at its original package revision. Excluded from the current performance table.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "bahrain",
         "mode": "Stationary cockpit, no image recorder or readback; 900 frames after 500 startup frames.",
@@ -4713,7 +4857,7 @@
       "captured_package_revision": "6a970d404c704a21324aac4450a2f6202281e2fa",
       "summary_sha256": "75d14bcc221fcc34fd06782071efbc1b44ce3b7419bc4610fba5fa7aa72af7ae",
       "package_manifest_sha256": "db5b600c7de972c1387667f6bc5aca001311ea27bd246ec83e3cdcc7d0f8e264",
-      "runtime_compatibility_note": "Historical measurement at its original package revision. Excluded from the current performance table.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "baku",
         "mode": "Stationary cockpit, no image recorder or readback; 900 frames after 500 startup frames.",
@@ -4764,7 +4908,7 @@
       "captured_package_revision": "6a970d404c704a21324aac4450a2f6202281e2fa",
       "summary_sha256": "ac97e8992b4830f6812e3fa67359e0b7eb7084b83762ad61263e2aae0ca771bd",
       "package_manifest_sha256": "db5b600c7de972c1387667f6bc5aca001311ea27bd246ec83e3cdcc7d0f8e264",
-      "runtime_compatibility_note": "Historical measurement at its original package revision. Excluded from the current performance table.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "buddh",
         "mode": "Stationary cockpit, no image recorder or readback; 900 frames after 500 startup frames.",
@@ -4815,7 +4959,7 @@
       "captured_package_revision": "6a970d404c704a21324aac4450a2f6202281e2fa",
       "summary_sha256": "495ab59df8589b61d7896bd65ea706bcb05f3a490819d8c05de65518bdfe30c4",
       "package_manifest_sha256": "db5b600c7de972c1387667f6bc5aca001311ea27bd246ec83e3cdcc7d0f8e264",
-      "runtime_compatibility_note": "Historical measurement at its original package revision. Excluded from the current performance table.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "canada",
         "mode": "Stationary cockpit, no image recorder or readback; 900 frames after 500 startup frames.",
@@ -4866,7 +5010,7 @@
       "captured_package_revision": "6a970d404c704a21324aac4450a2f6202281e2fa",
       "summary_sha256": "35acf103e9803e2484d630a64177a5807a0d00a2e1afadecb762b4b1a4308e16",
       "package_manifest_sha256": "db5b600c7de972c1387667f6bc5aca001311ea27bd246ec83e3cdcc7d0f8e264",
-      "runtime_compatibility_note": "Historical measurement at its original package revision. Excluded from the current performance table.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "china",
         "mode": "Stationary cockpit, no image recorder or readback; 900 frames after 500 startup frames.",
@@ -4917,7 +5061,7 @@
       "captured_package_revision": "6a970d404c704a21324aac4450a2f6202281e2fa",
       "summary_sha256": "c1f0128ff0d72af39ca574af9e41fe487566b526d57cee201df610125dbb75f2",
       "package_manifest_sha256": "db5b600c7de972c1387667f6bc5aca001311ea27bd246ec83e3cdcc7d0f8e264",
-      "runtime_compatibility_note": "Historical measurement at its original package revision. Excluded from the current performance table.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "cota",
         "mode": "Stationary cockpit, no image recorder or readback; 900 frames after 500 startup frames.",
@@ -4968,7 +5112,7 @@
       "captured_package_revision": "6a970d404c704a21324aac4450a2f6202281e2fa",
       "summary_sha256": "67aac531e836d5e2f496d2d76a2d4cee3112b6dbc8fde3c4c0a72a12be267d37",
       "package_manifest_sha256": "db5b600c7de972c1387667f6bc5aca001311ea27bd246ec83e3cdcc7d0f8e264",
-      "runtime_compatibility_note": "Historical measurement at its original package revision. Excluded from the current performance table.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "hockenheim",
         "mode": "Stationary cockpit, no image recorder or readback; 900 frames after 500 startup frames.",
@@ -5019,7 +5163,7 @@
       "captured_package_revision": "6a970d404c704a21324aac4450a2f6202281e2fa",
       "summary_sha256": "e5fe9619f03183a8407136a2502c91c89fe68849d80b7e4a51d99b8117775c37",
       "package_manifest_sha256": "db5b600c7de972c1387667f6bc5aca001311ea27bd246ec83e3cdcc7d0f8e264",
-      "runtime_compatibility_note": "Historical measurement at its original package revision. Excluded from the current performance table.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "interlagos",
         "mode": "Stationary cockpit, no image recorder or readback; 900 frames after 500 startup frames.",
@@ -5070,7 +5214,7 @@
       "captured_package_revision": "6a970d404c704a21324aac4450a2f6202281e2fa",
       "summary_sha256": "a0b5a396d3687180ca8a6f9b1b46bdd2056c0dc5f3a172049db1567ef6f2d39b",
       "package_manifest_sha256": "db5b600c7de972c1387667f6bc5aca001311ea27bd246ec83e3cdcc7d0f8e264",
-      "runtime_compatibility_note": "Historical measurement at its original package revision. Excluded from the current performance table.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "japan",
         "mode": "Stationary cockpit, no image recorder or readback; 900 frames after 500 startup frames.",
@@ -5121,7 +5265,7 @@
       "captured_package_revision": "6a970d404c704a21324aac4450a2f6202281e2fa",
       "summary_sha256": "907c361d3e8a4ea3545376431ee00347b0c6085bce6f7c2c91600ec6aece5b71",
       "package_manifest_sha256": "db5b600c7de972c1387667f6bc5aca001311ea27bd246ec83e3cdcc7d0f8e264",
-      "runtime_compatibility_note": "Historical measurement at its original package revision. Excluded from the current performance table.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "jeddah",
         "mode": "Stationary cockpit, no image recorder or readback; 900 frames after 500 startup frames.",
@@ -5172,7 +5316,7 @@
       "captured_package_revision": "6a970d404c704a21324aac4450a2f6202281e2fa",
       "summary_sha256": "a3eefc02b51d6d629f190373d0c54df59e4a5e45902135e7036529d924c51fe1",
       "package_manifest_sha256": "db5b600c7de972c1387667f6bc5aca001311ea27bd246ec83e3cdcc7d0f8e264",
-      "runtime_compatibility_note": "Historical measurement at its original package revision. Excluded from the current performance table.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "lasvegas",
         "mode": "Stationary cockpit, no image recorder or readback; 900 frames after 500 startup frames.",
@@ -5223,7 +5367,7 @@
       "captured_package_revision": "6a970d404c704a21324aac4450a2f6202281e2fa",
       "summary_sha256": "f65156e4b2691f9b54170ec0e99df718459e49a20216602a50d9e36443099dfd",
       "package_manifest_sha256": "db5b600c7de972c1387667f6bc5aca001311ea27bd246ec83e3cdcc7d0f8e264",
-      "runtime_compatibility_note": "Historical measurement at its original package revision. Excluded from the current performance table.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "malaysia",
         "mode": "Stationary cockpit, no image recorder or readback; 900 frames after 500 startup frames.",
@@ -5274,7 +5418,7 @@
       "captured_package_revision": "6a970d404c704a21324aac4450a2f6202281e2fa",
       "summary_sha256": "6decc2ce19eb8a3dbb5201f5bb7ac62218d1130c9d8b96e9e05046213019d386",
       "package_manifest_sha256": "db5b600c7de972c1387667f6bc5aca001311ea27bd246ec83e3cdcc7d0f8e264",
-      "runtime_compatibility_note": "Historical measurement at its original package revision. Excluded from the current performance table.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "monaco",
         "mode": "Stationary cockpit, no image recorder or readback; 900 frames after 500 startup frames.",
@@ -5325,7 +5469,7 @@
       "captured_package_revision": "6a970d404c704a21324aac4450a2f6202281e2fa",
       "summary_sha256": "bb889ff436bfc9a0dac3efd6c3fe9117b7ee31dd3b0c643db3c2e9e87194c51c",
       "package_manifest_sha256": "db5b600c7de972c1387667f6bc5aca001311ea27bd246ec83e3cdcc7d0f8e264",
-      "runtime_compatibility_note": "Historical measurement at its original package revision. Excluded from the current performance table.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "portimao",
         "mode": "Stationary cockpit, no image recorder or readback; 900 frames after 500 startup frames.",
@@ -5376,7 +5520,7 @@
       "captured_package_revision": "6a970d404c704a21324aac4450a2f6202281e2fa",
       "summary_sha256": "fdadf96cb3949ec100260e8ef88fedfa698004167a02425ca73460bc10f019c3",
       "package_manifest_sha256": "db5b600c7de972c1387667f6bc5aca001311ea27bd246ec83e3cdcc7d0f8e264",
-      "runtime_compatibility_note": "Historical measurement at its original package revision. Excluded from the current performance table.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "singapore",
         "mode": "Stationary cockpit, no image recorder or readback; 900 frames after 500 startup frames.",
@@ -5427,7 +5571,7 @@
       "captured_package_revision": "6a970d404c704a21324aac4450a2f6202281e2fa",
       "summary_sha256": "826150795bf10cfa7c7a92c7f8f304142753d6b53942e19b9e49eab0d15fac07",
       "package_manifest_sha256": "db5b600c7de972c1387667f6bc5aca001311ea27bd246ec83e3cdcc7d0f8e264",
-      "runtime_compatibility_note": "Historical measurement at its original package revision. Excluded from the current performance table.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "spa",
         "mode": "Stationary cockpit, no image recorder or readback; 900 frames after 500 startup frames.",
@@ -5478,7 +5622,7 @@
       "captured_package_revision": "6a970d404c704a21324aac4450a2f6202281e2fa",
       "summary_sha256": "8530b65224887af7d1ec9eb92283c49e46bbabdd0d0571724da82d9825e34e2f",
       "package_manifest_sha256": "db5b600c7de972c1387667f6bc5aca001311ea27bd246ec83e3cdcc7d0f8e264",
-      "runtime_compatibility_note": "Historical measurement at its original package revision. Excluded from the current performance table.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "turkey",
         "mode": "Stationary cockpit, no image recorder or readback; 900 frames after 500 startup frames.",
@@ -5529,7 +5673,7 @@
       "captured_package_revision": "6a970d404c704a21324aac4450a2f6202281e2fa",
       "summary_sha256": "b9c72749aee78ed88701826d8c9100a351cb04518b7d46c6d99424595027a2b4",
       "package_manifest_sha256": "db5b600c7de972c1387667f6bc5aca001311ea27bd246ec83e3cdcc7d0f8e264",
-      "runtime_compatibility_note": "Historical measurement at its original package revision. Excluded from the current performance table.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "zandvoort",
         "mode": "Stationary cockpit, no image recorder or readback; 900 frames after 500 startup frames.",
@@ -5580,7 +5724,7 @@
       "captured_package_revision": "92dca960c7d3d6687e1f62646e1a8ae0db80cf41",
       "summary_sha256": "7f756889fdc927ad2c2d9dbe9269b4d6f2f9e6462790116eefc2d0e01d39ffe5",
       "package_manifest_sha256": "de602864a95775afb3b7cce72927d682d01b2f19ae8ea149f5421b4e9cb25a2f",
-      "runtime_compatibility_note": "Historical measurement at its original package revision. Excluded from the current performance table.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "baku",
         "mode": "Live racing-line controller, production cockpit, uncapped, no image recorder.",
@@ -5778,7 +5922,7 @@
       "captured_package_revision": "92dca960c7d3d6687e1f62646e1a8ae0db80cf41",
       "summary_sha256": "ccf0b2492e054ce99dcd3d1e0f5b27878d36288aa23df8d30b4b16ded8f65c02",
       "package_manifest_sha256": "de602864a95775afb3b7cce72927d682d01b2f19ae8ea149f5421b4e9cb25a2f",
-      "runtime_compatibility_note": "Historical measurement at its original package revision. Excluded from the current performance table.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "interlagos",
         "mode": "Live racing-line controller, production cockpit, uncapped, no image recorder.",
@@ -5976,7 +6120,7 @@
       "captured_package_revision": "92dca960c7d3d6687e1f62646e1a8ae0db80cf41",
       "summary_sha256": "0cc0807487978751b46df28ec7b3772fe8d8cc3e884925be89c5d46ee09cc2df",
       "package_manifest_sha256": "de602864a95775afb3b7cce72927d682d01b2f19ae8ea149f5421b4e9cb25a2f",
-      "runtime_compatibility_note": "Historical measurement at its original package revision. Excluded from the current performance table.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "lasvegas",
         "mode": "Live racing-line controller, production cockpit, uncapped, no image recorder.",
@@ -6174,7 +6318,7 @@
       "captured_package_revision": "92dca960c7d3d6687e1f62646e1a8ae0db80cf41",
       "summary_sha256": "e2e6ab278fcb1ab234c5cfac31ef564a4aaad495ddd85361796147cc7e476a0d",
       "package_manifest_sha256": "de602864a95775afb3b7cce72927d682d01b2f19ae8ea149f5421b4e9cb25a2f",
-      "runtime_compatibility_note": "Historical measurement at its original package revision. Excluded from the current performance table.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "monaco",
         "mode": "Live racing-line controller, production cockpit, uncapped, no image recorder.",
@@ -6372,7 +6516,7 @@
       "captured_package_revision": "0e32f07506d91a4befba1a788b48c698aedf632f",
       "summary_sha256": "85756d22b8f63321fcc3ad16909080f884214822203a640bffbeadeb059ed6ce",
       "package_manifest_sha256": "b7d03eae22002e98bb78086a682197f32bfdb47ba3326f7a6645aa25537131ee",
-      "runtime_compatibility_note": "Historical measurement at its original package revision. Excluded from the current performance table.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "monaco",
         "mode": "Live racing-line controller, production cockpit, uncapped, no image recorder.",
@@ -6565,12 +6709,12 @@
     {
       "circuit": "baku",
       "kind": "moving",
-      "current_scene_and_runtime": true,
+      "current_scene_and_runtime": false,
       "directory": "build/reviews/resume-20261113-moving-final/baku",
       "captured_package_revision": "0e32f07506d91a4befba1a788b48c698aedf632f",
       "summary_sha256": "ffd198855f5997718777fe417518928c1e5e324e00ff68ba8a37456576c8fab9",
       "package_manifest_sha256": "b7d03eae22002e98bb78086a682197f32bfdb47ba3326f7a6645aa25537131ee",
-      "runtime_compatibility_note": "Complete Baku scene identity and executable SHA256 match 219ac9a7 exactly. See baku-moving-runtime-compatibility.json. This combined-scene improvement does not isolate the effect of batching.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "baku",
         "mode": "Live racing-line controller, production cockpit, uncapped, no image recorder.",
@@ -6763,12 +6907,12 @@
     {
       "circuit": "monaco",
       "kind": "moving",
-      "current_scene_and_runtime": true,
+      "current_scene_and_runtime": false,
       "directory": "build/reviews/resume-20261113-moving-refined/monaco",
       "captured_package_revision": "219ac9a795ba6b2ede38c27c7a89f3c9decfd43b",
       "summary_sha256": "89595dd5800c7a30b53451e5ffb3458dbbe87870c635547b1a101302b4e0386b",
       "package_manifest_sha256": "85aa042a6d5d714fd18b2109d6c46885fed367628efad9a50688815d3ed5a6c9",
-      "runtime_compatibility_note": "Captured directly from package 219ac9a7 with unchanged executable and current scene. Accepted baseline assets are covered by refined-scene-scope-proof.json.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "monaco",
         "mode": "Live racing-line controller, production cockpit, uncapped, no image recorder.",
@@ -6961,12 +7105,12 @@
     {
       "circuit": "spa",
       "kind": "moving",
-      "current_scene_and_runtime": true,
+      "current_scene_and_runtime": false,
       "directory": "build/reviews/resume-20261113-moving-refined/spa",
       "captured_package_revision": "219ac9a795ba6b2ede38c27c7a89f3c9decfd43b",
       "summary_sha256": "4b47ea3e98155bb1c1fb0030c2b3f63fe6eb1843c91a909ed432fd1058d4891c",
       "package_manifest_sha256": "85aa042a6d5d714fd18b2109d6c46885fed367628efad9a50688815d3ed5a6c9",
-      "runtime_compatibility_note": "Captured directly from package 219ac9a7 with unchanged executable and current scene. Accepted baseline assets are covered by refined-scene-scope-proof.json.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "spa",
         "mode": "Live racing-line controller, production cockpit, uncapped, no image recorder.",
@@ -7159,12 +7303,12 @@
     {
       "circuit": "hockenheim",
       "kind": "moving",
-      "current_scene_and_runtime": true,
+      "current_scene_and_runtime": false,
       "directory": "build/reviews/resume-20261113-moving-refined/hockenheim",
       "captured_package_revision": "219ac9a795ba6b2ede38c27c7a89f3c9decfd43b",
       "summary_sha256": "b0e146f0fc56a68b288945d8482088cc5afada2b0e496a091ae3094beaab9f1d",
       "package_manifest_sha256": "85aa042a6d5d714fd18b2109d6c46885fed367628efad9a50688815d3ed5a6c9",
-      "runtime_compatibility_note": "Captured directly from package 219ac9a7 with unchanged executable and current scene. Accepted baseline assets are covered by refined-scene-scope-proof.json.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "hockenheim",
         "mode": "Live racing-line controller, production cockpit, uncapped, no image recorder.",
@@ -7357,12 +7501,12 @@
     {
       "circuit": "jeddah",
       "kind": "moving",
-      "current_scene_and_runtime": true,
+      "current_scene_and_runtime": false,
       "directory": "build/reviews/resume-20261113-moving-refined/jeddah",
       "captured_package_revision": "219ac9a795ba6b2ede38c27c7a89f3c9decfd43b",
       "summary_sha256": "3e21507e2efeaa8bdff5b0bc578358fffb7595280320afb6b82c45b925906d85",
       "package_manifest_sha256": "85aa042a6d5d714fd18b2109d6c46885fed367628efad9a50688815d3ed5a6c9",
-      "runtime_compatibility_note": "Captured directly from package 219ac9a7 with unchanged executable and current scene. Accepted baseline assets are covered by refined-scene-scope-proof.json.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "jeddah",
         "mode": "Live racing-line controller, production cockpit, uncapped, no image recorder.",
@@ -7555,12 +7699,12 @@
     {
       "circuit": "lasvegas",
       "kind": "moving",
-      "current_scene_and_runtime": true,
+      "current_scene_and_runtime": false,
       "directory": "build/reviews/resume-20261113-moving-refined/lasvegas",
       "captured_package_revision": "219ac9a795ba6b2ede38c27c7a89f3c9decfd43b",
       "summary_sha256": "7028e4747511d7661ab1220934fa32608638b20ea1f76c84100d3dbaa91d810e",
       "package_manifest_sha256": "85aa042a6d5d714fd18b2109d6c46885fed367628efad9a50688815d3ed5a6c9",
-      "runtime_compatibility_note": "Captured directly from package 219ac9a7 with unchanged executable and current scene. Accepted baseline assets are covered by refined-scene-scope-proof.json.",
+      "runtime_compatibility_note": "Historical measurement at its captured revision; fresh current uncapped comparisons are pending in the resumed session.",
       "summary": {
         "circuit": "lasvegas",
         "mode": "Live racing-line controller, production cockpit, uncapped, no image recorder.",
