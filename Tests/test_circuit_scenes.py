@@ -1144,8 +1144,8 @@ def test_zero_quadratic_keeps_the_existing_road_mesh(scene: CircuitScene) -> Non
     for name, tile in sorted(scene.tiles.items()):
         digest.update(name.encode())
         digest.update(bytes(tile.triangles))
-    # Captured from the same fixture using the pre-extension 6a970d40 authoring code.
-    assert digest.hexdigest() == 'e5edd8fac518ca0d8f716e686089c1313d24035588729f0cae382b0fc4c34f44'
+    # Same unbanked fixture after the independently verified road-line winding fix.
+    assert digest.hexdigest() == 'fa0fee113f911ca320e909f747faaa848d9d2aa8eea6c07db6629f1224fcf6a1'
 
 
 def test_sachs_stand_keeps_mapped_rear_canopy_and_measured_foundations(
