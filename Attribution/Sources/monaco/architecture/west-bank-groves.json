@@ -41,13 +41,13 @@
       "base": [
         -31.744057991777563,
         345.84050254052124,
-        17.17544130357745
+        17.44642452317476
       ],
-      "height_m": 8.829991976771126,
+      "height_m": 8.83578020559777,
       "seed": 74390,
       "source_pixel_xy": [
-        245,
-        230
+        245.0,
+        230.0
       ],
       "crown_diameter_range_m": [
         5.0,
@@ -58,13 +58,13 @@
       "base": [
         -27.441082292304433,
         346.35959133152386,
-        19.640127556943774
+        20.566934953284246
       ],
-      "height_m": 8.829991849997569,
+      "height_m": 8.982917703740446,
       "seed": 74391,
       "source_pixel_xy": [
-        285,
-        223
+        285.0,
+        223.0
       ],
       "crown_diameter_range_m": [
         5.0,
@@ -80,8 +80,8 @@
       "height_m": 8.370053030496116,
       "seed": 74392,
       "source_pixel_xy": [
-        420,
-        266
+        420.0,
+        266.0
       ],
       "crown_diameter_range_m": [
         4.0,
@@ -97,8 +97,8 @@
       "height_m": 8.293406423337876,
       "seed": 74393,
       "source_pixel_xy": [
-        262,
-        285
+        262.0,
+        285.0
       ],
       "crown_diameter_range_m": [
         4.0,
@@ -114,8 +114,8 @@
       "height_m": 8.293406423337819,
       "seed": 74394,
       "source_pixel_xy": [
-        311,
-        291
+        311.0,
+        291.0
       ],
       "crown_diameter_range_m": [
         4.0,
@@ -131,8 +131,8 @@
       "height_m": 8.302802603392117,
       "seed": 74395,
       "source_pixel_xy": [
-        359,
-        292
+        359.0,
+        292.0
       ],
       "crown_diameter_range_m": [
         4.0,
@@ -148,8 +148,8 @@
       "height_m": 8.30280247592399,
       "seed": 74396,
       "source_pixel_xy": [
-        411,
-        291
+        411.0,
+        291.0
       ],
       "crown_diameter_range_m": [
         4.0,
@@ -176,23 +176,43 @@
     {
       "tile": "Tile_Street_m1_01",
       "material": "Runoff",
-      "attributes_hex": "d27808c719c83145abaa0e45c81d2c3f9e81dc3ed37b183f7c8f63c022af2e42d27808c76ee26145b816f3447898153fe48ff03e5261293fea9090c022af2e421bc403c76ee26145726d18449ee1f03e16e0973e93c0543fea9090c018a92842"
+      "attributes_hex": "002807c700e04445f011e24465d9323fce96003fdf6f023f00007cc000002d42002807c700004845b7c1db44e8d41a3f9ced1f3f61dffc3e000080c000002d4200f606c700004845fa19d844130d003f26e51c3f05991c3f000080c000c02c42"
     },
     {
       "tile": "Tile_Street_m1_01",
       "material": "Runoff",
-      "attributes_hex": "de2608c737b61b457fae12453477343f7e45cd3e98ae133fa24f47c03b462e42b35608c733f3294512be0f450bf52e3faebad63e10f6163f378959c075832e421bc403c76ee26145726d18449ee1f03e16e0973e93c0543fea9090c018a92842"
+      "attributes_hex": "00f606c700004845fa19d844130d003f26e51c3f05991c3f000080c000c02c4200f606c700e044454341dd44fd46243fdbb9f73e9456183f00007cc000c02c42002807c700e04445f011e24465d9323fce96003fdf6f023f00007cc000002d42"
     },
     {
       "tile": "Tile_Street_m1_01",
       "material": "Runoff",
-      "attributes_hex": "de2608c737b61b457fae12453477343f7e45cd3e98ae133fa24f47c03b462e421bc403c76ee26145726d18449ee1f03e16e0973e93c0543fea9090c018a928421bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842"
+      "attributes_hex": "005a07c700e02b45fba304453648493f7908db3e0947e43e00005cc000402d42005a07c700002f452e990145a463583f17cf783e0ba9f33e000060c000402d42002807c700002f4531dbf74413d2443fe19a9e3e75350f3f000060c000002d42"
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "002807c700002f4531dbf74413d2443fe19a9e3e75350f3f000060c000002d42002807c700e02b451da3fd447c9e4b3fa4b7d23e6bd0e33effff5bc000002d42005a07c700e02b45fba304453648493f7908db3e0947e43e00005cc000402d42"
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "005a07c700e02b45fba304453648493f7908db3e0947e43e00005cc000402d42002807c719a42b45ee11fe4400dd3c3f6ce1f23e03ebf53e52b35bc000002d42425607c700c02845c44007455e544b3f467adb3e5d75dc3effff57c0353b2d42"
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "006006c71a2438459263cd44c7251c3f93a3b73e480b2e3f54b36bc000002c421bc403c76ee26145726d18449ee1f03e16e0973e93c0543fea9090c018a928421bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842"
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "1bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842006006c7faa21945e2acfb445aec1c3fb6d1e23ed067223fa6a744c000002c42006006c71a2438459263cd44c7251c3f93a3b73e480b2e3f54b36bc000002c42"
     }
   ],
   "source_notes": [
     "Seven representative overlapping canopy clumps; not a tree census. Native coordinates use the exact government tile EPSG3944 bbox/resolution through WGS84 and the retained scene frame.",
-    "Approximate crown plan edges carry1\u20131.5m uncertainty and heights are estimated within the8\u201316m western-grove range. Actual emitted terrain supports all four packed trunk corners.",
-    "No ground repaint or height change. The two uncertain belvedere overhangs, roof-overlap rays and roadside belt of unresolved species are excluded.",
-    "Source qualification and primary URLs/hashes: west-bank-groves-source.json."
+    "Approximate crown plan edges carry1–1.5m uncertainty and heights are estimated within the8–16m western-grove range. Actual emitted terrain supports all four packed trunk corners.",
+    "Source qualification and primary URLs/hashes: west-bank-groves-source.json.",
+    "The separate qualified ravine form changes only its finite open slope. Clumps0/1 reanchor to the actual post-form Ground while preserving their rendered top height above centre Ground. All XY/seeds/source pixels/crown limits and the other five poses stay fixed; native field/contact and held architecture remain unchanged."
   ]
 }

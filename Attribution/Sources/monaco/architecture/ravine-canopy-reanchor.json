@@ -1,0 +1,54 @@
+{
+  "status": "PRIVATE actual post-form reanchor and unchanged five-canopy geometry proof; no canonical/native or visual acceptance",
+  "seconds": 4.988752126693726,
+  "peak_rss_kB": 123576,
+  "canopy_changes": [
+    {
+      "index": 0,
+      "old_base_m": 17.17544130357745,
+      "new_base_m": 17.44642452317476,
+      "base_delta_m": 0.27098321959730853,
+      "old_height_parameter_m": 8.829991976771126,
+      "new_height_parameter_m": 8.83578020559777,
+      "old_center_ground_m": 17.468847914494894,
+      "new_center_ground_m": 17.745793009783647,
+      "old_top_above_center_ground_m": 8.801485125156816,
+      "new_top_above_center_ground_m": 8.801485125156816,
+      "crown_diameter_m": 7.245339768590171,
+      "crown_diameter_range_m": [
+        5.0,
+        9.0
+      ]
+    },
+    {
+      "index": 1,
+      "old_base_m": 19.640127556943774,
+      "new_base_m": 20.566934953284246,
+      "base_delta_m": 0.9268073963404717,
+      "old_height_parameter_m": 8.829991849997569,
+      "new_height_parameter_m": 8.982917703740446,
+      "old_center_ground_m": 19.933534041087682,
+      "new_center_ground_m": 21.01785506678332,
+      "old_top_above_center_ground_m": 8.801485121353586,
+      "new_top_above_center_ground_m": 8.801485121353586,
+      "crown_diameter_m": 7.365992517067165,
+      "crown_diameter_range_m": [
+        5.0,
+        9.0
+      ]
+    }
+  ],
+  "all_xy_seeds_source_pixels_crown_limits_identical": true,
+  "other_five_pose_records_identical": true,
+  "other_five_mesh_counters_identical": [
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "actual_support_rows": 10,
+  "minimum_packed_trunk_embed_m": 0.09998294225471227,
+  "full_existing_grove_geometry_and_protection_guard_passed": true,
+  "new_grove_config_sha256": "64b2c486d050fd74f87585da46fb400f0b0e8e8d8a9bf3ac40b23997f8bee999"
+}

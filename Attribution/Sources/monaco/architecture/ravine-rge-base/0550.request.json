@@ -1,0 +1,9 @@
+{
+  "lon": "7.4209912384|7.4210158590",
+  "lat": "43.7382381415|43.7382381415",
+  "resource": "ign_rge_alti_wld",
+  "delimiter": "|",
+  "indent": "false",
+  "measures": "true",
+  "zonly": "false"
+}

@@ -1,4 +1,4 @@
-"""Add source-observed canopy clumps without repainting or reshaping their substrate."""
+"""Add source-observed canopy clumps on qualified post-terrain Ground."""
 
 from __future__ import annotations
 
@@ -109,4 +109,4 @@ def add_groves(scene: CircuitScene) -> None:
     scene.landmarks.append({'name': LANDMARK, 'canopy_clumps': len(source.canopies),
                             'minimum_packed_trunk_embed_m': min(burial),
                             'source': 'architecture/west-bank-groves.json',
-                            'dimensions_status': 'Original canopy estimates from the government 2019 orthophoto and 2012/2014 oblique views, not individual tree identities. Heights/crowns and inferred stems retain broad uncertainty. Two uncertain belvedere-overhang crowns and the unresolved roadside species are omitted. Existing ground, building/roof layers, road, contact and native field are unchanged.'})
+                            'dimensions_status': 'Original canopy estimates from the government 2019 orthophoto and 2012/2014 oblique views, not individual tree identities. Heights/crowns and inferred stems retain broad uncertainty. Two uncertain belvedere-overhang crowns and the unresolved roadside species are omitted. The separate finite ravine form updates its qualified Ground. Clumps0/1 reanchor with their source height above centre Ground preserved; other five poses remain fixed. Building/roof layers, road, contact and native field remain unchanged.'})

@@ -1,0 +1,1496 @@
+{
+  "circuit": "monaco",
+  "origin_lat_lon": [
+    43.7346446387306,
+    7.4213359272073856
+  ],
+  "uniform_scale": 1.0099320735128836,
+  "relative_datum_m": 1.5128994113,
+  "outer_xy_m": [
+    [
+      -48.61354221820256,
+      366.1611492237634
+    ],
+    [
+      -45.669492658948876,
+      365.25189520579306
+    ],
+    [
+      -40.953710195702136,
+      363.49649759956884
+    ],
+    [
+      -33.573580418941674,
+      361.5976528347257
+    ],
+    [
+      -26.176300565549823,
+      360.0196294577559
+    ],
+    [
+      -18.750433190288515,
+      358.97631376177003
+    ],
+    [
+      -12.000222760726674,
+      358.70940049759224
+    ],
+    [
+      -12.000127563278072,
+      344.85899419236443
+    ],
+    [
+      -12.623201702644971,
+      344.0002128120795
+    ],
+    [
+      -36.676687940783324,
+      343.9996573482429
+    ],
+    [
+      -37.1813850996304,
+      344.09546991930006
+    ],
+    [
+      -42.96289044100461,
+      345.9082465472997
+    ],
+    [
+      -47.65007244222027,
+      348.19835877393143
+    ],
+    [
+      -51.34378714415279,
+      351.07848959131826
+    ],
+    [
+      -53.52831769934097,
+      354.1991237666547
+    ],
+    [
+      -53.8725051355551,
+      357.75693685105136
+    ],
+    [
+      -51.52947222655718,
+      361.599086075341
+    ]
+  ],
+  "window_xy_m": [
+    -70.0,
+    344.0,
+    -12.0,
+    392.0
+  ],
+  "mandatory_exclusions": [
+    [
+      [
+        -48.547,
+        371.413
+      ],
+      [
+        -3.253,
+        368.974
+      ],
+      [
+        -3.779,
+        359.135
+      ],
+      [
+        -11.233,
+        359.644
+      ],
+      [
+        -18.682,
+        360.26
+      ],
+      [
+        -26.102,
+        361.41
+      ],
+      [
+        -33.505,
+        362.881
+      ],
+      [
+        -40.891,
+        364.673
+      ],
+      [
+        -45.618,
+        366.214
+      ],
+      [
+        -48.77,
+        367.242
+      ]
+    ]
+  ],
+  "collar_width_m": 3.0,
+  "render_step_m": 0.5,
+  "expected_domain_wkt": "POLYGON ((-26.176300565549823 360.0196294577559, -18.750433190288515 358.97631376177003, -12.000222760726674 358.70940049759224, -12.000127563278072 344.85899419236443, -12.623201702644971 344.0002128120795, -15.928940627007929 344.0001364731069, -15.593307800201808 344.201307047681, -15.159032672420949 344.52338743343205, -14.758418096447377 344.8864833202335, -14.395322209645926 345.28709789620706, -14.073241823894893 345.72137302398795, -13.79527874937611 346.1851263966966, -13.564109922447265 346.67389181584053, -13.38196162528142 347.18296220324703, -13.250588045552668 347.7074349327992, -13.171254382649902 348.24225904540543, -13.144724663115067 348.78228389249676, -13.171254382649902 349.3223087395881, -13.250588045552668 349.85713285219435, -13.38196162528142 350.3816055817465, -13.564109922447265 350.890675969153, -13.79527874937611 351.3794413882969, -14.073241823894893 351.8431947610056, -14.395322209645927 352.27746988878647, -14.758418096447379 352.67808446476005, -15.159032672420949 353.0411803515615, -15.59330780020181 353.36326073731254, -16.057061172910498 353.6412238118313, -16.545826592054443 353.8723926387602, -17.054896979460942 354.054540935926, -17.579369709013076 354.18591451565476, -18.114193821619317 354.2652481785575, -18.654218668710648 354.29177789809233, -19.194243515801983 354.2652481785575, -19.72906762840822 354.18591451565476, -20.253540357960357 354.054540935926, -20.762610745366857 353.8723926387601, -21.251376164510802 353.6412238118313, -21.715129537219486 353.36326073731254, -22.14940466500035 353.0411803515615, -22.55001924097392 352.67808446476005, -22.91311512777537 352.27746988878647, -23.235195513526406 351.8431947610056, -23.513158588045187 351.3794413882969, -23.74432741497403 350.890675969153, -23.926475712139876 350.3816055817465, -24.057849291868628 349.85713285219435, -24.137182954771394 349.3223087395881, -24.16371267430623 348.78228389249676, -24.137182954771394 348.24225904540543, -24.057849291868628 347.7074349327992, -23.926475712139876 347.18296220324703, -23.74432741497403 346.67389181584053, -23.513158588045187 346.1851263966966, -23.235195513526403 345.72137302398795, -22.91311512777537 345.28709789620706, -22.550019240973917 344.8864833202335, -22.149404665000347 344.52338743343205, -21.715129537219486 344.201307047681, -21.379286718866002 344.0000106090172, -21.83869349239909 344, -36.67849287479526 344, -37.1813850996304 344.09546991930006, -42.96289044100461 345.9082465472997, -47.65007244222027 348.19835877393143, -51.34378714415279 351.07848959131826, -53.52831769934097 354.1991237666547, -53.8725051355551 357.75693685105136, -51.52947222655718 361.599086075341, -48.61354221820256 366.1611492237634, -45.669492658948876 365.25189520579306, -40.953710195702136 363.49649759956884, -33.573580418941674 361.5976528347257, -26.176300565549823 360.0196294577559))",
+  "grid_file": "architecture/ravine-grid.json",
+  "grid_sha256": "ccd3208cac7d2fbcc44534cef8dc88df20fe9449120a634b073c909d356e738d",
+  "protected_source_sha256": {
+    "build/circuits/monaco/road.csv": "3b59144f00765a46af76e81e6cfa2619ee5a57aecf441dc06c5a3b29ef7470c8",
+    "build/circuits/monaco/barriers.csv": "dad6509038eca19820a08f825f837a13415fd2f3a23a4433b7f8ae3746af5e8e",
+    "Content/Generated/Monaco/Data/terrain.bin": "f1538f328db1481498922f0c8d143010e2a9bcd9c17cb30b52457605ac30a21a",
+    "Content/Generated/Monaco/Data/drive_surface.bin": "3a7544d64e64e34c445dbf4049745ad0e2fc4f2d8e96dcf6d29b2c8ee7f67df3",
+    "Content/Generated/Monaco/Data/track_limits.bin": "85528c1cf80cda2568fc1c22cbe69a96c7de48f48880ee19184a68db336b07ce",
+    "Attribution/Sources/monaco/architecture/west-belvedere.json": "315aa2dd6a124f997d81e07ad4267dcacc14678772e477ff367aeb2bb291dfa0",
+    "Attribution/Sources/monaco/architecture/west-visible-surfaces.json": "e46235cc0830d4e7252593c4a8729738104511d50876ae832c7908b2f416842c"
+  },
+  "original_ground_rows": [
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Grass",
+      "attributes_hex": "d27808c7939ef144511c394508ea293f8403093f33c3053feea21ac022af2e424db607c7ba5ce244210d3545920b1d3f34400c3f619c113f2fdf10c025b62d42d27808c7ea9696445cbb6745d07e353f04cbd13e54f1123f2cc1c0bf22af2e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Grass",
+      "attributes_hex": "621508c7ea969644897a60454cb9343f418bce3e8f07153f2cc1c0bfda2f2e42d27808c7ea9696445cbb6745d07e353f04cbd13e54f1123f2cc1c0bf22af2e42404907c78d93ae448d7246457317263f956ef83e0911163f2f75dfbf8f2a2d42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Grass",
+      "attributes_hex": "4db607c7ba5ce244210d3545920b1d3f34400c3f619c113f2fdf10c025b62d42404907c78d93ae448d7246457317263f956ef83e0911163f2f75dfbf8f2a2d42d27808c7ea9696445cbb6745d07e353f04cbd13e54f1123f2cc1c0bf22af2e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Grass",
+      "attributes_hex": "d27808c7bae78a44b4166a4512e7363fe037bc3eb166183f73ccb1bf22af2e42d27808c7ea9696445cbb6745d07e353f04cbd13e54f1123f2cc1c0bf22af2e42621508c7ea969644897a60454cb9343f418bce3e8f07153f2cc1c0bfda2f2e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Grass",
+      "attributes_hex": "8a2d0dc7f2961645affd90456d6c2f3fd744073fce50003f35c140c02cb534428a2d0dc71f9625450d27854529a81f3fea88253fe7e3e03e5af353c02cb53442d2010cc794412445b1996e45954f363f09670a3f4c4ae53e753f52c087353342",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Grass",
+      "attributes_hex": "d2010cc794412445b1996e45954f363f09670a3f4c4ae53e753f52c087353342f7030bc7f2961645c4c66345a7bf4c3f2e5ace3e9fc2e33e35c140c099f031428a2d0dc7f2961645affd90456d6c2f3fd744073fce50003f35c140c02cb53442",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Grass",
+      "attributes_hex": "8a2d0dc7f2961645affd90456d6c2f3fd744073fce50003f35c140c02cb53442f7030bc7f2961645c4c66345a7bf4c3f2e5ace3e9fc2e33e35c140c099f031428a2d0dc76e34ad442cefa145d4772a3f7aac5a3e4dff363fc1b3ddbf2cb53442",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Grass",
+      "attributes_hex": "1be10ac7ea969644e0f68c45e7752f3f3a283b3e17192a3f2cc1c0bffac3314224170dc7ea9696442604a445f7ea293f968dd2bc7e5d3f3f2cc1c0bf809834429af70ac7cd0c9f44a1c28c4538872f3f5fbe883e707f273f8295cbbfc5e03142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Grass",
+      "attributes_hex": "d27808c7ea9696445cbb6745d07e353f04cbd13e54f1123f2cc1c0bf22af2e42bee609c7ea969644a7c4824585e9313f59ca8c3ef3b0203f2cc1c0bf83833042f9f909c7d7d19d44189882454cf8313f4aadb13e2d781e3f5b02cabf219c3042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Grass",
+      "attributes_hex": "8a2d0dc76e34ad442cefa145d4772a3f7aac5a3e4dff363fc1b3ddbf2cb534429af70ac7cd0c9f44a1c28c4538872f3f5fbe883e707f273f8295cbbfc5e0314224170dc7ea9696442604a445f7ea293f968dd2bc7e5d3f3f2cc1c0bf80983442",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Grass",
+      "attributes_hex": "d27808c7ea9696445cbb6745d07e353f04cbd13e54f1123f2cc1c0bf22af2e42f9f909c7d7d19d44189882454cf8313f4aadb13e2d781e3f5b02cabf219c3042bf6c0ac76af99f44adfb864559eb303f371ba83e87e7213f5fc4ccbf0a2f3142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Grass",
+      "attributes_hex": "bf6c0ac76af99f44adfb864559eb303f371ba83e87e7213f5fc4ccbf0a2f31429af70ac7cd0c9f44a1c28c4538872f3f5fbe883e707f273f8295cbbfc5e031428a2d0dc76e34ad442cefa145d4772a3f7aac5a3e4dff363fc1b3ddbf2cb53442",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Grass",
+      "attributes_hex": "8a2d0dc76e34ad442cefa145d4772a3f7aac5a3e4dff363fc1b3ddbf2cb53442d27808c7ea9696445cbb6745d07e353f04cbd13e54f1123f2cc1c0bf22af2e42bf6c0ac76af99f44adfb864559eb303f371ba83e87e7213f5fc4ccbf0a2f3142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "1be10ac7ea969644e0f68c45e7752f3f3a283b3e17192a3f2cc1c0bffac331429af70ac7cd0c9f44a1c28c4538872f3f5fbe883e707f273f8195cbbfc5e03142bf6c0ac76af99f44adfb864559eb303f371ba83e87e7213f5fc4ccbf092f3142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "f9f909c7d7d19d44189882454cf8313f4aadb13e2d781e3f5b02cabf209c3042bee609c7ea969644a7c4824585e9313f59ca8c3ef3b0203f2cc1c0bf82833042bf6c0ac76af99f44adfb864559eb303f371ba83e87e7213f5fc4ccbf092f3142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "1be10ac7ea969644e0f68c45e7752f3f3a283b3e17192a3f2cc1c0bffac33142bf6c0ac76af99f44adfb864559eb303f371ba83e87e7213f5fc4ccbf092f3142bee609c7ea969644a7c4824585e9313f59ca8c3ef3b0203f2cc1c0bf82833042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Grass",
+      "attributes_hex": "d27808c7939ef144511c394508ea293f8403093f33c3053feea21ac022af2e42d27808c7ea9696445cbb6745d07e353f04cbd13e54f1123f2cc1c0bf22af2e42aee109c72df606454ad9504590bf493f2299ce3e2604ee3e39c02cc0087d3042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Grass",
+      "attributes_hex": "aee109c72df606454ad9504590bf493f2299ce3e2604ee3e39c02cc0087d30428a2d0dc76e34ad442cefa145d4772a3f7aac5a3e4dff363fc1b3ddbf2cb53442f7030bc7f2961645c4c66345a7bf4c3f2e5ace3e9fc2e33e35c140c099f03142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Grass",
+      "attributes_hex": "bf6c0ac76af99f44adfb864559eb303f371ba83e87e7213f5fc4ccbf0a2f31428a2d0dc76e34ad442cefa145d4772a3f7aac5a3e4dff363fc1b3ddbf2cb53442aee109c72df606454ad9504590bf493f2299ce3e2604ee3e39c02cc0087d3042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Grass",
+      "attributes_hex": "d27808c7ea9696445cbb6745d07e353f04cbd13e54f1123f2cc1c0bf22af2e42f9f909c7d7d19d44189882454cf8313f4aadb13e2d781e3f5b02cabf219c30429a010ac700b0a0445a4682456578323f21b1b13e97c21d3f15aecdbfe4a53042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Grass",
+      "attributes_hex": "9a010ac700b0a0445a4682456578323f21b1b13e97c21d3f15aecdbfe4a53042bf6c0ac76af99f44adfb864559eb303f371ba83e87e7213f5fc4ccbf0a2f3142aee109c72df606454ad9504590bf493f2299ce3e2604ee3e39c02cc0087d3042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Grass",
+      "attributes_hex": "aee109c72df606454ad9504590bf493f2299ce3e2604ee3e39c02cc0087d3042d27808c7ea9696445cbb6745d07e353f04cbd13e54f1123f2cc1c0bf22af2e429a010ac700b0a0445a4682456578323f21b1b13e97c21d3f15aecdbfe4a53042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "bf6c0ac76af99f44adfb864559eb303f371ba83e87e7213f5fc4ccbf092f31429a010ac700b0a0445a4682456578323f21b1b13e97c21d3f14aecdbfe3a53042f9f909c7d7d19d44189882454cf8313f4aadb13e2d781e3f5b02cabf209c3042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Grass",
+      "attributes_hex": "bee609c7ea969644a7c4824585e9313f59ca8c3ef3b0203f2cc1c0bf83833042d27808c7ea9696445cbb6745d07e353f04cbd13e54f1123f2cc1c0bf22af2e42b4d009c7ba4d8e44d2b482453d20333f87a5813ee9bb233f0d26b6bf4d673042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Grass",
+      "attributes_hex": "24170dc7ea9696442604a445f7ea293f968dd2bc7e5d3f3f2cc1c0bf809834421be10ac7ea969644e0f68c45e7752f3f3a283b3e17192a3f2cc1c0bffac33142d6d10ac740d89044f7eb8c45504d303fbdb32b3e39352c3fb866b9bf6eb03142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Grass",
+      "attributes_hex": "d27808c7bae78a44b4166a4512e7363fe037bc3eb166183f73ccb1bf22af2e42b4d009c7ba4d8e44d2b482453d20333f87a5813ee9bb233f0d26b6bf4d673042d27808c7ea9696445cbb6745d07e353f04cbd13e54f1123f2cc1c0bf22af2e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "1be10ac7ea969644e0f68c45e7752f3f3a283b3e17192a3f2cc1c0bffac33142bee609c7ea969644a7c4824585e9313f59ca8c3ef3b0203f2cc1c0bf82833042d6d10ac740d89044f7eb8c45504d303fbdb32b3e39352c3fb866b9bf6db03142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "b4d009c7ba4d8e44d2b482453d20333f87a5813ee9bb233f0d26b6bf4d673042d6d10ac740d89044f7eb8c45504d303fbdb32b3e39352c3fb866b9bf6db03142bee609c7ea969644a7c4824585e9313f59ca8c3ef3b0203f2cc1c0bf82833042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "1bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842d2a306c785470345681716454a60173f1b89023f26e31c3f9f0928c0d0562c42b7a906c789e703459fc715454bfa173fb5e2013fa0c01c3f72d628c05b5e2c42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "1bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842b7a906c789e703459fc715454bfa173fb5e2013fa0c01c3f72d628c05b5e2c42d9af06c7318504452e7d15456a96183f083d013fb99b1c3f3fa029c035662c42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "1bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842d9af06c7318504452e7d15456a96183f083d013fb99b1c3f3fa029c035662c423ab606c764200545233815458f34193f2e98003f77741c3fe6662ac05e6e2c42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "1bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a928423ab606c764200545233815458f34193f2e98003f77741c3fe6662ac05e6e2c42d6bc06c70ab9054587f81445a2d4193f82e8ff3ee04a1c3f4a2a2bc0d5762c42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "1bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842d6bc06c70ab9054587f81445a2d4193f82e8ff3ee04a1c3f4a2a2bc0d5762c42aec306c70c4f064565be144589761a3fb3a2fe3efb1e1c3f4cea2bc0977f2c42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "1bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842aec306c70c4f064565be144589761a3fb3a2fe3efb1e1c3f4cea2bc0977f2c42c1ca06c752e20645c48914452d1a1b3f215ffd3ecef01b3fcfa62cc0a5882c42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "1bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842c1ca06c752e20645c48914452d1a1b3f215ffd3ecef01b3fcfa62cc0a5882c420cd206c7c6720745ae5a144573bf1b3fff1dfc3e60c01b3fb55f2dc0fb912c42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "1bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a928420cd206c7c6720745ae5a144573bf1b3fff1dfc3e60c01b3fb55f2dc0fb912c4290d906c7510008452a31144543661c3f7edffa3eba8d1b3fe3142ec09a9b2c42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "1bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842fea007c780771045f6dd1545a1c02a3f445fe43e86a5153fe1ea38c0df9a2d42d27808c7f29616455c9b1a45d9d8383f452bd13eacee0e3f35c140c022af2e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "1bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a9284290d906c7510008452a31144543661c3f7edffa3eba8d1b3fe3142ec09a9b2c424be106c7de8a08453e0d1445820e1d3fd0a3f93ee2581b3f3bc62ec07fa52c42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "189607c79c371045fc911545a5112a3fa93de53ef0fd153f1a9938c0eb8c2d42fea007c780771045f6dd1545a1c02a3f445fe43e86a5153fe1ea38c0df9a2d421bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "1bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a928424be106c7de8a08453e0d1445820e1d3fd0a3f93ee2581b3f3bc62ec07fa52c423ce906c758120945efee134517b81d3f246bf83ee1211b3fa4732fc0a9af2c42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "4b8b07c776f30f45634b1545fd61293f3522e63e0555163fde4138c0197f2d42189607c79c371045fc911545a5112a3fa93de53ef0fd153f1a9938c0eb8c2d421bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "1bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a928423ce906c758120945efee134517b81d3f246bf83ee1211b3fa4732fc0a9af2c4261f106c7a996094543d61345e7621e3fab35f73ebfe81a3f011d30c016ba2c42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "9b8007c717ab0f45370a1545c4b1283fc70ce73eb6aa163f3ce537c06a712d424b8b07c776f30f45634b1545fd61293f3522e63e0555163fde4138c0197f2d421bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "1bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a9284261f106c7a996094543d61345e7621e3fab35f73ebfe81a3f011d30c016ba2c42b9f906c7bd170a453dc31345d80e1f3f9503f63e85ad1a3f39c230c0c4c42c42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "077607c78b5e0f4582ce14451501283f3afde73ef7fe163f428337c0e0632d429b8007c717ab0f45370a1545c4b1283fc70ce73eb6aa163f3ce537c06a712d421bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "1bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842b9f906c7bd170a453dc31345d80e1f3f9503f63e85ad1a3f39c230c0c4c42c42440207c77f950a45dfb51345d0bb1f3f11d5f43e3d701a3f336331c0b3cf2c42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "936b07c7df0d0f454c9814450c50273f68f3e83eba51173ffe1b37c07e562d42077607c78b5e0f4582ce14451501283f3afde73ef7fe163f428337c0e0632d421bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "1bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842440207c77f950a45dfb51345d0bb1f3f11d5f43e3d701a3f336331c0b3cf2c42ff0a07c7de0f0b452dae1345b469203f4eaaf33eef301a3fd5ff31c0e1da2c42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "3f6107c71db90e459e671445c39e263f2befe93ef3a2173f81af36c046492d42936b07c7df0d0f454c9814450c50273f68f3e83eba51173ffe1b37c07e562d421bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "1bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842ff0a07c7de0f0b452dae1345b469203f4eaaf33eef301a3fd5ff31c0e1da2c42ea1307c7c6860b4527ac13456918213f7a83f23ea6ef193f079832c04ae62c42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "0d5707c754600e45803c144557ed253f5ef0ea3e96f2173fdc3d36c0393c2d423f6107c71db90e459e671445c39e263f2befe93ef3a2173f81af36c046492d421bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "1bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842ea1307c7c6860b4527ac13456918213f7a83f23ea6ef193f079832c04ae62c42031d07c724fa0b45ceaf1345d4c7213fc160f13e6bac193fb32b33c0eff12c42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "fe4c07c790030e45f9161445e23b253fd8f6eb3e9540183f1fc735c05a2f2d420d5707c754600e45803c144557ed253f5ef0ea3e96f2173fdc3d36c0393c2d421bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "1bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842031d07c724fa0b45ceaf1345d4c7213fc160f13e6bac193fb32b33c0eff12c42482607c7e6690c4520b91345da77223f5242f03e4a67193fc0ba33c0cdfd2c42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "154307c7e1a20d450df713457f8a243f7002ed3ee68c183f5e4b35c0ab222d42fe4c07c790030e45f9161445e23b253fd8f6eb3e9540183f1fc735c05a2f2d421bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "1bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842482607c7e6690c4520b91345da77223f5242f03e4a67193fc0ba33c0cdfd2c42b92f07c7fdd50c451dc813456028233f5828ef3e4b20193f1a4534c0e2092d42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "533907c7563e0d45c3dc13454bd9233ffe12ee3e7cd7183fabca34c02d162d42154307c7e1a20d450df713457f8a243f7002ed3ee68c183f5e4b35c0ab222d421bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "1bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842b92f07c7fdd50c451dc813456028233f5828ef3e4b20193f1a4534c0e2092d42533907c7563e0d45c3dc13454bd9233ffe12ee3e7cd7183fabca34c02d162d42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "404907c78d93ae448d7246457317263f956ef83e0911163f2f75dfbf8f2a2d4227b905c731eda344c2352e45d643263f2e63d23e51dc213f72d3d1bf6f2a2b422cf905c7ea969644fa12394558c32d3fd822b93e0e85223f2cc1c0bf617c2b42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "2cf905c7ea969644fa12394558c32d3fd822b93e0e85223f2cc1c0bf617c2b42621508c7ea969644897a60454cb9343f418bce3e8f07153f2cc1c0bfda2f2e42404907c78d93ae448d7246457317263f956ef83e0911163f2f75dfbf8f2a2d42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "956305c7efc0b54485271f45d199223ff02cd33e65df233f09a5e8bfe8bc2a4227b905c731eda344c2352e45d643263f2e63d23e51dc213f72d3d1bf6f2a2b42404907c78d93ae448d7246457317263f956ef83e0911163f2f75dfbf8f2a2d42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "6da706c7fd05cb44bd8f2c45bd21203fb995f73e52011a3f5aef01c06d5b2c42a1a106c7c847cc446b842b45dedf1f3ffba8f73ee6231a3f4dbd02c002542c42956305c7efc0b54485271f45d199223ff02cd33e65df233f09a5e8bfe8bc2a42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "78ad06c7d8c8c944649d2d450863203fc289f73ed1dc193f622401c029632c426da706c7fd05cb44bd8f2c45bd21203fb995f73e52011a3f5aef01c06d5b2c42956305c7efc0b54485271f45d199223ff02cd33e65df233f09a5e8bfe8bc2a42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "c1b306c78b90c84438ad2e45b6a3203f1585f73e69b6193f825c00c0356b2c4278ad06c7d8c8c944649d2d450863203fc289f73ed1dc193f622401c029632c42956305c7efc0b54485271f45d199223ff02cd33e65df233f09a5e8bfe8bc2a42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "47ba06c7455dc7440fbf2f45bde3203fb587f73e208e193fb42fffbf8e732c42c1b306c78b90c84438ad2e45b6a3203f1585f73e69b6193f825c00c0356b2c42956305c7efc0b54485271f45d199223ff02cd33e65df233f09a5e8bfe8bc2a42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "08c106c7362fc644bed230451223213fa191f73efb63193f12adfdbf337c2c4247ba06c7455dc7440fbf2f45bde3203fb587f73e208e193fb42fffbf8e732c42956305c7efc0b54485271f45d199223ff02cd33e65df233f09a5e8bfe8bc2a42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "08c106c7362fc644bed230451223213fa191f73efb63193f12adfdbf337c2c42956305c7efc0b54485271f45d199223ff02cd33e65df233f09a5e8bfe8bc2a4204c806c78c06c5441be83145ac61213fd7a2f73e0338193f5731fcbf24852c42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "04c806c78c06c5441be83145ac61213fd7a2f73e0338193f5731fcbf24852c42956305c7efc0b54485271f45d199223ff02cd33e65df233f09a5e8bfe8bc2a423acf06c775e3c344fcfe3245819f213f55bbf73e3c0a193fbfbcfabf5f8e2c42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "3acf06c775e3c344fcfe3245819f213f55bbf73e3c0a193fbfbcfabf5f8e2c42956305c7efc0b54485271f45d199223ff02cd33e65df233f09a5e8bfe8bc2a42a9d606c71fc6c2443517344589dc213f17dbf73eafda183f844ff9bfe2972c42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "a9d606c71fc6c2443517344589dc213f17dbf73eafda183f844ff9bfe2972c42956305c7efc0b54485271f45d199223ff02cd33e65df233f09a5e8bfe8bc2a424ede06c7b4aec1449a303545b818223f1702f83e62a9183fdce9f7bfaca12c42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "4ede06c7b4aec1449a303545b818223f1702f83e62a9183fdce9f7bfaca12c42956305c7efc0b54485271f45d199223ff02cd33e65df233f09a5e8bfe8bc2a422be606c7619dc044024b36450654223f5130f83e5e76183f018cf6bfbcab2c42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "404907c78d93ae448d7246457317263f956ef83e0911163f2f75dfbf8f2a2d42f9fe06c7928fbd448e9e39455100233f08e6f83e53d3173f4aa3f2bf7ccb2c42956305c7efc0b54485271f45d199223ff02cd33e65df233f09a5e8bfe8bc2a42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "2be606c7619dc044024b36450654223f5130f83e5e76183f018cf6bfbcab2c42956305c7efc0b54485271f45d199223ff02cd33e65df233f09a5e8bfe8bc2a423cee06c74f92bf443f6637456b8e223fbd65f83eaa41183f2736f5bf0fb62c42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "81f606c7a78dbe4427823845dcc7223f52a2f83e4e0b183f84e8f3bfa5c02c42956305c7efc0b54485271f45d199223ff02cd33e65df233f09a5e8bfe8bc2a42f9fe06c7928fbd448e9e39455100233f08e6f83e53d3173f4aa3f2bf7ccb2c42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "3cee06c74f92bf443f6637456b8e223fbd65f83eaa41183f2736f5bf0fb62c42956305c7efc0b54485271f45d199223ff02cd33e65df233f09a5e8bfe8bc2a4281f606c7a78dbe4427823845dcc7223f52a2f83e4e0b183f84e8f3bfa5c02c42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "621508c7ea969644897a60454cb9343f418bce3e8f07153f2cc1c0bfda2f2e422cf905c7ea969644fa12394558c32d3fd822b93e0e85223f2cc1c0bf617c2b42526306c7a879804431dd43459fc0303f64afac3e1dc6203fc272a4bf40042c42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "e30307c72fa76244dfa95145a4ee333f32a3a73e51621d3fd70e91bfc6d12c42621508c7ea969644897a60454cb9343f418bce3e8f07153f2cc1c0bfda2f2e42526306c7a879804431dd43459fc0303f64afac3e1dc6203fc272a4bf40042c42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "621508c7ea969644897a60454cb9343f418bce3e8f07153f2cc1c0bfda2f2e42e30307c72fa76244dfa95145a4ee333f32a3a73e51621d3fd70e91bfc6d12c42002807c700805e447fca5445a38f343f48c5a33ee20e1e3f66668ebf00002d42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "621508c7ea969644897a60454cb9343f418bce3e8f07153f2cc1c0bfda2f2e42002807c700805e447fca5445a38f343f48c5a33ee20e1e3f66668ebf00002d42d27808c7bae78a44b4166a4512e7363fe037bc3eb166183f73ccb1bf22af2e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "d27808c7a8399e457eb24344e021d83e6edf863ccb08683f3d87cac022af2e42f0c007c7f596964556e63a44bd7d793e184a9c3ecfaa6b3f3ac1c0c0c3c32d42d27808c7f596964571ad3e4442d4e53ed591bb3e8aa6503f3ac1c0c022af2e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "1bc403c76ee26145726d18449ee1f03e16e0973e93c0543fea9090c018a92842d27808c76ee26145b816f3447898153fe48ff03e5261293fea9090c022af2e426e7d05c7b1d07d4540b56d44317d113f0563843eecf7473f1571a2c0fddd2a42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "d27808c7f596964571ad3e4442d4e53ed591bb3e8aa6503f3ac1c0c022af2e42f0c007c7f596964556e63a44bd7d793e184a9c3ecfaa6b3f3ac1c0c0c3c32d421e5107c74ff2914571b153447098423e1fb8dd3e9090613fc1cfbac0a2342d42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "d27808c7f596964571ad3e4442d4e53ed591bb3e8aa6503f3ac1c0c022af2e421e5107c74ff2914571b153447098423e1fb8dd3e9090613fc1cfbac0a2342d42d27808c76ee26145b816f3447898153fe48ff03e5261293fea9090c022af2e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "6e7d05c7b1d07d4540b56d44317d113f0563843eecf7473f1571a2c0fddd2a42d27808c76ee26145b816f3447898153fe48ff03e5261293fea9090c022af2e421e5107c74ff2914571b153447098423e1fb8dd3e9090613fc1cfbac0a2342d42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "d27808c719c83145abaa0e45c81d2c3f9e81dc3ed37b183f7c8f63c022af2e42d27808c76ee26145b816f3447898153fe48ff03e5261293fea9090c022af2e421bc403c76ee26145726d18449ee1f03e16e0973e93c0543fea9090c018a92842",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "d27808c7f29616455c9b1a45d9d8383f452bd13eacee0e3f35c140c022af2e42d27808c7747718455ec81945e2f7373f9cf3d13e74970f3f412843c022af2e42155908c7bd921845ad8917457c26373fe0a8cf3e8bc5103f2f4b43c082862e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "b35608c733f3294512be0f450bf52e3faebad63e10f6163f378959c075832e42d27808c719c83145abaa0e45c81d2c3f9e81dc3ed37b183f7c8f63c022af2e421bc403c76ee26145726d18449ee1f03e16e0973e93c0543fea9090c018a92842",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "d27808c7f29616455c9b1a45d9d8383f452bd13eacee0e3f35c140c022af2e42155908c7bd921845ad8917457c26373fe0a8cf3e8bc5103f2f4b43c082862e42de2608c737b61b457fae12453477343f7e45cd3e98ae133fa24f47c03b462e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "de2608c737b61b457fae12453477343f7e45cd3e98ae133fa24f47c03b462e42b35608c733f3294512be0f450bf52e3faebad63e10f6163f378959c075832e421bc403c76ee26145726d18449ee1f03e16e0973e93c0543fea9090c018a92842",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "1bc403c76ee26145726d18449ee1f03e16e0973e93c0543fea9090c018a92842d27808c7f29616455c9b1a45d9d8383f452bd13eacee0e3f35c140c022af2e42de2608c737b61b457fae12453477343f7e45cd3e98ae133fa24f47c03b462e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "de2608c737b61b457fae12453477343f7e45cd3e98ae133fa24f47c03b462e42155908c7bd921845ad8917457c26373fe0a8cf3e8bc5103f304b43c082862e42d27808c7747718455ec81945e2f7373f9cf3d13e74970f3f422843c021af2e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "d27808c719c83145abaa0e45c81d2c3f9e81dc3ed37b183f7c8f63c021af2e42b35608c733f3294512be0f450bf52e3faebad63e10f6163f378959c075832e42d27808c7747718455ec81945e2f7373f9cf3d13e74970f3f422843c021af2e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "de2608c737b61b457fae12453477343f7e45cd3e98ae133fa24f47c03b462e42d27808c7747718455ec81945e2f7373f9cf3d13e74970f3f422843c021af2e42b35608c733f3294512be0f450bf52e3faebad63e10f6163f378959c075832e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "de2608c737b61b457fae12453477343f7e45cd3e98ae133fa24f47c03b462e421bc403c76ee26145726d18449ee1f03e16e0973e93c0543fea9090c018a928421bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "d27808c7f29616455c9b1a45d9d8383f452bd13eacee0e3f35c140c022af2e42155908c7bd921845ad8917457c26373fe0a8cf3e8bc5103f2f4b43c082862e42001d08c766c61845686c14454d07343f0ed5d13ee7e5123f4f8d43c09a392e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "001d08c766c61845686c14454d07343f0ed5d13ee7e5123f4f8d43c09a392e42de2608c737b61b457fae12453477343f7e45cd3e98ae133fa24f47c03b462e421bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "1bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842d27808c7f29616455c9b1a45d9d8383f452bd13eacee0e3f35c140c022af2e42001d08c766c61845686c14454d07343f0ed5d13ee7e5123f4f8d43c09a392e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "de2608c737b61b457fae12453477343f7e45cd3e98ae133fa24f47c03b462e42001d08c766c61845686c14454d07343f0ed5d13ee7e5123f508d43c09a392e42155908c7bd921845ad8917457c26373fe0a8cf3e8bc5103f304b43c082862e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "d27808c7f596964571ad3e4442d4e53ed591bb3e8aa6503f3ac1c0c022af2e428a2d0dc7f5969645b9d6f844925f573f471e5a3e6660fe3e3ac1c0c02cb53442d27808c7a8399e457eb24344e021d83e6edf863ccb08683f3d87cac022af2e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "6de809c74e7dad45b9c58c442de5223fb3d5413cc076453f0811dec0aa853042d27808c7a8399e457eb24344e021d83e6edf863ccb08683f3d87cac022af2e428a2d0dc7f5969645b9d6f844925f573f471e5a3e6660fe3e3ac1c0c02cb53442",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "8a2d0dc7b43cbc45b816d544d8e7313f5764883e6efb2a3f8af1f0c02cb534426de809c74e7dad45b9c58c442de5223fb3d5413cc076453f0811dec0aa8530428a2d0dc7f5969645b9d6f844925f573f471e5a3e6660fe3e3ac1c0c02cb53442",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "64170cc7d3447345709b0e45e21a2c3fee73ef3eb360093f2bb19bc02451334200b80bc70b3b79455fd50445a437263f901cea3e14b7103ff2819fc00bd732428a2d0dc76ee261455c1b2b45f1453d3f2107ff3ed7f6e73eea9090c02cb53442",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "00e90cc7cd748745fbd10a45952a473fb233ac3eeda2fe3e4e62adc0715d34421a7c0cc7664a8045cbc40c451f1e393ff214cf3e8d8c043f4636a4c00dd233428a2d0dc76ee261455c1b2b45f1453d3f2107ff3ed7f6e73eea9090c02cb53442",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "8a2d0dc76ee261455c1b2b45f1453d3f2107ff3ed7f6e73eea9090c02cb534428a2d0dc763248d45b0220845d5d2503f8eb0913e92c0f83e75a9b4c02cb5344200e90cc7cd748745fbd10a45952a473fb233ac3eeda2fe3e4e62adc0715d3442",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "64170cc7d3447345709b0e45e21a2c3fee73ef3eb360093f2bb19bc0245133428a2d0dc76ee261455c1b2b45f1453d3f2107ff3ed7f6e73eea9090c02cb534421a7c0cc7664a8045cbc40c451f1e393ff214cf3e8d8c043f4636a4c00dd23342",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "8a2d0dc75fb08d4517750745e133513fcc918f3ee813f93ea35cb5c02cb534428a2d0dc7f5969645b9d6f844925f573f471e5a3e6660fe3e3ac1c0c02cb534429a930cc766f28d452ba9fa447a8b443f009a983e6006073f27b1b5c021f03342",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "d6a70bc7b03d7a455a2d03453738253fd634e93e67f5113f7b27a0c05ac2324233dc0bc700e4804578d601452e332c3f0f2dd73e3b8a0f3fe1faa4c06105334245f30ac75cc38245345ae1441a131a3f7d18df3e0fd91f3f7660a7c03adb3142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "333d0bc7002c88456d5bdd443cfd233f804ec53e72751c3fcd4caec0dc39324245f30ac75cc38245345ae1441a131a3f7d18df3e0fd91f3f7660a7c03adb314233dc0bc700e4804578d601452e332c3f0f2dd73e3b8a0f3fe1faa4c061053342",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "d27808c7f596964571ad3e4442d4e53ed591bb3e8aa6503f3ac1c0c022af2e42fb870ac7ad1d8645c45dcb44d173133f8716d93ec819283f1bababc0e651314280a70ac7006c8845b7a9c944ecad173fd917ce3ee3a7263fb89eaec03e7a3142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "9a930cc766f28d452ba9fa447a8b443f009a983e6006073f27b1b5c021f033428a2d0dc7f5969645b9d6f844925f573f471e5a3e6660fe3e3ac1c0c02cb53442e6920bc700608e4530e4d8449f6f2f3fa9aba73e9e82183f713db6c08ea73242",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "663e0cc733138845645efe448f5e393fb6ebb43ecb090b3f0e2daec013833342333d0bc7002c88456d5bdd443cfd233f804ec53e72751c3fcd4caec0dc39324233dc0bc700e4804578d601452e332c3f0f2dd73e3b8a0f3fe1faa4c061053342",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "d27808c7f596964571ad3e4442d4e53ed591bb3e8aa6503f3ac1c0c022af2e4280a70ac7006c8845b7a9c944ecad173fd917ce3ee3a7263fb89eaec03e7a314233fd0ac700a08e457a32c5444e20233f0175b03e0fb5223f5c8fb6c0f0e73142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "333d0bc7002c88456d5bdd443cfd233f804ec53e72751c3fcd4caec0dc393242663e0cc733138845645efe448f5e393fb6ebb43ecb090b3f0e2daec013833342e6920bc700608e4530e4d8449f6f2f3fa9aba73e9e82183f713db6c08ea73242",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "d27808c7f596964571ad3e4442d4e53ed591bb3e8aa6503f3ac1c0c022af2e4233fd0ac700a08e457a32c5444e20233f0175b03e0fb5223f5c8fb6c0f0e731428a2d0dc7f5969645b9d6f844925f573f471e5a3e6660fe3e3ac1c0c02cb53442",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "9a930cc766f28d452ba9fa447a8b443f009a983e6006073f27b1b5c021f03342e6920bc700608e4530e4d8449f6f2f3fa9aba73e9e82183f713db6c08ea73242663e0cc733138845645efe448f5e393fb6ebb43ecb090b3f0e2daec013833342",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "e6920bc700608e4530e4d8449f6f2f3fa9aba73e9e82183f713db6c08ea732428a2d0dc7f5969645b9d6f844925f573f471e5a3e6660fe3e3ac1c0c02cb5344233fd0ac700a08e457a32c5444e20233f0175b03e0fb5223f5c8fb6c0f0e73142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "33fd0ac700a08e457a32c5444e20233f0175b03e0fb5223f5c8fb6c0f0e7314280a70ac7006c8845b7a9c944ecad173fd917ce3ee3a7263fb89eaec03d7a3142333d0bc7002c88456d5bdd443cfd233f804ec53e72751c3fcd4caec0db393242",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "333d0bc7002c88456d5bdd443cfd233f804ec53e72751c3fcd4caec0db393242e6920bc700608e4530e4d8449f6f2f3fa9aba73e9e82183f713db6c08da7324233fd0ac700a08e457a32c5444e20233f0175b03e0fb5223f5c8fb6c0f0e73142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "fb870ac7ad1d8645c45dcb44d173133f8716d93ec819283f1bababc0e551314245f30ac75cc38245345ae1441a131a3f7d18df3e0fd91f3f7660a7c03adb3142333d0bc7002c88456d5bdd443cfd233f804ec53e72751c3fcd4caec0db393242",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "fb870ac7ad1d8645c45dcb44d173133f8716d93ec819283f1bababc0e5513142333d0bc7002c88456d5bdd443cfd233f804ec53e72751c3fcd4caec0db39324280a70ac7006c8845b7a9c944ecad173fd917ce3ee3a7263fb89eaec03d7a3142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoRockGround",
+      "attributes_hex": "d6a70bc7b03d7a455a2d03453738253fd634e93e67f5113f7b27a0c059c232421a7c0cc7664a8045cbc40c451f1e393ff214cf3e8d8c043f4636a4c00cd2334233dc0bc700e4804578d601452e332c3f0f2dd73e3b8a0f3fe1faa4c060053342",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoRockGround",
+      "attributes_hex": "d6a70bc7b03d7a455a2d03453738253fd634e93e67f5113f7b27a0c059c2324264170cc7d3447345709b0e45e21a2c3fee73ef3eb360093f2bb19bc0235133421a7c0cc7664a8045cbc40c451f1e393ff214cf3e8d8c043f4636a4c00cd23342",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoRockGround",
+      "attributes_hex": "9a930cc766f28d452ba9fa447a8b443f009a983e6006073f27b1b5c021f03342663e0cc733138845645efe448f5e393fb6ebb43ecb090b3f0e2daec01283334200e90cc7cd748745fbd10a45952a473fb233ac3eeda2fe3e4e62adc0715d3442",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoRockGround",
+      "attributes_hex": "8a2d0dc763248d45b0220845d5d2503f8eb0913e92c0f83e75a9b4c02cb534428a2d0dc75fb08d4517750745e133513fcc918f3ee813f93ea35cb5c02cb534429a930cc766f28d452ba9fa447a8b443f009a983e6006073f27b1b5c021f03342",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoRockGround",
+      "attributes_hex": "33dc0bc700e4804578d601452e332c3f0f2dd73e3b8a0f3fe1faa4c0600533421a7c0cc7664a8045cbc40c451f1e393ff214cf3e8d8c043f4636a4c00cd23342663e0cc733138845645efe448f5e393fb6ebb43ecb090b3f0e2daec012833342",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoRockGround",
+      "attributes_hex": "00e90cc7cd748745fbd10a45952a473fb233ac3eeda2fe3e4e62adc0715d3442663e0cc733138845645efe448f5e393fb6ebb43ecb090b3f0e2daec0128333421a7c0cc7664a8045cbc40c451f1e393ff214cf3e8d8c043f4636a4c00cd23342",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoRockGround",
+      "attributes_hex": "8a2d0dc763248d45b0220845d5d2503f8eb0913e92c0f83e75a9b4c02cb534429a930cc766f28d452ba9fa447a8b443f009a983e6006073f27b1b5c021f0334200e90cc7cd748745fbd10a45952a473fb233ac3eeda2fe3e4e62adc0715d3442",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "fb870ac7ad1d8645c45dcb44d173133f8716d93ec819283f1bababc0e6513142d27808c7f596964571ad3e4442d4e53ed591bb3e8aa6503f3ac1c0c022af2e424d450ac7cd3c81458206d94413c0153f7827df3eb1f7253f8b6ca5c08cfc3042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "d27808c76ee26145b816f3447898153fe48ff03e5261293fea9090c022af2e42777309c76ee261451edb0345bfd91d3f5b92f33e46451e3fea9090c0f5ef2f421ad609c7337b7145ef38f1444fea193f73c7e93e8108223f4a8c9ac0366e3042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "4d450ac7cd3c81458206d94413c0153f7827df3eb1f7253f8b6ca5c08cfc3042d27808c7f596964571ad3e4442d4e53ed591bb3e8aa6503f3ac1c0c022af2e421ad609c7337b7145ef38f1444fea193f73c7e93e8108223f4a8c9ac0366e3042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "d27808c76ee26145b816f3447898153fe48ff03e5261293fea9090c022af2e421ad609c7337b7145ef38f1444fea193f73c7e93e8108223f4a8c9ac0366e3042d27808c7f596964571ad3e4442d4e53ed591bb3e8aa6503f3ac1c0c022af2e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "d6a70bc7b03d7a455a2d03453738253fd634e93e67f5113f7b27a0c05ac2324200db0ac7cdfc8045f052e64436e91a3fb94de13e4b121f3fa01aa5c02abc3142cd610bc700287045c0300a45da8e273f8a76ef3e99cd0f3f33b399c0b5683242",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "d6a70bc7b03d7a455a2d03453738253fd634e93e67f5113f7b27a0c05ac2324245f30ac75cc38245345ae1441a131a3f7d18df3e0fd91f3f7660a7c03adb314200db0ac7cdfc8045f052e64436e91a3fb94de13e4b121f3fa01aa5c02abc3142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "510f0ac76ee2614587440a45cafb223f6f71f53ed75c173fea9090c072b73042b0fe0ac76ee26145941d144509de2a3f4051f83eb1c00c3fea9090c0d8e93142cd6b0ac733fb70455d85fe4472131f3fb5edeb3e1b231b3f5e3a9ac0d42d3142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "cd6b0ac733fb70455d85fe4472131f3fb5edeb3e1b231b3f5e3a9ac0d42d3142cd610bc700287045c0300a45da8e273f8a76ef3e99cd0f3f33b399c0b568324200db0ac7cdfc8045f052e64436e91a3fb94de13e4b121f3fa01aa5c02abc3142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "cd610bc700287045c0300a45da8e273f8a76ef3e99cd0f3f33b399c0b5683242cd6b0ac733fb70455d85fe4472131f3fb5edeb3e1b231b3f5e3a9ac0d42d3142b0fe0ac76ee26145941d144509de2a3f4051f83eb1c00c3fea9090c0d8e93142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "00f70bc7cdfc6e45ac791145a1022d3fc013f23e9594083fb6f398c0af273342c3930bc76ee26145a33f1a45f5c62f3f801bfa3e2125063fea9090c0a9a832428a2d0dc76ee261455c1b2b45f1453d3f2107ff3ed7f6e73eea9090c02cb53442",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "8a2d0dc76ee261455c1b2b45f1453d3f2107ff3ed7f6e73eea9090c02cb5344264170cc7d3447345709b0e45e21a2c3fee73ef3eb360093f2bb19bc02451334200f70bc7cdfc6e45ac791145a1022d3fc013f23e9594083fb6f398c0af273342",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "45f30ac75cc38245345ae1441a131a3f7d18df3e0fd91f3f7660a7c03adb31424d450ac7cd3c81458206d94413c0153f7827df3eb1f7253f8b6ca5c08bfc304200db0ac7cdfc8045f052e64436e91a3fb94de13e4b121f3fa01aa5c029bc3142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "45f30ac75cc38245345ae1441a131a3f7d18df3e0fd91f3f7660a7c03adb3142fb870ac7ad1d8645c45dcb44d173133f8716d93ec819283f1bababc0e55131424d450ac7cd3c81458206d94413c0153f7827df3eb1f7253f8b6ca5c08bfc3042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "777309c76ee261451edb0345bfd91d3f5b92f33e46451e3fea9090c0f4ef2f42510f0ac76ee2614587440a45cafb223f6f71f53ed75c173fea9090c071b730421ad609c7337b7145ef38f1444fea193f73c7e93e8108223f4a8c9ac0356e3042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "00db0ac7cdfc8045f052e64436e91a3fb94de13e4b121f3fa01aa5c029bc31424d450ac7cd3c81458206d94413c0153f7827df3eb1f7253f8b6ca5c08bfc3042cd6b0ac733fb70455d85fe4472131f3fb5edeb3e1b231b3f5e3a9ac0d32d3142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "cd6b0ac733fb70455d85fe4472131f3fb5edeb3e1b231b3f5e3a9ac0d32d31421ad609c7337b7145ef38f1444fea193f73c7e93e8108223f4a8c9ac0356e3042510f0ac76ee2614587440a45cafb223f6f71f53ed75c173fea9090c071b73042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "1ad609c7337b7145ef38f1444fea193f73c7e93e8108223f4a8c9ac0356e3042cd6b0ac733fb70455d85fe4472131f3fb5edeb3e1b231b3f5e3a9ac0d32d31424d450ac7cd3c81458206d94413c0153f7827df3eb1f7253f8b6ca5c08bfc3042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoRockGround",
+      "attributes_hex": "d6a70bc7b03d7a455a2d03453738253fd634e93e67f5113f7b27a0c059c23242cd610bc700287045c0300a45da8e273f8a76ef3e99cd0f3f33b399c0b468324264170cc7d3447345709b0e45e21a2c3fee73ef3eb360093f2bb19bc023513342",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoRockGround",
+      "attributes_hex": "00f70bc7cdfc6e45ac791145a1022d3fc013f23e9594083fb6f398c0ae27334264170cc7d3447345709b0e45e21a2c3fee73ef3eb360093f2bb19bc023513342cd610bc700287045c0300a45da8e273f8a76ef3e99cd0f3f33b399c0b4683242",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoRockGround",
+      "attributes_hex": "b0fe0ac76ee26145941d144509de2a3f4051f83eb1c00c3fea9090c0d7e93142c3930bc76ee26145a33f1a45f5c62f3f801bfa3e2125063fea9090c0a8a83242cd610bc700287045c0300a45da8e273f8a76ef3e99cd0f3f33b399c0b4683242",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoRockGround",
+      "attributes_hex": "00f70bc7cdfc6e45ac791145a1022d3fc013f23e9594083fb6f398c0ae273342cd610bc700287045c0300a45da8e273f8a76ef3e99cd0f3f33b399c0b4683242c3930bc76ee26145a33f1a45f5c62f3f801bfa3e2125063fea9090c0a8a83242",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "59a20ac7c3303c45ce234145fa9a293f605d033ffee6073f41e270c0a6733142d2010cc794412445b1996e45954f363f09670a3f4c4ae53e753f52c087353342b3020bc766664c45bf1b30457a032c3f239b003f3d7a073fe5d082c0faee3142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "cd710bc766665d45eba81e45c9de2e3fd08bfb3e2296063f2db28dc0307d3242b3020bc766664c45bf1b30457a032c3f239b003f3d7a073fe5d082c0faee31428a2d0dc76ee261455c1b2b45f1453d3f2107ff3ed7f6e73eea9090c02cb53442",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "8a2d0dc76ee261455c1b2b45f1453d3f2107ff3ed7f6e73eea9090c02cb53442c3930bc76ee26145a33f1a45f5c62f3f801bfa3e2125063fea9090c0a9a83242cd710bc766665d45eba81e45c9de2e3fd08bfb3e2296063f2db28dc0307d3242",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "8a2d0dc76ee261455c1b2b45f1453d3f2107ff3ed7f6e73eea9090c02cb53442b3020bc766664c45bf1b30457a032c3f239b003f3d7a073fe5d082c0faee3142d2010cc794412445b1996e45954f363f09670a3f4c4ae53e753f52c087353342",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "959c09c720044e4537481f458624203f163ffc3eefbb173faed983c0972430420c3e0ac75a0543458f2a3445befa253f365b013ffff70d3f73a079c042f3304233780ac700884d45f8f128450f66273f4915ff3e81e20d3f3d8a83c0b23d3142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "510f0ac76ee2614587440a45cafb223f6f71f53ed75c173fea9090c072b7304280fb09c766a65e4558a40d45ce7b223f7989f63e3979173ffa7e8ec0159e304266e70ac700885e453380174536422a3f226bf93e43fd0c3f856b8ec009cc3142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "66e70ac700885e453380174536422a3f226bf93e43fd0c3f856b8ec009cc3142b0fe0ac76ee26145941d144509de2a3f4051f83eb1c00c3fea9090c0d8e93142510f0ac76ee2614587440a45cafb223f6f71f53ed75c173fea9090c072b73042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "959c09c720044e4537481f458624203f163ffc3eefbb173faed983c09724304233780ac700884d45f8f128450f66273f4915ff3e81e20d3f3d8a83c0b23d314280fb09c766a65e4558a40d45ce7b223f7989f63e3979173ffa7e8ec0159e3042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "66e70ac700885e453380174536422a3f226bf93e43fd0c3f856b8ec009cc314280fb09c766a65e4558a40d45ce7b223f7989f63e3979173ffa7e8ec0159e304233780ac700884d45f8f128450f66273f4915ff3e81e20d3f3d8a83c0b23d3142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "666609c79ad15f457ffe054590841d3ff343f43e0b5c1e3f773e8fc03cdf2f42777309c76ee261451edb0345bfd91d3f5b92f33e46451e3fea9090c0f5ef2f42d27808c76ee26145b816f3447898153fe48ff03e5261293fea9090c022af2e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "d27808c76ee26145b816f3447898153fe48ff03e5261293fea9090c022af2e42022b09c713c055458797104579091c3fb3b2f73e6b9a1e3fd9cc88c036932f42666609c79ad15f457ffe054590841d3ff343f43e0b5c1e3f773e8fc03cdf2f42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "022b09c713c055458797104579091c3fb3b2f73e6b9a1e3fd9cc88c036932f42959c09c720044e4537481f458624203f163ffc3eefbb173faed983c09624304280fb09c766a65e4558a40d45ce7b223f7989f63e3979173ffa7e8ec0149e3042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "777309c76ee261451edb0345bfd91d3f5b92f33e46451e3fea9090c0f4ef2f42666609c79ad15f457ffe054590841d3ff343f43e0b5c1e3f773e8fc03bdf2f4280fb09c766a65e4558a40d45ce7b223f7989f63e3979173ffa7e8ec0149e3042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "80fb09c766a65e4558a40d45ce7b223f7989f63e3979173ffa7e8ec0149e3042510f0ac76ee2614587440a45cafb223f6f71f53ed75c173fea9090c071b73042777309c76ee261451edb0345bfd91d3f5b92f33e46451e3fea9090c0f4ef2f42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "022b09c713c055458797104579091c3fb3b2f73e6b9a1e3fd9cc88c036932f4280fb09c766a65e4558a40d45ce7b223f7989f63e3979173ffa7e8ec0149e3042666609c79ad15f457ffe054590841d3ff343f43e0b5c1e3f773e8fc03bdf2f42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoRockGround",
+      "attributes_hex": "0c3e0ac75a0543458f2a3445befa253f365b013ffff70d3f73a079c042f3304259a20ac7c3303c45ce234145fa9a293f605d033ffee6073f41e270c0a6733142b3020bc766664c45bf1b30457a032c3f239b003f3d7a073fe5d082c0faee3142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoRockGround",
+      "attributes_hex": "66e70ac700885e453380174536422a3f226bf93e43fd0c3f856b8ec008cc3142cd710bc766665d45eba81e45c9de2e3fd08bfb3e2296063f2db28dc02f7d3242b0fe0ac76ee26145941d144509de2a3f4051f83eb1c00c3fea9090c0d7e93142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoRockGround",
+      "attributes_hex": "c3930bc76ee26145a33f1a45f5c62f3f801bfa3e2125063fea9090c0a8a83242b0fe0ac76ee26145941d144509de2a3f4051f83eb1c00c3fea9090c0d7e93142cd710bc766665d45eba81e45c9de2e3fd08bfb3e2296063f2db28dc02f7d3242",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoRockGround",
+      "attributes_hex": "0c3e0ac75a0543458f2a3445befa253f365b013ffff70d3f73a079c042f33042b3020bc766664c45bf1b30457a032c3f239b003f3d7a073fe5d082c0faee314233780ac700884d45f8f128450f66273f4915ff3e81e20d3f3d8a83c0b23d3142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoRockGround",
+      "attributes_hex": "cd710bc766665d45eba81e45c9de2e3fd08bfb3e2296063f2db28dc02f7d324266e70ac700885e453380174536422a3f226bf93e43fd0c3f856b8ec008cc3142b3020bc766664c45bf1b30457a032c3f239b003f3d7a073fe5d082c0faee3142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoRockGround",
+      "attributes_hex": "33780ac700884d45f8f128450f66273f4915ff3e81e20d3f3d8a83c0b23d3142b3020bc766664c45bf1b30457a032c3f239b003f3d7a073fe5d082c0faee314266e70ac700885e453380174536422a3f226bf93e43fd0c3f856b8ec008cc3142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "d2010cc794412445b1996e45954f363f09670a3f4c4ae53e753f52c0873533428a2d0dc71f9625450d27854529a81f3fea88253fe7e3e03e5af353c02cb534428a2d0dc76ee261455c1b2b45f1453d3f2107ff3ed7f6e73eea9090c02cb53442",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "669d08c70058184576f21d45d324393ffdbdd13e98ea0d3fffff42c0f4dd2e42d27808c7747718455ec81945e2f7373f9cf3d13e74970f3f412843c022af2e42d27808c7f29616455c9b1a45d9d8383f452bd13eacee0e3f35c140c022af2e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "84f309c72b183645b3533745ecab353f92aadc3e351a093fb11469c0dc933042e63009c766963a45317c1f45ad9e2d3fa961df3e1c5d133ffdd46ec0c19a2f424da209c766d62845a80534455e65393f877dd73ebf11083fab1c58c0e82b3042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "84f309c72b183645b3533745ecab353f92aadc3e351a093fb11469c0dc933042ac6d09c734924545be7d2145c1552a3fb3b2e33ea282143f19e47cc08be82f42e63009c766963a45317c1f45ad9e2d3fa961df3e1c5d133ffdd46ec0c19a2f42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "fc450ac7db8e2c451ac844452ba83c3f5f55d83eb612023fd0df5cc06cfd30424d2d0ac7006028453fd8434563dc3d3f3bb2d63e80b4013f1e8557c0d4dd3042f7030bc7f2961645c4c66345a7bf4c3f2e5ace3e9fc2e33e35c140c099f03142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "cde108c7337b2945aa1b1e450436333f6b97d83e5de2103f9def58c082352f424da209c766d62845a80534455e65393f877dd73ebf11083fab1c58c0e82b3042e63009c766963a45317c1f45ad9e2d3fa961df3e1c5d133ffdd46ec0c19a2f42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "cdc809c700581745ae0740454cc3423fb107d03eee34003f51b841c0305d3042f7030bc7f2961645c4c66345a7bf4c3f2e5ace3e9fc2e33e35c140c099f031424d2d0ac7006028453fd8434563dc3d3f3bb2d63e80b4013f1e8557c0d4dd3042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "4da209c766d62845a80534455e65393f877dd73ebf11083fab1c58c0e82b3042cde108c7337b2945aa1b1e450436333f6b97d83e5de2103f9def58c082352f42e65d09c733b3174574dc33452c543f3f19a4d03ef919053f0e2d42c05bd42f42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "d27808c7f29616455c9b1a45d9d8383f452bd13eacee0e3f35c140c022af2e42f7030bc7f2961645c4c66345a7bf4c3f2e5ace3e9fc2e33e35c140c099f03142cdc809c700581745ae0740454cc3423fb107d03eee34003f51b841c0305d3042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "669d08c70058184576f21d45d324393ffdbdd13e98ea0d3fffff42c0f4dd2e42e65d09c733b3174574dc33452c543f3f19a4d03ef919053f0e2d42c05bd42f42cde108c7337b2945aa1b1e450436333f6b97d83e5de2103f9def58c082352f42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "d27808c7f29616455c9b1a45d9d8383f452bd13eacee0e3f35c140c022af2e42cdc809c700581745ae0740454cc3423fb107d03eee34003f51b841c0305d3042e65d09c733b3174574dc33452c543f3f19a4d03ef919053f0e2d42c05bd42f42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "e65d09c733b3174574dc33452c543f3f19a4d03ef919053f0e2d42c05bd42f42669d08c70058184576f21d45d324393ffdbdd13e98ea0d3fffff42c0f4dd2e42d27808c7f29616455c9b1a45d9d8383f452bd13eacee0e3f35c140c022af2e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "e60109c700c84e4523561145a1ba223f1801e83ecd8d1c3f0a5784c0985e2f424e0d09c7f0b65045e0c41145252c223fd3c2e83e64b91c3fcc9385c0316d2f42d27808c76ee26145b816f3447898153fe48ff03e5261293fea9090c022af2e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "d27808c76ee26145b816f3447898153fe48ff03e5261293fea9090c022af2e42d27808c719c83145abaa0e45c81d2c3f9e81dc3ed37b183f7c8f63c022af2e4200a708c79a613c4599330f45b490283fd4b9e03e80251a3fc42071c03eea2e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "00a708c79a613c4599330f45b490283fd4b9e03e80251a3fc42071c03eea2e42e60109c700c84e4523561145a1ba223f1801e83ecd8d1c3f0a5784c0985e2f42d27808c76ee26145b816f3447898153fe48ff03e5261293fea9090c022af2e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "d27808c7747718455ec81945e2f7373f9cf3d13e74970f3f422843c021af2e42669d08c70058184576f21d45d324393ffdbdd13e98ea0d3f000043c0f4dd2e42cde108c7337b2945aa1b1e450436333f6b97d83e5de2103f9eef58c081352f42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "00a708c79a613c4599330f45b490283fd4b9e03e80251a3fc52071c03dea2e42d27808c719c83145abaa0e45c81d2c3f9e81dc3ed37b183f7c8f63c021af2e42e63009c766963a45317c1f45ad9e2d3fa961df3e1c5d133ffed46ec0c19a2f42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "4e0d09c7f0b65045e0c41145252c223fd3c2e83e64b91c3fcd9385c0316d2f42e60109c700c84e4523561145a1ba223f1801e83ecd8d1c3f0a5784c0985e2f42ac6d09c734924545be7d2145c1552a3fb3b2e33ea282143f19e47cc08ae82f42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "e63009c766963a45317c1f45ad9e2d3fa961df3e1c5d133ffed46ec0c19a2f42ac6d09c734924545be7d2145c1552a3fb3b2e33ea282143f19e47cc08ae82f4200a708c79a613c4599330f45b490283fd4b9e03e80251a3fc52071c03dea2e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "d27808c7747718455ec81945e2f7373f9cf3d13e74970f3f422843c021af2e42cde108c7337b2945aa1b1e450436333f6b97d83e5de2103f9eef58c081352f42d27808c719c83145abaa0e45c81d2c3f9e81dc3ed37b183f7c8f63c021af2e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "e60109c700c84e4523561145a1ba223f1801e83ecd8d1c3f0a5784c0985e2f4200a708c79a613c4599330f45b490283fd4b9e03e80251a3fc52071c03dea2e42ac6d09c734924545be7d2145c1552a3fb3b2e33ea282143f19e47cc08ae82f42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "cde108c7337b2945aa1b1e450436333f6b97d83e5de2103f9eef58c081352f42e63009c766963a45317c1f45ad9e2d3fa961df3e1c5d133ffed46ec0c19a2f42d27808c719c83145abaa0e45c81d2c3f9e81dc3ed37b183f7c8f63c021af2e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoRockGround",
+      "attributes_hex": "e65d09c733b3174574dc33452c543f3f19a4d03ef919053f0e2d42c05ad42f42cdc809c700581745ae0740454cc3423fb107d03eee34003f52b841c02f5d30424da209c766d62845a80534455e65393f877dd73ebf11083fac1c58c0e72b3042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoRockGround",
+      "attributes_hex": "84f309c72b183645b3533745ecab353f92aadc3e351a093fb21469c0dc9330424da209c766d62845a80534455e65393f877dd73ebf11083fac1c58c0e72b3042fc450ac7db8e2c451ac844452ba83c3f5f55d83eb612023fd1df5cc06bfd3042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoRockGround",
+      "attributes_hex": "4d2d0ac7006028453fd8434563dc3d3f3bb2d63e80b4013f1f8557c0d3dd3042fc450ac7db8e2c451ac844452ba83c3f5f55d83eb612023fd1df5cc06bfd30424da209c766d62845a80534455e65393f877dd73ebf11083fac1c58c0e72b3042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoRockGround",
+      "attributes_hex": "4d2d0ac7006028453fd8434563dc3d3f3bb2d63e80b4013f1f8557c0d3dd30424da209c766d62845a80534455e65393f877dd73ebf11083fac1c58c0e72b3042cdc809c700581745ae0740454cc3423fb107d03eee34003f52b841c02f5d3042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "fc450ac7db8e2c451ac844452ba83c3f5f55d83eb612023fd0df5cc06cfd3042a5fa09c721453545737d38458246363faf4adc3ea67e083f900668c0fc9c3042f7030bc7f2961645c4c66345a7bf4c3f2e5ace3e9fc2e33e35c140c099f03142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "59a20ac7c3303c45ce234145fa9a293f605d033ffee6073f41e270c0a6733142cd910ac700683945cec741457a002d3ff572fe3ed7dd063feb516dc0775e3142d2010cc794412445b1996e45954f363f09670a3f4c4ae53e753f52c087353342",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "d2010cc794412445b1996e45954f363f09670a3f4c4ae53e753f52c08735334278600ac748ad4045539e38454a39273fa80b023f0ce30b3f5ba076c0521f314259a20ac7c3303c45ce234145fa9a293f605d033ffee6073f41e270c0a6733142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "fc450ac7db8e2c451ac844452ba83c3f5f55d83eb612023fd0df5cc06cfd3042f7030bc7f2961645c4c66345a7bf4c3f2e5ace3e9fc2e33e35c140c099f03142d2010cc794412445b1996e45954f363f09670a3f4c4ae53e753f52c087353342",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "fc450ac7db8e2c451ac844452ba83c3f5f55d83eb612023fd0df5cc06cfd3042d2010cc794412445b1996e45954f363f09670a3f4c4ae53e753f52c087353342cd910ac700683945cec741457a002d3ff572fe3ed7dd063feb516dc0775e3142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "84f309c72b183645b3533745ecab353f92aadc3e351a093fb11469c0dc9330429a120ac7332b3b45f13b364554732f3fceeaeb3e89f70a3f74936fc0a6bb3042ac6d09c734924545be7d2145c1552a3fb3b2e33ea282143f19e47cc08be82f42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "809609c733f34c45448c1f454c6f213f991ef93ec754173f022b83c0cd1c3042ac6d09c734924545be7d2145c1552a3fb3b2e33ea282143f19e47cc08be82f420c3e0ac75a0543458f2a3445befa253f365b013ffff70d3f73a079c042f33042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "d27808c76ee26145b816f3447898153fe48ff03e5261293fea9090c022af2e42341109c794435045a2671245a480223f698ee83e5c641c3ff84985c02e722f424e0d09c7f0b65045e0c41145252c223fd3c2e83e64b91c3fcc9385c0316d2f42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "9a120ac7332b3b45f13b364554732f3fceeaeb3e89f70a3f74936fc0a6bb30420c3e0ac75a0543458f2a3445befa253f365b013ffff70d3f73a079c042f33042ac6d09c734924545be7d2145c1552a3fb3b2e33ea282143f19e47cc08be82f42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "d27808c76ee26145b816f3447898153fe48ff03e5261293fea9090c022af2e424e0d09c7f0b65045e0c41145252c223fd3c2e83e64b91c3fcc9385c0316d2f42022b09c713c055458797104579091c3fb3b2f73e6b9a1e3fd9cc88c036932f42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "959c09c720044e4537481f458624203f163ffc3eefbb173faed983c097243042809609c733f34c45448c1f454c6f213f991ef93ec754173f022b83c0cd1c30420c3e0ac75a0543458f2a3445befa253f365b013ffff70d3f73a079c042f33042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "d27808c76ee26145b816f3447898153fe48ff03e5261293fea9090c022af2e42022b09c713c055458797104579091c3fb3b2f73e6b9a1e3fd9cc88c036932f42959c09c720044e4537481f458624203f163ffc3eefbb173faed983c097243042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "959c09c720044e4537481f458624203f163ffc3eefbb173faed983c0972430420c3e0ac75a0543458f2a3445befa253f365b013ffff70d3f73a079c042f33042d27808c76ee26145b816f3447898153fe48ff03e5261293fea9090c022af2e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "4e0d09c7f0b65045e0c41145252c223fd3c2e83e64b91c3fcd9385c0316d2f42ac6d09c734924545be7d2145c1552a3fb3b2e33ea282143f19e47cc08ae82f42809609c733f34c45448c1f454c6f213f991ef93ec754173f022b83c0cd1c3042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "959c09c720044e4537481f458624203f163ffc3eefbb173faed983c096243042022b09c713c055458797104579091c3fb3b2f73e6b9a1e3fd9cc88c036932f424e0d09c7f0b65045e0c41145252c223fd3c2e83e64b91c3fcd9385c0316d2f42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoIvyGround",
+      "attributes_hex": "4e0d09c7f0b65045e0c41145252c223fd3c2e83e64b91c3fcd9385c0316d2f42809609c733f34c45448c1f454c6f213f991ef93ec754173f022b83c0cd1c3042959c09c720044e4537481f458624203f163ffc3eefbb173faed983c096243042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoRockGround",
+      "attributes_hex": "84f309c72b183645b3533745ecab353f92aadc3e351a093fb21469c0dc933042fc450ac7db8e2c451ac844452ba83c3f5f55d83eb612023fd1df5cc06bfd3042cd910ac700683945cec741457a002d3ff572fe3ed7dd063fec516dc0775e3142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoRockGround",
+      "attributes_hex": "59a20ac7c3303c45ce234145fa9a293f605d033ffee6073f41e270c0a67331420c3e0ac75a0543458f2a3445befa253f365b013ffff70d3f73a079c042f330429a120ac7332b3b45f13b364554732f3fceeaeb3e89f70a3f75936fc0a6bb3042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoRockGround",
+      "attributes_hex": "84f309c72b183645b3533745ecab353f92aadc3e351a093fb21469c0dc933042cd910ac700683945cec741457a002d3ff572fe3ed7dd063fec516dc0775e31429a120ac7332b3b45f13b364554732f3fceeaeb3e89f70a3f75936fc0a6bb3042",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoRockGround",
+      "attributes_hex": "59a20ac7c3303c45ce234145fa9a293f605d033ffee6073f41e270c0a67331429a120ac7332b3b45f13b364554732f3fceeaeb3e89f70a3f75936fc0a6bb3042cd910ac700683945cec741457a002d3ff572fe3ed7dd063fec516dc0775e3142",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "aee109c72df606454ad9504590bf493f2299ce3e2604ee3e39c02cc0087d3042f7030bc7f2961645c4c66345a7bf4c3f2e5ace3e9fc2e33e35c140c099f03142d27808c7f29616455c9b1a45d9d8383f452bd13eacee0e3f35c140c022af2e42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "8a2d0dc7b43cbc45b816d544d8e7313f5764883e6efb2a3f8af1f0c02cb534428a2d0dc7f5969645b9d6f844925f573f471e5a3e6660fe3e3ac1c0c02cb5344242e211c7f5969645ae5597450f163f3f07b4f53e0f0cec3e3ac1c0c036bb3a42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "42e211c76ee26145aea5b745a7de453faadc683eb3a3173fea9090c036bb3a4242e211c7f5969645ae5597450f163f3f07b4f53e0f0cec3e3ac1c0c036bb3a428a2d0dc7f5969645b9d6f844925f573f471e5a3e6660fe3e3ac1c0c02cb53442",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "8a2d0dc763248d45b0220845d5d2503f8eb0913e92c0f83e75a9b4c02cb534428a2d0dc76ee261455c1b2b45f1453d3f2107ff3ed7f6e73eea9090c02cb5344242e211c76ee26145aea5b745a7de453faadc683eb3a3173fea9090c036bb3a42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "8a2d0dc7f5969645b9d6f844925f573f471e5a3e6660fe3e3ac1c0c02cb534428a2d0dc75fb08d4517750745e133513fcc918f3ee813f93ea35cb5c02cb5344200340dc79aad8d45e1850845c23d513f42de8e3e2b74f93e1759b5c071bd3442",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "00340dc79aad8d45e1850845c23d513f42de8e3e2b74f93e1759b5c071bd34428a2d0dc763248d45b0220845d5d2503f8eb0913e92c0f83e75a9b4c02cb5344242e211c76ee26145aea5b745a7de453faadc683eb3a3173fea9090c036bb3a42",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "42e211c76ee26145aea5b745a7de453faadc683eb3a3173fea9090c036bb3a428a2d0dc7f5969645b9d6f844925f573f471e5a3e6660fe3e3ac1c0c02cb5344200340dc79aad8d45e1850845c23d513f42de8e3e2b74f93e1759b5c071bd3442",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoRockGround",
+      "attributes_hex": "8a2d0dc763248d45b0220845d5d2503f8eb0913e92c0f83e75a9b4c02cb5344200340dc79aad8d45e1850845c23d513f42de8e3e2b74f93e1759b5c071bd34428a2d0dc75fb08d4517750745e133513fcc918f3ee813f93ea35cb5c02cb53442",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "8a2d0dc76ee261455c1b2b45f1453d3f2107ff3ed7f6e73eea9090c02cb534428a2d0dc71f9625450d27854529a81f3fea88253fe7e3e03e5af353c02cb5344263cb0dc7774926454eef8a451b61233fc18d1b3f130bf23eebd854c0387f3542",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "8a2d0dc76ee261455c1b2b45f1453d3f2107ff3ed7f6e73eea9090c02cb5344263cb0dc7774926454eef8a451b61233fc18d1b3f130bf23eebd854c0387f354242e211c76ee26145aea5b745a7de453faadc683eb3a3173fea9090c036bb3a42",
+      "copies": 1
+    }
+  ],
+  "source_note": "Finite open mixed rock/planted ravine digitized from government2019 orthophoto, with1–2m outline uncertainty. Mesh tessellation0.5m, retained IGN queries2m,3m collar to exact old outside planes. No survey-precision claim or native road/contact change. Garden wall/path, all buildings/roofs/paths, belvedere and race protection remain excluded."
+}

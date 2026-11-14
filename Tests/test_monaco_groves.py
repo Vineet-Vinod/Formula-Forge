@@ -17,10 +17,11 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 
 from circuit_dataclasses import MeshTile, Point
-from circuit_partition_dataclasses import SceneManifest
 from circuit_scene import CircuitScene
 from venues.monaco_groves import LANDMARK, add_groves
 from venues.monaco_groves_dataclasses import WestBankGroves
+from venues.monaco_ravine import finish_terrain as finish_ravine
+from venues.monaco_ravine_dataclasses import RavineSource
 
 
 class GroveScene(CircuitScene):
@@ -38,17 +39,27 @@ class GroveScene(CircuitScene):
 def ground_scene() -> GroveScene:
     scene = GroveScene('monaco')
     scene.road_surfaces('Runoff')
-    source = TypeAdapter(WestBankGroves).validate_json(
-        (scene.sources / 'architecture/west-bank-groves.json').read_bytes())
-    names = {row.tile for row in source.supports}
-    manifest = TypeAdapter(SceneManifest).validate_json((scene.scratch / 'manifest.json').read_bytes())
-    for row in manifest.tiles:
-        if row.name not in names:
-            continue
-        data = (scene.scratch / row.file).read_bytes()
-        assert hashlib.sha256(data).hexdigest() == row.sha256
-        scene.tiles[row.name] = MeshTile(materials=list(row.materials), triangles=bytearray(data[12:]),
-                                        minimum=list(row.bounds[:3]), maximum=list(row.bounds[3:]))
+    ravine = TypeAdapter(RavineSource).validate_json(
+        (scene.sources / 'architecture/ravine-source.json').read_bytes())
+    baseline = TypeAdapter(WestBankGroves).validate_json(
+        (scene.sources / 'architecture/ravine-canopy-baseline.json').read_bytes())
+    rows = [(row.tile, row.material, bytes.fromhex(row.attributes_hex), row.copies)
+            for row in ravine.original_ground_rows]
+    existing = {(name, material, payload) for name, material, payload, _ in rows}
+    rows.extend((row.tile, row.material, bytes.fromhex(row.attributes_hex), 1)
+                for row in baseline.supports
+                if (row.tile, row.material, bytes.fromhex(row.attributes_hex)) not in existing)
+    for name, material, payload, copies in rows:
+        tile = scene.tiles.setdefault(name, MeshTile())
+        if material not in tile.materials:
+            tile.materials.append(material)
+        tile.triangles.extend((struct.pack('<I', tile.materials.index(material)) + payload) * copies)
+        values = struct.unpack('<24f', payload)
+        for vertex in (0, 8, 16):
+            for axis in range(3):
+                tile.minimum[axis] = min(tile.minimum[axis], values[vertex + axis])
+                tile.maximum[axis] = max(tile.maximum[axis], values[vertex + axis])
+    finish_ravine(scene)
     scene.emit_geometry = True
     return scene
 

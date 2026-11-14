@@ -1,0 +1,83 @@
+{
+  "utc": "2026-11-14T13:38:03.675464+00:00",
+  "endpoint": "https://data.geopf.fr/altimetrie/1.0/calcul/alti/rest/elevation.json",
+  "resource": "ign_rge_alti_wld",
+  "uniform_scale": 1.0099320735128836,
+  "relative_datum_m": 1.5128994113,
+  "receipts": [
+    {
+      "request": "ravine-rge-base/0000.request.json",
+      "request_sha256": "1aa88e3cf94e10e0dbf273063dfcc4e596bbcd861f9ed722cf7210906a7b9f0d",
+      "response": "ravine-rge-base/0000.response.json",
+      "response_sha256": "b4134caaf251cd791eca11d5a3b517b9de08e314ae1916f33f2a7ce97fc147d0"
+    },
+    {
+      "request": "ravine-rge-base/0050.request.json",
+      "request_sha256": "a60db644e66394579a31990bc8becafc5d1de7431c4fd037ca6033f4f41f09f8",
+      "response": "ravine-rge-base/0050.response.json",
+      "response_sha256": "90bc97c6944fab2a4e1869c4ce3db07429fdb4407272f1b14024cd2dd7e6a59b"
+    },
+    {
+      "request": "ravine-rge-base/0100.request.json",
+      "request_sha256": "ca0cfc82d51f230e36c3c874cf66ce706b8509b5d6baa31bcda7893bdbafa90f",
+      "response": "ravine-rge-base/0100.response.json",
+      "response_sha256": "0fc3c28cfad1ace1ba121936e4c4081346669a9e96fb90558f7d252d6ddf5705"
+    },
+    {
+      "request": "ravine-rge-base/0150.request.json",
+      "request_sha256": "90c8a30a27ec65b5f22a2d94163cdf3e8cdf6505c7fbeaf29fd58d99145bb8e7",
+      "response": "ravine-rge-base/0150.response.json",
+      "response_sha256": "e0e9a7d82978d9c3bbbb89c6eb5b5796906163cbb487490bb7fd2b0eff431462"
+    },
+    {
+      "request": "ravine-rge-base/0200.request.json",
+      "request_sha256": "bf8e751595c835664f0bf0ad993bfc763c9435e283ec5a85df8d4e0bad2c227b",
+      "response": "ravine-rge-base/0200.response.json",
+      "response_sha256": "199f6baf99dd679f79cfb259a724e7d43d9174692c5e5ec9370815748af10228"
+    },
+    {
+      "request": "ravine-rge-base/0250.request.json",
+      "request_sha256": "640306fbb48d8212df013c47519a063f16f93d6ffa592ffbc289b5ded8c6fa0d",
+      "response": "ravine-rge-base/0250.response.json",
+      "response_sha256": "7e3ef366ed657e8bc7ca404e2db19180259d7182b37159a4c91cd1ed868deb0b"
+    },
+    {
+      "request": "ravine-rge-base/0300.request.json",
+      "request_sha256": "23518706945de54c16a0fe9bbbc70a98b7aac0f533812c3b50ebec47daf7f522",
+      "response": "ravine-rge-base/0300.response.json",
+      "response_sha256": "094c5b83d75c0be2e9699d51955330a02efeeaad2bd15111c167dd951cc43371"
+    },
+    {
+      "request": "ravine-rge-base/0350.request.json",
+      "request_sha256": "9d7282116d825e02adaff25e532c46a5a0ee428ed24425554cbea95228952232",
+      "response": "ravine-rge-base/0350.response.json",
+      "response_sha256": "afdf52220fa6de4c6476671df80ded358bb4db1ae5de7c9f5f63c935f943130c"
+    },
+    {
+      "request": "ravine-rge-base/0400.request.json",
+      "request_sha256": "6bebb6e3d4d79b9be4724b283d2865f23251d46f6b88c6663b2b2a6acb6d3e3a",
+      "response": "ravine-rge-base/0400.response.json",
+      "response_sha256": "5fe03af68c487293c95fec93c1182896c08e5930275c55e18a324f0c25a86e30"
+    },
+    {
+      "request": "ravine-rge-base/0450.request.json",
+      "request_sha256": "46bc502d3e56db778f715abd8f89377b0099fd61c7e74cb7c28398bbb021807c",
+      "response": "ravine-rge-base/0450.response.json",
+      "response_sha256": "7b2eb75f0a9924b112005f4815b18fd5f8d4a2511cd4f447ed68bb8584de0228"
+    },
+    {
+      "request": "ravine-rge-base/0500.request.json",
+      "request_sha256": "f8467e852979dab1fc2f92744d00e224333af98e6cc5a737dafbd73889b32506",
+      "response": "ravine-rge-base/0500.response.json",
+      "response_sha256": "3430cee3c8d091e3ff3781e6cf1049f61d53ac9940e63e11dd4d01039f606ac7"
+    },
+    {
+      "request": "ravine-rge-base/0550.request.json",
+      "request_sha256": "29c8f08faa9e8582b1a451405ed24b7c73c2dcf7cec728149d75b294121def71",
+      "response": "ravine-rge-base/0550.response.json",
+      "response_sha256": "8acfd97e86e6b1e3f3bf0deb4174288e039c099a1e3157f6eeb6375e513da889"
+    }
+  ],
+  "limits": "Existing IGN RGE resource sampled at2m authored spacing; not evidence of2m actual source resolution or survey accuracy. Survey epoch unverified. Discrete point API results may repeat due resource sampling. Native road/field unchanged; private candidate only.",
+  "classification": "Garden/platform role from exact2019 ortho and current-ray registration; private probes distinguish visible roof/terrace from underlying ground."
+}

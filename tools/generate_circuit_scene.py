@@ -42,6 +42,9 @@ def generate(slug: str) -> None:
         from venues.monaco_surfaces import finish_terrain as finish_monaco_surfaces
 
         finish_monaco_surfaces(scene)
+        from venues.monaco_ravine import finish_terrain as finish_monaco_ravine
+
+        finish_monaco_ravine(scene)
         from venues.monaco_groves import add_groves
 
         add_groves(scene)

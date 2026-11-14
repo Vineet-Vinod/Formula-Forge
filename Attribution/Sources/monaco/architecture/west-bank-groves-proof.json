@@ -1,6 +1,8 @@
 {
   "triangles": 714,
-  "geometry_sha256": "42a9c89cf85af6bb4e318caf632fed50f7aaf3a2dbe34d7c4beaa786e9d95dc6",
-  "source_trial_manifest_sha256": "be7579fcbef12b55914af28dcac590eb61fef14a7a280fcfe86a18cf6432e52c",
-  "status": "Frozen source-qualified canopy trial. Ground planes and current native driving data stay unchanged; fresh cooked review remains required."
+  "geometry_sha256": "9203ffcd05d2a0178c963d2cc1f1119ca6f0fa5a025ce2d10c7d7b6c981a61ae",
+  "source_trial_manifest_sha256": "34770699c4192f9bb7c2af412a3ac9bdbe28e97db2f52c142e10b5ec1bfa56c0",
+  "ravine_source_sha256": "beaa62aaa213c1babff259651887e50b4f752a32838b3e0e63399ba811eda522",
+  "previous_geometry_sha256": "42a9c89cf85af6bb4e318caf632fed50f7aaf3a2dbe34d7c4beaa786e9d95dc6",
+  "status": "Source-qualified canopy geometry after the separate finite ravine form. Only first two clumps reanchor; remaining five poses/meshes and native driving data stay exact. See ravine-canopy-reanchor.json. Fresh cooked review remains required."
 }

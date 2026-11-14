@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "status": "Typed bounded source replay and outside/canopy checks passed. Native generation and cooked driving review remain pending. Monaco remains incomplete.",
+  "domain": {
+    "area_m2": 574.424939247991,
+    "render_tessellation_m": 0.5,
+    "retained_ign_query_step_m": 2,
+    "old_plane_collar_m": 3,
+    "source": "Government2019 orthophoto and retained IGN RGE ALTI observations; see ravine-outline.json and raw query receipts.",
+    "limits": "Outline edges are1\u20132m estimates. Two-metre query spacing does not establish2m accuracy, source resolution or survey epoch. The y344m crop is a source-window edge, not a surveyed slope toe. Upper garden/path/property, buildings/roofs, paths and belvedere are excluded."
+  },
+  "geometry_change": {
+    "tiles": [
+      "Tile_Street_m1_01"
+    ],
+    "source_faces": 225,
+    "emitted_rows": 9003,
+    "complete_unselected_rows": 277872,
+    "domain_area_m2": 574.424939247991,
+    "minimum_height_delta_m": -6.685675206129137,
+    "maximum_height_delta_m": 6.497928030497816,
+    "collapsed_area_m2": 9.105488182623196e-05,
+    "collapsed_faces": 121,
+    "maximum_collapsed_width_m": 2.0707006948916116e-05,
+    "maximum_encoding_xy_error_m": 1.9570744894455428e-05,
+    "maximum_encoding_z_error_m": 2.4291614835192377e-06,
+    "minimum_normal_alignment": 0.0004351375776005719,
+    "minimum_resolved_normal_alignment": 0.0004351375776005719,
+    "unresolved_faces": [
+      {
+        "tile": "Tile_Street_m1_01",
+        "row": 460,
+        "area_m2": 1.6300678268353907e-07,
+        "minimum_altitude_m": 9.205034051600606e-07,
+        "xy_ulp_bound_m": 3.9081568831987604e-05,
+        "maximum_xy_error_m": 8.872773679007345e-07,
+        "maximum_z_error_m": 2.413404693868415e-06,
+        "minimum_packed_normal_alignment": -0.04692706017521148,
+        "minimum_intended_normal_alignment": -0.2171884303505653,
+        "points": [
+          [
+            -13.418555908203125,
+            358.5,
+            48.35888671875
+          ],
+          [
+            -13.45866455078125,
+            358.7670703125,
+            48.5782763671875
+          ],
+          [
+            -13.41855712890625,
+            358.5,
+            48.3588916015625
+          ]
+        ]
+      },
+      {
+        "tile": "Tile_Street_m1_01",
+        "row": 461,
+        "area_m2": 1.6300678244633298e-07,
+        "minimum_altitude_m": 8.361791453237469e-07,
+        "xy_ulp_bound_m": 3.9081568831987604e-05,
+        "maximum_xy_error_m": 9.687085886984964e-07,
+        "maximum_z_error_m": 1.1673451112415023e-06,
+        "minimum_packed_normal_alignment": -0.04692706105775034,
+        "minimum_intended_normal_alignment": -0.19671416858546775,
+        "points": [
+          [
+            -13.458665771484375,
+            358.7670703125,
+            48.57828125
+          ],
+          [
+            -13.41855712890625,
+            358.5,
+            48.3588916015625
+          ],
+          [
+            -13.45866455078125,
+            358.7670703125,
+            48.5782763671875
+          ]
+        ]
+      }
+    ],
+    "reoriented_faces": 2
+  },
+  "outside_attributes": {
+    "status": "PRIVATE complete outside-attribute and protected-domain proof; no canonical/native acceptance",
+    "outside_fragment_count": 297,
+    "outside_fragment_original_interpolated_attrs_byte_equal": true,
+    "original_outside_unique_vertices": 79,
+    "missing_original_outside_vertices": 0,
+    "all_non_ground_rows_byte_material_equal": true,
+    "building_reserve_overlap_m2": 0.0,
+    "path_reserve_overlap_m2": 0.0,
+    "belvedere_reserve_overlap_m2": 0.0,
+    "held_roof_distance_m": 4.193895204703951,
+    "race_corridor_clearance_m": 78.74962422229356,
+    "mandatory_exclusion_overlap_m2": 0.0,
+    "prototype_delta": {
+      "collapsed_projected_zero_rows": [
+        {
+          "tile": "Tile_Street_m1_01",
+          "projected_area_m2": 0.0,
+          "copies": 1
+        }
+      ],
+      "rewound_same_vertex_attrs": [
+        {
+          "tile": "Tile_Street_m1_01",
+          "copies": 1
+        }
+      ],
+      "normal_only_same_positions_material_uv": [
+        {
+          "tile": "Tile_Street_m1_01",
+          "copies": 1
+        },
+        {
+          "tile": "Tile_Street_m1_01",
+          "copies": 1
+        }
+      ]
+    },
+    "typed_geometry_proof_sha256": "9f23d202793c3daad6ffd0c5489042f9951eca7982d3a135a05cea988f13d761"
+  },
+  "precision_policy": "New faces must retain non-inward actual packed normals. Only three offending normals on two newly emitted inside seam triangles, widths0.84\u20130.92micrometres, align to their actual packed faces. Their old-plane height-derived derivatives were already ill-conditioned, so raw negative intended alignments are retained rather than presented as a pass. All outside counterparts keep their attributes. New faces collapse only when their widths and position errors fit the explicit float32 ULP envelope. One new outside fragment only reverses vertex order with attributes attached. Unselected inherited geometry is not silently repaired.",
+  "canopies": {
+    "status": "PRIVATE actual post-form reanchor and unchanged five-canopy geometry proof; no canonical/native or visual acceptance",
+    "seconds": 4.988752126693726,
+    "peak_rss_kB": 123576,
+    "canopy_changes": [
+      {
+        "index": 0,
+        "old_base_m": 17.17544130357745,
+        "new_base_m": 17.44642452317476,
+        "base_delta_m": 0.27098321959730853,
+        "old_height_parameter_m": 8.829991976771126,
+        "new_height_parameter_m": 8.83578020559777,
+        "old_center_ground_m": 17.468847914494894,
+        "new_center_ground_m": 17.745793009783647,
+        "old_top_above_center_ground_m": 8.801485125156816,
+        "new_top_above_center_ground_m": 8.801485125156816,
+        "crown_diameter_m": 7.245339768590171,
+        "crown_diameter_range_m": [
+          5.0,
+          9.0
+        ]
+      },
+      {
+        "index": 1,
+        "old_base_m": 19.640127556943774,
+        "new_base_m": 20.566934953284246,
+        "base_delta_m": 0.9268073963404717,
+        "old_height_parameter_m": 8.829991849997569,
+        "new_height_parameter_m": 8.982917703740446,
+        "old_center_ground_m": 19.933534041087682,
+        "new_center_ground_m": 21.01785506678332,
+        "old_top_above_center_ground_m": 8.801485121353586,
+        "new_top_above_center_ground_m": 8.801485121353586,
+        "crown_diameter_m": 7.365992517067165,
+        "crown_diameter_range_m": [
+          5.0,
+          9.0
+        ]
+      }
+    ],
+    "all_xy_seeds_source_pixels_crown_limits_identical": true,
+    "other_five_pose_records_identical": true,
+    "other_five_mesh_counters_identical": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "actual_support_rows": 10,
+    "minimum_packed_trunk_embed_m": 0.09998294225471227,
+    "full_existing_grove_geometry_and_protection_guard_passed": true,
+    "new_grove_config_sha256": "64b2c486d050fd74f87585da46fb400f0b0e8e8d8a9bf3ac40b23997f8bee999"
+  },
+  "canonical_grove_update": "Only first two bases/heights and exact post-form witnesses change. All XY,seeds,pixels,crown limits and the other five poses remain exact. Rendered top=base+1.03\u00d7height; top above centre Ground is preserved. Existing grove geometry/obstruction/crown/foot guards pass unchanged.",
+  "call_order": "Run monaco_surfaces.finish_terrain, then monaco_ravine.finish_terrain, then monaco_groves.add_groves. No global ground provider/union, native road/contact, protection, building or held roof changes.",
+  "source_files": {
+    "extended_grid": "ravine-grid.json",
+    "extended_receipts": "ravine-grid-source.json",
+    "original_full_upper_garden_grid": "ravine-upper-garden-grid.json",
+    "original_receipts": "ravine-upper-garden-source.json",
+    "outline": "ravine-outline.json"
+  },
+  "licence": "IGN source heights retain IGN credit under the existing Licence Ouverte/Open Licence2.0 attribution; see canonical costa/tabac ground-source records. No orthophoto/reference pixels ship.",
+  "remaining_holds": [
+    "Fresh native/cooked review is still required.",
+    "The separate upper Villa Hermosa property and its roof/body remain outside this domain.",
+    "The finite patch does not complete the whole Monaco circuit."
+  ]
+}
