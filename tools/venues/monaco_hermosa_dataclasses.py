@@ -22,3 +22,14 @@ class HermosaArchitecture:
     floor_height_m: Annotated[FiniteFloat, Field(gt=2, lt=5)]
     floors: Literal[6]
     roof_material: Literal['Roof', 'Steel']
+
+
+@dataclass(frozen=True, config=ConfigDict(extra="forbid"))
+class HermosaPhoto:
+    bay_proportions: tuple[float, ...] = (1.3, .9, 1.3, 1.3, .9, 1.3)
+    balcony_depth_m: float = 1.2
+    column_radius_m: float = .20
+    mansard_front_fraction: float = .12
+    mansard_rise_m: float = 2.2
+    dormer_fractions: tuple[float, ...] = (.13, .75, .88)
+    blind_fractions: tuple[float, ...] = (.28, .38, .63)

@@ -1,4 +1,4 @@
-"""Keep Villa Hermosa's literal body, stepped feet and separate hipped roof."""
+"""Keep Villa Hermosa's measured envelope and photographed garden facade."""
 
 from __future__ import annotations
 
@@ -19,6 +19,8 @@ from shapely.strtree import STRtree
 
 from venues.monaco_cliff import source_height
 from venues.monaco_hermosa_dataclasses import HermosaArchitecture
+from venues.monaco_hermosa_details import decorate, frontage
+from venues.monaco_hermosa_details import roof as photo_roof
 from venues.monaco_surfaces import SurfaceFace, face
 
 RoofTriangle = tuple[Point, Point, Point]
@@ -54,11 +56,7 @@ def prepare(scene: CircuitScene) -> None:
 def roof_triangles(scene: CircuitScene, config: HermosaArchitecture) -> tuple[RoofTriangle, ...]:
     eaves = [(*scene.geo(lat, lon), z - config.relative_datum_m)
              for lon, lat, z in config.eaves_wgs84]
-    a, b, c, d = eaves
-    west, east = [(*xy, config.ridge_absolute_m - config.relative_datum_m)
-                  for xy in config.ridge_xy_m]
-    facets = ((a, b, west), (b, c, east), (b, east, west),
-              (c, d, east), (d, a, west), (d, west, east))
+    facets = photo_roof(scene, config)
     plan = Polygon([p[:2] for p in eaves])
     pieces = [Polygon([p[:2] for p in triangle]) for triangle in facets]
     if (not plan.is_valid or any(not p.is_valid or p.area < .1 for p in pieces)
@@ -82,7 +80,7 @@ def roof_height(facets: tuple[RoofTriangle, ...], x: float, y: float) -> float:
     for triangle in facets:
         if Polygon([p[:2] for p in triangle]).buffer(1e-7).covers(point):
             return plane_height(triangle, x, y)
-    edge = Polygon([p[:2] for p in (facets[0][0], facets[0][1], facets[1][1], facets[3][1])]).exterior
+    edge = unary_union([Polygon([p[:2] for p in triangle]) for triangle in facets]).exterior
     closest = edge.interpolate(edge.project(point))
     if point.distance(closest) > 2.5:
         raise ValueError('A body/roof join exceeds the retained IGN plan precision')
@@ -96,14 +94,14 @@ def support_faces(scene: CircuitScene, body: Polygon) -> tuple[SurfaceFace, ...]
             continue
         bounds = box(-tile.maximum[1] / 100, -tile.maximum[0] / 100,
                      -tile.minimum[1] / 100, -tile.minimum[0] / 100)
-        if not bounds.intersects(body.buffer(.1)):
+        if not bounds.intersects(body.buffer(1.7)):
             continue
         for offset in range(0, len(tile.triangles), 100):
             material = tile.materials[struct.unpack_from('<I', tile.triangles, offset)[0]]
             if material not in {'Grass', 'Runoff', 'MonacoIvyGround', 'MonacoRockGround', 'Concrete', 'Terracotta'}:
                 continue
             current = face(tile, offset)
-            if current.plan.area > 1e-8 and current.plan.intersects(body.buffer(.1)):
+            if current.plan.area > 1e-8 and current.plan.intersects(body.buffer(1.7)):
                 faces.append(current)
     if not faces:
         raise ValueError('Villa Hermosa needs actual emitted ground around its body')
@@ -157,7 +155,10 @@ def finish(scene: CircuitScene) -> None:
             previous = station
     base = config.floor_base_absolute_m - config.relative_datum_m
     kind = 'Building_VillaHermosa'
+    front_a, front_b = frontage(body)
     for a, b in pairwise(ring):
+        if math.dist(a, front_a) < 1e-7 and math.dist(b, front_b) < 1e-7:
+            continue
         span = math.dist(a, b)
         tx, ty = (b[0] - a[0]) / span, (b[1] - a[1]) / span
         nx, ny = ty, -tx
@@ -240,13 +241,14 @@ def finish(scene: CircuitScene) -> None:
     for xy_a, xy_b in pairwise(fascia + fascia[:1]):
         pa, pb = (*xy_a, roof_height(facets, *xy_a)), (*xy_b, roof_height(facets, *xy_b))
         scene.quad(kind, config.roof_material, add(pa, (0, 0, -.16)), add(pb, (0, 0, -.16)), pb, pa)
+    decorate(scene, config, ground)
     scene.landmarks.append({
-        'name': 'Villa Hermosa measured eaves and reconstructed hip',
+        'name': 'Villa Hermosa measured envelope and photographed garden front',
         'osm_id': config.osm_id, 'ign_id': config.source_id,
         'roof_boundary_min_absolute_m': min(p[2] for p in config.eaves_wgs84),
         'roof_boundary_max_absolute_m': max(p[2] for p in config.eaves_wgs84),
         'ridge_absolute_m': config.ridge_absolute_m,
         'body_area_m2': body.area, 'roof_body_join_area_m2': body.difference(roof_plan).area,
         'source': 'architecture/villa-hermosa.json and villa-hermosa-provenance.json',
-        'dimensions_status': 'Literal OSM body and IGN eaves, retained datum and actual emitted wall-foot support. Ridge, horizontal floor schedule, plain window rhythm, roof material and sub-precision body/eave join are architectural estimates. Garden/pool/L-roof unchanged; native road, field and contact unchanged.',
+        'dimensions_status': 'Literal OSM body and IGN eaves, retained datum and actual emitted wall-foot support. Ridge/profile, horizontal floor schedule, loggia/ornament dimensions, simpler unphotographed sides, roof material and sub-precision body/eave join remain architectural estimates. Garden/pool/L-roof unchanged; native road, field and contact unchanged.',
     })

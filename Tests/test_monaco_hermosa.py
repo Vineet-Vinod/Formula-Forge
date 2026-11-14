@@ -17,7 +17,8 @@ from shapely.ops import unary_union
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 
-from circuit_dataclasses import MeshTile
+from circuit_dataclasses import MeshTile, Point
+from circuit_mesh import add, mul
 from circuit_scene import CircuitScene
 from venues.monaco_hermosa import (
     configuration,
@@ -43,7 +44,7 @@ def test_hip_preserves_the_source_eaves_and_separate_ridge() -> None:
     assert {triangle[2][2] for triangle in triangles} != {min(point[2] for point in points)}
 
 
-def test_actual_feet_embed_without_changing_ground_or_tilting_floors() -> None:
+def test_actual_feet_embed_without_changing_ground_or_tilting_floors(monkeypatch: pytest.MonkeyPatch) -> None:
     scene = CircuitScene('monaco')
     scene.road_surfaces('Runoff')
     scene.tiles.clear()
@@ -66,6 +67,20 @@ def test_actual_feet_embed_without_changing_ground_or_tilting_floors() -> None:
         )
         original[record['name']] = raw[12:]
     supports = support_faces(scene, body)
+    structural_rows: set[tuple[str, int]] = set()
+    original_triangle = scene.triangle
+
+    def capture(kind: str, material: str, a: Point, b: Point, c: Point,
+                uv: tuple[tuple[float, float], ...] = ((0, 0), (1, 0), (1, 1)),
+                normals: tuple[Point, ...] | None = None) -> None:
+        tile = scene.tile(kind, mul(add(add(a, b), c), 1 / 3))
+        offset = len(tile.triangles)
+        original_triangle(kind, material, a, b, c, uv, normals)
+        if kind == 'Building_VillaHermosa' and len(tile.triangles) > offset:
+            name = next(name for name, value in scene.tiles.items() if value is tile)
+            structural_rows.add((name, offset))
+
+    monkeypatch.setattr(scene, 'triangle', capture)
     finish(scene)
     for name, raw in original.items():
         assert bytes(scene.tiles[name].triangles) == raw
@@ -83,14 +98,14 @@ def test_actual_feet_embed_without_changing_ground_or_tilting_floors() -> None:
                 wx, wy, wz = struct.unpack_from('<3f', tile.triangles, offset + 4 + corner * 32)
                 point = (-wy / 100, -wx / 100, wz / 100)
                 points.append(point)
-                if material in {'Limestone', 'Cream'} and body.boundary.distance(ShapePoint(point[:2])) < .0002:
+                if (name, offset) in structural_rows and material in {'Limestone', 'Cream'} and body.boundary.distance(ShapePoint(point[:2])) < .0002:
                     key = point[:2]
                     feet[key] = min(feet.get(key, point[2]), point[2])
             for a, b in zip(points, points[1:] + points[:1], strict=True):
                 if min(a[2], b[2]) >= eave_bottom:
                     edge = (a, b) if a < b else (b, a)
                     roof_edges[edge] += 1
-            if material == 'Glass':
+            if material == 'Glass' and min(p[2] for p in points) < eave_bottom:
                 floor_bottoms.append(min(p[2] for p in points))
     assert roof_edges
     assert all(count == 2 for count in roof_edges.values()), [(edge, count) for edge, count in roof_edges.items() if count != 2]
@@ -104,8 +119,8 @@ def test_actual_feet_embed_without_changing_ground_or_tilting_floors() -> None:
             heights.append(plane_height((a, b, c), x, y))
         assert heights
         assert min(heights) - z >= .10
-    expected = [source.floor_base_absolute_m - source.relative_datum_m + .75 + i * source.floor_height_m
-                for i in range(source.floors)]
+    expected = [source.floor_base_absolute_m - source.relative_datum_m + offset + i * source.floor_height_m
+                for i in range(source.floors) for offset in (.18, .75)]
     assert floor_bottoms
     for z in floor_bottoms:
         assert min(abs(z - height) for height in expected) < .00002

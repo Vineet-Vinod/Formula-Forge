@@ -35,3 +35,22 @@ This is source qualification only. It does not prove the current runtime appeara
 - 2019 orthophotos: tile 835/971 SHA-256 `41ec82e39f245bde2991d94ab95343c11179ca66efdd510eb3a591069f985c9c`; tile 835/972 `3d97d3b4fe136829c8c0f87341815af566ce9efb9c9dda43d1f5444599a695d6`.
 - Oblique context views: 2012 SHA-256 `a9693f6f3617f793059ba3f180ff75155299082b2b6f2301b25cfd015c1e69ec`; 2024 SHA-256 `2972a1bc88c213ad9b1374bbfc6802be420fe29a54de18fabf60619288649d82`.
 - Frame-266 ray record: `453-west-remaining-rays.json`, SHA-256 `9140d90cbd8099834f2b1b15ff7403e0031ae60b70b29d0da1d5ee693323f406`.
+
+
+Developer garden-front photograph
+
+The developer's project page and its BERT-R6785-HR_vh photograph provide a direct
+reference for the long garden-facing elevation. The reconstruction uses four
+broad loggia bays and two narrower French-window bays, rose columns, pale bands,
+openwork iron rails and a dormered attic with a central pediment. Bay proportions,
+1.2m balcony depth, column dimensions, ornament and the front-only mansard break
+(12% inset,2.2m rise) are architectural estimates. All IGN eaves, the ridge maximum,
+the literal main body and existing Ground remain unchanged. Six visible principal
+levels are retained; the developer's nine-floor project description may include
+hidden/lower levels and does not establish nine exposed rows here. Unphotographed
+sides remain simpler estimates. The image is reference-only and is not a game
+texture. Source photography is retained in the ignored review packet.
+
+- Project: https://www.groupemarzocco.mc/en/projects/
+- Photograph: https://www.groupemarzocco.mc/wp-content/uploads/2025/07/BERT-R6785-HR_vh-792x1024.webp
+- Photo SHA256: d15f3bc2495c900a866d4f4763df567f2aa46d08b742e3bf8e7fe254b1fa04af

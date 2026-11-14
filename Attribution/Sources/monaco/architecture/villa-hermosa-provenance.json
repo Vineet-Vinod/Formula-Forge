@@ -29,7 +29,10 @@
       7.4213359272073856
     ],
     "scene_uniform_scale": 1.0099320735128836,
-    "scene_relative_datum_m": 1.5128994113
+    "scene_relative_datum_m": 1.5128994113,
+    "developer_project_url": "https://www.groupemarzocco.mc/en/projects/",
+    "developer_photo_url": "https://www.groupemarzocco.mc/wp-content/uploads/2025/07/BERT-R6785-HR_vh-792x1024.webp",
+    "developer_photo_sha256": "d15f3bc2495c900a866d4f4763df567f2aa46d08b742e3bf8e7fe254b1fa04af"
   },
   "source_roof": {
     "source_outline": "Use the literal IGN BDTopo 3D ring as the eave outline; do not widen the OSM body or join the separate L-shaped roof feature.",
@@ -163,8 +166,8 @@
   "ground_grid_file": "architecture/ravine-upper-garden-grid.json",
   "source_review": "villa-hermosa/source-review.md",
   "primary_orthophoto": "villa-hermosa/orthophoto2019-l8-r796835-c680971.jpg",
-  "architecture": "Literal OSM body and IGN eave ring. Six hip facets meet the estimated ridge, with a thin roof/body join only where their separately sourced plans differ within2.5m. Wall feet use actual emitted surrounding Ground and the retained2m RGE observations; no terrain or property pad is flattened.",
-  "floor_reconstruction": "Six common horizontal3.6m storey bands begin at60.5m absolute, reaching the lowest measured eave at82.1m. Nominal floor spacing/base and plain window rhythm are estimates, not a floor survey. Stepped ground clips exposed lower walls/windows; corner heights do not tilt floor bands.",
+  "architecture": "Literal main OSM body and IGN eaves/ridge envelope, with an estimated front-only mansard break and photo-qualified garden-facing loggias, rose columns, balcony bands/openwork rails, dormers and pediment. Balcony/ornament projections are estimates; main occupancy and terrain cutout stay literal. Wall feet use actual emitted surrounding Ground and retained2m RGE observations; no terrain/property pad flattening.",
+  "floor_reconstruction": "Six horizontal3.6m principal levels begin at60.5m absolute; nominal base/spacing remain estimates. The developer photo supports roughly six visible levels; its nine-floor project description may include hidden/lower storeys and does not establish nine exposed rows. Plain unphotographed side-window rhythm remains an estimate. Ground clips buried lower walls/windows without tilting floors.",
   "uncertainty": {
     "plan_m": 2.5,
     "height_m": 1.5,
@@ -176,5 +179,21 @@
     "No transfer of fa\u00e7ade details from Casa Mia or other neighboring properties.",
     "No treating the maximum IGN roof altitude as a uniform eave or building-body height."
   ],
-  "status": "Bounded source authoring in progress; native import and fresh cooked review required."
+  "status": "Bounded source authoring in progress; native import and fresh cooked review required.",
+  "facade_estimates": {
+    "registration": "Plausible garden-facing south elevation; no measured photographer pose",
+    "bay_proportions": [
+      1.3,
+      0.9,
+      1.3,
+      1.3,
+      0.9,
+      1.3
+    ],
+    "balcony_depth_m": 1.2,
+    "column_radius_m": 0.2,
+    "front_mansard_fraction": 0.12,
+    "front_mansard_rise_m": 2.2,
+    "appearance": "Original restrained openwork motif, not a survey of every iron scroll; existing licensed materials, no reference pixels used as textures."
+  }
 }
