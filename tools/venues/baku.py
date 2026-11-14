@@ -14,6 +14,7 @@ from venues.baku_civic import civic_frontage, close_native_facade_fragments
 from venues.baku_flames import flame_towers
 from venues.baku_forecourt import court_forecourt
 from venues.baku_ground import finish_terrain as finish_ground
+from venues.baku_niyazi import planting
 from venues.baku_philharmonic import philharmonic_hall
 from venues.baku_skyline import waterfront_skyline
 from venues.coastal_water import coastal_water
@@ -104,6 +105,7 @@ def build_venue(scene: CircuitScene) -> None:
 
 def finish_terrain(scene: CircuitScene) -> None:
     finish_ground(scene, scene.sources / 'oldcity-ground-delta.json.gz')
+    planting(scene, scene.sources / 'niyazi-planting.json')
 
 
 def castle_ramp(scene: CircuitScene) -> None:
