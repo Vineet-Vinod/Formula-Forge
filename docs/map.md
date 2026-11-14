@@ -493,6 +493,10 @@ Reuse the method; placements, heights and light values belong to that circuit.
    down to the ground or cut away terrain below an open overhang. Check fence
    panels and posts against the retained roof underside. Local decorative
    clearance corrections must preserve the actual concrete protection.
+   Orthophotos show the uppermost visible surface. Register a driving-view hit
+   in both XY and height before classifying it: Monaco's terrace roof was
+   8–13 m above the sampled ground. Its pale paving did not identify the material
+   below, or justify raising the ground to the roof.
    Hotel names on generic blocks do not meet this standard. Grand Chateau and
    Signature needed their own facade/crown designs, just as Venetian and Forum
    Shops needed their street-level architecture.

@@ -42,7 +42,7 @@ Suzuka is the only figure-eight. Its back straight crosses the lower Degner road
 
 Native scenes include circuit-specific architecture, vegetation, protection, kerbs, escape surfaces, braking boards and pit paving. Pit access remains closed for the game. Source generation, native geometry checks and a clean simulated lap do not establish visual or performance acceptance. Follow the [whole-lap workflow](map.md) and compare the exact current assets against registered references.
 
-Work is active through Sunday 15 November at 10am PST. The reviewed `e5914f42`
+Work is active through Sunday 15 November at 10am PST. The reviewed `4531fdcd`
 checkpoint records 15 Luna High visual passes and three holds: Baku, Jeddah
 and Monaco. Portimão's reconstructed two seating tiers, glazed VIP level and
 cantilever canopy now pass fresh whole-route review. Sepang's legal lane,
@@ -51,10 +51,11 @@ numerical crossfall and exit crest remain reconstruction estimates. Singapore's
 8.8 m minimum is local to the driver-left Anderson Bridge opening. Buddh and
 COTA vegetation passes fresh whole-route review. Jeddah's Sail/mall context is
 imported, but its nearer final-hairpin surroundings remain held. Primary supplier
-photos resolve the earlier crown objection; an upper-window lighting correction
-awaits cooked review. Baku's Court/north frontages and bounded paving are imported
+photos resolve the earlier crown objection, and the upper-window lighting
+correction passes fresh cooked review. Baku's Court/north frontages and bounded paving are imported
 and improved, while ordinary city facades and downhill banks remain held.
-Monaco's west cliff/belvedere reconstruction awaits cooked review.
+Monaco's belvedere is now present, but fresh review retains the broader hillside
+material and form hold. The literal L terrace supports remain a separate uncertainty.
 See the [validation checkpoint](additional_circuits_validation.md)
 for exact scene identities, captured laps and source limits. Fresh uncapped
 performance checks are in progress; current Las Vegas and Interlagos baseline
