@@ -16,7 +16,7 @@
   },
   "final_road_sha256": "df74c61feddac1dd46f4cbc3456ed317677ef6fa2d0b2773f5807f127f014b7d",
   "source_basis": "alignment-refinement.json",
-  "source_basis_sha256": "791e983fa7b78f36b513077f2a851425e02dcd2bf991c5a5a52582b6bc67cb37",
+  "source_basis_sha256": "ce3dbab34e1b0b87c539484779b1a417abdcf4bfd4c437b55bac11f9d97580b4",
   "scope": "Geographic frame composed after the local bridge road correction. The local alignment/legal width/shoulder/wall changes are disclosed in anderson-bridge-review.json; elevation, banking and shared vehicle/camera settings remain unchanged.",
   "previous_registration_file": "anderson/scene-registration.json.gz",
   "previous_scene_uniform_scale": 1.0052314376858864,

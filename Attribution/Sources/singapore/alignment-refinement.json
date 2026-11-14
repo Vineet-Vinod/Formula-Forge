@@ -2,11 +2,7 @@
   "schema_version": 1,
   "circuit": "singapore",
   "method": "Retained smooth periodic alignment, with the Anderson left-opening center fitted to the opposite straight OSM deck sides over2817\u20132890m. Quintic Hermite offsets match first/second derivatives at the inner joins and become zero with both derivatives at2770/2940m. The entire native normalization is disclosed in scene-registration.json.",
-  "source_road_file": "alignment-refinement-base.csv.gz",
-  "source_road_sha256": "bcc9c2d7562c429693cb7bc8bdfe5bee0f6eca7140051a246cf64bc1a9edaa12",
-  "sigma_m": 2.0,
   "maximum_displacement_m": 2.2598087340720454,
-  "registration_allowance_m": 1.0,
   "limitations": "Bridge-opening alignment is a bounded reconstruction from mapped deck geometry, the2015 left-lane route change and supplied onboard. Girder positions/member sizes and legal white-line offsets are estimated. Remaining mapped event-junction uncertainties are retained. Outside-window same-station displacement0.329m comes from the disclosed native target-length normalization/chainage, not independent corner edits.",
   "controls_xy_m": [
     [
@@ -19770,5 +19766,10 @@
       -0.995169
     ]
   ],
-  "previous_refinement": "anderson/alignment-refinement.json.gz"
+  "previous_refinement": "anderson/alignment-refinement.json.gz",
+  "source_alignment_file": "anderson/alignment-refinement.json.gz",
+  "source_alignment_sha256": "5d3e52bc349a76007a7fc227da91805a2a68e318a50a60f67a38cd82496c0133",
+  "source_runtime_revision": "c0832124fa6d92d73e9f609e22bf60ea39464192",
+  "source_runtime_road_sha256": "1765c40a65a567d2c594c2b4a3de8b6285399f7e2d829533b4796df49f850470",
+  "source_runtime_road_payload": "Reproducible from the versioned native survey at source_runtime_revision and unchanged native Catmull sampler; original pre-refinement Gaussian input remains separately archived."
 }
