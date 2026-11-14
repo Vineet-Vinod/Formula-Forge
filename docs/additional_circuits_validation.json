@@ -1,26 +1,26 @@
 {
   "schema_version": 2,
-  "recorded_utc": "2026-11-14T07:57:03.274990+00:00",
+  "recorded_utc": "2026-11-14T09:56:39.582271+00:00",
   "checkpoint_date": "2026-11-14",
-  "status": "Active work toward Sunday 15 November, 10:00 PST. The 18-map work remains incomplete. Baku, Jeddah and Monaco retain visual holds; Malaysia retains an independent source-completion hold. Visual passes remain bounded by source, modeling and performance caveats.",
+  "status": "Active work toward Sunday 15 November 10:00 PST. The 18-map work remains incomplete. Baku, Jeddah and Monaco retain visual holds. Malaysia passes its reconstructed legal lane and final-corner surface review with explicit estimated section dimensions. Fresh current performance comparisons remain pending.",
   "completion_claim": false,
   "scope": "18 additional circuits. Silverstone, Monza, Interlagos and Las Vegas are accepted baselines, with their asset/runtime scope separately evidenced.",
   "review_register": {
     "path": "build/reviews/resume-20261114/final-review-register.json",
-    "sha256": "2eacc1650a9603b2728974f8c64f1256059ecdd9975097533fcd91fe17f2fcb5"
+    "sha256": "f9f1e2c8103b6a633876c24d876f2f2a90ec0276c3c37893b1c150f64ae12b74"
   },
   "current_package_pin": {
     "path": "build/reviews/current-package.json",
-    "sha256": "e7ced54e6a749d5484af2044a0bb27e49c6ba26503ec378447f8788324c19e43"
+    "sha256": "6bd491953fae197c2feabe68a3e6b004e8bcb649b2b219c74949f31b78d26a24"
   },
-  "packaged_source_revision": "79189b4738d04458fa0963ad273636e989717912",
+  "packaged_source_revision": "776d1fe664095abbe6200f7179908727f065070f",
   "packaged_payload_sha256": {
-    "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.pak": "e8c49e2bbc20d342a5797111118b1048104cba6b552652ce58b12c177f1e4043",
-    "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.ucas": "edfa853e1d05bd4ed042e8019ec0b82320ce3f5a40d78930142567539d3f69e2",
-    "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.utoc": "2e0aae1a88f7f2236b07e6bd1be9c53bd4c4fad3640c0f9a84dddcb7cfc56228",
+    "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.pak": "58fdf451f11eec99aa6386634f88b528055c8b558ba08d521f4b83bead56b6c0",
+    "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.ucas": "a24206628948a5c265921b6683e95662a75071043a327ad69b89afee0bc16250",
+    "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.utoc": "3d14ea48e46ffe5e5872aa05820aa5289d85a523d24c4e671dc6da03b16024ad",
     "build/unreal/package/Linux/FormulaForge/Content/Paks/global.ucas": "9ba0d5a57ffa7082f1cae440750e0994cdc7a3b312068fc5618df81036c36152",
     "build/unreal/package/Linux/FormulaForge/Content/Paks/global.utoc": "612984d5375495cee07af35967bf98b7ece7393d55435575f25212a6f4391444",
-    "build/unreal/package/Linux/FormulaForge/Binaries/Linux/FormulaForge": "ebc671ac2b20ba2b15e02444009310e86a09c157fc81286624a0bebbc74cf7fb"
+    "build/unreal/package/Linux/FormulaForge/Binaries/Linux/FormulaForge": "d12fe583596a772d418e5eb7760dd7a6231e4bcfa85a94b8d63adb06a8fbe4b8"
   },
   "reviewer": {
     "model": "gpt-6-luna",
@@ -29,32 +29,27 @@
   },
   "checks": {
     "source": {
-      "pytest": 218,
-      "mypy_files": 79,
+      "pytest": 227,
+      "mypy_files": 87,
       "ruff": "passed",
-      "evidence": "build/reviews/resume-20261114/singapore/marker-complete-source-check.log"
+      "evidence": "build/reviews/resume-20261114/malaysia/native-check-frozen.log",
+      "note": "Complete source CI and native contact checks passed before package 776d1fe6; subsequent two-line vegetation source change passed scoped Ruff/mypy and source/native scope proofs."
     },
     "native": "All guarded native, contact, support, limits, camera and preserved Las Vegas dynamic-lap checks passed.",
-    "package": "Package 79189b47 built and pinned; six cooked payloads and 18 native scene identities retained. Only two Singapore Street tiles changed after dbac09a1; 150 mesh assets, all materials/textures, physical data and render manifest stayed identical.",
-    "session": "FormulaForge.Session.LapLimits passed on 79189b47.",
-    "live_flow": "Fresh clean full-route laps: Jeddah 5,003 frames, Monaco 3,934 frames, Australia 4,366 frames and Singapore 4,835 frames. Each covers 125/125 station bins. Original capture revisions remain explicit. Singapore physical route also passed guarded native checks after alignment and before marker-only changes.",
+    "package": "Package 776d1fe6 built and pinned in package-monaco-malaysia.json; six cooked payloads and 18 native scene identities retained. Monaco changes four meshes plus two private surface materials; Malaysia changes 41 meshes and its physical surface data. Vegetation native commits after this pin are pending fresh packaging.",
+    "session": "FormulaForge.Session.LapLimits passed on 776d1fe6.",
+    "live_flow": "Fresh package 776d1fe6 complete laps: Monaco 3812 frames and Malaysia 5176 frames; each clean/valid with 125/125 station bins and zero contact, off-track, airborne or visual penetration. Earlier Australia 4366, Singapore 4835 and Jeddah 5003 frame captures retain explicit scene identities.",
     "performance": "Fresh uncapped moving profiles for changed scenes are pending. All prior profiles remain historical in this active checkpoint. Capped recordings do not establish frame-time parity.",
     "source_completion_holds": {
-      "malaysia": {
-        "reason": "T15 remains flat across the track and the local longitudinal crest precedes the exit. Primary designer evidence also distinguishes 16 m legal width from wider outside asphalt. A bounded estimated reconstruction is in preparation; exact civil cross-sections remain unavailable.",
-        "report": "build/reviews/resume-20261114/malaysia/t15-crossfall-adjudication.md",
-        "historical_visual_decision": "pass"
-      },
       "monaco": {
-        "reason": "Measured Casa Mia/Villa Marie Antoinette component envelopes are imported. The current visual hold concerns the coarse bridge/garden/rock/planted setting and low retail 508221117; annex 4420 remains unqualified. Private bridge, approach, terrace and retail candidates are unshipped.",
-        "report": "build/reviews/resume-20261114/reviews/monaco-c0832124-review.md",
+        "reason": "Measured property roofs, arch/approaches, garden and low Kennedy retail are imported. The fresh 200 m driving view retains an angular charcoal slope and abrupt planted edge. The annex/terrace 4420 lower enclosure remains unqualified; no opaque prism or blanket vegetation is justified. Kennedy retail is independently closed.",
+        "report": "build/reviews/resume-20261114/reviews/monaco-776d1fe6-setting-surface-review.md",
         "historical_visual_decision": "held"
       }
     },
     "completion_held_circuits": [
       "baku",
       "jeddah",
-      "malaysia",
       "monaco"
     ]
   },
@@ -63,7 +58,7 @@
     "shared_vehicle_tuning_and_camera_unchanged": true,
     "round_two_scope": "Historical Nov 13 scope retained in the underlying immutable baseline record; the resumed-session scope above describes current changes.",
     "runtime_implementation": "Optional bank-height/contact evaluators and Spa-specific daylight changed; do not interpret preservation as no implementation changes.",
-    "resumed_session_scope": "From ceb62146 to 79189b47, accepted four Content folders and shared vehicle/camera implementations are unchanged. Singapore alone changes generated survey/boundary arrays and two physical data files; other 17 circuits retain their physical data. AU/Monaco/Jeddah changes are scenery assets/source only."
+    "resumed_session_scope": "From ceb62146 through reviewed package 776d1fe6, accepted Silverstone/Monza/Interlagos/Las Vegas Content folders and vehicle/camera tuning are unchanged. Singapore has a local Anderson road/boundary alignment. Malaysia has a 16 m legal lane, separately retained apron pavement, local final-corner bank/crest and venue-specific contact export/query. Other 16 circuits retain physical data. Shared helper additions default to prior behavior for those circuits; protected Malaysia core contact is separately regression-tested."
   },
   "scope_proofs": [
     {
@@ -1564,6 +1559,462 @@
         "existing_materials_textures_restored": 54,
         "physical_data_and_render_manifest_changed": false
       }
+    },
+    {
+      "file": {
+        "path": "build/reviews/resume-20261114/monaco/setting-outside-fullrows-proof.json",
+        "sha256": "2193c044fa3f6650443f054cbf6db6ebf49dd5d47aea5b28e505504059c259e6"
+      },
+      "data": {
+        "scope": "Every full ordered vertex row not wholly inside actual replacement cells, including positions, normals and UVs; no vertex sorting. Cell containment allows30micrometres of source-to-float32 encoding. Raw100-byte comparison is separate from semantic material-name normalization.",
+        "tiles": {
+          "Tile_Street_00_01": {
+            "baseline_rows": 24594,
+            "candidate_rows": 24594,
+            "unchanged_literal100byte_rows": 22839,
+            "raw100_removed_rows": 1755,
+            "raw100_added_rows": 1755,
+            "semantic_ordered_fullrow_removed": 0,
+            "semantic_ordered_fullrow_added": 0,
+            "removed_rows": [],
+            "added_rows": []
+          },
+          "Tile_Street_00_m1": {
+            "baseline_rows": 34512,
+            "candidate_rows": 34512,
+            "unchanged_literal100byte_rows": 34512,
+            "raw100_removed_rows": 0,
+            "raw100_added_rows": 0,
+            "semantic_ordered_fullrow_removed": 0,
+            "semantic_ordered_fullrow_added": 0,
+            "removed_rows": [],
+            "added_rows": []
+          },
+          "Tile_Street_m1_01": {
+            "baseline_rows": 1061,
+            "candidate_rows": 1061,
+            "unchanged_literal100byte_rows": 1036,
+            "raw100_removed_rows": 25,
+            "raw100_added_rows": 25,
+            "semantic_ordered_fullrow_removed": 0,
+            "semantic_ordered_fullrow_added": 0,
+            "removed_rows": [],
+            "added_rows": []
+          }
+        },
+        "source_manifest_changes": [
+          {
+            "name": "Building_City_00_00",
+            "old": {
+              "name": "Building_City_00_00",
+              "file": "Building_City_00_00.mesh",
+              "materials": [
+                "White",
+                "Steel",
+                "Cream",
+                "Glass",
+                "Concrete",
+                "Roof",
+                "Limestone",
+                "MonacoRuscinoRose",
+                "Black",
+                "Trunk",
+                "Terracotta",
+                "Leaves",
+                "TreeCanopy"
+              ],
+              "bounds": [
+                -36928.411493197644,
+                -37716.49785826546,
+                -280.0,
+                -214.21594192574585,
+                377.05946448167344,
+                5538.7100588700005
+              ],
+              "triangles": 105474,
+              "sha256": "d1cbd9f8240689c3cd7dbd380eccbb2d5a718b0b85de60a25845efbc4eae479f"
+            },
+            "new": {
+              "name": "Building_City_00_00",
+              "file": "Building_City_00_00.mesh",
+              "materials": [
+                "White",
+                "Steel",
+                "Cream",
+                "Glass",
+                "Concrete",
+                "Roof",
+                "Limestone",
+                "MonacoRuscinoRose",
+                "Black",
+                "Trunk",
+                "Terracotta",
+                "Leaves",
+                "TreeCanopy",
+                "Runoff",
+                "MonacoRockGround"
+              ],
+              "bounds": [
+                -36928.411493197644,
+                -37716.49785826546,
+                -280.0,
+                -214.21594192574585,
+                377.05946448167344,
+                5538.7100588700005
+              ],
+              "triangles": 129251,
+              "sha256": "48fac69495e1fa538962c1bd2212852bb1599e5e2720d34c897b69bcb5e7a9ba"
+            }
+          },
+          {
+            "name": "Building_City_m1_00",
+            "old": {
+              "name": "Building_City_m1_00",
+              "file": "Building_City_m1_00.mesh",
+              "materials": [
+                "Cream",
+                "Glass",
+                "Steel",
+                "White",
+                "Roof",
+                "Limestone",
+                "Terracotta",
+                "Trunk",
+                "Concrete",
+                "TreeCanopy",
+                "VenueSign"
+              ],
+              "bounds": [
+                -36785.54381192465,
+                -407.6618689518001,
+                74.8531643074205,
+                528.6414468537556,
+                15416.123237835183,
+                10404.795916384186
+              ],
+              "triangles": 118853,
+              "sha256": "4d88e7e00186abce3de6439bb4285cc9fa0ce1be3bc816e566224c736fb144ff"
+            },
+            "new": {
+              "name": "Building_City_m1_00",
+              "file": "Building_City_m1_00.mesh",
+              "materials": [
+                "Cream",
+                "Glass",
+                "Steel",
+                "White",
+                "Roof",
+                "Limestone",
+                "Terracotta",
+                "Trunk",
+                "Concrete",
+                "Runoff",
+                "TreeCanopy",
+                "VenueSign"
+              ],
+              "bounds": [
+                -36785.54381192465,
+                -407.6618689518001,
+                74.8531643074205,
+                528.6414468537556,
+                15416.123237835183,
+                10404.795916384186
+              ],
+              "triangles": 124928,
+              "sha256": "24a7c7931476a86260785046ab17e9758077caf1617d6556725c2218961b011b"
+            }
+          },
+          {
+            "name": "Tile_Street_00_01",
+            "old": {
+              "name": "Tile_Street_00_01",
+              "file": "Tile_Street_00_01.mesh",
+              "materials": [
+                "White",
+                "Road",
+                "Red",
+                "Runoff",
+                "100",
+                "Steel",
+                "50",
+                "Concrete",
+                "Grass",
+                "Limestone",
+                "Fence",
+                "PanelYellow",
+                "PanelPurple"
+              ],
+              "bounds": [
+                -48188.719382756884,
+                -24109.461265098194,
+                20.16219272307656,
+                -23421.01835808,
+                52.43546841351794,
+                7514.909491218171
+              ],
+              "triangles": 24852,
+              "sha256": "2f34432d334346e636612e9fca1a85a7d4e42b8d497d2a50e7c64b7bbe4b5adb"
+            },
+            "new": {
+              "name": "Tile_Street_00_01",
+              "file": "Tile_Street_00_01.mesh",
+              "materials": [
+                "White",
+                "Road",
+                "Red",
+                "Runoff",
+                "100",
+                "Steel",
+                "50",
+                "Concrete",
+                "Grass",
+                "MonacoIvyGround",
+                "MonacoRockGround",
+                "Fence",
+                "PanelYellow",
+                "PanelPurple"
+              ],
+              "bounds": [
+                -48188.719382756884,
+                -24109.461265098194,
+                20.16219272307656,
+                -23421.01835808,
+                52.43546841351794,
+                7514.909491218171
+              ],
+              "triangles": 25173,
+              "sha256": "e29681c2abbaf9eef2dad8b490ab0b23e91578397a7c38b0750afa0b6ccda701"
+            }
+          },
+          {
+            "name": "Tile_Street_m1_01",
+            "old": {
+              "name": "Tile_Street_m1_01",
+              "file": "Tile_Street_m1_01.mesh",
+              "materials": [
+                "Grass",
+                "Runoff",
+                "Limestone",
+                "Concrete",
+                "Fence"
+              ],
+              "bounds": [
+                -48188.719382756884,
+                -22.01740909435111,
+                362.7100706100464,
+                -24001.028559396636,
+                24094.356606287125,
+                8422.710418701172
+              ],
+              "triangles": 1379,
+              "sha256": "41e1fd45e46b2b9f93dddca539f0ccf32733aee7233b30b4b17ba5f92bf71f0a"
+            },
+            "new": {
+              "name": "Tile_Street_m1_01",
+              "file": "Tile_Street_m1_01.mesh",
+              "materials": [
+                "Grass",
+                "Runoff",
+                "MonacoIvyGround",
+                "MonacoRockGround",
+                "Concrete",
+                "Fence"
+              ],
+              "bounds": [
+                -48188.719382756884,
+                -22.01740909435111,
+                362.7100706100464,
+                -24001.028559396636,
+                24094.356606287125,
+                8422.710418701172
+              ],
+              "triangles": 1394,
+              "sha256": "c00cd8e70d9a71a85f38dd84907cd099882cd35b388b0db6f4ab533b593c55c1"
+            }
+          }
+        ],
+        "unchanged_source_tile_records": 112,
+        "tile_names_equal": true,
+        "baseline_manifest_sha256": "97ad034661cb4a8f844133a0877b6e55d10ce794b3cc7bf3ce12f11b58a7d70e",
+        "candidate_manifest_sha256": "c51caf0a0f3a75526b0fce0367bbd9d4bc6661d003e2af12e3b26a66428a5eb9"
+      }
+    },
+    {
+      "file": {
+        "path": "build/reviews/resume-20261114/monaco/setting-packed-planes-proof.json",
+        "sha256": "a673ed5d9da9492afdc77c9b59b053063999fbed836b049d97cb1ad9c91da0d7"
+      },
+      "data": {
+        "scope": "Actual packed ground intersections and ordered roof vertex/normal/UV rows. Engineered garden/apron surfaces are separate City meshes; the remaining Street surfaces preserve original planes.",
+        "old_local_ground_rows": 576,
+        "new_local_ground_rows": 912,
+        "max_height_normal_uv_error": [
+          1.9395869074401162e-05,
+          7.096736328593423e-07,
+          4.6880862711873306e-06
+        ],
+        "max_uncovered_new_face_area_m2": 7.471019332234953e-10,
+        "failures": [],
+        "four_measured_roof_rows": [
+          {
+            "source_id": "BATIMENT0000000074074383",
+            "old_rows": 30,
+            "new_rows": 30,
+            "removed_ordered_roof_rows": 0,
+            "added_ordered_roof_rows": 0
+          },
+          {
+            "source_id": "BATIMENT0000000074074384",
+            "old_rows": 31,
+            "new_rows": 31,
+            "removed_ordered_roof_rows": 0,
+            "added_ordered_roof_rows": 0
+          },
+          {
+            "source_id": "BATIMENT0000000074074428",
+            "old_rows": 9,
+            "new_rows": 9,
+            "removed_ordered_roof_rows": 0,
+            "added_ordered_roof_rows": 0
+          },
+          {
+            "source_id": "BATIMENT0000000074074453",
+            "old_rows": 10,
+            "new_rows": 10,
+            "removed_ordered_roof_rows": 0,
+            "added_ordered_roof_rows": 0
+          }
+        ],
+        "max_rss_kib": 41172
+      }
+    },
+    {
+      "file": {
+        "path": "build/reviews/resume-20261114/monaco-malaysia-import-scope-proof.json",
+        "sha256": "d93b9be91aab2f0ff347bd46536313dd6ef7d55c2f9fd3d89a21705c92e11aaf"
+      },
+      "data": {
+        "baseline_revision": "66b7e13b",
+        "changed_native_paths": [
+          "Content/Generated/Malaysia/Data/render_tiles.csv",
+          "Content/Generated/Malaysia/Track/Building_City_00_00.uasset",
+          "Content/Generated/Malaysia/Track/Building_City_00_m1.uasset",
+          "Content/Generated/Malaysia/Track/Building_City_00_m2.uasset",
+          "Content/Generated/Malaysia/Track/Building_City_01_00.uasset",
+          "Content/Generated/Malaysia/Track/Building_City_01_m1.uasset",
+          "Content/Generated/Malaysia/Track/Building_City_m1_00.uasset",
+          "Content/Generated/Malaysia/Track/Building_City_m1_01.uasset",
+          "Content/Generated/Malaysia/Track/Building_City_m1_m1.uasset",
+          "Content/Generated/Malaysia/Track/Building_City_m2_00.uasset",
+          "Content/Generated/Malaysia/Track/Building_City_m2_01.uasset",
+          "Content/Generated/Malaysia/Track/Building_City_m2_m1.uasset",
+          "Content/Generated/Malaysia/Track/Building_Crowd_00_00.uasset",
+          "Content/Generated/Malaysia/Track/Building_Crowd_00_m1.uasset",
+          "Content/Generated/Malaysia/Track/Building_Crowd_01_00.uasset",
+          "Content/Generated/Malaysia/Track/Building_Crowd_01_m1.uasset",
+          "Content/Generated/Malaysia/Track/Building_Crowd_m1_m1.uasset",
+          "Content/Generated/Malaysia/Track/Tile_Street_00_00.uasset",
+          "Content/Generated/Malaysia/Track/Tile_Street_00_01.uasset",
+          "Content/Generated/Malaysia/Track/Tile_Street_00_02.uasset",
+          "Content/Generated/Malaysia/Track/Tile_Street_00_m1.uasset",
+          "Content/Generated/Malaysia/Track/Tile_Street_00_m2.uasset",
+          "Content/Generated/Malaysia/Track/Tile_Street_00_m3.uasset",
+          "Content/Generated/Malaysia/Track/Tile_Street_01_00.uasset",
+          "Content/Generated/Malaysia/Track/Tile_Street_01_01.uasset",
+          "Content/Generated/Malaysia/Track/Tile_Street_01_m1.uasset",
+          "Content/Generated/Malaysia/Track/Tile_Street_01_m2.uasset",
+          "Content/Generated/Malaysia/Track/Tile_Street_02_00.uasset",
+          "Content/Generated/Malaysia/Track/Tile_Street_02_m1.uasset",
+          "Content/Generated/Malaysia/Track/Tile_Street_m1_00.uasset",
+          "Content/Generated/Malaysia/Track/Tile_Street_m1_01.uasset",
+          "Content/Generated/Malaysia/Track/Tile_Street_m1_02.uasset",
+          "Content/Generated/Malaysia/Track/Tile_Street_m1_m1.uasset",
+          "Content/Generated/Malaysia/Track/Tile_Street_m1_m2.uasset",
+          "Content/Generated/Malaysia/Track/Tile_Street_m2_00.uasset",
+          "Content/Generated/Malaysia/Track/Tile_Street_m2_01.uasset",
+          "Content/Generated/Malaysia/Track/Tile_Street_m2_m1.uasset",
+          "Content/Generated/Malaysia/Track/Tile_Street_m2_m2.uasset",
+          "Content/Generated/Malaysia/Track/Tile_Street_m3_00.uasset",
+          "Content/Generated/Malaysia/Track/Tile_Street_m3_01.uasset",
+          "Content/Generated/Malaysia/Track/Tile_Street_m3_m1.uasset",
+          "Content/Generated/Malaysia/Track/Tile_Street_m3_m2.uasset",
+          "Content/Generated/Monaco/Track/Building_City_00_00.uasset",
+          "Content/Generated/Monaco/Track/Building_City_m1_00.uasset",
+          "Content/Generated/Monaco/Track/Tile_Street_00_01.uasset",
+          "Content/Generated/Monaco/Track/Tile_Street_m1_01.uasset"
+        ],
+        "new_assets": [
+          "Content/Generated/Monaco/Materials/MonacoIvyGround.uasset",
+          "Content/Generated/Monaco/Materials/MonacoRockGround.uasset"
+        ],
+        "changed_meshes": 45,
+        "largest_changed_asset_bytes": 5263314,
+        "accepted_four_assets_unchanged": true,
+        "nonrender_physical_data_changed_by_import": false,
+        "validation": "Importer verified every native source hash; exact unchanged meshes and existing materials/textures restored. Native/source audits passed before import; cooked visual review pending."
+      }
+    },
+    {
+      "file": {
+        "path": "build/reviews/resume-20261114/malaysia/native-scope-proof.json",
+        "sha256": "edc12fc5d16067263d139797a23c28c6d7d5dff132de27035db5de5edf44d0b3"
+      },
+      "data": {
+        "baseline_revision": "c4220b29",
+        "changed_native_data_paths": [
+          "Content/Generated/Malaysia/Data/drive_surface.bin",
+          "Content/Generated/Malaysia/Data/track_limits.bin"
+        ],
+        "other17_physical_data_unchanged": true,
+        "accepted_four_assets_unchanged": true,
+        "cpp_and_generated_profile_paths": [
+          "Source/FormulaForge/FFSimulation.cpp",
+          "Source/FormulaForge/Native/generated_circuit.cpp",
+          "Source/FormulaForge/Native/track_data/malaysia_boundaries.inc",
+          "Source/FormulaForge/Native/track_data/malaysia_survey.inc"
+        ],
+        "shared_runtime_scope": "Malaysia-only baked-apron ground lookup beyond the protected core, exclusion from full-shoulder bank proxy, and native curb support. Other circuit branches, vehicle tuning, input, shifting and camera are unchanged.",
+        "native_plan_xy_tangent_unchanged": true,
+        "legal_width_m": 16,
+        "effective_outside_reach_change_m": {
+          "left_shoulder": [
+            -0.0007190699999997108,
+            0.0447025000000032
+          ],
+          "right_shoulder": [
+            -0.0006123000000002321,
+            0.02976229999999802
+          ]
+        },
+        "reach_note": "Frozen sampled pit transition retained exactly within native rounding. Local conservative two-metre gravel-support zones may expand the effective reach by under5cm; they do not shrink the prior corridor.",
+        "tests": {
+          "pytest": 227,
+          "mypy_files": 87,
+          "ruff": "passed",
+          "native": "native-check-frozen.log",
+          "source": "complete-source-check.log",
+          "contact_render_agreement": "Actual baked triangle bytes and packed rendered pavement vertices checked within0.25mm encoding tolerance, not survey accuracy."
+        },
+        "native_lap": {
+          "slug": "malaysia",
+          "valid": true,
+          "failure": "",
+          "failure_station_m": 0.0771716759,
+          "pace": 0.550000012,
+          "line_nodes": 1536,
+          "edge_margin_m": 2,
+          "fixed_step_s": 0.00833333377,
+          "simulated_seconds": 171.725,
+          "completed_laps": 1,
+          "lap_seconds": 169.644474,
+          "progress_m": 5563.07422,
+          "maximum_tracking_error_m": 0.588332176,
+          "maximum_speed_kph": 204.720001,
+          "review_line": "build/circuits/malaysia/review-line.txt",
+          "telemetry": "build/circuits/malaysia/review-lap.csv"
+        },
+        "cooked_visual_review": "Pending fresh package and whole-route capture; source/native checks do not establish appearance acceptance."
+      }
     }
   ],
   "runtime_changes": {
@@ -1572,11 +2023,11 @@
       "source_files": [
         {
           "path": "Source/FormulaForge/FFSimulation.cpp",
-          "sha256": "3b275e7eace6c0efc2bc161b0b71dea019d3d12f07490b0edf0da9fa45029cc3"
+          "sha256": "0421b5ba394223f6cdb58e4a2f13856fed12cac8296a15e123a94307f9b92a76"
         },
         {
           "path": "Source/FormulaForge/Native/generated_circuit.cpp",
-          "sha256": "8b41a4e64869a7db09009c0fe0b318ca7d9146b229ed41f9599729d763516712"
+          "sha256": "de211b02bc9d90c072b6e1de5eaa1241e206e4eabfbd17d97b1b8fb55607a898"
         }
       ],
       "evidence_files": [
@@ -1631,6 +2082,45 @@
           "sha256": "825c2329cb823b971a03f83f31b6246f0b504f0b4ff33fd3982cee52a467d884"
         }
       ]
+    },
+    "malaysia_surface": {
+      "description": "Malaysia alone uses a 16 m legal lane, exact frozen baseline widths for outside pavement, estimated adverse final-corner section and rising-exit warp. Generated paving triangles preserve actual render/contact agreement; Ground queries them outside the protected analytic road/kerb core. Focused source/native regression checks cover old core contact, flat apron contact, pit registration and packed vertex agreement. Other circuit behavior and vehicle tuning remain unchanged.",
+      "source_files": [
+        {
+          "path": "Source/FormulaForge/Native/generated_circuit.cpp",
+          "sha256": "de211b02bc9d90c072b6e1de5eaa1241e206e4eabfbd17d97b1b8fb55607a898"
+        },
+        {
+          "path": "Source/FormulaForge/Native/track_data/malaysia_paving.inc",
+          "sha256": "4ff1c62893cb15d2749952acc55082dfe814f60eec2909f56e87d34d563b582e"
+        },
+        {
+          "path": "Source/FormulaForge/FFSimulation.cpp",
+          "sha256": "0421b5ba394223f6cdb58e4a2f13856fed12cac8296a15e123a94307f9b92a76"
+        },
+        {
+          "path": "tools/circuit_boundaries.py",
+          "sha256": "1706ab90157215cfcf4b7310205f67b82e58ebf36b686619ffd30a74e2c64321"
+        },
+        {
+          "path": "tools/venues/malaysia_surface.py",
+          "sha256": "dd2c1cdb9face7d6d1c96f43f425cf9ab7c23b1625d737b9aa75807dbac8dfcf"
+        }
+      ],
+      "evidence_files": [
+        {
+          "path": "build/reviews/resume-20261114/malaysia/native-scope-proof.json",
+          "sha256": "edc12fc5d16067263d139797a23c28c6d7d5dff132de27035db5de5edf44d0b3"
+        },
+        {
+          "path": "build/reviews/resume-20261114/malaysia/native-check-frozen.log",
+          "sha256": "758c0c458a7c8edb59b5a06e5226c90574df5c87bcab6ab5cf8d3ee749c9bbc4"
+        },
+        {
+          "path": "build/reviews/resume-20261114/reviews/malaysia-776d1fe6-setting-surface-review.md",
+          "sha256": "e95b0bed38d05d2a29321c6efe45363980e7b6bd2530ce3a7c51d3b77fcf713a"
+        }
+      ]
     }
   },
   "resources": {
@@ -1639,8 +2129,8 @@
     "peak_sample_utc": "2026-11-14T04:53:26Z",
     "within_sampled_ceiling": true,
     "first_sample_utc": "2026-11-14T04:15:41Z",
-    "last_sample_utc": "2026-11-14T07:57:00Z",
-    "samples": 2642,
+    "last_sample_utc": "2026-11-14T09:56:36Z",
+    "samples": 4074,
     "configured_sample_interval_s": 5.0,
     "observed_interval_range_s": [
       5.0,
@@ -1650,8 +2140,8 @@
     "one_heavy_job_at_a_time_attested": true,
     "monitor": {
       "path": "build/reviews/resume-20261114/resources.csv",
-      "snapshot_sha256": "ddbea33f8062b31cc2cf5c68fd2f96637179d475ba0d8d6d0c61882587c1d35b",
-      "snapshot_bytes": 118935
+      "snapshot_sha256": "505d223dd32589e959163389d2697e168434c878b807d368c758fd6e5f222c28",
+      "snapshot_bytes": 183375
     },
     "scope": "Sampled total machine usage, not engine RSS. The hash covers the parsed byte prefix if monitoring continues. Sampling cannot establish every transient peak or job concurrency by itself."
   },
@@ -1666,8 +2156,8 @@
     "Automated native/live laps do not establish physical-controller handling or all menu/input paths. Reference clips can contain edited cuts and different cameras.",
     "Only explicit uncapped moving samples establish measured whole-route frame times. Stationary samples and capped image recordings have separate scopes.",
     "Hockenheim visible stand-front join is closed; a hidden mismatch up to 1.479 m remains outside the bounded repair. No broad earth bank was invented to conceal it.",
-    "Malaysia T15 adverse crossfall, exit-rise warp and16 m legal-width reconstruction are not yet integrated. The proposed numerical slopes/heights are estimates; primary sources establish qualitative shape and legal width, not a civil survey.",
-    "Monaco measured property roofs are imported, but bridge approaches, terraces, low retail frontage and classified setting remain under review. Never fill the unqualified annex 4420with an invented opaque prism or repaint the actual patio/bridge as vegetation."
+    "Malaysia’s adverse T15 profile and rising exit are implemented and visually passed. The 16 m legal width is primary-designer supported; 4% mean/7% inner/1% outer crossfall, 15.4 m exit crest and local station warp are estimates, with ±1 m elevation and ±50 m station uncertainty, not civil survey values. Wider original pavement is preserved from the actual frozen 8192-row baseline; outside support-zone discretization differs by at most 4.5 cm.",
+    "Monaco’s new bridge, garden and low Kennedy retail are imported and the retail item passes. The opening hillside still fails the visual bar; the mapped stepped terrace/annex lower structure needs separate qualification. Mixed roof-outline vertex heights cannot justify one sloped terrace or a solid full-height prism."
   ],
   "circuits": {
     "australia": {
@@ -2384,9 +2874,10 @@
           "Attribution/Sources/buddh/runoff-paint-review.json": "0e7fccb88f0bafe17e8cd72d98c202b4bee85ff3be9aefb4883560f4dc462b04",
           "Attribution/Sources/buddh/scene-registration.json": "d4d4ed60cd12e9e04bb2c5524e33557279e2468480b122aabc9320706bed3d49",
           "Attribution/Sources/buddh/scenery-terrain.json": "8c37d70ff559da62508bfc8653df5ac701be2646757e26b5d4e4ca2189c74342",
-          "Attribution/Sources/buddh/scenery.json": "6d1f9b449ba0f076f905f97504e3b4d3828017587ba118f95bd91fc6149575fc",
+          "Attribution/Sources/buddh/scenery.json": "68a4b35c4aec6e5c48f5e8856b16537b0d440e5220199679161c06aff8aa3efe",
           "Attribution/Sources/buddh/start-line.json": "22cd74eb6ceff71779aaa67f2ea822e0317685f65798d3faab15c320b39b2879",
           "Attribution/Sources/buddh/t1-edge-correction-evidence.json": "ab21b5e7c6ae24357f114bf3c133cd89395496153608ed67d4561cb8e938bf79",
+          "Attribution/Sources/buddh/tree-line-refinement.json": "63374daef471ad244448241dbca51497265a2426edbf814ea3ad0f2996d618b3",
           "Attribution/Sources/buddh/width-review.json": "046224d8e34c64e95559ebcabfdb045a5a5761b1ecc020f6754b9d60a3f4f506",
           "build/circuits/buddh/road.csv": "7eb5df0e1794e9f7fc4e82a5a4c683ae1c4ebe58d1d07ab61ca48b0e2186a373",
           "build/circuits/buddh/catalogue.json": "cf69ab0e9aa0db171af22853b683e428838df27e5cbef60c2329e063f734b591",
@@ -2850,11 +3341,12 @@
           "Attribution/Sources/cota/scene-registration.json": "af6cd59a630fb1318ee06ca1cf0cde4f30447d2c41ad139dfc70621746d74905",
           "Attribution/Sources/cota/scenery-ground.json": "c1a7803234f9d65127c26b4c8c6820a9aa659468ccd94b6e40908b25940cfe8f",
           "Attribution/Sources/cota/scenery-terrain.json": "911396633a63b2a1fa2ee4530279f826a62e8462d518de78136937b837b40d1f",
-          "Attribution/Sources/cota/scenery.json": "e33ed34494c88eeee45612f64a0e58b9822b6bd8b21316800c2ddc0db1a177df",
+          "Attribution/Sources/cota/scenery.json": "e06fb591447e50e01c3e3a6714d1cef75e9c8ad4ebb665a5a745eef73ec8a4c5",
           "Attribution/Sources/cota/t1-stand-review.json": "e52a8cd6dd79d5e49d0439e17e9989be21e5a05ee66cfae6a72a522585bf05ba",
           "Attribution/Sources/cota/t1-t12-stand-review.json": "49cac4ed407fd7338eec7f498d8d8a315eded1487f7e7ccd98ceeaa01f2916f4",
           "Attribution/Sources/cota/t15-island.json": "a73f416c0bcef472c75f05c4cd52acdcf682fdd329a104b181d6d23be9baf806",
           "Attribution/Sources/cota/tower-deck-plan.json": "45c7f06d6a12e31b51f0cd0785d6f4b5437bb838a6b9bc36ca11cd04bb0156d0",
+          "Attribution/Sources/cota/tree-line-refinement.json": "8406c5543b86e0f0c916bc2b1181195c9d17486accfbbf5df030277118cf97b2",
           "build/circuits/cota/road.csv": "066a25047bf4ac3400fd6c45f48fa0e1aa2605de782849df14602a95ed86a504",
           "build/circuits/cota/catalogue.json": "65fb477de9df38763bfa85f697dd168b179a9b06bcbc7d32f8db27168a1b0982",
           "Source/FormulaForge/Native/track_data/cota_survey.inc": "a3ec97d09409a82f7c0d3af474a62ccc2fd3611272788b32f72a9be9e87e042d",
@@ -3463,7 +3955,7 @@
         "relief_m": 21.9997224067671,
         "full_width_range_m": [
           16.0,
-          21.9989662
+          16.0
         ],
         "maximum_rise_percent_single_native_chord": 5.7159690820280105,
         "maximum_rise_station_m": 3155.15234,
@@ -3474,7 +3966,7 @@
         "maximum_fall_percent_100m_station_window": -5.884021523617507,
         "maximum_fall_100m_start_station_m": 775.424561,
         "center_bank_angle_range_deg": [
-          0.0,
+          -2.290610202810437,
           0.0
         ],
         "road_columns": [
@@ -3487,7 +3979,11 @@
           "half_width",
           "bank",
           "left_shoulder",
-          "right_shoulder"
+          "right_shoulder",
+          "bank_quadratic",
+          "bank_fade",
+          "bank_outer_positive",
+          "bank_outer_negative"
         ],
         "racing_provider": "Formula 1 published 2016 topography diagram",
         "vertical_uncertainty_m": 1.0,
@@ -3495,94 +3991,101 @@
         "source_input_sha256": {
           "Attribution/Sources/malaysia/alignment-refinement-base.csv.gz": "03e01d9e1abbeae7d29580458d75920a4da5b1439c1596b2175ae63fe70dca05",
           "Attribution/Sources/malaysia/alignment-refinement.json": "cd3515e205c82a2b873d48af656158d2015cca584fd8cc7e79738d42e9312ae6",
+          "Attribution/Sources/malaysia/banking-corrections.json": "fa6ceb9f8f9859e25c7bf1887d183c0756bc104d63632f1bed92a38cfa2b6a04",
           "Attribution/Sources/malaysia/barriers.osm.json.gz": "82caded660c82e427675cce0685eeb53b4ab26d449f39c1f93260120aa0bcd0b",
-          "Attribution/Sources/malaysia/boundaries.json": "32ce4c44fdfccaece712cbc713be1abffa29cc6876272a743cffaaab26af3073",
+          "Attribution/Sources/malaysia/boundaries.json": "9ab1637f084fc8633513946eccf64e3467b26172aa2bf7f2185967d1ce98a531",
           "Attribution/Sources/malaysia/buildings.osm.json.gz": "cabede90d520fddd3a3fbe9e1dc742dfef4a16e5d8a673eabfc59b0e8546268e",
           "Attribution/Sources/malaysia/circuit.osm.json.gz": "4750bef8185206e6265874c342a757326de98a0781ccba45a8c2380b93af0c38",
-          "Attribution/Sources/malaysia/dimension-review.json": "d8b85f7394615b2e1a50ce6387e6e850e72822b79da670315f5b0e03b101d0c3",
-          "Attribution/Sources/malaysia/elevation-corrections.json": "d555b73820e2c307e82f137882c5b9e2febb7c31a5749a383beed9f7900266e6",
+          "Attribution/Sources/malaysia/dimension-review.json": "7d07a3b5cec501d1dd79317d003d178c0b4af3221f7a12ddb91d5966a9540549",
+          "Attribution/Sources/malaysia/elevation-corrections.json": "483e76e9fd51c5deadb8717c72e58c5dd8e709d89f542ea53be1e9b1064d57f0",
           "Attribution/Sources/malaysia/elevation_samples.json": "d0463a54f5b882e5d7e1ff2f0f5b1c6d8a73f572c1456825e77f424557aa2992",
           "Attribution/Sources/malaysia/end-umbrella-correction.json": "ed5919295d3fd6acb697433717eee254a611c6c11402b871b3185eae9a0b189e",
-          "Attribution/Sources/malaysia/environment-recipe.json": "d71842819e848e61a8fe11e84d95330e7dc43d7aab63494d424b49407a279b49",
+          "Attribution/Sources/malaysia/environment-recipe.json": "e31c83ffddb1de68436a90a3c9b7c6aa752a7120de4673e0a0349657722d29ec",
           "Attribution/Sources/malaysia/main-roof-review.json": "c56f8332565adb6ecdcafdd2e76d25041a0ad18a205c56429f7f231e4f31a350",
-          "Attribution/Sources/malaysia/pit-lane.json": "e81c447b4a5ecbb48fb860ec7941f851de77f2c02be0751b6fab82f55a9be60d",
+          "Attribution/Sources/malaysia/pavement-widths.json": "e54947573285a45d8202a13bae1fdd4b006315a7a37e386649746037d492a375",
+          "Attribution/Sources/malaysia/pit-lane.json": "6999911e50c269f68519dfd20527a67b2b8d86cb9fbfd9edfd19199a4b125239",
           "Attribution/Sources/malaysia/pit-roof-review.json": "004f68e266403e99dc3bde7bfc8eddcb7d7da9f2ac3a72df59e76bacf459fb3c",
-          "Attribution/Sources/malaysia/provenance.json": "8879e4ec6bfda1e7b2c348071af0624807140a36173563d1f49ffdf8617932a5",
+          "Attribution/Sources/malaysia/provenance.json": "5701bafe1a39d60b9904e348858171b989c59385dec889cf1abc89dcce9d7baf",
+          "Attribution/Sources/malaysia/racing-surface-baseline.csv.gz": "c1d73fe74ebe990849676bc93337e3a9bf69f83d8a53ef2af0d7b12d5609281b",
+          "Attribution/Sources/malaysia/racing-surface-review.json": "39ed066be9fa259c5f60e5e49919aeca8b78e5af21e72967d3a3897fa1121c9a",
           "Attribution/Sources/malaysia/reconstruction.json": "398fbc25995ba677113b3928bdc573911882ebce262c48de30a2b917aa8504a4",
           "Attribution/Sources/malaysia/reference-index.json": "fcf283014b7833aca9d0634f57abc50bad2ddfc0d4def4f420d0adfe5554cce4",
           "Attribution/Sources/malaysia/scene-registration.json": "aa1f802033037a9b4ce758bce7e0ed3f1ae471db668af51ce4fa78b25f683537",
           "Attribution/Sources/malaysia/scenery-terrain.json": "5d7f7ba747256d1bc7e3e62fb27520c83199e57fe7ce5d6d2552caee00126dfe",
-          "Attribution/Sources/malaysia/scenery.json": "60e4ef5b68866ce16e352f5bd41ee5f2655904c210115237d4d2382413f8f22f",
-          "Attribution/Sources/malaysia/shoulder-baseline.json": "f1d57785fd880d09983ada13b7327330c826e8547a6fae5c849aa2242732ed6c",
-          "build/circuits/malaysia/road.csv": "4fa3a8982bcda7ac44e862f419cc3b1c794ae971687092b8dccff4578d4981d1",
+          "Attribution/Sources/malaysia/scenery.json": "63df47d7d6f5090d03fd52bcf64d26d16549f2c98145b533f91ad155e74ca67d",
+          "Attribution/Sources/malaysia/shoulder-baseline.json": "c1a7f32e6fedf6cc5eb58a1423175a4f050659c340f591f383c52889f7fbb1c5",
+          "build/circuits/malaysia/road.csv": "715960ef18de2b690c69a979a0b9c4bd0bdf018bbc584b0f06407ab8ba69c018",
           "build/circuits/malaysia/catalogue.json": "3e31a79611abfc7505730463382576b0f63f810fd07d751cfac40e8aef2f0d0f",
-          "Source/FormulaForge/Native/track_data/malaysia_survey.inc": "e5e250f744b34ff13f96e69702078c1f3fe3e9490fad0764f78c0a37428d9e82",
-          "Source/FormulaForge/Native/track_data/malaysia_boundaries.inc": "97309fbb01ee1e39ab20d339c76c7b92814e2cc4dafac18f12ef0525d9620600"
+          "Source/FormulaForge/Native/track_data/malaysia_survey.inc": "b7c5e8ee33e952833568ac6a6a2a3570dd5e5d3f62750ab880ec12be6127c9f4",
+          "Source/FormulaForge/Native/track_data/malaysia_boundaries.inc": "e9868faaa287376657cf281d971204dabce3831a787bbcc1d3c3dbe9f421f9ed"
         },
         "accuracy_note": "Dense native samples do not establish survey accuracy. Single-chord grades use horizontal XY chords; 100 m windows use registered station distance and may differ from operator definitions. Scenery ground is a separate source family."
       },
       "scene": {
-        "source_manifest_sha256": "d0bdec39faf52e7fee605b4aab8295cddf00ac1ac97b6c55de36c49dcccf9b7b",
+        "source_manifest_sha256": "84fa1c06ff808eadaae921393465c40991d01474ee5266c5abb4082dd474354d",
         "native_asset_count": 160,
-        "native_assets_sha256": "986fdc3f0d4d4445385b782c1b2251cce6a0733d97194cafff296000411acbba",
+        "native_assets_sha256": "ceb356fe29f47389b89f78c2d9a3823ad65ced09f39feb86d669937b4c533da6",
         "native_data_sha256": {
           "buildings.bin": "c16315e32251a9eacfa2c4005663ce80c75228a9fe06856c607746a63b82f9be",
-          "drive_surface.bin": "00ab0b9f54b4ac5604f494858bb37fb19aba3018306bb42e0091a3b2cd386f91",
-          "render_tiles.csv": "b6f742a79732dc4c42552fbd03f56aa82718c754aa334e810df9db0cd15e5fe5",
+          "drive_surface.bin": "5b7c05bc2a1161ae231aed4cb40c8bdacd9dd90f0623f02bf3b021463789a0ea",
+          "render_tiles.csv": "01f2180e00c8c58a9eb7fa575c0ea2eb39ae921a00953763cb8e865dc414aada",
           "terrain.bin": "c1a3f8ad1402cf7701010ed05c72a538dd64937722c1daf04c4c2fea1d15b839",
-          "track_limits.bin": "8fff284c93f5e5d6bb0c4e6961a26fbdc7c43e7ca4d5caa1754b61adb2241083"
+          "track_limits.bin": "62b61e5a59b6fa82a42e5bce3908c463c5a839729361304cb070897e7ece9ecb"
         },
         "tiles": 130,
-        "triangles": 2097096,
-        "maximum_tile_triangles": 243668
+        "triangles": 2335162,
+        "maximum_tile_triangles": 244656
       },
       "visual_review": {
         "decision": "pass",
-        "notes": "The unchanged scene retains its historical whole-route visual pass. The independently established missing adverse T15 crossfall keeps source completion held.",
-        "historical_evidence": [],
+        "notes": "Luna passes all 15 whole-route sheets and the final-corner transition/entry/apex/exit sequence. Legal edge and retained outside paved/runoff surface stay distinct, with continuous rising exit and adverse section. Clean 5176-frame valid lap, all 125 bins. Numeric crossfall and crest retain declared reconstruction uncertainty.",
+        "historical_evidence": [
+          "build/reviews/malaysia/resume-20261113-live",
+          "build/reviews/resume-20261113/malaysia-review.md"
+        ],
         "report": {
-          "path": "build/reviews/resume-20261113/malaysia-review.md",
-          "sha256": "20a46c530fda0b1a2350e6050abb0fc838c9850958bf489464b48804f883ae61"
+          "path": "build/reviews/resume-20261114/reviews/malaysia-776d1fe6-setting-surface-review.md",
+          "sha256": "e95b0bed38d05d2a29321c6efe45363980e7b6bd2530ce3a7c51d3b77fcf713a"
         },
         "native_lap": {
           "slug": "malaysia",
           "valid": true,
-          "lap_seconds": 170.266586,
-          "simulated_seconds": 172.35,
-          "maximum_tracking_error_m": 0.932632267,
-          "maximum_speed_kph": 205.957993,
+          "lap_seconds": 169.644474,
+          "simulated_seconds": 171.725,
+          "maximum_tracking_error_m": 0.588332176,
+          "maximum_speed_kph": 204.720001,
           "pace": 0.550000012,
           "fixed_step_s": 0.00833333377
         },
         "native_lap_record": {
           "path": "build/circuits/malaysia/review-lap.json",
-          "sha256": "2097d1c90fc3891ab1e1e1f7f2708365815d5db9493e4b42ee4ff345a94b9c60"
+          "sha256": "e95656cb736d0f46bb0012fba8765b335e505c104e79dc1b347eebb97e4be4aa"
         },
         "live_evidence": {
-          "packet": "build/reviews/malaysia/resume-20261113-live",
-          "captured_package_revision": "6a970d404c704a21324aac4450a2f6202281e2fa",
-          "package_manifest_sha256": "db5b600c7de972c1387667f6bc5aca001311ea27bd246ec83e3cdcc7d0f8e264",
-          "summary_sha256": "e3cef2670f841d887c7b99303ddd3386513de9fbaec8e2118f1377609764b29b",
-          "archive_sha256": "45c3c3f3302b508a1bb048731d6c17347856b7b38eddc43f84d9698b4f6acc9c",
-          "target_index_sha256": "0d46df50ff5d2786932bc2c383ba4f092eb6d2be3253f4235c13cc6690554bcc",
-          "selected_index_sha256": "f022ec6e6416cae1b1f8721e9cdf577987dc1fb31e15a6b21284feac2135694c",
-          "frame_count": 5076,
+          "packet": "build/reviews/malaysia/resume-20261114-setting-surface-live",
+          "captured_package_revision": "776d1fe664095abbe6200f7179908727f065070f",
+          "package_manifest_sha256": "6bd491953fae197c2feabe68a3e6b004e8bcb649b2b219c74949f31b78d26a24",
+          "summary_sha256": "1e7282208eb6f33adfab36911a4e1d158092ff16aea44f571f9df88fd607c722",
+          "archive_sha256": "4267dd92f1f6dfb43e40c08bd0d5349837afc7bf705627fdf029cc9cd630585f",
+          "target_index_sha256": "5929c7cca8b18926ccf2cb4aa5e2b52b0366234c9a9d822ce88ccb96e6352f94",
+          "selected_index_sha256": "cc000aa327d1a6aeef76b45b975c7a7dda7a63812e5f2586f95a1c614f48a7aa",
+          "frame_count": 5176,
           "station_bins_visited": 125,
           "station_bins_total": 125,
-          "maximum_circular_frame_gap_m": 21.265594482421875,
+          "maximum_circular_frame_gap_m": 3.94140625,
           "clean_live_recording": true,
           "contacts": 0,
           "offtrack_frames": 0,
           "airborne_frames": 0,
           "maximum_visual_penetration_m": 0.0,
-          "complete_video_frames": 5076,
-          "video_sha256": "afe6f879cd60e4c5ad9d4f539a5ec88e28dbc094f35edf856a220e52f96d84d0",
+          "complete_video_frames": 5176,
+          "video_sha256": "77a47b66e2e83ae6efa2249370b0c14547b222fd1017c2db7fa17b68e0812d56",
           "journal_sha256": {
-            "frames.jsonl": "5e39f3200addde4c3e35c41310ebec611ab261dae7645487ee2d6264f6e7543a",
+            "frames.jsonl": "01a492263e92ac6dc4fcd99fb87842c529267e7ca1ac454356de3897297b77f6",
             "inputs.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-            "ticks.jsonl": "9eb397ad33fc1b724c7e44010c5dc2398f74153d5fbe93316c26bf2038abbb2d",
-            "steps.jsonl": "7b79e2bb75745a3aa7308455991a1eaace4cc78b453f662e30734fffe3d51a9e",
-            "session.json": "70834fff91842345c14bde6b52c85fa9af4dd7d89930a1c6578ddab64bc46159"
+            "ticks.jsonl": "35b8690f9b9964cee80c2b6e33c455a2c2419bb748f9d184d60a55b9fe55bcc1",
+            "steps.jsonl": "11a21afe1faff288820d6a2e1e8a09a61448d9227ae8e2470abdfd6ed1e85268",
+            "session.json": "6b71836e00e3d22e0abf355ba68a5ab41db73e604a09dfe7f7f91a0d5e72c5fc"
           },
           "capture_conditions": "Production live cockpit with image recording. Capped/readback/encoding frame intervals are not uncapped performance measurements.",
           "dimensions": [
@@ -3598,7 +4101,7 @@
         }
       },
       "source_limits": [
-        "No primary numerical transverse profile or entry/exit warp was recovered; zero modeled crossfall remains a known omission."
+        "Primary designer supports the 16 m legal lane and qualitative adverse/rising-exit shape. No primary numerical cross-section exists in retained sources; local slopes and crest are architectural/track reconstruction estimates."
       ]
     },
     "monaco": {
@@ -3650,6 +4153,8 @@
           "Attribution/Sources/monaco/alignment-refinement-base.csv.gz": "ff6295609ae5eaecf59ab75be4fc52f800b1710255b160a2ee1d3d1f4cca00e2",
           "Attribution/Sources/monaco/alignment-refinement.json": "395fc471a12ae4e41b9b366bc517c3ffc78caa16a8d5641c9559c67a4abba8d7",
           "Attribution/Sources/monaco/architecture/beau-rivage-context.osm.gz": "81702d17f641da979a04ea46ea0db2393d63d13a4f755eb8b3a4e2fa2d32a230",
+          "Attribution/Sources/monaco/architecture/casa-garden-provenance.json": "e6430ea066c9b965e8b4a8e94cbd5871b697a27a079e0c664cfbea077a5042e1",
+          "Attribution/Sources/monaco/architecture/casa-garden.json": "719bb6e3d6863592aae60a2f78b9e32c9f8e50f71364c93f577d306bb85ad9af",
           "Attribution/Sources/monaco/architecture/costa-ground/00000.request.json.gz": "f9193d9c5465a951224ff88c62184081d2e01fdd44708129d8d4e01d45a97b69",
           "Attribution/Sources/monaco/architecture/costa-ground/00000.response.json.gz": "bba0a476be7bb2a6eb65ac11435bdab7666ea8603a6e69532c9ae59ead6fe968",
           "Attribution/Sources/monaco/architecture/costa-ground/00100.request.json.gz": "9802a548cc11fde1cab0398fac0e3d14bfdda391dd891bddf09c74a2d6b18041",
@@ -3688,7 +4193,7 @@
           "Attribution/Sources/monaco/architecture/costa-ground-source.json": "01b835c5dceb5a58f66c8c0d488034242464f227dc23d6529d74ae9189b8a399",
           "Attribution/Sources/monaco/architecture/costa-landcover-provenance.json": "e06d0deca7df067205751b6eca71cabab31e237ba4fc21ab4ebe96cebb06dd41",
           "Attribution/Sources/monaco/architecture/costa-landcover.json": "01f4df864469547c173be995cf852a4aac2f26cf2ab25f41a1f6a2d14c985fe0",
-          "Attribution/Sources/monaco/architecture/costa-properties-provenance.json": "eea257327c8fd992d659e1c0edea44dac6c32637dac40ccbb6c43a8d75506862",
+          "Attribution/Sources/monaco/architecture/costa-properties-provenance.json": "84a28da51777a2a8dae0c24ebb194137d46cb0106fc2504a338fd922d2cee651",
           "Attribution/Sources/monaco/architecture/costa-properties.json": "5c48b465c9ae29df8c94e4c93fe82a4889a730080dd53a8bc3fb90a8b55260b4",
           "Attribution/Sources/monaco/architecture/fairmont-garden-frontage.json": "844bcf2515c008fa00434aee221bc41f812e943318c2b80f7a203c2d6d8da8c0",
           "Attribution/Sources/monaco/architecture/hillside-buildings.json": "bc96fa65377c71c3325b3b92c2775cd74d99f1afbe7255b8cc2cc389898f4eab",
@@ -3706,6 +4211,15 @@
           "Attribution/Sources/monaco/architecture/ign-bdtopo-opening-towers.json.gz": "bf06805972bac48403fc288c92a1c471eebec9877f110f52eeddcef02d27894b",
           "Attribution/Sources/monaco/architecture/ign-bdtopo-rascasse-request.json": "4b3a85989fe65c7f4954d906313ea627648482f0f0c668ad2ca698ab3f3234e9",
           "Attribution/Sources/monaco/architecture/ign-bdtopo-rascasse.json.gz": "b7516cbb879c7ed8600456b487aac04ef363ca5aec9f2d512ef78fa70fa41007",
+          "Attribution/Sources/monaco/architecture/kennedy-retail-terrace-provenance.json": "78220310cf995ec76c9b414f07aefa188a15a56860f9f1083fd26738aaa309ce",
+          "Attribution/Sources/monaco/architecture/kennedy-retail-terrace.json": "d154fc231ddb9a182e2704a776801355146cabf46b18f81a95ee9b099f4e00a9",
+          "Attribution/Sources/monaco/architecture/larvotto-approaches.json": "f5e8c4973b70b9266c218c5f5e2388cd20fb08006d95adff77802abac4f36f67",
+          "Attribution/Sources/monaco/architecture/larvotto-bridge-provenance.json": "e5301647fad3553f8949d842eed06aa11b742f8b1c834aced0cd2ddc5fdcb918",
+          "Attribution/Sources/monaco/architecture/larvotto-bridge.json": "7cd93a54d6ea9ccbe7af99b5e2e4634db3efc25f58ac6e523579edd9ee509d09",
+          "Attribution/Sources/monaco/architecture/larvotto-ground/000.request.json": "235d8889a72600e984d0e76d8ecc88f3330bda7bfc980d7d48e580c5d7958320",
+          "Attribution/Sources/monaco/architecture/larvotto-ground/000.response.json": "7ba9ea60f58ea51cd9e6b076735aff01cfbf30d0ff0fd9a167213275ed96c205",
+          "Attribution/Sources/monaco/architecture/larvotto-ground/050.request.json": "b45caea88c2d0bdaa2a0f0fd04899d1a15194e825363c896e9f5b5cef0a38e0b",
+          "Attribution/Sources/monaco/architecture/larvotto-ground/050.response.json": "7e14878de04fcf5d9e840a84463a44e994fe4c763f4982332e917f2a46aad8cd",
           "Attribution/Sources/monaco/architecture/pending-hill-properties/ign-local-buildings-request.json": "3237339083f244da4a69b407643cf4ba2281027b91ed065914da56fb0de0dd70",
           "Attribution/Sources/monaco/architecture/pending-hill-properties/ign-local-buildings.json.gz": "f4a45e3fc55d0831593e04049cb5fbc11bde44dc4e82f21ac5f25d872754506a",
           "Attribution/Sources/monaco/architecture/pending-hill-properties/property-source-matches.json": "50d04d8525bbc8772deaef35f78b7f80f9b7b57c8683fbfc4b25d14e1ce60761",
@@ -3767,7 +4281,7 @@
           "Attribution/Sources/monaco/scene-registration.json": "bd101b3491a0b3645640b89506021431545c06fe97292b1b0b2fdf0ab3940099",
           "Attribution/Sources/monaco/scenery-ground.json": "39a525148c0c00015b75f9a8b9ce8870279fb5d8b240caca71525b3d73834044",
           "Attribution/Sources/monaco/scenery-terrain.json": "be9e386f186cec44663ace0a2096b1cc93f047306ac44acbaa85571b83873dea",
-          "Attribution/Sources/monaco/scenery.json": "3759f0db91e03aae1bcbf26b5a62c7846d846cc02e52682d2747671a6330f556",
+          "Attribution/Sources/monaco/scenery.json": "6cf280979bd096680585d39293765ef56a4cc7b2403abf2303186bff94daec1f",
           "Attribution/Sources/monaco/shoulder-corrections.json": "a9d6c17b82e40d8f095fc0810b8aca15e373e980fabafef4f1268a95c5f39baf",
           "Attribution/Sources/monaco/start-line.json": "1827e8734b72397a51e505844ec15834a73c3a7abf3f2f64a7e3d6febcc41285",
           "Attribution/Sources/monaco/tabac-frontage-correction.json": "3b8584878c16a6e42900c93d9932d9fc6d4c0b7e3b4f8773342fbf81d31e1acb",
@@ -3779,9 +4293,9 @@
         "accuracy_note": "Dense native samples do not establish survey accuracy. Single-chord grades use horizontal XY chords; 100 m windows use registered station distance and may differ from operator definitions. Scenery ground is a separate source family."
       },
       "scene": {
-        "source_manifest_sha256": "97ad034661cb4a8f844133a0877b6e55d10ce794b3cc7bf3ce12f11b58a7d70e",
-        "native_asset_count": 154,
-        "native_assets_sha256": "d9b58553ed2b6a55e836d442470d03ad337fbfe6e5ac108653004837d59c7afa",
+        "source_manifest_sha256": "c51caf0a0f3a75526b0fce0367bbd9d4bc6661d003e2af12e3b26a66428a5eb9",
+        "native_asset_count": 156,
+        "native_assets_sha256": "de94e9accff423e7108d800a35fbfea7ec38024a6e5a624fed9606569ba82f8f",
         "native_data_sha256": {
           "buildings.bin": "c7e89a92bca0411eec419b718ba140b2fb7c6c54ee12f23267f564da17469507",
           "drive_surface.bin": "3a7544d64e64e34c445dbf4049745ad0e2fc4f2d8e96dcf6d29b2c8ee7f67df3",
@@ -3790,23 +4304,25 @@
           "track_limits.bin": "85528c1cf80cda2568fc1c22cbe69a96c7de48f48880ee19184a68db336b07ce"
         },
         "tiles": 116,
-        "triangles": 2279250,
+        "triangles": 2309438,
         "maximum_tile_triangles": 400000
       },
       "visual_review": {
         "decision": "held",
-        "notes": "Measured multi-component property envelopes are imported. The exact 200 m view still has a coarse faceted slope and hard green wedge; source registration identifies bridge, patio, rock, vegetation and the held annex separately. Bridge/terrace/retail candidates are private.",
+        "notes": "Fresh 776d1fe6 bridge/approach/garden composition improves and low Kennedy retail 508221117 passes independently. The 200 m opening still has an angular uniform charcoal face and abrupt green edge. Keep the visual hillside hold and separate annex source question open; source scope and clean lap do not substitute for appearance acceptance.",
         "historical_evidence": [
           "build/reviews/monaco/resume-20261113-corrections-live",
           "build/reviews/resume-20261113/monaco-corrections-review.md",
           "build/reviews/monaco/resume-20261113-final-live",
           "build/reviews/resume-20261113/monaco-final-followups-review.md",
           "build/reviews/monaco/resume-20261113-refined-live",
-          "build/reviews/resume-20261113/monaco-refined-live-review.md"
+          "build/reviews/resume-20261113/monaco-refined-live-review.md",
+          "build/reviews/monaco/resume-20261114-second-live",
+          "build/reviews/resume-20261114/reviews/monaco-c0832124-review.md"
         ],
         "report": {
-          "path": "build/reviews/resume-20261114/reviews/monaco-c0832124-review.md",
-          "sha256": "004c03349f570ec86d7a8098fc43870d14bd67c0333840ff673947acf6a1be49"
+          "path": "build/reviews/resume-20261114/reviews/monaco-776d1fe6-setting-surface-review.md",
+          "sha256": "cdb0fbe5e4d1ea565347eb19556d903cac0f83416e9140965d53d875efc5bee9"
         },
         "native_lap": {
           "slug": "monaco",
@@ -3823,30 +4339,30 @@
           "sha256": "496cc758fb69c9ae47712cde6d7b19d9a36cd463c9d95e4bd1b5cfd7489eccb8"
         },
         "live_evidence": {
-          "packet": "build/reviews/monaco/resume-20261114-second-live",
-          "captured_package_revision": "c0832124fa6d92d73e9f609e22bf60ea39464192",
-          "package_manifest_sha256": "fbe5a41f354220172c02bcdf2b7f1007961b0733479fe75e6d1a036208f4657a",
-          "summary_sha256": "0a0b1fc79e772ddaf8f738536b10657d8e73cfb3516aa04a6ddebe54a5d1593b",
-          "archive_sha256": "82eadbb61f6928f241c8933dac9abd352ade18cb18e3e5081be7f5461df87b27",
-          "target_index_sha256": "5348fa17c68e89feb74ca20af18b89465426e128988cfe7171a724d5fb312491",
-          "selected_index_sha256": "f91fe623bfc63b15d67c54b309824965115c9cc0ea664644aeba8afe7df02e11",
-          "frame_count": 3934,
+          "packet": "build/reviews/monaco/resume-20261114-setting-surface-live",
+          "captured_package_revision": "776d1fe664095abbe6200f7179908727f065070f",
+          "package_manifest_sha256": "6bd491953fae197c2feabe68a3e6b004e8bcb649b2b219c74949f31b78d26a24",
+          "summary_sha256": "27c4a923a06bea25e80571900b67fed821f8d637ba8df8b109ca911d14383b1e",
+          "archive_sha256": "dfcdf8eb906bbc1779472a9120717e1cd6ee670bcdab0baf9139d717e94668b2",
+          "target_index_sha256": "eb9a19317803fdd6a38feb4237d2682594bd3b1890227fb68322866fd99847f6",
+          "selected_index_sha256": "a119708b4911f2477be6ae9569c035b8c51960a67009bc0cd428d477bd401969",
+          "frame_count": 3812,
           "station_bins_visited": 125,
           "station_bins_total": 125,
-          "maximum_circular_frame_gap_m": 5.1536865234375,
+          "maximum_circular_frame_gap_m": 10.1279296875,
           "clean_live_recording": true,
           "contacts": 0,
           "offtrack_frames": 0,
           "airborne_frames": 0,
           "maximum_visual_penetration_m": 0.0,
-          "complete_video_frames": 3934,
-          "video_sha256": "95b05ce027296a22f4b17c8ad19dd8102ae9a90b8d7ae545d8164ea806bf109d",
+          "complete_video_frames": 3812,
+          "video_sha256": "0a90e288724cd61d418518c5bbd9c78d65ff7821894ce0e30844b0d0d3eda27b",
           "journal_sha256": {
-            "frames.jsonl": "834c8800f9ac7a0fbea1243bcc49084c119d6cd7eca1be2d97ea6aa0ae4654f8",
+            "frames.jsonl": "1e206fc0a6b02b1fe8f5870bae07ab6acb80e946ef03ae77e87b4da4a203b8c9",
             "inputs.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-            "ticks.jsonl": "e3af98601ea8b2766ff4d724f6ccca846cea213baa089dbd0cd656df2700e3db",
-            "steps.jsonl": "3a36e7e2852b65ff000d39552b619e5488fa44725b718288a4864529e3f63e49",
-            "session.json": "92bd25e6ea47b1c7e8afadf5b7ec02e2849c6b9b06a6aa6ddd93aff6f0d2baf4"
+            "ticks.jsonl": "723b8b22d1d47e0ecff440dfddf72bfae5758bc81a38dd9f7329b866b468b69b",
+            "steps.jsonl": "ec85b581384a1181f219fdefee73d10c570dba18766654e3764911dbd31d37a8",
+            "session.json": "d3ef44d662164d6914f3032db4a1a37b098e0ea932ad5b95df643637b3505dc0"
           },
           "capture_conditions": "Production live cockpit with image recording. Capped/readback/encoding frame intervals are not uncapped performance measurements.",
           "dimensions": [
@@ -3862,7 +4378,7 @@
         }
       },
       "source_limits": [
-        "IGN properties retain measured component envelopes and declared source precision. Setting bridge/patio/rock surfaces require separate modeled surfaces; annex 4420and exact event chronology remain unqualified."
+        "Property envelopes preserve retained measured components. Bridge arch rise, garden levels/steps and planting are declared reconstructions; annex 4420 lower enclosure and edited-reference chronology remain unqualified. Kennedy retail 9.95 m is an indicative planning anchor, not a roof survey."
       ]
     },
     "portimao": {
