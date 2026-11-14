@@ -1,0 +1,684 @@
+{
+  "title": "Monaco west-bank visible canopy groves - review-only source estimate",
+  "status": "Private, source-qualified placement candidate. Not canonical and not a tree census. Native ground heights, roadside protection, road geometry, collision and contact remain unchanged.",
+  "source_geoframe": {
+    "orthophoto_service": "Monaco Government SIGM Orthophoto 2019, EPSG:3944, 512px tiles at 0.105833545 m/px",
+    "tiles": [
+      {
+        "file": "orthophoto2019-l8-r796836-c680971.jpg",
+        "sha256": "13da4a6b30f4bb356e0c516f9630486facc756abdee6390231d2f5a4776fb2e3",
+        "url": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer/tile/8/796836/680971",
+        "bbox_3944": [
+          2055922.3859114423,
+          3180372.737278804,
+          2055976.5726864785,
+          3180426.924053848
+        ]
+      },
+      {
+        "file": "orthophoto2019-l8-r796836-c680972.jpg",
+        "sha256": "f8171280685bb48fb5b9d7c6e7a2c518dc00bb00cdc469c92a404003ea237bff",
+        "url": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer/tile/8/796836/680972",
+        "bbox_3944": [
+          2055976.5726864785,
+          3180372.737278804,
+          2056030.759461522,
+          3180426.924053848
+        ]
+      }
+    ],
+    "scene_origin_lat_lon": [
+      43.7346446387306,
+      7.4213359272073856
+    ],
+    "uniform_scale": 1.0099320735128836,
+    "pixel_to_native_affine_review_fit": {
+      "native_x": "0.1056503*global_pixel_x - 0.0056307*pixel_y - 56.137946",
+      "native_y": "-0.0061966*global_pixel_x - 0.1068638*pixel_y + 372.023128",
+      "global_pixel_x": "tile-local x + 512 for c680972; tile-local x for c680971",
+      "fit_basis": "Approximate affine from existing source-to-native orthophoto control points. The project authoring transform remains the authoritative conversion; this fit is for locating proposed visual centers, not survey coordinates."
+    },
+    "source_edges_uncertainty_m": "approximately +/-1.0 to 1.5m at the image ground; larger under crowns/building eaves because of parallax and foliage movement between 2012/2014 and 2019.",
+    "primary_service_url": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer",
+    "copyright": "DSN, Gouvernement Princier de Monaco",
+    "tile_resolution_m": 0.10583354500042334
+  },
+  "primary_oblique_evidence": [
+    {
+      "file": "ravine-station-2012-1280.jpg",
+      "sha256": "a9693f6f3617f793059ba3f180ff75155299082b2b6f2301b25cfd015c1e69ec",
+      "observation": "Shows irregular mature crown masses rooted along the cliff ledges and upper slope, interleaved with exposed pale limestone. Supports clustered crowns rather than a continuous forest wall; does not register individual 2019 crowns or heights."
+    },
+    {
+      "file": "chapel-wide-2014-50326922292-1280.jpg",
+      "sha256": "fb79a231242bfce78226cecfc83139bb98bf3e9ff1e5e38569ef1b4b4410c776",
+      "observation": "Shows mature trees and shrubs on both ravine banks around the chapel, with exposed rock and built retaining kept distinct. Perspective gives only broad crown/height scale."
+    }
+  ],
+  "groves": [
+    {
+      "id": "west-cliff-canopy-clumps",
+      "tile": "orthophoto2019-l8-r796836-c680971.jpg",
+      "evidence": "Dense overlapping dark-green crown groups around the exact 230m driving-ray ground point (-20.66,340.02,20.09), approximately source pixel (351,279). The 2012/2014 oblique photos support tree masses on the ledge and slope. This is a canopy-placement envelope only; do not fill its gaps with trees or repaint all covered ground as rock/grass.",
+      "visible_envelope_vertices": [
+        {
+          "pixel_xy": [
+            215,
+            207
+          ],
+          "native_xy_m": [
+            -34.589,
+            348.57
+          ]
+        },
+        {
+          "pixel_xy": [
+            238,
+            197
+          ],
+          "native_xy_m": [
+            -32.102,
+            349.496
+          ]
+        },
+        {
+          "pixel_xy": [
+            267,
+            204
+          ],
+          "native_xy_m": [
+            -29.078,
+            348.568
+          ]
+        },
+        {
+          "pixel_xy": [
+            294,
+            199
+          ],
+          "native_xy_m": [
+            -26.197,
+            348.935
+          ]
+        },
+        {
+          "pixel_xy": [
+            323,
+            204
+          ],
+          "native_xy_m": [
+            -23.162,
+            348.221
+          ]
+        },
+        {
+          "pixel_xy": [
+            354,
+            211
+          ],
+          "native_xy_m": [
+            -19.926,
+            347.281
+          ]
+        },
+        {
+          "pixel_xy": [
+            382,
+            220
+          ],
+          "native_xy_m": [
+            -17.018,
+            346.146
+          ]
+        },
+        {
+          "pixel_xy": [
+            408,
+            233
+          ],
+          "native_xy_m": [
+            -14.345,
+            344.596
+          ]
+        },
+        {
+          "pixel_xy": [
+            434,
+            251
+          ],
+          "native_xy_m": [
+            -11.699,
+            342.511
+          ]
+        },
+        {
+          "pixel_xy": [
+            451,
+            273
+          ],
+          "native_xy_m": [
+            -10.027,
+            340.055
+          ]
+        },
+        {
+          "pixel_xy": [
+            447,
+            295
+          ],
+          "native_xy_m": [
+            -10.573,
+            337.728
+          ]
+        },
+        {
+          "pixel_xy": [
+            428,
+            310
+          ],
+          "native_xy_m": [
+            -12.665,
+            336.243
+          ]
+        },
+        {
+          "pixel_xy": [
+            405,
+            305
+          ],
+          "native_xy_m": [
+            -15.067,
+            336.92
+          ]
+        },
+        {
+          "pixel_xy": [
+            383,
+            322
+          ],
+          "native_xy_m": [
+            -17.487,
+            335.24
+          ]
+        },
+        {
+          "pixel_xy": [
+            358,
+            317
+          ],
+          "native_xy_m": [
+            -20.1,
+            335.929
+          ]
+        },
+        {
+          "pixel_xy": [
+            336,
+            330
+          ],
+          "native_xy_m": [
+            -22.498,
+            334.676
+          ]
+        },
+        {
+          "pixel_xy": [
+            313,
+            320
+          ],
+          "native_xy_m": [
+            -24.871,
+            335.887
+          ]
+        },
+        {
+          "pixel_xy": [
+            290,
+            327
+          ],
+          "native_xy_m": [
+            -27.341,
+            335.282
+          ]
+        },
+        {
+          "pixel_xy": [
+            267,
+            314
+          ],
+          "native_xy_m": [
+            -29.697,
+            336.813
+          ]
+        },
+        {
+          "pixel_xy": [
+            244,
+            310
+          ],
+          "native_xy_m": [
+            -32.105,
+            337.383
+          ]
+        },
+        {
+          "pixel_xy": [
+            226,
+            292
+          ],
+          "native_xy_m": [
+            -33.905,
+            339.418
+          ]
+        },
+        {
+          "pixel_xy": [
+            215,
+            269
+          ],
+          "native_xy_m": [
+            -34.938,
+            341.945
+          ]
+        }
+      ],
+      "representative_crown_clusters_not_individual_tree_census": [
+        {
+          "source_pixel_xy": [
+            245,
+            230
+          ],
+          "native_xy_m": [
+            -31.549,
+            345.926
+          ],
+          "crown_diameter_estimate_m": [
+            5.0,
+            9.0
+          ]
+        },
+        {
+          "source_pixel_xy": [
+            285,
+            223
+          ],
+          "native_xy_m": [
+            -27.283,
+            346.426
+          ],
+          "crown_diameter_estimate_m": [
+            5.0,
+            9.0
+          ]
+        },
+        {
+          "source_pixel_xy": [
+            420,
+            266
+          ],
+          "native_xy_m": [
+            -13.263,
+            340.995
+          ],
+          "crown_diameter_estimate_m": [
+            4.0,
+            8.0
+          ]
+        },
+        {
+          "source_pixel_xy": [
+            262,
+            285
+          ],
+          "native_xy_m": [
+            -30.062,
+            339.943
+          ],
+          "crown_diameter_estimate_m": [
+            4.0,
+            8.0
+          ]
+        },
+        {
+          "source_pixel_xy": [
+            311,
+            291
+          ],
+          "native_xy_m": [
+            -24.919,
+            338.999
+          ],
+          "crown_diameter_estimate_m": [
+            4.0,
+            8.0
+          ]
+        },
+        {
+          "source_pixel_xy": [
+            359,
+            292
+          ],
+          "native_xy_m": [
+            -19.854,
+            338.594
+          ],
+          "crown_diameter_estimate_m": [
+            4.0,
+            8.0
+          ]
+        },
+        {
+          "source_pixel_xy": [
+            411,
+            291
+          ],
+          "native_xy_m": [
+            -14.354,
+            338.379
+          ],
+          "crown_diameter_estimate_m": [
+            4.0,
+            8.0
+          ]
+        }
+      ],
+      "crown_height_above_local_ground_estimate_m": [
+        8.0,
+        16.0
+      ],
+      "height_uncertainty_m": 4.0,
+      "constraints": [
+        "No trunks/crowns on road, kerbs, walls, building roofs or inside the protected corridor.",
+        "Keep exposed limestone slots and path openings visible; the envelope is not a solid canopy fill.",
+        "Root placement must follow existing terrain/support geometry; no terrain-height or bank-normal edit is implied."
+      ],
+      "species_class": "Mixed irregular evergreen/broadleaf crown groups; 2012/2014 photos do not resolve individual species at these exact 2019 pixel locations.",
+      "excluded_near_belvedere_clusters": {
+        "structure": "Curved Belvedere Saint-Martin source disc, center native (-18.654,348.782), radius4.909m.",
+        "nearby_source_pixels": [
+          [
+            330,
+            236
+          ],
+          [
+            376,
+            244
+          ]
+        ],
+        "reason": "Their observed crown centers sit only about5.6m and5.2m from the disc center; 5\u20139m crowns would overhang the monument footprint by roughly1.8\u20134.2m. The 2019 overhead suggests crown overlap, but the 2012 oblique view does not clearly show canopy crossing the masonry/parapet. Keep them out of the candidate placement or clip their crown masks at the monument boundary until a matched side view confirms an overhang."
+      }
+    },
+    {
+      "id": "south-roadside-tree-belt",
+      "tile": "orthophoto2019-l8-r796836-c680972.jpg",
+      "evidence": "A narrow vegetated strip south of the public road is visible along the bottom edge of the 2019 tile; the ray at (25.80,312.84,12.41), approximately local pixel (291,507), falls in/near this tree belt. This supports a bounded low roadside grove, not a taller rock-bank canopy. The tile edge and road proximity make exact extent uncertain.",
+      "visible_envelope_vertices": [
+        {
+          "pixel_xy": [
+            255,
+            475
+          ],
+          "native_xy_m": [
+            22.221,
+            316.51
+          ]
+        },
+        {
+          "pixel_xy": [
+            286,
+            466
+          ],
+          "native_xy_m": [
+            25.547,
+            317.28
+          ]
+        },
+        {
+          "pixel_xy": [
+            323,
+            455
+          ],
+          "native_xy_m": [
+            29.518,
+            318.226
+          ]
+        },
+        {
+          "pixel_xy": [
+            360,
+            444
+          ],
+          "native_xy_m": [
+            33.489,
+            319.172
+          ]
+        },
+        {
+          "pixel_xy": [
+            400,
+            433
+          ],
+          "native_xy_m": [
+            37.777,
+            320.1
+          ]
+        },
+        {
+          "pixel_xy": [
+            442,
+            422
+          ],
+          "native_xy_m": [
+            42.276,
+            321.015
+          ]
+        },
+        {
+          "pixel_xy": [
+            480,
+            414
+          ],
+          "native_xy_m": [
+            46.336,
+            321.635
+          ]
+        },
+        {
+          "pixel_xy": [
+            510,
+            409
+          ],
+          "native_xy_m": [
+            49.534,
+            321.983
+          ]
+        },
+        {
+          "pixel_xy": [
+            510,
+            511
+          ],
+          "native_xy_m": [
+            48.959,
+            311.083
+          ]
+        },
+        {
+          "pixel_xy": [
+            470,
+            511
+          ],
+          "native_xy_m": [
+            44.733,
+            311.331
+          ]
+        },
+        {
+          "pixel_xy": [
+            428,
+            509
+          ],
+          "native_xy_m": [
+            40.307,
+            311.805
+          ]
+        },
+        {
+          "pixel_xy": [
+            384,
+            507
+          ],
+          "native_xy_m": [
+            35.67,
+            312.291
+          ]
+        },
+        {
+          "pixel_xy": [
+            340,
+            505
+          ],
+          "native_xy_m": [
+            31.033,
+            312.777
+          ]
+        },
+        {
+          "pixel_xy": [
+            302,
+            499
+          ],
+          "native_xy_m": [
+            27.052,
+            313.654
+          ]
+        },
+        {
+          "pixel_xy": [
+            273,
+            489
+          ],
+          "native_xy_m": [
+            24.044,
+            314.902
+          ]
+        }
+      ],
+      "representative_crown_clusters_not_individual_tree_census": [
+        {
+          "source_pixel_xy": [
+            280,
+            493
+          ],
+          "native_xy_m": [
+            24.761,
+            314.432
+          ],
+          "crown_diameter_estimate_m": [
+            4.0,
+            7.0
+          ]
+        },
+        {
+          "source_pixel_xy": [
+            330,
+            487
+          ],
+          "native_xy_m": [
+            30.077,
+            314.763
+          ],
+          "crown_diameter_estimate_m": [
+            4.0,
+            7.0
+          ]
+        },
+        {
+          "source_pixel_xy": [
+            380,
+            478
+          ],
+          "native_xy_m": [
+            35.411,
+            315.415
+          ],
+          "crown_diameter_estimate_m": [
+            4.0,
+            7.0
+          ]
+        },
+        {
+          "source_pixel_xy": [
+            430,
+            466
+          ],
+          "native_xy_m": [
+            40.761,
+            316.387
+          ],
+          "crown_diameter_estimate_m": [
+            4.0,
+            7.0
+          ]
+        },
+        {
+          "source_pixel_xy": [
+            478,
+            452
+          ],
+          "native_xy_m": [
+            45.911,
+            317.586
+          ],
+          "crown_diameter_estimate_m": [
+            4.0,
+            7.0
+          ]
+        }
+      ],
+      "crown_height_above_local_ground_estimate_m": [
+        5.0,
+        11.0
+      ],
+      "height_uncertainty_m": 3.0,
+      "constraints": [
+        "Keep the public-road surface and its shoulder completely clear; the road boundary is the upper edge, not inside the grove.",
+        "Do not plant over nearby building footprints or the service/walkway surfaces.",
+        "Because the envelope meets the tile edge, treat its southeast termination as unresolved rather than closing it into a new parcel boundary."
+      ],
+      "species_class": "Unresolved mixed ornamental/evergreen canopy. The 2014 chapel view shows palms elsewhere on the bank, but the camera-to-2019-tile registration is not strong enough to assign those palms to this roadside strip. Do not substitute a generic broadleaf grove; retain species and placement as held for a matched view.",
+      "source_accuracy_note": "The orthophoto crop clearly shows vegetation south of the road near (25.8,312.84), but does not identify species. The nearby (16.09,323.67) ground ray projects onto a building roof, not this grove."
+    }
+  ],
+  "explicit_exclusions": [
+    {
+      "source_hit": "(-0.902,342.300,32.537)",
+      "reason": "Under the held elevated BATIMENT0000000074074420 L-shaped roof/deck; orthophoto top surface is not a ground or canopy instruction."
+    },
+    {
+      "source_hit": "(1.64,326.05,19.22); (2.35,321.01,14.86); (16.09,323.67,19.01)",
+      "reason": "Approximate orthophoto positions overlap building roof/forecourt surfaces; they are excluded from ground-grove polygons until a separate 3D layer registration resolves the roofs."
+    },
+    {
+      "source_hit": "(-12.232,326.356,15.057); (-7.237,330.040,19.14)",
+      "reason": "Already classified as MonacoRockGround; preserve their exposed rock/path margins rather than covering them with a solid tree sheet."
+    },
+    {
+      "source_hit": "(15.24,315.93,12.46)",
+      "reason": "Already source-consistent Ivy at roadside; preserve the existing foliage placement and road/protection clearance."
+    }
+  ],
+  "limits": [
+    "Canopy centers and diameters are visual estimates from overlapping crowns, not individual-tree identifications or a tree inventory.",
+    "Orthophoto identifies crown plan positions; oblique photos bound only broad mature-tree size. Crown ranges are authoring estimates with the listed uncertainty, not measured tree heights.",
+    "Do not use the grove polygons to replace ground material, create a continuous screen, or alter substrate/elevation beneath buildings, roads, walls or the elevated L feature.",
+    "Before use, clip candidate placements against current rendered building footprints, road/protection corridor and exact source-visible paths/exposed rock. Recheck a fresh native runtime view; this JSON alone does not approve visual closure."
+  ],
+  "canonical_ground_trial": {
+    "trial_triangles": 714,
+    "clumps": 7,
+    "actual_source_manifest_sha256": "be7579fcbef12b55914af28dcac590eb61fef14a7a280fcfe86a18cf6432e52c",
+    "source_proposal_sha256": "5458646149460a31d47ff223108ee5b7102cf040901020d5db6f8f969616ed8b",
+    "source_use": "Authoring observations only; no photograph pixels become game textures."
+  }
+}

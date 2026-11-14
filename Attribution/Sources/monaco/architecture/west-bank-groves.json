@@ -1,0 +1,198 @@
+{
+  "circuit": "monaco",
+  "origin_lat_lon": [
+    43.7346446387306,
+    7.4213359272073856
+  ],
+  "uniform_scale": 1.0099320735128836,
+  "relative_datum_m": 1.5128994113,
+  "held_roof_ring_xy_m": [
+    [
+      -7.8062347125134695,
+      345.2014864432654
+    ],
+    [
+      -7.526794256979419,
+      333.9387375053408
+    ],
+    [
+      -0.1622385295372812,
+      333.82856088333574
+    ],
+    [
+      -0.2158521053507157,
+      338.28958981002313
+    ],
+    [
+      6.250270064325152,
+      340.154722619973
+    ],
+    [
+      6.140605932068037,
+      345.42970944581896
+    ],
+    [
+      -7.8062347125134695,
+      345.2014864432654
+    ]
+  ],
+  "canopies": [
+    {
+      "base": [
+        -31.744057991777563,
+        345.84050254052124,
+        17.17544130357745
+      ],
+      "height_m": 8.829991976771126,
+      "seed": 74390,
+      "source_pixel_xy": [
+        245,
+        230
+      ],
+      "crown_diameter_range_m": [
+        5.0,
+        9.0
+      ]
+    },
+    {
+      "base": [
+        -27.441082292304433,
+        346.35959133152386,
+        19.640127556943774
+      ],
+      "height_m": 8.829991849997569,
+      "seed": 74391,
+      "source_pixel_xy": [
+        285,
+        223
+      ],
+      "crown_diameter_range_m": [
+        5.0,
+        9.0
+      ]
+    },
+    {
+      "base": [
+        -13.29951459324823,
+        340.98640663176303,
+        25.73641123098232
+      ],
+      "height_m": 8.370053030496116,
+      "seed": 74392,
+      "source_pixel_xy": [
+        420,
+        266
+      ],
+      "crown_diameter_range_m": [
+        4.0,
+        8.0
+      ]
+    },
+    {
+      "base": [
+        -30.24679476854126,
+        339.8610843148981,
+        12.278911276835055
+      ],
+      "height_m": 8.293406423337876,
+      "seed": 74393,
+      "source_pixel_xy": [
+        262,
+        285
+      ],
+      "crown_diameter_range_m": [
+        4.0,
+        8.0
+      ]
+    },
+    {
+      "base": [
+        -25.058995055302244,
+        338.93826962306264,
+        15.487109841241727
+      ],
+      "height_m": 8.293406423337819,
+      "seed": 74394,
+      "source_pixel_xy": [
+        311,
+        291
+      ],
+      "crown_diameter_range_m": [
+        4.0,
+        8.0
+      ]
+    },
+    {
+      "base": [
+        -19.94917955742934,
+        338.5559047891598,
+        18.817207027547873
+      ],
+      "height_m": 8.302802603392117,
+      "seed": 74395,
+      "source_pixel_xy": [
+        359,
+        292
+      ],
+      "crown_diameter_range_m": [
+        4.0,
+        8.0
+      ]
+    },
+    {
+      "base": [
+        -14.401633734790284,
+        338.3644700861748,
+        22.212819050902077
+      ],
+      "height_m": 8.30280247592399,
+      "seed": 74396,
+      "source_pixel_xy": [
+        411,
+        291
+      ],
+      "crown_diameter_range_m": [
+        4.0,
+        8.0
+      ]
+    }
+  ],
+  "supports": [
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "1bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a928421bc403c7405cd644ea87f644a9cb133fb646cb3efec2333fcd3009c018a9284200d004c7fd7fd444de370c45edb9173fe18cdc3e21752a3ffeff07c000002a42"
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoRockGround",
+      "attributes_hex": "1bc403c7ff5fc244fbb70145dca6193fd192be3ec9c7323fcbccf8bf18a928421bc403c7ea9696445ddb0f456b7b263f51bea23e6ca1303f2cc1c0bf18a92842956305c7efc0b54485271f45d199223ff02cd33e65df233f09a5e8bfe8bc2a42"
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "MonacoRockGround",
+      "attributes_hex": "1bc403c7ea9696445ddb0f456b7b263f51bea23e6ca1303f2cc1c0bf18a9284227b905c731eda344c2352e45d643263f2e63d23e51dc213f72d3d1bf6f2a2b42956305c7efc0b54485271f45d199223ff02cd33e65df233f09a5e8bfe8bc2a42"
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "d27808c719c83145abaa0e45c81d2c3f9e81dc3ed37b183f7c8f63c022af2e42d27808c76ee26145b816f3447898153fe48ff03e5261293fea9090c022af2e421bc403c76ee26145726d18449ee1f03e16e0973e93c0543fea9090c018a92842"
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "de2608c737b61b457fae12453477343f7e45cd3e98ae133fa24f47c03b462e42b35608c733f3294512be0f450bf52e3faebad63e10f6163f378959c075832e421bc403c76ee26145726d18449ee1f03e16e0973e93c0543fea9090c018a92842"
+    },
+    {
+      "tile": "Tile_Street_m1_01",
+      "material": "Runoff",
+      "attributes_hex": "de2608c737b61b457fae12453477343f7e45cd3e98ae133fa24f47c03b462e421bc403c76ee26145726d18449ee1f03e16e0973e93c0543fea9090c018a928421bc403c7f2961645b976be44e8b5f43eab3a013f4406383f35c140c018a92842"
+    }
+  ],
+  "source_notes": [
+    "Seven representative overlapping canopy clumps; not a tree census. Native coordinates use the exact government tile EPSG3944 bbox/resolution through WGS84 and the retained scene frame.",
+    "Approximate crown plan edges carry1\u20131.5m uncertainty and heights are estimated within the8\u201316m western-grove range. Actual emitted terrain supports all four packed trunk corners.",
+    "No ground repaint or height change. The two uncertain belvedere overhangs, roof-overlap rays and roadside belt of unresolved species are excluded.",
+    "Source qualification and primary URLs/hashes: west-bank-groves-source.json."
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "triangles": 714,
+  "geometry_sha256": "42a9c89cf85af6bb4e318caf632fed50f7aaf3a2dbe34d7c4beaa786e9d95dc6",
+  "source_trial_manifest_sha256": "be7579fcbef12b55914af28dcac590eb61fef14a7a280fcfe86a18cf6432e52c",
+  "status": "Frozen source-qualified canopy trial. Ground planes and current native driving data stay unchanged; fresh cooked review remains required."
+}
