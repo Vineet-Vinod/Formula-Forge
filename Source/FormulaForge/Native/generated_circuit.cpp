@@ -258,8 +258,12 @@ void buildGeneratedSupport(const TrackCatalogEntry& track, const std::vector<Cir
                     if (zone.side != 0 && (zone.side > 0) != left) continue;
                     asphalt = zone.surface == TrackRunoffSurface::Asphalt;
                 }
-                support.runoff.push_back({roadA, a, b, asphalt});
-                support.runoff.push_back({roadA, b, roadB, asphalt});
+                const bool cotaGrass = track.id == TrackLayoutId::Cota &&
+                    first.station >= 2520.0f && first.station <= 3590.0f && !asphalt;
+                if (!cotaGrass) {
+                    support.runoff.push_back({roadA, a, b, asphalt});
+                    support.runoff.push_back({roadA, b, roadB, asphalt});
+                }
             }
         }
 

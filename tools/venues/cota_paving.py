@@ -31,20 +31,24 @@ def backstraight_paving(scene: CircuitScene) -> list[PavingTriangle]:
             continue
         determinant = (b[1] - c[1]) * (a[0] - c[0]) + (c[0] - b[0]) * (a[1] - c[1])
         for triangle in constrained_delaunay_triangles(plan.intersection(cover)).geoms:
-            if triangle.area <= .0001:
+            if triangle.area <= 1e-8:
                 continue
-            points = []
-            xy = list(triangle.exterior.coords)[:3]
-            if not triangle.exterior.is_ccw:
-                xy.reverse()
-            for x, y in xy:
-                u = ((b[1] - c[1]) * (x - c[0]) + (c[0] - b[0]) * (y - c[1])) / determinant
-                v = ((c[1] - a[1]) * (x - c[0]) + (a[0] - c[0]) * (y - c[1])) / determinant
-                points.append((x, y, u * a[2] + v * b[2] + (1 - u - v) * c[2] - .001))
-            packed = [cast(Point, struct.unpack('<3f', struct.pack('<3f', *point))) for point in points]
-            if Polygon([point[:2] for point in packed]).area <= .0001:
-                continue
-            triangles.append((packed[0], packed[1], packed[2]))
+            # Sub-millimetre edge overlap closes float-encoded clipping seams.
+            # Bevels bound the XY change to 0.3 mm; the original plane is kept.
+            contact = triangle.buffer(.0003, join_style='bevel')
+            for contact_triangle in constrained_delaunay_triangles(contact).geoms:
+                points = []
+                xy = list(contact_triangle.exterior.coords)[:3]
+                if not contact_triangle.exterior.is_ccw:
+                    xy.reverse()
+                for x, y in xy:
+                    u = ((b[1] - c[1]) * (x - c[0]) + (c[0] - b[0]) * (y - c[1])) / determinant
+                    v = ((c[1] - a[1]) * (x - c[0]) + (a[0] - c[0]) * (y - c[1])) / determinant
+                    points.append((x, y, u * a[2] + v * b[2] + (1 - u - v) * c[2] - .001))
+                packed = [cast(Point, struct.unpack('<3f', struct.pack('<3f', *point))) for point in points]
+                if Polygon([point[:2] for point in packed]).area <= .00001:
+                    continue
+                triangles.append((packed[0], packed[1], packed[2]))
     if not triangles:
         raise ValueError('The rendered back-straight apron has no physical planes')
     return triangles

@@ -55,5 +55,26 @@
     "maximum_outside_interval_effective_shoulder_difference_m": 0,
     "untouched_native_shoulder_control_rows_retained_exactly": 607,
     "native_source_sha256": "2649d378c7a1f71598db4589f932067944ef1aeab8a95d49d759e974b729e7a7"
+  },
+  "packed_contact_seam_validation": {
+    "scope": "COTA2520\u20133590m flat apron only; shared contact query/tolerance and vehicle/camera constants unchanged",
+    "source_edge_overlap_m": 0.0003,
+    "corner_style": "Bevel, each complete buffered polygon triangulated on the original emitted plane",
+    "exported_apron_triangles": 21542,
+    "drive_surface_triangles": 37926,
+    "unbuffered_barycentric_probes": 2143,
+    "maximum_permitted_overlap_height_spread_m": 0.004,
+    "native_check": "seam-native-check.log",
+    "source_check": "../monaco/ravine-hermosa-complete-source-check.log",
+    "known_regression_xy_m": [
+      1521.140380859375,
+      731.0155029296875
+    ],
+    "former_closest_triangle_gap_m": 8.063630808526906e-06,
+    "contact_header_sha256": "53344cda04f4def4f826185fd63e8fe494c82fcd0582cd1e7060bab402b4ee19",
+    "status": "Guarded native checks and274source tests pass; fresh cooked review pending.",
+    "native_height_checks": 28,
+    "native_asphalt_role_checks": 14,
+    "native_grass_role_checks": 2
   }
 }

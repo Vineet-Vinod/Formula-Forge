@@ -597,6 +597,14 @@ legal limits follow the narrower white-line envelope. Colouring a grass shoulder
 red would leave the wrong driving surface. Rebuild its contact with
 `make cota-paving CIRCUIT_PYTHON=<circuit-python>` after profile edits, and compare
 actual packed paint and native contact at both joins and along both sides.
+Exercise `FFSimulation::Ground` and the native surface classifier directly. A
+height file can contain correct planes while the simulation never queries them
+on a flat track. Test asphalt and the grass just beyond it without changing
+shared grip constants. Use unbuffered packed barycentric probes as well: a
+buffered Python containment test hid an eight-micrometre F32 seam on COTA. Its
+contact exporter now adds a bounded 0.3 mm bevel overlap on the original planes;
+triangulate the complete bevel polygon and check overlapping height agreement.
+Keep such repairs local rather than weakening every circuit's query tolerance.
 Reject triangles that collapse at the final float precision. The
 [back-straight evidence](../Attribution/Sources/cota/backstraight-width-evidence.json)
 retains the width estimate, source uncertainty and unchanged protection scope.

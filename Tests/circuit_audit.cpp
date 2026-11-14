@@ -6,6 +6,7 @@
 #include <cmath>
 #include <filesystem>
 #include <fstream>
+#include <iomanip>
 #include <iostream>
 #include <iterator>
 #include <map>
@@ -284,6 +285,49 @@ bool CheckGenerated(const TrackCatalogEntry& track) {
                               << station << ", lane " << lane << '\n';
                     return false;
                 }
+            }
+        }
+    }
+    if (track.id == TrackLayoutId::Cota) {
+        for (const float station : {2540.0f, 2580.0f, 2860.0f, 3100.0f, 3340.0f, 3400.0f, 3560.0f}) {
+            simulation.Reset(station);
+            const auto road = simulation.Sample(station);
+            const Vec2 normal{-road.tangent.y, road.tangent.x};
+            for (const float sign : {-1.0f, 1.0f}) {
+                for (const float outside : {1.0f, 2.8f}) {
+                    const Vec2 position = road.position + normal * ((road.halfWidth + outside) * sign * 17.0f);
+                    const auto height = simulation.driveSurface.Height(position.x / 17.0f, -position.y / 17.0f);
+                    if (!height || std::abs(simulation.Ground(position) / 17.0f - *height) > .0002f) {
+                        const auto projected = simulation.Project(position);
+                        std::cerr << std::setprecision(10) << "COTA flat apron physical height differs at " << station
+                                  << ", offset " << outside << ", sign " << sign
+                                  << ", projected " << projected.station << "/" << projected.lane / 17.0f
+                                  << ", XY " << position.x / 17.0f << "/" << -position.y / 17.0f
+                                  << ", half " << projected.halfWidth << ", ground " << simulation.Ground(position) / 17.0f
+                                  << ", contact " << (height ? *height : -999.0f) << '\n';
+                        return false;
+                    }
+                    if (outside > 2.0f) {
+                        simulation.vehicle.pos = position;
+                        const auto surface = simulation.CurrentSurface();
+                        if (std::abs(surface.grip - .90f) > .001f ||
+                            std::abs(surface.rollingResistance - 2.0f) > .001f) {
+                            std::cerr << "COTA flat apron is not classified as asphalt at " << station << '\n';
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+        const auto road = simulation.Sample(3100.0f);
+        const Vec2 normal{-road.tangent.y, road.tangent.x};
+        for (const float sign : {-1.0f, 1.0f}) {
+            simulation.vehicle.pos = road.position + normal * ((road.halfWidth + 5.0f) * sign * 17.0f);
+            const auto grass = simulation.CurrentSurface();
+            if (std::abs(grass.grip - .50f) > .001f ||
+                std::abs(grass.rollingResistance - 8.5f) > .001f) {
+                std::cerr << "COTA grass beyond the painted strip has the wrong surface role\n";
+                return false;
             }
         }
     }

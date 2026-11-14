@@ -138,3 +138,27 @@ def test_flat_backstraight_paint_has_matching_native_contact() -> None:
                                 if physical_shapes[int(i)].buffer(.0002).covers(point)]
                 assert paint_hits and contact_hits, (station, side, outside)
                 assert max(paint_hits) - max(contact_hits) == pytest.approx(.006, abs=.004)
+
+    # Native Height uses unbuffered XY cell lookup and barycentric containment.
+    probes = [(1521.140380859375, 731.0155029296875)]
+    for station in range(2521, 3590, 3):
+        sample = scene.at(station)
+        for side in (-1, 1):
+            for outside in (.4, 1.0, 2.8):
+                x, y, _z = sample.point(side * (sample.half_width + outside))
+                probes.append((x, y))
+    maximum_overlap_height_difference = 0.0
+    for x, y in probes:
+        point = ShapePoint(x, y)
+        hits = []
+        for raw_index in physical_index.query(point):
+            i = int(raw_index)
+            a, b, c = physical[i]
+            determinant = (b[1] - c[1]) * (a[0] - c[0]) + (c[0] - b[0]) * (a[1] - c[1])
+            u = ((b[1] - c[1]) * (x - c[0]) + (c[0] - b[0]) * (y - c[1])) / determinant
+            v = ((c[1] - a[1]) * (x - c[0]) + (a[0] - c[0]) * (y - c[1])) / determinant
+            if min(u, v, 1 - u - v) >= -.00001:
+                hits.append(triangle_height(physical[i], x, y))
+        assert hits, (x, y)
+        maximum_overlap_height_difference = max(maximum_overlap_height_difference, max(hits) - min(hits))
+    assert maximum_overlap_height_difference < .004
