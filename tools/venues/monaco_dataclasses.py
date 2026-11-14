@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Literal
 
+from circuit_dataclasses import Point
 from pydantic import FiniteFloat
 
 
@@ -106,3 +107,24 @@ class CostaArchitecture:
     uniform_scale: FiniteFloat
     ground_grid_file: str
     components: list[CostaComponent]
+
+
+@dataclass(frozen=True)
+class CostaLandRegion:
+    name: str
+    cover: Literal['planted', 'rocky']
+    outer: list[tuple[FiniteFloat, FiniteFloat]]
+
+
+@dataclass(frozen=True)
+class CostaLandCover:
+    uniform_scale: FiniteFloat
+    regions: list[CostaLandRegion]
+    rock_outcrops: list[list[tuple[FiniteFloat, FiniteFloat]]]
+    annex_outer: list[tuple[FiniteFloat, FiniteFloat]]
+
+
+@dataclass(frozen=True)
+class CostaGroundFace:
+    points: tuple[Point, Point, Point]
+    normals: tuple[Point, Point, Point]

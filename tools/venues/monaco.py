@@ -16,6 +16,7 @@ from shapely.ops import polygonize, triangulate, unary_union
 
 from venues.monaco_costa import costa_properties
 from venues.monaco_hillside import hillside_city
+from venues.monaco_landcover import costa_landcover
 from venues.monaco_properties import fairmont_garden, mirabeau, property_envelopes
 from venues.monaco_rascasse_frontage import rascasse_frontage
 from venues.monaco_tabac import tabac_frontage_ground
@@ -77,6 +78,7 @@ def build_venue(scene: CircuitScene) -> None:
     trees(scene, 1250, 1410, 1, setback=16, rows=1, spacing=17, height=10, palms=True)
     for station in [200, 920, 2200, 2440, 2950, 3260]:
         mast(scene, station, -1, 12)
+    costa_landcover(scene)
 
 
 def fairmont(scene: CircuitScene) -> None:

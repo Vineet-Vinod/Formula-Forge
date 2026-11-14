@@ -110,6 +110,7 @@ class CircuitScene(MeshScene):
         self.extra_corridors: list[Polygon] = []
         self.water_shapes: list[Polygon] = []
         self.terrain_cutouts: list[Polygon] = []
+        self.emitted_terrain_cells: set[tuple[int, int]] = set()
         self.ground_patches: list[tuple[Polygon, float, str]] = []
         self._ground_patch_shapes: tuple[Polygon, ...] = ()
         self._ground_patch_index: STRtree | None = None
@@ -749,6 +750,8 @@ class CircuitScene(MeshScene):
         grid = self.grid
         for row in range(grid.rows - 1):
             for column in range(grid.columns - 1):
+                if (row, column) in self.emitted_terrain_cells:
+                    continue
                 x, y = grid.x + column * grid.step, grid.y + row * grid.step
                 shape = box(x, y, x + grid.step, y + grid.step).difference(
                     terrain_voids

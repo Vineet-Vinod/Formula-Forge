@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-14",
+  "scope": "Only the planted slope south of the low Casa Mia wing and the separate mixed ivy/rock ravine margin west of that wing. Existing four measured property components remain unchanged. Annex4420 body remains unqualified and excluded.",
+  "mask_coordinates_status": "Original bounded architectural land-cover reconstruction from registered visual sources, not a surveyed vegetation polygon. The region outlines and individual outcrop boundaries have metre-scale authoring uncertainty. Original scene XY estimates were converted through the unchanged local tangent projection and uniform scale. Numeric coordinate precision is not survey accuracy.",
+  "regions_source_xy_m": {
+    "planted": [
+      [
+        -5,
+        316
+      ],
+      [
+        -1,
+        311
+      ],
+      [
+        16,
+        313
+      ],
+      [
+        25,
+        318
+      ],
+      [
+        24,
+        326
+      ],
+      [
+        9,
+        328
+      ],
+      [
+        -3,
+        324
+      ]
+    ],
+    "rocky": [
+      [
+        -18,
+        322
+      ],
+      [
+        -13,
+        316
+      ],
+      [
+        -5,
+        317
+      ],
+      [
+        4,
+        323
+      ],
+      [
+        8,
+        334
+      ],
+      [
+        2,
+        344
+      ],
+      [
+        -7,
+        346
+      ],
+      [
+        -17,
+        340
+      ]
+    ]
+  },
+  "primary_visual_sources": [
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:%C3%89glise_de_Saint-D%C3%A9vote_Monaco_IMG_1203.jpg",
+      "author": "Alexander Migl",
+      "capture_date": "2019-06-02",
+      "licence": "CC BY-SA4.0",
+      "local_file": "chapel-wide-2019-1280.jpg",
+      "use": "Review only. Original photograph directly shows the Sainte-Devote ravine: fractured pale rock, ivy, tall cypress/conifer and dense foliage, pale heritage facade and separate narrow retaining paths. Exact planting/rock mask boundaries are not a survey.",
+      "sha256": "f3605c2caeabd2c7e3c2ce3dc53f98a57c101cec95b351c3ed11545c0e1b679e",
+      "payload_retention": "Review copy only under ignored build output. No photograph pixels are game assets."
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:2024-09-22_%C3%89glise_de_Sainte-D%C3%A9vote,_Monte_Carlo.jpg",
+      "author": "Alexey Komarov / Alexkom000",
+      "capture_date": "2024-09-22",
+      "licence": "CC BY 4.0",
+      "local_file": "chapel-wide-2024-1280.jpg",
+      "use": "Review only. Wide actual ravine opening, concrete arched road viaduct, natural fractured cliff/ivy, separate narrow stone paths and planted plaza. Published GPS longitude7.426592 is inconsistent with the visible church location and must not drive geographic registration. Annex4420 lower body remains outside/obscured in view.",
+      "sha256": "2972a1bc88c213ad9b1374bbfc6802be420fe29a54de18fabf60619288649d82",
+      "payload_retention": "Review copy only under ignored build output. No photograph pixels are game assets."
+    }
+  ],
+  "orthophoto": {
+    "publisher": "DSN, Gouvernement Princier de Monaco",
+    "service": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer",
+    "year": 2019,
+    "pixel_spacing_m": 0.10583354500042334,
+    "tile_hash_record": "costa-properties-provenance.json",
+    "use": "Review only. No image texture or traced source geometry copied. The image separately confirms vegetation south of the low wing and exposed stone/ivy west of it; it does not establish annex lower walls."
+  },
+  "open_geometry_exclusions": {
+    "source_files": [
+      "../buildings.osm.json.gz",
+      "../environment.osm.json.gz",
+      "../circuit.osm.json.gz"
+    ],
+    "licence": "OpenStreetMap contributors, ODbL1.0",
+    "paths": "Actual retained footway/path/steps centerlines and pedestrian plaza25082701. Tagged widths retained; missing path width estimated2m plus0.25m guard.",
+    "buildings": "All loaded original OSM and qualified added source bodies plus0.4m guard; actual four Costa roof outlines plus0.4m guard. All existing terrain_cutouts and native racing corridors remain excluded.",
+    "annex": "Literal open IGN roof outline BATIMENT0000000074074420, plan precision2.5m, excluded with a2.5m guard. No lower support is invented. Same original snapshot/hashes as costa-properties-provenance.json.",
+    "northern_wood": "Existing mapped wood967508764 is not enlarged or recolored by this patch."
+  },
+  "geometry_recipe": "Reconstruct only the touched whole original12.0471792221m terrain cells with the current final corridor/water/property exclusions and the same constrained Delaunay recipe. Split each original emitted triangle at class boundaries. Heights, source UVs and normals interpolate barycentrically on those exact original faces. Do not sample new height vertices or normalize the interpolated normals, which would alter the original normal field. Retain the exact original plane and original boundary vertices. Register the completed(row,column) IDs in scene.emitted_terrain_cells so the final raw-grid loop skips only those cells. Do not add whole-cell geometry to terrain_cutouts or change the global GEOS union, which can flip unrelated grid-cell diagonals and move terrain by metres.",
+  "deferred_surface_guard": "Before any emitted material or emitted-cell registration, fail if any selected cell overlaps a current verge_patches or ground_patches surface. This explicitly prevents removing shoulder or prior ground layers. The present private Monaco recipe has no overlapping deferred surfaces. Existing separately emitted venue surfaces remain excluded through their original terrain_cutouts.",
+  "materials_vegetation": "Existing original Grass, Limestone and Runoff materials. Existing original broadleaf atlas/mesh recipe creates sparse1.8\u20133.1m shrubs rooted on the emitted face planes, with deterministic original jitter/height. No copied photographs, new textures, terrain height changes, full-hill green blanket or roof-to-ground annex extrusion.",
+  "required_validation": [
+    "Separate source-matched class masks exclude actual road/property/path/plaza/annex bounds.",
+    "Actual producer coverage/no-overlap and source UV conservation.",
+    "Every original emitted face retains its plane, outer vertices and affine normal field after clipping.",
+    "A deferred verge or ground patch overlap fails before mutation.",
+    "Full source cell/area diff, fresh native opening captures and independent review still required before claiming visual acceptance."
+  ],
+  "config_sha256": "01f4df864469547c173be995cf852a4aac2f26cf2ab25f41a1f6a2d14c985fe0"
+}
