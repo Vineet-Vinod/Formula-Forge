@@ -1,8 +1,8 @@
 {
   "recipe": "make circuit-assets CIRCUIT=singapore",
   "tiles": 152,
-  "triangles": 1391605,
-  "road_sha256": "ec9d5ee923d51133a3137cd5b22ec2aee14288ba70378d40154fa1818f3eb374",
+  "triangles": 1400925,
+  "road_sha256": "6e6811d0bcffafefe7574bc2ee1c4667fede177b0c3ae00676a2abca2c2ccb6a",
   "terrain_sha256": "0bd73918edfa845abde307374336cd0958a4c5866988aa6f48b4bb9b0d4c6591",
   "landmarks": [
     {
@@ -142,7 +142,7 @@
     {
       "name": "Marina Reservoir and Singapore River",
       "water_height_m": -4.811936793826295,
-      "area_m2": 1418885.6514161723,
+      "area_m2": 1418746.0960133397,
       "source": "Complete retained OSM relations 9542146 and 9569901. The PUB map corroborates the shoreline. Water uses the flattened DSM water datum and lies below the existing bridges. This changes scenery only."
     },
     {
@@ -197,6 +197,17 @@
       "source_note": "Actual retained layer-1 ECP/Benjamin Sheares carriageway or Rochor Road exit alignment. Continuous supplied 1254\u20131255.8 s shows the closed concrete underside, repeated girders and forked supports. Lane width 3.5 m, combined shoulders 1.6 m, local deck 13 m above adjacent racing street, 0.9 m slab and 32 m support pitch are visual reconstruction estimates, not surveyed dimensions. Deck height uncertainty is \u00b13 m. Supports avoid every protected racing corridor and existing building. The known elevated-road DSM is replaced only beneath these actual deck footprints on land; ambiguous mall/layer-2 terrain is untouched."
     },
     {
+      "name": "Anderson Bridge",
+      "osm_id": 9574530,
+      "roadway_openings": 2,
+      "longitudinal_truss_planes": 3,
+      "steel_span_estimate_m": 61.2,
+      "clear_opening_estimate_m": 9.6,
+      "source": "anderson-bridge.json and anderson-bridge-review.json",
+      "road_clearance_exception": "Arched cross ties and suspended event panels are overhead; the three ground-level trusses stay outside the left-opening legal road and its protection.",
+      "dimensions_status": "Mapped deck axis; heritage drawing topology and original onboard appearance. Member sizes, clear opening, arch heights and event offsets are bounded reconstructions, not a structural survey. Conflicting 20ft/26ft height descriptions remain disclosed."
+    },
+    {
       "name": "NS Square construction frontage",
       "osm_id": 1221351351,
       "height_estimate_m": 4.0,
@@ -226,7 +237,7 @@
       "osm_id": 172364973,
       "height_m": 88.0,
       "minimum_height_m": 30.0,
-      "foundation_datum_m": 2.1899656679128414,
+      "foundation_datum_m": 2.188919049785162,
       "mapped_levels": 26,
       "source_note": "Retained OSM building-part ring and height/min_height tags share the existing 30 m mall podium. Height is total above ground, not additional to the podium. Owner exterior supports recessed balcony grids, the Swiss\u00f4tel glazed crown and the contrasting rectangular office tower. Floor-band, bay and crown details are reconstructed estimates; no source pixels are used."
     },
@@ -235,7 +246,7 @@
       "osm_id": 172364974,
       "height_m": 158.0,
       "minimum_height_m": 30.0,
-      "foundation_datum_m": 2.1899656679128414,
+      "foundation_datum_m": 2.188919049785162,
       "mapped_levels": 42,
       "source_note": "Retained OSM building-part ring and height/min_height tags share the existing 30 m mall podium. Height is total above ground, not additional to the podium. Owner exterior supports recessed balcony grids, the Swiss\u00f4tel glazed crown and the contrasting rectangular office tower. Floor-band, bay and crown details are reconstructed estimates; no source pixels are used."
     },
@@ -244,7 +255,7 @@
       "osm_id": 172364975,
       "height_m": 226.0,
       "minimum_height_m": 30.0,
-      "foundation_datum_m": 2.1899656679128414,
+      "foundation_datum_m": 2.188919049785162,
       "mapped_levels": 73,
       "source_note": "Retained OSM building-part ring and height/min_height tags share the existing 30 m mall podium. Height is total above ground, not additional to the podium. Owner exterior supports recessed balcony grids, the Swiss\u00f4tel glazed crown and the contrasting rectangular office tower. Floor-band, bay and crown details are reconstructed estimates; no source pixels are used."
     },
@@ -289,9 +300,9 @@
       "name": "Sands SkyPark",
       "osm_id": 116800998,
       "deck_height_m": 200,
-      "mapped_length_m": 343.1034360712179,
-      "mapped_maximum_width_m": 58.21792441228488,
-      "mapped_area_m2": 12671.145649499076,
+      "mapped_length_m": 343.07333284921197,
+      "mapped_maximum_width_m": 58.212816485872416,
+      "mapped_area_m2": 12668.922264146651,
       "source": "Retained OSM outline 116800998. Arup specifies 340 m length, 38 m nominal width and 200 m height. Mapped length is 340.16 m and area is 12,454.9 m\u00b2; the operator reports 12,400 m\u00b2. The mapped maximum bounding width of 57.72 m differs from the nominal width. The model follows the mapped outline. The closed belly and longitudinal ribs follow the JFE photograph."
     },
     {
@@ -315,7 +326,7 @@
     {
       "name": "Singapore Cricket Club",
       "osm_id": 46594820,
-      "footprint_clip_m2": 0.55,
+      "footprint_clip_m2": 0.57,
       "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
     },
     {
@@ -567,7 +578,7 @@
     {
       "name": "Marina Square",
       "osm_id": 303311927,
-      "footprint_clip_m2": 791.15,
+      "footprint_clip_m2": 791.06,
       "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
     },
     {
@@ -597,7 +608,7 @@
     {
       "name": "Mapped footprint clearance",
       "osm_id": 393090492,
-      "footprint_clip_m2": 372.69,
+      "footprint_clip_m2": 372.7,
       "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
     },
     {
@@ -753,8 +764,8 @@
     {
       "name": "Singapore mapped pit compound",
       "osm_id": 49890775,
-      "mapped_length_m": 332.6924994725879,
-      "mapped_width_m": 31.710078310749527,
+      "mapped_length_m": 332.6633096857232,
+      "mapped_width_m": 31.707296130721957,
       "body_height_m": 15.0,
       "floors": 3,
       "garage_bays": 36,
@@ -892,7 +903,7 @@
       "start_m": 1208.957514,
       "end_m": 1612.133386,
       "side": -1,
-      "count": 8,
+      "count": 7,
       "setback_m": 8,
       "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
     },
