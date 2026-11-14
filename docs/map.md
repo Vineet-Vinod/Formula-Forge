@@ -587,6 +587,9 @@ outer edge inward. The bounded fix preserves the original outer pavement after
 that minimum, and the rendered apron uses the same retained width. Compare all
 native samples and actual packed surfaces; Python profile arithmetic alone misses
 runtime clamps and overrides. Keep raised kerbs separate from adjacent flat paint.
+Retain literal control rows outside a finite correction. Adding interpolation
+knots across the whole lap can round untouched shoulders differently, moving
+terrain joins and spectators even when the intended lane edit is local.
 
 Check physical contact beneath new flat aprons as well. COTA's back straight uses
 the rendered apron planes for native height contact and asphalt grip, while its

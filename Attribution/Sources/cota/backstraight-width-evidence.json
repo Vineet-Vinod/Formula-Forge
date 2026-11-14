@@ -35,7 +35,7 @@
   "compiled_canonical_validation": {
     "baseline_revision": "d839d7c2aa3c11860656d5a24ec0a5271017e09a",
     "compiled_samples": 8192,
-    "maximum_existing_protected_halfwidth_plus_effective_shoulder_difference_m": 0.0005369000000019497,
+    "maximum_existing_protected_halfwidth_plus_effective_shoulder_difference_m": 0.0005011600000006666,
     "maximum_outside_interval_halfwidth_difference_m": 4.799999997473492e-07,
     "core_width_m": 14,
     "alignment_elevation_tangents_banking_identical": true,
@@ -46,11 +46,14 @@
       "Content/Generated/COTA/Data/drive_surface.bin"
     ],
     "guarded_native_check": "backstraight-guarded-native-check.log",
-    "focused_contact_tests": "backstraight-focused-tests2.log",
+    "focused_contact_tests": "backstraight-focused-tests.log",
     "source_mypy": "backstraight-focused-mypy.log",
     "source_ruff": "backstraight-focused-ruff.log",
     "public_paving_replay_byte_identical": true,
     "public_profile_replay_byte_identical_twice": true,
-    "visual_status": "Native import and fresh whole-route cooked review pending."
+    "visual_status": "Native import and fresh whole-route cooked review pending.",
+    "maximum_outside_interval_effective_shoulder_difference_m": 0,
+    "untouched_native_shoulder_control_rows_retained_exactly": 607,
+    "native_source_sha256": "2649d378c7a1f71598db4589f932067944ef1aeab8a95d49d759e974b729e7a7"
   }
 }
