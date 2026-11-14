@@ -253,6 +253,40 @@ bool CheckGenerated(const TrackCatalogEntry& track) {
         return false;
     }
     const float length = track.targetLengthMeters;
+    if (track.id == TrackLayoutId::Malaysia) {
+        int flatApronWitnesses = 0;
+        for (const auto& triangle : simulation.driveSurface.Triangles()) {
+            Vec2 centre{};
+            for (const auto& point : triangle.points) {
+                centre += Vec2{point.positionX * 17.0f / 3.0f, -point.positionY * 17.0f / 3.0f};
+            }
+            const auto road = simulation.Project(centre);
+            if (std::abs(road.lane) / 17.0f <= road.halfWidth + 1.4f ||
+                sampleTrackBankQuadratic(track, road.station) != 0.0f ||
+                sampleTrackBankFadeMeters(track, road.station) != 0.0f) continue;
+            const auto contact = simulation.driveSurface.Height(centre.x / 17.0f, -centre.y / 17.0f);
+            if (!contact || std::abs(simulation.Ground(centre) / 17.0f - *contact) > .0002f) {
+                std::cerr << "Malaysia flat apron does not use its rendered contact mesh\n";
+                return false;
+            }
+            ++flatApronWitnesses;
+        }
+        if (flatApronWitnesses == 0) return false;
+        for (float station = 0; station < length; station += 20.0f) {
+            if (station >= 4800.0f && station <= 5300.0f) continue;
+            const auto road = simulation.Sample(station);
+            const Vec2 normal{-road.tangent.y, road.tangent.x};
+            for (float lane : {-2.5f, 0.0f, 2.5f}) {
+                const Vec2 position = road.position + normal * (lane * 17.0f);
+                const auto projected = simulation.Project(position);
+                if (std::abs(simulation.Ground(position) - projected.elevation) / 17.0f > .002f) {
+                    std::cerr << "Malaysia packed contact changed the unchanged core road height at "
+                              << station << ", lane " << lane << '\n';
+                    return false;
+                }
+            }
+        }
+    }
     if (!track.authoredBarriers.empty()) {
         // Source-registered T13/T14 ends; every other barrier endpoint stays paired.
         const std::array<std::pair<float, float>, 4> turkeyOpeningEnds{{

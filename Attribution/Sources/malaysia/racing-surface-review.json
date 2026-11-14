@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "circuit": "malaysia",
+  "date": "2026-11-14",
+  "status": "Source/native validated; fresh cooked visual review pending.",
+  "source_urls": [
+    "https://www.crash.net/motogp/feature/230271/1/zaffelli-explains-new-turn-15-at-sepang",
+    "https://studiodromo.it/portfolio/sepang-international-circuit/"
+  ],
+  "reference_video": "Saved/Refs/malaysia.mp4",
+  "continuous_reference_seconds": [
+    865.8,
+    867.8,
+    869.8
+  ],
+  "legal_width_m": 16,
+  "estimated_mean_inner_outer_crossfall_percent": [
+    4,
+    7,
+    1
+  ],
+  "estimated_crest_station_m": 5140,
+  "estimated_crest_relative_m": 15.4,
+  "local_warp_range_m": [
+    4800,
+    5300
+  ],
+  "preserved": "Centerline XY, original height controls outside the local warp, 22 m relief, the frozen sampled pit transition and the wider outside corridor. Two-metre conservative escape-support intervals may add up to 5 cm outside the station-local retained reach; native rounding is separately checked.",
+  "pavement": "The frozen native CSV supplies the former sampled width envelope exactly. Its older 16\u201322 m authoring controls remain history. Inside kerb/grass islands are excluded, while gravel outside curves retain the old sampled XY offsets.",
+  "support_envelope": "Two-metre support zones conservatively contain the station-local former gravel reach. The private source proof bounds maximum excess at 0.049982 m; this is discretization, not source accuracy.",
+  "uncertainty": [
+    "Primary statements establish direction/shape and 16 m legal width, not numerical cross-sections.",
+    "The old/new inner kerb rises by 1 m in the designer description; this is not an across-track height difference.",
+    "Bank magnitude, six-metre runout, crest height/position and pavement tapers remain modeling estimates.",
+    "Graphical longitudinal height/station uncertainty is about 1 m / 50 m. Exact temporary barriers/paving limits are not surveyed."
+  ],
+  "reviewer": "Luna High source/shape review; fresh native contact and cooked visuals remain required."
+}

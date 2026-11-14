@@ -1533,3 +1533,22 @@ def test_spa_refined_bank_tracks_the_existing_field_and_preserves_outer_planes()
     assert abs(point[2] - old_z) < 1e-9
     assert scene.road == road
     assert scene.grid.heights == heights
+
+
+def test_dense_runoff_index_preserves_ground_and_refreshes_after_append(scene: CircuitScene) -> None:
+    scene.road_surfaces('Grass')
+    for index in range(80):
+        start = index * 3.9 % scene.length
+        scene.surface_ranges.append({'type': 'runoff', 'start_m': start,
+                                     'end_m': (start + 21) % scene.length,
+                                     'side': 1 if index % 2 else -1,
+                                     'requested_width_m': 8 + index % 11, 'material': 'Gravel'})
+    probes = [scene.at(index * 1.73).point((-1 if index % 2 else 1) * 26)[:2] for index in range(200)]
+    expected = [scene.ground(*point) for point in probes]
+    scene.slug = 'malaysia'
+    assert [scene.ground(*point) for point in probes] == expected
+    scene.surface_ranges.append({'type': 'runoff', 'start_m': 230., 'end_m': 20.,
+                                 'side': -1, 'requested_width_m': 35., 'material': 'Gravel'})
+    indexed = [scene.ground(*point) for point in probes]
+    scene.slug = 'fixture'
+    assert indexed == [scene.ground(*point) for point in probes]

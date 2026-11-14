@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "date": "2026-11-12",
-  "status": "Dimension and elevation audit; no new road-profile change justified by the available primary evidence.",
+  "date": "2026-11-14",
+  "status": "Source/native validated; fresh cooked visual review pending.",
   "width_source_url": "https://www.sepangcircuit.com/architecture",
   "published_width_range_m": [
     16,
@@ -24,8 +24,11 @@
     "The official graphical profile establishes relative relief and corner registration, not a station-resolved civil survey. Intermediate controls retain1m height/50m station uncertainty.",
     "No primary operator maximum uphill/downhill grade was verified. A secondary travel guide gives lower gradients without a survey; those numbers are not used to flatten the circuit.",
     "The FIA2016 preview confirms local reprofiling atTurns2,5,9and15. Current graphical profile cannot resolve exact post-work crossfall.",
-    "The concave main-roof correction has separate actual-footprint and whole-road-mask proof; no over-road roof remains in its audited scope."
+    "The concave main-roof correction has separate actual-footprint and whole-road-mask proof; no over-road roof remains in its audited scope.",
+    "The operator 16\u201322 m headline does not override the designer's explicit 16 m legal white-line width. Wider asphalt is retained separately, with its original visual-estimate uncertainty."
   ],
   "fia_2016_reprofiling_source": "https://www.fia.com/sites/default/files/preview_5.pdf",
-  "current_acceptance": "Native/profile and cockpit review remain separate from source audit."
+  "current_acceptance": "Source/shape review supports a bounded estimate; not a surveyed profile or a cooked visual pass.",
+  "legal_white_line_width_m": 16,
+  "pavement_profile": "pavement-widths.json"
 }

@@ -1,0 +1,129 @@
+{
+  "base_m": 16.0,
+  "straight_m": 18.0,
+  "minimum_m": 16.0,
+  "maximum_m": 22.0,
+  "method": "The frozen native CSV supplies the exact former sampled width envelope. controls_m retains the older visually estimated authoring inputs as history; these are not resampled to recreate the actual pavement.",
+  "source": "https://www.sepangcircuit.com/architecture",
+  "controls_m": [
+    [
+      0,
+      18
+    ],
+    [
+      350,
+      18
+    ],
+    [
+      450,
+      20
+    ],
+    [
+      550,
+      22
+    ],
+    [
+      650,
+      20
+    ],
+    [
+      720,
+      18
+    ],
+    [
+      850,
+      16
+    ],
+    [
+      1000,
+      18
+    ],
+    [
+      1200,
+      16
+    ],
+    [
+      1600,
+      16
+    ],
+    [
+      1900,
+      16
+    ],
+    [
+      2200,
+      16
+    ],
+    [
+      2450,
+      16
+    ],
+    [
+      2700,
+      17
+    ],
+    [
+      2900,
+      18
+    ],
+    [
+      3000,
+      20
+    ],
+    [
+      3080,
+      22
+    ],
+    [
+      3200,
+      18
+    ],
+    [
+      3500,
+      16
+    ],
+    [
+      3800,
+      16
+    ],
+    [
+      4100,
+      16
+    ],
+    [
+      4300,
+      17
+    ],
+    [
+      4700,
+      18
+    ],
+    [
+      4930,
+      20
+    ],
+    [
+      5050,
+      22
+    ],
+    [
+      5180,
+      20
+    ],
+    [
+      5300,
+      18
+    ],
+    [
+      5543,
+      18
+    ]
+  ],
+  "uncertainty": "Published venue range constrains width. Exact local widths and transition stations remain reference-based authoring estimates.",
+  "schema_version": 1,
+  "circuit": "malaysia",
+  "status": "Retained former visual width estimates, now a separate asphalt envelope, not legal lane width.",
+  "baseline_revision": "8415b6d8",
+  "baseline_road_file": "racing-surface-baseline.csv.gz",
+  "baseline_road_sha256": "4fa3a8982bcda7ac44e862f419cc3b1c794ae971687092b8dccff4578d4981d1"
+}

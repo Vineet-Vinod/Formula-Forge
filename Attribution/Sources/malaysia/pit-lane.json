@@ -2,10 +2,10 @@
   "start_m": 5420,
   "end_m": 230,
   "side": 1,
-  "outer_offset_m": 10.35,
-  "shoulder_m": 0.1,
+  "outer_offset_m": 11.35,
+  "shoulder_m": 1.1,
   "transition_m": 25,
-  "source_note": "The retained pit compound 144362327 spans approximately native 5425\u2013227 m across zero. The actual 33-bay garage front spans approximately 5486\u2013207 m and lies 9.784\u201310.300 m beyond the current road edge. Paving extends 10.35 m to meet that frontage; up to 0.57 m lies under the building edge. The rounded control/timing end projects farther toward the apron and remains occupied architecture. Registration and OSM footprint uncertainty are about 2 m; interval ends are rounded by at most 7 m. Paving remains visual beyond the closed pit wall, with no pit access functionality. See pit-roof-review.json.",
+  "source_note": "The unchanged mapped 33-bay garage compound is now 10.784\u201311.300 m beyond the corrected 16 m legal lane, instead of 9.784\u201310.300 m beyond the old 18 m lane. Increase the visual apron offset and pit-wall shoulder by exactly 1 m to preserve their world positions. Original footprint, frontage, occupancy and about 2 m mapping uncertainty remain unchanged. See pit-roof-review.json and racing-surface-review.json.",
   "former_generic_registration": {
     "start_m": 5290,
     "end_m": 320,

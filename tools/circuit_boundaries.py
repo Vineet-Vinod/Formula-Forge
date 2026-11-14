@@ -30,11 +30,15 @@ def generate(slug: str) -> None:
         if landmark.get("road_clearance_exception", "none") != "none" and "osm_id" in landmark
     }
     occupied = []
+    road_clearance = .6
+    if slug == "malaysia":
+        road_clearance = max(float(section["width_m"]) for section in scene.surface_ranges
+                             if section["type"] == "kerb") + .45
     for building in scene.buildings:
         if (building.osm_id not in scene.modeled_buildings or building.osm_id in elevated
                 or building.use in ("roof", "bridge") or building.tags.get("location") == "overhead"):
             continue
-        footprint = Polygon(building.ring).buffer(0.5).difference(scene.road_mask.buffer(0.6))
+        footprint = Polygon(building.ring).buffer(0.5).difference(scene.road_mask.buffer(road_clearance))
         if footprint.intersects(shape):
             occupied.append(footprint)
     shape = shape.difference(unary_union(occupied)).simplify(0.02, preserve_topology=True)
@@ -83,6 +87,18 @@ def generate(slug: str) -> None:
     header += "};\n"
     directory = ROOT / "Source/FormulaForge/Native/track_data"
     (directory / (slug + "_boundaries.inc")).write_text(header)
+    if slug == "malaysia":
+        paving = []
+        for a, b, c in scene.surface_points:
+            area = (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0])
+            if abs(area) > .0001:
+                paving.append(tuple(value for point in (a, b, c) for value in point))
+        lines = ["// Rendered Sepang apron/escape contact triangles in source east/north metres.",
+                 f"constexpr std::array<std::array<float, 9>, {len(paving)}> kMalaysiaPaving{{{{"]
+        lines.extend("    {{" + ", ".join(f"{value:.9f}f" for value in triangle) + "}},"
+                     for triangle in paving)
+        lines.append("}};")
+        (directory / "malaysia_paving.inc").write_text("\n".join(lines) + "\n")
     includes = directory / "generated_surveys.inc"
     text = includes.read_text()
     line = f'#include "track_data/{slug}_boundaries.inc"'
@@ -109,6 +125,8 @@ def generate(slug: str) -> None:
         "road_unchanged": True,
         "limitations": "Escape depths and station endpoints are reference estimates, not surveyed race-event barrier positions. Pit access remains a closed game boundary.",
     }
+    if slug == "malaysia":
+        record["structure_road_clearance_m"] = road_clearance
     (scene.sources / "boundaries.json").write_text(json.dumps(record, indent=2) + "\n")
     print(f"{slug}: closed envelope, {len(walls)} walls", flush=True)
 

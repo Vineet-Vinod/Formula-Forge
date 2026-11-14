@@ -300,8 +300,11 @@ def apply(slug: str) -> None:
             re.findall(r"\{([\d.]+)f, ([\d.]+)f, ([\d.]+)f\}", match[2])]
     original = [(row[0], row[1], row[2]) for row in rows]
     baseline_path = source / "shoulder-baseline.json"
+    includes_pit_registration = False
     if baseline_path.exists():
-        original = TypeAdapter(ShoulderBaseline).validate_json(baseline_path.read_bytes()).controls
+        baseline = TypeAdapter(ShoulderBaseline).validate_json(baseline_path.read_bytes())
+        original = baseline.controls
+        includes_pit_registration = baseline.includes_pit_registration
         if (abs(original[0][0]) > 0.001 or abs(original[-1][0] - length) > 0.001
                 or original[0][1:] != original[-1][1:]
                 or any(b[0] <= a[0] for a, b in itertools.pairwise(original))
@@ -309,7 +312,7 @@ def apply(slug: str) -> None:
             raise ValueError(f"Invalid retained shoulder baseline: {slug}")
     result = original
     pit_path = source / "pit-lane.json"
-    if pit_path.exists():
+    if pit_path.exists() and not includes_pit_registration:
         profile = TypeAdapter(PitLane).validate_json(pit_path.read_bytes())
         result = pit_shoulders(result, length, profile)
     result = section_shoulders(result, length, source)

@@ -109,6 +109,8 @@ class CircuitScene(MeshScene):
         self.landmarks: list[dict[str, str | float | int]] = []
         self.vegetation: list[dict[str, str | float | int]] = []
         self.surface_ranges: list[dict[str, str | float | int]] = []
+        self._ground_runoff_count = -1
+        self._ground_runoff_buckets: list[list[dict[str, str | float | int]]] = []
         self.extra_corridors: list[Polygon] = []
         self.water_shapes: list[Polygon] = []
         self.terrain_cutouts: list[Polygon] = []
@@ -306,6 +308,24 @@ class CircuitScene(MeshScene):
             + grid.heights[index + grid.columns + 1] * tx * ty
         )
 
+    def _ground_runoffs(self, station: float) -> list[dict[str, str | float | int]]:
+        if self.slug != "malaysia":
+            return self.surface_ranges
+        if self._ground_runoff_count != len(self.surface_ranges):
+            count = math.ceil(self.length / 8)
+            self._ground_runoff_buckets = [[] for _ in range(count)]
+            for surface in self.surface_ranges:
+                if surface["type"] != "runoff":
+                    continue
+                start, end = float(surface["start_m"]) % self.length, float(surface["end_m"]) % self.length
+                for index, bucket in enumerate(self._ground_runoff_buckets):
+                    low, high = index * 8, min(self.length, (index + 1) * 8)
+                    overlaps = low <= end and high >= start if start <= end else low <= end or high >= start
+                    if overlaps:
+                        bucket.append(surface)
+            self._ground_runoff_count = len(self.surface_ranges)
+        return self._ground_runoff_buckets[min(len(self._ground_runoff_buckets) - 1, int(station / 8))]
+
     def ground(self, x: float, y: float) -> float:
         sample, distance = self.nearest(x, y)
         if self.catalogue.deck_separation and 4637 < sample.station < 4667:
@@ -318,7 +338,7 @@ class CircuitScene(MeshScene):
         lane = (x - sample.x) * sample.ty - (y - sample.y) * sample.tx
         shoulder = sample.left_shoulder if lane > 0 else sample.right_shoulder
         edge = sample.half_width + self.kerb_margin(sample.station) + shoulder
-        for surface in self.surface_ranges:
+        for surface in self._ground_runoffs(sample.station):
             if surface["type"] != "runoff" or int(surface["side"]) != (
                 1 if lane > 0 else -1
             ):

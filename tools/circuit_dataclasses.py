@@ -56,6 +56,7 @@ class TurnRegistrations:
 @dataclass(frozen=True)
 class ShoulderBaseline:
     controls: Annotated[list[tuple[FiniteFloat, FiniteFloat, FiniteFloat]], Field(min_length=2)]
+    includes_pit_registration: bool = False
 
 
 @dataclass(frozen=True)

@@ -116,6 +116,7 @@ CIRCUITS = [
          lat=2.7606, lon=101.7375, radius=2000, lengths=[5543], turns=15,
          clockwise=True, street=False, shoulder=10.0, base=12.0, straight=16.0,
          names=["Sepang", "Grand Prix"], crossings=0, environment="tropical",
+         bank_profile="banking-corrections.json",
          description="Sepang's Grand Prix circuit, with the two long straights and the back-straight kink."),
     dict(slug="singapore", enum="Singapore", folder="Singapore", title="Singapore",
          venue="Marina Bay Street Circuit", country="Singapore",
@@ -1447,12 +1448,15 @@ out geom;
             right[index] += (.05-right[index])*weight
     shoulders = [(stations[index], left[index], right[index]) for index in range(0, count, 2)]
     shoulders.append((target, shoulders[0][1], shoulders[0][2]))
-    if spec["slug"] in {"zandvoort", "hockenheim"} and (source / "shoulder-baseline.json").exists():
+    includes_pit_registration = False
+    if spec["slug"] in {"zandvoort", "hockenheim", "malaysia"} and (source / "shoulder-baseline.json").exists():
         from circuit_dataclasses import ShoulderBaseline
 
-        shoulders = TypeAdapter(ShoulderBaseline).validate_json(
-            (source / "shoulder-baseline.json").read_bytes()).controls
-    if (source / "pit-lane.json").exists():
+        baseline = TypeAdapter(ShoulderBaseline).validate_json(
+            (source / "shoulder-baseline.json").read_bytes())
+        shoulders = baseline.controls
+        includes_pit_registration = baseline.includes_pit_registration
+    if (source / "pit-lane.json").exists() and not includes_pit_registration:
         from circuit_dataclasses import PitLane
         from circuit_profiles import pit_shoulders
 

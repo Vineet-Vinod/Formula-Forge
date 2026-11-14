@@ -33,138 +33,33 @@
     "relative_datum": "Relative to the published profile minimum; absolute diagram altitude is not used.",
     "relief_m": 22,
     "uncertainty_m": 1.0,
-    "smoothing": "Piecewise monotone cubic Hermite. Interior Fritsch-Carlson harmonic slopes; flat SF seam. No uniform rescaling of the previous DEM.",
+    "smoothing": "Read relative heights from the published numerical extremum labels and drawn trace, then register individual official corners to retained native centerline geometry using FIA maps. Intermediate heights are graphical estimates, not measurements. The bounded T15 reconstruction supersedes the unresolved graphical apex/exit registration locally; original source controls remain retained separately. See t15_reconstruction and racing-surface-review.json.",
     "deck": null
   },
   "width": {
     "base_m": 16.0,
-    "straight_m": 18.0,
+    "straight_m": 16.0,
     "minimum_m": 16.0,
-    "maximum_m": 22.0,
-    "method": "Operator-published width limits, with station-varying widths visually estimated from supplied onboard. Smooth cubic transitions; not a traced white-line survey.",
-    "source": "https://www.sepangcircuit.com/architecture",
+    "maximum_m": 16.0,
     "controls_m": [
       [
         0,
-        18
-      ],
-      [
-        350,
-        18
-      ],
-      [
-        450,
-        20
-      ],
-      [
-        550,
-        22
-      ],
-      [
-        650,
-        20
-      ],
-      [
-        720,
-        18
-      ],
-      [
-        850,
         16
-      ],
-      [
-        1000,
-        18
-      ],
-      [
-        1200,
-        16
-      ],
-      [
-        1600,
-        16
-      ],
-      [
-        1900,
-        16
-      ],
-      [
-        2200,
-        16
-      ],
-      [
-        2450,
-        16
-      ],
-      [
-        2700,
-        17
-      ],
-      [
-        2900,
-        18
-      ],
-      [
-        3000,
-        20
-      ],
-      [
-        3080,
-        22
-      ],
-      [
-        3200,
-        18
-      ],
-      [
-        3500,
-        16
-      ],
-      [
-        3800,
-        16
-      ],
-      [
-        4100,
-        16
-      ],
-      [
-        4300,
-        17
-      ],
-      [
-        4700,
-        18
-      ],
-      [
-        4930,
-        20
-      ],
-      [
-        5050,
-        22
-      ],
-      [
-        5180,
-        20
-      ],
-      [
-        5300,
-        18
       ],
       [
         5543,
-        18
+        16
       ]
     ],
-    "uncertainty": "Published venue range constrains width. Exact local widths and transition stations remain reference-based authoring estimates."
+    "source": "https://www.crash.net/motogp/feature/230271/1/zaffelli-explains-new-turn-15-at-sepang",
+    "method": "The 2016 circuit designer specifies a constant 16 m legal white-line width. Wider old asphalt is modeled separately using pavement-widths.json; its outer limits remain visual estimates."
   },
   "shoulders": {
     "default_m": 10.0,
     "method": "Nearest OSM barrier vertex on each side, median-smoothed, clamped to 1.2-24 m outside the kerb. Missing sides keep the venue default.",
     "barrier_file": "barriers.osm.json.gz"
   },
-  "banking": "Neutral. No published camber was anchored to a detected corner.",
+  "banking": "Estimated quadratic adverse T15 crossfall with quintic station envelope. Primary designer establishes flat entry, inside higher, flatter outside and uphill exit; it supplies no numerical transverse section. Proposed mean 4%, inner 7%, outer 1% at 16 m legal width are explicit modeling estimates. Six-metre smooth edge runout is also estimated, separate from legal white lines.",
   "buildings": {
     "count": 23,
     "method": "OSM footprints within 14-85 m of the centreline, extruded to a tagged height or a default. Roof shape is flat.",

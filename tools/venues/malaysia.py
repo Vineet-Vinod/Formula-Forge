@@ -21,12 +21,13 @@ from venues.east_architecture import (
     trees,
 )
 from venues.malaysia_crown import end_umbrella
+from venues.malaysia_surface import paved_margins, physical_runoff
 from venues.west_architecture import apron_band
 
 
 def circuit_edges(scene: CircuitScene) -> None:
     # Native-station intervals are reference estimates, independent of auto turn labels.
-    for start, end, side in (
+    kerbs = (
         (500, 610, 1),
         (655, 730, -1),
         (770, 850, 1),
@@ -43,7 +44,9 @@ def circuit_edges(scene: CircuitScene) -> None:
         (3910, 4020, 1),
         (4070, 4190, 1),
         (4980, 5130, -1),
-    ):
+    )
+    paved_margins(scene, kerbs)
+    for start, end, side in kerbs:
         scene.kerb(start, end, side, width=1.2)
     for start, end, side, width, material in (
         (475, 630, -1, 18, "Gravel"),
@@ -56,7 +59,7 @@ def circuit_edges(scene: CircuitScene) -> None:
         (3860, 4220, -1, 17, "Gravel"),
         (4940, 5170, 1, 18, "Gravel"),
     ):
-        scene.runoff(start, end, side, width, material)
+        physical_runoff(scene, start, end, side, width, material)
 
     for start, end, side in (
         (770, 850, 1),

@@ -15,6 +15,7 @@ namespace {
 constexpr float Units = 17.0f;
 constexpr float Kerb = 0.85f;
 #include "track_data/lasvegas_boundaries.inc"
+#include "track_data/malaysia_paving.inc"
 
 Vec2 leftNormal(Vec2 tangent) { return {-tangent.y, tangent.x}; }
 
@@ -73,6 +74,10 @@ float circuitSurfaceHeight(const CircuitSample& sample, float lane) noexcept {
 }
 
 bool circuitBankedPaving(const TrackCatalogEntry& track, float station, bool positiveSide) noexcept {
+    // Sepang's apron contact comes from its rendered mesh, not a full-shoulder bank strip.
+    if (track.id == TrackLayoutId::Malaysia) {
+        return false;
+    }
     if (sampleTrackBankFadeMeters(track, station) > 0.0f) return true;
     const bool progressive = std::any_of(track.bankProfile.begin(), track.bankProfile.end(),
         [](const TrackBankPoint& point) { return point.quadraticPerMeter != 0.0f; });
@@ -349,7 +354,8 @@ bool writeGeneratedContact(const TrackCatalogEntry& track, const std::vector<Cir
         const bool bankEdges = first.bankFade > 0.0f || second.bankFade > 0.0f;
         const bool jeddahBank = track.id == TrackLayoutId::Jeddah &&
             (first.bankSlope != 0.0f || second.bankSlope != 0.0f);
-        const float extra = bankEdges ? 0.0f : progressive || jeddahBank ? 1.25f : 0.35f;
+        const bool malaysiaKerb = track.id == TrackLayoutId::Malaysia && bankEdges;
+        const float extra = malaysiaKerb ? 1.25f : bankEdges ? 0.0f : progressive || jeddahBank ? 1.25f : 0.35f;
         const int strips = progressive ? 8 : 1;
         for (int strip = 0; strip < strips; ++strip) {
             const float high = 1.0f - 2.0f * static_cast<float>(strip) / strips;
@@ -404,6 +410,9 @@ bool writeGeneratedContact(const TrackCatalogEntry& track, const std::vector<Cir
     }
     if (track.id == TrackLayoutId::LasVegas) {
         for (const auto& triangle : kLasVegasPaving) drive.insert(drive.end(), triangle.begin(), triangle.end());
+    }
+    if (track.id == TrackLayoutId::Malaysia) {
+        for (const auto& triangle : kMalaysiaPaving) drive.insert(drive.end(), triangle.begin(), triangle.end());
     }
     const bool surface = writeBytes(directory + "/drive_surface.bin", "FFSURF1", 8,
         static_cast<std::uint32_t>(drive.size() / 9), drive.data(), drive.size());
