@@ -1,0 +1,140 @@
+{
+  "status": "Source-qualified architectural estimates pending fresh native/cooked review.",
+  "source_frame": {
+    "origin_source": "Attribution/Sources/jeddah/provenance.json",
+    "uniform_scale": 0.997450175270678,
+    "native_source_xy": "Metres east/north in the retained normalized Jeddah frame.",
+    "scenery_relative_datum_m": 0.38122821178161637,
+    "height_note": "Tower height is above its estimated entrance level, not above sea level or the basement enclosure. Existing native field/contact data stay unchanged."
+  },
+  "literal_osm": {
+    "file": "Attribution/Sources/jeddah/coastal-map.osm.gz",
+    "sha256": "1500b7b3fbe42ae189faa62cbce22ce8801d21b8ebb99987e6d8a06d321495a5",
+    "licence": "OpenStreetMap contributors, ODbL 1.0",
+    "features": [
+      1041158265,
+      111645517
+    ],
+    "retained": "Literal WGS84 nodes and way IDs are retained in sail-architecture.json and mall-architecture.json. The Sail polygon is the broad podium/site, not a tower-sized floorplate."
+  },
+  "sail_primary": {
+    "cvu": {
+      "publisher": "Council on Vertical Urbanism, The Skyscraper Center",
+      "url": "https://www.skyscrapercenter.com/building/sail-tower/9817",
+      "height_m": 264.7,
+      "occupied_height_m": 243.7,
+      "floors_above_ground": 65,
+      "tower_gfa_m2": 79264,
+      "below_ground_floors": 3,
+      "point_wgs84": [
+        39.10803,
+        21.62259
+      ],
+      "point_note": "Approximate building location, not a surveyed tower centroid.",
+      "source_history": "Current property metrics differ from older CVU annual tables that listed 240 m / 64 floors. The current property-specific 264.7 m / 65 floor record is the chosen dimensional basis."
+    },
+    "architect": {
+      "publisher": "Perkins&Will",
+      "url": "https://perkinswill.com/project/jeddah-shangri-la-tower/",
+      "observed": "The architect establishes a narrow orthogonal tower perpendicular to the coastline, deep outdoor balconies that increase with height, and a lightly screened facade. Original geometry follows those cues; no old orange sail-shaped concept mass is used.",
+      "epoch_and_area_conflict": "The architect page lists 2018 and 646,000 square feet, while CVU lists completion in 2021 and tower GFA of 79,264 square metres. These have different reported scope/epochs. Do not silently combine them as a single measured survey."
+    },
+    "as_built_photos": [
+      {
+        "url": "https://perkinswill.com/wp-content/uploads/2024/05/PW_012_041222_web.png",
+        "file": "build/reviews/resume-20261114/jeddah/sail-asbuilt-012.png",
+        "bytes": 829273,
+        "sha256": "393da077601deb99632c473925c721ea3849ca4d63de2fa3966f92557607f22b"
+      },
+      {
+        "url": "https://perkinswill.com/wp-content/uploads/2024/05/PW_009_041222_web.png",
+        "file": "build/reviews/resume-20261114/jeddah/sail-asbuilt-009.png",
+        "bytes": 1020759,
+        "sha256": "d33ebf54a65a64261cd6c9ba7fdb0b98efe7e0e0bd316366621684e7dd0dbeaf"
+      },
+      {
+        "url": "https://perkinswill.com/wp-content/uploads/2024/05/PW_017_041222_web.png",
+        "file": "build/reviews/resume-20261114/jeddah/sail-asbuilt-017.png",
+        "bytes": 372809,
+        "sha256": "c299bfbd0a95e5631645ad94e06762b25e043fc2f4460e7a52982bdc5f688da5"
+      }
+    ]
+  },
+  "sail_reconstruction": {
+    "floorplate_m": [
+      55,
+      22
+    ],
+    "floorplate_basis": "1,210 square metres is within 0.8 percent of CVU tower GFA divided by 65 floors. It remains an estimated plate, not a surveyed tower footprint.",
+    "axis_deg": 18.508006680434868,
+    "axis_basis": "Mapped southern podium frontage. The nearest retained 100 m coastline tangent gives a perpendicular axis of 20.5366 degrees; this independently supports the approximate bearing.",
+    "podium_plan_conflict": {
+      "location_to_southern_edge_m": 7.985464396691408,
+      "tower_projection_beyond_podium_m": 3.01453560330871,
+      "tower_area_beyond_podium_m2": 165.79945818197757,
+      "interpretation": "The CVU point and coarse podium ring do not jointly provide a surveyed tower plan. Keep the anchor and bounded slab estimate, expose the small projection, and validate actual road/water separation. Do not force the entire tower into the podium ring by moving or shrinking it."
+    },
+    "podium": "Seven estimated 4.2 m storeys in a distinct rounded northern body. A separate three-storey ballroom wing uses estimated 5.1 m pitches. Their split is original reconstruction within the mapped podium/site.",
+    "facade": "Recessed room glazing, pale horizontal slabs, staggered pale fins and glass balcony rails; balcony depth increases from 0.85 m to 1.65 m. Bay rhythm and fin pattern are original architectural estimates.",
+    "crown": "Only a small 3.5 m upper termination with a 0.7 m angled top edge. The full architectural height remains 264.7 m above the entrance.",
+    "entry_relative_m": 3.0,
+    "entry_basis": "Bounded estimate from local street-class DSM samples around the site, roughly 1.7 m to 4.6 m, plus the photographed raised waterfront entrance. Not a bare-earth survey.",
+    "foundation_relative_m": 0.5,
+    "foundation_basis": "Separate tower and low-podium concrete enclosures extend below every actual original boundary-plane crossing. The 0.5 m bottom is an estimated below-grade closure, not a surveyed basement level. It does not set the 264.7 m tower height.",
+    "remaining_uncertainty": "Tower axis/plate, approximate map point, podium split, opening dimensions, canopy and terrace/pool positions are bounded estimates.",
+    "occupied_height_note": "CVU also lists 243.7 m to highest occupied floor. The 65 floor-band arrangement and upper 3.5 m termination are an appearance reconstruction from the primary as-built photos, not a surveyed allocation of occupied versus mechanical floors. No occupiable upper floor or mechanical plan is asserted."
+  },
+  "mall_primary": {
+    "architect": {
+      "publisher": "Batley Partners",
+      "url": "https://www.batleypartners.com/projects/red-sea-mall/",
+      "image_index": "mall-primary-image-index.json",
+      "observed": "Low retail mass with a curved highway-side glazed screen, a central glazed roof and intersecting internal roof boulevards. Actual facade photos support bowed glass, pale framing and diagonal supports. The first aerial illustration is treated as a design depiction, not a measured as-built plan."
+    },
+    "operator_aerial": {
+      "publisher": "Red Sea Mall",
+      "url": "https://redsea-s3-bucket.s3.ap-southeast-1.amazonaws.com/112935/home-hero-client.webp",
+      "bytes": 249527,
+      "sha256": "fe7cb962e78f8c32f230bf21429e64433385260863065a5c5f83db11e339f27f",
+      "epoch": "Current operator page; image capture date unverified, may include post-2017 additions. Review only."
+    },
+    "contractor_and_designer_sources": {
+      "AlSaad": "https://alsaad.com.sa/Al%20Saad%20Brochure.pdf",
+      "Diyar": "https://diyar.com/Projects/Details?ID=17",
+      "SEDCO": "https://sedco.com/en/story/red-sea-mall/",
+      "scope_note": "Three retail levels are supported. Hotel counts conflict across sources and the current office/hotel additions are not keyed to a georeferenced component plan. The operator aerial confirms two modest attached masses, not exact footprints/storey identities."
+    }
+  },
+  "mall_reconstruction": {
+    "mapped_outer_area_m2": 102106.5649371572,
+    "smooth_frontage_inset_m": 7.0,
+    "frontage": "The smooth bowed screen stays inside the retained outer envelope on the northeast/east highway frontage. It does not replace the mall with a uniformly glazed box.",
+    "street_relative_m": 5.3,
+    "lower_ground_relative_m": 0.8,
+    "first_floor_relative_m": 10.8,
+    "flat_roof_relative_m": 16.3,
+    "height_basis": "Local street-class DSM probes are about 4.8 m to 5.4 m. The three documented retail levels include lower ground. Floor pitches and roof levels remain architectural estimates.",
+    "dsm_classification": "The 19.69 m central DSM observation is treated as roof contamination, not foundation ground. Remove old terrain only within the actual new property masks; do not flatten the wider city.",
+    "roof": "Original white/glass barrel bands, a crossing roof boulevard and low mechanical clusters follow the primary images. Their precise dimensions/locations remain estimated.",
+    "attached_wings": "Two modest seaward-side blue-glass blocks use estimated six/seven level organization. Positions and identities are not surveyed; no current Joudyan tenant branding is added.",
+    "new_field_tip": "The source footprint extends about 3 m east of the existing retained grid. That is new coverage. Its declared foundation closure uses horizontal extension of actual original edge-plane heights, not clamped DSM values called unchanged terrain.",
+    "service_road_reserve": {
+      "source": "Literal paths of OSM ways 1258398979, 1258398980, 1065029971 and 591058949 retained from coastal-map.osm.gz. Their widths are untagged.",
+      "estimated_widths_m": {
+        "oneway_service": 3.5,
+        "parking_aisle": 6.0
+      },
+      "facade_to_estimated_road_edge_minimum_m": 0.5,
+      "reason": "The first 4.2 m radial inset let the bowed glass overhang approach service centerlines to 1.10 m and a parking aisle to 1.25 m. That proposal was rejected. A 7 m inward reserve keeps the full bowed facade and support frames clear of bounded lane-width estimates. The literal outer roof/site ring remains unchanged. This is an architectural clearance estimate, not a surveyed curb or road-width claim."
+    }
+  },
+  "preservation": "All original ground outside the exact new property interiors retains its planes, normals and UVs through complete-cell emission. No global terrain cutout union changes. Native field/contact bytes, existing Diamond residency and global streaming radii remain fixed.",
+  "appearance_reference_epoch": "Supplied edited reference; game/event year unverified. Primary images have different or unverified epochs.",
+  "visibility_limits": "Sail is behind the T27 exit camera and cannot alone close the existing exit-skyline hold. Private mesh/range tests and later fresh cooked driving views are required.",
+  "night_material_assumptions": {
+    "sources": "Retained Perkins&Will as-built dusk view (sail-asbuilt-podium.png) plus supplied edited Jeddah night approach; exact capture/event years unverified.",
+    "sail": "Dark blue-gray recessed loggias and pale nonemissive slabs/fins remain dominant. Thin 35 mm warm strips occupy only the outer edge of selected staggered fins; about one in 41 room panes and a few ground lobby panels use existing WarmGlass. This reconstructs narrow architectural highlights and localized occupancy, not a claim about particular lit apartments.",
+    "mall": "Existing dark Glass remains on the curved screen, roof boulevards and attached blocks. Small recessed street-level WarmGlass storefront panels suggest occupied entries; no wholesale emissive roof or facade is added.",
+    "preserved": "Existing material recipes, global renderer, exposure, light energy and accepted assets stay unchanged. Fresh cooked night views must judge actual slab readability, glare and source-era appearance."
+  }
+}

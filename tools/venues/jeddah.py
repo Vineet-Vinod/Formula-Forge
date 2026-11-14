@@ -16,6 +16,7 @@ from venues.east_architecture import (
     roof_polygon,
     trees,
 )
+from venues.jeddah_context import corniche_context
 from venues.jeddah_edition import edition_hotel
 from venues.jeddah_facilities import (
     mapped_stands,
@@ -259,3 +260,4 @@ def build_venue(scene: CircuitScene) -> None:
     ):
         trees(scene, start, end, side, setback, 52, 9, palm=True)
     skyline_residency(scene)
+    corniche_context(scene)

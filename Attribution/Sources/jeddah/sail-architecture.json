@@ -1,0 +1,54 @@
+{
+  "site": {
+    "osm_id": 1041158265,
+    "outer_wgs84": [
+      [
+        39.1087397,
+        21.622735
+      ],
+      [
+        39.1076882,
+        21.6224078
+      ],
+      [
+        39.1074284,
+        21.6232317
+      ],
+      [
+        39.1086209,
+        21.6233502
+      ],
+      [
+        39.1087397,
+        21.622735
+      ]
+    ]
+  },
+  "center_wgs84": [
+    39.10803,
+    21.62259
+  ],
+  "axis_source_vertices": [
+    1,
+    0
+  ],
+  "height_m": 264.7,
+  "floors": 65,
+  "length_m": 55.0,
+  "width_m": 22.0,
+  "base_relative_m": 3.0,
+  "crown_height_m": 3.5,
+  "balcony_depth_m": [
+    0.85,
+    1.65
+  ],
+  "floor_slab_thickness_m": 0.28,
+  "bay_width_m": 2.75,
+  "podium_floors": 7,
+  "podium_floor_pitch_m": 4.2,
+  "ballroom_floors": 3,
+  "ballroom_floor_pitch_m": 5.1,
+  "podium_north_offset_m": 20.0,
+  "podium_projection_limit_m": 3.05,
+  "foundation_bottom_relative_m": 0.5
+}
