@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "Source correction; fresh rendered review required",
+  "status": "Two-tier source revision prepared; native import and fresh rendered review pending.",
   "input": {
     "file": "architecture/dimeconsult-mainstand-project.html.gz",
     "sha256": "0db4503e1ce288f607ad33162495804ed5a04c3bfedd64aa8db44d712f76f260",
@@ -20,7 +20,12 @@
     "length_m": 375.59,
     "note": "Roof outline retains actual source geometry. Published 360 m structural length plus roof end overhangs is consistent; do not stretch seating to the old 591 m station band."
   },
-  "reconstruction": {
+  "removed_band_native_m": [
+    495.175824,
+    1086.654199
+  ],
+  "preserved": "Original road/field/contact data, pit frontage, circular VIP tower and other track decor. The canopy keeps its mapped outline and earlier maximum height of19.8m above the retained road datum.",
+  "earlier_single_tier_reconstruction": {
     "seating_length_m": 360,
     "blocks": 4,
     "block_length_m": 90,
@@ -29,9 +34,15 @@
     "method": "Clip four centered 90 m strips against the actual mapped roof footprint, using its principal axis. Source footprint_stand grounds every row. No racing-road station rectangle or invented additional stand length.",
     "uncertainty": "Published 90 m block lengths are primary structural facts. The 0.3 m joints, 23 rows and detailed seats are original estimates.34.15 m is the complete building depth, not a measured seating tread depth; the mapped canopy outline remains unchanged."
   },
-  "removed_band_native_m": [
-    495.175824,
-    1086.654199
-  ],
-  "preserved": "Driving geometry, pit frontage, primary roof geometry and unrelated decor."
+  "reconstruction": {
+    "seating_length_m": 360,
+    "blocks": 4,
+    "block_length_m": 90,
+    "lower_rows": 12,
+    "upper_rows": 11,
+    "vip_suites": 72,
+    "joint_treatment": "Continuous modeled body, with estimated4cm dark expansion seals; the earlier30cm open gaps are removed.",
+    "geometry": "Two closed stepped concrete tiers separated by a glazed VIP level; one closed tapered cantilever canopy uses the literal mapped roof plan. Rear concrete spine and ledge support embedded roof struts; no ground-level front canopy columns.",
+    "uncertainty": "Published blocks and72suites are primary facts. Row split, tread/riser dimensions, suite divisions, room depth, height section, spine thickness and joint seals are reconstruction estimates.34.15m remains the complete consultant building-depth figure and is not assigned to the mapped24.46m canopy width."
+  }
 }

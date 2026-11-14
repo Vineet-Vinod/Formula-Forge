@@ -1,18 +1,18 @@
-"""Portimão: faceted grandstand blades and a circular glazed control tower on dry hills."""
+"""Portimão: a cantilever mainstand and circular glazed VIP tower on dry hills."""
 from __future__ import annotations
 
 import itertools
 import math
 import random
 
-from circuit_dataclasses import Building, Point, SurfaceProjection
-from circuit_mesh import add, mul
+from circuit_dataclasses import Point, SurfaceProjection
+from circuit_mesh import add
 from circuit_scene import CircuitScene
 from shapely.geometry import Point as ShapePoint
 from shapely.geometry import Polygon
 from shapely.ops import unary_union
 
-from venues.east_architecture import footprint_stand, frame
+from venues.portimao_stand import main_grandstand
 from venues.west_architecture import apron_band, mapped_building, mast, trees
 
 
@@ -28,7 +28,6 @@ def build_venue(scene: CircuitScene) -> None:
     scene.braking_boards(2950.788150, -1)  # Curva Samsung
     scene.braking_boards(3326.722683, 1, distances=(100, 50))  # Curva Craig Jones
     mapped_building(scene, 38167081, 12, facade='White', floors=3, roof='canopy', garage_front=True)
-    mapped_building(scene, 38166697, 17, facade='Concrete', floors=1, roof='blades', enclosed=False)
     main_grandstand(scene)
     torre_vip(scene)
     scene.stand(1425.070832, 1535.296422, -1, rows=12, setback=24, seat_material='SeatRed')
@@ -40,31 +39,6 @@ def build_venue(scene: CircuitScene) -> None:
         trees(scene, start, end, side, setback=40, spacing=38, height=5.5, rows=1)
     for station in [400, 1120, 1570, 2320, 2940, 3590, 4260]:
         mast(scene, station, -1, 18)
-
-
-def main_grandstand(scene: CircuitScene) -> None:
-    building = scene.footprint(38166697)
-    center, axis, side, roof_length, width = frame(building)
-    footprint = Polygon(building.ring)
-    for block in range(4):
-        first, last = -180 + block * 90 + .15, -180 + (block + 1) * 90 - .15
-        corners = [add(center, add(mul(axis, u), mul(side, v)))
-                   for u, v in [(first, -width), (last, -width),
-                                (last, width), (first, width)]]
-        seats = footprint.intersection(Polygon([p[:2] for p in corners]))
-        if not isinstance(seats, Polygon) or seats.is_empty:
-            raise ValueError('Portimao mainstand must retain four connected mapped blocks')
-        identifier = -381666970 - block
-        scene.buildings.append(Building(identifier, f'Bancada Principal block {block + 1}',
-                                        'grandstand', 17, list(seats.exterior.coords)[:-1],
-                                        {'source': 'Original four90m blocks within mapped roof38166697'}))
-        footprint_stand(scene, identifier, rows=23, seat_material='SeatRed')
-    scene.landmarks.append({'name': 'Bancada Principal dimension correction',
-                            'roof_osm_id': building.osm_id, 'roof_length_m': roof_length,
-                            'structural_blocks': 4, 'block_length_m': 90,
-                            'seating_length_m': 360, 'expansion_joint_gap_m': .3,
-                            'source': 'https://dimeconsult.pt/projectos_desenv2.php?ano=2008&id=9&menu=pp',
-                            'dimensions_status': 'Structural consultant gives four90m mainstand blocks. Original seating now fits that360m span and mapped roof axis instead of591m of racing-road stations. Actual mapped375m canopy outline and roof geometry are unchanged; end overhangs,23rows and0.3m expansion gaps are reconstruction estimates.'})
 
 
 def torre_vip(scene: CircuitScene) -> None:

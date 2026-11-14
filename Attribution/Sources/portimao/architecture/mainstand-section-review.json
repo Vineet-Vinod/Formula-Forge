@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "status": "Reference-qualified source correction; native/cooked review pending.",
+  "problem": "Current single continuous23-row terrace and repeated tall front posts do not match the architect-documented two-tier/VIP/cantilever structure.",
+  "primary_architect": {
+    "publisher": "Ricardo Pina Arquitetos",
+    "url": "https://ricardopina-arquitetos.com/projetos/servicos-e-equipamentos/autodromo-internacional-do-algarve.html",
+    "project_epoch": "2001\u20132008 on the retained current primary page. Earlier search summary2017\u20132020 is superseded by the actual page.",
+    "page_sha256": "f1a04918037da8f2d81682ade0c6d13decd9ac07c239f72452677ff3f8ab5855",
+    "observed": "Two raked seating tiers separated by a glazed VIP-box level, large continuous cantilever canopy and tilted rear building facade. Primary architect-hosted publication excerpt gives72VIPboxes; exact per-block divisions are reconstructed.",
+    "selected_review_images": [
+      {
+        "file": "desenho-05-1600.jpg",
+        "url": "https://ricardopina-arquitetos.com/assets/img/autodromo-internacional-do-algarve/autodromo-internacional-do-algarve-desenho-05-1600.jpg",
+        "sha256": "cf176dff1413e13ed90b510d9974519f907031b35bc4998bc79a254af217c79f",
+        "bytes": 33169
+      },
+      {
+        "file": "desenho-06-1600.jpg",
+        "url": "https://ricardopina-arquitetos.com/assets/img/autodromo-internacional-do-algarve/autodromo-internacional-do-algarve-desenho-06-1600.jpg",
+        "sha256": "b9959115d0e63a51fed0b725df7bec4aa48f169a1933bbf9b93a887e23ef57ec",
+        "bytes": 30077
+      },
+      {
+        "file": "06-400.jpg",
+        "url": "https://ricardopina-arquitetos.com/assets/img/autodromo-internacional-do-algarve/autodromo-internacional-do-algarve-06-400.jpg",
+        "sha256": "7ffdcaaab1806f0b224ccd87e7275d44ed957ca1c8d09ed12876d420c67c711c",
+        "bytes": 15579
+      },
+      {
+        "file": "07-400.jpg",
+        "url": "https://ricardopina-arquitetos.com/assets/img/autodromo-internacional-do-algarve/autodromo-internacional-do-algarve-07-400.jpg",
+        "sha256": "46c5bcc4bceb09c8598f19be72ad9945c0dc83e031a8c33fedb1562422316b9f",
+        "bytes": 15548
+      },
+      {
+        "file": "08-400.jpg",
+        "url": "https://ricardopina-arquitetos.com/assets/img/autodromo-internacional-do-algarve/autodromo-internacional-do-algarve-08-400.jpg",
+        "sha256": "6d37b99ed32d0f2b7a4d0f730f396a92babee119be5fed081d6117b2212f6125",
+        "bytes": 13200
+      },
+      {
+        "file": "09-400.jpg",
+        "url": "https://ricardopina-arquitetos.com/assets/img/autodromo-internacional-do-algarve/autodromo-internacional-do-algarve-09-400.jpg",
+        "sha256": "866bee805a8afe65fd468501bc3c4b12944b16cd3f7da9bb04025793f9e62e45",
+        "bytes": 11417
+      },
+      {
+        "file": "10-400.jpg",
+        "url": "https://ricardopina-arquitetos.com/assets/img/autodromo-internacional-do-algarve/autodromo-internacional-do-algarve-10-400.jpg",
+        "sha256": "9a4fa03ba4630b301585bb8df584b0dacec150186fdf0dc9caf2c352579acf90",
+        "bytes": 17257
+      }
+    ],
+    "use": "Review only. No photograph pixels or copied CAD/3D mesh are used as game assets."
+  },
+  "mapped_source": {
+    "file": "buildings.osm.json.gz",
+    "sha256": "b2f59cd1ebeb9b49ce86e75f67c5aba40811c407b7ad3b68722e2cc65bff8edd",
+    "osm_id": 38166697,
+    "roof_plan_length_m": 375.5936966417364,
+    "roof_plan_width_m": 24.464049860922447,
+    "licence": "OpenStreetMap contributors, ODbL1.0; original literal WGS84 nodes are retained."
+  },
+  "structural_dimensions_source": "mainstand-dimensions-correction.json; retained Dimeconsult2008primaryproject:four90m blocks,3storeys,34.15mcompletebuildingdepth. That depth does not define the canopy width.",
+  "orthophoto_review": {
+    "url": "https://ortos.dgterritorio.gov.pt/wms/ortosat2023?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=ortoSat2023-CorVerdadeira&STYLES=&SRS=EPSG%3A4326&BBOX=-8.6322%2C37.2291%2C-8.6287%2C37.2332&WIDTH=1400&HEIGHT=2048&FORMAT=image%2Fpng&TRANSPARENT=FALSE",
+    "parameters": {
+      "SERVICE": "WMS",
+      "VERSION": "1.1.1",
+      "REQUEST": "GetMap",
+      "LAYERS": "ortoSat2023-CorVerdadeira",
+      "STYLES": "",
+      "SRS": "EPSG:4326",
+      "BBOX": "-8.6322,37.2291,-8.6287,37.2332",
+      "WIDTH": "1400",
+      "HEIGHT": "2048",
+      "FORMAT": "image/png",
+      "TRANSPARENT": "FALSE"
+    },
+    "sha256": "ecfea76f2c1ab009311f946fa6445451fdaf8814016290e9849713795f174369",
+    "bytes": 1190972,
+    "use": "Unmodified primary 2023 satellite image, review only. Mapped OSM coordinates and source facts remain distinct from inferred reconstruction."
+  },
+  "estimated_section_m": {
+    "lower_rows": 12,
+    "lower_tread": 0.82,
+    "lower_rise": 0.45,
+    "vip_room_depth": 3.0,
+    "vip_height": 3.1,
+    "upper_rows": 11,
+    "upper_tread": 0.93,
+    "upper_rise": 0.53,
+    "canopy_top_above_retained_road_datum": 19.8,
+    "structural_seal_width": 0.04,
+    "rear_spine_thickness": 0.25,
+    "footing_embed_below_sampled_ground": 0.15,
+    "rear_strut_embed": 0.05
+  },
+  "dimensions_limits": "Section values are architectural estimates, not a measured engineering cross-section. The primary plan/section is used for topology and massing, not metrically traced. Base uses the earlier roof datum; roof maximum height is retained. No new source survey precision is claimed.",
+  "reference_views": [
+    "build/reviews/portimao/reference/overview-13.jpg",
+    "build/reviews/portimao/resume-scenery-corrections-live/targeted/00-720.0-00000256.jpg"
+  ],
+  "review": "build/reviews/resume-20261114/reviews/portimao-mainstand-source-adjudication.md",
+  "preservation": "No source field heights, racing road, limits/contact data, pit frontage, VIP tower, shared shaders, car handling or camera change. Only this grandstand and canopy are reconstructed."
+}
