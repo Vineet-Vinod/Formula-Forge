@@ -1,8 +1,8 @@
 # Additional circuit validation — 2026-11-14
 
-Checkpoint for the 18 additional circuits, current package `f66b8dac`. The explicit review register records 15 visual passes, 3 holds and 0 pending reviews. This checkpoint does not declare the work complete.
+Checkpoint for the 18 additional circuits, current package `9ad96f69`. The explicit review register records 16 visual passes, 2 holds and 0 pending reviews. This checkpoint does not declare the work complete.
 
-Active work toward Sunday 15 November 10:00 PST. The 18-map work remains incomplete. Fifteen scenes have current Luna High visual passes; Baku, Jeddah and Monaco retain visual holds. Fresh moving performance comparisons are in progress.
+Work is active through Sunday 15 November at 10:00 PST. The 18-map work remains incomplete. Sixteen scenes have current Luna High visual passes; Baku and Monaco remain held. The rebuilt executable needs fresh uncapped comparisons, and accepted baseline runs are in progress.
 
 The [validation record](additional_circuits_validation.json) pins package payloads, exact scene identities, reports, archived frames, current profiles, runtime scope and performance evidence.
 
@@ -11,16 +11,16 @@ The [validation record](additional_circuits_validation.json) pins package payloa
 | australia | c0832124 | pass | 4366 | 125/125 |
 | austria | 6a970d40 | pass | 3602 | 125/125 |
 | bahrain | 6a970d40 | pass | 4791 | 125/125 |
-| baku | f66b8dac | held | 5233 | 125/125 |
+| baku | 9ad96f69 | held | 5254 | 125/125 |
 | buddh | c6a58fcc | pass | 4601 | 125/125 |
 | canada | 887f09f0 | pass | 3857 | 125/125 |
 | china | 887f09f0 | pass | 5283 | 125/125 |
-| cota | c6a58fcc | pass | 5249 | 125/125 |
+| cota | 9ad96f69 | pass | 5378 | 125/125 |
 | hockenheim | 219ac9a7 | pass | 4146 | 125/125 |
 | japan | 92dca960 | pass | 4992 | 125/125 |
-| jeddah | 4531fdcd | held | 4992 | 125/125 |
+| jeddah | 9ad96f69 | pass | 4953 | 125/125 |
 | malaysia | 776d1fe6 | pass | 5176 | 125/125 |
-| monaco | 4531fdcd | held | 3973 | 125/125 |
+| monaco | 9da39803 | held | 3974 | 125/125 |
 | portimao | 97f852c9 | pass | 4411 | 125/125 |
 | singapore | 79189b47 | pass | 4835 | 125/125 |
 | spa | 219ac9a7 | pass | 5223 | 125/125 |
@@ -31,13 +31,12 @@ A prior capture is carried only when its complete per-circuit scene identity equ
 
 ## Source completion holds
 
-These independent source findings remain unresolved despite retained visual passes. Baku and Jeddah also retain the visual holds shown above. No held circuit is complete.
+These independent source findings remain unresolved despite retained visual passes. The visual decisions above remain separate. No held circuit is complete.
 
 | Circuit | Outstanding source finding |
 | --- | --- |
-| baku | New right-side trees improve3490–3800m coverage with no tree-specific blocker. Whole-route ordinary-city/bank holds remain; all six earlier actual approach Ground intersections survive unchanged, with visibility caveats recorded separately. |
-| jeddah | Upper Sail room-lighting correction is visually closed. Sparse nearer T27/return skyline remains below the supplied reference; source-qualified Masarat context is in private authoring. |
-| monaco | Curved belvedere now present and bounded cliff/planting improved. Fresh200/230views retain broad charcoal angular banks above/underbridge unlike pale fractured rock and irregular vegetation in photos. This is separate from unqualified L4420terrace supports; no invented opaque enclosure is justified. |
+| baku | Civic panel-facing and Niyazi tree presence pass their bounded checks. The source-specific uphill gymnasium/downhill domed De Bour sequence remains missing; ordinary city and raw-bank appearance remain held. Six public-frontage ground-ray hits do not independently prove incorrect grade. |
+| monaco | Belvedere and finite garden/ivy/paving roles improve the view, but broad dark/angular bank faces retain the whole-scene hold. Roof/terrace and canopy-source roles stay distinct; no blanket terrain flattening or rock repaint is qualified. |
 
 ## Current native profiles
 
@@ -70,10 +69,11 @@ These figures are recalculated from the current road exports. Sample density is 
 - Spa alone rotates the sky, dome and sun by 120 degrees at unchanged energy, elevation and exposure. The ineffective 0.06 normal-strength trial was rejected and 0.18 restored. Source grid heights and native data are unchanged. A bounded 0.25 m mesh represents the existing field within 2.517 cm in the visible core and rejoins the actual old outer triangle planes. Fresh full-route visual review passes; residual tone and rounded-hollow differences lack matched source classification.
 - Singapore-only generated road controls are aligned with Anderson Bridge driver-left opening, with an 8.8 m legal lane and separately accounted kerbs/shoulders/wall thickness. Local smooth joins replace the rejected infinite-axis exit shift. No shared vehicle/camera implementation changes.
 - Malaysia alone uses a 16 m legal lane, exact frozen baseline widths for outside pavement, estimated adverse final-corner section and rising-exit warp. Generated paving triangles preserve actual render/contact agreement; Ground queries them outside the protected analytic road/kerb core. Focused source/native regression checks cover old core contact, flat apron contact, pit registration and packed vertex agreement. Other circuit behavior and vehicle tuning remain unchanged.
+- COTA alone narrows the image-qualified 2,180–2,380 m approach to 13 m at 2,220–2,340 m, with about 1 m source uncertainty. Paired shoulders and retained-width compensation after the existing runoff minimum preserve the outer envelope within 0.0005012 m. Its field, alignment, elevation and banking remain exact, as does other circuit physical data. Shared handling and camera are unchanged.
 
 The supplied scope proofs and their hashes are retained in the JSON. Accepted-circuit assets, shared runtime changes and car/input/camera scope are reported separately; asset preservation is not a claim that no runtime code changed.
 
-Package f66b8dac adds21source-qualified Niyazi/T15 trees with exact actual-ground roots and branch clearance. Fresh5233frame whole-route review recognizes the planting improvement and retains Baku city/bank/approach holds. Earlier4531fdcd closes Sail upper room glow and Monaco belvedere absence, while nearer Jeddah skyline and broader Monaco hillside remain held. Additional source work is active.
+Package 9ad96f69 corrects the COTA approach without relocating its outer pavement or protection, adds source-registered Masarat architecture at Jeddah, and fixes 4,833 inward-facing Baku civic panels. Fresh whole-route COTA and Jeddah reviews pass. Baku retains its missing Niyazi heritage sequence and ordinary city/bank appearance hold. Monaco retains its hillside material and form hold.
 
 Sampled peak machine memory was 7.089 GB against 11 GB, using the 5 s monitor. One heavy job at a time is attested in the register.
 
@@ -83,23 +83,14 @@ Moving measurements are separate from capped image recordings and stationary sam
 
 | Circuit | Kind | Measured frames | Median ms | p95 ms | p99 ms | Max ms |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| lasvegas | moving | 7538 | 20.30 | 27.15 | 30.10 | 36.60 |
-| interlagos | moving | 7348 | 17.41 | 21.73 | 24.31 | 31.09 |
-| canada | moving | 7952 | 15.76 | 17.99 | 19.43 | 21.67 |
-| cota | moving | 11366 | 15.35 | 17.86 | 19.08 | 23.09 |
-| china | moving | 10946 | 15.66 | 18.37 | 19.62 | 26.12 |
-| buddh | moving | 8265 | 17.62 | 21.99 | 24.09 | 27.90 |
-| australia | moving | 8629 | 16.20 | 18.74 | 20.59 | 26.42 |
-| austria | moving | 5587 | 20.48 | 23.33 | 25.53 | 35.44 |
-| hockenheim | moving | 7857 | 16.83 | 20.70 | 22.20 | 25.92 |
-| bahrain | moving | 9151 | 16.76 | 19.97 | 21.43 | 24.35 |
+| — | No current uncapped runs registered | — | — | — | — | — |
 
 Moving runs require one full warmup route and complete measured route coverage. They use automatic driving input and do not establish physical-controller handling. Stationary numbers describe only their registered local scene. Capped recording intervals include readback and encoding overhead.
 
 ## Remaining source and platform limits
 
 - Dense native controls do not make reconstructed widths, event radii, height fields or temporary architecture into surveys.
-- Baku civic paving and Court/north frontages are imported, but the fresh whole-route review retains repetitive ordinary-city facades and downhill-bank views. Six earlier approach ray witnesses remain separate unresolved findings; no broad grade change is justified by them.
+- Baku civic paving and Court/north frontages are imported, but the fresh whole-route review retains repetitive ordinary-city facades and downhill-bank views. Six public pedestrian-frontage ray intersections retain grade uncertainty; intersection alone is not a geometric defect or justification to flatten them.
 - Portimao classified DGT ground yields a maximum 100 m rise of 8.45%, inconsistent with the operator headline 6.2%. The source-definition difference is unresolved; no unsupported vertical rescaling was applied.
 - Japan now uses registered GSI widths around 10 to 15 m; the operator 16 m extremum is not yet locally registered. Road-top separation at the crossing is not underside clearance.
 - Zandvoort T3 now uses the measured progressive quadratic bowl and bounded paved bank. Cross-sections and source epochs still carry their stated uncertainties.
@@ -110,15 +101,20 @@ Moving runs require one full warmup route and complete measured route coverage. 
 - Hockenheim visible stand-front join is closed; a hidden mismatch up to 1.479 m remains outside the bounded repair. No broad earth bank was invented to conceal it.
 - Malaysia’s adverse T15 profile and rising exit are implemented and visually passed. The 16 m legal width is primary-designer supported; 4% mean/7% inner/1% outer crossfall, 15.4 m exit crest and local station warp are estimates, with ±1 m elevation and ±50 m station uncertainty, not civil survey values. Wider original pavement is preserved from the actual frozen 8192-row baseline; outside support-zone discretization differs by at most 4.5 cm.
 - Monaco’s new bridge, garden and low Kennedy retail are imported and the retail item passes. The opening hillside still fails the visual bar; the mapped stepped terrace/annex lower structure needs separate qualification. Mixed roof-outline vertex heights cannot justify one sloped terrace or a solid full-height prism.
+- Masarat height 144 ± 12 m, lower wings and terrace/entry dimensions are architectural estimates. Its visual pass does not identify or survey every neighboring Jeddah building.
 - baku: Flame Towers are present in the current scene. Exact rays establish old-city exterior ground intrusions and facade/terrain cuts; repeated secondary frontages remain under-modeled. The failed paving/foundation candidate is excluded from production.
+- baku: Civic panel-facing and Niyazi tree presence pass their bounded checks. The source-specific uphill gymnasium/downhill domed De Bour sequence remains missing; ordinary city and raw-bank appearance remain held. Six public-frontage ground-ray hits do not independently prove incorrect grade.
 - canada: Visual decision is bound to the unchanged 887 scene; performance is separate.
 - china: No missing crossing-cylinder or parasol defect is established. Ordinary secondary façades remain simplified; no current blocker was demonstrated.
 - cota: No confirmed blocker in the reviewed complete route; performance remains separate.
+- cota: The source-estimated13±1m approach and separate raised curb/flat red apron pass fresh whole-route review. The outside protection/paving stays registered; no regression found at T1/T15. Geometry remains an image-derived reconstruction.
 - hockenheim: A hidden stand-front terrain mismatch up to 1.479 m remains outside the repaired visible low end. Forest density and some secondary facilities remain simplified. Numerical closure does not establish survey precision.
 - japan: Stylized forest/crowd/facility detail and width survey limits remain caveats, not demonstrated blockers.
 - jeddah: Diamond remains a source-supported construction skeleton. Low urban frontage, mall and tower subparts need mapped/photo qualification; do not extrude an entire podium as the full-height tower.
+- jeddah: Source-registered Masarat fills the T27 exit sequence at night, with no visible floating/overlap/pop. The five-part source-estimated volume is separate from Sail; unnamed neighbors and unsurveyed component dimensions remain stated limits.
 - malaysia: Primary designer supports the 16 m legal lane and qualitative adverse/rising-exit shape. No primary numerical cross-section exists in retained sources; local slopes and crest are architectural/track reconstruction estimates.
 - monaco: Property envelopes preserve retained measured components. Bridge arch rise, garden levels/steps and planting are declared reconstructions; annex 4420 lower enclosure and edited-reference chronology remain unqualified. Kennedy retail 9.95 m is an indicative planning anchor, not a roof survey.
+- monaco: Belvedere and finite garden/ivy/paving roles improve the view, but broad dark/angular bank faces retain the whole-scene hold. Roof/terrace and canopy-source roles stay distinct; no blanket terrain flattening or rock repaint is qualified.
 - portimao: Retained DGT road samples are correctly registered to asphalt with no bridge-deck hump, but observed local grades remain in conflict with the operator-published headline values. The vertical/source-definition discrepancy is unresolved; do not clamp or rescale from the headline alone.
 - singapore: Mapped landmark/frontage revisions are simplified in secondary city sectors; no current source-qualified blocker is demonstrated by the reviewed packet.
 - spa: Source grid nodes and native data are unchanged. The refined mesh reproduces an existing interpolation, not finer survey data. Remaining bank tone/shape differences are unclassified, not declared wrong terrain.

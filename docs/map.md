@@ -497,6 +497,13 @@ Reuse the method; placements, heights and light values belong to that circuit.
    in both XY and height before classifying it: Monaco's terrace roof was
    8–13 m above the sampled ground. Its pale paving did not identify the material
    below, or justify raising the ground to the roof.
+   Establish neighboring property identities from route order, literal footprints
+   and independent views. Category coordinates or an operator's directions point
+   do not locate a particular facade. Baku's uphill gymnasium and downhill De Bour
+   mansion were initially assigned to each other's footprints. Keep that rejected
+   assignment separate from the corrected model. For photo dimensions, inspect
+   crop and perspective-correction metadata before using EXIF camera intrinsics;
+   edited photographs can still establish opening order without metric calibration.
    Hotel names on generic blocks do not meet this standard. Grand Chateau and
    Signature needed their own facade/crown designs, just as Venetian and Forum
    Shops needed their street-level architecture.
@@ -574,6 +581,13 @@ transition must not have that transition applied again. Check effective native
 shoulders too: runoff-width overrides can expand them beyond the raw controls.
 See the [Sepang surface record](../Attribution/Sources/malaysia/racing-surface-review.json).
 
+Validate compensation in compiled road exports. COTA's existing runoff minimum
+overrode a correctly compensated raw shoulder profile, moving the effective
+outer edge inward. The bounded fix preserves the original outer pavement after
+that minimum, and the rendered apron uses the same retained width. Compare all
+native samples and actual packed surfaces; Python profile arithmetic alone misses
+runtime clamps and overrides. Keep raised kerbs separate from adjacent flat paint.
+
 Unreal collision on the streamed decorative mesh is disabled in the current
 presentation code. Vehicle contact is handled by `FFSimulation` and its authored
 barriers. Adding a visible wall alone will not stop the car; adding collision alone
@@ -616,6 +630,14 @@ appropriate, then match the new venue's colour, wear, scale and weather referenc
 Record physical tile size. Resolve diffuse/normal/roughness channels, sRGB flags,
 normal orientation, UV seams and alpha filtering in Unreal, not just the importer.
 A tiny repeating asphalt texture can make a correctly sized road look miniature.
+
+Orient triangulated wall panels against the facade's known exterior. Check both
+the source normal and the exported winding: the current `(-y, -x, z)` world
+transform reflects the horizontal frame. A negative native cross/normal dot is
+therefore not, by itself, an inward-face defect. Baku's actual defect was 4,833
+source normals facing into their footprints. Reordering those triangles must keep
+UVs attached to their vertices. Position and footing checks cannot detect this
+rendering failure; inspect the corrected panels in the packaged cockpit view.
 
 Keep exposure and rendering settings comparable to the accepted maps. Use lighting
 to express the scene; do not use saturation, bloom or ambient light to conceal
