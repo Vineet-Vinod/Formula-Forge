@@ -2,7 +2,7 @@
 
 Checkpoint for the 18 additional circuits, current package `9ad96f69`. The explicit review register records 16 visual passes, 2 holds and 0 pending reviews. This checkpoint does not declare the work complete.
 
-Work is active through Sunday 15 November at 10:00 PST. The 18-map work remains incomplete. Sixteen scenes have current Luna High visual passes; Baku and Monaco remain held. The rebuilt executable needs fresh uncapped comparisons, and accepted baseline runs are in progress.
+Work is active through Sunday 15 November at 10:00 PST. The 18-map work remains incomplete. Sixteen scenes have current Luna High visual passes; Baku and Monaco remain held. Accepted-track moving baselines now cover the rebuilt executable; current comparisons for the additional circuits remain pending.
 
 The [validation record](additional_circuits_validation.json) pins package payloads, exact scene identities, reports, archived frames, current profiles, runtime scope and performance evidence.
 
@@ -83,7 +83,8 @@ Moving measurements are separate from capped image recordings and stationary sam
 
 | Circuit | Kind | Measured frames | Median ms | p95 ms | p99 ms | Max ms |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| — | No current uncapped runs registered | — | — | — | — | — |
+| lasvegas | moving | 7569 | 20.31 | 26.56 | 30.21 | 34.70 |
+| interlagos | moving | 7154 | 17.91 | 22.11 | 23.57 | 28.44 |
 
 Moving runs require one full warmup route and complete measured route coverage. They use automatic driving input and do not establish physical-controller handling. Stationary numbers describe only their registered local scene. Capped recording intervals include readback and encoding overhead.
 

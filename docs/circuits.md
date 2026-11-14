@@ -62,14 +62,17 @@ stay separate from ground-material classification.
 
 The earlier Portimão, Sepang, Singapore, Buddh and remaining route reviews retain
 their explicit scopes in the [validation checkpoint](additional_circuits_validation.md).
-The rebuilt executable needs fresh uncapped comparisons. Earlier complete warmed
-runs are historical, and new Las Vegas/Interlagos baseline runs are in progress.
+The rebuilt executable has fresh warmed Las Vegas/Interlagos baseline runs.
+Earlier additional-circuit runs are historical; current comparisons are still pending.
 Visual passes and clean automatic laps do not establish performance or surveyed
 accuracy. Silverstone, Monza, Interlagos and Las Vegas remain preserved baselines.
 
 Portimão's retained DGT class-2 ground produces steeper local grades than published
 operator maxima whose measurement interval is unspecified. The source record keeps
 this discrepancy open; heights have not been scaled or clipped to force agreement.
+COTA's retained USGS road relief agrees with the official F1 chart at about 30.9 m.
+The 133-foot promotional climb lacks matching endpoint definitions and does not
+justify scaling that profile. Exact timing-line rise remains uncertain.
 Event-corner reconstructions at Australia and Singapore retain explicit schematic
 radius uncertainty. Neither dense controls nor a smooth rendered curve establishes
 survey accuracy.
