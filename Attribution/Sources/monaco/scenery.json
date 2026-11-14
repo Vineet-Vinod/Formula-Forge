@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=monaco",
   "tiles": 116,
-  "triangles": 2252737,
+  "triangles": 2277058,
   "road_sha256": "3a7544d64e64e34c445dbf4049745ad0e2fc4f2d8e96dcf6d29b2c8ee7f67df3",
   "terrain_sha256": "f1538f328db1481498922f0c8d143010e2a9bcd9c17cb30b52457605ac30a21a",
   "landmarks": [
@@ -180,6 +180,50 @@
       "roof_max_z_m": 7.3871005887,
       "source": "architecture/property-envelopes.json",
       "dimensions_status": "Retained IGN BDTopo 3D footprint and roof edges with1.5 m stated vertical precision. The parent roof excludes a separate measured inner component, rendered from its own source record. Internal roof-step join and quay-front facade details are reconstructed from the registered494-498 s supplied views; they are not survey measurements. La Rascasse and the low western annexes keep their own measured small envelopes."
+    },
+    {
+      "name": "Casa Mia core and open porch",
+      "osm_id": 94399990,
+      "ign_id": "BATIMENT0000000074074383",
+      "roof_min_absolute_m": 44.1,
+      "roof_max_absolute_m": 54.6,
+      "ground_body_area_m2": 479.099014743924,
+      "roof_overhang_area_m2": 29.398206466614106,
+      "source": "architecture/costa-properties.json and costa-properties-provenance.json",
+      "dimensions_status": "Separate literal IGN 3D roof components, actual OSM ground-body intersections, and unchanged RGE vertical datum. Plan/height precision 2.5/1.5 m. The core/porch step, hip inset, visible storey subdivisions and facade details are declared architectural reconstruction from the owner photograph and official 2019 orthophoto; 2 m RGE samples locate local thresholds, not a new survey. Roof overhangs do not become ground walls. Native terrain and racing geometry are unchanged."
+    },
+    {
+      "name": "Casa Mia west wing",
+      "osm_id": 94399990,
+      "ign_id": "BATIMENT0000000074074384",
+      "roof_min_absolute_m": 36.5,
+      "roof_max_absolute_m": 38.2,
+      "ground_body_area_m2": 281.5773139149309,
+      "roof_overhang_area_m2": 70.22551897073131,
+      "source": "architecture/costa-properties.json and costa-properties-provenance.json",
+      "dimensions_status": "Separate literal IGN 3D roof components, actual OSM ground-body intersections, and unchanged RGE vertical datum. Plan/height precision 2.5/1.5 m. The core/porch step, hip inset, visible storey subdivisions and facade details are declared architectural reconstruction from the owner photograph and official 2019 orthophoto; 2 m RGE samples locate local thresholds, not a new survey. Roof overhangs do not become ground walls. Native terrain and racing geometry are unchanged."
+    },
+    {
+      "name": "Casa Mia east wing",
+      "osm_id": 94399990,
+      "ign_id": "BATIMENT0000000074074428",
+      "roof_min_absolute_m": 54.0,
+      "roof_max_absolute_m": 55.7,
+      "ground_body_area_m2": 222.9967176393112,
+      "roof_overhang_area_m2": 13.818373296196894,
+      "source": "architecture/costa-properties.json and costa-properties-provenance.json",
+      "dimensions_status": "Separate literal IGN 3D roof components, actual OSM ground-body intersections, and unchanged RGE vertical datum. Plan/height precision 2.5/1.5 m. The core/porch step, hip inset, visible storey subdivisions and facade details are declared architectural reconstruction from the owner photograph and official 2019 orthophoto; 2 m RGE samples locate local thresholds, not a new survey. Roof overhangs do not become ground walls. Native terrain and racing geometry are unchanged."
+    },
+    {
+      "name": "Villa Marie Antoinette",
+      "osm_id": 94401978,
+      "ign_id": "BATIMENT0000000074074453",
+      "roof_min_absolute_m": 54.8,
+      "roof_max_absolute_m": 56.9,
+      "ground_body_area_m2": 169.18256005029798,
+      "roof_overhang_area_m2": 42.777256706116006,
+      "source": "architecture/costa-properties.json and costa-properties-provenance.json",
+      "dimensions_status": "Separate literal IGN 3D roof components, actual OSM ground-body intersections, and unchanged RGE vertical datum. Plan/height precision 2.5/1.5 m. The core/porch step, hip inset, visible storey subdivisions and facade details are declared architectural reconstruction from the owner photograph and official 2019 orthophoto; 2 m RGE samples locate local thresholds, not a new survey. Roof overhangs do not become ground walls. Native terrain and racing geometry are unchanged."
     },
     {
       "name": "Le Mirabeau recessed loggias and vertical spines",
@@ -1436,15 +1480,6 @@
       "removed_road_area_m2": -0.0
     },
     {
-      "osm_id": 94399990,
-      "name": "Casa Mia",
-      "height_m": 6.8,
-      "levels": 2,
-      "height_status": "Unmeasured conservative retained default; not a verified storey survey",
-      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": -0.0
-    },
-    {
       "osm_id": 94399998,
       "name": "Villa Aline",
       "height_m": 13.6,
@@ -1728,15 +1763,6 @@
       "name": "Villa Le Sphinx",
       "height_m": 17.0,
       "levels": 5,
-      "height_status": "Retained height/levels",
-      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
-    },
-    {
-      "osm_id": 94401978,
-      "name": "Villa Marie Antoinette",
-      "height_m": 10.2,
-      "levels": 3,
       "height_status": "Retained height/levels",
       "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
       "removed_road_area_m2": 0.0
