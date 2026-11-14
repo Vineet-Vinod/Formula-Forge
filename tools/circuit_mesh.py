@@ -70,7 +70,9 @@ class MeshScene:
         normal = cross(sub(b, a), sub(c, a))
         if sum(value * value for value in normal) < 1e-12:
             return
-        if kind.startswith("Tile_") and normal[2] < -0.35:
+        # Road and kerb tops must face up even when a thin triangle has little area.
+        threshold = 0.0 if kind in ("Tile_Road", "Tile_Kerb") else -0.35
+        if kind.startswith("Tile_") and normal[2] < threshold:
             b, c = c, b
             uv = (uv[0], uv[2], uv[1])
             normal = mul(normal, -1)

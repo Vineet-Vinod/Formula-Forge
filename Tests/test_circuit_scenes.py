@@ -1552,3 +1552,31 @@ def test_dense_runoff_index_preserves_ground_and_refreshes_after_append(scene: C
     indexed = [scene.ground(*point) for point in probes]
     scene.slug = 'fixture'
     assert indexed == [scene.ground(*point) for point in probes]
+
+
+@pytest.mark.parametrize(('kind', 'material'), [('Tile_Road', 'White'), ('Tile_Kerb', 'Red'), ('Tile_Kerb', 'White')])
+@pytest.mark.parametrize('width', [.12, 1.0])
+def test_road_and_kerb_tops_face_up_at_every_triangle_size(kind: str, material: str, width: float) -> None:
+    from circuit_mesh import MeshScene, world
+
+    mesh = MeshScene()
+    points = ((17.1, -48.3, 4.4), (17.1, -47.5, 4.42), (17.1 + width, -47.5, 4.42))
+    texture = ((0.0, 0.0), (1.0, 0.0), (1.0, 1.0))
+    mesh.triangle(kind, material, *points, texture)
+    tile = next(iter(mesh.tiles.values()))
+    values = struct.unpack_from('<24f', tile.triangles, 4)
+    a, b, c = [values[i:i + 8] for i in (0, 8, 16)]
+    assert (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0]) < 0
+    assert min(a[5], b[5], c[5]) > .99
+    expected = {struct.pack('<3f', *world(point)): uv for point, uv in zip(points, texture, strict=True)}
+    assert {struct.pack('<3f', *p[:3]): p[6:8] for p in (a, b, c)} == expected
+
+
+def test_small_other_surface_and_building_underside_keep_their_winding() -> None:
+    from circuit_mesh import MeshScene
+
+    for kind in ('Tile_Field', 'Building_Roof'):
+        mesh = MeshScene()
+        mesh.triangle(kind, 'Concrete', (0, 0, 0), (0, .8, .02), (.12, .8, .02))
+        tile = next(iter(mesh.tiles.values()))
+        assert struct.unpack_from('<f', tile.triangles, 4 + 5 * 4)[0] < 0
