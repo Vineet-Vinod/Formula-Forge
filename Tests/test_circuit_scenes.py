@@ -664,7 +664,7 @@ def test_opted_in_tight_inside_edges_have_one_grass_skin_and_unfolded_bands(
     assert unary_union(grass).intersection(scene.road_mask).area < 0.00001
 
 
-def test_default_surface_bytes_match_before_local_edge_opt_in(scene: CircuitScene) -> None:
+def test_default_surface_packed_output_remains_stable(scene: CircuitScene) -> None:
     scene.road_surfaces()
     scene.kerb(10, 40, 1)
     scene.kerb(80, 120, -1)
@@ -675,7 +675,7 @@ def test_default_surface_bytes_match_before_local_edge_opt_in(scene: CircuitScen
         digest.update(name.encode())
         digest.update(json.dumps(tile.materials).encode())
         digest.update(tile.triangles)
-    assert digest.hexdigest() == "749a5c7d92cc27fc0b6beedb178d5bae24b1603ca4a0866848951b8f1cf01ec2"
+    assert digest.hexdigest() == "5e18626fb1f3353f76c20096b5e27d6c45b7743c01de1764709be3a7c0900257"
 
 
 def test_skypark_closes_actual_concave_footprint(scene: CircuitScene, monkeypatch: pytest.MonkeyPatch) -> None:

@@ -605,6 +605,13 @@ buffered Python containment test hid an eight-micrometre F32 seam on COTA. Its
 contact exporter now adds a bounded 0.3 mm bevel overlap on the original planes;
 triangulate the complete bevel polygon and check overlapping height agreement.
 Keep such repairs local rather than weakening every circuit's query tolerance.
+Check face orientation independently of triangle size. An unnormalised cross
+product measures area as well as direction: the old 0.35 cutoff left 12 cm road
+stripes and small kerb tops facing downward. Road and kerb top emitters now use
+only the sign; other surface roles keep their existing rules. Verify packed
+winding, stored normals and attached UVs, then compare complete outside rows and
+native physical data before regenerating an affected circuit. A changed byte
+baseline needs a documented before/after scope proof, not just a new hash.
 Reject triangles that collapse at the final float precision. The
 [back-straight evidence](../Attribution/Sources/cota/backstraight-width-evidence.json)
 retains the width estimate, source uncertainty and unchanged protection scope.
