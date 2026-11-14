@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=jeddah",
-  "tiles": 141,
-  "triangles": 1043795,
+  "tiles": 146,
+  "triangles": 1146291,
   "road_sha256": "86ac9b9b678308d892ee45f96061bee4ae87afbda9aaf7791eb9bc0166c365e6",
   "terrain_sha256": "a30c782d9e70e53575eaa3a1295d86b00eeca559983b25de642725c36fdfe647",
   "landmarks": [
@@ -224,6 +224,28 @@
       "south_residency_margin_m": 600.0,
       "source": "skyline-residency.json",
       "dimensions_status": "Only the named tile CSV load/unload envelope extends toward the southern hairpin. Tower geometry, height, construction state, materials, actual UE mesh bounds and the global streaming radii remain unchanged. Exact prior bounds and whole-lap range witnesses are retained in the source record."
+    },
+    {
+      "name": "Sail and Red Sea Mall architectural context",
+      "sail_height_m": 264.7,
+      "sail_floorplate_m2": 1210.000000000008,
+      "sail_podium_site_m2": 9736.015722089027,
+      "sail_projection_outside_podium_m2": 165.79945818197757,
+      "sail_courtyard_m2": 1150.8967347520584,
+      "mall_courtyard_m2": 3424.7785501102094,
+      "mall_original_envelope_m2": 102106.5649371572,
+      "mall_modeled_body_m2": 98681.78638704697,
+      "mall_flat_roof_relative_m": 16.3,
+      "mall_roof_plant_clusters": 72.0,
+      "local_terrain_cells": 868,
+      "new_coverage_outside_original_field_m2": 54.85609271264854,
+      "source_limits": "Source-qualified architectural estimates. CVU location is approximate, not a surveyed tower centroid; tower plate, podium split, floor pitches and mall components are bounded estimates. All old ground outside actual property interiors keeps its planes, normals and UVs. Only the small new mall tip uses a declared horizontal extension of actual emitted boundary heights for foundation closure. Existing Diamond residency, native field, road/contact data and global streaming radii remain unchanged. Sail is behind the T27 exit camera and cannot alone close that skyline finding. Fresh native/cooked views remain required."
+    },
+    {
+      "name": "Sail named approach residency",
+      "tiles": "Building_City_00_m3, Building_City_01_m3",
+      "source": "context-residency.json",
+      "qualification": "Only the two named CSV envelopes extend toward the northern approach. The retained 5,003-pose packet has zero potentially visible unloaded frames under unchanged 1,800 m load / 2,050 m release hysteresis. Potential frustum overlap is not proof of rendered visibility or absence of occlusion. Existing Diamond rule, actual mesh bounds, geometry, location and global streaming radii remain fixed."
     },
     {
       "name": "Jeddah floodlight recipe",
