@@ -77,8 +77,10 @@ def tower(scene: MeshScene, config: SailArchitecture, frame: LocalFrame) -> Poly
                 first, last = bay / count, (bay + 1) / count
                 first_xy = ia[0] + (ib[0] - ia[0]) * first, ia[1] + (ib[1] - ia[1]) * first
                 last_xy = ia[0] + (ib[0] - ia[0]) * last, ia[1] + (ib[1] - ia[1]) * last
-                material = 'WarmGlass' if (floor * 17 + bay * 7 + face * 11) % 41 == 0 else 'Glass'
-                scene.quad('Building_SailRecessedRooms', material, (*first_xy, low), (*last_xy, low),
+                occupied = high <= config.base_relative_m + config.highest_occupied_m
+                material = 'WarmGlass' if occupied and (floor * 17 + bay * 7 + face * 11) % 41 == 0 else 'Glass'
+                kind = 'Building_SailRecessedRooms' if occupied else 'Building_SailUpperWeatherScreen'
+                scene.quad(kind, material, (*first_xy, low), (*last_xy, low),
                            (*last_xy, high), (*first_xy, high))
                 width = .075
                 scene.banner((*last_xy, low),

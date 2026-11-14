@@ -83,11 +83,19 @@ def test_source_tower_is_separate_from_podium_and_has_recessed_balconies(
     assert plate.area == pytest.approx(79264 / 65, rel=.01)
     assert plate.area < site.area / 7
     rooms = [face for kind, _m, face in records if kind == 'Building_SailRecessedRooms']
+    screens = [face for kind, _m, face in records if kind == 'Building_SailUpperWeatherScreen']
     slabs = [face for kind, _m, face in records if kind == 'Building_SailFloorSlabs']
-    room_levels = {round(min(p[2] for p in face.points), 5) for face in rooms}
+    room_levels = {round(min(p[2] for p in face.points), 5) for face in [*rooms, *screens]}
     assert len(room_levels) == sail.floors
-    for face in rooms:
+    for face in [*rooms, *screens]:
         assert all(plate.buffer(-.8).covers(ShapePoint(p[:2])) for p in face.points)
+    assert screens
+    assert all(material == 'Glass' for kind, material, _face in records
+               if kind == 'Building_SailUpperWeatherScreen')
+    occupied_limit = sail.base_relative_m + 243.7
+    assert all(max(p[2] for p in face.points) <= occupied_limit
+               for kind, material, face in records
+               if kind == 'Building_SailRecessedRooms' and material == 'WarmGlass')
     assert len({round(p[2], 5) for face in slabs for p in face.points}) == 2 * (sail.floors + 1)
     top = max(p[2] for kind, _m, face in records if kind.startswith('Building_Sail') for p in face.points)
     assert top - sail.base_relative_m == pytest.approx(264.7, abs=1e-9)

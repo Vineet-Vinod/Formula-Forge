@@ -1,5 +1,5 @@
 {
-  "status": "Source-qualified architectural estimates pending fresh native/cooked review.",
+  "status": "Sail/mall native1956c19a whole-route review remains held for nearer city context. Bounded upper glazing source correction prepared for native/cooked review.",
   "source_frame": {
     "origin_source": "Attribution/Sources/jeddah/provenance.json",
     "uniform_scale": 0.997450175270678,
@@ -58,7 +58,49 @@
         "bytes": 372809,
         "sha256": "c299bfbd0a95e5631645ad94e06762b25e043fc2f4460e7a52982bdc5f688da5"
       }
-    ]
+    ],
+    "facade_supplier": {
+      "publisher": "KAPHS, actual Lamberts channel-glass supplier",
+      "url": "https://kaphsgroup.com/project/shangri-la-hotel/",
+      "photos": [
+        {
+          "url": "https://kaphsgroup.com/wp-content/uploads/2026/08/u-channel-glass-shangri-la-hotel-01.jpg",
+          "file": "build/reviews/resume-20261114/jeddah/sail-supplier-01.jpg",
+          "bytes": 555067,
+          "sha256": "806493f9be80fdb372460faed87d63781f8d012a3fbdd66d8ea9df6abd86e1ac",
+          "use": "Review only, unmodified primary facade-supplier photo. Capture epoch unverified; URL is2026publication, not proof ofcapturedate."
+        },
+        {
+          "url": "https://kaphsgroup.com/wp-content/uploads/2026/08/u-channel-glass-shangri-la-hotel-02.jpg",
+          "file": "build/reviews/resume-20261114/jeddah/sail-supplier-02.jpg",
+          "bytes": 1030998,
+          "sha256": "56be8bb824f2cff7761013373095552da5ae8c865bab78cabcaf3f113b3c5707",
+          "use": "Review only, unmodified primary facade-supplier photo. Capture epoch unverified; URL is2026publication, not proof ofcapturedate."
+        },
+        {
+          "url": "https://kaphsgroup.com/wp-content/uploads/2026/08/u-channel-glass-shangri-la-hotel-03.jpg",
+          "file": "build/reviews/resume-20261114/jeddah/sail-supplier-03.jpg",
+          "bytes": 1093051,
+          "sha256": "848c713e32b5bb4a477c26d9635245ecc5157ebb99af4a86fb3c46f50c16e455",
+          "use": "Review only, unmodified primary facade-supplier photo. Capture epoch unverified; URL is2026publication, not proof ofcapturedate."
+        },
+        {
+          "url": "https://kaphsgroup.com/wp-content/uploads/2026/08/u-channel-glass-shangri-la-hotel-04.jpg",
+          "file": "build/reviews/resume-20261114/jeddah/sail-supplier-04.jpg",
+          "bytes": 563327,
+          "sha256": "77307198739c5234a4d1ff60e152f28aa1eaf41469588fbfc79c3902f91731ca",
+          "use": "Review only, unmodified primary facade-supplier photo. Capture epoch unverified; URL is2026publication, not proof ofcapturedate."
+        },
+        {
+          "url": "https://kaphsgroup.com/wp-content/uploads/2026/08/u-channel-glass-shangri-la-hotel-10.jpg",
+          "file": "build/reviews/resume-20261114/jeddah/sail-supplier-10.jpg",
+          "bytes": 400788,
+          "sha256": "dca2b3d43b1f7770f55c062b4a9f784f7568c892b520d6b2c5e648a3bb6e77b7",
+          "use": "Review only, unmodified primary facade-supplier photo. Capture epoch unverified; URL is2026publication, not proof ofcapturedate."
+        }
+      ],
+      "observed": "Repeated slab/fin lattice extends nearly to a modest rectangular roof termination seen obliquely. This does not establish a large sloping21m crown or allocate mechanical floors. Actualfinlighting is independent of roomoccupancy."
+    }
   },
   "sail_reconstruction": {
     "floorplate_m": [
@@ -76,13 +118,13 @@
     },
     "podium": "Seven estimated 4.2 m storeys in a distinct rounded northern body. A separate three-storey ballroom wing uses estimated 5.1 m pitches. Their split is original reconstruction within the mapped podium/site.",
     "facade": "Recessed room glazing, pale horizontal slabs, staggered pale fins and glass balcony rails; balcony depth increases from 0.85 m to 1.65 m. Bay rhythm and fin pattern are original architectural estimates.",
-    "crown": "Only a small 3.5 m upper termination with a 0.7 m angled top edge. The full architectural height remains 264.7 m above the entrance.",
+    "crown": "Small3.5m upper termination and0.7m estimated tilt are retained. Newhigherresolutionprimarysupplierphotos do not justify enlarging it. The264.7m total is fixed.",
     "entry_relative_m": 3.0,
     "entry_basis": "Bounded estimate from local street-class DSM samples around the site, roughly 1.7 m to 4.6 m, plus the photographed raised waterfront entrance. Not a bare-earth survey.",
     "foundation_relative_m": 0.5,
     "foundation_basis": "Separate tower and low-podium concrete enclosures extend below every actual original boundary-plane crossing. The 0.5 m bottom is an estimated below-grade closure, not a surveyed basement level. It does not set the 264.7 m tower height.",
     "remaining_uncertainty": "Tower axis/plate, approximate map point, podium split, opening dimensions, canopy and terrace/pool positions are bounded estimates.",
-    "occupied_height_note": "CVU also lists 243.7 m to highest occupied floor. The 65 floor-band arrangement and upper 3.5 m termination are an appearance reconstruction from the primary as-built photos, not a surveyed allocation of occupied versus mechanical floors. No occupiable upper floor or mechanical plan is asserted."
+    "occupied_height_note": "CVU243.7m highest-occupied-floor datum is separate from architectural264.7m. The65-band facade appearance is reconstructed; it does not allocate occupied or mechanical floors. Upper recessed panels are unlit Glass weather-screen appearance; localized WarmGlass room panes are allowed only when their complete band stays below base+243.7m. Structural/fins/rail/cap geometry and architectural finlights are unchanged."
   },
   "mall_primary": {
     "architect": {

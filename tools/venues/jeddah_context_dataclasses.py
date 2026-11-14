@@ -42,6 +42,7 @@ class SailArchitecture:
     center_wgs84: tuple[FiniteFloat, FiniteFloat]
     axis_source_vertices: tuple[int, int] = (1, 0)
     height_m: Annotated[FiniteFloat, Field(gt=250, lt=275)] = 264.7
+    highest_occupied_m: Annotated[FiniteFloat, Field(gt=230, lt=250)] = 243.7
     floors: Annotated[int, Field(ge=60, le=70)] = 65
     length_m: FiniteFloat = 55.
     width_m: FiniteFloat = 22.

@@ -1,0 +1,31 @@
+{
+  "status": "Source review/scoped checks passed; native/cooked upper-glazing review pending. Jeddah city-context hold remains open.",
+  "source_facts": {
+    "architectural_height_m": 264.7,
+    "highest_occupied_floor_m": 243.7,
+    "cvu_floor_count": 65,
+    "floor_count_definition": "Includes significant mechanicalplantfloors; no exact mechanical/occupied allocation is available."
+  },
+  "reconstruction": "Retain the continuous source-observed balcony/slab/fin lattice and small termination. Reclassify panels above the highestoccupied datum as unlit Glass weather-screen appearance. Only fully belowdatum room bands may have localized WarmGlass. Architectural finedge lighting remains independent. The65-band spacing is an appearance estimate, not a main-floor survey.",
+  "proof": {
+    "all_triangle_XYZ_normals_UVs_and_tiles_identical": true,
+    "triangle_count": 51810,
+    "changed_material_triangle_count": 14,
+    "removed_material": "WarmGlass",
+    "added_material": "Glass",
+    "changed_native_tiles": [
+      "Building_City_00_m3",
+      "Building_City_01_m3"
+    ],
+    "tower_total_height_m": 264.7,
+    "highest_occupied_floor_m": 243.7,
+    "source_hashes": {
+      "tools/venues/jeddah_sail.py": "1486ea6351f6be20a75ab28d490811d77fd470f8380b93d28718a11fbd40dfef",
+      "tools/venues/jeddah_context_dataclasses.py": "37259ae50ad9da0270656f9564305535647a03717ec3bbe93e99a0667658a43d",
+      "Attribution/Sources/jeddah/sail-architecture.json": "69ac054122623a6a5ab393ba48c91cde2a972bcc65ed887d5c3b3647430cf197"
+    }
+  },
+  "source_review": "build/reviews/resume-20261114/reviews/jeddah-upper-private-source-review.md",
+  "source_photos": "context-source-qualification.json:sail_primary.facade_supplier",
+  "preserved": "All towerXYZ/normals/UVs, totalheight, footprint, podium, othergeometry, native road/terrain/contact, materialsrecipes, global lighting, handling and camera remainunchanged."
+}

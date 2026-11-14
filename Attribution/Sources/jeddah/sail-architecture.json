@@ -50,5 +50,6 @@
   "ballroom_floor_pitch_m": 5.1,
   "podium_north_offset_m": 20.0,
   "podium_projection_limit_m": 3.05,
-  "foundation_bottom_relative_m": 0.5
+  "foundation_bottom_relative_m": 0.5,
+  "highest_occupied_m": 243.7
 }
