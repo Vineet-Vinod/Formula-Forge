@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=baku",
   "tiles": 389,
-  "triangles": 4314245,
+  "triangles": 4361155,
   "road_sha256": "26bc10ef7913eb8b758e60bada4eb749e94aa7bb524952c47ead9fff2130166e",
   "terrain_sha256": "e6e5423c2f5f02fc7e47ddb1459d9e39edcc2ae0b7891724be8520abedc5231e",
   "landmarks": [
@@ -147,6 +147,49 @@
       "source_note": "Actual mapped one-way asphalt service street and adjoining hardscape, on the driver-right side of the racing road, outside the racing corridor, retained buildings and Sabir Park. Ground is reconstructed from unchanged adjacent road endpoint grades, with a smooth 42 m fade to original scenery and a 16 m fade at the untouched park. About \u00b12 m vertical uncertainty; this is not a bare-earth survey. Native road, Court facade placement, park heights and physical protection remain unchanged. DSM terrain hidden inside the real Court footprint does not form part of its ground-floor architecture."
     },
     {
+      "name": "Konstitusiya M\u0259hk\u0259m\u0259si",
+      "osm_id": 133641457,
+      "height_m": 22.4,
+      "entrance_threshold_estimate_m": 5.931876758311761,
+      "old_renderer_low_footing_retained_m": 4.020574104240036,
+      "height_uncertainty_m": 2.0,
+      "source_note": "Primary-photo reconstruction of Constitutional Court133641457. The entrance is sourceedge11 beside service339124204, registered through the continuous street/Gate/SabirPark relation. Seven upper arches,13first-floor rectangular windows,14small attic windows and3central ground doors plus4broad flanking windows are observed. The22.4m body height is a calibrated single-photo architectural estimate (+/-2m), using the original2015 image,32.822m mapped frontage and EXIFintrinsics; it is not survey. The former13.6m convention conflicts with the primary facade proportions. Floor bands5.4/11.5/17.8/22.4m are image-derived estimates. Main entrance datum follows the native-anchored service profile at midfront plus an estimated0.3m low entry stair rise. The original minimum renderer footing remains as a conservative embedded wall extent, not as validated public ground or floor datum. Southside openings/canopies and unobserved rear elevations remain estimates. Terrain/step/rear and native skyline qualification are pending. The photographed low entry stair is reconstructed as three broad0.55m treads with0.15m riser spacing; the uphill portions embed into the fitted street, so visible riser count varies with grade. These small entrance dimensions are architectural estimates, separate from the held public Nizami/southern stair corridors. A12cm projected/30cm high dressed-stone base course follows the fitted public paving, with entry steps kept separate. These are estimated architectural dimensions; its actual emitted footprint must match the Ground cut before integration.",
+      "primary_photos": "https://commons.wikimedia.org/wiki/File:Konstitusiya_M%C9%99hk%C9%99m%C9%99sinin_binas%C4%B1_v%C9%99_%C6%8Fziz_%C6%8Fliyev_k%C3%BC%C3%A7%C9%99si.JPG, https://commons.wikimedia.org/wiki/File:Constitutional_Court_of_the_Respublic_of_Azerbaijan_-_panoramio.jpg, https://commons.wikimedia.org/wiki/File:Konstitusiya_M%C9%99hk%C9%99m%C9%99sinin_binas%C4%B1_(1).JPG, https://commons.wikimedia.org/wiki/File:Wikiwyprawa_2015_baku_6.jpg"
+    },
+    {
+      "name": "Grade-following stone base course",
+      "osm_id": 133641457,
+      "projection_estimate_m": 0.12,
+      "height_estimate_m": 0.3,
+      "footprint_area_m2": 1457.13780472608,
+      "closed_strip_count": 223,
+      "strip_missing_area_m2": 0.0,
+      "strip_excess_area_m2": 0.0,
+      "source_note": "Low dressed-stone frontage base, reconstructed as an architectural estimate. It follows the bounded actual paving field, with a3cm embed. Entry steps remain distinct. This emitted masonry projection, rather than an arbitrary roof buffer, defines the local Ground cut. Rear ground remains source-held; no surveyed plinth dimensions are claimed."
+    },
+    {
+      "name": "Az\u0259rbaycan H\u0259mkarlar \u0130ttifaqlar\u0131 Konfederasiyas\u0131",
+      "osm_id": 133641456,
+      "main_front_threshold_estimate_m": 7.15,
+      "roof_estimate_m": 31.15,
+      "body_height_estimate_m": 24.0,
+      "height_uncertainty_m": 3.0,
+      "uncertainty_m": 2.0,
+      "source_note": "Bounded architectural reconstruction of the western frontage of133641456 beside Court. Continuous primary-photo street/sidewalk and exact shared Court11/north8 endpoint support a low service-street frontage, without a5-8m retaining plinth. West wall bottom follows native-anchored5.016/7.052m service profile; main7.15m datum has about+/-2m uncertainty, not survey. Rectangular upper openings, tall ground arches/mezzanine and attic language are observed; precise west sill/bay/door positions are estimated. The24m body height (+/-3m) is an architectural envelope supported by the observed tall multi-level block and independently estimated22.4m Court; no complete north crown or measured roof is registered. The resulting31.15m absolute roof is an estimate, replacing the unvalidated old15.1m west rise that came from roof-biased base12.059+OSM3x3.4m. Original rear ground is held; rear upper bands are estimated around that held datum within the new envelope. Neither old DSM nor OSMlevel convention validates the rear ground or exact crown. Terrain/public joins/native skyline review pending. In the bounded paving candidate, the grade-following public footing callback fits the native western street to the retained7.6127m public Concrete cap; this cap is inherited preservation data, not an independent elevation survey. Ground-floor sills follow the resulting public footprint edge, avoiding hidden under-building gradients. A12cm projected/30cm high dressed-stone base course is an architectural estimate whose actual emitted volume defines the Ground cut.",
+      "primary_photos": "https://commons.wikimedia.org/wiki/File:Wikiwyprawa_2015_baku_6.jpg, https://commons.wikimedia.org/wiki/File:Building_of_Constitutional_Court_in_Baku.jpg"
+    },
+    {
+      "name": "Grade-following stone base course",
+      "osm_id": 133641456,
+      "projection_estimate_m": 0.12,
+      "height_estimate_m": 0.3,
+      "footprint_area_m2": 1400.6793332401699,
+      "closed_strip_count": 313,
+      "strip_missing_area_m2": 0.0,
+      "strip_excess_area_m2": 0.0,
+      "source_note": "Low dressed-stone frontage base, reconstructed as an architectural estimate. It follows the bounded actual paving field, with a3cm embed. Entry steps remain distinct. This emitted masonry projection, rather than an arbitrary roof buffer, defines the local Ground cut. Rear ground remains source-held; no surveyed plinth dimensions are claimed."
+    },
+    {
       "name": "Muzey M\u0259rk\u0259zi",
       "osm_id": 25359715,
       "height_m": 13.6,
@@ -198,18 +241,6 @@
       "name": "Mapped building",
       "osm_id": 133641453,
       "height_m": 10.2,
-      "facade": "classical"
-    },
-    {
-      "name": "Az\u0259rbaycan H\u0259mkarlar \u0130ttifaqlar\u0131 Konfederasiyas\u0131",
-      "osm_id": 133641456,
-      "height_m": 10.2,
-      "facade": "classical"
-    },
-    {
-      "name": "Konstitusiya M\u0259hk\u0259m\u0259si",
-      "osm_id": 133641457,
-      "height_m": 13.6,
       "facade": "classical"
     },
     {
@@ -1870,11 +1901,6 @@
     {
       "osm_id": 133847240,
       "name": "Mapped Old City approach frontage",
-      "detail_status": "Actual clipped footprint and tagged storeys retained. Supplied234/236s supports articulated arched upper openings, pale stone surrounds and narrow projecting iron balconies. Individual bay/arch/balcony dimensions and placement are original visual estimates; no template office signboard."
-    },
-    {
-      "osm_id": 133641457,
-      "name": "Konstitusiya M\u0259hk\u0259m\u0259si",
       "detail_status": "Actual clipped footprint and tagged storeys retained. Supplied234/236s supports articulated arched upper openings, pale stone surrounds and narrow projecting iron balconies. Individual bay/arch/balcony dimensions and placement are original visual estimates; no template office signboard."
     },
     {
