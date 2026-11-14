@@ -14,6 +14,8 @@ from venues.baku_civic import civic_frontage, close_native_facade_fragments
 from venues.baku_flames import flame_towers
 from venues.baku_forecourt import court_forecourt
 from venues.baku_ground import finish_terrain as finish_ground
+from venues.baku_hotel import finish as finish_hotel
+from venues.baku_hotel import prepare as prepare_hotel
 from venues.baku_museums import museums
 from venues.baku_niyazi import planting
 from venues.baku_philharmonic import philharmonic_hall
@@ -77,7 +79,7 @@ def build_venue(scene: CircuitScene) -> None:
         facade(scene, building.osm_id, h, 'modern' if building.osm_id in modern else 'classical', material)
     close_native_facade_fragments(scene, 133641453)
     oldcity_relief(scene)
-    facade(scene, 152190583, 36, 'mansard')
+    prepare_hotel(scene)
     tower = mapped(scene, 299418016)
     if tower is not None:
         c, axis, side_axis, _, _ = frame(tower)
@@ -109,6 +111,7 @@ def finish_terrain(scene: CircuitScene) -> None:
     finish_ground(scene, scene.sources / 'museum-interior-ground-delta.json.gz')
     planting(scene, scene.sources / 'niyazi-planting.json')
     museums(scene, scene.sources / 'museums.json.gz')
+    finish_hotel(scene)
 
 
 def castle_ramp(scene: CircuitScene) -> None:

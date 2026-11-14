@@ -1,0 +1,87 @@
+{
+  "rear_primary": {
+    "page": "https://commons.wikimedia.org/wiki/File:BBMM,_Baku_(P1090267).jpg",
+    "author": "Matti Blume",
+    "license": "CC-BY-SA4.0",
+    "acquisition_date": "2019-07-17",
+    "original": {
+      "file": "fourseasons-rear-primary-original.jpg",
+      "bytes": 7908386,
+      "sha256": "9481005101e69eb6d21bb3597aa83e1c45658ba55484ffe2a7f8ab40fa5ca40c",
+      "sha1_verified": true
+    },
+    "preview": {
+      "file": "fourseasons-rear-primary-preview.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/BBMM%2C_Baku_%28P1090267%29.jpg/1920px-BBMM%2C_Baku_%28P1090267%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "bytes": 960173,
+      "sha256": "e0987f1284d9461699fc6456bade53061599bfacb8832d5ab913474123634b2d",
+      "transformation": "Server whole-frame downsample, not crop. Original URL/SHA1 and embedded source metadata retained.",
+      "actual_dimensions_px": [
+        1920,
+        1440
+      ],
+      "dimension_note": "API requested/reported1500x1125 but delivered JPEG decodes1920x1440; use actual decoded pixel coordinates."
+    },
+    "gps": [
+      40.365721645,
+      49.83067328833334
+    ],
+    "camera_note": "116mm35mm-equivalent; Lightroom crop/resize and GPS uncertainty make the registration horizontal-only, not an elevation survey.",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/0/0f/BBMM%2C_Baku_%28P1090267%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+  },
+  "operator": {
+    "source_page": "https://www.fourseasons.com/baku/photos-and-videos/",
+    "use": "Private authoring reference only; no pixels shipped",
+    "photos": [
+      {
+        "file": "fourseasons-operator-night.jpg",
+        "url": "https://www.fourseasons.com/alt/img-opt/~70.1530.125,5275-473,5562-2850,0000-1603,1250/publish/content/dam/fourseasons/images/web/BKU/BKU_287_original.jpg",
+        "sha256": "9a2ac5a506f1ec485505912ea7ef2c7a52a5b6a26e434a463651776d8dcb4af6",
+        "bytes": 142630
+      },
+      {
+        "file": "fourseasons-operator-entry.jpg",
+        "url": "https://www.fourseasons.com/alt/img-opt/~70.1530.0,0000-4,7500-3000,0000-1687,5000/publish/content/dam/fourseasons/images/web/BKU/BKU_296_original.jpg",
+        "sha256": "5676deb36cee84f657b57ef31d9c1ae1238328197d940f0be52562884832c5e6",
+        "bytes": 89364
+      },
+      {
+        "file": "fourseasons-operator-oldcity.jpg",
+        "url": "https://www.fourseasons.com/alt/img-opt/~70.1530.0,0000-19,9262-1080,0000-1080,0000/publish/content/dam/fourseasons/images/web/BKU/BKU_ugc_the_intrepid_soul.jpg",
+        "sha256": "167cf5a05aaf38d4b416e961eea18e418e8e7150ef41c64af1dc74a2fc8ed8ee",
+        "bytes": 317419
+      },
+      {
+        "file": "fourseasons-operator-north-detail.jpg",
+        "url": "https://www.fourseasons.com/alt/img-opt/~70.1530/publish/content/dam/fourseasons/images/web/BKU/BKU_292_aspect4x5.jpg",
+        "sha256": "ce1b866c20477370810d2bdaadefd213b4f413b4b84acd034876fb3ed2eb9118",
+        "bytes": 325533
+      }
+    ]
+  },
+  "architect": {
+    "source_page": "https://www.reardonsmith.com/four-seasons-baku",
+    "use": "Private authoring reference only; no pixels shipped",
+    "photos": [
+      {
+        "file": "fourseasons-architect-03.jpg",
+        "url": "https://images.squarespace-cdn.com/content/v1/5d8ca8b3d46259208da62e42/1605129732299-NA3TAJCZTU7R3G0J0EX0/Four%2BSeasons%2BBaku%2B03.jpg?format=1500w",
+        "sha256": "f4d40814e9d12102c7617e553c5d6caf07442c2b26f7ea51e26a724761e9479b",
+        "bytes": 112277
+      },
+      {
+        "file": "fourseasons-architect-04.jpg",
+        "url": "https://images.squarespace-cdn.com/content/v1/5d8ca8b3d46259208da62e42/1605129751480-4OGGJAEIBJD0LAP53VYW/Four%2BSeasons%2BBaku%2B04.jpg?format=1500w",
+        "sha256": "2fbc9c3b3eca8811b63667e2eb7d0c876e088f99db204a0497b4518a815451df",
+        "bytes": 361734
+      },
+      {
+        "file": "fourseasons-architect-01.jpg",
+        "url": "https://images.squarespace-cdn.com/content/v1/5d8ca8b3d46259208da62e42/1605129712181-4JVW9I75ONHDS8R6PJB4/Four%2BSeasons%2BBaku%2B01.jpg?format=1500w",
+        "sha256": "4eb190d823bbdbb1b651c18abab82330124d5fd2a8e322a6da07d0822ddd309e",
+        "bytes": 317455
+      }
+    ]
+  },
+  "use": "Authoring references only. No photograph/video pixels or imported game meshes shipped."
+}

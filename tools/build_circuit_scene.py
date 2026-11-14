@@ -25,6 +25,7 @@ PALETTE = {
     "BakuSkyGlass": (0.10, 0.17, 0.23),
     "BakuSkyGlassLight": (0.18, 0.25, 0.29),
     "BakuPhilharmonicOchre": (0.72, 0.52, 0.22),
+    "BakuHotelCopper": (0.20, 0.36, 0.29),
     "CanopyFabric": (0.78, 0.78, 0.74),
     "Roof": (0.14, 0.15, 0.16),
     "JeddahConstruction": (0.19, 0.17, 0.145),
@@ -269,10 +270,16 @@ class Importer:
                 metal = EDIT.create_material_expression(material, unreal.MaterialExpressionConstant)
                 metal.r = 0.65
                 EDIT.connect_material_property(metal, "", unreal.MaterialProperty.MP_METALLIC)
+            if self.slug == "baku" and name == "BakuHotelCopper":
+                metal = EDIT.create_material_expression(material, unreal.MaterialExpressionConstant)
+                metal.r = .20
+                EDIT.connect_material_property(metal, "", unreal.MaterialProperty.MP_METALLIC)
             roughness = EDIT.create_material_expression(
                 material, unreal.MaterialExpressionConstant
             )
             roughness.r = 0.22 if name in ("Glass", "WarmGlass", "Water", "BakuSkyGlass", "BakuSkyGlassLight") else 0.7
+            if self.slug == "baku" and name == "BakuHotelCopper":
+                roughness.r = .55
             if self.slug == "monaco" and name == "MonacoRuscinoRose":
                 roughness.r = 0.85
             if self.slug == "jeddah" and name == "JeddahConstruction":

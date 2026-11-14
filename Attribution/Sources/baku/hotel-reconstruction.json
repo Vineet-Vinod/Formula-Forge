@@ -1,0 +1,363 @@
+{
+  "schema_version": 1,
+  "status": "Typed production adapter and frozen394745triangle replay qualified; hook/material integration and native/cooked review pending. Baku remains incomplete.",
+  "identity": "Four Seasons Hotel Baku",
+  "osm_id": 152190583,
+  "registration": {
+    "osm_id": 152190583,
+    "rear_edges": [
+      13,
+      14,
+      15
+    ],
+    "rear_length_m": 95.41943067965641,
+    "rear_start_ne_xy": [
+      -1552.9468426777114,
+      -971.7798417714272
+    ],
+    "rear_end_sw_xy": [
+      -1593.7125015541365,
+      -1058.0528317949606
+    ],
+    "primary_camera_xy": [
+      -1923.8752254960825,
+      -779.794435533063
+    ],
+    "primary_camera_gps": [
+      40.365721645,
+      49.83067328833334
+    ],
+    "projection": {
+      "fitted_focal_px": 6989.9493696844265,
+      "fitted_principal_x": 999.6470131788244,
+      "endpoint_pixels": [
+        205.0,
+        1768.0
+      ],
+      "endpoint_uncertainty_px": 35,
+      "note": "Horizontal perspective registration only. GPS position, endpoint silhouette and Lightroom export uncertainty prevent survey metric claims."
+    },
+    "photo": {
+      "file": "fourseasons-rear-primary-preview.jpg",
+      "width": 1920,
+      "height": 1440,
+      "original_sha256": "9481005101e69eb6d21bb3597aa83e1c45658ba55484ffe2a7f8ab40fa5ca40c"
+    },
+    "features": [
+      {
+        "role": "main_stack",
+        "pixel_x": 502,
+        "along_from_ne_m": 17.642498230207295
+      },
+      {
+        "role": "main_stack",
+        "pixel_x": 588,
+        "along_from_ne_m": 22.792860403093933
+      },
+      {
+        "role": "main_stack",
+        "pixel_x": 670,
+        "along_from_ne_m": 27.721310203661773
+      },
+      {
+        "role": "main_stack",
+        "pixel_x": 758,
+        "along_from_ne_m": 33.029638724779375
+      },
+      {
+        "role": "main_stack",
+        "pixel_x": 842,
+        "along_from_ne_m": 38.115382237697915
+      },
+      {
+        "role": "main_stack",
+        "pixel_x": 925,
+        "along_from_ne_m": 43.15862233829699
+      },
+      {
+        "role": "main_stack",
+        "pixel_x": 1010,
+        "along_from_ne_m": 48.342073686536736
+      },
+      {
+        "role": "main_stack",
+        "pixel_x": 1095,
+        "along_from_ne_m": 53.54453812053514
+      },
+      {
+        "role": "main_stack",
+        "pixel_x": 1422,
+        "along_from_ne_m": 73.73790703190406
+      },
+      {
+        "role": "main_stack",
+        "pixel_x": 1505,
+        "along_from_ne_m": 78.90918846570023
+      },
+      {
+        "role": "main_stack",
+        "pixel_x": 1590,
+        "along_from_ne_m": 84.22448331827121
+      },
+      {
+        "role": "northeast_service_return",
+        "pixel_x_interval": [
+          205,
+          437
+        ],
+        "along_from_ne_m": [
+          4.138158161608539e-17,
+          13.762287866738713
+        ]
+      },
+      {
+        "role": "blind_roof_mass",
+        "pixel_x_interval": [
+          1158,
+          1365
+        ],
+        "along_from_ne_m": [
+          57.412812484167134,
+          70.19733567116018
+        ]
+      },
+      {
+        "role": "southwest_round_corner",
+        "pixel_x_interval": [
+          1645,
+          1775
+        ],
+        "along_from_ne_m": [
+          87.67430576488553,
+          95.41943067965641
+        ]
+      }
+    ],
+    "height_limits": {
+      "body_cornice_estimate_m": 34.0,
+      "uncertainty_m": 4.0,
+      "mansard_rise_estimate_m": 5.2,
+      "mansard_uncertainty_m": 1.5,
+      "cupola_above_mansard_estimate_m": 9.55,
+      "cupola_uncertainty_m": 2.5,
+      "note": "Architectural estimates from nine operator-reported stories, visible upper floor pitch, and separately photographed SW return. Lower rear floors are tree-occluded; no ground/base survey or exact full-height ratio."
+    },
+    "held": [
+      "Absolute datum and rear foot registration",
+      "Lower rear opening schedule hidden by trees",
+      "Exact NE annex side treatment",
+      "Roof pool-canopy extent",
+      "Metric dormer and cupola depth"
+    ],
+    "source_note": "Rear photo is NW-facing, not sea-facing. Eleven main dormer/window stacks, asymmetric blind roof mass and one SW rear cupola are source specific. Other cupolas visible behind the rear plane must not be duplicated on the rear edge."
+  },
+  "recipe_sha256": "198c915c285e9cd9815f967ef7098c40279f4c684aa55e4c2dda24ed8b10915e",
+  "ground_source_inputs": [
+    {
+      "file": "Tile_Street_m7_m5.mesh",
+      "sha256": "6c62157b2cc6256ced4f7adda6c7230f5cecf4e6bb12440277c457743d9b5309"
+    }
+  ],
+  "ground_source_manifest_sha256": "be454be35f012e82b17c30d7c6a25ca13567e6a97f63c852fb50ca81c001a900",
+  "source_decisions": {
+    "rear": "8+3main stacks with distinct blind service mass, NEservice dormer/pylons/grilles and one SWrear cupola.",
+    "southwest": "Five-bay garden group with one taller central mansard pediment.",
+    "southeast": "Ten clear straight French-window stacks; corner-tower bays separate. Seven annexe stacks are foreshortened estimates.",
+    "heights": "34\u00b14m cornice/5.2\u00b11.5m mansard; upper-storey cadence3.4m.9storeys including the mansard. Cupola/dormer depth and pool-roof extent estimated.",
+    "base": "Inherited1.8211m minimum, not survey. ExistingGround rises5.34\u201311.44m at rear. Buried window/glazing details clipped against actual emitted profiles; floor bands stay level.",
+    "held": "Absolute datum, exact heights/depths, occluded lowerrear and unseen NEreturn details; no exterior Ground or road change.",
+    "cupolas": "Three crowns use estimated radius5\u00b11m/6.5\u00b11.5m/5.8\u00b11.5m. Highest finial is15.2\u00b12.5m above the body cornice, about9.55m above the estimated mansard deck. The rear-photo visible silhouette sets relative proportions; no absolute height survey is claimed.",
+    "reproducibility": "The small typed hotel recipe is an explicitly authored geometry/control input. It includes every literal footprint point, wall span, level/bay schedule, roof/cupola pose and opening Ground profile. The retained exact supporting triangle bytes and frozen recipe hash make the deterministic production replay verifiable; source fitting is not rerun during game generation."
+  },
+  "proof": {
+    "source_sha256": {
+      "full-source.json": "198c915c285e9cd9815f967ef7098c40279f4c684aa55e4c2dda24ed8b10915e",
+      "hotel.py": "cbc00a2b38e2ef21fab4494a739f23682d0401cd04001ea6dd947850acad3cc1",
+      "hotel_dataclasses.py": "e451e345b7589ce28384c96db6397ea8617f0c7c6e477c5b8edd5c0e65428d5d",
+      "hotel_full.py": "92402c15c0e4011b9ca768bf83ecfcc639d9749afbe5c7576eb4c145f9868164"
+    },
+    "triangles": 394745,
+    "kinds": {
+      "Building_MuseumMasonry": 10001,
+      "Building_HotelWindowReveals": 8052,
+      "Building_HotelWindowTrim": 48312,
+      "Building_HotelWindowFrames": 48312,
+      "Building_HotelWindowMullions": 13632,
+      "Building_HotelBalconyDeck": 1632,
+      "Building_HotelIronRail": 45696,
+      "Building_MuseumRelief": 12656,
+      "Building_HotelCornice": 660,
+      "Building_HotelStoneRailBase": 1080,
+      "Building_HotelStoneRailCap": 3240,
+      "Building_HotelStoneBaluster": 114144,
+      "Building_HotelPlainCornice": 240,
+      "Building_HotelRoundedCorner": 272,
+      "Building_MuseumReveals": 1866,
+      "Building_MuseumWindowSurrounds": 11196,
+      "Building_MuseumFrames": 11196,
+      "Building_MuseumMullions": 2496,
+      "Building_MuseumSills": 684,
+      "Building_HotelCurvedCornice": 1536,
+      "Building_HotelCopperRoof": 654,
+      "Building_HotelInnerRoof": 38,
+      "Building_HotelCopperSeams": 39384,
+      "Building_HotelFoundationCap": 38,
+      "Building_HotelDormerCheeks": 1140,
+      "Building_HotelDormerCrown": 5760,
+      "Building_HotelCentralPediment": 24,
+      "Building_HotelServiceGrilles": 1728,
+      "Building_HotelServicePavilion": 12,
+      "Building_HotelCupolaCopper": 1688,
+      "Building_HotelCupolaDormerCheeks": 456,
+      "Building_HotelCupolaCopperRibs": 3312,
+      "Building_HotelCupolaPiers": 288,
+      "Building_HotelCupolaCoping": 576,
+      "Building_HotelCupolaCap": 144,
+      "Building_HotelFinial": 36,
+      "Building_HotelPoolRoof": 28,
+      "Building_HotelPoolRibs": 2352,
+      "Building_HotelPoolEnds": 28,
+      "Building_HotelPoolRails": 156
+    },
+    "raw_skipped_degenerate": 4,
+    "packed_collapsed": [],
+    "minimum_packed_source_normal_alignment": 0.9998339434825358,
+    "inward_roof_faces": [],
+    "inward_external_wall_faces": [],
+    "standard_dormer_pane_roof_occlusions": [],
+    "minimum_inherited_ground_embed_m": 0.14011929552949956,
+    "source_ground_status": "Retained actual emitted Ground, not independently surveyed",
+    "body_area_old_m2": 4068.9873830600054,
+    "body_area_new_m2": 4063.611524731805,
+    "body_outside_old_m2": 7.027903129150616e-13,
+    "body_removed_southwest_rounding_m2": 5.375858328200458,
+    "native_racing_corridor_clearance_m": 8.453632606891283,
+    "production_files_modified": false,
+    "status": "PRIVATE first whole-model packed proof; source details/unknown elevations and native driving views remain separate gates",
+    "old_generic_hotel_triangles": 47216,
+    "expected_city_triangle_delta": 347529,
+    "skipped_source_witnesses": [
+      {
+        "kind": "Building_HotelCupolaCopper",
+        "material": "BakuHotelCopper",
+        "points": [
+          [
+            -1585.3963059673893,
+            -1052.1569521231631,
+            38.95109759665821
+          ],
+          [
+            -1585.539432558209,
+            -1052.4598378755522,
+            39.62109759665821
+          ],
+          [
+            -1585.3963059673893,
+            -1052.1569521231631,
+            38.95109759665821
+          ]
+        ],
+        "area_m2": 0.0,
+        "width_m": 0.0
+      },
+      {
+        "kind": "Building_HotelCupolaCopper",
+        "material": "BakuHotelCopper",
+        "points": [
+          [
+            -1558.8008901703186,
+            -1071.8494762757887,
+            38.95109759665821
+          ],
+          [
+            -1558.614825602253,
+            -1071.4557247976827,
+            39.62109759665821
+          ],
+          [
+            -1558.8008901703186,
+            -1071.8494762757887,
+            38.95109759665821
+          ]
+        ],
+        "area_m2": 0.0,
+        "width_m": 0.0
+      },
+      {
+        "kind": "Building_HotelCupolaCopper",
+        "material": "BakuHotelCopper",
+        "points": [
+          [
+            -1534.590125375689,
+            -1022.768076867026,
+            38.95109759665821
+          ],
+          [
+            -1534.4240985303381,
+            -1022.4167293942546,
+            39.62109759665821
+          ],
+          [
+            -1534.590125375689,
+            -1022.768076867026,
+            38.95109759665821
+          ]
+        ],
+        "area_m2": 0.0,
+        "width_m": 0.0
+      },
+      {
+        "kind": "Building_HotelCupolaCopper",
+        "material": "BakuHotelCopper",
+        "points": [
+          [
+            -1530.7392937685975,
+            -1014.6189130955814,
+            38.95109759665821
+          ],
+          [
+            -1530.9053206139483,
+            -1014.9702605683528,
+            39.62109759665821
+          ],
+          [
+            -1530.7392937685975,
+            -1014.6189130955814,
+            38.95109759665821
+          ]
+        ],
+        "area_m2": 0.0,
+        "width_m": 0.0
+      }
+    ],
+    "minimum_cupola_outward_radial_dot": 0.4026738895363154,
+    "inward_cupola_faces": [],
+    "minimum_pool_roof_up_dot": 0.1697473947810277,
+    "actual_packed_mesh_hull_road_clearance_m": 7.588391010332322,
+    "protection_source_sha256": "8bdb833ccee5271ea141b7ce5ee1f04c5c70146dcb4a047373c08a719ca0db0d",
+    "local_conservative_protection_envelopes": 57,
+    "low_mesh_projection_minimum_envelope_plan_gap_m": 3.395097328824734,
+    "actual_3d_mesh_protection_envelope_intersections": [],
+    "protection_envelope_note": "Retained barrier endpoints/native road heights, radius+6cm in plan and bottom-5cm through top+3.65m cover opaque concrete, wire fence and3.6m posts. Actual packed new triangles are clipped to that height interval; high architectural projections are not rejected solely for plan overlap.",
+    "packed_city_sha256": {
+      "Building_City_m5_m3": "a4aecea6ac43cbe222f20e8732637d041ff93b039ca418f4360fe83611687ab0"
+    }
+  },
+  "production_scope": "Only the explicit old hotel generic facade is replaced after root hook coordination. No Grounddelta, global union/provider, racing road/kerb/protection/contact, camera or handling changes.",
+  "material": "BakuHotelCopper reserved for root factory integration; existingRoof unchanged. No shared factory edit in this batch.",
+  "canonical_source_sha256": {
+    "tools/venues/baku_hotel.py": "3b11afdf02878cce7c1152d67660076693b1a7b6633bbe6e03af08984dd48c35",
+    "tools/venues/baku_hotel_dataclasses.py": "39d889185aa80e8b63ce0dad8ccd20866cc4626e63c57612cf758bcf5150f333",
+    "tools/venues/baku_hotel_geometry.py": "6747dc60d9abf9ab1c1db0bd667d17975c1de1606735aa9d793def3127568547",
+    "tools/venues/baku_hotel_model.py": "3cee7f515dc6e3b96f92a09df91ac6fdaa97b016fd0a126b1859387f6b053270"
+  },
+  "adapter_scope": "prepare validates exact literal/source frame and reserves the building before protection export; finish atomically validates every retained Ground witness before emitting City geometry. No hook/factory/Makefile edit in this source adapter.",
+  "adapter_validation": {
+    "tests": 3,
+    "test_seconds": 4.31,
+    "peak_rss_kb": 122696,
+    "mypy_modules": 4,
+    "ruff": "pass",
+    "frozen_geometry": "Exact standalone packed City hash and394745triangle count matched; supporting Ground bytes and cutouts unchanged; mutated Ground and shifted literal frame rejected before geometry."
+  }
+}
