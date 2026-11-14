@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "circuit": "buddh",
-  "status": "Reference-qualified source and native import placement/scope checks passed; fresh cooked review pending.",
+  "status": "Source/native scope checks and fresh c6a58fcc whole-route Luna High visual review passed.",
   "reference_frames": [
     "build/reviews/buddh/reference/detail-0145.jpg"
   ],
@@ -21,5 +21,6 @@
     "only_city_tiles_changed": true,
     "all_street_tiles_and_physical_data_unchanged": true,
     "proof_directory": "build/reviews/resume-20261114/vegetation"
-  }
+  },
+  "visual_review": "build/reviews/resume-20261114/reviews/buddh-cota-c6a58fcc-vegetation-review.md"
 }

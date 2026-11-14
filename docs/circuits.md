@@ -42,13 +42,16 @@ Suzuka is the only figure-eight. Its back straight crosses the lower Degner road
 
 Native scenes include circuit-specific architecture, vegetation, protection, kerbs, escape surfaces, braking boards and pit paving. Pit access remains closed for the game. Source generation, native geometry checks and a clean simulated lap do not establish visual or performance acceptance. Follow the [whole-lap workflow](map.md) and compare the exact current assets against registered references.
 
-Work is active through Sunday 15 November at 10am PST. The reviewed `776d1fe6`
-checkpoint records 15 Luna High visual passes and three holds: Baku, Jeddah and
-Monaco. Sepang's legal lane, retained wider pavement and estimated adverse final
+Work is active through Sunday 15 November at 10am PST. The reviewed `c6a58fcc`
+checkpoint records 14 Luna High visual passes and four holds: Baku, Jeddah,
+Monaco and Portimão. A closer primary-architect comparison reopened Portimão's
+mainstand: its two seating tiers, glazed VIP level and cantilever roof need a
+more faithful reconstruction. Sepang's legal lane, retained wider pavement and estimated adverse final
 corner now pass visual review. Its numerical crossfall and exit crest remain
 reconstruction estimates, not surveyed sections. Singapore's 8.8 m minimum is
-local to the driver-left Anderson Bridge opening. Buddh and COTA vegetation has
-since been imported and is awaiting fresh visual review. See the
+local to the driver-left Anderson Bridge opening. Buddh and COTA vegetation now
+passes fresh whole-route review. Jeddah's Sail/mall context source has passed
+local checks and is awaiting native import and visual review. See the
 [validation checkpoint](additional_circuits_validation.md) for exact scene
 identities, captured laps and remaining source limits. Fresh uncapped performance
 checks are in progress. Historical approvals do not approve changed assets.
