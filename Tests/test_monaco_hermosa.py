@@ -6,6 +6,7 @@ import hashlib
 import json
 import struct
 import sys
+from collections import Counter
 from pathlib import Path
 
 import pytest
@@ -70,6 +71,8 @@ def test_actual_feet_embed_without_changing_ground_or_tilting_floors() -> None:
         assert bytes(scene.tiles[name].triangles) == raw
     feet: dict[tuple[float, float], float] = {}
     floor_bottoms = []
+    roof_edges: Counter[tuple[tuple[float, float, float], tuple[float, float, float]]] = Counter()
+    eave_bottom = min(p[2] for p in source.eaves_wgs84) - source.relative_datum_m - .161
     for name, tile in scene.tiles.items():
         if name in original:
             continue
@@ -83,8 +86,14 @@ def test_actual_feet_embed_without_changing_ground_or_tilting_floors() -> None:
                 if material in {'Limestone', 'Cream'} and body.boundary.distance(ShapePoint(point[:2])) < .0002:
                     key = point[:2]
                     feet[key] = min(feet.get(key, point[2]), point[2])
+            for a, b in zip(points, points[1:] + points[:1], strict=True):
+                if min(a[2], b[2]) >= eave_bottom:
+                    edge = (a, b) if a < b else (b, a)
+                    roof_edges[edge] += 1
             if material == 'Glass':
                 floor_bottoms.append(min(p[2] for p in points))
+    assert roof_edges
+    assert all(count == 2 for count in roof_edges.values()), [(edge, count) for edge, count in roof_edges.items() if count != 2]
     assert len(feet) > 40
     for (x, y), z in feet.items():
         heights = []

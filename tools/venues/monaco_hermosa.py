@@ -7,14 +7,14 @@ import struct
 from itertools import pairwise
 
 from circuit_dataclasses import Point, RetainedTerrainSource, TerrainGrid
-from circuit_mesh import add, cross, sub
+from circuit_mesh import add
 from circuit_scene import CircuitScene
 from pydantic import TypeAdapter
 from shapely import constrained_delaunay_triangles, get_coordinates
 from shapely.geometry import LineString, Polygon, box
 from shapely.geometry import Point as ShapePoint
 from shapely.geometry.polygon import orient
-from shapely.ops import unary_union
+from shapely.ops import polygonize, unary_union
 from shapely.strtree import STRtree
 
 from venues.monaco_cliff import source_height
@@ -157,13 +157,6 @@ def finish(scene: CircuitScene) -> None:
             previous = station
     base = config.floor_base_absolute_m - config.relative_datum_m
     kind = 'Building_VillaHermosa'
-    for a, b in pairwise(boundary + boundary[:1]):
-        top_a = roof_height(facets, *a[:2]) - .16
-        top_b = roof_height(facets, *b[:2]) - .16
-        split_a, split_b = min(top_a, max(a[2], base)), min(top_b, max(b[2], base))
-        scene.quad(kind, 'Limestone', a, b, (b[0], b[1], split_b), (a[0], a[1], split_a))
-        scene.quad(kind, 'Cream', (a[0], a[1], split_a), (b[0], b[1], split_b),
-                   (b[0], b[1], top_b), (a[0], a[1], top_a))
     for a, b in pairwise(ring):
         span = math.dist(a, b)
         tx, ty = (b[0] - a[0]) / span, (b[1] - a[1]) / span
@@ -191,16 +184,61 @@ def finish(scene: CircuitScene) -> None:
             xy.reverse()
         vertices = [(x, y, roof_height(facets, x, y)) for x, y in xy]
         surfaces.append((vertices[0], vertices[1], vertices[2]))
-    for a, b, c in surfaces:
-        if cross(sub(b, a), sub(c, a))[2] < 0:
-            b, c = c, b
-        scene.triangle(kind, config.roof_material, a, b, c)
-        scene.triangle(kind, 'Concrete', add(c, (0, 0, -.16)), add(b, (0, 0, -.16)), add(a, (0, 0, -.16)))
     outer = unary_union([body, roof_plan])
     if not isinstance(outer, Polygon):
         raise TypeError('Villa Hermosa roof and body must retain one connected join')
-    for a, b in pairwise(orient(outer).exterior.coords):
-        pa, pb = (*a, roof_height(facets, *a)), (*b, roof_height(facets, *b))
+    # One planar subdivision shares hip, wall and eave vertices across every face.
+    lines = [Polygon([p[:2] for p in triangle]).boundary for triangle in surfaces]
+    lines.append(LineString([p[:2] for p in boundary + boundary[:1]]))
+    pieces = [p for p in polygonize(unary_union(lines)) if outer.covers(p.representative_point())]
+    nodes = [p[:2] for p in boundary]
+    for piece in pieces:
+        for xy in get_coordinates(piece.boundary):
+            point = (float(xy[0]), float(xy[1]))
+            if not any(math.dist(point, old) < 1e-7 for old in nodes):
+                nodes.append(point)
+
+    def shared_ring(coordinates: list[tuple[float, float]]) -> list[tuple[float, float]]:
+        shared: list[tuple[float, float]] = []
+        for a, b in pairwise(coordinates):
+            edge = LineString([a, b])
+            ordered = sorted((edge.project(ShapePoint(xy)), xy) for xy in nodes
+                             if edge.distance(ShapePoint(xy)) < 1e-7)
+            for station, xy in ordered:
+                if edge.length - station < 1e-7 or shared and math.dist(shared[-1], xy) < 1e-7:
+                    continue
+                shared.append(xy)
+        return shared
+
+    boundary = [(x, y, ground(x, y)) for x, y in shared_ring([p[:2] for p in boundary + boundary[:1]])]
+    for a, b in pairwise(boundary + boundary[:1]):
+        top_a = roof_height(facets, *a[:2]) - .16
+        top_b = roof_height(facets, *b[:2]) - .16
+        split_a, split_b = min(top_a, max(a[2], base)), min(top_b, max(b[2], base))
+        scene.quad(kind, 'Limestone', a, b, (b[0], b[1], split_b), (a[0], a[1], split_a))
+        scene.quad(kind, 'Cream', (a[0], a[1], split_a), (b[0], b[1], split_b),
+                   (b[0], b[1], top_b), (a[0], a[1], top_a))
+    for piece in pieces:
+        overhang = not body.covers(piece.representative_point())
+        for triangle in constrained_delaunay_triangles(piece).geoms:
+            if triangle.area < 1e-9:
+                continue
+            xy = shared_ring(list(orient(triangle).exterior.coords))
+            if len(xy) < 3:
+                raise ValueError('A common Villa Hermosa roof boundary collapsed')
+            center = triangle.centroid
+            triangles = [xy] if len(xy) == 3 else [
+                [(center.x, center.y), a, b] for a, b in pairwise(xy + xy[:1])]
+            for face_xy in triangles:
+                if Polygon(face_xy).area <= 1e-10:
+                    continue
+                a, b, c = [(x, y, roof_height(facets, x, y)) for x, y in face_xy]
+                scene.triangle(kind, config.roof_material, a, b, c)
+                if overhang:
+                    scene.triangle(kind, 'Concrete', add(c, (0, 0, -.16)), add(b, (0, 0, -.16)), add(a, (0, 0, -.16)))
+    fascia = shared_ring(list(orient(outer).exterior.coords))
+    for xy_a, xy_b in pairwise(fascia + fascia[:1]):
+        pa, pb = (*xy_a, roof_height(facets, *xy_a)), (*xy_b, roof_height(facets, *xy_b))
         scene.quad(kind, config.roof_material, add(pa, (0, 0, -.16)), add(pb, (0, 0, -.16)), pb, pa)
     scene.landmarks.append({
         'name': 'Villa Hermosa measured eaves and reconstructed hip',
