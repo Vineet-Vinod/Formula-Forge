@@ -4,7 +4,11 @@ The playable catalogue contains **22 circuits**: the preserved Silverstone, Monz
 
 ## Current native profiles
 
-The 18 reconstructed venues each export 8,192 native road samples. The table below uses the current exported length, elevation relief and full asphalt-width range. Native station zero is not always the timing line; use each venue's registered station anchors.
+The 18 reconstructed venues each export 8,192 native road samples. The table below
+uses the current exported length, elevation relief and legal racing-width range.
+Outside pavement and runoffs are separate surfaces; their width is not added to
+the legal lane. Native station zero is not always the timing line; use each
+venue's registered station anchors.
 
 Racing profiles and surrounding terrain have separate sources:
 
@@ -18,7 +22,7 @@ Published profiles are digitised reconstructions; DSMs can include roofs and veg
 | [Bahrain](../Attribution/Sources/bahrain/provenance.json) | 5412 | 16.900 | 14.0–22.0 | [F1 profile](../Attribution/Sources/bahrain/elevation-corrections.json) | [GLO-30 DSM](../Attribution/Sources/bahrain/scenery-terrain.json) |
 | [Jeddah](../Attribution/Sources/jeddah/provenance.json) | 6174 | 3.936 | 12.0–15.0 | [Retained GLO-90](../Attribution/Sources/jeddah/provenance.json) | [GLO-30 DSM](../Attribution/Sources/jeddah/scenery-terrain.json) |
 | [Australia](../Attribution/Sources/australia/provenance.json) | 5278 | 2.600 | 12.0–15.0 | [F1 profile](../Attribution/Sources/australia/elevation-corrections.json) | [GLO-30 DSM](../Attribution/Sources/australia/scenery-terrain.json) |
-| [Japan (Suzuka)](../Attribution/Sources/japan/provenance.json) | 5807 | 40.576 | 12.0–15.0 | [Processed GSI 5 m](../Attribution/Sources/japan/provenance.json) | [GSI 5 m](../Attribution/Sources/japan/provenance.json) |
+| [Japan (Suzuka)](../Attribution/Sources/japan/provenance.json) | 5807 | 40.576 | 10.0–15.0 | [Processed GSI 5 m](../Attribution/Sources/japan/provenance.json) | [GSI 5 m](../Attribution/Sources/japan/provenance.json) |
 | [China](../Attribution/Sources/china/provenance.json) | 5451 | 7.400 | 13.0–16.0 | [F1 profile](../Attribution/Sources/china/elevation-corrections.json) | [GLO-30 DSM](../Attribution/Sources/china/scenery-terrain.json) |
 | [Canada](../Attribution/Sources/canada/provenance.json) | 4361 | 5.200 | 12.0–13.5 | [F1 profile](../Attribution/Sources/canada/elevation-corrections.json) | [GLO-30 DSM](../Attribution/Sources/canada/scenery-terrain.json) |
 | [Monaco](../Attribution/Sources/monaco/provenance.json) | 3337 | 42.000 | 10.5–12.0 | [F1 profile](../Attribution/Sources/monaco/elevation-corrections.json) | [IGN RGE ALTI](../Attribution/Sources/monaco/scenery-terrain.json) |
@@ -26,8 +30,8 @@ Published profiles are digitised reconstructions; DSMs can include roofs and veg
 | [Spa](../Attribution/Sources/spa/provenance.json) | 7004 | 102.256 | 12.0–15.0 | [SPW classified-ground MNT](../Attribution/Sources/spa/elevation-corrections.json) | [SPW MNT](../Attribution/Sources/spa/scenery-terrain.json) |
 | [Zandvoort](../Attribution/Sources/zandvoort/provenance.json) | 4259 | 8.718 | 12.0–14.0 | [AHN5 ground DTM](../Attribution/Sources/zandvoort/elevation-corrections.json) | [AHN5 DTM](../Attribution/Sources/zandvoort/scenery-terrain.json) |
 | [Baku](../Attribution/Sources/baku/provenance.json) | 6003 | 26.800 | 7.6–14.0 | [F1 profile](../Attribution/Sources/baku/elevation-corrections.json) | [GLO-90 DSM](../Attribution/Sources/baku/scenery-terrain.json) |
-| [Malaysia (Sepang)](../Attribution/Sources/malaysia/provenance.json) | 5543 | 22.000 | 16.0–22.0 | [F1 profile](../Attribution/Sources/malaysia/elevation-corrections.json) | [GLO-30 DSM](../Attribution/Sources/malaysia/scenery-terrain.json) |
-| [Singapore](../Attribution/Sources/singapore/provenance.json) | 4940 | 5.300 | 12.0–14.0 | [F1 profile](../Attribution/Sources/singapore/elevation-corrections.json) | [GLO-30 DSM](../Attribution/Sources/singapore/scenery-terrain.json) |
+| [Malaysia (Sepang)](../Attribution/Sources/malaysia/provenance.json) | 5543 | 22.000 | 16.0 | [F1 profile and local T15 reconstruction](../Attribution/Sources/malaysia/elevation-corrections.json) | [GLO-30 DSM](../Attribution/Sources/malaysia/scenery-terrain.json) |
+| [Singapore](../Attribution/Sources/singapore/provenance.json) | 4940 | 5.300 | 8.8–14.0 | [F1 profile](../Attribution/Sources/singapore/elevation-corrections.json) | [GLO-30 DSM](../Attribution/Sources/singapore/scenery-terrain.json) |
 | [COTA](../Attribution/Sources/cota/provenance.json) | 5513 | 30.956 | 12.0–16.0 | [USGS 3DEP 1 m](../Attribution/Sources/cota/elevation-corrections.json) | [USGS 3DEP](../Attribution/Sources/cota/scenery-terrain.json) |
 | [Turkey](../Attribution/Sources/turkey/provenance.json) | 5338 | 47.888 | 14.5–21.0 | [METU engineering profile](../Attribution/Sources/turkey/elevation-corrections.json) | [GLO-30 DSM](../Attribution/Sources/turkey/scenery-terrain.json) |
 | [Portimão](../Attribution/Sources/portimao/provenance.json) | 4653 | 28.738 | 14.0–18.0 | [DGT class-2 lidar](../Attribution/Sources/portimao/elevation-corrections.json) | [DGT ground](../Attribution/Sources/portimao/scenery-terrain.json) |
@@ -38,13 +42,17 @@ Suzuka is the only figure-eight. Its back straight crosses the lower Degner road
 
 Native scenes include circuit-specific architecture, vegetation, protection, kerbs, escape surfaces, braking boards and pit paving. Pit access remains closed for the game. Source generation, native geometry checks and a clean simulated lap do not establish visual or performance acceptance. Follow the [whole-lap workflow](map.md) and compare the exact current assets against registered references.
 
-The 2026-11-12 rebuild changes all 18 additional venues. Work is paused at the
-user's wrap-up request. The final package is built from `6a970d40`: 12 current
-scenes have Luna High visual passes; six fresh reviews and uncapped performance
-checks remain pending. See the [validation checkpoint](additional_circuits_validation.md)
-for exact scene identities, captured laps and remaining source limits. Historical
-approvals do not approve changed assets. Silverstone, Monza, Interlagos and
-Las Vegas remain preserved baselines.
+Work is active through Sunday 15 November at 10am PST. The reviewed `776d1fe6`
+checkpoint records 15 Luna High visual passes and three holds: Baku, Jeddah and
+Monaco. Sepang's legal lane, retained wider pavement and estimated adverse final
+corner now pass visual review. Its numerical crossfall and exit crest remain
+reconstruction estimates, not surveyed sections. Singapore's 8.8 m minimum is
+local to the driver-left Anderson Bridge opening. Buddh and COTA vegetation has
+since been imported and is awaiting fresh visual review. See the
+[validation checkpoint](additional_circuits_validation.md) for exact scene
+identities, captured laps and remaining source limits. Fresh uncapped performance
+checks are in progress. Historical approvals do not approve changed assets.
+Silverstone, Monza, Interlagos and Las Vegas remain preserved baselines.
 
 Portimão's retained DGT class-2 ground produces steeper local grades than published
 operator maxima whose measurement interval is unspecified. The source record keeps
