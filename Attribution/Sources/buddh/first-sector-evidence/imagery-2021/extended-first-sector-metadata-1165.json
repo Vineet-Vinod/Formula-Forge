@@ -1,0 +1,54 @@
+{
+ "results": [
+  {
+   "layerId": 5,
+   "layerName": "60cm Resolution Metadata",
+   "displayFieldName": "NICE_NAME",
+   "value": "Vivid",
+   "attributes": {
+    "OBJECTID": "1118121",
+    "SHAPE": "Polygon",
+    "Shape_Length": "260675.196427",
+    "Shape_Area": "844812957",
+    "SRC_DATE": "20210302",
+    "SRC_RES": "0.31",
+    "SRC_ACC": "5",
+    "SAMP_RES": "0.5",
+    "SRC_DESC": "WV03",
+    "MinMapLevel": "16",
+    "MaxMapLevel": "18",
+    "NICE_NAME": "Vivid",
+    "DrawOrder": "80",
+    "SRC_DATE2": "3/2/2021",
+    "NICE_DESC": "Maxar",
+    "BlockName": "Null",
+    "ReleaseName": "Null"
+   }
+  },
+  {
+   "layerId": 6,
+   "layerName": "1.2m Resolution Metadata",
+   "displayFieldName": "NICE_NAME",
+   "value": "Vivid",
+   "attributes": {
+    "OBJECTID": "1118121",
+    "SHAPE": "Polygon",
+    "Shape_Length": "260675.196427",
+    "Shape_Area": "844812957",
+    "SRC_DATE": "20210302",
+    "SRC_RES": "0.31",
+    "SRC_ACC": "5",
+    "SAMP_RES": "0.5",
+    "SRC_DESC": "WV03",
+    "MinMapLevel": "16",
+    "MaxMapLevel": "18",
+    "NICE_NAME": "Vivid",
+    "DrawOrder": "80",
+    "SRC_DATE2": "3/2/2021",
+    "NICE_DESC": "Maxar",
+    "BlockName": "Null",
+    "ReleaseName": "Null"
+   }
+  }
+ ]
+}

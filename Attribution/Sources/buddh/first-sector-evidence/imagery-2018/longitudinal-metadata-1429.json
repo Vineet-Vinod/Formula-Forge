@@ -1,0 +1,27 @@
+{
+ "results": [
+  {
+   "layerId": 6,
+   "layerName": "1.2m Resolution Metadata",
+   "displayFieldName": "NICE_NAME",
+   "value": "Vivid",
+   "attributes": {
+    "OBJECTID": "534767",
+    "Shape": "Polygon",
+    "SRC_DATE": "20181012",
+    "SRC_RES": "0.5",
+    "SRC_ACC": "8.47",
+    "SAMP_RES": "0.5",
+    "SRC_DESC": "WV02",
+    "MinMapLevel": "16",
+    "MaxMapLevel": "17",
+    "NICE_NAME": "Vivid",
+    "DrawOrder": "80",
+    "SRC_DATE2": "10/12/2018",
+    "NICE_DESC": "DigitalGlobe",
+    "Shape_Length": "587156.106723",
+    "Shape_Area": "2909683639.518146"
+   }
+  }
+ ]
+}

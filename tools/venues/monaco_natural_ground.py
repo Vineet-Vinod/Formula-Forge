@@ -1,17 +1,22 @@
-"""Classify clipped ravine faces without changing a packed vertex or outside row."""
+"""Preserve terrain planes while assigning qualified mixed-natural site cover."""
 from __future__ import annotations
 
+import csv
+import hashlib
 import struct
 
 from circuit_mesh import MeshScene
 from circuit_scene import CircuitScene
 from pydantic import TypeAdapter
-from shapely import from_wkt
-from shapely.geometry import box
+from shapely import from_wkt, get_parts
+from shapely.geometry import LineString, Polygon, box
 from shapely.geometry.base import BaseGeometry
+from shapely.ops import unary_union
 
+from venues.monaco_natural_ground_dataclasses import NaturalSites
 from venues.monaco_ravine_dataclasses import RavineSource
-from venues.monaco_surfaces import face
+from venues.monaco_surfaces import face, replace_surfaces
+from venues.monaco_surfaces_dataclasses import SurfaceRegion
 
 MATERIAL = 'MonacoNaturalGround'
 
@@ -64,3 +69,60 @@ def finish(scene: CircuitScene) -> None:
                             'unchanged_overlap_tile_faces': untouched,
                             'source': 'architecture/ravine-outline.json; architecture/natural-ground-source-review.md',
                             'limits': 'General mixed natural land use, not uniform lawn or bare rock. Existing photographed rock/ivy and all structures/paths remain separate. Original1–2m outline uncertainty and grid-crop edge retained; no height, normal, UV, tree pose or native contact changes. Applied after canopy support checks; those original supporting vertex payloads remain exact.'})
+    finish_lower_sites(scene, source)
+
+
+def lower_regions(scene: CircuitScene, source: NaturalSites, ravine: BaseGeometry) -> list[SurfaceRegion]:
+    blocked = [
+        (LineString(item.vertices) if item.linear else Polygon(item.vertices)).buffer(item.buffer_m)
+        for item in source.exclusions
+    ]
+    margin = source.road_and_protection_margin_m
+    blocked.extend([
+        ravine,
+        scene.corridor_mask.buffer(margin),
+        *[plan.buffer(margin) for plan in scene.extra_corridors],
+        *scene.water_shapes,
+        *[Polygon(building.ring).buffer(source.building_margin_m) for building in scene.buildings],
+    ])
+    with (scene.scratch / 'barriers.csv').open() as stream:
+        for row in csv.DictReader(stream):
+            blocked.append(LineString([
+                (float(row['ax']), float(row['ay'])),
+                (float(row['bx']), float(row['by'])),
+            ]).buffer(float(row['radius']) + margin))
+    cover = unary_union(blocked)
+    regions = []
+    for record in source.regions:
+        candidate = Polygon(record.vertices)
+        if not candidate.is_valid or candidate.area <= .05:
+            raise ValueError('Natural site requires a valid finite source polygon')
+        for index, part in enumerate(get_parts(candidate.difference(cover))):
+            if isinstance(part, Polygon) and part.area > .05:
+                regions.append(SurfaceRegion(record.name + f'_{index}', part, 'natural'))
+    if not regions:
+        raise ValueError('No qualified natural ground remains after architecture/path exclusions')
+    return regions
+
+
+def finish_lower_sites(scene: CircuitScene, ravine: RavineSource) -> None:
+    source = TypeAdapter(NaturalSites).validate_json(
+        (scene.sources / 'architecture/lower-natural-sites.json').read_bytes())
+    if max(
+        abs(source.origin_latitude - scene.provenance.origin.latitude),
+        abs(source.origin_longitude - scene.provenance.origin.longitude),
+        abs(source.uniform_scale - scene.provenance.route.uniform_scale),
+    ) > 1e-9:
+        raise ValueError('Lower natural sites require the qualified Monaco frame')
+    root = scene.sources.parents[2]
+    for relative, expected in source.source_input_sha256.items():
+        if hashlib.sha256((root / relative).read_bytes()).hexdigest() != expected:
+            raise ValueError(f'Natural-site source changed: {relative}')
+    regions = lower_regions(scene, source, from_wkt(ravine.expected_domain_wkt))
+    report = replace_surfaces(scene, regions, allowed_materials=frozenset({'Runoff'}))
+    scene.landmarks.append({
+        'name': 'Two finite photographed lower planted sites',
+        'classified_ground_area_m2': report.classified_area_m2,
+        'source': 'architecture/lower-natural-sites.json',
+        'limits': 'Mixed natural appearance only; no species or height claim. Original planes retained. Roofs, buildings, paths and actual protection are excluded with stated margins. Existing precise rock/ivy/paving roles and the ambiguous house-eave ray remain separate. Native contact, terrain field and tree poses unchanged; cooked review pending.',
+    })

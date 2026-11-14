@@ -31,6 +31,7 @@ MATERIALS = {
     "ivy": "MonacoIvyGround",
     "rock": "MonacoRockGround",
     "paved": "Concrete",
+    "natural": "MonacoNaturalGround",
 }
 GROUND_MATERIALS = {"Runoff", "Grass", "MonacoIvyGround", "MonacoRockGround"}
 
@@ -96,7 +97,11 @@ def append(
         data.extend(struct.pack("<8f", *vertex))
 
 
-def replace_surfaces(scene: MeshScene, regions: list[SurfaceRegion]) -> SurfaceChange:
+def replace_surfaces(
+    scene: MeshScene, regions: list[SurfaceRegion],
+    allowed_materials: frozenset[str] | None = None,
+) -> SurfaceChange:
+    materials = GROUND_MATERIALS if allowed_materials is None else allowed_materials
     plans = [region.plan for region in regions]
     index = STRtree(plans)
     cover = unary_union(plans)
@@ -126,7 +131,7 @@ def replace_surfaces(scene: MeshScene, regions: list[SurfaceRegion]) -> SurfaceC
         for offset in range(0, len(tile.triangles), 100):
             raw = tile.triangles[offset : offset + 100]
             material = tile.materials[struct.unpack_from("<I", raw)[0]]
-            if material not in GROUND_MATERIALS:
+            if material not in materials:
                 data.extend(raw)
                 outside_count += 1
                 continue

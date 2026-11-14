@@ -14,10 +14,17 @@ from circuit_terrain import ROOT, acquire
 from pydantic import TypeAdapter
 
 
-def generate(slug: str) -> None:
+def generate(slug: str, write_native_contact: bool = False) -> None:
+    if write_native_contact and slug != "buddh":
+        raise ValueError("Explicit first-sector contact export requires Buddh")
     if (ROOT / "Attribution/Sources" / slug / "scenery-ground.json").exists():
         acquire(slug)
     scene = CircuitScene(slug)
+    first_sector = None
+    if slug == "buddh":
+        from venues.buddh_first_sector import prepare_scene
+
+        first_sector = prepare_scene(scene)
     print(f"{slug}: road surfaces", flush=True)
     base = (
         "Runoff"
@@ -34,6 +41,14 @@ def generate(slug: str) -> None:
     importlib.import_module("venues." + slug).build_venue(scene)
     print(f"{slug}: terrain", flush=True)
     scene.terrain(base)
+    if first_sector is not None:
+        from venues.buddh_first_sector import finish_terrain as finish_first_sector
+
+        result = finish_first_sector(scene, first_sector)
+        if write_native_contact:
+            from venues.buddh_first_sector_contact import write_contact
+
+            write_contact(result, ROOT / "Source/FormulaForge/Native/track_data/buddh_first_sector_contact.inc")
     if slug == "baku":
         from venues.baku import finish_terrain
 

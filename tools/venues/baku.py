@@ -18,8 +18,9 @@ from venues.baku_hotel import finish as finish_hotel
 from venues.baku_hotel import prepare as prepare_hotel
 from venues.baku_museums import museums
 from venues.baku_niyazi import planting
-from venues.baku_philharmonic import philharmonic_hall
 from venues.baku_skyline import waterfront_skyline
+from venues.baku_streetscape import finish as finish_streetscape
+from venues.baku_streetscape import prepare as prepare_streetscape
 from venues.coastal_water import coastal_water
 from venues.east_architecture import cylinder, facade, frame, mapped, trees
 
@@ -63,7 +64,7 @@ def build_venue(scene: CircuitScene) -> None:
     coastal_water(scene)
     court_forecourt(scene)
     civic_frontage(scene)
-    custom = {299418016, 152190583, 152190848, 133641457, 133641456, 152110152}
+    custom = {299418016, 152190583, 152190848, 133641457, 133641456, 152110152, 196291852}
     modern = {200195772, 200195781, 286017123, 152192792, 152192676, 152192493, 152192304}
     for building in scene.buildings:
         if building.osm_id in custom or building.use in {'grandstand', 'roof', 'carport'}:
@@ -97,7 +98,7 @@ def build_venue(scene: CircuitScene) -> None:
         scene.modeled_buildings.add(tower.osm_id)
         scene.landmarks.append({'name': 'Maiden Tower', 'osm_id': tower.osm_id, 'height_m': 29, 'dimensions': 'Footprint registered, upper dimensions visually estimated.'})
     castle_ramp(scene)
-    philharmonic_hall(scene)
+    prepare_streetscape(scene)
     waterfront_skyline(scene)
     flame_towers(scene)
     scene.stand(5710, 6000, 1, rows=18, setback=8, roofed=False, seat_material='SeatBlue')
@@ -112,6 +113,7 @@ def finish_terrain(scene: CircuitScene) -> None:
     planting(scene, scene.sources / 'niyazi-planting.json')
     museums(scene, scene.sources / 'museums.json.gz')
     finish_hotel(scene)
+    finish_streetscape(scene)
 
 
 def castle_ramp(scene: CircuitScene) -> None:

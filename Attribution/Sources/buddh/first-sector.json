@@ -1,0 +1,362 @@
+{
+  "baseline_road_sha256": "7eb5df0e1794e9f7fc4e82a5a4c683ae1c4ebe58d1d07ab61ca48b0e2186a373",
+  "start_m": 304,
+  "end_m": 2680,
+  "targets": [
+    {
+      "station_m": 304,
+      "width_m": 20,
+      "manual_allowance_m": 3,
+      "source_note": "Broad final T16 apex, 2018/2021 and original 201\u2013203 s; conservative retained anchor."
+    },
+    {
+      "station_m": 340,
+      "width_m": 15,
+      "manual_allowance_m": 2,
+      "source_note": "T16 rollout narrows into main straight; outside curb separate."
+    },
+    {
+      "station_m": 470,
+      "width_m": 15,
+      "manual_allowance_m": 2,
+      "source_note": "Start/main straight excludes separate pit and flat edge band."
+    },
+    {
+      "station_m": 650,
+      "width_m": 15,
+      "manual_allowance_m": 2,
+      "source_note": "Paired primary straight sections."
+    },
+    {
+      "station_m": 900,
+      "width_m": 15,
+      "manual_allowance_m": 2,
+      "source_note": "T1 braking approach, excludes raised curb."
+    },
+    {
+      "station_m": 1000,
+      "width_m": 15,
+      "manual_allowance_m": 2,
+      "source_note": "T1 approach; outside painted apron separate."
+    },
+    {
+      "station_m": 1041,
+      "width_m": 15,
+      "manual_allowance_m": 2,
+      "source_note": "Official T1 apex and direct 123\u2013124 s."
+    },
+    {
+      "station_m": 1055,
+      "width_m": 15,
+      "manual_allowance_m": 2,
+      "source_note": "T1 late apex, no outside flat paint inside legal width."
+    },
+    {
+      "station_m": 1085,
+      "width_m": 15,
+      "manual_allowance_m": 2,
+      "source_note": "T1 exit keeps approximately constant asphalt corridor."
+    },
+    {
+      "station_m": 1110,
+      "width_m": 15,
+      "manual_allowance_m": 2,
+      "source_note": "Continuous exit, no artificial return to 20 m."
+    },
+    {
+      "station_m": 1165,
+      "width_m": 14,
+      "manual_allowance_m": 2,
+      "source_note": "Official T2 left, primary sections and original 125\u2013128 s."
+    },
+    {
+      "station_m": 1250,
+      "width_m": 13,
+      "manual_allowance_m": 2,
+      "source_note": "Uphill T3 approach, narrow corridor before flare."
+    },
+    {
+      "station_m": 1320,
+      "width_m": 14,
+      "manual_allowance_m": 2,
+      "source_note": "Start of T3 entry flare."
+    },
+    {
+      "station_m": 1380,
+      "width_m": 21,
+      "manual_allowance_m": 2,
+      "source_note": "Primary flared entry."
+    },
+    {
+      "station_m": 1400,
+      "width_m": 23,
+      "manual_allowance_m": 2,
+      "source_note": "Broad primary entry, not a constant narrow hairpin."
+    },
+    {
+      "station_m": 1415,
+      "width_m": 23,
+      "manual_allowance_m": 2,
+      "source_note": "Preserve real entry flare."
+    },
+    {
+      "station_m": 1429,
+      "width_m": 18.5,
+      "manual_allowance_m": 2,
+      "source_note": "Apex corridor after local epoch registration."
+    },
+    {
+      "station_m": 1445,
+      "width_m": 14,
+      "manual_allowance_m": 2,
+      "source_note": "Narrow exit; avoids retaining 25 m through island."
+    },
+    {
+      "station_m": 1460,
+      "width_m": 14,
+      "manual_allowance_m": 2,
+      "source_note": "Conservative exit estimate within two dated primary images."
+    },
+    {
+      "station_m": 1530,
+      "width_m": 15,
+      "manual_allowance_m": 2,
+      "source_note": "Exit widens gently into back straight."
+    },
+    {
+      "station_m": 1800,
+      "width_m": 15,
+      "manual_allowance_m": 2,
+      "source_note": "Primary straight and original 137\u2013145 s."
+    },
+    {
+      "station_m": 2100,
+      "width_m": 15,
+      "manual_allowance_m": 2,
+      "source_note": "Primary straight corridor, no generic 20 m return."
+    },
+    {
+      "station_m": 2400,
+      "width_m": 15,
+      "manual_allowance_m": 2,
+      "source_note": "Primary late straight before real flare."
+    },
+    {
+      "station_m": 2480,
+      "width_m": 15,
+      "manual_allowance_m": 2,
+      "source_note": "Narrow corridor precedes T4 entry flare."
+    },
+    {
+      "station_m": 2530,
+      "width_m": 16,
+      "manual_allowance_m": 2.5,
+      "source_note": "Beginning of source-visible T4 flare."
+    },
+    {
+      "station_m": 2580,
+      "width_m": 20,
+      "manual_allowance_m": 2.5,
+      "source_note": "Progressive T4 approach expansion."
+    },
+    {
+      "station_m": 2620,
+      "width_m": 23,
+      "manual_allowance_m": 3,
+      "source_note": "Broad T4 approach, not a short endpoint dip."
+    },
+    {
+      "station_m": 2680,
+      "width_m": 25,
+      "manual_allowance_m": 3,
+      "source_note": "Broad historical T4 approach, 2018 section 2680 m and direct 151\u2013153 s. Join retained 25 m plateau; subsequent T4 unchanged."
+    }
+  ],
+  "raised_curbs": [
+    {
+      "name": "T16 inside",
+      "start_m": 260,
+      "end_m": 345,
+      "side": -1,
+      "width_m": 1.2,
+      "height_m": 0.055,
+      "source_note": "Retain original inside final-left curb; correction starts at apex. Width/height retained or reconstructed, not surveyed."
+    },
+    {
+      "name": "T16 exit outside",
+      "start_m": 345,
+      "end_m": 470,
+      "side": 1,
+      "width_m": 1.2,
+      "height_m": 0.055,
+      "source_note": "Direct original 112\u2013116 / 203\u2013205 s right exit curb. Width/height retained or reconstructed, not surveyed."
+    },
+    {
+      "name": "T1 braking outside",
+      "start_m": 880,
+      "end_m": 1015,
+      "side": -1,
+      "width_m": 1.2,
+      "height_m": 0.055,
+      "source_note": "Direct 120\u2013123 s outside approach curb before flat painted escape. Width/height retained or reconstructed, not surveyed."
+    },
+    {
+      "name": "T1 inside",
+      "start_m": 1000,
+      "end_m": 1080,
+      "side": 1,
+      "width_m": 1.2,
+      "height_m": 0.055,
+      "source_note": "Retain complete corrected T1 kerb emitter. Width/height retained or reconstructed, not surveyed."
+    },
+    {
+      "name": "T2 inside",
+      "start_m": 1125,
+      "end_m": 1200,
+      "side": -1,
+      "width_m": 1.2,
+      "height_m": 0.055,
+      "source_note": "Direct 125\u2013128 s left curb, grass beyond narrow drain. Width/height retained or reconstructed, not surveyed."
+    },
+    {
+      "name": "T3 braking outside",
+      "start_m": 1260,
+      "end_m": 1405,
+      "side": -1,
+      "width_m": 1.2,
+      "height_m": 0.055,
+      "source_note": "Original 130\u2013131 s outside approach curb. Ends before the blue crescent at the apex. Endpoints \u00b130 m; width and height reconstructed, not surveyed."
+    },
+    {
+      "name": "T3 inside",
+      "start_m": 1370,
+      "end_m": 1475,
+      "side": 1,
+      "width_m": 1.2,
+      "height_m": 0.055,
+      "source_note": "Direct 131\u2013133 s right curb and tip. Width/height retained or reconstructed, not surveyed."
+    },
+    {
+      "name": "T3 exit outside",
+      "start_m": 1470,
+      "end_m": 1640,
+      "side": -1,
+      "width_m": 1.2,
+      "height_m": 0.055,
+      "source_note": "Direct 134\u2013137 s outside exit curb; endpoint estimate \u00b160 m. Width/height retained or reconstructed, not surveyed."
+    },
+    {
+      "name": "T4 braking outside",
+      "start_m": 2600,
+      "end_m": 2700,
+      "side": -1,
+      "width_m": 1.2,
+      "height_m": 0.055,
+      "source_note": "Direct 151\u2013152 s left curb, flat broad apron beyond. Width/height retained or reconstructed, not surveyed."
+    },
+    {
+      "name": "T4 inside retained",
+      "start_m": 2650,
+      "end_m": 2780,
+      "side": 1,
+      "width_m": 1.2,
+      "height_m": 0.055,
+      "source_note": "Retain existing T4 right curb and broad anchor. Width/height retained or reconstructed, not surveyed."
+    }
+  ],
+  "t1_outer_reaches_m": [
+    [
+      990,
+      8
+    ],
+    [
+      1010,
+      18
+    ],
+    [
+      1030,
+      22
+    ],
+    [
+      1060,
+      22
+    ],
+    [
+      1085,
+      18
+    ],
+    [
+      1110,
+      10.2
+    ],
+    [
+      1120,
+      7.65
+    ]
+  ],
+  "source_interpretation": "Original private reconstruction from supplied footage and dated primary imagery. Legal target widths exclude raised curb and flat painted/paved apron. Manual full-width allowances are reconstruction limits, not statistical survey accuracy. Baseline centerline/elevation/bank fixed; zero correction outside 304\u20132680 m. Interpolate the absolute source target widths with shape-preserving cubic interpolation between these targets, preserving the retained outer protection reach. T3 blue widths are offsets beyond the new legal half-width, reconstructed to \u00b13 m from original 132 s and the registered 2018/2021 paved crescent. Gravel reaches are absolute offsets from the native centerline and estimated to \u00b14 m. These are original event-style surface reconstructions, not surveyed boundaries. Preserve qualified pit and T16 pavement; restore source-visible grass and gravel where oversized old Road/Runoff covered them.",
+  "t3_blue_widths_m": [
+    [
+      1380,
+      1.34
+    ],
+    [
+      1400,
+      5
+    ],
+    [
+      1415,
+      11
+    ],
+    [
+      1429,
+      12
+    ],
+    [
+      1445,
+      9
+    ],
+    [
+      1460,
+      5
+    ],
+    [
+      1470,
+      1.34
+    ]
+  ],
+  "t3_gravel_outer_reaches_m": [
+    [
+      1380,
+      22
+    ],
+    [
+      1405,
+      29
+    ],
+    [
+      1429,
+      31
+    ],
+    [
+      1450,
+      28
+    ],
+    [
+      1470,
+      25
+    ],
+    [
+      1530,
+      23
+    ],
+    [
+      1600,
+      15
+    ],
+    [
+      1640,
+      9
+    ]
+  ]
+}

@@ -1,8 +1,8 @@
 # Additional circuit validation — 2026-11-14
 
-Checkpoint for the 18 additional circuits, current package `e8fa9fb1`. The explicit review register records 16 visual passes, 2 holds and 0 pending reviews. This checkpoint does not declare the work complete.
+Historical checkpoint for the 18 additional circuits at package `e8fa9fb1`. Its review register records 16 visual passes, 2 holds and 0 pending reviews. The working branch has since changed all 18 scenes and the Buddh/COTA contact implementation; these historical passes do not establish acceptance of those newer changes.
 
-Work is active through Sunday 15 November at 10:00 PST. The 18-map work remains incomplete. Sixteen scenes have current Luna High visual passes; Baku and Monaco remain held. Accepted-track moving baselines now cover the rebuilt executable; current comparisons for the additional circuits remain pending.
+Work is active through Sunday 15 November at 10:00 PST. The 18-map work remains incomplete. Fresh packaged visual reviews and moving performance comparisons are pending for the latest changes. The tables below retain their original package identities until that evidence is available.
 
 The [validation record](additional_circuits_validation.json) pins package payloads, exact scene identities, reports, archived frames, current profiles, runtime scope and performance evidence.
 

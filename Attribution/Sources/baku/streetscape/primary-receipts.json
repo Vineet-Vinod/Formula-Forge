@@ -1,0 +1,1023 @@
+{
+  "source_images": [
+    {
+      "title": "File:FilarmonaSide.JPG",
+      "file": "primary-00.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:FilarmonaSide.JPG",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/f/f6/FilarmonaSide.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "original_sha1": "ed792e75f121fc4cc12c4bb7c476c79a3eb099d8",
+      "preview_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/FilarmonaSide.JPG/1280px-FilarmonaSide.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "preview_sha256": "89890d27978645602cdbf3f5447ed5aee4d4d0329ec86a3a08306d841d87cfaf",
+      "bytes": 328400,
+      "metadata": [
+        {
+          "name": "Make",
+          "value": "Canon"
+        },
+        {
+          "name": "Model",
+          "value": "Canon PowerShot A530"
+        },
+        {
+          "name": "Software",
+          "value": "Adobe Photoshop Express 9.0 (Windows)"
+        },
+        {
+          "name": "DateTime",
+          "value": "2015:11:19 11:06:07"
+        },
+        {
+          "name": "Artist",
+          "value": "Picasa"
+        },
+        {
+          "name": "ExposureTime",
+          "value": "1/500"
+        },
+        {
+          "name": "FNumber",
+          "value": "56/10"
+        },
+        {
+          "name": "ISOSpeedRatings",
+          "value": 75
+        },
+        {
+          "name": "ExifVersion",
+          "value": "0230"
+        },
+        {
+          "name": "DateTimeOriginal",
+          "value": "2008:12:07 09:19:57"
+        },
+        {
+          "name": "DateTimeDigitized",
+          "value": "2008:12:07 09:19:57"
+        },
+        {
+          "name": "ShutterSpeedValue",
+          "value": "8965784/1000000"
+        },
+        {
+          "name": "ApertureValue",
+          "value": "4970854/1000000"
+        },
+        {
+          "name": "ExposureBiasValue",
+          "value": "0/3"
+        },
+        {
+          "name": "MaxApertureValue",
+          "value": "88/32"
+        },
+        {
+          "name": "MeteringMode",
+          "value": 5
+        },
+        {
+          "name": "Flash",
+          "value": 88
+        },
+        {
+          "name": "FocalLength",
+          "value": "5800/1000"
+        },
+        {
+          "name": "ColorSpace",
+          "value": 1
+        },
+        {
+          "name": "FocalPlaneXResolution",
+          "value": "2592000/225"
+        },
+        {
+          "name": "FocalPlaneYResolution",
+          "value": "1944000/168"
+        },
+        {
+          "name": "FocalPlaneResolutionUnit",
+          "value": 2
+        },
+        {
+          "name": "SensingMethod",
+          "value": 2
+        },
+        {
+          "name": "FileSource",
+          "value": 3
+        },
+        {
+          "name": "CustomRendered",
+          "value": 0
+        },
+        {
+          "name": "ExposureMode",
+          "value": 0
+        },
+        {
+          "name": "WhiteBalance",
+          "value": 0
+        },
+        {
+          "name": "DigitalZoomRatio",
+          "value": "2592/2592"
+        },
+        {
+          "name": "SceneCaptureType",
+          "value": 0
+        },
+        {
+          "name": "ImageUniqueID",
+          "value": "7029DEF761C3B02504BC04A1AAC2E8CF"
+        },
+        {
+          "name": "Lens",
+          "value": "5.8-23.2 mm"
+        },
+        {
+          "name": "DateTimeMetadata",
+          "value": "2015:11:19 15:06:07"
+        },
+        {
+          "name": "OriginalDocumentID",
+          "value": "xmp.did:f61faf12-43e5-464c-9331-dfbdfc098a39"
+        },
+        {
+          "name": "iimVersion",
+          "value": 4
+        },
+        {
+          "name": "MEDIAWIKI_EXIF_VERSION",
+          "value": 1
+        }
+      ],
+      "extmetadata": {
+        "DateTime": {
+          "value": "2015-11-19 07:08:24",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "FilarmonaSide",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "Azerbaijan State Philharmonic Hall|Self-published work|PD-self|2008 in Baku",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "Filarmony building in Baku",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "2008-12-07",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<a href=\"//commons.wikimedia.org/wiki/User:Shmuliko\" title=\"User:Shmuliko\">Shmuliko</a>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "Public domain",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Public domain",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Copyrighted": {
+          "value": "False",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "pd",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      },
+      "use": "Reference-only whole-image preview; no pixels shipped. Metric geometry must be separately qualified."
+    },
+    {
+      "title": "File:Filarmonia baku.jpg",
+      "file": "primary-01.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Filarmonia_baku.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Filarmonia_baku.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "original_sha1": "11c5372e9a60454930b2909f6fab7c9cc807bee3",
+      "preview_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Filarmonia_baku.jpg/1280px-Filarmonia_baku.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "preview_sha256": "30b8de5e687eed9d6d3e398d6c23ceeee082559675a164b00a52feeb94c01cee",
+      "bytes": 272584,
+      "metadata": [
+        {
+          "name": "Height",
+          "value": 1150
+        },
+        {
+          "name": "Width",
+          "value": 1901
+        },
+        {
+          "name": "Make",
+          "value": "Canon"
+        },
+        {
+          "name": "Model",
+          "value": "Canon EOS 500D"
+        },
+        {
+          "name": "Orientation",
+          "value": 1
+        },
+        {
+          "name": "DateTime",
+          "value": "2010:03:07 16:49:29"
+        },
+        {
+          "name": "YCbCrPositioning",
+          "value": 2
+        },
+        {
+          "name": "ExposureTime",
+          "value": "1/160"
+        },
+        {
+          "name": "FNumber",
+          "value": "10/1"
+        },
+        {
+          "name": "ExposureProgram",
+          "value": 0
+        },
+        {
+          "name": "ISOSpeedRatings",
+          "value": 100
+        },
+        {
+          "name": "ExifVersion",
+          "value": "0221"
+        },
+        {
+          "name": "DateTimeOriginal",
+          "value": "2010:03:07 16:49:29"
+        },
+        {
+          "name": "DateTimeDigitized",
+          "value": "2010:03:07 16:49:29"
+        },
+        {
+          "name": "ComponentsConfiguration",
+          "value": "\n#1\n#2\n#3\n#0"
+        },
+        {
+          "name": "ShutterSpeedValue",
+          "value": "483328/65536"
+        },
+        {
+          "name": "ApertureValue",
+          "value": "434176/65536"
+        },
+        {
+          "name": "ExposureBiasValue",
+          "value": "0/1"
+        },
+        {
+          "name": "MeteringMode",
+          "value": 5
+        },
+        {
+          "name": "Flash",
+          "value": 16
+        },
+        {
+          "name": "FocalLength",
+          "value": "30/1"
+        },
+        {
+          "name": "WhiteBalance",
+          "value": "0"
+        },
+        {
+          "name": "GPSVersionID",
+          "value": "2.2.0.0"
+        },
+        {
+          "name": "MEDIAWIKI_EXIF_VERSION",
+          "value": 1
+        }
+      ],
+      "extmetadata": {
+        "DateTime": {
+          "value": "2017-05-23 15:49:25",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Filarmonia baku",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "Azerbaijan State Philharmonic Hall|GFDL|License migration redundant|Self-published work",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "Filarmonia building in Baku Azerbaijan",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "2010-03-07",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<a href=\"//commons.wikimedia.org/wiki/User:Gulustan\" title=\"User:Gulustan\">Gulustan</a>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "CC BY-SA 3.0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Attribution-Share Alike 3.0",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "true",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "https://creativecommons.org/licenses/by-sa/3.0",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "cc-by-sa-3.0",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      },
+      "use": "Reference-only whole-image preview; no pixels shipped. Metric geometry must be separately qualified."
+    },
+    {
+      "title": "File:Western University main facade.JPG",
+      "file": "registered-00.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Western_University_main_facade.JPG",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/8/88/Western_University_main_facade.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "original_sha1": "362e36d485dc778957383b7303f86838e9f660e3",
+      "preview_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Western_University_main_facade.JPG/1280px-Western_University_main_facade.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "preview_sha256": "e5688d4f9ceb88c02da5bd193b5333317edca9850ac1e49c08179f675f36c8df",
+      "bytes": 385448,
+      "metadata": [
+        {
+          "name": "ImageWidth",
+          "value": 4752
+        },
+        {
+          "name": "ImageLength",
+          "value": 3168
+        },
+        {
+          "name": "BitsPerSample",
+          "value": "\n*8\n*8\n*8"
+        },
+        {
+          "name": "PhotometricInterpretation",
+          "value": 2
+        },
+        {
+          "name": "Make",
+          "value": "Canon"
+        },
+        {
+          "name": "Model",
+          "value": "Canon EOS 500D"
+        },
+        {
+          "name": "Orientation",
+          "value": 1
+        },
+        {
+          "name": "SamplesPerPixel",
+          "value": 3
+        },
+        {
+          "name": "XResolution",
+          "value": "720000/10000"
+        },
+        {
+          "name": "YResolution",
+          "value": "720000/10000"
+        },
+        {
+          "name": "ResolutionUnit",
+          "value": 2
+        },
+        {
+          "name": "Software",
+          "value": "Adobe Photoshop CS5.1 Windows"
+        },
+        {
+          "name": "DateTime",
+          "value": "2013:09:15 20:43:12"
+        },
+        {
+          "name": "Artist",
+          "value": "by Hajizade"
+        },
+        {
+          "name": "YCbCrPositioning",
+          "value": 2
+        },
+        {
+          "name": "ExposureTime",
+          "value": "1/4000"
+        },
+        {
+          "name": "FNumber",
+          "value": "63/10"
+        },
+        {
+          "name": "ExposureProgram",
+          "value": 0
+        },
+        {
+          "name": "ISOSpeedRatings",
+          "value": 3200
+        },
+        {
+          "name": "ExifVersion",
+          "value": "0221"
+        },
+        {
+          "name": "DateTimeOriginal",
+          "value": "2013:09:15 12:04:33"
+        },
+        {
+          "name": "DateTimeDigitized",
+          "value": "2013:09:15 12:04:33"
+        },
+        {
+          "name": "ComponentsConfiguration",
+          "value": "\n#1\n#2\n#3\n#0"
+        },
+        {
+          "name": "ShutterSpeedValue",
+          "value": "786432/65536"
+        },
+        {
+          "name": "ApertureValue",
+          "value": "352256/65536"
+        },
+        {
+          "name": "ExposureBiasValue",
+          "value": "4/3"
+        },
+        {
+          "name": "MaxApertureValue",
+          "value": "3625/1000"
+        },
+        {
+          "name": "MeteringMode",
+          "value": 3
+        },
+        {
+          "name": "Flash",
+          "value": 16
+        },
+        {
+          "name": "FocalLength",
+          "value": "18/1"
+        },
+        {
+          "name": "SubSecTime",
+          "value": "81"
+        },
+        {
+          "name": "SubSecTimeOriginal",
+          "value": "81"
+        },
+        {
+          "name": "SubSecTimeDigitized",
+          "value": "81"
+        },
+        {
+          "name": "FlashPixVersion",
+          "value": "0100"
+        },
+        {
+          "name": "ColorSpace",
+          "value": 1
+        },
+        {
+          "name": "FocalPlaneXResolution",
+          "value": "4752000/894"
+        },
+        {
+          "name": "FocalPlaneYResolution",
+          "value": "3168000/593"
+        },
+        {
+          "name": "FocalPlaneResolutionUnit",
+          "value": 2
+        },
+        {
+          "name": "CustomRendered",
+          "value": 0
+        },
+        {
+          "name": "ExposureMode",
+          "value": 0
+        },
+        {
+          "name": "WhiteBalance",
+          "value": 0
+        },
+        {
+          "name": "SceneCaptureType",
+          "value": 0
+        },
+        {
+          "name": "GPSVersionID",
+          "value": "0.0.2.2"
+        },
+        {
+          "name": "SerialNumber",
+          "value": "1080301664"
+        },
+        {
+          "name": "Lens",
+          "value": "EF-S18-55mm f/3.5-5.6 IS"
+        },
+        {
+          "name": "DateTimeMetadata",
+          "value": "2013:09:16 01:43:12"
+        },
+        {
+          "name": "OriginalDocumentID",
+          "value": "5E943F9B77788CE3CCC5DC9A34CDD458"
+        },
+        {
+          "name": "iimVersion",
+          "value": 41888
+        },
+        {
+          "name": "MEDIAWIKI_EXIF_VERSION",
+          "value": 1
+        }
+      ],
+      "extmetadata": {
+        "DateTime": {
+          "value": "2013-09-16 11:20:49",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Western University main facade",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "Taken with Canon EOS 500D|Buildings in Baku|Self-published work|Images from Wiki Loves Monuments 2013|Cultural heritage monuments in Azerbaijan with known IDs|Images from Wiki Loves Monuments 2013 in Azerbaijan|Cultural heritage monuments in Baku|Uploaded via Campaign:wlm-az|Files with coordinates missing SDC location of creation|Images from Wiki Loves Monuments missing SDC depicts|Images from Wiki Loves Monuments missing SDC location of creation",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "GPSLatitude": {
+          "value": "40.364472",
+          "source": "commons-desc-page"
+        },
+        "GPSLongitude": {
+          "value": "49.830814",
+          "source": "commons-desc-page"
+        },
+        "GPSMapDatum": {
+          "value": "WGS-84",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "This is a photo of a monument in Azerbaijan identified by the ID 3289",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "2013-09-15 12:04:33",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<a href=\"//commons.wikimedia.org/wiki/User:Urek_Meniashvili\" title=\"User:Urek Meniashvili\">Urek Meniashvili</a>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "CC BY-SA 3.0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Attribution-Share Alike 3.0",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "true",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "https://creativecommons.org/licenses/by-sa/3.0",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "cc-by-sa-3.0",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      },
+      "use": "Reference-only whole-image preview; no pixels shipped. Metric geometry must be separately qualified."
+    },
+    {
+      "title": "File:Q\u0259rb Universitetinin binas\u0131.jpg",
+      "file": "registered-01.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Q%C9%99rb_Universitetinin_binas%C4%B1.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Q%C9%99rb_Universitetinin_binas%C4%B1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "original_sha1": "733bfc6b2ed1bb9226368427c8a13a389c6804a8",
+      "preview_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/Q%C9%99rb_Universitetinin_binas%C4%B1.jpg/1280px-Q%C9%99rb_Universitetinin_binas%C4%B1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "preview_sha256": "9e7c87641d298b1857094bdcdf37dcf941a64701ed7539e430b4b2ccbf8432a2",
+      "bytes": 379386,
+      "metadata": [
+        {
+          "name": "ImageDescription",
+          "value": "DCIM\\100GOPRO\\GOPR0093.\n\n"
+        },
+        {
+          "name": "Make",
+          "value": "GoPro"
+        },
+        {
+          "name": "Model",
+          "value": "HERO4 Silver"
+        },
+        {
+          "name": "Software",
+          "value": "Adobe Photoshop Express 9.0 (Windows)"
+        },
+        {
+          "name": "DateTime",
+          "value": "2015:09:18 00:30:12"
+        },
+        {
+          "name": "Artist",
+          "value": "Picasa"
+        },
+        {
+          "name": "ExposureTime",
+          "value": "1/460"
+        },
+        {
+          "name": "FNumber",
+          "value": "28/10"
+        },
+        {
+          "name": "ExposureProgram",
+          "value": 2
+        },
+        {
+          "name": "ISOSpeedRatings",
+          "value": 100
+        },
+        {
+          "name": "ExifVersion",
+          "value": "0230"
+        },
+        {
+          "name": "DateTimeOriginal",
+          "value": "2015:09:17 15:05:23"
+        },
+        {
+          "name": "DateTimeDigitized",
+          "value": "2015:09:17 15:05:23"
+        },
+        {
+          "name": "ShutterSpeedValue",
+          "value": "884549/100000"
+        },
+        {
+          "name": "ApertureValue",
+          "value": "2970854/1000000"
+        },
+        {
+          "name": "ExposureBiasValue",
+          "value": "0/32"
+        },
+        {
+          "name": "MaxApertureValue",
+          "value": "297/100"
+        },
+        {
+          "name": "SubjectDistance",
+          "value": "0/100"
+        },
+        {
+          "name": "MeteringMode",
+          "value": 2
+        },
+        {
+          "name": "LightSource",
+          "value": 0
+        },
+        {
+          "name": "Flash",
+          "value": 32
+        },
+        {
+          "name": "FocalLength",
+          "value": "3/1"
+        },
+        {
+          "name": "ColorSpace",
+          "value": 1
+        },
+        {
+          "name": "SensingMethod",
+          "value": 2
+        },
+        {
+          "name": "FileSource",
+          "value": 3
+        },
+        {
+          "name": "SceneType",
+          "value": 1
+        },
+        {
+          "name": "CustomRendered",
+          "value": 0
+        },
+        {
+          "name": "ExposureMode",
+          "value": 0
+        },
+        {
+          "name": "WhiteBalance",
+          "value": 0
+        },
+        {
+          "name": "DigitalZoomRatio",
+          "value": "1024/1024"
+        },
+        {
+          "name": "FocalLengthIn35mmFilm",
+          "value": 15
+        },
+        {
+          "name": "SceneCaptureType",
+          "value": 0
+        },
+        {
+          "name": "GainControl",
+          "value": 0
+        },
+        {
+          "name": "Contrast",
+          "value": 0
+        },
+        {
+          "name": "Saturation",
+          "value": 0
+        },
+        {
+          "name": "Sharpness",
+          "value": 2
+        },
+        {
+          "name": "SubjectDistanceRange",
+          "value": 0
+        },
+        {
+          "name": "ImageUniqueID",
+          "value": "D883E5C7D08BEAF26A15FDFB9A648DBB"
+        },
+        {
+          "name": "DateTimeMetadata",
+          "value": "2015:09:18 05:30:12"
+        },
+        {
+          "name": "OriginalDocumentID",
+          "value": "xmp.did:7a9e9cc0-c4ee-2d47-82c1-b8890b85220f"
+        },
+        {
+          "name": "iimVersion",
+          "value": 4
+        },
+        {
+          "name": "MEDIAWIKI_EXIF_VERSION",
+          "value": 1
+        }
+      ],
+      "extmetadata": {
+        "DateTime": {
+          "value": "2015-09-18 08:02:10",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Q\u0259rb Universitetinin binas\u0131",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "Taken with GoPro HERO4 Silver Edition|Self-published work|Images from Wiki Loves Monuments 2015|Cultural heritage monuments in Azerbaijan with known IDs|Cultural heritage monuments in Baku|Uploaded via Campaign:wlm-az|Images from Wiki Loves Monuments 2015 in Azerbaijan|Files with coordinates missing SDC location of creation|Images from Wiki Loves Monuments missing SDC depicts|Images from Wiki Loves Monuments missing SDC location of creation|Building on Istiglaliyyat Street 25",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "GPSLatitude": {
+          "value": "40.364472",
+          "source": "commons-desc-page"
+        },
+        "GPSLongitude": {
+          "value": "49.830814",
+          "source": "commons-desc-page"
+        },
+        "GPSMapDatum": {
+          "value": "WGS-84",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "This is a photo of a monument in Azerbaijan identified by the ID 3289",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "2015-09-17 15:05:23",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<a href=\"//commons.wikimedia.org/wiki/User:Sefer_azeri\" title=\"User:Sefer azeri\">Sefer azeri</a>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "CC BY-SA 4.0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Attribution-Share Alike 4.0",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "true",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "https://creativecommons.org/licenses/by-sa/4.0",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "cc-by-sa-4.0",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      },
+      "use": "Reference-only whole-image preview; no pixels shipped. Metric geometry must be separately qualified."
+    }
+  ],
+  "official_registry": "https://frameworks.e-qanun.az/2/c_f_2847.html",
+  "ministry_registry": "https://culture.gov.az/medias/media/other/296/kadastr.pdf",
+  "philharmonic_restoration": "https://www.azer.com/aiweb/categories/magazine/ai122_folder/122_articles/122_sharifov_philharmonic.html",
+  "interpretation": "Reference-only whole-frame downsampled source photographs; no image pixels shipped in the game. Listed original URLs/SHA1 and preview hashes retained. Pink Sadikhov and interior photos excluded.",
+  "plan_receipts": {
+    "use": "Private plan orientation only; acquisition date and off-nadir parallax unresolved. No imagery pixels shipped; literal OSM parts and photographer exteriors remain primary geometry/appearance inputs.",
+    "tiles": [
+      {
+        "file": "plan-334716-197789.jpg",
+        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/197789/334716",
+        "sha256": "d37c5d393434f69f4ed8b9444d4a2981520cc25c68b19d17133e2e44ec8fde1e",
+        "bytes": 16107
+      },
+      {
+        "file": "plan-334717-197789.jpg",
+        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/197789/334717",
+        "sha256": "4b36467ed9e89c1f641db844f18bfab46b5f3572944f2b6f2b1bd8781ec95b1a",
+        "bytes": 17153
+      },
+      {
+        "file": "plan-334716-197790.jpg",
+        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/197790/334716",
+        "sha256": "74746c62f80d992122854005f0949f558f411211b2c0eaf5ecd93f88ef29b9ed",
+        "bytes": 15751
+      },
+      {
+        "file": "plan-334717-197790.jpg",
+        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/197790/334717",
+        "sha256": "d8636ce394eaa4945b4f48cf1664fa430194477490b4c9899d5b4435910a6e0d",
+        "bytes": 15743
+      },
+      {
+        "file": "plan-334715-197789.jpg",
+        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/197789/334715",
+        "sha256": "8515cba46628d75bb175269220bb4c341c431c2c404f4c221a58b68eb3e4468a",
+        "bytes": 14565
+      },
+      {
+        "file": "plan-334715-197790.jpg",
+        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/197790/334715",
+        "sha256": "49ca70d69f8e67ffa1544a7c1f976d34b50ad1d825257387899c4acf7a53785a",
+        "bytes": 15479
+      }
+    ]
+  }
+}

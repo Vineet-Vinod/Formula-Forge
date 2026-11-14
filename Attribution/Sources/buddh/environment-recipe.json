@@ -912,9 +912,9 @@
   "width_profile": {
     "base_m": 18.0,
     "straight_m": 20.0,
-    "minimum_m": 18.0,
+    "minimum_m": 13.0,
     "maximum_m": 25.0,
-    "method": "Construction-published paved circuit range, registered to white racing edges in the supplied 2013 onboard. Wider approaches and hairpins at T1, T3 and T4 are local visual estimates. Existing smooth cubic transitions join the controls.",
+    "method": "Retained construction-range controls below remain the baseline outside the bounded first-sector reconstruction. The authoritative legal-white-line override from304 to2680m is first-sector.json, compiled through native_width_controls with smooth bounded joins. Construction-published18\u201325m paving is not a station-resolved legal-lane measurement.",
     "source": "https://www.consultanthart.com/www/pdf/RoadNews_24_en_India.pdf",
     "controls_m": [
       [
@@ -1154,7 +1154,8 @@
         "confidence": "Wide banked continuous right; coloured outer escape is excluded."
       }
     ],
-    "native_sync": "Root must apply the recipe with circuit_profiles.py --racing buddh, repair the demonstrated native interpolation kinks, then rebuild/export/check all physical and visual surfaces. No centreline coordinates are changed by this source file."
+    "native_sync": "Root must apply the recipe with circuit_profiles.py --racing buddh, repair the demonstrated native interpolation kinks, then rebuild/export/check all physical and visual surfaces. No centreline coordinates are changed by this source file.",
+    "first_sector_override": "first-sector.json; first-sector-baseline.json; first-sector-evidence/README.md"
   },
   "pit_roof_reconstruction": {
     "provenance": "pit-roof-review.json",

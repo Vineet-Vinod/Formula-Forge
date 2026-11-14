@@ -18,8 +18,22 @@ constexpr float Kerb = 0.85f;
 #include "track_data/malaysia_paving.inc"
 #include "track_data/cota_t11_paving.inc"
 #include "track_data/cota_backstraight_paving.inc"
+#include "track_data/buddh_first_sector_profile.inc"
+#include "track_data/buddh_first_sector_contact.inc"
 
 Vec2 leftNormal(Vec2 tangent) { return {-tangent.y, tangent.x}; }
+
+float retainedBuddhWidth(float station) {
+    const auto next = std::upper_bound(std::begin(kBuddhFirstSectorRetainedWidth),
+        std::end(kBuddhFirstSectorRetainedWidth), station,
+        [](float distance, const TrackWidthPoint& point) { return distance < point.distanceMeters; });
+    if (next == std::begin(kBuddhFirstSectorRetainedWidth)) return next->roadWidthMeters;
+    if (next == std::end(kBuddhFirstSectorRetainedWidth)) return (next - 1)->roadWidthMeters;
+    const auto& a = *(next - 1);
+    const auto& b = *next;
+    const float t = (station - a.distanceMeters) / std::max(0.001f, b.distanceMeters - a.distanceMeters);
+    return a.roadWidthMeters + (b.roadWidthMeters - a.roadWidthMeters) * t;
+}
 
 
 bool streetVenue(const TrackCatalogEntry& track) {
@@ -75,6 +89,9 @@ float circuitShoulderMeters(const TrackCatalogEntry& track, float station, bool 
         const float retainedWidth = a.roadWidthMeters + (b.roadWidthMeters - a.roadWidthMeters) * t;
         // Narrowing the legal lane must retain the existing wide escape's outer edge.
         width = std::max(width, 23.05f + (retainedWidth - sampleTrackWidthMeters(track, station)) * 0.5f);
+    }
+    if (track.id == TrackLayoutId::Buddh && station >= 304.0f && station <= 2680.0f) {
+        width += std::max(0.0f, retainedBuddhWidth(station) - sampleTrackWidthMeters(track, station)) * 0.5f;
     }
     return width;
 }
@@ -176,6 +193,18 @@ std::vector<CircuitSample> sampleCircuit(const TrackCatalogEntry& track, int sam
 void buildGeneratedSupport(const TrackCatalogEntry& track, const std::vector<CircuitSample>& samples, GeneratedSupport& support) {
     support.barriers.clear();
     support.runoff.clear();
+    if (track.id == TrackLayoutId::Buddh) {
+        for (const auto& triangle : kBuddhFirstSectorPaved) {
+            support.runoff.push_back({{triangle[0] * Units, -triangle[1] * Units},
+                {triangle[2] * Units, -triangle[3] * Units},
+                {triangle[4] * Units, -triangle[5] * Units}, true});
+        }
+        for (const auto& triangle : kBuddhFirstSectorGravel) {
+            support.runoff.push_back({{triangle[0] * Units, -triangle[1] * Units},
+                {triangle[2] * Units, -triangle[3] * Units},
+                {triangle[4] * Units, -triangle[5] * Units}, false});
+        }
+    }
     if (track.id == TrackLayoutId::Cota) {
         for (const auto& triangle : kCotaBackstraightPaving) {
             support.runoff.push_back({{triangle[0] * Units, -triangle[1] * Units},
@@ -260,7 +289,9 @@ void buildGeneratedSupport(const TrackCatalogEntry& track, const std::vector<Cir
                 }
                 const bool cotaGrass = track.id == TrackLayoutId::Cota &&
                     first.station >= 2520.0f && first.station <= 3590.0f && !asphalt;
-                if (!cotaGrass) {
+                const bool buddhSourceRoles = track.id == TrackLayoutId::Buddh &&
+                    first.station >= 230.0f && first.station <= 2820.0f;
+                if (!cotaGrass && !buddhSourceRoles) {
                     support.runoff.push_back({roadA, a, b, asphalt});
                     support.runoff.push_back({roadA, b, roadB, asphalt});
                 }
@@ -324,14 +355,16 @@ void buildGeneratedSupport(const TrackCatalogEntry& track, const std::vector<Cir
                 }
             }
             const CircuitSample& sample = samples[nearest];
+            const float halfWidth = track.id == TrackLayoutId::Buddh ?
+                retainedBuddhWidth(sample.station) * 0.5f : sample.halfWidth;
             float height = sample.elevation;
             const float metres = std::sqrt(best) / Units;
             const float stationGap = std::abs(sample.station - samples[second].station);
             if (track.deckSeparation && stationGap > 200.0f && stationGap < track.targetLengthMeters - 200.0f &&
                 std::sqrt(secondBest) < 18.0f) {
                 height = std::min(height, samples[second].elevation);
-            } else if (metres > sample.halfWidth + 2.0f) {
-                height -= std::min(2.0f, 0.018f * (metres - sample.halfWidth));
+            } else if (metres > halfWidth + 2.0f) {
+                height -= std::min(2.0f, 0.018f * (metres - halfWidth));
             }
             support.heights[static_cast<std::size_t>(row) * columns + column] =
                 static_cast<std::int16_t>(std::clamp(static_cast<int>(std::lround(height * 100.0f)), -32768, 32767));
@@ -440,6 +473,10 @@ bool writeGeneratedContact(const TrackCatalogEntry& track, const std::vector<Cir
     }
     if (track.id == TrackLayoutId::Cota) {
         for (const auto& triangle : kCotaBackstraightPaving) drive.insert(drive.end(), triangle.begin(), triangle.end());
+    }
+    if (track.id == TrackLayoutId::Buddh) {
+        for (const auto& triangle : kBuddhFirstSectorGround) drive.insert(drive.end(), triangle.begin(), triangle.end());
+        for (const auto& triangle : kBuddhFirstSectorHeight) drive.insert(drive.end(), triangle.begin(), triangle.end());
     }
     const bool surface = writeBytes(directory + "/drive_surface.bin", "FFSURF1", 8,
         static_cast<std::uint32_t>(drive.size() / 9), drive.data(), drive.size());

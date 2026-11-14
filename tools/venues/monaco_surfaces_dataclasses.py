@@ -8,7 +8,7 @@ from shapely.geometry import Polygon
 
 XY = tuple[float, float]
 NativeVertex = tuple[float, float, float, float, float, float, float, float]
-SurfaceClass = Literal["lawn", "ivy", "rock", "paved"]
+SurfaceClass = Literal["lawn", "ivy", "rock", "paved", "natural"]
 SourceCover = Literal[
     "Ivy/Garden cover candidate",
     "Ivy candidate",

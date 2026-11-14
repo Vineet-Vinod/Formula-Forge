@@ -170,7 +170,14 @@ def apply_racing(slug: str) -> None:
         profile = TypeAdapter(ElevationControls).validate_json(elevation_path.read_bytes())
         text = replace_profile(text, "Elevation", profile.controls, length)
     recipe = TypeAdapter(RacingRecipe).validate_json((source / "environment-recipe.json").read_bytes())
-    if recipe.width_profile is not None:
+    if slug == "buddh":
+        from rebuild_buddh_first_sector import width_profile
+
+        match_width = re.search(r"constexpr TrackWidthPoint \w+\[\] = \{.*?\n\};", text, re.DOTALL)
+        if match_width is None:
+            raise ValueError("Missing retained Buddh width profile")
+        text = text[:match_width.start()] + width_profile(source) + text[match_width.end():]
+    elif recipe.width_profile is not None:
         controls = recipe.width_profile.controls_m
         # Validate source controls before interpolating onto the retained station lattice.
         replace_profile(text, "Width", controls, length)
@@ -316,6 +323,12 @@ def apply(slug: str) -> None:
         profile = TypeAdapter(PitLane).validate_json(pit_path.read_bytes())
         result = pit_shoulders(result, length, profile)
     result = section_shoulders(result, length, source)
+    if slug == "buddh":
+        from venues.buddh_first_sector_dataclasses import RetainedBaseline
+
+        retained = TypeAdapter(RetainedBaseline).validate_json(
+            (source / "first-sector-baseline.json").read_bytes())
+        result = retained.shoulder_controls
     body = "\n" + ",\n".join(
         f"    {{{station:.3f}f, {left:.3f}f, {right:.3f}f}}"
         for station, left, right in result

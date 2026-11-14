@@ -605,6 +605,24 @@ buffered Python containment test hid an eight-micrometre F32 seam on COTA. Its
 contact exporter now adds a bounded 0.3 mm bevel overlap on the original planes;
 triangulate the complete bevel polygon and check overlapping height agreement.
 Keep such repairs local rather than weakening every circuit's query tolerance.
+
+Keep surface classification separate from height support. Buddh uses compact XY
+unions for paved and gravel footprints, and separate original-plane triangles for
+driving height. The existing classifier interprets a false asphalt flag as gravel;
+grass requires no classification hit. A tiny height-encoding repair must never
+expand the paved/gravel footprint. Check the actual native loader's minimum
+triangle area before declaring coverage complete. If a verified source island
+cannot be represented within the normal overlap, prove the encoding limit and
+bound its height-only repair individually. Preserve the source plane and measure
+overlaps with neighboring owners. Do not turn a numerical repair into a new
+default tolerance or a change to rendered geometry.
+
+Width changes can also alter the generated fallback height grid. Buddh retains
+its old width for that grid while using the corrected width for legal limits.
+Compare the compiled grid bytes, barrier exports, every road sample and original
+outside controls. Verify the public authoring commands twice; a legacy profile
+writer can silently restore an older wide lane after an otherwise correct fix.
+
 Check face orientation independently of triangle size. An unnormalised cross
 product measures area as well as direction: the old 0.35 cutoff left 12 cm road
 stripes and small kerb tops facing downward. Road and kerb top emitters now use
@@ -673,6 +691,15 @@ missing geometry. Compare asphalt, kerb, grass, gravel, glazing, distant foliage
 and sky together under the actual game settings.
 
 Use detailed geometry where it affects cockpit silhouettes and near-field depth.
+Register distinctive building parts to their literal mapped outlines. Baku's
+Philharmonic towers occupy two explicit roof parts, not the ends of its bounding
+rectangle; a nearby timber gallery is a separate low part. Qualify each visible
+face from the corresponding photograph before repeating windows or balconies.
+New facets created by clipping a building away from the road need their own span
+checks. Assigning them the nearest long facade's window schedule can send trim
+through protection. Compare emitted faces against the actual event envelope,
+including fence height, and keep uncertain bases or hidden returns labeled.
+
 Distant trees/crowds can use reviewed cards or simpler meshes with stable LODs.
 The [Silverstone vegetation notes](../Attribution/Sources/silverstone/vegetation/README.md)
 record occupied alpha bounds, physical crown size, edge-colour dilation and

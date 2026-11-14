@@ -283,7 +283,10 @@ float FFSimulation::Ground(Vec2 position, bool protectMainRoad) const {
     const bool cotaApron = circuit == TrackLayoutId::Cota &&
         projection.station >= 2520.0f && projection.station <= 3590.0f &&
         std::abs(projection.lane) > (projection.halfWidth + 0.15f) * Units;
-    if (quadratic != 0.0f || fade > 0.0f || jeddahBank || malaysiaApron || cotaApron ||
+    const bool buddhFirstSector = circuit == TrackLayoutId::Buddh &&
+        projection.station >= 230.0f && projection.station <= 2820.0f &&
+        std::abs(projection.lane) > (projection.halfWidth + 0.15f) * Units;
+    if (quadratic != 0.0f || fade > 0.0f || jeddahBank || malaysiaApron || cotaApron || buddhFirstSector ||
         circuitBankedPaving(*track, projection.station, projection.lane >= 0.0f)) {
         const auto height = driveSurface.Height(position.x / Units, -position.y / Units);
         if (height) return *height * Units;

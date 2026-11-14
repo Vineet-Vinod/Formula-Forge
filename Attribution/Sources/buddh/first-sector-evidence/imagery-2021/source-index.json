@@ -1,0 +1,4533 @@
+{
+  "use": "Primary reference evidence only. No imagery pixels become game textures.",
+  "coordinate_note": "Literal native source rows and WGS84 query positions are retained. Manual widths are separate reconstruction decisions.",
+  "original_indices": [
+    {
+      "packet": "longitudinal",
+      "original_index_sha256": "d2ea7e3968ade9349e46e90832ff4a84e184f6aab4ac97bd2685c5c9e086d464",
+      "publication": {
+        "itemID": "00d443f39e634614b76717a803d6923f",
+        "itemTitle": "World Imagery (Wayback 2022-01-12)",
+        "itemURL": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/{level}/{row}/{col}",
+        "metadataLayerUrl": "https://metadata.maptiles.arcgis.com/arcgis/rest/services/World_Imagery_Metadata_2022_r00/MapServer",
+        "metadataLayerItemID": "67c0b2a116334687974ce8c6efc28a0f",
+        "layerIdentifier": "WB_2022_R00"
+      },
+      "retrieved_utc": "2026-11-14T16:45:31.943633+00:00"
+    },
+    {
+      "packet": "extended-first-sector",
+      "original_index_sha256": "cc7d1c71a47f1b952d23e277151b389cee2bd372e5fa8578edc88181235d709a",
+      "publication": {
+        "itemID": "00d443f39e634614b76717a803d6923f",
+        "itemTitle": "World Imagery (Wayback 2022-01-12)",
+        "itemURL": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/{level}/{row}/{col}",
+        "metadataLayerUrl": "https://metadata.maptiles.arcgis.com/arcgis/rest/services/World_Imagery_Metadata_2022_r00/MapServer",
+        "metadataLayerItemID": "67c0b2a116334687974ce8c6efc28a0f",
+        "layerIdentifier": "WB_2022_R00"
+      },
+      "retrieved_utc": "2026-11-14T17:36:00.234481+00:00"
+    }
+  ],
+  "sections": [
+    {
+      "group": "straight",
+      "station_m": 100,
+      "native_road": {
+        "station": "99.7825928",
+        "x": "86.3963013",
+        "y": "-49.9221382",
+        "z": "1.77191257",
+        "tx": "0.865844727",
+        "ty": "-0.500312865",
+        "half_width": "9",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53407380683032,
+        28.348412118236926
+      ],
+      "pixel_in_world": [
+        48007830.929079264,
+        28040083.407798268
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255502274542474,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187530,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187530",
+          "file": "tile-18-109531-187530.jpg",
+          "bytes": 16878,
+          "sha256": "ae5098054b87901f4132c22795887624b64e982f3e7c722d34afcc45614f07c8"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "straight",
+      "station_m": 650,
+      "native_road": {
+        "station": "650.155762",
+        "x": "165.565964",
+        "y": "202.02916",
+        "z": "2.64618087",
+        "tx": "-0.338997424",
+        "ty": "0.940787375",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "0.100000001",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53488106318329,
+        28.35067305205042
+      ],
+      "pixel_in_world": [
+        48007981.4125704,
+        28039604.502705958
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255390378454897,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187530,
+            109529
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109529/187530",
+          "file": "tile-18-109529-187530.jpg",
+          "bytes": 9615,
+          "sha256": "796189da7c69d969f38b759a39da31f9bd0574d9e20d04723583bda0c55426ea"
+        },
+        {
+          "zxy": [
+            18,
+            187530,
+            109530
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109530/187530",
+          "file": "tile-18-109530-187530.jpg",
+          "bytes": 12341,
+          "sha256": "b8c47d8baccae315d2972dc4b36beacfe3a96c2a298e6dbed8194fdada7793c8"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109529
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109529/187531",
+          "file": "tile-18-109529-187531.jpg",
+          "bytes": 15749,
+          "sha256": "296e140aaadf3f81c8d116831c5d8f14025cbdf51b4916ad944d63a526f42683"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109530
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109530/187531",
+          "file": "tile-18-109530-187531.jpg",
+          "bytes": 14609,
+          "sha256": "f6801a97cd80913b60b93d236763ba9871ed5cde3abdb26d1d8dd2eff99093a7"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "straight",
+      "station_m": 800,
+      "native_road": {
+        "station": "800.143433",
+        "x": "114.291656",
+        "y": "342.978302",
+        "z": "3.32800913",
+        "tx": "-0.347728163",
+        "ty": "0.937595427",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "0.100000001",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53435824283184,
+        28.35193788649822
+      ],
+      "pixel_in_world": [
+        48007883.951793,
+        28039336.58433048
+      ],
+      "resolution_m_per_pixel_estimate": 0.525532777684493,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187530,
+            109528
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109528/187530",
+          "file": "tile-18-109528-187530.jpg",
+          "bytes": 11641,
+          "sha256": "515873b22c17706e5101c38b366ac8ae79b52df88087023d6951b6454e7bdf65"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109528
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109528/187531",
+          "file": "tile-18-109528-187531.jpg",
+          "bytes": 15643,
+          "sha256": "8f4d23115fd320a7fe4830b523b8a921251c361804184ee9511d0dcb62ac0ce9"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "straight",
+      "station_m": 900,
+      "native_road": {
+        "station": "899.926025",
+        "x": "79.5933762",
+        "y": "436.533569",
+        "z": "2.54783106",
+        "tx": "-0.347727984",
+        "ty": "0.937595487",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53400444055644,
+        28.352777422821713
+      ],
+      "pixel_in_world": [
+        48007817.998268604,
+        28039158.751225717
+      ],
+      "resolution_m_per_pixel_estimate": 0.52552862234905,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187530,
+            109527
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109527/187530",
+          "file": "tile-18-109527-187530.jpg",
+          "bytes": 14580,
+          "sha256": "842af22c926e7a615932e57219ffdc9a8bad7882aba7998dab0fb3eb29e778b6"
+        },
+        {
+          "zxy": [
+            18,
+            187530,
+            109528
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109528/187530",
+          "file": "tile-18-109528-187530.jpg",
+          "bytes": 11641,
+          "sha256": "515873b22c17706e5101c38b366ac8ae79b52df88087023d6951b6454e7bdf65"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "straight",
+      "station_m": 1250,
+      "native_road": {
+        "station": "1250.10645",
+        "x": "197.505295",
+        "y": "681.990967",
+        "z": "3.60839415",
+        "tx": "0.401894152",
+        "ty": "0.915686131",
+        "half_width": "9",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53520673373663,
+        28.354980082362964
+      ],
+      "pixel_in_world": [
+        48008042.12196171,
+        28038692.170583718
+      ],
+      "resolution_m_per_pixel_estimate": 0.525517719617035,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187531",
+          "file": "tile-18-109525-187531.jpg",
+          "bytes": 11860,
+          "sha256": "b20a7375234da38c68ca34c51e8f6c1deb81065f0198ab934fc67cfefdf339a2"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187531",
+          "file": "tile-18-109526-187531.jpg",
+          "bytes": 13372,
+          "sha256": "56e5e259378be5b9bc216e9a0616c2766178a2f666824c3e529cf21b6fcab077"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "straight",
+      "station_m": 1800,
+      "native_road": {
+        "station": "1799.85205",
+        "x": "355.198822",
+        "y": "507.906006",
+        "z": "7.75053167",
+        "tx": "0.275603533",
+        "ty": "-0.961271405",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53681466153562,
+        28.353417897220208
+      ],
+      "pixel_in_world": [
+        48008341.861428335,
+        28039023.08307004
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255254522066841,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187532,
+            109527
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109527/187532",
+          "file": "tile-18-109527-187532.jpg",
+          "bytes": 13297,
+          "sha256": "35412904ccb183eb06b611cc1c0ad378964e4b3de7238f9450414c70f22a952d"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "straight",
+      "station_m": 2100,
+      "native_road": {
+        "station": "2099.82739",
+        "x": "437.618073",
+        "y": "219.475449",
+        "z": "2.2021935",
+        "tx": "0.273636043",
+        "ty": "-0.961833298",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53765505243419,
+        28.35082960970661
+      ],
+      "pixel_in_world": [
+        48008498.52164643,
+        28039571.34069484
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255382629942289,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187532,
+            109529
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109529/187532",
+          "file": "tile-18-109529-187532.jpg",
+          "bytes": 10534,
+          "sha256": "25f04ba83d28a004c518b4a2c6a14889a4ffb73cb73b8aabc2350e13a00f2b9c"
+        },
+        {
+          "zxy": [
+            18,
+            187533,
+            109529
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109529/187533",
+          "file": "tile-18-109529-187533.jpg",
+          "bytes": 15197,
+          "sha256": "05cf01c6070aac02024c28147d44ce6bde363b0143ccb40b1ee05446beb5092b"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "straight",
+      "station_m": 2400,
+      "native_road": {
+        "station": "2399.80273",
+        "x": "517.557312",
+        "y": "-69.6444321",
+        "z": "7.72357798",
+        "tx": "0.273165345",
+        "ty": "-0.961967111",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53847015579996,
+        28.348235136409578
+      ],
+      "pixel_in_world": [
+        48008650.46792677,
+        28040120.895196147
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255511033221334,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187533,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187533",
+          "file": "tile-18-109531-187533.jpg",
+          "bytes": 13487,
+          "sha256": "e4df7718dfd05d8fb4f3269a2e1b71bd8c1be3d03ca07e75135342ded5ad80d8"
+        },
+        {
+          "zxy": [
+            18,
+            187533,
+            109532
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109532/187533",
+          "file": "tile-18-109532-187533.jpg",
+          "bytes": 8927,
+          "sha256": "033c0820931c1bd085097cf5dedde907e7fe412520d4b580ad098bec49773bcb"
+        },
+        {
+          "zxy": [
+            18,
+            187534,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187534",
+          "file": "tile-18-109531-187534.jpg",
+          "bytes": 15246,
+          "sha256": "b4abeddb686f7ae8fce882f56778c0e3aa1d8c61df3c60fcaf167d44bbd44a91"
+        },
+        {
+          "zxy": [
+            18,
+            187534,
+            109532
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109532/187534",
+          "file": "tile-18-109532-187534.jpg",
+          "bytes": 15953,
+          "sha256": "ef1b269eedffffc1016be4943bc60be243fffe503329177c9e4c2c5e1f474000"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "straight",
+      "station_m": 5000,
+      "native_road": {
+        "station": "4999.79834",
+        "x": "-115.564415",
+        "y": "-14.6900082",
+        "z": "10.0170994",
+        "tx": "0.295022011",
+        "ty": "0.95549047",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "16.0499992"
+      },
+      "wgs84": [
+        77.53201450702126,
+        28.348728280585
+      ],
+      "pixel_in_world": [
+        48007447.04777143,
+        28040016.43972909
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255486627814199,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187528,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187528",
+          "file": "tile-18-109531-187528.jpg",
+          "bytes": 14975,
+          "sha256": "66599acc566d65bed6b0cab6e450ae27f3ce5eaea3c4ffa5b29f33c226ccecfd"
+        },
+        {
+          "zxy": [
+            18,
+            187529,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187529",
+          "file": "tile-18-109531-187529.jpg",
+          "bytes": 11077,
+          "sha256": "50fd66d42645212a64c42f02b0c4bdc0bdd46f9c40122687c0af6370f9eb2a56"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "T1",
+      "station_m": 920,
+      "native_road": {
+        "station": "920.008057",
+        "x": "72.610054",
+        "y": "455.362335",
+        "z": "2.5957737",
+        "tx": "-0.347732991",
+        "ty": "0.937593579",
+        "half_width": "10.2602634",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53393323485696,
+        28.352946386403246
+      ],
+      "pixel_in_world": [
+        48007804.72456415,
+        28039122.960682586
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255277860400184,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187530,
+            109527
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109527/187530",
+          "file": "tile-18-109527-187530.jpg",
+          "bytes": 14580,
+          "sha256": "842af22c926e7a615932e57219ffdc9a8bad7882aba7998dab0fb3eb29e778b6"
+        },
+        {
+          "zxy": [
+            18,
+            187530,
+            109528
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109528/187530",
+          "file": "tile-18-109528-187530.jpg",
+          "bytes": 11641,
+          "sha256": "515873b22c17706e5101c38b366ac8ae79b52df88087023d6951b6454e7bdf65"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "T1",
+      "station_m": 950,
+      "native_road": {
+        "station": "950.131104",
+        "x": "62.1350822",
+        "y": "483.605408",
+        "z": "1.96057975",
+        "tx": "-0.347745478",
+        "ty": "0.93758893",
+        "half_width": "10.9257984",
+        "bank": "0",
+        "left_shoulder": "5.30781555",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.533826426425,
+        28.353199831093544
+      ],
+      "pixel_in_world": [
+        48007784.814029336,
+        28039069.27490556
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255265315712778,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187530,
+            109527
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109527/187530",
+          "file": "tile-18-109527-187530.jpg",
+          "bytes": 14580,
+          "sha256": "842af22c926e7a615932e57219ffdc9a8bad7882aba7998dab0fb3eb29e778b6"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "T1",
+      "station_m": 980,
+      "native_road": {
+        "station": "980.25415",
+        "x": "51.738472",
+        "y": "511.877136",
+        "z": "1.69221747",
+        "tx": "-0.333677679",
+        "ty": "0.942687213",
+        "half_width": "11.638792",
+        "bank": "0",
+        "left_shoulder": "7.40570879",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53372041700993,
+        28.35345353292504
+      ],
+      "pixel_in_world": [
+        48007765.05244207,
+        28039015.5345314
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255252758194733,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187530,
+            109527
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109527/187530",
+          "file": "tile-18-109527-187530.jpg",
+          "bytes": 14580,
+          "sha256": "842af22c926e7a615932e57219ffdc9a8bad7882aba7998dab0fb3eb29e778b6"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "T1",
+      "station_m": 1000,
+      "native_road": {
+        "station": "999.708618",
+        "x": "45.2477798",
+        "y": "530.21698",
+        "z": "1.69087875",
+        "tx": "-0.333675146",
+        "ty": "0.942688167",
+        "half_width": "12.4369364",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.5336542344302,
+        28.353618109070233
+      ],
+      "pixel_in_world": [
+        48007752.715114996,
+        28038980.673131347
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255244612089206,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187529,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187529",
+          "file": "tile-18-109526-187529.jpg",
+          "bytes": 15759,
+          "sha256": "4a0e1fd94c51519f53d04e2afd060ad73a327bfaecc8c0ca2842c78ffe0bd13f"
+        },
+        {
+          "zxy": [
+            18,
+            187529,
+            109527
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109527/187529",
+          "file": "tile-18-109527-187529.jpg",
+          "bytes": 11534,
+          "sha256": "eeb5b08c9435af2a17262b4bc3f9de9b031e21c28f267bd5e2fdf6ceb74f2487"
+        },
+        {
+          "zxy": [
+            18,
+            187530,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187530",
+          "file": "tile-18-109526-187530.jpg",
+          "bytes": 13046,
+          "sha256": "5c4cf30996b24a89d330ce665f0999a2a0073387e880d983c620662cc9154765"
+        },
+        {
+          "zxy": [
+            18,
+            187530,
+            109527
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109527/187530",
+          "file": "tile-18-109527-187530.jpg",
+          "bytes": 14580,
+          "sha256": "842af22c926e7a615932e57219ffdc9a8bad7882aba7998dab0fb3eb29e778b6"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "T1",
+      "station_m": 1015,
+      "native_road": {
+        "station": "1014.77014",
+        "x": "40.2223244",
+        "y": "544.415283",
+        "z": "1.72272182",
+        "tx": "-0.333674312",
+        "ty": "0.942688406",
+        "half_width": "12.5",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53360299219095,
+        28.35374552029445
+      ],
+      "pixel_in_world": [
+        48007743.16286926,
+        28038953.684166685
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255238305524075,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187529,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187529",
+          "file": "tile-18-109526-187529.jpg",
+          "bytes": 15759,
+          "sha256": "4a0e1fd94c51519f53d04e2afd060ad73a327bfaecc8c0ca2842c78ffe0bd13f"
+        },
+        {
+          "zxy": [
+            18,
+            187529,
+            109527
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109527/187529",
+          "file": "tile-18-109527-187529.jpg",
+          "bytes": 11534,
+          "sha256": "eeb5b08c9435af2a17262b4bc3f9de9b031e21c28f267bd5e2fdf6ceb74f2487"
+        },
+        {
+          "zxy": [
+            18,
+            187530,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187530",
+          "file": "tile-18-109526-187530.jpg",
+          "bytes": 13046,
+          "sha256": "5c4cf30996b24a89d330ce665f0999a2a0073387e880d983c620662cc9154765"
+        },
+        {
+          "zxy": [
+            18,
+            187530,
+            109527
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109527/187530",
+          "file": "tile-18-109527-187530.jpg",
+          "bytes": 14580,
+          "sha256": "842af22c926e7a615932e57219ffdc9a8bad7882aba7998dab0fb3eb29e778b6"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "T1",
+      "station_m": 1030,
+      "native_road": {
+        "station": "1029.83167",
+        "x": "35.4685555",
+        "y": "558.697571",
+        "z": "1.89131641",
+        "tx": "-0.199075043",
+        "ty": "0.979984283",
+        "half_width": "12.5",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53355452021299,
+        28.353873685174346
+      ],
+      "pixel_in_world": [
+        48007734.12703766,
+        28038926.53552575
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255231961628488,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187529,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187529",
+          "file": "tile-18-109526-187529.jpg",
+          "bytes": 15759,
+          "sha256": "4a0e1fd94c51519f53d04e2afd060ad73a327bfaecc8c0ca2842c78ffe0bd13f"
+        },
+        {
+          "zxy": [
+            18,
+            187529,
+            109527
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109527/187529",
+          "file": "tile-18-109527-187529.jpg",
+          "bytes": 11534,
+          "sha256": "eeb5b08c9435af2a17262b4bc3f9de9b031e21c28f267bd5e2fdf6ceb74f2487"
+        },
+        {
+          "zxy": [
+            18,
+            187530,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187530",
+          "file": "tile-18-109526-187530.jpg",
+          "bytes": 13046,
+          "sha256": "5c4cf30996b24a89d330ce665f0999a2a0073387e880d983c620662cc9154765"
+        },
+        {
+          "zxy": [
+            18,
+            187530,
+            109527
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109527/187530",
+          "file": "tile-18-109527-187530.jpg",
+          "bytes": 14580,
+          "sha256": "842af22c926e7a615932e57219ffdc9a8bad7882aba7998dab0fb3eb29e778b6"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "T1",
+      "station_m": 1041,
+      "native_road": {
+        "station": "1041.12781",
+        "x": "36.2569771",
+        "y": "569.82489",
+        "z": "2.23850775",
+        "tx": "0.338314652",
+        "ty": "0.941033125",
+        "half_width": "12.5",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53356255938259,
+        28.35397353832835
+      ],
+      "pixel_in_world": [
+        48007735.62564749,
+        28038905.384018898
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255227019086356,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187529,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187529",
+          "file": "tile-18-109526-187529.jpg",
+          "bytes": 15759,
+          "sha256": "4a0e1fd94c51519f53d04e2afd060ad73a327bfaecc8c0ca2842c78ffe0bd13f"
+        },
+        {
+          "zxy": [
+            18,
+            187529,
+            109527
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109527/187529",
+          "file": "tile-18-109527-187529.jpg",
+          "bytes": 11534,
+          "sha256": "eeb5b08c9435af2a17262b4bc3f9de9b031e21c28f267bd5e2fdf6ceb74f2487"
+        },
+        {
+          "zxy": [
+            18,
+            187530,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187530",
+          "file": "tile-18-109526-187530.jpg",
+          "bytes": 13046,
+          "sha256": "5c4cf30996b24a89d330ce665f0999a2a0073387e880d983c620662cc9154765"
+        },
+        {
+          "zxy": [
+            18,
+            187530,
+            109527
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109527/187530",
+          "file": "tile-18-109527-187530.jpg",
+          "bytes": 14580,
+          "sha256": "842af22c926e7a615932e57219ffdc9a8bad7882aba7998dab0fb3eb29e778b6"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "T1",
+      "station_m": 1055,
+      "native_road": {
+        "station": "1054.9342",
+        "x": "44.7843056",
+        "y": "580.353394",
+        "z": "2.58916116",
+        "tx": "0.850212336",
+        "ty": "0.526439905",
+        "half_width": "12.5",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53364950859863,
+        28.354068017899873
+      ],
+      "pixel_in_world": [
+        48007751.83415614,
+        28038885.37075889
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255222342511691,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187529,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187529",
+          "file": "tile-18-109526-187529.jpg",
+          "bytes": 15759,
+          "sha256": "4a0e1fd94c51519f53d04e2afd060ad73a327bfaecc8c0ca2842c78ffe0bd13f"
+        },
+        {
+          "zxy": [
+            18,
+            187529,
+            109527
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109527/187529",
+          "file": "tile-18-109527-187529.jpg",
+          "bytes": 11534,
+          "sha256": "eeb5b08c9435af2a17262b4bc3f9de9b031e21c28f267bd5e2fdf6ceb74f2487"
+        },
+        {
+          "zxy": [
+            18,
+            187530,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187530",
+          "file": "tile-18-109526-187530.jpg",
+          "bytes": 13046,
+          "sha256": "5c4cf30996b24a89d330ce665f0999a2a0073387e880d983c620662cc9154765"
+        },
+        {
+          "zxy": [
+            18,
+            187530,
+            109527
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109527/187530",
+          "file": "tile-18-109527-187530.jpg",
+          "bytes": 14580,
+          "sha256": "842af22c926e7a615932e57219ffdc9a8bad7882aba7998dab0fb3eb29e778b6"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "T1",
+      "station_m": 1070,
+      "native_road": {
+        "station": "1069.99573",
+        "x": "59.1522293",
+        "y": "584.507812",
+        "z": "2.70960903",
+        "tx": "0.983691752",
+        "ty": "0.179862514",
+        "half_width": "12.0407076",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53379601165662,
+        28.354105298375103
+      ],
+      "pixel_in_world": [
+        48007779.14430557,
+        28038877.473768093
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255220497188997,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187530,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187530",
+          "file": "tile-18-109526-187530.jpg",
+          "bytes": 13046,
+          "sha256": "5c4cf30996b24a89d330ce665f0999a2a0073387e880d983c620662cc9154765"
+        },
+        {
+          "zxy": [
+            18,
+            187530,
+            109527
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109527/187530",
+          "file": "tile-18-109527-187530.jpg",
+          "bytes": 14580,
+          "sha256": "842af22c926e7a615932e57219ffdc9a8bad7882aba7998dab0fb3eb29e778b6"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "T1",
+      "station_m": 1085,
+      "native_road": {
+        "station": "1085.05725",
+        "x": "73.9710083",
+        "y": "587.200256",
+        "z": "2.4810245",
+        "tx": "0.985202014",
+        "ty": "0.171397179",
+        "half_width": "11.0761509",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53394711187711,
+        28.354129459543252
+      ],
+      "pixel_in_world": [
+        48007807.311428204,
+        28038872.355792087
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255219301249408,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187530,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187530",
+          "file": "tile-18-109526-187530.jpg",
+          "bytes": 13046,
+          "sha256": "5c4cf30996b24a89d330ce665f0999a2a0073387e880d983c620662cc9154765"
+        },
+        {
+          "zxy": [
+            18,
+            187530,
+            109527
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109527/187530",
+          "file": "tile-18-109527-187530.jpg",
+          "bytes": 14580,
+          "sha256": "842af22c926e7a615932e57219ffdc9a8bad7882aba7998dab0fb3eb29e778b6"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "T1",
+      "station_m": 1110,
+      "native_road": {
+        "station": "1110.15979",
+        "x": "98.6462402",
+        "y": "591.795776",
+        "z": "1.70267868",
+        "tx": "0.977162838",
+        "ty": "0.21249187",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53419871377906,
+        28.354170698332783
+      ],
+      "pixel_in_world": [
+        48007854.21342215,
+        28038863.620320395
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255217259992429,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187530,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187530",
+          "file": "tile-18-109526-187530.jpg",
+          "bytes": 13046,
+          "sha256": "5c4cf30996b24a89d330ce665f0999a2a0073387e880d983c620662cc9154765"
+        },
+        {
+          "zxy": [
+            18,
+            187530,
+            109527
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109527/187530",
+          "file": "tile-18-109527-187530.jpg",
+          "bytes": 14580,
+          "sha256": "842af22c926e7a615932e57219ffdc9a8bad7882aba7998dab0fb3eb29e778b6"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "T1",
+      "station_m": 1130,
+      "native_road": {
+        "station": "1130.24182",
+        "x": "118.065262",
+        "y": "596.877319",
+        "z": "0.699738562",
+        "tx": "0.949887455",
+        "ty": "0.312592059",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53439672054304,
+        28.354216298543918
+      ],
+      "pixel_in_world": [
+        48007891.12455825,
+        28038853.96097974
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255215002848582,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187530,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187530",
+          "file": "tile-18-109526-187530.jpg",
+          "bytes": 13046,
+          "sha256": "5c4cf30996b24a89d330ce665f0999a2a0073387e880d983c620662cc9154765"
+        },
+        {
+          "zxy": [
+            18,
+            187530,
+            109527
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109527/187530",
+          "file": "tile-18-109527-187530.jpg",
+          "bytes": 14580,
+          "sha256": "842af22c926e7a615932e57219ffdc9a8bad7882aba7998dab0fb3eb29e778b6"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187531",
+          "file": "tile-18-109526-187531.jpg",
+          "bytes": 13372,
+          "sha256": "56e5e259378be5b9bc216e9a0616c2766178a2f666824c3e529cf21b6fcab077"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109527
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109527/187531",
+          "file": "tile-18-109527-187531.jpg",
+          "bytes": 11961,
+          "sha256": "274c71461c91410fb6efcd698bb1019c46b798b11fcdcf8733598aa58d5eb9fe"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "T3",
+      "station_m": 1320,
+      "native_road": {
+        "station": "1319.76599",
+        "x": "216.590515",
+        "y": "748.634033",
+        "z": "9.90891361",
+        "tx": "0.132783502",
+        "ty": "0.991145015",
+        "half_width": "9",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53540133687838,
+        28.35557811683403
+      ],
+      "pixel_in_world": [
+        48008078.39861664,
+        28038565.489640687
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255147593298253,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187531",
+          "file": "tile-18-109525-187531.jpg",
+          "bytes": 11860,
+          "sha256": "b20a7375234da38c68ca34c51e8f6c1deb81065f0198ab934fc67cfefdf339a2"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "T3",
+      "station_m": 1350,
+      "native_road": {
+        "station": "1349.88904",
+        "x": "220.595871",
+        "y": "778.489624",
+        "z": "12.497323",
+        "tx": "0.132997885",
+        "ty": "0.991116285",
+        "half_width": "10.2884932",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "17.0499992"
+      },
+      "wgs84": [
+        77.5354421776369,
+        28.35584603176718
+      ],
+      "pixel_in_world": [
+        48008086.01188584,
+        28038508.737302076
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255134331249101,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187531",
+          "file": "tile-18-109525-187531.jpg",
+          "bytes": 11860,
+          "sha256": "b20a7375234da38c68ca34c51e8f6c1deb81065f0198ab934fc67cfefdf339a2"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "T3",
+      "station_m": 1380,
+      "native_road": {
+        "station": "1380.01208",
+        "x": "224.601486",
+        "y": "808.345154",
+        "z": "14.628521",
+        "tx": "0.132985815",
+        "ty": "0.991117895",
+        "half_width": "11.3039341",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "17.0499992"
+      },
+      "wgs84": [
+        77.53548302103633,
+        28.35611394615293
+      ],
+      "pixel_in_world": [
+        48008093.62564732,
+        28038451.984936196
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255121069112141,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109524
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109524/187531",
+          "file": "tile-18-109524-187531.jpg",
+          "bytes": 14026,
+          "sha256": "476738c001d44caa50450fd0140f95689ee35061e3022e64718830dd5305f6d2"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187531",
+          "file": "tile-18-109525-187531.jpg",
+          "bytes": 11860,
+          "sha256": "b20a7375234da38c68ca34c51e8f6c1deb81065f0198ab934fc67cfefdf339a2"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "T3",
+      "station_m": 1400,
+      "native_road": {
+        "station": "1400.09412",
+        "x": "227.327438",
+        "y": "828.241211",
+        "z": "15.6029243",
+        "tx": "0.13936913",
+        "ty": "0.990240455",
+        "half_width": "12.4110298",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "17.0499992"
+      },
+      "wgs84": [
+        77.5355108163053,
+        28.35629248727714
+      ],
+      "pixel_in_world": [
+        48008098.807061,
+        28038414.16444931
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255112231012878,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109524
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109524/187531",
+          "file": "tile-18-109524-187531.jpg",
+          "bytes": 14026,
+          "sha256": "476738c001d44caa50450fd0140f95689ee35061e3022e64718830dd5305f6d2"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187531",
+          "file": "tile-18-109525-187531.jpg",
+          "bytes": 11860,
+          "sha256": "b20a7375234da38c68ca34c51e8f6c1deb81065f0198ab934fc67cfefdf339a2"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "T3",
+      "station_m": 1415,
+      "native_road": {
+        "station": "1415.15564",
+        "x": "230.23349",
+        "y": "842.953857",
+        "z": "16.0455894",
+        "tx": "0.43852216",
+        "ty": "0.898720324",
+        "half_width": "12.5",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "17.0499992"
+      },
+      "wgs84": [
+        77.5355404479705,
+        28.35642451405797
+      ],
+      "pixel_in_world": [
+        48008104.33080375,
+        28038386.197086286
+      ],
+      "resolution_m_per_pixel_estimate": 0.52551056954225,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109524
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109524/187531",
+          "file": "tile-18-109524-187531.jpg",
+          "bytes": 14026,
+          "sha256": "476738c001d44caa50450fd0140f95689ee35061e3022e64718830dd5305f6d2"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187531",
+          "file": "tile-18-109525-187531.jpg",
+          "bytes": 11860,
+          "sha256": "b20a7375234da38c68ca34c51e8f6c1deb81065f0198ab934fc67cfefdf339a2"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "T3",
+      "station_m": 1429,
+      "native_road": {
+        "station": "1428.96204",
+        "x": "240.555664",
+        "y": "851.486694",
+        "z": "16.2344456",
+        "tx": "0.965170681",
+        "ty": "0.261620939",
+        "half_width": "12.5",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "17.0499992"
+      },
+      "wgs84": [
+        77.53564569839413,
+        28.356501085124826
+      ],
+      "pixel_in_world": [
+        48008123.95090477,
+        28038369.976945836
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255101904988371,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109524
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109524/187531",
+          "file": "tile-18-109524-187531.jpg",
+          "bytes": 14026,
+          "sha256": "476738c001d44caa50450fd0140f95689ee35061e3022e64718830dd5305f6d2"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187531",
+          "file": "tile-18-109525-187531.jpg",
+          "bytes": 11860,
+          "sha256": "b20a7375234da38c68ca34c51e8f6c1deb81065f0198ab934fc67cfefdf339a2"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109524
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109524/187532",
+          "file": "tile-18-109524-187532.jpg",
+          "bytes": 14985,
+          "sha256": "9fbba3cda97554382093002e6bc8a7cbf503e790b1e9c15357efc77171e9cad0"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187532",
+          "file": "tile-18-109525-187532.jpg",
+          "bytes": 14389,
+          "sha256": "0c74fd7a82c6be9790b030ab8aa7f2b7ce2856e0db9e3155a83ba0e33e333989"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "T3",
+      "station_m": 1445,
+      "native_road": {
+        "station": "1445.27869",
+        "x": "255.74736",
+        "y": "847.786865",
+        "z": "16.1435184",
+        "tx": "0.736850023",
+        "ty": "-0.676056266",
+        "half_width": "12.5",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "17.0499992"
+      },
+      "wgs84": [
+        77.53580060107643,
+        28.356467883992106
+      ],
+      "pixel_in_world": [
+        48008152.82685765,
+        28038377.009982828
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255103548517709,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109524
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109524/187531",
+          "file": "tile-18-109524-187531.jpg",
+          "bytes": 14026,
+          "sha256": "476738c001d44caa50450fd0140f95689ee35061e3022e64718830dd5305f6d2"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187531",
+          "file": "tile-18-109525-187531.jpg",
+          "bytes": 11860,
+          "sha256": "b20a7375234da38c68ca34c51e8f6c1deb81065f0198ab934fc67cfefdf339a2"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109524
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109524/187532",
+          "file": "tile-18-109524-187532.jpg",
+          "bytes": 14985,
+          "sha256": "9fbba3cda97554382093002e6bc8a7cbf503e790b1e9c15357efc77171e9cad0"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187532",
+          "file": "tile-18-109525-187532.jpg",
+          "bytes": 14389,
+          "sha256": "0c74fd7a82c6be9790b030ab8aa7f2b7ce2856e0db9e3155a83ba0e33e333989"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "T3",
+      "station_m": 1460,
+      "native_road": {
+        "station": "1459.71265",
+        "x": "261.998627",
+        "y": "835.027405",
+        "z": "15.9729671",
+        "tx": "0.273759782",
+        "ty": "-0.961798072",
+        "half_width": "12.5",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "17.0499992"
+      },
+      "wgs84": [
+        77.53586434234838,
+        28.35635338450446
+      ],
+      "pixel_in_world": [
+        48008164.70909196,
+        28038401.26453399
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255109216481487,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109524
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109524/187531",
+          "file": "tile-18-109524-187531.jpg",
+          "bytes": 14026,
+          "sha256": "476738c001d44caa50450fd0140f95689ee35061e3022e64718830dd5305f6d2"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187531",
+          "file": "tile-18-109525-187531.jpg",
+          "bytes": 11860,
+          "sha256": "b20a7375234da38c68ca34c51e8f6c1deb81065f0198ab934fc67cfefdf339a2"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109524
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109524/187532",
+          "file": "tile-18-109524-187532.jpg",
+          "bytes": 14985,
+          "sha256": "9fbba3cda97554382093002e6bc8a7cbf503e790b1e9c15357efc77171e9cad0"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187532",
+          "file": "tile-18-109525-187532.jpg",
+          "bytes": 14389,
+          "sha256": "0c74fd7a82c6be9790b030ab8aa7f2b7ce2856e0db9e3155a83ba0e33e333989"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "T3",
+      "station_m": 1480,
+      "native_road": {
+        "station": "1479.79468",
+        "x": "267.493774",
+        "y": "815.711792",
+        "z": "15.535862",
+        "tx": "0.273566335",
+        "ty": "-0.961853147",
+        "half_width": "12.010704",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "17.0499992"
+      },
+      "wgs84": [
+        77.53592037381516,
+        28.356180052107
+      ],
+      "pixel_in_world": [
+        48008175.15411442,
+        28038437.98167473
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255117796757247,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109524
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109524/187531",
+          "file": "tile-18-109524-187531.jpg",
+          "bytes": 14026,
+          "sha256": "476738c001d44caa50450fd0140f95689ee35061e3022e64718830dd5305f6d2"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187531",
+          "file": "tile-18-109525-187531.jpg",
+          "bytes": 11860,
+          "sha256": "b20a7375234da38c68ca34c51e8f6c1deb81065f0198ab934fc67cfefdf339a2"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109524
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109524/187532",
+          "file": "tile-18-109524-187532.jpg",
+          "bytes": 14985,
+          "sha256": "9fbba3cda97554382093002e6bc8a7cbf503e790b1e9c15357efc77171e9cad0"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187532",
+          "file": "tile-18-109525-187532.jpg",
+          "bytes": 14389,
+          "sha256": "0c74fd7a82c6be9790b030ab8aa7f2b7ce2856e0db9e3155a83ba0e33e333989"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "T3",
+      "station_m": 1500,
+      "native_road": {
+        "station": "1499.87671",
+        "x": "272.988983",
+        "y": "796.39624",
+        "z": "15.0032253",
+        "tx": "0.273620695",
+        "ty": "-0.961837649",
+        "half_width": "10.991209",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "17.0499992"
+      },
+      "wgs84": [
+        77.53597640591414,
+        28.356006720256936
+      ],
+      "pixel_in_world": [
+        48008185.59925473,
+        28038474.698639568
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255126376957815,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109524
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109524/187531",
+          "file": "tile-18-109524-187531.jpg",
+          "bytes": 14026,
+          "sha256": "476738c001d44caa50450fd0140f95689ee35061e3022e64718830dd5305f6d2"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187531",
+          "file": "tile-18-109525-187531.jpg",
+          "bytes": 11860,
+          "sha256": "b20a7375234da38c68ca34c51e8f6c1deb81065f0198ab934fc67cfefdf339a2"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109524
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109524/187532",
+          "file": "tile-18-109524-187532.jpg",
+          "bytes": 14985,
+          "sha256": "9fbba3cda97554382093002e6bc8a7cbf503e790b1e9c15357efc77171e9cad0"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187532",
+          "file": "tile-18-109525-187532.jpg",
+          "bytes": 14389,
+          "sha256": "0c74fd7a82c6be9790b030ab8aa7f2b7ce2856e0db9e3155a83ba0e33e333989"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "T3",
+      "station_m": 1530,
+      "native_road": {
+        "station": "1529.99976",
+        "x": "281.231781",
+        "y": "767.422974",
+        "z": "14.0583286",
+        "tx": "0.273696274",
+        "ty": "-0.961816132",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53606045390455,
+        28.35574672303821
+      ],
+      "pixel_in_world": [
+        48008201.26693572,
+        28038529.77385656
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255139247140947,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187531",
+          "file": "tile-18-109525-187531.jpg",
+          "bytes": 11860,
+          "sha256": "b20a7375234da38c68ca34c51e8f6c1deb81065f0198ab934fc67cfefdf339a2"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187532",
+          "file": "tile-18-109525-187532.jpg",
+          "bytes": 14389,
+          "sha256": "0c74fd7a82c6be9790b030ab8aa7f2b7ce2856e0db9e3155a83ba0e33e333989"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "T3",
+      "station_m": 1560,
+      "native_road": {
+        "station": "1560.1228",
+        "x": "289.474518",
+        "y": "738.449646",
+        "z": "13.0864344",
+        "tx": "0.273663044",
+        "ty": "-0.961825609",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53614450127297,
+        28.355486725263113
+      ],
+      "pixel_in_world": [
+        48008216.93450077,
+        28038584.84905653
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255152117243409,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187531",
+          "file": "tile-18-109525-187531.jpg",
+          "bytes": 11860,
+          "sha256": "b20a7375234da38c68ca34c51e8f6c1deb81065f0198ab934fc67cfefdf339a2"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187531",
+          "file": "tile-18-109526-187531.jpg",
+          "bytes": 13372,
+          "sha256": "56e5e259378be5b9bc216e9a0616c2766178a2f666824c3e529cf21b6fcab077"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187532",
+          "file": "tile-18-109525-187532.jpg",
+          "bytes": 14389,
+          "sha256": "0c74fd7a82c6be9790b030ab8aa7f2b7ce2856e0db9e3155a83ba0e33e333989"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187532",
+          "file": "tile-18-109526-187532.jpg",
+          "bytes": 14928,
+          "sha256": "64bb35db3bef2b75563eaba4b66b19a4a44a8036ce0dd940844de962ee0a9598"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "T4-retained",
+      "station_m": 2700,
+      "native_road": {
+        "station": "2699.77808",
+        "x": "582.254639",
+        "y": "-361.757751",
+        "z": "10.7783842",
+        "tx": "0.0503757633",
+        "ty": "-0.998730421",
+        "half_width": "12.5",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "17.0499992"
+      },
+      "wgs84": [
+        77.53912984445415,
+        28.34561380091819
+      ],
+      "pixel_in_world": [
+        48008773.44280504,
+        28040676.12594144
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255640754995122,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187533,
+            109533
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109533/187533",
+          "file": "tile-18-109533-187533.jpg",
+          "bytes": 15372,
+          "sha256": "886d5aeefb414e18c64fdcc3bdd232980c1832c96f6860c1898a86b95cc95650"
+        },
+        {
+          "zxy": [
+            18,
+            187533,
+            109534
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109534/187533",
+          "file": "tile-18-109534-187533.jpg",
+          "bytes": 17006,
+          "sha256": "511d898b4f3c45bdb74035ef4f95b9c0347d5da538017228b18b9c0b97a041c3"
+        },
+        {
+          "zxy": [
+            18,
+            187534,
+            109533
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109533/187534",
+          "file": "tile-18-109533-187534.jpg",
+          "bytes": 14829,
+          "sha256": "cd6896af57a40dda1cb21a918fd7278f6cecfbf0f1b62443f614bb8ff47cb478"
+        },
+        {
+          "zxy": [
+            18,
+            187534,
+            109534
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109534/187534",
+          "file": "tile-18-109534-187534.jpg",
+          "bytes": 16702,
+          "sha256": "bdaa2352d123d552dff17f0d9c27d7872e7eaecc736cfeb3ec77733ba0723e08"
+        }
+      ],
+      "section_packet": "longitudinal"
+    },
+    {
+      "group": "T16-anchor",
+      "station_m": 180,
+      "native_road": {
+        "station": "180.110718",
+        "x": "156.034119",
+        "y": "-89.9590378",
+        "z": "0.805385113",
+        "tx": "0.879988194",
+        "ty": "-0.474995464",
+        "half_width": "9.00000858",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53478387137812,
+        28.34805283935748
+      ],
+      "pixel_in_world": [
+        48007963.29470474,
+        28040159.508372806
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255520054893681,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187530,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187530",
+          "file": "tile-18-109531-187530.jpg",
+          "bytes": 16878,
+          "sha256": "ae5098054b87901f4132c22795887624b64e982f3e7c722d34afcc45614f07c8"
+        },
+        {
+          "zxy": [
+            18,
+            187530,
+            109532
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109532/187530",
+          "file": "tile-18-109532-187530.jpg",
+          "bytes": 15425,
+          "sha256": "ca933d43d09f88437acb298587a786713b3d4353f47b295f81d17eb2ab1e7f73"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187531",
+          "file": "tile-18-109531-187531.jpg",
+          "bytes": 14902,
+          "sha256": "ae9935438bf50a8a62dc24f584686d37a64ccf436cdbcd567d8d977176ef8bde"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109532
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109532/187531",
+          "file": "tile-18-109532-187531.jpg",
+          "bytes": 15985,
+          "sha256": "e129ad1d7a475efddef45fd43a35564bebe93f9bf4cafc09df808cfb35c0df68"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "T16-anchor",
+      "station_m": 200,
+      "native_road": {
+        "station": "200.192749",
+        "x": "173.909805",
+        "y": "-99.1085968",
+        "z": "0.819185555",
+        "tx": "0.892598212",
+        "ty": "-0.45085302",
+        "half_width": "9.15897179",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53496614146233,
+        28.34797073401621
+      ],
+      "pixel_in_world": [
+        48007997.272311114,
+        28040176.89946094
+      ],
+      "resolution_m_per_pixel_estimate": 0.525552411817562,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187530,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187530",
+          "file": "tile-18-109531-187530.jpg",
+          "bytes": 16878,
+          "sha256": "ae5098054b87901f4132c22795887624b64e982f3e7c722d34afcc45614f07c8"
+        },
+        {
+          "zxy": [
+            18,
+            187530,
+            109532
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109532/187530",
+          "file": "tile-18-109532-187530.jpg",
+          "bytes": 15425,
+          "sha256": "ca933d43d09f88437acb298587a786713b3d4353f47b295f81d17eb2ab1e7f73"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187531",
+          "file": "tile-18-109531-187531.jpg",
+          "bytes": 14902,
+          "sha256": "ae9935438bf50a8a62dc24f584686d37a64ccf436cdbcd567d8d977176ef8bde"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109532
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109532/187531",
+          "file": "tile-18-109532-187531.jpg",
+          "bytes": 15985,
+          "sha256": "e129ad1d7a475efddef45fd43a35564bebe93f9bf4cafc09df808cfb35c0df68"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "T16-anchor",
+      "station_m": 230,
+      "native_road": {
+        "station": "229.688232",
+        "x": "200.354813",
+        "y": "-112.162048",
+        "z": "0.79533273",
+        "tx": "0.914331019",
+        "ty": "-0.404967695",
+        "half_width": "9.67766476",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53523578895083,
+        28.34785359634154
+      ],
+      "pixel_in_world": [
+        48008047.53824621,
+        28040201.710876152
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255529915141524,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187531",
+          "file": "tile-18-109531-187531.jpg",
+          "bytes": 14902,
+          "sha256": "ae9935438bf50a8a62dc24f584686d37a64ccf436cdbcd567d8d977176ef8bde"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109532
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109532/187531",
+          "file": "tile-18-109532-187531.jpg",
+          "bytes": 15985,
+          "sha256": "e129ad1d7a475efddef45fd43a35564bebe93f9bf4cafc09df808cfb35c0df68"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "T16-anchor",
+      "station_m": 260,
+      "native_road": {
+        "station": "259.811279",
+        "x": "228.076874",
+        "y": "-123.937744",
+        "z": "0.943328381",
+        "tx": "0.93874234",
+        "ty": "-0.344619721",
+        "half_width": "9.99967861",
+        "bank": "0",
+        "left_shoulder": "12.0500002",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53551845795681,
+        28.347747924850843
+      ],
+      "pixel_in_world": [
+        48008100.23156809,
+        28040224.09356805
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255535144644522,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187531",
+          "file": "tile-18-109531-187531.jpg",
+          "bytes": 14902,
+          "sha256": "ae9935438bf50a8a62dc24f584686d37a64ccf436cdbcd567d8d977176ef8bde"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109532
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109532/187531",
+          "file": "tile-18-109532-187531.jpg",
+          "bytes": 15985,
+          "sha256": "e129ad1d7a475efddef45fd43a35564bebe93f9bf4cafc09df808cfb35c0df68"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "T16-anchor",
+      "station_m": 280,
+      "native_road": {
+        "station": "279.893311",
+        "x": "247.287598",
+        "y": "-129.756866",
+        "z": "2.03397775",
+        "tx": "0.979766965",
+        "ty": "-0.200141609",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "12.0500002",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53571434080467,
+        28.34769570583158
+      ],
+      "pixel_in_world": [
+        48008136.746777534,
+        28040235.15427461
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255537728868693,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187531",
+          "file": "tile-18-109531-187531.jpg",
+          "bytes": 14902,
+          "sha256": "ae9935438bf50a8a62dc24f584686d37a64ccf436cdbcd567d8d977176ef8bde"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109532
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109532/187531",
+          "file": "tile-18-109532-187531.jpg",
+          "bytes": 15985,
+          "sha256": "e129ad1d7a475efddef45fd43a35564bebe93f9bf4cafc09df808cfb35c0df68"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187532",
+          "file": "tile-18-109531-187532.jpg",
+          "bytes": 14057,
+          "sha256": "0ba9711116ed50ac22520e9135a16409d8c27f72bd92ccb990020dd9fcb16306"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109532
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109532/187532",
+          "file": "tile-18-109532-187532.jpg",
+          "bytes": 10957,
+          "sha256": "c26e102291d311e45df649ab026a8ee417677d876f95ddc94bb8991101501b07"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "T16-anchor",
+      "station_m": 300,
+      "native_road": {
+        "station": "299.975342",
+        "x": "266.485596",
+        "y": "-126.320396",
+        "z": "2.69010162",
+        "tx": "0.826759994",
+        "ty": "0.562554717",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "12.0500002",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53591009389142,
+        28.34772654366126
+      ],
+      "pixel_in_world": [
+        48008173.23779774,
+        28040228.62239876
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255536202761186,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187531",
+          "file": "tile-18-109531-187531.jpg",
+          "bytes": 14902,
+          "sha256": "ae9935438bf50a8a62dc24f584686d37a64ccf436cdbcd567d8d977176ef8bde"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109532
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109532/187531",
+          "file": "tile-18-109532-187531.jpg",
+          "bytes": 15985,
+          "sha256": "e129ad1d7a475efddef45fd43a35564bebe93f9bf4cafc09df808cfb35c0df68"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187532",
+          "file": "tile-18-109531-187532.jpg",
+          "bytes": 14057,
+          "sha256": "0ba9711116ed50ac22520e9135a16409d8c27f72bd92ccb990020dd9fcb16306"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109532
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109532/187532",
+          "file": "tile-18-109532-187532.jpg",
+          "bytes": 10957,
+          "sha256": "c26e102291d311e45df649ab026a8ee417677d876f95ddc94bb8991101501b07"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "T16-anchor",
+      "station_m": 304,
+      "native_road": {
+        "station": "303.740723",
+        "x": "269.434937",
+        "y": "-123.987968",
+        "z": "2.66562176",
+        "tx": "0.710754514",
+        "ty": "0.703440011",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "12.0500002",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53594016695449,
+        28.347747474156044
+      ],
+      "pixel_in_world": [
+        48008178.84382302,
+        28040224.18903143
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255535166948606,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187531",
+          "file": "tile-18-109531-187531.jpg",
+          "bytes": 14902,
+          "sha256": "ae9935438bf50a8a62dc24f584686d37a64ccf436cdbcd567d8d977176ef8bde"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109532
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109532/187531",
+          "file": "tile-18-109532-187531.jpg",
+          "bytes": 15985,
+          "sha256": "e129ad1d7a475efddef45fd43a35564bebe93f9bf4cafc09df808cfb35c0df68"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187532",
+          "file": "tile-18-109531-187532.jpg",
+          "bytes": 14057,
+          "sha256": "0ba9711116ed50ac22520e9135a16409d8c27f72bd92ccb990020dd9fcb16306"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109532
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109532/187532",
+          "file": "tile-18-109532-187532.jpg",
+          "bytes": 10957,
+          "sha256": "c26e102291d311e45df649ab026a8ee417677d876f95ddc94bb8991101501b07"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "T16-anchor",
+      "station_m": 320,
+      "native_road": {
+        "station": "320.057373",
+        "x": "275.136963",
+        "y": "-109.107025",
+        "z": "2.40536976",
+        "tx": "0.0175090469",
+        "ty": "0.999846697",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "12.0500002",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53599830787054,
+        28.34788101118263
+      ],
+      "pixel_in_world": [
+        48008189.68207532,
+        28040195.90402776
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255528558424576,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187531",
+          "file": "tile-18-109531-187531.jpg",
+          "bytes": 14902,
+          "sha256": "ae9935438bf50a8a62dc24f584686d37a64ccf436cdbcd567d8d977176ef8bde"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109532
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109532/187531",
+          "file": "tile-18-109532-187531.jpg",
+          "bytes": 15985,
+          "sha256": "e129ad1d7a475efddef45fd43a35564bebe93f9bf4cafc09df808cfb35c0df68"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187532",
+          "file": "tile-18-109531-187532.jpg",
+          "bytes": 14057,
+          "sha256": "0ba9711116ed50ac22520e9135a16409d8c27f72bd92ccb990020dd9fcb16306"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109532
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109532/187532",
+          "file": "tile-18-109532-187532.jpg",
+          "bytes": 10957,
+          "sha256": "c26e102291d311e45df649ab026a8ee417677d876f95ddc94bb8991101501b07"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "T16-anchor",
+      "station_m": 340,
+      "native_road": {
+        "station": "340.139404",
+        "x": "270.50531",
+        "y": "-89.6769409",
+        "z": "2.00528288",
+        "tx": "-0.313210666",
+        "ty": "0.949683666",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "12.0500002",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.5359510810518,
+        28.348055370808694
+      ],
+      "pixel_in_world": [
+        48008180.878358215,
+        28040158.97217494
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255519929615424,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187531",
+          "file": "tile-18-109531-187531.jpg",
+          "bytes": 14902,
+          "sha256": "ae9935438bf50a8a62dc24f584686d37a64ccf436cdbcd567d8d977176ef8bde"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109532
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109532/187531",
+          "file": "tile-18-109532-187531.jpg",
+          "bytes": 15985,
+          "sha256": "e129ad1d7a475efddef45fd43a35564bebe93f9bf4cafc09df808cfb35c0df68"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187532",
+          "file": "tile-18-109531-187532.jpg",
+          "bytes": 14057,
+          "sha256": "0ba9711116ed50ac22520e9135a16409d8c27f72bd92ccb990020dd9fcb16306"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109532
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109532/187532",
+          "file": "tile-18-109532-187532.jpg",
+          "bytes": 10957,
+          "sha256": "c26e102291d311e45df649ab026a8ee417677d876f95ddc94bb8991101501b07"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "T16-anchor",
+      "station_m": 360,
+      "native_road": {
+        "station": "360.221436",
+        "x": "264.200256",
+        "y": "-70.610405",
+        "z": "1.75475967",
+        "tx": "-0.319822818",
+        "ty": "0.9474774",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "12.0500002",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53588679133877,
+        28.348226468064514
+      ],
+      "pixel_in_world": [
+        48008168.89388709,
+        28040122.731279664
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255511462209008,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187531",
+          "file": "tile-18-109531-187531.jpg",
+          "bytes": 14902,
+          "sha256": "ae9935438bf50a8a62dc24f584686d37a64ccf436cdbcd567d8d977176ef8bde"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109532
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109532/187531",
+          "file": "tile-18-109532-187531.jpg",
+          "bytes": 15985,
+          "sha256": "e129ad1d7a475efddef45fd43a35564bebe93f9bf4cafc09df808cfb35c0df68"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187532",
+          "file": "tile-18-109531-187532.jpg",
+          "bytes": 14057,
+          "sha256": "0ba9711116ed50ac22520e9135a16409d8c27f72bd92ccb990020dd9fcb16306"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109532
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109532/187532",
+          "file": "tile-18-109532-187532.jpg",
+          "bytes": 10957,
+          "sha256": "c26e102291d311e45df649ab026a8ee417677d876f95ddc94bb8991101501b07"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "T16-anchor",
+      "station_m": 380,
+      "native_road": {
+        "station": "380.303467",
+        "x": "257.452881",
+        "y": "-51.6966286",
+        "z": "1.47754526",
+        "tx": "-0.342798442",
+        "ty": "0.939409018",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.5358179914835,
+        28.34839619450335
+      ],
+      "pixel_in_world": [
+        48008156.0686645,
+        28040086.78068574
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255503062596445,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187531",
+          "file": "tile-18-109531-187531.jpg",
+          "bytes": 14902,
+          "sha256": "ae9935438bf50a8a62dc24f584686d37a64ccf436cdbcd567d8d977176ef8bde"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187532",
+          "file": "tile-18-109531-187532.jpg",
+          "bytes": 14057,
+          "sha256": "0ba9711116ed50ac22520e9135a16409d8c27f72bd92ccb990020dd9fcb16306"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "T16-anchor",
+      "station_m": 400,
+      "native_road": {
+        "station": "399.757935",
+        "x": "250.78389",
+        "y": "-33.4209671",
+        "z": "1.56408405",
+        "tx": "-0.342819542",
+        "ty": "0.939401329",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53574999087355,
+        28.348560194694436
+      ],
+      "pixel_in_world": [
+        48008143.39243204,
+        28040052.042942006
+      ],
+      "resolution_m_per_pixel_estimate": 0.525549494632705,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187531",
+          "file": "tile-18-109531-187531.jpg",
+          "bytes": 14902,
+          "sha256": "ae9935438bf50a8a62dc24f584686d37a64ccf436cdbcd567d8d977176ef8bde"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187532",
+          "file": "tile-18-109531-187532.jpg",
+          "bytes": 14057,
+          "sha256": "0ba9711116ed50ac22520e9135a16409d8c27f72bd92ccb990020dd9fcb16306"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "T16-anchor",
+      "station_m": 440,
+      "native_road": {
+        "station": "439.921997",
+        "x": "237.015579",
+        "y": "4.30946732",
+        "z": "0.794196546",
+        "tx": "-0.342799962",
+        "ty": "0.939408422",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53560960178834,
+        28.3488987760615
+      ],
+      "pixel_in_world": [
+        48008117.22200974,
+        28039980.326070726
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255478190005561,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109530
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109530/187531",
+          "file": "tile-18-109530-187531.jpg",
+          "bytes": 14609,
+          "sha256": "f6801a97cd80913b60b93d236763ba9871ed5cde3abdb26d1d8dd2eff99093a7"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187531",
+          "file": "tile-18-109531-187531.jpg",
+          "bytes": 14902,
+          "sha256": "ae9935438bf50a8a62dc24f584686d37a64ccf436cdbcd567d8d977176ef8bde"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109530
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109530/187532",
+          "file": "tile-18-109530-187532.jpg",
+          "bytes": 14104,
+          "sha256": "a90d2b0b5d5dfa982ee2feca39c541ed85c47f40ab03460e1de047b25c531cd4"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187532",
+          "file": "tile-18-109531-187532.jpg",
+          "bytes": 14057,
+          "sha256": "0ba9711116ed50ac22520e9135a16409d8c27f72bd92ccb990020dd9fcb16306"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "T16-anchor",
+      "station_m": 470,
+      "native_road": {
+        "station": "470.045044",
+        "x": "226.689331",
+        "y": "32.6072807",
+        "z": "0.254069865",
+        "tx": "-0.342822313",
+        "ty": "0.939400256",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "0.100000001",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.535504309824,
+        28.34915271197521
+      ],
+      "pixel_in_world": [
+        48008097.594164975,
+        28039926.53829084
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255465622649531,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109530
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109530/187531",
+          "file": "tile-18-109530-187531.jpg",
+          "bytes": 14609,
+          "sha256": "f6801a97cd80913b60b93d236763ba9871ed5cde3abdb26d1d8dd2eff99093a7"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187531",
+          "file": "tile-18-109531-187531.jpg",
+          "bytes": 14902,
+          "sha256": "ae9935438bf50a8a62dc24f584686d37a64ccf436cdbcd567d8d977176ef8bde"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "T16-anchor",
+      "station_m": 520,
+      "native_road": {
+        "station": "520.250122",
+        "x": "209.604507",
+        "y": "79.8158569",
+        "z": "1.13790834",
+        "tx": "-0.338987291",
+        "ty": "0.940790951",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "0.100000001",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53533010379303,
+        28.34957634728481
+      ],
+      "pixel_in_world": [
+        48008065.119807094,
+        28039836.805117037
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255444656595416,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109530
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109530/187531",
+          "file": "tile-18-109530-187531.jpg",
+          "bytes": 14609,
+          "sha256": "f6801a97cd80913b60b93d236763ba9871ed5cde3abdb26d1d8dd2eff99093a7"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "T16-anchor",
+      "station_m": 570,
+      "native_road": {
+        "station": "569.827637",
+        "x": "192.797485",
+        "y": "126.457664",
+        "z": "1.25523484",
+        "tx": "-0.339007527",
+        "ty": "0.940783679",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "0.100000001",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53515873038027,
+        28.34999489658203
+      ],
+      "pixel_in_world": [
+        48008033.17348751,
+        28039748.148895714
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255423941970013,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109529
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109529/187531",
+          "file": "tile-18-109529-187531.jpg",
+          "bytes": 15749,
+          "sha256": "296e140aaadf3f81c8d116831c5d8f14025cbdf51b4916ad944d63a526f42683"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109530
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109530/187531",
+          "file": "tile-18-109530-187531.jpg",
+          "bytes": 14609,
+          "sha256": "f6801a97cd80913b60b93d236763ba9871ed5cde3abdb26d1d8dd2eff99093a7"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "T16-anchor",
+      "station_m": 620,
+      "native_road": {
+        "station": "620.032715",
+        "x": "175.777802",
+        "y": "173.68985",
+        "z": "2.17108154",
+        "tx": "-0.338987291",
+        "ty": "0.940790951",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "0.100000001",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53498518856188,
+        28.35041874375875
+      ],
+      "pixel_in_world": [
+        48008000.82294782,
+        28039658.370132722
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255402964858898,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187530,
+            109529
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109529/187530",
+          "file": "tile-18-109529-187530.jpg",
+          "bytes": 9615,
+          "sha256": "796189da7c69d969f38b759a39da31f9bd0574d9e20d04723583bda0c55426ea"
+        },
+        {
+          "zxy": [
+            18,
+            187530,
+            109530
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109530/187530",
+          "file": "tile-18-109530-187530.jpg",
+          "bytes": 12341,
+          "sha256": "b8c47d8baccae315d2972dc4b36beacfe3a96c2a298e6dbed8194fdada7793c8"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109529
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109529/187531",
+          "file": "tile-18-109529-187531.jpg",
+          "bytes": 15749,
+          "sha256": "296e140aaadf3f81c8d116831c5d8f14025cbdf51b4916ad944d63a526f42683"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109530
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109530/187531",
+          "file": "tile-18-109530-187531.jpg",
+          "bytes": 14609,
+          "sha256": "f6801a97cd80913b60b93d236763ba9871ed5cde3abdb26d1d8dd2eff99093a7"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "T2",
+      "station_m": 1130,
+      "native_road": {
+        "station": "1130.24182",
+        "x": "118.065262",
+        "y": "596.877319",
+        "z": "0.699738562",
+        "tx": "0.949887455",
+        "ty": "0.312592059",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53439672054304,
+        28.354216298543918
+      ],
+      "pixel_in_world": [
+        48007891.12455825,
+        28038853.96097974
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255215002848582,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187530,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187530",
+          "file": "tile-18-109526-187530.jpg",
+          "bytes": 13046,
+          "sha256": "5c4cf30996b24a89d330ce665f0999a2a0073387e880d983c620662cc9154765"
+        },
+        {
+          "zxy": [
+            18,
+            187530,
+            109527
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109527/187530",
+          "file": "tile-18-109527-187530.jpg",
+          "bytes": 14580,
+          "sha256": "842af22c926e7a615932e57219ffdc9a8bad7882aba7998dab0fb3eb29e778b6"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187531",
+          "file": "tile-18-109526-187531.jpg",
+          "bytes": 13372,
+          "sha256": "56e5e259378be5b9bc216e9a0616c2766178a2f666824c3e529cf21b6fcab077"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109527
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109527/187531",
+          "file": "tile-18-109527-187531.jpg",
+          "bytes": 11961,
+          "sha256": "274c71461c91410fb6efcd698bb1019c46b798b11fcdcf8733598aa58d5eb9fe"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "T2",
+      "station_m": 1150,
+      "native_road": {
+        "station": "1149.69629",
+        "x": "135.696167",
+        "y": "604.991272",
+        "z": "0.276231736",
+        "tx": "0.856407762",
+        "ty": "0.516300082",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53457649470886,
+        28.354289110674
+      ],
+      "pixel_in_world": [
+        48007924.63689171,
+        28038838.53742044
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255211398747596,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187530,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187530",
+          "file": "tile-18-109526-187530.jpg",
+          "bytes": 13046,
+          "sha256": "5c4cf30996b24a89d330ce665f0999a2a0073387e880d983c620662cc9154765"
+        },
+        {
+          "zxy": [
+            18,
+            187530,
+            109527
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109527/187530",
+          "file": "tile-18-109527-187530.jpg",
+          "bytes": 14580,
+          "sha256": "842af22c926e7a615932e57219ffdc9a8bad7882aba7998dab0fb3eb29e778b6"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187531",
+          "file": "tile-18-109526-187531.jpg",
+          "bytes": 13372,
+          "sha256": "56e5e259378be5b9bc216e9a0616c2766178a2f666824c3e529cf21b6fcab077"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109527
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109527/187531",
+          "file": "tile-18-109527-187531.jpg",
+          "bytes": 11961,
+          "sha256": "274c71461c91410fb6efcd698bb1019c46b798b11fcdcf8733598aa58d5eb9fe"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "T2",
+      "station_m": 1165,
+      "native_road": {
+        "station": "1164.75781",
+        "x": "148.177704",
+        "y": "613.409607",
+        "z": "0.0920346975",
+        "tx": "0.794272423",
+        "ty": "0.607561827",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53470376315606,
+        28.35436465423496
+      ],
+      "pixel_in_world": [
+        48007948.3614498,
+        28038822.535259742
+      ],
+      "resolution_m_per_pixel_estimate": 0.525520765943554,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187530,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187530",
+          "file": "tile-18-109526-187530.jpg",
+          "bytes": 13046,
+          "sha256": "5c4cf30996b24a89d330ce665f0999a2a0073387e880d983c620662cc9154765"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187531",
+          "file": "tile-18-109526-187531.jpg",
+          "bytes": 13372,
+          "sha256": "56e5e259378be5b9bc216e9a0616c2766178a2f666824c3e529cf21b6fcab077"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "T2",
+      "station_m": 1180,
+      "native_road": {
+        "station": "1179.81934",
+        "x": "159.34993",
+        "y": "623.497375",
+        "z": "0.00267287111",
+        "tx": "0.718461514",
+        "ty": "0.695566595",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53481768116592,
+        28.354455178776554
+      ],
+      "pixel_in_world": [
+        48007969.597306,
+        28038803.35970889
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255203178571594,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187530,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187530",
+          "file": "tile-18-109526-187530.jpg",
+          "bytes": 13046,
+          "sha256": "5c4cf30996b24a89d330ce665f0999a2a0073387e880d983c620662cc9154765"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187531",
+          "file": "tile-18-109526-187531.jpg",
+          "bytes": 13372,
+          "sha256": "56e5e259378be5b9bc216e9a0616c2766178a2f666824c3e529cf21b6fcab077"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "T2",
+      "station_m": 1200,
+      "native_road": {
+        "station": "1199.90137",
+        "x": "172.740402",
+        "y": "638.415466",
+        "z": "0.32044819",
+        "tx": "0.594692469",
+        "ty": "0.80395323",
+        "half_width": "9.92530632",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53495421760199,
+        28.354589049157916
+      ],
+      "pixel_in_world": [
+        48007995.049542435,
+        28038775.002304666
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255196552112831,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187530,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187530",
+          "file": "tile-18-109526-187530.jpg",
+          "bytes": 13046,
+          "sha256": "5c4cf30996b24a89d330ce665f0999a2a0073387e880d983c620662cc9154765"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187531",
+          "file": "tile-18-109526-187531.jpg",
+          "bytes": 13372,
+          "sha256": "56e5e259378be5b9bc216e9a0616c2766178a2f666824c3e529cf21b6fcab077"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "T2",
+      "station_m": 1220,
+      "native_road": {
+        "station": "1219.9834",
+        "x": "183.675507",
+        "y": "655.242004",
+        "z": "1.49903691",
+        "tx": "0.490663171",
+        "ty": "0.871349335",
+        "half_width": "9.50036335",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53506571779893,
+        28.354740045358373
+      ],
+      "pixel_in_world": [
+        48008015.834685646,
+        28038743.017141156
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255189077907599,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187531",
+          "file": "tile-18-109526-187531.jpg",
+          "bytes": 13372,
+          "sha256": "56e5e259378be5b9bc216e9a0616c2766178a2f666824c3e529cf21b6fcab077"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "T2",
+      "station_m": 1250,
+      "native_road": {
+        "station": "1250.10645",
+        "x": "197.505295",
+        "y": "681.990967",
+        "z": "3.60839415",
+        "tx": "0.401894152",
+        "ty": "0.915686131",
+        "half_width": "9",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53520673373663,
+        28.354980082362964
+      ],
+      "pixel_in_world": [
+        48008042.12196171,
+        28038692.170583718
+      ],
+      "resolution_m_per_pixel_estimate": 0.525517719617035,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187531",
+          "file": "tile-18-109525-187531.jpg",
+          "bytes": 11860,
+          "sha256": "b20a7375234da38c68ca34c51e8f6c1deb81065f0198ab934fc67cfefdf339a2"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187531",
+          "file": "tile-18-109526-187531.jpg",
+          "bytes": 13372,
+          "sha256": "56e5e259378be5b9bc216e9a0616c2766178a2f666824c3e529cf21b6fcab077"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "T2",
+      "station_m": 1290,
+      "native_road": {
+        "station": "1290.27051",
+        "x": "211.422974",
+        "y": "719.612793",
+        "z": "7.22438097",
+        "tx": "0.253332376",
+        "ty": "0.967379332",
+        "half_width": "9",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53534864585811,
+        28.355317689111317
+      ],
+      "pixel_in_world": [
+        48008068.57629854,
+        28038620.65582852
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255160484613094,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187531",
+          "file": "tile-18-109525-187531.jpg",
+          "bytes": 11860,
+          "sha256": "b20a7375234da38c68ca34c51e8f6c1deb81065f0198ab934fc67cfefdf339a2"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187531",
+          "file": "tile-18-109526-187531.jpg",
+          "bytes": 13372,
+          "sha256": "56e5e259378be5b9bc216e9a0616c2766178a2f666824c3e529cf21b6fcab077"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "T2",
+      "station_m": 1320,
+      "native_road": {
+        "station": "1319.76599",
+        "x": "216.590515",
+        "y": "748.634033",
+        "z": "9.90891361",
+        "tx": "0.132783502",
+        "ty": "0.991145015",
+        "half_width": "9",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53540133687838,
+        28.35557811683403
+      ],
+      "pixel_in_world": [
+        48008078.39861664,
+        28038565.489640687
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255147593298253,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187531",
+          "file": "tile-18-109525-187531.jpg",
+          "bytes": 11860,
+          "sha256": "b20a7375234da38c68ca34c51e8f6c1deb81065f0198ab934fc67cfefdf339a2"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "back-straight-T4",
+      "station_m": 1480,
+      "native_road": {
+        "station": "1479.79468",
+        "x": "267.493774",
+        "y": "815.711792",
+        "z": "15.535862",
+        "tx": "0.273566335",
+        "ty": "-0.961853147",
+        "half_width": "12.010704",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "17.0499992"
+      },
+      "wgs84": [
+        77.53592037381516,
+        28.356180052107
+      ],
+      "pixel_in_world": [
+        48008175.15411442,
+        28038437.98167473
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255117796757247,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109524
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109524/187531",
+          "file": "tile-18-109524-187531.jpg",
+          "bytes": 14026,
+          "sha256": "476738c001d44caa50450fd0140f95689ee35061e3022e64718830dd5305f6d2"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187531",
+          "file": "tile-18-109525-187531.jpg",
+          "bytes": 11860,
+          "sha256": "b20a7375234da38c68ca34c51e8f6c1deb81065f0198ab934fc67cfefdf339a2"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109524
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109524/187532",
+          "file": "tile-18-109524-187532.jpg",
+          "bytes": 14985,
+          "sha256": "9fbba3cda97554382093002e6bc8a7cbf503e790b1e9c15357efc77171e9cad0"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187532",
+          "file": "tile-18-109525-187532.jpg",
+          "bytes": 14389,
+          "sha256": "0c74fd7a82c6be9790b030ab8aa7f2b7ce2856e0db9e3155a83ba0e33e333989"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "back-straight-T4",
+      "station_m": 1530,
+      "native_road": {
+        "station": "1529.99976",
+        "x": "281.231781",
+        "y": "767.422974",
+        "z": "14.0583286",
+        "tx": "0.273696274",
+        "ty": "-0.961816132",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53606045390455,
+        28.35574672303821
+      ],
+      "pixel_in_world": [
+        48008201.26693572,
+        28038529.77385656
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255139247140947,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187531",
+          "file": "tile-18-109525-187531.jpg",
+          "bytes": 11860,
+          "sha256": "b20a7375234da38c68ca34c51e8f6c1deb81065f0198ab934fc67cfefdf339a2"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187532",
+          "file": "tile-18-109525-187532.jpg",
+          "bytes": 14389,
+          "sha256": "0c74fd7a82c6be9790b030ab8aa7f2b7ce2856e0db9e3155a83ba0e33e333989"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "back-straight-T4",
+      "station_m": 1560,
+      "native_road": {
+        "station": "1560.1228",
+        "x": "289.474518",
+        "y": "738.449646",
+        "z": "13.0864344",
+        "tx": "0.273663044",
+        "ty": "-0.961825609",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53614450127297,
+        28.355486725263113
+      ],
+      "pixel_in_world": [
+        48008216.93450077,
+        28038584.84905653
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255152117243409,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187531",
+          "file": "tile-18-109525-187531.jpg",
+          "bytes": 11860,
+          "sha256": "b20a7375234da38c68ca34c51e8f6c1deb81065f0198ab934fc67cfefdf339a2"
+        },
+        {
+          "zxy": [
+            18,
+            187531,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187531",
+          "file": "tile-18-109526-187531.jpg",
+          "bytes": 13372,
+          "sha256": "56e5e259378be5b9bc216e9a0616c2766178a2f666824c3e529cf21b6fcab077"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109525
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109525/187532",
+          "file": "tile-18-109525-187532.jpg",
+          "bytes": 14389,
+          "sha256": "0c74fd7a82c6be9790b030ab8aa7f2b7ce2856e0db9e3155a83ba0e33e333989"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187532",
+          "file": "tile-18-109526-187532.jpg",
+          "bytes": 14928,
+          "sha256": "64bb35db3bef2b75563eaba4b66b19a4a44a8036ce0dd940844de962ee0a9598"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "back-straight-T4",
+      "station_m": 1650,
+      "native_road": {
+        "station": "1649.86438",
+        "x": "314.031128",
+        "y": "652.133179",
+        "z": "10.5029144",
+        "tx": "0.273660123",
+        "ty": "-0.961826444",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.5363948936424,
+        28.35471214771461
+      ],
+      "pixel_in_world": [
+        48008263.61102151,
+        28038748.926635645
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255190458824003,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187531,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187531",
+          "file": "tile-18-109526-187531.jpg",
+          "bytes": 13372,
+          "sha256": "56e5e259378be5b9bc216e9a0616c2766178a2f666824c3e529cf21b6fcab077"
+        },
+        {
+          "zxy": [
+            18,
+            187532,
+            109526
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109526/187532",
+          "file": "tile-18-109526-187532.jpg",
+          "bytes": 14928,
+          "sha256": "64bb35db3bef2b75563eaba4b66b19a4a44a8036ce0dd940844de962ee0a9598"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "back-straight-T4",
+      "station_m": 1800,
+      "native_road": {
+        "station": "1799.85205",
+        "x": "355.198822",
+        "y": "507.906006",
+        "z": "7.75053167",
+        "tx": "0.275603533",
+        "ty": "-0.961271405",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53681466153562,
+        28.353417897220208
+      ],
+      "pixel_in_world": [
+        48008341.861428335,
+        28039023.08307004
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255254522066841,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187532,
+            109527
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109527/187532",
+          "file": "tile-18-109527-187532.jpg",
+          "bytes": 13297,
+          "sha256": "35412904ccb183eb06b611cc1c0ad378964e4b3de7238f9450414c70f22a952d"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "back-straight-T4",
+      "station_m": 1950,
+      "native_road": {
+        "station": "1949.83972",
+        "x": "396.533569",
+        "y": "363.726593",
+        "z": "4.20340776",
+        "tx": "0.275600404",
+        "ty": "-0.961272299",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53723613279084,
+        28.352124075309426
+      ],
+      "pixel_in_world": [
+        48008420.42936485,
+        28039297.145378795
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255318561415292,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187532,
+            109528
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109528/187532",
+          "file": "tile-18-109528-187532.jpg",
+          "bytes": 11859,
+          "sha256": "4c159259d7b597a7a18d3b6dffaae9c83700caca7a0c092e9a96c04661d50a4f"
+        },
+        {
+          "zxy": [
+            18,
+            187533,
+            109528
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109528/187533",
+          "file": "tile-18-109528-187533.jpg",
+          "bytes": 16159,
+          "sha256": "4ca5b02b5a429e29a8c8da0ea747c82d3f85fce03b1df1cbf4a9b33dd60f1a3d"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "back-straight-T4",
+      "station_m": 2100,
+      "native_road": {
+        "station": "2099.82739",
+        "x": "437.618073",
+        "y": "219.475449",
+        "z": "2.2021935",
+        "tx": "0.273636043",
+        "ty": "-0.961833298",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53765505243419,
+        28.35082960970661
+      ],
+      "pixel_in_world": [
+        48008498.52164643,
+        28039571.34069484
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255382629942289,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187532,
+            109529
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109529/187532",
+          "file": "tile-18-109529-187532.jpg",
+          "bytes": 10534,
+          "sha256": "25f04ba83d28a004c518b4a2c6a14889a4ffb73cb73b8aabc2350e13a00f2b9c"
+        },
+        {
+          "zxy": [
+            18,
+            187533,
+            109529
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109529/187533",
+          "file": "tile-18-109529-187533.jpg",
+          "bytes": 15197,
+          "sha256": "05cf01c6070aac02024c28147d44ce6bde363b0143ccb40b1ee05446beb5092b"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "back-straight-T4",
+      "station_m": 2250,
+      "native_road": {
+        "station": "2249.81494",
+        "x": "477.74292",
+        "y": "74.9603195",
+        "z": "5.05371046",
+        "tx": "0.255697876",
+        "ty": "-0.966756701",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53806418689993,
+        28.349532775178737
+      ],
+      "pixel_in_world": [
+        48008574.78983872,
+        28039846.034447726
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255446813027443,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187533,
+            109530
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109530/187533",
+          "file": "tile-18-109530-187533.jpg",
+          "bytes": 13632,
+          "sha256": "57ca9b431ed9446c873a2ddb9b66573190b4bf3cffd6c1bcde611a7a87f560cf"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "back-straight-T4",
+      "station_m": 2400,
+      "native_road": {
+        "station": "2399.80273",
+        "x": "517.557312",
+        "y": "-69.6444321",
+        "z": "7.72357798",
+        "tx": "0.273165345",
+        "ty": "-0.961967111",
+        "half_width": "10",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53847015579996,
+        28.348235136409578
+      ],
+      "pixel_in_world": [
+        48008650.46792677,
+        28040120.895196147
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255511033221334,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187533,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187533",
+          "file": "tile-18-109531-187533.jpg",
+          "bytes": 13487,
+          "sha256": "e4df7718dfd05d8fb4f3269a2e1b71bd8c1be3d03ca07e75135342ded5ad80d8"
+        },
+        {
+          "zxy": [
+            18,
+            187533,
+            109532
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109532/187533",
+          "file": "tile-18-109532-187533.jpg",
+          "bytes": 8927,
+          "sha256": "033c0820931c1bd085097cf5dedde907e7fe412520d4b580ad098bec49773bcb"
+        },
+        {
+          "zxy": [
+            18,
+            187534,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187534",
+          "file": "tile-18-109531-187534.jpg",
+          "bytes": 15246,
+          "sha256": "b4abeddb686f7ae8fce882f56778c0e3aa1d8c61df3c60fcaf167d44bbd44a91"
+        },
+        {
+          "zxy": [
+            18,
+            187534,
+            109532
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109532/187534",
+          "file": "tile-18-109532-187534.jpg",
+          "bytes": 15953,
+          "sha256": "ef1b269eedffffc1016be4943bc60be243fffe503329177c9e4c2c5e1f474000"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "back-straight-T4",
+      "station_m": 2480,
+      "native_road": {
+        "station": "2480.13086",
+        "x": "539.337646",
+        "y": "-146.960083",
+        "z": "8.50167751",
+        "tx": "0.238831118",
+        "ty": "-0.97106117",
+        "half_width": "10.0000935",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53869223976989,
+        28.3475413294291
+      ],
+      "pixel_in_world": [
+        48008691.86737937,
+        28040267.853288315
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255545368650199,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187533,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187533",
+          "file": "tile-18-109531-187533.jpg",
+          "bytes": 13487,
+          "sha256": "e4df7718dfd05d8fb4f3269a2e1b71bd8c1be3d03ca07e75135342ded5ad80d8"
+        },
+        {
+          "zxy": [
+            18,
+            187533,
+            109532
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109532/187533",
+          "file": "tile-18-109532-187533.jpg",
+          "bytes": 8927,
+          "sha256": "033c0820931c1bd085097cf5dedde907e7fe412520d4b580ad098bec49773bcb"
+        },
+        {
+          "zxy": [
+            18,
+            187534,
+            109531
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109531/187534",
+          "file": "tile-18-109531-187534.jpg",
+          "bytes": 15246,
+          "sha256": "b4abeddb686f7ae8fce882f56778c0e3aa1d8c61df3c60fcaf167d44bbd44a91"
+        },
+        {
+          "zxy": [
+            18,
+            187534,
+            109532
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109532/187534",
+          "file": "tile-18-109532-187534.jpg",
+          "bytes": 15953,
+          "sha256": "ef1b269eedffffc1016be4943bc60be243fffe503329177c9e4c2c5e1f474000"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "back-straight-T4",
+      "station_m": 2530,
+      "native_road": {
+        "station": "2529.7085",
+        "x": "550.93927",
+        "y": "-195.160904",
+        "z": "9.12146664",
+        "tx": "0.233845532",
+        "ty": "-0.972273767",
+        "half_width": "10.4956446",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53881053615211,
+        28.347108790018446
+      ],
+      "pixel_in_world": [
+        48008713.919423334,
+        28040359.47074285
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255566773963224,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187533,
+            109532
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109532/187533",
+          "file": "tile-18-109532-187533.jpg",
+          "bytes": 8927,
+          "sha256": "033c0820931c1bd085097cf5dedde907e7fe412520d4b580ad098bec49773bcb"
+        },
+        {
+          "zxy": [
+            18,
+            187534,
+            109532
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109532/187534",
+          "file": "tile-18-109532-187534.jpg",
+          "bytes": 15953,
+          "sha256": "ef1b269eedffffc1016be4943bc60be243fffe503329177c9e4c2c5e1f474000"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "back-straight-T4",
+      "station_m": 2580,
+      "native_road": {
+        "station": "2579.91357",
+        "x": "562.828369",
+        "y": "-243.93782",
+        "z": "9.48909378",
+        "tx": "0.239335731",
+        "ty": "-0.970936835",
+        "half_width": "10.9999619",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "10"
+      },
+      "wgs84": [
+        77.53893176378365,
+        28.346671080907637
+      ],
+      "pixel_in_world": [
+        48008736.517891765,
+        28040452.182827037
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255588434807101,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187533,
+            109532
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109532/187533",
+          "file": "tile-18-109532-187533.jpg",
+          "bytes": 8927,
+          "sha256": "033c0820931c1bd085097cf5dedde907e7fe412520d4b580ad098bec49773bcb"
+        },
+        {
+          "zxy": [
+            18,
+            187533,
+            109533
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109533/187533",
+          "file": "tile-18-109533-187533.jpg",
+          "bytes": 15372,
+          "sha256": "886d5aeefb414e18c64fdcc3bdd232980c1832c96f6860c1898a86b95cc95650"
+        },
+        {
+          "zxy": [
+            18,
+            187534,
+            109532
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109532/187534",
+          "file": "tile-18-109532-187534.jpg",
+          "bytes": 15953,
+          "sha256": "ef1b269eedffffc1016be4943bc60be243fffe503329177c9e4c2c5e1f474000"
+        },
+        {
+          "zxy": [
+            18,
+            187534,
+            109533
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109533/187534",
+          "file": "tile-18-109533-187534.jpg",
+          "bytes": 14829,
+          "sha256": "cd6896af57a40dda1cb21a918fd7278f6cecfbf0f1b62443f614bb8ff47cb478"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "back-straight-T4",
+      "station_m": 2620,
+      "native_road": {
+        "station": "2620.07764",
+        "x": "572.442688",
+        "y": "-282.934174",
+        "z": "10.6651926",
+        "tx": "0.239378884",
+        "ty": "-0.970926285",
+        "half_width": "11.9115267",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "17.0499992"
+      },
+      "wgs84": [
+        77.53902979653795,
+        28.34632113956583
+      ],
+      "pixel_in_world": [
+        48008754.7925217,
+        28040526.30436125
+      ],
+      "resolution_m_per_pixel_estimate": 0.525560575208017,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187533,
+            109533
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109533/187533",
+          "file": "tile-18-109533-187533.jpg",
+          "bytes": 15372,
+          "sha256": "886d5aeefb414e18c64fdcc3bdd232980c1832c96f6860c1898a86b95cc95650"
+        },
+        {
+          "zxy": [
+            18,
+            187534,
+            109533
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109533/187534",
+          "file": "tile-18-109533-187534.jpg",
+          "bytes": 14829,
+          "sha256": "cd6896af57a40dda1cb21a918fd7278f6cecfbf0f1b62443f614bb8ff47cb478"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "back-straight-T4",
+      "station_m": 2650,
+      "native_road": {
+        "station": "2650.20068",
+        "x": "579.142639",
+        "y": "-312.292145",
+        "z": "10.863307",
+        "tx": "0.143766254",
+        "ty": "-0.989611626",
+        "half_width": "12.5",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "17.0499992"
+      },
+      "wgs84": [
+        77.53909811283266,
+        28.346057690122215
+      ],
+      "pixel_in_world": [
+        48008767.52760207,
+        28040582.10577202
+      ],
+      "resolution_m_per_pixel_estimate": 0.525561878906707,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187533,
+            109533
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109533/187533",
+          "file": "tile-18-109533-187533.jpg",
+          "bytes": 15372,
+          "sha256": "886d5aeefb414e18c64fdcc3bdd232980c1832c96f6860c1898a86b95cc95650"
+        },
+        {
+          "zxy": [
+            18,
+            187534,
+            109533
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109533/187534",
+          "file": "tile-18-109533-187534.jpg",
+          "bytes": 14829,
+          "sha256": "cd6896af57a40dda1cb21a918fd7278f6cecfbf0f1b62443f614bb8ff47cb478"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "back-straight-T4",
+      "station_m": 2680,
+      "native_road": {
+        "station": "2679.69604",
+        "x": "581.194092",
+        "y": "-341.703766",
+        "z": "11.1461878",
+        "tx": "0.0528554656",
+        "ty": "-0.998602211",
+        "half_width": "12.5",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "17.0499992"
+      },
+      "wgs84": [
+        77.539119030548,
+        28.34579375923992
+      ],
+      "pixel_in_world": [
+        48008771.426946834,
+        28040638.009017844
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255631849766891,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187533,
+            109533
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109533/187533",
+          "file": "tile-18-109533-187533.jpg",
+          "bytes": 15372,
+          "sha256": "886d5aeefb414e18c64fdcc3bdd232980c1832c96f6860c1898a86b95cc95650"
+        },
+        {
+          "zxy": [
+            18,
+            187533,
+            109534
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109534/187533",
+          "file": "tile-18-109534-187533.jpg",
+          "bytes": 17006,
+          "sha256": "511d898b4f3c45bdb74035ef4f95b9c0347d5da538017228b18b9c0b97a041c3"
+        },
+        {
+          "zxy": [
+            18,
+            187534,
+            109533
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109533/187534",
+          "file": "tile-18-109533-187534.jpg",
+          "bytes": 14829,
+          "sha256": "cd6896af57a40dda1cb21a918fd7278f6cecfbf0f1b62443f614bb8ff47cb478"
+        },
+        {
+          "zxy": [
+            18,
+            187534,
+            109534
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109534/187534",
+          "file": "tile-18-109534-187534.jpg",
+          "bytes": 16702,
+          "sha256": "bdaa2352d123d552dff17f0d9c27d7872e7eaecc736cfeb3ec77733ba0723e08"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "back-straight-T4",
+      "station_m": 2700,
+      "native_road": {
+        "station": "2699.77808",
+        "x": "582.254639",
+        "y": "-361.757751",
+        "z": "10.7783842",
+        "tx": "0.0503757633",
+        "ty": "-0.998730421",
+        "half_width": "12.5",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "17.0499992"
+      },
+      "wgs84": [
+        77.53912984445415,
+        28.34561380091819
+      ],
+      "pixel_in_world": [
+        48008773.44280504,
+        28040676.12594144
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255640754995122,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187533,
+            109533
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109533/187533",
+          "file": "tile-18-109533-187533.jpg",
+          "bytes": 15372,
+          "sha256": "886d5aeefb414e18c64fdcc3bdd232980c1832c96f6860c1898a86b95cc95650"
+        },
+        {
+          "zxy": [
+            18,
+            187533,
+            109534
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109534/187533",
+          "file": "tile-18-109534-187533.jpg",
+          "bytes": 17006,
+          "sha256": "511d898b4f3c45bdb74035ef4f95b9c0347d5da538017228b18b9c0b97a041c3"
+        },
+        {
+          "zxy": [
+            18,
+            187534,
+            109533
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109533/187534",
+          "file": "tile-18-109533-187534.jpg",
+          "bytes": 14829,
+          "sha256": "cd6896af57a40dda1cb21a918fd7278f6cecfbf0f1b62443f614bb8ff47cb478"
+        },
+        {
+          "zxy": [
+            18,
+            187534,
+            109534
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109534/187534",
+          "file": "tile-18-109534-187534.jpg",
+          "bytes": 16702,
+          "sha256": "bdaa2352d123d552dff17f0d9c27d7872e7eaecc736cfeb3ec77733ba0723e08"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    },
+    {
+      "group": "back-straight-T4",
+      "station_m": 2720,
+      "native_road": {
+        "station": "2719.86011",
+        "x": "575.624512",
+        "y": "-379.749756",
+        "z": "10.7634439",
+        "tx": "-0.787178397",
+        "ty": "-0.616725326",
+        "half_width": "12.5",
+        "bank": "0",
+        "left_shoulder": "10",
+        "right_shoulder": "17.0499992"
+      },
+      "wgs84": [
+        77.5390622401224,
+        28.345452346173694
+      ],
+      "pixel_in_world": [
+        48008760.84044419,
+        28040710.323572367
+      ],
+      "resolution_m_per_pixel_estimate": 0.5255648744530667,
+      "tiles": [
+        {
+          "zxy": [
+            18,
+            187533,
+            109533
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109533/187533",
+          "file": "tile-18-109533-187533.jpg",
+          "bytes": 15372,
+          "sha256": "886d5aeefb414e18c64fdcc3bdd232980c1832c96f6860c1898a86b95cc95650"
+        },
+        {
+          "zxy": [
+            18,
+            187533,
+            109534
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109534/187533",
+          "file": "tile-18-109534-187533.jpg",
+          "bytes": 17006,
+          "sha256": "511d898b4f3c45bdb74035ef4f95b9c0347d5da538017228b18b9c0b97a041c3"
+        },
+        {
+          "zxy": [
+            18,
+            187534,
+            109533
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109533/187534",
+          "file": "tile-18-109533-187534.jpg",
+          "bytes": 14829,
+          "sha256": "cd6896af57a40dda1cb21a918fd7278f6cecfbf0f1b62443f614bb8ff47cb478"
+        },
+        {
+          "zxy": [
+            18,
+            187534,
+            109534
+          ],
+          "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/42663/18/109534/187534",
+          "file": "tile-18-109534-187534.jpg",
+          "bytes": 16702,
+          "sha256": "bdaa2352d123d552dff17f0d9c27d7872e7eaecc736cfeb3ec77733ba0723e08"
+        }
+      ],
+      "section_packet": "extended-first-sector"
+    }
+  ]
+}

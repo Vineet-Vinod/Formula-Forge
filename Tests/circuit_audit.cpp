@@ -1,4 +1,5 @@
 #include "FFSimulation.hpp"
+#include "buddh_surface_witnesses.hpp"
 
 #include <algorithm>
 #include <array>
@@ -254,6 +255,28 @@ bool CheckGenerated(const TrackCatalogEntry& track) {
         return false;
     }
     const float length = track.targetLengthMeters;
+    if (track.id == TrackLayoutId::Buddh) {
+        for (const auto& witness : BuddhSurfaceWitnesses) {
+            const Vec2 position{static_cast<float>(witness.x * 17.0), static_cast<float>(-witness.y * 17.0)};
+            const auto projection = simulation.Project(position);
+            simulation.Reset(projection.station);
+            simulation.vehicle.pos = position;
+            const float ground = simulation.Ground(position) / 17.0f;
+            if (std::abs(ground - witness.height) > .0005f) {
+                std::cerr << std::setprecision(10) << "Buddh actual Ground misses source plane at "
+                          << witness.x << ',' << witness.y << ": " << ground << " expected " << witness.height << '\n';
+                return false;
+            }
+            if (witness.grip >= 0.0f) {
+                const auto surface = simulation.CurrentSurface();
+                if (std::abs(surface.grip - witness.grip) > .001f ||
+                    std::abs(surface.rollingResistance - witness.resistance) > .001f) {
+                    std::cerr << "Buddh source surface role mismatch at " << witness.x << ',' << witness.y << '\n';
+                    return false;
+                }
+            }
+        }
+    }
     if (track.id == TrackLayoutId::Malaysia) {
         int flatApronWitnesses = 0;
         for (const auto& triangle : simulation.driveSurface.Triangles()) {

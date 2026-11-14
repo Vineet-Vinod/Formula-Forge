@@ -1,0 +1,919 @@
+{
+  "status": "Source-qualified bounded reconstruction; full generation/native/whole-Baku acceptance pending",
+  "source_plan": {
+    "status": "PRIVATE source identity/plan before reconstruction; no canonical geometry or native acceptance.",
+    "actual_camera_owner_proof": "../3530-building-owner-proof.json",
+    "source_refs": {
+      "current_reference": "../niyazi-ref-01.jpg at250.75\u00b1.25s, route/corner continuity only",
+      "philharmonic_photos": [
+        "primary-00.jpg",
+        "primary-01.jpg",
+        "primary-02.jpg"
+      ],
+      "right_facade_primary": "registered-01.jpg",
+      "right_context_primary": "registered-00.jpg",
+      "receipts": [
+        "primary-index.json",
+        "registered-index.json",
+        "commons-196291852-geosearch.json"
+      ]
+    },
+    "mapped_properties": [
+      {
+        "osm_id": 152190848,
+        "name": "Az\u0259rbaycan D\u00f6vl\u0259t Filarmoniyas\u0131",
+        "tags": {
+          "addr:city": "Bak\u0131",
+          "addr:housenumber": "6",
+          "addr:street": "Niyazi k\u00fc\u00e7.",
+          "alt_name": "Filarmoniya",
+          "building": "yes",
+          "building:levels": "2",
+          "name": "Az\u0259rbaycan D\u00f6vl\u0259t Filarmoniyas\u0131",
+          "name:az": "Az\u0259rbaycan D\u00f6vl\u0259t Filarmoniyas\u0131",
+          "name:en": "Azerbaijan State Philharmonic",
+          "name:fa": "\u0627\u0631\u06a9\u0633\u062a\u0631 \u0641\u06cc\u0644\u0627\u0631\u0645\u0648\u0646\u06cc\u06a9 \u062f\u0648\u0644\u062a\u06cc \u0622\u0630\u0631\u0628\u0627\u06cc\u062c\u0627\u0646",
+          "name:ru": "\u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d\u0441\u043a\u0430\u044f \u0413\u043e\u0441\u0443\u0434\u0430\u0440\u0441\u0442\u0432\u0435\u043d\u043d\u0430\u044f \u0424\u0438\u043b\u0430\u0440\u043c\u043e\u043d\u0438\u044f",
+          "wikidata": "Q58823",
+          "wikimedia_commons": "Category:Azerbaijan State Philharmonic Hall",
+          "wikipedia": "en:Azerbaijan State Philharmonic Hall"
+        },
+        "ring": [
+          [
+            -1868.4305443755818,
+            -913.107039676251
+          ],
+          [
+            -1870.2994326514945,
+            -915.6497517940294
+          ],
+          [
+            -1872.6718113759862,
+            -915.0560789208171
+          ],
+          [
+            -1875.0868587824689,
+            -915.5041339200986
+          ],
+          [
+            -1877.0837531049597,
+            -916.9155071661636
+          ],
+          [
+            -1878.3126111491956,
+            -919.0325670356592
+          ],
+          [
+            -1878.5430220327935,
+            -921.4744667791166
+          ],
+          [
+            -1877.7408508090682,
+            -923.7819500229488
+          ],
+          [
+            -1876.0426372617237,
+            -925.5517672682798
+          ],
+          [
+            -1873.7555959012127,
+            -926.4366758909453
+          ],
+          [
+            -1871.314947285172,
+            -926.30225939132
+          ],
+          [
+            -1869.1473782347193,
+            -925.148517769404
+          ],
+          [
+            -1856.6966567984873,
+            -931.9253496261736
+          ],
+          [
+            -1861.3816780930483,
+            -940.3823877290546
+          ],
+          [
+            -1865.5034727833943,
+            -940.5168042286798
+          ],
+          [
+            -1868.6182865765825,
+            -941.4129142264468
+          ],
+          [
+            -1872.4670017019473,
+            -943.720397470279
+          ],
+          [
+            -1874.788178007929,
+            -946.1286930892279
+          ],
+          [
+            -1876.5631951833413,
+            -949.0970574560849
+          ],
+          [
+            -1877.7493845455876,
+            -953.2751703203649
+          ],
+          [
+            -1877.6725809181257,
+            -957.7221161838954
+          ],
+          [
+            -1876.2901156177536,
+            -961.9338331726839
+          ],
+          [
+            -1874.3614911868115,
+            -964.8461906648296
+          ],
+          [
+            -1872.688878849025,
+            -966.5375982852465
+          ],
+          [
+            -1869.1047095527292,
+            -969.1923241532431
+          ],
+          [
+            -1875.1295274650656,
+            -980.8417541226219
+          ],
+          [
+            -1825.1303657820094,
+            -1004.8126965595055
+          ],
+          [
+            -1798.3344334246801,
+            -953.2191634456536
+          ]
+        ],
+        "area_m2": 4102.922449182797,
+        "renderer_min_base_m": 19.11335392820622,
+        "renderer_boundary_max_m": 27.313134475922748,
+        "center_xy": [
+          -1841.8617009818147,
+          -960.8764315518015
+        ],
+        "center_geo": [
+          40.364105039927004,
+          49.831634338926904
+        ]
+      },
+      {
+        "osm_id": 196291852,
+        "name": "",
+        "tags": {
+          "addr:city": "Bak\u0131",
+          "addr:street": "\u0130stiqlaliyy\u0259t k\u00fc\u00e7.",
+          "building": "residential"
+        },
+        "ring": [
+          [
+            -1912.1147411076745,
+            -903.4402530767428
+          ],
+          [
+            -1911.4235084574882,
+            -907.4279425658904
+          ],
+          [
+            -1917.4397926333054,
+            -908.0888236889153
+          ],
+          [
+            -1916.8594985566585,
+            -914.0143510483234
+          ],
+          [
+            -1920.6484775269937,
+            -914.4288019223007
+          ],
+          [
+            -1919.7439014668555,
+            -924.890886145255
+          ],
+          [
+            -1916.2024008525498,
+            -924.9804971444746
+          ],
+          [
+            -1916.0402598605006,
+            -932.6422376247056
+          ],
+          [
+            -1901.865723667366,
+            -934.1208191205834
+          ],
+          [
+            -1902.4972201625228,
+            -925.7421906426162
+          ],
+          [
+            -1903.7346119432787,
+            -909.3993845606593
+          ],
+          [
+            -1904.2637036014157,
+            -902.3313169544364
+          ]
+        ],
+        "area_m2": 427.136978849004,
+        "renderer_min_base_m": 22.940733468526393,
+        "renderer_boundary_max_m": 30.442543136029524,
+        "center_xy": [
+          -1910.2764786515163,
+          -919.1888441225888
+        ],
+        "center_geo": [
+          40.36447720484014,
+          49.83083264112062
+        ]
+      },
+      {
+        "osm_id": 196291860,
+        "name": "Venesiya Plaza",
+        "tags": {
+          "addr:city": "Bak\u0131",
+          "addr:housenumber": "21",
+          "addr:street": "\u0130stiqlaliyy\u0259t k\u00fc\u00e7\u0259si",
+          "building": "commercial",
+          "name": "Venesiya Plaza"
+        },
+        "ring": [
+          [
+            -1938.5522565354347,
+            -954.6641408170229
+          ],
+          [
+            -1912.208612208175,
+            -970.2676561502451
+          ],
+          [
+            -1907.6259957506338,
+            -970.9509400234728
+          ],
+          [
+            -1903.0519130296118,
+            -969.4835599026966
+          ],
+          [
+            -1901.2000922267375,
+            -963.7708586678274
+          ],
+          [
+            -1901.865723667366,
+            -934.1208191205834
+          ],
+          [
+            -1916.0402598605006,
+            -932.6422376247056
+          ],
+          [
+            -1928.183766785674,
+            -932.1157730013059
+          ],
+          [
+            -1937.3916683827472,
+            -951.0460967014467
+          ]
+        ],
+        "area_m2": 1070.5574779981002,
+        "renderer_min_base_m": 22.154910884037825,
+        "renderer_boundary_max_m": 32.558066610379925,
+        "center_xy": [
+          -1916.894910159394,
+          -950.1337474526637
+        ],
+        "center_geo": [
+          40.364200944975515,
+          49.83075508503988
+        ]
+      },
+      {
+        "osm_id": 196291853,
+        "name": "Q\u0259rb Universiteti",
+        "tags": {
+          "addr:city": "Bak\u0131",
+          "addr:street": "\u0130stiqlaliyy\u0259t k\u00fc\u00e7\u0259si",
+          "amenity": "university",
+          "building": "yes",
+          "education": "university",
+          "name": "Q\u0259rb Universiteti",
+          "name:az": "Q\u0259rb Universiteti"
+        },
+        "ring": [
+          [
+            -1979.6507311324772,
+            -840.8021642410299
+          ],
+          [
+            -1977.3124873534564,
+            -866.912569297612
+          ],
+          [
+            -1971.7143562622375,
+            -866.4085074236193
+          ],
+          [
+            -1967.8485736644404,
+            -866.0612648002506
+          ],
+          [
+            -1968.7872846706566,
+            -855.5319723274837
+          ],
+          [
+            -1959.3745733995438,
+            -854.6918692044281
+          ],
+          [
+            -1959.0502914154463,
+            -858.3995243200196
+          ],
+          [
+            -1947.213999001332,
+            -857.3465950724247
+          ],
+          [
+            -1948.1868449536257,
+            -846.4364558517807
+          ],
+          [
+            -1939.1666855575536,
+            -845.6299568540294
+          ],
+          [
+            -1938.8082686279843,
+            -849.6288477182784
+          ],
+          [
+            -1928.8152632808312,
+            -848.7327377205114
+          ],
+          [
+            -1927.6632088640563,
+            -861.580714811416
+          ],
+          [
+            -1908.16362114529,
+            -859.8333003162876
+          ],
+          [
+            -1908.8633875313897,
+            -851.9811364617202
+          ],
+          [
+            -1909.341276771017,
+            -846.7052888510312
+          ],
+          [
+            -1910.425061296243,
+            -834.6078038823712
+          ],
+          [
+            -1943.6724983876331,
+            -837.5873696251253
+          ],
+          [
+            -1966.4746421005873,
+            -839.626019869707
+          ]
+        ],
+        "area_m2": 1323.664160275519,
+        "renderer_min_base_m": 24.41567994798381,
+        "renderer_boundary_max_m": 35.58792693968133,
+        "center_xy": [
+          -1943.401841616467,
+          -848.1963969252167
+        ],
+        "center_geo": [
+          40.36511098816928,
+          49.83044447160922
+        ]
+      }
+    ],
+    "philharmonic": {
+      "osm_id": 152190848,
+      "identity": "Main Azerbaijan State Philharmonic Hall atNiyazi6; exact3530ochre/tower owner, separate from museums.",
+      "source_features": [
+        "Tall square ochre shafts with narrow slit windows",
+        "Lower arched loggia with balconied balustrade and stone cornices",
+        "Separate smaller upper colonnaded lantern, shallow roof and gold fleur finial",
+        "Warm bronze/ochre rotunda dome with roof lantern",
+        "Blind arched rotunda niches differ from glazed garden/gallery elevations",
+        "Glazed timber oriel and multi-bay side gallery; not identical windows around all footprint facets"
+      ],
+      "height_scope": {
+        "body_estimate_m": 11.5,
+        "body_uncertainty_m": 2.5,
+        "tower_peak_above_base_estimate_m": 32.0,
+        "tower_uncertainty_m": 6.0,
+        "loggia_estimate_m": 5.5,
+        "upper_lantern_estimate_m": 4.35,
+        "finial_estimate_m": 3.5,
+        "qualification": "Broad architectural estimates from own-work exterior photographs and retained11.5\u00b12.5m body. Unrectified image ratios are not surveyed height."
+      },
+      "preserve": "Retain literal occupied footprint, original road1.2m clipping and existing terrain cutout; qualify actual external supports/protection without flattening the site.",
+      "tower_plan": "Use retained literal6-level parts299176530/531,42.24m separation; old72m guessed placement invalid. Upper7.2m shaft widths are inset estimates within12m base parts.",
+      "body_hold": "The widened plan shows most literal outline over roof, so wholesale terrace/body retraction is not established. Garden terrace/setback and per-face source registration remain held; roof proof retains old body solely to isolate mapped roof-part reconstruction."
+    },
+    "foreground_196291852": {
+      "osm_id": 196291852,
+      "identity": "Best-supported historicWesternUniversity building /\u0130stiqlaliyy\u0259t25,heritage3289; current operator/use not assumed.",
+      "identity_evidence": [
+        "Two own-work photos explicitly tag heritage3289 and coordinates40.364472/49.830814,~1.6m from this footprint center.",
+        "Official heritage register3289 identifiesWesternUniversity building,1892,\u0130stiqlaliyy\u0259t25.",
+        "Adjacent pinkSadikhov house is heritage3288/\u0130stiqlaliyy\u0259t21 and maps toway196291860; northerncampus is separateway196291853.",
+        "Street/ref continuity shows this ornate mansard/balcony wing directly north of pinkSadikhov property; no pink-facade transfer."
+      ],
+      "official_registry": "https://frameworks.e-qanun.az/2/c_f_2847.html",
+      "ministry_register": "https://culture.gov.az/medias/media/other/296/kadastr.pdf",
+      "front_literal_edges": [
+        8,
+        9,
+        10
+      ],
+      "front_length_m": 31.879819196924384,
+      "source_features": [
+        "Three principal window rows above a low partlyburied basement/plinth",
+        "Thirteen-bay group1+4+3+4+1 with three-bay central pavilion",
+        "Large central round-arched entrance; ground-row arched windows",
+        "Wing wrought-iron balconies on the middle principal level, central wrought-iron balcony on the upper level",
+        "Projecting terminal bays/oriels with triangular pediments and carved friezes",
+        "Three central mansard dormers plus lower side roof openings; stone cornice/dentils/rustication",
+        "Side and rear details remain unregistered; no repeated facade decoration assigned there without evidence."
+      ],
+      "height_scope": {
+        "cornice_estimate_m": 15.0,
+        "uncertainty_m": 3.0,
+        "mansard_estimate_m": 2.3,
+        "mansard_uncertainty_m": 1.0,
+        "qualification": "32m literal frontage and wideangle primary image support a broad envelope; keep existing15m datum-relative body until rectified/actual support proof. No current storey tag exists."
+      },
+      "geometry_precision": "1mm local ornament authoring grid and0.5mm simplification remove sub-F32 ears; exact inherited Ground planes/source witnesses stay unchanged."
+    },
+    "source_limits": [
+      "Ground heights are inherited renderer/DSM evidence, not bare-earth survey.",
+      "Photo coordinates can identify a subject rather than a surveyed camera location; face registration uses shape/street continuity as well.",
+      "Modern Philharmonic photos acquired here were interior shots and are excluded from exterior evidence.",
+      "Exact building datum, floor pitch, roof depth and rear surroundings remain estimates/held."
+    ]
+  },
+  "private_proofs": {
+    "hall": {
+      "status": "PRIVATE source-specific Philly body/towers; exact old cutout and inherited body envelope retained, no native acceptance",
+      "base_m": 19.11335392820622,
+      "base_status": "inherited renderer minimum, not survey",
+      "cutout_area_m2": 4074.298516461987,
+      "retained_body_packed_sha256": {},
+      "old_cutouts_exact": true,
+      "old_body_replaced": true,
+      "ground_delta": false,
+      "triangles": 70280,
+      "kinds": {
+        "Building_PhilharmonicMasonry": 15532,
+        "Building_MuseumMasonry": 338,
+        "Building_MuseumReveals": 932,
+        "Building_MuseumWindowSurrounds": 5592,
+        "Building_MuseumFrames": 5592,
+        "Building_MuseumMullions": 1872,
+        "Building_MuseumSills": 768,
+        "Building_HotelStoneRailBase": 192,
+        "Building_HotelStoneRailCap": 576,
+        "Building_HotelStoneBaluster": 23136,
+        "Building_PhilharmonicTimberGlass": 1224,
+        "Building_PhilharmonicTimberFrames": 3876,
+        "Building_PhilharmonicTimberMullions": 612,
+        "Building_PhilharmonicFlatRoof": 106,
+        "Building_PhilharmonicShaft": 24,
+        "Building_PhilharmonicLoggia": 736,
+        "Building_PhilharmonicArches": 1216,
+        "Building_PhilharmonicTowerCornice": 288,
+        "Building_PhilharmonicSlits": 576,
+        "Building_PhilharmonicPiers": 1344,
+        "Building_PhilharmonicLoggiaFloor": 24,
+        "Building_PhilharmonicLanternPlatform": 24,
+        "Building_PhilharmonicLanternColumns": 2688,
+        "Building_PhilharmonicLanternCap": 24,
+        "Building_PhilharmonicFinial": 256,
+        "Building_PhilharmonicMetalDome": 512,
+        "Building_PhilharmonicDomeLantern": 1104,
+        "Building_PhilharmonicDomeLanternGlass": 864,
+        "Building_PhilharmonicDomeCap": 12,
+        "Building_PhilharmonicOrielRoof": 192,
+        "Building_PhilharmonicOrielCap": 48
+      },
+      "new_packed_normal_alignment_min": 0.9988886740227529,
+      "packed_collapsed": [],
+      "raw_skipped": [],
+      "inward_dome_faces": [],
+      "body_racing_corridor_clearance_m": 1.1999954973101323,
+      "new_roof_minimum_z_m": 19.1133544921875,
+      "tower_part_ids": [
+        299176530,
+        299176531
+      ],
+      "tower_centres_m": [
+        [
+          -1865.6768570375639,
+          -977.4313222914678,
+          0.0
+        ],
+        [
+          -1846.1803840035773,
+          -939.9619493207165,
+          0.0
+        ]
+      ],
+      "tower_total_height_estimate_m": 32,
+      "tower_height_uncertainty_m": 6,
+      "source_sha256": {
+        "roof-candidate.json": "90ed0ed82a1c5bb3918bca557b8d23a8f38025aa2e685065686a3fdbf1981986",
+        "philharmonic_geometry.py": "065264ac0ec61b86cc8a44bd7a3ba6d705e8155574fc24cc50ccdefa8e4957fc"
+      },
+      "elapsed_s": 4.0550384760135785,
+      "peak_rss_kb": 253584,
+      "old_generic_triangles": 60874,
+      "expected_city_triangle_delta": 9406,
+      "all_packed_mesh_hull_road_clearance_m": 1.128037299032366,
+      "local_conservative_protection_envelopes": 93,
+      "actual_3d_mesh_protection_envelope_intersections": [],
+      "protection_note": "Actual retained barrier endpoint/native road heights, plan radius+6cm,bottom-5cm to top+3.65m; packed faces clipped to Zinterval.",
+      "source_body_recipe_sha256": "d68d2fff815ff6673247dfce9613d6b0ae274bac89f95985bc58a0a2d2122f2a",
+      "packed_city_sha256": {
+        "Building_City_m6_m3": "c74fdc99cf7c8cd8a066808188276610eea9d84875439d85a8260beb3b551410",
+        "Building_City_m5_m3": "d53eab054a1124257fef8b8417102eb838414c4f2c31c64e9f8625ad398dbccb"
+      },
+      "actual_packed_photo_feature_rays": [
+        {
+          "feature": "blind_rotunda_niche",
+          "index": 0,
+          "origin": [
+            -1868.9474122404065,
+            -938.3859182990785,
+            27.11335392820622
+          ],
+          "direction": [
+            0.27647870083587234,
+            -0.9610200455683057,
+            -0.0
+          ],
+          "first_material": "Cream",
+          "distance_m": 2.9650075559321953,
+          "expected": "Cream"
+        },
+        {
+          "feature": "blind_rotunda_niche",
+          "index": 1,
+          "origin": [
+            -1874.9275596890916,
+            -941.9503139302334,
+            27.11335392820622
+          ],
+          "direction": [
+            0.7200099080512433,
+            -0.6939637831386017,
+            -0.0
+          ],
+          "first_material": "Cream",
+          "distance_m": 2.9650061928897076,
+          "expected": "Cream"
+        },
+        {
+          "feature": "blind_rotunda_niche",
+          "index": 2,
+          "origin": [
+            -1878.6610627860023,
+            -946.7598706110979,
+            27.11335392820622
+          ],
+          "direction": [
+            0.85825751765665,
+            -0.5132192839185264,
+            -0.0
+          ],
+          "first_material": "Cream",
+          "distance_m": 2.9649992747981253,
+          "expected": "Cream"
+        },
+        {
+          "feature": "blind_rotunda_niche",
+          "index": 3,
+          "origin": [
+            -1880.7460252956835,
+            -953.4955762942092,
+            27.11335392820622
+          ],
+          "direction": [
+            0.999850887985371,
+            0.017268520343817942,
+            -0.0
+          ],
+          "first_material": "Cream",
+          "distance_m": 2.964983042594459,
+          "expected": "Cream"
+        },
+        {
+          "feature": "blind_rotunda_niche",
+          "index": 4,
+          "origin": [
+            -1880.160522889236,
+            -959.7618859785119,
+            27.11335392820622
+          ],
+          "direction": [
+            0.9501243350220356,
+            0.3118713645061607,
+            -0.0
+          ],
+          "first_material": "Cream",
+          "distance_m": 2.965042586607968,
+          "expected": "Cream"
+        },
+        {
+          "feature": "blind_rotunda_niche",
+          "index": 5,
+          "origin": [
+            -1877.5930343076623,
+            -965.3998234903006,
+            27.11335392820622
+          ],
+          "direction": [
+            0.8337570600642413,
+            0.5521314741916395,
+            -0.0
+          ],
+          "first_material": "Cream",
+          "distance_m": 2.965016593026286,
+          "expected": "Cream"
+        },
+        {
+          "feature": "blind_rotunda_niche",
+          "index": 6,
+          "origin": [
+            -1873.0764793903859,
+            -969.9838026338318,
+            27.11335392820622
+          ],
+          "direction": [
+            0.5951965188244667,
+            0.803580178936263,
+            -0.0
+          ],
+          "first_material": "Cream",
+          "distance_m": 2.9650142411774256,
+          "expected": "Cream"
+        },
+        {
+          "feature": "timber_gallery_or_oriel",
+          "edge": 3,
+          "along_m": 1.222657083456342,
+          "origin": [
+            -1878.0209849590588,
+            -913.9042519040412,
+            27.11335392820622
+          ],
+          "direction": [
+            0.5771746081391558,
+            -0.8166207637082296,
+            -0.0
+          ],
+          "first_material": "Glass",
+          "distance_m": 3.0999596937779046,
+          "expected": "Glass"
+        },
+        {
+          "feature": "timber_gallery_or_oriel",
+          "edge": 5,
+          "along_m": 1.2263730603264233,
+          "origin": [
+            -1881.4380351737911,
+            -920.220591479742,
+            27.11335392820622
+          ],
+          "direction": [
+            0.9955778638872841,
+            -0.09393996453923292,
+            -0.0
+          ],
+          "first_material": "Glass",
+          "distance_m": 3.0999734969436403,
+          "expected": "Glass"
+        },
+        {
+          "feature": "timber_gallery_or_oriel",
+          "edge": 7,
+          "along_m": 1.22639536184866,
+          "origin": [
+            -1878.8833115596703,
+            -926.9243259867415,
+            27.11335392820622
+          ],
+          "direction": [
+            0.7215524864115836,
+            0.6923597398414075,
+            -0.0
+          ],
+          "first_material": "Glass",
+          "distance_m": 3.0999905558010363,
+          "expected": "Glass"
+        },
+        {
+          "feature": "timber_gallery_or_oriel",
+          "edge": 11,
+          "along_m": 1.0125385210550162,
+          "origin": [
+            -1869.4726554637728,
+            -928.387066555729,
+            27.11335392820622
+          ],
+          "direction": [
+            0.4780651879163269,
+            0.878324357001744,
+            -0.0
+          ],
+          "first_material": "Glass",
+          "distance_m": 3.100024797761525,
+          "expected": "Glass"
+        },
+        {
+          "feature": "timber_gallery_or_oriel",
+          "edge": 11,
+          "along_m": 3.0376155631650485,
+          "origin": [
+            -1867.6939809728824,
+            -929.3551853924104,
+            27.11335392820622
+          ],
+          "direction": [
+            0.4780651879163269,
+            0.878324357001744,
+            -0.0
+          ],
+          "first_material": "Glass",
+          "distance_m": 3.1000064626671127,
+          "expected": "Glass"
+        },
+        {
+          "feature": "timber_gallery_or_oriel",
+          "edge": 11,
+          "along_m": 5.062692605275081,
+          "origin": [
+            -1865.915306481992,
+            -930.3233042290917,
+            27.11335392820622
+          ],
+          "direction": [
+            0.4780651879163269,
+            0.878324357001744,
+            -0.0
+          ],
+          "first_material": "Glass",
+          "distance_m": 3.100037148353098,
+          "expected": "Glass"
+        },
+        {
+          "feature": "timber_gallery_or_oriel",
+          "edge": 11,
+          "along_m": 7.087769647385113,
+          "origin": [
+            -1864.136631991102,
+            -931.2914230657731,
+            27.11335392820622
+          ],
+          "direction": [
+            0.4780651879163269,
+            0.878324357001744,
+            -0.0
+          ],
+          "first_material": "Glass",
+          "distance_m": 3.099993134764264,
+          "expected": "Glass"
+        },
+        {
+          "feature": "timber_gallery_or_oriel",
+          "edge": 11,
+          "along_m": 9.112846689495147,
+          "origin": [
+            -1862.3579575002116,
+            -932.2595419024544,
+            27.11335392820622
+          ],
+          "direction": [
+            0.4780651879163269,
+            0.878324357001744,
+            -0.0
+          ],
+          "first_material": "Glass",
+          "distance_m": 3.1000238204502506,
+          "expected": "Glass"
+        },
+        {
+          "feature": "timber_gallery_or_oriel",
+          "edge": 11,
+          "along_m": 11.137923731605179,
+          "origin": [
+            -1860.5792830093212,
+            -933.2276607391358,
+            27.11335392820622
+          ],
+          "direction": [
+            0.4780651879163269,
+            0.878324357001744,
+            -0.0
+          ],
+          "first_material": "Glass",
+          "distance_m": 3.099979806861308,
+          "expected": "Glass"
+        },
+        {
+          "feature": "timber_gallery_or_oriel",
+          "edge": 11,
+          "along_m": 13.163000773715211,
+          "origin": [
+            -1858.800608518431,
+            -934.1957795758171,
+            27.11335392820622
+          ],
+          "direction": [
+            0.4780651879163269,
+            0.878324357001744,
+            -0.0
+          ],
+          "first_material": "Glass",
+          "distance_m": 3.100010492547402,
+          "expected": "Glass"
+        }
+      ],
+      "photo_feature_occlusion_failures": [],
+      "actual_feature_ray_note": "First front-facing source-coordinate packed face only; no native material/alpha/runtime approval.",
+      "baseline_event_envelope_intersection_count": 120
+    },
+    "historic": {
+      "status": "PRIVATE source-specific heritage3289/way196291852 facade; no native acceptance",
+      "base_m": 22.940733468526393,
+      "base_status": "inherited renderer minimum, actual packed exterior support planes frozen, not survey",
+      "triangles": 35805,
+      "kinds": {
+        "Building_HistoricRelief": 13664,
+        "Building_MuseumMasonry": 303,
+        "Building_MuseumReveals": 822,
+        "Building_MuseumWindowSurrounds": 4932,
+        "Building_MuseumFrames": 4932,
+        "Building_MuseumMullions": 1608,
+        "Building_MuseumSills": 636,
+        "Building_MuseumDoorPiers": 24,
+        "Building_MuseumDoorLintels": 12,
+        "Building_HistoricIron": 8820,
+        "Building_HistoricMansard": 52
+      },
+      "new_packed_normal_alignment_min": 0.9953387301506788,
+      "packed_collapsed": [],
+      "raw_skipped": [],
+      "ground_delta": false,
+      "terrain_cutouts_unchanged": true,
+      "literal_body_racing_corridor_clearance_m": 4.313383322264175,
+      "all_packed_mesh_hull_racing_corridor_clearance_m": 3.455663676508364,
+      "body_cornice_estimate_m": 15,
+      "body_uncertainty_m": 3,
+      "mansard_estimate_m": 2.3,
+      "mansard_uncertainty_m": 1,
+      "source_sha256": {
+        "historic-source.json": "71e42b1d95cffd726c09010094b445974b956a1b66612af449bd4564490a9357",
+        "historic.py": "ba161fef2e023edd130a74fa1ea28f051830f406bed51645a75110fcf850394c"
+      },
+      "elapsed_s": 2.132610706030391,
+      "peak_rss_kb": 161188,
+      "old_generic_triangles": 7700,
+      "expected_city_triangle_delta": 28105,
+      "dormer_pane_roof_occlusions": [],
+      "minimum_roof_up_dot": 0.5982610903579345,
+      "packed_city_sha256": {
+        "Building_City_m6_m3": "62363706709d18414f12c2ad6baf39345b3df0f348dab6566ed3a668ad58abb7"
+      },
+      "source_model_authoring_precision_m": 0.001,
+      "baseline_event_envelope_intersection_count": 0
+    }
+  },
+  "geometry_precision": "Historic/stone masonry relief uses1mm local authoring grid,0.5mm simplification; exact existing Ground/provider/road/native protection retained.",
+  "rebuild": "Recipes are explicit authored architectural inputs. prepare validates source frame and reserves owners with the original hall cutout; finish validates exact university Ground support rows, then emits deterministic geometry. Focused replay pins the frozen packed output. Exterior/height/datum source limits remain held.",
+  "reviewer_report": "source-review.md",
+  "frozen_file_map": {
+    "hall.py": "d68d2fff815ff6673247dfce9613d6b0ae274bac89f95985bc58a0a2d2122f2a",
+    "historic.py": "ba161fef2e023edd130a74fa1ea28f051830f406bed51645a75110fcf850394c",
+    "philharmonic_geometry.py": "065264ac0ec61b86cc8a44bd7a3ba6d705e8155574fc24cc50ccdefa8e4957fc",
+    "philharmonic_dataclasses.py": "04b518b14ea73a3ee3874c5bd71a106cd45c29b9bde7b2e4edc1c5a3c20c5185",
+    "roof-candidate.json": "90ed0ed82a1c5bb3918bca557b8d23a8f38025aa2e685065686a3fdbf1981986",
+    "historic-source.json": "71e42b1d95cffd726c09010094b445974b956a1b66612af449bd4564490a9357",
+    "historic-ground-supports.json": "659756c28c8b3b15de4c540fc7072e2da2d9a04205b5d1e9a21520265f35c779",
+    "hall-proof.json": "3116637c627b64af12a97e7a9bf293592c55139d54c1a840150f86d26fef4656",
+    "historic-proof.json": "b61665bf62e8abc9e3df80044c1fc95a0b6608322ffc7029c8c09325da42cbb3",
+    "source-plan.json": "688a111131d54b166af493d5ec2f37ac069e8746bb03739487c0058d993bfa6e",
+    "literal-parts-registration.json": "5f57b4c9873429b3eddba7f6575f85e8608d5d7ba8808ddcd4ba4769847e9799"
+  }
+}
