@@ -1,6 +1,6 @@
 # Additional circuit validation — 2026-11-14
 
-Checkpoint for the 18 additional circuits, current package `9ad96f69`. The explicit review register records 16 visual passes, 2 holds and 0 pending reviews. This checkpoint does not declare the work complete.
+Checkpoint for the 18 additional circuits, current package `e8fa9fb1`. The explicit review register records 16 visual passes, 2 holds and 0 pending reviews. This checkpoint does not declare the work complete.
 
 Work is active through Sunday 15 November at 10:00 PST. The 18-map work remains incomplete. Sixteen scenes have current Luna High visual passes; Baku and Monaco remain held. Accepted-track moving baselines now cover the rebuilt executable; current comparisons for the additional circuits remain pending.
 
@@ -20,7 +20,7 @@ The [validation record](additional_circuits_validation.json) pins package payloa
 | japan | 92dca960 | pass | 4992 | 125/125 |
 | jeddah | 9ad96f69 | pass | 4953 | 125/125 |
 | malaysia | 776d1fe6 | pass | 5176 | 125/125 |
-| monaco | 9da39803 | held | 3974 | 125/125 |
+| monaco | e8fa9fb1 | held | 3922 | 125/125 |
 | portimao | 97f852c9 | pass | 4411 | 125/125 |
 | singapore | 79189b47 | pass | 4835 | 125/125 |
 | spa | 219ac9a7 | pass | 5223 | 125/125 |
@@ -36,7 +36,7 @@ These independent source findings remain unresolved despite retained visual pass
 | Circuit | Outstanding source finding |
 | --- | --- |
 | baku | Civic panel-facing and Niyazi tree presence pass their bounded checks. The source-specific uphill gymnasium/downhill domed De Bour sequence remains missing; ordinary city and raw-bank appearance remain held. Six public-frontage ground-ray hits do not independently prove incorrect grade. |
-| monaco | Belvedere and finite garden/ivy/paving roles improve the view, but broad dark/angular bank faces retain the whole-scene hold. Roof/terrace and canopy-source roles stay distinct; no blanket terrain flattening or rock repaint is qualified. |
+| monaco | Seven source-qualified canopy clumps improve the western planted slope. Broad smooth dark bank faces above and below the bridge remain a visual hold. Source terrain, property and vegetation roles require separate bounded corrections; no blanket repaint or flattening is qualified. |
 
 ## Current native profiles
 
@@ -73,7 +73,7 @@ These figures are recalculated from the current road exports. Sample density is 
 
 The supplied scope proofs and their hashes are retained in the JSON. Accepted-circuit assets, shared runtime changes and car/input/camera scope are reported separately; asset preservation is not a claim that no runtime code changed.
 
-Package 9ad96f69 corrects the COTA approach without relocating its outer pavement or protection, adds source-registered Masarat architecture at Jeddah, and fixes 4,833 inward-facing Baku civic panels. Fresh whole-route COTA and Jeddah reviews pass. Baku retains its missing Niyazi heritage sequence and ordinary city/bank appearance hold. Monaco retains its hillside material and form hold.
+Current package e8fa9fb1 adds seven grounded western Monaco canopy clumps. They improve planting but do not resolve the broad planar-bank appearance. COTA width and raised-curb/flat-apron repair, Jeddah Masarat and Baku civic panel orientation remain verified from exact carried scene identities. Sixteen visual passes and two holds remain; Baku museum architecture and Monaco residual bank form are in progress.
 
 Sampled peak machine memory was 7.089 GB against 11 GB, using the 5 s monitor. One heavy job at a time is attested in the register.
 
@@ -116,6 +116,7 @@ Moving runs require one full warmup route and complete measured route coverage. 
 - malaysia: Primary designer supports the 16 m legal lane and qualitative adverse/rising-exit shape. No primary numerical cross-section exists in retained sources; local slopes and crest are architectural/track reconstruction estimates.
 - monaco: Property envelopes preserve retained measured components. Bridge arch rise, garden levels/steps and planting are declared reconstructions; annex 4420 lower enclosure and edited-reference chronology remain unqualified. Kennedy retail 9.95 m is an indicative planning anchor, not a roof survey.
 - monaco: Belvedere and finite garden/ivy/paving roles improve the view, but broad dark/angular bank faces retain the whole-scene hold. Roof/terrace and canopy-source roles stay distinct; no blanket terrain flattening or rock repaint is qualified.
+- monaco: Seven source-qualified canopy clumps improve the western planted slope. Broad smooth dark bank faces above and below the bridge remain a visual hold. Source terrain, property and vegetation roles require separate bounded corrections; no blanket repaint or flattening is qualified.
 - portimao: Retained DGT road samples are correctly registered to asphalt with no bridge-deck hump, but observed local grades remain in conflict with the operator-published headline values. The vertical/source-definition discrepancy is unresolved; do not clamp or rescale from the headline alone.
 - singapore: Mapped landmark/frontage revisions are simplified in secondary city sectors; no current source-qualified blocker is demonstrated by the reviewed packet.
 - spa: Source grid nodes and native data are unchanged. The refined mesh reproduces an existing interpolation, not finer survey data. Remaining bank tone/shape differences are unclassified, not declared wrong terrain.
