@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "circuit": "australia",
+  "decision": "Replace the generic three-storey curtain wall with the observed two-storey garages and glazed upper floor, open balcony and roof terrace.",
+  "source_epoch": "Existing 1995/96 building shown in supplied game reference and Parks Victoria February 2026 site photo; exclude proposed 2028 redevelopment.",
+  "primary_photo_pdf_page": 112,
+  "primary_photo_printed_page": 110,
+  "supplied_reference_seconds_inspected": [
+    174,
+    176,
+    178
+  ],
+  "sources": [
+    {
+      "kind": "Primary site photo",
+      "url": "https://www.parks.vic.gov.au/-/media/project/pv/main/parks/images/corporate-site/projects/albert-park-pavilion-at-oval-one/albert-park-sports-management-plan---feb-2026.pdf?rev=ff913b3ed6924d0e93f83e5256e22a36",
+      "retained_review_file": "build/reviews/resume-20261114/australia/parks-victoria-sports-plan-2026.pdf",
+      "sha256": "29c12663748fc6458cc8a1e434e009f8f3710619218b2776f4e965b408114fc9"
+    },
+    {
+      "kind": "Supplied reference",
+      "url": null,
+      "retained_review_file": "build/reviews/resume-20261114/australia/pit-ref-176.jpg",
+      "sha256": "53f12959a2aca3e1bffd631ec3bc35eb3ec887db2db90141511e1074073d1c27"
+    }
+  ],
+  "horizontal_envelope": "Existing native-station span 4939.105\u20135229.679 m, road-right offset halfwidth+13 m, depth21 m retained exactly. These are inherited reconstruction dimensions, not a new survey.",
+  "observed_features": [
+    "Ground garage doors and exposed blue vertical frame",
+    "One recessed glazed upper storey with mullions and transom",
+    "Pale floor fascias and an open balcony in front of upper glazing",
+    "Roof terrace metal rails",
+    "Repeated red/black roofline flags in the supplied race reference"
+  ],
+  "bounded_estimates": {
+    "roof_height_m": 9.2,
+    "upper_floor_height_m": 4.6,
+    "flag_pole_top_m": 13,
+    "bay_spacing_m": 7.853351351351366,
+    "note": "Storey organization is observed, but these metric heights, small member sizes, exact flag count/spacing and fabric waves are authored visual estimates. No calibrated architectural survey is available."
+  },
+  "physical_contract": "Scenery only. Native road XYZ, widths, banking, shoulders, limits, barriers, racing line, vehicle tuning and camera remain unchanged."
+}

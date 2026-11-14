@@ -6,6 +6,7 @@ from circuit_scene import CircuitScene
 from shapely.geometry import LineString, Polygon
 from shapely.ops import unary_union
 
+from venues.australia_pits import pit_building
 from venues.west_architecture import apron_band, mapped_building, mast, trees, water
 
 
@@ -21,7 +22,7 @@ def build_venue(scene: CircuitScene) -> None:
     scene.braking_boards(4062.230, -1)  # T11
     scene.braking_boards(4575.083, 1)  # T13
     water(scene)
-    scene.pit_building(4939.105, 5229.679, side=1, depth=21, height=13, levels=3)
+    pit_building(scene)
     scene.stand(4898.515, 5270.269, -1, rows=20, setback=6, roofed=True, seat_material='Concrete')
     scene.stand(80.536, 230.655, -1, rows=18, setback=9, roofed=True, seat_material='Concrete')
     scene.stand(1053.409, 1133.301, -1, rows=12, setback=24, seat_material='Concrete')
