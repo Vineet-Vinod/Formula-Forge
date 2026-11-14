@@ -1,0 +1,514 @@
+{
+  "schema_version": 1,
+  "status": "Source reconstruction and typed replay checked. Native import and cooked driving review remain pending. Baku remains incomplete.",
+  "properties": [
+    {
+      "identity": "Former Mariinsky gymnasium, second museum building",
+      "osm_way": 152110152,
+      "source_layout": {
+        "status": "PRIVATE corrected C-shaped gymnasium layout; independent identity accepted; metric height/datum estimates remain bounded",
+        "osm_id": 152110152,
+        "outer_geo": [
+          [
+            40.3633162,
+            49.8308343
+          ],
+          [
+            40.3631908,
+            49.8311637
+          ],
+          [
+            40.3633563,
+            49.8312723
+          ],
+          [
+            40.3634697,
+            49.8309746
+          ],
+          [
+            40.3636447,
+            49.8310894
+          ],
+          [
+            40.3635934,
+            49.8312241
+          ],
+          [
+            40.3636139,
+            49.8312376
+          ],
+          [
+            40.3635449,
+            49.8314189
+          ],
+          [
+            40.3635263,
+            49.8314067
+          ],
+          [
+            40.3634783,
+            49.8315327
+          ],
+          [
+            40.3630143,
+            49.8312285
+          ],
+          [
+            40.3631947,
+            49.8307546
+          ],
+          [
+            40.3633162,
+            49.8308343
+          ]
+        ],
+        "outer_xy": [
+          [
+            -1910.1349142582226,
+            -1049.2373496928135
+          ],
+          [
+            -1882.0247864920696,
+            -1063.2838739060398
+          ],
+          [
+            -1872.7571487399673,
+            -1044.7455983296732
+          ],
+          [
+            -1898.1620820616179,
+            -1032.0432391126994
+          ],
+          [
+            -1888.3653526513779,
+            -1012.4408329144321
+          ],
+          [
+            -1876.8704096944007,
+            -1018.1871382746053
+          ],
+          [
+            -1875.7183552776257,
+            -1015.8908564058748
+          ],
+          [
+            -1860.2466911487056,
+            -1023.6198051351225
+          ],
+          [
+            -1861.2878069919416,
+            -1025.7032608801098
+          ],
+          [
+            -1850.5352991036598,
+            -1031.0799208659157
+          ],
+          [
+            -1876.4949252917927,
+            -1083.0543007284402
+          ],
+          [
+            -1916.9363021847262,
+            -1062.8470202818596
+          ],
+          [
+            -1910.1349142582226,
+            -1049.2373496928135
+          ]
+        ],
+        "courtyard_xy": [],
+        "normalization": "Literal source C ring is counterclockwise; reverse only for common facade emitter. Original source edge i corresponds to normalized edge11-i. No footprint positions changed.",
+        "source_review": "build/reviews/resume-20261114/reviews/baku-niyazi-museum-source-adjudication-current.md",
+        "height_study": "gymnasium-photo02-rectified-height-study.json"
+      },
+      "main_front": "Literal C-shaped edges3/5/7. Four/three/four bays; central arched level, rectangular upper level, broad lower balcony and single central upper balcony. Six visible bays on the northwest return.",
+      "height_estimates_m": {
+        "central_cornice": [
+          22,
+          4
+        ],
+        "wing_cornice": [
+          20,
+          4
+        ],
+        "central_parapet_rise": [
+          1.8,
+          0.7
+        ]
+      },
+      "datum_estimate_m": [
+        23.901038946260982,
+        2.0
+      ],
+      "height_basis": "Primary photo02 and literal17.2948m central frontage give a14.10\u201316.58m observed image-band interval. Calibrated camera fit has21.35px maximum reprojection error and0.105 axis cosine. Full height/floor pitches are broad architectural estimates. Warped Lightroom photo03 supplies counts, not metric scaling.",
+      "limits": "Southeast connector-side18-bay schedule and rear roof remain estimates. Entry floor, stairs and paved forecourt are not reconstructed."
+    },
+    {
+      "identity": "De Bour mansion, first museum building",
+      "osm_relation": 3977156,
+      "outer_way": 211461711,
+      "courtyard_way": 299176527,
+      "source_layout": {
+        "status": "PRIVATE literal De Bour footprint and photo-derived facade study. No survey/native acceptance.",
+        "osm_relation": 3977156,
+        "outer_way": 211461711,
+        "courtyard_way": 299176527,
+        "outer_geo": [
+          [
+            40.3630117,
+            49.831463
+          ],
+          [
+            40.3633877,
+            49.8317205
+          ],
+          [
+            40.363263,
+            49.8320557
+          ],
+          [
+            40.3628868,
+            49.831807
+          ],
+          [
+            40.3630117,
+            49.831463
+          ]
+        ],
+        "courtyard_geo": [
+          [
+            40.3632176,
+            49.8317437
+          ],
+          [
+            40.3631066,
+            49.831671
+          ],
+          [
+            40.3630655,
+            49.8317792
+          ],
+          [
+            40.3631765,
+            49.8318518
+          ],
+          [
+            40.3632176,
+            49.8317437
+          ]
+        ],
+        "outer_xy": [
+          [
+            -1856.4833133879288,
+            -1083.3455364778938
+          ],
+          [
+            -1834.5089421070445,
+            -1041.2283665892137
+          ],
+          [
+            -1805.9038576288315,
+            -1055.19648117673
+          ],
+          [
+            -1827.1272601045002,
+            -1097.3360538164088
+          ],
+          [
+            -1856.4833133879288,
+            -1083.3455364778938
+          ]
+        ],
+        "courtyard_xy": [
+          [
+            -1832.5291152581988,
+            -1060.2819054138786
+          ],
+          [
+            -1838.7331416350169,
+            -1072.7154316308058
+          ],
+          [
+            -1829.499638828992,
+            -1077.3191967441644
+          ],
+          [
+            -1823.304146188087,
+            -1064.8856705264411
+          ],
+          [
+            -1832.5291152581988,
+            -1060.2819054138786
+          ]
+        ],
+        "normalization": "Literal mapped outer/courtyard rings; orientation reversal only where necessary. No invented front projection.",
+        "facades": [
+          {
+            "edge": 1,
+            "identity": "NE short entrance front; connector on northwest/image-right supports this registration; awaiting independent brief adjudication.",
+            "source": "de-bour-additional-preview-1.jpg and niyazi-official-02.jpg",
+            "upper_bays": 7,
+            "arched_upper_bays": [
+              0,
+              3,
+              6
+            ],
+            "columned_portico_bays": [
+              1,
+              5
+            ]
+          },
+          {
+            "edge": 2,
+            "identity": "SE long garden elevation",
+            "source": "de-bour-additional-preview-2.jpg",
+            "upper": "Nine rectangular windows followed by projecting three-arch gallery and terminal ornate arched bay."
+          },
+          {
+            "edge": 0,
+            "identity": "NW connector elevation",
+            "source": "Official connector images partly occlude this frontage; exact openings remain estimated."
+          },
+          {
+            "edge": 3,
+            "identity": "SW rear",
+            "source": "Unqualified rear opening rhythm; retain bounded simple estimated mass rather than copy entrance."
+          }
+        ],
+        "estimated_dimensions": {
+          "cornice_m": 14.4,
+          "cornice_uncertainty_m": 3.0,
+          "crown_rise_m": 4.0,
+          "crown_uncertainty_m": 1.5,
+          "portico_depth_m": 2.6,
+          "portico_depth_uncertainty_m": 0.8,
+          "gallery_projection_m": 1.1,
+          "gallery_projection_uncertainty_m": 0.5
+        },
+        "holds": [
+          "Body height is an architectural estimate from two tall storeys and photo proportions, not surveyed.",
+          "Absolute ground/threshold and entry/garden terraces unqualified; keep actual Ground unchanged and all emitted column feet supported.",
+          "Literal inner courtyard preserved; exact rear/connector openings estimated.",
+          "Crown is a curved mansard behind sculptural pediment, not a generic sphere/dome transfer.",
+          "No stairs or paving reconstruction in this candidate."
+        ],
+        "source_review": "build/reviews/resume-20261114/reviews/baku-niyazi-museum-source-adjudication-current.md"
+      },
+      "main_front": "Northeast short edge1. Seven bays, upper arches0/3/6, twin four-column porticoes1/5. The northwest long-side glass connector is image-right in the official entrance photo.",
+      "southeast_side": "Nine plain rectangular upper windows across approximately0.055\u20130.551 of the long side. Projecting three-arch gallery approximately0.58\u20130.78, then one ornate upper arch and a pair of lower rectangular openings. Horizontal fractions are photo-derived estimates. The gallery has a continuous solid masonry sill/frieze. Dark guard rails sit inside its arches; the pale exposed gallery balustrade was rejected by source review.",
+      "height_estimates_m": {
+        "main_cornice": [
+          14.4,
+          3.0
+        ],
+        "mansard_rise": [
+          4.0,
+          1.5
+        ],
+        "portico_depth": [
+          2.6,
+          0.8
+        ],
+        "gallery_projection": [
+          1.1,
+          0.5
+        ],
+        "finial_above_mansard": [
+          2.8,
+          1.0
+        ]
+      },
+      "datum_estimate_m": [
+        19.48450553510287,
+        2.0
+      ],
+      "limits": "Exact metric roof, entry floor and garden terraces are not surveyed. Northwest connector and rear openings remain estimated. No stairs or paving are emitted. Estimated rear portico column centres sit0.55m outside the wall, so their0.38m base radii remain fully outside the occupied-interior Ground cut."
+    }
+  ],
+  "geographic_registration": {
+    "source": {
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=49.8295,40.3625,49.8345,40.3655",
+      "sha256_uncompressed": "f24647abbb2d036cd1aaa9c8af397949323ed0c7f7e546c16b830fd5d4317255",
+      "bytes": 615214,
+      "license": "\u00a9 OpenStreetMap contributors, ODbL1.0",
+      "scope": "Original research context for mapped Niyazi frontage, public paths and land-cover; not a ground survey."
+    },
+    "scene_origin": {
+      "latitude": 40.3726832406754,
+      "longitude": 49.853217636212044,
+      "meaning": "Local source origin at the point on the loop nearest the venue coordinate, after rotation to the start."
+    },
+    "scene_uniform_scale": 1.0062366339173152,
+    "method": "Literal OSM outer/courtyard coordinates projected through current CircuitScene.geo. Ring direction changes only to set outward facade normals. The rejected rectangular gymnasium and its invented central projection are excluded."
+  },
+  "source_review": {
+    "file": "museum-source-review.md",
+    "scope": "Independent Luna High source identity, facade rhythm and bounded architectural estimates. This is not a native or visual pass.",
+    "files": [
+      "museum-source-review.md",
+      "museum-rhythm-review.md"
+    ],
+    "sha256": {
+      "museum-source-review.md": "478b5a50ed04743a0575feebd766690dc43051267536f322c82129b9df48d124",
+      "museum-rhythm-review.md": "eb49bee2e6883287c926500c94a30e256b7ada120b40f2e5f8bb2d6eaec156ca"
+    }
+  },
+  "ground": {
+    "source": "Existing emitted road-to-GLO90 DSM blend. It is renderer terrain, not a bare-earth survey.",
+    "delta": "museum-interior-ground-delta.json.gz",
+    "delta_sha256": "0bb6e782e0a05010ca034d7dea986302bf55ce2b4b0b8eb4a9cea7d7400a5312",
+    "removed_rows": 87,
+    "added_rows": 157,
+    "changed_tiles": [
+      "Tile_Street_m8_m5"
+    ],
+    "removed_occupied_area_m2": 3324.5590936574085,
+    "open_areas": "The C recess/courtyard and literal De Bour inner courtyard stay open. Only occupied building interiors lose Ground.",
+    "outside_proof": {
+      "changed_rows": 87,
+      "removed_area_m2": 3324.5590936574076,
+      "original_outside_vertices": 133,
+      "missing_original_outside_vertices": 0,
+      "maximum_new_plane_error_m": 1.2155418893655678e-06,
+      "maximum_encoding_area_difference_m2": 0.0007872888337876912,
+      "minimum_new_triangle_area_m2": 0.04949313964843347
+    },
+    "unchanged_other_rows": true,
+    "rebuild": "PYTHONPATH=tools <circuit-python> -m venues.baku_museum_authoring. The tracked builder derives the delta from the literal occupied polygons and exact original packed Ground rows retained in the delta. It uses existing Shapely/NumPy, preserves original outside vertices and interpolates new vertices on their original XYZ/normal/UV planes."
+  },
+  "trees": {
+    "change": "Only Ground witness15 splits into its exact two outside child triangles. All21 accepted poses and dimensions stay identical.",
+    "root_corners_checked": 84,
+    "maximum_ground_displacement_m": 1.844547981022515e-08,
+    "minimum_root_embed_m": 0.07996624701049626
+  },
+  "production_scope": {
+    "remove_generic_way": 152110152,
+    "removed_generic_triangles": 17060,
+    "generic_parents": [
+      "Building_City_m6_m3",
+      "Building_City_m6_m4"
+    ],
+    "new_museum_triangles": 104541,
+    "net_city_triangles": 87481,
+    "net_ground_triangles": 70,
+    "call_order": "Add way152110152 to the Baku custom skip set before the generic facade loop. After original terrain and civic Ground repair, apply the museum interior delta. Validate and emit the unchanged trees against their replacement witnesses, then validate and emit museums. The old generic facade had no terrain cutout side effect.",
+    "preserve": "Native road, kerbs, barriers, RaceData contact bytes, global Ground provider and unions, existing landmarks, all unrelated City rows, handling and camera remain fixed."
+  },
+  "primary_images": [
+    {
+      "file": "niyazi-museum-primary-01.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/0/0f/National_Art_Museum_of_Azerbaijan_%28de_Burs_House%29.JPG",
+      "description_url": "https://commons.wikimedia.org/wiki/File:National_Art_Museum_of_Azerbaijan_(de_Burs_House).JPG",
+      "author": "Interfase",
+      "license": "CC-BY-SA-4.0",
+      "sha256": "318a4fe20f1c74e140432d9d4187fb2770d7c23e8fd3ad8409342bd5379162e9"
+    },
+    {
+      "file": "niyazi-museum-primary-02.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Second_building_of_the_National_Art_Museum_of_Azerbaijan_2.JPG",
+      "description_url": "https://commons.wikimedia.org/wiki/File:Second_building_of_the_National_Art_Museum_of_Azerbaijan_2.JPG",
+      "author": "Interfase",
+      "license": "CC-BY-SA-4.0",
+      "sha256": "1fa961b1165b35654e8ccd8776c2ec65a3c2f600b1f5a6fccaa7e0d2b214c742"
+    },
+    {
+      "file": "niyazi-museum-primary-03.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Az%C9%99rbaycan_Milli_%C4%B0nc%C9%99s%C9%99n%C9%99t_Muzeyinnin_ikinci_binas%C4%B1_2018-ci_ild%C9%99.jpg",
+      "description_url": "https://commons.wikimedia.org/wiki/File:Az%C9%99rbaycan_Milli_%C4%B0nc%C9%99s%C9%99n%C9%99t_Muzeyinnin_ikinci_binas%C4%B1_2018-ci_ild%C9%99.jpg",
+      "author": "Sefer azeri",
+      "license": "CC-BY-SA-4.0",
+      "sha256": "c0327e35eb09407e3fdee9464c2a408e7db370f58ef0fb1e63a8acbfcd3caf8d"
+    },
+    {
+      "file": "niyazi-museum-primary-04.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/26/National_Art_Museum_of_Azerbaijan.JPG",
+      "description_url": "https://commons.wikimedia.org/wiki/File:National_Art_Museum_of_Azerbaijan.JPG",
+      "author": "Interfase",
+      "license": "CC-BY-SA-4.0",
+      "sha256": "9bc6bceec3db2234d172ffb677b3361c2a9a2e340570865a5cbe089f13ec3b0d"
+    },
+    {
+      "file": "de-bour-additional-preview-1.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/De_Burun_saray%C4%B1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "description_url": "https://commons.wikimedia.org/wiki/File:De_Burun_saray%C4%B1.jpg",
+      "original_sha1": "f98a391a7a7c21fea83c127c2e6fda725d30af07",
+      "preview_sha256": "1117dba1c4d816949d173d02de62f93993db9572a1b0478cac61168b9c235887",
+      "author": "<a href=\"//commons.wikimedia.org/wiki/User:Sefer_azeri\" title=\"User:Sefer azeri\">Sefer azeri</a>",
+      "license": "CC BY-SA 4.0",
+      "image_use": "Server-downsampled complete original frame for private geometry authoring; no pixels ship."
+    },
+    {
+      "file": "de-bour-additional-preview-2.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/8/80/Deburun_evi.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "description_url": "https://commons.wikimedia.org/wiki/File:Deburun_evi.JPG",
+      "original_sha1": "a13def209bcc170b9ff8aa422a5ba8902b3faeee",
+      "preview_sha256": "bc35317dad134da7d76d402e70c7e35c46625f72c3e17a3e0e86911c1d9cbcd6",
+      "author": "<div class=\"fn value\">\n<a href=\"//commons.wikimedia.org/wiki/User:Urmen19\" title=\"User:Urmen19\">Urmen19</a></div>",
+      "license": "CC BY-SA 4.0",
+      "image_use": "Server-downsampled complete original frame for private geometry authoring; no pixels ship."
+    }
+  ],
+  "primary_pages": [
+    "https://nationalartmuseum.az/museum/museum-building/?lang=en",
+    "https://www.azer.com/aiweb/categories/magazine/82_folder/82_articles/82_art_museum.html"
+  ],
+  "reference_video": {
+    "file": "Saved/Refs/baku.mp4",
+    "use": "User-supplied continuous Niyazi driving sequence, including retained niyazi-ref06/08 frames. It establishes route order and visible masses; no video pixels ship."
+  },
+  "remaining_map_holds": [
+    "Six oldcastle approach intrusion witnesses remain separate.",
+    "Niyazi gray banks and ordinary frontage repetition remain incomplete.",
+    "Absolute museum grades, entry paving/steps, rear/connector details and runtime appearance need separate qualification."
+  ],
+  "evidence": [
+    "build/reviews/resume-20261114/baku/museum-staged-replay-proof.json",
+    "build/reviews/resume-20261114/baku/museum-interior-clip-proof.json",
+    "build/reviews/resume-20261114/baku/museum-generic-C-suppression-proof.json",
+    "build/reviews/resume-20261114/baku/gymnasium-directed-junction-proof.json",
+    "build/reviews/resume-20261114/baku/gymnasium-entrance-support-table.md"
+  ],
+  "source_checks": {
+    "affected_closed_component_directed_edge_failures": {
+      "Building_DebourColumns": 0,
+      "Building_DebourMansard": 0,
+      "Building_DebourGalleryDeck": 0,
+      "Building_DebourGalleryFrieze": 0,
+      "Building_DebourGalleryInsetRail": 0
+    },
+    "affected_closed_component_source_volume_m3": {
+      "Building_DebourColumns": 30.08120824653882,
+      "Building_DebourMansard": 40.89207845090806,
+      "Building_DebourGalleryDeck": 3.9025498286171114,
+      "Building_DebourGalleryFrieze": 0.9587222198153427,
+      "Building_DebourGalleryInsetRail": 0.014638354737093628
+    },
+    "packed_column_base_vertex_samples": 576,
+    "minimum_actual_packed_column_embed_m": 0.049994168996654764,
+    "seconds": 5.057869911193848,
+    "peak_rss_kB": 200064,
+    "retained_actual_support_rows": 205,
+    "original_source_triangles": 104541,
+    "staged_typed_source_triangles": 104541,
+    "complete_semantic_triangle_counter_equal": true,
+    "retained_control_rebuild_delta_byte_equal": true,
+    "geometry_parents": [
+      "Building_City_m6_m3",
+      "Building_City_m6_m4"
+    ]
+  },
+  "code_and_config_sha256": {
+    "Tests/test_baku_museums.py": "d3b9758dcf4a5a3d82ca691462be8268bcdf7d06656c47a8afe962a6abd3fd69",
+    "venues/baku_museum_debour.py": "9d9a57529151fbcd4ad9ef0e951cd15b40a42a03fb3b1cb1c54459441e7d5d3c",
+    "venues/baku_museum_geometry.py": "a75652e625b3db566dd4614d0b0d39d7dfdbc4057c958babf591deb24f56aa92",
+    "venues/baku_museums.py": "468188d401db01b2ce563ef4b8e58fe0074acccd7e51b67c095a3d249c1d24a0",
+    "venues/baku_museum_gymnasium.py": "13b79bb389a127a9b6db8cbdc913e7349115bee954bdc9d230e39bb81de1677d",
+    "venues/baku_museum_dataclasses.py": "b1b40ad05399325e999099169f15b29ae494b0c297e3df98b06671980d49ea65",
+    "venues/baku_museum_authoring.py": "e42daaae3149862fb88a598172c6ee98a3c3bc3e87690f08faff76b1154da173",
+    "Attribution/Sources/baku/museum-interior-ground-delta.json.gz": "0bb6e782e0a05010ca034d7dea986302bf55ce2b4b0b8eb4a9cea7d7400a5312",
+    "Attribution/Sources/baku/niyazi-planting.json": "246f99a2a494769dbd16782b59489c2d616a7da295d8f9df73c075e1b7d7d6e7",
+    "Attribution/Sources/baku/museums.json.gz": "51d1b38fb246329565e5867910fe237f2bbe9d190b32a442fd3e8299eb9f9366"
+  },
+  "primary_receipts": "museum-primary-receipts.json"
+}

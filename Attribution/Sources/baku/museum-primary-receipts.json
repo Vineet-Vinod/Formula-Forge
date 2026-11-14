@@ -1,0 +1,411 @@
+{
+  "purpose": "Authoring receipts only. No photo pixels ship. Geometry identity and camera/datum limits are in the two independent source reviews.",
+  "osm": {
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=49.8295,40.3625,49.8345,40.3655",
+    "sha256_uncompressed": "f24647abbb2d036cd1aaa9c8af397949323ed0c7f7e546c16b830fd5d4317255",
+    "bytes": 615214,
+    "license": "\u00a9 OpenStreetMap contributors, ODbL1.0",
+    "scope": "Original research context for mapped Niyazi frontage, public paths and land-cover; not a ground survey."
+  },
+  "commons_originals": [
+    {
+      "file": "niyazi-museum-primary-01.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/0/0f/National_Art_Museum_of_Azerbaijan_%28de_Burs_House%29.JPG",
+      "description_url": "https://commons.wikimedia.org/wiki/File:National_Art_Museum_of_Azerbaijan_(de_Burs_House).JPG",
+      "author": "Interfase",
+      "license": "CC-BY-SA-4.0",
+      "use": "Authoring reference only; no texture shipping or building registration yet",
+      "bytes": 1389900,
+      "sha256": "318a4fe20f1c74e140432d9d4187fb2770d7c23e8fd3ad8409342bd5379162e9"
+    },
+    {
+      "file": "niyazi-museum-primary-02.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Second_building_of_the_National_Art_Museum_of_Azerbaijan_2.JPG",
+      "description_url": "https://commons.wikimedia.org/wiki/File:Second_building_of_the_National_Art_Museum_of_Azerbaijan_2.JPG",
+      "author": "Interfase",
+      "license": "CC-BY-SA-4.0",
+      "use": "Authoring reference only; no texture shipping or building registration yet",
+      "bytes": 1621450,
+      "sha256": "1fa961b1165b35654e8ccd8776c2ec65a3c2f600b1f5a6fccaa7e0d2b214c742"
+    },
+    {
+      "file": "niyazi-museum-primary-03.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Az%C9%99rbaycan_Milli_%C4%B0nc%C9%99s%C9%99n%C9%99t_Muzeyinnin_ikinci_binas%C4%B1_2018-ci_ild%C9%99.jpg",
+      "description_url": "https://commons.wikimedia.org/wiki/File:Az%C9%99rbaycan_Milli_%C4%B0nc%C9%99s%C9%99n%C9%99t_Muzeyinnin_ikinci_binas%C4%B1_2018-ci_ild%C9%99.jpg",
+      "author": "Sefer azeri",
+      "license": "CC-BY-SA-4.0",
+      "use": "Authoring reference only; Lightroom/cropped frame is not assumed to retain full-sensor camera intrinsics. No pixels shipped.",
+      "bytes": 1079389,
+      "sha256": "c0327e35eb09407e3fdee9464c2a408e7db370f58ef0fb1e63a8acbfcd3caf8d"
+    },
+    {
+      "file": "niyazi-museum-primary-04.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/26/National_Art_Museum_of_Azerbaijan.JPG",
+      "description_url": "https://commons.wikimedia.org/wiki/File:National_Art_Museum_of_Azerbaijan.JPG",
+      "author": "Interfase",
+      "license": "CC-BY-SA-4.0",
+      "use": "Authoring reference only; original2015 full sensor/face registration still requires checking; no texture shipping.",
+      "bytes": 1128447,
+      "sha256": "9bc6bceec3db2234d172ffb677b3361c2a9a2e340570865a5cbe089f13ec3b0d"
+    }
+  ],
+  "debour_front_and_side": {
+    "use": "Private authoring reference only; server downsampled whole image; original source URL/SHA1 retained, no pixels shipped",
+    "photos": [
+      {
+        "file": "de-bour-additional-preview-1.jpg",
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/61/De_Burun_saray%C4%B1.jpg/1280px-De_Burun_saray%C4%B1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "sha256": "1117dba1c4d816949d173d02de62f93993db9572a1b0478cac61168b9c235887",
+        "bytes": 357371,
+        "source_image": {
+          "size": 3714200,
+          "width": 3976,
+          "height": 2534,
+          "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/61/De_Burun_saray%C4%B1.jpg/1280px-De_Burun_saray%C4%B1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumbwidth": 1280,
+          "thumbheight": 816,
+          "responsiveUrls": {
+            "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/61/De_Burun_saray%C4%B1.jpg/3840px-De_Burun_saray%C4%B1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+          },
+          "thumbattribs": {
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/61/De_Burun_saray%C4%B1.jpg/1280px-De_Burun_saray%C4%B1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "decoding": "async",
+            "loading": "lazy",
+            "width": 1280,
+            "height": 816,
+            "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/61/De_Burun_saray%C4%B1.jpg/3840px-De_Burun_saray%C4%B1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+          },
+          "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/De_Burun_saray%C4%B1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:De_Burun_saray%C4%B1.jpg",
+          "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=43362089",
+          "sha1": "f98a391a7a7c21fea83c127c2e6fda725d30af07",
+          "extmetadata": {
+            "DateTime": {
+              "value": "2015-09-18 07:39:04",
+              "source": "mediawiki-metadata",
+              "hidden": ""
+            },
+            "ObjectName": {
+              "value": "De Burun saray\u0131",
+              "source": "mediawiki-metadata"
+            },
+            "CommonsMetadataExtension": {
+              "value": 1.2,
+              "source": "extension",
+              "hidden": ""
+            },
+            "Categories": {
+              "value": "Taken with GoPro HERO4 Silver Edition|First building of the National Art Museum of Azerbaijan|Self-published work|Images from Wiki Loves Monuments 2015|Cultural heritage monuments in Azerbaijan with known IDs|Uploaded via Campaign:wlm-az|Images from Wiki Loves Monuments 2015 in Azerbaijan|Files with coordinates missing SDC location of creation|Images from Wiki Loves Monuments missing SDC depicts|Images from Wiki Loves Monuments missing SDC location of creation",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "Assessments": {
+              "value": "",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "GPSLatitude": {
+              "value": "40.363464",
+              "source": "commons-desc-page"
+            },
+            "GPSLongitude": {
+              "value": "49.831280",
+              "source": "commons-desc-page"
+            },
+            "GPSMapDatum": {
+              "value": "WGS-84",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "ImageDescription": {
+              "value": "This is a photo of a monument in Azerbaijan identified by the ID 155",
+              "source": "commons-desc-page"
+            },
+            "DateTimeOriginal": {
+              "value": "2015-09-17 15:08:52",
+              "source": "commons-desc-page"
+            },
+            "Credit": {
+              "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+              "source": "commons-desc-page"
+            },
+            "Artist": {
+              "value": "<a href=\"//commons.wikimedia.org/wiki/User:Sefer_azeri\" title=\"User:Sefer azeri\">Sefer azeri</a>",
+              "source": "commons-desc-page"
+            },
+            "LicenseShortName": {
+              "value": "CC BY-SA 4.0",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "UsageTerms": {
+              "value": "Creative Commons Attribution-Share Alike 4.0",
+              "source": "commons-desc-page"
+            },
+            "AttributionRequired": {
+              "value": "true",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "LicenseUrl": {
+              "value": "https://creativecommons.org/licenses/by-sa/4.0",
+              "source": "commons-desc-page"
+            },
+            "Copyrighted": {
+              "value": "True",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "Restrictions": {
+              "value": "",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "License": {
+              "value": "cc-by-sa-4.0",
+              "source": "commons-templates",
+              "hidden": ""
+            }
+          }
+        }
+      },
+      {
+        "file": "de-bour-additional-preview-2.jpg",
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Deburun_evi.JPG/1280px-Deburun_evi.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "sha256": "bc35317dad134da7d76d402e70c7e35c46625f72c3e17a3e0e86911c1d9cbcd6",
+        "bytes": 418222,
+        "source_image": {
+          "size": 1952561,
+          "width": 4443,
+          "height": 3094,
+          "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Deburun_evi.JPG/1280px-Deburun_evi.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumbwidth": 1280,
+          "thumbheight": 891,
+          "responsiveUrls": {
+            "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Deburun_evi.JPG/3840px-Deburun_evi.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+          },
+          "thumbattribs": {
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Deburun_evi.JPG/1280px-Deburun_evi.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "decoding": "async",
+            "loading": "lazy",
+            "width": 1280,
+            "height": 891,
+            "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Deburun_evi.JPG/3840px-Deburun_evi.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+          },
+          "url": "https://upload.wikimedia.org/wikipedia/commons/8/80/Deburun_evi.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Deburun_evi.JPG",
+          "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=48308926",
+          "sha1": "a13def209bcc170b9ff8aa422a5ba8902b3faeee",
+          "extmetadata": {
+            "DateTime": {
+              "value": "2016-04-22 10:11:07",
+              "source": "mediawiki-metadata",
+              "hidden": ""
+            },
+            "ObjectName": {
+              "value": "Deburun evi",
+              "source": "mediawiki-metadata"
+            },
+            "CommonsMetadataExtension": {
+              "value": 1.2,
+              "source": "extension",
+              "hidden": ""
+            },
+            "Categories": {
+              "value": "First building of the National Art Museum of Azerbaijan|Self-published work",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "Assessments": {
+              "value": "",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "Artist": {
+              "value": "<div class=\"fn value\">\n<a href=\"//commons.wikimedia.org/wiki/User:Urmen19\" title=\"User:Urmen19\">Urmen19</a></div>",
+              "source": "commons-desc-page"
+            },
+            "ImageDescription": {
+              "value": "Deburun evi",
+              "source": "commons-desc-page"
+            },
+            "DateTimeOriginal": {
+              "value": "28 May 2014, 12:20:41",
+              "source": "commons-desc-page"
+            },
+            "Credit": {
+              "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+              "source": "commons-desc-page"
+            },
+            "LicenseShortName": {
+              "value": "CC BY-SA 4.0",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "UsageTerms": {
+              "value": "Creative Commons Attribution-Share Alike 4.0",
+              "source": "commons-desc-page"
+            },
+            "AttributionRequired": {
+              "value": "true",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "LicenseUrl": {
+              "value": "https://creativecommons.org/licenses/by-sa/4.0",
+              "source": "commons-desc-page"
+            },
+            "Copyrighted": {
+              "value": "True",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "Restrictions": {
+              "value": "",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "License": {
+              "value": "cc-by-sa-4.0",
+              "source": "commons-templates",
+              "hidden": ""
+            }
+          }
+        }
+      }
+    ]
+  },
+  "official_originals": [
+    {
+      "file": "niyazi-official-01.jpg",
+      "url": "https://nationalartmuseum.az/media/gallery/museum-building/IMG_9398.JPG",
+      "sha256": "033088048bb7c8e1265b0c08ec45ab9a7297b0ab09ad36adb03b40ab35b6a100",
+      "bytes": 599366,
+      "provider": "Azerbaijan National Museum of Art",
+      "source_page": "https://nationalartmuseum.az/museum/museum-building/?lang=en",
+      "use": "Private authoring reference only; no pixels shipped; original creator/license not specified by official page"
+    },
+    {
+      "file": "niyazi-official-02.jpg",
+      "url": "https://nationalartmuseum.az/media/gallery/museum-building/IMG_9364.JPG",
+      "sha256": "2b75e652f9074dba8ad71b76763065b64f2f3a1ac9c7585d020db537a1aba53c",
+      "bytes": 649991,
+      "provider": "Azerbaijan National Museum of Art",
+      "source_page": "https://nationalartmuseum.az/museum/museum-building/?lang=en",
+      "use": "Private authoring reference only; no pixels shipped; original creator/license not specified by official page"
+    },
+    {
+      "file": "niyazi-official-03.jpg",
+      "url": "https://nationalartmuseum.az/media/gallery/museum-building/65.jpg",
+      "sha256": "7a01568e2ee3e387beea22822b78c58a5c22321922305ce52c77e03f91ac0cae",
+      "bytes": 891633,
+      "provider": "Azerbaijan National Museum of Art",
+      "source_page": "https://nationalartmuseum.az/museum/museum-building/?lang=en",
+      "use": "Private authoring reference only; no pixels shipped; original creator/license not specified by official page"
+    },
+    {
+      "file": "niyazi-official-04.jpg",
+      "url": "https://nationalartmuseum.az/media/gallery/museum-building/DSC08831.jpg",
+      "sha256": "7fdd7008387595dee9778b61ed5f3084264ee694a5c4143fb5810f6c15a16ae8",
+      "bytes": 972848,
+      "provider": "Azerbaijan National Museum of Art",
+      "source_page": "https://nationalartmuseum.az/museum/museum-building/?lang=en",
+      "use": "Private authoring reference only; no pixels shipped; original creator/license not specified by official page"
+    }
+  ],
+  "camera_fit": {
+    "status": "PRIVATE calibrated-photo rectangle estimate, not survey or final building height",
+    "source_image": "niyazi-museum-primary-02.jpg",
+    "source_sha256": "1fa961b1165b35654e8ccd8776c2ec65a3c2f600b1f5a6fccaa7e0d2b214c742",
+    "source_image_size": [
+      3456,
+      2304
+    ],
+    "source_warp_metadata": "No Lightroom/XMP crop or perspective record found in this original; no assertion of distortion-free survey photography",
+    "source_width_m": 17.294769133395587,
+    "source_width_feature": "Literal C-shaped way152110152 central front edge5, with uncertainty from quoin/cornice projection rather than exact surveyed masonry edges",
+    "camera_matrix": [
+      [
+        4358.997459413683,
+        0.0,
+        1728.0
+      ],
+      [
+        0.0,
+        4363.990583651271,
+        1152.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "manual_image_points": [
+      [
+        830.0,
+        780.0
+      ],
+      [
+        2050.0,
+        540.0
+      ],
+      [
+        2150.0,
+        1980.0
+      ],
+      [
+        780.0,
+        2000.0
+      ]
+    ],
+    "image_point_description": [
+      "Left central-pavilion upper cornice/quoin",
+      "Right central-pavilion upper cornice/quoin",
+      "Right central-pavilion lower balcony/floor band",
+      "Left central-pavilion lower balcony/floor band"
+    ],
+    "point_uncertainty_px": 20,
+    "rectified_band_span_m": 15.256218633901199,
+    "maximum_pinhole_fit_corner_error_px": 21.345204514680887,
+    "raw_calibrated_homography_axis_cosine": 0.10496865459497061,
+    "source_sampling_uncertainty_band_m": [
+      14.102822521958002,
+      16.57809725753441
+    ],
+    "source_sampling_max_corner_error_px": 36.846711475953995,
+    "nominal_pose_parameters": [
+      -0.18472706633719413,
+      0.4848166459541461,
+      -0.07085138023019887,
+      -11.54593390783021,
+      -4.706038908104069,
+      55.14077545510268,
+      15.256218633901199
+    ],
+    "limitations": [
+      "Manual cornice/trim points are estimated from the original, not a surveyed 3D registration. Offset decorative cornices need not occupy one exact rectangle.",
+      "The test fits a calibrated pinhole rectangle; its reprojection residual and nonorthogonal raw homography remain visible.",
+      "This span covers two upper facade rows and bands, excluding the partly cropped low entrance/plinth and upper parapet. It is not whole-body height.",
+      "Focal-plane metadata and principal centre are camera assumptions; optical distortion, a few tenths of a metre trim offset and base/threshold uncertainty widen final bounds.",
+      "Photo03 has explicit Adobe distortion/perspective/crop and is excluded from this metric estimate."
+    ],
+    "proposed_bounded_vertical_schedule": {
+      "central_main_cornice_m": 22.0,
+      "central_main_cornice_uncertainty_m": 4.0,
+      "flank_main_cornice_m": 20.0,
+      "flank_main_cornice_uncertainty_m": 4.0,
+      "lower_balcony_m": 6.2,
+      "upper_middle_band_m": 13.0,
+      "lower_body_pitch_bounds_m": [
+        4.0,
+        6.0
+      ],
+      "central_parapet_extra_bounds_m": [
+        1.3,
+        2.5
+      ],
+      "note": "Independent private architectural schedule from this band estimate plus observed low row/parapet and ordinary floor-pitch bounds. Not derived by multiplying the old18.5m envelope; requires independent source review and fresh native views."
+    }
+  }
+}

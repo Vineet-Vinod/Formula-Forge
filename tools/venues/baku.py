@@ -14,6 +14,7 @@ from venues.baku_civic import civic_frontage, close_native_facade_fragments
 from venues.baku_flames import flame_towers
 from venues.baku_forecourt import court_forecourt
 from venues.baku_ground import finish_terrain as finish_ground
+from venues.baku_museums import museums
 from venues.baku_niyazi import planting
 from venues.baku_philharmonic import philharmonic_hall
 from venues.baku_skyline import waterfront_skyline
@@ -60,7 +61,7 @@ def build_venue(scene: CircuitScene) -> None:
     coastal_water(scene)
     court_forecourt(scene)
     civic_frontage(scene)
-    custom = {299418016, 152190583, 152190848, 133641457, 133641456}
+    custom = {299418016, 152190583, 152190848, 133641457, 133641456, 152110152}
     modern = {200195772, 200195781, 286017123, 152192792, 152192676, 152192493, 152192304}
     for building in scene.buildings:
         if building.osm_id in custom or building.use in {'grandstand', 'roof', 'carport'}:
@@ -105,7 +106,9 @@ def build_venue(scene: CircuitScene) -> None:
 
 def finish_terrain(scene: CircuitScene) -> None:
     finish_ground(scene, scene.sources / 'oldcity-ground-delta.json.gz')
+    finish_ground(scene, scene.sources / 'museum-interior-ground-delta.json.gz')
     planting(scene, scene.sources / 'niyazi-planting.json')
+    museums(scene, scene.sources / 'museums.json.gz')
 
 
 def castle_ramp(scene: CircuitScene) -> None:
