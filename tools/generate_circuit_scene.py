@@ -42,6 +42,10 @@ def generate(slug: str) -> None:
         from venues.monaco_surfaces import finish_terrain as finish_monaco_surfaces
 
         finish_monaco_surfaces(scene)
+    if slug == "jeddah":
+        from venues.jeddah import finish_terrain as finish_jeddah_terrain
+
+        finish_jeddah_terrain(scene)
     print(f"{slug}: barriers and furniture", flush=True)
     scene.barriers(
         slug in ("jeddah", "monaco", "baku", "singapore", "australia", "canada")

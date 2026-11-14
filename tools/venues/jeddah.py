@@ -24,6 +24,7 @@ from venues.jeddah_facilities import (
     t27_pavilion,
     t27_tree_belt,
 )
+from venues.jeddah_masarat import finish_terrain as finish_masarat_terrain
 from venues.jeddah_skyline import skyline_residency
 
 
@@ -261,3 +262,7 @@ def build_venue(scene: CircuitScene) -> None:
         trees(scene, start, end, side, setback, 52, 9, palm=True)
     skyline_residency(scene)
     corniche_context(scene)
+
+
+def finish_terrain(scene: CircuitScene) -> None:
+    finish_masarat_terrain(scene)

@@ -1,0 +1,83 @@
+{
+  "status": "Unmodified primary imagery for private site/foot-versus-roof reference only. No game texture or geometry extraction.",
+  "acquired_utc": "2026-11-14T13:06:33.601515+00:00",
+  "image_epoch": "Unverified; request date is not acquisition epoch.",
+  "tiles": [
+    {
+      "file": "esri-z19-x319096-y229865.jpg",
+      "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/229865/319096",
+      "bytes": 19223,
+      "sha256": "c36a9edb0d084a258b53944991e803cb463b2a8e602441b74842be767071f1b8",
+      "tile_zxy": [
+        19,
+        319096,
+        229865
+      ],
+      "northwest_wgs84": [
+        39.1058349609375,
+        21.63126072575913
+      ],
+      "southeast_wgs84": [
+        39.10652160644531,
+        21.630622435509498
+      ]
+    },
+    {
+      "file": "esri-z19-x319097-y229865.jpg",
+      "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/229865/319097",
+      "bytes": 19336,
+      "sha256": "2c6382250a505b4f7aed2303524fd74f0840eb1829f070383def1d9daaca40d6",
+      "tile_zxy": [
+        19,
+        319097,
+        229865
+      ],
+      "northwest_wgs84": [
+        39.10652160644531,
+        21.63126072575913
+      ],
+      "southeast_wgs84": [
+        39.107208251953125,
+        21.630622435509498
+      ]
+    },
+    {
+      "file": "esri-z19-x319098-y229865.jpg",
+      "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/229865/319098",
+      "bytes": 16958,
+      "sha256": "313c6c432426171d65dcd2d8feeaabd64564aa4e88d497516b27a0b378dbac7f",
+      "tile_zxy": [
+        19,
+        319098,
+        229865
+      ],
+      "northwest_wgs84": [
+        39.107208251953125,
+        21.63126072575913
+      ],
+      "southeast_wgs84": [
+        39.10789489746094,
+        21.630622435509498
+      ]
+    },
+    {
+      "file": "esri-z19-x319098-y229864.jpg",
+      "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/229864/319098",
+      "bytes": 18948,
+      "sha256": "16c6b7daeedcbf200bc97feaaaa8652e02a64e166d29d345215ef5695f3fa14f",
+      "tile_zxy": [
+        19,
+        319098,
+        229864
+      ],
+      "northwest_wgs84": [
+        39.107208251953125,
+        21.63189901318895
+      ],
+      "southeast_wgs84": [
+        39.10789489746094,
+        21.63126072575913
+      ]
+    }
+  ]
+}

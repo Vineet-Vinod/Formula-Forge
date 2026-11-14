@@ -1,0 +1,686 @@
+{
+  "status": "PRIVATE proposed source-registered ground frame and estimated component masks. No canonical change, emitted model, surveyed parcel or visual acceptance.",
+  "sources": {
+    "imagery": "esri-ground-strip-receipts.json",
+    "ground_control_precision_m": "About 1\u20132 m manual image interpretation; original imagery epoch/source accuracy unverified. Roof lean is explicitly excluded from these frontage/curb picks.",
+    "operator_pin": "Directions only, not a centroid.",
+    "developer_site_area_m2": 9559,
+    "site_area_role": "Order-of-magnitude envelope check only; neither a tower plate nor literal parcel boundary."
+  },
+  "frontage_ground_controls": [
+    {
+      "pixel_global_z19_strip": [
+        92,
+        208
+      ],
+      "wgs84": [
+        39.10608172416687,
+        21.63074211514609
+      ],
+      "native_xy_m": [
+        139.8261860806418,
+        -137.46551918839174
+      ]
+    },
+    {
+      "pixel_global_z19_strip": [
+        650,
+        79
+      ],
+      "wgs84": [
+        39.10757839679718,
+        21.63106375367823
+      ],
+      "native_xy_m": [
+        294.30600232436507,
+        -101.75217712163254
+      ]
+    }
+  ],
+  "frame": {
+    "origin_native_xy_m": [
+      139.8261860806418,
+      -137.46551918839174
+    ],
+    "axis": [
+      0.9743024679963304,
+      0.22524364776006423
+    ],
+    "normal": [
+      -0.22524364776006423,
+      0.9743024679963304
+    ],
+    "frontage_bearing_degrees": 76.98279406369872,
+    "frontage_span_m": 158.55426966269894,
+    "bearing_uncertainty_degrees": 10.0,
+    "operator_pin_local_uv_m": [
+      63.75728792784773,
+      37.37442536589899
+    ]
+  },
+  "working_site_envelope": {
+    "row_m": [
+      0.0,
+      158.55426966269894
+    ],
+    "northward_depth_m": 63.0,
+    "qualification": "Estimated support/context envelope behind the visible frontage, not a mapped parcel. Rear/west limits are unqualified; do not emit full-site pad or ground removal from this rectangle.",
+    "area_check_m2": 9988.918988750034
+  },
+  "occupied_components": [
+    {
+      "name": "lower_finger_1",
+      "mask_native_xy_m": [
+        [
+          148.909181778118,
+          -124.58873041324951
+        ],
+        [
+          164.98517250005747,
+          -120.87221022520846
+        ],
+        [
+          155.52493929413478,
+          -79.95150656936259
+        ],
+        [
+          139.44894857219532,
+          -83.66802675740364
+        ]
+      ],
+      "estimated_row_center_m": 20.0,
+      "estimated_width_m": 16.5,
+      "estimated_depth_m": 42.0,
+      "estimated_occupied_levels": 23,
+      "estimated_height_m": 78.0,
+      "support_status": "Actual emitted ground and roads must be checked before any floor/foundation anchor is assigned."
+    },
+    {
+      "name": "lower_finger_2",
+      "mask_native_xy_m": [
+        [
+          174.48462156302168,
+          -118.67608465954781
+        ],
+        [
+          191.0477635189593,
+          -114.84694264762673
+        ],
+        [
+          181.36228666527654,
+          -72.95193652378452
+        ],
+        [
+          164.79914470933892,
+          -76.7810785357056
+        ]
+      ],
+      "estimated_row_center_m": 46.5,
+      "estimated_width_m": 17.0,
+      "estimated_depth_m": 43.0,
+      "estimated_occupied_levels": 24,
+      "estimated_height_m": 81.0,
+      "support_status": "Actual emitted ground and roads must be checked before any floor/foundation anchor is assigned."
+    },
+    {
+      "name": "lower_finger_3",
+      "mask_native_xy_m": [
+        [
+          200.30363696492444,
+          -112.70712799390613
+        ],
+        [
+          216.86677892086206,
+          -108.87798598198503
+        ],
+        [
+          206.95605841941924,
+          -66.0086773901465
+        ],
+        [
+          190.3929164634816,
+          -69.8378194020676
+        ]
+      ],
+      "estimated_row_center_m": 73.0,
+      "estimated_width_m": 17.0,
+      "estimated_depth_m": 44.0,
+      "estimated_occupied_levels": 24,
+      "estimated_height_m": 82.0,
+      "support_status": "Actual emitted ground and roads must be checked before any floor/foundation anchor is assigned."
+    },
+    {
+      "name": "lower_finger_4",
+      "mask_native_xy_m": [
+        [
+          225.8790767498281,
+          -106.79448224020443
+        ],
+        [
+          242.9293699397639,
+          -102.85271840440332
+        ],
+        [
+          232.793405790561,
+          -59.009107344568456
+        ],
+        [
+          215.7431126006252,
+          -62.95087118036957
+        ]
+      ],
+      "estimated_row_center_m": 99.5,
+      "estimated_width_m": 17.5,
+      "estimated_depth_m": 45.0,
+      "estimated_occupied_levels": 25,
+      "estimated_height_m": 85.0,
+      "support_status": "Actual emitted ground and roads must be checked before any floor/foundation anchor is assigned."
+    },
+    {
+      "name": "dominant_high_wing",
+      "mask_native_xy_m": [
+        [
+          243.91674436010737,
+          -88.25519834947441
+        ],
+        [
+          268.27430606001565,
+          -82.62410715547281
+        ],
+        [
+          261.5169966272137,
+          -53.395033115582905
+        ],
+        [
+          237.15943492730545,
+          -59.0261243095845
+        ]
+      ],
+      "estimated_height_m": 144.0,
+      "estimated_occupied_levels": 42,
+      "support_status": "No elevation anchor yet. Core overlaps/joins must be partitioned by actual envelope before emitting surfaces."
+    },
+    {
+      "name": "lower_rounded_loggia_return",
+      "mask_native_xy_m": [
+        [
+          268.38429787544976,
+          -76.44042687585474
+        ],
+        [
+          272.88917083065104,
+          -95.92647623578134
+        ],
+        [
+          259.2489362787024,
+          -99.07988730442223
+        ],
+        [
+          256.0955252100615,
+          -85.4396527524736
+        ],
+        [
+          268.27430606001565,
+          -82.62410715547281
+        ],
+        [
+          266.92284417345525,
+          -76.77829234749484
+        ]
+      ],
+      "estimated_height_m": 90.5,
+      "estimated_occupied_levels": 27,
+      "support_status": "No elevation anchor yet. Core overlaps/joins must be partitioned by actual envelope before emitting surfaces."
+    },
+    {
+      "name": "pale_rounded_service_core",
+      "mask_native_xy_m": [
+        [
+          268.2501971228646,
+          -79.77715763688582
+        ],
+        [
+          268.24334567722815,
+          -79.98644765042228
+        ],
+        [
+          268.22282067926085,
+          -80.19484145198999
+        ],
+        [
+          268.188710020155,
+          -80.40144666733742
+        ],
+        [
+          268.14115976698963,
+          -80.60537858121388
+        ],
+        [
+          268.080373537249,
+          -80.80576392585593
+        ],
+        [
+          268.00661162690074,
+          -81.0017446204541
+        ],
+        [
+          267.9201898957692,
+          -81.19248144558662
+        ],
+        [
+          267.8214784149748,
+          -81.37715763688581
+        ],
+        [
+          267.71089988223275,
+          -81.55498238254854
+        ],
+        [
+          267.58892781179657,
+          -81.72519420971372
+        ],
+        [
+          267.45608450679737,
+          -81.88706424520603
+        ],
+        [
+          267.3129388226616,
+          -82.03989933668277
+        ],
+        [
+          267.16010373118485,
+          -82.18304502081854
+        ],
+        [
+          266.99823369569253,
+          -82.31588832581777
+        ],
+        [
+          266.82802186852734,
+          -82.43786039625397
+        ],
+        [
+          266.65019712286465,
+          -82.54843892899602
+        ],
+        [
+          266.46552093156544,
+          -82.64715040979041
+        ],
+        [
+          266.27478410643295,
+          -82.73357214092194
+        ],
+        [
+          266.07880341183477,
+          -82.80733405127016
+        ],
+        [
+          265.8784180671927,
+          -82.86812028101083
+        ],
+        [
+          265.67448615331625,
+          -82.91567053417616
+        ],
+        [
+          265.4678809379688,
+          -82.949781193282
+        ],
+        [
+          265.2594871364011,
+          -82.97030619124935
+        ],
+        [
+          265.05019712286463,
+          -82.97715763688582
+        ],
+        [
+          264.84090710932816,
+          -82.97030619124935
+        ],
+        [
+          264.63251330776046,
+          -82.949781193282
+        ],
+        [
+          264.425908092413,
+          -82.91567053417616
+        ],
+        [
+          264.2219761785366,
+          -82.86812028101083
+        ],
+        [
+          264.0215908338945,
+          -82.80733405127016
+        ],
+        [
+          263.8256101392964,
+          -82.73357214092194
+        ],
+        [
+          263.6348733141638,
+          -82.64715040979043
+        ],
+        [
+          263.4501971228646,
+          -82.54843892899602
+        ],
+        [
+          263.2723723772019,
+          -82.43786039625397
+        ],
+        [
+          263.10216055003673,
+          -82.31588832581777
+        ],
+        [
+          262.9402905145444,
+          -82.18304502081855
+        ],
+        [
+          262.7874554230677,
+          -82.03989933668277
+        ],
+        [
+          262.6443097389319,
+          -81.88706424520603
+        ],
+        [
+          262.5114664339327,
+          -81.72519420971372
+        ],
+        [
+          262.3894943634965,
+          -81.55498238254854
+        ],
+        [
+          262.27891583075444,
+          -81.37715763688581
+        ],
+        [
+          262.18020434996004,
+          -81.19248144558662
+        ],
+        [
+          262.0937826188285,
+          -81.0017446204541
+        ],
+        [
+          262.0200207084803,
+          -80.80576392585594
+        ],
+        [
+          261.95923447873963,
+          -80.60537858121388
+        ],
+        [
+          261.9116842255743,
+          -80.40144666733742
+        ],
+        [
+          261.8775735664684,
+          -80.19484145198999
+        ],
+        [
+          261.8570485685011,
+          -79.98644765042228
+        ],
+        [
+          261.85019712286464,
+          -79.77715763688582
+        ],
+        [
+          261.8570485685011,
+          -79.56786762334936
+        ],
+        [
+          261.8775735664684,
+          -79.35947382178165
+        ],
+        [
+          261.9116842255743,
+          -79.15286860643421
+        ],
+        [
+          261.95923447873963,
+          -78.94893669255775
+        ],
+        [
+          262.0200207084803,
+          -78.74855134791571
+        ],
+        [
+          262.0937826188285,
+          -78.55257065331753
+        ],
+        [
+          262.18020434996004,
+          -78.36183382818501
+        ],
+        [
+          262.27891583075444,
+          -78.17715763688582
+        ],
+        [
+          262.3894943634965,
+          -77.99933289122309
+        ],
+        [
+          262.5114664339327,
+          -77.82912106405792
+        ],
+        [
+          262.6443097389319,
+          -77.6672510285656
+        ],
+        [
+          262.7874554230677,
+          -77.51441593708887
+        ],
+        [
+          262.9402905145444,
+          -77.3712702529531
+        ],
+        [
+          263.10216055003673,
+          -77.23842694795387
+        ],
+        [
+          263.2723723772019,
+          -77.11645487751767
+        ],
+        [
+          263.4501971228646,
+          -77.00587634477561
+        ],
+        [
+          263.6348733141638,
+          -76.90716486398122
+        ],
+        [
+          263.8256101392963,
+          -76.8207431328497
+        ],
+        [
+          264.0215908338945,
+          -76.74698122250147
+        ],
+        [
+          264.2219761785366,
+          -76.6861949927608
+        ],
+        [
+          264.425908092413,
+          -76.63864473959548
+        ],
+        [
+          264.63251330776046,
+          -76.60453408048963
+        ],
+        [
+          264.84090710932816,
+          -76.58400908252229
+        ],
+        [
+          265.05019712286463,
+          -76.57715763688581
+        ],
+        [
+          265.2594871364011,
+          -76.58400908252229
+        ],
+        [
+          265.4678809379688,
+          -76.60453408048963
+        ],
+        [
+          265.67448615331625,
+          -76.63864473959548
+        ],
+        [
+          265.8784180671927,
+          -76.6861949927608
+        ],
+        [
+          266.07880341183477,
+          -76.74698122250147
+        ],
+        [
+          266.2747841064329,
+          -76.8207431328497
+        ],
+        [
+          266.46552093156544,
+          -76.90716486398121
+        ],
+        [
+          266.65019712286465,
+          -77.00587634477561
+        ],
+        [
+          266.82802186852734,
+          -77.11645487751767
+        ],
+        [
+          266.99823369569253,
+          -77.23842694795387
+        ],
+        [
+          267.16010373118485,
+          -77.37127025295308
+        ],
+        [
+          267.3129388226616,
+          -77.51441593708887
+        ],
+        [
+          267.45608450679737,
+          -77.6672510285656
+        ],
+        [
+          267.58892781179657,
+          -77.82912106405792
+        ],
+        [
+          267.71089988223275,
+          -77.99933289122309
+        ],
+        [
+          267.8214784149748,
+          -78.17715763688582
+        ],
+        [
+          267.9201898957692,
+          -78.36183382818501
+        ],
+        [
+          268.00661162690074,
+          -78.55257065331753
+        ],
+        [
+          268.080373537249,
+          -78.7485513479157
+        ],
+        [
+          268.14115976698963,
+          -78.94893669255775
+        ],
+        [
+          268.188710020155,
+          -79.15286860643421
+        ],
+        [
+          268.22282067926085,
+          -79.35947382178165
+        ],
+        [
+          268.24334567722815,
+          -79.56786762334936
+        ]
+      ],
+      "estimated_height_m": 144.0,
+      "estimated_occupied_levels": 0,
+      "support_status": "No elevation anchor yet. Core overlaps/joins must be partitioned by actual envelope before emitting surfaces."
+    }
+  ],
+  "occupied_union_projected_area_m2": 3914.500000000002,
+  "height_confidence": "144 m comes from CVU floor-count estimate, about \u00b112 m, not measured primary height. Lower fingers and return heights are explicitly reconstructed from photo ratios with about \u00b18\u201310 m uncertainty. Developer 43 storeys and CVU 42 floors remain distinct.",
+  "form": "Four lower WSW fingers; high ENE slab; distinct lower rounded loggia return and tall pale rounded service core. Deep open slots, beige/pale pilasters, recessed glazing and balcony slabs. No names/boards or full-site high extrusion.",
+  "held_context": [
+    "Rear connector and courtyard boundaries are not source-qualified. Keep slots/open ground; no assumed massive podium.",
+    "Use permanent black fence/white plinth from operator photo. Owner photo construction hoarding has unverified epoch and should not automatically be combined as permanent architecture.",
+    "Ground floor and foundation must follow actual emitted local surfaces/exterior thresholds; do not select the roof-biased DSM value at the directions pin.",
+    "All public/service roads, actual protection and ground overlap checks remain required before integration."
+  ],
+  "initial_clearance": {
+    "all_route_arms": [
+      {
+        "component": "lower_finger_1",
+        "all_route_centerline_minimum_distance_m": 99.52996131074096,
+        "conservative_legal_shoulder_protection_reserve_m": 23.5500002,
+        "lower_bound_to_that_reserved_route_m": 75.97996111074096
+      },
+      {
+        "component": "lower_finger_2",
+        "all_route_centerline_minimum_distance_m": 125.62495814201456,
+        "conservative_legal_shoulder_protection_reserve_m": 23.5500002,
+        "lower_bound_to_that_reserved_route_m": 102.07495794201456
+      },
+      {
+        "component": "lower_finger_3",
+        "all_route_centerline_minimum_distance_m": 151.96852419229546,
+        "conservative_legal_shoulder_protection_reserve_m": 23.5500002,
+        "lower_bound_to_that_reserved_route_m": 128.41852399229546
+      },
+      {
+        "component": "lower_finger_4",
+        "all_route_centerline_minimum_distance_m": 178.0640638207956,
+        "conservative_legal_shoulder_protection_reserve_m": 23.5500002,
+        "lower_bound_to_that_reserved_route_m": 154.5140636207956
+      },
+      {
+        "component": "dominant_high_wing",
+        "all_route_centerline_minimum_distance_m": 201.20421839165698,
+        "conservative_legal_shoulder_protection_reserve_m": 23.5500002,
+        "lower_bound_to_that_reserved_route_m": 177.65421819165698
+      },
+      {
+        "component": "lower_rounded_loggia_return",
+        "all_route_centerline_minimum_distance_m": 212.11399433775858,
+        "conservative_legal_shoulder_protection_reserve_m": 23.5500002,
+        "lower_bound_to_that_reserved_route_m": 188.56399413775858
+      },
+      {
+        "component": "pale_rounded_service_core",
+        "all_route_centerline_minimum_distance_m": 220.75126695907147,
+        "conservative_legal_shoulder_protection_reserve_m": 23.5500002,
+        "lower_bound_to_that_reserved_route_m": 197.20126675907147
+      }
+    ],
+    "inland_public_road_observed_west_curb_distance_m": 26.098943760638114,
+    "public_curb_manual_trace_uncertainty_m": 2.0
+  },
+  "next_gate": "Root/Luna review the occupied masks and source-facing orientation before architecture authoring; then bounded actual-ground/service-road proof under the shared capped lock."
+}

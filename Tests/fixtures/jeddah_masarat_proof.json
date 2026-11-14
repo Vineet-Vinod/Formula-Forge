@@ -1,0 +1,14 @@
+{
+  "purpose": "Bounded literal pre-Masarat emitted ground for tests only. Production never reads these rows. Independent actual complete-scene proof is separate.",
+  "private_packet_sha256": "251bc7b7890b252bb2547de13d615518cd201e1bdf491f2fb6906d5a3425237d",
+  "private_architecture_geometry_sha256": "3e6b9000d9ee9bafc478a96d2e683db83bd5858c9d1c10ea3b5f2c2bfea8929e",
+  "private_architecture_triangles": "161654",
+  "original_manifest_sha256": "ad1dae27618939b9180fdaf932331c2dab0fc609c5637d0b82ecb53836651e23",
+  "native_buildings.bin_sha256": "7e429e2da5a9f6a9d3cfd33641917b8ba942df48dea762ffd43c6dd6d41c3959",
+  "native_drive_surface.bin_sha256": "86ac9b9b678308d892ee45f96061bee4ae87afbda9aaf7791eb9bc0166c365e6",
+  "native_terrain.bin_sha256": "a30c782d9e70e53575eaa3a1295d86b00eeca559983b25de642725c36fdfe647",
+  "native_track_limits.bin_sha256": "4a5b59668b05add5efeb47e6e98b55a7a31704978acb886f9009c16c8defb5a7",
+  "canonical_architecture_triangles": "161603",
+  "canonical_architecture_geometry_sha256": "b6e315b3cbd6c894fbbb1ea035af079e095018a537ed1c4b7c3f69cb75e5450c",
+  "round_join_certificate_sha256": "fbcdc5511fdac05ff161ea3aede68796955a5bade7af26c24891db390e65edc2"
+}

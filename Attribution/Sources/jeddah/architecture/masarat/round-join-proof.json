@@ -1,0 +1,31 @@
+{
+  "status": "Qualified numerical construction correction for cooked review; no bitwise private-geometry match or native/visual acceptance claimed.",
+  "reason": "The rounded corner and adjacent cut used mathematically equivalent additions that differed by approximately 1.4e-14 m. The fourth transformed polygon self-touched. The cut now reuses the actual rounded edge, with strict validity guards retained.",
+  "private_packet_sha256": "251bc7b7890b252bb2547de13d615518cd201e1bdf491f2fb6906d5a3425237d",
+  "private_architecture_triangles": 161654,
+  "canonical_architecture_triangles": 161603,
+  "triangle_delta": -51,
+  "private_geometry_sha256": "3e6b9000d9ee9bafc478a96d2e683db83bd5858c9d1c10ea3b5f2c2bfea8929e",
+  "canonical_geometry_sha256": "b6e315b3cbd6c894fbbb1ea035af079e095018a537ed1c4b7c3f69cb75e5450c",
+  "exact_private_geometry_match": false,
+  "frame_dimensions_height_values_and_bounds_unchanged": true,
+  "occupied_mask_symmetric_difference_m2": 2.438049762076844e-13,
+  "discrete_boundary_hausdorff_m": 0.8622522828088811,
+  "boundary_metric_note": "The discrete boundary metric includes removed interior numerical-slit edges; it is not a movement of the occupied area or outside bounds. Symmetric occupied-area difference is approximately 2.44e-13 m\u00b2.",
+  "all_canonical_component_plans_valid": true,
+  "delta_scope": "Third/fourth shared-edge triangulation and corrected wall/foundation winding. Source dimensions, placement, heights, materials and corner stacks are unchanged. No global buffer/make_valid operation or weakened invalid-footprint guard.",
+  "changed_cream_face_facing_proof": "round-join-facing.json",
+  "changed_cream_face_facing_sha256": "49ca143cb01ed476c6d4ae6a79243aa40623f038fe833ec36728afe1b2006e5a",
+  "actual_complete_scene_proof": {
+    "changed_tiles": [
+      "Building_City_00_m1",
+      "Tile_Street_00_m1",
+      "Tile_Street_01_m1"
+    ],
+    "unchanged_tile_count": 143,
+    "old_city_prefix_bytes_unchanged": true,
+    "native_data_unchanged": true,
+    "source_grid_road_cutouts_emitted_cells_unchanged": true
+  },
+  "ground_attribute_gate": "Seven focused checks passed, including ordered untouched rows, original planes, interpolated normals/UVs, coverage, five loggia/core rays and pre-mutation conflict guards. Final full focused suite/type checks are a separate gate."
+}

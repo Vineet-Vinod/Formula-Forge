@@ -1,0 +1,45 @@
+{
+  "canonical_added_triangle_index": 49058,
+  "material": "Cream",
+  "native_centroid_m": [
+    205.04541015625,
+    -105.692138671875,
+    32.833333333333336
+  ],
+  "exported_horizontal_outward_normal": [
+    -0.9743024691935054,
+    -0.22524364258162494
+  ],
+  "component": "ThirdStoneFinger",
+  "classification": "Correct outward face on the valid stone-body concave nook beside the rounded loggia: every normal-side sample is outside the occupied component/solid and every opposite-side sample is inside. This is not an inward exterior facade.",
+  "actual_offset_tests": [
+    {
+      "offset_m": 0.001,
+      "normal_side_in_solid": false,
+      "opposite_side_in_solid": true,
+      "normal_side_in_occupied_component": false,
+      "opposite_side_in_occupied_component": true,
+      "normal_side_in_loggia_stack": false,
+      "opposite_side_in_loggia_stack": false
+    },
+    {
+      "offset_m": 0.005,
+      "normal_side_in_solid": false,
+      "opposite_side_in_solid": true,
+      "normal_side_in_occupied_component": false,
+      "opposite_side_in_occupied_component": true,
+      "normal_side_in_loggia_stack": false,
+      "opposite_side_in_loggia_stack": false
+    },
+    {
+      "offset_m": 0.02,
+      "normal_side_in_solid": false,
+      "opposite_side_in_solid": true,
+      "normal_side_in_occupied_component": false,
+      "opposite_side_in_occupied_component": true,
+      "normal_side_in_loggia_stack": false,
+      "opposite_side_in_loggia_stack": false
+    }
+  ],
+  "status": "PASS finite current-facing check; no native visual acceptance."
+}

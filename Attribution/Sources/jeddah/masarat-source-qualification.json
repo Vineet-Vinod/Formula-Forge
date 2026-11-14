@@ -1,0 +1,162 @@
+{
+  "status": "Source-qualified reconstruction estimates, promoted for cooked review only. No native night or whole-route visual acceptance.",
+  "private_review_packet_sha256": "251bc7b7890b252bb2547de13d615518cd201e1bdf491f2fb6906d5a3425237d",
+  "primary_sources": {
+    "developer": {
+      "url": "https://www.masarat.com/ar/Projects/%D8%A8%D8%B1%D8%AC_%D8%A7%D9%84%D9%85%D8%B3%D8%A7%D8%B1%D8%A7%D8%AA.html",
+      "facts": "43 storeys, 308 units, 9,559 m\u00b2 project/site area and car lifts to level 28. Site area is not a tower plate; level 28 does not establish the shorter return height."
+    },
+    "cvu": {
+      "url": "https://www.skyscrapercenter.com/building/masarat-tower/30791",
+      "facts": "144 m / 42 floors is a CVU estimate, not an as-built height survey; it differs from the developer storey count. Height uncertainty is approximately \u00b112 m. Sail is a separate 264.7 m tower."
+    },
+    "operator": {
+      "url": "https://mabaat.com/en/properties/463",
+      "directions_point_wgs84_lon_lat": [
+        39.106602,
+        21.6311994
+      ],
+      "role": "Public property directions point, not a surveyed footprint centroid."
+    },
+    "photos": [
+      {
+        "file": "architecture/masarat/masarat-owner-exterior.jpg",
+        "url": "https://mabet.b-cdn.net/units/thumbnails/67f383425e3f0.jpg",
+        "sha256": "0a8cfbfc6e4bec40dc83bc526d45ae8236200d44061db2036b1f94285a585c14",
+        "epoch": "Capture year and camera bearing unverified."
+      },
+      {
+        "file": "architecture/masarat/masarat-operator-exterior.jpg",
+        "url": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/356405132.jpg?k=fecf8c8fc436a49ec43ca7870af904a46d686ef46f3177cb8b5df5de20cf9d9c&o=",
+        "sha256": "50122e7d643d3d9610ad2c0605983288a43866c609e25c72859ac4e4ed4b1c5b",
+        "epoch": "Capture year and camera bearing unverified."
+      }
+    ],
+    "imagery": {
+      "receipt": "architecture/masarat/esri-ground-strip-receipts.json",
+      "role": "Four unmodified Esri World Imagery z19 tiles. Image epoch and geolocation accuracy unverified; retrieval date is not capture date. Ground/fence controls exclude displaced roof silhouettes."
+    },
+    "streets": {
+      "file": "architecture/masarat/foreground-osm-map.xml.gz",
+      "raw_sha256": "8c10ae08d588f807c66668a6a5bdaded3702e500daa7e74196a9498facaed4f8",
+      "compressed_sha256": "ae1e477d5bf7776634c169e7c3ff2d58fccff819f3c5aa0663c19fd7d3d15dd7",
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=39.1055,21.6253,39.1095,21.6355",
+      "provider": "OpenStreetMap contributors",
+      "licence": "ODbL 1.0",
+      "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+      "role": "Literal source nodes for all mapped nearby highway arms. Untagged widths are explicit estimates used for clearance, not changes to any road."
+    }
+  },
+  "registration": {
+    "frontage_controls_wgs84_lon_lat": [
+      [
+        39.10608172416687,
+        21.63074211514609
+      ],
+      [
+        39.10757839679718,
+        21.63106375367823
+      ]
+    ],
+    "frontage_span_m": 158.5542696627,
+    "bearing_degrees": 76.9827940637,
+    "manual_control_uncertainty_m": "Approximately 1\u20132 m, plus unverified source geolocation accuracy.",
+    "bearing_uncertainty_degrees": 10,
+    "method": "Production derives the native frame using scene.geo and the expected route scale. No native origin or packed ground cache is read from this source record."
+  },
+  "form": {
+    "basis": "Four lower WSW fingers, dominant ENE high wing, five narrow rounded corner loggia stacks, a shorter broad rounded return, and a pale round core continuing above it.",
+    "estimated_fixed_local_geometry": {
+      "main_plan_uv_m": {
+        "center": 125,
+        "front": 24.5,
+        "width": 25,
+        "depth": 30
+      },
+      "narrow_stack_m": {
+        "width": 6.2,
+        "depth": 7.5,
+        "radius": 2.6
+      },
+      "core_uv_m": {
+        "center": [
+          135,
+          28
+        ],
+        "radius": 3.2,
+        "adjoining_setback": 0.95,
+        "cap_above_main_roof": 1.1
+      },
+      "short_return_uv_m": {
+        "center": 132,
+        "front": 10.5,
+        "width": 14,
+        "depth": 20,
+        "radius": 5.2
+      }
+    },
+    "limits": "Widths, depths, floor pitches, heights, corner bearing and narrow high-stack top extent are bounded photo/imagery reconstructions. Lower fingers are estimated 78\u201385 m / 23\u201325 levels; short return 90.5 m / 27 levels. Rear connector/courtyard boundaries remain unqualified and unmodeled. No fabricated Masarat OSM building ID."
+  },
+  "ground_support": {
+    "source": "Actual already emitted native-format Runoff triangles after the existing venue and terrain stages.",
+    "observations_relative_m": {
+      "frontage_controls": [
+        4.216543151986818,
+        6.019558712170525
+      ],
+      "local_body_fronts": "Approximately 4.98\u20139.31 m.",
+      "station_6029_racing_road": 2.9368
+    },
+    "estimated_entries_relative_m": [
+      5.2,
+      5.5,
+      5.5,
+      6.8,
+      9.6
+    ],
+    "entry_uncertainty_m": 2,
+    "limits": "Raised site, sloping frontage and DSM uncertainty remain possible. The photo supports an entrance ramp. Difference from the distant racing road does not prove roof contamination. Low-side basement closure reaches approximately 3.97 m and rear ground rises approximately 1.47 m above a first-floor estimate; these are not surveyed basement profiles.",
+    "method": "Clip only occupied interiors from each actual original triangle. Keep complete outside rows byte-for-byte and interpolate clipped positions/normals/UVs on that original face. Split foundation boundaries at every actual ground-plane crossing. No full-site pad, provider/field/road/contact mutation, global cutout union or radius change."
+  },
+  "appearance": {
+    "materials": [
+      "White",
+      "Cream",
+      "Glass",
+      "WarmGlass",
+      "Concrete",
+      "Steel",
+      "Black",
+      "Roof"
+    ],
+    "basis": "Warm front and pale side/core are source-consistent; compass assignment remains tentative without camera bearings/epochs. Deep loggias, curved slabs, rails, stone pilasters, small windows and broad vertical glazing bands are original geometry.",
+    "night_limit": "Daytime photos support the facade form; sparse occupied WarmGlass rooms are a restrained night estimate. No continuous emissive facade or renderer-wide exposure/energy change.",
+    "fence": "Observed permanent black pickets on a white plinth along the registered south frontage, with estimated gate position. Temporary white construction hoarding is not treated as permanent."
+  },
+  "residency": {
+    "tile": "Building_City_00_m1",
+    "scope": "Conservative normal-start sweep of 8,192 source centerline poses. Existing tile plus component bounds remain within the 2,050 m unload radius after initial load; maximum approximately 2,010.50 m. This is not actual moving-recorder evidence, and spawning directly at a distant pose differs from normal lap start.",
+    "changes": "No global radius or existing Diamond/Sail exception changes."
+  },
+  "review": {
+    "file": "architecture/masarat/source-form-review.md",
+    "sha256": "142cf5eb18ba8c6f216d774d41e7e4f3070a4f5b44e8e25e91990cca47b0d4ab",
+    "source_form_previews": [
+      "architecture/masarat/source-form-preview.jpg",
+      "architecture/masarat/source-overview-preview.jpg"
+    ],
+    "preview_role": "Original flat technical geometry renders, not primary photographs or a native night pass.",
+    "next_gate": "Fresh imported/cooked night views and matched whole-route review."
+  },
+  "asset_use": "Primary photographs, map nodes and aerial tiles are authoring evidence only. No reference pixels or source meshes are runtime game assets.",
+  "numeric_shared_edge_repair": {
+    "certificate": "architecture/masarat/round-join-proof.json",
+    "certificate_sha256": "fbcdc5511fdac05ff161ea3aede68796955a5bade7af26c24891db390e65edc2",
+    "facing_check": "architecture/masarat/round-join-facing.json",
+    "private_triangles": 161654,
+    "canonical_triangles": 161603,
+    "exact_private_geometry_match": false,
+    "scope": "Third/fourth shared-edge triangulation and corrected wall/foundation winding. Source dimensions, placement, heights, materials and corner stacks are unchanged. No global buffer/make_valid operation or weakened invalid-footprint guard.",
+    "occupied_mask_symmetric_difference_m2": 2.438049762076844e-13
+  }
+}
