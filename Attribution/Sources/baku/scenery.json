@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=baku",
   "tiles": 395,
-  "triangles": 4921716,
+  "triangles": 4970508,
   "road_sha256": "26bc10ef7913eb8b758e60bada4eb749e94aa7bb524952c47ead9fff2130166e",
   "terrain_sha256": "e6e5423c2f5f02fc7e47ddb1459d9e39edcc2ae0b7891724be8520abedc5231e",
   "landmarks": [
@@ -2281,6 +2281,15 @@
     {
       "name": "Khagani Library and three registered heritage frontages",
       "source": "khagani/reconstruction.json; photographed frontage rhythms, broad height/depth estimates; unregistered Library pavilion, returns and rear faces held"
+    },
+    {
+      "osm_id": 133160748,
+      "name": "Heydar Aliyev Foundation",
+      "structure": "Six photographed principal facade bands, patterned entrance panel, rounded corner and blue cupola",
+      "source": "foundation/reconstruction.json",
+      "body_height_m": 27.2,
+      "body_height_uncertainty_m": 4.0,
+      "scope": "Mapped owner and legacy floor retained; rounded corner and facade/roof details are photographic estimates. OSM8levels does not establish8principal facade rows. No native road/contact changes; cooked appearance pending."
     }
   ],
   "vegetation": [
