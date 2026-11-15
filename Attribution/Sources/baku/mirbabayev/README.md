@@ -1,0 +1,11 @@
+# Mirbabayev / SOCAR Niyazi 1
+
+The literal owner is OSM way 133160749. Three primary original exteriors support three principal facade bands, 17 projected upper/middle groups, a separate ground opening rhythm and a slate pitched roof with raised corner/central forms. The20.5 m cornice/26.38 m crown and facade/roof dimensions are architectural estimates with broad±5 m uncertainty. The six-level 20.4 m legacy value is only an old-emitter guard. The retained minimum datum is not a surveyed entry level.
+
+`reconstruction.json` is the typed authoring input. `venues.baku_mirbabayev.finish(scene)` independently replays and validates the41,104 legacy rows, validates95 actual supporting Ground rows, builds thereviewed family of 122,684 rows, and atomically replaces only that owner's rows. It retains the current parent materials prefix and every unselected raw record, including current tree normals/materials and neighboring buildings. Call it after actual terrain is finished and after the generic owner has been emitted. Do not suppress the generic call unless the replacement workflow is deliberately revised and requalified.
+
+The emitter rebuilds the geometry using existing procedural primitives and materials. No mesh backups, ignored probe scripts, photographs or video frames are needed for regeneration. Focused tests are in `Tests/test_baku_mirbabayev.py`; root's guarded source-generation/CI workflow supplies the full integration checks. Ground support or legacy-source changes intentionally fail and need a new contact/scope qualification.
+
+`source-registration.json`, `ground-support-receipt.json` and `source-review.md` retain identity, proportions, actual geometry checks and limits. `primary-photo-receipts.json` records unmodified originals, author/licence, metadata and hashes. Original GPS is unusable; exact facade intervals, thresholds/steps, absolute grade and rear detail remain held. The occupied U courtyard stays open. No Ground, road, event protection, park or tree poses are changed.
+
+Source and adapter review does not approve native material appearance or complete Baku. Fresh driver views and whole-route review remain required.

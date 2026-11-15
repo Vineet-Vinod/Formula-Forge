@@ -1,0 +1,765 @@
+{
+  "osm_id": 133160749,
+  "origin_lat_lon": [
+    40.3726832406754,
+    49.853217636212044
+  ],
+  "uniform_scale": 1.0062366339173152,
+  "expected_legacy_height_m": 20.4,
+  "expected_legacy_rows": 41104,
+  "legacy_counter_sha256": "ac77ce06a727579dcd53317cb945f75636dce9e984ff9b4a78d4b187887afb9a",
+  "expected_candidate_rows": 122684,
+  "candidate_counter_sha256": "b96ab962836ad38c79373a7c5b59bf061007b7e17aab794f592a1efd7046cfc4",
+  "ground_supports": [
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "VvreR24UHUjmcIdDlFVmPCfR37wO4X8/6Q9Jw7K0DsNPKN9H3eccSKxbhEOUVWY8J9HfvA7hfz/d1kjDHtIOw0m33Ud6oRxIUbOFQ5RVZjwn0d+8DuF/P8V8SMPx5Q3D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "ucndR5qPHEhxdoRDMoVmPMwQ4Lz+4H8/5GVIw77xDcPfuN1H8J8cSAaYhUMyhWY8zBDgvP7gfz/NekjD9eYNw08o30fd5xxIrFuEQzKFZjzMEOC8/uB/P93WSMMe0g7D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "flbfR/26HEhUcoFDxH5UPCXNzrya5X8/bZ1Iw63vDsNc+d1HUmEcSI5ygUPEflQ8Jc3OvJrlfz+mKkjDOxAOw2Hr3UftbhxI61CCQ8R+VDwlzc68muV/PxA8SMNJBw7D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "i9rdR0Z/HEhhXIND8YRhPLzz2rxg4n8//VBIw4L8DcNry91H9Y0cSLZahEPxhGE8vPPavGDifz/IY0jD1PINw08o30fd5xxIrFuEQ/GEYTy889q8YOJ/P93WSMMe0g7D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "flbfR/26HEhUcoFDGcVWPLlg0rzB5H8/bZ1Iw63vDsOL2t1HRn8cSGFcg0MZxVY8uWDSvMHkfz/9UEjDgvwNw08o30fd5xxIrFuEQxnFVjy5YNK8weR/P93WSMMe0g7D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "flbfR/26HEhUcoFDl8VQPIjey7xh5n8/bZ1Iw63vDsMhhd9Hc40cSE4rfUOXxVA8iN7LvGHmfz8iY0jDhg0PwxUN3kcdThxIfzmAQ5fFUDyI3su8YeZ/PxASSMPaHA7D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "7h3eR6Y9HEjqW35D+1NSPEkozrzY5X8//fxHw6InDsMhhd9Hc40cSE4rfUP7U1I8SSjOvNjlfz8iY0jDhg0Pw1sn3kdoNBxIvi99Q/tTUjxJKM682OV/PynxR8OrLQ7D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "IYXfR3ONHEhOK31DSWczPLc1tLw27H8/ImNIw4YND8Nytd9Hh10cSIfkd0NJZzM8tzW0vDbsfz/MJUjDciwPw+I/3kc/HBxIhFR6Q0lnMzy3NbS8Nux/PzzSR8NePQ7D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "7VDeR0QLHEj2anhDlJc2PMnFuLxC638/gbxHw0ZIDsPiP95HPxwcSIRUekOUlzY8ycW4vELrfz880kfDXj0Ow3K130eHXRxIh+R3Q5SXNjzJxbi8Qut/P8wlSMNyLA/D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "crXfR4ddHEiH5HdDiEYbPIM+pLzi738/zCVIw3IsD8OK6N9HqigcSO6uckOIRhs8gz6kvOLvfz8h4kfDJU0Pw0Fz3kdH6BtIfZh0Q4hGGzyDPqS84u9/P7ePR8M+Xg7D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "a4TeRyfWG0jurnJDnTEkPDgssbxh7X8/hHhHwzppDsNBc95HR+gbSH2YdEOdMSQ8OCyxvGHtfz+3j0fDPl4Ow4ro30eqKBxI7q5yQ50xJDw4LLG8Ye1/PyHiR8MlTQ/D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "QXPeR0foG0h9mHRD8OovPAdssryt7H8/t49Hwz5eDsMRYt5H+PkbSLmBdkPw6i88B2yyvK3sfz9cpkfDPlMOw3K130eHXRxIh+R3Q/DqLzwHbLK8rex/P8wlSMNyLA/D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "iujfR6ooHEjurnJDxKz7O+TAjrwe9H8/IeJHwyVND8PhHeBH8usbSHyhbUPErPs75MCOvB70fz9plEfDSG8Pw4eV3kd9wxtImtZwQ8Ss+zvkwI68HvR/P6BgR8MtdA7D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "e7LeR8ShG0gbxG1DvzAHPNfVobz78H8/dTVHw7WGDsNmpt5HQ7AbSHscb0O/MAc819WhvPvwfz8DSEfD+n4Ow+Ed4Efy6xtIfKFtQ78wBzzX1aG8+/B/P2mUR8NIbw/D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "4R3gR/LrG0h8oW1DzEe1O53WbLwm+H8/aZRHw0hvD8P5UOBHgacbSIMbaUPMR7U7ndZsvCb4fz/NPEfD+48Pw8/G3kcliBtI7adrQ8xHtTud1my8Jvh/P6sUR8O3kw7D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "+VDgR4GnG0iDG2lDCaBcO7EaULxY+n8/zTxHw/uPD8N7fOBHPl0bSJYKZUMJoFw7sRpQvFj6fz/B3UbD1KsPw3Dx3kdLSBtIA6NmQwmgXDuxGlC8WPp/P+/CRsMArw7D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "QOTeR/9dG0hgM2hDSk/GO/9BlLwR9H8/t95Gw4+mDsMD3d5HzmgbSCYSaUNKT8Y7/0GUvBH0fz+N7EbD7aEOw/lQ4EeBpxtIgxtpQ0pPxjv/QZS8EfR/P808R8P7jw/D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "e3zgRz5dG0iWCmVDnFcwOz9MaLwt+X8/wd1Gw9SrD8OHnOBHrw8bSEF4YEOcVzA7P0xovC35fz96ekbDV8APw5wR30diBRtIzwJiQ5xXMDs/TGi8Lfl/P0ptRsOXww7D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "NAjfR+obG0hejWNDyXmLO+AGkrz+9H8/IopGw5K9DsPY/95HTC0bSOzcZEPJeYs74AaSvP70fz9hoEbDOLgOw3t84Ec+XRtIlgplQ8l5izvgBpK8/vR/P8HdRsPUqw/D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "h5zgR68PG0hBeGBDY+nPOij3Q7w7+38/enpGw1fAD8Nfr+BHj8AaSMifXENj6c86KPdDvDv7fz8yFUbDZcwPw0Ug30fP1xpIuQBfQ2Ppzzoo90O8O/t/P/UyRsP5zA7D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "6jvoRyIrHUitUlRE7Z46O+IJjb0lZH8/+CxJwzmhFMPqO+hHZVceSN0MaUQmr9O6CNxEvS60fz9OrUrDOaEUw3CU6kdlVx5IJolpRP6o07pKR1C9Iqt/P06tSsOPIRbD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "cJTqR2VXHkgmiWlE/qjTukpHUL0iq38/Tq1Kw48hFsNwlOpHIisdSER3U0TIjzo7XSCWvWtPfz/4LEnDjyEWw+o76EciKx1IrVJURO2eOjviCY29JWR/P/gsScM5oRTD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "6jvoR9/+G0h8mD9E7XjvOw4Jjb2qYn8/oqxHwzmhFMPqO+hHIisdSK1SVETtnjo74gmNvSVkfz/4LEnDOaEUw3CU6kciKx1IRHdTRMiPOjtdIJa9a09/P/gsScOPIRbD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "cJTqRyIrHUhEd1NEyI86O10glr1rT38/+CxJw48hFsNwlOpH3/4bSGJlPUR+Ze87gR+WvfBNfz+irEfDjyEWw+o76Eff/htIfJg/RO147zsOCY29qmJ/P6KsR8M5oRTD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "cJTqR9/+G0hiZT1EfmXvO4Eflr3wTX8/oqxHw48hFsNwlOpHnNIaSH9TJ0TOv0A83x2WvSlLfz9MLEbDjyEWw+o76Eec0hpITd4qRHPPQDyFB4294l9/P0wsRsM5oRTD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "6jvoR1mmGUgdJBZEtO+EPEYFjb3NW38/9qtEwzmhFMPqO+hHnNIaSE3eKkRzz0A8hQeNveJffz9MLEbDOaEUw3CU6kec0hpIf1MnRM6/QDzfHZa9KUt/P0wsRsOPIRbD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "cJTqR5zSGkh/UydEzr9APN8dlr0pS38/TCxGw48hFsNwlOpHWaYZSJxBEUTr5IQ8dhuWvRVHfz/2q0TDjyEWw+o76EdZphlIHSQWRLTvhDxGBY29zVt/P/arRMM5oRTD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "6jvoRxV6GEjsaQFETIapPOwlgb2Ab38/oStDwzmhFMPqO+hHWaYZSB0kFkS074Q8RgWNvc1bfz/2q0TDOaEUw3CU6kdZphlInEERROvkhDx2G5a9FUd/P/arRMOPIRbD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "cJTqR1mmGUicQRFE6+SEPHYblr0VR38/9qtEw48hFsNwlOpHFXoYSHRf9kMff6k86mOGvbBkfz+hK0PDjyEWw+o76EcVehhI7GkBREyGqTzsJYG9gG9/P6ErQ8M5oRTD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "6jvoR9JNF0g6YOBDSzivPDldTL1en38/S6tBwzmhFMPqO+hHFXoYSOxpAURMhqk87CWBvYBvfz+hK0PDOaEUw3CU6kcVehhIdF/2Qx9/qTzqY4a9sGR/P6ErQ8OPIRbD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "Y+PlR6iDH0goZXBE/qozu6GjeLw1+H8/pC1Mw+MgE8Nj4+VH668gSOOtcUS8KAG7QCKMu0b/fz/6rU3D4yATw+o76EfrryBIYUVyRNYoAbvKvGW7eP9/P/qtTcM5oRTD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "6jvoR+uvIEhhRXJE1igBu8q8Zbt4/38/+q1NwzmhFMPqO+hHqIMfSOs3cUTfqjO7t4l7vAj4fz+kLUzDOaEUw2Pj5Ueogx9IKGVwRP6qM7uho3i8Nfh/P6QtTMPjIBPD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "Y+PlR2VXHkiUkGhEOLbTuo9vOb24vH8/Tq1Kw+MgE8Nj4+VHqIMfSChlcET+qjO7oaN4vDX4fz+kLUzD4yATw+o76Eeogx9I6zdxRN+qM7u3iXu8CPh/P6QtTMM5oRTD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "6jvoR6iDH0jrN3FE36ozu7eJe7wI+H8/pC1MwzmhFMPqO+hHZVceSN0MaUQmr9O6CNxEvS60fz9OrUrDOaEUw2Pj5UdlVx5IlJBoRDi207qPbzm9uLx/P06tSsPjIBPD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "Y+PlRyIrHUgWLlVEIq06Oz/xg72Wd38/+CxJw+MgE8Nj4+VHZVceSJSQaEQ4ttO6j285vbi8fz9OrUrD4yATw+o76EdlVx5I3QxpRCav07oI3ES9LrR/P06tSsM5oRTD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "6jvoR2VXHkjdDGlEJq/TugjcRL0utH8/Tq1KwzmhFMPqO+hHIisdSK1SVETtnjo74gmNvSVkfz/4LEnDOaEUw2Pj5UciKx1IFi5VRCKtOjs/8YO9lnd/P/gsScPjIBPD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "Y+PlR9/+G0iYy0FEUovvO3jwg70bdn8/oqxHw+MgE8Nj4+VHIisdSBYuVUQirTo7P/GDvZZ3fz/4LEnD4yATw+o76EciKx1IrVJURO2eOjviCY29JWR/P/gsScM5oRTD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "6jvoRyIrHUitUlRE7Z46O+IJjb0lZH8/+CxJwzmhFMPqO+hH3/4bSHyYP0TteO87DgmNvapifz+irEfDOaEUw2Pj5Uff/htImMtBRFKL7zt48IO9G3Z/P6KsR8PjIBPD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "Y+PlR5zSGkgaaS5EC95APAjvg71Sc38/TCxGw+MgE8Nj4+VH3/4bSJjLQURSi+87ePCDvRt2fz+irEfD4yATw+o76Eff/htIfJg/RO147zsOCY29qmJ/P6KsR8M5oRTD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "6jvoR9/+G0h8mD9E7XjvOw4Jjb2qYn8/oqxHwzmhFMPqO+hHnNIaSE3eKkRzz0A8hQeNveJffz9MLEbDOaEUw2Pj5Uec0hpIGmkuRAveQDwI74O9UnN/P0wsRsPjIBPD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "Y+PlR1mmGUidBhtE0vmEPOzsg708b38/9qtEw+MgE8Nj4+VHnNIaSBppLkQL3kA8CO+DvVJzfz9MLEbD4yATw+o76Eec0hpITd4qRHPPQDyFB4294l9/P0wsRsM5oRTD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "6jvoR5zSGkhN3ipEc89APIUHjb3iX38/TCxGwzmhFMPqO+hHWaYZSB0kFkS074Q8RgWNvc1bfz/2q0TDOaEUw2Pj5UdZphlInQYbRNL5hDzs7IO9PG9/P/arRMPjIBPD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "Y+PlRxV6GEgfpAdEMY2pPIbOd73jeX8/oStDw+MgE8Nj4+VHWaYZSJ0GG0TS+YQ87OyDvTxvfz/2q0TD4yATw+o76EdZphlIHSQWRLTvhDxGBY29zVt/P/arRMM5oRTD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "6jvoR1mmGUgdJBZEtO+EPEYFjb3NW38/9qtEwzmhFMPqO+hHFXoYSOxpAURMhqk87CWBvYBvfz+hK0PDOaEUw2Pj5UcVehhIH6QHRDGNqTyGzne943l/P6ErQ8PjIBPD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "6jvoRxV6GEjsaQFETIapPOwlgb2Ab38/oStDwzmhFMPqO+hH0k0XSDpg4ENLOK88OV1MvV6ffz9Lq0HDOaEUw2Pj5UfSTRdIVT3tQ2o0rzxUZlO9ppl/P0urQcPjIBPD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "Y+PlR48hFkiVMtFDUXeNPIsHP73nrn8/9SpAw+MgE8Nj4+VH0k0XSFU97UNqNK88VGZTvaaZfz9Lq0HD4yATw+o76EfSTRdIOmDgQ0s4rzw5XUy9Xp9/P0urQcM5oRTD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "Y+PlR+uvIEjjrXFEvCgBu0AijLtG/38/+q1Nw+MgE8Nj4+VHqIMfSChlcET+qjO7oaN4vDX4fz+kLUzD4yATw92K40eogx9IZ5JvRHOqM7uzvXW8Yvh/P6QtTMONoBHD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "3YrjR2VXHkhLFGhEM77TugQCLr3AxH8/Tq1Kw42gEcPdiuNHqIMfSGeSb0RzqjO7s711vGL4fz+kLUzDjaARw2Pj5Ueogx9IKGVwRP6qM7uho3i8Nfh/P6QtTMPjIBPD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "3YrjRyIrHUh+CVZEOl1LvLaudb3yhH8/+CxJw42gEcPdiuNHZVceSEsUaEQzvtO6BAIuvcDEfz9OrUrDjaARw2Pj5UdlVx5IlJBoRDi207qPbzm9uLx/P06tSsPjIBPD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "Y+PlR2VXHkiUkGhEOLbTuo9vOb24vH8/Tq1Kw+MgE8Nj4+VHIisdSBYuVUQirTo7P/GDvZZ3fz/4LEnD4yATw92K40ciKx1IfglWRDpdS7y2rnW98oR/P/gsScONoBHD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "Y+PlRyIrHUgWLlVEIq06Oz/xg72Wd38/+CxJw+MgE8Nj4+VH3/4bSJjLQURSi+87ePCDvRt2fz+irEfD4yATw92K40ff/htIHIA6RD55Q77Kyuy9C4t5P6KsR8ONoBHD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "3YrjR5zSGkhhJRxEQLKEvuANjL3XoXY/TCxGw42gEcPdiuNH3/4bSByAOkQ+eUO+ysrsvQuLeT+irEfDjaARw2Pj5Uff/htImMtBRFKL7zt48IO9G3Z/P6KsR8PjIBPD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "Y+PlR9/+G0iYy0FEUovvO3jwg70bdn8/oqxHw+MgE8Nj4+VHnNIaSBppLkQL3kA8CO+DvVJzfz9MLEbD4yATw92K40ec0hpIYSUcRECyhL7gDYy916F2P0wsRsONoBHD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "3YrjR1mmGUiKTBBELjRSvn/IebyOhHo/9qtEw42gEcPdiuNHnNIaSGElHERAsoS+4A2Mvdehdj9MLEbDjaARw2Pj5Uec0hpIGmkuRAveQDwI74O9UnN/P0wsRsPjIBPD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "Y+PlR5zSGkgaaS5EC95APAjvg71Sc38/TCxGw+MgE8Nj4+VHWaYZSJ0GG0TS+YQ87OyDvTxvfz/2q0TD4yATw92K40dZphlIikwQRC40Ur5/yHm8joR6P/arRMONoBHD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "3YrjRxV6GEjVLwxEd+BjvV/V6ryGf38/oStDw42gEcPdiuNHWaYZSIpMEEQuNFK+f8h5vI6Eej/2q0TDjaARw2Pj5UdZphlInQYbRNL5hDzs7IO9PG9/P/arRMPjIBPD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "Y+PlR1mmGUidBhtE0vmEPOzsg708b38/9qtEw+MgE8Nj4+VHFXoYSB+kB0Qxjak8hs53veN5fz+hK0PD4yATw92K40cVehhI1S8MRHfgY71f1eq8hn9/P6ErQ8ONoBHD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "3YrjR9JNF0hvGvpDUjCvPPRuWr28k38/S6tBw42gEcPdiuNHFXoYSNUvDER34GO9X9XqvIZ/fz+hK0PDjaARw2Pj5UcVehhIH6QHRDGNqTyGzne943l/P6ErQ8PjIBPD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "Y+PlRxV6GEgfpAdEMY2pPIbOd73jeX8/oStDw+MgE8Nj4+VH0k0XSFU97UNqNK88VGZTvaaZfz9Lq0HD4yATw92K40fSTRdIbxr6Q1Iwrzz0blq9vJN/P0urQcONoBHD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "3YrjR48hFkitlNtDC3CNPK3iT73CoX8/9SpAw42gEcPdiuNH0k0XSG8a+kNSMK889G5avbyTfz9Lq0HDjaARw2Pj5UfSTRdIVT3tQ2o0rzxUZlO9ppl/P0urQcPjIBPD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "Y+PlR9JNF0hVPe1DajSvPFRmU72mmX8/S6tBw+MgE8Nj4+VHjyEWSJUy0UNRd408iwc/veeufz/1KkDD4yATw92K40ePIRZIrZTbQwtwjTyt4k+9wqF/P/UqQMONoBHD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "VzLhR2VXHkiQLFdEyAd+vsNmK75+RHQ/Tq1KwzggEMNXMuFHqIMfSKa/bkT8NZK8Q85yvF3ufz+kLUzDOCAQw92K40eogx9IZ5JvRHOqM7uzvXW8Yvh/P6QtTMONoBHD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "3YrjR6iDH0hnkm9Ec6ozu7O9dbxi+H8/pC1Mw42gEcPdiuNHZVceSEsUaEQzvtO6BAIuvcDEfz9OrUrDjaARw1cy4UdlVx5IkCxXRMgHfr7DZiu+fkR0P06tSsM4IBDD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "3YrjR2VXHkhLFGhEM77TugQCLr3AxH8/Tq1Kw42gEcPdiuNHIisdSH4JVkQ6XUu8tq51vfKEfz/4LEnDjaARw1cy4UciKx1IEU4RRDobs7556GS+yuVoP/gsScM4IBDD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "VzLhR9/+G0gIc6dD//6Ovk3VBr6nfXM/oqxHwzggEMNXMuFHIisdSBFOEUQ6G7O+eehkvsrlaD/4LEnDOCAQw92K40ciKx1IfglWRDpdS7y2rnW98oR/P/gsScONoBHD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "3YrjRyIrHUh+CVZEOl1LvLaudb3yhH8/+CxJw42gEcPdiuNH3/4bSByAOkQ+eUO+ysrsvQuLeT+irEfDjaARw1cy4Uff/htICHOnQ//+jr5N1Qa+p31zP6KsR8M4IBDD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "VzLhR5zSGkill3RDQR8kvkRy7bzglHw/TCxGwzggEMNXMuFH3/4bSAhzp0P//o6+TdUGvqd9cz+irEfDOCAQw92K40ff/htIHIA6RD55Q77Kyuy9C4t5P6KsR8ONoBHD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "3YrjR9/+G0gcgDpEPnlDvsrK7L0Li3k/oqxHw42gEcPdiuNHnNIaSGElHERAsoS+4A2Mvdehdj9MLEbDjaARw1cy4Uec0hpIpZd0Q0EfJL5Ecu284JR8P0wsRsM4IBDD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "VzLhR1mmGUilP3JDKeYxvq764DxSAnw/9qtEwzggEMNXMuFHnNIaSKWXdENBHyS+RHLtvOCUfD9MLEbDOCAQw92K40ec0hpIYSUcRECyhL7gDYy916F2P0wsRsONoBHD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "3YrjR5zSGkhhJRxEQLKEvuANjL3XoXY/TCxGw42gEcPdiuNHWaYZSIpMEEQuNFK+f8h5vI6Eej/2q0TDjaARw1cy4UdZphlIpT9yQynmMb6u+uA8UgJ8P/arRMM4IBDD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "VzLhRxV6GEiNT6FD+k1nvgK3zD0yEXg/oStDwzggEMNXMuFHWaYZSKU/ckMp5jG+rvrgPFICfD/2q0TDOCAQw92K40dZphlIikwQRC40Ur5/yHm8joR6P/arRMONoBHD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "3YrjR1mmGUiKTBBELjRSvn/IebyOhHo/9qtEw42gEcPdiuNHFXoYSNUvDER34GO9X9XqvIZ/fz+hK0PDjaARw1cy4UcVehhIjU+hQ/pNZ74Ct8w9MhF4P6ErQ8M4IBDD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "3YrjRxV6GEjVLwxEd+BjvV/V6ryGf38/oStDw42gEcPdiuNH0k0XSG8a+kNSMK889G5avbyTfz9Lq0HDjaARw1cy4UfSTRdI53XjQ0OBDr4l1Ko9pZt8P0urQcM4IBDD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "VzLhR6iDH0imv25E/DWSvEPOcrxd7n8/pC1MwzggEMNXMuFHZVceSJAsV0TIB36+w2Yrvn5EdD9OrUrDOCAQw9HZ3kdlVx5IcGXQQ/c+kL6RcDe+sU9xP06tSsPinw7D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "0dneR2VXHkhwZdBD9z6QvpFwN76xT3E/Tq1Kw+KfDsNXMuFHZVceSJAsV0TIB36+w2Yrvn5EdD9OrUrDOCAQw9HZ3kfuMx1ID9OIQ41SCb1Gmiu9lqF/Pzo4ScPinw7D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "VzLhRyIrHUgRThFEOhuzvnnoZL7K5Wg/+CxJwzggEMPm4t5HIisdSHw0iENbxgm9j70qveyhfz/4LEnDsqUOw57c3kc3MR1IH6KIQ9J0Cb1SZyu9pqF/P8E0ScOtoQ7D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "VzLhR2VXHkiQLFdEyAd+vsNmK75+RHQ/Tq1KwzggEMNXMuFHIisdSBFOEUQ6G7O+eehkvsrlaD/4LEnDOCAQw9HZ3kfuMx1ID9OIQ41SCb1Gmiu9lqF/Pzo4ScPinw7D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "FPTeR38aHUgyDodDM28KvbP5KL29on8/rRdJw7GwDsMt495H3SodSDYviEPGyQm9Zbgqve2hfz+gLEnD36UOw1cy4UciKx1IEU4RRDobs7556GS+yuVoP/gsScM4IBDD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "FPTeR38aHUgyDodDM28KvbP5KL29on8/rRdJw7GwDsNXMuFHIisdSBFOEUQ6G7O+eehkvsrlaD/4LEnDOCAQw2b63kdeFB1IBKOGQ4xeCr2OWCi9MKN/P9UPScO8tA7D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "VzLhR5zSGkill3RDQR8kvkRy7bzglHw/TCxGwzggEMNWrOBHnNIaSLENXEOsN0690wJVvFinfz9MLEbDdMoPwx6s4Efw0xpIsQ1cQyJNTr2Q0VW8PKd/PwAuRsNRyg/D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "VzLhR5zSGkill3RDQR8kvkRy7bzglHw/TCxGwzggEMMerOBH8NMaSLENXEMiTU69kNFVvDynfz8ALkbDUcoPw4ml4Efy8BpIIGddQ1e4TL0oH2O8yqd/PyJTRsMaxg/D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "VzLhR5zSGkill3RDQR8kvkRy7bzglHw/TCxGwzggEMOJpeBH8vAaSCBnXUNXuEy9KB9jvMqnfz8iU0bDGsYPwyud4EfTDRtIp95eQ/mBSr1hm3K8qah/Pxh4RsO/wA/D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "X6/gR4/AGkguBltDp9hJvRFxSrxeq38/MhVGw2XMD8Mgr+BHl8EaSMEZW0NgNUm9n3pIvPirfz+EFkbDPcwPw1cy4Uec0hpIpZd0Q0EfJL5Ecu284JR8P0wsRsM4IBDD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "5bDgR8a2Gkh8tFpD5nNOvSkfS7yop38/qwhGw2DND8NXMuFHnNIaSKWXdENBHyS+RHLtvOCUfD9MLEbDOCAQw9iz4EeOmRpIR1tZQ0QeTb1aWkG8NKl/P0XjRcNCzw/D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "2LPgR46ZGkhHW1lDRB5NvVpaQbw0qX8/ReNFw0LPD8NXMuFHnNIaSKWXdENBHyS+RHLtvOCUfD9MLEbDOCAQw/m04EdWfBpI2QFYQwEpS73Fqze8N6t/P9+9RcP7zw/D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "SLTgRyZfGkh3qFZDJOtIvUK6LbxrrX8/g5hFw4rPD8NXMuFHnNIaSKWXdENBHyS+RHLtvOCUfD9MLEbDOCAQw8ax4EfzQRpIZnxVQ+RbRr11oSO81q9/PyNzRcPwzQ/D",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m5",
+      "material": "Runoff",
+      "payload": "VzLhR1mmGUilP3JDKeYxvq764DxSAnw/9qtEwzggEMPGseBH80EaSGZ8VUPkW0a9daEjvNavfz8jc0XD8M0Pw1cy4Uec0hpIpZd0Q0EfJL5Ecu284JR8P0wsRsM4IBDD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m6",
+      "material": "Runoff",
+      "payload": "9uzsR1mmGUgcXwxEeNmEPGQvn70WMX8/9qtEw+WhF8P27OxHnNIaSLHII0Qcr0A87jGfvSk1fz9MLEbD5aEXw3xF70ec0hpI5D0gRNaDcjzWQai9Pxt/P0wsRsM7IhnD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m6",
+      "material": "Runoff",
+      "payload": "fEXvR5zSGkjkPSBE1oNyPNZBqL0/G38/TCxGwzsiGcN8Re9HWaYZSJx8B0RVG5A85D+ovUsYfz/2q0TDOyIZw/bs7EdZphlIHF8MRHjZhDxkL5+9FjF/P/arRMPloRfD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m6",
+      "material": "Runoff",
+      "payload": "9uzsRxV6GEgO6+lDqXepPD6hi71zWX8/oStDw+WhF8P27OxHWaYZSBxfDER42YQ8ZC+fvRYxfz/2q0TD5aEXw3xF70dZphlInHwHRFUbkDzkP6i9Sxh/P/arRMM7IhnD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m6",
+      "material": "Runoff",
+      "payload": "cJTqR5zSGkh/UydEzr9APN8dlr0pS38/TCxGw48hFsNwlOpH3/4bSGJlPUR+Ze87gR+WvfBNfz+irEfDjyEWw/bs7Eff/htIRjI7RAdR7zuqM5+98Dd/P6KsR8PloRfD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m6",
+      "material": "Runoff",
+      "payload": "cJTqR1mmGUicQRFE6+SEPHYblr0VR38/9qtEw48hFsNwlOpHnNIaSH9TJ0TOv0A83x2WvSlLfz9MLEbDjyEWw/bs7Eec0hpIscgjRByvQDzuMZ+9KTV/P0wsRsPloRfD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m6",
+      "material": "Runoff",
+      "payload": "9uzsR5zSGkixyCNEHK9APO4xn70pNX8/TCxGw+WhF8P27OxHWaYZSBxfDER42YQ8ZC+fvRYxfz/2q0TD5aEXw3CU6kdZphlInEERROvkhDx2G5a9FUd/P/arRMOPIRbD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m6",
+      "material": "Runoff",
+      "payload": "cJTqRxV6GEh0X/ZDH3+pPOpjhr2wZH8/oStDw48hFsNwlOpHWaYZSJxBEUTr5IQ8dhuWvRVHfz/2q0TDjyEWw/bs7EdZphlIHF8MRHjZhDxkL5+9FjF/P/arRMPloRfD",
+      "copies": 1
+    },
+    {
+      "tile": "Tile_Street_m7_m6",
+      "material": "Runoff",
+      "payload": "9uzsR1mmGUgcXwxEeNmEPGQvn70WMX8/9qtEw+WhF8P27OxHFXoYSA7r6UOpd6k8PqGLvXNZfz+hK0PD5aEXw3CU6kcVehhIdF/2Qx9/qTzqY4a9sGR/P6ErQ8OPIRbD",
+      "copies": 1
+    }
+  ],
+  "geometry": {
+    "ring_xy_m": [
+      [
+        -1636.389717389071,
+        -1178.8596608518567
+      ],
+      [
+        -1631.235340591402,
+        -1169.4169017511933
+      ],
+      [
+        -1624.2120755178203,
+        -1156.4345081606637
+      ],
+      [
+        -1619.569722905856,
+        -1147.7086370585318
+      ],
+      [
+        -1605.036769783152,
+        -1140.2709240779418
+      ],
+      [
+        -1546.1710559601597,
+        -1173.1245568667848
+      ],
+      [
+        -1571.9770748933695,
+        -1215.712184504949
+      ],
+      [
+        -1583.8389685164352,
+        -1208.6217141485233
+      ],
+      [
+        -1579.99878712759,
+        -1202.2257290404268
+      ],
+      [
+        -1589.0189465236626,
+        -1196.6586456794885
+      ],
+      [
+        -1593.1236737415763,
+        -1203.1442417876005
+      ],
+      [
+        -1594.8730897074308,
+        -1202.1137152902083
+      ],
+      [
+        -1615.4820631609812,
+        -1189.7922028227038
+      ],
+      [
+        -1606.086419362907,
+        -1174.4127149883261
+      ],
+      [
+        -1583.7365636794154,
+        -1187.8655663283403
+      ],
+      [
+        -1587.5170089138383,
+        -1193.9367115616792
+      ],
+      [
+        -1578.309107316765,
+        -1199.2237605482658
+      ],
+      [
+        -1566.5922872127092,
+        -1179.531743349983
+      ],
+      [
+        -1605.4122541857598,
+        -1156.2328834112257
+      ],
+      [
+        -1623.6829838602894,
+        -1186.3757834565652
+      ]
+    ],
+    "floor_relative_m": 2.6179030158204664,
+    "cornice_m": 20.5,
+    "roof_rise_m": 2.46,
+    "pavilion_top_m": 26.38,
+    "height_uncertainty_m": 5.0,
+    "bands": {
+      "ground_bottom_m": 0.2,
+      "ground_head_m": 4.7,
+      "first_belt_m": 7.1,
+      "middle_bottom_m": 8.4,
+      "middle_head_m": 12.1,
+      "second_belt_m": 13.7,
+      "upper_bottom_m": 15.8,
+      "upper_head_m": 18.65
+    },
+    "main_fractions": [
+      0.049,
+      0.125,
+      0.168,
+      0.21,
+      0.253,
+      0.295,
+      0.369,
+      0.459,
+      0.552,
+      0.636,
+      0.679,
+      0.721,
+      0.764,
+      0.806,
+      0.865,
+      0.966
+    ],
+    "main_ground": [
+      {
+        "fraction": 0.049,
+        "width_m": 2.85,
+        "round_head": false
+      },
+      {
+        "fraction": 0.125,
+        "width_m": 2.85,
+        "round_head": false
+      },
+      {
+        "fraction": 0.198,
+        "width_m": 1.45,
+        "round_head": false
+      },
+      {
+        "fraction": 0.271,
+        "width_m": 2.85,
+        "round_head": false
+      },
+      {
+        "fraction": 0.369,
+        "width_m": 2.85,
+        "round_head": false
+      },
+      {
+        "fraction": 0.459,
+        "width_m": 1.8,
+        "round_head": true
+      },
+      {
+        "fraction": 0.552,
+        "width_m": 2.85,
+        "round_head": false
+      },
+      {
+        "fraction": 0.636,
+        "width_m": 2.85,
+        "round_head": false
+      },
+      {
+        "fraction": 0.724,
+        "width_m": 1.45,
+        "round_head": false
+      },
+      {
+        "fraction": 0.802,
+        "width_m": 2.85,
+        "round_head": false
+      },
+      {
+        "fraction": 0.865,
+        "width_m": 2.85,
+        "round_head": false
+      },
+      {
+        "fraction": 0.966,
+        "width_m": 2.45,
+        "round_head": false
+      }
+    ]
+  },
+  "source_note": "Source-qualified17 projected upper/middle groups and distinct13-group ground working estimate.20.5m cornice/26.38m crown\u00b15m are photo/plan architectural estimates, not survey or old6x3.4tag validation. Inherited datum and actual95packed Ground supports retained. Entry thresholds/steps, exact edge intervals and rear/courtyard details held; plain rear estimate and occupied U roof only. Replace41104legacyowner rows only; current neighbors/tree normals/materials remain exact. Native/cooked acceptance pending."
+}

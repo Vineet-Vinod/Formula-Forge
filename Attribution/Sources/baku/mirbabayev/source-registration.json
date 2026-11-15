@@ -1,0 +1,230 @@
+{
+  "status": "Production-adapter work source-qualified; native/cooked/whole-route acceptance pending",
+  "owner": {
+    "osm_id": 133160749,
+    "name": "Seyid Mirbabayev former tenement / SOCAR Transportation Department",
+    "address": "Niyazi 1, Baku",
+    "osm_tags": {
+      "addr:city": "Bak\u0131",
+      "addr:housenumber": "1",
+      "addr:street": "Niyazi k\u00fc\u00e7\u0259si",
+      "building": "commercial",
+      "building:levels": "6",
+      "name": "Socar N\u0259qliyyat idar\u0259si",
+      "name:az": "Socar N\u0259qliyyat idar\u0259si",
+      "name:en": "Socar Transportation Department",
+      "name:ru": "\u0422\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u044b\u0439 \u0434\u0435\u043f\u0430\u0440\u0442\u0430\u043c\u0435\u043d\u0442 \u0421\u043e\u043a\u0430\u0440"
+    },
+    "literal_ring_xy_m": [
+      [
+        -1636.389717389071,
+        -1178.8596608518567
+      ],
+      [
+        -1631.235340591402,
+        -1169.4169017511933
+      ],
+      [
+        -1624.2120755178203,
+        -1156.4345081606637
+      ],
+      [
+        -1619.569722905856,
+        -1147.7086370585318
+      ],
+      [
+        -1605.036769783152,
+        -1140.2709240779418
+      ],
+      [
+        -1546.1710559601597,
+        -1173.1245568667848
+      ],
+      [
+        -1571.9770748933695,
+        -1215.712184504949
+      ],
+      [
+        -1583.8389685164352,
+        -1208.6217141485233
+      ],
+      [
+        -1579.99878712759,
+        -1202.2257290404268
+      ],
+      [
+        -1589.0189465236626,
+        -1196.6586456794885
+      ],
+      [
+        -1593.1236737415763,
+        -1203.1442417876005
+      ],
+      [
+        -1594.8730897074308,
+        -1202.1137152902083
+      ],
+      [
+        -1615.4820631609812,
+        -1189.7922028227038
+      ],
+      [
+        -1606.086419362907,
+        -1174.4127149883261
+      ],
+      [
+        -1583.7365636794154,
+        -1187.8655663283403
+      ],
+      [
+        -1587.5170089138383,
+        -1193.9367115616792
+      ],
+      [
+        -1578.309107316765,
+        -1199.2237605482658
+      ],
+      [
+        -1566.5922872127092,
+        -1179.531743349983
+      ],
+      [
+        -1605.4122541857598,
+        -1156.2328834112257
+      ],
+      [
+        -1623.6829838602894,
+        -1186.3757834565652
+      ]
+    ],
+    "origin_lat_lon": [
+      40.3726832406754,
+      49.853217636212044
+    ],
+    "uniform_scale": 1.0062366339173152
+  },
+  "identity_sources": [
+    {
+      "url": "https://anl.az/el/Kitab/2018/10/cd/Ar2010-1727.pdf",
+      "finding": "Indexed primary architecture text identifies Niyazi 1/former Sadovaya Mirbabayev tenement, P.Stern, 1890s, SOCAR office.",
+      "access_limit": "Search-index text inspected; direct PDF403, not treated as independently read PDF."
+    },
+    {
+      "url": "https://www.anl.az/el/Kitab/2018/10/cd/Azf-304442.pdf",
+      "finding": "Indexed primary page 169/adjacent text identifies three-storey French Renaissance building, P.Stern, Mirbabayev.",
+      "access_limit": "No metric height supplied; source indexed text only."
+    }
+  ],
+  "source_observations": {
+    "principal_facade_bands": 3,
+    "upper_middle_projected_groups": 17,
+    "grouping": [
+      1,
+      1,
+      5,
+      3,
+      5,
+      1,
+      1
+    ],
+    "ground_working_projected_groups": 13,
+    "roof": "Gray/slate pitched/hipped roof, chimneys, raised end/corner caps with oval apertures and lanterns, central crown. No Foundation blue dome/patterned panels or repeated hotel dormers.",
+    "registration": "Main long edge4, chamfer3, returns0\u20132 plausible; exact image-to-edge intervals remain estimates. Original repeated GPS point~1km away is unusable.",
+    "unknown_rear": "Plain conservative facade and bounded roof continuation only; literal occupied U leaves courtyard open."
+  },
+  "dimensions": {
+    "cornice_estimate_m": 20.5,
+    "highest_crown_estimate_m": 26.38,
+    "broad_height_uncertainty_m": 5.0,
+    "method": "Photo-relative proportions anchored to literal 67.413 m straight frontage; unregistered camera/crop prevents survey claim. Belts/openings rebuilt separately, small trim/frame/rail sizes retained.",
+    "legacy_height_m": 20.4,
+    "legacy_definition": "Six tagged levels times3.4m, used solely to bind/remove the old generic family; no validation of new height or floor count.",
+    "datum_relative_m": 2.6179030158204664,
+    "datum_limit": "Retained old minimum renderer/provider datum, not measured bare earth, entrance or sill.",
+    "facade_proportion_comparison": {
+      "status": "Actual packed main-face aperture/band proportions vs approximate original-photo observations; not calibrated metric survey",
+      "source_original_sha256": "c2178631759105742e89ae27572a4dc6ded565540e2f2c2aa801247a683e93fc",
+      "preview_pixel_scale": "Coordinates refer to1600x632 inspection preview of4223x1668 original, unrectified; manual\u00b110\u201320px uncertainty",
+      "photo_reference": {
+        "base_y": 580,
+        "cornice_y": 190,
+        "straight_front_x": [
+          210,
+          1470
+        ],
+        "first_belt_y": 445,
+        "second_belt_y": 320
+      },
+      "cornice_to_literal_straight_width_ratio": 0.30409495054043467,
+      "photo_approx_body_to_straight_width_ratio": 0.30952380952380953,
+      "belts": {
+        "first_actual_fraction": 0.3463414634146341,
+        "first_photo_fraction": 0.34615384615384615,
+        "second_actual_fraction": 0.6682926829268292,
+        "second_photo_fraction": 0.6666666666666666
+      },
+      "apertures": {
+        "ground": {
+          "actual_packed_glass_triangles": 204,
+          "actual_bottom_m": 0.20000004768371582,
+          "actual_head_m": 4.699999809265137,
+          "actual_bottom_fraction": 0.009756099887010528,
+          "actual_head_fraction": 0.22926828337878716,
+          "photo_approx_bottom_fraction": 0.01282051282051282,
+          "photo_approx_head_fraction": 0.2358974358974359
+        },
+        "middle": {
+          "actual_packed_glass_triangles": 122,
+          "actual_bottom_m": 8.399999618530273,
+          "actual_head_m": 12.100000381469727,
+          "actual_bottom_fraction": 0.4097560789526963,
+          "actual_head_fraction": 0.5902439210473037,
+          "photo_approx_bottom_fraction": 0.41025641025641024,
+          "photo_approx_head_fraction": 0.5897435897435898
+        },
+        "upper": {
+          "actual_packed_glass_triangles": 44,
+          "actual_bottom_m": 15.799999237060547,
+          "actual_head_m": 18.649999618530273,
+          "actual_bottom_fraction": 0.7707316701005145,
+          "actual_head_fraction": 0.9097560789526963,
+          "photo_approx_bottom_fraction": 0.7692307692307693,
+          "photo_approx_head_fraction": 0.8974358974358975
+        }
+      },
+      "construction": "Independently placed bands/openings; moulding/frame/rail dimensions retained. This is the actual taller packed mesh, not the prior height-control remap.",
+      "uncertainty": "20.5 m cornice/26.38 m crown\u00b15 m remain estimates. Unregistered camera/crop, exact edge intervals and datum are held."
+    }
+  },
+  "source_geometry": {
+    "removed_legacy_rows": 41104,
+    "legacy_counter_sha256": "ac77ce06a727579dcd53317cb945f75636dce9e984ff9b4a78d4b187887afb9a",
+    "added_candidate_rows": 122684,
+    "candidate_counter_sha256": "b96ab962836ad38c79373a7c5b59bf061007b7e17aab794f592a1efd7046cfc4",
+    "private_frozen_file_map_sha256": "5f46d868257c08717719f07b60a5bd1a9c98b755888a53fc4a11e3eaf36f2cab",
+    "private_freeze_receipt_sha256": "69a02ccda204d35fedb25003c303d837f5ccf60bdabe6e7894e05bf17c2e5525",
+    "private_proof_sha256": "256789416766c8e3eb3e4d5acf14a24285ab4dd54df1beaed2ab0bc1fdc51ba6",
+    "source_review_sha256": "42b6fbde7425dd0e94650f2867104eab76c524d1cf952522c744fdef7a318f3e"
+  },
+  "qualified_packed_checks": {
+    "minimum_normal_alignment": 0.9997995403625544,
+    "collapsed_faces": 0,
+    "normal_flags": 0,
+    "perimeter_probes": 860,
+    "missing_support_probes": 0,
+    "minimum_burial_m": 0.3029883638673194,
+    "conservative_road_clearance_m": 4.309879722283372,
+    "minimum_packed_barrier_slab_clearance_m": 0.20767795398176617,
+    "roof_raw_literal_packed_missing_m2": 0.0048355755369651485,
+    "roof_missing_beyond_f32_width_bound_m2": 0.0,
+    "roof_f32_width_bound_m": 0.00017469381074217106,
+    "rustication_max_curve_change_m": 0.0002846704711539329
+  },
+  "scope": "Replace ONLY41104old-owner rows; retain all actual current neighboring payloads,163tree normal/material fields, Foundation and Ground/Road/protection. No old frozen-parent replay, paving/park/threshold/step changes.",
+  "remaining_limits": [
+    "Metric/camera/absolute ground uncertainty",
+    "Exact opening-edge intervals and entry registration",
+    "Unphotographed rear details",
+    "UE material/lighting and native/cooked whole-route acceptance"
+  ]
+}

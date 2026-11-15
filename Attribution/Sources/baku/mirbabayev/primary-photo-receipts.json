@@ -1,0 +1,77 @@
+{
+  "status": "Reference-only original photographs; no pixels shipped in game assets",
+  "originals_retained_under": "build/reviews/resume-20261115/baku/mirbabayev-private",
+  "photos": [
+    {
+      "file": "azneft-square-original.jpg",
+      "source_title": "File:Azneft meydan\u0131 v\u0259 Seyid Mirbabayevin saray\u0131.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/1/14/Azneft_meydan%C4%B1_v%C9%99_Seyid_Mirbabayevin_saray%C4%B1.jpg",
+      "page_url": "https://commons.wikimedia.org/wiki/File:Azneft_meydan%C4%B1_v%C9%99_Seyid_Mirbabayevin_saray%C4%B1.jpg",
+      "retained": true,
+      "expected_bytes": 1944639,
+      "dimensions": [
+        5184,
+        3456
+      ],
+      "author": "<a href=\"//commons.wikimedia.org/wiki/User:Sefer_azeri\" title=\"User:Sefer azeri\">Sefer azeri</a>",
+      "credit": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "date": "2011-01-03 19:14:12",
+      "description": "This is a photo of a monument in Azerbaijan identified by the ID 152",
+      "gps": {},
+      "use": "Unedited original retained privately for geometry reference; source pixels not shipped.",
+      "sha256": "1c313fa59b8659cab04bcb05acab63c910faab60d7efd473bc781f7e721a12e2"
+    },
+    {
+      "file": "common-original.jpg",
+      "source_title": "File:Palace of Mirtaghi Babayev common.JPG",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Palace_of_Mirtaghi_Babayev_common.JPG",
+      "page_url": "https://commons.wikimedia.org/wiki/File:Palace_of_Mirtaghi_Babayev_common.JPG",
+      "retained": true,
+      "expected_bytes": 8135834,
+      "dimensions": [
+        4650,
+        3016
+      ],
+      "author": "<a href=\"//commons.wikimedia.org/wiki/User:Urek_Meniashvili\" title=\"User:Urek Meniashvili\">Urek Meniashvili</a>",
+      "credit": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "date": "2013-09-15 12:36:16",
+      "description": "This is a photo of a monument in Azerbaijan identified by the ID 152",
+      "gps": {
+        "GPSLatitude": "40.379820",
+        "GPSLongitude": "49.847934",
+        "GPSMapDatum": "WGS-84"
+      },
+      "use": "Unedited original retained privately for geometry reference; source pixels not shipped.",
+      "sha256": "ed2ec8635337344215e634fced312bcd7018b64f7e0bc4049dd253b313f61bd4"
+    },
+    {
+      "file": "main-facade-original.jpg",
+      "source_title": "File:Palace of Mirtaghi Babayev main facade.JPG",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Palace_of_Mirtaghi_Babayev_main_facade.JPG",
+      "page_url": "https://commons.wikimedia.org/wiki/File:Palace_of_Mirtaghi_Babayev_main_facade.JPG",
+      "retained": true,
+      "expected_bytes": 4558163,
+      "dimensions": [
+        4223,
+        1668
+      ],
+      "author": "<a href=\"//commons.wikimedia.org/wiki/User:Urek_Meniashvili\" title=\"User:Urek Meniashvili\">Urek Meniashvili</a>",
+      "credit": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "date": "2013-09-15 12:31:25",
+      "description": "This is a photo of a monument in Azerbaijan identified by the ID 152",
+      "gps": {
+        "GPSLatitude": "40.379820",
+        "GPSLongitude": "49.847934",
+        "GPSMapDatum": "WGS-84"
+      },
+      "use": "Unedited original retained privately for geometry reference; source pixels not shipped.",
+      "sha256": "c2178631759105742e89ae27572a4dc6ded565540e2f2c2aa801247a683e93fc"
+    }
+  ]
+}

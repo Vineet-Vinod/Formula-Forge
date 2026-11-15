@@ -1,0 +1,20 @@
+{
+  "status": "Actual current58cb source support witnesses, no terrain replacement",
+  "source_manifest_sha256": "f0d70eed661da5c0384ebc298d428c1a9844971e3380cfed99048201d15bee9f",
+  "recorded_native_revision": "58cb",
+  "unique_packed_supports": 95,
+  "source_perimeter_samples": 860,
+  "source_minimum_burial_m": 0.3029883638673194,
+  "input_tiles": [
+    {
+      "name": "Tile_Street_m7_m5",
+      "sha256": "fb224288f6770565faefb7cc2f1120a16ce6c162c59812819c570293349c34b3"
+    },
+    {
+      "name": "Tile_Street_m7_m6",
+      "sha256": "0950bbdd0e9f8f946295248d5182014d206a4bab031d29e4bace1a76f74d6320"
+    }
+  ],
+  "literal_owner_frame": "source-registration.json",
+  "schema": "PackedPatchRow payload is Base64 encoded96-byte native vertex attributes; materials named independently of global index. Preserve support rows exactly or requalify contacts."
+}
