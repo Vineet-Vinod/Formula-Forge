@@ -1,0 +1,196 @@
+{
+  "state": "Read-only feasibility packet; no geometry authored; no source survey or new acceptance",
+  "retained_section_manifest_sha256": "c1e8649dbcd792833cf3d0bf4393bd849cb904b18f9ba56e6b95a8f9dc2a073b",
+  "current_inspected_manifest_sha256": "36410daa6b7005830693c2a2f16c70d33e37cacdf10124df7d7e20da8918c52a",
+  "current_tile_sha256_verified": "5e499949f821231eeca8a6b2f0fc93bf1026e30c434fc07d66632c33af77778b",
+  "source_files_sha256": {
+    "connected-road-sections.json": "80363ca6b65f8c75b6e6f1280547919da17dd0133c63a12a3029df177b4119d9",
+    "collar-probe.json": "d7f968cb1faa8a2771caa38cf8fea56b5837d4877405ec9021b205b139eb0b65",
+    "finite-road-domain-proposal.json": "22687ae6b76fd341293c00372f413b932168e8a8da4fc635776b335c5deb8ac8",
+    "immediate-walk-amendment.json": "6117c4fed38cc6f78c0e1ff54816b679c0b82adf21e6246ba01131365ef16505",
+    "ordinary-island-source-proposal.json": "4bb23122ec1ff8b1e85f755895546b385c4f05a3e2293c3b34e95d23cf259a1b"
+  },
+  "manual_boundary_uncertainty_m": 1.5,
+  "estimates": "Road reconstruction uses retained profile+0.02m render allowance, \u00b12% crossfall from legal edge; curb0.12\u20130.18m and walk drainage0\u20132%. Bounds are reconstruction hypotheses, not survey confidence intervals.",
+  "unknown": "Upper retaining-edge source Z, physical height and section/steps remain unqualified. Old mesh Z at traced XY is recorded separately.",
+  "sections": [
+    {
+      "station_m": 3919.68359,
+      "retained_road_xyz_m": [
+        -1629.05505,
+        -1115.37244,
+        3.89992046
+      ],
+      "current_road_surface_z_m": 3.9059229878371644,
+      "retained_actual_road_surface_z_m": 3.905922987837165,
+      "road_height_residual_m": -4.440892098500626e-16,
+      "asphalt_intervals_lane_m": [
+        [
+          -24.57175493645616,
+          -10.631542784988337
+        ]
+      ],
+      "lower_walk_intervals_lane_m": [
+        [
+          -28.977097089618955,
+          -24.57175493645616
+        ]
+      ],
+      "approved_island_intervals_lane_m": [],
+      "upper_controls": [
+        {
+          "signed_right_lane_m": -28.977097089618955,
+          "native_xy_m": [
+            -1615.7862657562027,
+            -1089.6117799976814
+          ],
+          "old_rendered_z_m": 6.2245043377072005,
+          "old_payload_sha256": "cee23e2409bb45cf7d1eb81b1eb0300499291a9315ed238e16d05ec62f1bb516",
+          "old_owner_row": 6093,
+          "current_exact_payload_rows": [
+            5093
+          ],
+          "estimated_lower_walk_z_range_m": [
+            3.681116195870877,
+            4.546831567192379
+          ],
+          "retained_boundary_minimum_gap_m": 1.677672770514821,
+          "source_upper_boundary_z_m": null
+        }
+      ]
+    },
+    {
+      "station_m": 3935.07202,
+      "retained_road_xyz_m": [
+        -1615.36731,
+        -1122.40405,
+        3.23474073
+      ],
+      "current_road_surface_z_m": 3.240739693659519,
+      "retained_actual_road_surface_z_m": 3.2407396936595196,
+      "road_height_residual_m": -4.440892098500626e-16,
+      "asphalt_intervals_lane_m": [
+        [
+          -25.91801834971323,
+          -10.084814689312816
+        ]
+      ],
+      "lower_walk_intervals_lane_m": [
+        [
+          -30.15038550064335,
+          -25.91801834971323
+        ]
+      ],
+      "approved_island_intervals_lane_m": [],
+      "upper_controls": [
+        {
+          "signed_right_lane_m": -30.15038550064335,
+          "native_xy_m": [
+            -1601.7052494464342,
+            -1095.5266635367852
+          ],
+          "old_rendered_z_m": 6.118231898069641,
+          "old_payload_sha256": "e58a36b5414222c2a48e41dc6219ae95de78d46052f4aa2c1595b801891379fc",
+          "old_owner_row": 5980,
+          "current_exact_payload_rows": [
+            5040
+          ],
+          "estimated_lower_walk_z_range_m": [
+            2.9780766444057356,
+            3.916052158612867
+          ],
+          "retained_boundary_minimum_gap_m": 2.2021797394567737,
+          "source_upper_boundary_z_m": null
+        }
+      ]
+    },
+    {
+      "station_m": 3949.72778,
+      "retained_road_xyz_m": [
+        -1602.32043,
+        -1129.08008,
+        2.7161088
+      ],
+      "current_road_surface_z_m": 2.722109820187481,
+      "retained_actual_road_surface_z_m": 2.722109820187481,
+      "road_height_residual_m": 0.0,
+      "asphalt_intervals_lane_m": [
+        [
+          -26.66366363895881,
+          -10.569795419876906
+        ]
+      ],
+      "lower_walk_intervals_lane_m": [
+        [
+          -30.79756497426575,
+          -26.66366363895881
+        ]
+      ],
+      "approved_island_intervals_lane_m": [],
+      "upper_controls": [
+        {
+          "signed_right_lane_m": -30.79756497426575,
+          "native_xy_m": [
+            -1588.1988497881948,
+            -1101.7109170513181
+          ],
+          "old_rendered_z_m": 6.229147764479924,
+          "old_payload_sha256": "d592e5facba0ad795cb7cd13af2c90abd102bc809b0cc32cb406954f3cdce7ca",
+          "old_owner_row": 5983,
+          "current_exact_payload_rows": [
+            5043
+          ],
+          "estimated_lower_walk_z_range_m": [
+            2.442835527220824,
+            3.4120600994853154
+          ],
+          "retained_boundary_minimum_gap_m": 2.8170876649946086,
+          "source_upper_boundary_z_m": null
+        }
+      ]
+    },
+    {
+      "station_m": 3965.11621,
+      "retained_road_xyz_m": [
+        -1588.38806,
+        -1135.55945,
+        2.30536509
+      ],
+      "current_road_surface_z_m": 2.311363829805707,
+      "retained_actual_road_surface_z_m": 2.311363829805707,
+      "road_height_residual_m": 0.0,
+      "asphalt_intervals_lane_m": [
+        [
+          -27.690738846173183,
+          -11.300553109774132
+        ]
+      ],
+      "lower_walk_intervals_lane_m": [
+        [
+          -32.037917868473684,
+          -27.690738846173183
+        ]
+      ],
+      "approved_island_intervals_lane_m": [],
+      "upper_controls": [
+        {
+          "signed_right_lane_m": -32.037917868473684,
+          "native_xy_m": [
+            -1579.5132709401676,
+            -1104.7752628086287
+          ],
+          "old_rendered_z_m": null,
+          "old_payload_sha256": null,
+          "old_owner_row": null,
+          "current_exact_payload_rows": [],
+          "estimated_lower_walk_z_range_m": [
+            2.0115503130765364,
+            3.026123447369474
+          ],
+          "retained_boundary_minimum_gap_m": null,
+          "source_upper_boundary_z_m": null
+        }
+      ]
+    }
+  ]
+}

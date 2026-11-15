@@ -1,0 +1,24 @@
+Four read-only incoming-Niyazi sections are frozen in `niyazi-sections.json`, with `niyazi-sections.png` and exportable `niyazi-sections.svg`. No geometry was authored. The fourth section intentionally retains an unresolved upper ground-owner control; three sections have an exact current packed-plane binding.
+
+The inspected current generated manifest is `36410daa6b7005830693c2a2f16c70d33e37cacdf10124df7d7e20da8918c52a`. Its Street tile SHA256 is `5e499949f821231eeca8a6b2f0fc93bf1026e30c434fc07d66632c33af77778b`, verified before sampling. All four current packed Road centre heights match the retained source-section observations within 5e-16 m. Three upper-edge old payloads were found unchanged in this current tile, despite changed row indices. Their hashes and current/old row bindings are in the JSON. The current manifest was unchanged at completion.
+
+| Retained road station, m | Current Road Z, m | Traced upper-edge XY, m | Retained upper mesh Z, m | Estimated lower-walk range, m | Minimum gap to retained mesh, m |
+| ---: | ---: | --- | ---: | --- | ---: |
+| 3919.684 | 3.905923 | -1615.786266, -1089.611780 | 6.224504 | 3.681116–4.546832 | 1.677673 |
+| 3935.072 | 3.240740 | -1601.705249, -1095.526664 | 6.118232 | 2.978077–3.916052 | 2.202180 |
+| 3949.728 | 2.722110 | -1588.198850, -1101.710917 | 6.229148 | 2.442836–3.412060 | 2.817088 |
+| 3965.116 | 2.311364 | -1579.513271, -1104.775263 | unresolved | 2.011550–3.026123 | unresolved |
+
+The continuous source-traced walk widths at these sections are respectively 4.405342, 4.232367, 4.133901 and 4.347179 m. Asphalt and walk intervals are literal intersections with the retained source-qualified polygons, in signed right-lane coordinates. The traced plan uncertainty remains ±1.5 m. The line work is source-bound, not survey-accurate. All four section segments have zero intersection with the approved ordinary-island planning domain. No island geometry or other source geometry was modified.
+
+The lower-walk ranges are deliberately conservative reconstruction hypotheses. They combine the retained road profile plus its prior +0.02 m render allowance, ±2% crossfall from the legal road edge to the walk's street edge, a 0.12–0.18 m curb, and 0–2% rise across the walk toward its upper edge. They are not statistical height confidence intervals. The source upper retaining height is null in every section. The retained mesh Z is therefore never labeled a measured wall top, terrace floor or ground survey.
+
+The three positive gaps demonstrate that a lower walk within those hypotheses cannot make a continuous same-XY join to the retained outer plane. Spreading the remaining gap across the entire 4.1–4.4 m walk would add roughly 38–68% mean grade before the existing 2% drainage allowance. This reproduces the constraint conflict behind the failed collars; it is not evidence for a real steep ramp or tall wall. A broader smoothing kernel cannot satisfy both incompatible levels while preserving the proposed ordinary walk.
+
+The 3965.116 m upper point lies outside the retained 875-plane inventory used by the rejected road trial. This does not establish a hole in the current mesh. Its old rendered upper Z and owner remain null. A later bounded same-XY owner query must distinguish ground from Concrete barrier caps, roof or underground-entry structure before assigning that control. It must not use nearest-plane extrapolation to fill it.
+
+The plots connect retained 4 m lane samples as visual guides. They do not represent a new triangulation. Dark triangles mark old plane values queried at the traced upper edge; magenta lines mark that plan edge with source Z unknown. The orange and green bands are estimated street/walk levels, not measured error bands. Concrete cap samples were not promoted into ground heights.
+
+The next reconstruction decision is concrete: obtain a justified upper-edge/entrance section or permit a separately source-qualified finite upper-ground reconstruction. Until then, keep the incompatible edge segments held. Literal underpass step lines locate access links but do not provide missing top/bottom Z or riser counts. The supported road/lower-walk hypothesis may be tested only where it can terminate coherently. A floating skin, hidden vertical closure or forced steep bank would evade these constraints.
+
+The typed producer uses retained JSON and one small current Street tile, not CircuitScene, terrain generation, a native import or a renderer. It ran once under shared heavy.lock as `ff-resume-nov14-niyazi-four-sections`, capped at 1000M/noSwap/CPU100% with a 30-second execution timeout, and finished at 17:27:23 UTC. Python compilation, Mypy on the two files, and Ruff E9/F pass. Mypy suppresses untyped external-import diagnostics only. No network, canonical, runtime, engine, asset or CVar change occurred.

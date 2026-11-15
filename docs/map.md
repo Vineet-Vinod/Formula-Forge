@@ -879,6 +879,10 @@ neighbors and retain the strict topology checks. Never excuse a resolvable
 encoding failure as unrepresentable or flatten a different mapped feature.
 Source-camera approval still needs a fresh cooked driving review.
 
+The separate [Niyazi section study](../Attribution/Sources/baku/junction/niyazi-study.md)
+records the retained-boundary conflict and explicitly unknown source heights.
+Check those constraints before trying another blend or inventing a wall.
+
 ### Villa de Rome architecture
 
 `venues.monaco_rome.finish_terrain(scene)` replaces only the exact 1,822-row generic Villa de Rome family in `Building_City_m1_01`. It operates on the current tile after other terrain/property producers, preserving every other packed row and the existing material-table prefix. It never reloads a saved parent City tile. Keep the call before final tile partition/save; Hermosa garden/tree updates and the underarch woodland remain independent.
