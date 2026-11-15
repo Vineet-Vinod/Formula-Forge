@@ -16,3 +16,8 @@ Reviewed the frozen packet `build/reviews/resume-20261114/baku/city1179-private`
 The camera studies at stations 1179.130 m, 1272.615 m, and 1312.684 m place the source-specific facades in a plausible sequence along the actual route. They do not reveal a false wrapped portico or a new footprint spilling into the road. The elevation studies are intentionally flat-color, so they establish organization and silhouette only, not final daytime materials, lighting, or legibility.
 
 The broad dimensions and storey heights are architectural estimates, not survey measurements. Preserve the retained ground and the unselected roof planes. The stated 5.568 m Gallery Ground clearance and the geometric proofs support proceeding to a bounded adapter, but they do not prove that every threshold or step is correct. The 850.521 m² unqualified western/rear area remains outside this candidate. No native/runtime acceptance is granted here.
+
+
+## Subsequent canopy-only source revision — 2026-11-15
+
+The architecture and held rows from this review remain unchanged. The family of 31 trees now uses the separately reviewed crown revision: 4,278 triangles versus 3,162 (+1,116), with the same poses, packed roots and Ground. See canopy-source-review.md and canopy-atlas.json. Canonical/private replay and four focused checks pass; native/cooked canopy acceptance and whole-Baku acceptance remain pending.

@@ -15,7 +15,7 @@ from venues.baku_khagani import finish, prepare
 from venues.baku_khagani_dataclasses import KhaganiGroundSource
 
 SOURCES = Path(__file__).resolve().parents[1] / "Attribution/Sources/baku"
-EXPECTED_CITY = "1d4410abaaeddffd43f1fbe2c3d03b09984b625d283a02af682f5fcee7dc83f5"
+EXPECTED_CITY = "dc5705240aaf6132fb7eab4f769cafcad88f840284570f635ed9cdd3dd2b985f"
 
 
 def supported_scene() -> tuple[CircuitScene, KhaganiGroundSource]:
@@ -69,7 +69,7 @@ def test_khagani_replays_frozen_geometry_without_terrain_or_road_change() -> Non
         name: (scene.tiles[name].materials, bytes(scene.tiles[name].triangles))
         for name in before
     } == before
-    assert city_digest(scene) == (166942, EXPECTED_CITY)
+    assert city_digest(scene) == (168058, EXPECTED_CITY)
     assert not scene.terrain_cutouts
     assert scene.vegetation[-1]["count"] == 31
 
@@ -105,4 +105,27 @@ def test_khagani_rejects_stale_legacy_replay_atomically(tmp_path: Path) -> None:
     prepare(scene)
     with pytest.raises(ValueError, match="legacy body changed"):
         finish(scene)
+    assert not any(name.startswith("Building_") for name in scene.tiles)
+
+
+def test_khagani_rejects_changed_accepted_leaf_source_before_reservation(
+    tmp_path: Path,
+) -> None:
+    scene, guard = supported_scene()
+    folder = tmp_path / "khagani"
+    folder.mkdir()
+    for name in ("recipe.json.gz", "canopy.json.gz"):
+        (folder / name).write_bytes((SOURCES / "khagani" / name).read_bytes())
+    atlas = "Content/Generated/Interlagos/Textures/runtime_leaf_silhouette_color.uasset"
+    assert atlas in guard.protected_source_sha256
+    expected = dict(guard.protected_source_sha256)
+    expected[atlas] = "0" * 64
+    guard = replace(guard, protected_source_sha256=expected)
+    (folder / "ground-supports.json.gz").write_bytes(
+        gzip.compress(TypeAdapter(KhaganiGroundSource).dump_json(guard), mtime=0)
+    )
+    scene.sources = tmp_path
+    with pytest.raises(ValueError, match="protected source changed"):
+        prepare(scene)
+    assert not scene.modeled_buildings
     assert not any(name.startswith("Building_") for name in scene.tiles)

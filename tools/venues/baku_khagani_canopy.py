@@ -5,15 +5,34 @@ import math
 from circuit_dataclasses import Point
 from circuit_mesh import MeshScene, add, mul
 
-from venues.baku_khagani_dataclasses import StreetTree
+from venues.baku_khagani_dataclasses import AtlasCrop, CanopyStyle, StreetTree
+
+# Two-pixel transparent padding around alpha>0 bounds in the accepted atlas.
+CROPS = (
+    AtlasCrop(2, 0, 30, 26, 227, 230),
+    AtlasCrop(5, 0, 26, 37, 230, 219),
+    AtlasCrop(2, 1, 52, 49, 204, 207),
+    AtlasCrop(5, 1, 15, 16, 241, 241),
+    AtlasCrop(5, 2, 57, 43, 199, 213),
+)
 
 
-def tree(scene: MeshScene, pose: StreetTree, heading: float) -> None:
+DEFAULT_STYLE = CanopyStyle()
+
+
+def tree(
+    scene: MeshScene,
+    pose: StreetTree,
+    heading: float,
+    style: CanopyStyle = DEFAULT_STYLE,
+) -> None:
     base, height, seed = pose.base, pose.height_m, pose.seed
     along = math.cos(heading), math.sin(heading)
     normal = -along[1], along[0]
-    width_scale = pose.crown_width_m / (height * 0.82)
-    cross_scale = 0.62 if pose.parcel == "sidewalk" else 1.0
+    cross_scale = style.sidewalk_cross_scale if pose.parcel == "sidewalk" else 1.0
+    width = pose.crown_width_m * (
+        style.park_width_multiplier if pose.parcel == "sahil" else 1
+    )
 
     def offset(x: float, y: float, z: float) -> Point:
         return (
@@ -22,33 +41,67 @@ def tree(scene: MeshScene, pose: StreetTree, heading: float) -> None:
             z,
         )
 
-    fork = add(base, (0, 0, height * 0.52))
+    fork = add(base, (0, 0, height * style.trunk_fork_fraction))
     scene.beam("Building_KhaganiTrees", "Trunk", base, fork, 0.25)
-    for cluster in range(5):
-        azimuth = cluster * math.tau / 5 + seed * 0.13
-        centre = add(
+    for cluster in range(7):
+        azimuth = cluster * math.tau / 6 + seed * 0.13
+        if cluster == 0:
+            radius, fraction, card_width, card_height = (
+                0.0,
+                0.70,
+                0.80 * width,
+                0.60 * height,
+            )
+        elif cluster <= 4:
+            radius, fraction, card_width, card_height = (
+                0.22 * width,
+                0.64 + 0.02 * (cluster % 2),
+                0.62 * width,
+                0.54 * height,
+            )
+        else:
+            radius, fraction, card_width, card_height = (
+                0.23 * width,
+                0.54,
+                0.56 * width,
+                0.40 * height,
+            )
+        center = add(
             base,
             offset(
-                math.cos(azimuth) * height * 0.16 * width_scale,
-                math.sin(azimuth) * height * 0.16 * width_scale,
-                height * (0.68 + 0.04 * (cluster % 3)),
+                math.cos(azimuth) * radius,
+                math.sin(azimuth) * radius,
+                height * fraction,
             ),
         )
-        scene.beam("Building_KhaganiTrees", "Trunk", fork, centre, 0.10)
-        column, row = (2, 5)[(seed + cluster) % 2], (seed + cluster) % 3
-        u0, u1 = (column + 0.012) / 6, (column + 0.988) / 6
-        v0, v1 = (row + 0.012) / 6, (row + 0.988) / 6
+        scene.beam("Building_KhaganiTrees", "Trunk", fork, center, 0.09)
+        crop = CROPS[(seed + cluster) % len(CROPS)]
+        u0, u1 = (
+            (crop.column * 256 + crop.left_px) / 1536,
+            (crop.column * 256 + crop.right_px) / 1536,
+        )
+        v0, v1 = (
+            (crop.row * 256 + crop.top_px) / 1536,
+            (crop.row * 256 + crop.bottom_px) / 1536,
+        )
+        # Occupied-alpha dimensions, rather than the atlas cell, set each mass.
+        card_width *= (crop.right_px - crop.left_px) / (
+            crop.right_px - crop.left_px - 5
+        )
+        card_height *= (crop.bottom_px - crop.top_px) / (
+            crop.bottom_px - crop.top_px - 5
+        )
         for plane in range(3):
             angle = plane * math.pi / 3 + azimuth
             axis = offset(math.cos(angle), math.sin(angle), 0)
-            bottom = add(centre, (0, 0, -height * 0.23))
+            bottom = add(center, (0, 0, -card_height / 2))
             left, right = (
-                add(bottom, mul(axis, -height * 0.25 * width_scale)),
-                add(bottom, mul(axis, height * 0.25 * width_scale)),
+                add(bottom, mul(axis, -card_width / 2)),
+                add(bottom, mul(axis, card_width / 2)),
             )
             upper_left, upper_right = (
-                add(left, (0, 0, height * 0.5)),
-                add(right, (0, 0, height * 0.5)),
+                add(left, (0, 0, card_height)),
+                add(right, (0, 0, card_height)),
             )
             scene.triangle(
                 "Building_KhaganiTrees",

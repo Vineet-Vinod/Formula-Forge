@@ -1,0 +1,149 @@
+{
+  "version": 1,
+  "accepted_texture_asset": "Content/Generated/Interlagos/Textures/runtime_leaf_silhouette_color.uasset",
+  "accepted_texture_asset_sha256": "2dd7446e6e9a5c809cf874fbbad501c9cea02b91eab1bd39e3d817e97050f503",
+  "accepted_material": "/Game/Generated/Interlagos/Materials/runtime_leaf_silhouette",
+  "atlas_dimensions_px": [
+    1536,
+    1536
+  ],
+  "cell_grid": [
+    6,
+    6
+  ],
+  "cell_size_px": 256,
+  "source_export_sha256": "6cc88dcea9a733afe776ee9acdcbfa114517accf5487e45842a58c1251b0e4d2",
+  "source_export_note": "Three read-only retained PNG exports are byte-identical. Source texture asset is versioned and hash-guarded; generation needs no ignored PNG export. No texture pixels changed.",
+  "crop_definition": "Inclusive alpha>0 bounds expanded by two transparent pixels on every side; right/bottom are exclusive. Each cropped card is resized to the intended occupied-alpha mass, not full-cell size.",
+  "crops": [
+    {
+      "column": 2,
+      "row": 0,
+      "left_px": 30,
+      "top_px": 26,
+      "right_px": 227,
+      "bottom_px": 230
+    },
+    {
+      "column": 5,
+      "row": 0,
+      "left_px": 26,
+      "top_px": 37,
+      "right_px": 230,
+      "bottom_px": 219
+    },
+    {
+      "column": 2,
+      "row": 1,
+      "left_px": 52,
+      "top_px": 49,
+      "right_px": 204,
+      "bottom_px": 207
+    },
+    {
+      "column": 5,
+      "row": 1,
+      "left_px": 15,
+      "top_px": 16,
+      "right_px": 241,
+      "bottom_px": 241
+    },
+    {
+      "column": 5,
+      "row": 2,
+      "left_px": 57,
+      "top_px": 43,
+      "right_px": 199,
+      "bottom_px": 213
+    }
+  ],
+  "crop_correction_pixels": 5,
+  "excluded_variant": {
+    "column": 2,
+    "row": 2,
+    "reason": "Only90x94alpha-occupied pixels in256\u00b2; sparse/slender top projection does not represent the mature corridor mass at full-cell scale."
+  },
+  "measured_alpha_cells": [
+    {
+      "column": 2,
+      "row": 0,
+      "nonzero_bounds_px": [
+        32,
+        28,
+        224,
+        227
+      ],
+      "coverage_nonzero": 0.2868804931640625,
+      "coverage_128": 0.228851318359375
+    },
+    {
+      "column": 5,
+      "row": 0,
+      "nonzero_bounds_px": [
+        28,
+        39,
+        227,
+        216
+      ],
+      "coverage_nonzero": 0.2950439453125,
+      "coverage_128": 0.235015869140625
+    },
+    {
+      "column": 2,
+      "row": 1,
+      "nonzero_bounds_px": [
+        54,
+        51,
+        201,
+        204
+      ],
+      "coverage_nonzero": 0.214019775390625,
+      "coverage_128": 0.163848876953125
+    },
+    {
+      "column": 5,
+      "row": 1,
+      "nonzero_bounds_px": [
+        17,
+        18,
+        238,
+        238
+      ],
+      "coverage_nonzero": 0.3857269287109375,
+      "coverage_128": 0.282470703125
+    },
+    {
+      "column": 2,
+      "row": 2,
+      "nonzero_bounds_px": [
+        83,
+        81,
+        172,
+        174
+      ],
+      "coverage_nonzero": 0.08544921875,
+      "coverage_128": 0.0702362060546875
+    },
+    {
+      "column": 5,
+      "row": 2,
+      "nonzero_bounds_px": [
+        59,
+        45,
+        196,
+        210
+      ],
+      "coverage_nonzero": 0.205230712890625,
+      "coverage_128": 0.163726806640625
+    }
+  ],
+  "style": {
+    "park_width_multiplier": 1.12,
+    "sidewalk_cross_scale": 0.62,
+    "trunk_fork_fraction": 0.3,
+    "crown_width_uncertainty_m": 2.0,
+    "lower_crown_height_uncertainty_m": 1.5
+  },
+  "source_plan_sha256": "53d9e4543a6f54fb842e6b69b1800bfa7d40bfb269660c620f854b9df23c7ab8",
+  "alpha_safety": "All alpha>0 bounds remain behind actual Road; CPU review threshold128 and two-sided shading are explicitly separate from effective UE clip/mip/shadow behavior."
+}

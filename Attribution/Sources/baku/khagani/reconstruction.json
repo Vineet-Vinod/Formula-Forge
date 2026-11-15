@@ -2873,7 +2873,12 @@
     "ground_cover": "HELD: no blanket park grass/low plane. Existing context has no mapped individual tree nodes or Sahil-specific lawn polygons. Bound any later cosmetic land-cover change separately."
   },
   "source_scope_note": "Only edge10 and compound edges17/18 are replaced. No unregistered Library entrance/return/pavilion, western rear roof gap, courtyard, Ground or protection changes.",
-  "canonical_adapter_replay": {
+  "focused_checks": [
+    "pytest Tests/test_baku_khagani.py:4passed",
+    "mypy seven owned modules plus focused test:PASS",
+    "Ruff owned modules plus focused test:PASS"
+  ],
+  "initial_canonical_adapter_replay": {
     "status": "PASS",
     "frozen_rows": 166942,
     "canonical_rows": 166942,
@@ -2890,9 +2895,104 @@
     "elapsed_s": 10.582807564001996,
     "peak_rss_kb": 276476
   },
-  "focused_checks": [
-    "pytest Tests/test_baku_khagani.py:3passed",
-    "mypy seven owned modules plus focused test:PASS",
-    "Ruff owned modules plus focused test:PASS"
-  ]
+  "canopy_revision_2026_11_15": {
+    "status": "Canonical/private exact source replay PASS; four focused tests/mypy/Ruff PASS; UE material confirmation and fresh native/cooked comparison pending. WholeBakuheld.",
+    "poses_preserved": 31,
+    "root_xy_z_seed_height_crown_input_fields": "Exact original recipe bytes preserved; packed rootcorners unchanged.",
+    "old_triangles": 3162,
+    "new_triangles": 4278,
+    "delta_triangles": 1116,
+    "old_complete_family_triangles": 166942,
+    "new_complete_family_triangles": 168058,
+    "expected_complete_scene_triangles": 4921716,
+    "description": "Use five accepted broadleaf top-view cells with two-pixel transparent padding around actual nonzero-alpha bounds; exclude tinyrow2/col2 from mature corridor variants. Seven overlapping masses replacefive, fork moves.52h\u2192.30h. Park width scale1.12; sidewalkcrossscale.62preserved; same31rootposes.",
+    "estimated_occupied_alpha_dimensions": {
+      "sidewalk": {
+        "occupied_alpha_along_width_range_m": [
+          6.331347256317755,
+          7.5167857345761515
+        ],
+        "occupied_alpha_cross_width_range_m": [
+          3.8448410362698735,
+          4.473476056390428
+        ],
+        "lowest_alpha_height_above_ground_range_m": [
+          3.807999898657921,
+          4.284000150082961
+        ],
+        "highest_alpha_height_above_ground_range_m": [
+          11.199999753855165,
+          12.60000026305109
+        ],
+        "dimension_uncertainty_m": {
+          "crown_width": 2.0,
+          "lowest_canopy": 1.5,
+          "height": 2.0
+        }
+      },
+      "sahil": {
+        "occupied_alpha_along_width_range_m": [
+          8.146136507777305,
+          11.471482499358853
+        ],
+        "occupied_alpha_cross_width_range_m": [
+          8.09683357376423,
+          11.493558036786254
+        ],
+        "lowest_alpha_height_above_ground_range_m": [
+          4.147999763230904,
+          5.1000004712308
+        ],
+        "highest_alpha_height_above_ground_range_m": [
+          12.199999689776927,
+          15.000000543709188
+        ],
+        "dimension_uncertainty_m": {
+          "crown_width": 2.0,
+          "lowest_canopy": 1.5,
+          "height": 2.0
+        }
+      }
+    },
+    "atlas_receipt": "canopy-atlas.json",
+    "source_review": "canopy-source-review.md",
+    "ground_scope": "No Ground/road/protection/paths/fountains/buildings/other vegetation changes; only this existing31-tree family.",
+    "alpha_aware_proof_sha256": "cb95ebdba8b54949d38512b86e41c474a7ade47760dde7fdb3cdb7eab481c58d",
+    "preview_limit": "296291actual existing context triangles with only31oldtreefamily subtracted/replaced; real recorded cameras1188/station1179.57and1238/station1272.17. Alpha sampled fromacceptedRGBA, perspective-correctUV anddepthtested. Explicit128visualthreshold andboth-sidedleafrender, not assertedUnrealclip/mips/PBR/shadows/fullscenequality. Safetyusesallalpha>0bounds. Materialpropertiesconfirmationrequestedfromroot.",
+    "current_source_manifest_before_revision": "8ad0c223c842bce2c3d443cc698377484766c56250965e8077a77df606e41f19",
+    "native_material_confirmation": {
+      "receipt": "canopy-material-confirmation.json",
+      "receipt_sha256": "50a545ec1179145761ae50569d1870a4d8189c2c9f4bd84969a13be8ab0c57a2",
+      "effective_two_sided": true,
+      "effective_opacity_mask_clip_value": 0.33329999446868896,
+      "source_texture_asset_sha256": "2dd7446e6e9a5c809cf874fbbad501c9cea02b91eab1bd39e3d817e97050f503",
+      "source_note": "Fresh read-only Unreal resolution of the actual saved Baku MI and its original accepted atlas. CPUalpha128 was conservative relative to confirmed effectiveOpacity1/baseclip~85/255. This is material/source evidence, not fresh canopy runtime or whole-Baku acceptance."
+    },
+    "physical_card_road_clearance": {
+      "status": "PASS",
+      "full_leaf_card_planes": 651,
+      "projected_road_intersections": 0,
+      "minimum_full_card_projection_road_clearance_m": 4.274081893538055,
+      "scope": "Actual packed full physical leaf rectangles; all atlas filtering/clip/mip coverage is confined to these rectangles. Existing actual Road cache/fullStreet SHA qualification is unchanged."
+    }
+  },
+  "canonical_adapter_replay": {
+    "status": "PASS",
+    "private_trees": 4278,
+    "canonical_trees": 4278,
+    "private_tree_counter_sha256": "b46e12b5d3261ca5188d59daec769f3284a424de5f2999a9e09cd5b9724eb111",
+    "canonical_tree_counter_sha256": "b46e12b5d3261ca5188d59daec769f3284a424de5f2999a9e09cd5b9724eb111",
+    "expected_complete_family_triangles": 168058,
+    "actual_complete_family_triangles": 168058,
+    "missing_rows": 0,
+    "extra_rows": 0,
+    "private_complete_family_counter_sha256": "dc5705240aaf6132fb7eab4f769cafcad88f840284570f635ed9cdd3dd2b985f",
+    "canonical_complete_family_counter_sha256": "dc5705240aaf6132fb7eab4f769cafcad88f840284570f635ed9cdd3dd2b985f",
+    "ground_road_bytes_unchanged": true,
+    "cutouts": 0,
+    "poses_recipe_sha256": "ca140e4a33e6a351d38344fc2b86c77f3aff1cccd11a550ccf70232b8b282b5f",
+    "source_root_corners": "Prior alpha-aware proof verifies each original/new packed corner exact; immutable pose recipe remains identical",
+    "seconds": 8.908476082026027,
+    "peak_rss_mib": 278.4140625
+  }
 }

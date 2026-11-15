@@ -1,0 +1,40 @@
+{
+  "status": "Read-only fresh Unreal resolution of actual saved Baku tree material; no asset edits.",
+  "material": "/Game/Generated/Baku/Materials/TreeCanopy.TreeCanopy",
+  "base": "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage",
+  "instances": [
+    {
+      "path": "/Game/Generated/Baku/Materials/TreeCanopy.TreeCanopy",
+      "override_two_sided": false,
+      "two_sided": true,
+      "override_opacity_mask_clip_value": false,
+      "opacity_mask_clip_value": 0.33329999446868896
+    }
+  ],
+  "effective_two_sided": true,
+  "effective_opacity_mask_clip_value": 0.33329999446868896,
+  "base_blend_mode": "<BlendMode.BLEND_MASKED: 1>",
+  "base_shading_model": "<MaterialShadingModel.MSM_TWO_SIDED_FOLIAGE: 6>",
+  "opacity_graph": [
+    {
+      "class": "MaterialExpressionMultiply",
+      "path": "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionMultiply_4"
+    },
+    {
+      "class": "MaterialExpressionScalarParameter",
+      "path": "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionScalarParameter_5",
+      "parameter": "Opacity",
+      "default_value": 1.0,
+      "effective_value": 1.0
+    },
+    {
+      "class": "MaterialExpressionTextureSampleParameter2D",
+      "path": "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionTextureSampleParameter2D_0",
+      "parameter": "Albedo",
+      "texture": "/Game/Generated/Interlagos/Textures/runtime_leaf_silhouette_color.runtime_leaf_silhouette_color",
+      "texture_asset_sha256": "2dd7446e6e9a5c809cf874fbbad501c9cea02b91eab1bd39e3d817e97050f503",
+      "srgb": true,
+      "mip_gen_settings": "<TextureMipGenSettings.TMGS_SIMPLE_AVERAGE: 1>"
+    }
+  ]
+}

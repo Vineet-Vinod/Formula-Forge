@@ -88,3 +88,22 @@ class KhaganiGroundSource:
     ground_supports: list[PackedPatchRow]
     minimum_native_root_embed_m: float
     source_note: str
+
+
+@dataclass(frozen=True)
+class AtlasCrop:
+    column: int
+    row: int
+    left_px: int
+    top_px: int
+    right_px: int
+    bottom_px: int
+
+
+@dataclass(frozen=True)
+class CanopyStyle:
+    park_width_multiplier: float = 1.12
+    sidewalk_cross_scale: float = 0.62
+    trunk_fork_fraction: float = 0.30
+    crown_width_uncertainty_m: float = 2.0
+    lower_crown_height_uncertainty_m: float = 1.5
