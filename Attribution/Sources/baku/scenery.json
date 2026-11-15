@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=baku",
   "tiles": 393,
-  "triangles": 4835888,
+  "triangles": 4920600,
   "road_sha256": "26bc10ef7913eb8b758e60bada4eb749e94aa7bb524952c47ead9fff2130166e",
   "terrain_sha256": "e6e5423c2f5f02fc7e47ddb1459d9e39edcc2ae0b7891724be8520abedc5231e",
   "landmarks": [
@@ -587,12 +587,6 @@
     },
     {
       "name": "Mapped building",
-      "osm_id": 177428532,
-      "height_m": 13.6,
-      "facade": "classical"
-    },
-    {
-      "name": "Mapped building",
       "osm_id": 179114290,
       "height_m": 19,
       "facade": "classical"
@@ -919,12 +913,6 @@
       "name": "Mapped building",
       "osm_id": 286018698,
       "height_m": 19,
-      "facade": "classical"
-    },
-    {
-      "name": "Mapped building",
-      "osm_id": 286020256,
-      "height_m": 17.0,
       "facade": "classical"
     },
     {
@@ -2289,6 +2277,10 @@
       "cornice_estimate_m": 15.0,
       "mansard_estimate_m": 2.3,
       "source": "streetscape/reconstruction.json; primary frontage, current operator not assumed; height/base estimated, native review pending"
+    },
+    {
+      "name": "Khagani Library and three registered heritage frontages",
+      "source": "khagani/reconstruction.json; photographed frontage rhythms, broad height/depth estimates; unregistered Library pavilion, returns and rear faces held"
     }
   ],
   "vegetation": [
@@ -2385,6 +2377,11 @@
       "start_m": 3100.0,
       "end_m": 3800.0,
       "source_note": "Private right-side upper-city and T15-exit tree-row reconstruction from the supplied245-256s sequence. Sector bounds have approximately75m uncertainty; spacing12-18m, height11-14m, exterior setback and crown spread are visual estimates, not surveyed individual trees. Positions derive from the retained actual protection boundary and remain outside all drivable corridor arms and mapped building bodies. Roots use actual emitted Ground planes with a low embed. The bank grade, event protection width, museum identification and facade dimensions remain separate unqualified holds. Source-observed high canopy overhang may cross road/fence in plan only with adequate measured vertical clearance. Existing left-side planting stays unchanged. Original Interlagos leaf atlas and existing broadleaf cluster language are reused; no reference pixels are shipped."
+    },
+    {
+      "type": "Sahil fringe and Library sidewalk broadleaf",
+      "count": 31,
+      "source_note": "Finite photo-fit estimates in mapped park/sidewalk context; actual Ground witnesses and retained protection; no individual OSM tree claims."
     }
   ],
   "review_status": "Awaiting packaged whole-route review; asset import is not visual approval."
