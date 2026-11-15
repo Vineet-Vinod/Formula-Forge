@@ -1,0 +1,119 @@
+{
+  "status": "Source-qualified finite material-only classification; native/cooked appearance remains pending.",
+  "name": "eastern_exposed_natural_spur_above_curved_path",
+  "source_photo": "orthophoto2019-l8-r796836-c680971.jpg",
+  "source_photo_sha256": "13da4a6b30f4bb356e0c516f9630486facc756abdee6390231d2f5a4776fb2e3",
+  "registration_source": "/home/darksca/Vineet/Code/C_C++/Formula Forge/Attribution/Sources/monaco/architecture/ravine-outline.json",
+  "registration_source_sha256": "d4b8c49c93ada69c85d681521cecaca53241d93d286b1a92f76718503bcc2849",
+  "source_pixel_vertices": [
+    [
+      405,
+      171
+    ],
+    [
+      425,
+      164
+    ],
+    [
+      449,
+      165
+    ],
+    [
+      474,
+      174
+    ],
+    [
+      476,
+      190
+    ],
+    [
+      459,
+      200
+    ],
+    [
+      442,
+      206
+    ],
+    [
+      424,
+      209
+    ],
+    [
+      409,
+      199
+    ]
+  ],
+  "vertices": [
+    [
+      -14.354885151901765,
+      351.23207944891294
+    ],
+    [
+      -12.183380947594541,
+      351.86591968753896
+    ],
+    [
+      -9.631327748541024,
+      351.621261248434
+    ],
+    [
+      -7.018447967146844,
+      350.5153183013714
+    ],
+    [
+      -6.896794477578015,
+      348.79275122581055
+    ],
+    [
+      -8.765731970928742,
+      347.8208686954132
+    ],
+    [
+      -10.611795649835305,
+      347.2767583222659
+    ],
+    [
+      -12.547277902518,
+      347.059215067929
+    ],
+    [
+      -14.088701394145385,
+      348.21471825946185
+    ]
+  ],
+  "area_m2": 27.44950560078054,
+  "source_outline_uncertainty_m": 1.0,
+  "material": "MonacoNaturalGround",
+  "scope": "Only existing Runoff within qualified clipped polygons changes to mixed natural appearance. Fragment vertices retain original height planes and interpolated normals; UVs follow the existing8mworld mapping withinfloat32encoding. No moved trees, built roofs, paths or nativephysicaldata.",
+  "current_ray_witness": {
+    "packet": "resume-20261115-terrace-upper-pinned-live",
+    "frame": 267,
+    "pixel": [
+      350,
+      159
+    ],
+    "xy_m": [
+      -10.960111216089919,
+      348.8510915482575
+    ]
+  },
+  "held_ray_not_included": {
+    "frame": 267,
+    "pixel": [
+      405,
+      154
+    ],
+    "xy_m": [
+      -4.702760894774441,
+      347.5985373472204
+    ]
+  },
+  "reviewed_proposal_sha256": "1a56c6c37dce77f8272cc1556e5efb7fc7f396195a5ab7d816aadc805ca77e87",
+  "source_review": "Luna High,2026-11-15,monaco-east-spur-material-source-review.md; boundedclassificationapproved,notcookedvisualacceptance.",
+  "private_replay": {
+    "clipped_domain_area_m2": 21.5405202897905,
+    "runoff_material_area_m2": 13.424541478489253,
+    "source_faces_split": 14,
+    "other_material_rows_exact": 16658
+  }
+}

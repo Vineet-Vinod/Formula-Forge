@@ -132,6 +132,47 @@
           312.151
         ]
       ]
+    },
+    {
+      "name": "eastern_exposed_natural_spur_above_curved_path",
+      "vertices": [
+        [
+          -14.354885151901765,
+          351.23207944891294
+        ],
+        [
+          -12.183380947594541,
+          351.86591968753896
+        ],
+        [
+          -9.631327748541024,
+          351.621261248434
+        ],
+        [
+          -7.018447967146844,
+          350.5153183013714
+        ],
+        [
+          -6.896794477578015,
+          348.79275122581055
+        ],
+        [
+          -8.765731970928742,
+          347.8208686954132
+        ],
+        [
+          -10.611795649835305,
+          347.2767583222659
+        ],
+        [
+          -12.547277902518,
+          347.059215067929
+        ],
+        [
+          -14.088701394145385,
+          348.21471825946185
+        ]
+      ]
     }
   ],
   "exclusions": [
@@ -792,18 +833,19 @@
   ],
   "road_and_protection_margin_m": 2.0,
   "building_margin_m": 1.5,
-  "source": "Monaco Government2019 orthophoto, approximately1\u20132m interpreted canopy boundaries; exact OSM/IGN exclusion inputs retained below. No source-image pixels in materials.",
+  "source": "Monaco Government2019orthophoto. Two planted sites retain1\u20132m outline uncertainty; additional exposed natural spur retains\u00b11m uncertainty. ExactOSM/IGNexclusions unchanged. No source-image pixels inmaterials.",
   "source_proposal_sha256": "fc0631aa368096f10d51cf60a595ddbe64be6daddd0c7d78ee515d4f64848319",
   "source_input_sha256": {
     "Attribution/Sources/monaco/coastal-district.osm.json.gz": "a7726b6a8c69d8ffb1790a8b1e037bb2d91f2ca9a80425eee841e3618235560d",
     "Attribution/Sources/monaco/environment.osm.json.gz": "14e393c8402f3572ad8815073b95454c3423ff4bf4e247d8bf5cb58fae36825c",
     "Attribution/Sources/monaco/barriers.osm.json.gz": "69b42f6b7c521bcef4cdd4b6e0b0f42bc9897f432190974e532d9d88d55247e3",
     "Attribution/Sources/monaco/architecture/pending-hill-properties/ign-local-buildings.json.gz": "f4a45e3fc55d0831593e04049cb5fbc11bde44dc4e82f21ac5f25d872754506a",
-    "Attribution/Sources/monaco/provenance.json": "0fea60646f17427ad9840be166b1bbc180124a44ad73ea6e4832d5656a3e9101"
+    "Attribution/Sources/monaco/provenance.json": "0fea60646f17427ad9840be166b1bbc180124a44ad73ea6e4832d5656a3e9101",
+    "Attribution/Sources/monaco/architecture/east-spur-source.json": "340cf5890eac6ea79831d9a8a8920edef579f159a5c9da6cf989ff45797de687"
   },
   "limits": [
     "This proposal classifies visible planted/canopy site roles only; it does not assign elevation, alter the field, or claim that foliage pixels show exact bare soil.",
     "Vector-clipping against actual building/IGN/path/corridor geometries is required before use. The first ray remains held at the roof/eave edge.",
-    "Do not merge with the prior 432m\u00b2 ravine natural-base trial or the ambiguous upper pale apron; these are two small, separate site patches."
+    "The three small sites remain separate from the prior ravine domain and ambiguous roof/apron. Only leftover Runoff can change; exact rock/ivy/paved roles remain intact."
   ]
 }

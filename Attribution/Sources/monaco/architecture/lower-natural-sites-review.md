@@ -26,3 +26,14 @@ receipts are `monaco/lower-sites-source-scope-proof.json` and
 These source checks permit native integration. Fresh cooked driving views must
 still establish material tone and whole-route appearance. This change does not
 close the separate uncertain upper pale apron or any unresolved property role.
+
+The 15 November follow-up adds a third finite site: a photographed eastern
+rock/vegetation spur above the curved path. Its 27.4495 m² interpreted outline
+has about 1 m edge uncertainty. Existing exclusions reduce it to 21.5405 m²;
+only 13.4245 m² still using Runoff changes appearance. The private replay splits
+14 old faces and preserves all 16,658 other-material rows exactly. Original
+height planes and interpolated normals remain; fragment UVs retain the existing
+8 m world mapping within float32 precision. The exact current 240 m camera ray
+at pixel (350,159) identifies this spur. The adjacent unresolved (405,154) ray
+is excluded. See `east-spur-source.json` for registration, source pixels and the
+Luna High source decision. Native import and fresh cooked review remain required.

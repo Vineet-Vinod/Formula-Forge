@@ -932,6 +932,14 @@ faces and then to the primary sources: gray areas can be a garden terrace,
 another road, an omitted bridge or an unmodeled building. Each needs its own
 treatment; expanding a grass mask cannot resolve all of them.
 
+Bind those rays to the exact captured frame, package and current source manifest.
+Project the changed domain into that same camera before attributing a defect to
+it. Monaco's visible 240 m wedge was outside the new upper-bank patch; at 260 m
+the patch was entirely offscreen. That finding concerned older surfaces, not the
+new collar. A HUD, bridge or roof can also hide a correct projection. Record
+insufficient visibility and add a useful comparison view instead of inventing a
+patch-specific pass or failure.
+
 Verify a claimed missing landmark against the current source and native asset,
 then inspect its exact registered capture. Jeddah's Masarat was initially called
 missing despite being baked and visible in the target. Conversely, an import log

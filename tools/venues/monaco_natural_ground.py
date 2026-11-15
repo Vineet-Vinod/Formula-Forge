@@ -121,7 +121,7 @@ def finish_lower_sites(scene: CircuitScene, ravine: RavineSource) -> None:
     regions = lower_regions(scene, source, from_wkt(ravine.expected_domain_wkt))
     report = replace_surfaces(scene, regions, allowed_materials=frozenset({'Runoff'}))
     scene.landmarks.append({
-        'name': 'Two finite photographed lower planted sites',
+        'name': 'Finite photographed planted sites and exposed natural spur',
         'classified_ground_area_m2': report.classified_area_m2,
         'source': 'architecture/lower-natural-sites.json',
         'limits': 'Mixed natural appearance only; no species or height claim. Original planes retained. Roofs, buildings, paths and actual protection are excluded with stated margins. Existing precise rock/ivy/paving roles and the ambiguous house-eave ray remain separate. Native contact, terrain field and tree poses unchanged; cooked review pending.',

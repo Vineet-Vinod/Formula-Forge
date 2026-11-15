@@ -25,8 +25,10 @@ def test_lower_natural_sites_exclude_actual_buildings_and_ambiguous_eave() -> No
     cover = unary_union([
         region.plan for region in lower_regions(scene, source, from_wkt(ravine.expected_domain_wkt))
     ])
-    assert 1 < cover.area < 50
+    assert 1 < cover.area < 80
     assert not cover.intersects(Point(15.820995, 323.78632).buffer(.25))
+    assert cover.covers(Point(-10.960111, 348.851092))
+    assert not cover.covers(Point(-4.702761, 347.598537))
     assert not cover.intersects(scene.corridor_mask.buffer(2))
     for building in scene.buildings:
         assert cover.intersection(Polygon(building.ring).buffer(1.5)).area < 1e-8
