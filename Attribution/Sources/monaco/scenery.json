@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=monaco",
   "tiles": 117,
-  "triangles": 2930533,
+  "triangles": 2977438,
   "road_sha256": "3a7544d64e64e34c445dbf4049745ad0e2fc4f2d8e96dcf6d29b2c8ee7f67df3",
   "terrain_sha256": "f1538f328db1481498922f0c8d143010e2a9bcd9c17cb30b52457605ac30a21a",
   "landmarks": [
@@ -4272,6 +4272,12 @@
     {
       "name": "Larvotto bridge lower woodland",
       "source": "Literal mixed-forest 941749869 below actual bridge soffits; local lower Runoff only; estimated low planting, full wind clearance checked"
+    },
+    {
+      "name": "Villa Hermosa formal garden and stone retaining band",
+      "source": "architecture/hermosa-terrace/source-qualification.json",
+      "garden_area_m2": 300.2013573994184,
+      "source_limits": "Photo-estimated stone wall cap6 m +/-2.5 m; separate lower natural rock, two conflicting pool outlines held rather than two pools claimed; native terrain and driving data unchanged"
     }
   ],
   "vegetation": [

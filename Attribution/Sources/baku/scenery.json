@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=baku",
   "tiles": 395,
-  "triangles": 4970508,
+  "triangles": 5052088,
   "road_sha256": "26bc10ef7913eb8b758e60bada4eb749e94aa7bb524952c47ead9fff2130166e",
   "terrain_sha256": "e6e5423c2f5f02fc7e47ddb1459d9e39edcc2ae0b7891724be8520abedc5231e",
   "landmarks": [
@@ -2290,6 +2290,16 @@
       "body_height_m": 27.2,
       "body_height_uncertainty_m": 4.0,
       "scope": "Mapped owner and legacy floor retained; rounded corner and facade/roof details are photographic estimates. OSM8levels does not establish8principal facade rows. No native road/contact changes; cooked appearance pending."
+    },
+    {
+      "osm_id": 133160749,
+      "name": "Seyid Mirbabayev former tenement / SOCAR Niyazi1",
+      "structure": "Three photographed facade bands,17 upper/middle groups, distinct ground openings, slate roof and raised pavilions",
+      "source": "mirbabayev/reconstruction.json",
+      "cornice_estimate_m": 20.5,
+      "crown_estimate_m": 26.38,
+      "height_uncertainty_m": 5.0,
+      "scope": "Photo/plan architectural estimates, not measured height or6tagged storeys. Inherited datum retained; thresholds/steps and rear details held. Occupied U courtyard open; Ground/Road/protection and all current neighbors retained. Native/cooked appearance requires independent review."
     }
   ],
   "vegetation": [
