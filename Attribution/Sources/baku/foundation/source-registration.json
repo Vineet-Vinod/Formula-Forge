@@ -1,0 +1,19 @@
+{
+  "use": "Review-only original photographs; source pixels are not shipped as textures. Unknown image licences do not grant redistribution. Geometry and geometric relief are original.",
+  "photographs": [
+    {
+      "url": "https://photos.wikimapia.org/p/00/00/58/32/74_big.jpg",
+      "sha256": "d8baa82ebf4b731386ed560a53587fd76aa809683733b72fc642c4deac14df1d",
+      "role": "Corner, blue roof, six principal visible facade rows, cornice and source style"
+    },
+    {
+      "url": "https://photos.wikimapia.org/p/00/09/31/60/98_big.jpg",
+      "sha256": "904cee6c26432e8ea561d1c46654ec3ce7437ca8d8dd0b9948ce9e1630355492",
+      "role": "One main entrance panel, windows and floor-band context"
+    }
+  ],
+  "official_identity_source": "https://heydar-aliyev-foundation.org/en/content/view/59/1979/Bak%C4%B1da-Heyd%C9%99r-%C6%8Fliyev-Fondunun-a%C3%A7%C4%B1l%C4%B1%C5%9F%C4%B1-olub/",
+  "rejected": "KhazarLift image25.jpg depicts a different four-storey building; not used.",
+  "metric_status": "The27.2m body is the retained8-level tag-derived envelope, \u00b14m.6principal rows are photographic; tagged8isnot a floor survey. Roof/corner/panel dimensions and unobserved rear details remain estimates.",
+  "mesh_binding": "Generic19930rows exactly match currentCity_m5_m4;3900m foreground-right pixels1400/175 and1520/200 hitFoundation. Main grid at1050/120,1250/240,950/300 is separateSOCAR133160749,not thisowner."
+}

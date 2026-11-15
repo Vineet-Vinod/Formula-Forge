@@ -84,6 +84,10 @@ def generate(slug: str, write_native_contact: bool = False) -> None:
         slug in ("jeddah", "monaco", "baku", "singapore", "australia", "canada")
     )
     scene.markings()
+    if slug == "baku":
+        from venues.baku_foundation import finish as finish_baku_foundation
+
+        finish_baku_foundation(scene)
     if slug == "monaco":
         from venues.monaco_foreground import finish_terrain as finish_monaco_foreground
 

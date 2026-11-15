@@ -43,6 +43,8 @@ PALETTE = {
     "BakuPhilharmonicOchre": (0.72, 0.52, 0.22),
     "BakuHotelCopper": (0.20, 0.36, 0.29),
     "BakuOxideRoof": (0.32, 0.065, 0.045),
+    "BakuFoundationBlueRoof": (0.035, 0.11, 0.24),
+    "BakuFoundationRecess": (0.17, 0.14, 0.10),
     "CanopyFabric": (0.78, 0.78, 0.74),
     "Roof": (0.14, 0.15, 0.16),
     "JeddahConstruction": (0.19, 0.17, 0.145),
@@ -68,6 +70,8 @@ PALETTE = {
     "RunoffViolet": (0.26, 0.07, 0.42),
 }
 ROUGHNESS = {
+    "BakuFoundationBlueRoof": 0.38,
+    "BakuFoundationRecess": 0.96,
     "MonacoBruyeresRed": 0.82,
     "MonacoBruyeresStone": 0.78,
     "MonacoBruyeresWood": 0.62,
