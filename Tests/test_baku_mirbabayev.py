@@ -8,13 +8,14 @@ from pathlib import Path
 import numpy as np
 import pytest
 from circuit_dataclasses import MeshTile
+from circuit_mesh import MeshScene
 from circuit_scene import CircuitScene
 from pydantic import TypeAdapter
 from shapely.geometry import Polygon
 from shapely.ops import unary_union
 from venues.baku import circuit_edges
 from venues.baku_foundation import digest, rows
-from venues.baku_mirbabayev import finish, legacy
+from venues.baku_mirbabayev import finish, legacy, project_stone_uvs
 from venues.baku_mirbabayev_dataclasses import PalaceRecipe
 from venues.baku_mirbabayev_geometry import build
 from venues.east_architecture import facade
@@ -180,3 +181,26 @@ def test_changed_owner_frame_rejects_without_mutating_modeled_set(
         legacy(scene, changed)
     assert before == {name: bytes(t.triangles) for name, t in scene.tiles.items()}
     assert scene.modeled_buildings == modeled
+
+
+def test_stone_mapping_is_continuous_across_different_wall_triangulations() -> None:
+    scene = MeshScene()
+    a, b, c, d = (0., 0., 0.), (12., 0., 0.), (12., 0., 8.), (0., 0., 8.)
+    scene.triangle('Building_Stone', 'BakuStone', a, b, c)
+    scene.triangle('Building_Stone', 'BakuStone', a, c, d)
+    scene.triangle('Building_Trim', 'Cream', a, b, d)
+    tile = next(iter(scene.tiles.values()))
+    before = bytes(tile.triangles)
+    assert project_stone_uvs(tile) == 2
+    assert tile.triangles[200:] == before[200:]
+    shared: dict[tuple[float, float, float], tuple[float, float]] = {}
+    for offset in (0, 100):
+        assert tile.triangles[offset:offset + 4] == before[offset:offset + 4]
+        for vertex in range(3):
+            start = offset + 4 + vertex * 32
+            assert tile.triangles[start:start + 24] == before[start:start + 24]
+            point = struct.unpack_from('<3f', tile.triangles, start)
+            uv = struct.unpack_from('<2f', tile.triangles, start + 24)
+            assert point not in shared or shared[point] == uv
+            shared[point] = uv
+    assert len(set(shared.values())) == 4

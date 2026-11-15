@@ -1,0 +1,17 @@
+{
+  "state": "PASS complete current-scene production call and focused source tests; cooked visual quality held",
+  "actual_current_manifest_sha256": "253d1b4568d67fd440bee64d7ea0e10908ed555a26902659a243affbfc3798e8",
+  "actual_current_scene_tiles": 117,
+  "unchanged_complete_tiles": 116,
+  "material_only_changed_faces": 1104,
+  "whole_face_area_sum_m2": 89.18912133986959,
+  "selected_face_union_area_m2": 89.18910511205408,
+  "existing_native_boundary_overlap_m2": 1.6227815464731066e-05,
+  "actual_vs_qualified_mask_symmetric_difference_m2": 0.0,
+  "actual_selected_set_matches_frozen_v2": true,
+  "all_vertex_payloads_and_other_rows_exact": true,
+  "all_current_Hermosa_Rome_underarch_records_preserved": true,
+  "proof_sha256": "028baeb04cc3afea7ee4e05d8bb87155681ff16a71b259c2fb266ebd949465eb",
+  "frozen_v2_handoff_sha256": "af86cf04052f036b4aa02e5c525413ff51218ebcdfd267b1c5413e403d391325",
+  "scope_limits": "Scene contains the current canonical model inputs at the pinned generation. It does not grant approval to private Rome architectural details or future geometry. Only the material assignment delta is qualified here."
+}

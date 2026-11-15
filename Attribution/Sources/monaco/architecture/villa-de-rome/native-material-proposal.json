@@ -1,0 +1,118 @@
+{
+  "semantics": "PALETTE inputs are Unreal LinearColor RGB; values below are IEC61966sRGB decode of private diagnostic reference colours. Do not decode twice. Architectural colour/roughness estimates require native review.",
+  "materials": [
+    {
+      "name": "MonacoRomeStucco",
+      "reference_srgb8": [
+        229,
+        217,
+        192
+      ],
+      "unreal_linear_rgb": [
+        0.7835377915261935,
+        0.6938717612919899,
+        0.5271151257058131
+      ],
+      "roughness": 0.9
+    },
+    {
+      "name": "MonacoRomePinkMarble",
+      "reference_srgb8": [
+        201,
+        161,
+        149
+      ],
+      "unreal_linear_rgb": [
+        0.5840784178911641,
+        0.3564001441459435,
+        0.3005437944157765
+      ],
+      "roughness": 0.85
+    },
+    {
+      "name": "MonacoRomeMoulding",
+      "reference_srgb8": [
+        240,
+        231,
+        210
+      ],
+      "unreal_linear_rgb": [
+        0.8713671191987972,
+        0.799102738014409,
+        0.6444796819705821
+      ],
+      "roughness": 0.86
+    },
+    {
+      "name": "MonacoRomeIron",
+      "reference_srgb8": [
+        53,
+        60,
+        56
+      ],
+      "unreal_linear_rgb": [
+        0.03560131487502034,
+        0.04518620438567554,
+        0.03954623527673284
+      ],
+      "roughness": 0.72
+    },
+    {
+      "name": "MonacoRomeSlate",
+      "reference_srgb8": [
+        101,
+        119,
+        122
+      ],
+      "unreal_linear_rgb": [
+        0.1301364766903643,
+        0.184474994500441,
+        0.1946178304415758
+      ],
+      "roughness": 0.78
+    },
+    {
+      "name": "MonacoRomeShutter",
+      "reference_srgb8": [
+        105,
+        69,
+        42
+      ],
+      "unreal_linear_rgb": [
+        0.14126329114027164,
+        0.0595112381629812,
+        0.02315336617811041
+      ],
+      "roughness": 0.8
+    },
+    {
+      "name": "MonacoRomeRoofSoil",
+      "reference_srgb8": [
+        75,
+        61,
+        47
+      ],
+      "unreal_linear_rgb": [
+        0.07036009569659588,
+        0.046665086336880095,
+        0.028426039504420793
+      ],
+      "roughness": 0.98
+    },
+    {
+      "name": "MonacoRomeRoofPlant",
+      "reference_srgb8": [
+        84,
+        48,
+        54
+      ],
+      "unreal_linear_rgb": [
+        0.08865558628577294,
+        0.0295568344378088,
+        0.03688945040110004
+      ],
+      "roughness": 0.92
+    }
+  ],
+  "reused_material": "Glass uses existing palette/shader unchanged"
+}

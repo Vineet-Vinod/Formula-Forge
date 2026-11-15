@@ -761,5 +761,5 @@
       }
     ]
   },
-  "source_note": "Source-qualified17 projected upper/middle groups and distinct13-group ground working estimate.20.5m cornice/26.38m crown\u00b15m are photo/plan architectural estimates, not survey or old6x3.4tag validation. Inherited datum and actual95packed Ground supports retained. Entry thresholds/steps, exact edge intervals and rear/courtyard details held; plain rear estimate and occupied U roof only. Replace41104legacyowner rows only; current neighbors/tree normals/materials remain exact. Native/cooked acceptance pending."
+  "source_note": "Source-qualified17 projected upper/middle groups and distinct13-group ground working estimate.20.5m cornice/26.38m crown\u00b15m are photo/plan architectural estimates, not survey or old6x3.4tag validation. Inherited datum and actual95packed Ground supports retained. Entry thresholds/steps, exact edge intervals and rear/courtyard details held; plain rear estimate and occupied U roof only. Replace41104legacyowner rows only; current neighbors/tree normals/materials remain exact. Native/cooked acceptance pending. The candidate counter qualifies the frozen geometry before final material UV projection. Mirbabayev BakuStone faces then receive continuous4m world-planar UVs only; material, XYZ, normals and face count remain unchanged. Cooked same-pose comparison required."
 }

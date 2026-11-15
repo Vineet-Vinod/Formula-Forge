@@ -79,10 +79,19 @@ def build_venue(scene: CircuitScene) -> None:
         if distance > (260 if building.name else 100):
             continue
         h = building.height
-        if not any(key in building.tags for key in ('height', 'building:levels')):
-            h = 19 if sample.station < 2600 else 15 if sample.station < 3800 else 22
+        height_known = any(key in building.tags for key in ('height', 'building:levels'))
+        if not height_known:
+            if building.osm_id == 971028629:
+                h = min(h, 6.8)
+            else:
+                h = 19 if sample.station < 2600 else 15 if sample.station < 3800 else 22
         material = 'BakuStone' if building.osm_id in {299424046, 133847240} else 'Concrete' if building.osm_id in modern else 'Cream'
         facade(scene, building.osm_id, h, 'modern' if building.osm_id in modern else 'classical', material)
+        if building.osm_id == 971028629 and not height_known:
+            scene.landmarks[-1].update({
+                'source': 'park-amenity-fallback.json',
+                'height_status': 'Provisional low park-amenity proxy using the retained default6.8m cap; exact height, construction date and reference-camera visibility unresolved. No surveyed height claim.',
+            })
     close_native_facade_fragments(scene, 133641453)
     oldcity_relief(scene)
     prepare_hotel(scene)

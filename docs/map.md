@@ -783,6 +783,32 @@ roof heights. Check parcel-boundary tolerance, adjoining terrace heights, the
 whole canopy and actual support endpoints. Hockenheim's Nord stand passed a
 burial check while these queries still produced sawtooth seats and detached roofs.
 
+### Villa de Rome architecture
+
+`venues.monaco_rome.finish_terrain(scene)` replaces only the exact 1,822-row generic Villa de Rome family in `Building_City_m1_01`. It operates on the current tile after other terrain/property producers, preserving every other packed row and the existing material-table prefix. It never reloads a saved parent City tile. Keep the call before final tile partition/save; Hermosa garden/tree updates and the underarch woodland remain independent.
+
+The typed recipe and source qualification live in `Attribution/Sources/monaco/architecture/villa-de-rome/`. Developer evidence establishes the nine-storey building identity and south marble colonnade/loggias, balconies, mouldings and pediment. Eight estimated normal strata plus an occupied mansard represent that identity without claiming nine exposed floors on every elevation. The body/south façade remain the frozen V2 geometry.
+
+The four-face upper hip, continuous mansard and thin closed soffit follow the qualified V3 source plan. Independent 2015/2019 primary traces set the nominal north roof eave and shoulder; their offsets from IGN remain explicit. Rooflight, fan tray and planted tray use direct source centres without an image warp. Original IGN XYZ are retained. Cornice 82.7 m, shoulder 86.6 m and apex 88.0 m absolute are architectural estimates; the unlocated 89.1 m maximum is unused. Exact north elevation, support/cantilever arrangement, secondary elevations and garden-floor contact remain unverified.
+
+The adapter checks frozen geometry/body hashes, packed normals, closed main-roof/soffit edges, roof-plan coverage and direct object centres before replacing the old family. `Tests/test_monaco_rome.py` checks replacement preservation and atomic failure/source-registration guards. The native palette proposal uses explicit linear RGB values decoded once from the private diagnostic reference colours.
+
+For the whole-roof native diagnostic, use the existing review game mode at world centimetres `(-42100, 3700, 11700)`, pitch `-46.7197392588`, yaw `-42.7275285141`, horizontal FOV `90`, resolution `1600×900`. The corresponding source coordinates are relative-Z metres, with `world_cm=(-100*y,-100*x,100*z)`. This constructed view supplements actual driving review; it does not change gameplay camera or establish in-route readability. Recorded frames 170/210/229/296 have roof occlusion/clipping limits.
+
+### Monaco natural cliff cover
+
+`venues.monaco_cliff_cover.finish_terrain(scene)` runs after property, support and
+plant producers. It changes only 1,104 existing whole Grass faces to the existing
+mixed `MonacoNaturalGround` material. The domain joins the qualified ravine with
+literal woodland way 967508764 and retains formal-garden, path, building,
+belvedere, barrier and racing exclusions. The former x = -12 m experiment crop
+is not a mapped land-cover boundary. Preserve every packed XYZ, normal and UV,
+all foliage and driving data. Whole-face area sum 89.18912134 m² and union area
+89.18910511 m² differ by existing float-encoded boundary overlaps; compare the
+same quantity rather than loosening an area guard. Mixed natural cover does not
+establish exact bare-rock pixels, tree species or cliff elevations. Source
+records are under `Attribution/Sources/monaco/architecture/cliff-cover/`.
+
 ## 8. Implement the Unreal assets and runtime data together
 
 Derive both visible surfaces and driving data from the same final revision. Keep

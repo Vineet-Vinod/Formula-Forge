@@ -1,0 +1,81 @@
+{
+  "kind": "Registered diagnostic free camera, isolated private V3 roof form; not a racing camera or native appearance pass",
+  "source_position_m": [
+    -37.0,
+    421.0,
+    117.0
+  ],
+  "source_target_m": [
+    -15.275468245764174,
+    397.4800344826019,
+    83.0
+  ],
+  "unreal_position_cm": [
+    -42100.0,
+    3700.0,
+    11700.0
+  ],
+  "unreal_rotation_pitch_yaw_roll_deg": [
+    -46.71973925878673,
+    -42.727528514063124,
+    0.0
+  ],
+  "horizontal_fov_deg": 90.0,
+  "resolution": [
+    1600,
+    900
+  ],
+  "view": {
+    "name": "diagnostic-free-camera90-v3",
+    "file": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261115/monaco/rome-architecture-private/active-v3/diagnostic-free-camera90-v3.jpg",
+    "sha256": "ea05e7319a799dc14440eea40c5b561c92231acfeee0bf6e66ad8d25fb71a5a0",
+    "camera_source_position_m": [
+      -37.0,
+      421.0,
+      117.0
+    ],
+    "basis": [
+      [
+        -0.73458867956594,
+        -0.6785126910040584,
+        0.0
+      ],
+      [
+        0.493963338345438,
+        -0.5347871620974419,
+        0.6855675835586121
+      ],
+      [
+        0.46516630598550357,
+        -0.5036101859595331,
+        -0.7280089892120875
+      ]
+    ],
+    "fov": 90.0,
+    "orthographic": false,
+    "rome_material_visible_pixels": 159200,
+    "recorded_station_m": null,
+    "rome_material_pixel_bounds": [
+      518,
+      283,
+      1073,
+      819
+    ],
+    "rome_roof_material_visible_pixels": 91830,
+    "rome_roof_material_pixel_bounds": [
+      518,
+      295,
+      1024,
+      667
+    ],
+    "projected_complete_roof_material_bounds": [
+      517.7764651259292,
+      294.49942615049326,
+      1025.35039730439,
+      667.8505361935388
+    ],
+    "complete_roof_inside_camera_frustum": true,
+    "faces_rasterized": 35207
+  },
+  "source_registration": "Unchanged retained source frame and vertical datum; no visual fit, crop or FOV change"
+}

@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+import struct
 from collections import Counter
 from copy import copy
 from pathlib import Path
 
+from circuit_dataclasses import MeshTile
 from circuit_scene import CircuitScene
 from pydantic import TypeAdapter
 
@@ -78,6 +80,24 @@ def validate_supports(scene: CircuitScene, source: PalaceRecipe) -> int:
     return sum(counter.total() for counter in expected.values())
 
 
+def project_stone_uvs(tile: MeshTile) -> int:
+    changed = 0
+    for offset in range(0, len(tile.triangles), 100):
+        material = tile.materials[struct.unpack_from("<I", tile.triangles, offset)[0]]
+        if material != "BakuStone":
+            continue
+        nx, ny, nz = struct.unpack_from("<3f", tile.triangles, offset + 16)
+        for vertex in range(3):
+            start = offset + 4 + vertex * 32
+            wx, wy, wz = struct.unpack_from("<3f", tile.triangles, start)
+            x, y, z = -wy / 400, -wx / 400, wz / 400
+            u, v = ((x, y) if abs(nz) > .7 else
+                    (y if abs(ny) > abs(nx) else x, -z))
+            struct.pack_into("<2f", tile.triangles, start + 24, u, v)
+        changed += 1
+    return changed
+
+
 def finish(scene: CircuitScene, source_path: Path | None = None) -> PalaceChange:
     path = source_path or scene.sources / "mirbabayev/reconstruction.json"
     source = TypeAdapter(PalaceRecipe).validate_json(path.read_bytes())
@@ -104,6 +124,7 @@ def finish(scene: CircuitScene, source_path: Path | None = None) -> PalaceChange
         raise ValueError(
             "Mirbabayev geometry differs from its independently reviewed source"
         )
+    project_stone_uvs(candidate.tiles[parent])
     result, kept = replacement(scene.tiles[parent], expected, candidate.tiles[parent])
     scene.tiles[parent] = result
     scene.modeled_buildings.add(source.osm_id)

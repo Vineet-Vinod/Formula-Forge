@@ -1,0 +1,46 @@
+{
+  "owner_osm_id": 971028629,
+  "literal_native_xy_m": [
+    [
+      -1453.597083280401,
+      -1088.6213840893786
+    ],
+    [
+      -1461.2603785850529,
+      -1089.0022308380514
+    ],
+    [
+      -1444.8841383953877,
+      -1091.7465677060636
+    ],
+    [
+      -1446.86396524484,
+      -1088.2965442146208
+    ]
+  ],
+  "footprint_area_m2": 25.570021882950712,
+  "retained_default_height_cap_m": 6.8,
+  "former_render_fallback_m": 22,
+  "height_status": "Unmeasured low park-amenity proxy. Existing default cap is not as-built height. Exact height, construction epoch, matching camera visibility and hidden elevations unresolved. Only this owner is exempted from the generic post3800m22m override; future tagged heights take precedence.",
+  "source_roles": [
+    {
+      "source": "https://www.openstreetmap.org/way/971028629",
+      "role": "Literal footprint, name and restaurant class; no height or levels tag."
+    },
+    {
+      "source": "https://commons.wikimedia.org/wiki/File:Neft\u00e7il\u0259r_prospektinin_Four_Seasons_Baku_otelind\u0259n_g\u00f6r\u00fcn\u00fc\u015f\u00fc.jpg",
+      "role": "Seferazeri own-work2018overview, CC BY-SA4; reference-only. Low structures within dense mixed park context. Does not bind the later mapped owner to a photographed structure."
+    },
+    {
+      "source": "Saved/Refs/baku.mp4",
+      "role": "User-supplied visual baseline,481/483s. Dense park canopy; no equally exposed22m sliver, but pose/occlusion do not prove an exact low roof height. Reference-only, no pixels used as game textures."
+    }
+  ],
+  "retained_reference_frames": {
+    "build/reviews/resume-20261115/baku/love-ferma-private/reference-481.jpg": "a4ce716475f9afa598bd94feb31a496cc07de42fe8e8ff437d607f15be5bfd1c",
+    "build/reviews/resume-20261115/baku/love-ferma-private/reference-483.jpg": "8d37bedb2c8ff385ca3962a15396e6bea40335cea767bf561cb691fd1069e2f1"
+  },
+  "source_review": "park-amenity-source-review.md",
+  "source_review_sha256": "1fb4995bc510ecc1d9390dd0f9fa5c065b74ae97ef7948ca4d9f1f03fdb3e00a",
+  "native_and_cooked_review": "Pending bounded trial, not whole-route acceptance."
+}

@@ -1,0 +1,104 @@
+{
+  "state": "Independent two-epoch north traces; raw tile transform only; no image/IGN fit applied",
+  "trace_inputs_sha256": "0f659f04150793153bdab5b5d7da25ac1fadeec9b8bb5064228f91ed41b10138",
+  "traces": [
+    {
+      "role": "upper_hip_shoulder",
+      "corners": [
+        {
+          "name": "NW",
+          "pixel2015": [
+            158.0,
+            194.0
+          ],
+          "pixel2019": [
+            161.0,
+            198.0
+          ],
+          "native_xy2015_m": [
+            -23.128488597532797,
+            406.0271096045437
+          ],
+          "native_xy2019_m": [
+            -23.054275758801865,
+            405.9158629724616
+          ],
+          "cross_epoch_distance_m": 0.13372867524249824,
+          "outside_literal_ign_roof_distance2019_m": 2.279987353377629
+        },
+        {
+          "name": "NE",
+          "pixel2015": [
+            846.0,
+            80.0
+          ],
+          "pixel2019": [
+            846.0,
+            77.0
+          ],
+          "native_xy2015_m": [
+            -4.634669422746843,
+            408.08803868622874
+          ],
+          "native_xy2019_m": [
+            -4.630380573555996,
+            408.16824605043894
+          ],
+          "cross_epoch_distance_m": 0.08032194906081924,
+          "outside_literal_ign_roof_distance2019_m": 2.15821081012522
+        }
+      ]
+    },
+    {
+      "role": "outer_lower_eave",
+      "corners": [
+        {
+          "name": "NW",
+          "pixel2015": [
+            121.0,
+            162.0
+          ],
+          "pixel2019": [
+            123.0,
+            162.0
+          ],
+          "native_xy2015_m": [
+            -24.068559194627756,
+            406.9357308927845
+          ],
+          "native_xy2019_m": [
+            -24.0152718447524,
+            406.93286192959346
+          ],
+          "cross_epoch_distance_m": 0.05336452573133087,
+          "outside_literal_ign_roof_distance2019_m": 3.4117665413992326
+        },
+        {
+          "name": "NE",
+          "pixel2015": [
+            878.0,
+            26.0
+          ],
+          "pixel2019": [
+            879.0,
+            24.0
+          ],
+          "native_xy2015_m": [
+            -3.704872332454414,
+            409.48586538653973
+          ],
+          "native_xy2019_m": [
+            -3.675369406974155,
+            409.5379024021334
+          ],
+          "cross_epoch_distance_m": 0.05981867270166949,
+          "outside_literal_ign_roof_distance2019_m": 3.6221606341956845
+        }
+      ]
+    }
+  ],
+  "ign_source_plan_precision_m": 2.5,
+  "precision_band_native_m": 2.524830183782209,
+  "2019_processing": "Unlocated; do not assume parallax correction",
+  "role_limit": "Upper shoulder may qualify a bounded thin-roof overhang hypothesis; outer lower eave is a separate observation and cannot be silently clipped or filled with a wall."
+}

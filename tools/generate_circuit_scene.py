@@ -106,6 +106,12 @@ def generate(slug: str, write_native_contact: bool = False) -> None:
         )
 
         finish_hermosa_terrace(scene)
+        from venues.monaco_rome import finish_terrain as finish_villa_de_rome
+
+        finish_villa_de_rome(scene)
+        from venues.monaco_cliff_cover import finish_terrain as finish_cliff_cover
+
+        finish_cliff_cover(scene)
     artwork(scene)
     triangle_count = sum(len(tile.triangles) // 100 for tile in scene.tiles.values())
     tile_count = scene.save()

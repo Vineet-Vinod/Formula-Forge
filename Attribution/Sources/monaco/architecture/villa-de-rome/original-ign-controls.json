@@ -1,0 +1,86 @@
+{
+  "state": "Coupled existing house-envelope issue; no house change in this garden plan.",
+  "owner_osm_id": 94400097,
+  "measured_feature": {
+    "type": "Feature",
+    "id": "batiment.22067154",
+    "geometry": {
+      "type": "MultiPolygon",
+      "coordinates": [
+        [
+          [
+            [
+              7.42104501,
+              43.73823407,
+              87.5
+            ],
+            [
+              7.42103015,
+              43.7380418,
+              82.9
+            ],
+            [
+              7.42126214,
+              43.73803598,
+              82.5
+            ],
+            [
+              7.4212804,
+              43.73825605,
+              87
+            ],
+            [
+              7.42104501,
+              43.73823407,
+              87.5
+            ]
+          ]
+        ]
+      ]
+    },
+    "geometry_name": "geometrie",
+    "properties": {
+      "cleabs": "BATIMENT0000000074074457",
+      "nature": "Indiff\u00e9renci\u00e9e",
+      "usage_1": "Indiff\u00e9renci\u00e9",
+      "usage_2": null,
+      "construction_legere": false,
+      "etat_de_l_objet": "En service",
+      "date_creation": "2007-05-09T13:45:34.053Z",
+      "date_modification": "2023-04-05T13:07:15.330Z",
+      "date_d_apparition": null,
+      "date_de_confirmation": null,
+      "sources": null,
+      "identifiants_sources": "",
+      "methode_d_acquisition_planimetrique": "BDTopo",
+      "methode_d_acquisition_altimetrique": "BDTopo",
+      "precision_planimetrique": 2.5,
+      "precision_altimetrique": 1.5,
+      "nombre_de_logements": null,
+      "nombre_d_etages": null,
+      "materiaux_des_murs": null,
+      "materiaux_de_la_toiture": null,
+      "hauteur": 31.3,
+      "altitude_minimale_sol": 56.2,
+      "altitude_minimale_toit": null,
+      "altitude_maximale_toit": 89.1,
+      "altitude_maximale_sol": 65.6,
+      "origine_du_batiment": "Imagerie a\u00e9rienne",
+      "appariement_fichiers_fonciers": null,
+      "identifiants_rnb": "NS5BEAF52P45"
+    }
+  },
+  "source_file": "Attribution/Sources/monaco/architecture/pending-hill-properties/ign-local-buildings.json.gz",
+  "source_sha256": "f4a45e3fc55d0831593e04049cb5fbc11bde44dc4e82f21ac5f25d872754506a",
+  "owner_area_fraction_overlap_measured_component": 0.973582014739242,
+  "current_actual_inside_owner_roof_max_absolute_m": 77.02490136442499,
+  "minimum_measured_boundary_roof_absolute_m": 82.5,
+  "minimum_roof_deficit_m": 5.475098635575009,
+  "current_generic_lowest_base_absolute_m": 56.304901364425,
+  "proposed_source_garden_near_house_absolute_m_estimate": 59.2,
+  "garden_above_existing_base_m_estimate": 2.8950986355750032,
+  "developer_source": "https://www.groupemarzocco.mc/en/projects/",
+  "developer_observation": "Developer reports nine above-ground storeys with 4000 square metres above and 2000 below ground; the retained current six-level 20.4 m fallback is not a measured facade schedule.",
+  "repair_requirement": "Before production terrace contact at Rome, qualify/repair its measured stepped/hipped roof and source-facing exposed base/floor schedule together. Do not bury the generic first row without explaining it, or introduce a narrow trench merely to preserve an incorrect fallback threshold. Preserve existing mapped body and source roof boundaries; no whole-maximum box.",
+  "source_limits": "IGN plan precision 2.5 m / Z 1.5 m; modification date 2023-04-05 is not the aerial survey epoch. Mixed roof Zs must retain real structure/step distinction."
+}

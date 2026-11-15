@@ -1,0 +1,84 @@
+{
+  "identity": "Villa de Rome, OSM94400097, IGN BATIMENT0000000074074457",
+  "developer": {
+    "url": "https://www.groupemarzocco.mc/en/projects/",
+    "observation": "1992nine-storey superstructure, pink Portuguese marble columns, stucco, loggias/balconies and mouldings",
+    "scope": "Nine-building-storey identity;8 estimated normal strata plus occupied mansard, not9 exposed floors on every elevation"
+  },
+  "ortho_2015": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2015/MapServer",
+  "ortho_2019": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer",
+  "tile_transform": {
+    "epsg": 3944,
+    "origin_xy_m": [
+      -34843700.0,
+      46358400.0
+    ],
+    "lod": 10,
+    "resolution_m": 0.026458386250105836,
+    "assembly_start_col": 2723886,
+    "assembly_start_row": 3187341,
+    "assembly_size_pixels": [
+      1024,
+      1536
+    ],
+    "tile_size_pixels": 512
+  },
+  "source_preference": "Independent2015/2019 north eave/shoulder traces agree within0.134m. Direct2019nominal outline chosen. No image warp/parallax correction.",
+  "ign_conflict": "All original XYZ retained. Eave3.4\u20133.6m/shoulder2.16\u20132.28m outside coarse IGN plan. Precision2.5m/1.5mZ is reported accuracy, not an absolute clip bound. North XY-to-roof-part/Z association unresolved.",
+  "heights": {
+    "architectural_absolute_m": {
+      "cornice": 82.7,
+      "shoulder": 86.6,
+      "apex": 88.0
+    },
+    "unlocated_ign_maximum_unused_m": 89.1,
+    "estimated_roof_minus_original_north_z_m": [
+      -3.2299107746728453,
+      -1.8465933801078336
+    ],
+    "exact_section_accepted": false
+  },
+  "body_ground_limits": "Frozen V2body/south prefix retained. Base56.304901m provisional; separate Rome garden source~59.1\u201359.4m near house. No Ground/road/physics/camera change; no new occupied floor. Thin0.12m soffit joins unchanged body; structural cantilever/support unverified.",
+  "source_only_review_pass": "source-review.md supports production/native-validation progression, not cooked/native visual acceptance",
+  "immutable_frozen_v3_receipt_sha256": "797717bfa23d2abc113160968d488c147c0c78ae4e9332c19dee8c6c01a1e763",
+  "frozen_geometry_sha256": "14bb1943aece4a841a286f84088b39072e612983fa653ac38b453d6d6670b832",
+  "source_assets": [
+    {
+      "file": "marzocco-rome-primary.webp",
+      "sha256": "32cb4c52b06b7867ccbad7d001f1f4e62bbf415e9af22bd97abcda2aaa017b2c"
+    },
+    {
+      "file": "native-diagnostic-camera.json",
+      "sha256": "f8dd67e3c6b089b5c742c31f1baf342a91e9b95e9e0a9b2be75320b150fad311"
+    },
+    {
+      "file": "north-trace-controls.json",
+      "sha256": "0f659f04150793153bdab5b5d7da25ac1fadeec9b8bb5064228f91ed41b10138"
+    },
+    {
+      "file": "north-trace-two-epoch-comparison.json",
+      "sha256": "99f18d0c2a0c75fe87a37d6caecbbd98318f429d5257171e265deaac858ee3dd"
+    },
+    {
+      "file": "original-ign-controls.json",
+      "sha256": "96c9f0a91dd0e9a84495f3dc78c8264ee6122ffeb62da003e4f2f86c3d6a1839"
+    },
+    {
+      "file": "primary-2015-roof-detail.jpg",
+      "sha256": "eafba9f5ea24ca9a99b10aeaa477ebaf14df3a142153cadc31c85adee857a914"
+    },
+    {
+      "file": "primary-2019-roof-detail.jpg",
+      "sha256": "444df77cc1341f3e6fb16427cdb6c37b5c9c76bbcfd01cfbd3b6e5a17be3c2cf"
+    },
+    {
+      "file": "reconstruction.json",
+      "sha256": "0f37f590739edea2ae054e7e106c0a0c05e0c8b438985da2c0c927578d7c49fc"
+    },
+    {
+      "file": "source-review.md",
+      "sha256": "93417b8bb0a8587c1debf96ebe320a152b8c58d711a5cb415fc4bdb2b84174fe"
+    }
+  ],
+  "native_review": "Fixed90-degree free perspective exposes full roof; recorded170/210/229/296 have occlusion/clipping limits. Use native-diagnostic-camera.json without changing gameplay camera."
+}

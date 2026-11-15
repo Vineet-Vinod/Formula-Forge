@@ -1,0 +1,16 @@
+{
+  "state": "Independent image trace inputs before geometry or object fitting; no roof-image warp selected",
+  "manual_pick_uncertainty_pixels": 8.0,
+  "upper_hip_shoulder": {
+    "2015": {"NW": [158.0,194.0], "NE": [846.0,80.0]},
+    "2019": {"NW": [161.0,198.0], "NE": [846.0,77.0]}
+  },
+  "outer_lower_eave": {
+    "2015": {"NW": [121.0,162.0], "NE": [878.0,26.0]},
+    "2019": {"NW": [123.0,162.0], "NE": [879.0,24.0]}
+  },
+  "roles": {
+    "upper_hip_shoulder": "Grey upper sheet meets the dark northern roof margin; the three source objects occupy this upper hip face",
+    "outer_lower_eave": "Outer pale/dark lower roof perimeter; distinct from upper shoulder and not assumed to be the IGN north edge"
+  }
+}
