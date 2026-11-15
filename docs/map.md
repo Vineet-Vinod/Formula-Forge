@@ -853,12 +853,31 @@ remain estimates. The six mapped grass beds and photographed narrow verge have
 separate role evidence. Source controls, exact output, contacts and review scope
 live under `Attribution/Sources/baku/park-context/`. Compose semantic replacements
 with the current parents, preserving No. 85 and every unrelated row. The earlier
-Azneft/Niyazi public-junction problem is a separate, unapproved correction.
+Azneft/Niyazi public-junction problem needs separate source and native checks.
 
 `tools/rebuild_baku_park.py --check` compiles the stored source-space control mesh
 and verifies the exact reviewed Ground delta. Edit and requalify those authored
 controls rather than relying on an ignored cache or silently patching the packed
 output. The compile regression belongs in `make circuit-check`.
+
+### Baku ordinary traffic island
+
+`venues.baku_junction.finish(scene)` follows the park replacement. It changes
+only qualified Ground rows and a closed low curb in `Tile_Street_m7_m5`.
+OSM grass island 270087949 is separate from fountain 370820582 and the formal
+square. Register each object before transferring a photographed material or
+height. Three actual connected racing-Road intersections anchor the public-road
+field; the 2% outward camber, island floor and 0.15 m curb remain estimates.
+The incoming Niyazi carriageway is a separate held reconstruction.
+
+The recipe, literal ring, source qualification and encoded geometry proof live
+under `Attribution/Sources/baku/junction/`. Keep complete coverage, outward curb
+faces and top/bottom contact checks. Diagnose extreme grades against their exact
+original owner: one unchanged microscopic face does not prove a new steep bank.
+An authored zero-edit control must define a continuous transition to its
+neighbors and retain the strict topology checks. Never excuse a resolvable
+encoding failure as unrepresentable or flatten a different mapped feature.
+Source-camera approval still needs a fresh cooked driving review.
 
 ### Villa de Rome architecture
 

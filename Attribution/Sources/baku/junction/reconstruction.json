@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "origin_lat_lon": [
+    40.3726832406754,
+    49.853217636212044
+  ],
+  "uniform_scale": 1.0062366339173152,
+  "island_osm_id": 270087949,
+  "island_ring_lat_lon": [
+    [
+      40.3626007,
+      49.8356225
+    ],
+    [
+      40.3626313,
+      49.8355887
+    ],
+    [
+      40.3626519,
+      49.8355437
+    ],
+    [
+      40.3626603,
+      49.8354923
+    ],
+    [
+      40.3626554,
+      49.8354401
+    ],
+    [
+      40.362638,
+      49.8353929
+    ],
+    [
+      40.3626098,
+      49.8353556
+    ],
+    [
+      40.3625739,
+      49.8353324
+    ],
+    [
+      40.3625342,
+      49.8353257
+    ],
+    [
+      40.362495,
+      49.8353363
+    ],
+    [
+      40.3624605,
+      49.8353631
+    ],
+    [
+      40.3624345,
+      49.835403
+    ],
+    [
+      40.3624199,
+      49.8354519
+    ],
+    [
+      40.3624181,
+      49.8355044
+    ],
+    [
+      40.3624294,
+      49.8355548
+    ],
+    [
+      40.3624525,
+      49.8355977
+    ],
+    [
+      40.362485,
+      49.8356283
+    ],
+    [
+      40.3625233,
+      49.8356435
+    ],
+    [
+      40.3625633,
+      49.8356415
+    ],
+    [
+      40.3626007,
+      49.8356225
+    ]
+  ],
+  "island_area_m2": 572.1762935777078,
+  "estimated_curb_rise_m": 0.15,
+  "estimated_outward_crossfall": 0.02,
+  "ground_delta_file": "ground-delta.json.gz",
+  "ground_delta_sha256": "3f4203b7efccb495839ca08e493d918af83ba1a984ec9a33b655df1ab230f39a",
+  "removed_rows": 674,
+  "new_rows": 18507,
+  "curb_faces": 484,
+  "source_note": "Literal OSM270087949 grass role and ground ring, source-qualified primary aerial ordinary low rim, three actual connected Road control heights. Intermediate road/camber/island floor and 0.15 m curb are explicit reconstruction estimates, not a survey. The0.320 mm authored field revision preserves one current boundary parent with shared C1 neighbors. All current park 98 trees/office/heroes, race Road/protection and4 physical bins stay unchanged. Native visual review required."
+}

@@ -1,0 +1,88 @@
+{
+  "state": "Canonical source promotion receipt only. Source/camera review PASS; native/cooked acceptance remains root-owned and pending.",
+  "created_utc": "2026-11-15T17:18:24.495590+00:00",
+  "candidate_entry": {
+    "path": "build/reviews/resume-20261115/baku/first-terrace-private/FROZEN-ISLAND-CANDIDATE.json",
+    "sha256": "2acf9fd6f5a77cb29d1aa8242b225fe6747e4d8562e001f70b023ffde4014199"
+  },
+  "stable_map": {
+    "path": "build/reviews/resume-20261115/baku/first-terrace-private/STABLE-PRODUCTION-HANDOFF.json",
+    "sha256": "40e8755b573babdb7dd08055ac3432e7f39c9c94f5a6f7ade5f0ca2b7f456ef0"
+  },
+  "reviews": [
+    {
+      "path": "build/reviews/resume-20261115/reviews/baku-first-terrace-road-domain-source-review.md",
+      "sha256": "bf0aa3e89fc61a401878a8b377225128e33d2cff0390841c3b99aba2a31a01fb"
+    },
+    {
+      "path": "build/reviews/resume-20261115/reviews/baku-first-terrace-immediate-walk-source-addendum.md",
+      "sha256": "a25276eacce3380ee281b71c1be14465cceb61c92ddd2557113eefe8966b692b"
+    },
+    {
+      "path": "build/reviews/resume-20261115/reviews/baku-ordinary-island-frozen-source-camera-review.md",
+      "sha256": "254a1f5403f8cc806c4f39e02c16713d1631f5e342a706708282fda134ce3e4e"
+    }
+  ],
+  "canonical_files": [
+    {
+      "canonical_path": "tools/venues/baku_junction.py",
+      "canonical_sha256": "3eb8545126f6391e2d13008bc0398c26ae2cec2aa638a94befacf7ebc0b4ab6f",
+      "private_stable_sha256": "1657e2b59714cf9f8b8c8d9294130d69f261f4df5607ce5936fc51c9fe32a04b",
+      "identical_bytes": false,
+      "same_ast": true
+    },
+    {
+      "canonical_path": "tools/venues/baku_junction_dataclasses.py",
+      "canonical_sha256": "6ff6e6ec610efd16fc325cbd9769e4aefde9f086ee8333f7c686e8e40295d134",
+      "private_stable_sha256": "6ff6e6ec610efd16fc325cbd9769e4aefde9f086ee8333f7c686e8e40295d134",
+      "identical_bytes": true,
+      "same_ast": true
+    },
+    {
+      "canonical_path": "Tests/test_baku_junction.py",
+      "canonical_sha256": "3a5358eab2bd151780e963b8c9f73d77dcfe43d98408f1483e688b9575770fd7",
+      "private_stable_sha256": "3a5358eab2bd151780e963b8c9f73d77dcfe43d98408f1483e688b9575770fd7",
+      "identical_bytes": true,
+      "same_ast": true
+    },
+    {
+      "canonical_path": "Attribution/Sources/baku/junction/ground-delta.json.gz",
+      "canonical_sha256": "3f4203b7efccb495839ca08e493d918af83ba1a984ec9a33b655df1ab230f39a",
+      "private_stable_sha256": "3f4203b7efccb495839ca08e493d918af83ba1a984ec9a33b655df1ab230f39a",
+      "identical_bytes": true
+    },
+    {
+      "canonical_path": "Attribution/Sources/baku/junction/reconstruction.json",
+      "canonical_sha256": "793c7b560320fc0ab23737563241c714b767b09cbf70bfed713af71a38ef9ff0",
+      "private_stable_sha256": "793c7b560320fc0ab23737563241c714b767b09cbf70bfed713af71a38ef9ff0",
+      "identical_bytes": true
+    },
+    {
+      "canonical_path": "Attribution/Sources/baku/junction/source-qualification.json",
+      "canonical_sha256": "7789ee5d1a89dfa961e923c6829d0b083e72d28436a604499571f36ef5cc9fed",
+      "private_stable_sha256": "7789ee5d1a89dfa961e923c6829d0b083e72d28436a604499571f36ef5cc9fed",
+      "identical_bytes": true
+    },
+    {
+      "canonical_path": "Attribution/Sources/baku/junction/geometry-proof.json",
+      "canonical_sha256": "bc5e49514af4275c8818a75a4fc30c679436dc45fd50fa0545d0de63c8b0b751",
+      "private_stable_sha256": "bc5e49514af4275c8818a75a4fc30c679436dc45fd50fa0545d0de63c8b0b751",
+      "identical_bytes": true
+    },
+    {
+      "canonical_path": "Attribution/Sources/baku/junction/README.md",
+      "canonical_sha256": "dddded4e7eee2efc7e2a45effe5f3994b384f7043f1b499dc6cbd2d40b147779",
+      "private_stable_sha256": "dddded4e7eee2efc7e2a45effe5f3994b384f7043f1b499dc6cbd2d40b147779",
+      "identical_bytes": true
+    }
+  ],
+  "baseline": "Actual post-park source5198620,manifestbf6200b3f25d5fea7511d41d27d5339f3eba1890e9fd1e86b86347bf6cd2a70e. No finaloffice delta replay.",
+  "geometry": "674 currentsemanticGround parents\u219218507 rows, net17833, expected5216453 source triangles; existingGrass/Concrete only; all actual unselectedSource rows/materialprefixes/order and4physicalBins preserved by typed ground adapter.",
+  "limits": [
+    "The three Road anchors are actual preserved controls; intermediate outward2%camber/island floor and0.15mcurb are explicit reconstruction estimates.",
+    "The0.320mm numerical authoringcontrol is sharedC1 and intentionallyzero on one current parent. It is not claimed unrepresentable; the frozenkernel was not changed.",
+    "The inherited40.427% microface is5.505e\u22126m\u00b2 withexactoriginalowner/plane. There are no newsubstantivesteepfaces.",
+    "ThecyanlowerCPUregion is a renderernear-plane omission, notmissingSourceGround. CPUcolors do notshowUnrealPBR.",
+    "IncomingNiyazi carriageway andfountainterrace remainseparateheldfeatures."
+  ]
+}
