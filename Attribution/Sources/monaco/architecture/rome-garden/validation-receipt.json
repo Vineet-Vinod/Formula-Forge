@@ -1,0 +1,20 @@
+{
+  "state": "PASS exact frozen V1 new garden geometry in complete current scene; native PBR and whole Monaco still held",
+  "actual_current_manifest_sha256": "253d1b4568d67fd440bee64d7ea0e10908ed555a26902659a243affbfc3798e8",
+  "actual_current_tile_count": 117,
+  "changed_tiles": [
+    "Building_City_m1_01",
+    "Tile_Street_m1_01"
+  ],
+  "all_other_complete_tiles_exact": 115,
+  "new_city_geometry_rows": 22100,
+  "new_ground_rows": 2607,
+  "old_and_reanchored_tree_rows": 204,
+  "all_old_ground_rows_raw_exact": true,
+  "all_current_unrelated_city_rows_in_order": true,
+  "minimum_actual_packed_tree_burial_m": 0.09999999999999432,
+  "minimum_new_packed_normal_alignment": 0.9998423457145691,
+  "proof_sha256": "3978cbfbc45a22342a773ecd0c308c11bd4bc78fcbe4a35061448fccabc77aa2",
+  "frozen_source_handoff_sha256": "02ec36da5c345b49323f00b12f8484722d15981813ca8f867c77f1452b75bdd9",
+  "limits": "Source/camera trial only. Existing unrelated architecture, including the separately held roof-object issue, receives no new approval from this garden proof."
+}

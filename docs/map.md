@@ -795,6 +795,18 @@ The adapter checks frozen geometry/body hashes, packed normals, closed main-roof
 
 For the whole-roof native diagnostic, use the existing review game mode at world centimetres `(-42100, 3700, 11700)`, pitch `-46.7197392588`, yaw `-42.7275285141`, horizontal FOV `90`, resolution `1600×900`. The corresponding source coordinates are relative-Z metres, with `world_cm=(-100*y,-100*x,100*z)`. This constructed view supplements actual driving review; it does not change gameplay camera or establish in-route readability. Recorded frames 170/210/229/296 have roof occlusion/clipping limits.
 
+### Villa de Rome garden
+
+`venues.monaco_rome_garden.finish_terrain(scene)` follows the house replacement
+and precedes final cliff classification. Its separate nominal 59.15 m absolute
+lawn estimate retains higher actual relief with soil cover; it does not inherit
+Hermosa's 8.5% north grade. The recipe preserves all old Ground rows and replaces
+only the two exact mapped-tree families to support their feet on the new lawn.
+Existing terrace materials and the stable qualified ring order are reused.
+Pool and apron remain separate. Source stepping pads, the southern low rim and
+unregistered barred opening remain held. See the explicit uncertainty and
+coverage receipts in `Attribution/Sources/monaco/architecture/rome-garden/`.
+
 ### Monaco natural cliff cover
 
 `venues.monaco_cliff_cover.finish_terrain(scene)` runs after property, support and
@@ -988,6 +1000,15 @@ A different season, focal length or commercial-game camera needs an explicit
 caveat. Uncertainty is a reason to seek another view, not invent certainty.
 
 ## 10. Use an independent critic and close the findings
+
+Before reviewing images, require the selected capture's `package.json` to match
+the intended immutable package pin byte for byte. Verify its archive frame count
+and resolve target filenames from that capture's own index. Check the report's
+cited image and archive hashes against those exact files. A correctly named
+report with the new pin can still describe an older capture: the first 7399
+Monaco review accidentally used 32af images and its planting findings had to be
+discarded. Preserve invalid reports as history and repeat the actual visual
+review; replacing paths and hashes in the prose does not repair it.
 
 The user selected **Luna with high reasoning effort** for the accepted Las Vegas
 visual review. When subagent review is authorized for the task, use that reviewer

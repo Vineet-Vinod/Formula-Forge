@@ -1,0 +1,42 @@
+{
+  "state": "FROZEN PRIVATE Rome garden V1 for independent source/camera review. No canonical/native approval.",
+  "baseline_manifest_sha256": "46e3d5d5acac86ba9ecb5c6b849f1e0c11d1d0bd02a96b2906174e9d5238a8fa",
+  "context_components": "Composed with frozen Hermosa garden V3 and separate Rome architecture V2. Three roof objects remain held by that author; this is not their new acceptance.",
+  "source_top": "59.15 m absolute architectural control from broad 59.0\u201359.3 m observations, retaining higher actual old relief with 0.02 m separation. V1 actual recipe uncertainty is \u00b11.5 m; that supersedes the preliminary source plan \u00b11.0 m estimate. Southern 58.3\u201358.4 m edge observations remain explicit and unresolved.",
+  "scope": "Only this garden geometry and two exactly matched mapped-tree root elevations change within the already declared private composite. No native field, road, contact, bridge or camera change.",
+  "new_garden_geometry": {
+    "area_m2": 324.8366414173544,
+    "lawn_faces": 2607,
+    "rock_faces": 2352,
+    "masonry_faces": 88,
+    "support_segments": 212,
+    "maximum_support_extrapolation_m": 0.0,
+    "minimum_soil_cover_m": 0.020000000000003126,
+    "minimum_foundation_burial_m": 0.11999999999999744,
+    "maximum_visible_masonry_band_m": 6.0,
+    "maximum_lower_rock_face_m": 5.020000194855086,
+    "balusters": 53,
+    "hedges": 31,
+    "minimum_top_absolute_m": 59.15,
+    "maximum_top_absolute_m": 59.493712582426,
+    "encoding_missing_area_m2": 0.0008575050120498477,
+    "encoding_extra_area_m2": 0.0009246542835236294,
+    "encoding_area_bound_m2": 0.05720859437143258,
+    "omitted_subformat_stone_faces": 2,
+    "omitted_subformat_stone_area_m2": 8.89394076663957e-07,
+    "distinct_stones": 477,
+    "stone_facing_faces": 10474,
+    "maximum_stone_relief_m": 0.03499554964888237
+  },
+  "actual_face_foot_receipt_sha256": "a7d6fef59647dae10df9b6326ba1181036ac11b9367c0effd4c122f2cd121218",
+  "source_limits": [
+    "Separate Rome pool apron is excluded, not painted lawn or copied pool texture.",
+    "Stepping-stone strips are source-identified in the plan but individual pads are not emitted in this V1. No source-completion claim for those details.",
+    "The low barred wall aperture in the agency image is not registered as a Rome pedestrian gate. Exact opening/curvature remains held.",
+    "Mapped tree XY, default form, height and seeds are preserved; root shifts 4.4067 m and 3.7779 m are substantive source-based reconstructions, not surveyed tree bases.",
+    "Remaining angular green/white cliff below both gardens is outside these domains and unchanged.",
+    "Flat technical preview lacks native foliage alpha, PBR lighting and shadows."
+  ],
+  "source_review_sha256": "f407c2cda790748c776a2b08d09386531ece5386306fd1751f95802ae955cd3e",
+  "source_terrace_identity": "Separate Rome control 59.15 m absolute, \u00b11.5 m architectural uncertainty. Southern 58.3\u201358.4 m source edge is retained as uncertainty; no Hermosa 8.5% grade is copied."
+}

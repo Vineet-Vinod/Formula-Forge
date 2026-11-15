@@ -109,6 +109,9 @@ def generate(slug: str, write_native_contact: bool = False) -> None:
         from venues.monaco_rome import finish_terrain as finish_villa_de_rome
 
         finish_villa_de_rome(scene)
+        from venues.monaco_rome_garden import finish_terrain as finish_rome_garden
+
+        finish_rome_garden(scene)
         from venues.monaco_cliff_cover import finish_terrain as finish_cliff_cover
 
         finish_cliff_cover(scene)
