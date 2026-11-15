@@ -1,0 +1,71 @@
+{
+  "state": "Source controls for a garden-exclusion/open-frontage study; not a surveyed garage footprint",
+  "retained_source": "Attribution/Sources/monaco/environment.osm.json.gz",
+  "retained_source_sha256": "14e393c8402f3572ad8815073b95454c3423ff4bf4e247d8bf5cb58fae36825c",
+  "literal_osm_ways": [
+    {
+      "type": "way",
+      "id": 77052383,
+      "tags": {
+        "bicycle": "no",
+        "highway": "steps",
+        "incline": "up",
+        "name": "Escalier de la Costa"
+      },
+      "nodes": [
+        907295487,
+        907295497
+      ],
+      "geometry": [
+        {
+          "lat": 43.7372276,
+          "lon": 7.4218433
+        },
+        {
+          "lat": 43.7374005,
+          "lon": 7.4218423
+        }
+      ]
+    },
+    {
+      "type": "way",
+      "id": 156772049,
+      "tags": {
+        "highway": "footway"
+      },
+      "nodes": [
+        907295487,
+        6848669735,
+        6848669734,
+        8740874100
+      ],
+      "geometry": [
+        {
+          "lat": 43.7372276,
+          "lon": 7.4218433
+        },
+        {
+          "lat": 43.7370772,
+          "lon": 7.4218469
+        },
+        {
+          "lat": 43.7370759,
+          "lon": 7.421741
+        },
+        {
+          "lat": 43.7370589,
+          "lon": 7.421698
+        }
+      ]
+    }
+  ],
+  "estimated_open_frontage_bounds_xy_m": [
+    34.92,
+    273.2,
+    41.15,
+    292.9
+  ],
+  "registration": "CCA actual 2019 project photo and dated 28 September 2025 original place the open garage gap east of the lower planted stem and west of Escalier de la Costa. The retained stair/footway identifies that geographical gap. The inferred reserve stops before the deeper house enclosure; it does not qualify the exact garage plan, depth, structural layout or floor datum.",
+  "guard": "The literal planted owner-minus-core area has zero overlap with this open-frontage reserve. Actual packed new bank/retaining geometry must not obstruct it. Upper balcony/foliage overhangs are checked separately against actual emitted floor heights.",
+  "scope": "No garage enclosure or native/outer ground is changed."
+}

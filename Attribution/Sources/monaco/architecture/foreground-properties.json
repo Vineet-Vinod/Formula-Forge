@@ -1,0 +1,347 @@
+{
+  "schema": 1,
+  "origin_latitude": 43.7346446387306,
+  "origin_longitude": 7.4213359272073856,
+  "scene_scale": 1.0099320735128836,
+  "relative_datum_m": 1.5128994113,
+  "bruyeres": {
+    "osm_id": 94400108,
+    "owner_xy_m": [
+      [
+        23.807091477987704,
+        303.8133012353837
+      ],
+      [
+        28.97349059844986,
+        305.4547080481184
+      ],
+      [
+        39.24130268694957,
+        305.5558906602454
+      ],
+      [
+        39.35502845371068,
+        293.0542168530279
+      ],
+      [
+        34.72476509102212,
+        293.0092468036375
+      ],
+      [
+        34.81412105068713,
+        284.21760209469306
+      ],
+      [
+        25.09869125812128,
+        284.12766199511344
+      ],
+      [
+        25.017458567536412,
+        292.6944564563071
+      ],
+      [
+        23.91269397574083,
+        292.68321394375977
+      ]
+    ],
+    "roof_xy_m": [
+      [
+        23.543897560541772,
+        300.8812539975557
+      ],
+      [
+        23.875326938015515,
+        292.3515598272089
+      ],
+      [
+        39.85785880840725,
+        292.87096390066364
+      ],
+      [
+        39.62959494791208,
+        305.04323209399956
+      ],
+      [
+        32.39338687158972,
+        305.6525762670338
+      ],
+      [
+        30.407247587088936,
+        304.4473789353829
+      ],
+      [
+        30.607080005911858,
+        300.7879411439722
+      ]
+    ],
+    "front_endpoints_xy_m": [
+      [
+        23.875326938015515,
+        292.3515598272089
+      ],
+      [
+        39.85785880840725,
+        292.87096390066364
+      ]
+    ],
+    "datum_m": 1.5128994113,
+    "core_base_relative_m": 9.787100588700001,
+    "main_roof_relative_m": 25.90239990234375,
+    "core_base_uncertainty_m": 1.5,
+    "floor_count": 4,
+    "recess_m": 0.2,
+    "curved_balcony_depth_m": 1.45,
+    "curved_balcony_width_m": 5.6,
+    "side_balcony_depth_m": 1.05,
+    "side_balcony_width_m": 3.2
+  },
+  "montjoie": {
+    "osm_id": 94399506,
+    "owner_xy_m": [
+      [
+        42.86428068651554,
+        308.35527625177264
+      ],
+      [
+        54.708006972159815,
+        308.33279122667795
+      ],
+      [
+        54.675513895911436,
+        301.60976880167425
+      ],
+      [
+        54.68363716499156,
+        298.69795808627157
+      ],
+      [
+        52.465984712320264,
+        298.69795808627157
+      ],
+      [
+        52.44973817416002,
+        291.76132792526545
+      ],
+      [
+        42.83178761026716,
+        291.7838129503601
+      ]
+    ],
+    "front_vertex_indices": [
+      6,
+      5
+    ],
+    "relative_datum_m": 1.5128994113,
+    "base_relative_m": 7.3422998046875,
+    "main_top_relative_m": 24.3422998046875,
+    "floor_bottom_offsets_m": [
+      1.75,
+      4.75,
+      7.75,
+      10.75,
+      13.75
+    ],
+    "opening_height_m": 2.45,
+    "left_bay_center_m": 3.15,
+    "right_bay_center_m": 7.28,
+    "left_opening_width_m": 1.9,
+    "right_opening_width_m": 1.55,
+    "recess_m": 0.16,
+    "balcony_halfwidth_m": 2.2,
+    "balcony_depth_m": 1.16,
+    "top_balcony_halfwidth_m": 1.65,
+    "top_balcony_depth_m": 0.9,
+    "parapet_height_m": 1.06,
+    "pavilion_center_uv_m": [
+      6.5,
+      -1.9
+    ],
+    "pavilion_width_m": 2.5,
+    "pavilion_depth_m": 2.5,
+    "pavilion_height_m": 2.4,
+    "pavilion_uncertainty_m": 0.5
+  },
+  "bruyeres_owner_wgs84_lonlat": [
+    [
+      7.421629,
+      43.737347
+    ],
+    [
+      7.4216926,
+      43.7373616
+    ],
+    [
+      7.421819,
+      43.7373625
+    ],
+    [
+      7.4218204,
+      43.7372513
+    ],
+    [
+      7.4217634,
+      43.7372509
+    ],
+    [
+      7.4217645,
+      43.7371727
+    ],
+    [
+      7.4216449,
+      43.7371719
+    ],
+    [
+      7.4216439,
+      43.7372481
+    ],
+    [
+      7.4216303,
+      43.737248
+    ]
+  ],
+  "montjoie_owner_wgs84_lonlat": [
+    [
+      7.4218636,
+      43.7373874
+    ],
+    [
+      7.4220094,
+      43.7373872
+    ],
+    [
+      7.422009,
+      43.7373274
+    ],
+    [
+      7.4220091,
+      43.7373015
+    ],
+    [
+      7.4219818,
+      43.7373015
+    ],
+    [
+      7.4219816,
+      43.7372398
+    ],
+    [
+      7.4218632,
+      43.73724
+    ]
+  ],
+  "bruyeres_roof_wgs84_xyz": [
+    [
+      7.42162576,
+      43.73732092,
+      24.5
+    ],
+    [
+      7.42162984,
+      43.73724505,
+      24.4
+    ],
+    [
+      7.42182659,
+      43.73724967,
+      26.4
+    ],
+    [
+      7.42182378,
+      43.73735794,
+      26.9
+    ],
+    [
+      7.4217347,
+      43.73736336,
+      25.9
+    ],
+    [
+      7.42171025,
+      43.73735264,
+      25.7
+    ],
+    [
+      7.42171271,
+      43.73732009,
+      24.3
+    ]
+  ],
+  "montjoie_roof_wgs84_xyz": [
+    [
+      7.42199328,
+      43.73737989,
+      25.7
+    ],
+    [
+      7.42187515,
+      43.73737928,
+      26.6
+    ],
+    [
+      7.4218619,
+      43.73724012,
+      26.8
+    ],
+    [
+      7.42200827,
+      43.7372522,
+      25.7
+    ]
+  ],
+  "photos": [
+    {
+      "url": "https://www.groupemarzocco.mc/wp-content/uploads/2025/07/al16_marzo_montjoie_03_OLD-1-780x1024.webp",
+      "sha256": "e6c5921bb659c75a5260325f2b11b1f02c070e93e0c3784c1ff1a979e1884e97",
+      "identity": "Developer actual Villa Montjoie exterior; completed project 2005",
+      "date_status": "Exposure date unverified; 2025/07 upload path is not exposure date",
+      "actual_or_proposed": "actual_photo"
+    },
+    {
+      "url": "https://www.groupemarzocco.mc/wp-content/uploads/2025/07/D6FV7663_RT8-719x1024.webp",
+      "sha256": "0a4664fd7c1dfefd674284d36edec0ce954bd01489a8145e4f04378f73e5d55e",
+      "identity": "Developer actual Villa Montjoie exterior; completed project 2005",
+      "date_status": "Exposure date unverified; 2025/07 upload path is not exposure date",
+      "actual_or_proposed": "actual_photo"
+    },
+    {
+      "url": "https://www.groupemarzocco.mc/wp-content/uploads/2025/07/Villa-Montjoie-734x1024.webp",
+      "sha256": "b885a61b5b463f744fd513ec34bd67fc7bf1b4dbd46712712f26337a59c80a4f",
+      "identity": "Developer actual Villa Montjoie exterior; completed project 2005",
+      "date_status": "Exposure date unverified; 2025/07 upload path is not exposure date",
+      "actual_or_proposed": "actual_photo"
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/archive/4/43/20251228150921%21Villa_Montjoie_%28left%29_and_Villa_Colombe_%28right%29.jpg",
+      "sha256": "2dbe895d0ff4929893edb85ce9fcb7e427a44986c5bc9e7ec2dbcdeaf0ec7775",
+      "identity": "Mx.Granger own-work original with Les Bruyeres, Villa Montjoie and Villa Colombe",
+      "date_status": "28 September 2025, 14:50:14; CC0; original before author cropping",
+      "actual_or_proposed": "actual_photo"
+    },
+    {
+      "url": "https://cca-mc.com/projets/villa-des-bruyeres",
+      "sha256": "2755bd6c3e6236f862a0fbc88ab0d4daa3644b659a7d9850492ffc6c6ba96c42",
+      "identity": "CCA Christian Curau actual red Les Bruyeres exterior and completed garage portico",
+      "date_status": "Project delivery 2019; exact photo exposure date unverified; facade corroborated by dated 2025 own-work original",
+      "actual_or_proposed": "actual_photo"
+    }
+  ],
+  "source_limits": [
+    "The supplied edited game reference has no established event/game year. Actual 2019 project and dated 2025 photographs are distinct source epochs; future redevelopment renders are excluded.",
+    "Literal OSM owners and IGN MultiPolygon roof components are distinct. Les Bruyeres upper core is the owner/roof intersection; its lower stem is garden/retaining context, not a 20.4 m estate-wide house.",
+    "IGN plan precision 2.5 m and vertical precision 1.5 m are retained. Les Bruyeres nominal core base 11.3 m absolute has plus/minus 1.5 m source/registration uncertainty.",
+    "The current compatible Les Bruyeres main top 27.415299 m absolute and Montjoie main top 25.855199 m absolute are retained; raw IGN roof-edge Z scatter and maxima are not collapsed into a highest-point prism.",
+    "Four photographed Bruyeres front bands and five Montjoie front bands determine estimated opening rhythms, not a surveyed complete internal floor count.",
+    "Montjoie lowest sills are estimated above existing actual front ground; exact entrance thresholds remain unregistered.",
+    "Montjoie facade uses source-light cream per primary-photo review. Linear palette estimate 0.78,0.70,0.52 is not measured reflectance; geometry is unchanged from the frozen V5 study.",
+    "Garage exact footprint, forecourt and structural layout remain held. The planted-bank boundary must be checked against the mapped stair/observed open portal gap; no enclosed garage is invented.",
+    "Rear openings, detailed roof-level transitions and an enclosed Les Bruyeres roof belvedere remain held. Montjoie small blue pavilion is a 2.5 x 2.5 m, 2.4 plus/minus 0.5 m photo-based estimate, not the whole joined IGN maximum.",
+    "Garden soil grade, retaining toe, planting and palm locations are bounded photo-based estimates. Native view must judge corner slopes and vegetation; source enclosure passes alone do not grant visual approval."
+  ],
+  "estimated_open_frontage_bounds_xy_m": [
+    34.92,
+    273.2,
+    41.15,
+    292.9
+  ],
+  "portal_source_note": "This is an inferred open-frontage study reserve, not a surveyed garage footprint: actual photos place the garage opening east of the lower planted stem and west of Escalier de la Costa. Literal OSM 77052383 stair and 156772049 footway controls register that gap. The reserve stops before the deeper house enclosure, whose garage layout remains held; it must not be filled by new raised garden soil or retaining structure."
+}

@@ -22,6 +22,12 @@ PALETTE = {
     "FlyerSteel": (0.14, 0.15, 0.16),
     "Cream": (0.63, 0.58, 0.46),
     "MonacoRuscinoRose": (0.56, 0.36, 0.32),
+    "MonacoBruyeresRed": (0.30, 0.035, 0.045),
+    "MonacoBruyeresStone": (0.78, 0.72, 0.60),
+    "MonacoBruyeresWood": (0.20, 0.08, 0.03),
+    "MonacoMontjoieCream": (0.78, 0.70, 0.52),
+    "MonacoMontjoieWood": (0.22, 0.09, 0.03),
+    "MonacoMontjoieBlueRoof": (0.025, 0.14, 0.20),
     "BakuSkyGlass": (0.10, 0.17, 0.23),
     "BakuSkyGlassLight": (0.18, 0.25, 0.29),
     "BakuPhilharmonicOchre": (0.72, 0.52, 0.22),
@@ -50,6 +56,14 @@ PALETTE = {
     "RunoffOrange": (0.90, 0.23, 0.018),
     "RunoffPurple": (0.20, 0.035, 0.19),
     "RunoffViolet": (0.26, 0.07, 0.42),
+}
+ROUGHNESS = {
+    "MonacoBruyeresRed": 0.82,
+    "MonacoBruyeresStone": 0.78,
+    "MonacoBruyeresWood": 0.62,
+    "MonacoMontjoieCream": 0.82,
+    "MonacoMontjoieWood": 0.60,
+    "MonacoMontjoieBlueRoof": 0.34,
 }
 SOURCES = {
     "Road": "/Game/Generated/Interlagos/Materials/asphalt",
@@ -316,6 +330,7 @@ class Importer:
                 material, unreal.MaterialExpressionConstant
             )
             roughness.r = 0.22 if name in ("Glass", "WarmGlass", "Water", "BakuSkyGlass", "BakuSkyGlassLight") else 0.7
+            roughness.r = ROUGHNESS.get(name, roughness.r)
             if self.slug == "baku" and name == "BakuHotelCopper":
                 roughness.r = .55
             if self.slug == "baku" and name == "BakuOxideRoof":

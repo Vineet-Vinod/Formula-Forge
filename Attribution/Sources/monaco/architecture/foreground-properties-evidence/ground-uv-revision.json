@@ -1,0 +1,12 @@
+{
+  "state": "UV-only source correction after immutable private V8 shape review",
+  "private_geometry_rows_sha256": "27439af8c1ea4c0670f26af1f61b6e4fe4bfe31b06acf7634de8f7f5b64b9435",
+  "material": "MonacoIvyGround",
+  "revised_new_triangles": 809,
+  "operation": "Set each new soil vertex U=east/8 and V=north/8 from its actual Float32 encoded position; preserve positions, normals, winding, material identity and all other new/old rows.",
+  "reason": "The accepted Grass material is an instance of /Game/Generated/Environment/PresentationGrass with TextureCoordinate/UVScale sampling. Continuous registered ground UVs match the existing Monaco surface convention instead of resetting texture space on every small triangle.",
+  "accepted_source_material_sha256": "dfe9b5ce94c207ddf0088bbb2e00f6f915a124a8a098729c57bb4092e35bf087",
+  "accepted_material_unchanged": true,
+  "existing_source_convention": "tools/venues/monaco_surfaces.py::fragment_rows and the retained Costa ground producer use x/8,y/8 for this original ground recipe.",
+  "scope": "Only new garden UV fields change. No house/roof/soil position, plant/palm instance, original Street/City row, native field/profile, exposure or shared material is changed."
+}
