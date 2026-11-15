@@ -1050,6 +1050,12 @@ under `docs/`: tested revision, source/input hashes, capture stations, closed an
 open findings, test commands/results, performance conditions and known limits.
 Do not overwrite historical validation records with claims from a different build.
 
+Preserve public Unreal asset classes and object paths during partial imports.
+For example, keep an existing material instance and update its private parent
+when replacing the shader. Unchanged meshes can retain imports naming the old
+asset class; replacing that instance with a different class at the same path
+can break those references despite a successful local material build.
+
 The final handoff should say what is playable, what changed, how it was checked,
 which comparisons passed and what remains uncertain. If the available evidence
 cannot meet the requested standard, describe the exact missing input or technical

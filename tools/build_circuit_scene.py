@@ -232,19 +232,37 @@ class Importer:
             == self.material_hash
         ):
             return existing
-        if self.slug == "monaco" and name in ("MonacoNaturalGround", "MonacoRockGround"):
+        if self.slug == "monaco" and name == "MonacoRockGround":
             from venues.monaco_rock_material import build, import_textures
 
-            if existing is not None and not isinstance(existing, unreal.Material):
-                if not LIBRARY.delete_asset(path):
-                    raise RuntimeError(f"Cannot replace the private rock material {path}")
-                existing = None
+            parent_path = self.assets + "/Materials/MonacoRockBase"
+            parent = unreal.load_asset(parent_path) or TOOLS.create_asset(
+                "MonacoRockBase", self.assets + "/Materials", unreal.Material, unreal.MaterialFactoryNew())
+            if not isinstance(parent, unreal.Material):
+                raise TypeError("The private rock parent must remain a Material")
+            EDIT.delete_all_material_expressions(parent)
+            build(parent, import_textures(ROOT, self.assets), mixed=False)
+            EDIT.recompile_material(parent)
+            LIBRARY.set_metadata_tag(parent, "CircuitMaterialRecipe", self.material_hash)
+            LIBRARY.save_loaded_asset(parent)
+            material = existing or TOOLS.create_asset(
+                name, self.assets + "/Materials", unreal.MaterialInstanceConstant,
+                unreal.MaterialInstanceConstantFactoryNew())
+            if not isinstance(material, unreal.MaterialInstanceConstant):
+                raise TypeError("Existing mesh imports require the public rock MaterialInstanceConstant")
+            EDIT.set_material_instance_parent(material, parent)
+            LIBRARY.set_metadata_tag(material, "CircuitMaterialRecipe", self.material_hash)
+            LIBRARY.save_loaded_asset(material)
+            return material
+        if self.slug == "monaco" and name == "MonacoNaturalGround":
+            from venues.monaco_rock_material import build, import_textures
+
             material = existing or TOOLS.create_asset(
                 name, self.assets + "/Materials", unreal.Material, unreal.MaterialFactoryNew())
             if not isinstance(material, unreal.Material):
                 raise TypeError("Natural ravine cover requires its own source material")
             EDIT.delete_all_material_expressions(material)
-            build(material, import_textures(ROOT, self.assets), mixed=name == "MonacoNaturalGround")
+            build(material, import_textures(ROOT, self.assets), mixed=True)
             EDIT.recompile_material(material)
             LIBRARY.set_metadata_tag(material, "CircuitMaterialRecipe", self.material_hash)
             LIBRARY.save_loaded_asset(material)
