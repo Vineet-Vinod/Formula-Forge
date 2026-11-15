@@ -65,6 +65,13 @@ def world_sample(material: unreal.Material, texture: unreal.Texture2D,
                  size_cm: float, normal: bool = False) -> unreal.MaterialExpression:
     obj = EDIT.create_material_expression(material, unreal.MaterialExpressionTextureObject)
     obj.texture = texture
+    if normal:
+        sampler = unreal.MaterialSamplerType.SAMPLERTYPE_NORMAL
+    elif texture.get_editor_property("compression_settings") == unreal.TextureCompressionSettings.TC_MASKS:
+        sampler = unreal.MaterialSamplerType.SAMPLERTYPE_MASKS
+    else:
+        sampler = unreal.MaterialSamplerType.SAMPLERTYPE_COLOR
+    obj.set_editor_property("sampler_type", sampler)
     call = EDIT.create_material_expression(material, unreal.MaterialExpressionMaterialFunctionCall)
     name = "WorldAlignedNormal" if normal else "WorldAlignedTexture"
     function = unreal.load_asset("/Engine/Functions/Engine_MaterialFunctions01/Texturing/" + name)
