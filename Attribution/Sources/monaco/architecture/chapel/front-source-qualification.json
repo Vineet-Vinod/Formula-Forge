@@ -1,0 +1,154 @@
+{
+  "status": "Private source/feasibility plan. No church, terrain or asset changes authored.",
+  "owner_osm_id": 94399398,
+  "owner_name": "Chapelle Sainte-D\u00e9vote",
+  "footprint_xy_m": [
+    [
+      -46.76787009229651,
+      325.5450777352987
+    ],
+    [
+      -26.711518789726227,
+      309.8280453778955
+    ],
+    [
+      -22.30870696063203,
+      315.4493015860445
+    ],
+    [
+      -17.91401840061797,
+      321.0593152816463
+    ],
+    [
+      -37.084933375979055,
+      336.0905543816521
+    ],
+    [
+      -40.30174792262065,
+      331.9870373498151
+    ],
+    [
+      -45.297558392905074,
+      335.89943167074443
+    ],
+    [
+      -47.61269007424936,
+      334.8651205283747
+    ],
+    [
+      -48.961152737799566,
+      332.98762095454293
+    ],
+    [
+      -47.93762083658886,
+      329.9633851144661
+    ],
+    [
+      -45.07010685931071,
+      327.7148826313662
+    ]
+  ],
+  "footprint_area_m2": 394.2441855930813,
+  "front_edges": [
+    1,
+    2
+  ],
+  "front_width_m": 14.266654714657511,
+  "front_registration": "Mapped southeast front toward Place Sainte-D\u00e9vote; operator frontal photo and retained2014/2024 bridge/church views. Exact native visibility/ownership rays still required.",
+  "existing_model": {
+    "producer": "tools/venues/monaco.py ordinary_city/frontage",
+    "height_m": 6.8,
+    "status": "Untagged6.8m conservative default, two apartment-style window bands and flat cap; not a church reconstruction."
+  },
+  "observed_persistent_features": [
+    "Three-part pale ochre/cream front, central stepped/curved gable and cross",
+    "Central doorway, two tall flanking arched windows and two lower side entrances",
+    "Tall arched upper central window with carved surround",
+    "Three smaller top arches with a central sculptural niche",
+    "Separate bell tower behind/right; do not infer exact footprint or height from a single frontal view",
+    "Stone moldings, pilasters, cornices and rosettes; low side wings and pitched nave roof"
+  ],
+  "primary_photo_receipt": "operator-photo-source.json",
+  "photo_limits": "Operator photo is undated and640x480, with perspective and a temporary canopy/banner. Retained2014 and2024 obliques corroborate persistence but do not provide survey elevations. Do not ship reference pixels.",
+  "ign_owner_match": {
+    "source_id": "BATIMENT0000000074074425",
+    "overlap_fraction": 0.9341084239258023,
+    "roof_boundary_absolute_z_m": [
+      13.5,
+      15.9
+    ],
+    "source_precision_plan_vertical_m": [
+      2.5,
+      1.5
+    ],
+    "rejected_as_complete_dimensions": {
+      "reported_height_m": 2.4,
+      "reported_ground_absolute_m": 13.5
+    },
+    "limits": "The roof-edge coordinates may constrain eaves; neither the2.4m height nor min-ground13.5m qualifies the complete church, gable, bell tower or floor. Interior roof peaks are not supplied."
+  },
+  "ground_witnesses": [
+    {
+      "owner_vertex": 1,
+      "xy_m": [
+        -26.711518789726227,
+        309.8280453778955
+      ],
+      "current_native_field_relative_m": 5.998736001854937,
+      "nearest_retained_rge_query": {
+        "x": -26.0,
+        "y": 310.0,
+        "absolute_rge_m": 6.52,
+        "native_relative_ground_m": 5.854307208257657,
+        "native_relative_datum_m": 1.5128994113,
+        "relative_delta_m": -0.8472066195576575,
+        "accuracy": "Variable suivant la source de mesure"
+      },
+      "limit": "Native field and nearest2m query comparison only; actual packed ground planes and coincident-point source queries must qualify a repair."
+    },
+    {
+      "owner_vertex": 2,
+      "xy_m": [
+        -22.30870696063203,
+        315.4493015860445
+      ],
+      "current_native_field_relative_m": 6.157172238752497,
+      "nearest_retained_rge_query": {
+        "x": -22.0,
+        "y": 316.0,
+        "absolute_rge_m": 6.97,
+        "native_relative_ground_m": 6.381132188719004,
+        "native_relative_datum_m": 1.5128994113,
+        "relative_delta_m": -0.9240316000190045,
+        "accuracy": "Variable suivant la source de mesure"
+      },
+      "limit": "Native field and nearest2m query comparison only; actual packed ground planes and coincident-point source queries must qualify a repair."
+    },
+    {
+      "owner_vertex": 3,
+      "xy_m": [
+        -17.91401840061797,
+        321.0593152816463
+      ],
+      "current_native_field_relative_m": 9.438439315794659,
+      "nearest_retained_rge_query": {
+        "x": -18.0,
+        "y": 322.0,
+        "absolute_rge_m": 7.74,
+        "native_relative_ground_m": 9.894996088284913,
+        "native_relative_datum_m": 1.5128994113,
+        "relative_delta_m": -3.6678954995849127,
+        "accuracy": "Variable suivant la source de mesure"
+      },
+      "limit": "Native field and nearest2m query comparison only; actual packed ground planes and coincident-point source queries must qualify a repair."
+    }
+  ],
+  "proposed_next_scope": "First register actual native generic-church visibility. Study a source-proportioned facade/nave within the literal owner, with estimated crown levels declared. Any church-front ground correction needs a separate finite coupled source/plane/support plan; do not raise the building onto the wrong coarse field or invent large stairs to conceal it. Keep racing/native data, bridge and other properties fixed.",
+  "held": [
+    "Bell tower footprint/height until independently registered",
+    "Exact threshold levels, exterior stairs and unphotographed rear",
+    "Ground correction footprint, C1 transition and all affected supports",
+    "Canonical promotion and cooked visual acceptance"
+  ],
+  "retention_note": "Historical independent source-registration record. Current typed reconstruction.json supersedes earlier held status, collar and render settings; no ignored cache is read in production."
+}

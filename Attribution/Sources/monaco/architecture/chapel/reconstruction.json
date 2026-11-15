@@ -1,0 +1,585 @@
+{
+  "osm_id": 94399398,
+  "origin_lat_lon": [
+    43.7346446387306,
+    7.4213359272073856
+  ],
+  "uniform_scale": 1.0099320735128836,
+  "relative_datum_m": 1.5128994113,
+  "owner_wgs84_lonlat": [
+    [
+      7.4207602,
+      43.7375403
+    ],
+    [
+      7.4210071,
+      43.7374005
+    ],
+    [
+      7.4210613,
+      43.7374505
+    ],
+    [
+      7.4211154,
+      43.7375004
+    ],
+    [
+      7.4208794,
+      43.7376341
+    ],
+    [
+      7.4208398,
+      43.7375976
+    ],
+    [
+      7.4207783,
+      43.7376324
+    ],
+    [
+      7.4207498,
+      43.7376232
+    ],
+    [
+      7.4207332,
+      43.7376065
+    ],
+    [
+      7.4207458,
+      43.7375796
+    ],
+    [
+      7.4207811,
+      43.7375596
+    ]
+  ],
+  "expected_owner_xy_m": [
+    [
+      -46.76787009229651,
+      325.5450777352987
+    ],
+    [
+      -26.711518789726227,
+      309.8280453778955
+    ],
+    [
+      -22.30870696063203,
+      315.4493015860445
+    ],
+    [
+      -17.91401840061797,
+      321.0593152816463
+    ],
+    [
+      -37.084933375979055,
+      336.0905543816521
+    ],
+    [
+      -40.30174792262065,
+      331.9870373498151
+    ],
+    [
+      -45.297558392905074,
+      335.89943167074443
+    ],
+    [
+      -47.61269007424936,
+      334.8651205283747
+    ],
+    [
+      -48.961152737799566,
+      332.98762095454293
+    ],
+    [
+      -47.93762083658886,
+      329.9633851144661
+    ],
+    [
+      -45.07010685931071,
+      327.7148826313662
+    ]
+  ],
+  "front_origin_vertex": 1,
+  "front_end_vertex": 3,
+  "floor_absolute_m": 7.85,
+  "floor_uncertainty_m": 1.0,
+  "base_absolute_m": 6.85,
+  "nave": {
+    "owner_uv_m": [
+      [
+        0.005360338850046276,
+        25.481018522864048
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        7.140257228404422,
+        0.00026885703488810364
+      ],
+      [
+        14.266654714657513,
+        0.0
+      ],
+      [
+        14.278134025536831,
+        24.361075470912375
+      ],
+      [
+        9.0640431224646,
+        24.3630534902806
+      ],
+      [
+        9.063378077422927,
+        30.7085204656228
+      ],
+      [
+        6.821507077417969,
+        31.893277259454763
+      ],
+      [
+        4.511939352945742,
+        31.797084064250964
+      ],
+      [
+        2.76230097081765,
+        29.126431428473463
+      ],
+      [
+        2.7604376793451326,
+        25.48247803215554
+      ]
+    ],
+    "eaves_absolute_m": 14.1,
+    "ridge_absolute_m": 17.5,
+    "estimated_ridge_u_m": 7.133327357328756,
+    "ridge_position_uncertainty_m": 2.5,
+    "ridge_height_uncertainty_m": 2.5,
+    "hip_start_depth_m": 25.0,
+    "front_depth_m": 0.65,
+    "roof_thickness_m": 0.14,
+    "tower": {
+      "center_u_m": 10.7,
+      "center_depth_m": 4.3,
+      "width_m": 2.3,
+      "depth_m": 2.3,
+      "bell_stage_bottom_absolute_m": 17.4,
+      "bell_stage_top_absolute_m": 22.0,
+      "crown_top_absolute_m": 24.0,
+      "opening_width_m": 1.1,
+      "opening_bottom_absolute_m": 18.25,
+      "opening_top_absolute_m": 21.3
+    },
+    "foundation_absolute_m": 6.85
+  },
+  "site": {
+    "apron_absolute_m": 6.97,
+    "ground_grid_xy_m": [
+      -56,
+      298
+    ],
+    "ground_grid_step_m": 2,
+    "ground_grid_columns": 24,
+    "ground_grid_rows": 22,
+    "step_count": 5,
+    "stair_rise_m": 0.88,
+    "stair_tread_m": 0.32,
+    "landing_depth_m": 0.5,
+    "foot_burial_m": 0.12,
+    "minimum_step_clearance_m": 0.1,
+    "ground": {
+      "circuit": "monaco",
+      "origin_lat_lon": [
+        43.7346446387306,
+        7.4213359272073856
+      ],
+      "uniform_scale": 1.0099320735128836,
+      "relative_datum_m": 1.5128994113,
+      "outer_xy_m": [
+        [
+          -23.22137904497361,
+          304.5536805287314
+        ],
+        [
+          -29.519292678342403,
+          309.48686244982724
+        ],
+        [
+          -18.25520132868619,
+          323.8670891702625
+        ],
+        [
+          -16.12793032398484,
+          322.2007889520344
+        ],
+        [
+          -16.12825419644096,
+          322.19922335286753
+        ],
+        [
+          -16.12948209088277,
+          322.038477883142
+        ],
+        [
+          -16.099326109709327,
+          321.8805816179502
+        ],
+        [
+          -16.03894515991367,
+          321.73160257692825
+        ],
+        [
+          -15.950659706698438,
+          321.5972660870507
+        ],
+        [
+          -15.844733817233156,
+          321.48905860217616
+        ],
+        [
+          -15.893517947045499,
+          321.34185141583606
+        ],
+        [
+          -15.913631576918307,
+          321.1823700590246
+        ],
+        [
+          -15.902246128165169,
+          321.02202906977425
+        ],
+        [
+          -15.859799118678573,
+          320.8669900015923
+        ],
+        [
+          -15.787921694189858,
+          320.7232106667561
+        ],
+        [
+          -15.689375946906516,
+          320.5962161906185
+        ],
+        [
+          -15.555707566624362,
+          320.4750414943146
+        ],
+        [
+          -15.424534293646955,
+          320.3821169222866
+        ],
+        [
+          -15.277752431702517,
+          320.316569316424
+        ],
+        [
+          -15.040764368823282,
+          320.27477783420363
+        ],
+        [
+          -14.80184974400748,
+          320.30358186139694
+        ],
+        [
+          -14.585349268905734,
+          320.3983816987658
+        ],
+        [
+          -14.395260527367068,
+          320.2735403215909
+        ],
+        [
+          -14.243788797989037,
+          320.219720944676
+        ],
+        [
+          -14.004256706598188,
+          320.196664853725
+        ],
+        [
+          -13.845300347075307,
+          320.22060406631675
+        ],
+        [
+          -13.69406865112942,
+          320.27509428813323
+        ],
+        [
+          -13.680183466878168,
+          320.28345866682395
+        ],
+        [
+          -13.602427034686425,
+          320.22255173035774
+        ],
+        [
+          -13.762489972881356,
+          320.0729455408771
+        ],
+        [
+          -13.904010694291422,
+          319.8539523483997
+        ],
+        [
+          -13.981598026009419,
+          319.6261621074612
+        ],
+        [
+          -13.994899956890487,
+          319.4659631416569
+        ],
+        [
+          -13.976692603921979,
+          319.3062473243193
+        ],
+        [
+          -13.927675684289595,
+          319.1531526098459
+        ],
+        [
+          -13.873173649487335,
+          319.0503443482968
+        ],
+        [
+          -13.92478458867242,
+          318.9
+        ],
+        [
+          -14.239974064053225,
+          318.8842439299306
+        ],
+        [
+          -14.393800414539374,
+          318.83758121665926
+        ],
+        [
+          -14.535567591076074,
+          318.7618050820881
+        ],
+        [
+          -14.65982756057297,
+          318.659827560573
+        ],
+        [
+          -14.761805082088086,
+          318.5355675910761
+        ],
+        [
+          -14.837581216659256,
+          318.3938004145394
+        ],
+        [
+          -14.88424392993065,
+          318.23997406405323
+        ],
+        [
+          -14.9,
+          318.08
+        ],
+        [
+          -14.896051475871202,
+          317.83962594492976
+        ],
+        [
+          -14.864691075300412,
+          317.68196656465136
+        ],
+        [
+          -14.80317543676565,
+          317.5334546758027
+        ],
+        [
+          -14.713868571757445,
+          317.3997975069858
+        ],
+        [
+          -14.535567591076074,
+          317.2381949179119
+        ],
+        [
+          -14.393800414539374,
+          317.16241878334074
+        ],
+        [
+          -14.239974064053225,
+          317.1157560700694
+        ],
+        [
+          -13.92,
+          317.1
+        ],
+        [
+          -13.760025935946775,
+          317.1157560700694
+        ],
+        [
+          -13.606199585460626,
+          317.16241878334074
+        ],
+        [
+          -13.464432408923926,
+          317.2381949179119
+        ],
+        [
+          -13.34017243942703,
+          317.340172439427
+        ],
+        [
+          -13.238194917911914,
+          317.4644324089239
+        ],
+        [
+          -13.162418783340744,
+          317.6061995854606
+        ],
+        [
+          -13.107622152232047,
+          317.8148603559165
+        ],
+        [
+          -12.882292556777843,
+          317.83422677706847
+        ],
+        [
+          -12.843669625759842,
+          317.80231369892005
+        ]
+      ],
+      "window_xy_m": [
+        -29.519292678342403,
+        304.5536805287314,
+        -12.843669625759842,
+        323.8670891702625
+      ],
+      "mandatory_exclusions": [],
+      "collar_width_m": 1.0,
+      "render_step_m": 0.1,
+      "expected_domain_wkt": "POLYGON ((-23.22137904497361 304.5536805287314, -29.519292678342403 309.48686244982724, -18.25520132868619 323.8670891702625, -16.12793032398484 322.2007889520344, -16.12825419644096 322.19922335286753, -16.12948209088277 322.038477883142, -16.099326109709327 321.8805816179502, -16.03894515991367 321.73160257692825, -15.950659706698438 321.5972660870507, -15.844733817233156 321.48905860217616, -15.893517947045499 321.34185141583606, -15.913631576918307 321.1823700590246, -15.902246128165169 321.02202906977425, -15.859799118678573 320.8669900015923, -15.787921694189858 320.7232106667561, -15.689375946906516 320.5962161906185, -15.555707566624362 320.4750414943146, -15.424534293646955 320.3821169222866, -15.277752431702517 320.316569316424, -15.040764368823282 320.27477783420363, -14.80184974400748 320.30358186139694, -14.585349268905734 320.3983816987658, -14.395260527367068 320.2735403215909, -14.243788797989037 320.219720944676, -14.004256706598188 320.196664853725, -13.845300347075307 320.22060406631675, -13.69406865112942 320.27509428813323, -13.680183466878168 320.28345866682395, -13.602427034686425 320.22255173035774, -13.762489972881356 320.0729455408771, -13.904010694291422 319.8539523483997, -13.981598026009419 319.6261621074612, -13.994899956890487 319.4659631416569, -13.976692603921979 319.3062473243193, -13.927675684289595 319.1531526098459, -13.873173649487335 319.0503443482968, -13.92478458867242 318.9, -14.239974064053225 318.8842439299306, -14.393800414539374 318.83758121665926, -14.535567591076074 318.7618050820881, -14.65982756057297 318.659827560573, -14.761805082088086 318.5355675910761, -14.837581216659256 318.3938004145394, -14.88424392993065 318.23997406405323, -14.9 318.08, -14.896051475871202 317.83962594492976, -14.864691075300412 317.68196656465136, -14.80317543676565 317.5334546758027, -14.713868571757445 317.3997975069858, -14.535567591076074 317.2381949179119, -14.393800414539374 317.16241878334074, -14.239974064053225 317.1157560700694, -13.92 317.1, -13.760025935946775 317.1157560700694, -13.606199585460626 317.16241878334074, -13.464432408923926 317.2381949179119, -13.34017243942703 317.340172439427, -13.238194917911914 317.4644324089239, -13.162418783340744 317.6061995854606, -13.107622152232047 317.8148603559165, -12.882292556777843 317.83422677706847, -12.843669625759842 317.80231369892005, -23.22137904497361 304.5536805287314))",
+      "grid_file": "source-estimated-photo-apron",
+      "grid_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "protected_source_sha256": {},
+      "original_ground_rows": [
+        {
+          "tile": "Tile_Street_m1_01",
+          "material": "Runoff",
+          "attributes_hex": "56b5f4c6ea96964471ed0644a2ffba3e2d9a8f3d40a36d3f2cc1c0bf049d1c42dc71f6c6ee6d0b45e7ed194442fa903e9319903d6ddc743f3b7832c083b91d4256b5f4c64b4f1645afad0644af21eb3d06af68bcfc477e3f7e6540c0049d1c42"
+        },
+        {
+          "tile": "Tile_Street_m1_01",
+          "material": "Runoff",
+          "attributes_hex": "dc71f6c6ee6d0b45e7ed194442fa903e9319903d6ddc743f3b7832c083b91d4256b5f4c6ea96964471ed0644a2ffba3e2d9a8f3d40a36d3f2cc1c0bf049d1c42ddd3fac6dcecdf4403f66b444bcce23e6bff853e6a845b3fe94f0fc098872042"
+        },
+        {
+          "tile": "Tile_Street_m1_01",
+          "material": "Runoff",
+          "attributes_hex": "ddd3fac6dcecdf4403f66b444bcce23e6bff853e6a845b3fe94f0fc0988720429612fbc6d577da4441217544e248e73eceee873ef7c9593fd0d10bc0bcaf20420090fbc60300e144f4197744f04ce43ebd298d3e2b7b593f020010c000002142"
+        },
+        {
+          "tile": "Tile_Street_m1_01",
+          "material": "Runoff",
+          "attributes_hex": "0090fbc60300e144f4197744f04ce43ebd298d3e2b7b593f020010c000002142c61efec6fcb9de44dcc19144d8a6ed3e9ca1a53e3a4f513f838b0ec00ea32242c61efec6d78e1145df5d634492c7be3eaef7aa3ebea65d3f6f503ac00ea32242"
+        },
+        {
+          "tile": "Tile_Street_m1_01",
+          "material": "Runoff",
+          "attributes_hex": "c61efec6d78e1145df5d634492c7be3eaef7aa3ebea65d3f6f503ac00ea32242ddd3fac6dcecdf4403f66b444bcce23e6bff853e6a845b3fe94f0fc0988720420090fbc60300e144f4197744f04ce43ebd298d3e2b7b593f020010c000002142"
+        },
+        {
+          "tile": "Tile_Street_m1_01",
+          "material": "MonacoIvyGround",
+          "attributes_hex": "0090fbc60300e144f4197744f04ce43ebd298d3e2b7b593f020010c0000021429612fbc6d577da4441217544e248e73eceee873ef7c9593fd0d10bc0bcaf20429a07fcc6a126c54425798c44a0cff83eef7d8f3ea209533f685afcbf8c4c2142"
+        },
+        {
+          "tile": "Tile_Street_m1_01",
+          "material": "MonacoIvyGround",
+          "attributes_hex": "0090fbc60300e144f4197744f04ce43ebd298d3e2b7b593f020010c0000021429a07fcc6a126c54425798c44a0cff83eef7d8f3ea209533f685afcbf8c4c2142c61efec6fcb9de44dcc19144d8a6ed3e9ca1a53e3a4f513f838b0ec00ea32242"
+        },
+        {
+          "tile": "Tile_Street_m1_01",
+          "material": "Runoff",
+          "attributes_hex": "edb3f7c6ae89ad446144404441efd23e99aa213e7939633fdf20debfa2871e429612fbc6d577da4441217544e248e73eceee873ef7c9593fd0d10bc0bcaf2042ddd3fac6dcecdf4403f66b444bcce23e6bff853e6a845b3fe94f0fc098872042"
+        },
+        {
+          "tile": "Tile_Street_m1_01",
+          "material": "Runoff",
+          "attributes_hex": "edb3f7c6ae89ad446144404441efd23e99aa213e7939633fdf20debfa2871e42ddd3fac6dcecdf4403f66b444bcce23e6bff853e6a845b3fe94f0fc09887204256b5f4c6ea96964471ed0644a2ffba3e2d9a8f3d40a36d3f2cc1c0bf049d1c42"
+        },
+        {
+          "tile": "Tile_Street_m1_01",
+          "material": "Runoff",
+          "attributes_hex": "56b5f4c6ea96964471ed0644a2ffba3e2d9a8f3d40a36d3f2cc1c0bf049d1c4275e6f6c680459f442fda3544fb50cf3efab9053ec60b653f15decbbf22041e42edb3f7c6ae89ad446144404441efd23e99aa213e7939633fdf20debfa2871e42"
+        },
+        {
+          "tile": "Tile_Street_m1_01",
+          "material": "MonacoIvyGround",
+          "attributes_hex": "d2f7f6c6ea9696449dc43c44be07d33e9164033ef5b5633f2cc1c0bf3f0f1e42ad72fcc6ea969644bdaa9f4473a7063fecf3893e35a34b3f2cc1c0bf13912142edb3f7c6ae89ad446144404441efd23e99aa213e7939633fdf20debfa2871e42"
+        },
+        {
+          "tile": "Tile_Street_m1_01",
+          "material": "MonacoIvyGround",
+          "attributes_hex": "edb3f7c6ae89ad446144404441efd23e99aa213e7939633fdf20debfa2871e4275e6f6c680459f442fda3544fb50cf3efab9053ec60b653f15decbbf22041e42d2f7f6c6ea9696449dc43c44be07d33e9164033ef5b5633f2cc1c0bf3f0f1e42"
+        },
+        {
+          "tile": "Tile_Street_m1_01",
+          "material": "MonacoIvyGround",
+          "attributes_hex": "9a07fcc6a126c54425798c44a0cff83eef7d8f3ea209533f685afcbf8c4c21429612fbc6d577da4441217544e248e73eceee873ef7c9593fd0d10bc0bcaf2042edb3f7c6ae89ad446144404441efd23e99aa213e7939633fdf20debfa2871e42"
+        },
+        {
+          "tile": "Tile_Street_m1_01",
+          "material": "MonacoIvyGround",
+          "attributes_hex": "9a07fcc6a126c54425798c44a0cff83eef7d8f3ea209533f685afcbf8c4c2142edb3f7c6ae89ad446144404441efd23e99aa213e7939633fdf20debfa2871e42ad72fcc6ea969644bdaa9f4473a7063fecf3893e35a34b3f2cc1c0bf13912142"
+        },
+        {
+          "tile": "Tile_Street_m1_01",
+          "material": "Runoff",
+          "attributes_hex": "9c0df2c66ef22645e9f715446cc41cbe396222be2ab4793f31b155c0fde91a4256b5f4c6950d424569df0b4487bbdebd9a3cf3bc345e7e3f4e6378c0049d1c42e74bebc66ee26145b9f69a44c432babe01160bbfd0b5413fea9090c0fa961642"
+        },
+        {
+          "tile": "Tile_Street_m1_01",
+          "material": "Runoff",
+          "attributes_hex": "e74bebc6f296164571ed1444ba3653be941495bec7256f3f35c140c0fa961642e7a9f4c6f2961645c2be0644d9dee23d83bb81bc61647e3f35c140c0b2951c429c0df2c66ef22645e9f715446cc41cbe396222be2ab4793f31b155c0fde91a42"
+        },
+        {
+          "tile": "Tile_Street_m1_01",
+          "material": "Runoff",
+          "attributes_hex": "e74bebc6f296164571ed1444ba3653be941495bec7256f3f35c140c0fa9616429c0df2c66ef22645e9f715446cc41cbe396222be2ab4793f31b155c0fde91a42e74bebc66ee26145b9f69a44c432babe01160bbfd0b5413fea9090c0fa961642"
+        },
+        {
+          "tile": "Tile_Street_m1_01",
+          "material": "Runoff",
+          "attributes_hex": "e74bebc6f296164571ed1444ba3653be941495bec7256f3f35c140c0fa961642e74bebc6ea969644e45af443dd7159bb15e418bdf8d17f3f2cc1c0bffa961642e7a9f4c6f2961645c2be0644d9dee23d83bb81bc61647e3f35c140c0b2951c42"
+        },
+        {
+          "tile": "Tile_Street_m1_01",
+          "material": "Runoff",
+          "attributes_hex": "56b5f4c64b4f1645afad0644af21eb3d06af68bcfc477e3f7e6540c0049d1c42e7a9f4c6f2961645c2be0644d9dee23d83bb81bc61647e3f35c140c0b2951c4256b5f4c6ea96964471ed0644a2ffba3e2d9a8f3d40a36d3f2cc1c0bf049d1c42"
+        },
+        {
+          "tile": "Tile_Street_m1_01",
+          "material": "Runoff",
+          "attributes_hex": "e74bebc6ea969644e45af443dd7159bb15e418bdf8d17f3f2cc1c0bffa96164256b5f4c6ea96964471ed0644a2ffba3e2d9a8f3d40a36d3f2cc1c0bf049d1c42e7a9f4c6f2961645c2be0644d9dee23d83bb81bc61647e3f35c140c0b2951c42"
+        }
+      ],
+      "source_note": "Photograph-constrained constant apron at 6.97 m absolute, not a measured DEM. One-metre collar and 0.1 m rendering preserve actual exterior source planes; original raw field and native contact are unchanged."
+    }
+  },
+  "primary_source_sha256": {
+    "README.md": "919115f98be23510e6350421f59d87dd306c38e9de653382f53a2d7d10b2450c",
+    "facade-source-review.md": "52e426478fa3e778d3eb260b4c1e8733de60e6447a8feee5ed12bdc99415bd3c",
+    "front-source-qualification.json": "765a3c281c1246f7fd9e0fa5d87fc4c850d911ff9124f79b38f73d30e0785791",
+    "front-source-review.md": "ddfe1f9b65159fe20a32ff916fde2526cff2dd948e6490a96b89ad8c162497fc",
+    "operator-photo-receipt.json": "d64605b9f179600ac2247491f0bc208967a6b4f530dfc403dc79cc05b7fa8e4b",
+    "primary-photographs.json": "3c00957081e1580635dcbb662c03a34dcac16f95193d4e405071233c83688dd9",
+    "rge-source-observations.json.gz": "8444dedf56f8f9593d78e9d543ad81bdb9699ed7070edced5606381e8c1c4a30",
+    "roof-source-review.md": "f40e23b8515a6368aa6677fadfd8f5ca88d7bd083374c90eadf7c06986d37016",
+    "source-registration.json": "929d7b43653457bfdb145efb578c2e161a23e00f737d0704107dadc03983f043"
+  },
+  "source_limits": [
+    "Operator front photograph is undated; independent 2019 and 2024 obliques establish persistent architectural forms, not survey dimensions.",
+    "Literal OSM owner and matching IGN component constrain the footprint and eaves. The IGN reported 2.4 m building height does not describe the complete church.",
+    "Floor 7.85 m absolute \u00b11 m, source-photo apron 6.97 m absolute and stair dimensions are bounded architectural estimates, not measured terrain or contact data.",
+    "Ridge position and height, tower position, size and crown remain explicitly estimated. The bright aerial strip is not a ridge control.",
+    "Separate rear OSM 103777482 and its existing cutout remain unchanged. No new gray annex or unphotographed side windows are inferred.",
+    "Existing Runoff and ivy ground roles are preserved pending separate apron paving classification; no source pixel textures are shipped. Native road, contact and the retained elevation field are unchanged."
+  ]
+}

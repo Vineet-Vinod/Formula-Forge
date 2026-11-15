@@ -1,0 +1,67 @@
+{
+  "actual_exteriors": [
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:%C3%89glise_de_Saint-D%C3%A9vote_Monaco_IMG_1203.jpg",
+      "author": "Alexander Migl",
+      "capture_date": "2019-06-02",
+      "licence": "CC BY-SA4.0",
+      "local_file": "chapel-wide-2019-1280.jpg",
+      "use": "Actual dated exterior photograph; source-registration.json records its geographic controls. Review only, no source pixel textures or surveyed-dimension claim.",
+      "sha256": "f3605c2caeabd2c7e3c2ce3dc53f98a57c101cec95b351c3ed11545c0e1b679e",
+      "bytes": 451924
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:2024-09-22_%C3%89glise_de_Sainte-D%C3%A9vote,_Monte_Carlo.jpg",
+      "author": "Alexey Komarov / Alexkom000",
+      "capture_date": "2024-09-22",
+      "licence": "CC BY 4.0",
+      "local_file": "chapel-wide-2024-1280.jpg",
+      "use": "Actual dated exterior photograph; source-registration.json records its geographic controls. Review only, no source pixel textures or surveyed-dimension claim.",
+      "sha256": "2972a1bc88c213ad9b1374bbfc6802be420fe29a54de18fabf60619288649d82",
+      "bytes": 350096
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:%C3%89glise_de_Saint-D%C3%A9vote_Monaco_IMG_1202.jpg",
+      "author": "Alexander Migl",
+      "capture_date": "2019-06-02",
+      "licence": "CC BY-SA 4.0",
+      "local_file": "chapel-side-2019-1280.jpg",
+      "use": "Actual dated exterior photograph; source-registration.json records its geographic controls. Review only, no source pixel textures or surveyed-dimension claim.",
+      "sha256": "3b67b4df6679fcf4e256fe17794a634fe5f67df3015f78f3bb22dbd7efde4f46",
+      "bytes": 495545
+    }
+  ],
+  "government_orthophoto": {
+    "service": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer",
+    "year": 2019,
+    "copyright": "DSN, Gouvernement Princier de Monaco",
+    "purpose": "Review only, no game textures or source geometry copied from service. Open IGN/OSM coordinates qualify modeled geometry.",
+    "tile_resolution_m": 0.10583354500042334,
+    "tiles": [
+      {
+        "file": "orthophoto2019-l8-r796836-c680971.jpg",
+        "url": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer/tile/8/796836/680971",
+        "sha256": "13da4a6b30f4bb356e0c516f9630486facc756abdee6390231d2f5a4776fb2e3",
+        "bytes": 73884,
+        "bbox_3944": [
+          2055922.3859114423,
+          3180372.737278804,
+          2055976.5726864785,
+          3180426.924053848
+        ]
+      },
+      {
+        "file": "orthophoto2019-l8-r796837-c680971.jpg",
+        "url": "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer/tile/8/796837/680971",
+        "sha256": "8eebd066f732dadd835cfb923a1f8d2515520c44cab02edd0cb819a3e1533f50",
+        "bytes": 63825,
+        "bbox_3944": [
+          2055922.3859114423,
+          3180318.5505037606,
+          2055976.5726864785,
+          3180372.737278804
+        ]
+      }
+    ]
+  }
+}

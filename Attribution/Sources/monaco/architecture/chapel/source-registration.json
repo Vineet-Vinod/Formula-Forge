@@ -1,0 +1,437 @@
+{
+  "status": "PRIVATE source registration proposal for independent Luna adjudication; no model/canonical/native changes",
+  "owner_osm_id": 94399398,
+  "source_frame": {
+    "front_origin_xy_m": [
+      -26.711518789726227,
+      309.8280453778955
+    ],
+    "front_axis": [
+      0.6166477401369879,
+      0.7872392041710994
+    ],
+    "inward_axis": [
+      -0.7872392041710994,
+      0.6166477401369879
+    ],
+    "ortho_resolution_m": 0.10583354500042334,
+    "source_frame_scale": 1.0099320735128836,
+    "source_origin": {
+      "latitude": 43.7346446387306,
+      "longitude": 7.4213359272073856,
+      "meaning": "Local source origin at the point on the loop nearest the venue coordinate, after rotation to the start."
+    },
+    "footprint_pixel_positions": [
+      [
+        114.58602952957153,
+        426.7745465040207
+      ],
+      [
+        310.1012991666794,
+        563.2509218454361
+      ],
+      [
+        348.4831560254097,
+        508.6285710334778
+      ],
+      [
+        386.79456329345703,
+        454.1150988340378
+      ],
+      [
+        199.90686178207397,
+        323.5887705087662
+      ],
+      [
+        171.86227649450302,
+        363.46440929174423
+      ],
+      [
+        123.16304689645767,
+        329.4933263063431
+      ],
+      [
+        102.01947700977325,
+        340.29928505420685
+      ],
+      [
+        90.34209489822388,
+        358.48182439804077
+      ],
+      [
+        101.43134582042694,
+        386.1657793521881
+      ],
+      [
+        129.38534784317017,
+        405.69123244285583
+      ]
+    ]
+  },
+  "source_inputs": [
+    {
+      "file": "chapel-side-2019-1280.jpg",
+      "sha256": "3b67b4df6679fcf4e256fe17794a634fe5f67df3015f78f3bb22dbd7efde4f46",
+      "bytes": 495545
+    },
+    {
+      "file": "chapel-wide-2019-1280.jpg",
+      "sha256": "f3605c2caeabd2c7e3c2ce3dc53f98a57c101cec95b351c3ed11545c0e1b679e",
+      "bytes": 451924
+    },
+    {
+      "file": "chapel-wide-2024-1280.jpg",
+      "sha256": "2972a1bc88c213ad9b1374bbfc6802be420fe29a54de18fabf60619288649d82",
+      "bytes": 350096
+    },
+    {
+      "file": "chapel-private/operator-presentation.jpeg",
+      "sha256": "9b9e940ee9f1a8ad45b027ab66bc263a1ef16a33956bfd270cbbac4d174bc007",
+      "bytes": 120586
+    },
+    {
+      "file": "orthophoto2019-l8-r796836-c680971.jpg",
+      "sha256": "13da4a6b30f4bb356e0c516f9630486facc756abdee6390231d2f5a4776fb2e3",
+      "bytes": 73884
+    },
+    {
+      "file": "orthophoto2019-l8-r796837-c680971.jpg",
+      "sha256": "8eebd066f732dadd835cfb923a1f8d2515520c44cab02edd0cb819a3e1533f50",
+      "bytes": 63825
+    },
+    {
+      "file": "orthophoto-service.json",
+      "sha256": "da62d8ce7fbd6c70dc22ebf430cfdc15fa1b5c3c0092af140f2e923ceb2b0a66",
+      "bytes": 2994
+    },
+    {
+      "file": "Attribution/Sources/monaco/architecture/pending-hill-properties/ign-local-buildings.json.gz",
+      "sha256": "f4a45e3fc55d0831593e04049cb5fbc11bde44dc4e82f21ac5f25d872754506a"
+    }
+  ],
+  "tower": {
+    "evidence": "2019 primary front places a separate narrow bell tower behind viewer-right. Government2019 ortho independently locates its pale crown near the same right-front corner.",
+    "white_crown_pixel": [
+      335,
+      459
+    ],
+    "white_crown_source_xy_m": [
+      -23.461870190370774,
+      320.83410458647586
+    ],
+    "white_crown_u_depth_m": [
+      10.668289757454687,
+      4.2286107615926625
+    ],
+    "estimated_shaft_polygon_u_depth_m": [
+      [
+        9.55,
+        3.15
+      ],
+      [
+        11.85,
+        3.15
+      ],
+      [
+        11.85,
+        5.45
+      ],
+      [
+        9.55,
+        5.45
+      ]
+    ],
+    "estimated_shaft_polygon_xy_m": [
+      [
+        -23.302336364556954,
+        319.28862015916104
+      ],
+      [
+        -21.884046562241885,
+        321.0992703287545
+      ],
+      [
+        -23.694696731835414,
+        322.51756013106956
+      ],
+      [
+        -25.112986534150483,
+        320.7069099614761
+      ]
+    ],
+    "shaft_width_m": 2.3,
+    "shaft_depth_m": 2.3,
+    "footprint_position_uncertainty_m": 1.0,
+    "shaft_dimension_uncertainty_m": 0.5,
+    "crown_width_m_estimate": 2.8,
+    "crown_width_uncertainty_m": 0.5,
+    "crown_top_absolute_m_estimate": 24,
+    "crown_top_uncertainty_m": 3,
+    "bell_stage_bottom_absolute_m_estimate": 17.4,
+    "bell_stage_top_absolute_m_estimate": 22.0,
+    "bell_stage_level_uncertainty_m": 2.5,
+    "height_method": "2019 front photograph nominal full facade width14.2667m over roughly736px; floor909px to crown~80px gives16.1m apparent rise. Tower lies~4m behind facade; perspective and floor datum add uncertainty.24\u00b13m top is architectural estimate, not IGN measurement.",
+    "shape": "Square slender shaft; tall open arched bell stage; projecting stone cornices; low octagonal drum with oval openings and pale rounded cupola/finial. No invented extra storeys.",
+    "held": "Actual foundation/ground contact, unobserved lower tower body, exact bell mechanism and roof-to-shaft seams require later packed/actual-ground proof."
+  },
+  "nave": {
+    "literal_occupied_polygon_xy_m": [
+      [
+        -46.76787009229651,
+        325.5450777352987
+      ],
+      [
+        -26.711518789726227,
+        309.8280453778955
+      ],
+      [
+        -22.30870696063203,
+        315.4493015860445
+      ],
+      [
+        -17.91401840061797,
+        321.0593152816463
+      ],
+      [
+        -37.084933375979055,
+        336.0905543816521
+      ],
+      [
+        -40.30174792262065,
+        331.9870373498151
+      ],
+      [
+        -45.297558392905074,
+        335.89943167074443
+      ],
+      [
+        -47.61269007424936,
+        334.8651205283747
+      ],
+      [
+        -48.961152737799566,
+        332.98762095454293
+      ],
+      [
+        -47.93762083658886,
+        329.9633851144661
+      ],
+      [
+        -45.07010685931071,
+        327.7148826313662
+      ]
+    ],
+    "front_width_m": 14.266654714657511,
+    "main_rect_depth_m_estimate": 25.5,
+    "apse_depth_m_estimate": 30,
+    "plan_uncertainty_m": 2.5,
+    "source_eaves_absolute_range_m": [
+      13.5,
+      14.6
+    ],
+    "eaves_central_absolute_m_estimate": 14.1,
+    "eaves_uncertainty_m": 1.5,
+    "explanation": "IGN church polygon boundary front/long-side values13.5\u201314.6m constrain broad eaves. Rear15.2\u201315.9m vertices extend beyond the literal OSM church into the grey flat-roof annex; those are not nave ridge observations.",
+    "visible_long_roof_strip": [
+      {
+        "pixel": [
+          154,
+          341
+        ],
+        "source_xy_m": [
+          -42.07694660120969,
+          334.491940666712
+        ],
+        "u_depth_m": [
+          9.941328962737966,
+          27.305202454884743
+        ]
+      },
+      {
+        "pixel": [
+          240,
+          400
+        ],
+        "source_xy_m": [
+          -33.248979471093314,
+          327.6888491547206
+        ],
+        "u_depth_m": [
+          10.029414595724527,
+          16.16036963010865
+        ]
+      },
+      {
+        "pixel": [
+          300,
+          448
+        ],
+        "source_xy_m": [
+          -27.12903861529031,
+          322.21130635554596
+        ],
+        "u_depth_m": [
+          9.491125860192113,
+          7.964797872597439
+        ]
+      }
+    ],
+    "strip_role": "HELD ridge versus raised flashing/roof junction; apparent u9.5\u201310m is offset from front gable centreu7.133m. Do not silently force the line to the centre or call it surveyed ridge.",
+    "provisional_ridge_absolute_m_estimate": 17.5,
+    "ridge_uncertainty_m": 2.5,
+    "ridge_method": "A shallow/medium terracotta pitched roof is visually present in2019 ortho, distinct from the high decorative front screen. Broad17.5\u00b12.5m ridge follows eaves14.1\u00b11.5m plus an estimated3.4m roof rise; no uniquely measured pitch/ridge height.",
+    "roof_surface": "Terracotta tiled main body, distinct polygonal rear apse; hold geometry/roof type of the extra grey flat-roof northern annex outside OSM owner.",
+    "held": "Exact ridge XY/pitch, aisle versus nave partitions and unobserved rear junction until independent source adjudication; no full-property symmetric roof extrusion is source-proven."
+  },
+  "independent_limits": [
+    "IGN height2.4m and min-ground13.5m are not full church/tower dimensions.",
+    "Floor7.85m and5steps belong to root coupled-front estimate, not this roof survey.",
+    "Ortho0.1058m pixels do not establish absolute accuracy; roof relief/parallax and OSM/IGN2.5m plan allowance remain.",
+    "No ground/road/bridge/other-property changes authorized."
+  ],
+  "ign_boundary_vertices": [
+    {
+      "vertex": 0,
+      "source_xy_m": [
+        -40.84763160327598,
+        341.182288254335
+      ],
+      "u_depth_m": [
+        15.966287188638631,
+        30.463025214874463
+      ],
+      "absolute_z_m": 15.2
+    },
+    {
+      "vertex": 1,
+      "source_xy_m": [
+        -39.65594803258993,
+        342.63482085883135
+      ],
+      "u_depth_m": [
+        17.844626781056842,
+        30.42058613710178
+      ],
+      "absolute_z_m": 15.6
+    },
+    {
+      "vertex": 2,
+      "source_xy_m": [
+        -55.364725735681056,
+        354.25957869694486
+      ],
+      "u_depth_m": [
+        17.309309619289635,
+        49.95553244509638
+      ],
+      "absolute_z_m": 15.9
+    },
+    {
+      "vertex": 3,
+      "source_xy_m": [
+        -58.91703129451684,
+        350.30446282929444
+      ],
+      "u_depth_m": [
+        12.00516615610388,
+        50.313133384440256
+      ],
+      "absolute_z_m": 15.9
+    },
+    {
+      "vertex": 4,
+      "source_xy_m": [
+        -47.74591168684607,
+        335.18665638291395
+      ],
+      "u_depth_m": [
+        6.992481901312765,
+        32.196428893808445
+      ],
+      "absolute_z_m": 14.1
+    },
+    {
+      "vertex": 5,
+      "source_xy_m": [
+        -51.254351592677985,
+        330.21634164398455
+      ],
+      "u_depth_m": [
+        0.9161837424204204,
+        31.89347698162731
+      ],
+      "absolute_z_m": 14.2
+    },
+    {
+      "vertex": 6,
+      "source_xy_m": [
+        -25.808211270555173,
+        310.34520094868094
+      ],
+      "u_depth_m": [
+        0.9641476803233775,
+        -0.3922162784898816
+      ],
+      "absolute_z_m": 14.6
+    },
+    {
+      "vertex": 7,
+      "source_xy_m": [
+        -17.33564164371426,
+        322.83788074602035
+      ],
+      "u_depth_m": [
+        16.023465895489956,
+        0.6414275164759982
+      ],
+      "absolute_z_m": 13.5
+    }
+  ],
+  "literal_roof_plan_uv": [
+    [
+      0.005360338850046276,
+      25.481018522864048
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      7.140257228404422,
+      0.00026885703488810364
+    ],
+    [
+      14.266654714657513,
+      0.0
+    ],
+    [
+      14.278134025536831,
+      24.361075470912375
+    ],
+    [
+      9.0640431224646,
+      24.3630534902806
+    ],
+    [
+      9.063378077422927,
+      30.7085204656228
+    ],
+    [
+      6.821507077417969,
+      31.893277259454763
+    ],
+    [
+      4.511939352945742,
+      31.797084064250964
+    ],
+    [
+      2.76230097081765,
+      29.126431428473463
+    ],
+    [
+      2.7604376793451326,
+      25.48247803215554
+    ]
+  ],
+  "retention_note": "Historical independent source-registration record. Current typed reconstruction.json supersedes earlier held status, collar and render settings; no ignored cache is read in production."
+}
