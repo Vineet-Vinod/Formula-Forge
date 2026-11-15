@@ -571,6 +571,22 @@ registered view. Keep a daylight direction consistent with the visible sky and
 check the whole lap after rotating it; brightening one bank can darken another.
 Do not use emissive grass or flatten supported ground to conceal poor lighting.
 
+For foliage-card seams, separate crown coverage from shading. Check the texture's
+occupied alpha bounds before enlarging the geometry, then inspect the saved native
+material's normal input, tangent-space setting and two-sided response. A smooth
+source normal does not prove that the packaged material uses it. Test a private
+material on the affected trees, keeping their roots, texture, opacity and crown
+positions fixed. Preserve the accepted shared material. Compare identical recorded
+poses and verify camera position, rotation and FOV before judging the result;
+follow that presentation test with a fresh live lap and uncaptured performance run.
+
+Below a bridge, classify the ground independently from the deck visible in an
+orthophoto. Ray-test the actual soffit and the complete plant volume, including
+any material displacement. Query the saved material's world-position-offset input
+before treating a nominal wind allowance as a proven bound. A garden above a
+natural cliff also needs separate lawn, short retaining-wall and rock roles;
+its total elevation change is not evidence for a masonry wall of that height.
+
 Check landmark residency as well as authored geometry. A distant tower may exist
 in the source scene but be absent from the live view because its tile is outside
 the streaming range. Qualify the actual camera pose and tile bounds before
