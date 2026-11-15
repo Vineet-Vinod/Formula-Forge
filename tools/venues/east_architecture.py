@@ -3,10 +3,11 @@
 from __future__ import annotations
 
 import math
+from collections.abc import Callable
 from itertools import pairwise
 
 from circuit_dataclasses import Building, Point
-from circuit_mesh import add, mul
+from circuit_mesh import MeshScene, add, mul
 from circuit_scene import CircuitScene
 from shapely.geometry import LineString, MultiLineString, Polygon
 from shapely.geometry import Point as GeoPoint
@@ -959,6 +960,7 @@ def trees(
     spacing: float = 24.0,
     height: float = 11.0,
     palm: bool = False,
+    broadleaf_emitter: Callable[[MeshScene, Point, float, int], None] | None = None,
 ) -> None:
     count = max(1, math.ceil((end - start) / spacing))
     placed = 0
@@ -983,6 +985,8 @@ def trees(
             continue
         if palm:
             scene.palm(base, height + (i % 3) * 0.8)
+        elif broadleaf_emitter is not None:
+            broadleaf_emitter(scene, base, height + (i % 4) * 0.6, i + round(start))
         else:
             scene.broadleaf(base, height + (i % 4) * 0.6, i + round(start))
         placed += 1

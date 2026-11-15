@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "scope": "Normal/material correction on the nine existing Baku boulevard broadleaf planting calls; no other tree family, geometry, root, ground, protection or driving change.",
+  "implementation": "tools/venues/baku_boulevard_canopy.py::broadleaf",
+  "placement": "The existing trees() placement/filtering and all nine literal calls in tools/venues/baku.py remain the source of truth. The optional emitter is selected only by Baku.",
+  "shading_choices": {
+    "material": "BakuSahilCanopy",
+    "horizontal_radius_fraction_of_height": 0.41,
+    "origin_height_fraction": 0.3,
+    "vertical_radius_fraction": 0.7,
+    "interpretation": "A continuous lighting-normal field over retained cards, not surveyed tree dimensions. The horizontal0.41h extent follows generic0.16h cluster offset plus0.25h half-card span."
+  },
+  "reviewed_from_manifest_sha256": "eb2b4cb6a16150aea6043bf96869f10cce905402bd0ea7ce52a899fb58afefc9",
+  "reviewed_scope": {
+    "status": "PASS private packed physical/UV/trunk preservation and actual current generic-tree family ownership; native/cooked appearance pending",
+    "source_manifest_sha256": "eb2b4cb6a16150aea6043bf96869f10cce905402bd0ea7ce52a899fb58afefc9",
+    "existing_boulevard_poses": 163,
+    "old_actual_rows_matched": 16626,
+    "leaf_triangles_normal_material_only": 4890,
+    "trunk_rows_byte_exact": 11736,
+    "minimum_normal_z": 0.12453130632638931,
+    "maximum_normal_unit_error": 4.455286717330864e-08,
+    "native_xyz_uv_winding_parent_bounds_exact": true,
+    "old_other_trees_not_selected": true,
+    "physical_and_native_assets_unchanged": true,
+    "limits": "This is a nine-source-call lighting representation trial, not a change to individual botanical identity, placement, crown scale or ground class. No runtime fidelity acceptance."
+  },
+  "review": "boulevard-canopy-shading-review.md",
+  "native_status": "Native identical-pose comparison and full-route appearance review pending; the source review is not a fidelity pass."
+}
