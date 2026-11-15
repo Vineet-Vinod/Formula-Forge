@@ -15,7 +15,7 @@ from venues.baku_khagani import finish, prepare
 from venues.baku_khagani_dataclasses import KhaganiGroundSource
 
 SOURCES = Path(__file__).resolve().parents[1] / "Attribution/Sources/baku"
-EXPECTED_CITY = "dc5705240aaf6132fb7eab4f769cafcad88f840284570f635ed9cdd3dd2b985f"
+EXPECTED_CITY = "b6210b1376c51eec96b3f2f3c395defa0163f97af661a58b6eb66b48ec236197"
 
 
 def supported_scene() -> tuple[CircuitScene, KhaganiGroundSource]:
@@ -94,7 +94,12 @@ def test_khagani_rejects_stale_legacy_replay_atomically(tmp_path: Path) -> None:
     scene, guard = supported_scene()
     folder = tmp_path / "khagani"
     folder.mkdir()
-    for name in ("recipe.json.gz", "canopy.json.gz"):
+    for name in (
+        "recipe.json.gz",
+        "canopy.json.gz",
+        "canopy-shading.json",
+        "canopy-material.json",
+    ):
         (folder / name).write_bytes((SOURCES / "khagani" / name).read_bytes())
     family = replace(guard.legacy_families[0], emission_sha256="0" * 64)
     guard = replace(guard, legacy_families=(family, *guard.legacy_families[1:]))
@@ -108,24 +113,57 @@ def test_khagani_rejects_stale_legacy_replay_atomically(tmp_path: Path) -> None:
     assert not any(name.startswith("Building_") for name in scene.tiles)
 
 
+@pytest.mark.parametrize(
+    "accepted_source",
+    (
+        "Content/Generated/Interlagos/Textures/runtime_leaf_silhouette_color.uasset",
+        "Content/Generated/Interlagos/Materials/SurfaceFoliage.uasset",
+        "Content/Generated/Interlagos/Materials/runtime_leaf_silhouette.uasset",
+        "Content/Generated/Interlagos/Textures/DefaultNormal.uasset",
+    ),
+)
 def test_khagani_rejects_changed_accepted_leaf_source_before_reservation(
     tmp_path: Path,
+    accepted_source: str,
 ) -> None:
     scene, guard = supported_scene()
     folder = tmp_path / "khagani"
     folder.mkdir()
-    for name in ("recipe.json.gz", "canopy.json.gz"):
+    for name in (
+        "recipe.json.gz",
+        "canopy.json.gz",
+        "canopy-shading.json",
+        "canopy-material.json",
+    ):
         (folder / name).write_bytes((SOURCES / "khagani" / name).read_bytes())
-    atlas = "Content/Generated/Interlagos/Textures/runtime_leaf_silhouette_color.uasset"
-    assert atlas in guard.protected_source_sha256
+    assert accepted_source in guard.protected_source_sha256
     expected = dict(guard.protected_source_sha256)
-    expected[atlas] = "0" * 64
+    expected[accepted_source] = "0" * 64
     guard = replace(guard, protected_source_sha256=expected)
     (folder / "ground-supports.json.gz").write_bytes(
         gzip.compress(TypeAdapter(KhaganiGroundSource).dump_json(guard), mtime=0)
     )
     scene.sources = tmp_path
     with pytest.raises(ValueError, match="protected source changed"):
+        prepare(scene)
+    assert not scene.modeled_buildings
+    assert not any(name.startswith("Building_") for name in scene.tiles)
+
+
+def test_khagani_rejects_changed_material_recipe_before_reservation(
+    tmp_path: Path,
+) -> None:
+    scene, guard = supported_scene()
+    folder = tmp_path / "khagani"
+    folder.mkdir()
+    for name in ("recipe.json.gz", "canopy.json.gz", "canopy-shading.json"):
+        (folder / name).write_bytes((SOURCES / "khagani" / name).read_bytes())
+    (folder / "canopy-material.json").write_text("{}\n")
+    (folder / "ground-supports.json.gz").write_bytes(
+        gzip.compress(TypeAdapter(KhaganiGroundSource).dump_json(guard), mtime=0)
+    )
+    scene.sources = tmp_path
+    with pytest.raises(ValueError, match="Sahil material recipe changed"):
         prepare(scene)
     assert not scene.modeled_buildings
     assert not any(name.startswith("Building_") for name in scene.tiles)

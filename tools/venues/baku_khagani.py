@@ -23,8 +23,21 @@ from venues.baku_khagani_dataclasses import (
 from venues.baku_khagani_fronts import composers, house23, writers
 from venues.baku_khagani_legacy import append_rows, retained_rows
 from venues.baku_khagani_library import library_front
+from venues.baku_sahil_dataclasses import SahilMaterialSource, SahilShadingSource
 
 OWNERS = {177428532, 286020256}
+
+
+def load_canopy_shading(scene: CircuitScene) -> SahilShadingSource:
+    folder = scene.sources / "khagani"
+    shading = TypeAdapter(SahilShadingSource).validate_json(
+        (folder / "canopy-shading.json").read_bytes()
+    )
+    material = (folder / "canopy-material.json").read_bytes()
+    if hashlib.sha256(material).hexdigest() != shading.material_recipe_sha256:
+        raise ValueError("Baku Sahil material recipe changed")
+    TypeAdapter(SahilMaterialSource).validate_json(material)
+    return shading
 
 
 def load_source(
@@ -44,6 +57,7 @@ def load_source(
     for relative, expected in guard.protected_source_sha256.items():
         if hashlib.sha256((ROOT / relative).read_bytes()).hexdigest() != expected:
             raise ValueError(f"Baku Khagani protected source changed: {relative}")
+    load_canopy_shading(scene)
     if (
         hashlib.sha256((scene.scratch / "barriers.csv").read_bytes()).hexdigest()
         != guard.barriers_csv_sha256
@@ -152,8 +166,9 @@ def finish(scene: CircuitScene) -> None:
     heading = math.atan2(
         source.library.front.face.tangent[1], source.library.front.face.tangent[0]
     )
+    shading = load_canopy_shading(scene)
     for pose in poses:
-        tree(scene, pose, heading)
+        tree(scene, pose, heading, field=shading.normal_field)
     scene.landmarks.append(
         {
             "name": "Khagani Library and three registered heritage frontages",

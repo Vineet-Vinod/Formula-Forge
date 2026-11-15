@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "accepted_parent_asset": "/Game/Generated/Interlagos/Materials/SurfaceFoliage",
+  "parent_sha256": "608695aaf19717408a640965a0caaba0eee0c33d3a98370d85558173cc5d0bac",
+  "accepted_instance_asset": "/Game/Generated/Interlagos/Materials/runtime_leaf_silhouette",
+  "instance_sha256": "054ee7a20cc0a13aad4e3df35aa1a2b68218f9e0102b23cd9321ddc33cd275ff",
+  "actual_instance_asset": "/Game/Generated/Baku/Materials/TreeCanopy",
+  "accepted_atlas_asset": "/Game/Generated/Interlagos/Textures/runtime_leaf_silhouette_color",
+  "atlas_sha256": "2dd7446e6e9a5c809cf874fbbad501c9cea02b91eab1bd39e3d817e97050f503",
+  "neutral_normal_asset": "/Game/Generated/Interlagos/Textures/DefaultNormal",
+  "normal_sha256": "34a42c74a03cb14e4f4f5c0430423d3a6fd2f2cdde5713daedc9997e296287ed",
+  "target_parent_name": "BakuSahilCanopySurface",
+  "target_instance_name": "BakuSahilCanopy"
+}

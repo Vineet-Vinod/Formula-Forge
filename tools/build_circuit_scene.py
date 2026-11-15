@@ -252,6 +252,10 @@ class Importer:
         return material
 
     def material(self, name: str) -> unreal.MaterialInterface:
+        if self.slug == "baku" and name == "BakuSahilCanopy":
+            from venues.baku_sahil_material import build
+
+            return build(ROOT, self.assets)
         path = self.assets + "/Materials/" + name
         existing = unreal.load_asset(path)
         if (

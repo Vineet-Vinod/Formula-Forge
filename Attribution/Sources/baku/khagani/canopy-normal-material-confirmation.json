@@ -1,0 +1,364 @@
+{
+  "status": "Read-only foliage normal/subsurface/material query; native section shadow flags held; no asset saves/edits",
+  "material": "/Game/Generated/Baku/Materials/TreeCanopy.TreeCanopy",
+  "instances": [
+    "/Game/Generated/Baku/Materials/TreeCanopy.TreeCanopy"
+  ],
+  "base": "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage",
+  "base_properties": {
+    "tangent_space_normal": true,
+    "two_sided": true,
+    "shading_model": "<MaterialShadingModel.MSM_TWO_SIDED_FOLIAGE: 6>",
+    "blend_mode": "<BlendMode.BLEND_MASKED: 1>",
+    "opacity_mask_clip_value": 0.33329999446868896,
+    "cast_ray_traced_shadows": true,
+    "cast_dynamic_shadow_as_masked": false
+  },
+  "normal": {
+    "entry": "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionTextureSampleParameter2D_2",
+    "entry_output": "RGB",
+    "nodes": [
+      {
+        "class": "MaterialExpressionTextureSampleParameter2D",
+        "path": "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionTextureSampleParameter2D_2",
+        "input_pin_names": [
+          "UVs",
+          "Apply View MipBias"
+        ],
+        "output_pin_names": [
+          "RGB",
+          "R",
+          "G",
+          "B",
+          "A",
+          "RGBA"
+        ],
+        "inputs": [
+          null,
+          null
+        ],
+        "parameter": "NormalMap",
+        "sampler_type": "<MaterialSamplerType.SAMPLERTYPE_NORMAL: 3>",
+        "effective_texture": "/Game/Generated/Interlagos/Textures/DefaultNormal.DefaultNormal"
+      }
+    ]
+  },
+  "subsurface": {
+    "entry": "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionMultiply_2",
+    "entry_output": "",
+    "nodes": [
+      {
+        "class": "MaterialExpressionMultiply",
+        "path": "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionMultiply_2",
+        "input_pin_names": [
+          "A",
+          "B"
+        ],
+        "output_pin_names": [
+          ""
+        ],
+        "inputs": [
+          "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionMultiply_1",
+          "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionScalarParameter_1"
+        ]
+      },
+      {
+        "class": "MaterialExpressionScalarParameter",
+        "path": "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionScalarParameter_1",
+        "input_pin_names": [],
+        "output_pin_names": [
+          ""
+        ],
+        "inputs": [],
+        "parameter": "LeafTransmission",
+        "default": 0.44999998807907104,
+        "effective": 0.18000000715255737
+      },
+      {
+        "class": "MaterialExpressionMultiply",
+        "path": "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionMultiply_1",
+        "input_pin_names": [
+          "A",
+          "B"
+        ],
+        "output_pin_names": [
+          ""
+        ],
+        "inputs": [
+          "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionMultiply_0",
+          "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionLinearInterpolate_0"
+        ]
+      },
+      {
+        "class": "MaterialExpressionLinearInterpolate",
+        "path": "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionLinearInterpolate_0",
+        "input_pin_names": [
+          "A",
+          "B",
+          "Alpha"
+        ],
+        "output_pin_names": [
+          ""
+        ],
+        "inputs": [
+          "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionConstant3Vector_0",
+          "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionVertexColor_0",
+          "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionScalarParameter_0"
+        ]
+      },
+      {
+        "class": "MaterialExpressionScalarParameter",
+        "path": "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionScalarParameter_0",
+        "input_pin_names": [],
+        "output_pin_names": [
+          ""
+        ],
+        "inputs": [],
+        "parameter": "UseVertexColor",
+        "default": 0.0,
+        "effective": 0.0
+      },
+      {
+        "class": "MaterialExpressionVertexColor",
+        "path": "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionVertexColor_0",
+        "input_pin_names": [],
+        "output_pin_names": [
+          "",
+          "R",
+          "G",
+          "B",
+          "A"
+        ],
+        "inputs": []
+      },
+      {
+        "class": "MaterialExpressionConstant3Vector",
+        "path": "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionConstant3Vector_0",
+        "input_pin_names": [],
+        "output_pin_names": [
+          "",
+          "R",
+          "G",
+          "B"
+        ],
+        "inputs": [],
+        "constant": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "class": "MaterialExpressionMultiply",
+        "path": "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionMultiply_0",
+        "input_pin_names": [
+          "A",
+          "B"
+        ],
+        "output_pin_names": [
+          ""
+        ],
+        "inputs": [
+          "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionTextureSampleParameter2D_0",
+          "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionVectorParameter_0"
+        ]
+      },
+      {
+        "class": "MaterialExpressionVectorParameter",
+        "path": "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionVectorParameter_0",
+        "input_pin_names": [],
+        "output_pin_names": [
+          "RGB",
+          "R",
+          "G",
+          "B",
+          "A",
+          "RGBA"
+        ],
+        "inputs": [],
+        "parameter": "Tint",
+        "effective": [
+          0.5199999809265137,
+          0.6000000238418579,
+          0.46000000834465027,
+          1.0
+        ]
+      },
+      {
+        "class": "MaterialExpressionTextureSampleParameter2D",
+        "path": "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionTextureSampleParameter2D_0",
+        "input_pin_names": [
+          "UVs",
+          "Apply View MipBias"
+        ],
+        "output_pin_names": [
+          "RGB",
+          "R",
+          "G",
+          "B",
+          "A",
+          "RGBA"
+        ],
+        "inputs": [
+          null,
+          null
+        ],
+        "parameter": "Albedo",
+        "sampler_type": "<MaterialSamplerType.SAMPLERTYPE_COLOR: 0>",
+        "effective_texture": "/Game/Generated/Interlagos/Textures/runtime_leaf_silhouette_color.runtime_leaf_silhouette_color"
+      }
+    ]
+  },
+  "base_color": {
+    "entry": "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionMultiply_1",
+    "entry_output": "",
+    "nodes": [
+      {
+        "class": "MaterialExpressionMultiply",
+        "path": "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionMultiply_1",
+        "input_pin_names": [
+          "A",
+          "B"
+        ],
+        "output_pin_names": [
+          ""
+        ],
+        "inputs": [
+          "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionMultiply_0",
+          "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionLinearInterpolate_0"
+        ]
+      },
+      {
+        "class": "MaterialExpressionLinearInterpolate",
+        "path": "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionLinearInterpolate_0",
+        "input_pin_names": [
+          "A",
+          "B",
+          "Alpha"
+        ],
+        "output_pin_names": [
+          ""
+        ],
+        "inputs": [
+          "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionConstant3Vector_0",
+          "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionVertexColor_0",
+          "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionScalarParameter_0"
+        ]
+      },
+      {
+        "class": "MaterialExpressionScalarParameter",
+        "path": "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionScalarParameter_0",
+        "input_pin_names": [],
+        "output_pin_names": [
+          ""
+        ],
+        "inputs": [],
+        "parameter": "UseVertexColor",
+        "default": 0.0,
+        "effective": 0.0
+      },
+      {
+        "class": "MaterialExpressionVertexColor",
+        "path": "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionVertexColor_0",
+        "input_pin_names": [],
+        "output_pin_names": [
+          "",
+          "R",
+          "G",
+          "B",
+          "A"
+        ],
+        "inputs": []
+      },
+      {
+        "class": "MaterialExpressionConstant3Vector",
+        "path": "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionConstant3Vector_0",
+        "input_pin_names": [],
+        "output_pin_names": [
+          "",
+          "R",
+          "G",
+          "B"
+        ],
+        "inputs": [],
+        "constant": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "class": "MaterialExpressionMultiply",
+        "path": "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionMultiply_0",
+        "input_pin_names": [
+          "A",
+          "B"
+        ],
+        "output_pin_names": [
+          ""
+        ],
+        "inputs": [
+          "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionTextureSampleParameter2D_0",
+          "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionVectorParameter_0"
+        ]
+      },
+      {
+        "class": "MaterialExpressionVectorParameter",
+        "path": "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionVectorParameter_0",
+        "input_pin_names": [],
+        "output_pin_names": [
+          "RGB",
+          "R",
+          "G",
+          "B",
+          "A",
+          "RGBA"
+        ],
+        "inputs": [],
+        "parameter": "Tint",
+        "effective": [
+          0.5199999809265137,
+          0.6000000238418579,
+          0.46000000834465027,
+          1.0
+        ]
+      },
+      {
+        "class": "MaterialExpressionTextureSampleParameter2D",
+        "path": "/Game/Generated/Interlagos/Materials/SurfaceFoliage.SurfaceFoliage:MaterialExpressionTextureSampleParameter2D_0",
+        "input_pin_names": [
+          "UVs",
+          "Apply View MipBias"
+        ],
+        "output_pin_names": [
+          "RGB",
+          "R",
+          "G",
+          "B",
+          "A",
+          "RGBA"
+        ],
+        "inputs": [
+          null,
+          null
+        ],
+        "parameter": "Albedo",
+        "sampler_type": "<MaterialSamplerType.SAMPLERTYPE_COLOR: 0>",
+        "effective_texture": "/Game/Generated/Interlagos/Textures/runtime_leaf_silhouette_color.runtime_leaf_silhouette_color"
+      }
+    ]
+  },
+  "shadow_sections": [
+    {
+      "status": "HELD actual native section shadow flags; material-only commandlet query. Source defaults separately documented; no subsystem getters used."
+    }
+  ],
+  "files_sha256": {
+    "Content/Generated/Baku/Materials/TreeCanopy.uasset": "7b89d14f3c1313300e023fe2536e2670a59464504bff4050d8d46584612625c0",
+    "Content/Generated/Interlagos/Materials/SurfaceFoliage.uasset": "608695aaf19717408a640965a0caaba0eee0c33d3a98370d85558173cc5d0bac",
+    "Content/Generated/Interlagos/Textures/DefaultNormal.uasset": "34a42c74a03cb14e4f4f5c0430423d3a6fd2f2cdde5713daedc9997e296287ed",
+    "Content/Generated/Baku/Track/Building_City_m2_00_Part_01_Cell_m1_4.uasset": "0b6c1b2ed619c00ca3772cf983ce181ed552086848a7730cae66af8a68b0d888",
+    "Content/Generated/Baku/Track/Building_City_m3_00_Cell_m1_6.uasset": "5c6972d1d3407287cabdfbd7ddbf170bf7cda28718a839ccd92af44f207a06e0"
+  },
+  "protected_assets_byte_unchanged": true
+}

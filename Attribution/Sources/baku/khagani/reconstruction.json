@@ -2874,9 +2874,9 @@
   },
   "source_scope_note": "Only edge10 and compound edges17/18 are replaced. No unregistered Library entrance/return/pavilion, western rear roof gap, courtyard, Ground or protection changes.",
   "focused_checks": [
-    "pytest Tests/test_baku_khagani.py:4passed",
-    "mypy seven owned modules plus focused test:PASS",
-    "Ruff owned modules plus focused test:PASS"
+    "pytest Tests/test_baku_khagani.py:8passed",
+    "mypy owned generator modules/tests andUEhelper/commonDC:PASS",
+    "Ruff owned changedPython:PASS"
   ],
   "initial_canonical_adapter_replay": {
     "status": "PASS",
@@ -2980,6 +2980,25 @@
     "status": "PASS",
     "private_trees": 4278,
     "canonical_trees": 4278,
+    "private_tree_counter_sha256": "e55517280a4516972639f35db4d61bd14d95db921ec2bba0019dde169042104f",
+    "canonical_tree_counter_sha256": "e55517280a4516972639f35db4d61bd14d95db921ec2bba0019dde169042104f",
+    "expected_complete_family_triangles": 168058,
+    "actual_complete_family_triangles": 168058,
+    "missing_rows": 0,
+    "extra_rows": 0,
+    "private_complete_family_counter_sha256": "b6210b1376c51eec96b3f2f3c395defa0163f97af661a58b6eb66b48ec236197",
+    "canonical_complete_family_counter_sha256": "b6210b1376c51eec96b3f2f3c395defa0163f97af661a58b6eb66b48ec236197",
+    "ground_road_bytes_unchanged": true,
+    "cutouts": 0,
+    "poses_recipe_sha256": "ca140e4a33e6a351d38344fc2b86c77f3aff1cccd11a550ccf70232b8b282b5f",
+    "source_root_corners": "Prior alpha-aware proof verifies each original/new packed corner exact; immutable pose recipe remains identical",
+    "seconds": 9.519391828973312,
+    "peak_rss_mib": 274.5625
+  },
+  "pre_volume_canonical_adapter_replay": {
+    "status": "PASS",
+    "private_trees": 4278,
+    "canonical_trees": 4278,
     "private_tree_counter_sha256": "b46e12b5d3261ca5188d59daec769f3284a424de5f2999a9e09cd5b9724eb111",
     "canonical_tree_counter_sha256": "b46e12b5d3261ca5188d59daec769f3284a424de5f2999a9e09cd5b9724eb111",
     "expected_complete_family_triangles": 168058,
@@ -2994,5 +3013,71 @@
     "source_root_corners": "Prior alpha-aware proof verifies each original/new packed corner exact; immutable pose recipe remains identical",
     "seconds": 8.908476082026027,
     "peak_rss_mib": 278.4140625
+  },
+  "canopy_volume_normal_trial_2026_11_15": {
+    "status": "WIP versioned bounded native trial, source/private parity and focused checks PASS. Whole Baku HOLD; native material/packed-normal/PBR comparison pending.",
+    "source_review": "canopy-volume-source-review.md",
+    "normal_material_confirmation": "canopy-normal-material-confirmation.json",
+    "complete_MI_input_confirmation": "canopy-material-input-confirmation.json",
+    "shading_recipe": "canopy-shading.json",
+    "material_recipe": "canopy-material.json",
+    "normal_field": {
+      "origin_height_fraction": 0.3,
+      "vertical_radius_fraction": 0.7,
+      "definition": "Normalize the ellipsoidal gradient in the original crown axes, centered at the existing main fork. Rendering estimate, not botanical measurement.",
+      "minimum_packed_source_normal_z": 0.01179773360490799,
+      "maximum_source_unit_length_error": 4.137844644702682e-08,
+      "maximum_normal_field_error_at_packed_XYZ": 6.331795670043158e-05,
+      "maximum_derived_F32_error_bound": 0.0001610883678867529
+    },
+    "finite_scope": {
+      "poses": 31,
+      "pose_bytes_preserved_sha256": "ca140e4a33e6a351d38344fc2b86c77f3aff1cccd11a550ccf70232b8b282b5f",
+      "leaf_triangles_changed_only_normals_and_material": 1302,
+      "trunk_triangles_payload_exact": 2976,
+      "tree_family_triangles": 4278,
+      "complete_Khagani_family_triangles": 168058,
+      "expected_full_scene_without_separate_changes": 4921716,
+      "physical_XYZ_UV_winding_bounds_parent_ownership": "EXACT; no tree dimensions, roots, Ground, architecture, protection or other vegetation changes"
+    },
+    "material": {
+      "instance": "BakuSahilCanopy",
+      "parent": "BakuSahilCanopySurface",
+      "rebuild": "tools/venues/baku_sahil_material.py::build(root, assets) validates versioned accepted parent/leaf MI/atlas/neutral texture SHAs and actual Baku MI full10regular arrays/base overrides/effective static state; duplicate actual accepted Baku MI and accepted parent, preserving all data; change only Normal input\u2192VertexNormalWS and tangent_space_normal=False.",
+      "source_metadata": "Baku TreeCanopy serialized recipe metadata may refresh without semantic parameter changes. Stable original Interlagos inputs remain hash guards; actual Baku arrays/props must match before any clone.",
+      "backface": "Installed MaterialTemplate world-space normal path skips generic tangent TwoSidedSign flip; VertexNormalWS reads interpolated supplied normal. New leaf material only; shared accepted foliage assets untouched.",
+      "hidden_static_state": "Private raw static fields unavailable. Fixed accepted parent has no static/layer/function-call expressions, public static-switch inventory empty, active regular parameter associations global; duplication preserves opaque private fields verbatim.",
+      "shadow": "Native shadow flags preserved. Changed vertex normals also affect shadow slope bias; native comparison must inspect self-shadow/cast shadow, not only banding."
+    },
+    "proofs": {
+      "frozen_private_file_map_sha256": "59c44733244ebf4d5315ec7096ab394fc05b3ab378344bcd84edbd6d6f51402c",
+      "source_geometry_proof_sha256": "dd396c57e4d92a9af6832db892ae87ad2189a0640d83f73ab18a1a7b0e2b2f74",
+      "canonical_private_replay": {
+        "status": "PASS",
+        "private_trees": 4278,
+        "canonical_trees": 4278,
+        "private_tree_counter_sha256": "e55517280a4516972639f35db4d61bd14d95db921ec2bba0019dde169042104f",
+        "canonical_tree_counter_sha256": "e55517280a4516972639f35db4d61bd14d95db921ec2bba0019dde169042104f",
+        "expected_complete_family_triangles": 168058,
+        "actual_complete_family_triangles": 168058,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "private_complete_family_counter_sha256": "b6210b1376c51eec96b3f2f3c395defa0163f97af661a58b6eb66b48ec236197",
+        "canonical_complete_family_counter_sha256": "b6210b1376c51eec96b3f2f3c395defa0163f97af661a58b6eb66b48ec236197",
+        "ground_road_bytes_unchanged": true,
+        "cutouts": 0,
+        "poses_recipe_sha256": "ca140e4a33e6a351d38344fc2b86c77f3aff1cccd11a550ccf70232b8b282b5f",
+        "source_root_corners": "Prior alpha-aware proof verifies each original/new packed corner exact; immutable pose recipe remains identical",
+        "seconds": 9.519391828973312,
+        "peak_rss_mib": 274.5625
+      },
+      "complete_material_input_preflight_sha256": "735d38be89870e7f12c10e05f604ef0a24cdd55789d06973126c7f344bdaba8e"
+    },
+    "required_native_gates": [
+      "Compile and verify private world-normal graph/retained MI parameters",
+      "Final native packed-normal positivity and valid interpolation",
+      "Same1179.57/1272.17 cameras/exposure/lighting: seams, both faces, silhouettes, trunks, shadows",
+      "No whole-map acceptance from source checks; keep held ground and unrelated city holds"
+    ]
   }
 }

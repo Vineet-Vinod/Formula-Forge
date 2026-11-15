@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "normal_field": {
+    "origin_height_fraction": 0.3,
+    "vertical_radius_fraction": 0.7
+  },
+  "material_recipe_sha256": "466160b01970c2fa3d2cee89595ac87915344fa1226ed44f87360636d7a85378"
+}
