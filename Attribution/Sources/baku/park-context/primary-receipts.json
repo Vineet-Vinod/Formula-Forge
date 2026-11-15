@@ -1,0 +1,47 @@
+{
+  "source2018": {
+    "source_url": "https://commons.wikimedia.org/wiki/File:Neft%C3%A7il%C9%99r_prospektinin_Four_Seasons_Baku_otelind%C9%99n_g%C3%B6r%C3%BCn%C3%BC%C5%9F%C3%BC.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/4/41/Neft%C3%A7il%C9%99r_prospektinin_Four_Seasons_Baku_otelind%C9%99n_g%C3%B6r%C3%BCn%C3%BC%C5%9F%C3%BC.jpg",
+    "author": "Sefer azeri",
+    "acquisition_date": "2018-01-06 12:36:04 per original EXIF/provider",
+    "licence": "CC BY-SA4.0; reference-only, no image pixels in native assets",
+    "source": "Own work by uploader",
+    "sha256": "db9420cc33a14c52d0b1a148dae672ad19b1018ac755bea6661813a52197aa44",
+    "dimensions_px": [
+      2448,
+      3264
+    ],
+    "limits": "Lightroom5.7.1 processing disclosed; no unqualified metric camera calibration. January vegetation differs from summer reference. Source explicitly describes view from FourSeasons; exact photographed objects still require footprint/source registration."
+  },
+  "office_ugc": [
+    {
+      "file": "office-ugc-0.jpg",
+      "url": "https://avatars.mds.yandex.net/get-altay/11908258/2a0000018ee6beff7854b1e0c09b1bea481e/XXL_height",
+      "sha256": "bae60b8ee306d879fe66783e62ecb81844d41e4328f0b0dc5ab78aaf3e7b33a1",
+      "bytes": 252866,
+      "venue_page": "https://yandex.com/maps/org/39642929830/",
+      "status": "Venue-bound user photograph; uploader/date/licence/exact footprint registration still unqualified; reference-only"
+    },
+    {
+      "file": "office-ugc-1.jpg",
+      "url": "https://avatars.mds.yandex.net/get-altay/13444254/2a00000191bd1122f9a2be7b0ee7167b8c8c/XXL_height",
+      "sha256": "fba45b3b7cd87fc27503f19146ab66efe418d8a71b5c725fe60dfea75cd81e15",
+      "bytes": 175979,
+      "venue_page": "https://yandex.com/maps/org/39642929830/",
+      "status": "Venue-bound user photograph; uploader/date/licence/exact footprint registration still unqualified; reference-only"
+    }
+  ],
+  "reference_only": true,
+  "no_image_pixels_in_assets": true,
+  "frozen_candidate_entry_sha256": "3b5385adc495edafcde1f305b896db9e1c855e3be6575fb4f81422080ca47948",
+  "source_review_sha256": "dd604b5b637c2936699b46559bf01409eddc19bb666410bb57e93b437a2b5031",
+  "osm_source": {
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=49.8350,40.3620,49.8395,40.3667",
+    "sha256": "5c61ef5b68aff0a437799a1b1e4728aa1919fbc6fe73f07ae7b2262a840ac554",
+    "bytes": 796002,
+    "nodes": 1830,
+    "ways": 244,
+    "scope": "Bounded read-only primary OSM current parcel/footway/cover-role source; names/epochs and individual tree accuracy unqualified."
+  },
+  "licence_notes": "OSM ODbL factualgeometry;2018photoCCBYSA4 reference-only; officeUGCauthor/date/licenceunresolved, reference-only, not includedinversionedimages; sourcecode proceduralgeometry only."
+}

@@ -843,6 +843,18 @@ three-arched balcony tier, flanking loggias, corner oriels and stepped wings.
 Do not turn those visible groups into a claimed full floor count. The source
 recipe and exact-family/ground proofs are in `Attribution/Sources/baku/no85/`.
 
+### Baku promenade, office and woodland
+
+`venues.baku_park.finish(scene)` follows No. 85. It applies the reviewed finite
+Ground replacement, translates only office owner 279935608 vertically, and
+replaces the original 34-tree family with 98 source-fit trees. Keep the office's
+literal plan and two-storey form; its relative base and the public-ground levels
+remain estimates. The six mapped grass beds and photographed narrow verge have
+separate role evidence. Source controls, exact output, contacts and review scope
+live under `Attribution/Sources/baku/park-context/`. Compose semantic replacements
+with the current parents, preserving No. 85 and every unrelated row. The earlier
+Azneft/Niyazi public-junction problem is a separate, unapproved correction.
+
 ### Villa de Rome architecture
 
 `venues.monaco_rome.finish_terrain(scene)` replaces only the exact 1,822-row generic Villa de Rome family in `Building_City_m1_01`. It operates on the current tile after other terrain/property producers, preserving every other packed row and the existing material-table prefix. It never reloads a saved parent City tile. Keep the call before final tile partition/save; Hermosa garden/tree updates and the underarch woodland remain independent.

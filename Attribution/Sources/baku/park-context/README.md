@@ -1,0 +1,11 @@
+# Baku seafront promenade and woodland
+
+The reconstruction replaces a provisional canopy-biased GLO-90 scenery bank with a bounded public-ground estimate tied to unchanged native road levels. Absolute ground remains±2m estimated. Only office279935608 moves vertically; its literal shape,2levels/6.8m dimensions, materials and UVs remain unchanged. The occupied-interior render cut removes false high scenery beneath that body, not physical Earth.
+
+98source-fit trees comprise34retained XY/seeds/dimensions with actual support-Z corrections,59additional mapped-bed poses and5photographed-verge poses. Individual tree inventory/species/height are estimates. Five other tested foreground locations remain excluded for insufficient conservative path/protection space. No racing road, kerb, barrier, global ground provider or native physicalData changes.
+
+Six literal OSM grass beds receive original-plane material segmentation; the narrow photographed verge has±0.5m width uncertainty. One5.912mm authored verge adjustment preserves its complete post-field triangle attributes and remains clear of actual protection/paving. Detailed source bounds, rejected trials and actual geometry/contact extrema are recorded in the adjacent proof/receipt files. The residual27.802% outer Grass face was already27.620% and moves only−13.63mm; it is not the rejected133% notch or38% office ramp.
+
+`source-review.md` approves this bounded source/camera candidate for native validation. Native/PBR/full-scene acceptance is separate. The first Azneft/Niyazi gray junction remains a separate source task. The runtime hook replaces finite semantic row/family Counters in current parents; it never replays frozen City parents or changes current No5/other landmarks/163-tree normal fields.
+
+`ground-delta.json.gz` is the exact reviewed atomic Ground replacement; `reconstruction.json.gz` binds it, the translated6492-row office and the original/new tree geometry goldens. A durable transparent authored-control archive/rebuilder is supplied separately; it must reproduce this same frozen output. Reference-only originals remain in the retained review/reference folders and are bound by URL/hash in `primary-receipts.json`; no photograph pixels enter game assets.

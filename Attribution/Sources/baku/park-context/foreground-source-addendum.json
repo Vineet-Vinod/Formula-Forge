@@ -1,0 +1,187 @@
+{
+  "status": "SOURCE ADDENDUM ONLY. No foreground tree emitted or material changed.",
+  "registration": "Source own-work2018 FourSeasons view identifies the boulevard via hotel/road curve/registered85and89fronts. The narrow green/tree verge is directly between road curb and paved promenade, parallel to above-ground OSM360221004. Exact photo camera and individual stems remain uncalibrated; longitudinal bounds\u00b120m and verge-width\u00b10.5m remain visual estimates.",
+  "source_photo_sha256": "db9420cc33a14c52d0b1a148dae672ad19b1018ac755bea6661813a52197aa44",
+  "osm_sha256": "5c61ef5b68aff0a437799a1b1e4728aa1919fbc6fe73f07ae7b2262a840ac554",
+  "main_path": {
+    "osm_id": 360221004,
+    "tags": {
+      "check_date:surface": "2024-11-17",
+      "highway": "footway",
+      "lit": "yes",
+      "surface": "paving_stones"
+    },
+    "xy_m": [
+      [
+        -1502.8623436306743,
+        -1080.814025734421
+      ],
+      [
+        -1509.6466640841395,
+        -1073.8355691282134
+      ],
+      [
+        -1510.1757557422766,
+        -1067.988451393719
+      ],
+      [
+        -1505.1237837822337,
+        -1048.7108850694137
+      ],
+      [
+        -1495.9500171306317,
+        -1033.1521752350056
+      ],
+      [
+        -1460.4496736254146,
+        -969.987621776689
+      ],
+      [
+        -1451.011361144744,
+        -958.0133519325528
+      ],
+      [
+        -1440.079644791375,
+        -947.7864965851365
+      ],
+      [
+        -1429.2332658019866,
+        -937.6940577365496
+      ],
+      [
+        -1401.9423767319909,
+        -912.2781379282966
+      ],
+      [
+        -1340.5250757200251,
+        -855.0951187040996
+      ],
+      [
+        -1327.6305999896365,
+        -844.8010551060748
+      ]
+    ],
+    "closed": false,
+    "area_m2": 0
+  },
+  "source_role": "Narrow photographed planted verge, not inferred from broadpark tag; no natural-role assignment to larger gray paved bank. Existing source corridor and all mapped grass beds unchanged.",
+  "nominal_interval_station_m": [
+    4070,
+    4196
+  ],
+  "root_band_m": [
+    12.3,
+    13.0
+  ],
+  "conservative_main_path_half_width_m": 2.15,
+  "path_width_note": "Nominal3.3m promenade width\u00b11m total; use4.3m total as conservative trunk exclusion. This is estimated, not surveyed.",
+  "trunk_radius_m": 0.27,
+  "required_barrier_skin_clearance_m": 0.25,
+  "required_conservative_path_clearance_m": 0.1,
+  "proposed_poses": [
+    {
+      "station_m": 4069.90503,
+      "xy_m": [
+        -1514.859006336,
+        -1066.399808858
+      ],
+      "right_offset_m": 13.0,
+      "barrier_segment_index": 3237,
+      "minimum_trunk_to_actual_protection_skin_m": 0.6537672010667703,
+      "minimum_trunk_to_conservative_path_edge_m": 2.5129964527419295,
+      "main_path_center_distance_m": 4.932996452741991,
+      "height_m": 16.5,
+      "crown_width_m": 6.5,
+      "form": "high_skirt_evergreen",
+      "lower_live_crown_m": 3.2,
+      "source_status": "Photographed verge role; individual tree/count/dimensions/XY are source-fit estimates, not mapped stems",
+      "ground_support_status": "Pending exact packed post-v6 height and foot/card3D tests"
+    },
+    {
+      "station_m": 4154.17578,
+      "xy_m": [
+        -1475.8167415678752,
+        -991.5523411603
+      ],
+      "right_offset_m": 12.475000000000001,
+      "barrier_segment_index": 3191,
+      "minimum_trunk_to_actual_protection_skin_m": 0.4087176125881017,
+      "minimum_trunk_to_conservative_path_edge_m": 0.4106261691013239,
+      "main_path_center_distance_m": 2.830626169101207,
+      "height_m": 17.2,
+      "crown_width_m": 8.4,
+      "form": "deciduous",
+      "lower_live_crown_m": 5.6,
+      "source_status": "Photographed verge role; individual tree/count/dimensions/XY are source-fit estimates, not mapped stems",
+      "ground_support_status": "Pending exact packed post-v6 height and foot/card3D tests"
+    },
+    {
+      "station_m": 4168.09863,
+      "xy_m": [
+        -1469.2166746898001,
+        -979.2910138168
+      ],
+      "right_offset_m": 12.600000000000001,
+      "barrier_segment_index": 3184,
+      "minimum_trunk_to_actual_protection_skin_m": 0.660303923263815,
+      "minimum_trunk_to_conservative_path_edge_m": 0.6644459964318377,
+      "main_path_center_distance_m": 3.0844459964317323,
+      "height_m": 17.9,
+      "crown_width_m": 8.4,
+      "form": "deciduous",
+      "lower_live_crown_m": 5.6,
+      "source_status": "Photographed verge role; individual tree/count/dimensions/XY are source-fit estimates, not mapped stems",
+      "ground_support_status": "Pending exact packed post-v6 height and foot/card3D tests"
+    },
+    {
+      "station_m": 4182.02148,
+      "xy_m": [
+        -1462.904343523125,
+        -967.9399983589999
+      ],
+      "right_offset_m": 12.625,
+      "barrier_segment_index": 3176,
+      "minimum_trunk_to_actual_protection_skin_m": 0.789875275381839,
+      "minimum_trunk_to_conservative_path_edge_m": 0.7753585328783237,
+      "main_path_center_distance_m": 3.195358532878311,
+      "height_m": 16.5,
+      "crown_width_m": 6.5,
+      "form": "high_skirt_evergreen",
+      "lower_live_crown_m": 3.2,
+      "source_status": "Photographed verge role; individual tree/count/dimensions/XY are source-fit estimates, not mapped stems",
+      "ground_support_status": "Pending exact packed post-v6 height and foot/card3D tests"
+    },
+    {
+      "station_m": 4195.94434,
+      "xy_m": [
+        -1456.0068245092998,
+        -959.2648253257
+      ],
+      "right_offset_m": 12.575000000000001,
+      "barrier_segment_index": 3167,
+      "minimum_trunk_to_actual_protection_skin_m": 0.7411291396520252,
+      "minimum_trunk_to_conservative_path_edge_m": 0.7285447713249159,
+      "main_path_center_distance_m": 3.1485447713249033,
+      "height_m": 17.2,
+      "crown_width_m": 8.4,
+      "form": "deciduous",
+      "lower_live_crown_m": 5.6,
+      "source_status": "Photographed verge role; individual tree/count/dimensions/XY are source-fit estimates, not mapped stems",
+      "ground_support_status": "Pending exact packed post-v6 height and foot/card3D tests"
+    }
+  ],
+  "positions_without_robust_space": [
+    4084,
+    4098,
+    4112,
+    4126,
+    4140
+  ],
+  "requirements": [
+    "Actual post-field packed support; full foot contact",
+    "Actual source leaf cards/UValpha envelopes versus racing asphalt, fence and path in3D",
+    "No low conifer skirts over paving; conifer live crown begins~3.2m aboveground as photographed estimate; actual road leaf clearance>=4.5m if any overhang",
+    "Independent source/photo registration review before model authoring",
+    "No roadside material change until a literal defensible photographed-verge polygon is fitted between protected wall and conservative paving corridor"
+  ]
+}

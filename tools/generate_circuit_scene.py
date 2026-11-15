@@ -97,6 +97,9 @@ def generate(slug: str, write_native_contact: bool = False) -> None:
         from venues.baku_no85 import finish as finish_no85
 
         finish_no85(scene)
+        from venues.baku_park import finish as finish_park
+
+        finish_park(scene)
     if slug == "monaco":
         from venues.monaco_foreground import finish_terrain as finish_monaco_foreground
 

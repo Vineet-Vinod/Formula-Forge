@@ -1,0 +1,171 @@
+{
+  "status": "PASS",
+  "current_source_manifest_sha256": "c1e8649dbcd792833cf3d0bf4393bd849cb904b18f9ba56e6b95a8f9dc2a073b",
+  "current_source_triangles": 5137778,
+  "expected_full_triangles": 5198620,
+  "new_ground_rows": 55257,
+  "removed_ground_rows": 1717,
+  "office_rows_z_only": 6492,
+  "old_tree_rows": 4062,
+  "new_tree_rows": 11364,
+  "all_unrelated_raw_rows_order_material_prefixes_exact": true,
+  "unchanged_raw_rows": 954807,
+  "all5_native_data_sha256_unchanged": {
+    "terrain.bin": "e6e5423c2f5f02fc7e47ddb1459d9e39edcc2ae0b7891724be8520abedc5231e",
+    "buildings.bin": "66124b81b9566466e4372a03e6bbcfdf77459d3614eee676b407a531be73c0c4",
+    "track_limits.bin": "4b49688582d85ea9d89800723f5ce8c48f84a99f2deb9fc0d145731a9273d6e6",
+    "drive_surface.bin": "26bc10ef7913eb8b758e60bada4eb749e94aa7bb524952c47ead9fff2130166e",
+    "render_tiles.csv": "43721d93a667ecd218f6319d9f9c050d526a1da46b19ae603f53f1be0a4523ff"
+  },
+  "native_provider_road_mask_identities_unchanged": true,
+  "changed_parents": [
+    "Building_City_m4_m3",
+    "Building_City_m5_m3",
+    "Building_City_m5_m4",
+    "Tile_Street_m6_m4",
+    "Tile_Street_m6_m5",
+    "Tile_Street_m7_m4",
+    "Tile_Street_m7_m5"
+  ],
+  "support_rows": 95,
+  "current_input_cells": [
+    {
+      "name": "Building_City_m4_m3_Cell_6_10",
+      "sha256": "8e8d0e0be4f59ae077d10946baedd6dbcfc0a81fdf5697fa9216c561a3f15d45",
+      "parent": "Building_City_m4_m3"
+    },
+    {
+      "name": "Building_City_m4_m3_Cell_6_11",
+      "sha256": "fd242169ea99644c182054590c1abb09311bca9a7b55961eba9f52a9032402ae",
+      "parent": "Building_City_m4_m3"
+    },
+    {
+      "name": "Building_City_m4_m3_Cell_7_11",
+      "sha256": "3abe0d5a357d837fb041cbb542357badb0a1211d5053c0af3b21784ffadfa335",
+      "parent": "Building_City_m4_m3"
+    },
+    {
+      "name": "Building_City_m4_m3_Cell_8_11",
+      "sha256": "8615a16d2c4d2aa7281f7207b8666e30f1ced8400cd4a4dc6d1cb8acda75d765",
+      "parent": "Building_City_m4_m3"
+    },
+    {
+      "name": "Building_City_m5_m3_Part_00_Cell_6_12",
+      "sha256": "381aaa443dc043ec7cf162c1c141afed3f0b9285098b1b96f9fbbe1f5cf7b8f1",
+      "parent": "Building_City_m5_m3"
+    },
+    {
+      "name": "Building_City_m5_m3_Part_00_Cell_6_13",
+      "sha256": "8af9a0241730bc65f5ca00a55883c5aec6a723493c492986a65b06bcd8ea7052",
+      "parent": "Building_City_m5_m3"
+    },
+    {
+      "name": "Building_City_m5_m3_Part_00_Cell_6_14",
+      "sha256": "e23c315a95efec98fca012133c0fd02330034d49318fc1dfa21921a5404937b2",
+      "parent": "Building_City_m5_m3"
+    },
+    {
+      "name": "Building_City_m5_m3_Part_00_Cell_7_12",
+      "sha256": "f22a5e5242db0d0a443aa6d98eddb6caa6db1458afe0ae97013bf4821c487197",
+      "parent": "Building_City_m5_m3"
+    },
+    {
+      "name": "Building_City_m5_m3_Part_00_Cell_7_13",
+      "sha256": "03734b8b35936df51f6f092fbc2b71315f4aad73d161db368b1d16d1096a69ab",
+      "parent": "Building_City_m5_m3"
+    },
+    {
+      "name": "Building_City_m5_m3_Part_00_Cell_8_12",
+      "sha256": "119f1ff6083d8bf34971975e293df91c47edd14458565efc9ca688b5a0ac6401",
+      "parent": "Building_City_m5_m3"
+    },
+    {
+      "name": "Building_City_m5_m3_Part_00_Cell_8_13",
+      "sha256": "e1ecf1031dfe2a04eff3fb8a52e0a7b79ec983e8f1ebe307017dcfbc1e8ea631",
+      "parent": "Building_City_m5_m3"
+    },
+    {
+      "name": "Building_City_m5_m3_Part_00_Cell_8_14",
+      "sha256": "16aaaf1a199fe324fdacd6304f28f364f767ca3e0d63df961ba9a660afcfd6f2",
+      "parent": "Building_City_m5_m3"
+    },
+    {
+      "name": "Building_City_m5_m3_Part_01_Cell_7_12",
+      "sha256": "db05d22498dc3831f69ee64e58ad08a24a61be24bba58367fee6754479567c88",
+      "parent": "Building_City_m5_m3"
+    },
+    {
+      "name": "Building_City_m5_m3_Part_01_Cell_7_14",
+      "sha256": "3fe80f92af57758e44992919c4ded48581d83eb80081127a6ac4f240a9b132f4",
+      "parent": "Building_City_m5_m3"
+    },
+    {
+      "name": "Building_City_m5_m3_Part_01_Cell_7_15",
+      "sha256": "84d18eaf7479143ff8736ae31072cb2111adcacd1d2ed59053c97d31a4703325",
+      "parent": "Building_City_m5_m3"
+    },
+    {
+      "name": "Building_City_m5_m3_Part_01_Cell_8_12",
+      "sha256": "ac77c8a3a7fed96b7ccf6748d25ea4ef4516d01e09bcdaf5fce7c1e314d83541",
+      "parent": "Building_City_m5_m3"
+    },
+    {
+      "name": "Building_City_m5_m3_Part_01_Cell_8_13",
+      "sha256": "2884a1a1123b884b7b7b4a1d8ab7596b75145ca7911d436f2de969836badec86",
+      "parent": "Building_City_m5_m3"
+    },
+    {
+      "name": "Building_City_m5_m4_Cell_9_12",
+      "sha256": "792e44677f76ece47d319ef0779f01cb8e06001ee25443afd0d19b0ce15d3605",
+      "parent": "Building_City_m5_m4"
+    },
+    {
+      "name": "Building_City_m5_m4_Cell_9_13",
+      "sha256": "9d7ef0e71b71edc0167966fc215ec3368751705d2bd665508deb435eeadb058a",
+      "parent": "Building_City_m5_m4"
+    },
+    {
+      "name": "Building_City_m5_m4_Cell_9_14",
+      "sha256": "a9cc2319c9f2ad2a937efcdf90f4ff77298a5052a1d99ab3067a805f177b3805",
+      "parent": "Building_City_m5_m4"
+    },
+    {
+      "name": "Building_City_m5_m4_Cell_10_12",
+      "sha256": "679da9da6ed990f0b31c97970df2c4849c82c2acf073e6fd24867cc0783b0eb0",
+      "parent": "Building_City_m5_m4"
+    },
+    {
+      "name": "Building_City_m5_m4_Cell_10_13",
+      "sha256": "c9b1220a81cbed27a7b7058e29b5c46c36ea63c63b2cea60a4dc85f1b4b72bcd",
+      "parent": "Building_City_m5_m4"
+    },
+    {
+      "name": "Building_City_m5_m4_Cell_10_14",
+      "sha256": "c86c47fd82d704069ca091717d6a64b0339a2f0a033de1a69d6c7a2129208b07",
+      "parent": "Building_City_m5_m4"
+    },
+    {
+      "name": "Tile_Street_m6_m4",
+      "sha256": "c4c42debf20cfaa54ac3c9523f5aaf8d093c54c989e87008aa02c9ca76413630",
+      "parent": "Tile_Street_m6_m4"
+    },
+    {
+      "name": "Tile_Street_m6_m5",
+      "sha256": "fa684b9a7ff21aafff54014b0b2e4fc2f11095d18160b9f6361e8ad0d143a60b",
+      "parent": "Tile_Street_m6_m5"
+    },
+    {
+      "name": "Tile_Street_m7_m4",
+      "sha256": "099fe02b5427cd67da61db3616c4cf45f4fd4dd91ff95639cd793d50bd32d864",
+      "parent": "Tile_Street_m7_m4"
+    },
+    {
+      "name": "Tile_Street_m7_m5",
+      "sha256": "21994224eb42577434baef9ae6ca09553442d524662153daec72939c35494050",
+      "parent": "Tile_Street_m7_m5"
+    }
+  ],
+  "recipe_sha256": "16daab21bf56152989e325dd6b885aaa8086bcfb9c499751037a2da1a15d33f6",
+  "seconds": 12.594012207002379,
+  "rss_mib": 732.3125
+}
