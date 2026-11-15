@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=baku",
   "tiles": 397,
-  "triangles": 5198620,
+  "triangles": 5216453,
   "road_sha256": "26bc10ef7913eb8b758e60bada4eb749e94aa7bb524952c47ead9fff2130166e",
   "terrain_sha256": "e6e5423c2f5f02fc7e47ddb1459d9e39edcc2ae0b7891724be8520abedc5231e",
   "landmarks": [
@@ -2323,6 +2323,12 @@
       "source": "park-context/reconstruction.json.gz",
       "scope": "Bounded continuous public promenade estimated Road+0.15m/absolute\u00b12m, office279935608 only relative translation\u22122.06477m retaining2levels/6.8m/XY/UV/materials, occupied rendercut591.4m\u00b2;98source-fit trees(34sameXY/supportcorrection+59mappedbed+5photographedverge), sixliteralbeds5174.84m\u00b2+100.54m\u00b2photographedverge. Relative levels/treeinventory/widths remainestimated; native/PBR acceptance separate. First3999junction unchanged/held.",
       "held": "Absolute ground\u00b12m, exact individual tree inventory/steps/rear grades and native appearance remain estimated or pending; first3999junction is separate."
+    },
+    {
+      "name": "Azneft ordinary traffic island and connected paving",
+      "source": "junction/reconstruction.json",
+      "scope": "Literal OSM270087949 grass role and ground ring, source-qualified primary aerial ordinary low rim, three actual connected Road control heights. Intermediate road/camber/island floor and 0.15 m curb are explicit reconstruction estimates, not a survey. The0.320 mm authored field revision preserves one current boundary parent with shared C1 neighbors. All current park 98 trees/office/heroes, race Road/protection and4 physical bins stay unchanged. Native visual review required.",
+      "held": "The incoming Niyazi carriageway and fountain terrace remain separate."
     }
   ],
   "vegetation": [
