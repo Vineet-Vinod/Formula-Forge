@@ -855,6 +855,11 @@ live under `Attribution/Sources/baku/park-context/`. Compose semantic replacemen
 with the current parents, preserving No. 85 and every unrelated row. The earlier
 Azneft/Niyazi public-junction problem is a separate, unapproved correction.
 
+`tools/rebuild_baku_park.py --check` compiles the stored source-space control mesh
+and verifies the exact reviewed Ground delta. Edit and requalify those authored
+controls rather than relying on an ignored cache or silently patching the packed
+output. The compile regression belongs in `make circuit-check`.
+
 ### Villa de Rome architecture
 
 `venues.monaco_rome.finish_terrain(scene)` replaces only the exact 1,822-row generic Villa de Rome family in `Building_City_m1_01`. It operates on the current tile after other terrain/property producers, preserving every other packed row and the existing material-table prefix. It never reloads a saved parent City tile. Keep the call before final tile partition/save; Hermosa garden/tree updates and the underarch woodland remain independent.
