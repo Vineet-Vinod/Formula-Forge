@@ -43,8 +43,7 @@ Suzuka is the only figure-eight. Its back straight crosses the lower Degner road
 Native scenes include circuit-specific architecture, vegetation, protection, kerbs, escape surfaces, braking boards and pit paving. Pit access remains closed for the game. Source generation, native geometry checks and a clean simulated lap do not establish visual or performance acceptance. Follow the [whole-lap workflow](map.md) and compare the exact current assets against registered references.
 
 Work is active through Sunday 15 November at 10am PST. The 18-map work remains
-incomplete. Sixteen circuits retain compatible Luna High visual passes; Baku and
-Monaco remain held. Carrying a review requires identical native scene, executable
+incomplete. Seventeen circuits retain compatible Luna High visual passes; Baku remains held. Carrying a review requires identical native scene, executable
 and shared package payloads. Changed scenes need fresh packaged reviews; source
 or bounded feature passes do not establish whole-circuit acceptance.
 
@@ -56,18 +55,18 @@ Its 144 m main-wing height and component dimensions retain their stated
 reconstruction uncertainty.
 
 Baku now includes the distinct Mariinsky gymnasium and De Bour mansion, Foundation,
-Mirbabayev and waterfront 89/91 architecture. No5's photographed frontage has
-source approval and is progressing to native review. Local material inputs that
+Mirbabayev and waterfront 89/91 architecture. No5's photographed frontage passes its bounded native appearance review. Local material inputs that
 incorrectly read unauthored baked AO/vertex data have a matched native PASS.
 Sparse seafront planting, coarse DSM park banks and ordinary city detail remain
 open. Roadside intersections alone do not establish incorrect street levels.
 
 Monaco includes the Hermosa terrace, Villa de Rome architecture and separate
-formal garden, chapel and grounded woodland. The roof has a bounded native
-geometry PASS; the broader hillside remains held. Finite natural-ground material
-partitions preserve the actual original terrain planes and keep the engineered
-Marie/Rome junction separate. Property heights, garden levels and rock roles
-retain their individual source qualifications.
+formal garden, chapel and grounded woodland. Its current full-route visual
+review passes after local material correction and finite natural-ground
+partitions. Those partitions preserve original terrain planes and keep the
+engineered Marie/Rome junction separate. Property heights, garden levels and
+rock roles retain their individual source qualifications; the visual decision
+does not certify survey accuracy or uncaptured performance.
 
 The earlier Portimão, Sepang, Singapore, Buddh and remaining route reviews retain
 their explicit scopes in the [validation checkpoint](additional_circuits_validation.md).
