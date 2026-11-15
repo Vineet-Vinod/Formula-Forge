@@ -14,6 +14,7 @@ from shapely.geometry import LineString, Polygon
 from shapely.geometry.polygon import orient
 from shapely.ops import unary_union
 
+from venues.buddh_terrace import build_palms as build_t3_palms
 from venues.east_architecture import (
     facade,
     footprint_stand,
@@ -279,7 +280,10 @@ def build_venue(scene: CircuitScene) -> None:
         (3450, 3800, 1, 60, 50),
         (4400, 4660, 1, 45, 45),
     ):
-        trees(scene, start, end, side, setback, spacing, 8, palm=True)
+        if (start, end, side) == (1500, 2450, -1):
+            build_t3_palms(scene)
+        else:
+            trees(scene, start, end, side, setback, spacing, 8, palm=True)
     trees(scene, 2030, 2370, -1, 6, 12, 11)
     for start, end, side, setback in (
         (1000, 1300, -1, 90),

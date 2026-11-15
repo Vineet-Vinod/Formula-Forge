@@ -1,0 +1,32 @@
+{
+  "asset": "Rock Boulder Dry",
+  "source": "https://polyhaven.com/a/rock_boulder_dry",
+  "licence": "CC0",
+  "licence_source": "https://polyhaven.com/license",
+  "authors": [
+    "Dimitrios Savva",
+    "Rico Cilliers"
+  ],
+  "physical_tile_height_m": 1.8,
+  "maps": [
+    {
+      "file": "rock_boulder_dry_diff_2k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rock_boulder_dry/rock_boulder_dry_diff_2k.jpg",
+      "bytes": 3437626,
+      "sha256": "c66de7f7b48ef1ba542c17af780787ca6d43da2160a46ff3544dd9fcdf65ca30"
+    },
+    {
+      "file": "rock_boulder_dry_nor_dx_2k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rock_boulder_dry/rock_boulder_dry_nor_dx_2k.jpg",
+      "bytes": 3308534,
+      "sha256": "d95f1b4972e7d83ab4b02688b28661b60b60f8991b50d4ea6e989e3221d01f47"
+    },
+    {
+      "file": "rock_boulder_dry_rough_2k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rock_boulder_dry/rock_boulder_dry_rough_2k.jpg",
+      "bytes": 2706723,
+      "sha256": "63bb4105e6f60b5968da785afc292b94026a5afa6f18388e98b00232e9e2c433"
+    }
+  ],
+  "role": "Licensed appearance proxy for source-qualified Monaco rock/mixed-natural masks; not Monaco photogrammetry or a geological identity."
+}

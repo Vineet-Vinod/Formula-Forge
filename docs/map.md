@@ -178,6 +178,13 @@ starts, approaches, apexes, exits, crests, compressions and pit merges. Match by
 landmarks and station rather than elapsed video time, since speeds differ.
 Retain the full frame alongside any annotated crop.
 
+Check continuity before registering a sequence. The Baku reference jumps from a
+Niyazi Street approach on lap 1 to another sector on lap 2. A nearby video timestamp
+therefore did not qualify the hotel's camera position. Record both sides of each
+cut and use separate mapped or photographic evidence for the missing sequence.
+For buildings, register each photographed elevation independently. An identifiable
+building does not make its opposite entrance or side wing interchangeable.
+
 ### Is a reference video necessary?
 
 A video is not a prerequisite, but a continuous onboard is the most useful
@@ -395,6 +402,14 @@ Label assumed stair risers and reconstructed grades with their uncertainty.
 At a bounded repair's outer edge, match the actual rendered terrain triangles.
 Inserting vertices from a continuous height function can still leave a crack
 against a coarse baked triangle whose plane differs from that function.
+
+Compare height sources at the same XY. A finer query interval does not establish
+finer source resolution, accuracy or epoch. Plot sections through the proposed
+repair and its outer collar: a smooth join can still introduce an unsupported
+ridge or hollow. Check those locations in the cooked view before acceptance.
+Inventory every existing tree and support rooted in the changed area. Reanchor
+only the proven instances against actual packed ground, preserving their XY,
+shape and all outside rows; a terrain correction can otherwise bury or float them.
 
 Test triangle interiors as well as vertices. Spa's smooth vertex normals hid a
 coarse mesh approximation that departed by up to 1.13 m from its unchanged ground
@@ -917,6 +932,13 @@ faces and then to the primary sources: gray areas can be a garden terrace,
 another road, an omitted bridge or an unmodeled building. Each needs its own
 treatment; expanding a grass mask cannot resolve all of them.
 
+Verify a claimed missing landmark against the current source and native asset,
+then inspect its exact registered capture. Jeddah's Masarat was initially called
+missing despite being baked and visible in the target. Conversely, an import log
+alone does not prove visibility. A differing source SHA can also reflect material
+slot ordering: establish material-name and packed-attribute equality before
+calling that a missing geometry change. Preserve the exception's evidence chain.
+
 Give the critic the reference frames/video sections, accepted baseline captures,
 new runtime captures, station index, known uncertainty and measured dimensions.
 Do not give it only the new screenshots or lead it with "this is almost done."
@@ -1016,6 +1038,12 @@ changes. Do not byte-split a `.uasset`; divide large scenery into independently
 loadable native assets instead. Prefer useful shared assets and scoped rebuilds
 to repeated binary churn.
 Do not assume deleting a large file in a later commit removes it from history.
+
+Check test dependencies before pruning authoring caches. The Malaysia pavement
+regression reads its packed `Tile_Street_*.mesh` files to compare rendered vertices
+with native contact. Preserve those files or regenerate them before `circuit-check`;
+require the regenerated manifest to match the retained baseline exactly. A cached
+mesh is reproducible, but deleting it can still break the next required check.
 
 Keep bulky evidence in `build/reviews/<slug>/` and record a concise durable summary
 under `docs/`: tested revision, source/input hashes, capture stations, closed and

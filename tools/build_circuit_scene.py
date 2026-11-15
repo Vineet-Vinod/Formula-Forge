@@ -26,6 +26,7 @@ PALETTE = {
     "BakuSkyGlassLight": (0.18, 0.25, 0.29),
     "BakuPhilharmonicOchre": (0.72, 0.52, 0.22),
     "BakuHotelCopper": (0.20, 0.36, 0.29),
+    "BakuOxideRoof": (0.32, 0.065, 0.045),
     "CanopyFabric": (0.78, 0.78, 0.74),
     "Roof": (0.14, 0.15, 0.16),
     "JeddahConstruction": (0.19, 0.17, 0.145),
@@ -88,7 +89,7 @@ class Importer:
         if self.night:
             recipe += (self.scratch / "night-field.json").read_bytes()
         if self.slug == "monaco":
-            recipe += (ROOT / "tools/venues/monaco_natural_material.py").read_bytes()
+            recipe += (ROOT / "tools/venues/monaco_rock_material.py").read_bytes()
         self.material_hash = hashlib.sha256(recipe).hexdigest()
         if self.night:
             self.bounds = tuple(
@@ -231,21 +232,25 @@ class Importer:
             == self.material_hash
         ):
             return existing
-        if self.slug == "monaco" and name == "MonacoNaturalGround":
-            from venues.monaco_natural_material import build
+        if self.slug == "monaco" and name in ("MonacoNaturalGround", "MonacoRockGround"):
+            from venues.monaco_rock_material import build, import_textures
 
+            if existing is not None and not isinstance(existing, unreal.Material):
+                if not LIBRARY.delete_asset(path):
+                    raise RuntimeError(f"Cannot replace the private rock material {path}")
+                existing = None
             material = existing or TOOLS.create_asset(
                 name, self.assets + "/Materials", unreal.Material, unreal.MaterialFactoryNew())
             if not isinstance(material, unreal.Material):
                 raise TypeError("Natural ravine cover requires its own source material")
             EDIT.delete_all_material_expressions(material)
-            build(material)
+            build(material, import_textures(ROOT, self.assets), mixed=name == "MonacoNaturalGround")
             EDIT.recompile_material(material)
             LIBRARY.set_metadata_tag(material, "CircuitMaterialRecipe", self.material_hash)
             LIBRARY.save_loaded_asset(material)
             return material
-        if self.slug == "monaco" and name in ("MonacoIvyGround", "MonacoRockGround"):
-            source_name = "Grass" if name == "MonacoIvyGround" else "Concrete"
+        if self.slug == "monaco" and name == "MonacoIvyGround":
+            source_name = "Grass"
             source = unreal.load_asset(SOURCES[source_name])
             if source is None:
                 raise RuntimeError(f"Missing accepted {source_name} source for {name}")
@@ -295,6 +300,8 @@ class Importer:
             roughness.r = 0.22 if name in ("Glass", "WarmGlass", "Water", "BakuSkyGlass", "BakuSkyGlassLight") else 0.7
             if self.slug == "baku" and name == "BakuHotelCopper":
                 roughness.r = .55
+            if self.slug == "baku" and name == "BakuOxideRoof":
+                roughness.r = .95
             if self.slug == "monaco" and name == "MonacoRuscinoRose":
                 roughness.r = 0.85
             if self.slug == "jeddah" and name == "JeddahConstruction":

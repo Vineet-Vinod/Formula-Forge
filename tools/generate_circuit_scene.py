@@ -49,6 +49,9 @@ def generate(slug: str, write_native_contact: bool = False) -> None:
             from venues.buddh_first_sector_contact import write_contact
 
             write_contact(result, ROOT / "Source/FormulaForge/Native/track_data/buddh_first_sector_contact.inc")
+        from venues.buddh_terrace import finish_terrain as finish_t3_terrace
+
+        finish_t3_terrace(scene)
     if slug == "baku":
         from venues.baku import finish_terrain
 
@@ -69,6 +72,9 @@ def generate(slug: str, write_native_contact: bool = False) -> None:
         from venues.monaco_natural_ground import finish as finish_natural_ground
 
         finish_natural_ground(scene)
+        from venues.monaco_upper_ground import finish as finish_upper_ground
+
+        finish_upper_ground(scene)
     if slug == "jeddah":
         from venues.jeddah import finish_terrain as finish_jeddah_terrain
 

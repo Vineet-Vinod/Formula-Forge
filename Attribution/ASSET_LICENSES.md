@@ -149,3 +149,12 @@ license record, atlas hash and source-view evidence are in
 `tools/blender/tracks/sources/silverstone/event_graphics/manifest.json`.
 The two event-screen stills are original no-HUD renders of this game. Their
 camera positions and source hashes are in `docs/silverstone_event_screen_sources.json`.
+
+Monaco's finite rock and mixed-natural hillside materials use
+[Rock Boulder Dry](https://polyhaven.com/a/rock_boulder_dry) by Dimitrios Savva
+and Rico Cilliers under [CC0](https://polyhaven.com/license). The retained 2K
+diffuse, DirectX normal and roughness maps use the published 1.8 m tile scale.
+`Attribution/Sources/monaco/textures/rock-boulder-dry/source.json` records their
+download URLs and hashes. The material is an appearance proxy within documented
+natural masks, not a scan of Monaco or a geological identification. Reference
+photos and game videos contributed no texture pixels.
