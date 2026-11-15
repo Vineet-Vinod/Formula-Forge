@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=monaco",
   "tiles": 116,
-  "triangles": 2369451,
+  "triangles": 2374407,
   "road_sha256": "3a7544d64e64e34c445dbf4049745ad0e2fc4f2d8e96dcf6d29b2c8ee7f67df3",
   "terrain_sha256": "f1538f328db1481498922f0c8d143010e2a9bcd9c17cb30b52457605ac30a21a",
   "landmarks": [
@@ -4240,6 +4240,14 @@
       "classified_ground_area_m2": 38.15414850000002,
       "source": "architecture/lower-natural-sites.json",
       "limits": "Mixed natural appearance only; no species or height claim. Original planes retained. Roofs, buildings, paths and actual protection are excluded with stated margins. Existing precise rock/ivy/paving roles and the ambiguous house-eave ray remain separate. Native contact, terrain field and tree poses unchanged; cooked review pending."
+    },
+    {
+      "name": "Finite upper garden and bank with mapped tree",
+      "source": "architecture/upper-bank-source.json",
+      "changed_ground_area_m2": 368.3183204772705,
+      "mapped_tree_id": 5931906971,
+      "tree_base_delta_m": 3.3826313289626455,
+      "dimensions_status": "Bounded upper garden/bank visual trial from government2019 orthophoto, 2012/2014/2024 obliques and retainedIGNqueries. 2.5mOSM/IGNroofguards; 2mpath/racingguards; oldravine excluded. 0.5mrendercells/4mC1old-planecollar. IGNaccuracyvariesbysource, epochunverified;2mqueryspacingisnotresolutionoraccuracy. Ridge/trough atnorthing376/easting\u221259\u2026\u221255 requires cookedviewinspection. No nativeheight/contactchange."
     }
   ],
   "vegetation": [

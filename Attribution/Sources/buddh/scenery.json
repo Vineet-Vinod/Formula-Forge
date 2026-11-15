@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=buddh",
-  "tiles": 164,
-  "triangles": 1459547,
+  "tiles": 167,
+  "triangles": 1475451,
   "road_sha256": "65f9b7b70cb23d14c2931790042d55131863838eda9b28a475b2b87fac09a87a",
   "terrain_sha256": "ab3043ed90befa8c289f8f9ee94c3b328644e64ca7bffef1e69c729fe19b3313",
   "landmarks": [
@@ -146,6 +146,16 @@
       "station_m": 3080,
       "height_m": 26,
       "dimensions": "White timing pylon and dark position panel observed near the infield braking approach; placement estimated."
+    },
+    {
+      "name": "Buddh T3 east-exit spectator terrace",
+      "rows": 20,
+      "rise_m": 7.6,
+      "footings": 75,
+      "minimum_grass_soffit_clearance_m": 0.16378507021484268,
+      "registration": "Estimated east-exit footprint from supplied reference 132\u2013135 s and the registered 2018 grass-bank envelope. Existing west approach stand retained; north cap held and omitted.",
+      "construction": "Yellow seating, concrete aisles, low white front, open braced steel frame. Footings enclose actual emitted Grass planes; no terrain, road or native contact change.",
+      "source_limits": "Supplied edited game reference, exact game/event year unverified. The 2018 WV02 image bounds grass-bank/access space, not a surveyed event terrace. Footprint has roughly 8\u201312 m plan uncertainty; 20 rows, 0.38 m risers, deck levels and open trestles are estimated. Keep native ground and the existing west approach stand; the separate north cap remains held. Cooked entry/apex/exit visual review is required."
     }
   ],
   "vegetation": [
@@ -163,9 +173,10 @@
       "start_m": 1500,
       "end_m": 2450,
       "side": -1,
-      "count": 22,
+      "count": 20,
       "setback_m": 28,
-      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+      "excluded_procedural_indices": "0, 1",
+      "placement": "Original source-index traversal and poses retained. Only the two estimated procedural roots inside the qualified east-exit terrace are omitted; mapped trees and all outside instances remain unchanged."
     },
     {
       "type": "palms",
