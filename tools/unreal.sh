@@ -82,7 +82,7 @@ stop_job() {
 }
 
 run_guarded() {
-    local baseline_bytes job_limit unit memory_log
+    local baseline_bytes job_limit unit memory_log disk_log
     baseline_bytes="$(machine_used_bytes)"
     job_limit=$((10500000000 - baseline_bytes - 1000000000))
     if ((job_limit > 4000000000)); then
@@ -99,6 +99,8 @@ run_guarded() {
     unit="unrealff-$$-$RANDOM.scope"
     memory_log="$local_root/logs/$unit.memory.csv"
     printf 'elapsed_seconds,machine_used_bytes,job_limit_bytes\n' > "$memory_log"
+    disk_log="$local_root/logs/$unit.disk.csv"
+    printf 'begin_epoch_s,end_epoch_s,experiment_used_bytes\n' > "$disk_log"
     echo "Memory guard: job capped at $job_limit bytes, no swap; stop at 10.0 GB laptop usage." >&2
     local engine_mounts=()
     local entry
@@ -123,7 +125,7 @@ run_guarded() {
     local child_pid=$!
     trap "stop_job '$unit' '$child_pid'" EXIT
     trap "stop_job '$unit' '$child_pid'; exit 130" INT TERM
-    local started=$SECONDS next_disk_check=0 used_bytes machine_bytes
+    local started=$SECONDS next_disk_check=0 used_bytes machine_bytes disk_started
     while kill -0 "$child_pid" 2>/dev/null; do
         machine_bytes="$(machine_used_bytes)"
         printf '%s,%s,%s\n' "$((SECONDS - started))" "$machine_bytes" "$job_limit" >> "$memory_log"
@@ -135,8 +137,10 @@ run_guarded() {
             return 1
         fi
         if ((SECONDS >= next_disk_check)); then
+            disk_started=$EPOCHREALTIME
             available_bytes="$(df -B1 --output=avail "$repo_root" | tail -1 | tr -d ' ')"
             used_bytes="$({ du -s -B1 "$local_root" "$repo_root/Content" || true; } | awk '{total += $1} END {printf "%.0f", total}')"
+            printf '%s,%s,%s\n' "$disk_started" "$EPOCHREALTIME" "$used_bytes" >> "$disk_log"
             next_disk_check=$((SECONDS + 5))
             if ((available_bytes < minimum_free_bytes || used_bytes > 35 * 1024 * 1024 * 1024)); then
                 echo "Unreal operation stopped by disk guard: preserve 10 GiB free; experiment budget 35 GiB." >&2
