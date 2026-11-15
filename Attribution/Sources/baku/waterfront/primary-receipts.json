@@ -1,0 +1,1000 @@
+{
+  "source_plan_review": "build/reviews/resume-20261115/reviews/baku-final-straight-source-plan-review.md",
+  "source_plan_review_sha256": "5e3dbcdd52daf366253640d2418bf740e8d449cc005f1d130c35fe7e3a9a7570",
+  "photos": [
+    {
+      "title": "File:Yaşayış binası, Neftçilər prospekti, 85, 2018.jpg",
+      "page_url": "https://commons.wikimedia.org/wiki/File:Ya%C5%9Fay%C4%B1%C5%9F_binas%C4%B1,_Neft%C3%A7il%C9%99r_prospekti,_85,_2018.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/8/87/Ya%C5%9Fay%C4%B1%C5%9F_binas%C4%B1%2C_Neft%C3%A7il%C9%99r_prospekti%2C_85%2C_2018.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "expected_bytes": 1004091,
+      "dimensions": [
+        3821,
+        2957
+      ],
+      "metadata": [
+        {
+          "name": "Make",
+          "value": "Canon"
+        },
+        {
+          "name": "Model",
+          "value": "Canon EOS 600D"
+        },
+        {
+          "name": "XResolution",
+          "value": "240/1"
+        },
+        {
+          "name": "YResolution",
+          "value": "240/1"
+        },
+        {
+          "name": "ResolutionUnit",
+          "value": 2
+        },
+        {
+          "name": "Software",
+          "value": "Adobe Photoshop Lightroom 5.7.1 (Windows)"
+        },
+        {
+          "name": "DateTime",
+          "value": "2018:09:13 00:20:03"
+        },
+        {
+          "name": "Artist",
+          "value": "ZEYN"
+        },
+        {
+          "name": "ExposureTime",
+          "value": "1/30"
+        },
+        {
+          "name": "FNumber",
+          "value": "35/10"
+        },
+        {
+          "name": "ExposureProgram",
+          "value": 0
+        },
+        {
+          "name": "ISOSpeedRatings",
+          "value": 1000
+        },
+        {
+          "name": "ExifVersion",
+          "value": "0230"
+        },
+        {
+          "name": "DateTimeOriginal",
+          "value": "2018:09:12 19:11:04"
+        },
+        {
+          "name": "DateTimeDigitized",
+          "value": "2018:09:12 19:11:04"
+        },
+        {
+          "name": "ShutterSpeedValue",
+          "value": "4906891/1000000"
+        },
+        {
+          "name": "ApertureValue",
+          "value": "361471/100000"
+        },
+        {
+          "name": "ExposureBiasValue",
+          "value": "0/1"
+        },
+        {
+          "name": "MaxApertureValue",
+          "value": "3625/1000"
+        },
+        {
+          "name": "MeteringMode",
+          "value": 5
+        },
+        {
+          "name": "Flash",
+          "value": 16
+        },
+        {
+          "name": "FocalLength",
+          "value": "18/1"
+        },
+        {
+          "name": "SubSecTimeOriginal",
+          "value": "29"
+        },
+        {
+          "name": "SubSecTimeDigitized",
+          "value": "29"
+        },
+        {
+          "name": "ColorSpace",
+          "value": 1
+        },
+        {
+          "name": "FocalPlaneXResolution",
+          "value": "5184000/905"
+        },
+        {
+          "name": "FocalPlaneYResolution",
+          "value": "3456000/595"
+        },
+        {
+          "name": "FocalPlaneResolutionUnit",
+          "value": 2
+        },
+        {
+          "name": "CustomRendered",
+          "value": 0
+        },
+        {
+          "name": "ExposureMode",
+          "value": 0
+        },
+        {
+          "name": "WhiteBalance",
+          "value": 0
+        },
+        {
+          "name": "SceneCaptureType",
+          "value": 0
+        },
+        {
+          "name": "SerialNumber",
+          "value": "403078045388"
+        },
+        {
+          "name": "Lens",
+          "value": "EF-S18-55mm f/3.5-5.6 III"
+        },
+        {
+          "name": "DateTimeMetadata",
+          "value": "2018:09:13 04:20:03"
+        },
+        {
+          "name": "OriginalDocumentID",
+          "value": "9DE1A1214D237EE40FEFA73A71574EEA"
+        },
+        {
+          "name": "iimVersion",
+          "value": 4
+        },
+        {
+          "name": "MEDIAWIKI_EXIF_VERSION",
+          "value": 1
+        }
+      ],
+      "extmetadata": {
+        "DateTime": {
+          "value": "2018-09-13 06:22:25",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Yaşayış binası, Neftçilər prospekti, 85, 2018",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "Neftchiler Avenue|Images from Wiki Loves Monuments 2018|Self-published work|Uploaded via Campaign:wlm-az|Images from Wiki Loves Monuments 2018 in Azerbaijan|Images from Wiki Loves Monuments missing SDC depicts|Images from Wiki Loves Monuments missing SDC location of creation",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "Yaşayış binası, Neftçilər prospekti, 85",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "2018-09-12 19:11:04",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<a href=\"//commons.wikimedia.org/wiki/User:Sefer_azeri\" title=\"User:Sefer azeri\">Sefer azeri</a>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "CC BY-SA 4.0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Attribution-Share Alike 4.0",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "true",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "https://creativecommons.org/licenses/by-sa/4.0",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "cc-by-sa-4.0",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      },
+      "reference_only": true,
+      "file": "street-85-2018-original.jpg",
+      "sha256": "8050561a7e346e8251eaf9d824401c923d4febd785e25c5872a00a4e52e5b92e"
+    },
+    {
+      "title": "File:Yaşayış binası, Neftçilər prospekti, 89 gündüz.jpg",
+      "page_url": "https://commons.wikimedia.org/wiki/File:Ya%C5%9Fay%C4%B1%C5%9F_binas%C4%B1,_Neft%C3%A7il%C9%99r_prospekti,_89_g%C3%BCnd%C3%BCz.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Ya%C5%9Fay%C4%B1%C5%9F_binas%C4%B1%2C_Neft%C3%A7il%C9%99r_prospekti%2C_89_g%C3%BCnd%C3%BCz.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "expected_bytes": 1139863,
+      "dimensions": [
+        3442,
+        2538
+      ],
+      "metadata": [
+        {
+          "name": "Make",
+          "value": "Canon"
+        },
+        {
+          "name": "Model",
+          "value": "Canon EOS 600D"
+        },
+        {
+          "name": "XResolution",
+          "value": "240/1"
+        },
+        {
+          "name": "YResolution",
+          "value": "240/1"
+        },
+        {
+          "name": "ResolutionUnit",
+          "value": 2
+        },
+        {
+          "name": "Software",
+          "value": "Adobe Photoshop Lightroom 5.7.1 (Windows)"
+        },
+        {
+          "name": "DateTime",
+          "value": "2018:09:24 20:04:31"
+        },
+        {
+          "name": "Artist",
+          "value": "ZEYN"
+        },
+        {
+          "name": "ExposureTime",
+          "value": "1/200"
+        },
+        {
+          "name": "FNumber",
+          "value": "9/1"
+        },
+        {
+          "name": "ExposureProgram",
+          "value": 0
+        },
+        {
+          "name": "ISOSpeedRatings",
+          "value": 100
+        },
+        {
+          "name": "ExifVersion",
+          "value": "0230"
+        },
+        {
+          "name": "DateTimeOriginal",
+          "value": "2011:01:03 19:21:06"
+        },
+        {
+          "name": "DateTimeDigitized",
+          "value": "2011:01:03 19:21:06"
+        },
+        {
+          "name": "ShutterSpeedValue",
+          "value": "7643856/1000000"
+        },
+        {
+          "name": "ApertureValue",
+          "value": "633985/100000"
+        },
+        {
+          "name": "ExposureBiasValue",
+          "value": "0/1"
+        },
+        {
+          "name": "MaxApertureValue",
+          "value": "3625/1000"
+        },
+        {
+          "name": "MeteringMode",
+          "value": 5
+        },
+        {
+          "name": "Flash",
+          "value": 16
+        },
+        {
+          "name": "FocalLength",
+          "value": "18/1"
+        },
+        {
+          "name": "SubSecTimeOriginal",
+          "value": "00"
+        },
+        {
+          "name": "SubSecTimeDigitized",
+          "value": "00"
+        },
+        {
+          "name": "ColorSpace",
+          "value": 1
+        },
+        {
+          "name": "FocalPlaneXResolution",
+          "value": "5184000/905"
+        },
+        {
+          "name": "FocalPlaneYResolution",
+          "value": "3456000/595"
+        },
+        {
+          "name": "FocalPlaneResolutionUnit",
+          "value": 2
+        },
+        {
+          "name": "CustomRendered",
+          "value": 0
+        },
+        {
+          "name": "ExposureMode",
+          "value": 0
+        },
+        {
+          "name": "WhiteBalance",
+          "value": 0
+        },
+        {
+          "name": "SceneCaptureType",
+          "value": 0
+        },
+        {
+          "name": "SerialNumber",
+          "value": "403078045388"
+        },
+        {
+          "name": "Lens",
+          "value": "EF-S18-55mm f/3.5-5.6 III"
+        },
+        {
+          "name": "DateTimeMetadata",
+          "value": "2018:09:25 00:04:31"
+        },
+        {
+          "name": "OriginalDocumentID",
+          "value": "9BBB59E7DE6694B3BE122C8A1589C83F"
+        },
+        {
+          "name": "iimVersion",
+          "value": 4
+        },
+        {
+          "name": "MEDIAWIKI_EXIF_VERSION",
+          "value": 1
+        }
+      ],
+      "extmetadata": {
+        "DateTime": {
+          "value": "2018-09-25 07:03:09",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Yaşayış binası, Neftçilər prospekti, 89 gündüz",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "Neftchiler Avenue|Images from Wiki Loves Monuments 2018|Self-published work|Cultural heritage monuments in Azerbaijan with known IDs|Cultural heritage monuments in Baku|Uploaded via Campaign:wlm-az|Images from Wiki Loves Monuments 2018 in Azerbaijan|Images from Wiki Loves Monuments missing SDC depicts|Images from Wiki Loves Monuments missing SDC location of creation",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "This is a photo of a monument in Azerbaijan identified by the ID 2487",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "2011-01-03 19:21:06",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<a href=\"//commons.wikimedia.org/wiki/User:Sefer_azeri\" title=\"User:Sefer azeri\">Sefer azeri</a>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "CC BY-SA 4.0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Attribution-Share Alike 4.0",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "true",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "https://creativecommons.org/licenses/by-sa/4.0",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "cc-by-sa-4.0",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      },
+      "reference_only": true,
+      "file": "street-89-original.jpg",
+      "sha256": "2731bfb0d5db5716d7b878e1370c5d1a335c94e8619bab7d7c31b2a684972458"
+    },
+    {
+      "title": "File:Yaşayış binası, Neftçilər prospekti, 91 gündüz.jpg",
+      "page_url": "https://commons.wikimedia.org/wiki/File:Ya%C5%9Fay%C4%B1%C5%9F_binas%C4%B1,_Neft%C3%A7il%C9%99r_prospekti,_91_g%C3%BCnd%C3%BCz.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Ya%C5%9Fay%C4%B1%C5%9F_binas%C4%B1%2C_Neft%C3%A7il%C9%99r_prospekti%2C_91_g%C3%BCnd%C3%BCz.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "expected_bytes": 2078213,
+      "dimensions": [
+        4157,
+        2794
+      ],
+      "metadata": [
+        {
+          "name": "Make",
+          "value": "Canon"
+        },
+        {
+          "name": "Model",
+          "value": "Canon EOS 600D"
+        },
+        {
+          "name": "XResolution",
+          "value": "240/1"
+        },
+        {
+          "name": "YResolution",
+          "value": "240/1"
+        },
+        {
+          "name": "ResolutionUnit",
+          "value": 2
+        },
+        {
+          "name": "Software",
+          "value": "Adobe Photoshop Lightroom 5.7.1 (Windows)"
+        },
+        {
+          "name": "DateTime",
+          "value": "2018:09:24 20:09:52"
+        },
+        {
+          "name": "Artist",
+          "value": "ZEYN"
+        },
+        {
+          "name": "ExposureTime",
+          "value": "1/160"
+        },
+        {
+          "name": "FNumber",
+          "value": "9/1"
+        },
+        {
+          "name": "ExposureProgram",
+          "value": 0
+        },
+        {
+          "name": "ISOSpeedRatings",
+          "value": 100
+        },
+        {
+          "name": "ExifVersion",
+          "value": "0230"
+        },
+        {
+          "name": "DateTimeOriginal",
+          "value": "2011:01:03 19:23:50"
+        },
+        {
+          "name": "DateTimeDigitized",
+          "value": "2011:01:03 19:23:50"
+        },
+        {
+          "name": "ShutterSpeedValue",
+          "value": "7321928/1000000"
+        },
+        {
+          "name": "ApertureValue",
+          "value": "633985/100000"
+        },
+        {
+          "name": "ExposureBiasValue",
+          "value": "0/1"
+        },
+        {
+          "name": "MaxApertureValue",
+          "value": "4/1"
+        },
+        {
+          "name": "MeteringMode",
+          "value": 5
+        },
+        {
+          "name": "Flash",
+          "value": 16
+        },
+        {
+          "name": "FocalLength",
+          "value": "24/1"
+        },
+        {
+          "name": "SubSecTimeOriginal",
+          "value": "53"
+        },
+        {
+          "name": "SubSecTimeDigitized",
+          "value": "53"
+        },
+        {
+          "name": "ColorSpace",
+          "value": 1
+        },
+        {
+          "name": "FocalPlaneXResolution",
+          "value": "5184000/905"
+        },
+        {
+          "name": "FocalPlaneYResolution",
+          "value": "3456000/595"
+        },
+        {
+          "name": "FocalPlaneResolutionUnit",
+          "value": 2
+        },
+        {
+          "name": "CustomRendered",
+          "value": 0
+        },
+        {
+          "name": "ExposureMode",
+          "value": 0
+        },
+        {
+          "name": "WhiteBalance",
+          "value": 0
+        },
+        {
+          "name": "SceneCaptureType",
+          "value": 0
+        },
+        {
+          "name": "SerialNumber",
+          "value": "403078045388"
+        },
+        {
+          "name": "Lens",
+          "value": "EF-S18-55mm f/3.5-5.6 III"
+        },
+        {
+          "name": "DateTimeMetadata",
+          "value": "2018:09:25 00:09:52"
+        },
+        {
+          "name": "OriginalDocumentID",
+          "value": "80BD8A25758BF1690E4076788B94092B"
+        },
+        {
+          "name": "iimVersion",
+          "value": 4
+        },
+        {
+          "name": "MEDIAWIKI_EXIF_VERSION",
+          "value": 1
+        }
+      ],
+      "extmetadata": {
+        "DateTime": {
+          "value": "2018-09-25 07:03:08",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Yaşayış binası, Neftçilər prospekti, 91 gündüz",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "Neftchiler Avenue|Images from Wiki Loves Monuments 2018|Self-published work|Cultural heritage monuments in Azerbaijan with known IDs|Cultural heritage monuments in Baku|Uploaded via Campaign:wlm-az|Images from Wiki Loves Monuments 2018 in Azerbaijan|Images from Wiki Loves Monuments missing SDC depicts|Images from Wiki Loves Monuments missing SDC location of creation",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "This is a photo of a monument in Azerbaijan identified by the ID 2488",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "2011-01-03 19:23:50",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<a href=\"//commons.wikimedia.org/wiki/User:Sefer_azeri\" title=\"User:Sefer azeri\">Sefer azeri</a>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "CC BY-SA 4.0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Attribution-Share Alike 4.0",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "true",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "https://creativecommons.org/licenses/by-sa/4.0",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "cc-by-sa-4.0",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      },
+      "reference_only": true,
+      "error": "HTTP Error 429: Too many requests (f061ab2)",
+      "file": "street-91-day-original.jpg",
+      "sha256": "8ef9503e1cd8c99c00734388a7906f05b741a4dbb91775fd2203a2fd20661891"
+    },
+    {
+      "title": "File:Yaşayış binası, Neftçilər prospekti 85.jpg",
+      "page_url": "https://commons.wikimedia.org/wiki/File:Ya%C5%9Fay%C4%B1%C5%9F_binas%C4%B1,_Neft%C3%A7il%C9%99r_prospekti_85.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/d/db/Ya%C5%9Fay%C4%B1%C5%9F_binas%C4%B1%2C_Neft%C3%A7il%C9%99r_prospekti_85.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "expected_bytes": 1974884,
+      "dimensions": [
+        5029,
+        3353
+      ],
+      "metadata": [
+        {
+          "name": "Make",
+          "value": "Canon"
+        },
+        {
+          "name": "Model",
+          "value": "Canon EOS 600D"
+        },
+        {
+          "name": "XResolution",
+          "value": "240/1"
+        },
+        {
+          "name": "YResolution",
+          "value": "240/1"
+        },
+        {
+          "name": "ResolutionUnit",
+          "value": 2
+        },
+        {
+          "name": "Software",
+          "value": "Adobe Photoshop Lightroom 5.7.1 (Windows)"
+        },
+        {
+          "name": "DateTime",
+          "value": "2018:09:24 20:02:24"
+        },
+        {
+          "name": "Artist",
+          "value": "ZEYN"
+        },
+        {
+          "name": "ExposureTime",
+          "value": "1/200"
+        },
+        {
+          "name": "FNumber",
+          "value": "8/1"
+        },
+        {
+          "name": "ExposureProgram",
+          "value": 0
+        },
+        {
+          "name": "ISOSpeedRatings",
+          "value": 100
+        },
+        {
+          "name": "ExifVersion",
+          "value": "0230"
+        },
+        {
+          "name": "DateTimeOriginal",
+          "value": "2011:01:03 19:20:33"
+        },
+        {
+          "name": "DateTimeDigitized",
+          "value": "2011:01:03 19:20:33"
+        },
+        {
+          "name": "ShutterSpeedValue",
+          "value": "7643856/1000000"
+        },
+        {
+          "name": "ApertureValue",
+          "value": "6/1"
+        },
+        {
+          "name": "ExposureBiasValue",
+          "value": "0/1"
+        },
+        {
+          "name": "MaxApertureValue",
+          "value": "3625/1000"
+        },
+        {
+          "name": "MeteringMode",
+          "value": 5
+        },
+        {
+          "name": "Flash",
+          "value": 16
+        },
+        {
+          "name": "FocalLength",
+          "value": "18/1"
+        },
+        {
+          "name": "SubSecTimeOriginal",
+          "value": "27"
+        },
+        {
+          "name": "SubSecTimeDigitized",
+          "value": "27"
+        },
+        {
+          "name": "ColorSpace",
+          "value": 1
+        },
+        {
+          "name": "FocalPlaneXResolution",
+          "value": "5184000/905"
+        },
+        {
+          "name": "FocalPlaneYResolution",
+          "value": "3456000/595"
+        },
+        {
+          "name": "FocalPlaneResolutionUnit",
+          "value": 2
+        },
+        {
+          "name": "CustomRendered",
+          "value": 0
+        },
+        {
+          "name": "ExposureMode",
+          "value": 0
+        },
+        {
+          "name": "WhiteBalance",
+          "value": 0
+        },
+        {
+          "name": "SceneCaptureType",
+          "value": 0
+        },
+        {
+          "name": "SerialNumber",
+          "value": "403078045388"
+        },
+        {
+          "name": "Lens",
+          "value": "EF-S18-55mm f/3.5-5.6 III"
+        },
+        {
+          "name": "DateTimeMetadata",
+          "value": "2018:09:25 00:02:24"
+        },
+        {
+          "name": "OriginalDocumentID",
+          "value": "F72B89FF31F43B64614BD01024F9EB30"
+        },
+        {
+          "name": "iimVersion",
+          "value": 4
+        },
+        {
+          "name": "MEDIAWIKI_EXIF_VERSION",
+          "value": 1
+        }
+      ],
+      "extmetadata": {
+        "DateTime": {
+          "value": "2018-09-25 07:03:04",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Yaşayış binası, Neftçilər prospekti 85",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "Neftchiler Avenue|Images from Wiki Loves Monuments 2018|Self-published work|Uploaded via Campaign:wlm-az|Images from Wiki Loves Monuments 2018 in Azerbaijan|Images from Wiki Loves Monuments missing SDC depicts|Images from Wiki Loves Monuments missing SDC location of creation",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "Yaşayış binası, Neftçilər prospekti 85",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "2011-01-03 19:20:33",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<a href=\"//commons.wikimedia.org/wiki/User:Sefer_azeri\" title=\"User:Sefer azeri\">Sefer azeri</a>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "CC BY-SA 4.0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Attribution-Share Alike 4.0",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "true",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "https://creativecommons.org/licenses/by-sa/4.0",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "cc-by-sa-4.0",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      },
+      "reference_only": true,
+      "error": "HTTP Error 429: Too many requests (f061ab2)",
+      "file": "street-85-wide-original.jpg",
+      "sha256": "2a12d3a79206adba3fe0ad934abf53ac7c1750f5b9864c63a0339222060b25c1"
+    }
+  ],
+  "overview": {
+    "source_url": "https://commons.wikimedia.org/wiki/File:Neft%C3%A7il%C9%99r_prospektinin_Four_Seasons_Baku_otelind%C9%99n_g%C3%B6r%C3%BCn%C3%BC%C5%9F%C3%BC.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/4/41/Neft%C3%A7il%C9%99r_prospektinin_Four_Seasons_Baku_otelind%C9%99n_g%C3%B6r%C3%BCn%C3%BC%C5%9F%C3%BC.jpg",
+    "author": "Sefer azeri",
+    "acquisition_date": "2018-01-06 12:36:04 per original EXIF/provider",
+    "licence": "CC BY-SA4.0; reference-only, no image pixels in native assets",
+    "source": "Own work by uploader",
+    "sha256": "db9420cc33a14c52d0b1a148dae672ad19b1018ac755bea6661813a52197aa44",
+    "dimensions_px": [
+      2448,
+      3264
+    ],
+    "limits": "Lightroom5.7.1 processing disclosed; no unqualified metric camera calibration. January vegetation differs from summer reference. Source explicitly describes view from FourSeasons; exact photographed objects still require footprint/source registration."
+  },
+  "source_map": {
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=49.8350,40.3620,49.8395,40.3667",
+    "sha256": "5c61ef5b68aff0a437799a1b1e4728aa1919fbc6fe73f07ae7b2262a840ac554",
+    "bytes": 796002,
+    "nodes": 1830,
+    "ways": 244,
+    "scope": "Bounded read-only primary OSM current parcel/footway/cover-role source; names/epochs and individual tree accuracy unqualified."
+  },
+  "images_reference_only": true,
+  "pixels_shipped_in_native_assets": false
+}

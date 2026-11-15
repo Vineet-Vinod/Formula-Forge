@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "source_manifest_sha256": "25f8dcf733e5d5cb5a3d1ec4c2b39074f058efef848543d6d94ab713469398e4",
+  "recipe_sha256": "64be4882be9651f493aa07c4f0e5ebe177d574d798a9f21dc9f63af8bbfca255",
+  "private_frozen_family_counter_sha256": "833449e02ca296c8dde065b689a54fd33f2e309d2d81c8c1b312e7e609b7f9a5",
+  "change": {
+    "removed_owner_rows": 27848,
+    "new_geometry_rows": 61212,
+    "original_ground_rows": 968,
+    "segmented_ground_rows": 6026,
+    "supporting_ground_rows": 82,
+    "changed_parents": [
+      "Building_City_m4_m3",
+      "Building_City_m5_m3",
+      "Building_City_m5_m4",
+      "Tile_Street_m6_m4",
+      "Tile_Street_m6_m5",
+      "Tile_Street_m7_m5"
+    ]
+  },
+  "unselected_raw_records_exact_in_original_order": 852572,
+  "material_prefixes_exact": true,
+  "unchanged_current_mirbabayev_and_other_neighbors": true,
+  "grid_road_mask_provider_identities_unchanged": true,
+  "all5_native_data_files_unchanged": true,
+  "all5_native_data_sha256": {
+    "terrain.bin": "e6e5423c2f5f02fc7e47ddb1459d9e39edcc2ae0b7891724be8520abedc5231e",
+    "buildings.bin": "66124b81b9566466e4372a03e6bbcfdf77459d3614eee676b407a531be73c0c4",
+    "track_limits.bin": "4b49688582d85ea9d89800723f5ce8c48f84a99f2deb9fc0d145731a9273d6e6",
+    "drive_surface.bin": "26bc10ef7913eb8b758e60bada4eb749e94aa7bb524952c47ead9fff2130166e",
+    "render_tiles.csv": "de9ec8b6f09606009066c5d35d1091e7fc4abf0e35da31e8d54ba73b7d2ca32b"
+  },
+  "grass_missing_raw_m2": 0.024009504928230455,
+  "grass_extra_raw_m2": 0.02239743557085841,
+  "grass_missing_outside_0_35mm_encoding_m2": 0.0,
+  "grass_extra_outside_0_35mm_encoding_m2": 0.0,
+  "all_output_counter_sha256": "42cf29ebade6054f254450c7f619287b2f73e0dfcdf7953033f7dfc1a59ff8b8",
+  "seconds": 15.20433098700596,
+  "rss_mib": 833.734375
+}

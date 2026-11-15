@@ -1,0 +1,713 @@
+{
+  "status": "PASS",
+  "scope": "PRIVATE two registered facades,34newparkposes and original-plane segmented grass beds; no native appearance acceptance",
+  "manifest_sha256": "25f8dcf733e5d5cb5a3d1ec4c2b39074f058efef848543d6d94ab713469398e4",
+  "legacy_families": [
+    {
+      "osm_id": 465003806,
+      "parent": "Building_City_m4_m3",
+      "rows": 7189,
+      "counter_sha256": "58ec8907578c7eb17d1fd63c5ed2f05e4940ecd735dba31a96dc0959b64484e6"
+    },
+    {
+      "osm_id": 465003806,
+      "parent": "Building_City_m5_m3",
+      "rows": 6143,
+      "counter_sha256": "531256b264226c1abb176c6437cb191a88b732d6153ef9fa61e6cc0148e7d1a9"
+    },
+    {
+      "osm_id": 152191301,
+      "parent": "Building_City_m4_m3",
+      "rows": 14516,
+      "counter_sha256": "5ba83bbb2b564dc2485c580a48920d3384702d835b713e6d0c16b584caf538f2"
+    }
+  ],
+  "legacy_total_rows": 27848,
+  "new_family_rows": 61212,
+  "new_counter_sha256": "833449e02ca296c8dde065b689a54fd33f2e309d2d81c8c1b312e7e609b7f9a5",
+  "new_parents": [
+    "Building_City_m4_m3",
+    "Building_City_m5_m3",
+    "Building_City_m5_m4"
+  ],
+  "all_unselected_parent_rows_retained_by_exact_counter_subtraction": true,
+  "architecture_native_road_mask_clearance_m": 13.267146636304647,
+  "normal_min_alignment_nonfoliage": 0.9998867501712082,
+  "foliage_min_normal_z": 0.0052680629305541515,
+  "foliage_leaf_rows": 1386,
+  "roof_coverage": [
+    {
+      "osm_id": 465003806,
+      "owner_m2": 1592.5348072305535,
+      "missing_raw_m2": 0.0028265780788401056,
+      "missing_outside_0_35mm_encoding_bound_m2": 0.0
+    },
+    {
+      "osm_id": 152191301,
+      "owner_m2": 1817.9482796590505,
+      "missing_raw_m2": 0.0031478891543679378,
+      "missing_outside_0_35mm_encoding_bound_m2": 0.0
+    }
+  ],
+  "perimeter_probe_count": 678,
+  "missing_ground_probe_count": 0,
+  "minimum_wall_burial_m": 0.4293552953355988,
+  "unique_actual_support_rows": 82,
+  "minimum_trunk_to_actual_barrier_skin_m": 9.767082096658806,
+  "trees": 34,
+  "tree_forms": {
+    "evergreen": 7,
+    "deciduous": 27
+  },
+  "tree_pose_proof": [
+    {
+      "xy_m": [
+        -1501.512601075,
+        -1066.951583525
+      ],
+      "root_m": 2.960949047501237,
+      "actual_ground_m": 3.040949047501237,
+      "material": "Runoff",
+      "tile": "Tile_Street_m7_m5",
+      "payload": "abc6d047c69c12481ed4a0438e5d6fbd80e7cb3dcf497e3ff3a93bc3de9d05c3256ece47c69c1248251d6443f703adbd7ed0183e31357c3ff3a93bc3881d04c313ecce47acaf13486cbd0343f8e13fbcd2aa9c3c85ef7f3fd2093dc3216e04c3",
+      "parcel_id": 360221022,
+      "form": "evergreen",
+      "path_clearance_from_excluded_corridor_m": 6.467315907379891,
+      "road_mask_clearance_m": 17.867018911745728,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "d2a9cf47c69c1248aea48a43edfa90bdd127fc3d2c4d7d3ff3a93bc390e704c31d6ed04711d012483d1c8f434aa74bbd902aad3d7f987e3f9beb3bc3316505c3abc6d047c69c12481ed4a0438e5d6fbd80e7cb3dcf497e3ff3a93bc3de9d05c3",
+      "post_ground_error_m": 3.7175494238539386e-08
+    },
+    {
+      "xy_m": [
+        -1496.23292065,
+        -1057.151115525
+      ],
+      "root_m": 2.7502451016706067,
+      "actual_ground_m": 2.8302451016706067,
+      "material": "Runoff",
+      "tile": "Tile_Street_m7_m5",
+      "payload": "256ece478370114852e4b0435924af3b4d672d3c65fb7f3f9d293ac3881d04c3256ece47c69c1248251d6443f703adbd7ed0183e31357c3ff3a93bc3881d04c3abc6d047c69c12481ed4a0438e5d6fbd80e7cb3dcf497e3ff3a93bc3de9d05c3",
+      "parcel_id": 360221022,
+      "form": "deciduous",
+      "path_clearance_from_excluded_corridor_m": 9.09007110015571,
+      "road_mask_clearance_m": 17.869708163704626,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "256ece478370114852e4b0435924af3b4d672d3c65fb7f3f9d293ac3881d04c3256ece47494a1248ab5183435af474bded9ee33da13e7d3f5d403bc3881d04c3d2a9cf47c69c1248aea48a43edfa90bdd127fc3d2c4d7d3ff3a93bc390e704c3",
+      "post_ground_error_m": 8.086322855760386e-08
+    },
+    {
+      "xy_m": [
+        -1491.031918825,
+        -1047.309796925
+      ],
+      "root_m": 2.9709677850524687,
+      "actual_ground_m": 3.050967785052469,
+      "material": "Runoff",
+      "tile": "Tile_Street_m7_m5",
+      "payload": "256ece47c69c1248251d6443f703adbd7ed0183e31357c3ff3a93bc3881d04c3256ece478370114852e4b0435924af3b4d672d3c65fb7f3f9d293ac3881d04c39f15cc47837011487ecb9d43255e7abdb89c053e1f547d3f9d293ac3329d02c3",
+      "parcel_id": 360221022,
+      "form": "evergreen",
+      "path_clearance_from_excluded_corridor_m": 9.777271251956089,
+      "road_mask_clearance_m": 17.86735337784561,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "9f15cc47837011487ecb9d43255e7abdb89c053e1f547d3f9d293ac3329d02c39214cd47fcef1148003a8b43467d91bd73c30d3e50da7c3fc7cc3ac35d4003c3256ece478370114852e4b0435924af3b4d672d3c65fb7f3f9d293ac3881d04c3",
+      "post_ground_error_m": 1.4005411053119587e-08
+    },
+    {
+      "xy_m": [
+        -1417.249450224,
+        -936.212079436
+      ],
+      "root_m": 3.365511580019591,
+      "actual_ground_m": 3.4455115800195912,
+      "material": "Runoff",
+      "tile": "Tile_Street_m6_m4",
+      "payload": "60a0b447f0660a484c60e2428aa0b2bdd314a63d922d7e3f9a2731c3ae33e7c253e8b447f4cf0a48d187ca42774aecbc5702d13c64cf7f3f04ae31c3c68fe7c2e7f8b647f0660a48d97bb24360c159be9805533eb984743f9a2731c35a34eac2",
+      "parcel_id": 360221025,
+      "form": "evergreen",
+      "path_clearance_from_excluded_corridor_m": 5.432717484989379,
+      "road_mask_clearance_m": 15.002812027006074,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "dc66b547f0660a48e4c2414307c403be63aefa3d41fc7a3f9a2731c3bd31e8c273d3b5473da10a48360257431086e2bd21bfd83d8ac97a3f397231c3bcbce8c2e7f8b647f0660a48d97bb24360c159be9805533eb984743f9a2731c35a34eac2",
+      "post_ground_error_m": 8.642402349323675e-10
+    },
+    {
+      "xy_m": [
+        -1409.159467042,
+        -928.7706168560001
+      ],
+      "root_m": 3.3894536800783746,
+      "actual_ground_m": 3.4694536800783746,
+      "material": "Runoff",
+      "tile": "Tile_Street_m6_m4",
+      "payload": "e7f8b647f0660a48d97bb24360c159be9805533eb984743f9a2731c35a34eac2e7f8b647ad3a09485d3d0244e99a80bb56a3403cf7fa7f3f44a72fc35a34eac260a0b447ad3a094849b1aa43475269be2a9b583e1c50733f44a72fc3ae33e7c2",
+      "parcel_id": 360221025,
+      "form": "deciduous",
+      "path_clearance_from_excluded_corridor_m": 5.500565062110432,
+      "road_mask_clearance_m": 14.910299254269455,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "e7f8b647f0660a48d97bb24360c159be9805533eb984743f9a2731c35a34eac2e7f8b647ad3a09485d3d0244e99a80bb56a3403cf7fa7f3f44a72fc35a34eac260a0b447ad3a094849b1aa43475269be2a9b583e1c50733f44a72fc3ae33e7c2",
+      "post_ground_error_m": 0.0
+    },
+    {
+      "xy_m": [
+        -1400.529232596,
+        -920.832606958
+      ],
+      "root_m": 3.354880307946487,
+      "actual_ground_m": 3.434880307946487,
+      "material": "Runoff",
+      "tile": "Tile_Street_m6_m4",
+      "payload": "60a0b447ad3a094849b1aa43475269be2a9b583e1c50733f44a72fc3ae33e7c260a0b4476a0e08486a940144f3560fbd6f87ea3cfbbc7f3fee262ec3ae33e7c2da47b2476a0e0848c8c79d4302ec69be3157553e0975733fee262ec30333e4c2",
+      "parcel_id": 360221025,
+      "form": "deciduous",
+      "path_clearance_from_excluded_corridor_m": 2.9981893765548975,
+      "road_mask_clearance_m": 14.856651536570933,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "60a0b447ad3a094849b1aa43475269be2a9b583e1c50733f44a72fc3ae33e7c21e23b4476a7b084814e6cd43ced714be85b0073e81aa783f73b22ec35a93e6c2615cb347ae980848beb9a3438ca569be73d8563e0364733fe9d72ec3f794e5c2",
+      "post_ground_error_m": 5.151231041722326e-08
+    },
+    {
+      "xy_m": [
+        -1392.442746088,
+        -913.394414992
+      ],
+      "root_m": 3.2981043414757663,
+      "actual_ground_m": 3.3781043414757663,
+      "material": "Runoff",
+      "tile": "Tile_Street_m6_m4",
+      "payload": "da47b24727e20648732ffc4385ee80bd7478433d2f337f3f98a62cc30333e4c2da47b2476a0e0848c8c79d4302ec69be3157553e0975733fee262ec30333e4c260a0b4476a0e08486a940144f3560fbd6f87ea3cfbbc7f3fee262ec3ae33e7c2",
+      "parcel_id": 360221025,
+      "form": "deciduous",
+      "path_clearance_from_excluded_corridor_m": 2.3075354378104898,
+      "road_mask_clearance_m": 14.849999804942744,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "da47b2476a0e0848c8c79d4302ec69be3157553e0975733fee262ec30333e4c2c7c2b247ded10748a691c54322341fbe77810e3ec656783f6ed92dc35bd0e4c2fab1b247cf8d07488221d843f8abfcbd7fbfdc3d34a87a3f50822dc3dabae4c2",
+      "post_ground_error_m": 8.96478002943013e-09
+    },
+    {
+      "xy_m": [
+        -1384.349786488,
+        -905.950324182
+      ],
+      "root_m": 3.238439525559383,
+      "actual_ground_m": 3.3184395255593833,
+      "material": "Runoff",
+      "tile": "Tile_Street_m6_m4",
+      "payload": "da47b2476a0e0848c8c79d4302ec69be3157553e0975733fee262ec30333e4c2da47b24727e20648732ffc4385ee80bd7478433d2f337f3f98a62cc30333e4c254efaf4727e2064878359043376b63be38fa4d3ec23c743f98a62cc35732e1c2",
+      "parcel_id": 360221025,
+      "form": "deciduous",
+      "path_clearance_from_excluded_corridor_m": 5.706837185075856,
+      "road_mask_clearance_m": 14.856308063734094,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "da47b2476a0e0848c8c79d4302ec69be3157553e0975733fee262ec30333e4c2da47b24727e20648732ffc4385ee80bd7478433d2f337f3f98a62cc30333e4c254efaf4727e2064878359043376b63be38fa4d3ec23c743f98a62cc35732e1c2",
+      "post_ground_error_m": 0.0
+    },
+    {
+      "xy_m": [
+        -1376.2599917539999,
+        -898.508908684
+      ],
+      "root_m": 3.233129557284138,
+      "actual_ground_m": 3.313129557284138,
+      "material": "Runoff",
+      "tile": "Tile_Street_m6_m4",
+      "payload": "54efaf4727e2064878359043376b63be38fa4d3ec23c743f98a62cc35732e1c254efaf47e4b50548870df043cc8aabbd6820783deaa07e3f42262bc35732e1c229a7ad4755db06482ec1d7427cb7e5bce5ddd23c81d07f3fdd9d2cc39b46dec2",
+      "parcel_id": 360221025,
+      "form": "evergreen",
+      "path_clearance_from_excluded_corridor_m": 5.7731796896327285,
+      "road_mask_clearance_m": 14.879792384584427,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "54efaf47e4b50548870df043cc8aabbd6820783deaa07e3f42262bc35732e1c2c73eae472c8f0648857c4c432c182ebd4f780e3db4817f3f613c2cc3ad08dfc254efaf4727e2064878359043376b63be38fa4d3ec23c743f98a62cc35732e1c2",
+      "post_ground_error_m": 4.621302895913004e-09
+    },
+    {
+      "xy_m": [
+        -1368.172973494,
+        -891.070522088
+      ],
+      "root_m": 3.1033812089633264,
+      "actual_ground_m": 3.1833812089633264,
+      "material": "Runoff",
+      "tile": "Tile_Street_m6_m4",
+      "payload": "ce96ad47a0890448cb34df43246cc7bdcf67893d30347e3feca529c3ab31dec2ce96ad47e4b50548e6498243267756be3e49403ec8a9753f42262bc3ab31dec254efaf47e4b50548870df043cc8aabbd6820783deaa07e3f42262bc35732e1c2",
+      "parcel_id": 360221025,
+      "form": "evergreen",
+      "path_clearance_from_excluded_corridor_m": 5.839847038681645,
+      "road_mask_clearance_m": 14.904408841668255,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "ce96ad47a0890448cb34df43246cc7bdcf67893d30347e3feca529c3ab31dec2ce96ad47e4b50548e6498243267756be3e49403ec8a9753f42262bc3ab31dec254efaf47e4b50548870df043cc8aabbd6820783deaa07e3f42262bc35732e1c2",
+      "post_ground_error_m": 0.0
+    },
+    {
+      "xy_m": [
+        -1360.084220534,
+        -883.6301538900001
+      ],
+      "root_m": 3.128687225165014,
+      "actual_ground_m": 3.208687225165014,
+      "material": "Runoff",
+      "tile": "Tile_Street_m6_m4",
+      "payload": "473eab47a0890448f717694383c542beef6c2d3efc8e773feca529c3ff30dbc2473eab477f8d0548c253dd42cba4d5bcedbfc53c9bd67f3f8df22ac3ff30dbc2ce96ad47a0890448cb34df43246cc7bdcf67893d30347e3feca529c3ab31dec2",
+      "parcel_id": 360221025,
+      "form": "deciduous",
+      "path_clearance_from_excluded_corridor_m": 5.906246153743885,
+      "road_mask_clearance_m": 14.928533306405848,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "23deab4751480548600a48436f9038bddfb6113d34677f3f019a2ac39efddbc2ce96ad47a0890448cb34df43246cc7bdcf67893d30347e3feca529c3ab31dec2473eab47a0890448f717694383c542beef6c2d3efc8e773feca529c3ff30dbc2",
+      "post_ground_error_m": 2.1946376271841928e-08
+    },
+    {
+      "xy_m": [
+        -1351.99137223,
+        -876.186345686
+      ],
+      "root_m": 2.920775888539432,
+      "actual_ground_m": 3.0007758885394322,
+      "material": "Runoff",
+      "tile": "Tile_Street_m6_m4",
+      "payload": "473eab475d5d0348e683ca431e78d1bd4e30983d26f27d3f962528c3ff30dbc2ad2ea947a57004484169e24237aac3bc340ab73cf0dc7f3ff28529c3ab8dd8c2473eab47a0890448f717694383c542beef6c2d3efc8e773feca529c3ff30dbc2",
+      "parcel_id": 360221025,
+      "form": "evergreen",
+      "path_clearance_from_excluded_corridor_m": 5.972918257370494,
+      "road_mask_clearance_m": 14.966748569021744,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "2b68aa477d7f0448ce703843c24ffbbdf1a9e03dbaed7a3ff29829c3f01edac2473eab47a0890448f717694383c542beef6c2d3efc8e773feca529c3ff30dbc2473eab475d5d0348e683ca431e78d1bd4e30983d26f27d3f962528c3ff30dbc2",
+      "post_ground_error_m": 4.230019001738583e-09
+    },
+    {
+      "xy_m": [
+        -1343.884687226,
+        -868.72961262
+      ],
+      "root_m": 2.8351258466920406,
+      "actual_ground_m": 2.9151258466920407,
+      "material": "Runoff",
+      "tile": "Tile_Street_m6_m4",
+      "payload": "c1e5a8471a310248f5a8bd438663d3bd65e6b13de8a87d3f40a526c35330d8c2c1e5a8475d5d0348f6d74f43e5d529be00481a3e9a7d793f962528c35330d8c2473eab475d5d0348e683ca431e78d1bd4e30983d26f27d3f962528c3ff30dbc2",
+      "parcel_id": 360221025,
+      "form": "evergreen",
+      "path_clearance_from_excluded_corridor_m": 6.039559546351238,
+      "road_mask_clearance_m": 15.015770159774911,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "c1e5a8471a310248f5a8bd438663d3bd65e6b13de8a87d3f40a526c35330d8c2c1e5a8475d5d0348f6d74f43e5d529be00481a3e9a7d793f962528c35330d8c2473eab475d5d0348e683ca431e78d1bd4e30983d26f27d3f962528c3ff30dbc2",
+      "post_ground_error_m": 0.0
+    },
+    {
+      "xy_m": [
+        -1335.2451972459999,
+        -860.456899452
+      ],
+      "root_m": 2.866226535725555,
+      "actual_ground_m": 2.9462265357255553,
+      "material": "Runoff",
+      "tile": "Tile_Street_m6_m4",
+      "payload": "3b8da6471a3102485383494374e50ebea1a0163ebdae7a3f40a526c3a72fd5c28cc0a647452903482e74e842601b9bbcee2cad3c9be57f3fe7e227c35771d5c2c1e5a8471a310248f5a8bd438663d3bd65e6b13de8a87d3f40a526c35330d8c2",
+      "parcel_id": 360221025,
+      "form": "deciduous",
+      "path_clearance_from_excluded_corridor_m": 5.834369813445476,
+      "road_mask_clearance_m": 15.08261590605323,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "c1e5a8471a310248f5a8bd438663d3bd65e6b13de8a87d3f40a526c35330d8c2decfa7471a3102484d85944386d1f5bd39fbea3d38487c3f40a526c3a1ccd6c29562a7470de0024847d941435e6833bd0f04263da33c7f3f2f8527c3bf40d6c2",
+      "post_ground_error_m": 3.553894822871939e-08
+    },
+    {
+      "xy_m": [
+        -1312.0406828980001,
+        -835.35944394
+      ],
+      "root_m": 2.595617961644317,
+      "actual_ground_m": 2.675617961644317,
+      "material": "Runoff",
+      "tile": "Tile_Street_m6_m4",
+      "payload": "2edca14728b1ff47ae036443ad48ecbdecf4093ed6f07b3f94a423c3502ecfc22004a24789ff0048acfbf342851f58bc18299b3c8aee7f3f211e25c37161cfc2b534a44728b1ff47422baf43e3186fbd587c453de7437f3f94a423c3fc2ed2c2",
+      "parcel_id": 360221025,
+      "form": "deciduous",
+      "path_clearance_from_excluded_corridor_m": 0.9247922330796922,
+      "road_mask_clearance_m": 15.337583918740451,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "8775a24728b1ff470aa081439679cebd0cace63d29ca7c3f94a423c399f2cfc28b44a347f1560048c0827c435bd01fbd711e123d008d7f3f534624c393fbd0c2b534a44728b1ff47422baf43e3186fbd587c453de7437f3f94a423c3fc2ed2c2",
+      "post_ground_error_m": 4.009880871791438e-09
+    },
+    {
+      "xy_m": [
+        -1302.176195,
+        -828.378236275
+      ],
+      "root_m": 2.8457819872630656,
+      "actual_ground_m": 2.9257819872630657,
+      "material": "Runoff",
+      "tile": "Tile_Street_m6_m4",
+      "payload": "2edca14728b1ff47ae036443ad48ecbdecf4093ed6f07b3f94a423c3502ecfc22edca147a258fd4728baab43791cafbc9c7d8a3ca8e77f3f3e2422c3502ecfc2a8839f47a258fd4770008243a891c2bd81f0053ef4a17c3f3e2422c3a42dccc2",
+      "parcel_id": 360221025,
+      "form": "deciduous",
+      "path_clearance_from_excluded_corridor_m": 1.7749308800209727,
+      "road_mask_clearance_m": 18.42630646790324,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "a289a047a258fd474e3494436ac980bd201fa63d660f7e3f3e2422c3f97ccdc22edca147f1f5fe47660084430445b0bdbdb0c83d352d7d3fc32c23c3502ecfc22edca147a258fd4728baab43791cafbc9c7d8a3ca8e77f3f3e2422c3502ecfc2",
+      "post_ground_error_m": 4.7065174868521353e-08
+    },
+    {
+      "xy_m": [
+        -1480.720622877,
+        -1066.313996333
+      ],
+      "root_m": 3.1280073312720766,
+      "actual_ground_m": 3.2080073312720767,
+      "material": "Runoff",
+      "tile": "Tile_Street_m7_m5",
+      "payload": "abc6d04783701148383da643efd09a3c1902d0bc29df7f3f9d293ac3de9d05c3abc6d047404410480a799a43347fa03c45ed68bcccec7f3f47a938c3de9d05c3256ece4740441048de3da643b135a53c02e27bbcedea7f3f47a938c3881d04c3",
+      "parcel_id": 360221022,
+      "form": "deciduous",
+      "path_clearance_from_excluded_corridor_m": 4.150234763699199,
+      "road_mask_clearance_m": 35.86961759210258,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "abc6d04702f010481634a143523f9d3c5ad4a8bcffe47f3f218539c3de9d05c3abc6d047404410480a799a43347fa03c45ed68bcccec7f3f47a938c3de9d05c3256ece4740441048de3da643b135a53c02e27bbcedea7f3f47a938c3881d04c3",
+      "post_ground_error_m": 4.908595618857703e-08
+    },
+    {
+      "xy_m": [
+        -1398.179023834,
+        -947.2033344829999
+      ],
+      "root_m": 4.28472507227815,
+      "actual_ground_m": 4.36472507227815,
+      "material": "Runoff",
+      "tile": "Tile_Street_m6_m4",
+      "payload": "6d51b947ad3a09483260e543c3273c3d0e251dbd858a7f3f44a72fc30635edc26d51b9476a0e08485234cb4386762f3da12c32bdc0857f3fee262ec30635edc2e7f8b6476a0e08482e61ea43761c543d78aa42bdea5d7f3fee262ec35a34eac2",
+      "parcel_id": 360221025,
+      "form": "deciduous",
+      "path_clearance_from_excluded_corridor_m": 15.268442672136183,
+      "road_mask_clearance_m": 35.944073251059685,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "6d51b947ad3a09483260e543c3273c3d0e251dbd858a7f3f44a72fc30635edc26d51b9476a0e08485234cb4386762f3da12c32bdc0857f3fee262ec30635edc2e7f8b6476a0e08482e61ea43761c543d78aa42bdea5d7f3fee262ec35a34eac2",
+      "post_ground_error_m": 0.0
+    },
+    {
+      "xy_m": [
+        -1381.461361016,
+        -931.8260236899999
+      ],
+      "root_m": 4.286400163817249,
+      "actual_ground_m": 4.366400163817249,
+      "material": "Runoff",
+      "tile": "Tile_Street_m6_m4",
+      "payload": "e7f8b6476a0e08482e61ea43761c543d78aa42bdea5d7f3fee262ec35a34eac2e7f8b64727e20648b7c4cd43f18c433d82b442bd1a6b7f3f98a62cc35a34eac260a0b44727e20648fc80ea43e382433d1b4453bdf85d7f3f98a62cc3ae33e7c2",
+      "parcel_id": 360221025,
+      "form": "deciduous",
+      "path_clearance_from_excluded_corridor_m": 0.5886870868269544,
+      "road_mask_clearance_m": 35.85009355512064,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "e7f8b64727e20648b7c4cd43f18c433d82b442bd1a6b7f3f98a62cc35a34eac270c6b54727e20648d06edc43cf87433d16284bbd66647f3f98a62cc314ace8c2b601b647c7fd06489b3adc43da0e453db48449bd7c647f3ff4c92cc3f3f7e8c2",
+      "post_ground_error_m": 4.3209078093298103e-08
+    },
+    {
+      "xy_m": [
+        -1364.739641417,
+        -916.44523079
+      ],
+      "root_m": 4.106718865486976,
+      "actual_ground_m": 4.186718865486976,
+      "material": "Runoff",
+      "tile": "Tile_Street_m6_m4",
+      "payload": "da47b247a0890448f841c4435e55223db2e563bdea667f3feca529c30333e4c2da47b247e4b505489dbfe543d3e7323dd7db63bde05b7f3f42262bc30333e4c260a0b447e4b50548ee73cb43c9f1323d1e4e53bd156a7f3f42262bc3ae33e7c2",
+      "parcel_id": 360221025,
+      "form": "deciduous",
+      "path_clearance_from_excluded_corridor_m": 6.250343701777846,
+      "road_mask_clearance_m": 35.871543890679035,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "da47b247a0890448f841c4435e55223db2e563bdea667f3feca529c30333e4c2da47b247e4b505489dbfe543d3e7323dd7db63bde05b7f3f42262bc30333e4c260a0b447e4b50548ee73cb43c9f1323d1e4e53bd156a7f3f42262bc3ae33e7c2",
+      "post_ground_error_m": 0.0
+    },
+    {
+      "xy_m": [
+        -1347.480497256,
+        -900.569792534
+      ],
+      "root_m": 3.7493597817891766,
+      "actual_ground_m": 3.8293597817891767,
+      "material": "Runoff",
+      "tile": "Tile_Street_m6_m4",
+      "payload": "54efaf47a08904480f1ddc43ab4b223d3e7174bda3577f3feca529c35732e1c254efaf475d5d0348d42eb84398c5113d64745abd27797f3f962528c35732e1c2ce96ad475d5d03485599cd4342bf113d551267bd106e7f3f962528c3ab31dec2",
+      "parcel_id": 360221025,
+      "form": "deciduous",
+      "path_clearance_from_excluded_corridor_m": 0.3191810100998026,
+      "road_mask_clearance_m": 35.923527027599924,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "54efaf47a08904480f1ddc43ab4b223d3e7174bda3577f3feca529c35732e1c254efaf4703910348075dbe43379d143dc2ec5ebd63737f3fb26728c35732e1c2ae4eaf475d5d03487ae9bd43e6c3113d72d45dbd30767f3f962528c3b664e0c2",
+      "post_ground_error_m": 7.77471367285898e-08
+    },
+    {
+      "xy_m": [
+        -1330.75731536,
+        -885.188233334
+      ],
+      "root_m": 3.4571154713706482,
+      "actual_ground_m": 3.5371154713706483,
+      "material": "Runoff",
+      "tile": "Tile_Street_m6_m4",
+      "payload": "473eab47d7040148ec23aa436733043d1a7b31bd46a07f3fea2425c3ff30dbc2473eab471a3102480433c443551e093d0ca341bdf4917f3f40a526c3ff30dbc2ce96ad471a310248ec0fb0430d21093de0d23abd05977f3f40a526c3ab31dec2",
+      "parcel_id": 360221025,
+      "form": "deciduous",
+      "path_clearance_from_excluded_corridor_m": 1.8370293154325597,
+      "road_mask_clearance_m": 36.00781141162675,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "34e9ac471a3102482ae2b5434420093d15cb3cbd8e957f3f40a526c37553ddc2ce96ad471a310248ec0fb0430d21093de0d23abd05977f3f40a526c3ab31dec2473eab47d7040148ec23aa436733043d1a7b31bd46a07f3fea2425c3ff30dbc2",
+      "post_ground_error_m": 5.0779190630123594e-08
+    },
+    {
+      "xy_m": [
+        -1475.63,
+        -1088.39
+      ],
+      "root_m": 2.6184526085266726,
+      "actual_ground_m": 2.6984526085266727,
+      "material": "Runoff",
+      "tile": "Tile_Street_m7_m5",
+      "payload": "311fd347fc170f48ed318b4365e7873cd56fbfbbddf57f3ff12837c3341e07c3311fd3474044104835b48e43da7fa03c82f755bcd5ed7f3f47a938c3341e07c3b877d5474044104861ef82436d80a03c870143bcc7ee7f3f47a938c38a9e08c3",
+      "parcel_id": 360221022,
+      "form": "deciduous",
+      "path_clearance_from_excluded_corridor_m": 5.029058409338121,
+      "road_mask_clearance_m": 50.832131660852674,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "7d29d347404410488c808e43dd7fa03c48a455bcd9ed7f3f47a938c3cb2407c35014d5474044104819e284435580a03c042546bc9fee7f3f47a938c3eb5e08c33ef7d34703840f482f398843e5c0903c7f7003bc50f37f3f37b337c37aa807c3",
+      "post_ground_error_m": 3.5902029793533075e-08
+    },
+    {
+      "xy_m": [
+        -1475.63,
+        -1052.39
+      ],
+      "root_m": 3.314990220023593,
+      "actual_ground_m": 3.394990220023593,
+      "material": "Runoff",
+      "tile": "Tile_Street_m7_m5",
+      "payload": "9f15cc47fc170f486c0eaa438977af3c72cf6bbc2dea7f3ff12837c3329d02c39f15cc4740441048d0b3b243a3bebc3c257b8abc3ce57f3f47a938c3329d02c3256ece4740441048de3da643b135a53c02e27bbcedea7f3f47a938c3881d04c3",
+      "parcel_id": 360221022,
+      "form": "deciduous",
+      "path_clearance_from_excluded_corridor_m": 18.728593459817443,
+      "road_mask_clearance_m": 33.86131950263034,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "6d4dcd47e4b30f486313a8432924aa3ce12774bc91ea7f3f80f037c3c06403c3989bcc474044104828ecaf43837eb73cfcae87bc81e67f3f47a938c3f0f202c3256ece4740441048de3da643b135a53c02e27bbcedea7f3f47a938c3881d04c3",
+      "post_ground_error_m": 5.040263051370175e-08
+    },
+    {
+      "xy_m": [
+        -1466.63,
+        -1070.39
+      ],
+      "root_m": 2.886905801717589,
+      "actual_ground_m": 2.966905801717589,
+      "material": "Runoff",
+      "tile": "Tile_Street_m7_m5",
+      "payload": "311fd3474044104835b48e43da7fa03c82f755bcd5ed7f3f47a938c3341e07c3311fd347fc170f48ed318b4365e7873cd56fbfbbddf57f3ff12837c3341e07c3abc6d047fc170f48bf289543a0e6873c0cf210bc6bf47f3ff12837c3de9d05c3",
+      "parcel_id": 360221022,
+      "form": "deciduous",
+      "path_clearance_from_excluded_corridor_m": 7.719421185379673,
+      "road_mask_clearance_m": 50.2221597902033,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "abc6d047fc170f48bf289543a0e6873c0cf210bc6bf47f3ff12837c3de9d05c38616d347ea3f10480ecc8e43eb24a03c46f854bceded7f3fbaa338c3a81807c37894d247fc170f482c7f8d4337e7873c172ed6bb88f57f3ff12837c36cc506c3",
+      "post_ground_error_m": 4.1395575856029154e-09
+    },
+    {
+      "xy_m": [
+        -1457.63,
+        -1061.39
+      ],
+      "root_m": 2.9379919342001704,
+      "actual_ground_m": 3.0179919342001704,
+      "material": "Runoff",
+      "tile": "Tile_Street_m7_m5",
+      "payload": "abc6d047fc170f48bf289543a0e6873c0cf210bc6bf47f3ff12837c3de9d05c3abc6d047b9eb0d4874d88f4334955e3cbbf310bc63f77f3f9ba835c3de9d05c3256ece47b9eb0d4844019843c7906f3cb32c42bc64f47f3f9ba835c3881d04c3",
+      "parcel_id": 360221022,
+      "form": "deciduous",
+      "path_clearance_from_excluded_corridor_m": 4.779577632518025,
+      "road_mask_clearance_m": 53.98135019566356,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "abc6d047fc170f48bf289543a0e6873c0cf210bc6bf47f3ff12837c3de9d05c3abc6d0475e8b0e48b3ab924374c0783cd6f210bccff57f3ff37436c3de9d05c33817cf4742400e482534974323a4783c7d5034bc66f47f3fd01436c3bd8904c3",
+      "post_ground_error_m": 9.66102722266271e-08
+    },
+    {
+      "xy_m": [
+        -1448.63,
+        -1079.39
+      ],
+      "root_m": 2.623058871431097,
+      "actual_ground_m": 2.703058871431097,
+      "material": "Runoff",
+      "tile": "Tile_Street_m7_m5",
+      "payload": "311fd347b9eb0d48a4af874376965e3c0d72bfbbd5f87f3f9ba835c3341e07c3311fd34776bf0c485c2d8443825c2d3cd573bfbb36fb7f3f452834c3341e07c3abc6d04776bf0c4829888a43885b2d3c14f510bcc4f97f3f452834c3de9d05c3",
+      "parcel_id": 360221025,
+      "form": "deciduous",
+      "path_clearance_from_excluded_corridor_m": 8.864007847959517,
+      "road_mask_clearance_m": 70.34089573649422,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "02cdd24776bf0c48fe0b8543605c2d3c66edccbb03fb7f3f452834c39be906c3abc6d04776bf0c4829888a43885b2d3c14f510bcc4f97f3f452834c3de9d05c3311fd347b9eb0d48a4af874376965e3c0d72bfbbd5f87f3f9ba835c3341e07c3",
+      "post_ground_error_m": 4.361486727333386e-09
+    },
+    {
+      "xy_m": [
+        -1439.63,
+        -1070.39
+      ],
+      "root_m": 2.6608145073612244,
+      "actual_ground_m": 2.7408145073612245,
+      "material": "Runoff",
+      "tile": "Tile_Street_m6_m5",
+      "payload": "abc6d04733930b48df3785437941f83b17f610bc8efb7f3ff0a732c3de9d05c3abc6d04776bf0c4829888a43885b2d3c14f510bcc4f97f3f452834c3de9d05c3311fd34776bf0c485c2d8443825c2d3cd573bfbb36fb7f3f452834c3341e07c3",
+      "parcel_id": 360221025,
+      "form": "deciduous",
+      "path_clearance_from_excluded_corridor_m": 7.038927793377645,
+      "road_mask_clearance_m": 74.1013816510751,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "02cdd24776bf0c48fe0b8543605c2d3c66edccbb03fb7f3f452834c39be906c3abc6d047fa1d0c4895ac874399e1123c9ff510bcbafa7f3f925933c3de9d05c3abc6d04776bf0c4829888a43885b2d3c14f510bcc4f97f3f452834c3de9d05c3",
+      "post_ground_error_m": 3.230359624240009e-08
+    },
+    {
+      "xy_m": [
+        -1439.63,
+        -1052.39
+      ],
+      "root_m": 2.853748285370826,
+      "actual_ground_m": 2.933748285370826,
+      "material": "Runoff",
+      "tile": "Tile_Street_m6_m5",
+      "payload": "9f15cc4733930b483f1e90437c9a873c07d56bbc3bf07f3ff0a732c3329d02c39f15cc4776bf0c48a3c398437ee4943c53d36bbc62ee7f3f452834c3329d02c3256ece4776bf0c48f7e29043351f423c862e42bcccf67f3f452834c3881d04c3",
+      "parcel_id": 360221025,
+      "form": "deciduous",
+      "path_clearance_from_excluded_corridor_m": 2.522063823698522,
+      "road_mask_clearance_m": 65.69855062696696,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "431fcd4776bf0c48914795430aee7b3c896759bc1bf27f3f452834c3354703c3256ece4776bf0c48f7e29043351f423c862e42bcccf67f3f452834c3881d04c3b03fcc47adc60b48710c91433e40863cf3e968bc81f07f3fd4e932c31eb802c3",
+      "post_ground_error_m": 5.5658895714572054e-08
+    },
+    {
+      "xy_m": [
+        -1421.63,
+        -1043.39
+      ],
+      "root_m": 2.7259295451316277,
+      "actual_ground_m": 2.8059295451316277,
+      "material": "Runoff",
+      "tile": "Tile_Street_m6_m5",
+      "payload": "9f15cc4733930b483f1e90437c9a873c07d56bbc3bf07f3ff0a732c3329d02c39f15cc47f0660a48db7887431a99743c4c35acbc36ea7f3f9a2731c3329d02c318bdc947f0660a481c969443fdcfb23c90ecb1bcece07f3f9a2731c3dc1c01c3",
+      "parcel_id": 360221025,
+      "form": "deciduous",
+      "path_clearance_from_excluded_corridor_m": 1.4048623262139825,
+      "road_mask_clearance_m": 77.53225091096624,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "9f15cc4748da0a481ecb8a43d7d17e3c2a5a97bc86ec7f3f3ebb31c3329d02c36e45cb47f0660a48c0048c4323e48d3c9530aebcfee67f3f9a2731c3f41702c35086cb478c4b0b483a2f914332ea913c6a3c84bc94ec7f3f394c32c37a4102c3",
+      "post_ground_error_m": 1.7625513493157996e-08
+    },
+    {
+      "xy_m": [
+        -1412.63,
+        -1025.39
+      ],
+      "root_m": 2.9218819693958777,
+      "actual_ground_m": 3.001881969395878,
+      "material": "Runoff",
+      "tile": "Tile_Street_m6_m5",
+      "payload": "9264c747ad3a0948fa3f90434307ad3cad2009bda2cc7f3f44a72fc30d39ffc29264c747f0660a485eb3a1434dcfb23c60a9b7bce9df7f3f9a2731c30d39ffc218bdc947f0660a481c969443fdcfb23c90ecb1bcece07f3f9a2731c3dc1c01c3",
+      "parcel_id": 360221025,
+      "form": "deciduous",
+      "path_clearance_from_excluded_corridor_m": 7.296612071955796,
+      "road_mask_clearance_m": 77.29421962166073,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "c48cc747f0660a48a7d2a04359cfb23c1047b7bcfadf7f3f9a2731c3806cffc218bdc947f0660a481c969443fdcfb23c90ecb1bcece07f3f9a2731c3dc1c01c39264c747ad3a0948fa3f90434307ad3cad2009bda2cc7f3f44a72fc30d39ffc2",
+      "post_ground_error_m": 1.6976495320619733e-08
+    },
+    {
+      "xy_m": [
+        -1403.63,
+        -1007.39
+      ],
+      "root_m": 3.027630074996185,
+      "actual_ground_m": 3.107630074996185,
+      "material": "Runoff",
+      "tile": "Tile_Street_m6_m5",
+      "payload": "0c0cc547ad3a0948a4f19c433706ad3c43fc0bbd16cb7f3f44a72fc36138fcc20c0cc5476a0e08480ebc8543cb48a73c20271ebd74c17f3fee262ec36138fcc286b3c2476a0e0848600292439c47a73c7a0121bdadbf7f3fee262ec3b537f9c2",
+      "parcel_id": 360221025,
+      "form": "deciduous",
+      "path_clearance_from_excluded_corridor_m": 8.936453484389656,
+      "road_mask_clearance_m": 76.94844130512749,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "e3c7c24799180848566192437c79a73cf94a20bd10c07f3ff7332ec3c651f9c20c0cc547ad3a0948a4f19c433706ad3c43fc0bbd16cb7f3f44a72fc36138fcc2dbbdc3476a0e0848c2908c432248a73c91bd1fbd77c07f3fee262ec39d8cfac2",
+      "post_ground_error_m": 1.4565274764066771e-08
+    },
+    {
+      "xy_m": [
+        -1403.63,
+        -962.39
+      ],
+      "root_m": 3.9754293977265345,
+      "actual_ground_m": 4.0554293977265345,
+      "material": "Runoff",
+      "tile": "Tile_Street_m6_m5",
+      "payload": "f3a9bb476a0e084856d5b643d464de3c318929bdaaaf7f3fee262ec3b235f0c2f3a9bb47ad3a09484db8cf43d508ea3ce06217bd75b87f3f44a72fc3b235f0c27902be47ad3a0948a206c343f802ad3cb48e14bd41c67f3f44a72fc35e36f3c2",
+      "parcel_id": 360221025,
+      "form": "deciduous",
+      "path_clearance_from_excluded_corridor_m": 1.9418873390346862,
+      "road_mask_clearance_m": 43.55917410139069,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "f3a9bb47ad3a09484db8cf43d508ea3ce06217bd75b87f3f44a72fc3b235f0c2722fbc47ad3a0948e7e5cc431978dc3ce4c116bd86bb7f3f44a72fc392e0f0c2f3a9bb476a0e084856d5b643d464de3c318929bdaaaf7f3fee262ec3b235f0c2",
+      "post_ground_error_m": 5.9468429292053315e-08
+    },
+    {
+      "xy_m": [
+        -1394.63,
+        -998.39
+      ],
+      "root_m": 2.8637535699615144,
+      "actual_ground_m": 2.9437535699615145,
+      "material": "Runoff",
+      "tile": "Tile_Street_m6_m5",
+      "payload": "0c0cc547ad3a0948a4f19c433706ad3c43fc0bbd16cb7f3f44a72fc36138fcc20c0cc5476a0e08480ebc8543cb48a73c20271ebd74c17f3fee262ec36138fcc286b3c2476a0e0848600292439c47a73c7a0121bdadbf7f3fee262ec3b537f9c2",
+      "parcel_id": 360221025,
+      "form": "deciduous",
+      "path_clearance_from_excluded_corridor_m": 1.4954652428896271,
+      "road_mask_clearance_m": 76.30898265465622,
+      "post_ground_material": "Grass",
+      "post_ground_payload": "e3c7c24799180848566192437c79a73cf94a20bd10c07f3ff7332ec3c651f9c20c0cc547ad3a0948a4f19c433706ad3c43fc0bbd16cb7f3f44a72fc36138fcc2dbbdc3476a0e0848c2908c432248a73c91bd1fbd77c07f3fee262ec39d8cfac2",
+      "post_ground_error_m": 9.792364874527948e-08
+    }
+  ],
+  "grass_exact_existing_rows": 968,
+  "grass_exact_original_plane_area_m2": 10967.480807339134,
+  "grass_domain_area_m2": 10967.480807339121,
+  "grass_expected_covered_m2": 10967.480807339129,
+  "grass_missing_raw_m2": 0.02400950492766652,
+  "grass_missing_beyond_0_35mm_encoding_m2": 0.0,
+  "grass_no_height_field_change": true,
+  "grass_selected_input_rows": 968,
+  "grass_fragment_rows": 6026,
+  "grass_max_plane_error_m": 2.454517398220446e-07,
+  "grass_max_plane_error_bound_m": 2.302867212552487e-05,
+  "grass_dropped_f32_area_m2": 0.0,
+  "grass_coverage_error_beyond_encoding_m2": 0.0,
+  "grass_overlap_area_m2": 5.621961229884676e-13,
+  "grass_min_fragment_normal_alignment": 0.9802508365578236,
+  "leaf_card_path_intersections": 236,
+  "minimum_leaf_height_over_paths_m": 3.47830862343425,
+  "leaf_card_road_intersections": 0,
+  "minimum_leaf_height_over_road_m": null,
+  "flags": [],
+  "physical_bin_sha256": {
+    "terrain.bin": "e6e5423c2f5f02fc7e47ddb1459d9e39edcc2ae0b7891724be8520abedc5231e",
+    "buildings.bin": "66124b81b9566466e4372a03e6bbcfdf77459d3614eee676b407a531be73c0c4",
+    "track_limits.bin": "4b49688582d85ea9d89800723f5ce8c48f84a99f2deb9fc0d145731a9273d6e6",
+    "drive_surface.bin": "26bc10ef7913eb8b758e60bada4eb749e94aa7bb524952c47ead9fff2130166e",
+    "render_tiles.csv": "de9ec8b6f09606009066c5d35d1091e7fc4abf0e35da31e8d54ba73b7d2ca32b"
+  },
+  "physical_bins_unchanged": true,
+  "input_code_sha256": {
+    "final_context.py": "84ce4799bd8311a60954d6915cec7056a6fe58ab7f0760bdad3175bcb5b4ff3a",
+    "final_context_dataclasses.py": "181586918f005e031cf1fd6d5c8dd7b0e5c78b13b491fc45589200188cabb7b7",
+    "candidate-tree-xy.json": "6b7c19eb1e1371121b3b6d897294e70497159317f55be6e7a8fa941980ad229e",
+    "segment_ground.py": "9bb3361139c4f67e048acd1100a9e3e72a974102aeea1308986fb9f0bd68f4c1"
+  },
+  "seconds": 6.10804228897905,
+  "peak_rss_mib": 459.62890625,
+  "scope_label_correction": "V3 numerical results unchanged; old complete-row label corrected to describe968inputs\u21926026original-plane fragments."
+}

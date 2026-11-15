@@ -1,0 +1,203 @@
+[
+  {
+    "osm_id": 971028629,
+    "url": "https://api.openstreetmap.org/api/0.6/way/971028629/history",
+    "sha256": "acc948c7ed6adbc224f21d0a6bb7811d80919351ca5bd10fd002895106061b6d",
+    "versions": [
+      {
+        "version": "1",
+        "timestamp": "2021-08-06T22:49:55Z",
+        "changeset": "109287182",
+        "tags": {
+          "addr:city": "Bak\u0131",
+          "addr:postcode": "AZ1000",
+          "addr:street": "Neft\u00e7il\u0259r Prospekti",
+          "amenity": "restaurant",
+          "building": "yes",
+          "cuisine": "burger;sandwich;pizza;coffee_shop",
+          "diet:halal": "yes",
+          "diet:local": "yes",
+          "diet:meat": "yes",
+          "diet:vegetarian": "yes",
+          "name": "Love in Ferma",
+          "opening_hours": "11:00-00:00",
+          "opening_hours:covid19": "open",
+          "phone": "0514445222"
+        },
+        "node_count": 5
+      },
+      {
+        "version": "2",
+        "timestamp": "2022-12-28T17:24:25Z",
+        "changeset": "130611784",
+        "tags": {
+          "addr:city": "Bak\u0131",
+          "addr:postcode": "AZ1000",
+          "addr:street": "Neft\u00e7il\u0259r Prospekti",
+          "amenity": "restaurant",
+          "building": "yes",
+          "cuisine": "burger;sandwich;pizza;coffee_shop",
+          "diet:halal": "yes",
+          "diet:local": "yes",
+          "diet:meat": "yes",
+          "diet:vegetarian": "yes",
+          "name": "Love in Ferma",
+          "opening_hours": "11:00-00:00",
+          "opening_hours:covid19": "open",
+          "phone": "+994 51 444 52 22"
+        },
+        "node_count": 5
+      },
+      {
+        "version": "3",
+        "timestamp": "2023-09-09T12:53:29Z",
+        "changeset": "141023074",
+        "tags": {
+          "addr:city": "Bak\u0131",
+          "addr:postcode": "AZ1000",
+          "addr:street": "Neft\u00e7il\u0259r Prospekti",
+          "amenity": "restaurant",
+          "building": "yes",
+          "cuisine": "burger;sandwich;pizza;coffee_shop",
+          "diet:halal": "yes",
+          "diet:local": "yes",
+          "diet:meat": "yes",
+          "diet:vegetarian": "yes",
+          "name": "Love in Ferma",
+          "opening_hours": "11:00-00:00",
+          "phone": "+994 51 444 52 22"
+        },
+        "node_count": 5
+      }
+    ]
+  },
+  {
+    "osm_id": 626038359,
+    "url": "https://api.openstreetmap.org/api/0.6/way/626038359/history",
+    "sha256": "054efe4fc207dd45918a2115bac5593f161a490e8573b0c152be66f523869fb1",
+    "versions": [
+      {
+        "version": "1",
+        "timestamp": "2018-09-16T21:50:18Z",
+        "changeset": "62647460",
+        "tags": {
+          "amenity": "cafe",
+          "building": "yes"
+        },
+        "node_count": 5
+      }
+    ]
+  },
+  {
+    "osm_id": 279589354,
+    "url": "https://api.openstreetmap.org/api/0.6/way/279589354/history",
+    "sha256": "5471e6829f7704c3f26874efa1a94251cd01fa609c67958c6ddc1c6e9386fd99",
+    "versions": [
+      {
+        "version": "1",
+        "timestamp": "2014-05-05T17:59:09Z",
+        "changeset": "22151454",
+        "tags": {
+          "building": "yes"
+        },
+        "node_count": 13
+      },
+      {
+        "version": "2",
+        "timestamp": "2022-04-01T09:24:36Z",
+        "changeset": "119193326",
+        "tags": {
+          "addr:city": "Bak\u0131",
+          "addr:housenumber": "5",
+          "addr:street": "Neft\u00e7il\u0259r pr.",
+          "building": "yes"
+        },
+        "node_count": 13
+      }
+    ]
+  },
+  {
+    "osm_id": 152191287,
+    "url": "https://api.openstreetmap.org/api/0.6/way/152191287/history",
+    "sha256": "12c074ff49eeae7a01fcf5f4f93c9066356b374c71cb25003453934fa0bba2bf",
+    "versions": [
+      {
+        "version": "1",
+        "timestamp": "2012-02-27T11:57:07Z",
+        "changeset": "10807656",
+        "tags": {
+          "building": "yes"
+        },
+        "node_count": 7
+      },
+      {
+        "version": "2",
+        "timestamp": "2017-01-10T20:02:49Z",
+        "changeset": "45060159",
+        "tags": {
+          "addr:housenumber": "87",
+          "addr:street": "Neft\u00e7il\u0259r pr.",
+          "building": "yes"
+        },
+        "node_count": 7
+      },
+      {
+        "version": "3",
+        "timestamp": "2022-04-01T09:24:36Z",
+        "changeset": "119193326",
+        "tags": {
+          "addr:city": "Bak\u0131",
+          "addr:housenumber": "7",
+          "addr:street": "Neft\u00e7il\u0259r pr.",
+          "building": "yes"
+        },
+        "node_count": 7
+      }
+    ]
+  },
+  {
+    "osm_id": 465003806,
+    "url": "https://api.openstreetmap.org/api/0.6/way/465003806/history",
+    "sha256": "335c6dae2ae2ee18c6542ea73309940898d5d118d96b4d0825fe4ea386ebe09a",
+    "versions": [
+      {
+        "version": "1",
+        "timestamp": "2017-01-10T20:02:47Z",
+        "changeset": "45060159",
+        "tags": {
+          "addr:housenumber": "89",
+          "addr:street": "Neft\u00e7il\u0259r pr.",
+          "building": "yes"
+        },
+        "node_count": 5
+      }
+    ]
+  },
+  {
+    "osm_id": 152191301,
+    "url": "https://api.openstreetmap.org/api/0.6/way/152191301/history",
+    "sha256": "2e34733cd29db256b593c8ac7589056b946add52002e38e0415712e431445556",
+    "versions": [
+      {
+        "version": "1",
+        "timestamp": "2012-02-27T11:58:08Z",
+        "changeset": "10807656",
+        "tags": {
+          "building": "yes"
+        },
+        "node_count": 5
+      },
+      {
+        "version": "2",
+        "timestamp": "2017-01-10T20:02:49Z",
+        "changeset": "45060159",
+        "tags": {
+          "addr:housenumber": "91",
+          "addr:street": "Neft\u00e7il\u0259r pr.",
+          "building": "yes"
+        },
+        "node_count": 5
+      }
+    ]
+  }
+]

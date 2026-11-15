@@ -783,6 +783,24 @@ roof heights. Check parcel-boundary tolerance, adjoining terrace heights, the
 whole canopy and actual support endpoints. Hockenheim's Nord stand passed a
 burial check while these queries still produced sawtooth seats and detached roofs.
 
+### Baku waterfront frontages and park
+
+`venues.baku_waterfront.finish(scene)` runs after the existing Mirbabayev finish.
+Keep the original generic No. 89/91 emission so the adapter can replace only
+those exact families. The photographed arch and dormer rhythms, literal building
+plans, four mapped grass beds and 34 estimated park-tree poses have separate
+source records under `Attribution/Sources/baku/waterfront/`. Absolute heights,
+hidden details, thresholds and individual tree positions remain estimates.
+
+The ground segmentation changes only 968 selected existing cosmetic parents.
+It evaluates XYZ, normals and UVs on their original planes and retains the
+unselected rows and material prefixes. Node and pack shared boundary vertices
+before triangulating: the initial candidate's near-collinear 14–30 µm knots
+collapsed onto a 78–156 µm native lattice and overlapped tiny ears. The final
+construction preserves the strict overlap guard and retains the diagnosed
+failed candidate. Check every tree foot again on the actual resulting fragments,
+then review native alpha, shadows, texture scale and the complete driving view.
+
 ### Villa de Rome architecture
 
 `venues.monaco_rome.finish_terrain(scene)` replaces only the exact 1,822-row generic Villa de Rome family in `Building_City_m1_01`. It operates on the current tile after other terrain/property producers, preserving every other packed row and the existing material-table prefix. It never reloads a saved parent City tile. Keep the call before final tile partition/save; Hermosa garden/tree updates and the underarch woodland remain independent.
