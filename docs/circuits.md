@@ -43,7 +43,8 @@ Suzuka is the only figure-eight. Its back straight crosses the lower Degner road
 Native scenes include circuit-specific architecture, vegetation, protection, kerbs, escape surfaces, braking boards and pit paving. Pit access remains closed for the game. Source generation, native geometry checks and a clean simulated lap do not establish visual or performance acceptance. Follow the [whole-lap workflow](map.md) and compare the exact current assets against registered references.
 
 Work is active through Sunday 15 November at 10am PST. The 18-map work remains
-incomplete. Seventeen circuits retain compatible Luna High visual passes; Baku remains held. Carrying a review requires identical native scene, executable
+incomplete. Seventeen circuits retain compatible Luna High visual passes; Baku
+remains held. Carrying a review requires identical native scene, executable
 and shared package payloads. Changed scenes need fresh packaged reviews; source
 or bounded feature passes do not establish whole-circuit acceptance.
 
@@ -55,7 +56,8 @@ Its 144 m main-wing height and component dimensions retain their stated
 reconstruction uncertainty.
 
 Baku now includes the distinct Mariinsky gymnasium and De Bour mansion, Foundation,
-Mirbabayev and waterfront 89/91 architecture. No5's photographed frontage passes its bounded native appearance review. Local material inputs that
+Mirbabayev and waterfront 89/91 architecture. No5's photographed frontage passes
+its bounded native appearance review. Local material inputs that
 incorrectly read unauthored baked AO/vertex data have a matched native PASS.
 Sparse seafront planting, coarse DSM park banks and ordinary city detail remain
 open. Roadside intersections alone do not establish incorrect street levels.

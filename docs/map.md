@@ -400,6 +400,24 @@ onto road segments rather than selecting the nearest centreline vertex. At tight
 adjacent sections, blend using the intended branch and region masks so one road
 does not pull its neighbour's terrain into a ridge.
 
+Inspect the modifier domain as well as the height function. Offset ribbons can
+fold and leave artificial notches; even a smooth kernel then creates steep
+faces. Check actual packed cross-sections and locate the worst slopes. A valid
+mesh with full coverage can still be a visibly wrong embankment.
+
+An inherited DSM building base is also an estimate. If a low entrance and level
+promenade contradict it, do not bend the public ground into a mound to preserve
+that default. Qualify a relative base for the exact owner, preserve its footprint
+and form, and prove its translated foundation contacts on the final ground.
+Keep unrelated properties and the actual racing surface unchanged.
+
+Keep authored role accuracy separate from mesh precision. A photographed verge
+with half-metre uncertainty can support a documented millimetre boundary
+adjustment around an existing triangle. That does not justify relaxing geometry
+coverage tests or moving literal source polygons silently. Preserve the actual
+post-deformation planes, normals and UVs when classifying the surface; replaying
+old terrain to fix a material sliver can restore the very ridge being removed.
+
 Cut or mask coarse terrain below the road/runoff where needed. Avoid coplanar
 surfaces, raised ground covering the track, cracks and visible hanging edges.
 Carry deck corrections through shoulders and barrier bases, not just along the
