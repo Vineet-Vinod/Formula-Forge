@@ -6,6 +6,7 @@ import hashlib
 import math
 import struct
 from collections import Counter
+from dataclasses import replace
 from typing import cast
 
 from circuit_dataclasses import MeshTile, Point, RetainedTerrainSource, TerrainGrid
@@ -137,6 +138,28 @@ def _precision(
     )
 
 
+def _project_outside(source: RavineFace) -> tuple[RavineFace, float]:
+    # Quantized XY can move a tiny fragment off its sloping parent plane.
+    normal = source.intended_normal
+    if abs(normal[2]) < 1e-12:
+        raise ValueError("Outside Ground requires a nonvertical parent plane")
+    vertices: list[NativeVertex] = []
+    maximum_shift = 0.0
+    for vertex, packed in zip(source.original_vertices, source.packed_vertices):
+        dx = (-packed[1] + vertex[1]) / 100
+        dy = (-packed[0] + vertex[0]) / 100
+        shift = -(normal[0] * dx + normal[1] * dy) / normal[2]
+        vertices.append((packed[0], packed[1], vertex[2] + shift * 100, *vertex[3:]))
+        maximum_shift = max(maximum_shift, abs(shift))
+    projected = _precision(source.offset, tuple(vertices), normal, False)
+    return replace(
+        projected,
+        minimum_altitude_m=source.minimum_altitude_m,
+        maximum_xy_error_m=max(source.maximum_xy_error_m, projected.maximum_xy_error_m),
+        maximum_z_error_m=max(source.maximum_z_error_m, projected.maximum_z_error_m),
+    ), maximum_shift
+
+
 def _smooth_normals(payload: bytearray, offsets: list[int], plan: BaseGeometry) -> None:
     sums: dict[tuple[float, float], Point] = {}
     adjacent: dict[tuple[float, float], list[Point]] = {}
@@ -237,7 +260,8 @@ def _normal_check(
 
 
 def replace_ground(
-    scene: MeshScene, grid: TerrainGrid, plan: BaseGeometry, config: RavineSource
+    scene: MeshScene, grid: TerrainGrid, plan: BaseGeometry, config: RavineSource,
+    *, reproject_outside: bool = False,
 ) -> RavineChange:
     wanted: Counter[tuple[str, str, bytes]] = Counter()
     for witness in config.original_ground_rows:
@@ -251,6 +275,7 @@ def replace_ground(
     minimum_delta = math.inf
     maximum_delta = -math.inf
     minimum_alignment = minimum_resolved = 1.0
+    maximum_projection = 0.0
     unresolved: list[RavinePrecisionFace] = []
     for name, tile in scene.tiles.items():
         if not name.startswith("Tile_Street_"):
@@ -435,6 +460,9 @@ def replace_ground(
                         )
             for vertices, inside, intended, area in fragments:
                 check = _precision(len(output), vertices, intended, inside)
+                if reproject_outside and not inside:
+                    check, shift = _project_outside(check)
+                    maximum_projection = max(maximum_projection, shift)
                 xy_error = max(xy_error, check.maximum_xy_error_m)
                 z_error = max(z_error, check.maximum_z_error_m)
                 points = _points(check.packed_vertices)
@@ -453,6 +481,9 @@ def replace_ground(
                 if orientation < 0:
                     vertices = vertices[0], vertices[2], vertices[1]
                     check = _precision(len(output), vertices, intended, inside)
+                    if reproject_outside and not inside:
+                        check, shift = _project_outside(check)
+                        maximum_projection = max(maximum_projection, shift)
                     reoriented += 1
                 if inside:
                     smoothed.append(len(output))
@@ -500,6 +531,7 @@ def replace_ground(
         minimum_resolved,
         tuple(unresolved),
         reoriented,
+        maximum_projection,
     )
 
 

@@ -33,7 +33,7 @@ class RavineSource:
     window_xy_m: tuple[FiniteFloat, FiniteFloat, FiniteFloat, FiniteFloat]
     mandatory_exclusions: tuple[tuple[tuple[FiniteFloat, FiniteFloat], ...], ...]
     collar_width_m: Annotated[FiniteFloat, Field(ge=1, le=5)]
-    render_step_m: Annotated[FiniteFloat, Field(ge=0.5, le=0.5)]
+    render_step_m: Annotated[FiniteFloat, Field(ge=0.1, le=0.5)]
     expected_domain_wkt: str
     grid_file: str
     grid_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")]
@@ -87,3 +87,4 @@ class RavineChange:
     minimum_resolved_normal_alignment: float
     unresolved_faces: tuple[RavinePrecisionFace, ...]
     reoriented_faces: int
+    maximum_outside_plane_reprojection_m: float = 0.0

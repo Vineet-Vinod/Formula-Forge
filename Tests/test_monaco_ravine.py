@@ -4,16 +4,61 @@ import struct
 from pathlib import Path
 
 import pytest
-from circuit_dataclasses import MeshTile, TerrainGrid
+from circuit_dataclasses import MeshTile, Point, TerrainGrid
 from circuit_mesh import MeshScene
 from pydantic import TypeAdapter
 from shapely import from_wkt
 from venues.monaco_groves import ground_height
 from venues.monaco_groves_dataclasses import WestBankGroves
-from venues.monaco_ravine import replace_ground
+from venues.monaco_ravine import (
+    _normal_check,
+    _points,
+    _precision,
+    _project_outside,
+    replace_ground,
+)
 from venues.monaco_ravine_dataclasses import RavineSource
+from venues.monaco_surfaces_dataclasses import NativeVertex
 
 SOURCES = Path(__file__).resolve().parents[1] / "Attribution/Sources/monaco"
+
+
+def test_quantized_outside_fragment_stays_on_its_original_sloping_plane() -> None:
+    from circuit_mesh import cross, norm, sub
+
+    normal = (-.2377839161160891, -.5800818071771148, .7790788831810481)
+    anchor = (-16.088902587890626, 321.9223828125, 10.6381005859375)
+    x = (-16.080142822265625 - 16.08014404296875) / 2
+    y = (321.88623046875 + 321.88625) / 2
+    points: tuple[Point, ...] = (
+        anchor, (x + .00000005, y - .0000002, 0), (x - .00000005, y + .0000002, 0)
+    )
+    vertices: list[NativeVertex] = []
+    for x, y, _z in points:
+        z = anchor[2] - (normal[0] * (x - anchor[0]) + normal[1] * (y - anchor[1])) / normal[2]
+        vertices.append((-y * 100, -x * 100, z * 100,
+                         -normal[1], -normal[0], normal[2], x / 8, y / 8))
+    original = _precision(0, tuple(vertices), normal, False)
+    raw = bytearray(struct.pack('<I24f', 0, *(value for vertex in original.packed_vertices for value in vertex)))
+    with pytest.raises(ValueError, match='inward stored normal'):
+        _normal_check('outside', raw, [original])
+
+    projected, shift = _project_outside(original)
+    assert 0 < shift < .00001
+    assert projected.packed_vertices[0] == original.packed_vertices[0]
+    for old, new in zip(original.packed_vertices, projected.packed_vertices):
+        assert new[:2] == old[:2]
+        assert new[3:] == old[3:]
+    points = _points(projected.packed_vertices)
+    geometric = norm(cross(sub(points[1], points[0]), sub(points[2], points[0])))
+    assert sum(a * b for a, b in zip(geometric, normal)) > .99
+    for x, y, z in points:
+        expected = anchor[2] - (normal[0] * (x - anchor[0]) + normal[1] * (y - anchor[1])) / normal[2]
+        assert abs(z - expected) < .0000007
+    raw = bytearray(struct.pack('<I24f', 0, *(value for vertex in projected.packed_vertices for value in vertex)))
+    minimum, resolved, repairs = _normal_check('outside', raw, [projected])
+    assert minimum > .99 and resolved > .99
+    assert not repairs
 
 
 def _fixture() -> tuple[MeshScene, TerrainGrid, RavineSource]:
