@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=baku",
-  "tiles": 396,
-  "triangles": 5137778,
+  "tiles": 397,
+  "triangles": 5198620,
   "road_sha256": "26bc10ef7913eb8b758e60bada4eb749e94aa7bb524952c47ead9fff2130166e",
   "terrain_sha256": "e6e5423c2f5f02fc7e47ddb1459d9e39edcc2ae0b7891724be8520abedc5231e",
   "landmarks": [
@@ -2317,6 +2317,12 @@
       "cornice_estimate_m": 28.0,
       "height_uncertainty_m": 5.0,
       "scope": "Photographic architectural reconstruction;28m central/24m wing/20.4&16.5m return are estimates, notsurvey. Internalfloor pitches, groundshops, inheritedbase andunphotographedrears remainestimated. Literal concaveowner/courtyardretained; Ground/Road/protection/currentwaterfront andallneighbors unchanged. Native/PBRappearance acceptance pending."
+    },
+    {
+      "name": "Finite seafront promenade and woodland",
+      "source": "park-context/reconstruction.json.gz",
+      "scope": "Bounded continuous public promenade estimated Road+0.15m/absolute\u00b12m, office279935608 only relative translation\u22122.06477m retaining2levels/6.8m/XY/UV/materials, occupied rendercut591.4m\u00b2;98source-fit trees(34sameXY/supportcorrection+59mappedbed+5photographedverge), sixliteralbeds5174.84m\u00b2+100.54m\u00b2photographedverge. Relative levels/treeinventory/widths remainestimated; native/PBR acceptance separate. First3999junction unchanged/held.",
+      "held": "Absolute ground\u00b12m, exact individual tree inventory/steps/rear grades and native appearance remain estimated or pending; first3999junction is separate."
     }
   ],
   "vegetation": [
