@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=baku",
   "tiles": 396,
-  "triangles": 5089166,
+  "triangles": 5137778,
   "road_sha256": "26bc10ef7913eb8b758e60bada4eb749e94aa7bb524952c47ead9fff2130166e",
   "terrain_sha256": "e6e5423c2f5f02fc7e47ddb1459d9e39edcc2ae0b7891724be8520abedc5231e",
   "landmarks": [
@@ -2308,6 +2308,15 @@
       "source": "waterfront/reconstruction.json.gz",
       "scope": "Three photographed facade bands, distinct arch/hipped-dormer roofs, estimated heights\u00b14m. Ground changes are original-plane cosmetic grass segmentation only. 34 source-fit tree poses are visual estimates, not individually surveyed; current163/Khagani trees retained. World-planar masonry UV and new foliage appearance remain native/PBR trials; no acceptance claim.",
       "held": "Absolute datum, thresholds, rear details, LoveFerma/cafe heights and85/87 identities remain held."
+    },
+    {
+      "osm_id": 279589354,
+      "name": "Neftchilar old85/current5",
+      "source": "no85/reconstruction.json",
+      "structure": "Raised3bay double-heightcolonnade, lower3arched balconygroup, flanking loggias, projectingglazed oriels andsteppedwings",
+      "cornice_estimate_m": 28.0,
+      "height_uncertainty_m": 5.0,
+      "scope": "Photographic architectural reconstruction;28m central/24m wing/20.4&16.5m return are estimates, notsurvey. Internalfloor pitches, groundshops, inheritedbase andunphotographedrears remainestimated. Literal concaveowner/courtyardretained; Ground/Road/protection/currentwaterfront andallneighbors unchanged. Native/PBRappearance acceptance pending."
     }
   ],
   "vegetation": [

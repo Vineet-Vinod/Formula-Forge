@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=monaco",
   "tiles": 117,
-  "triangles": 3070935,
+  "triangles": 3071305,
   "road_sha256": "3a7544d64e64e34c445dbf4049745ad0e2fc4f2d8e96dcf6d29b2c8ee7f67df3",
   "terrain_sha256": "f1538f328db1481498922f0c8d143010e2a9bcd9c17cb30b52457605ac30a21a",
   "landmarks": [
@@ -4294,6 +4294,14 @@
       "material_only_faces": 1104,
       "mixed_cover_face_area_sum_m2": 89.18912133986959,
       "limits": "Existing whole Grass faces only; every XYZ, normal, UV, plant and native driving record remains unchanged. Mixed source role, not exact rock/ivy pixels or canopy geometry."
+    },
+    {
+      "name": "Source-registered mixed natural ravine roles",
+      "source": "architecture/ravine-roles/source-qualification.json",
+      "original_runoff_faces": 181,
+      "natural_area_m2": 133.03641832257668,
+      "held_sub_float32_natural_area_m2": 7.448744336040337e-07,
+      "limits": "Material partitions on literal old planes only. Original normal and UV interpolation retained. No height, plant, roof, road or native contact change. Marie/Rome engineered junction remains held."
     }
   ],
   "vegetation": [
