@@ -1,0 +1,2898 @@
+{
+  "version": 1,
+  "scope": "Registered Library edge10, three Khagani heritage fronts on compoundedge18, plain estimated Composers edge17, finite31 Sahil/Library-sidewalk trees.",
+  "unchanged": "Road/Field/contact/protection, all Ground, literal footprints/courtyards, old nonselected face rows and outside old roof planes/normals/UVs.",
+  "source_review": "source-review.md; independent Luna bounded source/facade review only. Native/cooked acceptance pending.",
+  "amendments": "# Private fit amendments after source review\n\nThe original PLAN.md and source-plan.json retain the hashes reviewed by Luna; these amendments do not turn their initial numerical hypotheses into survey dimensions.\n\n- Luna independently confirms **four visible ordinary facade window levels plus six mansard arched openings** for house23. The initial 'five principal levels' phrase double-counted the attic from the cached OSM5 tag. The photo is tree-occluded below and does not certify the full floor count; the candidate follows the four visible rows.\n- Both literal177428532 and286020256 outlines are clockwise. A new street-facing frame reverses original edges9/10 and18; original edge18 lot intervals remain east\u2192west while source photo local positions run west\u2192east.\n- The first private Library fit uses15.6\u00b13m wings /20.5\u00b14m central pavilion to leave room for two lower rows and the tall pointed arcade/clerestory. These are broad architectural hypotheses, not measured or frozen heights. The central width40\u201360% is also a photographic fit, with no surveyed pavilion subdivision.\n- Writers25's first private cornice fit is16\u00b13m (inside the originally proposed15\u00b13m envelope); the roof remains2\u00b11m. No floor is added to copy the generic model.\n- The source-specific Writers roof requires a Baku-only matte dark red material, reserved with root as `BakuOxideRoof`; shared/global Roof is unchanged.\n- New model code is private. Old nonselected edge primitives will be replayed and retained exactly. Only selected street fronts and bounded occupied front roof strips are proposed for replacement; no Ground delta, rear/courtyard reassignment, or contact-field changes.\n\n## Current Library scope after independent registration\n\n`reviews/baku-library-registration-adjudication.md` accepts edge10 open pointed loggias and square geometric piers. The 2010 corner view does **not** uniquely register to edge9/11 or northern0/15/16. The precise three-door/stairs/clerestory interval also remains held. The former return/raised-center prototype is rejected for integration and retained only as private authoring history.\n\nThe current private model `city1179_library_open.py` replaces the registered **edge10 main frontage only**. It has genuinely open arcades with inner rectangular windows, a gallery floor and statues; no glass sheet occupies the outer arches. There is no new entrance, step count, clerestory, raised pavilion, or return. Other literal edge primitives remain exactly inherited. A bounded3.2\u00b11m occupied gallery strip receives the estimated wing cornice15.6\u00b13m; the remaining original roof and rear mass stay held. The22\u00b13 arcade bays and nine illustrative facade figures are visual reconstruction estimates, not measured counts or named statue assignments.\n\nNew Library detail source receipts are `library-additional-primary-receipts.json` (1.405MB total provider1600px previews, original URLs retained). They support square geometric capitals and true open gallery/corner space; they do not register the unqualified corner to a mapped edge.\n\nCanopy placement respects the original protection side, not distance alone. The Library frontage has room behind the wall for a narrow ellipse of broadleaf canopy. The compound wall lies roughly1.4\u20131.9m from its facade, which conflicts with source oriel projections and mature street-tree dimensions. Its street-tree context therefore remains held; the finite first planting is Sahil fringe plus the Library sidewalk only. No boundary, field, road or Ground surface is moved to make trees fit.\n",
+  "source_manifest_sha256": "c42520fcd3bcfcc9cd37059ffac6a52e2d705f45d98bc938ff00b0d207c767f2",
+  "frozen_private_file_map_sha256": "0f2901c69af337e0616fa6cf7685b9c8fc1f364ef27bbb4256a18bd00b50b3b7",
+  "frontage_intervals": {
+    "literal_compound": 286020256,
+    "literal_front_edge": 18,
+    "length_m": 77.98442878821547,
+    "anchors": [
+      {
+        "old_address": 27,
+        "wikidata": "Q105539450",
+        "source_xy_m": [
+          -643.3842102644458,
+          123.26361231474169
+        ],
+        "within_literal_286020256": true,
+        "along_edge18_m": 10.906177512021573,
+        "distance_from_edge18_m": 4.474741701170572,
+        "coordinate_status": "Catalog/subject location guide, not surveyed facade boundary or camera position",
+        "proposed_frontage_interval_m": [
+          0.0,
+          27.085609487284096
+        ],
+        "interval_uncertainty_m": 3.0,
+        "interval_status": "Midpoint partition of catalog anchors plus continuous photo adjacency; provisional architectural fitting interval, not cadastral split"
+      },
+      {
+        "old_address": 25,
+        "wikidata": "Q140661431",
+        "source_xy_m": [
+          -672.2058630208711,
+          108.453925809006
+        ],
+        "within_literal_286020256": true,
+        "along_edge18_m": 43.26504146254662,
+        "distance_from_edge18_m": 2.7664074711261164,
+        "coordinate_status": "Catalog/subject location guide, not surveyed facade boundary or camera position",
+        "proposed_frontage_interval_m": [
+          27.085609487284096,
+          54.85779778787224
+        ],
+        "interval_uncertainty_m": 3.0,
+        "interval_status": "Midpoint partition of catalog anchors plus continuous photo adjacency; provisional architectural fitting interval, not cadastral split"
+      },
+      {
+        "old_address": 23,
+        "wikidata": "Q140665292",
+        "source_xy_m": [
+          -694.0677388653212,
+          100.54009375412164
+        ],
+        "within_literal_286020256": true,
+        "along_edge18_m": 66.45055411319785,
+        "distance_from_edge18_m": 4.499138367011933,
+        "coordinate_status": "Catalog/subject location guide, not surveyed facade boundary or camera position",
+        "proposed_frontage_interval_m": [
+          54.85779778787224,
+          77.98442878821547
+        ],
+        "interval_uncertainty_m": 3.0,
+        "interval_status": "Midpoint partition of catalog anchors plus continuous photo adjacency; provisional architectural fitting interval, not cadastral split"
+      }
+    ],
+    "source_qualification": "Composers27 whole photo has the library pointed arch immediately to its right. Writers25 whole photo has Composers27 on its right;23 full photo has Writers25 on its right. This continuous adjacency and catalog locations support three distinct frontages inside the same merged OSM outline.",
+    "held": "West edge20 and rear/courtyard subdivisions remain unqualified. Source locations/nominal decimal precision do not survey property boundaries."
+  },
+  "camera": {
+    "source_manifest_sha256": "c42520fcd3bcfcc9cd37059ffac6a52e2d705f45d98bc938ff00b0d207c767f2",
+    "native_road_csv_sha256": "efd762656d72977391616135747278d92dbf1a1181eacf834da8934f4820618d",
+    "buildings_source_sha256": "9a235a18262099ca34a15c8a6de997a0fb360a1adee7b7ab701cd834adbaef08",
+    "origin": {
+      "latitude": 40.3726832406754,
+      "longitude": 49.853217636212044
+    },
+    "uniform_scale": 1.0062366339173152,
+    "actual_pose": {
+      "tick": 1240,
+      "step_end": 4225,
+      "simulation_s": 35.20833333333198,
+      "station_m": 1179.13037109375,
+      "lane_m": 4.840721130371094,
+      "speed_kph": 191.3997501148897,
+      "lateral_speed_mps": 0,
+      "heading_rad": 2.7140400409698486,
+      "steer_angle_rad": -8.737482858123258e-05,
+      "gear": 5,
+      "rpm_normalized": 0.785713255405426,
+      "body_pitch_rad": -1.9256091832176025e-07,
+      "body_roll_rad": 0.00026904564583674073,
+      "elevation_m": 2.654842601102941,
+      "vertical_speed_mps": 0.022478992448133582,
+      "visual_penetration_m": 0,
+      "loaded_visual_tiles": 290,
+      "dynamic_resolution_active": false,
+      "primary_screen_percentage_approx": 100,
+      "barrier_contact": false,
+      "on_track": true,
+      "grounded": true,
+      "paused": false,
+      "automatic": true,
+      "chase_camera": false,
+      "lap_running": true,
+      "lap_invalid": false,
+      "pit_lane": false,
+      "pit_overspeed": false,
+      "pit_limit_kph": 0,
+      "timing_station_m": 1179.13037109375,
+      "applied_control": {
+        "steer": -0.00040203015669249,
+        "throttle": 0.1334628015756607,
+        "brake": 0,
+        "shift_up": false,
+        "shift_down": false,
+        "automatic": true,
+        "drift": false,
+        "drift_pressed": false,
+        "speed_limit_extra": 141.6666717529297
+      },
+      "lap_s": 33.08025382604523,
+      "completed_laps": 0,
+      "next_gate": 3,
+      "last_lap_s": 0,
+      "last_lap_valid": false,
+      "position_m": [
+        -577.3005514705883,
+        -139.17526424632354,
+        2.654842601102941
+      ],
+      "actor_position_cm": [
+        -13917.526424632353,
+        57730.055147058825,
+        265.6842624439913
+      ],
+      "body_relative_rotation_deg": [
+        -1.056665041689189e-06,
+        8.468787496197887e-15,
+        0.0030550712253898382
+      ],
+      "camera_position_cm": [
+        -13939.11017911873,
+        57682.687611139176,
+        391.6622687910222
+      ],
+      "camera_rotation_deg": [
+        -3.475721913932827,
+        65.50303748811048,
+        -9.89175877342877e-06
+      ],
+      "camera_fov_deg": 90,
+      "actor_rotation_deg": [
+        0.024221124127507217,
+        65.50303649902347,
+        6.468842911999792e-05
+      ],
+      "frame": 1242,
+      "engine_frame": 2126,
+      "time_s": 45.461912785016466,
+      "input_end": 0,
+      "readback_backpressure_ms": 0,
+      "readback_queue_size": 5,
+      "image": "frames/00001242.jpg",
+      "width": 1600,
+      "height": 900,
+      "capture_pixel_format": "BGRA8",
+      "capture_finished_s": 45.66715790401213,
+      "gpu_readback_cpu_ms": 5.311219021677971,
+      "write_finished_s": 45.68556258204626
+    }
+  },
+  "source_recipe_sha256": "fe09d46fcfd9ac61a421795797495837a2a6b8b41e55eb87c240edb5d20df9fa",
+  "canopy_sha256": "ca140e4a33e6a351d38344fc2b86c77f3aff1cccd11a550ccf70232b8b282b5f",
+  "retained_scope": {
+    "status": "PRIVATE old-family exact replay subset and bounded front/roof retention scope",
+    "families": [
+      {
+        "osm_id": 177428532,
+        "old": 29534,
+        "retained": 24086,
+        "removed_front": 5440,
+        "removed_roof": 8,
+        "new_roof_fragments": 18
+      },
+      {
+        "osm_id": 286020256,
+        "old": 52696,
+        "retained": 45728,
+        "removed_front": 6960,
+        "removed_roof": 8,
+        "new_roof_fragments": 24
+      }
+    ],
+    "old_family_rows": 82230,
+    "exact_actual_family_subset": true,
+    "city_parents": [
+      "Building_City_m2_00",
+      "Building_City_m3_00"
+    ],
+    "matching_current_native_metadata_exceptions": [],
+    "held_nonselected_primitives_retained_verbatim": true,
+    "outside_original_roof_vertices_attributes_retained": true,
+    "outside_fragment_plane_barycentric_fields_qualified": true,
+    "missing_redundant_vertex_witnesses": [],
+    "outside_roof_vertex_count": 30,
+    "roof_fragment_quantization_flags": [
+      {
+        "type": "clipped_roof_coverage",
+        "source_payload_base64": "/YV4xlaSXEcUsdVEAAAAgAAAAIAAAIA/AAAAAAAAAACxwYXGf7ReRxSx1UQAAACAAAAAgAAAgD8AAIA/AAAAAMY1g8bdiWFHFLHVRAAAAIAAAACAAACAPwAAgD8AAIA/",
+        "expected_double_area_m2": 49.92348725390724,
+        "packed_area_m2": 49.92348956527706,
+        "uncovered_area_m2": 7.298110011322301e-06,
+        "extra_area_m2": 9.609479765368328e-06,
+        "overlap_area_m2": 7.105427357601002e-15,
+        "encoding_boundary_displacement_bound_m": 5.5252717280199035e-05,
+        "actual_boundary_hausdorff_m": 7.2382902380445e-06,
+        "encoding_coverage_bound_m2": 0.0021093686781914287,
+        "field_max_error_native_xyz_normals_uv": [
+          3.2741809263825417e-11,
+          9.458744898438454e-11,
+          3.183231456205249e-12,
+          0.0,
+          0.0,
+          3.3306690738754696e-16,
+          5.480899183396559e-07,
+          6.130866694320503e-07
+        ],
+        "field_max_encoding_bound_native_xyz_normals_uv": [
+          0.002148447500000007,
+          0.0042968850000000116,
+          6.714867187500052e-05,
+          1e-08,
+          1e-08,
+          7.556510925293006e-08,
+          1.4718521770838788e-06,
+          3.0934931701766742e-06
+        ]
+      },
+      {
+        "type": "clipped_roof_coverage",
+        "source_payload_base64": "xjWDxt2JYUcUMdREAAAAgAAAAIAAAIC/AAAAAAAAAACxwYXGf7ReRxQx1EQAAACAAAAAgAAAgL8AAIA/AAAAAP2FeMZWklxHFDHURAAAAIAAAACAAACAvwAAgD8AAIA/",
+        "expected_double_area_m2": 49.92348725390724,
+        "packed_area_m2": 49.92348956527706,
+        "uncovered_area_m2": 7.298110011322301e-06,
+        "extra_area_m2": 9.609479765368328e-06,
+        "overlap_area_m2": 7.105427357601002e-15,
+        "encoding_boundary_displacement_bound_m": 5.5252717280199035e-05,
+        "actual_boundary_hausdorff_m": 7.2382902380445e-06,
+        "encoding_coverage_bound_m2": 0.0021093686781914287,
+        "field_max_error_native_xyz_normals_uv": [
+          1.2732925824820995e-10,
+          2.255546860396862e-10,
+          4.774847184307873e-12,
+          0.0,
+          0.0,
+          5.10702591327572e-15,
+          6.130866694320503e-07,
+          5.480899147869422e-07
+        ],
+        "field_max_encoding_bound_native_xyz_normals_uv": [
+          0.002148447500000009,
+          0.004296885000000016,
+          6.714867187500027e-05,
+          1e-08,
+          1e-08,
+          7.556510925292977e-08,
+          3.0934931701766967e-06,
+          1.4062870678309524e-06
+        ]
+      },
+      {
+        "type": "clipped_roof_coverage",
+        "source_payload_base64": "/YV4xlaSXEcUsdVEAAAAgAAAAIAAAIA/AAAAAAAAAADGNYPG3YlhRxSx1UQAAACAAAAAgAAAgD8AAIA/AAAAAOnxcMZ5gW1HFLHVRAAAAIAAAACAAACAPwAAgD8AAIA/",
+        "expected_double_area_m2": 210.72087009137059,
+        "packed_area_m2": 210.72072892589568,
+        "uncovered_area_m2": 0.00014116547489827826,
+        "extra_area_m2": 0.0,
+        "overlap_area_m2": 0.0,
+        "encoding_boundary_displacement_bound_m": 5.5252717280199035e-05,
+        "actual_boundary_hausdorff_m": 8.707930188700598e-06,
+        "encoding_coverage_bound_m2": 0.004783608915510626,
+        "field_max_error_native_xyz_normals_uv": [
+          2.7284841053187847e-11,
+          1.7462298274040222e-10,
+          4.774847184307873e-12,
+          0.0,
+          0.0,
+          2.9976021664879227e-15,
+          5.480657918610632e-07,
+          5.196506069893303e-08
+        ],
+        "field_max_encoding_bound_native_xyz_normals_uv": [
+          0.0021484475000000014,
+          0.004296885000000011,
+          6.714867187500012e-05,
+          1e-08,
+          1e-08,
+          7.556510925292973e-08,
+          1.4716613395475747e-06,
+          7.426579867882333e-07
+        ]
+      },
+      {
+        "type": "clipped_roof_coverage",
+        "source_payload_base64": "6fFwxnmBbUcUMdREAAAAgAAAAIAAAIC/AAAAAAAAAADGNYPG3YlhRxQx1EQAAACAAAAAgAAAgL8AAIA/AAAAAP2FeMZWklxHFDHURAAAAIAAAACAAACAvwAAgD8AAIA/",
+        "expected_double_area_m2": 210.72087009137059,
+        "packed_area_m2": 210.72072892589568,
+        "uncovered_area_m2": 0.00014116547489827826,
+        "extra_area_m2": 0.0,
+        "overlap_area_m2": 0.0,
+        "encoding_boundary_displacement_bound_m": 5.5252717280199035e-05,
+        "actual_boundary_hausdorff_m": 8.707930188700598e-06,
+        "encoding_coverage_bound_m2": 0.004783608915510626,
+        "field_max_error_native_xyz_normals_uv": [
+          3.637978807091713e-11,
+          9.458744898438454e-11,
+          2.0463630789890885e-12,
+          0.0,
+          0.0,
+          0.0,
+          3.7063898616906954e-08,
+          5.480657918610632e-07
+        ],
+        "field_max_encoding_bound_native_xyz_normals_uv": [
+          0.002148447500000002,
+          0.004296885000000009,
+          6.714867187500016e-05,
+          1e-08,
+          1e-08,
+          7.556510925292969e-08,
+          8.08223096041163e-07,
+          1.4060962302946492e-06
+        ]
+      },
+      {
+        "type": "clipped_roof_coverage",
+        "source_payload_base64": "/YV4xlaSXEcUsdVEAAAAgAAAAIAAAIA/AAAAAAAAAADp8XDGeYFtRxSx1UQAAACAAAAAgAAAgD8AAIA/AAAAADoqSMa+gHdHFLHVRAAAAIAAAACAAACAPwAAgD8AAIA/",
+        "expected_double_area_m2": 290.8515159324706,
+        "packed_area_m2": 290.8514573890685,
+        "uncovered_area_m2": 0.00020045985991190107,
+        "extra_area_m2": 0.00014191645820243196,
+        "overlap_area_m2": 0.0,
+        "encoding_boundary_displacement_bound_m": 5.5252717280199035e-05,
+        "actual_boundary_hausdorff_m": 9.641527141443789e-06,
+        "encoding_coverage_bound_m2": 0.006539500037662127,
+        "field_max_error_native_xyz_normals_uv": [
+          1.2732925824820995e-11,
+          1.964508555829525e-10,
+          4.547473508864641e-13,
+          0.0,
+          0.0,
+          1.5543122344752192e-15,
+          2.670387395653506e-07,
+          2.223514528054693e-07
+        ],
+        "field_max_encoding_bound_native_xyz_normals_uv": [
+          0.0010742287500000011,
+          0.004296885000000007,
+          6.714867187500014e-05,
+          1e-08,
+          1e-08,
+          7.556510925292974e-08,
+          7.686865536882807e-07,
+          3.77385344160114e-07
+        ]
+      },
+      {
+        "type": "clipped_roof_coverage",
+        "source_payload_base64": "OipIxr6Ad0cUMdREAAAAgAAAAIAAAIC/AAAAAAAAAADp8XDGeYFtRxQx1EQAAACAAAAAgAAAgL8AAIA/AAAAAP2FeMZWklxHFDHURAAAAIAAAACAAACAvwAAgD8AAIA/",
+        "expected_double_area_m2": 290.8515159324706,
+        "packed_area_m2": 290.85145738906846,
+        "uncovered_area_m2": 0.00020045985991190107,
+        "extra_area_m2": 0.00014191645820243196,
+        "overlap_area_m2": 0.0,
+        "encoding_boundary_displacement_bound_m": 5.5252717280199035e-05,
+        "actual_boundary_hausdorff_m": 9.641527141443789e-06,
+        "encoding_coverage_bound_m2": 0.006539500037662127,
+        "field_max_error_native_xyz_normals_uv": [
+          1.8189894035458565e-12,
+          1.964508555829525e-10,
+          6.366462912410498e-12,
+          0.0,
+          0.0,
+          2.220446049250313e-15,
+          2.223514528054693e-07,
+          2.670387395653506e-07
+        ],
+        "field_max_encoding_bound_native_xyz_normals_uv": [
+          0.0010742287500000011,
+          0.004296885000000002,
+          6.714867187500019e-05,
+          1e-08,
+          1e-08,
+          7.556510925292977e-08,
+          4.1016789878658e-07,
+          7.359039990618174e-07
+        ]
+      },
+      {
+        "type": "clipped_roof_coverage",
+        "source_payload_base64": "OipIxr6Ad0cUsdVEAAAAAAAAAIAAAIA/AAAAAAAAAADp8XDGeYFtRxSx1UQAAAAAAAAAgAAAgD8AAIA/AAAAABssW8YMonlHFLHVRAAAAAAAAACAAACAPwAAgD8AAIA/",
+        "expected_double_area_m2": 213.7522868915537,
+        "packed_area_m2": 213.75245378360864,
+        "uncovered_area_m2": 0.0,
+        "extra_area_m2": 0.00016689205496230337,
+        "overlap_area_m2": 0.0,
+        "encoding_boundary_displacement_bound_m": 5.5252717280199035e-05,
+        "actual_boundary_hausdorff_m": 7.358811291363724e-06,
+        "encoding_coverage_bound_m2": 0.0047798136696646,
+        "field_max_error_native_xyz_normals_uv": [
+          1.4551915228366852e-11,
+          5.093170329928398e-11,
+          2.0463630789890885e-12,
+          0.0,
+          0.0,
+          3.552713678800501e-15,
+          4.3565072260776105e-07,
+          8.465882501695887e-07
+        ],
+        "field_max_encoding_bound_native_xyz_normals_uv": [
+          0.001074228750000001,
+          0.004296884999999997,
+          6.71486718750006e-05,
+          1e-08,
+          1e-08,
+          7.556510925293006e-08,
+          1.1030672195606846e-06,
+          1.6146142694722433e-06
+        ]
+      },
+      {
+        "type": "clipped_roof_coverage",
+        "source_payload_base64": "GyxbxgyieUcUMdREAAAAgAAAAIAAAIC/AAAAAAAAAADp8XDGeYFtRxQx1EQAAACAAAAAgAAAgL8AAIA/AAAAADoqSMa+gHdHFDHURAAAAIAAAACAAACAvwAAgD8AAIA/",
+        "expected_double_area_m2": 213.7522868915537,
+        "packed_area_m2": 213.75245378360864,
+        "uncovered_area_m2": 0.0,
+        "extra_area_m2": 0.00016689205496230337,
+        "overlap_area_m2": 0.0,
+        "encoding_boundary_displacement_bound_m": 5.5252717280199035e-05,
+        "actual_boundary_hausdorff_m": 7.358811291363724e-06,
+        "encoding_coverage_bound_m2": 0.0047798136696646,
+        "field_max_error_native_xyz_normals_uv": [
+          3.637978807091713e-11,
+          3.346940502524376e-10,
+          3.410605131648481e-12,
+          0.0,
+          0.0,
+          8.881784197001252e-16,
+          8.465882572750161e-07,
+          4.3565072616047473e-07
+        ],
+        "field_max_encoding_bound_native_xyz_normals_uv": [
+          0.00107422875,
+          0.004296885000000004,
+          6.71486718750005e-05,
+          1e-08,
+          1e-08,
+          7.556510925292984e-08,
+          1.6146142694722295e-06,
+          1.1030672195606745e-06
+        ]
+      },
+      {
+        "type": "clipped_roof_coverage",
+        "source_payload_base64": "+DJBxjO4dkepD/ZEAAAAgAAAAIAAAIA/AAAAAAAAAAD2zUTGAMmDR6kP9kQAAACAAAAAgAAAgD8AAIA/AAAAAOxMD8ZjQYlHqQ/2RAAAAIAAAACAAACAPwAAgD8AAIA/",
+        "expected_double_area_m2": 627.2035469334933,
+        "packed_area_m2": 627.2037955116284,
+        "uncovered_area_m2": 0.0005863670898520468,
+        "extra_area_m2": 0.0008349452252646399,
+        "overlap_area_m2": 0.0,
+        "encoding_boundary_displacement_bound_m": 0.00011049543456039806,
+        "actual_boundary_hausdorff_m": 3.036695398969713e-05,
+        "encoding_coverage_bound_m2": 0.028452818790091726,
+        "field_max_error_native_xyz_normals_uv": [
+          3.2741809263825417e-11,
+          1.3096723705530167e-10,
+          4.774847184307873e-12,
+          0.0,
+          0.0,
+          1.7763568394002505e-15,
+          8.457993949662068e-07,
+          6.071094738047123e-08
+        ],
+        "field_max_encoding_bound_native_xyz_normals_uv": [
+          0.0010742287500000018,
+          0.008593759999999994,
+          6.71486718750002e-05,
+          1e-08,
+          1e-08,
+          7.556510925292974e-08,
+          1.1274588901982548e-06,
+          2.901526750969598e-07
+        ]
+      },
+      {
+        "type": "clipped_roof_coverage",
+        "source_payload_base64": "7EwPxmNBiUepj/REAAAAgAAAAIAAAIC/AAAAAAAAAAD2zUTGAMmDR6mP9EQAAACAAAAAgAAAgL8AAIA/AAAAAPgyQcYzuHZHqY/0RAAAAIAAAACAAACAvwAAgD8AAIA/",
+        "expected_double_area_m2": 627.2035469334933,
+        "packed_area_m2": 627.2037955116284,
+        "uncovered_area_m2": 0.0005863670898520468,
+        "extra_area_m2": 0.0008349452252648849,
+        "overlap_area_m2": 0.0,
+        "encoding_boundary_displacement_bound_m": 0.00011049543456039806,
+        "actual_boundary_hausdorff_m": 3.036695398969713e-05,
+        "encoding_coverage_bound_m2": 0.028452818790091726,
+        "field_max_error_native_xyz_normals_uv": [
+          1.2732925824820995e-11,
+          1.7462298274040222e-10,
+          4.774847184307873e-12,
+          0.0,
+          0.0,
+          4.440892098500626e-16,
+          6.071094960091727e-08,
+          8.457993985189205e-07
+        ],
+        "field_max_encoding_bound_native_xyz_normals_uv": [
+          0.0010742287500000013,
+          0.008593759999999994,
+          6.714867187500011e-05,
+          1e-08,
+          1e-08,
+          7.55651092529297e-08,
+          2.901526750969598e-07,
+          1.0946763355717882e-06
+        ]
+      },
+      {
+        "type": "clipped_roof_coverage",
+        "source_payload_base64": "9s1ExgDJg0epD/ZEAAAAgAAAAIAAAIA/AAAAAAAAAACEwjLGds+IR6kP9kQAAACAAAAAgAAAgD8AAIA/AAAAAOxMD8ZjQYlHqQ/2RAAAAIAAAACAAACAPwAAgD8AAIA/",
+        "expected_double_area_m2": 272.37316799531686,
+        "packed_area_m2": 272.3731219512938,
+        "uncovered_area_m2": 0.00039037160930019237,
+        "extra_area_m2": 0.00034432758643276884,
+        "overlap_area_m2": 0.0,
+        "encoding_boundary_displacement_bound_m": 0.00011049543456039806,
+        "actual_boundary_hausdorff_m": 3.6164944040763336e-05,
+        "encoding_coverage_bound_m2": 0.009873234609883746,
+        "field_max_error_native_xyz_normals_uv": [
+          8.549250196665525e-11,
+          2.764863893389702e-10,
+          1.1368683772161603e-11,
+          0.0,
+          0.0,
+          2.886579864025407e-15,
+          1.4560007457475876e-06,
+          6.340431042417549e-07
+        ],
+        "field_max_encoding_bound_native_xyz_normals_uv": [
+          0.001074228750000001,
+          0.008593759999999995,
+          6.714867187500031e-05,
+          1e-08,
+          1e-08,
+          7.556510925292973e-08,
+          1.8463635159768267e-06,
+          1.1805889143044558e-06
+        ]
+      },
+      {
+        "type": "clipped_roof_coverage",
+        "source_payload_base64": "7EwPxmNBiUepj/REAAAAgAAAAIAAAIC/AAAAAAAAAACEwjLGds+IR6mP9EQAAACAAAAAgAAAgL8AAIA/AAAAAPbNRMYAyYNHqY/0RAAAAIAAAACAAACAvwAAgD8AAIA/",
+        "expected_double_area_m2": 272.37316799531686,
+        "packed_area_m2": 272.3731219512938,
+        "uncovered_area_m2": 0.00039037160930019237,
+        "extra_area_m2": 0.00034432758643276884,
+        "overlap_area_m2": 0.0,
+        "encoding_boundary_displacement_bound_m": 0.00011049543456039806,
+        "actual_boundary_hausdorff_m": 3.6164944040763336e-05,
+        "encoding_coverage_bound_m2": 0.009873234609883746,
+        "field_max_error_native_xyz_normals_uv": [
+          2.9103830456733704e-11,
+          4.3655745685100555e-10,
+          3.865352482534945e-12,
+          0.0,
+          0.0,
+          6.217248937900877e-15,
+          6.191419501533346e-07,
+          1.456000742194874e-06
+        ],
+        "field_max_encoding_bound_native_xyz_normals_uv": [
+          0.0010742287500000013,
+          0.008593760000000039,
+          6.71486718750003e-05,
+          1e-08,
+          1e-08,
+          7.556510925293005e-08,
+          1.2133714689309243e-06,
+          1.846363515976835e-06
+        ]
+      },
+      {
+        "type": "clipped_roof_coverage",
+        "source_payload_base64": "7EwPxmNBiUepD/ZEAAAAAAAAAIAAAIA/AAAAAAAAAACEwjLGds+IR6kP9kQAAAAAAAAAgAAAgD8AAIA/AAAAAOmOEcY+YolHqQ/2RAAAAAAAAACAAACAPwAAgD8AAIA/",
+        "expected_double_area_m2": 7.1275759193540145,
+        "packed_area_m2": 7.127424195098771,
+        "uncovered_area_m2": 0.0003528948375594352,
+        "extra_area_m2": 0.00020117058275281787,
+        "overlap_area_m2": 0.0,
+        "encoding_boundary_displacement_bound_m": 0.00011049543456039806,
+        "actual_boundary_hausdorff_m": 3.559455978942297e-05,
+        "encoding_coverage_bound_m2": 0.004771500217869994,
+        "field_max_error_native_xyz_normals_uv": [
+          8.803908713161945e-10,
+          9.778887033462524e-09,
+          9.640643838793039e-11,
+          0.0,
+          0.0,
+          1.1368683772161603e-13,
+          4.163375479038223e-05,
+          4.459500019038387e-05
+        ],
+        "field_max_encoding_bound_native_xyz_normals_uv": [
+          0.0010742287500000263,
+          0.008593760000000434,
+          6.714867187500736e-05,
+          1e-08,
+          1e-08,
+          7.556510925292969e-08,
+          5.109563366487606e-05,
+          5.431231993746171e-05
+        ]
+      },
+      {
+        "type": "clipped_roof_coverage",
+        "source_payload_base64": "6Y4Rxj5iiUepj/REAAAAgAAAAIAAAIC/AAAAAAAAAACEwjLGds+IR6mP9EQAAACAAAAAgAAAgL8AAIA/AAAAAOxMD8ZjQYlHqY/0RAAAAIAAAACAAACAvwAAgD8AAIA/",
+        "expected_double_area_m2": 7.1275759193540145,
+        "packed_area_m2": 7.127424195098771,
+        "uncovered_area_m2": 0.0003528948375594352,
+        "extra_area_m2": 0.00020117058275281787,
+        "overlap_area_m2": 0.0,
+        "encoding_boundary_displacement_bound_m": 0.00011049543456039806,
+        "actual_boundary_hausdorff_m": 3.559455978942297e-05,
+        "encoding_coverage_bound_m2": 0.004771500217869994,
+        "field_max_error_native_xyz_normals_uv": [
+          7.457856554538012e-11,
+          7.799826562404633e-09,
+          1.1232259566895664e-10,
+          0.0,
+          0.0,
+          3.219646771412954e-15,
+          4.459500019038387e-05,
+          4.1648655951576075e-05
+        ],
+        "field_max_encoding_bound_native_xyz_normals_uv": [
+          0.0010742287500000046,
+          0.008593759999999668,
+          6.714867187500075e-05,
+          1e-08,
+          1e-08,
+          7.556510925292984e-08,
+          5.4312319937454606e-05,
+          5.1095633664869435e-05
+        ]
+      },
+      {
+        "type": "clipped_roof_coverage",
+        "source_payload_base64": "WCsaxuyvi0epD/ZEAAAAgAAAAAAAAIA/AAAAAAAAAADpjhHGPmKJR6kP9kQAAACAAAAAAAAAgD8AAIA/AAAAAITCMsZ2z4hHqQ/2RAAAAIAAAAAAAACAPwAAgD8AAIA/",
+        "expected_double_area_m2": 132.7768196600823,
+        "packed_area_m2": 132.77665853919908,
+        "uncovered_area_m2": 0.0001831145781584356,
+        "extra_area_m2": 2.199369492705827e-05,
+        "overlap_area_m2": 0.0,
+        "encoding_boundary_displacement_bound_m": 0.00011049543456039806,
+        "actual_boundary_hausdorff_m": 2.9205946434937293e-05,
+        "encoding_coverage_bound_m2": 0.006259460247649907,
+        "field_max_error_native_xyz_normals_uv": [
+          6.366462912410498e-11,
+          3.2014213502407074e-10,
+          3.865352482534945e-12,
+          0.0,
+          0.0,
+          4.440892098500626e-16,
+          2.3181252046811096e-06,
+          6.332358033489527e-07
+        ],
+        "field_max_encoding_bound_native_xyz_normals_uv": [
+          0.0010742287500000015,
+          0.008593760000000056,
+          6.71486718750003e-05,
+          1e-08,
+          1e-08,
+          7.556510925292987e-08,
+          3.557117694788264e-06,
+          1.200642281376093e-06
+        ]
+      },
+      {
+        "type": "clipped_roof_coverage",
+        "source_payload_base64": "hMIyxnbPiEepj/REAAAAgAAAAIAAAIC/AAAAAAAAAADpjhHGPmKJR6mP9EQAAACAAAAAgAAAgL8AAIA/AAAAAFgrGsbsr4tHqY/0RAAAAIAAAACAAACAvwAAgD8AAIA/",
+        "expected_double_area_m2": 132.7768196600823,
+        "packed_area_m2": 132.77665853919908,
+        "uncovered_area_m2": 0.00018311457815833876,
+        "extra_area_m2": 2.199369492705827e-05,
+        "overlap_area_m2": 0.0,
+        "encoding_boundary_displacement_bound_m": 0.00011049543456039806,
+        "actual_boundary_hausdorff_m": 2.9205946434937293e-05,
+        "encoding_coverage_bound_m2": 0.006259460247649908,
+        "field_max_error_native_xyz_normals_uv": [
+          2.9103830456733704e-11,
+          3.637978807091713e-10,
+          6.366462912410498e-12,
+          0.0,
+          0.0,
+          2.220446049250313e-16,
+          6.218271089153404e-07,
+          2.3181252188919643e-06
+        ],
+        "field_max_encoding_bound_native_xyz_normals_uv": [
+          0.0010742287500000005,
+          0.008593760000000046,
+          6.714867187500076e-05,
+          1e-08,
+          1e-08,
+          7.55651092529297e-08,
+          1.2006422813760932e-06,
+          3.557117694788262e-06
+        ]
+      }
+    ],
+    "maximum_native_f32_attribute_rounding_error": [
+      0.00046897264473955147,
+      0.0037888559454586357,
+      1.9485923985484987e-10,
+      0.0,
+      0.0,
+      9.947598300641403e-14,
+      2.714835289907569e-08,
+      2.338050486550003e-08
+    ],
+    "bounded_roof_domain_m2": {
+      "177428532": 241.82610813914448,
+      "286020256": 152.69642284899132
+    },
+    "clipped_literal_corner_ears_m2": {
+      "library": 0.004761798160158388,
+      "compound": 0.0
+    },
+    "inherited_roof_receipts": [
+      {
+        "osm_id": 177428532,
+        "actual_roof_union_m2": 3479.5889208711624,
+        "encoded_literal_footprint_m2": 3479.5889208711624,
+        "inherited_unroofed_m2": 0.0,
+        "inherited_unroofed_bounds": null,
+        "status": "Inherited western/rear gaps held; only actual roof surfaces are clipped in qualified front strip"
+      },
+      {
+        "osm_id": 286020256,
+        "actual_roof_union_m2": 4616.960958980371,
+        "encoded_literal_footprint_m2": 5467.482411087418,
+        "inherited_unroofed_m2": 850.521452107047,
+        "inherited_unroofed_bounds": [
+          -773.3303125,
+          60.7741064453125,
+          -703.40484375,
+          147.685576171875
+        ],
+        "status": "Inherited western/rear gaps held; only actual roof surfaces are clipped in qualified front strip"
+      }
+    ],
+    "roof_front_boundary": "Actual old packed frontage edge; contiguous Writers/house interval merged; clipped to exact actual legacy roof union",
+    "literal_to_packed_xy_deltas_m": [
+      {
+        "osm_id": 177428532,
+        "vertex": 0,
+        "literal_xy": [
+          -676.3785051250499,
+          171.8805427188797
+        ],
+        "packed_xy": [
+          -676.378515625,
+          171.880546875
+        ],
+        "delta_xy": [
+          -1.0499950121811708e-05,
+          4.156120297693633e-06
+        ]
+      },
+      {
+        "osm_id": 177428532,
+        "vertex": 1,
+        "literal_xy": [
+          -626.1147976129251,
+          194.4401119089023
+        ],
+        "packed_xy": [
+          -626.1148046875,
+          194.4401171875
+        ],
+        "delta_xy": [
+          -7.074574909893272e-06,
+          5.278597683400221e-06
+        ]
+      },
+      {
+        "osm_id": 177428532,
+        "vertex": 2,
+        "literal_xy": [
+          -627.6850051142981,
+          197.9461422750561
+        ],
+        "packed_xy": [
+          -627.685,
+          197.9461328125
+        ],
+        "delta_xy": [
+          5.114298119224259e-06,
+          -9.462556107564524e-06
+        ]
+      },
+      {
+        "osm_id": 177428532,
+        "vertex": 3,
+        "literal_xy": [
+          -598.1241421568305,
+          211.2197716150392
+        ],
+        "packed_xy": [
+          -598.124140625,
+          211.219765625
+        ],
+        "delta_xy": [
+          1.5318305486289319e-06,
+          -5.990039198877639e-06
+        ]
+      },
+      {
+        "osm_id": 177428532,
+        "vertex": 4,
+        "literal_xy": [
+          -596.6478057559577,
+          207.9377687485261
+        ],
+        "packed_xy": [
+          -596.6478125,
+          207.9377734375
+        ],
+        "delta_xy": [
+          -6.744042252648796e-06,
+          4.6889738882782694e-06
+        ]
+      },
+      {
+        "osm_id": 177428532,
+        "vertex": 5,
+        "literal_xy": [
+          -587.9519283445895,
+          211.84704861355564
+        ],
+        "packed_xy": [
+          -587.9519140625,
+          211.84705078125
+        ],
+        "delta_xy": [
+          1.4282089523476316e-05,
+          2.167694361787653e-06
+        ]
+      },
+      {
+        "osm_id": 177428532,
+        "vertex": 6,
+        "literal_xy": [
+          -582.6524780279103,
+          200.0520007694503
+        ],
+        "packed_xy": [
+          -582.6524609375,
+          200.0519921875
+        ],
+        "delta_xy": [
+          1.7090410324271943e-05,
+          -8.581950311281616e-06
+        ]
+      },
+      {
+        "osm_id": 177428532,
+        "vertex": 7,
+        "literal_xy": [
+          -590.2475034416198,
+          196.63558140331196
+        ],
+        "packed_xy": [
+          -590.2475,
+          196.6355859375
+        ],
+        "delta_xy": [
+          3.4416198104736395e-06,
+          4.534188036586784e-06
+        ]
+      },
+      {
+        "osm_id": 177428532,
+        "vertex": 8,
+        "literal_xy": [
+          -577.3786289207893,
+          167.94886010364732
+        ],
+        "packed_xy": [
+          -577.3786328125,
+          167.9488671875
+        ],
+        "delta_xy": [
+          -3.891710662173864e-06,
+          7.083852693767767e-06
+        ]
+      },
+      {
+        "osm_id": 177428532,
+        "vertex": 9,
+        "literal_xy": [
+          -570.12495296361,
+          171.20846021995752
+        ],
+        "packed_xy": [
+          -570.1249609375,
+          171.20845703125
+        ],
+        "delta_xy": [
+          -7.973889978529769e-06,
+          -3.1887075238046236e-06
+        ]
+      },
+      {
+        "osm_id": 177428532,
+        "vertex": 10,
+        "literal_xy": [
+          -564.6633616554882,
+          159.0549683773821
+        ],
+        "packed_xy": [
+          -564.663359375,
+          159.054970703125
+        ],
+        "delta_xy": [
+          2.2804881609772565e-06,
+          2.3257429120349116e-06
+        ]
+      },
+      {
+        "osm_id": 177428532,
+        "vertex": 11,
+        "literal_xy": [
+          -633.6074181896149,
+          128.10556933349514
+        ],
+        "packed_xy": [
+          -633.607421875,
+          128.10556640625
+        ],
+        "delta_xy": [
+          -3.6853850815532496e-06,
+          -2.9272451342876593e-06
+        ]
+      },
+      {
+        "osm_id": 177428532,
+        "vertex": 12,
+        "literal_xy": [
+          -639.0604757618238,
+          140.27026255196787
+        ],
+        "packed_xy": [
+          -639.06046875,
+          140.270263671875
+        ],
+        "delta_xy": [
+          7.01182375451026e-06,
+          1.1199071252576687e-06
+        ]
+      },
+      {
+        "osm_id": 177428532,
+        "vertex": 13,
+        "literal_xy": [
+          -608.0147426669639,
+          154.2047730149758
+        ],
+        "packed_xy": [
+          -608.0147265625,
+          154.204775390625
+        ],
+        "delta_xy": [
+          1.6104463952615333e-05,
+          2.375649188479656e-06
+        ]
+      },
+      {
+        "osm_id": 177428532,
+        "vertex": 14,
+        "literal_xy": [
+          -620.4483966307639,
+          181.90577331685807
+        ],
+        "packed_xy": [
+          -620.4483984375,
+          181.90578125
+        ],
+        "delta_xy": [
+          -1.806736122489383e-06,
+          7.933141915827946e-06
+        ]
+      },
+      {
+        "osm_id": 177428532,
+        "vertex": 15,
+        "literal_xy": [
+          -670.7462390877535,
+          159.33500275173407
+        ],
+        "packed_xy": [
+          -670.74625,
+          159.335
+        ],
+        "delta_xy": [
+          -1.0912246580119245e-05,
+          -2.7517340583926853e-06
+        ]
+      },
+      {
+        "osm_id": 177428532,
+        "vertex": 16,
+        "literal_xy": [
+          -674.680291577099,
+          168.094477978374
+        ],
+        "packed_xy": [
+          -674.6803125,
+          168.09447265625
+        ],
+        "delta_xy": [
+          -2.0922901057929266e-05,
+          -5.322123996620576e-06
+        ]
+      },
+      {
+        "osm_id": 286020256,
+        "vertex": 0,
+        "literal_xy": [
+          -727.5723899062649,
+          147.68557278235534
+        ],
+        "packed_xy": [
+          -727.572421875,
+          147.685576171875
+        ],
+        "delta_xy": [
+          -3.196873512933962e-05,
+          3.389519662277962e-06
+        ]
+      },
+      {
+        "osm_id": 286020256,
+        "vertex": 1,
+        "literal_xy": [
+          -721.0440815453493,
+          134.0086939434965
+        ],
+        "packed_xy": [
+          -721.0440625,
+          134.00869140625
+        ],
+        "delta_xy": [
+          1.904534929053625e-05,
+          -2.537246501788104e-06
+        ]
+      },
+      {
+        "osm_id": 286020256,
+        "vertex": 2,
+        "literal_xy": [
+          -773.3302845883102,
+          111.54993712699897
+        ],
+        "packed_xy": [
+          -773.3303125,
+          111.54994140625
+        ],
+        "delta_xy": [
+          -2.7911689812754048e-05,
+          4.27925102997051e-06
+        ]
+      },
+      {
+        "osm_id": 286020256,
+        "vertex": 3,
+        "literal_xy": [
+          -766.4947617163353,
+          95.53197091979969
+        ],
+        "packed_xy": [
+          -766.494765625,
+          95.53197265625
+        ],
+        "delta_xy": [
+          -3.908664666596451e-06,
+          1.7364503150929522e-06
+        ]
+      },
+      {
+        "osm_id": 286020256,
+        "vertex": 4,
+        "literal_xy": [
+          -729.7996951117467,
+          112.06520037609303
+        ],
+        "packed_xy": [
+          -729.7996875,
+          112.065205078125
+        ],
+        "delta_xy": [
+          7.611746696056798e-06,
+          4.702031972669829e-06
+        ]
+      },
+      {
+        "osm_id": 286020256,
+        "vertex": 5,
+        "literal_xy": [
+          -722.3412094811343,
+          95.46476266998707
+        ],
+        "packed_xy": [
+          -722.341171875,
+          95.464765625
+        ],
+        "delta_xy": [
+          3.7606134355883114e-05,
+          2.9550129312383433e-06
+        ]
+      },
+      {
+        "osm_id": 286020256,
+        "vertex": 6,
+        "literal_xy": [
+          -715.1984720974941,
+          98.6683559115861
+        ],
+        "packed_xy": [
+          -715.1984375,
+          98.668359375
+        ],
+        "delta_xy": [
+          3.459749416379054e-05,
+          3.463413889903677e-06
+        ]
+      },
+      {
+        "osm_id": 286020256,
+        "vertex": 7,
+        "literal_xy": [
+          -723.0665770767916,
+          116.18730636486598
+        ],
+        "packed_xy": [
+          -723.0665625,
+          116.1873046875
+        ],
+        "delta_xy": [
+          1.4576791613762907e-05,
+          -1.6773659723412493e-06
+        ]
+      },
+      {
+        "osm_id": 286020256,
+        "vertex": 8,
+        "literal_xy": [
+          -704.9238534482337,
+          124.33070596888675
+        ],
+        "packed_xy": [
+          -704.923828125,
+          124.330703125
+        ],
+        "delta_xy": [
+          2.532323367177014e-05,
+          -2.8438867474278595e-06
+        ]
+      },
+      {
+        "osm_id": 286020256,
+        "vertex": 9,
+        "literal_xy": [
+          -700.4692430372702,
+          114.40628774522938
+        ],
+        "packed_xy": [
+          -700.46921875,
+          114.4062890625
+        ],
+        "delta_xy": [
+          2.4287270207423717e-05,
+          1.3172706161412862e-06
+        ]
+      },
+      {
+        "osm_id": 286020256,
+        "vertex": 10,
+        "literal_xy": [
+          -674.7400277321283,
+          125.95490533949118
+        ],
+        "packed_xy": [
+          -674.74,
+          125.95490234375
+        ],
+        "delta_xy": [
+          2.773212827378302e-05,
+          -2.9957411697978387e-06
+        ]
+      },
+      {
+        "osm_id": 286020256,
+        "vertex": 11,
+        "literal_xy": [
+          -680.9781890550234,
+          139.84461030288932
+        ],
+        "packed_xy": [
+          -680.978203125,
+          139.844609375
+        ],
+        "delta_xy": [
+          -1.4069976600694645e-05,
+          -9.27889317381414e-07
+        ]
+      },
+      {
+        "osm_id": 286020256,
+        "vertex": 12,
+        "literal_xy": [
+          -665.1822429420056,
+          146.93508065931505
+        ],
+        "packed_xy": [
+          -665.182265625,
+          146.935078125
+        ],
+        "delta_xy": [
+          -2.268299442675925e-05,
+          -2.5343150582557428e-06
+        ]
+      },
+      {
+        "osm_id": 286020256,
+        "vertex": 13,
+        "literal_xy": [
+          -667.4180818840067,
+          151.93089389644803
+        ],
+        "packed_xy": [
+          -667.418046875,
+          151.9308984375
+        ],
+        "delta_xy": [
+          3.500900675135199e-05,
+          4.5410519646793546e-06
+        ]
+      },
+      {
+        "osm_id": 286020256,
+        "vertex": 14,
+        "literal_xy": [
+          -651.9122828096156,
+          158.8869477524526
+        ],
+        "packed_xy": [
+          -651.912265625,
+          158.886943359375
+        ],
+        "delta_xy": [
+          1.7184615558107907e-05,
+          -4.393077603026541e-06
+        ]
+      },
+      {
+        "osm_id": 286020256,
+        "vertex": 15,
+        "literal_xy": [
+          -642.8067860501685,
+          138.5900563058564
+        ],
+        "packed_xy": [
+          -642.806796875,
+          138.59005859375
+        ],
+        "delta_xy": [
+          -1.082483152003988e-05,
+          2.287893607899605e-06
+        ]
+      },
+      {
+        "osm_id": 286020256,
+        "vertex": 16,
+        "literal_xy": [
+          -639.0604757618238,
+          140.27026255196787
+        ],
+        "packed_xy": [
+          -639.06046875,
+          140.270263671875
+        ],
+        "delta_xy": [
+          7.01182375451026e-06,
+          1.1199071252576687e-06
+        ]
+      },
+      {
+        "osm_id": 286020256,
+        "vertex": 17,
+        "literal_xy": [
+          -633.6074181896149,
+          128.10556933349514
+        ],
+        "packed_xy": [
+          -633.607421875,
+          128.10556640625
+        ],
+        "delta_xy": [
+          -3.6853850815532496e-06,
+          -2.9272451342876593e-06
+        ]
+      },
+      {
+        "osm_id": 286020256,
+        "vertex": 18,
+        "literal_xy": [
+          -631.6019901312114,
+          123.64742209565908
+        ],
+        "packed_xy": [
+          -631.6019921875,
+          123.647421875
+        ],
+        "delta_xy": [
+          -2.0562885083563742e-06,
+          -2.2065907501200854e-07
+        ]
+      },
+      {
+        "osm_id": 286020256,
+        "vertex": 19,
+        "literal_xy": [
+          -702.7477506612616,
+          91.71230205478561
+        ],
+        "packed_xy": [
+          -702.747734375,
+          91.7123046875
+        ],
+        "delta_xy": [
+          1.628626159799751e-05,
+          2.632714384276369e-06
+        ]
+      },
+      {
+        "osm_id": 286020256,
+        "vertex": 20,
+        "literal_xy": [
+          -703.4048483659768,
+          93.157279426155
+        ],
+        "packed_xy": [
+          -703.40484375,
+          93.157275390625
+        ],
+        "delta_xy": [
+          4.615976763489016e-06,
+          -4.035529997281628e-06
+        ]
+      },
+      {
+        "osm_id": 286020256,
+        "vertex": 21,
+        "literal_xy": [
+          -767.9540306441693,
+          60.77410438600007
+        ],
+        "packed_xy": [
+          -767.9540625,
+          60.7741064453125
+        ],
+        "delta_xy": [
+          -3.1855830684435205e-05,
+          2.0593124290257947e-06
+        ]
+      },
+      {
+        "osm_id": 286020256,
+        "vertex": 22,
+        "literal_xy": [
+          -790.2100152265543,
+          118.44998410908826
+        ],
+        "packed_xy": [
+          -790.21,
+          118.44998046875
+        ],
+        "delta_xy": [
+          1.5226554296532413e-05,
+          -3.6403382637217874e-06
+        ]
+      }
+    ],
+    "ground_delta": false
+  },
+  "feature_ray_witnesses": [
+    {
+      "label": "Library open pointed gallery to recessed rectangular inner window",
+      "origin": [
+        -623.542734834068,
+        127.14298026893334,
+        14.695336999277988
+      ],
+      "direction": [
+        -0.4095345102881926,
+        0.9122946261395002,
+        -0.0
+      ],
+      "expected_material": "Glass",
+      "expected_distance_m": 8.399999999999999,
+      "hit": {
+        "material": "Glass",
+        "distance_m": 8.40000602694792,
+        "source_xyz_m": [
+          -626.982827188732,
+          134.80626062685735,
+          14.695336999277988
+        ],
+        "row": 14016,
+        "new_geometry": true
+      },
+      "pass_check": true
+    },
+    {
+      "label": "Library open pointed gallery to recessed rectangular inner window",
+      "origin": [
+        -607.873631076312,
+        134.17693459708946,
+        14.695336999277988
+      ],
+      "direction": [
+        -0.4095345102881926,
+        0.9122946261395002,
+        -0.0
+      ],
+      "expected_material": "Glass",
+      "expected_distance_m": 8.399999999999999,
+      "hit": {
+        "material": "Glass",
+        "distance_m": 8.400002137370837,
+        "source_xyz_m": [
+          -611.3137218380599,
+          141.8402114065732,
+          14.695336999277988
+        ],
+        "row": 14586,
+        "new_geometry": true
+      },
+      "pass_check": true
+    },
+    {
+      "label": "Library open pointed gallery to recessed rectangular inner window",
+      "origin": [
+        -592.2045273185558,
+        141.2108889252456,
+        14.695336999277988
+      ],
+      "direction": [
+        -0.4095345102881926,
+        0.9122946261395002,
+        -0.0
+      ],
+      "expected_material": "Glass",
+      "expected_distance_m": 8.399999999999999,
+      "hit": {
+        "material": "Glass",
+        "distance_m": 8.400003720588368,
+        "source_xyz_m": [
+          -595.644618728686,
+          148.87416717909016,
+          14.695336999277988
+        ],
+        "row": 15156,
+        "new_geometry": true
+      },
+      "pass_check": true
+    },
+    {
+      "label": "Library open pointed gallery to recessed rectangular inner window",
+      "origin": [
+        -573.4016028092485,
+        149.65163411903296,
+        14.695336999277988
+      ],
+      "direction": [
+        -0.4095345102881926,
+        0.9122946261395002,
+        -0.0
+      ],
+      "expected_material": "Glass",
+      "expected_distance_m": 8.399999999999999,
+      "hit": {
+        "material": "Glass",
+        "distance_m": 8.400004330130884,
+        "source_xyz_m": [
+          -576.8416944690074,
+          157.3149129289599,
+          14.695336999277988
+        ],
+        "row": 15840,
+        "new_geometry": true
+      },
+      "pass_check": true
+    },
+    {
+      "label": "Library gallery ceiling actual downward-facing soffit",
+      "origin": [
+        -615.7933685070293,
+        137.74660838052588,
+        18.09533699927799
+      ],
+      "hit": {
+        "material": "Cream",
+        "distance_m": 0.8199999147845105,
+        "source_xyz_m": [
+          -615.7933685070293,
+          137.74660838052588,
+          18.9153369140625
+        ],
+        "row": 36231,
+        "new_geometry": true
+      },
+      "pass_check": true
+    },
+    {
+      "label": "Composers round-arch middle pane between colossal columns",
+      "origin": [
+        -644.0746837600235,
+        112.56820800984866,
+        10.784893313350082
+      ],
+      "direction": [
+        -0.4095063660413622,
+        0.9123072597385148,
+        -0.0
+      ],
+      "expected_material": "Glass",
+      "expected_distance_m": 5.28,
+      "hit": {
+        "material": "Glass",
+        "distance_m": 5.280000429206177,
+        "source_xyz_m": [
+          -646.2368775484846,
+          117.38519073283592,
+          10.784893313350082
+        ],
+        "row": 37896,
+        "new_geometry": true
+      },
+      "pass_check": true
+    },
+    {
+      "label": "Composers round-arch middle pane between colossal columns",
+      "origin": [
+        -639.379708107782,
+        114.67563661734776,
+        10.784893313350082
+      ],
+      "direction": [
+        -0.4095063660413622,
+        0.9123072597385148,
+        -0.0
+      ],
+      "expected_material": "Glass",
+      "expected_distance_m": 5.28,
+      "hit": {
+        "material": "Glass",
+        "distance_m": 5.280004054716332,
+        "source_xyz_m": [
+          -641.5419033809126,
+          119.49262264791426,
+          10.784893313350082
+        ],
+        "row": 38928,
+        "new_geometry": true
+      },
+      "pass_check": true
+    },
+    {
+      "label": "Composers round-arch middle pane between colossal columns",
+      "origin": [
+        -634.6847324555406,
+        116.78306522484685,
+        10.784893313350082
+      ],
+      "direction": [
+        -0.4095063660413622,
+        0.9123072597385148,
+        -0.0
+      ],
+      "expected_material": "Glass",
+      "expected_distance_m": 5.28,
+      "hit": {
+        "material": "Glass",
+        "distance_m": 5.2799931094653205,
+        "source_xyz_m": [
+          -636.8469232465212,
+          121.6000412699814,
+          10.784893313350082
+        ],
+        "row": 39960,
+        "new_geometry": true
+      },
+      "pass_check": true
+    },
+    {
+      "label": "Composers plain three-level return estimated pane",
+      "origin": [
+        -628.1268619431415,
+        128.11008678664462,
+        10.784893313350082
+      ],
+      "direction": [
+        -0.9119780072193208,
+        -0.410239094124727,
+        -0.0
+      ],
+      "expected_material": "Glass",
+      "expected_distance_m": 5.28,
+      "hit": {
+        "material": "Glass",
+        "distance_m": 5.28000174813623,
+        "source_xyz_m": [
+          -632.9421074155214,
+          125.94402365251223,
+          10.784893313350082
+        ],
+        "row": 57532,
+        "new_geometry": true
+      },
+      "pass_check": true
+    },
+    {
+      "label": "Writers carved timber entrance, not a glass placeholder",
+      "origin": [
+        -672.9481256838765,
+        99.60781758093513,
+        5.134893313350084
+      ],
+      "direction": [
+        -0.40950636604136165,
+        0.912307259738515,
+        -0.0
+      ],
+      "expected_material": "Trunk",
+      "expected_distance_m": 5.28,
+      "hit": {
+        "material": "Trunk",
+        "distance_m": 5.280011343144859,
+        "source_xyz_m": [
+          -675.1103239416649,
+          104.4248102607879,
+          5.134893313350084
+        ],
+        "row": 58516,
+        "new_geometry": true
+      },
+      "pass_check": true
+    },
+    {
+      "label": "Writers open upper gallery rectangular back window",
+      "origin": [
+        -662.6968964806022,
+        104.20927566830494,
+        15.084893313350083
+      ],
+      "direction": [
+        -0.40950636604136165,
+        0.912307259738515,
+        -0.0
+      ],
+      "expected_material": "Glass",
+      "expected_distance_m": 6.15,
+      "hit": {
+        "material": "Glass",
+        "distance_m": 6.14999193619371,
+        "source_xyz_m": [
+          -665.2153573295765,
+          109.81995795902779,
+          15.084893313350083
+        ],
+        "row": 60615,
+        "new_geometry": true
+      },
+      "pass_check": true
+    },
+    {
+      "label": "Writers gallery upper back masonry, not arched glass sheet",
+      "origin": [
+        -662.6968964806022,
+        104.20927566830494,
+        17.834893313350083
+      ],
+      "direction": [
+        -0.40950636604136165,
+        0.912307259738515,
+        -0.0
+      ],
+      "expected_material": "Cream",
+      "expected_distance_m": 5.95,
+      "hit": {
+        "material": "Cream",
+        "distance_m": 5.950009690966962,
+        "source_xyz_m": [
+          -665.1334633270609,
+          109.63751270488862,
+          17.834893313350083
+        ],
+        "row": 60554,
+        "new_geometry": true
+      },
+      "pass_check": true
+    },
+    {
+      "label": "Writers open upper gallery rectangular back window",
+      "origin": [
+        -659.4031165098934,
+        105.68775109634367,
+        15.084893313350083
+      ],
+      "direction": [
+        -0.40950636604136165,
+        0.912307259738515,
+        -0.0
+      ],
+      "expected_material": "Glass",
+      "expected_distance_m": 6.15,
+      "hit": {
+        "material": "Glass",
+        "distance_m": 6.149992706475321,
+        "source_xyz_m": [
+          -661.921577674303,
+          111.29843408980003,
+          15.084893313350083
+        ],
+        "row": 61011,
+        "new_geometry": true
+      },
+      "pass_check": true
+    },
+    {
+      "label": "Writers gallery upper back masonry, not arched glass sheet",
+      "origin": [
+        -659.4031165098934,
+        105.68775109634367,
+        17.834893313350083
+      ],
+      "direction": [
+        -0.40950636604136165,
+        0.912307259738515,
+        -0.0
+      ],
+      "expected_material": "Cream",
+      "expected_distance_m": 5.95,
+      "hit": {
+        "material": "Cream",
+        "distance_m": 5.9500025878398795,
+        "source_xyz_m": [
+          -661.8396804475764,
+          111.11598165269295,
+          17.834893313350083
+        ],
+        "row": 60950,
+        "new_geometry": true
+      },
+      "pass_check": true
+    },
+    {
+      "label": "Writers projected oriel pane",
+      "origin": [
+        -677.174307932763,
+        97.71081575781467,
+        10.384893313350084
+      ],
+      "direction": [
+        -0.40950636604136165,
+        0.912307259738515,
+        -0.0
+      ],
+      "expected_material": "Glass",
+      "expected_distance_m": 4.15,
+      "hit": {
+        "material": "Glass",
+        "distance_m": 4.149991505299195,
+        "source_xyz_m": [
+          -678.8737558732006,
+          101.4968831359523,
+          10.384893313350084
+        ],
+        "row": 61695,
+        "new_geometry": true
+      },
+      "pass_check": true
+    },
+    {
+      "label": "Writers red-roof paired rectangular attic pane",
+      "origin": [
+        -670.2523118192507,
+        100.81788461420993,
+        19.584893313350083
+      ],
+      "direction": [
+        -0.40950636604136165,
+        0.912307259738515,
+        -0.0
+      ],
+      "expected_material": "Glass",
+      "expected_distance_m": 5.7775,
+      "hit": {
+        "material": "Glass",
+        "distance_m": 5.777497982721156,
+        "source_xyz_m": [
+          -672.6182340229661,
+          106.08873796697107,
+          19.584893313350083
+        ],
+        "row": 76903,
+        "new_geometry": true
+      },
+      "pass_check": true
+    },
+    {
+      "label": "House23 polygonal oriel upper pane",
+      "origin": [
+        -688.6113143743854,
+        92.57709913295427,
+        13.584893313350083
+      ],
+      "direction": [
+        -0.4095063660413614,
+        0.9123072597385151,
+        -0.0
+      ],
+      "expected_material": "Glass",
+      "expected_distance_m": 4.0,
+      "hit": {
+        "material": "Glass",
+        "distance_m": 4.00001065722159,
+        "source_xyz_m": [
+          -690.249344202751,
+          96.22633789456896,
+          13.584893313350083
+        ],
+        "row": 81876,
+        "new_geometry": true
+      },
+      "pass_check": true
+    },
+    {
+      "label": "House23 arched dark mansard opening",
+      "origin": [
+        -689.9228453386668,
+        91.98839365746841,
+        20.584893313350083
+      ],
+      "direction": [
+        -0.4095063660413614,
+        0.9123072597385151,
+        -0.0
+      ],
+      "expected_material": "Black",
+      "expected_distance_m": 5.66125,
+      "hit": {
+        "material": "Black",
+        "distance_m": 5.661247383868286,
+        "source_xyz_m": [
+          -692.2411621820959,
+          97.15319074494712,
+          20.584893313350083
+        ],
+        "row": 93083,
+        "new_geometry": true
+      },
+      "pass_check": true
+    }
+  ],
+  "packed_tree_proof": {
+    "status": "PRIVATE actual packed tree emission and Ground/protection/overhang proof; no native visual acceptance",
+    "poses": 31,
+    "triangles": 3162,
+    "minimum_native_root_embed_m": 0.03999979531513631,
+    "maximum_root_center_xy_encoding_error_m": 3.46004440147356e-05,
+    "native_protection_clearance_lower_bound_m": 2.9639777313911133,
+    "native_signed_roadside_upper_bound_m": -3.238977111391006,
+    "projected_leaf_road_intersections": 0,
+    "minimum_over_road_leaf_m": null,
+    "roots": [
+      {
+        "index": 0,
+        "native_root_corners": [
+          [
+            -628.147109375,
+            127.997509765625,
+            3.2336151123046877
+          ],
+          [
+            -627.897109375,
+            127.997509765625,
+            3.2336151123046877
+          ],
+          [
+            -627.897109375,
+            127.747509765625,
+            3.2336151123046877
+          ],
+          [
+            -628.147109375,
+            127.747509765625,
+            3.2336151123046877
+          ]
+        ],
+        "minimum_embed_m": 0.04000013544381531,
+        "actual_top_above_base_m": 11.536000230767122
+      },
+      {
+        "index": 1,
+        "native_root_corners": [
+          [
+            -619.9364453125,
+            131.6833203125,
+            3.1109323120117187
+          ],
+          [
+            -619.6864453125,
+            131.6833203125,
+            3.1109323120117187
+          ],
+          [
+            -619.6864453125,
+            131.4333203125,
+            3.1109323120117187
+          ],
+          [
+            -619.9364453125,
+            131.4333203125,
+            3.1109323120117187
+          ]
+        ],
+        "minimum_embed_m": 0.03999985700416353,
+        "actual_top_above_base_m": 12.256999959890369
+      },
+      {
+        "index": 2,
+        "native_root_corners": [
+          [
+            -611.7258203125,
+            135.369130859375,
+            3.3230072021484376
+          ],
+          [
+            -611.4758203125,
+            135.369130859375,
+            3.3230072021484376
+          ],
+          [
+            -611.4758203125,
+            135.119130859375,
+            3.3230072021484376
+          ],
+          [
+            -611.7258203125,
+            135.119130859375,
+            3.3230072021484376
+          ]
+        ],
+        "minimum_embed_m": 0.03999998031693863,
+        "actual_top_above_base_m": 12.977999897612749
+      },
+      {
+        "index": 3,
+        "native_root_corners": [
+          [
+            -585.2692578125,
+            147.245625,
+            3.389687194824219
+          ],
+          [
+            -585.0192578125,
+            147.245625,
+            3.389687194824219
+          ],
+          [
+            -585.0192578125,
+            146.995625,
+            3.389687194824219
+          ],
+          [
+            -585.2692578125,
+            146.995625,
+            3.389687194824219
+          ]
+        ],
+        "minimum_embed_m": 0.03999995214502983,
+        "actual_top_above_base_m": 11.536000108890125
+      },
+      {
+        "index": 4,
+        "native_root_corners": [
+          [
+            -576.146328125,
+            151.3409765625,
+            3.209944152832031
+          ],
+          [
+            -575.896328125,
+            151.3409765625,
+            3.209944152832031
+          ],
+          [
+            -575.896328125,
+            151.0909765625,
+            3.209944152832031
+          ],
+          [
+            -576.146328125,
+            151.0909765625,
+            3.209944152832031
+          ]
+        ],
+        "minimum_embed_m": 0.040000110799988775,
+        "actual_top_above_base_m": 12.257000316446106
+      },
+      {
+        "index": 5,
+        "native_root_corners": [
+          [
+            -567.9356640625,
+            155.026787109375,
+            3.0167315673828123
+          ],
+          [
+            -567.6856640625,
+            155.026787109375,
+            3.0167315673828123
+          ],
+          [
+            -567.6856640625,
+            154.776787109375,
+            3.0167315673828123
+          ],
+          [
+            -567.9356640625,
+            154.776787109375,
+            3.0167315673828123
+          ]
+        ],
+        "minimum_embed_m": 0.0400000051877929,
+        "actual_top_above_base_m": 12.977999872741893
+      },
+      {
+        "index": 6,
+        "native_root_corners": [
+          [
+            -752.851015625,
+            36.10298828125,
+            2.935374450683594
+          ],
+          [
+            -752.601015625,
+            36.10298828125,
+            2.935374450683594
+          ],
+          [
+            -752.601015625,
+            35.85298828125,
+            2.935374450683594
+          ],
+          [
+            -752.851015625,
+            35.85298828125,
+            2.935374450683594
+          ]
+        ],
+        "minimum_embed_m": 0.040000051422043104,
+        "actual_top_above_base_m": 12.566000009613113
+      },
+      {
+        "index": 7,
+        "native_root_corners": [
+          [
+            -738.398046875,
+            40.5875,
+            3.4212765502929687
+          ],
+          [
+            -738.148046875,
+            40.5875,
+            3.4212765502929687
+          ],
+          [
+            -738.148046875,
+            40.3375,
+            3.4212765502929687
+          ],
+          [
+            -738.398046875,
+            40.3375,
+            3.4212765502929687
+          ]
+        ],
+        "minimum_embed_m": 0.03999986586187321,
+        "actual_top_above_base_m": 13.390000439313908
+      },
+      {
+        "index": 8,
+        "native_root_corners": [
+          [
+            -722.969921875,
+            47.72703125,
+            3.058509521484375
+          ],
+          [
+            -722.719921875,
+            47.72703125,
+            3.058509521484375
+          ],
+          [
+            -722.719921875,
+            47.47703125,
+            3.058509521484375
+          ],
+          [
+            -722.969921875,
+            47.47703125,
+            3.058509521484375
+          ]
+        ],
+        "minimum_embed_m": 0.04000010765770723,
+        "actual_top_above_base_m": 14.214000136482916
+      },
+      {
+        "index": 9,
+        "native_root_corners": [
+          [
+            -708.449296875,
+            54.4465869140625,
+            3.01888427734375
+          ],
+          [
+            -708.199296875,
+            54.4465869140625,
+            3.01888427734375
+          ],
+          [
+            -708.199296875,
+            54.1965869140625,
+            3.01888427734375
+          ],
+          [
+            -708.449296875,
+            54.1965869140625,
+            3.01888427734375
+          ]
+        ],
+        "minimum_embed_m": 0.04000010536871823,
+        "actual_top_above_base_m": 15.038000382912532
+      },
+      {
+        "index": 10,
+        "native_root_corners": [
+          [
+            -693.021171875,
+            61.5861181640625,
+            2.8344024658203124
+          ],
+          [
+            -692.771171875,
+            61.5861181640625,
+            2.8344024658203124
+          ],
+          [
+            -692.771171875,
+            61.3361181640625,
+            2.8344024658203124
+          ],
+          [
+            -693.021171875,
+            61.3361181640625,
+            2.8344024658203124
+          ]
+        ],
+        "minimum_embed_m": 0.03999998579667752,
+        "actual_top_above_base_m": 12.56600038041426
+      },
+      {
+        "index": 11,
+        "native_root_corners": [
+          [
+            -677.593046875,
+            68.7256494140625,
+            2.962953796386719
+          ],
+          [
+            -677.343046875,
+            68.7256494140625,
+            2.962953796386719
+          ],
+          [
+            -677.343046875,
+            68.4756494140625,
+            2.962953796386719
+          ],
+          [
+            -677.593046875,
+            68.4756494140625,
+            2.962953796386719
+          ]
+        ],
+        "minimum_embed_m": 0.039999903915092894,
+        "actual_top_above_base_m": 13.390000401260687
+      },
+      {
+        "index": 12,
+        "native_root_corners": [
+          [
+            -663.98,
+            75.025234375,
+            2.8962109375
+          ],
+          [
+            -663.73,
+            75.025234375,
+            2.8962109375
+          ],
+          [
+            -663.73,
+            74.775234375,
+            2.8962109375
+          ],
+          [
+            -663.98,
+            74.775234375,
+            2.8962109375
+          ]
+        ],
+        "minimum_embed_m": 0.03999998321181142,
+        "actual_top_above_base_m": 14.214000260928815
+      },
+      {
+        "index": 13,
+        "native_root_corners": [
+          [
+            -649.4594140625,
+            81.744794921875,
+            2.931638488769531
+          ],
+          [
+            -649.2094140625,
+            81.744794921875,
+            2.931638488769531
+          ],
+          [
+            -649.2094140625,
+            81.494794921875,
+            2.931638488769531
+          ],
+          [
+            -649.4594140625,
+            81.494794921875,
+            2.931638488769531
+          ]
+        ],
+        "minimum_embed_m": 0.04000013376996714,
+        "actual_top_above_base_m": 15.038000049335501
+      },
+      {
+        "index": 14,
+        "native_root_corners": [
+          [
+            -634.0312890625,
+            88.884326171875,
+            3.140036926269531
+          ],
+          [
+            -633.7812890625,
+            88.884326171875,
+            3.140036926269531
+          ],
+          [
+            -633.7812890625,
+            88.634326171875,
+            3.140036926269531
+          ],
+          [
+            -634.0312890625,
+            88.634326171875,
+            3.140036926269531
+          ]
+        ],
+        "minimum_embed_m": 0.040000066739678264,
+        "actual_top_above_base_m": 12.56600060464704
+      },
+      {
+        "index": 15,
+        "native_root_corners": [
+          [
+            -618.6031640625,
+            96.023857421875,
+            3.1398028564453124
+          ],
+          [
+            -618.3531640625,
+            96.023857421875,
+            3.1398028564453124
+          ],
+          [
+            -618.3531640625,
+            95.773857421875,
+            3.1398028564453124
+          ],
+          [
+            -618.6031640625,
+            95.773857421875,
+            3.1398028564453124
+          ]
+        ],
+        "minimum_embed_m": 0.03999990182240598,
+        "actual_top_above_base_m": 13.389999487826033
+      },
+      {
+        "index": 16,
+        "native_root_corners": [
+          [
+            -574.133828125,
+            116.6025,
+            3.3903912353515624
+          ],
+          [
+            -573.883828125,
+            116.6025,
+            3.3903912353515624
+          ],
+          [
+            -573.883828125,
+            116.3525,
+            3.3903912353515624
+          ],
+          [
+            -574.133828125,
+            116.3525,
+            3.3903912353515624
+          ]
+        ],
+        "minimum_embed_m": 0.03999991382358559,
+        "actual_top_above_base_m": 12.566000452387351
+      },
+      {
+        "index": 17,
+        "native_root_corners": [
+          [
+            -559.6132421875,
+            123.322060546875,
+            3.489774475097656
+          ],
+          [
+            -559.3632421875,
+            123.322060546875,
+            3.489774475097656
+          ],
+          [
+            -559.3632421875,
+            123.072060546875,
+            3.489774475097656
+          ],
+          [
+            -559.6132421875,
+            123.072060546875,
+            3.489774475097656
+          ]
+        ],
+        "minimum_embed_m": 0.040000103141188514,
+        "actual_top_above_base_m": 13.38999959168303
+      },
+      {
+        "index": 18,
+        "native_root_corners": [
+          [
+            -742.291328125,
+            22.80851806640625,
+            4.439989929199219
+          ],
+          [
+            -742.041328125,
+            22.80851806640625,
+            4.439989929199219
+          ],
+          [
+            -742.041328125,
+            22.55851806640625,
+            4.439989929199219
+          ],
+          [
+            -742.291328125,
+            22.55851806640625,
+            4.439989929199219
+          ]
+        ],
+        "minimum_embed_m": 0.0399999061906291,
+        "actual_top_above_base_m": 12.977999666563278
+      },
+      {
+        "index": 19,
+        "native_root_corners": [
+          [
+            -727.215546875,
+            33.09063232421875,
+            4.596139526367187
+          ],
+          [
+            -726.965546875,
+            33.09063232421875,
+            4.596139526367187
+          ],
+          [
+            -726.965546875,
+            32.84063232421875,
+            4.596139526367187
+          ],
+          [
+            -727.215546875,
+            32.84063232421875,
+            4.596139526367187
+          ]
+        ],
+        "minimum_embed_m": 0.039999890105892,
+        "actual_top_above_base_m": 13.80200023196442
+      },
+      {
+        "index": 20,
+        "native_root_corners": [
+          [
+            -711.787421875,
+            40.23016357421875,
+            4.098781127929687
+          ],
+          [
+            -711.537421875,
+            40.23016357421875,
+            4.098781127929687
+          ],
+          [
+            -711.537421875,
+            39.98016357421875,
+            4.098781127929687
+          ],
+          [
+            -711.787421875,
+            39.98016357421875,
+            4.098781127929687
+          ]
+        ],
+        "minimum_embed_m": 0.040000137420923565,
+        "actual_top_above_base_m": 14.626000228790016
+      },
+      {
+        "index": 21,
+        "native_root_corners": [
+          [
+            -695.451796875,
+            47.78966796875,
+            3.800582275390625
+          ],
+          [
+            -695.201796875,
+            47.78966796875,
+            3.800582275390625
+          ],
+          [
+            -695.201796875,
+            47.53966796875,
+            3.800582275390625
+          ],
+          [
+            -695.451796875,
+            47.53966796875,
+            3.800582275390625
+          ]
+        ],
+        "minimum_embed_m": 0.04000001408821108,
+        "actual_top_above_base_m": 15.449999985911788
+      },
+      {
+        "index": 22,
+        "native_root_corners": [
+          [
+            -679.11609375,
+            55.349169921875,
+            3.802378845214844
+          ],
+          [
+            -678.86609375,
+            55.349169921875,
+            3.802378845214844
+          ],
+          [
+            -678.86609375,
+            55.099169921875,
+            3.802378845214844
+          ],
+          [
+            -679.11609375,
+            55.099169921875,
+            3.802378845214844
+          ]
+        ],
+        "minimum_embed_m": 0.03999990685996835,
+        "actual_top_above_base_m": 12.977999665893936
+      },
+      {
+        "index": 23,
+        "native_root_corners": [
+          [
+            -662.78046875,
+            62.908671875,
+            3.839782409667969
+          ],
+          [
+            -662.53046875,
+            62.908671875,
+            3.839782409667969
+          ],
+          [
+            -662.53046875,
+            62.658671875,
+            3.839782409667969
+          ],
+          [
+            -662.78046875,
+            62.658671875,
+            3.839782409667969
+          ]
+        ],
+        "minimum_embed_m": 0.040000039746519445,
+        "actual_top_above_base_m": 13.801999777148012
+      },
+      {
+        "index": 24,
+        "native_root_corners": [
+          [
+            -646.4448046875,
+            70.468173828125,
+            3.871176452636719
+          ],
+          [
+            -646.1948046875,
+            70.468173828125,
+            3.871176452636719
+          ],
+          [
+            -646.1948046875,
+            70.218173828125,
+            3.871176452636719
+          ],
+          [
+            -646.4448046875,
+            70.218173828125,
+            3.871176452636719
+          ]
+        ],
+        "minimum_embed_m": 0.03999997641018149,
+        "actual_top_above_base_m": 14.626000084624973
+      },
+      {
+        "index": 25,
+        "native_root_corners": [
+          [
+            -630.109140625,
+            78.0276806640625,
+            4.2438623046875
+          ],
+          [
+            -629.859140625,
+            78.0276806640625,
+            4.2438623046875
+          ],
+          [
+            -629.859140625,
+            77.7776806640625,
+            4.2438623046875
+          ],
+          [
+            -630.109140625,
+            77.7776806640625,
+            4.2438623046875
+          ]
+        ],
+        "minimum_embed_m": 0.03999995268433043,
+        "actual_top_above_base_m": 15.450000047315669
+      },
+      {
+        "index": 26,
+        "native_root_corners": [
+          [
+            -613.7734765625,
+            85.5871875,
+            4.699274291992188
+          ],
+          [
+            -613.5234765625,
+            85.5871875,
+            4.699274291992188
+          ],
+          [
+            -613.5234765625,
+            85.3371875,
+            4.699274291992188
+          ],
+          [
+            -613.7734765625,
+            85.3371875,
+            4.699274291992188
+          ]
+        ],
+        "minimum_embed_m": 0.04000008147643186,
+        "actual_top_above_base_m": 12.977999796453258
+      },
+      {
+        "index": 27,
+        "native_root_corners": [
+          [
+            -597.4378125,
+            93.146689453125,
+            4.9772335815429685
+          ],
+          [
+            -597.1878125,
+            93.146689453125,
+            4.9772335815429685
+          ],
+          [
+            -597.1878125,
+            92.896689453125,
+            4.9772335815429685
+          ],
+          [
+            -597.4378125,
+            92.896689453125,
+            4.9772335815429685
+          ]
+        ],
+        "minimum_embed_m": 0.040000086542177904,
+        "actual_top_above_base_m": 13.801999730352355
+      },
+      {
+        "index": 28,
+        "native_root_corners": [
+          [
+            -581.1021484375,
+            100.70619140625,
+            5.267167358398438
+          ],
+          [
+            -580.8521484375,
+            100.70619140625,
+            5.267167358398438
+          ],
+          [
+            -580.8521484375,
+            100.45619140625,
+            5.267167358398438
+          ],
+          [
+            -581.1021484375,
+            100.45619140625,
+            5.267167358398438
+          ]
+        ],
+        "minimum_embed_m": 0.04000027620593816,
+        "actual_top_above_base_m": 14.626000090004997
+      },
+      {
+        "index": 29,
+        "native_root_corners": [
+          [
+            -564.766484375,
+            108.265693359375,
+            5.7651129150390625
+          ],
+          [
+            -564.516484375,
+            108.265693359375,
+            5.7651129150390625
+          ],
+          [
+            -564.516484375,
+            108.015693359375,
+            5.7651129150390625
+          ],
+          [
+            -564.766484375,
+            108.015693359375,
+            5.7651129150390625
+          ]
+        ],
+        "minimum_embed_m": 0.03999979531513631,
+        "actual_top_above_base_m": 15.449999594333303
+      },
+      {
+        "index": 30,
+        "native_root_corners": [
+          [
+            -549.338359375,
+            115.405224609375,
+            5.894457397460937
+          ],
+          [
+            -549.088359375,
+            115.405224609375,
+            5.894457397460937
+          ],
+          [
+            -549.088359375,
+            115.155224609375,
+            5.894457397460937
+          ],
+          [
+            -549.338359375,
+            115.155224609375,
+            5.894457397460937
+          ]
+        ],
+        "minimum_embed_m": 0.039999937185623224,
+        "actual_top_above_base_m": 12.977999940744066
+      }
+    ],
+    "failures": [],
+    "recipe_sha256": "ca140e4a33e6a351d38344fc2b86c77f3aff1cccd11a550ccf70232b8b282b5f",
+    "elapsed_s": 0.18608434399357066,
+    "peak_rss_kb": 118956
+  },
+  "reproducibility": "The compressed recipe/canopy are explicit authored source inputs, including actual Ground wall-foot profiles and bounded photographic estimates. prepare reserves two owners without cutouts. finish validates source/actual Ground witnesses, deterministically replays the two existing generic bodies, validates their exact emission signatures, retains nonselected primitives, and clips only qualified old roof strips on actual packed edges with barycentrically interpolated original attributes. It then emits the unchanged reviewed source models/trees. No ignored caches, mesh backups, external triangulator or source-image textures are required for generation.",
+  "initial_planning_estimates_superseded": {
+    "qualification": "Planning estimates from principal-floor/raised-band proportions and known frontage scale; not rectified survey heights or approved frozen geometry. Must be checked during bounded prototype fitting.",
+    "library": {
+      "current_model_m": 13.6,
+      "wing_m": 13.6,
+      "wing_uncertainty_m": 2.5,
+      "raised_centre_m": 17.8,
+      "centre_uncertainty_m": 3.5,
+      "entrance_threshold_and_stairs": "HELD pending actual Ground/primary frontage registration"
+    },
+    "composers27": {
+      "main_cornice_m": 17,
+      "uncertainty_m": 3,
+      "pediment_rise_m": 2,
+      "pediment_uncertainty_m": 1,
+      "principal_levels": 3
+    },
+    "writers25": {
+      "main_cornice_m": 15,
+      "uncertainty_m": 3,
+      "red_gabled_roof_rise_m": 2,
+      "roof_uncertainty_m": 1,
+      "principal_levels": 3
+    },
+    "house23": {
+      "main_cornice_m": 17,
+      "uncertainty_m": 3,
+      "mansard_rise_m": 2.4,
+      "roof_uncertainty_m": 1,
+      "principal_levels": 5
+    }
+  },
+  "current_architectural_estimates": {
+    "qualification": "Photographic architectural estimates, not measured dimensions. The recipe is authoritative; historical planning hypotheses below are superseded.",
+    "library": {
+      "wing_height_m": 15.6,
+      "height_uncertainty_m": 3,
+      "gallery_depth_m": 3.2,
+      "depth_uncertainty_m": 1,
+      "pointed_arcade_bays": 22,
+      "bay_count_uncertainty": 3,
+      "illustrative_figures": 9,
+      "figure_identities_and_exact_count": "held",
+      "entrance_pavilion_returns_steps": "held; retained old mass and nonselected rows"
+    },
+    "composers27": {
+      "main_cornice_m": 17,
+      "cornice_uncertainty_m": 3,
+      "pediment_rise_m": 2,
+      "pediment_uncertainty_m": 1,
+      "visible_levels": 3,
+      "edge17": "plain three-level cornice-continuous return; single window stack estimated"
+    },
+    "writers25": {
+      "main_cornice_m": 16,
+      "cornice_uncertainty_m": 3,
+      "roof_rise_m": 2,
+      "roof_uncertainty_m": 1,
+      "visible_levels": 3
+    },
+    "house23": {
+      "main_cornice_m": 17,
+      "cornice_uncertainty_m": 3,
+      "mansard_rise_m": 2.4,
+      "roof_uncertainty_m": 1,
+      "visible_body_rows": 4,
+      "mansard_arches": 6
+    },
+    "datum": "Original renderer/DSM-derived building datum is inherited and uncertain; new lower wall profiles follow the qualified actual emitted Ground. No survey or threshold claim."
+  },
+  "mapped_park_context": {
+    "osm_id": 25359701,
+    "tags": {
+      "alt_name": "26 Bak\u0131 Komissar\u0131",
+      "leisure": "park",
+      "name": "Sahil ba\u011f\u0131",
+      "name:az": "Sahil Ba\u011f\u0131",
+      "name:ru": "\u0421\u0430\u0445\u0438\u043b \u0411\u0430\u0433\u044b",
+      "wikidata": "Q65280281",
+      "wikimedia_commons": "Category:Sahil Park",
+      "wikipedia": "az:Sahil ba\u011f\u0131"
+    },
+    "points_xy_m": [
+      [
+        -734.5700537702886,
+        -36.8682812317641
+      ],
+      [
+        -762.2961633979211,
+        37.60966094686793
+      ],
+      [
+        -546.3584970348812,
+        137.53712705905724
+      ],
+      [
+        -510.2949269254495,
+        59.27312013991949
+      ],
+      [
+        -734.5700537702886,
+        -36.8682812317641
+      ]
+    ],
+    "closed": true
+  },
+  "canopy_scope": {
+    "individual_osm_tree_claims": false,
+    "source": "Reference205 dense summer corridor; primary frontage photographs retain street trunk/crown context; official Sahil Garden account supports mature plane/ash/palm across park, not precise street species/poses.",
+    "source_parcels": "Actual Sahil park25359701 and photo/footway-supported sidewalk strips outside Road/protection/qualified bodies. Three mapped park fountains and pedestrian paths are exclusions; tree_row/forest/grass ways in the broad query lie outside Sahil and are not transplanted.",
+    "initial_finite_pose_budget": [
+      30,
+      45
+    ],
+    "street_height_m": [
+      8,
+      13
+    ],
+    "park_edge_height_m": [
+      10,
+      16
+    ],
+    "crown_width_m": [
+      6,
+      11
+    ],
+    "density_and_height_status": "Broad visual reconstruction bounds, not individual tree survey; freeze finite literal poses only after source/prototype fitting.",
+    "preserve": "Keep all accepted tree poses outside this finite domain, actual Road/Field/protection, all outside terrain positions/normals/UVs; prove actual emitted Ground root support and all-road-arm clearance, including overhang in3D.",
+    "ground_cover": "HELD: no blanket park grass/low plane. Existing context has no mapped individual tree nodes or Sahil-specific lawn polygons. Bound any later cosmetic land-cover change separately."
+  },
+  "source_scope_note": "Only edge10 and compound edges17/18 are replaced. No unregistered Library entrance/return/pavilion, western rear roof gap, courtyard, Ground or protection changes.",
+  "canonical_adapter_replay": {
+    "status": "PASS",
+    "frozen_rows": 166942,
+    "canonical_rows": 166942,
+    "frozen_material_payload_counter_sha256": "1d4410abaaeddffd43f1fbe2c3d03b09984b625d283a02af682f5fcee7dc83f5",
+    "canonical_material_payload_counter_sha256": "1d4410abaaeddffd43f1fbe2c3d03b09984b625d283a02af682f5fcee7dc83f5",
+    "missing_rows": 0,
+    "extra_rows": 0,
+    "ground_road_unchanged": true,
+    "cutouts": [],
+    "city_parents": {
+      "Building_City_m2_00": 137445,
+      "Building_City_m3_00": 29497
+    },
+    "elapsed_s": 10.582807564001996,
+    "peak_rss_kb": 276476
+  },
+  "focused_checks": [
+    "pytest Tests/test_baku_khagani.py:3passed",
+    "mypy seven owned modules plus focused test:PASS",
+    "Ruff owned modules plus focused test:PASS"
+  ]
+}

@@ -1,0 +1,1040 @@
+{
+  "source_plan_sha256": "420c6a02e0881e6116bcc12ed1b96b4b8a9ea8eea4570dcc4ee3152a7a95fa03",
+  "library": [
+    {
+      "file": "library-primary-0.jpg",
+      "title": "File:Kitabxanan\u0131n binas\u0131 XX \u0259srin 60-c\u0131 ill\u0259rind\u0259.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Kitabxanan%C4%B1n_binas%C4%B1_XX_%C9%99srin_60-c%C4%B1_ill%C9%99rind%C9%99.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Kitabxanan%C4%B1n_binas%C4%B1_XX_%C9%99srin_60-c%C4%B1_ill%C9%99rind%C9%99.jpg/1920px-Kitabxanan%C4%B1n_binas%C4%B1_XX_%C9%99srin_60-c%C4%B1_ill%C9%99rind%C9%99.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/2/29/Kitabxanan%C4%B1n_binas%C4%B1_XX_%C9%99srin_60-c%C4%B1_ill%C9%99rind%C9%99.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "d43e282d8d8dccad2d9e95657d8ccb3a12a5738f756447c59e081ead48295836",
+      "bytes": 633001,
+      "metadata": {
+        "DateTime": {
+          "value": "2025-09-02 11:24:46",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Kitabxanan\u0131n binas\u0131 XX \u0259srin 60-c\u0131 ill\u0259rind\u0259",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "CC-Zero|National Library of Azerbaijan|Self-published work|Unidentified automobiles in Azerbaijan|Baku in the 1960s|Transport in the Soviet Union in the 1960s|Automobiles in Baku",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "Kitabxanan\u0131n binas\u0131 XX \u0259srin 60-c\u0131 ill\u0259rind\u0259",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "2025-09-02",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<a href=\"//commons.wikimedia.org/w/index.php?title=User:Gulieva82&amp;action=edit&amp;redlink=1\" class=\"new\" title=\"User:Gulieva82 (page does not exist)\">Gulieva82</a>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "cc0",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "library-primary-1.jpg",
+      "title": "File:Nizami street-74-Baku.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Nizami_street-74-Baku.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Nizami_street-74-Baku.jpg/1920px-Nizami_street-74-Baku.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Nizami_street-74-Baku.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "e1871472e0b36bcf3aa98dd79a0e9563a0bf8c9d02fff0865a1f1cfff2a8ea6a",
+      "bytes": 439326,
+      "metadata": {
+        "DateTime": {
+          "value": "2010-12-20 08:28:12",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Nizami street-74-Baku",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "Taken with Samsung SGH-D980|National Library of Azerbaijan|Self-published work|PD-self|2010 in Baku|Nizami Street, Baku",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "Nizami street 74 in Baku.",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "2010-12-19",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<a href=\"//commons.wikimedia.org/wiki/User:Shikhlinski\" title=\"User:Shikhlinski\">Shikhlinski</a>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "Public domain",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Public domain",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Copyrighted": {
+          "value": "False",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "pd",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      }
+    }
+  ],
+  "historic": [
+    {
+      "file": "west-primary-23.jpg",
+      "title": "File:Xaqani k\u00fc\u00e7\u0259si, 23 \u00fcnvan\u0131nda yerl\u0259\u015f\u0259n bina 202409 (1).jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Xaqani_k%C3%BC%C3%A7%C9%99si,_23_%C3%BCnvan%C4%B1nda_yerl%C9%99%C5%9F%C9%99n_bina_202409_(1).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Xaqani_k%C3%BC%C3%A7%C9%99si%2C_23_%C3%BCnvan%C4%B1nda_yerl%C9%99%C5%9F%C9%99n_bina_202409_%281%29.jpg/1920px-Xaqani_k%C3%BC%C3%A7%C9%99si%2C_23_%C3%BCnvan%C4%B1nda_yerl%C9%99%C5%9F%C9%99n_bina_202409_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Xaqani_k%C3%BC%C3%A7%C9%99si%2C_23_%C3%BCnvan%C4%B1nda_yerl%C9%99%C5%9F%C9%99n_bina_202409_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "bytes": 884606,
+      "sha256": "b1b434ae235b9ef6d241ed295b5a7698154e131a403d46a2959afd846656ea35",
+      "metadata": [
+        {
+          "name": "ImageWidth",
+          "value": 4032
+        },
+        {
+          "name": "ImageLength",
+          "value": 3024
+        },
+        {
+          "name": "Orientation",
+          "value": 1
+        },
+        {
+          "name": "LightSource",
+          "value": 0
+        },
+        {
+          "name": "Artist",
+          "value": "R\u0259c\u0259b Yax\u015f\u0131"
+        },
+        {
+          "name": "MEDIAWIKI_EXIF_VERSION",
+          "value": 1
+        }
+      ],
+      "extmetadata": {
+        "DateTime": {
+          "value": "2024-09-29 06:10:55",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Xaqani k\u00fc\u00e7\u0259si, 23 \u00fcnvan\u0131nda yerl\u0259\u015f\u0259n bina 202409 (1)",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "Cultural heritage monuments in Azerbaijan|Self-published work|Cultural heritage monuments in Azerbaijan with known IDs|Images from Wiki Loves Monuments 2024|Uploaded via Campaign:wlm-az|Files with coordinates missing SDC location of creation|Images from Wiki Loves Monuments missing SDC depicts|Images from Wiki Loves Monuments missing SDC location of creation|Images from Wiki Loves Monuments 2024 in Azerbaijan|Building on Khagani Street 23",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "GPSLatitude": {
+          "value": "40.373636",
+          "source": "commons-desc-page"
+        },
+        "GPSLongitude": {
+          "value": "49.845110",
+          "source": "commons-desc-page"
+        },
+        "GPSMapDatum": {
+          "value": "WGS-84",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "This is a photo of a monument in Azerbaijan identified by the ID 3453",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "2024-09-28",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<a href=\"//commons.wikimedia.org/wiki/User:R%C9%99c%C9%99b_Yax%C5%9F%C4%B1\" title=\"User:R\u0259c\u0259b Yax\u015f\u0131\">R\u0259c\u0259b Yax\u015f\u0131</a>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "CC BY-SA 4.0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Attribution-Share Alike 4.0",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "true",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "https://creativecommons.org/licenses/by-sa/4.0",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "cc-by-sa-4.0",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "west-primary-25.jpg",
+      "title": "File:Az\u0259rbaycan Yaz\u0131\u00e7\u0131lar \u0130ttifaq\u0131n\u0131n binas\u0131 202409 (1).jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Az%C9%99rbaycan_Yaz%C4%B1%C3%A7%C4%B1lar_%C4%B0ttifaq%C4%B1n%C4%B1n_binas%C4%B1_202409_(1).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/Az%C9%99rbaycan_Yaz%C4%B1%C3%A7%C4%B1lar_%C4%B0ttifaq%C4%B1n%C4%B1n_binas%C4%B1_202409_%281%29.jpg/1920px-Az%C9%99rbaycan_Yaz%C4%B1%C3%A7%C4%B1lar_%C4%B0ttifaq%C4%B1n%C4%B1n_binas%C4%B1_202409_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/6/69/Az%C9%99rbaycan_Yaz%C4%B1%C3%A7%C4%B1lar_%C4%B0ttifaq%C4%B1n%C4%B1n_binas%C4%B1_202409_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "bytes": 1683243,
+      "sha256": "96907503631b4a3cd693c7adcd21a52f55d1c5d731097d7b79ff3b938121a08c",
+      "metadata": [
+        {
+          "name": "ImageWidth",
+          "value": 3024
+        },
+        {
+          "name": "ImageLength",
+          "value": 4032
+        },
+        {
+          "name": "Orientation",
+          "value": 1
+        },
+        {
+          "name": "LightSource",
+          "value": 0
+        },
+        {
+          "name": "Artist",
+          "value": "R\u0259c\u0259b Yax\u015f\u0131"
+        },
+        {
+          "name": "MEDIAWIKI_EXIF_VERSION",
+          "value": 1
+        }
+      ],
+      "extmetadata": {
+        "DateTime": {
+          "value": "2024-09-29 06:08:39",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Az\u0259rbaycan Yaz\u0131\u00e7\u0131lar \u0130ttifaq\u0131n\u0131n binas\u0131 202409 (1)",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "Cultural heritage monuments in Azerbaijan|Self-published work|Cultural heritage monuments in Azerbaijan with known IDs|Images from Wiki Loves Monuments 2024|Uploaded via Campaign:wlm-az|Files with coordinates missing SDC location of creation|Images from Wiki Loves Monuments missing SDC depicts|Images from Wiki Loves Monuments missing SDC location of creation|Images from Wiki Loves Monuments 2024 in Azerbaijan|Building on Khagani Street 25",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "GPSLatitude": {
+          "value": "40.373689",
+          "source": "commons-desc-page"
+        },
+        "GPSLongitude": {
+          "value": "49.845396",
+          "source": "commons-desc-page"
+        },
+        "GPSMapDatum": {
+          "value": "WGS-84",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "This is a photo of a monument in Azerbaijan identified by the ID 3454",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "2024-09-28",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<a href=\"//commons.wikimedia.org/wiki/User:R%C9%99c%C9%99b_Yax%C5%9F%C4%B1\" title=\"User:R\u0259c\u0259b Yax\u015f\u0131\">R\u0259c\u0259b Yax\u015f\u0131</a>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "CC BY-SA 4.0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Attribution-Share Alike 4.0",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "true",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "https://creativecommons.org/licenses/by-sa/4.0",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "cc-by-sa-4.0",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "west-primary-27.jpg",
+      "title": "File:Az\u0259rbaycan B\u0259st\u0259karlar \u0130ttifaq\u0131n\u0131n binas\u0131 202409 (1).jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Az%C9%99rbaycan_B%C9%99st%C9%99karlar_%C4%B0ttifaq%C4%B1n%C4%B1n_binas%C4%B1_202409_(1).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Az%C9%99rbaycan_B%C9%99st%C9%99karlar_%C4%B0ttifaq%C4%B1n%C4%B1n_binas%C4%B1_202409_%281%29.jpg/1920px-Az%C9%99rbaycan_B%C9%99st%C9%99karlar_%C4%B0ttifaq%C4%B1n%C4%B1n_binas%C4%B1_202409_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/8/87/Az%C9%99rbaycan_B%C9%99st%C9%99karlar_%C4%B0ttifaq%C4%B1n%C4%B1n_binas%C4%B1_202409_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "bytes": 999472,
+      "sha256": "8213a662a1d53a7a7169d2aead12f01091fa699d9cf33db8c17b6c61f769d533",
+      "metadata": [
+        {
+          "name": "ImageWidth",
+          "value": 3024
+        },
+        {
+          "name": "ImageLength",
+          "value": 4032
+        },
+        {
+          "name": "Orientation",
+          "value": 1
+        },
+        {
+          "name": "LightSource",
+          "value": 0
+        },
+        {
+          "name": "Artist",
+          "value": "R\u0259c\u0259b Yax\u015f\u0131"
+        },
+        {
+          "name": "MEDIAWIKI_EXIF_VERSION",
+          "value": 1
+        }
+      ],
+      "extmetadata": {
+        "DateTime": {
+          "value": "2024-09-29 06:05:24",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Az\u0259rbaycan B\u0259st\u0259karlar \u0130ttifaq\u0131n\u0131n binas\u0131 202409 (1)",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "Self-published work|Cultural heritage monuments in Azerbaijan with known IDs|Images from Wiki Loves Monuments 2024|Uploaded via Campaign:wlm-az|Files with coordinates missing SDC location of creation|Images from Wiki Loves Monuments missing SDC depicts|Images from Wiki Loves Monuments missing SDC location of creation|Images from Wiki Loves Monuments 2024 in Azerbaijan|Building of the Union of Composers of Azerbaijan",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "GPSLatitude": {
+          "value": "40.373841",
+          "source": "commons-desc-page"
+        },
+        "GPSLongitude": {
+          "value": "49.845593",
+          "source": "commons-desc-page"
+        },
+        "GPSMapDatum": {
+          "value": "WGS-84",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "This is a photo of a monument in Azerbaijan identified by the ID 3455",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "2024-09-28",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<a href=\"//commons.wikimedia.org/wiki/User:R%C9%99c%C9%99b_Yax%C5%9F%C4%B1\" title=\"User:R\u0259c\u0259b Yax\u015f\u0131\">R\u0259c\u0259b Yax\u015f\u0131</a>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "CC BY-SA 4.0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Attribution-Share Alike 4.0",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "true",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "https://creativecommons.org/licenses/by-sa/4.0",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "cc-by-sa-4.0",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      }
+    }
+  ],
+  "historic_whole": [
+    {
+      "file": "west-primary-25-whole.jpg",
+      "title": "File:Building on Khagani Street 25.jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Building_on_Khagani_Street_25.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Building_on_Khagani_Street_25.jpg/1920px-Building_on_Khagani_Street_25.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Building_on_Khagani_Street_25.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "6df55392a04f333885f376a7a557cdff18b3899f63541faf3fadc25247eca12b",
+      "bytes": 888639,
+      "metadata": [
+        {
+          "name": "Make",
+          "value": "Nokia"
+        },
+        {
+          "name": "Model",
+          "value": "C6-01"
+        },
+        {
+          "name": "Orientation",
+          "value": 1
+        },
+        {
+          "name": "DateTime",
+          "value": "2016:01:03 11:51:32"
+        },
+        {
+          "name": "YCbCrPositioning",
+          "value": 1
+        },
+        {
+          "name": "ExposureTime",
+          "value": "645/1000000"
+        },
+        {
+          "name": "ISOSpeedRatings",
+          "value": 106
+        },
+        {
+          "name": "ExifVersion",
+          "value": "0220"
+        },
+        {
+          "name": "DateTimeOriginal",
+          "value": "2016:01:03 11:51:32"
+        },
+        {
+          "name": "DateTimeDigitized",
+          "value": "2016:01:03 11:51:32"
+        },
+        {
+          "name": "ComponentsConfiguration",
+          "value": "\n#1\n#2\n#3\n#0"
+        },
+        {
+          "name": "ShutterSpeedValue",
+          "value": "10598/1000"
+        },
+        {
+          "name": "LightSource",
+          "value": 0
+        },
+        {
+          "name": "Flash",
+          "value": 24
+        },
+        {
+          "name": "SubSecTime",
+          "value": "044"
+        },
+        {
+          "name": "SubSecTimeOriginal",
+          "value": "04"
+        },
+        {
+          "name": "SubSecTimeDigitized",
+          "value": "04"
+        },
+        {
+          "name": "FlashPixVersion",
+          "value": "0100"
+        },
+        {
+          "name": "ColorSpace",
+          "value": 1
+        },
+        {
+          "name": "CustomRendered",
+          "value": 0
+        },
+        {
+          "name": "ExposureMode",
+          "value": 0
+        },
+        {
+          "name": "WhiteBalance",
+          "value": 0
+        },
+        {
+          "name": "DigitalZoomRatio",
+          "value": "0/100"
+        },
+        {
+          "name": "SceneCaptureType",
+          "value": 0
+        },
+        {
+          "name": "GainControl",
+          "value": 1
+        },
+        {
+          "name": "GPSLatitude",
+          "value": 40.37354077777778
+        },
+        {
+          "name": "GPSLongitude",
+          "value": 49.845452388888894
+        },
+        {
+          "name": "GPSAltitude",
+          "value": -39.5
+        },
+        {
+          "name": "GPSMeasureMode",
+          "value": "3"
+        },
+        {
+          "name": "GPSDOP",
+          "value": "29/10"
+        },
+        {
+          "name": "GPSMapDatum",
+          "value": "WGS-84"
+        },
+        {
+          "name": "GPSVersionID",
+          "value": "2.2.0.0"
+        },
+        {
+          "name": "MEDIAWIKI_EXIF_VERSION",
+          "value": 1
+        }
+      ],
+      "extmetadata": {
+        "DateTime": {
+          "value": "2016-01-18 15:47:51",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Building on Khagani Street 25",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "Self-published work|Cultural heritage monuments in Azerbaijan with known IDs|Uploaded via Campaign:wlm-az|Files with coordinates missing SDC location of creation|Building on Khagani Street 25",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "GPSLatitude": {
+          "value": "40.373541",
+          "source": "commons-desc-page"
+        },
+        "GPSLongitude": {
+          "value": "49.845452",
+          "source": "commons-desc-page"
+        },
+        "GPSMapDatum": {
+          "value": "WGS-84",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "This is a photo of a monument in Azerbaijan identified by the ID 3454",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "2016-01-03 11:51:32",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<a href=\"//commons.wikimedia.org/wiki/User:Interfase\" title=\"User:Interfase\">Interfase</a>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "CC BY-SA 4.0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Attribution-Share Alike 4.0",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "true",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "https://creativecommons.org/licenses/by-sa/4.0",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "cc-by-sa-4.0",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "west-primary-27-whole.jpg",
+      "title": "File:Building on Khagani Street 27.jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Building_on_Khagani_Street_27.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Building_on_Khagani_Street_27.jpg/1920px-Building_on_Khagani_Street_27.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/3/37/Building_on_Khagani_Street_27.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "28a0bef7d7d9a66ebc4370dc20ab53976cf0ce8e3515c85566bd490702a4b648",
+      "bytes": 730113,
+      "metadata": [
+        {
+          "name": "Make",
+          "value": "Nokia"
+        },
+        {
+          "name": "Model",
+          "value": "C6-01"
+        },
+        {
+          "name": "Orientation",
+          "value": 1
+        },
+        {
+          "name": "DateTime",
+          "value": "2016:01:03 11:50:17"
+        },
+        {
+          "name": "YCbCrPositioning",
+          "value": 1
+        },
+        {
+          "name": "ExposureTime",
+          "value": "537/1000000"
+        },
+        {
+          "name": "ISOSpeedRatings",
+          "value": 104
+        },
+        {
+          "name": "ExifVersion",
+          "value": "0220"
+        },
+        {
+          "name": "DateTimeOriginal",
+          "value": "2016:01:03 11:50:17"
+        },
+        {
+          "name": "DateTimeDigitized",
+          "value": "2016:01:03 11:50:17"
+        },
+        {
+          "name": "ComponentsConfiguration",
+          "value": "\n#1\n#2\n#3\n#0"
+        },
+        {
+          "name": "ShutterSpeedValue",
+          "value": "10862/1000"
+        },
+        {
+          "name": "LightSource",
+          "value": 0
+        },
+        {
+          "name": "Flash",
+          "value": 24
+        },
+        {
+          "name": "SubSecTime",
+          "value": "830"
+        },
+        {
+          "name": "SubSecTimeOriginal",
+          "value": "83"
+        },
+        {
+          "name": "SubSecTimeDigitized",
+          "value": "83"
+        },
+        {
+          "name": "FlashPixVersion",
+          "value": "0100"
+        },
+        {
+          "name": "ColorSpace",
+          "value": 1
+        },
+        {
+          "name": "CustomRendered",
+          "value": 0
+        },
+        {
+          "name": "ExposureMode",
+          "value": 0
+        },
+        {
+          "name": "WhiteBalance",
+          "value": 0
+        },
+        {
+          "name": "DigitalZoomRatio",
+          "value": "111/100"
+        },
+        {
+          "name": "SceneCaptureType",
+          "value": 0
+        },
+        {
+          "name": "GainControl",
+          "value": 1
+        },
+        {
+          "name": "GPSLatitude",
+          "value": 40.373612361111114
+        },
+        {
+          "name": "GPSLongitude",
+          "value": 49.84556144444445
+        },
+        {
+          "name": "GPSAltitude",
+          "value": -49
+        },
+        {
+          "name": "GPSMeasureMode",
+          "value": "3"
+        },
+        {
+          "name": "GPSDOP",
+          "value": "30/10"
+        },
+        {
+          "name": "GPSMapDatum",
+          "value": "WGS-84"
+        },
+        {
+          "name": "GPSVersionID",
+          "value": "2.2.0.0"
+        },
+        {
+          "name": "MEDIAWIKI_EXIF_VERSION",
+          "value": 1
+        }
+      ],
+      "extmetadata": {
+        "DateTime": {
+          "value": "2016-01-18 15:47:51",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Building on Khagani Street 27",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "Self-published work|Cultural heritage monuments in Azerbaijan with known IDs|Uploaded via Campaign:wlm-az|Files with coordinates missing SDC location of creation|Building of the Union of Composers of Azerbaijan",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "GPSLatitude": {
+          "value": "40.373612",
+          "source": "commons-desc-page"
+        },
+        "GPSLongitude": {
+          "value": "49.845561",
+          "source": "commons-desc-page"
+        },
+        "GPSMapDatum": {
+          "value": "WGS-84",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "This is a photo of a monument in Azerbaijan identified by the ID 3455",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "2016-01-03 11:50:17",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<a href=\"//commons.wikimedia.org/wiki/User:Interfase\" title=\"User:Interfase\">Interfase</a>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "CC BY-SA 4.0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Attribution-Share Alike 4.0",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "true",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "https://creativecommons.org/licenses/by-sa/4.0",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "cc-by-sa-4.0",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      }
+    }
+  ],
+  "library_details": [
+    {
+      "photo_id": 14383761,
+      "photographer": "Rahib Yaqubov",
+      "preview_url": "https://images.pexels.com/photos/14383761/pexels-photo-14383761.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "original_url": "https://images.pexels.com/photos/14383761/pexels-photo-14383761.jpeg",
+      "preview_transform": "Provider resized/compressed1600px preview, no local crop/edit; not an original-resolution archive",
+      "sha256": "2dbfe68612faac96c4b1674837629449905930e01c423a0cf547918a64a4bde3",
+      "bytes": 605964,
+      "use": "Primary facade registration only; no pixels used as game texture"
+    },
+    {
+      "photo_id": 18300423,
+      "photographer": "Orkhan Shots",
+      "preview_url": "https://images.pexels.com/photos/18300423/pexels-photo-18300423.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "original_url": "https://images.pexels.com/photos/18300423/pexels-photo-18300423.jpeg",
+      "preview_transform": "Provider resized/compressed1600px preview, no local crop/edit; not an original-resolution archive",
+      "sha256": "15c2843fd79786065c201f0a2d1795e67ec5dc9efdc1a532628ebcf33e037989",
+      "bytes": 799301,
+      "use": "Primary facade registration only; no pixels used as game texture"
+    }
+  ],
+  "primary_links": {
+    "library_address": "https://www.cenl.org/library/national-library-of-azerbaijan-m-f-axundov-adina-azerbaycan-milli-kitabxana/",
+    "library_self_survey": "https://www.cenl.org/wp-content/uploads/2019/06/CENL-SURVEY-Azerbaijan.docx.pdf",
+    "heritage": "https://frameworks.e-qanun.az/2/c_f_2847.html",
+    "composers": "https://azcomposersunion.com.az/about/",
+    "writers": "https://www.azyb.az/admin/media/files/1540032626-Oktyabr_Layout%201%2B%2B%2B.pdf",
+    "park": "https://special.azertag.az/en/xeber/3883787"
+  },
+  "source_use": "Photographs/reference footage support authored geometry only; no source image pixels used as textures. Original reference-only images stay outside versioned game assets.",
+  "osm_context_receipt": {
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=49.8432,40.3720,49.8488,40.3752",
+    "bytes": 559126,
+    "sha256": "1ac08c6794e373f42da0d43290f3606a380ceb2ecd9cee67b95ac069e86f8088"
+  }
+}

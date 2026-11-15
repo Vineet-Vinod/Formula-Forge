@@ -16,6 +16,8 @@ from venues.baku_forecourt import court_forecourt
 from venues.baku_ground import finish_terrain as finish_ground
 from venues.baku_hotel import finish as finish_hotel
 from venues.baku_hotel import prepare as prepare_hotel
+from venues.baku_khagani import finish as finish_khagani
+from venues.baku_khagani import prepare as prepare_khagani
 from venues.baku_museums import museums
 from venues.baku_niyazi import planting
 from venues.baku_skyline import waterfront_skyline
@@ -64,7 +66,9 @@ def build_venue(scene: CircuitScene) -> None:
     coastal_water(scene)
     court_forecourt(scene)
     civic_frontage(scene)
-    custom = {299418016, 152190583, 152190848, 133641457, 133641456, 152110152, 196291852}
+    prepare_khagani(scene)
+    custom = {299418016, 152190583, 152190848, 133641457, 133641456, 152110152, 196291852,
+              177428532, 286020256}
     modern = {200195772, 200195781, 286017123, 152192792, 152192676, 152192493, 152192304}
     for building in scene.buildings:
         if building.osm_id in custom or building.use in {'grandstand', 'roof', 'carport'}:
@@ -114,6 +118,7 @@ def finish_terrain(scene: CircuitScene) -> None:
     museums(scene, scene.sources / 'museums.json.gz')
     finish_hotel(scene)
     finish_streetscape(scene)
+    finish_khagani(scene)
 
 
 def castle_ramp(scene: CircuitScene) -> None:
