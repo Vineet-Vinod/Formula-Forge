@@ -1,0 +1,100 @@
+{
+  "state": "Read-only primary candidate lookup; no height/source/geometry PASS",
+  "metadata": [
+    {
+      "file": "repair-2017-wide.jpg",
+      "author": "AlixSaz",
+      "date": "2017-04-17T14:39:06",
+      "license": "CC BY-SA 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Repair_of_road_surface_by_technical_machines_and_tractors_1.jpg",
+      "role": "Best candidate: stone edge/stairs visible; exact target section registration and metric height unresolved"
+    },
+    {
+      "file": "repair-2017-tele.jpg",
+      "author": "AlixSaz",
+      "date": "2017-04-17T14:34:58",
+      "license": "CC BY-SA 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Repair_of_road_surface_by_technical_machines_and_tractors.jpg",
+      "role": "Street/uphill context, not target height control"
+    },
+    {
+      "file": "garden-2019.jpg",
+      "author": "Dmitry Karyshev",
+      "date": "2019-09-25T11:41:52",
+      "license": "CC BY 2.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Philharmonic_Garden_in_Baku.jpg",
+      "primary_original_page": "https://www.flickr.com/photos/bims2008/49136448096/",
+      "role": "Fountain/upper-paving context; target section unregistered"
+    },
+    {
+      "file": "waterfront-2019.jpg",
+      "author": "Dmitry Karyshev",
+      "date": "2019-09-24T15:36:47",
+      "license": "CC BY 2.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Azneft_square,_view_from_the_waterfront.jpg",
+      "primary_original_page": "https://www.flickr.com/photos/bims2008/49135760557/",
+      "role": "Distinct waterfront square; not incoming Niyazi datum"
+    },
+    {
+      "file": "garden-20170508-a.jpg",
+      "author": "Bogdanov-62",
+      "date": "2017-05-08T14:06:52",
+      "license": "CC BY-SA 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Baku_20170508_140652.jpg",
+      "role": "Different garden portion; excluded"
+    },
+    {
+      "file": "garden-20170508-b.jpg",
+      "author": "Bogdanov-62",
+      "date": "2017-05-08T14:07:04",
+      "license": "CC BY-SA 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Baku_20170508_140703.jpg",
+      "role": "Different garden portion; excluded"
+    }
+  ],
+  "original_image_acquisition_hashes": {
+    "repair-2017-tele.jpg": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/64/Repair_of_road_surface_by_technical_machines_and_tractors.jpg",
+      "bytes": 5310773,
+      "sha256": "af0cc85ab73745190947c82893f9846fda1a52de17b096e81ebbb28a93a4af05",
+      "retrieved_utc": "2026-11-15T17:33:11Z",
+      "protected_reference_path": "Saved/Refs/baku-niyazi-primary/repair-2017-tele.jpg"
+    },
+    "garden-2019.jpg": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Philharmonic_Garden_in_Baku.jpg",
+      "bytes": 21697047,
+      "sha256": "d81fa844251e689aa6c49a20ce02033751953ac62a1407048a1cd1180cdbb78f",
+      "retrieved_utc": "2026-11-15T17:33:13Z",
+      "protected_reference_path": "Saved/Refs/baku-niyazi-primary/garden-2019.jpg"
+    },
+    "garden-20170508-a.jpg": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Baku_20170508_140652.jpg",
+      "bytes": 4109217,
+      "sha256": "5c441683ace47a2858edc88658ac57adf4971adb4c6c461a334250c39b9fd164",
+      "retrieved_utc": "2026-11-15T17:38:46Z",
+      "protected_reference_path": "Saved/Refs/baku-niyazi-primary/garden-20170508-a.jpg"
+    },
+    "garden-20170508-b.jpg": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/20/Baku_20170508_140703.jpg",
+      "bytes": 4128340,
+      "sha256": "fb7bb08bf11a94bc6747775b3253d655d57f85020c725fe95e61c189f0b0c23a",
+      "retrieved_utc": "2026-11-15T17:38:46Z",
+      "protected_reference_path": "Saved/Refs/baku-niyazi-primary/garden-20170508-b.jpg"
+    },
+    "repair-2017-wide.jpg": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Repair_of_road_surface_by_technical_machines_and_tractors_1.jpg",
+      "bytes": 6551590,
+      "sha256": "8094998b9ff79067b3cf1176d63fe66bd17f62bb2aeff04ef26b53cc63d99842",
+      "retrieved_utc": "2026-11-15T17:35:07Z",
+      "protected_reference_path": "Saved/Refs/baku-niyazi-primary/repair-2017-wide.jpg"
+    },
+    "waterfront-2019.jpg": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Azneft_square%2C_view_from_the_waterfront.jpg",
+      "bytes": 18160119,
+      "sha256": "6ea3ef693cff9d77fc7093027167d34ec032f1592ab9749e7dda6a1ec3f53a1f",
+      "retrieved_utc": "2026-11-15T17:40:01Z",
+      "protected_reference_path": "Saved/Refs/baku-niyazi-primary/waterfront-2019.jpg"
+    }
+  },
+  "no_numeric_height_inference": true
+}

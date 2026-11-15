@@ -42,11 +42,12 @@ Suzuka is the only figure-eight. Its back straight crosses the lower Degner road
 
 Native scenes include circuit-specific architecture, vegetation, protection, kerbs, escape surfaces, braking boards and pit paving. Pit access remains closed for the game. Source generation, native geometry checks and a clean simulated lap do not establish visual or performance acceptance. Follow the [whole-lap workflow](map.md) and compare the exact current assets against registered references.
 
-Work is active through Sunday 15 November at 10am PST. The 18-map work remains
-incomplete. Seventeen circuits retain compatible Luna High visual passes; Baku
-remains held. Carrying a review requires identical native scene, executable
-and shared package payloads. Changed scenes need fresh packaged reviews; source
-or bounded feature passes do not establish whole-circuit acceptance.
+The 15 November checkpoint records compatible Luna High visual passes for all
+18 additional circuits. The work remains incomplete: incoming Niyazi still has
+an independent source-completion hold, and intermittent rendering stalls remain
+unresolved. Carrying a review requires identical native scene, executable and
+shared runtime payloads. Changed scenes need fresh packaged reviews; a visual
+pass does not establish source completion or performance parity.
 
 COTA's image-qualified approach has an approximately 13 m legal lane with
 separate raised kerbs and flat painted aprons; the existing outside envelope is
@@ -60,9 +61,11 @@ Mirbabayev and waterfront 89/91 architecture. No5's photographed frontage passes
 its bounded native appearance review. Local material inputs that
 incorrectly read unauthored baked AO/vertex data have a matched native PASS.
 The native promenade, low office datum and 98-tree park/verge reconstruction
-pass their bounded review. The separate gray public junction around station
-3998 remains held. Incoming Niyazi and island trials stay private until their
-geometry and joins pass; roadside intersections alone do not establish a grade.
+pass their bounded review. The ordinary traffic island, low curb and connected
+public paving now pass a fresh native review, and the full-route visual review
+passes at `0463d68c`. Incoming Niyazi's upper-edge height and lower-walk join
+remain independently held for source completion. The versioned section study
+and dated photo candidates retain those unresolved constraints.
 
 Monaco includes the Hermosa terrace, Villa de Rome architecture and separate
 formal garden, chapel and grounded woodland. Its current full-route visual
@@ -74,8 +77,10 @@ does not certify survey accuracy or uncaptured performance.
 
 The earlier Portimão, Sepang, Singapore, Buddh and remaining route reviews retain
 their explicit scopes in the [validation checkpoint](additional_circuits_validation.md).
-The rebuilt executable has fresh warmed Las Vegas/Interlagos baseline runs.
-Earlier additional-circuit runs are historical; current comparisons are still pending.
+Current-compatible uncapped measurements cover all 18 additional circuits after
+a complete warmup lap, with fresh Las Vegas/Interlagos baselines. Baku's latest
+run measures 22.49 ms median and 29.74 ms p95, with 35 frames over 50 ms.
+Periodic waits for occlusion-query results remain unresolved.
 Visual passes and clean automatic laps do not establish performance or surveyed
 accuracy. Silverstone, Monza, Interlagos and Las Vegas remain preserved baselines.
 

@@ -1,23 +1,23 @@
 {
   "schema_version": 2,
-  "recorded_utc": "2026-11-15T17:06:36.277564+00:00",
+  "recorded_utc": "2026-11-15T17:47:53.542738+00:00",
   "checkpoint_date": "2026-11-15",
-  "status": "Work remains incomplete:17current-compatible visual passes, Baku junction held. Fresh uncapped warmed moving measurements exist for all18additional circuits, with2accepted baselines. Intermittent occlusion waits remain unresolved; no completion claim.",
+  "status": "Work remains incomplete: 18 current-compatible visual PASS, 0 HOLD, 0 pending. Incoming Niyazi source completion and intermittent occlusion-wait diagnosis remain unresolved; no completion or performance-fix claim.",
   "completion_claim": false,
   "scope": "18 additional circuits. Silverstone, Monza, Interlagos and Las Vegas are accepted baselines, with their asset/runtime scope separately evidenced.",
   "review_register": {
-    "path": "build/reviews/resume-20261115/final-review-register-park.json",
-    "sha256": "ce83fffc53641584d85d1e6d7466a066bb2801edd3dad91fdbba2b64aadf578b"
+    "path": "build/reviews/resume-20261115/baku/first-terrace-private/register-finishing/draft/final-review-register.json",
+    "sha256": "1d0310a125dc197690815b057971f186bc4093d3763e2681843a6cb588e47288"
   },
   "current_package_pin": {
-    "path": "build/reviews/resume-20261115/package-park-wave.json",
-    "sha256": "ee2db225b93abac6616e21427f2ae3190ec0e05ad1611bdb79bae662d9e1ed0a"
+    "path": "build/reviews/resume-20261115/package-junction-wave.json",
+    "sha256": "9eb29fddab1d7aa3d036dc021656eb6acbc67b819cffef43c1545f1b6ab92e0c"
   },
-  "packaged_source_revision": "f3962c00ec8e01c758715ff0add834873a7d49a5",
+  "packaged_source_revision": "0463d68c7a29fd80d7f8ea3e2142faf526485475",
   "packaged_payload_sha256": {
-    "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.pak": "b3b197e1441250d2452b6a72e5ae4952427faefbc4df0f6672ac8f0292763e89",
-    "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.ucas": "f3eef4b73fa15a53f2443618ca252f2b5e2db3f9d80fb3990c4f8776030459bf",
-    "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.utoc": "52b9c1f9faf60d8fe3e084ce5aa8565dbdb2905b7949130639d91fd53b7224ea",
+    "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.pak": "990f1e0b7f59102cb83f79399ce1df0abbfcfcd759dfe17eba40bfd38969abcf",
+    "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.ucas": "6fcd84cc48984d2bba1acaee595d87bc83a3a45e6e3945742482490f69499bfe",
+    "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.utoc": "b58c77b8cd7f4d9e2632249c3a7cba6d54c8ed3c6eba486eb26a96e284219ac9",
     "build/unreal/package/Linux/FormulaForge/Content/Paks/global.ucas": "9ba0d5a57ffa7082f1cae440750e0994cdc7a3b312068fc5618df81036c36152",
     "build/unreal/package/Linux/FormulaForge/Content/Paks/global.utoc": "612984d5375495cee07af35967bf98b7ece7393d55435575f25212a6f4391444",
     "build/unreal/package/Linux/FormulaForge/Binaries/Linux/FormulaForge": "430442b8a5ec340d58b2447dabd821c734527cf20cf2063a6a384cb4d1ee2617"
@@ -30,52 +30,88 @@
   "checks": {
     "source": {
       "status": "passed",
-      "pytest": 389,
-      "mypy_files": 203,
+      "pytest": 392,
+      "mypy_files": 208,
       "ruff": "passed",
-      "evidence": "build/reviews/resume-20261115/park-wave-full-source-check.log",
+      "evidence": "build/reviews/resume-20261115/junction-wave-full-source-check.log",
       "metadata": {
-        "path": "build/reviews/resume-20261115/park-wave-full-source-check.log",
-        "sha256": "b1d77f9a01e1a24b3e7633518514490172bbc37039e65e5a9db94bda0b9e7bf9",
-        "bytes": 4158
+        "path": "build/reviews/resume-20261115/junction-wave-full-source-check.log",
+        "sha256": "08e5fee8d6ae5e330b61929416d45ab669a905f7584a602662787bddc9205248",
+        "bytes": 4336
       },
       "note": "Latest completed registered log; log does not attest its Git/package revision. No current-pin source-tree equivalence inferred.",
       "additional_authoring_check": {
         "log": "build/reviews/resume-20261115/park-authoring-canonical-check.log",
         "scope": "One real-asset authoring compile regression, three typed files and Ruff pass after the full389-test runtime source suite; authored output is byte-identical and runtime geometry unchanged."
+      },
+      "current_authoring_check_receipt": {
+        "path": "build/reviews/resume-20261115/junction-wave-source-check-receipt.json",
+        "sha256": "e58a52c50a3951cb96971fc79e1b53446f9dea63aaa40b875551e67dbcfdaca7",
+        "scope": "392 full-suite tests,208typedfiles,Ruff; same runtime authoring code, sourcecheckrevision903e8668. Native/cooked/visual/timing decisions remain separate."
       }
     },
     "package": {
-      "revision": "f3962c00ec8e01c758715ff0add834873a7d49a5",
+      "revision": "0463d68c7a29fd80d7f8ea3e2142faf526485475",
       "pin": {
         "path": "build/reviews/current-package.json",
-        "sha256": "ee2db225b93abac6616e21427f2ae3190ec0e05ad1611bdb79bae662d9e1ed0a",
-        "bytes": 17041
+        "sha256": "9eb29fddab1d7aa3d036dc021656eb6acbc67b819cffef43c1545f1b6ab92e0c",
+        "bytes": 16599
       },
       "payload_verification": "Deferred; declared metadata hashes only"
     },
     "live_flow": {
       "current_decision_counts": {
-        "pass": 17,
-        "held": 1,
+        "pass": 18,
+        "held": 0,
         "pending": 0
       },
       "original_revisions_retained": true
     },
     "performance": {
-      "fresh_final_catalogue_complete": 17,
-      "fresh_final_catalogue_planned": 17,
+      "fresh_final_catalogue_complete": 18,
+      "fresh_final_catalogue_planned": 18,
       "accepted_current_compatible": 2,
       "diagnostic_reports": [
         "build/reviews/resume-20261115/monaco/rome-architecture-private/performance-readonly/turkey-trace-prepared/TRACE-CAUSAL-REPORT.md",
         "build/reviews/resume-20261115/monaco/rome-architecture-private/performance-readonly/cpu-only-control/COMPARISON-REPORT.md"
       ],
-      "all_additional_circuits_measured": 18
+      "all_additional_circuits_measured": 18,
+      "baku_junction_replacement": {
+        "directory": "build/reviews/resume-20261115-moving-junction-final/baku",
+        "selected": true,
+        "reason": "Complete current-compatible warmed metadata; raw payload verification remains the guarded writer's job.",
+        "raw_payload_hashes_recomputed": false,
+        "captured_revision": "0463d68c7a29fd80d7f8ea3e2142faf526485475",
+        "summary_metadata": {
+          "path": "build/reviews/resume-20261115-moving-junction-final/baku/summary.json",
+          "sha256": "258b0990e31190b36151c87d4331ed9f4711501adcd8655c7f8c3c2b89afda5a",
+          "bytes": 3572
+        },
+        "package_metadata": {
+          "path": "build/reviews/resume-20261115-moving-junction-final/baku/package.json",
+          "sha256": "9eb29fddab1d7aa3d036dc021656eb6acbc67b819cffef43c1545f1b6ab92e0c",
+          "bytes": 16599
+        },
+        "gpu_time_available": true
+      },
+      "current_compatible_additional_circuits": 18,
+      "pending_current_moving_circuits": []
     },
     "source_completion_holds": {
       "baku": {
-        "reason": "Whole Baku HOLD atf3962c00 for the distinct gray3998public junction. Native park/office/verge reconstruction passes its scoped review:98source-fit trees, coherent lowoffice relative base and no observed new contact/float conflicts. IncomingNiyazi/ordinary-island junction work remains private until proved."
+        "reason": "Incoming Niyazi carriageway and its immediate walk remain held for source completion. The ordinary traffic island and joined junction are a separate repair. A whole-route visual PASS does not resolve that source hold or establish survey accuracy.",
+        "scope": "source_completion",
+        "visual_decision_registered_separately": "pass",
+        "completion_claim": false
       }
+    },
+    "cleanup": {
+      "scope": "Rebuildable cooker duplicates and inactive source meshes retired after exact package/native checks. Failed disk-limited raw capture retired only after complete clean replacement and current timing acquisition. SourceContent/references/engine/runnablepackage preserved.",
+      "receipts": [
+        "build/reviews/resume-20261115/junction-wave-cook-intermediate-retirement.json",
+        "build/reviews/resume-20261115/junction-wave-inactive-mesh-cache-cleanup-receipt.json",
+        "build/reviews/resume-20261115/junction-wave-failed-raw-retirement.json"
+      ]
     }
   },
   "preservation": {
@@ -87,7 +123,7 @@
       "resumed_session_scope": "From ceb62146 through reviewed package 776d1fe6, accepted Silverstone/Monza/Interlagos/Las Vegas Content folders and vehicle/camera tuning are unchanged. Singapore has a local Anderson road/boundary alignment. Malaysia has a 16 m legal lane, separately retained apron pavement, local final-corner bank/crest and venue-specific contact export/query. Other 16 circuits retain physical data. Shared helper additions default to prior behavior for those circuits; protected Malaysia core contact is separately regression-tested."
     },
     "current_accepted_content_scope_proofs": [
-      "build/reviews/resume-20261115/park-wave-native-scope-proof.json"
+      "build/reviews/resume-20261115/junction-wave-native-scope-proof.json"
     ],
     "accepted_scope_limit": "Accepted scenes absent from18-scene pin; explicit source attestation required. No accepted native-scene SHA invented."
   },
@@ -11543,16 +11579,16 @@
     {
       "file": {
         "path": "build/reviews/resume-20261115/monaco/rome-architecture-private/final-validation-framework/draft/compatibility.json",
-        "sha256": "e56b57dd59d27e9d3c36e865d7e871f9ea996e6d7cbbf639a493dafde1057a98"
+        "sha256": "119b794153f0ed3fc4af65ca68eeaab188026a00fb40354c168cd0f8b9983ad9"
       },
       "data": {
         "state": "Private metadata-only draft; no media/package payloads rehashed",
         "selected_pin": {
           "path": "build/reviews/current-package.json",
-          "sha256": "ee2db225b93abac6616e21427f2ae3190ec0e05ad1611bdb79bae662d9e1ed0a",
-          "bytes": 17041
+          "sha256": "9eb29fddab1d7aa3d036dc021656eb6acbc67b819cffef43c1545f1b6ab92e0c",
+          "bytes": 16599
         },
-        "selected_revision": "f3962c00ec8e01c758715ff0add834873a7d49a5",
+        "selected_revision": "0463d68c7a29fd80d7f8ea3e2142faf526485475",
         "visual_packets": {
           "australia": {
             "latest_known_decision": "pass",
@@ -11675,23 +11711,23 @@
             "source_limits": "Report scope and source uncertainties remain authoritative; no original capture revision is rewritten."
           },
           "baku": {
-            "latest_known_decision": "held",
-            "current_decision": "held",
+            "latest_known_decision": "pass",
+            "current_decision": "pass",
             "scope": "whole_route",
             "root_adjudicated_circuit_decision": false,
             "report": {
-              "path": "build/reviews/resume-20261115/reviews/baku-park-wave-f3962c00-live-review.md",
-              "sha256": "4af6827f415fe503311e62e18391fa2042c9437ee3c3d21f083b5fe9d740d0bf",
-              "bytes": 4058
+              "path": "build/reviews/resume-20261115/reviews/baku-junction-0463d68c-live-review.md",
+              "sha256": "e8e0281cfeb0cf129b30a83c3ef01fe40f000f440d2568794f371c0ea9871e01",
+              "bytes": 3694
             },
-            "packet": "build/reviews/baku/resume-20261115-park-wave-live",
+            "packet": "build/reviews/baku/resume-20261115-junction-wave-retry-live",
             "capture_package": {
-              "path": "build/reviews/baku/resume-20261115-park-wave-live/package.json",
-              "sha256": "ee2db225b93abac6616e21427f2ae3190ec0e05ad1611bdb79bae662d9e1ed0a",
-              "bytes": 17041
+              "path": "build/reviews/baku/resume-20261115-junction-wave-retry-live/package.json",
+              "sha256": "9eb29fddab1d7aa3d036dc021656eb6acbc67b819cffef43c1545f1b6ab92e0c",
+              "bytes": 16599
             },
             "compatibility": {
-              "captured_revision": "f3962c00ec8e01c758715ff0add834873a7d49a5",
+              "captured_revision": "0463d68c7a29fd80d7f8ea3e2142faf526485475",
               "scene_exact": true,
               "executable_exact": true,
               "shared_runtime_payloads_exact": true,
@@ -11699,16 +11735,16 @@
             },
             "current_scene_and_runtime": true,
             "summary": {
-              "path": "build/reviews/baku/resume-20261115-park-wave-live/summary.json",
-              "sha256": "b90e6464282bd2992d136fa6d6f838ab9f830457dbc56ab6de54856d33a11735",
-              "bytes": 2866
+              "path": "build/reviews/baku/resume-20261115-junction-wave-retry-live/summary.json",
+              "sha256": "a9c517ddfcab3349f3a3773eba76666b1a0d08a8f3993d10e31739ba15f00b4c",
+              "bytes": 2864
             },
             "archive": {
-              "path": "build/reviews/baku/resume-20261115-park-wave-live/archive.json",
-              "sha256": "c9929cee8b5cd453e6d6c247accf988a815db41d393de0d26d3dcf1963673c39",
+              "path": "build/reviews/baku/resume-20261115-junction-wave-retry-live/archive.json",
+              "sha256": "c24c1cd77c0759fc6e4ab6363fc2ea77fab819cacecada6f670223b49c2455fd",
               "bytes": 764
             },
-            "frames": 5039,
+            "frames": 5192,
             "station_bins": 125,
             "clean_complete_metadata": true,
             "media_payload_sha_verified": false,
@@ -12279,15 +12315,15 @@
           "baku": {
             "decision": {
               "visual_decision": "pass",
-              "packet": "build/reviews/baku/resume-20261115-park-wave-live",
-              "report": "build/reviews/resume-20261115/reviews/baku-park-wave-f3962c00-live-review.md",
+              "packet": "build/reviews/baku/resume-20261115-junction-wave-retry-live",
+              "report": "build/reviews/resume-20261115/reviews/baku-junction-0463d68c-live-review.md",
               "scope": "scoped_visual",
-              "notes": "Native park/office/verge PASS only; gray3998junction whole-circuit HOLD remains.",
+              "notes": "Native ordinary traffic island and joined paving PASS. Whole-route visual PASS and incomingNiyazi source-completion HOLD are separate.",
               "root_adjudicated_circuit_decision": false,
               "source_limits": null
             },
             "compatibility": {
-              "captured_revision": "f3962c00ec8e01c758715ff0add834873a7d49a5",
+              "captured_revision": "0463d68c7a29fd80d7f8ea3e2142faf526485475",
               "scene_exact": true,
               "executable_exact": true,
               "shared_runtime_payloads_exact": true,
@@ -12951,6 +12987,219 @@
               "raw_csv_sha256": "a8f06856b0703934170fcc1a02af4b723aaf0b63d222741cf5ae1e9c84964738",
               "road_sha256": "97929e146fedb3da4d70f750d7347d9cba2fe7aef620b49ab2edb0f6410b335b",
               "line_sha256": "c43dd4ae0c906f4b7cb2188279ef84f9449ff299b6c6e44c945c5638036676f7"
+            },
+            "raw_payload_hashes_recomputed": false,
+            "accepted_scene_scope": "Exact per-circuit native identity"
+          },
+          "baku": {
+            "directory": "build/reviews/resume-20261115-moving-final-catalogue/baku",
+            "captured_package_revision": "f3962c00ec8e01c758715ff0add834873a7d49a5",
+            "compatibility": {
+              "captured_revision": "f3962c00ec8e01c758715ff0add834873a7d49a5",
+              "scene_exact": false,
+              "executable_exact": true,
+              "shared_runtime_payloads_exact": true,
+              "accepted_scene_scope_attested": false
+            },
+            "metadata_complete_warmed_route": true,
+            "current_scene_and_runtime": false,
+            "summary_metadata": {
+              "path": "build/reviews/resume-20261115-moving-final-catalogue/baku/summary.json",
+              "sha256": "0814d5bb31247db139df9f214950fe553ef96bd676ba9b5c0f351286f2e2f040",
+              "bytes": 3569
+            },
+            "package_metadata": {
+              "path": "build/reviews/resume-20261115-moving-final-catalogue/baku/package.json",
+              "sha256": "ee2db225b93abac6616e21427f2ae3190ec0e05ad1611bdb79bae662d9e1ed0a",
+              "bytes": 17041
+            },
+            "summary": {
+              "circuit": "baku",
+              "mode": "Live racing-line controller, production cockpit, uncapped, no image recorder.",
+              "dimensions": [
+                1600,
+                900
+              ],
+              "screen_percentage": 100.0,
+              "frame_cap": 0,
+              "vsync": false,
+              "timings": {
+                "FrameTime": {
+                  "median_ms": 24.07235,
+                  "p95_ms": 31.7223,
+                  "p99_ms": 39.2728,
+                  "maximum_ms": 74.5899,
+                  "frames_over_50ms": 56,
+                  "frames_over_100ms": 0
+                },
+                "GameThreadTime": {
+                  "median_ms": 3.031,
+                  "p95_ms": 4.295,
+                  "p99_ms": 5.227,
+                  "maximum_ms": 10.588,
+                  "frames_over_50ms": 0,
+                  "frames_over_100ms": 0
+                },
+                "RenderThreadTime": {
+                  "median_ms": 4.671,
+                  "p95_ms": 6.342,
+                  "p99_ms": 7.234,
+                  "maximum_ms": 17.372,
+                  "frames_over_50ms": 0,
+                  "frames_over_100ms": 0
+                },
+                "GPUTime": {
+                  "median_ms": 23.332,
+                  "p95_ms": 30.647,
+                  "p99_ms": 34.966,
+                  "maximum_ms": 52.284,
+                  "frames_over_50ms": 1,
+                  "frames_over_100ms": 0
+                }
+              },
+              "measured_frames": 6746,
+              "captured_frames": 26000,
+              "measured_frame_range": [
+                7357,
+                14103
+              ],
+              "warmup": "One full registered route before the measured complete route.",
+              "station_bins_visited": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81,
+                82,
+                83,
+                84,
+                85,
+                86,
+                87,
+                88,
+                89,
+                90,
+                91,
+                92,
+                93,
+                94,
+                95,
+                96,
+                97,
+                98,
+                99,
+                100,
+                101,
+                102,
+                103,
+                104,
+                105,
+                106,
+                107,
+                108,
+                109,
+                110,
+                111,
+                112,
+                113,
+                114,
+                115,
+                116,
+                117,
+                118,
+                119,
+                120,
+                121,
+                122,
+                123,
+                124
+              ],
+              "station_bin_count": 125,
+              "maximum_camera_to_road_3d_m": 5.013309756470933,
+              "measured_route_seconds_from_frame_times": 167.1033626,
+              "station_m": null,
+              "limitation": "Automatic input is not physical-controller validation; lap faults are checked separately in the closed live recording.",
+              "route_registration": "CSV production-camera world coordinates projected in3D onto retained8192pointnativecenterline; eyeheight1.26mremoved. Atcrossings3Dprojectiondistinguishesdecks. Thisestablishesroutecoverage, notlapvalidity/contactabsence.",
+              "raw_csv_sha256": "809d9206b6ce5aebbfef1ef4cbfb92f9080bf99a1ddf2ed260eb0da5633719bd",
+              "road_sha256": "efd762656d72977391616135747278d92dbf1a1181eacf834da8934f4820618d",
+              "line_sha256": "14f2751158407e9e1f31b27a2f943e4d82a87c9813d8465771fc415808b90a2f"
             },
             "raw_payload_hashes_recomputed": false,
             "accepted_scene_scope": "Exact per-circuit native identity"
@@ -16366,25 +16615,25 @@
         },
         "source_checks": {
           "status": "passed",
-          "pytest": 389,
-          "mypy_files": 203,
+          "pytest": 392,
+          "mypy_files": 208,
           "ruff": "passed",
-          "evidence": "build/reviews/resume-20261115/park-wave-full-source-check.log",
+          "evidence": "build/reviews/resume-20261115/junction-wave-full-source-check.log",
           "metadata": {
-            "path": "build/reviews/resume-20261115/park-wave-full-source-check.log",
-            "sha256": "b1d77f9a01e1a24b3e7633518514490172bbc37039e65e5a9db94bda0b9e7bf9",
-            "bytes": 4158
+            "path": "build/reviews/resume-20261115/junction-wave-full-source-check.log",
+            "sha256": "08e5fee8d6ae5e330b61929416d45ab669a905f7584a602662787bddc9205248",
+            "bytes": 4336
           },
           "note": "Latest completed registered log; log does not attest its Git/package revision. No current-pin source-tree equivalence inferred."
         },
         "accepted_scope_proofs": [
-          "build/reviews/resume-20261115/park-wave-native-scope-proof.json"
+          "build/reviews/resume-20261115/junction-wave-native-scope-proof.json"
         ],
         "fresh_final_catalogue_complete": 17,
-        "fresh_final_catalogue_pending": 0,
+        "fresh_final_catalogue_pending": 1,
         "current_decision_counts": {
-          "pass": 17,
-          "held": 1,
+          "pass": 18,
+          "held": 0,
           "pending": 0
         },
         "completion_claim": false
@@ -28376,6 +28625,1377 @@
         "game_or_CVar_changes": false,
         "limitation": "CPU/task/frame tracing and Basic GPUTime remain instrumented. Persistence shows detailed GPU profiling is unnecessary for these waits, not a driver fault or uninstrumented gameplay stutter."
       }
+    },
+    {
+      "file": {
+        "path": "build/reviews/resume-20261115/junction-wave-native-scope-proof.json",
+        "sha256": "d3f354ac8230c3bd2b00446e34f2e6bc37fdf94e79b6638b6df7f89fc2cf383e"
+      },
+      "data": {
+        "status": "PASS native scope only; fresh cook and full-route visual review pending",
+        "selection_plan_sha256": "f2792ee8e527d433afca008627c47506de038a7f7570d57243324b1fa5e32e85",
+        "changed_native_files": [
+          "Content/Generated/Baku/Track/Tile_Street_m7_m5.uasset"
+        ],
+        "native_file_sha256": {
+          "Content/Generated/Baku/Track/Tile_Street_m7_m5.uasset": "1ae323b72593635dd14146a9a926450bcfc87e9820011d8c60cfc06cfa0356c0"
+        },
+        "protected_physical_data": [
+          {
+            "path": "Content/Generated/Baku/Data/terrain.bin",
+            "sha256": "e6e5423c2f5f02fc7e47ddb1459d9e39edcc2ae0b7891724be8520abedc5231e"
+          },
+          {
+            "path": "Content/Generated/Baku/Data/buildings.bin",
+            "sha256": "66124b81b9566466e4372a03e6bbcfdf77459d3614eee676b407a531be73c0c4"
+          },
+          {
+            "path": "Content/Generated/Baku/Data/track_limits.bin",
+            "sha256": "4b49688582d85ea9d89800723f5ce8c48f84a99f2deb9fc0d145731a9273d6e6"
+          },
+          {
+            "path": "Content/Generated/Baku/Data/drive_surface.bin",
+            "sha256": "26bc10ef7913eb8b758e60bada4eb749e94aa7bb524952c47ead9fff2130166e"
+          }
+        ],
+        "unselected_tracked_content_unchanged": true,
+        "accepted_four_content_unchanged": true,
+        "existing_materials_unchanged": true,
+        "active_tile_indexes_match_full_manifest": true,
+        "retained_inactive_meshes": {
+          "baku": []
+        },
+        "limits": "Active indexes match complete source manifests; superseded meshes remain inactive and versioned. All physical binaries and existing materials are unchanged; No new material assets are added. Cooked appearance remains to be reviewed."
+      }
+    },
+    {
+      "file": {
+        "path": "build/reviews/resume-20261115/baku/junction-wave-generation-scope-proof.json",
+        "sha256": "cccb1e2c397276742622f5bf0ef44b5b0d64f33cd3a322e905a94a616740f0bf"
+      },
+      "data": {
+        "status": "PASS complete source packed-face delta and native physical preservation; native/cooked fidelity pending",
+        "generated_manifest_sha256": "36410daa6b7005830693c2a2f16c70d33e37cacdf10124df7d7e20da8918c52a",
+        "baseline_manifest_sha256": "bf6200b3f25d5fea7511d41d27d5339f3eba1890e9fd1e86b86347bf6cd2a70e",
+        "qualified_delta_receipt_sha256": "17766df0bb4d10216c0c104bcb86f455bc0c265e1f0bd3a147d3770c04277595",
+        "logical_parents": {
+          "Building_City_00_00": {
+            "faces": 109673,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_00_01": {
+            "faces": 41323,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_00_02": {
+            "faces": 3724,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_00_m1": {
+            "faces": 4688,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_01_00": {
+            "faces": 101650,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_01_01": {
+            "faces": 39772,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_01_02": {
+            "faces": 5958,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_01_m1": {
+            "faces": 19724,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_02_00": {
+            "faces": 2008,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_02_01": {
+            "faces": 9222,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_02_02": {
+            "faces": 5586,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_03_02": {
+            "faces": 29860,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_04_01": {
+            "faces": 4232,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_04_02": {
+            "faces": 12580,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_m1_00": {
+            "faces": 386304,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_m1_01": {
+            "faces": 47690,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_m1_m1": {
+            "faces": 82378,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_m1_m2": {
+            "faces": 90,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_m1_m3": {
+            "faces": 72,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_m2_00": {
+            "faces": 400842,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_m2_01": {
+            "faces": 5724,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_m2_m1": {
+            "faces": 205996,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_m2_m2": {
+            "faces": 1412,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_m3_00": {
+            "faces": 85799,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_m3_m1": {
+            "faces": 402290,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_m3_m2": {
+            "faces": 64702,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_m3_m4": {
+            "faces": 36,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_m4_m1": {
+            "faces": 38767,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_m4_m2": {
+            "faces": 550353,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_m4_m3": {
+            "faces": 102978,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_m4_m4": {
+            "faces": 268,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_m5_m1": {
+            "faces": 62805,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_m5_m2": {
+            "faces": 446762,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_m5_m3": {
+            "faces": 558074,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_m5_m4": {
+            "faces": 277817,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_m6_m1": {
+            "faces": 22535,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_m6_m2": {
+            "faces": 164212,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_m6_m3": {
+            "faces": 346985,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_m6_m4": {
+            "faces": 9478,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_m7_m4": {
+            "faces": 50029,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_City_m7_m5": {
+            "faces": 41945,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_Crowd_00_m1": {
+            "faces": 1046,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Building_Crowd_m1_m1": {
+            "faces": 33478,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_00_00": {
+            "faces": 16925,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_00_01": {
+            "faces": 9485,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_00_02": {
+            "faces": 808,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_00_03": {
+            "faces": 811,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_00_04": {
+            "faces": 280,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_00_m1": {
+            "faces": 1303,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_00_m2": {
+            "faces": 3,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_00_m6": {
+            "faces": 1,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_01_00": {
+            "faces": 801,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_01_01": {
+            "faces": 841,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_01_02": {
+            "faces": 810,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_01_03": {
+            "faces": 818,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_01_04": {
+            "faces": 281,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_01_m1": {
+            "faces": 517,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_01_m2": {
+            "faces": 2,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_01_m5": {
+            "faces": 1,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_02_00": {
+            "faces": 673,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_02_01": {
+            "faces": 700,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_02_02": {
+            "faces": 833,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_02_03": {
+            "faces": 810,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_02_04": {
+            "faces": 280,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_02_m1": {
+            "faces": 792,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_02_m2": {
+            "faces": 130,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_02_m5": {
+            "faces": 1,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_03_00": {
+            "faces": 360,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_03_01": {
+            "faces": 357,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_03_02": {
+            "faces": 360,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_03_03": {
+            "faces": 362,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_03_04": {
+            "faces": 128,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_03_m1": {
+            "faces": 353,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_03_m2": {
+            "faces": 106,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_03_m3": {
+            "faces": 40,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_03_m4": {
+            "faces": 41,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_03_m5": {
+            "faces": 40,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_03_m6": {
+            "faces": 40,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_03_m7": {
+            "faces": 40,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_03_m8": {
+            "faces": 18,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m10_00": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m10_01": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m10_02": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m10_03": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m10_04": {
+            "faces": 280,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m10_m1": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m10_m2": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m10_m3": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m10_m4": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m10_m5": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m10_m6": {
+            "faces": 804,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m10_m7": {
+            "faces": 811,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m10_m8": {
+            "faces": 360,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m11_00": {
+            "faces": 520,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m11_01": {
+            "faces": 520,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m11_02": {
+            "faces": 520,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m11_03": {
+            "faces": 520,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m11_04": {
+            "faces": 182,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m11_m1": {
+            "faces": 520,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m11_m2": {
+            "faces": 520,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m11_m3": {
+            "faces": 520,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m11_m4": {
+            "faces": 520,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m11_m5": {
+            "faces": 520,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m11_m6": {
+            "faces": 520,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m11_m7": {
+            "faces": 520,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m11_m8": {
+            "faces": 234,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m1_00": {
+            "faces": 1485,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m1_01": {
+            "faces": 11627,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m1_02": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m1_03": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m1_04": {
+            "faces": 280,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m1_m1": {
+            "faces": 13955,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m1_m2": {
+            "faces": 178,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m1_m3": {
+            "faces": 2,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m1_m4": {
+            "faces": 178,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m2_00": {
+            "faces": 7569,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m2_01": {
+            "faces": 5919,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m2_02": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m2_03": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m2_04": {
+            "faces": 280,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m2_m1": {
+            "faces": 11831,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m2_m2": {
+            "faces": 490,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m2_m3": {
+            "faces": 2,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m2_m4": {
+            "faces": 1,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m2_m5": {
+            "faces": 33,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m2_m7": {
+            "faces": 1,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m3_00": {
+            "faces": 12396,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m3_01": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m3_02": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m3_03": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m3_04": {
+            "faces": 280,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m3_m1": {
+            "faces": 9011,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m3_m2": {
+            "faces": 7484,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m3_m3": {
+            "faces": 16,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m3_m4": {
+            "faces": 3,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m3_m5": {
+            "faces": 1,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m3_m8": {
+            "faces": 1,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m4_00": {
+            "faces": 6212,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m4_01": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m4_02": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m4_03": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m4_04": {
+            "faces": 280,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m4_m1": {
+            "faces": 10931,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m4_m2": {
+            "faces": 16910,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m4_m3": {
+            "faces": 353,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m4_m4": {
+            "faces": 2,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m4_m5": {
+            "faces": 3,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m4_m6": {
+            "faces": 2,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m5_00": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m5_01": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m5_02": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m5_03": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m5_04": {
+            "faces": 280,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m5_m1": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m5_m2": {
+            "faces": 11719,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m5_m3": {
+            "faces": 8782,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m5_m4": {
+            "faces": 217,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m5_m5": {
+            "faces": 44,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m5_m6": {
+            "faces": 46,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m5_m7": {
+            "faces": 1,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m6_00": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m6_01": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m6_02": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m6_03": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m6_04": {
+            "faces": 280,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m6_m1": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m6_m2": {
+            "faces": 13203,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m6_m3": {
+            "faces": 17065,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m6_m4": {
+            "faces": 22282,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m6_m5": {
+            "faces": 7987,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m6_m6": {
+            "faces": 313,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m6_m7": {
+            "faces": 523,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m6_m8": {
+            "faces": 134,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m7_00": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m7_01": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m7_02": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m7_03": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m7_04": {
+            "faces": 280,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m7_m1": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m7_m2": {
+            "faces": 21783,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m7_m3": {
+            "faces": 841,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m7_m4": {
+            "faces": 5561,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m7_m5": {
+            "faces": 71054,
+            "qualified_removed_faces": 674,
+            "qualified_added_faces": 18507,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m7_m6": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m7_m7": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m7_m8": {
+            "faces": 363,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m8_00": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m8_01": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m8_02": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m8_03": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m8_04": {
+            "faces": 280,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m8_m1": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m8_m2": {
+            "faces": 4664,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m8_m3": {
+            "faces": 14114,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m8_m4": {
+            "faces": 11036,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m8_m5": {
+            "faces": 12276,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m8_m6": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m8_m7": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m8_m8": {
+            "faces": 360,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m9_00": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m9_01": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m9_02": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m9_03": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m9_04": {
+            "faces": 280,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m9_m1": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m9_m2": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m9_m3": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m9_m4": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m9_m5": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m9_m6": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m9_m7": {
+            "faces": 800,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          },
+          "Tile_Street_m9_m8": {
+            "faces": 360,
+            "qualified_removed_faces": 0,
+            "qualified_added_faces": 0,
+            "all_other_semantic_packed_faces_exact": true
+          }
+        },
+        "changed_sha_tiles": [
+          "Tile_Street_m7_m5"
+        ],
+        "new_names": [],
+        "removed_names": [],
+        "active_tile_count": 397,
+        "total_triangles": 5216453,
+        "protected_native_data_sha256": {
+          "Content/Generated/Baku/Data/terrain.bin": "e6e5423c2f5f02fc7e47ddb1459d9e39edcc2ae0b7891724be8520abedc5231e",
+          "Content/Generated/Baku/Data/buildings.bin": "66124b81b9566466e4372a03e6bbcfdf77459d3614eee676b407a531be73c0c4",
+          "Content/Generated/Baku/Data/track_limits.bin": "4b49688582d85ea9d89800723f5ce8c48f84a99f2deb9fc0d145731a9273d6e6",
+          "Content/Generated/Baku/Data/drive_surface.bin": "26bc10ef7913eb8b758e60bada4eb749e94aa7bb524952c47ead9fff2130166e",
+          "Content/Generated/Baku/Data/render_tiles.csv": "ef2b2e4f413e55df2d5def90604460ecd35f7146b33d9d8e7d333503db6cd77e"
+        },
+        "unselected_faces": "Complete per-logical-parent multisets of material names and96literal packed attribute bytes match, after only the explicitly qualified finite deltas. Slot numbers and source cap/partition ordering are not assumed equal."
+      }
+    },
+    {
+      "file": {
+        "path": "build/reviews/resume-20261115/junction-wave-source-check-receipt.json",
+        "sha256": "e58a52c50a3951cb96971fc79e1b53446f9dea63aaa40b875551e67dbcfdaca7"
+      },
+      "data": {
+        "status": "PASS full guarded source checks:392pytest,208Mypy,Ruff",
+        "authoring_revision": "903e8668bf898fa21dd93fb0c0b8cb24fe06b2a3",
+        "command": "make circuit-check CIRCUIT_PYTHON=build/tmp/lasvegas-python/bin/python",
+        "log_sha256": "08e5fee8d6ae5e330b61929416d45ab669a905f7584a602662787bddc9205248",
+        "committed_input_sha256": {
+          "Attribution/Sources/baku/junction/README.md": "dddded4e7eee2efc7e2a45effe5f3994b384f7043f1b499dc6cbd2d40b147779",
+          "Attribution/Sources/baku/junction/geometry-proof.json": "bc5e49514af4275c8818a75a4fc30c679436dc45fd50fa0545d0de63c8b0b751",
+          "Attribution/Sources/baku/junction/ground-delta.json.gz": "3f4203b7efccb495839ca08e493d918af83ba1a984ec9a33b655df1ab230f39a",
+          "Attribution/Sources/baku/junction/reconstruction.json": "793c7b560320fc0ab23737563241c714b767b09cbf70bfed713af71a38ef9ff0",
+          "Attribution/Sources/baku/junction/source-qualification.json": "7789ee5d1a89dfa961e923c6829d0b083e72d28436a604499571f36ef5cc9fed",
+          "Attribution/Sources/baku/junction/source-review-receipt.json": "8db8d9ee5df83d3ba97fb25d02abc19486cb360e68b993705fff53b69edc15c7",
+          "Attribution/Sources/baku/junction/source-review.md": "254a1f5403f8cc806c4f39e02c16713d1631f5e342a706708282fda134ce3e4e",
+          "Makefile": "5ccc664df163d4e532a693e02514a255fcbe78b6bb7564db8b71d3136931b189",
+          "Tests/test_baku_junction.py": "3a5358eab2bd151780e963b8c9f73d77dcfe43d98408f1483e688b9575770fd7",
+          "docs/map.md": "a2d33e7121ea0a0d6a792eef7128da9c4c20c7c832a4c7aa34a28c643db797b1",
+          "tools/generate_circuit_scene.py": "d1f4dd7a776c34709efa198fca946fe9361cb64c9d267814c8f604d9e02132ed",
+          "tools/venues/baku_junction.py": "3eb8545126f6391e2d13008bc0398c26ae2cec2aa638a94befacf7ebc0b4ab6f",
+          "tools/venues/baku_junction_dataclasses.py": "6ff6e6ec610efd16fc325cbd9769e4aefde9f086ee8333f7c686e8e40295d134"
+        },
+        "scope": "Includes canonical park authoring regression and2junction checks. Full generated semantic mesh scope, native import, fresh cook and full-route visual review remain separate."
+      }
     }
   ],
   "runtime_changes": {
@@ -28525,8 +30145,8 @@
     "peak_sample_utc": "2026-11-15T09:52:09Z",
     "within_sampled_ceiling": true,
     "first_sample_utc": "2026-11-14T04:15:41Z",
-    "last_sample_utc": "2026-11-15T17:06:28Z",
-    "samples": 26430,
+    "last_sample_utc": "2026-11-15T17:47:47Z",
+    "samples": 26922,
     "configured_sample_interval_s": 5.0,
     "observed_interval_range_s": [
       4.0,
@@ -28536,8 +30156,8 @@
     "one_heavy_job_at_a_time_attested": true,
     "monitor": {
       "path": "build/reviews/resume-20261114/resources.csv",
-      "snapshot_sha256": "2fa7456a698d2a71f291ff3b62c56a30e09787cafc9869dd28794384fdaa6358",
-      "snapshot_bytes": 1189395
+      "snapshot_sha256": "c1f63c44fa3d29bd9d564f2fd33a51a4f10b751cc6086fd2d94c3822f980f03e",
+      "snapshot_bytes": 1211535
     },
     "scope": "Sampled total machine usage, not engine RSS. The hash covers the parsed byte prefix if monitoring continues. Sampling cannot establish every transient peak or job concurrency by itself."
   },
@@ -28553,7 +30173,8 @@
     "Hockenheim visible stand-front join is closed; a hidden mismatch up to 1.479 m remains outside the bounded repair. No broad earth bank was invented to conceal it.",
     "Malaysia’s adverse T15 profile and rising exit are implemented and visually passed. The 16 m legal width is primary-designer supported; 4% mean/7% inner/1% outer crossfall, 15.4 m exit crest and local station warp are estimates, with ±1 m elevation and ±50 m station uncertainty, not civil survey values. Wider original pavement is preserved from the actual frozen 8192-row baseline; outside support-zone discretization differs by at most 4.5 cm.",
     "Masarat height 144 ± 12 m, lower wings and terrace/entry dimensions are architectural estimates. Its visual pass does not identify or survey every neighboring Jeddah building.",
-    "Repeated50–80ms frame intervals occur in uncapped diagnostics across several added circuits. A warmed CPU-only control omitting detailedGPU trace/csvGpuStats still shows13occlusion-result waits above40ms in8episodes; driver/GPU scheduling cause remains unresolved. No runtime-default change or performance-fix claim."
+    "Repeated50–80ms frame intervals occur in uncapped diagnostics across several added circuits. A warmed CPU-only control omitting detailedGPU trace/csvGpuStats still shows13occlusion-result waits above40ms in8episodes; driver/GPU scheduling cause remains unresolved. No runtime-default change or performance-fix claim.",
+    "Incoming Niyazi carriageway and its immediate walk remain held for source completion. The ordinary traffic island and joined junction are a separate repair. A whole-route visual PASS does not resolve that source hold or establish survey accuracy."
   ],
   "circuits": {
     "australia": {
@@ -29107,6 +30728,12 @@
           "Attribution/Sources/baku/hotel-primary-receipts.json": "c313cb822b4ba0ae0520a86cfb89093e9cb4a61c5a1e8e44e56fdedc9034f3dc",
           "Attribution/Sources/baku/hotel-recipe.json.gz": "a187441ec4828e4b55df1d2b5441c3be116ce84cf2fae4e92ff6e92675fc15f7",
           "Attribution/Sources/baku/hotel-reconstruction.json": "7d54f0ccc60c571519af0de8035d0ccad14f5623d2033c2c96a0828b022ab3a1",
+          "Attribution/Sources/baku/junction/geometry-proof.json": "bc5e49514af4275c8818a75a4fc30c679436dc45fd50fa0545d0de63c8b0b751",
+          "Attribution/Sources/baku/junction/ground-delta.json.gz": "3f4203b7efccb495839ca08e493d918af83ba1a984ec9a33b655df1ab230f39a",
+          "Attribution/Sources/baku/junction/niyazi-sections.json": "8ab94a57779b56783186a767556dbcc7fe1df3ecec638df91b3341e197b9dde8",
+          "Attribution/Sources/baku/junction/reconstruction.json": "793c7b560320fc0ab23737563241c714b767b09cbf70bfed713af71a38ef9ff0",
+          "Attribution/Sources/baku/junction/source-qualification.json": "7789ee5d1a89dfa961e923c6829d0b083e72d28436a604499571f36ef5cc9fed",
+          "Attribution/Sources/baku/junction/source-review-receipt.json": "8db8d9ee5df83d3ba97fb25d02abc19486cb360e68b993705fff53b69edc15c7",
           "Attribution/Sources/baku/khagani/canopy-atlas.json": "275c6fc12d7af5fbdae5c07fa2450f1df0a22e71a13ef525167640bb535e5ebe",
           "Attribution/Sources/baku/khagani/canopy-material-confirmation.json": "50a545ec1179145761ae50569d1870a4d8189c2c9f4bd84969a13be8ab0c57a2",
           "Attribution/Sources/baku/khagani/canopy-material-input-confirmation.json": "f8094c8c72aedbb9a41cb9f0c50dd0a62a6ae8f72f335e5bc84ee258f3bda61d",
@@ -29156,7 +30783,7 @@
           "Attribution/Sources/baku/scene-registration.json": "e8de58762c1813465c78bc482d8980ac05028ea23ca077bb95ae3e04d8261531",
           "Attribution/Sources/baku/scenery-ground.json": "84e3eac5244ffe33b0088bcbc5d58a9ac17eca6829872b13bdb9bd0b50d1fb5b",
           "Attribution/Sources/baku/scenery-terrain.json": "4d6697c573aaf75c1e80485ecf75b0127a7cf1c578d4bb7ad4f4721c42607168",
-          "Attribution/Sources/baku/scenery.json": "3cfe8ac8aedc7ba7d816edc2998f89f80114eb3add4fee4a3965d358c5d6cfef",
+          "Attribution/Sources/baku/scenery.json": "89c4895dbc8461a6c7d10706b504b8e9e3291c16f1106cc1821e09ad554d393c",
           "Attribution/Sources/baku/shared-board-history.json": "51432520327c8b96e3b6fa2b7403dcb8911c3a5314dace946d5967cfd7ff3c0c",
           "Attribution/Sources/baku/skyline-buildings.json": "5faae3cb3283a491b6a50d647fe1b6b8e1b3b3f5d8a1305103f08fb264678378",
           "Attribution/Sources/baku/skyline.osm.json.gz": "efaeaffe73aa1f7ceaf33640d0cbb6f9b232f3f25a5b4109992e4264739631bc",
@@ -29181,9 +30808,9 @@
         "accuracy_note": "Dense native samples do not establish survey accuracy. Single-chord grades use horizontal XY chords; 100 m windows use registered station distance and may differ from operator definitions. Scenery ground is a separate source family."
       },
       "scene": {
-        "source_manifest_sha256": "bf6200b3f25d5fea7511d41d27d5339f3eba1890e9fd1e86b86347bf6cd2a70e",
+        "source_manifest_sha256": "36410daa6b7005830693c2a2f16c70d33e37cacdf10124df7d7e20da8918c52a",
         "native_asset_count": 449,
-        "native_assets_sha256": "fc178ce090c161e59c6af1eb5c62709a239f733478eeb7fb5e509c3c3f759152",
+        "native_assets_sha256": "77eabec2fe292a0e9e38b5380f3c55ea9e911305184468825727f20434e4fc0c",
         "native_data_sha256": {
           "buildings.bin": "66124b81b9566466e4372a03e6bbcfdf77459d3614eee676b407a531be73c0c4",
           "drive_surface.bin": "26bc10ef7913eb8b758e60bada4eb749e94aa7bb524952c47ead9fff2130166e",
@@ -29192,16 +30819,16 @@
           "track_limits.bin": "4b49688582d85ea9d89800723f5ce8c48f84a99f2deb9fc0d145731a9273d6e6"
         },
         "tiles": 397,
-        "triangles": 5198620,
+        "triangles": 5216453,
         "maximum_tile_triangles": 201313
       },
       "visual_review": {
-        "decision": "held",
-        "notes": "Whole Baku HOLD atf3962c00 for the distinct gray3998public junction. Native park/office/verge reconstruction passes its scoped review:98source-fit trees, coherent lowoffice relative base and no observed new contact/float conflicts. IncomingNiyazi/ordinary-island junction work remains private until proved.",
+        "decision": "pass",
+        "notes": "Whole-route visual PASS at0463d68c,5192clean frames/all125bins. The source-qualified ordinary traffic island,0.15m closed curb and joined paving pass their native scoped review; park/office/98trees and other17circuit scenes remain unchanged. IncomingNiyazi source completion remains independently held; visual acceptance is not source completion or performance parity.",
         "historical_evidence": [],
         "report": {
-          "path": "build/reviews/resume-20261115/reviews/baku-park-wave-f3962c00-live-review.md",
-          "sha256": "4af6827f415fe503311e62e18391fa2042c9437ee3c3d21f083b5fe9d740d0bf"
+          "path": "build/reviews/resume-20261115/reviews/baku-junction-0463d68c-live-review.md",
+          "sha256": "e8e0281cfeb0cf129b30a83c3ef01fe40f000f440d2568794f371c0ea9871e01"
         },
         "native_lap": {
           "slug": "baku",
@@ -29218,30 +30845,30 @@
           "sha256": "46bfffd540b1380fac9b256a98524e009ddabd9c2949e45d3ee3224980ed6716"
         },
         "live_evidence": {
-          "packet": "build/reviews/baku/resume-20261115-park-wave-live",
-          "captured_package_revision": "f3962c00ec8e01c758715ff0add834873a7d49a5",
-          "package_manifest_sha256": "ee2db225b93abac6616e21427f2ae3190ec0e05ad1611bdb79bae662d9e1ed0a",
-          "summary_sha256": "b90e6464282bd2992d136fa6d6f838ab9f830457dbc56ab6de54856d33a11735",
-          "archive_sha256": "c9929cee8b5cd453e6d6c247accf988a815db41d393de0d26d3dcf1963673c39",
-          "target_index_sha256": "4c117284637865715f802b48dba40bbcb82b5f08e3d8b2cc0d253810a337f331",
-          "selected_index_sha256": "7ec9c4cf1bd4ba2845e2e5aa7859377d8b41606d202b622ee1f8c76c8d9b67da",
-          "frame_count": 5039,
+          "packet": "build/reviews/baku/resume-20261115-junction-wave-retry-live",
+          "captured_package_revision": "0463d68c7a29fd80d7f8ea3e2142faf526485475",
+          "package_manifest_sha256": "9eb29fddab1d7aa3d036dc021656eb6acbc67b819cffef43c1545f1b6ab92e0c",
+          "summary_sha256": "a9c517ddfcab3349f3a3773eba76666b1a0d08a8f3993d10e31739ba15f00b4c",
+          "archive_sha256": "c24c1cd77c0759fc6e4ab6363fc2ea77fab819cacecada6f670223b49c2455fd",
+          "target_index_sha256": "1b5a9a36204ae17c8d07fcb29c0313e2f2da535a4ca31b7b4492eedfcf13ff5b",
+          "selected_index_sha256": "bb744b8500199d02e761d20239a8d222e37bba3cff48e52d8f4dcaf5186bfcd0",
+          "frame_count": 5192,
           "station_bins_visited": 125,
           "station_bins_total": 125,
-          "maximum_circular_frame_gap_m": 21.184326171875,
+          "maximum_circular_frame_gap_m": 6.645263671875,
           "clean_live_recording": true,
           "contacts": 0,
           "offtrack_frames": 0,
           "airborne_frames": 0,
           "maximum_visual_penetration_m": 0.0,
-          "complete_video_frames": 5039,
-          "video_sha256": "2c3f87ada26a92aee77d80d4027e00a621de9508ab5a77cf3e3f615e9c8af0c0",
+          "complete_video_frames": 5192,
+          "video_sha256": "9e355bf6515622e4e60781806b1071d9f12706d8699f203f8687ffcc569c81cf",
           "journal_sha256": {
-            "frames.jsonl": "77980f8ba706205c46285ae41c2b037311a2a83d24ec223f6ed55eeaac76611e",
+            "frames.jsonl": "e4645a52dff7a163568275deb35254a190c7a4443bf404b823cc99e19b79f6ef",
             "inputs.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-            "ticks.jsonl": "d9ad045452229fcc9a3dc3007ef240ac372b6a723a9a7972aed635a8cb24f1a1",
-            "steps.jsonl": "d013631dd00870970e2902a40664e556fcbe8db976f442c5c0f4217c91fc52b3",
-            "session.json": "6abb56b711bb5f49aee95f5c46970ddef0616e6da8fc8875232bd8da5757dc9a"
+            "ticks.jsonl": "eeb160fdaca96bd97c4f075e9d98dadb9d7b595a3574dff7f112c005dc20647e",
+            "steps.jsonl": "f75254743f1d152ed2cfa2165bb03a1895902a37f9b241eba0d83eedd61851c9",
+            "session.json": "c5e1ee7aea3ca76e4847abca2591bb0817bcd4a5e03f875fb2d133d681ddb745"
           },
           "capture_conditions": "Production live cockpit with image recording. Capped/readback/encoding frame intervals are not uncapped performance measurements.",
           "dimensions": [
@@ -29257,8 +30884,8 @@
         }
       },
       "source_limits": [
-        "The distinct3998public junction remains visibly unresolved in this package. The accepted park/office/verge work must not be conflated with that held surface.",
-        "Office base/ground±2m, individual tree inventory/species and photographed verge width retain their stated estimate limits. The27.8%outer face was already27.62% and is a separate inherited source condition."
+        "Incoming Niyazi retains incompatible old upper-edge/lower-walk reconstruction constraints. Its true upper-edge height and exact dated-photo registration remain unknown. Separate source-completion HOLD persists despite this whole-route visual PASS.",
+        "Road/camber/island floor and0.15m curb are estimates tied to three actual racing-Road anchors, not a survey. Office/ground±2m and individual tree inventories retain their source limits."
       ]
     },
     "buddh": {
@@ -35598,12 +37225,12 @@
     {
       "circuit": "baku",
       "kind": "moving",
-      "current_scene_and_runtime": true,
+      "current_scene_and_runtime": false,
       "directory": "build/reviews/resume-20261115-moving-final-catalogue/baku",
       "captured_package_revision": "f3962c00ec8e01c758715ff0add834873a7d49a5",
       "summary_sha256": "0814d5bb31247db139df9f214950fe553ef96bd676ba9b5c0f351286f2e2f040",
       "package_manifest_sha256": "ee2db225b93abac6616e21427f2ae3190ec0e05ad1611bdb79bae662d9e1ed0a",
-      "runtime_compatibility_note": "Fresh f3962c00 whole warmed route,125bins, same exact current native scene/runtime. Circuit visual HOLD at the separate junction remains; timing acquisition is not visual completion or a stutter fix.",
+      "runtime_compatibility_note": "Fresh f3962c00 whole warmed route,125bins, same exact current native scene/runtime. Circuit visual HOLD at the separate junction remains; timing acquisition is not visual completion or a stutter fix. Historical acquisition; current scene/runtime or warmed-route metadata differs. Superseded selection; original acquisition retained.",
       "summary": {
         "circuit": "baku",
         "mode": "Live racing-line controller, production cockpit, uncapped, no image recorder.",
@@ -35788,6 +37415,204 @@
         "limitation": "Automatic input is not physical-controller validation; lap faults are checked separately in the closed live recording.",
         "route_registration": "CSV production-camera world coordinates projected in3D onto retained8192pointnativecenterline; eyeheight1.26mremoved. Atcrossings3Dprojectiondistinguishesdecks. Thisestablishesroutecoverage, notlapvalidity/contactabsence.",
         "raw_csv_sha256": "809d9206b6ce5aebbfef1ef4cbfb92f9080bf99a1ddf2ed260eb0da5633719bd",
+        "road_sha256": "efd762656d72977391616135747278d92dbf1a1181eacf834da8934f4820618d",
+        "line_sha256": "14f2751158407e9e1f31b27a2f943e4d82a87c9813d8465771fc415808b90a2f"
+      },
+      "interpretation": "One measured full route after a full warmup route, no image recorder. Automatic input does not validate physical-controller handling."
+    },
+    {
+      "circuit": "baku",
+      "kind": "moving",
+      "current_scene_and_runtime": true,
+      "directory": "build/reviews/resume-20261115-moving-junction-final/baku",
+      "captured_package_revision": "0463d68c7a29fd80d7f8ea3e2142faf526485475",
+      "summary_sha256": "258b0990e31190b36151c87d4331ed9f4711501adcd8655c7f8c3c2b89afda5a",
+      "package_manifest_sha256": "9eb29fddab1d7aa3d036dc021656eb6acbc67b819cffef43c1545f1b6ab92e0c",
+      "runtime_compatibility_note": "Exact scene/executable/global runtime metadata; captured revision retained. Full warmed route metadata checked; raw payload hashes await guarded final verification.",
+      "summary": {
+        "circuit": "baku",
+        "mode": "Live racing-line controller, production cockpit, uncapped, no image recorder.",
+        "dimensions": [
+          1600,
+          900
+        ],
+        "screen_percentage": 100.0,
+        "frame_cap": 0,
+        "vsync": false,
+        "timings": {
+          "FrameTime": {
+            "median_ms": 22.493,
+            "p95_ms": 29.7447,
+            "p99_ms": 36.026,
+            "maximum_ms": 59.8633,
+            "frames_over_50ms": 35,
+            "frames_over_100ms": 0
+          },
+          "GameThreadTime": {
+            "median_ms": 3.017,
+            "p95_ms": 4.39,
+            "p99_ms": 5.261,
+            "maximum_ms": 11.327,
+            "frames_over_50ms": 0,
+            "frames_over_100ms": 0
+          },
+          "RenderThreadTime": {
+            "median_ms": 4.448,
+            "p95_ms": 6.129,
+            "p99_ms": 7.005,
+            "maximum_ms": 16.261,
+            "frames_over_50ms": 0,
+            "frames_over_100ms": 0
+          },
+          "GPUTime": {
+            "median_ms": 21.721,
+            "p95_ms": 29.051,
+            "p99_ms": 33.608,
+            "maximum_ms": 45.671,
+            "frames_over_50ms": 0,
+            "frames_over_100ms": 0
+          }
+        },
+        "measured_frames": 7233,
+        "captured_frames": 17424,
+        "measured_frame_range": [
+          7512,
+          14745
+        ],
+        "warmup": "One full registered route before the measured complete route.",
+        "station_bins_visited": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119,
+          120,
+          121,
+          122,
+          123,
+          124
+        ],
+        "station_bin_count": 125,
+        "maximum_camera_to_road_3d_m": 5.013752264332917,
+        "measured_route_seconds_from_frame_times": 167.09844760000001,
+        "limitation": "Automatic input is not physical-controller validation; lap faults are checked separately in the closed live recording.",
+        "route_registration": "CSV production-camera world coordinates projected in3D onto retained8192pointnativecenterline; eyeheight1.26mremoved. Atcrossings3Dprojectiondistinguishesdecks. Thisestablishesroutecoverage, notlapvalidity/contactabsence.",
+        "raw_csv_sha256": "6fda88a6878188070e608a1053230b7a3f4325f3caaa91a9e73c78b4d54df62d",
         "road_sha256": "efd762656d72977391616135747278d92dbf1a1181eacf834da8934f4820618d",
         "line_sha256": "14f2751158407e9e1f31b27a2f943e4d82a87c9813d8465771fc415808b90a2f"
       },

@@ -1,8 +1,8 @@
 # Additional circuit validation — 2026-11-15
 
-Checkpoint for the 18 additional circuits, current package `f3962c00`. The explicit review register records 17 visual passes, 1 hold and 0 pending reviews. This checkpoint does not declare the work complete.
+Checkpoint for the 18 additional circuits, current package `0463d68c`. The explicit review register records 18 visual passes, 0 holds and 0 pending reviews. This checkpoint does not declare the work complete.
 
-Work remains incomplete. Seventeen circuits have current-compatible visual passes; Baku remains held at the separate public junction. Fresh uncapped driving measurements cover all 18 additional circuits after a full warmup lap, with two accepted baselines. Intermittent waits for occlusion-query results remain unresolved.
+Work remains incomplete. All 18 circuits have current-compatible visual passes. The incoming Niyazi source reconstruction and intermittent rendering stalls remain unresolved. Visual acceptance does not establish source completion or performance parity.
 
 The [validation record](additional_circuits_validation.json) pins package payloads, exact scene identities, reports, archived frames, current profiles, runtime scope and performance evidence.
 
@@ -11,7 +11,7 @@ The [validation record](additional_circuits_validation.json) pins package payloa
 | australia | 2e95c625 | pass | 4347 | 125/125 |
 | austria | 2e95c625 | pass | 3606 | 125/125 |
 | bahrain | 2e95c625 | pass | 4779 | 125/125 |
-| baku | f3962c00 | held | 5039 | 125/125 |
+| baku | 0463d68c | pass | 5192 | 125/125 |
 | buddh | a0d9e464 | pass | 4610 | 125/125 |
 | canada | 2e95c625 | pass | 3866 | 125/125 |
 | china | 2e95c625 | pass | 5215 | 125/125 |
@@ -35,7 +35,7 @@ These independent source findings remain unresolved despite retained visual pass
 
 | Circuit | Outstanding source finding |
 | --- | --- |
-| baku | Whole Baku HOLD atf3962c00 for the distinct gray3998public junction. Native park/office/verge reconstruction passes its scoped review:98source-fit trees, coherent lowoffice relative base and no observed new contact/float conflicts. IncomingNiyazi/ordinary-island junction work remains private until proved. |
+| baku | Incoming Niyazi carriageway and its immediate walk remain held for source completion. The ordinary traffic island and joined junction are a separate repair. A whole-route visual PASS does not resolve that source hold or establish survey accuracy. |
 
 ## Current native profiles
 
@@ -72,7 +72,9 @@ These figures are recalculated from the current road exports. Sample density is 
 
 The supplied scope proofs and their hashes are retained in the JSON. Accepted-circuit assets, shared runtime changes and car/input/camera scope are reported separately; asset preservation is not a claim that no runtime code changed.
 
-Photographed No5 frontage, finite public-ground/office-base/98-tree seafront reconstruction and native material-input correction are committed. Monaco rooftop/garden/ground-role work has a whole-route visual pass. The separate Baku3998junction and performance waits remain open; no18-map completion claim.
+Baku's native traffic island, closed low curb and connected paving replace 674 faces with 18,507 in one street mesh. Complete mesh comparisons and native checks preserve the accepted park, office, 98 trees, other 17 circuit scenes and physical data. The first recording stopped at the disk guard. Only the clean retry, with 5,192 frames and all 125 route bins, is selected for the new review. Niyazi source completion remains separately held.
+
+Full source checks passed 392 tests, type checking across 208 files, and lint. The package and session checks passed. Cleanup retired 6.22 GB of duplicate cooker output and 2.57 GB of failed recording images, preserving the runnable package, source references and canonical game assets.
 
 Sampled peak machine memory was 7.140 GB against 11 GB, using the 5 s monitor. One heavy job at a time is attested in the register.
 
@@ -101,7 +103,7 @@ Moving measurements are separate from capped image recordings and stationary sam
 | zandvoort | moving | 6819 | 19.93 | 24.00 | 27.93 | 67.93 |
 | lasvegas | moving | 6807 | 22.53 | 30.46 | 33.92 | 47.16 |
 | interlagos | moving | 6502 | 19.68 | 24.80 | 28.40 | 53.64 |
-| baku | moving | 6746 | 24.07 | 31.72 | 39.27 | 74.59 |
+| baku | moving | 7233 | 22.49 | 29.74 | 36.03 | 59.86 |
 
 Moving runs require one full warmup route and complete measured route coverage. They use automatic driving input and do not establish physical-controller handling. Stationary numbers describe only their registered local scene. Capped recording intervals include readback and encoding overhead.
 
@@ -118,20 +120,21 @@ Moving runs require one full warmup route and complete measured route coverage. 
 - Hockenheim visible stand-front join is closed; a hidden mismatch up to 1.479 m remains outside the bounded repair. No broad earth bank was invented to conceal it.
 - Malaysia’s adverse T15 profile and rising exit are implemented and visually passed. The 16 m legal width is primary-designer supported; 4% mean/7% inner/1% outer crossfall, 15.4 m exit crest and local station warp are estimates, with ±1 m elevation and ±50 m station uncertainty, not civil survey values. Wider original pavement is preserved from the actual frozen 8192-row baseline; outside support-zone discretization differs by at most 4.5 cm.
 - Masarat height 144 ± 12 m, lower wings and terrace/entry dimensions are architectural estimates. Its visual pass does not identify or survey every neighboring Jeddah building.
-- Repeated50–80ms frame intervals occur in uncapped diagnostics across several added circuits. A warmed CPU-only control omitting detailedGPU trace/csvGpuStats still shows13occlusion-result waits above40ms in8episodes; driver/GPU scheduling cause remains unresolved. No runtime-default change or performance-fix claim.
-- baku: The distinct3998public junction remains visibly unresolved in this package. The accepted park/office/verge work must not be conflated with that held surface.
-- baku: Office base/ground±2m, individual tree inventory/species and photographed verge width retain their stated estimate limits. The27.8%outer face was already27.62% and is a separate inherited source condition.
+- Repeated 50–80 ms frame intervals occur in uncapped diagnostics across several added circuits. A warmed CPU-only control omitting detailed GPU trace/csvGpuStats still shows 13 occlusion-result waits above 40 ms in 8 episodes; driver/GPU scheduling cause remains unresolved. No runtime-default change or performance-fix claim.
+- Incoming Niyazi carriageway and its immediate walk remain held for source completion. The ordinary traffic island and joined junction are a separate repair. A whole-route visual PASS does not resolve that source hold or establish survey accuracy.
+- baku: Incoming Niyazi retains incompatible old upper-edge/lower-walk reconstruction constraints. Its true upper-edge height and exact dated-photo registration remain unknown. Separate source-completion HOLD persists despite this whole-route visual PASS.
+- baku: Road/camber/island floor and 0.15 m curb are estimates tied to three actual racing-Road anchors, not a survey. Office/ground ±2 m and individual tree inventories retain their source limits.
 - canada: Visual decision is bound to the unchanged 887 scene; performance is separate.
 - china: No missing crossing-cylinder or parasol defect is established. Ordinary secondary façades remain simplified; no current blocker was demonstrated.
 - cota: No confirmed blocker in the reviewed complete route; performance remains separate.
-- cota: The source-estimated13±1m approach and separate raised curb/flat red apron pass fresh whole-route review. The outside protection/paving stays registered; no regression found at T1/T15. Geometry remains an image-derived reconstruction.
+- cota: The source-estimated 13 ±1 m approach and separate raised curb/flat red apron pass fresh whole-route review. The outside protection/paving stays registered; no regression found at T1/T15. Geometry remains an image-derived reconstruction.
 - hockenheim: A hidden stand-front terrain mismatch up to 1.479 m remains outside the repaired visible low end. Forest density and some secondary facilities remain simplified. Numerical closure does not establish survey precision.
 - japan: Stylized forest/crowd/facility detail and width survey limits remain caveats, not demonstrated blockers.
 - jeddah: Diamond remains a source-supported construction skeleton. Low urban frontage, mall and tower subparts need mapped/photo qualification; do not extrude an entire podium as the full-height tower.
 - jeddah: Source-registered Masarat fills the T27 exit sequence at night, with no visible floating/overlap/pop. The five-part source-estimated volume is separate from Sail; unnamed neighbors and unsurveyed component dimensions remain stated limits.
 - malaysia: Primary designer supports the 16 m legal lane and qualitative adverse/rising-exit shape. No primary numerical cross-section exists in retained sources; local slopes and crest are architectural/track reconstruction estimates.
-- monaco: Garden datums, architectural heights, roof-to-ortho disagreements and the lower Marie/Rome junction retain their documented reconstruction uncertainty. The matched357f04a7 whole-route visual review passes; missing survey precision alone is not a visual hold.
-- monaco: The fresh uncapped Monaco run is GPU-bound at about29ms median/39ms p95, with intermittent occlusion-result stalls. Visual acceptance does not establish performance parity with the accepted baselines.
+- monaco: Garden datums, architectural heights, roof-to-ortho disagreements and the lower Marie/Rome junction retain their documented reconstruction uncertainty. The matched 357f04a7 whole-route visual review passes; missing survey precision alone is not a visual hold.
+- monaco: The fresh uncapped Monaco run is GPU-bound at about 29 ms median/39 ms p95, with intermittent occlusion-result stalls. Visual acceptance does not establish performance parity with the accepted baselines.
 - portimao: Retained DGT road samples are correctly registered to asphalt with no bridge-deck hump, but observed local grades remain in conflict with the operator-published headline values. The vertical/source-definition discrepancy is unresolved; do not clamp or rescale from the headline alone.
 - singapore: Mapped landmark/frontage revisions are simplified in secondary city sectors; no current source-qualified blocker is demonstrated by the reviewed packet.
 - spa: Source grid nodes and native data are unchanged. The refined mesh reproduces an existing interpolation, not finer survey data. Remaining bank tone/shape differences are unclassified, not declared wrong terrain.
