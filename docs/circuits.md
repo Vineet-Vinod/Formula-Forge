@@ -59,8 +59,10 @@ Baku now includes the distinct Mariinsky gymnasium and De Bour mansion, Foundati
 Mirbabayev and waterfront 89/91 architecture. No5's photographed frontage passes
 its bounded native appearance review. Local material inputs that
 incorrectly read unauthored baked AO/vertex data have a matched native PASS.
-Sparse seafront planting, coarse DSM park banks and ordinary city detail remain
-open. Roadside intersections alone do not establish incorrect street levels.
+The native promenade, low office datum and 98-tree park/verge reconstruction
+pass their bounded review. The separate gray public junction around station
+3998 remains held. Incoming Niyazi and island trials stay private until their
+geometry and joins pass; roadside intersections alone do not establish a grade.
 
 Monaco includes the Hermosa terrace, Villa de Rome architecture and separate
 formal garden, chapel and grounded woodland. Its current full-route visual
