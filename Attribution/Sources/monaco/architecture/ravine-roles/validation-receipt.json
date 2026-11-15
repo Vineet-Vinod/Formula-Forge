@@ -1,0 +1,115 @@
+{
+  "state": "PASS PRIVATE original-plane material-only partition; native appearance remains unreviewed",
+  "manifest_sha256": "4fc02c1722abbe393dc3b804d143f94d2f2bdae77400b0f2076f2947b6642ce5",
+  "source_proposal_sha256": "3f3006e76363f859f51eae0b47335649935ccb101d501704109694c1b52c47fb",
+  "parent_payload_sha256": "291e361286a2046757c02e384ef5ffb53130a03187dd7b01170fe161674e548a",
+  "selected_parent_faces": 181,
+  "whole_material_only_faces": 41,
+  "held_unrepresentable_natural_ears": 8,
+  "held_classification_area_m2": 7.448744336040337e-07,
+  "held_classification_union_area_m2": 7.448744336043596e-07,
+  "painted_coverage_error_after_explicit_holds_m2": 0.0,
+  "zero_width_outside_reassigned_area_m2": 1.704418498162327e-14,
+  "maximum_dropped_arithmetic_ghost_width_m": 1.374415727284813e-07,
+  "split_faces": 132,
+  "emitted_fragment_faces": 551,
+  "old_selected_area_sum_m2": 375.4546262385963,
+  "classified_inside_area_sum_m2": 133.03641832257668,
+  "new_fragment_area_sum_m2": 375.4544821318954,
+  "dropped_faces_area_m2": 9.738389778399063e-14,
+  "maximum_parent_plane_error_m": 2.3087653602260616e-06,
+  "maximum_encoding_plane_bound_m": 5.4993077044857094e-05,
+  "minimum_normal_alignment": 0.6574513342549058,
+  "independent_final_F32_parent_z_error_m": 2.3087653153197608e-06,
+  "independent_final_F32_normal_error": 2.9790539146645756e-08,
+  "independent_final_F32_uv_error": 1.8813477424828307e-06,
+  "coverage_bound_m": 5.859475e-05,
+  "coverage_error_beyond_bound_m2": 0.0,
+  "old_selected_global_overlap_m2": 7.200627806014381e-06,
+  "new_selected_global_overlap_m2": 7.200696074960433e-06,
+  "new_overlap_beyond_existing_m2": 6.826894605183043e-11,
+  "natural_outside_guarded_domain_beyond_encoding_bound_m2": 0.0,
+  "original_native_data_sha256": {
+    "Content/Generated/Monaco/Data/terrain.bin": "f1538f328db1481498922f0c8d143010e2a9bcd9c17cb30b52457605ac30a21a",
+    "Content/Generated/Monaco/Data/buildings.bin": "c7e89a92bca0411eec419b718ba140b2fb7c6c54ee12f23267f564da17469507",
+    "Content/Generated/Monaco/Data/track_limits.bin": "85528c1cf80cda2568fc1c22cbe69a96c7de48f48880ee19184a68db336b07ce",
+    "Content/Generated/Monaco/Data/drive_surface.bin": "3a7544d64e64e34c445dbf4049745ad0e2fc4f2d8e96dcf6d29b2c8ee7f67df3",
+    "Content/Generated/Monaco/Data/render_tiles.csv": "98666930e8d23a7df3ec44e5f22c6447c4965267330d1ec969263f7dc6422cc5"
+  },
+  "canonical_mutations": 0,
+  "limits": "No height field, road, plant, architecture or native asset changes. Original parent planes and original N/UV interpolation only. Existing MonacoNaturalGround shader requires fresh cooked PBR review.",
+  "changed_tiles": [
+    {
+      "name": "Tile_Street_00_01",
+      "old_rows": 25324,
+      "new_rows": 25376,
+      "complete_unchanged_rows_raw_exact": 25302,
+      "old_file_sha256": "ba640f1e88c4e2c65ee178b1463949b5a38f4031372a6b2c7c73bd14aaa19d00",
+      "new_rows_sha256": "053be7eb93c6230ed91a6c22606138751332aab23b111ac1ab5da963f2148d0c",
+      "materials_prefix_exact": true,
+      "bounds_unchanged": true
+    },
+    {
+      "name": "Tile_Street_m1_01",
+      "old_rows": 54161,
+      "new_rows": 54479,
+      "complete_unchanged_rows_raw_exact": 54002,
+      "old_file_sha256": "cef2e178090844b369ab3f3c6203b610bc658c9add021d8fd6ac021e203d3e73",
+      "new_rows_sha256": "1753e59b8554e8679ee666219237cf1d9dd8838b2406fcccce4e4401d88c5fb6",
+      "materials_prefix_exact": true,
+      "bounds_unchanged": true
+    }
+  ],
+  "protected_complete_tile_count": 115,
+  "production_public_call_proof_sha256": "aeb6bc00c5a85d5a3209ccc8d08d263dfab04533c7984eaadba1921ee73dec3b",
+  "production_public_call_result": {
+    "state": "PASS actual typed production finish_terrain call: frozen rows/materials/bounds exact on every domain-intersecting tile; all 117 source files unchanged",
+    "manifest_sha256": "4fc02c1722abbe393dc3b804d143f94d2f2bdae77400b0f2076f2947b6642ce5",
+    "actual_public_call": "venues.monaco_ravine_roles.finish_terrain(scene)",
+    "complete_original_scene_files_verified": 117,
+    "loaded_complete_domain_inputs": 2,
+    "other_complete_tile_count": 115,
+    "private_packed_cache_runtime_dependency": false,
+    "changed_tiles": [
+      {
+        "name": "Tile_Street_00_01",
+        "rows": 25376,
+        "sha256": "053be7eb93c6230ed91a6c22606138751332aab23b111ac1ab5da963f2148d0c"
+      },
+      {
+        "name": "Tile_Street_m1_01",
+        "rows": 54479,
+        "sha256": "1753e59b8554e8679ee666219237cf1d9dd8838b2406fcccce4e4401d88c5fb6"
+      }
+    ],
+    "change": {
+      "changed_tiles": [
+        "Tile_Street_00_01",
+        "Tile_Street_m1_01"
+      ],
+      "selected_parent_faces": 181,
+      "whole_material_only_faces": 41,
+      "split_faces": 132,
+      "held_parent_faces": 8,
+      "held_natural_area_m2": 7.448744336040337e-07,
+      "arithmetic_ghost_area_m2": 9.738389778399063e-14,
+      "emitted_fragment_faces": 551,
+      "complete_unchanged_rows": 79312,
+      "natural_area_m2": 133.03641832257668,
+      "maximum_plane_error_m": 2.3087653602260616e-06,
+      "maximum_plane_error_bound_m": 5.4993077044857094e-05,
+      "minimum_normal_alignment": 0.6574513342549058
+    },
+    "production_code_sha256": {
+      "monaco_ravine_roles_dataclasses.py": "c1a2226efa571a53a0520ed1e932f14499e221395a2dc028fb383952e81772eb",
+      "monaco_ravine_roles_ground.py": "cf171043196c0feb5e5e7ab07c81f62bc994e5e62ff49075e8901c1ff11ca5d5",
+      "monaco_ravine_roles.py": "985231def139ff1a557509a4f4469669367c074033a14ff78843293428b5802a"
+    }
+  },
+  "focused_checks": {
+    "pytest": "6 passed",
+    "mypy": "3 source files passed",
+    "ruff": "passed",
+    "unit": "ff-resume-nov14-monaco-acd-production-final.service"
+  }
+}

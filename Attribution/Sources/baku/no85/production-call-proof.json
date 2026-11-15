@@ -1,0 +1,93 @@
+{
+  "status": "PASS",
+  "source_manifest_sha256": "4f2f14bc016a69e3e008a3fadb9cd30f14a1c884e730fea3cc5ba229559d1cd5",
+  "source_triangles": 5089166,
+  "recipe_sha256": "953d3b8099158761eb221b219676956f548cb81b7bdd2848b565d99b35ad5f7d",
+  "old_rows": 23724,
+  "new_rows": 72336,
+  "unchanged_raw_city_rows": 485090,
+  "new_family_counter_sha256": "ecf27d9a146e2adaa5c21d7276e5c7d3fc06566cb15cb8dbe0cbf5e28de6bd55",
+  "actual_after_parent_counter_sha256": "5f5d030416935acb3c6d71043b053b914d7a2f22c0c5d200b45efca88dbbb6e3",
+  "current_waterfront_and_park_rows_unchanged": true,
+  "unselected_raw_fields_order_and_material_prefixes_exact": true,
+  "all_ground_bytes_unchanged": true,
+  "supporting_ground_rows": 63,
+  "all5_native_data_files_unchanged": true,
+  "all5_native_data_sha256": {
+    "terrain.bin": "e6e5423c2f5f02fc7e47ddb1459d9e39edcc2ae0b7891724be8520abedc5231e",
+    "buildings.bin": "66124b81b9566466e4372a03e6bbcfdf77459d3614eee676b407a531be73c0c4",
+    "track_limits.bin": "4b49688582d85ea9d89800723f5ce8c48f84a99f2deb9fc0d145731a9273d6e6",
+    "drive_surface.bin": "26bc10ef7913eb8b758e60bada4eb749e94aa7bb524952c47ead9fff2130166e",
+    "render_tiles.csv": "2f9e3190a08950cd0fc6865f06f7e8b7cf86227733db3d59d59b9c047e4a04af"
+  },
+  "grid_road_mask_provider_identities_unchanged": true,
+  "current_parent_input_cells": [
+    {
+      "name": "Building_City_m5_m3_Part_00_Cell_6_12",
+      "sha256": "381aaa443dc043ec7cf162c1c141afed3f0b9285098b1b96f9fbbe1f5cf7b8f1",
+      "triangles": 9642
+    },
+    {
+      "name": "Building_City_m5_m3_Part_00_Cell_6_13",
+      "sha256": "8af9a0241730bc65f5ca00a55883c5aec6a723493c492986a65b06bcd8ea7052",
+      "triangles": 4242
+    },
+    {
+      "name": "Building_City_m5_m3_Part_00_Cell_6_14",
+      "sha256": "e23c315a95efec98fca012133c0fd02330034d49318fc1dfa21921a5404937b2",
+      "triangles": 11933
+    },
+    {
+      "name": "Building_City_m5_m3_Part_00_Cell_7_12",
+      "sha256": "9c52f4c6217e793bee98682f32646a28da94ed4b8827c0b075fa1aa09d87211d",
+      "triangles": 50711
+    },
+    {
+      "name": "Building_City_m5_m3_Part_00_Cell_7_13",
+      "sha256": "03734b8b35936df51f6f092fbc2b71315f4aad73d161db368b1d16d1096a69ab",
+      "triangles": 5085
+    },
+    {
+      "name": "Building_City_m5_m3_Part_00_Cell_8_12",
+      "sha256": "c8e7cadcb5d20b25fa7cf599d90aafda072a2a9199028e540a6b8e99399eff1c",
+      "triangles": 174327
+    },
+    {
+      "name": "Building_City_m5_m3_Part_00_Cell_8_13",
+      "sha256": "177b76bdd5a850b3f34225bddc87fc47be00b03232bbbe13e02deefe48c0133e",
+      "triangles": 141656
+    },
+    {
+      "name": "Building_City_m5_m3_Part_00_Cell_8_14",
+      "sha256": "16aaaf1a199fe324fdacd6304f28f364f767ca3e0d63df961ba9a660afcfd6f2",
+      "triangles": 2404
+    },
+    {
+      "name": "Building_City_m5_m3_Part_01_Cell_7_12",
+      "sha256": "a2a79ca07bfadd26f9f47cb6df32e59a27051c6087a75dd4c705a73472601030",
+      "triangles": 3357
+    },
+    {
+      "name": "Building_City_m5_m3_Part_01_Cell_7_14",
+      "sha256": "3fe80f92af57758e44992919c4ded48581d83eb80081127a6ac4f240a9b132f4",
+      "triangles": 910
+    },
+    {
+      "name": "Building_City_m5_m3_Part_01_Cell_7_15",
+      "sha256": "84d18eaf7479143ff8736ae31072cb2111adcacd1d2ed59053c97d31a4703325",
+      "triangles": 1
+    },
+    {
+      "name": "Building_City_m5_m3_Part_01_Cell_8_12",
+      "sha256": "64ce318ce04f598906bc89978546c53137a3ffd89c6b14567603ce83e7a38ace",
+      "triangles": 59464
+    },
+    {
+      "name": "Building_City_m5_m3_Part_01_Cell_8_13",
+      "sha256": "67b81d9341a26f729b0c2a9ce9ec0b83904ff8a174de9332bf774295f9605e87",
+      "triangles": 45082
+    }
+  ],
+  "seconds": 9.385807365004439,
+  "rss_mib": 486.21875
+}

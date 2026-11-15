@@ -94,6 +94,9 @@ def generate(slug: str, write_native_contact: bool = False) -> None:
         from venues.baku_waterfront import finish as finish_waterfront
 
         finish_waterfront(scene)
+        from venues.baku_no85 import finish as finish_no85
+
+        finish_no85(scene)
     if slug == "monaco":
         from venues.monaco_foreground import finish_terrain as finish_monaco_foreground
 
@@ -118,6 +121,9 @@ def generate(slug: str, write_native_contact: bool = False) -> None:
         from venues.monaco_cliff_cover import finish_terrain as finish_cliff_cover
 
         finish_cliff_cover(scene)
+        from venues.monaco_ravine_roles import finish_terrain as finish_ravine_roles
+
+        finish_ravine_roles(scene)
     artwork(scene)
     triangle_count = sum(len(tile.triangles) // 100 for tile in scene.tiles.values())
     tile_count = scene.save()

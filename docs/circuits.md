@@ -42,24 +42,32 @@ Suzuka is the only figure-eight. Its back straight crosses the lower Degner road
 
 Native scenes include circuit-specific architecture, vegetation, protection, kerbs, escape surfaces, braking boards and pit paving. Pit access remains closed for the game. Source generation, native geometry checks and a clean simulated lap do not establish visual or performance acceptance. Follow the [whole-lap workflow](map.md) and compare the exact current assets against registered references.
 
-Work is active through Sunday 15 November at 10am PST. The reviewed `e8fa9fb1`
-checkpoint records 16 Luna High visual passes and two holds: Baku and Monaco.
-COTA's image-qualified approach now has an approximately 13 m legal lane with
+Work is active through Sunday 15 November at 10am PST. The 18-map work remains
+incomplete. Sixteen circuits retain compatible Luna High visual passes; Baku and
+Monaco remain held. Carrying a review requires identical native scene, executable
+and shared package payloads. Changed scenes need fresh packaged reviews; source
+or bounded feature passes do not establish whole-circuit acceptance.
+
+COTA's image-qualified approach has an approximately 13 m legal lane with
 separate raised kerbs and flat painted aprons; the existing outside envelope is
 retained. Its width remains an estimate within about 1 m. Jeddah's source-registered
-Masarat group passes the fresh night-lap review and closes the previously empty
-T27 skyline concern. Its 144 m main-wing height and component dimensions retain
-their stated reconstruction uncertainty.
+Masarat group passes the night-lap review and closes the empty T27 skyline concern.
+Its 144 m main-wing height and component dimensions retain their stated
+reconstruction uncertainty.
 
-Baku's corrected civic panels and Niyazi planting pass their bounded reviews,
-while the missing gymnasium/De Bour sequence and ordinary city detail remain held.
-The source identifies the uphill C-shaped property as the gymnasium and the
-separate downhill rectangle as De Bour; the new museum model is still private.
-Pedestrian-frontage ray intersections alone do not establish incorrect street
-levels. Monaco's belvedere, garden treatments and seven grounded western canopy
-clumps improve its view, but the broader hillside appearance remains held.
-The elevated L terrace and uncertain caps must
-stay separate from ground-material classification.
+Baku now includes the distinct Mariinsky gymnasium and De Bour mansion, Foundation,
+Mirbabayev and waterfront 89/91 architecture. No5's photographed frontage has
+source approval and is progressing to native review. Local material inputs that
+incorrectly read unauthored baked AO/vertex data have a matched native PASS.
+Sparse seafront planting, coarse DSM park banks and ordinary city detail remain
+open. Roadside intersections alone do not establish incorrect street levels.
+
+Monaco includes the Hermosa terrace, Villa de Rome architecture and separate
+formal garden, chapel and grounded woodland. The roof has a bounded native
+geometry PASS; the broader hillside remains held. Finite natural-ground material
+partitions preserve the actual original terrain planes and keep the engineered
+Marie/Rome junction separate. Property heights, garden levels and rock roles
+retain their individual source qualifications.
 
 The earlier Portimão, Sepang, Singapore, Buddh and remaining route reviews retain
 their explicit scopes in the [validation checkpoint](additional_circuits_validation.md).

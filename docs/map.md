@@ -158,6 +158,19 @@ smoothed grade or estimated barrier offset needs its own justification and
 confidence. Do not relabel estimates as measurements or storage precision as
 accuracy. A centimetre-encoded grid is not necessarily accurate to a centimetre.
 
+Uncertainty does not justify retaining a default that the reference contradicts.
+A registered photograph can support a bounded architectural or ground estimate
+without supplying survey coordinates. State what it establishes and what remains
+estimated. Review visible defects at matched poses; do not turn missing survey
+precision into an automatic visual failure.
+
+A DSM includes trees and buildings. Check steep roadside banks against visible
+verges, paths and tree roots before treating those heights as ground. Baku's
+coarse seafront DSM produced exposed 15–21% banks where the reference shows a
+curb-height promenade. A finite, source-supported ground estimate is preferable
+to preserving that artifact. Document its uncertainty, protect the actual road
+and structures, and join the retained outer ground through an explicit collar.
+
 When a building outline conflicts with repeated primary roof imagery, retain both
 observations and test the disagreement across acquisition dates. A reported
 positional precision is not an absolute clipping boundary. Monaco's Villa de
@@ -801,6 +814,17 @@ construction preserves the strict overlap guard and retains the diagnosed
 failed candidate. Check every tree foot again on the actual resulting fragments,
 then review native alpha, shadows, texture scale and the complete driving view.
 
+### Baku former No. 85
+
+`venues.baku_no85.finish(scene)` follows the waterfront replacement and replaces
+only generic owner279589354 on its literal plan. The current address5 and former
+No.85 identity have separate primary mapping/photo evidence. Street edge9 and
+long return10 are registered; absolute height, base and hidden elevations remain
+estimates. Preserve the central double-height three-bay colonnade, lower
+three-arched balcony tier, flanking loggias, corner oriels and stepped wings.
+Do not turn those visible groups into a claimed full floor count. The source
+recipe and exact-family/ground proofs are in `Attribution/Sources/baku/no85/`.
+
 ### Villa de Rome architecture
 
 `venues.monaco_rome.finish_terrain(scene)` replaces only the exact 1,822-row generic Villa de Rome family in `Building_City_m1_01`. It operates on the current tile after other terrain/property producers, preserving every other packed row and the existing material-table prefix. It never reloads a saved parent City tile. Keep the call before final tile partition/save; Hermosa garden/tree updates and the underarch woodland remain independent.
@@ -838,6 +862,15 @@ all foliage and driving data. Whole-face area sum 89.18912134 m² and union area
 same quantity rather than loosening an area guard. Mixed natural cover does not
 establish exact bare-rock pixels, tree species or cliff elevations. Source
 records are under `Attribution/Sources/monaco/architecture/cliff-cover/`.
+
+`venues.monaco_ravine_roles.finish_terrain(scene)` follows that whole-face
+classification. Its three photo-registered natural domains intersect 133.036 m²
+of actual Runoff ground. Split the selected parents on their original planes;
+preserve interpolated normals and UVs, every outside row, and the engineered
+Marie/Rome junction. Eight natural slivers narrower than native float32 spacing
+retain their complete original parent rows and an explicit classification miss.
+Never remove ground to satisfy a material mask. The source recipe and coverage
+proofs are under `Attribution/Sources/monaco/architecture/ravine-roles/`.
 
 ## 8. Implement the Unreal assets and runtime data together
 

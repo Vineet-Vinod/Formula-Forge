@@ -1,0 +1,13 @@
+# Neftchilar old85/current5
+
+`venues.baku_no85.finish` runs after the existing Baku post-terrain/waterfront/Mirbabayev hooks. Keep generic owner279589354 emission enabled; the callback independently rebuilds its exact23,724 old rows, then replaces that family only. There is no prepare/custom-skip or Ground hook. Root owns shared hooks, generation, native imports and commits.
+
+`reconstruction.json` contains the literal owner/registered edge9 and restrained return10, architectural estimates, original supporting Ground rows, source frame/protection guards and frozen counters. Three typed modules deterministically rebuild the72,336-row family using existing dependencies. No ignored scripts, image exports or photograph pixels are needed to rebuild. Images remain reference-only; the durable original receipt chain is also in the adjacent waterfront source package.
+
+The source supports a raised three-bay double-height colonnade, lower three-arch balcony group, flanking arched loggias, projecting glazed oriels, strong cornice/parapet and stepped wings.28±5m central cornice,24m wings,20.4/16.5m returns, internal floor pitches, ground-shop counts,2.236845m inherited base and unphotographed rear are estimates/scope controls. The obscured ground floor does not certify a total floor count. No doors/steps/ground survey or unregistered ornate rear is claimed.
+
+The complete concave occupied footprint is retained, with no courtyard cap. All573 exterior probes find actual Ground, minimum foundation burial0.751646m. Conservative Road clearance9.4156m and actual barrier-skin plan clearance4.46365m are positive. No Road, Ground, provider, protection, collider, tree or material-asset changes. New BakuStone world-planar UVs and final native/PBR appearance remain trials pending fresh driver review.
+
+Source/camera review passed for bounded native progression; this does not accept whole Baku. The frozen private packet and proof bind the source against current4f2f14… (5,089,166 triangles). Expected delta+48,612 to5,137,778, only logical City_m5_m3. The actual production call preserves485,090 current unrelated raw records/order/material prefixes, all current waterfront/park fields and all5 native Data files. Current source is replaced semantically by exact owner rows, never by replaying an old whole parent.
+
+Focused tests cover golden source geometry/open courtyard/outward packed faces, unrelated lighting/Ground preservation and atomic stale-source failures. The original primary identity/rhythm reports and final Luna source/camera review are bound by the receipts and source-review file. The native material response, lighting and remaining park context still require their independent review.

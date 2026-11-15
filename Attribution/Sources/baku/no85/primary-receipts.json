@@ -1,0 +1,18 @@
+{
+  "source_identity_review": "build/reviews/resume-20261115/reviews/baku-old85-current5-source-adjudication.md",
+  "source_rhythm_review": "build/reviews/resume-20261115/reviews/baku-no85-source-rhythm-addendum.md",
+  "source_camera_review_sha256": "752d5a0af1bc9fce94650325092c10cf4a65fd78741b34804bbea36ad5760729",
+  "photo_receipts": "../waterfront/primary-receipts.json",
+  "originals_reference_only": true,
+  "photos": [
+    {
+      "file": "street-85-wide-original.jpg",
+      "sha256": "2a12d3a79206adba3fe0ad934abf53ac7c1750f5b9864c63a0339222060b25c1"
+    },
+    {
+      "file": "street-85-2018-original.jpg",
+      "sha256": "8050561a7e346e8251eaf9d824401c923d4febd785e25c5872a00a4e52e5b92e"
+    }
+  ],
+  "source_epoch_note": "OSM279589354 firstmapped2014/address5added2022; independentold87/current7 and89/91 sequence plusfootprint/photoforms qualifyold85identity. No metriccamera/datumclaimed."
+}

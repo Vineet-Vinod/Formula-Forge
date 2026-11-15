@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "scope": "PRIVATE No5/old85 owner only; source-derived loggia/oriel groups, heights/internalfloorpitches/rears estimated, no native approval",
+  "input_code_sha256": {
+    "no85.py": "08497142cbb2f76470bdfd4fece8226032384bd63844da31976d83970d1dd0b8",
+    "no85_dataclasses.py": "71f9aa3873b7ef6f87c978fc92efeec067504003ab5c2163f63dcf43c4d54c57"
+  },
+  "source_manifest_sha256": "4f2f14bc016a69e3e008a3fadb9cd30f14a1c884e730fea3cc5ba229559d1cd5",
+  "old_rows": 23724,
+  "old_counter_sha256": "60fadb997ac1e72959449314599eb45d8636b35320ae27566e8ea2b8e4c89976",
+  "new_rows": 72336,
+  "new_counter_sha256": "ecf27d9a146e2adaa5c21d7276e5c7d3fc06566cb15cb8dbe0cbf5e28de6bd55",
+  "old_parents": [
+    "Building_City_m5_m3"
+  ],
+  "new_parents": [
+    "Building_City_m5_m3"
+  ],
+  "floor_relative_m_inherited": 2.236844843635127,
+  "cornice_estimate_m": 28.0,
+  "wing_estimate_m": 24.0,
+  "height_uncertainty_m": 5.0,
+  "source_group_types": 3,
+  "roof_owner_area_m2": 1742.3344353710293,
+  "roof_missing_raw_m2": 0.0018994322053666756,
+  "roof_extra_raw_m2": 0.007533983051811787,
+  "roof_missing_beyond_0_35mm_m2": 0.0,
+  "roof_extra_beyond_0_35mm_m2": 0.0,
+  "nonfoliage_min_normal_alignment": 0.9999664707413048,
+  "main_masonry_min_outward_alignment": 0.9999984286178731,
+  "perimeter_probes": 573,
+  "missing_ground_probes": 0,
+  "minimum_wall_burial_m": 0.7516456657089603,
+  "actual_support_rows": 63,
+  "road_mask_clearance_m": 9.415586624390144,
+  "conservative_plan_to_barrier_skin_m": 4.463651291130394,
+  "flags": [],
+  "seconds": 22.01184839598136,
+  "rss_mib": 900.453125
+}
