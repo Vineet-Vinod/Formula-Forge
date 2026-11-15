@@ -1,0 +1,69 @@
+{
+  "state": "PASS actual encoded tree foot is supported by actual emitted lawn, no analytic-only floor oracle",
+  "source_lawn_sha256": "454fb72fe6fb7c7442ad246ee07635c009c8c63e5f872f17ca2985eb3c4834d0",
+  "tree_base": [
+    -45.0051207068861,
+    379.5091373320919,
+    58.48075226192781
+  ],
+  "probes": [
+    {
+      "actual_packed_xy_m": [
+        -45.1301220703125,
+        379.384140625
+      ],
+      "actual_new_lawn_owner_rows": [
+        4645
+      ],
+      "actual_lawn_levels_relative_m": [
+        58.58742945104837
+      ],
+      "actual_packed_trunk_bottom_relative_m": 58.480751953125,
+      "minimum_burial_m": 0.10667749792337133
+    },
+    {
+      "actual_packed_xy_m": [
+        -45.1301220703125,
+        379.634140625
+      ],
+      "actual_new_lawn_owner_rows": [
+        4732
+      ],
+      "actual_lawn_levels_relative_m": [
+        58.658772332715984
+      ],
+      "actual_packed_trunk_bottom_relative_m": 58.480751953125,
+      "minimum_burial_m": 0.1780203795909827
+    },
+    {
+      "actual_packed_xy_m": [
+        -44.8801220703125,
+        379.384140625
+      ],
+      "actual_new_lawn_owner_rows": [
+        4651
+      ],
+      "actual_lawn_levels_relative_m": [
+        58.604599693059924
+      ],
+      "actual_packed_trunk_bottom_relative_m": 58.480751953125,
+      "minimum_burial_m": 0.1238477399349236
+    },
+    {
+      "actual_packed_xy_m": [
+        -44.8801220703125,
+        379.634140625
+      ],
+      "actual_new_lawn_owner_rows": [
+        4734
+      ],
+      "actual_lawn_levels_relative_m": [
+        58.63212842037678
+      ],
+      "actual_packed_trunk_bottom_relative_m": 58.480751953125,
+      "minimum_burial_m": 0.15137646725177945
+    }
+  ],
+  "minimum_actual_packed_foot_burial_m": 0.10667749792337133,
+  "precision_note": "Source samples use four intended trunk corners. Actual F32 XY and trunk-bottom Z are replayed here against emitted F32 lawn triangles; differences are bounded numerical encoding, with no geometry mutation."
+}

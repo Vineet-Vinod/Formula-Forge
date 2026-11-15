@@ -1,0 +1,59 @@
+{
+  "state": "Source-qualified palette proposal for fresh native PBR review, not calibrated reflectance or native visual acceptance",
+  "encoding": "All RGB values below are LINEAR, not sRGB or CPU-preview byte colors.",
+  "stone_surface": "Original geometric irregular stones and mortar; use simple local rough PBR colors. No copied photo pixels or boulder texture labelled as masonry.",
+  "materials": {
+    "MonacoTerraceStoneLight": {
+      "base_color_linear": [
+        0.578,
+        0.558,
+        0.479
+      ],
+      "roughness": 0.96,
+      "metallic": 0,
+      "specular": 0.15
+    },
+    "MonacoTerraceStoneMid": {
+      "base_color_linear": [
+        0.445,
+        0.434,
+        0.361
+      ],
+      "roughness": 0.97,
+      "metallic": 0,
+      "specular": 0.15
+    },
+    "MonacoTerraceStoneDark": {
+      "base_color_linear": [
+        0.319,
+        0.309,
+        0.25
+      ],
+      "roughness": 0.97,
+      "metallic": 0,
+      "specular": 0.15
+    },
+    "MonacoTerraceMortar": {
+      "base_color_linear": [
+        0.258,
+        0.25,
+        0.202
+      ],
+      "roughness": 0.98,
+      "metallic": 0,
+      "specular": 0.15
+    },
+    "MonacoGardenLawn": {
+      "source": "Local copy of accepted Grass material, preserving its textures and normal recipe",
+      "multiplicative_tint_linear": [
+        0.7,
+        0.83,
+        0.6
+      ],
+      "roughness": 0.95,
+      "not_constant_base_color": "The tint multiplies the existing grass texture. Do not pass the CPU-preview flat diffuse color as the texture tint."
+    }
+  },
+  "source_appearance": "Gray/buff weathered stone is distinctly darker than the separate cream coping and balustrade. Native sunlight, texture sampling, shadows and exposure differ from the flat technical preview, so judge the cooked camera before visual acceptance.",
+  "accepted_assets": "Existing global Grass/Limestone/ChapelStone and accepted circuit materials stay unchanged. All new keys are Monaco-only."
+}

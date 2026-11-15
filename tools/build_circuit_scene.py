@@ -38,6 +38,10 @@ PALETTE = {
     "MonacoBambooCane": (0.09, 0.14, 0.035),
     "MonacoBambooLeafDeep": (0.025, 0.08, 0.012),
     "MonacoBambooLeafMid": (0.05, 0.13, 0.02),
+    "MonacoTerraceStoneLight": (0.578, 0.558, 0.479),
+    "MonacoTerraceStoneMid": (0.445, 0.434, 0.361),
+    "MonacoTerraceStoneDark": (0.319, 0.309, 0.250),
+    "MonacoTerraceMortar": (0.258, 0.250, 0.202),
     "BakuSkyGlass": (0.10, 0.17, 0.23),
     "BakuSkyGlassLight": (0.18, 0.25, 0.29),
     "BakuPhilharmonicOchre": (0.72, 0.52, 0.22),
@@ -70,6 +74,10 @@ PALETTE = {
     "RunoffViolet": (0.26, 0.07, 0.42),
 }
 ROUGHNESS = {
+    "MonacoTerraceStoneLight": 0.96,
+    "MonacoTerraceStoneMid": 0.97,
+    "MonacoTerraceStoneDark": 0.97,
+    "MonacoTerraceMortar": 0.98,
     "BakuFoundationBlueRoof": 0.38,
     "BakuFoundationRecess": 0.96,
     "MonacoBruyeresRed": 0.82,
@@ -236,6 +244,14 @@ class Importer:
                 )
                 EDIT.set_material_instance_scalar_parameter_value(material, "Roughness", 0.95)
                 EDIT.set_material_instance_scalar_parameter_value(material, "NormalStrength", 0.18)
+            if self.slug == "monaco" and name == "MonacoGardenLawn" and isinstance(
+                material, unreal.MaterialInstanceConstant
+            ):
+                tint = EDIT.get_material_instance_vector_parameter_value(source, "Tint")
+                EDIT.set_material_instance_vector_parameter_value(
+                    material, "Tint", unreal.LinearColor(tint.r * .70, tint.g * .83, tint.b * .60)
+                )
+                EDIT.set_material_instance_scalar_parameter_value(material, "Roughness", .95)
             ground_tints = {
                 "cota": (1.4, 1.08, 0.55),
                 "portimao": (1.65, 1.25, 0.65),
@@ -309,7 +325,7 @@ class Importer:
             LIBRARY.set_metadata_tag(material, "CircuitMaterialRecipe", self.material_hash)
             LIBRARY.save_loaded_asset(material)
             return material
-        if self.slug == "monaco" and name == "MonacoIvyGround":
+        if self.slug == "monaco" and name in ("MonacoIvyGround", "MonacoGardenLawn"):
             source_name = "Grass"
             source = unreal.load_asset(SOURCES[source_name])
             if source is None:
@@ -370,6 +386,13 @@ class Importer:
             EDIT.connect_material_property(
                 roughness, "", unreal.MaterialProperty.MP_ROUGHNESS
             )
+            if self.slug == "monaco" and name in (
+                "MonacoTerraceStoneLight", "MonacoTerraceStoneMid",
+                "MonacoTerraceStoneDark", "MonacoTerraceMortar",
+            ):
+                specular = EDIT.create_material_expression(material, unreal.MaterialExpressionConstant)
+                specular.r = .15
+                EDIT.connect_material_property(specular, "", unreal.MaterialProperty.MP_SPECULAR)
             material.set_editor_property("two_sided", name == "Leaves")
             if name == "Lamp" or (self.night and name == "WarmGlass"):
                 EDIT.connect_material_property(

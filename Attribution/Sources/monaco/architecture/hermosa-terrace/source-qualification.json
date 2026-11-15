@@ -1,0 +1,102 @@
+{
+  "state": "Frozen PRIVATE Hermosa garden V3 for source/camera adjudication. No canonical/native/cooked visual acceptance.",
+  "source_roles": [
+    "Finite source-registered formal garden/lawn top",
+    "Photo-estimated upper irregular stone wall, separate cream balustrade and clipped hedge",
+    "Separate natural-rock lower closure to actual old ground"
+  ],
+  "source_anchors": {
+    "garden_2019_plan": "formal-garden-terrace-source-plan.json",
+    "support": "formal-garden-actual-support-diagnosis.json",
+    "relative_datum_m": 1.5128994113,
+    "south_grade_control": {
+      "native_y_m": 372.4,
+      "retained_RGE_four_corner_absolute_m": 59.45,
+      "reconstructed_grade_absolute_m": 59.5,
+      "qualification": "Rounded source-based architectural control; \u00b11.5 m declared uncertainty, not surveyed deck elevation"
+    },
+    "north_grade_control": {
+      "native_y_m": 382.483,
+      "retained_RGE_absolute_m": 60.34,
+      "grade": 0.085,
+      "qualification": "Links the distinct northern lawn observation. All higher actual old relief is retained with 0.02 m separation."
+    }
+  },
+  "actual_photographs": [
+    {
+      "file": "../rome-architecture-private/v2-sources/dameno-hero.webp",
+      "url": "https://dameno.mc/wp-content/uploads/2025/11/Villa-de-Rome-1-scaled.webp",
+      "epoch": "Publication path November 2025; actual exposure date unverified",
+      "sha256": "ccdff7e27cda871e268140a27d832be547795f230d99a93eabcabef111c3fd21",
+      "use": "Actual SW photograph, Hermosa left and Rome right. Distinct irregular pale stone upper wall, balustrade, continuous clipped hedge, separate natural cliff below. No copied pixels."
+    },
+    {
+      "file": "build/reviews/resume-20261114/monaco/villa-hermosa-private/developer-hermosa.webp",
+      "sha256": "d15f3bc2495c900a866d4f4763df567f2aa46d08b742e3bf8e7fe254b1fa04af",
+      "epoch": "Upload path July 2025; exposure date unverified",
+      "use": "Actual front garden photograph corroborates balustrade, rough stone, planting and natural cliff. Bottom is partly occluded/cropped."
+    }
+  ],
+  "wall_reconstruction": {
+    "maximum_upper_masonry_height_m": 6.0,
+    "photo_uncertainty_m": 2.5,
+    "qualification": "Photo-relative estimate using roughly 1.5\u20132 apparent facade storeys and the approximately 1 m balustrade, with uncalibrated perspective. Root judged it plausible for private cooked review; not a measured retaining height. No 18\u201320 m masonry skirt.",
+    "stone_geometry": "Original jittered Voronoi stone polygons, 18 mm estimated mortar joints, 12\u201335 mm shallow relief. 485 distinct clipped stones, neutral buff/gray tones; no reused boulder texture or copied photograph.",
+    "material_keys": [
+      "MonacoTerraceStoneLight",
+      "MonacoTerraceStoneMid",
+      "MonacoTerraceStoneDark",
+      "MonacoTerraceMortar"
+    ],
+    "lower_closure": "Separate original rock surface to actual old packed planes, up to 11.377 m below the upper band. Exact natural cliff face relief is a reconstruction, not finer survey."
+  },
+  "temporary_holds": [
+    "Both conflicting mapped-pool and 2019 photo-apron outlines remain excluded. These are two source-epoch apertures under investigation, not a claim of two real pools.",
+    "Pale walkway/vertical coping beside Marie is unchanged.",
+    "Rome garden and architecture are separate; no max-height prism or whole floor lift."
+  ],
+  "geometry_scope": {
+    "old_ground_rows_kept_raw": 43069,
+    "all_unrelated_city_rows_kept_in_order": 67112,
+    "mapped_tree_osm_id": 5931906971,
+    "mapped_tree_xy_height_form_seed_unchanged": true,
+    "mapped_tree_old_and_new_bases": [
+      [
+        -45.0051207068861,
+        379.5091373320919,
+        58.422477388715755
+      ],
+      [
+        -45.0051207068861,
+        379.5091373320919,
+        58.48075226192781
+      ]
+    ],
+    "mapped_tree_foot_policy": "Minimum of all four 0.25 m trunk foot corners on new top, minus 0.10 m burial. +0.0582749 m correction; earlier +0.240363 m centre comparison is rejected.",
+    "source_RGE_grid_field_native_road_bridge_house_bodies_and_physics": "Unchanged"
+  },
+  "normal_and_precision": {
+    "new_lawn_faces": 8485,
+    "collapsed_faces": 0,
+    "lawn_minimum_alignment": 0.999999962079206,
+    "all_new_City_minimum_alignment": 0.975166343201072,
+    "all_new_City_collapsed_faces": 0,
+    "lawn_missing_union_m2": 0.0006335328685155527,
+    "lawn_extra_union_m2": 0.0003179928045384795,
+    "encoding": "Clipped polygon vertices quantized to actual native F32 XY before CDT. Every representable positive-area lawn triangle retained. New normals derive from final encoded XYZ. No silent post-triangulation removal.",
+    "stone_microfaces": "Two coating fragments below the existing MeshScene representability threshold omit 0.0000001628714 m\u00b2 in total; the continuous opaque mortar backing remains, so they create no support/render hole."
+  },
+  "limits": [
+    "Flat technical renderer lacks native texture transparency, lighting, PBR, cockpit and shadows. It does not establish cooked realism.",
+    "Estimated wall depth, stone pattern, baluster profile and hedge dimensions are original architectural reconstruction.",
+    "No full opening/whole Monaco PASS claimed."
+  ],
+  "source_review_sha256": "8e398682568ac40ca12d980cd6fc1dbb2f7ffd70765ee0a6bddbae7f184df8f3",
+  "foot_encoding_note": "The frozen new tree uses all four source trunk-foot corner samples. Actual final F32 corner support is checked separately; differences from the upper-bank packed-corner convention are bounded numerical encoding, not a surveyed elevation change.",
+  "actual_emitted_tree_foot_check": {
+    "file": "actual-tree-foot-proof.json",
+    "sha256": "a1c983c566d652ebd013d585e8ab616f65a4f29959c2ed4d231ee507a5022176",
+    "minimum_burial_m": 0.10667749792337133,
+    "scope": "All four actual F32 trunk foot corners hit actual emitted F32 lawn triangles. No analytic-only support oracle or tree geometry mutation."
+  }
+}
