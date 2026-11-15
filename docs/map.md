@@ -403,6 +403,13 @@ At a bounded repair's outer edge, match the actual rendered terrain triangles.
 Inserting vertices from a continuous height function can still leave a crack
 against a coarse baked triangle whose plane differs from that function.
 
+Check foundations against actual emitted ground around every exposed wall. A
+missing ground probe may lie inside a separate retained building; inspect that
+building's real walls and roof before filling the gap. For stepped entrances,
+use one closed stair shell and check tread clearance, buried feet, winding and
+paired edges. Nested boxes can overlap along their exposed sides even when their
+top surfaces look correct.
+
 Compare height sources at the same XY. A finer query interval does not establish
 finer source resolution, accuracy or epoch. Plot sections through the proposed
 repair and its outer collar: a smooth join can still introduce an unsupported
@@ -649,6 +656,13 @@ Reject triangles that collapse at the final float precision. The
 [back-straight evidence](../Attribution/Sources/cota/backstraight-width-evidence.json)
 retains the width estimate, source uncertainty and unchanged protection scope.
 
+For clipped sloping ground, test the final encoded XY and Z together. Float
+rounding can move a tiny outside fragment off its original plane and reverse its
+geometric normal. Reproject its encoded XY onto that same parent plane before
+encoding Z, preserving its normal and UV attributes. Keep strict normal checks,
+measure any discarded subpixel fragments, and leave existing recipes unchanged
+unless their own packed geometry demonstrates the problem.
+
 Unreal collision on the streamed decorative mesh is disabled in the current
 presentation code. Vehicle contact is handled by `FFSimulation` and its authored
 barriers. Adding a visible wall alone will not stop the car; adding collision alone
@@ -720,6 +734,12 @@ The [Silverstone vegetation notes](../Attribution/Sources/silverstone/vegetation
 record occupied alpha bounds, physical crown size, edge-colour dilation and
 multiple crown views. Those lessons still apply when producing native assets;
 the historical Blender commands in that file do not.
+
+Measure the occupied alpha bounds of the actual atlas cell. A small silhouette
+inside a large cell produces a thin crown despite a plausible card width. Check
+the native material's opacity threshold, mip settings and two-sided state; then
+compare visible crown width and base height at the cockpit camera. Test the full
+card rectangle against track protection as well as its visible alpha silhouette.
 
 Avoid dense transparent layers, repeated identical tree outlines and crowds that
 float or cover railings. Place crowds on real seating/deck surfaces. Build original
