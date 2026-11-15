@@ -1056,6 +1056,12 @@ when replacing the shader. Unchanged meshes can retain imports naming the old
 asset class; replacing that instance with a different class at the same path
 can break those references despite a successful local material build.
 
+A graph constructed under `-NullRHI` has not passed shader compilation. Set
+texture-object sampler types explicitly for normal and mask maps, inspect the
+saved nodes, and check the target-platform cook log. Unreal can finish a cook
+while substituting its default material after a shader error. Treat any such
+fallback as a failed build and fix it before capturing or reviewing the result.
+
 The final handoff should say what is playable, what changed, how it was checked,
 which comparisons passed and what remains uncertain. If the available evidence
 cannot meet the requested standard, describe the exact missing input or technical
