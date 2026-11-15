@@ -1,0 +1,9 @@
+{
+  "state": "Native displacement source gate closed by root read-only inspection; no visual approval.",
+  "frozen_underarch_handoff_sha256": "a25bc2de8ab03285464c961e7f4116d537cb1839534d11e0c840cf23d861ff15",
+  "root_native_material_proof": "build/reviews/resume-20261115/lighting-trial-native-material-proof.json",
+  "root_native_material_proof_sha256": "0ca44fc3b9f3e130183d3ff1c513fea6e0b4bf69b8fa1db91cdf88c539e41792",
+  "actual_vertex_displacement_m": 0,
+  "private_wind_proxy_m": 0.25,
+  "interpretation": "Actual Monaco TreeCanopy inherits accepted SurfaceFoliage, MP_WORLD_POSITION_OFFSET is unconnected and material attributes are disabled. The private geometric proxy is conservative. No material or accepted asset edits."
+}

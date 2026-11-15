@@ -95,6 +95,9 @@ def generate(slug: str, write_native_contact: bool = False) -> None:
         from venues.monaco_chapel import finish_terrain as finish_monaco_chapel
 
         finish_monaco_chapel(scene)
+        from venues.monaco_underarch import finish_terrain as finish_monaco_underarch
+
+        finish_monaco_underarch(scene)
     artwork(scene)
     triangle_count = sum(len(tile.triangles) // 100 for tile in scene.tiles.values())
     tile_count = scene.save()
