@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=monaco",
   "tiles": 117,
-  "triangles": 2927570,
+  "triangles": 2930533,
   "road_sha256": "3a7544d64e64e34c445dbf4049745ad0e2fc4f2d8e96dcf6d29b2c8ee7f67df3",
   "terrain_sha256": "f1538f328db1481498922f0c8d143010e2a9bcd9c17cb30b52457605ac30a21a",
   "landmarks": [
@@ -4268,6 +4268,10 @@
       "floor_uncertainty_m": 1.0,
       "preserved_unrelated_city_rows": 134303,
       "dimensions_status": "Literal OSM owner, operator facade and registered 2019/2024 obliques. Nave ridge, tower crown and stair dimensions remain bounded architectural estimates. The local 6.97 m absolute photo apron is not a measured DEM. Existing separate rear annex, outside ground planes, native terrain/contact and racing road are preserved. Paving classification and cooked visual acceptance remain separate."
+    },
+    {
+      "name": "Larvotto bridge lower woodland",
+      "source": "Literal mixed-forest 941749869 below actual bridge soffits; local lower Runoff only; estimated low planting, full wind clearance checked"
     }
   ],
   "vegetation": [
