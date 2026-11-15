@@ -1,0 +1,130 @@
+{
+  "state": "Frozen private geometry and technical projection packet. Source dimensions estimated; cooked review outstanding.",
+  "files": [
+    {
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261114/buddh/t3-terrace-private/Building_City_00_01.private-mesh",
+      "bytes": 51912,
+      "sha256": "c1462758cdede48cf5edf6043f2cd0194cbf57953ad2df5ef19ee2d4faa448b2"
+    },
+    {
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261114/buddh/t3-terrace-private/Building_City_00_02.private-mesh",
+      "bytes": 755812,
+      "sha256": "e9d44ca8bafecf048389f924c021f75aa0277e5de1811c161f1c1476c8e515ee"
+    },
+    {
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261114/buddh/t3-terrace-private/Building_City_01_01.private-mesh",
+      "bytes": 10812,
+      "sha256": "a10021d93db33a070b6a673ddaf2b36ae7e78c4b96ee7897d89de3caec1aa85d"
+    },
+    {
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261114/buddh/t3-terrace-private/Building_City_01_02.private-mesh",
+      "bytes": 5512,
+      "sha256": "82bf9ec5851e48809ed5e0120b3b747c87c47a2ee12d75254f216382bf3da276"
+    },
+    {
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261114/buddh/t3-terrace-private/Building_Crowd_00_01.private-mesh",
+      "bytes": 95612,
+      "sha256": "6e694f5b3f4957469f5bbe636b9e67a63e5cbecd684a864dc05e860fb78cffb3"
+    },
+    {
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261114/buddh/t3-terrace-private/Building_Crowd_00_02.private-mesh",
+      "bytes": 2009012,
+      "sha256": "3304eeb01f10fefb0a23a1ed5b4e57dc49d1fd767e61c08b3b576a4a9ad109ba"
+    },
+    {
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261114/buddh/t3-terrace-private/Building_Crowd_01_01.private-mesh",
+      "bytes": 5612,
+      "sha256": "7ea1677c03a1884cd065993e0749a0d264dac7247c1c2f28ca60a6f58a90b109"
+    },
+    {
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261114/buddh/t3-terrace-private/Building_Crowd_01_02.private-mesh",
+      "bytes": 1812,
+      "sha256": "465aa601fe45042c363de5830091e387b68e89f1c28d844eaa0db0d13f7d2f8a"
+    },
+    {
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261114/buddh/t3-terrace-private/apex-native-camera-study.png",
+      "bytes": 199299,
+      "sha256": "6893b011fb5baa0543daf0a80527b67ca2779a9fb05533d55d4de1c3fc16179d"
+    },
+    {
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261114/buddh/t3-terrace-private/buddh_terrace.py",
+      "bytes": 12000,
+      "sha256": "97ebeba4310e2e462238d2a8b4712faac0252edb7748dd31252da04660e0f220"
+    },
+    {
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261114/buddh/t3-terrace-private/buddh_terrace_dataclasses.py",
+      "bytes": 1211,
+      "sha256": "e6e00f8d0b4bf302247e33f9b3d373d14b75c4c0df7f8adbc457b5876b57bc12"
+    },
+    {
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261114/buddh/t3-terrace-private/east-terrace-prototype.json",
+      "bytes": 633,
+      "sha256": "f48acdc92570da27184721f18d16cd742ad8b1ab96cdc7cb12a2607dca1e1245"
+    },
+    {
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261114/buddh/t3-terrace-private/entry-native-camera-study.png",
+      "bytes": 137449,
+      "sha256": "be80793402f45914e3dee1f2b8feebaa3cbf886bbe8b5ea470e7af8fcc5342c6"
+    },
+    {
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261114/buddh/t3-terrace-private/exit-native-camera-study.png",
+      "bytes": 206424,
+      "sha256": "d584537b290ab4743488c9df14544242383da426fa22908e165703538caf3c31"
+    },
+    {
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261114/buddh/t3-terrace-private/geographic-plan.png",
+      "bytes": 1636032,
+      "sha256": "c0f8420e1c6027f7507101e1a12cdbe2b7ddf4d04c0e3ebd7574da1fd8f57a18"
+    },
+    {
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261114/buddh/t3-terrace-private/proposal-receipt.json",
+      "bytes": 1606,
+      "sha256": "74417a37b1cbb154060878a7b9eb43b7cd732b5514827b5cd7d3cc2a6f181c49"
+    },
+    {
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261114/buddh/t3-terrace-private/prototype-proof.json",
+      "bytes": 72979,
+      "sha256": "086f28ef76b72dba55180b4378bfdc96a4e7b3a8d5ad3a962461bba07a77266a"
+    },
+    {
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261114/buddh/t3-terrace-private/prototype_proof.py",
+      "bytes": 18646,
+      "sha256": "3a8289b203726245d4215e200401b909f28cc6396e027de2534c3314da03761f"
+    },
+    {
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261114/buddh/t3-terrace-private/source-adjudication.md",
+      "bytes": 2801,
+      "sha256": "626804f61bccff794e95146f612f58a33fda109b2f3fc61e6176f1651fcf8160"
+    },
+    {
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261114/buddh/t3-terrace-private/terrace-proposal.json",
+      "bytes": 12616,
+      "sha256": "656fd9a35381e78f9b90cb2472174b85497c710dded8159f10cad5d31508cdc5"
+    },
+    {
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261114/buddh/t3-terrace-private/typed-check.log",
+      "bytes": 43,
+      "sha256": "f9b031e5c45aa702cd4fef028d465551cb20a2c4698e0913c7b00766b20ac4d8"
+    },
+    {
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261114/buddh/width-longitudinal-private/reference/ref-132.jpg",
+      "bytes": 186712,
+      "sha256": "30035d5ae52009af215e0da8582df232d26bf7d0b331e04dbefb6905d7898ed7"
+    },
+    {
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261114/buddh/width-longitudinal-private/reference/ref-133.jpg",
+      "bytes": 229268,
+      "sha256": "7a51e4892b8956e26664528e2dec340bf86fb2a717f327c21fdd8611e9f5a34a"
+    },
+    {
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261114/buddh/width-longitudinal-private/reference/ref-134.jpg",
+      "bytes": 213635,
+      "sha256": "fa3b49a6e506245376d8065cd9bd018659f99e3c8e02081e4d8012c228d07b62"
+    },
+    {
+      "path": "/home/darksca/Vineet/Code/C_C++/Formula Forge/build/reviews/resume-20261114/buddh/width-longitudinal-private/reference/ref-135.jpg",
+      "bytes": 211018,
+      "sha256": "766f1911a49221001744d18800ff945abf8e9cf03263f55d3a2de1fbfb4cfe66"
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "expected_origin_latitude": 28.348860104221142,
+  "expected_origin_longitude": 77.53319286379333,
+  "expected_scene_scale": 1.0010540807344797,
+  "geometry": {
+    "front_a": [
+      294.0,
+      884.0
+    ],
+    "front_b": [
+      342.0,
+      708.0
+    ],
+    "back_a": [
+      315.0,
+      890.0
+    ],
+    "front_a_z_m": 16.7378231,
+    "front_b_z_m": 12.3127504,
+    "rows": 20,
+    "riser_m": 0.38,
+    "bays": 6,
+    "aisle_width_m": 2.0,
+    "source_note": "Private source-adjudicated east-exit terrace only. Footprint and deck heights remain explicit estimates from supplied 132\u2013135 s continuity and registered 2018 grass-bank limits. Preserve west approach, roads, native ground, gravel and protection. North cap is held and omitted. Front decks use the qualified nearby road +0.6 m estimate; actual foundations follow existing emitted Grass planes."
+  },
+  "original_palms": [
+    {
+      "index": 0,
+      "base": [
+        326.1095839596226,
+        788.9336295378876,
+        12.224763409016344
+      ],
+      "height_m": 8.0
+    },
+    {
+      "index": 1,
+      "base": [
+        340.233186962389,
+        748.055762137468,
+        12.212185734953852
+      ],
+      "height_m": 8.8
+    },
+    {
+      "index": 2,
+      "base": [
+        354.4536280162363,
+        707.2074472017192,
+        9.668635502957333
+      ],
+      "height_m": 9.6
+    },
+    {
+      "index": 3,
+      "base": [
+        361.4611170513189,
+        664.3036255860053,
+        8.988467171334246
+      ],
+      "height_m": 8.0
+    },
+    {
+      "index": 4,
+      "base": [
+        375.6813889019885,
+        623.4559388067967,
+        4.0960948122911205
+      ],
+      "height_m": 8.8
+    },
+    {
+      "index": 5,
+      "base": [
+        389.8841102692164,
+        582.6869897489346,
+        1.6519495014922667
+      ],
+      "height_m": 9.6
+    },
+    {
+      "index": 6,
+      "base": [
+        396.9703458570647,
+        539.8233650337463,
+        1.8160537680678033
+      ],
+      "height_m": 8.0
+    },
+    {
+      "index": 7,
+      "base": [
+        411.2734961645599,
+        499.0041948062492,
+        2.4921908277942135
+      ],
+      "height_m": 8.8
+    },
+    {
+      "index": 8,
+      "base": [
+        425.57744054787963,
+        458.182163539646,
+        1.784790517339001
+      ],
+      "height_m": 9.6
+    },
+    {
+      "index": 9,
+      "base": [
+        432.67195488691584,
+        415.2927644046753,
+        2.692547129672827
+      ],
+      "height_m": 8.0
+    },
+    {
+      "index": 10,
+      "base": [
+        446.9749078200818,
+        374.47439310243215,
+        1.1461150753967964
+      ],
+      "height_m": 8.8
+    },
+    {
+      "index": 11,
+      "base": [
+        461.2617493072313,
+        333.5339195695684,
+        1.213322378521961
+      ],
+      "height_m": 9.6
+    },
+    {
+      "index": 12,
+      "base": [
+        468.2681090096223,
+        290.6316600667402,
+        0.7744189768945939
+      ],
+      "height_m": 8.0
+    },
+    {
+      "index": 13,
+      "base": [
+        482.48785587559996,
+        249.78226732953047,
+        0.4373106529674062
+      ],
+      "height_m": 8.8
+    },
+    {
+      "index": 14,
+      "base": [
+        496.70865938204764,
+        208.92977530092685,
+        0.06751365411578161
+      ],
+      "height_m": 9.6
+    },
+    {
+      "index": 15,
+      "base": [
+        503.71364426409025,
+        166.03215947712022,
+        -0.37977655258048176
+      ],
+      "height_m": 8.0
+    },
+    {
+      "index": 16,
+      "base": [
+        517.9423201430773,
+        124.19024003427566,
+        0.08287242802317593
+      ],
+      "height_m": 8.8
+    },
+    {
+      "index": 17,
+      "base": [
+        531.3998276660332,
+        83.08167639560983,
+        0.3278695602107222
+      ],
+      "height_m": 9.6
+    },
+    {
+      "index": 18,
+      "base": [
+        537.6492523166904,
+        40.708425846399,
+        2.481303128246311
+      ],
+      "height_m": 8.0
+    },
+    {
+      "index": 19,
+      "base": [
+        551.6233533573617,
+        -0.22600824813115317,
+        2.178689785797016
+      ],
+      "height_m": 8.8
+    },
+    {
+      "index": 20,
+      "base": [
+        565.597012687396,
+        -41.15855402859237,
+        2.874247376963829
+      ],
+      "height_m": 9.6
+    },
+    {
+      "index": 21,
+      "base": [
+        572.4717467255841,
+        -83.73225932996903,
+        4.230918376401872
+      ],
+      "height_m": 8.0
+    }
+  ],
+  "excluded_palm_indices": [
+    0,
+    1
+  ],
+  "source_limits": "Supplied edited game reference, exact game/event year unverified. The 2018 WV02 image bounds grass-bank/access space, not a surveyed event terrace. Footprint has roughly 8\u201312 m plan uncertainty; 20 rows, 0.38 m risers, deck levels and open trestles are estimated. Keep native ground and the existing west approach stand; the separate north cap remains held. Cooked entry/apex/exit visual review is required."
+}

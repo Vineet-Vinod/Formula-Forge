@@ -1,0 +1,32 @@
+{
+  "retrieved_utc": "2026-11-14T23:50:40.129678+00:00",
+  "files": [
+    {
+      "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/23001/17/54761/93765",
+      "file": "primary-2018-tile-17-54761-93765.jpg",
+      "sha256": "e461e10376648aa433343a2745ade4f4cdf76db0a6be40ec1e90aa4992584b6c",
+      "bytes": 15531
+    },
+    {
+      "url": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/23001/17/54761/93766",
+      "file": "primary-2018-tile-17-54761-93766.jpg",
+      "sha256": "d83af7319d1e00313d20d3beddf8cf3848818d83e762afe34c68d6ea527b8842",
+      "bytes": 14740
+    },
+    {
+      "url": "https://metadata.maptiles.arcgis.com/arcgis/rest/services/World_Imagery_Metadata_2020_r01/MapServer/identify?f=pjson&geometry=%7B%22x%22%3A+77.53625182473404%2C+%22y%22%3A+28.35711590255707%7D&geometryType=esriGeometryPoint&sr=4326&layers=all%3A5%2C6&tolerance=1&mapExtent=77.53525182473403%2C28.356115902557068%2C77.53725182473404%2C28.35811590255707&imageDisplay=256%2C256%2C96&returnGeometry=false",
+      "file": "primary-2018-metadata-native-300-920.json",
+      "sha256": "93657f70e988d80fc74cef0f1241adbcf8b36f3d958cc0b0e3555a022dea810d",
+      "bytes": 578,
+      "native_point_m": [
+        300,
+        920
+      ],
+      "wgs84": [
+        77.53625182473404,
+        28.35711590255707
+      ]
+    }
+  ],
+  "use": "Source registration only, no copied image textures."
+}
