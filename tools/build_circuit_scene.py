@@ -222,6 +222,12 @@ class Importer:
                     is not None
                 ):
                     shade(material, self.bounds, self.field, self.road_floor)
+            if self.slug in ("baku", "monaco") and isinstance(
+                material, unreal.MaterialInstanceConstant
+            ):
+                for parameter in EDIT.get_scalar_parameter_names(material):
+                    if str(parameter) in ("UseBakedAO", "UseVertexColor"):
+                        EDIT.set_material_instance_scalar_parameter_value(material, parameter, 0.0)
             if name == "Concrete" and isinstance(
                 material, unreal.MaterialInstanceConstant
             ):

@@ -1187,6 +1187,15 @@ saved nodes, and check the target-platform cook log. Unreal can finish a cook
 while substituting its default material after a shader error. Treat any such
 fallback as a failed build and fix it before capturing or reviewing the result.
 
+Inspect inherited vertex-data inputs when copying an accepted material. FFLVM1
+meshes provide UV0 and no authored vertex colors. The Monza surface parent also
+supports baked AO encoded in UV1. Leaving `UseBakedAO` enabled on Baku's generated
+stone made triangle-local UVs look faceted; continuous negative world UVs then
+made the same walls nearly black. The textures were correctly set to wrap.
+Disable unsupported baked-AO and vertex-color inputs in the local generated
+instances, preserving the accepted parents and textures. Verify actual saved
+parameters and compare the same native camera before declaring the fix complete.
+
 The final handoff should say what is playable, what changed, how it was checked,
 which comparisons passed and what remains uncertain. If the available evidence
 cannot meet the requested standard, describe the exact missing input or technical
