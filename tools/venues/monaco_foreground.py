@@ -15,6 +15,7 @@ from pydantic import TypeAdapter
 from shapely.geometry import Point as ShapePoint
 from shapely.geometry import Polygon, box
 
+from venues.monaco_bamboo import emit_bamboo
 from venues.monaco_bruyeres import core_plan, emit_bruyeres, emit_garden
 from venues.monaco_foreground_dataclasses import (
     XY,
@@ -62,7 +63,8 @@ def bindings(scene: CircuitScene, source: ForegroundSource) -> tuple[BruyeresSpe
     if (source.bruyeres.osm_id, source.montjoie.osm_id) != OWNERS:
         raise ValueError('Foreground adapter is limited to its two qualified owners')
     if (abs(source.relative_datum_m - source.montjoie.relative_datum_m) > 1e-10
-            or abs(source.relative_datum_m - source.bruyeres.datum_m) > 1e-10):
+            or abs(source.relative_datum_m - source.bruyeres.datum_m) > 1e-10
+            or abs(source.relative_datum_m - source.bruyeres_bamboo.relative_datum_m) > 1e-10):
         raise ValueError('Foreground roof and ground datums disagree')
     return (replace(source.bruyeres, owner_xy_m=projected[0], roof_xy_m=roof,
                     front_endpoints_xy_m=(roof[1], roof[2])),
@@ -219,6 +221,11 @@ def finish_terrain(scene: CircuitScene) -> ForegroundChange:
     house = emit_bruyeres(new, bruyeres, foundation)
     garden = emit_garden(new, bruyeres, boundary, outside)
     villa = emit_montjoie(new, montjoie)
+    planted = Polygon(boundary).difference(core_plan(bruyeres)).intersection(box(24, 283, 35, 292.8))
+    if not isinstance(planted, Polygon):
+        raise TypeError('The qualified bamboo bed must remain connected')
+    planting = emit_bamboo(new, garden.retained_canes, source.bruyeres_bamboo, planted)
+    garden = replace(garden, bamboo=planting)
     expected = legacy_rows(scene)
     if set(new.tiles) != {TILE} or set(expected) != {TILE} or TILE not in scene.tiles:
         raise ValueError('Foreground source geometry escaped its one qualified City tile')

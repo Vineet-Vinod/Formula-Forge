@@ -35,6 +35,9 @@ PALETTE = {
     "MonacoChapelIron": (0.035, 0.035, 0.028),
     "MonacoChapelWoodTrim": (0.26, 0.15, 0.08),
     "MonacoChapelRecess": (0.42, 0.35, 0.23),
+    "MonacoBambooCane": (0.09, 0.14, 0.035),
+    "MonacoBambooLeafDeep": (0.025, 0.08, 0.012),
+    "MonacoBambooLeafMid": (0.05, 0.13, 0.02),
     "BakuSkyGlass": (0.10, 0.17, 0.23),
     "BakuSkyGlassLight": (0.18, 0.25, 0.29),
     "BakuPhilharmonicOchre": (0.72, 0.52, 0.22),
@@ -78,6 +81,9 @@ ROUGHNESS = {
     "MonacoChapelIron": 0.78,
     "MonacoChapelWoodTrim": 0.70,
     "MonacoChapelRecess": 0.90,
+    "MonacoBambooCane": 0.78,
+    "MonacoBambooLeafDeep": 0.80,
+    "MonacoBambooLeafMid": 0.78,
 }
 SOURCES = {
     "Road": "/Game/Generated/Interlagos/Materials/asphalt",

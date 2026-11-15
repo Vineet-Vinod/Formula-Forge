@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import math
-import random
 import struct
 from collections.abc import Callable
 from itertools import pairwise
@@ -15,6 +14,7 @@ from shapely.geometry import Polygon, box
 from shapely.geometry.polygon import orient
 from shapely.ops import nearest_points
 
+from venues.monaco_bamboo import retained_cane_poses
 from venues.monaco_foreground_dataclasses import (
     XY,
     BruyeresAudit,
@@ -417,24 +417,9 @@ def emit_garden(scene: MeshScene, spec: BruyeresSpec, boundary_xy: tuple[XY, ...
                 minimum_burial = min(minimum_burial, old_surface(*first) - low_a, old_surface(*last) - low_b)
                 segments += 1
     planted = garden.intersection(Polygon(((24, 283), (35, 283), (35, 292.8), (24, 292.8))))
-    rng = random.Random(94400108)
-    # Photos establish dense planting; these positions and stem details are estimates.
-    for i in range(220):
-        x, y = rng.uniform(25.4, 34.2), rng.uniform(284.6, 291.5)
-        if not planted.buffer(-.25).covers(ShapePoint(x, y)):
-            continue
-        z = height(x, y)
-        stem_height = rng.uniform(1.8, 3.6)
-        scene.beam(GARDEN_KIND, 'Trunk', (x, y, z - .05), (x, y, z + stem_height), .025)
-        for level in range(6):
-            theta = rng.random() * math.tau
-            dz = stem_height * (.24 + .14 * level)
-            length = rng.uniform(.35, .70)
-            tip = (x + math.cos(theta) * length, y + math.sin(theta) * length, z + dz + .12)
-            mid: Point = ((x + tip[0]) / 2, (y + tip[1]) / 2, z + dz + .15)
-            side = (-math.sin(theta) * .10, math.cos(theta) * .10)
-            scene.triangle(GARDEN_KIND, 'Leaves', (x, y, z + dz), (mid[0] + side[0], mid[1] + side[1], mid[2]), tip)
-            scene.triangle(GARDEN_KIND, 'Leaves', tip, (mid[0] - side[0], mid[1] - side[1], mid[2]), (x, y, z + dz))
+    if not isinstance(planted, Polygon):
+        raise TypeError('The qualified lower planted bed must remain connected')
+    canes = retained_cane_poses(height, planted)
     for i, (x, y) in enumerate((
             (27.0, 286.4), (30.0, 286.4), (33.0, 286.4),
             (27.0, 289.7), (30.0, 289.7), (33.0, 289.7))):
@@ -454,4 +439,4 @@ def emit_garden(scene: MeshScene, spec: BruyeresSpec, boundary_xy: tuple[XY, ...
                                   'Exact old outside floor planes and native ground remain fixed; this fills only the previous incorrect body void.',
                                   'Dense lower planting and palms are source-observed; exact instances, species and heights are estimated.',
                                   'A detailed enclosed garage remains held: its east-gap footprint is not registered to this literal estate.',
-                              ))
+                              ), retained_canes=canes)

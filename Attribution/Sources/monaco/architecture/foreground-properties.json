@@ -335,7 +335,8 @@
     "Montjoie facade uses source-light cream per primary-photo review. Linear palette estimate 0.78,0.70,0.52 is not measured reflectance; geometry is unchanged from the frozen V5 study.",
     "Garage exact footprint, forecourt and structural layout remain held. The planted-bank boundary must be checked against the mapped stair/observed open portal gap; no enclosed garage is invented.",
     "Rear openings, detailed roof-level transitions and an enclosed Les Bruyeres roof belvedere remain held. Montjoie small blue pavilion is a 2.5 x 2.5 m, 2.4 plus/minus 0.5 m photo-based estimate, not the whole joined IGN maximum.",
-    "Garden soil grade, retaining toe, planting and palm locations are bounded photo-based estimates. Native view must judge corner slopes and vegetation; source enclosure passes alone do not grant visual approval."
+    "Garden soil grade, retaining toe, planting and palm locations are bounded photo-based estimates. Native view must judge corner slopes and vegetation; source enclosure passes alone do not grant visual approval.",
+    "The lower narrow-leaf planting uses the existing 220 estimated roots and an absolute 14.7-16.4 m canopy envelope (+/-2 m), qualified from a dated 2025 photo. Exact species, roots and dimensions remain estimates; see bruyeres-bamboo/source-qualification.json. Native appearance and performance require review."
   ],
   "estimated_open_frontage_bounds_xy_m": [
     34.92,
@@ -343,5 +344,21 @@
     41.15,
     292.9
   ],
-  "portal_source_note": "This is an inferred open-frontage study reserve, not a surveyed garage footprint: actual photos place the garage opening east of the lower planted stem and west of Escalier de la Costa. Literal OSM 77052383 stair and 156772049 footway controls register that gap. The reserve stops before the deeper house enclosure, whose garage layout remains held; it must not be filled by new raised garden soil or retaining structure."
+  "portal_source_note": "This is an inferred open-frontage study reserve, not a surveyed garage footprint: actual photos place the garage opening east of the lower planted stem and west of Escalier de la Costa. Literal OSM 77052383 stair and 156772049 footway controls register that gap. The reserve stops before the deeper house enclosure, whose garage layout remains held; it must not be filled by new raised garden soil or retaining structure.",
+  "bruyeres_bamboo": {
+    "seed": 94400108,
+    "relative_datum_m": 1.5128994113001681,
+    "minimum_canopy_top_absolute_m": 14.7,
+    "maximum_canopy_top_absolute_m": 16.4,
+    "height_uncertainty_m": 2.0,
+    "branches_per_cane": 14,
+    "leaves_per_branch": 24,
+    "minimum_leaf_length_m": 0.17,
+    "maximum_leaf_length_m": 0.29,
+    "minimum_leaf_width_m": 0.025,
+    "maximum_leaf_width_m": 0.043,
+    "maximum_branch_reach_m": 1.05,
+    "cane_radius_m": 0.012,
+    "boundary_margin_m": 0.1
+  }
 }

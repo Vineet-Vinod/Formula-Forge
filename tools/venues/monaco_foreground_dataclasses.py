@@ -7,6 +7,8 @@ from typing import Annotated, Literal
 from circuit_dataclasses import Point
 from pydantic import Field, FiniteFloat
 
+from venues.monaco_bamboo_dataclasses import BambooAudit, BambooSpec, CanePose
+
 XY = tuple[FiniteFloat, FiniteFloat]
 XYZ = tuple[FiniteFloat, FiniteFloat, FiniteFloat]
 Positive = Annotated[FiniteFloat, Field(gt=0)]
@@ -73,6 +75,8 @@ class BruyeresGardenAudit:
     original_primitive_degenerate_rejections: int
     shared_body_edges: tuple[GardenSharedEdge, ...]
     limitations: tuple[str, ...]
+    bamboo: BambooAudit | None = None
+    retained_canes: tuple[CanePose, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -177,6 +181,7 @@ class ForegroundSource:
     scene_scale: Positive
     relative_datum_m: FiniteFloat
     bruyeres: BruyeresSpec
+    bruyeres_bamboo: BambooSpec
     montjoie: MontjoieSpec
     bruyeres_owner_wgs84_lonlat: tuple[XY, ...]
     montjoie_owner_wgs84_lonlat: tuple[XY, ...]

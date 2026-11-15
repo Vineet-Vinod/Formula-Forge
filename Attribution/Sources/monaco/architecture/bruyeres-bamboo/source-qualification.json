@@ -1,0 +1,176 @@
+{
+  "state": "Manual photo-relative reconstruction, not a botanical or facade survey; source-only private study.",
+  "source": "build/reviews/resume-20261114/monaco/frontage-source/mx-granger-2025-09-28-original-uncropped.jpg",
+  "sha256": "2dbe895d0ff4929893edb85ce9fcb7e427a44986c5bc9e7ec2dbcdeaf0ec7775",
+  "photographer": "Mx. Granger, own-work original, CC0",
+  "exposure": "2025-09-28 14:50:14 from original EXIF",
+  "original_pixels": [
+    4624,
+    3472
+  ],
+  "crop_box_original": [
+    600,
+    250,
+    1800,
+    1700
+  ],
+  "controls": [
+    {
+      "id": "main body roof cornice",
+      "crop_xy": [
+        [
+          70,
+          250
+        ],
+        [
+          1140,
+          350
+        ]
+      ],
+      "absolute_z_reference_m": 27.41529931364375,
+      "status": "Measured source roof component; photo corner correspondence manual."
+    },
+    {
+      "id": "lowest facade body baseline",
+      "crop_xy": [
+        [
+          100,
+          1135
+        ],
+        [
+          1120,
+          1220
+        ]
+      ],
+      "absolute_z_reference_m": 11.3,
+      "status": "Current architectural base estimate, +/-1.5 m; partly obscured by foliage, not an independent surveyed datum."
+    },
+    {
+      "id": "major narrow-leaf canopy tips",
+      "crop_xy": [
+        [
+          100,
+          1000
+        ],
+        [
+          300,
+          960
+        ],
+        [
+          500,
+          1015
+        ],
+        [
+          700,
+          955
+        ],
+        [
+          880,
+          995
+        ],
+        [
+          1100,
+          1060
+        ]
+      ],
+      "status": "Manual visible leaf-mass envelope, +/-40 px and deeper individual sprays; not palm fronds."
+    },
+    {
+      "id": "visible cane base belt",
+      "crop_xy": [
+        [
+          540,
+          1405
+        ],
+        [
+          1080,
+          1395
+        ]
+      ],
+      "status": "Visible bottom of canes; original root/soil placement remains estimated and slope-dependent."
+    }
+  ],
+  "pixel_method": {
+    "body_vertical_span_pixels_approximate": [
+      790,
+      960
+    ],
+    "major_canopy_to_visible_base_span_pixels_approximate": [
+      300,
+      470
+    ],
+    "body_roof_minus_current_base_m": 16.11529931364375,
+    "plant_height_if_at_facade_plane_m_approximate": [
+      5.0,
+      9.6
+    ],
+    "depth_correction_factor_estimate": [
+      0.75,
+      0.95
+    ],
+    "depth_basis": "Same field of view and mapped foreground bed is 4-10 m closer than the facade, at roughly 45-60 m camera distance. Camera GPS provides approximate XY only; no surveyed camera pose.",
+    "reconstructed_typical_height_m_approximate": [
+      4.0,
+      8.0
+    ],
+    "interpretation": "The photo supports an overlapping 5-7 m typical leaf mass with taller individual tips, not the old 1.8-3.6 m sparse cane recipe. The large interval includes unknown camera pitch, occlusion, estimated body base and depth."
+  },
+  "actual_existing_root_absolute_m": [
+    8.1342373,
+    10.6022487
+  ],
+  "actual_existing_soil_absolute_m": [
+    8.1842373,
+    10.6522487
+  ],
+  "v2_canopy_top_absolute_m_estimate": [
+    14.7,
+    16.4
+  ],
+  "height_uncertainty_m": 2.0,
+  "v2_rationale": "Keep the leaf-mass tips around the reconstructed lowest facade cornice (~15.33 m), with irregular tips to 16.4 m. Derive each stem height from its exact existing root so the rising rear bed does not create an unqualified second-story canopy. Absolute bounds and cornice height remain architectural estimates.",
+  "architect_corroboration": {
+    "photo": "build/reviews/resume-20261114/monaco/frontage-source/bruyeres-architect-2019-project-2.jpg",
+    "sha256": "2755bd6c3e6236f862a0fbc88ab0d4daa3644b659a7d9850492ffc6c6ba96c42",
+    "url": "https://cca-mc.com/projets/villa-des-bruyeres",
+    "epoch": "Delivered 2019 project; photograph exposure unverified.",
+    "form": "Dense long narrow blades in arching/drooping sprays obscure most canes on the west side of the garage. Separate tall palms extend above this mass; exact species unverified."
+  },
+  "camera_metadata_limits": "Phone EXIF altitude 56.59 m and magnetic direction 285 degrees are inconsistent/unqualified for local IGN height and visible building bearing. Neither is used as geometry datum. No pixel colors or photographic textures are copied to the model.",
+  "preservation": "Root poses, soil, retaining walls, house core, two palms, portal reserve and all unrelated native/ground data unchanged.",
+  "primary_original_url": "https://upload.wikimedia.org/wikipedia/commons/archive/4/43/20251228150921%21Villa_Montjoie_%28left%29_and_Villa_Colombe_%28right%29.jpg",
+  "local_reference_path_note": "Ignored reference files are evidence locations only. Production reads only foreground-properties.json and derives original root positions from the retained deterministic recipe; no cache/photo dependency.",
+  "frozen_candidate_rows_sha256": "c333563d3b5c783544daaed2f244d2e299c913a2589381e3912e5909ff7ee9ca",
+  "private_source_handoff_sha256": "a4eaf492df5f9f56d520dfda09492b6f089e943df5fadf801e94a86ae9e82f01",
+  "source_review_scope": "Luna bounded private source/camera PASS only; no native or whole-scene acceptance.",
+  "retained_root_xy_binary_f64_sha256": "dd1be9b7b0b24f9f72d0a76f362023393f6edc7640d4cb228b7a524c07228161",
+  "retained_root_count": 220,
+  "actual_private_geometry_rows": 390084,
+  "materials": {
+    "MonacoBambooCane": {
+      "linear_base_estimate": [
+        0.09,
+        0.14,
+        0.035
+      ],
+      "roughness": 0.78
+    },
+    "MonacoBambooLeafDeep": {
+      "linear_base_estimate": [
+        0.025,
+        0.08,
+        0.012
+      ],
+      "roughness": 0.8
+    },
+    "MonacoBambooLeafMid": {
+      "linear_base_estimate": [
+        0.05,
+        0.13,
+        0.02
+      ],
+      "roughness": 0.78
+    }
+  },
+  "density_revision": "Fourteen irregular arching sprays and twenty-four narrow closed blades per spray. V3 changes density only from V2; V1 uniform stem heights are superseded by the world canopy envelope."
+}
