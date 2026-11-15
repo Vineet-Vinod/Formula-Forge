@@ -42,8 +42,9 @@ Suzuka is the only figure-eight. Its back straight crosses the lower Degner road
 
 Native scenes include circuit-specific architecture, vegetation, protection, kerbs, escape surfaces, braking boards and pit paving. Pit access remains closed for the game. Source generation, native geometry checks and a clean simulated lap do not establish visual or performance acceptance. Follow the [whole-lap workflow](map.md) and compare the exact current assets against registered references.
 
-The 15 November checkpoint records compatible Luna High visual passes for all
-18 additional circuits. The work remains incomplete: incoming Niyazi still has
+The 18-map work is paused at the 15 November checkpoint and remains incomplete.
+The checkpoint records compatible Luna High visual passes for all
+18 additional circuits. Incoming Niyazi still has
 an independent source-completion hold, and intermittent rendering stalls remain
 unresolved. Carrying a review requires identical native scene, executable and
 shared runtime payloads. Changed scenes need fresh packaged reviews; a visual

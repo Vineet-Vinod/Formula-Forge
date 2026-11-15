@@ -1,0 +1,24 @@
+{
+  "state": "Read-only follow-up; pose remains underdetermined; no per-control visibility or height acceptance",
+  "original_photo_sha256": "8094998b9ff79067b3cf1176d63fe66bd17f62bb2aeff04ef26b53cc63d99842",
+  "embedded_EXIF": {
+    "Make": "Canon",
+    "Model": "Canon EOS 450D",
+    "LensModel": "EF28-135mm f/3.5-5.6 IS USM",
+    "FocalLength_mm": 28,
+    "DateTimeOriginal": "2017:04:17 14:39:06",
+    "FNumber": 8,
+    "delivered_width_px": 2600,
+    "delivered_height_px": 1741,
+    "GPS_IFD": {},
+    "Software": "Adobe Photoshop CS6 (Windows)",
+    "rescale_crop_intrinsics_calibrated": false
+  },
+  "candidate_controls": {
+    "FourSeasons152190583": "Building identity supported; no mapped tower-centre XYZ for two visible spires",
+    "Steps249021103": "Endpoint XY literal; visible stair/portal correspondence not independently established"
+  },
+  "sections_visibility": "All four unresolved, not automatically visible or occluded",
+  "no_new_download_heavy_geometry_native_height_inference": true,
+  "note_sha256": "7f827d7dd9b0f8bdf2b4ace8b47426b86d0e1903203489a06bad99be53754bbd"
+}
