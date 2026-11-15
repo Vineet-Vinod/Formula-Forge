@@ -99,7 +99,7 @@
     "licence": "ODbL 1.0"
   },
   "protection": "Both sides are walled at the shoulder offset. Pit entry is closed. That closure is a game boundary, not a claim about the real pit lane.",
-  "not_claimed": "No lidar, no orthophoto registration, no cockpit capture in this build. Centimetre storage is not centimetre accuracy.",
+  "not_claimed": "No engineering survey accuracy or surveyed camber is claimed. Retained DGT class-2 lidar and local orthophoto checks supersede the former coarse-DEM reconstruction. The operator's 6.2% ascent definition remains unresolved; centimetre storage is not centimetre accuracy.",
   "width_prior_to_2026_11_12": {
     "base_m": 12.0,
     "straight_m": 14.0,
