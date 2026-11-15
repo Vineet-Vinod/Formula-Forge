@@ -70,7 +70,10 @@ def bindings(scene: CircuitScene, source: TerraceSource) -> tuple[Polygon, LineS
     mapped_pool = Polygon(project(scene, source.pool_wgs84_lonlat, source.expected_pool_xy_m))
     bodies = unary_union([Polygon(b.ring).buffer(source.body_guard_m) for b in scene.buildings if b.use != 'bridge'])
     domain = outer.difference(unary_union([apron, mapped_pool, bodies]))
-    if not isinstance(domain, Polygon) or not domain.is_valid or domain.symmetric_difference(from_wkt(source.expected_domain_wkt)).area > 1e-6:
+    expected = from_wkt(source.expected_domain_wkt)
+    if (not isinstance(domain, Polygon) or not domain.is_valid
+            or not isinstance(expected, Polygon) or not expected.is_valid
+            or domain.symmetric_difference(expected).area > 1e-6):
         raise ValueError('The finite Hermosa terrace domain changed')
     protected = [scene.corridor_mask.buffer(0.25),
         *[area.buffer(0.25) for area in scene.extra_corridors],
@@ -92,7 +95,8 @@ def bindings(scene: CircuitScene, source: TerraceSource) -> tuple[Polygon, LineS
     previous = (x, y, upper.old_tree_base[2] + float(candidates[0]['tree_base_delta_m']))
     if math.dist(previous, source.expected_previous_tree_base) > 1e-9:
         raise ValueError('The actual retained mapped-tree source base changed')
-    return orient(domain), front, previous
+    # Keep qualified ring order: GEOS union ordering must not shift perimeter UVs.
+    return orient(expected), front, previous
 
 
 def nearby_ground(scene: MeshScene, domain: Polygon) -> tuple[TerraceFloor, ...]:

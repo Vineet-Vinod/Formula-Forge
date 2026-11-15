@@ -158,6 +158,14 @@ smoothed grade or estimated barrier offset needs its own justification and
 confidence. Do not relabel estimates as measurements or storage precision as
 accuracy. A centimetre-encoded grid is not necessarily accurate to a centimetre.
 
+When a building outline conflicts with repeated primary roof imagery, retain both
+observations and test the disagreement across acquisition dates. A reported
+positional precision is not an absolute clipping boundary. Monaco's Villa de
+Rome roof uses independently agreeing 2015 and 2019 traces while preserving the
+conflicting IGN XYZ observations. Do not warp the image, compress roof objects or
+invent a parallax correction merely to fit the older outline. Keep unresolved
+height associations explicit and inspect both driving and whole-roof views.
+
 Investigate conflicting height sources at their actual locations. At Portimão,
 an unshifted primary orthophoto and the eight retained class-2 neighbours ruled
 out embankment sampling and a bridge-deck step at the disputed climbs. The
@@ -394,6 +402,14 @@ normals and UVs. `CircuitScene.emitted_terrain_cells` lets a private producer
 finish selected grid cells and skip only those cells in the final terrain loop.
 Before using it, prove full coverage without overlap and preserve any deferred
 verge or ground patches that share the cells.
+
+Keep qualified polygon ring order stable when UVs depend on distance around a
+perimeter. Equivalent GEOS unions can reorder holes without moving any vertex.
+Hermosa's first full regeneration consequently shifted 934 new rock-face UVs
+while preserving their XYZ and normals. Validate the derived domain against its
+qualified source plan, then use that plan's ring order. Compare complete packed
+faces after regeneration, including UVs and material names; equal silhouettes
+alone will miss this failure.
 
 Treat city foundations and public paving as a connected ground model. Roof-biased
 DSM values cannot establish a building's ground-floor height. Check mapped street
