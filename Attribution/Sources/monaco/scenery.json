@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=monaco",
   "tiles": 117,
-  "triangles": 2977438,
+  "triangles": 3070935,
   "road_sha256": "3a7544d64e64e34c445dbf4049745ad0e2fc4f2d8e96dcf6d29b2c8ee7f67df3",
   "terrain_sha256": "f1538f328db1481498922f0c8d143010e2a9bcd9c17cb30b52457605ac30a21a",
   "landmarks": [
@@ -1583,11 +1583,14 @@
     {
       "osm_id": 94400097,
       "name": "Villa de Rome",
-      "height_m": 20.4,
-      "levels": 6,
-      "height_status": "Retained height/levels",
-      "structure": "Mapped footprint with narrow recessed windows, projecting street-facing balconies, shop/entrance level and roof parapet",
-      "removed_road_area_m2": 0.0
+      "height_status": "Nine-storey developer identity; estimated8 strata plus occupied mansard, not9 exposed floors on every face",
+      "structure": "South marble colonnade/loggias, balconies and central pediment; four-face hip, continuous mansard and source-registered roof services; secondary elevations/support estimated",
+      "removed_road_area_m2": 0.0,
+      "legacy_default_height_m": 20.4,
+      "legacy_default_levels": 6,
+      "building_identity_storeys": 9,
+      "roof_height_status": "Architectural82.7/86.6/88.0m absolute estimates; original north IGN XYZ/part association unresolved;89.1m maximum unused",
+      "source": "architecture/villa-de-rome/source-qualification.json"
     },
     {
       "osm_id": 94400104,
@@ -4278,6 +4281,19 @@
       "source": "architecture/hermosa-terrace/source-qualification.json",
       "garden_area_m2": 300.2013573994184,
       "source_limits": "Photo-estimated stone wall cap6 m +/-2.5 m; separate lower natural rock, two conflicting pool outlines held rather than two pools claimed; native terrain and driving data unchanged"
+    },
+    {
+      "name": "Villa de Rome formal lawn and retaining edge",
+      "source": "architecture/rome-garden/source-qualification.json",
+      "garden_area_m2": 324.8366414173544,
+      "limits": "Separate estimated 59.15 m lawn plateau; southern source rim/stepping pads/opening held. Native field, house body, road, bridge and camera remain unchanged."
+    },
+    {
+      "name": "Contiguous mixed natural cliff cover",
+      "source": "architecture/cliff-cover/source-qualification.json",
+      "material_only_faces": 1104,
+      "mixed_cover_face_area_sum_m2": 89.18912133986959,
+      "limits": "Existing whole Grass faces only; every XYZ, normal, UV, plant and native driving record remains unchanged. Mixed source role, not exact rock/ivy pixels or canopy geometry."
     }
   ],
   "vegetation": [

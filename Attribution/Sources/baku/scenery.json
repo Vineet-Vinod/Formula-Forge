@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=baku",
-  "tiles": 395,
-  "triangles": 5052088,
+  "tiles": 396,
+  "triangles": 5089166,
   "road_sha256": "26bc10ef7913eb8b758e60bada4eb749e94aa7bb524952c47ead9fff2130166e",
   "terrain_sha256": "e6e5423c2f5f02fc7e47ddb1459d9e39edcc2ae0b7891724be8520abedc5231e",
   "landmarks": [
@@ -1446,8 +1446,10 @@
     {
       "name": "Love in Ferma",
       "osm_id": 971028629,
-      "height_m": 22,
-      "facade": "classical"
+      "height_m": 6.8,
+      "facade": "classical",
+      "source": "park-amenity-fallback.json",
+      "height_status": "Provisional low park-amenity proxy using the retained default6.8m cap; exact height, construction date and reference-camera visibility unresolved. No surveyed height claim."
     },
     {
       "name": "Mapped building",
@@ -2300,6 +2302,12 @@
       "crown_estimate_m": 26.38,
       "height_uncertainty_m": 5.0,
       "scope": "Photo/plan architectural estimates, not measured height or6tagged storeys. Inherited datum retained; thresholds/steps and rear details held. Occupied U courtyard open; Ground/Road/protection and all current neighbors retained. Native/cooked appearance requires independent review."
+    },
+    {
+      "name": "Neftchilar89/91 and finite seaside park context",
+      "source": "waterfront/reconstruction.json.gz",
+      "scope": "Three photographed facade bands, distinct arch/hipped-dormer roofs, estimated heights\u00b14m. Ground changes are original-plane cosmetic grass segmentation only. 34 source-fit tree poses are visual estimates, not individually surveyed; current163/Khagani trees retained. World-planar masonry UV and new foliage appearance remain native/PBR trials; no acceptance claim.",
+      "held": "Absolute datum, thresholds, rear details, LoveFerma/cafe heights and85/87 identities remain held."
     }
   ],
   "vegetation": [
