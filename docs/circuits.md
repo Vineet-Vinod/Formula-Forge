@@ -35,8 +35,8 @@ Published profiles are digitised reconstructions; DSMs can include roofs and veg
 | [COTA](../Attribution/Sources/cota/provenance.json) | 5513 | 30.956 | 12.0–16.0 | [USGS 3DEP 1 m](../Attribution/Sources/cota/elevation-corrections.json) | [USGS 3DEP](../Attribution/Sources/cota/scenery-terrain.json) |
 | [Turkey](../Attribution/Sources/turkey/provenance.json) | 5338 | 47.888 | 14.5–21.0 | [METU engineering profile](../Attribution/Sources/turkey/elevation-corrections.json) | [GLO-30 DSM](../Attribution/Sources/turkey/scenery-terrain.json) |
 | [Portimão](../Attribution/Sources/portimao/provenance.json) | 4653 | 28.738 | 14.0–18.0 | [DGT class-2 lidar](../Attribution/Sources/portimao/elevation-corrections.json) | [DGT ground](../Attribution/Sources/portimao/scenery-terrain.json) |
-| [Buddh](../Attribution/Sources/buddh/provenance.json) | 5141 | 16.234 | 18.0–25.0 | [FIA climb + retained GLO-30](../Attribution/Sources/buddh/elevation-corrections.json) | [GLO-30 DSM](../Attribution/Sources/buddh/scenery-terrain.json) |
-| [Hockenheim](../Attribution/Sources/hockenheim/provenance.json) | 4574 | 4.300 | 12.0–15.0 | [F1 profile](../Attribution/Sources/hockenheim/elevation-corrections.json) | [GLO-30 DSM](../Attribution/Sources/hockenheim/scenery-terrain.json) |
+| [Buddh](../Attribution/Sources/buddh/provenance.json) | 5141 | 16.234 | 13.0–25.0 | [FIA climb + retained GLO-30](../Attribution/Sources/buddh/elevation-corrections.json) | [GLO-30 DSM](../Attribution/Sources/buddh/scenery-terrain.json) |
+| [Hockenheim](../Attribution/Sources/hockenheim/provenance.json) | 4574 | 4.286 | 9.0–15.0 | [LGL classified-ground DGM025](../Attribution/Sources/hockenheim/elevation-corrections.json) | [GLO-30 DSM](../Attribution/Sources/hockenheim/scenery-terrain.json) |
 
 Suzuka is the only figure-eight. Its back straight crosses the lower Degner road with about 6.14 m between the exported road surfaces. This is not underside clearance. Keep its separate deck protection; the planar boundary-union tool deliberately rejects this layout.
 
