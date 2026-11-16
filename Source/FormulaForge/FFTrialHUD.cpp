@@ -132,7 +132,7 @@ FTrialHUDMap::FTrialHUDMap(const FFSimulation& simulation)
     FVector2D maximum(-TNumericLimits<float>::Max(), -TNumericLimits<float>::Max());
     for (int32 index = 0; index < SampleCount; ++index) {
         const Vec2 position = simulation.Sample(simulation.lapLength * index / SampleCount).position;
-        Points[index] = FVector2D(position.x, -position.y);
+        Points[index] = FVector2D(position.x, position.y);
         minimum.X = FMath::Min(minimum.X, Points[index].X);
         minimum.Y = FMath::Min(minimum.Y, Points[index].Y);
         maximum.X = FMath::Max(maximum.X, Points[index].X);
@@ -148,11 +148,11 @@ FTrialHUDMap::FTrialHUDMap(const FFSimulation& simulation)
     const std::size_t stride = FMath::Max<std::size_t>(1, sections.size() / 160);
     for (std::size_t index = 0; index < sections.size(); index += stride) {
         const auto& section = sections[index];
-        PitPoints.Add((FVector2D(section.position.x * 17.0f, -section.position.y * 17.0f) - Centre) * UnitsToMap);
+        PitPoints.Add((FVector2D(section.position.x * 17.0f, section.position.y * 17.0f) - Centre) * UnitsToMap);
     }
     if (!sections.empty()) {
         const auto& last = sections.back();
-        PitPoints.Add((FVector2D(last.position.x * 17.0f, -last.position.y * 17.0f) - Centre) * UnitsToMap);
+        PitPoints.Add((FVector2D(last.position.x * 17.0f, last.position.y * 17.0f) - Centre) * UnitsToMap);
     }
     Geometry.BlendMode = SE_BLEND_Translucent;
 }
@@ -322,12 +322,12 @@ void AFormulaTrialHUD::DrawHUD() {
     auto& trackMap = *cachedMap;
     const FVector2D mapOrigin(margin + 196.0f, height - margin - 190.0f);
     trackMap.Draw(painter, mapOrigin);
-    FVector2D marker = (FVector2D(vehicle.pos.x, -vehicle.pos.y) - trackMap.Centre) * trackMap.UnitsToMap;
+    FVector2D marker = (FVector2D(vehicle.pos.x, vehicle.pos.y) - trackMap.Centre) * trackMap.UnitsToMap;
     const bool outsideMap = FMath::Abs(marker.X) > 196.0 || FMath::Abs(marker.Y) > 134.0;
     marker.X = FMath::Clamp(marker.X, -196.0, 196.0);
     marker.Y = FMath::Clamp(marker.Y, -134.0, 134.0);
     marker += mapOrigin;
-    const FVector2D direction(FMath::Cos(vehicle.heading), -FMath::Sin(vehicle.heading));
+    const FVector2D direction(FMath::Cos(vehicle.heading), FMath::Sin(vehicle.heading));
     const FVector2D across(-direction.Y, direction.X);
     painter.Triangle(marker + direction * 12.0, marker - direction * 8.0 + across * 8.0,
         marker - direction * 8.0 - across * 8.0, Ink);
