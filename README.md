@@ -123,7 +123,7 @@ Close the game and editor before rebuilding.
 - **Build failure:** inspect `build/unreal/logs/` and the terminal output. On Windows,
   packaging output is also saved in `build/unreal/logs/package.log`.
 - **Linux memory guard stops:** close memory-heavy applications and retry. These
-  developer scripts cap the job at 4 GB with no swap and stop at 10 GB measured
+  build scripts cap the job at 4 GB with no swap and stop at 10 GB measured
   machine use. This guard and the read-only engine sandbox are Linux-specific;
   Windows/macOS scripts limit build concurrency but do not enforce a RAM ceiling.
 
@@ -165,6 +165,12 @@ a timed Interlagos lap, results, restart and return to selection.
 and exits. Review captures and gameplay test results go under
 `build/unreal/home/Saved/FlowAudit/`. Best laps and game settings are stored under
 `build/unreal/home/`. Build output and local saves are ignored by Git.
+
+The optional [discrete racing experiment](docs/discrete-racing.md) adds 100 lap
+trajectories, belief-based opponents, value iteration, native timing sweeps and an
+Unreal traffic view. Start with `make race-run` or `make race-view` on Linux. The
+source-asset editor view can use up to 5 GB within the experiment's 10 GB machine
+memory budget; experiment storage growth is guarded below 5 GB.
 
 ## Repository contents and licences
 

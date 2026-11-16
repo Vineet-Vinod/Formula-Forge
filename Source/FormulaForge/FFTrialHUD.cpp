@@ -10,6 +10,8 @@
 #include "GameFramework/PlayerController.h"
 #include "GlobalRenderResources.h"
 #include "InputCoreTypes.h"
+#include "Misc/CommandLine.h"
+#include "Misc/Parse.h"
 #include "Styling/CoreStyle.h"
 
 namespace {
@@ -249,6 +251,12 @@ void AFormulaTrialHUD::DrawHUD() {
         painter.Rect(width * 0.5f - 160.0f, height * 0.5f - 84.0f, 320.0f, 3.0f, Mint);
         painter.Text(FString(UTF8_TO_TCHAR(std::string(simulation.circuitName).c_str())).ToUpper(), width * 0.5f, height * 0.5f - 55.0f, 48.0f, White, 0.5f);
         painter.Text(TEXT("PREPARING TIME TRIAL"), width * 0.5f, height * 0.5f + 15.0f, 18.0f, Muted, 0.5f);
+        return;
+    }
+    if (FParse::Param(FCommandLine::Get(), TEXT("FFDiscreteRace"))) {
+        painter.Rect(40.0f, 40.0f, 520.0f, 96.0f, Ink);
+        painter.Text(TEXT("DISCRETE RACE / EXPERIMENT"), 56.0f, 54.0f, 24.0f, White);
+        painter.Text(TEXT("C  CAMERA    ESC  PAUSE"), 56.0f, 94.0f, 17.0f, Muted);
         return;
     }
     const FFTrialState& trial = simulation.trial;

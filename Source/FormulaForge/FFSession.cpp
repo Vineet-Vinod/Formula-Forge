@@ -251,4 +251,8 @@ void AFormulaMenuGameMode::StartPlay() {
     TActorIterator<ACameraActor> camera(GetWorld());
     if (camera) session->GetFirstLocalPlayerController()->SetViewTarget(*camera);
     UE_LOG(LogTemp, Display, TEXT("FF_FLOW setup"));
+    if (!session->DiscreteRaceStarted && FParse::Param(FCommandLine::Get(), TEXT("FFDiscreteRace"))) {
+        session->DiscreteRaceStarted = true;
+        session->StartTrial();
+    }
 }

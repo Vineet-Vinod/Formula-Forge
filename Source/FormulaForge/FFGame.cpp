@@ -1,4 +1,5 @@
 #include "FFGame.h"
+#include "FFDiscreteRace.hpp"
 #include "FFSession.h"
 #include "FFPresentation.h"
 #include "FFLapRecorder.h"
@@ -305,6 +306,10 @@ void AFormulaTrialPawn::BeginPlay() {
         FPlatformMisc::RequestExitWithStatus(false, passed ? 0 : 1);
     }
     UpdateVisual(0.0f);
+    if (FParse::Param(FCommandLine::Get(), TEXT("FFDiscreteRace"))) {
+        if (!BeginDiscreteRace()) FPlatformMisc::RequestExitWithStatus(false, 1);
+        return;
+    }
     Recorder = MakeUnique<FFLapRecorder>(*this);
     if (FParse::Param(FCommandLine::Get(), TEXT("FFRecord"))) Recorder->Start();
     FString replayPath;
@@ -366,6 +371,7 @@ void AFormulaTrialPawn::SetupPlayerInputComponent(UInputComponent* input) {
 }
 
 void AFormulaTrialPawn::ResetTrial() {
+    if (DiscreteRace) return;
     auto* session = GetGameInstance<UFFSession>();
     if (session->Screen == EFFScreen::Results) {
         session->StartTrial();
@@ -440,6 +446,15 @@ void AFormulaTrialPawn::Tick(float deltaSeconds) {
         SceneReady = true;
         GetGameInstance<UFFSession>()->Ready();
         Accumulator = 0.0;
+    }
+    if (DiscreteRace) {
+        TickDiscreteRace(deltaSeconds);
+        if (!CapturePath.IsEmpty() && !Capturing && Elapsed >= CaptureDelay) {
+            Capturing = true;
+            FScreenshotRequest::RequestScreenshot(CapturePath, false, false);
+        }
+        if (Captured && QuitAfterCapture) Quit();
+        return;
     }
     if (Replay) {
         if (Elapsed < 12.0) {

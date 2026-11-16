@@ -9,6 +9,7 @@
 #include "FFCameraMotion.hpp"
 #include "FFVisualReplay.h"
 #include "FFRacingStint.hpp"
+#include "FFDiscreteRace.hpp"
 #include "FFGame.generated.h"
 
 class UCameraComponent;
@@ -37,6 +38,8 @@ public:
 private:
     friend class FFLapRecorder;
     friend class FFSessionAudit;
+    bool BeginDiscreteRace();
+    void TickDiscreteRace(float DeltaSeconds);
     void ToggleRecording();
     void ResetTrial();
     void ToggleCamera();
@@ -84,6 +87,8 @@ private:
     TUniquePtr<FFLapRecorder> Recorder;
     FFCameraMotion CameraMotion;
     TUniquePtr<FFVisualReplay> Replay;
+    TUniquePtr<FFDiscreteRace> DiscreteRace;
+    UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> RaceMeshes;
 };
 
 UCLASS()

@@ -10,9 +10,9 @@ case "$(uname -s)" in
 esac
 case "${1:-help}" in
     help|-h|--help)
-        echo 'Usage: tools/unreal.sh build|game-build|python SCRIPT|package|run [ARGS]|check|session-check'
+        echo 'Usage: tools/unreal.sh build|game-build|editor-run [ARGS]|python SCRIPT|package|run [ARGS]|check|session-check'
         exit 0 ;;
-    build|game-build|python|package|run|check|session-check) ;;
+    build|game-build|editor-run|python|package|run|check|session-check) ;;
     *) echo "Unknown operation: $1" >&2; exit 2 ;;
 esac
 original_home="$HOME"
@@ -30,7 +30,7 @@ if [[ "${1:-}" != run && "${1:-}" != check && "${1:-}" != session-check && ! -x 
     echo "Set UE_ROOT to an extracted Unreal Linux installed build." >&2
     exit 1
 fi
-if [[ "$1" == build || "$1" == game-build || "$1" == python || "$1" == package ]]; then
+if [[ "$1" == build || "$1" == game-build || "$1" == editor-run || "$1" == python || "$1" == package ]]; then
     source "$repo_root/tools/engine-version.sh"
     check_engine_version "$engine_root"
 fi
@@ -85,7 +85,10 @@ run_guarded() {
     local baseline_bytes job_limit unit memory_log
     baseline_bytes="$(machine_used_bytes)"
     job_limit=$((10500000000 - baseline_bytes - 1000000000))
-    if ((job_limit > 4000000000)); then
+    if [[ "$1" == *'/UnrealEditor' && "${2:-}" == "$project" && "${3:-}" == -game ]]; then
+        job_limit=$((9800000000 - baseline_bytes - 250000000))
+        if ((job_limit > 5000000000)); then job_limit=5000000000; fi
+    elif ((job_limit > 4000000000)); then
         job_limit=4000000000
     fi
     if ((job_limit < minimum_job_bytes)); then
@@ -159,6 +162,9 @@ case "${1:-help}" in
   target=FormulaForgeEditor
   if [[ "$1" == game-build ]]; then target=FormulaForge; fi
   run_guarded bash "$engine_root/Engine/Build/BatchFiles/Linux/Build.sh" "$target" Linux Development "$project" -MaxParallelActions=1 -NoUBA -UBAStoreCapacityGb=2 -UBAMaxWorkers=1 -UBAHost=127.0.0.1 "-Log=$local_root/logs/build.log"
+  ;;
+ editor-run)
+  run_guarded "$engine_root/Engine/Binaries/Linux/UnrealEditor" "$project" -game "${common_args[@]}" -ResX=1600 -ResY=900 "-abslog=$local_root/logs/editor-game.log" "${@:2}"
   ;;
  python)
   script="$(realpath "$2")"

@@ -42,3 +42,22 @@ native-check: build/tests/circuit-audit build/tests/camera-audit build/tests/sur
 
 build/tests/surface-audit: Tests/surface_audit.cpp $(OBJECTS)
 	TMPDIR="$(CURDIR)/build/tmp" $(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
+
+RACE_OBJECTS := $(OBJECTS) build/tests/FFRacingLine.o build/tests/FFDiscreteRace.o
+build/tests/discrete-race: tools/discrete_race.cpp $(RACE_OBJECTS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
+build/tests/discrete-race-audit: Tests/discrete_race_audit.cpp $(RACE_OBJECTS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
+.PHONY: race-run race-check race-sweep
+race-run:
+	bash tools/race_experiment.sh bash -c 'make -j1 build/tests/discrete-race && build/tests/discrete-race "$$@"' -- $(ARGS)
+race-check:
+	bash tools/race_experiment.sh bash -c 'make -j1 build/tests/discrete-race-audit && build/tests/discrete-race-audit'
+race-sweep:
+	bash tools/race_experiment.sh bash tools/race_sweep.sh
+.PHONY: race-view race-report
+race-view:
+	bash tools/race_experiment.sh bash -c 'make -j1 build && bash tools/unreal.sh editor-run -FFDrive -FFDiscreteRace "$$@"' -- $(ARGS)
+race-report:
+	python3 tools/race_report.py $(or $(RACE_OUTPUT),build/discrete-race/final/lines-100)
+-include $(RACE_OBJECTS:.o=.d)

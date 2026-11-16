@@ -39,6 +39,7 @@ public:
     int32 Focus = 0;
     TArray<FFLapResult> Laps;
     bool Automatic = false;
+    bool DiscreteRaceStarted = false;
     bool ChaseCamera = false;
 private:
     TUniquePtr<FFSessionAudit> Audit;
