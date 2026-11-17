@@ -1,5 +1,7 @@
 # Additional circuit validation — 2026-11-15
 
+This is the November 15 checkpoint. The subsequent pit and runoff changes are tracked in [the November 16 validation record](maps_pits_runoffs_validation.md). Those changes require their own review; the historical whole-circuit passes below do not complete the 18-map modeling work.
+
 Checkpoint for the 18 additional circuits, current package `0463d68c`. The explicit review register records 18 visual passes, 0 holds and 0 pending reviews. This checkpoint does not declare the work complete.
 
 Work remains incomplete. All 18 circuits have current-compatible visual passes. The incoming Niyazi source reconstruction and intermittent rendering stalls remain unresolved. Visual acceptance does not establish source completion or performance parity.
