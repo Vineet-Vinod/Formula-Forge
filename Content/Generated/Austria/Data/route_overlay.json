@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "circuit": "austria",
+  "manifest_sha256": "f4374338c4a35c2c1b012d9cc073c1a4c0c9819581252a8327cecc66b7f42b29",
+  "source_sha256": {
+    "build/reviews/resume-20261116/pits/native-wave2/austria/route.json": "280fb0059cdb8bfed025dddeb58f02de3875382a860bf1a75c025765379cce33"
+  },
+  "native_edits": [
+    {
+      "asset": "/Game/Generated/Austria/Track/Tile_Street_00_00",
+      "triangles": 19686,
+      "sha256": "ca9a5222999bc2657b4acdd627a26c2ef82d2dc276adf1dcacd5838b0cb783cc"
+    },
+    {
+      "asset": "/Game/Generated/Austria/Track/Tile_Street_01_00",
+      "triangles": 27944,
+      "sha256": "63578c25ff78f0e788df828790353b842a689a7bd58d70f50fb9ac5f9dcd9274"
+    },
+    {
+      "asset": "/Game/Generated/Austria/Track/Tile_Street_01_01",
+      "triangles": 25941,
+      "sha256": "ba2f9c8e30d1e40d8ff393f56b510d4589d993349ca99aa45ed43db84e9f24e6"
+    },
+    {
+      "asset": "/Game/Generated/Austria/Track/Tile_Street_m1_00",
+      "triangles": 2857,
+      "sha256": "e6f0c1cbb79738db0e07b9325805f02ef7b305a6dc8826fed93e8bd89a069d1c"
+    },
+    {
+      "asset": "/Game/Generated/Austria/Track/Tile_Street_m1_m1",
+      "triangles": 19750,
+      "sha256": "e087d8da1f05c8ff0100a69a7b0e09a63a63aee4ee34f304c0360b785823d621"
+    },
+    {
+      "asset": "/Game/Generated/Austria/Track/Tile_Street_m2_00",
+      "triangles": 26751,
+      "sha256": "24bf852ba27988f25ad7c49a87ce5ae50e3f0c1144ce8cbb787eac540f0780fa"
+    },
+    {
+      "asset": "/Game/Generated/Austria/Track/Tile_Street_m2_m1",
+      "triangles": 13086,
+      "sha256": "763ab0f885f5e7e593e62915b23ae62529075934416f0f2dee6e71b101058595"
+    }
+  ],
+  "pit_architecture_edits": [],
+  "added_route_meshes": [
+    "Tile_Route_00_00",
+    "Tile_Route_01_00",
+    "Tile_Route_01_01",
+    "Tile_Route_m1_00",
+    "Tile_Route_m1_m1",
+    "Tile_Route_m2_00",
+    "Tile_Route_m2_m1"
+  ],
+  "note": "Finite pit/escape overlays; base authoring manifests describe the retained pre-overlay scene."
+}

@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "circuit": "japan",
+  "manifest_sha256": "3bb7b6ab5c6de798731d38d090ce6025d0b389aab1134714e515594af622eab2",
+  "source_sha256": {
+    "build/reviews/resume-20261116/pits/native-wave1/japan/route.json": "c155e4c176ec2c63034e3f022e2a4403316b8054d379e909dfd44ccf2752dc2a"
+  },
+  "native_edits": [
+    {
+      "asset": "/Game/Generated/Japan/Track/Tile_Street_00_m1",
+      "triangles": 36146,
+      "sha256": "579b0d5f3a6f955c32c6a485efdeccf3e08c944e582b2f66eee760d992c30047"
+    },
+    {
+      "asset": "/Game/Generated/Japan/Track/Tile_Street_m1_00",
+      "triangles": 36578,
+      "sha256": "c959fbe27b155b5f7802bd6ffb3a273d1f1dd79863f41504a27ec988634149f9"
+    },
+    {
+      "asset": "/Game/Generated/Japan/Track/Tile_Street_m1_01",
+      "triangles": 8846,
+      "sha256": "ddad3047a60e67fe8e6c92ff720d73550968f4ef6504561d6d1471123dc05f7d"
+    },
+    {
+      "asset": "/Game/Generated/Japan/Track/Tile_Street_m1_m1",
+      "triangles": 36280,
+      "sha256": "a03425ed29b8004f897649c139e80f1c85c0160eaed01cb1222f0b2574344a49"
+    },
+    {
+      "asset": "/Game/Generated/Japan/Track/Tile_Street_m2_01",
+      "triangles": 41284,
+      "sha256": "6a696caa48731d9899628783ffa8f1f8dd13fd21011f6c910462e198a559ce89"
+    }
+  ],
+  "pit_architecture_edits": [],
+  "added_route_meshes": [
+    "Tile_Route_00_m1",
+    "Tile_Route_00_m2",
+    "Tile_Route_m1_00",
+    "Tile_Route_m1_01",
+    "Tile_Route_m1_m1",
+    "Tile_Route_m2_01"
+  ],
+  "note": "Finite pit/escape overlays; base authoring manifests describe the retained pre-overlay scene."
+}

@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "circuit": "portimao",
+  "manifest_sha256": "3de981ed97bcdf6fb57a2f3acf9b0f8d4b26515cad44c3a57841ce0ce4ecafb1",
+  "source_sha256": {
+    "build/reviews/resume-20261116/pits/native-wave2/portimao/route.json": "b8b0e82b589efab53d5ae6955dd2b7806d30163c4e9c25b4d7536a35c27af440"
+  },
+  "native_edits": [
+    {
+      "asset": "/Game/Generated/Portimao/Track/Tile_Street_00_00",
+      "triangles": 37862,
+      "sha256": "16f6a189d3c0b02820e3271f23a5ba0899187bbf458ae0dac24d968d45667b59"
+    },
+    {
+      "asset": "/Game/Generated/Portimao/Track/Tile_Street_m1_00",
+      "triangles": 24286,
+      "sha256": "132b029bc50b8987282710fb2b636ec231d33f6a01d37d44d905d0532c71da88"
+    },
+    {
+      "asset": "/Game/Generated/Portimao/Track/Tile_Street_m2_00",
+      "triangles": 6330,
+      "sha256": "439ec7117418a1354e41edc40a8e9b899c92921961fbd97f125928947c19aaa8"
+    },
+    {
+      "asset": "/Game/Generated/Portimao/Track/Tile_Street_m2_01",
+      "triangles": 19992,
+      "sha256": "9508512241ced99a8cb1ff307c01ad30b9b346c1de13d4d6c87223ff3cdb3bc6"
+    },
+    {
+      "asset": "/Game/Generated/Portimao/Track/Tile_Street_m2_02",
+      "triangles": 23626,
+      "sha256": "e6e02c0449b4f868b243b044c61b3d1bd17d0574a9d41dd3f427ef424012bd78"
+    },
+    {
+      "asset": "/Game/Generated/Portimao/Track/Tile_Street_m2_03",
+      "triangles": 34021,
+      "sha256": "b6745e3b6a233ed3d03c0988906ef3a1a7131cf6244d5cf36a46ed1aca0d5221"
+    }
+  ],
+  "pit_architecture_edits": [],
+  "added_route_meshes": [
+    "Tile_Route_00_00",
+    "Tile_Route_m1_00",
+    "Tile_Route_m2_00",
+    "Tile_Route_m2_01",
+    "Tile_Route_m2_02",
+    "Tile_Route_m2_03"
+  ],
+  "note": "Finite pit/escape overlays; base authoring manifests describe the retained pre-overlay scene."
+}

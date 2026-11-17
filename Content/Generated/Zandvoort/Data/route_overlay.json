@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "circuit": "zandvoort",
+  "manifest_sha256": "b90bbccfd114c7191cb2abb0c0d354d6ebcdce1b233b7554ef0eb8776ae38cb2",
+  "source_sha256": {
+    "build/reviews/resume-20261116/pits/native-wave3/zandvoort/route.json": "974332524cab9c70d32ce7c0229efd52fcda9e4633761ead70084ae0df90fa1c"
+  },
+  "native_edits": [
+    {
+      "asset": "/Game/Generated/Zandvoort/Track/Tile_Street_00_00",
+      "triangles": 45560,
+      "sha256": "73983dff323b056b6b03d55f51df7567497ed65931aae0a91317b36f2fb1f995"
+    },
+    {
+      "asset": "/Game/Generated/Zandvoort/Track/Tile_Street_00_01",
+      "triangles": 27956,
+      "sha256": "dd497ed32a1378871418f0aeefe913f0a752e7abf3a84ac017a7180edfa2a6a3"
+    },
+    {
+      "asset": "/Game/Generated/Zandvoort/Track/Tile_Street_00_m1",
+      "triangles": 63893,
+      "sha256": "b879eb51ae8c9efc3e9ff3da7922f35c0e95fc7f6117e47a8c2f08dc727f2cf3"
+    },
+    {
+      "asset": "/Game/Generated/Zandvoort/Track/Tile_Street_m1_m1",
+      "triangles": 20054,
+      "sha256": "a0300cadfca74befdba30de57660c06da4ebbc80023d1e5f293f74ad98839915"
+    }
+  ],
+  "pit_architecture_edits": [],
+  "added_route_meshes": [
+    "Tile_Route_00_00",
+    "Tile_Route_00_01",
+    "Tile_Route_00_m1",
+    "Tile_Route_m1_m1"
+  ],
+  "note": "Finite pit/escape overlays; base authoring manifests describe the retained pre-overlay scene."
+}

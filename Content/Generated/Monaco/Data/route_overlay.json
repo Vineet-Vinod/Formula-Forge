@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "circuit": "monaco",
+  "manifest_sha256": "089e8a17dcc1e687b85757185776e29818cc36a8750a601884e351549a51704a",
+  "source_sha256": {
+    "build/reviews/resume-20261116/pits/native-wave2/monaco/route.json": "113ce2114b6d357b244a27621a0e135b5254e21fe2d4dc40287aa0a38ce66a5a",
+    "build/reviews/resume-20261116/street-runoffs/monaco-escape-overlay.json": "77183b3ebe357ac7cfa2e258aaf8eb47f30e9905ee24d53b6d626b1286da5fcc"
+  },
+  "native_edits": [
+    {
+      "asset": "/Game/Generated/Monaco/Track/Tile_Street_00_00",
+      "triangles": 21545,
+      "sha256": "312378a9daab7a93ac46893ce8b687f5f363ab4b73d0e6dbf14d9e3c6cfae203"
+    },
+    {
+      "asset": "/Game/Generated/Monaco/Track/Tile_Street_00_01",
+      "triangles": 25113,
+      "sha256": "91867e486e9019f884f7beebf99893d76755ac3b2698c5258865398f04eda157"
+    },
+    {
+      "asset": "/Game/Generated/Monaco/Track/Tile_Street_00_m1",
+      "triangles": 35122,
+      "sha256": "4dc23fb49cd647bc98c9279a1ac71c1299268518dc200c354c32c79a12e857ed"
+    },
+    {
+      "asset": "/Game/Generated/Monaco/Track/Tile_Street_00_m2",
+      "triangles": 9103,
+      "sha256": "1aa66c86ef0fc53a7302aa80b5a4ddbfdd34866782d2c46712286d9855115b2d"
+    },
+    {
+      "asset": "/Game/Generated/Monaco/Track/Tile_Street_m1_00",
+      "triangles": 10526,
+      "sha256": "ad30053cb26f3080f0fb8cb17d25f34ebd8d4abe2ccc26c38ff36e9ef6f67055"
+    }
+  ],
+  "pit_architecture_edits": [],
+  "added_route_meshes": [
+    "Tile_Route_00_00",
+    "Tile_Route_00_01",
+    "Tile_Route_00_m1",
+    "Tile_Route_00_m2",
+    "Tile_Route_m1_00"
+  ],
+  "note": "Finite pit/escape overlays; base authoring manifests describe the retained pre-overlay scene."
+}

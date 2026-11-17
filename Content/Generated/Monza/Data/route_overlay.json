@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "circuit": "monza",
+  "manifest_sha256": "54d3bb4ec774e54ecc46e496ee19d337f5ca79c3fb3d7a4d920c18c47b44177e",
+  "source_sha256": {
+    "build/reviews/resume-20261116/pits/native-wave3/monza/route.json": "51e923732a79624feb49439aef8eea63a4aa084b446b148fab95587150d1f7a9"
+  },
+  "native_edits": [
+    {
+      "asset": "/Game/Generated/Monza/Track/Tile_099_097",
+      "triangles": 23885,
+      "sha256": "a76aec186132a1c917665e18ad007cf43eba3bf5cd7e60e6a01b27dc40a956b4"
+    },
+    {
+      "asset": "/Game/Generated/Monza/Track/Tile_099_098",
+      "triangles": 63584,
+      "sha256": "4757e4edf77bbe99c2b7d91e1574007b9bf9058c5d638cf60e076b6ea6c29552"
+    },
+    {
+      "asset": "/Game/Generated/Monza/Track/Tile_100_100",
+      "triangles": 34984,
+      "sha256": "543cb11570e9eb538ff84e56485794419890c144faf635e08e0a9a0c0bae60b1"
+    },
+    {
+      "asset": "/Game/Generated/Monza/Track/Tile_Surface_099_097",
+      "triangles": 22247,
+      "sha256": "998dbedc5136f5317f97e4b89d8938d12ca5558b8d77162c286770f2e1c0ef95"
+    },
+    {
+      "asset": "/Game/Generated/Monza/Track/Tile_Surface_099_098",
+      "triangles": 31699,
+      "sha256": "6be7e9e2feaa2ac78b631c3a85fdb5f3b2e7b3fb19b088a6bfd887727d2baa48"
+    },
+    {
+      "asset": "/Game/Generated/Monza/Track/Tile_Surface_099_099",
+      "triangles": 43379,
+      "sha256": "4a6942565bd08a512fa6df58a6bf7c021a353b0cec525be643ab52fa27f5a001"
+    },
+    {
+      "asset": "/Game/Generated/Monza/Track/Tile_Surface_100_098",
+      "triangles": 18994,
+      "sha256": "3654d0c07386fac3b3221ea98e3021cd261c14f9d307c511c75ea63fe74ad8a4"
+    },
+    {
+      "asset": "/Game/Generated/Monza/Track/Tile_Surface_100_099",
+      "triangles": 36053,
+      "sha256": "397c7021e4edf222790d59bf171dccf801e75aa19420fa78b0bc3666a10962cc"
+    },
+    {
+      "asset": "/Game/Generated/Monza/Track/Tile_Surface_100_100",
+      "triangles": 19139,
+      "sha256": "1382eb4ff803fb48bb5a43653251e889bb76bfd02d3a58dc493c0a8a669c4c22"
+    }
+  ],
+  "pit_architecture_edits": [],
+  "added_route_meshes": [
+    "Tile_Route_00_00",
+    "Tile_Route_00_m1",
+    "Tile_Route_m1_m1",
+    "Tile_Route_m1_m2",
+    "Tile_Route_m1_m3"
+  ],
+  "note": "Finite pit/escape overlays; base authoring manifests describe the retained pre-overlay scene."
+}

@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "circuit": "baku",
+  "manifest_sha256": "b829231b42292460729ea6da5b0aa48f6360a137705675f3e45cce5d3316ede1",
+  "source_sha256": {
+    "build/reviews/resume-20261116/pits/native-wave2/baku/route.json": "b34ea0cc3f47d6b379c48c072408a36d5ceb2a707e48cc5706f8ad1155848661",
+    "build/reviews/resume-20261116/street-runoffs/baku-escape-overlay.json": "ab82e91f8b863e85a56663cfd96d20bcb4c55e2134011289c05a2e4659c6a029"
+  },
+  "native_edits": [
+    {
+      "asset": "/Game/Generated/Baku/Track/Tile_Street_00_00",
+      "triangles": 15355,
+      "sha256": "0b054ce205defa377001ff4f1b7755608d746726c97f4450d11a82ed917da022"
+    },
+    {
+      "asset": "/Game/Generated/Baku/Track/Tile_Street_00_01",
+      "triangles": 9244,
+      "sha256": "0166c7d3d0810ffdb9d26b8673561c7756ea2de62f4bb9b491f033dda6a220a1"
+    },
+    {
+      "asset": "/Game/Generated/Baku/Track/Tile_Street_m1_00",
+      "triangles": 1547,
+      "sha256": "5807f88f4c984ad1660a58c197806d84aa093471da68d292b49ef6b49db3fafd"
+    },
+    {
+      "asset": "/Game/Generated/Baku/Track/Tile_Street_m1_m1",
+      "triangles": 13487,
+      "sha256": "c4ec0de8b21cbdd349f27219673b245ed188b2251986dd1b113164682933b7e8"
+    },
+    {
+      "asset": "/Game/Generated/Baku/Track/Tile_Street_m2_m1",
+      "triangles": 11471,
+      "sha256": "f8263fa63c31915bf5ee5dcf638abab93478667c030116773c505ab99d198e99"
+    },
+    {
+      "asset": "/Game/Generated/Baku/Track/Tile_Street_m8_m5",
+      "triangles": 12086,
+      "sha256": "0352c46e5b3f87a9a860891f007a564ab81a8c0e74fb512cf971d246e4cda751"
+    }
+  ],
+  "pit_architecture_edits": [],
+  "added_route_meshes": [
+    "Tile_Route_00_00",
+    "Tile_Route_00_01",
+    "Tile_Route_m1_00",
+    "Tile_Route_m1_m1",
+    "Tile_Route_m2_m1",
+    "Tile_Route_m8_m5"
+  ],
+  "note": "Finite pit/escape overlays; base authoring manifests describe the retained pre-overlay scene."
+}

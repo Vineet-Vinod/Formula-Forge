@@ -1,0 +1,25 @@
+{
+  "circuit": "monaco",
+  "event_year": 2025,
+  "expected_scene_scale": 1.0099320735128836,
+  "escapes": [
+    {
+      "id": "sainte-devote",
+      "name": "Sainte-Devote straight-ahead escape",
+      "approach_station_m": 225,
+      "length_m": 60,
+      "width_m": 12,
+      "lateral_offset_m": 0,
+      "extent_uncertainty_m": 8,
+      "source_urls": [
+        "https://www.fia.com/system/files/decision-document/2025_monaco_grand_prix_-_race_directors_event_notes_-_circuit_map_pit_lane_map_ers_battery_containment_area_red_zones.pdf",
+        "https://tiles.arcgis.com/tiles/DkYiS0lDHb5soLgl/arcgis/rest/services/SIGM_Orthophoto_2019_1/MapServer"
+      ],
+      "reference_frames": [
+        "build/reviews/resume-20261114/monaco/qualified-t1-ref-727.jpg"
+      ],
+      "source_note": "Straight escape north of the right-hand racing turn. Preserve the church, elevated Boulevard bridge and separate east-side pit exit. The terminal extent is deliberately bounded before the church frontage. Footprint dimensions are bounded reference/map reconstruction estimates, not measured barrier coordinates. The existing racing centreline, width, elevation and camera remain fixed. Bounded terminal ends before mapped Les Bruyeres owner94400108, rather than extending into that occupied estate; mapped service access78141882 and the distinct east-side pit exit remain separate. Exact DSN2019 government orthophoto registration confirms this candidate stays on the existing paved apron before the villas. The off-event orthophoto does not establish race barrier positions or the terminal buffer height."
+    }
+  ],
+  "source_status": "Source-plan candidate awaiting mapped occupied-domain, grade, native protection and cooked visual review. Official map epoch2025; supplied edited-reference event year unverified. No survey claim."
+}

@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "circuit": "hockenheim",
+  "manifest_sha256": "a8fb0677c7337aadfb5ee4237b4792aa828bc48d9d2bcf3bcbc857aa5fbbb0d3",
+  "source_sha256": {
+    "build/reviews/resume-20261116/pits/native-wave1/hockenheim/route.json": "88d7a19940ab6fba68e478b7ea5687341432ab958ccc2ccfb413c2896c470d6a"
+  },
+  "native_edits": [
+    {
+      "asset": "/Game/Generated/Hockenheim/Track/Tile_Street_00_00",
+      "triangles": 39239,
+      "sha256": "6cdd5e51be4a6e64a38f98ee25fbe80139fdede7b2cb79848f235c4a7d757fc7"
+    },
+    {
+      "asset": "/Game/Generated/Hockenheim/Track/Tile_Street_00_01",
+      "triangles": 5922,
+      "sha256": "8b7fb3bfc96dcb72b898d805b07bce19faaf592db77a80cf22e95f8d4c9032df"
+    },
+    {
+      "asset": "/Game/Generated/Hockenheim/Track/Tile_Street_00_m1",
+      "triangles": 48488,
+      "sha256": "8607fa493c5038489774ac321b3a15b0410ab3a799a56767f33ca85ee49eb94c"
+    },
+    {
+      "asset": "/Game/Generated/Hockenheim/Track/Tile_Street_m1_00",
+      "triangles": 23421,
+      "sha256": "c0a1f13f2fbb660e90b94a1a7772144ccec5ef98b283948c2f7ff4468b9607ce"
+    },
+    {
+      "asset": "/Game/Generated/Hockenheim/Track/Tile_Street_m1_01",
+      "triangles": 20367,
+      "sha256": "66aa373352d0af1551d1ada16c7bdfd99b72195d1f1aa8584f96222179fbbfed"
+    }
+  ],
+  "pit_architecture_edits": [],
+  "added_route_meshes": [
+    "Tile_Route_00_00",
+    "Tile_Route_00_01",
+    "Tile_Route_00_m1",
+    "Tile_Route_m1_00",
+    "Tile_Route_m1_01"
+  ],
+  "note": "Finite pit/escape overlays; base authoring manifests describe the retained pre-overlay scene."
+}

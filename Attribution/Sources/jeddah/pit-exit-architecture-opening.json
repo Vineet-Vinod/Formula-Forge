@@ -1,0 +1,42 @@
+{
+  "asset": "/Game/Generated/Jeddah/Track/Building_City_m1_00",
+  "source_asset_file": "Content/Generated/Jeddah/Track/Building_City_m1_00.uasset",
+  "source_asset_sha256": "cd1b63cd658c80fd827b7b323cde76d52ad94816a02eae8878a9914495c3fd9f",
+  "material_slots": [
+    {
+      "slot": "Material_3",
+      "material": "/Game/Generated/Jeddah/Materials/White.White"
+    }
+  ],
+  "expected_source_facets": 22,
+  "portals": [
+    {
+      "id": "jeddah-literal-covered-exit-white-endpanels",
+      "polygon_xy_m": [
+        [
+          -75.12153038360923,
+          184.47462317881627
+        ],
+        [
+          -83.73664016643357,
+          210.6601611042321
+        ],
+        [
+          -87.7262630846559,
+          209.3475648333265
+        ],
+        [
+          -79.11115330183155,
+          183.16202690791067
+        ]
+      ],
+      "bottom_m": 1.7597428297167874,
+      "top_m": 5.225969945096624,
+      "source_note": "LiteralOSMtunnel through existingstand; openingclosedgenericWhiteendpanels only. Roof9.7m clearance preserved; height3m estimated."
+    }
+  ],
+  "source_note": "LiteralOSMtunnel through existingstand; openingclosedgenericWhiteendpanels only. Roof9.7m clearance preserved; height3m estimated.",
+  "source_export_sha256": "836e5b0251ba702a2291e599a229d490829264aa174504edfbb4ed3c3afcc0ae",
+  "source_way_url": "https://www.openstreetmap.org/way/1257884704",
+  "source_review": "Native car-envelope27repeatedWhitehitrecords occuronlyatcovered-exitendcaps; actualuniqueaffectedtrianglespredictedfromexactnativeexport. Roof/upperseats/supportoutside4.2mopening unchanged."
+}

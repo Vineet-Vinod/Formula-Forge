@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "circuit": "interlagos",
+  "manifest_sha256": "f7666488cc59632854f543e5615c404bfd1d860603095acd2e82cc5d5198bfa3",
+  "source_sha256": {
+    "build/reviews/resume-20261116/pits/native-wave3/interlagos/route.json": "5901805562f13df0cef8d03bf8390fa0d2bacf2b3edfca0b361a59036d724f6a"
+  },
+  "native_edits": [
+    {
+      "asset": "/Game/Generated/Interlagos/Track/Tile_098_100",
+      "triangles": 66882,
+      "sha256": "9f6c176d6f9350deddaef647e48c530da1793d9eb1eefab17033fe319c62c46f"
+    },
+    {
+      "asset": "/Game/Generated/Interlagos/Track/Tile_099_097",
+      "triangles": 47206,
+      "sha256": "1497a4fcdfce7342170e0684a9ce36f496dfa38d0e64bde0b9f46bee561c08ce"
+    },
+    {
+      "asset": "/Game/Generated/Interlagos/Track/Tile_100_097",
+      "triangles": 23245,
+      "sha256": "d486680002b157e0a491029df646de4b6c7dc595c520d4b79d22ff9d9418b0d6"
+    },
+    {
+      "asset": "/Game/Generated/Interlagos/Track/Tile_100_098",
+      "triangles": 7757,
+      "sha256": "a9bbc4e717275f786bf27fa0859a8b1996fcda7bd2888d5ecf52f04bd7b42b90"
+    }
+  ],
+  "pit_architecture_edits": [],
+  "added_route_meshes": [
+    "Tile_Route_00_m1",
+    "Tile_Route_00_m2",
+    "Tile_Route_01_m1",
+    "Tile_Route_m1_m2",
+    "Tile_Route_m1_m3",
+    "Tile_Route_m2_00",
+    "Tile_Route_m2_m1",
+    "Tile_Route_m2_m2"
+  ],
+  "note": "Finite pit/escape overlays; base authoring manifests describe the retained pre-overlay scene."
+}

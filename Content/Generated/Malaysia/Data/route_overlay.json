@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "circuit": "malaysia",
+  "manifest_sha256": "1bb222a9b4227b21c0207cc5cc9b7a4fddf50bd3657ea66a2c5f9e22245652f2",
+  "source_sha256": {
+    "build/reviews/resume-20261116/pits/native-wave2/malaysia/route.json": "ab37c00830a3b87ba41279c718d9135b9ac6313129d4cb21587d141db288f6ac"
+  },
+  "native_edits": [
+    {
+      "asset": "/Game/Generated/Malaysia/Track/Tile_Street_00_00",
+      "triangles": 29106,
+      "sha256": "f26ba5bb731839f6ed1db81f991c31f6091d47b097fe4ae2cb620a73f7b6ce22"
+    },
+    {
+      "asset": "/Game/Generated/Malaysia/Track/Tile_Street_01_00",
+      "triangles": 84277,
+      "sha256": "84ded2c8624144dcd39d99f592827ba272a9b74ad84f2c16d74549e57b24286a"
+    },
+    {
+      "asset": "/Game/Generated/Malaysia/Track/Tile_Street_m1_00",
+      "triangles": 3726,
+      "sha256": "4b537c6b83c68a8be7400fa28c82fe18c719328d5bc329480ec29c3c3885ac86"
+    },
+    {
+      "asset": "/Game/Generated/Malaysia/Track/Tile_Street_m1_m1",
+      "triangles": 32099,
+      "sha256": "b5b2ea9366af4c5a22a06fbb7600193be0f77fdda8ab0b5d73d59f73e8f7b461"
+    },
+    {
+      "asset": "/Game/Generated/Malaysia/Track/Tile_Street_m2_m1",
+      "triangles": 40879,
+      "sha256": "8571dfc8d5c071a1b5077b9d3a4d8340b823483117d573605f47fe0b1708bfb9"
+    }
+  ],
+  "pit_architecture_edits": [],
+  "added_route_meshes": [
+    "Tile_Route_00_00",
+    "Tile_Route_01_00",
+    "Tile_Route_01_m1",
+    "Tile_Route_m1_00",
+    "Tile_Route_m1_m1",
+    "Tile_Route_m2_m1"
+  ],
+  "note": "Finite pit/escape overlays; base authoring manifests describe the retained pre-overlay scene."
+}

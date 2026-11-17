@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "circuit": "turkey",
+  "manifest_sha256": "2240089cd443182a86737230c860228388ad51d034925bb74159da7c82dcc1cc",
+  "source_sha256": {
+    "build/reviews/resume-20261116/pits/native-wave2/turkey/route.json": "69337766a975cce9f8cdf56a73d40c25a2e334501ad0596162e636619066f737"
+  },
+  "native_edits": [
+    {
+      "asset": "/Game/Generated/Turkey/Track/Tile_Street_00_00",
+      "triangles": 17151,
+      "sha256": "33c5b15b7ebe765df88e38a5ec22e5bdb81513a586f3c2cc87e7861badfc7ba0"
+    },
+    {
+      "asset": "/Game/Generated/Turkey/Track/Tile_Street_01_00",
+      "triangles": 24586,
+      "sha256": "820dc33b4520312e7b520041fd23bea51cda94ef75c51b442b6034329d629837"
+    },
+    {
+      "asset": "/Game/Generated/Turkey/Track/Tile_Street_01_01",
+      "triangles": 17806,
+      "sha256": "e1fac50c1b493e04c9ebd8f6bcd88bab344b90ef4c6e2e62a9b61a85774973e5"
+    },
+    {
+      "asset": "/Game/Generated/Turkey/Track/Tile_Street_m1_00",
+      "triangles": 8246,
+      "sha256": "27e29e280bc3bd6206c7830215d3f433cb59f92da321f0fcea09e818b3c0c85f"
+    },
+    {
+      "asset": "/Game/Generated/Turkey/Track/Tile_Street_m1_m1",
+      "triangles": 17812,
+      "sha256": "f717c84742a2269f94cebb3bcaa96070a1c9df489c2a590308097c71f06518c4"
+    },
+    {
+      "asset": "/Game/Generated/Turkey/Track/Tile_Street_m2_00",
+      "triangles": 31088,
+      "sha256": "b9194b66394e52e436cf311481d3a176ffe791ad61efc9c22717a3f03d0f0bc5"
+    },
+    {
+      "asset": "/Game/Generated/Turkey/Track/Tile_Street_m2_m1",
+      "triangles": 12512,
+      "sha256": "c35ec0618729d836ddd02d48ef4592f95945461d4a759ece351bbeef99acd4f2"
+    }
+  ],
+  "pit_architecture_edits": [],
+  "added_route_meshes": [
+    "Tile_Route_00_00",
+    "Tile_Route_01_00",
+    "Tile_Route_01_01",
+    "Tile_Route_m1_00",
+    "Tile_Route_m1_m1",
+    "Tile_Route_m2_00",
+    "Tile_Route_m2_m1"
+  ],
+  "note": "Finite pit/escape overlays; base authoring manifests describe the retained pre-overlay scene."
+}

@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "circuit": "australia",
+  "manifest_sha256": "2b2a8719a2ae3bee6e4d7e9708834125886da6813edb6b15ea573e8650fecc8f",
+  "source_sha256": {
+    "build/reviews/resume-20261116/pits/native-wave1/australia/route.json": "50ce18992f2633c489838dfc1facb84b0067f89f751bc263c300ddfebb4c1f8d"
+  },
+  "native_edits": [
+    {
+      "asset": "/Game/Generated/Australia/Track/Tile_Street_00_00",
+      "triangles": 1033,
+      "sha256": "4131d81b7fc0b309055e32694b7efa142e89cf05dfdc0b6cbc2e1249a55e0e1a"
+    },
+    {
+      "asset": "/Game/Generated/Australia/Track/Tile_Street_00_m1",
+      "triangles": 18951,
+      "sha256": "de935cdf47398623c5ee3186c73606cd86383124348a0a7bba582ccc238fb6b9"
+    },
+    {
+      "asset": "/Game/Generated/Australia/Track/Tile_Street_01_m1",
+      "triangles": 1262,
+      "sha256": "9a5bb9709beff2c2fc290855e35a8d3922d1b47327e1e30467dbf4fccac65fc5"
+    },
+    {
+      "asset": "/Game/Generated/Australia/Track/Tile_Street_01_m2",
+      "triangles": 15455,
+      "sha256": "b943ac46d63ab8e73da95c4c369d5e1546e19c72eff49ea6b8f0ca756b528026"
+    },
+    {
+      "asset": "/Game/Generated/Australia/Track/Tile_Street_m1_00",
+      "triangles": 15569,
+      "sha256": "69c7e2377383ac27baff58c7110f2461d0c7eaab49f61b0885f6be55f54ed4dd"
+    }
+  ],
+  "pit_architecture_edits": [],
+  "added_route_meshes": [
+    "Tile_Route_00_00",
+    "Tile_Route_00_m1",
+    "Tile_Route_01_m1",
+    "Tile_Route_01_m2",
+    "Tile_Route_m1_00"
+  ],
+  "note": "Finite pit/escape overlays; base authoring manifests describe the retained pre-overlay scene."
+}

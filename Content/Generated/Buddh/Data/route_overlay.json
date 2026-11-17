@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "circuit": "buddh",
+  "manifest_sha256": "52f28d7e74d5c9be8f7b7863e917ce606b1baace9b1e101e57ca3153c6d44731",
+  "source_sha256": {
+    "build/reviews/resume-20261116/pits/native-wave1/buddh/route.json": "fd1e7a7e5fcccd60de62eb2f90c73b70c3414e924e4fbbbe704369b13fbca75e"
+  },
+  "native_edits": [
+    {
+      "asset": "/Game/Generated/Buddh/Track/Tile_Street_00_00",
+      "triangles": 27072,
+      "sha256": "065c60eec0f6d7173b31afd31695f654a6a7be5a907bf6b6f974e049a43e5a9c"
+    },
+    {
+      "asset": "/Game/Generated/Buddh/Track/Tile_Street_00_01",
+      "triangles": 28207,
+      "sha256": "7bde361b8a0bc391175d7ba5127d6eee1095b12cc7b5c685e44f6fd5233be658"
+    },
+    {
+      "asset": "/Game/Generated/Buddh/Track/Tile_Street_00_02",
+      "triangles": 43768,
+      "sha256": "7a1cbf6936ab8026627aef2881213b9d569659b700e0151701a70caaf69f1bf2"
+    },
+    {
+      "asset": "/Game/Generated/Buddh/Track/Tile_Street_00_m1",
+      "triangles": 47391,
+      "sha256": "666e439425252e87634530f57bad8c95ed5ef79f99f45db3ebd1f8cc149caf17"
+    },
+    {
+      "asset": "/Game/Generated/Buddh/Track/Tile_Street_01_00",
+      "triangles": 18660,
+      "sha256": "df915a6930769496d5082d05aeb5b8cbacfa69d7a8aae78ff19542714eb9315d"
+    },
+    {
+      "asset": "/Game/Generated/Buddh/Track/Tile_Street_01_m1",
+      "triangles": 21235,
+      "sha256": "a6339f8ce7da402383fea457d9e29e7104785b2010f5171d8ebf0f9e3b87acba"
+    }
+  ],
+  "pit_architecture_edits": [],
+  "added_route_meshes": [
+    "Tile_Route_00_00",
+    "Tile_Route_00_01",
+    "Tile_Route_00_02",
+    "Tile_Route_00_m1",
+    "Tile_Route_01_00",
+    "Tile_Route_01_m1"
+  ],
+  "note": "Finite pit/escape overlays; base authoring manifests describe the retained pre-overlay scene."
+}

@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "circuit": "bahrain",
+  "manifest_sha256": "6b9f57c9c19fd9ca1884c182d08598c7c651e37d67de223c4883d86c80e165eb",
+  "source_sha256": {
+    "build/reviews/resume-20261116/pits/native-wave1/bahrain/route.json": "2fe91461f850a2ec72abe2f5a476b0ebd5ab6186f5c9f0780595c5592bc8d467"
+  },
+  "native_edits": [
+    {
+      "asset": "/Game/Generated/Bahrain/Track/Tile_Street_00_00",
+      "triangles": 27820,
+      "sha256": "f7bd9545b040267640e4d5cc1e2d6ba8347023e9d32aa601dd65852c3a83a11f"
+    },
+    {
+      "asset": "/Game/Generated/Bahrain/Track/Tile_Street_00_01",
+      "triangles": 31681,
+      "sha256": "37ab2d55c125f709ebdd5c4d15d3be776c7a525419f757f0424c072bbb32cda7"
+    },
+    {
+      "asset": "/Game/Generated/Bahrain/Track/Tile_Street_00_m1",
+      "triangles": 29992,
+      "sha256": "524753f79f5bbb6a0ee0d05f923eacef8657d8bc6e05540d5ba729fc15c11c4d"
+    },
+    {
+      "asset": "/Game/Generated/Bahrain/Track/Tile_Street_00_m2",
+      "triangles": 26127,
+      "sha256": "ec89078902ff60bdb2458710a92dd333e685ff4188dcfb6df6f8e1c1315815a5"
+    },
+    {
+      "asset": "/Game/Generated/Bahrain/Track/Tile_Street_m1_m2",
+      "triangles": 11670,
+      "sha256": "ea69a3790b4df096088af7219f535417e52f71a4061ed2399f42e1b61d42c008"
+    }
+  ],
+  "pit_architecture_edits": [],
+  "added_route_meshes": [
+    "Tile_Route_00_00",
+    "Tile_Route_00_01",
+    "Tile_Route_00_m1",
+    "Tile_Route_00_m2",
+    "Tile_Route_m1_m2"
+  ],
+  "note": "Finite pit/escape overlays; base authoring manifests describe the retained pre-overlay scene."
+}

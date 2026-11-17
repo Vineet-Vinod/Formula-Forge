@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "circuit": "lasvegas",
+  "manifest_sha256": "4df568aa082c35f474cd1d49ff108d22033b73970ade6e82a05b677d8937d25d",
+  "source_sha256": {
+    "build/reviews/resume-20261116/pits/native-wave1/lasvegas/route.json": "57536331af939af453a7cc3c90eb5c115987aa77226004d97c9b86e3145240b2"
+  },
+  "native_edits": [
+    {
+      "asset": "/Game/Generated/LasVegas/Track/Tile_Street_03_m3",
+      "triangles": 13904,
+      "sha256": "9f78a4c3e977e77451457fbc0cf3d2a0e74667105abb93ec734d517d8094e42c"
+    },
+    {
+      "asset": "/Game/Generated/LasVegas/Track/Tile_Street_03_m4",
+      "triangles": 20939,
+      "sha256": "91e006dd3f4d6dc33740f5d99e8f6a890f554b5f90e8b597d78395d280b458da"
+    },
+    {
+      "asset": "/Game/Generated/LasVegas/Track/Tile_Street_04_m2",
+      "triangles": 49880,
+      "sha256": "72a01601d246bbecd0677317695fa16f6bf96e73201c83320a7bece66d64f754"
+    },
+    {
+      "asset": "/Game/Generated/LasVegas/Track/Tile_Street_04_m3",
+      "triangles": 23453,
+      "sha256": "05847d1fcd139890af5a37a055c912ddb333532745a1361a6e2de6ecc65fe7e4"
+    }
+  ],
+  "pit_architecture_edits": [],
+  "added_route_meshes": [
+    "Tile_Route_03_m3",
+    "Tile_Route_03_m4",
+    "Tile_Route_04_m2",
+    "Tile_Route_04_m3"
+  ],
+  "note": "Finite pit/escape overlays; base authoring manifests describe the retained pre-overlay scene."
+}

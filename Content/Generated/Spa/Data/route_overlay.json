@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "circuit": "spa",
+  "manifest_sha256": "839105dd98472521193ee82094099959fdfe53a0c7013ac30fe4914443d837cd",
+  "source_sha256": {
+    "build/reviews/resume-20261116/pits/native-wave2/spa/route.json": "a8e1f80c7dbbe12152675af10605c866a113670541bee86de3242deaa993dd60"
+  },
+  "native_edits": [
+    {
+      "asset": "/Game/Generated/Spa/Track/Tile_Street_m1_02",
+      "triangles": 26982,
+      "sha256": "49e0c32e1a9b1007629044ff8e76d5b2689e067b877faaf5c4deefd69d5f48a3"
+    },
+    {
+      "asset": "/Game/Generated/Spa/Track/Tile_Street_m1_03",
+      "triangles": 27809,
+      "sha256": "19f5b628bc604bdd554870528256bc62e74a5340711be5ff801713d4ba96e587"
+    },
+    {
+      "asset": "/Game/Generated/Spa/Track/Tile_Street_m1_04",
+      "triangles": 7516,
+      "sha256": "85dfec7f43b27da32f09ab4d56ec5260843957a45fd2128b1109bb3386cafc2e"
+    },
+    {
+      "asset": "/Game/Generated/Spa/Track/Tile_Street_m2_03",
+      "triangles": 10427,
+      "sha256": "47c0c367ac14d442b215f725bcd14fa7db37859158078f02063f11d9453c47be"
+    },
+    {
+      "asset": "/Game/Generated/Spa/Track/Tile_Street_m2_04",
+      "triangles": 19005,
+      "sha256": "f2cdcf79e93091452b0f546414ce01ec0a17056a1f57aab2ef1b3a9e199cd5b9"
+    }
+  ],
+  "pit_architecture_edits": [],
+  "added_route_meshes": [
+    "Tile_Route_m1_02",
+    "Tile_Route_m1_03",
+    "Tile_Route_m1_04",
+    "Tile_Route_m2_03",
+    "Tile_Route_m2_04"
+  ],
+  "note": "Finite pit/escape overlays; base authoring manifests describe the retained pre-overlay scene."
+}

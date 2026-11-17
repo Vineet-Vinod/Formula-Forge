@@ -1,0 +1,57 @@
+{
+  "circuit": "baku",
+  "event_year": 2025,
+  "expected_scene_scale": 1.0062366339173152,
+  "escapes": [
+    {
+      "id": "t1-escape",
+      "name": "T1 public-street escape",
+      "approach_station_m": 145,
+      "length_m": 85,
+      "width_m": 13,
+      "lateral_offset_m": 0,
+      "extent_uncertainty_m": 12,
+      "source_urls": [
+        "https://www.fia.com/system/files/decision-document/2025_azerbaijan_grand_prix_-_event_notes_-_circuit_map_pit_lane_quarantine_zone_and_red_zone.pdf"
+      ],
+      "reference_frames": [
+        "build/reviews/baku/reference/detail-0190.jpg"
+      ],
+      "source_note": "The corner sequence and mapped streets support a straight escape beyond T1. Width and 45 m beyond the nominal apex are estimated. Footprint dimensions are bounded reference/map reconstruction estimates, not measured barrier coordinates. The existing racing centreline, width, elevation and camera remain fixed."
+    },
+    {
+      "id": "t2-escape",
+      "name": "T2 public-street escape",
+      "approach_station_m": 483,
+      "length_m": 80,
+      "width_m": 12,
+      "lateral_offset_m": 0,
+      "extent_uncertainty_m": 12,
+      "source_urls": [
+        "https://www.fia.com/system/files/decision-document/2025_azerbaijan_grand_prix_-_event_notes_-_circuit_map_pit_lane_quarantine_zone_and_red_zone.pdf"
+      ],
+      "reference_frames": [
+        "build/reviews/baku/reference/detail-0200.jpg"
+      ],
+      "source_note": "Square corner followed by the long city straight. The continued public street is an escape with terminal buffer, not a widening of the racing line. Footprint dimensions are bounded reference/map reconstruction estimates, not measured barrier coordinates. The existing racing centreline, width, elevation and camera remain fixed."
+    },
+    {
+      "id": "t15-escape",
+      "name": "T15 downhill straight escape",
+      "approach_station_m": 3591,
+      "length_m": 60,
+      "width_m": 11,
+      "lateral_offset_m": 0,
+      "extent_uncertainty_m": 8,
+      "source_urls": [
+        "https://www.fia.com/system/files/decision-document/2025_azerbaijan_grand_prix_-_event_notes_-_circuit_map_pit_lane_quarantine_zone_and_red_zone.pdf"
+      ],
+      "reference_frames": [
+        "build/reviews/resume-20261114/baku/niyazi-ref-01.jpg",
+        "build/reviews/resume-20261114/baku/niyazi-ref-03.jpg"
+      ],
+      "source_note": "Keep the actual downhill approach grade and separate this bounded escape from the held Niyazi upper walk and completed ordinary-island junction. Footprint dimensions are bounded reference/map reconstruction estimates, not measured barrier coordinates. The existing racing centreline, width, elevation and camera remain fixed. Bounded terminal ends before the source-qualified gymnasium/museum owner152110152; do not extend an escape into that building or replace the source museum with a shorter proxy."
+    }
+  ],
+  "source_status": "Source-plan candidate awaiting mapped occupied-domain, grade, native protection and cooked visual review. Official map epoch2025; supplied edited-reference event year unverified. No survey claim."
+}

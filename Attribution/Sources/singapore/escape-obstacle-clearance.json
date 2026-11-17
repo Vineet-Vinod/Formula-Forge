@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "source_frame": "Source east/north and source Z metres",
+  "circuit": "singapore",
+  "asset": "/Game/Generated/Singapore/Track/Building_City_m1_01",
+  "expected_source_facets": 6728,
+  "portals": [
+    {
+      "id": "t3-estimated-palm-0-complete-instance",
+      "polygon_xy_m": [
+        [
+          -179.61987884832408,
+          400.71814367116696
+        ],
+        [
+          -169.8202540614482,
+          400.71814367116696
+        ],
+        [
+          -169.8202540614482,
+          411.0202263244315
+        ],
+        [
+          -179.61987884832408,
+          411.0202263244315
+        ]
+      ],
+      "bottom_m": 0.694753458330932,
+      "top_m": 12.975593509187203,
+      "source_note": "Complete single procedural palm envelope, reconstructed with the unchanged current source emitter, plus a 2 cm native F32 encoding margin. Its root lies in the source-qualified open T3 escape. Includes the whole trunk and all fronds to prevent suspended canopy. No other tree instance or building is selected."
+    }
+  ],
+  "source_overlay_sha256": "9e8a54da9e8fe73bfbca3413cda0908d25920d276cf50a1c25a74231be55ae06",
+  "native_dry_run_sha256": "871fffb2d44829f9c55816cc3b55c4222711b7b34bfb9f4071ca178152264fc7",
+  "qualification": "The existing source-qualified asphalt T3 escape must be open. The first estimated palm in the 453.227322\u2013805.860027 m source range has its root inside that escape. Remove that complete individual procedural palm, not only its lower 32 trunk facets, to avoid suspended upper trunk and fronds. Its 128 trunk and 6600 leaf faces are enclosed by the exact unchanged source-emitter envelope with a 2 cm encoding margin. Restrict to the exact native asset and two actual material slots; require the actual native dry-run count to match 6728 before editing. Every other tree, material and exterior face remains unchanged. Fresh native appearance remains required.",
+  "material_slots": [
+    {
+      "slot": "Material_4",
+      "material": "/Game/Generated/Singapore/Materials/Trunk.Trunk"
+    },
+    {
+      "slot": "Material_5",
+      "material": "/Game/Generated/Singapore/Materials/Leaves.Leaves"
+    }
+  ],
+  "expected_material_facets": {
+    "Trunk": 128,
+    "Leaves": 6600
+  },
+  "source_instance": {
+    "index": 0,
+    "station_m": 475.2668660625,
+    "base_source_m": [
+      -175.22470454908938,
+      405.6376563630471,
+      0.7147534583309321
+    ],
+    "height_m": 11.0,
+    "bounds_source_m": [
+      -179.59987884832407,
+      400.73814367116694,
+      0.7147534583309321,
+      -169.8402540614482,
+      411.00022632443154,
+      12.955593509187203
+    ],
+    "root_inside_escape": true,
+    "escape_distance_m": 0.0,
+    "triangles": {
+      "Leaves": 6600,
+      "Trunk": 128
+    }
+  }
+}

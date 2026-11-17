@@ -1,0 +1,42 @@
+{
+  "circuit": "singapore",
+  "event_year": 2025,
+  "expected_scene_scale": 1.0051432406527032,
+  "escapes": [
+    {
+      "id": "t1-escape",
+      "name": "T1 straight-ahead escape",
+      "approach_station_m": 285.505959,
+      "length_m": 78,
+      "width_m": 12,
+      "lateral_offset_m": 0,
+      "extent_uncertainty_m": 10,
+      "source_urls": [
+        "https://www.fia.com/system/files/decision-document/2025_singapore_grand_prix_-_event_notes_-_circuit_map_pit_lane_emergency_exits_map_and_quarantine_zone.pdf"
+      ],
+      "reference_frames": [
+        "build/reviews/singapore/reference/detail-0606.jpg",
+        "build/reviews/singapore/reference/detail-0610.jpg"
+      ],
+      "source_note": "Opening left turn with a straight paved escape. Preserve the close temporary spectator structures, following T2 arm and separate pit exit. Footprint dimensions are bounded reference/map reconstruction estimates, not measured barrier coordinates. The existing racing centreline, width, elevation and camera remain fixed."
+    },
+    {
+      "id": "t3-escape",
+      "name": "T3 straight-ahead escape",
+      "approach_station_m": 449.422627,
+      "length_m": 75,
+      "width_m": 11,
+      "lateral_offset_m": 0,
+      "extent_uncertainty_m": 10,
+      "source_urls": [
+        "https://www.fia.com/system/files/decision-document/2025_singapore_grand_prix_-_event_notes_-_circuit_map_pit_lane_emergency_exits_map_and_quarantine_zone.pdf"
+      ],
+      "reference_frames": [
+        "build/reviews/singapore/reference/detail-0614.jpg",
+        "build/reviews/singapore/reference/detail-0618.jpg"
+      ],
+      "source_note": "Opening third-corner escape remains ordinary asphalt. Preserve the returned racing arm and the protected public-road edge. Footprint dimensions are bounded reference/map reconstruction estimates, not measured barrier coordinates. The existing racing centreline, width, elevation and camera remain fixed."
+    }
+  ],
+  "source_status": "Source-plan candidate awaiting mapped occupied-domain, grade, native protection and cooked visual review. Official map epoch2025; supplied edited-reference event year unverified. No survey claim."
+}
