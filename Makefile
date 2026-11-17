@@ -7,7 +7,7 @@ build:
 assets: build
 	bash tools/unreal.sh python tools/prepare_project.py
 package:
-	bash tools/unreal.sh package
+	bash tools/unreal.sh package $(ARGS)
 run:
 	bash tools/unreal.sh run $(ARGS)
 check:
