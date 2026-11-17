@@ -38,5 +38,5286 @@
       "source_note": "Opening third-corner escape remains ordinary asphalt. Preserve the returned racing arm and the protected public-road edge. Footprint dimensions are bounded reference/map reconstruction estimates, not measured barrier coordinates. The existing racing centreline, width, elevation and camera remain fixed."
     }
   ],
-  "source_status": "Source-plan candidate awaiting mapped occupied-domain, grade, native protection and cooked visual review. Official map epoch2025; supplied edited-reference event year unverified. No survey claim."
+  "source_status": "Source-plan candidate awaiting mapped occupied-domain, grade, native protection and cooked visual review. Official map epoch2025; supplied edited-reference event year unverified. No survey claim.",
+  "paint_domains": [
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-000",
+      "polygon_xy_m": [
+        [
+          13.008789879472737,
+          -226.78037372248485
+        ],
+        [
+          13.765419754102886,
+          -225.10174542199522
+        ],
+        [
+          9.549811089840393,
+          -223.26091854534576
+        ],
+        [
+          8.834308557976616,
+          -224.84809380061017
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-001",
+      "polygon_xy_m": [
+        [
+          13.765419754102886,
+          -225.10174542199522
+        ],
+        [
+          14.482602347301313,
+          -223.41775202050923
+        ],
+        [
+          10.225308332654237,
+          -221.67549840152884
+        ],
+        [
+          9.549811089840393,
+          -223.26091854534576
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-002",
+      "polygon_xy_m": [
+        [
+          14.482602347301313,
+          -223.41775202050923
+        ],
+        [
+          15.021636415997468,
+          -221.99248683792032
+        ],
+        [
+          10.658915176863282,
+          -220.5341784378871
+        ],
+        [
+          10.225308332654237,
+          -221.67549840152884
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-003",
+      "polygon_xy_m": [
+        [
+          15.021636415997468,
+          -221.99248683792032
+        ],
+        [
+          15.399457821083804,
+          -220.67080726178227
+        ],
+        [
+          10.927078385847954,
+          -219.59478579950584
+        ],
+        [
+          10.658915176863282,
+          -220.5341784378871
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-004",
+      "polygon_xy_m": [
+        [
+          15.399457821083804,
+          -220.67080726178227
+        ],
+        [
+          15.734296108820343,
+          -219.06514167328723
+        ],
+        [
+          11.213968433298643,
+          -218.21271120344667
+        ],
+        [
+          10.927078385847954,
+          -219.59478579950584
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-005",
+      "polygon_xy_m": [
+        [
+          15.734296108820343,
+          -219.06514167328723
+        ],
+        [
+          16.049213925855128,
+          -217.27567175284275
+        ],
+        [
+          11.508854876891194,
+          -216.5373359847187
+        ],
+        [
+          11.213968433298643,
+          -218.21271120344667
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-006",
+      "polygon_xy_m": [
+        [
+          16.049213925855128,
+          -217.27567175284275
+        ],
+        [
+          16.279750344140083,
+          -215.6511542249284
+        ],
+        [
+          11.708384383626221,
+          -215.13869617293275
+        ],
+        [
+          11.508854876891194,
+          -216.5373359847187
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-007",
+      "polygon_xy_m": [
+        [
+          16.279750344140083,
+          -215.6511542249284
+        ],
+        [
+          16.39751343149443,
+          -214.13705048835695
+        ],
+        [
+          11.8021835436959,
+          -213.9298230232237
+        ],
+        [
+          11.708384383626221,
+          -215.13869617293275
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-008",
+      "polygon_xy_m": [
+        [
+          16.39751343149443,
+          -214.13705048835695
+        ],
+        [
+          16.43374872582652,
+          -212.41868571672308
+        ],
+        [
+          11.83383956452784,
+          -212.38977710554036
+        ],
+        [
+          11.8021835436959,
+          -213.9298230232237
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-009",
+      "polygon_xy_m": [
+        [
+          16.43374872582652,
+          -212.41868571672308
+        ],
+        [
+          16.430162998565493,
+          -210.52731395587452
+        ],
+        [
+          11.830330809105652,
+          -210.5666055428759
+        ],
+        [
+          11.83383956452784,
+          -212.38977710554036
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-010",
+      "polygon_xy_m": [
+        [
+          16.430162998565493,
+          -210.52731395587452
+        ],
+        [
+          16.391833682026075,
+          -208.67475250523043
+        ],
+        [
+          11.793730804427137,
+          -208.80685067711926
+        ],
+        [
+          11.830330809105652,
+          -210.5666055428759
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-011",
+      "polygon_xy_m": [
+        [
+          16.391833682026075,
+          -208.67475250523043
+        ],
+        [
+          16.30595312682875,
+          -206.8730704944089
+        ],
+        [
+          11.71307822248753,
+          -207.12900039315582
+        ],
+        [
+          11.793730804427137,
+          -208.80685067711926
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-012",
+      "polygon_xy_m": [
+        [
+          16.30595312682875,
+          -206.8730704944089
+        ],
+        [
+          16.156886286904005,
+          -204.99657449065793
+        ],
+        [
+          11.568708144255087,
+          -205.32615199492474
+        ],
+        [
+          11.71307822248753,
+          -207.12900039315582
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-013",
+      "polygon_xy_m": [
+        [
+          16.156886286904005,
+          -204.99657449065793
+        ],
+        [
+          15.9787813803976,
+          -203.0444113530854
+        ],
+        [
+          11.39240854971871,
+          -203.39822522789882
+        ],
+        [
+          11.568708144255087,
+          -205.32615199492474
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-014",
+      "polygon_xy_m": [
+        [
+          15.9787813803976,
+          -203.0444113530854
+        ],
+        [
+          15.790909583133281,
+          -201.10360677010752
+        ],
+        [
+          11.206979730477201,
+          -201.4877774430231
+        ],
+        [
+          11.39240854971871,
+          -203.39822522789882
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-015",
+      "polygon_xy_m": [
+        [
+          15.790909583133281,
+          -201.10360677010752
+        ],
+        [
+          15.588200330914155,
+          -199.1820127718441
+        ],
+        [
+          11.007940098597752,
+          -199.6077077380592
+        ],
+        [
+          11.206979730477201,
+          -201.4877774430231
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-016",
+      "polygon_xy_m": [
+        [
+          15.588200330914155,
+          -199.1820127718441
+        ],
+        [
+          15.366419487760204,
+          -197.23728026609663
+        ],
+        [
+          10.788596075674446,
+          -197.68842637076727
+        ],
+        [
+          11.007940098597752,
+          -199.6077077380592
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-017",
+      "polygon_xy_m": [
+        [
+          15.366419487760204,
+          -197.23728026609663
+        ],
+        [
+          15.13482119454666,
+          -195.26886251734152
+        ],
+        [
+          10.55802625005229,
+          -195.73032544765204
+        ],
+        [
+          10.788596075674446,
+          -197.68842637076727
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-018",
+      "polygon_xy_m": [
+        [
+          15.13482119454666,
+          -195.26886251734152
+        ],
+        [
+          14.898716816981903,
+          -193.31617124287632
+        ],
+        [
+          10.32393643906914,
+          -193.79719566415278
+        ],
+        [
+          10.55802625005229,
+          -195.73032544765204
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-019",
+      "polygon_xy_m": [
+        [
+          14.898716816981903,
+          -193.31617124287632
+        ],
+        [
+          14.653301385530447,
+          -191.37901443464472
+        ],
+        [
+          10.0815437679153,
+          -191.88796657952463
+        ],
+        [
+          10.32393643906914,
+          -193.79719566415278
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-020",
+      "polygon_xy_m": [
+        [
+          14.653301385530447,
+          -191.37901443464472
+        ],
+        [
+          14.394223998660566,
+          -189.42590136925585
+        ],
+        [
+          9.824433306154186,
+          -189.95222163932158
+        ],
+        [
+          10.0815437679153,
+          -191.88796657952463
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-021",
+      "polygon_xy_m": [
+        [
+          14.394223998660566,
+          -189.42590136925585
+        ],
+        [
+          14.127987808020407,
+          -187.45159446333463
+        ],
+        [
+          9.558655276849652,
+          -187.98187761372193
+        ],
+        [
+          9.824433306154186,
+          -189.95222163932158
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-022",
+      "polygon_xy_m": [
+        [
+          14.127987808020407,
+          -187.45159446333463
+        ],
+        [
+          13.860555907279029,
+          -185.47117009179814
+        ],
+        [
+          9.291211638463857,
+          -186.0013520917245
+        ],
+        [
+          9.558655276849652,
+          -187.98187761372193
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-023",
+      "polygon_xy_m": [
+        [
+          13.860555907279029,
+          -185.47117009179814
+        ],
+        [
+          13.593159277225705,
+          -183.49005558973622
+        ],
+        [
+          9.023788892029946,
+          -184.02001245863775
+        ],
+        [
+          9.291211638463857,
+          -186.0013520917245
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-024",
+      "polygon_xy_m": [
+        [
+          13.593159277225705,
+          -183.49005558973622
+        ],
+        [
+          13.325877284594558,
+          -181.5094520847423
+        ],
+        [
+          8.756498660442949,
+          -182.03933791126192
+        ],
+        [
+          9.023788892029946,
+          -184.02001245863775
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-025",
+      "polygon_xy_m": [
+        [
+          13.325877284594558,
+          -181.5094520847423
+        ],
+        [
+          13.058618546871628,
+          -179.5288305473956
+        ],
+        [
+          8.489234879187544,
+          -180.0586728800776
+        ],
+        [
+          8.756498660442949,
+          -182.03933791126192
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-026",
+      "polygon_xy_m": [
+        [
+          13.058618546871628,
+          -179.5288305473956
+        ],
+        [
+          12.791556134767037,
+          -177.54804239005216
+        ],
+        [
+          8.222171137571374,
+          -178.07787325684194
+        ],
+        [
+          8.489234879187544,
+          -180.0586728800776
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-027",
+      "polygon_xy_m": [
+        [
+          12.791556134767037,
+          -177.54804239005216
+        ],
+        [
+          12.524591677341874,
+          -175.5677639781562
+        ],
+        [
+          7.955208715938742,
+          -176.09761240180086
+        ],
+        [
+          8.222171137571374,
+          -178.07787325684194
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-028",
+      "polygon_xy_m": [
+        [
+          12.524591677341874,
+          -175.5677639781562
+        ],
+        [
+          12.25795954195455,
+          -173.58693779222395
+        ],
+        [
+          7.68857684729784,
+          -174.11678851626968
+        ],
+        [
+          7.955208715938742,
+          -176.09761240180086
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-029",
+      "polygon_xy_m": [
+        [
+          12.25795954195455,
+          -173.58693779222395
+        ],
+        [
+          11.991449242685736,
+          -171.6060866045808
+        ],
+        [
+          7.422065389566555,
+          -172.13592733805996
+        ],
+        [
+          7.68857684729784,
+          -174.11678851626968
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-030",
+      "polygon_xy_m": [
+        [
+          11.991449242685736,
+          -171.6060866045808
+        ],
+        [
+          11.727370803938836,
+          -169.6254294772134
+        ],
+        [
+          7.157986603317115,
+          -170.15526721379752
+        ],
+        [
+          7.422065389566555,
+          -172.13592733805996
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-031",
+      "polygon_xy_m": [
+        [
+          11.727370803938836,
+          -169.6254294772134
+        ],
+        [
+          11.463846308781203,
+          -167.6442780196499
+        ],
+        [
+          6.894464631240135,
+          -168.17413751513146
+        ],
+        [
+          7.157986603317115,
+          -170.15526721379752
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-032",
+      "polygon_xy_m": [
+        [
+          11.463846308781203,
+          -167.6442780196499
+        ],
+        [
+          11.200757791445518,
+          -165.66355820551166
+        ],
+        [
+          6.631378639749887,
+          -166.193439482827
+        ],
+        [
+          6.894464631240135,
+          -168.17413751513146
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-033",
+      "polygon_xy_m": [
+        [
+          11.200757791445518,
+          -165.66355820551166
+        ],
+        [
+          10.937748691944492,
+          -163.68221035619362
+        ],
+        [
+          6.368363442835573,
+          -164.2120390504202
+        ],
+        [
+          6.631378639749887,
+          -166.193439482827
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-034",
+      "polygon_xy_m": [
+        [
+          10.937748691944492,
+          -163.68221035619362
+        ],
+        [
+          10.678927677766755,
+          -161.70044101168904
+        ],
+        [
+          6.10953906103402,
+          -162.23024066181475
+        ],
+        [
+          6.368363442835573,
+          -164.2120390504202
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-035",
+      "polygon_xy_m": [
+        [
+          10.678927677766755,
+          -161.70044101168904
+        ],
+        [
+          10.421199719914984,
+          -159.71901290374657
+        ],
+        [
+          5.851808726216239,
+          -160.24879205273677
+        ],
+        [
+          6.10953906103402,
+          -162.23024066181475
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-036",
+      "polygon_xy_m": [
+        [
+          10.421199719914984,
+          -159.71901290374657
+        ],
+        [
+          10.16403046144702,
+          -157.7371644265163
+        ],
+        [
+          5.594644026441896,
+          -158.26698289315482
+        ],
+        [
+          5.851808726216239,
+          -160.24879205273677
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-037",
+      "polygon_xy_m": [
+        [
+          10.16403046144702,
+          -157.7371644265163
+        ],
+        [
+          9.906997892487777,
+          -155.75551213646986
+        ],
+        [
+          5.337615691173211,
+          -156.28536711503443
+        ],
+        [
+          5.594644026441896,
+          -158.26698289315482
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-038",
+      "polygon_xy_m": [
+        [
+          9.906997892487777,
+          -155.75551213646986
+        ],
+        [
+          9.658924400420512,
+          -153.77281748354622
+        ],
+        [
+          5.089544871449739,
+          -154.3026955074563
+        ],
+        [
+          5.337615691173211,
+          -156.28536711503443
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-039",
+      "polygon_xy_m": [
+        [
+          9.658924400420512,
+          -153.77281748354622
+        ],
+        [
+          9.412824285295676,
+          -151.78956072761514
+        ],
+        [
+          4.8434404025738775,
+          -152.31940120579915
+        ],
+        [
+          5.089544871449739,
+          -154.3026955074563
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-040",
+      "polygon_xy_m": [
+        [
+          9.412824285295676,
+          -151.78956072761514
+        ],
+        [
+          9.167352116629017,
+          -149.80650810545345
+        ],
+        [
+          4.597966753532237,
+          -150.3363358166171
+        ],
+        [
+          4.8434404025738775,
+          -152.31940120579915
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-041",
+      "polygon_xy_m": [
+        [
+          9.167352116629017,
+          -149.80650810545345
+        ],
+        [
+          8.922025640821252,
+          -147.82352144990423
+        ],
+        [
+          4.352646470080577,
+          -148.35340256298647
+        ],
+        [
+          4.597966753532237,
+          -150.3363358166171
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-042",
+      "polygon_xy_m": [
+        [
+          8.922025640821252,
+          -147.82352144990423
+        ],
+        [
+          8.6838655281882,
+          -145.8393623909795
+        ],
+        [
+          4.114483997878171,
+          -146.3692231561448
+        ],
+        [
+          4.352646470080577,
+          -148.35340256298647
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-043",
+      "polygon_xy_m": [
+        [
+          8.6838655281882,
+          -145.8393623909795
+        ],
+        [
+          8.44725830759327,
+          -143.85547772800624
+        ],
+        [
+          3.8778737664224447,
+          -144.3853125276458
+        ],
+        [
+          4.114483997878171,
+          -146.3692231561448
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-044",
+      "polygon_xy_m": [
+        [
+          8.44725830759327,
+          -143.85547772800624
+        ],
+        [
+          8.211034125294978,
+          -141.87106371966735
+        ],
+        [
+          3.641645039647935,
+          -142.40085932550951
+        ],
+        [
+          3.8778737664224447,
+          -144.3853125276458
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-045",
+      "polygon_xy_m": [
+        [
+          8.211034125294978,
+          -141.87106371966735
+        ],
+        [
+          7.97497838674351,
+          -139.88711488764778
+        ],
+        [
+          3.405587650205808,
+          -140.41689625466952
+        ],
+        [
+          3.641645039647935,
+          -142.40085932550951
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-046",
+      "polygon_xy_m": [
+        [
+          7.97497838674351,
+          -139.88711488764778
+        ],
+        [
+          7.741960253125715,
+          -137.90246871354523
+        ],
+        [
+          3.1725733877626006,
+          -138.4322834685748
+        ],
+        [
+          3.405587650205808,
+          -140.41689625466952
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-047",
+      "polygon_xy_m": [
+        [
+          7.741960253125715,
+          -137.90246871354523
+        ],
+        [
+          7.509555689699706,
+          -135.9177958981086
+        ],
+        [
+          2.9401759481609346,
+          -136.44767208894478
+        ],
+        [
+          3.1725733877626006,
+          -138.4322834685748
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-048",
+      "polygon_xy_m": [
+        [
+          7.509555689699706,
+          -135.9177958981086
+        ],
+        [
+          7.277179298308081,
+          -133.9334600645425
+        ],
+        [
+          2.7077994313426057,
+          -134.46333517376215
+        ],
+        [
+          2.9401759481609346,
+          -136.44767208894478
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-049",
+      "polygon_xy_m": [
+        [
+          7.277179298308081,
+          -133.9334600645425
+        ],
+        [
+          7.044770753003737,
+          -131.94859443998345
+        ],
+        [
+          2.4753862983417125,
+          -132.47842998568893
+        ],
+        [
+          2.7077994313426057,
+          -134.46333517376215
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-050",
+      "polygon_xy_m": [
+        [
+          7.044770753003737,
+          -131.94859443998345
+        ],
+        [
+          6.813397769136879,
+          -129.96369916416054
+        ],
+        [
+          2.244013769837272,
+          -130.49353863696786
+        ],
+        [
+          2.4753862983417125,
+          -132.47842998568893
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-051",
+      "polygon_xy_m": [
+        [
+          6.813397769136879,
+          -129.96369916416054
+        ],
+        [
+          6.5822801575348695,
+          -127.97924609705483
+        ],
+        [
+          2.0128979664593167,
+          -128.50910116391896
+        ],
+        [
+          2.244013769837272,
+          -130.49353863696786
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-052",
+      "polygon_xy_m": [
+        [
+          6.5822801575348695,
+          -127.97924609705483
+        ],
+        [
+          6.351312271045819,
+          -125.99432470462793
+        ],
+        [
+          1.781932085442504,
+          -126.52419706606587
+        ],
+        [
+          2.0128979664593167,
+          -128.50910116391896
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-053",
+      "polygon_xy_m": [
+        [
+          6.351312271045819,
+          -125.99432470462793
+        ],
+        [
+          6.120403164837397,
+          -124.0095079768777
+        ],
+        [
+          1.5510194407100322,
+          -124.53934982279019
+        ],
+        [
+          1.781932085442504,
+          -126.52419706606587
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-054",
+      "polygon_xy_m": [
+        [
+          6.120403164837397,
+          -124.0095079768777
+        ],
+        [
+          5.890148602835577,
+          -122.02461985862281
+        ],
+        [
+          1.3207581529062047,
+          -122.55440369764987
+        ],
+        [
+          1.5510194407100322,
+          -124.53934982279019
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-055",
+      "polygon_xy_m": [
+        [
+          5.890148602835577,
+          -122.02461985862281
+        ],
+        [
+          5.6599965430333,
+          -120.03957928140974
+        ],
+        [
+          1.090606710220957,
+          -120.56936844304973
+        ],
+        [
+          1.3207581529062047,
+          -122.55440369764987
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-056",
+      "polygon_xy_m": [
+        [
+          5.6599965430333,
+          -120.03957928140974
+        ],
+        [
+          5.429894984666467,
+          -118.0550333886498
+        ],
+        [
+          0.8605081535270269,
+          -118.58484843884138
+        ],
+        [
+          1.090606710220957,
+          -120.56936844304973
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-057",
+      "polygon_xy_m": [
+        [
+          5.429894984666467,
+          -118.0550333886498
+        ],
+        [
+          5.199730929081797,
+          -116.07007728391285
+        ],
+        [
+          0.6303501432929277,
+          -116.59994446959574
+        ],
+        [
+          0.8605081535270269,
+          -118.58484843884138
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-058",
+      "polygon_xy_m": [
+        [
+          5.199730929081797,
+          -116.07007728391285
+        ],
+        [
+          4.9695394598206395,
+          -114.08501816989691
+        ],
+        [
+          0.40015796129682357,
+          -114.61487920917823
+        ],
+        [
+          0.6303501432929277,
+          -116.59994446959574
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-059",
+      "polygon_xy_m": [
+        [
+          4.9695394598206395,
+          -114.08501816989691
+        ],
+        [
+          4.739407048944543,
+          -112.10039082871785
+        ],
+        [
+          0.1700231114604751,
+          -112.63023083462775
+        ],
+        [
+          0.40015796129682357,
+          -114.61487920917823
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-060",
+      "polygon_xy_m": [
+        [
+          4.739407048944543,
+          -112.10039082871785
+        ],
+        [
+          4.509236838866931,
+          -110.11526873031937
+        ],
+        [
+          -0.06015165027636371,
+          -110.64506948087072
+        ],
+        [
+          0.1700231114604751,
+          -112.63023083462775
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-061",
+      "polygon_xy_m": [
+        [
+          4.509236838866931,
+          -110.11526873031937
+        ],
+        [
+          4.279126680225284,
+          -108.13062741509636
+        ],
+        [
+          -0.29026301551543554,
+          -108.66041775896697
+        ],
+        [
+          -0.06015165027636371,
+          -110.64506948087072
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-062",
+      "polygon_xy_m": [
+        [
+          4.279126680225284,
+          -108.13062741509636
+        ],
+        [
+          4.04897600744011,
+          -106.14554403561799
+        ],
+        [
+          -0.5204175974901322,
+          -106.67530066202544
+        ],
+        [
+          -0.29026301551543554,
+          -108.66041775896697
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-063",
+      "polygon_xy_m": [
+        [
+          4.04897600744011,
+          -106.14554403561799
+        ],
+        [
+          3.8188332152091657,
+          -104.1604064324068
+        ],
+        [
+          -0.7505659511918896,
+          -104.69011508637931
+        ],
+        [
+          -0.5204175974901322,
+          -106.67530066202544
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-064",
+      "polygon_xy_m": [
+        [
+          3.8188332152091657,
+          -104.1604064324068
+        ],
+        [
+          3.5887673148185097,
+          -102.17575741570066
+        ],
+        [
+          -0.9806351009102237,
+          -102.70543803940936
+        ],
+        [
+          -0.7505659511918896,
+          -104.69011508637931
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-065",
+      "polygon_xy_m": [
+        [
+          3.5887673148185097,
+          -102.17575741570066
+        ],
+        [
+          3.3586689668734664,
+          -100.19069608328273
+        ],
+        [
+          -1.2107337090884052,
+          -100.72037446203016
+        ],
+        [
+          -0.9806351009102237,
+          -102.70543803940936
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-066",
+      "polygon_xy_m": [
+        [
+          3.3586689668734664,
+          -100.19069608328273
+        ],
+        [
+          3.128582423642859,
+          -98.20579398799403
+        ],
+        [
+          -1.4408210469009912,
+          -98.73546551203682
+        ],
+        [
+          -1.2107337090884052,
+          -100.72037446203016
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-067",
+      "polygon_xy_m": [
+        [
+          3.128582423642859,
+          -98.20579398799403
+        ],
+        [
+          2.898512225948833,
+          -96.22103850667898
+        ],
+        [
+          -1.6708905413522963,
+          -96.75071609746492
+        ],
+        [
+          -1.4408210469009912,
+          -98.73546551203682
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-068",
+      "polygon_xy_m": [
+        [
+          2.898512225948833,
+          -96.22103850667898
+        ],
+        [
+          2.6684095330879156,
+          -94.23595027411326
+        ],
+        [
+          -1.9009951315846596,
+          -94.7656114964701
+        ],
+        [
+          -1.6708905413522963,
+          -96.75071609746492
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-069",
+      "polygon_xy_m": [
+        [
+          2.6684095330879156,
+          -94.23595027411326
+        ],
+        [
+          2.438334994935456,
+          -92.25096926205724
+        ],
+        [
+          -2.1310769948504245,
+          -92.78056728660138
+        ],
+        [
+          -1.9009951315846596,
+          -94.7656114964701
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-070",
+      "polygon_xy_m": [
+        [
+          2.438334994935456,
+          -92.25096926205724
+        ],
+        [
+          2.208295756874424,
+          -90.2661557355454
+        ],
+        [
+          -2.3611175357674057,
+          -90.79574251882852
+        ],
+        [
+          -2.1310769948504245,
+          -92.78056728660138
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-071",
+      "polygon_xy_m": [
+        [
+          2.208295756874424,
+          -90.2661557355454
+        ],
+        [
+          1.9782294254733657,
+          -88.28115961275992
+        ],
+        [
+          -2.591179810948246,
+          -88.8107813930002
+        ],
+        [
+          -2.3611175357674057,
+          -90.79574251882852
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-072",
+      "polygon_xy_m": [
+        [
+          1.9782294254733657,
+          -88.28115961275992
+        ],
+        [
+          1.7482001968831007,
+          -86.29662808499711
+        ],
+        [
+          -2.821204240954515,
+          -86.82629126426288
+        ],
+        [
+          -2.591179810948246,
+          -88.8107813930002
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-073",
+      "polygon_xy_m": [
+        [
+          1.7482001968831007,
+          -86.29662808499711
+        ],
+        [
+          1.518104710166913,
+          -84.3116164213664
+        ],
+        [
+          -3.051296780593413,
+          -84.84130502445062
+        ],
+        [
+          -2.821204240954515,
+          -86.82629126426288
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-074",
+      "polygon_xy_m": [
+        [
+          1.518104710166913,
+          -84.3116164213664
+        ],
+        [
+          1.2880425895270253,
+          -82.32694279395719
+        ],
+        [
+          -3.2813594661060925,
+          -82.85662652409798
+        ],
+        [
+          -3.051296780593413,
+          -84.84130502445062
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-075",
+      "polygon_xy_m": [
+        [
+          1.2880425895270253,
+          -82.32694279395719
+        ],
+        [
+          1.057939810992604,
+          -80.34193802441986
+        ],
+        [
+          -3.5114631220396646,
+          -80.87161418548067
+        ],
+        [
+          -3.2813594661060925,
+          -82.85662652409798
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-076",
+      "polygon_xy_m": [
+        [
+          1.057939810992604,
+          -80.34193802441986
+        ],
+        [
+          0.8278376810815544,
+          -78.3568707426554
+        ],
+        [
+          -3.741565921173356,
+          -78.88654113044376
+        ],
+        [
+          -3.5114631220396646,
+          -80.87161418548067
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-077",
+      "polygon_xy_m": [
+        [
+          0.8278376810815544,
+          -78.3568707426554
+        ],
+        [
+          0.5977857667135158,
+          -76.3722369548915
+        ],
+        [
+          -3.9716175745433073,
+          -76.90190959427454
+        ],
+        [
+          -3.741565921173356,
+          -78.88654113044376
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-078",
+      "polygon_xy_m": [
+        [
+          0.5977857667135158,
+          -76.3722369548915
+        ],
+        [
+          0.3676885824046874,
+          -74.38721672370333
+        ],
+        [
+          -4.201714676743126,
+          -74.91689007142755
+        ],
+        [
+          -3.9716175745433073,
+          -76.90190959427454
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-079",
+      "polygon_xy_m": [
+        [
+          0.3676885824046874,
+          -74.38721672370333
+        ],
+        [
+          0.13758474079580907,
+          -72.40214332197431
+        ],
+        [
+          -4.431819429465406,
+          -72.93180880961668
+        ],
+        [
+          -4.201714676743126,
+          -74.91689007142755
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-080",
+      "polygon_xy_m": [
+        [
+          0.13758474079580907,
+          -72.40214332197431
+        ],
+        [
+          -0.09246023885785526,
+          -70.41756485695412
+        ],
+        [
+          -4.661863402154209,
+          -70.94723903157214
+        ],
+        [
+          -4.431819429465406,
+          -72.93180880961668
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-081",
+      "polygon_xy_m": [
+        [
+          -0.09246023885785526,
+          -70.41756485695412
+        ],
+        [
+          -0.3225630971455633,
+          -68.43250727705751
+        ],
+        [
+          -4.891966138802351,
+          -68.96218250103699
+        ],
+        [
+          -4.661863402154209,
+          -70.94723903157214
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-082",
+      "polygon_xy_m": [
+        [
+          -0.3225630971455633,
+          -68.43250727705751
+        ],
+        [
+          -0.5526523760857778,
+          -66.4476142283492
+        ],
+        [
+          -5.122054786080932,
+          -66.97729490151981
+        ],
+        [
+          -4.891966138802351,
+          -68.96218250103699
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-083",
+      "polygon_xy_m": [
+        [
+          -0.5526523760857778,
+          -66.4476142283492
+        ],
+        [
+          -0.7827231402968451,
+          -64.46284486662219
+        ],
+        [
+          -5.352126495263196,
+          -64.99251738773525
+        ],
+        [
+          -5.122054786080932,
+          -66.97729490151981
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-084",
+      "polygon_xy_m": [
+        [
+          -0.7827231402968451,
+          -64.46284486662219
+        ],
+        [
+          -1.0128233027035467,
+          -62.477786331572
+        ],
+        [
+          -5.582226699091054,
+          -63.007458495350996
+        ],
+        [
+          -5.352126495263196,
+          -64.99251738773525
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-085",
+      "polygon_xy_m": [
+        [
+          -1.0128233027035467,
+          -62.477786331572
+        ],
+        [
+          -1.242875716197955,
+          -60.49318733830814
+        ],
+        [
+          -5.812279167620523,
+          -61.02285902730759
+        ],
+        [
+          -5.582226699091054,
+          -63.007458495350996
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-086",
+      "polygon_xy_m": [
+        [
+          -1.242875716197955,
+          -60.49318733830814
+        ],
+        [
+          -1.4729791758196127,
+          -58.508087732356394
+        ],
+        [
+          -6.042385148878377,
+          -59.03773766710095
+        ],
+        [
+          -5.812279167620523,
+          -61.02285902730759
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-087",
+      "polygon_xy_m": [
+        [
+          -1.4729791758196127,
+          -58.508087732356394
+        ],
+        [
+          -1.70306730415078,
+          -56.52297131276554
+        ],
+        [
+          -6.272477088555922,
+          -57.05258836515581
+        ],
+        [
+          -6.042385148878377,
+          -59.03773766710095
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-088",
+      "polygon_xy_m": [
+        [
+          -1.70306730415078,
+          -56.52297131276554
+        ],
+        [
+          -1.9330926469441074,
+          -54.53832487590597
+        ],
+        [
+          -6.502505173689544,
+          -55.06791826750173
+        ],
+        [
+          -6.272477088555922,
+          -57.05258836515581
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-089",
+      "polygon_xy_m": [
+        [
+          -1.9330926469441074,
+          -54.53832487590597
+        ],
+        [
+          -2.1631591627101834,
+          -52.553330155302255
+        ],
+        [
+          -6.732567525983487,
+          -53.08295946873571
+        ],
+        [
+          -6.502505173689544,
+          -55.06791826750173
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-090",
+      "polygon_xy_m": [
+        [
+          -2.1631591627101834,
+          -52.553330155302255
+        ],
+        [
+          -2.3931976159822907,
+          -50.568713760739215
+        ],
+        [
+          -6.962602063608089,
+          -51.098376855562314
+        ],
+        [
+          -6.732567525983487,
+          -53.08295946873571
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-091",
+      "polygon_xy_m": [
+        [
+          -2.3931976159822907,
+          -50.568713760739215
+        ],
+        [
+          -2.6232880801908784,
+          -48.58374471952702
+        ],
+        [
+          -7.192691590322699,
+          -49.11341590204973
+        ],
+        [
+          -6.962602063608089,
+          -51.098376855562314
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-092",
+      "polygon_xy_m": [
+        [
+          -2.6232880801908784,
+          -48.58374471952702
+        ],
+        [
+          -2.853389920309575,
+          -46.59869403191749
+        ],
+        [
+          -7.4227930190063995,
+          -47.12836876382367
+        ],
+        [
+          -7.192691590322699,
+          -49.11341590204973
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-093",
+      "polygon_xy_m": [
+        [
+          -2.853389920309575,
+          -46.59869403191749
+        ],
+        [
+          -3.0834384536523824,
+          -44.61410873874258
+        ],
+        [
+          -7.652840397196467,
+          -45.14379343583657
+        ],
+        [
+          -7.4227930190063995,
+          -47.12836876382367
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-094",
+      "polygon_xy_m": [
+        [
+          -3.0834384536523824,
+          -44.61410873874258
+        ],
+        [
+          -3.3135473754752605,
+          -42.6290319691399
+        ],
+        [
+          -7.8829507506129906,
+          -43.158704316237554
+        ],
+        [
+          -7.652840397196467,
+          -45.14379343583657
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-095",
+      "polygon_xy_m": [
+        [
+          -3.3135473754752605,
+          -42.6290319691399
+        ],
+        [
+          -3.543636526960885,
+          -40.6441029140814
+        ],
+        [
+          -8.113039699003652,
+          -41.1737770132457
+        ],
+        [
+          -7.8829507506129906,
+          -43.158704316237554
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-096",
+      "polygon_xy_m": [
+        [
+          -3.543636526960885,
+          -40.6441029140814
+        ],
+        [
+          -3.77370143929093,
+          -38.659373416785925
+        ],
+        [
+          -8.343104820851972,
+          -39.18904570847063
+        ],
+        [
+          -8.113039699003652,
+          -41.1737770132457
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-097",
+      "polygon_xy_m": [
+        [
+          -3.77370143929093,
+          -38.659373416785925
+        ],
+        [
+          -4.003709175733028,
+          -36.6743006208656
+        ],
+        [
+          -8.573112872597722,
+          -37.20397019246591
+        ],
+        [
+          -8.343104820851972,
+          -39.18904570847063
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-098",
+      "polygon_xy_m": [
+        [
+          -4.003709175733028,
+          -36.6743006208656
+        ],
+        [
+          -4.232218514036418,
+          -34.68921606987733
+        ],
+        [
+          -8.801621976764894,
+          -35.21888766134231
+        ],
+        [
+          -8.573112872597722,
+          -37.20397019246591
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-099",
+      "polygon_xy_m": [
+        [
+          -4.232218514036418,
+          -34.68921606987733
+        ],
+        [
+          -4.46054283634235,
+          -32.70427235103532
+        ],
+        [
+          -9.029945718299643,
+          -33.233948952708815
+        ],
+        [
+          -8.801621976764894,
+          -35.21888766134231
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-100",
+      "polygon_xy_m": [
+        [
+          -4.46054283634235,
+          -32.70427235103532
+        ],
+        [
+          -4.688903682335422,
+          -30.71902731829588
+        ],
+        [
+          -9.258305657263277,
+          -31.24871174465313
+        ],
+        [
+          -9.029945718299643,
+          -33.233948952708815
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-101",
+      "polygon_xy_m": [
+        [
+          -4.688903682335422,
+          -30.71902731829588
+        ],
+        [
+          -4.9172156452780325,
+          -28.734204388527164
+        ],
+        [
+          -9.486618955557395,
+          -29.263877295147854
+        ],
+        [
+          -9.258305657263277,
+          -31.24871174465313
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-102",
+      "polygon_xy_m": [
+        [
+          -4.9172156452780325,
+          -28.734204388527164
+        ],
+        [
+          -5.145577269623214,
+          -26.748950806606704
+        ],
+        [
+          -9.71498030627391,
+          -27.278626073772738
+        ],
+        [
+          -9.486618955557395,
+          -29.263877295147854
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-103",
+      "polygon_xy_m": [
+        [
+          -5.145577269623214,
+          -26.748950806606704
+        ],
+        [
+          -5.37388577006018,
+          -24.764026603606887
+        ],
+        [
+          -9.94328956314267,
+          -25.293695345145714
+        ],
+        [
+          -9.71498030627391,
+          -27.278626073772738
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-104",
+      "polygon_xy_m": [
+        [
+          -5.37388577006018,
+          -24.764026603606887
+        ],
+        [
+          -5.602002156591917,
+          -22.778827033394844
+        ],
+        [
+          -10.171407387340604,
+          -23.30848337217172
+        ],
+        [
+          -9.94328956314267,
+          -25.293695345145714
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-105",
+      "polygon_xy_m": [
+        [
+          -5.602002156591917,
+          -22.778827033394844
+        ],
+        [
+          -5.830108131087019,
+          -20.793470863918177
+        ],
+        [
+          -10.399517721223177,
+          -21.323089592412288
+        ],
+        [
+          -10.171407387340604,
+          -23.30848337217172
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-106",
+      "polygon_xy_m": [
+        [
+          -5.830108131087019,
+          -20.793470863918177
+        ],
+        [
+          -6.058390044747152,
+          -18.808537762842548
+        ],
+        [
+          -10.627802581962872,
+          -19.338131064099095
+        ],
+        [
+          -10.399517721223177,
+          -21.323089592412288
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-107",
+      "polygon_xy_m": [
+        [
+          -6.058390044747152,
+          -18.808537762842548
+        ],
+        [
+          -6.286706127667797,
+          -16.823404350728385
+        ],
+        [
+          -10.856115530310579,
+          -17.35302469686298
+        ],
+        [
+          -10.627802581962872,
+          -19.338131064099095
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-108",
+      "polygon_xy_m": [
+        [
+          -6.286706127667797,
+          -16.823404350728385
+        ],
+        [
+          -6.515045123991089,
+          -14.838212616490505
+        ],
+        [
+          -11.084450054146025,
+          -15.367871548517305
+        ],
+        [
+          -10.856115530310579,
+          -17.35302469686298
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-109",
+      "polygon_xy_m": [
+        [
+          -6.515045123991089,
+          -14.838212616490505
+        ],
+        [
+          -6.743344850135237,
+          -12.85343166540495
+        ],
+        [
+          -11.312748332771505,
+          -13.38310308512811
+        ],
+        [
+          -11.084450054146025,
+          -15.367871548517305
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-110",
+      "polygon_xy_m": [
+        [
+          -6.743344850135237,
+          -12.85343166540495
+        ],
+        [
+          -6.971705541742656,
+          -10.868179345714468
+        ],
+        [
+          -11.54110859407665,
+          -11.397854477583772
+        ],
+        [
+          -11.312748332771505,
+          -13.38310308512811
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-111",
+      "polygon_xy_m": [
+        [
+          -6.971705541742656,
+          -10.868179345714468
+        ],
+        [
+          -7.200052693409517,
+          -8.883040716108978
+        ],
+        [
+          -11.769455486418895,
+          -9.412718085115891
+        ],
+        [
+          -11.54110859407665,
+          -11.397854477583772
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-112",
+      "polygon_xy_m": [
+        [
+          -7.200052693409517,
+          -8.883040716108978
+        ],
+        [
+          -7.428375590073748,
+          -6.898126566347367
+        ],
+        [
+          -11.997778094926948,
+          -7.427806421204323
+        ],
+        [
+          -11.769455486418895,
+          -9.412718085115891
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-113",
+      "polygon_xy_m": [
+        [
+          -7.428375590073748,
+          -6.898126566347367
+        ],
+        [
+          -7.656739196453293,
+          -4.912858063086578
+        ],
+        [
+          -12.226142342905323,
+          -5.442532383017513
+        ],
+        [
+          -11.997778094926948,
+          -7.427806421204323
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-114",
+      "polygon_xy_m": [
+        [
+          -7.656739196453293,
+          -4.912858063086578
+        ],
+        [
+          -7.885047312053527,
+          -2.9280540735242266
+        ],
+        [
+          -12.454450564904361,
+          -3.457727475571408
+        ],
+        [
+          -12.226142342905323,
+          -5.442532383017513
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-before-seam-115",
+      "polygon_xy_m": [
+        [
+          -7.885047312053527,
+          -2.9280540735242266
+        ],
+        [
+          -8.11359536558397,
+          -0.941164495135701
+        ],
+        [
+          -12.682998955831723,
+          -1.4708349865083568
+        ],
+        [
+          -12.454450564904361,
+          -3.457727475571408
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-000",
+      "polygon_xy_m": [
+        [
+          -8.11359536558397,
+          -0.941164495135701
+        ],
+        [
+          -8.341285968569977,
+          1.0382777952451083
+        ],
+        [
+          -12.910689360190775,
+          0.508605590344428
+        ],
+        [
+          -12.682998955831723,
+          -1.4708349865083568
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-001",
+      "polygon_xy_m": [
+        [
+          -8.341285968569977,
+          1.0382777952451083
+        ],
+        [
+          -8.568975877736424,
+          3.017711252778872
+        ],
+        [
+          -13.138378490632912,
+          2.4880323299824676
+        ],
+        [
+          -12.910689360190775,
+          0.508605590344428
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-002",
+      "polygon_xy_m": [
+        [
+          -8.568975877736424,
+          3.017711252778872
+        ],
+        [
+          -8.796669303708079,
+          4.997157053498762
+        ],
+        [
+          -13.366071975185775,
+          4.4674786360674865
+        ],
+        [
+          -13.138378490632912,
+          2.4880323299824676
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-003",
+      "polygon_xy_m": [
+        [
+          -8.796669303708079,
+          4.997157053498762
+        ],
+        [
+          -9.0243640532937,
+          6.976601503432781
+        ],
+        [
+          -13.593766716591487,
+          6.446923015435484
+        ],
+        [
+          -13.366071975185775,
+          4.4674786360674865
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-004",
+      "polygon_xy_m": [
+        [
+          -9.0243640532937,
+          6.976601503432781
+        ],
+        [
+          -9.252056440589817,
+          8.956055392492088
+        ],
+        [
+          -13.821459645879633,
+          8.42638158014417
+        ],
+        [
+          -13.593766716591487,
+          6.446923015435484
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-005",
+      "polygon_xy_m": [
+        [
+          -9.252056440589817,
+          8.956055392492088
+        ],
+        [
+          -9.47974874403532,
+          10.935504816965585
+        ],
+        [
+          -14.049152250025102,
+          10.405833598710068
+        ],
+        [
+          -13.821459645879633,
+          8.42638158014417
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-006",
+      "polygon_xy_m": [
+        [
+          -9.47974874403532,
+          10.935504816965585
+        ],
+        [
+          -9.707440042745173,
+          12.914976845342192
+        ],
+        [
+          -14.276845256764586,
+          12.38532036224
+        ],
+        [
+          -14.049152250025102,
+          10.405833598710068
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-007",
+      "polygon_xy_m": [
+        [
+          -9.707440042745173,
+          12.914976845342192
+        ],
+        [
+          -9.93512495947794,
+          14.8944902027327
+        ],
+        [
+          -14.504534512491514,
+          14.364871153954887
+        ],
+        [
+          -14.276845256764586,
+          12.38532036224
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-008",
+      "polygon_xy_m": [
+        [
+          -9.93512495947794,
+          14.8944902027327
+        ],
+        [
+          -10.16279158385456,
+          16.874026020635508
+        ],
+        [
+          -14.732206802908276,
+          16.344455859202395
+        ],
+        [
+          -14.504534512491514,
+          14.364871153954887
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-009",
+      "polygon_xy_m": [
+        [
+          -10.16279158385456,
+          16.874026020635508
+        ],
+        [
+          -10.390433116576737,
+          18.85345703549206
+        ],
+        [
+          -14.959847056395693,
+          18.32387583625232
+        ],
+        [
+          -14.732206802908276,
+          16.344455859202395
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-010",
+      "polygon_xy_m": [
+        [
+          -10.390433116576737,
+          18.85345703549206
+        ],
+        [
+          -10.618074223536716,
+          20.832456097495534
+        ],
+        [
+          -15.187458963441177,
+          20.302623011771125
+        ],
+        [
+          -14.959847056395693,
+          18.32387583625232
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-011",
+      "polygon_xy_m": [
+        [
+          -10.618074223536716,
+          20.832456097495534
+        ],
+        [
+          -10.845847575156188,
+          22.811117476955822
+        ],
+        [
+          -15.415182238880778,
+          22.280852702635585
+        ],
+        [
+          -15.187458963441177,
+          20.302623011771125
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-012",
+      "polygon_xy_m": [
+        [
+          -10.845847575156188,
+          22.811117476955822
+        ],
+        [
+          -11.073869687823237,
+          24.791621841048926
+        ],
+        [
+          -15.643275275983763,
+          24.261968585713554
+        ],
+        [
+          -15.415182238880778,
+          22.280852702635585
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-013",
+      "polygon_xy_m": [
+        [
+          -11.073869687823237,
+          24.791621841048926
+        ],
+        [
+          -11.30129956002444,
+          26.771143245952775
+        ],
+        [
+          -15.87070817333884,
+          26.241516089768183
+        ],
+        [
+          -15.643275275983763,
+          24.261968585713554
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-014",
+      "polygon_xy_m": [
+        [
+          -11.30129956002444,
+          26.771143245952775
+        ],
+        [
+          -11.527876109330263,
+          28.718954181132396
+        ],
+        [
+          -16.09519808216882,
+          28.171624302150693
+        ],
+        [
+          -15.87070817333884,
+          26.241516089768183
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-015",
+      "polygon_xy_m": [
+        [
+          -11.527876109330263,
+          28.718954181132396
+        ],
+        [
+          -11.761612687868034,
+          30.607381919449065
+        ],
+        [
+          -16.32263058915727,
+          30.00979033306323
+        ],
+        [
+          -16.09519808216882,
+          28.171624302150693
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-016",
+      "polygon_xy_m": [
+        [
+          -11.761612687868034,
+          30.607381919449065
+        ],
+        [
+          -12.02137937865507,
+          32.47994077632543
+        ],
+        [
+          -16.574552678899312,
+          31.825255433627934
+        ],
+        [
+          -16.32263058915727,
+          30.00979033306323
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-017",
+      "polygon_xy_m": [
+        [
+          -12.02137937865507,
+          32.47994077632543
+        ],
+        [
+          -12.307076620152936,
+          34.40480248520923
+        ],
+        [
+          -16.856433136724785,
+          33.72410043208669
+        ],
+        [
+          -16.574552678899312,
+          31.825255433627934
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-018",
+      "polygon_xy_m": [
+        [
+          -12.307076620152936,
+          34.40480248520923
+        ],
+        [
+          -12.604108788219786,
+          36.37122682701426
+        ],
+        [
+          -17.153149879705982,
+          35.688420011018614
+        ],
+        [
+          -16.856433136724785,
+          33.72410043208669
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-019",
+      "polygon_xy_m": [
+        [
+          -12.604108788219786,
+          36.37122682701426
+        ],
+        [
+          -12.901633209052381,
+          38.34483657858205
+        ],
+        [
+          -17.45095974550307,
+          37.66393418855425
+        ],
+        [
+          -17.153149879705982,
+          35.688420011018614
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-020",
+      "polygon_xy_m": [
+        [
+          -12.901633209052381,
+          38.34483657858205
+        ],
+        [
+          -13.198282075449498,
+          40.31589395474898
+        ],
+        [
+          -17.74767198557879,
+          39.63541511921198
+        ],
+        [
+          -17.45095974550307,
+          37.66393418855425
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-021",
+      "polygon_xy_m": [
+        [
+          -13.198282075449498,
+          40.31589395474898
+        ],
+        [
+          -13.49476096398205,
+          42.28630866854255
+        ],
+        [
+          -18.04415891787616,
+          41.60588361234308
+        ],
+        [
+          -17.74767198557879,
+          39.63541511921198
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-022",
+      "polygon_xy_m": [
+        [
+          -13.49476096398205,
+          42.28630866854255
+        ],
+        [
+          -13.791221004319807,
+          44.25671721277207
+        ],
+        [
+          -18.34062639889669,
+          43.576341907668514
+        ],
+        [
+          -18.04415891787616,
+          41.60588361234308
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-023",
+      "polygon_xy_m": [
+        [
+          -13.791221004319807,
+          44.25671721277207
+        ],
+        [
+          -14.087657426248656,
+          46.22707931209722
+        ],
+        [
+          -18.63706611145,
+          45.54672601048505
+        ],
+        [
+          -18.34062639889669,
+          43.576341907668514
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-024",
+      "polygon_xy_m": [
+        [
+          -14.087657426248656,
+          46.22707931209722
+        ],
+        [
+          -14.384081357978502,
+          48.197421253062814
+        ],
+        [
+          -18.933491515930992,
+          47.517077799564
+        ],
+        [
+          -18.63706611145,
+          45.54672601048505
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-025",
+      "polygon_xy_m": [
+        [
+          -14.384081357978502,
+          48.197421253062814
+        ],
+        [
+          -14.680503305134216,
+          50.16774701041012
+        ],
+        [
+          -19.229913491958737,
+          49.487403749976615
+        ],
+        [
+          -18.933491515930992,
+          47.517077799564
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-026",
+      "polygon_xy_m": [
+        [
+          -14.680503305134216,
+          50.16774701041012
+        ],
+        [
+          -14.97692433400584,
+          52.138034205924995
+        ],
+        [
+          -19.526331429822164,
+          51.457670276446
+        ],
+        [
+          -19.229913491958737,
+          49.487403749976615
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-027",
+      "polygon_xy_m": [
+        [
+          -14.97692433400584,
+          52.138034205924995
+        ],
+        [
+          -15.273366990878081,
+          54.108276433185004
+        ],
+        [
+          -19.822767556511785,
+          53.427868839597366
+        ],
+        [
+          -19.526331429822164,
+          51.457670276446
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-028",
+      "polygon_xy_m": [
+        [
+          -15.273366990878081,
+          54.108276433185004
+        ],
+        [
+          -15.570043284246095,
+          56.07850065755557
+        ],
+        [
+          -20.11943870131405,
+          55.39805864006907
+        ],
+        [
+          -19.822767556511785,
+          53.427868839597366
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-029",
+      "polygon_xy_m": [
+        [
+          -15.570043284246095,
+          56.07850065755557
+        ],
+        [
+          -15.866748873759473,
+          58.04881469798732
+        ],
+        [
+          -20.416146836973873,
+          57.368389704104324
+        ],
+        [
+          -20.11943870131405,
+          55.39805864006907
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-030",
+      "polygon_xy_m": [
+        [
+          -15.866748873759473,
+          58.04881469798732
+        ],
+        [
+          -16.163220267207183,
+          60.01923860971163
+        ],
+        [
+          -20.71262696075157,
+          59.33887199035589
+        ],
+        [
+          -20.416146836973873,
+          57.368389704104324
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-031",
+      "polygon_xy_m": [
+        [
+          -16.163220267207183,
+          60.01923860971163
+        ],
+        [
+          -16.459651244541675,
+          61.98959869235661
+        ],
+        [
+          -21.009060686020174,
+          61.30925044786245
+        ],
+        [
+          -20.71262696075157,
+          59.33887199035589
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-032",
+      "polygon_xy_m": [
+        [
+          -16.459651244541675,
+          61.98959869235661
+        ],
+        [
+          -16.756074661183256,
+          63.9599205602806
+        ],
+        [
+          -21.305484015571427,
+          63.27957173342383
+        ],
+        [
+          -21.009060686020174,
+          61.30925044786245
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-033",
+      "polygon_xy_m": [
+        [
+          -16.756074661183256,
+          63.9599205602806
+        ],
+        [
+          -17.05249765328273,
+          65.930236003214
+        ],
+        [
+          -21.60190624860715,
+          65.24988210061015
+        ],
+        [
+          -21.305484015571427,
+          63.27957173342383
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-034",
+      "polygon_xy_m": [
+        [
+          -17.05249765328273,
+          65.930236003214
+        ],
+        [
+          -17.348920126980744,
+          67.90053419069112
+        ],
+        [
+          -21.898326526828942,
+          67.22016560748031
+        ],
+        [
+          -21.60190624860715,
+          65.24988210061015
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-035",
+      "polygon_xy_m": [
+        [
+          -17.348920126980744,
+          67.90053419069112
+        ],
+        [
+          -17.645350189803857,
+          69.87080582946822
+        ],
+        [
+          -22.19475216114317,
+          69.19040763489835
+        ],
+        [
+          -21.898326526828942,
+          67.22016560748031
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-036",
+      "polygon_xy_m": [
+        [
+          -17.645350189803857,
+          69.87080582946822
+        ],
+        [
+          -17.941790780123192,
+          71.8410641011031
+        ],
+        [
+          -22.49118784784059,
+          71.16063311985343
+        ],
+        [
+          -22.19475216114317,
+          69.19040763489835
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-037",
+      "polygon_xy_m": [
+        [
+          -17.941790780123192,
+          71.8410641011031
+        ],
+        [
+          -18.238254451608775,
+          73.8114068795529
+        ],
+        [
+          -22.78765308436389,
+          73.13098636230943
+        ],
+        [
+          -22.49118784784059,
+          71.16063311985343
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-038",
+      "polygon_xy_m": [
+        [
+          -18.238254451608775,
+          73.8114068795529
+        ],
+        [
+          -18.534710823291768,
+          75.7818020340736
+        ],
+        [
+          -23.084115515677883,
+          75.10142203370971
+        ],
+        [
+          -22.78765308436389,
+          73.13098636230943
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-039",
+      "polygon_xy_m": [
+        [
+          -18.534710823291768,
+          75.7818020340736
+        ],
+        [
+          -18.831145408211203,
+          77.75215516698283
+        ],
+        [
+          -23.380552551896585,
+          77.0717915575912
+        ],
+        [
+          -23.084115515677883,
+          75.10142203370971
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-040",
+      "polygon_xy_m": [
+        [
+          -18.831145408211203,
+          77.75215516698283
+        ],
+        [
+          -19.12757758760808,
+          79.72250162014363
+        ],
+        [
+          -23.67698679315386,
+          79.04215179799671
+        ],
+        [
+          -23.380552551896585,
+          77.0717915575912
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-041",
+      "polygon_xy_m": [
+        [
+          -19.12757758760808,
+          79.72250162014363
+        ],
+        [
+          -19.423999461097374,
+          81.6927539839913
+        ],
+        [
+          -23.973402827401614,
+          81.01236511675457
+        ],
+        [
+          -23.67698679315386,
+          79.04215179799671
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-042",
+      "polygon_xy_m": [
+        [
+          -19.423999461097374,
+          81.6927539839913
+        ],
+        [
+          -19.720443039130032,
+          83.66302012524746
+        ],
+        [
+          -24.26984171859691,
+          82.98259992032625
+        ],
+        [
+          -23.973402827401614,
+          81.01236511675457
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-043",
+      "polygon_xy_m": [
+        [
+          -19.720443039130032,
+          83.66302012524746
+        ],
+        [
+          -20.016901761093543,
+          85.63334429548186
+        ],
+        [
+          -24.566301036224957,
+          84.95292807328121
+        ],
+        [
+          -24.26984171859691,
+          82.98259992032625
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-044",
+      "polygon_xy_m": [
+        [
+          -20.016901761093543,
+          85.63334429548186
+        ],
+        [
+          -20.31336039167867,
+          87.60371308892346
+        ],
+        [
+          -24.86276385068065,
+          86.9233248415082
+        ],
+        [
+          -24.566301036224957,
+          84.95292807328121
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-045",
+      "polygon_xy_m": [
+        [
+          -20.31336039167867,
+          87.60371308892346
+        ],
+        [
+          -20.609797990799297,
+          89.57408795463738
+        ],
+        [
+          -25.159205903367102,
+          88.89372948657409
+        ],
+        [
+          -24.86276385068065,
+          86.9233248415082
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-046",
+      "polygon_xy_m": [
+        [
+          -20.609797990799297,
+          89.57408795463738
+        ],
+        [
+          -20.906228123857286,
+          91.54442732174839
+        ],
+        [
+          -25.455637126837743,
+          90.86407614507537
+        ],
+        [
+          -25.159205903367102,
+          88.89372948657409
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-047",
+      "polygon_xy_m": [
+        [
+          -20.906228123857286,
+          91.54442732174839
+        ],
+        [
+          -21.202649475845725,
+          93.5147348569036
+        ],
+        [
+          -25.752056624577676,
+          92.83437128125702
+        ],
+        [
+          -25.455637126837743,
+          90.86407614507537
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-048",
+      "polygon_xy_m": [
+        [
+          -21.202649475845725,
+          93.5147348569036
+        ],
+        [
+          -21.499072132065315,
+          95.48505907754358
+        ],
+        [
+          -26.048479282761978,
+          94.80469551503448
+        ],
+        [
+          -25.752056624577676,
+          92.83437128125702
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-049",
+      "polygon_xy_m": [
+        [
+          -21.499072132065315,
+          95.48505907754358
+        ],
+        [
+          -21.795423126724927,
+          97.45536401105774
+        ],
+        [
+          -26.344827826548933,
+          96.77498406042776
+        ],
+        [
+          -26.048479282761978,
+          94.80469551503448
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-050",
+      "polygon_xy_m": [
+        [
+          -21.795423126724927,
+          97.45536401105774
+        ],
+        [
+          -22.090253853760863,
+          99.42584937657296
+        ],
+        [
+          -26.639652126164634,
+          98.74542644996802
+        ],
+        [
+          -26.344827826548933,
+          96.77498406042776
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-051",
+      "polygon_xy_m": [
+        [
+          -22.090253853760863,
+          99.42584937657296
+        ],
+        [
+          -22.384981972103727,
+          101.39639872604424
+        ],
+        [
+          -26.934378253263,
+          100.71596248584669
+        ],
+        [
+          -26.639652126164634,
+          98.74542644996802
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-052",
+      "polygon_xy_m": [
+        [
+          -22.384981972103727,
+          101.39639872604424
+        ],
+        [
+          -22.679715118791805,
+          103.3670303635881
+        ],
+        [
+          -27.22911565168475,
+          102.68662255108634
+        ],
+        [
+          -26.934378253263,
+          100.71596248584669
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-053",
+      "polygon_xy_m": [
+        [
+          -22.679715118791805,
+          103.3670303635881
+        ],
+        [
+          -22.974430803294684,
+          105.33770635368984
+        ],
+        [
+          -27.523839372372496,
+          104.65735227557948
+        ],
+        [
+          -27.22911565168475,
+          102.68662255108634
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-054",
+      "polygon_xy_m": [
+        [
+          -22.974430803294684,
+          105.33770635368984
+        ],
+        [
+          -23.26912537648785,
+          107.30831177612082
+        ],
+        [
+          -27.818535559619093,
+          106.62796849099061
+        ],
+        [
+          -27.523839372372496,
+          104.65735227557948
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-055",
+      "polygon_xy_m": [
+        [
+          -23.26912537648785,
+          107.30831177612082
+        ],
+        [
+          -23.563812612308112,
+          109.27882942904893
+        ],
+        [
+          -28.113217295493193,
+          108.5984493671617
+        ],
+        [
+          -27.818535559619093,
+          106.62796849099061
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-056",
+      "polygon_xy_m": [
+        [
+          -23.563812612308112,
+          109.27882942904893
+        ],
+        [
+          -23.858528381241776,
+          111.24935414122508
+        ],
+        [
+          -28.407928601496423,
+          110.56894423833788
+        ],
+        [
+          -28.113217295493193,
+          108.5984493671617
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-057",
+      "polygon_xy_m": [
+        [
+          -23.858528381241776,
+          111.24935414122508
+        ],
+        [
+          -24.153249483132047,
+          113.21987984440119
+        ],
+        [
+          -28.70264513461484,
+          112.5394393942004
+        ],
+        [
+          -28.407928601496423,
+          110.56894423833788
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-058",
+      "polygon_xy_m": [
+        [
+          -24.153249483132047,
+          113.21987984440119
+        ],
+        [
+          -24.447988684011204,
+          115.19057024622153
+        ],
+        [
+          -28.997393419268093,
+          114.51019053251585
+        ],
+        [
+          -28.70264513461484,
+          112.5394393942004
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-059",
+      "polygon_xy_m": [
+        [
+          -24.447988684011204,
+          115.19057024622153
+        ],
+        [
+          -24.742701154026907,
+          117.16121507261124
+        ],
+        [
+          -29.292111168106743,
+          116.48087065704651
+        ],
+        [
+          -28.997393419268093,
+          114.51019053251585
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-060",
+      "polygon_xy_m": [
+        [
+          -24.742701154026907,
+          117.16121507261124
+        ],
+        [
+          -25.037399852956813,
+          119.13182542274197
+        ],
+        [
+          -29.586812034701797,
+          118.45149550234278
+        ],
+        [
+          -29.292111168106743,
+          116.48087065704651
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-061",
+      "polygon_xy_m": [
+        [
+          -25.037399852956813,
+          119.13182542274197
+        ],
+        [
+          -25.332090547539295,
+          121.10236448159203
+        ],
+        [
+          -29.881499575401932,
+          120.42201347130253
+        ],
+        [
+          -29.586812034701797,
+          118.45149550234278
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-062",
+      "polygon_xy_m": [
+        [
+          -25.332090547539295,
+          121.10236448159203
+        ],
+        [
+          -25.626777680342343,
+          123.0729139835512
+        ],
+        [
+          -30.176183471551212,
+          122.39254133057693
+        ],
+        [
+          -29.881499575401932,
+          120.42201347130253
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-063",
+      "polygon_xy_m": [
+        [
+          -25.626777680342343,
+          123.0729139835512
+        ],
+        [
+          -25.9214695416824,
+          125.04344896906471
+        ],
+        [
+          -30.470872136701338,
+          124.36305494466785
+        ],
+        [
+          -30.176183471551212,
+          122.39254133057693
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-064",
+      "polygon_xy_m": [
+        [
+          -25.9214695416824,
+          125.04344896906471
+        ],
+        [
+          -26.21618752129178,
+          127.0139885319227
+        ],
+        [
+          -30.765586045549313,
+          126.33356728924771
+        ],
+        [
+          -30.470872136701338,
+          124.36305494466785
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-065",
+      "polygon_xy_m": [
+        [
+          -26.21618752129178,
+          127.0139885319227
+        ],
+        [
+          -26.510906390561637,
+          128.9844968609136
+        ],
+        [
+          -31.060298894444536,
+          128.3040353663277
+        ],
+        [
+          -30.765586045549313,
+          126.33356728924771
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-066",
+      "polygon_xy_m": [
+        [
+          -26.510906390561637,
+          128.9844968609136
+        ],
+        [
+          -26.805654749781276,
+          130.9552105967058
+        ],
+        [
+          -31.355059641930666,
+          130.27483193207323
+        ],
+        [
+          -31.060298894444536,
+          128.3040353663277
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-067",
+      "polygon_xy_m": [
+        [
+          -26.805654749781276,
+          130.9552105967058
+        ],
+        [
+          -27.100361373656277,
+          132.9258511044248
+        ],
+        [
+          -31.64977005010296,
+          132.24549774427163
+        ],
+        [
+          -31.355059641930666,
+          130.27483193207323
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-068",
+      "polygon_xy_m": [
+        [
+          -27.100361373656277,
+          132.9258511044248
+        ],
+        [
+          -27.39506190791945,
+          134.89647709592612
+        ],
+        [
+          -31.944474395041404,
+          134.21614921760647
+        ],
+        [
+          -31.64977005010296,
+          132.24549774427163
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-069",
+      "polygon_xy_m": [
+        [
+          -27.39506190791945,
+          134.89647709592612
+        ],
+        [
+          -27.689749959343132,
+          136.86700396988334
+        ],
+        [
+          -32.23915790667483,
+          136.18664573427864
+        ],
+        [
+          -31.944474395041404,
+          134.21614921760647
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-070",
+      "polygon_xy_m": [
+        [
+          -27.689749959343132,
+          136.86700396988334
+        ],
+        [
+          -27.98444532840945,
+          138.83759531404135
+        ],
+        [
+          -32.53385344719997,
+          138.15723822494553
+        ],
+        [
+          -32.23915790667483,
+          136.18664573427864
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-071",
+      "polygon_xy_m": [
+        [
+          -27.98444532840945,
+          138.83759531404135
+        ],
+        [
+          -28.27913609938483,
+          140.80805547745538
+        ],
+        [
+          -32.82853489783448,
+          140.12763606807255
+        ],
+        [
+          -32.53385344719997,
+          138.15723822494553
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-072",
+      "polygon_xy_m": [
+        [
+          -28.27913609938483,
+          140.80805547745538
+        ],
+        [
+          -28.57385052120145,
+          142.77863114680198
+        ],
+        [
+          -33.123247615412616,
+          142.09820034269111
+        ],
+        [
+          -32.82853489783448,
+          140.12763606807255
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-073",
+      "polygon_xy_m": [
+        [
+          -28.57385052120145,
+          142.77863114680198
+        ],
+        [
+          -28.868584565760557,
+          144.74919965764082
+        ],
+        [
+          -33.41798190631255,
+          144.06877050058
+        ],
+        [
+          -33.123247615412616,
+          142.09820034269111
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-074",
+      "polygon_xy_m": [
+        [
+          -28.868584565760557,
+          144.74919965764082
+        ],
+        [
+          -29.1633101803425,
+          146.7198628760046
+        ],
+        [
+          -33.71271445334929,
+          146.03948007143975
+        ],
+        [
+          -33.41798190631255,
+          144.06877050058
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-075",
+      "polygon_xy_m": [
+        [
+          -29.1633101803425,
+          146.7198628760046
+        ],
+        [
+          -29.458025372347507,
+          148.69051080841493
+        ],
+        [
+          -34.00743533755616,
+          148.0101660660525
+        ],
+        [
+          -33.71271445334929,
+          146.03948007143975
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-076",
+      "polygon_xy_m": [
+        [
+          -29.458025372347507,
+          148.69051080841493
+        ],
+        [
+          -29.75272329699402,
+          150.6610977737613
+        ],
+        [
+          -34.30213322712166,
+          149.980752796815
+        ],
+        [
+          -34.00743533755616,
+          148.0101660660525
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-077",
+      "polygon_xy_m": [
+        [
+          -29.75272329699402,
+          150.6610977737613
+        ],
+        [
+          -30.047410829329124,
+          152.63160267353237
+        ],
+        [
+          -34.596814957578424,
+          151.95121890104198
+        ],
+        [
+          -34.30213322712166,
+          149.980752796815
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-078",
+      "polygon_xy_m": [
+        [
+          -30.047410829329124,
+          152.63160267353237
+        ],
+        [
+          -30.342114182713168,
+          154.602083807555
+        ],
+        [
+          -34.89150868987681,
+          153.92163570652943
+        ],
+        [
+          -34.596814957578424,
+          151.95121890104198
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-079",
+      "polygon_xy_m": [
+        [
+          -30.342114182713168,
+          154.602083807555
+        ],
+        [
+          -30.636851762076958,
+          156.57269606620466
+        ],
+        [
+          -35.186249725046544,
+          155.89227107068479
+        ],
+        [
+          -34.89150868987681,
+          153.92163570652943
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-080",
+      "polygon_xy_m": [
+        [
+          -30.636851762076958,
+          156.57269606620466
+        ],
+        [
+          -30.931582322648048,
+          158.54330657309282
+        ],
+        [
+          -35.48098325675325,
+          157.86290144321597
+        ],
+        [
+          -35.186249725046544,
+          155.89227107068479
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-081",
+      "polygon_xy_m": [
+        [
+          -30.931582322648048,
+          158.54330657309282
+        ],
+        [
+          -31.226306958719462,
+          160.5140009277524
+        ],
+        [
+          -35.77571629124432,
+          159.83365195469838
+        ],
+        [
+          -35.48098325675325,
+          157.86290144321597
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-082",
+      "polygon_xy_m": [
+        [
+          -31.226306958719462,
+          160.5140009277524
+        ],
+        [
+          -31.520991610179536,
+          162.4845352536412
+        ],
+        [
+          -36.07039820863511,
+          161.80416799845557
+        ],
+        [
+          -35.77571629124432,
+          159.83365195469838
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-083",
+      "polygon_xy_m": [
+        [
+          -31.520991610179536,
+          162.4845352536412
+        ],
+        [
+          -31.81569319740403,
+          164.45518757888917
+        ],
+        [
+          -36.36510451420425,
+          163.77485187457097
+        ],
+        [
+          -36.07039820863511,
+          161.80416799845557
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-084",
+      "polygon_xy_m": [
+        [
+          -31.81569319740403,
+          164.45518757888917
+        ],
+        [
+          -32.11038447411572,
+          166.4257421706359
+        ],
+        [
+          -36.65979383704098,
+          165.7453934008656
+        ],
+        [
+          -36.36510451420425,
+          163.77485187457097
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    },
+    {
+      "id": "pit-garage-straight-asphalt-after-seam-085",
+      "polygon_xy_m": [
+        [
+          -32.11038447411572,
+          166.4257421706359
+        ],
+        [
+          -32.40508289912588,
+          168.39629341489905
+        ],
+        [
+          -36.95448957426639,
+          167.71592667248214
+        ],
+        [
+          -36.65979383704098,
+          165.7453934008656
+        ]
+      ],
+      "bottom_m": 1.36999998,
+      "top_m": 1.42999998,
+      "source_material": "Yellow",
+      "target_material": "Runoff",
+      "source_note": "Wrong-side pit apron: reclassify Yellow only. Exact original Scene.at footprint; see paint_role_review in the source recipe."
+    }
+  ],
+  "paint_role_review": {
+    "source": "Saved/Refs/singapore.mp4; supplied edited-reference event year unverified",
+    "reference_frames": {
+      "detail-0534.jpg": "6b8a0840589b035544cec67d4f4eb66edaa1d38e23411da27dda424fd6ba7422",
+      "detail-0590.jpg": "52555e9662c50be191d5f5f2216618f8b45343c96e0cad190f1f508fefc17a10",
+      "detail-0594.jpg": "63b5c22f6e028f37d7ea310bac01032b21ae74ae1237b9b017056ecde20e4a70"
+    },
+    "observation": "The detailed 534 s main-straight view places the yellow/blue apron on driver RIGHT beside the spectator wall; garages are LEFT. The 590 s grid and 594 s reverse external view confirm that main-road spectator-side role. The previous driver-LEFT 4.6 m solid-yellow band was incorrectly registered and crosses the mapped pit fast lane.",
+    "original_controls": {
+      "ranges_m": [
+        [
+          4708.211713,
+          4940
+        ],
+        [
+          0,
+          171.354734
+        ]
+      ],
+      "side": -1,
+      "inner_offset_m": 1.2,
+      "outer_offset_m": 5.8,
+      "sampler": "Exact previous CircuitScene.at samples at a maximum 2 m spacing; native 4940 m wraps to the first road sample."
+    },
+    "correction": "Reclassify Yellow to existing Runoff only inside these exact original footprints. Preserve every White/dash/kerb, all geometry/attributes and outside material. No opposite-side painted pattern or physics change is added.",
+    "status": "Source-supported material correction; actual native and cooked validation remain separate."
+  }
 }

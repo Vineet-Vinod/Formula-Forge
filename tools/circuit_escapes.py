@@ -155,7 +155,7 @@ def build_overlay(recipe: EscapeRecipe, road: Sequence[RoadStation],
         raise ValueError("Escape construction requires an ordered exported road")
     if len({control.id for control in recipe.escapes}) != len(recipe.escapes):
         raise ValueError("Escape identifiers must be unique")
-    if not recipe.escapes and not recipe.paint_strips:
+    if not recipe.escapes and not recipe.paint_strips and not recipe.paint_domains:
         raise ValueError("An escape recipe must contain a qualified correction")
     portals, barriers, paving, regions = [], [], [], []
     for control in recipe.escapes:
@@ -230,7 +230,7 @@ def build_overlay(recipe: EscapeRecipe, road: Sequence[RoadStation],
                                     anchor.station, original_hits, floor_domain.area, maximum_grade, maximum_join_error,
                                     control.source_note))
         paving.extend(added_paving)
-    paint_domains = []
+    paint_domains = list(recipe.paint_domains)
     for strip in recipe.paint_strips:
         if strip.end_m <= strip.start_m or strip.outer_offset_m <= strip.inner_offset_m:
             raise ValueError("Paint correction requires ordered station and lateral bounds")

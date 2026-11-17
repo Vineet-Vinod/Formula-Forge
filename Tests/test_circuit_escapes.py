@@ -8,6 +8,7 @@ from circuit_escapes_dataclasses import (
     EscapeOverlay,
     EscapeRecipe,
     EscapeRoad,
+    PaintDomain,
     PaintStrip,
 )
 from circuit_portals_dataclasses import Barrier
@@ -91,3 +92,14 @@ def test_source_serializer_refuses_an_input_as_its_destination(tmp_path: Path) -
     destination = tmp_path/"overlay.json"
     write_source_overlay(destination, overlay, source, [])
     assert TypeAdapter(EscapeOverlay).validate_json(destination.read_bytes()) == overlay
+
+
+def test_registered_paint_domains_preserve_the_closed_road_seam() -> None:
+    recipe, road, walls = inputs()
+    domain = PaintDomain("seam", ((1.1, 101), (2.2, 101), (2.2, 102), (1.1, 102)),
+                         .47, .53, "Yellow", "Runoff", "Exact retained footprint at the closed road seam.")
+    qualified = replace(recipe, escapes=[], paint_domains=[domain])
+    restored = TypeAdapter(EscapeRecipe).validate_json(TypeAdapter(EscapeRecipe).dump_json(qualified))
+    overlay = build_overlay(restored, road, walls, 1, occupied=[])
+    assert overlay.paint_domains == (domain,)
+    assert not overlay.portals and not overlay.barriers and not overlay.paving

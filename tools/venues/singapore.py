@@ -80,7 +80,6 @@ def sands(scene: CircuitScene) -> None:
     skypark(scene, scene.footprint(116800998))
 
 
-from venues.west_architecture import apron_band
 
 
 def circuit_edges(scene: CircuitScene) -> None:
@@ -114,8 +113,6 @@ def circuit_edges(scene: CircuitScene) -> None:
         scene.branding(3892.119939, 4335.435917, side, 'PanelGreen')
 
 
-    apron_band(scene, 4708.211713, 4940, -1, 1.2, 5.8, 'Yellow')
-    apron_band(scene, 0, 171.354734, -1, 1.2, 5.8, 'Yellow')
 
 def build_venue(scene: CircuitScene) -> None:
     ground_parcels(scene)

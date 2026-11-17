@@ -56,6 +56,7 @@ class EscapeRecipe:
     escapes: list[EscapeRoad]
     source_status: str
     paint_strips: list[PaintStrip] = field(default_factory=list)
+    paint_domains: list[PaintDomain] = field(default_factory=list)
 
 
 @dataclass(frozen=True)

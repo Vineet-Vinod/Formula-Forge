@@ -1,44 +1,45 @@
 {
   "version": 1,
   "circuit": "singapore",
-  "manifest_sha256": "423765cc54c7d25f42d998eff55577544bd8a6b1d3b368f6d7d16794ba960991",
+  "manifest_sha256": "0435c3efee019c057884454e01b7a164349a7b74fa8795c76b0fbc00156b5851",
   "source_sha256": {
     "build/reviews/resume-20261116/pits/native-wave1/singapore/route.json": "98c88734d4a8c12d9bda1881bf75d993f2dd936201482d6acd7c762d3bc32d40",
-    "build/reviews/resume-20261116/street-runoffs/singapore-escape-overlay.json": "9e8a54da9e8fe73bfbca3413cda0908d25920d276cf50a1c25a74231be55ae06"
+    "build/reviews/resume-20261116/street-runoffs/singapore-escape-overlay.json": "657502cb12a54df6d87dac5a7dc8cf98b076e494ee3f131ff955da7814986e38"
   },
   "native_edits": [
     {
       "asset": "/Game/Generated/Singapore/Track/Tile_Street_00_m1",
-      "triangles": 12136,
-      "sha256": "b149b1b691e4c9efef7fe6182bedfd75f601ccacd656403a00de0305fc5f9cfe"
+      "triangles": 12766,
+      "sha256": "7d3a15d4355b845c1700fe39d8a95fa6abb5d5cee6d71d5ed7daf55e3164ac9f"
     },
     {
       "asset": "/Game/Generated/Singapore/Track/Tile_Street_00_m2",
-      "triangles": 1424,
-      "sha256": "daa316c6cff51ae2dc65eeab3bf91ad75a008d2b6b072378d0a738aebeb4a754"
+      "triangles": 1438,
+      "sha256": "e4772c8f1fe4c702ece0ef1006700ab840f83f2396ab35f0beb3deb927817789"
     },
     {
       "asset": "/Game/Generated/Singapore/Track/Tile_Street_m1_00",
-      "triangles": 24209,
-      "sha256": "3b744d5b4276b122734ed7a2f39c74fdab2eecc6900cb37892c92e574e2d968a"
+      "triangles": 24952,
+      "sha256": "fe7e0d70165109f654fc682ea48936812c0db361481e634626a7493ccc2111fb"
     },
     {
       "asset": "/Game/Generated/Singapore/Track/Tile_Street_m1_01",
-      "triangles": 20195,
-      "sha256": "6102b1390e75c9bab875106a8562fddba77111e2f2a670cc4f15bf06915bd9c6"
+      "triangles": 20443,
+      "sha256": "04db907a284f1e784977908e9dbd8a90e961114bd2ca76b910759dc26ac10cc6"
     },
     {
       "asset": "/Game/Generated/Singapore/Track/Tile_Street_m1_m1",
-      "triangles": 7268,
-      "sha256": "7e9563c4b6387d5cc9eda8795990f90878392f62e57126fac04ac63999024287"
+      "triangles": 7721,
+      "sha256": "de88ec05eaa0ec904b431ff436deb7d81c08aeaedfee286efbc1da871b275ad4"
     },
     {
       "asset": "/Game/Generated/Singapore/Track/Tile_Street_m1_m2",
-      "triangles": 12096,
-      "sha256": "242e8faf690213ef1e83ea665589b619e1349d5e83d445bc2dfecd51998dc873"
+      "triangles": 12329,
+      "sha256": "af439d5ff3582a2d52217de9240227f768f3713b2fadc92b3ec588c81a2b5af5"
     }
   ],
   "pit_architecture_edits": [],
+  "pit_floor_edits": [],
   "added_route_meshes": [
     "Tile_Route_00_m1",
     "Tile_Route_00_m2",
