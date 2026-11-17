@@ -128,6 +128,16 @@ one recipe. `pit_route_authoring.py` builds pit candidates;
 inputs outside Unreal Python, then use `apply_circuit_routes.py` through the
 guarded editor command. Retain the recipe and source registration in Attribution.
 
+Keep each editor import plan to one circuit. Mesh build allocations can remain
+resident across garbage collection; a fresh editor process keeps legacy mesh
+rebuilds within the memory guard. A plan contains `circuits` entries with
+`circuit`, `manifest`, `content_dir` and `index`, plus `receipt` and `state`.
+Run `validate_route_plan.py` in the authoring Python environment, then run
+`index_route_assets.py` and `apply_circuit_routes.py` in the guarded editor with
+`-FFRoutePlan=<absolute plan path>`. Indexes and payloads belong under `build/`.
+The resulting `Data/route_overlay.json` records the saved native mesh hashes and
+triangle counts separately from the base scene manifest.
+
 An escape road follows the incoming tangent to a bounded closure. It is not a
 wide strip extruded around every corner. Check the whole volume against native
 walls, fence panels, trees, buildings and overhead structures. Opening collision
@@ -135,6 +145,15 @@ alone leaves visible obstructions; deleting a whole scenery tile destroys its
 surroundings. Cut only the source-qualified materials inside the opening volume.
 Preserve road paint, kerbs and overhead decks. Replace both the visible closure
 and collision, then drive the approach and escape road in the packaged game.
+
+Inspect pit floors against the actual native building meshes. Monaco's old
+ground-floor slab enclosed the new lane by 20 cm while collision and lap checks
+still passed. Its real canopy covers the lane, so the correction clears the
+ground slab inside the lane and preserves the roof. Check garage floors, columns,
+canopies and exit panels separately. A terrain penetration check may omit building
+slabs. Use `make route-check` and `make editor-check`, then review a complete live
+pit traversal and its entry/exit joins. `-FFPitDrive` follows the authored branch
+for this diagnostic; its recorder stops after the car reaches the route end.
 
 Keep geographic north-up map projection separate from Unreal world conversion.
 The simulation already reflects source north; reflecting that coordinate again
