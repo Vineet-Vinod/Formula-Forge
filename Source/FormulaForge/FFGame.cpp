@@ -95,9 +95,8 @@ void AFormulaTrialPawn::BeginPlay() {
         check(LasVegasDrivingAudit);
     }
     BestLapPath = FPaths::ProjectSavedDir() / (silverstone ? FString(TEXT("best-lap.txt")) : TEXT("best-lap-") + circuit + TEXT(".txt"));
-    if (!silverstone && (FParse::Param(FCommandLine::Get(), TEXT("FFNationalPit")) ||
-        FCString::Strstr(FCommandLine::Get(), TEXT("FFPitDistance=")) != nullptr)) {
-        UE_LOG(LogTemp, Error, TEXT("The National pit route and pit-distance diagnostic require Silverstone."));
+    if (!silverstone && FParse::Param(FCommandLine::Get(), TEXT("FFNationalPit"))) {
+        UE_LOG(LogTemp, Error, TEXT("The National pit route diagnostic requires Silverstone."));
         FPlatformMisc::RequestExitWithStatus(false, 1);
         return;
     }
@@ -137,14 +136,33 @@ void AFormulaTrialPawn::BeginPlay() {
         return;
     }
     UE_LOG(LogTemp, Display, TEXT("Loaded %llu white-line boundary triangles."), static_cast<unsigned long long>(Simulation.trackLimits.Triangles().size()));
-    if (silverstone) {
+    const FString escapePath = FPaths::ProjectContentDir() / dataRoot / TEXT("escape_surface.bin");
+    if (FPaths::FileExists(escapePath)) {
+        TArray<uint8> escapeData;
+        if (!FFileHelper::LoadFileToArray(escapeData, *escapePath) ||
+            !Simulation.escapeSurface.Load(std::span<const uint8>(escapeData.GetData(), escapeData.Num()), 0.0)) {
+            UE_LOG(LogTemp, Error, TEXT("Missing or invalid bounded escape surface: %s"), *escapePath);
+            FPlatformMisc::RequestExitWithStatus(false, 1);
+            return;
+        }
+    }
+    const FString pitRoot = FPaths::ProjectContentDir() / dataRoot;
+    const bool hasPitRoute = FPaths::FileExists(pitRoot / TEXT("pit_lane.bin"));
+    const bool hasPitOverlay = FPaths::FileExists(pitRoot / TEXT("pit_barriers.bin"));
+    if (silverstone || hasPitRoute) {
         TArray<uint8> pitData;
-        TArray<uint8> pitBarriers;
-        if (!FFileHelper::LoadFileToArray(pitData, *(FPaths::ProjectContentDir() / TEXT("Generated/Data/pit_lane.bin"))) ||
-            !Simulation.LoadPitLane(std::span<const uint8>(pitData.GetData(), pitData.Num())) ||
-            !FFileHelper::LoadFileToArray(pitBarriers, *(FPaths::ProjectContentDir() / TEXT("Generated/Data/pit_barriers.bin"))) ||
-            !Simulation.LoadPitBarriers(std::span<const uint8>(pitBarriers.GetData(), pitBarriers.Num()))) {
+        if (!FFileHelper::LoadFileToArray(pitData, *(pitRoot / TEXT("pit_lane.bin"))) ||
+            !Simulation.LoadPitLane(std::span<const uint8>(pitData.GetData(), pitData.Num())) || !hasPitOverlay) {
             UE_LOG(LogTemp, Error, TEXT("Missing or invalid pit-lane data. Restore the packaged circuit data."));
+            FPlatformMisc::RequestExitWithStatus(false, 1);
+            return;
+        }
+    }
+    if (silverstone || hasPitOverlay) {
+        TArray<uint8> pitBarriers;
+        if (!FFileHelper::LoadFileToArray(pitBarriers, *(pitRoot / TEXT("pit_barriers.bin"))) ||
+            !Simulation.LoadPitBarriers(std::span<const uint8>(pitBarriers.GetData(), pitBarriers.Num()))) {
+            UE_LOG(LogTemp, Error, TEXT("Missing or invalid pit/escape barrier overlay. Restore the packaged circuit data."));
             FPlatformMisc::RequestExitWithStatus(false, 1);
             return;
         }
@@ -232,13 +250,36 @@ void AFormulaTrialPawn::BeginPlay() {
     Simulation.vehicle.elevation = Simulation.Ground(Simulation.vehicle.pos);
     float pitDistance = 0.0f;
     if (FParse::Value(FCommandLine::Get(), TEXT("FFPitDistance="), pitDistance)) {
+        if (Simulation.pitLane.Sections().empty()) {
+            UE_LOG(LogTemp, Error, TEXT("This circuit has no qualified pit route for FFPitDistance."));
+            FPlatformMisc::RequestExitWithStatus(false, 1);
+            return;
+        }
         float pitOffset = 0.0f;
         FParse::Value(FCommandLine::Get(), TEXT("FFPitLaneOffset="), pitOffset);
         const auto pit = Simulation.pitLane.Sample(pitDistance);
         Simulation.vehicle.pos = (pit.position + Vec2{-pit.tangent.y, pit.tangent.x} * pitOffset) * 17.0f;
         Simulation.vehicle.heading = angleOf(pit.tangent);
+        Simulation.vehicle.elevation = pit.height * 17.0f;
         Simulation.vehicle.elevation = Simulation.Ground(Simulation.vehicle.pos);
         Simulation.trial.Reset(Simulation.ProgressStation());
+    }
+    PitDriveAudit = FParse::Param(FCommandLine::Get(), TEXT("FFPitDrive"));
+    if (PitDriveAudit) {
+        if (Simulation.pitLane.Sections().empty() || FCString::Strstr(FCommandLine::Get(), TEXT("FFReplay=")) != nullptr) {
+            UE_LOG(LogTemp, Error, TEXT("FFPitDrive requires a loaded pit route and live simulation."));
+            FPlatformMisc::RequestExitWithStatus(false, 1);
+            return;
+        }
+        for (const auto& section : Simulation.pitLane.Sections()) {
+            NationalRoute.Add(FVector2D(section.position.x * 17.0f, section.position.y * 17.0f));
+        }
+        const auto first = Simulation.pitLane.Sample(pitDistance);
+        Simulation.vehicle.pos = first.position * 17.0f;
+        Simulation.vehicle.heading = angleOf(first.tangent);
+        Simulation.vehicle.elevation = first.height * 17.0f;
+        Simulation.trial.Reset(Simulation.ProgressStation());
+        UE_LOG(LogTemp, Display, TEXT("FFPitDrive live diagnostic: %d source route points."), NationalRoute.Num());
     }
     if (FParse::Param(FCommandLine::Get(), TEXT("FFNationalPit"))) {
         if (FCString::Strstr(FCommandLine::Get(), TEXT("FFReplay=")) != nullptr) {
@@ -473,7 +514,7 @@ void AFormulaTrialPawn::Tick(float deltaSeconds) {
         control.automaticShift = Automatic;
         if (CaptureDrive) {
             Vec2 target;
-            float targetSpeed = 70.0f * 17.0f / 3.6f;
+            float targetSpeed = (PitDriveAudit ? 40.0f : 70.0f) * 17.0f / 3.6f;
             if (!NationalRoute.IsEmpty()) {
                 const FVector2D position(Simulation.vehicle.pos.x, Simulation.vehicle.pos.y);
                 double nearestSquared = TNumericLimits<double>::Max();
@@ -492,7 +533,7 @@ void AFormulaTrialPawn::Tick(float deltaSeconds) {
                     }
                 }
                 FVector2D routeTarget = nearest;
-                double lookahead = 12.0 * 17.0;
+                double lookahead = (PitDriveAudit ? 6.0 : 12.0) * 17.0;
                 double remaining = 0.0;
                 for (int32 index = nearestEnd; index < NationalRoute.Num(); ++index) {
                     const FVector2D start = index == nearestEnd ? nearest : NationalRoute[index - 1];
@@ -505,6 +546,18 @@ void AFormulaTrialPawn::Tick(float deltaSeconds) {
                     }
                 }
                 target = {static_cast<float>(routeTarget.X), static_cast<float>(routeTarget.Y)};
+                if (PitDriveAudit) {
+                    for (int32 index = FMath::Max(1, nearestEnd - 1);
+                            index + 1 < NationalRoute.Num() && index < nearestEnd + 16; ++index) {
+                        const FVector2D incoming = NationalRoute[index] - NationalRoute[index - 1];
+                        const FVector2D outgoing = NationalRoute[index + 1] - NationalRoute[index];
+                        const double angle = FMath::Acos(FMath::Clamp(FVector2D::DotProduct(
+                            incoming.GetSafeNormal(), outgoing.GetSafeNormal()), -1.0, 1.0));
+                        const double curvature = angle / ((incoming.Size() + outgoing.Size()) / 34.0);
+                        if (curvature > 0.001) targetSpeed = FMath::Min(targetSpeed,
+                            static_cast<float>(FMath::Sqrt(3.0 / curvature) * 17.0));
+                    }
+                }
                 const float remainingMetres = static_cast<float>(remaining / 17.0);
                 targetSpeed = FMath::Min(targetSpeed, FMath::Sqrt(8.0f * FMath::Max(0.0f, remainingMetres - 2.0f)) * 17.0f);
                 control.brake = remainingMetres <= 2.0f ? 1.0f :

@@ -1,5 +1,7 @@
 .DEFAULT_GOAL := build
-.PHONY: build package run check session-check flow-check assets script-check
+.PHONY: build package run check session-check flow-check assets script-check editor-check
+editor-check:
+	bash tools/unreal.sh editor-check
 build:
 	bash tools/unreal.sh build
 assets: build
@@ -34,6 +36,16 @@ build/tests/circuit-audit: Tests/circuit_audit.cpp $(OBJECTS)
 build/tests/camera-audit: Tests/camera_audit.cpp Source/FormulaForge/FFCameraMotion.cpp
 	mkdir -p build/tests build/tmp
 	TMPDIR="$(CURDIR)/build/tmp" $(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
+build/tests/pit-lane-audit: Tests/pit_lane_audit.cpp build/tests/FFPitLane.o
+	TMPDIR="$(CURDIR)/build/tmp" $(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
+build/tests/export-pit-support: tools/export_pit_support.cpp $(OBJECTS)
+	TMPDIR="$(CURDIR)/build/tmp" $(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
+build/tests/pit-layer-audit: Tests/pit_layer_audit.cpp $(OBJECTS)
+	TMPDIR="$(CURDIR)/build/tmp" $(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
+build/tests/audit-pit-routes: tools/audit_pit_routes.cpp $(OBJECTS)
+	TMPDIR="$(CURDIR)/build/tmp" $(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
+build/tests/audit-escape-routes: tools/audit_escape_routes.cpp $(OBJECTS)
+	TMPDIR="$(CURDIR)/build/tmp" $(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
 .PHONY: native-check circuits
 native-check: build/tests/export-surfaces build/tests/export-lasvegas build/tests/lasvegas-lap-audit build/tests/circuit-audit build/tests/camera-audit build/tests/surface-audit
 	build/tests/export-lasvegas
@@ -66,6 +78,13 @@ build/tests/audit-circuit-lap: tools/audit_circuit_lap.cpp $(OBJECTS)
 CIRCUIT_PYTHON ?= python3
 CIRCUIT ?= japan
 .PHONY: circuit-assets circuit-check
+.PHONY: route-check
+route-check: build/tests/pit-lane-audit build/tests/pit-layer-audit
+	build/tests/pit-lane-audit
+	build/tests/pit-layer-audit
+	$(CIRCUIT_PYTHON) -m pytest -q Tests/test_pit_routes.py Tests/test_circuit_escapes.py
+	$(CIRCUIT_PYTHON) -m mypy tools/pit_*.py tools/circuit_escapes*.py tools/circuit_portals_dataclasses.py tools/circuit_route_assets*.py tools/validate_route_plan.py --ignore-missing-imports --follow-imports=silent
+	$(CIRCUIT_PYTHON) -m ruff check tools/pit_*.py tools/circuit_escapes*.py tools/circuit_portals_dataclasses.py tools/circuit_route_assets*.py tools/validate_route_plan.py Tests/test_pit_routes.py Tests/test_circuit_escapes.py
 .NOTPARALLEL: circuit-assets
 circuit-assets: check build build/tests/export-circuit-scene
 	build/tests/export-circuit-scene $(CIRCUIT)

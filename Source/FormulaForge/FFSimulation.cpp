@@ -269,12 +269,21 @@ FFTrackProjection FFSimulation::Project(Vec2 position) const {
 }
 
 float FFSimulation::Ground(Vec2 position, bool protectMainRoad) const {
-    if (circuit == TrackLayoutId::LasVegas) {
+    const FFPitProjection pit = pitLane.Project(position / Units, FFPitLane::GroundBlendMetres);
+    if (circuit == TrackLayoutId::LasVegas &&
+        !pit.inside) {
         const auto surfaceHeight = driveSurface.Height(position.x / Units, -position.y / Units);
         if (surfaceHeight) return *surfaceHeight * Units;
     }
     const FFTrackProjection projection = Project(position);
     float road = projection.elevation + projection.bankSlope * projection.lane;
+    const bool lowerPit = FFPitLowerLayerContact(pit, road / Units, vehicle.elevation / Units);
+    const bool pitMayOverride = pit.inside && (lowerPit ||
+        std::abs(projection.lane) > (projection.halfWidth + KerbMetres) * Units);
+    if (!pitMayOverride && std::abs(projection.lane) > (projection.halfWidth + KerbMetres) * Units) {
+        const auto escape = escapeSurface.Height(position.x / Units, -position.y / Units);
+        if (escape) return *escape * Units;
+    }
     const float quadratic = sampleTrackBankQuadratic(*track, projection.station);
     const float fade = sampleTrackBankFadeMeters(*track, projection.station);
     const bool jeddahBank = circuit == TrackLayoutId::Jeddah && projection.bankSlope != 0.0f;
@@ -286,8 +295,8 @@ float FFSimulation::Ground(Vec2 position, bool protectMainRoad) const {
     const bool buddhFirstSector = circuit == TrackLayoutId::Buddh &&
         projection.station >= 230.0f && projection.station <= 2820.0f &&
         std::abs(projection.lane) > (projection.halfWidth + 0.15f) * Units;
-    if (quadratic != 0.0f || fade > 0.0f || jeddahBank || malaysiaApron || cotaApron || buddhFirstSector ||
-        circuitBankedPaving(*track, projection.station, projection.lane >= 0.0f)) {
+    if (!pitMayOverride && (quadratic != 0.0f || fade > 0.0f || jeddahBank || malaysiaApron ||
+        cotaApron || buddhFirstSector || circuitBankedPaving(*track, projection.station, projection.lane >= 0.0f))) {
         const auto height = driveSurface.Height(position.x / Units, -position.y / Units);
         if (height) return *height * Units;
     }
@@ -325,25 +334,31 @@ float FFSimulation::Ground(Vec2 position, bool protectMainRoad) const {
             }
         }
     }
-    if (protectMainRoad && std::abs(projection.lane) <= (projection.halfWidth + KerbMetres) * Units) return nativeGround;
-    if (circuit == TrackLayoutId::Monza) {
+    if (protectMainRoad && !lowerPit && std::abs(projection.lane) <= (projection.halfWidth + KerbMetres) * Units) return nativeGround;
+    if (circuit == TrackLayoutId::Monza && !pit.inside) {
         const auto surfaceHeight = driveSurface.Height(position.x / Units, -position.y / Units);
         if (surfaceHeight) return *surfaceHeight * Units;
     }
     const auto nationalHeight = nationalSurface.Height(position.x / Units, -position.y / Units);
     if (nationalHeight) return (*nationalHeight - 0.065f) * Units;
-    const FFPitProjection pit = pitLane.Project(position / Units, FFPitLane::GroundBlendMetres);
     if (!pit.inside) return nativeGround;
     const float vergeBlend = smoothstep(std::clamp((std::abs(pit.lane) - pit.halfWidth) /
         FFPitLane::GroundBlendMetres, 0.0f, 1.0f));
     const float pitGround = lerp(pit.height * Units, nativeGround, vergeBlend);
-    if (!protectMainRoad) return pitGround;
+    if (!protectMainRoad || lowerPit) return pitGround;
     const float mergeBlend = smoothstep(std::clamp(std::abs(projection.lane) / Units -
         projection.halfWidth - KerbMetres, 0.0f, 1.0f));
     return lerp(nativeGround, pitGround, mergeBlend);
 }
 
 float FFSimulation::VisualGround(Vec2 position) const {
+    if (circuit != TrackLayoutId::Silverstone &&
+        pitLane.Project(position / Units, FFPitLane::GroundBlendMetres).inside) return Ground(position);
+    if (!escapeSurface.Triangles().empty()) {
+        const FFTrackProjection road = Project(position);
+        if (std::abs(road.lane) > (road.halfWidth + KerbMetres) * Units &&
+            escapeSurface.Height(position.x / Units, -position.y / Units)) return Ground(position);
+    }
     if (track->deckSeparation) return Ground(position);
     const auto height = driveSurface.Height(position.x / Units, -position.y / Units);
     return height ? *height * Units : Ground(position);
@@ -395,7 +410,9 @@ ArcadeSurface FFSimulation::CurrentSurface() const {
 
 ArcadeSurface FFSimulation::Surface(const FFTrackProjection& projection) const {
     const FFPitProjection pit = pitLane.Project(vehicle.pos / Units, FFPitLane::GroundBlendMetres);
-    if (pit.inside && std::abs(projection.lane) > (projection.halfWidth + KerbMetres) * Units) {
+    if (pit.inside && (std::abs(projection.lane) > (projection.halfWidth + KerbMetres) * Units ||
+        FFPitLowerLayerContact(pit, (projection.elevation + projection.bankSlope * projection.lane) / Units,
+            vehicle.elevation / Units))) {
         ArcadeSurface surface;
         surface.groundElevation = Ground(vehicle.pos);
         surface.groundGrade = pit.grade;
@@ -406,9 +423,10 @@ ArcadeSurface FFSimulation::Surface(const FFTrackProjection& projection) const {
     const float lane = std::abs(projection.lane);
     const float tires = smoothstep(std::clamp((lane + HalfWidth - roadHalf) / (HalfWidth * 2.0f), 0.0f, 1.0f));
     const float loose = smoothstep(std::clamp((lane + HalfWidth - roadHalf - KerbMetres * Units) / (HalfWidth * 2.0f), 0.0f, 1.0f));
-    bool asphalt = false;
+    const auto escape = escapeSurface.Height(vehicle.pos.x / Units, -vehicle.pos.y / Units);
+    bool asphalt = escape.has_value() && lane > (projection.halfWidth + KerbMetres) * Units;
     bool gravel = false;
-    if (loose > 0.001f) {
+    if (loose > 0.001f && !asphalt) {
         const std::span<const AuthoredSurfaceTriangle> looseSurface = track->generated ? std::span<const AuthoredSurfaceTriangle>(generatedSupport.runoff) : runoff;
         for (const AuthoredSurfaceTriangle& triangle : looseSurface) {
             if (insideAuthoredSurface(vehicle.pos, triangle)) {
@@ -432,6 +450,14 @@ ArcadeSurface FFSimulation::Surface(const FFTrackProjection& projection) const {
     surface.bumpiness = lerp(tires * 0.10f, asphalt ? 0.14f : gravel ? 0.55f : 0.72f, loose);
     surface.groundElevation = Ground(vehicle.pos);
     surface.groundGrade = projection.grade;
+    if (escape && lane > (projection.halfWidth + KerbMetres) * Units) {
+        const Vec2 direction = fromAngle(vehicle.heading);
+        const auto ahead = escapeSurface.Height(vehicle.pos.x / Units + direction.x * 0.5f,
+            -vehicle.pos.y / Units - direction.y * 0.5f);
+        const auto behind = escapeSurface.Height(vehicle.pos.x / Units - direction.x * 0.5f,
+            -vehicle.pos.y / Units + direction.y * 0.5f);
+        surface.groundGrade = ahead.value_or(*escape) - behind.value_or(*escape);
+    }
     surface.allowsDrift = loose < 0.20f;
     return surface;
 }
@@ -489,7 +515,7 @@ void FFSimulation::Step(const ArcadeVehicleControl& control, float seconds) {
     const auto road = Project(start);
     const bool controlled = PitProjectionForCar(road).controlled;
     const float previousSpeed = length(vehicle.vel);
-    constexpr float limitSpeed = 80.0f * Units / 3.6f;
+    const float limitSpeed = pitLane.SpeedLimitKph() * Units / 3.6f;
     ArcadeVehicleControl trialControl = control;
     trialControl.forwardSpeedLimitExtra = control.brake <= 0.01f ? 30.0f * Units / 3.6f : 0.0f;
     if (controlled && previousSpeed >= limitSpeed - 0.25f * Units / 3.6f) trialControl.throttle = 0.0f;
@@ -530,6 +556,16 @@ bool FFSimulation::LoadPitLane(std::span<const std::uint8_t> bytes) {
 }
 
 bool FFSimulation::LoadPitBarriers(std::span<const std::uint8_t> bytes) {
+    constexpr std::array<std::uint8_t, 8> overlaySignature{'F', 'F', 'B', 'A', 'R', '2', 0, 0};
+    if (bytes.size() >= overlaySignature.size() &&
+        std::equal(overlaySignature.begin(), overlaySignature.end(), bytes.begin())) {
+        if (circuit == TrackLayoutId::Silverstone) return false;
+        std::vector<AuthoredBarrierSegment> composed;
+        if (!FFComposePitBarriers(bytes, barriers, composed)) return false;
+        barriers = std::move(composed);
+        return true;
+    }
+    if (circuit != TrackLayoutId::Silverstone) return false;
     constexpr std::array<std::uint8_t, 8> signature{'F', 'F', 'B', 'A', 'R', '1', 0, 0};
     if (bytes.size() < 12 || !std::equal(signature.begin(), signature.end(), bytes.begin())) return false;
     std::uint32_t count;
@@ -551,10 +587,12 @@ bool FFSimulation::LoadPitBarriers(std::span<const std::uint8_t> bytes) {
 }
 
 FFPitProjection FFSimulation::PitProjectionForCar(const FFTrackProjection& road) const {
-    if (std::abs(road.lane) <= (road.halfWidth + KerbMetres) * Units) return {};
     FFPitProjection pit = pitLane.Project(vehicle.pos / Units);
     if (!pit.inside) pit = pitLane.Project(vehicle.pos / Units, 3.0f);
     if (!pit.inside) return {};
+    if (FFPitLowerLayerContact(pit, (road.elevation + road.bankSlope * road.lane) / Units,
+        vehicle.elevation / Units)) return pit;
+    if (std::abs(road.lane) <= (road.halfWidth + KerbMetres) * Units) return {};
     const Vec2 forward = fromAngle(vehicle.heading);
     const Vec2 across{-forward.y, forward.x};
     for (std::size_t index = 0; index < FFSilverstoneTyres.size(); ++index) {
@@ -574,11 +612,12 @@ bool FFSimulation::InPitLane() const {
 }
 
 float FFSimulation::PitSpeedLimitKph() const {
-    return PitProjectionForCar(Project(vehicle.pos)).controlled ? 80.0f : 0.0f;
+    return PitProjectionForCar(Project(vehicle.pos)).controlled ? pitLane.SpeedLimitKph() : 0.0f;
 }
 
 bool FFSimulation::PitOverspeed() const {
-    return PitSpeedLimitKph() > 0.0f && length(vehicle.vel) * 3.6f / Units > 80.5f;
+    const float limit = PitSpeedLimitKph();
+    return limit > 0.0f && length(vehicle.vel) * 3.6f / Units > limit + 0.5f;
 }
 
 float FFSimulation::ProgressStation() const {

@@ -17,10 +17,12 @@ UStaticMesh* UFFLasVegasMeshLibrary::BuildTile(const FString& sourceFile, const 
     TArray<uint8> bytes;
     bool registeredPath = false;
     for (const TrackCatalogEntry& track : trackCatalog()) {
-        if (!track.generated) continue;
         FString directory = UTF8_TO_TCHAR(track.contentDir.data());
         directory.RemoveFromEnd(TEXT("/Data"));
-        registeredPath |= assetPath.StartsWith(TEXT("/Game/Generated/") + directory + TEXT("/Track/"));
+        if (directory == TEXT("Data")) directory.Empty();
+        const FString prefix = TEXT("/Game/Generated/") +
+            (directory.IsEmpty() ? FString() : directory + TEXT("/"));
+        registeredPath |= assetPath.StartsWith(prefix + TEXT("Track/"));
     }
     if (!registeredPath || materials.IsEmpty() ||
         !FFileHelper::LoadFileToArray(bytes, *sourceFile) || bytes.Num() < 12 ||

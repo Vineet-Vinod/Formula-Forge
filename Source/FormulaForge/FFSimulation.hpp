@@ -67,6 +67,7 @@ public:
     bool barrierContact = false;
     FFDriveSurface driveSurface;
     FFDriveSurface nationalSurface;
+    FFDriveSurface escapeSurface;
     FFTrackLimits trackLimits;
     FFPitLane pitLane;
     ArcadeVehicleControl appliedControl;

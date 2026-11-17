@@ -60,6 +60,7 @@ private:
     UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> Wheels;
     TArray<FVector> WheelRestMounts;
     TArray<FVector2D> NationalRoute;
+    bool PitDriveAudit = false;
     TArray<FBox> BodySupports;
     FBox BodySupportEnvelope = FBox(ForceInit);
     UPROPERTY() TObjectPtr<UCameraComponent> Camera;

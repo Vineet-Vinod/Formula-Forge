@@ -62,10 +62,11 @@ std::uint64_t FFDriveSurface::CellKey(int column, int row) {
     return (static_cast<std::uint64_t>(static_cast<std::uint32_t>(column)) << 32) | static_cast<std::uint32_t>(row);
 }
 
-bool FFDriveSurface::Load(std::span<const std::uint8_t> bytes) {
+bool FFDriveSurface::Load(std::span<const std::uint8_t> bytes, double minimumTriangleArea) {
     constexpr std::array<std::uint8_t, 8> signature{'F', 'F', 'S', 'U', 'R', 'F', '1', 0};
     static_assert(sizeof(FFSurfaceTriangle) == 36);
-    if (bytes.size() < 12 || !std::equal(signature.begin(), signature.end(), bytes.begin())) return false;
+    if (!std::isfinite(minimumTriangleArea) || minimumTriangleArea < 0.0 ||
+        bytes.size() < 12 || !std::equal(signature.begin(), signature.end(), bytes.begin())) return false;
     std::uint32_t count = 0;
     std::memcpy(&count, bytes.data() + 8, 4);
     if (count == 0 || count > 4000000 || bytes.size() != 12 + static_cast<std::size_t>(count) * 36) return false;
@@ -76,7 +77,8 @@ bool FFDriveSurface::Load(std::span<const std::uint8_t> bytes) {
             if (!std::isfinite(point.positionX) || !std::isfinite(point.positionY) || !std::isfinite(point.positionZ) ||
                 std::abs(point.positionX) > 10000.0f || std::abs(point.positionY) > 10000.0f || std::abs(point.positionZ) > 1000.0f) return false;
         }
-        if (std::abs(Side(triangle.points[0], triangle.points[1], triangle.points[2].positionX, triangle.points[2].positionY)) < Tolerance) return false;
+        const double area = std::abs(Side(triangle.points[0], triangle.points[1], triangle.points[2].positionX, triangle.points[2].positionY));
+        if (area == 0.0 || area < minimumTriangleArea) return false;
         for (int index = 1; index < 3; ++index) {
             if (std::abs(triangle.points[index].positionX - triangle.points[0].positionX) > 100.0f ||
                 std::abs(triangle.points[index].positionY - triangle.points[0].positionY) > 100.0f) return false;

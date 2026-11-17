@@ -85,8 +85,10 @@ Current tools have specific limits:
 
 - `make assets` runs `tools/prepare_project.py`, which builds the garage frontend.
   It does **not** generate a circuit.
-- `FFMeshBuildLibrary` currently changes static-mesh shadow sections. It is not
-  a road, terrain or mesh-generation library.
+- `FFMeshBuildLibrary` supports finite, height-qualified mesh cuts and material
+  corrections as well as shadow sections. These edits preserve additional UV
+  channels and vertex colours; a UV0-only export/reimport loses baked shading.
+  Compact edited mesh element IDs before committing a mesh description.
 - The enabled Python/editor-scripting plugins can automate editor asset creation
   and placement. Python is an authoring tool, not a runtime requirement. See
   [Epic's editor Python documentation](https://dev.epicgames.com/documentation/en-us/unreal-engine/scripting-the-unreal-editor-using-python).
@@ -117,6 +119,27 @@ materials and environment are directly under `Content/Generated`. Do not move
 those shared paths as a side effect of adding a circuit.
 
 ## 3. Build a source package before building scenery
+
+For pit lanes and street escape roads, register the actual branch to the unchanged
+racing surface. Keep entry/exit joins, speed-control boundaries and protection in
+one recipe. `pit_route_authoring.py` builds pit candidates;
+`circuit_escapes.py` builds finite escape-road overlays;
+`circuit_route_assets.py` emits their native import payloads. Validate their typed
+inputs outside Unreal Python, then use `apply_circuit_routes.py` through the
+guarded editor command. Retain the recipe and source registration in Attribution.
+
+An escape road follows the incoming tangent to a bounded closure. It is not a
+wide strip extruded around every corner. Check the whole volume against native
+walls, fence panels, trees, buildings and overhead structures. Opening collision
+alone leaves visible obstructions; deleting a whole scenery tile destroys its
+surroundings. Cut only the source-qualified materials inside the opening volume.
+Preserve road paint, kerbs and overhead decks. Replace both the visible closure
+and collision, then drive the approach and escape road in the packaged game.
+
+Keep geographic north-up map projection separate from Unreal world conversion.
+The simulation already reflects source north; reflecting that coordinate again
+in the HUD mirrors the circuit. Check asymmetric circuits and confirm the moving
+car marker follows the displayed route in the same direction.
 
 Use multiple sources for different questions. No single map, video or point
 cloud supplies the whole track.

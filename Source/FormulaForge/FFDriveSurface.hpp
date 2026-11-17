@@ -20,7 +20,7 @@ struct FFSurfaceTriangle {
 
 class FFDriveSurface {
 public:
-    bool Load(std::span<const std::uint8_t> bytes);
+    bool Load(std::span<const std::uint8_t> bytes, double minimumTriangleArea = 0.00001f);
     std::optional<float> Height(double positionX, double positionY) const;
     float Penetration(const std::array<FFSurfacePoint, 4>& footprint,
         float maximumSurfaceHeight = std::numeric_limits<float>::infinity()) const;

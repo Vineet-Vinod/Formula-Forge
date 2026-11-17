@@ -1,7 +1,9 @@
 #pragma once
 
 #include "core_math.hpp"
+#include "authored_track_collision.hpp"
 
+#include <array>
 #include <cstdint>
 #include <span>
 #include <unordered_map>
@@ -30,6 +32,17 @@ struct FFPitProjection {
     Vec2 tangent{1.0f, 0.0f};
 };
 
+struct FFPitBarrierOpening {
+    std::array<Vec2, 4> corners;
+    float bottom;
+    float top;
+};
+
+bool FFPitLowerLayerContact(const FFPitProjection& pit, float roadHeightMetres, float vehicleHeightMetres);
+
+bool FFComposePitBarriers(std::span<const std::uint8_t> bytes,
+    std::span<const AuthoredBarrierSegment> existing, std::vector<AuthoredBarrierSegment>& result);
+
 class FFPitLane {
 public:
     static constexpr float GroundBlendMetres = 3.0f;
@@ -38,10 +51,12 @@ public:
     FFPitProjection Project(Vec2 positionMetres, float lateralMarginMetres = 0.0f) const;
     FFPitProjection Sample(float distanceMetres) const;
     const std::vector<FFPitSection>& Sections() const;
+    float SpeedLimitKph() const;
 private:
     static std::uint64_t CellKey(int column, int row);
     std::vector<FFPitSection> sections;
     std::unordered_map<std::uint64_t, std::vector<std::uint32_t>> cells;
     float limitEntry = 0.0f;
     float limitExit = 0.0f;
+    float speedLimitKph = 80.0f;
 };

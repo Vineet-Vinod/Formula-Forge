@@ -27,20 +27,28 @@ std::uint64_t FFPitLane::CellKey(int column, int row) {
 
 bool FFPitLane::Load(std::span<const std::uint8_t> bytes) {
     constexpr std::array<std::uint8_t, 8> signature{'F', 'F', 'P', 'I', 'T', '1', 0, 0};
-    if (bytes.size() < 20 || !std::equal(signature.begin(), signature.end(), bytes.begin())) return false;
+    constexpr std::array<std::uint8_t, 8> signature2{'F', 'F', 'P', 'I', 'T', '2', 0, 0};
+    if (bytes.size() < 20) return false;
+    const bool version2 = std::equal(signature2.begin(), signature2.end(), bytes.begin());
+    if (!version2 && !std::equal(signature.begin(), signature.end(), bytes.begin())) return false;
+    const std::size_t headerSize = version2 ? 24 : 20;
+    if (bytes.size() < headerSize) return false;
     std::uint32_t count;
     float entry;
     float exit;
     std::memcpy(&count, bytes.data() + 8, 4);
     std::memcpy(&entry, bytes.data() + 12, 4);
     std::memcpy(&exit, bytes.data() + 16, 4);
-    if (count < 2 || count > 10000 || bytes.size() != 20 + count * 36 ||
+    float speedLimit = 80.0f;
+    if (version2) std::memcpy(&speedLimit, bytes.data() + 20, 4);
+    if (count < 2 || count > 10000 || bytes.size() != headerSize + count * 36 ||
+        !std::isfinite(speedLimit) || speedLimit < 20.0f || speedLimit > 100.0f ||
         !std::isfinite(entry) || !std::isfinite(exit) || entry < 0.0f || exit <= entry) return false;
     std::vector<FFPitSection> loaded;
     loaded.reserve(count);
     for (std::uint32_t index = 0; index < count; ++index) {
         std::array<float, 9> row;
-        std::memcpy(row.data(), bytes.data() + 20 + index * 36, 36);
+        std::memcpy(row.data(), bytes.data() + headerSize + index * 36, 36);
         for (float value : row) {
             if (!std::isfinite(value) || std::abs(value) > 20000.0f) return false;
         }
@@ -62,6 +70,7 @@ bool FFPitLane::Load(std::span<const std::uint8_t> bytes) {
     sections = std::move(loaded);
     limitEntry = entry;
     limitExit = exit;
+    speedLimitKph = speedLimit;
     cells.clear();
     for (std::uint32_t index = 0; index + 1 < sections.size(); ++index) {
         const auto& first = sections[index];
@@ -166,4 +175,91 @@ FFPitProjection FFPitLane::Sample(float distanceMetres) const {
 
 const std::vector<FFPitSection>& FFPitLane::Sections() const {
     return sections;
+}
+
+float FFPitLane::SpeedLimitKph() const {
+    return speedLimitKph;
+}
+
+bool FFComposePitBarriers(std::span<const std::uint8_t> bytes,
+    std::span<const AuthoredBarrierSegment> existing, std::vector<AuthoredBarrierSegment>& result) {
+    constexpr std::array<std::uint8_t, 8> signature{'F', 'F', 'B', 'A', 'R', '2', 0, 0};
+    if (bytes.size() < 16 || !std::equal(signature.begin(), signature.end(), bytes.begin())) return false;
+    std::uint32_t count;
+    std::uint32_t openingCount;
+    std::memcpy(&count, bytes.data() + 8, 4);
+    std::memcpy(&openingCount, bytes.data() + 12, 4);
+    if (count > 10000 || openingCount == 0 || openingCount > 128 ||
+        bytes.size() != 16 + count * 28 + openingCount * 40) return false;
+    std::vector<AuthoredBarrierSegment> additions;
+    additions.reserve(count);
+    for (std::uint32_t index = 0; index < count; ++index) {
+        std::array<float, 7> row;
+        std::memcpy(row.data(), bytes.data() + 16 + index * 28, 28);
+        for (float value : row) if (!std::isfinite(value) || std::abs(value) > 200000.0f) return false;
+        if (row[4] >= row[5] || row[6] <= 0.0f || row[6] > 17.0f ||
+            lengthSq(Vec2{row[2] - row[0], row[3] - row[1]}) < 0.000001f) return false;
+        additions.push_back({{row[0], row[1]}, {row[2], row[3]}, row[4], row[5], row[6]});
+    }
+    std::vector<FFPitBarrierOpening> openings;
+    openings.reserve(openingCount);
+    for (std::uint32_t index = 0; index < openingCount; ++index) {
+        std::array<float, 10> row;
+        std::memcpy(row.data(), bytes.data() + 16 + count * 28 + index * 40, 40);
+        for (float value : row) if (!std::isfinite(value) || std::abs(value) > 200000.0f) return false;
+        FFPitBarrierOpening opening{{Vec2{row[0], row[1]}, Vec2{row[2], row[3]},
+            Vec2{row[4], row[5]}, Vec2{row[6], row[7]}}, row[8], row[9]};
+        if (opening.bottom >= opening.top) return false;
+        for (std::size_t corner = 0; corner < 4; ++corner) {
+            const Vec2 a = opening.corners[corner];
+            const Vec2 b = opening.corners[(corner + 1) % 4];
+            const Vec2 c = opening.corners[(corner + 2) % 4];
+            if (lengthSq(b - a) < 0.000001f || cross(b - a, c - b) <= 0.000001f) return false;
+        }
+        openings.push_back(opening);
+    }
+    std::vector<AuthoredBarrierSegment> composed(existing.begin(), existing.end());
+    for (const auto& opening : openings) {
+        std::vector<AuthoredBarrierSegment> outside;
+        outside.reserve(composed.size() + 2);
+        for (const auto& segment : composed) {
+            if (segment.top <= opening.bottom || segment.bottom >= opening.top) {
+                outside.push_back(segment);
+                continue;
+            }
+            float enter = 0.0f;
+            float exit = 1.0f;
+            const Vec2 delta = segment.b - segment.a;
+            for (std::size_t corner = 0; corner < 4 && enter <= exit; ++corner) {
+                const Vec2 a = opening.corners[corner];
+                const Vec2 edge = opening.corners[(corner + 1) % 4] - a;
+                const float first = cross(edge, segment.a - a) + segment.halfThickness * length(edge);
+                const float slope = cross(edge, delta);
+                if (std::abs(slope) < 0.000001f) {
+                    if (first < 0.0f) enter = 2.0f;
+                } else if (slope > 0.0f) {
+                    enter = std::max(enter, -first / slope);
+                } else {
+                    exit = std::min(exit, -first / slope);
+                }
+            }
+            if (enter >= exit || enter > 1.0f || exit < 0.0f) {
+                outside.push_back(segment);
+                continue;
+            }
+            if (enter > 0.0f) outside.push_back({segment.a, lerp(segment.a, segment.b, enter),
+                segment.bottom, segment.top, segment.halfThickness});
+            if (exit < 1.0f) outside.push_back({lerp(segment.a, segment.b, exit), segment.b,
+                segment.bottom, segment.top, segment.halfThickness});
+        }
+        composed = std::move(outside);
+    }
+    composed.insert(composed.end(), additions.begin(), additions.end());
+    result = std::move(composed);
+    return true;
+}
+
+bool FFPitLowerLayerContact(const FFPitProjection& pit, float roadHeightMetres, float vehicleHeightMetres) {
+    return pit.inside && pit.height + 1.5f < roadHeightMetres &&
+        std::abs(vehicleHeightMetres - pit.height) + 0.5f < std::abs(vehicleHeightMetres - roadHeightMetres);
 }

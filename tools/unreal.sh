@@ -10,9 +10,9 @@ case "$(uname -s)" in
 esac
 case "${1:-help}" in
     help|-h|--help)
-        echo 'Usage: tools/unreal.sh build|game-build|python SCRIPT|package|run [ARGS]|check|session-check'
+        echo 'Usage: tools/unreal.sh build|game-build|python SCRIPT|package|run [ARGS]|check|session-check|editor-check'
         exit 0 ;;
-    build|game-build|python|package|run|check|session-check) ;;
+    build|game-build|python|package|run|check|session-check|editor-check) ;;
     *) echo "Unknown operation: $1" >&2; exit 2 ;;
 esac
 original_home="$HOME"
@@ -67,7 +67,7 @@ export XAUTHORITY="${XAUTHORITY:-$original_home/.Xauthority}"
 common_args=("-UserDir=$local_root/home/" "-ShaderWorkingDir=$local_root/shaders/" -DDC=InstalledNoZenLocalFallback -NoSharedDDC "-LocalDataCachePath=$local_root/ddc" -SCCProvider=None -NoSplash -NoSound -NoCrashDialog -NoAnalytics -notraceserver -unattended)
 guard_cpu_properties=()
 case "${1:-help}" in
-    check|game-build) guard_cpu_properties=(-p CPUQuota=100%) ;;
+    check|game-build|editor-check) guard_cpu_properties=(-p CPUQuota=100%) ;;
 esac
 export UE_ENGINE_ROOT="$engine_root"
 export FF_REPO_ROOT="$repo_root"
@@ -159,6 +159,17 @@ run_guarded() {
 }
 
 case "${1:-help}" in
+ editor-check)
+  status=0
+  test_log="$local_root/logs/editor-tests.log"
+  run_guarded "$engine_root/Engine/Binaries/Linux/UnrealEditor-Cmd" "$project" "${common_args[@]}" -NullRHI \
+    '-ExecCmds=Automation RunTests FormulaForge.HUD.MapHandedness+FormulaForge.Assets.PortalClipping' \
+    '-TestExit=Automation Test Queue Empty' "-abslog=$test_log" || status=$?
+  [[ $status -le 1 ]]
+  grep -Fq 'Result={Success} Name={MapHandedness}' "$test_log"
+  grep -Fq 'Result={Success} Name={PortalClipping}' "$test_log"
+  grep -Fq 'TestExit: Automation Test Queue Empty' "$test_log"
+  ;;
  build|game-build)
   target=FormulaForgeEditor
   if [[ "$1" == game-build ]]; then target=FormulaForge; fi
@@ -196,5 +207,5 @@ case "${1:-help}" in
  check)
   run_guarded make -j1 native-check
   ;;
- *) echo 'Usage: tools/unreal.sh build|game-build|python SCRIPT|package|run [ARGS]|check|session-check'; exit 2 ;;
+ *) echo 'Usage: tools/unreal.sh build|game-build|python SCRIPT|package|run [ARGS]|check|session-check|editor-check'; exit 2 ;;
 esac
