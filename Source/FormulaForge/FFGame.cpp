@@ -503,6 +503,7 @@ void AFormulaTrialPawn::Tick(float deltaSeconds) {
         if (Recorder) Recorder->EndTick();
         return;
     }
+    bool pitDriveFinished = false;
     if (!Paused && player != nullptr) {
         CSV_SCOPED_TIMING_STAT(FormulaForge, LiveSimulation);
         ArcadeVehicleControl control;
@@ -559,6 +560,8 @@ void AFormulaTrialPawn::Tick(float deltaSeconds) {
                     }
                 }
                 const float remainingMetres = static_cast<float>(remaining / 17.0);
+                pitDriveFinished = PitDriveAudit && remainingMetres <= 2.1f &&
+                    FMath::Abs(Simulation.vehicle.forwardSpeed) < 0.5f * 17.0f;
                 targetSpeed = FMath::Min(targetSpeed, FMath::Sqrt(8.0f * FMath::Max(0.0f, remainingMetres - 2.0f)) * 17.0f);
                 control.brake = remainingMetres <= 2.0f ? 1.0f :
                     Simulation.vehicle.forwardSpeed > targetSpeed + 0.25f * 17.0f ? 0.25f : 0.0f;
@@ -611,6 +614,7 @@ void AFormulaTrialPawn::Tick(float deltaSeconds) {
     }
     UpdateVisual(deltaSeconds);
     if (Recorder) Recorder->EndTick();
+    if (pitDriveFinished && Recorder && Recorder->IsRecording()) Recorder->Stop(TEXT("pit_route_complete"));
     if (!CapturePath.IsEmpty() && !Capturing && Elapsed >= CaptureDelay) {
         Capturing = true;
         FScreenshotRequest::RequestScreenshot(CapturePath, false, false);
