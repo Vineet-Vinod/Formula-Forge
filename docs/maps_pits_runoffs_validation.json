@@ -1,0 +1,239 @@
+{
+  "date": "2026-11-16",
+  "branch": "track",
+  "source_revision": "9292f8bab6d8f0132654af2f799b9653d16f0dba",
+  "verified_package_revision": "56b52b958a0e1812843cf144741c8e4b98b2935f",
+  "package_pin_sha256": "cb9722011696d4b9b78aed87e2307566c3d940bd9bf1c8dd9b805b49790c1e21",
+  "scope": "HUD handedness, pit routes for all22 circuits, seven bounded street escapes and qualified paint corrections. Does not declare the18-map modeling project complete.",
+  "maps": "All22HUD direction/marker automation checks pass; world geometry and handling unchanged.",
+  "pits": [
+    {
+      "circuit": "silverstone",
+      "native_support_collision_progress": "pass",
+      "live_traversal": "pending",
+      "visual_pit_review": "pending",
+      "live_capture_revision": null,
+      "live_coverage_fraction": null,
+      "barrier_contact_frames": null
+    },
+    {
+      "circuit": "monza",
+      "native_support_collision_progress": "pass",
+      "live_traversal": "pass",
+      "visual_pit_review": "pass",
+      "live_capture_revision": "56b52b958a0e1812843cf144741c8e4b98b2935f",
+      "live_coverage_fraction": 0.997353555234067,
+      "barrier_contact_frames": 0
+    },
+    {
+      "circuit": "interlagos",
+      "native_support_collision_progress": "pass",
+      "live_traversal": "pass",
+      "visual_pit_review": "pass",
+      "live_capture_revision": "19d808f3",
+      "live_coverage_fraction": 0.9985719339997754,
+      "barrier_contact_frames": 0
+    },
+    {
+      "circuit": "bahrain",
+      "native_support_collision_progress": "pass",
+      "live_traversal": "pass",
+      "visual_pit_review": "pass",
+      "live_capture_revision": "56b52b958a0e1812843cf144741c8e4b98b2935f",
+      "live_coverage_fraction": 0.9974482185477607,
+      "barrier_contact_frames": 0
+    },
+    {
+      "circuit": "jeddah",
+      "native_support_collision_progress": "pass",
+      "live_traversal": "pass",
+      "visual_pit_review": "pass",
+      "live_capture_revision": "19d808f3",
+      "live_coverage_fraction": 0.9977366706126365,
+      "barrier_contact_frames": 0
+    },
+    {
+      "circuit": "australia",
+      "native_support_collision_progress": "pass",
+      "live_traversal": "pass",
+      "visual_pit_review": "pass",
+      "live_capture_revision": "56b52b958a0e1812843cf144741c8e4b98b2935f",
+      "live_coverage_fraction": 0.997205401374225,
+      "barrier_contact_frames": 0
+    },
+    {
+      "circuit": "japan",
+      "native_support_collision_progress": "pass",
+      "live_traversal": "pass",
+      "visual_pit_review": "pass",
+      "live_capture_revision": "56b52b958a0e1812843cf144741c8e4b98b2935f",
+      "live_coverage_fraction": 0.997778396862577,
+      "barrier_contact_frames": 0
+    },
+    {
+      "circuit": "china",
+      "native_support_collision_progress": "pass",
+      "live_traversal": "pass",
+      "visual_pit_review": "pass",
+      "live_capture_revision": "56b52b958a0e1812843cf144741c8e4b98b2935f",
+      "live_coverage_fraction": 0.9976572509837592,
+      "barrier_contact_frames": 0
+    },
+    {
+      "circuit": "canada",
+      "native_support_collision_progress": "pass",
+      "live_traversal": "pass",
+      "visual_pit_review": "pass",
+      "live_capture_revision": "56b52b958a0e1812843cf144741c8e4b98b2935f",
+      "live_coverage_fraction": 0.9976329242023835,
+      "barrier_contact_frames": 0
+    },
+    {
+      "circuit": "monaco",
+      "native_support_collision_progress": "pass",
+      "live_traversal": "pass",
+      "visual_pit_review": "pass",
+      "live_capture_revision": "56b52b958a0e1812843cf144741c8e4b98b2935f",
+      "live_coverage_fraction": 0.9972675201839067,
+      "barrier_contact_frames": 0
+    },
+    {
+      "circuit": "austria",
+      "native_support_collision_progress": "pass",
+      "live_traversal": "pass",
+      "visual_pit_review": "pass",
+      "live_capture_revision": "56b52b958a0e1812843cf144741c8e4b98b2935f",
+      "live_coverage_fraction": 0.9980262964870621,
+      "barrier_contact_frames": 0
+    },
+    {
+      "circuit": "spa",
+      "native_support_collision_progress": "pass",
+      "live_traversal": "pending",
+      "visual_pit_review": "pending",
+      "live_capture_revision": null,
+      "live_coverage_fraction": null,
+      "barrier_contact_frames": null
+    },
+    {
+      "circuit": "zandvoort",
+      "native_support_collision_progress": "pass",
+      "live_traversal": "pending",
+      "visual_pit_review": "pending",
+      "live_capture_revision": null,
+      "live_coverage_fraction": null,
+      "barrier_contact_frames": null
+    },
+    {
+      "circuit": "baku",
+      "native_support_collision_progress": "pass",
+      "live_traversal": "pass",
+      "visual_pit_review": "pass",
+      "live_capture_revision": "56b52b958a0e1812843cf144741c8e4b98b2935f",
+      "live_coverage_fraction": 0.9973545906594494,
+      "barrier_contact_frames": 0
+    },
+    {
+      "circuit": "malaysia",
+      "native_support_collision_progress": "pass",
+      "live_traversal": "pending",
+      "visual_pit_review": "pending",
+      "live_capture_revision": null,
+      "live_coverage_fraction": null,
+      "barrier_contact_frames": null
+    },
+    {
+      "circuit": "singapore",
+      "native_support_collision_progress": "pass",
+      "live_traversal": "pass",
+      "visual_pit_review": "paint correction awaiting cooked recheck",
+      "live_capture_revision": "56b52b958a0e1812843cf144741c8e4b98b2935f",
+      "live_coverage_fraction": 0.99762880593801,
+      "barrier_contact_frames": 0
+    },
+    {
+      "circuit": "cota",
+      "native_support_collision_progress": "pass",
+      "live_traversal": "pending",
+      "visual_pit_review": "pending",
+      "live_capture_revision": null,
+      "live_coverage_fraction": null,
+      "barrier_contact_frames": null
+    },
+    {
+      "circuit": "lasvegas",
+      "native_support_collision_progress": "pass",
+      "live_traversal": "pass",
+      "visual_pit_review": "pass",
+      "live_capture_revision": "56b52b958a0e1812843cf144741c8e4b98b2935f",
+      "live_coverage_fraction": 0.9959842519485377,
+      "barrier_contact_frames": 0
+    },
+    {
+      "circuit": "turkey",
+      "native_support_collision_progress": "pass",
+      "live_traversal": "pending",
+      "visual_pit_review": "pending",
+      "live_capture_revision": null,
+      "live_coverage_fraction": null,
+      "barrier_contact_frames": null
+    },
+    {
+      "circuit": "portimao",
+      "native_support_collision_progress": "pass",
+      "live_traversal": "pending",
+      "visual_pit_review": "pending",
+      "live_capture_revision": null,
+      "live_coverage_fraction": null,
+      "barrier_contact_frames": null
+    },
+    {
+      "circuit": "buddh",
+      "native_support_collision_progress": "pass",
+      "live_traversal": "pending",
+      "visual_pit_review": "pending",
+      "live_capture_revision": null,
+      "live_coverage_fraction": null,
+      "barrier_contact_frames": null
+    },
+    {
+      "circuit": "hockenheim",
+      "native_support_collision_progress": "pass",
+      "live_traversal": "pending",
+      "visual_pit_review": "pending",
+      "live_capture_revision": null,
+      "live_coverage_fraction": null,
+      "barrier_contact_frames": null
+    }
+  ],
+  "street_escapes": [
+    "MonacoT1",
+    "BakuT1",
+    "BakuT2",
+    "BakuT15",
+    "JeddahT27",
+    "SingaporeT1",
+    "SingaporeT3"
+  ],
+  "runoff_review": "Seven source/native/cockpit approach checks pass. These do not cover every street-track runoff.",
+  "remaining": [
+    "CanadaSenna grass/asphalt island and bypass registration",
+    "Australiaexact-corner and event-year surface-role registration",
+    "Other street corners outside the seven qualified escape changes",
+    "Remaining live pit captures and visual reviews listed below",
+    "Earlier18-map architecture/elevation/source/performance completion work remains incomplete"
+  ],
+  "peak_machine_used_bytes": 8839188480,
+  "review_reports_sha256": {
+    "build/reviews/resume-20261116/reviews/baku-pit-fast-lane-source-adjudication.md": "e16830598751839f75d1d7d704de57f9168978ee06c6f8ab473d1f00d527d55e",
+    "build/reviews/resume-20261116/reviews/jeddah-interlagos-pit-live-review.md": "1cea1303d55ae03bd8b8fc592c5417307277f0477723b76480005fa5960dee78",
+    "build/reviews/resume-20261116/reviews/legacy-pit-source-registration.md": "3c09a50216484d4453a04dd1305cbcac97a5dbf2e33801146edb94e1188146b3",
+    "build/reviews/resume-20261116/reviews/monaco-china-baku-pit-live-56b52b95.md": "022ccad9c8e3a115a01b2e8a874ff0558d9250f76c2d62a75a2caecab6e798d0",
+    "build/reviews/resume-20261116/reviews/monaco-pit-lane-surfacing-review.md": "f491fcd35649999f755732af3814f3a4981f910039ab26733e69e288f8adfa06",
+    "build/reviews/resume-20261116/reviews/monza-singapore-pit-live-56b52b95.md": "4b1c0d4fed72f03905e7821151a2e385d427f171cb3bbc44800a1f5c962908e3",
+    "build/reviews/resume-20261116/reviews/six-pit-captures-56b52b95.md": "244068a2061202f797ccbf0dcefbfce280ee6da218ca570d9c1cfcdf5722e45c",
+    "build/reviews/resume-20261116/reviews/street-cockpit-19d808f3-review.md": "e34d26f42f0b6117938c81e483aebbdd420c48c1c42834506cfc8ff6b29b328b",
+    "build/reviews/resume-20261116/reviews/street-escape-source-adjudication.md": "3a73be838deb87f26176238e98884d4f58d68d023cb515d2217265ffd71bf1c4"
+  },
+  "journals": "Old steps/ticks are losslessly archived asjsonl.gz; decompress withgzip-dk before replay. Sourcehashes inbuild/reviews/resume-20261116/lossless-journal-archive.json. Original references and nativeassets preserved."
+}
