@@ -1,0 +1,4362 @@
+{
+  "asset": "/Game/Generated/Monaco/Track/Building_City_00_m1",
+  "source_asset_file": "Content/Generated/Monaco/Track/Building_City_00_m1.uasset",
+  "source_asset_sha256": "ae251bad14e217ebbafe66157b9643c61afb2a911f19309ac153b18f589b5310",
+  "source_native_export_sha256": "f61f9562925cc7dcd835e70579944a65a8395ab1b15014054662379242868815",
+  "material_slots": [
+    {
+      "slot": "Material_4",
+      "material": "/Game/Generated/Monaco/Materials/Concrete.Concrete"
+    }
+  ],
+  "portals": [
+    {
+      "id": "monaco-pit-level0-floor-000",
+      "polygon_xy_m": [
+        [
+          133.37771615985235,
+          -251.07441869725088
+        ],
+        [
+          131.38980580658637,
+          -250.9560689105698
+        ],
+        [
+          131.0189654584808,
+          -257.1850397273434
+        ],
+        [
+          133.0068758117468,
+          -257.30338951402445
+        ]
+      ],
+      "bottom_m": 2.134145197746388,
+      "top_m": 2.767417092054229,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-001",
+      "polygon_xy_m": [
+        [
+          131.77463722233898,
+          -251.00311024867196
+        ],
+        [
+          129.8183090068019,
+          -250.6394200722484
+        ],
+        [
+          128.67780582719112,
+          -256.7743082128177
+        ],
+        [
+          130.6341340427282,
+          -257.13799838924126
+        ]
+      ],
+      "bottom_m": 2.267417092054229,
+      "top_m": 2.894186713638705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-002",
+      "polygon_xy_m": [
+        [
+          130.51650141857965,
+          -250.85634667813332
+        ],
+        [
+          128.69870248675142,
+          -250.0474492832011
+        ],
+        [
+          126.16181448358518,
+          -255.74848421200056
+        ],
+        [
+          127.9796134154134,
+          -256.5573816069328
+        ]
+      ],
+      "bottom_m": 2.394186713638705,
+      "top_m": 3.0046598200009482,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-003",
+      "polygon_xy_m": [
+        [
+          129.31896914474558,
+          -250.4145875891961
+        ],
+        [
+          127.7404346061919,
+          -249.21404799402913
+        ],
+        [
+          123.9630132870373,
+          -254.18080631083862
+        ],
+        [
+          125.541547825591,
+          -255.38134590600558
+        ]
+      ],
+      "bottom_m": 2.5046598200009482,
+      "top_m": 3.092490949848364,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-004",
+      "polygon_xy_m": [
+        [
+          128.1089848296687,
+          -249.54355312969398
+        ],
+        [
+          126.73721976794614,
+          -248.1059427672143
+        ],
+        [
+          122.22269800183791,
+          -252.41369081269409
+        ],
+        [
+          123.59446306356048,
+          -253.85130117517377
+        ]
+      ],
+      "bottom_m": 2.592490949848364,
+      "top_m": 3.161060694229537,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-005",
+      "polygon_xy_m": [
+        [
+          127.04529708072155,
+          -248.4840240258575
+        ],
+        [
+          125.91498811912795,
+          -246.8511618975227
+        ],
+        [
+          120.7843117274689,
+          -250.40274742571606
+        ],
+        [
+          121.9146206890625,
+          -252.03560955405086
+        ]
+      ],
+      "bottom_m": 2.661060694229537,
+      "top_m": 3.211278232163998,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-006",
+      "polygon_xy_m": [
+        [
+          126.07840431623761,
+          -247.1142420441619
+        ],
+        [
+          125.11711529287861,
+          -245.38019050317328
+        ],
+        [
+          119.65960650700025,
+          -248.40561573808824
+        ],
+        [
+          120.62089553035925,
+          -250.13966727907686
+        ]
+      ],
+      "bottom_m": 2.711278232163998,
+      "top_m": 3.2497437977538666,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-007",
+      "polygon_xy_m": [
+        [
+          125.25949522629423,
+          -245.67184305657696
+        ],
+        [
+          124.4811073146648,
+          -243.8415839906311
+        ],
+        [
+          118.73883866195519,
+          -246.2837041187387
+        ],
+        [
+          119.51722657358462,
+          -248.11396318468456
+        ]
+      ],
+      "bottom_m": 2.7497437977538666,
+      "top_m": 3.275066630026033,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-008",
+      "polygon_xy_m": [
+        [
+          124.6152087602246,
+          -244.22421817531048
+        ],
+        [
+          124.0802002141162,
+          -242.30654499680045
+        ],
+        [
+          118.06972867028698,
+          -243.9833967555493
+        ],
+        [
+          118.60473721639538,
+          -245.90106993405934
+        ]
+      ],
+      "bottom_m": 2.775066630026033,
+      "top_m": 3.2840075837551934,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-009",
+      "polygon_xy_m": [
+        [
+          124.12596189861343,
+          -242.49242622561945
+        ],
+        [
+          123.70969584305257,
+          -240.54615837157183
+        ],
+        [
+          117.6077009302289,
+          -241.8512476726827
+        ],
+        [
+          118.02396698578976,
+          -243.7975155267303
+        ]
+      ],
+      "bottom_m": 2.7840075837551934,
+      "top_m": 3.2849350098774477,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-010",
+      "polygon_xy_m": [
+        [
+          123.74503277673526,
+          -240.74160343503507
+        ],
+        [
+          123.45340289436135,
+          -238.77251975925333
+        ],
+        [
+          117.2807341141723,
+          -239.6867189334377
+        ],
+        [
+          117.57236399654622,
+          -241.65580260921945
+        ]
+      ],
+      "bottom_m": 2.7849350098774477,
+      "top_m": 3.309889826886364,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-011",
+      "polygon_xy_m": [
+        [
+          123.46958620180996,
+          -238.8997952471174
+        ],
+        [
+          123.25890163253253,
+          -236.91797340234547
+        ],
+        [
+          117.05386623744626,
+          -237.5776216008017
+        ],
+        [
+          117.26455080672369,
+          -239.55944344557363
+        ]
+      ],
+      "bottom_m": 2.809889826886364,
+      "top_m": 3.334875067693488,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-012",
+      "polygon_xy_m": [
+        [
+          123.25889198069734,
+          -236.91788262419234
+        ],
+        [
+          123.04808392802205,
+          -234.93545102026883
+        ],
+        [
+          116.84306783660615,
+          -235.5952807750313
+        ],
+        [
+          117.05387588928144,
+          -237.57771237895483
+        ]
+      ],
+      "bottom_m": 2.834875067693488,
+      "top_m": 3.3598680736137045,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-013",
+      "polygon_xy_m": [
+        [
+          123.06197818726974,
+          -235.11557713416232
+        ],
+        [
+          122.96633261342016,
+          -233.12564090755052
+        ],
+        [
+          116.73352800350888,
+          -233.42521843452602
+        ],
+        [
+          116.82917357735846,
+          -235.41515466113782
+        ]
+      ],
+      "bottom_m": 2.8598680736137045,
+      "top_m": 3.3848438407968517,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-014",
+      "polygon_xy_m": [
+        [
+          122.96914314838126,
+          -233.2053492936239
+        ],
+        [
+          122.92436112739334,
+          -231.2121429209327
+        ],
+        [
+          116.68593544755986,
+          -231.35230367576145
+        ],
+        [
+          116.73071746854778,
+          -233.34551004845264
+        ]
+      ],
+      "bottom_m": 2.8848438407968517,
+      "top_m": 3.409838110568285,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-015",
+      "polygon_xy_m": [
+        [
+          122.92436112739334,
+          -231.2121429209327
+        ],
+        [
+          122.87957910640543,
+          -229.2189365482415
+        ],
+        [
+          116.64115342657195,
+          -229.35909730307023
+        ],
+        [
+          116.68593544755986,
+          -231.35230367576145
+        ]
+      ],
+      "bottom_m": 2.909838110568285,
+      "top_m": 3.434832380339718,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-016",
+      "polygon_xy_m": [
+        [
+          122.87957910640543,
+          -229.2189365482415
+        ],
+        [
+          122.8347970854175,
+          -227.2257301755503
+        ],
+        [
+          116.59637140558402,
+          -227.36589093037904
+        ],
+        [
+          116.64115342657195,
+          -229.35909730307023
+        ]
+      ],
+      "bottom_m": 2.934832380339718,
+      "top_m": 3.4598266501111508,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-017",
+      "polygon_xy_m": [
+        [
+          122.83481027469706,
+          -227.22631969900294
+        ],
+        [
+          122.79040496894747,
+          -225.23310508683517
+        ],
+        [
+          116.55195291055487,
+          -225.37208679475862
+        ],
+        [
+          116.59635821630447,
+          -227.3653014069264
+        ]
+      ],
+      "bottom_m": 2.9598266501111508,
+      "top_m": 3.4848209175176352,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-018",
+      "polygon_xy_m": [
+        [
+          122.79047298520369,
+          -225.23622834324794
+        ],
+        [
+          122.74806346550632,
+          -223.24297007945478
+        ],
+        [
+          116.50947537460128,
+          -223.37570527455267
+        ],
+        [
+          116.55188489429865,
+          -225.36896353834584
+        ]
+      ],
+      "bottom_m": 2.9848209175176352,
+      "top_m": 3.509815187289069,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-019",
+      "polygon_xy_m": [
+        [
+          122.74806346550632,
+          -223.2429700794548
+        ],
+        [
+          122.70565394580896,
+          -221.2497118156617
+        ],
+        [
+          116.46706585490392,
+          -221.38244701075953
+        ],
+        [
+          116.50947537460128,
+          -223.37570527455264
+        ]
+      ],
+      "bottom_m": 3.009815187289069,
+      "top_m": 3.534809457060501,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-020",
+      "polygon_xy_m": [
+        [
+          122.70565394580896,
+          -221.24971181566167
+        ],
+        [
+          122.66324442611159,
+          -219.25645355186853
+        ],
+        [
+          116.42465633520655,
+          -219.38918874696643
+        ],
+        [
+          116.46706585490392,
+          -221.38244701075956
+        ]
+      ],
+      "bottom_m": 3.034809457060501,
+      "top_m": 3.5598037268319342,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-021",
+      "polygon_xy_m": [
+        [
+          122.66324442611159,
+          -219.25645355186853
+        ],
+        [
+          122.62083490641422,
+          -217.2631952880754
+        ],
+        [
+          116.38224681550918,
+          -217.3959304831733
+        ],
+        [
+          116.42465633520655,
+          -219.38918874696643
+        ]
+      ],
+      "bottom_m": 3.0598037268319342,
+      "top_m": 3.5847979966033674,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-022",
+      "polygon_xy_m": [
+        [
+          122.58232732205789,
+          -216.83645561420522
+        ],
+        [
+          122.27231149260373,
+          -214.89956961502045
+        ],
+        [
+          116.11073857041134,
+          -215.8857841578587
+        ],
+        [
+          116.4207543998655,
+          -217.82267015704346
+        ]
+      ],
+      "bottom_m": 3.0847979966033674,
+      "top_m": 3.609388966529601,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-023",
+      "polygon_xy_m": [
+        [
+          122.07251758365236,
+          -214.19506179197637
+        ],
+        [
+          121.3072302625156,
+          -212.3540804260609
+        ],
+        [
+          115.54524515822597,
+          -214.7493106149873
+        ],
+        [
+          116.31053247936272,
+          -216.59029198090278
+        ]
+      ],
+      "bottom_m": 3.109388966529601,
+      "top_m": 3.634383236301034,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-024",
+      "polygon_xy_m": [
+        [
+          121.30723026251559,
+          -212.3540804260609
+        ],
+        [
+          120.54194294137884,
+          -210.51309906014546
+        ],
+        [
+          114.77995783708923,
+          -212.90832924907187
+        ],
+        [
+          115.54524515822598,
+          -214.7493106149873
+        ]
+      ],
+      "bottom_m": 3.134383236301034,
+      "top_m": 3.6593775060724667,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-025",
+      "polygon_xy_m": [
+        [
+          120.53984828850702,
+          -210.50807252654087
+        ],
+        [
+          119.77157274788195,
+          -208.66896535749845
+        ],
+        [
+          114.01377694933598,
+          -211.07424861363404
+        ],
+        [
+          114.78205248996105,
+          -212.91335578267646
+        ]
+      ],
+      "bottom_m": 3.1593775060724667,
+      "top_m": 3.684364497648887,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-026",
+      "polygon_xy_m": [
+        [
+          119.22511601233253,
+          -207.7993815591785
+        ],
+        [
+          117.90094445447275,
+          -206.30892969518027
+        ],
+        [
+          113.2360621270256,
+          -210.45338054795576
+        ],
+        [
+          114.56023368488539,
+          -211.943832411954
+        ]
+      ],
+      "bottom_m": 3.184364497648887,
+      "top_m": 3.70935876742032,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-027",
+      "polygon_xy_m": [
+        [
+          117.90094445447272,
+          -206.30892969518027
+        ],
+        [
+          116.57677289661294,
+          -204.81847783118207
+        ],
+        [
+          111.91189056916585,
+          -208.96292868395756
+        ],
+        [
+          113.23606212702563,
+          -210.45338054795576
+        ]
+      ],
+      "bottom_m": 3.20935876742032,
+      "top_m": 3.7343530371917533,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-028",
+      "polygon_xy_m": [
+        [
+          116.57677289661297,
+          -204.81847783118207
+        ],
+        [
+          115.25260133875318,
+          -203.32802596718383
+        ],
+        [
+          110.58771901130604,
+          -207.47247681995933
+        ],
+        [
+          111.91189056916582,
+          -208.96292868395756
+        ]
+      ],
+      "bottom_m": 3.2343530371917533,
+      "top_m": 3.759347306963186,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-029",
+      "polygon_xy_m": [
+        [
+          115.25260133875318,
+          -203.32802596718383
+        ],
+        [
+          113.9284297808934,
+          -201.8375741031856
+        ],
+        [
+          109.26354745344625,
+          -205.9820249559611
+        ],
+        [
+          110.58771901130604,
+          -207.47247681995933
+        ]
+      ],
+      "bottom_m": 3.259347306963186,
+      "top_m": 3.784341576734619,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-030",
+      "polygon_xy_m": [
+        [
+          113.92842978089341,
+          -201.83757410318563
+        ],
+        [
+          112.60425822303364,
+          -200.3471222391874
+        ],
+        [
+          107.93937589558647,
+          -204.49157309196283
+        ],
+        [
+          109.26354745344624,
+          -205.98202495596107
+        ]
+      ],
+      "bottom_m": 3.284341576734619,
+      "top_m": 3.8093358465060523,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-031",
+      "polygon_xy_m": [
+        [
+          112.60425822303361,
+          -200.34712223918737
+        ],
+        [
+          111.28008666517383,
+          -198.85667037518917
+        ],
+        [
+          106.61520433772671,
+          -203.00112122796466
+        ],
+        [
+          107.9393758955865,
+          -204.49157309196286
+        ]
+      ],
+      "bottom_m": 3.27047157,
+      "top_m": 3.8093358465060523,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-032",
+      "polygon_xy_m": [
+        [
+          111.28008666517384,
+          -198.85667037518917
+        ],
+        [
+          109.95591510731406,
+          -197.36621851119094
+        ],
+        [
+          105.29103277986691,
+          -201.51066936396643
+        ],
+        [
+          106.6152043377267,
+          -203.00112122796466
+        ]
+      ],
+      "bottom_m": 3.22764897,
+      "top_m": 3.77047157,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-033",
+      "polygon_xy_m": [
+        [
+          109.95591510731406,
+          -197.36621851119094
+        ],
+        [
+          108.63174354945427,
+          -195.8757666471927
+        ],
+        [
+          103.96686122200713,
+          -200.0202174999682
+        ],
+        [
+          105.29103277986691,
+          -201.51066936396643
+        ]
+      ],
+      "bottom_m": 3.1843605,
+      "top_m": 3.72764897,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-034",
+      "polygon_xy_m": [
+        [
+          108.63174354945426,
+          -195.8757666471927
+        ],
+        [
+          107.30757199159446,
+          -194.38531478319447
+        ],
+        [
+          102.64268966414734,
+          -198.52976563596997
+        ],
+        [
+          103.96686122200714,
+          -200.0202174999682
+        ]
+      ],
+      "bottom_m": 3.1386042557554124,
+      "top_m": 3.6843605,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-035",
+      "polygon_xy_m": [
+        [
+          107.30757199159446,
+          -194.38531478319447
+        ],
+        [
+          105.98340043373469,
+          -192.89486291919627
+        ],
+        [
+          101.31851810628757,
+          -197.03931377197176
+        ],
+        [
+          102.64268966414734,
+          -198.52976563596997
+        ]
+      ],
+      "bottom_m": 3.085383854064111,
+      "top_m": 3.6386042557554124,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-036",
+      "polygon_xy_m": [
+        [
+          105.98340043373472,
+          -192.8948629191963
+        ],
+        [
+          104.65922887587493,
+          -191.40441105519804
+        ],
+        [
+          99.99434654842776,
+          -195.54886190797347
+        ],
+        [
+          101.31851810628754,
+          -197.03931377197173
+        ]
+      ],
+      "bottom_m": 3.036404030271838,
+      "top_m": 3.585383854064111,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-037",
+      "polygon_xy_m": [
+        [
+          104.6592288758749,
+          -191.404411055198
+        ],
+        [
+          103.33505731801512,
+          -189.9139591911998
+        ],
+        [
+          98.670174990568,
+          -194.0584100439753
+        ],
+        [
+          99.99434654842779,
+          -195.5488619079735
+        ]
+      ],
+      "bottom_m": 2.98343635,
+      "top_m": 3.536404030271838,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-038",
+      "polygon_xy_m": [
+        [
+          103.37610928734416,
+          -189.9611092245831
+        ],
+        [
+          102.08281598841259,
+          -188.44530256640093
+        ],
+        [
+          97.33582972230738,
+          -192.4954533524098
+        ],
+        [
+          98.62912302123895,
+          -194.011260010592
+        ]
+      ],
+      "bottom_m": 2.934407158930738,
+      "top_m": 3.48343635,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-039",
+      "polygon_xy_m": [
+        [
+          102.19577176871289,
+          -188.58571040217248
+        ],
+        [
+          100.9914514551362,
+          -186.99684613614875
+        ],
+        [
+          96.0185536284304,
+          -190.76618125061452
+        ],
+        [
+          97.22287394200708,
+          -192.35504551663826
+        ]
+      ],
+      "bottom_m": 2.881933291289259,
+      "top_m": 3.434407158930738,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-040",
+      "polygon_xy_m": [
+        [
+          100.99145145513619,
+          -186.99684613614872
+        ],
+        [
+          99.78713114155948,
+          -185.40798187012498
+        ],
+        [
+          94.81423331485371,
+          -189.17731698459082
+        ],
+        [
+          96.01855362843041,
+          -190.76618125061455
+        ]
+      ],
+      "bottom_m": 2.8222224525839366,
+      "top_m": 3.381933291289259,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-041",
+      "polygon_xy_m": [
+        [
+          99.7871311415595,
+          -185.407981870125
+        ],
+        [
+          98.58281082798281,
+          -183.81911760410128
+        ],
+        [
+          93.60991300127701,
+          -187.58845271856705
+        ],
+        [
+          94.8142333148537,
+          -189.1773169845908
+        ]
+      ],
+      "bottom_m": 2.7575899523441305,
+      "top_m": 3.3222224525839366,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-042",
+      "polygon_xy_m": [
+        [
+          98.5828108279828,
+          -183.81911760410125
+        ],
+        [
+          97.3784905144061,
+          -182.23025333807752
+        ],
+        [
+          92.40559268770032,
+          -185.99958845254335
+        ],
+        [
+          93.60991300127702,
+          -187.58845271856708
+        ]
+      ],
+      "bottom_m": 2.688204293437718,
+      "top_m": 3.2575899523441305,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-043",
+      "polygon_xy_m": [
+        [
+          97.37849051440611,
+          -182.23025333807755
+        ],
+        [
+          96.17417020082942,
+          -180.6413890720538
+        ],
+        [
+          91.20127237412362,
+          -184.4107241865196
+        ],
+        [
+          92.4055926877003,
+          -185.99958845254332
+        ]
+      ],
+      "bottom_m": 2.621176689734528,
+      "top_m": 3.188204293437718,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-044",
+      "polygon_xy_m": [
+        [
+          96.17417020082941,
+          -180.64138907205378
+        ],
+        [
+          94.9698498872527,
+          -179.05252480603005
+        ],
+        [
+          89.99695206054693,
+          -182.82185992049588
+        ],
+        [
+          91.20127237412363,
+          -184.41072418651962
+        ]
+      ],
+      "bottom_m": 2.5505529101406603,
+      "top_m": 3.121176689734528,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-045",
+      "polygon_xy_m": [
+        [
+          95.0335003650342,
+          -179.13958475999243
+        ],
+        [
+          93.88620371130351,
+          -177.5120212734973
+        ],
+        [
+          88.78600492903475,
+          -181.10723648003838
+        ],
+        [
+          89.93330158276544,
+          -182.7347999665335
+        ]
+      ],
+      "bottom_m": 2.4687342923778495,
+      "top_m": 3.0505529101406603,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-046",
+      "polygon_xy_m": [
+        [
+          94.00584251355063,
+          -177.69503977151535
+        ],
+        [
+          92.9741048736296,
+          -175.98905192984978
+        ],
+        [
+          87.63462848686659,
+          -179.21823014035476
+        ],
+        [
+          88.66636612678762,
+          -180.92421798202034
+        ]
+      ],
+      "bottom_m": 2.4043866793449533,
+      "top_m": 2.9687342923778495,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-047",
+      "polygon_xy_m": [
+        [
+          92.97410487362961,
+          -175.9890519298498
+        ],
+        [
+          91.9423672337086,
+          -174.2830640881842
+        ],
+        [
+          86.60289084694556,
+          -177.51224229868913
+        ],
+        [
+          87.63462848686657,
+          -179.21823014035473
+        ]
+      ],
+      "bottom_m": 2.3577436507512135,
+      "top_m": 2.9043866793449533,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-048",
+      "polygon_xy_m": [
+        [
+          91.94236723370858,
+          -174.28306408818418
+        ],
+        [
+          90.91062959378755,
+          -172.5770762465186
+        ],
+        [
+          85.57115320702454,
+          -175.80625445702358
+        ],
+        [
+          86.60289084694557,
+          -177.51224229868916
+        ]
+      ],
+      "bottom_m": 2.321649307176899,
+      "top_m": 2.8577436507512135,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-049",
+      "polygon_xy_m": [
+        [
+          90.91062959378755,
+          -172.5770762465186
+        ],
+        [
+          89.87889195386651,
+          -170.87108840485303
+        ],
+        [
+          84.5394155671035,
+          -174.100266615358
+        ],
+        [
+          85.57115320702454,
+          -175.80625445702358
+        ]
+      ],
+      "bottom_m": 2.293340351992926,
+      "top_m": 2.821649307176899,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-050",
+      "polygon_xy_m": [
+        [
+          89.87889195386651,
+          -170.87108840485303
+        ],
+        [
+          88.8471543139455,
+          -169.16510056318745
+        ],
+        [
+          83.50767792718248,
+          -172.39427877369243
+        ],
+        [
+          84.5394155671035,
+          -174.100266615358
+        ]
+      ],
+      "bottom_m": 2.271136855909695,
+      "top_m": 2.793340351992926,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-051",
+      "polygon_xy_m": [
+        [
+          88.8471543139455,
+          -169.16510056318745
+        ],
+        [
+          87.81541667402446,
+          -167.45911272152188
+        ],
+        [
+          82.47594028726145,
+          -170.68829093202686
+        ],
+        [
+          83.50767792718248,
+          -172.39427877369243
+        ]
+      ],
+      "bottom_m": 2.258478482464906,
+      "top_m": 2.771136855909695,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-052",
+      "polygon_xy_m": [
+        [
+          87.81541667402446,
+          -167.45911272152188
+        ],
+        [
+          86.78367903410344,
+          -165.7531248798563
+        ],
+        [
+          81.44420264734043,
+          -168.98230309036128
+        ],
+        [
+          82.47594028726145,
+          -170.68829093202686
+        ]
+      ],
+      "bottom_m": 2.250746323982671,
+      "top_m": 2.758478482464906,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-053",
+      "polygon_xy_m": [
+        [
+          86.80188538026474,
+          -165.78361987416017
+        ],
+        [
+          85.78983708836866,
+          -164.06634205515064
+        ],
+        [
+          80.41394800928306,
+          -167.2345302770479
+        ],
+        [
+          81.42599630117914,
+          -168.95180809605742
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.750746323982671,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-054",
+      "polygon_xy_m": [
+        [
+          85.84390826166673,
+          -164.1618966703069
+        ],
+        [
+          84.89271750897187,
+          -162.40972281320015
+        ],
+        [
+          79.40868608329014,
+          -165.38680180478488
+        ],
+        [
+          80.35987683598499,
+          -167.13897566189164
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-055",
+      "polygon_xy_m": [
+        [
+          84.8927175089719,
+          -162.4097228132002
+        ],
+        [
+          83.94152675627706,
+          -160.65754895609342
+        ],
+        [
+          78.45749533059526,
+          -163.63462794767804
+        ],
+        [
+          79.4086860832901,
+          -165.38680180478482
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-056",
+      "polygon_xy_m": [
+        [
+          83.94152675627704,
+          -160.6575489560934
+        ],
+        [
+          82.9903360035822,
+          -158.90537509898664
+        ],
+        [
+          77.50630457790044,
+          -161.88245409057131
+        ],
+        [
+          78.45749533059528,
+          -163.63462794767807
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-057",
+      "polygon_xy_m": [
+        [
+          82.99033600358219,
+          -158.9053750989866
+        ],
+        [
+          82.03914525088733,
+          -157.15320124187986
+        ],
+        [
+          76.5551138252056,
+          -160.1302802334646
+        ],
+        [
+          77.50630457790045,
+          -161.88245409057134
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-058",
+      "polygon_xy_m": [
+        [
+          82.03914525088736,
+          -157.1532012418799
+        ],
+        [
+          81.08795449819252,
+          -155.40102738477313
+        ],
+        [
+          75.60392307251072,
+          -158.37810637635775
+        ],
+        [
+          76.55511382520557,
+          -160.13028023346453
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-059",
+      "polygon_xy_m": [
+        [
+          81.08795449819249,
+          -155.40102738477307
+        ],
+        [
+          80.13676374549763,
+          -153.64885352766632
+        ],
+        [
+          74.6527323198159,
+          -156.62593251925105
+        ],
+        [
+          75.60392307251075,
+          -158.3781063763578
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-060",
+      "polygon_xy_m": [
+        [
+          80.13676374549766,
+          -153.64885352766638
+        ],
+        [
+          79.18557299280282,
+          -151.8966796705596
+        ],
+        [
+          73.70154156712103,
+          -154.8737586621442
+        ],
+        [
+          74.65273231981587,
+          -156.625932519251
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-061",
+      "polygon_xy_m": [
+        [
+          79.1855729928028,
+          -151.89667967055956
+        ],
+        [
+          78.23438224010796,
+          -150.1445058134528
+        ],
+        [
+          72.7503508144262,
+          -153.1215848050375
+        ],
+        [
+          73.70154156712104,
+          -154.87375866214424
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-062",
+      "polygon_xy_m": [
+        [
+          78.23438224010795,
+          -150.14450581345278
+        ],
+        [
+          77.28319148741309,
+          -148.39233195634603
+        ],
+        [
+          71.79916006173136,
+          -151.36941094793076
+        ],
+        [
+          72.75035081442621,
+          -153.12158480503751
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-063",
+      "polygon_xy_m": [
+        [
+          77.28319148741312,
+          -148.39233195634608
+        ],
+        [
+          76.33200073471828,
+          -146.6401580992393
+        ],
+        [
+          70.84796930903649,
+          -149.61723709082392
+        ],
+        [
+          71.79916006173133,
+          -151.3694109479307
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-064",
+      "polygon_xy_m": [
+        [
+          76.36604778562754,
+          -146.7046626475251
+        ],
+        [
+          75.45671915519651,
+          -144.93198610235206
+        ],
+        [
+          69.90459362769619,
+          -147.78005599736505
+        ],
+        [
+          70.81392225812722,
+          -149.5527325425381
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-065",
+      "polygon_xy_m": [
+        [
+          75.53769279864889,
+          -145.1023293142556
+        ],
+        [
+          74.73657197585155,
+          -143.27665615050992
+        ],
+        [
+          69.02249916144646,
+          -145.78403962171583
+        ],
+        [
+          69.8236199842438,
+          -147.6097127854615
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-066",
+      "polygon_xy_m": [
+        [
+          74.73657197585155,
+          -143.27665615050992
+        ],
+        [
+          73.93545115305422,
+          -141.45098298676427
+        ],
+        [
+          68.22137833864913,
+          -143.9583664579702
+        ],
+        [
+          69.02249916144646,
+          -145.78403962171583
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-067",
+      "polygon_xy_m": [
+        [
+          73.93545115305422,
+          -141.45098298676427
+        ],
+        [
+          73.13433033025687,
+          -139.6253098230186
+        ],
+        [
+          67.42025751585179,
+          -142.1326932942245
+        ],
+        [
+          68.22137833864913,
+          -143.9583664579702
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-068",
+      "polygon_xy_m": [
+        [
+          73.13433033025687,
+          -139.62530982301857
+        ],
+        [
+          72.33320950745953,
+          -137.79963665927292
+        ],
+        [
+          66.61913669305444,
+          -140.3070201304789
+        ],
+        [
+          67.42025751585179,
+          -142.13269329422454
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-069",
+      "polygon_xy_m": [
+        [
+          72.33320950745953,
+          -137.79963665927295
+        ],
+        [
+          71.53208868466217,
+          -135.97396349552724
+        ],
+        [
+          65.81801587025708,
+          -138.48134696673316
+        ],
+        [
+          66.61913669305444,
+          -140.30702013047886
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-070",
+      "polygon_xy_m": [
+        [
+          71.53208868466217,
+          -135.97396349552722
+        ],
+        [
+          70.73096786186483,
+          -134.14829033178157
+        ],
+        [
+          65.01689504745974,
+          -136.65567380298754
+        ],
+        [
+          65.81801587025708,
+          -138.48134696673318
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-071",
+      "polygon_xy_m": [
+        [
+          70.73096786186483,
+          -134.14829033178157
+        ],
+        [
+          69.9298470390675,
+          -132.32261716803595
+        ],
+        [
+          64.21577422466241,
+          -134.83000063924192
+        ],
+        [
+          65.01689504745974,
+          -136.65567380298754
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-072",
+      "polygon_xy_m": [
+        [
+          69.9298470390675,
+          -132.32261716803598
+        ],
+        [
+          69.12872621627015,
+          -130.4969440042903
+        ],
+        [
+          63.41465340186507,
+          -133.0043274754962
+        ],
+        [
+          64.21577422466241,
+          -134.8300006392419
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-073",
+      "polygon_xy_m": [
+        [
+          69.12872621627015,
+          -130.49694400429027
+        ],
+        [
+          68.3276053934728,
+          -128.6712708405446
+        ],
+        [
+          62.613532579067716,
+          -131.17865431175056
+        ],
+        [
+          63.414653401865074,
+          -133.00432747549624
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-074",
+      "polygon_xy_m": [
+        [
+          68.3276053934728,
+          -128.67127084054462
+        ],
+        [
+          67.52648457067545,
+          -126.84559767679893
+        ],
+        [
+          61.812411756270365,
+          -129.35298114800486
+        ],
+        [
+          62.61353257906771,
+          -131.17865431175053
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-075",
+      "polygon_xy_m": [
+        [
+          67.52648457067545,
+          -126.84559767679892
+        ],
+        [
+          66.7253637478781,
+          -125.01992451305327
+        ],
+        [
+          61.01129093347303,
+          -127.52730798425924
+        ],
+        [
+          61.81241175627037,
+          -129.3529811480049
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-076",
+      "polygon_xy_m": [
+        [
+          66.73251122906635,
+          -125.03634075246202
+        ],
+        [
+          65.94195953518849,
+          -123.20628315291384
+        ],
+        [
+          60.21359175840693,
+          -125.6808341453023
+        ],
+        [
+          61.00414345228479,
+          -127.51089174485048
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-077",
+      "polygon_xy_m": [
+        [
+          65.98329690009004,
+          -123.30674457166774
+        ],
+        [
+          65.25686200128409,
+          -121.4500891347766
+        ],
+        [
+          59.44581949469941,
+          -123.72371728965727
+        ],
+        [
+          60.17225439350536,
+          -125.5803727265484
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-078",
+      "polygon_xy_m": [
+        [
+          65.25686200128408,
+          -121.45008913477659
+        ],
+        [
+          64.53042710247811,
+          -119.59343369788547
+        ],
+        [
+          58.71938459589345,
+          -121.86706185276617
+        ],
+        [
+          59.445819494699414,
+          -123.72371728965729
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-079",
+      "polygon_xy_m": [
+        [
+          64.53042710247813,
+          -119.59343369788547
+        ],
+        [
+          63.803992203672166,
+          -117.73677826099436
+        ],
+        [
+          57.9929496970875,
+          -120.01040641587505
+        ],
+        [
+          58.71938459589345,
+          -121.86706185276617
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-080",
+      "polygon_xy_m": [
+        [
+          63.80399220367217,
+          -117.73677826099437
+        ],
+        [
+          63.07755730486622,
+          -115.88012282410324
+        ],
+        [
+          57.266514798281534,
+          -118.15375097898391
+        ],
+        [
+          57.99294969708749,
+          -120.01040641587504
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-081",
+      "polygon_xy_m": [
+        [
+          63.07755730486621,
+          -115.88012282410324
+        ],
+        [
+          62.35112240606025,
+          -114.0234673872121
+        ],
+        [
+          56.54007989947558,
+          -116.29709554209276
+        ],
+        [
+          57.26651479828154,
+          -118.15375097898391
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-082",
+      "polygon_xy_m": [
+        [
+          62.35112240606025,
+          -114.02346738721208
+        ],
+        [
+          61.6246875072543,
+          -112.16681195032099
+        ],
+        [
+          55.81364500066963,
+          -114.44044010520169
+        ],
+        [
+          56.54007989947558,
+          -116.29709554209278
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-083",
+      "polygon_xy_m": [
+        [
+          61.62468750725431,
+          -112.166811950321
+        ],
+        [
+          60.89825260844835,
+          -110.31015651342987
+        ],
+        [
+          55.08721010186367,
+          -112.58378466831054
+        ],
+        [
+          55.813645000669624,
+          -114.44044010520167
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-084",
+      "polygon_xy_m": [
+        [
+          60.898252608448345,
+          -110.31015651342987
+        ],
+        [
+          60.17181770964238,
+          -108.45350107653873
+        ],
+        [
+          54.36077520305771,
+          -110.7271292314194
+        ],
+        [
+          55.087210101863676,
+          -112.58378466831054
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-085",
+      "polygon_xy_m": [
+        [
+          60.17793052235853,
+          -108.46925000615806
+        ],
+        [
+          59.46165947041466,
+          -106.60894848899014
+        ],
+        [
+          53.638391338397696,
+          -108.85107878463214
+        ],
+        [
+          54.354662390341566,
+          -110.71138030180006
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-086",
+      "polygon_xy_m": [
+        [
+          59.51562627669718,
+          -106.76067805701081
+        ],
+        [
+          58.896211714725226,
+          -104.86563117791846
+        ],
+        [
+          52.965009970143214,
+          -106.80430233751912
+        ],
+        [
+          53.58442453211517,
+          -108.69934921661147
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-087",
+      "polygon_xy_m": [
+        [
+          58.89621171472522,
+          -104.86563117791846
+        ],
+        [
+          58.276797152753254,
+          -102.9705842988261
+        ],
+        [
+          52.345595408171256,
+          -104.90925545842676
+        ],
+        [
+          52.96500997014322,
+          -106.80430233751912
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-088",
+      "polygon_xy_m": [
+        [
+          58.27679715275326,
+          -102.9705842988261
+        ],
+        [
+          57.6573825907813,
+          -101.07553741973375
+        ],
+        [
+          51.72618084619929,
+          -103.01420857933441
+        ],
+        [
+          52.34559540817125,
+          -104.90925545842676
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-089",
+      "polygon_xy_m": [
+        [
+          57.657382590781296,
+          -101.07553741973373
+        ],
+        [
+          57.03796802880933,
+          -99.18049054064139
+        ],
+        [
+          51.106766284227334,
+          -101.11916170024207
+        ],
+        [
+          51.7261808461993,
+          -103.01420857933442
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-090",
+      "polygon_xy_m": [
+        [
+          57.03796802880934,
+          -99.1804905406414
+        ],
+        [
+          56.41855346683739,
+          -97.28544366154907
+        ],
+        [
+          50.487351722255376,
+          -99.22411482114973
+        ],
+        [
+          51.10676628422733,
+          -101.11916170024206
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-091",
+      "polygon_xy_m": [
+        [
+          56.41855346683738,
+          -97.28544366154905
+        ],
+        [
+          55.79913890486541,
+          -95.39039678245668
+        ],
+        [
+          49.86793716028341,
+          -97.32906794205736
+        ],
+        [
+          50.48735172225538,
+          -99.22411482114974
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-092",
+      "polygon_xy_m": [
+        [
+          55.799138904865416,
+          -95.39039678245669
+        ],
+        [
+          55.17972434289346,
+          -93.49534990336434
+        ],
+        [
+          49.248522598311446,
+          -95.434021062965
+        ],
+        [
+          49.867937160283404,
+          -97.32906794205735
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-093",
+      "polygon_xy_m": [
+        [
+          55.17972434289345,
+          -93.49534990336434
+        ],
+        [
+          54.560309780921486,
+          -91.60030302427198
+        ],
+        [
+          48.62910803633949,
+          -93.53897418387264
+        ],
+        [
+          49.24852259831145,
+          -95.434021062965
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-094",
+      "polygon_xy_m": [
+        [
+          54.56030978092149,
+          -91.60030302427198
+        ],
+        [
+          53.940895218949535,
+          -89.70525614517963
+        ],
+        [
+          48.00969347436752,
+          -91.64392730478029
+        ],
+        [
+          48.62910803633948,
+          -93.53897418387264
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-095",
+      "polygon_xy_m": [
+        [
+          53.94089521894953,
+          -89.70525614517962
+        ],
+        [
+          53.32148065697756,
+          -87.81020926608727
+        ],
+        [
+          47.390278912395566,
+          -89.74888042568796
+        ],
+        [
+          48.00969347436753,
+          -91.6439273047803
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-096",
+      "polygon_xy_m": [
+        [
+          53.32148065697757,
+          -87.81020926608728
+        ],
+        [
+          52.702066095005605,
+          -85.91516238699491
+        ],
+        [
+          46.770864350423594,
+          -87.85383354659557
+        ],
+        [
+          47.39027891239556,
+          -89.74888042568794
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-097",
+      "polygon_xy_m": [
+        [
+          52.7020660950056,
+          -85.91516238699491
+        ],
+        [
+          52.08265153303363,
+          -84.02011550790255
+        ],
+        [
+          46.151449788451636,
+          -85.9587866675032
+        ],
+        [
+          46.7708643504236,
+          -87.85383354659557
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-098",
+      "polygon_xy_m": [
+        [
+          52.08265153303363,
+          -84.02011550790253
+        ],
+        [
+          51.46323697106167,
+          -82.12506862881018
+        ],
+        [
+          45.53203522647967,
+          -84.06373978841087
+        ],
+        [
+          46.151449788451636,
+          -85.95878666750322
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-099",
+      "polygon_xy_m": [
+        [
+          51.507652485398715,
+          -82.27330655776098
+        ],
+        [
+          50.98299425274936,
+          -80.34999101055425
+        ],
+        [
+          44.962961479493266,
+          -81.99218631225335
+        ],
+        [
+          45.487619712142624,
+          -83.91550185946008
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-100",
+      "polygon_xy_m": [
+        [
+          50.98493492139104,
+          -80.357138603224
+        ],
+        [
+          50.46481317071895,
+          -78.43246968675594
+        ],
+        [
+          44.4408990601795,
+          -80.06036980311553
+        ],
+        [
+          44.961020810851586,
+          -81.9850387195836
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-101",
+      "polygon_xy_m": [
+        [
+          50.46481317071895,
+          -78.43246968675592
+        ],
+        [
+          49.94469142004686,
+          -76.50780077028787
+        ],
+        [
+          43.92077730950741,
+          -78.1357008866475
+        ],
+        [
+          44.4408990601795,
+          -80.06036980311555
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-102",
+      "polygon_xy_m": [
+        [
+          49.94469142004686,
+          -76.50780077028789
+        ],
+        [
+          49.42456966937477,
+          -74.58313185381982
+        ],
+        [
+          43.40065555883532,
+          -76.21103197017942
+        ],
+        [
+          43.92077730950741,
+          -78.13570088664748
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-103",
+      "polygon_xy_m": [
+        [
+          49.42456966937477,
+          -74.58313185381981
+        ],
+        [
+          48.904447918702665,
+          -72.6584629373517
+        ],
+        [
+          42.880533808163214,
+          -74.28636305371133
+        ],
+        [
+          43.40065555883532,
+          -76.21103197017943
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-104",
+      "polygon_xy_m": [
+        [
+          48.904447918702665,
+          -72.65846293735171
+        ],
+        [
+          48.384326168030576,
+          -70.73379402088365
+        ],
+        [
+          42.360412057491125,
+          -72.36169413724325
+        ],
+        [
+          42.880533808163214,
+          -74.28636305371131
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-105",
+      "polygon_xy_m": [
+        [
+          48.38432616803058,
+          -70.73379402088365
+        ],
+        [
+          47.86420441735849,
+          -68.80912510441557
+        ],
+        [
+          41.84029030681903,
+          -70.43702522077517
+        ],
+        [
+          42.36041205749112,
+          -72.36169413724325
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-106",
+      "polygon_xy_m": [
+        [
+          47.864204417358486,
+          -68.80912510441556
+        ],
+        [
+          47.34408266668639,
+          -66.88445618794749
+        ],
+        [
+          41.32016855614694,
+          -68.51235630430712
+        ],
+        [
+          41.840290306819035,
+          -70.43702522077518
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-107",
+      "polygon_xy_m": [
+        [
+          47.34408266668639,
+          -66.8844561879475
+        ],
+        [
+          46.82396091601429,
+          -64.95978727147941
+        ],
+        [
+          40.80004680547484,
+          -66.58768738783901
+        ],
+        [
+          41.32016855614694,
+          -68.5123563043071
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-108",
+      "polygon_xy_m": [
+        [
+          46.82237136604278,
+          -64.95392791092543
+        ],
+        [
+          46.29850704378446,
+          -63.03028066209621
+        ],
+        [
+          40.277772033188036,
+          -64.66989949956377
+        ],
+        [
+          40.801636355446355,
+          -66.593546748393
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-109",
+      "polygon_xy_m": [
+        [
+          46.29589433391914,
+          -63.02074630979748
+        ],
+        [
+          45.765935855799434,
+          -61.09876267693023
+        ],
+        [
+          39.750426264933644,
+          -62.75745021899524
+        ],
+        [
+          40.280384743053354,
+          -64.67943385186248
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-110",
+      "polygon_xy_m": [
+        [
+          45.765935855799434,
+          -61.098762676930235
+        ],
+        [
+          45.235977377679724,
+          -59.176779044062975
+        ],
+        [
+          39.220467786813934,
+          -60.83546658612797
+        ],
+        [
+          39.750426264933644,
+          -62.75745021899523
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-111",
+      "polygon_xy_m": [
+        [
+          45.235977377679724,
+          -59.17677904406296
+        ],
+        [
+          44.70601889956001,
+          -57.2547954111957
+        ],
+        [
+          38.69050930869422,
+          -58.913482953260726
+        ],
+        [
+          39.220467786813934,
+          -60.835466586127986
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-112",
+      "polygon_xy_m": [
+        [
+          44.70601889956001,
+          -57.25479541119571
+        ],
+        [
+          44.176060421440305,
+          -55.332811778328484
+        ],
+        [
+          38.160550830574515,
+          -56.991499320393494
+        ],
+        [
+          38.69050930869422,
+          -58.91348295326072
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-113",
+      "polygon_xy_m": [
+        [
+          44.176060421440305,
+          -55.33281177832849
+        ],
+        [
+          43.646101943320595,
+          -53.41082814546123
+        ],
+        [
+          37.630592352454805,
+          -55.06951568752623
+        ],
+        [
+          38.160550830574515,
+          -56.99149932039349
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-114",
+      "polygon_xy_m": [
+        [
+          43.646101943320595,
+          -53.41082814546122
+        ],
+        [
+          43.11614346520087,
+          -51.48884451259393
+        ],
+        [
+          37.10063387433508,
+          -53.14753205465895
+        ],
+        [
+          37.630592352454805,
+          -55.06951568752624
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-115",
+      "polygon_xy_m": [
+        [
+          43.11614346520087,
+          -51.488844512593936
+        ],
+        [
+          42.58618498708116,
+          -49.56686087972668
+        ],
+        [
+          36.57067539621537,
+          -51.22554842179169
+        ],
+        [
+          37.10063387433508,
+          -53.147532054658946
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-116",
+      "polygon_xy_m": [
+        [
+          42.58618498708116,
+          -49.56686087972669
+        ],
+        [
+          42.05622650896145,
+          -47.64487724685943
+        ],
+        [
+          36.04071691809566,
+          -49.303564788924426
+        ],
+        [
+          36.57067539621537,
+          -51.225548421791686
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-117",
+      "polygon_xy_m": [
+        [
+          42.05622650896145,
+          -47.64487724685943
+        ],
+        [
+          41.52626803084174,
+          -45.72289361399217
+        ],
+        [
+          35.51075843997595,
+          -47.381581156057166
+        ],
+        [
+          36.04071691809566,
+          -49.303564788924426
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-118",
+      "polygon_xy_m": [
+        [
+          41.52626803084174,
+          -45.722893613992156
+        ],
+        [
+          40.996309552722025,
+          -43.8009099811249
+        ],
+        [
+          34.980799961856235,
+          -45.45959752318993
+        ],
+        [
+          35.51075843997595,
+          -47.38158115605718
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-119",
+      "polygon_xy_m": [
+        [
+          40.996309552722025,
+          -43.80090998112491
+        ],
+        [
+          40.46635107460231,
+          -41.87892634825763
+        ],
+        [
+          34.45084148373652,
+          -43.53761389032264
+        ],
+        [
+          34.980799961856235,
+          -45.45959752318992
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-120",
+      "polygon_xy_m": [
+        [
+          40.466351074602315,
+          -41.878926348257636
+        ],
+        [
+          39.936392596482605,
+          -39.95694271539037
+        ],
+        [
+          33.9208830056168,
+          -41.615630257455365
+        ],
+        [
+          34.45084148373651,
+          -43.53761389032263
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-121",
+      "polygon_xy_m": [
+        [
+          39.949771784762994,
+          -40.007088531822966
+        ],
+        [
+          39.451992967463305,
+          -38.077082822184146
+        ],
+        [
+          33.40972500003672,
+          -39.63547873138395
+        ],
+        [
+          33.90750381733641,
+          -41.56548444102277
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-122",
+      "polygon_xy_m": [
+        [
+          39.47595043016944,
+          -38.17670879167634
+        ],
+        [
+          39.04169753338564,
+          -36.230866687297016
+        ],
+        [
+          32.95151464054678,
+          -37.59001065751243
+        ],
+        [
+          33.38576753733059,
+          -39.53585276189175
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-123",
+      "polygon_xy_m": [
+        [
+          39.04169753338564,
+          -36.23086668729701
+        ],
+        [
+          38.60744463660183,
+          -34.285024582917664
+        ],
+        [
+          32.51726174376297,
+          -35.64416855313309
+        ],
+        [
+          32.95151464054678,
+          -37.59001065751244
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-124",
+      "polygon_xy_m": [
+        [
+          38.60744463660183,
+          -34.28502458291767
+        ],
+        [
+          38.173191739818016,
+          -32.33918247853832
+        ],
+        [
+          32.08300884697916,
+          -33.69832644875373
+        ],
+        [
+          32.51726174376297,
+          -35.644168553133085
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-125",
+      "polygon_xy_m": [
+        [
+          38.173191739818016,
+          -32.33918247853831
+        ],
+        [
+          37.738938843034205,
+          -30.393340374158967
+        ],
+        [
+          31.64875595019535,
+          -31.752484344374395
+        ],
+        [
+          32.08300884697916,
+          -33.69832644875374
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-126",
+      "polygon_xy_m": [
+        [
+          37.738938843034205,
+          -30.393340374158967
+        ],
+        [
+          37.30468594625039,
+          -28.44749826977959
+        ],
+        [
+          31.214503053411534,
+          -29.806642239995018
+        ],
+        [
+          31.64875595019535,
+          -31.752484344374395
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-127",
+      "polygon_xy_m": [
+        [
+          37.30468594625039,
+          -28.447498269779583
+        ],
+        [
+          36.87043304946657,
+          -26.501656165400234
+        ],
+        [
+          30.780250156627716,
+          -27.860800135615676
+        ],
+        [
+          31.214503053411534,
+          -29.806642239995025
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-128",
+      "polygon_xy_m": [
+        [
+          36.87043304946657,
+          -26.501656165400245
+        ],
+        [
+          36.43618015268276,
+          -24.555814061020897
+        ],
+        [
+          30.345997259843905,
+          -25.914958031236317
+        ],
+        [
+          30.780250156627716,
+          -27.860800135615666
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-129",
+      "polygon_xy_m": [
+        [
+          36.43618015268276,
+          -24.555814061020893
+        ],
+        [
+          36.00192725589895,
+          -22.609971956641548
+        ],
+        [
+          29.911744363060095,
+          -23.969115926856976
+        ],
+        [
+          30.345997259843905,
+          -25.91495803123632
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-130",
+      "polygon_xy_m": [
+        [
+          36.00192725589895,
+          -22.60997195664155
+        ],
+        [
+          35.56767435911514,
+          -20.664129852262203
+        ],
+        [
+          29.477491466276284,
+          -22.023273822477623
+        ],
+        [
+          29.911744363060095,
+          -23.969115926856972
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-131",
+      "polygon_xy_m": [
+        [
+          35.56767435911514,
+          -20.664129852262203
+        ],
+        [
+          35.13342146233133,
+          -18.718287747882854
+        ],
+        [
+          29.043238569492473,
+          -20.077431718098275
+        ],
+        [
+          29.477491466276284,
+          -22.023273822477623
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-132",
+      "polygon_xy_m": [
+        [
+          35.13342146233133,
+          -18.718287747882847
+        ],
+        [
+          34.69916856554751,
+          -16.7724456435035
+        ],
+        [
+          28.60898567270866,
+          -18.131589613718933
+        ],
+        [
+          29.043238569492473,
+          -20.077431718098282
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-133",
+      "polygon_xy_m": [
+        [
+          34.69916856554751,
+          -16.7724456435035
+        ],
+        [
+          34.2649156687637,
+          -14.82660353912415
+        ],
+        [
+          28.174732775924845,
+          -16.185747509339585
+        ],
+        [
+          28.60898567270866,
+          -18.131589613718933
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-134",
+      "polygon_xy_m": [
+        [
+          34.13799469450925,
+          -14.402236624027513
+        ],
+        [
+          33.43410842376523,
+          -12.541571934462443
+        ],
+        [
+          27.597767479435262,
+          -14.749449734871153
+        ],
+        [
+          28.301653750179288,
+          -16.610114424436222
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-135",
+      "polygon_xy_m": [
+        [
+          33.39881253734228,
+          -12.452433250063562
+        ],
+        [
+          32.63642472772757,
+          -10.610249246959782
+        ],
+        [
+          26.870675556243505,
+          -12.996404416166254
+        ],
+        [
+          27.633063365858213,
+          -14.838588419270033
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-136",
+      "polygon_xy_m": [
+        [
+          32.63642472772757,
+          -10.610249246959777
+        ],
+        [
+          31.87403691811286,
+          -8.768065243855997
+        ],
+        [
+          26.108287746628793,
+          -11.154220413062479
+        ],
+        [
+          26.870675556243505,
+          -12.996404416166259
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-137",
+      "polygon_xy_m": [
+        [
+          31.87403691811286,
+          -8.768065243856002
+        ],
+        [
+          31.111649108498153,
+          -6.925881240752221
+        ],
+        [
+          25.345899937014085,
+          -9.312036409958694
+        ],
+        [
+          26.108287746628793,
+          -11.154220413062474
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-138",
+      "polygon_xy_m": [
+        [
+          31.09879734776097,
+          -6.895288533180655
+        ],
+        [
+          30.3169927050375,
+          -5.061626979361876
+        ],
+        [
+          24.576947055027794,
+          -7.508967563711482
+        ],
+        [
+          25.358751697751266,
+          -9.342629117530262
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-139",
+      "polygon_xy_m": [
+        [
+          30.27664656610996,
+          -4.971018057567857
+        ],
+        [
+          29.43680977419414,
+          -3.1628280132181628
+        ],
+        [
+          23.777456402039512,
+          -5.791386441155807
+        ],
+        [
+          24.617293193955334,
+          -7.5995764855055015
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-140",
+      "polygon_xy_m": [
+        [
+          29.43680977419414,
+          -3.162828013218159
+        ],
+        [
+          28.596972982278338,
+          -1.3546379688685164
+        ],
+        [
+          22.93761961012371,
+          -3.983196396806168
+        ],
+        [
+          23.777456402039512,
+          -5.791386441155811
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-141",
+      "polygon_xy_m": [
+        [
+          28.596972982278338,
+          -1.3546379688685204
+        ],
+        [
+          27.757136190362544,
+          0.45355207548112153
+        ],
+        [
+          22.09778281820791,
+          -2.175006352456522
+        ],
+        [
+          22.93761961012371,
+          -3.983196396806164
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-142",
+      "polygon_xy_m": [
+        [
+          27.75713619036254,
+          0.45355207548112486
+        ],
+        [
+          26.91729939844674,
+          2.2617421198307683
+        ],
+        [
+          21.257946026292114,
+          -0.3668163081068816
+        ],
+        [
+          22.097782818207914,
+          -2.175006352456525
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-143",
+      "polygon_xy_m": [
+        [
+          26.91729939844674,
+          2.261742119830768
+        ],
+        [
+          26.077462606530965,
+          4.06993216418036
+        ],
+        [
+          20.418109234376338,
+          1.4413737362427104
+        ],
+        [
+          21.257946026292114,
+          -0.36681630810688093
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-144",
+      "polygon_xy_m": [
+        [
+          26.077462606530965,
+          4.069932164180356
+        ],
+        [
+          25.23762581461517,
+          5.878122208529998
+        ],
+        [
+          19.578272442460538,
+          3.249563780592355
+        ],
+        [
+          20.418109234376338,
+          1.441373736242713
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-145",
+      "polygon_xy_m": [
+        [
+          25.23762581461517,
+          5.878122208529997
+        ],
+        [
+          24.397789022699374,
+          7.686312252879641
+        ],
+        [
+          18.73843565054474,
+          5.057753824942
+        ],
+        [
+          19.578272442460538,
+          3.2495637805923563
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-146",
+      "polygon_xy_m": [
+        [
+          24.39778902269937,
+          7.686312252879643
+        ],
+        [
+          23.55795223078355,
+          9.494502297229337
+        ],
+        [
+          17.898598858628922,
+          6.8659438692916925
+        ],
+        [
+          18.738435650544744,
+          5.057753824941998
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-147",
+      "polygon_xy_m": [
+        [
+          23.55795223078355,
+          9.494502297229342
+        ],
+        [
+          22.71811543886775,
+          11.302692341578982
+        ],
+        [
+          17.058762066713122,
+          8.674133913641327
+        ],
+        [
+          17.898598858628922,
+          6.865943869291687
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-148",
+      "polygon_xy_m": [
+        [
+          22.71811543886775,
+          11.30269234157898
+        ],
+        [
+          21.878278646951948,
+          13.110882385928624
+        ],
+        [
+          16.21892527479732,
+          10.482323957990973
+        ],
+        [
+          17.058762066713122,
+          8.67413391364133
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-149",
+      "polygon_xy_m": [
+        [
+          21.87827864695195,
+          13.110882385928617
+        ],
+        [
+          21.038441855036158,
+          14.919072430278257
+        ],
+        [
+          15.379088482881524,
+          12.29051400234062
+        ],
+        [
+          16.218925274797318,
+          10.48232395799098
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-150",
+      "polygon_xy_m": [
+        [
+          21.038441855036154,
+          14.919072430278264
+        ],
+        [
+          20.198605063120354,
+          16.727262474627906
+        ],
+        [
+          14.539251690965727,
+          14.098704046690257
+        ],
+        [
+          15.379088482881528,
+          12.290514002340613
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-151",
+      "polygon_xy_m": [
+        [
+          20.198605063120354,
+          16.727262474627906
+        ],
+        [
+          19.358768271204553,
+          18.53545251897755
+        ],
+        [
+          13.699414899049927,
+          15.9068940910399
+        ],
+        [
+          14.539251690965727,
+          14.098704046690257
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-152",
+      "polygon_xy_m": [
+        [
+          19.358768271204557,
+          18.535452518977547
+        ],
+        [
+          18.51893147928876,
+          20.343642563327187
+        ],
+        [
+          12.85957810713413,
+          17.715084135389546
+        ],
+        [
+          13.699414899049923,
+          15.906894091039906
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-153",
+      "polygon_xy_m": [
+        [
+          18.51893147928876,
+          20.34364256332719
+        ],
+        [
+          17.67909468737296,
+          22.151832607676834
+        ],
+        [
+          12.019741315218331,
+          19.523274179739186
+        ],
+        [
+          12.85957810713413,
+          17.715084135389542
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-154",
+      "polygon_xy_m": [
+        [
+          17.67909468737296,
+          22.151832607676834
+        ],
+        [
+          16.83925789545716,
+          23.960022652026478
+        ],
+        [
+          11.179904523302532,
+          21.33146422408883
+        ],
+        [
+          12.019741315218333,
+          19.523274179739186
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-155",
+      "polygon_xy_m": [
+        [
+          16.839257895457163,
+          23.960022652026474
+        ],
+        [
+          15.999421103541362,
+          25.76821269637612
+        ],
+        [
+          10.340067731386732,
+          23.13965426843848
+        ],
+        [
+          11.17990452330253,
+          21.331464224088833
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-156",
+      "polygon_xy_m": [
+        [
+          15.99942110354136,
+          25.768212696376125
+        ],
+        [
+          15.159584311625563,
+          27.57640274072576
+        ],
+        [
+          9.500230939470937,
+          24.947844312788114
+        ],
+        [
+          10.340067731386734,
+          23.139654268438477
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-157",
+      "polygon_xy_m": [
+        [
+          15.159584311625565,
+          27.57640274072576
+        ],
+        [
+          14.319747519709766,
+          29.384592785075405
+        ],
+        [
+          8.660394147555136,
+          26.756034357137757
+        ],
+        [
+          9.500230939470935,
+          24.947844312788114
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-158",
+      "polygon_xy_m": [
+        [
+          14.413370610090087,
+          29.16059721170784
+        ],
+        [
+          13.716748168719175,
+          31.028401286995923
+        ],
+        [
+          7.870148615803903,
+          28.847834005793402
+        ],
+        [
+          8.566771057174815,
+          26.98002993050532
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-159",
+      "polygon_xy_m": [
+        [
+          13.719913957629812,
+          31.019875149125173
+        ],
+        [
+          13.0286607284316,
+          32.889914198627515
+        ],
+        [
+          7.175729597695053,
+          30.726399193166493
+        ],
+        [
+          7.866982826893265,
+          28.85636014366415
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-160",
+      "polygon_xy_m": [
+        [
+          13.0286607284316,
+          32.889914198627515
+        ],
+        [
+          12.33740749923339,
+          34.75995324812986
+        ],
+        [
+          6.48447636849684,
+          32.59643824266884
+        ],
+        [
+          7.175729597695052,
+          30.726399193166497
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-161",
+      "polygon_xy_m": [
+        [
+          12.337407499233388,
+          34.75995324812986
+        ],
+        [
+          11.646154270035177,
+          36.6299922976322
+        ],
+        [
+          5.793223139298631,
+          34.46647729217118
+        ],
+        [
+          6.484476368496841,
+          32.59643824266884
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-162",
+      "polygon_xy_m": [
+        [
+          11.646154270035177,
+          36.6299922976322
+        ],
+        [
+          10.954901040836946,
+          38.500031347134595
+        ],
+        [
+          5.101969910100399,
+          36.33651634167357
+        ],
+        [
+          5.793223139298631,
+          34.46647729217118
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-163",
+      "polygon_xy_m": [
+        [
+          10.954901040836948,
+          38.50003134713459
+        ],
+        [
+          10.263647811638736,
+          40.37007039663693
+        ],
+        [
+          4.410716680902187,
+          38.206555391175925
+        ],
+        [
+          5.101969910100397,
+          36.33651634167358
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-164",
+      "polygon_xy_m": [
+        [
+          10.263647811638736,
+          40.37007039663694
+        ],
+        [
+          9.572394582440523,
+          42.240109446139286
+        ],
+        [
+          3.719463451703975,
+          40.076594440678264
+        ],
+        [
+          4.410716680902187,
+          38.20655539117592
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-165",
+      "polygon_xy_m": [
+        [
+          9.572394582440523,
+          42.240109446139286
+        ],
+        [
+          8.881141353242331,
+          44.110148495641575
+        ],
+        [
+          3.0282102225057836,
+          41.94663349018055
+        ],
+        [
+          3.7194634517039753,
+          40.076594440678264
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-166",
+      "polygon_xy_m": [
+        [
+          8.881141353242333,
+          44.11014849564157
+        ],
+        [
+          8.18988812404412,
+          45.98018754514391
+        ],
+        [
+          2.3369569933075716,
+          43.816672539682905
+        ],
+        [
+          3.0282102225057828,
+          41.94663349018056
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-167",
+      "polygon_xy_m": [
+        [
+          8.18988812404412,
+          45.98018754514392
+        ],
+        [
+          7.4986348948459085,
+          47.85022659464626
+        ],
+        [
+          1.6457037641093617,
+          45.68671158918524
+        ],
+        [
+          2.336956993307573,
+          43.8166725396829
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-168",
+      "polygon_xy_m": [
+        [
+          7.485777500887778,
+          47.884393562250565
+        ],
+        [
+          6.772700095082627,
+          49.746193542117005
+        ],
+        [
+          0.945483752262342,
+          47.51434460144737
+        ],
+        [
+          1.6585611580674926,
+          45.65254462158093
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.74729705,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-169",
+      "polygon_xy_m": [
+        [
+          6.770311365832223,
+          49.75241048871285
+        ],
+        [
+          6.053251998522571,
+          51.6127082549289
+        ],
+        [
+          0.2308131142030958,
+          49.36842542106758
+        ],
+        [
+          0.9478724815127468,
+          47.50812765485153
+        ]
+      ],
+      "bottom_m": 2.24729705,
+      "top_m": 2.747316438531041,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-170",
+      "polygon_xy_m": [
+        [
+          6.053249769185404,
+          51.61271403857648
+        ],
+        [
+          5.3361862859186395,
+          53.47301147022984
+        ],
+        [
+          -0.4862481397265017,
+          51.22871706907336
+        ],
+        [
+          0.23081534354026267,
+          49.36841963742
+        ]
+      ],
+      "bottom_m": 2.247316438531041,
+      "top_m": 2.7475661609358433,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-171",
+      "polygon_xy_m": [
+        [
+          5.2631380052259225,
+          53.646702651816945
+        ],
+        [
+          4.435777142993834,
+          55.45880354893921
+        ],
+        [
+          -1.2405607212658714,
+          52.86712678460852
+        ],
+        [
+          -0.41319985903378376,
+          51.05502588748626
+        ]
+      ],
+      "bottom_m": 2.2475661609358433,
+      "top_m": 2.748382321516236,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-172",
+      "polygon_xy_m": [
+        [
+          4.3987314912957345,
+          55.5370497230597
+        ],
+        [
+          3.5206758320967815,
+          57.3269993569783
+        ],
+        [
+          -2.0815707287667244,
+          54.578830244406625
+        ],
+        [
+          -1.2035150695677714,
+          52.78888061048803
+        ]
+      ],
+      "bottom_m": 2.248382321516236,
+      "top_m": 2.7492711219810126,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-173",
+      "polygon_xy_m": [
+        [
+          3.5206731837191185,
+          57.327004755783065
+        ],
+        [
+          2.642613408563032,
+          59.116954055139026
+        ],
+        [
+          -2.959627855545148,
+          56.36877414495782
+        ],
+        [
+          -2.0815680803890615,
+          54.57882484560186
+        ]
+      ],
+      "bottom_m": 2.2492711219810126,
+      "top_m": 2.750739073729288,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-174",
+      "polygon_xy_m": [
+        [
+          2.4742183466921697,
+          59.417126944437975
+        ],
+        [
+          1.4047092192866903,
+          61.098896349224226
+        ],
+        [
+          -3.8607419210797644,
+          57.75037066044512
+        ],
+        [
+          -2.7912327936742853,
+          56.06860125565887
+        ]
+      ],
+      "bottom_m": 2.250739073729288,
+      "top_m": 2.7523576007447956,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-175",
+      "polygon_xy_m": [
+        [
+          1.3942615986387181,
+          61.11521280063277
+        ],
+        [
+          0.3139580772524848,
+          62.790884630979576
+        ],
+        [
+          -4.930597821818026,
+          59.409726039383386
+        ],
+        [
+          -3.850294300431792,
+          57.73405420903658
+        ]
+      ],
+      "bottom_m": 2.2523576007447956,
+      "top_m": 2.754318883930978,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-176",
+      "polygon_xy_m": [
+        [
+          0.3102124997781228,
+          62.79668035753625
+        ],
+        [
+          -0.7737884963109973,
+          64.46994933532717
+        ],
+        [
+          -6.010853240432784,
+          61.07719929061763
+        ],
+        [
+          -4.926852244343664,
+          59.40393031282671
+        ]
+      ],
+      "bottom_m": 2.254318883930978,
+      "top_m": 2.7566951098253316,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-177",
+      "polygon_xy_m": [
+        [
+          -0.7839921338461879,
+          64.48559686324666
+        ],
+        [
+          -1.8780004776930692,
+          66.15235843634018
+        ],
+        [
+          -7.094657946744475,
+          62.728313335791675
+        ],
+        [
+          -6.000649602897593,
+          61.06155176269815
+        ]
+      ],
+      "bottom_m": 2.2566951098253316,
+      "top_m": 2.7591815180437926,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-178",
+      "polygon_xy_m": [
+        [
+          -1.8780035900984418,
+          66.15236317819377
+        ],
+        [
+          -2.9720160499024564,
+          67.81912441672466
+        ],
+        [
+          -8.188667294143116,
+          64.39506983246898
+        ],
+        [
+          -7.094654834339102,
+          62.72830859393808
+        ]
+      ],
+      "bottom_m": 2.2591815180437926,
+      "top_m": 2.762309005245198,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-179",
+      "polygon_xy_m": [
+        [
+          -2.9720191623102856,
+          67.8191291585632
+        ],
+        [
+          -4.0660357380714345,
+          69.48589006253144
+        ],
+        [
+          -9.282680757496436,
+          66.06182599459868
+        ],
+        [
+          -8.188664181735287,
+          64.39506509063044
+        ]
+      ],
+      "bottom_m": 2.262309005245198,
+      "top_m": 2.765447802547002,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    },
+    {
+      "id": "monaco-pit-level0-floor-180",
+      "polygon_xy_m": [
+        [
+          -4.066038850481693,
+          69.4858948043549
+        ],
+        [
+          -5.160059542199978,
+          71.15265537376051
+        ],
+        [
+          -10.376698336804463,
+          67.72858182218083
+        ],
+        [
+          -9.282677645086178,
+          66.06182125277522
+        ]
+      ],
+      "bottom_m": 2.265447802547002,
+      "top_m": 2.7692242917167857,
+      "source_note": "Remove only the artificial ground slab through the mapped covered pit lane. Upper floors, canopy and facade remain."
+    }
+  ],
+  "maximum_affected_source_facets": 12000,
+  "source_route_sha256": "58c8af79d901d107efe86e26265df15ade0a1483fa6aa414950bc6bda95f0e46",
+  "source_note": "The mapped pit axis is consistent with the covered harbour-side lane. The generic level0beam spans pit floor+-0.2m and buries asphalt. Remove only Concrete inside final pit corridor and floor+-0.25m. The roof overlaps the lane in registered Google imagery; no building translation or facade change is justified. All generic columns are at least8.07m from the axis, outside these3.12m-halfwidth masks.",
+  "primary_reference": "https://www.williamsf1.com/articles/e7337645-01a7-4416-bf23-28005c89f6d6/five-things-to-know-ahead-of-the-monaco-grand-prix"
+}

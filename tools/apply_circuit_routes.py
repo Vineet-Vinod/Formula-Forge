@@ -137,6 +137,44 @@ def open_jeddah_pit_exit(slug: str, route_fingerprint: str) -> list[dict]:
              'sha256': hashlib.sha256(source_file.read_bytes()).hexdigest()}]
 
 
+def clear_monaco_pit_floor(slug: str) -> list[dict]:
+    if slug != 'monaco':
+        return []
+    path = ROOT / 'Attribution/Sources/monaco/pit-floor-clearance.json'
+    recipe = json.loads(path.read_text())
+    if recipe['asset'] != '/Game/Generated/Monaco/Track/Building_City_00_m1' or recipe['material_slots'] != [
+            {'slot': 'Material_4', 'material': '/Game/Generated/Monaco/Materials/Concrete.Concrete'}]:
+        raise ValueError('Monaco pit floor asset or material whitelist changed')
+    mesh = unreal.load_asset(recipe['asset'])
+    if not isinstance(mesh, unreal.StaticMesh):
+        raise TypeError('Missing Monaco pit floor mesh')
+    expected = recipe['material_slots'][0]
+    slots = [slot for slot in mesh.get_editor_property('static_materials') if str(slot.material_slot_name) == expected['slot']]
+    if len(slots) != 1 or slots[0].material_interface is None or slots[0].material_interface.get_path_name() != expected['material']:
+        raise ValueError('Monaco Concrete slot changed')
+    selected = [unreal.Name(expected['slot'])]
+    fingerprint = hashlib.sha256(path.read_bytes()).hexdigest()
+    source_file = ROOT / recipe['source_asset_file']
+    count = unreal.FFMeshBuildLibrary.cut_tile_portals(mesh, str(path), selected, True)
+    if LIBRARY.get_metadata_tag(mesh, 'CircuitMonacoPitFloorRecipe') == fingerprint:
+        return [{'asset': recipe['asset'], 'recipe_sha256': fingerprint, 'already_applied': True,
+                 'remaining_boundary_intersections': count,
+                 'sha256': hashlib.sha256(source_file.read_bytes()).hexdigest()}]
+    if hashlib.sha256(source_file.read_bytes()).hexdigest() != recipe['source_asset_sha256']:
+        raise ValueError('Monaco pit floor source asset changed')
+    if not 0 < count <= recipe['maximum_affected_source_facets']:
+        raise ValueError('Monaco pit floor dry-run count is outside the qualified scope: ' + str(count))
+    affected = unreal.FFMeshBuildLibrary.cut_tile_portals(mesh, str(path), selected, False)
+    if affected != count:
+        raise ValueError('Monaco pit floor cut differs from dry-run')
+    remaining = unreal.FFMeshBuildLibrary.cut_tile_portals(mesh, str(path), selected, True)
+    LIBRARY.set_metadata_tag(mesh, 'CircuitMonacoPitFloorRecipe', fingerprint)
+    assert LIBRARY.save_loaded_asset(mesh)
+    return [{'asset': recipe['asset'], 'affected_source_triangles': affected, 'recipe_sha256': fingerprint,
+             'remaining_boundary_intersections': remaining,
+             'material_slots': recipe['material_slots'], 'sha256': hashlib.sha256(source_file.read_bytes()).hexdigest()}]
+
+
 for entry in plan['circuits']:
     manifest_path = ROOT / entry['manifest']
     assert hashlib.sha256(manifest_path.read_bytes()).hexdigest() == validation['manifest_sha256'][entry['manifest']]
@@ -229,6 +267,7 @@ for entry in plan['circuits']:
     (data / 'render_tiles.csv').write_text('\n'.join(rows) + '\n')
     trunk_edits = clear_escape_trunks(slug)
     pit_exit_edits = open_jeddah_pit_exit(slug, fingerprint)
+    pit_floor_edits = clear_monaco_pit_floor(slug)
     retained_edits = []
     for record in index['assets']:
         if not overlaps(record['bounds'], portals) and not overlaps(record['bounds'], manifest['paint_domains']):
@@ -242,10 +281,10 @@ for entry in plan['circuits']:
         unreal.SystemLibrary.collect_garbage()
     (data / 'route_overlay.json').write_text(json.dumps({'version': 1, 'circuit': slug,
         'manifest_sha256': fingerprint, 'source_sha256': manifest['source_sha256'],
-        'native_edits': retained_edits, 'pit_architecture_edits': pit_exit_edits, 'added_route_meshes': [p['name'] for p in manifest['tiles']],
+        'native_edits': retained_edits, 'pit_architecture_edits': pit_exit_edits, 'pit_floor_edits': pit_floor_edits, 'added_route_meshes': [p['name'] for p in manifest['tiles']],
         'note': 'Finite pit/escape overlays; base authoring manifests describe the retained pre-overlay scene.'}, indent=2) + '\n')
     receipts.append({'circuit': slug, 'manifest_sha256': fingerprint, 'native_edits': changed,
-                     'escape_trunk_edits': trunk_edits, 'pit_architecture_edits': pit_exit_edits,
+                     'escape_trunk_edits': trunk_edits, 'pit_architecture_edits': pit_exit_edits, 'pit_floor_edits': pit_floor_edits,
                      'added_route_meshes': [p['name'] for p in manifest['tiles']], 'visual_acceptance': 'pending'})
     unreal.log('ROUTE_IMPORT_COMPLETE ' + slug)
     unreal.SystemLibrary.collect_garbage()

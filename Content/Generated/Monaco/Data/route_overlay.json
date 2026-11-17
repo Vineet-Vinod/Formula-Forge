@@ -34,6 +34,21 @@
     }
   ],
   "pit_architecture_edits": [],
+  "pit_floor_edits": [
+    {
+      "asset": "/Game/Generated/Monaco/Track/Building_City_00_m1",
+      "affected_source_triangles": 1449,
+      "recipe_sha256": "a61e7997a9b432a6faf24862f2afb654928058cf70fee7cfb8da2b572954bcb4",
+      "remaining_boundary_intersections": 374,
+      "material_slots": [
+        {
+          "slot": "Material_4",
+          "material": "/Game/Generated/Monaco/Materials/Concrete.Concrete"
+        }
+      ],
+      "sha256": "da6d2465ef930799a8501b5649e34f4b784bd0b10176251da629d1eb013daec3"
+    }
+  ],
   "added_route_meshes": [
     "Tile_Route_00_00",
     "Tile_Route_00_01",
