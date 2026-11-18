@@ -1,0 +1,14 @@
+{
+  "station_m": 6009,
+  "width_m": 26,
+  "height_m": 18.4,
+  "floor_height_m": 4.6,
+  "levels": 4,
+  "band_height_m": 0.42,
+  "glazing_depth_m": 0.45,
+  "backing_depth_m": 1.8,
+  "bay_width_m": 3.25,
+  "pier_width_m": 0.18,
+  "lobby_light_power": 0.24,
+  "source_note": "Direct supplied612s at5m before the80km/h pit limit shows an articulated glazed hospitality end/corner with pale horizontal slab bands, dark fine glazing frames and brighter lower lobby/service glazing. Native924 at8.04m before its limit shows the same left-building/right-stand ordering but the modeled PIT_START transverse end was an opaque White banner. The literal banner projection matches that blank native plane. Preserve the existing6009/26m/18.4m envelope, four4.6m levels,280m compound length,roof,floors,frame and opposite end. Source612 crops the upper building, so it does not independently establish these existing operator-based height/floor controls. New.45m glazing recess,1.8m room backing,bay pitch,piers and three lobby lights are architectural estimates, not surveyed room/fixture inventory. Use real pale lower backing and translucent glazing with small actual lights rather than emissive full-window panels. Exact pane layout and hidden interiors remain estimated."
+}

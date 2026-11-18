@@ -13,6 +13,7 @@ from pit_routes_dataclasses import PitSection
 from pydantic import TypeAdapter
 
 from venues.jeddah_pit_details_dataclasses import PitFacadeDetail
+from venues.jeddah_pit_entry import entry_lights
 from venues.jeddah_pits import (
     apron_floor_point,
     pit_floor_point,
@@ -126,6 +127,11 @@ def write_interior_lights(scene: CircuitScene, path: Path) -> None:
             origin = sample.point(front - detail.interior_light_depth_m, detail.garage_ceiling_m - .16)
             target = pit_floor_point(sample, section, front - detail.garage_back_depth_m + .08, 1.4)
             writer.writerow([f'{value:.5f}' for value in (*world(origin), *world(target), detail.interior_light_power)])
+        for fixture in entry_lights(scene):
+            if fixture.target is None:
+                raise ValueError('Jeddah lobby lights require registered room targets')
+            writer.writerow([f'{value:.5f}' for value in
+                             (*world(fixture.position), *world(fixture.target), fixture.power)])
 
 
 

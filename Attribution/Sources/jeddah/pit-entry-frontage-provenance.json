@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "recipe": "pit-entry-frontage.json",
+  "source_video": "Saved/Refs/jeddah.mp4",
+  "video_sha256": "c2c78fb500a241a595aa6108bf797114332a747a83ab280b2a49d2cd9b8dcf78",
+  "reference_only": true,
+  "reference_images": {
+    "build/reviews/jeddah-focused-20261118/pit-detail/reference-0612.jpg": "e4928c22782105ec4bcf0e532e5f5444c88dbb4c5d02dca71e96c14325aed0f2",
+    "build/reviews/jeddah-focused-20261118/candidate4-pit/selected/entry-80-before-00000924.jpg": "1b5001b279cdd15ba21564f4c3fcafe080b38a80d099481a0792d65cb99e3877"
+  },
+  "geometry_owner": "Building_JeddahPitEnds at PIT_START6009, not an OSM building.",
+  "registration": "Native frame924 is8.04m before the pit80km/h limit; supplied612s is HUD5m before the limit. The literal end-wall projection matches the native blank plane. Local landmark ordering is comparable, but the FOV, camera and3m position difference prevent exact metric photo matching.",
+  "observed": "Pale horizontal bands and recessed glazing on the hospitality end/corner, dark fine frames and brighter lower lobby glazing. The upper building is cropped; its full floor count is not independently established by this frame.",
+  "authored_estimates": "The26m by18.4m compound envelope and four4.6m floors are unchanged. The0.42m bands,0.45m pane recess,1.8m backs,3.25m bay pitch and three interior ceiling lights are estimated architectural completion, not survey or fixture inventory.",
+  "scope": "Replace only the start end banner. New geometry extends0\u20131.8m forward inside the existing body. The opposite end closure, roof, floors, frame, start6009,280m length, roads, pit axis and collision are unchanged. Reuse existing Stone, Charcoal, GuardGlass, White, Steel and Lamp materials. Pale lower back surfaces receive bounded actual lights; full-window emissive planes are not used.",
+  "runtime_gate": "A fresh native capture at the same entry must confirm readable glazing and avoid an overexposed lobby. Source geometry checks do not establish appearance acceptance."
+}

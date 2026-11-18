@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import hashlib
 import json
 import struct
@@ -121,8 +122,23 @@ def prepare(circuit: str, destination: Path, pit_path: Path | None, escape_path:
             points = triangle.a, triangle.b, triangle.c
             scene.triangle("Tile_Route", triangle.material, *points,
                 uv=tuple((p[0] / 4, p[1] / 4) for p in points))
+    walkway_rails: set[Barrier] = set()
+    if circuit == "jeddah" and route is not None:
+        from venues.jeddah_pit_walkway import build_walkway, walkway_recipe
+
+        reference = Path(__file__).resolve().parents[1] / "build/circuits/jeddah/barriers.csv"
+        with reference.open() as handle:
+            base_walls = TypeAdapter(list[Barrier]).validate_python(list(csv.DictReader(handle)))
+        retained_base = clip_foreign_protection(base_walls, portals)
+        walkway = build_walkway(scene, route, [*retained_base, *walls], walkway_recipe())
+        walkway_rails.update(walkway.extra_barriers)
+        walls.extend(walkway.extra_barriers)
+        cosmetic_portals.extend(walkway.floor_portals)
+        if len(cosmetic_portals) > 512:
+            raise ValueError("Jeddah cosmetic openings exceed the native editor limit")
+        (destination / "pit-walkway-proof.json").write_text(json.dumps(asdict(walkway.proof), indent=2) + "\n")
     street = circuit in {"baku", "jeddah", "monaco", "singapore", "lasvegas", "australia", "canada"}
-    emit_protection(scene, walls, street)
+    emit_protection(scene, [wall for wall in walls if wall not in walkway_rails], street)
     if circuit == "jeddah" and route is not None:
         from venues.jeddah_pit_protection import emit_panels
 
@@ -156,6 +172,10 @@ def prepare(circuit: str, destination: Path, pit_path: Path | None, escape_path:
             "Attribution/Sources/jeddah/pit-exit-protection.json",
             "tools/venues/jeddah_pit_protection.py",
             "tools/venues/jeddah_pit_protection_dataclasses.py",
+            "Attribution/Sources/jeddah/pit-personnel-walkway.json",
+            "tools/venues/jeddah_pit_walkway.py",
+            "tools/venues/jeddah_pit_walkway_dataclasses.py",
+            "build/circuits/jeddah/barriers.csv",
         ))
     result = RouteAssets(circuit, 1, "Source east/north/Z metres; packed meshes use Unreal world centimetres",
         records, portals, list(escapes.paint_domains) if escapes else [],

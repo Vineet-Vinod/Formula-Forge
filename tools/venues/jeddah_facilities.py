@@ -14,6 +14,7 @@ from venues.jeddah_pit_details import (
     pit_workstations,
     upper_bay,
 )
+from venues.jeddah_pit_entry import build_entry
 from venues.jeddah_pits import (
     pit_floor_point,
     pit_route_source,
@@ -173,6 +174,9 @@ def pit_compound(scene: CircuitScene) -> None:
             )
     for station in (PIT_START, PIT_START + 280):
         sample = scene.at(station)
+        if station == PIT_START:
+            build_entry(scene, sample, -sample.half_width - 13, -sample.half_width - 39)
+            continue
         front, rear = (
             sample.point(-sample.half_width - 13),
             sample.point(-sample.half_width - 39),
