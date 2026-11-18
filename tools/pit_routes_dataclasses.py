@@ -75,6 +75,8 @@ class PitSection:
     normal_x: float
     normal_y: float
     cross_slope: float = 0.0
+    positive_extent: float = 0.0
+    negative_extent: float = 0.0
 
 @dataclass(frozen=True)
 class PitRoute:

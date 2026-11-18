@@ -50,16 +50,23 @@ def encode_route(route: PitRoute) -> bytes:
         raise ValueError('Invalid pit route metadata')
     if not 0 <= route.limit_entry_m < route.limit_exit_m <= route.sections[-1].distance:
         raise ValueError('Pit limit distances must lie inside the route')
-    output = bytearray(struct.pack('<8sI3f',b'FFPIT2\0\0',len(route.sections),route.limit_entry_m,
+    version3 = any((section.positive_extent or section.half_width) != section.half_width or
+                   (section.negative_extent or section.half_width) != section.half_width for section in route.sections)
+    signature = b'FFPIT3\0\0' if version3 else b'FFPIT2\0\0'
+    output = bytearray(struct.pack('<8sI3f',signature,len(route.sections),route.limit_entry_m,
                                    route.limit_exit_m,route.speed_limit_kph))
     previous = None
     for section in route.sections:
+        positive = section.positive_extent or section.half_width
+        negative = section.negative_extent or section.half_width
         row = (section.x,-section.y,section.z,section.half_width,section.track_station,section.distance,
-               section.normal_x,-section.normal_y,section.cross_slope)
+               section.normal_x,-section.normal_y,section.cross_slope,*((positive,negative) if version3 else ()))
         if not all(math.isfinite(value) and abs(value)<=20000 for value in row):
             raise ValueError('Nonfinite or out-of-range pit section')
         if not 1.5<=section.half_width<=12 or abs(math.hypot(section.normal_x,section.normal_y)-1)>.01 or abs(section.cross_slope)>.08:
             raise ValueError('Invalid pit width/normal/crossfall')
+        if not section.half_width <= positive <= 12 or not section.half_width <= negative <= 12:
+            raise ValueError('Invalid asymmetric pit support extent')
         if previous is None:
             if abs(section.distance)>.01:
                 raise ValueError('Pit route must begin at distance zero')
@@ -67,7 +74,7 @@ def encode_route(route: PitRoute) -> bytes:
             spacing = math.hypot(section.x-previous.x,section.y-previous.y)
             if not .01<=spacing<=10 or not 0<section.distance-previous.distance<=10 or section.track_station<previous.track_station or abs(section.z-previous.z)/spacing>.20:
                 raise ValueError('Pit route has a gap, reversing progress or excessive grade')
-        output.extend(struct.pack('<9f',*row))
+        output.extend(struct.pack('<11f' if version3 else '<9f',*row))
         previous = section
     return bytes(output)
 

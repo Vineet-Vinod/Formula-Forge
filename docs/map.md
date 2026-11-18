@@ -994,7 +994,7 @@ float32/uint32 encoding and exact byte counts, not padded host-language structs.
 | `*_survey.inc` | Centreline, elevation, full width and banking controls consumed by the catalogue. Preserve their units and sampling convention. |
 | `*_ground.inc` | `AuthoredGroundGrid`: source XY in metres, int16 heights in centimetres relative to the chosen datum; matching cell diagonals. Check range before quantizing. |
 | `*_boundaries.inc` | Native barrier/runoff geometry, using the conventions in `authored_track_collision.hpp` and the selected circuit geometry wrapper. |
-| `pit_lane.bin`, if supported | `FFPIT1\0\0`, count, entry/exit distances, then nine float32 values per section. Inspect `FFPitLane::Load` and `FFPitSection` for field order and validation. |
+| `pit_lane.bin`, if supported | `FFPIT1\0\0` has a 20-byte header with count and limiter entry/exit distances; `FFPIT2\0\0` adds speed in km/h for a 24-byte header. Both use nine float32 values per section. `FFPIT3\0\0` retains the 24-byte header and appends positive/negative support extents to each section, making 44 bytes per row. Width remains the fast-lane half-width; support extents can include a working apron on one side. Inspect `FFPitLane::Load` and `FFPitSection` for coordinates and validation. |
 | `pit_barriers.bin`, if supported | `FFBAR1\0\0`, count, seven float32 values per segment in simulation units. `LoadPitBarriers` currently appends Silverstone-specific Chapel barriers; generalize deliberately before reuse. |
 
 `FFDriveSurface` supports up to four million triangles and uses an XY spatial

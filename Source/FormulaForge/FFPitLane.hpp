@@ -17,6 +17,8 @@ struct FFPitSection {
     float distance;
     Vec2 normal;
     float crossSlope;
+    float positiveExtent = 0.0f;
+    float negativeExtent = 0.0f;
 };
 
 struct FFPitProjection {

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import struct
+from dataclasses import replace
 
 import pytest
 from circuit_portals_dataclasses import Barrier, Portal
@@ -20,6 +21,29 @@ def test_route_encoder_matches_runtime_frame_and_unwrapped_progress() -> None:
     assert struct.unpack_from('<8sI3f',data) == (b'FFPIT2\0\0',3,2,8,60)
     assert struct.unpack_from('<9f',data,24) == (10,-20,3,2,5990,0,0,1,0)
     assert struct.unpack_from('<9f',data,24+72)[4] == 6010
+
+
+def test_asymmetric_working_apron_uses_v3_without_changing_fast_lane_width() -> None:
+    source = route()
+    source.sections[1] = replace(source.sections[1], negative_extent=8)
+    data = encode_route(source)
+    assert struct.unpack_from('<8sI3f', data) == (b'FFPIT3\0\0', 3, 2, 8, 60)
+    assert len(data) == 24 + 3 * 44
+    assert struct.unpack_from('<11f', data, 24)[-2:] == (2, 2)
+    middle = struct.unpack_from('<11f', data, 24 + 44)
+    assert middle[3] == 2
+    assert middle[-2:] == (2, 8)
+    symmetric = replace(source, sections=[replace(s, positive_extent=s.half_width,
+                                                   negative_extent=s.half_width) for s in route().sections])
+    assert encode_route(symmetric) == encode_route(route())
+
+
+def test_working_apron_cannot_shrink_the_fast_lane_or_exceed_runtime_extent() -> None:
+    for extent in (1, 12.1, float('nan')):
+        source = route()
+        source.sections[1] = replace(source.sections[1], negative_extent=extent)
+        with pytest.raises(ValueError):
+            encode_route(source)
 
 
 def test_portal_encoder_flips_north_and_preserves_runtime_counterclockwise() -> None:

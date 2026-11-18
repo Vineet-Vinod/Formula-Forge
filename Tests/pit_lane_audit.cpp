@@ -20,11 +20,12 @@ template <typename T> void Append(std::vector<std::uint8_t>& bytes, const T& val
 std::vector<std::uint8_t> Route(char version, float speed = 60.0f) {
     std::vector<std::uint8_t> bytes{'F','F','P','I','T',static_cast<std::uint8_t>(version),0,0};
     Append(bytes, std::uint32_t{3}); Append(bytes, 2.0f); Append(bytes, 8.0f);
-    if (version == '2') Append(bytes, speed);
+    if (version == '2' || version == '3') Append(bytes, speed);
     for (int i = 0; i < 3; ++i) {
         const std::array<float,9> row{5.0f*i,0.0f,1.0f+0.5f*i,2.0f,
             5990.0f+10.0f*i,5.0f*i,0.0f,1.0f,0.02f};
         Append(bytes,row);
+        if (version == '3') { Append(bytes, 2.0f); Append(bytes, 8.0f); }
     }
     return bytes;
 }
@@ -56,6 +57,17 @@ int main() {
     Require(!lane.Load(Route('2',0)) && lane.SpeedLimitKph()==60, "Invalid metadata mutated route");
     auto truncated = Route('2'); truncated.pop_back();
     Require(!lane.Load(truncated), "Truncated route accepted");
+    Require(lane.Load(Route('3')), "FFPIT3 asymmetric working lane rejected");
+    const auto working = lane.Project({5,-6});
+    Require(working.inside && working.controlled && std::abs(working.height-1.38f)<.00001f,
+        "Working lane loses its plane height or limiter");
+    Require(working.halfWidth==8 && !lane.Project({5,2.1f}).inside && !lane.Project({5,-8.1f}).inside,
+        "Asymmetric support leaked outside its authored side");
+    Require(lane.Project({5,-8.1f},1).inside, "Working-lane ground collar missing");
+    auto narrow = Route('3');
+    const float invalidExtent = 1.0f;
+    std::memcpy(narrow.data()+24+36, &invalidExtent, sizeof(float));
+    Require(!lane.Load(narrow) && lane.Project({5,-6}).inside, "Invalid extent mutated loaded route");
     std::ifstream legacy("Content/Generated/Data/pit_lane.bin",std::ios::binary);
     Require(legacy.good(), "Retained Silverstone fixture missing");
     std::vector<std::uint8_t> legacyBytes((std::istreambuf_iterator<char>(legacy)),{});

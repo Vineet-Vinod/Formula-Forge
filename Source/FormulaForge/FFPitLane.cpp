@@ -28,10 +28,13 @@ std::uint64_t FFPitLane::CellKey(int column, int row) {
 bool FFPitLane::Load(std::span<const std::uint8_t> bytes) {
     constexpr std::array<std::uint8_t, 8> signature{'F', 'F', 'P', 'I', 'T', '1', 0, 0};
     constexpr std::array<std::uint8_t, 8> signature2{'F', 'F', 'P', 'I', 'T', '2', 0, 0};
+    constexpr std::array<std::uint8_t, 8> signature3{'F', 'F', 'P', 'I', 'T', '3', 0, 0};
     if (bytes.size() < 20) return false;
-    const bool version2 = std::equal(signature2.begin(), signature2.end(), bytes.begin());
+    const bool version3 = std::equal(signature3.begin(), signature3.end(), bytes.begin());
+    const bool version2 = version3 || std::equal(signature2.begin(), signature2.end(), bytes.begin());
     if (!version2 && !std::equal(signature.begin(), signature.end(), bytes.begin())) return false;
     const std::size_t headerSize = version2 ? 24 : 20;
+    const std::size_t sectionSize = version3 ? 44 : 36;
     if (bytes.size() < headerSize) return false;
     std::uint32_t count;
     float entry;
@@ -41,20 +44,23 @@ bool FFPitLane::Load(std::span<const std::uint8_t> bytes) {
     std::memcpy(&exit, bytes.data() + 16, 4);
     float speedLimit = 80.0f;
     if (version2) std::memcpy(&speedLimit, bytes.data() + 20, 4);
-    if (count < 2 || count > 10000 || bytes.size() != headerSize + count * 36 ||
+    if (count < 2 || count > 10000 || bytes.size() != headerSize + count * sectionSize ||
         !std::isfinite(speedLimit) || speedLimit < 20.0f || speedLimit > 100.0f ||
         !std::isfinite(entry) || !std::isfinite(exit) || entry < 0.0f || exit <= entry) return false;
     std::vector<FFPitSection> loaded;
     loaded.reserve(count);
     for (std::uint32_t index = 0; index < count; ++index) {
-        std::array<float, 9> row;
-        std::memcpy(row.data(), bytes.data() + headerSize + index * 36, 36);
+        std::array<float, 11> row{};
+        std::memcpy(row.data(), bytes.data() + headerSize + index * sectionSize, sectionSize);
         for (float value : row) {
             if (!std::isfinite(value) || std::abs(value) > 20000.0f) return false;
         }
-        FFPitSection section{{row[0], row[1]}, row[2], row[3], row[4], row[5], {row[6], row[7]}, row[8]};
+        FFPitSection section{{row[0], row[1]}, row[2], row[3], row[4], row[5], {row[6], row[7]}, row[8],
+            version3 ? row[9] : row[3], version3 ? row[10] : row[3]};
         if (section.halfWidth < 1.5f || section.halfWidth > 12.0f || section.distance < 0.0f ||
-            std::abs(length(section.normal) - 1.0f) > 0.01f || std::abs(section.crossSlope) > 0.08f) return false;
+            std::abs(length(section.normal) - 1.0f) > 0.01f || std::abs(section.crossSlope) > 0.08f ||
+            section.positiveExtent < section.halfWidth || section.negativeExtent < section.halfWidth ||
+            section.positiveExtent > 12.0f || section.negativeExtent > 12.0f) return false;
         if (loaded.empty()) {
             if (section.distance > 0.01f) return false;
         } else {
@@ -75,7 +81,8 @@ bool FFPitLane::Load(std::span<const std::uint8_t> bytes) {
     for (std::uint32_t index = 0; index + 1 < sections.size(); ++index) {
         const auto& first = sections[index];
         const auto& last = sections[index + 1];
-        const float reach = std::max(first.halfWidth, last.halfWidth) + MaximumLateralMarginMetres + 0.01f;
+        const float reach = std::max({first.positiveExtent, first.negativeExtent,
+            last.positiveExtent, last.negativeExtent}) + MaximumLateralMarginMetres + 0.01f;
         const int firstColumn = static_cast<int>(std::floor((std::min(first.position.x, last.position.x) - reach) / CellSize));
         const int lastColumn = static_cast<int>(std::floor((std::max(first.position.x, last.position.x) + reach) / CellSize));
         const int firstRow = static_cast<int>(std::floor((std::min(first.position.y, last.position.y) - reach) / CellSize));
@@ -100,10 +107,10 @@ FFPitProjection FFPitLane::Project(Vec2 positionMetres, float lateralMarginMetre
     for (std::uint32_t index : found->second) {
         const auto& first = sections[index];
         const auto& last = sections[index + 1];
-        const Vec2 firstLeft = first.position + first.normal * (first.halfWidth + lateralMarginMetres);
-        const Vec2 firstRight = first.position - first.normal * (first.halfWidth + lateralMarginMetres);
-        const Vec2 lastLeft = last.position + last.normal * (last.halfWidth + lateralMarginMetres);
-        const Vec2 lastRight = last.position - last.normal * (last.halfWidth + lateralMarginMetres);
+        const Vec2 firstLeft = first.position + first.normal * (first.positiveExtent + lateralMarginMetres);
+        const Vec2 firstRight = first.position - first.normal * (first.negativeExtent + lateralMarginMetres);
+        const Vec2 lastLeft = last.position + last.normal * (last.positiveExtent + lateralMarginMetres);
+        const Vec2 lastRight = last.position - last.normal * (last.negativeExtent + lateralMarginMetres);
         std::array<Vec2, 3> triangle{firstRight, lastRight, lastLeft};
         const bool firstTriangle = ContainsPoint(triangle, positionMetres);
         if (!firstTriangle) {
@@ -126,7 +133,8 @@ FFPitProjection FFPitLane::Project(Vec2 positionMetres, float lateralMarginMetre
         if (distanceSquared >= nearest) continue;
         const Vec2 normal = normalize(lerp(first.normal, last.normal, blend));
         const float lane = dot(positionMetres - centre, normal);
-        const float halfWidth = lerp(first.halfWidth, last.halfWidth, blend);
+        const float halfWidth = lane >= 0 ? lerp(first.positiveExtent, last.positiveExtent, blend) :
+            lerp(first.negativeExtent, last.negativeExtent, blend);
         const float queryHalfWidth = halfWidth + lateralMarginMetres;
         if (std::abs(lane) > queryHalfWidth + 0.001f ||
             distanceSquared > (queryHalfWidth + 0.01f) * (queryHalfWidth + 0.01f)) continue;
@@ -137,10 +145,10 @@ FFPitProjection FFPitLane::Project(Vec2 positionMetres, float lateralMarginMetre
         result.controlled = result.distance >= limitEntry && result.distance <= limitExit;
         result.lane = lane;
         result.halfWidth = halfWidth;
-        const float firstLeftHeight = first.height + (first.halfWidth + lateralMarginMetres) * first.crossSlope;
-        const float firstRightHeight = first.height - (first.halfWidth + lateralMarginMetres) * first.crossSlope;
-        const float lastLeftHeight = last.height + (last.halfWidth + lateralMarginMetres) * last.crossSlope;
-        const float lastRightHeight = last.height - (last.halfWidth + lateralMarginMetres) * last.crossSlope;
+        const float firstLeftHeight = first.height + (first.positiveExtent + lateralMarginMetres) * first.crossSlope;
+        const float firstRightHeight = first.height - (first.negativeExtent + lateralMarginMetres) * first.crossSlope;
+        const float lastLeftHeight = last.height + (last.positiveExtent + lateralMarginMetres) * last.crossSlope;
+        const float lastRightHeight = last.height - (last.negativeExtent + lateralMarginMetres) * last.crossSlope;
         result.height = weights[0] * firstRightHeight +
             weights[1] * (firstTriangle ? lastRightHeight : lastLeftHeight) +
             weights[2] * (firstTriangle ? lastLeftHeight : firstLeftHeight);
