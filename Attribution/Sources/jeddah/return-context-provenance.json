@@ -65,8 +65,8 @@
   "estimated_floor_relative_m": 3.8,
   "floor_uncertainty_m": 0.6,
   "estimated_occupied_plan_m2": 200.96,
-  "plan_area_note": "The published195m\u00b2 floor constrains the estimated hall/porch/loggia; the200.96m\u00b2 visual occupied union includes the estimated exterior stair.",
-  "minaret_registration": "Round shaft/solid balcony follow the original author photo; the tower occupies the western half of the south side so its projection lies to the right of the dome in the supplied279/668s approach. The exact offset and silhouette separation remain estimated, with fresh native4148.8m review required.",
+  "plan_area_note": "Published195m\u00b2 floor constrains the estimated hall/porch/loggia ensemble. The separately estimated occupied minaret/stair foundations are also included in the visual cutout, with actual final packed-Ground perimeter support proven.",
+  "minaret_registration": "Estimated local centre(-7.25,-6.4)m\u00b12m, at the southern end of the western loggia. Source668 shows the tower clearly right of the dome; exact source-camera heading/FOV and footprint are unavailable. The original2013 photo supports a taller slender shaft/crown. Native14 retained a squat, mostly hidden tower, so this is a source-supported silhouette correction, not an accepted-dimension claim.",
   "actual_ground_support": {
     "samples": 163,
     "missing": 0,
@@ -77,13 +77,30 @@
     "minimum_floor_clearance_m": 0.16057402762783557,
     "foundation_bottom_m": 2.4285051356874012,
     "minimum_burial_m": 0.21134104254796293,
-    "scope": "Actual packed pre-cutout upward Ground perimeter, with existing outside planes retained."
+    "scope": "Original native13/pre-mosque-cutout packed perimeter evidence, retained as historical field support."
   },
   "camera_review": {
     "actual_saved_stations_m": [
       4148.83056640625,
       4198.025390625
     ],
-    "limits": "4148.83m shows the family on the right approach;4198m has turned past it and the family is outside the camera. Source-front-face CPU overlay is not UE/PBR or foreign-mesh depth proof. Native visibility/appearance remains pending."
+    "limits": "Native14 saved4148.8m overlay shows the revised tower distinctly right of the dome. It retains the old14 tower in its background and is not a second emitted15 tower. Overlay does not prove PBR or foreign-mesh visibility. Fresh native15 remains required."
+  },
+  "estimated_minaret_top_above_floor_m": 19.0,
+  "minaret_height_uncertainty_m": 3,
+  "source_native_silhouette_review": "build/reviews/jeddah-focused-20261118/return-context/native14-silhouette-study/read-only-findings.json",
+  "candidate15_ground_support": {
+    "current_actual_ground_samples": 90,
+    "missing_inside_or_on_native14_mosque_cutout": 73,
+    "missing_outside_prior_cutout": 0,
+    "minimum_floor_clearance_m": 0.16385609785722854,
+    "foundation_bottom_m": 2.3697211852798477,
+    "minimum_found_ground_burial_m": 0.2000002726813559,
+    "limits": "Current native14 Street already excludes the occupied mosque floor; missing samples are all inside/on that exact old occupied footprint. Regeneration15 must reconstruct exposed old minaret/stair land and preserve actual new outside joins. No current163-sample assertion is made."
+  },
+  "facade_lighting": {
+    "source": "Direct supplied668s shows localized warm/white facade illumination on the north-facing porch and lit pale architectural surfaces.",
+    "reconstruction": "Three fixed porch-pier uplights, power0.8, share existing bounded architectural35m attenuation/spot-cone configuration; hotel fixture records unchanged. Origins/targets/power are visual estimates, not measured fixture inventory or photometry. The whole illuminated region remains far from the road.",
+    "native_gate": "Verify actual15face/window read, preserved night sky and no racing-surface illumination change."
   }
 }

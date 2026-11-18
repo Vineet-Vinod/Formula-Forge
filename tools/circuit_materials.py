@@ -155,7 +155,10 @@ def shade(
             if "SurfaceMasked" in name or lettering
             else 0.07
         )
-        strength.r *= 1.0 if raised_panel else emissive_scale
+        if raised_panel:
+            strength.r = .3 if name == "PanelDHL" else .6
+        else:
+            strength.r *= emissive_scale
         bounce = EDIT.create_material_expression(
             material, unreal.MaterialExpressionMultiply
         )

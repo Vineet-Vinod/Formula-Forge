@@ -1,0 +1,32 @@
+{
+  "source": "Saved/Refs/jeddah.mp4 at616/618s",
+  "scope": "Only Jeddah pit fascia artwork/shading and separator lettering; existing lane/apron/fixture geometry stays fixed.",
+  "fascia_observations": "Candidate14 had tiny generic DHL text and excessive saturated yellow. Direct forward source shows a broad slanted red wordmark with flanking speed stripes on a muted yellow fascia.",
+  "artwork": "Original DejaVuSans-based typesetting, horizontally stretched/slanted with separately drawn speed stripes. No source-game pixels shipped. Jeddah private generated PanelDHL background blue channel17\u219265; other channels238/201 retained.",
+  "shading": "PanelDHL alone uses0.3 raised-panel lettering bounce instead of0.6. Salesforce stays0.6; original89 native palette assets unchanged.",
+  "candidate14_color_study": {
+    "region_xyxy": [
+      0,
+      0,
+      900,
+      360
+    ],
+    "source616_median_rgb": [
+      176,
+      152,
+      71
+    ],
+    "source618_median_rgb": [
+      177,
+      156,
+      71
+    ],
+    "candidate14_median_rgb": [
+      232,
+      217,
+      32
+    ],
+    "qualification": "Broad yellow-pixel mask over registered frontage region, not radiometry or identical camera pixels. Final native appearance remains a visual gate."
+  },
+  "separator": "Use the existing original PanelJeddahAramco texture with continuous longitudinal UVs. Estimated12m full green/blue cycle,6m per wordmark, plus/minus2m. Retain exact1.1m separator width,8mm lift,white edge and all underlying driving support."
+}

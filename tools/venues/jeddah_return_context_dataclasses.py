@@ -21,6 +21,7 @@ class CornicheMosqueSource:
     dome_height_m: Positive
     loggia_depth_m: Positive
     porch_depth_m: Positive
+    minaret_center_x_m: FiniteFloat
     minaret_side_m: Positive
     minaret_shaft_m: Positive
     minaret_crown_m: Positive
@@ -34,3 +35,10 @@ class MosqueOpening:
     bottom_m: float
     spring_m: float
     crown_m: float
+
+
+@dataclass(frozen=True)
+class CornicheWash:
+    origin_local_m: tuple[FiniteFloat, FiniteFloat, FiniteFloat]
+    target_local_m: tuple[FiniteFloat, FiniteFloat, FiniteFloat]
+    power: Annotated[FiniteFloat, Field(gt=0, le=4)]

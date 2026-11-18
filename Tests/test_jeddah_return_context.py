@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import csv
 import math
 import struct
 import sys
@@ -15,9 +16,33 @@ from circuit_mesh import MeshScene, cross, sub
 from circuit_scene import CircuitScene
 from shapely.geometry import Point as ShapePoint
 from shapely.geometry import Polygon
-from venues.jeddah_return_context import build, occupied_plan, source_record
+from venues.jeddah_return_context import (
+    build,
+    occupied_plan,
+    source_record,
+    write_lights,
+)
 from venues.jeddah_return_context_dataclasses import MosqueOpening
 from venues.jeddah_return_geometry import wall
+
+
+def test_porch_washes_cannot_illuminate_the_racing_surface(tmp_path: Path) -> None:
+    scene = CircuitScene("jeddah")
+    scene.data = tmp_path
+    write_lights(scene)
+    rows = list(csv.DictReader((tmp_path / "mosque_lights.csv").open()))
+    assert len(rows) == 3
+    source = source_record()
+    center = scene.geo(source.latitude, source.longitude)
+    plan = occupied_plan(source)
+    for row in rows:
+        origin = -float(row["y"]) / 100, -float(row["x"]) / 100
+        target = -float(row["target_y"]) / 100, -float(row["target_x"]) / 100
+        road, distance = scene.nearest(*origin)
+        assert distance > road.half_width + 35
+        assert plan.buffer(.1).covers(ShapePoint(target[0] - center[0], target[1] - center[1]))
+        assert float(row["z"]) / 100 > source.floor_relative_m
+        assert 0 < float(row["power"]) <= 1
 
 
 def test_pointed_arcade_is_open_and_the_masonry_shell_is_closed() -> None:
@@ -61,6 +86,10 @@ def test_mosque_retains_published_scale_source_registration_and_driving_inputs()
     source = source_record()
     shape = occupied_plan(source)
     assert shape.area == pytest.approx(200.96)
+    assert shape.covers(ShapePoint(source.minaret_center_x_m, -6.4))
+    assert not shape.covers(ShapePoint(-2.5, -7))
+    assert source.minaret_center_x_m < -source.hall_side_m / 2
+    assert source.minaret_shaft_m + source.minaret_crown_m + 1.04 == pytest.approx(19)
     assert abs(shape.area / source.published_floor_m2 - 1) < 0.04
     build(scene)
     assert before == (scene.road, scene.grid, scene.buildings)
@@ -72,6 +101,7 @@ def test_mosque_retains_published_scale_source_registration_and_driving_inputs()
         72.72371, abs=0.01
     )
     count = 0
+    highest = -math.inf
     for tile in scene.tiles.values():
         assert set(tile.materials) <= {"Cream", "Trunk"}
         for offset in range(0, len(tile.triangles), 100):
@@ -80,6 +110,7 @@ def test_mosque_retains_published_scale_source_registration_and_driving_inputs()
                 (-a[2 + i * 8] / 100, -a[1 + i * 8] / 100, a[3 + i * 8] / 100)
                 for i in range(3)
             ]
+            highest = max(highest, *(p[2] for p in points))
             n = cross(sub(points[1], points[0]), sub(points[2], points[0]))
             length = math.sqrt(sum(v * v for v in n))
             assert length > 0
@@ -90,3 +121,4 @@ def test_mosque_retains_published_scale_source_registration_and_driving_inputs()
                 )
             count += 1
     assert count > 5000
+    assert source.floor_relative_m + 18.9 < highest <= source.floor_relative_m + 19.001

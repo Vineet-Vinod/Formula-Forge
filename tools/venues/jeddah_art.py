@@ -34,6 +34,23 @@ def night_environment(directory: Path) -> None:
 
 def artwork(directory: Path) -> None:
     night_environment(directory)
+    dhl = Image.new("RGB", (1024, 128), (238, 201, 65))
+    ink = Image.new("L", (500, 180))
+    letters = ImageDraw.Draw(ink)
+    letters.text((250, 90), "DHL", font=ImageFont.truetype(str(FONT), 140),
+                 fill=255, anchor="mm", stroke_width=3)
+    bounds = ink.getbbox()
+    if bounds is None:
+        raise ValueError("Missing DHL fascia lettering")
+    ink = ink.crop(bounds).resize((460, 82), Image.Resampling.LANCZOS)
+    ink = ink.transform((484, 82), Image.Transform.AFFINE,
+                        (1, .25, -21, 0, 1, 0), Image.Resampling.BICUBIC)
+    dhl.paste((192, 24, 25), (270, 23), ink)
+    drawing = ImageDraw.Draw(dhl)
+    for stripe_top in (43, 61, 79):
+        drawing.polygon(((124, stripe_top), (294, stripe_top), (291, stripe_top + 10), (124, stripe_top + 10)), fill=(192, 24, 25))
+        drawing.polygon(((746, stripe_top), (900, stripe_top), (900, stripe_top + 10), (743, stripe_top + 10)), fill=(192, 24, 25))
+    dhl.save(directory / "PanelDHL.png")
     aramco = Image.new("RGB", (1024, 128), (20, 163, 86))
     drawing = ImageDraw.Draw(aramco)
     drawing.rectangle((512, 0, 1024, 128), fill=(30, 143, 195))

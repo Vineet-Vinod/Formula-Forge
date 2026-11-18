@@ -1,7 +1,7 @@
 {
   "version": 1,
   "circuit": "jeddah",
-  "manifest_sha256": "8abd1cfe508a0ecd5f170bb3e9f6358e7b6b882c43c4be8ca90f5c83c2483f67",
+  "manifest_sha256": "428d2902a96dfefa22ee7a37924d2adf6cfe3bbfce5737400436323b42f409e0",
   "source_sha256": {
     "Attribution/Sources/jeddah/pit-lane-reconstruction.json": "2b8a29ff47b1dbfc340db73a3b72c6742d99feb32a4189a5c5f536d848a01dc1",
     "build/reviews/jeddah-focused-20261118/escape-overlay.json": "55ad953ae90658c256207dcf634d2192466838baa994608bd00aec421275cbb9",
@@ -18,39 +18,39 @@
     "tools/venues/jeddah_pit_walkway.py": "d95b1c4a939c21a86d52795463ee111089b204e034a3a7507f5f4d560f64b9eb",
     "tools/venues/jeddah_pit_walkway_dataclasses.py": "cbc336c856522da93171d922da5002489f1e82e40265f468f41721428f2d294f",
     "build/circuits/jeddah/barriers.csv": "9ec41d7c83ddaca05875baa4cd0d28b8de602fc07dcd95c09e01409d0c9be89e",
-    "build/circuits/jeddah/manifest.json": "50a48d95371fa5d8c737d78d071abd35db23ab4229afb279a63335a44cf92666"
+    "build/circuits/jeddah/manifest.json": "2456ed3b207bfbbcd88dccd4be4946196dfbaad93c504af354ae0c86d12e08a0"
   },
   "cosmetic_portal_count": 409,
   "native_edits": [
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_00_m1",
-      "triangles": 15134,
-      "sha256": "aa8070571950f046158ed5b9786cb7117379a9eea615a1701268d9fceedd7d75"
+      "triangles": 15142,
+      "sha256": "378e61de4606e3206dee43ea2cb783225164a6285fe7220d488ef44c7aa00306"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_00_m2",
-      "triangles": 11945,
-      "sha256": "23fcf3a0b209c6676210cdf173aefc9b702f7e114dd5a339e66568d113583ade"
+      "triangles": 12032,
+      "sha256": "4ff7244cb4e2e90bfde29c0bd06f3f6729f300a1141fd3c71a0691f6d6b00575"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_00_m4",
-      "triangles": 4913,
-      "sha256": "de486e34de93dab33c6b275caaea7faa54177f9e71a7571fced97239197b9a39"
+      "triangles": 5014,
+      "sha256": "6513b11438884a924f7b9a503aa829f27a7691e1cf8ab4a4f61cd3a101a19f3f"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_m1_00",
-      "triangles": 26686,
-      "sha256": "593c95363a9aa8f629d504868e299ab18576528fbe55b9a0752d2428438580e9"
+      "triangles": 26697,
+      "sha256": "aa33f25e0624da6f7cb5f0e4a7420fac96df9134fd564b4894ec5b537c027475"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_m1_01",
-      "triangles": 35423,
-      "sha256": "ff1d895ee5dfbe6798c30208f45436767cf9ac683fc316ac05be17aa3ebda056"
+      "triangles": 35663,
+      "sha256": "9c603da964ce1985567d2fcc97fd37500c0c3864e0fbed854bcb91aba4555be1"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_m1_m1",
-      "triangles": 14126,
-      "sha256": "5b9c4e908ea633b0f24eb543dbf6db97d11b8bd1a1d2d83de06544e8d840681e"
+      "triangles": 13807,
+      "sha256": "daea7aa3a56112bc3aec412428c3bdf26b32f8e5ff819201a3a495e6d0e5aa56"
     }
   ],
   "pit_architecture_edits": [
@@ -59,7 +59,7 @@
       "source_reconstructed_open_exit": true,
       "recipe_sha256": "4904b9ad17fd44e09ffbb9795afbfc7c32397c3792609ac317f4b25c69a3b2e3",
       "source_reconstruction_sha256": "e18e995658e437cbc4cdc4e9fc8712394b398f3befd082931ff8bbcf6ebaa76c",
-      "imported_source_sha256": "77318be7431c246ec5ed646263fb34c43b7854213d21785b09bc80921230a3e4",
+      "imported_source_sha256": "d6c81baeda58a64b688fac5dfec23385fc27949cc93010252ceddcf48c4a3768",
       "legacy_white_cut_applied": false
     }
   ],

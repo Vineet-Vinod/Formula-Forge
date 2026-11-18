@@ -6,6 +6,7 @@ import math
 from pathlib import Path
 
 from circuit_dataclasses import Point
+from circuit_mesh import world
 from circuit_scene import CircuitScene
 from pydantic import TypeAdapter
 from shapely.affinity import translate
@@ -14,7 +15,11 @@ from shapely.geometry import Polygon, box
 from shapely.ops import unary_union
 
 from venues.jeddah_pit_exit_geometry import solid
-from venues.jeddah_return_context_dataclasses import CornicheMosqueSource, MosqueOpening
+from venues.jeddah_return_context_dataclasses import (
+    CornicheMosqueSource,
+    CornicheWash,
+    MosqueOpening,
+)
 from venues.jeddah_return_geometry import barrel, dome, finial, profile_solid, wall
 
 SOURCE = (
@@ -35,14 +40,15 @@ def source_record() -> CornicheMosqueSource:
 def occupied_plan(source: CornicheMosqueSource) -> Polygon:
     half = source.hall_side_m / 2
     minaret = source.minaret_side_m
+    tower_east = source.minaret_center_x_m + minaret / 2
     plan = unary_union(
         [
             box(-half, -half, half, half),
             box(-half - source.loggia_depth_m, -half, -half, half),
             box(-half, half, half, half + source.porch_depth_m),
-            box(-1.1 - minaret, -half - minaret, -1.1, -half),
+            box(tower_east - minaret, -half - minaret, tower_east, -half),
             box(half, -1, half + 1.4, 1),
-            box(-1.1, -half - 1.2, half, -half),
+            box(tower_east, -half - 1.2, tower_east + 6.1, -half),
         ]
     )
     if (
@@ -55,8 +61,29 @@ def occupied_plan(source: CornicheMosqueSource) -> Polygon:
     return plan
 
 
+def write_lights(scene: CircuitScene) -> None:
+    if scene.slug != "jeddah":
+        raise ValueError("Corniche illumination requires the Jeddah source frame")
+    source = source_record()
+    center = scene.geo(source.latitude, source.longitude)
+    fixtures = TypeAdapter(list[CornicheWash]).validate_json(
+        (scene.sources / "return-context-lights.json").read_bytes()
+    )
+    rows = ["x,y,z,target_x,target_y,target_z,power"]
+    for fixture in fixtures:
+        origin, target = [
+            world((center[0] + local[0], center[1] + local[1],
+                   source.floor_relative_m + local[2]))
+            for local in (fixture.origin_local_m, fixture.target_local_m)
+        ]
+        rows.append(",".join(f"{value:.5f}" for value in (*origin, *target, fixture.power)))
+    scene.data.mkdir(parents=True, exist_ok=True)
+    (scene.data / "mosque_lights.csv").write_text("\n".join(rows) + "\n")
+
+
 def build(scene: CircuitScene) -> None:
     source = source_record()
+    write_lights(scene)
     center = scene.geo(source.latitude, source.longitude)
     local = occupied_plan(source)
     footprint = translate(local, xoff=center[0], yoff=center[1])
@@ -115,7 +142,9 @@ def build(scene: CircuitScene) -> None:
         ]
         peak = point(corner_x, corner_y, source.hall_wall_m + 0.85)
         for first, last in zip(base_ring, base_ring[1:] + base_ring[:1], strict=True):
-            scene.triangle("Building_CornicheRoofCornerCaps", "Cream", first, last, peak)
+            scene.triangle(
+                "Building_CornicheRoofCornerCaps", "Cream", first, last, peak
+            )
     hall = translate(box(-half, -half, half, half), xoff=center[0], yoff=center[1])
     solid(
         scene,
@@ -218,7 +247,7 @@ def build(scene: CircuitScene) -> None:
         source.porch_depth_m,
     )
 
-    x = -1.1 - source.minaret_side_m / 2
+    x = source.minaret_center_x_m
     y = -half - source.minaret_side_m / 2
     shaft = source.minaret_shaft_m
     for radius, low, high, kind in (
@@ -282,7 +311,9 @@ def build(scene: CircuitScene) -> None:
             x + 1.03 * math.cos(theta), y + 1.03 * math.sin(theta), shaft + 2.5
         )
         for first, last in zip(corners, corners[1:] + corners[:1], strict=True):
-            scene.triangle("Building_CornicheLanternMerlons", "Cream", first, last, peak)
+            scene.triangle(
+                "Building_CornicheLanternMerlons", "Cream", first, last, peak
+            )
         scene.quad(
             "Building_CornicheLanternMerlons",
             "Cream",
@@ -302,8 +333,8 @@ def build(scene: CircuitScene) -> None:
     ramp = Polygon([(0, 3.2), (6.1, 0), (6.1, 0.3), (0, 3.5)])
     profile_solid(
         scene,
-        point(-1.1, -half - 1.2),
-        point(half, -half - 1.2),
+        point(x + source.minaret_side_m / 2, -half - 1.2),
+        point(x + source.minaret_side_m / 2 + 6.1, -half - 1.2),
         ramp,
         1.2,
         "Building_CornicheMinaretStairEnvelope",

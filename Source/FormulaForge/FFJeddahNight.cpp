@@ -117,6 +117,7 @@ void AFFJeddahNight::BeginPlay() {
     }
     TArray<FFJeddahFixture> architecturalFixtures;
     LoadFixtures(TEXT("edition_lights.csv"), architecturalFixtures);
+    LoadFixtures(TEXT("mosque_lights.csv"), architecturalFixtures);
     for (const FFJeddahFixture& fixture : architecturalFixtures) {
         ASpotLight* fixtureActor = world->SpawnActor<ASpotLight>();
         USpotLightComponent* spot = CastChecked<USpotLightComponent>(fixtureActor->GetLightComponent());

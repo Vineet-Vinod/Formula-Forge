@@ -1,0 +1,41 @@
+[
+  {
+    "origin_local_m": [
+      -4,
+      10.05,
+      0.25
+    ],
+    "target_local_m": [
+      -4,
+      8.84,
+      2.8
+    ],
+    "power": 0.8
+  },
+  {
+    "origin_local_m": [
+      0,
+      10.05,
+      0.25
+    ],
+    "target_local_m": [
+      0,
+      8.84,
+      2.8
+    ],
+    "power": 0.8
+  },
+  {
+    "origin_local_m": [
+      4,
+      10.05,
+      0.25
+    ],
+    "target_local_m": [
+      4,
+      8.84,
+      2.8
+    ],
+    "power": 0.8
+  }
+]

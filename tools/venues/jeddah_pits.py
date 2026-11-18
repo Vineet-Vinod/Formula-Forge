@@ -123,11 +123,20 @@ def working_apron(scene: CircuitScene) -> None:
             continue
         if min(width_a, width_b) < source.working_strip_width_m + 2 * source.stop_half_width_m:
             raise ValueError("Jeddah working apron cannot contain its qualified stop area")
-        material = "SeatBlue" if int((start - source.start_m) / 18) % 2 == 0 else "Green"
-        scene.quad("Tile_JeddahWorkingStrip", material,
-                   apron_point(a, first, source, 1 - source.working_strip_width_m / width_a, .008),
-                   apron_point(b, last, source, 1 - source.working_strip_width_m / width_b, .008),
-                   apron_point(b, last, source, 1, .008), apron_point(a, first, source, 1, .008), up=True)
+        strip = [apron_point(a, first, source, 1 - source.working_strip_width_m / width_a, .008),
+                 apron_point(b, last, source, 1 - source.working_strip_width_m / width_b, .008),
+                 apron_point(b, last, source, 1, .008), apron_point(a, first, source, 1, .008)]
+        u0, u1 = (start - source.start_m) / 12, (end - source.start_m) / 12
+        coordinates = [(u0, 1), (u1, 1), (u1, 0), (u0, 0)]
+        for indices in ((0, 1, 2), (0, 2, 3)):
+            face = [strip[i] for i in indices]
+            uv = [coordinates[i] for i in indices]
+            if ((face[1][0] - face[0][0]) * (face[2][1] - face[0][1])
+                    - (face[1][1] - face[0][1]) * (face[2][0] - face[0][0])) < 0:
+                face[1], face[2] = face[2], face[1]
+                uv[1], uv[2] = uv[2], uv[1]
+            scene.triangle("Tile_JeddahWorkingStrip", "PanelJeddahAramco",
+                           face[0], face[1], face[2], uv=tuple(uv))
         scene.quad("Tile_JeddahWorkingStripEdges", "White",
                    apron_point(a, first, source, 1 - (source.working_strip_width_m + .09) / width_a, .01),
                    apron_point(b, last, source, 1 - (source.working_strip_width_m + .09) / width_b, .01),
