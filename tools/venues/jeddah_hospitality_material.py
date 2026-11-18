@@ -44,7 +44,7 @@ def build(assets: str) -> unreal.Material:
     editor.connect_material_property(specular, "", unreal.MaterialProperty.MP_SPECULAR)
     fresnel = editor.create_material_expression(material, unreal.MaterialExpressionFresnel)
     fresnel.set_editor_property("exponent", 5.0)
-    fresnel.set_editor_property("base_reflect_fraction", .04)
+    fresnel.set_editor_property("base_reflect_fraction", .18)
     opacity = editor.create_material_expression(material, unreal.MaterialExpressionLinearInterpolate)
     low = editor.create_material_expression(material, unreal.MaterialExpressionConstant)
     low.r = .08
