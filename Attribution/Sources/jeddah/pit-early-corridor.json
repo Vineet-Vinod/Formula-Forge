@@ -1,0 +1,7055 @@
+{
+  "walls": [
+    {
+      "start_distance_m": 0.0,
+      "end_distance_m": 2.0,
+      "barrier": {
+        "ax": 126.58864673234226,
+        "ay": -451.02145719767327,
+        "bx": 126.12578621679663,
+        "by": -449.06901850573206,
+        "bottom": 2.96740146399532,
+        "top": 3.96740146399532,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 2.0,
+      "end_distance_m": 4.0,
+      "barrier": {
+        "ax": 126.12578621679663,
+        "ay": -449.06901850573206,
+        "bx": 125.66273705072796,
+        "by": -447.1177162295562,
+        "bottom": 2.970598945795574,
+        "top": 3.970598945795574,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 4.0,
+      "end_distance_m": 6.0,
+      "barrier": {
+        "ax": 125.66273705072796,
+        "ay": -447.1177162295562,
+        "bx": 125.19914900833476,
+        "by": -445.16649362148456,
+        "bottom": 2.9744589787655746,
+        "top": 3.9744589787655746,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 6.0,
+      "end_distance_m": 8.0,
+      "barrier": {
+        "ax": 125.19914900833476,
+        "ay": -445.16649362148456,
+        "bx": 124.75874486843917,
+        "by": -443.2074620890039,
+        "bottom": 2.9782621328723593,
+        "top": 3.9782621328723593,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 8.0,
+      "end_distance_m": 10.0,
+      "barrier": {
+        "ax": 124.75874486843917,
+        "ay": -443.2074620890039,
+        "bx": 124.3415183251949,
+        "by": -441.24060266941683,
+        "bottom": 2.982124303255089,
+        "top": 3.9821243032550884,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 10.0,
+      "end_distance_m": 12.0,
+      "barrier": {
+        "ax": 124.3415183251949,
+        "ay": -441.24060266941683,
+        "bx": 123.92374457551699,
+        "by": -439.2737978822523,
+        "bottom": 2.98602854867376,
+        "top": 3.98602854867376,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 12.0,
+      "end_distance_m": 14.0,
+      "barrier": {
+        "ax": 123.92374457551699,
+        "ay": -439.2737978822523,
+        "bx": 123.52914002767312,
+        "by": -437.29914003611697,
+        "bottom": 2.989950374859747,
+        "top": 3.989950374859747,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 14.0,
+      "end_distance_m": 16.0,
+      "barrier": {
+        "ax": 123.52914002767312,
+        "ay": -437.29914003611697,
+        "bx": 123.11026986849326,
+        "by": -435.33243860309324,
+        "bottom": 2.993900084023399,
+        "top": 3.993900084023399,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 16.0,
+      "end_distance_m": 18.0,
+      "barrier": {
+        "ax": 123.11026986849326,
+        "ay": -435.33243860309324,
+        "bx": 122.69085262871167,
+        "by": -433.36579225906905,
+        "bottom": 2.9978738418371984,
+        "top": 3.9978738418371984,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 18.0,
+      "end_distance_m": 20.0,
+      "barrier": {
+        "ax": 122.69085262871167,
+        "ay": -433.36579225906905,
+        "bx": 122.29459834143059,
+        "by": -431.39127421699067,
+        "bottom": 3.0018586939743894,
+        "top": 4.001858693974389,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 20.0,
+      "end_distance_m": 22.0,
+      "barrier": {
+        "ax": 122.29459834143059,
+        "ay": -431.39127421699067,
+        "bx": 121.87408461424492,
+        "by": -429.4247311677378,
+        "bottom": 3.006966029218405,
+        "top": 4.006966029218405,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 22.0,
+      "end_distance_m": 24.0,
+      "barrier": {
+        "ax": 121.87408461424492,
+        "ay": -429.4247311677378,
+        "bx": 121.45299323464154,
+        "by": -427.4581496608136,
+        "bottom": 3.0054074050149913,
+        "top": 4.005407405014991,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 24.0,
+      "end_distance_m": 26.0,
+      "barrier": {
+        "ax": 121.45299323464154,
+        "ay": -427.4581496608136,
+        "bx": 121.05492383179615,
+        "by": -425.4830575748479,
+        "bottom": 2.993170408535538,
+        "top": 3.993170408535538,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 26.0,
+      "end_distance_m": 28.0,
+      "barrier": {
+        "ax": 121.05492383179615,
+        "ay": -425.4830575748479,
+        "bx": 120.63286927125425,
+        "by": -423.51528779533356,
+        "bottom": 2.975117402812698,
+        "top": 3.975117402812698,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 28.0,
+      "end_distance_m": 30.0,
+      "barrier": {
+        "ax": 120.63286927125425,
+        "ay": -423.51528779533356,
+        "bx": 120.23448943383377,
+        "by": -421.53948580496694,
+        "bottom": 2.952751697942711,
+        "top": 3.952751697942711,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 30.0,
+      "end_distance_m": 32.0,
+      "barrier": {
+        "ax": 120.23448943383377,
+        "ay": -421.53948580496694,
+        "bx": 119.81240492551248,
+        "by": -419.5716266464306,
+        "bottom": 2.929028906052384,
+        "top": 3.929028906052384,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 32.0,
+      "end_distance_m": 34.0,
+      "barrier": {
+        "ax": 119.81240492551248,
+        "ay": -419.5716266464306,
+        "bx": 119.41402508809202,
+        "by": -417.595824656064,
+        "bottom": 2.9053329817551523,
+        "top": 3.9053329817551523,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 34.0,
+      "end_distance_m": 36.0,
+      "barrier": {
+        "ax": 119.41402508809202,
+        "ay": -417.595824656064,
+        "bx": 118.99194057977073,
+        "by": -415.62796549752767,
+        "bottom": 2.881634205663962,
+        "top": 3.8816342056639614,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 36.0,
+      "end_distance_m": 38.0,
+      "barrier": {
+        "ax": 118.99194057977073,
+        "ay": -415.62796549752767,
+        "bx": 118.59356074235026,
+        "by": -413.652163507161,
+        "bottom": 2.8579132952485775,
+        "top": 3.8579132952485775,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 38.0,
+      "end_distance_m": 40.0,
+      "barrier": {
+        "ax": 118.59356074235026,
+        "ay": -413.652163507161,
+        "bx": 118.17147623402897,
+        "by": -411.68430434862466,
+        "bottom": 2.83418206301529,
+        "top": 3.83418206301529,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 40.0,
+      "end_distance_m": 42.0,
+      "barrier": {
+        "ax": 118.17147623402897,
+        "ay": -411.68430434862466,
+        "bx": 117.74939172570772,
+        "by": -409.71644519008845,
+        "bottom": 2.810463618640914,
+        "top": 3.810463618640914,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 42.0,
+      "end_distance_m": 44.0,
+      "barrier": {
+        "ax": 117.74939172570772,
+        "ay": -409.71644519008845,
+        "bx": 117.35101188828722,
+        "by": -407.7406431997218,
+        "bottom": 2.7867304852674355,
+        "top": 3.7867304852674355,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 44.0,
+      "end_distance_m": 46.0,
+      "barrier": {
+        "ax": 117.35101188828722,
+        "ay": -407.7406431997218,
+        "bx": 116.92892737996593,
+        "by": -405.77278404118545,
+        "bottom": 2.762999672808998,
+        "top": 3.7629996728089976,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 46.0,
+      "end_distance_m": 48.0,
+      "barrier": {
+        "ax": 116.92892737996593,
+        "ay": -405.77278404118545,
+        "bx": 116.53054754254546,
+        "by": -403.79698205081877,
+        "bottom": 2.7392707384352626,
+        "top": 3.7392707384352626,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 48.0,
+      "end_distance_m": 50.0,
+      "barrier": {
+        "ax": 116.53054754254546,
+        "ay": -403.79698205081877,
+        "bx": 116.10846303422419,
+        "by": -401.82912289228256,
+        "bottom": 2.7155411328260906,
+        "top": 3.7155411328260906,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 50.0,
+      "end_distance_m": 52.0,
+      "barrier": {
+        "ax": 116.10846303422419,
+        "ay": -401.82912289228256,
+        "bx": 115.7100831968037,
+        "by": -399.8533209019159,
+        "bottom": 2.6917665556359243,
+        "top": 3.6917665556359243,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 52.0,
+      "end_distance_m": 54.0,
+      "barrier": {
+        "ax": 115.7100831968037,
+        "ay": -399.8533209019159,
+        "bx": 115.12206599217689,
+        "by": -397.94106156619205,
+        "bottom": 2.668025719475012,
+        "top": 3.668025719475012,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 54.0,
+      "end_distance_m": 56.0,
+      "barrier": {
+        "ax": 115.12206599217689,
+        "ay": -397.94106156619205,
+        "bx": 114.48663944574852,
+        "by": -396.0446878941289,
+        "bottom": 2.637959114002907,
+        "top": 3.637959114002907,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 56.0,
+      "end_distance_m": 58.0,
+      "barrier": {
+        "ax": 114.48663944574852,
+        "ay": -396.0446878941289,
+        "bx": 113.85121289932017,
+        "by": -394.14831422206584,
+        "bottom": 2.5992155063103946,
+        "top": 3.5992155063103946,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 58.0,
+      "end_distance_m": 60.0,
+      "barrier": {
+        "ax": 113.85121289932017,
+        "ay": -394.14831422206584,
+        "bx": 113.21578635289178,
+        "by": -392.2519405500027,
+        "bottom": 2.5559690448482835,
+        "top": 3.5559690448482835,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 60.0,
+      "end_distance_m": 62.0,
+      "barrier": {
+        "ax": 113.21578635289178,
+        "ay": -392.2519405500027,
+        "bx": 112.5803598064634,
+        "by": -390.3555668779396,
+        "bottom": 2.506605870628139,
+        "top": 3.506605870628139,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 62.0,
+      "end_distance_m": 64.0,
+      "barrier": {
+        "ax": 112.5803598064634,
+        "ay": -390.3555668779396,
+        "bx": 111.94493326003503,
+        "by": -388.4591932058765,
+        "bottom": 2.4562552153860695,
+        "top": 3.4562552153860695,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 64.0,
+      "end_distance_m": 66.0,
+      "barrier": {
+        "ax": 111.94493326003503,
+        "ay": -388.4591932058765,
+        "bx": 111.30950671360668,
+        "by": -386.5628195338134,
+        "bottom": 2.4089229018720237,
+        "top": 3.4089229018720237,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 66.0,
+      "end_distance_m": 68.0,
+      "barrier": {
+        "ax": 111.30950671360668,
+        "ay": -386.5628195338134,
+        "bx": 110.67408016717829,
+        "by": -384.6664458617503,
+        "bottom": 2.3618459942982657,
+        "top": 3.3618459942982657,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 68.0,
+      "end_distance_m": 70.0,
+      "barrier": {
+        "ax": 110.67408016717829,
+        "ay": -384.6664458617503,
+        "bx": 110.03865362074991,
+        "by": -382.7700721896872,
+        "bottom": 2.314913717993523,
+        "top": 3.314913717993523,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 70.0,
+      "end_distance_m": 72.0,
+      "barrier": {
+        "ax": 110.03865362074991,
+        "ay": -382.7700721896872,
+        "bx": 109.40322707432155,
+        "by": -380.87369851762406,
+        "bottom": 2.2680088508987293,
+        "top": 3.2680088508987293,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 72.0,
+      "end_distance_m": 74.0,
+      "barrier": {
+        "ax": 109.40322707432155,
+        "ay": -380.87369851762406,
+        "bx": 108.76782277249265,
+        "by": -378.9773912292952,
+        "bottom": 2.221092415907841,
+        "top": 3.221092415907841,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 74.0,
+      "end_distance_m": 76.0,
+      "barrier": {
+        "ax": 108.76782277249265,
+        "ay": -378.9773912292952,
+        "bx": 108.13299069581103,
+        "by": -377.08317242225803,
+        "bottom": 2.1741758319485305,
+        "top": 3.1741758319485305,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 76.0,
+      "end_distance_m": 78.0,
+      "barrier": {
+        "ax": 108.13299069581103,
+        "ay": -377.08317242225803,
+        "bx": 107.49472142728834,
+        "by": -375.19025287099316,
+        "bottom": 2.127284004478374,
+        "top": 3.1272840044783736,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 78.0,
+      "end_distance_m": 80.0,
+      "barrier": {
+        "ax": 107.49472142728834,
+        "ay": -375.19025287099316,
+        "bx": 106.85542527028075,
+        "by": -373.29540142754934,
+        "bottom": 2.0803795303690737,
+        "top": 3.0803795303690737,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 80.0,
+      "end_distance_m": 82.0,
+      "barrier": {
+        "ax": 106.85542527028075,
+        "ay": -373.29540142754934,
+        "bx": 106.21606211089002,
+        "by": -371.40035136213845,
+        "bottom": 2.0334616572172117,
+        "top": 3.0334616572172113,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 82.0,
+      "end_distance_m": 84.0,
+      "barrier": {
+        "ax": 106.21606211089002,
+        "ay": -371.40035136213845,
+        "bx": 105.5766989514993,
+        "by": -369.5053012967275,
+        "bottom": 1.9865625956920432,
+        "top": 2.9865625956920434,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 84.0,
+      "end_distance_m": 86.0,
+      "barrier": {
+        "ax": 105.5766989514993,
+        "ay": -369.5053012967275,
+        "bx": 104.93733579210857,
+        "by": -367.6102512313166,
+        "bottom": 1.9401574743789591,
+        "top": 2.9401574743789594,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 86.0,
+      "end_distance_m": 88.0,
+      "barrier": {
+        "ax": 104.93733579210857,
+        "ay": -367.6102512313166,
+        "bx": 104.29797263271783,
+        "by": -365.7152011659057,
+        "bottom": 1.9047627505461715,
+        "top": 2.9047627505461717,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 88.0,
+      "end_distance_m": 90.0,
+      "barrier": {
+        "ax": 104.29797263271783,
+        "ay": -365.7152011659057,
+        "bx": 103.6586094733271,
+        "by": -363.82015110049474,
+        "bottom": 1.8822649885898077,
+        "top": 2.8822649885898075,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 90.0,
+      "end_distance_m": 92.0,
+      "barrier": {
+        "ax": 103.6586094733271,
+        "ay": -363.82015110049474,
+        "bx": 103.01924631393638,
+        "by": -361.92510103508386,
+        "bottom": 1.8656233582110004,
+        "top": 2.8656233582110007,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 92.0,
+      "end_distance_m": 94.0,
+      "barrier": {
+        "ax": 103.01924631393638,
+        "ay": -361.92510103508386,
+        "bx": 102.37988315454564,
+        "by": -360.0300509696729,
+        "bottom": 1.8532532183658774,
+        "top": 2.8532532183658774,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 94.0,
+      "end_distance_m": 96.0,
+      "barrier": {
+        "ax": 102.37988315454564,
+        "ay": -360.0300509696729,
+        "bx": 101.74051999515491,
+        "by": -358.13500090426203,
+        "bottom": 1.84165096584286,
+        "top": 2.84165096584286,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 96.0,
+      "end_distance_m": 98.0,
+      "barrier": {
+        "ax": 101.74051999515491,
+        "ay": -358.13500090426203,
+        "bx": 101.10115683576419,
+        "by": -356.2399508388511,
+        "bottom": 1.8300166552288075,
+        "top": 2.8300166552288077,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 98.0,
+      "end_distance_m": 100.0,
+      "barrier": {
+        "ax": 101.10115683576419,
+        "ay": -356.2399508388511,
+        "bx": 100.46179367637346,
+        "by": -354.3449007734402,
+        "bottom": 1.8183390873174734,
+        "top": 2.818339087317473,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 100.0,
+      "end_distance_m": 102.0,
+      "barrier": {
+        "ax": 100.46179367637346,
+        "ay": -354.3449007734402,
+        "bx": 99.82243051698272,
+        "by": -352.44985070802926,
+        "bottom": 1.8066291928659342,
+        "top": 2.806629192865934,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 102.0,
+      "end_distance_m": 104.0,
+      "barrier": {
+        "ax": 99.82243051698272,
+        "ay": -352.44985070802926,
+        "bx": 99.183067357592,
+        "by": -350.5548006426184,
+        "bottom": 1.794911622266285,
+        "top": 2.794911622266285,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 104.0,
+      "end_distance_m": 106.0,
+      "barrier": {
+        "ax": 99.183067357592,
+        "ay": -350.5548006426184,
+        "bx": 98.54370419820128,
+        "by": -348.65975057720743,
+        "bottom": 1.7831924436611886,
+        "top": 2.7831924436611883,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 106.0,
+      "end_distance_m": 108.0,
+      "barrier": {
+        "ax": 98.54370419820128,
+        "ay": -348.65975057720743,
+        "bx": 97.90434103881054,
+        "by": -346.76470051179655,
+        "bottom": 1.7714751142016236,
+        "top": 2.771475114201624,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 108.0,
+      "end_distance_m": 110.0,
+      "barrier": {
+        "ax": 97.90434103881054,
+        "ay": -346.76470051179655,
+        "bx": 97.2649778794198,
+        "by": -344.8696504463856,
+        "bottom": 1.7597567733211077,
+        "top": 2.759756773321108,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 110.0,
+      "end_distance_m": 112.0,
+      "barrier": {
+        "ax": 97.2649778794198,
+        "ay": -344.8696504463856,
+        "bx": 96.62561472002908,
+        "by": -342.9746003809747,
+        "bottom": 1.7480432019445302,
+        "top": 2.7480432019445304,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 112.0,
+      "end_distance_m": 114.0,
+      "barrier": {
+        "ax": 96.62561472002908,
+        "ay": -342.9746003809747,
+        "bx": 95.98625156063835,
+        "by": -341.0795503155638,
+        "bottom": 1.736330916972959,
+        "top": 2.736330916972959,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 114.0,
+      "end_distance_m": 116.0,
+      "barrier": {
+        "ax": 95.98625156063835,
+        "ay": -341.0795503155638,
+        "bx": 95.34688840124761,
+        "by": -339.18450025015284,
+        "bottom": 1.7245489961351153,
+        "top": 2.7245489961351153,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 116.0,
+      "end_distance_m": 118.0,
+      "barrier": {
+        "ax": 95.34688840124761,
+        "ay": -339.18450025015284,
+        "bx": 94.70752524185689,
+        "by": -337.28945018474195,
+        "bottom": 1.7133658429671306,
+        "top": 2.7133658429671303,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 118.0,
+      "end_distance_m": 120.0,
+      "barrier": {
+        "ax": 94.70752524185689,
+        "ay": -337.28945018474195,
+        "bx": 94.0687916413761,
+        "by": -335.3962635351322,
+        "bottom": 1.716827965813857,
+        "top": 2.7168279658138568,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 120.0,
+      "end_distance_m": 122.0,
+      "barrier": {
+        "ax": 94.0687916413761,
+        "ay": -335.3962635351322,
+        "bx": 93.43952211270494,
+        "by": -333.5405667251005,
+        "bottom": 1.7382845479152975,
+        "top": 2.7382845479152973,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 122.0,
+      "end_distance_m": 124.0,
+      "barrier": {
+        "ax": 93.43952211270494,
+        "ay": -333.5405667251005,
+        "bx": 92.75488223411543,
+        "by": -331.72137794546427,
+        "bottom": 1.7676022021202986,
+        "top": 2.7676022021202984,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 124.0,
+      "end_distance_m": 126.0,
+      "barrier": {
+        "ax": 92.75488223411543,
+        "ay": -331.72137794546427,
+        "bx": 92.02890291394809,
+        "by": -329.87685640105184,
+        "bottom": 1.8018971892594908,
+        "top": 2.801897189259491,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 126.0,
+      "end_distance_m": 128.0,
+      "barrier": {
+        "ax": 92.02890291394809,
+        "ay": -329.87685640105184,
+        "bx": 91.2964849142412,
+        "by": -328.0157911486479,
+        "bottom": 1.837345081420682,
+        "top": 2.8373450814206818,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 128.0,
+      "end_distance_m": 130.0,
+      "barrier": {
+        "ax": 91.2964849142412,
+        "ay": -328.0157911486479,
+        "bx": 90.56406691453432,
+        "by": -326.1547258962439,
+        "bottom": 1.8726581953772816,
+        "top": 2.872658195377282,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 130.0,
+      "end_distance_m": 132.0,
+      "barrier": {
+        "ax": 90.56406691453432,
+        "ay": -326.1547258962439,
+        "bx": 89.83164891482744,
+        "by": -324.29366064384,
+        "bottom": 1.9077623927230605,
+        "top": 2.9077623927230603,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 132.0,
+      "end_distance_m": 134.0,
+      "barrier": {
+        "ax": 89.83164891482744,
+        "ay": -324.29366064384,
+        "bx": 89.09923091512057,
+        "by": -322.432595391436,
+        "bottom": 1.9427932975497186,
+        "top": 2.9427932975497186,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 134.0,
+      "end_distance_m": 136.0,
+      "barrier": {
+        "ax": 89.09923091512057,
+        "ay": -322.432595391436,
+        "bx": 88.36681291541369,
+        "by": -320.57153013903206,
+        "bottom": 1.9777965147612695,
+        "top": 2.9777965147612697,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 136.0,
+      "end_distance_m": 138.0,
+      "barrier": {
+        "ax": 88.36681291541369,
+        "ay": -320.57153013903206,
+        "bx": 87.63439491570679,
+        "by": -318.71046488662813,
+        "bottom": 2.012803173918549,
+        "top": 3.012803173918549,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 138.0,
+      "end_distance_m": 140.0,
+      "barrier": {
+        "ax": 87.63439491570679,
+        "ay": -318.71046488662813,
+        "bx": 86.90197691599991,
+        "by": -316.84939963422414,
+        "bottom": 2.0478168058645623,
+        "top": 3.047816805864562,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 140.0,
+      "end_distance_m": 142.0,
+      "barrier": {
+        "ax": 86.90197691599991,
+        "ay": -316.84939963422414,
+        "bx": 86.16955891629304,
+        "by": -314.9883343818202,
+        "bottom": 2.0828227689745695,
+        "top": 3.0828227689745695,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 142.0,
+      "end_distance_m": 144.0,
+      "barrier": {
+        "ax": 86.16955891629304,
+        "ay": -314.9883343818202,
+        "bx": 85.43714091658616,
+        "by": -313.1272691294163,
+        "bottom": 2.117773785589783,
+        "top": 3.117773785589783,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": true
+    },
+    {
+      "start_distance_m": 144.0,
+      "end_distance_m": 146.0,
+      "barrier": {
+        "ax": 85.43714091658616,
+        "ay": -313.1272691294163,
+        "bx": 84.70472291687929,
+        "by": -311.2662038770123,
+        "bottom": 2.1527094898960035,
+        "top": 3.1527094898960035,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": false
+    },
+    {
+      "start_distance_m": 146.0,
+      "end_distance_m": 148.0,
+      "barrier": {
+        "ax": 84.70472291687929,
+        "ay": -311.2662038770123,
+        "bx": 83.97230491717241,
+        "by": -309.40513862460836,
+        "bottom": 2.188063176565385,
+        "top": 3.188063176565385,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": false
+    },
+    {
+      "start_distance_m": 148.0,
+      "end_distance_m": 150.0,
+      "barrier": {
+        "ax": 83.97230491717241,
+        "ay": -309.40513862460836,
+        "bx": 83.23988691746553,
+        "by": -307.54407337220437,
+        "bottom": 2.224466949181792,
+        "top": 3.2244669491817914,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": false
+    },
+    {
+      "start_distance_m": 150.0,
+      "end_distance_m": 152.0,
+      "barrier": {
+        "ax": 83.23988691746553,
+        "ay": -307.54407337220437,
+        "bx": 82.50746891775864,
+        "by": -305.68300811980043,
+        "bottom": 2.2600352413372846,
+        "top": 3.2600352413372846,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": false
+    },
+    {
+      "start_distance_m": 152.0,
+      "end_distance_m": 154.0,
+      "barrier": {
+        "ax": 82.50746891775864,
+        "ay": -305.68300811980043,
+        "bx": 81.77505091805178,
+        "by": -303.8219428673965,
+        "bottom": 2.2936182283131306,
+        "top": 3.2936182283131306,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": false
+    },
+    {
+      "start_distance_m": 154.0,
+      "end_distance_m": 156.0,
+      "barrier": {
+        "ax": 81.77505091805178,
+        "ay": -303.8219428673965,
+        "bx": 81.04263291834489,
+        "by": -301.9608776149925,
+        "bottom": 2.326670369224968,
+        "top": 3.326670369224968,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": false
+    },
+    {
+      "start_distance_m": 156.0,
+      "end_distance_m": 158.0,
+      "barrier": {
+        "ax": 81.04263291834489,
+        "ay": -301.9608776149925,
+        "bx": 80.31021491863801,
+        "by": -300.0998123625886,
+        "bottom": 2.3607445231271695,
+        "top": 3.3607445231271695,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": false
+    },
+    {
+      "start_distance_m": 158.0,
+      "end_distance_m": 160.0,
+      "barrier": {
+        "ax": 80.31021491863801,
+        "ay": -300.0998123625886,
+        "bx": 79.57779691893114,
+        "by": -298.23874711018465,
+        "bottom": 2.395595373698713,
+        "top": 3.395595373698713,
+        "radius": 0.15
+      },
+      "material": "PanelStc",
+      "privacy": false
+    },
+    {
+      "start_distance_m": 160.0,
+      "end_distance_m": 162.0,
+      "barrier": {
+        "ax": 79.57779691893114,
+        "ay": -298.23874711018465,
+        "bx": 78.84537891922426,
+        "by": -296.37768185778066,
+        "bottom": 2.428958811423307,
+        "top": 3.428958811423307,
+        "radius": 0.15
+      },
+      "material": "PanelPurple",
+      "privacy": false
+    },
+    {
+      "start_distance_m": 162.0,
+      "end_distance_m": 164.0,
+      "barrier": {
+        "ax": 78.84537891922426,
+        "ay": -296.37768185778066,
+        "bx": 78.11296091951736,
+        "by": -294.5166166053767,
+        "bottom": 2.4607194089703395,
+        "top": 3.4607194089703395,
+        "radius": 0.15
+      },
+      "material": "PanelPurple",
+      "privacy": false
+    },
+    {
+      "start_distance_m": 164.0,
+      "end_distance_m": 166.0,
+      "barrier": {
+        "ax": 78.11296091951736,
+        "ay": -294.5166166053767,
+        "bx": 77.38054291981051,
+        "by": -292.6555513529728,
+        "bottom": 2.492042524506071,
+        "top": 3.492042524506071,
+        "radius": 0.15
+      },
+      "material": "PanelPurple",
+      "privacy": false
+    },
+    {
+      "start_distance_m": 166.0,
+      "end_distance_m": 168.0,
+      "barrier": {
+        "ax": 77.38054291981051,
+        "ay": -292.6555513529728,
+        "bx": 76.64927073389038,
+        "by": -290.79739193087505,
+        "bottom": 2.523347090110052,
+        "top": 3.523347090110052,
+        "radius": 0.15
+      },
+      "material": "PanelPurple",
+      "privacy": false
+    },
+    {
+      "start_distance_m": 168.0,
+      "end_distance_m": 170.0,
+      "barrier": {
+        "ax": 76.64927073389038,
+        "ay": -290.79739193087505,
+        "bx": 75.92927718106533,
+        "by": -288.9811634907592,
+        "bottom": 2.554659931211505,
+        "top": 3.5546599312115044,
+        "radius": 0.15
+      },
+      "material": "PanelPurple",
+      "privacy": false
+    },
+    {
+      "start_distance_m": 170.0,
+      "end_distance_m": 172.0,
+      "barrier": {
+        "ax": 75.92927718106533,
+        "ay": -288.9811634907592,
+        "bx": 75.14670118587797,
+        "by": -287.20204112103585,
+        "bottom": 2.5858874842720514,
+        "top": 3.5858874842720514,
+        "radius": 0.15
+      },
+      "material": "PanelPurple",
+      "privacy": false
+    },
+    {
+      "start_distance_m": 172.0,
+      "end_distance_m": 174.0,
+      "barrier": {
+        "ax": 75.14670118587797,
+        "ay": -287.20204112103585,
+        "bx": 74.32649405088561,
+        "by": -285.39260464096117,
+        "bottom": 2.6170038958369686,
+        "top": 3.6170038958369686,
+        "radius": 0.15
+      },
+      "material": "PanelPurple",
+      "privacy": false
+    },
+    {
+      "start_distance_m": 174.0,
+      "end_distance_m": 176.0,
+      "barrier": {
+        "ax": 74.32649405088561,
+        "ay": -285.39260464096117,
+        "bx": 73.50081227422143,
+        "by": -283.5709983158501,
+        "bottom": 2.648084941484097,
+        "top": 3.648084941484097,
+        "radius": 0.15
+      },
+      "material": "PanelPurple",
+      "privacy": false
+    },
+    {
+      "start_distance_m": 176.0,
+      "end_distance_m": 178.0,
+      "barrier": {
+        "ax": 73.50081227422143,
+        "ay": -283.5709983158501,
+        "bx": 72.67513049755723,
+        "by": -281.749391990739,
+        "bottom": 2.679303616103317,
+        "top": 3.679303616103317,
+        "radius": 0.15
+      },
+      "material": "PanelPurple",
+      "privacy": false
+    },
+    {
+      "start_distance_m": 178.0,
+      "end_distance_m": 180.0,
+      "barrier": {
+        "ax": 72.67513049755723,
+        "ay": -281.749391990739,
+        "bx": 71.84944872089307,
+        "by": -279.92778566562794,
+        "bottom": 2.7109102128679607,
+        "top": 3.7109102128679607,
+        "radius": 0.15
+      },
+      "material": "PanelPurple",
+      "privacy": false
+    }
+  ],
+  "portals": [
+    {
+      "id": "jeddah-early-left-replace-000",
+      "polygon_xy_m": [
+        [
+          127.12468161742642,
+          -450.89830443898387
+        ],
+        [
+          124.87755321027906,
+          -441.11744991072743
+        ],
+        [
+          123.80548344011073,
+          -441.36375542810623
+        ],
+        [
+          126.05261184725809,
+          -451.1446099563627
+        ]
+      ],
+      "bottom_m": 2.816172780718582,
+      "top_m": 4.184074553977517,
+      "source_note": "Replace duplicate low protection only around the reconstructed STC left chain; preserve Road and structures."
+    },
+    {
+      "id": "jeddah-early-left-replace-005",
+      "polygon_xy_m": [
+        [
+          124.88001232983294,
+          -441.1286910660466
+        ],
+        [
+          122.83309234606863,
+          -431.27936261362044
+        ],
+        [
+          121.75610433679255,
+          -431.5031858203609
+        ],
+        [
+          123.80302432055686,
+          -441.35251427278706
+        ]
+      ],
+      "bottom_m": 2.834074553977517,
+      "top_m": 4.20385166597169,
+      "source_note": "Replace duplicate low protection only around the reconstructed STC left chain; preserve Road and structures."
+    },
+    {
+      "id": "jeddah-early-left-replace-010",
+      "polygon_xy_m": [
+        [
+          122.83295392205281,
+          -431.278698603233
+        ],
+        [
+          120.772845014456,
+          -421.4269101912093
+        ],
+        [
+          119.69613385321155,
+          -421.6520614187246
+        ],
+        [
+          121.75624276080836,
+          -431.5038498307483
+        ]
+      ],
+      "bottom_m": 2.7908749897662397,
+      "top_m": 4.20385166597169,
+      "source_note": "Replace duplicate low protection only around the reconstructed STC left chain; preserve Road and structures."
+    },
+    {
+      "id": "jeddah-early-left-replace-015",
+      "polygon_xy_m": [
+        [
+          120.77282098276496,
+          -421.4267953287706
+        ],
+        [
+          118.70980778296016,
+          -411.5716138724283
+        ],
+        [
+          117.63314468509779,
+          -411.796994824821
+        ],
+        [
+          119.69615788490259,
+          -421.6521762811633
+        ]
+      ],
+      "bottom_m": 2.6723228056895723,
+      "top_m": 4.14087498976624,
+      "source_note": "Replace duplicate low protection only around the reconstructed STC left chain; preserve Road and structures."
+    },
+    {
+      "id": "jeddah-early-left-replace-020",
+      "polygon_xy_m": [
+        [
+          118.70980778296016,
+          -411.5716138724283
+        ],
+        [
+          116.64679458315537,
+          -401.7164324160862
+        ],
+        [
+          115.570131485293,
+          -401.9418133684789
+        ],
+        [
+          117.63314468509779,
+          -411.796994824821
+        ]
+      ],
+      "bottom_m": 2.553683595457035,
+      "top_m": 4.022322805689573,
+      "source_note": "Replace duplicate low protection only around the reconstructed STC left chain; preserve Road and structures."
+    },
+    {
+      "id": "jeddah-early-left-replace-025",
+      "polygon_xy_m": [
+        [
+          116.6349711876655,
+          -401.67009722026756
+        ],
+        [
+          113.7422945063331,
+          -392.0929148779877
+        ],
+        [
+          112.68927819945047,
+          -392.4109662220177
+        ],
+        [
+          115.58195488078287,
+          -401.98814856429755
+        ]
+      ],
+      "bottom_m": 2.3832233819463804,
+      "top_m": 3.9036835954570352,
+      "source_note": "Replace duplicate low protection only around the reconstructed STC left chain; preserve Road and structures."
+    },
+    {
+      "id": "jeddah-early-left-replace-030",
+      "polygon_xy_m": [
+        [
+          113.73728911270913,
+          -392.0771982497349
+        ],
+        [
+          110.56015638056726,
+          -382.5953298894194
+        ],
+        [
+          109.51715086093256,
+          -382.944814489955
+        ],
+        [
+          112.69428359307443,
+          -392.4266828502705
+        ]
+      ],
+      "bottom_m": 2.1414591796723204,
+      "top_m": 3.7332233819463805,
+      "source_note": "Replace duplicate low protection only around the reconstructed STC left chain; preserve Road and structures."
+    },
+    {
+      "id": "jeddah-early-left-replace-035",
+      "polygon_xy_m": [
+        [
+          110.56001518496268,
+          -382.5949090675364
+        ],
+        [
+          107.37678683449352,
+          -373.1202383053985
+        ],
+        [
+          106.33406370606798,
+          -373.47056454970016
+        ],
+        [
+          109.51729205653714,
+          -382.945235311838
+        ]
+      ],
+      "bottom_m": 1.9069164059879153,
+      "top_m": 3.4914591796723204,
+      "source_note": "Replace duplicate low protection only around the reconstructed STC left chain; preserve Road and structures."
+    },
+    {
+      "id": "jeddah-early-left-replace-040",
+      "polygon_xy_m": [
+        [
+          107.37656403826875,
+          -373.1195765587169
+        ],
+        [
+          104.17974824131511,
+          -363.6443262316623
+        ],
+        [
+          103.1374707053391,
+          -363.99597596932716
+        ],
+        [
+          106.33428650229274,
+          -373.47122629638176
+        ]
+      ],
+      "bottom_m": 1.722201141907612,
+      "top_m": 3.256916405987915,
+      "source_note": "Replace duplicate low protection only around the reconstructed STC left chain; preserve Road and structures."
+    },
+    {
+      "id": "jeddah-early-left-replace-045",
+      "polygon_xy_m": [
+        [
+          104.17974824131511,
+          -363.64432623166226
+        ],
+        [
+          100.98293244436147,
+          -354.1690759046077
+        ],
+        [
+          99.94065490838545,
+          -354.5207256422727
+        ],
+        [
+          103.1374707053391,
+          -363.9959759693272
+        ]
+      ],
+      "bottom_m": 1.6624859336456863,
+      "top_m": 3.0722011419076116,
+      "source_note": "Replace duplicate low protection only around the reconstructed STC left chain; preserve Road and structures."
+    },
+    {
+      "id": "jeddah-early-left-replace-050",
+      "polygon_xy_m": [
+        [
+          100.98293244436147,
+          -354.1690759046077
+        ],
+        [
+          97.78611664740781,
+          -344.6938255775531
+        ],
+        [
+          96.7438391114318,
+          -345.0454753152181
+        ],
+        [
+          99.94065490838545,
+          -354.5207256422727
+        ]
+      ],
+      "bottom_m": 1.603897413114957,
+      "top_m": 3.012485933645686,
+      "source_note": "Replace duplicate low protection only around the reconstructed STC left chain; preserve Road and structures."
+    },
+    {
+      "id": "jeddah-early-left-replace-055",
+      "polygon_xy_m": [
+        [
+          97.78611666188314,
+          -344.6938256204576
+        ],
+        [
+          94.58993042383943,
+          -335.2204387092042
+        ],
+        [
+          93.54765285891276,
+          -335.57208836106025
+        ],
+        [
+          96.74383909695646,
+          -345.04547527231364
+        ]
+      ],
+      "bottom_m": 1.5755493947918688,
+      "top_m": 2.953897413114957,
+      "source_note": "Replace duplicate low protection only around the reconstructed STC left chain; preserve Road and structures."
+    },
+    {
+      "id": "jeddah-early-left-replace-060",
+      "polygon_xy_m": [
+        [
+          94.58305294005945,
+          -335.2012370839095
+        ],
+        [
+          91.07832821321767,
+          -325.9596994450212
+        ],
+        [
+          90.04980561585097,
+          -326.3497523474666
+        ],
+        [
+          93.55453034269274,
+          -335.5912899863549
+        ]
+      ],
+      "bottom_m": 1.5755493947918688,
+      "top_m": 3.0902359032303104,
+      "source_note": "Replace duplicate low protection only around the reconstructed STC left chain; preserve Road and structures."
+    },
+    {
+      "id": "jeddah-early-left-replace-065",
+      "polygon_xy_m": [
+        [
+          91.0758598589454,
+          -325.9533109463245
+        ],
+        [
+          87.413769860411,
+          -316.64798468430473
+        ],
+        [
+          86.39018397158883,
+          -317.05081458414355
+        ],
+        [
+          90.05227397012324,
+          -326.3561408461633
+        ]
+      ],
+      "bottom_m": 1.7402359032303105,
+      "top_m": 3.265322580530939,
+      "source_note": "Replace duplicate low protection only around the reconstructed STC left chain; preserve Road and structures."
+    },
+    {
+      "id": "jeddah-early-left-replace-070",
+      "polygon_xy_m": [
+        [
+          87.413769860411,
+          -316.64798468430473
+        ],
+        [
+          83.75167986187661,
+          -307.34265842228496
+        ],
+        [
+          82.72809397305444,
+          -307.7454883221238
+        ],
+        [
+          86.39018397158883,
+          -317.05081458414355
+        ]
+      ],
+      "bottom_m": 1.9153225805309393,
+      "top_m": 3.443001911263454,
+      "source_note": "Replace duplicate low protection only around the reconstructed STC left chain; preserve Road and structures."
+    },
+    {
+      "id": "jeddah-early-left-replace-075",
+      "polygon_xy_m": [
+        [
+          83.75167986187661,
+          -307.34265842228496
+        ],
+        [
+          80.08958986334223,
+          -298.03733216026524
+        ],
+        [
+          79.06600397452006,
+          -298.44016206010406
+        ],
+        [
+          82.72809397305444,
+          -307.7454883221238
+        ]
+      ],
+      "bottom_m": 2.0930019112634537,
+      "top_m": 3.612874554377876,
+      "source_note": "Replace duplicate low protection only around the reconstructed STC left chain; preserve Road and structures."
+    },
+    {
+      "id": "jeddah-early-left-replace-080",
+      "polygon_xy_m": [
+        [
+          80.08949150542946,
+          -298.0370824128569
+        ],
+        [
+          76.44097176756365,
+          -288.7794987934314
+        ],
+        [
+          75.41758259456701,
+          -289.18282818808694
+        ],
+        [
+          79.06610233243282,
+          -298.4404118075124
+        ]
+      ],
+      "bottom_m": 2.262874554377876,
+      "top_m": 3.7703149817431063,
+      "source_note": "Replace duplicate low protection only around the reconstructed STC left chain; preserve Road and structures."
+    },
+    {
+      "id": "jeddah-early-left-replace-085",
+      "polygon_xy_m": [
+        [
+          76.43071354711036,
+          -288.75519541600625
+        ],
+        [
+          72.35088508693809,
+          -279.701817590875
+        ],
+        [
+          71.34801235484804,
+          -280.15375374038086
+        ],
+        [
+          75.4278408150203,
+          -289.2071315655121
+        ]
+      ],
+      "bottom_m": 2.420314981743106,
+      "top_m": 3.9268352716245394,
+      "source_note": "Replace duplicate low protection only around the reconstructed STC left chain; preserve Road and structures."
+    }
+  ],
+  "bridge": {
+    "left": [
+      92.70821860962364,
+      -331.7393364016699,
+      1.8341847032018708
+    ],
+    "right": [
+      115.1767538024209,
+      -323.09233973866424,
+      1.8341847032018708
+    ],
+    "underside_m": 6.2,
+    "panel_height_m": 1.8
+  },
+  "source_note": "Continuous source608\u2013611s: close STC protection and tall white privacy backing on left, pass beneath STC bridge at609s, then Qatar chicane610s and40-before-limiter611s. Bridge124m\u00b115m follows speed/landmark registration; walls0\u2013180m and144m screen endpoint remain estimates. Before pit route physically separates from RaceRoad, the left chain follows the outer envelope of both routes, not a wall through the racing surface. Existing road/kerbs, pit axis, limiter, garage fronts and Qatar chain endpoints remain. Wall0.95m, privacy4.2m and bridge6.2m underside/1.8m panel are visual estimates, not surveyed values.",
+  "floors": [
+    {
+      "a": [
+        126.97785913091917,
+        -450.92918743667866,
+        3.0141727807185825
+      ],
+      "b": [
+        126.51499861537354,
+        -448.97674874473745,
+        3.016630147272058
+      ],
+      "c": [
+        125.73657381821971,
+        -449.1612882667267,
+        3.016630147272058
+      ]
+    },
+    {
+      "a": [
+        126.97785913091917,
+        -450.92918743667866,
+        3.0141727807185825
+      ],
+      "b": [
+        125.73657381821971,
+        -449.1612882667267,
+        3.016630147272058
+      ],
+      "c": [
+        126.19943433376534,
+        -451.1137269586679,
+        3.0141727807185825
+      ]
+    },
+    {
+      "a": [
+        126.51497809952468,
+        -448.97666224758683,
+        3.016630147272058
+      ],
+      "b": [
+        126.05192893345601,
+        -447.025359971411,
+        3.020567744319091
+      ],
+      "c": [
+        125.2735451679999,
+        -447.21007248770144,
+        3.020567744319091
+      ]
+    },
+    {
+      "a": [
+        126.51497809952468,
+        -448.97666224758683,
+        3.016630147272058
+      ],
+      "b": [
+        125.2735451679999,
+        -447.21007248770144,
+        3.020567744319091
+      ],
+      "c": [
+        125.73659433406857,
+        -449.1613747638773,
+        3.016630147272058
+      ]
+    },
+    {
+      "a": [
+        126.05190392706368,
+        -447.0252546571972,
+        3.020567744319091
+      ],
+      "b": [
+        125.58831588467048,
+        -445.07403204912555,
+        3.0243502132120588
+      ],
+      "c": [
+        124.80998213199904,
+        -445.2589551938436,
+        3.0243502132120588
+      ]
+    },
+    {
+      "a": [
+        126.05190392706368,
+        -447.0252546571972,
+        3.020567744319091
+      ],
+      "b": [
+        124.80998213199904,
+        -445.2589551938436,
+        3.0243502132120588
+      ],
+      "c": [
+        125.27357017439223,
+        -447.2101778019152,
+        3.020567744319091
+      ]
+    },
+    {
+      "a": [
+        125.58940902873664,
+        -445.0787604095525,
+        3.0243502132120588
+      ],
+      "b": [
+        125.14900488884105,
+        -443.11972887707185,
+        3.0281740525326604
+      ],
+      "c": [
+        124.36848484803728,
+        -443.295195300936,
+        3.0281740525326604
+      ]
+    },
+    {
+      "a": [
+        125.58940902873664,
+        -445.0787604095525,
+        3.0243502132120588
+      ],
+      "b": [
+        124.36848484803728,
+        -443.295195300936,
+        3.0281740525326604
+      ],
+      "c": [
+        124.80888898793287,
+        -445.2542268334166,
+        3.0243502132120588
+      ]
+    },
+    {
+      "a": [
+        125.1500379555689,
+        -443.1244577519818,
+        3.0281740525326604
+      ],
+      "b": [
+        124.73281141232464,
+        -441.15759833239474,
+        3.0320745539775174
+      ],
+      "c": [
+        123.95022523806516,
+        -441.3236070064389,
+        3.0320745539775174
+      ]
+    },
+    {
+      "a": [
+        125.1500379555689,
+        -443.1244577519818,
+        3.0281740525326604
+      ],
+      "b": [
+        123.95022523806516,
+        -441.3236070064389,
+        3.0320745539775174
+      ],
+      "c": [
+        124.36745178130943,
+        -443.290466426026,
+        3.0281740525326604
+      ]
+    },
+    {
+      "a": [
+        124.73278883201185,
+        -441.1574919571397,
+        3.0320745539775174
+      ],
+      "b": [
+        124.31501508233394,
+        -439.1906871699752,
+        3.035982543370003
+      ],
+      "c": [
+        123.53247406870004,
+        -439.35690859452944,
+        3.035982543370003
+      ]
+    },
+    {
+      "a": [
+        124.73278883201185,
+        -441.1574919571397,
+        3.0320745539775174
+      ],
+      "b": [
+        123.53247406870004,
+        -439.35690859452944,
+        3.035982543370003
+      ],
+      "c": [
+        123.95024781837795,
+        -441.32371338169395,
+        3.0320745539775174
+      ]
+    },
+    {
+      "a": [
+        124.31598933299625,
+        -439.19541389007253,
+        3.035982543370003
+      ],
+      "b": [
+        123.92138478515238,
+        -437.2207560439372,
+        3.0399182063494914
+      ],
+      "c": [
+        123.13689527019386,
+        -437.37752402829676,
+        3.0399182063494914
+      ]
+    },
+    {
+      "a": [
+        124.31598933299625,
+        -439.19541389007253,
+        3.035982543370003
+      ],
+      "b": [
+        123.13689527019386,
+        -437.37752402829676,
+        3.0399182063494914
+      ],
+      "c": [
+        123.53149981803773,
+        -439.3521818744321,
+        3.035982543370003
+      ]
+    },
+    {
+      "a": [
+        123.92036526128544,
+        -437.2158164705128,
+        3.0399182063494914
+      ],
+      "b": [
+        123.50149510210558,
+        -435.24911503748905,
+        3.043881961697307
+      ],
+      "c": [
+        122.71904463488094,
+        -435.4157621686974,
+        3.043881961697307
+      ]
+    },
+    {
+      "a": [
+        123.92036526128544,
+        -437.2158164705128,
+        3.0399182063494914
+      ],
+      "b": [
+        122.71904463488094,
+        -435.4157621686974,
+        3.043881961697307
+      ],
+      "c": [
+        123.1379147940608,
+        -437.38246360172116,
+        3.0399182063494914
+      ]
+    },
+    {
+      "a": [
+        123.5014724403222,
+        -435.2490087056078,
+        3.043881961697307
+      ],
+      "b": [
+        123.08205520054061,
+        -433.28236236158364,
+        3.0478657219770895
+      ],
+      "c": [
+        122.29965005688273,
+        -433.44922215655447,
+        3.0478657219770895
+      ]
+    },
+    {
+      "a": [
+        123.5014724403222,
+        -435.2490087056078,
+        3.043881961697307
+      ],
+      "b": [
+        122.29965005688273,
+        -433.44922215655447,
+        3.0478657219770895
+      ],
+      "c": [
+        122.71906729666432,
+        -435.41586850057865,
+        3.043881961697307
+      ]
+    },
+    {
+      "a": [
+        123.08303322318763,
+        -433.287087867092,
+        3.0478657219770895
+      ],
+      "b": [
+        122.68677893590655,
+        -431.3125698250136,
+        3.05185166597169
+      ],
+      "c": [
+        121.90241774695463,
+        -431.4699786089677,
+        3.05185166597169
+      ]
+    },
+    {
+      "a": [
+        123.08303322318763,
+        -433.287087867092,
+        3.0478657219770895
+      ],
+      "b": [
+        121.90241774695463,
+        -431.4699786089677,
+        3.05185166597169
+      ],
+      "c": [
+        122.29867203423571,
+        -433.4444966510461,
+        3.0478657219770895
+      ]
+    },
+    {
+      "a": [
+        122.68575547233428,
+        -431.3076315308598,
+        3.05185166597169
+      ],
+      "b": [
+        122.26524174514861,
+        -429.3410884816069,
+        3.0580803924651203
+      ],
+      "c": [
+        121.48292748334123,
+        -429.50837385386865,
+        3.0580803924651203
+      ]
+    },
+    {
+      "a": [
+        122.68575547233428,
+        -431.3076315308598,
+        3.05185166597169
+      ],
+      "b": [
+        121.48292748334123,
+        -429.50837385386865,
+        3.0580803924651203
+      ],
+      "c": [
+        121.90344121052689,
+        -431.47491690312154,
+        3.05185166597169
+      ]
+    },
+    {
+      "a": [
+        122.26521857155635,
+        -429.3409801830397,
+        3.0580803924651203
+      ],
+      "b": [
+        121.84412719195296,
+        -427.3743986761155,
+        3.0487344175648627
+      ],
+      "c": [
+        121.06185927733011,
+        -427.5419006455117,
+        3.0487344175648627
+      ]
+    },
+    {
+      "a": [
+        122.26521857155635,
+        -429.3409801830397,
+        3.0580803924651203
+      ],
+      "b": [
+        121.06185927733011,
+        -427.5419006455117,
+        3.0487344175648627
+      ],
+      "c": [
+        121.4829506569335,
+        -429.5084821524359,
+        3.0580803924651203
+      ]
+    },
+    {
+      "a": [
+        121.84510858930231,
+        -427.3791208772012,
+        3.0487344175648627
+      ],
+      "b": [
+        121.44703918645692,
+        -425.40402879123553,
+        3.0336063995062137
+      ],
+      "c": [
+        120.66280847713537,
+        -425.5620863584603,
+        3.0336063995062137
+      ]
+    },
+    {
+      "a": [
+        121.84510858930231,
+        -427.3791208772012,
+        3.0487344175648627
+      ],
+      "b": [
+        120.66280847713537,
+        -425.5620863584603,
+        3.0336063995062137
+      ],
+      "c": [
+        121.06087787998077,
+        -427.537178444426,
+        3.0487344175648627
+      ]
+    },
+    {
+      "a": [
+        121.44602892534047,
+        -425.39917190382073,
+        3.0336063995062137
+      ],
+      "b": [
+        121.02397436479859,
+        -423.4314021243064,
+        3.0126284061191817
+      ],
+      "c": [
+        120.24176417770991,
+        -423.59917346636075,
+        3.0126284061191817
+      ]
+    },
+    {
+      "a": [
+        121.44602892534047,
+        -425.39917190382073,
+        3.0336063995062137
+      ],
+      "b": [
+        120.24176417770991,
+        -423.59917346636075,
+        3.0126284061191817
+      ],
+      "c": [
+        120.66381873825182,
+        -425.5669432458751,
+        3.0336063995062137
+      ]
+    },
+    {
+      "a": [
+        121.02497819201578,
+        -423.43622709549334,
+        3.0126284061191817
+      ],
+      "b": [
+        120.6265983545953,
+        -421.4604251051267,
+        2.98887498976624
+      ],
+      "c": [
+        119.84238051307224,
+        -421.61854650480717,
+        2.98887498976624
+      ]
+    },
+    {
+      "a": [
+        121.02497819201578,
+        -423.43622709549334,
+        3.0126284061191817
+      ],
+      "b": [
+        119.84238051307224,
+        -421.61854650480717,
+        2.98887498976624
+      ],
+      "c": [
+        120.24076035049272,
+        -423.5943484951738,
+        3.0126284061191817
+      ]
+    },
+    {
+      "a": [
+        120.62559408815926,
+        -421.4555980861701,
+        2.98887498976624
+      ],
+      "b": [
+        120.20350957983797,
+        -419.48773892763376,
+        2.9651828223385275
+      ],
+      "c": [
+        119.421300271187,
+        -419.6555143652275,
+        2.9651828223385275
+      ]
+    },
+    {
+      "a": [
+        120.62559408815926,
+        -421.4555980861701,
+        2.98887498976624
+      ],
+      "b": [
+        119.421300271187,
+        -419.6555143652275,
+        2.9651828223385275
+      ],
+      "c": [
+        119.84338477950828,
+        -421.6233735237638,
+        2.98887498976624
+      ]
+    },
+    {
+      "a": [
+        120.20451384627401,
+        -419.4925659465904,
+        2.9651828223385275
+      ],
+      "b": [
+        119.80613400885355,
+        -417.51676395622377,
+        2.941483141171777
+      ],
+      "c": [
+        119.02191616733049,
+        -417.6748853559042,
+        2.941483141171777
+      ]
+    },
+    {
+      "a": [
+        120.20451384627401,
+        -419.4925659465904,
+        2.9651828223385275
+      ],
+      "b": [
+        119.02191616733049,
+        -417.6748853559042,
+        2.941483141171777
+      ],
+      "c": [
+        119.42029600475095,
+        -419.65068734627084,
+        2.9651828223385275
+      ]
+    },
+    {
+      "a": [
+        119.8051297424175,
+        -417.51193693726714,
+        2.941483141171777
+      ],
+      "b": [
+        119.38304523409622,
+        -415.5440777787308,
+        2.917785270156147
+      ],
+      "c": [
+        118.60083592544524,
+        -415.7118532163245,
+        2.917785270156147
+      ]
+    },
+    {
+      "a": [
+        119.8051297424175,
+        -417.51193693726714,
+        2.941483141171777
+      ],
+      "b": [
+        118.60083592544524,
+        -415.7118532163245,
+        2.917785270156147
+      ],
+      "c": [
+        119.02292043376653,
+        -417.67971237486086,
+        2.941483141171777
+      ]
+    },
+    {
+      "a": [
+        119.38404950053226,
+        -415.54890479768744,
+        2.917785270156147
+      ],
+      "b": [
+        118.98566966311179,
+        -413.57310280732077,
+        2.894041320341008
+      ],
+      "c": [
+        118.20145182158873,
+        -413.7312242070012,
+        2.894041320341008
+      ]
+    },
+    {
+      "a": [
+        119.38404950053226,
+        -415.54890479768744,
+        2.917785270156147
+      ],
+      "b": [
+        118.20145182158873,
+        -413.7312242070012,
+        2.894041320341008
+      ],
+      "c": [
+        118.5998316590092,
+        -415.7070261973679,
+        2.917785270156147
+      ]
+    },
+    {
+      "a": [
+        118.98466539667575,
+        -413.56827578836413,
+        2.894041320341008
+      ],
+      "b": [
+        118.56258088835446,
+        -411.6004166298278,
+        2.8703228056895727
+      ],
+      "c": [
+        117.78037157970348,
+        -411.7681920674215,
+        2.8703228056895727
+      ]
+    },
+    {
+      "a": [
+        118.98466539667575,
+        -413.56827578836413,
+        2.894041320341008
+      ],
+      "b": [
+        117.78037157970348,
+        -411.7681920674215,
+        2.8703228056895727
+      ],
+      "c": [
+        118.20245608802477,
+        -413.73605122595785,
+        2.894041320341008
+      ]
+    },
+    {
+      "a": [
+        118.56258088835446,
+        -411.6004166298278,
+        2.8703228056895727
+      ],
+      "b": [
+        118.14049638003321,
+        -409.6325574712916,
+        2.846604431592255
+      ],
+      "c": [
+        117.35828707138224,
+        -409.8003329088853,
+        2.846604431592255
+      ]
+    },
+    {
+      "a": [
+        118.56258088835446,
+        -411.6004166298278,
+        2.8703228056895727
+      ],
+      "b": [
+        117.35828707138224,
+        -409.8003329088853,
+        2.846604431592255
+      ],
+      "c": [
+        117.78037157970348,
+        -411.7681920674215,
+        2.8703228056895727
+      ]
+    },
+    {
+      "a": [
+        118.14150064646925,
+        -409.6373844902482,
+        2.846604431592255
+      ],
+      "b": [
+        117.74312080904875,
+        -407.66158249988155,
+        2.8228565389426166
+      ],
+      "c": [
+        116.95890296752569,
+        -407.819703899562,
+        2.8228565389426166
+      ]
+    },
+    {
+      "a": [
+        118.14150064646925,
+        -409.6373844902482,
+        2.846604431592255
+      ],
+      "b": [
+        116.95890296752569,
+        -407.819703899562,
+        2.8228565389426166
+      ],
+      "c": [
+        117.3572828049462,
+        -409.7955058899287,
+        2.846604431592255
+      ]
+    },
+    {
+      "a": [
+        117.7421165426127,
+        -407.6567554809249,
+        2.8228565389426166
+      ],
+      "b": [
+        117.32003203429142,
+        -405.6888963223886,
+        2.7991428066753796
+      ],
+      "c": [
+        116.53782272564044,
+        -405.8566717599823,
+        2.7991428066753796
+      ]
+    },
+    {
+      "a": [
+        117.7421165426127,
+        -407.6567554809249,
+        2.8228565389426166
+      ],
+      "b": [
+        116.53782272564044,
+        -405.8566717599823,
+        2.7991428066753796
+      ],
+      "c": [
+        116.95990723396173,
+        -407.82453091851863,
+        2.8228565389426166
+      ]
+    },
+    {
+      "a": [
+        117.32103630072746,
+        -405.6937233413452,
+        2.7991428066753796
+      ],
+      "b": [
+        116.92265646330699,
+        -403.71792135097854,
+        2.7753986701951456
+      ],
+      "c": [
+        116.13843862178393,
+        -403.876042750659,
+        2.7753986701951456
+      ]
+    },
+    {
+      "a": [
+        117.32103630072746,
+        -405.6937233413452,
+        2.7991428066753796
+      ],
+      "b": [
+        116.13843862178393,
+        -403.876042750659,
+        2.7753986701951456
+      ],
+      "c": [
+        116.5368184592044,
+        -405.8518447410257,
+        2.7991428066753796
+      ]
+    },
+    {
+      "a": [
+        116.92165219687095,
+        -403.7130943320219,
+        2.7753986701951456
+      ],
+      "b": [
+        116.49956768854967,
+        -401.7452351734857,
+        2.7516835954570356
+      ],
+      "c": [
+        115.7173583798987,
+        -401.9130106110794,
+        2.7516835954570356
+      ]
+    },
+    {
+      "a": [
+        116.92165219687095,
+        -403.7130943320219,
+        2.7753986701951456
+      ],
+      "b": [
+        115.7173583798987,
+        -401.9130106110794,
+        2.7516835954570356
+      ],
+      "c": [
+        116.13944288821997,
+        -403.88086976961563,
+        2.7753986701951456
+      ]
+    },
+    {
+      "a": [
+        116.50057195498572,
+        -401.75006219244233,
+        2.7516835954570356
+      ],
+      "b": [
+        116.10219211756522,
+        -399.77426020207565,
+        2.727849515814813
+      ],
+      "c": [
+        115.31797427604216,
+        -399.9323816017561,
+        2.727849515814813
+      ]
+    },
+    {
+      "a": [
+        116.50057195498572,
+        -401.75006219244233,
+        2.7516835954570356
+      ],
+      "b": [
+        115.31797427604216,
+        -399.9323816017561,
+        2.727849515814813
+      ],
+      "c": [
+        115.71635411346266,
+        -401.9081835921228,
+        2.7516835954570356
+      ]
+    },
+    {
+      "a": [
+        116.09241560373404,
+        -399.7357541948477,
+        2.727849515814813
+      ],
+      "b": [
+        115.50439839910723,
+        -397.82349485912385,
+        2.704201923135211
+      ],
+      "c": [
+        114.73973358524654,
+        -398.05862827326024,
+        2.704201923135211
+      ]
+    },
+    {
+      "a": [
+        116.09241560373404,
+        -399.7357541948477,
+        2.727849515814813
+      ],
+      "b": [
+        114.73973358524654,
+        -398.05862827326024,
+        2.704201923135211
+      ],
+      "c": [
+        115.32775078987335,
+        -399.97088760898407,
+        2.727849515814813
+      ]
+    },
+    {
+      "a": [
+        115.5013407265895,
+        -397.81397625690636,
+        2.704201923135211
+      ],
+      "b": [
+        114.86591418016114,
+        -395.9176025848432,
+        2.6677163048706034
+      ],
+      "c": [
+        114.1073647113359,
+        -396.1717732034146,
+        2.6677163048706034
+      ]
+    },
+    {
+      "a": [
+        115.5013407265895,
+        -397.81397625690636,
+        2.704201923135211
+      ],
+      "b": [
+        114.1073647113359,
+        -396.1717732034146,
+        2.6677163048706034
+      ],
+      "c": [
+        114.74279125776427,
+        -398.06814687547774,
+        2.704201923135211
+      ]
+    },
+    {
+      "a": [
+        114.86591418016114,
+        -395.9176025848432,
+        2.6677163048706034
+      ],
+      "b": [
+        114.23048763373279,
+        -394.02122891278015,
+        2.626714707750186
+      ],
+      "c": [
+        113.47193816490756,
+        -394.2753995313515,
+        2.626714707750186
+      ]
+    },
+    {
+      "a": [
+        114.86591418016114,
+        -395.9176025848432,
+        2.6677163048706034
+      ],
+      "b": [
+        113.47193816490756,
+        -394.2753995313515,
+        2.626714707750186
+      ],
+      "c": [
+        114.1073647113359,
+        -396.1717732034146,
+        2.6677163048706034
+      ]
+    },
+    {
+      "a": [
+        114.23048763373279,
+        -394.02122891278015,
+        2.626714707750186
+      ],
+      "b": [
+        113.5950610873044,
+        -392.124855240717,
+        2.581223381946381
+      ],
+      "c": [
+        112.83651161847916,
+        -392.3790258592884,
+        2.581223381946381
+      ]
+    },
+    {
+      "a": [
+        114.23048763373279,
+        -394.02122891278015,
+        2.626714707750186
+      ],
+      "b": [
+        112.83651161847916,
+        -392.3790258592884,
+        2.581223381946381
+      ],
+      "c": [
+        113.47193816490756,
+        -394.2753995313515,
+        2.626714707750186
+      ]
+    },
+    {
+      "a": [
+        113.5950610873044,
+        -392.124855240717,
+        2.581223381946381
+      ],
+      "b": [
+        112.95963454087602,
+        -390.22848156865393,
+        2.5279883593098975
+      ],
+      "c": [
+        112.20108507205079,
+        -390.4826521872253,
+        2.5279883593098975
+      ]
+    },
+    {
+      "a": [
+        113.5950610873044,
+        -392.124855240717,
+        2.581223381946381
+      ],
+      "b": [
+        112.20108507205079,
+        -390.4826521872253,
+        2.5279883593098975
+      ],
+      "c": [
+        112.83651161847916,
+        -392.3790258592884,
+        2.581223381946381
+      ]
+    },
+    {
+      "a": [
+        112.95963454087602,
+        -390.22848156865393,
+        2.5279883593098975
+      ],
+      "b": [
+        112.32420799444765,
+        -388.3321078965908,
+        2.4805220714622416
+      ],
+      "c": [
+        111.56565852562241,
+        -388.5862785151622,
+        2.4805220714622416
+      ]
+    },
+    {
+      "a": [
+        112.95963454087602,
+        -390.22848156865393,
+        2.5279883593098975
+      ],
+      "b": [
+        111.56565852562241,
+        -388.5862785151622,
+        2.4805220714622416
+      ],
+      "c": [
+        112.20108507205079,
+        -390.4826521872253,
+        2.5279883593098975
+      ]
+    },
+    {
+      "a": [
+        112.32420799444765,
+        -388.3321078965908,
+        2.4805220714622416
+      ],
+      "b": [
+        111.6887814480193,
+        -386.4357342245277,
+        2.4333237322818055
+      ],
+      "c": [
+        110.93023197919406,
+        -386.6899048430991,
+        2.4333237322818055
+      ]
+    },
+    {
+      "a": [
+        112.32420799444765,
+        -388.3321078965908,
+        2.4805220714622416
+      ],
+      "b": [
+        110.93023197919406,
+        -386.6899048430991,
+        2.4333237322818055
+      ],
+      "c": [
+        111.56565852562241,
+        -388.5862785151622,
+        2.4805220714622416
+      ]
+    },
+    {
+      "a": [
+        111.6887814480193,
+        -386.4357342245277,
+        2.4333237322818055
+      ],
+      "b": [
+        111.05335490159091,
+        -384.5393605524646,
+        2.386368256314726
+      ],
+      "c": [
+        110.29480543276567,
+        -384.79353117103597,
+        2.386368256314726
+      ]
+    },
+    {
+      "a": [
+        111.6887814480193,
+        -386.4357342245277,
+        2.4333237322818055
+      ],
+      "b": [
+        110.29480543276567,
+        -384.79353117103597,
+        2.386368256314726
+      ],
+      "c": [
+        110.93023197919406,
+        -386.6899048430991,
+        2.4333237322818055
+      ]
+    },
+    {
+      "a": [
+        111.05335490159091,
+        -384.5393605524646,
+        2.386368256314726
+      ],
+      "b": [
+        110.41792835516253,
+        -382.6429868804015,
+        2.3394591796723208
+      ],
+      "c": [
+        109.6593788863373,
+        -382.8971574989729,
+        2.3394591796723208
+      ]
+    },
+    {
+      "a": [
+        111.05335490159091,
+        -384.5393605524646,
+        2.386368256314726
+      ],
+      "b": [
+        109.6593788863373,
+        -382.8971574989729,
+        2.3394591796723208
+      ],
+      "c": [
+        110.29480543276567,
+        -384.79353117103597,
+        2.386368256314726
+      ]
+    },
+    {
+      "a": [
+        110.41792835516253,
+        -382.6429868804015,
+        2.3394591796723208
+      ],
+      "b": [
+        109.78250180873417,
+        -380.7466132083384,
+        2.292558522125138
+      ],
+      "c": [
+        109.02395233990893,
+        -381.00078382690975,
+        2.292558522125138
+      ]
+    },
+    {
+      "a": [
+        110.41792835516253,
+        -382.6429868804015,
+        2.3394591796723208
+      ],
+      "b": [
+        109.02395233990893,
+        -381.00078382690975,
+        2.292558522125138
+      ],
+      "c": [
+        109.6593788863373,
+        -382.8971574989729,
+        2.3394591796723208
+      ]
+    },
+    {
+      "a": [
+        109.78250180880045,
+        -380.7466132085362,
+        2.292558522125138
+      ],
+      "b": [
+        109.14709750697155,
+        -378.85030592020735,
+        2.245626309690544
+      ],
+      "c": [
+        108.38854803801375,
+        -379.1044765383831,
+        2.245626309690544
+      ]
+    },
+    {
+      "a": [
+        109.78250180880045,
+        -380.7466132085362,
+        2.292558522125138
+      ],
+      "b": [
+        108.38854803801375,
+        -379.1044765383831,
+        2.245626309690544
+      ],
+      "c": [
+        109.02395233984265,
+        -381.00078382671194,
+        2.292558522125138
+      ]
+    },
+    {
+      "a": [
+        109.14708981144999,
+        -378.85028295591957,
+        2.245626309690544
+      ],
+      "b": [
+        108.51225773476837,
+        -376.9560641488824,
+        2.1987253542065166
+      ],
+      "c": [
+        107.7537236568537,
+        -377.2102806956337,
+        2.1987253542065166
+      ]
+    },
+    {
+      "a": [
+        109.14708981144999,
+        -378.85028295591957,
+        2.245626309690544
+      ],
+      "b": [
+        107.7537236568537,
+        -377.2102806956337,
+        2.1987253542065166
+      ],
+      "c": [
+        108.38855573353531,
+        -379.1044995026709,
+        2.245626309690544
+      ]
+    },
+    {
+      "a": [
+        108.51202345298438,
+        -376.9553672228741,
+        2.1987253542065166
+      ],
+      "b": [
+        107.87375418446169,
+        -375.0624476716092,
+        2.1518426547502316
+      ],
+      "c": [
+        107.11568867011499,
+        -375.3180580703771,
+        2.1518426547502316
+      ]
+    },
+    {
+      "a": [
+        108.51202345298438,
+        -376.9553672228741,
+        2.1987253542065166
+      ],
+      "b": [
+        107.11568867011499,
+        -375.3180580703771,
+        2.1518426547502316
+      ],
+      "c": [
+        107.75395793863768,
+        -377.210977621642,
+        2.1987253542065166
+      ]
+    },
+    {
+      "a": [
+        107.87373143977273,
+        -375.0623802373432,
+        2.1518426547502316
+      ],
+      "b": [
+        107.23443528276513,
+        -373.16752879389935,
+        2.1049164059879155
+      ],
+      "c": [
+        106.47641525779636,
+        -373.4232740611993,
+        2.1049164059879155
+      ]
+    },
+    {
+      "a": [
+        107.87373143977273,
+        -375.0623802373432,
+        2.1518426547502316
+      ],
+      "b": [
+        106.47641525779636,
+        -373.4232740611993,
+        2.1049164059879155
+      ],
+      "c": [
+        107.11571141480395,
+        -375.31812550464315,
+        2.1518426547502316
+      ]
+    },
+    {
+      "a": [
+        107.23443528336293,
+        -373.1675287956712,
+        2.1049164059879155
+      ],
+      "b": [
+        106.5950721239722,
+        -371.27247873026033,
+        2.058006908446508
+      ],
+      "c": [
+        105.83705209780784,
+        -371.52822399401657,
+        2.058006908446508
+      ]
+    },
+    {
+      "a": [
+        107.23443528336293,
+        -373.1675287956712,
+        2.1049164059879155
+      ],
+      "b": [
+        105.83705209780784,
+        -371.52822399401657,
+        2.058006908446508
+      ],
+      "c": [
+        106.47641525719857,
+        -373.42327405942746,
+        2.1049164059879155
+      ]
+    },
+    {
+      "a": [
+        106.5950721239722,
+        -371.27247873026033,
+        2.058006908446508
+      ],
+      "b": [
+        105.95570896458148,
+        -369.3774286648494,
+        2.011118282937579
+      ],
+      "c": [
+        105.19768893841712,
+        -369.63317392860563,
+        2.011118282937579
+      ]
+    },
+    {
+      "a": [
+        106.5950721239722,
+        -371.27247873026033,
+        2.058006908446508
+      ],
+      "b": [
+        105.19768893841712,
+        -369.63317392860563,
+        2.011118282937579
+      ],
+      "c": [
+        105.83705209780784,
+        -371.52822399401657,
+        2.058006908446508
+      ]
+    },
+    {
+      "a": [
+        105.95570896458148,
+        -369.3774286648494,
+        2.011118282937579
+      ],
+      "b": [
+        105.31634580519075,
+        -367.4823785994385,
+        1.9651966658203395
+      ],
+      "c": [
+        104.55832577902639,
+        -367.73812386319474,
+        1.9651966658203395
+      ]
+    },
+    {
+      "a": [
+        105.95570896458148,
+        -369.3774286648494,
+        2.011118282937579
+      ],
+      "b": [
+        104.55832577902639,
+        -367.73812386319474,
+        1.9651966658203395
+      ],
+      "c": [
+        105.19768893841712,
+        -369.63317392860563,
+        2.011118282937579
+      ]
+    },
+    {
+      "a": [
+        105.31634580519075,
+        -367.4823785994385,
+        1.9651966658203395
+      ],
+      "b": [
+        104.67698264580001,
+        -365.58732853402756,
+        1.9403288352720034
+      ],
+      "c": [
+        103.91896261963565,
+        -365.8430737977838,
+        1.9403288352720034
+      ]
+    },
+    {
+      "a": [
+        105.31634580519075,
+        -367.4823785994385,
+        1.9651966658203395
+      ],
+      "b": [
+        103.91896261963565,
+        -365.8430737977838,
+        1.9403288352720034
+      ],
+      "c": [
+        104.55832577902639,
+        -367.73812386319474,
+        1.9651966658203395
+      ]
+    },
+    {
+      "a": [
+        104.67698264580001,
+        -365.58732853402756,
+        1.9403288352720034
+      ],
+      "b": [
+        104.03761948640928,
+        -363.6922784686166,
+        1.920201141907612
+      ],
+      "c": [
+        103.27959946024492,
+        -363.94802373237286,
+        1.920201141907612
+      ]
+    },
+    {
+      "a": [
+        104.67698264580001,
+        -365.58732853402756,
+        1.9403288352720034
+      ],
+      "b": [
+        103.27959946024492,
+        -363.94802373237286,
+        1.920201141907612
+      ],
+      "c": [
+        103.91896261963565,
+        -365.8430737977838,
+        1.9403288352720034
+      ]
+    },
+    {
+      "a": [
+        104.03761948640928,
+        -363.6922784686166,
+        1.920201141907612
+      ],
+      "b": [
+        103.39825632701856,
+        -361.79722840320574,
+        1.9070455745143893
+      ],
+      "c": [
+        102.6402363008542,
+        -362.052973666962,
+        1.9070455745143893
+      ]
+    },
+    {
+      "a": [
+        104.03761948640928,
+        -363.6922784686166,
+        1.920201141907612
+      ],
+      "b": [
+        102.6402363008542,
+        -362.052973666962,
+        1.9070455745143893
+      ],
+      "c": [
+        103.27959946024492,
+        -363.94802373237286,
+        1.920201141907612
+      ]
+    },
+    {
+      "a": [
+        103.39825632701856,
+        -361.79722840320574,
+        1.9070455745143893
+      ],
+      "b": [
+        102.75889316762782,
+        -359.9021783377948,
+        1.8954608622173656
+      ],
+      "c": [
+        102.00087314146346,
+        -360.15792360155103,
+        1.8954608622173656
+      ]
+    },
+    {
+      "a": [
+        103.39825632701856,
+        -361.79722840320574,
+        1.9070455745143893
+      ],
+      "b": [
+        102.00087314146346,
+        -360.15792360155103,
+        1.8954608622173656
+      ],
+      "c": [
+        102.6402363008542,
+        -362.052973666962,
+        1.9070455745143893
+      ]
+    },
+    {
+      "a": [
+        102.75889316762782,
+        -359.9021783377948,
+        1.8954608622173656
+      ],
+      "b": [
+        102.11953000823709,
+        -358.0071282723839,
+        1.8838410694683543
+      ],
+      "c": [
+        101.36150998207273,
+        -358.26287353614015,
+        1.8838410694683543
+      ]
+    },
+    {
+      "a": [
+        102.75889316762782,
+        -359.9021783377948,
+        1.8954608622173656
+      ],
+      "b": [
+        101.36150998207273,
+        -358.26287353614015,
+        1.8838410694683543
+      ],
+      "c": [
+        102.00087314146346,
+        -360.15792360155103,
+        1.8954608622173656
+      ]
+    },
+    {
+      "a": [
+        102.11953000823709,
+        -358.0071282723839,
+        1.8838410694683543
+      ],
+      "b": [
+        101.48016684884637,
+        -356.11207820697297,
+        1.8721922409892608
+      ],
+      "c": [
+        100.722146822682,
+        -356.3678234707292,
+        1.8721922409892608
+      ]
+    },
+    {
+      "a": [
+        102.11953000823709,
+        -358.0071282723839,
+        1.8838410694683543
+      ],
+      "b": [
+        100.722146822682,
+        -356.3678234707292,
+        1.8721922409892608
+      ],
+      "c": [
+        101.36150998207273,
+        -358.26287353614015,
+        1.8838410694683543
+      ]
+    },
+    {
+      "a": [
+        101.48016684884637,
+        -356.11207820697297,
+        1.8721922409892608
+      ],
+      "b": [
+        100.84080368945564,
+        -354.2170281415621,
+        1.8604859336456863
+      ],
+      "c": [
+        100.08278366329128,
+        -354.4727734053183,
+        1.8604859336456863
+      ]
+    },
+    {
+      "a": [
+        101.48016684884637,
+        -356.11207820697297,
+        1.8721922409892608
+      ],
+      "b": [
+        100.08278366329128,
+        -354.4727734053183,
+        1.8604859336456863
+      ],
+      "c": [
+        100.722146822682,
+        -356.3678234707292,
+        1.8721922409892608
+      ]
+    },
+    {
+      "a": [
+        100.84080368945564,
+        -354.2170281415621,
+        1.8604859336456863
+      ],
+      "b": [
+        100.2014405300649,
+        -352.32197807615114,
+        1.8487724520861823
+      ],
+      "c": [
+        99.44342050390054,
+        -352.5777233399074,
+        1.8487724520861823
+      ]
+    },
+    {
+      "a": [
+        100.84080368945564,
+        -354.2170281415621,
+        1.8604859336456863
+      ],
+      "b": [
+        99.44342050390054,
+        -352.5777233399074,
+        1.8487724520861823
+      ],
+      "c": [
+        100.08278366329128,
+        -354.4727734053183,
+        1.8604859336456863
+      ]
+    },
+    {
+      "a": [
+        100.2014405300649,
+        -352.32197807615114,
+        1.8487724520861823
+      ],
+      "b": [
+        99.56207737067417,
+        -350.42692801074026,
+        1.837050792446388
+      ],
+      "c": [
+        98.80405734450981,
+        -350.6826732744965,
+        1.837050792446388
+      ]
+    },
+    {
+      "a": [
+        100.2014405300649,
+        -352.32197807615114,
+        1.8487724520861823
+      ],
+      "b": [
+        98.80405734450981,
+        -350.6826732744965,
+        1.837050792446388
+      ],
+      "c": [
+        99.44342050390054,
+        -352.5777233399074,
+        1.8487724520861823
+      ]
+    },
+    {
+      "a": [
+        99.56207737067417,
+        -350.42692801074026,
+        1.837050792446388
+      ],
+      "b": [
+        98.92271421128346,
+        -348.5318779453293,
+        1.825334094875989
+      ],
+      "c": [
+        98.1646941851191,
+        -348.78762320908555,
+        1.825334094875989
+      ]
+    },
+    {
+      "a": [
+        99.56207737067417,
+        -350.42692801074026,
+        1.837050792446388
+      ],
+      "b": [
+        98.1646941851191,
+        -348.78762320908555,
+        1.825334094875989
+      ],
+      "c": [
+        98.80405734450981,
+        -350.6826732744965,
+        1.837050792446388
+      ]
+    },
+    {
+      "a": [
+        98.92271421128346,
+        -348.53187794532926,
+        1.825334094875989
+      ],
+      "b": [
+        98.28335105189272,
+        -346.63682787991837,
+        1.8136161335272583
+      ],
+      "c": [
+        97.52533102572836,
+        -346.8925731436747,
+        1.8136161335272583
+      ]
+    },
+    {
+      "a": [
+        98.92271421128346,
+        -348.53187794532926,
+        1.825334094875989
+      ],
+      "b": [
+        97.52533102572836,
+        -346.8925731436747,
+        1.8136161335272583
+      ],
+      "c": [
+        98.1646941851191,
+        -348.7876232090856,
+        1.825334094875989
+      ]
+    },
+    {
+      "a": [
+        98.28335105189272,
+        -346.6368278799184,
+        1.8136161335272583
+      ],
+      "b": [
+        97.64398789250198,
+        -344.7417778145075,
+        1.801897413114957
+      ],
+      "c": [
+        96.88596786633762,
+        -344.9975230782637,
+        1.801897413114957
+      ]
+    },
+    {
+      "a": [
+        98.28335105189272,
+        -346.6368278799184,
+        1.8136161335272583
+      ],
+      "b": [
+        96.88596786633762,
+        -344.9975230782637,
+        1.801897413114957
+      ],
+      "c": [
+        97.52533102572836,
+        -346.89257314367467,
+        1.8136161335272583
+      ]
+    },
+    {
+      "a": [
+        97.64398789250198,
+        -344.7417778145075,
+        1.801897413114957
+      ],
+      "b": [
+        97.00462473311126,
+        -342.8467277490966,
+        1.7901889907741038
+      ],
+      "c": [
+        96.2466047069469,
+        -343.10247301285284,
+        1.7901889907741038
+      ]
+    },
+    {
+      "a": [
+        97.64398789250198,
+        -344.7417778145075,
+        1.801897413114957
+      ],
+      "b": [
+        96.2466047069469,
+        -343.10247301285284,
+        1.7901889907741038
+      ],
+      "c": [
+        96.88596786633762,
+        -344.9975230782637,
+        1.801897413114957
+      ]
+    },
+    {
+      "a": [
+        97.00462473311126,
+        -342.8467277490966,
+        1.7901889907741038
+      ],
+      "b": [
+        96.36526157372053,
+        -340.95167768368566,
+        1.7784728431718144
+      ],
+      "c": [
+        95.60724154755617,
+        -341.2074229474419,
+        1.7784728431718144
+      ]
+    },
+    {
+      "a": [
+        97.00462473311126,
+        -342.8467277490966,
+        1.7901889907741038
+      ],
+      "b": [
+        95.60724154755617,
+        -341.2074229474419,
+        1.7784728431718144
+      ],
+      "c": [
+        96.2466047069469,
+        -343.10247301285284,
+        1.7901889907741038
+      ]
+    },
+    {
+      "a": [
+        96.36526157372053,
+        -340.95167768368566,
+        1.7784728431718144
+      ],
+      "b": [
+        95.72589841432979,
+        -339.0566276182747,
+        1.7666251490984162
+      ],
+      "c": [
+        94.96787838816543,
+        -339.31237288203096,
+        1.7666251490984162
+      ]
+    },
+    {
+      "a": [
+        96.36526157372053,
+        -340.95167768368566,
+        1.7784728431718144
+      ],
+      "b": [
+        94.96787838816543,
+        -339.31237288203096,
+        1.7666251490984162
+      ],
+      "c": [
+        95.60724154755617,
+        -341.2074229474419,
+        1.7784728431718144
+      ]
+    },
+    {
+      "a": [
+        95.72589841432979,
+        -339.0566276182747,
+        1.7666251490984162
+      ],
+      "b": [
+        95.08653525493906,
+        -337.16157755286383,
+        1.756106536835845
+      ],
+      "c": [
+        94.3285152287747,
+        -337.41732281662007,
+        1.756106536835845
+      ]
+    },
+    {
+      "a": [
+        95.72589841432979,
+        -339.0566276182747,
+        1.7666251490984162
+      ],
+      "b": [
+        94.3285152287747,
+        -337.41732281662007,
+        1.756106536835845
+      ],
+      "c": [
+        94.96787838816543,
+        -339.31237288203096,
+        1.7666251490984162
+      ]
+    },
+    {
+      "a": [
+        95.08653530761809,
+        -337.1615777090027,
+        1.756106536835845
+      ],
+      "b": [
+        94.4478017071373,
+        -335.26839105939297,
+        1.7735493947918688
+      ],
+      "c": [
+        93.68978157561489,
+        -335.5241360108715,
+        1.7735493947918688
+      ]
+    },
+    {
+      "a": [
+        95.08653530761809,
+        -337.1615777090027,
+        1.756106536835845
+      ],
+      "b": [
+        93.68978157561489,
+        -335.5241360108715,
+        1.7735493947918688
+      ],
+      "c": [
+        94.32851517609568,
+        -337.4173226604812,
+        1.756106536835845
+      ]
+    },
+    {
+      "a": [
+        94.44760435115566,
+        -335.2678075858365,
+        1.7735493947918688
+      ],
+      "b": [
+        93.8183348224845,
+        -333.4121107758048,
+        1.7990197010387265
+      ],
+      "c": [
+        93.06070940292537,
+        -333.6690226743962,
+        1.7990197010387265
+      ]
+    },
+    {
+      "a": [
+        94.44760435115566,
+        -335.2678075858365,
+        1.7735493947918688
+      ],
+      "b": [
+        93.06070940292537,
+        -333.6690226743962,
+        1.7990197010387265
+      ],
+      "c": [
+        93.68997893159653,
+        -335.5247194844279,
+        1.7735493947918688
+      ]
+    },
+    {
+      "a": [
+        93.81388816676953,
+        -333.39967649277725,
+        1.7990197010387265
+      ],
+      "b": [
+        93.12924828818002,
+        -331.580487713141,
+        1.8321847032018708
+      ],
+      "c": [
+        92.38051618005083,
+        -331.86226817778754,
+        1.8321847032018708
+      ]
+    },
+    {
+      "a": [
+        93.81388816676953,
+        -333.39967649277725,
+        1.7990197010387265
+      ],
+      "b": [
+        92.38051618005083,
+        -331.86226817778754,
+        1.8321847032018708
+      ],
+      "c": [
+        93.06515605864034,
+        -333.6814569574238,
+        1.7990197010387265
+      ]
+    },
+    {
+      "a": [
+        93.127090329291,
+        -331.5748817547774,
+        1.8321847032018708
+      ],
+      "b": [
+        92.40111100912365,
+        -329.73036021036495,
+        1.8676096753171108
+      ],
+      "c": [
+        91.65669481877252,
+        -330.0233525917387,
+        1.8676096753171108
+      ]
+    },
+    {
+      "a": [
+        93.127090329291,
+        -331.5748817547774,
+        1.8321847032018708
+      ],
+      "b": [
+        91.65669481877252,
+        -330.0233525917387,
+        1.8676096753171108
+      ],
+      "c": [
+        92.38267413893986,
+        -331.86787413615116,
+        1.8321847032018708
+      ]
+    },
+    {
+      "a": [
+        92.40111596442888,
+        -329.73037280111043,
+        1.8676096753171108
+      ],
+      "b": [
+        91.668697964722,
+        -327.8693075487065,
+        1.903080487524253
+      ],
+      "c": [
+        90.92427186376041,
+        -328.1622747485893,
+        1.903080487524253
+      ]
+    },
+    {
+      "a": [
+        92.40111596442888,
+        -329.73037280111043,
+        1.8676096753171108
+      ],
+      "b": [
+        90.92427186376041,
+        -328.1622747485893,
+        1.903080487524253
+      ],
+      "c": [
+        91.65668986346729,
+        -330.02334000099324,
+        1.8676096753171108
+      ]
+    },
+    {
+      "a": [
+        91.668697964722,
+        -327.86930754870656,
+        1.903080487524253
+      ],
+      "b": [
+        90.93627996501512,
+        -326.00824229630257,
+        1.9382359032303105
+      ],
+      "c": [
+        90.19185386405353,
+        -326.30120949618527,
+        1.9382359032303105
+      ]
+    },
+    {
+      "a": [
+        91.668697964722,
+        -327.86930754870656,
+        1.903080487524253
+      ],
+      "b": [
+        90.19185386405353,
+        -326.30120949618527,
+        1.9382359032303105
+      ],
+      "c": [
+        90.92427186376041,
+        -328.16227474858925,
+        1.903080487524253
+      ]
+    },
+    {
+      "a": [
+        90.93627996501512,
+        -326.0082422963025,
+        1.9382359032303105
+      ],
+      "b": [
+        90.20386196530823,
+        -324.1471770438986,
+        1.9732888822158106
+      ],
+      "c": [
+        89.45943586434664,
+        -324.4401442437814,
+        1.9732888822158106
+      ]
+    },
+    {
+      "a": [
+        90.93627996501512,
+        -326.0082422963025,
+        1.9382359032303105
+      ],
+      "b": [
+        89.45943586434664,
+        -324.4401442437814,
+        1.9732888822158106
+      ],
+      "c": [
+        90.19185386405353,
+        -326.3012094961853,
+        1.9382359032303105
+      ]
+    },
+    {
+      "a": [
+        90.20386196530823,
+        -324.14717704389864,
+        1.9732888822158106
+      ],
+      "b": [
+        89.47144396560137,
+        -322.28611179149465,
+        2.008297712883627
+      ],
+      "c": [
+        88.72701786463978,
+        -322.57907899137734,
+        2.008297712883627
+      ]
+    },
+    {
+      "a": [
+        90.20386196530823,
+        -324.14717704389864,
+        1.9732888822158106
+      ],
+      "b": [
+        88.72701786463978,
+        -322.57907899137734,
+        2.008297712883627
+      ],
+      "c": [
+        89.45943586434664,
+        -324.44014424378133,
+        1.9732888822158106
+      ]
+    },
+    {
+      "a": [
+        89.47144396560137,
+        -322.2861117914946,
+        2.008297712883627
+      ],
+      "b": [
+        88.73902596589448,
+        -320.42504653909066,
+        2.0432953166389125
+      ],
+      "c": [
+        87.9945998649329,
+        -320.71801373897347,
+        2.0432953166389125
+      ]
+    },
+    {
+      "a": [
+        89.47144396560137,
+        -322.2861117914946,
+        2.008297712883627
+      ],
+      "b": [
+        87.9945998649329,
+        -320.71801373897347,
+        2.0432953166389125
+      ],
+      "c": [
+        88.72701786463978,
+        -322.5790789913774,
+        2.008297712883627
+      ]
+    },
+    {
+      "a": [
+        88.73902596589448,
+        -320.42504653909066,
+        2.0432953166389125
+      ],
+      "b": [
+        88.00660796618759,
+        -318.5639812866867,
+        2.078311031198185
+      ],
+      "c": [
+        87.262181865226,
+        -318.85694848656954,
+        2.078311031198185
+      ]
+    },
+    {
+      "a": [
+        88.73902596589448,
+        -320.42504653909066,
+        2.0432953166389125
+      ],
+      "b": [
+        87.262181865226,
+        -318.85694848656954,
+        2.078311031198185
+      ],
+      "c": [
+        87.9945998649329,
+        -320.71801373897347,
+        2.0432953166389125
+      ]
+    },
+    {
+      "a": [
+        88.00660796618759,
+        -318.5639812866868,
+        2.078311031198185
+      ],
+      "b": [
+        87.2741899664807,
+        -316.7029160342828,
+        2.1133225805309395
+      ],
+      "c": [
+        86.52976386551912,
+        -316.9958832341655,
+        2.1133225805309395
+      ]
+    },
+    {
+      "a": [
+        88.00660796618759,
+        -318.5639812866868,
+        2.078311031198185
+      ],
+      "b": [
+        86.52976386551912,
+        -316.9958832341655,
+        2.1133225805309395
+      ],
+      "c": [
+        87.262181865226,
+        -318.8569484865695,
+        2.078311031198185
+      ]
+    },
+    {
+      "a": [
+        87.2741899664807,
+        -316.7029160342828,
+        2.1133225805309395
+      ],
+      "b": [
+        86.54177196677384,
+        -314.84185078187886,
+        2.1483229574181997
+      ],
+      "c": [
+        85.79734586581225,
+        -315.13481798176156,
+        2.1483229574181997
+      ]
+    },
+    {
+      "a": [
+        87.2741899664807,
+        -316.7029160342828,
+        2.1133225805309395
+      ],
+      "b": [
+        85.79734586581225,
+        -315.13481798176156,
+        2.1483229574181997
+      ],
+      "c": [
+        86.52976386551912,
+        -316.9958832341655,
+        2.1133225805309395
+      ]
+    },
+    {
+      "a": [
+        86.54177196677384,
+        -314.8418507818788,
+        2.1483229574181997
+      ],
+      "b": [
+        85.80935396706695,
+        -312.9807855294749,
+        2.183224613761367
+      ],
+      "c": [
+        85.06492786610536,
+        -313.2737527293577,
+        2.183224613761367
+      ]
+    },
+    {
+      "a": [
+        86.54177196677384,
+        -314.8418507818788,
+        2.1483229574181997
+      ],
+      "b": [
+        85.06492786610536,
+        -313.2737527293577,
+        2.183224613761367
+      ],
+      "c": [
+        85.79734586581225,
+        -315.1348179817616,
+        2.1483229574181997
+      ]
+    },
+    {
+      "a": [
+        85.80935396706695,
+        -312.98078552947493,
+        2.183224613761367
+      ],
+      "b": [
+        85.07693596736009,
+        -311.11972027707094,
+        2.21819436603064
+      ],
+      "c": [
+        84.3325098663985,
+        -311.41268747695364,
+        2.21819436603064
+      ]
+    },
+    {
+      "a": [
+        85.80935396706695,
+        -312.98078552947493,
+        2.183224613761367
+      ],
+      "b": [
+        84.3325098663985,
+        -311.41268747695364,
+        2.21819436603064
+      ],
+      "c": [
+        85.06492786610536,
+        -313.2737527293576,
+        2.183224613761367
+      ]
+    },
+    {
+      "a": [
+        85.07693596736009,
+        -311.1197202770709,
+        2.21819436603064
+      ],
+      "b": [
+        84.3445179676532,
+        -309.25865502466695,
+        2.2539319871001298
+      ],
+      "c": [
+        83.60009186669161,
+        -309.55162222454976,
+        2.2539319871001298
+      ]
+    },
+    {
+      "a": [
+        85.07693596736009,
+        -311.1197202770709,
+        2.21819436603064
+      ],
+      "b": [
+        83.60009186669161,
+        -309.55162222454976,
+        2.2539319871001298
+      ],
+      "c": [
+        84.3325098663985,
+        -311.4126874769537,
+        2.21819436603064
+      ]
+    },
+    {
+      "a": [
+        84.3445179676532,
+        -309.258655024667,
+        2.2539319871001298
+      ],
+      "b": [
+        83.61209996794632,
+        -307.397589772263,
+        2.291001911263454
+      ],
+      "c": [
+        82.86767386698473,
+        -307.6905569721457,
+        2.291001911263454
+      ]
+    },
+    {
+      "a": [
+        84.3445179676532,
+        -309.258655024667,
+        2.2539319871001298
+      ],
+      "b": [
+        82.86767386698473,
+        -307.6905569721457,
+        2.291001911263454
+      ],
+      "c": [
+        83.60009186669161,
+        -309.5516222245497,
+        2.2539319871001298
+      ]
+    },
+    {
+      "a": [
+        83.61209996794632,
+        -307.39758977226296,
+        2.291001911263454
+      ],
+      "b": [
+        82.87968196823944,
+        -305.53652451985903,
+        2.3250685714111152
+      ],
+      "c": [
+        82.13525586727785,
+        -305.82949171974184,
+        2.3250685714111152
+      ]
+    },
+    {
+      "a": [
+        83.61209996794632,
+        -307.39758977226296,
+        2.291001911263454
+      ],
+      "b": [
+        82.13525586727785,
+        -305.82949171974184,
+        2.3250685714111152
+      ],
+      "c": [
+        82.86767386698473,
+        -307.69055697214577,
+        2.291001911263454
+      ]
+    },
+    {
+      "a": [
+        82.87968196823944,
+        -305.5365245198591,
+        2.3250685714111152
+      ],
+      "b": [
+        82.14726396853257,
+        -303.67545926745515,
+        2.358167885215146
+      ],
+      "c": [
+        81.40283786757098,
+        -303.96842646733785,
+        2.358167885215146
+      ]
+    },
+    {
+      "a": [
+        82.87968196823944,
+        -305.5365245198591,
+        2.3250685714111152
+      ],
+      "b": [
+        81.40283786757098,
+        -303.96842646733785,
+        2.358167885215146
+      ],
+      "c": [
+        82.13525586727785,
+        -305.8294917197418,
+        2.3250685714111152
+      ]
+    },
+    {
+      "a": [
+        82.14726396853257,
+        -303.67545926745515,
+        2.358167885215146
+      ],
+      "b": [
+        81.41484596882569,
+        -301.81439401505116,
+        2.3911728532347896
+      ],
+      "c": [
+        80.6704198678641,
+        -302.10736121493386,
+        2.3911728532347896
+      ]
+    },
+    {
+      "a": [
+        82.14726396853257,
+        -303.67545926745515,
+        2.358167885215146
+      ],
+      "b": [
+        80.6704198678641,
+        -302.10736121493386,
+        2.3911728532347896
+      ],
+      "c": [
+        81.40283786757098,
+        -303.96842646733785,
+        2.358167885215146
+      ]
+    },
+    {
+      "a": [
+        81.41484596882569,
+        -301.8143940150511,
+        2.3911728532347896
+      ],
+      "b": [
+        80.6824279691188,
+        -299.9533287626472,
+        2.4263161930195496
+      ],
+      "c": [
+        79.93800186815722,
+        -300.24629596253,
+        2.4263161930195496
+      ]
+    },
+    {
+      "a": [
+        81.41484596882569,
+        -301.8143940150511,
+        2.3911728532347896
+      ],
+      "b": [
+        79.93800186815722,
+        -300.24629596253,
+        2.4263161930195496
+      ],
+      "c": [
+        80.6704198678641,
+        -302.1073612149339,
+        2.3911728532347896
+      ]
+    },
+    {
+      "a": [
+        80.6824279691188,
+        -299.95332876264723,
+        2.4263161930195496
+      ],
+      "b": [
+        79.95000996941194,
+        -298.0922635102433,
+        2.4608745543778765
+      ],
+      "c": [
+        79.20558386845035,
+        -298.385230710126,
+        2.4608745543778765
+      ]
+    },
+    {
+      "a": [
+        80.6824279691188,
+        -299.95332876264723,
+        2.4263161930195496
+      ],
+      "b": [
+        79.20558386845035,
+        -298.385230710126,
+        2.4608745543778765
+      ],
+      "c": [
+        79.93800186815722,
+        -300.2462959625299,
+        2.4263161930195496
+      ]
+    },
+    {
+      "a": [
+        79.95000996941194,
+        -298.0922635102433,
+        2.4608745543778765
+      ],
+      "b": [
+        79.21759196970505,
+        -296.2311982578393,
+        2.4930430684687375
+      ],
+      "c": [
+        78.47316586874346,
+        -296.524165457722,
+        2.4930430684687375
+      ]
+    },
+    {
+      "a": [
+        79.95000996941194,
+        -298.0922635102433,
+        2.4608745543778765
+      ],
+      "b": [
+        78.47316586874346,
+        -296.524165457722,
+        2.4930430684687375
+      ],
+      "c": [
+        79.20558386845035,
+        -298.385230710126,
+        2.4608745543778765
+      ]
+    },
+    {
+      "a": [
+        79.21759196970505,
+        -296.23119825783925,
+        2.4930430684687375
+      ],
+      "b": [
+        78.48517396999816,
+        -294.3701330054353,
+        2.524395749471941
+      ],
+      "c": [
+        77.74074786903657,
+        -294.66310020531813,
+        2.524395749471941
+      ]
+    },
+    {
+      "a": [
+        79.21759196970505,
+        -296.23119825783925,
+        2.4930430684687375
+      ],
+      "b": [
+        77.74074786903657,
+        -294.66310020531813,
+        2.524395749471941
+      ],
+      "c": [
+        78.47316586874346,
+        -296.52416545772206,
+        2.4930430684687375
+      ]
+    },
+    {
+      "a": [
+        78.48517396999816,
+        -294.3701330054354,
+        2.524395749471941
+      ],
+      "b": [
+        77.7527559702913,
+        -292.50906775303145,
+        2.5556892995402007
+      ],
+      "c": [
+        77.00832986932971,
+        -292.80203495291414,
+        2.5556892995402007
+      ]
+    },
+    {
+      "a": [
+        78.48517396999816,
+        -294.3701330054354,
+        2.524395749471941
+      ],
+      "b": [
+        77.00832986932971,
+        -292.80203495291414,
+        2.5556892995402007
+      ],
+      "c": [
+        77.74074786903657,
+        -294.6631002053181,
+        2.524395749471941
+      ]
+    },
+    {
+      "a": [
+        77.75275612257172,
+        -292.5090681399747,
+        2.5556892995402007
+      ],
+      "b": [
+        77.02148393665159,
+        -290.650908717877,
+        2.587004880679903
+      ],
+      "c": [
+        76.27705753112916,
+        -290.94387514387313,
+        2.587004880679903
+      ]
+    },
+    {
+      "a": [
+        77.75275612257172,
+        -292.5090681399747,
+        2.5556892995402007
+      ],
+      "b": [
+        76.27705753112916,
+        -290.94387514387313,
+        2.587004880679903
+      ],
+      "c": [
+        77.00832971704929,
+        -292.80203456597087,
+        2.5556892995402007
+      ]
+    },
+    {
+      "a": [
+        77.0211183772521,
+        -290.64998321292956,
+        2.587004880679903
+      ],
+      "b": [
+        76.30112482442705,
+        -288.8337547728137,
+        2.6183149817431066
+      ],
+      "c": [
+        75.55742953770361,
+        -289.12857220870467,
+        2.6183149817431066
+      ]
+    },
+    {
+      "a": [
+        77.0211183772521,
+        -290.64998321292956,
+        2.587004880679903
+      ],
+      "b": [
+        75.55742953770361,
+        -289.12857220870467,
+        2.6183149817431066
+      ],
+      "c": [
+        76.27742309052866,
+        -290.94480064882055,
+        2.587004880679903
+      ]
+    },
+    {
+      "a": [
+        76.29542123597821,
+        -288.82010905570087,
+        2.6183149817431066
+      ],
+      "b": [
+        75.51284524079085,
+        -287.04098668597754,
+        2.6494599868009963
+      ],
+      "c": [
+        74.7805571309651,
+        -287.36309555609415,
+        2.6494599868009963
+      ]
+    },
+    {
+      "a": [
+        76.29542123597821,
+        -288.82010905570087,
+        2.6183149817431066
+      ],
+      "b": [
+        74.7805571309651,
+        -287.36309555609415,
+        2.6494599868009963
+      ],
+      "c": [
+        75.56313312615245,
+        -289.1422179258175,
+        2.6183149817431066
+      ]
+    },
+    {
+      "a": [
+        75.51101930142042,
+        -287.0368978175458,
+        2.6494599868009963
+      ],
+      "b": [
+        74.69081216642806,
+        -285.22746133747114,
+        2.6805478048729414
+      ],
+      "c": [
+        73.96217593534317,
+        -285.5577479444512,
+        2.6805478048729414
+      ]
+    },
+    {
+      "a": [
+        75.51101930142042,
+        -287.0368978175458,
+        2.6494599868009963
+      ],
+      "b": [
+        73.96217593534317,
+        -285.5577479444512,
+        2.6805478048729414
+      ],
+      "c": [
+        74.78238307033553,
+        -287.3671844245259,
+        2.6494599868009963
+      ]
+    },
+    {
+      "a": [
+        74.69081531590783,
+        -285.22746828562833,
+        2.6805478048729414
+      ],
+      "b": [
+        73.86513353924364,
+        -283.40586196051726,
+        2.711622078095252
+      ],
+      "c": [
+        73.13649100919922,
+        -283.7361346711829,
+        2.711622078095252
+      ]
+    },
+    {
+      "a": [
+        74.69081531590783,
+        -285.22746828562833,
+        2.6805478048729414
+      ],
+      "b": [
+        73.13649100919922,
+        -283.7361346711829,
+        2.711622078095252
+      ],
+      "c": [
+        73.9621727858634,
+        -285.557740996294,
+        2.6805478048729414
+      ]
+    },
+    {
+      "a": [
+        73.86513353924364,
+        -283.40586196051726,
+        2.711622078095252
+      ],
+      "b": [
+        73.03945176257945,
+        -281.5842556354062,
+        2.742985154111382
+      ],
+      "c": [
+        72.31080923253502,
+        -281.91452834607185,
+        2.742985154111382
+      ]
+    },
+    {
+      "a": [
+        73.86513353924364,
+        -283.40586196051726,
+        2.711622078095252
+      ],
+      "b": [
+        72.31080923253502,
+        -281.91452834607185,
+        2.742985154111382
+      ],
+      "c": [
+        73.13649100919922,
+        -283.7361346711829,
+        2.711622078095252
+      ]
+    },
+    {
+      "a": [
+        73.03945176257945,
+        -281.5842556354062,
+        2.742985154111382
+      ],
+      "b": [
+        72.21376998591528,
+        -279.7626493102951,
+        2.7748352716245397
+      ],
+      "c": [
+        71.48512745587085,
+        -280.09292202096077,
+        2.7748352716245397
+      ]
+    },
+    {
+      "a": [
+        73.03945176257945,
+        -281.5842556354062,
+        2.742985154111382
+      ],
+      "b": [
+        71.48512745587085,
+        -280.09292202096077,
+        2.7748352716245397
+      ],
+      "c": [
+        72.31080923253502,
+        -281.91452834607185,
+        2.742985154111382
+      ]
+    }
+  ],
+  "floor_portals": [
+    {
+      "id": "jeddah-early-left-floor-000",
+      "polygon_xy_m": [
+        [
+          126.97785913091917,
+          -450.92918743667866
+        ],
+        [
+          126.51499861537354,
+          -448.97674874473745
+        ],
+        [
+          125.73657381821971,
+          -449.1612882667267
+        ],
+        [
+          126.19943433376534,
+          -451.1137269586679
+        ]
+      ],
+      "bottom_m": 2.2161727807185825,
+      "top_m": 3.0386301472720576,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-001",
+      "polygon_xy_m": [
+        [
+          126.51497809952468,
+          -448.97666224758683
+        ],
+        [
+          126.05192893345601,
+          -447.025359971411
+        ],
+        [
+          125.2735451679999,
+          -447.21007248770144
+        ],
+        [
+          125.73659433406857,
+          -449.1613747638773
+        ]
+      ],
+      "bottom_m": 2.2186301472720578,
+      "top_m": 3.042567744319091,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-002",
+      "polygon_xy_m": [
+        [
+          126.05190392706368,
+          -447.0252546571972
+        ],
+        [
+          125.58831588467048,
+          -445.07403204912555
+        ],
+        [
+          124.80998213199904,
+          -445.2589551938436
+        ],
+        [
+          125.27357017439223,
+          -447.2101778019152
+        ]
+      ],
+      "bottom_m": 2.2225677443190905,
+      "top_m": 3.0463502132120586,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-003",
+      "polygon_xy_m": [
+        [
+          125.58940902873664,
+          -445.0787604095525
+        ],
+        [
+          125.14900488884105,
+          -443.11972887707185
+        ],
+        [
+          124.36848484803728,
+          -443.295195300936
+        ],
+        [
+          124.80888898793287,
+          -445.2542268334166
+        ]
+      ],
+      "bottom_m": 2.2263502132120587,
+      "top_m": 3.05017405253266,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-004",
+      "polygon_xy_m": [
+        [
+          125.1500379555689,
+          -443.1244577519818
+        ],
+        [
+          124.73281141232464,
+          -441.15759833239474
+        ],
+        [
+          123.95022523806516,
+          -441.3236070064389
+        ],
+        [
+          124.36745178130943,
+          -443.290466426026
+        ]
+      ],
+      "bottom_m": 2.23017405253266,
+      "top_m": 3.054074553977517,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-005",
+      "polygon_xy_m": [
+        [
+          124.73278883201185,
+          -441.1574919571397
+        ],
+        [
+          124.31501508233394,
+          -439.1906871699752
+        ],
+        [
+          123.53247406870004,
+          -439.35690859452944
+        ],
+        [
+          123.95024781837795,
+          -441.32371338169395
+        ]
+      ],
+      "bottom_m": 2.234074553977517,
+      "top_m": 3.0579825433700027,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-006",
+      "polygon_xy_m": [
+        [
+          124.31598933299625,
+          -439.19541389007253
+        ],
+        [
+          123.92138478515238,
+          -437.2207560439372
+        ],
+        [
+          123.13689527019386,
+          -437.37752402829676
+        ],
+        [
+          123.53149981803773,
+          -439.3521818744321
+        ]
+      ],
+      "bottom_m": 2.237982543370003,
+      "top_m": 3.061918206349491,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-007",
+      "polygon_xy_m": [
+        [
+          123.92036526128544,
+          -437.2158164705128
+        ],
+        [
+          123.50149510210558,
+          -435.24911503748905
+        ],
+        [
+          122.71904463488094,
+          -435.4157621686974
+        ],
+        [
+          123.1379147940608,
+          -437.38246360172116
+        ]
+      ],
+      "bottom_m": 2.2419182063494913,
+      "top_m": 3.0658819616973068,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-008",
+      "polygon_xy_m": [
+        [
+          123.5014724403222,
+          -435.2490087056078
+        ],
+        [
+          123.08205520054061,
+          -433.28236236158364
+        ],
+        [
+          122.29965005688273,
+          -433.44922215655447
+        ],
+        [
+          122.71906729666432,
+          -435.41586850057865
+        ]
+      ],
+      "bottom_m": 2.2458819616973065,
+      "top_m": 3.0698657219770893,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-009",
+      "polygon_xy_m": [
+        [
+          123.08303322318763,
+          -433.287087867092
+        ],
+        [
+          122.68677893590655,
+          -431.3125698250136
+        ],
+        [
+          121.90241774695463,
+          -431.4699786089677
+        ],
+        [
+          122.29867203423571,
+          -433.4444966510461
+        ]
+      ],
+      "bottom_m": 2.2498657219770894,
+      "top_m": 3.0738516659716897,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-010",
+      "polygon_xy_m": [
+        [
+          122.68575547233428,
+          -431.3076315308598
+        ],
+        [
+          122.26524174514861,
+          -429.3410884816069
+        ],
+        [
+          121.48292748334123,
+          -429.50837385386865
+        ],
+        [
+          121.90344121052689,
+          -431.47491690312154
+        ]
+      ],
+      "bottom_m": 2.2538516659716894,
+      "top_m": 3.08008039246512,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-011",
+      "polygon_xy_m": [
+        [
+          122.26521857155635,
+          -429.3409801830397
+        ],
+        [
+          121.84412719195296,
+          -427.3743986761155
+        ],
+        [
+          121.06185927733011,
+          -427.5419006455117
+        ],
+        [
+          121.4829506569335,
+          -429.5084821524359
+        ]
+      ],
+      "bottom_m": 2.2507344175648623,
+      "top_m": 3.08008039246512,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-012",
+      "polygon_xy_m": [
+        [
+          121.84510858930231,
+          -427.3791208772012
+        ],
+        [
+          121.44703918645692,
+          -425.40402879123553
+        ],
+        [
+          120.66280847713537,
+          -425.5620863584603
+        ],
+        [
+          121.06087787998077,
+          -427.537178444426
+        ]
+      ],
+      "bottom_m": 2.2356063995062136,
+      "top_m": 3.0707344175648625,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-013",
+      "polygon_xy_m": [
+        [
+          121.44602892534047,
+          -425.39917190382073
+        ],
+        [
+          121.02397436479859,
+          -423.4314021243064
+        ],
+        [
+          120.24176417770991,
+          -423.59917346636075
+        ],
+        [
+          120.66381873825182,
+          -425.5669432458751
+        ]
+      ],
+      "bottom_m": 2.214628406119181,
+      "top_m": 3.0556063995062135,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-014",
+      "polygon_xy_m": [
+        [
+          121.02497819201578,
+          -423.43622709549334
+        ],
+        [
+          120.6265983545953,
+          -421.4604251051267
+        ],
+        [
+          119.84238051307224,
+          -421.61854650480717
+        ],
+        [
+          120.24076035049272,
+          -423.5943484951738
+        ]
+      ],
+      "bottom_m": 2.1908749897662396,
+      "top_m": 3.0346284061191815,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-015",
+      "polygon_xy_m": [
+        [
+          120.62559408815926,
+          -421.4555980861701
+        ],
+        [
+          120.20350957983797,
+          -419.48773892763376
+        ],
+        [
+          119.421300271187,
+          -419.6555143652275
+        ],
+        [
+          119.84338477950828,
+          -421.6233735237638
+        ]
+      ],
+      "bottom_m": 2.1671828223385274,
+      "top_m": 3.01087498976624,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-016",
+      "polygon_xy_m": [
+        [
+          120.20451384627401,
+          -419.4925659465904
+        ],
+        [
+          119.80613400885355,
+          -417.51676395622377
+        ],
+        [
+          119.02191616733049,
+          -417.6748853559042
+        ],
+        [
+          119.42029600475095,
+          -419.65068734627084
+        ]
+      ],
+      "bottom_m": 2.1434831411717763,
+      "top_m": 2.9871828223385273,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-017",
+      "polygon_xy_m": [
+        [
+          119.8051297424175,
+          -417.51193693726714
+        ],
+        [
+          119.38304523409622,
+          -415.5440777787308
+        ],
+        [
+          118.60083592544524,
+          -415.7118532163245
+        ],
+        [
+          119.02292043376653,
+          -417.67971237486086
+        ]
+      ],
+      "bottom_m": 2.1197852701561466,
+      "top_m": 2.9634831411717766,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-018",
+      "polygon_xy_m": [
+        [
+          119.38404950053226,
+          -415.54890479768744
+        ],
+        [
+          118.98566966311179,
+          -413.57310280732077
+        ],
+        [
+          118.20145182158873,
+          -413.7312242070012
+        ],
+        [
+          118.5998316590092,
+          -415.7070261973679
+        ]
+      ],
+      "bottom_m": 2.0960413203410075,
+      "top_m": 2.939785270156147,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-019",
+      "polygon_xy_m": [
+        [
+          118.98466539667575,
+          -413.56827578836413
+        ],
+        [
+          118.56258088835446,
+          -411.6004166298278
+        ],
+        [
+          117.78037157970348,
+          -411.7681920674215
+        ],
+        [
+          118.20245608802477,
+          -413.73605122595785
+        ]
+      ],
+      "bottom_m": 2.0723228056895726,
+      "top_m": 2.916041320341008,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-020",
+      "polygon_xy_m": [
+        [
+          118.56258088835446,
+          -411.6004166298278
+        ],
+        [
+          118.14049638003321,
+          -409.6325574712916
+        ],
+        [
+          117.35828707138224,
+          -409.8003329088853
+        ],
+        [
+          117.78037157970348,
+          -411.7681920674215
+        ]
+      ],
+      "bottom_m": 2.0486044315922545,
+      "top_m": 2.8923228056895725,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-021",
+      "polygon_xy_m": [
+        [
+          118.14150064646925,
+          -409.6373844902482
+        ],
+        [
+          117.74312080904875,
+          -407.66158249988155
+        ],
+        [
+          116.95890296752569,
+          -407.819703899562
+        ],
+        [
+          117.3572828049462,
+          -409.7955058899287
+        ]
+      ],
+      "bottom_m": 2.0248565389426165,
+      "top_m": 2.8686044315922548,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-022",
+      "polygon_xy_m": [
+        [
+          117.7421165426127,
+          -407.6567554809249
+        ],
+        [
+          117.32003203429142,
+          -405.6888963223886
+        ],
+        [
+          116.53782272564044,
+          -405.8566717599823
+        ],
+        [
+          116.95990723396173,
+          -407.82453091851863
+        ]
+      ],
+      "bottom_m": 2.0011428066753796,
+      "top_m": 2.8448565389426164,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-023",
+      "polygon_xy_m": [
+        [
+          117.32103630072746,
+          -405.6937233413452
+        ],
+        [
+          116.92265646330699,
+          -403.71792135097854
+        ],
+        [
+          116.13843862178393,
+          -403.876042750659
+        ],
+        [
+          116.5368184592044,
+          -405.8518447410257
+        ]
+      ],
+      "bottom_m": 1.9773986701951454,
+      "top_m": 2.8211428066753794,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-024",
+      "polygon_xy_m": [
+        [
+          116.92165219687095,
+          -403.7130943320219
+        ],
+        [
+          116.49956768854967,
+          -401.7452351734857
+        ],
+        [
+          115.7173583798987,
+          -401.9130106110794
+        ],
+        [
+          116.13944288821997,
+          -403.88086976961563
+        ]
+      ],
+      "bottom_m": 1.9536835954570353,
+      "top_m": 2.7973986701951454,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-025",
+      "polygon_xy_m": [
+        [
+          116.50057195498572,
+          -401.75006219244233
+        ],
+        [
+          116.10219211756522,
+          -399.77426020207565
+        ],
+        [
+          115.31797427604216,
+          -399.9323816017561
+        ],
+        [
+          115.71635411346266,
+          -401.9081835921228
+        ]
+      ],
+      "bottom_m": 1.9298495158148128,
+      "top_m": 2.7736835954570354,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-026",
+      "polygon_xy_m": [
+        [
+          116.09241560373404,
+          -399.7357541948477
+        ],
+        [
+          115.50439839910723,
+          -397.82349485912385
+        ],
+        [
+          114.73973358524654,
+          -398.05862827326024
+        ],
+        [
+          115.32775078987335,
+          -399.97088760898407
+        ]
+      ],
+      "bottom_m": 1.9062019231352105,
+      "top_m": 2.749849515814813,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-027",
+      "polygon_xy_m": [
+        [
+          115.5013407265895,
+          -397.81397625690636
+        ],
+        [
+          114.86591418016114,
+          -395.9176025848432
+        ],
+        [
+          114.1073647113359,
+          -396.1717732034146
+        ],
+        [
+          114.74279125776427,
+          -398.06814687547774
+        ]
+      ],
+      "bottom_m": 1.8697163048706031,
+      "top_m": 2.7262019231352106,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-028",
+      "polygon_xy_m": [
+        [
+          114.86591418016114,
+          -395.9176025848432
+        ],
+        [
+          114.23048763373279,
+          -394.02122891278015
+        ],
+        [
+          113.47193816490756,
+          -394.2753995313515
+        ],
+        [
+          114.1073647113359,
+          -396.1717732034146
+        ]
+      ],
+      "bottom_m": 1.8287147077501855,
+      "top_m": 2.689716304870603,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-029",
+      "polygon_xy_m": [
+        [
+          114.23048763373279,
+          -394.02122891278015
+        ],
+        [
+          113.5950610873044,
+          -392.124855240717
+        ],
+        [
+          112.83651161847916,
+          -392.3790258592884
+        ],
+        [
+          113.47193816490756,
+          -394.2753995313515
+        ]
+      ],
+      "bottom_m": 1.7832233819463805,
+      "top_m": 2.6487147077501856,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-030",
+      "polygon_xy_m": [
+        [
+          113.5950610873044,
+          -392.124855240717
+        ],
+        [
+          112.95963454087602,
+          -390.22848156865393
+        ],
+        [
+          112.20108507205079,
+          -390.4826521872253
+        ],
+        [
+          112.83651161847916,
+          -392.3790258592884
+        ]
+      ],
+      "bottom_m": 1.7299883593098973,
+      "top_m": 2.6032233819463806,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-031",
+      "polygon_xy_m": [
+        [
+          112.95963454087602,
+          -390.22848156865393
+        ],
+        [
+          112.32420799444765,
+          -388.3321078965908
+        ],
+        [
+          111.56565852562241,
+          -388.5862785151622
+        ],
+        [
+          112.20108507205079,
+          -390.4826521872253
+        ]
+      ],
+      "bottom_m": 1.6825220714622413,
+      "top_m": 2.5499883593098973,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-032",
+      "polygon_xy_m": [
+        [
+          112.32420799444765,
+          -388.3321078965908
+        ],
+        [
+          111.6887814480193,
+          -386.4357342245277
+        ],
+        [
+          110.93023197919406,
+          -386.6899048430991
+        ],
+        [
+          111.56565852562241,
+          -388.5862785151622
+        ]
+      ],
+      "bottom_m": 1.6353237322818053,
+      "top_m": 2.5025220714622414,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-033",
+      "polygon_xy_m": [
+        [
+          111.6887814480193,
+          -386.4357342245277
+        ],
+        [
+          111.05335490159091,
+          -384.5393605524646
+        ],
+        [
+          110.29480543276567,
+          -384.79353117103597
+        ],
+        [
+          110.93023197919406,
+          -386.6899048430991
+        ]
+      ],
+      "bottom_m": 1.5883682563147257,
+      "top_m": 2.4553237322818053,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-034",
+      "polygon_xy_m": [
+        [
+          111.05335490159091,
+          -384.5393605524646
+        ],
+        [
+          110.41792835516253,
+          -382.6429868804015
+        ],
+        [
+          109.6593788863373,
+          -382.8971574989729
+        ],
+        [
+          110.29480543276567,
+          -384.79353117103597
+        ]
+      ],
+      "bottom_m": 1.5414591796723205,
+      "top_m": 2.4083682563147257,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-035",
+      "polygon_xy_m": [
+        [
+          110.41792835516253,
+          -382.6429868804015
+        ],
+        [
+          109.78250180873417,
+          -380.7466132083384
+        ],
+        [
+          109.02395233990893,
+          -381.00078382690975
+        ],
+        [
+          109.6593788863373,
+          -382.8971574989729
+        ]
+      ],
+      "bottom_m": 1.4945585221251376,
+      "top_m": 2.3614591796723206,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-036",
+      "polygon_xy_m": [
+        [
+          109.78250180880045,
+          -380.7466132085362
+        ],
+        [
+          109.14709750697155,
+          -378.85030592020735
+        ],
+        [
+          108.38854803801375,
+          -379.1044765383831
+        ],
+        [
+          109.02395233984265,
+          -381.00078382671194
+        ]
+      ],
+      "bottom_m": 1.4476263096905437,
+      "top_m": 2.3145585221251377,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-037",
+      "polygon_xy_m": [
+        [
+          109.14708981144999,
+          -378.85028295591957
+        ],
+        [
+          108.51225773476837,
+          -376.9560641488824
+        ],
+        [
+          107.7537236568537,
+          -377.2102806956337
+        ],
+        [
+          108.38855573353531,
+          -379.1044995026709
+        ]
+      ],
+      "bottom_m": 1.4007253542065163,
+      "top_m": 2.267626309690544,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-038",
+      "polygon_xy_m": [
+        [
+          108.51202345298438,
+          -376.9553672228741
+        ],
+        [
+          107.87375418446169,
+          -375.0624476716092
+        ],
+        [
+          107.11568867011499,
+          -375.3180580703771
+        ],
+        [
+          107.75395793863768,
+          -377.210977621642
+        ]
+      ],
+      "bottom_m": 1.3538426547502314,
+      "top_m": 2.2207253542065164,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-039",
+      "polygon_xy_m": [
+        [
+          107.87373143977273,
+          -375.0623802373432
+        ],
+        [
+          107.23443528276513,
+          -373.16752879389935
+        ],
+        [
+          106.47641525779636,
+          -373.4232740611993
+        ],
+        [
+          107.11571141480395,
+          -375.31812550464315
+        ]
+      ],
+      "bottom_m": 1.3069164059879153,
+      "top_m": 2.1738426547502314,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-040",
+      "polygon_xy_m": [
+        [
+          107.23443528336293,
+          -373.1675287956712
+        ],
+        [
+          106.5950721239722,
+          -371.27247873026033
+        ],
+        [
+          105.83705209780784,
+          -371.52822399401657
+        ],
+        [
+          106.47641525719857,
+          -373.42327405942746
+        ]
+      ],
+      "bottom_m": 1.2600069084465078,
+      "top_m": 2.1269164059879153,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-041",
+      "polygon_xy_m": [
+        [
+          106.5950721239722,
+          -371.27247873026033
+        ],
+        [
+          105.95570896458148,
+          -369.3774286648494
+        ],
+        [
+          105.19768893841712,
+          -369.63317392860563
+        ],
+        [
+          105.83705209780784,
+          -371.52822399401657
+        ]
+      ],
+      "bottom_m": 1.2131182829375786,
+      "top_m": 2.080006908446508,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-042",
+      "polygon_xy_m": [
+        [
+          105.95570896458148,
+          -369.3774286648494
+        ],
+        [
+          105.31634580519075,
+          -367.4823785994385
+        ],
+        [
+          104.55832577902639,
+          -367.73812386319474
+        ],
+        [
+          105.19768893841712,
+          -369.63317392860563
+        ]
+      ],
+      "bottom_m": 1.1671966658203394,
+      "top_m": 2.0331182829375787,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-043",
+      "polygon_xy_m": [
+        [
+          105.31634580519075,
+          -367.4823785994385
+        ],
+        [
+          104.67698264580001,
+          -365.58732853402756
+        ],
+        [
+          103.91896261963565,
+          -365.8430737977838
+        ],
+        [
+          104.55832577902639,
+          -367.73812386319474
+        ]
+      ],
+      "bottom_m": 1.1423288352720034,
+      "top_m": 1.9871966658203395,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-044",
+      "polygon_xy_m": [
+        [
+          104.67698264580001,
+          -365.58732853402756
+        ],
+        [
+          104.03761948640928,
+          -363.6922784686166
+        ],
+        [
+          103.27959946024492,
+          -363.94802373237286
+        ],
+        [
+          103.91896261963565,
+          -365.8430737977838
+        ]
+      ],
+      "bottom_m": 1.1222011419076119,
+      "top_m": 1.9623288352720034,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-045",
+      "polygon_xy_m": [
+        [
+          104.03761948640928,
+          -363.6922784686166
+        ],
+        [
+          103.39825632701856,
+          -361.79722840320574
+        ],
+        [
+          102.6402363008542,
+          -362.052973666962
+        ],
+        [
+          103.27959946024492,
+          -363.94802373237286
+        ]
+      ],
+      "bottom_m": 1.1090455745143892,
+      "top_m": 1.942201141907612,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-046",
+      "polygon_xy_m": [
+        [
+          103.39825632701856,
+          -361.79722840320574
+        ],
+        [
+          102.75889316762782,
+          -359.9021783377948
+        ],
+        [
+          102.00087314146346,
+          -360.15792360155103
+        ],
+        [
+          102.6402363008542,
+          -362.052973666962
+        ]
+      ],
+      "bottom_m": 1.0974608622173656,
+      "top_m": 1.9290455745143893,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-047",
+      "polygon_xy_m": [
+        [
+          102.75889316762782,
+          -359.9021783377948
+        ],
+        [
+          102.11953000823709,
+          -358.0071282723839
+        ],
+        [
+          101.36150998207273,
+          -358.26287353614015
+        ],
+        [
+          102.00087314146346,
+          -360.15792360155103
+        ]
+      ],
+      "bottom_m": 1.0858410694683542,
+      "top_m": 1.9174608622173657,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-048",
+      "polygon_xy_m": [
+        [
+          102.11953000823709,
+          -358.0071282723839
+        ],
+        [
+          101.48016684884637,
+          -356.11207820697297
+        ],
+        [
+          100.722146822682,
+          -356.3678234707292
+        ],
+        [
+          101.36150998207273,
+          -358.26287353614015
+        ]
+      ],
+      "bottom_m": 1.0741922409892608,
+      "top_m": 1.9058410694683543,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-049",
+      "polygon_xy_m": [
+        [
+          101.48016684884637,
+          -356.11207820697297
+        ],
+        [
+          100.84080368945564,
+          -354.2170281415621
+        ],
+        [
+          100.08278366329128,
+          -354.4727734053183
+        ],
+        [
+          100.722146822682,
+          -356.3678234707292
+        ]
+      ],
+      "bottom_m": 1.0624859336456862,
+      "top_m": 1.8941922409892609,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-050",
+      "polygon_xy_m": [
+        [
+          100.84080368945564,
+          -354.2170281415621
+        ],
+        [
+          100.2014405300649,
+          -352.32197807615114
+        ],
+        [
+          99.44342050390054,
+          -352.5777233399074
+        ],
+        [
+          100.08278366329128,
+          -354.4727734053183
+        ]
+      ],
+      "bottom_m": 1.0507724520861823,
+      "top_m": 1.8824859336456863,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-051",
+      "polygon_xy_m": [
+        [
+          100.2014405300649,
+          -352.32197807615114
+        ],
+        [
+          99.56207737067417,
+          -350.42692801074026
+        ],
+        [
+          98.80405734450981,
+          -350.6826732744965
+        ],
+        [
+          99.44342050390054,
+          -352.5777233399074
+        ]
+      ],
+      "bottom_m": 1.0390507924463879,
+      "top_m": 1.8707724520861824,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-052",
+      "polygon_xy_m": [
+        [
+          99.56207737067417,
+          -350.42692801074026
+        ],
+        [
+          98.92271421128346,
+          -348.5318779453293
+        ],
+        [
+          98.1646941851191,
+          -348.78762320908555
+        ],
+        [
+          98.80405734450981,
+          -350.6826732744965
+        ]
+      ],
+      "bottom_m": 1.027334094875989,
+      "top_m": 1.859050792446388,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-053",
+      "polygon_xy_m": [
+        [
+          98.92271421128346,
+          -348.53187794532926
+        ],
+        [
+          98.28335105189272,
+          -346.63682787991837
+        ],
+        [
+          97.52533102572836,
+          -346.8925731436747
+        ],
+        [
+          98.1646941851191,
+          -348.7876232090856
+        ]
+      ],
+      "bottom_m": 1.0156161335272582,
+      "top_m": 1.847334094875989,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-054",
+      "polygon_xy_m": [
+        [
+          98.28335105189272,
+          -346.6368278799184
+        ],
+        [
+          97.64398789250198,
+          -344.7417778145075
+        ],
+        [
+          96.88596786633762,
+          -344.9975230782637
+        ],
+        [
+          97.52533102572836,
+          -346.89257314367467
+        ]
+      ],
+      "bottom_m": 1.003897413114957,
+      "top_m": 1.8356161335272583,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-055",
+      "polygon_xy_m": [
+        [
+          97.64398789250198,
+          -344.7417778145075
+        ],
+        [
+          97.00462473311126,
+          -342.8467277490966
+        ],
+        [
+          96.2466047069469,
+          -343.10247301285284
+        ],
+        [
+          96.88596786633762,
+          -344.9975230782637
+        ]
+      ],
+      "bottom_m": 0.9921889907741037,
+      "top_m": 1.823897413114957,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-056",
+      "polygon_xy_m": [
+        [
+          97.00462473311126,
+          -342.8467277490966
+        ],
+        [
+          96.36526157372053,
+          -340.95167768368566
+        ],
+        [
+          95.60724154755617,
+          -341.2074229474419
+        ],
+        [
+          96.2466047069469,
+          -343.10247301285284
+        ]
+      ],
+      "bottom_m": 0.9804728431718144,
+      "top_m": 1.8121889907741038,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-057",
+      "polygon_xy_m": [
+        [
+          96.36526157372053,
+          -340.95167768368566
+        ],
+        [
+          95.72589841432979,
+          -339.0566276182747
+        ],
+        [
+          94.96787838816543,
+          -339.31237288203096
+        ],
+        [
+          95.60724154755617,
+          -341.2074229474419
+        ]
+      ],
+      "bottom_m": 0.9686251490984161,
+      "top_m": 1.8004728431718144,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-058",
+      "polygon_xy_m": [
+        [
+          95.72589841432979,
+          -339.0566276182747
+        ],
+        [
+          95.08653525493906,
+          -337.16157755286383
+        ],
+        [
+          94.3285152287747,
+          -337.41732281662007
+        ],
+        [
+          94.96787838816543,
+          -339.31237288203096
+        ]
+      ],
+      "bottom_m": 0.958106536835845,
+      "top_m": 1.7886251490984162,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-059",
+      "polygon_xy_m": [
+        [
+          95.08653530761809,
+          -337.1615777090027
+        ],
+        [
+          94.4478017071373,
+          -335.26839105939297
+        ],
+        [
+          93.68978157561489,
+          -335.5241360108715
+        ],
+        [
+          94.32851517609568,
+          -337.4173226604812
+        ]
+      ],
+      "bottom_m": 0.958106536835845,
+      "top_m": 1.7955493947918688,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-060",
+      "polygon_xy_m": [
+        [
+          94.44760435115566,
+          -335.2678075858365
+        ],
+        [
+          93.8183348224845,
+          -333.4121107758048
+        ],
+        [
+          93.06070940292537,
+          -333.6690226743962
+        ],
+        [
+          93.68997893159653,
+          -335.5247194844279
+        ]
+      ],
+      "bottom_m": 0.9755493947918688,
+      "top_m": 1.8210197010387266,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-061",
+      "polygon_xy_m": [
+        [
+          93.81388816676953,
+          -333.39967649277725
+        ],
+        [
+          93.12924828818002,
+          -331.580487713141
+        ],
+        [
+          92.38051618005083,
+          -331.86226817778754
+        ],
+        [
+          93.06515605864034,
+          -333.6814569574238
+        ]
+      ],
+      "bottom_m": 1.0010197010387265,
+      "top_m": 1.8541847032018708,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-062",
+      "polygon_xy_m": [
+        [
+          93.127090329291,
+          -331.5748817547774
+        ],
+        [
+          92.40111100912365,
+          -329.73036021036495
+        ],
+        [
+          91.65669481877252,
+          -330.0233525917387
+        ],
+        [
+          92.38267413893986,
+          -331.86787413615116
+        ]
+      ],
+      "bottom_m": 1.0341847032018707,
+      "top_m": 1.8896096753171108,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-063",
+      "polygon_xy_m": [
+        [
+          92.40111596442888,
+          -329.73037280111043
+        ],
+        [
+          91.668697964722,
+          -327.8693075487065
+        ],
+        [
+          90.92427186376041,
+          -328.1622747485893
+        ],
+        [
+          91.65668986346729,
+          -330.02334000099324
+        ]
+      ],
+      "bottom_m": 1.0696096753171107,
+      "top_m": 1.925080487524253,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-064",
+      "polygon_xy_m": [
+        [
+          91.668697964722,
+          -327.86930754870656
+        ],
+        [
+          90.93627996501512,
+          -326.00824229630257
+        ],
+        [
+          90.19185386405353,
+          -326.30120949618527
+        ],
+        [
+          90.92427186376041,
+          -328.16227474858925
+        ]
+      ],
+      "bottom_m": 1.105080487524253,
+      "top_m": 1.9602359032303105,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-065",
+      "polygon_xy_m": [
+        [
+          90.93627996501512,
+          -326.0082422963025
+        ],
+        [
+          90.20386196530823,
+          -324.1471770438986
+        ],
+        [
+          89.45943586434664,
+          -324.4401442437814
+        ],
+        [
+          90.19185386405353,
+          -326.3012094961853
+        ]
+      ],
+      "bottom_m": 1.1402359032303104,
+      "top_m": 1.9952888822158106,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-066",
+      "polygon_xy_m": [
+        [
+          90.20386196530823,
+          -324.14717704389864
+        ],
+        [
+          89.47144396560137,
+          -322.28611179149465
+        ],
+        [
+          88.72701786463978,
+          -322.57907899137734
+        ],
+        [
+          89.45943586434664,
+          -324.44014424378133
+        ]
+      ],
+      "bottom_m": 1.1752888822158105,
+      "top_m": 2.030297712883627,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-067",
+      "polygon_xy_m": [
+        [
+          89.47144396560137,
+          -322.2861117914946
+        ],
+        [
+          88.73902596589448,
+          -320.42504653909066
+        ],
+        [
+          87.9945998649329,
+          -320.71801373897347
+        ],
+        [
+          88.72701786463978,
+          -322.5790789913774
+        ]
+      ],
+      "bottom_m": 1.2102977128836268,
+      "top_m": 2.0652953166389123,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-068",
+      "polygon_xy_m": [
+        [
+          88.73902596589448,
+          -320.42504653909066
+        ],
+        [
+          88.00660796618759,
+          -318.5639812866867
+        ],
+        [
+          87.262181865226,
+          -318.85694848656954
+        ],
+        [
+          87.9945998649329,
+          -320.71801373897347
+        ]
+      ],
+      "bottom_m": 1.2452953166389122,
+      "top_m": 2.100311031198185,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-069",
+      "polygon_xy_m": [
+        [
+          88.00660796618759,
+          -318.5639812866868
+        ],
+        [
+          87.2741899664807,
+          -316.7029160342828
+        ],
+        [
+          86.52976386551912,
+          -316.9958832341655
+        ],
+        [
+          87.262181865226,
+          -318.8569484865695
+        ]
+      ],
+      "bottom_m": 1.280311031198185,
+      "top_m": 2.1353225805309393,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-070",
+      "polygon_xy_m": [
+        [
+          87.2741899664807,
+          -316.7029160342828
+        ],
+        [
+          86.54177196677384,
+          -314.84185078187886
+        ],
+        [
+          85.79734586581225,
+          -315.13481798176156
+        ],
+        [
+          86.52976386551912,
+          -316.9958832341655
+        ]
+      ],
+      "bottom_m": 1.3153225805309392,
+      "top_m": 2.1703229574181995,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-071",
+      "polygon_xy_m": [
+        [
+          86.54177196677384,
+          -314.8418507818788
+        ],
+        [
+          85.80935396706695,
+          -312.9807855294749
+        ],
+        [
+          85.06492786610536,
+          -313.2737527293577
+        ],
+        [
+          85.79734586581225,
+          -315.1348179817616
+        ]
+      ],
+      "bottom_m": 1.3503229574181994,
+      "top_m": 2.205224613761367,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-072",
+      "polygon_xy_m": [
+        [
+          85.80935396706695,
+          -312.98078552947493
+        ],
+        [
+          85.07693596736009,
+          -311.11972027707094
+        ],
+        [
+          84.3325098663985,
+          -311.41268747695364
+        ],
+        [
+          85.06492786610536,
+          -313.2737527293576
+        ]
+      ],
+      "bottom_m": 1.3852246137613669,
+      "top_m": 2.24019436603064,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-073",
+      "polygon_xy_m": [
+        [
+          85.07693596736009,
+          -311.1197202770709
+        ],
+        [
+          84.3445179676532,
+          -309.25865502466695
+        ],
+        [
+          83.60009186669161,
+          -309.55162222454976
+        ],
+        [
+          84.3325098663985,
+          -311.4126874769537
+        ]
+      ],
+      "bottom_m": 1.4201943660306398,
+      "top_m": 2.2759319871001296,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-074",
+      "polygon_xy_m": [
+        [
+          84.3445179676532,
+          -309.258655024667
+        ],
+        [
+          83.61209996794632,
+          -307.397589772263
+        ],
+        [
+          82.86767386698473,
+          -307.6905569721457
+        ],
+        [
+          83.60009186669161,
+          -309.5516222245497
+        ]
+      ],
+      "bottom_m": 1.4559319871001295,
+      "top_m": 2.313001911263454,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-075",
+      "polygon_xy_m": [
+        [
+          83.61209996794632,
+          -307.39758977226296
+        ],
+        [
+          82.87968196823944,
+          -305.53652451985903
+        ],
+        [
+          82.13525586727785,
+          -305.82949171974184
+        ],
+        [
+          82.86767386698473,
+          -307.69055697214577
+        ]
+      ],
+      "bottom_m": 1.4930019112634538,
+      "top_m": 2.347068571411115,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-076",
+      "polygon_xy_m": [
+        [
+          82.87968196823944,
+          -305.5365245198591
+        ],
+        [
+          82.14726396853257,
+          -303.67545926745515
+        ],
+        [
+          81.40283786757098,
+          -303.96842646733785
+        ],
+        [
+          82.13525586727785,
+          -305.8294917197418
+        ]
+      ],
+      "bottom_m": 1.527068571411115,
+      "top_m": 2.3801678852151458,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-077",
+      "polygon_xy_m": [
+        [
+          82.14726396853257,
+          -303.67545926745515
+        ],
+        [
+          81.41484596882569,
+          -301.81439401505116
+        ],
+        [
+          80.6704198678641,
+          -302.10736121493386
+        ],
+        [
+          81.40283786757098,
+          -303.96842646733785
+        ]
+      ],
+      "bottom_m": 1.5601678852151457,
+      "top_m": 2.4131728532347894,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-078",
+      "polygon_xy_m": [
+        [
+          81.41484596882569,
+          -301.8143940150511
+        ],
+        [
+          80.6824279691188,
+          -299.9533287626472
+        ],
+        [
+          79.93800186815722,
+          -300.24629596253
+        ],
+        [
+          80.6704198678641,
+          -302.1073612149339
+        ]
+      ],
+      "bottom_m": 1.5931728532347893,
+      "top_m": 2.4483161930195494,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-079",
+      "polygon_xy_m": [
+        [
+          80.6824279691188,
+          -299.95332876264723
+        ],
+        [
+          79.95000996941194,
+          -298.0922635102433
+        ],
+        [
+          79.20558386845035,
+          -298.385230710126
+        ],
+        [
+          79.93800186815722,
+          -300.2462959625299
+        ]
+      ],
+      "bottom_m": 1.6283161930195493,
+      "top_m": 2.4828745543778763,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-080",
+      "polygon_xy_m": [
+        [
+          79.95000996941194,
+          -298.0922635102433
+        ],
+        [
+          79.21759196970505,
+          -296.2311982578393
+        ],
+        [
+          78.47316586874346,
+          -296.524165457722
+        ],
+        [
+          79.20558386845035,
+          -298.385230710126
+        ]
+      ],
+      "bottom_m": 1.6628745543778762,
+      "top_m": 2.5150430684687373,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-081",
+      "polygon_xy_m": [
+        [
+          79.21759196970505,
+          -296.23119825783925
+        ],
+        [
+          78.48517396999816,
+          -294.3701330054353
+        ],
+        [
+          77.74074786903657,
+          -294.66310020531813
+        ],
+        [
+          78.47316586874346,
+          -296.52416545772206
+        ]
+      ],
+      "bottom_m": 1.6950430684687372,
+      "top_m": 2.546395749471941,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-082",
+      "polygon_xy_m": [
+        [
+          78.48517396999816,
+          -294.3701330054354
+        ],
+        [
+          77.7527559702913,
+          -292.50906775303145
+        ],
+        [
+          77.00832986932971,
+          -292.80203495291414
+        ],
+        [
+          77.74074786903657,
+          -294.6631002053181
+        ]
+      ],
+      "bottom_m": 1.7263957494719409,
+      "top_m": 2.5776892995402005,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-083",
+      "polygon_xy_m": [
+        [
+          77.75275612257172,
+          -292.5090681399747
+        ],
+        [
+          77.02148393665159,
+          -290.650908717877
+        ],
+        [
+          76.27705753112916,
+          -290.94387514387313
+        ],
+        [
+          77.00832971704929,
+          -292.80203456597087
+        ]
+      ],
+      "bottom_m": 1.7576892995402005,
+      "top_m": 2.609004880679903,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-084",
+      "polygon_xy_m": [
+        [
+          77.0211183772521,
+          -290.64998321292956
+        ],
+        [
+          76.30112482442705,
+          -288.8337547728137
+        ],
+        [
+          75.55742953770361,
+          -289.12857220870467
+        ],
+        [
+          76.27742309052866,
+          -290.94480064882055
+        ]
+      ],
+      "bottom_m": 1.7890048806799028,
+      "top_m": 2.6403149817431064,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-085",
+      "polygon_xy_m": [
+        [
+          76.29542123597821,
+          -288.82010905570087
+        ],
+        [
+          75.51284524079085,
+          -287.04098668597754
+        ],
+        [
+          74.7805571309651,
+          -287.36309555609415
+        ],
+        [
+          75.56313312615245,
+          -289.1422179258175
+        ]
+      ],
+      "bottom_m": 1.8203149817431064,
+      "top_m": 2.671459986800996,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-086",
+      "polygon_xy_m": [
+        [
+          75.51101930142042,
+          -287.0368978175458
+        ],
+        [
+          74.69081216642806,
+          -285.22746133747114
+        ],
+        [
+          73.96217593534317,
+          -285.5577479444512
+        ],
+        [
+          74.78238307033553,
+          -287.3671844245259
+        ]
+      ],
+      "bottom_m": 1.851459986800996,
+      "top_m": 2.702547804872941,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-087",
+      "polygon_xy_m": [
+        [
+          74.69081531590783,
+          -285.22746828562833
+        ],
+        [
+          73.86513353924364,
+          -283.40586196051726
+        ],
+        [
+          73.13649100919922,
+          -283.7361346711829
+        ],
+        [
+          73.9621727858634,
+          -285.557740996294
+        ]
+      ],
+      "bottom_m": 1.8825478048729412,
+      "top_m": 2.7336220780952516,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-088",
+      "polygon_xy_m": [
+        [
+          73.86513353924364,
+          -283.40586196051726
+        ],
+        [
+          73.03945176257945,
+          -281.5842556354062
+        ],
+        [
+          72.31080923253502,
+          -281.91452834607185
+        ],
+        [
+          73.13649100919922,
+          -283.7361346711829
+        ]
+      ],
+      "bottom_m": 1.9136220780952515,
+      "top_m": 2.7649851541113817,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    },
+    {
+      "id": "jeddah-early-left-floor-089",
+      "polygon_xy_m": [
+        [
+          73.03945176257945,
+          -281.5842556354062
+        ],
+        [
+          72.21376998591528,
+          -279.7626493102951
+        ],
+        [
+          71.48512745587085,
+          -280.09292202096077
+        ],
+        [
+          72.31080923253502,
+          -281.91452834607185
+        ]
+      ],
+      "bottom_m": 1.9449851541113816,
+      "top_m": 2.7968352716245395,
+      "source_note": "Cosmetic Ground/Runoff only below the narrow wall footing; preserve Road, original protection and all structures."
+    }
+  ],
+  "source_proof": {
+    "reference": "Saved/Refs/jeddah.mp4",
+    "frames_s": [
+      608,
+      609,
+      610,
+      611
+    ],
+    "native_road_sha256": "70849f9d49ba639751a0f16f3c665e7f07ba00f92a7eb5e1b1e448488e1783ee",
+    "minimum_left_wall_to_legal_road_m": 0.5000754166887741,
+    "left_join_distance_m": 180,
+    "bridge_distance_m": 124,
+    "first_last_wall_points": [
+      [
+        126.58864673234226,
+        -451.02145719767327,
+        3.0161727807185823
+      ],
+      [
+        71.84944872089307,
+        -279.92778566562794,
+        2.7768352716245395
+      ]
+    ],
+    "early_critique": "build/reviews/jeddah-clearance-20261118/candidate1-pit-entry-source-crosscheck.md"
+  },
+  "source_road_sha256": "70849f9d49ba639751a0f16f3c665e7f07ba00f92a7eb5e1b1e448488e1783ee",
+  "source_sections_sha256": "509b63f1cb62e73ff6bb2ef6076219c0f8e3c51495450be37adb718d2aa64658"
+}

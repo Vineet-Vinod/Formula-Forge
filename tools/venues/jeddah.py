@@ -51,7 +51,9 @@ def circuit_edges(scene: CircuitScene) -> None:
         (4050, 4250, "PanelJeddahMsc"),
         (4250, 4450, "PanelJeddahLV"),
         (4450, 5210, "PanelJeddahCrypto"),
-        (5210, 6009, "PanelJeddahAramco"),
+        (5210, 5705, "PanelJeddahAramco"),
+        (5705, 5855, "PanelStc"),
+        (5855, 6009, "PanelJeddahAramco"),
         (6009, 6174, "PanelJeddahAramco"),
     ):
         for side in (-1, 1):
@@ -88,7 +90,7 @@ def build_venue(scene: CircuitScene) -> None:
     for start, end, side, setback, spacing, palm in (
         (400, 1200, -1, 11, 52, True),
         (1350, 1650, 1, 14, 52, True),
-        (1650, 1850, 1, 8, 24, False),
+        (1650, 1850, 1, 8, 19, False),
         (1850, 2200, 1, 14, 52, True),
         (2250, 2800, -1, 13, 52, True),
         (2335, 2560, 1, 9, 30, True),

@@ -53,55 +53,60 @@ def palm(scene: MeshScene, base: Point, height: float, seed: int) -> None:
         branch(scene, trunk(t0), add(trunk(t0), (0., 0., .055)),
                r0 + .018, r0, "JeddahPalmBarkLight", 12)
     crown = trunk(1)
-    # Successive frond whorls have different rise, reach and droop.
-    for ring, count, reach, rise, drop in ((0, 11, 3.9, .45, 2.45),
-                                         (1, 13, 3.7, 1.75, 1.0),
-                                         (2, 9, 2.65, 2.25, -.15)):
-        for index in range(count):
-            angle = phase + (index + ring * .37) * math.tau / count + rng.uniform(-.12, .12)
-            along = math.cos(angle), math.sin(angle), 0.
-            across = -along[1], along[0], 0.
-            length = reach * rng.uniform(.85, 1.12)
-            start = add(crown, (0., 0., ring * .15))
+    # Golden-angle phyllotaxis blends hanging old fronds into the upright heart.
+    for index in range(57):
+        age = index / 56
+        reach = 4.0 - 1.6 * age * age
+        rise = .55 + 2.0 * age
+        drop = .10 + 2.8 * (1 - age) ** 1.5
+        angle = phase + index * 2.3999632297 + rng.uniform(-.08, .08)
+        along = math.cos(angle), math.sin(angle), 0.
+        across = -along[1], along[0], 0.
+        length = reach * rng.uniform(.85, 1.12)
+        start = add(crown, (0., 0., age * .35))
+        sway = rng.uniform(-.22, .22)
 
-            def rachis(t: float, start: Point = start, along: Point = along,
-                       length: float = length, rise: float = rise, drop: float = drop) -> Point:
-                return add(start, add(mul(along, length * t),
-                                      (0., 0., rise * math.sin(math.pi * t * .8) - drop * t * t)))
+        def rachis(t: float, start: Point = start, along: Point = along,
+                   length: float = length, rise: float = rise, drop: float = drop,
+                   sway: float = sway, across: Point = across) -> Point:
+            return add(start, add(mul(along, length * t),
+                                  add(mul(across, sway * math.sin(math.pi * t)),
+                                      (0., 0., rise * math.sin(math.pi * t * .8) - drop * t * t))))
 
-            for section in range(12):
-                t0, t1 = section / 12, (section + 1) / 12
-                branch(scene, rachis(t0), rachis(t1), .026 * (1 - .8 * t0),
-                       .026 * (1 - .8 * t1), "JeddahPalmLeaf", 6)
-            for pair in range(21):
-                t = .13 + pair / 21 * .84
-                span = (.12 + .76 * math.sin(math.pi * t) ** .7) * rng.uniform(.85, 1.10)
-                for side in (-1, 1):
-                    root = rachis(t + rng.uniform(-.009, .009))
-                    tip = add(root, add(mul(across, side * span),
-                                        add(mul(along, span * .34), (0., 0., -span * .28))))
-                    material = ("JeddahPalmLeaf", "JeddahPalmLeafLight", "JeddahPalmLeafShade")[(index + pair + ring) % 3]
-                    leaflet(scene, root, tip, .028 + .02 * math.sin(math.pi * t), material)
-
+        for section in range(12):
+            t0, t1 = section / 12, (section + 1) / 12
+            branch(scene, rachis(t0), rachis(t1), .026 * (1 - .8 * t0),
+                   .026 * (1 - .8 * t1), "JeddahPalmLeaf", 6)
+        for pair in range(25):
+            t = .13 + pair / 25 * .84
+            span = (.12 + .76 * math.sin(math.pi * t) ** .7) * rng.uniform(.85, 1.10)
+            for side in (-1, 1):
+                root = rachis(t + rng.uniform(-.009, .009))
+                roll = .45 * math.sin(t * math.pi * 2 + angle)
+                tip = add(root, add(mul(across, side * span),
+                                    add(mul(along, span * .34),
+                                        (0., 0., span * (.35 - .7 * t + side * roll)))))
+                material = ("JeddahPalmLeaf", "JeddahPalmLeafLight", "JeddahPalmLeafShade")[(index + pair) % 3]
+                leaflet(scene, root, tip, .028 + .02 * math.sin(math.pi * t), material)
 
 def broadleaf(scene: MeshScene, base: Point, height: float, seed: int) -> None:
     rng = random.Random(seed)
     fork = add(base, (0., 0., height * .40))
     branch(scene, base, fork, .20, .13, sides=12)
     crown_center = add(base, (0., 0., height * .69))
-    crown_radius = height * .31
-    for cluster in range(25):
+    crown_radius = height * .38
+    for cluster in range(37):
         angle = cluster * 2.399963 + seed * .19
-        radius = crown_radius * math.sqrt((cluster + .5) / 25) * .78
-        z = height * (.62 + .21 * (1 - radius / crown_radius)) + rng.uniform(-.045, .045) * height
+        radius = crown_radius * math.sqrt((cluster + .5) / 37) * .78
+        z = height * (.50 + .30 * (1 - (radius / crown_radius) ** 2) ** .5) + rng.uniform(-.075, .075) * height
         center = add(base, (math.cos(angle) * radius, math.sin(angle) * radius, z))
         if cluster < 8:
             branch(scene, fork, center, .075, .018, sides=7)
         column, row = (2, 5)[cluster % 2], (seed + cluster) % 3
         u0, u1 = (column + .02) / 6, (column + .98) / 6
         v0, v1 = (row + .02) / 6, (row + .98) / 6
-        width = height * rng.uniform(.22, .30)
-        tall = width * rng.uniform(.85, 1.15)
+        width = height * rng.uniform(.25, .37)
+        tall = width * rng.uniform(.95, 1.30)
         for plane in range(3):
             heading = angle + plane * math.pi / 3
             axis = math.cos(heading), math.sin(heading), 0.

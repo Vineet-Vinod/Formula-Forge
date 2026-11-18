@@ -36,7 +36,8 @@ def fixture_site(scene: CircuitScene) -> FixtureSite:
     overlay = build_overlay(load_recipe(escape), scene.road, [],
                             scene.provenance.route.uniform_scale, occupied=[])
     strips.extend(Polygon([face.a[:2], face.b[:2], face.c[:2]]) for face in overlay.paving)
-    paving = unary_union([scene.corridor_mask, scene.road_mask.buffer(.96), *strips])
+    paving = unary_union([scene.corridor_mask, scene.road_mask.buffer(.96),
+                          unary_union(strips).buffer(.5)])
     forbidden = unary_union([
         paving.buffer(.6),
         *(Polygon(building.ring).buffer(.6) for building in scene.buildings),

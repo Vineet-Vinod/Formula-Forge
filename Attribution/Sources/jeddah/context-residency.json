@@ -9,7 +9,7 @@
         -40714.977207666736,
         50.0,
         106287.15820916537,
-        -5720.239565900216,
+        -5615.655565088001,
         26770.0
       ]
     },
@@ -36,7 +36,7 @@
         0.0,
         0.0,
         0.0,
-        -20.197874077587585,
+        104.58400081221498,
         0.0
       ],
       "Building_City_01_m3": [
@@ -67,8 +67,8 @@
           {
             "tile": "Building_City_00_m3",
             "north_margin_m": 1000,
-            "maximum_potential_view_distance_m": 1739.592905354663,
-            "maximum_whole_pose_route_distance_m": 1757.776864146315,
+            "maximum_potential_view_distance_m": 1739.3840004166868,
+            "maximum_whole_pose_route_distance_m": 1757.593979107074,
             "unloaded_potential_view_frames": []
           },
           {
@@ -90,8 +90,8 @@
           {
             "tile": "Building_City_00_m3",
             "north_margin_m": 1000,
-            "maximum_potential_view_distance_m": 1739.592905354663,
-            "maximum_whole_pose_route_distance_m": 1757.7765651345587,
+            "maximum_potential_view_distance_m": 1739.3840004166868,
+            "maximum_whole_pose_route_distance_m": 1757.5937671771137,
             "unloaded_potential_view_frames": []
           },
           {
@@ -113,8 +113,8 @@
           {
             "tile": "Building_City_00_m3",
             "north_margin_m": 1000,
-            "maximum_potential_view_distance_m": 1739.592905354663,
-            "maximum_whole_pose_route_distance_m": 1757.7765651345587,
+            "maximum_potential_view_distance_m": 1739.3840004166868,
+            "maximum_whole_pose_route_distance_m": 1757.5937671771137,
             "unloaded_potential_view_frames": []
           },
           {
@@ -131,7 +131,7 @@
       {
         "tile": "Building_City_00_m3",
         "current_road_samples": 8192,
-        "maximum_distance_m": 1753.9242949378136,
+        "maximum_distance_m": 1753.740615915604,
         "station_m": 2294.14746
       },
       {
@@ -141,8 +141,8 @@
         "station_m": 2300.17676
       }
     ],
-    "proof": "build/reviews/jeddah-clearance-20261118/residency/diagnosis.json",
-    "proof_sha256": "17161f1315b087b06dd79729e94f3bedb488b4665b090d4754c1ebcc992ea105",
+    "proof": "build/reviews/jeddah-clearance-20261118/residency3/diagnosis.json",
+    "proof_sha256": "4745b9125c4dd30d7a3f8ea8ac979b7a01f4862da59fa3ac8575e8b634ce1eba",
     "scope_note": "Three recorded pose packets and all8192 road samples retain the same1000/1300m bounds extensions and1800/2050m hysteresis. No potentially visible unloaded poses. Fresh native capture remains required."
   }
 }

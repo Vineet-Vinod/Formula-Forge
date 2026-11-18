@@ -69,3 +69,23 @@ def test_pit_service_width_and_fixed_personnel_edge() -> None:
             assert section.half_width == expected
         assert section.positive_extent == section.half_width
         assert section.negative_extent >= section.half_width
+
+
+def test_early_pit_wall_and_footings_preserve_every_racing_arm(scene: CircuitScene) -> None:
+    from shapely.geometry import LineString
+    from venues.jeddah_early_pit import load_recipe
+    from venues.jeddah_pit_approach import approach_walls
+    from venues.jeddah_pit_approach import load_recipe as approach_recipe
+
+    early = load_recipe(pit_route_source())
+    for record in early.walls:
+        wall = record.barrier
+        body = LineString([(wall.ax, wall.ay), (wall.bx, wall.by)]).buffer(wall.radius)
+        assert body.distance(scene.road_mask) >= .49
+    for face in early.floors:
+        assert Polygon([p[:2] for p in (face.a, face.b, face.c)]).intersection(scene.road_mask).area < 1e-8
+    following = next(w for w in approach_walls(pit_route_source(), approach_recipe()) if w.side < 0).barrier
+    last = early.walls[-1].barrier
+    assert (last.bx, last.by) == pytest.approx((following.ax, following.ay), abs=1e-9)
+    for foot in (early.bridge.left, early.bridge.right):
+        assert ShapePoint(foot[:2]).buffer(.16).intersection(scene.road_mask).is_empty

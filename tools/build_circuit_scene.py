@@ -320,6 +320,10 @@ class Importer:
         return material
 
     def material(self, name: str) -> unreal.MaterialInterface:
+        if self.slug == "jeddah" and name == "PanelJeddahPitBridgeStc":
+            from venues.jeddah_early_pit_material import build as bridge_material
+
+            return bridge_material(self.assets)
         if self.slug == "jeddah" and name in (
             "JeddahPalmLeaf", "JeddahPalmLeafLight", "JeddahPalmLeafShade",
             "JeddahPalmBark", "JeddahPalmBarkLight", "JeddahTreeCanopy",

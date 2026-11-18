@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=jeddah",
   "tiles": 146,
-  "triangles": 1935807,
+  "triangles": 2762783,
   "road_sha256": "86ac9b9b678308d892ee45f96061bee4ae87afbda9aaf7791eb9bc0166c365e6",
   "terrain_sha256": "a30c782d9e70e53575eaa3a1295d86b00eeca559983b25de642725c36fdfe647",
   "landmarks": [
@@ -211,13 +211,41 @@
     {
       "name": "Reference event panels",
       "start_m": 5210,
-      "end_m": 6009,
+      "end_m": 5705,
       "side": -1,
       "material": "PanelJeddahAramco"
     },
     {
       "name": "Reference event panels",
       "start_m": 5210,
+      "end_m": 5705,
+      "side": 1,
+      "material": "PanelJeddahAramco"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 5705,
+      "end_m": 5855,
+      "side": -1,
+      "material": "PanelStc"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 5705,
+      "end_m": 5855,
+      "side": 1,
+      "material": "PanelStc"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 5855,
+      "end_m": 6009,
+      "side": -1,
+      "material": "PanelJeddahAramco"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 5855,
       "end_m": 6009,
       "side": 1,
       "material": "PanelJeddahAramco"
@@ -483,7 +511,7 @@
       "start_m": 1650,
       "end_m": 1850,
       "side": 1,
-      "count": 9,
+      "count": 11,
       "setback_m": 8,
       "placement": "Video-estimated sparse urban planting; varied crowns and height, all-road, water and property root clearances."
     },

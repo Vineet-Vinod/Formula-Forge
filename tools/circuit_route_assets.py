@@ -134,6 +134,15 @@ def prepare(circuit: str, destination: Path, pit_path: Path | None, escape_path:
         cosmetic_portals.extend(approach_floor_portals(route))
     walkway_rails: set[Barrier] = set()
     if circuit == "jeddah" and route is not None:
+        from venues.jeddah_early_pit import emit_details as early_details
+        from venues.jeddah_early_pit import load_recipe as early_recipe
+
+        early = early_recipe(route)
+        walls = clip_foreign_protection(walls, list(early.portals))
+        portals.extend(early.portals)
+        cosmetic_portals.extend(early.floor_portals)
+        walls.extend(record.barrier for record in early.walls)
+        early_details(scene, early)
         from venues.jeddah_pit_walkway import build_walkway, walkway_recipe
 
         reference = Path(__file__).resolve().parents[1] / "build/circuits/jeddah/barriers.csv"
@@ -199,6 +208,10 @@ def prepare(circuit: str, destination: Path, pit_path: Path | None, escape_path:
             "tools/venues/jeddah_pit_entry_panels.py",
             "tools/venues/jeddah_pit_entry_panels_dataclasses.py",
             "Attribution/Sources/jeddah/pit-personnel-walkway.json",
+            "Attribution/Sources/jeddah/pit-early-corridor.json",
+            "tools/venues/jeddah_early_pit.py",
+            "tools/venues/jeddah_early_pit_dataclasses.py",
+            "tools/venues/jeddah_early_pit_material.py",
             "tools/venues/jeddah_pit_walkway.py",
             "tools/venues/jeddah_pit_walkway_dataclasses.py",
             "build/circuits/jeddah/barriers.csv",

@@ -6,10 +6,13 @@
   "minimum_paving_clearance_m": 0.6013834917243617,
   "source_footing_radius_m": 0.4,
   "proof": "build/circuits/jeddah/furniture-clearance.json",
-  "proof_sha256": "edb064d2d769fc98f974496ae37569b36a9e0d59a3193c84c77f410c8822a4e3",
+  "proof_sha256": "13772357554876d3e09648d20046e48a1187da4748154129cdf9a22fb679001e",
   "main_road_terrain_building_collision_limits_exact": true,
   "other20_generated_venues_exact": true,
-  "geometry_triangles": 1935807,
+  "geometry_triangles": 2762783,
   "original95_nonfield_palette_assets_preserved": true,
-  "review_status": "Source checks passed; native driving appearance and performance pending."
+  "review_status": "Source checks and native import passed. Fresh native visual/driving/performance review pending.",
+  "early_wall_segments": 90,
+  "physical_portals": 49,
+  "cosmetic_portals": 499
 }

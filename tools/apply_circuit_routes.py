@@ -23,6 +23,10 @@ receipts = []
 
 
 def material(prefix: str, slug: str, name: str) -> unreal.MaterialInterface:
+    if slug == 'jeddah' and name == 'PanelJeddahPitBridgeStc':
+        from venues.jeddah_early_pit_material import build
+
+        return build(prefix)
     alias = {'Runoff': 'Lit_Runoff', 'Concrete': 'Lit_Concrete'} if slug == 'lasvegas' else {}
     paths = [prefix + '/Materials/' + alias.get(name, name), prefix + '/Materials/Route_' + name]
     for path in paths:
