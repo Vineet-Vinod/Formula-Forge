@@ -198,3 +198,39 @@ def test_separate_interior_fixture_csv_has_all_bays_and_valid_aim(pits: PitScene
         assert len(values) == 7 and all(math.isfinite(value) for value in values)
         assert values[2] > values[5] + 200
         assert values[6] == detail.interior_light_power
+
+
+def test_service_cylinder_is_closed_round_outward_and_bounded() -> None:
+    import struct
+    from collections import Counter
+
+    from circuit_mesh import MeshScene
+    from venues.jeddah_pit_details import service_cylinder
+
+    scene = MeshScene()
+    service_cylinder(scene, (0.0, 0.0, 0.0), (.25, 0.0, 1.5))
+    edges: Counter[tuple[Point, Point]] = Counter()
+    volume = 0.0
+    for tile in scene.tiles.values():
+        for offset in range(0, len(tile.triangles), 100):
+            material = struct.unpack_from('<I', tile.triangles, offset)[0]
+            if tile.materials[material] != 'Black':
+                continue
+            points = []
+            normals = []
+            for corner in range(3):
+                x, y, z, nx, ny, nz, _u, _v = struct.unpack_from('<8f', tile.triangles, offset + 4 + corner * 32)
+                points.append((-y / 100, -x / 100, z / 100))
+                normals.append((-ny, -nx, nz))
+            a, b, c = points
+            geometric = cross(sub(b, a), sub(c, a))
+            assert sum(geometric[axis] * normals[0][axis] for axis in range(3)) > 0
+            volume += sum(a[axis] * cross(b, c)[axis] for axis in range(3)) / 6
+            for point in points:
+                assert -.15 < point[0] < .4 and -.15 < point[1] < .15 and -.05 < point[2] < 1.55
+            rounded = [tuple(round(value, 6) for value in point) for point in points]
+            for first, last in ((rounded[0], rounded[1]), (rounded[1], rounded[2]), (rounded[2], rounded[0])):
+                edges[(first, last)] += 1
+    assert .05 < volume < .09
+    assert edges
+    assert all(count == edges[(last, first)] for (first, last), count in edges.items())

@@ -14,8 +14,8 @@ def night_environment(directory: Path) -> None:
     payload = bytearray(f"#?RADIANCE\nFORMAT=32-bit_rle_rgbe\n\n-Y {height} +X {width}\n".encode())
     for row in range(height):
         elevation = math.cos(math.pi * (row + .5) / height)
-        horizon = (.013, .016, .028)
-        pole = (.005, .009, .019) if elevation >= 0 else (.003, .005, .006)
+        horizon = (.024, .043, .075)
+        pole = (.010, .022, .046) if elevation >= 0 else (.003, .005, .006)
         blend = abs(elevation) ** .45
         color = tuple(a * (1 - blend) + b * blend for a, b in zip(horizon, pole, strict=True))
         maximum = max(color)

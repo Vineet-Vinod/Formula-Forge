@@ -56,5 +56,14 @@
     "pitwall": "Tenrepresentativemonitorbanks/whiteframes observedacrossfastlanein623s;sourceplacementgatedatleast.20mbeyondunchangedracingRoad+.85mkerb, behindexistingpitseparator. GreenreadoutgeometrysuggestsLCDcontentwithoutinventedteamlogos.",
     "interior_lights": "Separate45row7columnUEcmCSV,power.24initialestimate, positionceil\u2212.16m/depth2.5m,targetbackwall1.4mabovefloor. Rootownsseparatefournearestlightpool;roadpoolunchanged.",
     "checks": "10focusedtestsPASS13.49s;mypy8/RuffPASS. ExplicitS/Fseambay,globalfrontagebounds,allconsoleRaceRoadclearance,carbodyclearance,terrainexclusionand45fixtureaimschema. Retained3776roof/floor/framefacesexact;upperfrontagesareintentionallyreconstructed."
+  },
+  "actual_9ae_garage_refinement": {
+    "observation": "candidate3-scenes/pit-stop/view.jpg hasuniformbright4mWhiteclosure andflatlitceiling; thisisrejectedagainst619\u2013624sdeepopenworkshopappearance.",
+    "source_shape": "Reference619 clearly shows paired leaning dark compressed-air cylinders in a metal carrier beside the pale service casing. This qualifies the fitting type. Dimensions, stations and repeated counts are estimated.",
+    "geometry": "Backing moves from4m to6.5m and uses existing Concrete as a neutral grey approximation. A dark Black soffit at the unchanged4.43m ceiling level, Steel joists and Black service rails replace the broad White surface. The ceiling covers the visible7m workshop depth. An interior service-floor pad and thin Black header inset distinguish the garage opening. The working apron is unchanged.",
+    "static_workshop": "Existingrepresentativeservicebenches/cabinetsmoveagainstnewrearline. Two16-sidedroundedcylinderswithSteelvalvesandcarrieraddedateachrepresentativeteambay, estimated.28mdiameter/1.5mbodyheightand.25mlean. Noanimatedcrew/randomtyreclutter.",
+    "preserved": "Registeredgaragefront/26mfootprint,18.4mupperbody/roof,upperfrontagedetails,pitaxis/4mfastlane/workingfloor,booms,actualLEDpositions,andunchangedRoad.",
+    "lighting": "SameinteriorCSVhook/45fixturepositions/power.24; targetmoveswithbackwallto6.5m. RegenerateCSVwiththecombinedscene; previousprivateCSVpreviewisatprior4mdepthandmustnotbecopiedascurrent.",
+    "checks": "Static mypy3/Ruff and the pure packed-cylinder closure, normals, positive volume and bounds regression pass. Root admitted the final focused source gates after its live captures completed; garage-final-check.log records that result."
   }
 }

@@ -14,32 +14,32 @@
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_00_m1",
       "triangles": 13176,
-      "sha256": "1c024f7e8d4616c6268911ec3e0a55f33b5ec977e909f8a96ec7e3ecaa916897"
+      "sha256": "136ebde63f57be204e25b74b436c0025830b410ed9caaf032809e0bdbe6c6b31"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_00_m2",
       "triangles": 11371,
-      "sha256": "69d5232c3b4dca949a786ec5d1e4a3056af51ae26381aeca98d5a5de373c8742"
+      "sha256": "e158f020aff4f13bae07833c6a2b44ae221df57fb6a63ad7fabc80c63d5aac24"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_00_m4",
       "triangles": 4421,
-      "sha256": "a6b4982b465367303e901e4530dd3a9b9dc9266e4d7fc3b8213fc2927e730061"
+      "sha256": "c6e77b8802c77e90240989e0a86814a1577daf70bb67624ada58d1d183b552e8"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_m1_00",
       "triangles": 25519,
-      "sha256": "24a23be65efb60aa1d4830d489cd162386481afd1a9ea0300c58dcef871d629f"
+      "sha256": "cf02bbd7ab447886aadac98aff914a4a3344da768271835a9bf2456aa5937409"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_m1_01",
       "triangles": 34229,
-      "sha256": "6a612114642d67cf72303236008fa86dffda2036a613b57092a9103bc4561b58"
+      "sha256": "5007d4d312e99762ab5c7e1a4f628e8b70a42aaf420620e5bbbf29926ba26fae"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_m1_m1",
       "triangles": 13568,
-      "sha256": "f5ac103fb8d4b91a5a8b4782215824822ae19f12b3594b9ee1201a78c5eb7e65"
+      "sha256": "3004bfea4fd2eda6e165a224bfbd5c09aba43255f65531bd3ee09b68c924f10b"
     }
   ],
   "pit_architecture_edits": [
@@ -48,7 +48,7 @@
       "source_reconstructed_open_exit": true,
       "recipe_sha256": "4904b9ad17fd44e09ffbb9795afbfc7c32397c3792609ac317f4b25c69a3b2e3",
       "source_reconstruction_sha256": "e18e995658e437cbc4cdc4e9fc8712394b398f3befd082931ff8bbcf6ebaa76c",
-      "imported_source_sha256": "41168477683700cd1def42888343f7b1dbaee4e618e2ae37742d7a1ceffc2d46",
+      "imported_source_sha256": "cf641e117f8034fb0c56e3c1e0c7b72a9e5e71a95b86a923c00aa619a81d2f48",
       "legacy_white_cut_applied": false
     }
   ],

@@ -18,7 +18,18 @@
     "architectural_lights": "Independent fixed facade fixtures, so distant buildings cannot starve or displace the road pool.",
     "directional_fill": 1.6,
     "sky_reflection": "Original generated gradient imported as a native HDR TextureCube; no reference pixels shipped.",
-    "garage_lights": "Four nearest registered interior fixtures in a separate pool, so the working apron and distant road fixtures cannot displace workshop lighting."
+    "garage_lights": "Four nearest registered interior fixtures in a separate pool, so the working apron and distant road fixtures cannot displace workshop lighting.",
+    "sky_linear_horizon": [
+      0.024,
+      0.043,
+      0.075
+    ],
+    "sky_linear_zenith": [
+      0.01,
+      0.022,
+      0.046
+    ],
+    "sky_calibration": "Matched clear sky at normalized(.65,.15) in supplied612/628s is RGB(26,47,76)/(25,46,77); original native sky is(28,52,86). The9ae darkened trial produced(15,22,40) and was rejected. Restore the original gradient; do not reuse an older unmatched49/87/132 reading. These are rendered/video pixel comparisons, not calibrated photometry."
   },
   "vulkan_workaround": {
     "engine_version": "5.8.3-58210709+++UE5+Release-5.8",

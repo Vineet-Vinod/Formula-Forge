@@ -74,9 +74,10 @@ def pit_compound(scene: CircuitScene) -> None:
                         3.9, "Black", "Building_JeddahPitGarageReturns",
                     )
                 scene.quad(
-                    "Building_JeddahPitGarageCeilings", "White",
+                    "Building_JeddahPitGarageCeilings", "Black",
                     a.point(front_a, 4.43), b.point(front_b, 4.43),
-                    b.point(front_b - depth, 4.43), a.point(front_a - depth, 4.43),
+                    b.point(front_b - detail.garage_back_depth_m - .5, 4.43),
+                    a.point(front_a - detail.garage_back_depth_m - .5, 4.43),
                     up=False,
                 )
                 scene.beam(

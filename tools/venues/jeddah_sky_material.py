@@ -1,4 +1,4 @@
-"""A private blue-hour sky material for the floodlit Jeddah scene."""
+"""A private fixed-night sky material for the floodlit Jeddah scene."""
 
 from __future__ import annotations
 
@@ -70,9 +70,9 @@ def build_sky(path: str, recipe_hash: str) -> None:
     connect(clamp, "", power, "Base")
     connect(exponent, "", power, "Exp")
     horizon = editor.create_material_expression(material, unreal.MaterialExpressionConstant3Vector)
-    horizon.constant = unreal.LinearColor(.013, .016, .028)
+    horizon.constant = unreal.LinearColor(.024, .043, .075)
     zenith = editor.create_material_expression(material, unreal.MaterialExpressionConstant3Vector)
-    zenith.constant = unreal.LinearColor(.005, .009, .019)
+    zenith.constant = unreal.LinearColor(.010, .022, .046)
     gradient = editor.create_material_expression(material, unreal.MaterialExpressionLinearInterpolate)
     connect(horizon, "", gradient, "A")
     connect(zenith, "", gradient, "B")

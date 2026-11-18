@@ -3,10 +3,11 @@ from __future__ import annotations
 
 import csv
 import math
+from itertools import pairwise
 from pathlib import Path
 
 from circuit_dataclasses import Point, RoadStation
-from circuit_mesh import world
+from circuit_mesh import MeshScene, add, cross, mul, norm, world
 from circuit_scene import CircuitScene
 from pit_routes_dataclasses import PitSection
 from pydantic import TypeAdapter
@@ -72,12 +73,19 @@ def garage_detail(scene: CircuitScene, a: RoadStation, b: RoadStation, front_a: 
     first = route_section(route, start_station, a.point(front_a))
     last_station = start_station + (b.station - a.station) % scene.length
     last = route_section(route, last_station, b.point(front_b))
+    scene.quad('Building_JeddahPitWorkshopServiceFloor', 'Concrete',
+               pit_floor_point(a, first, front_a - .45, .004),
+               pit_floor_point(b, last, front_b - .45, .004),
+               pit_floor_point(b, last, front_b - detail.garage_back_depth_m, .004),
+               pit_floor_point(a, first, front_a - detail.garage_back_depth_m, .004), up=True)
+    scene.banner(a.point(front_a + .17, 3.90), b.point(front_b + .17, 3.90),
+                 .36, 'Black', 'Building_JeddahPitGarageHeaderInsets')
     bottom_a = pit_floor_point(a, first, front_a - detail.garage_back_depth_m, .08)
     bottom_b = pit_floor_point(b, last, front_b - detail.garage_back_depth_m, .08)
     top_a = a.point(front_a - detail.garage_back_depth_m, detail.garage_ceiling_m)
     top_b = b.point(front_b - detail.garage_back_depth_m, detail.garage_ceiling_m)
-    scene.quad('Building_JeddahPitWorkshopBackwalls', 'White', bottom_a, bottom_b, top_b, top_a)
-    scene.quad('Building_JeddahPitWorkshopBackwalls', 'White', bottom_b, bottom_a, top_a, top_b)
+    scene.quad('Building_JeddahPitWorkshopBackwalls', 'Concrete', bottom_a, bottom_b, top_b, top_a)
+    scene.quad('Building_JeddahPitWorkshopBackwalls', 'Concrete', bottom_b, bottom_a, top_a, top_b)
     for fraction in (0, 1 / 3, 2 / 3, 1):
         sample = scene.at(start_station + (last_station - start_station) * fraction)
         lane = -sample.half_width - 13 - detail.garage_back_depth_m + .04
@@ -87,7 +95,11 @@ def garage_detail(scene: CircuitScene, a: RoadStation, b: RoadStation, front_a: 
         sample = scene.at(start_station + (last_station - start_station) * fraction)
         scene.beam('Building_JeddahPitWorkshopCeilingFrames', 'Steel',
                    sample.point(-sample.half_width - 13.1, detail.garage_ceiling_m - .08),
-                   sample.point(-sample.half_width - 17, detail.garage_ceiling_m - .08), .07, .10)
+                   sample.point(-sample.half_width - 13 - detail.garage_back_depth_m, detail.garage_ceiling_m - .08), .07, .10)
+    for depth in (1.2, 4.8):
+        scene.beam('Building_JeddahPitWorkshopServiceRails', 'Black',
+                   a.point(front_a - depth, detail.garage_ceiling_m - .18),
+                   b.point(front_b - depth, detail.garage_ceiling_m - .18), .10, .14)
     for kind, material, lift, width, depth in (
         ('Building_JeddahPitInteriorLightHousing', 'Steel', -.08, .16, .08),
         ('Building_JeddahPitInteriorLightStrip', 'Lamp', -.13, .10, .025),
@@ -117,13 +129,47 @@ def write_interior_lights(scene: CircuitScene, path: Path) -> None:
 
 
 
+
+def service_cylinder(scene: MeshScene, base: Point, axis_vector: Point) -> None:
+    axis = norm(axis_vector)
+    side = norm(cross(axis, (0.0, 1.0, 0.0)))
+    around = cross(axis, side)
+    rings = ((0.0, .075), (.10, .135), (1.28, .135), (1.40, .085), (1.48, .035))
+    segments = 16
+    for (first_height, first_radius), (last_height, last_radius) in pairwise(rings):
+        slope = (last_radius - first_radius) / (last_height - first_height)
+        for index in range(segments):
+            first_angle, last_angle = math.tau * index / segments, math.tau * (index + 1) / segments
+            radial_a = add(mul(side, math.cos(first_angle)), mul(around, math.sin(first_angle)))
+            radial_b = add(mul(side, math.cos(last_angle)), mul(around, math.sin(last_angle)))
+            a = add(add(base, mul(axis, first_height)), mul(radial_a, first_radius))
+            b = add(add(base, mul(axis, first_height)), mul(radial_b, first_radius))
+            c = add(add(base, mul(axis, last_height)), mul(radial_b, last_radius))
+            d = add(add(base, mul(axis, last_height)), mul(radial_a, last_radius))
+            na, nb = norm(add(radial_a, mul(axis, -slope))), norm(add(radial_b, mul(axis, -slope)))
+            scene.triangle('Building_JeddahPitServiceCylinders', 'Black', a, b, c, normals=(na, nb, nb))
+            scene.triangle('Building_JeddahPitServiceCylinders', 'Black', a, c, d, normals=(na, nb, na))
+    for height, radius, direction in ((0.0, .075, -1), (1.48, .035, 1)):
+        center = add(base, mul(axis, height))
+        for index in range(segments):
+            a = add(center, add(mul(side, radius * math.cos(math.tau * index / segments)),
+                                mul(around, radius * math.sin(math.tau * index / segments))))
+            b = add(center, add(mul(side, radius * math.cos(math.tau * (index + 1) / segments)),
+                                mul(around, radius * math.sin(math.tau * (index + 1) / segments))))
+            if direction < 0:
+                a, b = b, a
+            scene.triangle('Building_JeddahPitServiceCylinders', 'Black', center, a, b)
+    neck = add(base, mul(axis, 1.51))
+    scene.beam('Building_JeddahPitServiceCylinderValves', 'Steel',
+               add(neck, mul(side, -.055)), add(neck, mul(side, .055)), .045)
+
 def equipment_point(section: PitSection, along: float, across: float, lift: float) -> Point:
     return (section.x - section.normal_y * along + section.normal_x * across,
             section.y + section.normal_x * along + section.normal_y * across,
             section.z + section.cross_slope * across + lift)
 
 def pit_workstations(scene: CircuitScene) -> None:
-    profile, route = working_lane_source(), pit_route_source()
+    profile, route, detail = working_lane_source(), pit_route_source(), detail_source()
     consoles = 0
     minimum_clearance = math.inf
     for garage in profile.stop_garage_centres:
@@ -131,7 +177,8 @@ def pit_workstations(scene: CircuitScene) -> None:
         station = profile.start_m + 1.25 + index * profile.bay_spacing_m + (profile.service_gap_m if index >= 21 else 0)
         sample = scene.at(station)
         section = route_section(route, station, sample.point(-sample.half_width - profile.garage_front_offset_m))
-        center = apron_floor_point(scene, route, profile, station, -3.55, .56)
+        cabinet_depth = -detail.garage_back_depth_m + .45
+        center = apron_floor_point(scene, route, profile, station, cabinet_depth, .56)
         heading = math.atan2(sample.ty, sample.tx)
         scene.box('Building_JeddahPitWorkshopCabinets', 'White', center, 2.1, .58, 1.0, heading)
         scene.box('Building_JeddahPitWorkshopCabinetTops', 'Steel',
@@ -140,8 +187,18 @@ def pit_workstations(scene: CircuitScene) -> None:
             first = scene.at(station - .98)
             last = scene.at(station + .98)
             scene.beam('Building_JeddahPitWorkshopDrawerJoints', 'Steel',
-                       apron_floor_point(scene, route, profile, first.station if first.station >= profile.start_m else first.station + scene.length, -3.245, lift),
-                       apron_floor_point(scene, route, profile, last.station if last.station >= profile.start_m else last.station + scene.length, -3.245, lift), .025)
+                       apron_floor_point(scene, route, profile, first.station if first.station >= profile.start_m else first.station + scene.length, cabinet_depth + .305, lift),
+                       apron_floor_point(scene, route, profile, last.station if last.station >= profile.start_m else last.station + scene.length, cabinet_depth + .305, lift), .025)
+        trolley_station = station + 2.0
+        trolley = apron_floor_point(scene, route, profile, trolley_station, -1.1, .10)
+        scene.box('Building_JeddahPitGasTrolleys', 'Steel', trolley, .67, .44, .08, heading)
+        for offset in (-.18, .18):
+            bottle_base = apron_floor_point(scene, route, profile, trolley_station + offset, -1.1, .14)
+            service_cylinder(scene, bottle_base, (-sample.ty * .25, sample.tx * .25, 1.50))
+        for offset in (-.29, .29):
+            foot = apron_floor_point(scene, route, profile, trolley_station + offset, -.93, .06)
+            handle = apron_floor_point(scene, route, profile, trolley_station + offset, -1.36, 1.25)
+            scene.beam('Building_JeddahPitGasTrolleyFrames', 'Steel', foot, handle, .035)
         nx, ny = section.normal_x, section.normal_y
         tx, ty = -ny, nx
 
