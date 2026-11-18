@@ -28,5 +28,14 @@
     ],
     "qualification": "Broad yellow-pixel mask over registered frontage region, not radiometry or identical camera pixels. Final native appearance remains a visual gate."
   },
-  "separator": "Use the existing original PanelJeddahAramco texture with continuous longitudinal UVs. Estimated12m full green/blue cycle,6m per wordmark, plus/minus2m. Retain exact1.1m separator width,8mm lift,white edge and all underlying driving support."
+  "separator": "Use the existing original PanelJeddahAramco texture with continuous longitudinal UVs. Estimated12m full green/blue cycle,6m per wordmark, plus/minus2m. Retain exact1.1m separator width,8mm lift,white edge and all underlying driving support.",
+  "native15_color_study": {
+    "candidate15_median_rgb": [
+      204,
+      181,
+      59
+    ],
+    "scope": "Same broadfrontageROI/mask as14; glyph shapes nowcorrect,butnative15earlyLunaHighreviewstillHOLDontoo-bright/yellowfasciatone."
+  },
+  "native16_correction": "ReduceDHL-onlybounce0.3\u21920.2andincreaseprivatebackgroundblue65\u219285; Salesforceandoriginal89palettestayexact. Thisisaboundedcalibrationstep, notprovennativepassuntilactual16comparison."
 }

@@ -34,7 +34,7 @@ def night_environment(directory: Path) -> None:
 
 def artwork(directory: Path) -> None:
     night_environment(directory)
-    dhl = Image.new("RGB", (1024, 128), (238, 201, 65))
+    dhl = Image.new("RGB", (1024, 128), (238, 201, 85))
     ink = Image.new("L", (500, 180))
     letters = ImageDraw.Draw(ink)
     letters.text((250, 90), "DHL", font=ImageFont.truetype(str(FONT), 140),
@@ -75,6 +75,18 @@ def artwork(directory: Path) -> None:
     drawing.text((634, 128), "salesforce", font=ImageFont.truetype(str(FONT), 104),
                  fill=(246, 249, 255), anchor="mm")
     entry.save(directory / "PanelJeddahEntrySalesforce.png")
+    msc = Image.new("RGB", (1024, 128), (16, 27, 60))
+    drawing = ImageDraw.Draw(msc)
+    rays = []
+    for point in range(32):
+        angle = point * math.tau / 32
+        radius = 54 if point % 4 == 0 else 39 if point % 2 == 0 else 15
+        rays.append((300 + radius * math.sin(angle), 64 + radius * math.cos(angle)))
+    drawing.polygon(rays, fill=(241, 242, 238))
+    drawing.ellipse((290, 54, 310, 74), fill=(16, 27, 60))
+    drawing.text((640, 64), "MSC", font=ImageFont.truetype(str(FONT), 125),
+                 fill=(241, 242, 238), anchor="mm")
+    msc.save(directory / "PanelJeddahMsc.png")
     for distance in (50, 100, 150):
         image = Image.new("RGB", (256, 768), (244, 244, 239))
         draw = ImageDraw.Draw(image)

@@ -1,0 +1,9 @@
+{
+  "reference": "Saved/Refs/jeddah.mp4 direct279/668s",
+  "observed": "MSC compass/wordmark panels onbothwallsaroundthemosque/central-standcorner. Native15LVwordmarksincorrecthere.",
+  "native_station_range_m": [
+    4050,
+    4250
+  ],
+  "qualification": "FiniteobservedT22window, estimatedendpointsplus/minus50m; avoidunverifiedsponsorchangeselsewhere. OriginalcompasspolygonandtypesetMSC, notsource-gamepixels. Original89paletteunchanged; scopednewPanelJeddahMsc material/texture."
+}

@@ -156,7 +156,7 @@ def shade(
             else 0.07
         )
         if raised_panel:
-            strength.r = .3 if name == "PanelDHL" else .6
+            strength.r = .2 if name == "PanelDHL" else .6
         else:
             strength.r *= emissive_scale
         bounce = EDIT.create_material_expression(

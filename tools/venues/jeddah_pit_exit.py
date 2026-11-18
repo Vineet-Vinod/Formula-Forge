@@ -13,6 +13,7 @@ from shapely.geometry import Polygon
 from venues.jeddah_pit_exit_dataclasses import PitExitFrontage, PitExitReconstruction
 from venues.jeddah_pit_exit_geometry import build
 from venues.jeddah_pits import pit_route_source, route_section
+from venues.jeddah_t22_frontage import source_record as t22_source
 
 SOURCE = Path(__file__).resolve().parents[2] / "Attribution/Sources/jeddah/pit-exit-reconstruction.json"
 
@@ -64,7 +65,7 @@ def pit_exit_building(scene: CircuitScene) -> None:
         part for part in available.geoms if isinstance(part, Polygon)
     ]
     for part in parts:
-        build(scene, part, base, detail)
+        build(scene, part, base, detail, t22_source())
     scene.modeled_buildings.add(source.osm_id)
     scene.landmarks.append({
         "name": "Jeddah pit exit open-sky reference variant",

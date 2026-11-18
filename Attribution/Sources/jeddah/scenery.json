@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=jeddah",
   "tiles": 146,
-  "triangles": 1422621,
+  "triangles": 1423493,
   "road_sha256": "86ac9b9b678308d892ee45f96061bee4ae87afbda9aaf7791eb9bc0166c365e6",
   "terrain_sha256": "a30c782d9e70e53575eaa3a1295d86b00eeca559983b25de642725c36fdfe647",
   "landmarks": [
@@ -169,13 +169,27 @@
     {
       "name": "Reference event panels",
       "start_m": 4050,
+      "end_m": 4250,
+      "side": -1,
+      "material": "PanelJeddahMsc"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 4050,
+      "end_m": 4250,
+      "side": 1,
+      "material": "PanelJeddahMsc"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 4250,
       "end_m": 4450,
       "side": -1,
       "material": "PanelJeddahLV"
     },
     {
       "name": "Reference event panels",
-      "start_m": 4050,
+      "start_m": 4250,
       "end_m": 4450,
       "side": 1,
       "material": "PanelJeddahLV"
@@ -285,7 +299,7 @@
       "osm_id": 1257884698,
       "exit_roof_state": "open_sky_reference_variant",
       "source_open_exit_recipe_sha256": "e18e995658e437cbc4cdc4e9fc8712394b398f3befd082931ff8bbcf6ebaa76c",
-      "source_open_exit_module_sha256": "72918fafa8a16ae7e0514ca8d4902001b261f516bd865039692b981ef43c34fc",
+      "source_open_exit_module_sha256": "942efa81e3351b050d52137d9d74a3c8822544946eea15c607a4337856a37e21",
       "original_footprint_m2": 2237.9277795657454,
       "retained_footprint_m2": 2041.6503116395866,
       "removed_eastern_tip_m2": 196.2774679261588,

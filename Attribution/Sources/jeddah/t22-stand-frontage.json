@@ -1,0 +1,22 @@
+{
+  "osm_id": 1257884698,
+  "origin_xy_m": [
+    -127.45821481089091,
+    193.41921027888125
+  ],
+  "outward_xy": [
+    -0.08392397350270184,
+    0.9964721605100254
+  ],
+  "outer_coordinate_m": 10.891042317819,
+  "stand_depth_m": 8,
+  "bay_pitch_m": 4.2,
+  "pier_width_m": 0.55,
+  "arcade_depth_m": 0.65,
+  "arcade_height_m": 4.2,
+  "arch_spring_m": 1.7,
+  "seating_rows": 8,
+  "row_depth_m": 0.75,
+  "row_rise_m": 0.5,
+  "source_note": "Supplied279s and668s forward T22 views both show central stand canopy/open upper seating and pale arched lower pavilion on the bearing of the mapped1257884698 body, with Corniche Mosque to its right. Actual15 packed pixel witnesses500/680/750/800 confirm the two visible dark blocks are this same owner, not separate scenery. Model only its north-facing frontage as an open stand and lower arcade. Keep the literal open-exit/road-cleared2parts and their road gap, old south-facing pit-exit rooms/terraces and roof12.4m. North8m recess,4.2m arcade,4.2m nominal bays/.55m piers, semicircular arches/.65m depth and8seating rows/.75m pitch/.5m rise are architectural estimates, not survey. The source does not register exact seat colors, hidden rooms or occupancy; conservative darkBlue seats and pale supports use existing materials. Roof remains inside original footprint and above all roads only where previous qualified body existed; no bridge over road gap, owner relocation or road/physics/ground changes."
+}
