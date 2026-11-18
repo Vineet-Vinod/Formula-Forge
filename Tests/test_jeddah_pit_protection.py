@@ -138,9 +138,9 @@ def test_prepared_physical_portals_exclude_visual_footing_clips(tmp_path: Path) 
     magic, walls, portals = struct.unpack_from("<8sII", (tmp_path / "pit_barriers.bin").read_bytes())
     assert magic == b"FFBAR2\0\0"
     assert len(route_source().barriers) == 272
-    assert walls == 355 and portals == 30
+    assert walls == 644 and portals == 30
     assert all(tile.name.startswith("Tile_Route_") for tile in assets.tiles)
     assert len(assets.portals) == 30
-    assert len(assets.cosmetic_portals) == 312
+    assert len(assets.cosmetic_portals) == 409
     assert len(json.loads((tmp_path / "portals.json").read_text())["portals"]) == 30
     assert hashlib.sha256((tmp_path / "pit_lane.bin").read_bytes()).hexdigest() == "78b99f8f4b6817776b2161e675561c33ba8d99bc6755eb88b211c78db57a78a4"

@@ -1,0 +1,90 @@
+{
+  "date": "2026-11-18",
+  "scope": "Jeddah workshop light power only",
+  "prior_power": 0.24,
+  "selected_power": 1.0,
+  "source_reference": "Supplied jeddah.mp4 619–624s shows dark garage depth with pale service equipment and visible overhead services. External camera direction differs from forward cockpit; do not add duplicate or shift equipment to imitate its image composition.",
+  "controls": [
+    {
+      "runtime_scale": 4,
+      "effective_power": 0.96,
+      "actual_logged_intensity": 1.728,
+      "view_path": "build/reviews/jeddah-focused-20261118/workshop-calibration12/workshop-scale4/view.jpg",
+      "view_sha256": "b4649dc23c2fc8c8ac7a9ec9962602c43ff02c34b78f7b844ea15e0b0f3cf6d0",
+      "frame_sha256": "5e7b8236fcf3d5a846f1943ae79766547291bea3346548799642aba2748cb0c3",
+      "session_sha256": "6c148d22a257ab0e1266b1e783c4419ec4a0acdee793a857d0c5dcc370b28143",
+      "game_log_sha256": "e4ee3958128a129ec359eeea5e503ee60edba6a11e44e0b0063787389d30940b",
+      "package_pin_sha256": "e3d0d55d8ae7fb77b24d838ae923a9740304c87baa6bb90e9431b1f59c1e88dd",
+      "pose": "pit distance367.508201m, offset−5.375138m, identical camera transform/FOV"
+    },
+    {
+      "runtime_scale": 8,
+      "effective_power": 1.92,
+      "actual_logged_intensity": 3.456,
+      "view_path": "build/reviews/jeddah-focused-20261118/workshop-calibration12/workshop-scale8/view.jpg",
+      "view_sha256": "5715716a7ec1afada72fc4fde1e3f15f1fe85f5b8be6de07378d34c4c1ea0da7",
+      "frame_sha256": "f941a24352c6fe964f7b1dc9774780c9dfb64ffb20f1b15de463a6467a1e84b8",
+      "session_sha256": "3a0e76098c35f3c2e00b8b7292ef0b8fcdbe66e91575853f0e0349fa7d5d02f4",
+      "game_log_sha256": "20826203bbc32dacd3fd593bcc27c31cb788f4a1ead4fec042aaf7fa92dc3033",
+      "package_pin_sha256": "e3d0d55d8ae7fb77b24d838ae923a9740304c87baa6bb90e9431b1f59c1e88dd",
+      "pose": "pit distance367.508201m, offset−5.375138m, identical camera transform/FOV"
+    }
+  ],
+  "reason": "Scale4, equivalent power0.96, modestly improves grey interior surface readability. Scale8, equivalent power1.92, mainly brightens pale backing/floor without resolving actual geometric occlusion. Choose1.0 near the lower proven control; photometric output is an appearance estimate, not surveyed lux.",
+  "roi_mean_luma_8bit": {
+    "backing_baseline_scale4_scale8": [
+      45.807,
+      48.992,
+      52.88
+    ],
+    "garage_floor_baseline_scale4_scale8": [
+      177.934,
+      184.064,
+      190.71
+    ],
+    "next_boom_baseline_scale4_scale8": [
+      190.458,
+      190.456,
+      190.456
+    ],
+    "sky_baseline_scale4_scale8": [
+      52.64,
+      52.64,
+      52.644
+    ]
+  },
+  "preserved_workshop_fixture_count": 45,
+  "preserved_workshop_coordinate_columns_sha256": "81b8b72047994aa0a6e4aae9ab254e18de6b9ae44f720865bc40196a2cee8c21",
+  "preserved_entry_fixture_count": 8,
+  "preserved_entry_power": 3.0,
+  "preserved_entry_csv_sha256": "7c52d9b63a527eed11e885459060673765023f3ebc1479cfff497f8672edc3f3",
+  "geometry": "All source positions/normals/materials, apron and guide heights, booms, equipment, garage depths, road and terrain remain unchanged.",
+  "occlusion_diagnosis": "build/reviews/jeddah-focused-20261118/pit-stop-diagnosis/packed-guide-equipment-audit.json",
+  "limits": "Higher power does not expose off-screen objects, reveal objects behind opaque returns, or light outside the existing spotlight cones. These controls support lighting calibration only; next combined package requires native review.",
+  "roi_boxes_xyxy": {
+    "backing": [
+      240,
+      260,
+      480,
+      410
+    ],
+    "garage_floor": [
+      270,
+      480,
+      430,
+      505
+    ],
+    "next_boom": [
+      730,
+      323,
+      842,
+      336
+    ],
+    "sky": [
+      1000,
+      170,
+      1100,
+      230
+    ]
+  }
+}

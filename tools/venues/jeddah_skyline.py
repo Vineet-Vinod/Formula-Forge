@@ -17,12 +17,12 @@ def skyline_residency(scene: CircuitScene) -> None:
     scene.footprint(source.osm_id)
     tile = scene.tiles[source.tile_name]
     # Source south is positive UE X. Only CSV residency uses these authoring bounds;
-    # the imported mesh still derives its real render bounds from unchanged vertices.
+    # The current construction geometry still supplies the real native render bounds.
     tile.maximum[0] = max(tile.maximum[0], source.actual_baseline_bounds_ue_cm[3] + source.south_margin_m * 100)
     scene.landmarks.append({
         'name': 'Diamond Tower named skyline residency',
         'osm_id': source.osm_id, 'tile': source.tile_name,
         'south_residency_margin_m': source.south_margin_m,
         'source': 'skyline-residency.json',
-        'dimensions_status': 'Only the named tile CSV load/unload envelope extends toward the southern hairpin. Tower geometry, height, construction state, materials, actual UE mesh bounds and the global streaming radii remain unchanged. Exact prior bounds and whole-lap range witnesses are retained in the source record.',
+        'dimensions_status': 'This rule only extends the named tile CSV load/unload envelope toward the southern hairpin; global streaming radii remain unchanged. Current exposed-concrete/luffing-crane geometry is qualified separately in construction-reconstruction.json. Historical baseline bounds and whole-lap range witnesses remain in the residency source record.',
     })

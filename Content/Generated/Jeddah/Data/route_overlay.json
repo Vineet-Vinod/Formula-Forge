@@ -1,13 +1,16 @@
 {
   "version": 1,
   "circuit": "jeddah",
-  "manifest_sha256": "bfa5aff7b84d5b75ead8a0bc723338305af1302968a9c8b6f3ab97806ac6ff32",
+  "manifest_sha256": "a37f60b55ce6a43970d718902b5c006b84369ef5abcc23621c87969fcd6e52ed",
   "source_sha256": {
     "Attribution/Sources/jeddah/pit-lane-reconstruction.json": "2b8a29ff47b1dbfc340db73a3b72c6742d99feb32a4189a5c5f536d848a01dc1",
     "build/reviews/jeddah-focused-20261118/escape-overlay.json": "55ad953ae90658c256207dcf634d2192466838baa994608bd00aec421275cbb9",
     "Attribution/Sources/jeddah/pit-exit-protection.json": "8ccc9c88debb2364c8daac2a079f72512d48172a37b86da2e0ff92463c7cd378",
     "tools/venues/jeddah_pit_protection.py": "0cb350fc0081093701b5cc9d11c848d859836cc117d0960cc3fbbb746b061820",
     "tools/venues/jeddah_pit_protection_dataclasses.py": "d304833de1fce7ba969c1cf87d2587d6cbb36be5fc895c35593d4a662a027257",
+    "Attribution/Sources/jeddah/pit-approach-corridor.json": "a9703a169f9efc0a6320f41d497496b7d21f1d43ca17318756908096e5188aa9",
+    "tools/venues/jeddah_pit_approach.py": "2056db96910a02f0bbb82aa07fa673381ecd109ccffd138642fd7119a9684da6",
+    "tools/venues/jeddah_pit_approach_dataclasses.py": "1945db915dc49af2136509abbfc5df9275649e39d557437e83f86fdca4f49470",
     "Attribution/Sources/jeddah/pit-entry-panels.json": "f30612e70f67f7b1b8a907c86e7837802463ed1e030c3a28908d57dfc27372f2",
     "tools/venues/jeddah_pit_entry_panels.py": "304c63aac1a0bc671bbd8765f05d8d60555d49be69c8f0a8ba47238f140b3cac",
     "tools/venues/jeddah_pit_entry_panels_dataclasses.py": "d39bd38c15c0bb2b886c504579555f479d12e98255d16c5dc2ea8df33637156f",
@@ -15,39 +18,39 @@
     "tools/venues/jeddah_pit_walkway.py": "d95b1c4a939c21a86d52795463ee111089b204e034a3a7507f5f4d560f64b9eb",
     "tools/venues/jeddah_pit_walkway_dataclasses.py": "cbc336c856522da93171d922da5002489f1e82e40265f468f41721428f2d294f",
     "build/circuits/jeddah/barriers.csv": "9ec41d7c83ddaca05875baa4cd0d28b8de602fc07dcd95c09e01409d0c9be89e",
-    "build/circuits/jeddah/manifest.json": "97adbdcdb50dc8c66f7bc3638f9d12fd026e3b1ec4c5ac281fcd89b1525f2935"
+    "build/circuits/jeddah/manifest.json": "37c02e65f48c5564d748b2472dfef9292eab8b39bb1d440c3775db07aa78dbee"
   },
-  "cosmetic_portal_count": 312,
+  "cosmetic_portal_count": 409,
   "native_edits": [
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_00_m1",
-      "triangles": 15361,
-      "sha256": "240da30191ae9ff86ba8ea7e31815f5829b8fd72b8b7a219e8d591adde19c45b"
+      "triangles": 16068,
+      "sha256": "945b5c677021a133737ed8fa3d91a811587c9418ca0e933b55c8deda5c7fd625"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_00_m2",
-      "triangles": 11604,
-      "sha256": "bb056ae8a3de947a739396d69295618c4f8017a7121b986b74e8de14e79d883d"
+      "triangles": 11928,
+      "sha256": "54fd76a7fc4968b03aea68e8f09cdb79c778b97fbf30703092df78832ae6b918"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_00_m4",
-      "triangles": 4728,
-      "sha256": "71319991e8c6bd813e86e227eb8a72928651582d3954e536f97ad3ca1a3629a4"
+      "triangles": 4821,
+      "sha256": "506bd3542232ef5a32981db7129631e4b12d6340f1328b90feef4d5ffe86a681"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_m1_00",
-      "triangles": 27031,
-      "sha256": "5448645e73abaf855c28de10fe51a23ebdac6e2191f59b02aa192de03159e1c2"
+      "triangles": 27209,
+      "sha256": "81d7fb5248d81e80e1c0707ca7c8f64f1467a1533e12eb5f35c6508ccf8bffab"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_m1_01",
-      "triangles": 35020,
-      "sha256": "4f6846a06d4a9b1f7e92ded1cf6d4d093edb00e565bb605b7f535d4f1ab0e6a3"
+      "triangles": 35213,
+      "sha256": "73a553e6ba5e9876ad9625faeebe0726fb8234d286518fa8879abc225665fde3"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_m1_m1",
-      "triangles": 14022,
-      "sha256": "14079f01e4bc1b40559f2e22928d3c4c6f0fef2db19344effa039458af9d8736"
+      "triangles": 14069,
+      "sha256": "3954e446eb13e219c6212a76d30f9bfe09cc912875447e7450d7813e1020a7dc"
     }
   ],
   "pit_architecture_edits": [

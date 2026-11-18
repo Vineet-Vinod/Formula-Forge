@@ -65,7 +65,7 @@ def test_edition_wash_uses_emitted_foundation_and_separate_native_csv(
         assert property_shape.contains(ShapePoint(*light.target[:2]))
         assert math.dist(light.position[:2], light.target[:2]) == pytest.approx(11)
         assert scene.nearest(*light.position[:2])[1] > 50
-        assert light.power == 0.8
+        assert light.power == 3.2
     write_fixtures(scene)
     with (tmp_path / "edition_lights.csv").open() as handle:
         rows = list(csv.DictReader(handle))

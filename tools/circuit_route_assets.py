@@ -122,6 +122,16 @@ def prepare(circuit: str, destination: Path, pit_path: Path | None, escape_path:
             points = triangle.a, triangle.b, triangle.c
             scene.triangle("Tile_Route", triangle.material, *points,
                 uv=tuple((p[0] / 4, p[1] / 4) for p in points))
+    if circuit == "jeddah" and route is not None:
+        from venues.jeddah_pit_approach import (
+            approach_floor_portals,
+            emit_approach_paving,
+            entry_extra_barriers,
+        )
+
+        walls.extend(entry_extra_barriers(route))
+        emit_approach_paving(scene, route)
+        cosmetic_portals.extend(approach_floor_portals(route))
     walkway_rails: set[Barrier] = set()
     if circuit == "jeddah" and route is not None:
         from venues.jeddah_pit_walkway import build_walkway, walkway_recipe
@@ -140,11 +150,17 @@ def prepare(circuit: str, destination: Path, pit_path: Path | None, escape_path:
     street = circuit in {"baku", "jeddah", "monaco", "singapore", "lasvegas", "australia", "canada"}
     emit_protection(scene, [wall for wall in walls if wall not in walkway_rails], street)
     if circuit == "jeddah" and route is not None:
+        from venues.jeddah_pit_approach import (
+            emit_approach_gantry,
+            emit_approach_panels,
+        )
         from venues.jeddah_pit_entry_panels import emit_entry_panels
         from venues.jeddah_pit_protection import emit_panels
 
         emit_panels(scene, route)
         emit_entry_panels(scene, route)
+        emit_approach_panels(scene, route)
+        emit_approach_gantry(scene, route)
     records = []
     for original_name, tile in sorted(scene.tiles.items()):
         name = original_name.replace("Tile_Street", "Tile_Route").replace("Building_City", "Tile_Route_Structure")
@@ -176,6 +192,9 @@ def prepare(circuit: str, destination: Path, pit_path: Path | None, escape_path:
             "Attribution/Sources/jeddah/pit-exit-protection.json",
             "tools/venues/jeddah_pit_protection.py",
             "tools/venues/jeddah_pit_protection_dataclasses.py",
+            "Attribution/Sources/jeddah/pit-approach-corridor.json",
+            "tools/venues/jeddah_pit_approach.py",
+            "tools/venues/jeddah_pit_approach_dataclasses.py",
             "Attribution/Sources/jeddah/pit-entry-panels.json",
             "tools/venues/jeddah_pit_entry_panels.py",
             "tools/venues/jeddah_pit_entry_panels_dataclasses.py",

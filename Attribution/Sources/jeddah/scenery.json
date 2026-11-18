@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=jeddah",
   "tiles": 146,
-  "triangles": 1433616,
+  "triangles": 1437128,
   "road_sha256": "86ac9b9b678308d892ee45f96061bee4ae87afbda9aaf7791eb9bc0166c365e6",
   "terrain_sha256": "a30c782d9e70e53575eaa3a1295d86b00eeca559983b25de642725c36fdfe647",
   "landmarks": [
@@ -307,16 +307,23 @@
       "source_note": "FIA 2025 event notes page 5 locates the T27 outfield staging area at 21\u00b037\u203229.3\u2033N, 39\u00b006\u203223.7\u2033E and photographs the actual two-level framed pavilion beside the race fence. Supplied 289\u2013293 s shows the same pale/glazed corner context before the main-straight exit. The footprint is a reconstruction about 33 m east and 37 m north of that staging control, not an OSM building or survey. Dimensions and current glazing follow the direct visual baseline; the FIA preparation photo shows its exposed frame."
     },
     {
-      "name": "Diamond Tower construction state",
+      "name": "Diamond Tower exposed concrete construction",
       "osm_id": 1244131504,
-      "planned_height_m": 432.0,
-      "rendered_construction_envelope_m": 300.0,
-      "visual_height_uncertainty_m": 80.0,
+      "height_m": 300.0,
+      "height_uncertainty_m": 80.0,
+      "floor_count": 67,
       "base_z_m": 3.2414325320909247,
+      "minimum_floor_area_m2": 547.0704530017306,
+      "maximum_floor_area_m2": 1141.7545679584534,
+      "maximum_plate_outside_footprint_m2": 3.430674443087298e-13,
+      "core_outside_footprint_m2": 0.0,
+      "side_crane_head_relative_m": 42.0,
+      "side_crane_tip_relative_m": 74.33592155403522,
+      "source_note": "Supplied Saved/Refs/jeddah.mp4 at323s, original1920x1080 frame retained as build/reviews/jeddah-focused-20261118/construction-source-draft/reference-0323-full.jpg SHA256 9d8bd2bfaae86934c831aaeec496455c3a56298a9531e34cd67735a7b90856a1, shows substantial exposed concrete shaft faces, repeated projecting concrete floor edges, dark open bays and a lower external luffing crane with cab/counterweight and steep diagonal boom. The top is cropped. The distant165s view establishes unfinished construction silhouette only. Keep OSM1244131504 footprint/registration, adjacent-road site datum and prior300\u00b180m envelope. Floor pitch/count, core18x16m, slab0.48m, column0.9m, 42m crane mast/34m boom at72degrees and crane location are bounded visual estimates, not measured construction dimensions. New floorplates stay clipped to the exact mapped outline. The old roof+23m horizontal crane is unsupported by this close view and replaced by the observed low luffing form. No completed glazing, hidden podium, new road, terrain or lighting/material graph change.",
+      "source": "construction-reconstruction.json",
+      "planned_osm_height_m": 432.0,
       "adjacent_road_station_m": 1878.6968690791568,
-      "state": "Exposed concrete core, open floorplates and columns, partial upper formwork and tower crane; no completed glazing.",
-      "reference": "Jeddah165s wider silhouette and323s cropped close construction view.",
-      "registration": "Mapped footprint retained.300m is a coarse scene estimate from the wider view, not a measured built height.432m/93levels in stale OSM describe the planned tower and are not asserted as its observed completed state. Footprint corner ground2.41\u20133.24m agrees with adjacent road3.24m; use road/site datum rather than adding height to a DSM roof."
+      "state": "Closed exposed concrete slabs/core, open structural bays, formwork and lower luffing crane; no completed glazing or inferred hidden podium."
     },
     {
       "name": "The Jeddah EDITION terraced track frontage",
@@ -366,7 +373,7 @@
       "tile": "Building_City_m1_04",
       "south_residency_margin_m": 600.0,
       "source": "skyline-residency.json",
-      "dimensions_status": "Only the named tile CSV load/unload envelope extends toward the southern hairpin. Tower geometry, height, construction state, materials, actual UE mesh bounds and the global streaming radii remain unchanged. Exact prior bounds and whole-lap range witnesses are retained in the source record."
+      "dimensions_status": "This rule only extends the named tile CSV load/unload envelope toward the southern hairpin; global streaming radii remain unchanged. Current exposed-concrete/luffing-crane geometry is qualified separately in construction-reconstruction.json. Historical baseline bounds and whole-lap range witnesses remain in the residency source record."
     },
     {
       "name": "Sail and Red Sea Mall architectural context",

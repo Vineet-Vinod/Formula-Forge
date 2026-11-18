@@ -1,0 +1,21 @@
+{
+  "osm_id": 1244131504,
+  "height_m": 300,
+  "height_uncertainty_m": 80,
+  "levels": 67,
+  "slab_depth_m": 0.48,
+  "column_width_m": 0.9,
+  "plate_radius_fraction": 0.58,
+  "core_length_m": 18,
+  "core_width_m": 16,
+  "core_rib_depth_m": 0.22,
+  "core_rib_width_m": 0.7,
+  "formwork_levels": 3,
+  "side_crane_height_m": 42,
+  "side_crane_offset_along_m": 23,
+  "side_crane_offset_across_m": -2,
+  "side_crane_jib_m": 34,
+  "side_crane_counter_jib_m": 5,
+  "side_crane_boom_angle_deg": 72,
+  "source_note": "Supplied Saved/Refs/jeddah.mp4 at323s, original1920x1080 frame retained as build/reviews/jeddah-focused-20261118/construction-source-draft/reference-0323-full.jpg SHA256 9d8bd2bfaae86934c831aaeec496455c3a56298a9531e34cd67735a7b90856a1, shows substantial exposed concrete shaft faces, repeated projecting concrete floor edges, dark open bays and a lower external luffing crane with cab/counterweight and steep diagonal boom. The top is cropped. The distant165s view establishes unfinished construction silhouette only. Keep OSM1244131504 footprint/registration, adjacent-road site datum and prior300±80m envelope. Floor pitch/count, core18x16m, slab0.48m, column0.9m, 42m crane mast/34m boom at72degrees and crane location are bounded visual estimates, not measured construction dimensions. New floorplates stay clipped to the exact mapped outline. The old roof+23m horizontal crane is unsupported by this close view and replaced by the observed low luffing form. No completed glazing, hidden podium, new road, terrain or lighting/material graph change."
+}

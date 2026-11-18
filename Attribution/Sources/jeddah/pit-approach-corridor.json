@@ -1,0 +1,67 @@
+{
+  "source_sections_sha256": "1f22d2af78a0fea7ea6a80c05a720d6a2f20c723984df9bc60704dc52235d7ed",
+  "source_encoded_pit_lane_sha256": "78b99f8f4b6817776b2161e675561c33ba8d99bc6755eb88b211c78db57a78a4",
+  "joins": [
+    {
+      "ax": 94.86596189275632,
+      "ay": -318.7895488640067,
+      "bx": 94.27199906862523,
+      "by": -316.89683751409814,
+      "bottom": 1.9933196797414154,
+      "top": 2.9783077435537297,
+      "radius": 0.15
+    },
+    {
+      "ax": 62.60553750462707,
+      "ay": -213.69824286844897,
+      "bx": 62.23825469695967,
+      "by": -211.78470745135076,
+      "bottom": 2.8868,
+      "top": 3.8368,
+      "radius": 0.15
+    }
+  ],
+  "chains": [
+    {
+      "side": 1,
+      "start_m": 137.25688906364877,
+      "end_m": 248.8869979835495,
+      "start_xy_m": [
+        94.27199906862523,
+        -316.89683751409814
+      ],
+      "end_xy_m": [
+        62.60553750462707,
+        -213.69824286844897
+      ],
+      "start_transition_m": 16,
+      "end_transition_m": 12
+    },
+    {
+      "side": -1,
+      "start_m": 180,
+      "end_m": 246
+    }
+  ],
+  "axis_offset_m": 2.35,
+  "radius_m": 0.15,
+  "wall_height_m": 0.95,
+  "footing_embed_m": 0.05,
+  "segment_m": 0.8,
+  "panel_material": "PanelPurple",
+  "panel_height_m": 0.8,
+  "panel_repeat_m": 6.4,
+  "gantry": {
+    "distance_m": 240,
+    "width_m": 5.8,
+    "height_m": 1.45,
+    "clearance_m": 4.8,
+    "post_offset_m": 3.0,
+    "material": "PanelJeddahEntrySalesforce"
+  },
+  "source": "Saved/Refs/jeddah.mp4, continuous 608\u2013614 s; event/game year unverified.",
+  "qualification": "611 s explicitly states 40 m before the 80 km/h limiter and 612 s states 5 m. Retained limiter 268.249 m therefore registers these views at route 228.249 and 263.249 m. 610 to 611 s displays 111 to 85 mph over one second, placing the close chicane near route 184 m with about 5 m uncertainty. Qatar walls on both sides and Salesforce overhead are directly visible. 612 s has no left wall beside the bright lobby, so left protection terminates around 246 m, with 5 m reconstruction uncertainty.",
+  "join_note": "Right chain closes the actual gap between retained route walls 17 and 18 at their literal endpoints, using smooth 16 m and 12 m transitions. The upstream 137\u2013184 m portion is a reconstructed connection, not a surveyed or exact-video endpoint. No old wall, racing boundary, FFPIT3 field, road or pit axis is moved. New top edges blend into the exact retained cap heights at both right joins.",
+  "gantry_note": "Salesforce board at route 240 m, within about 5 m, follows its appearance immediately ahead in 611 s and absence overhead by 612 s. Width, height and 4.8 m clearance are bounded visual estimates; poles remain outside the close walls.",
+  "support_note": "Narrow visual asphalt footing strips tie each unchanged fast-lane edge to the new wall footprint. Extra 0.1 m outward collar covers coarse two-metre support chords beneath dense wall segments. Cosmetic Ground-only clipping is separate from physical portals. No white repaint or native height-field edit. A 0.15 m longitudinal footing cap covers the closed wall ends; it does not move any physical endpoint."
+}

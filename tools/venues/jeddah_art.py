@@ -50,6 +50,14 @@ def artwork(directory: Path) -> None:
         ("PanelJeddahSaudiGP", "#SaudiArabianGP", (14, 16, 17), (244, 245, 239)),
     ):
         sign(directory / (name + ".png"), label, background, foreground, 1024, 256)
+    entry = Image.new("RGB", (1024, 256), (25, 44, 130))
+    drawing = ImageDraw.Draw(entry)
+    for bounds in ((60, 86, 172, 190), (106, 48, 218, 174),
+                   (170, 79, 278, 190), (84, 116, 264, 201)):
+        drawing.ellipse(bounds, fill=(246, 249, 255))
+    drawing.text((634, 128), "salesforce", font=ImageFont.truetype(str(FONT), 104),
+                 fill=(246, 249, 255), anchor="mm")
+    entry.save(directory / "PanelJeddahEntrySalesforce.png")
     for distance in (50, 100, 150):
         image = Image.new("RGB", (256, 768), (244, 244, 239))
         draw = ImageDraw.Draw(image)

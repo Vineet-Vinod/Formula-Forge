@@ -184,6 +184,7 @@ def test_pit_frontage_and_workstations_preserve_main_racing_clearance(pits: PitS
 
 def test_separate_interior_fixture_csv_has_all_bays_and_valid_aim(pits: PitScene, tmp_path: Path) -> None:
     import csv
+    import hashlib
 
     from venues.jeddah_pit_details import (
         detail_source,
@@ -198,6 +199,10 @@ def test_separate_interior_fixture_csv_has_all_bays_and_valid_aim(pits: PitScene
         rows = list(csv.DictReader(stream))
     assert len(rows) == 45
     detail = detail_source()
+    assert detail.interior_light_power == 1.0
+    coordinates = '\n'.join(','.join(row[key] for key in
+                            ('x', 'y', 'z', 'target_x', 'target_y', 'target_z')) for row in rows)
+    assert hashlib.sha256(coordinates.encode()).hexdigest() == '81b8b72047994aa0a6e4aae9ab254e18de6b9ae44f720865bc40196a2cee8c21'
     for row in rows:
         values = [float(value) for value in row.values()]
         assert len(values) == 7 and all(math.isfinite(value) for value in values)
@@ -208,6 +213,8 @@ def test_separate_interior_fixture_csv_has_all_bays_and_valid_aim(pits: PitScene
     with entry_target.open() as stream:
         entry_rows = list(csv.DictReader(stream))
     assert len(entry_rows) == source_record().wing_light_count == 8
+    assert source_record().lobby_light_power == 3.0
+    assert hashlib.sha256(entry_target.read_bytes()).hexdigest() == '7c52d9b63a527eed11e885459060673765023f3ebc1479cfff497f8672edc3f3'
     assert all(float(row["power"]) == source_record().lobby_light_power for row in entry_rows)
     assert all(float(row["z"]) > float(row["target_z"]) + 200 for row in entry_rows)
 

@@ -1,10 +1,15 @@
 {
   "owner_osm_id": 1258744123,
-  "frontage_fractions": [0.12, 0.37, 0.62, 0.87],
+  "frontage_fractions": [
+    0.12,
+    0.37,
+    0.62,
+    0.87
+  ],
   "outward_offset_m": 6.0,
   "height_above_foundation_m": 4.5,
   "target_inset_m": 5.0,
   "target_height_above_foundation_m": 13.5,
-  "power": 0.8,
-  "source_note": "Supplied331.06s and later596s T13 pass show pale horizontal slabs/soffits remaining readable around dark recessed rooms. Four fixed facade washes represent that observed architectural illumination; count, source positions, power and target heights are authoring estimates, not surveyed fixtures. Later596s is lap11 at the asymmetric hotel/Aramco hairpin, independently identified from its silhouette and corner rather than elapsed-time interpolation across edited laps. Neutral-warm colour, cones and attenuation are runtime calibration estimates. No generic emissive windows, new visible fixture meshes, property/ground change or road-light-pool substitution. Foundation height comes from the actual emitted hotel landmark."
+  "power": 3.2,
+  "source_note": "Supplied331.06s and later596s T13 pass show readable pale deck edges, soffits and opaque room divisions around dark recessed terraces. Four fixed facade washes represent that architectural illumination; fixture count, positions, aim and photometry are estimates, not surveyed fixtures. Source596s is the later lap11 hotel/hairpin pass, independently identified from the silhouette and corner rather than interpolated through edited laps. Power3.2 is a controlled local calibration estimate to make the retained facade legible at fixed night. Source positions, targets, four-light count, warm-neutral runtime hue,35m attenuation and existing hotel geometry/materials stay unchanged. Source-nearest road-edge distances52.5\u201376.1m exceed the light radius, excluding the racing surface. No full-window emission or generic bright room panels. Actual night comparison remains required."
 }
