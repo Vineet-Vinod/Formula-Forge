@@ -98,6 +98,30 @@ def test_edition_stays_on_its_property_and_preserves_driving_and_ground_inputs()
         kind == "Building_EditionGlassBalustrades"
         for kind, _material, _points in scene.faces
     )
+    assert all(
+        material not in ("Glass", "WarmGlass")
+        for _kind, material, _points in scene.faces
+    )
+    panes = [
+        points
+        for kind, _material, points in scene.faces
+        if kind == "Building_EditionInsetRoomGlazing"
+    ]
+    backs = [
+        points
+        for kind, _material, points in scene.faces
+        if kind == "Building_EditionSolidRoomBacks"
+    ]
+    assert panes and len(backs) == len(panes)
+    for pane, back in zip(panes, backs, strict=True):
+        normal = cross(sub(pane[1], pane[0]), sub(pane[2], pane[0]))
+        magnitude = math.sqrt(sum(n * n for n in normal))
+        assert all(
+            sum((b - a) * n for a, b, n in zip(front, rear, normal, strict=True))
+            / magnitude
+            < -0.5
+            for front, rear in zip(pane, back, strict=True)
+        )
 
 
 def test_edition_projecting_slabs_have_closed_fascias_and_opposing_edge_directions() -> (

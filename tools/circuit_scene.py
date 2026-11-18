@@ -979,14 +979,15 @@ class CircuitScene(MeshScene):
                         or 4637 < sample.station < 4667
                     )
                 )
+                wall_height = max(0.05, _top - bottom) if self.slug == "jeddah" else 0.95
                 if street or pit_wall:
                     self.beam(
                         "Tile_Barrier",
                         "Concrete",
-                        add(a, (0, 0, 0.47)),
-                        add(b, (0, 0, 0.47)),
+                        add(a, (0, 0, wall_height / 2 if self.slug == "jeddah" else 0.47)),
+                        add(b, (0, 0, wall_height / 2 if self.slug == "jeddah" else 0.47)),
                         radius * 2,
-                        0.94,
+                        wall_height if self.slug == "jeddah" else 0.94,
                     )
                 else:
                     for lift in (0.27, 0.58, 0.88):
@@ -1019,31 +1020,35 @@ class CircuitScene(MeshScene):
                     if reverse:
                         pa, pb = pb, pa
                     # Use continuous wall distance; nearest road stations jump between samples.
-                    pitch = 4.0 if self.slug == "jeddah" and panel.material.startswith("PanelJeddah") else 8.0
+                    pitch = 4.0 if self.slug == "jeddah" and panel.material.startswith("PanelJeddah") and panel.material != "PanelJeddahAramco" else 8.0
                     phase = -(segment_start + segment_length) / pitch if reverse else segment_start / pitch
-                    self.banner(
-                        add(pa, (0, 0, 0.08)),
-                        add(pb, (0, 0, 0.08)),
-                        0.80,
-                        panel.material,
-                        u0=phase,
-                        repeat=segment_length / pitch,
-                    )
+                    panel_rows = max(1, round(wall_height / 0.95)) if self.slug == "jeddah" else 1
+                    for tier in range(panel_rows):
+                        self.banner(
+                            add(pa, (0, 0, 0.08 + tier * 0.95)),
+                            add(pb, (0, 0, 0.08 + tier * 0.95)),
+                            0.80,
+                            panel.material,
+                            u0=phase,
+                            repeat=segment_length / pitch,
+                        )
                     break
-                fence_height = min(2.2, self.fence_ceiling(a, b) - max(a[2], b[2]) - 0.95)
+                fence_height = min(2.2, self.fence_ceiling(a, b) - max(a[2], b[2]) - wall_height)
                 if fence_height > 0:
-                    self.banner(add(a, (0, 0, 0.95)), add(b, (0, 0, 0.95)), fence_height, "Fence")
+                    self.banner(add(a, (0, 0, wall_height)), add(b, (0, 0, wall_height)), fence_height, "Fence")
                 post_distance += math.dist(a, b)
                 if post_distance >= 4:
                     post_distance = 0.0
-                    post_height = min(3.6, self.fence_ceiling(a, add(a, (0.001, 0, 0))) - a[2])
+                    post_top = wall_height + 2.65 if self.slug == "jeddah" else 3.6
+                    post_joint = wall_height + 2.25 if self.slug == "jeddah" else 3.2
+                    post_height = min(post_top, self.fence_ceiling(a, add(a, (0.001, 0, 0))) - a[2])
                     if post_height > 0:
-                        self.beam("Tile_Barrier", "Steel", a, add(a, (0, 0, min(3.2, post_height))), 0.08)
-                    if post_height > 3.2:
+                        self.beam("Tile_Barrier", "Steel", a, add(a, (0, 0, min(post_joint, post_height))), 0.08)
+                    if post_height > post_joint:
                         self.beam(
                             "Tile_Barrier",
                             "Steel",
-                            add(a, (0, 0, 3.2)),
+                            add(a, (0, 0, post_joint)),
                             add(a, (0, 0, post_height)),
                             0.08,
                         )

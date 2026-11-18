@@ -47,6 +47,10 @@ def generate(slug: str) -> None:
     if prefix == "COTA":
         prefix = "Cota"
     walls: list[BarrierSegment] = []
+    if slug == "jeddah":
+        from venues.jeddah_boundary import load_recipe, wall_height
+
+        high_walls = load_recipe().high_walls
     for polygon in polygons:
         for ring in (polygon.exterior, *polygon.interiors):
             if slug == "jeddah":
@@ -73,7 +77,8 @@ def generate(slug: str) -> None:
                         (pa[1] + pb[1]) / 2 - sample.y
                     ) * sample.tx
                     bottom = sample.height(lane)
-                    walls.append((*pa, *pb, bottom, bottom + 0.95, 0.15))
+                    height = wall_height(sample.station, 1 if lane > 0 else -1, high_walls) if slug == "jeddah" else 0.95
+                    walls.append((*pa, *pb, bottom, bottom + height, 0.15))
     openings = load_openings(scene.sources, scene.length)
     walls = filter_barriers(walls, openings, scene.nearest)
     header = f"constexpr TrackBarrier k{prefix}SceneWalls[] = {{\n"

@@ -12,7 +12,8 @@ from shapely.ops import unary_union
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 
-from circuit_dataclasses import Point
+from circuit_dataclasses import Point, TerrainGrid
+from circuit_mesh import cross, sub
 from circuit_scene import CircuitScene
 from venues.jeddah_facilities import pit_compound
 from venues.jeddah_pits import (
@@ -20,6 +21,7 @@ from venues.jeddah_pits import (
     apron_point,
     pit_route_source,
     route_section,
+    working_apron,
     working_lane_source,
 )
 
@@ -114,3 +116,35 @@ def test_exit_variant_closes_retained_body_and_leaves_whole_fastlane_open() -> N
             roofs.append(footprint)
     assert roofs
     assert unary_union(roofs).area == pytest.approx(retained.area, abs=1e-6)
+
+
+def test_working_floor_excludes_actual_terrain_and_keeps_paint_visible() -> None:
+    scene = PitScene()
+    working_apron(scene)
+    floor = unary_union([Polygon([point[:2] for point in face])
+                         for kind, _, face in scene.faces if kind == "Tile_JeddahWorkingApron"])
+    exclusions = unary_union(scene.terrain_cutouts)
+    assert floor.area > 1500
+    assert floor.difference(exclusions).area < 1e-7
+    paint = unary_union([Polygon([point[:2] for point in face]) for kind, _, face in scene.faces
+                         if kind in ("Tile_JeddahWorkingStrip", "Tile_JeddahStopGuides", "Tile_JeddahStopMark")])
+    assert paint.area > 200
+    assert paint.difference(exclusions).area < 1e-7
+    route, source = pit_route_source(), working_lane_source()
+    center = apron_floor_point(scene, route, source, 6150, source.stop_center_from_garage_m)
+    scene.grid = TerrainGrid(center[0] - 12, center[1] - 12, 6, 5, 5, (40.0,) * 25)
+    scene.corridor_mask = Polygon()
+    scene.faces.clear()
+    scene.terrain("Grass")
+    terrain = [Polygon([point[:2] for point in face]) for kind, _, face in scene.faces if kind == "Tile_Ground"]
+    assert terrain
+    assert sum(face.intersection(floor).area for face in terrain) < 1e-6
+
+
+def test_garage_reveals_are_dark_and_ceiling_faces_down(pits: PitScene) -> None:
+    reveals = [(material, face) for kind, material, face in pits.faces
+               if kind == "Building_JeddahPitGarageReturns"]
+    ceilings = [face for kind, _, face in pits.faces if kind == "Building_JeddahPitGarageCeilings"]
+    assert reveals and ceilings
+    assert all(material == "Black" for material, _ in reveals)
+    assert all(cross(sub(face[1], face[0]), sub(face[2], face[0]))[2] < 0 for face in ceilings)

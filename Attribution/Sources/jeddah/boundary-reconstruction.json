@@ -485,5 +485,52 @@
   ],
   "branding_status": "Sponsor families follow visible edited-reference continuity, endpoints estimated approximately30\u201380m. Original typesetting, no copied reference textures. Same family on both sides is an approximation where reverse elevation is not visible; start/pit STC side is independently registered.",
   "first_sequence_artwork": "Original reconstructed white/pink/cyan curved paint treatment with unchanged existing apron planes; not an exact trace of the supplied game artwork. Concrete source area/coverage is in boundary-source-proof.json.",
-  "wall_gap_definition": "Distance from legal white-line edge to barrier centre. Subtract0.15m wall radius for visible/physical inner face; kerbed centre gap1.40m leaves0.16m between the0.95m kerb outer edge and wall inner face."
+  "wall_gap_definition": "Distance from legal white-line edge to barrier centre. Subtract0.15m wall radius for visible/physical inner face; kerbed centre gap1.40m leaves0.16m between the0.95m kerb outer edge and wall inner face.",
+  "high_walls": [
+    {
+      "start_m": 2180,
+      "end_m": 2350,
+      "side": -1,
+      "height_m": 2.85,
+      "source_note": "Actual supplied331 s full image shows stacked sponsor-faced inner T13 protection, roughly three ordinary barrier tiers. Reconstruct2.85m height\u00b10.5m and endpoints\u00b125m, not surveyed. Outer T13 wall remains0.95m; catchfence/posts start above actual new wall. Physical native top and rendered concrete/three0.80m sponsor rows must agree."
+    }
+  ],
+  "branding_corrections": [
+    {
+      "native_m": [
+        2140,
+        2820
+      ],
+      "sides": [
+        -1,
+        1
+      ],
+      "material": "PanelJeddahAramco",
+      "evidence": "Actual331/332s banked T13/exit has alternating blue/green Aramco. Reject former TAG-only coverage across this turn."
+    },
+    {
+      "native_m": [
+        5210,
+        6174
+      ],
+      "sides": [
+        -1,
+        1
+      ],
+      "material": "PanelJeddahAramco",
+      "evidence": "Actual291 and548/552/556s Crypto-to-Aramco final hairpin continuity, then Aramco on pit-opposite main wall. Preserve STC garage-side frontage. Reject former Salesforce T27 guess."
+    },
+    {
+      "native_m": [
+        3750,
+        4050
+      ],
+      "sides": [
+        -1,
+        1
+      ],
+      "material": "PanelJeddahSalesforce",
+      "evidence": "664s shows Salesforce right Green/White bend approaching MSC gantry; native late right bend before T23, endpoints estimated\u00b160m."
+    }
+  ]
 }

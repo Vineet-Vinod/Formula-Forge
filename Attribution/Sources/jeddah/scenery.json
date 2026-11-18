@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=jeddah",
   "tiles": 146,
-  "triangles": 1388763,
+  "triangles": 1393581,
   "road_sha256": "86ac9b9b678308d892ee45f96061bee4ae87afbda9aaf7791eb9bc0166c365e6",
   "terrain_sha256": "a30c782d9e70e53575eaa3a1295d86b00eeca559983b25de642725c36fdfe647",
   "landmarks": [
@@ -38,7 +38,7 @@
       "start_m": 0,
       "end_m": 200,
       "side": 1,
-      "material": "PanelGreen"
+      "material": "PanelJeddahAramco"
     },
     {
       "name": "Reference event panels",
@@ -85,44 +85,44 @@
     {
       "name": "Reference event panels",
       "start_m": 1500,
-      "end_m": 1750,
+      "end_m": 1670,
       "side": -1,
       "material": "PanelJeddahSaudiGP"
     },
     {
       "name": "Reference event panels",
       "start_m": 1500,
-      "end_m": 1750,
-      "side": 1,
-      "material": "PanelJeddahSaudiGP"
-    },
-    {
-      "name": "Reference event panels",
-      "start_m": 1750,
-      "end_m": 2400,
-      "side": -1,
-      "material": "PanelJeddahTag"
-    },
-    {
-      "name": "Reference event panels",
-      "start_m": 1750,
-      "end_m": 2400,
+      "end_m": 1670,
       "side": 1,
       "material": "PanelJeddahTag"
     },
     {
       "name": "Reference event panels",
-      "start_m": 2400,
-      "end_m": 2820,
+      "start_m": 1670,
+      "end_m": 2140,
       "side": -1,
-      "material": "PanelGreen"
+      "material": "PanelJeddahTag"
     },
     {
       "name": "Reference event panels",
-      "start_m": 2400,
+      "start_m": 1670,
+      "end_m": 2140,
+      "side": 1,
+      "material": "PanelJeddahTag"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 2140,
+      "end_m": 2820,
+      "side": -1,
+      "material": "PanelJeddahAramco"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 2140,
       "end_m": 2820,
       "side": 1,
-      "material": "PanelGreen"
+      "material": "PanelJeddahAramco"
     },
     {
       "name": "Reference event panels",
@@ -141,27 +141,41 @@
     {
       "name": "Reference event panels",
       "start_m": 3400,
-      "end_m": 4000,
+      "end_m": 3750,
       "side": -1,
       "material": "PanelNavy"
     },
     {
       "name": "Reference event panels",
       "start_m": 3400,
-      "end_m": 4000,
+      "end_m": 3750,
       "side": 1,
       "material": "PanelNavy"
     },
     {
       "name": "Reference event panels",
-      "start_m": 4000,
+      "start_m": 3750,
+      "end_m": 4050,
+      "side": -1,
+      "material": "PanelJeddahSalesforce"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 3750,
+      "end_m": 4050,
+      "side": 1,
+      "material": "PanelJeddahSalesforce"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 4050,
       "end_m": 4450,
       "side": -1,
       "material": "PanelJeddahLV"
     },
     {
       "name": "Reference event panels",
-      "start_m": 4000,
+      "start_m": 4050,
       "end_m": 4450,
       "side": 1,
       "material": "PanelJeddahLV"
@@ -169,58 +183,30 @@
     {
       "name": "Reference event panels",
       "start_m": 4450,
-      "end_m": 4950,
+      "end_m": 5210,
       "side": -1,
       "material": "PanelJeddahCrypto"
     },
     {
       "name": "Reference event panels",
       "start_m": 4450,
-      "end_m": 4950,
+      "end_m": 5210,
       "side": 1,
       "material": "PanelJeddahCrypto"
     },
     {
       "name": "Reference event panels",
-      "start_m": 4950,
-      "end_m": 5210,
+      "start_m": 5210,
+      "end_m": 6009,
       "side": -1,
-      "material": "PanelJeddahSaudiGP"
-    },
-    {
-      "name": "Reference event panels",
-      "start_m": 4950,
-      "end_m": 5210,
-      "side": 1,
-      "material": "PanelJeddahSaudiGP"
+      "material": "PanelJeddahAramco"
     },
     {
       "name": "Reference event panels",
       "start_m": 5210,
-      "end_m": 5580,
-      "side": -1,
-      "material": "PanelJeddahSalesforce"
-    },
-    {
-      "name": "Reference event panels",
-      "start_m": 5210,
-      "end_m": 5580,
-      "side": 1,
-      "material": "PanelJeddahSalesforce"
-    },
-    {
-      "name": "Reference event panels",
-      "start_m": 5580,
-      "end_m": 6009,
-      "side": -1,
-      "material": "PanelGreen"
-    },
-    {
-      "name": "Reference event panels",
-      "start_m": 5580,
       "end_m": 6009,
       "side": 1,
-      "material": "PanelGreen"
+      "material": "PanelJeddahAramco"
     },
     {
       "name": "Reference event panels",
@@ -234,7 +220,7 @@
       "start_m": 6009,
       "end_m": 6174,
       "side": 1,
-      "material": "PanelGreen"
+      "material": "PanelJeddahAramco"
     },
     {
       "name": "Mapped coastal sea, lagoon and pier decks",
@@ -345,7 +331,7 @@
       "foundation_top_m": 3.400435080379823,
       "roof_above_foundation_m": 24.5,
       "roof_height_uncertainty_m": 4.0,
-      "source": "Supplied331.06s/overview04 establishes the track-facing deep terraces, projecting pale canopy and angled braces. Marriott's original exterior photograph establishes dark occupied facade piers, recessed floor-height windows, closed soffits and glass terrace guards. Its sea-facing lift tower/pergolas are not transferred onto the unregistered track elevation. Tier heights, bay pitches and sections remain architectural estimates; existing24.5m envelope and footprint are retained. New room bays are estimated subordinate detail, not a measured count. No ground, physics, barrier or lighting changes. Full-resolution331.06s also supports dominant pale deck fascias and restrained horizontal front glazing/shade bands. Floor fascia0.62m is an architectural estimate; deck tops stay fixed. Sea-facing curtain panels are omitted from the track facade. Highest canopy occupies an estimated75% of the long frontage,offset toward the positive-u end; its local-u/end assignment follows the native approach orientation and remains estimated. The opposite quarter is an18.28m lower roof terrace with a raised pale triangular end fin. Braces connect6.35\u219212.45m terraces rather than the incorrectold18.5m full-height members. All are visual silhouette estimates from direct331.06s,not survey. Visible braces lean down toward positive-u on the registered approach; exact repetitions/endregistration remain estimated."
+      "source": "Supplied331.06s/overview04 establishes the track-facing deep terraces, projecting pale canopy and angled braces. Marriott's original exterior photograph establishes dark occupied facade piers, recessed floor-height windows, closed soffits and glass terrace guards. Its sea-facing lift tower/pergolas are not transferred onto the unregistered track elevation. Tier heights, bay pitches and sections remain architectural estimates; existing24.5m envelope and footprint are retained. New room bays are estimated subordinate detail, not a measured count. No ground, physics, barrier or lighting changes. Full-resolution331.06s also supports dominant pale deck fascias and restrained horizontal front glazing/shade bands. Floor fascia0.62m is an architectural estimate; deck tops stay fixed. Sea-facing curtain panels are omitted from the track facade. Highest canopy occupies an estimated75% of the long frontage,offset toward the positive-u end; its local-u/end assignment follows the native approach orientation and remains estimated. The opposite quarter is an18.28m lower roof terrace with a raised pale triangular end fin. Braces connect6.35\u219212.45m terraces rather than the incorrectold18.5m full-height members. All are visual silhouette estimates from direct331.06s,not survey. Visible braces lean down toward positive-u on the registered approach; exact repetitions/endregistration remain estimated. Native92341de6T13 capture showed opaque blue genericGlass guards andover-reflective window bands,not source-faithful occupied terraces. Revision2 uses neutral private materials,transparent guards,0.9m glazing reveals with1.8m solid roombacks,broader darkspandrels/piers and0.82m layered deck edges with0.18m soffit/fascia recess. These section dimensions are source-supported architectural estimates from331.06s andthe owner exterior; no exact survey claim or outsideproperty changes."
     },
     {
       "name": "Mapped building",

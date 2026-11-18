@@ -2,8 +2,37 @@
 
 from __future__ import annotations
 
+import hashlib
+from pathlib import Path
+
 import unreal
 from circuit_materials import connect
+
+
+def build_reflection(source: Path, path: str) -> None:
+    library = unreal.EditorAssetLibrary
+    fingerprint = hashlib.sha256(source.read_bytes()).hexdigest()
+    existing = unreal.load_asset(path)
+    if existing is not None and library.get_metadata_tag(existing, "JeddahEnvironmentSource") == fingerprint:
+        return
+    directory, name = path.rsplit("/", 1)
+    task = unreal.AssetImportTask()
+    task.filename = str(source)
+    task.destination_path = directory
+    task.destination_name = name
+    task.factory = unreal.TextureFactory()
+    task.automated = True
+    task.replace_existing = True
+    task.save = True
+    unreal.AssetToolsHelpers.get_asset_tools().import_asset_tasks([task])
+    cube = unreal.load_asset(path)
+    if not isinstance(cube, unreal.TextureCube):
+        raise TypeError("Jeddah's HDR environment must import as a native TextureCube")
+    cube.set_editor_property("srgb", False)
+    cube.set_editor_property("compression_settings", unreal.TextureCompressionSettings.TC_HDR)
+    cube.set_editor_property("max_texture_size", 256)
+    library.set_metadata_tag(cube, "JeddahEnvironmentSource", fingerprint)
+    library.save_loaded_asset(cube)
 
 
 def build_sky(path: str, recipe_hash: str) -> None:
@@ -41,9 +70,9 @@ def build_sky(path: str, recipe_hash: str) -> None:
     connect(clamp, "", power, "Base")
     connect(exponent, "", power, "Exp")
     horizon = editor.create_material_expression(material, unreal.MaterialExpressionConstant3Vector)
-    horizon.constant = unreal.LinearColor(.040, .075, .130)
+    horizon.constant = unreal.LinearColor(.024, .043, .075)
     zenith = editor.create_material_expression(material, unreal.MaterialExpressionConstant3Vector)
-    zenith.constant = unreal.LinearColor(.020, .045, .100)
+    zenith.constant = unreal.LinearColor(.010, .022, .046)
     gradient = editor.create_material_expression(material, unreal.MaterialExpressionLinearInterpolate)
     connect(horizon, "", gradient, "A")
     connect(zenith, "", gradient, "B")

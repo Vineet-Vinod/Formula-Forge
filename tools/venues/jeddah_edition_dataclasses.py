@@ -29,6 +29,11 @@ class EditionDetail:
     facade_bay_m: Positive
     opaque_pier_m: Positive
     glazing_recess_m: Positive
+    room_back_depth_m: Positive
+    window_sill_m: Positive
+    window_head_m: Positive
+    fascia_recess_m: Positive
+    fascia_lip_m: Positive
     balustrade_height_m: Positive
     canopy_span_fraction: tuple[Fraction, Fraction]
     upper_room_span_fraction: tuple[Fraction, Fraction]

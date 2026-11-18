@@ -42,24 +42,25 @@ def circuit_edges(scene: CircuitScene) -> None:
         distance_boards(scene, apex, side)
 
     for start, end, material in (
-        (0, 200, "PanelGreen"),
+        (0, 200, "PanelJeddahAramco"),
         (200, 650, "PanelYellow"),
         (650, 1100, "PanelPurple"),
         (1100, 1500, "PanelJeddahGlobant"),
-        (1500, 1750, "PanelJeddahSaudiGP"),
-        (1750, 2400, "PanelJeddahTag"),
-        (2400, 2820, "PanelGreen"),
+        (1500, 1670, "PanelJeddahSaudiGP"),
+        (1670, 2140, "PanelJeddahTag"),
+        (2140, 2820, "PanelJeddahAramco"),
         (2820, 3400, "PanelJeddahLV"),
-        (3400, 4000, "PanelNavy"),
-        (4000, 4450, "PanelJeddahLV"),
-        (4450, 4950, "PanelJeddahCrypto"),
-        (4950, 5210, "PanelJeddahSaudiGP"),
-        (5210, 5580, "PanelJeddahSalesforce"),
-        (5580, 6009, "PanelGreen"),
-        (6009, 6174, "PanelGreen"),
+        (3400, 3750, "PanelNavy"),
+        (3750, 4050, "PanelJeddahSalesforce"),
+        (4050, 4450, "PanelJeddahLV"),
+        (4450, 5210, "PanelJeddahCrypto"),
+        (5210, 6009, "PanelJeddahAramco"),
+        (6009, 6174, "PanelJeddahAramco"),
     ):
         for side in (-1, 1):
             panel = "PanelStc" if side == -1 and (start == 0 or start == 6009) else material
+            if start == 1500 and side == 1:
+                panel = "PanelJeddahTag"
             scene.branding(start, end, side, panel)
 
 

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import bisect
 import math
+from itertools import pairwise
 from pathlib import Path
 
 from circuit_dataclasses import Point, RoadStation
@@ -110,8 +111,12 @@ def working_apron(scene: CircuitScene) -> None:
         edge_a, edge_b = apron_point(a, first, source, 1), apron_point(b, last, source, 1)
         scene.quad("Tile_JeddahWorkingApron", "JeddahWorkingAsphalt", front_a, front_b, edge_b, edge_a, up=True)
         for points in ((front_a, front_b, edge_b), (front_a, edge_b, edge_a)):
-            scene.surface_shapes.append(Polygon([point[:2] for point in points]))
+            footprint = Polygon([point[:2] for point in points])
+            if footprint.area < 1e-10:
+                continue
+            scene.surface_shapes.append(footprint)
             scene.surface_points.append(points)
+            scene.terrain_cutouts.append(footprint)
         width_a = math.dist(front_a[:2], edge_a[:2])
         width_b = math.dist(front_b[:2], edge_b[:2])
         if min(blend_a, blend_b) < 1:
@@ -148,11 +153,22 @@ def working_apron(scene: CircuitScene) -> None:
                    apron_floor_point(scene, route, source, station + 1.55, source.stop_center_from_garage_m + source.stop_half_width_m, .012), up=True)
         anchor = station - source.stop_half_length_m - .5
         base = apron_floor_point(scene, route, source, anchor, .45)
-        elbow = apron_floor_point(scene, route, source, anchor, .45, source.boom_height_m - .4)
-        shoulder = apron_floor_point(scene, route, source, anchor, .85, source.boom_height_m)
+        radius = source.boom_elbow_radius_m
+        elbow = apron_floor_point(scene, route, source, anchor, .45, source.boom_height_m - radius)
+        members = [base, elbow]
+        for step in range(1, 9):
+            angle = math.pi / 2 * step / 8
+            members.append(apron_floor_point(scene, route, source, anchor,
+                           .45 + radius * (1 - math.cos(angle)),
+                           source.boom_height_m - radius + radius * math.sin(angle)))
         tip = apron_floor_point(scene, route, source, anchor, source.boom_reach_m, source.boom_height_m)
-        for member_start, member_end in ((base, elbow), (elbow, shoulder), (shoulder, tip)):
-            scene.beam("Building_JeddahPitEquipment", "White", member_start, member_end, .24, .3)
+        members.append(tip)
+        for member_start, member_end in pairwise(members):
+            scene.beam("Building_JeddahPitEquipment", "White", member_start, member_end, .20, .28)
+        underside = apron_floor_point(scene, route, source, anchor, .45 + radius,
+                                     source.boom_height_m - .15)
+        scene.beam("Building_JeddahPitEquipment", "Black", underside,
+                   (tip[0], tip[1], tip[2] - .15), .08, .035)
         scene.beam("Building_JeddahPitEquipment", "Black", tip, (tip[0], tip[1], tip[2] - .55), .035)
 
     limiter_signs(scene, route)

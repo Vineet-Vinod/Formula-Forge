@@ -67,6 +67,19 @@
   "reference_limits": "The supplied clip contains edited laps and rear cameras.331.06s is the direct northern hairpin landmark association,not a linear seconds-to-station mapping. Rear271/275s and cut294s do not establish a continuous station chain.",
   "licensing": "Owner photo and suppliedgame video are reference-only. No image pixels,logos or photo-derived textures are copied into native assets. Geometry is original procedural authoring.",
   "source_checks": {
+    "revision": 2,
+    "old_owner_triangles": 20231,
+    "new_owner_triangles": 22985,
+    "new_owner_semantic_sha256": "c71cb2d83dc4e8ae115d394f55ad9fa36f2ea8fcfbd184fa65dbdb5952dec497",
+    "min_packed_source_normal_alignment": 0.9999928027793733,
+    "packed_collapsed_faces": 0,
+    "road_overlap_m2": 0.0,
+    "wall_opaque_fraction": 0.49880805961241825,
+    "proof": "build/reviews/jeddah-focused-20261118/architecture/revision-2/proof.json",
+    "proof_sha256": "8a30577e4ee5683d96abd24b21108e13c5aaab81e0f61a154a11906b13fd3235",
+    "native_appearance_approval": false
+  },
+  "source_checks_previous_revision": {
     "mypy_files": 3,
     "ruff": "PASS",
     "focused_pytest": 3,
@@ -125,5 +138,57 @@
     "proof": "build/reviews/jeddah-focused-20261118/architecture/edition-proof.json",
     "proof_sha256": "f47e0ae986eab2aeb05136d59f574f4d39aa96ce82eff0137e9f74556c78fd42",
     "native_appearance_approval": false
+  },
+  "native_revision_2": {
+    "baseline_package": "92341de6",
+    "baseline_image_sha256": "ffabe488ca75d580ea5b260f06294a9e4f751053b647ee478e5d867d345711c8",
+    "problem": "Native T13 still read as a flat blue glass grid. The genericGlass shader was opaque, including the terrace guards. Thin white divisions dominated the occupied bands. The nativeimage rejected source-only appearance assumptions.",
+    "geometry": "Preserve asymmetrical roof,lowerwing,fin,site and24.5m maximum. Deeper0.9m reveals,1.8m roombacks/returns,wideropaque piers/spandrels,0.82m layered floorfascia with0.18m inset,0.62m canopy. Decktops/base/cutout unchanged. All dimensions remain architectural section estimates.",
+    "private_materials": {
+      "JeddahEditionStone": {
+        "linear_rgb": [
+          0.53,
+          0.5,
+          0.44
+        ],
+        "roughness": 0.85,
+        "emissive": false
+      },
+      "JeddahEditionCharcoal": {
+        "linear_rgb": [
+          0.025,
+          0.024,
+          0.022
+        ],
+        "roughness": 0.88,
+        "emissive": false
+      },
+      "JeddahEditionRoomGlass": {
+        "linear_rgb": [
+          0.014,
+          0.017,
+          0.018
+        ],
+        "roughness": 0.42,
+        "specular": 0.12,
+        "emissive": false
+      },
+      "JeddahEditionGuardGlass": {
+        "linear_rgb": [
+          0.08,
+          0.09,
+          0.09
+        ],
+        "roughness": 0.18,
+        "specular": 0.12,
+        "opacity": 0.12,
+        "blend_mode": "BLEND_TRANSLUCENT",
+        "two_sided": true,
+        "translucency_lighting_mode": "TLM_SURFACE_PER_PIXEL_LIGHTING",
+        "emissive": false
+      }
+    },
+    "material_scope": "Root-owned importer creates only four Editionprivate materials; existing shared/privateGlass,White,otherJeddahbuildings andothercircuits unchanged. No photo-derived bitmap assets.",
+    "runtime_gate": "Fresh same-camera native capture must confirm dark occupied terraces,clear guards andlayered slabs. CPU basecolor/alpha study is not rendered acceptance."
   }
 }

@@ -20,6 +20,7 @@ class PitWorkingLane:
     stop_center_from_garage_m: Positive
     stop_half_width_m: Positive
     stop_half_length_m: Positive
+    boom_elbow_radius_m: Positive
     boom_height_m: Positive
     boom_reach_m: Positive
     stop_garage_centres: tuple[Positive, ...]

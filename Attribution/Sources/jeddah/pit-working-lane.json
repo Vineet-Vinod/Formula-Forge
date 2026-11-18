@@ -22,6 +22,7 @@
     39.5,
     43.5
   ],
-  "source_note": "Supplied Saved/Refs/jeddah.mp4 at613\u2013618s shows blue/green working separator, left open garages and equipment;619\u2013624s shows parallel stopped car and yellow longitudinal stop guides under a white bent equipment boom. Arrangement is directly visible; all widths/heights and booth repetition are explicit estimates. The retained2025 FIA drawing supplies45garage allocation and10team stop centres, while supplied2026 gameplay differs in teams. Keep current280m frontage and source-mapped fast-lane axis pending exact landmark registration. This record does not assert an automatic pitstop, a surveyed apron or final native visual acceptance. A25m apron/support taper outside each garage end is an estimated transition over the visible paved service frontage, not an event-measured line.",
-  "support_taper_m": 25
+  "source_note": "Supplied Saved/Refs/jeddah.mp4 at613\u2013618s shows blue/green working separator, left open garages and equipment;619\u2013624s shows parallel stopped car and yellow longitudinal stop guides under a white bent equipment boom. Arrangement is directly visible; all widths/heights and booth repetition are explicit estimates. The retained2025 FIA drawing supplies45garage allocation and10team stop centres, while supplied2026 gameplay differs in teams. Keep current280m frontage and source-mapped fast-lane axis pending exact landmark registration. This record does not assert an automatic pitstop, a surveyed apron or final native visual acceptance. A25m apron/support taper outside each garage end is an estimated transition over the visible paved service frontage, not an event-measured line. Native stop-view correction: apron floor triangles explicitly exclude higher terrain. Garage reveals are dark andshallow instead ofdeep White partitions; visibleceiling underside androunded.65mboomelbow are estimated from619\u2013624s.",
+  "support_taper_m": 25,
+  "boom_elbow_radius_m": 0.65
 }

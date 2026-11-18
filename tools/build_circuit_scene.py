@@ -27,6 +27,10 @@ PALETTE = {
     "JeddahApronYellow": (.83, .63, .035),
     "JeddahPitSignalGreen": (.04, 8.0, .20),
     "JeddahPitSignalOff": (.015, .006, .006),
+    "JeddahEditionStone": (.53, .50, .44),
+    "JeddahEditionCharcoal": (.025, .024, .022),
+    "JeddahEditionRoomGlass": (.014, .017, .018),
+    "JeddahEditionGuardGlass": (.08, .09, .09),
     "MonacoRuscinoRose": (0.56, 0.36, 0.32),
     "MonacoBruyeresRed": (0.30, 0.035, 0.045),
     "MonacoBruyeresStone": (0.78, 0.72, 0.60),
@@ -164,9 +168,11 @@ class Importer:
             recipe += (ROOT / "tools/venues/jeddah_sky_material.py").read_bytes()
         self.material_hash = hashlib.sha256(recipe).hexdigest()
         if self.slug == "jeddah":
-            from venues.jeddah_sky_material import build_sky
+            from venues.jeddah_sky_material import build_reflection, build_sky
 
             build_sky(self.assets + "/Materials/JeddahNightSky", self.material_hash)
+            build_reflection(self.scratch / "art/JeddahNightReflection.hdr",
+                             self.assets + "/Environment/JeddahNightReflection")
         if self.night:
             self.bounds = tuple(
                 json.loads((self.scratch / "night-field.json").read_text())["bounds"]
@@ -395,6 +401,8 @@ class Importer:
                 material, unreal.MaterialExpressionConstant3Vector
             )
             color.constant = unreal.LinearColor(*PALETTE[name])
+            if self.slug == "jeddah" and name == "Water":
+                color.constant = unreal.LinearColor(.003, .009, .014)
             EDIT.connect_material_property(
                 color, "", unreal.MaterialProperty.MP_BASE_COLOR
             )
@@ -421,6 +429,9 @@ class Importer:
                 roughness.r = 0.94
             if name.startswith("JeddahApron"):
                 roughness.r = .85
+            if name.startswith("JeddahEdition"):
+                roughness.r = {"JeddahEditionStone": .85, "JeddahEditionCharcoal": .88,
+                               "JeddahEditionRoomGlass": .42, "JeddahEditionGuardGlass": .18}[name]
             EDIT.connect_material_property(
                 roughness, "", unreal.MaterialProperty.MP_ROUGHNESS
             )
@@ -432,6 +443,18 @@ class Importer:
                 specular.r = .15
                 EDIT.connect_material_property(specular, "", unreal.MaterialProperty.MP_SPECULAR)
             material.set_editor_property("two_sided", name == "Leaves")
+            if name in ("JeddahEditionRoomGlass", "JeddahEditionGuardGlass"):
+                specular = EDIT.create_material_expression(material, unreal.MaterialExpressionConstant)
+                specular.r = .12
+                EDIT.connect_material_property(specular, "", unreal.MaterialProperty.MP_SPECULAR)
+            if name == "JeddahEditionGuardGlass":
+                material.set_editor_property("blend_mode", unreal.BlendMode.BLEND_TRANSLUCENT)
+                material.set_editor_property("two_sided", True)
+                material.set_editor_property("translucency_lighting_mode",
+                                             unreal.TranslucencyLightingMode.TLM_SURFACE_PER_PIXEL_LIGHTING)
+                opacity = EDIT.create_material_expression(material, unreal.MaterialExpressionConstant)
+                opacity.r = .12
+                EDIT.connect_material_property(opacity, "", unreal.MaterialProperty.MP_OPACITY)
             if name in ("Lamp", "JeddahPitSignalGreen") or (self.night and name == "WarmGlass"):
                 EDIT.connect_material_property(
                     color, "", unreal.MaterialProperty.MP_EMISSIVE_COLOR

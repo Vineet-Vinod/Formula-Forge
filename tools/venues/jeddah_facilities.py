@@ -66,10 +66,16 @@ def pit_compound(scene: CircuitScene) -> None:
                 )
                 for sample, section, lane in ((a, section_a, front_a), (b, section_b, front_b)):
                     scene.banner(
-                        pit_floor_point(sample, section, lane - .2, .15),
-                        pit_floor_point(sample, section, lane - 4, .15),
-                        3.85, "White", "Building_JeddahPitGarageReturns",
+                        pit_floor_point(sample, section, lane - .18, .10),
+                        pit_floor_point(sample, section, lane - .65, .10),
+                        3.9, "Black", "Building_JeddahPitGarageReturns",
                     )
+                scene.quad(
+                    "Building_JeddahPitGarageCeilings", "White",
+                    a.point(front_a, 4.43), b.point(front_b, 4.43),
+                    b.point(front_b - depth, 4.43), a.point(front_a - depth, 4.43),
+                    up=False,
+                )
                 scene.beam(
                     "Building_JeddahPitGarageLintels", "White",
                     a.point(front_a, 4.15), b.point(front_b, 4.15), .3, .55,

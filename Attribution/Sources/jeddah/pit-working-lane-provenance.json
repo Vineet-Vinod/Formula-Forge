@@ -29,5 +29,14 @@
   "plan_sha256": "fdbd4a72211efad4089aadb2efe261f75acfac67cbf8aa9dcd187e0fcbcfb7d0",
   "registration": "Existing280m facade6009\u21926289m with20m longitudinal uncertainty. Local spatial source-pit projection within50m progress window avoids a9\u201310m track_station cross-section phase mismatch. Current route normals are literal source-right; negative extent reaches garage facade. No route axis or main Road edits.",
   "estimates": "All apron-strip/box/boom dimensions, repetition and25m taper.45garage/10team locations follow2025 FIA, supplied gameplay differs in teams; no2026garage roster claim.",
-  "acceptance": "Source arrangement and focused geometry/support gates only. Actual current-package pit camera review remains required."
+  "acceptance": "Source arrangement and focused geometry/support gates only. Actual current-package pit camera review remains required.",
+  "native_stop_view_correction": {
+    "evidence": "candidate-scenes/pit-stop/view.jpg comparedwithsupplied619\u2013624s, especiallyreference0622.",
+    "terrain": "Every nondegenerate authored apron triangle now registers the exact same XY footprint in terrain_cutouts aswellassurface_shapes. Localterrain() regression witha40m sourcefield confirmsnoTerrain trianglecovers theworkingfloor. Paintremains ontheunchangedrouteplane; nofloorlifting.",
+    "garage_reveals": "Replace3.8mdeep White double-sidedreturnplanes with.47mdeep Black reveals. Keep existingthin pale frontageframes anddark4mrecessedinterior.",
+    "ceiling": "Add White underside atadjacentRoad+4.43m facingdown. Root-ownedLEDfixtures atRoad+4.29m remain.14mbelowthatceiling.",
+    "booms": "Estimated.65mradius quarter-roundelbow,8segments; White.20\u00d7.28msection andslimblackunderside. Existing3.1mheight/4.7mreach retained.",
+    "capture_registration": "Previouspitdistance445/offset\u22125.2view wasatRoad6148.63, endofcentralunmarkedservicepassage6132.05\u20136148.55. CorrectFerrari stopboxcamera usespitdistance367.508201/offset\u22125.375138, Road6071.15.",
+    "checks": "7focusedtestspass13.66s;mypy6/Ruffpass;9176upper/framefacets unchanged apartfromexplicitWarmGlass\u2192Glass. Nativecamera review stillrequired."
+  }
 }

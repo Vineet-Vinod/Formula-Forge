@@ -10,7 +10,7 @@ from pydantic import TypeAdapter
 from shapely.geometry import LinearRing, Polygon
 from shapely.geometry.base import BaseGeometry
 
-from venues.jeddah_boundary_dataclasses import BoundaryRecipe
+from venues.jeddah_boundary_dataclasses import BoundaryRecipe, HighWall
 
 if TYPE_CHECKING:
     from circuit_scene import CircuitScene
@@ -22,6 +22,13 @@ def load_recipe() -> BoundaryRecipe:
     return TypeAdapter(BoundaryRecipe).validate_json(
         (ROOT / "Attribution/Sources/jeddah/boundary-reconstruction.json").read_bytes()
     )
+
+
+def wall_height(station: float, side: int, sections: list[HighWall]) -> float:
+    for section in sections:
+        if section.side == side and section.start_m <= station <= section.end_m:
+            return section.height_m
+    return 0.95
 
 
 def usable_ring(ring: LinearRing) -> bool:

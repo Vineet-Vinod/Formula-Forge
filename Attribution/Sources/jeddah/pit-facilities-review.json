@@ -188,6 +188,7 @@
     "source_decisions": [
       "pit-limiter-registration.json",
       "pit-exit-reconstruction.json"
-    ]
+    ],
+    "native_stop_view_fix": "Exact workingfloor terrainexclusion, shallowdarkgaragereveals, downwardWhiteceilings andquarter-roundbooms. Referencepitworkinglane provenance forbounded dimensions andFerrari sourcepose."
   }
 }

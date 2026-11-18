@@ -55,12 +55,17 @@ def raised_fin(scene: MeshScene, frame: EditionFrame, source: EditionDetail) -> 
     front = [point(frame, u, v0, z) for u, z in profile]
     back = [point(frame, u, v1, z) for u, z in profile]
     kind = "Building_EditionRaisedWingFin"
-    scene.triangle(kind, "White", front[0], front[1], front[2])
-    scene.triangle(kind, "White", back[2], back[1], back[0])
+    scene.triangle(kind, "JeddahEditionStone", front[0], front[1], front[2])
+    scene.triangle(kind, "JeddahEditionStone", back[2], back[1], back[0])
     for index in range(3):
         following = (index + 1) % 3
         scene.quad(
-            kind, "White", front[index], back[index], back[following], front[following]
+            kind,
+            "JeddahEditionStone",
+            front[index],
+            back[index],
+            back[following],
+            front[following],
         )
 
 
@@ -71,32 +76,45 @@ def shell(
     top: float,
     thickness: float,
     kind: str,
-    underside: str = "Concrete",
+    source: EditionDetail,
 ) -> None:
-    for triangle in constrained_delaunay_triangles(shape).geoms:
-        uv = list(orient(triangle).exterior.coords)[:3]
-        a, b, c = [point(frame, u, v, top) for u, v in uv]
-        scene.triangle(
-            kind + "Top", "White", a, b, c, tuple((u / 4, v / 4) for u, v in uv)
-        )
-        a, b, c = [point(frame, u, v, top - thickness) for u, v in uv]
-        scene.triangle(
-            kind + "Soffit",
-            underside,
-            c,
-            b,
-            a,
-            tuple((u / 4, v / 4) for u, v in reversed(uv)),
-        )
-    for a, b in pairwise(shape.exterior.coords):
-        scene.quad(
-            kind + "Fascia",
-            "White",
-            point(frame, a[0], a[1], top - thickness),
-            point(frame, b[0], b[1], top - thickness),
-            point(frame, b[0], b[1], top),
-            point(frame, a[0], a[1], top),
-        )
+    inner = shape.buffer(-source.fascia_recess_m, join_style="mitre")
+    if not isinstance(inner, Polygon) or inner.is_empty:
+        raise TypeError("The recessed EDITION slab must retain one closed body")
+    inner = orient(inner)
+    lip_bottom = top - source.fascia_lip_m
+    bottom = top - thickness
+    for surface, level, upward, suffix in (
+        (shape, top, True, "Top"),
+        (shape.difference(inner), lip_bottom, False, "LipSoffit"),
+        (inner, bottom, False, "Soffit"),
+    ):
+        for triangle in constrained_delaunay_triangles(surface).geoms:
+            coordinates = list(orient(triangle).exterior.coords)[:3]
+            if not upward:
+                coordinates.reverse()
+            points = [point(frame, u, v, level) for u, v in coordinates]
+            scene.triangle(
+                kind + suffix,
+                "JeddahEditionStone",
+                points[0],
+                points[1],
+                points[2],
+                tuple((u / 4, v / 4) for u, v in coordinates),
+            )
+    for contour, low, high, suffix in (
+        (shape, lip_bottom, top, "FasciaLip"),
+        (inner, bottom, lip_bottom, "FasciaRecess"),
+    ):
+        for a, b in pairwise(contour.exterior.coords):
+            scene.quad(
+                kind + suffix,
+                "JeddahEditionStone",
+                point(frame, a[0], a[1], low),
+                point(frame, b[0], b[1], low),
+                point(frame, b[0], b[1], high),
+                point(frame, a[0], a[1], high),
+            )
 
 
 def facade_edge(
@@ -133,24 +151,113 @@ def facade_edge(
             point(frame, *first, top),
         )
 
-    sill, lintel = low + 0.32, high - 0.65
-    panel(0, span, low, sill, "Roof", "Building_EditionOpaqueSpandrels")
-    panel(0, span, lintel, high, "Roof", "Building_EditionOpaqueSpandrels")
+    sill, lintel = low + source.window_sill_m, high - source.window_head_m
+    panel(
+        0, span, low, sill, "JeddahEditionCharcoal", "Building_EditionOpaqueSpandrels"
+    )
+    panel(
+        0,
+        span,
+        lintel,
+        high,
+        "JeddahEditionCharcoal",
+        "Building_EditionOpaqueSpandrels",
+    )
     for bay in range(count):
         start, end = span * bay / count, span * (bay + 1) / count
         pier = min(source.opaque_pier_m / 2, (end - start) / 5)
         first, last = start + pier, end - pier
-        panel(start, first, sill, lintel, "Roof", "Building_EditionRoomPiers")
-        panel(last, end, sill, lintel, "Roof", "Building_EditionRoomPiers")
+        panel(
+            start,
+            first,
+            sill,
+            lintel,
+            "JeddahEditionCharcoal",
+            "Building_EditionRoomPiers",
+        )
+        panel(
+            last,
+            end,
+            sill,
+            lintel,
+            "JeddahEditionCharcoal",
+            "Building_EditionRoomPiers",
+        )
         panel(
             first,
             last,
             sill,
             lintel,
-            "Glass",
+            "JeddahEditionRoomGlass",
             "Building_EditionInsetRoomGlazing",
             source.glazing_recess_m,
         )
+        if source.room_back_depth_m <= source.glazing_recess_m:
+            raise ValueError("EDITION room backs must lie behind their glazing")
+        panel(
+            first,
+            last,
+            sill,
+            lintel,
+            "JeddahEditionCharcoal",
+            "Building_EditionSolidRoomBacks",
+            source.room_back_depth_m,
+        )
+        depth_a, depth_b = source.glazing_recess_m, source.room_back_depth_m
+        for distance, reverse in ((first, False), (last, True)):
+            near = point(
+                frame,
+                a[0] + tx * distance - nx * depth_a,
+                a[1] + ty * distance - ny * depth_a,
+                sill,
+            )
+            far = point(
+                frame,
+                a[0] + tx * distance - nx * depth_b,
+                a[1] + ty * distance - ny * depth_b,
+                sill,
+            )
+            vertices = [
+                near,
+                far,
+                (far[0], far[1], frame.base_z + lintel),
+                (near[0], near[1], frame.base_z + lintel),
+            ]
+            if reverse:
+                vertices.reverse()
+            scene.quad(
+                "Building_EditionRoomReturns",
+                "JeddahEditionCharcoal",
+                vertices[0],
+                vertices[1],
+                vertices[2],
+                vertices[3],
+            )
+        for height, reverse in ((sill, False), (lintel, True)):
+            vertices = [
+                point(
+                    frame,
+                    a[0] + tx * distance - nx * depth,
+                    a[1] + ty * distance - ny * depth,
+                    height,
+                )
+                for distance, depth in (
+                    (first, depth_a),
+                    (last, depth_a),
+                    (last, depth_b),
+                    (first, depth_b),
+                )
+            ]
+            if reverse:
+                vertices.reverse()
+            scene.quad(
+                "Building_EditionRoomReturns",
+                "JeddahEditionCharcoal",
+                vertices[0],
+                vertices[1],
+                vertices[2],
+                vertices[3],
+            )
         # Exposed reveals close the recess; the opaque facade is not hidden behind a glass card.
         for distance, reverse in ((first, False), (last, True)):
             u, v = a[0] + tx * distance, a[1] + ty * distance
@@ -172,7 +279,7 @@ def facade_edge(
             quad = outside[0], inside[0], inside[1], outside[1]
             if reverse:
                 quad = quad[3], quad[2], quad[1], quad[0]
-            scene.quad("Building_EditionWindowReveals", "Concrete", *quad)
+            scene.quad("Building_EditionWindowReveals", "JeddahEditionCharcoal", *quad)
         for z, reverse in ((sill, False), (lintel, True)):
             pts = [
                 point(frame, a[0] + tx * d - nx * inset, a[1] + ty * d - ny * inset, z)
@@ -187,7 +294,7 @@ def facade_edge(
                 pts.reverse()
             scene.quad(
                 "Building_EditionWindowReveals",
-                "Concrete",
+                "JeddahEditionCharcoal",
                 pts[0],
                 pts[1],
                 pts[2],
@@ -198,7 +305,7 @@ def facade_edge(
             v = a[1] + ty * distance - ny * (source.glazing_recess_m - 0.025)
             scene.beam(
                 "Building_EditionDoorFrames",
-                "Steel",
+                "JeddahEditionCharcoal",
                 point(frame, u, v, sill),
                 point(frame, u, v, lintel),
                 0.055,
@@ -210,7 +317,7 @@ def facade_edge(
                 inset = source.glazing_recess_m - 0.1
                 scene.beam(
                     "Building_EditionHorizontalSunshades",
-                    "Steel",
+                    "JeddahEditionCharcoal",
                     point(
                         frame,
                         a[0] + tx * first - nx * inset,
@@ -243,7 +350,7 @@ def balustrade(
             )
             scene.beam(
                 "Building_EditionGlassBalustrades",
-                "Glass",
+                "JeddahEditionGuardGlass",
                 point(frame, a[0] + tx * first, a[1] + ty * first, floor + height / 2),
                 point(frame, a[0] + tx * last, a[1] + ty * last, floor + height / 2),
                 0.035,
@@ -251,7 +358,7 @@ def balustrade(
             )
         scene.beam(
             "Building_EditionBalustradeCaps",
-            "Steel",
+            "JeddahEditionCharcoal",
             point(frame, a[0], a[1], floor + height),
             point(frame, b[0], b[1], floor + height),
             0.035,
@@ -274,6 +381,7 @@ def build(scene: MeshScene, frame: EditionFrame, source: EditionDetail) -> None:
             tier.floor_m + 0.28,
             source.slab_thickness_m,
             "Building_EditionOccupiedDeck",
+            source,
         )
         for a, b in pairwise(orient(body).exterior.coords):
             facade_edge(
@@ -298,7 +406,7 @@ def build(scene: MeshScene, frame: EditionFrame, source: EditionDetail) -> None:
                 vertices = [point(frame, u, v, tier.ceiling_m) for u, v in uv]
                 scene.triangle(
                     "Building_EditionClosedRoomRoofs",
-                    "Roof",
+                    "JeddahEditionCharcoal",
                     vertices[0],
                     vertices[1],
                     vertices[2],
@@ -316,7 +424,7 @@ def build(scene: MeshScene, frame: EditionFrame, source: EditionDetail) -> None:
         source.canopy_top_m,
         source.canopy_thickness_m,
         "Building_EditionProjectingCanopy",
-        "Concrete",
+        source,
     )
     left, low, right, high = frame.footprint.bounds
     front = high - 1.1 if frame.facing > 0 else low + 1.1
@@ -324,7 +432,7 @@ def build(scene: MeshScene, frame: EditionFrame, source: EditionDetail) -> None:
     for u in (-width * 0.34, 0.0, width * 0.34):
         scene.beam(
             "Building_EditionAngledWhiteFrame",
-            "White",
+            "JeddahEditionStone",
             point(frame, u + 4, front - frame.facing * 0.2, source.brace_bottom_m),
             point(frame, u - 4, front - frame.facing * 0.2, source.brace_top_m),
             0.7,
@@ -333,7 +441,7 @@ def build(scene: MeshScene, frame: EditionFrame, source: EditionDetail) -> None:
     for u in (roof.bounds[0] + 1.2, roof.bounds[2] - 1.2):
         scene.beam(
             "Building_EditionCanopyColumns",
-            "White",
+            "JeddahEditionStone",
             point(frame, u, front - frame.facing * 0.25, 0.35),
             point(frame, u, front - frame.facing * 0.25, 24.1),
             0.55,

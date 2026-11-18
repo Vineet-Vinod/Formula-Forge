@@ -40,10 +40,10 @@ void AFFJeddahNight::BeginPlay() {
     USkyLightComponent* ambient = sky->GetLightComponent();
     ambient->SetMobility(EComponentMobility::Movable);
     ambient->SourceType = SLS_SpecifiedCubemap;
-    ambient->SetCubemap(LoadObject<UTextureCube>(nullptr, TEXT("/Game/Generated/Environment/Daylight.Daylight")));
+    ambient->SetCubemap(LoadObject<UTextureCube>(nullptr, TEXT("/Game/Generated/Jeddah/Environment/JeddahNightReflection.JeddahNightReflection")));
     ambient->SetRealTimeCapture(false);
-    ambient->SetIntensity(0.55f);
-    ambient->SetLightColor(FLinearColor(0.58f, 0.72f, 1.0f));
+    ambient->SetIntensity(0.80f);
+    ambient->SetLightColor(FLinearColor::White);
     ambient->SetLowerHemisphereColor(FLinearColor(0.025f, 0.035f, 0.05f));
     AStaticMeshActor* dome = world->SpawnActor<AStaticMeshActor>();
     UStaticMeshComponent* sphere = dome->GetStaticMeshComponent();
