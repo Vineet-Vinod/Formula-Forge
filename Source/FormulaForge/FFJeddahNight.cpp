@@ -90,6 +90,9 @@ void AFFJeddahNight::BeginPlay() {
     settings.ScreenSpaceReflectionIntensity = 0;
     FParse::Value(FCommandLine::Get(), TEXT("FFJeddahLightScale="), LightScale);
     LightScale = FMath::IsFinite(LightScale) ? FMath::Clamp(LightScale, 0.0f, 8.0f) : 1.0f;
+    FParse::Value(FCommandLine::Get(), TEXT("FFJeddahGarageScale="), GarageLightScale);
+    GarageLightScale = FMath::IsFinite(GarageLightScale) ? FMath::Clamp(GarageLightScale, 0.0f, 64.0f) : 1.0f;
+    LightAuditRequested = FParse::Param(FCommandLine::Get(), TEXT("FFJeddahLightAudit"));
     LoadFixtures(TEXT("night_lights.csv"), Fixtures);
     for (int32 index = 0; index < FMath::Min(10, Fixtures.Num()); ++index) {
         ASpotLight* fixtureActor = world->SpawnActor<ASpotLight>();
@@ -193,8 +196,13 @@ void AFFJeddahNight::Tick(float deltaSeconds) {
 void AFFJeddahNight::UpdateLights() {
     APlayerController* player = GetWorld()->GetFirstPlayerController();
     const FVector position = player != nullptr ? player->GetFocalLocation() : GetActorLocation();
+    const bool audit = LightAuditRequested && !LightAuditLogged && GetWorld()->GetTimeSeconds() >= 2;
+    if (audit) {
+        UE_LOG(LogTemp, Display, TEXT("JEDDAH_LIGHT_AUDIT observer=%s possessed_pawn=%d"),
+            *position.ToString(), player != nullptr && player->GetPawn() != nullptr);
+    }
     const auto update = [&](const TArray<FFJeddahFixture>& fixtures,
-            const TArray<TObjectPtr<USpotLightComponent>>& lights) {
+            const TArray<TObjectPtr<USpotLightComponent>>& lights, const TCHAR* group, float scale) {
         TArray<int32> ordered;
         ordered.Reserve(fixtures.Num());
         for (int32 index = 0; index < fixtures.Num(); ++index) ordered.Add(index);
@@ -206,9 +214,16 @@ void AFFJeddahNight::UpdateLights() {
             const FFJeddahFixture& fixture = fixtures[ordered[index]];
             lights[index]->SetWorldLocation(fixture.positionCm);
             lights[index]->SetWorldRotation((fixture.targetCm - fixture.positionCm).Rotation());
-            lights[index]->SetIntensity(1.8f * fixture.power * LightScale);
+            lights[index]->SetIntensity(1.8f * fixture.power * LightScale * scale);
+            if (audit) {
+                UE_LOG(LogTemp, Display, TEXT("JEDDAH_LIGHT_AUDIT group=%s source=%d power=%.4f intensity=%.4f distance_cm=%.2f origin=%s target=%s"),
+                    group, ordered[index], fixture.power, lights[index]->Intensity,
+                    FVector::Distance(position, fixture.positionCm),
+                    *fixture.positionCm.ToString(), *fixture.targetCm.ToString());
+            }
         }
     };
-    update(Fixtures, Lights);
-    update(GarageFixtures, GarageLights);
+    update(Fixtures, Lights, TEXT("road"), 1.0f);
+    update(GarageFixtures, GarageLights, TEXT("garage"), GarageLightScale);
+    if (audit) LightAuditLogged = true;
 }
