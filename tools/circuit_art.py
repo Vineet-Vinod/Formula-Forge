@@ -11,7 +11,7 @@ from lasvegas_art import sign
 from PIL import Image
 from venues.jeddah_art import artwork as jeddah_artwork
 from venues.jeddah_edition_lighting import write_fixtures as write_edition_fixtures
-from venues.jeddah_pit_details import write_interior_lights
+from venues.jeddah_pit_details import write_entry_lights, write_interior_lights
 from venues.night_lighting import build_lighting
 
 NIGHT = {"bahrain", "jeddah", "singapore"}
@@ -82,6 +82,7 @@ def artwork(scene: CircuitScene) -> None:
         (data / "night_lights.csv").write_text("\n".join(rows) + "\n")
         write_edition_fixtures(scene)
         write_interior_lights(scene, data / "pit_interior_lights.csv")
+        write_entry_lights(scene, data / "pit_entry_lights.csv")
     minimum_x = min(p[0] for p in lights) - 10000
     minimum_y = min(p[1] for p in lights) - 10000
     width = max(p[0] for p in lights) - minimum_x + 10000

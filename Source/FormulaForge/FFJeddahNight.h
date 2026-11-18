@@ -31,6 +31,7 @@ private:
     TArray<TObjectPtr<USpotLightComponent>> GarageLights;
     float LightScale = 1.0f;
     float GarageLightScale = 1.0f;
+    float EntryLightScale = 1.0f;
     bool LightAuditRequested = false;
     bool LightAuditLogged = false;
     int32 PreviousLightInjection = 1;

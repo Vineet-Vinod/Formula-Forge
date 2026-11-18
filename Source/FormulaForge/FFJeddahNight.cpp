@@ -92,6 +92,8 @@ void AFFJeddahNight::BeginPlay() {
     LightScale = FMath::IsFinite(LightScale) ? FMath::Clamp(LightScale, 0.0f, 8.0f) : 1.0f;
     FParse::Value(FCommandLine::Get(), TEXT("FFJeddahGarageScale="), GarageLightScale);
     GarageLightScale = FMath::IsFinite(GarageLightScale) ? FMath::Clamp(GarageLightScale, 0.0f, 64.0f) : 1.0f;
+    FParse::Value(FCommandLine::Get(), TEXT("FFJeddahEntryScale="), EntryLightScale);
+    EntryLightScale = FMath::IsFinite(EntryLightScale) ? FMath::Clamp(EntryLightScale, 0.0f, 8.0f) : 1.0f;
     LightAuditRequested = FParse::Param(FCommandLine::Get(), TEXT("FFJeddahLightAudit"));
     LoadFixtures(TEXT("night_lights.csv"), Fixtures);
     for (int32 index = 0; index < FMath::Min(10, Fixtures.Num()); ++index) {
@@ -130,6 +132,28 @@ void AFFJeddahNight::BeginPlay() {
         spot->SetCastShadows(false);
         spot->SetWorldLocation(fixture.positionCm);
         spot->SetWorldRotation((fixture.targetCm - fixture.positionCm).Rotation());
+    }
+    TArray<FFJeddahFixture> entryFixtures;
+    LoadFixtures(TEXT("pit_entry_lights.csv"), entryFixtures);
+    for (const FFJeddahFixture& fixture : entryFixtures) {
+        ASpotLight* fixtureActor = world->SpawnActor<ASpotLight>();
+        USpotLightComponent* spot = CastChecked<USpotLightComponent>(fixtureActor->GetLightComponent());
+        spot->SetMobility(EComponentMobility::Movable);
+        spot->bUseInverseSquaredFalloff = false;
+        spot->SetIntensityUnits(ELightUnits::Unitless);
+        spot->LightFalloffExponent = 2.0f;
+        spot->SetAttenuationRadius(1400);
+        spot->SetInnerConeAngle(50);
+        spot->SetOuterConeAngle(80);
+        spot->SetLightColor(FLinearColor(0.94f, 0.97f, 1.0f));
+        spot->SetIntensity(1.8f * fixture.power * EntryLightScale);
+        spot->SetCastShadows(false);
+        spot->SetWorldLocation(fixture.positionCm);
+        spot->SetWorldRotation((fixture.targetCm - fixture.positionCm).Rotation());
+        if (LightAuditRequested) {
+            UE_LOG(LogTemp, Display, TEXT("JEDDAH_LIGHT_AUDIT group=entry fixed=1 power=%.4f intensity=%.4f origin=%s target=%s"),
+                fixture.power, spot->Intensity, *fixture.positionCm.ToString(), *fixture.targetCm.ToString());
+        }
     }
     LoadFixtures(TEXT("pit_interior_lights.csv"), GarageFixtures);
     for (int32 index = 0; index < FMath::Min(4, GarageFixtures.Num()); ++index) {
