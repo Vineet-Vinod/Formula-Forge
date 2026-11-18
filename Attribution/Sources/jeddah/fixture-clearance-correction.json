@@ -13,6 +13,7 @@
   "original95_nonfield_palette_assets_preserved": true,
   "review_status": "Source checks and native import passed. Fresh native visual/driving/performance review pending.",
   "early_wall_segments": 90,
-  "physical_portals": 49,
-  "cosmetic_portals": 499
+  "physical_portals": 54,
+  "cosmetic_portals": 499,
+  "early_entry_separator": "Open painted wedge before Qatar nose replaces unsupported divider; wall caps and panels follow endpoint grades."
 }

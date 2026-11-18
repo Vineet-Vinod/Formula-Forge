@@ -1306,6 +1306,26 @@ baseline and report the measured difference without inventing a universal FPS pa
 
 ## 12. Final acceptance and handoff
 
+Check low furniture against the union of every nearby road arm, kerb, pit lane,
+working apron and escape road. A pole placed outside its anchor station can land
+inside a different section of a folded circuit. Include the footing radius and a
+clearance margin, then inspect the offending pose in the native game. Gantry
+supports must clear the separate pit fast lane as well as the racing surface.
+
+Do not turn a first width estimate into an immutable baseline. Distinguish the
+pit fast lane, garage working apron and personnel sidewalk. Record which edge
+stays fixed when widening a lane. Video can establish those relationships without
+establishing a reliable width in metres. Inspect the complete entry sequence:
+Jeddah's painted separator before the Qatar chicane was incorrectly modeled as a
+continuous wall. Wall caps, panels and privacy screens must follow endpoint
+heights; short horizontal boxes still produce visible steps on a gentle grade.
+
+Review foliage silhouettes at matched driving distances before adding density.
+Jeddah's sparse radial palm crowns needed irregular, drooping pinnate fronds;
+its broadleaf crowns needed lower uneven lobes. More triangles alone did not fix
+either shape. Preserve shared foliage materials and measure the private result
+in an uncapped run without recording readback before claiming a hardware limit.
+
 Do a complete live lap at normal driving pace, then inspect the risky sectors
 again at speed and near their edges. Verify starts, first corner, both sides of
 every sector, kerbs, off-track recovery, pit separation, crests, crossings and the

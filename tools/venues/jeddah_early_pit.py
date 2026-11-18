@@ -25,17 +25,32 @@ def emit_details(scene: MeshScene, recipe: EarlyPit) -> None:
     for face in recipe.floors:
         scene.triangle("Tile_Route", "Runoff", face.a, face.b, face.c,
                        uv=tuple((p[0] / 4, p[1] / 4) for p in (face.a, face.b, face.c)))
+    for face in recipe.separator_paint:
+        scene.triangle("Tile_Route", "JeddahPitEntryPaint", face.a, face.b, face.c,
+                       uv=tuple((p[0] / 4, p[1] / 4) for p in (face.a, face.b, face.c)))
     phase = 0.
-    for record in recipe.walls:
+    for index, record in enumerate(recipe.walls):
         wall = record.barrier
         along = norm((wall.bx - wall.ax, wall.by - wall.ay, 0.))
         # The chain follows the garage/outer side; source-right faces the lane.
         inward = along[1], -along[0], 0.
-        a, b = (wall.ax, wall.ay, wall.bottom + .05), (wall.bx, wall.by, wall.bottom + .05)
+        a, b = (wall.ax, wall.ay, record.first_floor_m), (wall.bx, wall.by, record.last_floor_m)
+        lower = [add(p, add(mul(inward, side * wall.radius), (0, 0, -.05)))
+                 for p, side in ((a, 1), (b, 1), (b, -1), (a, -1))]
+        upper = [add(p, (0, 0, 1.)) for p in lower]
+        scene.quad("Tile_Route", "Concrete", upper[0], upper[1], upper[2], upper[3], up=True)
+        scene.quad("Tile_Route", "Concrete", lower[0], lower[1], lower[2], lower[3], up=False)
+        for edge in range(4):
+            following = (edge + 1) % 4
+            scene.quad("Tile_Route", "Concrete", lower[edge], lower[following],
+                       upper[following], upper[edge])
+        scene.banner(add(a, (0, 0, .95)), add(b, (0, 0, .95)), 2.2, "Fence")
+        if index % 2 == 0:
+            scene.beam("Tile_Route", "Steel", a, add(a, (0, 0, 3.15)), .08)
         face_a, face_b = add(a, mul(inward, .165)), add(b, mul(inward, .165))
         length = ((wall.bx - wall.ax) ** 2 + (wall.by - wall.ay) ** 2) ** .5
         scene.banner(add(face_a, (0, 0, .08)), add(face_b, (0, 0, .08)), .8,
-                     record.material, "Tile_Route", phase / 6.4, length / 6.4)
+                     record.material, "Tile_Route", phase / 2.8, length / 2.8)
         if record.privacy:
             outer_a, outer_b = add(a, mul(inward, -.35)), add(b, mul(inward, -.35))
             scene.banner(add(outer_a, (0, 0, 1.0)), add(outer_b, (0, 0, 1.0)),

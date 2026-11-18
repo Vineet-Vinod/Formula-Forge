@@ -133,15 +133,18 @@ def prepare(circuit: str, destination: Path, pit_path: Path | None, escape_path:
         emit_approach_paving(scene, route)
         cosmetic_portals.extend(approach_floor_portals(route))
     walkway_rails: set[Barrier] = set()
+    graded_walls: set[Barrier] = set()
     if circuit == "jeddah" and route is not None:
         from venues.jeddah_early_pit import emit_details as early_details
         from venues.jeddah_early_pit import load_recipe as early_recipe
 
         early = early_recipe(route)
-        walls = clip_foreign_protection(walls, list(early.portals))
-        portals.extend(early.portals)
+        openings = [*early.portals, *early.separator_portals]
+        walls = clip_foreign_protection(walls, openings)
+        portals.extend(openings)
         cosmetic_portals.extend(early.floor_portals)
         walls.extend(record.barrier for record in early.walls)
+        graded_walls.update(record.barrier for record in early.walls)
         early_details(scene, early)
         from venues.jeddah_pit_walkway import build_walkway, walkway_recipe
 
@@ -157,7 +160,7 @@ def prepare(circuit: str, destination: Path, pit_path: Path | None, escape_path:
             raise ValueError("Jeddah cosmetic openings exceed the native editor limit")
         (destination / "pit-walkway-proof.json").write_text(json.dumps(asdict(walkway.proof), indent=2) + "\n")
     street = circuit in {"baku", "jeddah", "monaco", "singapore", "lasvegas", "australia", "canada"}
-    emit_protection(scene, [wall for wall in walls if wall not in walkway_rails], street)
+    emit_protection(scene, [wall for wall in walls if wall not in walkway_rails | graded_walls], street)
     if circuit == "jeddah" and route is not None:
         from venues.jeddah_pit_approach import (
             emit_approach_gantry,

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "circuit": "jeddah",
-  "manifest_sha256": "65d7c408528fc7098bdbcb7a43de9c7477b3d027cf0c28f8dc4a546434c5b3ca",
+  "manifest_sha256": "8c7502d70a5dfb96122dc55b6ad690f48eef5e0fe3544f19a8b5cf4634ce2ed9",
   "source_sha256": {
     "Attribution/Sources/jeddah/pit-lane-reconstruction.json": "7d53c343e69885005de5148619aa2eed17136a432ad546ff2fd7fd9223d97ea2",
     "build/reviews/jeddah-clearance-20261118/escape-overlay.json": "737f718a272314e9da5ddf155e6adc75648bbe453ec78506ad3fa66752761756",
@@ -15,10 +15,10 @@
     "tools/venues/jeddah_pit_entry_panels.py": "304c63aac1a0bc671bbd8765f05d8d60555d49be69c8f0a8ba47238f140b3cac",
     "tools/venues/jeddah_pit_entry_panels_dataclasses.py": "d39bd38c15c0bb2b886c504579555f479d12e98255d16c5dc2ea8df33637156f",
     "Attribution/Sources/jeddah/pit-personnel-walkway.json": "8563921a2ecbb536c7d3c079744a871bae7b382a21f06b6650c13cf59aaa7aaf",
-    "Attribution/Sources/jeddah/pit-early-corridor.json": "9431dff1e950d499ccf69c6c5c487415dbfcc747285f932d1cee0a06a421031d",
-    "tools/venues/jeddah_early_pit.py": "2ca4629d6700833d9a4ad63ea889f13920baf0e5823f00c797e8eda61ab65fcf",
-    "tools/venues/jeddah_early_pit_dataclasses.py": "2ffe26cf79ac50359c6b8365c72bf60172220ed17f75d28aad5b992f7e7f72e5",
-    "tools/venues/jeddah_early_pit_material.py": "aa5aaede21c6ae23aeb8ad17a6a25615b9304b78c5d373a64f92a671c530c8c5",
+    "Attribution/Sources/jeddah/pit-early-corridor.json": "034cf1cd5e25c75bfd345b23754e8b23695810902d36b637a19bd61c92dd664c",
+    "tools/venues/jeddah_early_pit.py": "53fa3f36526a9d3b4369c88669b28c68ae0509c2674f1d4efda9338c56ddeb11",
+    "tools/venues/jeddah_early_pit_dataclasses.py": "a789597794e3afbc2c387ee5f576f14314d55bb4fe6bd88b8710d48c2424b00c",
+    "tools/venues/jeddah_early_pit_material.py": "1bdf03a2191be6bb95f8453c88ad40925fb50daa1c9cbc81e488aaf8750d8eba",
     "tools/venues/jeddah_pit_walkway.py": "ffdb1cf6cd19c695a71b83c6bfbc6113fe6a24a04588704c42cb104e440c82c5",
     "tools/venues/jeddah_pit_walkway_dataclasses.py": "03fa4a77d76370b6fa2a276d30a9a6273f7fdfc1a895a52f98f1ef94cb19e958",
     "build/circuits/jeddah/barriers.csv": "d034c613d3abafc2595dc76fb2b6e3a6d3423caf0920a475a2ec9e13a4c53e6a",
@@ -28,33 +28,33 @@
   "native_edits": [
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_00_m1",
-      "triangles": 15769,
-      "sha256": "b9372e39fdcfa7d67900e136ab17898d10edec00bfed78d673e8472d0e4b2d93"
+      "triangles": 16295,
+      "sha256": "3889c5d103890b3676bc0f37b31ffe9aaa13c6fe9ce3d512f9012fb07d410ea8"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_00_m2",
-      "triangles": 11548,
-      "sha256": "5ffb9c19262daaab5fbe312ace1b1efaa39156770455e6a3e6d8c3805ba1f153"
+      "triangles": 10958,
+      "sha256": "e9e4d8fc360887f672d6bc5f57d7deefaa38db9e1bdbefe655198da82768d591"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_00_m4",
-      "triangles": 4468,
-      "sha256": "15b958730b09bd041765aec4dcd29d1e0c86e3863b6164db83d0ee3c159d9160"
+      "triangles": 4587,
+      "sha256": "d871dcf7491dbe43014a590e12c530e1fa83861b05b9d0e70c898e69d5720c78"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_m1_00",
-      "triangles": 27174,
-      "sha256": "e8c2b1c5c8a5fb896130f0913002438b9397550269ae0632e47f43c232a0b485"
+      "triangles": 27534,
+      "sha256": "436cb62090f8cb2c9d1ff2e7812745d763a1ae10fa9c44e429f2ab8d2aa14fbf"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_m1_01",
-      "triangles": 36864,
-      "sha256": "44ca92e278e1dea6011bddadaef43b77afe711af7ce2f9b3fff4e69d352ebde9"
+      "triangles": 37582,
+      "sha256": "7dabb52330e4588d37cb8907757b1567b67f27124fa7b250e8b9302487e6daca"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_m1_m1",
-      "triangles": 14002,
-      "sha256": "b4b0b6f2a146050c69a7c13e18e85816b074b42d3e8028e6170d812ef04e5b69"
+      "triangles": 14134,
+      "sha256": "c58af4b8e937ab2b9e031522631fd9bc1551572f5f4f024b310b25875b8085a9"
     }
   ],
   "pit_architecture_edits": [

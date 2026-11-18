@@ -15,6 +15,8 @@ class EntryWall:
     barrier: Barrier
     material: str
     privacy: bool
+    first_floor_m: FiniteFloat
+    last_floor_m: FiniteFloat
 
 
 @dataclass(frozen=True)
@@ -35,3 +37,5 @@ class EarlyPit:
     floor_portals: tuple[Portal, ...]
     source_road_sha256: str
     source_sections_sha256: str
+    separator_portals: tuple[Portal, ...]
+    separator_paint: tuple[PitFloorTriangle, ...]
