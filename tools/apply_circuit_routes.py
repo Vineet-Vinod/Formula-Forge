@@ -220,6 +220,10 @@ for entry in plan['circuits']:
                 portal['top_m'] += 0.5
     visual_portal_path = folder / 'visual-portals.json'
     visual_portal_path.write_text(json.dumps({'portals': visual_portals}, indent=2) + '\n')
+    cosmetic_portals = manifest.get('cosmetic_portals', [])
+    cosmetic_portal_path = folder / 'exit-support-portals.json'
+    if cosmetic_portals:
+        cosmetic_portal_path.write_text(json.dumps({'portals': cosmetic_portals}, indent=2) + '\n')
     changed = []
     protected = {'Road', 'Asphalt', 'AsphaltLight', 'White', 'Red', 'Yellow', 'Green', 'Black', 'Water',
                  'TreeCanopy', 'Trunk', 'Leaves', 'Lit_Road', 'Canopy', 'Lamp', 'LightHalo', 'JeddahWorkingAsphalt'}
@@ -227,9 +231,10 @@ for entry in plan['circuits']:
                 'RunoffGreen', 'Limestone', 'MonacoRockGround', 'MonacoNaturalGround', 'MonacoGardenLawn', 'MonacoIvyGround'}
     for record in index['assets']:
         relevant = overlaps(record['bounds'], portals)
+        cosmetic_relevant = overlaps(record['bounds'], cosmetic_portals)
         paint = [p for p in manifest['paint_domains'] if overlaps(record['bounds'], [
             {'polygon_xy_m': p['polygon_xy_m'], 'bottom_m': p['bottom_m'], 'top_m': p['top_m']}])]
-        if not relevant and not paint:
+        if not relevant and not paint and not cosmetic_relevant:
             continue
         mesh = unreal.load_asset(record['asset'])
         if not isinstance(mesh, unreal.StaticMesh):
@@ -252,6 +257,16 @@ for entry in plan['circuits']:
             count = unreal.FFMeshBuildLibrary.cut_tile_portals(mesh, str(visual_portal_path), selected, False)
             if count < 0:
                 raise ValueError('Native portal clipping rejected ' + record['asset'])
+        if cosmetic_relevant:
+            terrain_slots = [unreal.Name(slot['slot']) for slot in record['slots']
+                if slot['material'] is not None and
+                slot['material'].rsplit('/', 1)[-1].split('.')[0] in cosmetic]
+            if terrain_slots:
+                affected = unreal.FFMeshBuildLibrary.cut_tile_portals(
+                    mesh, str(cosmetic_portal_path), terrain_slots, False)
+                if affected < 0:
+                    raise ValueError('Cosmetic pit support clipping rejected ' + record['asset'])
+                count += affected
         for source_name in sorted({p['source_material'] for p in paint}):
             domains = [p for p in paint if p['source_material'] == source_name]
             slots = [unreal.Name(s['slot']) for s in record['slots'] if s['material'].rsplit('/', 1)[-1].split('.')[0] == source_name]
@@ -294,7 +309,7 @@ for entry in plan['circuits']:
     pit_floor_edits = clear_monaco_pit_floor(slug)
     retained_edits = []
     for record in index['assets']:
-        if not overlaps(record['bounds'], portals) and not overlaps(record['bounds'], manifest['paint_domains']):
+        if not overlaps(record['bounds'], portals) and not overlaps(record['bounds'], manifest['paint_domains']) and not overlaps(record['bounds'], cosmetic_portals):
             continue
         mesh = unreal.load_asset(record['asset'])
         if isinstance(mesh, unreal.StaticMesh) and LIBRARY.get_metadata_tag(mesh, 'CircuitRouteRecipe') == fingerprint:
@@ -305,6 +320,7 @@ for entry in plan['circuits']:
         unreal.SystemLibrary.collect_garbage()
     (data / 'route_overlay.json').write_text(json.dumps({'version': 1, 'circuit': slug,
         'manifest_sha256': fingerprint, 'source_sha256': manifest['source_sha256'],
+        'cosmetic_portal_count': len(cosmetic_portals),
         'native_edits': retained_edits, 'pit_architecture_edits': pit_exit_edits, 'pit_floor_edits': pit_floor_edits, 'added_route_meshes': [p['name'] for p in manifest['tiles']],
         'note': 'Finite pit/escape overlays; base authoring manifests describe the retained pre-overlay scene.'}, indent=2) + '\n')
     receipts.append({'circuit': slug, 'manifest_sha256': fingerprint, 'native_edits': changed,

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "recipe": "edition-lighting.json",
+  "status": "Source-supported estimated facade wash; native comparison pending",
+  "owner_osm_id": 1258744123,
+  "reference_only": true,
+  "supplied_reference_video": "Saved/Refs/jeddah.mp4",
+  "video_sha256": "c2c78fb500a241a595aa6108bf797114332a747a83ab280b2a49d2cd9b8dcf78",
+  "reference_images": {
+    "build/reviews/jeddah-focused-20261118/timeline/0596s.jpg": "66692cd235b880840b6869d38fd31d672d154eb6a592cab9e168129489c47215",
+    "build/reviews/jeddah-focused-20261118/architecture/reference-331-full.jpg": "dbc8a20db371dc29bf156ce7b61efd611f77fc4d773e8c6f02e3d9754d066f85"
+  },
+  "observed": "331.06s blue-hour and596s later lap11 T13 show readable pale projecting slabs and soffits around dark terrace recesses.596s is contextual thumbnail evidence, not a metric or color-calibrated photograph.",
+  "authored_estimates": "Four continuous facade-wash contributions with evenly spaced local-u sources. Source positions,aim,power and warm-neutral hue are estimates of visible illumination, not literal fixture inventory or measured photometry.",
+  "binding": "Emitted hotel foundation landmark determines vertical datum; current owner minimum rectangle and nearest-road side determine source frame. No ground resampling or geometry creation.",
+  "runtime_export": {
+    "path": "Content/Generated/Jeddah/Data/edition_lights.csv",
+    "columns": [
+      "x",
+      "y",
+      "z",
+      "target_x",
+      "target_y",
+      "target_z",
+      "power"
+    ],
+    "coordinates": "Native Unreal centimetres; source east/north/up transformed by(-north,-east,up)*100",
+    "hook": "venues.jeddah_edition_lighting.write_fixtures(scene), after hotel geometry and existing Jeddah night_lights.csv export. Separate persistent four-light runtime pool."
+  },
+  "unchanged": [
+    "hotel massing and materials",
+    "road-light pool and night_lights.csv",
+    "road and protection",
+    "terrain and property"
+  ]
+}

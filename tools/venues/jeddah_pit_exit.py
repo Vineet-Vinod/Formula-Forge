@@ -4,15 +4,14 @@ from __future__ import annotations
 
 import bisect
 import hashlib
-from dataclasses import replace
 from pathlib import Path
 
 from circuit_scene import CircuitScene
 from pydantic import TypeAdapter
 from shapely.geometry import Polygon
 
-from venues.east_architecture import facade
-from venues.jeddah_pit_exit_dataclasses import PitExitReconstruction
+from venues.jeddah_pit_exit_dataclasses import PitExitFrontage, PitExitReconstruction
+from venues.jeddah_pit_exit_geometry import build
 from venues.jeddah_pits import pit_route_source, route_section
 
 SOURCE = Path(__file__).resolve().parents[2] / "Attribution/Sources/jeddah/pit-exit-reconstruction.json"
@@ -56,12 +55,17 @@ def pit_exit_building(scene: CircuitScene) -> None:
         raise ValueError("Jeddah open-exit correction exceeds the qualified eastern tip")
     if footprint.area - retained.area < 1:
         raise ValueError("Jeddah open-exit recipe did not remove the conflicting roof tip")
-    ring = [(float(x), float(y)) for x, y in list(retained.exterior.coords)[:-1]]
-    scene.buildings[index] = replace(original, ring=ring)
-    try:
-        facade(scene, source.osm_id, source.retained_height_m, "modern", "White")
-    finally:
-        scene.buildings[index] = original
+    detail = TypeAdapter(PitExitFrontage).validate_json(
+        (scene.sources / "pit-exit-frontage.json").read_bytes()
+    )
+    base = min(scene.ground(x, y) for x, y in retained.exterior.coords)
+    available = retained.difference(scene.road_mask.buffer(1.2))
+    parts = [available] if isinstance(available, Polygon) else [
+        part for part in available.geoms if isinstance(part, Polygon)
+    ]
+    for part in parts:
+        build(scene, part, base, detail)
+    scene.modeled_buildings.add(source.osm_id)
     scene.landmarks.append({
         "name": "Jeddah pit exit open-sky reference variant",
         "osm_id": source.osm_id,
@@ -72,5 +76,8 @@ def pit_exit_building(scene: CircuitScene) -> None:
         "retained_footprint_m2": retained.area,
         "removed_eastern_tip_m2": footprint.area - retained.area,
         "garage_side_termination_m": source.garage_side_clearance_m,
+        "frontage_roof_above_base_m": detail.roof_height_m,
+        "frontage_height_uncertainty_m": 3.0,
+        "frontage_source_note": detail.source_note,
         "source_note": source.source_note,
     })

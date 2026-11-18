@@ -189,6 +189,7 @@
       "pit-limiter-registration.json",
       "pit-exit-reconstruction.json"
     ],
-    "native_stop_view_fix": "Exact workingfloor terrainexclusion, shallowdarkgaragereveals, downwardWhiteceilings andquarter-roundbooms. Referencepitworkinglane provenance forbounded dimensions andFerrari sourcepose."
+    "native_stop_view_fix": "Exact workingfloor terrainexclusion, shallowdarkgaragereveals, downwardWhiteceilings andquarter-roundbooms. Referencepitworkinglane provenance forbounded dimensions andFerrari sourcepose.",
+    "layered_frontage_and_workshop": "See pit-facade-detail.json andpit-working-lane-provenance.json:recessedupperglazing,slab/raildepth,paleworkshopbackwalls,ceilingstructure,staticserviceequipmentandgatedpitwallmonitors. Wholecurrentnativecamerareviewpending."
   }
 }

@@ -8,6 +8,7 @@ from pathlib import Path
 
 import pytest
 from shapely.geometry import LineString, Polygon
+from shapely.geometry import Point as ShapePoint
 from shapely.ops import unary_union
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
@@ -148,3 +149,52 @@ def test_garage_reveals_are_dark_and_ceiling_faces_down(pits: PitScene) -> None:
     assert reveals and ceilings
     assert all(material == "Black" for material, _ in reveals)
     assert all(cross(sub(face[1], face[0]), sub(face[2], face[0]))[2] < 0 for face in ceilings)
+
+
+def test_upper_frontage_depth_stays_local_across_start_finish() -> None:
+    from venues.jeddah_pit_details import detail_source, upper_bay
+
+    scene = PitScene()
+    a, b = scene.at(scene.length - 3), scene.at(3)
+    detail = detail_source()
+    upper_bay(scene, a, b, -a.half_width - 13, -b.half_width - 13, 4.6, detail)
+    assert scene.faces
+    assert all(math.hypot(point[0] - a.x, point[1] - a.y) < 30
+               for _, _, face in scene.faces for point in face)
+    assert any(kind == "Building_JeddahPitUpperReturns" for kind, _, _ in scene.faces)
+    assert any(kind == "Building_JeddahPitBalconyRailPosts" for kind, _, _ in scene.faces)
+
+
+def test_pit_frontage_and_workstations_preserve_main_racing_clearance(pits: PitScene) -> None:
+    upper = [face for kind, _, face in pits.faces if kind in (
+        "Building_JeddahPitLounges", "Building_JeddahPitUpperReturns", "Building_JeddahPitUpperMullions",
+        "Building_JeddahPitBalconySlabs", "Building_JeddahPitBalconyFascias", "Building_JeddahPitBalconyRailPosts")]
+    site = pits.ground_patches[0][0].buffer(3)
+    assert upper
+    for face in upper:
+        assert Polygon([point[:2] for point in face]).difference(site).area < 1e-7
+        assert all(site.covers(ShapePoint(point[:2])) for point in face)
+    consoles = [face for kind, _, face in pits.faces if kind.startswith("Building_JeddahPitWall")]
+    assert consoles
+    for face in consoles:
+        for point in face:
+            sample, distance = pits.nearest(point[0], point[1])
+            assert distance > sample.half_width + .85 + .18
+
+
+def test_separate_interior_fixture_csv_has_all_bays_and_valid_aim(pits: PitScene, tmp_path: Path) -> None:
+    import csv
+
+    from venues.jeddah_pit_details import detail_source, write_interior_lights
+
+    target = tmp_path / "pit_interior_lights.csv"
+    write_interior_lights(pits, target)
+    with target.open() as stream:
+        rows = list(csv.DictReader(stream))
+    assert len(rows) == 45
+    detail = detail_source()
+    for row in rows:
+        values = [float(value) for value in row.values()]
+        assert len(values) == 7 and all(math.isfinite(value) for value in values)
+        assert values[2] > values[5] + 200
+        assert values[6] == detail.interior_light_power

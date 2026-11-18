@@ -2,11 +2,14 @@
 
 from __future__ import annotations
 
+import csv
 import math
 import struct
 import sys
 from collections import Counter
 from pathlib import Path
+
+import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 
@@ -17,6 +20,7 @@ from shapely.geometry import Point as ShapePoint
 from shapely.geometry import Polygon
 from shapely.ops import unary_union
 from venues.jeddah_edition import edition_hotel
+from venues.jeddah_edition_lighting import fixtures, write_fixtures
 
 
 class EditionScene(CircuitScene):
@@ -37,6 +41,46 @@ class EditionScene(CircuitScene):
         normals: tuple[Point, ...] | None = None,
     ) -> None:
         self.faces.append((kind, material, (a, b, c)))
+
+
+def test_edition_wash_uses_emitted_foundation_and_separate_native_csv(
+    tmp_path: Path,
+) -> None:
+    scene = CircuitScene("jeddah")
+    scene.data = tmp_path
+    with pytest.raises(ValueError, match="emitted foundation"):
+        fixtures(scene)
+    base = 7.25
+    scene.landmarks.append({"osm_id": 1258744123, "foundation_top_m": base})
+    before = list(scene.road), scene.grid
+    road_lights = tmp_path / "night_lights.csv"
+    road_lights.write_text("existing independent road-light pool\n")
+    lights = fixtures(scene)
+    assert len(lights) == 4
+    property_shape = Polygon(scene.footprint(1258744123).ring)
+    for light in lights:
+        assert light.position[2] == base + 4.5
+        assert light.target[2] == base + 13.5
+        assert property_shape.distance(ShapePoint(*light.position[:2])) > 5.9
+        assert property_shape.contains(ShapePoint(*light.target[:2]))
+        assert math.dist(light.position[:2], light.target[:2]) == pytest.approx(11)
+        assert scene.nearest(*light.position[:2])[1] > 50
+        assert light.power == 0.8
+    write_fixtures(scene)
+    with (tmp_path / "edition_lights.csv").open() as handle:
+        rows = list(csv.DictReader(handle))
+    assert len(rows) == 4
+    for row, light in zip(rows, lights, strict=True):
+        assert float(row["x"]) == pytest.approx(-light.position[1] * 100)
+        assert float(row["y"]) == pytest.approx(-light.position[0] * 100)
+        assert float(row["z"]) == pytest.approx(light.position[2] * 100)
+        assert float(row["target_x"]) == pytest.approx(-light.target[1] * 100)
+        assert float(row["target_y"]) == pytest.approx(-light.target[0] * 100)
+        assert float(row["target_z"]) == pytest.approx(light.target[2] * 100)
+    assert road_lights.read_text() == "existing independent road-light pool\n"
+    assert (scene.road, scene.grid) == before
+    assert not scene.tiles
+    assert not scene.terrain_cutouts
 
 
 def test_edition_members_are_closed_and_face_outward_after_native_packing() -> None:

@@ -33,7 +33,7 @@ for entry in plan['circuits']:
     manifest = json.loads(manifest_path.read_text())
     if manifest['circuit'] != entry['circuit']:
         raise ValueError('Route index circuit differs from its manifest')
-    volumes = manifest['portals'] + manifest['paint_domains']
+    volumes = manifest['portals'] + manifest['paint_domains'] + manifest.get('cosmetic_portals', [])
     data = ROOT / 'Content/Generated' / entry['content_dir']
     directory = entry['content_dir'].removesuffix('/Data')
     directory = '' if directory == 'Data' else directory

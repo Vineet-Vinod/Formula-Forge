@@ -1,0 +1,11 @@
+{
+  "upper_glazing_recess_m": 1.0,
+  "balcony_depth_m": 2.5,
+  "balcony_slab_m": 0.22,
+  "upper_mullion_m": 0.055,
+  "garage_back_depth_m": 4.0,
+  "garage_ceiling_m": 4.43,
+  "interior_light_depth_m": 2.5,
+  "interior_light_power": 0.24,
+  "source_note": "Supplied235/239/243s and612\u2013618s support layered pale balcony edges, dark recessed upper glazing andfine rail/frame rhythm, rather thanflatwhite/blackpanels. Supplied619\u2013624s support whiteworkshop/rig casings, darktrim andoverheadservices; crewoccludesmosthiddeninterior. Recess/slabdepth,panepitch,paneljoints,ceilingstructure andinnerlighting placement are estimated architectural completion withinunchangedregisteredfrontage. No exact2026teamlayout orsurvey claim. Interiorfixturepool isseparatefromroadlights;defaultpower.24 isinitialestimate requiringcurrentnativecamera calibration."
+}

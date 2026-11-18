@@ -660,6 +660,14 @@ registered view. Keep a daylight direction consistent with the visible sky and
 check the whole lap after rotating it; brightening one bank can darken another.
 Do not use emissive grass or flatten supported ground to conceal poor lighting.
 
+If a local light has no visible effect, compare identical packaged poses with
+that light disabled and strongly amplified before tuning the scene. Jeddah's
+Linux Vulkan build required the standard light-grid injection path; valid light
+components alone did not prove illumination. Its workaround is scoped to the
+venue and restores the previous setting on exit. Check distant building lights
+separately from a moving road-light pool, and tune a fixed night sky from the
+night sequence rather than an earlier blue-hour lap.
+
 For foliage-card seams, separate crown coverage from shading. Check the texture's
 occupied alpha bounds before enlarging the geometry, then inspect the saved native
 material's normal input, tangent-space setting and two-sided response. A smooth

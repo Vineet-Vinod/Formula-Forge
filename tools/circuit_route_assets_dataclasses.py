@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from circuit_escapes_dataclasses import PaintDomain
 from circuit_portals_dataclasses import Portal
@@ -29,6 +29,7 @@ class RouteAssets:
     protection_file: str
     source_note: str
     escape_surface_file: str | None = None
+    cosmetic_portals: list[Portal] = field(default_factory=list)
 
 
 @dataclass(frozen=True)

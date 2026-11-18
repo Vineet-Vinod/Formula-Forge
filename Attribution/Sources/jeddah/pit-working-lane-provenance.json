@@ -38,5 +38,23 @@
     "booms": "Estimated.65mradius quarter-roundelbow,8segments; White.20\u00d7.28msection andslimblackunderside. Existing3.1mheight/4.7mreach retained.",
     "capture_registration": "Previouspitdistance445/offset\u22125.2view wasatRoad6148.63, endofcentralunmarkedservicepassage6132.05\u20136148.55. CorrectFerrari stopboxcamera usespitdistance367.508201/offset\u22125.375138, Road6071.15.",
     "checks": "7focusedtestspass13.66s;mypy6/Ruffpass;9176upper/framefacets unchanged apartfromexplicitWarmGlass\u2192Glass. Nativecamera review stillrequired."
+  },
+  "layered_frontage_and_workshop_refinement": {
+    "source_frames_s": [
+      235,
+      239,
+      243,
+      612,
+      616,
+      619,
+      623,
+      624
+    ],
+    "upper_frontage": "Glazingrecess1mbehindgaragefront;3panesperbay withseparatemullions/transom/jambs. Singleclosed2.5mdeep,.22mthickbalconyslab/fasciaandtwoopenmetalrailswithpostsreplacesoverlappingwhitebeams. Envelope/roof/floorlevelsunchanged.",
+    "garage_interior": "Pale4mdeepbackwalls,paneljoints,ceilingcrossmembers andinnerLEDstrips replaceblackvoid. Modularservicecabinets inside10representativeteamworkareas. Crewoccludesmosthiddeninterior, sopanel/cabinetlayoutandallmetricdimensionsareestimates.",
+    "equipment": "Heavierwhiteuprightcasing,.28\u00d7.40mroundedarm,darkunderside,accenttipandthinverticalhosefollow623sserviceboomtype. FerrariaccentisRed;otherrepresentativerigsGreen, anestimate ratherthanexact2026teamallocation.",
+    "pitwall": "Tenrepresentativemonitorbanks/whiteframes observedacrossfastlanein623s;sourceplacementgatedatleast.20mbeyondunchangedracingRoad+.85mkerb, behindexistingpitseparator. GreenreadoutgeometrysuggestsLCDcontentwithoutinventedteamlogos.",
+    "interior_lights": "Separate45row7columnUEcmCSV,power.24initialestimate, positionceil\u2212.16m/depth2.5m,targetbackwall1.4mabovefloor. Rootownsseparatefournearestlightpool;roadpoolunchanged.",
+    "checks": "10focusedtestsPASS13.49s;mypy8/RuffPASS. ExplicitS/Fseambay,globalfrontagebounds,allconsoleRaceRoadclearance,carbodyclearance,terrainexclusionand45fixtureaimschema. Retained3776roof/floor/framefacesexact;upperfrontagesareintentionallyreconstructed."
   }
 }

@@ -18,12 +18,18 @@ class AFFJeddahNight : public AActor {
 public:
     AFFJeddahNight();
     virtual void BeginPlay() override;
+    virtual void EndPlay(const EEndPlayReason::Type reason) override;
     virtual void Tick(float deltaSeconds) override;
 private:
-    void LoadFixtures();
+    void LoadFixtures(const TCHAR* filename, TArray<FFJeddahFixture>& fixtures);
     void UpdateLights();
     TArray<FFJeddahFixture> Fixtures;
+    TArray<FFJeddahFixture> GarageFixtures;
     UPROPERTY(Transient)
     TArray<TObjectPtr<USpotLightComponent>> Lights;
+    UPROPERTY(Transient)
+    TArray<TObjectPtr<USpotLightComponent>> GarageLights;
     float LightScale = 1.0f;
+    int32 PreviousLightInjection = 1;
+    bool RestoreLightInjection = false;
 };

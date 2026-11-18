@@ -109,6 +109,12 @@ def prepare(circuit: str, destination: Path, pit_path: Path | None, escape_path:
     walls += clip_foreign_protection(escape_walls, list(route.portals)) if route else escape_walls
     if route:
         emit_pit(scene, route)
+    cosmetic_portals: list[Portal] = []
+    if circuit == "jeddah" and route is not None:
+        from venues.jeddah_pit_protection import emit_exit_paving, exit_floor_portals
+
+        emit_exit_paving(scene, route)
+        cosmetic_portals = exit_floor_portals(route)
     if escapes:
         portals.extend(escapes.portals)
         for triangle in escapes.paving:
@@ -117,6 +123,10 @@ def prepare(circuit: str, destination: Path, pit_path: Path | None, escape_path:
                 uv=tuple((p[0] / 4, p[1] / 4) for p in points))
     street = circuit in {"baku", "jeddah", "monaco", "singapore", "lasvegas", "australia", "canada"}
     emit_protection(scene, walls, street)
+    if circuit == "jeddah" and route is not None:
+        from venues.jeddah_pit_protection import emit_panels
+
+        emit_panels(scene, route)
     records = []
     for original_name, tile in sorted(scene.tiles.items()):
         name = original_name.replace("Tile_Street", "Tile_Route")
@@ -139,11 +149,19 @@ def prepare(circuit: str, destination: Path, pit_path: Path | None, escape_path:
         for triangle in escapes.paving:
             raw_surface.extend(struct.pack("<9f", *triangle.a, *triangle.b, *triangle.c))
         (destination / escape_file).write_bytes(raw_surface)
+    root = Path(__file__).resolve().parents[1]
     inputs = [p for p in (pit_path, escape_path) if p is not None]
+    if circuit == "jeddah" and route is not None:
+        inputs.extend(root / path for path in (
+            "Attribution/Sources/jeddah/pit-exit-protection.json",
+            "tools/venues/jeddah_pit_protection.py",
+            "tools/venues/jeddah_pit_protection_dataclasses.py",
+        ))
     result = RouteAssets(circuit, 1, "Source east/north/Z metres; packed meshes use Unreal world centimetres",
         records, portals, list(escapes.paint_domains) if escapes else [],
-        {str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs}, lane_file, "pit_barriers.bin",
-        "Finite route overlay. Original venue meshes remain the base. Native clipping/reclassification, exact physical clearance, source review and fresh live validation are required before acceptance.", escape_file)
+        {str(p.relative_to(root) if p.is_relative_to(root) else p): hashlib.sha256(p.read_bytes()).hexdigest()
+         for p in inputs}, lane_file, "pit_barriers.bin",
+        "Finite route overlay. Original venue meshes remain the base. Native clipping/reclassification, exact physical clearance, source review and fresh live validation are required before acceptance.", escape_file, cosmetic_portals)
     (destination / "manifest.json").write_text(json.dumps(asdict(result), indent=2) + "\n")
     (destination / "portals.json").write_text(json.dumps({"portals": [asdict(p) for p in portals]}, indent=2) + "\n")
     return result

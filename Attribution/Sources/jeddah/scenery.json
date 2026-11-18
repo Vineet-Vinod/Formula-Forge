@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=jeddah",
   "tiles": 146,
-  "triangles": 1393581,
+  "triangles": 1423673,
   "road_sha256": "86ac9b9b678308d892ee45f96061bee4ae87afbda9aaf7791eb9bc0166c365e6",
   "terrain_sha256": "a30c782d9e70e53575eaa3a1295d86b00eeca559983b25de642725c36fdfe647",
   "landmarks": [
@@ -275,27 +275,24 @@
       "source_note": "Primary F1/Tilke description gives 280 m and four storeys. FIA 2025 pit plan shows 45 numbered bays and a central service break. Direct forward 235/239/243 s puts the glazed garage/club building LEFT and open crowd stand RIGHT. Placement is opposite the actual 271 m main-stand footprint, with \u00b120 m longitudinal uncertainty. Depth, floor heights, canopy slopes and terrace details are reconstructed estimates. The prior 554 m/right-side generic compound is removed."
     },
     {
-      "name": "Mapped footprint clearance",
-      "osm_id": 1257884698,
-      "footprint_clip_m2": 352.14,
-      "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
-    },
-    {
-      "name": "Mapped building",
-      "osm_id": 1257884698,
-      "height_m": 10.0,
-      "facade": "modern"
+      "name": "Jeddah pit-wall monitor workstations",
+      "consoles": 8,
+      "racing_core_clearance_m": 0.2782983751789422,
+      "source_note": "Supplied623s shows pitwall monitor banks/white frames across fastlane. Estimated2.8m representative consoles staybehindexistingseparator andatleast.20m beyondunchangedRaceRoad+0.85mkerb. Workshopcabinetpositions areestimated completion insidegarage, notan eventequipment inventory."
     },
     {
       "name": "Jeddah pit exit open-sky reference variant",
       "osm_id": 1257884698,
       "exit_roof_state": "open_sky_reference_variant",
       "source_open_exit_recipe_sha256": "e18e995658e437cbc4cdc4e9fc8712394b398f3befd082931ff8bbcf6ebaa76c",
-      "source_open_exit_module_sha256": "6bfff56a0f4066e27b8072b0bf9f9cf9f15ff6aa6bc584761d02de8b5b741feb",
+      "source_open_exit_module_sha256": "72918fafa8a16ae7e0514ca8d4902001b261f516bd865039692b981ef43c34fc",
       "original_footprint_m2": 2237.9277795657454,
       "retained_footprint_m2": 2041.6503116395866,
       "removed_eastern_tip_m2": 196.2774679261588,
       "garage_side_termination_m": 3.0,
+      "frontage_roof_above_base_m": 12.4,
+      "frontage_height_uncertainty_m": 3.0,
+      "frontage_source_note": "Supplied628/629.8/631s shows the left pit-exit stand/service frontage with pale layered slabs, dark upper occupied bands, deep terrace recesses and fine transparent/metal guards. Model the pale ground terrace plus two upper room bands; 0/4.2/8.2m floors,12.4m roof and0.48m slabs are visual section estimates with approximately3m total-height uncertainty, not measured storeys. This supersedes the generic10m two-row appearance estimate without changing the separately qualified open-exit footprint mask or route. Glazing bay pitch and hidden rear are conservative estimates; no invented team signs or roof over the fast lane. Reuse existing private EDITION pale stone/dark room/transparent guard materials rather than bright blue generic glass. Existing building datum is inherited ground estimate; no terrain or physical route changes.",
       "source_note": "Selected supplied-gameplay variant: continuous627\u2013635s, including dense630\u2013635s at10fps, shows open-sky fast lane beside left stand/service frontage through merge. Retained primary Google imagery ofunknown epoch andsecondary OSMtunnel1257884704 instead put an eastern roof tip over this path. This is an explicit source/epoch/gameplay conflict; imagery does not establish the current footage configuration. Keep the literal pit branch/axis, whose entry/exit ordering matches FIA andGoogle, and terminate only generic owner1257884698 east tip3mgarageward ofaxis. A0.4mparapet projection remains outside the4mfastlane. Retain at least75% ofthe original body footprint andthe existing10mheight estimate. New terminalwall closes the retained body; no floating roof strip, route relocation, invented occupied floor or mainRaceRoad alteration."
     },
     {

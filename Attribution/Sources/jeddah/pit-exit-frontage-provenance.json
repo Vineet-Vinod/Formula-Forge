@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "owner_osm_id": 1257884698,
+  "recipe": "pit-exit-frontage.json",
+  "supplied_video": "Saved/Refs/jeddah.mp4",
+  "video_sha256": "c2c78fb500a241a595aa6108bf797114332a747a83ab280b2a49d2cd9b8dcf78",
+  "reference_only": true,
+  "reference_files": {
+    "build/reviews/jeddah-focused-20261118/pit-detail/reference-0628.jpg": "f91ba532f2f04ade7733636ac150a66d8edb099b6385303904a143e314e5bd96",
+    "build/reviews/jeddah-focused-20261118/pit-detail/exit-0629.8.jpg": "4518e4940bf2ecf4671782d1d042ae0fe03303cbf6c9d9020989e0b6a8bcca86",
+    "build/reviews/jeddah-focused-20261118/pit-detail/reference-0631.jpg": "85419240bcc2d769f1c718fe0cd6ff15107541f1c019953fb7e82e695be8f1b4"
+  },
+  "observed": "Continuous628\u2013631s left-side pit-exit building: pale layered decks, dark occupied upper recesses, fine balcony rails/glass, tall pale lower service band. Nearby palms visible but exact planting registration not authored.",
+  "estimates": "12.4\u00b13m roof; floors0/4.2/8.2m; slab0.48m;1.8m terrace setback;3.6m subordinate glazing rhythm. These are architectural completion estimates, not photo-rectified dimensions. Unobserved rear is conservative.",
+  "preserved": "Original open-exit mask/hash-bound recipe and literal pit axis,>=75% retained ring; existing native-road buffer1.2m; source building/road/grid; no roof projection over fast lane. New small rails remain inset.",
+  "appearance_gate": "Fresh actual native pit-exit capture and source comparison required."
+}

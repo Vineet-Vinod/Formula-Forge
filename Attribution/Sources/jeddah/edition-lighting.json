@@ -1,0 +1,10 @@
+{
+  "owner_osm_id": 1258744123,
+  "frontage_fractions": [0.12, 0.37, 0.62, 0.87],
+  "outward_offset_m": 6.0,
+  "height_above_foundation_m": 4.5,
+  "target_inset_m": 5.0,
+  "target_height_above_foundation_m": 13.5,
+  "power": 0.8,
+  "source_note": "Supplied331.06s and later596s T13 pass show pale horizontal slabs/soffits remaining readable around dark recessed rooms. Four fixed facade washes represent that observed architectural illumination; count, source positions, power and target heights are authoring estimates, not surveyed fixtures. Later596s is lap11 at the asymmetric hotel/Aramco hairpin, independently identified from its silhouette and corner rather than elapsed-time interpolation across edited laps. Neutral-warm colour, cones and attenuation are runtime calibration estimates. No generic emissive windows, new visible fixture meshes, property/ground change or road-light-pool substitution. Foundation height comes from the actual emitted hotel landmark."
+}

@@ -163,13 +163,19 @@ def working_apron(scene: CircuitScene) -> None:
                            source.boom_height_m - radius + radius * math.sin(angle)))
         tip = apron_floor_point(scene, route, source, anchor, source.boom_reach_m, source.boom_height_m)
         members.append(tip)
-        for member_start, member_end in pairwise(members):
-            scene.beam("Building_JeddahPitEquipment", "White", member_start, member_end, .20, .28)
+        scene.beam("Building_JeddahPitEquipmentCasing", "White", base, elbow, .38, .46)
+        for member_start, member_end in pairwise(members[1:]):
+            scene.beam("Building_JeddahPitEquipment", "White", member_start, member_end, .28, .40)
+        accent = "Red" if garage_centre == 11.5 else "Green"
+        accent_start = apron_floor_point(scene, route, source, anchor, source.boom_reach_m - .65, source.boom_height_m)
+        scene.beam("Building_JeddahPitEquipmentAccent", accent, accent_start, tip, .285, .405)
         underside = apron_floor_point(scene, route, source, anchor, .45 + radius,
                                      source.boom_height_m - .15)
         scene.beam("Building_JeddahPitEquipment", "Black", underside,
                    (tip[0], tip[1], tip[2] - .15), .08, .035)
-        scene.beam("Building_JeddahPitEquipment", "Black", tip, (tip[0], tip[1], tip[2] - .55), .035)
+        hose_top = apron_floor_point(scene, route, source, anchor, source.boom_reach_m - .1, source.boom_height_m - .16)
+        hose_bottom = apron_floor_point(scene, route, source, anchor, source.boom_reach_m - .1, .45)
+        scene.beam("Building_JeddahPitEquipmentHose", "Black", hose_top, hose_bottom, .028)
 
     limiter_signs(scene, route)
     distances = [section.distance for section in route.sections]

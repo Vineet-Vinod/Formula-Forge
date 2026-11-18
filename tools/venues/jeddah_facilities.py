@@ -8,6 +8,12 @@ from circuit_scene import CircuitScene
 from shapely.geometry import Polygon
 
 from venues.east_architecture import footprint_stand, frame
+from venues.jeddah_pit_details import (
+    detail_source,
+    garage_detail,
+    pit_workstations,
+    upper_bay,
+)
 from venues.jeddah_pits import (
     pit_floor_point,
     pit_route_source,
@@ -21,6 +27,7 @@ PIT_END = 115.0
 
 def pit_compound(scene: CircuitScene) -> None:
     route = pit_route_source()
+    detail = detail_source()
     samples = [scene.at(PIT_START + index * 10) for index in range(29)]
     front_ring = [sample.point(-sample.half_width - 13)[:2] for sample in samples]
     rear_ring = [
@@ -59,11 +66,7 @@ def pit_compound(scene: CircuitScene) -> None:
             if level == 4:
                 continue
             if level == 0:
-                scene.banner(
-                    pit_floor_point(a, section_a, front_a - 4, .15),
-                    pit_floor_point(b, section_b, front_b - 4, .15),
-                    3.85, "Black", "Building_JeddahPitGarageInteriors",
-                )
+                garage_detail(scene, a, b, front_a, front_b, detail)
                 for sample, section, lane in ((a, section_a, front_a), (b, section_b, front_b)):
                     scene.banner(
                         pit_floor_point(sample, section, lane - .18, .10),
@@ -81,11 +84,7 @@ def pit_compound(scene: CircuitScene) -> None:
                     a.point(front_a, 4.15), b.point(front_b, 4.15), .3, .55,
                 )
             else:
-                scene.banner(
-                    a.point(front_a + .04, height + .35),
-                    b.point(front_b + .04, height + .35),
-                    3.3, "Glass", "Building_JeddahPitLounges",
-                )
+                upper_bay(scene, a, b, front_a, front_b, height, detail)
             scene.banner(
                 a.point(front_a - depth, height + 0.25),
                 b.point(front_b - depth, height + 0.25),
@@ -93,23 +92,6 @@ def pit_compound(scene: CircuitScene) -> None:
                 "White",
                 "Building_JeddahPitRear",
             )
-            if level > 0:
-                for lift in (0.0, 0.35):
-                    scene.beam(
-                        "Building_JeddahPitBalconies",
-                        "White",
-                        a.point(front_a + 1.25, height + lift),
-                        b.point(front_b + 1.25, height + lift),
-                        2.5,
-                        0.23,
-                    )
-                scene.beam(
-                    "Building_JeddahPitBalconies",
-                    "Steel",
-                    a.point(front_a + 2.35, height + 1.1),
-                    b.point(front_b + 2.35, height + 1.1),
-                    0.065,
-                )
         for lane_a, lane_b in ((front_a, front_b), (front_a - depth, front_b - depth)):
             scene.beam(
                 "Building_JeddahPitFrame",
@@ -210,6 +192,7 @@ def pit_compound(scene: CircuitScene) -> None:
     )
 
     working_apron(scene)
+    pit_workstations(scene)
 
 
 def mapped_stands(scene: CircuitScene) -> None:

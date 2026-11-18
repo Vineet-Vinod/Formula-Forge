@@ -16,3 +16,15 @@ class PitExitReconstruction:
     track_side_mask_extent_m: Annotated[FiniteFloat, Field(gt=0)]
     retained_height_m: Annotated[FiniteFloat, Field(gt=0)]
     source_note: str
+
+
+@dataclass(frozen=True)
+class PitExitFrontage:
+    floor_levels_m: tuple[FiniteFloat, FiniteFloat, FiniteFloat]
+    roof_height_m: Annotated[FiniteFloat, Field(gt=0)]
+    slab_thickness_m: Annotated[FiniteFloat, Field(gt=0)]
+    room_setback_m: Annotated[FiniteFloat, Field(gt=0)]
+    glazing_setback_m: Annotated[FiniteFloat, Field(gt=0)]
+    bay_pitch_m: Annotated[FiniteFloat, Field(gt=0)]
+    guard_height_m: Annotated[FiniteFloat, Field(gt=0)]
+    source_note: str

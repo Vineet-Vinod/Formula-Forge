@@ -10,11 +10,13 @@
 #include "Engine/ExponentialHeightFog.h"
 #include "Engine/PostProcessVolume.h"
 #include "Engine/SkyLight.h"
+#include "Engine/SpotLight.h"
 #include "Engine/StaticMesh.h"
 #include "Engine/StaticMeshActor.h"
 #include "Engine/TextureCube.h"
 #include "Engine/World.h"
 #include "GameFramework/PlayerController.h"
+#include "HAL/IConsoleManager.h"
 #include "Materials/MaterialInterface.h"
 #include "Misc/CommandLine.h"
 #include "Misc/FileHelper.h"
@@ -29,11 +31,22 @@ AFFJeddahNight::AFFJeddahNight() {
 
 void AFFJeddahNight::BeginPlay() {
     Super::BeginPlay();
+    IConsoleVariable* injection = IConsoleManager::Get().FindConsoleVariable(TEXT("r.LightGridInjection.UseSpecializationConstants"));
+    if (injection != nullptr) {
+        PreviousLightInjection = injection->GetInt();
+        if (PreviousLightInjection != 0) {
+            // The experimental Vulkan kernel drops local lights on the supported Linux renderer.
+            injection->Set(0, ECVF_SetByCode);
+            RestoreLightInjection = injection->GetInt() == 0;
+        }
+    }
     UWorld* world = GetWorld();
     ADirectionalLight* fill = world->SpawnActor<ADirectionalLight>(FVector::ZeroVector, FRotator(-70, 126, 0));
     UDirectionalLightComponent* light = CastChecked<UDirectionalLightComponent>(fill->GetLightComponent());
     light->SetMobility(EComponentMobility::Movable);
-    light->SetIntensity(0.45f);
+    float fillIntensity = 1.6f;
+    FParse::Value(FCommandLine::Get(), TEXT("FFJeddahFill="), fillIntensity);
+    light->SetIntensity(FMath::IsFinite(fillIntensity) ? FMath::Clamp(fillIntensity, 0.0f, 4.0f) : 1.6f);
     light->SetLightColor(FLinearColor(0.80f, 0.88f, 1.0f));
     light->SetCastShadows(false);
     ASkyLight* sky = world->SpawnActor<ASkyLight>();
@@ -77,12 +90,13 @@ void AFFJeddahNight::BeginPlay() {
     settings.ScreenSpaceReflectionIntensity = 0;
     FParse::Value(FCommandLine::Get(), TEXT("FFJeddahLightScale="), LightScale);
     LightScale = FMath::IsFinite(LightScale) ? FMath::Clamp(LightScale, 0.0f, 8.0f) : 1.0f;
-    LoadFixtures();
+    LoadFixtures(TEXT("night_lights.csv"), Fixtures);
     for (int32 index = 0; index < FMath::Min(10, Fixtures.Num()); ++index) {
-        USpotLightComponent* spot = NewObject<USpotLightComponent>(this);
-        spot->SetupAttachment(GetRootComponent());
+        ASpotLight* fixtureActor = world->SpawnActor<ASpotLight>();
+        USpotLightComponent* spot = CastChecked<USpotLightComponent>(fixtureActor->GetLightComponent());
         spot->SetMobility(EComponentMobility::Movable);
         spot->bUseInverseSquaredFalloff = false;
+        spot->SetIntensityUnits(ELightUnits::Unitless);
         spot->LightFalloffExponent = 2.0f;
         spot->SetAttenuationRadius(5800);
         spot->SetInnerConeAngle(35);
@@ -94,15 +108,61 @@ void AFFJeddahNight::BeginPlay() {
         spot->SetCastShadows(index == 0);
         spot->ShadowResolutionScale = 0.5f;
         spot->ShadowBias = 0.4f;
-        spot->RegisterComponent();
         Lights.Add(spot);
     }
+    TArray<FFJeddahFixture> architecturalFixtures;
+    LoadFixtures(TEXT("edition_lights.csv"), architecturalFixtures);
+    for (const FFJeddahFixture& fixture : architecturalFixtures) {
+        ASpotLight* fixtureActor = world->SpawnActor<ASpotLight>();
+        USpotLightComponent* spot = CastChecked<USpotLightComponent>(fixtureActor->GetLightComponent());
+        spot->SetMobility(EComponentMobility::Movable);
+        spot->bUseInverseSquaredFalloff = false;
+        spot->SetIntensityUnits(ELightUnits::Unitless);
+        spot->LightFalloffExponent = 2.0f;
+        spot->SetAttenuationRadius(3500);
+        spot->SetInnerConeAngle(40);
+        spot->SetOuterConeAngle(65);
+        spot->SetLightColor(FLinearColor(1.0f, 0.86f, 0.68f));
+        spot->SetIntensity(1.8f * fixture.power);
+        spot->SetCastShadows(false);
+        spot->SetWorldLocation(fixture.positionCm);
+        spot->SetWorldRotation((fixture.targetCm - fixture.positionCm).Rotation());
+    }
+    LoadFixtures(TEXT("pit_interior_lights.csv"), GarageFixtures);
+    for (int32 index = 0; index < FMath::Min(4, GarageFixtures.Num()); ++index) {
+        ASpotLight* fixtureActor = world->SpawnActor<ASpotLight>();
+        USpotLightComponent* spot = CastChecked<USpotLightComponent>(fixtureActor->GetLightComponent());
+        spot->SetMobility(EComponentMobility::Movable);
+        spot->bUseInverseSquaredFalloff = false;
+        spot->SetIntensityUnits(ELightUnits::Unitless);
+        spot->LightFalloffExponent = 2.0f;
+        spot->SetAttenuationRadius(1400);
+        spot->SetInnerConeAngle(50);
+        spot->SetOuterConeAngle(80);
+        spot->SetLightColor(FLinearColor(0.94f, 0.97f, 1.0f));
+        spot->SetIntensity(0);
+        spot->SetCastShadows(false);
+        GarageLights.Add(spot);
+    }
     UpdateLights();
+    UE_LOG(LogTemp, Display, TEXT("Jeddah night lighting: %d local fixtures; light-grid specializations=%d."),
+        Lights.Num(), injection != nullptr ? injection->GetInt() : -1);
 }
 
-void AFFJeddahNight::LoadFixtures() {
+void AFFJeddahNight::EndPlay(const EEndPlayReason::Type reason) {
+    if (RestoreLightInjection) {
+        IConsoleVariable* injection = IConsoleManager::Get().FindConsoleVariable(TEXT("r.LightGridInjection.UseSpecializationConstants"));
+        if (injection != nullptr) {
+            injection->Set(PreviousLightInjection, ECVF_SetByCode);
+            UE_LOG(LogTemp, Display, TEXT("Jeddah light injection restored to %d."), PreviousLightInjection);
+        }
+    }
+    Super::EndPlay(reason);
+}
+
+void AFFJeddahNight::LoadFixtures(const TCHAR* filename, TArray<FFJeddahFixture>& fixtures) {
     TArray<FString> rows;
-    const FString path = FPaths::ProjectContentDir() / TEXT("Generated/Jeddah/Data/night_lights.csv");
+    const FString path = FPaths::ProjectContentDir() / TEXT("Generated/Jeddah/Data") / filename;
     if (!FFileHelper::LoadFileToStringArray(rows, *path)) {
         UE_LOG(LogTemp, Error, TEXT("Missing Jeddah floodlight registration: %s"), *path);
         return;
@@ -118,11 +178,11 @@ void AFFJeddahNight::LoadFixtures() {
             valid &= FMath::IsFinite(values[field]) && FMath::Abs(values[field]) < 10000000;
         }
         if (valid && values[6] > 0 && values[6] <= 4) {
-            Fixtures.Add({FVector(values[0], values[1], values[2]),
+            fixtures.Add({FVector(values[0], values[1], values[2]),
                 FVector(values[3], values[4], values[5]), static_cast<float>(values[6])});
         }
     }
-    UE_LOG(LogTemp, Display, TEXT("Jeddah floodlights: %d registered fixtures, ten local lights."), Fixtures.Num());
+    UE_LOG(LogTemp, Display, TEXT("Jeddah %s: %d registered fixtures."), filename, fixtures.Num());
 }
 
 void AFFJeddahNight::Tick(float deltaSeconds) {
@@ -132,19 +192,23 @@ void AFFJeddahNight::Tick(float deltaSeconds) {
 
 void AFFJeddahNight::UpdateLights() {
     APlayerController* player = GetWorld()->GetFirstPlayerController();
-    if (player == nullptr || player->GetPawn() == nullptr) return;
-    const FVector position = player->GetPawn()->GetActorLocation();
-    TArray<int32> ordered;
-    ordered.Reserve(Fixtures.Num());
-    for (int32 index = 0; index < Fixtures.Num(); ++index) ordered.Add(index);
-    ordered.Sort([&](int32 first, int32 last) {
-        return FVector::DistSquared2D(position, Fixtures[first].targetCm) <
-            FVector::DistSquared2D(position, Fixtures[last].targetCm);
-    });
-    for (int32 index = 0; index < Lights.Num(); ++index) {
-        const FFJeddahFixture& fixture = Fixtures[ordered[index]];
-        Lights[index]->SetWorldLocation(fixture.positionCm);
-        Lights[index]->SetWorldRotation((fixture.targetCm - fixture.positionCm).Rotation());
-        Lights[index]->SetIntensity(1.8f * fixture.power * LightScale);
-    }
+    const FVector position = player != nullptr ? player->GetFocalLocation() : GetActorLocation();
+    const auto update = [&](const TArray<FFJeddahFixture>& fixtures,
+            const TArray<TObjectPtr<USpotLightComponent>>& lights) {
+        TArray<int32> ordered;
+        ordered.Reserve(fixtures.Num());
+        for (int32 index = 0; index < fixtures.Num(); ++index) ordered.Add(index);
+        ordered.Sort([&](int32 first, int32 last) {
+            return FVector::DistSquared2D(position, fixtures[first].targetCm) <
+                FVector::DistSquared2D(position, fixtures[last].targetCm);
+        });
+        for (int32 index = 0; index < lights.Num(); ++index) {
+            const FFJeddahFixture& fixture = fixtures[ordered[index]];
+            lights[index]->SetWorldLocation(fixture.positionCm);
+            lights[index]->SetWorldRotation((fixture.targetCm - fixture.positionCm).Rotation());
+            lights[index]->SetIntensity(1.8f * fixture.power * LightScale);
+        }
+    };
+    update(Fixtures, Lights);
+    update(GarageFixtures, GarageLights);
 }

@@ -1,0 +1,34 @@
+{
+  "date": "2026-11-18",
+  "scope": "Jeddah only; installed engine and shared renderer configuration unchanged.",
+  "reference": {
+    "video": "Saved/Refs/jeddah.mp4",
+    "video_sha256": "c2c78fb500a241a595aa6108bf797114332a747a83ab280b2a49d2cd9b8dcf78",
+    "night_sequence_seconds": [
+      612,
+      628
+    ],
+    "architecture_only_seconds": 331.06,
+    "time_policy": "Late pit visit establishes the fixed night environment; earlier blue-hour T13 establishes architecture, not night sky brightness."
+  },
+  "runtime": {
+    "source": "Source/FormulaForge/FFJeddahNight.cpp",
+    "fixture_csv_units": "Unreal world centimetres: -100*north, -100*east, 100*height",
+    "road_lights": "Ten nearest registered targets, updated every0.2s; nearest light casts shadows. Fixture power is an appearance estimate, not measured photometry.",
+    "architectural_lights": "Independent fixed facade fixtures, so distant buildings cannot starve or displace the road pool.",
+    "directional_fill": 1.6,
+    "sky_reflection": "Original generated gradient imported as a native HDR TextureCube; no reference pixels shipped.",
+    "garage_lights": "Four nearest registered interior fixtures in a separate pool, so the working apron and distant road fixtures cannot displace workshop lighting."
+  },
+  "vulkan_workaround": {
+    "engine_version": "5.8.3-58210709+++UE5+Release-5.8",
+    "cvar": "r.LightGridInjection.UseSpecializationConstants",
+    "during_jeddah": 0,
+    "on_end_play": "Restore the value saved on entry.",
+    "evidence": "Same native pit geometry and camera, fixed intensity, HZB toggled independently: specialization1 leaves local light absent; specialization0 restores local illumination. Default fixture power also works with specialization0 and HZB1. Valid scene proxies and initial zero-to-positive intensity were separately checked.",
+    "engine_source": "Engine/Source/Runtime/Renderer/Private/LightGridInjection.cpp",
+    "limit": "Identifies a failing experimental shader path on the tested Linux Vulkan renderer. It does not establish an underlying compiler or hardware defect.",
+    "diagnostic_receipt_sha256": "59d66f0615469c549a744b9ae69bf1870e5c64318ca6b09b6fa9d4dc89592a94"
+  },
+  "acceptance": "Renderer-path diagnosis and source registration only. Final native graphics acceptance requires new packaged captures and whole-lap review."
+}

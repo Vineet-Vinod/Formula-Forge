@@ -1,0 +1,10 @@
+{
+  "floor_levels_m": [0, 4.2, 8.2],
+  "roof_height_m": 12.4,
+  "slab_thickness_m": 0.48,
+  "room_setback_m": 1.8,
+  "glazing_setback_m": 0.025,
+  "bay_pitch_m": 3.6,
+  "guard_height_m": 1.08,
+  "source_note": "Supplied628/629.8/631s shows the left pit-exit stand/service frontage with pale layered slabs, dark upper occupied bands, deep terrace recesses and fine transparent/metal guards. Model the pale ground terrace plus two upper room bands; 0/4.2/8.2m floors,12.4m roof and0.48m slabs are visual section estimates with approximately3m total-height uncertainty, not measured storeys. This supersedes the generic10m two-row appearance estimate without changing the separately qualified open-exit footprint mask or route. Glazing bay pitch and hidden rear are conservative estimates; no invented team signs or roof over the fast lane. Reuse existing private EDITION pale stone/dark room/transparent guard materials rather than bright blue generic glass. Existing building datum is inherited ground estimate; no terrain or physical route changes."
+}
