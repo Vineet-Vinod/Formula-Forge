@@ -1235,6 +1235,34 @@ only by changing its wording. Numeric checks and visual review should challenge
 each other. A positive reviewer verdict does not override a demonstrated gap,
 invalid lap route or terrain spike.
 
+For night venues, verify the actual local-light selection as well as fixture positions.
+Jeddah's four-nearest workshop pool omitted lights from distant visible lobby bays;
+the separate frontage needs its own bounded fixed lights. Audit runtime positions,
+targets and intensity, then compare the same packaged camera. Road irradiance
+fields also attenuate raised signage differently from the lit road. Calibrate such
+panels privately instead of brightening the entire scene.
+
+Route overlay and base architecture assets must have disjoint object names. A
+partial import can silently overwrite a building tile with a pit surface while
+still producing valid assets. Validate unique render-index names, preserve the
+current base-manifest hash in the overlay dependency, and check unchanged private
+materials by hash when importing only geometry.
+
+Register review findings against the original video, physical pose and coordinate
+frame. A pit-axis lane offset and a road-axis lane value can describe the same car
+position. Reverse external footage does not prove that equipment hidden by the
+cockpit is missing. Inspect the whole packed scene for occlusion, and revisit
+critic notes when the direct source contradicts them. A scoped facade approval
+still needs a fresh complete-lap and pit review.
+
+Review every visible side of a building. A qualified pit-facing frontage does not
+justify copying it onto an unseen rear. In Jeddah, tracing the actual packed
+first-hit surfaces identified the same property across the circuit: the video
+showed a stand and lower arcade where the model had extrapolated glass rooms.
+Correct that elevation while preserving the approved face and road-cleared
+parts. For a split property, intersect new seating, arches and roof supports
+with each part at every depth so they cannot span the live road between them.
+
 ## 11. Check performance without trading away the baseline
 
 Use the same machine, resolution, render scale, AA, quality preset and camera for
