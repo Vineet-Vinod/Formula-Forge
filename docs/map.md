@@ -1255,6 +1255,12 @@ cockpit is missing. Inspect the whole packed scene for occlusion, and revisit
 critic notes when the direct source contradicts them. A scoped facade approval
 still needs a fresh complete-lap and pit review.
 
+Capture braking boards before the car reaches them. A view taken at the board's
+station can crop a correctly placed panel beside the cockpit. Check readable
+digits at approach distance, then trace the packed opaque geometry if a post
+crosses the lettering. Keep supports behind the panel and distinguish masked
+catchfence intersections from solid obstructions.
+
 Review every visible side of a building. A qualified pit-facing frontage does not
 justify copying it onto an unseen rear. In Jeddah, tracing the actual packed
 first-hit surfaces identified the same property across the circuit: the video

@@ -1,0 +1,223 @@
+{
+  "date_utc": "2026-11-18T19:53:39.655493+00:00",
+  "scope": "Focused Jeddah reconstruction. The broader 18-map modeling work remains incomplete.",
+  "tested_code_and_assets_revision": "b6f2ca19813d332a57c0f7aa9a273dd1e4c32b33",
+  "package_payload_sha256": {
+    "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.pak": "e57edcb8e33da6b0ac70739cae87526a82dc42db62f8d7fa9d40e381fd79d9e3",
+    "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.ucas": "2bbe1394ebfe73818950453b3f2c463b2a66ecbce65dacfee5668968dd444a81",
+    "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.utoc": "4db5bab74515149bd4617bbc8660c83855f40fb27f387c1373b55c46211463c6",
+    "build/unreal/package/Linux/FormulaForge/Content/Paks/global.ucas": "88139f43850978edfb78c66a2afcdec7bc9be57914a6321953e0b8347469c6bc",
+    "build/unreal/package/Linux/FormulaForge/Content/Paks/global.utoc": "d9d6b6d071d37e17a9c166b85d7407237cdb6fc94a719af162097a6e3c3c7b25",
+    "build/unreal/package/Linux/FormulaForge/Binaries/Linux/FormulaForge": "83dd5d8e88892807a73a6319aaaf72553c1b56656ec5e38c94053ed2c5cc7192"
+  },
+  "final_capture_integrity": {
+    "package_pin_sha256": "68d4bb844339343e90e0463f011e6c306ab71f1773bec9e4eaa43face7a9ba73",
+    "revision": "b6f2ca19813d332a57c0f7aa9a273dd1e4c32b33",
+    "lap_frames": 5006,
+    "pit_frames": 2904,
+    "lap_video_sha256": "6a4d055c3ad6cf543aade4308628c6a49e38f637b7c829c20a408d53489776e9",
+    "pit_video_sha256": "cd43d9dc291531f3bb61b0b31b8ac375938454238a8320f1f948678e18b85d0d",
+    "all_pin_copies_and_payloads_exact": true,
+    "all_archives_hash_verified": true,
+    "full_lap_clean": true,
+    "pit_clean": true,
+    "selected_originals": 128,
+    "sheets": 15,
+    "settled_Jeddah_views": 26
+  },
+  "reference": {
+    "path": "Saved/Refs/jeddah.mp4",
+    "sha256": "c2c78fb500a241a595aa6108bf797114332a747a83ab280b2a49d2cd9b8dcf78",
+    "pit_sequence_s": [
+      608,
+      635
+    ],
+    "registration": "Edited video; align by corner, limiter boards and landmarks rather than linear elapsed time."
+  },
+  "changes": [
+    "Close continuous source-specific walls, high T13 inner protection and no retraced stray segments.",
+    "Local first-sequence and technical runoff paint, retained finite T27 escape and source-style boards.",
+    "Jeddah-only night sky, working Vulkan local illumination, hotel washes and garage-room lights.",
+    "Layered EDITION and open-exit architecture; recessed workshops and separate glazed entry hospitality wing.",
+    "Three bounded mosque porch washes with unchanged hotel/road/interior fixtures.",
+    "Four-metre pit fast lane with one-sided working support, separator paint, stop guides and registered limiter entry/exit.",
+    "Close open-sky pit-exit walls and continuous raised personnel platform, rail and Armco.",
+    "Close Qatar pit-entry approach with legible source-style Salesforce gantry.",
+    "Source-based exposed construction core with a complete low crane space frame; local technical-sector broadleaf belt.",
+    "Corniche Mosque dome, loggia and round minaret registered to T22; finite founded footprint.",
+    "Two source-calibrated DHL workshop fascia bands, service rig housings and enclosed pit-wall consoles at unchanged anchors.",
+    "Nine marker supports moved 6cm behind unchanged board faces, with all 27 digit-centre rays clear.",
+    "T22-facing arched pavilion and open stand within the existing two road-cleared parts; approved pit-facing surfaces and roof preserved. Finite T22 MSC panels use original private artwork."
+  ],
+  "preservation": {
+    "geometry_files": [
+      {
+        "path": "Content/Generated/Jeddah/Data/buildings.bin",
+        "baseline": "fd494442",
+        "sha256": "7e429e2da5a9f6a9d3cfd33641917b8ba942df48dea762ffd43c6dd6d41c3959",
+        "unchanged": true
+      },
+      {
+        "path": "Content/Generated/Jeddah/Data/drive_surface.bin",
+        "baseline": "fd494442",
+        "sha256": "86ac9b9b678308d892ee45f96061bee4ae87afbda9aaf7791eb9bc0166c365e6",
+        "unchanged": true
+      },
+      {
+        "path": "Content/Generated/Jeddah/Data/terrain.bin",
+        "baseline": "fd494442",
+        "sha256": "a30c782d9e70e53575eaa3a1295d86b00eeca559983b25de642725c36fdfe647",
+        "unchanged": true
+      },
+      {
+        "path": "Content/Generated/Jeddah/Data/track_limits.bin",
+        "baseline": "fd494442",
+        "sha256": "4a5b59668b05add5efeb47e6e98b55a7a31704978acb886f9009c16c8defb5a7",
+        "unchanged": true
+      },
+      {
+        "path": "Content/Generated/Jeddah/Data/pit_lane.bin",
+        "baseline": "54ada864",
+        "sha256": "78b99f8f4b6817776b2161e675561c33ba8d99bc6755eb88b211c78db57a78a4",
+        "unchanged": true
+      }
+    ],
+    "final_namespace_and_material_proof": {
+      "protected_geometry_exact": true,
+      "all96_material_assets_byte_exact_to_candidate16": true,
+      "original89_exact": true,
+      "all_non_post_geometry_normals_UVs_materials_exact": true,
+      "changed_triangles": 108,
+      "changed_post_groups": 9,
+      "base_route_asset_names_disjoint": true,
+      "unique_render_names": true,
+      "route_depends_on_base_manifest": true,
+      "base_assets": 146,
+      "route_assets": 9,
+      "cosmetic_portals": 409,
+      "marker_only_proof_sha256": "4b6203e59b7672832a23bc6ace22711f75d4112d372fd480d32c204882655ab0",
+      "central_digit_visibility_proof_sha256": "55221f35fe9853cddc0882caa651c8ec7643991574bf7c314a5b417b224c3e69"
+    },
+    "other_pinned_venues_byte_exact_to_candidate6": true,
+    "handling_speed_shifting_camera": "unchanged"
+  },
+  "checks": {
+    "source_suite": "184 focused pytest checks passed; mypy checked 228 source files and Ruff passed; rebuild-source.log.",
+    "route_checks": "Native FFPIT1/2/3 compatibility, layered support and legality audits; 15 Python route/escape tests; mypy and Ruff passed.",
+    "native_editor": "PortalClipping and MapHandedness passed in editor-check5-full.log; editor implementation unchanged afterward.",
+    "physics_and_camera": "Supported circuit, camera and rendered surface regression audits passed; physics-camera-regression.log.",
+    "build": "Guarded Unreal build and incremental package17 passed.",
+    "physical_pit": {
+      "slug": "jeddah",
+      "pass": true,
+      "contacts": 0,
+      "active_pit_samples": 370,
+      "inactive_controlled_samples": 0,
+      "maximum_ground_error_m": 0.0230384,
+      "maximum_progress_jump_m": 10.917
+    }
+  },
+  "live_lap": {
+    "frame_count": 5006,
+    "completed_laps_during_recording": 1,
+    "valid_last_completed_live_lap": true,
+    "clean_live_recording": true,
+    "contact_frames": 0,
+    "offtrack_frames": 0,
+    "airborne_frames": 0,
+    "invalid_lap_frames": 0,
+    "station_bin_count": 125,
+    "selected_image_count": 128
+  },
+  "live_pit": {
+    "status": "PASS trajectory/state gates",
+    "frames": 2904,
+    "distance_bins": 100,
+    "barrier_contact_ticks": 0,
+    "airborne_ticks": 0,
+    "overspeed_ticks": 0,
+    "maximum_center_deviation_m": 0.293025551004488,
+    "maximum_ground_error_m": 0.025894335308198624,
+    "controlled_maximum_ground_error_m": 0.0001318983832621079,
+    "limit_transitions": [
+      {
+        "simulation_s": 0.0,
+        "distance_m": 1.6156651431464838e-05,
+        "pit_lane": false,
+        "limit_kph": 0.0
+      },
+      {
+        "simulation_s": 30.53333333333224,
+        "distance_m": 268.43408129094576,
+        "pit_lane": true,
+        "limit_kph": 80.0
+      },
+      {
+        "simulation_s": 60.608333333330535,
+        "distance_m": 604.1542268245821,
+        "pit_lane": true,
+        "limit_kph": 0.0
+      }
+    ]
+  },
+  "review": {
+    "model": "gpt-6-luna",
+    "effort": "high",
+    "registration": {
+      "thread_id": "01a1eec6-efdf-74f1-b8ef-f28dd9902632",
+      "requested_model": "gpt-6-luna",
+      "verified_turn_context_model": "gpt-6-luna",
+      "verified_effort": "high",
+      "evidence": "New reviewer task own rollout turn_context, checked2026-11-18. It is the reviewer itself, not a nested collaboration agent."
+    },
+    "report": "build/reviews/jeddah-focused-20261118/final-native-review.md",
+    "report_sha256": "dd847f68154e986fcb919d84995ee72515e0013a5e805c196231911eb0749b27",
+    "verdict": "PASS, as recorded in the independently inspected final report",
+    "evidence_manifest": {
+      "path": "build/reviews/jeddah-focused-20261118/final17-review-hashes.json",
+      "sha256": "9c9db6b970d4d7727a57f7632cc986fbfc118f7b10c2dbf45b3289ba031b8aea",
+      "files_verified_after_cleanup": 746
+    }
+  },
+  "evidence": {
+    "build/reviews/jeddah-focused-20261118/package17-pin.json": "68d4bb844339343e90e0463f011e6c306ab71f1773bec9e4eaa43face7a9ba73",
+    "build/reviews/jeddah-focused-20261118/candidate17-scenes/index.json": "41516006161d8a21e98e5d07faa60432e49d0bbb690c8d024d4ad7d1df02a8ea",
+    "build/reviews/jeddah-focused-20261118/candidate17-lap/index.json": "bcce0ba9f61d236f4b2da6c913c1b57ca00dd4520c8d9ade95a89985ae2576a1",
+    "build/reviews/jeddah-focused-20261118/candidate17-lap/summary.json": "90533c754518c7d068d0e0f288f13cadb40828343216d2a7c14969151df29ccc",
+    "build/reviews/jeddah-focused-20261118/candidate17-lap/archive.json": "883d575eace7e005d8c3622e20af612ad541eed5846f32e75b70e1a03a8bcd8d",
+    "build/reviews/jeddah-focused-20261118/candidate17-pit/summary.json": "e19f422bdc6e95a370709ebaed5885b914bdd4a397d56790060b317d78f9b52f",
+    "build/reviews/jeddah-focused-20261118/candidate17-pit/archive.json": "3e2a694d1b1f6ad42b7f978eeccc6ca4a116a641afba1c102e59c3b0773ea2cc",
+    "build/reviews/jeddah-focused-20261118/candidate17-pit/complete-pit.mp4": "cd43d9dc291531f3bb61b0b31b8ac375938454238a8320f1f948678e18b85d0d",
+    "build/reviews/jeddah-focused-20261118/candidate17-lap/complete-lap.mp4": "6a4d055c3ad6cf543aade4308628c6a49e38f637b7c829c20a408d53489776e9",
+    "build/reviews/jeddah-focused-20261118/marker-only17-proof.json": "4b6203e59b7672832a23bc6ace22711f75d4112d372fd480d32c204882655ab0",
+    "build/reviews/jeddah-focused-20261118/distance-board-diagnosis/source17/packed-board-visibility.json": "55221f35fe9853cddc0882caa651c8ec7643991574bf7c314a5b417b224c3e69"
+  },
+  "resources": {
+    "machine_used_peak_bytes": 8249937920,
+    "minimum_free_disk_bytes": 39310073856,
+    "guard_tripped": false,
+    "heavy_jobs": "One at a time under the shared lock; 4.3GB service cap, no swap; total machine stop threshold 10GB."
+  },
+  "limits": [
+    "Video-derived dimensions and photometry are estimates, not a survey. Pit lane 4m; limiter placement source estimate ±5m.",
+    "Hospitality wing 5950–6009m: start ±15m/depth 8±3m; exact panes, hidden rooms and fixture inventory estimated.",
+    "EDITION massing/lighting, crane dimensions, finite technical treeline and open-exit source variant retain their provenance qualifications.",
+    "T22 arcade/row counts and dimensions are estimates; the inherited plinth and partly buried base are preserved, with clear openings tested.",
+    "Corniche Mosque is label-point registered plus/minus 15m, not a surveyed footprint. Published 195m² floor constrains its 200.96m² estimated plan; height and subelement positions remain architectural estimates.",
+    "Pit diagnostic drives 40km/h; it does not prove limiter saturation or a gameplay pitstop mechanic.",
+    "Captures are instrumented at 1600×900 and 30fps, not uncaptured performance or other-hardware proof."
+  ],
+  "cleanup": {
+    "final_review_manifest_files_byte_exact_after": 746,
+    "cook_cache_removed_bytes": 6326519973,
+    "superseded_videos_removed": 221,
+    "superseded_video_bytes": 2321321421,
+    "reclaimed_allocated_bytes": 8677163008,
+    "free_disk_bytes_before": 42130722816,
+    "free_disk_bytes_after": 50809167872,
+    "retirement_receipt": "build/reviews/jeddah-focused-20261118/cleanup-retirement17.json",
+    "retirement_receipt_sha256": "e8186e32227b19a531e0ebd08c656de8316e00661ecaf10f5b396c899901a979",
+    "reference_native_assets_native_data_and_package_byte_exact_after": true,
+    "preserved": "Original references, Content assets, game package, authoring/test caches, baseline archive, complete final17 archives, selected stills, telemetry and proofs."
+  }
+}
