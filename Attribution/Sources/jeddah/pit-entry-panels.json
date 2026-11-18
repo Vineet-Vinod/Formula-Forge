@@ -1,0 +1,234 @@
+{
+  "source_sections_sha256": "1f22d2af78a0fea7ea6a80c05a720d6a2f20c723984df9bc60704dc52235d7ed",
+  "source_encoded_pit_lane_sha256": "78b99f8f4b6817776b2161e675561c33ba8d99bc6755eb88b211c78db57a78a4",
+  "material": "PanelPurple",
+  "bottom_offset_m": 0.08,
+  "height_m": 0.8,
+  "inward_offset_m": 0.015,
+  "repeat_m": 6.4,
+  "walls": [
+    {
+      "source_barrier_index": 18,
+      "barrier": {
+        "ax": 62.60553750462707,
+        "ay": -213.69824286844897,
+        "bx": 62.23825469695967,
+        "by": -211.78470745135076,
+        "bottom": 2.8868,
+        "top": 3.8368,
+        "radius": 0.15
+      },
+      "start_fraction": 0.0,
+      "end_fraction": 1.0,
+      "route_start_distance_m": 248.8869979835495,
+      "route_end_distance_m": 250.79770578819085
+    },
+    {
+      "source_barrier_index": 19,
+      "barrier": {
+        "ax": 62.23825469695967,
+        "ay": -211.78470745135076,
+        "bx": 61.86513534738692,
+        "by": -209.86945979751744,
+        "bottom": 2.8868,
+        "top": 3.8368,
+        "radius": 0.15
+      },
+      "start_fraction": 0.0,
+      "end_fraction": 1.0,
+      "route_start_distance_m": 250.79770578819085,
+      "route_end_distance_m": 252.73388715167016
+    },
+    {
+      "source_barrier_index": 20,
+      "barrier": {
+        "ax": 61.86513534738692,
+        "ay": -209.86945979751744,
+        "bx": 61.49259795201749,
+        "by": -207.9541699749524,
+        "bottom": 2.8868,
+        "top": 3.8368,
+        "radius": 0.15
+      },
+      "start_fraction": 0.0,
+      "end_fraction": 1.0,
+      "route_start_distance_m": 252.73388715167016,
+      "route_end_distance_m": 254.31424903665277
+    },
+    {
+      "source_barrier_index": 21,
+      "barrier": {
+        "ax": 61.49259795201749,
+        "ay": -207.9541699749524,
+        "bx": 61.01537151903388,
+        "by": -206.0342313636651,
+        "bottom": 2.8868,
+        "top": 3.8368,
+        "radius": 0.15
+      },
+      "start_fraction": 0.0,
+      "end_fraction": 1.0,
+      "route_start_distance_m": 254.31424903665277,
+      "route_end_distance_m": 256.18037675349257
+    },
+    {
+      "source_barrier_index": 22,
+      "barrier": {
+        "ax": 61.01537151903388,
+        "ay": -206.0342313636651,
+        "bx": 60.50586618571893,
+        "by": -204.11332697846944,
+        "bottom": 2.8868,
+        "top": 3.8368,
+        "radius": 0.15
+      },
+      "start_fraction": 0.0,
+      "end_fraction": 1.0,
+      "route_start_distance_m": 256.18037675349257,
+      "route_end_distance_m": 258.1640546771954
+    },
+    {
+      "source_barrier_index": 23,
+      "barrier": {
+        "ax": 60.50586618571893,
+        "ay": -204.11332697846944,
+        "bx": 59.99642523864465,
+        "by": -202.1923124173845,
+        "bottom": 2.8868,
+        "top": 3.8368,
+        "radius": 0.15
+      },
+      "start_fraction": 0.0,
+      "end_fraction": 1.0,
+      "route_start_distance_m": 258.1640546771954,
+      "route_end_distance_m": 260.1478279027064
+    },
+    {
+      "source_barrier_index": 24,
+      "barrier": {
+        "ax": 59.99642523864465,
+        "ay": -202.1923124173845,
+        "bx": 59.48702931920315,
+        "by": -200.27130311627315,
+        "bottom": 2.8868,
+        "top": 3.8368,
+        "radius": 0.15
+      },
+      "start_fraction": 0.0,
+      "end_fraction": 1.0,
+      "route_start_distance_m": 260.1478279027064,
+      "route_end_distance_m": 261.82356046645856
+    },
+    {
+      "source_barrier_index": 25,
+      "barrier": {
+        "ax": 59.48702931920315,
+        "ay": -200.27130311627315,
+        "bx": 58.88034380048249,
+        "by": -198.36921600606954,
+        "bottom": 2.8868,
+        "top": 3.8368,
+        "radius": 0.15
+      },
+      "start_fraction": 0.0,
+      "end_fraction": 1.0,
+      "route_start_distance_m": 261.82356046645856,
+      "route_end_distance_m": 263.7718889032181
+    },
+    {
+      "source_barrier_index": 26,
+      "barrier": {
+        "ax": 58.88034380048249,
+        "ay": -198.36921600606954,
+        "bx": 58.25839034116879,
+        "by": -196.47015747205626,
+        "bottom": 2.8868,
+        "top": 3.8368,
+        "radius": 0.15
+      },
+      "start_fraction": 0.0,
+      "end_fraction": 1.0,
+      "route_start_distance_m": 263.7718889032181,
+      "route_end_distance_m": 265.7701882002264
+    },
+    {
+      "source_barrier_index": 27,
+      "barrier": {
+        "ax": 58.25839034116879,
+        "ay": -196.47015747205626,
+        "bx": 57.63623262212727,
+        "by": -194.57110347358008,
+        "bottom": 2.8868,
+        "top": 3.8368,
+        "radius": 0.15
+      },
+      "start_fraction": 0.0,
+      "end_fraction": 1.0,
+      "route_start_distance_m": 265.7701882002264,
+      "route_end_distance_m": 267.76854607299765
+    },
+    {
+      "source_barrier_index": 28,
+      "barrier": {
+        "ax": 57.63623262212727,
+        "ay": -194.57110347358008,
+        "bx": 57.01423020098662,
+        "by": -192.67196491807778,
+        "bottom": 2.8868,
+        "top": 3.8368,
+        "radius": 0.15
+      },
+      "start_fraction": 0.0,
+      "end_fraction": 1.0,
+      "route_start_distance_m": 267.76854607299765,
+      "route_end_distance_m": 269.743485796097
+    },
+    {
+      "source_barrier_index": 29,
+      "barrier": {
+        "ax": 57.01423020098662,
+        "ay": -192.67196491807778,
+        "bx": 56.378355171730114,
+        "by": -190.77756747455558,
+        "bottom": 2.8868,
+        "top": 3.8368,
+        "radius": 0.15
+      },
+      "start_fraction": 0.0,
+      "end_fraction": 1.0,
+      "route_start_distance_m": 269.743485796097,
+      "route_end_distance_m": 271.71993007652037
+    },
+    {
+      "source_barrier_index": 30,
+      "barrier": {
+        "ax": 56.378355171730114,
+        "ay": -190.77756747455558,
+        "bx": 55.738564159349096,
+        "by": -188.8844902789955,
+        "bottom": 2.8868,
+        "top": 3.8368,
+        "radius": 0.15
+      },
+      "start_fraction": 0.0,
+      "end_fraction": 0.14101939445707862,
+      "route_start_distance_m": 271.71993007652037,
+      "route_end_distance_m": 272.0
+    }
+  ],
+  "source": "Saved/Refs/jeddah.mp4, event/game year unverified. Direct retained608\u2013614 s sequence.",
+  "source_evidence": [
+    "build/reviews/jeddah-focused-20261118/pit-detail/reference-0611.jpg",
+    "build/reviews/jeddah-focused-20261118/pit-detail/reference-0612.jpg",
+    "build/reviews/jeddah-focused-20261118/pit-detail/reference-0613.jpg",
+    "build/reviews/jeddah-focused-20261118/candidate7-scenes/pit-entry-sign/view.jpg"
+  ],
+  "qualification": "608\u2013609 s approach is STC. Qatar marks the entry chicane from610 s. At611 s the HUD states40 m before the80 km/h line;612 s states5 m before it. With retained limiter distance268.249 m, this qualifies right-entry Qatar facing around228.25\u2013268.25 m.613\u2013614 s immediately show controlled Steel Armco/personnel walkway, whose authored start272 m is retained.",
+  "bounded_implemented_span_m": [
+    248.8869979835495,
+    272.0
+  ],
+  "source_span_uncertainty_m": 5,
+  "ownership": "Only existing positive/right pit replacement walls18\u201330, clipped at272 m; all exact wall records retained. Their actual near-pit faces are unbranded Concrete in the current candidate, separate from the farther racing-side Aramco layer. No change to that Aramco, physical walls, fast lane, portals, controlled Armco or personnel platform.",
+  "limits": "Direct footage also qualifies Qatar before248.887 m, but no suitable surviving near-side base barrier was identified by the bounded read-only CSV query for228.25\u2013248 m. That earlier face remains separately unqualified, not fabricated or painted in space. Height and material are reference-based; this is no new collision or survey claim. Continuous6.4 m repeat preserves the accepted8:1 artwork aspect at0.8 m panel height."
+}

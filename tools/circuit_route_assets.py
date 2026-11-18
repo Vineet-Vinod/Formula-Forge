@@ -140,9 +140,11 @@ def prepare(circuit: str, destination: Path, pit_path: Path | None, escape_path:
     street = circuit in {"baku", "jeddah", "monaco", "singapore", "lasvegas", "australia", "canada"}
     emit_protection(scene, [wall for wall in walls if wall not in walkway_rails], street)
     if circuit == "jeddah" and route is not None:
+        from venues.jeddah_pit_entry_panels import emit_entry_panels
         from venues.jeddah_pit_protection import emit_panels
 
         emit_panels(scene, route)
+        emit_entry_panels(scene, route)
     records = []
     for original_name, tile in sorted(scene.tiles.items()):
         name = original_name.replace("Tile_Street", "Tile_Route").replace("Building_City", "Tile_Route_Structure")
@@ -174,6 +176,9 @@ def prepare(circuit: str, destination: Path, pit_path: Path | None, escape_path:
             "Attribution/Sources/jeddah/pit-exit-protection.json",
             "tools/venues/jeddah_pit_protection.py",
             "tools/venues/jeddah_pit_protection_dataclasses.py",
+            "Attribution/Sources/jeddah/pit-entry-panels.json",
+            "tools/venues/jeddah_pit_entry_panels.py",
+            "tools/venues/jeddah_pit_entry_panels_dataclasses.py",
             "Attribution/Sources/jeddah/pit-personnel-walkway.json",
             "tools/venues/jeddah_pit_walkway.py",
             "tools/venues/jeddah_pit_walkway_dataclasses.py",

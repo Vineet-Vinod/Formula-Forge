@@ -1,50 +1,53 @@
 {
   "version": 1,
   "circuit": "jeddah",
-  "manifest_sha256": "124af437483fb360440b8f211f4e6b0c224da6a64e4d4698d478c9a2d7cedb3c",
+  "manifest_sha256": "bfa5aff7b84d5b75ead8a0bc723338305af1302968a9c8b6f3ab97806ac6ff32",
   "source_sha256": {
     "Attribution/Sources/jeddah/pit-lane-reconstruction.json": "2b8a29ff47b1dbfc340db73a3b72c6742d99feb32a4189a5c5f536d848a01dc1",
     "build/reviews/jeddah-focused-20261118/escape-overlay.json": "55ad953ae90658c256207dcf634d2192466838baa994608bd00aec421275cbb9",
     "Attribution/Sources/jeddah/pit-exit-protection.json": "8ccc9c88debb2364c8daac2a079f72512d48172a37b86da2e0ff92463c7cd378",
     "tools/venues/jeddah_pit_protection.py": "0cb350fc0081093701b5cc9d11c848d859836cc117d0960cc3fbbb746b061820",
     "tools/venues/jeddah_pit_protection_dataclasses.py": "d304833de1fce7ba969c1cf87d2587d6cbb36be5fc895c35593d4a662a027257",
+    "Attribution/Sources/jeddah/pit-entry-panels.json": "f30612e70f67f7b1b8a907c86e7837802463ed1e030c3a28908d57dfc27372f2",
+    "tools/venues/jeddah_pit_entry_panels.py": "304c63aac1a0bc671bbd8765f05d8d60555d49be69c8f0a8ba47238f140b3cac",
+    "tools/venues/jeddah_pit_entry_panels_dataclasses.py": "d39bd38c15c0bb2b886c504579555f479d12e98255d16c5dc2ea8df33637156f",
     "Attribution/Sources/jeddah/pit-personnel-walkway.json": "40058654f0f2527b33afa5cef629e79d5e81e128dc7eb11c1d08134b16939791",
     "tools/venues/jeddah_pit_walkway.py": "d95b1c4a939c21a86d52795463ee111089b204e034a3a7507f5f4d560f64b9eb",
     "tools/venues/jeddah_pit_walkway_dataclasses.py": "cbc336c856522da93171d922da5002489f1e82e40265f468f41721428f2d294f",
     "build/circuits/jeddah/barriers.csv": "9ec41d7c83ddaca05875baa4cd0d28b8de602fc07dcd95c09e01409d0c9be89e",
-    "build/circuits/jeddah/manifest.json": "ee474bcb4bd7da63471a21f1f76d39011844c7f7266b50c05f38f1d7cf160e26"
+    "build/circuits/jeddah/manifest.json": "97adbdcdb50dc8c66f7bc3638f9d12fd026e3b1ec4c5ac281fcd89b1525f2935"
   },
   "cosmetic_portal_count": 312,
   "native_edits": [
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_00_m1",
-      "triangles": 15088,
-      "sha256": "dfee06c54bd64c71aadd13c0bc9603f383a1911492d4d1a5510a1893ec793f46"
+      "triangles": 15361,
+      "sha256": "240da30191ae9ff86ba8ea7e31815f5829b8fd72b8b7a219e8d591adde19c45b"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_00_m2",
-      "triangles": 11571,
-      "sha256": "99c3c28753f06a4fddcf4dc3a446d525e46444b166afb8aafe65b80d35cbf902"
+      "triangles": 11604,
+      "sha256": "bb056ae8a3de947a739396d69295618c4f8017a7121b986b74e8de14e79d883d"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_00_m4",
-      "triangles": 4650,
-      "sha256": "3269613837c14e8e881d3fc6ed03bfb39033d6996d99619db05cbe08ed1a99d3"
+      "triangles": 4728,
+      "sha256": "71319991e8c6bd813e86e227eb8a72928651582d3954e536f97ad3ca1a3629a4"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_m1_00",
-      "triangles": 26844,
-      "sha256": "dd607b41d7820666a243698b21af2c4de1934c11ed2ff551c16c2958ba73c2fa"
+      "triangles": 27031,
+      "sha256": "5448645e73abaf855c28de10fe51a23ebdac6e2191f59b02aa192de03159e1c2"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_m1_01",
-      "triangles": 34847,
-      "sha256": "e453297ca99c31eba1325fa551d3af1007312da500d4eaa8656fefbe93ee2962"
+      "triangles": 35020,
+      "sha256": "4f6846a06d4a9b1f7e92ded1cf6d4d093edb00e565bb605b7f535d4f1ab0e6a3"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_m1_m1",
-      "triangles": 13974,
-      "sha256": "45b81597dc83970ec4fd30246e36dfc2de8d1fbfa6c6d68d334b47bf21b07e77"
+      "triangles": 14022,
+      "sha256": "14079f01e4bc1b40559f2e22928d3c4c6f0fef2db19344effa039458af9d8736"
     }
   ],
   "pit_architecture_edits": [

@@ -62,14 +62,26 @@ def lobby_details(scene: CircuitScene, source: PitEntryDetail) -> None:
         a, b = scene.at(station - .85), scene.at(station + .85)
         front_a, front_b = -a.half_width - 13, -b.half_width - 13
         low, high = .18, 3.35
-        pa, pb = a.point(front_a - 5.6, low), b.point(front_b - 5.6, low)
-        pc, pd = b.point(front_b - 5.6, high), a.point(front_a - 5.6, high)
+        depth = source.lobby_back_depth_m - .25
+        pa, pb = a.point(front_a - depth, low), b.point(front_b - depth, low)
+        pc, pd = b.point(front_b - depth, high), a.point(front_a - depth, high)
         scene.quad("Building_JeddahPitEntryLobbyDoors", "JeddahEditionRoomGlass", pa, pb, pc, pd)
         for first, last in ((pa, pd), (pb, pc), (pd, pc)):
             scene.beam("Building_JeddahPitEntryLobbyDoorFrames", "Steel", first, last, .065)
         sample = scene.at(station)
         front = -sample.half_width - 13
         scene.beam("Building_JeddahPitEntryLobbyDoorFrames", "Steel",
-                   sample.point(front - 5.58, low), sample.point(front - 5.58, high), .045)
+                   sample.point(front - depth + .02, low), sample.point(front - depth + .02, high), .045)
+        for side, (sample_side, lane) in enumerate(((a, front_a), (b, front_b))):
+            points = (
+                sample_side.point(lane - source.lobby_back_depth_m, low),
+                sample_side.point(lane - depth, low),
+                sample_side.point(lane - depth, high),
+                sample_side.point(lane - source.lobby_back_depth_m, high),
+            )
+            if side == 0:
+                points = points[3], points[2], points[1], points[0]
+            scene.quad("Building_JeddahPitEntryDoorReturns", "White",
+                       *points)
         scene.box("Building_JeddahPitEntryServiceCounter", "White",
-                  sample.point(front - 6.25, .7), 1.8, .6, 1.1, math.atan2(sample.ty, sample.tx))
+                  sample.point(front - 2.75, .7), 1.8, .6, 1.1, math.atan2(sample.ty, sample.tx))

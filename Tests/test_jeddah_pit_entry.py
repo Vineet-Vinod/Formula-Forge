@@ -11,6 +11,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 
+from circuit_dataclasses import Point
 from circuit_mesh import cross, sub
 from circuit_scene import CircuitScene
 from shapely.geometry import LineString, Polygon
@@ -21,6 +22,41 @@ from venues.jeddah_pit_entry import (
     wing_footprint,
 )
 from venues.jeddah_pits import pit_route_source
+
+
+def test_lobby_has_no_glass_edge_partitions_and_lights_aim_inside_its_back_wall(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    scene = CircuitScene("jeddah")
+    source = source_record()
+    sample = scene.at(source.station_m)
+    partitions: list[Point] = []
+
+    def capture(
+        kind: str, material: str, a: Point, b: Point, c: Point,
+        uv: tuple[tuple[float, float], ...] = ((0, 0), (1, 0), (1, 1)),
+        normals: tuple[Point, ...] | None = None,
+    ) -> None:
+        if kind == "Building_JeddahPitEntryWingRoomPartitions":
+            partitions.extend((a, b, c))
+
+    monkeypatch.setattr(scene, "triangle", capture)
+    build_entry(scene, sample, -sample.half_width - 13, -sample.half_width - 39)
+    assert partitions
+    for x, y, z in partitions:
+        road, _distance = scene.nearest(x, y)
+        lane = (x - road.x) * road.ty - (y - road.y) * road.tx
+        depth = -road.half_width - 13 - lane
+        assert depth >= 1.54
+        assert z > sample.z + source.floor_height_m
+    assert 3.5 <= source.lobby_back_depth_m <= 4
+    for light in entry_lights(scene):
+        assert light.target is not None
+        x, y, _z = light.target
+        road, _distance = scene.nearest(x, y)
+        lane = (x - road.x) * road.ty - (y - road.y) * road.tx
+        depth = -road.half_width - 13 - lane
+        assert source.glazing_depth_m < depth < source.lobby_back_depth_m
 
 
 def test_upper_room_back_is_visible_above_the_first_projecting_floor() -> None:
@@ -79,7 +115,7 @@ def test_entry_hospitality_has_depth_and_keeps_physical_route_and_workshops_fixe
             assert projected.difference(available).area < 1e-8
             assert projected.intersection(fastlane).area < 1e-8
             assert max(point[2] for point in points) <= sample.z + source.height_m + .0002
-            if material == "JeddahEditionGuardGlass":
+            if material == "JeddahHospitalityGlass":
                 panes += 1
     assert panes > 150
     lights = entry_lights(scene)

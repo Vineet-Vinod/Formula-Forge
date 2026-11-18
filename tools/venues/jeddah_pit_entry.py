@@ -41,7 +41,7 @@ def entry_lights(scene: CircuitScene) -> tuple[CircuitLight, ...]:
         front = -sample.half_width - 13
         lights.append(CircuitLight(
             sample.point(front - 2.2, 3.8), sample.z, 14, source.lobby_light_power,
-            sample.point(front - source.wing_depth_m + .25, 1.5),
+            sample.point(front - source.lobby_back_depth_m + .15, 1.5),
         ))
     return tuple(lights)
 
@@ -75,7 +75,7 @@ def end_elevation(
             p2 = position(sample, b, source.glazing_depth_m, top)
             p3 = position(sample, a, source.glazing_depth_m, top)
             scene.quad(
-                "Building_JeddahPitEntryGlazing", "JeddahEditionGuardGlass", p0, p1, p2, p3,
+                "Building_JeddahPitEntryGlazing", "JeddahHospitalityGlass", p0, p1, p2, p3,
             )
             backs = [position(sample, lane, source.backing_depth_m, lift)
                      for lane, lift in ((a, bottom), (b, bottom), (b, top), (a, top))]
@@ -160,9 +160,9 @@ def build_entry(scene: CircuitScene, sample: RoadStation, front: float, rear: fl
             inset = source.glazing_depth_m if floor == 0 else 1.15
             pa, pb = a.point(front_a - inset, low), b.point(front_b - inset, low)
             pc, pd = b.point(front_b - inset, high), a.point(front_a - inset, high)
-            scene.quad("Building_JeddahPitEntryWingGlazing", "JeddahEditionGuardGlass",
+            scene.quad("Building_JeddahPitEntryWingGlazing", "JeddahHospitalityGlass",
                        pa, pb, pc, pd)
-            room_depth = source.wing_depth_m - .12 if floor == 0 else source.upper_back_depth_m
+            room_depth = source.lobby_back_depth_m if floor == 0 else source.upper_back_depth_m
             back_a, back_b = front_a - room_depth, front_b - room_depth
             qa, qb = a.point(back_a, low), b.point(back_b, low)
             qc, qd = b.point(back_b, high), a.point(back_a, high)
@@ -171,9 +171,11 @@ def build_entry(scene: CircuitScene, sample: RoadStation, front: float, rear: fl
                        pa, pb, qb, qa, up=True)
             scene.quad("Building_JeddahPitEntryWingRoomCeilings", "JeddahEditionStone",
                        pd, qd, qc, pc, up=False)
-            if index % 2 == 0:
+            if floor > 0 and index % 2 == 0:
+                partition_a = a.point(front_a - inset - .4, low)
+                partition_top = a.point(front_a - inset - .4, high)
                 scene.quad("Building_JeddahPitEntryWingRoomPartitions", "White",
-                           pa, qa, qd, pd)
+                           partition_a, qa, qd, partition_top)
             if index:
                 scene.beam("Building_JeddahPitEntryWingMullions", "Steel", pa, pd, .045)
         scene.quad("Building_JeddahPitEntryWingRear", "JeddahEditionStone",
