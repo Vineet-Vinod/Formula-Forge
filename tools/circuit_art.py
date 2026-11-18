@@ -9,7 +9,9 @@ from circuit_mesh import world
 from circuit_scene import CircuitScene
 from lasvegas_art import sign
 from PIL import Image
+from pydantic import TypeAdapter
 from venues.jeddah_art import artwork as jeddah_artwork
+from venues.jeddah_dataclasses import NightFieldDomain
 from venues.jeddah_edition_lighting import write_fixtures as write_edition_fixtures
 from venues.jeddah_pit_details import write_entry_lights, write_interior_lights
 from venues.night_lighting import build_lighting
@@ -87,6 +89,10 @@ def artwork(scene: CircuitScene) -> None:
     minimum_y = min(p[1] for p in lights) - 10000
     width = max(p[0] for p in lights) - minimum_x + 10000
     height = max(p[1] for p in lights) - minimum_y + 10000
+    if scene.slug == "jeddah":
+        domain = TypeAdapter(NightFieldDomain).validate_json(
+            (scene.sources / "night-field-bounds.json").read_bytes())
+        minimum_x, minimum_y, width, height = domain.bounds
     size = 2048
     radiance = np.zeros((size, size), dtype=np.float32)
     elevation = np.zeros((size, size), dtype=np.float32)

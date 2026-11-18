@@ -8,6 +8,7 @@ from circuit_scene import CircuitScene
 from shapely.geometry import Polygon
 
 from venues.east_architecture import footprint_stand, frame
+from venues.jeddah_foliage import broadleaf
 from venues.jeddah_pit_details import (
     detail_source,
     garage_detail,
@@ -416,7 +417,7 @@ def t27_tree_belt(scene: CircuitScene) -> None:
         nearest, distance = scene.nearest(point[0], point[1])
         if distance < nearest.half_width + 6:
             continue
-        scene.broadleaf(
+        broadleaf(scene,
             (point[0], point[1], scene.ground(point[0], point[1])),
             10 + index % 4 * 0.7,
             800 + index,

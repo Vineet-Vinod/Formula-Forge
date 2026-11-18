@@ -9,7 +9,7 @@
         -40714.977207666736,
         50.0,
         106287.15820916537,
-        -5700.041691822628,
+        -5720.239565900216,
         26770.0
       ]
     },
@@ -27,16 +27,16 @@
     }
   ],
   "qualification": {
-    "status": "2026-11-18 finite source rebind after close-wall corridor export; strict named bounds guard and residency margins retained. Updated native boundary/appearance capture pending.",
-    "supersedes_recipe_sha256": "b21884dd5f8cfe7696b1ebe744f2d151c562d6d18c1f552e70e20ec6f5b1975c",
-    "reason": "Only City_00_m3 max UE Y changed by\u22122216.506918cm, owned by an existing TreeCanopy triangle whose corridor-relative placement follows the new profile. Sail tower/podium geometry is unchanged; City_01_m3 bounds are unchanged.",
+    "status": "Rebound mixed tile bounds for the Jeddah foliage refinement; unchanged Sail geometry and residency margins verified. Native appearance pending.",
+    "supersedes_recipe_sha256": "fec326e30749a693aef89f7bfce820827a43f4ecaabfbe4695c88af1f5cd4905",
+    "reason": "New palm and broadleaf crowns change mixed city-tile extrema. Exact packed Sail semantic rows remain unchanged.",
     "changed_axes_cm": {
       "Building_City_00_m3": [
         0.0,
         0.0,
         0.0,
         0.0,
-        -2216.5069184365916,
+        -20.197874077587585,
         0.0
       ],
       "Building_City_01_m3": [
@@ -48,46 +48,90 @@
         0.0
       ]
     },
-    "changed_bound_witness": {
-      "kind": "Building_Trees",
-      "material": "TreeCanopy",
-      "source_xyz_m": [
-        57.000416918226286,
-        -732.7829340479757,
-        8.605335867824214
-      ],
-      "native_xyz_cm": [
-        73278.29340479757,
-        -5700.041691822628,
-        860.5335867824215
-      ]
+    "accepted_sail_semantic_sha256": "040c865165bceb10476532fcc8c8e369f6d2945dbd3688af8d9ac1e56c3feff2",
+    "accepted_sail_triangles": 66004,
+    "accepted_head_source_bindings": {
+      "tools/venues/jeddah_sail.py": "1486ea6351f6be20a75ab28d490811d77fd470f8380b93d28718a11fbd40dfef",
+      "tools/venues/jeddah_context_shapes.py": "0a794bed7262044107ef97b560d6cd8cbdcf33fd77f952f191db5a76d5fe6f81",
+      "Attribution/Sources/jeddah/sail-architecture.json": "69ac054122623a6a5ab393ba48c91cde2a972bcc65ed887d5c3b3647430cf197",
+      "Attribution/Sources/jeddah/provenance.json": "a419ee0fd40621175d9f3a4a39577a560a20109851515df66448f4449845cf8c"
     },
-    "pose_packet": "build/reviews/jeddah-focused-20261118/baseline-lap/telemetry/frames.jsonl.gz",
-    "pose_sha256": "2e3c759677d288a9d35eb8bac5a3705d3b819e47e8af674ba01f73088030a675",
-    "stored_pose_sha256": "9079fd0ed278491081d07060fd98f74d00c669095c1fee07fd1f1a6e907f1058",
-    "pose_count": 4998,
-    "potential_frustum_overlap_pose_count": 1830,
-    "named_tiles": [
+    "pose_packets": [
       {
-        "tile": "Building_City_00_m3",
-        "north_margin_m": 1000,
-        "maximum_potential_view_distance_m": 1739.552513375385,
-        "maximum_whole_pose_route_distance_m": 1757.7412151215174,
-        "unloaded_potential_view_frames": []
+        "path": "build/reviews/jeddah/resume-20261114-first-live/telemetry/frames.jsonl",
+        "stored_sha256": "3a62571ec734e4432b5741818a2afa359677135b190c2fdf2ef456eb78935142",
+        "decoded_sha256": "3a62571ec734e4432b5741818a2afa359677135b190c2fdf2ef456eb78935142",
+        "pose_count": 5003,
+        "potential_view_pose_count": 1830,
+        "tiles": [
+          {
+            "tile": "Building_City_00_m3",
+            "north_margin_m": 1000,
+            "maximum_potential_view_distance_m": 1739.592905354663,
+            "maximum_whole_pose_route_distance_m": 1757.776864146315,
+            "unloaded_potential_view_frames": []
+          },
+          {
+            "tile": "Building_City_01_m3",
+            "north_margin_m": 1300,
+            "maximum_potential_view_distance_m": 1743.1988632055466,
+            "maximum_whole_pose_route_distance_m": 1755.9142586303924,
+            "unloaded_potential_view_frames": []
+          }
+        ]
       },
       {
-        "tile": "Building_City_01_m3",
-        "north_margin_m": 1300,
-        "maximum_potential_view_distance_m": 1743.1988632055466,
-        "maximum_whole_pose_route_distance_m": 1755.9141184453442,
-        "unloaded_potential_view_frames": []
+        "path": "build/reviews/jeddah-focused-20261118/baseline-lap/telemetry/frames.jsonl.gz",
+        "stored_sha256": "9079fd0ed278491081d07060fd98f74d00c669095c1fee07fd1f1a6e907f1058",
+        "decoded_sha256": "2e3c759677d288a9d35eb8bac5a3705d3b819e47e8af674ba01f73088030a675",
+        "pose_count": 4998,
+        "potential_view_pose_count": 1830,
+        "tiles": [
+          {
+            "tile": "Building_City_00_m3",
+            "north_margin_m": 1000,
+            "maximum_potential_view_distance_m": 1739.592905354663,
+            "maximum_whole_pose_route_distance_m": 1757.7765651345587,
+            "unloaded_potential_view_frames": []
+          },
+          {
+            "tile": "Building_City_01_m3",
+            "north_margin_m": 1300,
+            "maximum_potential_view_distance_m": 1743.1988632055466,
+            "maximum_whole_pose_route_distance_m": 1755.9141184453442,
+            "unloaded_potential_view_frames": []
+          }
+        ]
+      },
+      {
+        "path": "build/reviews/jeddah-focused-20261118/candidate17-lap/telemetry/frames.jsonl.gz",
+        "stored_sha256": "1551c7298c5b8c5e35986d38be261deab637bcc3b1b405099f859277dec8d472",
+        "decoded_sha256": "9cb94875befd803d27760d1c5de7e9c939e4e0b8a7f4b2d2f6b988f5e8f6aedc",
+        "pose_count": 5006,
+        "potential_view_pose_count": 1827,
+        "tiles": [
+          {
+            "tile": "Building_City_00_m3",
+            "north_margin_m": 1000,
+            "maximum_potential_view_distance_m": 1739.592905354663,
+            "maximum_whole_pose_route_distance_m": 1757.7765651345587,
+            "unloaded_potential_view_frames": []
+          },
+          {
+            "tile": "Building_City_01_m3",
+            "north_margin_m": 1300,
+            "maximum_potential_view_distance_m": 1743.1988632055466,
+            "maximum_whole_pose_route_distance_m": 1755.9141184453442,
+            "unloaded_potential_view_frames": []
+          }
+        ]
       }
     ],
     "canonical_road_route": [
       {
         "tile": "Building_City_00_m3",
         "current_road_samples": 8192,
-        "maximum_distance_m": 1753.8887746794937,
+        "maximum_distance_m": 1753.9242949378136,
         "station_m": 2294.14746
       },
       {
@@ -97,19 +141,8 @@
         "station_m": 2300.17676
       }
     ],
-    "current_road_sha256": "fe59b1cb52b8173f52d6d9c6319c6880731ac928ed0d355cf4879e5978824d04",
-    "accepted_head_source_bindings": {
-      "tools/venues/jeddah_sail.py": "1486ea6351f6be20a75ab28d490811d77fd470f8380b93d28718a11fbd40dfef",
-      "tools/venues/jeddah_context_shapes.py": "0a794bed7262044107ef97b560d6cd8cbdcf33fd77f952f191db5a76d5fe6f81",
-      "Attribution/Sources/jeddah/sail-architecture.json": "69ac054122623a6a5ab393ba48c91cde2a972bcc65ed887d5c3b3647430cf197",
-      "Attribution/Sources/jeddah/provenance.json": "a419ee0fd40621175d9f3a4a39577a560a20109851515df66448f4449845cf8c"
-    },
-    "accepted_sail_triangles": 66004,
-    "accepted_sail_semantic_sha256": "040c865165bceb10476532fcc8c8e369f6d2945dbd3688af8d9ac1e56c3feff2",
-    "sail_independent_of_corridor": true,
-    "proof": "build/reviews/jeddah-focused-20261118/residency/diagnosis.json",
-    "proof_sha256": "51a25fb565e3b201d0bf9e494bb3487e479c4c23147de2a24f37f84b49db86ee",
-    "scope_note": "Only the same two named CSV residency envelopes extend toward negative UE X using unchanged1000m/1300m margins and1800m load/2050m release radii. Fresh4998poses have zero potentially visible unloaded policy frames and\u226550m load headroom while potentially in view. Source-owned mesh bounds are used for guard comparison; emitted vertex data and actual render bounds are not modified by this rule. Potential frustum overlap does not prove visibility. Async loading latency and fresh cooked appearance require runtime review.",
-    "preserved": "All Sail source/geometry/position/height, all original named margins, strict0.1cm guard threshold, globalstreamingradii,physicaldata,Editionfrozenbatch and othercircuits."
+    "proof": "build/reviews/jeddah-clearance-20261118/residency/diagnosis.json",
+    "proof_sha256": "17161f1315b087b06dd79729e94f3bedb488b4665b090d4754c1ebcc992ea105",
+    "scope_note": "Three recorded pose packets and all8192 road samples retain the same1000/1300m bounds extensions and1800/2050m hysteresis. No potentially visible unloaded poses. Fresh native capture remains required."
   }
 }

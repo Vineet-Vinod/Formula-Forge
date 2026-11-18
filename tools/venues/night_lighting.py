@@ -108,9 +108,10 @@ def flood_mast(
     radius: float,
     power: float,
     canted: bool = False,
+    base: Point | None = None,
 ) -> CircuitLight:
     sample = scene.at(station)
-    base = pole_base(scene, sample, side, setback)
+    base = base if base is not None else pole_base(scene, sample, side, setback)
     inward = -sample.ty * side, sample.tx * side, 0.0
     top = add(base, (0.0, 0.0, height))
     if canted:
@@ -242,8 +243,15 @@ def bahrain(scene: CircuitScene) -> list[CircuitLight]:
 
 
 def jeddah(scene: CircuitScene) -> list[CircuitLight]:
+    from venues.jeddah_furniture import (
+        fixture_site,
+        lamp_shaft,
+        place_foot,
+        write_clearance,
+    )
     from venues.jeddah_pits import pit_floor_point, pit_route_source, route_section
 
+    site = fixture_site(scene)
     lights = []
     for index in range(math.ceil(scene.length / 32)):
         for side in (-1, 1):
@@ -253,11 +261,15 @@ def jeddah(scene: CircuitScene) -> list[CircuitLight]:
                 if is_pit_side(scene, sample, side):
                     lights.append(roof_bank(scene, sample, side, 25.0, 21.5, 3, 1, 0.9))
                 else:
-                    lights.append(
-                        curved_lamp(scene, station, side, 16.0, .8, 17.0, 0.7)
-                    )
+                    preferred = pole_base(scene, sample, side, .8)
+                    base = place_foot(scene, site, sample, side, preferred)
+                    head = lamp_shaft(scene, sample, side, base)
+                    head_bank(scene, head, sample, side, 2, 1)
+                    lights.append(CircuitLight(head, base[2], 17., .7))
     for station in (650, 1120, 1630):
-        lights.append(flood_mast(scene, station, -1, 29.0, 38.0, 4, 3, 30.0, 1.6))
+        sample = scene.at(station)
+        base = place_foot(scene, site, sample, -1, pole_base(scene, sample, -1, 38))
+        lights.append(flood_mast(scene, station, -1, 29.0, 38.0, 4, 3, 30.0, 1.6, base=base))
     route = pit_route_source()
     for garage in range(45):
         start = 6009 + 1.25 + garage * 5.8 + (16.5 if garage >= 21 else 0)
@@ -279,6 +291,7 @@ def jeddah(scene: CircuitScene) -> list[CircuitLight]:
             "confidence": "High for mixed pole families; moderate for primary road-pole distribution; low for estimated 16/29 m heights and exact tower stations.",
         }
     )
+    write_clearance(scene, site)
     return lights
 
 

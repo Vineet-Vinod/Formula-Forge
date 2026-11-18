@@ -75,7 +75,7 @@ def test_high_wall_source_is_confined_to_t13_inside() -> None:
     from venues.jeddah_boundary import wall_height
 
     sections = load_recipe().high_walls
-    assert wall_height(2277, -1, sections) == 2.85
+    assert wall_height(2277, -1, sections) == 1.90
     assert wall_height(2277, 1, sections) == 0.95
     assert wall_height(2170, -1, sections) == 0.95
     assert wall_height(2360, -1, sections) == 0.95
@@ -91,7 +91,7 @@ def test_render_uses_jeddah_physical_top_and_stacks_panels_only_there(tmp_path: 
             self.length = 6174
             self.scratch = tmp_path
             self.catalogue = Catalogue(slug, slug + "/Meshes", 6174, 0, False)
-            self.panels = [BarrierPanel(2180, 2350, -1, "PanelJeddahAramco")]
+            self.panels = [BarrierPanel(2210, 2325, -1, "PanelJeddahAramco")]
             self.overhead_soffits = []
             self.concrete: list[tuple[Point, Point, float | None]] = []
             self.banners: list[tuple[str, Point, Point, float, float]] = []
@@ -109,18 +109,18 @@ def test_render_uses_jeddah_physical_top_and_stacks_panels_only_there(tmp_path: 
             self.banners.append((material, a, b, height, repeat))
 
     (tmp_path / "barriers.csv").write_text(
-        "ax,ay,bx,by,bottom,top,radius\n0,7.4,2,7.4,0,2.85,0.15\n"
+        "ax,ay,bx,by,bottom,top,radius\n0,7.4,2,7.4,0,1.90,0.15\n"
     )
     scene = WallScene("jeddah")
     scene.barriers(street=True)
-    assert scene.concrete[0][2] == 2.85
-    assert scene.concrete[0][0][2] == 1.425
+    assert scene.concrete[0][2] == 1.90
+    assert scene.concrete[0][0][2] == 0.95
     panels = [row for row in scene.banners if row[0] == "PanelJeddahAramco"]
-    assert len(panels) == 3
-    assert [round(row[1][2], 2) for row in panels] == [0.08, 1.03, 1.98]
+    assert len(panels) == 2
+    assert [round(row[1][2], 2) for row in panels] == [0.08, 1.03]
     assert all(row[4] == 0.25 for row in panels)
     fence = next(row for row in scene.banners if row[0] == "Fence")
-    assert fence[1][2] == 2.85 and fence[3] == 2.2
+    assert fence[1][2] == 1.90 and fence[3] == 2.2
     accepted = WallScene("singapore")
     accepted.barriers(street=True)
     assert accepted.concrete[0][2] == 0.94

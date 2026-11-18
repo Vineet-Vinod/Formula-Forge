@@ -1,0 +1,13 @@
+{
+  "reference": "Saved/Refs/jeddah.mp4",
+  "moments_s": [
+    264,
+    323,
+    332,
+    344
+  ],
+  "design": "Sparse urban pinnate palms with three different frond whorls, independently curved paired leaflets, tapered ringed trunks and varied height/heading. Occasional broadleaf crowns use smaller overlapping curved cards and world-space crown normals.",
+  "registration": "Retain previous named planting sectors and add a sparse outer T13 exit palm group estimated at2335\u20132560m, matching332s visible palms behind the outer wall. Root positions are estimates filtered against all road arms, water and buildings. No measured species inventory.",
+  "materials": "Private Jeddah leaf/bark colors, two-sided foliage response and a private copy of the existing canopy with geometry normals. Shared and other-venue materials remain untouched.",
+  "quality_limits": "Geometry and native lighting must be reviewed at driving distance. Source estimates do not establish approval; measure an uncaptured live run on this machine."
+}

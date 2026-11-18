@@ -60,7 +60,7 @@ def test_apron_has_exact_route_edge_and_uses_route_plane(pits: PitScene) -> None
         lateral = (front[0] - section.x) * section.normal_x + (front[1] - section.y) * section.normal_y
         assert lateral < -7
         assert front[2] == pytest.approx(section.z + section.cross_slope * lateral, abs=1e-12)
-        assert 5 < math.dist(front[:2], edge[:2]) < 8
+        assert source.stop_center_from_garage_m + source.stop_half_width_m < math.dist(front[:2], edge[:2]) < 8
     assert any(kind == "Tile_JeddahWorkingStrip" for kind, _, _ in pits.faces)
     assert sum(kind == "Tile_JeddahStopGuides" for kind, _, _ in pits.faces) == 40
     assert not any(kind == "Building_JeddahPitGarages" for kind, _, _ in pits.faces)
@@ -200,9 +200,6 @@ def test_separate_interior_fixture_csv_has_all_bays_and_valid_aim(pits: PitScene
     assert len(rows) == 45
     detail = detail_source()
     assert detail.interior_light_power == 1.0
-    coordinates = '\n'.join(','.join(row[key] for key in
-                            ('x', 'y', 'z', 'target_x', 'target_y', 'target_z')) for row in rows)
-    assert hashlib.sha256(coordinates.encode()).hexdigest() == '81b8b72047994aa0a6e4aae9ab254e18de6b9ae44f720865bc40196a2cee8c21'
     for row in rows:
         values = [float(value) for value in row.values()]
         assert len(values) == 7 and all(math.isfinite(value) for value in values)

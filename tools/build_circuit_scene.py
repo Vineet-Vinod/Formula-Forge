@@ -320,6 +320,13 @@ class Importer:
         return material
 
     def material(self, name: str) -> unreal.MaterialInterface:
+        if self.slug == "jeddah" and name in (
+            "JeddahPalmLeaf", "JeddahPalmLeafLight", "JeddahPalmLeafShade",
+            "JeddahPalmBark", "JeddahPalmBarkLight", "JeddahTreeCanopy",
+        ):
+            from venues.jeddah_foliage_material import build as foliage_material
+
+            return foliage_material(self.assets, name)
         if self.slug == "jeddah" and name == "JeddahHospitalityGlass":
             from venues.jeddah_hospitality_material import build
 

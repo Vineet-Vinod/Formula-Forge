@@ -13,3 +13,9 @@ class SkylineResidency:
     south_margin_m: Annotated[FiniteFloat, Field(gt=0, le=1000)]
     uniform_scale: Annotated[FiniteFloat, Field(gt=0)]
     actual_baseline_bounds_ue_cm: tuple[FiniteFloat, FiniteFloat, FiniteFloat, FiniteFloat, FiniteFloat, FiniteFloat]
+
+
+@dataclass(frozen=True)
+class NightFieldDomain:
+    bounds: tuple[FiniteFloat, FiniteFloat, Annotated[FiniteFloat, Field(gt=0)], Annotated[FiniteFloat, Field(gt=0)]]
+    source_note: str

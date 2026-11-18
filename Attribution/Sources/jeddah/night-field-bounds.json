@@ -1,0 +1,4 @@
+{
+  "bounds": [-211234.29858188806, -28815.92084052469, 294817.636222778, 78895.16444076365],
+  "source_note": "Retain the accepted Jeddah material coordinate envelope while updating the private field texture for corrected fixtures. This is an illumination texture domain in Unreal centimetres, not a circuit survey."
+}

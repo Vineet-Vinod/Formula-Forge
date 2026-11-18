@@ -49,6 +49,7 @@ def sample(route: PitRoute, distance: float) -> PitSection:
         raise ValueError("Pit-exit source normals cannot define a continuous divider")
     return replace(a, x=a.x + t * (b.x - a.x), y=a.y + t * (b.y - a.y),
                    z=a.z + t * (b.z - a.z), distance=distance,
+                   half_width=a.half_width + t * (b.half_width - a.half_width),
                    normal_x=nx / length, normal_y=ny / length,
                    cross_slope=a.cross_slope + t * (b.cross_slope - a.cross_slope))
 

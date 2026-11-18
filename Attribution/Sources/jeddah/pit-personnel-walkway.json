@@ -3,14 +3,14 @@
   "end_distance_m": 601,
   "segment_m": 4,
   "platform_height_m": 0.15,
-  "inner_edge_m": 2.08,
   "wall_gap_m": 0.06,
-  "rail_center_m": 2.2,
   "rail_radius_m": 0.035,
   "lower_rail_m": 0.55,
   "upper_rail_m": 1.05,
   "post_spacing_m": 2,
   "end_ramp_m": 5,
   "minimum_width_m": 0.6,
-  "source_note": "Saved/Refs/jeddah.mp4 at 614 s, retained pit-detail/reference-0614.jpg, shows pale raised personnel paving, slim lane-side posts with two horizontal rails, and a corrugated steel pit-facing divider. Native candidate4 traversal shows bare asphalt in this strip. Preserve the literal pit axis and 4 m fast lane. The 272–601 m interval, 0.15 m lift, rail heights/spacing/radius and 5 m end ramps are estimates from the supplied view, not surveyed dimensions. Outer paving follows the actually composed existing divider face minus 0.06 m, so its width varies. Cosmetic floor portals apply only beneath the personnel band and preserve Road, old divider and all nonfloor structures. Extra rail physics rows remain separate from the canonical 272 pit/escape walls and must not receive generic Concrete/Fence rendering. Main Road and physical Ground bins remain unchanged."
+  "source_note": "Video614s shows the raised personnel strip and slim rails. Keep its established world footprint. Define the platform and rail from the actual local fast-lane edge,8cm and20cm outside it, so the5m service-lane shift and the taper back to4m at601m preserve its width and divider. Heights, endpoints and spacing remain source estimates.",
+  "lane_edge_gap_m": 0.08,
+  "rail_edge_gap_m": 0.2
 }

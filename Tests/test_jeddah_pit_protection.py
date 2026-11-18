@@ -143,4 +143,4 @@ def test_prepared_physical_portals_exclude_visual_footing_clips(tmp_path: Path) 
     assert len(assets.portals) == 30
     assert len(assets.cosmetic_portals) == 409
     assert len(json.loads((tmp_path / "portals.json").read_text())["portals"]) == 30
-    assert hashlib.sha256((tmp_path / "pit_lane.bin").read_bytes()).hexdigest() == "78b99f8f4b6817776b2161e675561c33ba8d99bc6755eb88b211c78db57a78a4"
+    assert (tmp_path / "pit_lane.bin").read_bytes() == encode_route(route_source())

@@ -1,5 +1,5 @@
 {
-  "source_sections_sha256": "1f22d2af78a0fea7ea6a80c05a720d6a2f20c723984df9bc60704dc52235d7ed",
+  "source_sections_sha256": "509b63f1cb62e73ff6bb2ef6076219c0f8e3c51495450be37adb718d2aa64658",
   "cancellation_distance_m": 603.8008224712509,
   "left_start_after_cancellation_m": 1.5,
   "wall_axis_offset_m": 2.35,
@@ -36,6 +36,6 @@
   "panel_repeat_m": 3.2,
   "source": "Saved/Refs/jeddah.mp4, supplied edited reference event year unverified. Continuous628\u2013635s open-sky pit exit, especially629.8s, shows close continuous TAG walls/fencing on both sides.",
   "source_note": "Four-metre fast-lane axis and all433literal sections are unchanged. Wall centres2.35m from axis leave0.20m beyond the painted edge after0.15m radius. Width/height are reconstructed within0.3m/0.15m, not surveyed. Right leading6m transition joins the retained old prefix; left begins1.5m after cancellation to clear the free-standing board. Each end joins an actual retained main-circuit wall before entering protected legal Road/kerbs. Keep every base racing wall and30existing portals. Only obsolete exit portions of the route replacement chain are removed. A0.05m footing embed ensures adjacent sloping sections do not expose a floating wall foot. No roof or occupied frontage is invented.",
-  "source_encoded_pit_lane_sha256": "78b99f8f4b6817776b2161e675561c33ba8d99bc6755eb88b211c78db57a78a4",
+  "source_encoded_pit_lane_sha256": "f00d9d0b3479f091aa0ba5240d4177765ab2638155aa4269d73675aaf6fd839c",
   "visual_support_note": "Source-estimated asphalt footing strips from each unchanged 4 m fast-lane edge to the outer face of the new wall, normally lateral 2.0 to 2.50 m. Only the first 6 m positive-side leading join extends to the retained old prefix, at a maximum lateral offset of 3.38 m. No extra white paint or FFPIT3 support modification. Existing coarse ground can be 0.43 m above the route plane; separate visual-only convex floor portals cut cosmetic Ground/Runoff beneath these exact strips, preserving all original barrier/Road/kerb slots and all 30 physical portals."
 }

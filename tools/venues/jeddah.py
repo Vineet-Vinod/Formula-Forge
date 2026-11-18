@@ -8,7 +8,6 @@ from venues.coastal_water import coastal_water
 from venues.east_architecture import (
     facade,
     frame,
-    trees,
 )
 from venues.jeddah_boundary import circuit_edges as boundary_edges
 from venues.jeddah_construction import construction_tower
@@ -20,6 +19,7 @@ from venues.jeddah_facilities import (
     t27_pavilion,
     t27_tree_belt,
 )
+from venues.jeddah_foliage import planting
 from venues.jeddah_markers import distance_boards
 from venues.jeddah_masarat import finish_terrain as finish_masarat_terrain
 from venues.jeddah_pit_exit import pit_exit_building
@@ -91,11 +91,12 @@ def build_venue(scene: CircuitScene) -> None:
         (1650, 1850, 1, 8, 24, False),
         (1850, 2200, 1, 14, 52, True),
         (2250, 2800, -1, 13, 52, True),
+        (2335, 2560, 1, 9, 30, True),
         (3000, 3850, 1, 15, 52, True),
         (3950, 4650, -1, 18, 52, True),
         (4800, 5400, 1, 12, 52, True),
     ):
-        trees(scene, start, end, side, setback, spacing, 9, palm=palm)
+        planting(scene, start, end, side, setback, spacing, 9, palm)
     skyline_residency(scene)
     corniche_context(scene)
 

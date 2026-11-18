@@ -1119,6 +1119,11 @@ class CircuitScene(MeshScene):
                     0.008,
                 )
         p = self.at(station + 10)
+        if self.slug == "jeddah":
+            from venues.jeddah_furniture import start_gantry
+
+            start_gantry(self, p)
+            return
         width = p.half_width + max(p.left_shoulder, p.right_shoulder) + 3
         a, b = p.point(-width), p.point(width)
         self.beam("Building_Gantry", "Steel", a, add(a, (0, 0, 6.5)), 0.25)

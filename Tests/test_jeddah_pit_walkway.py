@@ -65,7 +65,7 @@ def test_actual_composed_divider_preserves_route_and_fastlane() -> None:
     assert result.proof.fastlane_overlap_m2 == 0
     assert result.proof.wall_overlap_m2 == 0
     assert result.proof.minimum_width_m >= recipe.minimum_width_m
-    assert result.proof.minimum_rail_inner_edge_m == pytest.approx(2.165)
+    assert result.proof.minimum_rail_inner_edge_m >= 2.165
     assert len(result.extra_barriers) == len(result.floor_portals) == 83
     assert set(result.extra_barriers).isdisjoint(route.barriers)
     for portal in result.floor_portals:

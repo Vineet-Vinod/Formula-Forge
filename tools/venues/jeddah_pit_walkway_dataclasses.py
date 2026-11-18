@@ -15,9 +15,9 @@ class WalkwayRecipe:
     end_distance_m: Positive
     segment_m: Annotated[FiniteFloat, Field(gt=0, le=4)]
     platform_height_m: Annotated[FiniteFloat, Field(gt=0, le=.25)]
-    inner_edge_m: Annotated[FiniteFloat, Field(gt=2)]
+    lane_edge_gap_m: Positive
     wall_gap_m: Positive
-    rail_center_m: Annotated[FiniteFloat, Field(gt=2)]
+    rail_edge_gap_m: Positive
     rail_radius_m: Annotated[FiniteFloat, Field(gt=0, le=.05)]
     lower_rail_m: Positive
     upper_rail_m: Positive
@@ -35,6 +35,8 @@ class WalkwayStation:
     wall_top_m: float
     outer_edge_m: float
     lift_m: float
+    inner_edge_m: float
+    rail_center_m: float
 
 
 @dataclass(frozen=True)

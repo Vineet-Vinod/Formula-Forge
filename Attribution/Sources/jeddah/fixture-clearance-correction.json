@@ -1,0 +1,15 @@
+{
+  "old_in_road_mast_anchor_station_m": 650,
+  "actual_obstructed_road_station_m": 3897.4797394957027,
+  "old_in_pit_pole_track_station_m": 5792,
+  "all380_ground_feet_clear": true,
+  "minimum_paving_clearance_m": 0.6013834917243617,
+  "source_footing_radius_m": 0.4,
+  "proof": "build/circuits/jeddah/furniture-clearance.json",
+  "proof_sha256": "edb064d2d769fc98f974496ae37569b36a9e0d59a3193c84c77f410c8822a4e3",
+  "main_road_terrain_building_collision_limits_exact": true,
+  "other20_generated_venues_exact": true,
+  "geometry_triangles": 1935807,
+  "original95_nonfield_palette_assets_preserved": true,
+  "review_status": "Source checks passed; native driving appearance and performance pending."
+}

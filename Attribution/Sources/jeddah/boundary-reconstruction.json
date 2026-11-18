@@ -488,11 +488,11 @@
   "wall_gap_definition": "Distance from legal white-line edge to barrier centre. Subtract0.15m wall radius for visible/physical inner face; kerbed centre gap1.40m leaves0.16m between the0.95m kerb outer edge and wall inner face.",
   "high_walls": [
     {
-      "start_m": 2180,
-      "end_m": 2350,
+      "start_m": 2210,
+      "end_m": 2325,
       "side": -1,
-      "height_m": 2.85,
-      "source_note": "Actual supplied331 s full image shows stacked sponsor-faced inner T13 protection, roughly three ordinary barrier tiers. Reconstruct2.85m height\u00b10.5m and endpoints\u00b125m, not surveyed. Outer T13 wall remains0.95m; catchfence/posts start above actual new wall. Physical native top and rendered concrete/three0.80m sponsor rows must agree."
+      "height_m": 1.9,
+      "source_note": "Direct331\u2013332s and596s support two visible Aramco bands on the localized inner/apex barrier. The former three-tier2.85m interpretation counted unproven height. Use an estimated1.90m wall, \u00b10.3m height and \u00b115m endpoints; outer wall remains0.95m. Recheck physical top, two0.80m sign bands and fence base in native driving views."
     }
   ],
   "branding_corrections": [

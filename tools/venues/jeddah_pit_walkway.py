@@ -1,4 +1,4 @@
-"""Raise the source-observed personnel strip without changing the four-metre lane."""
+"""Fit the personnel strip outside the variable-width pit fast lane."""
 from __future__ import annotations
 
 import bisect
@@ -28,7 +28,7 @@ SOURCE = Path(__file__).resolve().parents[2] / 'Attribution/Sources/jeddah/pit-p
 
 def walkway_recipe() -> WalkwayRecipe:
     recipe = TypeAdapter(WalkwayRecipe).validate_json(SOURCE.read_bytes())
-    if recipe.start_distance_m >= recipe.end_distance_m or recipe.rail_center_m <= recipe.inner_edge_m:
+    if recipe.start_distance_m >= recipe.end_distance_m or recipe.rail_edge_gap_m <= recipe.lane_edge_gap_m:
         raise ValueError('Invalid Jeddah personnel walkway interval/rail position')
     return recipe
 
@@ -61,7 +61,7 @@ def station(route: PitRoute, walls: Sequence[Barrier], recipe: WalkwayRecipe, di
         qx, qy = wall.ax + t * dx - section.x, wall.ay + t * dy - section.y
         lateral = qx * section.normal_x + qy * section.normal_y
         along = qx * tx + qy * ty
-        if abs(along) > 3.2 or not 2.6 < lateral < 6:
+        if abs(along) > 3.2 or not 2.6 < lateral < 7:
             continue
         face = lateral - wall.radius
         if selected is None or face < selected[0]:
@@ -70,11 +70,14 @@ def station(route: PitRoute, walls: Sequence[Barrier], recipe: WalkwayRecipe, di
         raise ValueError(f'No qualified existing pit divider at distance{distance:.3f}m')
     face, wall = selected
     outer = face - recipe.wall_gap_m
-    if outer - recipe.inner_edge_m < recipe.minimum_width_m:
+    inner = section.half_width + recipe.lane_edge_gap_m
+    rail = section.half_width + recipe.rail_edge_gap_m
+    if outer - inner < recipe.minimum_width_m:
         raise ValueError(f'Existing divider leaves insufficient personnel width at{distance:.3f}m')
     blend = max(0.0, min(1.0, (distance - recipe.start_distance_m) / recipe.end_ramp_m,
                          (recipe.end_distance_m - distance) / recipe.end_ramp_m))
-    return WalkwayStation(section, face, wall.bottom, wall.top, outer, recipe.platform_height_m * blend)
+    return WalkwayStation(section, face, wall.bottom, wall.top, outer,
+                          recipe.platform_height_m * blend, inner, rail)
 
 
 def tube(scene: MeshScene, a: Point, b: Point, radius: float) -> None:
@@ -93,12 +96,12 @@ def tube(scene: MeshScene, a: Point, b: Point, radius: float) -> None:
 
 
 def platform(scene: MeshScene, first: WalkwayStation, last: WalkwayStation, recipe: WalkwayRecipe) -> Polygon:
-    top = (point(first.section, recipe.inner_edge_m, first.lift_m),
-           point(last.section, recipe.inner_edge_m, last.lift_m),
+    top = (point(first.section, first.inner_edge_m, first.lift_m),
+           point(last.section, last.inner_edge_m, last.lift_m),
            point(last.section, last.outer_edge_m, last.lift_m),
            point(first.section, first.outer_edge_m, first.lift_m))
-    bottom = (point(first.section, recipe.inner_edge_m, -.02),
-              point(last.section, recipe.inner_edge_m, -.02),
+    bottom = (point(first.section, first.inner_edge_m, -.02),
+              point(last.section, last.inner_edge_m, -.02),
               point(last.section, last.outer_edge_m, -.02),
               point(first.section, first.outer_edge_m, -.02))
     if cross(sub(top[1], top[0]), sub(top[2], top[0]))[2] < 0:
@@ -134,7 +137,7 @@ def build_walkway(scene: MeshScene, route: PitRoute, reference_walls: Sequence[B
     samples = [station(route, reference_walls, recipe, recipe.start_distance_m +
                        (recipe.end_distance_m - recipe.start_distance_m) * index / count)
                for index in range(count + 1)]
-    lane = Polygon([point(sample.section, side * 2.0, 0)[:2]
+    lane = Polygon([point(sample.section, side * sample.section.half_width, 0)[:2]
                     for side, controls in ((1, samples), (-1, list(reversed(samples)))) for sample in controls])
     floors: list[Polygon] = []
     portals: list[Portal] = []
@@ -145,15 +148,15 @@ def build_walkway(scene: MeshScene, route: PitRoute, reference_walls: Sequence[B
             raise ValueError('Personnel floor became invalid')
         floors.append(footprint)
         corners = tuple((float(x), float(y)) for x, y in list(footprint.exterior.coords)[:-1])
-        floor_values = [point(first.section, lateral, 0)[2] for lateral in (recipe.inner_edge_m, first.outer_edge_m)]
-        floor_values.extend(point(last.section, lateral, 0)[2] for lateral in (recipe.inner_edge_m, last.outer_edge_m))
+        floor_values = [point(first.section, lateral, 0)[2] for lateral in (first.inner_edge_m, first.outer_edge_m)]
+        floor_values.extend(point(last.section, lateral, 0)[2] for lateral in (last.inner_edge_m, last.outer_edge_m))
         portals.append(Portal(f'jeddah-personnel-floor-{index:03d}', corners, min(floor_values) - .5,
                               max(floor_values) + recipe.platform_height_m + .02,
                               'Cosmetic ground only below raised personnel strip; preserve Road, old divider and all nonfloor structures.'))
         for lift in (recipe.lower_rail_m, recipe.upper_rail_m):
-            tube(scene, point(first.section, recipe.rail_center_m, first.lift_m + lift),
-                 point(last.section, recipe.rail_center_m, last.lift_m + lift), recipe.rail_radius_m)
-        a, b = point(first.section, recipe.rail_center_m, first.lift_m), point(last.section, recipe.rail_center_m, last.lift_m)
+            tube(scene, point(first.section, first.rail_center_m, first.lift_m + lift),
+                 point(last.section, last.rail_center_m, last.lift_m + lift), recipe.rail_radius_m)
+        a, b = point(first.section, first.rail_center_m, first.lift_m), point(last.section, last.rail_center_m, last.lift_m)
         barriers.append(Barrier(a[0], a[1], b[0], b[1], min(a[2], b[2]) - recipe.platform_height_m - .02,
                                 max(a[2], b[2]) + recipe.upper_rail_m, recipe.rail_radius_m))
         armco(scene, first, last)
@@ -161,8 +164,8 @@ def build_walkway(scene: MeshScene, route: PitRoute, reference_walls: Sequence[B
     for index in range(posts + 1):
         distance = recipe.start_distance_m + (recipe.end_distance_m - recipe.start_distance_m) * index / posts
         control = station(route, reference_walls, recipe, distance)
-        a = point(control.section, recipe.rail_center_m, control.lift_m)
-        tube(scene, a, point(control.section, recipe.rail_center_m, control.lift_m + recipe.upper_rail_m), recipe.rail_radius_m)
+        a = point(control.section, control.rail_center_m, control.lift_m)
+        tube(scene, a, point(control.section, control.rail_center_m, control.lift_m + recipe.upper_rail_m), recipe.rail_radius_m)
     floor_union = unary_union(floors)
     overlap = floor_union.intersection(lane).area
     # Only low, locally parallel divider rows belong to this strip's wall proof.
@@ -175,8 +178,8 @@ def build_walkway(scene: MeshScene, route: PitRoute, reference_walls: Sequence[B
     if overlap > 1e-6 or wall_overlap > 1e-6:
         raise ValueError(f'Personnel strip overlaps protected lane/wall: {overlap:.9f}/{wall_overlap:.9f}m2')
     proof = WalkwayProof(recipe.start_distance_m, recipe.end_distance_m, floor_union.area,
-                         min(sample.outer_edge_m - recipe.inner_edge_m for sample in samples),
-                         max(sample.outer_edge_m - recipe.inner_edge_m for sample in samples), overlap,
-                         wall_overlap, recipe.rail_center_m - recipe.rail_radius_m,
+                         min(sample.outer_edge_m - sample.inner_edge_m for sample in samples),
+                         max(sample.outer_edge_m - sample.inner_edge_m for sample in samples), overlap,
+                         wall_overlap, min(s.rail_center_m - recipe.rail_radius_m for s in samples),
                          len(reference_walls), len(barriers), len(portals), recipe.source_note)
     return WalkwayResult(tuple(barriers), tuple(portals), proof)

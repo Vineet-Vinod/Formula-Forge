@@ -1,0 +1,37 @@
+{
+  "source_video": "Saved/Refs/jeddah.mp4",
+  "source_seconds": [
+    613,
+    614,
+    616,
+    618,
+    619,
+    623,
+    624
+  ],
+  "prior_source_sha256": "2b8a29ff47b1dbfc340db73a3b72c6742d99feb32a4189a5c5f536d848a01dc1",
+  "fast_lane_width_m": 5,
+  "width_uncertainty_m": 0.75,
+  "unchanged_approach_exit_width_m": 4,
+  "full_width_progress_range_m": [
+    272,
+    581
+  ],
+  "transition_progress_ranges_m": [
+    [
+      247,
+      272
+    ],
+    [
+      581,
+      601
+    ]
+  ],
+  "axis_shift_towards_garages_m": 0.5,
+  "plan": "Keep the personnel-side driving edge and existing divider fixed. Move the fast-lane centre0.5m towards the garages and its garage-side edge1m into the ample working apron. Preserve garage fronts, stop boxes and all protection coordinates.",
+  "source_limit": "Footage establishes separate garage working area, fast lane and personnel platform, but does not meter-verify width. Five metres is a revised driving/view reconstruction estimate in response to the compressed prior4m model, not an FIA dimension.",
+  "progress": "Preserve original mapped progress metadata and limiter controls; recomputed planar path length differs slightly after the local axis shift.",
+  "prior_progress_length_m": 863.1708252699908,
+  "revised_planar_length_m": 863.1174599260771,
+  "maximum_personnel_driving_edge_motion_m": 2.929642751054232e-14
+}

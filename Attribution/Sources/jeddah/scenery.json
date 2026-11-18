@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=jeddah",
   "tiles": 146,
-  "triangles": 1423493,
+  "triangles": 1935807,
   "road_sha256": "86ac9b9b678308d892ee45f96061bee4ae87afbda9aaf7791eb9bc0166c365e6",
   "terrain_sha256": "a30c782d9e70e53575eaa3a1295d86b00eeca559983b25de642725c36fdfe647",
   "landmarks": [
@@ -290,8 +290,8 @@
     },
     {
       "name": "Jeddah pit-wall monitor workstations",
-      "consoles": 8,
-      "racing_core_clearance_m": 0.2782983751789422,
+      "consoles": 10,
+      "racing_core_clearance_m": 0.6860092659145757,
       "source_note": "Supplied623s shows pitwall monitor banks/white frames across fastlane. Estimated2.8m representative consoles staybehindexistingseparator andatleast.20m beyondunchangedRaceRoad+0.85mkerb. Workshopcabinetpositions areestimated completion insidegarage, notan eventequipment inventory."
     },
     {
@@ -461,76 +461,85 @@
       "placement": "Direct 289\u2013292 s shows mature crowns behind the final-corner pavilion and outside wall. Individual positions are estimated; roots avoid the pavilion, all race arms and water."
     },
     {
-      "type": "palms",
+      "type": "Corniche pinnate palms",
       "start_m": 400,
       "end_m": 1200,
       "side": -1,
-      "count": 15,
+      "count": 16,
       "setback_m": 11,
-      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+      "placement": "Video-estimated sparse urban planting; varied crowns and height, all-road, water and property root clearances."
     },
     {
-      "type": "palms",
+      "type": "Corniche pinnate palms",
       "start_m": 1350,
       "end_m": 1650,
       "side": 1,
       "count": 6,
       "setback_m": 14,
-      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+      "placement": "Video-estimated sparse urban planting; varied crowns and height, all-road, water and property root clearances."
     },
     {
-      "type": "broadleaf",
+      "type": "Corniche broadleaf",
       "start_m": 1650,
       "end_m": 1850,
       "side": 1,
       "count": 9,
       "setback_m": 8,
-      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+      "placement": "Video-estimated sparse urban planting; varied crowns and height, all-road, water and property root clearances."
     },
     {
-      "type": "palms",
+      "type": "Corniche pinnate palms",
       "start_m": 1850,
       "end_m": 2200,
       "side": 1,
       "count": 7,
       "setback_m": 14,
-      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+      "placement": "Video-estimated sparse urban planting; varied crowns and height, all-road, water and property root clearances."
     },
     {
-      "type": "palms",
+      "type": "Corniche pinnate palms",
       "start_m": 2250,
       "end_m": 2800,
       "side": -1,
       "count": 11,
       "setback_m": 13,
-      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+      "placement": "Video-estimated sparse urban planting; varied crowns and height, all-road, water and property root clearances."
     },
     {
-      "type": "palms",
+      "type": "Corniche pinnate palms",
+      "start_m": 2335,
+      "end_m": 2560,
+      "side": 1,
+      "count": 8,
+      "setback_m": 9,
+      "placement": "Video-estimated sparse urban planting; varied crowns and height, all-road, water and property root clearances."
+    },
+    {
+      "type": "Corniche pinnate palms",
       "start_m": 3000,
       "end_m": 3850,
       "side": 1,
       "count": 17,
       "setback_m": 15,
-      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+      "placement": "Video-estimated sparse urban planting; varied crowns and height, all-road, water and property root clearances."
     },
     {
-      "type": "palms",
+      "type": "Corniche pinnate palms",
       "start_m": 3950,
       "end_m": 4650,
       "side": -1,
       "count": 11,
       "setback_m": 18,
-      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+      "placement": "Video-estimated sparse urban planting; varied crowns and height, all-road, water and property root clearances."
     },
     {
-      "type": "palms",
+      "type": "Corniche pinnate palms",
       "start_m": 4800,
       "end_m": 5400,
       "side": 1,
       "count": 12,
       "setback_m": 12,
-      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+      "placement": "Video-estimated sparse urban planting; varied crowns and height, all-road, water and property root clearances."
     }
   ],
   "review_status": "Awaiting packaged whole-route review; asset import is not visual approval."
