@@ -191,7 +191,7 @@ def test_separate_interior_fixture_csv_has_all_bays_and_valid_aim(pits: PitScene
     write_interior_lights(pits, target)
     with target.open() as stream:
         rows = list(csv.DictReader(stream))
-    assert len(rows) == 48
+    assert len(rows) == 53
     detail = detail_source()
     for row in rows:
         values = [float(value) for value in row.values()]

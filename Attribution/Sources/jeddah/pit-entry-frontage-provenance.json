@@ -1,17 +1,20 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "recipe": "pit-entry-frontage.json",
   "source_video": "Saved/Refs/jeddah.mp4",
   "video_sha256": "c2c78fb500a241a595aa6108bf797114332a747a83ab280b2a49d2cd9b8dcf78",
   "reference_only": true,
   "reference_images": {
+    "build/reviews/jeddah-focused-20261118/pit-detail/reference-0610.jpg": "419fdd2a93aa9c97c6371b761a9156d7cd24392263c2d2438ed171bef930e34d",
+    "build/reviews/jeddah-focused-20261118/pit-detail/reference-0611.jpg": "89b4bbefe8617d576d12215ad6f894dac2fe5e421d17d9e556c6a82ccd56f43e",
     "build/reviews/jeddah-focused-20261118/pit-detail/reference-0612.jpg": "e4928c22782105ec4bcf0e532e5f5444c88dbb4c5d02dca71e96c14325aed0f2",
-    "build/reviews/jeddah-focused-20261118/candidate4-pit/selected/entry-80-before-00000924.jpg": "1b5001b279cdd15ba21564f4c3fcafe080b38a80d099481a0792d65cb99e3877"
+    "build/reviews/jeddah-focused-20261118/pit-detail/reference-0613.jpg": "e3dcdcd8a5313dc74cfa6f9b9136ba9bb67a0289100384fb6f16862f78f78c67",
+    "build/reviews/jeddah-focused-20261118/pit-detail/reference-0614.jpg": "2c37ebd76a49ea9a07b5db5a59d9039978fd8836c0ec120c1e2cc2ffa4952351"
   },
-  "geometry_owner": "Building_JeddahPitEnds at PIT_START6009, not an OSM building.",
-  "registration": "Native frame924 is8.04m before the pit80km/h limit; supplied612s is HUD5m before the limit. The literal end-wall projection matches the native blank plane. Local landmark ordering is comparable, but the FOV, camera and3m position difference prevent exact metric photo matching.",
-  "observed": "Pale horizontal bands and recessed glazing on the hospitality end/corner, dark fine frames and brighter lower lobby glazing. The upper building is cropped; its full floor count is not independently established by this frame.",
-  "authored_estimates": "The26m by18.4m compound envelope and four4.6m floors are unchanged. The0.42m bands,0.45m pane recess,1.8m backs,3.25m bay pitch and three interior ceiling lights are estimated architectural completion, not survey or fixture inventory.",
-  "scope": "Replace only the start end banner. New geometry extends0\u20131.8m forward inside the existing body. The opposite end closure, roof, floors, frame, start6009,280m length, roads, pit axis and collision are unchanged. Reuse existing Stone, Charcoal, GuardGlass, White, Steel and Lamp materials. Pale lower back surfaces receive bounded actual lights; full-window emissive planes are not used.",
-  "runtime_gate": "A fresh native capture at the same entry must confirm readable glazing and avoid an overexposed lobby. Source geometry checks do not establish appearance acceptance."
+  "previous_trial": "Candidate6 correctly removed the blank end banner but still showed a transverse dark grid45m ahead. That source-to-native trial failed to reproduce the longitudinal hospitality frontage already beside the reference car.",
+  "registration": "Source611 is40m before the limit at85mph;612 is5m before at53mph;613 is0.8s into PIT at49mph and still beside lower lobby glazing;614 is1.8s into PIT at49mph and reaches garage shutters. About40m from limit to garage transition agrees with unchanged main garage6009, so the280m workshops are retained.",
+  "authored_extension": "A separate entry hospitality wing spans5950\u20136009m, with start uncertainty\u00b115m and estimated8\u00b13m garageward depth. Four4.6m bands continue the existing18.4m envelope. Pale actual room backs, broad side glazing, fine mullions, occupied floors/ceilings, roof and return replace the inadequate transverse-only treatment. Unknown rear remains plain.",
+  "source_scope": "New occupied wing468.95m\u00b2, including a0.00103m\u00b2 source-model return join to its slightly curved road-relative frontage. Exact occupied visual terrain cutout avoids burying the lobby in provisional generic Ground; no native ground, drive, pit geometry, apron or physics change. The rear18m of the old end elevation is retained in the original plane; its front8m is the wing internal join. Main280m workshops, stop zone, original roof/floors/frame/opposite end stay fixed.",
+  "lighting": "Eight small lobby fixtures at3.8m target actual pale room backs at1.5m, power0.24 and14m pool radius. They use the existing four-nearest garage light pool. No new material names, emissive full-window panels or active light count. The source bright glazing establishes illumination intent, not exact fixture inventory or surveyed photometry.",
+  "runtime_gate": "Fresh entry and garage transition captures must verify longitudinal frontage registration, readable glazing, room depth and calibrated brightness. Source checks do not establish native appearance acceptance."
 }

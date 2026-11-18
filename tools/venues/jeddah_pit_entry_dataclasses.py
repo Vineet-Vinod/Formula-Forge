@@ -11,6 +11,9 @@ Positive = Annotated[FiniteFloat, Field(gt=0)]
 @dataclass(frozen=True)
 class PitEntryDetail:
     station_m: Positive
+    wing_start_m: Positive
+    wing_depth_m: Positive
+    wing_light_count: Annotated[int, Field(gt=0)]
     width_m: Positive
     height_m: Positive
     floor_height_m: Positive

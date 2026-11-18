@@ -178,6 +178,7 @@ def prepare(circuit: str, destination: Path, pit_path: Path | None, escape_path:
             "tools/venues/jeddah_pit_walkway.py",
             "tools/venues/jeddah_pit_walkway_dataclasses.py",
             "build/circuits/jeddah/barriers.csv",
+            "build/circuits/jeddah/manifest.json",
         ))
     result = RouteAssets(circuit, 1, "Source east/north/Z metres; packed meshes use Unreal world centimetres",
         records, portals, list(escapes.paint_domains) if escapes else [],

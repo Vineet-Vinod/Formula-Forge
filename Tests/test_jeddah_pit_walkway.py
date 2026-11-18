@@ -17,13 +17,15 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
 
 from circuit_dataclasses import Point
-from circuit_escapes_dataclasses import EscapeOverlay
+from circuit_escapes import build_overlay, load_recipe
 from circuit_mesh import MeshScene, cross, sub
 from circuit_portals_dataclasses import Barrier
 from circuit_route_assets import clip_foreign_protection
+from circuit_scene import CircuitScene
 from pit_routes import encode_route
 from pydantic import TypeAdapter
 from shapely.geometry import Polygon
+from venues.jeddah_facilities import pavilion_footprint
 from venues.jeddah_pit_walkway import (
     build_walkway,
     platform,
@@ -47,10 +49,13 @@ def packed_faces(scene: MeshScene) -> Iterator[tuple[list[Point], list[Point]]]:
 def test_actual_composed_divider_preserves_route_and_fastlane() -> None:
     route, recipe = pit_route_source(), walkway_recipe()
     original = encode_route(route), tuple(route.barriers)
-    escapes = TypeAdapter(EscapeOverlay).validate_json(
-        (ROOT / 'build/reviews/jeddah-focused-20261118/escape-overlay.json').read_bytes())
     with (ROOT / 'build/circuits/jeddah/barriers.csv').open() as handle:
         base = TypeAdapter(list[Barrier]).validate_python(list(csv.DictReader(handle)))
+    circuit = CircuitScene('jeddah')
+    occupied = [Polygon(building.ring) for building in circuit.buildings]
+    occupied.append(pavilion_footprint(circuit))
+    escapes = build_overlay(load_recipe(ROOT / 'Attribution/Sources/jeddah/escape-reconstruction.json'),
+                            circuit.road, base, circuit.provenance.route.uniform_scale, occupied=occupied)
     walls = clip_foreign_protection(base, [*route.portals, *escapes.portals])
     walls += clip_foreign_protection(route.barriers, list(escapes.portals))
     walls += clip_foreign_protection(list(escapes.barriers), route.portals)
