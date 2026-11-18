@@ -131,6 +131,7 @@ class CircuitLight:
     ground_z: float
     pool_radius_m: float
     power: float
+    target: Point | None = None
 
 
 @dataclass(frozen=True)

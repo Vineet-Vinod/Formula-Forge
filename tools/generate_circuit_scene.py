@@ -35,7 +35,7 @@ def generate(slug: str, write_native_contact: bool = False) -> None:
     )
     scene.road_surfaces(base)
     pit_profile = scene.sources / "pit-lane.json"
-    if pit_profile.exists():
+    if pit_profile.exists() and slug != "jeddah":
         scene.pit_lane(TypeAdapter(PitLane).validate_json(pit_profile.read_bytes()))
     print(f"{slug}: registered architecture and landscape", flush=True)
     importlib.import_module("venues." + slug).build_venue(scene)

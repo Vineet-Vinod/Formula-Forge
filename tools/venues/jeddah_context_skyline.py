@@ -25,7 +25,7 @@ def context_residency(scene: CircuitScene, source: ContextResidency) -> None:
         'tiles': ', '.join(entry.tile_name for entry in source.tiles),
         'source': 'context-residency.json',
         'qualification': 'Only the two named CSV envelopes extend toward the northern approach. '
-                         'The retained 5,003-pose packet has zero potentially visible unloaded frames under '
+                         'The versioned recipe records zero potentially visible unloaded policy frames for the current pose packet under '
                          'unchanged 1,800 m load / 2,050 m release hysteresis. Potential frustum overlap is '
                          'not proof of rendered visibility or absence of occlusion. Existing Diamond rule, '
                          'actual mesh bounds, geometry, location and global streaming radii remain fixed.',

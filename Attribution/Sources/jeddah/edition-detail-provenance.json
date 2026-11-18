@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-18",
+  "circuit": "jeddah",
+  "osm_id": 1258744123,
+  "owner": "The Jeddah EDITION",
+  "geometry_recipe": "edition-detail.json",
+  "status": "Source-supported architecture refinement; fresh native appearance comparison pending",
+  "primary_sources": [
+    {
+      "url": "https://www.editionhotels.com/jeddah/",
+      "supports": "Owner identity and position beside F1 track and marina."
+    },
+    {
+      "url": "https://www.prnewswire.com/news-releases/edition-opens-its-20th-outpost-in-jeddah-reflecting-a-new-era-for-the-kingdom-of-saudi-arabia-302134246.html",
+      "publisher": "Marriott International",
+      "date": "2024-05-02",
+      "supports": "Four storeys,12m lobby,third/fourth-floor guest rooms,wraparound terraces. Does not measure the external floor section."
+    },
+    {
+      "url": "https://assets.micontenthub.com/traveloffers/travel-tips/jeddah-edition-jpeg_bXKM0_3LD.jpg",
+      "page": "https://www.emea.marriott.com/tr/travel-tips/13-irresistible-new-hotels-to-book-now",
+      "bytes": 1116604,
+      "sha256": "44b91c3d8ff41fcae862f486791d2f20f57f827d58aab4ef7b6b95f1e4ff09fd",
+      "usage": "Reference only; no pixels shipped"
+    }
+  ],
+  "supplied_reference": [
+    {
+      "video": "Saved/Refs/jeddah.mp4",
+      "seconds": 331.06,
+      "retained_frame": "build/reviews/jeddah/reference/overview-04.jpg",
+      "sha256": "365b2dec6b935bab014444662e0387a0a08756774ec226a83c66f42d839e5088",
+      "supports": "Track-facing projecting white canopy,stepped dark occupied terraces,white angled bracing."
+    },
+    {
+      "video": "Saved/Refs/jeddah.mp4",
+      "seconds": 331.06,
+      "retained_frame": "build/reviews/jeddah-focused-20261118/architecture/reference-331-full.jpg",
+      "sha256": "dbc8a20db371dc29bf156ce7b61efd611f77fc4d773e8c6f02e3d9754d066f85",
+      "supports": "Full-resolution direct track view: stronger pale slab fascias,horizontal shade/glazing bands,pale closed canopy underside. No precise windowcountor floor survey inferred."
+    }
+  ],
+  "visible_defects_corrected": [
+    "Banner-only curtainwall/open-frame appearance replaced with opaque dark piers/spandrels and inset glazed room bays.",
+    "Actual geometric reveals and window frames replace glass laid over an opaque uninterrupted wall.",
+    "Glazed terrace guard volumes and fine coping replace the single isolated handrail.",
+    "Closed deck/roof fascia and soffits retain the deep projecting slab silhouette.",
+    "Exposed room roofs at stepped ends are closed rather than exposing a hollow upper rim.",
+    "Full-resolution supplied331.06s supports deeper pale deck fascia and horizontalfront shade bands; unregistered sea-facing curtain strips omitted.",
+    "Full-width upperplate replaced by estimated75% asymmetrical top canopy andshortened upper occupied volume; the remaining lower wing is an open roofterrace with a raised triangular endfin.",
+    "Oversized18.5m diagonals replaced by6.35\u219212.45m lower/middle terrace braces,leaning down toward positive-u as seen in the direct front view."
+  ],
+  "preserved": [
+    "Exact old terrain-cutout transform/order and original foundation wall vertices.",
+    "Mapped building frame/position,retained24.5m roof estimate\u00b14m andfloor6m tier controls.",
+    "All roads,protection,pit facilities,other buildings,global material palette,lighting,physics andcamera."
+  ],
+  "estimates": [
+    "Facade bay pitch3.6m,pier0.46m,glazing inset0.22m,glass guards1.08m are bounded architectural section estimates,not measured source counts.",
+    "Marriott image is a sea-facing corner; its lift tower,roof mast,pergolas andspecific entrance are not registered to the track elevation and are not transplanted.",
+    "Upper storey organization remains estimated; owner lobby volume precludes treatingfourstoreys asfouruniformordinaryfloorheights.",
+    "Deck fascia0.62m and horizontalshade fins0.12x0.055m are architectural estimates. Original deck tops/roof height remain fixed.",
+    "Maincanopylocal-u fraction0.21\u21920.96 andupper-room0.24\u21920.94 are image/planproportion estimates; long-end registration is approximate,roughly\u00b16m.",
+    "Pale endfinfraction0.06\u21920.13,peak24m,thickness0.75m andlowerbrace positions/count remain architectural estimates. Finbase rests on the actual18.28m roofdeck."
+  ],
+  "reference_limits": "The supplied clip contains edited laps and rear cameras.331.06s is the direct northern hairpin landmark association,not a linear seconds-to-station mapping. Rear271/275s and cut294s do not establish a continuous station chain.",
+  "licensing": "Owner photo and suppliedgame video are reference-only. No image pixels,logos or photo-derived textures are copied into native assets. Geometry is original procedural authoring.",
+  "source_checks": {
+    "mypy_files": 3,
+    "ruff": "PASS",
+    "focused_pytest": 3,
+    "old_owner_triangles": 7952,
+    "new_owner_triangles": 20231,
+    "old_owner_semantic_sha256": "65dbad0b11befcacaf667d741ca671db73fbd96275aab341781f8bd7fd1f2ea5",
+    "new_owner_semantic_sha256": "cbd07ed78513e04af93ab96d1ad5fcac2b28a54e2a4d8e305ab17de12f12d4bf",
+    "min_packed_source_normal_alignment": 0.9999928027793733,
+    "packed_collapsed_faces": 0,
+    "road_overlap_m2": 0.0,
+    "terrain_cutout_wkb": "EXACT old/new equality",
+    "raw_unemitted_degenerate_calls": [
+      {
+        "kind": "Building_EditionClosedRoomRoofs",
+        "area_m2": 3.3661962106634746e-13,
+        "points": [
+          [
+            -390.6214140525913,
+            1995.460929697889,
+            9.060435080379824
+          ],
+          [
+            -390.3584356309934,
+            1996.2248827901622,
+            9.060435080379824
+          ],
+          [
+            -378.8151257660952,
+            2029.7582320770505,
+            9.060435080379824
+          ]
+        ]
+      },
+      {
+        "kind": "Building_EditionClosedRoomRoofs",
+        "area_m2": 2.0961010704922955e-13,
+        "points": [
+          [
+            -390.1631340955516,
+            1996.792234328056,
+            15.060435080379824
+          ],
+          [
+            -389.8701817923889,
+            1997.6432616348968,
+            15.060435080379824
+          ],
+          [
+            -378.8151257660952,
+            2029.7582320770505,
+            15.060435080379824
+          ]
+        ]
+      }
+    ],
+    "proof": "build/reviews/jeddah-focused-20261118/architecture/edition-proof.json",
+    "proof_sha256": "f47e0ae986eab2aeb05136d59f574f4d39aa96ce82eff0137e9f74556c78fd42",
+    "native_appearance_approval": false
+  }
+}

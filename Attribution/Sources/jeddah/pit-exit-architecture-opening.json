@@ -38,5 +38,8 @@
   "source_note": "LiteralOSMtunnel through existingstand; openingclosedgenericWhiteendpanels only. Roof9.7m clearance preserved; height3m estimated.",
   "source_export_sha256": "836e5b0251ba702a2291e599a229d490829264aa174504edfbb4ed3c3afcc0ae",
   "source_way_url": "https://www.openstreetmap.org/way/1257884704",
-  "source_review": "Native car-envelope27repeatedWhitehitrecords occuronlyatcovered-exitendcaps; actualuniqueaffectedtrianglespredictedfromexactnativeexport. Roof/upperseats/supportoutside4.2mopening unchanged."
+  "source_review": "Native car-envelope27repeatedWhitehitrecords occuronlyatcovered-exitendcaps; actualuniqueaffectedtrianglespredictedfromexactnativeexport. Roof/upperseats/supportoutside4.2mopening unchanged.",
+  "application_mode": "source_reconstructed_open_exit",
+  "source_reconstruction_file": "Attribution/Sources/jeddah/pit-exit-reconstruction.json",
+  "legacy_cut_status": "Superseded after full scene regeneration with source-qualified open-exit landmark and exact imported packed source hash. Retained oldrecipe is historical evidence; never recut its22Whitefaces into regeneratedbody."
 }

@@ -1,0 +1,52 @@
+{
+  "tiers": [
+    {
+      "floor_m": 0,
+      "ceiling_m": 5.66,
+      "front_recess_m": 1.3,
+      "end_inset_m": 1.1
+    },
+    {
+      "floor_m": 6,
+      "ceiling_m": 11.66,
+      "front_recess_m": 3.4,
+      "end_inset_m": 2.6
+    },
+    {
+      "floor_m": 12,
+      "ceiling_m": 17.66,
+      "front_recess_m": 6.3,
+      "end_inset_m": 4.1
+    },
+    {
+      "floor_m": 18,
+      "ceiling_m": 24.02,
+      "front_recess_m": 8.8,
+      "end_inset_m": 5.6
+    }
+  ],
+  "canopy_top_m": 24.5,
+  "canopy_thickness_m": 0.48,
+  "slab_thickness_m": 0.62,
+  "facade_bay_m": 3.6,
+  "opaque_pier_m": 0.46,
+  "glazing_recess_m": 0.22,
+  "balustrade_height_m": 1.08,
+  "source_note": "Supplied331.06s/overview04 establishes the track-facing deep terraces, projecting pale canopy and angled braces. Marriott's original exterior photograph establishes dark occupied facade piers, recessed floor-height windows, closed soffits and glass terrace guards. Its sea-facing lift tower/pergolas are not transferred onto the unregistered track elevation. Tier heights, bay pitches and sections remain architectural estimates; existing24.5m envelope and footprint are retained. New room bays are estimated subordinate detail, not a measured count. No ground, physics, barrier or lighting changes. Full-resolution331.06s also supports dominant pale deck fascias and restrained horizontal front glazing/shade bands. Floor fascia0.62m is an architectural estimate; deck tops stay fixed. Sea-facing curtain panels are omitted from the track facade. Highest canopy occupies an estimated75% of the long frontage,offset toward the positive-u end; its local-u/end assignment follows the native approach orientation and remains estimated. The opposite quarter is an18.28m lower roof terrace with a raised pale triangular end fin. Braces connect6.35\u219212.45m terraces rather than the incorrectold18.5m full-height members. All are visual silhouette estimates from direct331.06s,not survey. Visible braces lean down toward positive-u on the registered approach; exact repetitions/endregistration remain estimated.",
+  "canopy_span_fraction": [
+    0.21,
+    0.96
+  ],
+  "upper_room_span_fraction": [
+    0.24,
+    0.94
+  ],
+  "fin_span_fraction": [
+    0.06,
+    0.13
+  ],
+  "fin_peak_m": 24.0,
+  "fin_thickness_m": 0.75,
+  "brace_bottom_m": 6.35,
+  "brace_top_m": 12.45
+}

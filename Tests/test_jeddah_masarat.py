@@ -127,7 +127,8 @@ def test_source_reviewed_model_geometry_and_actual_support_remain_fixed(
     assert 0 < row['estimated_entry_step_m'] < .6
     assert row['maximum_exposed_basement_m'] < 5
     assert row['maximum_ground_above_first_floor_m'] < 2
-    for path in scene.data.glob('*.bin'):
+    for name in ('buildings.bin', 'drive_surface.bin', 'terrain.bin', 'track_limits.bin'):
+        path = scene.data / name
         assert hashlib.sha256(path.read_bytes()).hexdigest() == meta['native_' + path.name + '_sha256']
 
 

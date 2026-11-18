@@ -1,0 +1,446 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-18",
+  "source_frame": "Native/source east,north metres. Retained origin anduniformscale fromscene-registration/provenance.",
+  "source_receipts": [
+    {
+      "label": "entry",
+      "tile_xyz": [
+        638189,
+        459732,
+        20
+      ],
+      "url": "https://mt1.google.com/vt/lyrs=s&x=638189&y=459732&z=20",
+      "file": "build/reviews/jeddah-focused-20261118/pit-controls/google-z20-638189-459732.jpg",
+      "bytes": 9016,
+      "sha256": "402eb1091e40e3cc83635a927db1d307866ef09d696d2e7d7b594d2e64c85dae",
+      "imagery_epoch": "Unknown. Retrieval2026-11-18 does not establish photography year."
+    },
+    {
+      "label": "entry",
+      "tile_xyz": [
+        638190,
+        459732,
+        20
+      ],
+      "url": "https://mt1.google.com/vt/lyrs=s&x=638190&y=459732&z=20",
+      "file": "build/reviews/jeddah-focused-20261118/pit-controls/google-z20-638190-459732.jpg",
+      "bytes": 10321,
+      "sha256": "804ba3aab7391ef20752b76bcea75e75d2c2daa3a574045661068d7a2e375cf0",
+      "imagery_epoch": "Unknown. Retrieval2026-11-18 does not establish photography year."
+    },
+    {
+      "label": "entry",
+      "tile_xyz": [
+        638191,
+        459732,
+        20
+      ],
+      "url": "https://mt1.google.com/vt/lyrs=s&x=638191&y=459732&z=20",
+      "file": "build/reviews/jeddah-focused-20261118/pit-controls/google-z20-638191-459732.jpg",
+      "bytes": 7986,
+      "sha256": "1660d0bffe13cb40af7d259756f3d8fa27169361a0305bb0b33ea08914686619",
+      "imagery_epoch": "Unknown. Retrieval2026-11-18 does not establish photography year."
+    },
+    {
+      "label": "entry",
+      "tile_xyz": [
+        638189,
+        459733,
+        20
+      ],
+      "url": "https://mt1.google.com/vt/lyrs=s&x=638189&y=459733&z=20",
+      "file": "build/reviews/jeddah-focused-20261118/pit-controls/google-z20-638189-459733.jpg",
+      "bytes": 10454,
+      "sha256": "41e5beebc2b830ac37232ad2bbe31f277b741e65609425cbee77bd605acc8b20",
+      "imagery_epoch": "Unknown. Retrieval2026-11-18 does not establish photography year."
+    },
+    {
+      "label": "entry",
+      "tile_xyz": [
+        638190,
+        459733,
+        20
+      ],
+      "url": "https://mt1.google.com/vt/lyrs=s&x=638190&y=459733&z=20",
+      "file": "build/reviews/jeddah-focused-20261118/pit-controls/google-z20-638190-459733.jpg",
+      "bytes": 10289,
+      "sha256": "c831ccb5b3e1e98f8d6883d8b7ab20a91e9771feaf9c74867d3025edfee99fdb",
+      "imagery_epoch": "Unknown. Retrieval2026-11-18 does not establish photography year."
+    },
+    {
+      "label": "entry",
+      "tile_xyz": [
+        638191,
+        459733,
+        20
+      ],
+      "url": "https://mt1.google.com/vt/lyrs=s&x=638191&y=459733&z=20",
+      "file": "build/reviews/jeddah-focused-20261118/pit-controls/google-z20-638191-459733.jpg",
+      "bytes": 8737,
+      "sha256": "8fa782dbc52cb965f63c7c701462c1a3b1a9b95dbeeeb08c70f67a4dff0f37cd",
+      "imagery_epoch": "Unknown. Retrieval2026-11-18 does not establish photography year."
+    },
+    {
+      "label": "entry",
+      "tile_xyz": [
+        638189,
+        459734,
+        20
+      ],
+      "url": "https://mt1.google.com/vt/lyrs=s&x=638189&y=459734&z=20",
+      "file": "build/reviews/jeddah-focused-20261118/pit-controls/google-z20-638189-459734.jpg",
+      "bytes": 10497,
+      "sha256": "a988223f5dcb999bbdfe59a01727396682f773834bef420e1d6448ccd2341de9",
+      "imagery_epoch": "Unknown. Retrieval2026-11-18 does not establish photography year."
+    },
+    {
+      "label": "entry",
+      "tile_xyz": [
+        638190,
+        459734,
+        20
+      ],
+      "url": "https://mt1.google.com/vt/lyrs=s&x=638190&y=459734&z=20",
+      "file": "build/reviews/jeddah-focused-20261118/pit-controls/google-z20-638190-459734.jpg",
+      "bytes": 9998,
+      "sha256": "44b5d6fdcc83175b31a6bff5a6cdd9edcde8f978c9f175069bd3d316c9c5f741",
+      "imagery_epoch": "Unknown. Retrieval2026-11-18 does not establish photography year."
+    },
+    {
+      "label": "entry",
+      "tile_xyz": [
+        638191,
+        459734,
+        20
+      ],
+      "url": "https://mt1.google.com/vt/lyrs=s&x=638191&y=459734&z=20",
+      "file": "build/reviews/jeddah-focused-20261118/pit-controls/google-z20-638191-459734.jpg",
+      "bytes": 8236,
+      "sha256": "c57ad39a833e94b2f195e385dd53ab566489be6a274aad321901dad511c3b051",
+      "imagery_epoch": "Unknown. Retrieval2026-11-18 does not establish photography year."
+    },
+    {
+      "label": "exit",
+      "tile_xyz": [
+        638186,
+        459722,
+        20
+      ],
+      "url": "https://mt1.google.com/vt/lyrs=s&x=638186&y=459722&z=20",
+      "file": "build/reviews/jeddah-focused-20261118/pit-controls/google-z20-638186-459722.jpg",
+      "bytes": 9718,
+      "sha256": "1b7d0427cf03e7e360210cec43b7ef18643ec6076481319a1aefd8995163a7fc",
+      "imagery_epoch": "Unknown. Retrieval2026-11-18 does not establish photography year."
+    },
+    {
+      "label": "exit",
+      "tile_xyz": [
+        638187,
+        459722,
+        20
+      ],
+      "url": "https://mt1.google.com/vt/lyrs=s&x=638187&y=459722&z=20",
+      "file": "build/reviews/jeddah-focused-20261118/pit-controls/google-z20-638187-459722.jpg",
+      "bytes": 11841,
+      "sha256": "d3f99f57c7dab3afefaf16592f02ce6b5992ba36de52aa17a27fe731d03fc06d",
+      "imagery_epoch": "Unknown. Retrieval2026-11-18 does not establish photography year."
+    },
+    {
+      "label": "exit",
+      "tile_xyz": [
+        638188,
+        459722,
+        20
+      ],
+      "url": "https://mt1.google.com/vt/lyrs=s&x=638188&y=459722&z=20",
+      "file": "build/reviews/jeddah-focused-20261118/pit-controls/google-z20-638188-459722.jpg",
+      "bytes": 9708,
+      "sha256": "8ed167066d7d61c34174087fcf7e98d2f1df35c179a6dba562288402f2645c88",
+      "imagery_epoch": "Unknown. Retrieval2026-11-18 does not establish photography year."
+    },
+    {
+      "label": "exit",
+      "tile_xyz": [
+        638186,
+        459723,
+        20
+      ],
+      "url": "https://mt1.google.com/vt/lyrs=s&x=638186&y=459723&z=20",
+      "file": "build/reviews/jeddah-focused-20261118/pit-controls/google-z20-638186-459723.jpg",
+      "bytes": 10992,
+      "sha256": "ee36dfcb1102880afe0fdc7cf626620ff9c4d3a201fe7d878aab5f5900851fdc",
+      "imagery_epoch": "Unknown. Retrieval2026-11-18 does not establish photography year."
+    },
+    {
+      "label": "exit",
+      "tile_xyz": [
+        638187,
+        459723,
+        20
+      ],
+      "url": "https://mt1.google.com/vt/lyrs=s&x=638187&y=459723&z=20",
+      "file": "build/reviews/jeddah-focused-20261118/pit-controls/google-z20-638187-459723.jpg",
+      "bytes": 9780,
+      "sha256": "3e24058f872def4b400761f1b04735606edd77ad96b70a9264e401bf562a6c79",
+      "imagery_epoch": "Unknown. Retrieval2026-11-18 does not establish photography year."
+    },
+    {
+      "label": "exit",
+      "tile_xyz": [
+        638188,
+        459723,
+        20
+      ],
+      "url": "https://mt1.google.com/vt/lyrs=s&x=638188&y=459723&z=20",
+      "file": "build/reviews/jeddah-focused-20261118/pit-controls/google-z20-638188-459723.jpg",
+      "bytes": 9115,
+      "sha256": "a9cf0450f6157f7b5779cc5c4f97c00c877a6ca710848852818cf177e2671af1",
+      "imagery_epoch": "Unknown. Retrieval2026-11-18 does not establish photography year."
+    },
+    {
+      "label": "exit",
+      "tile_xyz": [
+        638186,
+        459724,
+        20
+      ],
+      "url": "https://mt1.google.com/vt/lyrs=s&x=638186&y=459724&z=20",
+      "file": "build/reviews/jeddah-focused-20261118/pit-controls/google-z20-638186-459724.jpg",
+      "bytes": 10036,
+      "sha256": "aded3ad7987f15b6a7cd3494de89fb82a558c66e10f2f30f2fd2f6d862357ba7",
+      "imagery_epoch": "Unknown. Retrieval2026-11-18 does not establish photography year."
+    },
+    {
+      "label": "exit",
+      "tile_xyz": [
+        638187,
+        459724,
+        20
+      ],
+      "url": "https://mt1.google.com/vt/lyrs=s&x=638187&y=459724&z=20",
+      "file": "build/reviews/jeddah-focused-20261118/pit-controls/google-z20-638187-459724.jpg",
+      "bytes": 8726,
+      "sha256": "47b298b79c3ae80bcbfce41a8af829a3d17c6518471c4bdac9d087cc8ea63d5d",
+      "imagery_epoch": "Unknown. Retrieval2026-11-18 does not establish photography year."
+    },
+    {
+      "label": "exit",
+      "tile_xyz": [
+        638188,
+        459724,
+        20
+      ],
+      "url": "https://mt1.google.com/vt/lyrs=s&x=638188&y=459724&z=20",
+      "file": "build/reviews/jeddah-focused-20261118/pit-controls/google-z20-638188-459724.jpg",
+      "bytes": 9540,
+      "sha256": "e2b3cb6137aec6c0326ed7a67e4e6c9c3d7b47621babb969493db6ec38eec940",
+      "imagery_epoch": "Unknown. Retrieval2026-11-18 does not establish photography year."
+    },
+    {
+      "label": "roof",
+      "tile_xyz": [
+        638185,
+        459721,
+        20
+      ],
+      "url": "https://mt1.google.com/vt/lyrs=s&x=638185&y=459721&z=20",
+      "file": "build/reviews/jeddah-focused-20261118/pit-controls/google-z20-638185-459721.jpg",
+      "bytes": 11479,
+      "sha256": "886f7c08d9a2f02a49e51ea7f71b82f557b280164f84e74419a8603cb3d8ef2c",
+      "imagery_epoch": "Unknown. Retrieval2026-11-18 does not establish photography year."
+    },
+    {
+      "label": "roof",
+      "tile_xyz": [
+        638186,
+        459721,
+        20
+      ],
+      "url": "https://mt1.google.com/vt/lyrs=s&x=638186&y=459721&z=20",
+      "file": "build/reviews/jeddah-focused-20261118/pit-controls/google-z20-638186-459721.jpg",
+      "bytes": 9881,
+      "sha256": "ee93567c3d2b0e259106c3995153fcddaf2f64231d341b8e03e5d316c0cc8d96",
+      "imagery_epoch": "Unknown. Retrieval2026-11-18 does not establish photography year."
+    },
+    {
+      "label": "roof",
+      "tile_xyz": [
+        638187,
+        459721,
+        20
+      ],
+      "url": "https://mt1.google.com/vt/lyrs=s&x=638187&y=459721&z=20",
+      "file": "build/reviews/jeddah-focused-20261118/pit-controls/google-z20-638187-459721.jpg",
+      "bytes": 12827,
+      "sha256": "26ff10aa0b850a01ff97e65ad5c1dc7ef0337f0230c503975522f9cb4b7d814a",
+      "imagery_epoch": "Unknown. Retrieval2026-11-18 does not establish photography year."
+    },
+    {
+      "label": "roof",
+      "tile_xyz": [
+        638185,
+        459722,
+        20
+      ],
+      "url": "https://mt1.google.com/vt/lyrs=s&x=638185&y=459722&z=20",
+      "file": "build/reviews/jeddah-focused-20261118/pit-controls/google-z20-638185-459722.jpg",
+      "bytes": 8637,
+      "sha256": "fed9f2f537a9bb10fbb8cc79299429d29d1c77bc6f878e0198bc19e4b1acf7b7",
+      "imagery_epoch": "Unknown. Retrieval2026-11-18 does not establish photography year."
+    },
+    {
+      "label": "roof",
+      "tile_xyz": [
+        638186,
+        459722,
+        20
+      ],
+      "url": "https://mt1.google.com/vt/lyrs=s&x=638186&y=459722&z=20",
+      "file": "build/reviews/jeddah-focused-20261118/pit-controls/google-z20-638186-459722.jpg",
+      "bytes": 9718,
+      "sha256": "1b7d0427cf03e7e360210cec43b7ef18643ec6076481319a1aefd8995163a7fc",
+      "imagery_epoch": "Unknown. Retrieval2026-11-18 does not establish photography year."
+    },
+    {
+      "label": "roof",
+      "tile_xyz": [
+        638187,
+        459722,
+        20
+      ],
+      "url": "https://mt1.google.com/vt/lyrs=s&x=638187&y=459722&z=20",
+      "file": "build/reviews/jeddah-focused-20261118/pit-controls/google-z20-638187-459722.jpg",
+      "bytes": 11841,
+      "sha256": "d3f99f57c7dab3afefaf16592f02ce6b5992ba36de52aa17a27fe731d03fc06d",
+      "imagery_epoch": "Unknown. Retrieval2026-11-18 does not establish photography year."
+    },
+    {
+      "label": "roof",
+      "tile_xyz": [
+        638185,
+        459723,
+        20
+      ],
+      "url": "https://mt1.google.com/vt/lyrs=s&x=638185&y=459723&z=20",
+      "file": "build/reviews/jeddah-focused-20261118/pit-controls/google-z20-638185-459723.jpg",
+      "bytes": 10471,
+      "sha256": "83415141b0818b4bee1b9c4c3519100b3864e3d19dbf8153c568fd4cdf9b80cb",
+      "imagery_epoch": "Unknown. Retrieval2026-11-18 does not establish photography year."
+    },
+    {
+      "label": "roof",
+      "tile_xyz": [
+        638186,
+        459723,
+        20
+      ],
+      "url": "https://mt1.google.com/vt/lyrs=s&x=638186&y=459723&z=20",
+      "file": "build/reviews/jeddah-focused-20261118/pit-controls/google-z20-638186-459723.jpg",
+      "bytes": 10992,
+      "sha256": "ee36dfcb1102880afe0fdc7cf626620ff9c4d3a201fe7d878aab5f5900851fdc",
+      "imagery_epoch": "Unknown. Retrieval2026-11-18 does not establish photography year."
+    },
+    {
+      "label": "roof",
+      "tile_xyz": [
+        638187,
+        459723,
+        20
+      ],
+      "url": "https://mt1.google.com/vt/lyrs=s&x=638187&y=459723&z=20",
+      "file": "build/reviews/jeddah-focused-20261118/pit-controls/google-z20-638187-459723.jpg",
+      "bytes": 9780,
+      "sha256": "3e24058f872def4b400761f1b04735606edd77ad96b70a9264e401bf562a6c79",
+      "imagery_epoch": "Unknown. Retrieval2026-11-18 does not establish photography year."
+    }
+  ],
+  "fia_url": "https://www.fia.com/system/files/decision-document/2025_saudi_arabian_grand_prix_-_event_notes_-_circuit_map_pit_lane_and_quarantine_zone.pdf",
+  "fia_sha256": "fdbd4a72211efad4089aadb2efe261f75acfac67cbf8aa9dcd187e0fcbcfb7d0",
+  "supplied_video_sha256": "c2c78fb500a241a595aa6108bf797114332a747a83ab280b2a49d2cd9b8dcf78",
+  "controls": [
+    {
+      "role": "entry",
+      "crop": "entry-raw.jpg",
+      "tile_transform": {
+        "z": 20,
+        "xmin": 638189,
+        "ymin": 459732,
+        "origin_lat_lon": [
+          21.631980145676216,
+          39.104727022751526
+        ],
+        "scale": 0.997450175270678
+      },
+      "manual_line_endpoints_crop_px": [
+        [
+          318,
+          325
+        ],
+        [
+          370,
+          310
+        ]
+      ],
+      "line_midpoint_wgs84": [
+        21.63022661933864,
+        39.10526633262634
+      ],
+      "literal_midpoint_native_xy_m": [
+        55.665139238183286,
+        -194.70392897436076
+      ],
+      "projected_route_xy_m": [
+        54.54920929344807,
+        -195.06506456227865
+      ],
+      "route_distance_m": 268.24906706243405,
+      "route_track_station_m": 5980.429839100784,
+      "cross_route_residual_m": 1.1729102925703803,
+      "station_uncertainty_m": 5,
+      "source_note": "Visible transverse pit-lane line read from primary Google crop. FIA2025 pit drawing/ground photos qualify start/end ordering around garage block; supplied612/628s qualify physical board/line styles. Midpoint projects onto retained source pit axis; lateral residual is disclosed, not used to move the route."
+    },
+    {
+      "role": "exit",
+      "crop": "exit-raw.jpg",
+      "tile_transform": {
+        "z": 20,
+        "xmin": 638186,
+        "ymin": 459722,
+        "origin_lat_lon": [
+          21.631980145676216,
+          39.104727022751526
+        ],
+        "scale": 0.997450175270678
+      },
+      "manual_line_endpoints_crop_px": [
+        [
+          309,
+          590
+        ],
+        [
+          343,
+          578
+        ]
+      ],
+      "line_midpoint_wgs84": [
+        21.633085821382572,
+        39.10421222448349
+      ],
+      "literal_midpoint_native_xy_m": [
+        -53.135161449600275,
+        122.76941588252626
+      ],
+      "projected_route_xy_m": [
+        -54.95037830303697,
+        122.11512850593968
+      ],
+      "route_distance_m": 603.8008224712509,
+      "route_track_station_m": 6324.598405817376,
+      "cross_route_residual_m": 1.9295347097580717,
+      "station_uncertainty_m": 5,
+      "source_note": "Visible transverse pit-lane line read from primary Google crop. FIA2025 pit drawing/ground photos qualify start/end ordering around garage block; supplied612/628s qualify physical board/line styles. Midpoint projects onto retained source pit axis; lateral residual is disclosed, not used to move the route."
+    }
+  ],
+  "adjudication": "Use primary visible transverse line controls fornominal limiter distances; replace generic60m/lengthminus60m defaults. Five-metre station uncertainty retains imageryepoch/OSMregistration/manualread limits. These are source-bound reconstructed positions, not surveyed event-line coordinates."
+}

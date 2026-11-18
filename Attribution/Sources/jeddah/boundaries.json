@@ -1,57 +1,49 @@
 {
   "source": "Registered native road and reference-authored escape ranges",
   "method": "Exact planar polygon union, preserving interior islands; simplification tolerance2cm, wallsegments atmost2m. One closed boundary supplies physical and visible protection.",
-  "wall_count": 7507,
-  "occupied_footprints": 3,
+  "wall_count": 7317,
+  "occupied_footprints": 2,
   "structure_clearance_m": 0.5,
   "runoff_ranges": [
     {
       "type": "runoff",
-      "start_m": 245,
-      "end_m": 365,
+      "start_m": 250.0,
+      "end_m": 455.0,
       "side": 1,
-      "requested_width_m": 10,
-      "material": "RunoffGreen"
+      "requested_width_m": 7.0,
+      "material": "Runoff"
     },
     {
       "type": "runoff",
-      "start_m": 2150,
-      "end_m": 2370,
+      "start_m": 2175.0,
+      "end_m": 2365.0,
       "side": 1,
-      "requested_width_m": 14,
-      "material": "RunoffGreen"
+      "requested_width_m": 5.0,
+      "material": "Runoff"
     },
     {
       "type": "runoff",
-      "start_m": 2770,
-      "end_m": 2890,
+      "start_m": 5305.0,
+      "end_m": 5455.0,
       "side": 1,
-      "requested_width_m": 8,
-      "material": "RunoffGreen"
+      "requested_width_m": 4.0,
+      "material": "Runoff"
     },
     {
       "type": "runoff",
-      "start_m": 3340,
-      "end_m": 3490,
+      "start_m": 1505.0,
+      "end_m": 1650.0,
       "side": -1,
-      "requested_width_m": 8,
-      "material": "RunoffGreen"
+      "requested_width_m": 6.0,
+      "material": "Runoff"
     },
     {
       "type": "runoff",
-      "start_m": 4250,
-      "end_m": 4420,
-      "side": -1,
-      "requested_width_m": 9,
-      "material": "RunoffGreen"
-    },
-    {
-      "type": "runoff",
-      "start_m": 5290,
-      "end_m": 5520,
+      "start_m": 1660.0,
+      "end_m": 1845.0,
       "side": 1,
-      "requested_width_m": 14,
-      "material": "RunoffGreen"
+      "requested_width_m": 7.0,
+      "material": "Runoff"
     }
   ],
   "road_unchanged": true,

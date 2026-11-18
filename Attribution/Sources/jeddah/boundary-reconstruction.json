@@ -1,0 +1,489 @@
+{
+  "version": 1,
+  "source": "Saved/Refs/jeddah.mp4",
+  "reference_event_year": "unverified",
+  "primary_map": "build/reviews/jeddah/reference/primary-fia-2025-pit-map.png",
+  "primary_epoch": 2025,
+  "frame": "native source east/north metres; signed lane positive is driver right",
+  "length_m": 6174.0,
+  "ordinary_wall_gap_m": 0.65,
+  "ordinary_gap_uncertainty_m": 0.3,
+  "kerbed_wall_gap_m": 1.4,
+  "kerb_width_m": 0.95,
+  "kerb_inner_offset_m": 0.14,
+  "kerb_outer_clearance_m": 0.31,
+  "transitions_m": 18,
+  "pit_wall_gap_m": 1.05,
+  "kerbs": [
+    [
+      260,
+      335,
+      -1
+    ],
+    [
+      380,
+      450,
+      1
+    ],
+    [
+      515,
+      565,
+      -1
+    ],
+    [
+      815,
+      875,
+      -1
+    ],
+    [
+      940,
+      1000,
+      1
+    ],
+    [
+      1135,
+      1200,
+      -1
+    ],
+    [
+      1305,
+      1365,
+      1
+    ],
+    [
+      1420,
+      1475,
+      1
+    ],
+    [
+      1545,
+      1605,
+      -1
+    ],
+    [
+      1730,
+      1800,
+      -1
+    ],
+    [
+      2180,
+      2350,
+      -1
+    ],
+    [
+      2575,
+      2650,
+      1
+    ],
+    [
+      2660,
+      2720,
+      1
+    ],
+    [
+      2790,
+      2855,
+      -1
+    ],
+    [
+      2895,
+      2965,
+      1
+    ],
+    [
+      3020,
+      3090,
+      -1
+    ],
+    [
+      3390,
+      3460,
+      1
+    ],
+    [
+      3590,
+      3670,
+      -1
+    ],
+    [
+      3790,
+      3860,
+      1
+    ],
+    [
+      3935,
+      4000,
+      1
+    ],
+    [
+      4100,
+      4170,
+      -1
+    ],
+    [
+      4310,
+      4385,
+      1
+    ],
+    [
+      4590,
+      4700,
+      -1
+    ],
+    [
+      5330,
+      5490,
+      -1
+    ],
+    [
+      1715,
+      1810,
+      1
+    ]
+  ],
+  "apron_ranges": [
+    {
+      "start_m": 250,
+      "end_m": 455,
+      "side": 1,
+      "maximum_width_m": 7,
+      "material": "Runoff",
+      "source_frames": [
+        "reference/detail-308s.jpg"
+      ],
+      "source_note": "First-sequence/T2 island shares the wider T1 outside contour. White/pink/cyan paint is local, not an all-green ribbon. Extent and width reconstructed within about2m."
+    },
+    {
+      "start_m": 2175,
+      "end_m": 2365,
+      "side": 1,
+      "maximum_width_m": 5,
+      "material": "Runoff",
+      "source_frames": [
+        "build/reviews/jeddah/reference/detail-0331.jpg"
+      ],
+      "source_note": "Actual331sAramco bankedT13 view, HUD40.16s. Outside pavement width5m remains a bounded reconstruction\u00b12m;420/588s are earlier technical bends and are explicitly rejected asT13 metric evidence."
+    },
+    {
+      "start_m": 5305,
+      "end_m": 5455,
+      "side": 1,
+      "maximum_width_m": 4,
+      "material": "Runoff",
+      "source_frames": [
+        "reference/detail-344s.jpg"
+      ],
+      "source_note": "Narrower local asphalt shoulder on final braking approach; published independent straight escape branch and portal remain authoritative beyond it."
+    },
+    {
+      "start_m": 1505,
+      "end_m": 1650,
+      "side": -1,
+      "maximum_width_m": 6,
+      "material": "Runoff",
+      "source_frames": [
+        "timeline/0420s.jpg",
+        "baseline-lap/frames/00001713.jpg"
+      ],
+      "source_note": "Orange/green left pad registered from left kerb, bend order and Diamond ahead at nativeT9, approximately1545\u20131620m. Native endpoints\u00b135m/width\u00b12m; not HUD-time interpolation."
+    },
+    {
+      "start_m": 1660,
+      "end_m": 1845,
+      "side": 1,
+      "maximum_width_m": 7,
+      "material": "Runoff",
+      "source_frames": [
+        "timeline/0588s.jpg",
+        "baseline-lap/frames/00001823.jpg"
+      ],
+      "source_note": "Yellow/pink right pad on following Diamond approach bend, approximately1690\u20131815m. Reconstruct local motif and right edge kerb; endpoints\u00b135m/width\u00b12m. No whole-lap generic paint."
+    }
+  ],
+  "close_wall_frames": [
+    "reference/detail-332s.jpg",
+    "reference/detail-344s.jpg",
+    "reference/detail-384s.jpg",
+    "reference/detail-424s.jpg",
+    "reference/detail-536s.jpg",
+    "reference/detail-544s.jpg"
+  ],
+  "limitations": "Edited reference skips sectors. Kerb windows retain existing source alignment; unobserved intervening straight verges use the repeated close-wall family with0.3m uncertainty. Official turn numbering must not be inferred from the24 native curvature extrema. No centreline, legal width, vertical profile or handling edits. Existing pit and T27 escape overlays must be rebuilt and reapplied on regenerated base walls.",
+  "removed_generic_green_ranges": [
+    [
+      245,
+      365,
+      1,
+      10
+    ],
+    [
+      2150,
+      2370,
+      1,
+      14
+    ],
+    [
+      2770,
+      2890,
+      1,
+      8
+    ],
+    [
+      3340,
+      3490,
+      -1,
+      8
+    ],
+    [
+      4250,
+      4420,
+      -1,
+      9
+    ],
+    [
+      5290,
+      5520,
+      1,
+      14
+    ]
+  ],
+  "primary_urls": [
+    "https://www.fia.com/system/files/decision-document/2025_saudi_arabian_grand_prix_-_event_notes_-_circuit_map_pit_lane_and_quarantine_zone.pdf"
+  ],
+  "corner_inventory": [
+    {
+      "official_corner": 1,
+      "native_station_estimate_m": 299,
+      "source_status": "First-sequence identity observed directly in308s reference; lateral pad extent reconstructed\u00b12m.",
+      "source_frames": [
+        "reference/detail-308s.jpg"
+      ],
+      "planned_boundary_role": "Retain wider shared outside/inside apron with local white/pink/cyan paint; separate asphalt escape role."
+    },
+    {
+      "official_corner": 2,
+      "native_station_estimate_m": 414.8,
+      "source_status": "First-sequence identity observed directly in308s reference; lateral pad extent reconstructed\u00b12m.",
+      "source_frames": [
+        "reference/detail-308s.jpg"
+      ],
+      "planned_boundary_role": "Retain wider shared outside/inside apron with local white/pink/cyan paint; separate asphalt escape role."
+    },
+    {
+      "official_corner": 3,
+      "native_station_estimate_m": 542.4,
+      "source_status": "Retained native curvature window; corner order checked against FIA2025 diagram. Barrier distance interpolated from repeated close-wall imagery.",
+      "source_frames": [],
+      "planned_boundary_role": "Close walls outside kerb-aware asphalt shoulder; retain existing Green/White inside kerb. No invented broad green runoff."
+    },
+    {
+      "official_corner": 4,
+      "native_station_estimate_m": 845.5,
+      "source_status": "Retained native curvature window; corner order checked against FIA2025 diagram. Barrier distance interpolated from repeated close-wall imagery.",
+      "source_frames": [],
+      "planned_boundary_role": "Close walls outside kerb-aware asphalt shoulder; retain existing Green/White inside kerb. No invented broad green runoff."
+    },
+    {
+      "official_corner": 5,
+      "native_station_estimate_m": 973.2,
+      "source_status": "Retained native curvature window; corner order checked against FIA2025 diagram. Barrier distance interpolated from repeated close-wall imagery.",
+      "source_frames": [],
+      "planned_boundary_role": "Close walls outside kerb-aware asphalt shoulder; retain existing Green/White inside kerb. No invented broad green runoff."
+    },
+    {
+      "official_corner": 6,
+      "native_station_estimate_m": 1169,
+      "source_status": "Retained native curvature window; corner order checked against FIA2025 diagram. Barrier distance interpolated from repeated close-wall imagery.",
+      "source_frames": [],
+      "planned_boundary_role": "Close walls outside kerb-aware asphalt shoulder; retain existing Green/White inside kerb. No invented broad green runoff."
+    },
+    {
+      "official_corner": 7,
+      "native_station_estimate_m": 1336,
+      "source_status": "Retained native curvature window; corner order checked against FIA2025 diagram. Barrier distance interpolated from repeated close-wall imagery.",
+      "source_frames": [],
+      "planned_boundary_role": "Close walls outside kerb-aware asphalt shoulder; retain existing Green/White inside kerb. No invented broad green runoff."
+    },
+    {
+      "official_corner": 8,
+      "native_station_estimate_m": 1448,
+      "source_status": "Retained native curvature window; corner order checked against FIA2025 diagram. Barrier distance interpolated from repeated close-wall imagery.",
+      "source_frames": [],
+      "planned_boundary_role": "Close walls outside kerb-aware asphalt shoulder; retain existing Green/White inside kerb. No invented broad green runoff."
+    },
+    {
+      "official_corner": 9,
+      "native_station_estimate_m": 1575,
+      "source_status": "Diamond/left-kerb/bend-order registration to native1545\u20131620m; estimate\u00b135m.",
+      "source_frames": [
+        "timeline/0420s.jpg"
+      ],
+      "planned_boundary_role": "Retain bounded orange/green left apron on original surface planes."
+    },
+    {
+      "official_corner": 10,
+      "native_station_estimate_m": 1766,
+      "source_status": "Following Diamond-approach pad, native1690\u20131815m estimated\u00b135m.",
+      "source_frames": [
+        "timeline/0588s.jpg"
+      ],
+      "planned_boundary_role": "Retain bounded yellow/pink right apron, plus observed right GreenWhite edge kerb."
+    },
+    {
+      "official_corner": 11,
+      "native_station_estimate_m": 1920,
+      "source_status": "Gentle official direction change shown by FIA map, not separately detected in native24-turn extrema. Listed station is approximate\u00b170m, no centreline/curb relocation claimed.",
+      "source_frames": [],
+      "planned_boundary_role": "Use interpolated close-wall family. No new raised curb or escape branch inferred solely from numbering."
+    },
+    {
+      "official_corner": 12,
+      "native_station_estimate_m": 2050,
+      "source_status": "Gentle official direction change shown by FIA map, not separately detected in native24-turn extrema. Listed station is approximate\u00b170m, no centreline/curb relocation claimed.",
+      "source_frames": [],
+      "planned_boundary_role": "Use interpolated close-wall family. No new raised curb or escape branch inferred solely from numbering."
+    },
+    {
+      "official_corner": 13,
+      "native_station_estimate_m": 2277,
+      "source_status": "Actual331s banked Aramco hairpin at HUD40.16s; native2277 retained.420/588s previously misassigned and rejected.",
+      "source_frames": [
+        "build/reviews/jeddah/reference/detail-0331.jpg"
+      ],
+      "planned_boundary_role": "Retain a bounded5m outside asphalt apron, replacing former14m solid green band. Exact event artwork is not surveyed."
+    },
+    {
+      "official_corner": 14,
+      "native_station_estimate_m": 2612,
+      "source_status": "Retained native curvature window; corner order checked against FIA2025 diagram. Barrier distance interpolated from repeated close-wall imagery.",
+      "source_frames": [
+        "reference/detail-332s.jpg",
+        "reference/detail-536s.jpg"
+      ],
+      "planned_boundary_role": "Close walls outside kerb-aware asphalt shoulder; retain existing Green/White inside kerb. No invented broad green runoff."
+    },
+    {
+      "official_corner": 15,
+      "native_station_estimate_m": 2692,
+      "source_status": "Retained native curvature window; corner order checked against FIA2025 diagram. Barrier distance interpolated from repeated close-wall imagery.",
+      "source_frames": [
+        "reference/detail-332s.jpg",
+        "reference/detail-536s.jpg"
+      ],
+      "planned_boundary_role": "Close walls outside kerb-aware asphalt shoulder; retain existing Green/White inside kerb. No invented broad green runoff."
+    },
+    {
+      "official_corner": 16,
+      "native_station_estimate_m": 2824,
+      "source_status": "Retained native curvature window; corner order checked against FIA2025 diagram. Barrier distance interpolated from repeated close-wall imagery.",
+      "source_frames": [
+        "reference/detail-332s.jpg",
+        "reference/detail-536s.jpg"
+      ],
+      "planned_boundary_role": "Close walls outside kerb-aware asphalt shoulder; retain existing Green/White inside kerb. No invented broad green runoff."
+    },
+    {
+      "official_corner": 17,
+      "native_station_estimate_m": 2931,
+      "source_status": "Retained native curvature window; corner order checked against FIA2025 diagram. Barrier distance interpolated from repeated close-wall imagery.",
+      "source_frames": [
+        "reference/detail-332s.jpg",
+        "reference/detail-536s.jpg"
+      ],
+      "planned_boundary_role": "Close walls outside kerb-aware asphalt shoulder; retain existing Green/White inside kerb. No invented broad green runoff."
+    },
+    {
+      "official_corner": 18,
+      "native_station_estimate_m": 3059,
+      "source_status": "Retained native curvature window; corner order checked against FIA2025 diagram. Barrier distance interpolated from repeated close-wall imagery.",
+      "source_frames": [
+        "reference/detail-332s.jpg",
+        "reference/detail-536s.jpg"
+      ],
+      "planned_boundary_role": "Close walls outside kerb-aware asphalt shoulder; retain existing Green/White inside kerb. No invented broad green runoff."
+    },
+    {
+      "official_corner": 19,
+      "native_station_estimate_m": 3426,
+      "source_status": "Retained native curvature window; corner order checked against FIA2025 diagram. Barrier distance interpolated from repeated close-wall imagery.",
+      "source_frames": [
+        "reference/detail-332s.jpg",
+        "reference/detail-536s.jpg"
+      ],
+      "planned_boundary_role": "Close walls outside kerb-aware asphalt shoulder; retain existing Green/White inside kerb. No invented broad green runoff."
+    },
+    {
+      "official_corner": 20,
+      "native_station_estimate_m": 3633,
+      "source_status": "Retained native curvature window; corner order checked against FIA2025 diagram. Barrier distance interpolated from repeated close-wall imagery.",
+      "source_frames": [
+        "reference/detail-332s.jpg",
+        "reference/detail-536s.jpg"
+      ],
+      "planned_boundary_role": "Close walls outside kerb-aware asphalt shoulder; retain existing Green/White inside kerb. No invented broad green runoff."
+    },
+    {
+      "official_corner": 21,
+      "native_station_estimate_m": 3833,
+      "source_status": "Retained native curvature window; corner order checked against FIA2025 diagram. Barrier distance interpolated from repeated close-wall imagery.",
+      "source_frames": [
+        "reference/detail-332s.jpg",
+        "reference/detail-536s.jpg"
+      ],
+      "planned_boundary_role": "Close walls outside kerb-aware asphalt shoulder; retain existing Green/White inside kerb. No invented broad green runoff."
+    },
+    {
+      "official_corner": 22,
+      "native_station_estimate_m": 3969,
+      "source_status": "Braking-board/MSC approach observed; detailed station correspondence is reconstructed from retained corner sequence.",
+      "source_frames": [
+        "reference/detail-384s.jpg"
+      ],
+      "planned_boundary_role": "Close walls outside kerb-aware asphalt shoulder; retain existing Green/White inside kerb. No invented broad green runoff."
+    },
+    {
+      "official_corner": 23,
+      "native_station_estimate_m": 4139,
+      "source_status": "Retained native curvature window; corner order checked against FIA2025 diagram. Barrier distance interpolated from repeated close-wall imagery.",
+      "source_frames": [],
+      "planned_boundary_role": "Close walls outside kerb-aware asphalt shoulder; retain existing Green/White inside kerb. No invented broad green runoff."
+    },
+    {
+      "official_corner": 24,
+      "native_station_estimate_m": 4351,
+      "source_status": "Fast return close-wall family observed directly; precise source-frame-to-station endpoint correspondence estimated.",
+      "source_frames": [
+        "reference/detail-544s.jpg"
+      ],
+      "planned_boundary_role": "Close walls outside kerb-aware asphalt shoulder; retain existing Green/White inside kerb. No invented broad green runoff."
+    },
+    {
+      "official_corner": 25,
+      "native_station_estimate_m": 4654,
+      "source_status": "Fast return close-wall family observed directly; precise source-frame-to-station endpoint correspondence estimated.",
+      "source_frames": [
+        "reference/detail-544s.jpg"
+      ],
+      "planned_boundary_role": "Close walls outside kerb-aware asphalt shoulder; retain existing Green/White inside kerb. No invented broad green runoff."
+    },
+    {
+      "official_corner": 26,
+      "native_station_estimate_m": 5000,
+      "source_status": "Gentle official direction change shown by FIA map, not separately detected in native24-turn extrema. Listed station is approximate\u00b170m, no centreline/curb relocation claimed.",
+      "source_frames": [],
+      "planned_boundary_role": "Use interpolated close-wall family. No new raised curb or escape branch inferred solely from numbering."
+    },
+    {
+      "official_corner": 27,
+      "native_station_estimate_m": 5412,
+      "source_status": "Official27/native5412 retained anchor, direct50board/GreenWhite edge reference.",
+      "source_frames": [
+        "reference/detail-344s.jpg"
+      ],
+      "planned_boundary_role": "Replace former14m green ribbon by local asphalt shoulder; preserve independent80m straight escape and pit branch/portals."
+    }
+  ],
+  "branding_status": "Sponsor families follow visible edited-reference continuity, endpoints estimated approximately30\u201380m. Original typesetting, no copied reference textures. Same family on both sides is an approximation where reverse elevation is not visible; start/pit STC side is independently registered.",
+  "first_sequence_artwork": "Original reconstructed white/pink/cyan curved paint treatment with unchanged existing apron planes; not an exact trace of the supplied game artwork. Concrete source area/coverage is in boundary-source-proof.json.",
+  "wall_gap_definition": "Distance from legal white-line edge to barrier centre. Subtract0.15m wall radius for visible/physical inner face; kerbed centre gap1.40m leaves0.16m between the0.95m kerb outer edge and wall inner face."
+}

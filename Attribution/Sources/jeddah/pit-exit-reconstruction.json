@@ -1,0 +1,10 @@
+{
+  "osm_id": 1257884698,
+  "mode": "open_sky_reference_variant",
+  "start_distance_m": 650,
+  "end_distance_m": 715,
+  "garage_side_clearance_m": 3,
+  "track_side_mask_extent_m": 30,
+  "retained_height_m": 10,
+  "source_note": "Selected supplied-gameplay variant: continuous627\u2013635s, including dense630\u2013635s at10fps, shows open-sky fast lane beside left stand/service frontage through merge. Retained primary Google imagery ofunknown epoch andsecondary OSMtunnel1257884704 instead put an eastern roof tip over this path. This is an explicit source/epoch/gameplay conflict; imagery does not establish the current footage configuration. Keep the literal pit branch/axis, whose entry/exit ordering matches FIA andGoogle, and terminate only generic owner1257884698 east tip3mgarageward ofaxis. A0.4mparapet projection remains outside the4mfastlane. Retain at least75% ofthe original body footprint andthe existing10mheight estimate. New terminalwall closes the retained body; no floating roof strip, route relocation, invented occupied floor or mainRaceRoad alteration."
+}

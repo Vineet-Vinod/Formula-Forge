@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "supplied_video": "Saved/Refs/jeddah.mp4",
+  "supplied_video_sha256": "c2c78fb500a241a595aa6108bf797114332a747a83ab280b2a49d2cd9b8dcf78",
+  "source_events": [
+    {
+      "seconds": [
+        613,
+        618
+      ],
+      "supports": "Fast lane beside left working apron, blue/green separator strip, garage openings and equipment."
+    },
+    {
+      "seconds": [
+        619,
+        624
+      ],
+      "supports": "Stopped car parallel to travel on yellow longitudinal wheel/stop-box guides under bent white equipment boom."
+    },
+    {
+      "seconds": [
+        612,
+        628
+      ],
+      "supports": "80 km/h entry and cancellation end-board styles. Placement remains separately registered; does not support generic route-distance defaults."
+    }
+  ],
+  "retained_primary_plan": "https://www.fia.com/system/files/decision-document/2025_saudi_arabian_grand_prix_-_event_notes_-_circuit_map_pit_lane_and_quarantine_zone.pdf",
+  "plan_sha256": "fdbd4a72211efad4089aadb2efe261f75acfac67cbf8aa9dcd187e0fcbcfb7d0",
+  "registration": "Existing280m facade6009\u21926289m with20m longitudinal uncertainty. Local spatial source-pit projection within50m progress window avoids a9\u201310m track_station cross-section phase mismatch. Current route normals are literal source-right; negative extent reaches garage facade. No route axis or main Road edits.",
+  "estimates": "All apron-strip/box/boom dimensions, repetition and25m taper.45garage/10team locations follow2025 FIA, supplied gameplay differs in teams; no2026garage roster claim.",
+  "acceptance": "Source arrangement and focused geometry/support gates only. Actual current-package pit camera review remains required."
+}

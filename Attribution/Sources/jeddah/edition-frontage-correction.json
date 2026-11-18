@@ -82,5 +82,11 @@
       27.900435080379822
     ],
     "glazing_inset_guard_m": 0.08
+  },
+  "active_detail_revision": {
+    "date": "2026-11-18",
+    "recipe": "edition-detail.json",
+    "provenance": "edition-detail-provenance.json",
+    "note": "The reconstruction/source_proof above record the original2026-11-12 baseline. Current occupied wall/window sections,0.62m deck fascia,glazed guards,horizontal front shade bands andclosed roof/soffit details supersede its sparse banner/rail geometry. Mappedfootprint,foundationdatum,decktops and24.5m estimated envelope remain fixed. Fresh native review is required."
   }
 }

@@ -242,6 +242,8 @@ def bahrain(scene: CircuitScene) -> list[CircuitLight]:
 
 
 def jeddah(scene: CircuitScene) -> list[CircuitLight]:
+    from venues.jeddah_pits import pit_floor_point, pit_route_source, route_section
+
     lights = []
     for index in range(math.ceil(scene.length / 32)):
         for side in (-1, 1):
@@ -252,10 +254,23 @@ def jeddah(scene: CircuitScene) -> list[CircuitLight]:
                     lights.append(roof_bank(scene, sample, side, 25.0, 21.5, 3, 1, 0.9))
                 else:
                     lights.append(
-                        curved_lamp(scene, station, side, 16.0, 1.8, 17.0, 0.7)
+                        curved_lamp(scene, station, side, 16.0, .8, 17.0, 0.7)
                     )
     for station in (650, 1120, 1630):
         lights.append(flood_mast(scene, station, -1, 29.0, 38.0, 4, 3, 30.0, 1.6))
+    route = pit_route_source()
+    for garage in range(45):
+        start = 6009 + 1.25 + garage * 5.8 + (16.5 if garage >= 21 else 0)
+        first, last, sample = scene.at(start + .5), scene.at(start + 5.3), scene.at(start + 2.9)
+        a = first.point(-first.half_width - 13.6, 4.35)
+        b = last.point(-last.half_width - 13.6, 4.35)
+        scene.beam("Building_JeddahGarageLightHousings", "Steel", a, b, .16, .10)
+        scene.beam("Building_JeddahGarageLightStrips", "Lamp",
+                   add(a, (0, 0, -.06)), add(b, (0, 0, -.06)), .10, .025)
+        section = route_section(route, start + 2.9, sample.point(-sample.half_width - 13))
+        target = pit_floor_point(sample, section, -sample.half_width - 9.2, .02)
+        lights.append(CircuitLight(sample.point(-sample.half_width - 13.6, 4.29),
+                                   target[2], 7.0, .38, target))
     scene.landmarks.append(
         {
             "name": "Jeddah floodlight recipe",

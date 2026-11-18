@@ -68,6 +68,9 @@ float circuitShoulderMeters(const TrackCatalogEntry& track, float station, bool 
     }
     const float minimum = track.generated ? 0.05f : 1.2f;
     float width = std::clamp(sampleTrackShoulderMeters(track, station, left), minimum, 24.0f);
+    if (track.id == TrackLayoutId::Jeddah) {
+        return width;
+    }
     if (sampleTrackBankFadeMeters(track, station) == 0.0f &&
         (!track.authoredBarriers.empty() || track.id == TrackLayoutId::Japan)) {
         for (const auto& zone : track.runoffProfile) {

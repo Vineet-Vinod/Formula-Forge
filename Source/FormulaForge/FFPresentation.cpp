@@ -2,6 +2,7 @@
 #include "FFSession.h"
 #include "FFCircuitRibbon.h"
 #include "FFLasVegasNight.h"
+#include "FFJeddahNight.h"
 #include "track_catalog.hpp"
 
 #include "Components/DirectionalLightComponent.h"
@@ -42,8 +43,9 @@ void AFFPresentation::BeginPlay() {
     Super::BeginPlay();
     FullDetail = FParse::Param(FCommandLine::Get(), TEXT("FFFullDetail"));
     const FString circuit = GetGameInstance<UFFSession>()->Circuit();
-    if (circuit == TEXT("lasvegas") || circuit == TEXT("bahrain") ||
-        circuit == TEXT("jeddah") || circuit == TEXT("singapore")) {
+    if (circuit == TEXT("jeddah")) {
+        GetWorld()->SpawnActor<AFFJeddahNight>(GetActorLocation(), FRotator::ZeroRotator);
+    } else if (circuit == TEXT("lasvegas") || circuit == TEXT("bahrain") || circuit == TEXT("singapore")) {
         GetWorld()->SpawnActor<AFFLasVegasNight>(GetActorLocation(), FRotator::ZeroRotator);
     } else {
         ConfigureDaylight();

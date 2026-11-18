@@ -77,7 +77,7 @@
       ]
     }
   ],
-  "stand_style": "Retained footprint bounds and local road-facing orientation; blue seats and shallow cantilever roof. Row counts and roof heights are reconstructed. Foundations use adjacent road-level patches confined to each actual footprint, with ±1 m vertical uncertainty rather than roof-contaminated DSM bases.",
+  "stand_style": "Retained footprint bounds and local road-facing orientation; blue seats and shallow cantilever roof. Row counts and roof heights are reconstructed. Foundations use adjacent road-level patches confined to each actual footprint, with \u00b11 m vertical uncertainty rather than roof-contaminated DSM bases.",
   "t27_pavilion": {
     "primary_ers_staging_wgs_lat_lon": [
       21.62480556,
@@ -95,9 +95,9 @@
       10.7
     ],
     "form": "Two levels of white vertical framing, dark/bright glazing, shallow pale roof with a closed underside; dimensions and exact bay rhythm estimated from direct video and primary photographs.",
-    "ground": "Only the estimated occupied 85×20 m footprint receives an adjacent-road-level reconstruction at native 5390 m. No broad land flattening or water replacement.",
+    "ground": "Only the estimated occupied 85\u00d720 m footprint receives an adjacent-road-level reconstruction at native 5390 m. No broad land flattening or water replacement.",
     "minimum_road_edge_clearance_m": 17.59596526921508,
-    "runtime_pose_note": "The 291 s video is mid/late T27, approximately native 5390±40 m. Native 5410 is farther through the turn; the old static 5410 pair was not an exact matched pose. At 292 s the pavilion passes to the right; 294 s cuts to a different driver/camera."
+    "runtime_pose_note": "The 291 s video is mid/late T27, approximately native 5390\u00b140 m. Native 5410 is farther through the turn; the old static 5410 pair was not an exact matched pose. At 292 s the pavilion passes to the right; 294 s cuts to a different driver/camera."
   },
   "tree_belt": {
     "reference_seconds": [
@@ -107,7 +107,7 @@
       292
     ],
     "placed_roots": 10,
-    "placement": "Sparse mature broadleaf crowns beyond T27 barriers. Exact roots and 10–12 m heights are estimates; all are grounded and clear of every road arm, water and pavilion."
+    "placement": "Sparse mature broadleaf crowns beyond T27 barriers. Exact roots and 10\u201312 m heights are estimates; all are grounded and clear of every road arm, water and pavilion."
   },
   "source_frames": [
     {
@@ -161,6 +161,33 @@
     "peak_rss_kib": 95676,
     "production_mesh_written": false
   },
-  "native_followup": "Root must restore the original RIGHT shoulder profile in the rejected 5830→210 interval, then apply only the new LEFT 6009→115 pit-lane profile and regenerate protection. No centerline, road elevation, banking or handling changes are requested.",
-  "pixels_policy": "Reference images remain ignored under build/reviews; no source or game pixels are shipped."
+  "native_followup": "Root must restore the original RIGHT shoulder profile in the rejected 5830\u2192210 interval, then apply only the new LEFT 6009\u2192115 pit-lane profile and regenerate protection. No centerline, road elevation, banking or handling changes are requested.",
+  "pixels_policy": "Reference images remain ignored under build/reviews; no source or game pixels are shipped.",
+  "nov18_supplied_video_correction": {
+    "video_sha256": "c2c78fb500a241a595aa6108bf797114332a747a83ab280b2a49d2cd9b8dcf78",
+    "pit_sequence_s": [
+      608,
+      635
+    ],
+    "actual_stop_s": [
+      619,
+      624
+    ],
+    "corrections": [
+      "Working apron/bluegreen separator/parallel yellow stop guides/open garage recesses andfinite booms. Source widths/heights remain estimated.",
+      "T27 lowercorner/service bays andendpiers are pale/opaque in289\u2013293s, withupper dark glazing anddeeper pale canopy fascia/visible triangulated supports."
+    ],
+    "unchanged": "Literal pit axis, main Road, upperpit envelope/frame, T27placement/envelope.",
+    "pending": "Native physical support/clearance andcurrent-package camera review only. Limiter line binding andopen-exit reference variant are now authored source decisions withstated uncertainty.",
+    "rebuild_records": [
+      "pit-working-lane.json",
+      "pit-working-lane-provenance.json",
+      "pit-lane-reconstruction.json"
+    ],
+    "upper_glazing": "Source612s dark reflective upper panes useGlass insteadofemissiveWarmGlass. Upper vertexgeometry/frame preserved.",
+    "source_decisions": [
+      "pit-limiter-registration.json",
+      "pit-exit-reconstruction.json"
+    ]
+  }
 }

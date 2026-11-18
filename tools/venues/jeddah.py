@@ -16,6 +16,7 @@ from venues.east_architecture import (
     roof_polygon,
     trees,
 )
+from venues.jeddah_boundary import circuit_edges as boundary_edges
 from venues.jeddah_context import corniche_context
 from venues.jeddah_edition import edition_hotel
 from venues.jeddah_facilities import (
@@ -24,67 +25,42 @@ from venues.jeddah_facilities import (
     t27_pavilion,
     t27_tree_belt,
 )
+from venues.jeddah_markers import distance_boards
 from venues.jeddah_masarat import finish_terrain as finish_masarat_terrain
+from venues.jeddah_pit_exit import pit_exit_building
 from venues.jeddah_skyline import skyline_residency
 
 
 def circuit_edges(scene: CircuitScene) -> None:
-    # Native-station intervals are reference estimates, independent of auto turn labels.
-    for start, end, side in (
-        (260, 335, -1),
-        (380, 450, 1),
-        (515, 565, -1),
-        (815, 875, -1),
-        (940, 1000, 1),
-        (1135, 1200, -1),
-        (1305, 1365, 1),
-        (1420, 1475, 1),
-        (1545, 1605, -1),
-        (1730, 1800, -1),
-        (2180, 2350, -1),
-        (2575, 2650, 1),
-        (2660, 2720, 1),
-        (2790, 2855, -1),
-        (2895, 2965, 1),
-        (3020, 3090, -1),
-        (3390, 3460, 1),
-        (3590, 3670, -1),
-        (3790, 3860, 1),
-        (3935, 4000, 1),
-        (4100, 4170, -1),
-        (4310, 4385, 1),
-        (4590, 4700, -1),
-        (5330, 5490, -1),
-    ):
-        scene.kerb(start, end, side, width=0.95, material="Green")
-    for start, end, side, width, material in (
-        (245, 365, 1, 10, "RunoffGreen"),
-        (2150, 2370, 1, 14, "RunoffGreen"),
-        (2770, 2890, 1, 8, "RunoffGreen"),
-        (3340, 3490, -1, 8, "RunoffGreen"),
-        (4250, 4420, -1, 9, "RunoffGreen"),
-        (5290, 5520, 1, 14, "RunoffGreen"),
-    ):
-        scene.runoff(start, end, side, width, material)
+    boundary_edges(scene)
 
     for apex, side, distances in (
         (299, 1, (150, 100, 50)),
         (2277, 1, (150, 100, 50)),
         (5412, 1, (150, 100, 50)),
     ):
-        scene.braking_boards(apex, side, distances=distances)
+        distance_boards(scene, apex, side)
 
-    for start, end, side, material in (
-        (5290, 6174, 1, "PanelGreen"),
-        (0, 200, 1, "PanelGreen"),
-        (5290, 5900, -1, "PanelGreen"),
-        (5900, 6174, -1, "PanelStc"),
-        (0, 200, -1, "PanelStc"),
-        (250, 650, 1, "PanelYellow"),
-        (370, 650, -1, "PanelYellow"),
-        (2150, 2380, 1, "PanelGreen"),
+    for start, end, material in (
+        (0, 200, "PanelGreen"),
+        (200, 650, "PanelYellow"),
+        (650, 1100, "PanelPurple"),
+        (1100, 1500, "PanelJeddahGlobant"),
+        (1500, 1750, "PanelJeddahSaudiGP"),
+        (1750, 2400, "PanelJeddahTag"),
+        (2400, 2820, "PanelGreen"),
+        (2820, 3400, "PanelJeddahLV"),
+        (3400, 4000, "PanelNavy"),
+        (4000, 4450, "PanelJeddahLV"),
+        (4450, 4950, "PanelJeddahCrypto"),
+        (4950, 5210, "PanelJeddahSaudiGP"),
+        (5210, 5580, "PanelJeddahSalesforce"),
+        (5580, 6009, "PanelGreen"),
+        (6009, 6174, "PanelGreen"),
     ):
-        scene.branding(start, end, side, material)
+        for side in (-1, 1):
+            panel = "PanelStc" if side == -1 and (start == 0 or start == 6009) else material
+            scene.branding(start, end, side, panel)
 
 
 def construction_tower(scene: CircuitScene) -> None:
@@ -234,6 +210,7 @@ def build_venue(scene: CircuitScene) -> None:
     coastal_water(scene)
     mapped_stands(scene)
     pit_compound(scene)
+    pit_exit_building(scene)
     t27_pavilion(scene)
     t27_tree_belt(scene)
     construction_tower(scene)

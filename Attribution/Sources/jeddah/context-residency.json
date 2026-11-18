@@ -9,7 +9,7 @@
         -40714.977207666736,
         50.0,
         106287.15820916537,
-        -3483.5347733860367,
+        -5700.041691822628,
         26770.0
       ]
     },
@@ -27,588 +27,89 @@
     }
   ],
   "qualification": {
-    "status": "Source authoring rule prepared; native import and fresh cooked residency/visibility review pending.",
-    "pose_packet": "build/reviews/jeddah/resume-20261114-first-live/telemetry/frames.jsonl",
-    "pose_sha256": "3a62571ec734e4432b5741818a2afa359677135b190c2fdf2ef456eb78935142",
-    "pose_count": 5003,
+    "status": "2026-11-18 finite source rebind after close-wall corridor export; strict named bounds guard and residency margins retained. Updated native boundary/appearance capture pending.",
+    "supersedes_recipe_sha256": "b21884dd5f8cfe7696b1ebe744f2d151c562d6d18c1f552e70e20ec6f5b1975c",
+    "reason": "Only City_00_m3 max UE Y changed by\u22122216.506918cm, owned by an existing TreeCanopy triangle whose corridor-relative placement follows the new profile. Sail tower/podium geometry is unchanged; City_01_m3 bounds are unchanged.",
+    "changed_axes_cm": {
+      "Building_City_00_m3": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -2216.5069184365916,
+        0.0
+      ],
+      "Building_City_01_m3": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "changed_bound_witness": {
+      "kind": "Building_Trees",
+      "material": "TreeCanopy",
+      "source_xyz_m": [
+        57.000416918226286,
+        -732.7829340479757,
+        8.605335867824214
+      ],
+      "native_xyz_cm": [
+        73278.29340479757,
+        -5700.041691822628,
+        860.5335867824215
+      ]
+    },
+    "pose_packet": "build/reviews/jeddah-focused-20261118/baseline-lap/telemetry/frames.jsonl.gz",
+    "pose_sha256": "2e3c759677d288a9d35eb8bac5a3705d3b819e47e8af674ba01f73088030a675",
+    "stored_pose_sha256": "9079fd0ed278491081d07060fd98f74d00c669095c1fee07fd1f1a6e907f1058",
+    "pose_count": 4998,
     "potential_frustum_overlap_pose_count": 1830,
-    "scope_note": "Geometric camera-frustum overlap is potential visibility only. Occlusion, haze and actual rendered prominence require cooked review. Ideal load/release hysteresis uses unchanged 1800 m / 2050 m global radii; asynchronous latency is not simulated. A 50 m preload allowance is included.",
     "named_tiles": [
       {
         "tile": "Building_City_00_m3",
-        "actual_mesh_bounds_ue_cm": [
-          71618.1906930714,
-          -40714.977207666736,
-          50.0,
-          106287.15820916537,
-          -3483.5347733860367,
-          26770.0
-        ],
-        "proposed_csv_bounds_ue_cm": [
-          -28381.809306928597,
-          -40714.977207666736,
-          50.0,
-          106287.15820916537,
-          -3483.5347733860367,
-          26770.0
-        ],
-        "proposed_north_margin_m": 1000,
-        "maximum_actual_distance_while_potentially_in_view_m": 2723.9645198181415,
-        "maximum_proposed_distance_while_potentially_in_view_m": 1735.2570567876555,
-        "maximum_proposed_distance_whole_route_m": 1754.0016309489315,
-        "potentially_visible_frames_unloaded_with_actual_bounds": 633,
-        "potentially_visible_frames_unloaded_with_proposed_bounds": 0,
-        "worst_pose": {
-          "station_m": 2339.150146484375,
-          "frame": 2336,
-          "actor_position_cm": [
-            -198825.09191176473,
-            29078.06755514706,
-            457.6496348661535
-          ],
-          "camera_position_cm": [
-            -198852.90999151682,
-            29026.822421223635,
-            580.8571455466187
-          ],
-          "camera_rotation_deg": [
-            -3.312438176152854,
-            34.82837677001952,
-            -11.999712023501742
-          ]
-        },
-        "witnesses": [
-          {
-            "requested_station_m": 4900,
-            "station_m": 4899.96240234375,
-            "frame": 4088,
-            "actor_position_cm": [
-              38997.44370404412,
-              18541.01131663603,
-              132.76469286750347
-            ],
-            "camera_position_cm": [
-              38951.078902728535,
-              18559.46175078249,
-              259.61060994319615
-            ],
-            "camera_rotation_deg": [
-              -4.419943442864916,
-              -21.638015747070305,
-              0.0023395672465828
-            ],
-            "potential_frustum_overlap": true,
-            "projected_tower_bbox_normalized_xy": [
-              0.3163673674673557,
-              0.11600787732217377,
-              0.36735047595665354,
-              0.43372953991355084
-            ],
-            "actual_bounds_distance_m": 393.5979883832791,
-            "proposed_bounds_distance_m": 220.24546090022068
-          },
-          {
-            "requested_station_m": 5000,
-            "station_m": 5000.6533203125,
-            "frame": 4145,
-            "actor_position_cm": [
-              48022.33168658089,
-              14030.105411305149,
-              65.9034953397863
-            ],
-            "camera_position_cm": [
-              47977.11980499881,
-              14057.739028808914,
-              191.49118959150715
-            ],
-            "camera_rotation_deg": [
-              -3.0501588147020464,
-              -31.44942092895505,
-              -0.0004903713508499946
-            ],
-            "potential_frustum_overlap": true,
-            "projected_tower_bbox_normalized_xy": [
-              0.39338388644464184,
-              0.10689067575048977,
-              0.44417580173710214,
-              0.45443696576477016
-            ],
-            "actual_bounds_distance_m": 293.85237020875115,
-            "proposed_bounds_distance_m": 175.13640184691187
-          },
-          {
-            "requested_station_m": 5200,
-            "station_m": 5199.45166015625,
-            "frame": 4257,
-            "actor_position_cm": [
-              63115.653722426476,
-              1252.2882798138787,
-              219.01249605066639
-            ],
-            "camera_position_cm": [
-              63079.89589547305,
-              1292.711174523416,
-              344.18185090587946
-            ],
-            "camera_rotation_deg": [
-              -2.6084244584388223,
-              -48.38126373291017,
-              0.0037524499555252337
-            ],
-            "potential_frustum_overlap": true,
-            "projected_tower_bbox_normalized_xy": [
-              0.5353688035870848,
-              -0.019920910293977356,
-              0.6036895919934344,
-              0.46470368890603414
-            ],
-            "actual_bounds_distance_m": 97.32479382377524,
-            "proposed_bounds_distance_m": 47.358230531999155
-          },
-          {
-            "requested_station_m": 5350,
-            "station_m": 5350.2470703125,
-            "frame": 4351,
-            "actor_position_cm": [
-              72133.8924632353,
-              -10838.105325137869,
-              365.5193328857422
-            ],
-            "camera_position_cm": [
-              72105.58243118793,
-              -10793.317823318297,
-              491.1084318005712
-            ],
-            "camera_rotation_deg": [
-              -3.0171273195457653,
-              -57.760341644287095,
-              -0.00196296711357106
-            ],
-            "potential_frustum_overlap": true,
-            "projected_tower_bbox_normalized_xy": [
-              0.6507599062158755,
-              -0.2803743296028348,
-              0.7649986405310237,
-              0.4649551279734616
-            ],
-            "actual_bounds_distance_m": 0.0,
-            "proposed_bounds_distance_m": 0.0
-          },
-          {
-            "requested_station_m": 5410,
-            "station_m": 5410.171875,
-            "frame": 4466,
-            "actor_position_cm": [
-              73281.71530330883,
-              -16744.03435202206,
-              386.83660170611216
-            ],
-            "camera_position_cm": [
-              73305.44112899937,
-              -16698.26473576514,
-              513.01991051911
-            ],
-            "camera_rotation_deg": [
-              -3.687558943601008,
-              -117.43951606750485,
-              -0.0011211681868550365
-            ],
-            "potential_frustum_overlap": false,
-            "projected_tower_bbox_normalized_xy": [
-              4.224619773519439,
-              -18.670606538020397,
-              16.2626457477592,
-              0.5831199916262902
-            ],
-            "actual_bounds_distance_m": 0.0,
-            "proposed_bounds_distance_m": 0.0
-          },
-          {
-            "requested_station_m": 5449.7,
-            "station_m": 5449.87060546875,
-            "frame": 4553,
-            "actor_position_cm": [
-              69812.32192095589,
-              -18866.676240808825,
-              353.29372181611905
-            ],
-            "camera_position_cm": [
-              69862.76725796891,
-              -18862.593718029406,
-              479.858333700318
-            ],
-            "camera_rotation_deg": [
-              -4.167903745155149,
-              -175.39981842041018,
-              0.00021499909574711367
-            ],
-            "potential_frustum_overlap": false,
-            "projected_tower_bbox_normalized_xy": null,
-            "actual_bounds_distance_m": 18.05868772115515,
-            "proposed_bounds_distance_m": 0.0
-          },
-          {
-            "requested_station_m": 5500,
-            "station_m": 5499.87353515625,
-            "frame": 4611,
-            "actor_position_cm": [
-              64818.53745404412,
-              -18083.207433363972,
-              304.69144933363975
-            ],
-            "camera_position_cm": [
-              64868.152755779745,
-              -18095.036686702995,
-              431.09710822248763
-            ],
-            "camera_rotation_deg": [
-              -3.9501638246093216,
-              166.56321716308597,
-              -0.0010238914799774795
-            ],
-            "potential_frustum_overlap": false,
-            "projected_tower_bbox_normalized_xy": null,
-            "actual_bounds_distance_m": 67.99653239027285,
-            "proposed_bounds_distance_m": 0.0
-          },
-          {
-            "requested_station_m": 5800,
-            "station_m": 5799.283203125,
-            "frame": 4790,
-            "actor_position_cm": [
-              35743.92807904412,
-              -11045.146627987133,
-              189.64917800005745
-            ],
-            "camera_position_cm": [
-              35793.62744030515,
-              -11057.6985693458,
-              315.95207685188257
-            ],
-            "camera_rotation_deg": [
-              -4.026196834162238,
-              165.84654235839844,
-              0.0009308979369736168
-            ],
-            "potential_frustum_overlap": false,
-            "projected_tower_bbox_normalized_xy": null,
-            "actual_bounds_distance_m": 358.7426261402728,
-            "proposed_bounds_distance_m": 0.0
-          },
-          {
-            "requested_station_m": 6154,
-            "station_m": 6154.0,
-            "frame": 0,
-            "actor_position_cm": [
-              1888.6810302734377,
-              -658.1710815429688,
-              204.97975068933826
-            ],
-            "camera_position_cm": [
-              1936.6531746911908,
-              -674.9202356461772,
-              331.463501411671
-            ],
-            "camera_rotation_deg": [
-              -4.03963029384613,
-              160.75369262695315,
-              0.0
-            ],
-            "potential_frustum_overlap": false,
-            "projected_tower_bbox_normalized_xy": null,
-            "actual_bounds_distance_m": 697.8672651590286,
-            "proposed_bounds_distance_m": 28.25363691843068
-          }
-        ]
+        "north_margin_m": 1000,
+        "maximum_potential_view_distance_m": 1739.552513375385,
+        "maximum_whole_pose_route_distance_m": 1757.7412151215174,
+        "unloaded_potential_view_frames": []
       },
       {
         "tile": "Building_City_01_m3",
-        "actual_mesh_bounds_ue_cm": [
-          95823.15896756294,
-          -41417.04948940209,
-          50.0,
-          104757.52091465527,
-          -28179.0389835969,
-          26770.0
-        ],
-        "proposed_csv_bounds_ue_cm": [
-          -34176.84103243706,
-          -41417.04948940209,
-          50.0,
-          104757.52091465527,
-          -28179.0389835969,
-          26770.0
-        ],
-        "proposed_north_margin_m": 1300,
-        "maximum_actual_distance_while_potentially_in_view_m": 3001.599040435552,
-        "maximum_proposed_distance_while_potentially_in_view_m": 1743.1988632055466,
-        "maximum_proposed_distance_whole_route_m": 1755.9142586303924,
-        "potentially_visible_frames_unloaded_with_actual_bounds": 802,
-        "potentially_visible_frames_unloaded_with_proposed_bounds": 0,
-        "worst_pose": {
-          "station_m": 2339.150146484375,
-          "frame": 2336,
-          "actor_position_cm": [
-            -198825.09191176473,
-            29078.06755514706,
-            457.6496348661535
-          ],
-          "camera_position_cm": [
-            -198852.90999151682,
-            29026.822421223635,
-            580.8571455466187
-          ],
-          "camera_rotation_deg": [
-            -3.312438176152854,
-            34.82837677001952,
-            -11.999712023501742
-          ]
-        },
-        "witnesses": [
-          {
-            "requested_station_m": 4900,
-            "station_m": 4899.96240234375,
-            "frame": 4088,
-            "actor_position_cm": [
-              38997.44370404412,
-              18541.01131663603,
-              132.76469286750347
-            ],
-            "camera_position_cm": [
-              38951.078902728535,
-              18559.46175078249,
-              259.61060994319615
-            ],
-            "camera_rotation_deg": [
-              -4.419943442864916,
-              -21.638015747070305,
-              0.0023395672465828
-            ],
-            "potential_frustum_overlap": true,
-            "projected_tower_bbox_normalized_xy": [
-              0.3163673674673557,
-              0.11600787732217377,
-              0.36735047595665354,
-              0.43372953991355084
-            ],
-            "actual_bounds_distance_m": 735.657869887002,
-            "proposed_bounds_distance_m": 467.20050300232936
-          },
-          {
-            "requested_station_m": 5000,
-            "station_m": 5000.6533203125,
-            "frame": 4145,
-            "actor_position_cm": [
-              48022.33168658089,
-              14030.105411305149,
-              65.9034953397863
-            ],
-            "camera_position_cm": [
-              47977.11980499881,
-              14057.739028808914,
-              191.49118959150715
-            ],
-            "camera_rotation_deg": [
-              -3.0501588147020464,
-              -31.44942092895505,
-              -0.0004903713508499946
-            ],
-            "potential_frustum_overlap": true,
-            "projected_tower_bbox_normalized_xy": [
-              0.39338388644464184,
-              0.10689067575048977,
-              0.44417580173710214,
-              0.45443696576477016
-            ],
-            "actual_bounds_distance_m": 637.6935752613451,
-            "proposed_bounds_distance_m": 422.09144394902046
-          },
-          {
-            "requested_station_m": 5200,
-            "station_m": 5199.45166015625,
-            "frame": 4257,
-            "actor_position_cm": [
-              63115.653722426476,
-              1252.2882798138787,
-              219.01249605066639
-            ],
-            "camera_position_cm": [
-              63079.89589547305,
-              1292.711174523416,
-              344.18185090587946
-            ],
-            "camera_rotation_deg": [
-              -2.6084244584388223,
-              -48.38126373291017,
-              0.0037524499555252337
-            ],
-            "potential_frustum_overlap": true,
-            "projected_tower_bbox_normalized_xy": [
-              0.5353688035870848,
-              -0.019920910293977356,
-              0.6036895919934344,
-              0.46470368890603414
-            ],
-            "actual_bounds_distance_m": 439.9981731605957,
-            "proposed_bounds_distance_m": 294.31327263410776
-          },
-          {
-            "requested_station_m": 5350,
-            "station_m": 5350.2470703125,
-            "frame": 4351,
-            "actor_position_cm": [
-              72133.8924632353,
-              -10838.105325137869,
-              365.5193328857422
-            ],
-            "camera_position_cm": [
-              72105.58243118793,
-              -10793.317823318297,
-              491.1084318005712
-            ],
-            "camera_rotation_deg": [
-              -3.0171273195457653,
-              -57.760341644287095,
-              -0.00196296711357106
-            ],
-            "potential_frustum_overlap": true,
-            "projected_tower_bbox_normalized_xy": [
-              0.6507599062158755,
-              -0.2803743296028348,
-              0.7649986405310237,
-              0.4649551279734616
-            ],
-            "actual_bounds_distance_m": 293.5795169387906,
-            "proposed_bounds_distance_m": 173.4093365845903
-          },
-          {
-            "requested_station_m": 5410,
-            "station_m": 5410.171875,
-            "frame": 4466,
-            "actor_position_cm": [
-              73281.71530330883,
-              -16744.03435202206,
-              386.83660170611216
-            ],
-            "camera_position_cm": [
-              73305.44112899937,
-              -16698.26473576514,
-              513.01991051911
-            ],
-            "camera_rotation_deg": [
-              -3.687558943601008,
-              -117.43951606750485,
-              -0.0011211681868550365
-            ],
-            "potential_frustum_overlap": false,
-            "projected_tower_bbox_normalized_xy": [
-              4.224619773519439,
-              -18.670606538020397,
-              16.2626457477592,
-              0.5831199916262902
-            ],
-            "actual_bounds_distance_m": 252.75996783368996,
-            "proposed_bounds_distance_m": 114.3500463157484
-          },
-          {
-            "requested_station_m": 5449.7,
-            "station_m": 5449.87060546875,
-            "frame": 4553,
-            "actor_position_cm": [
-              69812.32192095589,
-              -18866.676240808825,
-              353.29372181611905
-            ],
-            "camera_position_cm": [
-              69862.76725796891,
-              -18862.593718029406,
-              479.858333700318
-            ],
-            "camera_rotation_deg": [
-              -4.167903745155149,
-              -175.39981842041018,
-              0.00021499909574711367
-            ],
-            "potential_frustum_overlap": false,
-            "projected_tower_bbox_normalized_xy": null,
-            "actual_bounds_distance_m": 276.2759026260548,
-            "proposed_bounds_distance_m": 93.12362742788075
-          },
-          {
-            "requested_station_m": 5500,
-            "station_m": 5499.87353515625,
-            "frame": 4611,
-            "actor_position_cm": [
-              64818.53745404412,
-              -18083.207433363972,
-              304.69144933363975
-            ],
-            "camera_position_cm": [
-              64868.152755779745,
-              -18095.036686702995,
-              431.09710822248763
-            ],
-            "camera_rotation_deg": [
-              -3.9501638246093216,
-              166.56321716308597,
-              -0.0010238914799774795
-            ],
-            "potential_frustum_overlap": false,
-            "projected_tower_bbox_normalized_xy": null,
-            "actual_bounds_distance_m": 326.06937450291656,
-            "proposed_bounds_distance_m": 100.95831550232928
-          },
-          {
-            "requested_station_m": 5800,
-            "station_m": 5799.283203125,
-            "frame": 4790,
-            "actor_position_cm": [
-              35743.92807904412,
-              -11045.146627987133,
-              189.64917800005745
-            ],
-            "camera_position_cm": [
-              35793.62744030515,
-              -11057.6985693458,
-              315.95207685188257
-            ],
-            "camera_rotation_deg": [
-              -4.026196834162238,
-              165.84654235839844,
-              0.0009308979369736168
-            ],
-            "potential_frustum_overlap": false,
-            "projected_tower_bbox_normalized_xy": null,
-            "actual_bounds_distance_m": 624.7466887795066,
-            "proposed_bounds_distance_m": 171.33892355609765
-          },
-          {
-            "requested_station_m": 6154,
-            "station_m": 6154.0,
-            "frame": 0,
-            "actor_position_cm": [
-              1888.6810302734377,
-              -658.1710815429688,
-              204.97975068933826
-            ],
-            "camera_position_cm": [
-              1936.6531746911908,
-              -674.9202356461772,
-              331.463501411671
-            ],
-            "camera_rotation_deg": [
-              -4.03963029384613,
-              160.75369262695315,
-              0.0
-            ],
-            "potential_frustum_overlap": false,
-            "projected_tower_bbox_normalized_xy": null,
-            "actual_bounds_distance_m": 978.8301341618692,
-            "proposed_bounds_distance_m": 275.2086790205393
-          }
-        ]
+        "north_margin_m": 1300,
+        "maximum_potential_view_distance_m": 1743.1988632055466,
+        "maximum_whole_pose_route_distance_m": 1755.9141184453442,
+        "unloaded_potential_view_frames": []
       }
     ],
-    "preserved": "No source geometry, dimensions, location, actual UE render bounds, existing Diamond residency or global streaming radius changes."
+    "canonical_road_route": [
+      {
+        "tile": "Building_City_00_m3",
+        "current_road_samples": 8192,
+        "maximum_distance_m": 1753.8887746794937,
+        "station_m": 2294.14746
+      },
+      {
+        "tile": "Building_City_01_m3",
+        "current_road_samples": 8192,
+        "maximum_distance_m": 1752.259397303249,
+        "station_m": 2300.17676
+      }
+    ],
+    "current_road_sha256": "fe59b1cb52b8173f52d6d9c6319c6880731ac928ed0d355cf4879e5978824d04",
+    "accepted_head_source_bindings": {
+      "tools/venues/jeddah_sail.py": "1486ea6351f6be20a75ab28d490811d77fd470f8380b93d28718a11fbd40dfef",
+      "tools/venues/jeddah_context_shapes.py": "0a794bed7262044107ef97b560d6cd8cbdcf33fd77f952f191db5a76d5fe6f81",
+      "Attribution/Sources/jeddah/sail-architecture.json": "69ac054122623a6a5ab393ba48c91cde2a972bcc65ed887d5c3b3647430cf197",
+      "Attribution/Sources/jeddah/provenance.json": "a419ee0fd40621175d9f3a4a39577a560a20109851515df66448f4449845cf8c"
+    },
+    "accepted_sail_triangles": 66004,
+    "accepted_sail_semantic_sha256": "040c865165bceb10476532fcc8c8e369f6d2945dbd3688af8d9ac1e56c3feff2",
+    "sail_independent_of_corridor": true,
+    "proof": "build/reviews/jeddah-focused-20261118/residency/diagnosis.json",
+    "proof_sha256": "51a25fb565e3b201d0bf9e494bb3487e479c4c23147de2a24f37f84b49db86ee",
+    "scope_note": "Only the same two named CSV residency envelopes extend toward negative UE X using unchanged1000m/1300m margins and1800m load/2050m release radii. Fresh4998poses have zero potentially visible unloaded policy frames and\u226550m load headroom while potentially in view. Source-owned mesh bounds are used for guard comparison; emitted vertex data and actual render bounds are not modified by this rule. Potential frustum overlap does not prove visibility. Async loading latency and fresh cooked appearance require runtime review.",
+    "preserved": "All Sail source/geometry/position/height, all original named margins, strict0.1cm guard threshold, globalstreamingradii,physicaldata,Editionfrozenbatch and othercircuits."
   }
 }

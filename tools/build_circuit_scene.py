@@ -21,6 +21,12 @@ PALETTE = {
     "Steel": (0.38, 0.41, 0.42),
     "FlyerSteel": (0.14, 0.15, 0.16),
     "Cream": (0.63, 0.58, 0.46),
+    "JeddahApronPink": (.63, .035, .26),
+    "JeddahApronCyan": (.025, .44, .52),
+    "JeddahApronOrange": (.81, .16, .025),
+    "JeddahApronYellow": (.83, .63, .035),
+    "JeddahPitSignalGreen": (.04, 8.0, .20),
+    "JeddahPitSignalOff": (.015, .006, .006),
     "MonacoRuscinoRose": (0.56, 0.36, 0.32),
     "MonacoBruyeresRed": (0.30, 0.035, 0.045),
     "MonacoBruyeresStone": (0.78, 0.72, 0.60),
@@ -116,6 +122,7 @@ ROUGHNESS = {
 SOURCES = {
     "Road": "/Game/Generated/Interlagos/Materials/asphalt",
     "Runoff": "/Game/Generated/Materials/rebuild_runoff_asphalt",
+    "JeddahWorkingAsphalt": "/Game/Generated/Materials/rebuild_runoff_asphalt",
     "Grass": "/Game/Generated/Interlagos/Materials/infield_grass",
     "Gravel": "/Game/Generated/Materials/rebuild_sandy_gravel",
     "Concrete": "/Game/Generated/Monza/Materials/Concrete",
@@ -136,6 +143,7 @@ class Importer:
         )
         self.night = slug in ("bahrain", "jeddah", "singapore")
         self.road_floor = 0.05 if slug == "bahrain" else 0.15
+        self.emissive_scale = .20 if slug == "jeddah" else 1.0
         self.copies: dict[str, unreal.MaterialInterface] = {}
         self.bounds = (0.0, 0.0, 1.0, 1.0)
         self.field = None
@@ -152,7 +160,13 @@ class Importer:
             recipe += (self.scratch / "night-field.json").read_bytes()
         if self.slug == "monaco":
             recipe += (ROOT / "tools/venues/monaco_rock_material.py").read_bytes()
+        if self.slug == "jeddah":
+            recipe += (ROOT / "tools/venues/jeddah_sky_material.py").read_bytes()
         self.material_hash = hashlib.sha256(recipe).hexdigest()
+        if self.slug == "jeddah":
+            from venues.jeddah_sky_material import build_sky
+
+            build_sky(self.assets + "/Materials/JeddahNightSky", self.material_hash)
         if self.night:
             self.bounds = tuple(
                 json.loads((self.scratch / "night-field.json").read_text())["bounds"]
@@ -221,7 +235,7 @@ class Importer:
                     )
                     is not None
                 ):
-                    shade(material, self.bounds, self.field, self.road_floor)
+                    shade(material, self.bounds, self.field, self.road_floor, self.emissive_scale, self.slug == "jeddah")
             if self.slug in ("baku", "monaco") and isinstance(
                 material, unreal.MaterialInstanceConstant
             ):
@@ -405,6 +419,8 @@ class Importer:
                 roughness.r = 0.85
             if self.slug == "jeddah" and name == "JeddahConstruction":
                 roughness.r = 0.94
+            if name.startswith("JeddahApron"):
+                roughness.r = .85
             EDIT.connect_material_property(
                 roughness, "", unreal.MaterialProperty.MP_ROUGHNESS
             )
@@ -416,12 +432,12 @@ class Importer:
                 specular.r = .15
                 EDIT.connect_material_property(specular, "", unreal.MaterialProperty.MP_SPECULAR)
             material.set_editor_property("two_sided", name == "Leaves")
-            if name == "Lamp" or (self.night and name == "WarmGlass"):
+            if name in ("Lamp", "JeddahPitSignalGreen") or (self.night and name == "WarmGlass"):
                 EDIT.connect_material_property(
                     color, "", unreal.MaterialProperty.MP_EMISSIVE_COLOR
                 )
             elif self.night:
-                shade(material, self.bounds, self.field, self.road_floor)
+                shade(material, self.bounds, self.field, self.road_floor, self.emissive_scale, self.slug == "jeddah")
         elif (self.scratch / "art" / (name + ".png")).exists():
             texture = self.texture(name)
             sample = EDIT.create_material_expression(
@@ -436,7 +452,7 @@ class Importer:
                 roughness.r = 0.7
                 EDIT.connect_material_property(roughness, "", unreal.MaterialProperty.MP_ROUGHNESS)
             if self.night:
-                shade(material, self.bounds, self.field, self.road_floor)
+                shade(material, self.bounds, self.field, self.road_floor, self.emissive_scale, self.slug == "jeddah")
         else:
             raise ValueError(f"Unknown material {name} for {self.slug}")
         EDIT.recompile_material(material)

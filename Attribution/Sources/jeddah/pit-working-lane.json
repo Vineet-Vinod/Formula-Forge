@@ -1,0 +1,27 @@
+{
+  "start_m": 6009,
+  "length_m": 280,
+  "garage_front_offset_m": 13,
+  "bay_spacing_m": 5.8,
+  "service_gap_m": 16.5,
+  "working_strip_width_m": 1.1,
+  "stop_center_from_garage_m": 2.8,
+  "stop_half_width_m": 1.2,
+  "stop_half_length_m": 3.3,
+  "boom_height_m": 3.1,
+  "boom_reach_m": 4.7,
+  "stop_garage_centres": [
+    7.5,
+    11.5,
+    15.5,
+    19.5,
+    24,
+    28.5,
+    32,
+    35.5,
+    39.5,
+    43.5
+  ],
+  "source_note": "Supplied Saved/Refs/jeddah.mp4 at613\u2013618s shows blue/green working separator, left open garages and equipment;619\u2013624s shows parallel stopped car and yellow longitudinal stop guides under a white bent equipment boom. Arrangement is directly visible; all widths/heights and booth repetition are explicit estimates. The retained2025 FIA drawing supplies45garage allocation and10team stop centres, while supplied2026 gameplay differs in teams. Keep current280m frontage and source-mapped fast-lane axis pending exact landmark registration. This record does not assert an automatic pitstop, a surveyed apron or final native visual acceptance. A25m apron/support taper outside each garage end is an estimated transition over the visible paved service frontage, not an event-measured line.",
+  "support_taper_m": 25
+}

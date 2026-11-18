@@ -8,12 +8,19 @@ from circuit_scene import CircuitScene
 from shapely.geometry import Polygon
 
 from venues.east_architecture import footprint_stand, frame
+from venues.jeddah_pits import (
+    pit_floor_point,
+    pit_route_source,
+    route_section,
+    working_apron,
+)
 
 PIT_START = 6009.0
 PIT_END = 115.0
 
 
 def pit_compound(scene: CircuitScene) -> None:
+    route = pit_route_source()
     samples = [scene.at(PIT_START + index * 10) for index in range(29)]
     front_ring = [sample.point(-sample.half_width - 13)[:2] for sample in samples]
     rear_ring = [
@@ -26,6 +33,8 @@ def pit_compound(scene: CircuitScene) -> None:
         start = PIT_START + 1.25 + garage * 5.8 + (16.5 if garage >= 21 else 0)
         a, b = scene.at(start), scene.at(start + 5.8)
         front_a, front_b = -a.half_width - 13, -b.half_width - 13
+        section_a = route_section(route, start, a.point(front_a))
+        section_b = route_section(route, start + 5.8, b.point(front_b))
         depth = 26.0
         footprint = Polygon(
             [
@@ -40,25 +49,37 @@ def pit_compound(scene: CircuitScene) -> None:
             height = level * 4.6
             scene.quad(
                 "Building_JeddahPitFloors",
-                "White",
-                a.point(front_a, height),
-                b.point(front_b, height),
-                b.point(front_b - depth, height),
-                a.point(front_a - depth, height),
+                "Runoff" if level == 0 else "White",
+                pit_floor_point(a, section_a, front_a) if level == 0 else a.point(front_a, height),
+                pit_floor_point(b, section_b, front_b) if level == 0 else b.point(front_b, height),
+                pit_floor_point(b, section_b, front_b - depth) if level == 0 else b.point(front_b - depth, height),
+                pit_floor_point(a, section_a, front_a - depth) if level == 0 else a.point(front_a - depth, height),
                 up=True,
             )
             if level == 4:
                 continue
-            material = "Black" if level == 0 else "WarmGlass"
-            scene.banner(
-                a.point(front_a + 0.04, height + 0.35),
-                b.point(front_b + 0.04, height + 0.35),
-                3.65 if level == 0 else 3.3,
-                material,
-                "Building_JeddahPitGarages"
-                if level == 0
-                else "Building_JeddahPitLounges",
-            )
+            if level == 0:
+                scene.banner(
+                    pit_floor_point(a, section_a, front_a - 4, .15),
+                    pit_floor_point(b, section_b, front_b - 4, .15),
+                    3.85, "Black", "Building_JeddahPitGarageInteriors",
+                )
+                for sample, section, lane in ((a, section_a, front_a), (b, section_b, front_b)):
+                    scene.banner(
+                        pit_floor_point(sample, section, lane - .2, .15),
+                        pit_floor_point(sample, section, lane - 4, .15),
+                        3.85, "White", "Building_JeddahPitGarageReturns",
+                    )
+                scene.beam(
+                    "Building_JeddahPitGarageLintels", "White",
+                    a.point(front_a, 4.15), b.point(front_b, 4.15), .3, .55,
+                )
+            else:
+                scene.banner(
+                    a.point(front_a + .04, height + .35),
+                    b.point(front_b + .04, height + .35),
+                    3.3, "Glass", "Building_JeddahPitLounges",
+                )
             scene.banner(
                 a.point(front_a - depth, height + 0.25),
                 b.point(front_b - depth, height + 0.25),
@@ -182,6 +203,8 @@ def pit_compound(scene: CircuitScene) -> None:
         }
     )
 
+    working_apron(scene)
+
 
 def mapped_stands(scene: CircuitScene) -> None:
     stands = ((1154622779, 22), (1154622781, 16), (1154622780, 16), (1154622782, 19))
@@ -257,8 +280,10 @@ def t27_pavilion(scene: CircuitScene) -> None:
                         point(left, side * 9.62, level + 0.55),
                         point(right, side * 9.62, level + 0.55),
                         3.5,
-                        "Glass",
-                        "Building_T27PavilionGlazing",
+                        "Cream" if level == 0 and bay in (0, 1, 8, 9) else "Glass",
+                        "Building_T27PavilionServicePanels"
+                        if level == 0 and bay in (0, 1, 8, 9)
+                        else "Building_T27PavilionGlazing",
                     )
                     scene.beam(
                         "Building_T27PavilionMullions",
@@ -309,10 +334,10 @@ def t27_pavilion(scene: CircuitScene) -> None:
             scene.quad(
                 "Building_T27PavilionCanopy",
                 "White",
-                add(roof[3], (0, 0, -0.18)),
-                add(roof[2], (0, 0, -0.18)),
-                add(roof[1], (0, 0, -0.18)),
-                add(roof[0], (0, 0, -0.18)),
+                add(roof[3], (0, 0, -0.38)),
+                add(roof[2], (0, 0, -0.38)),
+                add(roof[1], (0, 0, -0.38)),
+                add(roof[0], (0, 0, -0.38)),
                 up=False,
             )
             for index in range(4):
@@ -321,8 +346,8 @@ def t27_pavilion(scene: CircuitScene) -> None:
                     "Building_T27PavilionCanopyEdges",
                     "White",
                     roof[index],
-                    add(roof[index], (0, 0, -0.18)),
-                    add(roof[following], (0, 0, -0.18)),
+                    add(roof[index], (0, 0, -0.38)),
+                    add(roof[following], (0, 0, -0.38)),
                     roof[following],
                 )
             scene.beam(
@@ -330,14 +355,14 @@ def t27_pavilion(scene: CircuitScene) -> None:
                 "White",
                 point(u0, v0, z0 - 0.22),
                 point(u0, v1, z1 - 0.22),
-                0.16,
+                0.25,
             )
         scene.beam(
             "Building_T27PavilionRoofTruss",
             "White",
             point(u0, -10.8, 8.85),
             point(u0, 10.8, 8.85),
-            0.13,
+            0.22,
         )
         for side in (-1, 1):
             for fraction in (0.25, 0.5, 0.75):
@@ -346,7 +371,7 @@ def t27_pavilion(scene: CircuitScene) -> None:
                     "White",
                     point(u0, side * 10.8 * fraction, 8.85),
                     point(u0, side * 10.8 * (1 - fraction), 10.45 - 1.6 * (1 - fraction)),
-                    0.09,
+                    0.16,
                 )
     for u in (-42.5, 42.5):
         for level in (0.0, 4.4):
@@ -354,8 +379,14 @@ def t27_pavilion(scene: CircuitScene) -> None:
                 point(u, -10, level + 0.5),
                 point(u, 10, level + 0.5),
                 3.5,
-                "Glass",
+                "Cream" if level == 0 else "Glass",
                 "Building_T27PavilionEnds",
+            )
+        for side in (-1, 1):
+            scene.beam(
+                "Building_T27PavilionEndPiers", "Cream",
+                point(u, side * 9.4, 0), point(u, side * 9.4, 8.8),
+                1.0, 1.2,
             )
     scene.landmarks.append(
         {
@@ -366,7 +397,7 @@ def t27_pavilion(scene: CircuitScene) -> None:
             "depth_estimate_m": 20,
             "height_estimate_m": 10.7,
             "position_uncertainty_m": 20,
-            "glazing": "Dark recessed panes with separate mullions and transoms; no broad emissive warm-glass wall. Pane rhythm and roof truss dimensions are visual reconstructions from the direct 291s view and FIA preparation photo.",
+            "glazing": "Dark recessed upper panes, cream lower corner/service panels and solid pale end piers observed in supplied289–293s. Estimated lower opaque extent is limited to two corner bays at each end; rear symmetry and exact service-door arrangement remain uncertain. Deeper pale roof fascia and visible triangulated supports replace the thin repeated members. Pane rhythm, pier width, fascia thickness and truss dimensions are visual estimates, not measured section controls.",
             "source_note": "FIA 2025 event notes page 5 locates the T27 outfield staging area at 21°37′29.3″N, 39°06′23.7″E and photographs the actual two-level framed pavilion beside the race fence. Supplied 289–293 s shows the same pale/glazed corner context before the main-straight exit. The footprint is a reconstruction about 33 m east and 37 m north of that staging control, not an OSM building or survey. Dimensions and current glazing follow the direct visual baseline; the FIA preparation photo shows its exposed frame.",
         }
     )

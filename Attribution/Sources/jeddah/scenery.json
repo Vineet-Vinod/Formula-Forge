@@ -1,64 +1,30 @@
 {
   "recipe": "make circuit-assets CIRCUIT=jeddah",
   "tiles": 146,
-  "triangles": 1308320,
+  "triangles": 1388763,
   "road_sha256": "86ac9b9b678308d892ee45f96061bee4ae87afbda9aaf7791eb9bc0166c365e6",
   "terrain_sha256": "a30c782d9e70e53575eaa3a1295d86b00eeca559983b25de642725c36fdfe647",
   "landmarks": [
     {
-      "name": "Paved pit lane and working apron",
-      "start_m": 6009.0,
-      "end_m": 115.0,
-      "side": -1,
-      "outer_offset_m": 13.0,
-      "source_note": "Direct forward frames 235/239/243 s place the four-storey pit and club building on driver LEFT, opposite the actual mapped 271 m RIGHT main stand 1154622779. F1/Tilke describes a 280 m, four-storey compound; the FIA 2025 pit plan shows 45 numbered bays and a central passage. The reconstructed 280 m garage frontage spans native 6009\u2192115 m across zero, with \u00b120 m endpoint uncertainty and its front 13 m beyond the road edge. Depth, height, exact garage-front offset and roof articulation are visual estimates, not surveyed dimensions. Paving remains outside the closed pit wall. See pit-facilities-review.json.",
-      "access": "Visual service area outside the closed driving boundary."
-    },
-    {
-      "name": "Braking distance boards",
+      "name": "Jeddah fence-mounted distance panels",
       "apex_m": 299,
       "side": 1,
-      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+      "reference": "jeddah.mp4:344,384,548,552s",
+      "dimensions": "Estimated .40 by 1.15m; upright stacked digits, bottom1.85m."
     },
     {
-      "name": "Braking distance boards",
+      "name": "Jeddah fence-mounted distance panels",
       "apex_m": 2277,
       "side": 1,
-      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
+      "reference": "jeddah.mp4:344,384,548,552s",
+      "dimensions": "Estimated .40 by 1.15m; upright stacked digits, bottom1.85m."
     },
     {
-      "name": "Braking distance boards",
+      "name": "Jeddah fence-mounted distance panels",
       "apex_m": 5412,
       "side": 1,
-      "placement": "Reference/map approach reconstruction; exact event mounting positions estimated."
-    },
-    {
-      "name": "Reference event panels",
-      "start_m": 5290,
-      "end_m": 6174,
-      "side": 1,
-      "material": "PanelGreen"
-    },
-    {
-      "name": "Reference event panels",
-      "start_m": 0,
-      "end_m": 200,
-      "side": 1,
-      "material": "PanelGreen"
-    },
-    {
-      "name": "Reference event panels",
-      "start_m": 5290,
-      "end_m": 5900,
-      "side": -1,
-      "material": "PanelGreen"
-    },
-    {
-      "name": "Reference event panels",
-      "start_m": 5900,
-      "end_m": 6174,
-      "side": -1,
-      "material": "PanelStc"
+      "reference": "jeddah.mp4:344,384,548,552s",
+      "dimensions": "Estimated .40 by 1.15m; upright stacked digits, bottom1.85m."
     },
     {
       "name": "Reference event panels",
@@ -69,22 +35,204 @@
     },
     {
       "name": "Reference event panels",
-      "start_m": 250,
-      "end_m": 650,
+      "start_m": 0,
+      "end_m": 200,
       "side": 1,
-      "material": "PanelYellow"
+      "material": "PanelGreen"
     },
     {
       "name": "Reference event panels",
-      "start_m": 370,
+      "start_m": 200,
       "end_m": 650,
       "side": -1,
       "material": "PanelYellow"
     },
     {
       "name": "Reference event panels",
-      "start_m": 2150,
-      "end_m": 2380,
+      "start_m": 200,
+      "end_m": 650,
+      "side": 1,
+      "material": "PanelYellow"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 650,
+      "end_m": 1100,
+      "side": -1,
+      "material": "PanelPurple"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 650,
+      "end_m": 1100,
+      "side": 1,
+      "material": "PanelPurple"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 1100,
+      "end_m": 1500,
+      "side": -1,
+      "material": "PanelJeddahGlobant"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 1100,
+      "end_m": 1500,
+      "side": 1,
+      "material": "PanelJeddahGlobant"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 1500,
+      "end_m": 1750,
+      "side": -1,
+      "material": "PanelJeddahSaudiGP"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 1500,
+      "end_m": 1750,
+      "side": 1,
+      "material": "PanelJeddahSaudiGP"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 1750,
+      "end_m": 2400,
+      "side": -1,
+      "material": "PanelJeddahTag"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 1750,
+      "end_m": 2400,
+      "side": 1,
+      "material": "PanelJeddahTag"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 2400,
+      "end_m": 2820,
+      "side": -1,
+      "material": "PanelGreen"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 2400,
+      "end_m": 2820,
+      "side": 1,
+      "material": "PanelGreen"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 2820,
+      "end_m": 3400,
+      "side": -1,
+      "material": "PanelJeddahLV"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 2820,
+      "end_m": 3400,
+      "side": 1,
+      "material": "PanelJeddahLV"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 3400,
+      "end_m": 4000,
+      "side": -1,
+      "material": "PanelNavy"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 3400,
+      "end_m": 4000,
+      "side": 1,
+      "material": "PanelNavy"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 4000,
+      "end_m": 4450,
+      "side": -1,
+      "material": "PanelJeddahLV"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 4000,
+      "end_m": 4450,
+      "side": 1,
+      "material": "PanelJeddahLV"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 4450,
+      "end_m": 4950,
+      "side": -1,
+      "material": "PanelJeddahCrypto"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 4450,
+      "end_m": 4950,
+      "side": 1,
+      "material": "PanelJeddahCrypto"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 4950,
+      "end_m": 5210,
+      "side": -1,
+      "material": "PanelJeddahSaudiGP"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 4950,
+      "end_m": 5210,
+      "side": 1,
+      "material": "PanelJeddahSaudiGP"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 5210,
+      "end_m": 5580,
+      "side": -1,
+      "material": "PanelJeddahSalesforce"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 5210,
+      "end_m": 5580,
+      "side": 1,
+      "material": "PanelJeddahSalesforce"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 5580,
+      "end_m": 6009,
+      "side": -1,
+      "material": "PanelGreen"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 5580,
+      "end_m": 6009,
+      "side": 1,
+      "material": "PanelGreen"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 6009,
+      "end_m": 6174,
+      "side": -1,
+      "material": "PanelStc"
+    },
+    {
+      "name": "Reference event panels",
+      "start_m": 6009,
+      "end_m": 6174,
       "side": 1,
       "material": "PanelGreen"
     },
@@ -141,6 +289,30 @@
       "source_note": "Primary F1/Tilke description gives 280 m and four storeys. FIA 2025 pit plan shows 45 numbered bays and a central service break. Direct forward 235/239/243 s puts the glazed garage/club building LEFT and open crowd stand RIGHT. Placement is opposite the actual 271 m main-stand footprint, with \u00b120 m longitudinal uncertainty. Depth, floor heights, canopy slopes and terrace details are reconstructed estimates. The prior 554 m/right-side generic compound is removed."
     },
     {
+      "name": "Mapped footprint clearance",
+      "osm_id": 1257884698,
+      "footprint_clip_m2": 352.14,
+      "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
+    },
+    {
+      "name": "Mapped building",
+      "osm_id": 1257884698,
+      "height_m": 10.0,
+      "facade": "modern"
+    },
+    {
+      "name": "Jeddah pit exit open-sky reference variant",
+      "osm_id": 1257884698,
+      "exit_roof_state": "open_sky_reference_variant",
+      "source_open_exit_recipe_sha256": "e18e995658e437cbc4cdc4e9fc8712394b398f3befd082931ff8bbcf6ebaa76c",
+      "source_open_exit_module_sha256": "6bfff56a0f4066e27b8072b0bf9f9cf9f15ff6aa6bc584761d02de8b5b741feb",
+      "original_footprint_m2": 2237.9277795657454,
+      "retained_footprint_m2": 2041.6503116395866,
+      "removed_eastern_tip_m2": 196.2774679261588,
+      "garage_side_termination_m": 3.0,
+      "source_note": "Selected supplied-gameplay variant: continuous627\u2013635s, including dense630\u2013635s at10fps, shows open-sky fast lane beside left stand/service frontage through merge. Retained primary Google imagery ofunknown epoch andsecondary OSMtunnel1257884704 instead put an eastern roof tip over this path. This is an explicit source/epoch/gameplay conflict; imagery does not establish the current footage configuration. Keep the literal pit branch/axis, whose entry/exit ordering matches FIA andGoogle, and terminate only generic owner1257884698 east tip3mgarageward ofaxis. A0.4mparapet projection remains outside the4mfastlane. Retain at least75% ofthe original body footprint andthe existing10mheight estimate. New terminalwall closes the retained body; no floating roof strip, route relocation, invented occupied floor or mainRaceRoad alteration."
+    },
+    {
       "name": "FIA-photo registered T27 outfield pavilion",
       "center_latitude": 21.6251343,
       "center_longitude": 39.1069061,
@@ -148,7 +320,7 @@
       "depth_estimate_m": 20,
       "height_estimate_m": 10.7,
       "position_uncertainty_m": 20,
-      "glazing": "Dark recessed panes with separate mullions and transoms; no broad emissive warm-glass wall. Pane rhythm and roof truss dimensions are visual reconstructions from the direct 291s view and FIA preparation photo.",
+      "glazing": "Dark recessed upper panes, cream lower corner/service panels and solid pale end piers observed in supplied289\u2013293s. Estimated lower opaque extent is limited to two corner bays at each end; rear symmetry and exact service-door arrangement remain uncertain. Deeper pale roof fascia and visible triangulated supports replace the thin repeated members. Pane rhythm, pier width, fascia thickness and truss dimensions are visual estimates, not measured section controls.",
       "source_note": "FIA 2025 event notes page 5 locates the T27 outfield staging area at 21\u00b037\u203229.3\u2033N, 39\u00b006\u203223.7\u2033E and photographs the actual two-level framed pavilion beside the race fence. Supplied 289\u2013293 s shows the same pale/glazed corner context before the main-straight exit. The footprint is a reconstruction about 33 m east and 37 m north of that staging control, not an OSM building or survey. Dimensions and current glazing follow the direct visual baseline; the FIA preparation photo shows its exposed frame."
     },
     {
@@ -173,7 +345,7 @@
       "foundation_top_m": 3.400435080379823,
       "roof_above_foundation_m": 24.5,
       "roof_height_uncertainty_m": 4.0,
-      "source": "Owner identifies four storeys and a 12 m lobby volume; direct overview04/331s show tiered slabs, recessed glazing, deep roof and angled white bracing. Four visual tiers are not a measured floor section. The provisional17.2m total estimate was rejected; no unsupported height reduction is made."
+      "source": "Supplied331.06s/overview04 establishes the track-facing deep terraces, projecting pale canopy and angled braces. Marriott's original exterior photograph establishes dark occupied facade piers, recessed floor-height windows, closed soffits and glass terrace guards. Its sea-facing lift tower/pergolas are not transferred onto the unregistered track elevation. Tier heights, bay pitches and sections remain architectural estimates; existing24.5m envelope and footprint are retained. New room bays are estimated subordinate detail, not a measured count. No ground, physics, barrier or lighting changes. Full-resolution331.06s also supports dominant pale deck fascias and restrained horizontal front glazing/shade bands. Floor fascia0.62m is an architectural estimate; deck tops stay fixed. Sea-facing curtain panels are omitted from the track facade. Highest canopy occupies an estimated75% of the long frontage,offset toward the positive-u end; its local-u/end assignment follows the native approach orientation and remains estimated. The opposite quarter is an18.28m lower roof terrace with a raised pale triangular end fin. Braces connect6.35\u219212.45m terraces rather than the incorrectold18.5m full-height members. All are visual silhouette estimates from direct331.06s,not survey. Visible braces lean down toward positive-u on the registered approach; exact repetitions/endregistration remain estimated."
     },
     {
       "name": "Mapped building",
@@ -184,18 +356,6 @@
     {
       "name": "Mapped building",
       "osm_id": 1154622776,
-      "height_m": 10,
-      "facade": "modern"
-    },
-    {
-      "name": "Mapped footprint clearance",
-      "osm_id": 1257884698,
-      "footprint_clip_m2": 381.81,
-      "note": "Retained footprint overlaps native lane; ground walls clipped to preserve road clearance."
-    },
-    {
-      "name": "Mapped building",
-      "osm_id": 1257884698,
       "height_m": 10,
       "facade": "modern"
     },
@@ -245,7 +405,7 @@
       "name": "Sail named approach residency",
       "tiles": "Building_City_00_m3, Building_City_01_m3",
       "source": "context-residency.json",
-      "qualification": "Only the two named CSV envelopes extend toward the northern approach. The retained 5,003-pose packet has zero potentially visible unloaded frames under unchanged 1,800 m load / 2,050 m release hysteresis. Potential frustum overlap is not proof of rendered visibility or absence of occlusion. Existing Diamond rule, actual mesh bounds, geometry, location and global streaming radii remain fixed."
+      "qualification": "Only the two named CSV envelopes extend toward the northern approach. The versioned recipe records zero potentially visible unloaded policy frames for the current pose packet under unchanged 1,800 m load / 2,050 m release hysteresis. Potential frustum overlap is not proof of rendered visibility or absence of occlusion. Existing Diamond rule, actual mesh bounds, geometry, location and global streaming radii remain fixed."
     },
     {
       "name": "Masarat five-finger residential complex",
@@ -289,7 +449,7 @@
       "start_m": 400,
       "end_m": 1200,
       "side": -1,
-      "count": 14,
+      "count": 15,
       "setback_m": 11,
       "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
     },
@@ -298,7 +458,7 @@
       "start_m": 1350,
       "end_m": 2200,
       "side": 1,
-      "count": 16,
+      "count": 17,
       "setback_m": 14,
       "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
     },
@@ -325,7 +485,7 @@
       "start_m": 3950,
       "end_m": 4650,
       "side": -1,
-      "count": 7,
+      "count": 11,
       "setback_m": 18,
       "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
     },

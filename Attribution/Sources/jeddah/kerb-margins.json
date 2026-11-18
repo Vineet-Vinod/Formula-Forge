@@ -1,0 +1,13 @@
+{
+  "controls_m": [
+    [
+      0,
+      0.15
+    ],
+    [
+      6174.0,
+      0.15
+    ]
+  ],
+  "source_note": "Jeddah-specific corridor margin0.15m. Authored shoulders already include actual kerb width and outside clearance; do not add generic0.95m again."
+}

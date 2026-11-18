@@ -112,6 +112,8 @@ def shade(
     bounds: tuple[float, float, float, float],
     texture: unreal.Texture,
     road_floor: float = 0.15,
+    emissive_scale: float = 1.0,
+    direct_lighting: bool = False,
 ) -> None:
     source = EDIT.get_material_property_input_node(
         material, unreal.MaterialProperty.MP_BASE_COLOR
@@ -126,13 +128,14 @@ def shade(
     )
     connect(source, output, multiply, "A")
     connect(field_nodes(material, bounds, texture, road_floor), "", multiply, "B")
-    EDIT.connect_material_property(multiply, "", unreal.MaterialProperty.MP_BASE_COLOR)
+    if not direct_lighting:
+        EDIT.connect_material_property(multiply, "", unreal.MaterialProperty.MP_BASE_COLOR)
     name = material.get_name()
     painted = name in (
         "White", "Cream", "Red", "Black", "Steel", "Green", "Yellow"
-    ) or name.startswith("Runoff")
+    ) or name.startswith(("Runoff", "JeddahApron"))
     lettering = name.startswith("Panel") or name in ("VenueSign", "EventPanel")
-    marker = name in ("50", "100", "150", "200")
+    marker = name in ("50", "100", "150", "200") or name.startswith(("JeddahDistance", "JeddahPit"))
     if any(
         word in material.get_name()
         for word in ("PresentationSurface", "Asphalt", "SurfaceMasked", "Pavement", "TreeCanopy")
@@ -151,6 +154,7 @@ def shade(
             if "SurfaceMasked" in name or lettering
             else 0.07
         )
+        strength.r *= emissive_scale
         bounce = EDIT.create_material_expression(
             material, unreal.MaterialExpressionMultiply
         )

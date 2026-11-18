@@ -49,8 +49,15 @@ def generate(slug: str) -> None:
     walls: list[BarrierSegment] = []
     for polygon in polygons:
         for ring in (polygon.exterior, *polygon.interiors):
+            if slug == "jeddah":
+                from venues.jeddah_boundary import usable_ring
+
+                if not usable_ring(ring):
+                    continue
             points = list(ring.coords)
             for a, b in pairwise(points):
+                if slug == "jeddah" and math.dist(a, b) < 1e-8:
+                    continue
                 count = max(1, math.ceil(math.dist(a, b) / 2))
                 for i in range(count):
                     pa = (

@@ -1019,14 +1019,15 @@ class CircuitScene(MeshScene):
                     if reverse:
                         pa, pb = pb, pa
                     # Use continuous wall distance; nearest road stations jump between samples.
-                    phase = -(segment_start + segment_length) / 8 if reverse else segment_start / 8
+                    pitch = 4.0 if self.slug == "jeddah" and panel.material.startswith("PanelJeddah") else 8.0
+                    phase = -(segment_start + segment_length) / pitch if reverse else segment_start / pitch
                     self.banner(
                         add(pa, (0, 0, 0.08)),
                         add(pb, (0, 0, 0.08)),
                         0.80,
                         panel.material,
                         u0=phase,
-                        repeat=segment_length / 8,
+                        repeat=segment_length / pitch,
                     )
                     break
                 fence_height = min(2.2, self.fence_ceiling(a, b) - max(a[2], b[2]) - 0.95)

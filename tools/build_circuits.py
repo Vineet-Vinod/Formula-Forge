@@ -1458,7 +1458,7 @@ out geom;
     shoulders = [(stations[index], left[index], right[index]) for index in range(0, count, 2)]
     shoulders.append((target, shoulders[0][1], shoulders[0][2]))
     includes_pit_registration = False
-    if spec["slug"] in {"zandvoort", "hockenheim", "malaysia"} and (source / "shoulder-baseline.json").exists():
+    if spec["slug"] in {"zandvoort", "hockenheim", "malaysia", "jeddah"} and (source / "shoulder-baseline.json").exists():
         from circuit_dataclasses import ShoulderBaseline
 
         baseline = TypeAdapter(ShoulderBaseline).validate_json(

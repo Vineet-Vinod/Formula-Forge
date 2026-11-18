@@ -9,6 +9,7 @@ from circuit_mesh import world
 from circuit_scene import CircuitScene
 from lasvegas_art import sign
 from PIL import Image
+from venues.jeddah_art import artwork as jeddah_artwork
 from venues.night_lighting import build_lighting
 
 NIGHT = {"bahrain", "jeddah", "singapore"}
@@ -53,6 +54,7 @@ def artwork(scene: CircuitScene) -> None:
         sign(directory / (name + ".png"), label, background, foreground, 1024, 128)
     if scene.slug == "jeddah":
         sign(directory / "PanelStc.png", "stc", (79, 0, 140), (246, 246, 239), 1024, 128)
+        jeddah_artwork(directory)
     if scene.slug == "australia":
         sign(directory / "GroundPirelli.png", "PIRELLI", (10, 10, 10), (239, 210, 18), 1024, 256)
     elif scene.slug == "zandvoort":
@@ -66,7 +68,16 @@ def artwork(scene: CircuitScene) -> None:
     lights = []
     for fixture, sample in zip(fixtures, samples, strict=True):
         lane = (fixture.position[0] - sample.x) * sample.ty - (fixture.position[1] - sample.y) * sample.tx
-        lights.append(world(sample.point(min(1.5, sample.half_width * .2) * (1 if lane > 0 else -1))))
+        target = fixture.target if fixture.target is not None else sample.point(
+            min(1.5, sample.half_width * .2) * (1 if lane > 0 else -1))
+        lights.append(world(target))
+    if scene.slug == "jeddah":
+        data = scene.data
+        data.mkdir(parents=True, exist_ok=True)
+        rows = ["x,y,z,target_x,target_y,target_z,power"]
+        for fixture, target in zip(fixtures, lights, strict=True):
+            rows.append(",".join(f"{value:.5f}" for value in (*world(fixture.position), *target, fixture.power)))
+        (data / "night_lights.csv").write_text("\n".join(rows) + "\n")
     minimum_x = min(p[0] for p in lights) - 10000
     minimum_y = min(p[1] for p in lights) - 10000
     width = max(p[0] for p in lights) - minimum_x + 10000

@@ -104,6 +104,30 @@ def open_jeddah_pit_exit(slug: str, route_fingerprint: str) -> list[dict]:
     mesh = unreal.load_asset(recipe['asset'])
     if not isinstance(mesh, unreal.StaticMesh):
         raise TypeError('Missing Jeddah covered-exit mesh')
+    if recipe.get('application_mode') == 'source_reconstructed_open_exit':
+        source_path = ROOT / recipe['source_reconstruction_file']
+        source = json.loads(source_path.read_text())
+        if source_path != ROOT / 'Attribution/Sources/jeddah/pit-exit-reconstruction.json' or source['osm_id'] != 1257884698 or source['mode'] != 'open_sky_reference_variant':
+            raise ValueError('Jeddah regenerated open-exit source ownership changed')
+        source_hash = hashlib.sha256(source_path.read_bytes()).hexdigest()
+        module_hash = hashlib.sha256((ROOT / 'tools/venues/jeddah_pit_exit.py').read_bytes()).hexdigest()
+        scenery = json.loads((ROOT / 'Attribution/Sources/jeddah/scenery.json').read_text())
+        qualified = [record for record in scenery['landmarks']
+                     if record.get('osm_id') == 1257884698
+                     and record.get('exit_roof_state') == 'open_sky_reference_variant'
+                     and record.get('source_open_exit_recipe_sha256') == source_hash
+                     and record.get('source_open_exit_module_sha256') == module_hash]
+        if len(qualified) != 1 or not 0 < qualified[0]['removed_eastern_tip_m2'] < qualified[0]['original_footprint_m2'] * .25:
+            raise ValueError('Jeddah scene lacks the finite regenerated open-exit qualification')
+        manifest_folder = ROOT / 'build/circuits/jeddah'
+        manifest = json.loads((manifest_folder / 'manifest.json').read_text())
+        tile = next(record for record in manifest['tiles'] if record['name'] == 'Building_City_m1_00')
+        packed_hash = hashlib.sha256((manifest_folder / tile['file']).read_bytes()).hexdigest()
+        if packed_hash != tile['sha256'] or LIBRARY.get_metadata_tag(mesh, 'CircuitSourceSHA256') != packed_hash:
+            raise ValueError('Jeddah open-exit source was not imported into the current native asset')
+        return [{'asset': recipe['asset'], 'source_reconstructed_open_exit': True,
+                 'recipe_sha256': fingerprint, 'source_reconstruction_sha256': source_hash,
+                 'imported_source_sha256': packed_hash, 'legacy_white_cut_applied': False}]
     expected = recipe['material_slots']
     if expected != [{'slot': 'Material_3', 'material': '/Game/Generated/Jeddah/Materials/White.White'}]:
         raise ValueError('Jeddah pit opening material whitelist changed')
@@ -198,7 +222,7 @@ for entry in plan['circuits']:
     visual_portal_path.write_text(json.dumps({'portals': visual_portals}, indent=2) + '\n')
     changed = []
     protected = {'Road', 'Asphalt', 'AsphaltLight', 'White', 'Red', 'Yellow', 'Green', 'Black', 'Water',
-                 'TreeCanopy', 'Trunk', 'Leaves', 'Lit_Road', 'Canopy', 'Lamp', 'LightHalo'}
+                 'TreeCanopy', 'Trunk', 'Leaves', 'Lit_Road', 'Canopy', 'Lamp', 'LightHalo', 'JeddahWorkingAsphalt'}
     cosmetic = {'Grass', 'Gravel', 'Ground', 'Soil', 'Pavement', 'CityGround', 'Runoff', 'Lit_Runoff',
                 'RunoffGreen', 'Limestone', 'MonacoRockGround', 'MonacoNaturalGround', 'MonacoGardenLawn', 'MonacoIvyGround'}
     for record in index['assets']:

@@ -16,23 +16,17 @@
       ],
       "reference_frames": [
         "build/reviews/jeddah/reference/detail-0291.jpg",
-        "build/reviews/jeddah/reference/detail-0331.jpg"
+        "build/reviews/jeddah-focused-20261118/timeline/0552s.jpg",
+        "build/reviews/jeddah-focused-20261118/timeline/0556s.jpg"
       ],
-      "source_note": "The final hairpin has ordinary asphalt escape pavement and separate narrow green edge paint. This branch is plain asphalt; it does not recolor the whole corner or modify the inside island. Preserve the separate pit entry. Footprint dimensions are bounded reference/map reconstruction estimates, not measured barrier coordinates. The existing racing centreline, width, elevation and camera remain fixed."
+      "source_note": "The final hairpin has ordinary asphalt escape pavement and separate narrow green edge paint. This branch is plain asphalt; it does not recolor the whole corner or modify the inside island. Preserve the separate pit entry. Footprint dimensions are bounded reference/map reconstruction estimates, not measured barrier coordinates. The existing racing centreline, width, elevation and camera remain fixed. Direct 291 s final-hairpin view and continuous 548/552/556 s approach/turn sequence establish corner identity. The former 331 s citation is rejected because that view is T13. This correction preserves the existing 80 m by 14 m branch estimate; it does not claim newly surveyed dimensions."
     }
   ],
   "source_status": "Source-plan candidate awaiting mapped occupied-domain, grade, native protection and cooked visual review. Official map epoch2025; supplied edited-reference event year unverified. No survey claim.",
-  "paint_strips": [
-    {
-      "id": "t27-inner-apron-asphalt",
-      "start_m": 5290,
-      "end_m": 5520,
-      "side": 1,
-      "inner_offset_m": 0.15,
-      "outer_offset_m": 12,
-      "source_material": "RunoffGreen",
-      "target_material": "Runoff",
-      "source_note": "Retained 291/331 s final-hairpin views show ordinary dark asphalt with local narrow turquoise/green boundary paint. Reclassify the inner part of the former14m solid-green ribbon to the existing asphalt material. Retain its outer2m green border and all Green/White kerbs. Width split estimated within1m, not surveyed; official FIA2025 map establishes corner identity, supplied edited-reference event year unverified. Preserve actual old inside/outside geometry and all attributes; no new surface skin."
-    }
-  ]
+  "paint_strips": [],
+  "retired_paint_correction": {
+    "id": "t27-inner-apron-asphalt",
+    "reason": "The focused 2026-11-18 source boundary now emits asphalt directly and removes all six former broad RunoffGreen ribbons. Replaying the obsolete material strip is unnecessary. Preserve separate Green/White kerbs and the independent escape branch.",
+    "former_false_binding": "331 s was T13, not the final hairpin."
+  }
 }
