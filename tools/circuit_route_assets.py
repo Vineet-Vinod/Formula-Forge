@@ -145,7 +145,9 @@ def prepare(circuit: str, destination: Path, pit_path: Path | None, escape_path:
         emit_panels(scene, route)
     records = []
     for original_name, tile in sorted(scene.tiles.items()):
-        name = original_name.replace("Tile_Street", "Tile_Route")
+        name = original_name.replace("Tile_Street", "Tile_Route").replace("Building_City", "Tile_Route_Structure")
+        if not name.startswith("Tile_Route_"):
+            raise ValueError("Route overlay would overwrite a base scene asset: " + name)
         count = len(tile.triangles) // 100
         if count > 500_000 or count * 100 != len(tile.triangles):
             raise ValueError("Route mesh exceeds the native import bound")

@@ -139,6 +139,7 @@ def test_prepared_physical_portals_exclude_visual_footing_clips(tmp_path: Path) 
     assert magic == b"FFBAR2\0\0"
     assert len(route_source().barriers) == 272
     assert walls == 355 and portals == 30
+    assert all(tile.name.startswith("Tile_Route_") for tile in assets.tiles)
     assert len(assets.portals) == 30
     assert len(assets.cosmetic_portals) == 312
     assert len(json.loads((tmp_path / "portals.json").read_text())["portals"]) == 30
