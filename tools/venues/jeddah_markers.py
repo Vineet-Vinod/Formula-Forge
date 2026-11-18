@@ -15,8 +15,10 @@ def distance_boards(scene: CircuitScene, apex: float, side: int) -> None:
         lane = side * (sample.half_width + scene.kerb_margin(sample.station) + shoulder - .04)
         scene.banner(sample.point(lane - .20, 1.85), sample.point(lane + .20, 1.85),
                      1.15, "JeddahDistance" + str(distance), "Tile_JeddahDistanceBoards")
-        scene.beam("Tile_JeddahDistancePosts", "Steel", sample.point(lane, 1.05),
-                   sample.point(lane, 3.05), .045)
+        base, top = sample.point(lane, 1.05), sample.point(lane, 3.05)
+        behind_base = (base[0] + sample.tx * .06, base[1] + sample.ty * .06, base[2])
+        behind_top = (top[0] + sample.tx * .06, top[1] + sample.ty * .06, top[2])
+        scene.beam("Tile_JeddahDistancePosts", "Steel", behind_base, behind_top, .045)
     scene.landmarks.append({"name": "Jeddah fence-mounted distance panels", "apex_m": apex,
                             "side": side, "reference": "jeddah.mp4:344,384,548,552s",
                             "dimensions": "Estimated .40 by 1.15m; upright stacked digits, bottom1.85m."})
