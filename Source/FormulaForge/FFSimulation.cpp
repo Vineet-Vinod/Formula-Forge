@@ -543,10 +543,10 @@ bool FFSimulation::LoadPitLane(std::span<const std::uint8_t> bytes) {
     for (std::size_t index = 1; index < sections.size(); ++index) {
         const auto& first = sections[index - 1];
         const auto& last = sections[index];
-        const Vec2 firstLeft = first.position + first.normal * first.halfWidth;
-        const Vec2 firstRight = first.position - first.normal * first.halfWidth;
-        const Vec2 lastLeft = last.position + last.normal * last.halfWidth;
-        const Vec2 lastRight = last.position - last.normal * last.halfWidth;
+        const Vec2 firstLeft = first.position + first.normal * first.positiveExtent;
+        const Vec2 firstRight = first.position - first.normal * first.negativeExtent;
+        const Vec2 lastLeft = last.position + last.normal * last.positiveExtent;
+        const Vec2 lastRight = last.position - last.normal * last.negativeExtent;
         triangles.push_back({firstLeft, firstRight, lastRight});
         triangles.push_back({firstLeft, lastRight, lastLeft});
     }

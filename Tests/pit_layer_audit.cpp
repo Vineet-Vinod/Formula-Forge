@@ -41,5 +41,28 @@ int main() {
         std::abs(simulation.ProgressStation()-station)>.01f) {
         std::cerr << "Lower pit contact/progress lost at crossing\n"; return 1;
     }
-    std::cout << "Layer-aware pit ground, visual support, surface and progress PASS\n";
+    bytes = {'F','F','P','I','T','3',0,0};
+    Append(bytes,std::uint32_t{3}); Append(bytes,0.0f); Append(bytes,10.0f); Append(bytes,80.0f);
+    for (int index = 0; index < 3; ++index) {
+        const auto sample = simulation.Sample(station - 5.0f + 5.0f * index);
+        const Vec2 normal{-sample.tangent.y,sample.tangent.x};
+        const Vec2 centre = sample.position / 17.0f + normal * (sample.halfWidth + 10.0f);
+        const std::array<float,11> row{centre.x,centre.y,sample.elevation / 17.0f,
+            2.0f,sample.station,5.0f*index,normal.x,normal.y,0.01f,2.0f,8.0f};
+        Append(bytes,row);
+    }
+    if (!simulation.LoadPitLane(bytes)) return 1;
+    const auto centre = simulation.pitLane.Sample(5.0f);
+    simulation.vehicle.pos = (centre.position + Vec2{-centre.tangent.y,centre.tangent.x} * -6.0f) * 17.0f;
+    simulation.vehicle.heading = angleOf(centre.tangent);
+    const float apronHeight = (centre.height - 0.06f) * 17.0f;
+    simulation.vehicle.elevation = apronHeight;
+    if (!simulation.InPitLane() || simulation.PitSpeedLimitKph() != 80.0f ||
+        !simulation.OnTrack() || std::abs(simulation.Ground(simulation.vehicle.pos)-apronHeight)>.002f ||
+        std::abs(simulation.VisualGround(simulation.vehicle.pos)-apronHeight)>.002f ||
+        std::abs(simulation.CurrentSurface().groundElevation-apronHeight)>.002f ||
+        std::abs(simulation.ProgressStation()-station)>.02f) {
+        std::cerr << "Working apron lost legal pit support, limiter or progress\n"; return 1;
+    }
+    std::cout << "Layer-aware pit and working apron ground, legality, limiter and progress PASS\n";
 }
