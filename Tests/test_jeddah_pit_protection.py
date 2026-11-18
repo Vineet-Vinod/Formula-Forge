@@ -140,13 +140,13 @@ def test_prepared_physical_portals_exclude_visual_footing_clips(tmp_path: Path) 
     magic, walls, portals = struct.unpack_from("<8sII", (tmp_path / "pit_barriers.bin").read_bytes())
     assert magic == b"FFBAR2\0\0"
     assert len(route_source().barriers) == 272
-    assert walls >= 700 and portals == 53
+    assert walls >= 700 and portals == 56
     payload = (tmp_path / "pit_barriers.bin").read_bytes()
     encoded_walls = {payload[16 + index * 28:16 + (index + 1) * 28] for index in range(walls)}
     for record in early_recipe(route_source()).walls:
         assert encode_barriers(route_source().portals, [record.barrier])[16:44] in encoded_walls
     assert all(tile.name.startswith("Tile_Route_") for tile in assets.tiles)
-    assert len(assets.portals) == 53
+    assert len(assets.portals) == 56
     assert len(assets.cosmetic_portals) == 499
-    assert len(json.loads((tmp_path / "portals.json").read_text())["portals"]) == 53
+    assert len(json.loads((tmp_path / "portals.json").read_text())["portals"]) == 56
     assert (tmp_path / "pit_lane.bin").read_bytes() == encode_route(route_source())

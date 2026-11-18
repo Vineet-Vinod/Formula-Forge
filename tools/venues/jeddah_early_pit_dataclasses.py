@@ -39,3 +39,4 @@ class EarlyPit:
     source_sections_sha256: str
     separator_portals: tuple[Portal, ...]
     separator_paint: tuple[PitFloorTriangle, ...]
+    base_separator_portals: tuple[Portal, ...]

@@ -142,6 +142,7 @@ def prepare(circuit: str, destination: Path, pit_path: Path | None, escape_path:
         openings = [*early.portals, *early.separator_portals]
         walls = clip_foreign_protection(walls, openings)
         portals.extend(openings)
+        portals.extend(early.base_separator_portals)
         cosmetic_portals.extend(early.floor_portals)
         walls.extend(record.barrier for record in early.walls)
         graded_walls.update(record.barrier for record in early.walls)

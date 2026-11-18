@@ -10135,6 +10135,80 @@
       ]
     }
   ],
+  "base_separator_portals": [
+    {
+      "id": "jeddah-base-entry-fence-remnant-136",
+      "polygon_xy_m": [
+        [
+          105.4420866062199,
+          -313.8515949917214
+        ],
+        [
+          101.04757860797865,
+          -302.68520347729776
+        ],
+        [
+          90.53255993189633,
+          -306.8233651756416
+        ],
+        [
+          94.92706793013761,
+          -317.9897566900653
+        ]
+      ],
+      "bottom_m": 1.7452953166389122,
+      "top_m": 6.955931987100129,
+      "source_note": "Remove only obsolete base race-road divider/fence behind Qatar nose; preserve newly authored Qatar protection. Source609\u2013610 painted split has no free-standing fence islands."
+    },
+    {
+      "id": "jeddah-base-entry-fence-remnant-148",
+      "polygon_xy_m": [
+        [
+          101.04757860797865,
+          -302.68520347729776
+        ],
+        [
+          96.6530706097374,
+          -291.5188119628741
+        ],
+        [
+          86.13805193365508,
+          -295.65697366121793
+        ],
+        [
+          90.53255993189633,
+          -306.8233651756416
+        ]
+      ],
+      "bottom_m": 1.9559319871001295,
+      "top_m": 7.1628745543778765,
+      "source_note": "Remove only obsolete base race-road divider/fence behind Qatar nose; preserve newly authored Qatar protection. Source609\u2013610 painted split has no free-standing fence islands."
+    },
+    {
+      "id": "jeddah-base-entry-fence-remnant-160",
+      "polygon_xy_m": [
+        [
+          96.6530706097374,
+          -291.5188119628741
+        ],
+        [
+          91.9026880165075,
+          -279.7214391845758
+        ],
+        [
+          81.58428740691002,
+          -284.328022393404
+        ],
+        [
+          86.13805193365508,
+          -295.65697366121793
+        ]
+      ],
+      "bottom_m": 2.1628745543778765,
+      "top_m": 7.351459986800997,
+      "source_note": "Remove only obsolete base race-road divider/fence behind Qatar nose; preserve newly authored Qatar protection. Source609\u2013610 painted split has no free-standing fence islands."
+    }
+  ],
   "source_proof": {
     "reference": "Saved/Refs/jeddah.mp4",
     "frames_s": [

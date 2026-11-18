@@ -59,6 +59,21 @@ def test_gantry_columns_clear_both_race_road_and_pit_fast_lane(scene: CircuitSce
             assert shape.intersection(driving).area < 1e-8
 
 
+def test_entry_wedge_excludes_previously_exposed_lamp_feet(scene: CircuitScene) -> None:
+    from venues.jeddah_early_pit import load_recipe
+
+    site = fixture_site(scene)
+    paint = unary_union([Polygon([face.a[:2], face.b[:2], face.c[:2]])
+                         for face in load_recipe(pit_route_source()).separator_paint])
+    for station, old in ((5824., (99.89478070373538, -334.53184546994487)),
+                         (5856., (92.5645701350911, -303.59779096400547))):
+        assert paint.buffer(.4).covers(ShapePoint(old))
+        sample = scene.at(station)
+        preferred = pole_base(scene, sample, -1, .8)
+        placed = place_foot(scene, site, sample, -1, preferred)
+        assert paint.distance(ShapePoint(placed[:2])) >= .6
+
+
 def test_pit_service_width_and_fixed_personnel_edge() -> None:
     route = pit_route_source()
     for section in route.sections:
@@ -141,10 +156,11 @@ def test_pit_entry_separator_is_open_before_qatar_nose(scene: CircuitScene) -> N
     with (scene.scratch / "barriers.csv").open() as handle:
         walls = TypeAdapter(list[Barrier]).validate_python(list(csv.DictReader(handle)))
     walls = clip_foreign_protection([*walls, *route.barriers],
-                                    [*route.portals, *early.separator_portals])
-    for distance in (100., 110., 124.):
+                                    [*route.portals, *early.separator_portals, *early.base_separator_portals])
+    for distance, inner, outer in ((100., 2., 8.), (110., 2., 8.), (124., 2., 8.),
+                                    (145., 5., 14.), (160., 5., 14.)):
         section = sample(route, distance)
         crossing = LineString([(section.x + section.normal_x * lane,
-                                section.y + section.normal_y * lane) for lane in (2., 8.)])
+                                section.y + section.normal_y * lane) for lane in (inner, outer)])
         assert all(not crossing.intersects(LineString([(w.ax, w.ay), (w.bx, w.by)]).buffer(w.radius))
                    for w in walls)

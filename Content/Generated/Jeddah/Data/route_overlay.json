@@ -1,7 +1,7 @@
 {
   "version": 1,
   "circuit": "jeddah",
-  "manifest_sha256": "fe1b1c9974b0f899ec54a66fe7149987ce79e3cf3a75a25a1e2880d88eb2975d",
+  "manifest_sha256": "af85a7ac8bdd41f36175dd4bffcffac96186ebce08c8ad8e064f395ba96af152",
   "source_sha256": {
     "Attribution/Sources/jeddah/pit-lane-reconstruction.json": "7d53c343e69885005de5148619aa2eed17136a432ad546ff2fd7fd9223d97ea2",
     "build/reviews/jeddah-clearance-20261118/escape-overlay.json": "737f718a272314e9da5ddf155e6adc75648bbe453ec78506ad3fa66752761756",
@@ -15,46 +15,46 @@
     "tools/venues/jeddah_pit_entry_panels.py": "304c63aac1a0bc671bbd8765f05d8d60555d49be69c8f0a8ba47238f140b3cac",
     "tools/venues/jeddah_pit_entry_panels_dataclasses.py": "d39bd38c15c0bb2b886c504579555f479d12e98255d16c5dc2ea8df33637156f",
     "Attribution/Sources/jeddah/pit-personnel-walkway.json": "8563921a2ecbb536c7d3c079744a871bae7b382a21f06b6650c13cf59aaa7aaf",
-    "Attribution/Sources/jeddah/pit-early-corridor.json": "034cf1cd5e25c75bfd345b23754e8b23695810902d36b637a19bd61c92dd664c",
+    "Attribution/Sources/jeddah/pit-early-corridor.json": "c9c06c11616d5ff67a74049db56e622d81c18c4248aa4b89bac8af85385b92eb",
     "tools/venues/jeddah_early_pit.py": "53fa3f36526a9d3b4369c88669b28c68ae0509c2674f1d4efda9338c56ddeb11",
-    "tools/venues/jeddah_early_pit_dataclasses.py": "a789597794e3afbc2c387ee5f576f14314d55bb4fe6bd88b8710d48c2424b00c",
+    "tools/venues/jeddah_early_pit_dataclasses.py": "d344e456ca007481b42a9cf9bc931342ba4ed91e9615fe723a179b0b0a7519dd",
     "tools/venues/jeddah_early_pit_material.py": "0d2dea0a65df584f51b45798526d275decfab2f64b4796ee6ad20bd9c1b79b91",
     "tools/venues/jeddah_pit_walkway.py": "ffdb1cf6cd19c695a71b83c6bfbc6113fe6a24a04588704c42cb104e440c82c5",
     "tools/venues/jeddah_pit_walkway_dataclasses.py": "03fa4a77d76370b6fa2a276d30a9a6273f7fdfc1a895a52f98f1ef94cb19e958",
     "build/circuits/jeddah/barriers.csv": "d034c613d3abafc2595dc76fb2b6e3a6d3423caf0920a475a2ec9e13a4c53e6a",
-    "build/circuits/jeddah/manifest.json": "fdf1b7767f9e7d7962661dd7760515eb66c43a9b2471694b6e527bd89cbf6df0"
+    "build/circuits/jeddah/manifest.json": "8d98998faa542f57163b52efac1f853fd6a25b137b9888baa7f2e68dea9a1b07"
   },
   "cosmetic_portal_count": 499,
   "native_edits": [
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_00_m1",
-      "triangles": 16557,
-      "sha256": "a7bed4ddf54a54059f3ea041042e32594820464089422d7860bbb9fbdef5c157"
+      "triangles": 16865,
+      "sha256": "547878d87e3a9e93771dbbcadfba64b3c3d5304aa615b33aa28e74fd59d2aa38"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_00_m2",
-      "triangles": 11109,
-      "sha256": "236427e917fbc5f756180fb2f70a9665421e1e2fcd035f94291c171f799722e5"
+      "triangles": 10746,
+      "sha256": "4a9822756fb0bfd79ea82a2c5c6ab749928b87da89c3cfcd6a19cbd650b16208"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_00_m4",
-      "triangles": 4650,
-      "sha256": "08d81d74d575e8f90c8932edbe8fe4c21517f718fc72bf5ba8a698f0498a6c68"
+      "triangles": 4728,
+      "sha256": "77eb7736a88af4977886dd0ebf4d0b4d1ed653a876e9116615dbb7b4b4560997"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_m1_00",
-      "triangles": 27718,
-      "sha256": "00d57123be2633327c207839dbc8650ce2d37c10dd1c6dc5ce0db3bb8d98db9f"
+      "triangles": 27904,
+      "sha256": "c551e25da7540bf0ca8129e463e0be462af1ab343ddb06fb0642d188d813368f"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_m1_01",
-      "triangles": 37995,
-      "sha256": "dad946aadd2e1b33d060a63eda916b8d635ed68f941122a310cf93a69bbeb079"
+      "triangles": 38430,
+      "sha256": "ea7059f18958107d338fc4627c1892caafdf3e0e4ea284163d4fd6a78cff0b80"
     },
     {
       "asset": "/Game/Generated/Jeddah/Track/Tile_Street_m1_m1",
-      "triangles": 14194,
-      "sha256": "663d92dfef16583cd44b558634358365d73ab5a8f13c3bc11a8012343cf2b358"
+      "triangles": 14251,
+      "sha256": "24a72fbcf34e8c5736577908d0253d6888cee2426c4343b0d1a549eede30faf8"
     }
   ],
   "pit_architecture_edits": [

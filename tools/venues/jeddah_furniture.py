@@ -19,6 +19,8 @@ from venues.jeddah_pits import pit_route_source
 
 
 def fixture_site(scene: CircuitScene) -> FixtureSite:
+    from venues.jeddah_early_pit import load_recipe as entry_recipe
+
     route = pit_route_source()
     strips = []
     for a, b in zip(route.sections, route.sections[1:]):
@@ -36,6 +38,8 @@ def fixture_site(scene: CircuitScene) -> FixtureSite:
     overlay = build_overlay(load_recipe(escape), scene.road, [],
                             scene.provenance.route.uniform_scale, occupied=[])
     strips.extend(Polygon([face.a[:2], face.b[:2], face.c[:2]]) for face in overlay.paving)
+    entry = entry_recipe(route)
+    strips.extend(Polygon([face.a[:2], face.b[:2], face.c[:2]]) for face in entry.separator_paint)
     paving = unary_union([scene.corridor_mask, scene.road_mask.buffer(.96),
                           unary_union(strips).buffer(.5)])
     forbidden = unary_union([
@@ -70,7 +74,7 @@ def place_foot(scene: CircuitScene, site: FixtureSite, sample: RoadStation,
 def write_clearance(scene: CircuitScene, site: FixtureSite) -> None:
     (scene.scratch / "furniture-clearance.json").write_text(
         json.dumps({"foot_radius_m": .4, "required_paving_clearance_m": .6,
-                    "coverage": "All race-road arms plus kerbs, full pit support, escape, buildings and water.",
+                    "coverage": "All race-road arms plus kerbs, full pit support, open entry wedge, escape, buildings and water.",
                     "feet": [asdict(foot) for foot in site.feet]}, indent=2) + "\n"
     )
 

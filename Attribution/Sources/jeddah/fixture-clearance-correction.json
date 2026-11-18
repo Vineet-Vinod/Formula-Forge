@@ -6,14 +6,15 @@
   "minimum_paving_clearance_m": 0.6013834917243617,
   "source_footing_radius_m": 0.4,
   "proof": "build/circuits/jeddah/furniture-clearance.json",
-  "proof_sha256": "13772357554876d3e09648d20046e48a1187da4748154129cdf9a22fb679001e",
+  "proof_sha256": "b788ea90f06e262409dea250a9f1bc821ffd8159c45ab8ef327f62590aa4ff80",
   "main_road_terrain_building_collision_limits_exact": true,
   "other20_generated_venues_exact": true,
   "geometry_triangles": 2762783,
   "original95_nonfield_palette_assets_preserved": true,
   "review_status": "Source checks and native import passed. Fresh native visual/driving/performance review pending.",
   "early_wall_segments": 90,
-  "physical_portals": 54,
+  "physical_portals": 57,
   "cosmetic_portals": 499,
-  "early_entry_separator": "Open painted wedge before Qatar nose replaces unsupported divider; wall caps and panels follow endpoint grades."
+  "early_entry_separator": "Open painted wedge before Qatar nose replaces unsupported divider; wall caps and panels follow endpoint grades.",
+  "reserved_open_pit_entry_wedge": true
 }
