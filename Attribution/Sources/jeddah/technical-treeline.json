@@ -1,0 +1,14 @@
+{
+  "reference": "Saved/Refs/jeddah.mp4 at323s",
+  "source_frame_sha256": "9d8bd2bfaae86934c831aaeec496455c3a56298a9531e34cd67735a7b90856a1",
+  "registration": "TAG corner with green-white left kerb and localized right yellow/pink escape; construction tower and low crane on right.",
+  "observation": "Dense broadleaf crowns beyond the right fence, unlike the old sparse generic palms.",
+  "native_station_range_m": [
+    1650,
+    1850
+  ],
+  "setback_from_protected_road_m": 8,
+  "nominal_spacing_m": 24,
+  "estimated_height_m": 9,
+  "qualification": "Finite source-view reconstruction, not surveyed tree inventory/species. Band endpoints approximately plus/minus30m and crown size/spacing estimated. Existing all-road-arm, water and building clearance gates remain active. Retain palm treatment outside this sector. No physical road/terrain or material changes."
+}

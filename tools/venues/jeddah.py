@@ -23,6 +23,7 @@ from venues.jeddah_facilities import (
 from venues.jeddah_markers import distance_boards
 from venues.jeddah_masarat import finish_terrain as finish_masarat_terrain
 from venues.jeddah_pit_exit import pit_exit_building
+from venues.jeddah_return_context import build as corniche_mosque
 from venues.jeddah_skyline import skyline_residency
 
 
@@ -69,6 +70,7 @@ def build_venue(scene: CircuitScene) -> None:
     t27_tree_belt(scene)
     construction_tower(scene)
     edition_hotel(scene)
+    corniche_mosque(scene)
     for building in scene.buildings:
         if building.osm_id in scene.modeled_buildings or building.use == "grandstand":
             continue
@@ -82,15 +84,17 @@ def build_venue(scene: CircuitScene) -> None:
                 "modern",
                 "White",
             )
-    for start, end, side, setback in (
-        (400, 1200, -1, 11),
-        (1350, 2200, 1, 14),
-        (2250, 2800, -1, 13),
-        (3000, 3850, 1, 15),
-        (3950, 4650, -1, 18),
-        (4800, 5400, 1, 12),
+    for start, end, side, setback, spacing, palm in (
+        (400, 1200, -1, 11, 52, True),
+        (1350, 1650, 1, 14, 52, True),
+        (1650, 1850, 1, 8, 24, False),
+        (1850, 2200, 1, 14, 52, True),
+        (2250, 2800, -1, 13, 52, True),
+        (3000, 3850, 1, 15, 52, True),
+        (3950, 4650, -1, 18, 52, True),
+        (4800, 5400, 1, 12, 52, True),
     ):
-        trees(scene, start, end, side, setback, 52, 9, palm=True)
+        trees(scene, start, end, side, setback, spacing, 9, palm=palm)
     skyline_residency(scene)
     corniche_context(scene)
 

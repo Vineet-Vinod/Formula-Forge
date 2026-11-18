@@ -1,0 +1,69 @@
+{
+  "status": "Source-qualified presentation repair; native optical/clearance review required",
+  "source_frames": [
+    {
+      "path": "build/reviews/jeddah-focused-20261118/pit-detail/reference-0616.jpg",
+      "sha256": "5b18f451a9fd663aff1c637282c346f8d5a32fb69a7e96e1960d71c55ec79c86"
+    },
+    {
+      "path": "build/reviews/jeddah-focused-20261118/pit-detail/reference-0618.jpg",
+      "sha256": "67d6090dfddd2f3a0b317bac08bc11c2f9103f7d0e0145825f7c0451b46bb9f2"
+    },
+    {
+      "path": "build/reviews/jeddah-focused-20261118/pit-detail/reference-0623.jpg",
+      "sha256": "40b4c87303ff6ab12150752f7b34ee19e56bd5993977b378f3e6c66aa8c8b4c5"
+    },
+    {
+      "path": "build/reviews/jeddah-focused-20261118/candidate13-scenes/pit-stop/view.jpg",
+      "sha256": "634cf57973b478e44923fee51b4befd1a67f5c3c5b6c6f143687d44399cb8f9e"
+    },
+    {
+      "path": "build/reviews/jeddah-focused-20261118/candidate13-scenes/pit-working-fastlane/view.jpg",
+      "sha256": "f585d56eed0e2eb7d9916fc859ffe5ccf15b993fc157ee795fda9ffd8b5fb840"
+    }
+  ],
+  "fascia": {
+    "observation": "616/618 forward onboard clearly shows two continuous yellow DHL bands on lower hospitality front, not unbranded pale spandrels.",
+    "levels_m": [
+      4.6,
+      9.2
+    ],
+    "height_m": 0.7,
+    "outward_skin_offset_m": 0.012,
+    "material": "PanelDHL",
+    "art": "Existing build/circuits/jeddah/art/PanelDHL.png, original repository sign renderer. Native Jeddah PanelDHL material was absent in13 and must be admitted; do not borrow another circuit asset.",
+    "placement": "Existing balcony fascia faces only, plus matching spans across existing16.5m central service bridge. Preserve all decks/rails/frontage anchors."
+  },
+  "rig_housings": {
+    "observation": "616/618 shows wide pale/grey gear casings with dark inset fronts and localized team colors;619/623 corroborates bulky upright enclosures and hanging hose.",
+    "dimensions_estimated_m": {
+      "along": 0.82,
+      "across": 0.5,
+      "height": 2.4
+    },
+    "placement": "Same ten existing boom anchors; casing fits below unchanged curved elbow. Ferrari body-envelope clearance remains mandatory.",
+    "color_scope": "Observed Orange/Red/Blue sequence represented at existing7.5/11.5/15.5 garage controls; other unqualified rigs neutralWhite. This is an appearance reconstruction, not an exact2026 team/garage roster. All rig/counter/hose anchors and path remain fixed."
+  },
+  "console_casings": {
+    "observation": "616/618/623 shows cased pit-wall monitor banks, top hoods/side cheeks and lower equipment units; current native13 has bare support frames/screens.",
+    "placement": "Only eight already-clearance-qualified consoles; new shells remain inside existing2.8m by.7m desk plan envelope and below existing2.35m support height. Keep old screen/readout positions.",
+    "added_parts": [
+      "White rear case",
+      "White side cheeks and shallow sloped hood",
+      "One Black equipment unit underneath existing desk"
+    ]
+  },
+  "not_changed": [
+    "No new rooms or broad backing planes; exact hidden workshop fit-out is not visible enough to reconstruct",
+    "All pit support/physics/axis/working floor/guide Z/body path",
+    "Existing8 entry lights atP3.0 and45 workshop fixtures atP1.0",
+    "All accepted gallery floors/roof/frame positions"
+  ],
+  "occlusion_scope": {
+    "retained_full_packed_diagnosis": "build/reviews/jeddah-focused-20261118/pit-stop-diagnosis/packed-guide-equipment-audit.json",
+    "finding": "Existing guide/boom/equipment absence claims were caused by cockpit hood/offscreen/grazing-return occlusion. Do not duplicate equipment or move anchors to evade these views.",
+    "new_fascia": "Replace the existing directly visible pale fascia owner at same front face with0.012m outward skin; no new geometry behind opaque balcony slabs.",
+    "new_console": "Case existing screens rather than add more freestanding banks. Still requires actual native13+comparison after import."
+  },
+  "limits": "Band/housing/casing dimensions and repeated role placements are explicit bounded reconstruction estimates. No people or animations."
+}

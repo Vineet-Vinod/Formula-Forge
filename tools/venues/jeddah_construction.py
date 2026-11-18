@@ -57,13 +57,20 @@ def slab(scene: MeshScene, polygon: Polygon, z: float, depth: float) -> None:
 
 def luffing_crane(scene: MeshScene, base: Point, direction: Point, recipe: ConstructionRecipe) -> None:
     side = (-direction[1], direction[0], 0.0)
-    half = .7
+    half = recipe.side_crane_mast_width_m / 2
     head = add(base, (0, 0, recipe.side_crane_height_m))
     for x, y in ((-1, -1), (-1, 1), (1, 1), (1, -1)):
         foot = add(add(base, mul(direction, x * half)), mul(side, y * half))
         scene.beam('Building_DiamondSideCraneMast', 'Steel', foot,
                    add(foot, (0, 0, recipe.side_crane_height_m)), .16)
     divisions = math.ceil(recipe.side_crane_height_m / 3)
+    corners = [add(mul(direction, x * half), mul(side, y * half))
+               for x, y in ((-1, -1), (1, -1), (1, 1), (-1, 1))]
+    for level in range(divisions + 1):
+        center = add(base, (0, 0, recipe.side_crane_height_m * level / divisions))
+        for first, last in zip(corners, corners[1:] + corners[:1], strict=True):
+            scene.beam('Building_DiamondSideCraneMastTies', 'Steel',
+                       add(center, first), add(center, last), .12)
     for level in range(divisions):
         z0 = recipe.side_crane_height_m * level / divisions
         z1 = recipe.side_crane_height_m * (level + 1) / divisions
@@ -78,15 +85,26 @@ def luffing_crane(scene: MeshScene, base: Point, direction: Point, recipe: Const
     angle = math.radians(recipe.side_crane_boom_angle_deg)
     boom = (direction[0] * math.cos(angle), direction[1] * math.cos(angle), math.sin(angle))
     tip = add(head, mul(boom, recipe.side_crane_jib_m))
-    for offset in (-.55, .55):
-        scene.beam('Building_DiamondSideCraneBoom', 'Yellow', add(head, mul(side, offset)),
-                   add(tip, mul(side, offset)), .14)
+    perpendicular = (-direction[0] * math.sin(angle),
+                     -direction[1] * math.sin(angle), math.cos(angle))
+    corners = [mul(side, -recipe.side_crane_boom_width_m / 2),
+               mul(side, recipe.side_crane_boom_width_m / 2),
+               mul(perpendicular, recipe.side_crane_boom_depth_m)]
+    for offset in corners:
+        scene.beam('Building_DiamondSideCraneBoom', 'Yellow',
+                   add(head, offset), add(tip, offset), .18)
     divisions = math.ceil(recipe.side_crane_jib_m / 3)
     for level in range(divisions):
         a = add(head, mul(boom, recipe.side_crane_jib_m * level / divisions))
         b = add(head, mul(boom, recipe.side_crane_jib_m * (level + 1) / divisions))
-        scene.beam('Building_DiamondSideCraneBoomLattice', 'Steel', add(a, mul(side, -.55)),
-                   add(b, mul(side, .55)), .09)
+        for first, last in zip(corners, corners[1:] + corners[:1], strict=True):
+            scene.beam('Building_DiamondSideCraneBoomLattice', 'Steel',
+                       add(a, first), add(b, last), .10)
+            scene.beam('Building_DiamondSideCraneBoomTies', 'Yellow',
+                       add(a, first), add(a, last), .10)
+    for first, last in zip(corners, corners[1:] + corners[:1], strict=True):
+        scene.beam('Building_DiamondSideCraneBoomTies', 'Yellow',
+                   add(tip, first), add(tip, last), .10)
     counter = add(head, mul(direction, -recipe.side_crane_counter_jib_m))
     scene.beam('Building_DiamondSideCraneCounterJib', 'Steel', head, counter, .35, .7)
     scene.box('Building_DiamondSideCraneCounterweight', 'Concrete', counter, 2.6, 2.8, 1.5, heading)

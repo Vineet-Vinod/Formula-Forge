@@ -135,6 +135,7 @@ def shade(
         "White", "Cream", "Red", "Black", "Steel", "Green", "Yellow"
     ) or name.startswith(("Runoff", "JeddahApron"))
     lettering = name.startswith("Panel") or name in ("VenueSign", "EventPanel")
+    raised_panel = direct_lighting and name in ("PanelJeddahEntrySalesforce", "PanelDHL")
     marker = name in ("50", "100", "150", "200") or name.startswith(("JeddahDistance", "JeddahPit"))
     if any(
         word in material.get_name()
@@ -154,11 +155,15 @@ def shade(
             if "SurfaceMasked" in name or lettering
             else 0.07
         )
-        strength.r *= emissive_scale
+        strength.r *= 1.0 if raised_panel else emissive_scale
         bounce = EDIT.create_material_expression(
             material, unreal.MaterialExpressionMultiply
         )
-        connect(multiply, "", bounce, "A")
+        if raised_panel:
+            # Raised, front-lit panels lie above the road-only irradiance field.
+            connect(source, output, bounce, "A")
+        else:
+            connect(multiply, "", bounce, "A")
         connect(strength, "", bounce, "B")
         EDIT.connect_material_property(
             bounce, "", unreal.MaterialProperty.MP_EMISSIVE_COLOR

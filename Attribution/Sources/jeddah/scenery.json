@@ -1,7 +1,7 @@
 {
   "recipe": "make circuit-assets CIRCUIT=jeddah",
   "tiles": 146,
-  "triangles": 1437128,
+  "triangles": 1422619,
   "road_sha256": "86ac9b9b678308d892ee45f96061bee4ae87afbda9aaf7791eb9bc0166c365e6",
   "terrain_sha256": "a30c782d9e70e53575eaa3a1295d86b00eeca559983b25de642725c36fdfe647",
   "landmarks": [
@@ -319,7 +319,7 @@
       "core_outside_footprint_m2": 0.0,
       "side_crane_head_relative_m": 42.0,
       "side_crane_tip_relative_m": 74.33592155403522,
-      "source_note": "Supplied Saved/Refs/jeddah.mp4 at323s, original1920x1080 frame retained as build/reviews/jeddah-focused-20261118/construction-source-draft/reference-0323-full.jpg SHA256 9d8bd2bfaae86934c831aaeec496455c3a56298a9531e34cd67735a7b90856a1, shows substantial exposed concrete shaft faces, repeated projecting concrete floor edges, dark open bays and a lower external luffing crane with cab/counterweight and steep diagonal boom. The top is cropped. The distant165s view establishes unfinished construction silhouette only. Keep OSM1244131504 footprint/registration, adjacent-road site datum and prior300\u00b180m envelope. Floor pitch/count, core18x16m, slab0.48m, column0.9m, 42m crane mast/34m boom at72degrees and crane location are bounded visual estimates, not measured construction dimensions. New floorplates stay clipped to the exact mapped outline. The old roof+23m horizontal crane is unsupported by this close view and replaced by the observed low luffing form. No completed glazing, hidden podium, new road, terrain or lighting/material graph change.",
+      "source_note": "Supplied Saved/Refs/jeddah.mp4 at323s, original1920x1080 frame retained as build/reviews/jeddah-focused-20261118/construction-source-draft/reference-0323-full.jpg SHA256 9d8bd2bfaae86934c831aaeec496455c3a56298a9531e34cd67735a7b90856a1, shows substantial exposed concrete shaft faces, repeated projecting concrete floor edges, dark open bays and a lower external luffing crane with cab/counterweight and steep diagonal boom. The top is cropped. The distant165s view establishes unfinished construction silhouette only. Keep OSM1244131504 footprint/registration, adjacent-road site datum and prior300\u00b180m envelope. Floor pitch/count, core18x16m, slab0.48m, column0.9m, 42m crane mast/34m boom at72degrees and crane location are bounded visual estimates, not measured construction dimensions. New floorplates stay clipped to the exact mapped outline. The old roof+23m horizontal crane is unsupported by this close view and replaced by the observed low luffing form. No completed glazing, hidden podium, new road, terrain or lighting/material graph change. Candidate13 review found the low crane present but too thin to read. Reconstruct its complete3D triangular boom truss and mast cross-ties rather than a two-rail flat boom. Mast1.8m, triangular boom1.3m wide/0.9m deep and member0.10\u20130.18m are bounded structural/visual estimates. Position, height, angle, site and palette stay fixed; verify the native1778m source approach.",
       "source": "construction-reconstruction.json",
       "planned_osm_height_m": 432.0,
       "adjacent_road_station_m": 1878.6968690791568,
@@ -336,6 +336,18 @@
       "roof_above_foundation_m": 24.5,
       "roof_height_uncertainty_m": 4.0,
       "source": "Supplied331.06s/overview04 establishes the track-facing deep terraces, projecting pale canopy and angled braces. Marriott's original exterior photograph establishes dark occupied facade piers, recessed floor-height windows, closed soffits and glass terrace guards. Its sea-facing lift tower/pergolas are not transferred onto the unregistered track elevation. Tier heights, bay pitches and sections remain architectural estimates; existing24.5m envelope and footprint are retained. New room bays are estimated subordinate detail, not a measured count. No ground, physics, barrier or lighting changes. Full-resolution331.06s also supports dominant pale deck fascias and restrained horizontal front glazing/shade bands. Floor fascia0.62m is an architectural estimate; deck tops stay fixed. Sea-facing curtain panels are omitted from the track facade. Highest canopy occupies an estimated75% of the long frontage,offset toward the positive-u end; its local-u/end assignment follows the native approach orientation and remains estimated. The opposite quarter is an18.28m lower roof terrace with a raised pale triangular end fin. Braces connect6.35\u219212.45m terraces rather than the incorrectold18.5m full-height members. All are visual silhouette estimates from direct331.06s,not survey. Visible braces lean down toward positive-u on the registered approach; exact repetitions/endregistration remain estimated. Native92341de6T13 capture showed opaque blue genericGlass guards andover-reflective window bands,not source-faithful occupied terraces. Revision2 uses neutral private materials,transparent guards,0.9m glazing reveals with1.8m solid roombacks,broader darkspandrels/piers and0.82m layered deck edges with0.18m soffit/fascia recess. These section dimensions are source-supported architectural estimates from331.06s andthe owner exterior; no exact survey claim or outsideproperty changes."
+    },
+    {
+      "name": "Corniche Mosque, source-registered T22 shoreline",
+      "osm_node_id": 608700976,
+      "native_nearest_station_m": 4195.814478329132,
+      "distance_from_road_m": 72.72370816002899,
+      "occupied_footprint_m2": 200.9600000000001,
+      "published_floor_m2": 195.0,
+      "estimated_floor_m": 3.8,
+      "estimated_main_dome_top_m": 13.600000000000001,
+      "estimated_minaret_top_m": 19.04,
+      "source": "Corniche Mosque at retained OSM node608700976 is72.7m from native4195.8m, on the right approaching T22. Direct supplied279/668s forward views show the pale domed mosque and minaret beside the central stand. F1's primary2021 site visit also places a mosque atT22. Aga Khan/Archnet DTP101639 gives195m\u00b2 floor area and1200m\u00b2 site, with a domed square hall, east mihrab/oculus, northern vaulted porch, western two-shallow-dome loggia and southern minaret. Faisal Al-Abdullah's original2013 exterior photo separately establishes a round white shaft, solid faceted balcony, arched lantern/crown, crescent finials and small pyramidal roof-corner caps. Square shafts/wooden lattice balconies pictured for other mosques in the multi-project report are not transferred to Corniche. Model dimensions approximate that published floor area; hall10m, roof9.8m and minaret15.5m are architectural estimates, approximately\u00b120% in plan and\u00b13m in height. Label-point registration is estimated\u00b115m, not a traced footprint. The exposed porch/arcade and exterior silhouette are modeled without invented hidden rooms. Existing field is retained outside the finite occupied floor/plinth; no site flattening, road/physics/native data or new materials. Sparse old335/640 sector associations and rear-camera271/275 are not used to place this family. The minaret is placed on the western half of the south side, following its right-of-dome projection in the registered279/668 approach; precise offsets remain estimated. Floor3.8m is a local architectural datum estimate, approximately\u00b10.6m, above the actual retained2.65\u20133.64m perimeter Ground. Existing dune/field planes outside the occupied podium remain unchanged."
     },
     {
       "name": "Mapped building",
@@ -446,9 +458,27 @@
     {
       "type": "palms",
       "start_m": 1350,
+      "end_m": 1650,
+      "side": 1,
+      "count": 6,
+      "setback_m": 14,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "broadleaf",
+      "start_m": 1650,
+      "end_m": 1850,
+      "side": 1,
+      "count": 9,
+      "setback_m": 8,
+      "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
+    },
+    {
+      "type": "palms",
+      "start_m": 1850,
       "end_m": 2200,
       "side": 1,
-      "count": 17,
+      "count": 7,
       "setback_m": 14,
       "placement": "Reference-sector visual estimate, checked against all road arms and building footprints."
     },

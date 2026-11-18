@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "family": "Corniche Mosque at T22",
+  "owner_osm_node_id": 608700976,
+  "position_wgs84_lat_lon": [
+    21.6338845,
+    39.1025455
+  ],
+  "registration_uncertainty_m": 15,
+  "footprint_is_estimated": true,
+  "published_floor_m2": 195,
+  "published_site_m2": 1200,
+  "plan_dimension_uncertainty_fraction": 0.2,
+  "height_uncertainty_m": 3,
+  "reference_pixels_shipped": false,
+  "sources": [
+    {
+      "kind": "Retained primary map label",
+      "url": "https://www.openstreetmap.org/node/608700976",
+      "retained_file": "build/reviews/jeddah/reference/coast-full.map.osm",
+      "sha256": "4924278c5a0c09bdd861604d517ac0d559bcbd741a44b64e911d4e38b4d1affa",
+      "licence": "OpenStreetMap contributors, ODbL1.0",
+      "supports": "Named architect/position; no building footprint is mapped in the retained export."
+    },
+    {
+      "kind": "Primary architectural award record",
+      "url": "https://s3.amazonaws.com/media.archnet.org/system/publications/contents/9156/original/DTP101639.pdf?1395052128=",
+      "supports": "195m\u00b2 floor/1200m\u00b2 site; square domed hall, east mihrab/oculus, north vaulted porch, west two-shallow-dome loggia, south minaret/external stair. The report covers multiple mosques; photographs of Island/Ruwais/Binladen are not used as Corniche form evidence.",
+      "usage": "Reference only, no PDF/image pixels in assets."
+    },
+    {
+      "kind": "Original-author exterior photograph",
+      "page": "https://commons.wikimedia.org/wiki/File:\u0645\u0633\u062c\u062f_\u0634\u0627\u0637\u0626_\u0627\u0644\u0643\u0648\u0631\u0646\u064a\u0634_-_\u062c\u062f\u0629\u060c_\u0627\u0644\u0633\u0639\u0648\u062f\u064a\u0629.JPG",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/%D9%85%D8%B3%D8%AC%D8%AF_%D8%B4%D8%A7%D8%B7%D8%A6_%D8%A7%D9%84%D9%83%D9%88%D8%B1%D9%86%D9%8A%D8%B4_-_%D8%AC%D8%AF%D8%A9%D8%8C_%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9.JPG/1280px-%D9%85%D8%B3%D8%AC%D8%AF_%D8%B4%D8%A7%D8%B7%D8%A6_%D8%A7%D9%84%D9%83%D9%88%D8%B1%D9%86%D9%8A%D8%B4_-_%D8%AC%D8%AF%D8%A9%D8%8C_%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9.JPG",
+      "author": "Faisal Al-Abdullah",
+      "date": "2013-10-15",
+      "licence": "CC-BY-SA3.0",
+      "usage": "Unmodified1280px publisher preview, reference only. Original-file request returned429; no pixels shipped.",
+      "supports": "Round shaft, solid faceted balcony, arched crown with pointed merlons, crescent finials, hemispherical hall dome, circular oculus and small pyramidal roof-corner caps."
+    },
+    {
+      "kind": "Primary circuit site visit",
+      "url": "https://www.formula1.com/en/latest/article/the-circuit-the-challenge-and-the-culture-how-jeddah-is-shaping-up-for-the.6nm5W4zEpXtCKsA3VQBkgb",
+      "supports": "Mosque beside the shoreline atT22, consistent with the mapped source point."
+    },
+    {
+      "kind": "Supplied reference",
+      "path": "Saved/Refs/jeddah.mp4",
+      "sha256": "c2c78fb500a241a595aa6108bf797114332a747a83ab280b2a49d2cd9b8dcf78",
+      "direct_frames_s": [
+        279,
+        668
+      ],
+      "supports": "Forward T22 approach with pale domed mosque/minaret to the right and central stand to left. These are landmark/minimap associations, not linear time-to-station interpolation."
+    }
+  ],
+  "retained_reference_sha256": {
+    "build/reviews/jeddah-focused-20261118/return-context/reference-279.jpg": "5a31f5e072dadb5d809dbf64411f1a379fc1f3025f458af257e389f0d0a99d83",
+    "build/reviews/jeddah-focused-20261118/return-context/reference-668.jpg": "4d265864bc9d60047bf9608122488db6386db73ca9cb371d52de02d9c5a908aa",
+    "build/reviews/jeddah-focused-20261118/return-context/corniche-own-work-2013-preview.jpg": "ce78cde51cfa2606c65d8278e232d0a963d75037d4044f931adb565ffe46ab1c",
+    "build/reviews/jeddah-focused-20261118/return-context/corniche-primary.pdf": "6b0686471f3ea4e8dacf4d60185e0a83a89c41a62edabf569877384cd65aacf2"
+  },
+  "limits": "The source point is a label, not a traced footprint. Floor/plinth datum, detailed dimensions, porch bay spacing and unphotographed returns are architectural estimates. No hidden interiors or unsourced additional city blocks/bridges/grass have been added. Existing paired road lamps are already present. Nearby planting remains separate pending precise source-role registration.",
+  "scope": "New finite occupied mosque footprint and its visual ground cutout only. Road, contact, drive/terrain/buildings/pit native data and all other venue families stay unchanged. Native visibility/illumination and final appearance require fresh driving-pose review.",
+  "estimated_floor_relative_m": 3.8,
+  "floor_uncertainty_m": 0.6,
+  "estimated_occupied_plan_m2": 200.96,
+  "plan_area_note": "The published195m\u00b2 floor constrains the estimated hall/porch/loggia; the200.96m\u00b2 visual occupied union includes the estimated exterior stair.",
+  "minaret_registration": "Round shaft/solid balcony follow the original author photo; the tower occupies the western half of the south side so its projection lies to the right of the dome in the supplied279/668s approach. The exact offset and silhouette separation remain estimated, with fresh native4148.8m review required.",
+  "actual_ground_support": {
+    "samples": 163,
+    "missing": 0,
+    "height_range_m": [
+      2.639846178235364,
+      3.6394259723721643
+    ],
+    "minimum_floor_clearance_m": 0.16057402762783557,
+    "foundation_bottom_m": 2.4285051356874012,
+    "minimum_burial_m": 0.21134104254796293,
+    "scope": "Actual packed pre-cutout upward Ground perimeter, with existing outside planes retained."
+  },
+  "camera_review": {
+    "actual_saved_stations_m": [
+      4148.83056640625,
+      4198.025390625
+    ],
+    "limits": "4148.83m shows the family on the right approach;4198m has turned past it and the family is outside the camera. Source-front-face CPU overlay is not UE/PBR or foreign-mesh depth proof. Native visibility/appearance remains pending."
+  }
+}

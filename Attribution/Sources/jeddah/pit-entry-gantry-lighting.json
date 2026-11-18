@@ -1,0 +1,8 @@
+{
+  "source": "Saved/Refs/jeddah.mp4 at611s",
+  "source_sha256": "c2c78fb500a241a595aa6108bf797114332a747a83ab280b2a49d2cd9b8dcf78",
+  "material": "PanelJeddahEntrySalesforce",
+  "source_observation": "Blue overhead board with legible white cloud/lettering. Candidate13 geometry was present but its raised face was almost black.",
+  "correction": "Keep source artwork and geometry. Private gantry lettering uses the existing0.6 lettering strength on the texture rather than the road irradiance field and0.2 global Jeddah emission scale. Other materials retain existing shading.",
+  "qualification": "Appearance reconstruction, not measured sign luminance or proof of a physical self-emissive fixture. Verify in the final matched611s native view."
+}

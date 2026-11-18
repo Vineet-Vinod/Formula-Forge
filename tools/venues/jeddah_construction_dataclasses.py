@@ -23,6 +23,9 @@ class ConstructionRecipe:
     core_rib_width_m: Positive
     formwork_levels: Annotated[int, Field(ge=1, le=5)]
     side_crane_height_m: Positive
+    side_crane_mast_width_m: Positive
+    side_crane_boom_width_m: Positive
+    side_crane_boom_depth_m: Positive
     side_crane_offset_along_m: FiniteFloat
     side_crane_offset_across_m: FiniteFloat
     side_crane_jib_m: Positive

@@ -164,9 +164,17 @@ def working_apron(scene: CircuitScene) -> None:
         tip = apron_floor_point(scene, route, source, anchor, source.boom_reach_m, source.boom_height_m)
         members.append(tip)
         scene.beam("Building_JeddahPitEquipmentCasing", "White", base, elbow, .38, .46)
+        heading = math.atan2(scene.at(anchor).ty, scene.at(anchor).tx)
+        scene.box('Building_JeddahPitRigHousing', 'White',
+                  apron_floor_point(scene, route, source, anchor, .45, 1.20), .82, .50, 2.40, heading)
+        scene.box('Building_JeddahPitRigInset', 'Black',
+                  apron_floor_point(scene, route, source, anchor, .715, 1.28), .64, .025, 1.55, heading)
         for member_start, member_end in pairwise(members[1:]):
             scene.beam("Building_JeddahPitEquipment", "White", member_start, member_end, .28, .40)
-        accent = "Red" if garage_centre == 11.5 else "Green"
+        accent = {7.5: 'JeddahApronOrange', 11.5: 'Red', 15.5: 'SeatBlue'}.get(garage_centre, 'White')
+        for along in (-.37, .37):
+            scene.box('Building_JeddahPitRigColorShell', accent,
+                      apron_floor_point(scene, route, source, anchor + along, .725, 1.20), .075, .035, 2.30, heading)
         accent_start = apron_floor_point(scene, route, source, anchor, source.boom_reach_m - .65, source.boom_height_m)
         scene.beam("Building_JeddahPitEquipmentAccent", accent, accent_start, tip, .285, .405)
         underside = apron_floor_point(scene, route, source, anchor, .45 + radius,

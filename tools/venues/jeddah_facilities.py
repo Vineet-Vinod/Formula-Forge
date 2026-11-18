@@ -12,6 +12,7 @@ from venues.jeddah_pit_details import (
     detail_source,
     garage_detail,
     pit_workstations,
+    service_fascia,
     upper_bay,
 )
 from venues.jeddah_pit_entry import build_entry
@@ -123,6 +124,7 @@ def pit_compound(scene: CircuitScene) -> None:
             26,
             0.3,
         )
+    service_fascia(scene, a, b)
     for roof in range(10):
         a, b = scene.at(PIT_START + roof * 28), scene.at(PIT_START + (roof + 1) * 28)
         height = 19.2 + (1.3 if 3 <= roof <= 6 else 0.0)

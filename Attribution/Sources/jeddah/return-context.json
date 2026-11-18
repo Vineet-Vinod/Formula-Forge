@@ -1,0 +1,17 @@
+{
+  "osm_node_id": 608700976,
+  "latitude": 21.6338845,
+  "longitude": 39.1025455,
+  "published_floor_m2": 195,
+  "hall_side_m": 10,
+  "hall_wall_m": 5.5,
+  "dome_radius_m": 3.7,
+  "dome_height_m": 3.5,
+  "loggia_depth_m": 4.5,
+  "porch_depth_m": 3.8,
+  "minaret_side_m": 2.8,
+  "minaret_shaft_m": 10.4,
+  "minaret_crown_m": 3.8,
+  "source_note": "Corniche Mosque at retained OSM node608700976 is72.7m from native4195.8m, on the right approaching T22. Direct supplied279/668s forward views show the pale domed mosque and minaret beside the central stand. F1's primary2021 site visit also places a mosque atT22. Aga Khan/Archnet DTP101639 gives195m\u00b2 floor area and1200m\u00b2 site, with a domed square hall, east mihrab/oculus, northern vaulted porch, western two-shallow-dome loggia and southern minaret. Faisal Al-Abdullah's original2013 exterior photo separately establishes a round white shaft, solid faceted balcony, arched lantern/crown, crescent finials and small pyramidal roof-corner caps. Square shafts/wooden lattice balconies pictured for other mosques in the multi-project report are not transferred to Corniche. Model dimensions approximate that published floor area; hall10m, roof9.8m and minaret15.5m are architectural estimates, approximately\u00b120% in plan and\u00b13m in height. Label-point registration is estimated\u00b115m, not a traced footprint. The exposed porch/arcade and exterior silhouette are modeled without invented hidden rooms. Existing field is retained outside the finite occupied floor/plinth; no site flattening, road/physics/native data or new materials. Sparse old335/640 sector associations and rear-camera271/275 are not used to place this family. The minaret is placed on the western half of the south side, following its right-of-dome projection in the registered279/668 approach; precise offsets remain estimated. Floor3.8m is a local architectural datum estimate, approximately\u00b10.6m, above the actual retained2.65\u20133.64m perimeter Ground. Existing dune/field planes outside the occupied podium remain unchanged.",
+  "floor_relative_m": 3.8
+}

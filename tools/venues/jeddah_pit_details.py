@@ -35,9 +35,11 @@ def upper_bay(scene: CircuitScene, a: RoadStation, b: RoadStation, front_a: floa
                a.point(front_a + detail.balcony_depth_m / 2, height - detail.balcony_slab_m / 2),
                b.point(front_b + detail.balcony_depth_m / 2, height - detail.balcony_slab_m / 2),
                detail.balcony_depth_m, detail.balcony_slab_m)
-    scene.banner(a.point(front_a + detail.balcony_depth_m, height - .25),
-                 b.point(front_b + detail.balcony_depth_m, height - .25),
-                 .32, 'White', 'Building_JeddahPitBalconyFascias')
+    branded = height <= 9.2
+    skin_offset = .012 if branded else 0
+    scene.banner(a.point(front_a + detail.balcony_depth_m + skin_offset, height - .35 if branded else height - .25),
+                 b.point(front_b + detail.balcony_depth_m + skin_offset, height - .35 if branded else height - .25),
+                 .70 if branded else .32, 'PanelDHL' if branded else 'White', 'Building_JeddahPitBalconyFascias')
     for sample, lane in ((a, front_a), (b, front_b)):
         scene.banner(sample.point(lane, height + .22),
                      sample.point(lane - detail.upper_glazing_recess_m, height + .22),
@@ -112,6 +114,14 @@ def garage_detail(scene: CircuitScene, a: RoadStation, b: RoadStation, front_a: 
                                     detail.garage_ceiling_m + lift),
                    last_lamp.point(-last_lamp.half_width - 13 - detail.interior_light_depth_m,
                                    detail.garage_ceiling_m + lift), width, depth)
+
+
+def service_fascia(scene: CircuitScene, a: RoadStation, b: RoadStation) -> None:
+    depth = detail_source().balcony_depth_m
+    for height in (4.6, 9.2):
+        scene.banner(a.point(-a.half_width - 13 + depth + .012, height - .35),
+                     b.point(-b.half_width - 13 + depth + .012, height - .35),
+                     .70, 'PanelDHL', 'Building_JeddahPitServiceFascia', repeat=3)
 
 
 def write_interior_lights(scene: CircuitScene, path: Path) -> None:
@@ -228,6 +238,17 @@ def pit_workstations(scene: CircuitScene) -> None:
                    equipment_point(section, -1.37, 3.05, 2.35), equipment_point(section, 1.37, 3.05, 2.35), .14, .18)
         scene.box('Building_JeddahPitWallConsoleDesk', 'Steel', equipment_point(section, 0, 3.05, 1.12),
                   2.8, .7, .10, math.atan2(ty, tx))
+        heading = math.atan2(ty, tx)
+        scene.box('Building_JeddahPitConsoleHousing', 'White',
+                  equipment_point(section, 0, 3.12, 1.78), 2.8, .56, .86, heading)
+        for along in (-1.34, 1.34):
+            scene.box('Building_JeddahPitConsoleCheeks', 'White',
+                      equipment_point(section, along, 3.06, 1.86), .10, .68, .77, heading)
+        scene.beam('Building_JeddahPitConsoleHood', 'White',
+                   equipment_point(section, 0, 2.72, 2.24),
+                   equipment_point(section, 0, 3.40, 2.12), 2.8, .10)
+        scene.box('Building_JeddahPitConsoleEquipmentCase', 'Black',
+                  equipment_point(section, -.6, 3.05, .65), .68, .60, .90, heading)
         for screen in range(3):
             left, right = -.1 - (1 - screen) * .84 - .32, -.1 - (1 - screen) * .84 + .32
             scene.banner(equipment_point(section, left, 2.72, 1.56), equipment_point(section, right, 2.72, 1.56),

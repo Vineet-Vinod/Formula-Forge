@@ -253,3 +253,17 @@ def test_service_cylinder_is_closed_round_outward_and_bounded() -> None:
     assert .05 < volume < .09
     assert edges
     assert all(count == edges[(last, first)] for (first, last), count in edges.items())
+
+
+def test_presentation_casings_stay_inside_existing_console_footprints(pits: PitScene) -> None:
+    desks = unary_union([Polygon([point[:2] for point in face]) for kind, _, face in pits.faces
+                         if kind == 'Building_JeddahPitWallConsoleDesk']).buffer(.02)
+    cases = [face for kind, _, face in pits.faces if kind in
+             ('Building_JeddahPitConsoleHousing', 'Building_JeddahPitConsoleCheeks',
+              'Building_JeddahPitConsoleHood', 'Building_JeddahPitConsoleEquipmentCase')]
+    assert cases
+    assert all(desks.covers(ShapePoint(point[:2])) for face in cases for point in face)
+    fascia = [face for kind, material, face in pits.faces
+              if kind.endswith('Fascias') and material == 'PanelDHL']
+    assert fascia
+    assert min(point[2] for face in fascia for point in face) > pits.at(0).z + 3.8
