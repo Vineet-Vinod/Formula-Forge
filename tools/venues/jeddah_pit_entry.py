@@ -12,6 +12,7 @@ from pydantic import TypeAdapter
 from shapely.geometry import Polygon
 
 from venues.jeddah_pit_entry_dataclasses import PitEntryDetail
+from venues.jeddah_pit_entry_details import lobby_details
 from venues.jeddah_pit_exit_geometry import solid
 
 SOURCE = Path(__file__).resolve().parents[2] / "Attribution/Sources/jeddah/pit-entry-frontage.json"
@@ -161,7 +162,8 @@ def build_entry(scene: CircuitScene, sample: RoadStation, front: float, rear: fl
             pc, pd = b.point(front_b - inset, high), a.point(front_a - inset, high)
             scene.quad("Building_JeddahPitEntryWingGlazing", "JeddahEditionGuardGlass",
                        pa, pb, pc, pd)
-            back_a, back_b = front_a - source.wing_depth_m + .12, front_b - source.wing_depth_m + .12
+            room_depth = source.wing_depth_m - .12 if floor == 0 else source.upper_back_depth_m
+            back_a, back_b = front_a - room_depth, front_b - room_depth
             qa, qb = a.point(back_a, low), b.point(back_b, low)
             qc, qd = b.point(back_b, high), a.point(back_a, high)
             scene.quad("Building_JeddahPitEntryWingRoomBacks", "White", qa, qb, qc, qd)
@@ -169,12 +171,16 @@ def build_entry(scene: CircuitScene, sample: RoadStation, front: float, rear: fl
                        pa, pb, qb, qa, up=True)
             scene.quad("Building_JeddahPitEntryWingRoomCeilings", "JeddahEditionStone",
                        pd, qd, qc, pc, up=False)
+            if index % 2 == 0:
+                scene.quad("Building_JeddahPitEntryWingRoomPartitions", "White",
+                           pa, qa, qd, pd)
             if index:
                 scene.beam("Building_JeddahPitEntryWingMullions", "Steel", pa, pd, .045)
         scene.quad("Building_JeddahPitEntryWingRear", "JeddahEditionStone",
                    b.point(front_b - source.wing_depth_m), a.point(front_a - source.wing_depth_m),
                    a.point(front_a - source.wing_depth_m, source.height_m),
                    b.point(front_b - source.wing_depth_m, source.height_m))
+    lobby_details(scene, source)
     for light in entry_lights(scene):
         scene.box("Building_JeddahPitEntryWingLobbyLamp", "Lamp",
                   (light.position[0], light.position[1], light.position[2] + .05),

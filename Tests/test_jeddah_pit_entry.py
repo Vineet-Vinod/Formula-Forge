@@ -23,6 +23,23 @@ from venues.jeddah_pit_entry import (
 from venues.jeddah_pits import pit_route_source
 
 
+def test_upper_room_back_is_visible_above_the_first_projecting_floor() -> None:
+    scene = CircuitScene("jeddah")
+    source = source_record()
+    sample = scene.at(5963.42724609375)
+    camera_lane = -12.784985710592832
+    camera_lift = 1.261999877382633
+    front = -sample.half_width - 13
+    target_lift = source.floor_height_m * 1.5
+    crossings = []
+    for depth in (source.upper_back_depth_m, source.wing_depth_m - .12):
+        target_lane = front - depth
+        ratio = (front - camera_lane) / (target_lane - camera_lane)
+        crossings.append(camera_lift + ratio * (target_lift - camera_lift))
+    assert crossings[0] > source.floor_height_m + .3
+    assert crossings[1] < source.floor_height_m
+
+
 def test_entry_hospitality_has_depth_and_keeps_physical_route_and_workshops_fixed() -> None:
     scene = CircuitScene("jeddah")
     source = source_record()
@@ -67,7 +84,7 @@ def test_entry_hospitality_has_depth_and_keeps_physical_route_and_workshops_fixe
     assert panes > 150
     lights = entry_lights(scene)
     assert len(lights) == source.wing_light_count == 8
-    assert all(light.pool_radius_m == 14 and light.power == .24 for light in lights)
+    assert all(light.pool_radius_m == 14 and light.power == source.lobby_light_power for light in lights)
     assert all(light.target is not None and light.target[2] < light.position[2] for light in lights)
     assert all(footprint.covers(LineString([light.position[:2], light.target[:2]]))
                for light in lights if light.target is not None)

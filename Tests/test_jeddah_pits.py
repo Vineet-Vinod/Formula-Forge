@@ -186,6 +186,7 @@ def test_separate_interior_fixture_csv_has_all_bays_and_valid_aim(pits: PitScene
     import csv
 
     from venues.jeddah_pit_details import detail_source, write_interior_lights
+    from venues.jeddah_pit_entry import source_record
 
     target = tmp_path / "pit_interior_lights.csv"
     write_interior_lights(pits, target)
@@ -193,11 +194,13 @@ def test_separate_interior_fixture_csv_has_all_bays_and_valid_aim(pits: PitScene
         rows = list(csv.DictReader(stream))
     assert len(rows) == 53
     detail = detail_source()
-    for row in rows:
+    entry = source_record()
+    for index, row in enumerate(rows):
         values = [float(value) for value in row.values()]
         assert len(values) == 7 and all(math.isfinite(value) for value in values)
         assert values[2] > values[5] + 200
-        assert values[6] == detail.interior_light_power
+        expected_power = detail.interior_light_power if index < 45 else entry.lobby_light_power
+        assert values[6] == expected_power
 
 
 def test_service_cylinder_is_closed_round_outward_and_bounded() -> None:

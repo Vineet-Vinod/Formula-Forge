@@ -21,6 +21,7 @@ class PitEntryDetail:
     band_height_m: Positive
     glazing_depth_m: Positive
     backing_depth_m: Positive
+    upper_back_depth_m: Positive
     bay_width_m: Positive
     pier_width_m: Positive
     lobby_light_power: Annotated[FiniteFloat, Field(gt=0, le=4)]
