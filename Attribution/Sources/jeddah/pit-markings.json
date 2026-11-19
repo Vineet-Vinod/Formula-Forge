@@ -54,13 +54,15 @@
           2
         ],
         [
-          110,
+          164,
           2
         ]
       ],
       "width_m": 0.12,
       "dash_m": 0,
-      "gap_m": 0
+      "gap_m": 0,
+      "fork_blend_end_m": 110,
+      "handoff_start_m": 152
     },
     {
       "name": "entry-inner-guide",
@@ -96,7 +98,7 @@
           -1.4
         ],
         [
-          800,
+          814,
           -1.4
         ],
         [
@@ -106,18 +108,19 @@
       ],
       "width_m": 0.12,
       "dash_m": 0,
-      "gap_m": 0
+      "gap_m": 0,
+      "curve_start_m": 814
     },
     {
       "name": "exit-right-merge",
-      "frame": "pit",
+      "frame": "exit_merge",
       "controls": [
         [
           814,
           1.94
         ],
         [
-          856,
+          863.1708252699908,
           1.94
         ]
       ],
@@ -146,7 +149,7 @@
   "road_edge_replacements_m": [
     [
       5705.249788320109,
-      5814.6564494497725
+      5869.413799395848
     ],
     [
       350,

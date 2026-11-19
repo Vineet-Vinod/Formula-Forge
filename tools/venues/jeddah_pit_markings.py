@@ -11,7 +11,7 @@ from circuit_dataclasses import Point
 from circuit_mesh import MeshScene
 from circuit_portals_dataclasses import Portal
 from circuit_scene import CircuitScene
-from pit_routes_dataclasses import PitRoute
+from pit_routes_dataclasses import PitRoute, PitSection
 from pydantic import TypeAdapter
 from shapely.geometry import Polygon
 
@@ -31,6 +31,8 @@ def load_recipe(route: PitRoute) -> PitMarkings:
             raise ValueError('Paint stations must increase')
         if bool(line.dash_m) != bool(line.gap_m):
             raise ValueError('Broken paint needs both dash and gap lengths')
+        if line.frame == 'entry_fork' and (line.fork_blend_end_m is None or line.handoff_start_m is None):
+            raise ValueError('The fork requires its island transition and ordinary-edge handoff')
     return recipe
 
 
@@ -52,24 +54,62 @@ def paint_point(road: CircuitScene, route: PitRoute, line: PaintLine, distance: 
     nearest, _ = road.nearest(x, y)
     lane = (x - nearest.x) * nearest.ty - (y - nearest.y) * nearest.tx
     if line.frame == 'entry_fork':
-        start, end = line.controls[0][0], line.controls[-1][0]
+        assert line.fork_blend_end_m is not None and line.handoff_start_m is not None
+        start, end = line.controls[0][0], line.fork_blend_end_m
         blend = max(0., min(1., (distance - start) / (end - start)))
-        target = nearest.point(-nearest.half_width + .06 + across)
+        handoff = max(0., min(1., (distance - line.handoff_start_m) / (line.controls[-1][0] - line.handoff_start_m)))
+        handoff = handoff * handoff * (3 - 2 * handoff)
+        target = nearest.point(-nearest.half_width - .15 + .21 * handoff + across)
         inner_floor = section.z + section.cross_slope * lateral
         fork_floor = inner_floor + (target[2] - inner_floor) * blend
         x, y = x + (target[0] - x) * blend, y + (target[1] - y) * blend
-    elif line.frame == 'exit_outer' and lane > -nearest.half_width + .06:
-        x, y, _ = nearest.point(-nearest.half_width + .06 + across)
+    elif line.frame in ('exit_outer', 'exit_merge'):
+        start = line.curve_start_m if line.curve_start_m is not None else line.controls[0][0]
+        if distance >= start:
+            x, y = merge_curve(road, route, line, distance, across, start)
     nearest, _ = road.nearest(x, y)
     lane = (x - nearest.x) * nearest.ty - (y - nearest.y) * nearest.tx
+    pit_distance = abs(lateral)
+    if line.frame == 'exit_merge' or (line.frame == 'exit_outer' and line.curve_start_m is not None and distance >= line.curve_start_m):
+        section, pit_distance = closest_pit(route, x, y)
     pit_lane = (x - section.x) * section.normal_x + (y - section.y) * section.normal_y
     floor = section.z + section.cross_slope * pit_lane
     if abs(lane) <= nearest.half_width + .15:
         road_floor = nearest.height(lane) + .006
-        floor = max(floor, road_floor) if abs(pit_lane) <= section.half_width else road_floor
+        floor = max(floor, road_floor) if pit_distance <= section.half_width else road_floor
     if fork_floor is not None:
         floor = fork_floor
     return x, y, floor + .014
+
+
+def closest_pit(route: PitRoute, x: float, y: float) -> tuple[PitSection, float]:
+    best, distance = 0., math.inf
+    for a, b in zip(route.sections, route.sections[1:]):
+        dx, dy = b.x - a.x, b.y - a.y
+        t = max(0., min(1., ((x - a.x) * dx + (y - a.y) * dy) / (dx * dx + dy * dy)))
+        gap = (x - a.x - t * dx) ** 2 + (y - a.y - t * dy) ** 2
+        if gap < distance:
+            distance, best = gap, a.distance + t * (b.distance - a.distance)
+    return sample(route, best), math.sqrt(distance)
+
+
+def merge_curve(road: CircuitScene, route: PitRoute, line: PaintLine, distance: float,
+                across: float, start: float) -> tuple[float, float]:
+    section = sample(route, start)
+    final = route.sections[-1]
+    target, _ = road.nearest(final.x, final.y)
+    side = -1 if line.frame == 'exit_outer' else 1
+    a = section.x + section.normal_x * offset(line, start), section.y + section.normal_y * offset(line, start)
+    b = a[0] - section.normal_y * 14., a[1] + section.normal_x * 14.
+    d = target.point(side * (target.half_width - .06))[:2]
+    c = d[0] - target.tx * 14., d[1] - target.ty * 14.
+    t = max(0., min(1., (distance - start) / (line.controls[-1][0] - start)))
+    x, y = (sum(weight * p[i] for weight, p in zip(((1 - t) ** 3, 3 * (1 - t) ** 2 * t,
+            3 * (1 - t) * t * t, t ** 3), (a, b, c, d))) for i in range(2))
+    dx, dy = (3 * (1 - t) ** 2 * (b[i] - a[i]) + 6 * (1 - t) * t * (c[i] - b[i])
+              + 3 * t * t * (d[i] - c[i]) for i in range(2))
+    length = math.hypot(dx, dy)
+    return x + dy / length * across, y - dx / length * across
 
 
 def strokes(line: PaintLine) -> list[tuple[float, float]]:

@@ -17,6 +17,7 @@ from shapely.geometry import Polygon
 from venues.jeddah_pit_markings import (
     emit_markings,
     load_recipe,
+    merge_curve,
     paint_point,
     road_line_openings,
     strokes,
@@ -64,6 +65,26 @@ def test_only_white_paint_is_added_and_road_openings_are_finite() -> None:
         assert shape.is_valid and shape.exterior.is_ccw
         assert abs(shape.convex_hull.area - shape.area) < 1e-7
         assert opening.top_m - opening.bottom_m < .18
+
+
+def test_merge_curves_join_both_track_edges_with_the_track_tangent() -> None:
+    import math
+
+    route = pit_route_source()
+    road = CircuitScene('jeddah')
+    target, _ = road.nearest(route.sections[-1].x, route.sections[-1].y)
+    for line in load_recipe(route).lines:
+        if line.frame not in ('exit_outer', 'exit_merge'):
+            continue
+        start = line.curve_start_m or line.controls[0][0]
+        end = line.controls[-1][0]
+        a = merge_curve(road, route, line, end - .01, 0, start)
+        b = merge_curve(road, route, line, end, 0, start)
+        side = -1 if line.frame == 'exit_outer' else 1
+        expected = target.point(side * (target.half_width - .06))
+        assert math.dist(b, expected[:2]) < 1e-8
+        dx, dy = b[0] - a[0], b[1] - a[1]
+        assert (dx * target.tx + dy * target.ty) / math.hypot(dx, dy) > .9999
 
 
 def test_replacement_preserves_every_nonwhite_route_triangle_and_physical_file(tmp_path: Path) -> None:
