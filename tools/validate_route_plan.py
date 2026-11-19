@@ -24,6 +24,12 @@ def validate_plan(path: Path) -> None:
         manifest = TypeAdapter(RouteAssets).validate_json(manifest_raw)
         if manifest.circuit != entry.circuit:
             raise ValueError('Manifest circuit differs from plan')
+        if entry.markings_only:
+            if entry.circuit != 'jeddah' or not manifest.marking_portals:
+                raise ValueError('Paint-only import requires the qualified Jeddah markings')
+            for name in (manifest.pit_lane_file, manifest.protection_file, manifest.escape_surface_file):
+                if name and (manifest_path.parent / name).read_bytes() != (ROOT / 'Content/Generated' / entry.content_dir / name).read_bytes():
+                    raise ValueError('Paint-only import cannot change physical data: ' + name)
         for tile in manifest.tiles:
             mesh_path = (manifest_path.parent / tile.file).resolve()
             if not mesh_path.is_relative_to(manifest_path.parent.resolve()):

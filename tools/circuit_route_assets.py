@@ -65,13 +65,21 @@ def emit_pit(scene: MeshScene, route: PitRoute) -> None:
         for indices in ((0, 1, 2), (0, 2, 3)):
             face = points[indices[0]], points[indices[1]], points[indices[2]]
             scene.triangle("Tile_Route", "Runoff", *face, uv=tuple((p[0] / 4, p[1] / 4) for p in face))
+        line_first, line_last = first, last
+        if route.slug == "jeddah":
+            from venues.jeddah_pit_protection import sample
+
+            if last.distance <= 272 or first.distance >= 581:
+                continue
+            line_first = sample(route, max(272., first.distance))
+            line_last = sample(route, min(581., last.distance))
         for side in (-1, 1):
             scene.quad(
                 "Tile_Route", "White",
-                pit_point(first, side * (first.half_width - 0.12), 0.006),
-                pit_point(last, side * (last.half_width - 0.12), 0.006),
-                pit_point(last, side * last.half_width, 0.006),
-                pit_point(first, side * first.half_width, 0.006),
+                pit_point(line_first, side * (line_first.half_width - 0.12), 0.006),
+                pit_point(line_last, side * (line_last.half_width - 0.12), 0.006),
+                pit_point(line_last, side * line_last.half_width, 0.006),
+                pit_point(line_first, side * line_first.half_width, 0.006),
                 up=True,
             )
 
@@ -110,6 +118,12 @@ def prepare(circuit: str, destination: Path, pit_path: Path | None, escape_path:
     walls += clip_foreign_protection(escape_walls, list(route.portals)) if route else escape_walls
     if route:
         emit_pit(scene, route)
+    marking_portals: list[Portal] = []
+    if circuit == "jeddah" and route is not None:
+        from venues.jeddah_pit_markings import emit_markings, road_line_openings
+
+        emit_markings(scene, route)
+        marking_portals = road_line_openings(route)
     cosmetic_portals: list[Portal] = []
     if circuit == "jeddah" and route is not None:
         from venues.jeddah_pit_protection import emit_exit_paving, exit_floor_portals
@@ -220,12 +234,15 @@ def prepare(circuit: str, destination: Path, pit_path: Path | None, escape_path:
             "tools/venues/jeddah_pit_walkway_dataclasses.py",
             "build/circuits/jeddah/barriers.csv",
             "build/circuits/jeddah/manifest.json",
+            "Attribution/Sources/jeddah/pit-markings.json",
+            "tools/venues/jeddah_pit_markings.py",
+            "tools/venues/jeddah_pit_markings_dataclasses.py",
         ))
     result = RouteAssets(circuit, 1, "Source east/north/Z metres; packed meshes use Unreal world centimetres",
         records, portals, list(escapes.paint_domains) if escapes else [],
         {str(p.relative_to(root) if p.is_relative_to(root) else p): hashlib.sha256(p.read_bytes()).hexdigest()
          for p in inputs}, lane_file, "pit_barriers.bin",
-        "Finite route overlay. Original venue meshes remain the base. Native clipping/reclassification, exact physical clearance, source review and fresh live validation are required before acceptance.", escape_file, cosmetic_portals)
+        "Finite route overlay. Original venue meshes remain the base. Native clipping/reclassification, exact physical clearance, source review and fresh live validation are required before acceptance.", escape_file, cosmetic_portals, marking_portals)
     (destination / "manifest.json").write_text(json.dumps(asdict(result), indent=2) + "\n")
     (destination / "portals.json").write_text(json.dumps({"portals": [asdict(p) for p in portals]}, indent=2) + "\n")
     return result

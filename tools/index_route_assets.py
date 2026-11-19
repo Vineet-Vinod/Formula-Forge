@@ -34,6 +34,10 @@ for entry in plan['circuits']:
     if manifest['circuit'] != entry['circuit']:
         raise ValueError('Route index circuit differs from its manifest')
     volumes = manifest['portals'] + manifest['paint_domains'] + manifest.get('cosmetic_portals', [])
+    if entry.get('markings_only', False):
+        volumes = manifest.get('marking_portals', [])
+    else:
+        volumes += manifest.get('marking_portals', [])
     data = ROOT / 'Content/Generated' / entry['content_dir']
     directory = entry['content_dir'].removesuffix('/Data')
     directory = '' if directory == 'Data' else directory

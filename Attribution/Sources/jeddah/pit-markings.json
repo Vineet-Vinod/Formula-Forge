@@ -1,0 +1,156 @@
+{
+  "source_sections_sha256": "509b63f1cb62e73ff6bb2ef6076219c0f8e3c51495450be37adb718d2aa64658",
+  "source_road_sha256": "70849f9d49ba639751a0f16f3c665e7f07ba00f92a7eb5e1b1e448488e1783ee",
+  "source_note": "Saved/Refs/jeddah.mp4 608\u2013635s. Dashed approach divider becomes a solid fork around the painted island. Exit has a single left guide and a localized curved right boundary plus short merge dashes, not two continuous rails. Limiter bars, lane geometry, scenery and materials are preserved. Registration follows accepted pit distances; widths, dash lengths and endpoints remain camera-derived estimates.",
+  "lines": [
+    {
+      "name": "entry-dashed-lead",
+      "frame": "pit",
+      "controls": [
+        [
+          0,
+          -2
+        ],
+        [
+          30,
+          0
+        ],
+        [
+          60,
+          1.5
+        ],
+        [
+          94,
+          2
+        ]
+      ],
+      "width_m": 0.12,
+      "dash_m": 1.8,
+      "gap_m": 3.2
+    },
+    {
+      "name": "entry-pit-fork",
+      "frame": "pit",
+      "controls": [
+        [
+          94,
+          2
+        ],
+        [
+          137,
+          2
+        ]
+      ],
+      "width_m": 0.12,
+      "dash_m": 0,
+      "gap_m": 0
+    },
+    {
+      "name": "entry-track-fork",
+      "frame": "entry_fork",
+      "controls": [
+        [
+          94,
+          2
+        ],
+        [
+          110,
+          2
+        ]
+      ],
+      "width_m": 0.12,
+      "dash_m": 0,
+      "gap_m": 0
+    },
+    {
+      "name": "entry-inner-guide",
+      "frame": "pit",
+      "controls": [
+        [
+          200,
+          -1.94
+        ],
+        [
+          247,
+          -1.94
+        ],
+        [
+          272,
+          -2.44
+        ]
+      ],
+      "width_m": 0.12,
+      "dash_m": 0,
+      "gap_m": 0
+    },
+    {
+      "name": "exit-left-guide",
+      "frame": "exit_outer",
+      "controls": [
+        [
+          581,
+          -2.44
+        ],
+        [
+          604,
+          -1.4
+        ],
+        [
+          800,
+          -1.4
+        ],
+        [
+          863.1708252699908,
+          -1.4
+        ]
+      ],
+      "width_m": 0.12,
+      "dash_m": 0,
+      "gap_m": 0
+    },
+    {
+      "name": "exit-right-merge",
+      "frame": "pit",
+      "controls": [
+        [
+          814,
+          1.94
+        ],
+        [
+          856,
+          1.94
+        ]
+      ],
+      "width_m": 0.12,
+      "dash_m": 0,
+      "gap_m": 0
+    },
+    {
+      "name": "exit-merge-dashes",
+      "frame": "pit",
+      "controls": [
+        [
+          826,
+          -0.65
+        ],
+        [
+          850,
+          -0.65
+        ]
+      ],
+      "width_m": 0.12,
+      "dash_m": 1.0,
+      "gap_m": 2.0
+    }
+  ],
+  "road_edge_replacements_m": [
+    [
+      5705.249788320109,
+      5814.6564494497725
+    ],
+    [
+      350,
+      416.7308923772575
+    ]
+  ]
+}

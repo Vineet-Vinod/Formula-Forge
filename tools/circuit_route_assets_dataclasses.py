@@ -30,6 +30,7 @@ class RouteAssets:
     source_note: str
     escape_surface_file: str | None = None
     cosmetic_portals: list[Portal] = field(default_factory=list)
+    marking_portals: list[Portal] = field(default_factory=list)
 
 
 @dataclass(frozen=True)
@@ -38,6 +39,7 @@ class RoutePlanEntry:
     manifest: str
     content_dir: str
     index: str
+    markings_only: bool = False
 
 
 @dataclass(frozen=True)

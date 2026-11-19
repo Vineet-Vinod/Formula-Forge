@@ -224,6 +224,12 @@ for entry in plan['circuits']:
                 portal['top_m'] += 0.5
     visual_portal_path = folder / 'visual-portals.json'
     visual_portal_path.write_text(json.dumps({'portals': visual_portals}, indent=2) + '\n')
+    markings_only = entry.get('markings_only', False)
+    if markings_only and slug != 'jeddah':
+        raise ValueError('Paint-only import is qualified for Jeddah')
+    marking_portals = manifest.get('marking_portals', [])
+    marking_path = folder / 'marking-portals.json'
+    marking_path.write_text(json.dumps({'portals': marking_portals}, indent=2) + '\n')
     cosmetic_portals = manifest.get('cosmetic_portals', [])
     cosmetic_portal_path = folder / 'exit-support-portals.json'
     if cosmetic_portals:
@@ -238,7 +244,8 @@ for entry in plan['circuits']:
         cosmetic_relevant = overlaps(record['bounds'], cosmetic_portals)
         paint = [p for p in manifest['paint_domains'] if overlaps(record['bounds'], [
             {'polygon_xy_m': p['polygon_xy_m'], 'bottom_m': p['bottom_m'], 'top_m': p['top_m']}])]
-        if not relevant and not paint and not cosmetic_relevant:
+        marking_relevant = overlaps(record['bounds'], marking_portals)
+        if not relevant and not paint and not cosmetic_relevant and not marking_relevant:
             continue
         mesh = unreal.load_asset(record['asset'])
         if not isinstance(mesh, unreal.StaticMesh):
@@ -257,11 +264,11 @@ for entry in plan['circuits']:
             if label not in protected and (barrier or label in cosmetic):
                 selected.append(unreal.Name(slot['slot']))
         count = 0
-        if relevant and selected:
+        if relevant and selected and not markings_only:
             count = unreal.FFMeshBuildLibrary.cut_tile_portals(mesh, str(visual_portal_path), selected, False)
             if count < 0:
                 raise ValueError('Native portal clipping rejected ' + record['asset'])
-        if cosmetic_relevant:
+        if cosmetic_relevant and not markings_only:
             terrain_slots = [unreal.Name(slot['slot']) for slot in record['slots']
                 if slot['material'] is not None and
                 slot['material'].rsplit('/', 1)[-1].split('.')[0] in cosmetic]
@@ -271,7 +278,7 @@ for entry in plan['circuits']:
                 if affected < 0:
                     raise ValueError('Cosmetic pit support clipping rejected ' + record['asset'])
                 count += affected
-        for source_name in sorted({p['source_material'] for p in paint}):
+        for source_name in sorted({p['source_material'] for p in paint} if not markings_only else set()):
             domains = [p for p in paint if p['source_material'] == source_name]
             slots = [unreal.Name(s['slot']) for s in record['slots'] if s['material'].rsplit('/', 1)[-1].split('.')[0] == source_name]
             if not slots:
@@ -283,6 +290,14 @@ for entry in plan['circuits']:
             if affected < 0:
                 raise ValueError('Native material correction rejected ' + record['asset'])
             count += affected
+        if marking_relevant:
+            white_slots = [unreal.Name(slot['slot']) for slot in record['slots']
+                           if slot['material'] and slot['material'].rsplit('/', 1)[-1].split('.')[0] == 'White']
+            if white_slots:
+                affected = unreal.FFMeshBuildLibrary.cut_tile_portals(mesh, str(marking_path), white_slots, False)
+                if affected < 0:
+                    raise ValueError('Native pit paint clipping rejected ' + record['asset'])
+                count += affected
         if count:
             LIBRARY.set_metadata_tag(mesh, 'CircuitRouteRecipe', fingerprint)
             assert LIBRARY.save_loaded_asset(mesh)
@@ -313,7 +328,7 @@ for entry in plan['circuits']:
     pit_floor_edits = clear_monaco_pit_floor(slug)
     retained_edits = []
     for record in index['assets']:
-        if not overlaps(record['bounds'], portals) and not overlaps(record['bounds'], manifest['paint_domains']) and not overlaps(record['bounds'], cosmetic_portals):
+        if not overlaps(record['bounds'], portals) and not overlaps(record['bounds'], manifest['paint_domains']) and not overlaps(record['bounds'], cosmetic_portals) and not overlaps(record['bounds'], marking_portals):
             continue
         mesh = unreal.load_asset(record['asset'])
         if isinstance(mesh, unreal.StaticMesh) and LIBRARY.get_metadata_tag(mesh, 'CircuitRouteRecipe') == fingerprint:
