@@ -199,13 +199,13 @@
     "heavy_jobs": "One at a time under the shared lock; 4.3GB service cap, no swap; total machine stop threshold 10GB."
   },
   "limits": [
-    "Video-derived dimensions and photometry are estimates, not a survey. Pit lane 4m; limiter placement source estimate ±5m.",
-    "Hospitality wing 5950–6009m: start ±15m/depth 8±3m; exact panes, hidden rooms and fixture inventory estimated.",
+    "Video-derived dimensions and photometry are estimates, not a survey. Pit lane 4m; limiter placement source estimate \u00b15m.",
+    "Hospitality wing 5950\u20136009m: start \u00b115m/depth 8\u00b13m; exact panes, hidden rooms and fixture inventory estimated.",
     "EDITION massing/lighting, crane dimensions, finite technical treeline and open-exit source variant retain their provenance qualifications.",
     "T22 arcade/row counts and dimensions are estimates; the inherited plinth and partly buried base are preserved, with clear openings tested.",
-    "Corniche Mosque is label-point registered plus/minus 15m, not a surveyed footprint. Published 195m² floor constrains its 200.96m² estimated plan; height and subelement positions remain architectural estimates.",
+    "Corniche Mosque is label-point registered plus/minus 15m, not a surveyed footprint. Published 195m\u00b2 floor constrains its 200.96m\u00b2 estimated plan; height and subelement positions remain architectural estimates.",
     "Pit diagnostic drives 40km/h; it does not prove limiter saturation or a gameplay pitstop mechanic.",
-    "Captures are instrumented at 1600×900 and 30fps, not uncaptured performance or other-hardware proof."
+    "Captures are instrumented at 1600\u00d7900 and 30fps, not uncaptured performance or other-hardware proof."
   ],
   "cleanup": {
     "final_review_manifest_files_byte_exact_after": 746,
@@ -219,5 +219,7 @@
     "retirement_receipt_sha256": "e8186e32227b19a531e0ebd08c656de8316e00661ecaf10f5b396c899901a979",
     "reference_native_assets_native_data_and_package_byte_exact_after": true,
     "preserved": "Original references, Content assets, game package, authoring/test caches, baseline archive, complete final17 archives, selected stills, telemetry and proofs."
-  }
+  },
+  "record_state": "Historical acceptance for b6f2ca19; current Jeddah corrections are recorded separately.",
+  "superseded_by": "docs/jeddah_clearance_validation.json"
 }

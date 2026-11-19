@@ -1,0 +1,361 @@
+{
+  "date_utc": "2026-11-19T00:12:12.578291+00:00",
+  "scope": "Focused Jeddah pole clearance, pit width and entry, T13 protection and foliage corrections. Work on the broader set of 18 circuits remains incomplete.",
+  "tested_code_and_assets_revision": "24edb845184880c865cafbd26dfa9f6970f3828c",
+  "previous_record": "docs/jeddah_validation.json",
+  "package_payload_sha256": {
+    "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.pak": "81fa5960239b7f7cc05cecc3c60cbfebbea03137c8b13788233ba757e368ab8c",
+    "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.ucas": "9d332737dca2cfaab56722dad97a7f43753009bfae3bb1164d0929903ee44603",
+    "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.utoc": "6237674b45302336494c6b0341e334e75d30488d5e4bb334a44c1847c1419eb7",
+    "build/unreal/package/Linux/FormulaForge/Content/Paks/global.ucas": "88139f43850978edfb78c66a2afcdec7bc9be57914a6321953e0b8347469c6bc",
+    "build/unreal/package/Linux/FormulaForge/Content/Paks/global.utoc": "d9d6b6d071d37e17a9c166b85d7407237cdb6fc94a719af162097a6e3c3c7b25",
+    "build/unreal/package/Linux/FormulaForge/Binaries/Linux/FormulaForge": "1014aee7c24c4b2b9f0c8ce8747390810ce1796d4867fe996e77958c1848cd0a"
+  },
+  "package_pin_sha256": "e038e61954474fb230d34126423eb989522b8c78d5476f130e421e74712257fd",
+  "reference": {
+    "path": "Saved/Refs/jeddah.mp4",
+    "sha256": "c2c78fb500a241a595aa6108bf797114332a747a83ab280b2a49d2cd9b8dcf78",
+    "source_moments_s": [
+      323,
+      331,
+      332,
+      608,
+      609,
+      610,
+      611,
+      613,
+      624
+    ]
+  },
+  "changes": [
+    "Place all380 ground light feet clear of every race-road arm, kerb, pit support, open entry wedge and escape; revised tapered shafts, heads, footings and bolts.",
+    "Move start gantry columns outside the pit fast lane.",
+    "Five-metre garage-straight fast lane with smooth transitions and fixed personnel edge; retain four-metre approach/exit and garage anchors. Width remains an authoring estimate.",
+    "Localized1.9m T13 inner wall with two Aramco bands, replacing the long three-band wall.",
+    "Fuller irregular drooping palm fronds and lower uneven broadleaf crowns with private foliage materials.",
+    "Restore source STC/privacy/bridge sequence, enlarge close STC marks, use graded wall caps/panels, replace unsupported divider with painted wedge and remove obsolete fence fragments."
+  ],
+  "fixtures": {
+    "ground_feet_audited": 380,
+    "minimum_foot_centre_to_paving_m": 0.6013834917243617,
+    "maximum_foot_radius_m": 0.4,
+    "minimum_foot_envelope_to_paving_m": 0.20138349172436165,
+    "proof": "build/circuits/jeddah/furniture-clearance.json",
+    "proof_sha256": "b788ea90f06e262409dea250a9f1bc821ffd8159c45ab8ef327f62590aa4ff80"
+  },
+  "checks": {
+    "source_suite": "191 focused pytest checks, mypy233 source files and Ruff passed; source-final4.log.",
+    "route_suite": "15 Python route/escape tests, native format/layer support audits, mypy11 source files and Ruff passed; route-check.log.",
+    "native_pit": {
+      "slug": "jeddah",
+      "pass": true,
+      "contacts": 0,
+      "active_pit_samples": 370,
+      "inactive_controlled_samples": 0,
+      "maximum_ground_error_m": 0.0230384,
+      "maximum_progress_jump_m": 10.917
+    },
+    "build": "Guarded Unreal build and incremental package4 passed; no shader compilation fallback.",
+    "preservation": {
+      "baseline": "b6f2ca19813d332a57c0f7aa9a273dd1e4c32b33",
+      "other_generated_venues": {
+        "australia": "cbc68def5f474c0379a4eabcff7c3755600ed6e8dcca63c86b725a247ab4bad6",
+        "austria": "72280cd697cf3b73b651a4fff377a7f25dd96546a0fb86ea2787a2523694dba9",
+        "bahrain": "090224f4ec820938c70568fa1ebe31659b2c6a1036160098fd81d2d35ca436c3",
+        "baku": "34ae88055b4cec5421de328f1ecb0580ca5a2b17625912135c2b3e08aecdc996",
+        "buddh": "765e6aed7c7aaeb3a90802ed2b146616479c4f1f48c7559d300c19c94ee35cbf",
+        "cota": "5d8c04ba77c1daa98878fd408c5ef39e7c5b9d00d6737829a9d854c0c53aa839",
+        "canada": "cdd83caa729f2251dc974226d725c4e4d9592c48a23847d9afdff40a0235b192",
+        "china": "aeec72c40ac44e1c10ec15eedb4cf61ab16e293d9383dee12fc3e4a044424a80",
+        "hockenheim": "8848dd9f45f9ccffb0b203f7fa06994cad821c5c3156c8133cdb8b12ceca46e3",
+        "interlagos": "c8bbfe498a550504eb557c10dbf2bd93177ff5fccaa2f371751cb1fb773ee9b7",
+        "japan": "26b4173551a93c83f1380c1fa97cbfd66edce1120f88d055b84b2b0213f92b73",
+        "lasvegas": "11e56588cf13c298425a76ee73624049a9615558b7116ad93786bb9c59a01357",
+        "malaysia": "71ce55d03f9378ea6c9d3a4c997cce59b7e718cf765e4febe048c4385e9a46f9",
+        "monaco": "3b3bb5f81f96580cc060cbbeeed59a33fef7443f58f19961767ebd4408d0b39e",
+        "monza": "5fbe134e84dbd5cbac01825dedbda540e11c85e80fdbbf604c4e40ba37b8f9d3",
+        "portimao": "8213ec30c558fcc8ed0a735be501fe3822524694f20ed7efc893bcd8e776059c",
+        "singapore": "502d517d510e310bb15e924e3fd1e6f34e0b090ed5bc01ed85e342b7f1963d66",
+        "spa": "0be255db2a06aaa96fd6cee8e330a5dc15d41829fb9976367402d616679beb29",
+        "turkey": "3f7ba4856af90dd8e3c82dc5c48b576143144f70bf971e6e63243eaf8d3c1091",
+        "zandvoort": "e9c3e6e7f26a1acfa6ef2c957eacf67930289964b232170a587dd296b585dc2c"
+      },
+      "protected_Jeddah_data": {
+        "Content/Generated/Jeddah/Data/buildings.bin": "7e429e2da5a9f6a9d3cfd33641917b8ba942df48dea762ffd43c6dd6d41c3959",
+        "Content/Generated/Jeddah/Data/drive_surface.bin": "86ac9b9b678308d892ee45f96061bee4ae87afbda9aaf7791eb9bc0166c365e6",
+        "Content/Generated/Jeddah/Data/terrain.bin": "a30c782d9e70e53575eaa3a1295d86b00eeca559983b25de642725c36fdfe647",
+        "Content/Generated/Jeddah/Data/track_limits.bin": "4a5b59668b05add5efeb47e6e98b55a7a31704978acb886f9009c16c8defb5a7"
+      },
+      "original_nonfield_palette_assets_byte_exact": 95,
+      "reference_sha256": "c2c78fb500a241a595aa6108bf797114332a747a83ab280b2a49d2cd9b8dcf78",
+      "intentional_changes": "Jeddah pit width and overlay, T13 top heights, furniture, private foliage/entry materials and fixed-domain FloodlightField. Shared vehicle code and assets untouched."
+    }
+  },
+  "live_lap": {
+    "frame_count": 4719,
+    "clean_live_recording": true,
+    "contact_frames": 0,
+    "offtrack_frames": 0,
+    "airborne_frames": 0,
+    "invalid_lap_frames": 0,
+    "station_bin_count": 125,
+    "selected_image_count": 128
+  },
+  "live_pit": {
+    "status": "PASS trajectory/state gates",
+    "frames": 2657,
+    "distance_bins": 100,
+    "barrier_contact_ticks": 0,
+    "airborne_ticks": 0,
+    "overspeed_ticks": 0,
+    "maximum_center_deviation_m": 0.29303686828669706,
+    "maximum_ground_error_m": 0.02584669359039138,
+    "controlled_maximum_ground_error_m": 0.00012452789174899337,
+    "limit_transitions": [
+      {
+        "simulation_s": 0.0,
+        "distance_m": 1.6156651431464838e-05,
+        "pit_lane": false,
+        "limit_kph": 0.0
+      },
+      {
+        "simulation_s": 30.583333333332238,
+        "distance_m": 268.5019509897395,
+        "pit_lane": true,
+        "limit_kph": 80.0
+      },
+      {
+        "simulation_s": 60.59166666666387,
+        "distance_m": 603.8096884488134,
+        "pit_lane": true,
+        "limit_kph": 0.0
+      }
+    ]
+  },
+  "capture_integrity": {
+    "Jeddah_settled_views": 37,
+    "accepted_style_views": 2,
+    "lap_archive": {
+      "sha256": "86abbb6645b35c1ada5135403115e23a6d3268e92d46e39c4af87a555f93a8f9",
+      "frames": 4719,
+      "original_selected_images_retained": 128,
+      "video_bytes": 258010118
+    },
+    "pit_archive": {
+      "video_sha256": "e9a1473368c4889601ba40d003cbb91bb2b2d87f4cd15baa3871201c4fe9f1e2",
+      "frames": 2657,
+      "all_frames_decoded": true,
+      "video_bytes": 120256683,
+      "telemetry_files": {
+        "frames.jsonl.gz": "ec758cc43821350f41f561cd219d7790838d99b354bdff95903333a5f7b12642",
+        "ticks.jsonl.gz": "f85f3e97f3bbd857fd0fd4c6bed6ffd463eb1fc71f59db59c407eab774c1d7dc",
+        "steps.jsonl.gz": "339320faa11eeb6f24ce4ca830ca9eebfe1202807ba8ea5d0857350cd5a49b3a",
+        "inputs.jsonl.gz": "1a1ebc43ec90c89e7d331e2da4d8ef18d959b0eba9a68328789e78eed5b239d9",
+        "session.json": "498404658af20905281c401eea1e1752c74e7e51acd1fe5095c5e3762c9503b3"
+      },
+      "timing_note": "CFR30 visual archive; actual draw/simulation times remain in telemetry. Instrumented capture is not an FPS acceptance run."
+    },
+    "manifest": "build/reviews/jeddah-clearance-20261118/final4-review-hashes.json",
+    "manifest_sha256": "ec721da0d9d60490a763e64ac535b8f273e881bb280fd4bbc092045f2e47d535",
+    "verified_files": 453,
+    "pin_copies_verified": 46
+  },
+  "performance": {
+    "hardware": "Intel Core i7-1255U, Intel Iris Xe(ADLGT2), Vulkan, approximately12GB installed RAM.",
+    "conditions": "1600x900 windowed/offscreen, uncapped, no recorder/readback, dynamic resolution off. Same2.5CPU guard and4.3GB job cap for all3 runs. Each requested12000 frames; omit first1000 active game frames. Event-bearing samples retained; final CSV header accounts for late-added columns.",
+    "runs": [
+      {
+        "circuit": "jeddah",
+        "screen_percentage": 100,
+        "observed_scene_percentages": [
+          100.0
+        ],
+        "resolution": [
+          1600,
+          900
+        ],
+        "guard_cpu_quota_percent": 250,
+        "guard_job_memory_limit_bytes": 4300000000,
+        "recorder_enabled": false,
+        "uncapped": true,
+        "capture_frames_requested": 12000,
+        "active_game_frames": 11998,
+        "warmup_active_frames_omitted": 1000,
+        "analyzed_frames": 10998,
+        "process_wall_seconds": null,
+        "reused_existing_capture": true,
+        "parser": "Final EVENTS header with zero-padding for late-added columns. Read numeric timing columns only; retain event-bearing frames.",
+        "csv": "build/reviews/jeddah-clearance-20261118/performance4/jeddah-100/Profile(20261118_154812).csv",
+        "csv_sha256": "64e926eb74cbf0027f27fb17691d99271910cc141156414cfd529bb3599cd42e",
+        "frame_median_ms": 23.974600000000002,
+        "frame_p95_ms": 33.707930000000005,
+        "frame_p99_ms": 39.53386700000001,
+        "median_frame_rate_equivalent": 41.71081060789335,
+        "mean_frame_rate_equivalent": 40.63316900504661,
+        "timing_columns_median_ms": {
+          "RenderThreadTime": 3.6445,
+          "GameThreadTime": 2.452,
+          "GPUTime": 23.3095,
+          "RenderThreadTime_CriticalPath": 3.6445,
+          "GameThreadTime_CriticalPath": 2.455,
+          "RHIThreadTime": 1.416,
+          "FormulaForge/GameThread/VisualSupport": 0.3616,
+          "FormulaForge/GameThread/TileStreaming": 0.0,
+          "FormulaForge/GameThread/GameTick": 0.67755,
+          "FormulaForge/GameThread/LiveSimulation": 0.3138
+        },
+        "limits": "CSV instrumentation remains; no viewport recording/readback. Warm live driving window, not a guarantee for every pose or other hardware.75percent is a diagnostic control only; production stays100percent."
+      },
+      {
+        "circuit": "interlagos",
+        "screen_percentage": 100,
+        "observed_scene_percentages": [
+          100.0
+        ],
+        "resolution": [
+          1600,
+          900
+        ],
+        "guard_cpu_quota_percent": 250,
+        "guard_job_memory_limit_bytes": 4300000000,
+        "recorder_enabled": false,
+        "uncapped": true,
+        "capture_frames_requested": 12000,
+        "active_game_frames": 11998,
+        "warmup_active_frames_omitted": 1000,
+        "analyzed_frames": 10998,
+        "process_wall_seconds": 245.9163122177124,
+        "reused_existing_capture": false,
+        "parser": "Final EVENTS header with zero-padding for late-added columns. Read numeric timing columns only; retain event-bearing frames.",
+        "csv": "build/reviews/jeddah-clearance-20261118/performance4/interlagos-100/Profile(20261118_155459).csv",
+        "csv_sha256": "f1ca7e267ab0b23df0548d5555e5d6eb0240466b392d094de206b3e315ddd64d",
+        "frame_median_ms": 19.706249999999997,
+        "frame_p95_ms": 24.580659999999998,
+        "frame_p99_ms": 27.480298000000012,
+        "median_frame_rate_equivalent": 50.74532191563591,
+        "mean_frame_rate_equivalent": 50.00560748914641,
+        "timing_columns_median_ms": {
+          "RenderThreadTime": 4.583,
+          "GameThreadTime": 2.893,
+          "GPUTime": 18.822499999999998,
+          "RenderThreadTime_CriticalPath": 4.583,
+          "GameThreadTime_CriticalPath": 2.896,
+          "RHIThreadTime": 1.6385,
+          "FormulaForge/GameThread/VisualSupport": 0.0849,
+          "FormulaForge/GameThread/TileStreaming": 0.0,
+          "FormulaForge/GameThread/GameTick": 0.2285,
+          "FormulaForge/GameThread/LiveSimulation": 0.1401
+        },
+        "limits": "CSV instrumentation remains; no viewport recording/readback. Warm live driving window, not a guarantee for every pose or other hardware.75percent is a diagnostic control only; production stays100percent."
+      },
+      {
+        "circuit": "jeddah",
+        "screen_percentage": 75,
+        "observed_scene_percentages": [
+          75.0
+        ],
+        "resolution": [
+          1600,
+          900
+        ],
+        "guard_cpu_quota_percent": 250,
+        "guard_job_memory_limit_bytes": 4300000000,
+        "recorder_enabled": false,
+        "uncapped": true,
+        "capture_frames_requested": 12000,
+        "active_game_frames": 11998,
+        "warmup_active_frames_omitted": 1000,
+        "analyzed_frames": 10998,
+        "process_wall_seconds": 270.0548827648163,
+        "reused_existing_capture": false,
+        "parser": "Final EVENTS header with zero-padding for late-added columns. Read numeric timing columns only; retain event-bearing frames.",
+        "csv": "build/reviews/jeddah-clearance-20261118/performance4/jeddah-75/Profile(20261118_155905).csv",
+        "csv_sha256": "69f1f5478fe16e882642ef786290000d86e942bb8be8e9ce432923292b832edb",
+        "frame_median_ms": 21.10655,
+        "frame_p95_ms": 30.634434999999996,
+        "frame_p99_ms": 35.171414000000105,
+        "median_frame_rate_equivalent": 47.37865733622975,
+        "mean_frame_rate_equivalent": 45.65169520858137,
+        "timing_columns_median_ms": {
+          "RenderThreadTime": 3.747,
+          "GameThreadTime": 2.645,
+          "GPUTime": 20.487499999999997,
+          "RenderThreadTime_CriticalPath": 3.747,
+          "GameThreadTime_CriticalPath": 2.648,
+          "RHIThreadTime": 1.469,
+          "FormulaForge/GameThread/VisualSupport": 0.3662,
+          "FormulaForge/GameThread/TileStreaming": 0.0,
+          "FormulaForge/GameThread/GameTick": 0.6833,
+          "FormulaForge/GameThread/LiveSimulation": 0.31765
+        },
+        "limits": "CSV instrumentation remains; no viewport recording/readback. Warm live driving window, not a guarantee for every pose or other hardware.75percent is a diagnostic control only; production stays100percent."
+      }
+    ],
+    "production_screen_percentage": 100,
+    "fresh_default_capture": "build/reviews/jeddah-clearance-20261118/post-profile-production4/default-production-screen/frame.json"
+  },
+  "review": {
+    "model": "gpt-6-luna",
+    "effort": "high",
+    "thread_id": "01a1eec6-efdf-74f1-b8ef-f28dd9902632",
+    "report": "build/reviews/jeddah-clearance-20261118/final4-native-review.md",
+    "report_sha256": "e423048ce99fdcf4c47c28bd5876612a87a78f53be46d3e174422d870f3a4cdf",
+    "verdict": "PASS for the focused corrections, as recorded in the final independent review.",
+    "geometry_followup": {
+      "frame": 4562,
+      "native_race_station_m": 5827.669921875,
+      "classification": "Leading/back face of the authored right-hand Qatar chicane wall, not a detached old base fence remnant.",
+      "pit_distance_m": 137.25688906364877,
+      "source_xy_m": [
+        94.27199906862523,
+        -316.89683751409814
+      ],
+      "projected_wall_corners_pixels": [
+        [
+          508.11832665478687,
+          461.02958955307247
+        ],
+        [
+          507.1503852164045,
+          411.7686766205345
+        ],
+        [
+          516.6541361756996,
+          458.4141853524759
+        ],
+        [
+          515.7600853938245,
+          411.534793505334
+        ]
+      ],
+      "source_reference": "Saved/Refs/jeddah.mp4 at609\u2013610s: painted wedge followed by Qatar chicane nose. Exact metric registration remains estimated.",
+      "caveat": "Projection establishes which authored wall aligns to the observed cap; it is not a measured source survey or a pixel-exact source match."
+    }
+  },
+  "resources": {
+    "machine_used_peak_bytes": 6360477696,
+    "minimum_free_disk_bytes": 39142789120,
+    "guard_tripped": false,
+    "heavy_jobs": "One at a time under shared lock,4.3GB service cap/no swap,10GB whole-machine stop threshold."
+  },
+  "cleanup": {
+    "cook_cache_removed_bytes": 6542331418,
+    "cook_cache_files": 13275,
+    "free_disk_bytes_before": 41726627840,
+    "free_disk_bytes_after": 48368111616,
+    "reclaimed_allocated_bytes": 6641483776,
+    "all_final_manifest_files_byte_exact": true,
+    "playable_package_files_byte_exact": 27,
+    "preserved": "All supplied reference videos, Content/native assets, playable package, authoring caches, final4 full video archives, selected originals, compressed telemetry and final evidence. Previous accepted baseline evidence retained.",
+    "retired_file_count": 84,
+    "receipt": "build/reviews/jeddah-clearance-20261118/cleanup4.json",
+    "receipt_sha256": "22685f59ffbfcca22b74c41e48f4776cb649f8908e5186b2f1ab8678dd5b6223"
+  },
+  "limits": [
+    "Video-derived dimensions are estimates, not a survey.5m fast-lane width and the authoring\u00b10.75m range are not metrically verified by footage.",
+    "T13 height/endpoints, STC bridge registration, entry paint and planting spacing remain source-qualified estimates.",
+    "PitDrive is a40km/h trajectory/state diagnostic; it does not test80km/h limiter saturation or an actual workshop stop.",
+    "Uncaptured profiles cover this guarded machine/run, not every pose or other hardware.75percent is a diagnostic control; production stays100percent.",
+    "Source recipes retain historical authoring-stage status wording; native acceptance is bound to the tested revision and evidence in this record."
+  ]
+}
