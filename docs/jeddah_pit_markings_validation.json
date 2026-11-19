@@ -1,0 +1,121 @@
+{
+  "circuit": "jeddah",
+  "status": "complete",
+  "date": "2026-11-18",
+  "scope": "User-accepted Jeddah scene with source-matched pit entry, exit and merge paint; completed with Silverstone, Monza and Interlagos. The wider 18-map project remains incomplete and paused.",
+  "tested_revision": "2acf3f542067961dd4aabb18135fc0b93c6a063b",
+  "previous_validation": "docs/jeddah_clearance_validation.json",
+  "source": {
+    "video": "Saved/Refs/jeddah.mp4",
+    "sha256": "c2c78fb500a241a595aa6108bf797114332a747a83ab280b2a49d2cd9b8dcf78",
+    "reference_seconds": [
+      608,
+      635
+    ],
+    "controls": "Attribution/Sources/jeddah/pit-markings.json"
+  },
+  "changes": [
+    "Dashed entry lead-in resolves to a single solid fork around the painted island, without a crossing double outline.",
+    "One continuous exit guide is followed by a short second curved boundary and merge dashes.",
+    "Both exit curves meet the ordinary main-road edges tangentially; original limiter bars and garage markings are retained."
+  ],
+  "preservation": {
+    "nonwhite_native_triangles_exact": 81870,
+    "old_white_triangles": 8202,
+    "new_white_triangles": 8787,
+    "protected_files": 6356,
+    "changed": [
+      "Content/Generated/Jeddah/Data/render_tiles.csv",
+      "Content/Generated/Jeddah/Data/route_overlay.json",
+      "Content/Generated/Jeddah/Track/Tile_Route_00_m1.uasset",
+      "Content/Generated/Jeddah/Track/Tile_Route_00_m2.uasset",
+      "Content/Generated/Jeddah/Track/Tile_Route_m1_00.uasset",
+      "Content/Generated/Jeddah/Track/Tile_Route_m1_01.uasset",
+      "Content/Generated/Jeddah/Track/Tile_Street_00_m2.uasset",
+      "Content/Generated/Jeddah/Track/Tile_Street_m1_01.uasset"
+    ],
+    "physical_data_all_venues_exact": true,
+    "all_materials_textures_buildings_foliage_lights_exact": true,
+    "accepted_code_revision": "808a8e117480d4e61d7274a6fb9d2c90714e1c01",
+    "paint_code_revision": "2acf3f542067961dd4aabb18135fc0b93c6a063b",
+    "uv_channel_and_vertex_color_state_exact": true
+  },
+  "package": {
+    "pin": "build/reviews/jeddah-pit-lines-20261118/package2-pin.json",
+    "sha256": "7bad10398bea90a970d3d03fc30b500e9d9064a0514275478abb791e39ed4139",
+    "payloads": {
+      "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.pak": "11563e8a973d24d89e4864b63d8079bd706f029e8796f70a7950dd0b16ffb4a4",
+      "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.ucas": "c7b71d2fcae12a30f55e11c3b441e9e7ce37ab3e54e0dfbcd6bdc3caf2579325",
+      "build/unreal/package/Linux/FormulaForge/Content/Paks/FormulaForge-Linux.utoc": "b5f50244c31ad8907e03de62fb82c487cfd00454d2eb20998467e847f9cd72fc",
+      "build/unreal/package/Linux/FormulaForge/Content/Paks/global.ucas": "88139f43850978edfb78c66a2afcdec7bc9be57914a6321953e0b8347469c6bc",
+      "build/unreal/package/Linux/FormulaForge/Content/Paks/global.utoc": "d9d6b6d071d37e17a9c166b85d7407237cdb6fc94a719af162097a6e3c3c7b25",
+      "build/unreal/package/Linux/FormulaForge/Binaries/Linux/FormulaForge": "1014aee7c24c4b2b9f0c8ce8747390810ce1796d4867fe996e77958c1848cd0a"
+    }
+  },
+  "checks": {
+    "pytest_passed": 196,
+    "mypy": "PASS",
+    "ruff": "PASS",
+    "native_route_tests": 15,
+    "final_log_sha256": "6fb9e51494c2383c2547a40c2c9e3ddc7e10c2630964df7e501a3e1d6277a946",
+    "route_log_sha256": "634db4a9a0544739d3fcc06c9556e4ec292df508d23a1fd2950ed9c50df9e339"
+  },
+  "review": {
+    "model": "gpt-6-luna",
+    "effort": "high",
+    "thread": "01a1eec6-efdf-74f1-b8ef-f28dd9902632",
+    "report": "build/reviews/jeddah-pit-lines-20261118/final-review.md",
+    "report_sha256": "0af25a04e6587f24b3f4c0861b5f2a7e0bd2bedb4a98f77a404fbdb08967dd3c",
+    "decision": "PASS within pit-marking scope, preserving the previously accepted scene",
+    "static_jeddah_views": 24,
+    "accepted_style_views": 2
+  },
+  "lap": {
+    "clean_live_recording": true,
+    "valid_last_completed_live_lap": true,
+    "frame_count": 4268,
+    "station_bin_count": 125,
+    "station_bin_coverage_fraction": 1.0,
+    "selected_image_count": 128,
+    "contact_frames": 0,
+    "offtrack_frames": 0,
+    "airborne_frames": 0
+  },
+  "pit": {
+    "status": "PASS trajectory/state gates",
+    "route_length_m": 863.1708252699908,
+    "frames": 2115,
+    "distance_bins": 100,
+    "barrier_contact_ticks": 0,
+    "airborne_ticks": 0,
+    "overspeed_ticks": 0,
+    "maximum_ground_error_m": 0.025954860285592574,
+    "limitation": "40km/h live PitDrive trajectory diagnostic. Does not test80km/h limiter saturation, actual workshop stop or performance acceptance. pit_lane is not required before physical branch entry or after main-road merge; it may staytrue after speed cancellation."
+  },
+  "archives": {
+    "lap": {
+      "sha256": "d19b717634aa4368ee446366eb01e81d93f3b84f4eab45281c98788fd0d5c5af",
+      "frames": 4268,
+      "video_bytes": 236505946
+    },
+    "pit": {
+      "video_sha256": "bfbe0e9389bd0ff14a4cafbca05a636a935051a4d92ed0c185fc82b1b463a3b4"
+    }
+  },
+  "evidence_manifest": {
+    "path": "build/reviews/jeddah-pit-lines-20261118/final-hashes.json",
+    "sha256": "e7bd605878eb0dd27451b2c4b6194237ca902a2c1596782510ddfa34ed711da7",
+    "file_count": 382
+  },
+  "resources": {
+    "peak_total_machine_used_bytes": 7048155136,
+    "reclaimed_allocated_bytes": 6606094336,
+    "cleanup_receipt_sha256": "d081912317426638a715990c58ab210698f6e36ea1fefdb7183072a58f794782",
+    "preserved_package_files": 27
+  },
+  "limits": [
+    "Paint widths, dash lengths and reconstructed endpoints are image-based estimates, not surveyed dimensions.",
+    "Limiter stations are visually bracketed; footage does not establish sub-metre placement or exact rendered bar width.",
+    "This paint-only change makes no new uncaptured performance claim. Earlier scene and performance evidence remains in the previous validation record."
+  ]
+}

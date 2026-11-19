@@ -40,7 +40,14 @@ Published profiles are digitised reconstructions; DSMs can include roofs and veg
 
 Suzuka is the only figure-eight. Its back straight crosses the lower Degner road with about 6.14 m between the exported road surfaces. This is not underside clearance. Keep its separate deck protection; the planar boundary-union tool deliberately rejects this layout.
 
-Native scenes include circuit-specific architecture, vegetation, protection, kerbs, escape surfaces, braking boards and pit paving. Pit access remains closed for the game. Source generation, native geometry checks and a clean simulated lap do not establish visual or performance acceptance. Follow the [whole-lap workflow](map.md) and compare the exact current assets against registered references.
+Native scenes include circuit-specific architecture, vegetation, protection, kerbs, escape surfaces, braking boards and pit paving. Source generation, native geometry checks and a clean simulated lap do not establish visual or performance acceptance. Follow the [whole-lap workflow](map.md) and compare the exact current assets against registered references.
+
+Silverstone, Monza, Interlagos and Jeddah are complete at the user-approved quality
+bar. Jeddah's final pit entry/exit markings passed Luna High review against the
+reference video, with a clean packaged lap and complete pit-route traversal.
+The [pit-marking validation](jeddah_pit_markings_validation.json) records the tested
+revision, preserved scene data, evidence hashes and remaining measurement limits.
+This completion does not promote the other circuits in the wider project.
 
 The 18-map work is paused at the 15 November checkpoint and remains incomplete.
 The checkpoint records compatible Luna High visual passes for all

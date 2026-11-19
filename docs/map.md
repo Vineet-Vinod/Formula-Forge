@@ -792,7 +792,16 @@ Preserve justified real openings and any existing user-approved closures.
 Document intentional fictional closures separately from the real-world layout.
 Do not create a new pit-lane speed rule or open a previously closed route without
 an explicit gameplay requirement. New pit support also needs loader/progress tests;
-the current extra pit datasets are loaded only for Silverstone.
+check the current loader rather than assuming a venue's pit route is closed.
+
+Match pit markings to the reference sequence: dashed approach, fork, limiter,
+garage frontage, exit guide and merge. Do not outline both sides of the entire
+pit route by default. Jeddah needed a single exit guide, a short second merge
+boundary and tangent joins to the ordinary track edges. Inspect both routes
+from the cockpit; crossing outlines and stranded line ends can be hidden in
+an overhead view. For a paint-only correction, preserve physical data and verify
+native non-white triangles, materials and scenery against the accepted baseline.
+See the [Jeddah pit-marking validation](jeddah_pit_markings_validation.json).
 
 Runoff must join the track without lips or pits. Place trees behind the intended
 protection and outside escape routes; inspect the full canopy footprint as well
